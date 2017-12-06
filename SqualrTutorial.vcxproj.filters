@@ -1,38 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="resource">
+    <Filter Include="Resources">
       <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source">
+    <Filter Include="Source">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\AppDelegate.cpp">
-      <Filter>source</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\HelloWorldScene.cpp">
-      <Filter>source</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\main.cpp">
-      <Filter>source</Filter>
+      <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\AppDelegate.h">
-      <Filter>source</Filter>
+      <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Source\HelloWorldScene.h">
-      <Filter>source</Filter>
+      <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Source\main.h">
-      <Filter>source</Filter>
+      <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="game.rc">
-      <Filter>resource</Filter>
+    <ResourceCompile Include="Resources\game.rc">
+      <Filter>Resources</Filter>
     </ResourceCompile>
   </ItemGroup>
 </Project>
