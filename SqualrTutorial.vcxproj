@@ -100,7 +100,8 @@
       </Command>
     </PostBuildEvent>
     <PreLinkEvent>
-      <Command></Command>
+      <Command>
+      </Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup>
@@ -112,7 +113,6 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
       <Inputs>$(TargetFileName)</Inputs>
     </CustomBuildStep>
   </ItemDefinitionGroup>
-
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
@@ -143,7 +143,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
       </Command>
     </PostBuildEvent>
     <PreLinkEvent>
-      <Command></Command>
+      <Command>
+      </Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -167,9 +168,6 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ProjectReference Include="cocos2d\external\Box2D\proj.win32\libbox2d.vcxproj">
       <Project>{929480e7-23c0-4df6-8456-096d71547116}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Resources\game.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
