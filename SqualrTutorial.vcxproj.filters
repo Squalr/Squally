@@ -15,6 +15,9 @@
     <ClCompile Include="Source\main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Resources.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\AppDelegate.h">
@@ -24,6 +27,9 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Source\main.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Resources.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
