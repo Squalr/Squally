@@ -15,15 +15,15 @@ WriteLine("{");
 WriteLine("public:");
 foreach (string file in Directory.EnumerateFiles(this.Host.ResolvePath("../Resources"), "*.*", SearchOption.AllDirectories))
 {
-	string newFileName = file.Replace(this.Host.ResolvePath("../Resources"), "").TrimStart('\\').Replace(@"\", "_").Replace(" ", "_");
-
-	if (!newFileName.EndsWith(".png") &&
-		!newFileName.EndsWith(".jpg") &
-		!newFileName.EndsWith(".ttf")) {
+	if (!file.EndsWith(".png") &&
+		!file.EndsWith(".jpg") &
+		!file.EndsWith(".ttf")) {
 			continue;
 		}
 
-	WriteLine("\tstatic const string " + Path.GetFileNameWithoutExtension(newFileName) + ";");
+	string variableName = Path.GetFileNameWithoutExtension(file.Replace(this.Host.ResolvePath("../Resources"), "").TrimStart('\\').Replace(@"\", "_").Replace(" ", "_"));
+	
+	WriteLine("\tstatic const string " + variableName + ";");
 }
 WriteLine("};");
 #>
