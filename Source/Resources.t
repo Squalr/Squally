@@ -12,15 +12,15 @@ WriteLine("");
 
 foreach (string file in Directory.EnumerateFiles(this.Host.ResolvePath("../Resources"), "*.*", SearchOption.AllDirectories))
 {
-	string newFileName = file.Replace(this.Host.ResolvePath("../Resources"), "").TrimStart('\\').Replace(@"\", "_").Replace(" ", "_");
-	string relativeFilePath = file.Replace(this.Host.ResolvePath("../Resources"), "").TrimStart('\\').Replace(@"\", @"\\").Replace(" ", "_");
-
-	if (!relativeFilePath.EndsWith(".png") &&
-		!relativeFilePath.EndsWith(".jpg") &
-		!relativeFilePath.EndsWith(".ttf")) {
+	if (!file.EndsWith(".png") &&
+		!file.EndsWith(".jpg") &
+		!file.EndsWith(".ttf")) {
 			continue;
 		}
+		
+	string variableName = Path.GetFileNameWithoutExtension(file.Replace(this.Host.ResolvePath("../Resources"), "").TrimStart('\\').Replace(@"\", "_").Replace(" ", "_"));
+	string relativeFilePath = file.Replace(this.Host.ResolvePath("../Resources"), "").TrimStart('\\').Replace(@"\", @"\\");
 
-	WriteLine("const string Resources::" + Path.GetFileNameWithoutExtension(newFileName) + " = \"" + relativeFilePath + "\";");
+	WriteLine("const string Resources::" + variableName + " = \"" + relativeFilePath + "\";");
 }
 #>
