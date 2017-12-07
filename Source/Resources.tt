@@ -1,0 +1,29 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".h" #>
+<#
+WriteLine("#include <string>");
+WriteLine("");
+WriteLine("using namespace std;");
+WriteLine("");
+WriteLine("class Resources");
+WriteLine("{");
+WriteLine("public:");
+foreach (string file in Directory.EnumerateFiles(this.Host.ResolvePath("../Resources"), "*.*", SearchOption.AllDirectories))
+{
+	string newFileName = file.Replace(this.Host.ResolvePath("../Resources"), "").TrimStart('\\').Replace(@"\", "_").Replace(" ", "_");
+
+	if (!newFileName.EndsWith(".png") &&
+		!newFileName.EndsWith(".jpg") &
+		!newFileName.EndsWith(".ttf")) {
+			continue;
+		}
+
+	WriteLine("\tstatic const string " + Path.GetFileNameWithoutExtension(newFileName) + ";");
+}
+WriteLine("};");
+#>

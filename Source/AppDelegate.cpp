@@ -60,7 +60,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	GLView* glview = director->getOpenGLView();
 
 	if (!glview) {
-		glview = GLViewImpl::createWithRect("SqualrTutorial", cocos2d::Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
+		glview = GLViewImpl::createWithRect("SqualrTutorial", cocos2d::Rect(0, 0, mediumResolutionSize.width, mediumResolutionSize.height));
 		director->setOpenGLView(glview);
 	}
 

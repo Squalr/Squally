@@ -1,5 +1,6 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
+#include "Resources.h"
 
 USING_NS_CC;
 
@@ -75,7 +76,7 @@ bool HelloWorld::init()
 	}
 
 	// add "HelloWorld" splash screen"
-	Sprite* sprite = Sprite::create("HelloWorld.png");
+	Sprite* sprite = Sprite::create(Resources::Background_GrassBG);
 
 	if (sprite == nullptr)
 	{
