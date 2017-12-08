@@ -10,6 +10,7 @@ WriteLine("/////////////////////////////////////////////////////////////////////
 WriteLine("// THIS C++ FILE IS GENERATED DO NOT EDIT. MAKE CHANGES IN THE RESOURCE TEXT TEMPLATING FILE //");
 WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////");
 WriteLine("");
+WriteLine("#pragma once");
 WriteLine("#include <string>");
 WriteLine("");
 WriteLine("using namespace std;");

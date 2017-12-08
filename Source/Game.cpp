@@ -2,7 +2,7 @@
 #include "SimpleAudioEngine.h"
 #include "Resources.h"
 
-USING_NS_CC;
+using namespace cocos2d;
 
 // on "init" you need to initialize your instance
 bool Game::init()
