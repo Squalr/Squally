@@ -148,7 +148,10 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Entities\Enemy.cpp" />
+    <ClCompile Include="Source\Entities\Entity.cpp" />
     <ClCompile Include="Source\Entities\Player.cpp" />
+    <ClCompile Include="Source\Objects\GameObject.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\Game.cpp" />
     <ClCompile Include="Source\Level\Level.cpp" />
@@ -156,7 +159,10 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Resources.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Entities\Enemy.h" />
+    <ClInclude Include="Source\Entities\Entity.h" />
     <ClInclude Include="Source\Entities\Player.h" />
+    <ClInclude Include="Source\Objects\GameObject.h" />
     <ClInclude Include="Source\Window.h" />
     <ClInclude Include="Source\Game.h" />
     <ClInclude Include="Source\Level\Level.h" />

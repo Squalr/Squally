@@ -1,8 +1,10 @@
+#pragma once
+#include "cocos2d.h"
+#include "Entity.h"
 
 using namespace cocos2d;
 
-#pragma once
-class Enemy
+class Enemy : public Entity
 {
 public:
 	Enemy();
