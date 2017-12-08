@@ -13,25 +13,22 @@
     <Filter Include="Source\GUI">
       <UniqueIdentifier>{ed5bc229-752b-4036-b1e3-cfc6c071440e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Levels">
+    <Filter Include="Source\GUI\Menus">
+      <UniqueIdentifier>{ab031439-9498-4f06-b44f-e5be61ab5205}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\GUI\Screens">
+      <UniqueIdentifier>{04daaf56-62e9-4d3e-97b5-cdc8406ed7b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Level">
       <UniqueIdentifier>{4df6f466-fb7d-4ee4-b7d3-a451d4a61f2f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Resources.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Game.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Window.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Main.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Level\Level.cpp">
-      <Filter>Source\Levels</Filter>
+      <Filter>Source\Level</Filter>
     </ClCompile>
     <ClCompile Include="Source\Entities\Player.cpp">
       <Filter>Source\Entities</Filter>
@@ -45,22 +42,28 @@
     <ClCompile Include="Source\Objects\GameObject.cpp">
       <Filter>Source\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\PauseMenu.cpp">
+      <Filter>Source\GUI\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Screens\TitleScreen.cpp">
+      <Filter>Source\GUI\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Resources.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Window.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Resources.h">
-      <Filter>Source</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Game.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Window.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Main.h">
-      <Filter>Source</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Level\Level.h">
-      <Filter>Source\Levels</Filter>
+      <Filter>Source\Level</Filter>
     </ClInclude>
     <ClInclude Include="Source\Entities\Player.h">
       <Filter>Source\Entities</Filter>
@@ -73,6 +76,21 @@
     </ClInclude>
     <ClInclude Include="Source\Objects\GameObject.h">
       <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\PauseMenu.h">
+      <Filter>Source\GUI\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Screens\TitleScreen.h">
+      <Filter>Source\GUI\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Main.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Resources.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Window.h">
+      <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

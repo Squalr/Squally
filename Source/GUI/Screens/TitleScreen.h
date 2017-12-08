@@ -1,18 +1,13 @@
 #pragma once
 #include "cocos2d.h"
-#include "../Entities/Player.h"
 
 using namespace cocos2d;
 
-class Level : public Scene
+class TitleScreen : public Scene
 {
 public:
-	Level();
-	~Level();
-
-protected:
-	Player * player;
-	Sprite* backGround;
+	TitleScreen(std::function<void()> gameStartCallback);
+	~TitleScreen();
 
 private:
 	void InitializeListeners();
