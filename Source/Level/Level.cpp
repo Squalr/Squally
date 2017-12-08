@@ -1,6 +1,7 @@
 #include "Level.h"
 #include "Resources.h"
 #include "../Entities/Player.h"
+#include "../GUI/Menus/PauseMenu.h"
 
 Level::Level()
 {
@@ -8,6 +9,8 @@ Level::Level()
 	{
 		throw std::uncaught_exception();
 	}
+
+	this->pauseMenu = new PauseMenu();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -34,16 +37,17 @@ Level::~Level()
 void Level::InitializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
-	listener->onKeyPressed = CC_CALLBACK_2(Level::onKeyPressed, this);
+	listener->onKeyPressed = CC_CALLBACK_2(Level::OnKeyPressed, this);
 
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
 // Implementation of the keyboard event callback function prototype
-void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+void Level::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode) {
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
+		Director::getInstance()->pushScene(this->pauseMenu);
 		break;
 	}
 }

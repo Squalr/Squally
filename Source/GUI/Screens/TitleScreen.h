@@ -11,6 +11,6 @@ public:
 
 private:
 	void InitializeListeners();
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 };
 

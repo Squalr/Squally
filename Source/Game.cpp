@@ -25,12 +25,3 @@ void Game::GameStart()
 
 	Director::getInstance()->replaceScene(level);
 }
-
-void Game::menuCloseCallback(Ref* pSender)
-{
-	// Close the cocos2d-x game scene and quit the application
-	Director::getInstance()->end();
-
-	//EventCustom customEndEvent("game_scene_close_event");
-	//_eventDispatcher->dispatchEvent(&customEndEvent);
-}
