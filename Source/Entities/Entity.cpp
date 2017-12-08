@@ -4,8 +4,6 @@
 
 using namespace cocos2d;
 
-Sprite* sprite;
-
 Entity::Entity()
 {
 }
