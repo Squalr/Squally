@@ -1,18 +1,21 @@
 #pragma once
 #include "cocos2d.h"
+#include "GUI/Screens/TitleScreen.h"
+#include "Level/Level.h"
 
 using namespace cocos2d;
 
-class Game : public cocos2d::Scene
+class Game
 {
 public:
-	virtual bool init();
-
-	static Scene* createScene();
+	Game();
+	~Game();
 
 	// A selector callback
 	void menuCloseCallback(Ref* pSender);
 
-	// Implement the "static create()" method manually
-	CREATE_FUNC(Game);
+private:
+	void GameStart();
+
+	TitleScreen * titleScreen;
 };

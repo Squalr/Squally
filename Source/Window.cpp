@@ -60,7 +60,7 @@ bool Window::applicationDidFinishLaunching()
 	GLView* glview = director->getOpenGLView();
 
 	if (!glview) {
-		glview = GLViewImpl::createWithRect("SqualrTutorial", Rect(0, 0, mediumResolutionSize.width, mediumResolutionSize.height));
+		glview = GLViewImpl::createWithRect("Squalr Tutorial", Rect(0, 0, mediumResolutionSize.width, mediumResolutionSize.height));
 		director->setOpenGLView(glview);
 	}
 
@@ -92,11 +92,8 @@ bool Window::applicationDidFinishLaunching()
 
 	register_all_packages();
 
-	// create a scene. it's an autorelease object
-	Scene* scene = Game::createScene();
-
-	// run
-	director->runWithScene(scene);
+	// Start the game
+	Game* game = new Game();
 
 	return true;
 }
