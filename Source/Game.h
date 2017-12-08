@@ -11,9 +11,6 @@ public:
 	Game();
 	~Game();
 
-	// A selector callback
-	void menuCloseCallback(Ref* pSender);
-
 private:
 	void GameStart();
 
