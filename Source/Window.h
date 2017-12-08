@@ -1,14 +1,14 @@
-#ifndef  _APP_DELEGATE_H_
-#define  _APP_DELEGATE_H_
-
+#pragma once
 #include "cocos2d.h"
+
+using namespace cocos2d;
 
 /**
 @brief The cocos2d Application.
 
 Private inheritance here hides part of interface from Director.
 */
-class  Window : private cocos2d::Application
+class  Window : private Application
 {
 public:
 	Window();
@@ -35,6 +35,3 @@ public:
 	*/
 	virtual void applicationWillEnterForeground();
 };
-
-#endif // _APP_DELEGATE_H_
-

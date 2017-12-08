@@ -2,6 +2,7 @@
 // THIS C++ FILE IS GENERATED DO NOT EDIT. MAKE CHANGES IN THE RESOURCE TEXT TEMPLATING FILE //
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+#pragma once
 #include <string>
 
 using namespace std;
