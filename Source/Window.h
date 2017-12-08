@@ -8,11 +8,11 @@
 
 Private inheritance here hides part of interface from Director.
 */
-class  AppDelegate : private cocos2d::Application
+class  Window : private cocos2d::Application
 {
 public:
-	AppDelegate();
-	virtual ~AppDelegate();
+	Window();
+	virtual ~Window();
 
 	virtual void initGLContextAttrs();
 
