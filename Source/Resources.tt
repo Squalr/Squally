@@ -6,6 +6,10 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".h" #>
 <#
+WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////");
+WriteLine("// THIS C++ FILE IS GENERATED DO NOT EDIT. MAKE CHANGES IN THE RESOURCE TEXT TEMPLATING FILE //");
+WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////");
+WriteLine("");
 WriteLine("#include <string>");
 WriteLine("");
 WriteLine("using namespace std;");
