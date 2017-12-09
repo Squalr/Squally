@@ -1,43 +1,45 @@
 #include "PauseMenu.h"
 #include "Resources.h"
 
+MenuItemImage* closeItem;
+
 PauseMenu::PauseMenu()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	Label* label = Label::createWithTTF("Paused", Resources::Fonts_Marker_Felt, 24);
+	Menu* menu = Menu::create();
 
-	// position the label on the center of the screen
 	label->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - label->getContentSize().height));
 
-	// add the label as a child to this layer
-	this->addChild(label, 1);
-
-	MenuItemImage* closeItem = MenuItemImage::create(Resources::CloseNormal, Resources::CloseSelected, CC_CALLBACK_1(PauseMenu::OnExitGame, this));
-
-	float x = origin.x + visibleSize.width - closeItem->getContentSize().width / 2;
-	float y = origin.y + closeItem->getContentSize().height / 2;
-
-	closeItem->setPosition(Vec2(x, y));
-
-	// create menu, it's an autorelease object
-	Menu* menu = Menu::create(closeItem, NULL);
+	closeItem = MenuItemImage::create(Resources::CloseNormal, Resources::CloseSelected);
+	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width / 2, origin.y + closeItem->getContentSize().height / 2));
 
 	menu->setPosition(Vec2::ZERO);
-	this->addChild(menu, 1);
+	menu->addChild(closeItem);
 
-	this->InitializeListeners();
+	this->addChild(label);
+	this->addChild(menu);
 }
 
 PauseMenu::~PauseMenu()
 {
 }
 
+void PauseMenu::onEnter()
+{
+	Scene::onEnter();
+
+	this->InitializeListeners();
+}
+
 void PauseMenu::InitializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
 	listener->onKeyPressed = CC_CALLBACK_2(PauseMenu::OnKeyPressed, this);
+
+	closeItem->setCallback(CC_CALLBACK_1(PauseMenu::OnExitGame, this));
 
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 }

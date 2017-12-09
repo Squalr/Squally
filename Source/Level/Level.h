@@ -11,7 +11,17 @@ public:
 	Level();
 	~Level();
 
+	void onEnter() override;
+	void update(float) override;
+
 protected:
+	Layer * backGroundLayer;
+	Layer * tileLayer;
+
+	Layer * entityLayer;
+	Layer * playerLayer;
+	Layer * enemyLayer;
+
 	Player * player;
 	Sprite * backGround;
 	PauseMenu * pauseMenu;

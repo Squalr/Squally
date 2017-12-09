@@ -3,14 +3,20 @@
 
 using namespace cocos2d;
 
-class Entity
+class Entity : public Node
 {
 public:
 	Entity();
 	~Entity();
 
-	Sprite * sprite;
+	float GetWidth();
+	float GetHeight();
+
+	void onEnter() override;
+	void update(float) override;
 
 protected:
+	PhysicsBody * physicsBody;
+	Sprite * sprite;
 };
 
