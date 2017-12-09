@@ -27,6 +27,23 @@ Level::Level()
 	TMXTiledMap* map = TMXTiledMap::create(Resources::Levels_Debug);
 	TMXLayer* layer = map->getLayer("Midground");
 
+	for (int x = 0; x < layer->getLayerSize().width; x++)
+	{
+		for (int y = 0; y < layer->getLayerSize().height; y++)
+		{
+			Sprite* tile = layer->getTileAt(Vec2(x, y));
+
+			if (tile == nullptr)
+			{
+				continue;
+			}
+
+			PhysicsBody* physicsBody = PhysicsBody::createBox(tile->getContentSize());
+			physicsBody->setDynamic(false);
+			tile->addComponent(physicsBody);
+		}
+	}
+
 	this->tileLayer->addChild(map);
 
 	this->backGround = Sprite::create(Resources::Background_GrassBG);
@@ -66,10 +83,16 @@ void Level::update(float dt)
 
 	{
 		float widthOffset = Director::getInstance()->getVisibleSize().width / 2;
-		float playerOffset = this->player->getPositionX() - this->player->GetWidth();
+		float playerXOffset = this->player->getPositionX() - this->player->GetWidth();
 
-		this->playerLayer->setPositionX(widthOffset - playerOffset);
-		this->tileLayer->setPositionX(widthOffset - playerOffset);
+		this->playerLayer->setPositionX(widthOffset - playerXOffset);
+		this->tileLayer->setPositionX(widthOffset - playerXOffset);
+
+		float heightOffset = Director::getInstance()->getVisibleSize().height / 2;
+		float playerYOffset = this->player->getPositionY() - this->player->GetHeight();
+
+		this->playerLayer->setPositionY(heightOffset - playerYOffset);
+		this->tileLayer->setPositionY(heightOffset - playerYOffset);
 	}
 }
 
