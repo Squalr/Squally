@@ -11,8 +11,8 @@ Player::Player()
 	Entity::Entity();
 
 	this->sprite = Sprite::create(Resources::Sprites_Player_Idle);
-	this->physicsBody = PhysicsBody::createCircle(this->sprite->getContentSize().width);
-	this->physicsBody->setDynamic(false);
+	this->physicsBody = PhysicsBody::createCircle(this->sprite->getContentSize().width / 2);
+	this->physicsBody->setRotationEnable(false);
 
 	this->addChild(this->sprite);
 	this->setPhysicsBody(this->physicsBody);
@@ -50,6 +50,7 @@ void Player::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	{
 	case EventKeyboard::KeyCode::KEY_UP_ARROW:
 	case EventKeyboard::KeyCode::KEY_W:
+		this->physicsBody->setVelocity(Vec2(this->physicsBody->getVelocity().x, Player::jumpSpeed));
 		break;
 	case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
 	case EventKeyboard::KeyCode::KEY_A:
