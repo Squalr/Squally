@@ -17,8 +17,10 @@ WriteLine("");
 foreach (string file in Directory.EnumerateFiles(this.Host.ResolvePath("../Resources"), "*.*", SearchOption.AllDirectories))
 {
 	if (!file.EndsWith(".png") &&
-		!file.EndsWith(".jpg") &
-		!file.EndsWith(".ttf")) {
+		!file.EndsWith(".jpg") &&
+		!file.EndsWith(".ttf") &&
+		!file.EndsWith(".mp3") &&
+		!file.EndsWith(".tmx")) {
 			continue;
 		}
 		
