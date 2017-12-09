@@ -37,106 +37,73 @@
   <ItemGroup>
     <None Include="Resources\Fonts\arial.ttf" />
     <None Include="Resources\Fonts\Marker Felt.ttf" />
-    <None Include="Resources\Levels\1.cfg" />
-    <None Include="Resources\Levels\2.cfg" />
-    <None Include="Resources\Levels\3.cfg" />
-    <None Include="Resources\Levels\4.cfg" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Resources\Levels\Debug.tmx" />
     <None Include="Source\Resources.t">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Resources.cpp</LastGenOutput>
     </None>
-    <Content Include="Source\Resources.cpp">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.t</DependentUpon>
-    </Content>
-    <Content Include="Source\Resources.h">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.tt</DependentUpon>
-    </Content>
     <Content Include="Resources\Background\DesertBG.png" />
     <Content Include="Resources\Background\GrassBG.png" />
     <Content Include="Resources\Background\SnowBG.png" />
     <Content Include="Resources\CloseNormal.png" />
     <Content Include="Resources\CloseSelected.png" />
-    <Content Include="Resources\Debug\VertexNode.png" />
-    <Content Include="Resources\Editor\CrossHair.png" />
-    <Content Include="Resources\Editor\DunkleosteusEditor.png" />
-    <Content Include="Resources\Editor\HorizontalSelector.png" />
-    <Content Include="Resources\Editor\LevelEditPanel.png" />
-    <Content Include="Resources\Editor\PterodactylEditor.png" />
-    <Content Include="Resources\Editor\RaptorEditor.png" />
     <Content Include="Resources\game.rc" />
-    <Content Include="Resources\GUI\Egg.png" />
-    <Content Include="Resources\GUI\Heart0.png" />
-    <Content Include="Resources\GUI\Heart1.png" />
-    <Content Include="Resources\GUI\Heart10.png" />
-    <Content Include="Resources\GUI\Heart2.png" />
-    <Content Include="Resources\GUI\Heart3.png" />
-    <Content Include="Resources\GUI\Heart4.png" />
-    <Content Include="Resources\GUI\Heart5.png" />
-    <Content Include="Resources\GUI\Heart6.png" />
-    <Content Include="Resources\GUI\Heart7.png" />
-    <Content Include="Resources\GUI\Heart8.png" />
-    <Content Include="Resources\GUI\Heart9.png" />
-    <Content Include="Resources\GUI\MindPowerBack.png" />
-    <Content Include="Resources\GUI\MindPowerCover.png" />
-    <Content Include="Resources\HelloWorld.png" />
-    <Content Include="Resources\Levels\1.txt" />
-    <Content Include="Resources\Levels\2.txt" />
-    <Content Include="Resources\Levels\3.txt" />
-    <Content Include="Resources\Levels\4.txt" />
-    <Content Include="Resources\Menus\CreditsMenu\CreditsBG.png" />
-    <Content Include="Resources\Menus\CreditsMenu\UFO.png" />
-    <Content Include="Resources\Menus\IngameMenu\IngameMenu.png" />
-    <Content Include="Resources\Menus\IntroMenu\Scene1\Scene1BG.png" />
-    <Content Include="Resources\Menus\IntroMenu\Scene1\Scene1_NPC.png" />
-    <Content Include="Resources\Menus\IntroMenu\Scene1\Scene1_Player.png" />
-    <Content Include="Resources\Menus\IntroMenu\Scene2\Scene2BG.png" />
-    <Content Include="Resources\Menus\IntroMenu\Scene3\Scene3BG.png" />
-    <Content Include="Resources\Menus\IntroMenu\Scene3\Scene3FG.png" />
-    <Content Include="Resources\Menus\IntroMenu\Scene3\Scene3_Apple.png" />
-    <Content Include="Resources\Menus\IntroMenu\Scene3\Scene3_Player.png" />
-    <Content Include="Resources\Menus\IntroMenu\Scene3\Scene3_TRex.png" />
-    <Content Include="Resources\Menus\IntroMenu\SpeechBubble.png" />
-    <Content Include="Resources\Menus\OptionsMenu\OptionsMenu.png" />
-    <Content Include="Resources\Menus\SolidBlackSquare.png" />
-    <Content Include="Resources\Menus\TitleScreen\HorizontalSelect.png" />
-    <Content Include="Resources\Menus\TitleScreen\TitleScreen.png" />
-    <Content Include="Resources\Menus\TitleScreen\VerticalSelect.png" />
-    <Content Include="Resources\Menus\WorldMap\Apple.png" />
-    <Content Include="Resources\Menus\WorldMap\AppleGrayed.png" />
-    <Content Include="Resources\Menus\WorldMap\Banana.png" />
-    <Content Include="Resources\Menus\WorldMap\BananaGrayed.png" />
-    <Content Include="Resources\Menus\WorldMap\DashedLineLocked.png" />
-    <Content Include="Resources\Menus\WorldMap\DashedLineUnlocked.png" />
-    <Content Include="Resources\Menus\WorldMap\LevelNodeLocked.png" />
-    <Content Include="Resources\Menus\WorldMap\LevelNodeUnlocked.png" />
-    <Content Include="Resources\Menus\WorldMap\Orange.png" />
-    <Content Include="Resources\Menus\WorldMap\OrangeGrayed.png" />
-    <Content Include="Resources\Menus\WorldMap\ProgressPanel.png" />
-    <Content Include="Resources\Menus\WorldMap\WorldMap.png" />
-    <Content Include="Resources\Menus\WorldMap\WorldMapSelector.png" />
-    <Content Include="Resources\Objects\Bridge.png" />
-    <Content Include="Resources\Objects\CheckPoint\OuthouseClosed.png" />
-    <Content Include="Resources\Objects\CheckPoint\OutHouseOpen.png" />
+    <Content Include="Resources\GUI\HUD\Egg.png" />
+    <Content Include="Resources\GUI\HUD\Heart0.png" />
+    <Content Include="Resources\GUI\HUD\Heart1.png" />
+    <Content Include="Resources\GUI\HUD\Heart10.png" />
+    <Content Include="Resources\GUI\HUD\Heart2.png" />
+    <Content Include="Resources\GUI\HUD\Heart3.png" />
+    <Content Include="Resources\GUI\HUD\Heart4.png" />
+    <Content Include="Resources\GUI\HUD\Heart5.png" />
+    <Content Include="Resources\GUI\HUD\Heart6.png" />
+    <Content Include="Resources\GUI\HUD\Heart7.png" />
+    <Content Include="Resources\GUI\HUD\Heart8.png" />
+    <Content Include="Resources\GUI\HUD\Heart9.png" />
+    <Content Include="Resources\GUI\HUD\MindPowerBack.png" />
+    <Content Include="Resources\GUI\HUD\MindPowerCover.png" />
+    <Content Include="Resources\GUI\Menus\CreditsMenu\CreditsBG.png" />
+    <Content Include="Resources\GUI\Menus\CreditsMenu\UFO.png" />
+    <Content Include="Resources\GUI\Menus\IngameMenu\IngameMenu.png" />
+    <Content Include="Resources\GUI\Menus\IntroMenu\Scene1\Scene1BG.png" />
+    <Content Include="Resources\GUI\Menus\IntroMenu\Scene1\Scene1_NPC.png" />
+    <Content Include="Resources\GUI\Menus\IntroMenu\Scene1\Scene1_Player.png" />
+    <Content Include="Resources\GUI\Menus\IntroMenu\Scene2\Scene2BG.png" />
+    <Content Include="Resources\GUI\Menus\IntroMenu\Scene3\Scene3BG.png" />
+    <Content Include="Resources\GUI\Menus\IntroMenu\Scene3\Scene3FG.png" />
+    <Content Include="Resources\GUI\Menus\IntroMenu\Scene3\Scene3_Apple.png" />
+    <Content Include="Resources\GUI\Menus\IntroMenu\Scene3\Scene3_Player.png" />
+    <Content Include="Resources\GUI\Menus\IntroMenu\Scene3\Scene3_TRex.png" />
+    <Content Include="Resources\GUI\Menus\IntroMenu\SpeechBubble.png" />
+    <Content Include="Resources\GUI\Menus\OptionsMenu\OptionsMenu.png" />
+    <Content Include="Resources\GUI\Menus\SolidBlackSquare.png" />
+    <Content Include="Resources\GUI\Menus\TitleScreen\HorizontalSelect.png" />
+    <Content Include="Resources\GUI\Menus\TitleScreen\TitleScreen.png" />
+    <Content Include="Resources\GUI\Menus\TitleScreen\VerticalSelect.png" />
+    <Content Include="Resources\GUI\Menus\WorldMap\Apple.png" />
+    <Content Include="Resources\GUI\Menus\WorldMap\AppleGrayed.png" />
+    <Content Include="Resources\GUI\Menus\WorldMap\Banana.png" />
+    <Content Include="Resources\GUI\Menus\WorldMap\BananaGrayed.png" />
+    <Content Include="Resources\GUI\Menus\WorldMap\DashedLineLocked.png" />
+    <Content Include="Resources\GUI\Menus\WorldMap\DashedLineUnlocked.png" />
+    <Content Include="Resources\GUI\Menus\WorldMap\LevelNodeLocked.png" />
+    <Content Include="Resources\GUI\Menus\WorldMap\LevelNodeUnlocked.png" />
+    <Content Include="Resources\GUI\Menus\WorldMap\Orange.png" />
+    <Content Include="Resources\GUI\Menus\WorldMap\OrangeGrayed.png" />
+    <Content Include="Resources\GUI\Menus\WorldMap\ProgressPanel.png" />
+    <Content Include="Resources\GUI\Menus\WorldMap\WorldMap.png" />
+    <Content Include="Resources\GUI\Menus\WorldMap\WorldMapSelector.png" />
+    <Content Include="Resources\Objects\Apple.png" />
+    <Content Include="Resources\Objects\Banana.png" />
     <Content Include="Resources\Objects\CloudLarge.png" />
     <Content Include="Resources\Objects\CloudSmall.png" />
-    <Content Include="Resources\Objects\Collectables\Apple.png" />
-    <Content Include="Resources\Objects\Collectables\Banana.png" />
-    <Content Include="Resources\Objects\Collectables\Egg.png" />
-    <Content Include="Resources\Objects\Collectables\Orange.png" />
-    <Content Include="Resources\Objects\Exit\Exit.png" />
-    <Content Include="Resources\Objects\Lava.png" />
+    <Content Include="Resources\Objects\Egg.png" />
+    <Content Include="Resources\Objects\Exit.png" />
     <Content Include="Resources\Objects\OceanMine.png" />
     <Content Include="Resources\Objects\OceanMineLarge.png" />
-    <Content Include="Resources\Objects\PillarLargeRuins.png" />
-    <Content Include="Resources\Objects\PillarSmallRuins.png" />
-    <Content Include="Resources\Objects\PlatformBridge.png" />
-    <Content Include="Resources\Objects\PlatformRuins.png" />
+    <Content Include="Resources\Objects\Orange.png" />
+    <Content Include="Resources\Objects\OuthouseClosed.png" />
+    <Content Include="Resources\Objects\OutHouseOpen.png" />
     <Content Include="Resources\Objects\SignGlideLeft.png" />
     <Content Include="Resources\Objects\SignGlideRight.png" />
     <Content Include="Resources\Objects\SignSkullLeft.png" />
@@ -146,8 +113,6 @@
     <Content Include="Resources\Objects\SpikesSmallB.png" />
     <Content Include="Resources\Objects\SpikesSmallT.png" />
     <Content Include="Resources\Objects\SpikesT.png" />
-    <Content Include="Resources\Objects\Water.png" />
-    <Content Include="Resources\Objects\WaterTop.png" />
     <Content Include="Resources\Particles\BreathParticle.png" />
     <Content Include="Resources\Particles\DeathParticle.png" />
     <Content Include="Resources\Particles\MindPowerParticle.png" />
@@ -158,7 +123,6 @@
     <Content Include="Resources\Particles\WindParticle.png" />
     <Content Include="Resources\resource.h" />
     <Content Include="Resources\res\game.ico" />
-    <Content Include="Resources\Sprites\Collectables\Egg.png" />
     <Content Include="Resources\Sprites\Dunkleosteus\Dunkleosteus.png" />
     <Content Include="Resources\Sprites\EggProjectile.png" />
     <Content Include="Resources\Sprites\Player\Idle.png" />
@@ -172,74 +136,23 @@
     <Content Include="Resources\Sprites\Raptor\Idle.png" />
     <Content Include="Resources\Sprites\Raptor\Jump.png" />
     <Content Include="Resources\Sprites\Raptor\Run.png" />
-    <Content Include="Resources\Tiles\BLRuins.png" />
-    <Content Include="Resources\Tiles\BMRuins.png" />
-    <Content Include="Resources\Tiles\BridgeL.png" />
-    <Content Include="Resources\Tiles\BridgeM.png" />
-    <Content Include="Resources\Tiles\BridgeR.png" />
-    <Content Include="Resources\Tiles\BRRuins.png" />
-    <Content Include="Resources\Tiles\Desert\BLDesert.png" />
-    <Content Include="Resources\Tiles\Desert\BMDesert.png" />
-    <Content Include="Resources\Tiles\Desert\BRDesert.png" />
-    <Content Include="Resources\Tiles\Desert\MLDesert.png" />
-    <Content Include="Resources\Tiles\Desert\MMDesert.png" />
-    <Content Include="Resources\Tiles\Desert\MRDesert.png" />
-    <Content Include="Resources\Tiles\Desert\RL1Desert.png" />
-    <Content Include="Resources\Tiles\Desert\RL2Desert.png" />
-    <Content Include="Resources\Tiles\Desert\RL3Desert.png" />
-    <Content Include="Resources\Tiles\Desert\RR1Desert.png" />
-    <Content Include="Resources\Tiles\Desert\RR2Desert.png" />
-    <Content Include="Resources\Tiles\Desert\RR3Desert.png" />
-    <Content Include="Resources\Tiles\Desert\TLDesert.png" />
-    <Content Include="Resources\Tiles\Desert\TMDesert.png" />
-    <Content Include="Resources\Tiles\Desert\TRDesert.png" />
-    <Content Include="Resources\Tiles\Grass\BLGrass.png" />
-    <Content Include="Resources\Tiles\Grass\BMGrass.png" />
-    <Content Include="Resources\Tiles\Grass\BRGrass.png" />
-    <Content Include="Resources\Tiles\Grass\MLGrass.png" />
-    <Content Include="Resources\Tiles\Grass\MMGrass.png" />
-    <Content Include="Resources\Tiles\Grass\MRGrass.png" />
-    <Content Include="Resources\Tiles\Grass\RL1Grass.png" />
-    <Content Include="Resources\Tiles\Grass\RL2Grass.png" />
-    <Content Include="Resources\Tiles\Grass\RL3Grass.png" />
-    <Content Include="Resources\Tiles\Grass\RR1Grass.png" />
-    <Content Include="Resources\Tiles\Grass\RR2Grass.png" />
-    <Content Include="Resources\Tiles\Grass\RR3Grass.png" />
-    <Content Include="Resources\Tiles\Grass\TLGrass.png" />
-    <Content Include="Resources\Tiles\Grass\TMGrass.png" />
-    <Content Include="Resources\Tiles\Grass\TRGrass.png" />
-    <Content Include="Resources\Tiles\Invisible.png" />
-    <Content Include="Resources\Tiles\LavaM.png" />
-    <Content Include="Resources\Tiles\LavaT.png" />
-    <Content Include="Resources\Tiles\MLRuins.png" />
-    <Content Include="Resources\Tiles\MMRuins.png" />
-    <Content Include="Resources\Tiles\MRRuins.png" />
-    <Content Include="Resources\Tiles\RL1Ruins.png" />
-    <Content Include="Resources\Tiles\RL2Ruins.png" />
-    <Content Include="Resources\Tiles\RL3Ruins.png" />
-    <Content Include="Resources\Tiles\RR1Ruins.png" />
-    <Content Include="Resources\Tiles\RR2Ruins.png" />
-    <Content Include="Resources\Tiles\RR3Ruins.png" />
-    <Content Include="Resources\Tiles\Snow\BLSnow.png" />
-    <Content Include="Resources\Tiles\Snow\BMSnow.png" />
-    <Content Include="Resources\Tiles\Snow\BRSnow.png" />
-    <Content Include="Resources\Tiles\Snow\MLSnow.png" />
-    <Content Include="Resources\Tiles\Snow\MMSnow.png" />
-    <Content Include="Resources\Tiles\Snow\MRSnow.png" />
-    <Content Include="Resources\Tiles\Snow\RL1Snow.png" />
-    <Content Include="Resources\Tiles\Snow\RL2Snow.png" />
-    <Content Include="Resources\Tiles\Snow\RL3Snow.png" />
-    <Content Include="Resources\Tiles\Snow\RR1Snow.png" />
-    <Content Include="Resources\Tiles\Snow\RR2Snow.png" />
-    <Content Include="Resources\Tiles\Snow\RR3Snow.png" />
-    <Content Include="Resources\Tiles\Snow\TLSnow.png" />
-    <Content Include="Resources\Tiles\Snow\TMSnow.png" />
-    <Content Include="Resources\Tiles\Snow\TRSnow.png" />
-    <Content Include="Resources\Tiles\TLRuins.png" />
-    <Content Include="Resources\Tiles\TMRuins.png" />
-    <Content Include="Resources\Tiles\TRRuins.png" />
-    <Content Include="Resources\Tiles\WaterM.png" />
-    <Content Include="Resources\Tiles\WaterT.png" />
+    <Content Include="Resources\Tiles\DunkleosteusEditor.png" />
+    <Content Include="Resources\Tiles\PillarLargeRuins.png" />
+    <Content Include="Resources\Tiles\PillarSmallRuins.png" />
+    <Content Include="Resources\Tiles\PlatformRuins.png" />
+    <Content Include="Resources\Tiles\PterodactylEditor.png" />
+    <Content Include="Resources\Tiles\RaptorEditor.png" />
+    <Content Include="Resources\Tiles\TileMap.png" />
+    <Content Include="Source\Resources.cpp">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.t</DependentUpon>
+    </Content>
+    <Content Include="Source\Resources.h">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.tt</DependentUpon>
+    </Content>
     <Content Include="Source\Resources.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Resources.h</LastGenOutput>
@@ -247,6 +160,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Sprites\Collectables\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,6 +14,7 @@ public:
 	void update(float) override;
 
 protected:
+	const float jumpSpeed = 144.0f;
 	const float walkSpeed = 128.0f;
 
 private:
