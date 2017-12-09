@@ -24,16 +24,18 @@ Level::Level()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	Sprite* testTile = Sprite::create(Resources::Tiles_BridgeM);
+	TMXTiledMap* map = TMXTiledMap::create(Resources::Levels_Debug);
+	TMXLayer* layer = map->getLayer("Midground");
+
+	this->tileLayer->addChild(map);
+
 	this->backGround = Sprite::create(Resources::Background_GrassBG);
 	this->player = new Player();
 
 	this->backGround->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->backGround->getContentSize().height / 2));
 	this->player->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
-	testTile->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 32));
 
 	this->backGroundLayer->addChild(this->backGround);
-	this->tileLayer->addChild(testTile);
 	this->playerLayer->addChild(this->player);
 	this->entityLayer->addChild(this->playerLayer);
 	this->entityLayer->addChild(this->enemyLayer);
