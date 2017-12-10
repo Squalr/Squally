@@ -148,13 +148,12 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Collision\CollisionGroups.cpp" />
+    <ClCompile Include="Source\Collision\TileCollision.cpp" />
     <ClCompile Include="Source\Entities\Enemy.cpp" />
     <ClCompile Include="Source\Entities\Entity.cpp" />
     <ClCompile Include="Source\Entities\Player.cpp" />
     <ClCompile Include="Source\GUI\Menus\PauseMenu.cpp" />
     <ClCompile Include="Source\GUI\Screens\TitleScreen.cpp" />
-    <ClCompile Include="Source\Level\TileCollision.cpp" />
     <ClCompile Include="Source\Objects\GameObject.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\Game.cpp" />
@@ -163,13 +162,12 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Resources.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Collision\CollisionGroups.h" />
+    <ClInclude Include="Source\Collision\TileCollision.h" />
     <ClInclude Include="Source\Entities\Enemy.h" />
     <ClInclude Include="Source\Entities\Entity.h" />
     <ClInclude Include="Source\Entities\Player.h" />
     <ClInclude Include="Source\GUI\Menus\PauseMenu.h" />
     <ClInclude Include="Source\GUI\Screens\TitleScreen.h" />
-    <ClInclude Include="Source\Level\TileCollision.h" />
     <ClInclude Include="Source\Objects\GameObject.h" />
     <ClInclude Include="Source\Window.h" />
     <ClInclude Include="Source\Game.h" />

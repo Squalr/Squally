@@ -60,10 +60,7 @@
     <ClCompile Include="Source\Window.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Level\TileCollision.cpp">
-      <Filter>Source\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Collision\CollisionGroups.cpp">
+    <ClCompile Include="Source\Collision\TileCollision.cpp">
       <Filter>Source\Collision</Filter>
     </ClCompile>
   </ItemGroup>
@@ -101,10 +98,7 @@
     <ClInclude Include="Source\Window.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Level\TileCollision.h">
-      <Filter>Source\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Collision\CollisionGroups.h">
+    <ClInclude Include="Source\Collision\TileCollision.h">
       <Filter>Source\Collision</Filter>
     </ClInclude>
   </ItemGroup>

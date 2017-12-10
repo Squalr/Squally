@@ -1,7 +1,6 @@
 #include "Level.h"
 #include "Resources.h"
-#include "TileCollision.h"
-#include "../Collision/CollisionGroups.h"
+#include "../Collision/TileCollision.h"
 #include "../Entities/Player.h"
 #include "../GUI/Menus/PauseMenu.h"
 
@@ -13,7 +12,7 @@ Level::Level()
 	}
 
 	// Physics / collision debugging
-	this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	// this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, -768.0f));
 
 	this->backGroundLayer = Layer::create();
@@ -77,7 +76,9 @@ void Level::LoadLevel()
 
 
 	TMXTiledMap* map = TMXTiledMap::create(Resources::Levels_Debug);
+	TMXLayer* background = map->getLayer("background");
 	TMXLayer* midGround = map->getLayer("midground");
+	TMXLayer* foreground = map->getLayer("foreground");
 	ValueVector objects = map->getObjectGroup("objects")->getObjects();
 
 	// Create entities
@@ -100,7 +101,8 @@ void Level::LoadLevel()
 	}
 
 	// Create midground
-	TileCollision::InitializeCollision(map, midGround);
+	TileCollision::InitializeCollision(map, midGround, TileCollision::All);
+	TileCollision::InitializeCollision(map, foreground, TileCollision::Liquid);
 
 	this->tileLayer->addChild(map);
 }
