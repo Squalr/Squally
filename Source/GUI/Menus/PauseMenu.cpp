@@ -41,13 +41,14 @@ void PauseMenu::InitializeListeners()
 
 	closeItem->setCallback(CC_CALLBACK_1(PauseMenu::OnExitGame, this));
 
-	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
 // Implementation of the keyboard event callback function prototype
 void PauseMenu::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	switch (keyCode) {
+	switch (keyCode)
+	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		Director::getInstance()->popScene();
 		break;

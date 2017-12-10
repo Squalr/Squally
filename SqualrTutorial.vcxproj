@@ -152,8 +152,12 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Entities\Enemy.cpp" />
     <ClCompile Include="Source\Entities\Entity.cpp" />
     <ClCompile Include="Source\Entities\Player.cpp" />
+    <ClCompile Include="Source\GUI\MenuLabel.cpp" />
     <ClCompile Include="Source\GUI\Menus\PauseMenu.cpp" />
+    <ClCompile Include="Source\GUI\Mouse.cpp" />
+    <ClCompile Include="Source\GUI\Screens\StoryMap.cpp" />
     <ClCompile Include="Source\GUI\Screens\TitleScreen.cpp" />
+    <ClCompile Include="Source\GUI\Screens\TutorialMap.cpp" />
     <ClCompile Include="Source\Objects\GameObject.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\Game.cpp" />
@@ -166,8 +170,12 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Entities\Enemy.h" />
     <ClInclude Include="Source\Entities\Entity.h" />
     <ClInclude Include="Source\Entities\Player.h" />
+    <ClInclude Include="Source\GUI\MenuLabel.h" />
     <ClInclude Include="Source\GUI\Menus\PauseMenu.h" />
+    <ClInclude Include="Source\GUI\Mouse.h" />
+    <ClInclude Include="Source\GUI\Screens\StoryMap.h" />
     <ClInclude Include="Source\GUI\Screens\TitleScreen.h" />
+    <ClInclude Include="Source\GUI\Screens\TutorialMap.h" />
     <ClInclude Include="Source\Objects\GameObject.h" />
     <ClInclude Include="Source\Window.h" />
     <ClInclude Include="Source\Game.h" />
