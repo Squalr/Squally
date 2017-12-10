@@ -1,9 +1,364 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="64" tileheight="48" nextobjectid="10">
- <tileset firstgid="1" name="TileMap" tilewidth="64" tileheight="48" tilecount="80" columns="10">
-  <image source="../Tiles/TileMap.png" width="640" height="384"/>
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="64" tileheight="48" nextobjectid="22">
+ <tileset firstgid="1" name="TileMap" tilewidth="64" tileheight="48" tilecount="90" columns="10">
+  <image source="../Tiles/TileMap.png" width="640" height="432"/>
+  <tile id="0" type="grass-top-left">
+   <properties>
+    <property name="Tile" value="grass-top-right"/>
+   </properties>
+  </tile>
+  <tile id="1" type="grass-top-middle">
+   <properties>
+    <property name="Tile" value="grass-top-right"/>
+   </properties>
+  </tile>
+  <tile id="2" type="grass-top-right">
+   <properties>
+    <property name="Tile" value="grass-top-right"/>
+   </properties>
+  </tile>
+  <tile id="3" type="grass-slope-1-right">
+   <properties>
+    <property name="Tile" value="grass-slope-1-right"/>
+   </properties>
+  </tile>
+  <tile id="4" type="grass-slope-1-left">
+   <properties>
+    <property name="Tile" value="grass-slope-1-left"/>
+   </properties>
+  </tile>
+  <tile id="5" type="ruins-top-left">
+   <properties>
+    <property name="Tile" value="ruins-top-left"/>
+   </properties>
+  </tile>
+  <tile id="6" type="ruins-top-middle">
+   <properties>
+    <property name="Tile" value="ruins-top-middle"/>
+   </properties>
+  </tile>
+  <tile id="7" type="ruins-top-right">
+   <properties>
+    <property name="Tile" value="ruins-top-right"/>
+   </properties>
+  </tile>
+  <tile id="8" type="ruins-slope-1-right">
+   <properties>
+    <property name="Tile" value="ruins-slope-1-right"/>
+   </properties>
+  </tile>
+  <tile id="9" type="ruins-slope-1-left">
+   <properties>
+    <property name="Tile" value="ruins-slope-1-left"/>
+   </properties>
+  </tile>
+  <tile id="10" type="grass-middle-left">
+   <properties>
+    <property name="Tile" value="grass-middle-left"/>
+   </properties>
+  </tile>
+  <tile id="11" type="grass-middle">
+   <properties>
+    <property name="Tile" value="middle"/>
+   </properties>
+  </tile>
+  <tile id="12" type="grass-middle-right">
+   <properties>
+    <property name="Tile" value="grass-middle-right"/>
+   </properties>
+  </tile>
+  <tile id="13" type="grass-slope-2-right">
+   <properties>
+    <property name="Tile" value="grass-slope-2-right"/>
+   </properties>
+  </tile>
+  <tile id="14" type="grass-slope-2-left">
+   <properties>
+    <property name="Tile" value="grass-slope-2-left"/>
+   </properties>
+  </tile>
+  <tile id="15" type="ruins-middle-left">
+   <properties>
+    <property name="Tile" value="ruins-middle-left"/>
+   </properties>
+  </tile>
+  <tile id="16" type="ruins-middle">
+   <properties>
+    <property name="Tile" value="ruins-middle"/>
+   </properties>
+  </tile>
+  <tile id="17" type="ruins-middle-right">
+   <properties>
+    <property name="Tile" value="ruins-middle-right"/>
+   </properties>
+  </tile>
+  <tile id="18" type="ruins-slope-2-right">
+   <properties>
+    <property name="Tile" value="ruins-slope-2-right"/>
+   </properties>
+  </tile>
+  <tile id="19" type="ruins-slope-2-left">
+   <properties>
+    <property name="Tile" value="ruins-slope-2-left"/>
+   </properties>
+  </tile>
+  <tile id="20" type="grass-bottom-left">
+   <properties>
+    <property name="Tile" value="grass-bottom-left"/>
+   </properties>
+  </tile>
+  <tile id="21" type="grass-bottom-middle">
+   <properties>
+    <property name="Tile" value="grass-bottom-middle"/>
+   </properties>
+  </tile>
+  <tile id="22" type="grass-bottom-right">
+   <properties>
+    <property name="Tile" value="grass-bottom-right"/>
+   </properties>
+  </tile>
+  <tile id="23" type="grass-slope-3-right">
+   <properties>
+    <property name="Tile" value="grass-slope-3-right"/>
+   </properties>
+  </tile>
+  <tile id="24" type="grass-slope-3-left">
+   <properties>
+    <property name="Tile" value="grass-slope-3-left"/>
+   </properties>
+  </tile>
+  <tile id="25" type="ruins-bottom-left">
+   <properties>
+    <property name="Tile" value="ruins-bottom-left"/>
+   </properties>
+  </tile>
+  <tile id="26" type="ruins-bottom-middle">
+   <properties>
+    <property name="Tile" value="ruins-bottom-middle"/>
+   </properties>
+  </tile>
+  <tile id="27" type="ruins-bottom-right">
+   <properties>
+    <property name="Tile" value="ruins-bottom-right"/>
+   </properties>
+  </tile>
+  <tile id="28" type="ruins-slope-3-right">
+   <properties>
+    <property name="Tile" value="ruins-slope-3-right"/>
+   </properties>
+  </tile>
+  <tile id="29" type="ruins-slope-3-left">
+   <properties>
+    <property name="Tile" value="ruins-slope-3-left"/>
+   </properties>
+  </tile>
+  <tile id="30" type="sand-top-left">
+   <properties>
+    <property name="Tile" value="sand-top-left"/>
+   </properties>
+  </tile>
+  <tile id="31" type="sand-top-middle">
+   <properties>
+    <property name="Tile" value="sand-top-middle"/>
+   </properties>
+  </tile>
+  <tile id="32" type="sand-top-right">
+   <properties>
+    <property name="Tile" value="sand-top-right"/>
+   </properties>
+  </tile>
+  <tile id="33" type="sand-slope-1-right">
+   <properties>
+    <property name="Tile" value="sand-slope-1-right"/>
+   </properties>
+  </tile>
+  <tile id="34" type="sand-slope-1-left">
+   <properties>
+    <property name="Tile" value="sand-slope-1-left"/>
+   </properties>
+  </tile>
+  <tile id="35" type="snow-top-left">
+   <properties>
+    <property name="Tile" value="snow-top-left"/>
+   </properties>
+  </tile>
+  <tile id="36" type="snow-top-middle">
+   <properties>
+    <property name="Tile" value="snow-top-middle"/>
+   </properties>
+  </tile>
+  <tile id="37" type="snow-top-right">
+   <properties>
+    <property name="Tile" value="snow-top-right"/>
+   </properties>
+  </tile>
+  <tile id="38" type="snow-slope-1-right">
+   <properties>
+    <property name="Tile" value="snow-slope-1-right"/>
+   </properties>
+  </tile>
+  <tile id="39" type="snow-slope-1-left">
+   <properties>
+    <property name="Tile" value="snow-slope-1-left"/>
+   </properties>
+  </tile>
+  <tile id="40" type="sand-middle-left">
+   <properties>
+    <property name="Tile" value="sand-middle-left"/>
+   </properties>
+  </tile>
+  <tile id="41" type="sand-middle">
+   <properties>
+    <property name="Tile" value="sand-middle"/>
+   </properties>
+  </tile>
+  <tile id="42" type="sand-middle-right">
+   <properties>
+    <property name="Tile" value="sand-middle-right"/>
+   </properties>
+  </tile>
+  <tile id="43" type="sand-slope-2-right">
+   <properties>
+    <property name="Tile" value="sand-slope-2-right"/>
+   </properties>
+  </tile>
+  <tile id="44" type="sand-slope-2-left">
+   <properties>
+    <property name="Tile" value="sand-slope-2-left"/>
+   </properties>
+  </tile>
+  <tile id="45" type="snow-middle-left">
+   <properties>
+    <property name="Tile" value="snow-middle-left"/>
+   </properties>
+  </tile>
+  <tile id="46" type="snow-middle">
+   <properties>
+    <property name="Tile" value="snow-middle"/>
+   </properties>
+  </tile>
+  <tile id="47" type="snow-middle-right">
+   <properties>
+    <property name="Tile" value="snow-middle-right"/>
+   </properties>
+  </tile>
+  <tile id="48" type="snow-slope-2-right">
+   <properties>
+    <property name="Tile" value="snow-slope-2-right"/>
+   </properties>
+  </tile>
+  <tile id="49" type="snow-slope-2-left">
+   <properties>
+    <property name="Tile" value="snow-slope-2-left"/>
+   </properties>
+  </tile>
+  <tile id="50" type="sand-bottom-left">
+   <properties>
+    <property name="Tile" value="sand-bottom-left"/>
+   </properties>
+  </tile>
+  <tile id="51" type="sand-bottom-middle">
+   <properties>
+    <property name="Tile" value="sand-bottom-middle"/>
+   </properties>
+  </tile>
+  <tile id="52" type="sand-bottom-right">
+   <properties>
+    <property name="Tile" value="sand-bottom-right"/>
+   </properties>
+  </tile>
+  <tile id="53" type="sand-slope-3-right">
+   <properties>
+    <property name="Tile" value="sand-slope-3-right"/>
+   </properties>
+  </tile>
+  <tile id="54" type="sand-slope-3-left">
+   <properties>
+    <property name="Tile" value="sand-slope-3-left"/>
+   </properties>
+  </tile>
+  <tile id="55" type="snow-bottom-left">
+   <properties>
+    <property name="Tile" value="snow-bottom-left"/>
+   </properties>
+  </tile>
+  <tile id="56" type="snow-bottom-middle">
+   <properties>
+    <property name="Tile" value="snow-bottom-middle"/>
+   </properties>
+  </tile>
+  <tile id="57" type="snow-bottom-right">
+   <properties>
+    <property name="Tile" value="snow-bottom-right"/>
+   </properties>
+  </tile>
+  <tile id="58" type="snow-slope-3-right">
+   <properties>
+    <property name="Tile" value="snow-slope-3-right"/>
+   </properties>
+  </tile>
+  <tile id="59" type="snow-slope-3-left">
+   <properties>
+    <property name="Tile" value="snow-slope-3-left"/>
+   </properties>
+  </tile>
+  <tile id="60" type="lava-top">
+   <properties>
+    <property name="Tile" value="lava-top"/>
+   </properties>
+  </tile>
+  <tile id="61" type="water-top">
+   <properties>
+    <property name="Tile" value="water-top"/>
+   </properties>
+  </tile>
+  <tile id="62" type="bridge-left">
+   <properties>
+    <property name="Tile" value="bridge-left"/>
+   </properties>
+  </tile>
+  <tile id="63" type="bridge-middle">
+   <properties>
+    <property name="Tile" value="bridge-middle"/>
+   </properties>
+  </tile>
+  <tile id="64" type="bridge-right">
+   <properties>
+    <property name="Tile" value="bridge-right"/>
+   </properties>
+  </tile>
+  <tile id="70" type="lava">
+   <properties>
+    <property name="Tile" value="lava"/>
+   </properties>
+  </tile>
+  <tile id="71" type="water">
+   <properties>
+    <property name="Tile" value="water"/>
+   </properties>
+  </tile>
+  <tile id="80" type="spawn">
+   <properties>
+    <property name="Tile" value="spawn"/>
+   </properties>
+  </tile>
+  <tile id="81" type="ptero">
+   <properties>
+    <property name="Tile" value="ptero"/>
+   </properties>
+  </tile>
+  <tile id="82" type="dunkleosteus">
+   <properties>
+    <property name="Tile" value="dunkleosteus"/>
+   </properties>
+  </tile>
+  <tile id="83" type="raptor">
+   <properties>
+    <property name="Tile" value="raptor"/>
+   </properties>
+  </tile>
  </tileset>
- <layer name="Midground" width="100" height="100">
+ <layer name="midground" width="100" height="100">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -90,21 +445,26 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,1,0,0,0,6,6,6,6,6,6,6,6,6,6,6,6,6,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,6,6,6,6,6,6,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,31,32,33,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,41,42,43,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,51,52,53,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,6,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,26,28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,6,8,0,0,6,7,7,7,7,7,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,26,28,0,0,26,27,27,27,27,27,28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,1,3,0,0,63,64,65,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,21,23,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,62,62,62,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,72,72,72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,62,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,72,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup name="objects">
+  <object id="10" name="spawn" type="spawn" gid="81" x="1218" y="4374" width="64" height="48"/>
+  <object id="11" name="ptero" type="ptero" gid="82" x="1432" y="4322" width="64" height="48"/>
+  <object id="12" name="ptero" type="ptero" gid="82" x="988" y="4328" width="64" height="48"/>
+ </objectgroup>
 </map>
