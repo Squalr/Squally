@@ -19,6 +19,9 @@ protected:
 
 private:
 	bool OnContactBegin(PhysicsContact &contact);
+	bool OnContactPostSolve(PhysicsContact &contact);
+	bool OnContactPreSolve(PhysicsContact &contact);
+	bool OnContactSeparate(PhysicsContact &contact);
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void OnKeyReleased(EventKeyboard::KeyCode keyCode, Event* event);
 	void InitializeListeners();
