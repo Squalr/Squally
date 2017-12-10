@@ -27,6 +27,7 @@ protected:
 	PauseMenu * pauseMenu;
 
 private:
+	void LoadLevel();
 	void InitializeListeners();
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 };

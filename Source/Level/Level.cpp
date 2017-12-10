@@ -1,5 +1,7 @@
 #include "Level.h"
 #include "Resources.h"
+#include "TileCollision.h"
+#include "../Collision/CollisionGroups.h"
 #include "../Entities/Player.h"
 #include "../GUI/Menus/PauseMenu.h"
 
@@ -12,6 +14,7 @@ Level::Level()
 
 	// Physics / collision debugging
 	this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	this->getPhysicsWorld()->setGravity(Vec2(0.0f, -768.0f));
 
 	this->backGroundLayer = Layer::create();
 	this->tileLayer = Layer::create();
@@ -21,39 +24,9 @@ Level::Level()
 
 	this->pauseMenu = new PauseMenu();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-	TMXTiledMap* map = TMXTiledMap::create(Resources::Levels_Debug);
-	TMXLayer* layer = map->getLayer("Midground");
-
-	for (int x = 0; x < layer->getLayerSize().width; x++)
-	{
-		for (int y = 0; y < layer->getLayerSize().height; y++)
-		{
-			Sprite* tile = layer->getTileAt(Vec2(x, y));
-
-			if (tile == nullptr)
-			{
-				continue;
-			}
-
-			PhysicsBody* physicsBody = PhysicsBody::createBox(tile->getContentSize());
-			physicsBody->setDynamic(false);
-			tile->addComponent(physicsBody);
-		}
-	}
-
-	this->tileLayer->addChild(map);
-
-	this->backGround = Sprite::create(Resources::Background_GrassBG);
-	this->player = new Player();
-
-	this->backGround->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->backGround->getContentSize().height / 2));
-	this->player->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->LoadLevel();
 
 	this->backGroundLayer->addChild(this->backGround);
-	this->playerLayer->addChild(this->player);
 	this->entityLayer->addChild(this->playerLayer);
 	this->entityLayer->addChild(this->enemyLayer);
 
@@ -81,19 +54,55 @@ void Level::update(float dt)
 {
 	Scene::update(dt);
 
+	float widthOffset = Director::getInstance()->getVisibleSize().width / 2;
+	float playerXOffset = this->player->getPositionX() - this->player->GetWidth();
+
+	this->playerLayer->setPositionX(widthOffset - playerXOffset);
+	this->tileLayer->setPositionX(widthOffset - playerXOffset);
+
+	float heightOffset = Director::getInstance()->getVisibleSize().height / 2;
+	float playerYOffset = this->player->getPositionY() - this->player->GetHeight();
+
+	this->playerLayer->setPositionY(heightOffset - playerYOffset);
+	this->tileLayer->setPositionY(heightOffset - playerYOffset);
+}
+
+void Level::LoadLevel()
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
+	this->backGround = Sprite::create(Resources::Background_GrassBG);
+	this->backGround->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->backGround->getContentSize().height / 2));
+
+
+	TMXTiledMap* map = TMXTiledMap::create(Resources::Levels_Debug);
+	TMXLayer* midGround = map->getLayer("midground");
+	ValueVector objects = map->getObjectGroup("objects")->getObjects();
+
+	// Create entities
+	for (int index = 0; index < size(objects); index++)
 	{
-		float widthOffset = Director::getInstance()->getVisibleSize().width / 2;
-		float playerXOffset = this->player->getPositionX() - this->player->GetWidth();
+		if (objects[index].getType() != Value::Type::MAP)
+		{
+			continue;
+		}
 
-		this->playerLayer->setPositionX(widthOffset - playerXOffset);
-		this->tileLayer->setPositionX(widthOffset - playerXOffset);
+		ValueMap object = objects[index].asValueMap();
+		string type = object.at("type").asString();
 
-		float heightOffset = Director::getInstance()->getVisibleSize().height / 2;
-		float playerYOffset = this->player->getPositionY() - this->player->GetHeight();
-
-		this->playerLayer->setPositionY(heightOffset - playerYOffset);
-		this->tileLayer->setPositionY(heightOffset - playerYOffset);
+		if (type == "spawn")
+		{
+			this->player = new Player();
+			this->player->setPosition(Vec2(object.at("x").asFloat(), object.at("y").asFloat()));
+			this->playerLayer->addChild(this->player);
+		}
 	}
+
+	// Create midground
+	TileCollision::InitializeCollision(map, midGround);
+
+	this->tileLayer->addChild(map);
 }
 
 void Level::InitializeListeners()
