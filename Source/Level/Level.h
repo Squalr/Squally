@@ -22,6 +22,8 @@ protected:
 	Layer * playerLayer;
 	Layer * enemyLayer;
 
+	Layer * environmentLayer;
+
 	Player * player;
 	Sprite * backGround;
 	PauseMenu * pauseMenu;

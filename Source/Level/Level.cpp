@@ -20,6 +20,7 @@ Level::Level()
 	this->entityLayer = Layer::create();
 	this->playerLayer = Layer::create();
 	this->enemyLayer = Layer::create();
+	this->environmentLayer = Layer::create();
 
 	this->pauseMenu = new PauseMenu();
 
@@ -32,6 +33,7 @@ Level::Level()
 	this->addChild(this->backGroundLayer);
 	this->addChild(this->tileLayer);
 	this->addChild(this->entityLayer);
+	this->addChild(this->environmentLayer);
 
 	this->scheduleUpdate();
 }
@@ -74,6 +76,7 @@ void Level::LoadLevel()
 	this->backGround = Sprite::create(Resources::Background_GrassBG);
 	this->backGround->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->backGround->getContentSize().height / 2));
 
+	this->environmentLayer->addChild(ParticleRain::create());
 
 	TMXTiledMap* map = TMXTiledMap::create(Resources::Levels_Debug);
 	TMXLayer* background = map->getLayer("background");
