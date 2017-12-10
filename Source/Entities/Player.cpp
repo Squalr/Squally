@@ -1,7 +1,8 @@
 #include "Player.h"
 #include "Resources.h"
-#include "../Collision/CollisionGroups.h"
+#include "../Collision/TileCollision.h"
 #include "cocos2d.h"
+#include <typeinfo>
 
 using namespace cocos2d;
 
@@ -14,9 +15,9 @@ Player::Player()
 	Entity::Entity();
 
 	this->sprite = Sprite::create(Resources::Sprites_Player_Idle);
-	this->physicsBody = PhysicsBody::createCircle(this->sprite->getContentSize().width / 2, PhysicsMaterial(0.0f, 0.0f, 0.0f));
+	this->physicsBody = PhysicsBody::createCircle(this->sprite->getContentSize().width / 2, PhysicsMaterial(1.0f, 1.0f, 1.0f));
 	this->physicsBody->setRotationEnable(false);
-	this->physicsBody->setContactTestBitmask(CollisionGroups::CollisionGroupsEnum::Entity);
+	this->physicsBody->setContactTestBitmask(TileCollision::CollisionGroupsEnum::Entity);
 
 	this->addChild(this->sprite);
 	this->setPhysicsBody(this->physicsBody);
@@ -45,6 +46,10 @@ void Player::InitializeListeners()
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
 
 	contactListener->onContactBegin = CC_CALLBACK_1(Player::OnContactBegin, this);
+	contactListener->onContactPostSolve = CC_CALLBACK_1(Player::OnContactPostSolve, this);
+	contactListener->onContactPreSolve = CC_CALLBACK_1(Player::OnContactPreSolve, this);
+	contactListener->onContactSeparate = CC_CALLBACK_1(Player::OnContactSeparate, this);
+
 	listener->onKeyPressed = CC_CALLBACK_2(Player::OnKeyPressed, this);
 	listener->onKeyReleased = CC_CALLBACK_2(Player::OnKeyReleased, this);
 
@@ -54,29 +59,146 @@ void Player::InitializeListeners()
 
 bool Player::OnContactBegin(PhysicsContact &contact)
 {
-	Node* nodeA = contact.getShapeA()->getBody()->getNode();
-	Node* nodeB = contact.getShapeB()->getBody()->getNode();
-
-	if (nodeA != this && nodeB != this)
+	if (contact.getShapeA()->getBody()->getNode() != this && contact.getShapeB()->getBody()->getNode() != this)
 	{
 		return true;
 	}
 
-	for (int index = 0; index < size(contact.getContactData()->points); index++)
+	PhysicsShape* other = nullptr;
+
+	if (contact.getShapeA()->getBody()->getNode() == this)
 	{
-		Vec2 contactPoint = contact.getContactData()->points[index];
-
-		float end = this->getPositionX() + this->GetWidth();
-		float x = this->getPositionX();
-		float y = this->getPositionY();
-
-		if (contactPoint.y > y)
-		{
-			canJump = true;
-		}
+		other = contact.getShapeB();
+	}
+	else
+	{
+		other = contact.getShapeA();
 	}
 
-	return true;
+	switch (other->getContactTestBitmask())
+	{
+	case TileCollision::CollisionGroupsEnum::Solid:
+		return true;
+	case TileCollision::CollisionGroupsEnum::Water:
+		this->physicsBody->setLinearDamping(8.0f);
+		return false;
+	case TileCollision::CollisionGroupsEnum::PassThrough:
+		if (this->physicsBody->getVelocity().y > 0)
+		{
+			return false;
+		}
+		return true;
+	default:
+		return true;
+	}
+}
+
+bool Player::OnContactPostSolve(PhysicsContact &contact)
+{
+	if (contact.getShapeA()->getBody()->getNode() != this && contact.getShapeB()->getBody()->getNode() != this)
+	{
+		return true;
+	}
+
+	PhysicsShape* other = nullptr;
+
+	if (contact.getShapeA()->getBody()->getNode() == this)
+	{
+		other = contact.getShapeB();
+	}
+	else
+	{
+		other = contact.getShapeA();
+	}
+
+	switch (other->getContactTestBitmask())
+	{
+	case TileCollision::CollisionGroupsEnum::Solid:
+		return true;
+	case TileCollision::CollisionGroupsEnum::Water:
+		this->physicsBody->setLinearDamping(2.0f);
+		return false;
+	case TileCollision::CollisionGroupsEnum::PassThrough:
+		if (this->physicsBody->getVelocity().y > 0)
+		{
+			return false;
+		}
+		return true;
+	default:
+		return true;
+	}
+}
+
+bool Player::OnContactPreSolve(PhysicsContact &contact)
+{
+	if (contact.getShapeA()->getBody()->getNode() != this && contact.getShapeB()->getBody()->getNode() != this)
+	{
+		return true;
+	}
+
+	PhysicsShape* other = nullptr;
+
+	if (contact.getShapeA()->getBody()->getNode() == this)
+	{
+		other = contact.getShapeB();
+	}
+	else
+	{
+		other = contact.getShapeA();
+	}
+
+	switch (other->getContactTestBitmask())
+	{
+	case TileCollision::CollisionGroupsEnum::Solid:
+		return true;
+	case TileCollision::CollisionGroupsEnum::Water:
+		this->physicsBody->setLinearDamping(2.0f);
+		return false;
+	case TileCollision::CollisionGroupsEnum::PassThrough:
+		if (this->physicsBody->getVelocity().y > 0)
+		{
+			return false;
+		}
+		return true;
+	default:
+		return true;
+	}
+}
+
+bool Player::OnContactSeparate(PhysicsContact &contact)
+{
+	if (contact.getShapeA()->getBody()->getNode() != this && contact.getShapeB()->getBody()->getNode() != this)
+	{
+		return true;
+	}
+
+	PhysicsShape* other = nullptr;
+
+	if (contact.getShapeA()->getBody()->getNode() == this)
+	{
+		other = contact.getShapeB();
+	}
+	else
+	{
+		other = contact.getShapeA();
+	}
+
+	switch (other->getContactTestBitmask())
+	{
+	case TileCollision::CollisionGroupsEnum::Solid:
+		return true;
+	case TileCollision::CollisionGroupsEnum::Water:
+		this->physicsBody->setLinearDamping(2.0f);
+		return false;
+	case TileCollision::CollisionGroupsEnum::PassThrough:
+		if (this->physicsBody->getVelocity().y > 0)
+		{
+			return false;
+		}
+		return true;
+	default:
+		return true;
+	}
 }
 
 void Player::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
