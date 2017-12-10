@@ -17,7 +17,6 @@ private:
 	void InitializeListeners();
 	void OnMouseMove(EventMouse* event);
 
-	Sprite* currentMouseSprite;
 	Sprite* mouseSpriteIdle;
 	Sprite* mouseSpritePoint;
 };

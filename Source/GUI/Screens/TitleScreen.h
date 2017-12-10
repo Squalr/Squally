@@ -13,8 +13,9 @@ public:
 	~TitleScreen();
 
 private:
+	void OnMenuClick(MenuLabel* menuLabel);
+
 	void InitializeListeners();
-	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void OnMouseMove(EventMouse* event);
 
 	Mouse* mouse;
@@ -26,5 +27,7 @@ private:
 	MenuLabel* tutorialModeLabel;
 	MenuLabel* optionsLabel;
 	MenuLabel* exitLabel;
+
+	std::vector<MenuLabel*>* clickableMenus;
 };
 
