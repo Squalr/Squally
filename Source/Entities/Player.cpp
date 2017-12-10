@@ -205,6 +205,7 @@ void Player::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode)
 	{
+	case EventKeyboard::KeyCode::KEY_SPACE:
 	case EventKeyboard::KeyCode::KEY_UP_ARROW:
 	case EventKeyboard::KeyCode::KEY_W:
 		// if (canjump)
@@ -234,6 +235,7 @@ void Player::OnKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode)
 	{
+	case EventKeyboard::KeyCode::KEY_SPACE:
 	case EventKeyboard::KeyCode::KEY_UP_ARROW:
 	case EventKeyboard::KeyCode::KEY_W:
 		break;

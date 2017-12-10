@@ -8,9 +8,10 @@ Mouse::Mouse()
 	this->mouseSpritePoint = Sprite::create(Resources::GUI_MousePoint);
 	this->mouseSpritePoint->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->currentMouseSprite = mouseSpriteIdle;
+	this->mouseSpritePoint->setVisible(false);
 
 	this->addChild(this->mouseSpriteIdle);
+	this->addChild(this->mouseSpritePoint);
 }
 
 Mouse::~Mouse()
@@ -21,11 +22,13 @@ void Mouse::SetCanClick(bool canClick)
 {
 	if (canClick)
 	{
-		this->currentMouseSprite = mouseSpritePoint;
+		this->mouseSpriteIdle->setVisible(false);
+		this->mouseSpritePoint->setVisible(true);
 	}
 	else
 	{
-		this->currentMouseSprite = mouseSpriteIdle;
+		this->mouseSpriteIdle->setVisible(true);
+		this->mouseSpritePoint->setVisible(false);
 	}
 }
 
@@ -47,5 +50,6 @@ void Mouse::InitializeListeners()
 
 void Mouse::OnMouseMove(EventMouse* event)
 {
-	this->currentMouseSprite->setPosition(Vec2(event->getCursorX(), event->getCursorY()));
+	this->mouseSpriteIdle->setPosition(Vec2(event->getCursorX(), event->getCursorY()));
+	this->mouseSpritePoint->setPosition(Vec2(event->getCursorX(), event->getCursorY()));
 }

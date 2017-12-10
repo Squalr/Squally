@@ -13,13 +13,14 @@ TitleScreen::TitleScreen(function<void()> gameStartCallback)
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	this->background = Sprite::create(Resources::GUI_TitleScreen_TitleScreen);
-	this->titleLabel = new MenuLabel("Squally", Resources::Fonts_Marker_Felt, titleFontSize);
-	this->storyModeLabel = new MenuLabel("Story Mode", Resources::Fonts_Marker_Felt, menuFontSize);
-	this->tutorialModeLabel = new MenuLabel("Tutorial Mode", Resources::Fonts_Marker_Felt, menuFontSize);
-	this->optionsLabel = new MenuLabel("Options", Resources::Fonts_Marker_Felt, menuFontSize);
-	this->exitLabel = new MenuLabel("Exit", Resources::Fonts_Marker_Felt, menuFontSize);
+	this->titleLabel = new MenuLabel("Squally", Resources::Fonts_Marker_Felt, titleFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+	this->storyModeLabel = new MenuLabel("Story Mode", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+	this->tutorialModeLabel = new MenuLabel("Tutorial Mode", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+	this->optionsLabel = new MenuLabel("Options", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+	this->exitLabel = new MenuLabel("Exit", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 
 	this->mouse = new Mouse();
+	this->clickableMenus = new vector<MenuLabel*>();
 
 	this->titleLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->titleLabel->getContentSize().height + menuOffset - spacing * 1.5));
 	this->storyModeLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->storyModeLabel->getContentSize().height / 2 + menuOffset + spacing * 0));
@@ -27,6 +28,11 @@ TitleScreen::TitleScreen(function<void()> gameStartCallback)
 	this->optionsLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->tutorialModeLabel->getContentSize().height / 2 + menuOffset + spacing * 2));
 	this->exitLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->tutorialModeLabel->getContentSize().height / 2 + menuOffset + spacing * 3));
 	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+
+	this->clickableMenus->push_back(this->storyModeLabel);
+	this->clickableMenus->push_back(this->tutorialModeLabel);
+	this->clickableMenus->push_back(this->optionsLabel);
+	this->clickableMenus->push_back(this->exitLabel);
 
 	this->addChild(this->background);
 	this->addChild(this->titleLabel);
@@ -42,31 +48,45 @@ TitleScreen::TitleScreen(function<void()> gameStartCallback)
 TitleScreen::~TitleScreen()
 {
 	delete(this->mouse);
+
+	for (std::vector<MenuLabel*>::iterator it = this->clickableMenus->begin(); it != this->clickableMenus->end(); ++it)
+	{
+		MenuLabel* label = *it;
+		delete(label);
+	}
+
+	delete(this->clickableMenus);
+}
+
+void TitleScreen::OnMenuClick(MenuLabel* menuLabel)
+{
+	if (menuLabel == storyModeLabel)
+	{
+		theGameStartCallback();
+	}
 }
 
 void TitleScreen::InitializeListeners()
 {
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
-	EventListenerKeyboard* listener = EventListenerKeyboard::create();
 
-	listener->onKeyPressed = CC_CALLBACK_2(TitleScreen::OnKeyPressed, this);
 	mouseListener->onMouseMove = CC_CALLBACK_1(TitleScreen::OnMouseMove, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-}
-
-void TitleScreen::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	switch (keyCode) {
-	case EventKeyboard::KeyCode::KEY_ENTER:
-		theGameStartCallback();
-		break;
-	}
 }
 
 void TitleScreen::OnMouseMove(EventMouse* event)
 {
+	this->mouse->SetCanClick(false);
 
+	for (std::vector<MenuLabel*>::iterator it = this->clickableMenus->begin(); it != this->clickableMenus->end(); ++it)
+	{
+		MenuLabel* label = *it;
+
+		if (label->Intersects(event->getCursorX(), event->getCursorY()))
+		{
+			this->mouse->SetCanClick(true);
+			return;
+		}
+	}
 }
