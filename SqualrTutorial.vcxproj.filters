@@ -63,6 +63,18 @@
     <ClCompile Include="Source\Collision\TileCollision.cpp">
       <Filter>Source\Collision</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GUI\Mouse.cpp">
+      <Filter>Source\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Screens\StoryMap.cpp">
+      <Filter>Source\GUI\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Screens\TutorialMap.cpp">
+      <Filter>Source\GUI\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\MenuLabel.cpp">
+      <Filter>Source\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -100,6 +112,18 @@
     </ClInclude>
     <ClInclude Include="Source\Collision\TileCollision.h">
       <Filter>Source\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Mouse.h">
+      <Filter>Source\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Screens\TutorialMap.h">
+      <Filter>Source\GUI\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Screens\StoryMap.h">
+      <Filter>Source\GUI\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\MenuLabel.h">
+      <Filter>Source\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

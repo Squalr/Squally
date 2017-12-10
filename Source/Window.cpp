@@ -62,6 +62,7 @@ bool Window::applicationDidFinishLaunching()
 	if (!glview) {
 		glview = GLViewImpl::createWithRect("Squalr Tutorial", Rect(0, 0, mediumResolutionSize.width, mediumResolutionSize.height));
 		director->setOpenGLView(glview);
+		glview->setCursorVisible(false);
 	}
 
 	// turn on display FPS
