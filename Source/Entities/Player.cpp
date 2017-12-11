@@ -1,14 +1,4 @@
 #include "Player.h"
-#include "Resources.h"
-#include "../Collision/TileCollision.h"
-#include "cocos2d.h"
-#include <typeinfo>
-
-using namespace cocos2d;
-
-static int health;
-
-bool canJump;
 
 Player::Player()
 {

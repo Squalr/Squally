@@ -1,6 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 #include "Entity.h"
+#include "Resources.h"
+#include "Collision/TileCollision.h"
 
 using namespace cocos2d;
 
@@ -25,5 +27,8 @@ private:
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void OnKeyReleased(EventKeyboard::KeyCode keyCode, Event* event);
 	void InitializeListeners();
+
+	static int health;
+	bool canJump;
 };
 

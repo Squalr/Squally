@@ -1,18 +1,22 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
-#include "GUI/Mouse.h"
 
 using namespace cocos2d;
 
-class StoryMap : public Scene
+class OptionsMenu : public Scene
 {
 public:
-	StoryMap();
-	~StoryMap();
+	OptionsMenu();
+	~OptionsMenu();
+
+	void onEnter() override;
 
 private:
 	void InitializeListeners();
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void OnExitGame(Ref* pSender);
+
+	MenuItemImage* closeItem;
 };
 

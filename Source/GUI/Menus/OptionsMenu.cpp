@@ -1,11 +1,11 @@
-#include "PauseMenu.h"
+#include "OptionsMenu.h"
 
-PauseMenu::PauseMenu()
+OptionsMenu::OptionsMenu()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	Label* label = Label::createWithTTF("Paused", Resources::Fonts_Marker_Felt, 24);
+	Label* label = Label::createWithTTF("Options", Resources::Fonts_Marker_Felt, 24);
 	Menu* menu = Menu::create();
 
 	label->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - label->getContentSize().height));
@@ -20,29 +20,29 @@ PauseMenu::PauseMenu()
 	this->addChild(menu);
 }
 
-PauseMenu::~PauseMenu()
+OptionsMenu::~OptionsMenu()
 {
 }
 
-void PauseMenu::onEnter()
+void OptionsMenu::onEnter()
 {
 	Scene::onEnter();
 
 	this->InitializeListeners();
 }
 
-void PauseMenu::InitializeListeners()
+void OptionsMenu::InitializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
-	listener->onKeyPressed = CC_CALLBACK_2(PauseMenu::OnKeyPressed, this);
+	listener->onKeyPressed = CC_CALLBACK_2(OptionsMenu::OnKeyPressed, this);
 
-	this->closeItem->setCallback(CC_CALLBACK_1(PauseMenu::OnExitGame, this));
+	this->closeItem->setCallback(CC_CALLBACK_1(OptionsMenu::OnExitGame, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
 // Implementation of the keyboard event callback function prototype
-void PauseMenu::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+void OptionsMenu::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode)
 	{
@@ -52,7 +52,7 @@ void PauseMenu::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void PauseMenu::OnExitGame(Ref* pSender)
+void OptionsMenu::OnExitGame(Ref* pSender)
 {
 	// Close the cocos2d-x game scene and quit the application
 	Director::getInstance()->end();
