@@ -1,5 +1,6 @@
 #pragma once
 #include "cocos2d.h"
+#include "Config\ConfigManager.h"
 #include "Game.h"
 #include "audio/include/SimpleAudioEngine.h"
 
@@ -37,10 +38,4 @@ public:
 	@param The pointer of the application.
 	*/
 	virtual void applicationWillEnterForeground();
-
-private:
-	const Size* designResolutionSize = new Size(480, 320);
-	const Size* smallResolutionSize = new Size(480, 320);
-	const Size* mediumResolutionSize = new Size(1024, 768);
-	const Size* largeResolutionSize = new Size(2048, 1536);
 };

@@ -149,6 +149,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Collision\TileCollision.cpp" />
+    <ClCompile Include="Source\Config\ConfigManager.cpp" />
     <ClCompile Include="Source\Entities\Enemy.cpp" />
     <ClCompile Include="Source\Entities\Entity.cpp" />
     <ClCompile Include="Source\Entities\Player.cpp" />
@@ -168,6 +169,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Collision\TileCollision.h" />
+    <ClInclude Include="Source\Config\ConfigManager.h" />
     <ClInclude Include="Source\Entities\Enemy.h" />
     <ClInclude Include="Source\Entities\Entity.h" />
     <ClInclude Include="Source\Entities\Player.h" />

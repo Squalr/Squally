@@ -25,6 +25,9 @@
     <Filter Include="Source\Collision">
       <UniqueIdentifier>{906f6fe6-3ec0-4675-95e4-7713b38b0f19}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Config">
+      <UniqueIdentifier>{ad777ac4-678a-40fd-823b-e0b3188ba415}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -78,6 +81,9 @@
     <ClCompile Include="Source\GUI\Menus\OptionsMenu.cpp">
       <Filter>Source\GUI\Menus</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Config\ConfigManager.cpp">
+      <Filter>Source\Config</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -130,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\Menus\OptionsMenu.h">
       <Filter>Source\GUI\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Config\ConfigManager.h">
+      <Filter>Source\Config</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

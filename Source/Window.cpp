@@ -27,11 +27,23 @@ static int register_all_packages()
 bool Window::applicationDidFinishLaunching()
 {
 	Director* director = Director::getInstance();
-	GLView* glview = director->getOpenGLView();
+	GLViewImpl* glview;
 
-	glview = GLViewImpl::createWithFullScreen("Squalr Tutorial");
-	// glview = GLViewImpl::createWithRect("Squalr Tutorial", Rect(0, 0, this->mediumResolutionSize->width, this->mediumResolutionSize->height));
+	switch (ConfigManager::LoadResolution())
+	{
+	case ConfigManager::ResolutionSetting::R1080x768:
+		glview = GLViewImpl::createWithRect("Squalr Tutorial", Rect(0, 0, ConfigManager::Resolution1024x768->width, ConfigManager::Resolution1024x768->height));
+		break;
+	case ConfigManager::ResolutionSetting::R1920x1080:
+		glview = GLViewImpl::createWithRect("Squalr Tutorial", Rect(0, 0, ConfigManager::Resolution1920x1080->width, ConfigManager::Resolution1920x1080->height));
+		break;
+	case ConfigManager::ResolutionSetting::FullScreen:
+	default:
+		glview = GLViewImpl::createWithFullScreen("Squalr Tutorial");
+		break;
+	}
 
+	ConfigManager::SetGlView(glview);
 	glview->setDesignResolutionSize(glview->getFrameSize().width, glview->getFrameSize().height, ResolutionPolicy::NO_BORDER);
 	director->setOpenGLView(glview);
 	glview->setCursorVisible(false);
