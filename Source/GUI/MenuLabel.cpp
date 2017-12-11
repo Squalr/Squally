@@ -38,6 +38,11 @@ void MenuLabel::InitializeListeners()
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
 
+Size MenuLabel::GetSize()
+{
+	return this->label->getContentSize();
+}
+
 bool MenuLabel::Intersects(float mouseX, float mouseY)
 {
 	Rect mouseRect = Rect(mouseX, mouseY, 1.0f, 1.0f);

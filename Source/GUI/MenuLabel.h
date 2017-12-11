@@ -11,6 +11,7 @@ public:
 	MenuLabel(std::string labelText, std::string fontResource, float fontSize, std::function<void(MenuLabel*)> onMouseClick);
 	~MenuLabel();
 
+	Size GetSize();
 	bool Intersects(float mouseX, float mouseY);
 
 private:

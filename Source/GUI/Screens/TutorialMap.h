@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "GUI/Mouse.h"
+#include "GUI/MenuLabel.h"
 
 using namespace cocos2d;
 
@@ -14,5 +15,11 @@ public:
 private:
 	void InitializeListeners();
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+
+	Mouse* mouse;
+
+	Sprite* background;
+	MenuLabel* titleLabel;
+	MenuLabel* infoLabel;
 };
 
