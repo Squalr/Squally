@@ -1,8 +1,4 @@
 #include "Level.h"
-#include "Resources.h"
-#include "../Collision/TileCollision.h"
-#include "../Entities/Player.h"
-#include "../GUI/Menus/PauseMenu.h"
 
 Level::Level()
 {

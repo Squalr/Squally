@@ -1,5 +1,4 @@
 #include "Mouse.h"
-#include "Resources.h"
 
 Mouse::Mouse()
 {

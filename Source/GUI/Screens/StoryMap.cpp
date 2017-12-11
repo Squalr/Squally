@@ -1,6 +1,4 @@
 #include "StoryMap.h"
-#include "Resources.h"
-#include "../Mouse.h"
 
 StoryMap::StoryMap()
 {

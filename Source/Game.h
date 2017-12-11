@@ -1,5 +1,6 @@
 #pragma once
 #include "cocos2d.h"
+#include "Resources.h"
 #include "GUI/Screens/TitleScreen.h"
 #include "Level/Level.h"
 
@@ -12,7 +13,5 @@ public:
 	~Game();
 
 private:
-	void GameStart();
-
 	TitleScreen * titleScreen;
 };

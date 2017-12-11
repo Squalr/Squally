@@ -1,9 +1,4 @@
 #include "MenuLabel.h"
-#include "Resources.h"
-
-const Color4B highlightColor(255, 255, 168, 255);
-const float fontOutlineSize = 2.0f;
-const float highlightOutlineSize = 4.0f;
 
 MenuLabel::MenuLabel(std::string labelText, std::string fontResource, float fontSize) : MenuLabel(labelText, fontResource, fontSize, nullptr)
 {
@@ -66,7 +61,7 @@ void MenuLabel::OnMouseMove(EventMouse* event)
 	{
 		if (this->Intersects(event->getCursorX(), event->getCursorY()))
 		{
-			this->labelHighlighted->enableOutline(highlightColor, highlightOutlineSize);
+			this->labelHighlighted->enableOutline(*highlightColor, highlightOutlineSize);
 		}
 		else
 		{

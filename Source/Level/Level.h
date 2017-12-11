@@ -1,7 +1,9 @@
 #pragma once
 #include "cocos2d.h"
-#include "../Entities/Player.h"
-#include "../GUI/Menus/PauseMenu.h"
+#include "Resources.h"
+#include "GUI/Menus/PauseMenu.h"
+#include "Collision/TileCollision.h"
+#include "Entities/Player.h"
 
 using namespace cocos2d;
 
