@@ -21,5 +21,8 @@ private:
 	Sprite* background;
 	MenuLabel* titleLabel;
 	MenuLabel* infoLabel;
+
+	const float titleFontSize = 48.0f;
+	const float infoFontSize = 32.0f;
 };
 
