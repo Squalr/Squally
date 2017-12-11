@@ -38,4 +38,7 @@ public:
 	@param The pointer of the application.
 	*/
 	virtual void applicationWillEnterForeground();
+
+private:
+	std::string windowTitle = "Squalr Tutorial";
 };

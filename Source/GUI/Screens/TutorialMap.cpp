@@ -39,11 +39,11 @@ void TutorialMap::InitializeListeners()
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-// Implementation of the keyboard event callback function prototype
 void TutorialMap::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode) {
-	case EventKeyboard::KeyCode::KEY_ENTER:
+	case EventKeyboard::KeyCode::KEY_ESCAPE:
+		Director::getInstance()->replaceScene(new TitleScreen());
 		break;
 	}
 }
