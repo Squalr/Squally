@@ -5,16 +5,19 @@ TutorialMap::TutorialMap()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	Label* titleLabel = Label::createWithTTF("Squalr Tutorial", Resources::Fonts_Marker_Felt, 24);
-	Label* startLabel = Label::createWithTTF("Press Enter to Start", Resources::Fonts_Marker_Felt, 16);
+	this->titleLabel = new MenuLabel("Hacking Tutorial", Resources::Fonts_Marker_Felt, 16);
+	this->infoLabel = new MenuLabel("Level 1 - Exact Value Scan", Resources::Fonts_Marker_Felt, 8);
+	this->background = Sprite::create(Resources::GUI_WorldMaps_TutorialMap);
+	this->mouse = new Mouse();
 
-	titleLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - titleLabel->getContentSize().height));
-	startLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - startLabel->getContentSize().height / 2));
+	this->titleLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->titleLabel->GetSize().height / 2));
+	this->infoLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->infoLabel->GetSize().height / 2 - 24));
+	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 
-	this->addChild(Sprite::create(Resources::GUI_TitleScreen_TitleScreen));
-	this->addChild(titleLabel);
-	this->addChild(startLabel);
-	this->addChild(new Mouse());
+	this->addChild(this->background);
+	this->addChild(this->titleLabel);
+	this->addChild(this->infoLabel);
+	this->addChild(this->mouse);
 
 	this->InitializeListeners();
 }
