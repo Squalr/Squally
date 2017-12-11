@@ -1,6 +1,9 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "StoryMap.h"
+#include "TutorialMap.h"
+#include "GUI/Menus/OptionsMenu.h"
 #include "GUI/MenuLabel.h"
 #include "GUI/Mouse.h"
 
@@ -9,7 +12,7 @@ using namespace cocos2d;
 class TitleScreen : public Scene
 {
 public:
-	TitleScreen(std::function<void()> gameStartCallback);
+	TitleScreen();
 	~TitleScreen();
 
 private:
@@ -19,7 +22,6 @@ private:
 	void OnMouseMove(EventMouse* event);
 
 	Mouse* mouse;
-	function<void()> theGameStartCallback;
 	Sprite* background;
 
 	MenuLabel* titleLabel;
@@ -29,5 +31,10 @@ private:
 	MenuLabel* exitLabel;
 
 	std::vector<MenuLabel*>* clickableMenus;
+
+	const float titleFontSize = 24.0f;
+	const float menuFontSize = 16.0f;
+	const float menuOffset = 64.0f;
+	const float spacing = -40.0f;
 };
 

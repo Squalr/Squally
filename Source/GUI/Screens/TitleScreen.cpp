@@ -1,19 +1,12 @@
 #include "TitleScreen.h"
 
-const float titleFontSize = 24.0f;
-const float menuFontSize = 16.0f;
-const float menuOffset = 64.0f;
-const float spacing = -40.0f;
-
-TitleScreen::TitleScreen(function<void()> gameStartCallback)
+TitleScreen::TitleScreen()
 {
-	this->theGameStartCallback = gameStartCallback;
-
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	this->background = Sprite::create(Resources::GUI_TitleScreen_TitleScreen);
-	this->titleLabel = new MenuLabel("Squally", Resources::Fonts_Marker_Felt, titleFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+	this->titleLabel = new MenuLabel("Squally", Resources::Fonts_Marker_Felt, titleFontSize);
 	this->storyModeLabel = new MenuLabel("Story Mode", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 	this->tutorialModeLabel = new MenuLabel("Tutorial Mode", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 	this->optionsLabel = new MenuLabel("Options", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
@@ -62,7 +55,19 @@ void TitleScreen::OnMenuClick(MenuLabel* menuLabel)
 {
 	if (menuLabel == storyModeLabel)
 	{
-		theGameStartCallback();
+		Director::getInstance()->replaceScene(new StoryMap());
+	}
+	else if (menuLabel == tutorialModeLabel)
+	{
+		Director::getInstance()->replaceScene(new TutorialMap());
+	}
+	else if (menuLabel == optionsLabel)
+	{
+		Director::getInstance()->replaceScene(new OptionsMenu());
+	}
+	else if (menuLabel == exitLabel)
+	{
+		CCDirector::getInstance()->end();
 	}
 }
 

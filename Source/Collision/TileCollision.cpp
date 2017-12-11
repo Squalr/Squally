@@ -1,7 +1,5 @@
 #include "TileCollision.h"
 
-using namespace cocos2d;
-
 void TileCollision::InitializeCollision(TMXTiledMap* map, TMXLayer* layer, TileCollision::CollisionGroupsEnum allowedTypes)
 {
 	for (int x = 0; x < layer->getLayerSize().width; x++)

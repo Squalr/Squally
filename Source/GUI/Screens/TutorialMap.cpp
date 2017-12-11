@@ -1,6 +1,4 @@
 #include "TutorialMap.h"
-#include "Resources.h"
-#include "../Mouse.h"
 
 TutorialMap::TutorialMap()
 {
