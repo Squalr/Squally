@@ -4,6 +4,7 @@
 #include "Config/ConfigManager.h"
 #include "GUI/Mouse.h"
 #include "GUI/MenuLabel.h"
+#include "GUI/Screens/TitleScreen.h"
 
 using namespace cocos2d;
 
@@ -15,8 +16,10 @@ public:
 
 private:
 	void onEnter() override;
-	void InitializeListeners();
 	void OnMenuClick(MenuLabel* menuLabel);
+	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void InitializeListeners();
+	void InitializePositions();
 
 	Mouse* mouse;
 	Sprite* background;
@@ -31,6 +34,6 @@ private:
 	const float titleFontSize = 48.0f;
 	const float menuFontSize = 32.0f;
 	const float menuOffset = 64.0f;
-	const float spacing = -40.0f;
+	const float spacing = -64.0f;
 };
 

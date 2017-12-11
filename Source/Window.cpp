@@ -32,24 +32,23 @@ bool Window::applicationDidFinishLaunching()
 	switch (ConfigManager::LoadResolution())
 	{
 	case ConfigManager::ResolutionSetting::R1080x768:
-		glview = GLViewImpl::createWithRect("Squalr Tutorial", Rect(0, 0, ConfigManager::Resolution1024x768->width, ConfigManager::Resolution1024x768->height));
+		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, ConfigManager::Resolution1024x768->width, ConfigManager::Resolution1024x768->height));
 		break;
 	case ConfigManager::ResolutionSetting::R1920x1080:
-		glview = GLViewImpl::createWithRect("Squalr Tutorial", Rect(0, 0, ConfigManager::Resolution1920x1080->width, ConfigManager::Resolution1920x1080->height));
+		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, ConfigManager::Resolution1920x1080->width, ConfigManager::Resolution1920x1080->height));
 		break;
 	case ConfigManager::ResolutionSetting::FullScreen:
 	default:
-		glview = GLViewImpl::createWithFullScreen("Squalr Tutorial");
+		glview = GLViewImpl::createWithFullScreen(this->windowTitle);
 		break;
 	}
 
-	ConfigManager::SetGlView(glview);
 	glview->setDesignResolutionSize(glview->getFrameSize().width, glview->getFrameSize().height, ResolutionPolicy::NO_BORDER);
 	director->setOpenGLView(glview);
 	glview->setCursorVisible(false);
 
-	// Turn on display FPS
-	director->setDisplayStats(true);
+	// Debugging: Turn on display FPS
+	// director->setDisplayStats(true);
 
 	// Start the game
 	Game* game = new Game();
