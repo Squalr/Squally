@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "Config/ConfigManager.h"
 #include "GUI/Mouse.h"
 #include "GUI/MenuLabel.h"
 
@@ -16,9 +17,6 @@ private:
 	void onEnter() override;
 	void InitializeListeners();
 	void OnMenuClick(MenuLabel* menuLabel);
-
-	void SetFullScreen();
-	void SetWindowed();
 
 	Mouse* mouse;
 	Sprite* background;

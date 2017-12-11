@@ -45,20 +45,6 @@ void OptionsMenu::onEnter()
 	this->InitializeListeners();
 }
 
-void OptionsMenu::SetFullScreen()
-{
-	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-	const GLFWvidmode* videoMode = glfwGetVideoMode(monitor);
-	Director::getInstance()->getOpenGLView()->setFrameSize(videoMode->width, videoMode->height);
-}
-
-void OptionsMenu::SetWindowed()
-{
-	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-	const GLFWvidmode* videoMode = glfwGetVideoMode(monitor);
-	Director::getInstance()->getOpenGLView()->setFrameSize(videoMode->width, videoMode->height);
-}
-
 void OptionsMenu::InitializeListeners()
 {
 }
@@ -67,10 +53,10 @@ void OptionsMenu::OnMenuClick(MenuLabel* menuLabel)
 {
 	if (menuLabel == fullScreenLabel)
 	{
-		this->SetFullScreen();
+		ConfigManager::SetResolution(ConfigManager::ResolutionSetting::FullScreen);
 	}
-	else if (menuLabel == fullScreenLabel)
+	else if (menuLabel == windowedLabel)
 	{
-		this->SetWindowed();
+		ConfigManager::SetResolution(ConfigManager::ResolutionSetting::R1080x768);
 	}
 }
