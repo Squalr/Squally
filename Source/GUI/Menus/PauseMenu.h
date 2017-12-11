@@ -10,9 +10,8 @@ public:
 	PauseMenu();
 	~PauseMenu();
 
-	void onEnter() override;
-
 private:
+	void onEnter() override;
 	void InitializeListeners();
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void OnExitGame(Ref* pSender);

@@ -18,12 +18,17 @@ TutorialMap::TutorialMap()
 	this->addChild(this->titleLabel);
 	this->addChild(this->infoLabel);
 	this->addChild(this->mouse);
-
-	this->InitializeListeners();
 }
 
 TutorialMap::~TutorialMap()
 {
+}
+
+void TutorialMap::onEnter()
+{
+	Scene::onEnter();
+
+	this->InitializeListeners();
 }
 
 void TutorialMap::InitializeListeners()

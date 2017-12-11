@@ -12,9 +12,8 @@ public:
 
 	void SetCanClick(bool canClick);
 
-	void onEnter() override;
-
 private:
+	void onEnter() override;
 	void InitializeListeners();
 	void OnMouseMove(EventMouse* event);
 
