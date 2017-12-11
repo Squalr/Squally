@@ -35,6 +35,7 @@ void StoryMap::onEnter()
 void StoryMap::InitializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+
 	listener->onKeyPressed = CC_CALLBACK_2(StoryMap::OnKeyPressed, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
@@ -44,7 +45,8 @@ void StoryMap::InitializeListeners()
 void StoryMap::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode) {
-	case EventKeyboard::KeyCode::KEY_ENTER:
+	case EventKeyboard::KeyCode::KEY_ESCAPE:
+		Director::getInstance()->replaceScene(new TitleScreen());
 		break;
 	}
 }

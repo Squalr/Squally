@@ -3,29 +3,24 @@
 const Size* ConfigManager::Resolution1024x768 = new Size(1024, 768);
 const Size* ConfigManager::Resolution1920x1080 = new Size(1920, 1080);
 
-GLViewImpl* ConfigManager::glView = nullptr;
-
-void ConfigManager::SetGlView(GLViewImpl* currentGlView)
-{
-	ConfigManager::glView = currentGlView;
-}
-
 void ConfigManager::SetResolution(ResolutionSetting resolution)
 {
+	GLViewImpl* glView = (GLViewImpl*)(Director::getInstance()->getOpenGLView());
+
 	switch (resolution)
 	{
 	case ResolutionSetting::R1080x768:
-		ConfigManager::glView->setWindowed(1080, 768);
+		glView->setWindowed(ConfigManager::Resolution1024x768->width, ConfigManager::Resolution1024x768->height);
 		break;
 	case ResolutionSetting::R1920x1080:
-		ConfigManager::glView->setWindowed(1920, 1080);
+		glView->setWindowed(ConfigManager::Resolution1920x1080->width, ConfigManager::Resolution1920x1080->height);
 		break;
 	case ResolutionSetting::FullScreen:
 	default:
-		ConfigManager::glView->setFullscreen();
+		glView->setFullscreen();
 	}
 
-	ConfigManager::glView->setDesignResolutionSize(ConfigManager::glView->getFrameSize().width, ConfigManager::glView->getFrameSize().height, ResolutionPolicy::NO_BORDER);
+	glView->setDesignResolutionSize(glView->getFrameSize().width, glView->getFrameSize().height, ResolutionPolicy::NO_BORDER);
 
 	ValueMap valueMap;
 
