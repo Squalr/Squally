@@ -18,13 +18,18 @@ StoryMap::StoryMap()
 	this->addChild(this->titleLabel);
 	this->addChild(this->infoLabel);
 	this->addChild(this->mouse);
-
-	this->InitializeListeners();
 }
 
 StoryMap::~StoryMap()
 {
 	delete(this->mouse);
+}
+
+void StoryMap::onEnter()
+{
+	Scene::onEnter();
+
+	this->InitializeListeners();
 }
 
 void StoryMap::InitializeListeners()

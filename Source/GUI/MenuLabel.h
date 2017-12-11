@@ -15,11 +15,10 @@ public:
 	bool Intersects(float mouseX, float mouseY);
 
 private:
+	void onEnter() override;
 	void InitializeListeners();
 	void OnMouseMove(EventMouse* event);
 	void OnMouseDown(EventMouse* event);
-
-	void onEnter() override;
 
 	Label* label;
 	Label* labelHighlighted;

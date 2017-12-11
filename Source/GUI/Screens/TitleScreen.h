@@ -16,9 +16,9 @@ public:
 	~TitleScreen();
 
 private:
-	void OnMenuClick(MenuLabel* menuLabel);
-
+	void onEnter() override;
 	void InitializeListeners();
+	void OnMenuClick(MenuLabel* menuLabel);
 	void OnMouseMove(EventMouse* event);
 
 	Mouse* mouse;
@@ -32,9 +32,9 @@ private:
 
 	std::vector<MenuLabel*>* clickableMenus;
 
-	const float titleFontSize = 48.0f;
-	const float menuFontSize = 32.0f;
-	const float menuOffset = 64.0f;
-	const float spacing = -40.0f;
+	const float titleFontSize = 64.0f;
+	const float menuFontSize = 48.0f;
+	const float menuOffset = 128.0f;
+	const float spacing = -96.0f;
 };
 

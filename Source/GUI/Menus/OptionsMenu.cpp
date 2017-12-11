@@ -5,19 +5,33 @@ OptionsMenu::OptionsMenu()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	Label* label = Label::createWithTTF("Options", Resources::Fonts_Marker_Felt, 24);
-	Menu* menu = Menu::create();
+	this->background = Sprite::create(Resources::GUI_OptionsMenu_OptionsMenu);
+	this->titleLabel = new MenuLabel("Options", Resources::Fonts_Marker_Felt, titleFontSize);
+	this->fullScreenLabel = new MenuLabel("Full Screen Mode", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(OptionsMenu::OnMenuClick, this));
+	this->windowedLabel = new MenuLabel("Windowed Mode", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(OptionsMenu::OnMenuClick, this));
+	this->exitLabel = new MenuLabel("Exit", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(OptionsMenu::OnMenuClick, this));
 
-	label->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - label->getContentSize().height));
+	this->mouse = new Mouse();
+	this->clickableMenus = new vector<MenuLabel*>();
 
-	this->closeItem = MenuItemImage::create(Resources::CloseNormal, Resources::CloseSelected);
-	this->closeItem->setPosition(Vec2(origin.x + visibleSize.width - this->closeItem->getContentSize().width / 2, origin.y + this->closeItem->getContentSize().height / 2));
+	this->titleLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->titleLabel->getContentSize().height + menuOffset - spacing * 1.5));
+	this->fullScreenLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->fullScreenLabel->getContentSize().height / 2 + menuOffset + spacing * 0));
+	this->windowedLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->windowedLabel->getContentSize().height / 2 + menuOffset + spacing * 1));
+	this->exitLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->exitLabel->getContentSize().height / 2 + menuOffset + spacing * 2));
+	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 
-	menu->setPosition(Vec2::ZERO);
-	menu->addChild(this->closeItem);
+	this->clickableMenus->push_back(this->fullScreenLabel);
+	this->clickableMenus->push_back(this->windowedLabel);
+	this->clickableMenus->push_back(this->exitLabel);
 
-	this->addChild(label);
-	this->addChild(menu);
+	this->addChild(this->background);
+	this->addChild(this->titleLabel);
+	this->addChild(this->fullScreenLabel);
+	this->addChild(this->windowedLabel);
+	this->addChild(this->exitLabel);
+	this->addChild(this->mouse);
+
+	this->InitializeListeners();
 }
 
 OptionsMenu::~OptionsMenu()
@@ -31,32 +45,32 @@ void OptionsMenu::onEnter()
 	this->InitializeListeners();
 }
 
+void OptionsMenu::SetFullScreen()
+{
+	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+	const GLFWvidmode* videoMode = glfwGetVideoMode(monitor);
+	Director::getInstance()->getOpenGLView()->setFrameSize(videoMode->width, videoMode->height);
+}
+
+void OptionsMenu::SetWindowed()
+{
+	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+	const GLFWvidmode* videoMode = glfwGetVideoMode(monitor);
+	Director::getInstance()->getOpenGLView()->setFrameSize(videoMode->width, videoMode->height);
+}
+
 void OptionsMenu::InitializeListeners()
 {
-	EventListenerKeyboard* listener = EventListenerKeyboard::create();
-	listener->onKeyPressed = CC_CALLBACK_2(OptionsMenu::OnKeyPressed, this);
-
-	this->closeItem->setCallback(CC_CALLBACK_1(OptionsMenu::OnExitGame, this));
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-// Implementation of the keyboard event callback function prototype
-void OptionsMenu::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+void OptionsMenu::OnMenuClick(MenuLabel* menuLabel)
 {
-	switch (keyCode)
+	if (menuLabel == fullScreenLabel)
 	{
-	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		Director::getInstance()->popScene();
-		break;
+		this->SetFullScreen();
 	}
-}
-
-void OptionsMenu::OnExitGame(Ref* pSender)
-{
-	// Close the cocos2d-x game scene and quit the application
-	Director::getInstance()->end();
-
-	//// EventCustom customEndEvent("game_scene_close_event");
-	//// _eventDispatcher->dispatchEvent(&customEndEvent);
+	else if (menuLabel == fullScreenLabel)
+	{
+		this->SetWindowed();
+	}
 }

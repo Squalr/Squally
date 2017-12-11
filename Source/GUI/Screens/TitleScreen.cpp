@@ -51,6 +51,13 @@ TitleScreen::~TitleScreen()
 	delete(this->clickableMenus);
 }
 
+void TitleScreen::onEnter()
+{
+	Scene::onEnter();
+
+	this->InitializeListeners();
+}
+
 void TitleScreen::OnMenuClick(MenuLabel* menuLabel)
 {
 	if (menuLabel == storyModeLabel)
