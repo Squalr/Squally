@@ -29,40 +29,15 @@ bool Window::applicationDidFinishLaunching()
 	Director* director = Director::getInstance();
 	GLView* glview = director->getOpenGLView();
 
-	if (!glview) {
-		glview = GLViewImpl::createWithFullScreen("Squalr Tutorial");
-		//glview = GLViewImpl::createWithRect("Squalr Tutorial", Rect(0, 0, this->mediumResolutionSize->width, this->mediumResolutionSize->height));
-		director->setOpenGLView(glview);
-		glview->setCursorVisible(false);
-	}
+	glview = GLViewImpl::createWithFullScreen("Squalr Tutorial");
+	// glview = GLViewImpl::createWithRect("Squalr Tutorial", Rect(0, 0, this->mediumResolutionSize->width, this->mediumResolutionSize->height));
+
+	glview->setDesignResolutionSize(glview->getFrameSize().width, glview->getFrameSize().height, ResolutionPolicy::NO_BORDER);
+	director->setOpenGLView(glview);
+	glview->setCursorVisible(false);
 
 	// Turn on display FPS
 	director->setDisplayStats(true);
-
-	// Set FPS. the default value is 1.0/60 if you don't call this
-	director->setAnimationInterval(1.0f / 60);
-
-	// Set the design resolution
-	glview->setDesignResolutionSize(this->designResolutionSize->width, this->designResolutionSize->height, ResolutionPolicy::NO_BORDER);
-	Size frameSize = glview->getFrameSize();
-
-	// If the frame's height is larger than the height of medium size.
-	if (frameSize.height > this->mediumResolutionSize->height)
-	{
-		director->setContentScaleFactor(MIN(this->largeResolutionSize->height / this->designResolutionSize->height, this->largeResolutionSize->width / this->designResolutionSize->width));
-	}
-	// If the frame's height is larger than the height of small size.
-	else if (frameSize.height > this->smallResolutionSize->height)
-	{
-		director->setContentScaleFactor(MIN(this->mediumResolutionSize->height / this->designResolutionSize->height, this->mediumResolutionSize->width / this->designResolutionSize->width));
-	}
-	// If the frame's height is smaller than the height of medium size.
-	else
-	{
-		director->setContentScaleFactor(MIN(this->smallResolutionSize->height / this->designResolutionSize->height, this->smallResolutionSize->width / this->designResolutionSize->width));
-	}
-
-	register_all_packages();
 
 	// Start the game
 	Game* game = new Game();

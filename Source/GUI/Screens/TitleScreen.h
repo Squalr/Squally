@@ -32,8 +32,8 @@ private:
 
 	std::vector<MenuLabel*>* clickableMenus;
 
-	const float titleFontSize = 24.0f;
-	const float menuFontSize = 16.0f;
+	const float titleFontSize = 48.0f;
+	const float menuFontSize = 32.0f;
 	const float menuOffset = 64.0f;
 	const float spacing = -40.0f;
 };
