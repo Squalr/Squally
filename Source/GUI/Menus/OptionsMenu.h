@@ -1,6 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "GUI/Mouse.h"
+#include "GUI/MenuLabel.h"
 
 using namespace cocos2d;
 
@@ -10,13 +12,27 @@ public:
 	OptionsMenu();
 	~OptionsMenu();
 
-	void onEnter() override;
-
 private:
+	void onEnter() override;
 	void InitializeListeners();
-	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	void OnExitGame(Ref* pSender);
+	void OnMenuClick(MenuLabel* menuLabel);
 
-	MenuItemImage* closeItem;
+	void SetFullScreen();
+	void SetWindowed();
+
+	Mouse* mouse;
+	Sprite* background;
+
+	MenuLabel* titleLabel;
+	MenuLabel* fullScreenLabel;
+	MenuLabel* windowedLabel;
+	MenuLabel* exitLabel;
+
+	std::vector<MenuLabel*>* clickableMenus;
+
+	const float titleFontSize = 48.0f;
+	const float menuFontSize = 32.0f;
+	const float menuOffset = 64.0f;
+	const float spacing = -40.0f;
 };
 
