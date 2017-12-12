@@ -46,9 +46,7 @@ public:
 	static const string GUI_IntroMenu_Scene3_Scene3_Player;
 	static const string GUI_IntroMenu_Scene3_Scene3_TRex;
 	static const string GUI_OptionsMenu_OptionsMenu;
-	static const string GUI_TitleScreen_HorizontalSelect;
 	static const string GUI_TitleScreen_TitleScreen;
-	static const string GUI_TitleScreen_VerticalSelect;
 	static const string GUI_WorldMaps_Apple;
 	static const string GUI_WorldMaps_AppleGrayed;
 	static const string GUI_WorldMaps_Banana;
@@ -62,6 +60,7 @@ public:
 	static const string GUI_WorldMaps_ProgressPanel;
 	static const string GUI_WorldMaps_StoryMap;
 	static const string GUI_WorldMaps_TutorialMap;
+	static const string GUI_WorldMaps_TutorialNodeUnlocked;
 	static const string GUI_WorldMaps_WorldMapSelector;
 	static const string Levels_Debug;
 	static const string Objects_Apple;

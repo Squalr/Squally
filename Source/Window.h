@@ -40,5 +40,5 @@ public:
 	virtual void applicationWillEnterForeground();
 
 private:
-	std::string windowTitle = "Squalr Tutorial";
+	std::string windowTitle = "Squally";
 };

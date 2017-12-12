@@ -157,6 +157,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\Menus\OptionsMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\PauseMenu.cpp" />
     <ClCompile Include="Source\GUI\Mouse.cpp" />
+    <ClCompile Include="Source\GUI\Screens\MapNode.cpp" />
     <ClCompile Include="Source\GUI\Screens\StoryMap.cpp" />
     <ClCompile Include="Source\GUI\Screens\TitleScreen.cpp" />
     <ClCompile Include="Source\GUI\Screens\TutorialMap.cpp" />
@@ -177,6 +178,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\Menus\OptionsMenu.h" />
     <ClInclude Include="Source\GUI\Menus\PauseMenu.h" />
     <ClInclude Include="Source\GUI\Mouse.h" />
+    <ClInclude Include="Source\GUI\Screens\MapNode.h" />
     <ClInclude Include="Source\GUI\Screens\StoryMap.h" />
     <ClInclude Include="Source\GUI\Screens\TitleScreen.h" />
     <ClInclude Include="Source\GUI\Screens\TutorialMap.h" />

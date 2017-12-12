@@ -1,5 +1,7 @@
 #include "TitleScreen.h"
 
+const int TitleScreen::hackerMode = 0;
+
 TitleScreen::TitleScreen()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -10,10 +12,19 @@ TitleScreen::TitleScreen()
 	this->storyModeLabel = new MenuLabel("Story Mode", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 	this->tutorialModeLabel = new MenuLabel("Tutorial Mode", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 	this->optionsLabel = new MenuLabel("Options", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
-	this->exitLabel = new MenuLabel("Exit", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+	this->exitLabel = new MenuLabel("Exit", Resources::Fonts_arial, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+
+	std::stringstream stream;
+	stream << std::hex << (int)(&this->hackerMode);
+	std::string hackerModeAddress(stream.str());
+
+	this->hackerModeLabel = Label::create(hackerModeAddress, Resources::Fonts_Marker_Felt, 14);
+	this->hackerModeLabel->setColor(Color3B(172, 172, 172));
 
 	this->mouse = new Mouse();
 	this->clickableMenus = new vector<MenuLabel*>();
+
+	this->hackerModeLabel->setPosition(Vec2(origin.x + visibleSize.width / 2 - 462.0f, origin.x + visibleSize.height / 2 + 320.0f));
 
 	this->titleLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->titleLabel->getContentSize().height + menuOffset - spacing * 1.5));
 	this->storyModeLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->storyModeLabel->getContentSize().height / 2 + menuOffset + spacing * 0));
@@ -28,6 +39,7 @@ TitleScreen::TitleScreen()
 	this->clickableMenus->push_back(this->exitLabel);
 
 	this->addChild(this->background);
+	this->addChild(this->hackerModeLabel);
 	this->addChild(this->titleLabel);
 	this->addChild(this->storyModeLabel);
 	this->addChild(this->tutorialModeLabel);
