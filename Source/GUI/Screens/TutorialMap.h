@@ -3,6 +3,7 @@
 #include "Resources.h"
 #include "GUI/Mouse.h"
 #include "GUI/MenuLabel.h"
+#include "GUI/Screens/MapNode.h"
 #include "GUI/Screens/TitleScreen.h"
 
 using namespace cocos2d;
@@ -14,6 +15,7 @@ public:
 	~TutorialMap();
 
 private:
+	void LoadNodes();
 	void onEnter() override;
 	void InitializeListeners();
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
