@@ -24,6 +24,8 @@ private:
 	Mouse* mouse;
 	Sprite* background;
 
+	Label* hackerModeLabel;
+
 	MenuLabel* titleLabel;
 	MenuLabel* storyModeLabel;
 	MenuLabel* tutorialModeLabel;
@@ -31,6 +33,8 @@ private:
 	MenuLabel* exitLabel;
 
 	std::vector<MenuLabel*>* clickableMenus;
+
+	const static int hackerMode;
 
 	const float titleFontSize = 64.0f;
 	const float menuFontSize = 48.0f;
