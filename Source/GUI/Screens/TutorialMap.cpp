@@ -10,8 +10,8 @@ TutorialMap::TutorialMap()
 	this->background = Sprite::create(Resources::GUI_WorldMaps_TutorialMap);
 	this->mouse = new Mouse();
 
-	this->titleLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->titleLabel->GetSize().height / 2));
-	// this->infoLabel->setPosition(Vec2(origin.x + visibleSize.width / 2 + this->infoLabel->GetSize().width / 2, origin.y + visibleSize.height - this->titleLabel->GetSize().height / 2));
+	this->titleLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->titleLabel->getContentSize().height / 2));
+	// this->infoLabel->setPosition(Vec2(origin.x + visibleSize.width / 2 + this->infoLabel->getContentSize().width / 2, origin.y + visibleSize.height - this->titleLabel->GetSize().height / 2));
 	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 
 	this->addChild(this->background);

@@ -15,6 +15,8 @@ MenuLabel::MenuLabel(std::string labelText, std::string fontResource, float font
 
 	this->addChild(this->labelHighlighted);
 	this->addChild(this->label);
+
+	this->setContentSize(this->label->getContentSize());
 }
 
 MenuLabel::~MenuLabel()
@@ -38,33 +40,11 @@ void MenuLabel::InitializeListeners()
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
 
-Size MenuLabel::GetSize()
-{
-	return this->label->getContentSize();
-}
-
-bool MenuLabel::Intersects(float mouseX, float mouseY)
-{
-	Rect mouseRect = Rect(mouseX, mouseY, 1.0f, 1.0f);
-
-	Vec2 origin = this->convertToWorldSpace(Vec2(this->label->getBoundingBox().origin.x, this->label->getBoundingBox().origin.y));
-	Rect labelRect = Rect(origin.x, origin.y, this->label->getContentSize().width, this->label->getContentSize().height);
-
-	if (labelRect.intersectsRect(mouseRect))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
 void MenuLabel::OnMouseMove(EventMouse* event)
 {
 	if (this->menuOnMouseClick != nullptr)
 	{
-		if (this->Intersects(event->getCursorX(), event->getCursorY()))
+		if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{
 			this->labelHighlighted->enableOutline(*highlightColor, highlightOutlineSize);
 		}
@@ -79,7 +59,7 @@ void MenuLabel::OnMouseDown(EventMouse* event)
 {
 	if (this->menuOnMouseClick != nullptr)
 	{
-		if (this->Intersects(event->getCursorX(), event->getCursorY()))
+		if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{
 			this->menuOnMouseClick(this);
 		}

@@ -60,6 +60,7 @@ public:
 	static const string GUI_WorldMaps_ProgressPanel;
 	static const string GUI_WorldMaps_StoryMap;
 	static const string GUI_WorldMaps_TutorialMap;
+	static const string GUI_WorldMaps_TutorialNodeSelected;
 	static const string GUI_WorldMaps_TutorialNodeUnlocked;
 	static const string GUI_WorldMaps_WorldMapSelector;
 	static const string Levels_Debug;

@@ -3,6 +3,7 @@
 #include "Resources.h"
 #include "StoryMap.h"
 #include "TutorialMap.h"
+#include "Utils/Utils.h"
 #include "GUI/Menus/OptionsMenu.h"
 #include "GUI/MenuLabel.h"
 #include "GUI/Mouse.h"

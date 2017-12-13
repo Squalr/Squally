@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "Utils/Utils.h"
 
 using namespace cocos2d;
 
@@ -10,9 +11,6 @@ public:
 	MenuLabel(std::string labelText, std::string fontResource, float fontSize);
 	MenuLabel(std::string labelText, std::string fontResource, float fontSize, std::function<void(MenuLabel*)> onMouseClick);
 	~MenuLabel();
-
-	Size GetSize();
-	bool Intersects(float mouseX, float mouseY);
 
 private:
 	void onEnter() override;
