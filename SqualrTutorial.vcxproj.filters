@@ -28,6 +28,9 @@
     <Filter Include="Source\Config">
       <UniqueIdentifier>{ad777ac4-678a-40fd-823b-e0b3188ba415}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Utils">
+      <UniqueIdentifier>{8f7b5b30-247a-452b-96b8-2d42834c1248}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -87,6 +90,9 @@
     <ClCompile Include="Source\GUI\Screens\MapNode.cpp">
       <Filter>Source\GUI\Screens</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Utils\Utils.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -145,6 +151,9 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\Screens\MapNode.h">
       <Filter>Source\GUI\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\Utils.h">
+      <Filter>Source\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

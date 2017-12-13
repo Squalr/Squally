@@ -12,13 +12,13 @@ TitleScreen::TitleScreen()
 	this->storyModeLabel = new MenuLabel("Story Mode", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 	this->tutorialModeLabel = new MenuLabel("Tutorial Mode", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 	this->optionsLabel = new MenuLabel("Options", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
-	this->exitLabel = new MenuLabel("Exit", Resources::Fonts_arial, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+	this->exitLabel = new MenuLabel("Exit", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 
 	std::stringstream stream;
 	stream << std::hex << (int)(&this->hackerMode);
 	std::string hackerModeAddress(stream.str());
 
-	this->hackerModeLabel = Label::create(hackerModeAddress, Resources::Fonts_Marker_Felt, 14);
+	this->hackerModeLabel = Label::create(hackerModeAddress, Resources::Fonts_arial, 14);
 	this->hackerModeLabel->setColor(Color3B(172, 172, 172));
 
 	this->mouse = new Mouse();
@@ -107,7 +107,7 @@ void TitleScreen::OnMouseMove(EventMouse* event)
 	{
 		MenuLabel* label = *it;
 
-		if (label->Intersects(event->getCursorX(), event->getCursorY()))
+		if (Utils::Intersects(label, Vec2(event->getCursorX(), event->getCursorY())))
 		{
 			this->mouse->SetCanClick(true);
 			return;

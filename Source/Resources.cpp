@@ -55,6 +55,7 @@ const string Resources::GUI_WorldMaps_OrangeGrayed = "GUI\\WorldMaps\\OrangeGray
 const string Resources::GUI_WorldMaps_ProgressPanel = "GUI\\WorldMaps\\ProgressPanel.png";
 const string Resources::GUI_WorldMaps_StoryMap = "GUI\\WorldMaps\\StoryMap.png";
 const string Resources::GUI_WorldMaps_TutorialMap = "GUI\\WorldMaps\\TutorialMap.png";
+const string Resources::GUI_WorldMaps_TutorialNodeSelected = "GUI\\WorldMaps\\TutorialNodeSelected.png";
 const string Resources::GUI_WorldMaps_TutorialNodeUnlocked = "GUI\\WorldMaps\\TutorialNodeUnlocked.png";
 const string Resources::GUI_WorldMaps_WorldMapSelector = "GUI\\WorldMaps\\WorldMapSelector.png";
 const string Resources::Levels_Debug = "Levels\\Debug.tmx";
