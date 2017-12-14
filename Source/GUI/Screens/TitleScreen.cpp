@@ -10,9 +10,9 @@ TitleScreen::TitleScreen()
 	this->background = Sprite::create(Resources::GUI_TitleScreen_TitleScreen);
 	this->titleLabel = new MenuLabel("Squally", Resources::Fonts_Marker_Felt, titleFontSize);
 	this->storyModeLabel = new MenuLabel("Story Mode", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
-	this->tutorialModeLabel = new MenuLabel("Tutorial Mode", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 	this->optionsLabel = new MenuLabel("Options", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 	this->exitLabel = new MenuLabel("Exit", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+	this->monitor = new MenuSprite(Resources::GUI_TitleScreen_Monitor, Resources::GUI_TitleScreen_MonitorSelected, CC_CALLBACK_1(TitleScreen::OnTutorialClick, this));
 
 	std::stringstream stream;
 	stream << std::hex << (int)(&this->hackerMode);
@@ -26,23 +26,22 @@ TitleScreen::TitleScreen()
 
 	this->hackerModeLabel->setPosition(Vec2(origin.x + visibleSize.width / 2 - 462.0f, origin.x + visibleSize.height / 2 + 320.0f));
 
+	this->monitor->setPosition(Vec2(origin.x + visibleSize.width / 2 + 4.0f, origin.y + visibleSize.height / 2 - this->monitor->getContentSize().height + 384.0f));
 	this->titleLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->titleLabel->getContentSize().height + menuOffset - spacing * 1.5));
 	this->storyModeLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->storyModeLabel->getContentSize().height / 2 + menuOffset + spacing * 0));
-	this->tutorialModeLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->tutorialModeLabel->getContentSize().height / 2 + menuOffset + spacing * 1));
-	this->optionsLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->tutorialModeLabel->getContentSize().height / 2 + menuOffset + spacing * 2));
-	this->exitLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->tutorialModeLabel->getContentSize().height / 2 + menuOffset + spacing * 3));
+	this->optionsLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->optionsLabel->getContentSize().height / 2 + menuOffset + spacing * 1));
+	this->exitLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->exitLabel->getContentSize().height / 2 + menuOffset + spacing * 2));
 	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 
 	this->clickableMenus->push_back(this->storyModeLabel);
-	this->clickableMenus->push_back(this->tutorialModeLabel);
 	this->clickableMenus->push_back(this->optionsLabel);
 	this->clickableMenus->push_back(this->exitLabel);
 
 	this->addChild(this->background);
+	this->addChild(this->monitor);
 	this->addChild(this->hackerModeLabel);
 	this->addChild(this->titleLabel);
 	this->addChild(this->storyModeLabel);
-	this->addChild(this->tutorialModeLabel);
 	this->addChild(this->optionsLabel);
 	this->addChild(this->exitLabel);
 	this->addChild(this->mouse);
@@ -70,15 +69,19 @@ void TitleScreen::onEnter()
 	this->InitializeListeners();
 }
 
+void TitleScreen::OnTutorialClick(MenuSprite* menuSprite)
+{
+	if (menuSprite == monitor)
+	{
+		Director::getInstance()->replaceScene(new TutorialMap());
+	}
+}
+
 void TitleScreen::OnMenuClick(MenuLabel* menuLabel)
 {
 	if (menuLabel == storyModeLabel)
 	{
 		Director::getInstance()->replaceScene(new StoryMap());
-	}
-	else if (menuLabel == tutorialModeLabel)
-	{
-		Director::getInstance()->replaceScene(new TutorialMap());
 	}
 	else if (menuLabel == optionsLabel)
 	{
