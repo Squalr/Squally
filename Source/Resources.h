@@ -46,6 +46,9 @@ public:
 	static const string GUI_IntroMenu_Scene3_Scene3_Player;
 	static const string GUI_IntroMenu_Scene3_Scene3_TRex;
 	static const string GUI_OptionsMenu_OptionsMenu;
+	static const string GUI_TitleScreen_Monitor;
+	static const string GUI_TitleScreen_MonitorSelected;
+	static const string GUI_TitleScreen_Squally;
 	static const string GUI_TitleScreen_TitleScreen;
 	static const string GUI_WorldMaps_Apple;
 	static const string GUI_WorldMaps_AppleGrayed;
