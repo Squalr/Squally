@@ -12,6 +12,8 @@ public:
 	MenuLabel(std::string labelText, std::string fontResource, float fontSize, std::function<void(MenuLabel*)> onMouseClick);
 	~MenuLabel();
 
+	void SetText(std::string text);
+
 private:
 	void onEnter() override;
 	void InitializeListeners();
