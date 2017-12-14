@@ -1,6 +1,6 @@
 #include "Level.h"
 
-Level::Level()
+Level::Level(std::string levelResourceFilePath)
 {
 	if (!Scene::initWithPhysics())
 	{
@@ -20,7 +20,7 @@ Level::Level()
 
 	this->pauseMenu = new PauseMenu();
 
-	this->LoadLevel();
+	this->LoadLevel(levelResourceFilePath);
 
 	this->backGroundLayer->addChild(this->backGround);
 	this->entityLayer->addChild(this->playerLayer);
@@ -64,7 +64,7 @@ void Level::update(float dt)
 	this->tileLayer->setPositionY(heightOffset - playerYOffset);
 }
 
-void Level::LoadLevel()
+void Level::LoadLevel(std::string levelResourceFilePath)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -74,7 +74,7 @@ void Level::LoadLevel()
 
 	this->environmentLayer->addChild(ParticleRain::create());
 
-	TMXTiledMap* map = TMXTiledMap::create(Resources::Levels_Debug);
+	TMXTiledMap* map = TMXTiledMap::create(levelResourceFilePath);
 	TMXLayer* background = map->getLayer("background");
 	TMXLayer* midGround = map->getLayer("midground");
 	TMXLayer* foreground = map->getLayer("foreground");

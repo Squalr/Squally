@@ -1,8 +1,11 @@
 #include "MapNode.h"
 
-MapNode::MapNode(Vec2 position, bool tutorialNode)
+MapNode::MapNode(std::string mapName, std::string mapFile, Vec2 position, bool tutorialNode, std::function<void(MapNode*)> onMouseOver)
 {
+	this->nodeMapName = mapName;
+	this->nodeMapFile = mapFile;
 	this->setPosition(position);
+	this->onMouseOverEvent = onMouseOver;
 
 	if (tutorialNode)
 	{
@@ -50,6 +53,7 @@ void MapNode::OnMouseMove(EventMouse* event)
 	{
 		this->sprite->setVisible(false);
 		this->spriteSelected->setVisible(true);
+		this->onMouseOverEvent(this);
 	}
 	else
 	{
@@ -62,7 +66,7 @@ void MapNode::OnMouseDown(EventMouse* event)
 {
 	if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 	{
-		Director::getInstance()->replaceScene(new Level());
+		Director::getInstance()->replaceScene(new Level(this->nodeMapFile));
 	}
 }
 
