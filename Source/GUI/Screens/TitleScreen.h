@@ -6,6 +6,7 @@
 #include "Utils/Utils.h"
 #include "GUI/Menus/OptionsMenu.h"
 #include "GUI/MenuLabel.h"
+#include "GUI/MenuSprite.h"
 #include "GUI/Mouse.h"
 
 using namespace cocos2d;
@@ -19,19 +20,18 @@ public:
 private:
 	void onEnter() override;
 	void InitializeListeners();
+	void OnTutorialClick(MenuSprite* menuSprite);
 	void OnMenuClick(MenuLabel* menuLabel);
 	void OnMouseMove(EventMouse* event);
 
 	Mouse* mouse;
 	Sprite* background;
-	Sprite* monitor;
-	Sprite* monitorSelected;
+	MenuSprite* monitor;
 
 	Label* hackerModeLabel;
 
 	MenuLabel* titleLabel;
 	MenuLabel* storyModeLabel;
-	MenuLabel* tutorialModeLabel;
 	MenuLabel* optionsLabel;
 	MenuLabel* exitLabel;
 

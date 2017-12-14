@@ -93,6 +93,9 @@
     <ClCompile Include="Source\Utils\Utils.cpp">
       <Filter>Source\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GUI\MenuSprite.cpp">
+      <Filter>Source\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -154,6 +157,9 @@
     </ClInclude>
     <ClInclude Include="Source\Utils\Utils.h">
       <Filter>Source\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\MenuSprite.h">
+      <Filter>Source\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
