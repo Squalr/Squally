@@ -10,7 +10,7 @@ using namespace cocos2d;
 class Level : public Scene
 {
 public:
-	Level();
+	Level(std::string levelResourceFilePath);
 	~Level();
 
 	void onEnter() override;
@@ -31,7 +31,7 @@ protected:
 	PauseMenu * pauseMenu;
 
 private:
-	void LoadLevel();
+	void LoadLevel(std::string levelResourceFilePath);
 	void InitializeListeners();
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 };

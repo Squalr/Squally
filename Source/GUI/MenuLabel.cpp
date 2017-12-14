@@ -23,6 +23,14 @@ MenuLabel::~MenuLabel()
 {
 }
 
+void MenuLabel::SetText(std::string text)
+{
+	this->label->setString(text);
+	this->labelHighlighted->setString(text);
+
+	this->setContentSize(this->label->getContentSize());
+}
+
 void MenuLabel::onEnter()
 {
 	Node::onEnter();

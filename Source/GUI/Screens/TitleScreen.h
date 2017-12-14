@@ -24,6 +24,8 @@ private:
 
 	Mouse* mouse;
 	Sprite* background;
+	Sprite* monitor;
+	Sprite* monitorSelected;
 
 	Label* hackerModeLabel;
 
