@@ -96,6 +96,9 @@
     <ClCompile Include="Source\GUI\MenuSprite.cpp">
       <Filter>Source\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Utils\InfiniteParallaxNode.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -160,6 +163,12 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\MenuSprite.h">
       <Filter>Source\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\InfiniteParallaxNode.h">
+      <Filter>Source\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\PointObject.h">
+      <Filter>Source\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@
 #include "GUI/Menus/PauseMenu.h"
 #include "Collision/TileCollision.h"
 #include "Entities/Player.h"
+#include "Utils/InfiniteParallaxNode.h"
 
 using namespace cocos2d;
 
@@ -27,7 +28,8 @@ protected:
 	Layer * environmentLayer;
 
 	Player * player;
-	Sprite * backGround;
+	InfiniteParallaxNode * backGround;
+	InfiniteParallaxNode * midGround;
 	PauseMenu * pauseMenu;
 
 private:

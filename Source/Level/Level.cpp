@@ -22,6 +22,7 @@ Level::Level(std::string levelResourceFilePath)
 
 	this->LoadLevel(levelResourceFilePath);
 
+	this->backGroundLayer->addChild(this->midGround);
 	this->backGroundLayer->addChild(this->backGround);
 	this->entityLayer->addChild(this->playerLayer);
 	this->entityLayer->addChild(this->enemyLayer);
@@ -36,6 +37,7 @@ Level::Level(std::string levelResourceFilePath)
 
 Level::~Level()
 {
+	delete(this->midGround);
 	delete(this->backGround);
 	delete(this->player);
 }
@@ -49,10 +51,14 @@ void Level::onEnter()
 
 void Level::update(float dt)
 {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
 	Scene::update(dt);
 
 	float widthOffset = Director::getInstance()->getVisibleSize().width / 2;
 	float playerXOffset = this->player->getPositionX() - this->player->GetWidth();
+
+	this->backGround->runAction(MoveTo::create(0.0f, Vec2(playerXOffset / 10.0f, visibleSize.height)));
 
 	this->playerLayer->setPositionX(widthOffset - playerXOffset);
 	this->tileLayer->setPositionX(widthOffset - playerXOffset);
@@ -62,6 +68,9 @@ void Level::update(float dt)
 
 	this->playerLayer->setPositionY(heightOffset - playerYOffset);
 	this->tileLayer->setPositionY(heightOffset - playerYOffset);
+
+	// this->backGround->updatePosition();
+	this->midGround->updatePosition();
 }
 
 void Level::LoadLevel(std::string levelResourceFilePath)
@@ -69,8 +78,17 @@ void Level::LoadLevel(std::string levelResourceFilePath)
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	this->backGround = Sprite::create(Resources::Ingame_Background_GrassBG);
-	this->backGround->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->backGround->getContentSize().height / 2));
+	this->backGround = InfiniteParallaxNode::create();
+	// this->backGround->addChild(Sprite::create(Resources::Ingame_Background_Day_Sky), 0, Vec2(0.5f, 0.5f), Vec2::ZERO);
+	this->backGround->addChild(Sprite::create(Resources::Ingame_Background_Day_Mountains_01), 0, Vec2(0.25f, 0.25f), Vec2::ZERO);
+	this->backGround->setPosition(Vec2(0, origin.y + visibleSize.height - this->backGround->getContentSize().height / 2));
+
+	this->midGround = InfiniteParallaxNode::create();
+	Sprite* clouds = Sprite::create(Resources::Ingame_Background_Day_Clouds_01);
+	this->midGround->addChild(Sprite::create(Resources::Ingame_Background_Day_Clouds_01), 0, Vec2(0.75f, 0.75f), Vec2::ZERO);
+	this->midGround->addChild(clouds, 0, Vec2(0.75f, 0.75f), Vec2(clouds->getContentSize().width, 0.0f));
+	this->midGround->setPosition(Vec2(0, origin.y + visibleSize.height + 256.0f));
+	this->midGround->runAction(RepeatForever::create(MoveBy::create(0.25f, Vec2(-100.0f, 0))));
 
 	this->environmentLayer->addChild(ParticleRain::create());
 
