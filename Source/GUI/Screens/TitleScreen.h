@@ -19,6 +19,7 @@ public:
 
 private:
 	void onEnter() override;
+	void update(float) override;
 	void InitializeListeners();
 	void OnTutorialClick(MenuSprite* menuSprite);
 	void OnMenuClick(MenuLabel* menuLabel);
@@ -37,7 +38,7 @@ private:
 
 	std::vector<MenuLabel*>* clickableMenus;
 
-	const static int hackerMode;
+	static int hackerMode;
 
 	const float titleFontSize = 64.0f;
 	const float menuFontSize = 48.0f;

@@ -1,6 +1,6 @@
 #include "TitleScreen.h"
 
-const int TitleScreen::hackerMode = 0;
+int TitleScreen::hackerMode = 1;
 
 TitleScreen::TitleScreen()
 {
@@ -46,7 +46,9 @@ TitleScreen::TitleScreen()
 	this->addChild(this->exitLabel);
 	this->addChild(this->mouse);
 
-	this->InitializeListeners();
+	this->monitor->setVisible(false);
+
+	this->scheduleUpdate();
 }
 
 TitleScreen::~TitleScreen()
@@ -67,6 +69,16 @@ void TitleScreen::onEnter()
 	Scene::onEnter();
 
 	this->InitializeListeners();
+}
+
+void TitleScreen::update(float dt)
+{
+	Scene::update(dt);
+
+	if (this->hackerMode != 0 && !this->monitor->isVisible())
+	{
+		this->monitor->setVisible(true);
+	}
 }
 
 void TitleScreen::OnTutorialClick(MenuSprite* menuSprite)
