@@ -2,9 +2,9 @@
 
 Mouse::Mouse()
 {
-	this->mouseSpriteIdle = Sprite::create(Resources::GUI_MouseIdle);
+	this->mouseSpriteIdle = Sprite::create(Resources::Menus_MouseIdle);
 	this->mouseSpriteIdle->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->mouseSpritePoint = Sprite::create(Resources::GUI_MousePoint);
+	this->mouseSpritePoint = Sprite::create(Resources::Menus_MousePoint);
 	this->mouseSpritePoint->setAnchorPoint(Vec2(0.0f, 1.0f));
 
 	this->mouseSpritePoint->setVisible(false);

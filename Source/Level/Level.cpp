@@ -69,7 +69,7 @@ void Level::LoadLevel(std::string levelResourceFilePath)
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	this->backGround = Sprite::create(Resources::Background_GrassBG);
+	this->backGround = Sprite::create(Resources::Ingame_Background_GrassBG);
 	this->backGround->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->backGround->getContentSize().height / 2));
 
 	this->environmentLayer->addChild(ParticleRain::create());

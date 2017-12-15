@@ -7,7 +7,7 @@ StoryMap::StoryMap()
 
 	this->titleLabel = new MenuLabel("Level Select", Resources::Fonts_Marker_Felt, this->titleFontSize);
 	this->infoLabel = new MenuLabel("Level 1", Resources::Fonts_Marker_Felt, this->infoFontSize);
-	this->background = Sprite::create(Resources::GUI_WorldMaps_StoryMap);
+	this->background = Sprite::create(Resources::Menus_WorldMaps_StoryMap);
 	this->mouse = new Mouse();
 
 	this->titleLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->titleLabel->getContentSize().height / 2));
