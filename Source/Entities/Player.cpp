@@ -4,7 +4,7 @@ Player::Player()
 {
 	Entity::Entity();
 
-	this->sprite = Sprite::create(Resources::Sprites_Player_Idle);
+	this->sprite = Sprite::create(Resources::Ingame_Sprites_Player_Idle);
 	this->physicsBody = PhysicsBody::createCircle(this->sprite->getContentSize().width / 2, PhysicsMaterial(1.0f, 1.0f, 1.0f));
 	this->physicsBody->setRotationEnable(false);
 	this->physicsBody->setContactTestBitmask(TileCollision::CollisionGroupsEnum::Entity);

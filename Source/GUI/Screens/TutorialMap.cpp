@@ -7,7 +7,7 @@ TutorialMap::TutorialMap()
 
 	this->titleLabel = new MenuLabel("", Resources::Fonts_Marker_Felt, this->titleFontSize);
 	this->infoLabel = new MenuLabel("", Resources::Fonts_Marker_Felt, this->titleFontSize);
-	this->background = Sprite::create(Resources::GUI_WorldMaps_TutorialMap);
+	this->background = Sprite::create(Resources::Menus_TutorialMenu_TutorialSelect);
 	this->mouse = new Mouse();
 
 	this->titleLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->titleLabel->getContentSize().height / 2));

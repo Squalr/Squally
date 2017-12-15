@@ -9,13 +9,13 @@ MapNode::MapNode(std::string mapName, std::string mapFile, Vec2 position, bool t
 
 	if (tutorialNode)
 	{
-		this->sprite = Sprite::create(Resources::GUI_WorldMaps_TutorialNodeUnlocked);
-		this->spriteSelected = Sprite::create(Resources::GUI_WorldMaps_TutorialNodeSelected);
+		this->sprite = Sprite::create(Resources::Menus_WorldMaps_TutorialNodeUnlocked);
+		this->spriteSelected = Sprite::create(Resources::Menus_WorldMaps_TutorialNodeSelected);
 	}
 	else
 	{
-		this->sprite = Sprite::create(Resources::GUI_WorldMaps_LevelNodeUnlocked);
-		this->spriteSelected = Sprite::create(Resources::GUI_WorldMaps_TutorialNodeSelected);
+		this->sprite = Sprite::create(Resources::Menus_WorldMaps_LevelNodeUnlocked);
+		this->spriteSelected = Sprite::create(Resources::Menus_WorldMaps_TutorialNodeSelected);
 	}
 
 	this->setContentSize(this->sprite->getContentSize());

@@ -7,12 +7,12 @@ TitleScreen::TitleScreen()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	this->background = Sprite::create(Resources::GUI_TitleScreen_TitleScreen);
+	this->background = Sprite::create(Resources::Menus_TitleScreen_TitleScreen);
 	this->titleLabel = new MenuLabel("Squally", Resources::Fonts_Marker_Felt, titleFontSize);
 	this->storyModeLabel = new MenuLabel("Story Mode", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 	this->optionsLabel = new MenuLabel("Options", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 	this->exitLabel = new MenuLabel("Exit", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
-	this->monitor = new MenuSprite(Resources::GUI_TitleScreen_Monitor, Resources::GUI_TitleScreen_MonitorSelected, CC_CALLBACK_1(TitleScreen::OnTutorialClick, this));
+	this->monitor = new MenuSprite(Resources::Menus_TitleScreen_Monitor, Resources::Menus_TitleScreen_MonitorSelected, CC_CALLBACK_1(TitleScreen::OnTutorialClick, this));
 
 	std::stringstream stream;
 	stream << std::hex << (int)(&this->hackerMode);
