@@ -2,7 +2,7 @@
 
 OptionsMenu::OptionsMenu()
 {
-	this->background = Sprite::create(Resources::GUI_OptionsMenu_OptionsMenu);
+	this->background = Sprite::create(Resources::Menus_OptionsMenu_OptionsMenu);
 	this->titleLabel = new MenuLabel("Options", Resources::Fonts_Marker_Felt, titleFontSize);
 	this->fullScreenLabel = new MenuLabel("Full Screen Mode", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(OptionsMenu::OnMenuClick, this));
 	this->windowedLabel = new MenuLabel("Windowed Mode", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(OptionsMenu::OnMenuClick, this));

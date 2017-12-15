@@ -45,8 +45,6 @@
     <Content Include="Resources\Background\DesertBG.png" />
     <Content Include="Resources\Background\GrassBG.png" />
     <Content Include="Resources\Background\SnowBG.png" />
-    <Content Include="Resources\CloseNormal.png" />
-    <Content Include="Resources\CloseSelected.png" />
     <Content Include="Resources\game.rc" />
     <Content Include="Resources\GUI\HUD\Egg.png" />
     <Content Include="Resources\GUI\HUD\Heart0.png" />

@@ -24,7 +24,7 @@ foreach (string file in Directory.EnumerateFiles(this.Host.ResolvePath("../Resou
 			continue;
 		}
 		
-	string variableName = Path.GetFileNameWithoutExtension(file.Replace(this.Host.ResolvePath("../Resources"), "").TrimStart('\\').Replace(@"\", "_").Replace(" ", "_"));
+	string variableName = Path.GetFileNameWithoutExtension(file.Replace(this.Host.ResolvePath("../Resources"), "").TrimStart('\\').Replace(@"\", "_").Replace(" ", "_").Replace("-", "_"));
 	string relativeFilePath = file.Replace(this.Host.ResolvePath("../Resources"), "").TrimStart('\\').Replace(@"\", @"\\");
 
 	WriteLine("const string Resources::" + variableName + " = \"" + relativeFilePath + "\";");

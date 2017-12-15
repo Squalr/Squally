@@ -10,7 +10,7 @@ PauseMenu::PauseMenu()
 
 	label->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - label->getContentSize().height));
 
-	this->closeItem = MenuItemImage::create(Resources::CloseNormal, Resources::CloseSelected);
+	this->closeItem = MenuItemImage::create(Resources::Menus_WorldMaps_TutorialNodeSelected, Resources::Menus_WorldMaps_TutorialNodeUnlocked);
 	this->closeItem->setPosition(Vec2(origin.x + visibleSize.width - this->closeItem->getContentSize().width / 2, origin.y + this->closeItem->getContentSize().height / 2));
 
 	menu->setPosition(Vec2::ZERO);
