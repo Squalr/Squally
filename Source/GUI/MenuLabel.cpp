@@ -50,7 +50,7 @@ void MenuLabel::InitializeListeners()
 
 void MenuLabel::OnMouseMove(EventMouse* event)
 {
-	if (this->menuOnMouseClick != nullptr)
+	if (this->menuOnMouseClick != nullptr && this->isVisible())
 	{
 		if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{
@@ -65,7 +65,7 @@ void MenuLabel::OnMouseMove(EventMouse* event)
 
 void MenuLabel::OnMouseDown(EventMouse* event)
 {
-	if (this->menuOnMouseClick != nullptr)
+	if (this->menuOnMouseClick != nullptr && this->isVisible())
 	{
 		if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{

@@ -42,7 +42,7 @@ void MenuSprite::InitializeListeners()
 
 void MenuSprite::OnMouseMove(EventMouse* event)
 {
-	if (this->menuOnMouseClick != nullptr)
+	if (this->menuOnMouseClick != nullptr && this->isVisible())
 	{
 		if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{
@@ -59,7 +59,7 @@ void MenuSprite::OnMouseMove(EventMouse* event)
 
 void MenuSprite::OnMouseDown(EventMouse* event)
 {
-	if (this->menuOnMouseClick != nullptr)
+	if (this->menuOnMouseClick != nullptr && this->isVisible())
 	{
 		if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{
