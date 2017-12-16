@@ -7,6 +7,7 @@ Player::Player()
 	this->sprite = Sprite::create(Resources::Ingame_Sprites_Player_Idle);
 	this->physicsBody = PhysicsBody::createCircle(this->sprite->getContentSize().width / 2, PhysicsMaterial(1.0f, 1.0f, 1.0f));
 	this->physicsBody->setRotationEnable(false);
+	this->physicsBody->setDynamic(false);
 	this->physicsBody->setContactTestBitmask(TileCollision::CollisionGroupsEnum::Entity);
 
 	this->addChild(this->sprite);
@@ -199,12 +200,12 @@ void Player::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	case EventKeyboard::KeyCode::KEY_UP_ARROW:
 	case EventKeyboard::KeyCode::KEY_W:
 		// if (canjump)
-		if (this->physicsBody->getVelocity().y > -4.0f && this->physicsBody->getVelocity().y < 4.0f)
-		{
-			canJump = false;
-			this->physicsBody->setVelocity(Vec2(this->physicsBody->getVelocity().x, Player::jumpSpeed));
-		}
-		break;
+		//if (this->physicsBody->getVelocity().y > -4.0f && this->physicsBody->getVelocity().y < 4.0f)
+	{
+		canJump = false;
+		this->physicsBody->setVelocity(Vec2(this->physicsBody->getVelocity().x, Player::jumpSpeed));
+	}
+	break;
 	case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
 	case EventKeyboard::KeyCode::KEY_A:
 		this->sprite->setFlippedX(false);
@@ -212,6 +213,7 @@ void Player::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		break;
 	case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
 	case EventKeyboard::KeyCode::KEY_S:
+		this->physicsBody->setVelocity(Vec2(this->physicsBody->getVelocity().x, -Player::jumpSpeed));
 		break;
 	case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
 	case EventKeyboard::KeyCode::KEY_D:
@@ -228,6 +230,10 @@ void Player::OnKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 	case EventKeyboard::KeyCode::KEY_SPACE:
 	case EventKeyboard::KeyCode::KEY_UP_ARROW:
 	case EventKeyboard::KeyCode::KEY_W:
+		if (this->physicsBody->getVelocity().y > 0.0f)
+		{
+			this->physicsBody->setVelocity(Vec2(this->physicsBody->getVelocity().x, 0.0f));
+		}
 		break;
 	case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
 	case EventKeyboard::KeyCode::KEY_A:
@@ -238,6 +244,10 @@ void Player::OnKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 		break;
 	case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
 	case EventKeyboard::KeyCode::KEY_S:
+		if (this->physicsBody->getVelocity().y < 0.0f)
+		{
+			this->physicsBody->setVelocity(Vec2(this->physicsBody->getVelocity().x, 0.0f));
+		}
 		break;
 	case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
 	case EventKeyboard::KeyCode::KEY_D:
