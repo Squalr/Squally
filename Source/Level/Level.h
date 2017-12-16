@@ -28,8 +28,13 @@ protected:
 	Layer * environmentLayer;
 
 	Player * player;
-	InfiniteParallaxNode * backGround;
-	InfiniteParallaxNode * midGround;
+	Sprite * backGround;
+	InfiniteParallaxNode * clouds;
+	ParallaxNode * mountains;
+	ParallaxNode * mountains2;
+	ParallaxNode * trees1;
+	ParallaxNode * trees2;
+	ParallaxNode * trees3;
 	PauseMenu * pauseMenu;
 
 private:
