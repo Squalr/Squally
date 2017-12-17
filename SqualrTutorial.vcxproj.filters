@@ -99,6 +99,9 @@
     <ClCompile Include="Source\Utils\InfiniteParallaxNode.cpp">
       <Filter>Source\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Level\Background.cpp">
+      <Filter>Source\Level</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -167,8 +170,8 @@
     <ClInclude Include="Source\Utils\InfiniteParallaxNode.h">
       <Filter>Source\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Utils\PointObject.h">
-      <Filter>Source\Utils</Filter>
+    <ClInclude Include="Source\Level\Background.h">
+      <Filter>Source\Level</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

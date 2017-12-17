@@ -1,5 +1,8 @@
 #include "Player.h"
 
+Vec2 Player::position;
+int Player::health;
+
 Player::Player()
 {
 	Entity::Entity();
@@ -29,6 +32,8 @@ void Player::onEnter()
 void Player::update(float dt)
 {
 	Entity::update(dt);
+
+	this->position = this->getPosition();
 }
 
 void Player::InitializeListeners()

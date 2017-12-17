@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "Background.h"
 #include "GUI/Menus/PauseMenu.h"
 #include "Collision/TileCollision.h"
 #include "Entities/Player.h"
@@ -28,13 +29,6 @@ protected:
 	Layer * environmentLayer;
 
 	Player * player;
-	Sprite * backGround;
-	InfiniteParallaxNode * clouds;
-	ParallaxNode * mountains;
-	ParallaxNode * mountains2;
-	ParallaxNode * trees1;
-	ParallaxNode * trees2;
-	ParallaxNode * trees3;
 	PauseMenu * pauseMenu;
 
 private:
