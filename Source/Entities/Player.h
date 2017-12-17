@@ -15,6 +15,9 @@ public:
 	void onEnter() override;
 	void update(float) override;
 
+	static int health;
+	static Vec2 position;
+
 protected:
 	const float jumpSpeed = 320.0f;
 	const float walkSpeed = 128.0f;
@@ -27,8 +30,6 @@ private:
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void OnKeyReleased(EventKeyboard::KeyCode keyCode, Event* event);
 	void InitializeListeners();
-
-	static int health;
 	bool canJump;
 };
 
