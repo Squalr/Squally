@@ -12,6 +12,7 @@ class Resources
 public:
 	static const string Fonts_arial;
 	static const string Fonts_Marker_Felt;
+	static const string Fonts_Stormblade;
 	static const string HUD_Egg;
 	static const string HUD_Heart0;
 	static const string HUD_Heart1;
@@ -26,9 +27,6 @@ public:
 	static const string HUD_Heart9;
 	static const string HUD_MindPowerBack;
 	static const string HUD_MindPowerCover;
-	static const string Ingame_Background_DesertBG;
-	static const string Ingame_Background_GrassBG;
-	static const string Ingame_Background_SnowBG;
 	static const string Ingame_Background_Day_Clouds_01;
 	static const string Ingame_Background_Day_Mountains_01;
 	static const string Ingame_Background_Day_Mountains_02;
@@ -231,6 +229,7 @@ public:
 	static const string Ingame_Tiles_RaptorEditor;
 	static const string Ingame_Tiles_TileMap;
 	static const string Levels_Debug;
+	static const string Levels_Debug2;
 	static const string Menus_MouseIdle;
 	static const string Menus_MousePoint;
 	static const string Menus_CreditsMenu_CreditsBG;
@@ -267,4 +266,5 @@ public:
 	static const string Menus_WorldMaps_TutorialNodeSelected;
 	static const string Menus_WorldMaps_TutorialNodeUnlocked;
 	static const string Menus_WorldMaps_WorldMapSelector;
+	static const string Music_Will_we_get_there_Together;
 };
