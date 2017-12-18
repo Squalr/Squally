@@ -4,6 +4,7 @@
 #include "StoryMap.h"
 #include "TutorialMap.h"
 #include "Utils/Utils.h"
+#include "Utils/InfiniteParallaxNode.h"
 #include "GUI/Menus/OptionsMenu.h"
 #include "GUI/MenuLabel.h"
 #include "GUI/MenuSprite.h"
@@ -25,6 +26,7 @@ private:
 	void onEnter() override;
 	void update(float) override;
 	void InitializeListeners();
+	void InitializeMovement();
 	void OnTutorialClick(MenuSprite* menuSprite);
 	void OnMenuClick(MenuLabel* menuLabel);
 	void OnMouseMove(EventMouse* event);
@@ -32,6 +34,15 @@ private:
 	Mouse* mouse;
 	Sprite* squally;
 	Sprite* background;
+	Sprite* backgroundVines;
+	Sprite* backgroundTrees;
+	Sprite* midgroundTrees;
+	Sprite* tree;
+	Sprite* foregroundVines;
+	InfiniteParallaxNode* fog;
+	Sprite* foregroundGrassBottom;
+	Sprite* foregroundGrassTop;
+	Sprite* foregroundLight;
 	MenuSprite* monitor;
 
 	Label* hackerModeLabel;

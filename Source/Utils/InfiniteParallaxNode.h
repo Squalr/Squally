@@ -6,12 +6,14 @@ using namespace cocos2d;
 class InfiniteParallaxNode : public ParallaxNode
 {
 public:
-	static InfiniteParallaxNode* create();
-	void updatePosition();
+	static InfiniteParallaxNode* create(std::string spriteResourcePath);
 
 protected:
-	InfiniteParallaxNode();
+	InfiniteParallaxNode(std::string spriteResourcePath);
 	~InfiniteParallaxNode();
 
 	void update(float dt) override;
+
+	Sprite* nodeA;
+	Sprite* nodeB;
 };
