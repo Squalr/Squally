@@ -12,7 +12,7 @@ Background* Background::create()
 Background::Background()
 {
 	this->background = Sprite::create(Resources::Ingame_Background_Day_Sky);
-	this->clouds = InfiniteParallaxNode::create();
+	this->clouds = InfiniteParallaxNode::create(Resources::Ingame_Background_Day_Clouds_01);
 	this->mountains = ParallaxNode::create();
 	this->mountains2 = ParallaxNode::create();
 	this->trees1 = ParallaxNode::create();
@@ -24,10 +24,7 @@ Background::Background()
 
 	this->background->setPosition(Vec2(this->background->getContentSize().width / 2, this->background->getContentSize().height / 2));
 
-	Sprite* cloudSprite = Sprite::create(Resources::Ingame_Background_Day_Clouds_01);
-	this->clouds->addChild(Sprite::create(Resources::Ingame_Background_Day_Clouds_01), 0, Vec2(1.0f, 1.0f), Vec2::ZERO);
-	this->clouds->addChild(Sprite::create(Resources::Ingame_Background_Day_Clouds_01), 0, Vec2(1.0f, 1.0f), Vec2(cloudSprite->getContentSize().width - 2, 0.0f));
-	this->clouds->setPosition(Vec2(cloudSprite->getContentSize().width / 2, 720.0f));
+	this->clouds->setPosition(Vec2(0, 720.0f));
 	this->clouds->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-16.0f, 0))));
 
 	Sprite* mountainSprite = Sprite::create(Resources::Ingame_Background_Day_Mountains_01);
