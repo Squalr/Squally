@@ -1,62 +1,72 @@
 #include "TileCollision.h"
 
-void TileCollision::InitializeCollision(TMXTiledMap* map, TMXLayer* layer, TileCollision::CollisionGroupsEnum allowedTypes)
+Layer* TileCollision::InitializeCollision(ValueVector collisionObjects)
 {
-	for (int x = 0; x < layer->getLayerSize().width; x++)
-	{
-		for (int y = 0; y < layer->getLayerSize().height; y++)
-		{
-			Sprite* tile = layer->getTileAt(Vec2(x, y));
+	Layer* layer = Layer::create();
 
-			if (tile == nullptr)
+	for (int index = 0; index < size(collisionObjects); index++)
+	{
+		if (collisionObjects[index].getType() != Value::Type::MAP)
+		{
+			continue;
+		}
+
+		ValueMap object = collisionObjects[index].asValueMap();
+		ValueVector* polygonPoints = nullptr;
+
+		std::string type = object.at("type").asString();
+		auto pointsIterator = object.find("points");
+		bool isPolygon = false;
+		float width = object.at("width").asFloat();
+		float height = object.at("height").asFloat();
+		float x = object.at("x").asFloat() + width / 2.0f;
+		float y = object.at("y").asFloat() + height / 2.0f;
+
+		if (pointsIterator != object.end())
+		{
+			isPolygon = true;
+			polygonPoints = &(object.at("points").asValueVector());
+		}
+
+		Node* node = Node::create();
+		PhysicsBody* collisionBox = nullptr;
+
+		if (isPolygon)
+		{
+			Vec2* points = new Vec2[polygonPoints->size()];
+			int index = 0;
+
+			for (auto it = polygonPoints->begin(); it != polygonPoints->end(); ++it)
 			{
-				continue;
+				auto point = it->asValueMap();
+
+				float deltaX = point.at("x").asFloat();
+				float deltaY = point.at("y").asFloat();
+
+				points[index++] = Vec2(x + deltaX, y - deltaY);
 			}
 
-			ValueMap properties = map->getPropertiesForGID(layer->getTileGIDAt(Vec2(x, y))).asValueMap();
-			PhysicsBody* collisionBox = CreateTileCollision(tile->getContentSize(), properties.at("Tile").asString(), allowedTypes);
-
-			if (collisionBox != nullptr)
-			{
-				tile->addComponent(collisionBox);
-			}
+			collisionBox = PhysicsBody::createPolygon(points, polygonPoints->size(), PhysicsMaterial(0.0f, 0.0f, 0.0f));
 		}
+		else
+		{
+			collisionBox = PhysicsBody::createBox(Size(width, height), PhysicsMaterial(0.0f, 0.0f, 0.0f));
+			node->setPosition(x, y);
+		}
+
+		if (type == "solid")
+		{
+			collisionBox->setContactTestBitmask(TileCollision::CollisionGroupsEnum::Solid);
+		}
+		else if (type == "water")
+		{
+			collisionBox->setContactTestBitmask(TileCollision::CollisionGroupsEnum::Water);
+		}
+
+		collisionBox->setDynamic(false);
+		node->addComponent(collisionBox);
+		layer->addChild(node);
 	}
+
+	return layer;
 }
-
-PhysicsBody * TileCollision::CreateTileCollision(Size tileSize, std::string tileName, TileCollision::CollisionGroupsEnum allowedTypes)
-{
-	PhysicsBody* physicsBody = nullptr;
-	Size collisionSize = Size(tileSize.width - 1, tileSize.height - 1);
-
-	if (tileName == "grass-top-left")
-	{
-		if (allowedTypes & TileCollision::CollisionGroupsEnum::Solid)
-		{
-			physicsBody = PhysicsBody::createBox(collisionSize, PhysicsMaterial(0.0f, 0.0f, 0.0f));
-			physicsBody->setDynamic(false);
-			physicsBody->setContactTestBitmask(TileCollision::CollisionGroupsEnum::Solid);
-		}
-	}
-	else if (tileName == "water" || tileName == "water-top")
-	{
-		if (allowedTypes & TileCollision::CollisionGroupsEnum::Water)
-		{
-			physicsBody = PhysicsBody::createBox(collisionSize, PhysicsMaterial(0.0f, 0.0f, 0.0f));
-			physicsBody->setDynamic(false);
-			physicsBody->setContactTestBitmask(TileCollision::CollisionGroupsEnum::Water);
-		}
-	}
-	else
-	{
-		if (allowedTypes & TileCollision::CollisionGroupsEnum::Solid)
-		{
-			physicsBody = PhysicsBody::createBox(collisionSize, PhysicsMaterial(0.0f, 0.0f, 0.0f));
-			physicsBody->setDynamic(false);
-			physicsBody->setContactTestBitmask(TileCollision::CollisionGroupsEnum::Solid);
-		}
-	}
-
-	return physicsBody;
-}
-
