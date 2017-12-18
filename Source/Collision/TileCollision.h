@@ -17,8 +17,5 @@ public:
 		All = Solid | PassThrough | Water | Lava
 	};
 
-	static void InitializeCollision(TMXTiledMap* map, TMXLayer* layer, TileCollision::CollisionGroupsEnum allowedTypes);
-
-private:
-	static PhysicsBody * CreateTileCollision(Size tileSize, std::string tileName, TileCollision::CollisionGroupsEnum allowedTypes);
+	static Layer* InitializeCollision(ValueVector collisionObjects);
 };
