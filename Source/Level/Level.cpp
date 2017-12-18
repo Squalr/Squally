@@ -8,7 +8,7 @@ Level::Level(std::string levelResourceFilePath)
 	}
 
 	// Physics / collision debugging
-	// this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, -768.0f));
 
 	this->backGroundLayer = Background::create();
@@ -77,6 +77,7 @@ void Level::LoadLevel(std::string levelResourceFilePath)
 	TMXLayer* midGround = map->getLayer("midground");
 	TMXLayer* foreground = map->getLayer("foreground");
 	ValueVector objects = map->getObjectGroup("objects")->getObjects();
+	ValueVector collisionObjects = map->getObjectGroup("collision")->getObjects();
 
 	// Create entities
 	for (int index = 0; index < size(objects); index++)
@@ -98,10 +99,10 @@ void Level::LoadLevel(std::string levelResourceFilePath)
 	}
 
 	// Create midground
-	TileCollision::InitializeCollision(map, midGround, TileCollision::All);
-	TileCollision::InitializeCollision(map, foreground, TileCollision::Liquid);
+	Layer* collisionLayer = TileCollision::InitializeCollision(collisionObjects);
 
 	this->tileLayer->addChild(map);
+	this->tileLayer->addChild(collisionLayer);
 }
 
 void Level::InitializeListeners()

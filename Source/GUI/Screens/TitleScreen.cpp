@@ -129,10 +129,10 @@ void TitleScreen::InitializeMovement()
 	this->fog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-96.0f, 0))));
 
 	// Background shift
-	float backgroundDistanceX01 = -64.0f;
-	float backgroundDistanceX02 = 48.0f;
-	float backgroundDistanceX03 = -32.0f;
-	float backgroundDistanceX04 = 24.0f;
+	float backgroundDistanceX01 = 64.0f;
+	float backgroundDistanceX02 = -48.0f;
+	float backgroundDistanceX03 = 32.0f;
+	float backgroundDistanceX04 = -24.0f;
 	float backgroundDistanceX05 = -32.0f;
 	float backgroundDistanceX06 = -32.0f;
 
