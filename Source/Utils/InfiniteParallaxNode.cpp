@@ -4,21 +4,21 @@ InfiniteParallaxNode* InfiniteParallaxNode::create()
 {
 	InfiniteParallaxNode* node = new InfiniteParallaxNode();
 
-	if (node)
-	{
-		node->autorelease();
-	}
-	else
-	{
-		delete node;
-		node = nullptr;
-	}
+	node->autorelease();
 
 	return node;
 }
 
-// TODO: Just put this in an update(float dt) loop
-void InfiniteParallaxNode::updatePosition()
+InfiniteParallaxNode::InfiniteParallaxNode()
+{
+	this->scheduleUpdate();
+}
+
+InfiniteParallaxNode::~InfiniteParallaxNode()
+{
+}
+
+void InfiniteParallaxNode::update(float dt)
 {
 	if (this->getPosition().x < -_children.at(0)->getContentSize().width)
 	{

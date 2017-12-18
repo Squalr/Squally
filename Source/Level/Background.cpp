@@ -2,24 +2,16 @@
 
 Background* Background::create()
 {
-	Background* background = new Background();
+	Background* newBackground = new Background();
 
-	if (background)
-	{
-		background->autorelease();
-	}
-	else
-	{
-		delete background;
-		background = nullptr;
-	}
+	newBackground->autorelease();
 
-	return background;
+	return newBackground;
 }
 
 Background::Background()
 {
-	this->backGround = Sprite::create(Resources::Ingame_Background_Day_Sky);
+	this->background = Sprite::create(Resources::Ingame_Background_Day_Sky);
 	this->clouds = InfiniteParallaxNode::create();
 	this->mountains = ParallaxNode::create();
 	this->mountains2 = ParallaxNode::create();
@@ -27,51 +19,10 @@ Background::Background()
 	this->trees2 = ParallaxNode::create();
 	this->trees3 = ParallaxNode::create();
 
-	this->LoadLevel();
-
-	this->addChild(this->backGround);
-	this->addChild(this->clouds);
-	this->addChild(this->mountains);
-	this->addChild(this->mountains2);
-	this->addChild(this->trees1);
-	this->addChild(this->trees2);
-	this->addChild(this->trees3);
-
-	this->scheduleUpdate();
-}
-
-Background::~Background()
-{
-}
-
-void Background::update(float dt)
-{
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	Layer::update(dt);
-
-	float widthOffset = Director::getInstance()->getVisibleSize().width / 2;
-
-	// TODO:
-	float playerXOffset = Player::position.x; // 0.0f; // this->player->getPositionX() - this->player->GetWidth();
-
-	this->mountains->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 100.0f, this->mountains->getPosition().y)));
-	this->mountains2->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 80.0f, this->mountains2->getPosition().y)));
-	this->trees1->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 60.0f, this->trees1->getPosition().y)));
-	this->trees2->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 40.0f, this->trees2->getPosition().y)));
-	this->trees3->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 20.0f, this->trees3->getPosition().y)));
-
-	// TODO: This should have it's own fucking update function
-	this->clouds->updatePosition();
-}
-
-void Background::LoadLevel()
-{
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	this->backGround->setPosition(Vec2(this->backGround->getContentSize().width / 2, this->backGround->getContentSize().height / 2));
+	this->background->setPosition(Vec2(this->background->getContentSize().width / 2, this->background->getContentSize().height / 2));
 
 	Sprite* cloudSprite = Sprite::create(Resources::Ingame_Background_Day_Clouds_01);
 	this->clouds->addChild(Sprite::create(Resources::Ingame_Background_Day_Clouds_01), 0, Vec2(1.0f, 1.0f), Vec2::ZERO);
@@ -98,4 +49,34 @@ void Background::LoadLevel()
 	Sprite* treesSprite3 = Sprite::create(Resources::Ingame_Background_Day_Trees_03);
 	this->trees3->addChild(treesSprite3, 0, Vec2(1.0f, 1.0f), Vec2::ZERO);
 	this->trees3->setPosition(Vec2(treesSprite3->getContentSize().width / 2, 96.0f));
+
+	this->addChild(this->background);
+	this->addChild(this->clouds);
+	this->addChild(this->mountains);
+	this->addChild(this->mountains2);
+	this->addChild(this->trees1);
+	this->addChild(this->trees2);
+	this->addChild(this->trees3);
+
+	this->scheduleUpdate();
+}
+
+Background::~Background()
+{
+}
+
+void Background::update(float dt)
+{
+	Layer::update(dt);
+	Vec2 origin = Director::getInstance()->getVisibleOrigin();
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	float widthOffset = Director::getInstance()->getVisibleSize().width / 2;
+	float playerXOffset = Player::position.x;
+
+	this->mountains->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 100.0f, this->mountains->getPosition().y)));
+	this->mountains2->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 80.0f, this->mountains2->getPosition().y)));
+	this->trees1->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 60.0f, this->trees1->getPosition().y)));
+	this->trees2->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 40.0f, this->trees2->getPosition().y)));
+	this->trees3->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 20.0f, this->trees3->getPosition().y)));
 }

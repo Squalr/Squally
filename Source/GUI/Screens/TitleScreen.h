@@ -8,8 +8,12 @@
 #include "GUI/MenuLabel.h"
 #include "GUI/MenuSprite.h"
 #include "GUI/Mouse.h"
+#include "audio/include/SimpleAudioEngine.h"
+#include <algorithm>
+#include <string>
 
 using namespace cocos2d;
+using namespace CocosDenshion;
 
 class TitleScreen : public Scene
 {
@@ -26,6 +30,7 @@ private:
 	void OnMouseMove(EventMouse* event);
 
 	Mouse* mouse;
+	Sprite* squally;
 	Sprite* background;
 	MenuSprite* monitor;
 
