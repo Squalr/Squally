@@ -16,11 +16,9 @@ public:
 protected:
 	Background();
 	~Background();
-	Sprite * backGround;
+	Sprite * background;
 
 private:
-	void LoadLevel();
-
 	InfiniteParallaxNode * clouds;
 	ParallaxNode * mountains;
 	ParallaxNode * mountains2;

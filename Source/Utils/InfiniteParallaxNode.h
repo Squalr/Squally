@@ -8,4 +8,10 @@ class InfiniteParallaxNode : public ParallaxNode
 public:
 	static InfiniteParallaxNode* create();
 	void updatePosition();
+
+protected:
+	InfiniteParallaxNode();
+	~InfiniteParallaxNode();
+
+	void update(float dt) override;
 };
