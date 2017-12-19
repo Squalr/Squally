@@ -1,8 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
-#include "StoryMap.h"
-#include "TutorialMap.h"
+#include "Tutorial/TutorialScreen.h"
+#include "Story/StoryMap.h"
 #include "Utils/Utils.h"
 #include "Utils/InfiniteParallaxNode.h"
 #include "GUI/Menus/OptionsMenu.h"

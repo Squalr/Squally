@@ -306,6 +306,13 @@ public:
 	static const string Menus_TitleScreen_TitleScreen;
 	static const string Menus_TitleScreen_tree_fat;
 	static const string Menus_TutorialMenu_Background;
+	static const string Menus_TutorialMenu_TutorialItem;
+	static const string Menus_TutorialMenu_TutorialItemClick;
+	static const string Menus_TutorialMenu_TutorialItemHover;
+	static const string Menus_TutorialMenu_TutorialItemLocked;
+	static const string Menus_TutorialMenu_TutorialItemReplay;
+	static const string Menus_TutorialMenu_TutorialItemReplayClick;
+	static const string Menus_TutorialMenu_TutorialItemReplayHover;
 	static const string Menus_TutorialMenu_TutorialSelect;
 	static const string Menus_WorldMaps_Apple;
 	static const string Menus_WorldMaps_AppleGrayed;
