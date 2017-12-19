@@ -1,14 +1,23 @@
 #include "StoryMap.h"
 
+StoryMap * StoryMap::create()
+{
+	StoryMap* storyMap = new StoryMap();
+
+	storyMap->autorelease();
+
+	return storyMap;
+}
+
 StoryMap::StoryMap()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	this->titleLabel = new MenuLabel("Level Select", Resources::Fonts_Marker_Felt, this->titleFontSize);
-	this->infoLabel = new MenuLabel("Level 1", Resources::Fonts_Marker_Felt, this->infoFontSize);
+	this->titleLabel = MenuLabel::create("Level Select", Resources::Fonts_Marker_Felt, this->titleFontSize);
+	this->infoLabel = MenuLabel::create("Level 1", Resources::Fonts_Marker_Felt, this->infoFontSize);
 	this->background = Sprite::create(Resources::Menus_WorldMaps_StoryMap);
-	this->mouse = new Mouse();
+	this->mouse = Mouse::create();
 
 	this->titleLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->titleLabel->getContentSize().height / 2));
 	this->infoLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->infoLabel->getContentSize().height / 2 - 48));
@@ -22,7 +31,6 @@ StoryMap::StoryMap()
 
 StoryMap::~StoryMap()
 {
-	delete(this->mouse);
 }
 
 void StoryMap::onEnter()
@@ -46,7 +54,7 @@ void StoryMap::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode) {
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		Director::getInstance()->replaceScene(new TitleScreen());
+		Director::getInstance()->replaceScene(TitleScreen::create());
 		break;
 	}
 }

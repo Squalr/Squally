@@ -1,5 +1,14 @@
 #include "Level.h"
 
+Level* Level::create(std::string levelResourceFilePath)
+{
+	Level* level = new Level(levelResourceFilePath);
+
+	level->autorelease();
+
+	return level;
+}
+
 Level::Level(std::string levelResourceFilePath)
 {
 	if (!Scene::initWithPhysics())
@@ -18,7 +27,7 @@ Level::Level(std::string levelResourceFilePath)
 	this->enemyLayer = Layer::create();
 	this->environmentLayer = Layer::create();
 
-	this->pauseMenu = new PauseMenu();
+	this->pauseMenu = PauseMenu::create();
 
 	this->LoadLevel(levelResourceFilePath);
 

@@ -37,7 +37,7 @@ TutorialItem::~TutorialItem()
 
 void TutorialItem::OnTutorialClick(MenuSprite* tutorialItem)
 {
-	Director::getInstance()->replaceScene(new Level(this->tutorialMapFile));
+	Director::getInstance()->replaceScene(Level::create(this->tutorialMapFile));
 }
 
 void TutorialItem::onEnter()

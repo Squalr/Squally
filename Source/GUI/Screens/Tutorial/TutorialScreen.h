@@ -12,6 +12,9 @@ using namespace cocos2d;
 class TutorialScreen : public Scene
 {
 public:
+	static TutorialScreen * create();
+
+protected:
 	TutorialScreen();
 	~TutorialScreen();
 

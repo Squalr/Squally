@@ -2,12 +2,9 @@
 
 Game::Game()
 {
-	this->titleScreen = new TitleScreen();
-
-	Director::getInstance()->runWithScene(this->titleScreen);
+	Director::getInstance()->runWithScene(TitleScreen::create());
 }
 
 Game::~Game()
 {
-	delete(this->titleScreen);
 }

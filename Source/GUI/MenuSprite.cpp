@@ -2,11 +2,11 @@
 
 MenuSprite* MenuSprite::create(std::string spriteResource, std::string spriteSelectedResource, std::string spriteClickedResource)
 {
-	MenuSprite* node = new MenuSprite(spriteResource, spriteSelectedResource, spriteClickedResource);
+	MenuSprite* menuSprite = new MenuSprite(spriteResource, spriteSelectedResource, spriteClickedResource);
 
-	node->autorelease();
+	menuSprite->autorelease();
 
-	return node;
+	return menuSprite;
 }
 
 MenuSprite::MenuSprite(std::string spriteResource, std::string spriteSelectedResource, std::string spriteClickedResource)

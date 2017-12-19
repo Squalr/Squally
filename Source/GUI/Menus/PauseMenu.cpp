@@ -1,5 +1,14 @@
 #include "PauseMenu.h"
 
+PauseMenu * PauseMenu::create()
+{
+	PauseMenu* pauseMenu = new PauseMenu();
+
+	pauseMenu->autorelease();
+
+	return pauseMenu;
+}
+
 PauseMenu::PauseMenu()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();

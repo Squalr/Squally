@@ -19,6 +19,9 @@ using namespace CocosDenshion;
 class TitleScreen : public Scene
 {
 public:
+	static TitleScreen * create();
+
+protected:
 	TitleScreen();
 	~TitleScreen();
 
