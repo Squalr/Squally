@@ -27,8 +27,7 @@ private:
 	void update(float) override;
 	void InitializeListeners();
 	void InitializeMovement();
-	void OnTutorialClick(MenuSprite* menuSprite);
-	void OnMenuClick(MenuLabel* menuLabel);
+	void OnMenuClick(MenuSprite* menuSprite);
 	void OnMouseMove(EventMouse* event);
 
 	Mouse* mouse;
@@ -40,19 +39,22 @@ private:
 	Sprite* tree;
 	Sprite* foregroundVines;
 	InfiniteParallaxNode* fog;
+	InfiniteParallaxNode* foregroundFog;
 	Sprite* foregroundGrassBottom;
 	Sprite* foregroundGrassTop;
 	Sprite* foregroundLight;
-	MenuSprite* monitor;
+	ParticleSystem* matrixParticles;
 
 	Label* hackerModeLabel;
 
 	MenuLabel* titleLabel;
-	MenuLabel* storyModeLabel;
-	MenuLabel* optionsLabel;
-	MenuLabel* exitLabel;
+	MenuSprite* matrix;
+	MenuSprite* storyModeButton;
+	MenuSprite* optionsButton;
+	MenuSprite* exitButton;
+	Sprite* titleBar;
 
-	std::vector<MenuLabel*>* clickableMenus;
+	std::vector<MenuSprite*>* clickableMenus;
 
 	static int hackerMode;
 
