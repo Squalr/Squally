@@ -1,6 +1,6 @@
 #include "TitleScreen.h"
 
-int TitleScreen::hackerMode = 0;
+int TitleScreen::hackerMode = 1;
 
 TitleScreen::TitleScreen()
 {
@@ -98,10 +98,6 @@ TitleScreen::TitleScreen()
 	this->addChild(this->storyModeButton);
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
-	//this->addChild(this->titleLabel);
-	//this->addChild(this->storyModeLabel);
-	//this->addChild(this->optionsLabel);
-	//this->addChild(this->exitLabel);
 	this->addChild(this->mouse);
 
 	this->matrixParticles->setCascadeOpacityEnabled(true);
@@ -236,7 +232,7 @@ void TitleScreen::OnMenuClick(MenuSprite* menuSprite)
 {
 	if (menuSprite == this->matrix)
 	{
-		Director::getInstance()->replaceScene(new TutorialMap());
+		Director::getInstance()->replaceScene(new TutorialScreen());
 	}
 	else if (menuSprite == this->storyModeButton)
 	{
@@ -267,9 +263,9 @@ void TitleScreen::OnMouseMove(EventMouse* event)
 
 	for (std::vector<MenuSprite*>::iterator it = this->clickableMenus->begin(); it != this->clickableMenus->end(); ++it)
 	{
-		MenuSprite* label = *it;
+		MenuSprite* menuSprite = *it;
 
-		if (Utils::Intersects(label, Vec2(event->getCursorX(), event->getCursorY())))
+		if (menuSprite->isVisible() && Utils::Intersects(menuSprite, Vec2(event->getCursorX(), event->getCursorY())))
 		{
 			this->mouse->SetCanClick(true);
 			return;
