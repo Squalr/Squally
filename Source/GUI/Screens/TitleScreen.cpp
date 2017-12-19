@@ -29,14 +29,22 @@ TitleScreen::TitleScreen()
 
 	this->squally = Sprite::create(Resources::Menus_TitleScreen_Squally);
 	this->titleLabel = new MenuLabel("Squally", Resources::Fonts_Marker_Felt, titleFontSize);
-	this->matrix = new MenuSprite(Resources::Menus_TitleScreen_Monitor, Resources::Menus_TitleScreen_MonitorSelected, Resources::Menus_TitleScreen_MonitorSelected, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+	this->titleBar = Sprite::create(Resources::Menus_TitleScreen_TitleBar);
+
+	this->matrix = MenuSprite::create(Resources::Menus_TitleScreen_Monitor, Resources::Menus_TitleScreen_MonitorSelected, Resources::Menus_TitleScreen_MonitorSelected);
+	this->storyModeButton = MenuSprite::create(Resources::Menus_TitleScreen_StoryModeButton, Resources::Menus_TitleScreen_StoryModeButtonHover, Resources::Menus_TitleScreen_StoryModeButtonClick);
+	this->optionsButton = MenuSprite::create(Resources::Menus_TitleScreen_OptionsButton, Resources::Menus_TitleScreen_OptionsButtonHover, Resources::Menus_TitleScreen_OptionsButtonClick);
+	this->exitButton = MenuSprite::create(Resources::Menus_TitleScreen_ExitButton, Resources::Menus_TitleScreen_ExitButtonHover, Resources::Menus_TitleScreen_ExitButtonClick);
 
 	this->matrixParticles = ParticleGalaxy::create();
+	this->foregroundParticles = ParticleSystem::create(Resources::Particles_title);
+	this->foregroundParticles->setTexture(TextureCache::sharedTextureCache()->addImage(Resources::Ingame_Objects_Egg));
+	foregroundParticles->resetSystem();
 
-	this->titleBar = Sprite::create(Resources::Menus_TitleScreen_TitleBar);
-	this->storyModeButton = MenuSprite::create(Resources::Menus_TitleScreen_StoryModeButton, Resources::Menus_TitleScreen_StoryModeButtonHover, Resources::Menus_TitleScreen_StoryModeButton, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
-	this->optionsButton = MenuSprite::create(Resources::Menus_TitleScreen_OptionsButton, Resources::Menus_TitleScreen_OptionsButtonHover, Resources::Menus_TitleScreen_OptionsButtonClick, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
-	this->exitButton = MenuSprite::create(Resources::Menus_TitleScreen_ExitButton, Resources::Menus_TitleScreen_ExitButtonHover, Resources::Menus_TitleScreen_ExitButtonClick, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+	this->matrix->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+	this->storyModeButton->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+	this->optionsButton->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+	this->exitButton->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 
 	std::stringstream stream;
 	stream << std::hex << (int)(&this->hackerMode);
@@ -66,6 +74,7 @@ TitleScreen::TitleScreen()
 	this->foregroundGrassBottom->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y));
 	this->foregroundGrassTop->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 32.0f));
 	this->foregroundLight->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - foregroundLight->getContentSize().height / 2));
+	this->foregroundParticles->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->squally->setPosition(Vec2(origin.x + visibleSize.width / 2 + 240.0f, origin.y + visibleSize.height / 2 - 32.0f));
 	this->squally->setFlippedX(true);
 
@@ -94,6 +103,7 @@ TitleScreen::TitleScreen()
 	this->addChild(this->foregroundGrassTop);
 	this->addChild(this->foregroundLight);
 	this->addChild(this->squally);
+	this->addChild(this->foregroundParticles);
 	this->addChild(this->titleBar);
 	this->addChild(this->storyModeButton);
 	this->addChild(this->optionsButton);
@@ -114,13 +124,6 @@ TitleScreen::TitleScreen()
 TitleScreen::~TitleScreen()
 {
 	delete(this->mouse);
-
-	for (std::vector<MenuSprite*>::iterator it = this->clickableMenus->begin(); it != this->clickableMenus->end(); ++it)
-	{
-		MenuSprite* label = *it;
-		delete(label);
-	}
-
 	delete(this->clickableMenus);
 }
 

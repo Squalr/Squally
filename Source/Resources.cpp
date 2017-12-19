@@ -327,3 +327,4 @@ const string Resources::Menus_WorldMaps_TutorialNodeSelected = "Menus\\WorldMaps
 const string Resources::Menus_WorldMaps_TutorialNodeUnlocked = "Menus\\WorldMaps\\TutorialNodeUnlocked.png";
 const string Resources::Menus_WorldMaps_WorldMapSelector = "Menus\\WorldMaps\\WorldMapSelector.png";
 const string Resources::Music_Will_we_get_there_Together = "Music\\Will we get there Together.mp3";
+const string Resources::Particles_title = "Particles\\title.plist";

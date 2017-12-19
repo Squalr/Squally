@@ -332,4 +332,5 @@ public:
 	static const string Menus_WorldMaps_TutorialNodeUnlocked;
 	static const string Menus_WorldMaps_WorldMapSelector;
 	static const string Music_Will_we_get_there_Together;
+	static const string Particles_title;
 };

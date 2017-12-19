@@ -18,8 +18,9 @@ TutorialItem::TutorialItem(std::string description, std::string mapFile, Vec2 po
 	this->sprite = MenuSprite::create(
 		Resources::Menus_TutorialMenu_TutorialItem,
 		Resources::Menus_TutorialMenu_TutorialItemHover,
-		Resources::Menus_TutorialMenu_TutorialItemClick,
-		CC_CALLBACK_1(TutorialItem::OnTutorialClick, this));
+		Resources::Menus_TutorialMenu_TutorialItemClick);
+
+	this->sprite->SetClickCallback(CC_CALLBACK_1(TutorialItem::OnTutorialClick, this));
 
 	this->description->setPosition(position);
 	this->sprite->setPosition(position);
