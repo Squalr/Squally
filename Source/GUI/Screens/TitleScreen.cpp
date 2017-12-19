@@ -18,7 +18,7 @@ TitleScreen::TitleScreen()
 	if (!audio->isBackgroundMusicPlaying())
 	{
 		audio->preloadBackgroundMusic(Resources::Music_Will_we_get_there_Together.c_str());
-		// audio->playBackgroundMusic(Resources::Music_Will_we_get_there_Together.c_str(), true);
+		audio->playBackgroundMusic(Resources::Music_Will_we_get_there_Together.c_str(), true);
 	}
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -46,9 +46,8 @@ TitleScreen::TitleScreen()
 	this->exitButton = MenuSprite::create(Resources::Menus_TitleScreen_ExitButton, Resources::Menus_TitleScreen_ExitButtonHover, Resources::Menus_TitleScreen_ExitButtonClick);
 
 	this->matrixParticles = ParticleGalaxy::create();
-	this->foregroundParticles = ParticleSystem::create(Resources::Particles_title);
-	this->foregroundParticles->setTexture(TextureCache::sharedTextureCache()->addImage(Resources::Ingame_Objects_Egg));
-	foregroundParticles->resetSystem();
+	this->windParticles = ParticleSystemQuad::create(Resources::Particles_Wind);
+	this->fireflyParticles = ParticleSystemQuad::create(Resources::Particles_Fireflies);
 
 	this->matrix->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 	this->storyModeButton->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
@@ -83,7 +82,8 @@ TitleScreen::TitleScreen()
 	this->foregroundGrassBottom->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y));
 	this->foregroundGrassTop->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 32.0f));
 	this->foregroundLight->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - foregroundLight->getContentSize().height / 2));
-	this->foregroundParticles->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->windParticles->setPosition(Vec2(origin.x + visibleSize.width, origin.y + visibleSize.height / 2));
+	this->fireflyParticles->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->squally->setPosition(Vec2(origin.x + visibleSize.width / 2 + 240.0f, origin.y + visibleSize.height / 2 - 32.0f));
 	this->squally->setFlippedX(true);
 
@@ -107,12 +107,13 @@ TitleScreen::TitleScreen()
 	this->addChild(this->hackerModeLabel);
 	this->addChild(this->matrix);
 	this->addChild(this->matrixParticles);
+	this->addChild(this->fireflyParticles);
+	this->addChild(this->windParticles);
 	this->addChild(this->foregroundFog);
 	this->addChild(this->foregroundGrassBottom);
 	this->addChild(this->foregroundGrassTop);
 	this->addChild(this->foregroundLight);
 	this->addChild(this->squally);
-	this->addChild(this->foregroundParticles);
 	this->addChild(this->titleBar);
 	this->addChild(this->storyModeButton);
 	this->addChild(this->optionsButton);
@@ -166,7 +167,7 @@ void TitleScreen::InitializeMovement()
 	// Background shift
 	float backgroundDistanceX01 = 64.0f;
 	float backgroundDistanceX02 = -48.0f;
-	float backgroundDistanceX03 = 32.0f;
+	float backgroundDistanceX03 = 8.0f;
 	float backgroundDistanceX04 = -24.0f;
 	float backgroundDistanceX05 = -32.0f;
 	float backgroundDistanceX06 = -32.0f;
