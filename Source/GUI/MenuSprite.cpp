@@ -1,44 +1,49 @@
 #include "MenuSprite.h"
 
-MenuSprite* MenuSprite::create(std::string spriteResource, std::string spriteSelectedResource, std::string spriteDownResource)
+MenuSprite* MenuSprite::create(std::string spriteResource, std::string spriteSelectedResource, std::string spriteClickedResource)
 {
-	MenuSprite* node = new MenuSprite(spriteResource, spriteSelectedResource, spriteDownResource);
+	MenuSprite* node = new MenuSprite(spriteResource, spriteSelectedResource, spriteClickedResource);
 
 	node->autorelease();
 
 	return node;
 }
 
-MenuSprite* MenuSprite::create(std::string spriteResource, std::string spriteSelectedResource, std::string spriteDownResource, std::function<void(MenuSprite*)> onMouseClick)
+MenuSprite::MenuSprite(std::string spriteResource, std::string spriteSelectedResource, std::string spriteClickedResource)
 {
-	MenuSprite* node = new MenuSprite(spriteResource, spriteSelectedResource, spriteDownResource, onMouseClick);
-
-	node->autorelease();
-
-	return node;
-}
-
-MenuSprite::MenuSprite(std::string spriteResource, std::string spriteSelectedResource, std::string spriteDownResource) : MenuSprite(spriteResource, spriteSelectedResource, spriteDownResource, nullptr)
-{
-}
-
-MenuSprite::MenuSprite(std::string spriteResource, std::string spriteSelectedResource, std::string spriteDownResource, std::function<void(MenuSprite*)> onMouseClick)
-{
-	this->menuOnMouseClick = onMouseClick;
-
+	this->menuOnMouseClick = nullptr;
 	this->sprite = Sprite::create(spriteResource);
+	this->spriteClicked = Sprite::create(spriteClickedResource);
 	this->spriteSelected = Sprite::create(spriteSelectedResource);
 
+	this->spriteClicked->setVisible(false);
 	this->spriteSelected->setVisible(false);
 
 	this->setContentSize(this->sprite->getContentSize());
 
 	this->addChild(this->sprite);
+	this->addChild(this->spriteClicked);
 	this->addChild(this->spriteSelected);
+
 }
 
 MenuSprite::~MenuSprite()
 {
+}
+
+void MenuSprite::SetClickCallback(std::function<void(MenuSprite*)> onMouseClick)
+{
+	this->menuOnMouseClick = onMouseClick;
+}
+
+void SetMouseOverSound(std::string soundResource)
+{
+
+}
+
+void SetClickSound(std::string soundResource)
+{
+
 }
 
 void MenuSprite::onEnter()
@@ -54,6 +59,7 @@ void MenuSprite::InitializeListeners()
 
 	mouseListener->onMouseMove = CC_CALLBACK_1(MenuSprite::OnMouseMove, this);
 	mouseListener->onMouseDown = CC_CALLBACK_1(MenuSprite::OnMouseDown, this);
+	mouseListener->onMouseUp = CC_CALLBACK_1(MenuSprite::OnMouseUp, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
@@ -64,18 +70,39 @@ void MenuSprite::OnMouseMove(EventMouse* event)
 	{
 		if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{
-			this->sprite->setVisible(false);
-			this->spriteSelected->setVisible(true);
+			if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
+			{
+				this->sprite->setVisible(false);
+				this->spriteClicked->setVisible(true);
+				this->spriteSelected->setVisible(false);
+			}
+			else
+			{
+				this->sprite->setVisible(false);
+				this->spriteClicked->setVisible(false);
+				this->spriteSelected->setVisible(true);
+			}
 		}
 		else
 		{
 			this->sprite->setVisible(true);
+			this->spriteClicked->setVisible(false);
 			this->spriteSelected->setVisible(false);
 		}
 	}
 }
 
 void MenuSprite::OnMouseDown(EventMouse* event)
+{
+	if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
+	{
+		this->sprite->setVisible(false);
+		this->spriteClicked->setVisible(true);
+		this->spriteSelected->setVisible(false);
+	}
+}
+
+void MenuSprite::OnMouseUp(EventMouse* event)
 {
 	if (this->menuOnMouseClick != nullptr && this->isVisible())
 	{

@@ -20,6 +20,7 @@ foreach (string file in Directory.EnumerateFiles(this.Host.ResolvePath("../Resou
 		!file.EndsWith(".jpg") &&
 		!file.EndsWith(".ttf") &&
 		!file.EndsWith(".mp3") &&
+		!file.EndsWith(".plist") &&
 		!file.EndsWith(".tmx")) {
 			continue;
 		}

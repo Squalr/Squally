@@ -44,6 +44,7 @@ private:
 	Sprite* foregroundGrassTop;
 	Sprite* foregroundLight;
 	ParticleSystem* matrixParticles;
+	ParticleSystem* foregroundParticles;
 
 	Label* hackerModeLabel;
 

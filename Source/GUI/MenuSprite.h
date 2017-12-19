@@ -8,11 +8,14 @@ using namespace cocos2d;
 class MenuSprite : public Node
 {
 public:
-	static MenuSprite * create(std::string spriteResource, std::string spriteSelectedResource, std::string spriteDownResource);
-	static MenuSprite * create(std::string spriteResource, std::string spriteSelectedResource, std::string spriteDownResource, std::function<void(MenuSprite*)> onMouseClick);
+	static MenuSprite * create(std::string spriteResource, std::string spriteSelectedResource, std::string spriteClickedResource);
 
-	MenuSprite(std::string spriteResource, std::string spriteSelectedResource, std::string spriteDownResource);
-	MenuSprite(std::string spriteResource, std::string spriteSelectedResource, std::string spriteDownResource, std::function<void(MenuSprite*)> onMouseClick);
+	void SetClickCallback(std::function<void(MenuSprite*)> onMouseClick);
+	void SetMouseOverSound(std::string soundResource);
+	void SetClickSound(std::string soundResource);
+
+protected:
+	MenuSprite(std::string spriteResource, std::string spriteSelectedResource, std::string spriteClickedResource);
 	~MenuSprite();
 
 private:
@@ -20,8 +23,10 @@ private:
 	void InitializeListeners();
 	void OnMouseMove(EventMouse* event);
 	void OnMouseDown(EventMouse* event);
+	void OnMouseUp(EventMouse* event);
 
 	Sprite* sprite;
+	Sprite* spriteClicked;
 	Sprite* spriteSelected;
 	std::function<void(MenuSprite*)> menuOnMouseClick;
 };
