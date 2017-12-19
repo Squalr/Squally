@@ -1,24 +1,25 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "TutorialItem.h"
 #include "GUI/Mouse.h"
 #include "GUI/MenuLabel.h"
-#include "GUI/Screens/MapNode.h"
+#include "GUI/MenuSprite.h"
 #include "GUI/Screens/TitleScreen.h"
 
 using namespace cocos2d;
 
-class TutorialMap : public Scene
+class TutorialScreen : public Scene
 {
 public:
-	TutorialMap();
-	~TutorialMap();
+	TutorialScreen();
+	~TutorialScreen();
 
 private:
 	void LoadNodes();
 	void onEnter() override;
 	void InitializeListeners();
-	void OnMouseOver(MapNode* node);
+	void OnMouseOver(TutorialItem* node);
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
 	Mouse* mouse;
@@ -26,6 +27,7 @@ private:
 	Sprite* background;
 	MenuLabel* titleLabel;
 	MenuLabel* infoLabel;
+	std::vector<MenuSprite*>* tutorialButtons;
 
 	const float titleFontSize = 48.0f;
 	const float infoFontSize = 32.0f;

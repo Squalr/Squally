@@ -1,6 +1,6 @@
-#include "TutorialMap.h"
+#include "TutorialScreen.h"
 
-TutorialMap::TutorialMap()
+TutorialScreen::TutorialScreen()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -23,16 +23,16 @@ TutorialMap::TutorialMap()
 	this->addChild(this->mouse);
 }
 
-TutorialMap::~TutorialMap()
+TutorialScreen::~TutorialScreen()
 {
 }
 
-void TutorialMap::OnMouseOver(MapNode* node)
+void TutorialScreen::OnMouseOver(TutorialItem* node)
 {
 	this->infoLabel->SetText(node->nodeMapName);
 }
 
-void TutorialMap::LoadNodes()
+void TutorialScreen::LoadNodes()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -40,41 +40,43 @@ void TutorialMap::LoadNodes()
 	float screenCenterX = origin.x + visibleSize.width / 2;
 	float screenCenterY = origin.y + visibleSize.height / 2;
 
-	std::function<void(MapNode*)> callback = CC_CALLBACK_1(TutorialMap::OnMouseOver, this);
+	std::function<void(TutorialItem*)> callback = CC_CALLBACK_1(TutorialScreen::OnMouseOver, this);
 
-	this->addChild(new MapNode(
+	this->tutorialButtons = new std::vector<MenuSprite*>();
+
+	this->addChild(new TutorialItem(
 		"Exact Value Scan",
-		Resources::Levels_Debug,
-		Vec2(screenCenterX - 440.0f, screenCenterY + 280.0f),
+		Resources::Menus_TutorialMenu_TutorialItem,
+		Vec2(screenCenterX, screenCenterY + 480.0f),
 		true,
 		callback
 	));
 
-	this->addChild(new MapNode(
+	this->addChild(new TutorialItem(
 		"Unknown Value Scan",
-		Resources::Levels_Debug,
-		Vec2(screenCenterX - 400.0f, screenCenterY + 240.0f),
+		Resources::Menus_TutorialMenu_TutorialItem,
+		Vec2(screenCenterX, screenCenterY + 320.0f),
 		true,
 		callback
 	));
 }
 
-void TutorialMap::onEnter()
+void TutorialScreen::onEnter()
 {
 	Scene::onEnter();
 
 	this->InitializeListeners();
 }
 
-void TutorialMap::InitializeListeners()
+void TutorialScreen::InitializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
-	listener->onKeyPressed = CC_CALLBACK_2(TutorialMap::OnKeyPressed, this);
+	listener->onKeyPressed = CC_CALLBACK_2(TutorialScreen::OnKeyPressed, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-void TutorialMap::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+void TutorialScreen::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode) {
 	case EventKeyboard::KeyCode::KEY_ESCAPE:

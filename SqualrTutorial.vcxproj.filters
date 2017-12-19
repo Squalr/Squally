@@ -31,6 +31,12 @@
     <Filter Include="Source\Utils">
       <UniqueIdentifier>{8f7b5b30-247a-452b-96b8-2d42834c1248}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\GUI\Screens\Story">
+      <UniqueIdentifier>{d79eed0d-29f2-48cd-a961-3742ff0dc3d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\GUI\Screens\Tutorial">
+      <UniqueIdentifier>{5909d9c4-e7f8-46ec-b84b-8b178ffc70b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -54,9 +60,6 @@
     <ClCompile Include="Source\GUI\Menus\PauseMenu.cpp">
       <Filter>Source\GUI\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GUI\Screens\TitleScreen.cpp">
-      <Filter>Source\GUI\Screens</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -72,12 +75,6 @@
     <ClCompile Include="Source\GUI\Mouse.cpp">
       <Filter>Source\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GUI\Screens\StoryMap.cpp">
-      <Filter>Source\GUI\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\Screens\TutorialMap.cpp">
-      <Filter>Source\GUI\Screens</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GUI\MenuLabel.cpp">
       <Filter>Source\GUI</Filter>
     </ClCompile>
@@ -86,9 +83,6 @@
     </ClCompile>
     <ClCompile Include="Source\Config\ConfigManager.cpp">
       <Filter>Source\Config</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\Screens\MapNode.cpp">
-      <Filter>Source\GUI\Screens</Filter>
     </ClCompile>
     <ClCompile Include="Source\Utils\Utils.cpp">
       <Filter>Source\Utils</Filter>
@@ -101,6 +95,21 @@
     </ClCompile>
     <ClCompile Include="Source\Level\Background.cpp">
       <Filter>Source\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Screens\TitleScreen.cpp">
+      <Filter>Source\GUI\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Screens\Story\MapNode.cpp">
+      <Filter>Source\GUI\Screens\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Screens\Story\StoryMap.cpp">
+      <Filter>Source\GUI\Screens\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Screens\Tutorial\TutorialItem.cpp">
+      <Filter>Source\GUI\Screens\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Screens\Tutorial\TutorialScreen.cpp">
+      <Filter>Source\GUI\Screens\Tutorial</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -125,9 +134,6 @@
     <ClInclude Include="Source\GUI\Menus\PauseMenu.h">
       <Filter>Source\GUI\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GUI\Screens\TitleScreen.h">
-      <Filter>Source\GUI\Screens</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Main.h">
       <Filter>Source</Filter>
     </ClInclude>
@@ -143,12 +149,6 @@
     <ClInclude Include="Source\GUI\Mouse.h">
       <Filter>Source\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GUI\Screens\TutorialMap.h">
-      <Filter>Source\GUI\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GUI\Screens\StoryMap.h">
-      <Filter>Source\GUI\Screens</Filter>
-    </ClInclude>
     <ClInclude Include="Source\GUI\MenuLabel.h">
       <Filter>Source\GUI</Filter>
     </ClInclude>
@@ -157,9 +157,6 @@
     </ClInclude>
     <ClInclude Include="Source\Config\ConfigManager.h">
       <Filter>Source\Config</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GUI\Screens\MapNode.h">
-      <Filter>Source\GUI\Screens</Filter>
     </ClInclude>
     <ClInclude Include="Source\Utils\Utils.h">
       <Filter>Source\Utils</Filter>
@@ -172,6 +169,21 @@
     </ClInclude>
     <ClInclude Include="Source\Level\Background.h">
       <Filter>Source\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Screens\TitleScreen.h">
+      <Filter>Source\GUI\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Screens\Story\StoryMap.h">
+      <Filter>Source\GUI\Screens\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Screens\Story\MapNode.h">
+      <Filter>Source\GUI\Screens\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Screens\Tutorial\TutorialScreen.h">
+      <Filter>Source\GUI\Screens\Tutorial</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Screens\Tutorial\TutorialItem.h">
+      <Filter>Source\GUI\Screens\Tutorial</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
