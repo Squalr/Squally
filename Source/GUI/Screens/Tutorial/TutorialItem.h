@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "GUI/Mouse.h"
+#include "GUI/MenuSprite.h"
 #include "Level/Level.h"
 #include "Utils/Utils.h"
 
@@ -10,23 +11,23 @@ using namespace cocos2d;
 class TutorialItem : public Node
 {
 public:
-	TutorialItem(std::string mapName, std::string mapFile, Vec2 position, bool tutorialNode, std::function<void(TutorialItem*)> onMouseOver);
-	~TutorialItem();
+	static TutorialItem * create(std::string description, std::string mapFile, Vec2 position);
 
-	std::string nodeMapName;
-	std::string nodeMapFile;
+	std::string tutorialDescription;
+	std::string tutorialMapFile;
+
+protected:
+	TutorialItem(std::string description, std::string mapFile, Vec2 position);
+	~TutorialItem();
 
 private:
 	void onEnter() override;
-	void InitializeListeners();
-	void OnMouseMove(EventMouse* event);
-	void OnMouseDown(EventMouse* event);
+	void OnTutorialClick(MenuSprite* tutorialItem);
 
 	std::function<void(TutorialItem*)> onMouseOverEvent;
 
 	Mouse* mouse;
-	Sprite* sprite;
-	Sprite* spriteLocked;
-	Sprite* spriteSelected;
+	Label* description;
+	MenuSprite* sprite;
 };
 
