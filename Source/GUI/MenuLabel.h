@@ -8,8 +8,12 @@ using namespace cocos2d;
 class MenuLabel : public Node
 {
 public:
+	static MenuLabel * create(std::string labelText, std::string fontResource, float fontSize);
+
+	void SetCallback(std::function<void(MenuLabel*)> callback);
+
+protected:
 	MenuLabel(std::string labelText, std::string fontResource, float fontSize);
-	MenuLabel(std::string labelText, std::string fontResource, float fontSize, std::function<void(MenuLabel*)> onMouseClick);
 	~MenuLabel();
 
 	void SetText(std::string text);

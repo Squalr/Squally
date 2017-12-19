@@ -1,22 +1,23 @@
 #include "MapNode.h"
 
-MapNode::MapNode(std::string mapName, std::string mapFile, Vec2 position, bool tutorialNode, std::function<void(MapNode*)> onMouseOver)
+MapNode* MapNode::create(std::string mapName, std::string mapFile, Vec2 position)
+{
+	MapNode* mapNode = new MapNode(mapName, mapFile, position);
+
+	mapNode->autorelease();
+
+	return mapNode;
+}
+
+MapNode::MapNode(std::string mapName, std::string mapFile, Vec2 position)
 {
 	this->nodeMapName = mapName;
 	this->nodeMapFile = mapFile;
 	this->setPosition(position);
-	this->onMouseOverEvent = onMouseOver;
+	this->onMouseOverEvent = nullptr;
 
-	if (tutorialNode)
-	{
-		this->sprite = Sprite::create(Resources::Menus_WorldMaps_TutorialNodeUnlocked);
-		this->spriteSelected = Sprite::create(Resources::Menus_WorldMaps_TutorialNodeSelected);
-	}
-	else
-	{
-		this->sprite = Sprite::create(Resources::Menus_WorldMaps_LevelNodeUnlocked);
-		this->spriteSelected = Sprite::create(Resources::Menus_WorldMaps_TutorialNodeSelected);
-	}
+	this->sprite = Sprite::create(Resources::Menus_WorldMaps_LevelNodeUnlocked);
+	this->spriteSelected = Sprite::create(Resources::Menus_WorldMaps_TutorialNodeSelected);
 
 	this->setContentSize(this->sprite->getContentSize());
 
@@ -28,6 +29,11 @@ MapNode::MapNode(std::string mapName, std::string mapFile, Vec2 position, bool t
 
 MapNode::~MapNode()
 {
+}
+
+void MapNode::SetCallBack(std::function<void(MapNode*)> onMouseOver)
+{
+	this->onMouseOverEvent = onMouseOver;
 }
 
 void MapNode::onEnter()
@@ -66,7 +72,7 @@ void MapNode::OnMouseDown(EventMouse* event)
 {
 	if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 	{
-		Director::getInstance()->replaceScene(new Level(this->nodeMapFile));
+		Director::getInstance()->replaceScene(Level::create(this->nodeMapFile));
 	}
 }
 

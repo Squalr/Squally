@@ -11,6 +11,9 @@ using namespace cocos2d;
 class OptionsMenu : public Scene
 {
 public:
+	static OptionsMenu * create();
+
+protected:
 	OptionsMenu();
 	~OptionsMenu();
 
@@ -24,7 +27,6 @@ private:
 	Mouse* mouse;
 	Sprite* background;
 
-	MenuLabel* titleLabel;
 	MenuLabel* fullScreenLabel;
 	MenuLabel* windowedLabel;
 	MenuLabel* exitLabel;

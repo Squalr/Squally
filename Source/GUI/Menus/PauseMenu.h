@@ -7,6 +7,9 @@ using namespace cocos2d;
 class PauseMenu : public Scene
 {
 public:
+	static PauseMenu * create();
+
+protected:
 	PauseMenu();
 	~PauseMenu();
 

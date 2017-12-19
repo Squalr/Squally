@@ -1,12 +1,17 @@
 #include "MenuLabel.h"
 
-MenuLabel::MenuLabel(std::string labelText, std::string fontResource, float fontSize) : MenuLabel(labelText, fontResource, fontSize, nullptr)
+MenuLabel * MenuLabel::create(std::string labelText, std::string fontResource, float fontSize)
 {
+	MenuLabel* menuLabel = new MenuLabel(labelText, fontResource, fontSize);
+
+	menuLabel->autorelease();
+
+	return menuLabel;
 }
 
-MenuLabel::MenuLabel(std::string labelText, std::string fontResource, float fontSize, std::function<void(MenuLabel*)> onMouseClick)
+MenuLabel::MenuLabel(std::string labelText, std::string fontResource, float fontSize)
 {
-	this->menuOnMouseClick = onMouseClick;
+	this->menuOnMouseClick = nullptr;
 
 	this->label = Label::createWithTTF(labelText, fontResource, fontSize);
 	this->labelHighlighted = Label::createWithTTF(labelText, fontResource, fontSize);
@@ -21,6 +26,11 @@ MenuLabel::MenuLabel(std::string labelText, std::string fontResource, float font
 
 MenuLabel::~MenuLabel()
 {
+}
+
+void MenuLabel::SetCallback(std::function<void(MenuLabel*)> callback)
+{
+	this->menuOnMouseClick = callback;
 }
 
 void MenuLabel::SetText(std::string text)
