@@ -10,11 +10,16 @@ using namespace cocos2d;
 class MapNode : public Node
 {
 public:
-	MapNode(std::string mapName, std::string mapFile, Vec2 position, bool tutorialNode, std::function<void(MapNode*)> onMouseOver);
-	~MapNode();
+	static MapNode * create(std::string mapName, std::string mapFile, Vec2 position);
+
+	void SetCallBack(std::function<void(MapNode*)> onMouseOver);
 
 	std::string nodeMapName;
 	std::string nodeMapFile;
+
+protected:
+	MapNode(std::string mapName, std::string mapFile, Vec2 position);
+	~MapNode();
 
 private:
 	void onEnter() override;

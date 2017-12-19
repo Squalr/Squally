@@ -1,5 +1,14 @@
 #include "Mouse.h"
 
+Mouse* Mouse::create()
+{
+	Mouse* mouse = new Mouse();
+
+	mouse->autorelease();
+
+	return mouse;
+}
+
 Mouse::Mouse()
 {
 	this->mouseSpriteIdle = Sprite::create(Resources::Menus_MouseIdle);

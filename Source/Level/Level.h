@@ -12,6 +12,9 @@ using namespace cocos2d;
 class Level : public Scene
 {
 public:
+	static Level* create(std::string levelResourceFilePath);
+
+protected:
 	Level(std::string levelResourceFilePath);
 	~Level();
 

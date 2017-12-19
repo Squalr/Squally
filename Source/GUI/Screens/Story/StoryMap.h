@@ -10,6 +10,9 @@ using namespace cocos2d;
 class StoryMap : public Scene
 {
 public:
+	static StoryMap * create();
+
+protected:
 	StoryMap();
 	~StoryMap();
 

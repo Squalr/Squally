@@ -1,14 +1,23 @@
 #include "TutorialScreen.h"
 
+TutorialScreen * TutorialScreen::create()
+{
+	TutorialScreen* tutorialScreen = new TutorialScreen();
+
+	tutorialScreen->autorelease();
+
+	return tutorialScreen;
+}
+
 TutorialScreen::TutorialScreen()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	this->titleLabel = new MenuLabel("", Resources::Fonts_Marker_Felt, this->titleFontSize);
-	this->infoLabel = new MenuLabel("", Resources::Fonts_Marker_Felt, this->titleFontSize);
+	this->titleLabel = MenuLabel::create("", Resources::Fonts_Marker_Felt, this->titleFontSize);
+	this->infoLabel = MenuLabel::create("", Resources::Fonts_Marker_Felt, this->titleFontSize);
 	this->background = Sprite::create(Resources::Menus_TutorialMenu_TutorialSelect);
-	this->mouse = new Mouse();
+	this->mouse = Mouse::create();
 
 	this->titleLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->titleLabel->getContentSize().height / 2));
 	this->infoLabel->setPosition(Vec2(origin.x + visibleSize.width / 2 + this->infoLabel->getContentSize().width / 2, origin.y + visibleSize.height - 24));
@@ -81,7 +90,7 @@ void TutorialScreen::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode) {
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		Director::getInstance()->replaceScene(new TitleScreen());
+		Director::getInstance()->replaceScene(TitleScreen::create());
 		break;
 	}
 }

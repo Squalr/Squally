@@ -7,10 +7,13 @@ using namespace cocos2d;
 class Mouse : public Node
 {
 public:
-	Mouse();
-	~Mouse();
+	static Mouse * create();
 
 	void SetCanClick(bool canClick);
+
+protected:
+	Mouse();
+	~Mouse();
 
 private:
 	void onEnter() override;

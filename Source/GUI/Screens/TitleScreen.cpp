@@ -2,6 +2,15 @@
 
 int TitleScreen::hackerMode = 1;
 
+TitleScreen * TitleScreen::create()
+{
+	TitleScreen* titleScreen = new TitleScreen();
+
+	titleScreen->autorelease();
+
+	return titleScreen;
+}
+
 TitleScreen::TitleScreen()
 {
 	SimpleAudioEngine* audio = SimpleAudioEngine::getInstance();
@@ -28,7 +37,7 @@ TitleScreen::TitleScreen()
 	this->foregroundLight = Sprite::create(Resources::Menus_TitleScreen_bg_light_02);
 
 	this->squally = Sprite::create(Resources::Menus_TitleScreen_Squally);
-	this->titleLabel = new MenuLabel("Squally", Resources::Fonts_Marker_Felt, titleFontSize);
+	this->titleLabel = MenuLabel::create("Squally", Resources::Fonts_Marker_Felt, titleFontSize);
 	this->titleBar = Sprite::create(Resources::Menus_TitleScreen_TitleBar);
 
 	this->matrix = MenuSprite::create(Resources::Menus_TitleScreen_Monitor, Resources::Menus_TitleScreen_MonitorSelected, Resources::Menus_TitleScreen_MonitorSelected);
@@ -55,7 +64,7 @@ TitleScreen::TitleScreen()
 	this->hackerModeLabel->setColor(Color3B(173, 135, 108));
 	this->hackerModeLabel->setSkewX(-12.0f);
 
-	this->mouse = new Mouse();
+	this->mouse = Mouse::create();
 	this->clickableMenus = new vector<MenuSprite*>();
 
 	this->hackerModeLabel->setPosition(Vec2(origin.x + visibleSize.width / 2 - 96.0f, origin.x + visibleSize.height / 2 + 296.0f));
@@ -123,7 +132,6 @@ TitleScreen::TitleScreen()
 
 TitleScreen::~TitleScreen()
 {
-	delete(this->mouse);
 	delete(this->clickableMenus);
 }
 
@@ -235,15 +243,15 @@ void TitleScreen::OnMenuClick(MenuSprite* menuSprite)
 {
 	if (menuSprite == this->matrix)
 	{
-		Director::getInstance()->replaceScene(new TutorialScreen());
+		Director::getInstance()->replaceScene(TutorialScreen::create());
 	}
 	else if (menuSprite == this->storyModeButton)
 	{
-		Director::getInstance()->replaceScene(new StoryMap());
+		Director::getInstance()->replaceScene(StoryMap::create());
 	}
 	else if (menuSprite == this->optionsButton)
 	{
-		Director::getInstance()->replaceScene(new OptionsMenu());
+		Director::getInstance()->replaceScene(OptionsMenu::create());
 	}
 	else if (menuSprite == this->exitButton)
 	{
