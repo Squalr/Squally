@@ -12,6 +12,7 @@ class Resources
 public:
 	static const string Fonts_arial;
 	static const string Fonts_Marker_Felt;
+	static const string Fonts_Montserrat_Medium;
 	static const string Fonts_Stormblade;
 	static const string HUD_Egg;
 	static const string HUD_Heart0;

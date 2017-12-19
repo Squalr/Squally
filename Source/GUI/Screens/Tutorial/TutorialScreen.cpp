@@ -27,11 +27,6 @@ TutorialScreen::~TutorialScreen()
 {
 }
 
-void TutorialScreen::OnMouseOver(TutorialItem* node)
-{
-	this->infoLabel->SetText(node->nodeMapName);
-}
-
 void TutorialScreen::LoadNodes()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -40,24 +35,30 @@ void TutorialScreen::LoadNodes()
 	float screenCenterX = origin.x + visibleSize.width / 2;
 	float screenCenterY = origin.y + visibleSize.height / 2;
 
-	std::function<void(TutorialItem*)> callback = CC_CALLBACK_1(TutorialScreen::OnMouseOver, this);
-
 	this->tutorialButtons = new std::vector<MenuSprite*>();
 
-	this->addChild(new TutorialItem(
-		"Exact Value Scan",
-		Resources::Menus_TutorialMenu_TutorialItem,
-		Vec2(screenCenterX, screenCenterY + 480.0f),
-		true,
-		callback
+	this->addChild(TutorialItem::create(
+		"Exact Value Scan I",
+		Resources::Levels_Debug,
+		Vec2(screenCenterX, screenCenterY + 168.0f - 12.0f)
 	));
 
-	this->addChild(new TutorialItem(
+	this->addChild(TutorialItem::create(
+		"Exact Value Scan II",
+		Resources::Levels_Debug,
+		Vec2(screenCenterX, screenCenterY + 72.0f - 12.0f * 2)
+	));
+
+	this->addChild(TutorialItem::create(
 		"Unknown Value Scan",
-		Resources::Menus_TutorialMenu_TutorialItem,
-		Vec2(screenCenterX, screenCenterY + 320.0f),
-		true,
-		callback
+		Resources::Levels_Debug,
+		Vec2(screenCenterX, screenCenterY - 24.0f - 12.0f * 3)
+	));
+
+	this->addChild(TutorialItem::create(
+		"Data Types - Float",
+		Resources::Levels_Debug,
+		Vec2(screenCenterX, screenCenterY - 120.0f - 12.0f * 4)
 	));
 }
 

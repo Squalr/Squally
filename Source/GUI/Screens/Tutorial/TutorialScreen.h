@@ -19,7 +19,6 @@ private:
 	void LoadNodes();
 	void onEnter() override;
 	void InitializeListeners();
-	void OnMouseOver(TutorialItem* node);
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
 	Mouse* mouse;
