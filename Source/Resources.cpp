@@ -7,6 +7,7 @@
 
 const string Resources::Fonts_arial = "Fonts\\arial.ttf";
 const string Resources::Fonts_Marker_Felt = "Fonts\\Marker Felt.ttf";
+const string Resources::Fonts_Montserrat_Medium = "Fonts\\Montserrat-Medium.ttf";
 const string Resources::Fonts_Stormblade = "Fonts\\Stormblade.ttf";
 const string Resources::HUD_Egg = "HUD\\Egg.png";
 const string Resources::HUD_Heart0 = "HUD\\Heart0.png";
