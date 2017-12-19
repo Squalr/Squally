@@ -1,10 +1,28 @@
 #include "MenuSprite.h"
 
-MenuSprite::MenuSprite(std::string spriteResource, std::string spriteSelectedResource) : MenuSprite(spriteResource, spriteSelectedResource, nullptr)
+MenuSprite* MenuSprite::create(std::string spriteResource, std::string spriteSelectedResource, std::string spriteDownResource)
+{
+	MenuSprite* node = new MenuSprite(spriteResource, spriteSelectedResource, spriteDownResource);
+
+	node->autorelease();
+
+	return node;
+}
+
+MenuSprite* MenuSprite::create(std::string spriteResource, std::string spriteSelectedResource, std::string spriteDownResource, std::function<void(MenuSprite*)> onMouseClick)
+{
+	MenuSprite* node = new MenuSprite(spriteResource, spriteSelectedResource, spriteDownResource, onMouseClick);
+
+	node->autorelease();
+
+	return node;
+}
+
+MenuSprite::MenuSprite(std::string spriteResource, std::string spriteSelectedResource, std::string spriteDownResource) : MenuSprite(spriteResource, spriteSelectedResource, spriteDownResource, nullptr)
 {
 }
 
-MenuSprite::MenuSprite(std::string spriteResource, std::string spriteSelectedResource, std::function<void(MenuSprite*)> onMouseClick)
+MenuSprite::MenuSprite(std::string spriteResource, std::string spriteSelectedResource, std::string spriteDownResource, std::function<void(MenuSprite*)> onMouseClick)
 {
 	this->menuOnMouseClick = onMouseClick;
 

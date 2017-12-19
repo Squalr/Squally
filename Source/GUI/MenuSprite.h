@@ -8,8 +8,11 @@ using namespace cocos2d;
 class MenuSprite : public Node
 {
 public:
-	MenuSprite(std::string spriteResource, std::string spriteSelectedResource);
-	MenuSprite(std::string spriteResource, std::string spriteSelectedResource, std::function<void(MenuSprite*)> onMouseClick);
+	static MenuSprite * create(std::string spriteResource, std::string spriteSelectedResource, std::string spriteDownResource);
+	static MenuSprite * create(std::string spriteResource, std::string spriteSelectedResource, std::string spriteDownResource, std::function<void(MenuSprite*)> onMouseClick);
+
+	MenuSprite(std::string spriteResource, std::string spriteSelectedResource, std::string spriteDownResource);
+	MenuSprite(std::string spriteResource, std::string spriteSelectedResource, std::string spriteDownResource, std::function<void(MenuSprite*)> onMouseClick);
 	~MenuSprite();
 
 private:

@@ -1,18 +1,23 @@
 #include "TitleScreen.h"
 
-int TitleScreen::hackerMode = 1;
+int TitleScreen::hackerMode = 0;
 
 TitleScreen::TitleScreen()
 {
 	SimpleAudioEngine* audio = SimpleAudioEngine::getInstance();
-	audio->preloadBackgroundMusic(Resources::Music_Will_we_get_there_Together.c_str());
-	audio->playBackgroundMusic(Resources::Music_Will_we_get_there_Together.c_str(), true);
+
+	if (!audio->isBackgroundMusicPlaying())
+	{
+		audio->preloadBackgroundMusic(Resources::Music_Will_we_get_there_Together.c_str());
+		// audio->playBackgroundMusic(Resources::Music_Will_we_get_there_Together.c_str(), true);
+	}
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	this->background = Sprite::create(Resources::Menus_TitleScreen_TitleScreen);
 	this->fog = InfiniteParallaxNode::create(Resources::Menus_TitleScreen_bg_fog);
+	this->foregroundFog = InfiniteParallaxNode::create(Resources::Menus_TitleScreen_bg_fog);
 	this->backgroundVines = Sprite::create(Resources::Menus_TitleScreen_bg_far1);
 	this->backgroundTrees = Sprite::create(Resources::Menus_TitleScreen_bg_back);
 	this->midgroundTrees = Sprite::create(Resources::Menus_TitleScreen_bg_mid);
@@ -24,10 +29,14 @@ TitleScreen::TitleScreen()
 
 	this->squally = Sprite::create(Resources::Menus_TitleScreen_Squally);
 	this->titleLabel = new MenuLabel("Squally", Resources::Fonts_Marker_Felt, titleFontSize);
-	this->storyModeLabel = new MenuLabel("Story Mode", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
-	this->optionsLabel = new MenuLabel("Options", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
-	this->exitLabel = new MenuLabel("Exit", Resources::Fonts_Marker_Felt, menuFontSize, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
-	this->monitor = new MenuSprite(Resources::Menus_TitleScreen_Monitor, Resources::Menus_TitleScreen_MonitorSelected, CC_CALLBACK_1(TitleScreen::OnTutorialClick, this));
+	this->matrix = new MenuSprite(Resources::Menus_TitleScreen_Monitor, Resources::Menus_TitleScreen_MonitorSelected, Resources::Menus_TitleScreen_MonitorSelected, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+
+	this->matrixParticles = ParticleGalaxy::create();
+
+	this->titleBar = Sprite::create(Resources::Menus_TitleScreen_TitleBar);
+	this->storyModeButton = MenuSprite::create(Resources::Menus_TitleScreen_StoryModeButton, Resources::Menus_TitleScreen_StoryModeButtonHover, Resources::Menus_TitleScreen_StoryModeButton, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+	this->optionsButton = MenuSprite::create(Resources::Menus_TitleScreen_OptionsButton, Resources::Menus_TitleScreen_OptionsButtonHover, Resources::Menus_TitleScreen_OptionsButtonClick, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
+	this->exitButton = MenuSprite::create(Resources::Menus_TitleScreen_ExitButton, Resources::Menus_TitleScreen_ExitButtonHover, Resources::Menus_TitleScreen_ExitButtonClick, CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 
 	std::stringstream stream;
 	stream << std::hex << (int)(&this->hackerMode);
@@ -39,30 +48,36 @@ TitleScreen::TitleScreen()
 	this->hackerModeLabel->setSkewX(-12.0f);
 
 	this->mouse = new Mouse();
-	this->clickableMenus = new vector<MenuLabel*>();
+	this->clickableMenus = new vector<MenuSprite*>();
 
 	this->hackerModeLabel->setPosition(Vec2(origin.x + visibleSize.width / 2 - 96.0f, origin.x + visibleSize.height / 2 + 296.0f));
 
-	this->monitor->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->monitor->getContentSize().height + 384.0f));
+	this->matrix->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->matrix->getContentSize().height + 372.0f));
+	this->matrixParticles->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->matrix->getContentSize().height + 372.0f));
 	this->titleLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->titleLabel->getContentSize().height + menuOffset - spacing * 1.5));
-	this->storyModeLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->storyModeLabel->getContentSize().height / 2 + menuOffset + spacing * 0));
-	this->optionsLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->optionsLabel->getContentSize().height / 2 + menuOffset + spacing * 1));
-	this->exitLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->exitLabel->getContentSize().height / 2 + menuOffset + spacing * 2));
 	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->backgroundVines->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 196.0f));
 	this->backgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->midgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->tree->setPosition(Vec2(origin.x + visibleSize.width / 2 + 38.0f, origin.y + visibleSize.height / 2 + 180.0f));
 	this->fog->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 120.0f));
+	this->foregroundFog->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 256.0f));
 	this->foregroundVines->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 196.0f));
 	this->foregroundGrassBottom->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y));
 	this->foregroundGrassTop->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 32.0f));
 	this->foregroundLight->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - foregroundLight->getContentSize().height / 2));
-	this->squally->setPosition(Vec2(origin.x + visibleSize.width / 2 - 240.0f, origin.y + visibleSize.height / 2 - 32.0f));
+	this->squally->setPosition(Vec2(origin.x + visibleSize.width / 2 + 240.0f, origin.y + visibleSize.height / 2 - 32.0f));
+	this->squally->setFlippedX(true);
 
-	this->clickableMenus->push_back(this->storyModeLabel);
-	this->clickableMenus->push_back(this->optionsLabel);
-	this->clickableMenus->push_back(this->exitLabel);
+	this->titleBar->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2));
+	this->storyModeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2 + 192.0f));
+	this->optionsButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2 + 64.0f));
+	this->exitButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2 - 128.0f));
+
+	this->clickableMenus->push_back(this->matrix);
+	this->clickableMenus->push_back(this->storyModeButton);
+	this->clickableMenus->push_back(this->optionsButton);
+	this->clickableMenus->push_back(this->exitButton);
 
 	this->addChild(this->background);
 	this->addChild(this->backgroundVines);
@@ -72,18 +87,30 @@ TitleScreen::TitleScreen()
 	this->addChild(this->foregroundVines);
 	this->addChild(this->tree);
 	this->addChild(this->hackerModeLabel);
-	this->addChild(this->monitor);
+	this->addChild(this->matrix);
+	this->addChild(this->matrixParticles);
+	this->addChild(this->foregroundFog);
 	this->addChild(this->foregroundGrassBottom);
 	this->addChild(this->foregroundGrassTop);
 	this->addChild(this->foregroundLight);
 	this->addChild(this->squally);
-	this->addChild(this->titleLabel);
-	this->addChild(this->storyModeLabel);
-	this->addChild(this->optionsLabel);
-	this->addChild(this->exitLabel);
+	this->addChild(this->titleBar);
+	this->addChild(this->storyModeButton);
+	this->addChild(this->optionsButton);
+	this->addChild(this->exitButton);
+	//this->addChild(this->titleLabel);
+	//this->addChild(this->storyModeLabel);
+	//this->addChild(this->optionsLabel);
+	//this->addChild(this->exitLabel);
 	this->addChild(this->mouse);
 
-	this->monitor->setVisible(false);
+	this->matrixParticles->setCascadeOpacityEnabled(true);
+	this->matrixParticles->setVisible(false);
+	this->matrixParticles->stopSystem();
+	this->matrixParticles->setOpacity(0);
+	this->matrix->setCascadeOpacityEnabled(true);
+	this->matrix->setVisible(false);
+	this->matrix->setOpacity(0);
 
 	this->scheduleUpdate();
 }
@@ -92,9 +119,9 @@ TitleScreen::~TitleScreen()
 {
 	delete(this->mouse);
 
-	for (std::vector<MenuLabel*>::iterator it = this->clickableMenus->begin(); it != this->clickableMenus->end(); ++it)
+	for (std::vector<MenuSprite*>::iterator it = this->clickableMenus->begin(); it != this->clickableMenus->end(); ++it)
 	{
-		MenuLabel* label = *it;
+		MenuSprite* label = *it;
 		delete(label);
 	}
 
@@ -126,7 +153,8 @@ void TitleScreen::InitializeMovement()
 	this->squally->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
 
 	// Fog parallax
-	this->fog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-96.0f, 0))));
+	this->fog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-92.0f, 0))));
+	this->foregroundFog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-196.0f, 0))));
 
 	// Background shift
 	float backgroundDistanceX01 = 64.0f;
@@ -194,31 +222,31 @@ void TitleScreen::update(float dt)
 {
 	Scene::update(dt);
 
-	if (this->hackerMode != 0 && !this->monitor->isVisible())
+	if (this->hackerMode != 0 && !this->matrix->isVisible())
 	{
-		this->monitor->setVisible(true);
+		this->matrix->setVisible(true);
+		this->matrix->runAction(FadeIn::create(1.0f));
+		this->matrixParticles->setVisible(true);
+		this->matrixParticles->runAction(FadeIn::create(2.0f));
+		this->matrixParticles->start();
 	}
 }
 
-void TitleScreen::OnTutorialClick(MenuSprite* menuSprite)
+void TitleScreen::OnMenuClick(MenuSprite* menuSprite)
 {
-	if (menuSprite == monitor)
+	if (menuSprite == this->matrix)
 	{
 		Director::getInstance()->replaceScene(new TutorialMap());
 	}
-}
-
-void TitleScreen::OnMenuClick(MenuLabel* menuLabel)
-{
-	if (menuLabel == storyModeLabel)
+	else if (menuSprite == this->storyModeButton)
 	{
 		Director::getInstance()->replaceScene(new StoryMap());
 	}
-	else if (menuLabel == optionsLabel)
+	else if (menuSprite == this->optionsButton)
 	{
 		Director::getInstance()->replaceScene(new OptionsMenu());
 	}
-	else if (menuLabel == exitLabel)
+	else if (menuSprite == this->exitButton)
 	{
 		CCDirector::getInstance()->end();
 	}
@@ -237,9 +265,9 @@ void TitleScreen::OnMouseMove(EventMouse* event)
 {
 	this->mouse->SetCanClick(false);
 
-	for (std::vector<MenuLabel*>::iterator it = this->clickableMenus->begin(); it != this->clickableMenus->end(); ++it)
+	for (std::vector<MenuSprite*>::iterator it = this->clickableMenus->begin(); it != this->clickableMenus->end(); ++it)
 	{
-		MenuLabel* label = *it;
+		MenuSprite* label = *it;
 
 		if (Utils::Intersects(label, Vec2(event->getCursorX(), event->getCursorY())))
 		{

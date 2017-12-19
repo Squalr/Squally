@@ -321,8 +321,8 @@
  <objectgroup name="collision">
   <object id="13" name="solid" type="solid" x="7.8788" y="5845.15" width="653.818" height="509.333"/>
   <object id="14" name="solid" type="solid" x="512" y="5648" width="250.667" height="700.667"/>
-  <object id="15" name="solid" type="solid" x="512" y="5652">
-   <polygon points="0,0 -396,193.333 2.66667,189.333"/>
+  <object id="15" name="solid" type="solid" x="512.013" y="5652">
+   <polygon points="0,0 -394.013,193.333 2.65329,189.333"/>
   </object>
  </objectgroup>
 </map>
