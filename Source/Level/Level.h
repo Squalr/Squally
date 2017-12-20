@@ -5,7 +5,7 @@
 #include "GUI/Menus/Pause/PauseMenu.h"
 #include "Collision/TileCollision.h"
 #include "Entities/Player.h"
-#include "Utils/InfiniteParallaxNode.h"
+#include "GUI/Components/InfiniteParallaxNode.h"
 
 using namespace cocos2d;
 
