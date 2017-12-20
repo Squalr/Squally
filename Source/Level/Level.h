@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Background.h"
-#include "GUI/Menus/PauseMenu.h"
+#include "GUI/Menus/Pause/PauseMenu.h"
 #include "Collision/TileCollision.h"
 #include "Entities/Player.h"
 #include "Utils/InfiniteParallaxNode.h"
@@ -32,7 +32,6 @@ protected:
 	Layer * environmentLayer;
 
 	Player * player;
-	PauseMenu * pauseMenu;
 
 private:
 	void LoadLevel(std::string levelResourceFilePath);

@@ -14,19 +14,18 @@ PauseMenu::PauseMenu()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	Label* label = Label::createWithTTF("Paused", Resources::Fonts_Marker_Felt, 24);
-	Menu* menu = Menu::create();
+	this->background = Sprite::create(Resources::Menus_PauseMenu_Background);
+	this->pauseWindow = Sprite::create(Resources::Menus_PauseMenu_PauseMenu);
 
-	label->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - label->getContentSize().height));
+	this->fireflies = ParticleSystemQuad::create(Resources::Particles_Fireflies2);
 
-	this->closeItem = MenuItemImage::create(Resources::Menus_WorldMaps_TutorialNodeSelected, Resources::Menus_WorldMaps_TutorialNodeUnlocked);
-	this->closeItem->setPosition(Vec2(origin.x + visibleSize.width - this->closeItem->getContentSize().width / 2, origin.y + this->closeItem->getContentSize().height / 2));
+	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->pauseWindow->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->fireflies->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 
-	menu->setPosition(Vec2::ZERO);
-	menu->addChild(this->closeItem);
-
-	this->addChild(label);
-	this->addChild(menu);
+	this->addChild(this->background);
+	this->addChild(this->fireflies);
+	this->addChild(this->pauseWindow);
 }
 
 PauseMenu::~PauseMenu()
@@ -44,8 +43,6 @@ void PauseMenu::InitializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
 	listener->onKeyPressed = CC_CALLBACK_2(PauseMenu::OnKeyPressed, this);
-
-	this->closeItem->setCallback(CC_CALLBACK_1(PauseMenu::OnExitGame, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
