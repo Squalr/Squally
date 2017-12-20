@@ -27,8 +27,10 @@ private:
 	Mouse* mouse;
 
 	Sprite* background;
-	MenuLabel* titleLabel;
-	MenuLabel* infoLabel;
+	Sprite* tutorialWindow;
+	ParticleSystem* plasma;
+	ParticleSystem* swirl;
+	ParticleSystem* warp;
 	std::vector<MenuSprite*>* tutorialButtons;
 
 	const float titleFontSize = 48.0f;

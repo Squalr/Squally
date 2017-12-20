@@ -5,7 +5,7 @@
 #include "Story/StoryMap.h"
 #include "Utils/Utils.h"
 #include "Utils/InfiniteParallaxNode.h"
-#include "GUI/Menus/OptionsMenu.h"
+#include "GUI/Menus/Options/OptionsMenu.h"
 #include "GUI/MenuLabel.h"
 #include "GUI/MenuSprite.h"
 #include "GUI/Mouse.h"

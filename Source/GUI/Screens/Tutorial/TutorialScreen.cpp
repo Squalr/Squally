@@ -14,18 +14,28 @@ TutorialScreen::TutorialScreen()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	this->titleLabel = MenuLabel::create("", Resources::Fonts_Marker_Felt, this->titleFontSize);
-	this->infoLabel = MenuLabel::create("", Resources::Fonts_Marker_Felt, this->titleFontSize);
-	this->background = Sprite::create(Resources::Menus_TutorialMenu_TutorialSelect);
+	this->background = Sprite::create(Resources::Menus_TutorialMenu_Background);
+	this->tutorialWindow = Sprite::create(Resources::Menus_TutorialMenu_TutorialSelect);
+	this->plasma = ParticleSystemQuad::create(Resources::Particles_BluePlasma);
+	this->warp = ParticleSystemQuad::create(Resources::Particles_WarpPoint);
+	this->swirl = ParticleSystemQuad::create(Resources::Particles_BlueSwirl);
 	this->mouse = Mouse::create();
 
-	this->titleLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->titleLabel->getContentSize().height / 2));
-	this->infoLabel->setPosition(Vec2(origin.x + visibleSize.width / 2 + this->infoLabel->getContentSize().width / 2, origin.y + visibleSize.height - 24));
 	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->plasma->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->warp->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->swirl->setPosition(Vec2(origin.x + visibleSize.width / 2 - 128.0f, origin.y + visibleSize.height / 2));
+	this->tutorialWindow->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+
+	//this->warp->setScale(15.0f);
+	this->swirl->setScale(8.0f);
+
+	// this->addChild(this->plasma);
+	this->addChild(this->warp);
+	this->addChild(this->swirl);
 
 	this->addChild(this->background);
-	this->addChild(this->titleLabel);
-	this->addChild(this->infoLabel);
+	this->addChild(this->tutorialWindow);
 
 	this->LoadNodes();
 
