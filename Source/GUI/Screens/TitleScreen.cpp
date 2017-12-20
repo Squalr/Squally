@@ -27,18 +27,19 @@ TitleScreen::TitleScreen()
 	this->background = Sprite::create(Resources::Menus_TitleScreen_TitleScreen);
 	this->fog = InfiniteParallaxNode::create(Resources::Menus_TitleScreen_bg_fog);
 	this->foregroundFog = InfiniteParallaxNode::create(Resources::Menus_TitleScreen_bg_fog);
-	this->backgroundVines = Sprite::create(Resources::Menus_TitleScreen_bg_far1);
-	this->backgroundTrees = Sprite::create(Resources::Menus_TitleScreen_bg_back);
-	this->midgroundTrees = Sprite::create(Resources::Menus_TitleScreen_bg_mid);
+	this->backgroundVines = FloatingSprite::create(Resources::Menus_TitleScreen_bg_far1, Vec2(64.0f, -8.0f), Vec2(7.0f, 5.0f));
+	this->backgroundTrees = FloatingSprite::create(Resources::Menus_TitleScreen_bg_back, Vec2(-48.0f, 8.0f), Vec2(7.0f, 5.0f));
+	this->midgroundTrees = FloatingSprite::create(Resources::Menus_TitleScreen_bg_mid, Vec2(8.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->tree = Sprite::create(Resources::Menus_TitleScreen_tree_fat);
-	this->foregroundVines = Sprite::create(Resources::Menus_TitleScreen_bg_top_lines);
-	this->foregroundGrassBottom = Sprite::create(Resources::Menus_TitleScreen_bg_bott);
-	this->foregroundGrassTop = Sprite::create(Resources::Menus_TitleScreen_bg_top);
+	this->foregroundVines = FloatingSprite::create(Resources::Menus_TitleScreen_bg_top_lines, Vec2(-24.0f, 0.0f), Vec2(7.0f, 5.0f));
+	this->foregroundGrassBottom = FloatingSprite::create(Resources::Menus_TitleScreen_bg_bott, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
+	this->foregroundGrassTop = FloatingSprite::create(Resources::Menus_TitleScreen_bg_top, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
 	this->foregroundLight = Sprite::create(Resources::Menus_TitleScreen_bg_light_02);
+	this->squally = FloatingSprite::create(Resources::Menus_TitleScreen_Squally, Vec2(8.0f, 64.0f), Vec2(3.5f, 8.0f));
 
-	this->squally = Sprite::create(Resources::Menus_TitleScreen_Squally);
-	this->titleLabel = MenuLabel::create("Squally", Resources::Fonts_Marker_Felt, titleFontSize);
 	this->titleBar = Sprite::create(Resources::Menus_TitleScreen_TitleBar);
+
+	this->squally->setFlippedY(true);
 
 	this->matrix = MenuSprite::create(Resources::Menus_TitleScreen_Monitor, Resources::Menus_TitleScreen_MonitorSelected, Resources::Menus_TitleScreen_MonitorSelected);
 	this->storyModeButton = MenuSprite::create(Resources::Menus_TitleScreen_StoryModeButton, Resources::Menus_TitleScreen_StoryModeButtonHover, Resources::Menus_TitleScreen_StoryModeButtonClick);
@@ -70,7 +71,6 @@ TitleScreen::TitleScreen()
 
 	this->matrix->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->matrix->getContentSize().height + 372.0f));
 	this->matrixParticles->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->matrix->getContentSize().height + 372.0f));
-	this->titleLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->titleLabel->getContentSize().height + menuOffset - spacing * 1.5));
 	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->backgroundVines->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 196.0f));
 	this->backgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
@@ -85,7 +85,10 @@ TitleScreen::TitleScreen()
 	this->windParticles->setPosition(Vec2(origin.x + visibleSize.width, origin.y + visibleSize.height / 2));
 	this->fireflyParticles->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->squally->setPosition(Vec2(origin.x + visibleSize.width / 2 + 240.0f, origin.y + visibleSize.height / 2 - 32.0f));
+
 	this->squally->setFlippedX(true);
+	this->fog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-92.0f, 0))));
+	this->foregroundFog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-196.0f, 0))));
 
 	this->titleBar->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2));
 	this->storyModeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2 + 192.0f));
@@ -141,89 +144,6 @@ void TitleScreen::onEnter()
 	Scene::onEnter();
 
 	this->InitializeListeners();
-	this->InitializeMovement();
-}
-
-void TitleScreen::InitializeMovement()
-{
-	float squallyDistanceX = 8.0f;
-	float squallyDistanceY = 64.0f;
-	float squallySpeedX = 3.5f;
-	float squallySpeedY = 8.0f;
-
-	// Squally bounce
-	FiniteTimeAction* bounceX1 = EaseSineInOut::create(MoveBy::create(squallySpeedX, Vec2(squallyDistanceX, 0.0f)));
-	FiniteTimeAction* bounceX2 = EaseSineInOut::create(MoveBy::create(squallySpeedX, Vec2(-squallyDistanceX, 0.0f)));
-	FiniteTimeAction* bounceY1 = EaseSineInOut::create(MoveBy::create(squallySpeedY, Vec2(0.0f, squallyDistanceY)));
-	FiniteTimeAction* bounceY2 = EaseSineInOut::create(MoveBy::create(squallySpeedY, Vec2(0.0f, -squallyDistanceY)));
-
-	this->squally->runAction(RepeatForever::create(Sequence::create(bounceX1, bounceX2, nullptr)));
-	this->squally->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
-
-	// Fog parallax
-	this->fog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-92.0f, 0))));
-	this->foregroundFog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-196.0f, 0))));
-
-	// Background shift
-	float backgroundDistanceX01 = 64.0f;
-	float backgroundDistanceX02 = -48.0f;
-	float backgroundDistanceX03 = 8.0f;
-	float backgroundDistanceX04 = -24.0f;
-	float backgroundDistanceX05 = -32.0f;
-	float backgroundDistanceX06 = -32.0f;
-
-	float backgroundDistanceY01 = -8.0f;
-	float backgroundDistanceY02 = 8.0f;
-	float backgroundDistanceY03 = -8.0f;
-	float backgroundDistanceY04 = 8.0f;
-	float backgroundDistanceY05 = -8.0f;
-	float backgroundDistanceY06 = 8.0f;
-
-	float backgroundSpeedX = 7.0f;
-	float backgroundSpeedY = 5.0f;
-
-	FiniteTimeAction* shiftLeft01 = EaseSineInOut::create(MoveBy::create(backgroundSpeedX, Vec2(backgroundDistanceX01, 0.0f)));
-	FiniteTimeAction* shiftRight01 = EaseSineInOut::create(MoveBy::create(backgroundSpeedX, Vec2(-backgroundDistanceX01, 0.0f)));
-	FiniteTimeAction* shiftUp01 = EaseSineInOut::create(MoveBy::create(backgroundSpeedY, Vec2(0.0f, backgroundDistanceY01)));
-	FiniteTimeAction* shiftDown01 = EaseSineInOut::create(MoveBy::create(backgroundSpeedY, Vec2(0.0f, -backgroundDistanceY01)));
-
-	FiniteTimeAction* shiftLeft02 = EaseSineInOut::create(MoveBy::create(backgroundSpeedX, Vec2(backgroundDistanceX02, 0.0f)));
-	FiniteTimeAction* shiftRight02 = EaseSineInOut::create(MoveBy::create(backgroundSpeedX, Vec2(-backgroundDistanceX02, 0.0f)));
-	FiniteTimeAction* shiftUp02 = EaseSineInOut::create(MoveBy::create(backgroundSpeedY, Vec2(0.0f, backgroundDistanceY02)));
-	FiniteTimeAction* shiftDown02 = EaseSineInOut::create(MoveBy::create(backgroundSpeedY, Vec2(0.0f, -backgroundDistanceY02)));
-
-	FiniteTimeAction* shiftLeft03 = EaseSineInOut::create(MoveBy::create(backgroundSpeedX, Vec2(backgroundDistanceX03, 0.0f)));
-	FiniteTimeAction* shiftRight03 = EaseSineInOut::create(MoveBy::create(backgroundSpeedX, Vec2(-backgroundDistanceX03, 0.0f)));
-	FiniteTimeAction* shiftUp03 = EaseSineInOut::create(MoveBy::create(backgroundSpeedY, Vec2(0.0f, backgroundDistanceY03)));
-	FiniteTimeAction* shiftDown03 = EaseSineInOut::create(MoveBy::create(backgroundSpeedY, Vec2(0.0f, -backgroundDistanceY03)));
-
-	FiniteTimeAction* shiftLeft04 = EaseSineInOut::create(MoveBy::create(backgroundSpeedX, Vec2(backgroundDistanceX04, 0.0f)));
-	FiniteTimeAction* shiftRight04 = EaseSineInOut::create(MoveBy::create(backgroundSpeedX, Vec2(-backgroundDistanceX04, 0.0f)));
-	FiniteTimeAction* shiftUp04 = EaseSineInOut::create(MoveBy::create(backgroundSpeedY, Vec2(0.0f, backgroundDistanceY04)));
-	FiniteTimeAction* shiftDown04 = EaseSineInOut::create(MoveBy::create(backgroundSpeedY, Vec2(0.0f, -backgroundDistanceY04)));
-
-	FiniteTimeAction* shiftLeft05 = EaseSineInOut::create(MoveBy::create(backgroundSpeedX, Vec2(backgroundDistanceX05, 0.0f)));
-	FiniteTimeAction* shiftRight05 = EaseSineInOut::create(MoveBy::create(backgroundSpeedX, Vec2(-backgroundDistanceX05, 0.0f)));
-	FiniteTimeAction* shiftUp05 = EaseSineInOut::create(MoveBy::create(backgroundSpeedY, Vec2(0.0f, backgroundDistanceY05)));
-	FiniteTimeAction* shiftDown05 = EaseSineInOut::create(MoveBy::create(backgroundSpeedY, Vec2(0.0f, -backgroundDistanceY05)));
-
-	FiniteTimeAction* shiftLeft06 = EaseSineInOut::create(MoveBy::create(backgroundSpeedX, Vec2(backgroundDistanceX06, 0.0f)));
-	FiniteTimeAction* shiftRight06 = EaseSineInOut::create(MoveBy::create(backgroundSpeedX, Vec2(-backgroundDistanceX06, 0.0f)));
-	FiniteTimeAction* shiftUp06 = EaseSineInOut::create(MoveBy::create(backgroundSpeedY, Vec2(0.0f, backgroundDistanceY06)));
-	FiniteTimeAction* shiftDown06 = EaseSineInOut::create(MoveBy::create(backgroundSpeedY, Vec2(0.0f, -backgroundDistanceY06)));
-
-	this->backgroundVines->runAction(RepeatForever::create(Sequence::create(shiftLeft01, shiftRight01, nullptr)));
-	this->backgroundVines->runAction(RepeatForever::create(Sequence::create(shiftUp01, shiftDown01, nullptr)));
-	this->backgroundTrees->runAction(RepeatForever::create(Sequence::create(shiftLeft02, shiftRight02, nullptr)));
-	this->backgroundTrees->runAction(RepeatForever::create(Sequence::create(shiftUp02, shiftDown02, nullptr)));
-	this->midgroundTrees->runAction(RepeatForever::create(Sequence::create(shiftLeft03, shiftRight03, nullptr)));
-	this->midgroundTrees->runAction(RepeatForever::create(Sequence::create(shiftUp03, shiftDown03, nullptr)));
-	this->foregroundVines->runAction(RepeatForever::create(Sequence::create(shiftLeft04, shiftRight04, nullptr)));
-	this->foregroundVines->runAction(RepeatForever::create(Sequence::create(shiftUp04, shiftDown04, nullptr)));
-	this->foregroundGrassBottom->runAction(RepeatForever::create(Sequence::create(shiftLeft05, shiftRight05, nullptr)));
-	//this->foregroundGrassBottom->runAction(RepeatForever::create(Sequence::create(shiftUp05, shiftDown05, nullptr)));
-	this->foregroundGrassTop->runAction(RepeatForever::create(Sequence::create(shiftLeft06, shiftRight06, nullptr)));
-	//this->foregroundGrassTop->runAction(RepeatForever::create(Sequence::create(shiftUp06, shiftDown06, nullptr)));
 }
 
 void TitleScreen::update(float dt)

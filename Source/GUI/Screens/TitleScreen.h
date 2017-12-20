@@ -5,6 +5,7 @@
 #include "Story/StoryMap.h"
 #include "Utils/Utils.h"
 #include "GUI/Menus/Options/OptionsMenu.h"
+#include "GUI/Components/FloatingSprite.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
 #include "GUI/Components/MenuLabel.h"
 #include "GUI/Components/MenuSprite.h"
@@ -29,22 +30,21 @@ private:
 	void onEnter() override;
 	void update(float) override;
 	void InitializeListeners();
-	void InitializeMovement();
 	void OnMenuClick(MenuSprite* menuSprite);
 	void OnMouseMove(EventMouse* event);
 
 	Mouse* mouse;
-	Sprite* squally;
+	FloatingSprite* squally;
 	Sprite* background;
-	Sprite* backgroundVines;
-	Sprite* backgroundTrees;
-	Sprite* midgroundTrees;
+	FloatingSprite* backgroundVines;
+	FloatingSprite* backgroundTrees;
+	FloatingSprite* midgroundTrees;
 	Sprite* tree;
-	Sprite* foregroundVines;
+	FloatingSprite* foregroundVines;
 	InfiniteParallaxNode* fog;
 	InfiniteParallaxNode* foregroundFog;
-	Sprite* foregroundGrassBottom;
-	Sprite* foregroundGrassTop;
+	FloatingSprite* foregroundGrassBottom;
+	FloatingSprite* foregroundGrassTop;
 	Sprite* foregroundLight;
 	ParticleSystem* matrixParticles;
 	ParticleSystem* windParticles;
@@ -52,7 +52,6 @@ private:
 
 	Label* hackerModeLabel;
 
-	MenuLabel* titleLabel;
 	MenuSprite* matrix;
 	MenuSprite* storyModeButton;
 	MenuSprite* optionsButton;
