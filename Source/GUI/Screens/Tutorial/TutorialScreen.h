@@ -28,9 +28,26 @@ private:
 
 	Sprite* background;
 	Sprite* tutorialWindow;
+
+	Sprite* floatingBox1;
+	Sprite* floatingBox2;
+	Sprite* floatingMisc1;
+	Sprite* floatingMisc2;
+	Sprite* floatingMisc3;
+	Sprite* floatingObelisk1;
+	Sprite* floatingObeliskParent;
+	Sprite* floatingObeliskChild1;
+	Sprite* floatingObeliskChild2;
+	Sprite* floatingObeliskChild3;
+	Sprite* floatingObeliskChild4;
+	Sprite* floatingDiamonds1;
+	Sprite* floatingRocks1;
+	Sprite* floatingRocks2;
+
 	ParticleSystem* plasma;
 	ParticleSystem* swirl;
 	ParticleSystem* warp;
+
 	std::vector<MenuSprite*>* tutorialButtons;
 
 	const float titleFontSize = 48.0f;
