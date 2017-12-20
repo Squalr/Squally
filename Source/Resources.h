@@ -333,6 +333,7 @@ public:
 	static const string Menus_TitleScreen_TitleScreen;
 	static const string Menus_TitleScreen_tree_fat;
 	static const string Menus_TutorialMenu_Background;
+	static const string Menus_TutorialMenu_ObjectBox1;
 	static const string Menus_TutorialMenu_ObjectBox2;
 	static const string Menus_TutorialMenu_ObjectDiamonds1;
 	static const string Menus_TutorialMenu_ObjectObelisk1;
@@ -341,8 +342,10 @@ public:
 	static const string Menus_TutorialMenu_ObjectObeliskChildren_02;
 	static const string Menus_TutorialMenu_ObjectObeliskChildren_03;
 	static const string Menus_TutorialMenu_ObjectObeliskChildren_04;
+	static const string Menus_TutorialMenu_ObjectRocks1;
 	static const string Menus_TutorialMenu_ObjectRocks2;
 	static const string Menus_TutorialMenu_ObjectSci1;
+	static const string Menus_TutorialMenu_ObjectSci2;
 	static const string Menus_TutorialMenu_ObjectSci3;
 	static const string Menus_TutorialMenu_TutorialItem;
 	static const string Menus_TutorialMenu_TutorialItemClick;
