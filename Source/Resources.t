@@ -20,12 +20,13 @@ foreach (string file in Directory.EnumerateFiles(this.Host.ResolvePath("../Resou
 		!file.EndsWith(".jpg") &&
 		!file.EndsWith(".ttf") &&
 		!file.EndsWith(".mp3") &&
+		!file.EndsWith(".wav") &&
 		!file.EndsWith(".plist") &&
 		!file.EndsWith(".tmx")) {
 			continue;
 		}
 		
-	string variableName = Path.GetFileNameWithoutExtension(file.Replace(this.Host.ResolvePath("../Resources"), "").TrimStart('\\').Replace(@"\", "_").Replace(" ", "_").Replace("-", "_"));
+	string variableName = Path.GetFileNameWithoutExtension(file.Replace(this.Host.ResolvePath("../Resources"), "").TrimStart('\\').Replace(@"\", "_").Replace(" ", "_").Replace("-", "_").Replace("(", "_").Replace(")", "_"));
 	string relativeFilePath = file.Replace(this.Host.ResolvePath("../Resources"), "").TrimStart('\\').Replace(@"\", @"\\");
 
 	WriteLine("const string Resources::" + variableName + " = \"" + relativeFilePath + "\";");

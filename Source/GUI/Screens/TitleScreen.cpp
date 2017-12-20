@@ -47,7 +47,7 @@ TitleScreen::TitleScreen()
 
 	this->matrixParticles = ParticleGalaxy::create();
 	this->windParticles = ParticleSystemQuad::create(Resources::Particles_Wind);
-	this->fireflyParticles = ParticleSystemQuad::create(Resources::Particles_Fireflies);
+	this->fireflyParticles = ParticleSystemQuad::create(Resources::Particles_Fireflies2);
 
 	this->matrix->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 	this->storyModeButton->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnMenuClick, this));

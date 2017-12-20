@@ -27,8 +27,6 @@ Level::Level(std::string levelResourceFilePath)
 	this->enemyLayer = Layer::create();
 	this->environmentLayer = Layer::create();
 
-	this->pauseMenu = PauseMenu::create();
-
 	this->LoadLevel(levelResourceFilePath);
 
 	this->entityLayer->addChild(this->playerLayer);
@@ -125,9 +123,10 @@ void Level::InitializeListeners()
 // Implementation of the keyboard event callback function prototype
 void Level::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	switch (keyCode) {
+	switch (keyCode)
+	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		Director::getInstance()->pushScene(this->pauseMenu);
+		Director::getInstance()->pushScene(PauseMenu::create());
 		break;
 	}
 }
