@@ -335,6 +335,8 @@ public:
 	static const string Menus_TutorialMenu_Background;
 	static const string Menus_TutorialMenu_ObjectBox1;
 	static const string Menus_TutorialMenu_ObjectBox2;
+	static const string Menus_TutorialMenu_ObjectCrystal1;
+	static const string Menus_TutorialMenu_ObjectCrystal2;
 	static const string Menus_TutorialMenu_ObjectDiamonds1;
 	static const string Menus_TutorialMenu_ObjectObelisk1;
 	static const string Menus_TutorialMenu_ObjectObeliskChildren;
@@ -372,8 +374,12 @@ public:
 	static const string Menus_WorldMaps_TutorialNodeUnlocked;
 	static const string Menus_WorldMaps_WorldMapSelector;
 	static const string Music_Will_we_get_there_Together;
+	static const string Particles_BeamMeUp;
+	static const string Particles_BlueNether;
 	static const string Particles_BluePlasma;
+	static const string Particles_BlueStarCircle;
 	static const string Particles_BlueSwirl;
+	static const string Particles_BlueSwirlLarge;
 	static const string Particles_Confetti;
 	static const string Particles_Electric;
 	static const string Particles_Fireflies;
@@ -381,6 +387,7 @@ public:
 	static const string Particles_Heal;
 	static const string Particles_MindBlast;
 	static const string Particles_Rain;
+	static const string Particles_Rain2;
 	static const string Particles_Spark;
 	static const string Particles_Sparks;
 	static const string Particles_WarpPoint;

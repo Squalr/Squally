@@ -5,9 +5,9 @@
 	<key>absolutePosition</key>
 	<false/>
 	<key>angle</key>
-	<real>286.57998657226562</real>
+	<real>180</real>
 	<key>angleVariance</key>
-	<real>35.529998779296875</real>
+	<real>180</real>
 	<key>blendFuncDestination</key>
 	<integer>1</integer>
 	<key>blendFuncSource</key>
@@ -39,11 +39,11 @@
 	<key>finishParticleSizeVariance</key>
 	<real>45.890000000000001</real>
 	<key>gravityx</key>
-	<real>0</real>
+	<real>0.0</real>
 	<key>gravityy</key>
-	<real>0</real>
+	<real>20</real>
 	<key>maxParticles</key>
-	<real>320</real>
+	<real>800</real>
 	<key>maxRadius</key>
 	<real>204.48370000000003</real>
 	<key>maxRadiusVariance</key>
@@ -59,9 +59,9 @@
 	<key>positionType</key>
 	<integer>0</integer>
 	<key>radialAccelVariance</key>
-	<real>0.0</real>
+	<real>20</real>
 	<key>radialAcceleration</key>
-	<real>-1000</real>
+	<real>-200</real>
 	<key>rotatePerSecond</key>
 	<real>163.42000000000002</real>
 	<key>rotatePerSecondVariance</key>
@@ -79,7 +79,7 @@
 	<key>sourcePositionVariancey</key>
 	<real>0.0</real>
 	<key>speed</key>
-	<real>467.11000000000001</real>
+	<real>480</real>
 	<key>speedVariance</key>
 	<real>0.0</real>
 	<key>startColorAlpha</key>
@@ -105,7 +105,7 @@
 	<key>tangentialAccelVariance</key>
 	<real>0.0</real>
 	<key>tangentialAcceleration</key>
-	<real>45</real>
+	<real>0.0</real>
 	<key>textureFileName</key>
 	<string>Untitled 1.png</string>
 	<key>textureImageData</key>
