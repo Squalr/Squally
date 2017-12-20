@@ -21,6 +21,7 @@ protected:
 private:
 	void LoadNodes();
 	void onEnter() override;
+	void InitializeMovement();
 	void InitializeListeners();
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
@@ -40,13 +41,10 @@ private:
 	Sprite* floatingObeliskChild2;
 	Sprite* floatingObeliskChild3;
 	Sprite* floatingObeliskChild4;
-	Sprite* floatingDiamonds1;
-	Sprite* floatingRocks1;
 	Sprite* floatingRocks2;
 
-	ParticleSystem* plasma;
+	ParticleSystem* nether;
 	ParticleSystem* swirl;
-	ParticleSystem* warp;
 
 	std::vector<MenuSprite*>* tutorialButtons;
 

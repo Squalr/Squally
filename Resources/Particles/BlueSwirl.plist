@@ -39,11 +39,11 @@
 	<key>finishParticleSizeVariance</key>
 	<real>45.890000000000001</real>
 	<key>gravityx</key>
-	<real>276.31999999999999</real>
+	<real>0</real>
 	<key>gravityy</key>
-	<real>20</real>
+	<real>0</real>
 	<key>maxParticles</key>
-	<real>2000</real>
+	<real>320</real>
 	<key>maxRadius</key>
 	<real>204.48370000000003</real>
 	<key>maxRadiusVariance</key>
