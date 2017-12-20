@@ -5,6 +5,7 @@
 #include "GUI/Components/Mouse.h"
 #include "GUI/Components/MenuLabel.h"
 #include "GUI/Components/MenuSprite.h"
+#include "GUI/Components/FloatingSprite.h"
 #include "GUI/Screens/TitleScreen.h"
 
 using namespace cocos2d;
@@ -21,7 +22,6 @@ protected:
 private:
 	void LoadNodes();
 	void onEnter() override;
-	void InitializeMovement();
 	void InitializeListeners();
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
@@ -30,18 +30,18 @@ private:
 	Sprite* background;
 	Sprite* tutorialWindow;
 
-	Sprite* floatingBox1;
-	Sprite* floatingBox2;
-	Sprite* floatingMisc1;
-	Sprite* floatingMisc2;
-	Sprite* floatingMisc3;
-	Sprite* floatingObelisk1;
-	Sprite* floatingObeliskParent;
-	Sprite* floatingObeliskChild1;
-	Sprite* floatingObeliskChild2;
-	Sprite* floatingObeliskChild3;
-	Sprite* floatingObeliskChild4;
-	Sprite* floatingRocks2;
+	FloatingSprite* floatingBox1;
+	FloatingSprite* floatingBox2;
+	FloatingSprite* floatingMisc1;
+	FloatingSprite* floatingMisc2;
+	FloatingSprite* floatingMisc3;
+	FloatingSprite* floatingObelisk1;
+	FloatingSprite* floatingObeliskParent;
+	FloatingSprite* floatingObeliskChild1;
+	FloatingSprite* floatingObeliskChild2;
+	FloatingSprite* floatingObeliskChild3;
+	FloatingSprite* floatingObeliskChild4;
+	FloatingSprite* floatingRocks2;
 
 	ParticleSystem* nether;
 	ParticleSystem* swirl;

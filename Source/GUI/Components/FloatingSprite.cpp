@@ -1,29 +1,40 @@
 #include "FloatingSprite.h"
 
-FloatingSprite* FloatingSprite::create(std::string spriteResourcePath)
+FloatingSprite* FloatingSprite::create(std::string spriteResourcePath, Vec2 movement, Vec2 time)
 {
-	FloatingSprite* node = new FloatingSprite(spriteResourcePath);
+	FloatingSprite* floatingSprite = new FloatingSprite(spriteResourcePath, movement, time);
 
-	node->autorelease();
+	floatingSprite->autorelease();
 
-	return node;
+	return floatingSprite;
 }
 
-FloatingSprite::FloatingSprite(std::string spriteResourcePath)
+FloatingSprite::FloatingSprite(std::string spriteResourcePath, Vec2 movement, Vec2 time)
 {
-	this->nodeA = Sprite::create(spriteResourcePath);
+	this->sprite = Sprite::create(spriteResourcePath);
+	this->addChild(this->sprite);
+
+	FiniteTimeAction* bounceX1 = EaseSineInOut::create(MoveBy::create(time.x, Vec2(movement.x, 0.0f)));
+	FiniteTimeAction* bounceX2 = EaseSineInOut::create(MoveBy::create(time.x, Vec2(-movement.x, 0.0f)));
+	FiniteTimeAction* bounceY1 = EaseSineInOut::create(MoveBy::create(time.y, Vec2(0.0f, movement.y)));
+	FiniteTimeAction* bounceY2 = EaseSineInOut::create(MoveBy::create(time.y, Vec2(0.0f, -movement.y)));
+
+	this->runAction(RepeatForever::create(Sequence::create(bounceX1, bounceX2, nullptr)));
+	this->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
 
 	this->scheduleUpdate();
 }
 
-FloatingSprite::~FloatingSprite()
+void FloatingSprite::setFlippedX(bool flipped)
 {
+	this->sprite->setFlippedX(flipped);
 }
 
-void FloatingSprite::update(float dt)
+void FloatingSprite::setFlippedY(bool flipped)
 {
-	if (this->getPosition().x < -(this->nodeA->getContentSize().width))
-	{
-		this->setPosition(Vec2(0, this->getPosition().y));
-	}
+	this->sprite->setFlippedX(flipped);
+}
+
+FloatingSprite::~FloatingSprite()
+{
 }
