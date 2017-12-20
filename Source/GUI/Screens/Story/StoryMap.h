@@ -1,8 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
-#include "GUI/MenuLabel.h"
-#include "GUI/Mouse.h"
+#include "GUI/Components/MenuLabel.h"
+#include "GUI/Components/Mouse.h"
 #include "GUI/Screens/TitleScreen.h"
 
 using namespace cocos2d;

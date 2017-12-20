@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Entities/Player.h"
-#include "Utils/InfiniteParallaxNode.h"
+#include "GUI/Components/InfiniteParallaxNode.h"
 
 using namespace cocos2d;
 

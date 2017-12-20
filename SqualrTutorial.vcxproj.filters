@@ -43,6 +43,9 @@
     <Filter Include="Source\GUI\Menus\Pause">
       <UniqueIdentifier>{efb42e19-0f6a-4c9e-bb59-cf59233af7f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\GUI\Components">
+      <UniqueIdentifier>{59d011ae-970a-4f51-a323-6c474be5079d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -75,19 +78,10 @@
     <ClCompile Include="Source\Collision\TileCollision.cpp">
       <Filter>Source\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GUI\MenuLabel.cpp">
-      <Filter>Source\GUI</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Config\ConfigManager.cpp">
       <Filter>Source\Config</Filter>
     </ClCompile>
     <ClCompile Include="Source\Utils\Utils.cpp">
-      <Filter>Source\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\MenuSprite.cpp">
-      <Filter>Source\GUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Utils\InfiniteParallaxNode.cpp">
       <Filter>Source\Utils</Filter>
     </ClCompile>
     <ClCompile Include="Source\Level\Background.cpp">
@@ -114,11 +108,23 @@
     <ClCompile Include="Source\GUI\Menus\Pause\PauseMenu.cpp">
       <Filter>Source\GUI\Menus\Pause</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GUI\Mouse.cpp">
-      <Filter>Source\GUI</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GUI\Menus\Options\Slider.cpp">
       <Filter>Source\GUI\Menus\Options</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Components\InfiniteParallaxNode.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Components\MenuLabel.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Components\MenuSprite.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Components\FloatingSprite.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Components\Mouse.cpp">
+      <Filter>Source\GUI\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -152,19 +158,10 @@
     <ClInclude Include="Source\Collision\TileCollision.h">
       <Filter>Source\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GUI\MenuLabel.h">
-      <Filter>Source\GUI</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Config\ConfigManager.h">
       <Filter>Source\Config</Filter>
     </ClInclude>
     <ClInclude Include="Source\Utils\Utils.h">
-      <Filter>Source\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GUI\MenuSprite.h">
-      <Filter>Source\GUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Utils\InfiniteParallaxNode.h">
       <Filter>Source\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Source\Level\Background.h">
@@ -191,11 +188,23 @@
     <ClInclude Include="Source\GUI\Menus\Pause\PauseMenu.h">
       <Filter>Source\GUI\Menus\Pause</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GUI\Mouse.h">
-      <Filter>Source\GUI</Filter>
-    </ClInclude>
     <ClInclude Include="Source\GUI\Menus\Options\Slider.h">
       <Filter>Source\GUI\Menus\Options</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\MenuSprite.h">
+      <Filter>Source\GUI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\InfiniteParallaxNode.h">
+      <Filter>Source\GUI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\MenuLabel.h">
+      <Filter>Source\GUI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\FloatingSprite.h">
+      <Filter>Source\GUI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\Mouse.h">
+      <Filter>Source\GUI\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
