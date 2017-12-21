@@ -24,6 +24,9 @@ TitleScreen::TitleScreen()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
+	this->eyes1Anim = Animation::create();
+	this->eyes2Anim = Animation::create();
+
 	this->background = Sprite::create(Resources::Menus_TitleScreen_TitleScreen);
 	this->fog = InfiniteParallaxNode::create(Resources::Menus_TitleScreen_bg_fog);
 	this->foregroundFog = InfiniteParallaxNode::create(Resources::Menus_TitleScreen_bg_fog);
@@ -31,6 +34,8 @@ TitleScreen::TitleScreen()
 	this->backgroundTrees = FloatingSprite::create(Resources::Menus_TitleScreen_bg_back, Vec2(-48.0f, 8.0f), Vec2(7.0f, 5.0f));
 	this->midgroundTrees = FloatingSprite::create(Resources::Menus_TitleScreen_bg_mid, Vec2(8.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->tree = Sprite::create(Resources::Menus_TitleScreen_tree_fat);
+	this->eyes1 = Sprite::create();
+	this->eyes2 = Sprite::create();
 	this->foregroundVines = FloatingSprite::create(Resources::Menus_TitleScreen_bg_top_lines, Vec2(-24.0f, 0.0f), Vec2(7.0f, 5.0f));
 	this->foregroundGrassBottom = FloatingSprite::create(Resources::Menus_TitleScreen_bg_bott, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
 	this->foregroundGrassTop = FloatingSprite::create(Resources::Menus_TitleScreen_bg_top, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
@@ -55,6 +60,17 @@ TitleScreen::TitleScreen()
 	this->optionsButton->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 	this->exitButton->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 
+	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesA1);
+	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesA2);
+	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesA3);
+	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesA4);
+	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesA5);
+
+	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesB1);
+	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesB2);
+	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesB3);
+	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesB4);
+
 	std::stringstream stream;
 	stream << std::hex << (int)(&this->hackerMode);
 	std::string hackerModeAddress = stream.str();
@@ -76,6 +92,8 @@ TitleScreen::TitleScreen()
 	this->backgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->midgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->tree->setPosition(Vec2(origin.x + visibleSize.width / 2 + 38.0f, origin.y + visibleSize.height / 2 + 180.0f));
+	this->eyes1->setPosition(Vec2(origin.x + visibleSize.width / 2 + 48.0f, origin.y + visibleSize.height / 2 - 180.0f));
+	this->eyes2->setPosition(Vec2(origin.x + visibleSize.width / 2 + 48.0f, origin.y + visibleSize.height / 2 - 180.0f));
 	this->fog->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 120.0f));
 	this->foregroundFog->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 256.0f));
 	this->foregroundVines->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 196.0f));
@@ -89,6 +107,10 @@ TitleScreen::TitleScreen()
 	this->squally->setFlippedX(true);
 	this->fog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-92.0f, 0))));
 	this->foregroundFog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-196.0f, 0))));
+	this->eyes1Anim->setDelayPerUnit(0.025f);
+	this->eyes2Anim->setDelayPerUnit(0.025f);
+	this->eyes1->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes1Anim), DelayTime::create(5.0f), Animate::create(this->eyes1Anim)->reverse(), DelayTime::create(1.0f), nullptr)));
+	this->eyes2->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes2Anim), DelayTime::create(4.0f), Animate::create(this->eyes2Anim)->reverse(), DelayTime::create(0.75f), nullptr)));
 
 	this->titleBar->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2));
 	this->storyModeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2 + 192.0f));
@@ -107,6 +129,8 @@ TitleScreen::TitleScreen()
 	this->addChild(this->fog);
 	this->addChild(this->foregroundVines);
 	this->addChild(this->tree);
+	this->addChild(this->eyes1);
+	this->addChild(this->eyes2);
 	this->addChild(this->hackerModeLabel);
 	this->addChild(this->matrix);
 	this->addChild(this->matrixParticles);

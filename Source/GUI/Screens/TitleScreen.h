@@ -40,6 +40,10 @@ private:
 	FloatingSprite* backgroundTrees;
 	FloatingSprite* midgroundTrees;
 	Sprite* tree;
+	Animation* eyes1Anim;
+	Animation* eyes2Anim;
+	Sprite* eyes1;
+	Sprite* eyes2;
 	FloatingSprite* foregroundVines;
 	InfiniteParallaxNode* fog;
 	InfiniteParallaxNode* foregroundFog;
