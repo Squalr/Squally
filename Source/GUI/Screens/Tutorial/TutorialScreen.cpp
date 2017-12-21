@@ -11,11 +11,15 @@ TutorialScreen * TutorialScreen::create()
 
 TutorialScreen::TutorialScreen()
 {
+	this->currentPage = 0;
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	this->background = Sprite::create(Resources::Menus_TutorialMenu_Background);
 	this->tutorialWindow = Sprite::create(Resources::Menus_TutorialMenu_TutorialSelect);
+	this->descriptionBox = Sprite::create(Resources::Menus_TutorialMenu_TutorialItem);
+	this->description = Label::create("DEBUG", Resources::Fonts_Montserrat_Medium, 14);
 
 	this->floatingBox1 = FloatingSprite::create(Resources::Menus_TutorialMenu_ObjectBox1, Vec2(-32.0f, -32.0f), Vec2(8.0f, 5.0f));
 	this->floatingBox2 = FloatingSprite::create(Resources::Menus_TutorialMenu_ObjectBox2, Vec2(32.0f, 32.0f), Vec2(8.0f, 8.0f));
@@ -55,6 +59,8 @@ TutorialScreen::TutorialScreen()
 	this->floatingRocks2->setPosition(Vec2(origin.x + visibleSize.width / 2 + 240.0f, origin.y + visibleSize.height / 2 - 272.0f));
 
 	this->tutorialWindow->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->descriptionBox->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 164.0f));
+	this->description->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 164.0f));
 
 	//this->addChild(this->background);
 	this->addChild(this->nether);
@@ -75,6 +81,8 @@ TutorialScreen::TutorialScreen()
 	this->addChild(this->floatingRocks2);
 
 	this->addChild(this->tutorialWindow);
+	this->addChild(this->descriptionBox);
+	this->addChild(this->description);
 
 	this->LoadNodes();
 
@@ -94,29 +102,78 @@ void TutorialScreen::LoadNodes()
 	float screenCenterY = origin.y + visibleSize.height / 2;
 
 	this->tutorialButtons = new std::vector<MenuSprite*>();
+	int index = 0;
+
+	auto callback = CC_CALLBACK_1(TutorialScreen::OnMouseOver, this);
 
 	this->addChild(TutorialItem::create(
 		"Exact Value Scan I",
 		Resources::Levels_Debug,
-		Vec2(screenCenterX, screenCenterY + 168.0f - 12.0f)
+		index++,
+		callback
 	));
 
 	this->addChild(TutorialItem::create(
 		"Exact Value Scan II",
 		Resources::Levels_Debug,
-		Vec2(screenCenterX, screenCenterY + 72.0f - 12.0f * 2)
+		index++,
+		callback
 	));
 
 	this->addChild(TutorialItem::create(
 		"Unknown Value Scan",
 		Resources::Levels_Debug,
-		Vec2(screenCenterX, screenCenterY - 24.0f - 12.0f * 3)
+		index++,
+		callback
 	));
 
 	this->addChild(TutorialItem::create(
 		"Data Types - Float",
 		Resources::Levels_Debug,
-		Vec2(screenCenterX, screenCenterY - 120.0f - 12.0f * 4)
+		index++,
+		callback
+	));
+
+	this->addChild(TutorialItem::create(
+		"Data Types - Double",
+		Resources::Levels_Debug,
+		index++,
+		callback
+	));
+
+	this->addChild(TutorialItem::create(
+		"Godmode",
+		Resources::Levels_Debug,
+		index++,
+		callback
+	));
+
+	this->addChild(TutorialItem::create(
+		"Position I",
+		Resources::Levels_Debug,
+		index++,
+		callback
+	));
+
+	this->addChild(TutorialItem::create(
+		"Position II",
+		Resources::Levels_Debug,
+		index++,
+		callback
+	));
+
+	this->addChild(TutorialItem::create(
+		"Blink Godmode I",
+		Resources::Levels_Debug,
+		index++,
+		callback
+	));
+
+	this->addChild(TutorialItem::create(
+		"Blink Godmode II",
+		Resources::Levels_Debug,
+		index++,
+		callback
 	));
 }
 
@@ -125,6 +182,14 @@ void TutorialScreen::onEnter()
 	Scene::onEnter();
 
 	this->InitializeListeners();
+}
+
+void TutorialScreen::OnMouseOver(TutorialItem* tutorialItem)
+{
+	if (this->description->getString() != tutorialItem->tutorialDescription)
+	{
+		this->description->setString(tutorialItem->tutorialDescription);
+	}
 }
 
 void TutorialScreen::InitializeListeners()

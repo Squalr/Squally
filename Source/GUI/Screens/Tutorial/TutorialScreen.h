@@ -23,12 +23,17 @@ private:
 	void LoadNodes();
 	void onEnter() override;
 	void InitializeListeners();
+	void OnMouseOver(TutorialItem* tutorialItem);
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+
+	int currentPage;
 
 	Mouse* mouse;
 
 	Sprite* background;
 	Sprite* tutorialWindow;
+	Sprite* descriptionBox;
+	Label* description;
 
 	FloatingSprite* floatingBox1;
 	FloatingSprite* floatingBox2;
