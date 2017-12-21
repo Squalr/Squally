@@ -25,6 +25,7 @@ private:
 	void InitializeListeners();
 	void OnCloseClick(MenuSprite* menuSprite);
 	void OnMouseOver(TutorialItem* tutorialItem);
+	void OnMouseMove(EventMouse* event);
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
 	int currentPage;
@@ -54,7 +55,8 @@ private:
 	ParticleSystem* nether;
 	ParticleSystem* swirl;
 
-	std::vector<MenuSprite*>* tutorialButtons;
+	std::vector<MenuSprite*>* clickableMenus;
+	std::vector<TutorialItem*>* tutorialButtons;
 
 	const float titleFontSize = 48.0f;
 	const float infoFontSize = 32.0f;

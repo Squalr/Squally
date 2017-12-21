@@ -17,12 +17,13 @@ TutorialItem::TutorialItem(std::string description, std::string mapFile, int ind
 	this->page = index / TutorialItem::MaxEntriesPerPage;
 
 	// Adjust index to be relative to the current page
-	index = index % TutorialItem::MaxEntriesPerPage;
+	int orderIndex = index % TutorialItem::MaxEntriesPerPage;
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	this->frame = Sprite::create(Resources::Menus_TutorialMenu_TutorialEntry);
+	this->indexLabel = Label::create(std::to_string(index + 1), Resources::Fonts_Montserrat_Medium, 28);
 
 	// TODO: Load save data (steam cloud)
 	this->isLevelComplete = true;
@@ -42,10 +43,10 @@ TutorialItem::TutorialItem(std::string description, std::string mapFile, int ind
 			Resources::Menus_TutorialMenu_TutorialEntrySelected);
 	}
 
-	// Set position based on index
+	// Set position based on order index
 	Vec2 position = Vec2(
-		origin.x + visibleSize.width / 2 - 256.0f + (index % TutorialItem::MaxEntriesPerRow) * 128.0f,
-		origin.y + visibleSize.height / 2 + 128.0f + ((index / TutorialItem::MaxEntriesPerRow) * -160.0f)
+		origin.x + visibleSize.width / 2 - 256.0f + (orderIndex % TutorialItem::MaxEntriesPerRow) * 128.0f,
+		origin.y + visibleSize.height / 2 + 128.0f + ((orderIndex / TutorialItem::MaxEntriesPerRow) * -160.0f)
 	);
 
 	this->startButton->SetClickCallback(CC_CALLBACK_1(TutorialItem::OnTutorialClick, this));
@@ -53,11 +54,13 @@ TutorialItem::TutorialItem(std::string description, std::string mapFile, int ind
 
 	this->frame->setPosition(position);
 	this->startButton->setPosition(Vec2(position.x + this->frame->getContentSize().width / 2 - this->startButton->getContentSize().width / 2, position.y));
+	this->indexLabel->setPosition(Vec2(position.x + this->frame->getContentSize().width / 2 - this->startButton->getContentSize().width / 2, position.y + 20));
 
 	this->setContentSize(this->frame->getContentSize());
 
 	this->addChild(this->frame);
 	this->addChild(this->startButton);
+	this->addChild(this->indexLabel);
 }
 
 TutorialItem::~TutorialItem()
