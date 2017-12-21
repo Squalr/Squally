@@ -291,6 +291,9 @@ public:
 	static const string Menus_Buttons_ChatButton;
 	static const string Menus_Buttons_ChatButtonClick;
 	static const string Menus_Buttons_ChatButtonHover;
+	static const string Menus_Buttons_CloseButton;
+	static const string Menus_Buttons_CloseButtonClick;
+	static const string Menus_Buttons_CloseButtonHover;
 	static const string Menus_Buttons_CrownButton;
 	static const string Menus_Buttons_CrownButtonClick;
 	static const string Menus_Buttons_CrownButtonHover;
