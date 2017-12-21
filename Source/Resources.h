@@ -277,8 +277,8 @@ public:
 	static const string Menus_Buttons_AudioOffClick;
 	static const string Menus_Buttons_AudioOffHover;
 	static const string Menus_Buttons_BasketButton;
+	static const string Menus_Buttons_BasketButtonClick;
 	static const string Menus_Buttons_BasketButtonHover;
-	static const string Menus_Buttons_BasketButtonPressed;
 	static const string Menus_Buttons_BellButton;
 	static const string Menus_Buttons_BellButtonClick;
 	static const string Menus_Buttons_BellButtonHover;
@@ -393,6 +393,7 @@ public:
 	static const string Menus_TitleScreen_TitleScreen;
 	static const string Menus_TitleScreen_tree_fat;
 	static const string Menus_TutorialMenu_Background;
+	static const string Menus_TutorialMenu_Gem;
 	static const string Menus_TutorialMenu_ObjectBox1;
 	static const string Menus_TutorialMenu_ObjectBox2;
 	static const string Menus_TutorialMenu_ObjectBox3;
@@ -410,13 +411,13 @@ public:
 	static const string Menus_TutorialMenu_ObjectSci1;
 	static const string Menus_TutorialMenu_ObjectSci2;
 	static const string Menus_TutorialMenu_ObjectSci3;
+	static const string Menus_TutorialMenu_TutorialEntry;
+	static const string Menus_TutorialMenu_TutorialEntryComplete;
+	static const string Menus_TutorialMenu_TutorialEntryCompleteSelected;
+	static const string Menus_TutorialMenu_TutorialEntryLocked;
+	static const string Menus_TutorialMenu_TutorialEntryLockedSelected;
+	static const string Menus_TutorialMenu_TutorialEntrySelected;
 	static const string Menus_TutorialMenu_TutorialItem;
-	static const string Menus_TutorialMenu_TutorialItemClick;
-	static const string Menus_TutorialMenu_TutorialItemHover;
-	static const string Menus_TutorialMenu_TutorialItemLocked;
-	static const string Menus_TutorialMenu_TutorialItemReplay;
-	static const string Menus_TutorialMenu_TutorialItemReplayClick;
-	static const string Menus_TutorialMenu_TutorialItemReplayHover;
 	static const string Menus_TutorialMenu_TutorialSelect;
 	static const string Menus_WorldMaps_Apple;
 	static const string Menus_WorldMaps_AppleGrayed;

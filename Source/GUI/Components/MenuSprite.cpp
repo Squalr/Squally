@@ -39,6 +39,11 @@ void MenuSprite::SetClickCallback(std::function<void(MenuSprite*)> onMouseClick)
 	this->menuOnMouseClick = onMouseClick;
 }
 
+void MenuSprite::SetMouseOverCallback(std::function<void(MenuSprite*)> onMouseOver)
+{
+	this->menuOnMouseOver = onMouseOver;
+}
+
 void MenuSprite::SetMouseOverSound(std::string soundResource)
 {
 	this->mouseOverSound = soundResource;
@@ -85,6 +90,12 @@ void MenuSprite::OnMouseMove(EventMouse* event)
 				this->spriteClicked->setVisible(false);
 				this->spriteSelected->setVisible(true);
 			}
+
+			// Mouse over callback
+			if (this->menuOnMouseOver != nullptr)
+			{
+				this->menuOnMouseOver(this);
+			}
 		}
 		else
 		{
@@ -111,8 +122,10 @@ void MenuSprite::OnMouseUp(EventMouse* event)
 	{
 		if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{
+			// Mouse click callback
 			this->menuOnMouseClick(this);
 
+			// Play click sound
 			if (this->clickSound.length() > 0)
 			{
 				SimpleAudioEngine* audio = SimpleAudioEngine::getInstance();

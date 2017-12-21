@@ -1,29 +1,56 @@
 #include "TutorialItem.h"
 
-TutorialItem* TutorialItem::create(std::string description, std::string mapFile, Vec2 position)
+TutorialItem* TutorialItem::create(std::string description, std::string mapFile, int index, std::function<void(TutorialItem*)> onMouseOver)
 {
-	TutorialItem* tutorialItem = new TutorialItem(description, mapFile, position);
+	TutorialItem* tutorialItem = new TutorialItem(description, mapFile, index, onMouseOver);
 
 	tutorialItem->autorelease();
 
 	return tutorialItem;
 }
 
-TutorialItem::TutorialItem(std::string description, std::string mapFile, Vec2 position)
+TutorialItem::TutorialItem(std::string description, std::string mapFile, int index, std::function<void(TutorialItem*)> onMouseOver)
 {
-	this->tutorialDescription = description;
 	this->tutorialMapFile = mapFile;
-	this->description = Label::create(description, Resources::Fonts_Montserrat_Medium, 14.0f);
+	this->tutorialDescription = description;
+	this->onMouseOverEvent = onMouseOver;
+	this->page = index / TutorialItem::MaxEntriesPerPage;
 
-	this->frame = Sprite::create(Resources::Menus_TutorialMenu_TutorialItem);
-	this->startButton = MenuSprite::create(
-		Resources::Menus_Buttons_PlayButton,
-		Resources::Menus_Buttons_PlayButtonHover,
-		Resources::Menus_Buttons_PlayButtonClick);
+	// Adjust index to be relative to the current page
+	index = index % TutorialItem::MaxEntriesPerPage;
+
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
+	this->frame = Sprite::create(Resources::Menus_TutorialMenu_TutorialEntry);
+
+	// TODO: Load save data (steam cloud)
+	this->isLevelComplete = true;
+
+	if (this->isLevelComplete)
+	{
+		this->startButton = MenuSprite::create(
+			Resources::Menus_TutorialMenu_TutorialEntryComplete,
+			Resources::Menus_TutorialMenu_TutorialEntryCompleteSelected,
+			Resources::Menus_TutorialMenu_TutorialEntryCompleteSelected);
+	}
+	else
+	{
+		this->startButton = MenuSprite::create(
+			Resources::Menus_TutorialMenu_TutorialEntry,
+			Resources::Menus_TutorialMenu_TutorialEntrySelected,
+			Resources::Menus_TutorialMenu_TutorialEntrySelected);
+	}
+
+	// Set position based on index
+	Vec2 position = Vec2(
+		origin.x + visibleSize.width / 2 - 256.0f + (index % TutorialItem::MaxEntriesPerRow) * 128.0f,
+		origin.y + visibleSize.height / 2 + 128.0f + ((index / TutorialItem::MaxEntriesPerRow) * -160.0f)
+	);
 
 	this->startButton->SetClickCallback(CC_CALLBACK_1(TutorialItem::OnTutorialClick, this));
+	this->startButton->SetMouseOverCallback(CC_CALLBACK_1(TutorialItem::OnTutorialMouseOver, this));
 
-	this->description->setPosition(position);
 	this->frame->setPosition(position);
 	this->startButton->setPosition(Vec2(position.x + this->frame->getContentSize().width / 2 - this->startButton->getContentSize().width / 2, position.y));
 
@@ -31,7 +58,6 @@ TutorialItem::TutorialItem(std::string description, std::string mapFile, Vec2 po
 
 	this->addChild(this->frame);
 	this->addChild(this->startButton);
-	this->addChild(this->description);
 }
 
 TutorialItem::~TutorialItem()
@@ -41,6 +67,11 @@ TutorialItem::~TutorialItem()
 void TutorialItem::OnTutorialClick(MenuSprite* tutorialItem)
 {
 	Director::getInstance()->replaceScene(Level::create(this->tutorialMapFile));
+}
+
+void TutorialItem::OnTutorialMouseOver(MenuSprite* tutorialItem)
+{
+	this->onMouseOverEvent(this);
 }
 
 void TutorialItem::onEnter()
