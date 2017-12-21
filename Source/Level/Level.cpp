@@ -38,6 +38,7 @@ Level::Level(std::string levelResourceFilePath)
 	this->addChild(this->environmentLayer);
 
 	this->scheduleUpdate();
+	this->update(0.0f);
 }
 
 Level::~Level()
