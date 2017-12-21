@@ -13,6 +13,7 @@ public:
 	static MenuSprite * create(std::string spriteResource, std::string spriteSelectedResource, std::string spriteClickedResource);
 
 	void SetClickCallback(std::function<void(MenuSprite*)> onMouseClick);
+	void SetMouseOverCallback(std::function<void(MenuSprite*)> onMouseClick);
 	void SetMouseOverSound(std::string soundResource);
 	void SetClickSound(std::string soundResource);
 
@@ -34,5 +35,6 @@ private:
 	Sprite* spriteClicked;
 	Sprite* spriteSelected;
 	std::function<void(MenuSprite*)> menuOnMouseClick;
+	std::function<void(MenuSprite*)> menuOnMouseOver;
 };
 
