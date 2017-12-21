@@ -109,8 +109,8 @@ TitleScreen::TitleScreen()
 	this->foregroundFog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-196.0f, 0))));
 	this->eyes1Anim->setDelayPerUnit(0.025f);
 	this->eyes2Anim->setDelayPerUnit(0.025f);
-	this->eyes1->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes1Anim), DelayTime::create(5.0f), Animate::create(this->eyes1Anim)->reverse(), DelayTime::create(1.0f), nullptr)));
-	this->eyes2->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes2Anim), DelayTime::create(4.0f), Animate::create(this->eyes2Anim)->reverse(), DelayTime::create(0.75f), nullptr)));
+	this->eyes1->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes1Anim)->reverse(), DelayTime::create(1.54f), Animate::create(this->eyes1Anim), DelayTime::create(2.5f), nullptr)));
+	this->eyes2->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes2Anim)->reverse(), DelayTime::create(1.25f), Animate::create(this->eyes2Anim), DelayTime::create(3.25f), nullptr)));
 
 	this->titleBar->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2));
 	this->storyModeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2 + 192.0f));
