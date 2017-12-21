@@ -371,6 +371,15 @@ public:
 	static const string Menus_TitleScreen_ExitButton;
 	static const string Menus_TitleScreen_ExitButtonClick;
 	static const string Menus_TitleScreen_ExitButtonHover;
+	static const string Menus_TitleScreen_EyesA1;
+	static const string Menus_TitleScreen_EyesA2;
+	static const string Menus_TitleScreen_EyesA3;
+	static const string Menus_TitleScreen_EyesA4;
+	static const string Menus_TitleScreen_EyesA5;
+	static const string Menus_TitleScreen_EyesB1;
+	static const string Menus_TitleScreen_EyesB2;
+	static const string Menus_TitleScreen_EyesB3;
+	static const string Menus_TitleScreen_EyesB4;
 	static const string Menus_TitleScreen_Monitor;
 	static const string Menus_TitleScreen_MonitorSelected;
 	static const string Menus_TitleScreen_OptionsButton;
