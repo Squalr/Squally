@@ -13,6 +13,8 @@ class TutorialItem : public Node
 public:
 	static TutorialItem * create(std::string description, std::string mapFile, int index, std::function<void(TutorialItem*)> onMouseOver);
 
+	MenuSprite* startButton;
+
 	std::string tutorialDescription;
 	std::string tutorialMapFile;
 
@@ -34,6 +36,6 @@ private:
 
 	Mouse* mouse;
 	Sprite* frame;
-	MenuSprite* startButton;
+	Label* indexLabel;
 };
 

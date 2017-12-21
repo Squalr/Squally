@@ -19,7 +19,7 @@ TutorialScreen::TutorialScreen()
 	this->background = Sprite::create(Resources::Menus_TutorialMenu_Background);
 	this->tutorialWindow = Sprite::create(Resources::Menus_TutorialMenu_TutorialSelect);
 	this->descriptionBox = Sprite::create(Resources::Menus_TutorialMenu_TutorialItem);
-	this->description = Label::create("DEBUG", Resources::Fonts_Montserrat_Medium, 14);
+	this->description = Label::create("", Resources::Fonts_Montserrat_Medium, 14);
 	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
 
 	this->floatingBox1 = FloatingSprite::create(Resources::Menus_TutorialMenu_ObjectBox1, Vec2(-32.0f, -32.0f), Vec2(8.0f, 5.0f));
@@ -89,6 +89,17 @@ TutorialScreen::TutorialScreen()
 
 	this->LoadNodes();
 	this->closeButton->SetClickCallback(CC_CALLBACK_1(TutorialScreen::OnCloseClick, this));
+	this->closeButton->SetClickSound(Resources::Sounds_ClickBack1);
+
+	// Set clickable items to update mouse sprite
+	this->clickableMenus = new std::vector<MenuSprite*>();
+	this->clickableMenus->push_back(this->closeButton);
+
+	for (std::vector<TutorialItem*>::iterator it = this->tutorialButtons->begin(); it != this->tutorialButtons->end(); ++it)
+	{
+		this->addChild(*it);
+		this->clickableMenus->push_back((*it)->startButton);
+	}
 
 	this->addChild(this->mouse);
 }
@@ -105,75 +116,75 @@ void TutorialScreen::LoadNodes()
 	float screenCenterX = origin.x + visibleSize.width / 2;
 	float screenCenterY = origin.y + visibleSize.height / 2;
 
-	this->tutorialButtons = new std::vector<MenuSprite*>();
+	this->tutorialButtons = new std::vector<TutorialItem*>();
 	int index = 0;
 
 	auto callback = CC_CALLBACK_1(TutorialScreen::OnMouseOver, this);
 
-	this->addChild(TutorialItem::create(
+	this->tutorialButtons->push_back(TutorialItem::create(
 		"Exact Value Scan I",
 		Resources::Levels_Debug,
 		index++,
 		callback
 	));
 
-	this->addChild(TutorialItem::create(
+	this->tutorialButtons->push_back(TutorialItem::create(
 		"Exact Value Scan II",
 		Resources::Levels_Debug,
 		index++,
 		callback
 	));
 
-	this->addChild(TutorialItem::create(
+	this->tutorialButtons->push_back(TutorialItem::create(
 		"Unknown Value Scan",
 		Resources::Levels_Debug,
 		index++,
 		callback
 	));
 
-	this->addChild(TutorialItem::create(
+	this->tutorialButtons->push_back(TutorialItem::create(
 		"Data Types - Float",
 		Resources::Levels_Debug,
 		index++,
 		callback
 	));
 
-	this->addChild(TutorialItem::create(
+	this->tutorialButtons->push_back(TutorialItem::create(
 		"Data Types - Double",
 		Resources::Levels_Debug,
 		index++,
 		callback
 	));
 
-	this->addChild(TutorialItem::create(
+	this->tutorialButtons->push_back(TutorialItem::create(
 		"Godmode",
 		Resources::Levels_Debug,
 		index++,
 		callback
 	));
 
-	this->addChild(TutorialItem::create(
+	this->tutorialButtons->push_back(TutorialItem::create(
 		"Position I",
 		Resources::Levels_Debug,
 		index++,
 		callback
 	));
 
-	this->addChild(TutorialItem::create(
+	this->tutorialButtons->push_back(TutorialItem::create(
 		"Position II",
 		Resources::Levels_Debug,
 		index++,
 		callback
 	));
 
-	this->addChild(TutorialItem::create(
+	this->tutorialButtons->push_back(TutorialItem::create(
 		"Blink Godmode I",
 		Resources::Levels_Debug,
 		index++,
 		callback
 	));
 
-	this->addChild(TutorialItem::create(
+	this->tutorialButtons->push_back(TutorialItem::create(
 		"Blink Godmode II",
 		Resources::Levels_Debug,
 		index++,
@@ -199,9 +210,14 @@ void TutorialScreen::OnMouseOver(TutorialItem* tutorialItem)
 void TutorialScreen::InitializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+	EventListenerMouse* mouseListener = EventListenerMouse::create();
+
+	mouseListener->onMouseMove = CC_CALLBACK_1(TutorialScreen::OnMouseMove, this);
 	listener->onKeyPressed = CC_CALLBACK_2(TutorialScreen::OnKeyPressed, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
 
 void TutorialScreen::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -217,3 +233,20 @@ void TutorialScreen::OnCloseClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->replaceScene(TitleScreen::create());
 }
+
+void TutorialScreen::OnMouseMove(EventMouse* event)
+{
+	this->mouse->SetCanClick(false);
+
+	for (std::vector<MenuSprite*>::iterator it = this->clickableMenus->begin(); it != this->clickableMenus->end(); ++it)
+	{
+		MenuSprite* menuSprite = *it;
+
+		if (menuSprite->isVisible() && Utils::Intersects(menuSprite, Vec2(event->getCursorX(), event->getCursorY())))
+		{
+			this->mouse->SetCanClick(true);
+			return;
+		}
+	}
+}
+

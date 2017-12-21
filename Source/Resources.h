@@ -458,10 +458,10 @@ public:
 	static const string Particles_WarpPoint;
 	static const string Particles_Wind;
 	static const string Sounds_ButtonClick1;
-	static const string Sounds_Click__7_;
-	static const string Sounds_Click_Back__1_;
-	static const string Sounds_Click_Back__5_;
-	static const string Sounds_Map_Open;
-	static const string Sounds_Special__1_;
-	static const string Sounds_Special__2_;
+	static const string Sounds_ButtonClick2;
+	static const string Sounds_ClickBack1;
+	static const string Sounds_ClickBack2;
+	static const string Sounds_MapOpen;
+	static const string Sounds_Special1;
+	static const string Sounds_Special2;
 };
