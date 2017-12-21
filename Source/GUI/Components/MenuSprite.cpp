@@ -12,6 +12,9 @@ MenuSprite* MenuSprite::create(std::string spriteResource, std::string spriteSel
 MenuSprite::MenuSprite(std::string spriteResource, std::string spriteSelectedResource, std::string spriteClickedResource)
 {
 	this->menuOnMouseClick = nullptr;
+	this->clickSound = Resources::Sounds_ButtonClick1;
+	this->mouseOverSound = "";
+
 	this->sprite = Sprite::create(spriteResource);
 	this->spriteClicked = Sprite::create(spriteClickedResource);
 	this->spriteSelected = Sprite::create(spriteSelectedResource);
@@ -36,14 +39,14 @@ void MenuSprite::SetClickCallback(std::function<void(MenuSprite*)> onMouseClick)
 	this->menuOnMouseClick = onMouseClick;
 }
 
-void SetMouseOverSound(std::string soundResource)
+void MenuSprite::SetMouseOverSound(std::string soundResource)
 {
-
+	this->mouseOverSound = soundResource;
 }
 
-void SetClickSound(std::string soundResource)
+void MenuSprite::SetClickSound(std::string soundResource)
 {
-
+	this->clickSound = soundResource;
 }
 
 void MenuSprite::onEnter()
@@ -99,6 +102,13 @@ void MenuSprite::OnMouseDown(EventMouse* event)
 		this->sprite->setVisible(false);
 		this->spriteClicked->setVisible(true);
 		this->spriteSelected->setVisible(false);
+
+		if (this->clickSound.length() > 0)
+		{
+			SimpleAudioEngine* audio = SimpleAudioEngine::getInstance();
+			audio->preloadEffect(this->clickSound.c_str());
+			audio->playEffect(this->clickSound.c_str());
+		}
 	}
 }
 

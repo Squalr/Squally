@@ -335,6 +335,7 @@ public:
 	static const string Menus_TutorialMenu_Background;
 	static const string Menus_TutorialMenu_ObjectBox1;
 	static const string Menus_TutorialMenu_ObjectBox2;
+	static const string Menus_TutorialMenu_ObjectBox3;
 	static const string Menus_TutorialMenu_ObjectCrystal1;
 	static const string Menus_TutorialMenu_ObjectCrystal2;
 	static const string Menus_TutorialMenu_ObjectDiamonds1;
@@ -392,8 +393,8 @@ public:
 	static const string Particles_Sparks;
 	static const string Particles_WarpPoint;
 	static const string Particles_Wind;
+	static const string Sounds_ButtonClick1;
 	static const string Sounds_Click__7_;
-	static const string Sounds_Click__8_;
 	static const string Sounds_Click_Back__1_;
 	static const string Sounds_Click_Back__5_;
 	static const string Sounds_Map_Open;

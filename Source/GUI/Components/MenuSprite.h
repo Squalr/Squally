@@ -2,8 +2,10 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Utils/Utils.h"
+#include "audio/include/SimpleAudioEngine.h"
 
 using namespace cocos2d;
+using namespace CocosDenshion;
 
 class MenuSprite : public Node
 {
@@ -24,6 +26,9 @@ private:
 	void OnMouseMove(EventMouse* event);
 	void OnMouseDown(EventMouse* event);
 	void OnMouseUp(EventMouse* event);
+
+	std::string mouseOverSound;
+	std::string clickSound;
 
 	Sprite* sprite;
 	Sprite* spriteClicked;

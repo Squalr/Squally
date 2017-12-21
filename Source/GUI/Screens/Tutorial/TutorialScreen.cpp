@@ -19,6 +19,7 @@ TutorialScreen::TutorialScreen()
 
 	this->floatingBox1 = FloatingSprite::create(Resources::Menus_TutorialMenu_ObjectBox1, Vec2(-32.0f, -32.0f), Vec2(8.0f, 5.0f));
 	this->floatingBox2 = FloatingSprite::create(Resources::Menus_TutorialMenu_ObjectBox2, Vec2(32.0f, 32.0f), Vec2(8.0f, 8.0f));
+	this->floatingBox3 = FloatingSprite::create(Resources::Menus_TutorialMenu_ObjectBox3, Vec2(32.0f, 32.0f), Vec2(8.0f, 8.0f));
 	this->floatingMisc1 = FloatingSprite::create(Resources::Menus_TutorialMenu_ObjectSci1, Vec2(64.0f, 32.0f), Vec2(7.0f, 8.0f));
 	this->floatingMisc2 = FloatingSprite::create(Resources::Menus_TutorialMenu_ObjectSci2, Vec2(32.0f, 32.0f), Vec2(8.0f, 8.0f));
 	this->floatingMisc3 = FloatingSprite::create(Resources::Menus_TutorialMenu_ObjectSci3, Vec2(-32.0f, 32.0f), Vec2(8.0f, 8.0f));
@@ -41,6 +42,7 @@ TutorialScreen::TutorialScreen()
 
 	this->floatingBox1->setPosition(Vec2(origin.x + visibleSize.width / 2 + 640.0f, origin.y + visibleSize.height / 2 + 420.0f));
 	this->floatingBox2->setPosition(Vec2(origin.x + visibleSize.width / 2 - 500.0f, origin.y + visibleSize.height / 2 + 64.0f));
+	this->floatingBox3->setPosition(Vec2(origin.x + visibleSize.width / 2 - 640.0f, origin.y + visibleSize.height / 2 - 320.0f));
 	this->floatingMisc1->setPosition(Vec2(origin.x + visibleSize.width / 2 + 224.0f, origin.y + visibleSize.height / 2 + 320.0f));
 	this->floatingMisc2->setPosition(Vec2(origin.x + visibleSize.width / 2 + 540.0f, origin.y + visibleSize.height / 2));
 	this->floatingMisc3->setPosition(Vec2(origin.x + visibleSize.width / 2 - 640.0f, origin.y + visibleSize.height / 2 + 420.0f));
@@ -60,6 +62,7 @@ TutorialScreen::TutorialScreen()
 
 	this->addChild(this->floatingBox1);
 	this->addChild(this->floatingBox2);
+	this->addChild(this->floatingBox3);
 	this->addChild(this->floatingMisc1);
 	this->addChild(this->floatingMisc2);
 	this->addChild(this->floatingMisc3);
