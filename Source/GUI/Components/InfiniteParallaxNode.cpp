@@ -11,11 +11,13 @@ InfiniteParallaxNode* InfiniteParallaxNode::create(std::string spriteResourcePat
 
 InfiniteParallaxNode::InfiniteParallaxNode(std::string spriteResourcePath)
 {
+	const int overlap = 2;
+
 	this->nodeA = Sprite::create(spriteResourcePath);
 	this->nodeB = Sprite::create(spriteResourcePath);
 
 	this->addChild(this->nodeA, 0, Vec2(1.0f, 1.0f), Vec2::ZERO);
-	this->addChild(this->nodeB, 0, Vec2(1.0f, 1.0f), Vec2(this->nodeB->getContentSize().width - 2, 0.0f));
+	this->addChild(this->nodeB, 0, Vec2(1.0f, 1.0f), Vec2(this->nodeB->getContentSize().width - overlap, 0.0f));
 
 	this->scheduleUpdate();
 }

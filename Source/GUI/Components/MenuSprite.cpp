@@ -102,13 +102,6 @@ void MenuSprite::OnMouseDown(EventMouse* event)
 		this->sprite->setVisible(false);
 		this->spriteClicked->setVisible(true);
 		this->spriteSelected->setVisible(false);
-
-		if (this->clickSound.length() > 0)
-		{
-			SimpleAudioEngine* audio = SimpleAudioEngine::getInstance();
-			audio->preloadEffect(this->clickSound.c_str());
-			audio->playEffect(this->clickSound.c_str());
-		}
 	}
 }
 
@@ -119,6 +112,13 @@ void MenuSprite::OnMouseUp(EventMouse* event)
 		if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{
 			this->menuOnMouseClick(this);
+
+			if (this->clickSound.length() > 0)
+			{
+				SimpleAudioEngine* audio = SimpleAudioEngine::getInstance();
+				audio->preloadEffect(this->clickSound.c_str());
+				audio->playEffect(this->clickSound.c_str());
+			}
 		}
 	}
 }

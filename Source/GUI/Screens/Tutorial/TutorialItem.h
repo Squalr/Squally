@@ -28,6 +28,8 @@ private:
 
 	Mouse* mouse;
 	Label* description;
-	MenuSprite* sprite;
+	Sprite* frame;
+	Sprite* status;
+	MenuSprite* startButton;
 };
 

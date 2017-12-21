@@ -15,19 +15,22 @@ TutorialItem::TutorialItem(std::string description, std::string mapFile, Vec2 po
 	this->tutorialMapFile = mapFile;
 	this->description = Label::create(description, Resources::Fonts_Montserrat_Medium, 14.0f);
 
-	this->sprite = MenuSprite::create(
-		Resources::Menus_TutorialMenu_TutorialItem,
-		Resources::Menus_TutorialMenu_TutorialItemHover,
-		Resources::Menus_TutorialMenu_TutorialItemClick);
+	this->frame = Sprite::create(Resources::Menus_TutorialMenu_TutorialItem);
+	this->startButton = MenuSprite::create(
+		Resources::Menus_Buttons_PlayButton,
+		Resources::Menus_Buttons_PlayButtonHover,
+		Resources::Menus_Buttons_PlayButtonClick);
 
-	this->sprite->SetClickCallback(CC_CALLBACK_1(TutorialItem::OnTutorialClick, this));
+	this->startButton->SetClickCallback(CC_CALLBACK_1(TutorialItem::OnTutorialClick, this));
 
 	this->description->setPosition(position);
-	this->sprite->setPosition(position);
+	this->frame->setPosition(position);
+	this->startButton->setPosition(Vec2(position.x + this->frame->getContentSize().width / 2 - this->startButton->getContentSize().width / 2, position.y));
 
-	this->setContentSize(this->sprite->getContentSize());
+	this->setContentSize(this->frame->getContentSize());
 
-	this->addChild(this->sprite);
+	this->addChild(this->frame);
+	this->addChild(this->startButton);
 	this->addChild(this->description);
 }
 
