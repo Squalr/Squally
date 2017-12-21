@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
-#include "GUI/Mouse.h"
+#include "GUI/Components/Mouse.h"
 #include "Level/Level.h"
 #include "Utils/Utils.h"
 

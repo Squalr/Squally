@@ -32,6 +32,7 @@ private:
 
 	FloatingSprite* floatingBox1;
 	FloatingSprite* floatingBox2;
+	FloatingSprite* floatingBox3;
 	FloatingSprite* floatingMisc1;
 	FloatingSprite* floatingMisc2;
 	FloatingSprite* floatingMisc3;
