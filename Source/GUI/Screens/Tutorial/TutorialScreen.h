@@ -23,6 +23,7 @@ private:
 	void LoadNodes();
 	void onEnter() override;
 	void InitializeListeners();
+	void OnCloseClick(MenuSprite* menuSprite);
 	void OnMouseOver(TutorialItem* tutorialItem);
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
@@ -34,6 +35,7 @@ private:
 	Sprite* tutorialWindow;
 	Sprite* descriptionBox;
 	Label* description;
+	MenuSprite* closeButton;
 
 	FloatingSprite* floatingBox1;
 	FloatingSprite* floatingBox2;

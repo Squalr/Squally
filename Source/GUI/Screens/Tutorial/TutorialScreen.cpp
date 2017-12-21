@@ -20,6 +20,7 @@ TutorialScreen::TutorialScreen()
 	this->tutorialWindow = Sprite::create(Resources::Menus_TutorialMenu_TutorialSelect);
 	this->descriptionBox = Sprite::create(Resources::Menus_TutorialMenu_TutorialItem);
 	this->description = Label::create("DEBUG", Resources::Fonts_Montserrat_Medium, 14);
+	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
 
 	this->floatingBox1 = FloatingSprite::create(Resources::Menus_TutorialMenu_ObjectBox1, Vec2(-32.0f, -32.0f), Vec2(8.0f, 5.0f));
 	this->floatingBox2 = FloatingSprite::create(Resources::Menus_TutorialMenu_ObjectBox2, Vec2(32.0f, 32.0f), Vec2(8.0f, 8.0f));
@@ -59,6 +60,7 @@ TutorialScreen::TutorialScreen()
 	this->floatingRocks2->setPosition(Vec2(origin.x + visibleSize.width / 2 + 240.0f, origin.y + visibleSize.height / 2 - 272.0f));
 
 	this->tutorialWindow->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->closeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 308.0f, origin.y + visibleSize.height / 2 + 222.0f));
 	this->descriptionBox->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 164.0f));
 	this->description->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 164.0f));
 
@@ -81,10 +83,12 @@ TutorialScreen::TutorialScreen()
 	this->addChild(this->floatingRocks2);
 
 	this->addChild(this->tutorialWindow);
+	this->addChild(this->closeButton);
 	this->addChild(this->descriptionBox);
 	this->addChild(this->description);
 
 	this->LoadNodes();
+	this->closeButton->SetClickCallback(CC_CALLBACK_1(TutorialScreen::OnCloseClick, this));
 
 	this->addChild(this->mouse);
 }
@@ -207,4 +211,9 @@ void TutorialScreen::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		Director::getInstance()->replaceScene(TitleScreen::create());
 		break;
 	}
+}
+
+void TutorialScreen::OnCloseClick(MenuSprite* menuSprite)
+{
+	Director::getInstance()->replaceScene(TitleScreen::create());
 }
