@@ -39,18 +39,13 @@ Level::Level(std::string levelResourceFilePath)
 
 	this->scheduleUpdate();
 	this->update(0.0f);
+
+	this->InitializeListeners();
 }
 
 Level::~Level()
 {
 	delete(this->player);
-}
-
-void Level::onEnter()
-{
-	Scene::onEnter();
-
-	this->InitializeListeners();
 }
 
 void Level::update(float dt)

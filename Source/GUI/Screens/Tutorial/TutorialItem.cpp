@@ -69,16 +69,10 @@ TutorialItem::~TutorialItem()
 
 void TutorialItem::OnTutorialClick(MenuSprite* tutorialItem)
 {
-	Director::getInstance()->replaceScene(Level::create(this->tutorialMapFile));
+	Director::getInstance()->pushScene(Level::create(this->tutorialMapFile));
 }
 
 void TutorialItem::OnTutorialMouseOver(MenuSprite* tutorialItem)
 {
 	this->onMouseOverEvent(this);
 }
-
-void TutorialItem::onEnter()
-{
-	Node::onEnter();
-}
-

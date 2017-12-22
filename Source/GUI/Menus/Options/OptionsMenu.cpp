@@ -47,6 +47,8 @@ OptionsMenu::~OptionsMenu()
 void OptionsMenu::onEnter()
 {
 	Scene::onEnter();
+
+	this->InitializePositions();
 }
 
 void OptionsMenu::InitializeListeners()

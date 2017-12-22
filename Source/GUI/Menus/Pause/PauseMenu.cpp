@@ -42,17 +42,12 @@ PauseMenu::PauseMenu()
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitToTitleButton);
 	this->addChild(this->mouse);
+
+	this->InitializeListeners();
 }
 
 PauseMenu::~PauseMenu()
 {
-}
-
-void PauseMenu::onEnter()
-{
-	Scene::onEnter();
-
-	this->InitializeListeners();
 }
 
 void PauseMenu::InitializeListeners()
@@ -86,9 +81,5 @@ void PauseMenu::OnOptionsClick(MenuSprite* menuSprite)
 
 void PauseMenu::OnExitToTitleClick(MenuSprite* menuSprite)
 {
-	// Close the cocos2d-x game scene and quit the application
-	Director::getInstance()->end();
-
-	//// EventCustom customEndEvent("game_scene_close_event");
-	//// _eventDispatcher->dispatchEvent(&customEndEvent);
+	Director::getInstance()->popToSceneStackLevel(2);
 }

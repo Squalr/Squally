@@ -11,17 +11,11 @@ Slider* Slider::create()
 
 Slider::Slider()
 {
+	this->InitializeListeners();
 }
 
 Slider::~Slider()
 {
-}
-
-void Slider::onEnter()
-{
-	Node::onEnter();
-
-	this->InitializeListeners();
 }
 
 void Slider::InitializeListeners()
