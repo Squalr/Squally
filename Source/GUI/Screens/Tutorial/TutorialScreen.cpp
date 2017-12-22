@@ -102,6 +102,8 @@ TutorialScreen::TutorialScreen()
 	}
 
 	this->addChild(this->mouse);
+
+	this->InitializeListeners();
 }
 
 TutorialScreen::~TutorialScreen()
@@ -195,8 +197,6 @@ void TutorialScreen::LoadNodes()
 void TutorialScreen::onEnter()
 {
 	Scene::onEnter();
-
-	this->InitializeListeners();
 }
 
 void TutorialScreen::OnMouseOver(TutorialItem* tutorialItem)
@@ -216,13 +216,13 @@ void TutorialScreen::InitializeListeners()
 	listener->onKeyPressed = CC_CALLBACK_2(TutorialScreen::OnKeyPressed, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
 
 void TutorialScreen::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	switch (keyCode) {
+	switch (keyCode)
+	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		Director::getInstance()->replaceScene(TitleScreen::create());
 		break;
@@ -249,4 +249,3 @@ void TutorialScreen::OnMouseMove(EventMouse* event)
 		}
 	}
 }
-

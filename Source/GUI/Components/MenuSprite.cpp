@@ -28,6 +28,7 @@ MenuSprite::MenuSprite(std::string spriteResource, std::string spriteSelectedRes
 	this->addChild(this->spriteClicked);
 	this->addChild(this->spriteSelected);
 
+	this->InitializeListeners();
 }
 
 MenuSprite::~MenuSprite()
@@ -57,8 +58,6 @@ void MenuSprite::SetClickSound(std::string soundResource)
 void MenuSprite::onEnter()
 {
 	Node::onEnter();
-
-	this->InitializeListeners();
 }
 
 void MenuSprite::InitializeListeners()
