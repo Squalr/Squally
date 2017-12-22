@@ -55,11 +55,6 @@ void MenuSprite::SetClickSound(std::string soundResource)
 	this->clickSound = soundResource;
 }
 
-void MenuSprite::onEnter()
-{
-	Node::onEnter();
-}
-
 void MenuSprite::InitializeListeners()
 {
 	EventListenerMouse* mouseListener = EventListenerMouse::create();

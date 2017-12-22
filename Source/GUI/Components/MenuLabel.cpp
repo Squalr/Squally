@@ -22,6 +22,8 @@ MenuLabel::MenuLabel(std::string labelText, std::string fontResource, float font
 	this->addChild(this->label);
 
 	this->setContentSize(this->label->getContentSize());
+
+	this->InitializeListeners();
 }
 
 MenuLabel::~MenuLabel()
@@ -39,13 +41,6 @@ void MenuLabel::SetText(std::string text)
 	this->labelHighlighted->setString(text);
 
 	this->setContentSize(this->label->getContentSize());
-}
-
-void MenuLabel::onEnter()
-{
-	Node::onEnter();
-
-	this->InitializeListeners();
 }
 
 void MenuLabel::InitializeListeners()

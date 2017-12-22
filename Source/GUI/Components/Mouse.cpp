@@ -20,6 +20,8 @@ Mouse::Mouse()
 
 	this->addChild(this->mouseSpriteIdle);
 	this->addChild(this->mouseSpritePoint);
+
+	this->InitializeListeners();
 }
 
 Mouse::~Mouse()
@@ -38,13 +40,6 @@ void Mouse::SetCanClick(bool canClick)
 		this->mouseSpriteIdle->setVisible(true);
 		this->mouseSpritePoint->setVisible(false);
 	}
-}
-
-void Mouse::onEnter()
-{
-	Node::onEnter();
-
-	this->InitializeListeners();
 }
 
 void Mouse::InitializeListeners()

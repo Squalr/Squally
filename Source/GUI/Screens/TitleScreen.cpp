@@ -193,11 +193,11 @@ void TitleScreen::OnMenuClick(MenuSprite* menuSprite)
 {
 	if (menuSprite == this->matrix)
 	{
-		Director::getInstance()->replaceScene(TutorialScreen::create());
+		Director::getInstance()->pushScene(TutorialScreen::create());
 	}
 	else if (menuSprite == this->storyModeButton)
 	{
-		Director::getInstance()->replaceScene(StoryMap::create());
+		Director::getInstance()->pushScene(StoryMap::create());
 	}
 	else if (menuSprite == this->optionsButton)
 	{

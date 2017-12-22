@@ -19,7 +19,6 @@ protected:
 	void SetText(std::string text);
 
 private:
-	void onEnter() override;
 	void InitializeListeners();
 	void OnMouseMove(EventMouse* event);
 	void OnMouseDown(EventMouse* event);
