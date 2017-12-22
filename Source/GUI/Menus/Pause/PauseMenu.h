@@ -1,7 +1,10 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "GUI/Menus/Options/OptionsMenu.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
+#include "GUI/Components/MenuSprite.h"
+#include "GUI/Components/Mouse.h"
 
 using namespace cocos2d;
 
@@ -18,9 +21,9 @@ private:
 	void onEnter() override;
 	void InitializeListeners();
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	void OnExitGame(Ref* pSender);
-
-	MenuItemImage* closeItem;
+	void OnResumeClick(MenuSprite* menuSprite);
+	void OnOptionsClick(MenuSprite* menuSprite);
+	void OnExitToTitleClick(MenuSprite* menuSprite);
 
 	Sprite* background;
 	Sprite* backgroundVines;
@@ -37,6 +40,11 @@ private:
 	ParticleSystem* fireflyParticles;
 
 	Sprite* pauseWindow;
+	MenuSprite* resumeButton;
+	MenuSprite* optionsButton;
+	MenuSprite* exitToTitleButton;
+
+	Mouse* mouse;
 
 	ParticleSystem* fireflies;
 };
