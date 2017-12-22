@@ -29,6 +29,7 @@ protected:
 private:
 	void onEnter() override;
 	void update(float) override;
+	void InitializePositions();
 	void InitializeListeners();
 	void OnMenuClick(MenuSprite* menuSprite);
 	void OnMouseMove(EventMouse* event);

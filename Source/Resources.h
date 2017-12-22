@@ -358,9 +358,18 @@ public:
 	static const string Menus_PauseMenu_bg_light_02;
 	static const string Menus_PauseMenu_bg_top_lines;
 	static const string Menus_PauseMenu_Bottom;
+	static const string Menus_PauseMenu_ExitToTitleButton;
+	static const string Menus_PauseMenu_ExitToTitleButtonClick;
+	static const string Menus_PauseMenu_ExitToTitleButtonHover;
 	static const string Menus_PauseMenu_IngameMenu;
 	static const string Menus_PauseMenu_Midground;
+	static const string Menus_PauseMenu_OptionsButton;
+	static const string Menus_PauseMenu_OptionsButtonClick;
+	static const string Menus_PauseMenu_OptionsButtonHover;
 	static const string Menus_PauseMenu_PauseMenu;
+	static const string Menus_PauseMenu_ResumeButton;
+	static const string Menus_PauseMenu_ResumeButtonClick;
+	static const string Menus_PauseMenu_ResumeButtonHover;
 	static const string Menus_PauseMenu_Top;
 	static const string Menus_PauseMenu_Webs;
 	static const string Menus_TitleScreen_bg_back;

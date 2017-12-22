@@ -6,7 +6,6 @@
 #include "GUI/Components/Mouse.h"
 #include "GUI/Components/MenuLabel.h"
 #include "GUI/Components/MenuSprite.h"
-#include "GUI/Screens/TitleScreen.h"
 
 using namespace cocos2d;
 
@@ -22,6 +21,8 @@ protected:
 private:
 	void onEnter() override;
 	void OnMenuClick(MenuLabel* menuLabel);
+	void OnCloseClick(MenuSprite* menuSprite);
+	void OnMouseMove(EventMouse* event);
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void InitializeListeners();
 	void InitializePositions();
@@ -32,8 +33,9 @@ private:
 	MenuLabel* fullScreenLabel;
 	MenuLabel* windowedLabel;
 	MenuLabel* exitLabel;
+	MenuSprite* closeButton;
 
-	std::vector<MenuLabel*>* clickableMenus;
+	std::vector<MenuSprite*>* clickableMenus;
 
 	MenuSprite* slider;
 
