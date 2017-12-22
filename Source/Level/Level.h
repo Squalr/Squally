@@ -18,7 +18,6 @@ protected:
 	Level(std::string levelResourceFilePath);
 	~Level();
 
-	void onEnter() override;
 	void update(float) override;
 
 protected:

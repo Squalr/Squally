@@ -194,11 +194,6 @@ void TutorialScreen::LoadNodes()
 	));
 }
 
-void TutorialScreen::onEnter()
-{
-	Scene::onEnter();
-}
-
 void TutorialScreen::OnMouseOver(TutorialItem* tutorialItem)
 {
 	if (this->description->getString() != tutorialItem->tutorialDescription)
@@ -224,14 +219,14 @@ void TutorialScreen::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		Director::getInstance()->replaceScene(TitleScreen::create());
+		Director::getInstance()->popScene();
 		break;
 	}
 }
 
 void TutorialScreen::OnCloseClick(MenuSprite* menuSprite)
 {
-	Director::getInstance()->replaceScene(TitleScreen::create());
+	Director::getInstance()->popScene();
 }
 
 void TutorialScreen::OnMouseMove(EventMouse* event)

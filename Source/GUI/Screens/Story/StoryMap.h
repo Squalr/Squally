@@ -17,7 +17,6 @@ protected:
 	~StoryMap();
 
 private:
-	void onEnter() override;
 	void InitializeListeners();
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 

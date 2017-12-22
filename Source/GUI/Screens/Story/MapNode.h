@@ -22,7 +22,6 @@ protected:
 	~MapNode();
 
 private:
-	void onEnter() override;
 	void InitializeListeners();
 	void OnMouseMove(EventMouse* event);
 	void OnMouseDown(EventMouse* event);

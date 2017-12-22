@@ -1,12 +1,12 @@
 #pragma once
 #include "cocos2d.h"
+#include "TutorialScreen.h"
 #include "Resources.h"
 #include "TutorialItem.h"
 #include "GUI/Components/Mouse.h"
 #include "GUI/Components/MenuLabel.h"
 #include "GUI/Components/MenuSprite.h"
 #include "GUI/Components/FloatingSprite.h"
-#include "GUI/Screens/TitleScreen.h"
 
 using namespace cocos2d;
 
@@ -21,7 +21,6 @@ protected:
 
 private:
 	void LoadNodes();
-	void onEnter() override;
 	void InitializeListeners();
 	void OnCloseClick(MenuSprite* menuSprite);
 	void OnMouseOver(TutorialItem* tutorialItem);

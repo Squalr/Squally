@@ -27,17 +27,12 @@ StoryMap::StoryMap()
 	this->addChild(this->titleLabel);
 	this->addChild(this->infoLabel);
 	this->addChild(this->mouse);
+
+	this->InitializeListeners();
 }
 
 StoryMap::~StoryMap()
 {
-}
-
-void StoryMap::onEnter()
-{
-	Scene::onEnter();
-
-	this->InitializeListeners();
 }
 
 void StoryMap::InitializeListeners()
@@ -52,7 +47,8 @@ void StoryMap::InitializeListeners()
 // Implementation of the keyboard event callback function prototype
 void StoryMap::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	switch (keyCode) {
+	switch (keyCode)
+	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		Director::getInstance()->replaceScene(TitleScreen::create());
 		break;

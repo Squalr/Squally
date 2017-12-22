@@ -25,6 +25,8 @@ MapNode::MapNode(std::string mapName, std::string mapFile, Vec2 position)
 
 	this->addChild(this->sprite);
 	this->addChild(this->spriteSelected);
+
+	this->InitializeListeners();
 }
 
 MapNode::~MapNode()
@@ -34,13 +36,6 @@ MapNode::~MapNode()
 void MapNode::SetCallBack(std::function<void(MapNode*)> onMouseOver)
 {
 	this->onMouseOverEvent = onMouseOver;
-}
-
-void MapNode::onEnter()
-{
-	Node::onEnter();
-
-	this->InitializeListeners();
 }
 
 void MapNode::InitializeListeners()

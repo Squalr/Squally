@@ -26,7 +26,6 @@ protected:
 	~TutorialItem();
 
 private:
-	void onEnter() override;
 	void OnTutorialClick(MenuSprite* tutorialItem);
 	void OnTutorialMouseOver(MenuSprite* tutorialItem);
 

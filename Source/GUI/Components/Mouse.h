@@ -16,7 +16,6 @@ protected:
 	~Mouse();
 
 private:
-	void onEnter() override;
 	void InitializeListeners();
 	void OnMouseMove(EventMouse* event);
 

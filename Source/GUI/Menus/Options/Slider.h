@@ -15,7 +15,6 @@ protected:
 	~Slider();
 
 private:
-	void onEnter() override;
 	void InitializeListeners();
 	void OnMouseMove(EventMouse* event);
 
