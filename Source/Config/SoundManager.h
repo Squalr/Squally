@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "audio/include/AudioEngine.h"
+#include "ConfigManager.h"
 
 using namespace cocos2d;
 using namespace experimental;
@@ -24,9 +25,6 @@ private:
 	~SoundManager();
 
 	static SoundManager * soundManagerInstance;
-
-	float soundVolume;
-	float musicVolume;
 
 	int backgroundMusicId;
 

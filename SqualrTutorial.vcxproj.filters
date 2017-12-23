@@ -129,8 +129,8 @@
     <ClCompile Include="Source\GUI\Components\ToggleButton.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Utils\SoundManager.cpp">
-      <Filter>Source\Utils</Filter>
+    <ClCompile Include="Source\Config\SoundManager.cpp">
+      <Filter>Source\Config</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -215,8 +215,8 @@
     <ClInclude Include="Source\GUI\Components\ToggleButton.h">
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Utils\SoundManager.h">
-      <Filter>Source\Utils</Filter>
+    <ClInclude Include="Source\Config\SoundManager.h">
+      <Filter>Source\Config</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
