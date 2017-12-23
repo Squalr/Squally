@@ -18,6 +18,8 @@ protected:
 	~PauseMenu();
 
 private:
+	void onEnter() override;
+	void InitializePositions();
 	void InitializeListeners();
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void OnResumeClick(MenuSprite* menuSprite);

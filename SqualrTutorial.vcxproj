@@ -158,8 +158,9 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\Components\MenuLabel.cpp" />
     <ClCompile Include="Source\GUI\Components\MenuSprite.cpp" />
     <ClCompile Include="Source\GUI\Components\Mouse.cpp" />
+    <ClCompile Include="Source\GUI\Components\Slider.cpp" />
+    <ClCompile Include="Source\GUI\Components\ToggleButton.cpp" />
     <ClCompile Include="Source\GUI\Menus\Options\OptionsMenu.cpp" />
-    <ClCompile Include="Source\GUI\Menus\Options\Slider.cpp" />
     <ClCompile Include="Source\GUI\Menus\Pause\PauseMenu.cpp" />
     <ClCompile Include="Source\GUI\Screens\Story\MapNode.cpp" />
     <ClCompile Include="Source\GUI\Screens\Story\StoryMap.cpp" />
@@ -186,8 +187,9 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\Components\MenuLabel.h" />
     <ClInclude Include="Source\GUI\Components\MenuSprite.h" />
     <ClInclude Include="Source\GUI\Components\Mouse.h" />
+    <ClInclude Include="Source\GUI\Components\Slider.h" />
+    <ClInclude Include="Source\GUI\Components\ToggleButton.h" />
     <ClInclude Include="Source\GUI\Menus\Options\OptionsMenu.h" />
-    <ClInclude Include="Source\GUI\Menus\Options\Slider.h" />
     <ClInclude Include="Source\GUI\Menus\Pause\PauseMenu.h" />
     <ClInclude Include="Source\GUI\Screens\Story\MapNode.h" />
     <ClInclude Include="Source\GUI\Screens\Story\StoryMap.h" />

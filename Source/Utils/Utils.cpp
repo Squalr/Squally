@@ -1,5 +1,19 @@
 #include "Utils.h"
 
+std::string Utils::HexAddressOf(void* address)
+{
+	std::stringstream stream;
+
+	// Convert to hex
+	stream << std::hex << (int)(address);
+	std::string hexAddress = stream.str();
+
+	// Convert to upper
+	std::transform(hexAddress.begin(), hexAddress.end(), hexAddress.begin(), ::toupper);
+
+	return hexAddress;
+}
+
 bool Utils::Intersects(Node* node, Vec2 mousePos)
 {
 	Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);

@@ -20,7 +20,9 @@ protected:
 	~TutorialScreen();
 
 private:
-	void LoadNodes();
+	void LoadLevels();
+	void onEnter() override;
+	void InitializePositions();
 	void InitializeListeners();
 	void OnCloseClick(MenuSprite* menuSprite);
 	void OnMouseOver(TutorialItem* tutorialItem);
@@ -31,7 +33,6 @@ private:
 
 	Mouse* mouse;
 
-	Sprite* background;
 	Sprite* tutorialWindow;
 	Sprite* descriptionBox;
 	Label* description;

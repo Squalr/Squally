@@ -13,10 +13,6 @@ TutorialScreen::TutorialScreen()
 {
 	this->currentPage = 0;
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-	this->background = Sprite::create(Resources::Menus_TutorialMenu_Background);
 	this->tutorialWindow = Sprite::create(Resources::Menus_TutorialMenu_TutorialSelect);
 	this->descriptionBox = Sprite::create(Resources::Menus_TutorialMenu_TutorialItem);
 	this->description = Label::create("", Resources::Fonts_Montserrat_Medium, 14);
@@ -40,7 +36,62 @@ TutorialScreen::TutorialScreen()
 	this->swirl = ParticleSystemQuad::create(Resources::Particles_BlueStarCircle);
 	this->mouse = Mouse::create();
 
-	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->addChild(this->nether);
+	this->addChild(this->swirl);
+
+	this->addChild(this->floatingBox1);
+	this->addChild(this->floatingBox2);
+	this->addChild(this->floatingBox3);
+	this->addChild(this->floatingMisc1);
+	this->addChild(this->floatingMisc2);
+	this->addChild(this->floatingMisc3);
+	this->addChild(this->floatingObelisk1);
+	this->addChild(this->floatingObeliskChild1);
+	this->addChild(this->floatingObeliskChild3);
+	this->addChild(this->floatingObeliskParent);
+	this->addChild(this->floatingObeliskChild2);
+	this->addChild(this->floatingObeliskChild4);
+	this->addChild(this->floatingRocks2);
+
+	this->addChild(this->tutorialWindow);
+	this->addChild(this->closeButton);
+	this->addChild(this->descriptionBox);
+	this->addChild(this->description);
+
+	this->LoadLevels();
+	this->closeButton->SetClickCallback(CC_CALLBACK_1(TutorialScreen::OnCloseClick, this));
+	this->closeButton->SetClickSound(Resources::Sounds_ClickBack1);
+
+	// Set clickable items to update mouse sprite
+	this->clickableMenus = new std::vector<MenuSprite*>();
+	this->clickableMenus->push_back(this->closeButton);
+
+	for (std::vector<TutorialItem*>::iterator it = this->tutorialButtons->begin(); it != this->tutorialButtons->end(); ++it)
+	{
+		this->addChild(*it);
+		this->clickableMenus->push_back((*it)->startButton);
+	}
+
+	this->addChild(this->mouse);
+
+	this->InitializeListeners();
+}
+
+TutorialScreen::~TutorialScreen()
+{
+}
+
+void TutorialScreen::onEnter()
+{
+	Scene::onEnter();
+
+	this->InitializePositions();
+}
+
+void TutorialScreen::InitializePositions()
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	this->nether->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->swirl->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
@@ -64,64 +115,20 @@ TutorialScreen::TutorialScreen()
 	this->descriptionBox->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 164.0f));
 	this->description->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 164.0f));
 
-	//this->addChild(this->background);
-	this->addChild(this->nether);
-	this->addChild(this->swirl);
-
-	this->addChild(this->floatingBox1);
-	this->addChild(this->floatingBox2);
-	this->addChild(this->floatingBox3);
-	this->addChild(this->floatingMisc1);
-	this->addChild(this->floatingMisc2);
-	this->addChild(this->floatingMisc3);
-	this->addChild(this->floatingObelisk1);
-	this->addChild(this->floatingObeliskChild1);
-	this->addChild(this->floatingObeliskChild3);
-	this->addChild(this->floatingObeliskParent);
-	this->addChild(this->floatingObeliskChild2);
-	this->addChild(this->floatingObeliskChild4);
-	this->addChild(this->floatingRocks2);
-
-	this->addChild(this->tutorialWindow);
-	this->addChild(this->closeButton);
-	this->addChild(this->descriptionBox);
-	this->addChild(this->description);
-
-	this->LoadNodes();
-	this->closeButton->SetClickCallback(CC_CALLBACK_1(TutorialScreen::OnCloseClick, this));
-	this->closeButton->SetClickSound(Resources::Sounds_ClickBack1);
-
-	// Set clickable items to update mouse sprite
-	this->clickableMenus = new std::vector<MenuSprite*>();
-	this->clickableMenus->push_back(this->closeButton);
-
 	for (std::vector<TutorialItem*>::iterator it = this->tutorialButtons->begin(); it != this->tutorialButtons->end(); ++it)
 	{
-		this->addChild(*it);
-		this->clickableMenus->push_back((*it)->startButton);
+		(*it)->InitializePositions();
 	}
-
-	this->addChild(this->mouse);
-
-	this->InitializeListeners();
 }
 
-TutorialScreen::~TutorialScreen()
-{
-}
-
-void TutorialScreen::LoadNodes()
+void TutorialScreen::LoadLevels()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-	float screenCenterX = origin.x + visibleSize.width / 2;
-	float screenCenterY = origin.y + visibleSize.height / 2;
-
-	this->tutorialButtons = new std::vector<TutorialItem*>();
+	auto callback = CC_CALLBACK_1(TutorialScreen::OnMouseOver, this);
 	int index = 0;
 
-	auto callback = CC_CALLBACK_1(TutorialScreen::OnMouseOver, this);
+	this->tutorialButtons = new std::vector<TutorialItem*>();
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Exact Value Scan I",
