@@ -12,6 +12,7 @@ class TutorialItem : public Node
 {
 public:
 	static TutorialItem * create(std::string description, std::string mapFile, int index, std::function<void(TutorialItem*)> onMouseOver);
+	void InitializePositions();
 
 	MenuSprite* startButton;
 
@@ -31,10 +32,10 @@ private:
 
 	std::function<void(TutorialItem*)> onMouseOverEvent;
 	bool isLevelComplete;
+	int levelIndex;
 	int page;
 
 	Mouse* mouse;
 	Sprite* frame;
 	Label* indexLabel;
 };
-

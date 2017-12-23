@@ -108,9 +108,6 @@
     <ClCompile Include="Source\GUI\Menus\Pause\PauseMenu.cpp">
       <Filter>Source\GUI\Menus\Pause</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GUI\Menus\Options\Slider.cpp">
-      <Filter>Source\GUI\Menus\Options</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GUI\Components\InfiniteParallaxNode.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
@@ -124,6 +121,12 @@
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
     <ClCompile Include="Source\GUI\Components\Mouse.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Components\Slider.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Components\ToggleButton.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -188,9 +191,6 @@
     <ClInclude Include="Source\GUI\Menus\Pause\PauseMenu.h">
       <Filter>Source\GUI\Menus\Pause</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GUI\Menus\Options\Slider.h">
-      <Filter>Source\GUI\Menus\Options</Filter>
-    </ClInclude>
     <ClInclude Include="Source\GUI\Components\MenuSprite.h">
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
@@ -204,6 +204,12 @@
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\GUI\Components\Mouse.h">
+      <Filter>Source\GUI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\Slider.h">
+      <Filter>Source\GUI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\ToggleButton.h">
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
   </ItemGroup>

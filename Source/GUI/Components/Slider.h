@@ -8,18 +8,21 @@ using namespace cocos2d;
 class Slider : public Node
 {
 public:
-	static Slider * create();
+	static Slider * create(float progress);
 
 protected:
-	Slider();
+	Slider(float progress);
 	~Slider();
 
 private:
+	void InitializePositions();
 	void InitializeListeners();
 	void OnMouseMove(EventMouse* event);
 
-	MenuSprite* slider;
+	MenuSprite* slide;
 	Sprite* frame;
-	Sprite* progress;
+	Sprite* progressBar;
+
+	float progress;
 };
 
