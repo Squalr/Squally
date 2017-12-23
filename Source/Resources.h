@@ -343,6 +343,7 @@ public:
 	static const string Menus_OptionsMenu_RadioButtonEmpty;
 	static const string Menus_OptionsMenu_RadioButtonHover;
 	static const string Menus_OptionsMenu_RadioButtonSelected;
+	static const string Menus_OptionsMenu_Slide;
 	static const string Menus_OptionsMenu_SliderFill;
 	static const string Menus_OptionsMenu_SliderFrame;
 	static const string Menus_OptionsMenu_SoundIcon;
@@ -358,15 +359,15 @@ public:
 	static const string Menus_PauseMenu_bg_light_02;
 	static const string Menus_PauseMenu_bg_top_lines;
 	static const string Menus_PauseMenu_Bottom;
-	static const string Menus_PauseMenu_ExitToTitleButton;
-	static const string Menus_PauseMenu_ExitToTitleButtonClick;
-	static const string Menus_PauseMenu_ExitToTitleButtonHover;
 	static const string Menus_PauseMenu_IngameMenu;
 	static const string Menus_PauseMenu_Midground;
 	static const string Menus_PauseMenu_OptionsButton;
 	static const string Menus_PauseMenu_OptionsButtonClick;
 	static const string Menus_PauseMenu_OptionsButtonHover;
 	static const string Menus_PauseMenu_PauseMenu;
+	static const string Menus_PauseMenu_QuitButton;
+	static const string Menus_PauseMenu_QuitButtonClick;
+	static const string Menus_PauseMenu_QuitButtonHover;
 	static const string Menus_PauseMenu_ResumeButton;
 	static const string Menus_PauseMenu_ResumeButtonClick;
 	static const string Menus_PauseMenu_ResumeButtonHover;

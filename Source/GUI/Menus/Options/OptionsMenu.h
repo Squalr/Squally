@@ -6,6 +6,8 @@
 #include "GUI/Components/Mouse.h"
 #include "GUI/Components/MenuLabel.h"
 #include "GUI/Components/MenuSprite.h"
+#include "GUI/Components/Slider.h"
+#include "GUI/Components/ToggleButton.h"
 
 using namespace cocos2d;
 
@@ -30,18 +32,21 @@ private:
 	Mouse* mouse;
 	Sprite* background;
 
-	MenuLabel* fullScreenLabel;
-	MenuLabel* windowedLabel;
 	MenuLabel* exitLabel;
 	MenuSprite* closeButton;
 
-	std::vector<MenuSprite*>* clickableMenus;
+	Sprite* musicIcon;
+	Sprite* soundIcon;
+	Slider* musicSlider;
+	Slider* soundSlider;
+	MenuLabel* fullScreenLabel;
+	ToggleButton* fullScreenButton;
 
-	MenuSprite* slider;
+	std::vector<MenuSprite*>* clickableMenus;
 
 	const float titleFontSize = 48.0f;
 	const float menuFontSize = 32.0f;
-	const float menuOffset = 64.0f;
+	const float menuOffset = 0.0f;
 	const float spacing = -64.0f;
 };
 

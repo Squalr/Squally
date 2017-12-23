@@ -68,10 +68,7 @@ TitleScreen::TitleScreen()
 	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesB3);
 	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesB4);
 
-	std::stringstream stream;
-	stream << std::hex << (int)(&this->hackerMode);
-	std::string hackerModeAddress = stream.str();
-	std::transform(hackerModeAddress.begin(), hackerModeAddress.end(), hackerModeAddress.begin(), ::toupper);
+	std::string hackerModeAddress = Utils::HexAddressOf(&this->hackerMode);
 
 	this->hackerModeLabel = Label::create(hackerModeAddress, Resources::Fonts_Stormblade, 16);
 	this->hackerModeLabel->setColor(Color3B(173, 135, 108));
