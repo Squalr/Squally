@@ -22,17 +22,13 @@ protected:
 
 private:
 	void onEnter() override;
-	void OnMenuClick(MenuLabel* menuLabel);
+	void OnFullScreenChanged(bool isFullScreen);
 	void OnCloseClick(MenuSprite* menuSprite);
-	void OnMouseMove(EventMouse* event);
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void InitializeListeners();
 	void InitializePositions();
 
-	Mouse* mouse;
 	Sprite* background;
-
-	MenuLabel* exitLabel;
 	MenuSprite* closeButton;
 
 	Sprite* musicIcon;
@@ -41,6 +37,7 @@ private:
 	Slider* soundSlider;
 	MenuLabel* fullScreenLabel;
 	ToggleButton* fullScreenButton;
+	MenuSprite* exitButton;
 
 	std::vector<MenuSprite*>* clickableMenus;
 

@@ -14,12 +14,10 @@ StoryMap::StoryMap()
 	this->titleLabel = MenuLabel::create("Level Select", Resources::Fonts_Marker_Felt, this->titleFontSize);
 	this->infoLabel = MenuLabel::create("Level 1", Resources::Fonts_Marker_Felt, this->infoFontSize);
 	this->background = Sprite::create(Resources::Menus_WorldMaps_StoryMap);
-	this->mouse = Mouse::create();
 
 	this->addChild(this->background);
 	this->addChild(this->titleLabel);
 	this->addChild(this->infoLabel);
-	this->addChild(this->mouse);
 
 	this->InitializeListeners();
 }
@@ -33,6 +31,8 @@ void StoryMap::onEnter()
 	Scene::onEnter();
 
 	this->InitializePositions();
+
+	this->addChild(Mouse::claimInstance());
 }
 
 void StoryMap::InitializePositions()

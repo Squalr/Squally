@@ -11,7 +11,6 @@ PauseMenu * PauseMenu::create()
 
 PauseMenu::PauseMenu()
 {
-	this->mouse = Mouse::create();
 	this->background = Sprite::create(Resources::Menus_PauseMenu_Background);
 	this->pauseWindow = Sprite::create(Resources::Menus_PauseMenu_PauseMenu);
 	this->resumeButton = MenuSprite::create(Resources::Menus_PauseMenu_ResumeButton, Resources::Menus_PauseMenu_ResumeButtonHover, Resources::Menus_PauseMenu_ResumeButtonClick);
@@ -30,7 +29,6 @@ PauseMenu::PauseMenu()
 	this->addChild(this->resumeButton);
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitToTitleButton);
-	this->addChild(this->mouse);
 
 	this->InitializeListeners();
 }
@@ -44,6 +42,8 @@ void PauseMenu::onEnter()
 	Scene::onEnter();
 
 	this->InitializePositions();
+
+	this->addChild(Mouse::claimInstance());
 }
 
 void PauseMenu::InitializePositions()

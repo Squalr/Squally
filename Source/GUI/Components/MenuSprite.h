@@ -1,8 +1,9 @@
 #pragma once
 #include "cocos2d.h"
+#include "audio/include/SimpleAudioEngine.h"
 #include "Resources.h"
 #include "Utils/Utils.h"
-#include "audio/include/SimpleAudioEngine.h"
+#include "GUI/Components/Mouse.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -24,6 +25,7 @@ protected:
 private:
 	void InitializeListeners();
 	void OnMouseMove(EventMouse* event);
+	void OnMouseSpriteMove(EventCustom* args);
 	void OnMouseDown(EventMouse* event);
 	void OnMouseUp(EventMouse* event);
 
