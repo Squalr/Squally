@@ -22,8 +22,6 @@ private:
 	void InitializeListeners();
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
-	Mouse* mouse;
-
 	Sprite* background;
 	MenuLabel* titleLabel;
 	MenuLabel* infoLabel;

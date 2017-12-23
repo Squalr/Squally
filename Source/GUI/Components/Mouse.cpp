@@ -1,16 +1,35 @@
 #include "Mouse.h"
 
-Mouse* Mouse::create()
+Mouse* Mouse::mouseInstance = nullptr;
+
+Mouse* Mouse::claimInstance()
 {
-	Mouse* mouse = new Mouse();
+	Mouse* mouse = Mouse::getInstance();
 
-	mouse->autorelease();
+	// Free the mouse from it's parent
+	if (mouse->getParent() != nullptr)
+	{
+		mouse->getParent()->removeChild(Mouse::mouseInstance);
+	}
 
-	return mouse;
+	Mouse::mouseInstance->InitializeListeners();
+
+	return Mouse::mouseInstance;
+}
+
+Mouse* Mouse::getInstance()
+{
+	if (mouseInstance == nullptr)
+	{
+		Mouse::mouseInstance = new Mouse();
+	}
+
+	return Mouse::mouseInstance;
 }
 
 Mouse::Mouse()
 {
+	Director::getInstance();
 	this->mouseSpriteIdle = Sprite::create(Resources::Menus_MouseIdle);
 	this->mouseSpriteIdle->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->mouseSpritePoint = Sprite::create(Resources::Menus_MousePoint);
@@ -20,8 +39,6 @@ Mouse::Mouse()
 
 	this->addChild(this->mouseSpriteIdle);
 	this->addChild(this->mouseSpritePoint);
-
-	this->InitializeListeners();
 }
 
 Mouse::~Mouse()
@@ -55,4 +72,7 @@ void Mouse::OnMouseMove(EventMouse* event)
 {
 	this->mouseSpriteIdle->setPosition(Vec2(event->getCursorX(), event->getCursorY()));
 	this->mouseSpritePoint->setPosition(Vec2(event->getCursorX(), event->getCursorY()));
+
+	this->SetCanClick(false);
+	this->getEventDispatcher()->dispatchCustomEvent(this->MouseMoveEvent, &MouseEventArgs(event->getCursorX(), event->getCursorY()));
 }
