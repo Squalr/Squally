@@ -74,5 +74,5 @@ void Mouse::OnMouseMove(EventMouse* event)
 	this->mouseSpritePoint->setPosition(Vec2(event->getCursorX(), event->getCursorY()));
 
 	this->SetCanClick(false);
-	this->getEventDispatcher()->dispatchCustomEvent(this->MouseMoveEvent, &MouseEventArgs(event->getCursorX(), event->getCursorY()));
+	this->getEventDispatcher()->dispatchCustomEvent(this->MouseMoveEvent, &MouseEventArgs(event->getCursorX(), event->getCursorY(), event));
 }
