@@ -14,14 +14,28 @@ std::string Utils::HexAddressOf(void* address)
 	return hexAddress;
 }
 
+Rect Utils::GetSceneBounds(Node* node)
+{
+	Rect resultRect = node->getBoundingBox();
+	Vec2 resultCoords = Vec2(resultRect.getMinX() - resultRect.size.width / 2, resultRect.getMinY() - resultRect.size.height / 2);
+	Vec2 resultSize = Vec2(resultRect.size.width, resultRect.size.height);
+
+	while (node->getParent() != nullptr && dynamic_cast<const Scene*>(node->getParent()) == nullptr)
+	{
+		resultCoords = node->getParent()->convertToWorldSpace(resultCoords);
+		node = node->getParent();
+	}
+
+	resultRect.setRect(resultCoords.x, resultCoords.y, resultSize.x, resultSize.y);
+
+	return resultRect;
+}
+
 bool Utils::Intersects(Node* node, Vec2 mousePos)
 {
 	Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
 
-	Vec2 origin = Director::getInstance()->getRunningScene()->convertToWorldSpace(Vec2(node->getBoundingBox().origin.x, node->getBoundingBox().origin.y));
-	Rect nodeRect = Rect(origin.x - node->getContentSize().width / 2, origin.y - node->getContentSize().height / 2, node->getContentSize().width, node->getContentSize().height);
-
-	if (nodeRect.intersectsRect(mouseRect))
+	if (Utils::GetSceneBounds(node).intersectsRect(mouseRect))
 	{
 		return true;
 	}

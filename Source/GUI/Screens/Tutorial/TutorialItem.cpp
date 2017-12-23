@@ -61,8 +61,8 @@ void TutorialItem::InitializePositions()
 
 	// Set position based on order index
 	Vec2 position = Vec2(
-		origin.x + visibleSize.width / 2 - 256.0f + (orderIndex % TutorialItem::MaxEntriesPerRow) * 128.0f,
-		origin.y + visibleSize.height / 2 + 128.0f + ((orderIndex / TutorialItem::MaxEntriesPerRow) * -160.0f)
+		origin.x + visibleSize.width / 2 - 272.0f + (orderIndex % TutorialItem::MaxEntriesPerRow) * 136.0f,
+		origin.y + visibleSize.height / 2 + 104.0f + ((orderIndex / TutorialItem::MaxEntriesPerRow) * -160.0f)
 	);
 
 	this->frame->setPosition(position);

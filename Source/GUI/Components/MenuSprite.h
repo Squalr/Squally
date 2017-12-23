@@ -4,6 +4,7 @@
 #include "Resources.h"
 #include "Utils/Utils.h"
 #include "GUI/Components/Mouse.h"
+#include <typeinfo>
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -24,7 +25,6 @@ protected:
 
 private:
 	void InitializeListeners();
-	void OnMouseMove(EventMouse* event);
 	void OnMouseSpriteMove(EventCustom* args);
 	void OnMouseDown(EventMouse* event);
 	void OnMouseUp(EventMouse* event);
