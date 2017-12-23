@@ -18,7 +18,9 @@ public:
 	{
 		float mouseX;
 		float mouseY;
-		MouseEventArgs(float x, float y) : mouseX(x), mouseY(y)
+		EventMouse* innerEvent;
+
+		MouseEventArgs(float x, float y, EventMouse* event) : mouseX(x), mouseY(y), innerEvent(event)
 		{
 		}
 	};

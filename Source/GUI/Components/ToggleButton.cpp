@@ -16,8 +16,6 @@ ToggleButton::ToggleButton(bool initialState, std::function<void(bool)> callback
 	this->offSwitch = MenuSprite::create(Resources::Menus_OptionsMenu_ToggleButtonOff, Resources::Menus_OptionsMenu_ToggleButtonOffHover, Resources::Menus_OptionsMenu_ToggleButtonOffClick);
 	this->onSwitch = MenuSprite::create(Resources::Menus_OptionsMenu_ToggleButtonOn, Resources::Menus_OptionsMenu_ToggleButtonOnHover, Resources::Menus_OptionsMenu_ToggleButtonOnClick);
 
-	this->setContentSize(this->offSwitch->getContentSize());
-
 	this->clickableMenus = new vector<MenuSprite*>();
 
 	this->clickableMenus->push_back(this->offSwitch);
@@ -79,6 +77,5 @@ void ToggleButton::OnMouseMove(EventMouse* event)
 	for (std::vector<MenuSprite*>::iterator it = this->clickableMenus->begin(); it != this->clickableMenus->end(); ++it)
 	{
 		MenuSprite* menuSprite = *it;
-
 	}
 }

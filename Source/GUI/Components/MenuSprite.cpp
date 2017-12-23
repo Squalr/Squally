@@ -60,7 +60,6 @@ void MenuSprite::InitializeListeners()
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
 	EventListenerCustom* customListener = EventListenerCustom::create(Mouse::getInstance()->MouseMoveEvent, CC_CALLBACK_1(MenuSprite::OnMouseSpriteMove, this));
 
-	mouseListener->onMouseMove = CC_CALLBACK_1(MenuSprite::OnMouseMove, this);
 	mouseListener->onMouseDown = CC_CALLBACK_1(MenuSprite::OnMouseDown, this);
 	mouseListener->onMouseUp = CC_CALLBACK_1(MenuSprite::OnMouseUp, this);
 
@@ -72,19 +71,13 @@ void MenuSprite::OnMouseSpriteMove(EventCustom* event)
 {
 	Mouse::MouseEventArgs* args = static_cast<Mouse::MouseEventArgs*>(event->getUserData());
 
-	if (Utils::Intersects(this, Vec2(args->mouseX, args->mouseY)))
-	{
-		Mouse::getInstance()->SetCanClick(true);
-	}
-}
-
-void MenuSprite::OnMouseMove(EventMouse* event)
-{
 	if (this->menuOnMouseClick != nullptr && this->isVisible())
 	{
-		if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
+		if (Utils::Intersects(this, Vec2(args->mouseX, args->mouseY)))
 		{
-			if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
+			Mouse::getInstance()->SetCanClick(true);
+
+			if (args->innerEvent->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
 			{
 				this->sprite->setVisible(false);
 				this->spriteClicked->setVisible(true);
