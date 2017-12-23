@@ -3,6 +3,37 @@
 const Size* ConfigManager::Resolution1024x768 = new Size(1024, 768);
 const Size* ConfigManager::Resolution1920x1080 = new Size(1920, 1080);
 
+ConfigManager* ConfigManager::configManagerInstance = nullptr;
+
+ConfigManager* ConfigManager::GetInstance()
+{
+	if (ConfigManager::configManagerInstance == nullptr)
+	{
+		ConfigManager::configManagerInstance = new ConfigManager();
+	}
+
+	return ConfigManager::configManagerInstance;
+}
+
+ConfigManager::ConfigManager()
+{
+	this->LoadConfigFileMap();
+}
+
+ConfigManager::~ConfigManager()
+{
+}
+
+void ConfigManager::LoadConfigFileMap()
+{
+	this->valueMap = FileUtils::getInstance()->getValueMapFromFile(FileUtils::sharedFileUtils()->getWritablePath() + "\\" + ConfigManager::ConfigFile);
+}
+
+void ConfigManager::Save()
+{
+	FileUtils::getInstance()->writeValueMapToFile(this->valueMap, FileUtils::sharedFileUtils()->getWritablePath() + "\\" + ConfigManager::ConfigFile);
+}
+
 void ConfigManager::SetResolution(ResolutionSetting resolution)
 {
 	GLViewImpl* glView = (GLViewImpl*)(Director::getInstance()->getOpenGLView());
@@ -22,18 +53,27 @@ void ConfigManager::SetResolution(ResolutionSetting resolution)
 
 	glView->setDesignResolutionSize(glView->getFrameSize().width, glView->getFrameSize().height, ResolutionPolicy::NO_BORDER);
 
-	ValueMap valueMap;
-
-	valueMap["resolution"] = Value((int)resolution);
-
-	FileUtils::getInstance()->writeValueMapToFile(valueMap, FileUtils::sharedFileUtils()->getWritablePath() + "\\resolution.txt");
+	this->valueMap[ConfigManager::ResolutionKey] = Value((int)resolution);
 }
 
-ConfigManager::ResolutionSetting ConfigManager::LoadResolution()
+void ConfigManager::SetSoundVolume(float volume)
 {
-	ValueMap valueMap = FileUtils::getInstance()->getValueMapFromFile(FileUtils::sharedFileUtils()->getWritablePath() + "\\resolution.txt");
+	this->valueMap[ConfigManager::SoundVolumeKey] = volume;
+}
 
-	ResolutionSetting resolution = (ResolutionSetting)(valueMap["resolution"].asInt());
+void ConfigManager::SetMusicVolume(float volume)
+{
+	this->valueMap[ConfigManager::MusicVolumeKey] = volume;
+}
+
+ConfigManager::ResolutionSetting ConfigManager::GetResolution()
+{
+	if (!Utils::KeyExists(this->valueMap, ConfigManager::ResolutionKey))
+	{
+		return  ResolutionSetting::FullScreen;
+	}
+
+	ResolutionSetting resolution = (ResolutionSetting)(this->valueMap[ConfigManager::ResolutionKey].asInt());
 
 	switch (resolution)
 	{
@@ -45,5 +85,29 @@ ConfigManager::ResolutionSetting ConfigManager::LoadResolution()
 	case ResolutionSetting::FullScreen:
 	default:
 		return  ResolutionSetting::FullScreen;
+	}
+}
+
+float ConfigManager::GetSoundVolume()
+{
+	if (Utils::KeyExists(this->valueMap, ConfigManager::SoundVolumeKey))
+	{
+		return this->valueMap[ConfigManager::SoundVolumeKey].asFloat();
+	}
+	else
+	{
+		return 1.0f;
+	}
+}
+
+float ConfigManager::GetMusicVolume()
+{
+	if (Utils::KeyExists(this->valueMap, ConfigManager::MusicVolumeKey))
+	{
+		return this->valueMap[ConfigManager::MusicVolumeKey].asFloat();
+	}
+	else
+	{
+		return 1.0f;
 	}
 }

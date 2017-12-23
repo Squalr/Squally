@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 #include "Resources.h"
-#include "Utils/SoundManager.h"
+#include "Config/SoundManager.h"
 #include "Config/ConfigManager.h"
 #include "GUI/Components/Mouse.h"
 #include "GUI/Components/MenuLabel.h"

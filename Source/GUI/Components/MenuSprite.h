@@ -1,8 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "Config/SoundManager.h"
 #include "Utils/Utils.h"
-#include "Utils/SoundManager.h"
 #include "GUI/Components/Mouse.h"
 #include <typeinfo>
 

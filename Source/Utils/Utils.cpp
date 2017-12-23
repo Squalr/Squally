@@ -44,3 +44,15 @@ bool Utils::Intersects(Node* node, Vec2 mousePos)
 		return false;
 	}
 }
+
+bool Utils::KeyExists(ValueMap valueMap, std::string key)
+{
+	auto pointsIterator = valueMap.find(key);
+
+	if (pointsIterator != valueMap.end())
+	{
+		return true;
+	}
+
+	return false;
+}
