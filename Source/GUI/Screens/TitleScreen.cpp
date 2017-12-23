@@ -74,9 +74,6 @@ TitleScreen::TitleScreen()
 	this->hackerModeLabel->setColor(Color3B(173, 135, 108));
 	this->hackerModeLabel->setSkewX(-12.0f);
 
-	this->mouse = Mouse::create();
-	this->clickableMenus = new vector<MenuSprite*>();
-
 	this->squally->setFlippedX(true);
 	this->fog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-92.0f, 0))));
 	this->foregroundFog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-196.0f, 0))));
@@ -84,11 +81,6 @@ TitleScreen::TitleScreen()
 	this->eyes2Anim->setDelayPerUnit(0.025f);
 	this->eyes1->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes1Anim)->reverse(), DelayTime::create(1.54f), Animate::create(this->eyes1Anim), DelayTime::create(2.5f), nullptr)));
 	this->eyes2->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes2Anim)->reverse(), DelayTime::create(1.25f), Animate::create(this->eyes2Anim), DelayTime::create(3.25f), nullptr)));
-
-	this->clickableMenus->push_back(this->matrix);
-	this->clickableMenus->push_back(this->storyModeButton);
-	this->clickableMenus->push_back(this->optionsButton);
-	this->clickableMenus->push_back(this->exitButton);
 
 	this->addChild(this->background);
 	this->addChild(this->backgroundVines);
@@ -113,7 +105,6 @@ TitleScreen::TitleScreen()
 	this->addChild(this->storyModeButton);
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
-	this->addChild(this->mouse);
 
 	this->matrixParticles->setCascadeOpacityEnabled(true);
 	this->matrixParticles->setVisible(false);
@@ -124,13 +115,10 @@ TitleScreen::TitleScreen()
 	this->matrix->setOpacity(0);
 
 	this->scheduleUpdate();
-
-	this->InitializeListeners();
 }
 
 TitleScreen::~TitleScreen()
 {
-	delete(this->clickableMenus);
 }
 
 void TitleScreen::onEnter()
@@ -138,6 +126,8 @@ void TitleScreen::onEnter()
 	Scene::onEnter();
 
 	this->InitializePositions();
+
+	this->addChild(Mouse::claimInstance());
 }
 
 void TitleScreen::InitializePositions()
@@ -203,30 +193,5 @@ void TitleScreen::OnMenuClick(MenuSprite* menuSprite)
 	else if (menuSprite == this->exitButton)
 	{
 		Director::getInstance()->end();
-	}
-}
-
-void TitleScreen::InitializeListeners()
-{
-	EventListenerMouse* mouseListener = EventListenerMouse::create();
-
-	mouseListener->onMouseMove = CC_CALLBACK_1(TitleScreen::OnMouseMove, this);
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
-}
-
-void TitleScreen::OnMouseMove(EventMouse* event)
-{
-	this->mouse->SetCanClick(false);
-
-	for (std::vector<MenuSprite*>::iterator it = this->clickableMenus->begin(); it != this->clickableMenus->end(); ++it)
-	{
-		MenuSprite* menuSprite = *it;
-
-		if (menuSprite->isVisible() && Utils::Intersects(menuSprite, Vec2(event->getCursorX(), event->getCursorY())))
-		{
-			this->mouse->SetCanClick(true);
-			return;
-		}
 	}
 }

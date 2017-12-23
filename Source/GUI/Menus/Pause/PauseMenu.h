@@ -45,8 +45,6 @@ private:
 	MenuSprite* optionsButton;
 	MenuSprite* exitToTitleButton;
 
-	Mouse* mouse;
-
 	ParticleSystem* fireflies;
 };
 

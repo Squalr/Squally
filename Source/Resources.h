@@ -338,6 +338,9 @@ public:
 	static const string Menus_OptionsMenu_CheckboxEmpty;
 	static const string Menus_OptionsMenu_CheckboxHover;
 	static const string Menus_OptionsMenu_CheckboxSelected;
+	static const string Menus_OptionsMenu_ExitButton;
+	static const string Menus_OptionsMenu_ExitButtonClick;
+	static const string Menus_OptionsMenu_ExitButtonHover;
 	static const string Menus_OptionsMenu_MusicIcon;
 	static const string Menus_OptionsMenu_OptionsMenu;
 	static const string Menus_OptionsMenu_RadioButtonEmpty;

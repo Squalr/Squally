@@ -7,9 +7,21 @@ using namespace cocos2d;
 class Mouse : public Node
 {
 public:
-	static Mouse * create();
+	static Mouse * claimInstance();
+	static Mouse * getInstance();
 
 	void SetCanClick(bool canClick);
+
+	const std::string MouseMoveEvent = "mouse_move_event";
+
+	struct MouseEventArgs
+	{
+		float mouseX;
+		float mouseY;
+		MouseEventArgs(float x, float y) : mouseX(x), mouseY(y)
+		{
+		}
+	};
 
 protected:
 	Mouse();
@@ -21,5 +33,7 @@ private:
 
 	Sprite* mouseSpriteIdle;
 	Sprite* mouseSpritePoint;
+
+	static Mouse * mouseInstance;
 };
 

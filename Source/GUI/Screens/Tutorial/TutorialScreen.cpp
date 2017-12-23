@@ -34,7 +34,6 @@ TutorialScreen::TutorialScreen()
 
 	this->nether = ParticleSystemQuad::create(Resources::Particles_BlueNether);
 	this->swirl = ParticleSystemQuad::create(Resources::Particles_BlueStarCircle);
-	this->mouse = Mouse::create();
 
 	this->addChild(this->nether);
 	this->addChild(this->swirl);
@@ -62,17 +61,10 @@ TutorialScreen::TutorialScreen()
 	this->closeButton->SetClickCallback(CC_CALLBACK_1(TutorialScreen::OnCloseClick, this));
 	this->closeButton->SetClickSound(Resources::Sounds_ClickBack1);
 
-	// Set clickable items to update mouse sprite
-	this->clickableMenus = new std::vector<MenuSprite*>();
-	this->clickableMenus->push_back(this->closeButton);
-
 	for (std::vector<TutorialItem*>::iterator it = this->tutorialButtons->begin(); it != this->tutorialButtons->end(); ++it)
 	{
 		this->addChild(*it);
-		this->clickableMenus->push_back((*it)->startButton);
 	}
-
-	this->addChild(this->mouse);
 
 	this->InitializeListeners();
 }
@@ -86,6 +78,8 @@ void TutorialScreen::onEnter()
 	Scene::onEnter();
 
 	this->InitializePositions();
+
+	this->addChild(Mouse::claimInstance());
 }
 
 void TutorialScreen::InitializePositions()
@@ -212,13 +206,10 @@ void TutorialScreen::OnMouseOver(TutorialItem* tutorialItem)
 void TutorialScreen::InitializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
-	EventListenerMouse* mouseListener = EventListenerMouse::create();
 
-	mouseListener->onMouseMove = CC_CALLBACK_1(TutorialScreen::OnMouseMove, this);
 	listener->onKeyPressed = CC_CALLBACK_2(TutorialScreen::OnKeyPressed, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
 
 void TutorialScreen::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -234,20 +225,4 @@ void TutorialScreen::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 void TutorialScreen::OnCloseClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->popScene();
-}
-
-void TutorialScreen::OnMouseMove(EventMouse* event)
-{
-	this->mouse->SetCanClick(false);
-
-	for (std::vector<MenuSprite*>::iterator it = this->clickableMenus->begin(); it != this->clickableMenus->end(); ++it)
-	{
-		MenuSprite* menuSprite = *it;
-
-		if (menuSprite->isVisible() && Utils::Intersects(menuSprite, Vec2(event->getCursorX(), event->getCursorY())))
-		{
-			this->mouse->SetCanClick(true);
-			return;
-		}
-	}
 }

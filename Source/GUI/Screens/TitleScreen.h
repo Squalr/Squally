@@ -30,11 +30,8 @@ private:
 	void onEnter() override;
 	void update(float) override;
 	void InitializePositions();
-	void InitializeListeners();
 	void OnMenuClick(MenuSprite* menuSprite);
-	void OnMouseMove(EventMouse* event);
 
-	Mouse* mouse;
 	FloatingSprite* squally;
 	Sprite* background;
 	FloatingSprite* backgroundVines;
@@ -62,8 +59,6 @@ private:
 	MenuSprite* optionsButton;
 	MenuSprite* exitButton;
 	Sprite* titleBar;
-
-	std::vector<MenuSprite*>* clickableMenus;
 
 	static int hackerMode;
 
