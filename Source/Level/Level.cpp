@@ -75,10 +75,10 @@ void Level::LoadLevel(std::string levelResourceFilePath)
 
 	this->environmentLayer->addChild(ParticleRain::create());
 
-	TMXTiledMap* map = TMXTiledMap::create(levelResourceFilePath);
-	TMXLayer* background = map->getLayer("background");
-	TMXLayer* midGround = map->getLayer("midground");
-	TMXLayer* foreground = map->getLayer("foreground");
+	experimental::TMXTiledMap* map = experimental::TMXTiledMap::create(levelResourceFilePath);
+	experimental::TMXLayer* background = map->getLayer("background");
+	experimental::TMXLayer* midGround = map->getLayer("midground");
+	experimental::TMXLayer* foreground = map->getLayer("foreground");
 	ValueVector objects = map->getObjectGroup("objects")->getObjects();
 	ValueVector collisionObjects = map->getObjectGroup("collision")->getObjects();
 

@@ -129,6 +129,9 @@
     <ClCompile Include="Source\GUI\Components\ToggleButton.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Utils\SoundManager.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -211,6 +214,9 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\Components\ToggleButton.h">
       <Filter>Source\GUI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\SoundManager.h">
+      <Filter>Source\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,10 +2,10 @@
 #include "cocos2d.h"
 #include "Config\ConfigManager.h"
 #include "Game.h"
-#include "audio/include/SimpleAudioEngine.h"
+#include "audio/include/AudioEngine.h"
 
 using namespace cocos2d;
-using namespace CocosDenshion;
+using namespace experimental;
 
 /**
 @brief The cocos2d Application.
