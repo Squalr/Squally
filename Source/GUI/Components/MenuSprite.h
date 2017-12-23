@@ -1,21 +1,22 @@
 #pragma once
 #include "cocos2d.h"
-#include "audio/include/SimpleAudioEngine.h"
 #include "Resources.h"
 #include "Utils/Utils.h"
+#include "Utils/SoundManager.h"
 #include "GUI/Components/Mouse.h"
 #include <typeinfo>
 
 using namespace cocos2d;
-using namespace CocosDenshion;
 
 class MenuSprite : public Node
 {
 public:
 	static MenuSprite * create(std::string spriteResource, std::string spriteSelectedResource, std::string spriteClickedResource);
 
-	void SetClickCallback(std::function<void(MenuSprite*)> onMouseClick);
-	void SetMouseOverCallback(std::function<void(MenuSprite*)> onMouseClick);
+	void SetClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick);
+	void SetMouseOverCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick);
+	void SetMouseDownCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseDown);
+	void SetMouseDragCallback(std::function<void(MenuSprite*, EventMouse* args)> onDrag);
 	void SetMouseOverSound(std::string soundResource);
 	void SetClickSound(std::string soundResource);
 
@@ -35,7 +36,12 @@ private:
 	Sprite* sprite;
 	Sprite* spriteClicked;
 	Sprite* spriteSelected;
-	std::function<void(MenuSprite*)> menuOnMouseClick;
-	std::function<void(MenuSprite*)> menuOnMouseOver;
+
+	bool isDragging;
+
+	std::function<void(MenuSprite*, EventMouse* args)> mouseClickEvent;
+	std::function<void(MenuSprite*, EventMouse* args)> mouseDownEvent;
+	std::function<void(MenuSprite*, EventMouse* args)> mouseDragEvent;
+	std::function<void(MenuSprite*, EventMouse* args)> mouseOverEvent;
 };
 

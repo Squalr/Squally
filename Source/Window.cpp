@@ -6,7 +6,7 @@ Window::Window()
 
 Window::~Window()
 {
-	SimpleAudioEngine::end();
+	AudioEngine::end();
 }
 
 // If you want a different context, modify the value of glContextAttrs it will affect all platforms
@@ -59,13 +59,11 @@ bool Window::applicationDidFinishLaunching()
 // This function will be called when the app is inactive. Note, when receiving a phone call it is invoked.
 void Window::applicationDidEnterBackground() {
 	Director::getInstance()->stopAnimation();
-	SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
-	SimpleAudioEngine::getInstance()->pauseAllEffects();
+	AudioEngine::pauseAll();
 }
 
 // This function will be called when the app is active again
 void Window::applicationWillEnterForeground() {
 	Director::getInstance()->startAnimation();
-	SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
-	SimpleAudioEngine::getInstance()->resumeAllEffects();
+	AudioEngine::resumeAll();
 }

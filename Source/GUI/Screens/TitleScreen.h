@@ -4,18 +4,18 @@
 #include "Tutorial/TutorialScreen.h"
 #include "Story/StoryMap.h"
 #include "Utils/Utils.h"
+#include "Utils/SoundManager.h"
 #include "GUI/Menus/Options/OptionsMenu.h"
 #include "GUI/Components/FloatingSprite.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
 #include "GUI/Components/MenuLabel.h"
 #include "GUI/Components/MenuSprite.h"
 #include "GUI/Components/Mouse.h"
-#include "audio/include/SimpleAudioEngine.h"
 #include <algorithm>
 #include <string>
 
 using namespace cocos2d;
-using namespace CocosDenshion;
+using namespace experimental;
 
 class TitleScreen : public Scene
 {
