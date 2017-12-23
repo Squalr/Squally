@@ -13,13 +13,7 @@ TitleScreen * TitleScreen::create()
 
 TitleScreen::TitleScreen()
 {
-	SimpleAudioEngine* audio = SimpleAudioEngine::getInstance();
-
-	if (!audio->isBackgroundMusicPlaying())
-	{
-		audio->preloadBackgroundMusic(Resources::Music_Will_we_get_there_Together.c_str());
-		audio->playBackgroundMusic(Resources::Music_Will_we_get_there_Together.c_str(), true);
-	}
+	SoundManager::GetInstance()->PlayMusicResource(Resources::Music_Will_we_get_there_Together);
 
 	this->eyes1Anim = Animation::create();
 	this->eyes2Anim = Animation::create();

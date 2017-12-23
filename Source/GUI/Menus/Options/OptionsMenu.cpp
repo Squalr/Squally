@@ -17,10 +17,11 @@ OptionsMenu::OptionsMenu()
 
 	this->musicIcon = Sprite::create(Resources::Menus_OptionsMenu_MusicIcon);
 	this->soundIcon = Sprite::create(Resources::Menus_OptionsMenu_SoundIcon);
-	// TODO: Load progress from save file w/ fallback
-	this->musicSlider = Slider::create(50.0f);
-	this->soundSlider = Slider::create(50.0f);
-	// TODO: Load setting here too
+
+	this->musicSlider = Slider::create(SoundManager::GetInstance()->GetMusicVolume());
+	this->soundSlider = Slider::create(SoundManager::GetInstance()->GetSoundVolume());
+
+	// TODO: Load fullscreen/resolution setting
 	this->fullScreenButton = ToggleButton::create(true, CC_CALLBACK_1(OptionsMenu::OnFullScreenChanged, this));
 	this->exitButton = MenuSprite::create(Resources::Menus_OptionsMenu_ExitButton, Resources::Menus_OptionsMenu_ExitButtonHover, Resources::Menus_OptionsMenu_ExitButtonClick);
 
@@ -29,6 +30,9 @@ OptionsMenu::OptionsMenu()
 
 	this->closeButton->SetClickCallback(CC_CALLBACK_1(OptionsMenu::OnCloseClick, this));
 	this->closeButton->SetClickSound(Resources::Sounds_ClickBack1);
+
+	this->musicSlider->SetProgressUpdateCallback(CC_CALLBACK_1(OptionsMenu::OnMusicVolumeUpdate, this));
+	this->soundSlider->SetProgressUpdateCallback(CC_CALLBACK_1(OptionsMenu::OnSoundVolumeUpdate, this));
 
 	this->clickableMenus = new vector<MenuSprite*>();
 
@@ -101,6 +105,19 @@ void OptionsMenu::InitializePositions()
 	this->fullScreenLabel->setPosition(Vec2(origin.x + visibleSize.width / 2 - 96.0f, origin.y + visibleSize.height / 2 - 32.0f));
 	this->fullScreenButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 128.0f, origin.y + visibleSize.height / 2 - 32.0f));
 	this->exitButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 196.0f));
+
+	this->musicSlider->InitializePositions();
+	this->soundSlider->InitializePositions();
+}
+
+void OptionsMenu::OnSoundVolumeUpdate(float soundVolume)
+{
+	SoundManager::GetInstance()->SetSoundVolume(soundVolume);
+}
+
+void OptionsMenu::OnMusicVolumeUpdate(float musicVolume)
+{
+	SoundManager::GetInstance()->SetMusicVolume(musicVolume);
 }
 
 void OptionsMenu::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)

@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 #include "Resources.h"
+#include "Utils/SoundManager.h"
 #include "Config/ConfigManager.h"
 #include "GUI/Components/Mouse.h"
 #include "GUI/Components/MenuLabel.h"
@@ -22,6 +23,8 @@ protected:
 
 private:
 	void onEnter() override;
+	void OnSoundVolumeUpdate(float soundVolume);
+	void OnMusicVolumeUpdate(float musicVolume);
 	void OnFullScreenChanged(bool isFullScreen);
 	void OnCloseClick(MenuSprite* menuSprite);
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
