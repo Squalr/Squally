@@ -12,10 +12,12 @@ Slider* Slider::create(float progress)
 Slider::Slider(float progress)
 {
 	this->progressUpdateEvent = nullptr;
-	this->progress = progress;
 	this->frame = Sprite::create(Resources::Menus_OptionsMenu_SliderFrame);
 	this->progressBar = Sprite::create(Resources::Menus_OptionsMenu_SliderFill);
 	this->slide = MenuSprite::create(Resources::Menus_OptionsMenu_Slide, Resources::Menus_OptionsMenu_Slide, Resources::Menus_OptionsMenu_Slide);
+	this->SetProgress(progress);
+
+	this->progressBar->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	this->slide->SetMouseDragCallback(CC_CALLBACK_2(Slider::OnDrag, this));
 
@@ -32,6 +34,7 @@ Slider::~Slider()
 
 void Slider::InitializePositions()
 {
+	this->progressBar->setPosition(Vec2(-this->progressBar->getContentSize().width / 2, 0));
 	this->slide->setPosition(Vec2(this->progress * this->frame->getContentSize().width - this->frame->getContentSize().width / 2, 0));
 }
 
@@ -69,6 +72,8 @@ void Slider::SetProgress(float newProgress)
 	}
 
 	this->progress = newProgress;
+
+	this->progressBar->setScaleX(this->progress);
 
 	if (this->progressUpdateEvent != nullptr)
 	{

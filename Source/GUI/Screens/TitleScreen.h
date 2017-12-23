@@ -1,10 +1,10 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "Config/SoundManager.h"
 #include "Tutorial/TutorialScreen.h"
 #include "Story/StoryMap.h"
 #include "Utils/Utils.h"
-#include "Utils/SoundManager.h"
 #include "GUI/Menus/Options/OptionsMenu.h"
 #include "GUI/Components/FloatingSprite.h"
 #include "GUI/Components/InfiniteParallaxNode.h"

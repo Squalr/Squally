@@ -15,14 +15,13 @@ Layer* TileCollision::InitializeCollision(ValueVector collisionObjects)
 		ValueVector* polygonPoints = nullptr;
 
 		std::string type = object.at("type").asString();
-		auto pointsIterator = object.find("points");
 		bool isPolygon = false;
 		float width = object.at("width").asFloat();
 		float height = object.at("height").asFloat();
 		float x = object.at("x").asFloat() + width / 2.0f;
 		float y = object.at("y").asFloat() + height / 2.0f;
 
-		if (pointsIterator != object.end())
+		if (Utils::KeyExists(object, "points"))
 		{
 			isPolygon = true;
 			polygonPoints = &(object.at("points").asValueVector());

@@ -70,13 +70,13 @@ void OptionsMenu::OnFullScreenChanged(bool isFullScreen)
 {
 	if (isFullScreen)
 	{
-		ConfigManager::SetResolution(ConfigManager::ResolutionSetting::FullScreen);
+		ConfigManager::GetInstance()->SetResolution(ConfigManager::ResolutionSetting::FullScreen);
 		this->InitializePositions();
 	}
 	else
 	{
 		// TODO: Load saved resolution setting
-		ConfigManager::SetResolution(ConfigManager::ResolutionSetting::R1080x768);
+		ConfigManager::GetInstance()->SetResolution(ConfigManager::ResolutionSetting::R1080x768);
 		this->InitializePositions();
 	}
 }
@@ -126,6 +126,7 @@ void OptionsMenu::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		Director::getInstance()->popScene();
+		ConfigManager::GetInstance()->Save();
 		break;
 	}
 }
@@ -133,4 +134,5 @@ void OptionsMenu::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 void OptionsMenu::OnCloseClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->popScene();
+	ConfigManager::GetInstance()->Save();
 }

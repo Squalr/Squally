@@ -150,6 +150,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ClCompile Include="Source\Collision\TileCollision.cpp" />
     <ClCompile Include="Source\Config\ConfigManager.cpp" />
+    <ClCompile Include="Source\Config\SoundManager.cpp" />
     <ClCompile Include="Source\Entities\Enemy.cpp" />
     <ClCompile Include="Source\Entities\Entity.cpp" />
     <ClCompile Include="Source\Entities\Player.cpp" />
@@ -169,7 +170,6 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\Screens\Tutorial\TutorialScreen.cpp" />
     <ClCompile Include="Source\Level\Background.cpp" />
     <ClCompile Include="Source\Objects\GameObject.cpp" />
-    <ClCompile Include="Source\Utils\SoundManager.cpp" />
     <ClCompile Include="Source\Utils\Utils.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\Game.cpp" />
@@ -180,6 +180,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ClInclude Include="Source\Collision\TileCollision.h" />
     <ClInclude Include="Source\Config\ConfigManager.h" />
+    <ClInclude Include="Source\Config\SoundManager.h" />
     <ClInclude Include="Source\Entities\Enemy.h" />
     <ClInclude Include="Source\Entities\Entity.h" />
     <ClInclude Include="Source\Entities\Player.h" />
@@ -199,7 +200,6 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\Screens\Tutorial\TutorialScreen.h" />
     <ClInclude Include="Source\Level\Background.h" />
     <ClInclude Include="Source\Objects\GameObject.h" />
-    <ClInclude Include="Source\Utils\SoundManager.h" />
     <ClInclude Include="Source\Utils\Utils.h" />
     <ClInclude Include="Source\Window.h" />
     <ClInclude Include="Source\Game.h" />

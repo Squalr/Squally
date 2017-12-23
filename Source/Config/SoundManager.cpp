@@ -15,30 +15,25 @@ SoundManager* SoundManager::GetInstance()
 SoundManager::SoundManager()
 {
 	this->backgroundMusicId = SoundManager::INVALID_ID;
-
-	// TODO: Load volumes
-	this->soundVolume = 1.0f;
-	this->musicVolume = 1.0f;
 }
 
 SoundManager::~SoundManager()
 {
-
 }
 
 void SoundManager::PlayMusicResource(std::string musicResource)
 {
-	this->backgroundMusicId = AudioEngine::play2d(musicResource, true, this->musicVolume);
+	this->backgroundMusicId = AudioEngine::play2d(musicResource, true, this->GetMusicVolume());
 }
 
 void SoundManager::PlaySoundResource(std::string soundResource)
 {
-	AudioEngine::play2d(soundResource, true, this->soundVolume);
+	AudioEngine::play2d(soundResource, true, this->GetSoundVolume());
 }
 
 void SoundManager::SetMusicVolume(float volume)
 {
-	this->musicVolume = volume;
+	return ConfigManager::GetInstance()->SetMusicVolume(volume);
 
 	if (this->backgroundMusicId != SoundManager::INVALID_ID)
 	{
@@ -48,15 +43,15 @@ void SoundManager::SetMusicVolume(float volume)
 
 void SoundManager::SetSoundVolume(float volume)
 {
-	this->soundVolume = volume;
+	return ConfigManager::GetInstance()->SetSoundVolume(volume);
 }
 
 float SoundManager::GetMusicVolume()
 {
-	return this->musicVolume;
+	return ConfigManager::GetInstance()->GetMusicVolume();
 }
 
 float SoundManager::GetSoundVolume()
 {
-	return this->soundVolume;
+	return ConfigManager::GetInstance()->GetSoundVolume();
 }
