@@ -75,7 +75,7 @@ TutorialScreen::~TutorialScreen()
 
 void TutorialScreen::onEnter()
 {
-	Scene::onEnter();
+	FadeScene::onEnter();
 
 	this->InitializePositions();
 

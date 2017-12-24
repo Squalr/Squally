@@ -5,11 +5,12 @@
 #include "GUI/Menus/Pause/PauseMenu.h"
 #include "Collision/TileCollision.h"
 #include "Entities/Player.h"
+#include "GUI/Components/FadeScene.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
 
 using namespace cocos2d;
 
-class Level : public Scene
+class Level : public FadeScene
 {
 public:
 	static Level* create(std::string levelResourceFilePath);

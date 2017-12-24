@@ -13,6 +13,7 @@ PauseMenu::PauseMenu()
 {
 	this->background = Node::create();
 	this->pauseWindow = Sprite::create(Resources::Menus_PauseMenu_PauseMenu);
+	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
 	this->resumeButton = MenuSprite::create(Resources::Menus_PauseMenu_ResumeButton, Resources::Menus_PauseMenu_ResumeButtonHover, Resources::Menus_PauseMenu_ResumeButtonClick);
 	this->optionsButton = MenuSprite::create(Resources::Menus_PauseMenu_OptionsButton, Resources::Menus_PauseMenu_OptionsButtonHover, Resources::Menus_PauseMenu_OptionsButtonClick);
 	this->exitToTitleButton = MenuSprite::create(Resources::Menus_PauseMenu_QuitButton, Resources::Menus_PauseMenu_QuitButtonHover, Resources::Menus_PauseMenu_QuitButtonClick);
@@ -21,8 +22,12 @@ PauseMenu::PauseMenu()
 	this->optionsButton->SetClickCallback(CC_CALLBACK_1(PauseMenu::OnOptionsClick, this));
 	this->exitToTitleButton->SetClickCallback(CC_CALLBACK_1(PauseMenu::OnExitToTitleClick, this));
 
+	this->closeButton->SetClickCallback(CC_CALLBACK_1(PauseMenu::OnCloseClick, this));
+	this->closeButton->SetClickSound(Resources::Sounds_ClickBack1);
+
 	this->addChild(this->background);
 	this->addChild(this->pauseWindow);
+	this->addChild(this->closeButton);
 	this->addChild(this->resumeButton);
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitToTitleButton);
@@ -36,7 +41,7 @@ PauseMenu::~PauseMenu()
 
 void PauseMenu::onEnter()
 {
-	Scene::onEnter();
+	FadeScene::onEnter();
 
 	this->background->addChild(MenuBackground::ClaimInstance());
 
@@ -51,6 +56,7 @@ void PauseMenu::InitializePositions()
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	this->pauseWindow->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->closeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 136.0f, origin.y + visibleSize.height / 2 + 204.0f));
 	this->resumeButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 + 128.0f));
 	this->optionsButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 + 0.0f));
 	this->exitToTitleButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 180.0f));
@@ -75,6 +81,11 @@ void PauseMenu::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		Director::getInstance()->popScene();
 		break;
 	}
+}
+
+void PauseMenu::OnCloseClick(MenuSprite* menuSprite)
+{
+	Director::getInstance()->popScene();
 }
 
 void PauseMenu::OnResumeClick(MenuSprite* menuSprite)
