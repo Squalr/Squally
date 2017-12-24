@@ -27,6 +27,7 @@ private:
 	static SoundManager * soundManagerInstance;
 
 	int backgroundMusicId;
+	std::string currentMusicResource;
 
 	const int INVALID_ID = -1;
 };

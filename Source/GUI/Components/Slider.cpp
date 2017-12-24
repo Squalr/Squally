@@ -14,15 +14,17 @@ Slider::Slider(float progress)
 	this->progressUpdateEvent = nullptr;
 	this->frame = Sprite::create(Resources::Menus_OptionsMenu_SliderFrame);
 	this->progressBar = Sprite::create(Resources::Menus_OptionsMenu_SliderFill);
+	this->progressClip = ClippingRectangleNode::create(Rect(0, -32, this->progressBar->getContentSize().width, 64));
 	this->slide = MenuSprite::create(Resources::Menus_OptionsMenu_Slide, Resources::Menus_OptionsMenu_Slide, Resources::Menus_OptionsMenu_Slide);
 	this->SetProgress(progress);
 
-	this->progressBar->setAnchorPoint(Vec2(0.0f, 0.5f));
-
 	this->slide->SetMouseDragCallback(CC_CALLBACK_2(Slider::OnDrag, this));
 
+	this->progressBar->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->progressClip->addChild(this->progressBar);
+
 	this->addChild(this->frame);
-	this->addChild(this->progressBar);
+	this->addChild(this->progressClip);
 	this->addChild(this->slide);
 
 	this->InitializePositions();
@@ -34,7 +36,7 @@ Slider::~Slider()
 
 void Slider::InitializePositions()
 {
-	this->progressBar->setPosition(Vec2(-this->progressBar->getContentSize().width / 2, 0));
+	this->progressClip->setPosition(Vec2(-this->progressBar->getContentSize().width / 2, 0));
 	this->slide->setPosition(Vec2(this->progress * this->frame->getContentSize().width - this->frame->getContentSize().width / 2, 0));
 }
 
@@ -73,7 +75,10 @@ void Slider::SetProgress(float newProgress)
 
 	this->progress = newProgress;
 
-	this->progressBar->setScaleX(this->progress);
+	// Update progress bar
+	Rect newClippingRegion = this->progressClip->getClippingRegion();
+	newClippingRegion.size = Size(this->progressBar->getContentSize().width * this->progress, newClippingRegion.size.height);
+	this->progressClip->setClippingRegion(newClippingRegion);
 
 	if (this->progressUpdateEvent != nullptr)
 	{
