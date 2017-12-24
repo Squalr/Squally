@@ -341,6 +341,7 @@ const string Resources::Menus_OptionsMenu_OptionsMenu = "Menus\\OptionsMenu\\Opt
 const string Resources::Menus_OptionsMenu_RadioButtonEmpty = "Menus\\OptionsMenu\\RadioButtonEmpty.png";
 const string Resources::Menus_OptionsMenu_RadioButtonHover = "Menus\\OptionsMenu\\RadioButtonHover.png";
 const string Resources::Menus_OptionsMenu_RadioButtonSelected = "Menus\\OptionsMenu\\RadioButtonSelected.png";
+const string Resources::Menus_OptionsMenu_RadioButtonSelectedHover = "Menus\\OptionsMenu\\RadioButtonSelectedHover.png";
 const string Resources::Menus_OptionsMenu_Slide = "Menus\\OptionsMenu\\Slide.png";
 const string Resources::Menus_OptionsMenu_SliderFill = "Menus\\OptionsMenu\\SliderFill.png";
 const string Resources::Menus_OptionsMenu_SliderFrame = "Menus\\OptionsMenu\\SliderFrame.png";

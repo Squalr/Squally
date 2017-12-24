@@ -346,6 +346,7 @@ public:
 	static const string Menus_OptionsMenu_RadioButtonEmpty;
 	static const string Menus_OptionsMenu_RadioButtonHover;
 	static const string Menus_OptionsMenu_RadioButtonSelected;
+	static const string Menus_OptionsMenu_RadioButtonSelectedHover;
 	static const string Menus_OptionsMenu_Slide;
 	static const string Menus_OptionsMenu_SliderFill;
 	static const string Menus_OptionsMenu_SliderFrame;
