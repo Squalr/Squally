@@ -160,7 +160,6 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\Components\MenuSprite.cpp" />
     <ClCompile Include="Source\GUI\Components\Mouse.cpp" />
     <ClCompile Include="Source\GUI\Components\RadioButton.cpp" />
-    <ClCompile Include="Source\GUI\Components\RadioButtonGroup.cpp" />
     <ClCompile Include="Source\GUI\Components\Slider.cpp" />
     <ClCompile Include="Source\GUI\Components\ToggleButton.cpp" />
     <ClCompile Include="Source\GUI\Menus\Options\OptionsMenu.cpp" />
@@ -192,7 +191,6 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\Components\MenuSprite.h" />
     <ClInclude Include="Source\GUI\Components\Mouse.h" />
     <ClInclude Include="Source\GUI\Components\RadioButton.h" />
-    <ClInclude Include="Source\GUI\Components\RadioButtonGroup.h" />
     <ClInclude Include="Source\GUI\Components\Slider.h" />
     <ClInclude Include="Source\GUI\Components\ToggleButton.h" />
     <ClInclude Include="Source\GUI\Menus\Options\OptionsMenu.h" />

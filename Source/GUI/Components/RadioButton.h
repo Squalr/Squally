@@ -2,30 +2,33 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "GUI/Components/MenuSprite.h"
-#include "GUI/Components/RadioButtonGroup.h"
 
 using namespace cocos2d;
 
 class RadioButton : public Node
 {
 public:
-	static RadioButton * create(RadioButtonGroup* group);
+	static RadioButton * create(int groupIdentifier);
 
 	void Check();
 	void Uncheck();
+	void SetCheckCallback(std::function<void(RadioButton*)> callback);
 
-protected:
-	RadioButton(RadioButtonGroup* group);
-	~RadioButton();
+	const std::string RadioButtonCheckEvent = "radio_button_check_event";
 
 private:
+	RadioButton(int groupIdentifier);
+	~RadioButton();
+	void OnGroupCheck(EventCustom* event);
 	void OnUncheck(MenuSprite* menuSprite);
 	void OnCheck(MenuSprite* menuSprite);
+	void InitializeListeners();
+	void UncheckSilent();
 
 	MenuSprite * unchecked;
 	MenuSprite * checked;
-	RadioButtonGroup * group;
 
-	std::function<void(RadioButton*)> onCheck;
+	int groupId;
+	std::function<void(RadioButton*)> onCheckCallback;
 };
 
