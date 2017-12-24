@@ -46,6 +46,15 @@ void TitleScreen::onEnter()
 	this->background->InitializePositions();
 	this->InitializePositions();
 
+	float delay = 0.5f;
+	float duration = 0.75f;
+
+	Utils::FadeInObject(this->titleBar, delay, duration);
+	Utils::FadeInObject(this->title, delay, duration);
+	Utils::FadeInObject(this->storyModeButton, delay, duration);
+	Utils::FadeInObject(this->optionsButton, delay, duration);
+	Utils::FadeInObject(this->exitButton, delay, duration);
+
 	this->addChild(Mouse::claimInstance());
 }
 

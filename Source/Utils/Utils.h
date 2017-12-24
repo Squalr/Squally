@@ -7,6 +7,7 @@ class Utils
 {
 public:
 	static std::string HexAddressOf(void* address);
+	static void FadeInObject(Node* node, float delay, float duration);
 	static Rect GetSceneBounds(Node* node);
 	static bool Intersects(Node* node, Vec2 mousePos);
 	static bool KeyExists(ValueMap valueMap, std::string key);
