@@ -8,6 +8,8 @@
 #include "GUI/Components/MenuLabel.h"
 #include "GUI/Components/MenuSprite.h"
 #include "GUI/Components/Slider.h"
+#include "GUI/Components/RadioButton.h"
+#include "GUI/Components/RadioButtonGroup.h"
 #include "GUI/Components/ToggleButton.h"
 
 using namespace cocos2d;
@@ -31,6 +33,9 @@ private:
 	void InitializeListeners();
 	void InitializePositions();
 
+	void ShowResolutionOptions();
+	void HideResolutionOptions();
+
 	Sprite* background;
 	MenuSprite* closeButton;
 
@@ -41,6 +46,12 @@ private:
 	MenuLabel* fullScreenLabel;
 	ToggleButton* fullScreenButton;
 	MenuSprite* exitButton;
+	Label* label1080x768;
+	Label* label1920x1080;
+
+	RadioButtonGroup* resolutionGroup;
+	RadioButton* option1080x768;
+	RadioButton* option1920x1080;
 
 	std::vector<MenuSprite*>* clickableMenus;
 

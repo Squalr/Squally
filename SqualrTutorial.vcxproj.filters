@@ -132,6 +132,12 @@
     <ClCompile Include="Source\Config\SoundManager.cpp">
       <Filter>Source\Config</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GUI\Components\RadioButton.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Components\RadioButtonGroup.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -217,6 +223,12 @@
     </ClInclude>
     <ClInclude Include="Source\Config\SoundManager.h">
       <Filter>Source\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\RadioButtonGroup.h">
+      <Filter>Source\GUI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\RadioButton.h">
+      <Filter>Source\GUI\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
