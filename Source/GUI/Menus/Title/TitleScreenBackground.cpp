@@ -17,8 +17,8 @@ TitleScreenBackground::TitleScreenBackground()
 	this->background = Sprite::create(Resources::Menus_Backgrounds_ForestBackground);
 	this->fog = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
 	this->foregroundFog = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
-	this->backgroundVines = FloatingSprite::create(Resources::Menus_Backgrounds_FarVines, Vec2(64.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->backgroundTrees = FloatingSprite::create(Resources::Menus_Backgrounds_LightTrees, Vec2(-48.0f, 8.0f), Vec2(7.0f, 5.0f));
+	this->backgroundVines = FloatingSprite::create(Resources::Menus_Backgrounds_FarVines, Vec2(64.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->midgroundTrees = FloatingSprite::create(Resources::Menus_Backgrounds_MidgroundTrees, Vec2(8.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->tree = Sprite::create(Resources::Menus_Backgrounds_Tree);
 	this->ether = MenuSprite::create(Resources::Menus_Backgrounds_Ether, Resources::Menus_Backgrounds_EtherSelected, Resources::Menus_Backgrounds_EtherSelected);
@@ -67,8 +67,8 @@ TitleScreenBackground::TitleScreenBackground()
 	this->etherParticles->setOpacity(0);
 
 	this->addChild(this->background);
-	this->addChild(this->backgroundVines);
 	this->addChild(this->backgroundTrees);
+	this->addChild(this->backgroundVines);
 	this->addChild(this->midgroundTrees);
 	this->addChild(this->fog);
 	this->addChild(this->foregroundVines);
@@ -98,6 +98,20 @@ void TitleScreenBackground::SetMatrixClickCallback(std::function<void(MenuSprite
 	this->ether->SetClickCallback(onMouseClick);
 }
 
+void TitleScreenBackground::onEnter()
+{
+	Node::onEnter();
+
+	// Initialize particles to an intermediate state
+	Utils::AccelerateParticles(this->fireflyParticles, 2.0f);
+	Utils::AccelerateParticles(this->windParticles, 5.0f);
+
+	if (this->etherParticles->isVisible())
+	{
+		Utils::AccelerateParticles(this->etherParticles, 5.0f);
+	}
+}
+
 void TitleScreenBackground::InitializeListeners()
 {
 	EventListenerCustom* customListener = EventListenerCustom::create(HackerMode::GetInstance()->HackerModeEnabledEvent, CC_CALLBACK_1(TitleScreenBackground::OnHackerModeEnabled, this));
@@ -116,8 +130,8 @@ void TitleScreenBackground::InitializePositions()
 	this->hackerModeLabel->setPosition(Vec2(origin.x + visibleSize.width / 2 - 96.0f, origin.x + visibleSize.height / 2 + 296.0f));
 
 	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
-	this->backgroundVines->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 196.0f));
 	this->backgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->backgroundVines->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 320.0f));
 	this->midgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->tree->setPosition(Vec2(origin.x + visibleSize.width / 2 + 38.0f, origin.y + visibleSize.height / 2 + 180.0f));
 	this->ether->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->ether->getContentSize().height + 372.0f));

@@ -23,6 +23,7 @@ private:
 	TitleScreenBackground();
 	~TitleScreenBackground();
 
+	void onEnter() override;
 	void InitializeListeners();
 	void OnHackerModeEnabled(EventCustom* args);
 

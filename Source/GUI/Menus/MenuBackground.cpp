@@ -30,9 +30,8 @@ MenuBackground::MenuBackground()
 	this->background = Sprite::create(Resources::Menus_Backgrounds_DarkBackground);
 	this->fog = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
 	this->foregroundFog = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
-	this->backgroundVines = FloatingSprite::create(Resources::Menus_Backgrounds_FarVines, Vec2(64.0f, -8.0f), Vec2(7.0f, 5.0f));
-	this->backgroundTrees = FloatingSprite::create(Resources::Menus_Backgrounds_LightTrees, Vec2(-48.0f, 8.0f), Vec2(7.0f, 5.0f));
-	this->midgroundTrees = FloatingSprite::create(Resources::Menus_Backgrounds_MidgroundTrees2, Vec2(-16.0f, -8.0f), Vec2(7.0f, 5.0f));
+	this->backgroundTrees = FloatingSprite::create(Resources::Menus_Backgrounds_LightTrees, Vec2(-24.0f, 8.0f), Vec2(7.0f, 5.0f));
+	this->midgroundTrees = FloatingSprite::create(Resources::Menus_Backgrounds_MidgroundTrees2, Vec2(16.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->webs = Sprite::create(Resources::Menus_Backgrounds_Webs);
 	this->foregroundVines = FloatingSprite::create(Resources::Menus_Backgrounds_Vines, Vec2(-24.0f, 0.0f), Vec2(7.0f, 5.0f));
 	this->foregroundGrassBottom = FloatingSprite::create(Resources::Menus_Backgrounds_BottomSoil, Vec2(-8.0f, 0.0f), Vec2(7.0f, 5.0f));
@@ -46,7 +45,6 @@ MenuBackground::MenuBackground()
 	this->foregroundFog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-196.0f, 0))));
 
 	this->addChild(this->background);
-	this->addChild(this->backgroundVines);
 	this->addChild(this->backgroundTrees);
 	this->addChild(this->midgroundTrees);
 	this->addChild(this->webs);
@@ -70,8 +68,7 @@ void MenuBackground::InitializePositions()
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
-	this->backgroundVines->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 196.0f));
-	this->backgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->backgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 320.0f));
 	this->webs->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 32.0f));
 	this->midgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 
