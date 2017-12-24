@@ -3,7 +3,6 @@
 #include "Resources.h"
 #include "GUI/Components/MenuLabel.h"
 #include "GUI/Components/Mouse.h"
-#include "GUI/Screens/TitleScreen.h"
 
 using namespace cocos2d;
 
