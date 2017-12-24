@@ -11,7 +11,7 @@ OptionsMenu * OptionsMenu::create()
 
 OptionsMenu::OptionsMenu()
 {
-	this->background = MenuBackground::claimInstance();
+	this->background = Node::create();
 	this->optionsWindow = Sprite::create(Resources::Menus_OptionsMenu_OptionsMenu);
 	this->fullScreenLabel = MenuLabel::create("Full Screen", Resources::Fonts_Montserrat_Medium, menuFontSize);
 	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
@@ -159,6 +159,8 @@ void OptionsMenu::onEnter()
 {
 	Scene::onEnter();
 
+	this->background->addChild(MenuBackground::ClaimInstance());
+
 	this->InitializePositions();
 
 	this->addChild(Mouse::claimInstance());
@@ -284,6 +286,8 @@ void OptionsMenu::InitializePositions()
 
 	this->musicSlider->InitializePositions();
 	this->soundSlider->InitializePositions();
+
+	MenuBackground::GetInstance()->InitializePositions();
 }
 
 void OptionsMenu::OnSoundVolumeUpdate(float soundVolume)

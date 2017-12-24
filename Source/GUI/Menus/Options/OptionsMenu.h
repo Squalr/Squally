@@ -37,7 +37,7 @@ private:
 	void ShowResolutionOptions();
 	void HideResolutionOptions();
 
-	MenuBackground* background;
+	Node* background;
 	Sprite* optionsWindow;
 	MenuSprite* closeButton;
 
