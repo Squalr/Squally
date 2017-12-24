@@ -154,6 +154,39 @@ void OptionsMenu::onEnter()
 {
 	FadeScene::onEnter();
 
+	float delay = 0.25f;
+	float duration = 0.35f;
+
+	Utils::FadeInObject(this->optionsWindow, delay, duration);
+	Utils::FadeInObject(this->closeButton, delay, duration);
+	Utils::FadeInObject(this->musicIcon, delay, duration);
+	Utils::FadeInObject(this->soundIcon, delay, duration);
+	Utils::FadeInObject(this->musicSlider, delay, duration);
+	Utils::FadeInObject(this->soundSlider, delay, duration);
+	Utils::FadeInObject(this->fullScreenLabel, delay, duration);
+	Utils::FadeInObject(this->fullScreenButton, delay, duration);
+	Utils::FadeInObject(this->exitButton, delay, duration);
+
+	Utils::FadeInObject(this->label1080x768, delay, duration);
+	Utils::FadeInObject(this->label1152x864, delay, duration);
+	Utils::FadeInObject(this->label1280x720, delay, duration);
+	Utils::FadeInObject(this->label1280x960, delay, duration);
+	Utils::FadeInObject(this->label1280x1024, delay, duration);
+	Utils::FadeInObject(this->label1440x900, delay, duration);
+	Utils::FadeInObject(this->label1600x900, delay, duration);
+	Utils::FadeInObject(this->label1600x1024, delay, duration);
+	Utils::FadeInObject(this->label1920x1080, delay, duration);
+
+	Utils::FadeInObject(this->option1080x768, delay, duration);
+	Utils::FadeInObject(this->option1152x864, delay, duration);
+	Utils::FadeInObject(this->option1280x720, delay, duration);
+	Utils::FadeInObject(this->option1280x960, delay, duration);
+	Utils::FadeInObject(this->option1280x1024, delay, duration);
+	Utils::FadeInObject(this->option1440x900, delay, duration);
+	Utils::FadeInObject(this->option1600x900, delay, duration);
+	Utils::FadeInObject(this->option1600x1024, delay, duration);
+	Utils::FadeInObject(this->option1920x1080, delay, duration);
+
 	this->background->addChild(MenuBackground::ClaimInstance());
 
 	this->InitializePositions();

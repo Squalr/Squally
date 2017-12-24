@@ -18,6 +18,8 @@ MenuLabel::MenuLabel(std::string labelText, std::string fontResource, float font
 
 	this->label->enableOutline(Color4B::BLACK, fontOutlineSize);
 
+	this->setCascadeOpacityEnabled(true);
+
 	this->addChild(this->labelHighlighted);
 	this->addChild(this->label);
 
