@@ -16,9 +16,6 @@
     <Filter Include="Source\GUI\Menus">
       <UniqueIdentifier>{ab031439-9498-4f06-b44f-e5be61ab5205}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\GUI\Screens">
-      <UniqueIdentifier>{04daaf56-62e9-4d3e-97b5-cdc8406ed7b5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Level">
       <UniqueIdentifier>{4df6f466-fb7d-4ee4-b7d3-a451d4a61f2f}</UniqueIdentifier>
     </Filter>
@@ -31,12 +28,6 @@
     <Filter Include="Source\Utils">
       <UniqueIdentifier>{8f7b5b30-247a-452b-96b8-2d42834c1248}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\GUI\Screens\Story">
-      <UniqueIdentifier>{d79eed0d-29f2-48cd-a961-3742ff0dc3d2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\GUI\Screens\Tutorial">
-      <UniqueIdentifier>{5909d9c4-e7f8-46ec-b84b-8b178ffc70b0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\GUI\Menus\Options">
       <UniqueIdentifier>{0eaeefbb-4b79-448f-b9c2-b11c54de4290}</UniqueIdentifier>
     </Filter>
@@ -45,6 +36,15 @@
     </Filter>
     <Filter Include="Source\GUI\Components">
       <UniqueIdentifier>{59d011ae-970a-4f51-a323-6c474be5079d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\GUI\Menus\Story">
+      <UniqueIdentifier>{909eb5b2-aabc-45a3-88fd-7fbad17f7424}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\GUI\Menus\Tutorial">
+      <UniqueIdentifier>{ce760e68-2034-4716-a741-75ff6bae1ffc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\GUI\Menus\Title">
+      <UniqueIdentifier>{b5ed26c3-cc7b-4a79-b202-e4b4d265ad43}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -87,21 +87,6 @@
     <ClCompile Include="Source\Level\Background.cpp">
       <Filter>Source\Level</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GUI\Screens\TitleScreen.cpp">
-      <Filter>Source\GUI\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\Screens\Story\MapNode.cpp">
-      <Filter>Source\GUI\Screens\Story</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\Screens\Story\StoryMap.cpp">
-      <Filter>Source\GUI\Screens\Story</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\Screens\Tutorial\TutorialItem.cpp">
-      <Filter>Source\GUI\Screens\Tutorial</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\Screens\Tutorial\TutorialScreen.cpp">
-      <Filter>Source\GUI\Screens\Tutorial</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GUI\Menus\Options\OptionsMenu.cpp">
       <Filter>Source\GUI\Menus\Options</Filter>
     </ClCompile>
@@ -134,6 +119,30 @@
     </ClCompile>
     <ClCompile Include="Source\GUI\Components\RadioButton.cpp">
       <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\MenuBackground.cpp">
+      <Filter>Source\GUI\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\Story\StoryMap.cpp">
+      <Filter>Source\GUI\Menus\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\Story\MapNode.cpp">
+      <Filter>Source\GUI\Menus\Story</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\Tutorial\TutorialItem.cpp">
+      <Filter>Source\GUI\Menus\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\Tutorial\TutorialScreen.cpp">
+      <Filter>Source\GUI\Menus\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\Title\TitleScreen.cpp">
+      <Filter>Source\GUI\Menus\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\Title\TitleScreenBackground.cpp">
+      <Filter>Source\GUI\Menus\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\Title\HackerMode.cpp">
+      <Filter>Source\GUI\Menus\Title</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,21 +185,6 @@
     <ClInclude Include="Source\Level\Background.h">
       <Filter>Source\Level</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GUI\Screens\TitleScreen.h">
-      <Filter>Source\GUI\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GUI\Screens\Story\StoryMap.h">
-      <Filter>Source\GUI\Screens\Story</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GUI\Screens\Story\MapNode.h">
-      <Filter>Source\GUI\Screens\Story</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GUI\Screens\Tutorial\TutorialScreen.h">
-      <Filter>Source\GUI\Screens\Tutorial</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GUI\Screens\Tutorial\TutorialItem.h">
-      <Filter>Source\GUI\Screens\Tutorial</Filter>
-    </ClInclude>
     <ClInclude Include="Source\GUI\Menus\Options\OptionsMenu.h">
       <Filter>Source\GUI\Menus\Options</Filter>
     </ClInclude>
@@ -223,6 +217,30 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\Components\RadioButton.h">
       <Filter>Source\GUI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\MenuBackground.h">
+      <Filter>Source\GUI\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\Story\StoryMap.h">
+      <Filter>Source\GUI\Menus\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\Story\MapNode.h">
+      <Filter>Source\GUI\Menus\Story</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\Tutorial\TutorialScreen.h">
+      <Filter>Source\GUI\Menus\Tutorial</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\Tutorial\TutorialItem.h">
+      <Filter>Source\GUI\Menus\Tutorial</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\Title\TitleScreenBackground.h">
+      <Filter>Source\GUI\Menus\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\Title\TitleScreen.h">
+      <Filter>Source\GUI\Menus\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\Title\HackerMode.h">
+      <Filter>Source\GUI\Menus\Title</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

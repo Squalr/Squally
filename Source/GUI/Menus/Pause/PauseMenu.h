@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "GUI/Menus/MenuBackground.h"
 #include "GUI/Menus/Options/OptionsMenu.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
 #include "GUI/Components/MenuSprite.h"
@@ -26,25 +27,10 @@ private:
 	void OnOptionsClick(MenuSprite* menuSprite);
 	void OnExitToTitleClick(MenuSprite* menuSprite);
 
-	Sprite* background;
-	Sprite* backgroundVines;
-	Sprite* backgroundTrees;
-	Sprite* midgroundTrees;
-	Sprite* foregroundVines;
-	InfiniteParallaxNode* fog;
-	InfiniteParallaxNode* foregroundFog;
-	Sprite* foregroundGrassBottom;
-	Sprite* foregroundGrassTop;
-	Sprite* foregroundLight;
-	ParticleSystem* matrixParticles;
-	ParticleSystem* windParticles;
-	ParticleSystem* fireflyParticles;
-
+	MenuBackground* background;
 	Sprite* pauseWindow;
 	MenuSprite* resumeButton;
 	MenuSprite* optionsButton;
 	MenuSprite* exitToTitleButton;
-
-	ParticleSystem* fireflies;
 };
 

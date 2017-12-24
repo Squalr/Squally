@@ -60,7 +60,7 @@ void StoryMap::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		Director::getInstance()->replaceScene(TitleScreen::create());
+		Director::getInstance()->popScene();
 		break;
 	}
 }

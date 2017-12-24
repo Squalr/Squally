@@ -2,9 +2,11 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Config/SoundManager.h"
-#include "Tutorial/TutorialScreen.h"
-#include "Story/StoryMap.h"
 #include "Utils/Utils.h"
+#include "GUI/Menus/Title/HackerMode.h"
+#include "GUI/Menus/Title/TitleScreenBackground.h"
+#include "GUI/Menus/Tutorial/TutorialScreen.h"
+#include "GUI/Menus/Story/StoryMap.h"
 #include "GUI/Menus/Options/OptionsMenu.h"
 #include "GUI/Components/FloatingSprite.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
@@ -28,40 +30,19 @@ protected:
 
 private:
 	void onEnter() override;
-	void update(float) override;
 	void InitializePositions();
-	void OnMenuClick(MenuSprite* menuSprite);
 
-	FloatingSprite* squally;
-	Sprite* background;
-	FloatingSprite* backgroundVines;
-	FloatingSprite* backgroundTrees;
-	FloatingSprite* midgroundTrees;
-	Sprite* tree;
-	Animation* eyes1Anim;
-	Animation* eyes2Anim;
-	Sprite* eyes1;
-	Sprite* eyes2;
-	FloatingSprite* foregroundVines;
-	InfiniteParallaxNode* fog;
-	InfiniteParallaxNode* foregroundFog;
-	FloatingSprite* foregroundGrassBottom;
-	FloatingSprite* foregroundGrassTop;
-	Sprite* foregroundLight;
-	ParticleSystem* matrixParticles;
-	ParticleSystem* windParticles;
-	ParticleSystem* fireflyParticles;
+	void OnMatrixClick(MenuSprite* menuSprite);
+	void OnStoryModeClick(MenuSprite* menuSprite);
+	void OnOptionsClick(MenuSprite* menuSprite);
+	void OnExitClick(MenuSprite* menuSprite);
 
-	Label* hackerModeLabel;
-
-	MenuSprite* matrix;
+	TitleScreenBackground* background;
 	MenuSprite* storyModeButton;
 	MenuSprite* optionsButton;
 	MenuSprite* exitButton;
 	Sprite* titleBar;
 	Sprite* title;
-
-	static int hackerMode;
 
 	const float titleFontSize = 64.0f;
 	const float menuFontSize = 48.0f;

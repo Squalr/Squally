@@ -1,20 +1,16 @@
-#include "TitleScreen.h"
+#include "TitleScreenBackground.h"
 
-int TitleScreen::hackerMode = 1;
-
-TitleScreen * TitleScreen::create()
+TitleScreenBackground * TitleScreenBackground::create()
 {
-	TitleScreen* titleScreen = new TitleScreen();
+	TitleScreenBackground* titleScreenBackground = new TitleScreenBackground();
 
-	titleScreen->autorelease();
+	titleScreenBackground->autorelease();
 
-	return titleScreen;
+	return titleScreenBackground;
 }
 
-TitleScreen::TitleScreen()
+TitleScreenBackground::TitleScreenBackground()
 {
-	SoundManager::GetInstance()->PlayMusicResource(Resources::Music_Will_we_get_there_Together);
-
 	this->eyes1Anim = Animation::create();
 	this->eyes2Anim = Animation::create();
 
@@ -25,6 +21,8 @@ TitleScreen::TitleScreen()
 	this->backgroundTrees = FloatingSprite::create(Resources::Menus_TitleScreen_bg_back, Vec2(-48.0f, 8.0f), Vec2(7.0f, 5.0f));
 	this->midgroundTrees = FloatingSprite::create(Resources::Menus_TitleScreen_bg_mid, Vec2(8.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->tree = Sprite::create(Resources::Menus_TitleScreen_tree_fat);
+	this->matrix = MenuSprite::create(Resources::Menus_TitleScreen_Monitor, Resources::Menus_TitleScreen_MonitorSelected, Resources::Menus_TitleScreen_MonitorSelected);
+	this->matrixParticles = ParticleGalaxy::create();
 	this->eyes1 = Sprite::create();
 	this->eyes2 = Sprite::create();
 	this->foregroundVines = FloatingSprite::create(Resources::Menus_TitleScreen_bg_top_lines, Vec2(-24.0f, 0.0f), Vec2(7.0f, 5.0f));
@@ -33,24 +31,11 @@ TitleScreen::TitleScreen()
 	this->foregroundLight = Sprite::create(Resources::Menus_TitleScreen_bg_light_02);
 	this->squally = FloatingSprite::create(Resources::Menus_TitleScreen_Squally, Vec2(8.0f, 64.0f), Vec2(3.5f, 8.0f));
 
-	this->titleBar = Sprite::create(Resources::Menus_TitleScreen_TitleBar);
-	this->title = Sprite::create(Resources::Menus_TitleScreen_Title);
-
 	this->squally->setFlippedY(true);
-
-	this->matrix = MenuSprite::create(Resources::Menus_TitleScreen_Monitor, Resources::Menus_TitleScreen_MonitorSelected, Resources::Menus_TitleScreen_MonitorSelected);
-	this->storyModeButton = MenuSprite::create(Resources::Menus_TitleScreen_StoryModeButton, Resources::Menus_TitleScreen_StoryModeButtonHover, Resources::Menus_TitleScreen_StoryModeButtonClick);
-	this->optionsButton = MenuSprite::create(Resources::Menus_TitleScreen_OptionsButton, Resources::Menus_TitleScreen_OptionsButtonHover, Resources::Menus_TitleScreen_OptionsButtonClick);
-	this->exitButton = MenuSprite::create(Resources::Menus_TitleScreen_ExitButton, Resources::Menus_TitleScreen_ExitButtonHover, Resources::Menus_TitleScreen_ExitButtonClick);
 
 	this->matrixParticles = ParticleGalaxy::create();
 	this->windParticles = ParticleSystemQuad::create(Resources::Particles_Wind);
 	this->fireflyParticles = ParticleSystemQuad::create(Resources::Particles_Fireflies2);
-
-	this->matrix->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
-	this->storyModeButton->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
-	this->optionsButton->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
-	this->exitButton->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnMenuClick, this));
 
 	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesA1);
 	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesA2);
@@ -63,9 +48,7 @@ TitleScreen::TitleScreen()
 	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesB3);
 	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesB4);
 
-	std::string hackerModeAddress = Utils::HexAddressOf(&this->hackerMode);
-
-	this->hackerModeLabel = Label::create(hackerModeAddress, Resources::Fonts_Stormblade, 16);
+	this->hackerModeLabel = Label::create(HackerMode::GetInstance()->GetHackerModeAddressHex(), Resources::Fonts_Stormblade, 16);
 	this->hackerModeLabel->setColor(Color3B(173, 135, 108));
 	this->hackerModeLabel->setSkewX(-12.0f);
 
@@ -77,6 +60,12 @@ TitleScreen::TitleScreen()
 	this->eyes1->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes1Anim)->reverse(), DelayTime::create(1.54f), Animate::create(this->eyes1Anim), DelayTime::create(2.5f), nullptr)));
 	this->eyes2->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes2Anim)->reverse(), DelayTime::create(1.25f), Animate::create(this->eyes2Anim), DelayTime::create(3.25f), nullptr)));
 
+	this->matrix->setVisible(false);
+	this->matrixParticles->setCascadeOpacityEnabled(true);
+	this->matrixParticles->setVisible(false);
+	this->matrixParticles->stopSystem();
+	this->matrixParticles->setOpacity(0);
+
 	this->addChild(this->background);
 	this->addChild(this->backgroundVines);
 	this->addChild(this->backgroundTrees);
@@ -84,11 +73,11 @@ TitleScreen::TitleScreen()
 	this->addChild(this->fog);
 	this->addChild(this->foregroundVines);
 	this->addChild(this->tree);
-	this->addChild(this->eyes1);
-	this->addChild(this->eyes2);
 	this->addChild(this->hackerModeLabel);
 	this->addChild(this->matrix);
 	this->addChild(this->matrixParticles);
+	this->addChild(this->eyes1);
+	this->addChild(this->eyes2);
 	this->addChild(this->fireflyParticles);
 	this->addChild(this->windParticles);
 	this->addChild(this->foregroundFog);
@@ -96,50 +85,44 @@ TitleScreen::TitleScreen()
 	this->addChild(this->foregroundGrassTop);
 	this->addChild(this->foregroundLight);
 	this->addChild(this->squally);
-	this->addChild(this->titleBar);
-	this->addChild(this->title);
-	this->addChild(this->storyModeButton);
-	this->addChild(this->optionsButton);
-	this->addChild(this->exitButton);
 
-	this->matrixParticles->setCascadeOpacityEnabled(true);
-	this->matrixParticles->setVisible(false);
-	this->matrixParticles->stopSystem();
-	this->matrixParticles->setOpacity(0);
-	this->matrix->setCascadeOpacityEnabled(true);
-	this->matrix->setVisible(false);
-	this->matrix->setOpacity(0);
-
-	this->scheduleUpdate();
+	this->InitializeListeners();
 }
 
-TitleScreen::~TitleScreen()
+TitleScreenBackground::~TitleScreenBackground()
 {
 }
 
-void TitleScreen::onEnter()
+void TitleScreenBackground::SetMatrixClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick)
 {
-	Scene::onEnter();
-
-	this->InitializePositions();
-
-	this->addChild(Mouse::claimInstance());
+	this->matrix->SetClickCallback(onMouseClick);
 }
 
-void TitleScreen::InitializePositions()
+void TitleScreenBackground::InitializeListeners()
+{
+	EventListenerCustom* customListener = EventListenerCustom::create(HackerMode::GetInstance()->HackerModeEnabledEvent, CC_CALLBACK_1(TitleScreenBackground::OnHackerModeEnabled, this));
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(customListener, this);
+
+	// Add the hackermode node. This will allow for it's update method to run.
+	this->addChild(HackerMode::GetInstance());
+}
+
+void TitleScreenBackground::InitializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	this->hackerModeLabel->setPosition(Vec2(origin.x + visibleSize.width / 2 - 96.0f, origin.x + visibleSize.height / 2 + 296.0f));
 
-	this->matrix->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->matrix->getContentSize().height + 372.0f));
-	this->matrixParticles->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->matrix->getContentSize().height + 372.0f));
 	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->backgroundVines->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 196.0f));
 	this->backgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->midgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->tree->setPosition(Vec2(origin.x + visibleSize.width / 2 + 38.0f, origin.y + visibleSize.height / 2 + 180.0f));
+	this->matrix->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->matrix->getContentSize().height + 372.0f));
+	this->matrixParticles->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->matrix->getContentSize().height + 372.0f));
+
 	this->eyes1->setPosition(Vec2(origin.x + visibleSize.width / 2 + 48.0f, origin.y + visibleSize.height / 2 - 180.0f));
 	this->eyes2->setPosition(Vec2(origin.x + visibleSize.width / 2 + 48.0f, origin.y + visibleSize.height / 2 - 180.0f));
 	this->fog->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 120.0f));
@@ -151,44 +134,13 @@ void TitleScreen::InitializePositions()
 	this->windParticles->setPosition(Vec2(origin.x + visibleSize.width, origin.y + visibleSize.height / 2));
 	this->fireflyParticles->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->squally->setPosition(Vec2(origin.x + visibleSize.width / 2 + 240.0f, origin.y + visibleSize.height / 2 - 32.0f));
-
-	this->titleBar->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2));
-	this->title->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height - this->title->getContentSize().height / 2));
-	this->storyModeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2 + 192.0f));
-	this->optionsButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2 + 64.0f));
-	this->exitButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2 - 128.0f));
 }
 
-void TitleScreen::update(float dt)
+void TitleScreenBackground::OnHackerModeEnabled(EventCustom* args)
 {
-	Scene::update(dt);
-
-	if (this->hackerMode != 0 && !this->matrix->isVisible())
-	{
-		this->matrix->setVisible(true);
-		this->matrix->runAction(FadeIn::create(1.0f));
-		this->matrixParticles->setVisible(true);
-		this->matrixParticles->runAction(FadeIn::create(2.0f));
-		this->matrixParticles->start();
-	}
-}
-
-void TitleScreen::OnMenuClick(MenuSprite* menuSprite)
-{
-	if (menuSprite == this->matrix)
-	{
-		Director::getInstance()->pushScene(TutorialScreen::create());
-	}
-	else if (menuSprite == this->storyModeButton)
-	{
-		Director::getInstance()->pushScene(StoryMap::create());
-	}
-	else if (menuSprite == this->optionsButton)
-	{
-		Director::getInstance()->pushScene(OptionsMenu::create());
-	}
-	else if (menuSprite == this->exitButton)
-	{
-		Director::getInstance()->end();
-	}
+	this->matrix->setVisible(true);
+	this->matrix->runAction(FadeIn::create(1.0f));
+	this->matrixParticles->setVisible(true);
+	this->matrixParticles->runAction(FadeIn::create(2.0f));
+	this->matrixParticles->start();
 }

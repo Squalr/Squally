@@ -11,7 +11,8 @@ OptionsMenu * OptionsMenu::create()
 
 OptionsMenu::OptionsMenu()
 {
-	this->background = Sprite::create(Resources::Menus_OptionsMenu_OptionsMenu);
+	this->background = MenuBackground::claimInstance();
+	this->optionsWindow = Sprite::create(Resources::Menus_OptionsMenu_OptionsMenu);
 	this->fullScreenLabel = MenuLabel::create("Full Screen", Resources::Fonts_Montserrat_Medium, menuFontSize);
 	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
 
@@ -71,6 +72,7 @@ OptionsMenu::OptionsMenu()
 	this->clickableMenus->push_back(this->exitButton);
 
 	this->addChild(this->background);
+	this->addChild(this->optionsWindow);
 	this->addChild(this->closeButton);
 	this->addChild(this->musicIcon);
 	this->addChild(this->soundIcon);
@@ -242,7 +244,7 @@ void OptionsMenu::InitializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->optionsWindow->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->closeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 302.0f, origin.y + visibleSize.height / 2 + 228.0f));
 
 	this->soundIcon->setPosition(Vec2(origin.x + visibleSize.width / 2 - 276.0f, origin.y + visibleSize.height / 2 + 144.0f));

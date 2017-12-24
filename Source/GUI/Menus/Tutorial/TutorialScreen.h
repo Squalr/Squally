@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 #include "TutorialScreen.h"
 #include "Resources.h"
-#include "TutorialItem.h"
+#include "GUI/Menus/Tutorial/TutorialItem.h"
 #include "GUI/Components/Mouse.h"
 #include "GUI/Components/MenuLabel.h"
 #include "GUI/Components/MenuSprite.h"
