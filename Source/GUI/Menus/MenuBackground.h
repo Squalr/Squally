@@ -21,7 +21,6 @@ private:
 	~MenuBackground();
 
 	Sprite* background;
-	FloatingSprite* backgroundVines;
 	FloatingSprite* backgroundTrees;
 	FloatingSprite* midgroundTrees;
 	FloatingSprite* foregroundVines;
