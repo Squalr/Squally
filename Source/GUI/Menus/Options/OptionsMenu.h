@@ -10,6 +10,7 @@
 #include "GUI/Components/Slider.h"
 #include "GUI/Components/RadioButton.h"
 #include "GUI/Components/ToggleButton.h"
+#include "GUI/Menus/MenuBackground.h"
 
 using namespace cocos2d;
 
@@ -36,7 +37,8 @@ private:
 	void ShowResolutionOptions();
 	void HideResolutionOptions();
 
-	Sprite* background;
+	MenuBackground* background;
+	Sprite* optionsWindow;
 	MenuSprite* closeButton;
 
 	Sprite* musicIcon;
