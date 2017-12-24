@@ -296,6 +296,9 @@ public:
 	static const string Menus_Backgrounds_Tree;
 	static const string Menus_Backgrounds_Vines;
 	static const string Menus_Backgrounds_Webs;
+	static const string Menus_Buttons_AcceptButton;
+	static const string Menus_Buttons_AcceptButtonClick;
+	static const string Menus_Buttons_AcceptButtonHover;
 	static const string Menus_Buttons_AudioButton;
 	static const string Menus_Buttons_AudioButtonClick;
 	static const string Menus_Buttons_AudioButtonHover;
@@ -350,6 +353,7 @@ public:
 	static const string Menus_Buttons_VerticalMenuButton;
 	static const string Menus_Buttons_VerticalMenuButtonClick;
 	static const string Menus_Buttons_VerticalMenuButtonHover;
+	static const string Menus_ConfirmMenu_ConfirmMenuWindow;
 	static const string Menus_CreditsMenu_CreditsBG;
 	static const string Menus_IntroMenu_SpeechBubble;
 	static const string Menus_IntroMenu_Scene1_Scene1BG;

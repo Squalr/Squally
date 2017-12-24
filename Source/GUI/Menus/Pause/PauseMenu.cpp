@@ -16,11 +16,11 @@ PauseMenu::PauseMenu()
 	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
 	this->resumeButton = MenuSprite::create(Resources::Menus_PauseMenu_ResumeButton, Resources::Menus_PauseMenu_ResumeButtonHover, Resources::Menus_PauseMenu_ResumeButtonClick);
 	this->optionsButton = MenuSprite::create(Resources::Menus_PauseMenu_OptionsButton, Resources::Menus_PauseMenu_OptionsButtonHover, Resources::Menus_PauseMenu_OptionsButtonClick);
-	this->exitToTitleButton = MenuSprite::create(Resources::Menus_PauseMenu_QuitButton, Resources::Menus_PauseMenu_QuitButtonHover, Resources::Menus_PauseMenu_QuitButtonClick);
+	this->exitButton = MenuSprite::create(Resources::Menus_PauseMenu_QuitButton, Resources::Menus_PauseMenu_QuitButtonHover, Resources::Menus_PauseMenu_QuitButtonClick);
 
 	this->resumeButton->SetClickCallback(CC_CALLBACK_1(PauseMenu::OnResumeClick, this));
 	this->optionsButton->SetClickCallback(CC_CALLBACK_1(PauseMenu::OnOptionsClick, this));
-	this->exitToTitleButton->SetClickCallback(CC_CALLBACK_1(PauseMenu::OnExitToTitleClick, this));
+	this->exitButton->SetClickCallback(CC_CALLBACK_1(PauseMenu::OnExitClick, this));
 
 	this->closeButton->SetClickCallback(CC_CALLBACK_1(PauseMenu::OnCloseClick, this));
 	this->closeButton->SetClickSound(Resources::Sounds_ClickBack1);
@@ -30,7 +30,7 @@ PauseMenu::PauseMenu()
 	this->addChild(this->closeButton);
 	this->addChild(this->resumeButton);
 	this->addChild(this->optionsButton);
-	this->addChild(this->exitToTitleButton);
+	this->addChild(this->exitButton);
 
 	this->InitializeListeners();
 }
@@ -50,7 +50,7 @@ void PauseMenu::onEnter()
 	Utils::FadeInObject(this->closeButton, delay, duration);
 	Utils::FadeInObject(this->resumeButton, delay, duration);
 	Utils::FadeInObject(this->optionsButton, delay, duration);
-	Utils::FadeInObject(this->exitToTitleButton, delay, duration);
+	Utils::FadeInObject(this->exitButton, delay, duration);
 
 	this->background->addChild(MenuBackground::ClaimInstance());
 
@@ -68,7 +68,7 @@ void PauseMenu::InitializePositions()
 	this->closeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 136.0f, origin.y + visibleSize.height / 2 + 204.0f));
 	this->resumeButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 + 128.0f));
 	this->optionsButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 + 0.0f));
-	this->exitToTitleButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 180.0f));
+	this->exitButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 180.0f));
 
 	MenuBackground::GetInstance()->InitializePositions();
 }
@@ -79,6 +79,11 @@ void PauseMenu::InitializeListeners()
 	listener->onKeyPressed = CC_CALLBACK_2(PauseMenu::OnKeyPressed, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+void PauseMenu::OnExitConfirm()
+{
+	Director::getInstance()->popToSceneStackLevel(2);
 }
 
 // Implementation of the keyboard event callback function prototype
@@ -107,7 +112,7 @@ void PauseMenu::OnOptionsClick(MenuSprite* menuSprite)
 	Director::getInstance()->pushScene(OptionsMenu::create());
 }
 
-void PauseMenu::OnExitToTitleClick(MenuSprite* menuSprite)
+void PauseMenu::OnExitClick(MenuSprite* menuSprite)
 {
-	Director::getInstance()->popToSceneStackLevel(2);
+	Director::getInstance()->pushScene(ConfirmationMenu::create("Exit this level?", CC_CALLBACK_0(PauseMenu::OnExitConfirm, this), nullptr));
 }
