@@ -77,6 +77,19 @@ void TutorialScreen::onEnter()
 {
 	FadeScene::onEnter();
 
+	float delay = 0.25f;
+	float duration = 0.35f;
+
+	Utils::FadeInObject(this->tutorialWindow, delay, duration);
+	Utils::FadeInObject(this->descriptionBox, delay, duration);
+	Utils::FadeInObject(this->description, delay, duration);
+	Utils::FadeInObject(this->closeButton, delay, duration);
+
+	for (std::vector<TutorialItem*>::iterator it = this->tutorialButtons->begin(); it != this->tutorialButtons->end(); ++it)
+	{
+		Utils::FadeInObject(*it, delay, duration);
+	}
+
 	this->InitializePositions();
 
 	this->addChild(Mouse::claimInstance());

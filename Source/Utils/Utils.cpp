@@ -14,6 +14,15 @@ std::string Utils::HexAddressOf(void* address)
 	return hexAddress;
 }
 
+void Utils::FadeInObject(Node* node, float delay, float duration)
+{
+	Sequence* sequence = Sequence::create(DelayTime::create(delay), FadeIn::create(duration), nullptr);
+
+	node->setCascadeOpacityEnabled(true);
+	node->setOpacity(0);
+	node->runAction(sequence);
+}
+
 Rect Utils::GetSceneBounds(Node* node)
 {
 	Rect resultRect = node->getBoundingBox();

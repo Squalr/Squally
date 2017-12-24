@@ -12,10 +12,14 @@ Slider* Slider::create(float progress)
 Slider::Slider(float progress)
 {
 	this->progressUpdateEvent = nullptr;
+
 	this->frame = Sprite::create(Resources::Menus_OptionsMenu_SliderFrame);
 	this->progressBar = Sprite::create(Resources::Menus_OptionsMenu_SliderFill);
 	this->progressClip = ClippingRectangleNode::create(Rect(0, -32, this->progressBar->getContentSize().width, 64));
 	this->slide = MenuSprite::create(Resources::Menus_OptionsMenu_Slide, Resources::Menus_OptionsMenu_Slide, Resources::Menus_OptionsMenu_Slide);
+
+	this->setCascadeOpacityEnabled(true);
+	this->progressClip->setCascadeOpacityEnabled(true);
 	this->SetProgress(progress);
 
 	this->slide->SetMouseDragCallback(CC_CALLBACK_2(Slider::OnDrag, this));

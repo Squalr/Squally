@@ -41,6 +41,7 @@ TutorialItem::TutorialItem(std::string description, std::string mapFile, int ind
 	this->startButton->SetClickCallback(CC_CALLBACK_1(TutorialItem::OnTutorialClick, this));
 	this->startButton->SetMouseOverCallback(CC_CALLBACK_1(TutorialItem::OnTutorialMouseOver, this));
 	this->setContentSize(this->frame->getContentSize());
+	this->setCascadeOpacityEnabled(true);
 
 	this->addChild(this->frame);
 	this->addChild(this->startButton);

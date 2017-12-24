@@ -43,6 +43,15 @@ void PauseMenu::onEnter()
 {
 	FadeScene::onEnter();
 
+	float delay = 0.25f;
+	float duration = 0.35f;
+
+	Utils::FadeInObject(this->pauseWindow, delay, duration);
+	Utils::FadeInObject(this->closeButton, delay, duration);
+	Utils::FadeInObject(this->resumeButton, delay, duration);
+	Utils::FadeInObject(this->optionsButton, delay, duration);
+	Utils::FadeInObject(this->exitToTitleButton, delay, duration);
+
 	this->background->addChild(MenuBackground::ClaimInstance());
 
 	this->InitializePositions();

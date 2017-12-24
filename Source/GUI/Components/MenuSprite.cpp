@@ -24,6 +24,7 @@ MenuSprite::MenuSprite(std::string spriteResource, std::string spriteSelectedRes
 	this->spriteClicked = Sprite::create(spriteClickedResource);
 	this->spriteSelected = Sprite::create(spriteSelectedResource);
 
+	this->setCascadeOpacityEnabled(true);
 	this->spriteClicked->setVisible(false);
 	this->spriteSelected->setVisible(false);
 
