@@ -34,6 +34,7 @@ TitleScreen::TitleScreen()
 	this->squally = FloatingSprite::create(Resources::Menus_TitleScreen_Squally, Vec2(8.0f, 64.0f), Vec2(3.5f, 8.0f));
 
 	this->titleBar = Sprite::create(Resources::Menus_TitleScreen_TitleBar);
+	this->title = Sprite::create(Resources::Menus_TitleScreen_Title);
 
 	this->squally->setFlippedY(true);
 
@@ -96,6 +97,7 @@ TitleScreen::TitleScreen()
 	this->addChild(this->foregroundLight);
 	this->addChild(this->squally);
 	this->addChild(this->titleBar);
+	this->addChild(this->title);
 	this->addChild(this->storyModeButton);
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
@@ -151,6 +153,7 @@ void TitleScreen::InitializePositions()
 	this->squally->setPosition(Vec2(origin.x + visibleSize.width / 2 + 240.0f, origin.y + visibleSize.height / 2 - 32.0f));
 
 	this->titleBar->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2));
+	this->title->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height - this->title->getContentSize().height / 2));
 	this->storyModeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2 + 192.0f));
 	this->optionsButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2 + 64.0f));
 	this->exitButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2 - 128.0f));

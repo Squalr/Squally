@@ -405,6 +405,7 @@ public:
 	static const string Menus_TitleScreen_StoryModeButton;
 	static const string Menus_TitleScreen_StoryModeButtonClick;
 	static const string Menus_TitleScreen_StoryModeButtonHover;
+	static const string Menus_TitleScreen_Title;
 	static const string Menus_TitleScreen_TitleBar;
 	static const string Menus_TitleScreen_TitleScreen;
 	static const string Menus_TitleScreen_tree_fat;

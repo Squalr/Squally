@@ -59,6 +59,7 @@ private:
 	MenuSprite* optionsButton;
 	MenuSprite* exitButton;
 	Sprite* titleBar;
+	Sprite* title;
 
 	static int hackerMode;
 
