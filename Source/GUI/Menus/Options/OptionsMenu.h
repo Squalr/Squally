@@ -9,7 +9,6 @@
 #include "GUI/Components/MenuSprite.h"
 #include "GUI/Components/Slider.h"
 #include "GUI/Components/RadioButton.h"
-#include "GUI/Components/RadioButtonGroup.h"
 #include "GUI/Components/ToggleButton.h"
 
 using namespace cocos2d;
@@ -28,6 +27,7 @@ private:
 	void OnSoundVolumeUpdate(float soundVolume);
 	void OnMusicVolumeUpdate(float musicVolume);
 	void OnFullScreenChanged(bool isFullScreen);
+	void OnResolutionChanged(RadioButton* radioButton);
 	void OnCloseClick(MenuSprite* menuSprite);
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void InitializeListeners();
@@ -46,12 +46,28 @@ private:
 	MenuLabel* fullScreenLabel;
 	ToggleButton* fullScreenButton;
 	MenuSprite* exitButton;
+
 	Label* label1080x768;
+	Label* label1152x864;
+	Label* label1280x720;
+	Label* label1280x960;
+	Label* label1280x1024;
+	Label* label1440x900;
+	Label* label1600x900;
+	Label* label1600x1024;
 	Label* label1920x1080;
 
-	RadioButtonGroup* resolutionGroup;
 	RadioButton* option1080x768;
+	RadioButton* option1152x864;
+	RadioButton* option1280x720;
+	RadioButton* option1280x960;
+	RadioButton* option1280x1024;
+	RadioButton* option1440x900;
+	RadioButton* option1600x900;
+	RadioButton* option1600x1024;
 	RadioButton* option1920x1080;
+
+	const int resolutionGroupId = 420;
 
 	std::vector<MenuSprite*>* clickableMenus;
 

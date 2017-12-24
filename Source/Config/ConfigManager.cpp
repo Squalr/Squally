@@ -1,8 +1,5 @@
 #include "ConfigManager.h"
 
-const Size* ConfigManager::Resolution1024x768 = new Size(1024, 768);
-const Size* ConfigManager::Resolution1920x1080 = new Size(1920, 1080);
-
 ConfigManager* ConfigManager::configManagerInstance = nullptr;
 
 ConfigManager* ConfigManager::GetInstance()
@@ -40,15 +37,37 @@ void ConfigManager::SetResolution(ResolutionSetting resolution)
 
 	switch (resolution)
 	{
-	case ResolutionSetting::R1080x768:
-		glView->setWindowed(ConfigManager::Resolution1024x768->width, ConfigManager::Resolution1024x768->height);
+	case R1080x768:
+		glView->setWindowed(1080, 768);
 		break;
-	case ResolutionSetting::R1920x1080:
-		glView->setWindowed(ConfigManager::Resolution1920x1080->width, ConfigManager::Resolution1920x1080->height);
+	case R1152x864:
+		glView->setWindowed(1152, 864);
+		break;
+	case R1280x720:
+		glView->setWindowed(1280, 720);
+		break;
+	case R1280x960:
+		glView->setWindowed(1280, 960);
+		break;
+	case R1280x1024:
+		glView->setWindowed(1280, 1024);
+		break;
+	case R1440x900:
+		glView->setWindowed(1440, 900);
+		break;
+	case R1600x900:
+		glView->setWindowed(1600, 900);
+		break;
+	case R1600x1024:
+		glView->setWindowed(1600, 1024);
+		break;
+	case R1920x1080:
+		glView->setWindowed(1920, 1080);
 		break;
 	case ResolutionSetting::FullScreen:
 	default:
 		glView->setFullscreen();
+		break;
 	}
 
 	glView->setDesignResolutionSize(glView->getFrameSize().width, glView->getFrameSize().height, ResolutionPolicy::NO_BORDER);
@@ -72,19 +91,9 @@ ConfigManager::ResolutionSetting ConfigManager::GetResolution()
 	{
 		return  ResolutionSetting::FullScreen;
 	}
-
-	ResolutionSetting resolution = (ResolutionSetting)(this->valueMap[ConfigManager::ResolutionKey].asInt());
-
-	switch (resolution)
+	else
 	{
-	case ResolutionSetting::R1080x768:
-		return  ResolutionSetting::R1080x768;
-		break;
-	case ResolutionSetting::R1920x1080:
-		return  ResolutionSetting::R1920x1080;
-	case ResolutionSetting::FullScreen:
-	default:
-		return  ResolutionSetting::FullScreen;
+		return (ResolutionSetting)(this->valueMap[ConfigManager::ResolutionKey].asInt());
 	}
 }
 
