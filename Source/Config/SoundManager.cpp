@@ -37,7 +37,7 @@ void SoundManager::PlayMusicResource(std::string musicResource)
 
 void SoundManager::PlaySoundResource(std::string soundResource)
 {
-	AudioEngine::play2d(soundResource, true, this->GetSoundVolume());
+	AudioEngine::play2d(soundResource, false, this->GetSoundVolume());
 }
 
 void SoundManager::SetMusicVolume(float volume)
