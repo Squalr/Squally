@@ -1,12 +1,13 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "GUI/Components/FadeScene.h"
 #include "GUI/Components/MenuLabel.h"
 #include "GUI/Components/Mouse.h"
 
 using namespace cocos2d;
 
-class StoryMap : public Scene
+class StoryMap : public FadeScene
 {
 public:
 	static StoryMap * create();

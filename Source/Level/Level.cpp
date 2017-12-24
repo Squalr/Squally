@@ -11,7 +11,7 @@ Level* Level::create(std::string levelResourceFilePath)
 
 Level::Level(std::string levelResourceFilePath)
 {
-	if (!Scene::initWithPhysics())
+	if (!FadeScene::initWithPhysics())
 	{
 		throw std::uncaught_exception();
 	}
@@ -53,7 +53,7 @@ void Level::update(float dt)
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	Scene::update(dt);
+	FadeScene::update(dt);
 
 	float widthOffset = Director::getInstance()->getVisibleSize().width / 2;
 	float playerXOffset = this->player->getPositionX() - this->player->GetWidth();

@@ -66,11 +66,6 @@ OptionsMenu::OptionsMenu()
 	this->exitButton->SetClickCallback(CC_CALLBACK_1(OptionsMenu::OnCloseClick, this));
 	this->exitButton->SetClickSound(Resources::Sounds_ClickBack1);
 
-	this->clickableMenus = new vector<MenuSprite*>();
-
-	this->clickableMenus->push_back(this->closeButton);
-	this->clickableMenus->push_back(this->exitButton);
-
 	this->addChild(this->background);
 	this->addChild(this->optionsWindow);
 	this->addChild(this->closeButton);
@@ -157,7 +152,7 @@ OptionsMenu::~OptionsMenu()
 
 void OptionsMenu::onEnter()
 {
-	Scene::onEnter();
+	FadeScene::onEnter();
 
 	this->background->addChild(MenuBackground::ClaimInstance());
 

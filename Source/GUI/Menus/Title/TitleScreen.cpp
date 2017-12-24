@@ -41,7 +41,7 @@ TitleScreen::~TitleScreen()
 
 void TitleScreen::onEnter()
 {
-	Scene::onEnter();
+	FadeScene::onEnter();
 
 	this->background->InitializePositions();
 	this->InitializePositions();

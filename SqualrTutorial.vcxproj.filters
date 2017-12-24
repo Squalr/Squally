@@ -46,6 +46,9 @@
     <Filter Include="Source\GUI\Menus\Title">
       <UniqueIdentifier>{b5ed26c3-cc7b-4a79-b202-e4b4d265ad43}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\GUI\Menus\Confirmation">
+      <UniqueIdentifier>{2ab6fe57-cad0-492b-95aa-fd6f11aecf40}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -144,6 +147,12 @@
     <ClCompile Include="Source\GUI\Menus\Title\HackerMode.cpp">
       <Filter>Source\GUI\Menus\Title</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.cpp">
+      <Filter>Source\GUI\Menus\Confirmation</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Components\FadeScene.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -241,6 +250,12 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\Menus\Title\HackerMode.h">
       <Filter>Source\GUI\Menus\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.h">
+      <Filter>Source\GUI\Menus\Confirmation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\FadeScene.h">
+      <Filter>Source\GUI\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

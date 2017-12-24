@@ -1,15 +1,15 @@
-#include "PauseMenu.h"
+#include "ConfirmationMenu.h"
 
-PauseMenu * PauseMenu::create()
+ConfirmationMenu * ConfirmationMenu::create()
 {
-	PauseMenu* pauseMenu = new PauseMenu();
+	ConfirmationMenu* pauseMenu = new ConfirmationMenu();
 
 	pauseMenu->autorelease();
 
 	return pauseMenu;
 }
 
-PauseMenu::PauseMenu()
+ConfirmationMenu::ConfirmationMenu()
 {
 	this->background = Node::create();
 	this->pauseWindow = Sprite::create(Resources::Menus_PauseMenu_PauseMenu);
@@ -18,11 +18,11 @@ PauseMenu::PauseMenu()
 	this->optionsButton = MenuSprite::create(Resources::Menus_PauseMenu_OptionsButton, Resources::Menus_PauseMenu_OptionsButtonHover, Resources::Menus_PauseMenu_OptionsButtonClick);
 	this->exitToTitleButton = MenuSprite::create(Resources::Menus_PauseMenu_QuitButton, Resources::Menus_PauseMenu_QuitButtonHover, Resources::Menus_PauseMenu_QuitButtonClick);
 
-	this->resumeButton->SetClickCallback(CC_CALLBACK_1(PauseMenu::OnResumeClick, this));
-	this->optionsButton->SetClickCallback(CC_CALLBACK_1(PauseMenu::OnOptionsClick, this));
-	this->exitToTitleButton->SetClickCallback(CC_CALLBACK_1(PauseMenu::OnExitToTitleClick, this));
+	this->resumeButton->SetClickCallback(CC_CALLBACK_1(ConfirmationMenu::OnResumeClick, this));
+	this->optionsButton->SetClickCallback(CC_CALLBACK_1(ConfirmationMenu::OnOptionsClick, this));
+	this->exitToTitleButton->SetClickCallback(CC_CALLBACK_1(ConfirmationMenu::OnExitToTitleClick, this));
 
-	this->closeButton->SetClickCallback(CC_CALLBACK_1(PauseMenu::OnCloseClick, this));
+	this->closeButton->SetClickCallback(CC_CALLBACK_1(ConfirmationMenu::OnCloseClick, this));
 	this->closeButton->SetClickSound(Resources::Sounds_ClickBack1);
 
 	this->addChild(this->background);
@@ -35,11 +35,11 @@ PauseMenu::PauseMenu()
 	this->InitializeListeners();
 }
 
-PauseMenu::~PauseMenu()
+ConfirmationMenu::~ConfirmationMenu()
 {
 }
 
-void PauseMenu::onEnter()
+void ConfirmationMenu::onEnter()
 {
 	FadeScene::onEnter();
 
@@ -50,7 +50,7 @@ void PauseMenu::onEnter()
 	this->addChild(Mouse::claimInstance());
 }
 
-void PauseMenu::InitializePositions()
+void ConfirmationMenu::InitializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -64,16 +64,16 @@ void PauseMenu::InitializePositions()
 	MenuBackground::GetInstance()->InitializePositions();
 }
 
-void PauseMenu::InitializeListeners()
+void ConfirmationMenu::InitializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
-	listener->onKeyPressed = CC_CALLBACK_2(PauseMenu::OnKeyPressed, this);
+	listener->onKeyPressed = CC_CALLBACK_2(ConfirmationMenu::OnKeyPressed, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
 // Implementation of the keyboard event callback function prototype
-void PauseMenu::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+void ConfirmationMenu::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode)
 	{
@@ -83,22 +83,21 @@ void PauseMenu::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void PauseMenu::OnCloseClick(MenuSprite* menuSprite)
+void ConfirmationMenu::OnCloseClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->popScene();
 }
 
-void PauseMenu::OnResumeClick(MenuSprite* menuSprite)
+void ConfirmationMenu::OnResumeClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->popScene();
 }
 
-void PauseMenu::OnOptionsClick(MenuSprite* menuSprite)
+void ConfirmationMenu::OnOptionsClick(MenuSprite* menuSprite)
 {
-	Director::getInstance()->pushScene(OptionsMenu::create());
 }
 
-void PauseMenu::OnExitToTitleClick(MenuSprite* menuSprite)
+void ConfirmationMenu::OnExitToTitleClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->popToSceneStackLevel(2);
 }

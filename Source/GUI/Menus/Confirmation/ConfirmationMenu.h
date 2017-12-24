@@ -2,7 +2,6 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "GUI/Menus/MenuBackground.h"
-#include "GUI/Menus/Options/OptionsMenu.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
 #include "GUI/Components/MenuSprite.h"
@@ -10,14 +9,14 @@
 
 using namespace cocos2d;
 
-class PauseMenu : public FadeScene
+class ConfirmationMenu : public FadeScene
 {
 public:
-	static PauseMenu * create();
+	static ConfirmationMenu * create();
 
 protected:
-	PauseMenu();
-	~PauseMenu();
+	ConfirmationMenu();
+	~ConfirmationMenu();
 
 private:
 	void onEnter() override;

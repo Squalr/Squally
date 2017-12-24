@@ -3,6 +3,7 @@
 #include "TutorialScreen.h"
 #include "Resources.h"
 #include "GUI/Menus/Tutorial/TutorialItem.h"
+#include "GUI/Components/FadeScene.h"
 #include "GUI/Components/Mouse.h"
 #include "GUI/Components/MenuLabel.h"
 #include "GUI/Components/MenuSprite.h"
@@ -10,7 +11,7 @@
 
 using namespace cocos2d;
 
-class TutorialScreen : public Scene
+class TutorialScreen : public FadeScene
 {
 public:
 	static TutorialScreen * create();

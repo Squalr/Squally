@@ -4,6 +4,7 @@
 #include "Resources.h"
 #include "Config/SoundManager.h"
 #include "Config/ConfigManager.h"
+#include "GUI/Components/FadeScene.h"
 #include "GUI/Components/Mouse.h"
 #include "GUI/Components/MenuLabel.h"
 #include "GUI/Components/MenuSprite.h"
@@ -14,7 +15,7 @@
 
 using namespace cocos2d;
 
-class OptionsMenu : public Scene
+class OptionsMenu : public FadeScene
 {
 public:
 	static OptionsMenu * create();
@@ -70,8 +71,6 @@ private:
 	RadioButton* option1920x1080;
 
 	const int resolutionGroupId = 420;
-
-	std::vector<MenuSprite*>* clickableMenus;
 
 	const float titleFontSize = 48.0f;
 	const float menuFontSize = 32.0f;
