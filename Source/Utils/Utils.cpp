@@ -14,6 +14,18 @@ std::string Utils::HexAddressOf(void* address)
 	return hexAddress;
 }
 
+void Utils::AccelerateParticles(ParticleSystem* particleSystem, float duration)
+{
+	const float step = 0.0166660007;
+
+	particleSystem->start();
+
+	for (float currentDuration = 0.0f; currentDuration < duration; currentDuration += step)
+	{
+		particleSystem->update(step);
+	}
+}
+
 void Utils::FadeInObject(Node* node, float delay, float duration)
 {
 	Sequence* sequence = Sequence::create(DelayTime::create(delay), FadeIn::create(duration), nullptr);

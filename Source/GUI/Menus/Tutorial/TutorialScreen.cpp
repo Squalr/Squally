@@ -90,6 +90,10 @@ void TutorialScreen::onEnter()
 		Utils::FadeInObject(*it, delay, duration);
 	}
 
+	// Initialize particles to an intermediate state
+	Utils::AccelerateParticles(this->swirl, 5.0f);
+	Utils::AccelerateParticles(this->nether, 1.0f);
+
 	this->InitializePositions();
 
 	this->addChild(Mouse::claimInstance());
