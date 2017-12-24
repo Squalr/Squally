@@ -24,6 +24,7 @@ private:
 	MenuSprite* slide;
 	Sprite* frame;
 	Sprite* progressBar;
+	ClippingRectangleNode* progressClip;
 
 	float progress;
 

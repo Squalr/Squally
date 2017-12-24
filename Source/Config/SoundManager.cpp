@@ -23,7 +23,16 @@ SoundManager::~SoundManager()
 
 void SoundManager::PlayMusicResource(std::string musicResource)
 {
-	this->backgroundMusicId = AudioEngine::play2d(musicResource, true, this->GetMusicVolume());
+	if (this->backgroundMusicId != SoundManager::INVALID_ID)
+	{
+		AudioEngine::stop(this->backgroundMusicId);
+	}
+
+	if (this->currentMusicResource != musicResource)
+	{
+		this->currentMusicResource = musicResource;
+		this->backgroundMusicId = AudioEngine::play2d(musicResource, true, this->GetMusicVolume());
+	}
 }
 
 void SoundManager::PlaySoundResource(std::string soundResource)
@@ -33,7 +42,7 @@ void SoundManager::PlaySoundResource(std::string soundResource)
 
 void SoundManager::SetMusicVolume(float volume)
 {
-	return ConfigManager::GetInstance()->SetMusicVolume(volume);
+	ConfigManager::GetInstance()->SetMusicVolume(volume);
 
 	if (this->backgroundMusicId != SoundManager::INVALID_ID)
 	{
