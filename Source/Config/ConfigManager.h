@@ -10,9 +10,17 @@ class ConfigManager
 public:
 	static ConfigManager * GetInstance();
 
-	enum ResolutionSetting {
+	enum ResolutionSetting
+	{
 		FullScreen,
 		R1080x768,
+		R1152x864,
+		R1280x720,
+		R1280x960,
+		R1280x1024,
+		R1440x900,
+		R1600x900,
+		R1600x1024,
 		R1920x1080,
 	};
 
@@ -25,9 +33,6 @@ public:
 	float GetMusicVolume();
 
 	void Save();
-
-	const static Size* Resolution1024x768;
-	const static Size* Resolution1920x1080;
 
 private:
 	ConfigManager();

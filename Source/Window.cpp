@@ -32,10 +32,31 @@ bool Window::applicationDidFinishLaunching()
 	switch (ConfigManager::GetInstance()->GetResolution())
 	{
 	case ConfigManager::ResolutionSetting::R1080x768:
-		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, ConfigManager::Resolution1024x768->width, ConfigManager::Resolution1024x768->height));
+		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1080, 768));
+		break;
+	case ConfigManager::ResolutionSetting::R1152x864:
+		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1152, 864));
+		break;
+	case ConfigManager::ResolutionSetting::R1280x720:
+		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1280, 720));
+		break;
+	case ConfigManager::ResolutionSetting::R1280x960:
+		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1280, 960));
+		break;
+	case ConfigManager::ResolutionSetting::R1280x1024:
+		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1280, 1024));
+		break;
+	case ConfigManager::ResolutionSetting::R1440x900:
+		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1440, 900));
+		break;
+	case ConfigManager::ResolutionSetting::R1600x900:
+		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1600, 768));
+		break;
+	case ConfigManager::ResolutionSetting::R1600x1024:
+		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1600, 1024));
 		break;
 	case ConfigManager::ResolutionSetting::R1920x1080:
-		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, ConfigManager::Resolution1920x1080->width, ConfigManager::Resolution1920x1080->height));
+		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1920, 1080));
 		break;
 	case ConfigManager::ResolutionSetting::FullScreen:
 	default:
