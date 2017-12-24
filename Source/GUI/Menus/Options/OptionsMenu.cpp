@@ -21,9 +21,24 @@ OptionsMenu::OptionsMenu()
 	this->musicSlider = Slider::create(SoundManager::GetInstance()->GetMusicVolume());
 	this->soundSlider = Slider::create(SoundManager::GetInstance()->GetSoundVolume());
 
-	// TODO: Load fullscreen/resolution setting
-	this->fullScreenButton = ToggleButton::create(true, CC_CALLBACK_1(OptionsMenu::OnFullScreenChanged, this));
 	this->exitButton = MenuSprite::create(Resources::Menus_OptionsMenu_ExitButton, Resources::Menus_OptionsMenu_ExitButtonHover, Resources::Menus_OptionsMenu_ExitButtonClick);
+	this->label1080x768 = Label::create("1080x768", Resources::Fonts_Montserrat_Medium, 14);
+	this->label1920x1080 = Label::create("1920x1080", Resources::Fonts_Montserrat_Medium, 14);
+	this->resolutionGroup = RadioButtonGroup::create();
+	this->option1080x768 = RadioButton::create(this->resolutionGroup);
+	this->option1920x1080 = RadioButton::create(this->resolutionGroup);
+
+	bool isFullScreen = false;
+
+	switch (ConfigManager::GetInstance()->GetResolution())
+	{
+	case ConfigManager::ResolutionSetting::FullScreen:
+		this->fullScreenButton = ToggleButton::create(true, CC_CALLBACK_1(OptionsMenu::OnFullScreenChanged, this));
+		isFullScreen = true;
+		break;
+	default:
+		this->fullScreenButton = ToggleButton::create(false, CC_CALLBACK_1(OptionsMenu::OnFullScreenChanged, this));
+	}
 
 	this->exitButton->SetClickCallback(CC_CALLBACK_1(OptionsMenu::OnCloseClick, this));
 	this->exitButton->SetClickSound(Resources::Sounds_ClickBack1);
@@ -47,10 +62,23 @@ OptionsMenu::OptionsMenu()
 	this->addChild(this->musicSlider);
 	this->addChild(this->fullScreenLabel);
 	this->addChild(this->fullScreenButton);
+	this->addChild(this->label1080x768);
+	this->addChild(this->label1920x1080);
+	this->addChild(this->option1080x768);
+	this->addChild(this->option1920x1080);
 	this->addChild(this->exitButton);
 
 	this->InitializePositions();
 	this->InitializeListeners();
+
+	if (isFullScreen)
+	{
+		this->HideResolutionOptions();
+	}
+	else
+	{
+		this->ShowResolutionOptions();
+	}
 }
 
 OptionsMenu::~OptionsMenu()
@@ -72,12 +100,14 @@ void OptionsMenu::OnFullScreenChanged(bool isFullScreen)
 	{
 		ConfigManager::GetInstance()->SetResolution(ConfigManager::ResolutionSetting::FullScreen);
 		this->InitializePositions();
+		this->HideResolutionOptions();
 	}
 	else
 	{
 		// TODO: Load saved resolution setting
 		ConfigManager::GetInstance()->SetResolution(ConfigManager::ResolutionSetting::R1080x768);
 		this->InitializePositions();
+		this->ShowResolutionOptions();
 	}
 }
 
@@ -98,12 +128,16 @@ void OptionsMenu::InitializePositions()
 	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->closeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 302.0f, origin.y + visibleSize.height / 2 + 228.0f));
 
-	this->soundIcon->setPosition(Vec2(origin.x + visibleSize.width / 2 - 276.0f, origin.y + visibleSize.height / 2 + 128.0f));
-	this->musicIcon->setPosition(Vec2(origin.x + visibleSize.width / 2 - 276.0f, origin.y + visibleSize.height / 2 + 48.0f));
-	this->soundSlider->setPosition(Vec2(origin.x + visibleSize.width / 2 + 32.0f, origin.y + visibleSize.height / 2 + 128.0f));
-	this->musicSlider->setPosition(Vec2(origin.x + visibleSize.width / 2 + 32.0f, origin.y + visibleSize.height / 2 + 48.0f));
-	this->fullScreenLabel->setPosition(Vec2(origin.x + visibleSize.width / 2 - 96.0f, origin.y + visibleSize.height / 2 - 32.0f));
-	this->fullScreenButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 128.0f, origin.y + visibleSize.height / 2 - 32.0f));
+	this->soundIcon->setPosition(Vec2(origin.x + visibleSize.width / 2 - 276.0f, origin.y + visibleSize.height / 2 + 144.0f));
+	this->musicIcon->setPosition(Vec2(origin.x + visibleSize.width / 2 - 276.0f, origin.y + visibleSize.height / 2 + 64.0f));
+	this->soundSlider->setPosition(Vec2(origin.x + visibleSize.width / 2 + 32.0f, origin.y + visibleSize.height / 2 + 144.0f));
+	this->musicSlider->setPosition(Vec2(origin.x + visibleSize.width / 2 + 32.0f, origin.y + visibleSize.height / 2 + 64.0f));
+	this->fullScreenLabel->setPosition(Vec2(origin.x + visibleSize.width / 2 - 96.0f, origin.y + visibleSize.height / 2 - 16.0f));
+	this->fullScreenButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 128.0f, origin.y + visibleSize.height / 2 - 16.0f));
+	this->label1080x768->setPosition(Vec2(origin.x + visibleSize.width / 2 - 196.0f, origin.y + visibleSize.height / 2 - 80.0f));
+	this->label1920x1080->setPosition(Vec2(origin.x + visibleSize.width / 2 - 196.0f, origin.y + visibleSize.height / 2 - 128.0f));
+	this->option1080x768->setPosition(Vec2(origin.x + visibleSize.width / 2 - 256.0f, origin.y + visibleSize.height / 2 - 80.0f));
+	this->option1920x1080->setPosition(Vec2(origin.x + visibleSize.width / 2 - 256.0f, origin.y + visibleSize.height / 2 - 128.0f));
 	this->exitButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 196.0f));
 
 	this->musicSlider->InitializePositions();
@@ -135,4 +169,20 @@ void OptionsMenu::OnCloseClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->popScene();
 	ConfigManager::GetInstance()->Save();
+}
+
+void OptionsMenu::ShowResolutionOptions()
+{
+	this->option1080x768->setVisible(true);
+	this->option1920x1080->setVisible(true);
+	this->label1080x768->setVisible(true);
+	this->label1920x1080->setVisible(true);
+}
+
+void OptionsMenu::HideResolutionOptions()
+{
+	this->option1080x768->setVisible(false);
+	this->option1920x1080->setVisible(false);
+	this->label1080x768->setVisible(false);
+	this->label1920x1080->setVisible(false);
 }

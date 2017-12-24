@@ -152,7 +152,6 @@ void MenuSprite::OnMouseDown(EventMouse* event)
 	}
 }
 
-
 void MenuSprite::OnMouseUp(EventMouse* event)
 {
 	if (this->mouseDragEvent != nullptr && this->isVisible())
@@ -175,6 +174,8 @@ void MenuSprite::OnMouseUp(EventMouse* event)
 			{
 				SoundManager::GetInstance()->PlaySoundResource(this->clickSound);
 			}
+
+			event->stopPropagation();
 		}
 	}
 }
