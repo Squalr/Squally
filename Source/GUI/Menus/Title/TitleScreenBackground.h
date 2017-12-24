@@ -43,11 +43,11 @@ private:
 	FloatingSprite* foregroundGrassTop;
 	Sprite* foregroundLight;
 
-	ParticleSystem* matrixParticles;
+	ParticleSystem* etherParticles;
 	ParticleSystem* windParticles;
 	ParticleSystem* fireflyParticles;
 
-	MenuSprite* matrix;
+	MenuSprite* ether;
 
 	Label* hackerModeLabel;
 };

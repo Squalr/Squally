@@ -27,7 +27,7 @@ private:
 	void OnOptionsClick(MenuSprite* menuSprite);
 	void OnExitToTitleClick(MenuSprite* menuSprite);
 
-	MenuBackground* background;
+	Node* background;
 	Sprite* pauseWindow;
 	MenuSprite* resumeButton;
 	MenuSprite* optionsButton;
