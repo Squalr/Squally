@@ -12,27 +12,27 @@ using namespace cocos2d;
 class ConfirmationMenu : public FadeScene
 {
 public:
-	static ConfirmationMenu * create();
+	static ConfirmationMenu * create(std::string confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
 
 protected:
-	ConfirmationMenu();
+	ConfirmationMenu(std::string confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
 	~ConfirmationMenu();
 
 private:
 	void onEnter() override;
 	void InitializePositions();
-	void InitializeListeners();
 	void OnCloseClick(MenuSprite* menuSprite);
-	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	void OnResumeClick(MenuSprite* menuSprite);
-	void OnOptionsClick(MenuSprite* menuSprite);
-	void OnExitToTitleClick(MenuSprite* menuSprite);
+	void OnConfirmClick(MenuSprite* menuSprite);
+	void OnCancelClick(MenuSprite* menuSprite);
 
 	Node* background;
 	Sprite* pauseWindow;
+	Label* confirmationLabel;
 	MenuSprite* closeButton;
-	MenuSprite* resumeButton;
-	MenuSprite* optionsButton;
-	MenuSprite* exitToTitleButton;
+	MenuSprite* confirmButton;
+	MenuSprite* cancelButton;
+
+	std::function<void()> onConfirmCallback;
+	std::function<void()> onCancelCallback;
 };
 

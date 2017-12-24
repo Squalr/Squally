@@ -1,26 +1,28 @@
 #include "ConfirmationMenu.h"
 
-ConfirmationMenu * ConfirmationMenu::create()
+ConfirmationMenu * ConfirmationMenu::create(std::string confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback)
 {
-	ConfirmationMenu* pauseMenu = new ConfirmationMenu();
+	ConfirmationMenu* pauseMenu = new ConfirmationMenu(confirmationMessage, confirmCallback, cancelCallback);
 
 	pauseMenu->autorelease();
 
 	return pauseMenu;
 }
 
-ConfirmationMenu::ConfirmationMenu()
+ConfirmationMenu::ConfirmationMenu(std::string confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback)
 {
-	this->background = Node::create();
-	this->pauseWindow = Sprite::create(Resources::Menus_PauseMenu_PauseMenu);
-	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
-	this->resumeButton = MenuSprite::create(Resources::Menus_PauseMenu_ResumeButton, Resources::Menus_PauseMenu_ResumeButtonHover, Resources::Menus_PauseMenu_ResumeButtonClick);
-	this->optionsButton = MenuSprite::create(Resources::Menus_PauseMenu_OptionsButton, Resources::Menus_PauseMenu_OptionsButtonHover, Resources::Menus_PauseMenu_OptionsButtonClick);
-	this->exitToTitleButton = MenuSprite::create(Resources::Menus_PauseMenu_QuitButton, Resources::Menus_PauseMenu_QuitButtonHover, Resources::Menus_PauseMenu_QuitButtonClick);
+	this->onConfirmCallback = confirmCallback;
+	this->onCancelCallback = cancelCallback;
 
-	this->resumeButton->SetClickCallback(CC_CALLBACK_1(ConfirmationMenu::OnResumeClick, this));
-	this->optionsButton->SetClickCallback(CC_CALLBACK_1(ConfirmationMenu::OnOptionsClick, this));
-	this->exitToTitleButton->SetClickCallback(CC_CALLBACK_1(ConfirmationMenu::OnExitToTitleClick, this));
+	this->background = Node::create();
+	this->pauseWindow = Sprite::create(Resources::Menus_ConfirmMenu_ConfirmMenuWindow);
+	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
+	this->cancelButton = MenuSprite::create(Resources::Menus_Buttons_CancelButton, Resources::Menus_Buttons_CancelButtonHover, Resources::Menus_Buttons_CancelButtonClick);
+	this->confirmButton = MenuSprite::create(Resources::Menus_Buttons_AcceptButton, Resources::Menus_Buttons_AcceptButtonHover, Resources::Menus_Buttons_AcceptButtonClick);
+	this->confirmationLabel = Label::create(confirmationMessage, Resources::Fonts_Montserrat_Medium, 20);
+
+	this->cancelButton->SetClickCallback(CC_CALLBACK_1(ConfirmationMenu::OnCancelClick, this));
+	this->confirmButton->SetClickCallback(CC_CALLBACK_1(ConfirmationMenu::OnConfirmClick, this));
 
 	this->closeButton->SetClickCallback(CC_CALLBACK_1(ConfirmationMenu::OnCloseClick, this));
 	this->closeButton->SetClickSound(Resources::Sounds_ClickBack1);
@@ -28,11 +30,9 @@ ConfirmationMenu::ConfirmationMenu()
 	this->addChild(this->background);
 	this->addChild(this->pauseWindow);
 	this->addChild(this->closeButton);
-	this->addChild(this->resumeButton);
-	this->addChild(this->optionsButton);
-	this->addChild(this->exitToTitleButton);
-
-	this->InitializeListeners();
+	this->addChild(this->cancelButton);
+	this->addChild(this->confirmButton);
+	this->addChild(this->confirmationLabel);
 }
 
 ConfirmationMenu::~ConfirmationMenu()
@@ -56,48 +56,40 @@ void ConfirmationMenu::InitializePositions()
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	this->pauseWindow->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
-	this->closeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 136.0f, origin.y + visibleSize.height / 2 + 204.0f));
-	this->resumeButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 + 128.0f));
-	this->optionsButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 + 0.0f));
-	this->exitToTitleButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 180.0f));
+	this->closeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 136.0f, origin.y + visibleSize.height / 2 + 124.0f));
+	this->confirmationLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 + 32.0f));
+	this->cancelButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - 96.0f, origin.y + visibleSize.height / 2 - 64.0f));
+	this->confirmButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 96.0f, origin.y + visibleSize.height / 2 - 64.0f));
 
 	MenuBackground::GetInstance()->InitializePositions();
-}
-
-void ConfirmationMenu::InitializeListeners()
-{
-	EventListenerKeyboard* listener = EventListenerKeyboard::create();
-	listener->onKeyPressed = CC_CALLBACK_2(ConfirmationMenu::OnKeyPressed, this);
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-}
-
-// Implementation of the keyboard event callback function prototype
-void ConfirmationMenu::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	switch (keyCode)
-	{
-	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		Director::getInstance()->popScene();
-		break;
-	}
 }
 
 void ConfirmationMenu::OnCloseClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->popScene();
+
+	if (this->onCancelCallback != nullptr)
+	{
+		this->onCancelCallback();
+	}
 }
 
-void ConfirmationMenu::OnResumeClick(MenuSprite* menuSprite)
+void ConfirmationMenu::OnCancelClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->popScene();
+
+	if (this->onCancelCallback != nullptr)
+	{
+		this->onCancelCallback();
+	}
 }
 
-void ConfirmationMenu::OnOptionsClick(MenuSprite* menuSprite)
+void ConfirmationMenu::OnConfirmClick(MenuSprite* menuSprite)
 {
-}
+	Director::getInstance()->popScene();
 
-void ConfirmationMenu::OnExitToTitleClick(MenuSprite* menuSprite)
-{
-	Director::getInstance()->popToSceneStackLevel(2);
+	if (this->onConfirmCallback != nullptr)
+	{
+		this->onConfirmCallback();
+	}
 }
