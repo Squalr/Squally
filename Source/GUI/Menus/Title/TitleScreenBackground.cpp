@@ -14,39 +14,39 @@ TitleScreenBackground::TitleScreenBackground()
 	this->eyes1Anim = Animation::create();
 	this->eyes2Anim = Animation::create();
 
-	this->background = Sprite::create(Resources::Menus_TitleScreen_TitleScreen);
-	this->fog = InfiniteParallaxNode::create(Resources::Menus_TitleScreen_bg_fog);
-	this->foregroundFog = InfiniteParallaxNode::create(Resources::Menus_TitleScreen_bg_fog);
-	this->backgroundVines = FloatingSprite::create(Resources::Menus_TitleScreen_bg_far1, Vec2(64.0f, -8.0f), Vec2(7.0f, 5.0f));
-	this->backgroundTrees = FloatingSprite::create(Resources::Menus_TitleScreen_bg_back, Vec2(-48.0f, 8.0f), Vec2(7.0f, 5.0f));
-	this->midgroundTrees = FloatingSprite::create(Resources::Menus_TitleScreen_bg_mid, Vec2(8.0f, -8.0f), Vec2(7.0f, 5.0f));
-	this->tree = Sprite::create(Resources::Menus_TitleScreen_tree_fat);
-	this->matrix = MenuSprite::create(Resources::Menus_TitleScreen_Monitor, Resources::Menus_TitleScreen_MonitorSelected, Resources::Menus_TitleScreen_MonitorSelected);
-	this->matrixParticles = ParticleGalaxy::create();
+	this->background = Sprite::create(Resources::Menus_Backgrounds_ForestBackground);
+	this->fog = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
+	this->foregroundFog = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
+	this->backgroundVines = FloatingSprite::create(Resources::Menus_Backgrounds_FarVines, Vec2(64.0f, -8.0f), Vec2(7.0f, 5.0f));
+	this->backgroundTrees = FloatingSprite::create(Resources::Menus_Backgrounds_LightTrees, Vec2(-48.0f, 8.0f), Vec2(7.0f, 5.0f));
+	this->midgroundTrees = FloatingSprite::create(Resources::Menus_Backgrounds_MidgroundTrees, Vec2(8.0f, -8.0f), Vec2(7.0f, 5.0f));
+	this->tree = Sprite::create(Resources::Menus_Backgrounds_Tree);
+	this->ether = MenuSprite::create(Resources::Menus_Backgrounds_Ether, Resources::Menus_Backgrounds_EtherSelected, Resources::Menus_Backgrounds_EtherSelected);
+	this->etherParticles = ParticleGalaxy::create();
 	this->eyes1 = Sprite::create();
 	this->eyes2 = Sprite::create();
-	this->foregroundVines = FloatingSprite::create(Resources::Menus_TitleScreen_bg_top_lines, Vec2(-24.0f, 0.0f), Vec2(7.0f, 5.0f));
-	this->foregroundGrassBottom = FloatingSprite::create(Resources::Menus_TitleScreen_bg_bott, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
-	this->foregroundGrassTop = FloatingSprite::create(Resources::Menus_TitleScreen_bg_top, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
-	this->foregroundLight = Sprite::create(Resources::Menus_TitleScreen_bg_light_02);
-	this->squally = FloatingSprite::create(Resources::Menus_TitleScreen_Squally, Vec2(8.0f, 64.0f), Vec2(3.5f, 8.0f));
+	this->foregroundVines = FloatingSprite::create(Resources::Menus_Backgrounds_Vines, Vec2(-24.0f, 0.0f), Vec2(7.0f, 5.0f));
+	this->foregroundGrassBottom = FloatingSprite::create(Resources::Menus_Backgrounds_BottomSoil, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
+	this->foregroundGrassTop = FloatingSprite::create(Resources::Menus_Backgrounds_TopLeaves, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
+	this->foregroundLight = Sprite::create(Resources::Menus_Backgrounds_Light);
+	this->squally = FloatingSprite::create(Resources::Menus_Backgrounds_Squally, Vec2(8.0f, 64.0f), Vec2(3.5f, 8.0f));
 
 	this->squally->setFlippedY(true);
 
-	this->matrixParticles = ParticleGalaxy::create();
+	this->etherParticles = ParticleGalaxy::create();
 	this->windParticles = ParticleSystemQuad::create(Resources::Particles_Wind);
 	this->fireflyParticles = ParticleSystemQuad::create(Resources::Particles_Fireflies2);
 
-	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesA1);
-	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesA2);
-	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesA3);
-	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesA4);
-	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesA5);
+	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesA1);
+	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesA2);
+	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesA3);
+	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesA4);
+	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesA5);
 
-	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesB1);
-	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesB2);
-	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesB3);
-	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_EyesB4);
+	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesB1);
+	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesB2);
+	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesB3);
+	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesB4);
 
 	this->hackerModeLabel = Label::create(HackerMode::GetInstance()->GetHackerModeAddressHex(), Resources::Fonts_Stormblade, 16);
 	this->hackerModeLabel->setColor(Color3B(173, 135, 108));
@@ -60,11 +60,11 @@ TitleScreenBackground::TitleScreenBackground()
 	this->eyes1->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes1Anim)->reverse(), DelayTime::create(1.54f), Animate::create(this->eyes1Anim), DelayTime::create(2.5f), nullptr)));
 	this->eyes2->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes2Anim)->reverse(), DelayTime::create(1.25f), Animate::create(this->eyes2Anim), DelayTime::create(3.25f), nullptr)));
 
-	this->matrix->setVisible(false);
-	this->matrixParticles->setCascadeOpacityEnabled(true);
-	this->matrixParticles->setVisible(false);
-	this->matrixParticles->stopSystem();
-	this->matrixParticles->setOpacity(0);
+	this->ether->setVisible(false);
+	this->etherParticles->setCascadeOpacityEnabled(true);
+	this->etherParticles->setVisible(false);
+	this->etherParticles->stopSystem();
+	this->etherParticles->setOpacity(0);
 
 	this->addChild(this->background);
 	this->addChild(this->backgroundVines);
@@ -74,8 +74,8 @@ TitleScreenBackground::TitleScreenBackground()
 	this->addChild(this->foregroundVines);
 	this->addChild(this->tree);
 	this->addChild(this->hackerModeLabel);
-	this->addChild(this->matrix);
-	this->addChild(this->matrixParticles);
+	this->addChild(this->ether);
+	this->addChild(this->etherParticles);
 	this->addChild(this->eyes1);
 	this->addChild(this->eyes2);
 	this->addChild(this->fireflyParticles);
@@ -95,7 +95,7 @@ TitleScreenBackground::~TitleScreenBackground()
 
 void TitleScreenBackground::SetMatrixClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick)
 {
-	this->matrix->SetClickCallback(onMouseClick);
+	this->ether->SetClickCallback(onMouseClick);
 }
 
 void TitleScreenBackground::InitializeListeners()
@@ -120,8 +120,8 @@ void TitleScreenBackground::InitializePositions()
 	this->backgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->midgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 	this->tree->setPosition(Vec2(origin.x + visibleSize.width / 2 + 38.0f, origin.y + visibleSize.height / 2 + 180.0f));
-	this->matrix->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->matrix->getContentSize().height + 372.0f));
-	this->matrixParticles->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->matrix->getContentSize().height + 372.0f));
+	this->ether->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->ether->getContentSize().height + 372.0f));
+	this->etherParticles->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->ether->getContentSize().height + 372.0f));
 
 	this->eyes1->setPosition(Vec2(origin.x + visibleSize.width / 2 + 48.0f, origin.y + visibleSize.height / 2 - 180.0f));
 	this->eyes2->setPosition(Vec2(origin.x + visibleSize.width / 2 + 48.0f, origin.y + visibleSize.height / 2 - 180.0f));
@@ -138,9 +138,9 @@ void TitleScreenBackground::InitializePositions()
 
 void TitleScreenBackground::OnHackerModeEnabled(EventCustom* args)
 {
-	this->matrix->setVisible(true);
-	this->matrix->runAction(FadeIn::create(1.0f));
-	this->matrixParticles->setVisible(true);
-	this->matrixParticles->runAction(FadeIn::create(2.0f));
-	this->matrixParticles->start();
+	this->ether->setVisible(true);
+	this->ether->runAction(FadeIn::create(1.0f));
+	this->etherParticles->setVisible(true);
+	this->etherParticles->runAction(FadeIn::create(2.0f));
+	this->etherParticles->start();
 }
