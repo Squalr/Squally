@@ -8,6 +8,7 @@
 #include "GUI/Menus/Tutorial/TutorialScreen.h"
 #include "GUI/Menus/Story/StoryMap.h"
 #include "GUI/Menus/Options/OptionsMenu.h"
+#include "GUI/Components/FadeScene.h"
 #include "GUI/Components/FloatingSprite.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
 #include "GUI/Components/MenuLabel.h"
@@ -19,7 +20,7 @@
 using namespace cocos2d;
 using namespace experimental;
 
-class TitleScreen : public Scene
+class TitleScreen : public FadeScene
 {
 public:
 	static TitleScreen * create();

@@ -28,7 +28,7 @@ StoryMap::~StoryMap()
 
 void StoryMap::onEnter()
 {
-	Scene::onEnter();
+	FadeScene::onEnter();
 
 	this->InitializePositions();
 
