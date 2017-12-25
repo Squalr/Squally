@@ -15,13 +15,34 @@ Player* Player::create()
 Player::Player()
 {
 	this->inputManager = InputManager::GetInstance();
+
 	this->sprite = Sprite::create(Resources::Ingame_Sprites_Player_Idle);
+	this->hoverNode = Node::create();
+
 	this->physicsBody = PhysicsBody::createBox(this->sprite->getContentSize());
+	this->hoverPhysicsBody = PhysicsBody::createBox(Size(this->sprite->getContentSize().width * 1.25f, Player::hoverHeight));
+
+	this->hoverNode->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->hoverNode->setPosition(0, -this->sprite->getContentSize().height / 2);
+	this->hoverNode->setContentSize(Size(0, Player::hoverHeight));
+
 	this->physicsBody->setRotationEnable(false);
 	this->physicsBody->setContactTestBitmask(Collision::CollisionGroup::All);
 
-	this->addChild(this->sprite);
+	this->hoverPhysicsBody->setRotationEnable(false);
+	this->hoverPhysicsBody->setContactTestBitmask(Collision::CollisionGroup::All);
+	this->hoverPhysicsBody->setGravityEnable(false);
+
+	FiniteTimeAction* bounceY1 = EaseSineInOut::create(ScaleTo::create(2.0f, 1.0f, 0.25f));
+	FiniteTimeAction* bounceY2 = EaseSineInOut::create(ScaleTo::create(2.0f, 1.0f, 1.0f));
+
+	this->hoverNode->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
+
 	this->setPhysicsBody(this->physicsBody);
+	this->hoverNode->setPhysicsBody(this->hoverPhysicsBody);
+
+	this->addChild(this->sprite);
+	this->addChild(this->hoverNode);
 }
 
 Player::~Player()
@@ -55,4 +76,10 @@ void Player::update(float dt)
 	if (this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_S))
 	{
 	}
+
+	// Keep hover node underneath player
+	this->hoverNode->setPosition(0, -this->sprite->getContentSize().height / 2);
+
+	// Accelerate player downward into the hover node
+	this->physicsBody->setVelocity(Vec2(this->physicsBody->getVelocity().x, this->physicsBody->getVelocity().y - 48.0f));
 }

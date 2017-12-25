@@ -164,6 +164,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\Components\RadioButton.cpp" />
     <ClCompile Include="Source\GUI\Components\Slider.cpp" />
     <ClCompile Include="Source\GUI\Components\ToggleButton.cpp" />
+    <ClCompile Include="Source\GUI\HUD\HUD.cpp" />
     <ClCompile Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\Options\OptionsMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\Pause\PauseMenu.cpp" />
@@ -202,6 +203,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\Components\RadioButton.h" />
     <ClInclude Include="Source\GUI\Components\Slider.h" />
     <ClInclude Include="Source\GUI\Components\ToggleButton.h" />
+    <ClInclude Include="Source\GUI\HUD\HUD.h" />
     <ClInclude Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.h" />
     <ClInclude Include="Source\GUI\Menus\Options\OptionsMenu.h" />
     <ClInclude Include="Source\GUI\Menus\Pause\PauseMenu.h" />

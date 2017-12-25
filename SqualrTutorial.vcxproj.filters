@@ -52,6 +52,9 @@
     <Filter Include="Source\Input">
       <UniqueIdentifier>{41b4695d-9be7-4d80-930f-d7fe7acdf1c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\GUI\HUD">
+      <UniqueIdentifier>{018da264-5fc8-4aef-89fe-d137b354ee9e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -162,6 +165,9 @@
     <ClCompile Include="Source\Collision\Collision.cpp">
       <Filter>Source\Collision</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GUI\HUD\HUD.cpp">
+      <Filter>Source\GUI\HUD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -271,6 +277,9 @@
     </ClInclude>
     <ClInclude Include="Source\Collision\Collision.h">
       <Filter>Source\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\HUD\HUD.h">
+      <Filter>Source\GUI\HUD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
