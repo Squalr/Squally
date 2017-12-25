@@ -9,27 +9,28 @@ using namespace cocos2d;
 class Player : public Entity
 {
 public:
-	Player();
-	~Player();
-
-	void onEnter() override;
-	void update(float) override;
+	static Player * create();
 
 	static int health;
 	static Vec2 position;
 
 protected:
-	const float jumpSpeed = 320.0f;
-	const float walkSpeed = 128.0f;
 
 private:
-	bool OnContactBegin(PhysicsContact &contact);
-	bool OnContactPostSolve(PhysicsContact &contact);
-	bool OnContactPreSolve(PhysicsContact &contact);
-	bool OnContactSeparate(PhysicsContact &contact);
+	Player();
+	~Player();
+
+	void update(float) override;
+
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void OnKeyReleased(EventKeyboard::KeyCode keyCode, Event* event);
+	void InitializeKeyMap();
 	void InitializeListeners();
+
+	std::unordered_map<EventKeyboard::KeyCode, bool> pressedKeys;
 	bool canJump;
+
+	const float jumpSpeed = 320.0f;
+	const float walkSpeed = 128.0f;
 };
 

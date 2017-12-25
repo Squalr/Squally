@@ -27,8 +27,7 @@ Layer* TileCollision::InitializeCollision(ValueVector collisionObjects)
 			polygonPoints = &(object.at("points").asValueVector());
 		}
 
-		Node* node = Node::create();
-		PhysicsBody* collisionBox = nullptr;
+		CollisionObject* collisionBox = nullptr;
 
 		if (isPolygon)
 		{
@@ -45,26 +44,24 @@ Layer* TileCollision::InitializeCollision(ValueVector collisionObjects)
 				points[index++] = Vec2(x + deltaX, y - deltaY);
 			}
 
-			collisionBox = PhysicsBody::createPolygon(points, polygonPoints->size(), PhysicsMaterial(0.0f, 0.0f, 0.0f));
+			collisionBox = CollisionObject::create(points, polygonPoints->size());
 		}
 		else
 		{
-			collisionBox = PhysicsBody::createBox(Size(width, height), PhysicsMaterial(0.0f, 0.0f, 0.0f));
-			node->setPosition(x, y);
+			collisionBox = CollisionObject::create(Size(width, height));
+			collisionBox->setPosition(x, y);
 		}
 
 		if (type == "solid")
 		{
-			collisionBox->setContactTestBitmask(TileCollision::CollisionGroupsEnum::Solid);
+			collisionBox->SetCollisionGroup(CollisionObject::CollisionGroup::Solid);
 		}
 		else if (type == "water")
 		{
-			collisionBox->setContactTestBitmask(TileCollision::CollisionGroupsEnum::Water);
+			collisionBox->SetCollisionGroup(CollisionObject::CollisionGroup::Water);
 		}
 
-		collisionBox->setDynamic(false);
-		node->addComponent(collisionBox);
-		layer->addChild(node);
+		layer->addChild(collisionBox);
 	}
 
 	return layer;

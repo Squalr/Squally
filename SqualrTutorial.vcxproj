@@ -148,6 +148,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Collision\CollisionObject.cpp" />
     <ClCompile Include="Source\Collision\TileCollision.cpp" />
     <ClCompile Include="Source\Config\ConfigManager.cpp" />
     <ClCompile Include="Source\Config\SoundManager.cpp" />
@@ -184,6 +185,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Resources.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Collision\CollisionObject.h" />
     <ClInclude Include="Source\Collision\TileCollision.h" />
     <ClInclude Include="Source\Config\ConfigManager.h" />
     <ClInclude Include="Source\Config\SoundManager.h" />

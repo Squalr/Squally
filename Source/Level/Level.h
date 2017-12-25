@@ -7,6 +7,7 @@
 #include "Entities/Player.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
+#include <algorithm> 
 
 using namespace cocos2d;
 

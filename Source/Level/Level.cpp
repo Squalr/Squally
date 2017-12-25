@@ -45,7 +45,6 @@ Level::Level(std::string levelResourceFilePath)
 
 Level::~Level()
 {
-	delete(this->player);
 }
 
 void Level::update(float dt)
@@ -95,7 +94,7 @@ void Level::LoadLevel(std::string levelResourceFilePath)
 
 		if (type == "spawn")
 		{
-			this->player = new Player();
+			this->player = Player::create();
 			this->player->setPosition(Vec2(object.at("x").asFloat(), object.at("y").asFloat()));
 			this->playerLayer->addChild(this->player);
 		}

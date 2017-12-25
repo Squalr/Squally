@@ -2,6 +2,7 @@
 
 Entity::Entity()
 {
+
 	this->scheduleUpdate();
 }
 

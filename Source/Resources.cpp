@@ -262,6 +262,7 @@ const string Resources::Ingame_Tiles_PterodactylEditor = "Ingame\\Tiles\\Pteroda
 const string Resources::Ingame_Tiles_RaptorEditor = "Ingame\\Tiles\\RaptorEditor.png";
 const string Resources::Ingame_Tiles_TileMap = "Ingame\\Tiles\\TileMap.png";
 const string Resources::Levels_Debug = "Levels\\Debug.tmx";
+const string Resources::Levels_Debug2 = "Levels\\Debug2.tmx";
 const string Resources::Menus_DialogBox = "Menus\\DialogBox.png";
 const string Resources::Menus_MouseIdle = "Menus\\MouseIdle.png";
 const string Resources::Menus_MousePoint = "Menus\\MousePoint.png";
