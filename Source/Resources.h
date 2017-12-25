@@ -15,6 +15,8 @@ public:
 	static const string Fonts_Montserrat_Medium;
 	static const string Fonts_Stormblade;
 	static const string HUD_Egg;
+	static const string HUD_HealthBarFrame;
+	static const string HUD_Heart;
 	static const string HUD_Heart0;
 	static const string HUD_Heart1;
 	static const string HUD_Heart10;
@@ -28,6 +30,7 @@ public:
 	static const string HUD_Heart9;
 	static const string HUD_MindPowerBack;
 	static const string HUD_MindPowerCover;
+	static const string HUD_Timer;
 	static const string Ingame_Background_Moon;
 	static const string Ingame_Background_Sun;
 	static const string Ingame_Background_Boss_Time_Clouds_Tiling;
@@ -267,7 +270,6 @@ public:
 	static const string Ingame_Tiles_RaptorEditor;
 	static const string Ingame_Tiles_TileMap;
 	static const string Levels_Debug;
-	static const string Levels_Debug2;
 	static const string Menus_DialogBox;
 	static const string Menus_MouseIdle;
 	static const string Menus_MousePoint;

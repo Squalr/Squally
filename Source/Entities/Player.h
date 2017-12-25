@@ -25,10 +25,13 @@ private:
 
 	bool canJump;
 
+	InputManager* inputManager;
+	PhysicsBody* hoverPhysicsBody;
+	Node* hoverNode;
+
 	const float jumpSpeed = 320.0f;
 	const float walkSpeed = 256.0f;
 	const float gravity = 256.0f;
-
-	InputManager* inputManager;
+	const float hoverHeight = 96.0f;
 };
 
