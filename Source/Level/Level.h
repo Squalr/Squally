@@ -2,11 +2,12 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Background.h"
-#include "GUI/Menus/Pause/PauseMenu.h"
 #include "Collision/TileCollision.h"
 #include "Entities/Player.h"
+#include "Input/InputManager.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
+#include "GUI/Menus/Pause/PauseMenu.h"
 #include <algorithm> 
 
 using namespace cocos2d;
