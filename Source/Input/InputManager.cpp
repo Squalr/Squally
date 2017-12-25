@@ -6,7 +6,7 @@ InputManager* InputManager::ClaimInstance()
 {
 	InputManager* mouse = InputManager::GetInstance();
 
-	// Free the mouse from it's parent
+	// Free the input manager from it's parent
 	if (mouse->getParent() != nullptr)
 	{
 		mouse->getParent()->removeChild(InputManager::inputManagerInstance);
