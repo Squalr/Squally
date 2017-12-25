@@ -14,15 +14,12 @@ Player* Player::create()
 
 Player::Player()
 {
-	this->pressedKeys = std::unordered_map<EventKeyboard::KeyCode, bool>();
+	this->inputManager = InputManager::GetInstance();
 	this->sprite = Sprite::create(Resources::Ingame_Sprites_Player_Idle);
 	this->collisionObject = CollisionObject::create(this->sprite->getContentSize());
 
 	this->addChild(this->sprite);
 	this->addChild(this->collisionObject);
-
-	this->InitializeKeyMap();
-	this->InitializeListeners();
 }
 
 Player::~Player()
@@ -32,6 +29,18 @@ Player::~Player()
 void Player::update(float dt)
 {
 	Entity::update(dt);
+
+	if (this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW))
+	{
+		this->setPositionX(this->getPositionX() - Player::walkSpeed * dt);
+		this->sprite->setFlippedX(false);
+	}
+
+	if (this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW))
+	{
+		this->setPositionX(this->getPositionX() + Player::walkSpeed * dt);
+		this->sprite->setFlippedX(true);
+	}
 
 	/*
 
@@ -98,42 +107,4 @@ void Player::update(float dt)
 	*/
 
 	this->position = this->getPosition();
-}
-
-void Player::InitializeKeyMap()
-{
-	this->pressedKeys[EventKeyboard::KeyCode::KEY_SPACE] = false;
-	this->pressedKeys[EventKeyboard::KeyCode::KEY_UP_ARROW] = false;
-	this->pressedKeys[EventKeyboard::KeyCode::KEY_W] = false;
-	this->pressedKeys[EventKeyboard::KeyCode::KEY_A] = false;
-	this->pressedKeys[EventKeyboard::KeyCode::KEY_S] = false;
-	this->pressedKeys[EventKeyboard::KeyCode::KEY_D] = false;
-	this->pressedKeys[EventKeyboard::KeyCode::KEY_UP_ARROW] = false;
-	this->pressedKeys[EventKeyboard::KeyCode::KEY_LEFT_ARROW] = false;
-	this->pressedKeys[EventKeyboard::KeyCode::KEY_DOWN_ARROW] = false;
-	this->pressedKeys[EventKeyboard::KeyCode::KEY_RIGHT_ARROW] = false;
-}
-
-void Player::InitializeListeners()
-{
-	EventListenerPhysicsContact* contactListener = EventListenerPhysicsContact::create();
-	EventListenerKeyboard* listener = EventListenerKeyboard::create();
-
-	// contactListener->onContactBegin = CC_CALLBACK_1(Player::OnContactBegin, this);
-
-	listener->onKeyPressed = CC_CALLBACK_2(Player::OnKeyPressed, this);
-	listener->onKeyReleased = CC_CALLBACK_2(Player::OnKeyReleased, this);
-
-	// this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-}
-
-void Player::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	pressedKeys[keyCode] = true;
-}
-
-void Player::OnKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	pressedKeys[keyCode] = false;
 }

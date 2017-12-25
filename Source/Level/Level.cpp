@@ -36,6 +36,7 @@ Level::Level(std::string levelResourceFilePath)
 	this->addChild(this->tileLayer);
 	this->addChild(this->entityLayer);
 	this->addChild(this->environmentLayer);
+	this->addChild(InputManager::ClaimInstance());
 
 	this->scheduleUpdate();
 	this->update(0.0f);

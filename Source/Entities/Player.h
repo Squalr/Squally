@@ -3,6 +3,7 @@
 #include "Entity.h"
 #include "Resources.h"
 #include "Collision/TileCollision.h"
+#include "Input/InputManager.h"
 
 using namespace cocos2d;
 
@@ -22,15 +23,12 @@ private:
 
 	void update(float) override;
 
-	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	void OnKeyReleased(EventKeyboard::KeyCode keyCode, Event* event);
-	void InitializeKeyMap();
-	void InitializeListeners();
-
-	std::unordered_map<EventKeyboard::KeyCode, bool> pressedKeys;
 	bool canJump;
 
 	const float jumpSpeed = 320.0f;
-	const float walkSpeed = 128.0f;
+	const float walkSpeed = 256.0f;
+	const float gravity = 256.0f;
+
+	InputManager* inputManager;
 };
 

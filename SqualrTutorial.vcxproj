@@ -175,6 +175,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\Menus\Title\TitleScreenBackground.cpp" />
     <ClCompile Include="Source\GUI\Menus\Tutorial\TutorialItem.cpp" />
     <ClCompile Include="Source\GUI\Menus\Tutorial\TutorialScreen.cpp" />
+    <ClCompile Include="Source\Input\InputManager.cpp" />
     <ClCompile Include="Source\Level\Background.cpp" />
     <ClCompile Include="Source\Objects\GameObject.cpp" />
     <ClCompile Include="Source\Utils\Utils.cpp" />
@@ -212,6 +213,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\Menus\Title\TitleScreenBackground.h" />
     <ClInclude Include="Source\GUI\Menus\Tutorial\TutorialItem.h" />
     <ClInclude Include="Source\GUI\Menus\Tutorial\TutorialScreen.h" />
+    <ClInclude Include="Source\Input\InputManager.h" />
     <ClInclude Include="Source\Level\Background.h" />
     <ClInclude Include="Source\Objects\GameObject.h" />
     <ClInclude Include="Source\Utils\Utils.h" />
