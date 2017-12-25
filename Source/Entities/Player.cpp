@@ -55,6 +55,4 @@ void Player::update(float dt)
 	if (this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_S))
 	{
 	}
-
-	this->position = this->getPosition();
 }

@@ -43,7 +43,7 @@ void Entity::update(float dt)
 	// Gravity
 	if (this->isOnGround)
 	{
-		velocity.y += this->movement.y * this->actualJumpLaunchVelocity;
+		velocity.y = this->movement.y * this->actualJumpLaunchVelocity;
 	}
 	else
 	{
@@ -66,7 +66,7 @@ void Entity::InitializeListeners()
 	EventListenerPhysicsContact* contactListener = EventListenerPhysicsContact::create();
 
 	contactListener->onContactBegin = CC_CALLBACK_1(Entity::OnContactBegin, this);
-	contactListener->onContactPostSolve = CC_CALLBACK_1(Entity::OnContactUpdate, this);
+	contactListener->onContactPreSolve = CC_CALLBACK_1(Entity::OnContactUpdate, this);
 	contactListener->onContactSeparate = CC_CALLBACK_1(Entity::OnContactEnd, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
@@ -80,14 +80,14 @@ bool Entity::OnContactBegin(PhysicsContact &contact)
 	{
 		return true;
 	}
-	if (Collision::IsContactBelow(this, contact))
-	{
-		this->isOnGround = true;
-	}
 
-	switch ((Collision::CollisionGroup)other->getCollisionBitmask())
+	switch ((Collision::CollisionGroup)other->getContactTestBitmask())
 	{
 	case Collision::CollisionGroup::Solid:
+		if (Collision::IsContactBelow(this, contact))
+		{
+			this->isOnGround = true;
+		}
 		break;
 	}
 
@@ -102,14 +102,14 @@ bool Entity::OnContactUpdate(PhysicsContact &contact)
 	{
 		return true;
 	}
-	if (Collision::IsContactBelow(this, contact))
-	{
-		this->isOnGround = true;
-	}
 
-	switch ((Collision::CollisionGroup)other->getCollisionBitmask())
+	switch ((Collision::CollisionGroup)other->getContactTestBitmask())
 	{
 	case Collision::CollisionGroup::Solid:
+		if (Collision::IsContactBelow(this, contact))
+		{
+			this->isOnGround = true;
+		}
 		break;
 	}
 
@@ -124,11 +124,11 @@ bool Entity::OnContactEnd(PhysicsContact &contact)
 	{
 		return true;
 	}
-	this->isOnGround = false;
 
-	switch ((Collision::CollisionGroup)other->getCollisionBitmask())
+	switch ((Collision::CollisionGroup)other->getContactTestBitmask())
 	{
 	case Collision::CollisionGroup::Solid:
+		this->isOnGround = false;
 		break;
 	}
 

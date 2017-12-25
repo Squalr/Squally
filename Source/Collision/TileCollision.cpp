@@ -61,6 +61,10 @@ Layer* TileCollision::InitializeCollision(ValueVector collisionObjects)
 		{
 			collisionBox->setContactTestBitmask(Collision::CollisionGroup::Water);
 		}
+		else
+		{
+			throw new exception("Invalid type");
+		}
 
 		collisionBox->setDynamic(false);
 		node->addComponent(collisionBox);
