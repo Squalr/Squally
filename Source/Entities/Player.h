@@ -22,6 +22,10 @@ private:
 	~Player();
 
 	void update(float) override;
+	void InitializeListeners();
+	bool OnContactBegin(PhysicsContact& contact);
+	bool OnContactUpdate(PhysicsContact& contact);
+	bool OnContactEnd(PhysicsContact& contact);
 
 	bool canJump;
 
@@ -29,9 +33,6 @@ private:
 	PhysicsBody* hoverPhysicsBody;
 	Node* hoverNode;
 
-	const float jumpSpeed = 320.0f;
-	const float walkSpeed = 256.0f;
-	const float gravity = 256.0f;
 	const float hoverHeight = 96.0f;
 };
 
