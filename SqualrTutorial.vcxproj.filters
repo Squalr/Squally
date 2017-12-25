@@ -153,6 +153,9 @@
     <ClCompile Include="Source\GUI\Components\FadeScene.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Collision\CollisionObject.cpp">
+      <Filter>Source\Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -256,6 +259,9 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\Components\FadeScene.h">
       <Filter>Source\GUI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collision\CollisionObject.h">
+      <Filter>Source\Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
