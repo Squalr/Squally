@@ -30,16 +30,28 @@ void Player::update(float dt)
 {
 	Entity::update(dt);
 
-	if (this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW))
+	this->movement.x = 0.0f;
+	this->movement.y = 0.0f;
+
+	if (this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_A))
 	{
-		this->setPositionX(this->getPositionX() - Player::walkSpeed * dt);
+		this->movement.x = -1.0f;
 		this->sprite->setFlippedX(false);
 	}
 
-	if (this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW))
+	if (this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW) || this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_D))
 	{
-		this->setPositionX(this->getPositionX() + Player::walkSpeed * dt);
+		this->movement.x = 1.0f;
 		this->sprite->setFlippedX(true);
+	}
+
+	if (this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_W) || this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_SPACE))
+	{
+		this->velocity.y = this->jumpSpeed;
+	}
+
+	if (this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_S))
+	{
 	}
 
 	/*
