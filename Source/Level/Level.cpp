@@ -18,10 +18,11 @@ Level::Level(std::string levelResourceFilePath)
 
 	// Physics / collision debugging
 	this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-	this->getPhysicsWorld()->setGravity(Vec2(0.0f, -768.0f));
+	// this->getPhysicsWorld()->setGravity(Vec2(0.0f, -768.0f));
 
 	this->backGroundLayer = Background::create();
 	this->tileLayer = Layer::create();
+	this->foregroundLayer = Layer::create();
 	this->entityLayer = Layer::create();
 	this->playerLayer = Layer::create();
 	this->enemyLayer = Layer::create();
@@ -35,6 +36,7 @@ Level::Level(std::string levelResourceFilePath)
 	this->addChild(this->backGroundLayer);
 	this->addChild(this->tileLayer);
 	this->addChild(this->entityLayer);
+	this->addChild(this->foregroundLayer);
 	this->addChild(this->environmentLayer);
 	this->addChild(InputManager::ClaimInstance());
 
@@ -55,17 +57,35 @@ void Level::update(float dt)
 
 	FadeScene::update(dt);
 
-	float widthOffset = Director::getInstance()->getVisibleSize().width / 2;
-	float playerXOffset = this->player->getPositionX() - this->player->GetWidth();
+	float playerXOffset = Director::getInstance()->getVisibleSize().width / 2 - this->player->getPositionX();
 
-	this->playerLayer->setPositionX(widthOffset - playerXOffset);
-	this->tileLayer->setPositionX(widthOffset - playerXOffset);
+	if (this->playerLayer->getPositionX() < playerXOffset - Level::cameraOffsetX)
+	{
+		this->playerLayer->setPositionX(playerXOffset - Level::cameraOffsetX);
+		this->tileLayer->setPositionX(playerXOffset - Level::cameraOffsetX);
+		this->foregroundLayer->setPositionX(playerXOffset - Level::cameraOffsetX);
+	}
+	else if (this->playerLayer->getPositionX() > playerXOffset + Level::cameraOffsetX)
+	{
+		this->playerLayer->setPositionX(playerXOffset + Level::cameraOffsetX);
+		this->tileLayer->setPositionX(playerXOffset + Level::cameraOffsetX);
+		this->foregroundLayer->setPositionX(playerXOffset + Level::cameraOffsetX);
+	}
 
-	float heightOffset = Director::getInstance()->getVisibleSize().height / 2;
-	float playerYOffset = this->player->getPositionY() - this->player->GetHeight();
+	float playerYOffset = Director::getInstance()->getVisibleSize().height / 2 - this->player->getPositionY();
 
-	this->playerLayer->setPositionY(heightOffset - playerYOffset);
-	this->tileLayer->setPositionY(heightOffset - playerYOffset);
+	if (this->playerLayer->getPositionY() < playerYOffset - Level::cameraOffsetY)
+	{
+		this->playerLayer->setPositionY(playerYOffset - Level::cameraOffsetY);
+		this->tileLayer->setPositionY(playerYOffset - Level::cameraOffsetY);
+		this->foregroundLayer->setPositionY(playerYOffset - Level::cameraOffsetY);
+	}
+	else if (this->playerLayer->getPositionY() > playerYOffset + Level::cameraOffsetY)
+	{
+		this->playerLayer->setPositionY(playerYOffset + Level::cameraOffsetY);
+		this->tileLayer->setPositionY(playerYOffset + Level::cameraOffsetY);
+		this->foregroundLayer->setPositionY(playerYOffset + Level::cameraOffsetY);
+	}
 }
 
 void Level::LoadLevel(std::string levelResourceFilePath)
@@ -104,8 +124,16 @@ void Level::LoadLevel(std::string levelResourceFilePath)
 	// Create midground
 	Layer* collisionLayer = TileCollision::InitializeCollision(collisionObjects);
 
-	this->tileLayer->addChild(map);
+	Node* backgroundNode = map->getChildren().at(0);
+	Node* midgroundNode = map->getChildren().at(1);
+	Node* foregroundNode = map->getChildren().at(2);
+
+	map->removeAllChildren();
+
+	this->tileLayer->addChild(backgroundNode);
+	this->tileLayer->addChild(midgroundNode);
 	this->tileLayer->addChild(collisionLayer);
+	this->foregroundLayer->addChild(foregroundNode);
 }
 
 void Level::InitializeListeners()
@@ -113,7 +141,7 @@ void Level::InitializeListeners()
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
 	listener->onKeyPressed = CC_CALLBACK_2(Level::OnKeyPressed, this);
 
-	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
 // Implementation of the keyboard event callback function prototype

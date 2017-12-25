@@ -322,7 +322,7 @@
   <object id="14" name="solid" type="solid" x="-0.151515" y="5132.76" width="254.167" height="700.667"/>
   <object id="36" name="solid" type="solid" x="242" y="5146" width="153" height="53"/>
   <object id="38" name="solid" type="solid" x="385" y="5137" width="320" height="697"/>
-  <object id="39" name="solid" type="soli" x="705" y="5202" width="440" height="637"/>
+  <object id="39" name="solid" type="solid" x="705" y="5202" width="440" height="637"/>
   <object id="41" name="solid" type="solid" x="705.25" y="5136.75">
    <polygon points="0,0 126.75,63.9844 0,65"/>
   </object>
