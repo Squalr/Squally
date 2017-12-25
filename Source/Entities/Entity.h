@@ -38,11 +38,12 @@ protected:
 
 	// STANDARD
 	const float groundDragFactor = .58f;
-	const float maxMoveSpeed = 360.0f;
-	const float moveAcceleration = 14000.0f;
 	const float airDragFactor = 0.65f;
 
-	const float jumpLaunchVelocity = 480.0f;
+	const float maxMoveSpeed = 360.0f;
+	const float moveAcceleration = 14000.0f;
+
+	const float jumpLaunchVelocity = 640.0f;
 	const float gravityAcceleration = 1000.0f;
 	const float maxFallSpeed = 600.0f;
 

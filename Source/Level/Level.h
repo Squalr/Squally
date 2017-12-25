@@ -26,6 +26,7 @@ protected:
 protected:
 	Layer * backGroundLayer;
 	Layer * tileLayer;
+	Layer * foregroundLayer;
 
 	Layer * entityLayer;
 	Layer * playerLayer;
@@ -39,5 +40,8 @@ private:
 	void LoadLevel(std::string levelResourceFilePath);
 	void InitializeListeners();
 	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+
+	const float cameraOffsetX = 128.0f;
+	const float cameraOffsetY = 96.0f;
 };
 
