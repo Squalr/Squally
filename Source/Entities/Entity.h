@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
-#include "Collision/CollisionObject.h"
+#include "Collision/Collision.h"
 
 using namespace cocos2d;
 
@@ -17,12 +17,17 @@ protected:
 
 	void onEnter() override;
 	void update(float) override;
+	void InitializeListeners();
+	bool OnContactBegin(PhysicsContact& contact);
+	bool OnContactUpdate(PhysicsContact& contact);
+	bool OnContactEnd(PhysicsContact& contact);
 
-	CollisionObject * collisionObject;
 	Sprite * sprite;
 
 	Vec2 movement;
-	Vec2 velocity;
+
+	PhysicsBody * physicsBody;
+	Collision::CollisionGroup collisionGroup;
 
 	bool isOnGround;
 
@@ -34,15 +39,15 @@ protected:
 	// STANDARD
 	const float groundDragFactor = .58f;
 	const float maxMoveSpeed = 360.0f;
-
 	const float moveAcceleration = 14000.0f;
 	const float airDragFactor = 0.65f;
-	const float jumpLaunchVelocity = -4000.0f;
+
+	const float jumpLaunchVelocity = 480.0f;
 	const float gravityAcceleration = 1000.0f;
 	const float maxFallSpeed = 600.0f;
 
 	// UNDERWATER
-	const float underwaterJumpLaunchVelocity = -3000.0f;
+	const float underwaterJumpLaunchVelocity = 128.0f;
 	const float underwaterGravityAcceleration = 250.0f;
 	const float underwaterMaxFallSpeed = 200.0f;
 

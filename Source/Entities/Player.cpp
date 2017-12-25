@@ -16,10 +16,12 @@ Player::Player()
 {
 	this->inputManager = InputManager::GetInstance();
 	this->sprite = Sprite::create(Resources::Ingame_Sprites_Player_Idle);
-	this->collisionObject = CollisionObject::create(this->sprite->getContentSize());
+	this->physicsBody = PhysicsBody::createBox(this->sprite->getContentSize());
+	this->physicsBody->setRotationEnable(false);
+	this->physicsBody->setContactTestBitmask(Collision::CollisionGroup::All);
 
 	this->addChild(this->sprite);
-	this->addChild(this->collisionObject);
+	this->setPhysicsBody(this->physicsBody);
 }
 
 Player::~Player()
@@ -47,76 +49,12 @@ void Player::update(float dt)
 
 	if (this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_W) || this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_SPACE))
 	{
-		this->velocity.y = this->jumpSpeed;
+		this->movement.y = 1.0f;
 	}
 
 	if (this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_S))
 	{
 	}
-
-	/*
-
-	switch (keyCode)
-	{
-	case EventKeyboard::KeyCode::KEY_SPACE:
-	case EventKeyboard::KeyCode::KEY_UP_ARROW:
-	case EventKeyboard::KeyCode::KEY_W:
-		//if (canjump)
-		//if (this->physicsBody->getVelocity().y > -4.0f && this->physicsBody->getVelocity().y < 4.0f)
-	{
-		canJump = false;
-		//this->physicsBody->setVelocity(Vec2(this->physicsBody->getVelocity().x, Player::jumpSpeed));
-	}
-	break;
-	case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
-	case EventKeyboard::KeyCode::KEY_A:
-		this->sprite->setFlippedX(false);
-		//this->physicsBody->setVelocity(Vec2(-Player::walkSpeed, this->physicsBody->getVelocity().y));
-		break;
-	case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
-	case EventKeyboard::KeyCode::KEY_S:
-		//this->physicsBody->setVelocity(Vec2(this->physicsBody->getVelocity().x, -Player::jumpSpeed));
-		break;
-	case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
-	case EventKeyboard::KeyCode::KEY_D:
-		this->sprite->setFlippedX(true);
-		this->setPositionX(this->getPositionX() + Player::walkSpeed);
-		//this->physicsBody->setVelocity(Vec2(Player::walkSpeed, this->physicsBody->getVelocity().y));
-		break;
-	}
-	switch (keyCode)
-	{
-	case EventKeyboard::KeyCode::KEY_SPACE:
-	case EventKeyboard::KeyCode::KEY_UP_ARROW:
-	case EventKeyboard::KeyCode::KEY_W:
-		//	if (this->physicsBody->getVelocity().y > 0.0f)
-	{
-		//	this->physicsBody->setVelocity(Vec2(this->physicsBody->getVelocity().x, 0.0f));
-	}
-	break;
-	case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
-	case EventKeyboard::KeyCode::KEY_A:
-		//	if (this->physicsBody->getVelocity().x < 0.0f)
-	{
-		//	this->physicsBody->setVelocity(Vec2(0.0f, this->physicsBody->getVelocity().y));
-	}
-	break;
-	case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
-	case EventKeyboard::KeyCode::KEY_S:
-		//	if (this->physicsBody->getVelocity().y < 0.0f)
-	{
-		//	this->physicsBody->setVelocity(Vec2(this->physicsBody->getVelocity().x, 0.0f));
-	}
-	break;
-	case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
-	case EventKeyboard::KeyCode::KEY_D:
-		//if (this->physicsBody->getVelocity().x > 0.0f)
-	{
-		//	this->physicsBody->setVelocity(Vec2(0.0f, this->physicsBody->getVelocity().y));
-	}
-	break;
-	}
-	*/
 
 	this->position = this->getPosition();
 }
