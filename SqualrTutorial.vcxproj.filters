@@ -49,6 +49,9 @@
     <Filter Include="Source\GUI\Menus\Confirmation">
       <UniqueIdentifier>{2ab6fe57-cad0-492b-95aa-fd6f11aecf40}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Input">
+      <UniqueIdentifier>{41b4695d-9be7-4d80-930f-d7fe7acdf1c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -156,6 +159,9 @@
     <ClCompile Include="Source\Collision\CollisionObject.cpp">
       <Filter>Source\Collision</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Input\InputManager.cpp">
+      <Filter>Source\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -262,6 +268,9 @@
     </ClInclude>
     <ClInclude Include="Source\Collision\CollisionObject.h">
       <Filter>Source\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Input\InputManager.h">
+      <Filter>Source\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
