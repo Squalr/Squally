@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Utils/Utils.h"
-#include "Collision/CollisionObject.h"
+#include "Collision/Collision.h"
 
 using namespace cocos2d;
 
