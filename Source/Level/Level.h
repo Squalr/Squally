@@ -5,6 +5,7 @@
 #include "Collision/TileCollision.h"
 #include "Entities/Player.h"
 #include "Input/InputManager.h"
+#include "GUI/HUD/HUD.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
 #include "GUI/Menus/Pause/PauseMenu.h"
@@ -24,9 +25,11 @@ protected:
 	void update(float) override;
 
 protected:
+
 	Layer * backGroundLayer;
 	Layer * tileLayer;
 	Layer * foregroundLayer;
+	HUD * hud;
 
 	Layer * entityLayer;
 	Layer * playerLayer;

@@ -17,8 +17,8 @@ Level::Level(std::string levelResourceFilePath)
 	}
 
 	// Physics / collision debugging
-	this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-	// this->getPhysicsWorld()->setGravity(Vec2(0.0f, -768.0f));
+	// this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	this->getPhysicsWorld()->setGravity(Vec2(0.0f, 0.0f));
 
 	this->backGroundLayer = Background::create();
 	this->tileLayer = Layer::create();
@@ -27,18 +27,20 @@ Level::Level(std::string levelResourceFilePath)
 	this->playerLayer = Layer::create();
 	this->enemyLayer = Layer::create();
 	this->environmentLayer = Layer::create();
+	this->hud = HUD::create();
 
 	this->LoadLevel(levelResourceFilePath);
 
 	this->entityLayer->addChild(this->playerLayer);
 	this->entityLayer->addChild(this->enemyLayer);
 
+	this->addChild(InputManager::ClaimInstance());
 	this->addChild(this->backGroundLayer);
 	this->addChild(this->tileLayer);
 	this->addChild(this->entityLayer);
 	this->addChild(this->foregroundLayer);
 	this->addChild(this->environmentLayer);
-	this->addChild(InputManager::ClaimInstance());
+	this->addChild(this->hud);
 
 	this->scheduleUpdate();
 	this->update(0.0f);
@@ -52,10 +54,10 @@ Level::~Level()
 
 void Level::update(float dt)
 {
+	FadeScene::update(dt);
+
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	FadeScene::update(dt);
 
 	float playerXOffset = Director::getInstance()->getVisibleSize().width / 2 - this->player->getPositionX();
 
