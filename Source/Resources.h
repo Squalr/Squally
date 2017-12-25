@@ -267,6 +267,7 @@ public:
 	static const string Ingame_Tiles_RaptorEditor;
 	static const string Ingame_Tiles_TileMap;
 	static const string Levels_Debug;
+	static const string Levels_Debug2;
 	static const string Menus_DialogBox;
 	static const string Menus_MouseIdle;
 	static const string Menus_MousePoint;
