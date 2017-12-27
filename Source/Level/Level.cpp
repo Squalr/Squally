@@ -124,7 +124,7 @@ void Level::LoadLevel(std::string levelResourceFilePath)
 	}
 
 	// Create midground
-	Layer* collisionLayer = TileCollision::InitializeCollision(collisionObjects);
+	Layer* collisionLayer = Collision::InitializeCollision(collisionObjects);
 
 	Node* backgroundNode = map->getChildren().at(0);
 	Node* midgroundNode = map->getChildren().at(1);

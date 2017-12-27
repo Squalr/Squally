@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
-#include "Entity.h"
+#include "Resources.h"
+#include "Entities/Entity.h"
 
 using namespace cocos2d;
 
