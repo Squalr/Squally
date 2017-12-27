@@ -55,6 +55,12 @@
     <Filter Include="Source\GUI\HUD">
       <UniqueIdentifier>{018da264-5fc8-4aef-89fe-d137b354ee9e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Entities\Player">
+      <UniqueIdentifier>{90ad5dcd-68bc-4222-9ecb-c482d58a9543}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Enemies">
+      <UniqueIdentifier>{2775143e-43a8-40c2-9698-8781690f3110}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -62,12 +68,6 @@
     </ClCompile>
     <ClCompile Include="Source\Level\Level.cpp">
       <Filter>Source\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Entities\Player.cpp">
-      <Filter>Source\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Entities\Enemy.cpp">
-      <Filter>Source\Entities</Filter>
     </ClCompile>
     <ClCompile Include="Source\Entities\Entity.cpp">
       <Filter>Source\Entities</Filter>
@@ -83,9 +83,6 @@
     </ClCompile>
     <ClCompile Include="Source\Window.cpp">
       <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Collision\TileCollision.cpp">
-      <Filter>Source\Collision</Filter>
     </ClCompile>
     <ClCompile Include="Source\Config\ConfigManager.cpp">
       <Filter>Source\Config</Filter>
@@ -168,6 +165,21 @@
     <ClCompile Include="Source\GUI\HUD\HUD.cpp">
       <Filter>Source\GUI\HUD</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Entities\Player\Player.cpp">
+      <Filter>Source\Entities\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Entities\Enemies\Enemy.cpp">
+      <Filter>Source\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Entities\Player\Hover.cpp">
+      <Filter>Source\Entities\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Collision\CollisionManager.cpp">
+      <Filter>Source\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Collision\CollisionObject.cpp">
+      <Filter>Source\Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -176,13 +188,7 @@
     <ClInclude Include="Source\Level\Level.h">
       <Filter>Source\Level</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entities\Player.h">
-      <Filter>Source\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Entities\Entity.h">
-      <Filter>Source\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Entities\Enemy.h">
       <Filter>Source\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Source\Objects\GameObject.h">
@@ -196,9 +202,6 @@
     </ClInclude>
     <ClInclude Include="Source\Window.h">
       <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Collision\TileCollision.h">
-      <Filter>Source\Collision</Filter>
     </ClInclude>
     <ClInclude Include="Source\Config\ConfigManager.h">
       <Filter>Source\Config</Filter>
@@ -280,6 +283,21 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\HUD\HUD.h">
       <Filter>Source\GUI\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entities\Player\Player.h">
+      <Filter>Source\Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entities\Enemies\Enemy.h">
+      <Filter>Source\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entities\Player\Hover.h">
+      <Filter>Source\Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collision\CollisionManager.h">
+      <Filter>Source\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collision\CollisionObject.h">
+      <Filter>Source\Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

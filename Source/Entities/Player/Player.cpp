@@ -27,10 +27,11 @@ Player::Player()
 	this->hoverNode->setContentSize(Size(0, Player::hoverHeight));
 
 	this->physicsBody->setRotationEnable(false);
-	this->physicsBody->setContactTestBitmask(Collision::CollisionGroup::All);
+	this->collisionGroup = Collision::CollisionGroup::Player;
+	this->physicsBody->setContactTestBitmask(Collision::CollisionGroup::SET_Player);
 
 	this->hoverPhysicsBody->setRotationEnable(false);
-	this->hoverPhysicsBody->setContactTestBitmask(Collision::CollisionGroup::All);
+	this->hoverPhysicsBody->setContactTestBitmask(Collision::CollisionGroup::SET_Solids);
 	this->hoverPhysicsBody->setGravityEnable(false);
 
 	FiniteTimeAction* bounceY1 = EaseSineInOut::create(ScaleTo::create(3.0f, 1.0f, 0.25f));
