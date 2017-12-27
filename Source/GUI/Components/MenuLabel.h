@@ -10,18 +10,18 @@ class MenuLabel : public Node
 public:
 	static MenuLabel * create(std::string labelText, std::string fontResource, float fontSize);
 
-	void SetCallback(std::function<void(MenuLabel*)> callback);
+	void setCallback(std::function<void(MenuLabel*)> callback);
 
 protected:
 	MenuLabel(std::string labelText, std::string fontResource, float fontSize);
 	~MenuLabel();
 
-	void SetText(std::string text);
+	void setText(std::string text);
 
 private:
-	void InitializeListeners();
-	void OnMouseMove(EventMouse* event);
-	void OnMouseDown(EventMouse* event);
+	void initializeListeners();
+	void onMouseMove(EventMouse* event);
+	void onMouseDown(EventMouse* event);
 
 	Label* label;
 	Label* labelHighlighted;

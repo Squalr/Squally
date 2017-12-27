@@ -10,7 +10,7 @@ public:
 	static Mouse * claimInstance();
 	static Mouse * getInstance();
 
-	void SetCanClick(bool canClick);
+	void setCanClick(bool canClick);
 
 	const std::string MouseMoveEvent = "mouse_move_event";
 
@@ -30,8 +30,8 @@ protected:
 	~Mouse();
 
 private:
-	void InitializeListeners();
-	void OnMouseMove(EventMouse* event);
+	void initializeListeners();
+	void onMouseMove(EventMouse* event);
 
 	Sprite* mouseSpriteIdle;
 	Sprite* mouseSpritePoint;

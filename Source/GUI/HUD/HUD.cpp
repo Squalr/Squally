@@ -26,10 +26,10 @@ void HUD::onEnter()
 {
 	Node::onEnter();
 
-	this->InitializePositions();
+	this->initializePositions();
 }
 
-void HUD::InitializePositions()
+void HUD::initializePositions()
 {
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	Size visibleSize = Director::getInstance()->getVisibleSize();

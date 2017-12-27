@@ -57,16 +57,16 @@ TutorialScreen::TutorialScreen()
 	this->addChild(this->descriptionBox);
 	this->addChild(this->description);
 
-	this->LoadLevels();
-	this->closeButton->SetClickCallback(CC_CALLBACK_1(TutorialScreen::OnCloseClick, this));
-	this->closeButton->SetClickSound(Resources::Sounds_ClickBack1);
+	this->loadLevels();
+	this->closeButton->setClickCallback(CC_CALLBACK_1(TutorialScreen::onCloseClick, this));
+	this->closeButton->setClickSound(Resources::Sounds_ClickBack1);
 
 	for (std::vector<TutorialItem*>::iterator it = this->tutorialButtons->begin(); it != this->tutorialButtons->end(); ++it)
 	{
 		this->addChild(*it);
 	}
 
-	this->InitializeListeners();
+	this->initializeListeners();
 }
 
 TutorialScreen::~TutorialScreen()
@@ -80,26 +80,26 @@ void TutorialScreen::onEnter()
 	float delay = 0.25f;
 	float duration = 0.35f;
 
-	Utils::FadeInObject(this->tutorialWindow, delay, duration);
-	Utils::FadeInObject(this->descriptionBox, delay, duration);
-	Utils::FadeInObject(this->description, delay, duration);
-	Utils::FadeInObject(this->closeButton, delay, duration);
+	Utils::fadeInObject(this->tutorialWindow, delay, duration);
+	Utils::fadeInObject(this->descriptionBox, delay, duration);
+	Utils::fadeInObject(this->description, delay, duration);
+	Utils::fadeInObject(this->closeButton, delay, duration);
 
 	for (std::vector<TutorialItem*>::iterator it = this->tutorialButtons->begin(); it != this->tutorialButtons->end(); ++it)
 	{
-		Utils::FadeInObject(*it, delay, duration);
+		Utils::fadeInObject(*it, delay, duration);
 	}
 
 	// Initialize particles to an intermediate state
-	Utils::AccelerateParticles(this->swirl, 5.0f);
-	Utils::AccelerateParticles(this->nether, 1.0f);
+	Utils::accelerateParticles(this->swirl, 5.0f);
+	Utils::accelerateParticles(this->nether, 1.0f);
 
-	this->InitializePositions();
+	this->initializePositions();
 
 	this->addChild(Mouse::claimInstance());
 }
 
-void TutorialScreen::InitializePositions()
+void TutorialScreen::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -128,15 +128,15 @@ void TutorialScreen::InitializePositions()
 
 	for (std::vector<TutorialItem*>::iterator it = this->tutorialButtons->begin(); it != this->tutorialButtons->end(); ++it)
 	{
-		(*it)->InitializePositions();
+		(*it)->initializePositions();
 	}
 }
 
-void TutorialScreen::LoadLevels()
+void TutorialScreen::loadLevels()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-	auto callback = CC_CALLBACK_1(TutorialScreen::OnMouseOver, this);
+	auto callback = CC_CALLBACK_1(TutorialScreen::onMouseOver, this);
 	int index = 0;
 
 	this->tutorialButtons = new std::vector<TutorialItem*>();
@@ -212,7 +212,7 @@ void TutorialScreen::LoadLevels()
 	));
 }
 
-void TutorialScreen::OnMouseOver(TutorialItem* tutorialItem)
+void TutorialScreen::onMouseOver(TutorialItem* tutorialItem)
 {
 	if (this->description->getString() != tutorialItem->tutorialDescription)
 	{
@@ -220,16 +220,16 @@ void TutorialScreen::OnMouseOver(TutorialItem* tutorialItem)
 	}
 }
 
-void TutorialScreen::InitializeListeners()
+void TutorialScreen::initializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
 
-	listener->onKeyPressed = CC_CALLBACK_2(TutorialScreen::OnKeyPressed, this);
+	listener->onKeyPressed = CC_CALLBACK_2(TutorialScreen::onKeyPressed, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-void TutorialScreen::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+void TutorialScreen::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode)
 	{
@@ -239,7 +239,7 @@ void TutorialScreen::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void TutorialScreen::OnCloseClick(MenuSprite* menuSprite)
+void TutorialScreen::onCloseClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->popScene();
 }

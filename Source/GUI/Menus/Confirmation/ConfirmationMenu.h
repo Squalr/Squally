@@ -20,10 +20,10 @@ protected:
 
 private:
 	void onEnter() override;
-	void InitializePositions();
-	void OnCloseClick(MenuSprite* menuSprite);
-	void OnConfirmClick(MenuSprite* menuSprite);
-	void OnCancelClick(MenuSprite* menuSprite);
+	void initializePositions();
+	void onCloseClick(MenuSprite* menuSprite);
+	void onConfirmClick(MenuSprite* menuSprite);
+	void onCancelClick(MenuSprite* menuSprite);
 
 	Node* background;
 	Sprite* pauseWindow;

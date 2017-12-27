@@ -40,9 +40,9 @@ protected:
 	Player * player;
 
 private:
-	void LoadLevel(std::string levelResourceFilePath);
-	void InitializeListeners();
-	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void loadLevel(std::string levelResourceFilePath);
+	void initializeListeners();
+	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
 	const float cameraOffsetX = 128.0f;
 	const float cameraOffsetY = 96.0f;

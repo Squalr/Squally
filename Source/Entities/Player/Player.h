@@ -22,10 +22,10 @@ private:
 	~Player();
 
 	void update(float) override;
-	void InitializeListeners();
-	bool OnContactBegin(PhysicsContact& contact);
-	bool OnContactUpdate(PhysicsContact& contact);
-	bool OnContactEnd(PhysicsContact& contact);
+	void initializeListeners();
+	bool onContactBegin(PhysicsContact& contact);
+	bool onContactUpdate(PhysicsContact& contact);
+	bool onContactEnd(PhysicsContact& contact);
 
 	bool canJump;
 

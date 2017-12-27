@@ -16,16 +16,16 @@ class TitleScreenBackground : public Node
 public:
 	static TitleScreenBackground * create();
 
-	void SetMatrixClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick);
-	void InitializePositions();
+	void setMatrixClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick);
+	void initializePositions();
 
 private:
 	TitleScreenBackground();
 	~TitleScreenBackground();
 
 	void onEnter() override;
-	void InitializeListeners();
-	void OnHackerModeEnabled(EventCustom* args);
+	void initializeListeners();
+	void onHackerModeEnabled(EventCustom* args);
 
 	FloatingSprite * squally;
 	Sprite* background;

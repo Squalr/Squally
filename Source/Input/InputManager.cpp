@@ -2,9 +2,9 @@
 
 InputManager* InputManager::inputManagerInstance = nullptr;
 
-InputManager* InputManager::ClaimInstance()
+InputManager* InputManager::claimInstance()
 {
-	InputManager* mouse = InputManager::GetInstance();
+	InputManager* mouse = InputManager::getInstance();
 
 	// Free the input manager from it's parent
 	if (mouse->getParent() != nullptr)
@@ -15,7 +15,7 @@ InputManager* InputManager::ClaimInstance()
 	return InputManager::inputManagerInstance;
 }
 
-InputManager* InputManager::GetInstance()
+InputManager* InputManager::getInstance()
 {
 	if (InputManager::inputManagerInstance == nullptr)
 	{
@@ -38,7 +38,7 @@ InputManager::~InputManager()
 {
 }
 
-bool InputManager::IsKeyJustPressed(EventKeyboard::KeyCode keyCode)
+bool InputManager::isKeyJustPressed(EventKeyboard::KeyCode keyCode)
 {
 	if (this->pressedKeys->count(keyCode) > 0)
 	{
@@ -48,7 +48,7 @@ bool InputManager::IsKeyJustPressed(EventKeyboard::KeyCode keyCode)
 	return false;
 }
 
-bool InputManager::IsPressed(EventKeyboard::KeyCode keyCode)
+bool InputManager::isPressed(EventKeyboard::KeyCode keyCode)
 {
 	if (this->pressedKeys->count(keyCode) > 0)
 	{
@@ -58,7 +58,7 @@ bool InputManager::IsPressed(EventKeyboard::KeyCode keyCode)
 	return false;
 }
 
-bool InputManager::IsReleased(EventKeyboard::KeyCode keyCode)
+bool InputManager::isReleased(EventKeyboard::KeyCode keyCode)
 {
 	if (this->pressedKeys->count(keyCode) > 0)
 	{
@@ -77,18 +77,18 @@ void InputManager::InitializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
 
-	listener->onKeyPressed = CC_CALLBACK_2(InputManager::OnKeyPressed, this);
-	listener->onKeyReleased = CC_CALLBACK_2(InputManager::OnKeyReleased, this);
+	listener->onKeyPressed = CC_CALLBACK_2(InputManager::onKeyPressed, this);
+	listener->onKeyReleased = CC_CALLBACK_2(InputManager::onKeyReleased, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-void InputManager::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+void InputManager::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	pressedKeys->insert_or_assign(keyCode, true);
 }
 
-void InputManager::OnKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
+void InputManager::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	pressedKeys->insert_or_assign(keyCode, false);
 }

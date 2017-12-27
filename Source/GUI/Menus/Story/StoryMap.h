@@ -18,9 +18,9 @@ protected:
 
 private:
 	void onEnter() override;
-	void InitializePositions();
-	void InitializeListeners();
-	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void initializePositions();
+	void initializeListeners();
+	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
 	Sprite* background;
 	MenuLabel* titleLabel;

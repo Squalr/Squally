@@ -21,13 +21,13 @@ protected:
 	~TutorialScreen();
 
 private:
-	void LoadLevels();
+	void loadLevels();
 	void onEnter() override;
-	void InitializePositions();
-	void InitializeListeners();
-	void OnCloseClick(MenuSprite* menuSprite);
-	void OnMouseOver(TutorialItem* tutorialItem);
-	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void initializePositions();
+	void initializeListeners();
+	void onCloseClick(MenuSprite* menuSprite);
+	void onMouseOver(TutorialItem* tutorialItem);
+	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
 	int currentPage;
 

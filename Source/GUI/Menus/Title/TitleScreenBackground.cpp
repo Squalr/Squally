@@ -48,7 +48,7 @@ TitleScreenBackground::TitleScreenBackground()
 	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesB3);
 	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesB4);
 
-	this->hackerModeLabel = Label::create(HackerMode::GetInstance()->GetHackerModeAddressHex(), Resources::Fonts_Stormblade, 16);
+	this->hackerModeLabel = Label::create(HackerMode::getInstance()->getHackerModeAddressHex(), Resources::Fonts_Stormblade, 16);
 	this->hackerModeLabel->setColor(Color3B(173, 135, 108));
 	this->hackerModeLabel->setSkewX(-12.0f);
 
@@ -86,16 +86,16 @@ TitleScreenBackground::TitleScreenBackground()
 	this->addChild(this->foregroundLight);
 	this->addChild(this->squally);
 
-	this->InitializeListeners();
+	this->initializeListeners();
 }
 
 TitleScreenBackground::~TitleScreenBackground()
 {
 }
 
-void TitleScreenBackground::SetMatrixClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick)
+void TitleScreenBackground::setMatrixClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick)
 {
-	this->ether->SetClickCallback(onMouseClick);
+	this->ether->setClickCallback(onMouseClick);
 }
 
 void TitleScreenBackground::onEnter()
@@ -103,26 +103,26 @@ void TitleScreenBackground::onEnter()
 	Node::onEnter();
 
 	// Initialize particles to an intermediate state
-	Utils::AccelerateParticles(this->fireflyParticles, 2.0f);
-	Utils::AccelerateParticles(this->windParticles, 5.0f);
+	Utils::accelerateParticles(this->fireflyParticles, 2.0f);
+	Utils::accelerateParticles(this->windParticles, 5.0f);
 
 	if (this->etherParticles->isVisible())
 	{
-		Utils::AccelerateParticles(this->etherParticles, 5.0f);
+		Utils::accelerateParticles(this->etherParticles, 5.0f);
 	}
 }
 
-void TitleScreenBackground::InitializeListeners()
+void TitleScreenBackground::initializeListeners()
 {
-	EventListenerCustom* customListener = EventListenerCustom::create(HackerMode::GetInstance()->HackerModeEnabledEvent, CC_CALLBACK_1(TitleScreenBackground::OnHackerModeEnabled, this));
+	EventListenerCustom* customListener = EventListenerCustom::create(HackerMode::HackerModeEnabledEvent, CC_CALLBACK_1(TitleScreenBackground::onHackerModeEnabled, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(customListener, this);
 
 	// Add the hackermode node. This will allow for it's update method to run.
-	this->addChild(HackerMode::GetInstance());
+	this->addChild(HackerMode::getInstance());
 }
 
-void TitleScreenBackground::InitializePositions()
+void TitleScreenBackground::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -150,7 +150,7 @@ void TitleScreenBackground::InitializePositions()
 	this->squally->setPosition(Vec2(origin.x + visibleSize.width / 2 + 240.0f, origin.y + visibleSize.height / 2 - 32.0f));
 }
 
-void TitleScreenBackground::OnHackerModeEnabled(EventCustom* args)
+void TitleScreenBackground::onHackerModeEnabled(EventCustom* args)
 {
 	this->ether->setVisible(true);
 	this->ether->runAction(FadeIn::create(1.0f));

@@ -22,14 +22,14 @@ protected:
 
 private:
 	void onEnter() override;
-	void InitializePositions();
-	void InitializeListeners();
-	void OnExitConfirm();
-	void OnCloseClick(MenuSprite* menuSprite);
-	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	void OnResumeClick(MenuSprite* menuSprite);
-	void OnOptionsClick(MenuSprite* menuSprite);
-	void OnExitClick(MenuSprite* menuSprite);
+	void initializePositions();
+	void initializeListeners();
+	void onExitConfirm();
+	void onCloseClick(MenuSprite* menuSprite);
+	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onResumeClick(MenuSprite* menuSprite);
+	void onOptionsClick(MenuSprite* menuSprite);
+	void onExitClick(MenuSprite* menuSprite);
 
 	Node* background;
 	Sprite* pauseWindow;

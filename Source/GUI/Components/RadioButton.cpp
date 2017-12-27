@@ -17,55 +17,55 @@ RadioButton::RadioButton(int groupIdentifier)
 	this->checked = MenuSprite::create(Resources::Menus_OptionsMenu_RadioButtonSelected, Resources::Menus_OptionsMenu_RadioButtonSelectedHover, Resources::Menus_OptionsMenu_RadioButtonSelectedHover);
 	this->unchecked = MenuSprite::create(Resources::Menus_OptionsMenu_RadioButtonEmpty, Resources::Menus_OptionsMenu_RadioButtonHover, Resources::Menus_OptionsMenu_RadioButtonHover);
 
-	this->checked->SetClickCallback(CC_CALLBACK_1(RadioButton::OnUncheck, this));
-	this->unchecked->SetClickCallback(CC_CALLBACK_1(RadioButton::OnCheck, this));
+	this->checked->setClickCallback(CC_CALLBACK_1(RadioButton::onUncheck, this));
+	this->unchecked->setClickCallback(CC_CALLBACK_1(RadioButton::onCheck, this));
 
 	this->checked->setVisible(false);
 
 	this->addChild(this->unchecked);
 	this->addChild(this->checked);
 
-	this->InitializeListeners();
+	this->initializeListeners();
 }
 
 RadioButton::~RadioButton()
 {
 }
 
-void RadioButton::InitializeListeners()
+void RadioButton::initializeListeners()
 {
-	EventListenerCustom* customListener = EventListenerCustom::create(this->RadioButtonCheckEvent, CC_CALLBACK_1(RadioButton::OnGroupCheck, this));
+	EventListenerCustom* customListener = EventListenerCustom::create(this->RadioButtonCheckEvent, CC_CALLBACK_1(RadioButton::onGroupCheck, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(customListener, this);
 }
 
-void RadioButton::SetCheckCallback(std::function<void(RadioButton*)> callback)
+void RadioButton::setCheckCallback(std::function<void(RadioButton*)> callback)
 {
 	this->onCheckCallback = callback;
 }
 
-void RadioButton::OnGroupCheck(EventCustom* event)
+void RadioButton::onGroupCheck(EventCustom* event)
 {
 	int* eventGroupId = static_cast<int*>(event->getUserData());
 
 	if (*eventGroupId == this->groupId)
 	{
-		this->UncheckSilent();
+		this->uncheckSilent();
 	}
 }
 
 
-void RadioButton::OnCheck(MenuSprite* menuSprite)
+void RadioButton::onCheck(MenuSprite* menuSprite)
 {
-	this->Check();
+	this->check();
 }
 
-void RadioButton::OnUncheck(MenuSprite* menuSprite)
+void RadioButton::onUncheck(MenuSprite* menuSprite)
 {
-	this->Uncheck();
+	this->uncheck();
 }
 
-void RadioButton::Check()
+void RadioButton::check()
 {
 	this->getEventDispatcher()->dispatchCustomEvent(this->RadioButtonCheckEvent, &this->groupId);
 
@@ -78,13 +78,13 @@ void RadioButton::Check()
 	}
 }
 
-void RadioButton::Uncheck()
+void RadioButton::uncheck()
 {
 	this->checked->setVisible(false);
 	this->unchecked->setVisible(true);
 }
 
-void RadioButton::UncheckSilent()
+void RadioButton::uncheckSilent()
 {
 	this->checked->setVisible(false);
 	this->unchecked->setVisible(true);

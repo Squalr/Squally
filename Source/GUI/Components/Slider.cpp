@@ -20,9 +20,9 @@ Slider::Slider(float progress)
 
 	this->setCascadeOpacityEnabled(true);
 	this->progressClip->setCascadeOpacityEnabled(true);
-	this->SetProgress(progress);
+	this->setProgress(progress);
 
-	this->slide->SetMouseDragCallback(CC_CALLBACK_2(Slider::OnDrag, this));
+	this->slide->setMouseDragCallback(CC_CALLBACK_2(Slider::onDrag, this));
 
 	this->progressBar->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->progressClip->addChild(this->progressBar);
@@ -31,25 +31,25 @@ Slider::Slider(float progress)
 	this->addChild(this->progressClip);
 	this->addChild(this->slide);
 
-	this->InitializePositions();
+	this->initializePositions();
 }
 
 Slider::~Slider()
 {
 }
 
-void Slider::InitializePositions()
+void Slider::initializePositions()
 {
 	this->progressClip->setPosition(Vec2(-this->progressBar->getContentSize().width / 2, 0));
 	this->slide->setPosition(Vec2(this->progress * this->frame->getContentSize().width - this->frame->getContentSize().width / 2, 0));
 }
 
-void Slider::SetProgressUpdateCallback(std::function<void(float progress)> callback)
+void Slider::setProgressUpdateCallback(std::function<void(float progress)> callback)
 {
 	this->progressUpdateEvent = callback;
 }
 
-void Slider::OnDrag(MenuSprite* sprite, EventMouse* args)
+void Slider::onDrag(MenuSprite* sprite, EventMouse* args)
 {
 	Vec2 newPosition = Vec2(args->getCursorX() - this->getPositionX(), this->slide->getPosition().y);
 
@@ -62,11 +62,11 @@ void Slider::OnDrag(MenuSprite* sprite, EventMouse* args)
 		newPosition.x = this->frame->getContentSize().width / 2;
 	}
 
-	this->SetProgress((newPosition.x + this->frame->getContentSize().width / 2) / this->frame->getContentSize().width);
+	this->setProgress((newPosition.x + this->frame->getContentSize().width / 2) / this->frame->getContentSize().width);
 	this->slide->setPosition(newPosition);
 }
 
-void Slider::SetProgress(float newProgress)
+void Slider::setProgress(float newProgress)
 {
 	if (newProgress < 0.0f)
 	{

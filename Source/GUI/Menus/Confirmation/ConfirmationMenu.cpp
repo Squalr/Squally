@@ -21,11 +21,11 @@ ConfirmationMenu::ConfirmationMenu(std::string confirmationMessage, std::functio
 	this->confirmButton = MenuSprite::create(Resources::Menus_Buttons_AcceptButton, Resources::Menus_Buttons_AcceptButtonHover, Resources::Menus_Buttons_AcceptButtonClick);
 	this->confirmationLabel = Label::create(confirmationMessage, Resources::Fonts_Montserrat_Medium, 20);
 
-	this->cancelButton->SetClickCallback(CC_CALLBACK_1(ConfirmationMenu::OnCancelClick, this));
-	this->confirmButton->SetClickCallback(CC_CALLBACK_1(ConfirmationMenu::OnConfirmClick, this));
+	this->cancelButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onCancelClick, this));
+	this->confirmButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onConfirmClick, this));
 
-	this->closeButton->SetClickCallback(CC_CALLBACK_1(ConfirmationMenu::OnCloseClick, this));
-	this->closeButton->SetClickSound(Resources::Sounds_ClickBack1);
+	this->closeButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onCloseClick, this));
+	this->closeButton->setClickSound(Resources::Sounds_ClickBack1);
 
 	this->addChild(this->background);
 	this->addChild(this->pauseWindow);
@@ -43,14 +43,14 @@ void ConfirmationMenu::onEnter()
 {
 	FadeScene::onEnter();
 
-	this->background->addChild(MenuBackground::ClaimInstance());
+	this->background->addChild(MenuBackground::claimInstance());
 
-	this->InitializePositions();
+	this->initializePositions();
 
 	this->addChild(Mouse::claimInstance());
 }
 
-void ConfirmationMenu::InitializePositions()
+void ConfirmationMenu::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -61,10 +61,10 @@ void ConfirmationMenu::InitializePositions()
 	this->cancelButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - 96.0f, origin.y + visibleSize.height / 2 - 64.0f));
 	this->confirmButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 96.0f, origin.y + visibleSize.height / 2 - 64.0f));
 
-	MenuBackground::GetInstance()->InitializePositions();
+	MenuBackground::getInstance()->initializePositions();
 }
 
-void ConfirmationMenu::OnCloseClick(MenuSprite* menuSprite)
+void ConfirmationMenu::onCloseClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->popScene();
 
@@ -74,7 +74,7 @@ void ConfirmationMenu::OnCloseClick(MenuSprite* menuSprite)
 	}
 }
 
-void ConfirmationMenu::OnCancelClick(MenuSprite* menuSprite)
+void ConfirmationMenu::onCancelClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->popScene();
 
@@ -84,7 +84,7 @@ void ConfirmationMenu::OnCancelClick(MenuSprite* menuSprite)
 	}
 }
 
-void ConfirmationMenu::OnConfirmClick(MenuSprite* menuSprite)
+void ConfirmationMenu::onConfirmClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->popScene();
 
