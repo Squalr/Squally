@@ -2,7 +2,6 @@
 
 Entity::Entity()
 {
-	this->collisionGroup = Collision::CollisionGroup::Entity;
 	this->actualGravityAcceleration = Entity::gravityAcceleration;
 	this->actualJumpLaunchVelocity = Entity::jumpLaunchVelocity;
 	this->actualMaxFallSpeed = Entity::maxFallSpeed;
@@ -67,6 +66,7 @@ void Entity::InitializeListeners()
 
 	contactListener->onContactBegin = CC_CALLBACK_1(Entity::OnContactBegin, this);
 	contactListener->onContactPreSolve = CC_CALLBACK_1(Entity::OnContactUpdate, this);
+	contactListener->onContactPostSolve = CC_CALLBACK_1(Entity::OnContactUpdate, this);
 	contactListener->onContactSeparate = CC_CALLBACK_1(Entity::OnContactEnd, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
@@ -87,6 +87,16 @@ bool Entity::OnContactBegin(PhysicsContact &contact)
 		if (Collision::IsContactBelow(this, contact))
 		{
 			this->isOnGround = true;
+		}
+		break;
+	case Collision::CollisionGroup::SolidNpc:
+		if (this->collisionGroup & Collision::CollisionGroup::Enemy)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 		break;
 	}
@@ -111,6 +121,16 @@ bool Entity::OnContactUpdate(PhysicsContact &contact)
 			this->isOnGround = true;
 		}
 		break;
+	case Collision::CollisionGroup::SolidNpc:
+		if (this->collisionGroup & Collision::CollisionGroup::Enemy)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		break;
 	}
 
 	return true;
@@ -129,6 +149,16 @@ bool Entity::OnContactEnd(PhysicsContact &contact)
 	{
 	case Collision::CollisionGroup::Solid:
 		this->isOnGround = false;
+		break;
+	case Collision::CollisionGroup::SolidNpc:
+		if (this->collisionGroup & Collision::CollisionGroup::Enemy)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 		break;
 	}
 
