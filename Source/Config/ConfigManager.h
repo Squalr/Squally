@@ -8,7 +8,7 @@ using namespace cocos2d;
 class ConfigManager
 {
 public:
-	static ConfigManager * GetInstance();
+	static ConfigManager * getInstance();
 
 	enum ResolutionSetting
 	{
@@ -24,21 +24,21 @@ public:
 		R1920x1080,
 	};
 
-	void SetResolution(ResolutionSetting resolution);
-	void SetSoundVolume(float volume);
-	void SetMusicVolume(float volume);
+	void setResolution(ResolutionSetting resolution);
+	void setSoundVolume(float volume);
+	void setMusicVolume(float volume);
 
-	ResolutionSetting GetResolution();
-	float GetSoundVolume();
-	float GetMusicVolume();
+	ResolutionSetting getResolution();
+	float getSoundVolume();
+	float getMusicVolume();
 
-	void Save();
+	void save();
 
 private:
 	ConfigManager();
 	~ConfigManager();
 
-	void LoadConfigFileMap();
+	void loadConfigFileMap();
 
 	ValueMap valueMap;
 

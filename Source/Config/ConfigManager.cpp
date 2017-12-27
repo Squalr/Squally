@@ -2,7 +2,7 @@
 
 ConfigManager* ConfigManager::configManagerInstance = nullptr;
 
-ConfigManager* ConfigManager::GetInstance()
+ConfigManager* ConfigManager::getInstance()
 {
 	if (ConfigManager::configManagerInstance == nullptr)
 	{
@@ -14,24 +14,24 @@ ConfigManager* ConfigManager::GetInstance()
 
 ConfigManager::ConfigManager()
 {
-	this->LoadConfigFileMap();
+	this->loadConfigFileMap();
 }
 
 ConfigManager::~ConfigManager()
 {
 }
 
-void ConfigManager::LoadConfigFileMap()
+void ConfigManager::loadConfigFileMap()
 {
 	this->valueMap = FileUtils::getInstance()->getValueMapFromFile(FileUtils::sharedFileUtils()->getWritablePath() + "\\" + ConfigManager::ConfigFile);
 }
 
-void ConfigManager::Save()
+void ConfigManager::save()
 {
 	FileUtils::getInstance()->writeValueMapToFile(this->valueMap, FileUtils::sharedFileUtils()->getWritablePath() + "\\" + ConfigManager::ConfigFile);
 }
 
-void ConfigManager::SetResolution(ResolutionSetting resolution)
+void ConfigManager::setResolution(ResolutionSetting resolution)
 {
 	GLViewImpl* glView = (GLViewImpl*)(Director::getInstance()->getOpenGLView());
 
@@ -75,21 +75,21 @@ void ConfigManager::SetResolution(ResolutionSetting resolution)
 	this->valueMap[ConfigManager::ResolutionKey] = Value((int)resolution);
 }
 
-void ConfigManager::SetSoundVolume(float volume)
+void ConfigManager::setSoundVolume(float volume)
 {
 	this->valueMap[ConfigManager::SoundVolumeKey] = volume;
 }
 
-void ConfigManager::SetMusicVolume(float volume)
+void ConfigManager::setMusicVolume(float volume)
 {
 	this->valueMap[ConfigManager::MusicVolumeKey] = volume;
 }
 
-ConfigManager::ResolutionSetting ConfigManager::GetResolution()
+ConfigManager::ResolutionSetting ConfigManager::getResolution()
 {
-	if (!Utils::KeyExists(this->valueMap, ConfigManager::ResolutionKey))
+	if (!Utils::keyExists(this->valueMap, ConfigManager::ResolutionKey))
 	{
-		return  ResolutionSetting::FullScreen;
+		return ResolutionSetting::FullScreen;
 	}
 	else
 	{
@@ -97,9 +97,9 @@ ConfigManager::ResolutionSetting ConfigManager::GetResolution()
 	}
 }
 
-float ConfigManager::GetSoundVolume()
+float ConfigManager::getSoundVolume()
 {
-	if (Utils::KeyExists(this->valueMap, ConfigManager::SoundVolumeKey))
+	if (Utils::keyExists(this->valueMap, ConfigManager::SoundVolumeKey))
 	{
 		return this->valueMap[ConfigManager::SoundVolumeKey].asFloat();
 	}
@@ -109,9 +109,9 @@ float ConfigManager::GetSoundVolume()
 	}
 }
 
-float ConfigManager::GetMusicVolume()
+float ConfigManager::getMusicVolume()
 {
-	if (Utils::KeyExists(this->valueMap, ConfigManager::MusicVolumeKey))
+	if (Utils::keyExists(this->valueMap, ConfigManager::MusicVolumeKey))
 	{
 		return this->valueMap[ConfigManager::MusicVolumeKey].asFloat();
 	}

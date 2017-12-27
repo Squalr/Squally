@@ -26,17 +26,17 @@ protected:
 
 private:
 	void onEnter() override;
-	void OnSoundVolumeUpdate(float soundVolume);
-	void OnMusicVolumeUpdate(float musicVolume);
-	void OnFullScreenChanged(bool isFullScreen);
-	void OnResolutionChanged(RadioButton* radioButton);
-	void OnCloseClick(MenuSprite* menuSprite);
-	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	void InitializeListeners();
-	void InitializePositions();
+	void onSoundVolumeUpdate(float soundVolume);
+	void onMusicVolumeUpdate(float musicVolume);
+	void onFullScreenChanged(bool isFullScreen);
+	void onResolutionChanged(RadioButton* radioButton);
+	void onCloseClick(MenuSprite* menuSprite);
+	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void initializeListeners();
+	void initializePositions();
 
-	void ShowResolutionOptions();
-	void HideResolutionOptions();
+	void showResolutionOptions();
+	void hideResolutionOptions();
 
 	Node* background;
 	Sprite* optionsWindow;

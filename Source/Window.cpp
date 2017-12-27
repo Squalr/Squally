@@ -29,7 +29,7 @@ bool Window::applicationDidFinishLaunching()
 	Director* director = Director::getInstance();
 	GLViewImpl* glview;
 
-	switch (ConfigManager::GetInstance()->GetResolution())
+	switch (ConfigManager::getInstance()->getResolution())
 	{
 	case ConfigManager::ResolutionSetting::R1080x768:
 		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1080, 768));

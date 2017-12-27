@@ -11,7 +11,7 @@ TitleScreen * TitleScreen::create()
 
 TitleScreen::TitleScreen()
 {
-	SoundManager::GetInstance()->PlayMusicResource(Resources::Music_Will_we_get_there_Together);
+	SoundManager::getInstance()->playMusicResource(Resources::Music_Will_we_get_there_Together);
 
 	this->titleBar = Sprite::create(Resources::Menus_TitleScreen_TitleBar);
 	this->title = Sprite::create(Resources::Menus_TitleScreen_Title);
@@ -20,10 +20,10 @@ TitleScreen::TitleScreen()
 	this->optionsButton = MenuSprite::create(Resources::Menus_TitleScreen_OptionsButton, Resources::Menus_TitleScreen_OptionsButtonHover, Resources::Menus_TitleScreen_OptionsButtonClick);
 	this->exitButton = MenuSprite::create(Resources::Menus_TitleScreen_ExitButton, Resources::Menus_TitleScreen_ExitButtonHover, Resources::Menus_TitleScreen_ExitButtonClick);
 
-	this->background->SetMatrixClickCallback(CC_CALLBACK_1(TitleScreen::OnMatrixClick, this));
-	this->storyModeButton->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnStoryModeClick, this));
-	this->optionsButton->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnOptionsClick, this));
-	this->exitButton->SetClickCallback(CC_CALLBACK_1(TitleScreen::OnExitClick, this));
+	this->background->setMatrixClickCallback(CC_CALLBACK_1(TitleScreen::onMatrixClick, this));
+	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));
+	this->optionsButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onOptionsClick, this));
+	this->exitButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onExitClick, this));
 
 	this->addChild(this->background);
 	this->addChild(this->titleBar);
@@ -43,22 +43,22 @@ void TitleScreen::onEnter()
 {
 	FadeScene::onEnter();
 
-	this->background->InitializePositions();
-	this->InitializePositions();
+	this->background->initializePositions();
+	this->initializePositions();
 
 	float delay = 0.5f;
 	float duration = 0.75f;
 
-	Utils::FadeInObject(this->titleBar, delay, duration);
-	Utils::FadeInObject(this->title, delay, duration);
-	Utils::FadeInObject(this->storyModeButton, delay, duration);
-	Utils::FadeInObject(this->optionsButton, delay, duration);
-	Utils::FadeInObject(this->exitButton, delay, duration);
+	Utils::fadeInObject(this->titleBar, delay, duration);
+	Utils::fadeInObject(this->title, delay, duration);
+	Utils::fadeInObject(this->storyModeButton, delay, duration);
+	Utils::fadeInObject(this->optionsButton, delay, duration);
+	Utils::fadeInObject(this->exitButton, delay, duration);
 
 	this->addChild(Mouse::claimInstance());
 }
 
-void TitleScreen::InitializePositions()
+void TitleScreen::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -70,22 +70,22 @@ void TitleScreen::InitializePositions()
 	this->exitButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2 - 128.0f));
 }
 
-void TitleScreen::OnMatrixClick(MenuSprite* menuSprite)
+void TitleScreen::onMatrixClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->pushScene(TutorialScreen::create());
 }
 
-void TitleScreen::OnStoryModeClick(MenuSprite* menuSprite)
+void TitleScreen::onStoryModeClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->pushScene(StoryMap::create());
 }
 
-void TitleScreen::OnOptionsClick(MenuSprite* menuSprite)
+void TitleScreen::onOptionsClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->pushScene(OptionsMenu::create());
 }
 
-void TitleScreen::OnExitClick(MenuSprite* menuSprite)
+void TitleScreen::onExitClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->end();
 }

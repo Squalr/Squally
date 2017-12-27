@@ -16,9 +16,9 @@ protected:
 	~ToggleButton();
 
 private:
-	void InitializeListeners();
-	void OnToggleClick(MenuSprite* menuSprite);
-	void OnMouseMove(EventMouse* event);
+	void initializeListeners();
+	void onToggleClick(MenuSprite* menuSprite);
+	void onMouseMove(EventMouse* event);
 
 	MenuSprite* onSwitch;
 	MenuSprite* offSwitch;

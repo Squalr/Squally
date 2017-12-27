@@ -19,7 +19,7 @@ StoryMap::StoryMap()
 	this->addChild(this->titleLabel);
 	this->addChild(this->infoLabel);
 
-	this->InitializeListeners();
+	this->initializeListeners();
 }
 
 StoryMap::~StoryMap()
@@ -30,12 +30,12 @@ void StoryMap::onEnter()
 {
 	FadeScene::onEnter();
 
-	this->InitializePositions();
+	this->initializePositions();
 
 	this->addChild(Mouse::claimInstance());
 }
 
-void StoryMap::InitializePositions()
+void StoryMap::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -45,17 +45,17 @@ void StoryMap::InitializePositions()
 	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
 }
 
-void StoryMap::InitializeListeners()
+void StoryMap::initializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
 
-	listener->onKeyPressed = CC_CALLBACK_2(StoryMap::OnKeyPressed, this);
+	listener->onKeyPressed = CC_CALLBACK_2(StoryMap::onKeyPressed, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
 // Implementation of the keyboard event callback function prototype
-void StoryMap::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+void StoryMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode)
 	{

@@ -10,16 +10,16 @@ class Slider : public Node
 public:
 	static Slider * create(float progress);
 
-	void SetProgressUpdateCallback(std::function<void(float progress)> callback);
-	void InitializePositions();
+	void setProgressUpdateCallback(std::function<void(float progress)> callback);
+	void initializePositions();
 
 protected:
 	Slider(float progress);
 	~Slider();
 
 private:
-	void OnDrag(MenuSprite* sprite, EventMouse* args);
-	void SetProgress(float newProgress);
+	void onDrag(MenuSprite* sprite, EventMouse* args);
+	void setProgress(float newProgress);
 
 	MenuSprite* slide;
 	Sprite* frame;

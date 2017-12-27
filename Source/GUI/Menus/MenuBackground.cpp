@@ -2,9 +2,9 @@
 
 MenuBackground* MenuBackground::menuBackgroundInstance = nullptr;
 
-MenuBackground* MenuBackground::ClaimInstance()
+MenuBackground* MenuBackground::claimInstance()
 {
-	MenuBackground* mouse = MenuBackground::GetInstance();
+	MenuBackground* mouse = MenuBackground::getInstance();
 
 	// Free the background from it's parent
 	if (mouse->getParent() != nullptr)
@@ -15,7 +15,7 @@ MenuBackground* MenuBackground::ClaimInstance()
 	return MenuBackground::menuBackgroundInstance;
 }
 
-MenuBackground* MenuBackground::GetInstance()
+MenuBackground* MenuBackground::getInstance()
 {
 	if (menuBackgroundInstance == nullptr)
 	{
@@ -62,7 +62,7 @@ MenuBackground::~MenuBackground()
 {
 }
 
-void MenuBackground::InitializePositions()
+void MenuBackground::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();

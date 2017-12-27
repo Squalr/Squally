@@ -21,8 +21,8 @@ ToggleButton::ToggleButton(bool initialState, std::function<void(bool)> callback
 	this->clickableMenus->push_back(this->offSwitch);
 	this->clickableMenus->push_back(this->onSwitch);
 
-	this->offSwitch->SetClickCallback(CC_CALLBACK_1(ToggleButton::OnToggleClick, this));
-	this->onSwitch->SetClickCallback(CC_CALLBACK_1(ToggleButton::OnToggleClick, this));
+	this->offSwitch->setClickCallback(CC_CALLBACK_1(ToggleButton::onToggleClick, this));
+	this->onSwitch->setClickCallback(CC_CALLBACK_1(ToggleButton::onToggleClick, this));
 
 	this->addChild(this->offSwitch);
 	this->addChild(this->onSwitch);
@@ -36,23 +36,23 @@ ToggleButton::ToggleButton(bool initialState, std::function<void(bool)> callback
 		this->onSwitch->setVisible(false);
 	}
 
-	this->InitializeListeners();
+	this->initializeListeners();
 }
 
 ToggleButton::~ToggleButton()
 {
 }
 
-void ToggleButton::InitializeListeners()
+void ToggleButton::initializeListeners()
 {
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
 
-	mouseListener->onMouseMove = CC_CALLBACK_1(ToggleButton::OnMouseMove, this);
+	mouseListener->onMouseMove = CC_CALLBACK_1(ToggleButton::onMouseMove, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
 
-void ToggleButton::OnToggleClick(MenuSprite* menuSprite)
+void ToggleButton::onToggleClick(MenuSprite* menuSprite)
 {
 	if (menuSprite == offSwitch)
 	{
@@ -72,7 +72,7 @@ void ToggleButton::OnToggleClick(MenuSprite* menuSprite)
 	this->toggleCallback(this->isToggled);
 }
 
-void ToggleButton::OnMouseMove(EventMouse* event)
+void ToggleButton::onMouseMove(EventMouse* event)
 {
 	for (std::vector<MenuSprite*>::iterator it = this->clickableMenus->begin(); it != this->clickableMenus->end(); ++it)
 	{

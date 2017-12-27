@@ -6,11 +6,11 @@ using namespace cocos2d;
 class Utils
 {
 public:
-	static std::string HexAddressOf(void* address);
-	static void AccelerateParticles(ParticleSystem* particleSystem, float duration);
-	static void FadeInObject(Node* node, float delay, float duration);
-	static Rect GetSceneBounds(Node* node);
-	static bool Intersects(Node* node, Vec2 mousePos);
-	static bool KeyExists(ValueMap valueMap, std::string key);
+	static std::string hexAddressOf(void* address);
+	static void accelerateParticles(ParticleSystem* particleSystem, float duration);
+	static void fadeInObject(Node* node, float delay, float duration);
+	static Rect getSceneBounds(Node* node);
+	static bool intersects(Node* node, Vec2 mousePos);
+	static bool keyExists(ValueMap valueMap, std::string key);
 };
 

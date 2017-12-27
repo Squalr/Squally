@@ -31,12 +31,12 @@ protected:
 
 private:
 	void onEnter() override;
-	void InitializePositions();
+	void initializePositions();
 
-	void OnMatrixClick(MenuSprite* menuSprite);
-	void OnStoryModeClick(MenuSprite* menuSprite);
-	void OnOptionsClick(MenuSprite* menuSprite);
-	void OnExitClick(MenuSprite* menuSprite);
+	void onMatrixClick(MenuSprite* menuSprite);
+	void onStoryModeClick(MenuSprite* menuSprite);
+	void onOptionsClick(MenuSprite* menuSprite);
+	void onExitClick(MenuSprite* menuSprite);
 
 	TitleScreenBackground* background;
 	MenuSprite* storyModeButton;

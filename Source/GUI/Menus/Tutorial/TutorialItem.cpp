@@ -38,8 +38,8 @@ TutorialItem::TutorialItem(std::string description, std::string mapFile, int ind
 			Resources::Menus_TutorialMenu_TutorialEntrySelected);
 	}
 
-	this->startButton->SetClickCallback(CC_CALLBACK_1(TutorialItem::OnTutorialClick, this));
-	this->startButton->SetMouseOverCallback(CC_CALLBACK_1(TutorialItem::OnTutorialMouseOver, this));
+	this->startButton->setClickCallback(CC_CALLBACK_1(TutorialItem::onTutorialClick, this));
+	this->startButton->setMouseOverCallback(CC_CALLBACK_1(TutorialItem::onTutorialMouseOver, this));
 	this->setContentSize(this->frame->getContentSize());
 	this->setCascadeOpacityEnabled(true);
 
@@ -52,7 +52,7 @@ TutorialItem::~TutorialItem()
 {
 }
 
-void TutorialItem::InitializePositions()
+void TutorialItem::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -71,12 +71,12 @@ void TutorialItem::InitializePositions()
 	this->indexLabel->setPosition(Vec2(position.x + this->frame->getContentSize().width / 2 - this->startButton->getContentSize().width / 2, position.y + 20));
 }
 
-void TutorialItem::OnTutorialClick(MenuSprite* tutorialItem)
+void TutorialItem::onTutorialClick(MenuSprite* tutorialItem)
 {
 	Director::getInstance()->pushScene(Level::create(this->tutorialMapFile));
 }
 
-void TutorialItem::OnTutorialMouseOver(MenuSprite* tutorialItem)
+void TutorialItem::onTutorialMouseOver(MenuSprite* tutorialItem)
 {
 	this->onMouseOverEvent(this);
 }

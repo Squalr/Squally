@@ -13,22 +13,22 @@ class MenuSprite : public Node
 public:
 	static MenuSprite * create(std::string spriteResource, std::string spriteSelectedResource, std::string spriteClickedResource);
 
-	void SetClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick);
-	void SetMouseOverCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick);
-	void SetMouseDownCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseDown);
-	void SetMouseDragCallback(std::function<void(MenuSprite*, EventMouse* args)> onDrag);
-	void SetMouseOverSound(std::string soundResource);
-	void SetClickSound(std::string soundResource);
+	void setClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick);
+	void setMouseOverCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick);
+	void setMouseDownCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseDown);
+	void setMouseDragCallback(std::function<void(MenuSprite*, EventMouse* args)> onDrag);
+	void setMouseOverSound(std::string soundResource);
+	void setClickSound(std::string soundResource);
 
 protected:
 	MenuSprite(std::string spriteResource, std::string spriteSelectedResource, std::string spriteClickedResource);
 	~MenuSprite();
 
 private:
-	void InitializeListeners();
-	void OnMouseSpriteMove(EventCustom* args);
-	void OnMouseDown(EventMouse* event);
-	void OnMouseUp(EventMouse* event);
+	void initializeListeners();
+	void onMouseSpriteMove(EventCustom* args);
+	void onMouseDown(EventMouse* event);
+	void onMouseUp(EventMouse* event);
 
 	std::string mouseOverSound;
 	std::string clickSound;

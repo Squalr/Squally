@@ -29,12 +29,12 @@ Level::Level(std::string levelResourceFilePath)
 	this->environmentLayer = Layer::create();
 	this->hud = HUD::create();
 
-	this->LoadLevel(levelResourceFilePath);
+	this->loadLevel(levelResourceFilePath);
 
 	this->entityLayer->addChild(this->playerLayer);
 	this->entityLayer->addChild(this->enemyLayer);
 
-	this->addChild(InputManager::ClaimInstance());
+	this->addChild(InputManager::claimInstance());
 	this->addChild(this->backGroundLayer);
 	this->addChild(this->tileLayer);
 	this->addChild(this->entityLayer);
@@ -45,7 +45,7 @@ Level::Level(std::string levelResourceFilePath)
 	this->scheduleUpdate();
 	this->update(0.0f);
 
-	this->InitializeListeners();
+	this->initializeListeners();
 }
 
 Level::~Level()
@@ -90,7 +90,7 @@ void Level::update(float dt)
 	}
 }
 
-void Level::LoadLevel(std::string levelResourceFilePath)
+void Level::loadLevel(std::string levelResourceFilePath)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -124,7 +124,7 @@ void Level::LoadLevel(std::string levelResourceFilePath)
 	}
 
 	// Create midground
-	Layer* collisionLayer = Collision::InitializeCollision(collisionObjects);
+	Layer* collisionLayer = Collision::initializeCollision(collisionObjects);
 
 	Node* backgroundNode = map->getChildren().at(0);
 	Node* midgroundNode = map->getChildren().at(1);
@@ -138,16 +138,16 @@ void Level::LoadLevel(std::string levelResourceFilePath)
 	this->foregroundLayer->addChild(foregroundNode);
 }
 
-void Level::InitializeListeners()
+void Level::initializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
-	listener->onKeyPressed = CC_CALLBACK_2(Level::OnKeyPressed, this);
+	listener->onKeyPressed = CC_CALLBACK_2(Level::onKeyPressed, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
 // Implementation of the keyboard event callback function prototype
-void Level::OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode)
 	{

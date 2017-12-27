@@ -8,9 +8,9 @@ using namespace cocos2d;
 class Collision
 {
 public:
-	static Layer* InitializeCollision(ValueVector collisionObjects);
-	static PhysicsShape* GetCollidingObject(PhysicsBody* self, PhysicsContact &contact);
-	static bool IsContactBelow(Node* node, PhysicsContact &contact);
+	static Layer* initializeCollision(ValueVector collisionObjects);
+	static PhysicsShape* getCollidingObject(PhysicsBody* self, PhysicsContact &contact);
+	static bool isContactBelow(Node* node, PhysicsContact &contact);
 
 	const static enum CollisionGroup
 	{

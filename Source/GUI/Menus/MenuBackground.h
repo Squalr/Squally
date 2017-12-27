@@ -11,10 +11,10 @@ using namespace cocos2d;
 class MenuBackground : public Node
 {
 public:
-	static MenuBackground * ClaimInstance();
-	static MenuBackground * GetInstance();
+	static MenuBackground * claimInstance();
+	static MenuBackground * getInstance();
 
-	void InitializePositions();
+	void initializePositions();
 
 private:
 	MenuBackground();

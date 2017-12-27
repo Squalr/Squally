@@ -25,19 +25,19 @@ MenuLabel::MenuLabel(std::string labelText, std::string fontResource, float font
 
 	this->setContentSize(this->label->getContentSize());
 
-	this->InitializeListeners();
+	this->initializeListeners();
 }
 
 MenuLabel::~MenuLabel()
 {
 }
 
-void MenuLabel::SetCallback(std::function<void(MenuLabel*)> callback)
+void MenuLabel::setCallback(std::function<void(MenuLabel*)> callback)
 {
 	this->menuOnMouseClick = callback;
 }
 
-void MenuLabel::SetText(std::string text)
+void MenuLabel::setText(std::string text)
 {
 	this->label->setString(text);
 	this->labelHighlighted->setString(text);
@@ -45,21 +45,21 @@ void MenuLabel::SetText(std::string text)
 	this->setContentSize(this->label->getContentSize());
 }
 
-void MenuLabel::InitializeListeners()
+void MenuLabel::initializeListeners()
 {
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
 
-	mouseListener->onMouseMove = CC_CALLBACK_1(MenuLabel::OnMouseMove, this);
-	mouseListener->onMouseDown = CC_CALLBACK_1(MenuLabel::OnMouseDown, this);
+	mouseListener->onMouseMove = CC_CALLBACK_1(MenuLabel::onMouseMove, this);
+	mouseListener->onMouseDown = CC_CALLBACK_1(MenuLabel::onMouseDown, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
 
-void MenuLabel::OnMouseMove(EventMouse* event)
+void MenuLabel::onMouseMove(EventMouse* event)
 {
 	if (this->menuOnMouseClick != nullptr && this->isVisible())
 	{
-		if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
+		if (Utils::intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{
 			this->labelHighlighted->enableOutline(*highlightColor, highlightOutlineSize);
 		}
@@ -70,11 +70,11 @@ void MenuLabel::OnMouseMove(EventMouse* event)
 	}
 }
 
-void MenuLabel::OnMouseDown(EventMouse* event)
+void MenuLabel::onMouseDown(EventMouse* event)
 {
 	if (this->menuOnMouseClick != nullptr && this->isVisible())
 	{
-		if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
+		if (Utils::intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{
 			this->menuOnMouseClick(this);
 		}

@@ -11,7 +11,7 @@ class TutorialItem : public Node
 {
 public:
 	static TutorialItem * create(std::string description, std::string mapFile, int index, std::function<void(TutorialItem*)> onMouseOver);
-	void InitializePositions();
+	void initializePositions();
 
 	MenuSprite* startButton;
 
@@ -26,8 +26,8 @@ protected:
 	~TutorialItem();
 
 private:
-	void OnTutorialClick(MenuSprite* tutorialItem);
-	void OnTutorialMouseOver(MenuSprite* tutorialItem);
+	void onTutorialClick(MenuSprite* tutorialItem);
+	void onTutorialMouseOver(MenuSprite* tutorialItem);
 
 	std::function<void(TutorialItem*)> onMouseOverEvent;
 	bool isLevelComplete;

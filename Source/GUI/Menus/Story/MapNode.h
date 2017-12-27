@@ -12,7 +12,7 @@ class MapNode : public Node
 public:
 	static MapNode * create(std::string mapName, std::string mapFile, Vec2 position);
 
-	void SetCallBack(std::function<void(MapNode*)> onMouseOver);
+	void setCallBack(std::function<void(MapNode*)> onMouseOver);
 
 	std::string nodeMapName;
 	std::string nodeMapFile;
@@ -22,9 +22,9 @@ protected:
 	~MapNode();
 
 private:
-	void InitializeListeners();
-	void OnMouseMove(EventMouse* event);
-	void OnMouseDown(EventMouse* event);
+	void initializeListeners();
+	void onMouseMove(EventMouse* event);
+	void onMouseDown(EventMouse* event);
 
 	std::function<void(MapNode*)> onMouseOverEvent;
 

@@ -9,10 +9,10 @@ using namespace experimental;
 class HackerMode : public Node
 {
 public:
-	static HackerMode * GetInstance();
-	std::string GetHackerModeAddressHex();
+	static HackerMode * getInstance();
+	std::string getHackerModeAddressHex();
 
-	const std::string HackerModeEnabledEvent = "hacker_mode_enabled_event";
+	static const std::string HackerModeEnabledEvent;
 
 private:
 	HackerMode();
