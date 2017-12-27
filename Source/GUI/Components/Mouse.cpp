@@ -12,7 +12,7 @@ Mouse* Mouse::claimInstance()
 		mouse->getParent()->removeChild(Mouse::mouseInstance);
 	}
 
-	Mouse::mouseInstance->InitializeListeners();
+	Mouse::mouseInstance->initializeListeners();
 
 	return Mouse::mouseInstance;
 }
@@ -45,7 +45,7 @@ Mouse::~Mouse()
 {
 }
 
-void Mouse::SetCanClick(bool canClick)
+void Mouse::setCanClick(bool canClick)
 {
 	if (canClick)
 	{
@@ -59,20 +59,20 @@ void Mouse::SetCanClick(bool canClick)
 	}
 }
 
-void Mouse::InitializeListeners()
+void Mouse::initializeListeners()
 {
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
 
-	mouseListener->onMouseMove = CC_CALLBACK_1(Mouse::OnMouseMove, this);
+	mouseListener->onMouseMove = CC_CALLBACK_1(Mouse::onMouseMove, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
 
-void Mouse::OnMouseMove(EventMouse* event)
+void Mouse::onMouseMove(EventMouse* event)
 {
 	this->mouseSpriteIdle->setPosition(Vec2(event->getCursorX(), event->getCursorY()));
 	this->mouseSpritePoint->setPosition(Vec2(event->getCursorX(), event->getCursorY()));
 
-	this->SetCanClick(false);
+	this->setCanClick(false);
 	this->getEventDispatcher()->dispatchCustomEvent(this->MouseMoveEvent, &MouseEventArgs(event->getCursorX(), event->getCursorY(), event));
 }

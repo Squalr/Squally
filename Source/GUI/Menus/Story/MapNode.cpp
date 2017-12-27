@@ -26,31 +26,31 @@ MapNode::MapNode(std::string mapName, std::string mapFile, Vec2 position)
 	this->addChild(this->sprite);
 	this->addChild(this->spriteSelected);
 
-	this->InitializeListeners();
+	this->initializeListeners();
 }
 
 MapNode::~MapNode()
 {
 }
 
-void MapNode::SetCallBack(std::function<void(MapNode*)> onMouseOver)
+void MapNode::setCallBack(std::function<void(MapNode*)> onMouseOver)
 {
 	this->onMouseOverEvent = onMouseOver;
 }
 
-void MapNode::InitializeListeners()
+void MapNode::initializeListeners()
 {
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
 
-	mouseListener->onMouseMove = CC_CALLBACK_1(MapNode::OnMouseMove, this);
-	mouseListener->onMouseDown = CC_CALLBACK_1(MapNode::OnMouseDown, this);
+	mouseListener->onMouseMove = CC_CALLBACK_1(MapNode::onMouseMove, this);
+	mouseListener->onMouseDown = CC_CALLBACK_1(MapNode::onMouseDown, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
 
-void MapNode::OnMouseMove(EventMouse* event)
+void MapNode::onMouseMove(EventMouse* event)
 {
-	if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
+	if (Utils::intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 	{
 		this->sprite->setVisible(false);
 		this->spriteSelected->setVisible(true);
@@ -63,9 +63,9 @@ void MapNode::OnMouseMove(EventMouse* event)
 	}
 }
 
-void MapNode::OnMouseDown(EventMouse* event)
+void MapNode::onMouseDown(EventMouse* event)
 {
-	if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
+	if (Utils::intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 	{
 		Director::getInstance()->replaceScene(Level::create(this->nodeMapFile));
 	}

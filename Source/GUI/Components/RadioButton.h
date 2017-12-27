@@ -10,20 +10,21 @@ class RadioButton : public Node
 public:
 	static RadioButton * create(int groupIdentifier);
 
-	void Check();
-	void Uncheck();
-	void SetCheckCallback(std::function<void(RadioButton*)> callback);
+	void check();
+	void uncheck();
+	void setCheckCallback(std::function<void(RadioButton*)> callback);
 
 	const std::string RadioButtonCheckEvent = "radio_button_check_event";
 
 private:
 	RadioButton(int groupIdentifier);
 	~RadioButton();
-	void OnGroupCheck(EventCustom* event);
-	void OnUncheck(MenuSprite* menuSprite);
-	void OnCheck(MenuSprite* menuSprite);
-	void InitializeListeners();
-	void UncheckSilent();
+
+	void onGroupCheck(EventCustom* event);
+	void onUncheck(MenuSprite* menuSprite);
+	void onCheck(MenuSprite* menuSprite);
+	void initializeListeners();
+	void uncheckSilent();
 
 	MenuSprite * unchecked;
 	MenuSprite * checked;

@@ -1,10 +1,11 @@
 #include "HackerMode.h"
 
 HackerMode* HackerMode::hackerModeInstance = nullptr;
+const std::string HackerMode::HackerModeEnabledEvent = "hacker_mode_enabled_event";
 
 int HackerMode::hackerMode = 1;
 
-HackerMode* HackerMode::GetInstance()
+HackerMode* HackerMode::getInstance()
 {
 	if (HackerMode::hackerModeInstance == nullptr)
 	{
@@ -23,9 +24,9 @@ HackerMode::~HackerMode()
 {
 }
 
-std::string HackerMode::GetHackerModeAddressHex()
+std::string HackerMode::getHackerModeAddressHex()
 {
-	return Utils::HexAddressOf(&HackerMode::hackerMode);
+	return Utils::hexAddressOf(&HackerMode::hackerMode);
 }
 
 void HackerMode::update(float dt)

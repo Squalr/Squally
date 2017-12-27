@@ -2,7 +2,7 @@
 
 SoundManager* SoundManager::soundManagerInstance = nullptr;
 
-SoundManager* SoundManager::GetInstance()
+SoundManager* SoundManager::getInstance()
 {
 	if (SoundManager::soundManagerInstance == nullptr)
 	{
@@ -21,7 +21,7 @@ SoundManager::~SoundManager()
 {
 }
 
-void SoundManager::PlayMusicResource(std::string musicResource)
+void SoundManager::playMusicResource(std::string musicResource)
 {
 	if (this->backgroundMusicId != SoundManager::INVALID_ID)
 	{
@@ -31,18 +31,18 @@ void SoundManager::PlayMusicResource(std::string musicResource)
 	if (this->currentMusicResource != musicResource)
 	{
 		this->currentMusicResource = musicResource;
-		this->backgroundMusicId = AudioEngine::play2d(musicResource, true, this->GetMusicVolume());
+		this->backgroundMusicId = AudioEngine::play2d(musicResource, true, this->getMusicVolume());
 	}
 }
 
-void SoundManager::PlaySoundResource(std::string soundResource)
+void SoundManager::playSoundResource(std::string soundResource)
 {
-	AudioEngine::play2d(soundResource, false, this->GetSoundVolume());
+	AudioEngine::play2d(soundResource, false, this->getSoundVolume());
 }
 
-void SoundManager::SetMusicVolume(float volume)
+void SoundManager::setMusicVolume(float volume)
 {
-	ConfigManager::GetInstance()->SetMusicVolume(volume);
+	ConfigManager::getInstance()->setMusicVolume(volume);
 
 	if (this->backgroundMusicId != SoundManager::INVALID_ID)
 	{
@@ -50,17 +50,17 @@ void SoundManager::SetMusicVolume(float volume)
 	}
 }
 
-void SoundManager::SetSoundVolume(float volume)
+void SoundManager::setSoundVolume(float volume)
 {
-	return ConfigManager::GetInstance()->SetSoundVolume(volume);
+	return ConfigManager::getInstance()->setSoundVolume(volume);
 }
 
-float SoundManager::GetMusicVolume()
+float SoundManager::getMusicVolume()
 {
-	return ConfigManager::GetInstance()->GetMusicVolume();
+	return ConfigManager::getInstance()->getMusicVolume();
 }
 
-float SoundManager::GetSoundVolume()
+float SoundManager::getSoundVolume()
 {
-	return ConfigManager::GetInstance()->GetSoundVolume();
+	return ConfigManager::getInstance()->getSoundVolume();
 }

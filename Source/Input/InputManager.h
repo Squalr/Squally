@@ -7,12 +7,12 @@ using namespace cocos2d;
 class InputManager : public Node
 {
 public:
-	static InputManager * ClaimInstance();
-	static InputManager * GetInstance();
+	static InputManager * claimInstance();
+	static InputManager * getInstance();
 
-	bool IsKeyJustPressed(EventKeyboard::KeyCode keyCode);
-	bool IsPressed(EventKeyboard::KeyCode keyCode);
-	bool IsReleased(EventKeyboard::KeyCode keyCode);
+	bool isKeyJustPressed(EventKeyboard::KeyCode keyCode);
+	bool isPressed(EventKeyboard::KeyCode keyCode);
+	bool isReleased(EventKeyboard::KeyCode keyCode);
 
 private:
 	InputManager();
@@ -21,8 +21,8 @@ private:
 	void InitializeListeners();
 
 	void update(float dt) override;
-	void OnKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	void OnKeyReleased(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event);
 
 	std::unordered_map<EventKeyboard::KeyCode, bool>* pressedKeysPrevious;
 	std::unordered_map<EventKeyboard::KeyCode, bool>* pressedKeys;

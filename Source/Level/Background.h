@@ -16,6 +16,7 @@ public:
 protected:
 	Background();
 	~Background();
+
 	Sprite * background;
 
 private:

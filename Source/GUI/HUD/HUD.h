@@ -14,7 +14,7 @@ private:
 	~HUD();
 
 	void onEnter() override;
-	void InitializePositions();
+	void initializePositions();
 
 	Sprite* heart;
 	Sprite* healthBarFrame;

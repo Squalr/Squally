@@ -1,6 +1,6 @@
 #include "Utils.h"
 
-std::string Utils::HexAddressOf(void* address)
+std::string Utils::hexAddressOf(void* address)
 {
 	std::stringstream stream;
 
@@ -14,7 +14,7 @@ std::string Utils::HexAddressOf(void* address)
 	return hexAddress;
 }
 
-void Utils::AccelerateParticles(ParticleSystem* particleSystem, float duration)
+void Utils::accelerateParticles(ParticleSystem* particleSystem, float duration)
 {
 	const float step = 0.0166660007;
 
@@ -26,7 +26,7 @@ void Utils::AccelerateParticles(ParticleSystem* particleSystem, float duration)
 	}
 }
 
-void Utils::FadeInObject(Node* node, float delay, float duration)
+void Utils::fadeInObject(Node* node, float delay, float duration)
 {
 	Sequence* sequence = Sequence::create(DelayTime::create(delay), FadeIn::create(duration), nullptr);
 
@@ -35,7 +35,7 @@ void Utils::FadeInObject(Node* node, float delay, float duration)
 	node->runAction(sequence);
 }
 
-Rect Utils::GetSceneBounds(Node* node)
+Rect Utils::getSceneBounds(Node* node)
 {
 	Rect resultRect = node->getBoundingBox();
 	Vec2 resultCoords = Vec2(resultRect.getMinX() - resultRect.size.width / 2, resultRect.getMinY() - resultRect.size.height / 2);
@@ -52,11 +52,11 @@ Rect Utils::GetSceneBounds(Node* node)
 	return resultRect;
 }
 
-bool Utils::Intersects(Node* node, Vec2 mousePos)
+bool Utils::intersects(Node* node, Vec2 mousePos)
 {
 	Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
 
-	if (Utils::GetSceneBounds(node).intersectsRect(mouseRect))
+	if (Utils::getSceneBounds(node).intersectsRect(mouseRect))
 	{
 		return true;
 	}
@@ -66,7 +66,7 @@ bool Utils::Intersects(Node* node, Vec2 mousePos)
 	}
 }
 
-bool Utils::KeyExists(ValueMap valueMap, std::string key)
+bool Utils::keyExists(ValueMap valueMap, std::string key)
 {
 	auto pointsIterator = valueMap.find(key);
 

@@ -34,56 +34,56 @@ MenuSprite::MenuSprite(std::string spriteResource, std::string spriteSelectedRes
 	this->addChild(this->spriteClicked);
 	this->addChild(this->spriteSelected);
 
-	this->InitializeListeners();
+	this->initializeListeners();
 }
 
 MenuSprite::~MenuSprite()
 {
 }
 
-void MenuSprite::SetClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick)
+void MenuSprite::setClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick)
 {
 	this->mouseClickEvent = onMouseClick;
 }
 
-void MenuSprite::SetMouseDownCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseDown)
+void MenuSprite::setMouseDownCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseDown)
 {
 	this->mouseDownEvent = onMouseDown;
 }
 
-void MenuSprite::SetMouseDragCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseDrag)
+void MenuSprite::setMouseDragCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseDrag)
 {
 	this->mouseDragEvent = onMouseDrag;
 }
 
-void MenuSprite::SetMouseOverCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseOver)
+void MenuSprite::setMouseOverCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseOver)
 {
 	this->mouseOverEvent = onMouseOver;
 }
 
-void MenuSprite::SetMouseOverSound(std::string soundResource)
+void MenuSprite::setMouseOverSound(std::string soundResource)
 {
 	this->mouseOverSound = soundResource;
 }
 
-void MenuSprite::SetClickSound(std::string soundResource)
+void MenuSprite::setClickSound(std::string soundResource)
 {
 	this->clickSound = soundResource;
 }
 
-void MenuSprite::InitializeListeners()
+void MenuSprite::initializeListeners()
 {
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
-	EventListenerCustom* customListener = EventListenerCustom::create(Mouse::getInstance()->MouseMoveEvent, CC_CALLBACK_1(MenuSprite::OnMouseSpriteMove, this));
+	EventListenerCustom* customListener = EventListenerCustom::create(Mouse::getInstance()->MouseMoveEvent, CC_CALLBACK_1(MenuSprite::onMouseSpriteMove, this));
 
-	mouseListener->onMouseUp = CC_CALLBACK_1(MenuSprite::OnMouseUp, this);
-	mouseListener->onMouseDown = CC_CALLBACK_1(MenuSprite::OnMouseDown, this);
+	mouseListener->onMouseUp = CC_CALLBACK_1(MenuSprite::onMouseUp, this);
+	mouseListener->onMouseDown = CC_CALLBACK_1(MenuSprite::onMouseDown, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(customListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
 
-void MenuSprite::OnMouseSpriteMove(EventCustom* event)
+void MenuSprite::onMouseSpriteMove(EventCustom* event)
 {
 	Mouse::MouseEventArgs* args = static_cast<Mouse::MouseEventArgs*>(event->getUserData());
 
@@ -98,9 +98,9 @@ void MenuSprite::OnMouseSpriteMove(EventCustom* event)
 			}
 		}
 
-		if (Utils::Intersects(this, Vec2(args->mouseX, args->mouseY)))
+		if (Utils::intersects(this, Vec2(args->mouseX, args->mouseY)))
 		{
-			Mouse::getInstance()->SetCanClick(true);
+			Mouse::getInstance()->setCanClick(true);
 
 			if (args->innerEvent->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
 			{
@@ -139,11 +139,11 @@ void MenuSprite::OnMouseSpriteMove(EventCustom* event)
 	}
 }
 
-void MenuSprite::OnMouseDown(EventMouse* event)
+void MenuSprite::onMouseDown(EventMouse* event)
 {
 	if (this->mouseDragEvent != nullptr && this->isVisible())
 	{
-		if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
+		if (Utils::intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{
 			if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
 			{
@@ -153,7 +153,7 @@ void MenuSprite::OnMouseDown(EventMouse* event)
 	}
 }
 
-void MenuSprite::OnMouseUp(EventMouse* event)
+void MenuSprite::onMouseUp(EventMouse* event)
 {
 	if (this->mouseDragEvent != nullptr && this->isVisible())
 	{
@@ -165,7 +165,7 @@ void MenuSprite::OnMouseUp(EventMouse* event)
 
 	if (this->mouseClickEvent != nullptr && this->isVisible())
 	{
-		if (Utils::Intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
+		if (Utils::intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{
 			// Mouse click callback
 			this->mouseClickEvent(this, event);
@@ -173,7 +173,7 @@ void MenuSprite::OnMouseUp(EventMouse* event)
 			// Play click sound
 			if (this->clickSound.length() > 0)
 			{
-				SoundManager::GetInstance()->PlaySoundResource(this->clickSound);
+				SoundManager::getInstance()->playSoundResource(this->clickSound);
 			}
 
 			event->stopPropagation();

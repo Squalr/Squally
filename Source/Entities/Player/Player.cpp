@@ -14,7 +14,7 @@ Player* Player::create()
 
 Player::Player()
 {
-	this->inputManager = InputManager::GetInstance();
+	this->inputManager = InputManager::getInstance();
 
 	this->sprite = Sprite::create(Resources::Ingame_Sprites_Player_Idle);
 	this->hoverNode = Node::create();
@@ -45,7 +45,7 @@ Player::Player()
 	this->addChild(this->sprite);
 	this->addChild(this->hoverNode);
 
-	this->InitializeListeners();
+	this->initializeListeners();
 }
 
 Player::~Player()
@@ -59,24 +59,24 @@ void Player::update(float dt)
 	this->movement.x = 0.0f;
 	this->movement.y = 0.0f;
 
-	if (this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_A))
+	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_A))
 	{
 		this->movement.x = -1.0f;
 		this->sprite->setFlippedX(false);
 	}
 
-	if (this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW) || this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_D))
+	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_D))
 	{
 		this->movement.x = 1.0f;
 		this->sprite->setFlippedX(true);
 	}
 
-	if (this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_W) || this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_SPACE))
+	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_W) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_SPACE))
 	{
 		this->movement.y = 1.0f;
 	}
 
-	if (this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || this->inputManager->IsPressed(EventKeyboard::KeyCode::KEY_S))
+	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_S))
 	{
 		this->hoverNode->setScaleY(0.1f);
 	}
@@ -86,20 +86,20 @@ void Player::update(float dt)
 	this->hoverPhysicsBody->setVelocity(this->physicsBody->getVelocity());
 }
 
-void Player::InitializeListeners()
+void Player::initializeListeners()
 {
 	EventListenerPhysicsContact* contactListener = EventListenerPhysicsContact::create();
 
-	contactListener->onContactBegin = CC_CALLBACK_1(Player::OnContactBegin, this);
-	contactListener->onContactPreSolve = CC_CALLBACK_1(Player::OnContactUpdate, this);
-	contactListener->onContactSeparate = CC_CALLBACK_1(Player::OnContactEnd, this);
+	contactListener->onContactBegin = CC_CALLBACK_1(Player::onContactBegin, this);
+	contactListener->onContactPreSolve = CC_CALLBACK_1(Player::onContactUpdate, this);
+	contactListener->onContactSeparate = CC_CALLBACK_1(Player::onContactEnd, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 }
 
-bool Player::OnContactBegin(PhysicsContact &contact)
+bool Player::onContactBegin(PhysicsContact &contact)
 {
-	PhysicsShape* other = Collision::GetCollidingObject(this->hoverPhysicsBody, contact);
+	PhysicsShape* other = Collision::getCollidingObject(this->hoverPhysicsBody, contact);
 
 	if (other == nullptr)
 	{
@@ -109,7 +109,7 @@ bool Player::OnContactBegin(PhysicsContact &contact)
 	switch ((Collision::CollisionGroup)other->getContactTestBitmask())
 	{
 	case Collision::CollisionGroup::Solid:
-		if (Collision::IsContactBelow(this, contact))
+		if (Collision::isContactBelow(this, contact))
 		{
 			this->isOnGround = true;
 		}
@@ -119,9 +119,9 @@ bool Player::OnContactBegin(PhysicsContact &contact)
 	return true;
 }
 
-bool Player::OnContactUpdate(PhysicsContact &contact)
+bool Player::onContactUpdate(PhysicsContact &contact)
 {
-	PhysicsShape* other = Collision::GetCollidingObject(this->hoverPhysicsBody, contact);
+	PhysicsShape* other = Collision::getCollidingObject(this->hoverPhysicsBody, contact);
 
 	if (other == nullptr)
 	{
@@ -131,7 +131,7 @@ bool Player::OnContactUpdate(PhysicsContact &contact)
 	switch ((Collision::CollisionGroup)other->getContactTestBitmask())
 	{
 	case Collision::CollisionGroup::Solid:
-		if (Collision::IsContactBelow(this, contact))
+		if (Collision::isContactBelow(this, contact))
 		{
 			this->isOnGround = true;
 		}
@@ -141,9 +141,9 @@ bool Player::OnContactUpdate(PhysicsContact &contact)
 	return true;
 }
 
-bool Player::OnContactEnd(PhysicsContact &contact)
+bool Player::onContactEnd(PhysicsContact &contact)
 {
-	PhysicsShape* other = Collision::GetCollidingObject(this->hoverPhysicsBody, contact);
+	PhysicsShape* other = Collision::getCollidingObject(this->hoverPhysicsBody, contact);
 
 	if (other == nullptr)
 	{

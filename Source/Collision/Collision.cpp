@@ -1,6 +1,6 @@
 #include "Collision.h"
 
-Layer* Collision::InitializeCollision(ValueVector collisionObjects)
+Layer* Collision::initializeCollision(ValueVector collisionObjects)
 {
 	Layer* layer = Layer::create();
 
@@ -21,7 +21,7 @@ Layer* Collision::InitializeCollision(ValueVector collisionObjects)
 		float x = object.at("x").asFloat() + width / 2.0f;
 		float y = object.at("y").asFloat() + height / 2.0f;
 
-		if (Utils::KeyExists(object, "points"))
+		if (Utils::keyExists(object, "points"))
 		{
 			isPolygon = true;
 			polygonPoints = &(object.at("points").asValueVector());
@@ -78,7 +78,7 @@ Layer* Collision::InitializeCollision(ValueVector collisionObjects)
 	return layer;
 }
 
-PhysicsShape* Collision::GetCollidingObject(PhysicsBody* self, PhysicsContact& contact)
+PhysicsShape* Collision::getCollidingObject(PhysicsBody* self, PhysicsContact& contact)
 {
 	if (contact.getShapeA()->getBody() != self && contact.getShapeB()->getBody() != self)
 	{
@@ -99,7 +99,7 @@ PhysicsShape* Collision::GetCollidingObject(PhysicsBody* self, PhysicsContact& c
 	return other;
 }
 
-bool Collision::IsContactBelow(Node* node, PhysicsContact& contact)
+bool Collision::isContactBelow(Node* node, PhysicsContact& contact)
 {
 	for (int index = 0; index < contact.getContactData()->count; index++)
 	{
