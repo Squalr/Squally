@@ -67,7 +67,7 @@ bool Player::hoverContactBegin(CollisionData data)
 	switch (data.other->getCategoryGroup())
 	{
 	case CategoryGroup::G_Solid:
-		if (data.isCollisionBelow)
+		if (data.normal.y < Player::normalJumpThreshold)
 		{
 			this->isOnGround = true;
 		}
@@ -87,7 +87,7 @@ bool Player::hoverContactUpdate(CollisionData data)
 	switch (data.other->getCategoryGroup())
 	{
 	case CategoryGroup::G_Solid:
-		if (data.isCollisionBelow)
+		if (data.normal.y < Player::normalJumpThreshold)
 		{
 			this->isOnGround = true;
 		}
@@ -124,7 +124,7 @@ bool Player::contactBegin(CollisionData data)
 	switch (data.other->getCategoryGroup())
 	{
 	case CategoryGroup::G_Solid:
-		if (data.isCollisionBelow)
+		if (data.normal.y < Player::normalJumpThreshold)
 		{
 			this->isOnGround = true;
 		}
@@ -144,7 +144,7 @@ bool Player::contactUpdate(CollisionData data)
 	switch (data.other->getCategoryGroup())
 	{
 	case CategoryGroup::G_Solid:
-		if (data.isCollisionBelow)
+		if (data.normal.y < Player::normalJumpThreshold)
 		{
 			this->isOnGround = true;
 		}

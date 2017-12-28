@@ -152,7 +152,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Collision\CollisionObject.cpp" />
     <ClCompile Include="Source\Config\ConfigManager.cpp" />
     <ClCompile Include="Source\Config\SoundManager.cpp" />
-    <ClCompile Include="Source\Entities\Enemies\Enemy.cpp" />
+    <ClCompile Include="Source\Entities\Enemies\Shroom.cpp" />
     <ClCompile Include="Source\Entities\Entity.cpp" />
     <ClCompile Include="Source\Entities\Player\Hover.cpp" />
     <ClCompile Include="Source\Entities\Player\Player.cpp" />
@@ -193,7 +193,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Collision\CollisionObject.h" />
     <ClInclude Include="Source\Config\ConfigManager.h" />
     <ClInclude Include="Source\Config\SoundManager.h" />
-    <ClInclude Include="Source\Entities\Enemies\Enemy.h" />
+    <ClInclude Include="Source\Entities\Enemies\Shroom.h" />
     <ClInclude Include="Source\Entities\Entity.h" />
     <ClInclude Include="Source\Entities\Player\Hover.h" />
     <ClInclude Include="Source\Entities\Player\Player.h" />

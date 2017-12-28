@@ -21,9 +21,9 @@ protected:
 	struct CollisionData
 	{
 		CollisionObject* other;
-		bool isCollisionBelow;
+		Vec2 normal;
 
-		CollisionData(CollisionObject* other, bool isCollisionBelow) : other(other), isCollisionBelow(isCollisionBelow)
+		CollisionData(CollisionObject* other, Vec2 normal) : other(other), normal(normal)
 		{
 		}
 	};
@@ -40,10 +40,7 @@ private:
 	bool onContactEnd(PhysicsContact& contact);
 
 	CollisionData constructCollisionData(PhysicsContact& contact);
-	bool isContactBelow(Node* node, PhysicsContact &contact);
-
 	CategoryGroup getCollisionGroups();
-	bool hasSelfHandlingCollision();
 
 	CategoryGroup categoryGroup;
 	PhysicsBody * physicsBody;

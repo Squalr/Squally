@@ -15,6 +15,7 @@ public:
 	static const string Fonts_Montserrat_Medium;
 	static const string Fonts_Stormblade;
 	static const string HUD_Egg;
+	static const string HUD_HealthBar;
 	static const string HUD_HealthBarFrame;
 	static const string HUD_Heart;
 	static const string HUD_Heart0;
@@ -30,6 +31,7 @@ public:
 	static const string HUD_Heart9;
 	static const string HUD_MindPowerBack;
 	static const string HUD_MindPowerCover;
+	static const string HUD_TimeBar;
 	static const string HUD_Timer;
 	static const string Ingame_Background_Moon;
 	static const string Ingame_Background_Sun;
@@ -262,6 +264,10 @@ public:
 	static const string Ingame_Sprites_Raptor_Idle;
 	static const string Ingame_Sprites_Raptor_Jump;
 	static const string Ingame_Sprites_Raptor_Run;
+	static const string Ingame_Sprites_Shroom_ShroomWalking1;
+	static const string Ingame_Sprites_Shroom_ShroomWalking2;
+	static const string Ingame_Sprites_Shroom_ShroomWalking3;
+	static const string Ingame_Sprites_Shroom_ShroomWalking4;
 	static const string Ingame_Tiles_DunkleosteusEditor;
 	static const string Ingame_Tiles_PillarLargeRuins;
 	static const string Ingame_Tiles_PillarSmallRuins;
