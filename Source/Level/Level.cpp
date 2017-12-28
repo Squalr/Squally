@@ -64,12 +64,14 @@ void Level::update(float dt)
 	if (this->playerLayer->getPositionX() < playerXOffset - Level::cameraOffsetX)
 	{
 		this->playerLayer->setPositionX(playerXOffset - Level::cameraOffsetX);
+		this->enemyLayer->setPositionX(playerXOffset - Level::cameraOffsetX);
 		this->tileLayer->setPositionX(playerXOffset - Level::cameraOffsetX);
 		this->foregroundLayer->setPositionX(playerXOffset - Level::cameraOffsetX);
 	}
 	else if (this->playerLayer->getPositionX() > playerXOffset + Level::cameraOffsetX)
 	{
 		this->playerLayer->setPositionX(playerXOffset + Level::cameraOffsetX);
+		this->enemyLayer->setPositionX(playerXOffset + Level::cameraOffsetX);
 		this->tileLayer->setPositionX(playerXOffset + Level::cameraOffsetX);
 		this->foregroundLayer->setPositionX(playerXOffset + Level::cameraOffsetX);
 	}
@@ -79,12 +81,14 @@ void Level::update(float dt)
 	if (this->playerLayer->getPositionY() < playerYOffset - Level::cameraOffsetY)
 	{
 		this->playerLayer->setPositionY(playerYOffset - Level::cameraOffsetY);
+		this->enemyLayer->setPositionY(playerYOffset - Level::cameraOffsetY);
 		this->tileLayer->setPositionY(playerYOffset - Level::cameraOffsetY);
 		this->foregroundLayer->setPositionY(playerYOffset - Level::cameraOffsetY);
 	}
 	else if (this->playerLayer->getPositionY() > playerYOffset + Level::cameraOffsetY)
 	{
 		this->playerLayer->setPositionY(playerYOffset + Level::cameraOffsetY);
+		this->enemyLayer->setPositionY(playerYOffset + Level::cameraOffsetY);
 		this->tileLayer->setPositionY(playerYOffset + Level::cameraOffsetY);
 		this->foregroundLayer->setPositionY(playerYOffset + Level::cameraOffsetY);
 	}
@@ -120,6 +124,12 @@ void Level::loadLevel(std::string levelResourceFilePath)
 			this->player = Player::create();
 			this->player->setPosition(Vec2(object.at("x").asFloat(), object.at("y").asFloat()));
 			this->playerLayer->addChild(this->player);
+		}
+		else if (type == "shroom")
+		{
+			Shroom* shroom = Shroom::create();
+			shroom->setPosition(Vec2(object.at("x").asFloat(), object.at("y").asFloat()));
+			this->enemyLayer->addChild(shroom);
 		}
 	}
 

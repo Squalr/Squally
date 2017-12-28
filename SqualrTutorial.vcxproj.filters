@@ -168,14 +168,14 @@
     <ClCompile Include="Source\Entities\Player\Player.cpp">
       <Filter>Source\Entities\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Entities\Enemies\Enemy.cpp">
-      <Filter>Source\Entities\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Entities\Player\Hover.cpp">
       <Filter>Source\Entities\Player</Filter>
     </ClCompile>
     <ClCompile Include="Source\Collision\CollisionObject.cpp">
       <Filter>Source\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Entities\Enemies\Shroom.cpp">
+      <Filter>Source\Entities\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -284,9 +284,6 @@
     <ClInclude Include="Source\Entities\Player\Player.h">
       <Filter>Source\Entities\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entities\Enemies\Enemy.h">
-      <Filter>Source\Entities\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Entities\Player\Hover.h">
       <Filter>Source\Entities\Player</Filter>
     </ClInclude>
@@ -295,6 +292,9 @@
     </ClInclude>
     <ClInclude Include="Source\Collision\CategoryGroup.h">
       <Filter>Source\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entities\Enemies\Shroom.h">
+      <Filter>Source\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

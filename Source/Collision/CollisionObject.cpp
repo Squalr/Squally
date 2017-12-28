@@ -54,33 +54,16 @@ bool CollisionObject::contactEnd(CollisionData data)
 	return true;
 }
 
-bool CollisionObject::hasSelfHandlingCollision()
-{
-	switch (this->categoryGroup)
-	{
-	case CategoryGroup::G_Player:
-	case CategoryGroup::G_Enemy:
-	case CategoryGroup::G_EnemyFlying:
-	case CategoryGroup::G_Force:
-		return true;
-	default:
-		return false;
-	}
-}
-
 void CollisionObject::initializeEventListeners()
 {
-	if (this->hasSelfHandlingCollision())
-	{
-		EventListenerPhysicsContact * contactListener = EventListenerPhysicsContact::create();
+	EventListenerPhysicsContact * contactListener = EventListenerPhysicsContact::create();
 
-		contactListener->onContactBegin = CC_CALLBACK_1(CollisionObject::onContactBegin, this);
-		contactListener->onContactPreSolve = CC_CALLBACK_1(CollisionObject::onContactUpdate, this);
-		contactListener->onContactPostSolve = CC_CALLBACK_1(CollisionObject::onContactUpdate, this);
-		contactListener->onContactSeparate = CC_CALLBACK_1(CollisionObject::onContactEnd, this);
+	contactListener->onContactBegin = CC_CALLBACK_1(CollisionObject::onContactBegin, this);
+	contactListener->onContactPreSolve = CC_CALLBACK_1(CollisionObject::onContactUpdate, this);
+	contactListener->onContactPostSolve = CC_CALLBACK_1(CollisionObject::onContactUpdate, this);
+	contactListener->onContactSeparate = CC_CALLBACK_1(CollisionObject::onContactEnd, this);
 
-		this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
-	}
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 }
 
 bool CollisionObject::onContactBegin(PhysicsContact &contact)
@@ -121,7 +104,7 @@ bool CollisionObject::onContactEnd(PhysicsContact &contact)
 
 CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsContact& contact)
 {
-	CollisionObject::CollisionData collisionData = CollisionObject::CollisionData(nullptr, false);
+	CollisionObject::CollisionData collisionData = CollisionObject::CollisionData(nullptr, Vec2::ZERO);
 	PhysicsShape* other = nullptr;
 
 	if (contact.getShapeA()->getBody() != this->physicsBody && contact.getShapeB()->getBody() != this->physicsBody)
@@ -144,22 +127,9 @@ CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsCo
 	}
 
 	collisionData.other = (CollisionObject*)other->getBody()->getNode();
-	collisionData.isCollisionBelow = this->isContactBelow(other->getBody()->getNode(), contact);
+	collisionData.normal = contact.getContactData()->normal;
 
 	return collisionData;
-}
-
-bool CollisionObject::isContactBelow(Node* node, PhysicsContact& contact)
-{
-	for (int index = 0; index < contact.getContactData()->count; index++)
-	{
-		if (contact.getContactData()->points[index].y < node->getPositionY())
-		{
-			return true;
-		}
-	}
-
-	return false;
 }
 
 CategoryGroup CollisionObject::getCollisionGroups()

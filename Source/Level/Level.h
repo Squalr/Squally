@@ -4,6 +4,7 @@
 #include "Background.h"
 #include "Collision/Collision.h"
 #include "Entities/Player/Player.h"
+#include "Entities/Enemies/Shroom.h"
 #include "Input/InputManager.h"
 #include "GUI/HUD/HUD.h"
 #include "GUI/Components/FadeScene.h"
