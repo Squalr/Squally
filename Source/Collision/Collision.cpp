@@ -28,19 +28,19 @@ Layer* Collision::initializeCollision(ValueVector collisionObjects)
 		}
 
 		CollisionObject* collisionBox = new CollisionObject();
-		CollisionGroup collisionGroup = CollisionGroup::G_None;
+		CategoryGroup collisionGroup = CategoryGroup::G_None;
 
 		if (type == "solid")
 		{
-			collisionGroup = CollisionGroup::G_Solid;
+			collisionGroup = CategoryGroup::G_Solid;
 		}
 		else if (type == "water")
 		{
-			collisionGroup = CollisionGroup::G_Water;
+			collisionGroup = CategoryGroup::G_Water;
 		}
 		else if (type == "npc")
 		{
-			collisionGroup = CollisionGroup::G_SolidNpc;
+			collisionGroup = CategoryGroup::G_SolidNpc;
 		}
 		else
 		{
@@ -62,11 +62,11 @@ Layer* Collision::initializeCollision(ValueVector collisionObjects)
 				points[index++] = Vec2(x + deltaX, y - deltaY);
 			}
 
-			collisionBox->init(PhysicsBody::createPolygon(points, polygonPoints->size(), PhysicsMaterial(0.0f, 0.0f, 0.0f)), collisionGroup);
+			collisionBox->init(PhysicsBody::createPolygon(points, polygonPoints->size(), PhysicsMaterial(0.0f, 0.0f, 0.0f)), collisionGroup, false);
 		}
 		else
 		{
-			collisionBox->init(PhysicsBody::createBox(Size(width, height), PhysicsMaterial(0.0f, 0.0f, 0.0f)), collisionGroup);
+			collisionBox->init(PhysicsBody::createBox(Size(width, height), PhysicsMaterial(0.0f, 0.0f, 0.0f)), collisionGroup, false);
 			collisionBox->setPosition(x, y);
 		}
 

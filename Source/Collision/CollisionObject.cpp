@@ -8,36 +8,18 @@ CollisionObject::~CollisionObject()
 {
 }
 
-void CollisionObject::init(PhysicsBody* initPhysicsBody, CollisionGroup initCollisionGroup, CollisionGroup initCollidesWith)
+void CollisionObject::init(PhysicsBody* initPhysicsBody, CategoryGroup initCategoryGroup, bool isDynamic)
 {
 	this->physicsBody = initPhysicsBody;
-	this->collisionGroup = initCollisionGroup;
-	this->collidesWith = initCollidesWith;
-
-	this->physicsBody->setCategoryBitmask(this->collisionGroup);
-	this->physicsBody->setCollisionBitmask(this->collidesWith);
-	this->physicsBody->setContactTestBitmask(this->collidesWith);
+	this->categoryGroup = initCategoryGroup;
 
 	this->physicsBody->setRotationEnable(false);
+	this->physicsBody->setDynamic(isDynamic);
 	this->setPhysicsBody(initPhysicsBody);
 
-	this->initializeEventListeners();
-}
-
-// Constructor for static objects
-void CollisionObject::init(PhysicsBody* initPhysicsBody, CollisionGroup initCollisionGroup)
-{
-	this->physicsBody = initPhysicsBody;
-	this->collisionGroup = initCollisionGroup;
-	this->collidesWith = CollisionGroup::SET_All;
-
-	this->physicsBody->setCategoryBitmask(this->collisionGroup);
-	this->physicsBody->setCollisionBitmask(this->collidesWith);
-	this->physicsBody->setContactTestBitmask(this->collidesWith);
-
-	this->physicsBody->setRotationEnable(false);
-	this->physicsBody->setDynamic(false);
-	this->setPhysicsBody(initPhysicsBody);
+	this->physicsBody->setCategoryBitmask(this->categoryGroup);
+	this->physicsBody->setCollisionBitmask(this->getCollisionGroups());
+	this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
 
 	this->initializeEventListeners();
 }
@@ -52,9 +34,9 @@ void CollisionObject::setVelocity(Vec2 velocity)
 	this->physicsBody->setVelocity(velocity);
 }
 
-CollisionGroup CollisionObject::getCollisionGroup()
+CategoryGroup CollisionObject::getCategoryGroup()
 {
-	return this->collisionGroup;
+	return this->categoryGroup;
 }
 
 bool CollisionObject::contactBegin(CollisionData data)
@@ -72,16 +54,33 @@ bool CollisionObject::contactEnd(CollisionData data)
 	return true;
 }
 
+bool CollisionObject::hasSelfHandlingCollision()
+{
+	switch (this->categoryGroup)
+	{
+	case CategoryGroup::G_Player:
+	case CategoryGroup::G_Enemy:
+	case CategoryGroup::G_EnemyFlying:
+	case CategoryGroup::G_Force:
+		return true;
+	default:
+		return false;
+	}
+}
+
 void CollisionObject::initializeEventListeners()
 {
-	EventListenerPhysicsContact* contactListener = EventListenerPhysicsContact::create();
+	if (this->hasSelfHandlingCollision())
+	{
+		EventListenerPhysicsContact * contactListener = EventListenerPhysicsContact::create();
 
-	contactListener->onContactBegin = CC_CALLBACK_1(CollisionObject::onContactBegin, this);
-	contactListener->onContactPreSolve = CC_CALLBACK_1(CollisionObject::onContactUpdate, this);
-	// contactListener->onContactPostSolve = CC_CALLBACK_1(CollisionObject::onContactUpdate, this);
-	contactListener->onContactSeparate = CC_CALLBACK_1(CollisionObject::onContactEnd, this);
+		contactListener->onContactBegin = CC_CALLBACK_1(CollisionObject::onContactBegin, this);
+		contactListener->onContactPreSolve = CC_CALLBACK_1(CollisionObject::onContactUpdate, this);
+		contactListener->onContactPostSolve = CC_CALLBACK_1(CollisionObject::onContactUpdate, this);
+		contactListener->onContactSeparate = CC_CALLBACK_1(CollisionObject::onContactEnd, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
+		this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
+	}
 }
 
 bool CollisionObject::onContactBegin(PhysicsContact &contact)
@@ -90,7 +89,7 @@ bool CollisionObject::onContactBegin(PhysicsContact &contact)
 
 	if (data.other == nullptr)
 	{
-		return false;
+		return true;
 	}
 
 	return this->contactBegin(data);
@@ -102,7 +101,7 @@ bool CollisionObject::onContactUpdate(PhysicsContact &contact)
 
 	if (data.other == nullptr)
 	{
-		return false;
+		return true;
 	}
 
 	return this->contactUpdate(data);
@@ -114,7 +113,7 @@ bool CollisionObject::onContactEnd(PhysicsContact &contact)
 
 	if (data.other == nullptr)
 	{
-		return false;
+		return true;
 	}
 
 	return this->contactEnd(data);
@@ -161,4 +160,86 @@ bool CollisionObject::isContactBelow(Node* node, PhysicsContact& contact)
 	}
 
 	return false;
+}
+
+CategoryGroup CollisionObject::getCollisionGroups()
+{
+	switch (this->categoryGroup)
+	{
+	case CategoryGroup::G_Solid:
+		return (CategoryGroup)(
+			CategoryGroup::G_Player
+			| CategoryGroup::G_Enemy
+			| CategoryGroup::G_EnemyFlying
+			| CategoryGroup::G_Force
+			);
+	case CategoryGroup::G_PassThrough:
+		return (CategoryGroup)(
+			CategoryGroup::G_Player
+			| CategoryGroup::G_Enemy
+			| CategoryGroup::G_EnemyFlying
+			| CategoryGroup::G_Force
+			);
+	case CategoryGroup::G_Player:
+		return (CategoryGroup)(
+			CategoryGroup::G_Enemy
+			| CategoryGroup::G_Force
+			| CategoryGroup::G_EnemyFlying
+			| CategoryGroup::G_Solid
+			| CategoryGroup::G_PassThrough
+			| CategoryGroup::G_SolidNpc
+			| CategoryGroup::G_Lava
+			);
+	case CategoryGroup::G_Enemy:
+		return (CategoryGroup)(
+			CategoryGroup::G_Player
+			| CategoryGroup::G_Force
+			| CategoryGroup::G_Solid
+			| CategoryGroup::G_PassThrough
+			| CategoryGroup::G_SolidNpc
+			| CategoryGroup::G_Lava
+			);
+	case CategoryGroup::G_EnemyFlying:
+		return (CategoryGroup)(
+			CategoryGroup::G_Player
+			| CategoryGroup::G_Force
+			| CategoryGroup::G_Solid
+			| CategoryGroup::G_PassThrough
+			| CategoryGroup::G_SolidNpc
+			| CategoryGroup::G_SolidFlyingNpc
+			| CategoryGroup::G_Lava
+			);
+	case CategoryGroup::G_Force:
+		return (CategoryGroup)(
+			CategoryGroup::G_Player
+			| CategoryGroup::G_Enemy
+			| CategoryGroup::G_EnemyFlying
+			| CategoryGroup::G_Solid
+			| CategoryGroup::G_PassThrough
+			| CategoryGroup::G_SolidNpc
+			| CategoryGroup::G_SolidFlyingNpc
+			| CategoryGroup::G_Lava
+			);
+	case CategoryGroup::G_SolidNpc:
+		return (CategoryGroup)(
+			CategoryGroup::G_Enemy
+			| CategoryGroup::G_EnemyFlying
+			);
+	case CategoryGroup::G_SolidFlyingNpc:
+		return (CategoryGroup)(
+			CategoryGroup::G_EnemyFlying
+			);
+	case CategoryGroup::G_Water:
+		return (CategoryGroup)(
+			CategoryGroup::G_Player
+			| CategoryGroup::G_Enemy
+			);
+	case CategoryGroup::G_Lava:
+		return (CategoryGroup)(
+			CategoryGroup::G_Player
+			| CategoryGroup::G_Enemy
+			);
+	default:
+		return CategoryGroup::G_None;
+	}
 }

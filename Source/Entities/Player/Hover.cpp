@@ -21,7 +21,7 @@ Hover::Hover(Entity* initParent)
 	this->setPosition(0, -this->parent->getHeight() / 2);
 	this->setContentSize(Size(0, Hover::hoverHeight));
 
-	this->init(PhysicsBody::createBox(Size(this->parent->getWidth(), Hover::hoverHeight)), CollisionGroup::G_Force, CollisionGroup::SET_All);
+	this->init(PhysicsBody::createBox(Size(this->parent->getWidth(), Hover::hoverHeight)), CategoryGroup::G_Force, true);
 
 	FiniteTimeAction* bounceY1 = EaseSineInOut::create(ScaleTo::create(3.0f, 1.0f, 0.25f));
 	FiniteTimeAction* bounceY2 = EaseSineInOut::create(ScaleTo::create(3.0f, 1.0f, 1.0f));

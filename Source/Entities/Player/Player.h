@@ -3,7 +3,7 @@
 #include "Resources.h"
 #include "Entities/Entity.h"
 #include "Entities/Player/Hover.h"
-#include "Collision/CollisionGroup.h"
+#include "Collision/CategoryGroup.h"
 #include "Input/InputManager.h"
 
 using namespace cocos2d;
