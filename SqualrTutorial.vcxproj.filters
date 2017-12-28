@@ -174,9 +174,6 @@
     <ClCompile Include="Source\Entities\Player\Hover.cpp">
       <Filter>Source\Entities\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Collision\CollisionManager.cpp">
-      <Filter>Source\Collision</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Collision\CollisionObject.cpp">
       <Filter>Source\Collision</Filter>
     </ClCompile>
@@ -293,10 +290,10 @@
     <ClInclude Include="Source\Entities\Player\Hover.h">
       <Filter>Source\Entities\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Collision\CollisionManager.h">
+    <ClInclude Include="Source\Collision\CollisionObject.h">
       <Filter>Source\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Collision\CollisionObject.h">
+    <ClInclude Include="Source\Collision\CollisionGroup.h">
       <Filter>Source\Collision</Filter>
     </ClInclude>
   </ItemGroup>

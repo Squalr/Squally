@@ -2,10 +2,11 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Collision/Collision.h"
+#include "Collision/CollisionObject.h"
 
 using namespace cocos2d;
 
-class Entity : public Node
+class Entity : public CollisionObject
 {
 public:
 	float getWidth();
@@ -17,17 +18,12 @@ protected:
 
 	void onEnter() override;
 	void update(float) override;
-	void initializeListeners();
-	bool onContactBegin(PhysicsContact& contact);
-	bool onContactUpdate(PhysicsContact& contact);
-	bool onContactEnd(PhysicsContact& contact);
+	bool contactBegin(CollisionObject* other) override;
+	bool contactUpdate(CollisionObject* other) override;
+	bool contactEnd(CollisionObject* other) override;
 
 	Sprite * sprite;
-
 	Vec2 movement;
-
-	PhysicsBody * physicsBody;
-	Collision::CollisionGroup collisionGroup;
 
 	bool isOnGround;
 
