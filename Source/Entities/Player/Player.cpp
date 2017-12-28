@@ -17,7 +17,7 @@ Player::Player()
 	this->inputManager = InputManager::getInstance();
 
 	this->sprite = Sprite::create(Resources::Ingame_Sprites_Player_Idle);
-	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CollisionGroup::G_Player, CollisionGroup::HELPER_Player);
+	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CategoryGroup::G_Player, true);
 	this->hover = Hover::create(this);
 
 	this->hover->setContactBeginCallback(CC_CALLBACK_1(Player::hoverContactBegin, this));
@@ -62,86 +62,116 @@ void Player::update(float dt)
 	}
 }
 
-bool Player::contactBegin(CollisionData data)
-{
-	switch (data.other->getCollisionGroup())
-	{
-	case CollisionGroup::G_Solid:
-		if (data.isCollisionBelow)
-		{
-			this->isOnGround = true;
-		}
-		break;
-	}
-
-	return true;
-}
-
-bool Player::contactUpdate(CollisionData data)
-{
-	switch (data.other->getCollisionGroup())
-	{
-	case CollisionGroup::G_Solid:
-		if (data.isCollisionBelow)
-		{
-			this->isOnGround = true;
-		}
-		break;
-	}
-
-	return true;
-}
-
-bool Player::contactEnd(CollisionData data)
-{
-	switch (data.other->getCollisionGroup())
-	{
-	case CollisionGroup::G_Solid:
-		this->isOnGround = false;
-		break;
-	}
-
-	return true;
-}
-
 bool Player::hoverContactBegin(CollisionData data)
 {
-	switch (data.other->getCollisionGroup())
+	switch (data.other->getCategoryGroup())
 	{
-	case CollisionGroup::G_Solid:
+	case CategoryGroup::G_Solid:
 		if (data.isCollisionBelow)
 		{
 			this->isOnGround = true;
 		}
-		break;
+		return true;
+	case CategoryGroup::G_Player:
+		return true;
+	case CategoryGroup::G_SolidNpc:
+	case CategoryGroup::G_SolidFlyingNpc:
+		return false;
 	}
 
-	return true;
+	return false;
 }
 
 bool Player::hoverContactUpdate(CollisionData data)
 {
-	switch (data.other->getCollisionGroup())
+	switch (data.other->getCategoryGroup())
 	{
-	case CollisionGroup::G_Solid:
+	case CategoryGroup::G_Solid:
 		if (data.isCollisionBelow)
 		{
 			this->isOnGround = true;
 		}
-		break;
+		return true;
+	case CategoryGroup::G_Player:
+		return true;
+	case CategoryGroup::G_SolidNpc:
+	case CategoryGroup::G_SolidFlyingNpc:
+		return false;
 	}
 
-	return true;
+	return false;
 }
 
 bool Player::hoverContactEnd(CollisionData data)
 {
-	switch (data.other->getCollisionGroup())
+	switch (data.other->getCategoryGroup())
 	{
-	case CollisionGroup::G_Solid:
+	case CategoryGroup::G_Solid:
 		this->isOnGround = false;
-		break;
+		return true;
+	case CategoryGroup::G_Player:
+		return true;
+	case CategoryGroup::G_SolidNpc:
+	case CategoryGroup::G_SolidFlyingNpc:
+		return false;
 	}
 
-	return true;
+	return false;
+}
+
+bool Player::contactBegin(CollisionData data)
+{
+	switch (data.other->getCategoryGroup())
+	{
+	case CategoryGroup::G_Solid:
+		if (data.isCollisionBelow)
+		{
+			this->isOnGround = true;
+		}
+		return true;
+	case CategoryGroup::G_Force:
+		return true;
+	case CategoryGroup::G_SolidNpc:
+	case CategoryGroup::G_SolidFlyingNpc:
+		return false;
+	}
+
+	return false;
+}
+
+bool Player::contactUpdate(CollisionData data)
+{
+	switch (data.other->getCategoryGroup())
+	{
+	case CategoryGroup::G_Solid:
+		if (data.isCollisionBelow)
+		{
+			this->isOnGround = true;
+		}
+		return true;
+	case CategoryGroup::G_Force:
+		return true;
+	case CategoryGroup::G_SolidNpc:
+	case CategoryGroup::G_SolidFlyingNpc:
+		return false;
+	}
+
+	return false;
+}
+
+bool Player::contactEnd(CollisionData data)
+{
+	switch (data.other->getCategoryGroup())
+	{
+	case CategoryGroup::G_Solid:
+		this->isOnGround = false;
+		return true;
+	case CategoryGroup::G_Force:
+		return true;
+	case CategoryGroup::G_SolidNpc:
+	case CategoryGroup::G_SolidFlyingNpc:
+		return false;
+	}
+
+	return false;
 }

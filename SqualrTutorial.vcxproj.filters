@@ -293,7 +293,7 @@
     <ClInclude Include="Source\Collision\CollisionObject.h">
       <Filter>Source\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Collision\CollisionGroup.h">
+    <ClInclude Include="Source\Collision\CategoryGroup.h">
       <Filter>Source\Collision</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
-#include "Collision/CollisionGroup.h"
+#include "Collision/CategoryGroup.h"
 
 using namespace cocos2d;
 
@@ -11,10 +11,9 @@ public:
 	CollisionObject();
 	~CollisionObject();
 
-	void init(PhysicsBody* initPhysicsBody, CollisionGroup initCollisionGroup, CollisionGroup initCollidesWith);
-	void init(PhysicsBody* initPhysicsBody, CollisionGroup initCollisionGroup);
+	void init(PhysicsBody* initPhysicsBody, CategoryGroup initCategoryGroup, bool isDynamic);
 
-	CollisionGroup getCollisionGroup();
+	CategoryGroup getCategoryGroup();
 	Vec2 getVelocity();
 	void setVelocity(Vec2 velocity);
 
@@ -43,7 +42,9 @@ private:
 	CollisionData constructCollisionData(PhysicsContact& contact);
 	bool isContactBelow(Node* node, PhysicsContact &contact);
 
-	CollisionGroup collisionGroup;
-	CollisionGroup collidesWith;
+	CategoryGroup getCollisionGroups();
+	bool hasSelfHandlingCollision();
+
+	CategoryGroup categoryGroup;
 	PhysicsBody * physicsBody;
 };
