@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Entities/Entity.h"
+#include "Entities/Player/Hover.h"
 #include "Collision/CollisionGroup.h"
 #include "Input/InputManager.h"
 
@@ -16,6 +17,12 @@ public:
 	static Vec2 position;
 
 protected:
+	bool contactBegin(CollisionData data) override;
+	bool contactUpdate(CollisionData data) override;
+	bool contactEnd(CollisionData data) override;
+	bool hoverContactBegin(CollisionData data);
+	bool hoverContactUpdate(CollisionData data);
+	bool hoverContactEnd(CollisionData data);
 
 private:
 	Player();
@@ -26,8 +33,5 @@ private:
 	bool canJump;
 
 	InputManager* inputManager;
-	PhysicsBody* hoverPhysicsBody;
-	Node* hoverNode;
-
-	const float hoverHeight = 96.0f;
+	Hover* hover;
 };

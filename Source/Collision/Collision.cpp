@@ -28,7 +28,7 @@ Layer* Collision::initializeCollision(ValueVector collisionObjects)
 		}
 
 		CollisionObject* collisionBox = new CollisionObject();
-		CollisionGroup collisionGroup;
+		CollisionGroup collisionGroup = CollisionGroup::G_None;
 
 		if (type == "solid")
 		{
@@ -74,17 +74,4 @@ Layer* Collision::initializeCollision(ValueVector collisionObjects)
 	}
 
 	return layer;
-}
-
-bool Collision::isContactBelow(Node* node, PhysicsContact& contact)
-{
-	for (int index = 0; index < contact.getContactData()->count; index++)
-	{
-		if (contact.getContactData()->points[index].y < node->getPositionY())
-		{
-			return true;
-		}
-	}
-
-	return false;
 }

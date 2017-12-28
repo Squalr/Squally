@@ -17,12 +17,12 @@ Entity::~Entity()
 
 void Entity::onEnter()
 {
-	Node::onEnter();
+	CollisionObject::onEnter();
 }
 
 void Entity::update(float dt)
 {
-	Node::update(dt);
+	CollisionObject::update(dt);
 
 	Vec2 velocity = this->getVelocity();
 
@@ -51,89 +51,12 @@ void Entity::update(float dt)
 		velocity.y -= this->actualGravityAcceleration * dt;
 	}
 
-	//velocity.y += this->actualGravityAcceleration * dt;
-	//velocity.y += this->actualGravityAcceleration * dt;
-
 	// Prevent fast speeds
 	//this->velocity.x = MathHelper.Clamp(Velocity.X, -MaxMoveSpeed, MaxMoveSpeed);
 	//this->velocity.y = MathHelper.Clamp(Velocity.Y, -ActualMaxFallSpeed, ActualMaxFallSpeed);
 
 	// Apply velocity
 	this->setVelocity(velocity);
-}
-
-bool Entity::contactBegin(CollisionObject* other)
-{
-	/*
-
-	PhysicsShape* other = Collision::getCollidingObject(this->physicsBody, contact);
-
-	if (other == nullptr)
-	{
-		return true;
-	}
-
-	switch ((Collision::CollisionGroup)other->getContactTestBitmask())
-	{
-	case Collision::CollisionGroup::Solid:
-		if (Collision::isContactBelow(this, contact))
-		{
-			this->isOnGround = true;
-		}
-		break;
-	case Collision::CollisionGroup::SolidNpc:
-		if (this->collisionGroup & Collision::CollisionGroup::Enemy)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		break;
-	}
-
-	return true;
-	*/
-	return true;
-}
-
-bool Entity::contactUpdate(CollisionObject* other)
-{
-	return true;
-}
-
-bool Entity::contactEnd(CollisionObject* other)
-{
-	/*
-
-	PhysicsShape* other = Collision::getCollidingObject(this->physicsBody, contact);
-
-	if (other == nullptr)
-	{
-		return true;
-	}
-
-	switch ((Collision::CollisionGroup)other->getContactTestBitmask())
-	{
-	case Collision::CollisionGroup::Solid:
-		this->isOnGround = false;
-		break;
-	case Collision::CollisionGroup::SolidNpc:
-		if (this->collisionGroup & Collision::CollisionGroup::Enemy)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		break;
-	}
-
-	return true;
-	*/
-	return true;
 }
 
 float Entity::getWidth()
