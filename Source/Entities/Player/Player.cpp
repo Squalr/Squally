@@ -17,27 +17,15 @@ Player::Player()
 	this->inputManager = InputManager::getInstance();
 
 	this->sprite = Sprite::create(Resources::Ingame_Sprites_Player_Idle);
-	this->hoverNode = Node::create();
+	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CollisionGroup::G_Player, CollisionGroup::HELPER_Player);
+	this->hover = Hover::create(this);
 
-	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CollisionGroup::G_Player, CollisionGroup::SET_Player);
-	this->hoverPhysicsBody = PhysicsBody::createBox(Size(this->sprite->getContentSize().width, Player::hoverHeight));
-
-	this->hoverNode->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->hoverNode->setPosition(0, -this->sprite->getContentSize().height / 2);
-	this->hoverNode->setContentSize(Size(0, Player::hoverHeight));
-
-	this->hoverPhysicsBody->setRotationEnable(false);
-	this->hoverPhysicsBody->setGravityEnable(false);
-
-	FiniteTimeAction* bounceY1 = EaseSineInOut::create(ScaleTo::create(3.0f, 1.0f, 0.25f));
-	FiniteTimeAction* bounceY2 = EaseSineInOut::create(ScaleTo::create(3.0f, 1.0f, 1.0f));
-
-	this->hoverNode->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
-
-	this->hoverNode->setPhysicsBody(this->hoverPhysicsBody);
+	this->hover->setContactBeginCallback(CC_CALLBACK_1(Player::hoverContactBegin, this));
+	this->hover->setContactUpdateCallback(CC_CALLBACK_1(Player::hoverContactUpdate, this));
+	this->hover->setContactEndCallback(CC_CALLBACK_1(Player::hoverContactEnd, this));
 
 	this->addChild(this->sprite);
-	this->addChild(this->hoverNode);
+	this->addChild(this->hover);
 }
 
 Player::~Player()
@@ -70,10 +58,90 @@ void Player::update(float dt)
 
 	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_S))
 	{
-		this->hoverNode->setScaleY(0.1f);
+		this->hover->setHeight(16.0f);
+	}
+}
+
+bool Player::contactBegin(CollisionData data)
+{
+	switch (data.other->getCollisionGroup())
+	{
+	case CollisionGroup::G_Solid:
+		if (data.isCollisionBelow)
+		{
+			this->isOnGround = true;
+		}
+		break;
 	}
 
-	// Keep hover node underneath player
-	this->hoverNode->setPosition(0, -this->sprite->getContentSize().height / 2 + 1.0f);
-	this->hoverPhysicsBody->setVelocity(this->getVelocity());
+	return true;
+}
+
+bool Player::contactUpdate(CollisionData data)
+{
+	switch (data.other->getCollisionGroup())
+	{
+	case CollisionGroup::G_Solid:
+		if (data.isCollisionBelow)
+		{
+			this->isOnGround = true;
+		}
+		break;
+	}
+
+	return true;
+}
+
+bool Player::contactEnd(CollisionData data)
+{
+	switch (data.other->getCollisionGroup())
+	{
+	case CollisionGroup::G_Solid:
+		this->isOnGround = false;
+		break;
+	}
+
+	return true;
+}
+
+bool Player::hoverContactBegin(CollisionData data)
+{
+	switch (data.other->getCollisionGroup())
+	{
+	case CollisionGroup::G_Solid:
+		if (data.isCollisionBelow)
+		{
+			this->isOnGround = true;
+		}
+		break;
+	}
+
+	return true;
+}
+
+bool Player::hoverContactUpdate(CollisionData data)
+{
+	switch (data.other->getCollisionGroup())
+	{
+	case CollisionGroup::G_Solid:
+		if (data.isCollisionBelow)
+		{
+			this->isOnGround = true;
+		}
+		break;
+	}
+
+	return true;
+}
+
+bool Player::hoverContactEnd(CollisionData data)
+{
+	switch (data.other->getCollisionGroup())
+	{
+	case CollisionGroup::G_Solid:
+		this->isOnGround = false;
+		break;
+	}
+
+	return true;
 }

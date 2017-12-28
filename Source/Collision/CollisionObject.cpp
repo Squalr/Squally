@@ -57,17 +57,17 @@ CollisionGroup CollisionObject::getCollisionGroup()
 	return this->collisionGroup;
 }
 
-bool CollisionObject::contactBegin(CollisionObject* other)
+bool CollisionObject::contactBegin(CollisionData data)
 {
 	return true;
 }
 
-bool CollisionObject::contactUpdate(CollisionObject* other)
+bool CollisionObject::contactUpdate(CollisionData data)
 {
 	return true;
 }
 
-bool CollisionObject::contactEnd(CollisionObject* other)
+bool CollisionObject::contactEnd(CollisionData data)
 {
 	return true;
 }
@@ -86,50 +86,51 @@ void CollisionObject::initializeEventListeners()
 
 bool CollisionObject::onContactBegin(PhysicsContact &contact)
 {
-	PhysicsShape* other = this->getCollidingObject(this->physicsBody, contact);
+	CollisionData data = this->constructCollisionData(contact);
 
-	if (other == nullptr)
+	if (data.other == nullptr)
 	{
 		return false;
 	}
 
-	return this->contactBegin((CollisionObject*)other->getBody());
+	return this->contactBegin(data);
 }
 
 bool CollisionObject::onContactUpdate(PhysicsContact &contact)
 {
-	PhysicsShape* other = this->getCollidingObject(this->physicsBody, contact);
+	CollisionData data = this->constructCollisionData(contact);
 
-	if (other == nullptr)
+	if (data.other == nullptr)
 	{
 		return false;
 	}
 
-	return this->contactUpdate((CollisionObject*)other->getBody());
+	return this->contactUpdate(data);
 }
 
 bool CollisionObject::onContactEnd(PhysicsContact &contact)
 {
-	PhysicsShape* other = this->getCollidingObject(this->physicsBody, contact);
+	CollisionData data = this->constructCollisionData(contact);
 
-	if (other == nullptr)
+	if (data.other == nullptr)
 	{
 		return false;
 	}
 
-	return this->contactEnd((CollisionObject*)other->getBody());
+	return this->contactEnd(data);
 }
 
-PhysicsShape* CollisionObject::getCollidingObject(PhysicsBody* self, PhysicsContact& contact)
+CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsContact& contact)
 {
-	if (contact.getShapeA()->getBody() != self && contact.getShapeB()->getBody() != self)
-	{
-		return false;
-	}
-
+	CollisionObject::CollisionData collisionData = CollisionObject::CollisionData(nullptr, false);
 	PhysicsShape* other = nullptr;
 
-	if (contact.getShapeA()->getBody() == self)
+	if (contact.getShapeA()->getBody() != this->physicsBody && contact.getShapeB()->getBody() != this->physicsBody)
+	{
+		return collisionData;
+	}
+
+	if (contact.getShapeA()->getBody() == this->physicsBody)
 	{
 		other = contact.getShapeB();
 	}
@@ -138,5 +139,26 @@ PhysicsShape* CollisionObject::getCollidingObject(PhysicsBody* self, PhysicsCont
 		other = contact.getShapeA();
 	}
 
-	return other;
+	if (other == nullptr)
+	{
+		return collisionData;
+	}
+
+	collisionData.other = (CollisionObject*)other->getBody()->getNode();
+	collisionData.isCollisionBelow = this->isContactBelow(other->getBody()->getNode(), contact);
+
+	return collisionData;
+}
+
+bool CollisionObject::isContactBelow(Node* node, PhysicsContact& contact)
+{
+	for (int index = 0; index < contact.getContactData()->count; index++)
+	{
+		if (contact.getContactData()->points[index].y < node->getPositionY())
+		{
+			return true;
+		}
+	}
+
+	return false;
 }

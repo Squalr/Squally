@@ -18,9 +18,6 @@ protected:
 
 	void onEnter() override;
 	void update(float) override;
-	bool contactBegin(CollisionObject* other) override;
-	bool contactUpdate(CollisionObject* other) override;
-	bool contactEnd(CollisionObject* other) override;
 
 	Sprite * sprite;
 	Vec2 movement;
