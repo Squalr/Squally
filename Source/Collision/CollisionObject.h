@@ -14,15 +14,24 @@ public:
 	void init(PhysicsBody* initPhysicsBody, CollisionGroup initCollisionGroup, CollisionGroup initCollidesWith);
 	void init(PhysicsBody* initPhysicsBody, CollisionGroup initCollisionGroup);
 
-protected:
 	CollisionGroup getCollisionGroup();
-
 	Vec2 getVelocity();
 	void setVelocity(Vec2 velocity);
 
-	virtual bool contactBegin(CollisionObject* other);
-	virtual bool contactUpdate(CollisionObject* other);
-	virtual bool contactEnd(CollisionObject* other);
+protected:
+	struct CollisionData
+	{
+		CollisionObject* other;
+		bool isCollisionBelow;
+
+		CollisionData(CollisionObject* other, bool isCollisionBelow) : other(other), isCollisionBelow(isCollisionBelow)
+		{
+		}
+	};
+
+	virtual bool contactBegin(CollisionData data);
+	virtual bool contactUpdate(CollisionData data);
+	virtual bool contactEnd(CollisionData data);
 
 private:
 	void initializeEventListeners();
@@ -31,7 +40,8 @@ private:
 	bool onContactUpdate(PhysicsContact& contact);
 	bool onContactEnd(PhysicsContact& contact);
 
-	PhysicsShape * getCollidingObject(PhysicsBody* self, PhysicsContact &contact);
+	CollisionData constructCollisionData(PhysicsContact& contact);
+	bool isContactBelow(Node* node, PhysicsContact &contact);
 
 	CollisionGroup collisionGroup;
 	CollisionGroup collidesWith;

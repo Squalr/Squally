@@ -11,5 +11,4 @@ class Collision
 {
 public:
 	static Layer* initializeCollision(ValueVector collisionObjects);
-	static bool isContactBelow(Node* node, PhysicsContact &contact);
 };
