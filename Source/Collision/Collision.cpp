@@ -27,8 +27,25 @@ Layer* Collision::initializeCollision(ValueVector collisionObjects)
 			polygonPoints = &(object.at("points").asValueVector());
 		}
 
-		Node* node = Node::create();
-		PhysicsBody* collisionBox = nullptr;
+		CollisionObject* collisionBox = new CollisionObject();
+		CollisionGroup collisionGroup;
+
+		if (type == "solid")
+		{
+			collisionGroup = CollisionGroup::G_Solid;
+		}
+		else if (type == "water")
+		{
+			collisionGroup = CollisionGroup::G_Water;
+		}
+		else if (type == "npc")
+		{
+			collisionGroup = CollisionGroup::G_SolidNpc;
+		}
+		else
+		{
+			throw new exception("Invalid type");
+		}
 
 		if (isPolygon)
 		{
@@ -45,58 +62,18 @@ Layer* Collision::initializeCollision(ValueVector collisionObjects)
 				points[index++] = Vec2(x + deltaX, y - deltaY);
 			}
 
-			collisionBox = PhysicsBody::createPolygon(points, polygonPoints->size(), PhysicsMaterial(0.0f, 0.0f, 0.0f));
+			collisionBox->init(PhysicsBody::createPolygon(points, polygonPoints->size(), PhysicsMaterial(0.0f, 0.0f, 0.0f)), collisionGroup);
 		}
 		else
 		{
-			collisionBox = PhysicsBody::createBox(Size(width, height), PhysicsMaterial(0.0f, 0.0f, 0.0f));
-			node->setPosition(x, y);
+			collisionBox->init(PhysicsBody::createBox(Size(width, height), PhysicsMaterial(0.0f, 0.0f, 0.0f)), collisionGroup);
+			collisionBox->setPosition(x, y);
 		}
 
-		if (type == "solid")
-		{
-			collisionBox->setContactTestBitmask(Collision::CollisionGroup::Solid);
-		}
-		else if (type == "water")
-		{
-			collisionBox->setContactTestBitmask(Collision::CollisionGroup::Water);
-		}
-		else if (type == "npc")
-		{
-			collisionBox->setContactTestBitmask(Collision::CollisionGroup::SolidNpc);
-		}
-		else
-		{
-			throw new exception("Invalid type");
-		}
-
-		collisionBox->setDynamic(false);
-		node->addComponent(collisionBox);
-		layer->addChild(node);
+		layer->addChild(collisionBox);
 	}
 
 	return layer;
-}
-
-PhysicsShape* Collision::getCollidingObject(PhysicsBody* self, PhysicsContact& contact)
-{
-	if (contact.getShapeA()->getBody() != self && contact.getShapeB()->getBody() != self)
-	{
-		return false;
-	}
-
-	PhysicsShape* other = nullptr;
-
-	if (contact.getShapeA()->getBody() == self)
-	{
-		other = contact.getShapeB();
-	}
-	else
-	{
-		other = contact.getShapeA();
-	}
-
-	return other;
 }
 
 bool Collision::isContactBelow(Node* node, PhysicsContact& contact)

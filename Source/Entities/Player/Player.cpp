@@ -19,19 +19,14 @@ Player::Player()
 	this->sprite = Sprite::create(Resources::Ingame_Sprites_Player_Idle);
 	this->hoverNode = Node::create();
 
-	this->physicsBody = PhysicsBody::createBox(this->sprite->getContentSize());
+	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CollisionGroup::G_Player, CollisionGroup::SET_Player);
 	this->hoverPhysicsBody = PhysicsBody::createBox(Size(this->sprite->getContentSize().width, Player::hoverHeight));
 
 	this->hoverNode->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->hoverNode->setPosition(0, -this->sprite->getContentSize().height / 2);
 	this->hoverNode->setContentSize(Size(0, Player::hoverHeight));
 
-	this->physicsBody->setRotationEnable(false);
-	this->collisionGroup = Collision::CollisionGroup::Player;
-	this->physicsBody->setContactTestBitmask(Collision::CollisionGroup::SET_Player);
-
 	this->hoverPhysicsBody->setRotationEnable(false);
-	this->hoverPhysicsBody->setContactTestBitmask(Collision::CollisionGroup::SET_Solids);
 	this->hoverPhysicsBody->setGravityEnable(false);
 
 	FiniteTimeAction* bounceY1 = EaseSineInOut::create(ScaleTo::create(3.0f, 1.0f, 0.25f));
@@ -39,13 +34,10 @@ Player::Player()
 
 	this->hoverNode->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
 
-	this->setPhysicsBody(this->physicsBody);
 	this->hoverNode->setPhysicsBody(this->hoverPhysicsBody);
 
 	this->addChild(this->sprite);
 	this->addChild(this->hoverNode);
-
-	this->initializeListeners();
 }
 
 Player::~Player()
@@ -83,79 +75,5 @@ void Player::update(float dt)
 
 	// Keep hover node underneath player
 	this->hoverNode->setPosition(0, -this->sprite->getContentSize().height / 2 + 1.0f);
-	this->hoverPhysicsBody->setVelocity(this->physicsBody->getVelocity());
-}
-
-void Player::initializeListeners()
-{
-	EventListenerPhysicsContact* contactListener = EventListenerPhysicsContact::create();
-
-	contactListener->onContactBegin = CC_CALLBACK_1(Player::onContactBegin, this);
-	contactListener->onContactPreSolve = CC_CALLBACK_1(Player::onContactUpdate, this);
-	contactListener->onContactSeparate = CC_CALLBACK_1(Player::onContactEnd, this);
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
-}
-
-bool Player::onContactBegin(PhysicsContact &contact)
-{
-	PhysicsShape* other = Collision::getCollidingObject(this->hoverPhysicsBody, contact);
-
-	if (other == nullptr)
-	{
-		return true;
-	}
-
-	switch ((Collision::CollisionGroup)other->getContactTestBitmask())
-	{
-	case Collision::CollisionGroup::Solid:
-		if (Collision::isContactBelow(this, contact))
-		{
-			this->isOnGround = true;
-		}
-		break;
-	}
-
-	return true;
-}
-
-bool Player::onContactUpdate(PhysicsContact &contact)
-{
-	PhysicsShape* other = Collision::getCollidingObject(this->hoverPhysicsBody, contact);
-
-	if (other == nullptr)
-	{
-		return true;
-	}
-
-	switch ((Collision::CollisionGroup)other->getContactTestBitmask())
-	{
-	case Collision::CollisionGroup::Solid:
-		if (Collision::isContactBelow(this, contact))
-		{
-			this->isOnGround = true;
-		}
-		break;
-	}
-
-	return true;
-}
-
-bool Player::onContactEnd(PhysicsContact &contact)
-{
-	PhysicsShape* other = Collision::getCollidingObject(this->hoverPhysicsBody, contact);
-
-	if (other == nullptr)
-	{
-		return true;
-	}
-
-	switch ((Collision::CollisionGroup)other->getContactTestBitmask())
-	{
-	case Collision::CollisionGroup::Solid:
-		this->isOnGround = false;
-		break;
-	}
-
-	return true;
+	this->hoverPhysicsBody->setVelocity(this->getVelocity());
 }
