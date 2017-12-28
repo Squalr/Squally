@@ -9,8 +9,6 @@ Entity::Entity()
 	this->isOnGround = false;
 	this->movement = Vec2(0, 0);
 	this->scheduleUpdate();
-
-	this->initializeListeners();
 }
 
 Entity::~Entity()
@@ -26,7 +24,7 @@ void Entity::update(float dt)
 {
 	Node::update(dt);
 
-	Vec2 velocity = this->physicsBody->getVelocity();
+	Vec2 velocity = this->getVelocity();
 
 	velocity.x += this->movement.x * Entity::moveAcceleration * dt;
 
@@ -42,7 +40,11 @@ void Entity::update(float dt)
 	// Gravity
 	if (this->isOnGround)
 	{
-		velocity.y = this->movement.y * this->actualJumpLaunchVelocity;
+		if (this->movement.y > 0.0f)
+		{
+			velocity.y = this->movement.y * this->actualJumpLaunchVelocity;
+			this->isOnGround = false;
+		}
 	}
 	else
 	{
@@ -57,23 +59,13 @@ void Entity::update(float dt)
 	//this->velocity.y = MathHelper.Clamp(Velocity.Y, -ActualMaxFallSpeed, ActualMaxFallSpeed);
 
 	// Apply velocity
-	this->physicsBody->setVelocity(velocity);
+	this->setVelocity(velocity);
 }
 
-void Entity::initializeListeners()
+bool Entity::contactBegin(CollisionObject* other)
 {
-	EventListenerPhysicsContact* contactListener = EventListenerPhysicsContact::create();
+	/*
 
-	contactListener->onContactBegin = CC_CALLBACK_1(Entity::onContactBegin, this);
-	contactListener->onContactPreSolve = CC_CALLBACK_1(Entity::onContactUpdate, this);
-	contactListener->onContactPostSolve = CC_CALLBACK_1(Entity::onContactUpdate, this);
-	contactListener->onContactSeparate = CC_CALLBACK_1(Entity::onContactEnd, this);
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
-}
-
-bool Entity::onContactBegin(PhysicsContact &contact)
-{
 	PhysicsShape* other = Collision::getCollidingObject(this->physicsBody, contact);
 
 	if (other == nullptr)
@@ -102,42 +94,19 @@ bool Entity::onContactBegin(PhysicsContact &contact)
 	}
 
 	return true;
-}
-
-bool Entity::onContactUpdate(PhysicsContact &contact)
-{
-	PhysicsShape* other = Collision::getCollidingObject(this->physicsBody, contact);
-
-	if (other == nullptr)
-	{
-		return true;
-	}
-
-	switch ((Collision::CollisionGroup)other->getContactTestBitmask())
-	{
-	case Collision::CollisionGroup::Solid:
-		if (Collision::isContactBelow(this, contact))
-		{
-			this->isOnGround = true;
-		}
-		break;
-	case Collision::CollisionGroup::SolidNpc:
-		if (this->collisionGroup & Collision::CollisionGroup::Enemy)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		break;
-	}
-
+	*/
 	return true;
 }
 
-bool Entity::onContactEnd(PhysicsContact &contact)
+bool Entity::contactUpdate(CollisionObject* other)
 {
+	return true;
+}
+
+bool Entity::contactEnd(CollisionObject* other)
+{
+	/*
+
 	PhysicsShape* other = Collision::getCollidingObject(this->physicsBody, contact);
 
 	if (other == nullptr)
@@ -162,6 +131,8 @@ bool Entity::onContactEnd(PhysicsContact &contact)
 		break;
 	}
 
+	return true;
+	*/
 	return true;
 }
 

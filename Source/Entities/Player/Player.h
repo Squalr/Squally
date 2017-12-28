@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Entities/Entity.h"
-#include "Collision/Collision.h"
+#include "Collision/CollisionGroup.h"
 #include "Input/InputManager.h"
 
 using namespace cocos2d;
@@ -22,10 +22,6 @@ private:
 	~Player();
 
 	void update(float) override;
-	void initializeListeners();
-	bool onContactBegin(PhysicsContact& contact);
-	bool onContactUpdate(PhysicsContact& contact);
-	bool onContactEnd(PhysicsContact& contact);
 
 	bool canJump;
 
@@ -35,4 +31,3 @@ private:
 
 	const float hoverHeight = 96.0f;
 };
-
