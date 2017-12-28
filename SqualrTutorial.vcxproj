@@ -189,7 +189,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Collision\Collision.h" />
-    <ClInclude Include="Source\Collision\CollisionGroup.h" />
+    <ClInclude Include="Source\Collision\CategoryGroup.h" />
     <ClInclude Include="Source\Collision\CollisionObject.h" />
     <ClInclude Include="Source\Config\ConfigManager.h" />
     <ClInclude Include="Source\Config\SoundManager.h" />
