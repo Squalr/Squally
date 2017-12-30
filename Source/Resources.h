@@ -252,6 +252,14 @@ public:
 	static const string Ingame_Objects_Forest2_Tree_Mushroom_platforms_02;
 	static const string Ingame_Objects_Forest2_Tree_Mushroom_platforms_03;
 	static const string Ingame_Sprites_EggProjectile;
+	static const string Ingame_Sprites_Bat_Death1;
+	static const string Ingame_Sprites_Bat_Death2;
+	static const string Ingame_Sprites_Bat_Death3;
+	static const string Ingame_Sprites_Bat_Death4;
+	static const string Ingame_Sprites_Bat_Fly1;
+	static const string Ingame_Sprites_Bat_Fly2;
+	static const string Ingame_Sprites_Bat_Fly3;
+	static const string Ingame_Sprites_Bat_Fly4;
 	static const string Ingame_Sprites_Dunkleosteus_Dunkleosteus;
 	static const string Ingame_Sprites_Player_Idle;
 	static const string Ingame_Sprites_Player_Player_Attack;

@@ -180,6 +180,9 @@
     <ClCompile Include="Source\Level\LevelCamera.cpp">
       <Filter>Source\Level</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Entities\Enemies\Snail.cpp">
+      <Filter>Source\Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -301,6 +304,9 @@
     </ClInclude>
     <ClInclude Include="Source\Level\LevelCamera.h">
       <Filter>Source\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entities\Enemies\Snail.h">
+      <Filter>Source\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
