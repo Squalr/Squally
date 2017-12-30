@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Collision/CategoryGroup.h"
+#include "Level/LevelCamera.h"
 
 using namespace cocos2d;
 
@@ -18,12 +19,27 @@ public:
 	void setVelocity(Vec2 velocity);
 
 protected:
+	enum CollisionDirection
+	{
+		None,
+		Left,
+		Right,
+		Up,
+		Down,
+		StepLeft,
+		StepRight,
+	};
+
 	struct CollisionData
 	{
 		CollisionObject* other;
 		Vec2 normal;
+		CollisionDirection direction;
+		Vec2 points[4];
+		int pointCount;
 
-		CollisionData(CollisionObject* other, Vec2 normal) : other(other), normal(normal)
+		CollisionData(CollisionObject* other, Vec2 normal, CollisionDirection direction, const Vec2* points, int pointCount)
+			: other(other), normal(normal), direction(direction), pointCount(pointCount)
 		{
 		}
 	};
