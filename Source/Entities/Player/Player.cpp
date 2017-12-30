@@ -14,6 +14,11 @@ Player* Player::create()
 
 Player::Player()
 {
+	this->actualJumpLaunchVelocity = 640.0f;
+	this->actualGravityAcceleration = 1000.0f;
+	this->actualMaxFallSpeed = 600.0f;
+	this->moveAcceleration = 14000.0f;
+
 	this->inputManager = InputManager::getInstance();
 
 	this->sprite = Sprite::create(Resources::Ingame_Sprites_Player_Idle);
@@ -67,7 +72,7 @@ bool Player::hoverContactBegin(CollisionData data)
 	switch (data.other->getCategoryGroup())
 	{
 	case CategoryGroup::G_Solid:
-		if (data.normal.y < Player::normalJumpThreshold)
+		if (data.normal.y < Entity::normalJumpThreshold)
 		{
 			this->isOnGround = true;
 		}
@@ -87,7 +92,7 @@ bool Player::hoverContactUpdate(CollisionData data)
 	switch (data.other->getCategoryGroup())
 	{
 	case CategoryGroup::G_Solid:
-		if (data.normal.y < Player::normalJumpThreshold)
+		if (data.normal.y < Entity::normalJumpThreshold)
 		{
 			this->isOnGround = true;
 		}
@@ -121,21 +126,6 @@ bool Player::hoverContactEnd(CollisionData data)
 
 bool Player::contactBegin(CollisionData data)
 {
-	switch (data.other->getCategoryGroup())
-	{
-	case CategoryGroup::G_Solid:
-		if (data.normal.y < Player::normalJumpThreshold)
-		{
-			this->isOnGround = true;
-		}
-		return true;
-	case CategoryGroup::G_Force:
-		return true;
-	case CategoryGroup::G_SolidNpc:
-	case CategoryGroup::G_SolidFlyingNpc:
-		return false;
-	}
-
 	return false;
 }
 
@@ -144,13 +134,17 @@ bool Player::contactUpdate(CollisionData data)
 	switch (data.other->getCategoryGroup())
 	{
 	case CategoryGroup::G_Solid:
-		if (data.normal.y < Player::normalJumpThreshold)
+		if (data.normal.y < Entity::normalJumpThreshold)
 		{
 			this->isOnGround = true;
 		}
 		return true;
 	case CategoryGroup::G_Force:
 		return true;
+	case CategoryGroup::G_Enemy:
+	case CategoryGroup::G_EnemyFlying:
+		// TODO: Damage
+		return false;
 	case CategoryGroup::G_SolidNpc:
 	case CategoryGroup::G_SolidFlyingNpc:
 		return false;
@@ -168,6 +162,9 @@ bool Player::contactEnd(CollisionData data)
 		return true;
 	case CategoryGroup::G_Force:
 		return true;
+	case CategoryGroup::G_Enemy:
+	case CategoryGroup::G_EnemyFlying:
+		return false;
 	case CategoryGroup::G_SolidNpc:
 	case CategoryGroup::G_SolidFlyingNpc:
 		return false;

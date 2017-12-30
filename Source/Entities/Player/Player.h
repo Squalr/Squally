@@ -34,6 +34,4 @@ private:
 
 	InputManager* inputManager;
 	Hover* hover;
-
-	const float normalJumpThreshold = -0.8f;
 };

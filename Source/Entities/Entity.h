@@ -29,23 +29,16 @@ protected:
 	float actualGravityAcceleration;
 	float actualMaxFallSpeed;
 
-	// STANDARD
+	float jumpLaunchVelocity;
+	float gravityAcceleration;
+	float maxFallSpeed;
+
+	float moveAcceleration;
+
 	const float groundDragFactor = .58f;
 	const float airDragFactor = 0.65f;
-
 	const float maxMoveSpeed = 360.0f;
-	const float moveAcceleration = 14000.0f;
 
-	const float jumpLaunchVelocity = 640.0f;
-	const float gravityAcceleration = 1000.0f;
-	const float maxFallSpeed = 600.0f;
-
-	// UNDERWATER
-	const float underwaterJumpLaunchVelocity = 128.0f;
-	const float underwaterGravityAcceleration = 250.0f;
-	const float underwaterMaxFallSpeed = 200.0f;
-
-	// GLIDE
-	const float glideMaxFallSpeed = 150.0f;
+	const float normalJumpThreshold = -0.8f;
 };
 

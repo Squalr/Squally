@@ -104,7 +104,7 @@ bool CollisionObject::onContactEnd(PhysicsContact &contact)
 
 CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsContact& contact)
 {
-	CollisionObject::CollisionData collisionData = CollisionObject::CollisionData(nullptr, Vec2::ZERO);
+	CollisionObject::CollisionData collisionData = CollisionObject::CollisionData(nullptr, Vec2::ZERO, CollisionObject::CollisionDirection::None, nullptr, 0);
 	PhysicsShape* other = nullptr;
 
 	if (contact.getShapeA()->getBody() != this->physicsBody && contact.getShapeB()->getBody() != this->physicsBody)
@@ -128,6 +128,60 @@ CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsCo
 
 	collisionData.other = (CollisionObject*)other->getBody()->getNode();
 	collisionData.normal = contact.getContactData()->normal;
+	collisionData.pointCount = contact.getContactData()->count;
+
+	// Convert collision coordinates to level coordinates
+	for (int index = 0; index < collisionData.pointCount; index++)
+	{
+		collisionData.points[index] = Vec2(contact.getContactData()->points[index].x - LevelCamera::cameraOffset.x, contact.getContactData()->points[index].y - LevelCamera::cameraOffset.y);
+	}
+
+	// Determines how large the
+	const float sensitivity = 16.0f;
+
+	// Determine direction of collision
+	if (collisionData.pointCount == 2)
+	{
+		// Horizontal collision
+		if (collisionData.points[0].x == collisionData.points[1].x)
+		{
+			if (abs(collisionData.points[0].y - collisionData.points[1].y) > sensitivity)
+			{
+				if (this->getPositionX() < collisionData.other->getPositionX())
+				{
+					collisionData.direction = CollisionDirection::Right;
+				}
+				else
+				{
+					collisionData.direction = CollisionDirection::Left;
+				}
+			}
+			else if (this->getPositionY() >= max(collisionData.points[0].y, collisionData.points[1].y))
+			{
+				if (this->getPositionX() < collisionData.other->getPositionX())
+				{
+					collisionData.direction = CollisionDirection::StepRight;
+				}
+				else
+				{
+					collisionData.direction = CollisionDirection::StepLeft;
+				}
+			}
+		}
+		// Vertical collision
+		else if (collisionData.points[0].y == collisionData.points[1].y &&
+			abs(collisionData.points[0].x - collisionData.points[1].x) > sensitivity)
+		{
+			if (this->getPositionY() < collisionData.other->getPositionY())
+			{
+				collisionData.direction = CollisionDirection::Up;
+			}
+			else
+			{
+				collisionData.direction = CollisionDirection::Down;
+			}
+		}
+	}
 
 	return collisionData;
 }
@@ -163,7 +217,6 @@ CategoryGroup CollisionObject::getCollisionGroups()
 	case CategoryGroup::G_Enemy:
 		return (CategoryGroup)(
 			CategoryGroup::G_Player
-			| CategoryGroup::G_Force
 			| CategoryGroup::G_Solid
 			| CategoryGroup::G_PassThrough
 			| CategoryGroup::G_SolidNpc
@@ -172,7 +225,6 @@ CategoryGroup CollisionObject::getCollisionGroups()
 	case CategoryGroup::G_EnemyFlying:
 		return (CategoryGroup)(
 			CategoryGroup::G_Player
-			| CategoryGroup::G_Force
 			| CategoryGroup::G_Solid
 			| CategoryGroup::G_PassThrough
 			| CategoryGroup::G_SolidNpc
@@ -182,8 +234,6 @@ CategoryGroup CollisionObject::getCollisionGroups()
 	case CategoryGroup::G_Force:
 		return (CategoryGroup)(
 			CategoryGroup::G_Player
-			| CategoryGroup::G_Enemy
-			| CategoryGroup::G_EnemyFlying
 			| CategoryGroup::G_Solid
 			| CategoryGroup::G_PassThrough
 			| CategoryGroup::G_SolidNpc
