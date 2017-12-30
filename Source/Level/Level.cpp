@@ -124,6 +124,12 @@ void Level::loadLevel(std::string levelResourceFilePath)
 			shroom->setPosition(Vec2(object.at("x").asFloat(), object.at("y").asFloat()));
 			this->enemyLayer->addChild(shroom);
 		}
+		else if (type == "snail")
+		{
+			Snail* snail = Snail::create();
+			snail->setPosition(Vec2(object.at("x").asFloat(), object.at("y").asFloat()));
+			this->enemyLayer->addChild(snail);
+		}
 	}
 
 	// Create midground
