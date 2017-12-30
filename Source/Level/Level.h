@@ -3,6 +3,7 @@
 #include "Resources.h"
 #include "Background.h"
 #include "Collision/Collision.h"
+#include "Level/LevelCamera.h"
 #include "Entities/Player/Player.h"
 #include "Entities/Enemies/Shroom.h"
 #include "Input/InputManager.h"
@@ -44,8 +45,5 @@ private:
 	void loadLevel(std::string levelResourceFilePath);
 	void initializeListeners();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-
-	const float cameraOffsetX = 128.0f;
-	const float cameraOffsetY = 96.0f;
 };
 

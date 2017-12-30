@@ -59,39 +59,32 @@ void Level::update(float dt)
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	float playerXOffset = Director::getInstance()->getVisibleSize().width / 2 - this->player->getPositionX();
+	float playerOffsetX = Director::getInstance()->getVisibleSize().width / 2 - this->player->getPositionX();
+	float playerOffsetY = Director::getInstance()->getVisibleSize().height / 2 - this->player->getPositionY();
 
-	if (this->playerLayer->getPositionX() < playerXOffset - Level::cameraOffsetX)
+	// Handle camera scrolling from player traveling past scroll distance
+	if (this->playerLayer->getPositionX() < playerOffsetX - LevelCamera::cameraScrollOffsetX)
 	{
-		this->playerLayer->setPositionX(playerXOffset - Level::cameraOffsetX);
-		this->enemyLayer->setPositionX(playerXOffset - Level::cameraOffsetX);
-		this->tileLayer->setPositionX(playerXOffset - Level::cameraOffsetX);
-		this->foregroundLayer->setPositionX(playerXOffset - Level::cameraOffsetX);
+		LevelCamera::cameraOffset.x = playerOffsetX - LevelCamera::cameraScrollOffsetX;
 	}
-	else if (this->playerLayer->getPositionX() > playerXOffset + Level::cameraOffsetX)
+	else if (this->playerLayer->getPositionX() > playerOffsetX + LevelCamera::cameraScrollOffsetX)
 	{
-		this->playerLayer->setPositionX(playerXOffset + Level::cameraOffsetX);
-		this->enemyLayer->setPositionX(playerXOffset + Level::cameraOffsetX);
-		this->tileLayer->setPositionX(playerXOffset + Level::cameraOffsetX);
-		this->foregroundLayer->setPositionX(playerXOffset + Level::cameraOffsetX);
+		LevelCamera::cameraOffset.x = playerOffsetX + LevelCamera::cameraScrollOffsetX;
 	}
 
-	float playerYOffset = Director::getInstance()->getVisibleSize().height / 2 - this->player->getPositionY();
+	if (this->playerLayer->getPositionY() < playerOffsetY - LevelCamera::cameraScrollOffsetY)
+	{
+		LevelCamera::cameraOffset.y = playerOffsetY - LevelCamera::cameraScrollOffsetY;
+	}
+	else if (this->playerLayer->getPositionY() > playerOffsetY + LevelCamera::cameraScrollOffsetY)
+	{
+		LevelCamera::cameraOffset.y = playerOffsetY + LevelCamera::cameraScrollOffsetY;
+	}
 
-	if (this->playerLayer->getPositionY() < playerYOffset - Level::cameraOffsetY)
-	{
-		this->playerLayer->setPositionY(playerYOffset - Level::cameraOffsetY);
-		this->enemyLayer->setPositionY(playerYOffset - Level::cameraOffsetY);
-		this->tileLayer->setPositionY(playerYOffset - Level::cameraOffsetY);
-		this->foregroundLayer->setPositionY(playerYOffset - Level::cameraOffsetY);
-	}
-	else if (this->playerLayer->getPositionY() > playerYOffset + Level::cameraOffsetY)
-	{
-		this->playerLayer->setPositionY(playerYOffset + Level::cameraOffsetY);
-		this->enemyLayer->setPositionY(playerYOffset + Level::cameraOffsetY);
-		this->tileLayer->setPositionY(playerYOffset + Level::cameraOffsetY);
-		this->foregroundLayer->setPositionY(playerYOffset + Level::cameraOffsetY);
-	}
+	this->playerLayer->setPosition(LevelCamera::cameraOffset);
+	this->enemyLayer->setPosition(LevelCamera::cameraOffset);
+	this->tileLayer->setPosition(LevelCamera::cameraOffset);
+	this->foregroundLayer->setPosition(LevelCamera::cameraOffset);
 }
 
 void Level::loadLevel(std::string levelResourceFilePath)
