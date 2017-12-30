@@ -69,21 +69,6 @@ void Player::update(float dt)
 
 bool Player::hoverContactBegin(CollisionData data)
 {
-	switch (data.other->getCategoryGroup())
-	{
-	case CategoryGroup::G_Solid:
-		if (data.normal.y < Entity::normalJumpThreshold)
-		{
-			this->isOnGround = true;
-		}
-		return true;
-	case CategoryGroup::G_Player:
-		return true;
-	case CategoryGroup::G_SolidNpc:
-	case CategoryGroup::G_SolidFlyingNpc:
-		return false;
-	}
-
 	return false;
 }
 
@@ -99,9 +84,6 @@ bool Player::hoverContactUpdate(CollisionData data)
 		return true;
 	case CategoryGroup::G_Player:
 		return true;
-	case CategoryGroup::G_SolidNpc:
-	case CategoryGroup::G_SolidFlyingNpc:
-		return false;
 	}
 
 	return false;
@@ -116,9 +98,6 @@ bool Player::hoverContactEnd(CollisionData data)
 		return true;
 	case CategoryGroup::G_Player:
 		return true;
-	case CategoryGroup::G_SolidNpc:
-	case CategoryGroup::G_SolidFlyingNpc:
-		return false;
 	}
 
 	return false;

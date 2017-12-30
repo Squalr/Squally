@@ -6,6 +6,7 @@
 #include "Level/LevelCamera.h"
 #include "Entities/Player/Player.h"
 #include "Entities/Enemies/Shroom.h"
+#include "Entities/Enemies/Snail.h"
 #include "Input/InputManager.h"
 #include "GUI/HUD/HUD.h"
 #include "GUI/Components/FadeScene.h"
