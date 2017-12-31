@@ -148,10 +148,10 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Collision\Collision.cpp" />
     <ClCompile Include="Source\Collision\CollisionObject.cpp" />
     <ClCompile Include="Source\Config\ConfigManager.cpp" />
     <ClCompile Include="Source\Config\SoundManager.cpp" />
+    <ClCompile Include="Source\Entities\Enemies\Bat.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Shroom.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Snail.cpp" />
     <ClCompile Include="Source\Entities\Entity.cpp" />
@@ -181,7 +181,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Input\InputManager.cpp" />
     <ClCompile Include="Source\Level\Background.cpp" />
     <ClCompile Include="Source\Level\LevelCamera.cpp" />
-    <ClCompile Include="Source\Objects\GameObject.cpp" />
+    <ClCompile Include="Source\Level\LevelParser.cpp" />
+    <ClCompile Include="Source\Objects\EggProjectile.cpp" />
     <ClCompile Include="Source\Utils\Utils.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\Game.cpp" />
@@ -190,11 +191,11 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Resources.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Collision\Collision.h" />
     <ClInclude Include="Source\Collision\CategoryGroup.h" />
     <ClInclude Include="Source\Collision\CollisionObject.h" />
     <ClInclude Include="Source\Config\ConfigManager.h" />
     <ClInclude Include="Source\Config\SoundManager.h" />
+    <ClInclude Include="Source\Entities\Enemies\Bat.h" />
     <ClInclude Include="Source\Entities\Enemies\Shroom.h" />
     <ClInclude Include="Source\Entities\Enemies\Snail.h" />
     <ClInclude Include="Source\Entities\Entity.h" />
@@ -224,7 +225,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Input\InputManager.h" />
     <ClInclude Include="Source\Level\Background.h" />
     <ClInclude Include="Source\Level\LevelCamera.h" />
-    <ClInclude Include="Source\Objects\GameObject.h" />
+    <ClInclude Include="Source\Level\LevelParser.h" />
+    <ClInclude Include="Source\Objects\EggProjectile.h" />
     <ClInclude Include="Source\Utils\Utils.h" />
     <ClInclude Include="Source\Window.h" />
     <ClInclude Include="Source\Game.h" />

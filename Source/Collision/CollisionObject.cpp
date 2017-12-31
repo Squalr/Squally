@@ -8,12 +8,12 @@ CollisionObject::~CollisionObject()
 {
 }
 
-void CollisionObject::init(PhysicsBody* initPhysicsBody, CategoryGroup initCategoryGroup, bool isDynamic)
+void CollisionObject::init(PhysicsBody* initPhysicsBody, CategoryGroup initCategoryGroup, bool isDynamic, bool canRotate)
 {
 	this->physicsBody = initPhysicsBody;
 	this->categoryGroup = initCategoryGroup;
 
-	this->physicsBody->setRotationEnable(false);
+	this->physicsBody->setRotationEnable(canRotate);
 	this->physicsBody->setDynamic(isDynamic);
 	this->setPhysicsBody(initPhysicsBody);
 

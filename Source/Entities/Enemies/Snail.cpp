@@ -28,7 +28,7 @@ Snail::Snail()
 	this->walkAnimation->setDelayPerUnit(0.15f);
 	this->sprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
 
-	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CategoryGroup::G_Enemy, true);
+	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CategoryGroup::G_Enemy, true, false);
 
 	this->addChild(this->sprite);
 }
@@ -42,6 +42,16 @@ void Snail::update(float dt)
 	Entity::update(dt);
 
 	this->movement.y = 0.0f;
+
+	/*
+	if (this->getRotation() < -15.0f)
+	{
+		this->setRotation(-15.0f);
+	}
+	else if (this->getRotation() > 15.0f)
+	{
+		this->setRotation(15.0f);
+	}*/
 
 	if (this->movement.x < 0.0f)
 	{
