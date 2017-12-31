@@ -1,5 +1,14 @@
 #include "LevelParser.h"
 
+Layer* LevelParser::initializeBackground(experimental::TMXTiledMap* map)
+{
+	Layer* layer = Layer::create();
+
+	layer->addChild(JungleBackground::create());
+
+	return layer;
+}
+
 Layer* LevelParser::initializeEnvironment(experimental::TMXTiledMap* map)
 {
 	Layer* layer = Layer::create();
@@ -82,6 +91,10 @@ Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map)
 		{
 			newObject = Snail::create();
 		}
+		else
+		{
+			throw exception("invalid object");
+		}
 
 		newObject->setPosition(Vec2(object.at("x").asFloat(), object.at("y").asFloat()));
 		layer->addChild(newObject);
@@ -133,9 +146,13 @@ Layer* LevelParser::initializeCollision(experimental::TMXTiledMap* map)
 		{
 			collisionGroup = CategoryGroup::G_SolidNpc;
 		}
+		else if (type == "npc-flying")
+		{
+			collisionGroup = CategoryGroup::G_SolidFlyingNpc;
+		}
 		else
 		{
-			throw new exception("Invalid type");
+			throw exception("Invalid type");
 		}
 
 		if (isPolygon)

@@ -28,7 +28,7 @@ Bat::Bat()
 	this->walkAnimation->setDelayPerUnit(0.1f);
 	this->sprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
 
-	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CategoryGroup::G_Enemy, true, false);
+	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CategoryGroup::G_EnemyFlying, true, false);
 
 	this->addChild(this->sprite);
 }
@@ -65,13 +65,11 @@ bool Bat::contactUpdate(CollisionData data)
 	case CategoryGroup::G_SolidNpc:
 	case CategoryGroup::G_SolidFlyingNpc:
 	case CategoryGroup::G_Solid:
-		if (data.normal.y < Entity::normalJumpThreshold)
-		{
-			this->isOnGround = true;
-		}
-
 		switch (data.direction)
 		{
+		case CollisionDirection::Down:
+			this->isOnGround = true;
+			break;
 		case CollisionDirection::Left:
 			this->movement.x = 1.0f;
 			break;

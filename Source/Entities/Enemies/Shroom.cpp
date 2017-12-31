@@ -65,7 +65,7 @@ bool Shroom::contactUpdate(CollisionData data)
 	case CategoryGroup::G_SolidNpc:
 	case CategoryGroup::G_SolidFlyingNpc:
 	case CategoryGroup::G_Solid:
-		if (data.normal.y < Entity::normalJumpThreshold)
+		if (abs(data.normal.y) >= Entity::normalJumpThreshold)
 		{
 			this->isOnGround = true;
 		}
