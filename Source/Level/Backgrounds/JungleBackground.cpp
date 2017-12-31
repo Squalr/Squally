@@ -11,32 +11,20 @@ JungleBackground* JungleBackground::create()
 
 JungleBackground::JungleBackground()
 {
-	this->background = Sprite::create(Resources::Ingame_Background_Jungle_Background_Layer_7);
-	this->layer6 = ParallaxNode::create();
-	this->layer5 = ParallaxNode::create();
-	this->layer4 = ParallaxNode::create();
-	this->layer2 = ParallaxNode::create();
+	this->background = Sprite::create(Resources::Ingame_Background_Jungle_Background);
+	this->layer6 = InfiniteParallaxNode::create(Resources::Ingame_Background_Jungle_Layer_6);
+	this->layer5 = InfiniteParallaxNode::create(Resources::Ingame_Background_Jungle_Layer_5);
+	this->layer4 = InfiniteParallaxNode::create(Resources::Ingame_Background_Jungle_Layer_4);
+	this->layer2 = InfiniteParallaxNode::create(Resources::Ingame_Background_Jungle_Layer_2);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-
-	Sprite* layer6Sprite = Sprite::create(Resources::Ingame_Background_Jungle_Background_Layer_6);
-	this->layer6->addChild(layer6Sprite, 0, Vec2(1.0f, 1.0f), Vec2::ZERO);
-	this->layer6->setPosition(Vec2(layer6Sprite->getContentSize().width / 2, visibleSize.height / 2));
-
-	Sprite* layer5Sprite = Sprite::create(Resources::Ingame_Background_Jungle_Background_Layer_5);
-	this->layer5->addChild(layer5Sprite, 0, Vec2(1.0f, 1.0f), Vec2::ZERO);
-	this->layer5->setPosition(Vec2(layer5Sprite->getContentSize().width / 2, visibleSize.height / 2));
-
-	Sprite* layer4Sprite = Sprite::create(Resources::Ingame_Background_Jungle_Background_Layer_4);
-	this->layer4->addChild(layer4Sprite, 0, Vec2(1.0f, 1.0f), Vec2::ZERO);
-	this->layer4->setPosition(Vec2(layer4Sprite->getContentSize().width / 2, 0.0f));
-
-	Sprite* layer2Sprite = Sprite::create(Resources::Ingame_Background_Jungle_Background_Layer_2);
-	this->layer2->addChild(layer2Sprite, 0, Vec2(1.0f, 1.0f), Vec2::ZERO);
-	this->layer2->setPosition(Vec2(layer2Sprite->getContentSize().width / 2, visibleSize.height / 2));
+	this->layer6->setPosition(Vec2(this->layer6->getContentSize().width / 2, visibleSize.height / 2));
+	this->layer5->setPosition(Vec2(this->layer5->getContentSize().width / 2, visibleSize.height / 2));
+	this->layer4->setPosition(Vec2(this->layer4->getContentSize().width / 2, 0.0f));
+	this->layer2->setPosition(Vec2(this->layer2->getContentSize().width / 2, visibleSize.height / 2));
 
 	this->addChild(this->background);
 	this->addChild(this->layer6);

@@ -20,41 +20,17 @@ Layer* LevelParser::initializeEnvironment(experimental::TMXTiledMap* map)
 
 Layer* LevelParser::initializeBackgroundTiles(experimental::TMXTiledMap* map)
 {
-	Layer* layer = Layer::create();
-
-	experimental::TMXLayer* background = map->getLayer("background");
-
-	map->removeChild(background);
-
-	layer->addChild(background);
-
-	return layer;
+	return LevelParser::extractTileLayer(map, "background");
 }
 
 Layer* LevelParser::initializeMidgroundTiles(experimental::TMXTiledMap* map)
 {
-	Layer* layer = Layer::create();
-
-	experimental::TMXLayer* background = map->getLayer("midground");
-
-	map->removeChild(background);
-
-	layer->addChild(background);
-
-	return layer;
+	return LevelParser::extractTileLayer(map, "midground");
 }
 
 Layer* LevelParser::initializeForegroundTiles(experimental::TMXTiledMap* map)
 {
-	Layer* layer = Layer::create();
-
-	experimental::TMXLayer* background = map->getLayer("foreground");
-
-	map->removeChild(background);
-
-	layer->addChild(background);
-
-	return layer;
+	return LevelParser::extractTileLayer(map, "foreground");
 }
 
 Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map)
@@ -96,7 +72,7 @@ Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map)
 			throw exception("invalid object");
 		}
 
-		newObject->setPosition(Vec2(object.at("x").asFloat(), object.at("y").asFloat()));
+		newObject->setPosition(Vec2(object.at("x").asFloat() + object.at("width").asFloat() / 2, object.at("y").asFloat() + object.at("height").asFloat() / 2));
 		layer->addChild(newObject);
 	}
 
@@ -179,6 +155,79 @@ Layer* LevelParser::initializeCollision(experimental::TMXTiledMap* map)
 		}
 
 		layer->addChild(collisionBox);
+	}
+
+	return layer;
+}
+
+Layer* LevelParser::extractTileLayer(experimental::TMXTiledMap* map, std::string tileLayer)
+{
+	Layer* layer = Layer::create();
+	Layer* decorLayer = LevelParser::initializeDecor(map, "decor-" + tileLayer);
+	experimental::TMXLayer* background = map->getLayer(tileLayer);
+
+	map->removeChild(background);
+	layer->addChild(background);
+	layer->addChild(decorLayer);
+
+	return layer;
+}
+
+Layer* LevelParser::initializeDecor(experimental::TMXTiledMap* map, std::string decorLayer)
+{
+	Layer* layer = Layer::create();
+	ValueVector objects = map->getObjectGroup(decorLayer)->getObjects();
+
+	// Create objects
+	for (int index = 0; index < size(objects); index++)
+	{
+		if (objects[index].getType() != Value::Type::MAP)
+		{
+			continue;
+		}
+
+		ValueMap object = objects[index].asValueMap();
+		string type = object.at("type").asString();
+
+		// For decor, simply grab the resource of the same name of the object type
+		Sprite* newObject = Sprite::create("Ingame\\Decor\\" + type + ".png");
+
+		if (newObject == nullptr)
+		{
+			throw exception("Non-existant decor");
+		}
+
+		float width = object.at("width").asFloat();
+		float height = object.at("height").asFloat();
+		float x = object.at("x").asFloat() + width / 2.0f;
+		float y = object.at("y").asFloat() + height / 2.0f;
+
+		// Scale decor based on rectangle size (only using height for simplicity)
+		newObject->setScale(height / newObject->getContentSize().height);
+
+		// TMX tile maps rotate around a different anchor point than cocos2d-x by default, so we have to account for this
+		newObject->setAnchorPoint(Vec2(0.0f, 1.0f));
+		newObject->setPosition(Vec2(x - width / 2.0f, y + height / 2.0f));
+
+		if (Utils::keyExists(object, "rotation"))
+		{
+			float rotation = object.at("rotation").asFloat();
+			newObject->setRotation(rotation);
+		}
+
+		if (Utils::keyExists(object, "flip-x"))
+		{
+			bool flipX = object.at("flip-x").asBool();
+			newObject->setFlippedX(flipX);
+		}
+
+		if (Utils::keyExists(object, "flip-y"))
+		{
+			bool flipY = object.at("flip-y").asBool();
+			newObject->setFlippedY(flipY);
+		}
+
+		layer->addChild(newObject);
 	}
 
 	return layer;

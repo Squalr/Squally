@@ -17,9 +17,9 @@ private:
 	JungleBackground();
 	~JungleBackground();
 	Sprite * background;
-	ParallaxNode * layer6;
-	ParallaxNode * layer5;
-	ParallaxNode * layer4;
-	ParallaxNode * layer2;
+	InfiniteParallaxNode * layer6;
+	InfiniteParallaxNode * layer5;
+	InfiniteParallaxNode * layer4;
+	InfiniteParallaxNode * layer2;
 };
 
