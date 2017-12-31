@@ -22,7 +22,7 @@ Level::Level(std::string levelResourceFilePath)
 
 	experimental::TMXTiledMap* map = experimental::TMXTiledMap::create(levelResourceFilePath);
 
-	this->background = Background::create();
+	this->background = LevelParser::initializeBackground(map);
 	this->backgroundLayer = LevelParser::initializeBackgroundTiles(map);
 	this->midgroundLayer = LevelParser::initializeMidgroundTiles(map);
 	this->foregroundLayer = LevelParser::initializeForegroundTiles(map);

@@ -6,16 +6,16 @@
 
 using namespace cocos2d;
 
-class Background : public Layer
+class MountainBackground : public Layer
 {
 public:
-	static Background * create();
+	static MountainBackground * create();
 
 	void update(float) override;
 
 protected:
-	Background();
-	~Background();
+	MountainBackground();
+	~MountainBackground();
 
 	Sprite * background;
 

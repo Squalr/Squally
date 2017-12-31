@@ -1,7 +1,6 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
-#include "Background.h"
 #include "Level/LevelCamera.h"
 #include "Level/LevelParser.h"
 #include "Entities/Player/Player.h"
