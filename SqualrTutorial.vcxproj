@@ -179,7 +179,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\Menus\Tutorial\TutorialItem.cpp" />
     <ClCompile Include="Source\GUI\Menus\Tutorial\TutorialScreen.cpp" />
     <ClCompile Include="Source\Input\InputManager.cpp" />
-    <ClCompile Include="Source\Level\Background.cpp" />
+    <ClCompile Include="Source\Level\Backgrounds\JungleBackground.cpp" />
+    <ClCompile Include="Source\Level\Backgrounds\MountainBackground.cpp" />
     <ClCompile Include="Source\Level\LevelCamera.cpp" />
     <ClCompile Include="Source\Level\LevelParser.cpp" />
     <ClCompile Include="Source\Objects\EggProjectile.cpp" />
@@ -223,7 +224,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\Menus\Tutorial\TutorialItem.h" />
     <ClInclude Include="Source\GUI\Menus\Tutorial\TutorialScreen.h" />
     <ClInclude Include="Source\Input\InputManager.h" />
-    <ClInclude Include="Source\Level\Background.h" />
+    <ClInclude Include="Source\Level\Backgrounds\JungleBackground.h" />
+    <ClInclude Include="Source\Level\Backgrounds\MountainBackground.h" />
     <ClInclude Include="Source\Level\LevelCamera.h" />
     <ClInclude Include="Source\Level\LevelParser.h" />
     <ClInclude Include="Source\Objects\EggProjectile.h" />

@@ -1,7 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
-#include "Background.h"
+#include "Level/Backgrounds/JungleBackground.h"
+#include "Level/Backgrounds/MountainBackground.h"
 #include "Utils/Utils.h"
 #include "Entities/Player/Player.h"
 #include "Entities/Enemies/Bat.h"
@@ -13,6 +14,7 @@ using namespace cocos2d;
 class LevelParser
 {
 public:
+	static Layer* initializeBackground(experimental::TMXTiledMap* map);
 	static Layer* initializeBackgroundTiles(experimental::TMXTiledMap* map);
 	static Layer* initializeMidgroundTiles(experimental::TMXTiledMap* map);
 	static Layer* initializeForegroundTiles(experimental::TMXTiledMap* map);

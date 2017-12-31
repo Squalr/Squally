@@ -1,15 +1,15 @@
-#include "Background.h"
+#include "MountainBackground.h"
 
-Background* Background::create()
+MountainBackground* MountainBackground::create()
 {
-	Background* newBackground = new Background();
+	MountainBackground* newBackground = new MountainBackground();
 
 	newBackground->autorelease();
 
 	return newBackground;
 }
 
-Background::Background()
+MountainBackground::MountainBackground()
 {
 	this->background = Sprite::create(Resources::Ingame_Background_Day_Sky);
 	this->clouds = InfiniteParallaxNode::create(Resources::Ingame_Background_Day_Clouds_01);
@@ -58,11 +58,11 @@ Background::Background()
 	this->scheduleUpdate();
 }
 
-Background::~Background()
+MountainBackground::~MountainBackground()
 {
 }
 
-void Background::update(float dt)
+void MountainBackground::update(float dt)
 {
 	Layer::update(dt);
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();

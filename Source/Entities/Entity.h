@@ -38,6 +38,6 @@ protected:
 	const float airDragFactor = 0.65f;
 	const float maxMoveSpeed = 360.0f;
 
-	const float normalJumpThreshold = -0.8f;
+	const float normalJumpThreshold = 0.8f;
 };
 
