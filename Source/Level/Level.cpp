@@ -20,25 +20,24 @@ Level::Level(std::string levelResourceFilePath)
 	this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, 0.0f));
 
-	this->backGroundLayer = Background::create();
-	this->tileLayer = Layer::create();
-	this->foregroundLayer = Layer::create();
-	this->entityLayer = Layer::create();
-	this->playerLayer = Layer::create();
-	this->enemyLayer = Layer::create();
-	this->environmentLayer = Layer::create();
+	experimental::TMXTiledMap* map = experimental::TMXTiledMap::create(levelResourceFilePath);
+
+	this->background = Background::create();
+	this->backgroundLayer = LevelParser::initializeBackgroundTiles(map);
+	this->midgroundLayer = LevelParser::initializeMidgroundTiles(map);
+	this->foregroundLayer = LevelParser::initializeForegroundTiles(map);
+	this->objectLayer = LevelParser::initializeObjects(map);
+	this->collisionLayer = LevelParser::initializeCollision(map);
+	this->environmentLayer = LevelParser::initializeEnvironment(map);
 	this->hud = HUD::create();
 
-	this->loadLevel(levelResourceFilePath);
-
-	this->entityLayer->addChild(this->playerLayer);
-	this->entityLayer->addChild(this->enemyLayer);
-
 	this->addChild(InputManager::claimInstance());
-	this->addChild(this->backGroundLayer);
-	this->addChild(this->tileLayer);
-	this->addChild(this->entityLayer);
+	this->addChild(this->background);
+	this->addChild(this->backgroundLayer);
+	this->addChild(this->midgroundLayer);
+	this->addChild(this->objectLayer);
 	this->addChild(this->foregroundLayer);
+	this->addChild(this->collisionLayer);
 	this->addChild(this->environmentLayer);
 	this->addChild(this->hud);
 
@@ -59,92 +58,33 @@ void Level::update(float dt)
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	float playerOffsetX = Director::getInstance()->getVisibleSize().width / 2 - this->player->getPositionX();
-	float playerOffsetY = Director::getInstance()->getVisibleSize().height / 2 - this->player->getPositionY();
+	float playerOffsetX = Director::getInstance()->getVisibleSize().width / 2 - Player::position.x;
+	float playerOffsetY = Director::getInstance()->getVisibleSize().height / 2 - Player::position.y;
 
 	// Handle camera scrolling from player traveling past scroll distance
-	if (this->playerLayer->getPositionX() < playerOffsetX - LevelCamera::cameraScrollOffsetX)
+	if (LevelCamera::cameraOffset.x < playerOffsetX - LevelCamera::cameraScrollOffsetX)
 	{
 		LevelCamera::cameraOffset.x = playerOffsetX - LevelCamera::cameraScrollOffsetX;
 	}
-	else if (this->playerLayer->getPositionX() > playerOffsetX + LevelCamera::cameraScrollOffsetX)
+	else if (LevelCamera::cameraOffset.x > playerOffsetX + LevelCamera::cameraScrollOffsetX)
 	{
 		LevelCamera::cameraOffset.x = playerOffsetX + LevelCamera::cameraScrollOffsetX;
 	}
 
-	if (this->playerLayer->getPositionY() < playerOffsetY - LevelCamera::cameraScrollOffsetY)
+	if (LevelCamera::cameraOffset.y < playerOffsetY - LevelCamera::cameraScrollOffsetY)
 	{
 		LevelCamera::cameraOffset.y = playerOffsetY - LevelCamera::cameraScrollOffsetY;
 	}
-	else if (this->playerLayer->getPositionY() > playerOffsetY + LevelCamera::cameraScrollOffsetY)
+	else if (LevelCamera::cameraOffset.y > playerOffsetY + LevelCamera::cameraScrollOffsetY)
 	{
 		LevelCamera::cameraOffset.y = playerOffsetY + LevelCamera::cameraScrollOffsetY;
 	}
 
-	this->playerLayer->setPosition(LevelCamera::cameraOffset);
-	this->enemyLayer->setPosition(LevelCamera::cameraOffset);
-	this->tileLayer->setPosition(LevelCamera::cameraOffset);
+	this->backgroundLayer->setPosition(LevelCamera::cameraOffset);
+	this->midgroundLayer->setPosition(LevelCamera::cameraOffset);
+	this->objectLayer->setPosition(LevelCamera::cameraOffset);
+	this->collisionLayer->setPosition(LevelCamera::cameraOffset);
 	this->foregroundLayer->setPosition(LevelCamera::cameraOffset);
-}
-
-void Level::loadLevel(std::string levelResourceFilePath)
-{
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-	this->environmentLayer->addChild(ParticleRain::create());
-
-	experimental::TMXTiledMap* map = experimental::TMXTiledMap::create(levelResourceFilePath);
-	experimental::TMXLayer* background = map->getLayer("background");
-	experimental::TMXLayer* midGround = map->getLayer("midground");
-	experimental::TMXLayer* foreground = map->getLayer("foreground");
-	ValueVector objects = map->getObjectGroup("objects")->getObjects();
-	ValueVector collisionObjects = map->getObjectGroup("collision")->getObjects();
-
-	// Create entities
-	for (int index = 0; index < size(objects); index++)
-	{
-		if (objects[index].getType() != Value::Type::MAP)
-		{
-			continue;
-		}
-
-		ValueMap object = objects[index].asValueMap();
-		string type = object.at("type").asString();
-
-		if (type == "spawn")
-		{
-			this->player = Player::create();
-			this->player->setPosition(Vec2(object.at("x").asFloat(), object.at("y").asFloat()));
-			this->playerLayer->addChild(this->player);
-		}
-		else if (type == "shroom")
-		{
-			Shroom* shroom = Shroom::create();
-			shroom->setPosition(Vec2(object.at("x").asFloat(), object.at("y").asFloat()));
-			this->enemyLayer->addChild(shroom);
-		}
-		else if (type == "snail")
-		{
-			Snail* snail = Snail::create();
-			snail->setPosition(Vec2(object.at("x").asFloat(), object.at("y").asFloat()));
-			this->enemyLayer->addChild(snail);
-		}
-	}
-
-	// Create midground
-	Layer* collisionLayer = Collision::initializeCollision(collisionObjects);
-
-	Node* backgroundNode = map->getChildren().at(0);
-	Node* midgroundNode = map->getChildren().at(1);
-	Node* foregroundNode = map->getChildren().at(2);
-
-	map->removeAllChildren();
-
-	this->tileLayer->addChild(backgroundNode);
-	this->tileLayer->addChild(midgroundNode);
-	this->tileLayer->addChild(collisionLayer);
-	this->foregroundLayer->addChild(foregroundNode);
 }
 
 void Level::initializeListeners()

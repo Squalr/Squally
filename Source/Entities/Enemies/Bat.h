@@ -6,10 +6,10 @@
 
 using namespace cocos2d;
 
-class Snail : public Entity
+class Bat : public Entity
 {
 public:
-	static Snail * create();
+	static Bat * create();
 
 protected:
 	bool contactBegin(CollisionData data) override;
@@ -17,8 +17,8 @@ protected:
 	bool contactEnd(CollisionData data) override;
 
 private:
-	Snail();
-	~Snail();
+	Bat();
+	~Bat();
 
 	void update(float) override;
 

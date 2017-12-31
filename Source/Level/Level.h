@@ -2,17 +2,15 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Background.h"
-#include "Collision/Collision.h"
 #include "Level/LevelCamera.h"
+#include "Level/LevelParser.h"
 #include "Entities/Player/Player.h"
-#include "Entities/Enemies/Shroom.h"
-#include "Entities/Enemies/Snail.h"
 #include "Input/InputManager.h"
+#include "Utils/Utils.h"
 #include "GUI/HUD/HUD.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
 #include "GUI/Menus/Pause/PauseMenu.h"
-#include <algorithm> 
 
 using namespace cocos2d;
 
@@ -27,24 +25,16 @@ protected:
 
 	void update(float) override;
 
-protected:
-
-	Layer * backGroundLayer;
-	Layer * tileLayer;
-	Layer * foregroundLayer;
-	HUD * hud;
-
-	Layer * entityLayer;
-	Layer * playerLayer;
-	Layer * enemyLayer;
-
-	Layer * environmentLayer;
-
-	Player * player;
-
 private:
-	void loadLevel(std::string levelResourceFilePath);
 	void initializeListeners();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-};
 
+	Layer * background;
+	Layer * backgroundLayer;
+	Layer * midgroundLayer;
+	Layer * objectLayer;
+	Layer * collisionLayer;
+	Layer * foregroundLayer;
+	Layer * environmentLayer;
+	HUD * hud;
+};

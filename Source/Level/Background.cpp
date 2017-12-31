@@ -71,9 +71,9 @@ void Background::update(float dt)
 	float widthOffset = Director::getInstance()->getVisibleSize().width / 2;
 	float playerXOffset = Player::position.x;
 
-	this->mountains->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 10.0f, this->mountains->getPosition().y)));
-	this->mountains2->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 8.0f, this->mountains2->getPosition().y)));
-	this->trees1->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 6.0f, this->trees1->getPosition().y)));
-	this->trees2->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 4.0f, this->trees2->getPosition().y)));
-	this->trees3->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 2.0f, this->trees3->getPosition().y)));
+	this->mountains->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 100.0f, this->mountains->getPosition().y)));
+	this->mountains2->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 80.0f, this->mountains2->getPosition().y)));
+	this->trees1->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 60.0f, this->trees1->getPosition().y)));
+	this->trees2->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 40.0f, this->trees2->getPosition().y)));
+	this->trees3->runAction(MoveTo::create(0.0f, Vec2(-playerXOffset / 20.0f, this->trees3->getPosition().y)));
 }
