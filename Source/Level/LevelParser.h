@@ -21,4 +21,8 @@ public:
 	static Layer* initializeEnvironment(experimental::TMXTiledMap* map);
 	static Layer* initializeObjects(experimental::TMXTiledMap* map);
 	static Layer* initializeCollision(experimental::TMXTiledMap* map);
+
+private:
+	static Layer* extractTileLayer(experimental::TMXTiledMap* map, std::string tileLayer);
+	static Layer* initializeDecor(experimental::TMXTiledMap* map, std::string decorLayer);
 };
