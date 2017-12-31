@@ -72,9 +72,6 @@
     <ClCompile Include="Source\Entities\Entity.cpp">
       <Filter>Source\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Objects\GameObject.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -159,9 +156,6 @@
     <ClCompile Include="Source\Input\InputManager.cpp">
       <Filter>Source\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Collision\Collision.cpp">
-      <Filter>Source\Collision</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GUI\HUD\HUD.cpp">
       <Filter>Source\GUI\HUD</Filter>
     </ClCompile>
@@ -183,6 +177,15 @@
     <ClCompile Include="Source\Entities\Enemies\Snail.cpp">
       <Filter>Source\Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Objects\EggProjectile.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Entities\Enemies\Bat.cpp">
+      <Filter>Source\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Level\LevelParser.cpp">
+      <Filter>Source\Level</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -193,9 +196,6 @@
     </ClInclude>
     <ClInclude Include="Source\Entities\Entity.h">
       <Filter>Source\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\GameObject.h">
-      <Filter>Source\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Source\Main.h">
       <Filter>Source</Filter>
@@ -281,9 +281,6 @@
     <ClInclude Include="Source\Input\InputManager.h">
       <Filter>Source\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Collision\Collision.h">
-      <Filter>Source\Collision</Filter>
-    </ClInclude>
     <ClInclude Include="Source\GUI\HUD\HUD.h">
       <Filter>Source\GUI\HUD</Filter>
     </ClInclude>
@@ -307,6 +304,15 @@
     </ClInclude>
     <ClInclude Include="Source\Entities\Enemies\Snail.h">
       <Filter>Source\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\EggProjectile.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entities\Enemies\Bat.h">
+      <Filter>Source\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\LevelParser.h">
+      <Filter>Source\Level</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -22,7 +22,7 @@ Player::Player()
 	this->inputManager = InputManager::getInstance();
 
 	this->sprite = Sprite::create(Resources::Ingame_Sprites_Player_Idle);
-	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CategoryGroup::G_Player, true);
+	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CategoryGroup::G_Player, true, false);
 	this->hover = Hover::create(this);
 
 	this->hover->setContactBeginCallback(CC_CALLBACK_1(Player::hoverContactBegin, this));
@@ -65,11 +65,13 @@ void Player::update(float dt)
 	{
 		this->hover->setHeight(16.0f);
 	}
+
+	this->position = this->getPosition();
 }
 
 bool Player::hoverContactBegin(CollisionData data)
 {
-	return false;
+	return true;
 }
 
 bool Player::hoverContactUpdate(CollisionData data)
@@ -86,7 +88,7 @@ bool Player::hoverContactUpdate(CollisionData data)
 		return true;
 	}
 
-	return false;
+	return true;
 }
 
 bool Player::hoverContactEnd(CollisionData data)
@@ -100,12 +102,12 @@ bool Player::hoverContactEnd(CollisionData data)
 		return true;
 	}
 
-	return false;
+	return true;
 }
 
 bool Player::contactBegin(CollisionData data)
 {
-	return false;
+	return true;
 }
 
 bool Player::contactUpdate(CollisionData data)
@@ -129,7 +131,7 @@ bool Player::contactUpdate(CollisionData data)
 		return false;
 	}
 
-	return false;
+	return true;
 }
 
 bool Player::contactEnd(CollisionData data)
@@ -149,5 +151,5 @@ bool Player::contactEnd(CollisionData data)
 		return false;
 	}
 
-	return false;
+	return true;
 }

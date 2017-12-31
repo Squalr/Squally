@@ -1,15 +1,15 @@
-#include "Shroom.h"
+#include "Bat.h"
 
-Shroom* Shroom::create()
+Bat* Bat::create()
 {
-	Shroom* shroom = new Shroom();
+	Bat* bat = new Bat();
 
-	shroom->autorelease();
+	bat->autorelease();
 
-	return shroom;
+	return bat;
 }
 
-Shroom::Shroom()
+Bat::Bat()
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
@@ -19,12 +19,12 @@ Shroom::Shroom()
 	this->movement.x = -1.0f;
 	this->movement.y = 0.0f;
 
-	this->sprite = Sprite::create(Resources::Ingame_Sprites_Shroom_ShroomWalking1);
+	this->sprite = Sprite::create(Resources::Ingame_Sprites_Bat_Fly1);
 	this->walkAnimation = Animation::create();
-	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Shroom_ShroomWalking1);
-	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Shroom_ShroomWalking2);
-	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Shroom_ShroomWalking3);
-	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Shroom_ShroomWalking4);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Bat_Fly1);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Bat_Fly2);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Bat_Fly3);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Bat_Fly4);
 	this->walkAnimation->setDelayPerUnit(0.1f);
 	this->sprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
 
@@ -33,17 +33,17 @@ Shroom::Shroom()
 	this->addChild(this->sprite);
 }
 
-Shroom::~Shroom()
+Bat::~Bat()
 {
 }
 
-void Shroom::update(float dt)
+void Bat::update(float dt)
 {
 	Entity::update(dt);
 
 	this->movement.y = 0.0f;
 
-	if (this->movement.x > 0.0f)
+	if (this->movement.x < 0.0f)
 	{
 		this->sprite->setFlippedX(true);
 	}
@@ -53,12 +53,12 @@ void Shroom::update(float dt)
 	}
 }
 
-bool Shroom::contactBegin(CollisionData data)
+bool Bat::contactBegin(CollisionData data)
 {
 	return false;
 }
 
-bool Shroom::contactUpdate(CollisionData data)
+bool Bat::contactUpdate(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
@@ -89,7 +89,7 @@ bool Shroom::contactUpdate(CollisionData data)
 	return false;
 }
 
-bool Shroom::contactEnd(CollisionData data)
+bool Bat::contactEnd(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{

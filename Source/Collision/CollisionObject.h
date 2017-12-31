@@ -12,7 +12,7 @@ public:
 	CollisionObject();
 	~CollisionObject();
 
-	void init(PhysicsBody* initPhysicsBody, CategoryGroup initCategoryGroup, bool isDynamic);
+	void init(PhysicsBody* initPhysicsBody, CategoryGroup initCategoryGroup, bool isDynamic, bool canRotate);
 
 	CategoryGroup getCategoryGroup();
 	Vec2 getVelocity();

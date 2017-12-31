@@ -11,9 +11,6 @@ class Shroom : public Entity
 public:
 	static Shroom * create();
 
-	static int health;
-	static Vec2 position;
-
 protected:
 	bool contactBegin(CollisionData data) override;
 	bool contactUpdate(CollisionData data) override;
@@ -28,5 +25,4 @@ private:
 	Animation* walkAnimation;
 	Animation* jumpAnimation;
 	Animation* deathAnimation;
-	bool canJump;
 };
