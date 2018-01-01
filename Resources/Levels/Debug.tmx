@@ -226,13 +226,14 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="objects">
+ <objectgroup name="entities">
   <object id="28" name="spawn" type="spawn" x="897.485" y="4997.37" width="64" height="64"/>
   <object id="48" name="shroom" type="shroom" x="1954.55" y="5133.34" width="63.6364" height="63.6364"/>
   <object id="52" name="snail" type="snail" x="1734" y="5102.79" width="63.6364" height="63.6364"/>
   <object id="53" name="bat" type="bat" x="1451.82" y="5022.61" width="64" height="64"/>
   <object id="69" name="poly" type="poly" x="1310" y="5030" width="64" height="64"/>
  </objectgroup>
+ <objectgroup name="objects"/>
  <layer name="foreground" width="100" height="100">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

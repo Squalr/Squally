@@ -47,8 +47,8 @@ void JungleBackground::update(float dt)
 
 	float widthOffset = Director::getInstance()->getVisibleSize().width / 2;
 
-	this->layer6->runAction(MoveTo::create(0.0f, Vec2(-LevelCamera::cameraOffset.x / 80.0f, this->layer6->getPosition().y)));
-	this->layer5->runAction(MoveTo::create(0.0f, Vec2(-LevelCamera::cameraOffset.x / 60.0f, this->layer5->getPosition().y)));
-	this->layer4->runAction(MoveTo::create(0.0f, Vec2(-LevelCamera::cameraOffset.x / 40.0f, this->layer4->getPosition().y)));
-	this->layer2->runAction(MoveTo::create(0.0f, Vec2(-LevelCamera::cameraOffset.x / 20.0f, this->layer2->getPosition().y)));
+	this->layer6->runAction(MoveTo::create(0.0f, Vec2(LevelCamera::cameraOffset.x / 80.0f, this->layer6->getPosition().y)));
+	this->layer5->runAction(MoveTo::create(0.0f, Vec2(LevelCamera::cameraOffset.x / 60.0f, this->layer5->getPosition().y)));
+	this->layer4->runAction(MoveTo::create(0.0f, Vec2(LevelCamera::cameraOffset.x / 40.0f, this->layer4->getPosition().y)));
+	this->layer2->runAction(MoveTo::create(0.0f, Vec2(LevelCamera::cameraOffset.x / 20.0f, this->layer2->getPosition().y)));
 }

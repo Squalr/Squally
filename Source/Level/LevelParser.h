@@ -9,6 +9,8 @@
 #include "Entities/Enemies/Poly.h"
 #include "Entities/Enemies/Shroom.h"
 #include "Entities/Enemies/Snail.h"
+#include "Objects/WarpGate.h"
+#include "Objects/WarpGateExactScanTutorial.h"
 
 using namespace cocos2d;
 
@@ -20,6 +22,7 @@ public:
 	static Layer* initializeMidgroundTiles(experimental::TMXTiledMap* map);
 	static Layer* initializeForegroundTiles(experimental::TMXTiledMap* map);
 	static Layer* initializeEnvironment(experimental::TMXTiledMap* map);
+	static Layer* initializeEntities(experimental::TMXTiledMap* map);
 	static Layer* initializeObjects(experimental::TMXTiledMap* map);
 	static Layer* initializeCollision(experimental::TMXTiledMap* map);
 

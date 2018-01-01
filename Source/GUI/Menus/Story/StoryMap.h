@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "GUI/Components/FadeScene.h"
-#include "GUI/Components/MenuLabel.h"
+#include "GUI/Components/OutlineLabel.h"
 #include "GUI/Components/Mouse.h"
 
 using namespace cocos2d;
@@ -23,8 +23,8 @@ private:
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
 	Sprite* background;
-	MenuLabel* titleLabel;
-	MenuLabel* infoLabel;
+	OutlineLabel* titleLabel;
+	OutlineLabel* infoLabel;
 
 	const float titleFontSize = 48.0f;
 	const float infoFontSize = 32.0f;
