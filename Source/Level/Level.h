@@ -31,11 +31,12 @@ private:
 	Layer * background;
 	Layer * backgroundLayer;
 	Layer * midgroundLayer;
+	Layer * entityLayer;
 	Layer * objectLayer;
 	Layer * collisionLayer;
 	Layer * foregroundLayer;
 	Layer * environmentLayer;
 	HUD * hud;
 
-	Size mapSize;
+	static Size mapSize;
 };

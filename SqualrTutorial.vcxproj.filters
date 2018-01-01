@@ -99,9 +99,6 @@
     <ClCompile Include="Source\GUI\Components\InfiniteParallaxNode.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GUI\Components\MenuLabel.cpp">
-      <Filter>Source\GUI\Components</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GUI\Components\MenuSprite.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
@@ -195,6 +192,15 @@
     <ClCompile Include="Source\Entities\Enemies\Poly.cpp">
       <Filter>Source\Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Objects\WarpGate.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\WarpGateExactScanTutorial.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Components\OutlineLabel.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -231,9 +237,6 @@
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\GUI\Components\InfiniteParallaxNode.h">
-      <Filter>Source\GUI\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GUI\Components\MenuLabel.h">
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\GUI\Components\FloatingSprite.h">
@@ -328,6 +331,15 @@
     </ClInclude>
     <ClInclude Include="Source\Entities\Enemies\Poly.h">
       <Filter>Source\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\WarpGate.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\WarpGateExactScanTutorial.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\OutlineLabel.h">
+      <Filter>Source\GUI\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

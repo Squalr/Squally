@@ -161,7 +161,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\Components\FadeScene.cpp" />
     <ClCompile Include="Source\GUI\Components\FloatingSprite.cpp" />
     <ClCompile Include="Source\GUI\Components\InfiniteParallaxNode.cpp" />
-    <ClCompile Include="Source\GUI\Components\MenuLabel.cpp" />
+    <ClCompile Include="Source\GUI\Components\OutlineLabel.cpp" />
     <ClCompile Include="Source\GUI\Components\MenuSprite.cpp" />
     <ClCompile Include="Source\GUI\Components\Mouse.cpp" />
     <ClCompile Include="Source\GUI\Components\RadioButton.cpp" />
@@ -185,6 +185,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Level\LevelCamera.cpp" />
     <ClCompile Include="Source\Level\LevelParser.cpp" />
     <ClCompile Include="Source\Objects\EggProjectile.cpp" />
+    <ClCompile Include="Source\Objects\WarpGate.cpp" />
+    <ClCompile Include="Source\Objects\WarpGateExactScanTutorial.cpp" />
     <ClCompile Include="Source\Utils\Utils.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\Game.cpp" />
@@ -207,7 +209,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\Components\FadeScene.h" />
     <ClInclude Include="Source\GUI\Components\FloatingSprite.h" />
     <ClInclude Include="Source\GUI\Components\InfiniteParallaxNode.h" />
-    <ClInclude Include="Source\GUI\Components\MenuLabel.h" />
+    <ClInclude Include="Source\GUI\Components\OutlineLabel.h" />
     <ClInclude Include="Source\GUI\Components\MenuSprite.h" />
     <ClInclude Include="Source\GUI\Components\Mouse.h" />
     <ClInclude Include="Source\GUI\Components\RadioButton.h" />
@@ -231,6 +233,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Level\LevelCamera.h" />
     <ClInclude Include="Source\Level\LevelParser.h" />
     <ClInclude Include="Source\Objects\EggProjectile.h" />
+    <ClInclude Include="Source\Objects\WarpGate.h" />
+    <ClInclude Include="Source\Objects\WarpGateExactScanTutorial.h" />
     <ClInclude Include="Source\Utils\Utils.h" />
     <ClInclude Include="Source\Window.h" />
     <ClInclude Include="Source\Game.h" />
