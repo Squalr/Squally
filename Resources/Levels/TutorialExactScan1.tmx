@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="64" tileheight="64" nextobjectid="72">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="64" tileheight="64" nextobjectid="73">
  <tileset firstgid="1" name="TileMap" tilewidth="64" tileheight="64" tilecount="200" columns="20">
   <image source="../Ingame/Tiles/TileMap.png" width="1280" height="640"/>
  </tileset>
@@ -62,7 +62,10 @@
  </layer>
  <objectgroup name="decor-midground"/>
  <objectgroup name="objects">
-  <object id="28" name="spawn" type="spawn" x="189.485" y="225.37" width="64" height="64"/>
+  <object id="28" name="warp-gate-exact-scan-1" type="warp-gate-exact-scan-1" x="977.364" y="125.37" width="512" height="380"/>
+ </objectgroup>
+ <objectgroup name="entities">
+  <object id="72" name="spawn" type="spawn" x="189.485" y="225.37" width="64" height="64"/>
  </objectgroup>
  <layer name="foreground" width="24" height="24">
   <data encoding="csv">

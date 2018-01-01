@@ -53,25 +53,13 @@ Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map)
 
 		Node* newObject = nullptr;
 
-		if (type == "spawn")
+		if (type == "warp-gate")
 		{
-			newObject = Player::create();
+			newObject = WarpGate::create();
 		}
-		else if (type == "bat")
+		else if (type == "warp-gate-exact-scan-1")
 		{
-			newObject = Bat::create();
-		}
-		else if (type == "shroom")
-		{
-			newObject = Shroom::create();
-		}
-		else if (type == "snail")
-		{
-			newObject = Snail::create();
-		}
-		else if (type == "poly")
-		{
-			newObject = Poly::create();
+			newObject = WarpGateExactScanTutorial::create();
 		}
 		else
 		{
@@ -80,6 +68,56 @@ Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map)
 
 		newObject->setPosition(Vec2(object.at("x").asFloat() + object.at("width").asFloat() / 2, object.at("y").asFloat() + object.at("height").asFloat() / 2));
 		layer->addChild(newObject);
+	}
+
+	return layer;
+}
+
+Layer* LevelParser::initializeEntities(experimental::TMXTiledMap* map)
+{
+	Layer* layer = Layer::create();
+	ValueVector entities = map->getObjectGroup("entities")->getObjects();
+
+	// Create entities
+	for (int index = 0; index < size(entities); index++)
+	{
+		if (entities[index].getType() != Value::Type::MAP)
+		{
+			continue;
+		}
+
+		ValueMap entity = entities[index].asValueMap();
+		string type = entity.at("type").asString();
+
+		Node* newEntity = nullptr;
+
+		if (type == "spawn")
+		{
+			newEntity = Player::create();
+		}
+		else if (type == "bat")
+		{
+			newEntity = Bat::create();
+		}
+		else if (type == "shroom")
+		{
+			newEntity = Shroom::create();
+		}
+		else if (type == "snail")
+		{
+			newEntity = Snail::create();
+		}
+		else if (type == "poly")
+		{
+			newEntity = Poly::create();
+		}
+		else
+		{
+			throw exception("invalid entity");
+		}
+
+		newEntity->setPosition(Vec2(entity.at("x").asFloat() + entity.at("width").asFloat() / 2, entity.at("y").asFloat() + entity.at("height").asFloat() / 2));
+		layer->addChild(newEntity);
 	}
 
 	return layer;

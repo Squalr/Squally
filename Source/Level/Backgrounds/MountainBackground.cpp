@@ -70,9 +70,9 @@ void MountainBackground::update(float dt)
 
 	float widthOffset = Director::getInstance()->getVisibleSize().width / 2;
 
-	this->mountains->runAction(MoveTo::create(0.0f, Vec2(-LevelCamera::cameraOffset.x / 100.0f, this->mountains->getPosition().y)));
-	this->mountains2->runAction(MoveTo::create(0.0f, Vec2(-LevelCamera::cameraOffset.x / 80.0f, this->mountains2->getPosition().y)));
-	this->trees1->runAction(MoveTo::create(0.0f, Vec2(-LevelCamera::cameraOffset.x / 60.0f, this->trees1->getPosition().y)));
-	this->trees2->runAction(MoveTo::create(0.0f, Vec2(-LevelCamera::cameraOffset.x / 40.0f, this->trees2->getPosition().y)));
-	this->trees3->runAction(MoveTo::create(0.0f, Vec2(-LevelCamera::cameraOffset.x / 20.0f, this->trees3->getPosition().y)));
+	this->mountains->runAction(MoveTo::create(0.0f, Vec2(LevelCamera::cameraOffset.x / 100.0f, this->mountains->getPosition().y)));
+	this->mountains2->runAction(MoveTo::create(0.0f, Vec2(LevelCamera::cameraOffset.x / 80.0f, this->mountains2->getPosition().y)));
+	this->trees1->runAction(MoveTo::create(0.0f, Vec2(LevelCamera::cameraOffset.x / 60.0f, this->trees1->getPosition().y)));
+	this->trees2->runAction(MoveTo::create(0.0f, Vec2(LevelCamera::cameraOffset.x / 40.0f, this->trees2->getPosition().y)));
+	this->trees3->runAction(MoveTo::create(0.0f, Vec2(LevelCamera::cameraOffset.x / 20.0f, this->trees3->getPosition().y)));
 }

@@ -11,8 +11,8 @@ StoryMap * StoryMap::create()
 
 StoryMap::StoryMap()
 {
-	this->titleLabel = MenuLabel::create("Level Select", Resources::Fonts_Marker_Felt, this->titleFontSize);
-	this->infoLabel = MenuLabel::create("Level 1", Resources::Fonts_Marker_Felt, this->infoFontSize);
+	this->titleLabel = OutlineLabel::create("Level Select", Resources::Fonts_Marker_Felt, this->titleFontSize);
+	this->infoLabel = OutlineLabel::create("Level 1", Resources::Fonts_Marker_Felt, this->infoFontSize);
 	this->background = Sprite::create(Resources::Menus_WorldMaps_StoryMap);
 
 	this->addChild(this->background);

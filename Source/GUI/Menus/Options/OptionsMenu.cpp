@@ -13,7 +13,7 @@ OptionsMenu::OptionsMenu()
 {
 	this->background = Node::create();
 	this->optionsWindow = Sprite::create(Resources::Menus_OptionsMenu_OptionsMenu);
-	this->fullScreenLabel = MenuLabel::create("Full Screen", Resources::Fonts_Montserrat_Medium, menuFontSize);
+	this->fullScreenLabel = OutlineLabel::create("Full Screen", Resources::Fonts_Montserrat_Medium, menuFontSize);
 	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
 
 	this->musicIcon = Sprite::create(Resources::Menus_OptionsMenu_MusicIcon);

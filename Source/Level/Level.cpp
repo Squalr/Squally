@@ -1,5 +1,7 @@
 #include "Level.h"
 
+Size Level::mapSize = Size::ZERO;
+
 Level* Level::create(std::string levelResourceFilePath)
 {
 	Level* level = new Level(levelResourceFilePath);
@@ -21,13 +23,14 @@ Level::Level(std::string levelResourceFilePath)
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, 0.0f));
 
 	experimental::TMXTiledMap* map = experimental::TMXTiledMap::create(levelResourceFilePath);
-	this->mapSize = Size(map->getMapSize().width * map->getTileSize().width, map->getMapSize().height * map->getTileSize().height);
+	Level::mapSize = Size(map->getMapSize().width * map->getTileSize().width, map->getMapSize().height * map->getTileSize().height);
 
 	this->background = LevelParser::initializeBackground(map);
 	this->backgroundLayer = LevelParser::initializeBackgroundTiles(map);
 	this->midgroundLayer = LevelParser::initializeMidgroundTiles(map);
 	this->foregroundLayer = LevelParser::initializeForegroundTiles(map);
 	this->objectLayer = LevelParser::initializeObjects(map);
+	this->entityLayer = LevelParser::initializeEntities(map);
 	this->collisionLayer = LevelParser::initializeCollision(map);
 	this->environmentLayer = LevelParser::initializeEnvironment(map);
 	this->hud = HUD::create();
@@ -37,6 +40,7 @@ Level::Level(std::string levelResourceFilePath)
 	this->addChild(this->backgroundLayer);
 	this->addChild(this->midgroundLayer);
 	this->addChild(this->objectLayer);
+	this->addChild(this->entityLayer);
 	this->addChild(this->foregroundLayer);
 	this->addChild(this->collisionLayer);
 	this->addChild(this->environmentLayer);
@@ -81,6 +85,7 @@ void Level::update(float dt)
 		LevelCamera::cameraOffset.y = playerOffsetY + LevelCamera::cameraScrollOffsetY;
 	}
 
+	// Prevent camera from leaving level bounds
 	LevelCamera::cameraOffset.x = min(LevelCamera::cameraOffset.x, 0.0f);
 	LevelCamera::cameraOffset.x = max(LevelCamera::cameraOffset.x, -(this->mapSize.width - visibleSize.width));
 
@@ -90,6 +95,7 @@ void Level::update(float dt)
 	this->backgroundLayer->setPosition(LevelCamera::cameraOffset);
 	this->midgroundLayer->setPosition(LevelCamera::cameraOffset);
 	this->objectLayer->setPosition(LevelCamera::cameraOffset);
+	this->entityLayer->setPosition(LevelCamera::cameraOffset);
 	this->collisionLayer->setPosition(LevelCamera::cameraOffset);
 	this->foregroundLayer->setPosition(LevelCamera::cameraOffset);
 	this->environmentLayer->setPosition(LevelCamera::cameraOffset);

@@ -6,7 +6,7 @@
 #include "Config/ConfigManager.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/Mouse.h"
-#include "GUI/Components/MenuLabel.h"
+#include "GUI/Components/OutlineLabel.h"
 #include "GUI/Components/MenuSprite.h"
 #include "GUI/Components/Slider.h"
 #include "GUI/Components/RadioButton.h"
@@ -46,7 +46,7 @@ private:
 	Sprite* soundIcon;
 	Slider* musicSlider;
 	Slider* soundSlider;
-	MenuLabel* fullScreenLabel;
+	OutlineLabel* fullScreenLabel;
 	ToggleButton* fullScreenButton;
 	MenuSprite* exitButton;
 

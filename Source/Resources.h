@@ -259,6 +259,8 @@ public:
 	static const string Ingame_Objects_SignSkullLeft;
 	static const string Ingame_Objects_SignSkullRight;
 	static const string Ingame_Objects_SpikeBall;
+	static const string Ingame_Objects_WarpGateClosed;
+	static const string Ingame_Objects_WarpGateOpen;
 	static const string Ingame_Sprites_EggProjectile;
 	static const string Ingame_Sprites_Bat_Death1;
 	static const string Ingame_Sprites_Bat_Death2;
