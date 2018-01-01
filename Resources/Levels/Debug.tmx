@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="64" tileheight="64" nextobjectid="68">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="64" tileheight="64" nextobjectid="70">
  <tileset firstgid="1" name="TileMap" tilewidth="64" tileheight="64" tilecount="200" columns="20">
   <image source="../Ingame/Tiles/TileMap.png" width="1280" height="640"/>
  </tileset>
@@ -231,6 +231,7 @@
   <object id="48" name="shroom" type="shroom" x="1954.55" y="5133.34" width="63.6364" height="63.6364"/>
   <object id="52" name="snail" type="snail" x="1734" y="5102.79" width="63.6364" height="63.6364"/>
   <object id="53" name="bat" type="bat" x="1451.82" y="5022.61" width="64" height="64"/>
+  <object id="69" name="poly" type="poly" x="1310" y="5030" width="64" height="64"/>
  </objectgroup>
  <layer name="foreground" width="100" height="100">
   <data encoding="csv">
@@ -348,7 +349,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="collision" visible="0">
+ <objectgroup name="collision">
   <object id="14" name="solid" type="solid" x="1081.67" y="5193.37" width="253.712" height="699.334"/>
   <object id="39" name="solid" type="solid" x="1786.82" y="5262.61" width="440" height="637"/>
   <object id="41" name="solid" type="solid" x="1790.74" y="5193.36">
@@ -359,6 +360,6 @@
   <object id="49" name="solid" type="solid" x="1465.82" y="5192.61" width="322.667" height="705.333"/>
   <object id="51" name="solid" type="solid" x="1331.82" y="5198.61" width="136.333" height="45.3333"/>
   <object id="54" name="npc-flying" type="npc-flying" x="1087.58" y="5110.49" width="1126.48" height="28.242"/>
-  <object id="65" name="solid" type="solid" x="785.144" y="5178.33" width="233.712" height="61.334"/>
+  <object id="65" name="solid" type="solid" x="781.144" y="5182.33" width="240.712" height="61.334"/>
  </objectgroup>
 </map>

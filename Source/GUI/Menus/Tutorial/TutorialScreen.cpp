@@ -143,14 +143,14 @@ void TutorialScreen::loadLevels()
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Exact Value Scan I",
-		Resources::Levels_Debug,
+		Resources::Levels_TutorialExactScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Exact Value Scan II",
-		Resources::Levels_Debug,
+		Resources::Levels_TutorialExactScan1,
 		index++,
 		callback
 	));

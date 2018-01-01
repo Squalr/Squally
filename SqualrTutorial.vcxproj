@@ -152,6 +152,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Config\ConfigManager.cpp" />
     <ClCompile Include="Source\Config\SoundManager.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Bat.cpp" />
+    <ClCompile Include="Source\Entities\Enemies\Poly.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Shroom.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Snail.cpp" />
     <ClCompile Include="Source\Entities\Entity.cpp" />
@@ -197,6 +198,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Config\ConfigManager.h" />
     <ClInclude Include="Source\Config\SoundManager.h" />
     <ClInclude Include="Source\Entities\Enemies\Bat.h" />
+    <ClInclude Include="Source\Entities\Enemies\Poly.h" />
     <ClInclude Include="Source\Entities\Enemies\Shroom.h" />
     <ClInclude Include="Source\Entities\Enemies\Snail.h" />
     <ClInclude Include="Source\Entities\Entity.h" />
