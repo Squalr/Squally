@@ -4,13 +4,15 @@ InputManager* InputManager::inputManagerInstance = nullptr;
 
 InputManager* InputManager::claimInstance()
 {
-	InputManager* mouse = InputManager::getInstance();
+	InputManager* inputManager = InputManager::getInstance();
 
 	// Free the input manager from it's parent
-	if (mouse->getParent() != nullptr)
+	if (inputManager->getParent() != nullptr)
 	{
-		mouse->getParent()->removeChild(InputManager::inputManagerInstance);
+		inputManager->getParent()->removeChild(InputManager::inputManagerInstance);
 	}
+
+	inputManager->InitializeListeners();
 
 	return InputManager::inputManagerInstance;
 }
@@ -30,7 +32,6 @@ InputManager::InputManager()
 	this->pressedKeys = new std::unordered_map<EventKeyboard::KeyCode, bool>();
 	this->pressedKeysPrevious = new std::unordered_map<EventKeyboard::KeyCode, bool>();
 
-	this->InitializeListeners();
 	this->scheduleUpdate();
 }
 

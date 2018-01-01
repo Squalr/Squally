@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
-#include "Entities/Player/Player.h"
+#include "Level/LevelCamera.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
 
 using namespace cocos2d;

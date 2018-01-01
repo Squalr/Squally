@@ -21,6 +21,7 @@ Level::Level(std::string levelResourceFilePath)
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, 0.0f));
 
 	experimental::TMXTiledMap* map = experimental::TMXTiledMap::create(levelResourceFilePath);
+	this->mapSize = Size(map->getMapSize().width * map->getTileSize().width, map->getMapSize().height * map->getTileSize().height);
 
 	this->background = LevelParser::initializeBackground(map);
 	this->backgroundLayer = LevelParser::initializeBackgroundTiles(map);
@@ -80,11 +81,18 @@ void Level::update(float dt)
 		LevelCamera::cameraOffset.y = playerOffsetY + LevelCamera::cameraScrollOffsetY;
 	}
 
+	LevelCamera::cameraOffset.x = min(LevelCamera::cameraOffset.x, 0.0f);
+	LevelCamera::cameraOffset.x = max(LevelCamera::cameraOffset.x, -(this->mapSize.width - visibleSize.width));
+
+	LevelCamera::cameraOffset.y = min(LevelCamera::cameraOffset.y, 0.0f);
+	LevelCamera::cameraOffset.y = max(LevelCamera::cameraOffset.y, -(this->mapSize.height - visibleSize.height));
+
 	this->backgroundLayer->setPosition(LevelCamera::cameraOffset);
 	this->midgroundLayer->setPosition(LevelCamera::cameraOffset);
 	this->objectLayer->setPosition(LevelCamera::cameraOffset);
 	this->collisionLayer->setPosition(LevelCamera::cameraOffset);
 	this->foregroundLayer->setPosition(LevelCamera::cameraOffset);
+	this->environmentLayer->setPosition(LevelCamera::cameraOffset);
 }
 
 void Level::initializeListeners()
