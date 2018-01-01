@@ -13,7 +13,9 @@ Layer* LevelParser::initializeEnvironment(experimental::TMXTiledMap* map)
 {
 	Layer* layer = Layer::create();
 
-	layer->addChild(ParticleRain::create());
+	ParticleSystem* particles = ParticleSystemQuad::create(Resources::Particles_Fireflies2);
+
+	layer->addChild(particles);
 
 	return layer;
 }
@@ -66,6 +68,10 @@ Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map)
 		else if (type == "snail")
 		{
 			newObject = Snail::create();
+		}
+		else if (type == "poly")
+		{
+			newObject = Poly::create();
 		}
 		else
 		{

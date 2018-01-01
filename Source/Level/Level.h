@@ -36,4 +36,6 @@ private:
 	Layer * foregroundLayer;
 	Layer * environmentLayer;
 	HUD * hud;
+
+	Size mapSize;
 };
