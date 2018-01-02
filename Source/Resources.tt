@@ -22,6 +22,7 @@ foreach (string file in Directory.EnumerateFiles(this.Host.ResolvePath("../Resou
 {
 	if (!file.EndsWith(".png") &&
 		!file.EndsWith(".jpg") &&
+		!file.EndsWith(".tif") &&
 		!file.EndsWith(".ttf") &&
 		!file.EndsWith(".mp3") &&
 		!file.EndsWith(".wav") &&
