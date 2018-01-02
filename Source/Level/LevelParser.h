@@ -3,6 +3,7 @@
 #include "Resources.h"
 #include "Level/Backgrounds/JungleBackground.h"
 #include "Level/Backgrounds/MountainBackground.h"
+#include "Level/Environments/JungleEnvironment.h"
 #include "Utils/Utils.h"
 #include "Entities/Player/Player.h"
 #include "Entities/Enemies/Bat.h"
@@ -17,16 +18,14 @@ using namespace cocos2d;
 class LevelParser
 {
 public:
+	static Layer* initializeTileLayer(experimental::TMXTiledMap* map, std::string tileLayer);
+	static Layer* initializeDecor(experimental::TMXTiledMap* map, std::string decorLayer);
+
 	static Layer* initializeBackground(experimental::TMXTiledMap* map);
-	static Layer* initializeBackgroundTiles(experimental::TMXTiledMap* map);
-	static Layer* initializeMidgroundTiles(experimental::TMXTiledMap* map);
-	static Layer* initializeForegroundTiles(experimental::TMXTiledMap* map);
 	static Layer* initializeEnvironment(experimental::TMXTiledMap* map);
 	static Layer* initializeEntities(experimental::TMXTiledMap* map);
 	static Layer* initializeObjects(experimental::TMXTiledMap* map);
 	static Layer* initializeCollision(experimental::TMXTiledMap* map);
 
 private:
-	static Layer* extractTileLayer(experimental::TMXTiledMap* map, std::string tileLayer);
-	static Layer* initializeDecor(experimental::TMXTiledMap* map, std::string decorLayer);
 };

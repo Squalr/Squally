@@ -19,7 +19,7 @@ Shroom::Shroom()
 	this->movement.x = -1.0f;
 	this->movement.y = 0.0f;
 
-	this->sprite = EffectSprite::create(Resources::Ingame_Sprites_Shroom_ShroomWalking1);
+	this->sprite = Sprite::create(Resources::Ingame_Sprites_Shroom_ShroomWalking1);
 	this->walkAnimation = Animation::create();
 	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Shroom_ShroomWalking1);
 	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Shroom_ShroomWalking2);

@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="64" tileheight="64" nextobjectid="108">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="64" tileheight="64" nextobjectid="133">
  <tileset firstgid="1" name="TileMap" tilewidth="64" tileheight="64" tilecount="200" columns="20">
   <image source="../Ingame/Tiles/TileMap.png" width="1280" height="640"/>
  </tileset>
+ <objectgroup name="background-parallax">
+  <object id="132" name="Cliff2" type="Cliff2" x="292" y="74" width="160" height="320">
+   <properties>
+    <property name="float-x" type="float" value="128"/>
+    <property name="float-y" type="float" value="8"/>
+   </properties>
+  </object>
+ </objectgroup>
  <layer name="background" width="24" height="24">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -31,7 +39,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="decor-background"/>
+ <objectgroup name="background-decor"/>
  <layer name="midground" width="24" height="24">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -60,7 +68,10 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="decor-midground"/>
+ <objectgroup name="midground-decor">
+  <object id="123" name="GrassPlane6" type="GrassPlane6" x="146.409" y="357.516" width="204" height="61.3333"/>
+  <object id="125" name="GrassPlane1" type="GrassPlane1" x="537.742" y="361.182" width="204" height="61.3333"/>
+ </objectgroup>
  <objectgroup name="objects">
   <object id="28" name="warp-gate-exact-scan-1" type="warp-gate-exact-scan-1" x="976.03" y="100.037" width="512" height="380"/>
  </objectgroup>
@@ -95,12 +106,7 @@
 22,23,0,0,0,0,0,0,113,0,0,113,0,0,0,0,0,0,0,0,0,0,0,21
 </data>
  </layer>
- <objectgroup name="decor-foreground">
-  <object id="83" name="Bush3" type="Bush3" x="1088" y="404" width="101.333" height="74.6666"/>
-  <object id="85" name="Bush4" type="Bush4" x="1376" y="394.667" width="101.333" height="74.6666"/>
-  <object id="86" name="GrassPlane6" type="GrassPlane6" x="150.667" y="362.667" width="204" height="61.3333"/>
-  <object id="88" name="Bush11" type="Bush11" x="1016" y="421.333" width="63.9997" height="58.6666"/>
-  <object id="89" name="GrassPlane1" type="GrassPlane1" x="542" y="361.333" width="204" height="61.3333"/>
+ <objectgroup name="foreground-decor">
   <object id="90" name="TreeTop2" type="TreeTop2" x="111.333" y="-28" width="112" height="77.3333"/>
   <object id="91" name="TreeTop3" type="TreeTop3" x="189.333" y="-22.6666" width="117.333" height="56"/>
   <object id="92" name="TreeTop3" type="TreeTop3" x="262.667" y="-28" width="117.333" height="56"/>
@@ -118,6 +124,15 @@
   <object id="104" name="TreeTop2" type="TreeTop2" x="1391.67" y="-42" width="112" height="77.3333"/>
   <object id="105" name="TreeTop3" type="TreeTop3" x="1287.67" y="-38" width="117.333" height="56"/>
   <object id="106" name="TreeTop2" type="TreeTop2" x="1448" y="-49.3333" width="112" height="77.3333"/>
+  <object id="108" name="TreeTop2" type="TreeTop2" x="27.3333" y="-31.3333" width="112" height="77.3333"/>
+  <object id="109" name="TreeTop2" type="TreeTop2" x="-28" y="-32.6666" width="112" height="77.3333"/>
+  <object id="110" name="TreeTop2" type="TreeTop2" x="1504" y="-32.6666" width="112" height="77.3333"/>
+  <object id="120" name="TreeTop2" type="TreeTop2" x="331.879" y="-23.5151" width="112" height="77.3333"/>
+  <object id="121" name="TreeTop2" type="TreeTop2" x="586.424" y="-26.5454" width="112" height="77.3333"/>
+  <object id="122" name="TreeTop2" type="TreeTop2" x="1271.27" y="-35.6363" width="112" height="77.3333"/>
+  <object id="128" name="Bush11" type="Bush11" x="1003.5" y="425.666" width="63.9997" height="58.6666"/>
+  <object id="129" name="Bush4" type="Bush4" x="1352.5" y="401" width="101.333" height="74.6666"/>
+  <object id="130" name="Bush3" type="Bush3" x="1075.5" y="408.333" width="101.333" height="74.6666"/>
  </objectgroup>
  <objectgroup name="collision">
   <object id="14" name="solid" type="solid" x="-0.33" y="-35.9633" width="123.712" height="1566.67"/>
