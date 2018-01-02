@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Collision/CollisionObject.h"
+#include "EffectSprite/EffectSprite.h"
 
 using namespace cocos2d;
 
@@ -18,7 +19,7 @@ protected:
 	void onEnter() override;
 	void update(float) override;
 
-	Sprite * sprite;
+	EffectSprite * sprite;
 	Vec2 movement;
 
 	bool isOnGround;

@@ -3,6 +3,7 @@
 #include "Resources.h"
 #include "Entities/Entity.h"
 #include "Entities/Player/Hover.h"
+#include "Level/LevelLights.h"
 #include "Collision/CategoryGroup.h"
 #include "Input/InputManager.h"
 

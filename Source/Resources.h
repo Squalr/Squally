@@ -390,6 +390,7 @@ public:
 	static const string Ingame_Sprites_Bat_Fly4;
 	static const string Ingame_Sprites_Dunkleosteus_Dunkleosteus;
 	static const string Ingame_Sprites_Player_Idle;
+	static const string Ingame_Sprites_Player_Idle_n;
 	static const string Ingame_Sprites_Player_Player_Attack;
 	static const string Ingame_Sprites_Player_Player_Attack2;
 	static const string Ingame_Sprites_Player_Player_Glide;
@@ -639,6 +640,7 @@ public:
 	static const string Particles_Sparks;
 	static const string Particles_WarpPoint;
 	static const string Particles_Wind;
+	static const string Shaders_PointLight;
 	static const string Sounds_ButtonClick1;
 	static const string Sounds_ButtonClick2;
 	static const string Sounds_ClickBack1;

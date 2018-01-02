@@ -21,6 +21,7 @@ Level::Level(std::string levelResourceFilePath)
 	// Physics / collision debugging
 	// this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, 0.0f));
+	LevelLights::cameraLight = LightEffect::create();
 
 	experimental::TMXTiledMap* map = experimental::TMXTiledMap::create(levelResourceFilePath);
 	Level::mapSize = Size(map->getMapSize().width * map->getTileSize().width, map->getMapSize().height * map->getTileSize().height);
@@ -60,45 +61,47 @@ void Level::update(float dt)
 {
 	FadeScene::update(dt);
 
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	float playerOffsetX = Director::getInstance()->getVisibleSize().width / 2 - Player::position.x;
-	float playerOffsetY = Director::getInstance()->getVisibleSize().height / 2 - Player::position.y;
-
 	// Handle camera scrolling from player traveling past scroll distance
-	if (LevelCamera::cameraOffset.x < playerOffsetX - LevelCamera::cameraScrollOffsetX)
+	if (LevelCamera::cameraPosition.x < Player::position.x - LevelCamera::cameraScrollOffsetX - visibleSize.width / 2)
 	{
-		LevelCamera::cameraOffset.x = playerOffsetX - LevelCamera::cameraScrollOffsetX;
+		LevelCamera::cameraPosition.x = Player::position.x - LevelCamera::cameraScrollOffsetX - visibleSize.width / 2;
 	}
-	else if (LevelCamera::cameraOffset.x > playerOffsetX + LevelCamera::cameraScrollOffsetX)
+	else if (LevelCamera::cameraPosition.x > Player::position.x + LevelCamera::cameraScrollOffsetX - visibleSize.width / 2)
 	{
-		LevelCamera::cameraOffset.x = playerOffsetX + LevelCamera::cameraScrollOffsetX;
+		LevelCamera::cameraPosition.x = Player::position.x + LevelCamera::cameraScrollOffsetX - visibleSize.width / 2;
 	}
 
-	if (LevelCamera::cameraOffset.y < playerOffsetY - LevelCamera::cameraScrollOffsetY)
+	if (LevelCamera::cameraPosition.y < Player::position.y - LevelCamera::cameraScrollOffsetY - visibleSize.height / 2)
 	{
-		LevelCamera::cameraOffset.y = playerOffsetY - LevelCamera::cameraScrollOffsetY;
+		LevelCamera::cameraPosition.y = Player::position.y - LevelCamera::cameraScrollOffsetY - visibleSize.height / 2;
 	}
-	else if (LevelCamera::cameraOffset.y > playerOffsetY + LevelCamera::cameraScrollOffsetY)
+	else if (LevelCamera::cameraPosition.y > Player::position.y + LevelCamera::cameraScrollOffsetY - visibleSize.height / 2)
 	{
-		LevelCamera::cameraOffset.y = playerOffsetY + LevelCamera::cameraScrollOffsetY;
+		LevelCamera::cameraPosition.y = Player::position.y + LevelCamera::cameraScrollOffsetY - visibleSize.height / 2;
 	}
 
 	// Prevent camera from leaving level bounds
-	LevelCamera::cameraOffset.x = min(LevelCamera::cameraOffset.x, 0.0f);
-	LevelCamera::cameraOffset.x = max(LevelCamera::cameraOffset.x, -(this->mapSize.width - visibleSize.width));
+	LevelCamera::cameraPosition.x = max(LevelCamera::cameraPosition.x, 0.0f);
+	LevelCamera::cameraPosition.x = min(LevelCamera::cameraPosition.x, this->mapSize.width - visibleSize.width);
 
-	LevelCamera::cameraOffset.y = min(LevelCamera::cameraOffset.y, 0.0f);
-	LevelCamera::cameraOffset.y = max(LevelCamera::cameraOffset.y, -(this->mapSize.height - visibleSize.height));
+	LevelCamera::cameraPosition.y = max(LevelCamera::cameraPosition.y, 0.0f);
+	LevelCamera::cameraPosition.y = min(LevelCamera::cameraPosition.y, this->mapSize.height - visibleSize.height);
 
-	this->backgroundLayer->setPosition(LevelCamera::cameraOffset);
-	this->midgroundLayer->setPosition(LevelCamera::cameraOffset);
-	this->objectLayer->setPosition(LevelCamera::cameraOffset);
-	this->entityLayer->setPosition(LevelCamera::cameraOffset);
-	this->collisionLayer->setPosition(LevelCamera::cameraOffset);
-	this->foregroundLayer->setPosition(LevelCamera::cameraOffset);
-	this->environmentLayer->setPosition(LevelCamera::cameraOffset);
+	// Scroll world
+	LevelLights::cameraLight->setLightPos(Vec3(LevelCamera::cameraPosition.x, 0.0f, 2048.0f));
+	LevelLights::cameraLight->setBrightness(2.0f);
+	LevelLights::cameraLight->setLightCutoffRadius(3000.0f);
+	LevelLights::cameraLight->setLightHalfRadius(1000.0f);
+
+	this->backgroundLayer->setPosition(-LevelCamera::cameraPosition);
+	this->midgroundLayer->setPosition(-LevelCamera::cameraPosition);
+	this->objectLayer->setPosition(-LevelCamera::cameraPosition);
+	this->entityLayer->setPosition(-LevelCamera::cameraPosition);
+	this->collisionLayer->setPosition(-LevelCamera::cameraPosition);
+	this->foregroundLayer->setPosition(-LevelCamera::cameraPosition);
+	this->environmentLayer->setPosition(-LevelCamera::cameraPosition);
 }
 
 void Level::initializeListeners()

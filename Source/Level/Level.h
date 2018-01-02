@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Level/LevelCamera.h"
+#include "Level/LevelLights.h"
 #include "Level/LevelParser.h"
 #include "Entities/Player/Player.h"
 #include "Input/InputManager.h"
