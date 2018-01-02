@@ -21,7 +21,8 @@ Player::Player()
 
 	this->inputManager = InputManager::getInstance();
 
-	this->sprite = Sprite::create(Resources::Ingame_Sprites_Player_Idle);
+	this->sprite = EffectSprite::create(Resources::Ingame_Sprites_Player_Idle);
+	this->sprite->setEffect(LevelLights::cameraLight, Resources::Ingame_Sprites_Player_Idle_n);
 	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CategoryGroup::G_Player, true, false);
 	this->hover = Hover::create(this);
 

@@ -133,7 +133,7 @@ CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsCo
 	// Convert collision coordinates to level coordinates
 	for (int index = 0; index < collisionData.pointCount; index++)
 	{
-		collisionData.points[index] = Vec2(contact.getContactData()->points[index].x - LevelCamera::cameraOffset.x, contact.getContactData()->points[index].y - LevelCamera::cameraOffset.y);
+		collisionData.points[index] = Vec2(contact.getContactData()->points[index].x + LevelCamera::cameraPosition.x, contact.getContactData()->points[index].y + LevelCamera::cameraPosition.y);
 	}
 
 	// Determines how large the

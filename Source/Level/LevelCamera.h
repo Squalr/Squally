@@ -7,7 +7,7 @@ using namespace cocos2d;
 class LevelCamera
 {
 public:
-	static Vec2 cameraOffset;
+	static Vec2 cameraPosition;
 
 	static const float cameraScrollOffsetX;
 	static const float cameraScrollOffsetY;
