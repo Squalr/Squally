@@ -19,7 +19,7 @@ Bat::Bat()
 	this->movement.x = -1.0f;
 	this->movement.y = 0.0f;
 
-	this->sprite = Sprite::create(Resources::Ingame_Sprites_Bat_Fly1);
+	this->sprite = EffectSprite::create(Resources::Ingame_Sprites_Bat_Fly1);
 	this->walkAnimation = Animation::create();
 	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Bat_Fly1);
 	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Bat_Fly2);
