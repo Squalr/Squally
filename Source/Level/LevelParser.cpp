@@ -13,26 +13,11 @@ Layer* LevelParser::initializeEnvironment(experimental::TMXTiledMap* map)
 {
 	Layer* layer = Layer::create();
 
-	ParticleSystem* particles = ParticleSystemQuad::create(Resources::Particles_Fireflies2);
+	JungleEnvironment* environment = JungleEnvironment::create();
 
-	layer->addChild(particles);
+	layer->addChild(environment);
 
 	return layer;
-}
-
-Layer* LevelParser::initializeBackgroundTiles(experimental::TMXTiledMap* map)
-{
-	return LevelParser::extractTileLayer(map, "background");
-}
-
-Layer* LevelParser::initializeMidgroundTiles(experimental::TMXTiledMap* map)
-{
-	return LevelParser::extractTileLayer(map, "midground");
-}
-
-Layer* LevelParser::initializeForegroundTiles(experimental::TMXTiledMap* map)
-{
-	return LevelParser::extractTileLayer(map, "foreground");
 }
 
 Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map)
@@ -204,15 +189,13 @@ Layer* LevelParser::initializeCollision(experimental::TMXTiledMap* map)
 	return layer;
 }
 
-Layer* LevelParser::extractTileLayer(experimental::TMXTiledMap* map, std::string tileLayer)
+Layer* LevelParser::initializeTileLayer(experimental::TMXTiledMap* map, std::string tileLayer)
 {
 	Layer* layer = Layer::create();
-	Layer* decorLayer = LevelParser::initializeDecor(map, "decor-" + tileLayer);
 	experimental::TMXLayer* background = map->getLayer(tileLayer);
 
 	map->removeChild(background);
 	layer->addChild(background);
-	layer->addChild(decorLayer);
 
 	return layer;
 }

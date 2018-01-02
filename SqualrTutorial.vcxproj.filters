@@ -64,8 +64,8 @@
     <Filter Include="Source\Level\Backgrounds">
       <UniqueIdentifier>{f7b63e6b-1146-490c-9a7d-ad73d9447c1f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\EffectSprite">
-      <UniqueIdentifier>{cbb12a74-3eba-499c-97aa-2a300f7ebd23}</UniqueIdentifier>
+    <Filter Include="Source\Level\Environments">
+      <UniqueIdentifier>{ddea15c5-7454-4e0d-9488-79b4dd7987ff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -204,17 +204,8 @@
     <ClCompile Include="Source\GUI\Components\OutlineLabel.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\EffectSprite\EffectSprite.cpp">
-      <Filter>Source\EffectSprite</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\EffectSprite\LightEffect.cpp">
-      <Filter>Source\EffectSprite</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\EffectSprite\Effect.cpp">
-      <Filter>Source\EffectSprite</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Level\LevelLights.cpp">
-      <Filter>Source\Level</Filter>
+    <ClCompile Include="Source\Level\Environments\JungleEnvironment.cpp">
+      <Filter>Source\Level\Environments</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -356,17 +347,8 @@
     <ClInclude Include="Source\GUI\Components\OutlineLabel.h">
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\EffectSprite\LightEffect.h">
-      <Filter>Source\EffectSprite</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\EffectSprite\Effect.h">
-      <Filter>Source\EffectSprite</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\EffectSprite\EffectSprite.h">
-      <Filter>Source\EffectSprite</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Level\LevelLights.h">
-      <Filter>Source\Level</Filter>
+    <ClInclude Include="Source\Level\Environments\JungleEnvironment.h">
+      <Filter>Source\Level\Environments</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
