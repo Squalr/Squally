@@ -21,15 +21,17 @@ Level::Level(std::string levelResourceFilePath)
 	// Physics / collision debugging
 	// this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, 0.0f));
-	LevelLights::cameraLight = LightEffect::create();
 
 	experimental::TMXTiledMap* map = experimental::TMXTiledMap::create(levelResourceFilePath);
 	Level::mapSize = Size(map->getMapSize().width * map->getTileSize().width, map->getMapSize().height * map->getTileSize().height);
 
 	this->background = LevelParser::initializeBackground(map);
-	this->backgroundLayer = LevelParser::initializeBackgroundTiles(map);
-	this->midgroundLayer = LevelParser::initializeMidgroundTiles(map);
-	this->foregroundLayer = LevelParser::initializeForegroundTiles(map);
+	this->backgroundLayer = LevelParser::initializeTileLayer(map, "background");
+	this->backgroundDecor = LevelParser::initializeDecor(map, "background-decor");
+	this->midgroundLayer = LevelParser::initializeTileLayer(map, "midground");
+	this->midgroundDecor = LevelParser::initializeDecor(map, "midground-decor");
+	this->foregroundLayer = LevelParser::initializeTileLayer(map, "foreground");
+	this->foregroundDecor = LevelParser::initializeDecor(map, "foreground-decor");
 	this->objectLayer = LevelParser::initializeObjects(map);
 	this->entityLayer = LevelParser::initializeEntities(map);
 	this->collisionLayer = LevelParser::initializeCollision(map);
@@ -39,10 +41,13 @@ Level::Level(std::string levelResourceFilePath)
 	this->addChild(InputManager::claimInstance());
 	this->addChild(this->background);
 	this->addChild(this->backgroundLayer);
+	this->addChild(this->backgroundDecor);
 	this->addChild(this->midgroundLayer);
+	this->addChild(this->midgroundDecor);
 	this->addChild(this->objectLayer);
 	this->addChild(this->entityLayer);
 	this->addChild(this->foregroundLayer);
+	this->addChild(this->foregroundDecor);
 	this->addChild(this->collisionLayer);
 	this->addChild(this->environmentLayer);
 	this->addChild(this->hud);
@@ -90,17 +95,15 @@ void Level::update(float dt)
 	LevelCamera::cameraPosition.y = min(LevelCamera::cameraPosition.y, this->mapSize.height - visibleSize.height);
 
 	// Scroll world
-	LevelLights::cameraLight->setLightPos(Vec3(LevelCamera::cameraPosition.x, 0.0f, 2048.0f));
-	LevelLights::cameraLight->setBrightness(2.0f);
-	LevelLights::cameraLight->setLightCutoffRadius(3000.0f);
-	LevelLights::cameraLight->setLightHalfRadius(1000.0f);
-
 	this->backgroundLayer->setPosition(-LevelCamera::cameraPosition);
+	this->backgroundDecor->setPosition(-LevelCamera::cameraPosition);
 	this->midgroundLayer->setPosition(-LevelCamera::cameraPosition);
+	this->midgroundDecor->setPosition(-LevelCamera::cameraPosition);
 	this->objectLayer->setPosition(-LevelCamera::cameraPosition);
 	this->entityLayer->setPosition(-LevelCamera::cameraPosition);
 	this->collisionLayer->setPosition(-LevelCamera::cameraPosition);
 	this->foregroundLayer->setPosition(-LevelCamera::cameraPosition);
+	this->foregroundDecor->setPosition(-LevelCamera::cameraPosition);
 	this->environmentLayer->setPosition(-LevelCamera::cameraPosition);
 }
 

@@ -2,7 +2,6 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Level/LevelCamera.h"
-#include "Level/LevelLights.h"
 #include "Level/LevelParser.h"
 #include "Entities/Player/Player.h"
 #include "Input/InputManager.h"
@@ -31,11 +30,14 @@ private:
 
 	Layer * background;
 	Layer * backgroundLayer;
+	Layer * backgroundDecor;
 	Layer * midgroundLayer;
+	Layer * midgroundDecor;
 	Layer * entityLayer;
 	Layer * objectLayer;
 	Layer * collisionLayer;
 	Layer * foregroundLayer;
+	Layer * foregroundDecor;
 	Layer * environmentLayer;
 	HUD * hud;
 
