@@ -19,7 +19,8 @@ protected:
 private:
 
 	Sprite * gateOpen;
-	Sprite* gateClosed;
+	Sprite * gateClosed;
+	ParticleSystem * gateParticles;
 
 	bool isOpen;
 };

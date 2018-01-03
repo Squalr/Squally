@@ -26,6 +26,7 @@ Level::Level(std::string levelResourceFilePath)
 	Level::mapSize = Size(map->getMapSize().width * map->getTileSize().width, map->getMapSize().height * map->getTileSize().height);
 
 	this->background = LevelParser::initializeBackground(map);
+	this->backgroundParallax = LevelParser::initializeParallaxObjects(map, "background-parallax");
 	this->backgroundLayer = LevelParser::initializeTileLayer(map, "background");
 	this->backgroundDecor = LevelParser::initializeDecor(map, "background-decor");
 	this->midgroundLayer = LevelParser::initializeTileLayer(map, "midground");
@@ -40,6 +41,7 @@ Level::Level(std::string levelResourceFilePath)
 
 	this->addChild(InputManager::claimInstance());
 	this->addChild(this->background);
+	this->addChild(this->backgroundParallax);
 	this->addChild(this->backgroundLayer);
 	this->addChild(this->backgroundDecor);
 	this->addChild(this->midgroundLayer);
@@ -88,13 +90,14 @@ void Level::update(float dt)
 	}
 
 	// Prevent camera from leaving level bounds
-	LevelCamera::cameraPosition.x = max(LevelCamera::cameraPosition.x, 0.0f);
 	LevelCamera::cameraPosition.x = min(LevelCamera::cameraPosition.x, this->mapSize.width - visibleSize.width);
+	LevelCamera::cameraPosition.x = max(LevelCamera::cameraPosition.x, 0.0f);
 
-	LevelCamera::cameraPosition.y = max(LevelCamera::cameraPosition.y, 0.0f);
 	LevelCamera::cameraPosition.y = min(LevelCamera::cameraPosition.y, this->mapSize.height - visibleSize.height);
+	LevelCamera::cameraPosition.y = max(LevelCamera::cameraPosition.y, 0.0f);
 
 	// Scroll world
+	this->backgroundParallax->setPosition(-LevelCamera::cameraPosition);
 	this->backgroundLayer->setPosition(-LevelCamera::cameraPosition);
 	this->backgroundDecor->setPosition(-LevelCamera::cameraPosition);
 	this->midgroundLayer->setPosition(-LevelCamera::cameraPosition);

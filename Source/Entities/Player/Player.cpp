@@ -47,13 +47,13 @@ void Player::update(float dt)
 	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_A))
 	{
 		this->movement.x = -1.0f;
-		this->sprite->setFlippedX(false);
+		this->sprite->setFlippedX(true);
 	}
 
 	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_D))
 	{
 		this->movement.x = 1.0f;
-		this->sprite->setFlippedX(true);
+		this->sprite->setFlippedX(false);
 	}
 
 	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_W) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_SPACE))
