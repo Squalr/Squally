@@ -31,6 +31,7 @@ private:
 	Layer * background;
 	Layer * backgroundLayer;
 	Layer * backgroundDecor;
+	Layer * backgroundParallax;
 	Layer * midgroundLayer;
 	Layer * midgroundDecor;
 	Layer * entityLayer;

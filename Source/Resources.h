@@ -118,10 +118,6 @@ public:
 	static const string Ingame_Decor_Bush7;
 	static const string Ingame_Decor_Bush8;
 	static const string Ingame_Decor_Bush9;
-	static const string Ingame_Decor_Cliff1;
-	static const string Ingame_Decor_Cliff1Flat;
-	static const string Ingame_Decor_Cliff2;
-	static const string Ingame_Decor_Cliff2Flat;
 	static const string Ingame_Decor_CliffSide;
 	static const string Ingame_Decor_Clouds1;
 	static const string Ingame_Decor_Clouds2;
@@ -211,11 +207,10 @@ public:
 	static const string Ingame_Decor_Rock2;
 	static const string Ingame_Decor_Rock3;
 	static const string Ingame_Decor_Ruins1;
-	static const string Ingame_Decor_Ruins1Flat;
 	static const string Ingame_Decor_Ruins2;
-	static const string Ingame_Decor_Ruins2Flat;
 	static const string Ingame_Decor_Ruins3;
-	static const string Ingame_Decor_Ruins3Flat;
+	static const string Ingame_Decor_Ruins4;
+	static const string Ingame_Decor_Ruins5;
 	static const string Ingame_Decor_ShadowBush1;
 	static const string Ingame_Decor_ShadowBush2;
 	static const string Ingame_Decor_ShadowBush3;
@@ -287,11 +282,8 @@ public:
 	static const string Ingame_Decor_Tree17Flat;
 	static const string Ingame_Decor_Tree18;
 	static const string Ingame_Decor_Tree18Flat;
-	static const string Ingame_Decor_Tree1Flat;
 	static const string Ingame_Decor_Tree2;
-	static const string Ingame_Decor_Tree2Flat;
 	static const string Ingame_Decor_Tree3;
-	static const string Ingame_Decor_Tree3Flat;
 	static const string Ingame_Decor_Tree4;
 	static const string Ingame_Decor_Tree5;
 	static const string Ingame_Decor_Tree6;
@@ -390,7 +382,6 @@ public:
 	static const string Ingame_Sprites_Bat_Fly4;
 	static const string Ingame_Sprites_Dunkleosteus_Dunkleosteus;
 	static const string Ingame_Sprites_Player_Idle;
-	static const string Ingame_Sprites_Player_Idle_n;
 	static const string Ingame_Sprites_Player_Player_Attack;
 	static const string Ingame_Sprites_Player_Player_Attack2;
 	static const string Ingame_Sprites_Player_Player_Glide;
@@ -625,6 +616,7 @@ public:
 	static const string Particles_Fireflies;
 	static const string Particles_Fireflies2;
 	static const string Particles_Heal;
+	static const string Particles_Hover;
 	static const string Particles_l1;
 	static const string Particles_l1flat;
 	static const string Particles_l2;
@@ -638,9 +630,9 @@ public:
 	static const string Particles_Rain2;
 	static const string Particles_Spark;
 	static const string Particles_Sparks;
+	static const string Particles_WarpGate;
 	static const string Particles_WarpPoint;
 	static const string Particles_Wind;
-	static const string Shaders_PointLight;
 	static const string Sounds_ButtonClick1;
 	static const string Sounds_ButtonClick2;
 	static const string Sounds_ClickBack1;

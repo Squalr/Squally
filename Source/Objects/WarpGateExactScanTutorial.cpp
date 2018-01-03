@@ -42,6 +42,7 @@ void WarpGateExactScanTutorial::update(float dt)
 		if (WarpGateExactScanTutorial::warpGatePower < WarpGateExactScanTutorial::warpGatePowerMax)
 		{
 			this->valueLabel->setColor(Color3B::RED);
+			this->close();
 		}
 		else
 		{

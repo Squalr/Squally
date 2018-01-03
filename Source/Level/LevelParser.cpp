@@ -200,6 +200,43 @@ Layer* LevelParser::initializeTileLayer(experimental::TMXTiledMap* map, std::str
 	return layer;
 }
 
+Layer* LevelParser::initializeParallaxObjects(experimental::TMXTiledMap* map, std::string parallaxLayer)
+{
+	Layer* layer = Layer::create();
+	ValueVector objects = map->getObjectGroup(parallaxLayer)->getObjects();
+
+	// Create objects
+	for (int index = 0; index < size(objects); index++)
+	{
+		if (objects[index].getType() != Value::Type::MAP)
+		{
+			continue;
+		}
+
+		ValueMap object = objects[index].asValueMap();
+		Sprite* sprite = LevelParser::loadObject(object);
+		Node* node = Node::create();
+		ParallaxNode* parallaxNode = ParallaxNode::create();
+
+		// Use an intermediate node to hold the sprite. This allows for sprite floating to not interfere with parallax scrolling.
+		node->addChild(sprite);
+
+		if (!Utils::keyExists(object, "speed"))
+		{
+			throw exception("Parallax objects must have a speed property");
+		}
+
+
+		float speed = object.at("speed").asFloat();
+		parallaxNode->addChild(node, 0, Vec2(speed, 1.0f), sprite->getPosition());
+		sprite->setPosition(Vec2::ZERO);
+
+		layer->addChild(parallaxNode);
+	}
+
+	return layer;
+}
+
 Layer* LevelParser::initializeDecor(experimental::TMXTiledMap* map, std::string decorLayer)
 {
 	Layer* layer = Layer::create();
@@ -214,48 +251,86 @@ Layer* LevelParser::initializeDecor(experimental::TMXTiledMap* map, std::string 
 		}
 
 		ValueMap object = objects[index].asValueMap();
-		string type = object.at("type").asString();
+		Sprite* sprite = LevelParser::loadObject(object);
 
-		// For decor, simply grab the resource of the same name of the object type
-		Sprite* newObject = Sprite::create("Ingame\\Decor\\" + type + ".png");
-
-		if (newObject == nullptr)
-		{
-			throw exception("Non-existant decor");
-		}
-
-		float width = object.at("width").asFloat();
-		float height = object.at("height").asFloat();
-		float x = object.at("x").asFloat() + width / 2.0f;
-		float y = object.at("y").asFloat() + height / 2.0f;
-
-		// Scale decor based on rectangle size (only using height for simplicity)
-		newObject->setScale(height / newObject->getContentSize().height);
-
-		// TMX tile maps rotate around a different anchor point than cocos2d-x by default, so we have to account for this
-		newObject->setAnchorPoint(Vec2(0.0f, 1.0f));
-		newObject->setPosition(Vec2(x - width / 2.0f, y + height / 2.0f));
-
-		if (Utils::keyExists(object, "rotation"))
-		{
-			float rotation = object.at("rotation").asFloat();
-			newObject->setRotation(rotation);
-		}
-
-		if (Utils::keyExists(object, "flip-x"))
-		{
-			bool flipX = object.at("flip-x").asBool();
-			newObject->setFlippedX(flipX);
-		}
-
-		if (Utils::keyExists(object, "flip-y"))
-		{
-			bool flipY = object.at("flip-y").asBool();
-			newObject->setFlippedY(flipY);
-		}
-
-		layer->addChild(newObject);
+		layer->addChild(sprite);
 	}
 
 	return layer;
+}
+
+Sprite* LevelParser::loadObject(ValueMap object)
+{
+	string type = object.at("type").asString();
+
+	// For decor, simply grab the resource of the same name of the object type
+	Sprite* newObject = Sprite::create("Ingame\\Decor\\" + type + ".png");
+
+	if (newObject == nullptr)
+	{
+		throw exception("Non-existant decor");
+	}
+
+	float width = object.at("width").asFloat();
+	float height = object.at("height").asFloat();
+	float x = object.at("x").asFloat() + width / 2.0f;
+	float y = object.at("y").asFloat() + height / 2.0f;
+
+	// Scale decor based on rectangle size (only using height for simplicity)
+	newObject->setScale(height / newObject->getContentSize().height);
+
+	// TMX tile maps rotate around a different anchor point than cocos2d-x by default, so we have to account for this
+	newObject->setAnchorPoint(Vec2(0.0f, 1.0f));
+	newObject->setPosition(Vec2(x - width / 2.0f, y + height / 2.0f));
+
+	if (Utils::keyExists(object, "rotation"))
+	{
+		float rotation = object.at("rotation").asFloat();
+		newObject->setRotation(rotation);
+	}
+
+	if (Utils::keyExists(object, "flip-x"))
+	{
+		bool flipX = object.at("flip-x").asBool();
+		newObject->setFlippedX(flipX);
+	}
+
+	if (Utils::keyExists(object, "flip-y"))
+	{
+		bool flipY = object.at("flip-y").asBool();
+		newObject->setFlippedY(flipY);
+	}
+
+	if (Utils::keyExists(object, "float-x"))
+	{
+		float floatX = object.at("float-x").asFloat();
+		float timeX = 1.0f;
+
+		if (Utils::keyExists(object, "float-time-x"))
+		{
+			timeX = object.at("float-time-x").asFloat();
+		}
+
+		FiniteTimeAction* bounceX1 = EaseSineInOut::create(MoveBy::create(timeX, Vec2(floatX, 0.0f)));
+		FiniteTimeAction* bounceX2 = EaseSineInOut::create(MoveBy::create(timeX, Vec2(-floatX, 0.0f)));
+
+		newObject->runAction(RepeatForever::create(Sequence::create(bounceX1, bounceX2, nullptr)));
+	}
+
+	if (Utils::keyExists(object, "float-y"))
+	{
+		float floatY = object.at("float-y").asFloat();
+		float timeY = 1.0f;
+
+		if (Utils::keyExists(object, "float-time-y"))
+		{
+			timeY = object.at("float-time-y").asFloat();
+		}
+
+		FiniteTimeAction* bounceY1 = EaseSineInOut::create(MoveBy::create(timeY, Vec2(0.0f, floatY)));
+		FiniteTimeAction* bounceY2 = EaseSineInOut::create(MoveBy::create(timeY, Vec2(0.0f, -floatY)));
+		newObject->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
+	}
+
+	return newObject;
 }

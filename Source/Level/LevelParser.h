@@ -20,6 +20,7 @@ class LevelParser
 public:
 	static Layer* initializeTileLayer(experimental::TMXTiledMap* map, std::string tileLayer);
 	static Layer* initializeDecor(experimental::TMXTiledMap* map, std::string decorLayer);
+	static Layer* initializeParallaxObjects(experimental::TMXTiledMap* map, std::string parallaxLayer);
 
 	static Layer* initializeBackground(experimental::TMXTiledMap* map);
 	static Layer* initializeEnvironment(experimental::TMXTiledMap* map);
@@ -28,4 +29,5 @@ public:
 	static Layer* initializeCollision(experimental::TMXTiledMap* map);
 
 private:
+	static Sprite* loadObject(ValueMap object);
 };
