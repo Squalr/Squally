@@ -26,7 +26,7 @@ Hover::Hover(Entity* initParent)
 	FiniteTimeAction* bounceY1 = EaseSineInOut::create(ScaleTo::create(3.0f, 1.0f, 0.25f));
 	FiniteTimeAction* bounceY2 = EaseSineInOut::create(ScaleTo::create(3.0f, 1.0f, 1.0f));
 
-	this->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
+	// this->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
 }
 
 Hover::~Hover()
