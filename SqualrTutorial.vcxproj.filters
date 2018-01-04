@@ -207,6 +207,9 @@
     <ClCompile Include="Source\Level\Environments\JungleEnvironment.cpp">
       <Filter>Source\Level\Environments</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Objects\ParallaxObject.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -349,6 +352,9 @@
     </ClInclude>
     <ClInclude Include="Source\Level\Environments\JungleEnvironment.h">
       <Filter>Source\Level\Environments</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\ParallaxObject.h">
+      <Filter>Source\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

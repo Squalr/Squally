@@ -214,24 +214,25 @@ Layer* LevelParser::initializeParallaxObjects(experimental::TMXTiledMap* map, st
 		}
 
 		ValueMap object = objects[index].asValueMap();
-		Sprite* sprite = LevelParser::loadObject(object);
-		Node* node = Node::create();
-		ParallaxNode* parallaxNode = ParallaxNode::create();
 
-		// Use an intermediate node to hold the sprite. This allows for sprite floating to not interfere with parallax scrolling.
-		node->addChild(sprite);
-
-		if (!Utils::keyExists(object, "speed"))
+		if (!Utils::keyExists(object, "speed-x") && !Utils::keyExists(object, "speed-y"))
 		{
-			throw exception("Parallax objects must have a speed property");
+			throw exception("Parallax objects must have speed properties");
 		}
 
+		float speedX = object.at("speed-x").asFloat();
+		float speedY = object.at("speed-y").asFloat();
 
-		float speed = object.at("speed").asFloat();
-		parallaxNode->addChild(node, 0, Vec2(speed, 1.0f), sprite->getPosition());
+		Sprite* sprite = LevelParser::loadObject(object);
+		Vec2 position = sprite->getPosition();
+		Node *node = Node::create();
+
 		sprite->setPosition(Vec2::ZERO);
+		node->addChild(sprite);
 
-		layer->addChild(parallaxNode);
+		ParallaxObject* parallaxObject = ParallaxObject::create(node, position, Vec2(speedX, speedY));
+
+		layer->addChild(parallaxObject);
 	}
 
 	return layer;

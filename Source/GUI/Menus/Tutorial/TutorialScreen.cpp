@@ -157,56 +157,56 @@ void TutorialScreen::loadLevels()
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Unknown Value Scan",
-		Resources::Levels_Debug,
+		Resources::Levels_TutorialExactScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Data Types - Float",
-		Resources::Levels_Debug,
+		Resources::Levels_TutorialExactScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Data Types - Double",
-		Resources::Levels_Debug,
+		Resources::Levels_TutorialExactScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Godmode",
-		Resources::Levels_Debug,
+		Resources::Levels_TutorialExactScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Position I",
-		Resources::Levels_Debug,
+		Resources::Levels_TutorialExactScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Position II",
-		Resources::Levels_Debug,
+		Resources::Levels_TutorialExactScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Blink Godmode I",
-		Resources::Levels_Debug,
+		Resources::Levels_TutorialExactScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Blink Godmode II",
-		Resources::Levels_Debug,
+		Resources::Levels_TutorialExactScan1,
 		index++,
 		callback
 	));
