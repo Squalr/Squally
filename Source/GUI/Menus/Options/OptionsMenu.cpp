@@ -19,10 +19,10 @@ OptionsMenu::OptionsMenu()
 	this->musicIcon = Sprite::create(Resources::Menus_OptionsMenu_MusicIcon);
 	this->soundIcon = Sprite::create(Resources::Menus_OptionsMenu_SoundIcon);
 
-	this->musicSlider = Slider::create(SoundManager::getInstance()->getMusicVolume());
-	this->soundSlider = Slider::create(SoundManager::getInstance()->getSoundVolume());
+	this->musicSlider = Slider::create(SoundManager::getMusicVolume());
+	this->soundSlider = Slider::create(SoundManager::getSoundVolume());
 
-	this->fullScreenButton = ToggleButton::create(ConfigManager::getInstance()->getResolution() == ConfigManager::FullScreen ? true : false, CC_CALLBACK_1(OptionsMenu::onFullScreenChanged, this));
+	this->fullScreenButton = ToggleButton::create(ConfigManager::getIsFullScreen(), CC_CALLBACK_1(OptionsMenu::onFullScreenChanged, this));
 
 	this->label1080x768 = Label::create("1080x768", Resources::Fonts_Montserrat_Medium, 14);
 	this->label1152x864 = Label::create("1152x864", Resources::Fonts_Montserrat_Medium, 14);
@@ -98,48 +98,45 @@ OptionsMenu::OptionsMenu()
 
 	this->addChild(this->exitButton);
 
-	switch (ConfigManager::getInstance()->getResolution())
+	switch (ConfigManager::getResolution())
 	{
 	case ConfigManager::ResolutionSetting::R1080x768:
-		this->showResolutionOptions();
 		this->option1080x768->check();
 		break;
 	case ConfigManager::ResolutionSetting::R1152x864:
-		this->showResolutionOptions();
 		this->option1152x864->check();
 		break;
 	case ConfigManager::ResolutionSetting::R1280x720:
-		this->showResolutionOptions();
 		this->option1280x720->check();
 		break;
 	case ConfigManager::ResolutionSetting::R1280x960:
-		this->showResolutionOptions();
 		this->option1280x960->check();
 		break;
 	case ConfigManager::ResolutionSetting::R1280x1024:
-		this->showResolutionOptions();
 		this->option1280x1024->check();
 		break;
 	case ConfigManager::ResolutionSetting::R1440x900:
-		this->showResolutionOptions();
 		this->option1440x900->check();
 		break;
 	case ConfigManager::ResolutionSetting::R1600x900:
-		this->showResolutionOptions();
 		this->option1600x900->check();
 		break;
 	case ConfigManager::ResolutionSetting::R1600x1024:
-		this->showResolutionOptions();
 		this->option1600x1024->check();
 		break;
 	case ConfigManager::ResolutionSetting::R1920x1080:
-		this->showResolutionOptions();
+	default:
 		this->option1920x1080->check();
 		break;
-	case ConfigManager::ResolutionSetting::FullScreen:
-	default:
+	}
+
+	if (ConfigManager::getIsFullScreen())
+	{
 		this->hideResolutionOptions();
-		break;
+	}
+	else
+	{
+		this->showResolutionOptions();
 	}
 
 	this->initializePositions();
@@ -196,65 +193,57 @@ void OptionsMenu::onEnter()
 
 void OptionsMenu::onFullScreenChanged(bool isFullScreen)
 {
+	ConfigManager::setIsFullScreen(isFullScreen);
+
 	if (isFullScreen)
 	{
-		ConfigManager::getInstance()->setResolution(ConfigManager::ResolutionSetting::FullScreen);
-		this->initializePositions();
 		this->hideResolutionOptions();
 	}
 	else
 	{
-		ConfigManager::ResolutionSetting resolution = ConfigManager::getInstance()->getResolution();
-
-		// Default non-full screen resolution
-		if (resolution == ConfigManager::ResolutionSetting::FullScreen)
-		{
-			resolution = ConfigManager::ResolutionSetting::R1080x768;
-			this->option1080x768->check();
-		}
-
-		this->initializePositions();
 		this->showResolutionOptions();
 	}
+
+	this->initializePositions();
 }
 
 void OptionsMenu::onResolutionChanged(RadioButton* radioButton)
 {
 	if (radioButton == this->option1080x768)
 	{
-		ConfigManager::getInstance()->setResolution(ConfigManager::ResolutionSetting::R1080x768);
+		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1080x768);
 	}
 	else if (radioButton == this->option1152x864)
 	{
-		ConfigManager::getInstance()->setResolution(ConfigManager::ResolutionSetting::R1152x864);
+		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1152x864);
 	}
 	else if (radioButton == this->option1280x720)
 	{
-		ConfigManager::getInstance()->setResolution(ConfigManager::ResolutionSetting::R1280x720);
+		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1280x720);
 	}
 	else if (radioButton == this->option1280x960)
 	{
-		ConfigManager::getInstance()->setResolution(ConfigManager::ResolutionSetting::R1280x960);
+		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1280x960);
 	}
 	else if (radioButton == this->option1280x1024)
 	{
-		ConfigManager::getInstance()->setResolution(ConfigManager::ResolutionSetting::R1280x1024);
+		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1280x1024);
 	}
 	else if (radioButton == this->option1440x900)
 	{
-		ConfigManager::getInstance()->setResolution(ConfigManager::ResolutionSetting::R1440x900);
+		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1440x900);
 	}
 	else if (radioButton == this->option1600x900)
 	{
-		ConfigManager::getInstance()->setResolution(ConfigManager::ResolutionSetting::R1600x900);
+		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1600x900);
 	}
 	else if (radioButton == this->option1600x1024)
 	{
-		ConfigManager::getInstance()->setResolution(ConfigManager::ResolutionSetting::R1600x1024);
+		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1600x1024);
 	}
 	else if (radioButton == this->option1920x1080)
 	{
-		ConfigManager::getInstance()->setResolution(ConfigManager::ResolutionSetting::R1920x1080);
+		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1920x1080);
 	}
 
 	this->initializePositions();
@@ -320,12 +309,12 @@ void OptionsMenu::initializePositions()
 
 void OptionsMenu::onSoundVolumeUpdate(float soundVolume)
 {
-	SoundManager::getInstance()->setSoundVolume(soundVolume);
+	SoundManager::setSoundVolume(soundVolume);
 }
 
 void OptionsMenu::onMusicVolumeUpdate(float musicVolume)
 {
-	SoundManager::getInstance()->setMusicVolume(musicVolume);
+	SoundManager::setMusicVolume(musicVolume);
 }
 
 void OptionsMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -334,7 +323,7 @@ void OptionsMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		Director::getInstance()->popScene();
-		ConfigManager::getInstance()->save();
+		ConfigManager::save();
 		break;
 	}
 }
@@ -342,7 +331,7 @@ void OptionsMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 void OptionsMenu::onCloseClick(MenuSprite* menuSprite)
 {
 	Director::getInstance()->popScene();
-	ConfigManager::getInstance()->save();
+	ConfigManager::save();
 }
 
 void OptionsMenu::showResolutionOptions()

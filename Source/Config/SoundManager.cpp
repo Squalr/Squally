@@ -23,44 +23,49 @@ SoundManager::~SoundManager()
 
 void SoundManager::playMusicResource(std::string musicResource)
 {
-	if (this->backgroundMusicId != SoundManager::INVALID_ID)
+	SoundManager* instance = SoundManager::getInstance();
+
+	if (instance->backgroundMusicId != SoundManager::INVALID_ID)
 	{
-		AudioEngine::stop(this->backgroundMusicId);
+		AudioEngine::stop(instance->backgroundMusicId);
 	}
 
-	if (this->currentMusicResource != musicResource)
+	if (instance->currentMusicResource != musicResource)
 	{
-		this->currentMusicResource = musicResource;
-		this->backgroundMusicId = AudioEngine::play2d(musicResource, true, this->getMusicVolume());
+		instance->currentMusicResource = musicResource;
+		instance->backgroundMusicId = AudioEngine::play2d(musicResource, true, instance->getMusicVolume());
 	}
 }
 
 void SoundManager::playSoundResource(std::string soundResource)
 {
-	AudioEngine::play2d(soundResource, false, this->getSoundVolume());
+	SoundManager* instance = SoundManager::getInstance();
+
+	AudioEngine::play2d(soundResource, false, instance->getSoundVolume());
 }
 
 void SoundManager::setMusicVolume(float volume)
 {
-	ConfigManager::getInstance()->setMusicVolume(volume);
+	SoundManager* instance = SoundManager::getInstance();
+	ConfigManager::setMusicVolume(volume);
 
-	if (this->backgroundMusicId != SoundManager::INVALID_ID)
+	if (instance->backgroundMusicId != SoundManager::INVALID_ID)
 	{
-		AudioEngine::setVolume(this->backgroundMusicId, volume);
+		AudioEngine::setVolume(instance->backgroundMusicId, volume);
 	}
 }
 
 void SoundManager::setSoundVolume(float volume)
 {
-	return ConfigManager::getInstance()->setSoundVolume(volume);
+	return ConfigManager::setSoundVolume(volume);
 }
 
 float SoundManager::getMusicVolume()
 {
-	return ConfigManager::getInstance()->getMusicVolume();
+	return ConfigManager::getMusicVolume();
 }
 
 float SoundManager::getSoundVolume()
 {
-	return ConfigManager::getInstance()->getSoundVolume();
+	return ConfigManager::getSoundVolume();
 }

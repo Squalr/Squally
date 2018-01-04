@@ -1,5 +1,11 @@
 #include "ConfigManager.h"
 
+const std::string ConfigManager::ConfigFile = "config.txt";
+const std::string ConfigManager::ResolutionKey = "resolution";
+const std::string ConfigManager::FullScreenKey = "fullscreen";
+const std::string ConfigManager::SoundVolumeKey = "sound";
+const std::string ConfigManager::MusicVolumeKey = "music";
+
 ConfigManager* ConfigManager::configManagerInstance = nullptr;
 
 ConfigManager* ConfigManager::getInstance()
@@ -28,80 +34,151 @@ void ConfigManager::loadConfigFileMap()
 
 void ConfigManager::save()
 {
-	FileUtils::getInstance()->writeValueMapToFile(this->valueMap, FileUtils::sharedFileUtils()->getWritablePath() + "\\" + ConfigManager::ConfigFile);
+	ConfigManager* instance = ConfigManager::getInstance();
+
+	FileUtils::getInstance()->writeValueMapToFile(instance->valueMap, FileUtils::sharedFileUtils()->getWritablePath() + "\\" + ConfigManager::ConfigFile);
 }
 
 void ConfigManager::setResolution(ResolutionSetting resolution)
 {
+	ConfigManager* instance = ConfigManager::getInstance();
 	GLViewImpl* glView = (GLViewImpl*)(Director::getInstance()->getOpenGLView());
 
-	switch (resolution)
+	instance->valueMap[ConfigManager::ResolutionKey] = Value((int)resolution);
+
+	Size resolutionSize = ConfigManager::getResolutionSize();
+
+	if (ConfigManager::getIsFullScreen())
 	{
-	case R1080x768:
-		glView->setWindowed(1080, 768);
-		break;
-	case R1152x864:
-		glView->setWindowed(1152, 864);
-		break;
-	case R1280x720:
-		glView->setWindowed(1280, 720);
-		break;
-	case R1280x960:
-		glView->setWindowed(1280, 960);
-		break;
-	case R1280x1024:
-		glView->setWindowed(1280, 1024);
-		break;
-	case R1440x900:
-		glView->setWindowed(1440, 900);
-		break;
-	case R1600x900:
-		glView->setWindowed(1600, 900);
-		break;
-	case R1600x1024:
-		glView->setWindowed(1600, 1024);
-		break;
-	case R1920x1080:
-		glView->setWindowed(1920, 1080);
-		break;
-	case ResolutionSetting::FullScreen:
-	default:
+		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
+		glView->setContentScaleFactor(0.5f);
+	}
+	else
+	{
+		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
+		glView->setWindowed(resolutionSize.width, resolutionSize.height);
+	}
+}
+
+void ConfigManager::setIsFullScreen(bool isFullScreen)
+{
+	ConfigManager* instance = ConfigManager::getInstance();
+	GLViewImpl* glView = (GLViewImpl*)(Director::getInstance()->getOpenGLView());
+	Size resolutionSize = ConfigManager::getResolutionSize();
+
+	if (isFullScreen)
+	{
 		glView->setFullscreen();
-		break;
+		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
+	}
+	else
+	{
+
+		glView->setWindowed(resolutionSize.width, resolutionSize.height);
+		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
 	}
 
-	glView->setDesignResolutionSize(glView->getFrameSize().width, glView->getFrameSize().height, ResolutionPolicy::NO_BORDER);
-
-	this->valueMap[ConfigManager::ResolutionKey] = Value((int)resolution);
+	instance->valueMap[ConfigManager::FullScreenKey] = isFullScreen;
 }
 
 void ConfigManager::setSoundVolume(float volume)
 {
-	this->valueMap[ConfigManager::SoundVolumeKey] = volume;
+	ConfigManager* instance = ConfigManager::getInstance();
+
+	instance->valueMap[ConfigManager::SoundVolumeKey] = volume;
 }
 
 void ConfigManager::setMusicVolume(float volume)
 {
-	this->valueMap[ConfigManager::MusicVolumeKey] = volume;
+	ConfigManager* instance = ConfigManager::getInstance();
+
+	instance->valueMap[ConfigManager::MusicVolumeKey] = volume;
+}
+
+Size ConfigManager::getResolutionSize()
+{
+	Size size = Size();
+
+	switch (ConfigManager::getResolution())
+	{
+	case R1080x768:
+		size.width = 1080;
+		size.height = 768;
+		break;
+	case R1152x864:
+		size.width = 1152;
+		size.height = 864;
+		break;
+	case R1280x720:
+		size.width = 1280;
+		size.height = 720;
+		break;
+	case R1280x960:
+		size.width = 1280;
+		size.height = 960;
+		break;
+	case R1280x1024:
+		size.width = 1280;
+		size.height = 1024;
+		break;
+	case R1440x900:
+		size.width = 1440;
+		size.height = 900;
+		break;
+	case R1600x900:
+		size.width = 1600;
+		size.height = 900;
+		break;
+	case R1600x1024:
+		size.width = 1600;
+		size.height = 1024;
+		break;
+	case R1920x1080:
+		size.width = 1920;
+		size.height = 1080;
+		break;
+	default:
+		break;
+	}
+
+	return size;
 }
 
 ConfigManager::ResolutionSetting ConfigManager::getResolution()
 {
-	if (!Utils::keyExists(this->valueMap, ConfigManager::ResolutionKey))
+	ConfigManager* instance = ConfigManager::getInstance();
+
+	if (!Utils::keyExists(instance->valueMap, ConfigManager::ResolutionKey))
 	{
-		return ResolutionSetting::FullScreen;
+		return ResolutionSetting::R1920x1080;
 	}
 	else
 	{
-		return (ResolutionSetting)(this->valueMap[ConfigManager::ResolutionKey].asInt());
+		return (ResolutionSetting)(instance->valueMap[ConfigManager::ResolutionKey].asInt());
+	}
+}
+
+bool ConfigManager::getIsFullScreen()
+{
+	ConfigManager* instance = ConfigManager::getInstance();
+
+	if (!Utils::keyExists(instance->valueMap, ConfigManager::FullScreenKey))
+	{
+		return true;
+	}
+	else
+	{
+		return instance->valueMap[ConfigManager::FullScreenKey].asBool();
 	}
 }
 
 float ConfigManager::getSoundVolume()
 {
-	if (Utils::keyExists(this->valueMap, ConfigManager::SoundVolumeKey))
+	ConfigManager* instance = ConfigManager::getInstance();
+
+	if (Utils::keyExists(instance->valueMap, ConfigManager::SoundVolumeKey))
 	{
-		return this->valueMap[ConfigManager::SoundVolumeKey].asFloat();
+		return instance->valueMap[ConfigManager::SoundVolumeKey].asFloat();
 	}
 	else
 	{
@@ -111,9 +188,11 @@ float ConfigManager::getSoundVolume()
 
 float ConfigManager::getMusicVolume()
 {
-	if (Utils::keyExists(this->valueMap, ConfigManager::MusicVolumeKey))
+	ConfigManager* instance = ConfigManager::getInstance();
+
+	if (Utils::keyExists(instance->valueMap, ConfigManager::MusicVolumeKey))
 	{
-		return this->valueMap[ConfigManager::MusicVolumeKey].asFloat();
+		return instance->valueMap[ConfigManager::MusicVolumeKey].asFloat();
 	}
 	else
 	{
