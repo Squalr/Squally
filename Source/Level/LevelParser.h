@@ -10,6 +10,7 @@
 #include "Entities/Enemies/Poly.h"
 #include "Entities/Enemies/Shroom.h"
 #include "Entities/Enemies/Snail.h"
+#include "Objects/ParallaxObject.h"
 #include "Objects/WarpGate.h"
 #include "Objects/WarpGateExactScanTutorial.h"
 

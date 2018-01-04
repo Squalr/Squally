@@ -418,7 +418,7 @@ public:
 	static const string Ingame_Tiles_PterodactylEditor;
 	static const string Ingame_Tiles_RaptorEditor;
 	static const string Ingame_Tiles_TileMap;
-	static const string Levels_Debug;
+	static const string Ingame_Tiles_TileMap2;
 	static const string Levels_TutorialExactScan1;
 	static const string Menus_DialogBox;
 	static const string Menus_MouseIdle;

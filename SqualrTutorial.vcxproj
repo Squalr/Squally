@@ -186,6 +186,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Level\LevelCamera.cpp" />
     <ClCompile Include="Source\Level\LevelParser.cpp" />
     <ClCompile Include="Source\Objects\EggProjectile.cpp" />
+    <ClCompile Include="Source\Objects\ParallaxObject.cpp" />
     <ClCompile Include="Source\Objects\WarpGate.cpp" />
     <ClCompile Include="Source\Objects\WarpGateExactScanTutorial.cpp" />
     <ClCompile Include="Source\Utils\Utils.cpp" />
@@ -235,6 +236,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Level\LevelCamera.h" />
     <ClInclude Include="Source\Level\LevelParser.h" />
     <ClInclude Include="Source\Objects\EggProjectile.h" />
+    <ClInclude Include="Source\Objects\ParallaxObject.h" />
     <ClInclude Include="Source\Objects\WarpGate.h" />
     <ClInclude Include="Source\Objects\WarpGateExactScanTutorial.h" />
     <ClInclude Include="Source\Utils\Utils.h" />
