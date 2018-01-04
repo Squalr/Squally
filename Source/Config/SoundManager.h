@@ -9,18 +9,18 @@ using namespace experimental;
 class SoundManager
 {
 public:
-	static SoundManager* getInstance();
+	static void playMusicResource(std::string musicResource);
+	static void playSoundResource(std::string soundResource);
 
-	void playMusicResource(std::string musicResource);
-	void playSoundResource(std::string soundResource);
+	static void setMusicVolume(float volume);
+	static void setSoundVolume(float volume);
 
-	void setMusicVolume(float volume);
-	void setSoundVolume(float volume);
-
-	float getMusicVolume();
-	float getSoundVolume();
+	static float getMusicVolume();
+	static float getSoundVolume();
 
 private:
+	static SoundManager* getInstance();
+
 	SoundManager();
 	~SoundManager();
 
@@ -29,5 +29,5 @@ private:
 	int backgroundMusicId;
 	std::string currentMusicResource;
 
-	const int INVALID_ID = -1;
+	static const int INVALID_ID = -1;
 };

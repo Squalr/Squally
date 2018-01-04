@@ -48,7 +48,7 @@ TitleScreenBackground::TitleScreenBackground()
 	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesB3);
 	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesB4);
 
-	this->hackerModeLabel = Label::create(HackerMode::getInstance()->getHackerModeAddressHex(), Resources::Fonts_Stormblade, 16);
+	this->hackerModeLabel = Label::create(HackerMode::getInstance()->getHackerModeAddressHex(), Resources::Fonts_Stormblade, 20);
 	this->hackerModeLabel->setColor(Color3B(173, 135, 108));
 	this->hackerModeLabel->setSkewX(-12.0f);
 

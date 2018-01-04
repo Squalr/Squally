@@ -34,7 +34,6 @@ private:
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void initializeListeners();
 	void initializePositions();
-
 	void showResolutionOptions();
 	void hideResolutionOptions();
 

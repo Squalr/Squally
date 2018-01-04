@@ -11,7 +11,7 @@ TitleScreen * TitleScreen::create()
 
 TitleScreen::TitleScreen()
 {
-	SoundManager::getInstance()->playMusicResource(Resources::Music_Will_we_get_there_Together);
+	SoundManager::playMusicResource(Resources::Music_Will_we_get_there_Together);
 
 	this->titleBar = Sprite::create(Resources::Menus_TitleScreen_TitleBar);
 	this->title = Sprite::create(Resources::Menus_TitleScreen_Title);
