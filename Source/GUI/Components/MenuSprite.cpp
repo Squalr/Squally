@@ -173,7 +173,7 @@ void MenuSprite::onMouseUp(EventMouse* event)
 			// Play click sound
 			if (this->clickSound.length() > 0)
 			{
-				SoundManager::getInstance()->playSoundResource(this->clickSound);
+				SoundManager::playSoundResource(this->clickSound);
 			}
 
 			event->stopPropagation();

@@ -16,7 +16,7 @@ void FadeScene::onEnter()
 	Scene::onEnter();
 
 	// Make fade in visible, fullscreen, and topmost
-	this->layerColor->setContentSize(Director::getInstance()->getOpenGLView()->getFrameSize());
+	this->layerColor->setContentSize(Director::getInstance()->getOpenGLView()->getDesignResolutionSize());
 	this->layerColor->setOpacity(255);
 	this->layerColor->setZOrder(999);
 

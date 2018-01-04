@@ -21,13 +21,13 @@ private:
 	~RadioButton();
 
 	void onGroupCheck(EventCustom* event);
-	void onUncheck(MenuSprite* menuSprite);
-	void onCheck(MenuSprite* menuSprite);
+	void onUncheckClick(MenuSprite* menuSprite);
+	void onCheckClick(MenuSprite* menuSprite);
 	void initializeListeners();
-	void uncheckSilent();
 
 	MenuSprite * unchecked;
 	MenuSprite * checked;
+	bool isChecked;
 
 	int groupId;
 	std::function<void(RadioButton*)> onCheckCallback;

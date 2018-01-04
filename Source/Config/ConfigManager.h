@@ -8,11 +8,8 @@ using namespace cocos2d;
 class ConfigManager
 {
 public:
-	static ConfigManager * getInstance();
-
 	enum ResolutionSetting
 	{
-		FullScreen,
 		R1080x768,
 		R1152x864,
 		R1280x720,
@@ -24,17 +21,21 @@ public:
 		R1920x1080,
 	};
 
-	void setResolution(ResolutionSetting resolution);
-	void setSoundVolume(float volume);
-	void setMusicVolume(float volume);
+	static void setResolution(ResolutionSetting resolution);
+	static void setIsFullScreen(bool isFullscreen);
+	static void setSoundVolume(float volume);
+	static void setMusicVolume(float volume);
 
-	ResolutionSetting getResolution();
-	float getSoundVolume();
-	float getMusicVolume();
+	static Size getResolutionSize();
+	static ResolutionSetting getResolution();
+	static bool getIsFullScreen();
+	static float getSoundVolume();
+	static float getMusicVolume();
 
-	void save();
+	static void save();
 
 private:
+	static ConfigManager * getInstance();
 	ConfigManager();
 	~ConfigManager();
 
@@ -44,8 +45,9 @@ private:
 
 	static ConfigManager * configManagerInstance;
 
-	const std::string ConfigFile = "config.txt";
-	const std::string ResolutionKey = "resolution";
-	const std::string SoundVolumeKey = "sound";
-	const std::string MusicVolumeKey = "music";
+	static const std::string ConfigFile;
+	static const std::string ResolutionKey;
+	static const std::string FullScreenKey;
+	static const std::string SoundVolumeKey;
+	static const std::string MusicVolumeKey;
 };

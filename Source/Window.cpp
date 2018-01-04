@@ -27,46 +27,24 @@ static int register_all_packages()
 bool Window::applicationDidFinishLaunching()
 {
 	Director* director = Director::getInstance();
-	GLViewImpl* glview;
+	GLViewImpl* glView;
 
-	switch (ConfigManager::getInstance()->getResolution())
+	Size resolutionSize = ConfigManager::getResolutionSize();
+
+	if (ConfigManager::getIsFullScreen())
 	{
-	case ConfigManager::ResolutionSetting::R1080x768:
-		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1080, 768));
-		break;
-	case ConfigManager::ResolutionSetting::R1152x864:
-		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1152, 864));
-		break;
-	case ConfigManager::ResolutionSetting::R1280x720:
-		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1280, 720));
-		break;
-	case ConfigManager::ResolutionSetting::R1280x960:
-		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1280, 960));
-		break;
-	case ConfigManager::ResolutionSetting::R1280x1024:
-		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1280, 1024));
-		break;
-	case ConfigManager::ResolutionSetting::R1440x900:
-		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1440, 900));
-		break;
-	case ConfigManager::ResolutionSetting::R1600x900:
-		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1600, 768));
-		break;
-	case ConfigManager::ResolutionSetting::R1600x1024:
-		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1600, 1024));
-		break;
-	case ConfigManager::ResolutionSetting::R1920x1080:
-		glview = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, 1920, 1080));
-		break;
-	case ConfigManager::ResolutionSetting::FullScreen:
-	default:
-		glview = GLViewImpl::createWithFullScreen(this->windowTitle);
-		break;
+		glView = GLViewImpl::createWithFullScreen(this->windowTitle);
+		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
+	}
+	else
+	{
+		glView = GLViewImpl::createWithRect(this->windowTitle, Rect(0, 0, resolutionSize.width, resolutionSize.height));
+		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
 	}
 
-	glview->setDesignResolutionSize(glview->getFrameSize().width, glview->getFrameSize().height, ResolutionPolicy::NO_BORDER);
-	director->setOpenGLView(glview);
-	glview->setCursorVisible(false);
+
+	director->setOpenGLView(glView);
+	glView->setCursorVisible(false);
 
 	// Debugging: Turn on display FPS
 	director->setDisplayStats(true);

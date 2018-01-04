@@ -17,9 +17,10 @@ RadioButton::RadioButton(int groupIdentifier)
 	this->checked = MenuSprite::create(Resources::Menus_OptionsMenu_RadioButtonSelected, Resources::Menus_OptionsMenu_RadioButtonSelectedHover, Resources::Menus_OptionsMenu_RadioButtonSelectedHover);
 	this->unchecked = MenuSprite::create(Resources::Menus_OptionsMenu_RadioButtonEmpty, Resources::Menus_OptionsMenu_RadioButtonHover, Resources::Menus_OptionsMenu_RadioButtonHover);
 
-	this->checked->setClickCallback(CC_CALLBACK_1(RadioButton::onUncheck, this));
-	this->unchecked->setClickCallback(CC_CALLBACK_1(RadioButton::onCheck, this));
+	this->checked->setClickCallback(CC_CALLBACK_1(RadioButton::onUncheckClick, this));
+	this->unchecked->setClickCallback(CC_CALLBACK_1(RadioButton::onCheckClick, this));
 
+	this->isChecked = false;
 	this->checked->setVisible(false);
 
 	this->addChild(this->unchecked);
@@ -50,31 +51,36 @@ void RadioButton::onGroupCheck(EventCustom* event)
 
 	if (*eventGroupId == this->groupId)
 	{
-		this->uncheckSilent();
+		this->uncheck();
 	}
 }
 
-
-void RadioButton::onCheck(MenuSprite* menuSprite)
+void RadioButton::onCheckClick(MenuSprite* menuSprite)
 {
 	this->check();
 }
 
-void RadioButton::onUncheck(MenuSprite* menuSprite)
+void RadioButton::onUncheckClick(MenuSprite* menuSprite)
 {
-	this->uncheck();
+	// Actually just do nothing because we should always have one radio button selected
+	// this->uncheck();
 }
 
 void RadioButton::check()
 {
-	this->getEventDispatcher()->dispatchCustomEvent(this->RadioButtonCheckEvent, &this->groupId);
-
-	this->checked->setVisible(true);
-	this->unchecked->setVisible(false);
-
-	if (this->onCheckCallback != nullptr)
+	if (!this->isChecked)
 	{
-		this->onCheckCallback(this);
+		this->getEventDispatcher()->dispatchCustomEvent(this->RadioButtonCheckEvent, &this->groupId);
+
+		this->checked->setVisible(true);
+		this->unchecked->setVisible(false);
+
+		if (this->onCheckCallback != nullptr)
+		{
+			this->onCheckCallback(this);
+		}
+
+		this->isChecked = true;
 	}
 }
 
@@ -82,10 +88,6 @@ void RadioButton::uncheck()
 {
 	this->checked->setVisible(false);
 	this->unchecked->setVisible(true);
-}
 
-void RadioButton::uncheckSilent()
-{
-	this->checked->setVisible(false);
-	this->unchecked->setVisible(true);
+	this->isChecked = false;
 }
