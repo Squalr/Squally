@@ -1,9 +1,11 @@
 #pragma once
 #include "cocos2d.h"
+#include "document.h"
 #include "Resources.h"
+#include "GUI/Components/FloatingSprite.h"
 
 using namespace cocos2d;
-
+using namespace rapidjson;
 
 class Dialog : public Node
 {
@@ -12,7 +14,7 @@ public:
 	{
 		NoPortrait,
 		Player,
-		Ether,
+		AI,
 	};
 
 	enum Speaker
@@ -29,21 +31,28 @@ public:
 		Angry
 	};
 
+	static Dialog * loadDialogFromFile(std::string filePath);
+	static Dialog * loadDialogFromJson(std::string json);
 	static Dialog * create(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text);
 
-	void push(Dialog* dialog);
-	void push(Dialog* dialog, std::string choice);
+protected:
+	std::map<std::string, Dialog*>* children;
+	std::string dialogChoice;
 
 private:
 	Dialog(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text);
 	~Dialog();
 
 	void initializePositions();
-	Sprite* getSprite(Portrait portrait);
+	Node* getPortraitNode(Portrait portrait, bool isRight);
 
-	std::map<std::string, Dialog*>* children;
+	static Portrait stringToPortrait(std::string portraitNameString);
+	static Speaker stringToSpeaker(std::string speakerString);
+	static TextMood stringToTextMood(std::string textMoodString);
 
-	Sprite* spriteLeft;
-	Sprite* spriteRight;
+	Node* spriteLeft;
+	Node* spriteRight;
 	Label* dialogText;
+	ClippingNode* spriteLeftClip;
+	ClippingNode* spriteRightClip;
 };

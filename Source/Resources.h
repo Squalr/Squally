@@ -10,6 +10,7 @@ using namespace std;
 class Resources
 {
 public:
+	static const string Dialog_DialogTutorialExactScanI;
 	static const string Fonts_arial;
 	static const string Fonts_Marker_Felt;
 	static const string Fonts_Montserrat_Medium;
@@ -472,6 +473,7 @@ public:
 	static const string Ingame_Objects_Coin_8;
 	static const string Ingame_Objects_Egg;
 	static const string Ingame_Objects_Exit;
+	static const string Ingame_Objects_Monitor;
 	static const string Ingame_Objects_Obj1;
 	static const string Ingame_Objects_Obj2;
 	static const string Ingame_Objects_Obj3;
@@ -622,6 +624,7 @@ public:
 	static const string Menus_Buttons_VerticalMenuButtonHover;
 	static const string Menus_ConfirmMenu_ConfirmMenuWindow;
 	static const string Menus_CreditsMenu_CreditsBG;
+	static const string Menus_DialogMenu_AI;
 	static const string Menus_DialogMenu_DialogBox;
 	static const string Menus_DialogMenu_DialogFrameLeft;
 	static const string Menus_DialogMenu_DialogFrameRight;
@@ -729,21 +732,13 @@ public:
 	static const string Particles_BlueStarCircle;
 	static const string Particles_BlueSwirl;
 	static const string Particles_BlueSwirlLarge;
+	static const string Particles_ColorfulStars;
 	static const string Particles_Confetti;
 	static const string Particles_Electric;
 	static const string Particles_Fireflies;
 	static const string Particles_Fireflies2;
-	static const string Particles_flower1;
 	static const string Particles_Heal;
 	static const string Particles_Hover;
-	static const string Particles_l1;
-	static const string Particles_l1flat;
-	static const string Particles_l2;
-	static const string Particles_l2flat;
-	static const string Particles_l3;
-	static const string Particles_l3flat;
-	static const string Particles_l4;
-	static const string Particles_l4flat;
 	static const string Particles_MindBlast;
 	static const string Particles_Rain;
 	static const string Particles_Rain2;
@@ -752,6 +747,11 @@ public:
 	static const string Particles_WarpGate;
 	static const string Particles_WarpPoint;
 	static const string Particles_Wind;
+	static const string Particles_Sprites_Flower1;
+	static const string Particles_Sprites_Leaf1;
+	static const string Particles_Sprites_Leaf2;
+	static const string Particles_Sprites_Leaf3;
+	static const string Particles_Sprites_Leaf4;
 	static const string Sounds_ButtonClick1;
 	static const string Sounds_ButtonClick2;
 	static const string Sounds_ClickBack1;

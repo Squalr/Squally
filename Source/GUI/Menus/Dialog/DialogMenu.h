@@ -8,13 +8,6 @@ using namespace cocos2d;
 class DialogMenu : public Node
 {
 public:
-	enum DialogPortrait
-	{
-		None,
-		Player,
-		Ether,
-	};
-
 	static DialogMenu * create(Dialog* dialogRoot);
 
 private:
