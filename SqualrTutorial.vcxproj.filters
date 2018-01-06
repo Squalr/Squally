@@ -222,6 +222,9 @@
     <ClCompile Include="Source\Objects\Monitor.cpp">
       <Filter>Source\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GUI\Components\MenuLabel.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -382,6 +385,9 @@
     </ClInclude>
     <ClInclude Include="Source\Entities\Entities.h">
       <Filter>Source\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\MenuLabel.h">
+      <Filter>Source\GUI\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

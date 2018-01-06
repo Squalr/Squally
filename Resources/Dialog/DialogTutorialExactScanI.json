@@ -3,24 +3,24 @@
   "Choice": "",
   "TextMood": "Normal",
   "Speaker": "Right",
-  "SpeakerLeft": "Player",
-  "SpeakerRight": "AI",
+  "PortraitLeft": "Player",
+  "PortraitRight": "AI",
   "Children": [
     {
+      "Dialog": "Okay, so how do I do that?",
       "Choice": "Ok",
       "TextMood": "Normal",
       "Speaker": "Left",
-      "SpeakerLeft": "Player",
-      "SpeakerRight": "AI",
-      "Dialog": "Okay, so how do I do that?",
+      "PortraitLeft": "Player",
+      "PortraitRight": "AI"
     },
     {
+      "Dialog": "Well then you should probably go.",
       "Choice": "I don't know why I'm here",
       "TextMood": "Normal",
       "Speaker": "Right",
-      "SpeakerLeft": "Player",
-      "SpeakerRight": "AI",
-      "Dialog": "Well then you should probably go.",
+      "PortraitLeft": "Player",
+      "PortraitRight": "AI"
     }
   ]
 }
