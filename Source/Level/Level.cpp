@@ -54,6 +54,11 @@ Level::Level(std::string levelResourceFilePath)
 	this->addChild(this->environmentLayer);
 	this->addChild(this->hud);
 
+	Dialog* dialog = Dialog::create(Dialog::Portrait::Player, Dialog::Portrait::Player, Dialog::Speaker::Right, Dialog::TextMood::Calm, "This is a test");
+	DialogMenu* dialogMenu = DialogMenu::create(dialog);
+
+	this->addChild(dialogMenu);
+
 	this->scheduleUpdate();
 	this->update(0.0f);
 

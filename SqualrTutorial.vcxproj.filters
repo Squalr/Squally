@@ -67,6 +67,9 @@
     <Filter Include="Source\Level\Environments">
       <UniqueIdentifier>{ddea15c5-7454-4e0d-9488-79b4dd7987ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\GUI\Menus\Dialog">
+      <UniqueIdentifier>{8474dc60-2c22-48a3-9d10-0fa486fe9f7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -209,6 +212,12 @@
     </ClCompile>
     <ClCompile Include="Source\Objects\ParallaxObject.cpp">
       <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\Dialog\Dialog.cpp">
+      <Filter>Source\GUI\Menus\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\Dialog\DialogMenu.cpp">
+      <Filter>Source\GUI\Menus\Dialog</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -355,6 +364,12 @@
     </ClInclude>
     <ClInclude Include="Source\Objects\ParallaxObject.h">
       <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\Dialog\DialogMenu.h">
+      <Filter>Source\GUI\Menus\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\Dialog\Dialog.h">
+      <Filter>Source\GUI\Menus\Dialog</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
