@@ -19,6 +19,8 @@ WarpGate::WarpGate()
 
 	this->gateParticles->setPositionType(ParticleSystem::PositionType::GROUPED);
 
+	this->gateParticles->setPosition(Vec2(0.0f, 32.0f));
+
 	this->gateParticles->setCascadeOpacityEnabled(true);
 	this->gateParticles->stopSystem();
 	this->gateParticles->setOpacity(0);
