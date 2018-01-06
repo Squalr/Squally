@@ -41,10 +41,9 @@ Rect Utils::getSceneBounds(Node* node)
 	Vec2 resultCoords = Vec2(resultRect.getMinX() - resultRect.size.width / 2, resultRect.getMinY() - resultRect.size.height / 2);
 	Vec2 resultSize = Vec2(resultRect.size.width, resultRect.size.height);
 
-	while (node->getParent() != nullptr && dynamic_cast<const Scene*>(node->getParent()) == nullptr)
+	if (node->getParent() != nullptr)
 	{
 		resultCoords = node->getParent()->convertToWorldSpace(resultCoords);
-		node = node->getParent();
 	}
 
 	resultRect.setRect(resultCoords.x, resultCoords.y, resultSize.x, resultSize.y);

@@ -9,6 +9,7 @@
 #include "GUI/HUD/HUD.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
+#include "GUI/Components/Mouse.h"
 #include "GUI/Menus/Dialog/Dialog.h"
 #include "GUI/Menus/Dialog/DialogMenu.h"
 #include "GUI/Menus/Pause/PauseMenu.h"
