@@ -75,7 +75,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;Source;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libraries\RapidJson;$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;Source;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -188,6 +188,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Level\LevelCamera.cpp" />
     <ClCompile Include="Source\Level\LevelParser.cpp" />
     <ClCompile Include="Source\Objects\EggProjectile.cpp" />
+    <ClCompile Include="Source\Objects\Monitor.cpp" />
     <ClCompile Include="Source\Objects\ParallaxObject.cpp" />
     <ClCompile Include="Source\Objects\WarpGate.cpp" />
     <ClCompile Include="Source\Objects\WarpGateExactScanTutorial.cpp" />
@@ -207,6 +208,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Entities\Enemies\Poly.h" />
     <ClInclude Include="Source\Entities\Enemies\Shroom.h" />
     <ClInclude Include="Source\Entities\Enemies\Snail.h" />
+    <ClInclude Include="Source\Entities\Entities.h" />
     <ClInclude Include="Source\Entities\Entity.h" />
     <ClInclude Include="Source\Entities\Player\Hover.h" />
     <ClInclude Include="Source\Entities\Player\Player.h" />
@@ -240,6 +242,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Level\LevelCamera.h" />
     <ClInclude Include="Source\Level\LevelParser.h" />
     <ClInclude Include="Source\Objects\EggProjectile.h" />
+    <ClInclude Include="Source\Objects\Monitor.h" />
+    <ClInclude Include="Source\Objects\Objects.h" />
     <ClInclude Include="Source\Objects\ParallaxObject.h" />
     <ClInclude Include="Source\Objects\WarpGate.h" />
     <ClInclude Include="Source\Objects\WarpGateExactScanTutorial.h" />
@@ -260,6 +264,9 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     </ProjectReference>
     <ProjectReference Include="cocos2d\external\Box2D\proj.win32\libbox2d.vcxproj">
       <Project>{929480e7-23c0-4df6-8456-096d71547116}</Project>
+    </ProjectReference>
+    <ProjectReference Include="Libraries\RapidJson\RapidJson.vcxproj">
+      <Project>{61622618-6af3-44ed-a4f4-34787327175b}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

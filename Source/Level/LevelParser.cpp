@@ -46,6 +46,10 @@ Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map)
 		{
 			newObject = WarpGateExactScanTutorial::create();
 		}
+		else if (type == "monitor")
+		{
+			newObject = Monitor::create();
+		}
 		else
 		{
 			throw exception("invalid object");

@@ -24,6 +24,7 @@ foreach (string file in Directory.EnumerateFiles(this.Host.ResolvePath("../Resou
 		!file.EndsWith(".mp3") &&
 		!file.EndsWith(".wav") &&
 		!file.EndsWith(".plist") &&
+		!file.EndsWith(".json") &&
 		!file.EndsWith(".tmx")) {
 			continue;
 		}
