@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" nextobjectid="171">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" nextobjectid="172">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="180" columns="18">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../Ingame/Tiles/TileMap.png" width="2400" height="1280"/>
  </tileset>
  <objectgroup name="background-parallax">
-  <object id="134" name="Ruins4" type="Ruins4" x="1466.91" y="183.879" width="480" height="960">
+  <object id="134" name="Ruins4" type="Ruins4" x="2298.91" y="-208.121" width="320" height="640">
    <properties>
     <property name="float-time-x" type="float" value="8"/>
     <property name="float-time-y" type="float" value="8"/>
     <property name="float-x" type="float" value="8"/>
-    <property name="float-y" type="float" value="128"/>
+    <property name="float-y" type="float" value="-128"/>
     <property name="speed-x" type="float" value="0.25"/>
     <property name="speed-y" type="float" value="0.01"/>
    </properties>
@@ -78,11 +78,12 @@
  </layer>
  <objectgroup name="midground-decor">
   <object id="123" name="GrassPlane6" type="GrassPlane6" x="298.409" y="749.516" width="432" height="90.5454"/>
-  <object id="168" name="Mushroom13" type="Mushroom13" x="3076.63" y="436.78" width="512" height="512"/>
+  <object id="168" name="Mushroom13" type="Mushroom13" x="3139.63" y="436.78" width="512" height="512"/>
   <object id="169" name="Tree13" type="Tree13" x="906" y="16" width="840" height="840"/>
  </objectgroup>
  <objectgroup name="objects">
-  <object id="28" name="warp-gate-exact-scan-1" type="warp-gate-exact-scan-1" x="2542.7" y="572.037" width="512" height="380"/>
+  <object id="28" name="monitor" type="monitor" x="2030.7" y="580.037" width="288" height="204"/>
+  <object id="171" name="warp-gate-exact-scan-1" type="warp-gate-exact-scan-1" x="2588" y="430" width="512" height="512"/>
  </objectgroup>
  <objectgroup name="entities">
   <object id="72" name="spawn" type="spawn" x="381.243" y="417.006" width="128" height="128"/>
@@ -117,42 +118,9 @@
 </data>
  </layer>
  <objectgroup name="foreground-decor">
-  <object id="90" name="TreeTop2" type="TreeTop2" x="519.333" y="-44" width="112" height="77.3333"/>
-  <object id="91" name="TreeTop3" type="TreeTop3" x="637.333" y="-34.6666" width="117.333" height="56"/>
-  <object id="92" name="TreeTop3" type="TreeTop3" x="710.667" y="-40" width="117.333" height="56"/>
-  <object id="93" name="TreeTop2" type="TreeTop2" x="814.667" y="-44" width="112" height="77.3333"/>
-  <object id="94" name="TreeTop2" type="TreeTop2" x="891" y="-43.3333" width="112" height="77.3333"/>
-  <object id="95" name="TreeTop3" type="TreeTop3" x="969" y="-37.9999" width="117.333" height="56"/>
-  <object id="96" name="TreeTop2" type="TreeTop2" x="1146.33" y="-47.3333" width="112" height="77.3333"/>
-  <object id="97" name="TreeTop3" type="TreeTop3" x="1042.33" y="-43.3333" width="117.333" height="56"/>
-  <object id="98" name="TreeTop2" type="TreeTop2" x="1243" y="-52.6666" width="112" height="77.3333"/>
-  <object id="99" name="TreeTop3" type="TreeTop3" x="1321" y="-47.3332" width="117.333" height="56"/>
-  <object id="100" name="TreeTop2" type="TreeTop2" x="1498.33" y="-56.6666" width="112" height="77.3333"/>
-  <object id="101" name="TreeTop3" type="TreeTop3" x="1394.33" y="-52.6666" width="117.333" height="56"/>
-  <object id="102" name="TreeTop2" type="TreeTop2" x="1584.33" y="-50" width="112" height="77.3333"/>
-  <object id="103" name="TreeTop3" type="TreeTop3" x="1662.33" y="-44.6666" width="117.333" height="56"/>
-  <object id="104" name="TreeTop2" type="TreeTop2" x="1839.67" y="-54" width="112" height="77.3333"/>
-  <object id="105" name="TreeTop3" type="TreeTop3" x="1735.67" y="-50" width="117.333" height="56"/>
-  <object id="106" name="TreeTop2" type="TreeTop2" x="1896" y="-61.3333" width="112" height="77.3333"/>
-  <object id="108" name="TreeTop2" type="TreeTop2" x="435.333" y="-47.3333" width="112" height="77.3333"/>
-  <object id="109" name="TreeTop2" type="TreeTop2" x="380" y="-48.6666" width="112" height="77.3333"/>
-  <object id="110" name="TreeTop2" type="TreeTop2" x="1952" y="-44.6666" width="112" height="77.3333"/>
-  <object id="120" name="TreeTop2" type="TreeTop2" x="779.879" y="-35.5151" width="112" height="77.3333"/>
-  <object id="121" name="TreeTop2" type="TreeTop2" x="1034.42" y="-38.5454" width="112" height="77.3333"/>
-  <object id="122" name="TreeTop2" type="TreeTop2" x="1719.27" y="-47.6363" width="112" height="77.3333"/>
   <object id="128" name="Flower14" type="Flower14" x="2678.36" y="883.273" width="77.5195" height="71.0598"/>
   <object id="129" name="Bush4" type="Bush4" x="2923.67" y="865.472" width="122.739" height="90.4398"/>
   <object id="130" name="Bush3" type="Bush3" x="2548.22" y="875.049" width="122.739" height="90.4398"/>
-  <object id="135" name="Vine7" type="Vine7" x="855.636" y="-38.5454" width="128" height="128"/>
-  <object id="136" name="Vine13" type="Vine13" x="1599.15" y="-33.5758" width="128" height="128"/>
-  <object id="137" name="Vine6" type="Vine6" x="1190.06" y="-39.6364" width="128" height="128"/>
-  <object id="152" name="TreeTop3" type="TreeTop3" x="2041.16" y="-50.3333" width="117.333" height="56"/>
-  <object id="153" name="TreeTop2" type="TreeTop2" x="2098.11" y="-53.303" width="112" height="77.3333"/>
-  <object id="154" name="TreeTop2" type="TreeTop2" x="2218.51" y="-59.6667" width="112" height="77.3333"/>
-  <object id="155" name="TreeTop2" type="TreeTop2" x="2330.84" y="-50.3333" width="112" height="77.3333"/>
-  <object id="156" name="TreeTop3" type="TreeTop3" x="2114.51" y="-55.6667" width="117.333" height="56"/>
-  <object id="157" name="TreeTop2" type="TreeTop2" x="2274.84" y="-67" width="112" height="77.3333"/>
-  <object id="158" name="Vine7" type="Vine7" x="2238" y="-38" width="128" height="128"/>
   <object id="162" name="Flower18" type="Flower18" x="3153.42" y="822.583" width="89.6407" height="113.484"/>
   <object id="163" name="Mushroom11" type="Mushroom11" x="2344" y="859.64" width="77.5195" height="71.0598"/>
   <object id="170" name="Flower15" type="Flower15" x="1152.24" y="695.636" width="66.1818" height="128.727"/>

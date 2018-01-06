@@ -1,18 +1,12 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "Utils/Utils.h"
 #include "Level/Backgrounds/JungleBackground.h"
 #include "Level/Backgrounds/MountainBackground.h"
 #include "Level/Environments/JungleEnvironment.h"
-#include "Utils/Utils.h"
-#include "Entities/Player/Player.h"
-#include "Entities/Enemies/Bat.h"
-#include "Entities/Enemies/Poly.h"
-#include "Entities/Enemies/Shroom.h"
-#include "Entities/Enemies/Snail.h"
-#include "Objects/ParallaxObject.h"
-#include "Objects/WarpGate.h"
-#include "Objects/WarpGateExactScanTutorial.h"
+#include "Objects/Objects.h"
+#include "Entities/Entities.h"
 
 using namespace cocos2d;
 

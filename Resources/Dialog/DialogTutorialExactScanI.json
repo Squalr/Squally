@@ -1,0 +1,26 @@
+{
+  "Dialog": "Welcome! So you want to be a hacker. To pass this first test, you'll need to restore power to the warp gate.",
+  "Choice": "",
+  "TextMood": "Normal",
+  "Speaker": "Right",
+  "SpeakerLeft": "Player",
+  "SpeakerRight": "AI",
+  "Children": [
+    {
+      "Choice": "Ok",
+      "TextMood": "Normal",
+      "Speaker": "Left",
+      "SpeakerLeft": "Player",
+      "SpeakerRight": "AI",
+      "Dialog": "Okay, so how do I do that?",
+    },
+    {
+      "Choice": "I don't know why I'm here",
+      "TextMood": "Normal",
+      "Speaker": "Right",
+      "SpeakerLeft": "Player",
+      "SpeakerRight": "AI",
+      "Dialog": "Well then you should probably go.",
+    }
+  ]
+}

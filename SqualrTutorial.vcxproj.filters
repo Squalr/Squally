@@ -219,6 +219,9 @@
     <ClCompile Include="Source\GUI\Menus\Dialog\DialogMenu.cpp">
       <Filter>Source\GUI\Menus\Dialog</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Objects\Monitor.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -370,6 +373,15 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\Menus\Dialog\Dialog.h">
       <Filter>Source\GUI\Menus\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Monitor.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Objects.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entities\Entities.h">
+      <Filter>Source\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
