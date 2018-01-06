@@ -40,7 +40,7 @@ void DialogMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->dialogMenu->setPosition(Vec2(visibleSize.width / 2.0f, this->dialogMenu->getContentSize().height / 2.0f + 16.0f));
-	this->dialog->setPosition(Vec2(0.0f, this->dialogMenu->getContentSize().height / 2));
+	this->dialog->setPosition(Vec2(visibleSize.width / 2.0f, this->dialogMenu->getContentSize().height / 2));
 	this->frameLeft->setPosition(Vec2(visibleSize.width / 2.0f - 732.0f, this->dialogMenu->getContentSize().height / 2.0f + 16.0f));
 	this->frameRight->setPosition(Vec2(visibleSize.width / 2.0f + 732.0f, this->dialogMenu->getContentSize().height / 2.0f + 16.0f));
 }

@@ -11,14 +11,14 @@ Monitor* Monitor::create()
 
 Monitor::Monitor()
 {
-	this->monitorSprite = FloatingSprite::create(Resources::Ingame_Objects_Monitor, Vec2(2.0f, 24.0f), Vec2(7.0f, 7.0f));
+	this->monitorSpriteFloating = FloatingSprite::create(Resources::Ingame_Objects_Monitor, Vec2(2.0f, 24.0f), Vec2(7.0f, 7.0f));
 	this->monitorParticles = ParticleSystemQuad::create(Resources::Particles_Spark);
 	this->monitorParticlesBack = ParticleSystemQuad::create(Resources::Particles_Spark);
 
 	this->monitorParticles->setPositionType(ParticleSystem::PositionType::GROUPED);
 	this->monitorParticlesBack->setPositionType(ParticleSystem::PositionType::GROUPED);
 
-	FloatingSprite* sprite = this->monitorSprite;
+	FloatingSprite* sprite = this->monitorSpriteFloating;
 	ParticleSystem* particles = this->monitorParticles;
 	ParticleSystem* particlesBack = this->monitorParticlesBack;
 
@@ -41,7 +41,7 @@ Monitor::Monitor()
 	this->monitorParticlesBack->runAction(RepeatForever::create(Sequence::create(triggerParticlesBack, DelayTime::create(6.77f), nullptr)));
 
 	this->addChild(this->monitorParticlesBack);
-	this->addChild(this->monitorSprite);
+	this->addChild(this->monitorSpriteFloating);
 	this->addChild(this->monitorParticles);
 }
 

@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Collision/CollisionObject.h"
 #include "GUI/Components/FloatingSprite.h"
+#include "GUI/Components/MenuSprite.h"
 
 using namespace cocos2d;
 
@@ -16,7 +17,8 @@ protected:
 
 private:
 
-	FloatingSprite * monitorSprite;
+	MenuSprite * monitorSprite;
+	FloatingSprite * monitorSpriteFloating;
 	ParticleSystem * monitorParticles;
 	ParticleSystem * monitorParticlesBack;
 };
