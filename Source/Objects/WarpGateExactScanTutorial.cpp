@@ -14,9 +14,9 @@ WarpGateExactScanTutorial* WarpGateExactScanTutorial::create()
 
 WarpGateExactScanTutorial::WarpGateExactScanTutorial() : WarpGate::WarpGate()
 {
-	this->valueLabel = OutlineLabel::create("Temp", Resources::Fonts_Montserrat_Medium, 18);
+	this->valueLabel = OutlineLabel::create("Temp", Resources::Fonts_Montserrat_Medium, 24);
 
-	this->valueLabel->setPosition(0, 196.0f);
+	this->valueLabel->setPosition(0, 256.0f);
 
 	this->addChild(this->valueLabel);
 
