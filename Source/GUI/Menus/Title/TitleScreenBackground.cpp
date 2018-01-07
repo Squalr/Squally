@@ -21,7 +21,7 @@ TitleScreenBackground::TitleScreenBackground()
 	this->backgroundVines = FloatingSprite::create(Resources::Menus_Backgrounds_FarVines, Vec2(64.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->midgroundTrees = FloatingSprite::create(Resources::Menus_Backgrounds_MidgroundTrees, Vec2(8.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->tree = Sprite::create(Resources::Menus_Backgrounds_Tree);
-	this->ether = MenuSprite::create(Resources::Menus_Backgrounds_Ether, Resources::Menus_Backgrounds_EtherSelected, Resources::Menus_Backgrounds_EtherSelected);
+	this->ether = MenuSprite::create(Sprite::create(Resources::Menus_Backgrounds_Ether), Resources::Menus_Backgrounds_EtherSelected, Resources::Menus_Backgrounds_EtherSelected);
 	this->etherParticles = ParticleGalaxy::create();
 	this->eyes1 = Sprite::create();
 	this->eyes2 = Sprite::create();
@@ -30,8 +30,6 @@ TitleScreenBackground::TitleScreenBackground()
 	this->foregroundGrassTop = FloatingSprite::create(Resources::Menus_Backgrounds_TopLeaves, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
 	this->foregroundLight = Sprite::create(Resources::Menus_Backgrounds_Light);
 	this->squally = FloatingSprite::create(Resources::Menus_Backgrounds_Squally, Vec2(8.0f, 64.0f), Vec2(3.5f, 8.0f));
-
-	this->squally->setFlippedY(true);
 
 	this->etherParticles = ParticleGalaxy::create();
 	this->windParticles = ParticleSystemQuad::create(Resources::Particles_Wind);

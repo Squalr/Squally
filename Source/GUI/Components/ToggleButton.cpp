@@ -13,8 +13,8 @@ ToggleButton::ToggleButton(bool initialState, std::function<void(bool)> callback
 {
 	this->isToggled = initialState;
 	this->toggleCallback = callback;
-	this->offSwitch = MenuSprite::create(Resources::Menus_OptionsMenu_ToggleButtonOff, Resources::Menus_OptionsMenu_ToggleButtonOffHover, Resources::Menus_OptionsMenu_ToggleButtonOffClick);
-	this->onSwitch = MenuSprite::create(Resources::Menus_OptionsMenu_ToggleButtonOn, Resources::Menus_OptionsMenu_ToggleButtonOnHover, Resources::Menus_OptionsMenu_ToggleButtonOnClick);
+	this->offSwitch = MenuSprite::create(Sprite::create(Resources::Menus_OptionsMenu_ToggleButtonOff), Resources::Menus_OptionsMenu_ToggleButtonOffHover, Resources::Menus_OptionsMenu_ToggleButtonOffClick);
+	this->onSwitch = MenuSprite::create(Sprite::create(Resources::Menus_OptionsMenu_ToggleButtonOn), Resources::Menus_OptionsMenu_ToggleButtonOnHover, Resources::Menus_OptionsMenu_ToggleButtonOnClick);
 
 	this->clickableMenus = new vector<MenuSprite*>();
 

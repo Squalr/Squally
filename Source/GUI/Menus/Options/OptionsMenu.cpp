@@ -14,7 +14,7 @@ OptionsMenu::OptionsMenu()
 	this->background = Node::create();
 	this->optionsWindow = Sprite::create(Resources::Menus_OptionsMenu_OptionsMenu);
 	this->fullScreenLabel = OutlineLabel::create("Full Screen", Resources::Fonts_Montserrat_Medium, menuFontSize);
-	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
+	this->closeButton = MenuSprite::create(Sprite::create(Resources::Menus_Buttons_CloseButton), Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
 
 	this->musicIcon = Sprite::create(Resources::Menus_OptionsMenu_MusicIcon);
 	this->soundIcon = Sprite::create(Resources::Menus_OptionsMenu_SoundIcon);
@@ -44,7 +44,7 @@ OptionsMenu::OptionsMenu()
 	this->option1600x1024 = RadioButton::create(this->resolutionGroupId);
 	this->option1920x1080 = RadioButton::create(this->resolutionGroupId);
 
-	this->exitButton = MenuSprite::create(Resources::Menus_OptionsMenu_ExitButton, Resources::Menus_OptionsMenu_ExitButtonHover, Resources::Menus_OptionsMenu_ExitButtonClick);
+	this->exitButton = MenuSprite::create(Sprite::create(Resources::Menus_OptionsMenu_ExitButton), Resources::Menus_OptionsMenu_ExitButtonHover, Resources::Menus_OptionsMenu_ExitButtonClick);
 
 	this->musicSlider->setProgressUpdateCallback(CC_CALLBACK_1(OptionsMenu::onMusicVolumeUpdate, this));
 	this->soundSlider->setProgressUpdateCallback(CC_CALLBACK_1(OptionsMenu::onSoundVolumeUpdate, this));

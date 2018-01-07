@@ -16,9 +16,9 @@ TitleScreen::TitleScreen()
 	this->titleBar = Sprite::create(Resources::Menus_TitleScreen_TitleBar);
 	this->title = Sprite::create(Resources::Menus_TitleScreen_Title);
 	this->background = TitleScreenBackground::create();
-	this->storyModeButton = MenuSprite::create(Resources::Menus_TitleScreen_StoryModeButton, Resources::Menus_TitleScreen_StoryModeButtonHover, Resources::Menus_TitleScreen_StoryModeButtonClick);
-	this->optionsButton = MenuSprite::create(Resources::Menus_TitleScreen_OptionsButton, Resources::Menus_TitleScreen_OptionsButtonHover, Resources::Menus_TitleScreen_OptionsButtonClick);
-	this->exitButton = MenuSprite::create(Resources::Menus_TitleScreen_ExitButton, Resources::Menus_TitleScreen_ExitButtonHover, Resources::Menus_TitleScreen_ExitButtonClick);
+	this->storyModeButton = MenuSprite::create(Sprite::create(Resources::Menus_TitleScreen_StoryModeButton), Resources::Menus_TitleScreen_StoryModeButtonHover, Resources::Menus_TitleScreen_StoryModeButtonClick);
+	this->optionsButton = MenuSprite::create(Sprite::create(Resources::Menus_TitleScreen_OptionsButton), Resources::Menus_TitleScreen_OptionsButtonHover, Resources::Menus_TitleScreen_OptionsButtonClick);
+	this->exitButton = MenuSprite::create(Sprite::create(Resources::Menus_TitleScreen_ExitButton), Resources::Menus_TitleScreen_ExitButtonHover, Resources::Menus_TitleScreen_ExitButtonClick);
 
 	this->background->setMatrixClickCallback(CC_CALLBACK_1(TitleScreen::onMatrixClick, this));
 	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));

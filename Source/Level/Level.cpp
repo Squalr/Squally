@@ -53,8 +53,6 @@ Level::Level(std::string levelResourceFilePath)
 	this->addChild(this->collisionLayer);
 	this->addChild(this->environmentLayer);
 	this->addChild(this->hud);
-	Dialog* dialogRoot = Dialog::loadDialogFromFile(Resources::Dialog_DialogTutorialExactScanI);
-	this->addChild(DialogMenu::create(dialogRoot));
 	this->addChild(Mouse::claimInstance());
 
 	this->scheduleUpdate();

@@ -170,7 +170,6 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\Components\ToggleButton.cpp" />
     <ClCompile Include="Source\GUI\HUD\HUD.cpp" />
     <ClCompile Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.cpp" />
-    <ClCompile Include="Source\GUI\Menus\Dialog\Dialog.cpp" />
     <ClCompile Include="Source\GUI\Menus\Dialog\DialogMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\Options\OptionsMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\Pause\PauseMenu.cpp" />
@@ -225,7 +224,6 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\Components\ToggleButton.h" />
     <ClInclude Include="Source\GUI\HUD\HUD.h" />
     <ClInclude Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.h" />
-    <ClInclude Include="Source\GUI\Menus\Dialog\Dialog.h" />
     <ClInclude Include="Source\GUI\Menus\Dialog\DialogMenu.h" />
     <ClInclude Include="Source\GUI\Menus\Options\OptionsMenu.h" />
     <ClInclude Include="Source\GUI\Menus\Pause\PauseMenu.h" />

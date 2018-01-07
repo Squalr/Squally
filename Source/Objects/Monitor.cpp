@@ -1,22 +1,30 @@
 #include "Monitor.h"
 
-Monitor* Monitor::create()
+Monitor* Monitor::create(std::string dialogFile)
 {
-	Monitor* warpGate = new Monitor();
+	Monitor* monitor = new Monitor(dialogFile);
 
-	warpGate->autorelease();
+	monitor->autorelease();
 
-	return warpGate;
+	return monitor;
 }
 
-Monitor::Monitor()
+Monitor::Monitor(std::string dialogFile)
 {
+	this->monitorDialog = DialogMenu::loadDialogFromFile(dialogFile);
+	this->monitorDialog->retain();
+
 	this->monitorSpriteFloating = FloatingSprite::create(Resources::Ingame_Objects_Monitor, Vec2(2.0f, 24.0f), Vec2(7.0f, 7.0f));
+	this->monitorSprite = MenuSprite::create(this->monitorSpriteFloating, Resources::Ingame_Objects_MonitorSelected, Resources::Ingame_Objects_MonitorSelected);
 	this->monitorParticles = ParticleSystemQuad::create(Resources::Particles_Spark);
 	this->monitorParticlesBack = ParticleSystemQuad::create(Resources::Particles_Spark);
+	this->monitorSparkles = ParticleSystemQuad::create(Resources::Particles_Sparkles);
 
 	this->monitorParticles->setPositionType(ParticleSystem::PositionType::GROUPED);
 	this->monitorParticlesBack->setPositionType(ParticleSystem::PositionType::GROUPED);
+	this->monitorSparkles->setPositionType(ParticleSystem::PositionType::GROUPED);
+
+	this->monitorSprite->setClickCallback(CC_CALLBACK_1(Monitor::onMonitorClick, this));
 
 	FloatingSprite* sprite = this->monitorSpriteFloating;
 	ParticleSystem* particles = this->monitorParticles;
@@ -40,11 +48,17 @@ Monitor::Monitor()
 	this->monitorParticlesBack->setScale(0.7f);
 	this->monitorParticlesBack->runAction(RepeatForever::create(Sequence::create(triggerParticlesBack, DelayTime::create(6.77f), nullptr)));
 
+	this->addChild(this->monitorSparkles);
 	this->addChild(this->monitorParticlesBack);
-	this->addChild(this->monitorSpriteFloating);
+	this->addChild(this->monitorSprite);
 	this->addChild(this->monitorParticles);
 }
 
 Monitor::~Monitor()
 {
+}
+
+void Monitor::onMonitorClick(MenuSprite* menuSprite)
+{
+	this->getEventDispatcher()->dispatchCustomEvent(DialogMenu::DialogOpenEvent, &DialogMenu::DialogOpenArgs(this->monitorDialog));
 }

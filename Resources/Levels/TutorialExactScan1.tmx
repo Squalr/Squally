@@ -82,7 +82,11 @@
   <object id="169" name="Tree13" type="Tree13" x="906" y="16" width="840" height="840"/>
  </objectgroup>
  <objectgroup name="objects">
-  <object id="28" name="monitor" type="monitor" x="2030.7" y="580.037" width="288" height="204"/>
+  <object id="28" name="monitor" type="monitor" x="2030.7" y="580.037" width="288" height="204">
+   <properties>
+    <property name="dialog" value="DialogTutorialExactScanI"/>
+   </properties>
+  </object>
   <object id="171" name="warp-gate-exact-scan-1" type="warp-gate-exact-scan-1" x="2588" y="430" width="512" height="512"/>
  </objectgroup>
  <objectgroup name="entities">

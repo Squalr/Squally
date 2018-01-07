@@ -1,15 +1,15 @@
 #include "MenuSprite.h"
 
-MenuSprite* MenuSprite::create(std::string spriteResource, std::string spriteSelectedResource, std::string spriteClickedResource)
+MenuSprite* MenuSprite::create(Sprite* spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource)
 {
-	MenuSprite* menuSprite = new MenuSprite(spriteResource, spriteSelectedResource, spriteClickedResource);
+	MenuSprite* menuSprite = new MenuSprite(spriteNormal, spriteSelectedResource, spriteClickedResource);
 
 	menuSprite->autorelease();
 
 	return menuSprite;
 }
 
-MenuSprite::MenuSprite(std::string spriteResource, std::string spriteSelectedResource, std::string spriteClickedResource)
+MenuSprite::MenuSprite(Sprite* spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource)
 {
 	this->mouseClickEvent = nullptr;
 	this->mouseDownEvent = nullptr;
@@ -20,7 +20,7 @@ MenuSprite::MenuSprite(std::string spriteResource, std::string spriteSelectedRes
 	this->clickSound = Resources::Sounds_ButtonClick1;
 	this->mouseOverSound = "";
 
-	this->sprite = Sprite::create(spriteResource);
+	this->sprite = spriteNormal;
 	this->spriteClicked = Sprite::create(spriteClickedResource);
 	this->spriteSelected = Sprite::create(spriteSelectedResource);
 
@@ -35,10 +35,17 @@ MenuSprite::MenuSprite(std::string spriteResource, std::string spriteSelectedRes
 	this->addChild(this->spriteSelected);
 
 	this->initializeListeners();
+	this->scheduleUpdate();
 }
 
 MenuSprite::~MenuSprite()
 {
+}
+
+void MenuSprite::update(float)
+{
+	this->spriteClicked->setPosition(this->sprite->getPosition());
+	this->spriteSelected->setPosition(this->sprite->getPosition());
 }
 
 void MenuSprite::setClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick)
@@ -74,7 +81,7 @@ void MenuSprite::setClickSound(std::string soundResource)
 void MenuSprite::initializeListeners()
 {
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
-	EventListenerCustom* customListener = EventListenerCustom::create(Mouse::getInstance()->MouseMoveEvent, CC_CALLBACK_1(MenuSprite::onMouseSpriteMove, this));
+	EventListenerCustom* customListener = EventListenerCustom::create(Mouse::MouseMoveEvent, CC_CALLBACK_1(MenuSprite::onMouseSpriteMove, this));
 
 	mouseListener->onMouseUp = CC_CALLBACK_1(MenuSprite::onMouseUp, this);
 	mouseListener->onMouseDown = CC_CALLBACK_1(MenuSprite::onMouseDown, this);
