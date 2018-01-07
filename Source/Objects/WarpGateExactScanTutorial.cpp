@@ -1,7 +1,7 @@
 #include "WarpGateExactScanTutorial.h"
 
 int WarpGateExactScanTutorial::warpGatePower = 69420666;
-int WarpGateExactScanTutorial::warpGatePowerMax = 70000000;
+int WarpGateExactScanTutorial::warpGatePowerMax = 70100200;
 
 WarpGateExactScanTutorial* WarpGateExactScanTutorial::create()
 {

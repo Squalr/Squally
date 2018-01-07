@@ -28,6 +28,24 @@ MenuLabel::~MenuLabel()
 {
 }
 
+void MenuLabel::setColor(Color4B color)
+{
+	this->normalColor = color;
+
+	this->label->setTextColor(color);
+	this->labelHighlighted->setTextColor(color);
+}
+
+void MenuLabel::setHoverColor(Color4B color)
+{
+	this->hoverColor = color;
+}
+
+void MenuLabel::setGlowColor(Color4B color)
+{
+	this->glowColor = color;
+}
+
 void MenuLabel::setCallback(std::function<void(MenuLabel*)> callback)
 {
 	this->menuOnMouseClick = callback;
@@ -64,10 +82,16 @@ void MenuLabel::onMouseMove(EventMouse* event)
 	{
 		if (Utils::intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{
-			this->labelHighlighted->enableOutline(*highlightColor, highlightOutlineSize);
+			this->label->setTextColor(this->hoverColor);
+			this->labelHighlighted->setTextColor(this->hoverColor);
+
+			this->labelHighlighted->enableOutline(this->glowColor, highlightOutlineSize);
 		}
 		else
 		{
+			this->label->setTextColor(this->normalColor);
+			this->labelHighlighted->setTextColor(this->normalColor);
+
 			this->labelHighlighted->enableOutline(Color4B::BLACK, 1);
 		}
 	}

@@ -4,6 +4,7 @@
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../Ingame/Tiles/TileMap.png" width="2400" height="1280"/>
  </tileset>
+ <objectgroup name="jungle-environment"/>
  <objectgroup name="background-parallax">
   <object id="134" name="Ruins4" type="Ruins4" x="2298.91" y="-208.121" width="320" height="640">
    <properties>
