@@ -3,17 +3,12 @@
 
 using namespace cocos2d;
 
-class FloatingSprite : public Node
+class FloatingSprite : public Sprite
 {
 public:
 	static FloatingSprite* create(std::string spriteResourcePath, Vec2 movement, Vec2 time);
 
-	void setFlippedX(bool flipped);
-	void setFlippedY(bool flipped);
-
 protected:
 	FloatingSprite(std::string spriteResourcePath, Vec2 movement, Vec2 time);
 	~FloatingSprite();
-
-	Sprite* sprite;
 };

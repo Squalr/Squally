@@ -14,8 +14,8 @@ RadioButton::RadioButton(int groupIdentifier)
 	this->onCheckCallback = nullptr;
 	this->groupId = groupIdentifier;
 
-	this->checked = MenuSprite::create(Resources::Menus_OptionsMenu_RadioButtonSelected, Resources::Menus_OptionsMenu_RadioButtonSelectedHover, Resources::Menus_OptionsMenu_RadioButtonSelectedHover);
-	this->unchecked = MenuSprite::create(Resources::Menus_OptionsMenu_RadioButtonEmpty, Resources::Menus_OptionsMenu_RadioButtonHover, Resources::Menus_OptionsMenu_RadioButtonHover);
+	this->checked = MenuSprite::create(Sprite::create(Resources::Menus_OptionsMenu_RadioButtonSelected), Resources::Menus_OptionsMenu_RadioButtonSelectedHover, Resources::Menus_OptionsMenu_RadioButtonSelectedHover);
+	this->unchecked = MenuSprite::create(Sprite::create(Resources::Menus_OptionsMenu_RadioButtonEmpty), Resources::Menus_OptionsMenu_RadioButtonHover, Resources::Menus_OptionsMenu_RadioButtonHover);
 
 	this->checked->setClickCallback(CC_CALLBACK_1(RadioButton::onUncheckClick, this));
 	this->unchecked->setClickCallback(CC_CALLBACK_1(RadioButton::onCheckClick, this));

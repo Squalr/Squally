@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "GUI/Menus/Dialog/DialogMenu.h"
 
 using namespace cocos2d;
 
@@ -15,8 +16,12 @@ private:
 
 	void onEnter() override;
 	void initializePositions();
+	void initializeListeners();
+	void onDialogOpen(EventCustom* event);
 
 	Sprite* heart;
 	Sprite* healthBarFrame;
+
+	Node* dialogNode;
 };
 

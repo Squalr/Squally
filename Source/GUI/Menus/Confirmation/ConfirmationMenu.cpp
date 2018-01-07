@@ -16,9 +16,9 @@ ConfirmationMenu::ConfirmationMenu(std::string confirmationMessage, std::functio
 
 	this->background = Node::create();
 	this->pauseWindow = Sprite::create(Resources::Menus_ConfirmMenu_ConfirmMenuWindow);
-	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
-	this->cancelButton = MenuSprite::create(Resources::Menus_Buttons_CancelButton, Resources::Menus_Buttons_CancelButtonHover, Resources::Menus_Buttons_CancelButtonClick);
-	this->confirmButton = MenuSprite::create(Resources::Menus_Buttons_AcceptButton, Resources::Menus_Buttons_AcceptButtonHover, Resources::Menus_Buttons_AcceptButtonClick);
+	this->closeButton = MenuSprite::create(Sprite::create(Resources::Menus_Buttons_CloseButton), Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
+	this->cancelButton = MenuSprite::create(Sprite::create(Resources::Menus_Buttons_CancelButton), Resources::Menus_Buttons_CancelButtonHover, Resources::Menus_Buttons_CancelButtonClick);
+	this->confirmButton = MenuSprite::create(Sprite::create(Resources::Menus_Buttons_AcceptButton), Resources::Menus_Buttons_AcceptButtonHover, Resources::Menus_Buttons_AcceptButtonClick);
 	this->confirmationLabel = Label::create(confirmationMessage, Resources::Fonts_Montserrat_Medium, 20);
 
 	this->cancelButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onCancelClick, this));
