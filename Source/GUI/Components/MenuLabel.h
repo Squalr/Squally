@@ -10,6 +10,9 @@ class MenuLabel : public Node
 public:
 	static MenuLabel * create(std::string labelText, std::string fontResource, float fontSize);
 
+	void setColor(Color4B color);
+	void setHoverColor(Color4B color);
+	void setGlowColor(Color4B color);
 	void setCallback(std::function<void(MenuLabel*)> callback);
 
 protected:
@@ -28,7 +31,10 @@ private:
 	Label* labelHighlighted;
 	std::function<void(MenuLabel*)> menuOnMouseClick;
 
-	const Color4B* highlightColor = new Color4B(255, 255, 168, 255);
+	Color4B normalColor = Color4B::WHITE;
+	Color4B hoverColor = Color4B(0x6c, 0xa5, 0xad, 0xff);
+	Color4B glowColor = Color4B(255, 255, 168, 255);
+
 	const float fontOutlineSize = 2.0f;
 	const float highlightOutlineSize = 4.0f;
 };

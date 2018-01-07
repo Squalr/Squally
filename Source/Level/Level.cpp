@@ -53,7 +53,6 @@ Level::Level(std::string levelResourceFilePath)
 	this->addChild(this->collisionLayer);
 	this->addChild(this->environmentLayer);
 	this->addChild(this->hud);
-	this->addChild(Mouse::claimInstance());
 
 	this->scheduleUpdate();
 	this->update(0.0f);
@@ -63,6 +62,13 @@ Level::Level(std::string levelResourceFilePath)
 
 Level::~Level()
 {
+}
+
+void Level::onEnter()
+{
+	FadeScene::onEnter();
+
+	this->addChild(Mouse::claimInstance());
 }
 
 void Level::update(float dt)

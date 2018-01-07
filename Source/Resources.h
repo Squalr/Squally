@@ -495,6 +495,7 @@ public:
 	static const string Ingame_Objects_SignSkullRight;
 	static const string Ingame_Objects_SpikeBall;
 	static const string Ingame_Objects_WarpGateClosed;
+	static const string Ingame_Objects_WarpGateClosedLights;
 	static const string Ingame_Objects_WarpGateOpen;
 	static const string Ingame_Sprites_EggProjectile;
 	static const string Ingame_Sprites_Bat_Death1;
@@ -629,7 +630,9 @@ public:
 	static const string Menus_DialogMenu_DialogBox;
 	static const string Menus_DialogMenu_DialogFrameLeft;
 	static const string Menus_DialogMenu_DialogFrameRight;
+	static const string Menus_DialogMenu_JungleBackground;
 	static const string Menus_DialogMenu_PlayerPortrait;
+	static const string Menus_DialogMenu_ShipBackground;
 	static const string Menus_IntroMenu_SpeechBubble;
 	static const string Menus_IntroMenu_Scene1_Scene1BG;
 	static const string Menus_IntroMenu_Scene1_Scene1_NPC;
@@ -746,6 +749,7 @@ public:
 	static const string Particles_Spark;
 	static const string Particles_Sparkles;
 	static const string Particles_Sparks;
+	static const string Particles_Static;
 	static const string Particles_WarpGate;
 	static const string Particles_WarpPoint;
 	static const string Particles_Wind;
