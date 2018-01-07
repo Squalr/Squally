@@ -2,6 +2,8 @@
 
 Mouse* Mouse::mouseInstance = nullptr;
 
+const std::string Mouse::MouseMoveEvent = "mouse_move_event";
+
 Mouse* Mouse::claimInstance()
 {
 	Mouse* mouse = Mouse::getInstance();

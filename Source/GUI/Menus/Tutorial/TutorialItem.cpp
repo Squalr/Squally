@@ -26,14 +26,14 @@ TutorialItem::TutorialItem(std::string description, std::string mapFile, int ind
 	if (this->isLevelComplete)
 	{
 		this->startButton = MenuSprite::create(
-			Resources::Menus_TutorialMenu_TutorialEntryComplete,
+			Sprite::create(Resources::Menus_TutorialMenu_TutorialEntryComplete),
 			Resources::Menus_TutorialMenu_TutorialEntryCompleteSelected,
 			Resources::Menus_TutorialMenu_TutorialEntryCompleteSelected);
 	}
 	else
 	{
 		this->startButton = MenuSprite::create(
-			Resources::Menus_TutorialMenu_TutorialEntry,
+			Sprite::create(Resources::Menus_TutorialMenu_TutorialEntry),
 			Resources::Menus_TutorialMenu_TutorialEntrySelected,
 			Resources::Menus_TutorialMenu_TutorialEntrySelected);
 	}

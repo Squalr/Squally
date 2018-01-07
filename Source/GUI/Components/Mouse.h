@@ -12,7 +12,7 @@ public:
 
 	void setCanClick(bool canClick);
 
-	const std::string MouseMoveEvent = "mouse_move_event";
+	static const std::string MouseMoveEvent;
 
 	struct MouseEventArgs
 	{

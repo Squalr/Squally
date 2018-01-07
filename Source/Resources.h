@@ -474,6 +474,7 @@ public:
 	static const string Ingame_Objects_Egg;
 	static const string Ingame_Objects_Exit;
 	static const string Ingame_Objects_Monitor;
+	static const string Ingame_Objects_MonitorSelected;
 	static const string Ingame_Objects_Obj1;
 	static const string Ingame_Objects_Obj2;
 	static const string Ingame_Objects_Obj3;
@@ -743,6 +744,7 @@ public:
 	static const string Particles_Rain;
 	static const string Particles_Rain2;
 	static const string Particles_Spark;
+	static const string Particles_Sparkles;
 	static const string Particles_Sparks;
 	static const string Particles_WarpGate;
 	static const string Particles_WarpPoint;

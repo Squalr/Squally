@@ -28,7 +28,7 @@ Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map)
 	// Create objects
 	for (int index = 0; index < size(objects); index++)
 	{
-		if (objects[index].getType() != Value::Type::MAP)
+		if (objects[index].getType() != cocos2d::Value::Type::MAP)
 		{
 			continue;
 		}
@@ -48,7 +48,9 @@ Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map)
 		}
 		else if (type == "monitor")
 		{
-			newObject = Monitor::create();
+			string dialog = object.at("dialog").asString();
+
+			newObject = Monitor::create("Dialog\\" + dialog + ".json");
 		}
 		else
 		{
@@ -70,7 +72,7 @@ Layer* LevelParser::initializeEntities(experimental::TMXTiledMap* map)
 	// Create entities
 	for (int index = 0; index < size(entities); index++)
 	{
-		if (entities[index].getType() != Value::Type::MAP)
+		if (entities[index].getType() != cocos2d::Value::Type::MAP)
 		{
 			continue;
 		}
@@ -119,7 +121,7 @@ Layer* LevelParser::initializeCollision(experimental::TMXTiledMap* map)
 
 	for (int index = 0; index < size(collisionObjects); index++)
 	{
-		if (collisionObjects[index].getType() != Value::Type::MAP)
+		if (collisionObjects[index].getType() != cocos2d::Value::Type::MAP)
 		{
 			continue;
 		}
@@ -212,7 +214,7 @@ Layer* LevelParser::initializeParallaxObjects(experimental::TMXTiledMap* map, st
 	// Create objects
 	for (int index = 0; index < size(objects); index++)
 	{
-		if (objects[index].getType() != Value::Type::MAP)
+		if (objects[index].getType() != cocos2d::Value::Type::MAP)
 		{
 			continue;
 		}
@@ -250,7 +252,7 @@ Layer* LevelParser::initializeDecor(experimental::TMXTiledMap* map, std::string 
 	// Create objects
 	for (int index = 0; index < size(objects); index++)
 	{
-		if (objects[index].getType() != Value::Type::MAP)
+		if (objects[index].getType() != cocos2d::Value::Type::MAP)
 		{
 			continue;
 		}
