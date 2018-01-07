@@ -20,7 +20,11 @@ private:
 
 	Sprite * gateOpen;
 	Sprite * gateClosed;
+	Sprite * gateClosedLights;
+	Node * gateClosedLightsNode;
 	ParticleSystem * gateParticles;
+	ParticleSystem* sparkParticles;
+	ParticleSystem* sparkParticlesBack;
 
 	bool isOpen;
 };

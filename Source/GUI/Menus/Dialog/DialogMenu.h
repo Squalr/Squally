@@ -49,7 +49,7 @@ protected:
 	};
 
 	static DialogMenu * loadDialogFromJson(std::string json);
-	static DialogMenu * create(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::map<std::string, DialogMenu*>* children);
+	static DialogMenu * create(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::queue<DialogMenu*>* children);
 
 	static Portrait stringToPortrait(std::string portraitNameString);
 	static Speaker stringToSpeaker(std::string speakerString);
@@ -59,7 +59,7 @@ protected:
 	std::string dialogChoice;
 
 private:
-	DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::map<std::string, DialogMenu*>* children);
+	DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::queue<DialogMenu*>* children);
 	~DialogMenu();
 
 	void initializePositions();

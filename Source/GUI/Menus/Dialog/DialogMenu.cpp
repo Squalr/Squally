@@ -18,7 +18,7 @@ DialogMenu * DialogMenu::loadDialogFromJson(std::string json)
 	Portrait portraitLeft = document.HasMember("PortraitLeft") ? DialogMenu::stringToPortrait(document["PortraitLeft"].GetString()) : Portrait::NoPortrait;
 	Portrait portraitRight = document.HasMember("PortraitRight") ? DialogMenu::stringToPortrait(document["PortraitRight"].GetString()) : Portrait::NoPortrait;
 
-	std::map<std::string, DialogMenu*>* children = new std::map<std::string, DialogMenu*>();
+	std::queue<DialogMenu*>* children = new std::queue<DialogMenu*>();
 
 	if (document.HasMember("Children"))
 	{
@@ -32,7 +32,7 @@ DialogMenu * DialogMenu::loadDialogFromJson(std::string json)
 			document["Children"][index].Accept(writer);
 
 			DialogMenu* child = DialogMenu::loadDialogFromJson(stringBuffer.GetString());
-			children->insert_or_assign(child->dialogChoice, child);
+			children->push(child);
 			index++;
 		}
 	}
@@ -43,7 +43,7 @@ DialogMenu * DialogMenu::loadDialogFromJson(std::string json)
 	return dialog;
 }
 
-DialogMenu* DialogMenu::create(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::map<std::string, DialogMenu*>* children)
+DialogMenu* DialogMenu::create(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::queue<DialogMenu*>* children)
 {
 	DialogMenu* dialogMenu = new DialogMenu(portraitLeft, portraitRight, speaker, textMood, text, children);
 
@@ -52,7 +52,7 @@ DialogMenu* DialogMenu::create(Portrait portraitLeft, Portrait portraitRight, Sp
 	return dialogMenu;
 }
 
-DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::map<std::string, DialogMenu*>* children)
+DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::queue<DialogMenu*>* children)
 {
 	this->spriteLeft = this->getPortraitNode(portraitLeft, false);
 	this->spriteRight = this->getPortraitNode(portraitRight, true);
@@ -104,13 +104,20 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 
 	this->dialogChildren = new std::map<MenuLabel*, DialogMenu*>();
 
-	for (auto iterator = children->begin(); iterator != children->end(); ++iterator)
+	while (children->size() > 0)
 	{
-		MenuLabel* label = MenuLabel::create(iterator->first, Resources::Fonts_Montserrat_Medium, 24);
+		DialogMenu* dialogMenu = children->front();
+		children->pop();
+
+
+		MenuLabel* label = MenuLabel::create(dialogMenu->dialogChoice, Resources::Fonts_Montserrat_Medium, 24);
+		label->setColor(Color4B::YELLOW);
+		label->setHoverColor(Color4B(0x6c, 0xa5, 0xad, 0xff));
+		label->setGlowColor(Color4B::WHITE);
 		label->setCallback(CC_CALLBACK_1(DialogMenu::onChooseDialog, this));
 
-		this->dialogChildren->insert_or_assign(label, iterator->second);
-		iterator->second->retain();
+		this->dialogChildren->insert_or_assign(label, dialogMenu);
+		dialogMenu->retain();
 	}
 
 	delete(children);
@@ -142,10 +149,10 @@ void DialogMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->dialogMenu->setPosition(Vec2(visibleSize.width / 2.0f, this->dialogMenu->getContentSize().height / 2.0f + 16.0f));
-	this->frameLeft->setPosition(Vec2(visibleSize.width / 2.0f - 732.0f, this->dialogMenu->getContentSize().height / 2.0f + 16.0f));
-	this->frameRight->setPosition(Vec2(visibleSize.width / 2.0f + 732.0f, this->dialogMenu->getContentSize().height / 2.0f + 16.0f));
-	this->spriteLeftClip->setPosition(Vec2(visibleSize.width / 2.0f - 732.0f, this->dialogMenu->getContentSize().height / 2.0f + 16.0f));
-	this->spriteRightClip->setPosition(Vec2(visibleSize.width / 2.0f + 732.0f, this->dialogMenu->getContentSize().height / 2.0f + 16.0f));
+	this->frameLeft->setPosition(Vec2(visibleSize.width / 2.0f - 744.0f, this->dialogMenu->getContentSize().height / 2.0f + 16.0f));
+	this->frameRight->setPosition(Vec2(visibleSize.width / 2.0f + 744.0f, this->dialogMenu->getContentSize().height / 2.0f + 16.0f));
+	this->spriteLeftClip->setPosition(Vec2(visibleSize.width / 2.0f - 744.0f, this->dialogMenu->getContentSize().height / 2.0f + 16.0f));
+	this->spriteRightClip->setPosition(Vec2(visibleSize.width / 2.0f + 744.0f, this->dialogMenu->getContentSize().height / 2.0f + 16.0f));
 	this->dialogText->setPosition(Vec2(visibleSize.width / 2.0f, this->dialogMenu->getContentSize().height / 2.0f - 16.0f));
 
 	int index = 0;
@@ -164,6 +171,7 @@ void DialogMenu::initializePositions()
 				pos.y -= 64.0f;
 				break;
 			}
+			break;
 		case 2:
 			switch (index)
 			{
@@ -176,6 +184,23 @@ void DialogMenu::initializePositions()
 				pos.y -= 64.0f;
 				break;
 			}
+			break;
+		case 3:
+			switch (index)
+			{
+			case 0:
+				pos.x -= 312.0f;
+				pos.y -= 64.0f;
+				break;
+			case 1:
+				pos.y -= 64.0f;
+				break;
+			case 2:
+				pos.x += 312.0f;
+				pos.y -= 64.0f;
+				break;
+			}
+			break;
 		default:
 			break;
 		}
@@ -197,11 +222,13 @@ Node* DialogMenu::getPortraitNode(Portrait portrait, bool isRight)
 	case Portrait::Player:
 	{
 		Node * node = Node::create();
+		Sprite* background = Sprite::create(Resources::Menus_DialogMenu_JungleBackground);
 		FloatingSprite * sprite = FloatingSprite::create(Resources::Menus_DialogMenu_PlayerPortrait, Vec2(2.0f, -24.0f), Vec2(6.25f, 6.25f));
 		sprite->setFlippedX(isRight);
 
 		ParticleSystem* starParticles = ParticleSystemQuad::create(Resources::Particles_ColorfulStars);
 
+		node->addChild(background);
 		node->addChild(starParticles);
 		node->addChild(sprite);
 
@@ -210,10 +237,11 @@ Node* DialogMenu::getPortraitNode(Portrait portrait, bool isRight)
 	case Portrait::AI:
 	{
 		Node * node = Node::create();
+		Sprite* background = Sprite::create(Resources::Menus_DialogMenu_ShipBackground);
 		FloatingSprite * sprite = FloatingSprite::create(Resources::Menus_DialogMenu_AI, Vec2(2.0f, -24.0f), Vec2(6.25f, 6.25f));
 		sprite->setFlippedX(isRight);
 
-		ParticleSystem* netherParticles = ParticleSystemQuad::create(Resources::Particles_BlueNether);
+		ParticleSystem* staticParticles = ParticleSystemQuad::create(Resources::Particles_Static);
 		ParticleSystem* sparkParticles = ParticleSystemQuad::create(Resources::Particles_Spark);
 		ParticleSystem* sparkParticlesBack = ParticleSystemQuad::create(Resources::Particles_Spark);
 
@@ -232,10 +260,11 @@ Node* DialogMenu::getPortraitNode(Portrait portrait, bool isRight)
 		sparkParticles->runAction(RepeatForever::create(Sequence::create(triggerParticles, DelayTime::create(7.14f), nullptr)));
 		sparkParticlesBack->runAction(RepeatForever::create(Sequence::create(triggerBackParticles, DelayTime::create(5.73f), nullptr)));
 
-		node->addChild(netherParticles);
+		node->addChild(background);
 		node->addChild(sparkParticlesBack);
 		node->addChild(sprite);
 		node->addChild(sparkParticles);
+		node->addChild(staticParticles);
 
 		return node;
 	}

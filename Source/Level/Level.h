@@ -24,11 +24,12 @@ protected:
 	Level(std::string levelResourceFilePath);
 	~Level();
 
-	void update(float) override;
 
 private:
 	void initializeListeners();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void update(float) override;
+	void onEnter() override;
 
 	Layer * background;
 	Layer * backgroundLayer;
