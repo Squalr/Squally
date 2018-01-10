@@ -1,5 +1,7 @@
 #pragma once
 #include "cocos2d.h"
+#include "allocators.h"
+#include "encodings.h"
 #include "document.h"
 #include "stringbuffer.h"
 #include "writer.h"
@@ -49,17 +51,16 @@ protected:
 	};
 
 	static DialogMenu * loadDialogFromJson(std::string json);
-	static DialogMenu * create(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::queue<DialogMenu*>* children);
+	static DialogMenu * create(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::queue<std::pair<std::string, DialogMenu*>>* children);
 
 	static Portrait stringToPortrait(std::string portraitNameString);
 	static Speaker stringToSpeaker(std::string speakerString);
 	static TextMood stringToTextMood(std::string textMoodString);
 
-	std::map<MenuLabel*, DialogMenu*>* dialogChildren;
-	std::string dialogChoice;
+	std::vector<std::pair<MenuLabel*, DialogMenu*>>* dialogChildren;
 
 private:
-	DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::queue<DialogMenu*>* children);
+	DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::queue<std::pair<std::string, DialogMenu*>>* children);
 	~DialogMenu();
 
 	void initializePositions();

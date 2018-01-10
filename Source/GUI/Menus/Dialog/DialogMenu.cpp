@@ -18,32 +18,38 @@ DialogMenu * DialogMenu::loadDialogFromJson(std::string json)
 	Portrait portraitLeft = document.HasMember("PortraitLeft") ? DialogMenu::stringToPortrait(document["PortraitLeft"].GetString()) : Portrait::NoPortrait;
 	Portrait portraitRight = document.HasMember("PortraitRight") ? DialogMenu::stringToPortrait(document["PortraitRight"].GetString()) : Portrait::NoPortrait;
 
-	std::queue<DialogMenu*>* children = new std::queue<DialogMenu*>();
+	std::queue<std::pair<std::string, DialogMenu*>>* children = new std::queue<std::pair<std::string, DialogMenu*>>();
 
-	if (document.HasMember("Children"))
+	if (document.HasMember("Choices"))
 	{
-		GenericArray<false, rapidjson::Value::ValueType> childrenArr = document["Children"].GetArray();
-		int index = 0;
+		GenericArray<false, rapidjson::Value::ValueType> choicesArray = document["Choices"].GetArray();
 
-		for (rapidjson::Value::ConstValueIterator iterator = childrenArr.Begin(); iterator != childrenArr.End(); ++iterator)
+		// Iterate through choices
+		for (rapidjson::Value::ConstValueIterator choiceIterator = choicesArray.Begin(); choiceIterator != choicesArray.End(); ++choiceIterator)
 		{
-			rapidjson::StringBuffer stringBuffer;
-			rapidjson::Writer<rapidjson::StringBuffer> writer(stringBuffer);
-			document["Children"][index].Accept(writer);
+			// Parse the choice object
+			for (auto member = choiceIterator->MemberBegin(); member != choiceIterator->MemberEnd(); ++member)
+			{
+				auto choice = member->name.GetString();
+				auto dialogObject = member->value.GetObjectW();
 
-			DialogMenu* child = DialogMenu::loadDialogFromJson(stringBuffer.GetString());
-			children->push(child);
-			index++;
+				rapidjson::StringBuffer stringBuffer;
+				rapidjson::Writer<rapidjson::StringBuffer> writer(stringBuffer);
+				member->value.Accept(writer);
+				std::string childString = stringBuffer.GetString();
+
+				DialogMenu* child = DialogMenu::loadDialogFromJson(childString);
+				children->push(std::pair<std::string, DialogMenu*>(choice, child));
+			}
 		}
 	}
 
 	DialogMenu* dialog = DialogMenu::create(portraitLeft, portraitRight, speaker, textMood, dialogText, children);
-	dialog->dialogChoice = document["Choice"].GetString();
 
 	return dialog;
 }
 
-DialogMenu* DialogMenu::create(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::queue<DialogMenu*>* children)
+DialogMenu* DialogMenu::create(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::queue<std::pair<std::string, DialogMenu*>>* children)
 {
 	DialogMenu* dialogMenu = new DialogMenu(portraitLeft, portraitRight, speaker, textMood, text, children);
 
@@ -52,7 +58,7 @@ DialogMenu* DialogMenu::create(Portrait portraitLeft, Portrait portraitRight, Sp
 	return dialogMenu;
 }
 
-DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::queue<DialogMenu*>* children)
+DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::queue<std::pair<std::string, DialogMenu*>>* children)
 {
 	this->spriteLeft = this->getPortraitNode(portraitLeft, false);
 	this->spriteRight = this->getPortraitNode(portraitRight, true);
@@ -102,21 +108,23 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 		break;
 	}
 
-	this->dialogChildren = new std::map<MenuLabel*, DialogMenu*>();
+	this->dialogChildren = new std::vector<std::pair<MenuLabel*, DialogMenu*>>();
 
 	while (children->size() > 0)
 	{
-		DialogMenu* dialogMenu = children->front();
+		std::pair<std::string, DialogMenu*> choiceDialogPair = children->front();
 		children->pop();
 
+		std::string choice = choiceDialogPair.first;
+		DialogMenu* dialogMenu = choiceDialogPair.second;
 
-		MenuLabel* label = MenuLabel::create(dialogMenu->dialogChoice, Resources::Fonts_Montserrat_Medium, 24);
+		MenuLabel* label = MenuLabel::create(choice, Resources::Fonts_Montserrat_Medium, 24);
 		label->setColor(Color4B::YELLOW);
 		label->setHoverColor(Color4B(0x6c, 0xa5, 0xad, 0xff));
 		label->setGlowColor(Color4B::WHITE);
 		label->setCallback(CC_CALLBACK_1(DialogMenu::onChooseDialog, this));
 
-		this->dialogChildren->insert_or_assign(label, dialogMenu);
+		this->dialogChildren->push_back(std::pair<MenuLabel*, DialogMenu*>(label, dialogMenu));
 		dialogMenu->retain();
 	}
 
@@ -135,7 +143,9 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 
 	for (auto iterator = this->dialogChildren->begin(); iterator != this->dialogChildren->end(); ++iterator)
 	{
-		this->addChild(iterator->first);
+		MenuLabel* label = (*iterator).first;
+
+		this->addChild(label);
 	}
 }
 
@@ -212,7 +222,17 @@ void DialogMenu::initializePositions()
 
 void DialogMenu::onChooseDialog(MenuLabel* dialogMenu)
 {
-	this->getEventDispatcher()->dispatchCustomEvent(DialogMenu::DialogOpenEvent, &DialogOpenArgs(this->dialogChildren->at(dialogMenu)));
+	for (auto iterator = this->dialogChildren->begin(); iterator != this->dialogChildren->end(); ++iterator)
+	{
+		auto value = (*iterator);
+
+		if (value.first == dialogMenu)
+		{
+			// Open the dialog from the selected choice
+			this->getEventDispatcher()->dispatchCustomEvent(DialogMenu::DialogOpenEvent, &DialogOpenArgs(value.second));
+			return;
+		}
+	}
 }
 
 Node* DialogMenu::getPortraitNode(Portrait portrait, bool isRight)

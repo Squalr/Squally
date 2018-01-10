@@ -1,100 +1,122 @@
 {
   "Dialog": "Greetings commander! So you want to be a hacker. To pass this first test, you'll need to restore power to the warp gate.",
-  "Choice": "",
   "TextMood": "Normal",
   "Speaker": "Right",
   "PortraitLeft": "Player",
   "PortraitRight": "AI",
-  "Children": [
+  "Choices": [
     {
-      "Choice": "I don't know why I'm here.",
-      "Dialog": "Perhaps you were looking for the Story Mode. These challenges are not for the faint hearted!",
-      "TextMood": "Normal",
-      "Speaker": "Right",
-      "PortraitLeft": "Player",
-      "PortraitRight": "AI"
+      "I don't know why I'm here.": {
+        "Dialog": "Perhaps you were looking for the Story Mode. These challenges are not for the faint hearted!",
+        "TextMood": "Normal",
+        "Speaker": "Right",
+        "PortraitLeft": "Player",
+        "PortraitRight": "AI"
+      }
     },
     {
-      "Choice": "Okay, so how do I do that?",
-      "Dialog": "By hacking of course! You'll need to perform a scan for 69420666, and change it to a value greater than or equal to 70100200.",
-      "TextMood": "Normal",
-      "Speaker": "Right",
-      "PortraitLeft": "Player",
-      "PortraitRight": "AI",
-      "Children": [
-        {
-          "Choice": "I'm listening...",
-          "Dialog": "First you'll want to attach Squalr to Squally, using the dropdown menu at the top of Squalr.\nIf you do not have Squalr, download it from Squalr.com.",
-          "TextMood": "Normal",
-          "Speaker": "Right",
-          "PortraitLeft": "Player",
-          "PortraitRight": "AI",
-          "Children": [
-            {
-              "Choice": "Got it!",
-              "Dialog": "Great! Now in the Manual Scanner tab, type in 69420666, and click the arrow to start the scan. \nYou can think of scanning as something similar to a \"Ctrl+F\" in memory to find values.",
+      "Okay, so how do I do that?": {
+        "Dialog": "By hacking of course! You'll need to perform a scan for 69420666, and change it to a value greater than or equal to 70100200.",
+        "TextMood": "Normal",
+        "Speaker": "Right",
+        "PortraitLeft": "Player",
+        "PortraitRight": "AI",
+        "Choices": [
+          {
+            "I'm listening...": {
+              "Dialog": "First you'll want to attach Squalr to Squally, using the dropdown menu at the top of Squalr.\nIf you do not have Squalr, download it from Squalr.com.",
               "TextMood": "Normal",
               "Speaker": "Right",
               "PortraitLeft": "Player",
               "PortraitRight": "AI",
-              "Children": [
+              "Choices": [
                 {
-                  "Choice": "I don't see the Manual Scanner panel.",
-                  "Dialog": "Reset the layout by going to Layout > Reset Layout in Squalr. This should make the panel reappear.",
-                  "TextMood": "Normal",
-                  "Speaker": "Right",
-                  "PortraitLeft": "Player",
-                  "PortraitRight": "AI"
-                },
-                {
-                  "Choice": "Okay, now what?",
-                  "Dialog": "You should see a single search result in the scan results tab.",
-                  "TextMood": "Normal",
-                  "Speaker": "Right",
-                  "PortraitLeft": "Player",
-                  "PortraitRight": "AI",
-                  "Children": [
-                    {
-                      "Choice": "I have no results!",
-                      "Dialog": "There should be at least one result. A couple things could have gone wrong. Be sure that you've attached Squalr to Squally. If you've changed your settings, reset them to the default in the settings menu. Also, check the scan results panel to ensure the Data Type is set to Int32 (4 blue blocks icon).",
-                      "TextMood": "Normal",
-                      "Speaker": "Right",
-                      "PortraitLeft": "Player",
-                      "PortraitRight": "AI"
-                    },
-                    {
-                      "Choice": "I have more than one result!",
-                      "Dialog": "Oh dear! My apologies. The correct one should be static, meaning it has an 'S' icon next to it. We will learn more about that later. If there are still more than one result, just try changing them all to 70100200.",
-                      "TextMood": "Normal",
-                      "Speaker": "Right",
-                      "PortraitLeft": "Player",
-                      "PortraitRight": "AI"
-                    },
-                    {
-                      "Choice": "I see it!",
-                      "Dialog": "Excellent! Double click the entry in the Scan Results panel. It should be added to your Project Explorer.",
-                      "TextMood": "Normal",
-                      "Speaker": "Right",
-                      "PortraitLeft": "Player",
-                      "Children": [
-                        {
-                          "Choice": "Okay",
-                          "Dialog": "Now Double click the entry in the Project Explorer panel. A box should appear allowing you to enter in a new value. Change this to something greater than or equal to 70100200 to restore power to the warp gate.",
+                  "Got it!": {
+                    "Dialog": "Great! Now in the Manual Scanner tab, type in 69420666, and click the arrow to start the scan. \nYou can think of scanning as something similar to a \"Ctrl+F\" in memory to find values.",
+                    "TextMood": "Normal",
+                    "Speaker": "Right",
+                    "PortraitLeft": "Player",
+                    "PortraitRight": "AI",
+                    "Choices": [
+                      {
+                        "I don't see the Manual Scanner panel.": {
+                          "Dialog": "Reset the layout by going to Layout > Reset Layout in Squalr. This should make the panel reappear.",
                           "TextMood": "Normal",
                           "Speaker": "Right",
                           "PortraitLeft": "Player",
-                          "PortraitRight": "AI"
+                          "PortraitRight": "AI",
+                          "Choices": [
+                            {
+                              "Back": {
+                                "Special": "Back"
+                              }
+                            }
+                          ]
                         }
-                      ],
-                      "PortraitRight": "AI"
-                    }
-                  ]
+                      },
+                      {
+                        "Okay, now what?": {
+                          "Dialog": "You should see a single search result in the scan results tab.",
+                          "TextMood": "Normal",
+                          "Speaker": "Right",
+                          "PortraitLeft": "Player",
+                          "PortraitRight": "AI",
+                          "Choices": [
+                            {
+                              "I have no results!": {
+                                "Dialog": "There should be at least one result. A couple things could have gone wrong. Be sure that you've attached Squalr to Squally. If you've changed your settings, reset them to the default in the settings menu. Also, check the scan results panel to ensure the Data Type is set to Int32 (4 blue blocks icon).",
+                                "TextMood": "Normal",
+                                "Speaker": "Right",
+                                "PortraitLeft": "Player",
+                                "PortraitRight": "AI",
+                                "Choices": [
+                                  {
+                                    "Back": {
+                                      "Special": "Back"
+                                    }
+                                  }
+                                ]
+                              },
+                              "I have more than one result!": {
+                                "Dialog": "Oh dear! My apologies. The correct one should be static, meaning it has an 'S' icon next to it. We will learn more about that later. If there are still multiple static results, follow my instructions for all of them.",
+                                "TextMood": "Normal",
+                                "Speaker": "Right",
+                                "PortraitLeft": "Player",
+                                "PortraitRight": "AI",
+                                "Choices": [
+                                  {
+                                    "Back": {
+                                      "Special": "Back"
+                                    }
+                                  }
+                                ]
+                              },
+                              "I see it!": {
+                                "Dialog": "Excellent! Double click the entry in the Scan Results panel. It should be added to your Project Explorer.",
+                                "TextMood": "Normal",
+                                "Speaker": "Right",
+                                "PortraitLeft": "Player",
+                                "PortraitRight": "AI",
+                                "Choices": [
+                                  {
+                                    "Leave": {
+                                      "Special": "Exit"
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
                 }
               ]
             }
-          ]
-        }
-      ]
+          }
+        ]
+      }
     }
   ]
 }
