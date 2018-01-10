@@ -1,101 +1,79 @@
 #include "InstructionTest.h"
 
+int testVariable = 0;
+
 InstructionTest* InstructionTest::create()
 {
-	InstructionTest* warpGate = new InstructionTest();
+	InstructionTest* instructionTest = new InstructionTest();
 
-	warpGate->autorelease();
+	instructionTest->autorelease();
 
-	return warpGate;
+	return instructionTest;
 }
 
 InstructionTest::InstructionTest()
 {
-	this->isOpen = false;
+	this->sprite = Sprite::create(Resources::HUD_Egg);
+	this->instructionLabel = OutlineLabel::create("Computing assembly...", Resources::Fonts_Montserrat_Medium, 24);
 
-	this->gateOpen = Sprite::create(Resources::Ingame_Objects_WarpGateOpen);
-	this->gateClosed = Sprite::create(Resources::Ingame_Objects_WarpGateClosed);
-	this->gateClosedLights = Sprite::create(Resources::Ingame_Objects_WarpGateClosedLights);
-	this->gateClosedLightsNode = Node::create();
-	this->gateParticles = ParticleSystemQuad::create(Resources::Particles_WarpGate);
+	this->addChild(this->sprite);
+	this->addChild(this->instructionLabel);
 
-	this->sparkParticles = ParticleSystemQuad::create(Resources::Particles_Spark);
-	this->sparkParticlesBack = ParticleSystemQuad::create(Resources::Particles_Spark);
-
-	this->sparkParticles->setPositionType(ParticleSystem::PositionType::GROUPED);
-	this->sparkParticlesBack->setPositionType(ParticleSystem::PositionType::GROUPED);
-	this->sparkParticles->setScale(0.7f);
-	this->sparkParticlesBack->setScale(0.7f);
-
-	this->gateParticles->setPositionType(ParticleSystem::PositionType::GROUPED);
-	this->gateParticles->setPosition(Vec2(0.0f, 32.0f));
-
-	Sprite* sprite = this->gateClosed;
-	ParticleSystem* particleSystem1 = this->sparkParticles;
-	ParticleSystem* particleSystem2 = this->sparkParticlesBack;
-
-	CallFunc* triggerParticles = CallFunc::create([sprite, particleSystem1]()
-	{
-		Size midPoint = sprite->getContentSize() / 2;
-		particleSystem1->setSourcePosition(sprite->getPosition() + Vec2(midPoint.width, midPoint.height - 128.0f));
-		particleSystem1->start();
-	});
-
-	CallFunc* triggerBackParticles = CallFunc::create([sprite, particleSystem2]()
-	{
-		Size midPoint = sprite->getContentSize() / 2;
-		particleSystem2->setSourcePosition(sprite->getPosition() + Vec2(midPoint.width + 196.0f, midPoint.height + 440.0f));
-		particleSystem2->start();
-	});
-
-	this->sparkParticles->runAction(RepeatForever::create(Sequence::create(triggerParticles, DelayTime::create(5.23f), nullptr)));
-	this->sparkParticlesBack->runAction(RepeatForever::create(Sequence::create(triggerBackParticles, DelayTime::create(7.44f), nullptr)));
-
-	this->gateClosedLights->runAction(RepeatForever::create(Sequence::create(FadeOut::create(3.5f), DelayTime::create(1.0f), FadeIn::create(3.5f), DelayTime::create(1.0f), nullptr)));
-
-	this->gateParticles->setCascadeOpacityEnabled(true);
-	this->gateParticles->stopSystem();
-	this->gateParticles->setOpacity(0);
-	this->gateOpen->setOpacity(0);
-
-	this->gateClosed->addChild(sparkParticlesBack);
-	this->gateClosed->addChild(sparkParticles);
-
-	this->gateClosedLightsNode->addChild(this->gateClosedLights);
-	this->addChild(this->gateOpen);
-	this->addChild(this->gateClosed);
-	this->addChild(this->gateClosedLightsNode);
-	this->addChild(this->gateParticles);
+	this->scheduleUpdate();
 }
 
 InstructionTest::~InstructionTest()
 {
 }
 
-void InstructionTest::open()
+void InstructionTest::update(float dt)
 {
-	if (!this->isOpen)
-	{
-		this->gateOpen->runAction(FadeIn::create(0.25f));
-		this->gateClosed->runAction(FadeOut::create(2.0f));
-		this->gateClosedLightsNode->runAction(FadeOut::create(2.0f));
-		this->gateParticles->runAction(FadeIn::create(2.0f));
-		this->gateParticles->start();
+	this->elapsed += dt;
 
-		this->isOpen = true;
+	if (this->elapsed > 1.0f)
+	{
+		this->hackableFunction();
+		this->elapsed = 0.0f;
 	}
 }
 
-void InstructionTest::close()
+void InstructionTest::hackableFunction()
 {
-	if (this->isOpen)
-	{
-		this->gateOpen->runAction(FadeOut::create(2.0f));
-		this->gateClosed->runAction(FadeIn::create(0.25f));
-		this->gateClosedLightsNode->runAction(FadeIn::create(0.25f));
-		this->gateParticles->runAction(FadeOut::create(2.0f));
-		this->gateParticles->stopSystem();
+	void *assemblyAddressStart = nullptr;
+	void *assemblyAddressEnd = nullptr;
 
-		this->isOpen = false;
+	__asm
+	{
+		mov assemblyAddressStart, offset assemblyStart
+		mov assemblyAddressEnd, offset assemblyEnd
 	}
+
+assemblyStart:
+	__asm
+	{
+		inc testVariable;
+	}
+assemblyEnd:
+
+	byte * bytes = (byte*)assemblyAddressStart;
+	int byteCount = (unsigned int)assemblyAddressEnd - (unsigned int)assemblyAddressStart;
+
+	// std::string instructions = Utils::hexAddressOf(assemblyAddressStart);
+
+	ud_t ud_obj;
+
+	ud_init(&ud_obj);
+	ud_set_input_buffer(&ud_obj, bytes, byteCount);
+	ud_set_mode(&ud_obj, 32);
+	ud_set_syntax(&ud_obj, UD_SYN_INTEL);
+
+	std::string instructions = "";
+
+	while (ud_disassemble(&ud_obj))
+	{
+		instructions += ud_insn_asm(&ud_obj);
+		instructions += "\n";
+	}
+
+	this->instructionLabel->setText(instructions);
 }
