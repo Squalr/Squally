@@ -2,6 +2,8 @@
 #include "cocos2d.h"
 #include "udis86.h"
 #include "Collision/CollisionObject.h"
+#include "GUI/Components/OutlineLabel.h"
+#include "Utils/Utils.h"
 
 using namespace cocos2d;
 
@@ -10,22 +12,17 @@ class InstructionTest : public CollisionObject
 public:
 	static InstructionTest* create();
 
-	void open();
-	void close();
+	void hackableFunction();
 
 protected:
 	InstructionTest();
 	~InstructionTest();
 
 private:
+	void update(float) override;
 
-	Sprite * gateOpen;
-	Sprite * gateClosed;
-	Sprite * gateClosedLights;
-	Node * gateClosedLightsNode;
-	ParticleSystem * gateParticles;
-	ParticleSystem* sparkParticles;
-	ParticleSystem* sparkParticlesBack;
+	Sprite * sprite;
+	OutlineLabel * instructionLabel;
 
-	bool isOpen;
+	float elapsed = 0.0f;
 };
