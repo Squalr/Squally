@@ -75,7 +75,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)Libraries\RapidJson;$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;Source;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libraries\RapidJson;$(ProjectDir)Libraries\Udis86;$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;Source;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -188,6 +188,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Level\LevelCamera.cpp" />
     <ClCompile Include="Source\Level\LevelParser.cpp" />
     <ClCompile Include="Source\Objects\EggProjectile.cpp" />
+    <ClCompile Include="Source\Objects\InstructionTest.cpp" />
     <ClCompile Include="Source\Objects\Monitor.cpp" />
     <ClCompile Include="Source\Objects\ParallaxObject.cpp" />
     <ClCompile Include="Source\Objects\WarpGate.cpp" />
@@ -242,6 +243,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Level\LevelCamera.h" />
     <ClInclude Include="Source\Level\LevelParser.h" />
     <ClInclude Include="Source\Objects\EggProjectile.h" />
+    <ClInclude Include="Source\Objects\InstructionTest.h" />
     <ClInclude Include="Source\Objects\Monitor.h" />
     <ClInclude Include="Source\Objects\Objects.h" />
     <ClInclude Include="Source\Objects\ParallaxObject.h" />
@@ -267,6 +269,9 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     </ProjectReference>
     <ProjectReference Include="Libraries\RapidJson\RapidJson.vcxproj">
       <Project>{61622618-6af3-44ed-a4f4-34787327175b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="Libraries\Udis86\libudis86.vcxproj">
+      <Project>{d5c34a21-7218-4a08-9578-1ebb35280a42}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
