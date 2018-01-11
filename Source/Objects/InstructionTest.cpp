@@ -51,14 +51,16 @@ void InstructionTest::hackableFunction()
 assemblyStart:
 	__asm
 	{
+		push eax;
+		xor eax, edi;
 		inc testVariable;
+		xor eax, ebx;
+		pop eax;
 	}
 assemblyEnd:
 
 	byte * bytes = (byte*)assemblyAddressStart;
 	int byteCount = (unsigned int)assemblyAddressEnd - (unsigned int)assemblyAddressStart;
-
-	// std::string instructions = Utils::hexAddressOf(assemblyAddressStart);
 
 	ud_t ud_obj;
 
@@ -68,6 +70,22 @@ assemblyEnd:
 	ud_set_syntax(&ud_obj, UD_SYN_INTEL);
 
 	std::string instructions = "";
+
+	while (ud_disassemble(&ud_obj))
+	{
+		instructions += ud_insn_asm(&ud_obj);
+		instructions += "\n";
+	}
+
+	auto result = Fasm::assemble(instructions, assemblyAddressStart);
+
+
+	ud_init(&ud_obj);
+	ud_set_input_buffer(&ud_obj, result->OutputData, result->OutputLength);
+	ud_set_mode(&ud_obj, 32);
+	ud_set_syntax(&ud_obj, UD_SYN_INTEL);
+
+	instructions = "";
 
 	while (ud_disassemble(&ud_obj))
 	{
