@@ -6,6 +6,7 @@
 #include "Entities/Player/Player.h"
 #include "Input/InputManager.h"
 #include "Utils/Utils.h"
+#include "Shaders/PostProcess.h"
 #include "GUI/HUD/HUD.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
@@ -28,10 +29,12 @@ protected:
 private:
 	void initializeListeners();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) override;
 	void update(float) override;
 	void onEnter() override;
 
 	Layer * background;
+	PostProcess* backgroundPostProcess;
 	Layer * backgroundLayer;
 	Layer * backgroundDecor;
 	Layer * backgroundParallax;
@@ -43,6 +46,8 @@ private:
 	Layer * foregroundLayer;
 	Layer * foregroundDecor;
 	Layer * environmentLayer;
+	Layer * gameLayers;
+	PostProcess* gamePostProcess;
 	HUD * hud;
 
 	static Size mapSize;

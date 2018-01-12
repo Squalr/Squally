@@ -196,6 +196,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Objects\ParallaxObject.cpp" />
     <ClCompile Include="Source\Objects\WarpGate.cpp" />
     <ClCompile Include="Source\Objects\WarpGateExactScanTutorial.cpp" />
+    <ClCompile Include="Source\Shaders\PostProcess.cpp" />
+    <ClCompile Include="Source\Shaders\ShaderUtils.cpp" />
     <ClCompile Include="Source\Utils\Utils.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\Game.cpp" />
@@ -252,6 +254,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Objects\ParallaxObject.h" />
     <ClInclude Include="Source\Objects\WarpGate.h" />
     <ClInclude Include="Source\Objects\WarpGateExactScanTutorial.h" />
+    <ClInclude Include="Source\Shaders\PostProcess.h" />
+    <ClInclude Include="Source\Shaders\ShaderUtils.h" />
     <ClInclude Include="Source\Utils\Utils.h" />
     <ClInclude Include="Source\Window.h" />
     <ClInclude Include="Source\Game.h" />
