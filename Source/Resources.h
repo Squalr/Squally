@@ -759,7 +759,9 @@ public:
 	static const string Particles_Sprites_Leaf3;
 	static const string Particles_Sprites_Leaf4;
 	static const string Shaders_Fragment_ColorTransition;
+	static const string Shaders_Fragment_CrossHatch;
 	static const string Shaders_Fragment_GrayBlur;
+	static const string Shaders_Vertex_CrossHatch;
 	static const string Shaders_Vertex_Generic;
 	static const string Shaders_Vertex_GrayBlur;
 	static const string Sounds_ButtonClick1;

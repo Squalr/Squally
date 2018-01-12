@@ -26,7 +26,7 @@ Level::Level(std::string levelResourceFilePath)
 	Level::mapSize = Size(map->getMapSize().width * map->getTileSize().width, map->getMapSize().height * map->getTileSize().height);
 
 	this->background = LevelParser::initializeBackground(map);
-	this->backgroundPostProcess = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_GrayBlur);
+	this->backgroundPostProcess = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_CrossHatch);
 	this->backgroundParallax = LevelParser::initializeParallaxObjects(map, "background-parallax");
 	this->backgroundLayer = LevelParser::initializeTileLayer(map, "background");
 	this->backgroundDecor = LevelParser::initializeDecor(map, "background-decor");
@@ -39,7 +39,7 @@ Level::Level(std::string levelResourceFilePath)
 	this->collisionLayer = LevelParser::initializeCollision(map);
 	this->environmentLayer = LevelParser::initializeEnvironment(map);
 	this->gameLayers = Layer::create();
-	this->gamePostProcess = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_GrayBlur);
+	this->gamePostProcess = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_CrossHatch);
 	this->hud = HUD::create();
 	this->addChild(InputManager::claimInstance());
 
