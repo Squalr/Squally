@@ -26,6 +26,7 @@ Level::Level(std::string levelResourceFilePath)
 	Level::mapSize = Size(map->getMapSize().width * map->getTileSize().width, map->getMapSize().height * map->getTileSize().height);
 
 	this->background = LevelParser::initializeBackground(map);
+	this->backgroundPostProcess = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_GrayBlur);
 	this->backgroundParallax = LevelParser::initializeParallaxObjects(map, "background-parallax");
 	this->backgroundLayer = LevelParser::initializeTileLayer(map, "background");
 	this->backgroundDecor = LevelParser::initializeDecor(map, "background-decor");
@@ -37,21 +38,26 @@ Level::Level(std::string levelResourceFilePath)
 	this->entityLayer = LevelParser::initializeEntities(map);
 	this->collisionLayer = LevelParser::initializeCollision(map);
 	this->environmentLayer = LevelParser::initializeEnvironment(map);
+	this->gameLayers = Layer::create();
+	this->gamePostProcess = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_GrayBlur);
 	this->hud = HUD::create();
-
 	this->addChild(InputManager::claimInstance());
+
 	this->addChild(this->background);
-	this->addChild(this->backgroundParallax);
-	this->addChild(this->backgroundLayer);
-	this->addChild(this->backgroundDecor);
-	this->addChild(this->midgroundLayer);
-	this->addChild(this->midgroundDecor);
-	this->addChild(this->objectLayer);
-	this->addChild(this->entityLayer);
-	this->addChild(this->foregroundLayer);
-	this->addChild(this->foregroundDecor);
-	this->addChild(this->collisionLayer);
-	this->addChild(this->environmentLayer);
+	this->addChild(this->backgroundPostProcess);
+	this->gameLayers->addChild(this->backgroundParallax);
+	this->gameLayers->addChild(this->backgroundLayer);
+	this->gameLayers->addChild(this->backgroundDecor);
+	this->gameLayers->addChild(this->midgroundLayer);
+	this->gameLayers->addChild(this->midgroundDecor);
+	this->gameLayers->addChild(this->objectLayer);
+	this->gameLayers->addChild(this->entityLayer);
+	this->gameLayers->addChild(this->foregroundLayer);
+	this->gameLayers->addChild(this->foregroundDecor);
+	this->gameLayers->addChild(this->collisionLayer);
+	this->gameLayers->addChild(this->environmentLayer);
+	this->addChild(this->gameLayers);
+	this->addChild(this->gamePostProcess);
 	this->addChild(this->hud);
 
 	this->scheduleUpdate();
@@ -104,17 +110,7 @@ void Level::update(float dt)
 	LevelCamera::cameraPosition.y = max(LevelCamera::cameraPosition.y, 0.0f);
 
 	// Scroll world
-	this->backgroundParallax->setPosition(-LevelCamera::cameraPosition);
-	this->backgroundLayer->setPosition(-LevelCamera::cameraPosition);
-	this->backgroundDecor->setPosition(-LevelCamera::cameraPosition);
-	this->midgroundLayer->setPosition(-LevelCamera::cameraPosition);
-	this->midgroundDecor->setPosition(-LevelCamera::cameraPosition);
-	this->objectLayer->setPosition(-LevelCamera::cameraPosition);
-	this->entityLayer->setPosition(-LevelCamera::cameraPosition);
-	this->collisionLayer->setPosition(-LevelCamera::cameraPosition);
-	this->foregroundLayer->setPosition(-LevelCamera::cameraPosition);
-	this->foregroundDecor->setPosition(-LevelCamera::cameraPosition);
-	this->environmentLayer->setPosition(-LevelCamera::cameraPosition);
+	this->gameLayers->setPosition(-LevelCamera::cameraPosition);
 }
 
 void Level::initializeListeners()
@@ -134,4 +130,15 @@ void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		Director::getInstance()->pushScene(PauseMenu::create());
 		break;
 	}
+}
+
+void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
+{
+	this->background->setVisible(true);
+	this->backgroundPostProcess->draw(this->background);
+	this->background->setVisible(false);
+
+	this->gameLayers->setVisible(true);
+	this->gamePostProcess->draw(this->gameLayers);
+	this->gameLayers->setVisible(false);
 }

@@ -70,6 +70,9 @@
     <Filter Include="Source\GUI\Menus\Dialog">
       <UniqueIdentifier>{8474dc60-2c22-48a3-9d10-0fa486fe9f7f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Shaders">
+      <UniqueIdentifier>{8367ac51-be2e-46e9-b371-6f6c31939b3c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -224,6 +227,12 @@
     </ClCompile>
     <ClCompile Include="Source\Objects\InstructionTest.cpp">
       <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Shaders\ShaderUtils.cpp">
+      <Filter>Source\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Shaders\PostProcess.cpp">
+      <Filter>Source\Shaders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -388,6 +397,12 @@
     </ClInclude>
     <ClInclude Include="Source\Objects\InstructionTest.h">
       <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Shaders\ShaderUtils.h">
+      <Filter>Source\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Shaders\PostProcess.h">
+      <Filter>Source\Shaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
