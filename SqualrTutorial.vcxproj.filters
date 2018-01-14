@@ -73,6 +73,9 @@
     <Filter Include="Source\Shaders">
       <UniqueIdentifier>{8367ac51-be2e-46e9-b371-6f6c31939b3c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Level\Backgrounds\MatrixRain">
+      <UniqueIdentifier>{c0c0cd09-b0fd-4c81-a0e2-b0f360621af6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -234,11 +237,14 @@
     <ClCompile Include="Source\Shaders\PostProcess.cpp">
       <Filter>Source\Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Level\Backgrounds\MatrixRain.cpp">
-      <Filter>Source\Level\Backgrounds</Filter>
+    <ClCompile Include="Source\Level\Backgrounds\MatrixRain\MatrixLetter.cpp">
+      <Filter>Source\Level\Backgrounds\MatrixRain</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Level\Backgrounds\MatrixStrand.cpp">
-      <Filter>Source\Level\Backgrounds</Filter>
+    <ClCompile Include="Source\Level\Backgrounds\MatrixRain\MatrixRain.cpp">
+      <Filter>Source\Level\Backgrounds\MatrixRain</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Level\Backgrounds\MatrixRain\MatrixStrand.cpp">
+      <Filter>Source\Level\Backgrounds\MatrixRain</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -410,11 +416,14 @@
     <ClInclude Include="Source\Shaders\PostProcess.h">
       <Filter>Source\Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Level\Backgrounds\MatrixRain.h">
-      <Filter>Source\Level\Backgrounds</Filter>
+    <ClInclude Include="Source\Level\Backgrounds\MatrixRain\MatrixStrand.h">
+      <Filter>Source\Level\Backgrounds\MatrixRain</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Level\Backgrounds\MatrixStrand.h">
-      <Filter>Source\Level\Backgrounds</Filter>
+    <ClInclude Include="Source\Level\Backgrounds\MatrixRain\MatrixLetter.h">
+      <Filter>Source\Level\Backgrounds\MatrixRain</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\Backgrounds\MatrixRain\MatrixRain.h">
+      <Filter>Source\Level\Backgrounds\MatrixRain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

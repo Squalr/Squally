@@ -7,7 +7,7 @@
 #include "Input/InputManager.h"
 #include "Utils/Utils.h"
 #include "Shaders/PostProcess.h"
-#include "Level/Backgrounds/MatrixRain.h"
+#include "Level/Backgrounds/MatrixRain/MatrixRain.h"
 #include "GUI/HUD/HUD.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
