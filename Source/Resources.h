@@ -11,10 +11,13 @@ class Resources
 {
 public:
 	static const string Dialog_DialogTutorialExactScanI;
-	static const string Fonts_arial;
+	static const string Fonts_Alien_li;
+	static const string Fonts_Arial;
 	static const string Fonts_Marker_Felt;
+	static const string Fonts_MatrixCode;
 	static const string Fonts_Montserrat_Medium;
 	static const string Fonts_Stormblade;
+	static const string Fonts_ZdykSagittarius;
 	static const string HUD_Egg;
 	static const string HUD_HealthBar;
 	static const string HUD_HealthBarFrame;
@@ -60,6 +63,11 @@ public:
 	static const string Ingame_Background_Jungle_Layer_5;
 	static const string Ingame_Background_Jungle_Layer_6;
 	static const string Ingame_Background_Jungle_Layer_7;
+	static const string Ingame_Background_MatrixRain_Cloud;
+	static const string Ingame_Background_MatrixRain_FontChar0;
+	static const string Ingame_Background_MatrixRain_GreenFontsAlpha;
+	static const string Ingame_Background_MatrixRain_Point;
+	static const string Ingame_Background_MatrixRain_WhiteFontsAlpha;
 	static const string Ingame_Background_Night_Clouds_01;
 	static const string Ingame_Background_Night_Mountains_01;
 	static const string Ingame_Background_Night_Mountains_02;
@@ -760,10 +768,17 @@ public:
 	static const string Particles_Sprites_Leaf4;
 	static const string Shaders_Fragment_ColorTransition;
 	static const string Shaders_Fragment_CrossHatch;
+	static const string Shaders_Fragment_Freichen;
 	static const string Shaders_Fragment_GrayBlur;
+	static const string Shaders_Fragment_Inverse;
+	static const string Shaders_Fragment_NightVision;
+	static const string Shaders_Fragment_PassThrough;
+	static const string Shaders_Fragment_Sobel;
 	static const string Shaders_Vertex_CrossHatch;
 	static const string Shaders_Vertex_Generic;
 	static const string Shaders_Vertex_GrayBlur;
+	static const string Shaders_Vertex_Inverse;
+	static const string Shaders_Vertex_PassThrough;
 	static const string Sounds_ButtonClick1;
 	static const string Sounds_ButtonClick2;
 	static const string Sounds_ClickBack1;

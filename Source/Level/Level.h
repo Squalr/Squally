@@ -7,6 +7,7 @@
 #include "Input/InputManager.h"
 #include "Utils/Utils.h"
 #include "Shaders/PostProcess.h"
+#include "Level/Backgrounds/MatrixRain.h"
 #include "GUI/HUD/HUD.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
@@ -34,6 +35,7 @@ private:
 	void onEnter() override;
 
 	Layer * background;
+	MatrixRain * hackerModeBackground;
 	PostProcess* backgroundPostProcess;
 	Layer * backgroundLayer;
 	Layer * backgroundDecor;
@@ -47,8 +49,10 @@ private:
 	Layer * foregroundDecor;
 	Layer * environmentLayer;
 	Layer * gameLayers;
-	PostProcess* gamePostProcess;
+	PostProcess* gamePostProcessCrossHatch;
+	PostProcess* gamePostProcessNightVision;
 	HUD * hud;
 
 	static Size mapSize;
+	static bool hackerMode;
 };

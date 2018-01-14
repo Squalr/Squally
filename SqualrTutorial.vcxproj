@@ -186,6 +186,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\Menus\Tutorial\TutorialScreen.cpp" />
     <ClCompile Include="Source\Input\InputManager.cpp" />
     <ClCompile Include="Source\Level\Backgrounds\JungleBackground.cpp" />
+    <ClCompile Include="Source\Level\Backgrounds\MatrixStrand.cpp" />
+    <ClCompile Include="Source\Level\Backgrounds\MatrixRain.cpp" />
     <ClCompile Include="Source\Level\Backgrounds\MountainBackground.cpp" />
     <ClCompile Include="Source\Level\Environments\JungleEnvironment.cpp" />
     <ClCompile Include="Source\Level\LevelCamera.cpp" />
@@ -243,6 +245,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\Menus\Tutorial\TutorialScreen.h" />
     <ClInclude Include="Source\Input\InputManager.h" />
     <ClInclude Include="Source\Level\Backgrounds\JungleBackground.h" />
+    <ClInclude Include="Source\Level\Backgrounds\MatrixStrand.h" />
+    <ClInclude Include="Source\Level\Backgrounds\MatrixRain.h" />
     <ClInclude Include="Source\Level\Backgrounds\MountainBackground.h" />
     <ClInclude Include="Source\Level\Environments\JungleEnvironment.h" />
     <ClInclude Include="Source\Level\LevelCamera.h" />
