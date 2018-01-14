@@ -234,6 +234,12 @@
     <ClCompile Include="Source\Shaders\PostProcess.cpp">
       <Filter>Source\Shaders</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Level\Backgrounds\MatrixRain.cpp">
+      <Filter>Source\Level\Backgrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Level\Backgrounds\MatrixStrand.cpp">
+      <Filter>Source\Level\Backgrounds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -403,6 +409,12 @@
     </ClInclude>
     <ClInclude Include="Source\Shaders\PostProcess.h">
       <Filter>Source\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\Backgrounds\MatrixRain.h">
+      <Filter>Source\Level\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\Backgrounds\MatrixStrand.h">
+      <Filter>Source\Level\Backgrounds</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,11 +2,11 @@ varying vec4 v_fragmentColor;
 varying vec2 v_texCoord;
 
 float granularity = 64.0;
-float stitching_size = 2.0;
-float lum1 = 1.0;
-float lum2 = 0.7; // 7
-float lum3 = 0.5; // 5
-float lum4 = 0.3; // 3
+float stitching_size = 3.0;
+float lum1 = 2.0;
+float lum2 = 0.7;
+float lum3 = 0.5;
+float lum4 = 0.3;
 
 void main() 
 {
@@ -35,5 +35,5 @@ void main()
 		tc = c;
 	}
   
-  gl_FragColor = tc;
+	gl_FragColor = tc;
 }
