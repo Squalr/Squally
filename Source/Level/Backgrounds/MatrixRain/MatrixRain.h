@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
-#include "Level/Backgrounds/MatrixStrand.h"
+#include "Level/Backgrounds/MatrixRain/MatrixStrand.h"
 
 using namespace cocos2d;
 
