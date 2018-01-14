@@ -1,6 +1,7 @@
 #include "Level.h"
 
 Size Level::mapSize = Size::ZERO;
+bool Level::hackerMode = false;
 
 Level* Level::create(std::string levelResourceFilePath)
 {
@@ -26,7 +27,8 @@ Level::Level(std::string levelResourceFilePath)
 	Level::mapSize = Size(map->getMapSize().width * map->getTileSize().width, map->getMapSize().height * map->getTileSize().height);
 
 	this->background = LevelParser::initializeBackground(map);
-	this->backgroundPostProcess = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_CrossHatch);
+	this->hackerModeBackground = MatrixRain::create();
+	this->backgroundPostProcess = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
 	this->backgroundParallax = LevelParser::initializeParallaxObjects(map, "background-parallax");
 	this->backgroundLayer = LevelParser::initializeTileLayer(map, "background");
 	this->backgroundDecor = LevelParser::initializeDecor(map, "background-decor");
@@ -39,11 +41,13 @@ Level::Level(std::string levelResourceFilePath)
 	this->collisionLayer = LevelParser::initializeCollision(map);
 	this->environmentLayer = LevelParser::initializeEnvironment(map);
 	this->gameLayers = Layer::create();
-	this->gamePostProcess = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_CrossHatch);
+	this->gamePostProcessCrossHatch = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_CrossHatch);
+	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
 	this->hud = HUD::create();
 	this->addChild(InputManager::claimInstance());
 
 	this->addChild(this->background);
+	this->addChild(this->hackerModeBackground);
 	this->addChild(this->backgroundPostProcess);
 	this->gameLayers->addChild(this->backgroundParallax);
 	this->gameLayers->addChild(this->backgroundLayer);
@@ -57,7 +61,8 @@ Level::Level(std::string levelResourceFilePath)
 	this->gameLayers->addChild(this->collisionLayer);
 	this->gameLayers->addChild(this->environmentLayer);
 	this->addChild(this->gameLayers);
-	this->addChild(this->gamePostProcess);
+	this->addChild(this->gamePostProcessCrossHatch);
+	this->addChild(this->gamePostProcessNightVision);
 	this->addChild(this->hud);
 
 	this->scheduleUpdate();
@@ -129,16 +134,45 @@ void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		Director::getInstance()->pushScene(PauseMenu::create());
 		break;
+	case EventKeyboard::KeyCode::KEY_TAB:
+		Level::hackerMode = !Level::hackerMode;
+		break;
 	}
 }
 
 void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 {
-	this->background->setVisible(true);
-	this->backgroundPostProcess->draw(this->background);
-	this->background->setVisible(false);
+	// Manual drawing (to apply post processing effects)
+	if (!Level::hackerMode)
+	{
+		// Set visibility of desired layers
+		this->background->setVisible(true);
+		this->hackerModeBackground->setVisible(false);
+		this->backgroundPostProcess->setVisible(false);
+		this->gameLayers->setVisible(true);
+		this->gamePostProcessCrossHatch->setVisible(false);
+		this->gamePostProcessNightVision->setVisible(false);
 
-	this->gameLayers->setVisible(true);
-	this->gamePostProcess->draw(this->gameLayers);
-	this->gameLayers->setVisible(false);
+		// Draw level normally
+		this->background->draw();
+		this->gameLayers->draw();
+	}
+	else
+	{
+		// Set visibility of desired layers
+		this->background->setVisible(false);
+		this->hackerModeBackground->setVisible(true);
+		this->backgroundPostProcess->setVisible(true);
+		this->gameLayers->setVisible(true);
+		this->gamePostProcessCrossHatch->setVisible(true);
+		this->gamePostProcessNightVision->setVisible(true);
+
+		// Draw hackermode level
+		this->hackerModeBackground->draw();
+		this->gamePostProcessCrossHatch->draw(this->gameLayers);
+		this->gamePostProcessNightVision->draw(this->gamePostProcessCrossHatch);
+
+		// Prevent double render
+		this->gameLayers->setVisible(false);
+	}
 }

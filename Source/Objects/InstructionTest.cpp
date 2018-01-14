@@ -51,11 +51,7 @@ void InstructionTest::hackableFunction()
 assemblyStart:
 	__asm
 	{
-		push eax;
-		xor eax, edi;
 		inc testVariable;
-		xor eax, ebx;
-		pop eax;
 	}
 assemblyEnd:
 
