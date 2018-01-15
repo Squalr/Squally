@@ -12,6 +12,7 @@ class Resources
 public:
 	static const string Dialog_DialogTutorialExactScanI;
 	static const string Fonts_Alien_li;
+	static const string Fonts_AlienText;
 	static const string Fonts_Arial;
 	static const string Fonts_Marker_Felt;
 	static const string Fonts_Montserrat_Medium;

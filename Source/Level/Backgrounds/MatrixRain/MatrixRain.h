@@ -14,7 +14,9 @@ private:
 	MatrixRain();
 	~MatrixRain();
 
+	void setPositions();
+
 	std::vector<MatrixStrand*> * strands;
 
-	const int strandCount = 32;
+	static const int strandCount;
 };

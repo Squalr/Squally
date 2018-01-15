@@ -7,6 +7,7 @@
 
 const string Resources::Dialog_DialogTutorialExactScanI = "Dialog\\DialogTutorialExactScanI.json";
 const string Resources::Fonts_Alien_li = "Fonts\\Alien-li.ttf";
+const string Resources::Fonts_AlienText = "Fonts\\AlienText.png";
 const string Resources::Fonts_Arial = "Fonts\\Arial.ttf";
 const string Resources::Fonts_Marker_Felt = "Fonts\\Marker Felt.ttf";
 const string Resources::Fonts_Montserrat_Medium = "Fonts\\Montserrat-Medium.ttf";
