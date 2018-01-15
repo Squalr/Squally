@@ -36,7 +36,7 @@ private:
 
 	Layer * background;
 	MatrixRain * hackerModeBackground;
-	PostProcess* backgroundPostProcess;
+	PostProcess* hackerModePostProcessGlow;
 	Layer * backgroundLayer;
 	Layer * backgroundDecor;
 	Layer * backgroundParallax;

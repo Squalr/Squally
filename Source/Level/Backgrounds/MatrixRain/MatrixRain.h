@@ -5,7 +5,7 @@
 
 using namespace cocos2d;
 
-class MatrixRain : public Node
+class MatrixRain : public Layer
 {
 public:
 	static MatrixRain* create();

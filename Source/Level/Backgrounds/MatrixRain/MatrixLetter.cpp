@@ -2,12 +2,12 @@
 
 const Color3B MatrixLetter::letterColor = Color3B(25, 242, 51);
 const Color3B MatrixLetter::spawnColor = Color3B::WHITE;
-
+const Color4B MatrixLetter::glowColor = Color4B::RED;// Color4B(25, 242, 51, 0xFF);
 
 const float MatrixLetter::spawnChangeRate = 0.1f;
 const float MatrixLetter::spawnTime = 0.5f;
 const float MatrixLetter::fadeOutPercentage = 25.0f;
-const float MatrixLetter::letterChangePercentage = 5.0f;
+const float MatrixLetter::letterChangePercentage = 25.0f;
 
 MatrixLetter* MatrixLetter::create()
 {
@@ -20,12 +20,10 @@ MatrixLetter* MatrixLetter::create()
 
 MatrixLetter::MatrixLetter()
 {
-	this->letter = Label::create(this->generateLetter(), Resources::Fonts_Alien_li, 24);
+	this->initWithTTF(this->generateLetter(), Resources::Fonts_Alien_li, 32);
 
-	this->letter->setTextColor(Color4B(0xFF, 0xFF, 0xFF, 0xFF));
-	this->letter->setOpacity(0);
-
-	this->addChild(this->letter);
+	this->setTextColor(Color4B(0xFF, 0xFF, 0xFF, 0xFF));
+	this->setOpacity(0);
 }
 
 MatrixLetter::~MatrixLetter()
@@ -34,12 +32,12 @@ MatrixLetter::~MatrixLetter()
 
 void MatrixLetter::spawn()
 {
-	this->letter->stopAllActions();
+	this->stopAllActions();
 
-	this->letter->setColor(MatrixLetter::spawnColor);
+	this->setColor(MatrixLetter::spawnColor);
 
 	// Restore color action
-	this->letter->runAction(TintTo::create(MatrixLetter::spawnTime, MatrixLetter::letterColor));
+	this->runAction(TintTo::create(MatrixLetter::spawnTime, MatrixLetter::letterColor));
 
 	FiniteTimeAction* fadeIn = FadeIn::create(0.1f);
 
@@ -48,16 +46,16 @@ void MatrixLetter::spawn()
 	{
 		FiniteTimeAction* fadeOut = FadeOut::create(RandomHelper::random_real(1.0f, 5.0f));
 
-		this->letter->runAction(Sequence::create(fadeIn, fadeOut, nullptr));
+		this->runAction(Sequence::create(fadeIn, fadeOut, nullptr));
 	}
 	else
 	{
 		// Remaining letters simply fade in normally
-		this->letter->runAction(fadeIn);
+		this->runAction(fadeIn);
 	}
 
 	// While the letter is fading in, constantly change the letter
-	Label* letterLabel = this->letter;
+	Label* letterLabel = this;
 	auto newLetterFunc = CC_CALLBACK_0(MatrixLetter::generateLetter, this);
 	int repeatCount = (int)(MatrixLetter::spawnTime / MatrixLetter::spawnChangeRate) / 2;
 
@@ -72,29 +70,28 @@ void MatrixLetter::spawn()
 	{
 		float changeRate = RandomHelper::random_real(0.1f, 1.0f);
 
-		return;
-		this->letter->runAction(Sequence::create(letterChangeSpawn, RepeatForever::create(Sequence::create(DelayTime::create(changeRate), CallFunc::create([letterLabel, newLetterFunc]()
+		this->runAction(RepeatForever::create(Sequence::create(DelayTime::create(changeRate), CallFunc::create([letterLabel, newLetterFunc]()
 		{
 			letterLabel->setString(newLetterFunc());
 
-		}), nullptr)), nullptr));
+		}), nullptr)));
 	}
 	else
 	{
 		// Run the normal letter change effect
-		this->letter->runAction(letterChangeSpawn);
+		this->runAction(letterChangeSpawn);
 	}
 }
 
 void MatrixLetter::despawn(float despawnTime)
 {
-	this->letter->runAction(FadeOut::create(despawnTime));
+	this->runAction(FadeOut::create(despawnTime));
 }
 
 std::string MatrixLetter::generateLetter()
 {
-	int min = (int)'a';
-	int max = (int)'z';
+	int min = (int)' ';
+	int max = (int)'~';
 
 	char letter = (char)RandomHelper::random_int(min, max);
 

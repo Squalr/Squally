@@ -7,18 +7,10 @@ void main ()
   
   c += texture2D(CC_Texture0, v_texCoord + 0.001);
   c += texture2D(CC_Texture0, v_texCoord + 0.003);
-  c += texture2D(CC_Texture0, v_texCoord + 0.005);
-  c += texture2D(CC_Texture0, v_texCoord + 0.007);
-  c += texture2D(CC_Texture0, v_texCoord + 0.009);
-  c += texture2D(CC_Texture0, v_texCoord + 0.011);
   
   c += texture2D(CC_Texture0, v_texCoord - 0.001);
   c += texture2D(CC_Texture0, v_texCoord - 0.003);
-  c += texture2D(CC_Texture0, v_texCoord - 0.005);
-  c += texture2D(CC_Texture0, v_texCoord - 0.007);
-  c += texture2D(CC_Texture0, v_texCoord - 0.009);
-  c += texture2D(CC_Texture0, v_texCoord - 0.011);
 
-  c = c / 9.5;
+  c = c / 2.5;
   gl_FragColor = c;
 }	
