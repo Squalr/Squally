@@ -1,5 +1,9 @@
 #include "MatrixStrand.h"
 
+const float MatrixStrand::movementSpeed = 96.0f;
+const int MatrixStrand::minLetterCount = 32;
+const int MatrixStrand::maxLetterCount = 48;
+
 MatrixStrand* MatrixStrand::create()
 {
 	MatrixStrand* matrixStrand = new MatrixStrand();
@@ -18,18 +22,35 @@ MatrixStrand::MatrixStrand()
 	{
 		MatrixLetter* letter = MatrixLetter::create();
 
-		letter->setPositionY((float)index * -16.0f);
+		letter->setPositionY((float)index * -24.0f);
 
 		letters->push_back(letter);
 		this->addChild(letter);
 	}
 
+	this->setCascadeOpacityEnabled(true);
+
 	this->beginStrand();
+	this->scheduleUpdate();
 }
 
 MatrixStrand::~MatrixStrand()
 {
 	delete(this->letters);
+}
+
+void MatrixStrand::update(float dt)
+{
+	this->setPositionZ(this->getPositionZ() + dt * movementSpeed);
+
+	if (this->getPositionZ() < 0.0f)
+	{
+		this->setOpacity(255 * (1.0f - (-this->getPositionZ() / 512.0f)));
+	}
+	else
+	{
+		this->setOpacity(255);
+	}
 }
 
 void MatrixStrand::nextStrandAction()
@@ -76,7 +97,7 @@ void MatrixStrand::endStrand()
 		this->stopAction(this->updateAction);
 	}
 
-	float despawnTime = RandomHelper::random_real(5.0f, 8.0f);
+	float despawnTime = RandomHelper::random_real(2.0f, 6.0f);
 
 	for (int index = 0; index < this->letterCount; index++)
 	{
@@ -98,16 +119,18 @@ void MatrixStrand::randomizePosition()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	const float overFlowX = 32.0f;
-	const float overFlowY = 128.0f;
+	const float overFlowY = 312.0f;
+	const float maxZ = -512.0f;
 
-	Vec2 position;
+	Vec3 position;
 	position.x = RandomHelper::random_real(-overFlowX, visibleSize.width + overFlowX);
-	position.y = RandomHelper::random_real(visibleSize.height * 3 / 4, visibleSize.height + overFlowY);
+	position.y = RandomHelper::random_real(visibleSize.height * (0.75f), visibleSize.height + overFlowY);
+	position.z = RandomHelper::random_real(maxZ, maxZ);
 
-	this->setPosition(position);
+	this->setPosition3D(position);
 }
 
 float MatrixStrand::getUpdateSpeed()
 {
-	return RandomHelper::random_real(0.05f, 0.25f);
+	return RandomHelper::random_real(0.01f, 0.20f);
 }

@@ -14,7 +14,6 @@ public:
 	static const string Fonts_Alien_li;
 	static const string Fonts_Arial;
 	static const string Fonts_Marker_Felt;
-	static const string Fonts_MatrixCode;
 	static const string Fonts_Montserrat_Medium;
 	static const string Fonts_Stormblade;
 	static const string Fonts_ZdykSagittarius;
@@ -769,6 +768,7 @@ public:
 	static const string Shaders_Fragment_ColorTransition;
 	static const string Shaders_Fragment_CrossHatch;
 	static const string Shaders_Fragment_Freichen;
+	static const string Shaders_Fragment_Glow;
 	static const string Shaders_Fragment_GrayBlur;
 	static const string Shaders_Fragment_Inverse;
 	static const string Shaders_Fragment_NightVision;
