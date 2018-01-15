@@ -30,7 +30,12 @@ private:
 	int currentLetterIndex;
 	int letterCount;
 
-	static const float movementSpeed;
 	static const int minLetterCount;
 	static const int maxLetterCount;
+	static const float movementSpeed;
+	static const float strandScale;
+	static const float minSpawnSpeed;
+	static const float maxSpawnSpeed;
+	static const float minSpawnDistance;
+	static const float maxSpawnDistance;
 };

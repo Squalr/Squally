@@ -4,7 +4,7 @@
 
 using namespace cocos2d;
 
-class MatrixLetter : public Label
+class MatrixLetter : public Sprite
 {
 public:
 	static MatrixLetter* create();
@@ -12,11 +12,13 @@ public:
 	void spawn();
 	void despawn(float despawnTime);
 
+	static const int letterSize;
+
 private:
 	MatrixLetter();
 	~MatrixLetter();
 
-	std::string generateLetter();
+	void randomizeLetter();
 
 	static const Color3B letterColor;
 	static const Color3B spawnColor;
