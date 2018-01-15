@@ -4,6 +4,8 @@ const Color3B MatrixLetter::letterColor = Color3B(25, 242, 51);
 const Color3B MatrixLetter::spawnColor = Color3B::WHITE;
 const Color4B MatrixLetter::glowColor = Color4B::RED;// Color4B(25, 242, 51, 0xFF);
 
+const int MatrixLetter::letterSize = 48;
+
 const float MatrixLetter::spawnChangeRate = 0.1f;
 const float MatrixLetter::spawnTime = 0.5f;
 const float MatrixLetter::fadeOutPercentage = 25.0f;
@@ -20,9 +22,10 @@ MatrixLetter* MatrixLetter::create()
 
 MatrixLetter::MatrixLetter()
 {
-	this->initWithTTF(this->generateLetter(), Resources::Fonts_Alien_li, 32);
+	this->initWithFile(Resources::Fonts_AlienText);
 
-	this->setTextColor(Color4B(0xFF, 0xFF, 0xFF, 0xFF));
+	this->randomizeLetter();
+
 	this->setOpacity(0);
 }
 
@@ -55,13 +58,13 @@ void MatrixLetter::spawn()
 	}
 
 	// While the letter is fading in, constantly change the letter
-	Label* letterLabel = this;
-	auto newLetterFunc = CC_CALLBACK_0(MatrixLetter::generateLetter, this);
+
+	auto randomizeLetterFunc = CC_CALLBACK_0(MatrixLetter::randomizeLetter, this);
 	int repeatCount = (int)(MatrixLetter::spawnTime / MatrixLetter::spawnChangeRate) / 2;
 
-	FiniteTimeAction* letterChangeSpawn = Repeat::create(Sequence::create(CallFunc::create([letterLabel, newLetterFunc]()
+	FiniteTimeAction* letterChangeSpawn = Repeat::create(Sequence::create(CallFunc::create([randomizeLetterFunc]()
 	{
-		letterLabel->setString(newLetterFunc());
+		randomizeLetterFunc();
 
 	}), DelayTime::create(MatrixLetter::spawnChangeRate), nullptr), repeatCount);
 
@@ -70,9 +73,9 @@ void MatrixLetter::spawn()
 	{
 		float changeRate = RandomHelper::random_real(0.1f, 1.0f);
 
-		this->runAction(RepeatForever::create(Sequence::create(DelayTime::create(changeRate), CallFunc::create([letterLabel, newLetterFunc]()
+		this->runAction(RepeatForever::create(Sequence::create(DelayTime::create(changeRate), CallFunc::create([randomizeLetterFunc]()
 		{
-			letterLabel->setString(newLetterFunc());
+			randomizeLetterFunc();
 
 		}), nullptr)));
 	}
@@ -88,14 +91,12 @@ void MatrixLetter::despawn(float despawnTime)
 	this->runAction(FadeOut::create(despawnTime));
 }
 
-std::string MatrixLetter::generateLetter()
+void MatrixLetter::randomizeLetter()
 {
-	int min = (int)' ';
-	int max = (int)'~';
+	Size spriteSheetSize = this->getTexture()->getContentSize();
 
-	char letter = (char)RandomHelper::random_int(min, max);
+	int x = RandomHelper::random_int(0, (int)(spriteSheetSize.width / MatrixLetter::letterSize) - 1) *  MatrixLetter::letterSize;
+	int y = RandomHelper::random_int(0, (int)(spriteSheetSize.height / MatrixLetter::letterSize) - 1) *  MatrixLetter::letterSize;
 
-	std::string letterString(&letter, 1);
-
-	return letterString;
+	this->setTextureRect(Rect(x, y, MatrixLetter::letterSize, MatrixLetter::letterSize));
 }

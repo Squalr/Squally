@@ -161,6 +161,7 @@ void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 		this->midgroundDecor->setVisible(true);
 		this->foregroundLayer->setVisible(true);
 		this->foregroundDecor->setVisible(true);
+		this->environmentLayer->setVisible(true);
 	}
 	else
 	{
@@ -180,6 +181,7 @@ void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 		this->midgroundDecor->setVisible(false);
 		this->foregroundLayer->setVisible(false);
 		this->foregroundDecor->setVisible(false);
+		this->environmentLayer->setVisible(false);
 
 		// Draw hackermode level
 		this->hackerModeBackground->draw();
