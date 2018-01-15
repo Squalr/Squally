@@ -14,9 +14,12 @@ private:
 	MatrixStrand();
 	~MatrixStrand();
 
+	void update(float) override;
+
 	void nextStrandAction();
 	void beginStrand();
 	void endStrand();
+
 	void randomizePosition();
 	float getUpdateSpeed();
 	void setLetterCount();
@@ -26,6 +29,8 @@ private:
 	Action* updateAction;
 	int currentLetterIndex;
 	int letterCount;
-	const int minLetterCount = 28;
-	const int maxLetterCount = 40;
+
+	static const float movementSpeed;
+	static const int minLetterCount;
+	static const int maxLetterCount;
 };

@@ -28,7 +28,7 @@ Level::Level(std::string levelResourceFilePath)
 
 	this->background = LevelParser::initializeBackground(map);
 	this->hackerModeBackground = MatrixRain::create();
-	this->backgroundPostProcess = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
+	this->hackerModePostProcessGlow = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_GrayBlur);
 	this->backgroundParallax = LevelParser::initializeParallaxObjects(map, "background-parallax");
 	this->backgroundLayer = LevelParser::initializeTileLayer(map, "background");
 	this->backgroundDecor = LevelParser::initializeDecor(map, "background-decor");
@@ -48,7 +48,7 @@ Level::Level(std::string levelResourceFilePath)
 
 	this->addChild(this->background);
 	this->addChild(this->hackerModeBackground);
-	this->addChild(this->backgroundPostProcess);
+	this->addChild(this->hackerModePostProcessGlow);
 	this->gameLayers->addChild(this->backgroundParallax);
 	this->gameLayers->addChild(this->backgroundLayer);
 	this->gameLayers->addChild(this->backgroundDecor);
@@ -148,27 +148,42 @@ void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 		// Set visibility of desired layers
 		this->background->setVisible(true);
 		this->hackerModeBackground->setVisible(false);
-		this->backgroundPostProcess->setVisible(false);
+		this->hackerModePostProcessGlow->setVisible(false);
 		this->gameLayers->setVisible(true);
 		this->gamePostProcessCrossHatch->setVisible(false);
 		this->gamePostProcessNightVision->setVisible(false);
 
-		// Draw level normally
-		this->background->draw();
-		this->gameLayers->draw();
+		// Show parts of the game layer
+		this->backgroundParallax->setVisible(true);
+		this->backgroundLayer->setVisible(true);
+		this->backgroundDecor->setVisible(true);
+		this->midgroundLayer->setVisible(true);
+		this->midgroundDecor->setVisible(true);
+		this->foregroundLayer->setVisible(true);
+		this->foregroundDecor->setVisible(true);
 	}
 	else
 	{
 		// Set visibility of desired layers
 		this->background->setVisible(false);
 		this->hackerModeBackground->setVisible(true);
-		this->backgroundPostProcess->setVisible(true);
+		this->hackerModePostProcessGlow->setVisible(true);
 		this->gameLayers->setVisible(true);
 		this->gamePostProcessCrossHatch->setVisible(true);
 		this->gamePostProcessNightVision->setVisible(true);
 
+		// Hide parts of the game layer
+		this->backgroundParallax->setVisible(false);
+		this->backgroundLayer->setVisible(false);
+		this->backgroundDecor->setVisible(false);
+		this->midgroundLayer->setVisible(false);
+		this->midgroundDecor->setVisible(false);
+		this->foregroundLayer->setVisible(false);
+		this->foregroundDecor->setVisible(false);
+
 		// Draw hackermode level
 		this->hackerModeBackground->draw();
+
 		this->gamePostProcessCrossHatch->draw(this->gameLayers);
 		this->gamePostProcessNightVision->draw(this->gamePostProcessCrossHatch);
 
