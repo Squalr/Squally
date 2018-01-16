@@ -7,3 +7,8 @@ IngameObject::IngameObject()
 IngameObject::~IngameObject()
 {
 }
+
+HackableObject* IngameObject::getHackableObject()
+{
+	return nullptr;
+}
