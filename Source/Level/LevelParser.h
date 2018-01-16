@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Utils/Utils.h"
+#include "Objects/Hackables/HackableObject.h"
 #include "Level/Backgrounds/JungleBackground.h"
 #include "Level/Backgrounds/MountainBackground.h"
 #include "Level/Environments/JungleEnvironment.h"
@@ -19,8 +20,8 @@ public:
 
 	static Layer* initializeBackground(experimental::TMXTiledMap* map);
 	static Layer* initializeEnvironment(experimental::TMXTiledMap* map);
-	static Layer* initializeEntities(experimental::TMXTiledMap* map);
-	static Layer* initializeObjects(experimental::TMXTiledMap* map);
+	static Layer* initializeEntities(experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback);
+	static Layer* initializeObjects(experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback);
 	static Layer* initializeCollision(experimental::TMXTiledMap* map);
 
 private:

@@ -1,5 +1,10 @@
 #include "MenuSprite.h"
 
+MenuSprite* MenuSprite::create(std::string spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource)
+{
+	return MenuSprite::create(Sprite::create(spriteNormal), spriteSelectedResource, spriteClickedResource);
+}
+
 MenuSprite* MenuSprite::create(Sprite* spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource)
 {
 	MenuSprite* menuSprite = new MenuSprite(spriteNormal, spriteSelectedResource, spriteClickedResource);

@@ -610,6 +610,9 @@ public:
 	static const string Menus_Buttons_DeleteButton;
 	static const string Menus_Buttons_DeleteButtonClick;
 	static const string Menus_Buttons_DeleteButtonHover;
+	static const string Menus_Buttons_HackButton;
+	static const string Menus_Buttons_HackButtonClick;
+	static const string Menus_Buttons_HackButtonHover;
 	static const string Menus_Buttons_HomeButton;
 	static const string Menus_Buttons_HomeButtonClick;
 	static const string Menus_Buttons_HomeButtonHover;

@@ -72,6 +72,11 @@ WarpGate::~WarpGate()
 {
 }
 
+HackableObject* WarpGate::getHackableObject()
+{
+	return HackableObject::create(this, Vec2(0, -128.0f));
+}
+
 void WarpGate::open()
 {
 	if (!this->isOpen)

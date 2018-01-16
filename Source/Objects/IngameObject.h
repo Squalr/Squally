@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Level/LevelCamera.h"
+#include "Objects/Hackables/HackableObject.h"
 
 using namespace cocos2d;
 
@@ -11,5 +12,5 @@ public:
 	IngameObject();
 	~IngameObject();
 
-private:
+	virtual HackableObject* getHackableObject();
 };

@@ -1,12 +1,13 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "Objects/IngameObject.h"
 #include "Objects/Collision/CategoryGroup.h"
 #include "Level/LevelCamera.h"
 
 using namespace cocos2d;
 
-class CollisionObject : public Node
+class CollisionObject : public IngameObject
 {
 public:
 	CollisionObject();
