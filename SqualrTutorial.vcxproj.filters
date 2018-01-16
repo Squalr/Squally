@@ -19,9 +19,6 @@
     <Filter Include="Source\Level">
       <UniqueIdentifier>{4df6f466-fb7d-4ee4-b7d3-a451d4a61f2f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Collision">
-      <UniqueIdentifier>{906f6fe6-3ec0-4675-95e4-7713b38b0f19}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Config">
       <UniqueIdentifier>{ad777ac4-678a-40fd-823b-e0b3188ba415}</UniqueIdentifier>
     </Filter>
@@ -75,6 +72,21 @@
     </Filter>
     <Filter Include="Source\Level\Backgrounds\MatrixRain">
       <UniqueIdentifier>{c0c0cd09-b0fd-4c81-a0e2-b0f360621af6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\GUI\Menus\HackerMode">
+      <UniqueIdentifier>{b7fe6d4b-2ded-42d6-afd6-82356a8ce133}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Objects\HackableObject">
+      <UniqueIdentifier>{af157143-ff33-4a8a-888f-56b9fd04564e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Objects\Collision">
+      <UniqueIdentifier>{94e5f613-0f3a-49b6-a7f0-ccafed96546a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Objects\Interactable">
+      <UniqueIdentifier>{0852c3e4-fc82-4678-9a59-dbb701f51a8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Objects\Projectiles">
+      <UniqueIdentifier>{9d7c6cdb-e262-4910-8cc2-e20e7dc00d4e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -171,9 +183,6 @@
     <ClCompile Include="Source\Entities\Player\Hover.cpp">
       <Filter>Source\Entities\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Collision\CollisionObject.cpp">
-      <Filter>Source\Collision</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Entities\Enemies\Shroom.cpp">
       <Filter>Source\Entities\Enemies</Filter>
     </ClCompile>
@@ -182,9 +191,6 @@
     </ClCompile>
     <ClCompile Include="Source\Entities\Enemies\Snail.cpp">
       <Filter>Source\Entities\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\EggProjectile.cpp">
-      <Filter>Source\Objects</Filter>
     </ClCompile>
     <ClCompile Include="Source\Entities\Enemies\Bat.cpp">
       <Filter>Source\Entities\Enemies</Filter>
@@ -201,23 +207,11 @@
     <ClCompile Include="Source\Entities\Enemies\Poly.cpp">
       <Filter>Source\Entities\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Objects\WarpGate.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\WarpGateExactScanTutorial.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GUI\Components\OutlineLabel.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
     <ClCompile Include="Source\Level\Environments\JungleEnvironment.cpp">
       <Filter>Source\Level\Environments</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\ParallaxObject.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\Monitor.cpp">
-      <Filter>Source\Objects</Filter>
     </ClCompile>
     <ClCompile Include="Source\GUI\Components\MenuLabel.cpp">
       <Filter>Source\GUI\Components</Filter>
@@ -227,9 +221,6 @@
     </ClCompile>
     <ClCompile Include="Source\GUI\Menus\Dialog\DialogMenu.cpp">
       <Filter>Source\GUI\Menus\Dialog</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\InstructionTest.cpp">
-      <Filter>Source\Objects</Filter>
     </ClCompile>
     <ClCompile Include="Source\Shaders\ShaderUtils.cpp">
       <Filter>Source\Shaders</Filter>
@@ -245,6 +236,36 @@
     </ClCompile>
     <ClCompile Include="Source\Level\Backgrounds\MatrixRain\MatrixStrand.cpp">
       <Filter>Source\Level\Backgrounds\MatrixRain</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\HackerMode\HackerModeWheel.cpp">
+      <Filter>Source\GUI\Menus\HackerMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\HackableObject\HackableObject.cpp">
+      <Filter>Source\Objects\HackableObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Collision\CollisionObject.cpp">
+      <Filter>Source\Objects\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Interactable\Monitor.cpp">
+      <Filter>Source\Objects\Interactable</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Interactable\WarpGate.cpp">
+      <Filter>Source\Objects\Interactable</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Interactable\WarpGateExactScanTutorial.cpp">
+      <Filter>Source\Objects\Interactable</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\IngameObject.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\ParallaxObject.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Projectiles\EggProjectile.cpp">
+      <Filter>Source\Objects\Projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\HackableObject\InstructionTest.cpp">
+      <Filter>Source\Objects\HackableObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -344,12 +365,6 @@
     <ClInclude Include="Source\Entities\Player\Hover.h">
       <Filter>Source\Entities\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Collision\CollisionObject.h">
-      <Filter>Source\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Collision\CategoryGroup.h">
-      <Filter>Source\Collision</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Entities\Enemies\Shroom.h">
       <Filter>Source\Entities\Enemies</Filter>
     </ClInclude>
@@ -358,9 +373,6 @@
     </ClInclude>
     <ClInclude Include="Source\Entities\Enemies\Snail.h">
       <Filter>Source\Entities\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\EggProjectile.h">
-      <Filter>Source\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Source\Entities\Enemies\Bat.h">
       <Filter>Source\Entities\Enemies</Filter>
@@ -377,26 +389,11 @@
     <ClInclude Include="Source\Entities\Enemies\Poly.h">
       <Filter>Source\Entities\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Objects\WarpGate.h">
-      <Filter>Source\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\WarpGateExactScanTutorial.h">
-      <Filter>Source\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Source\GUI\Components\OutlineLabel.h">
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\Level\Environments\JungleEnvironment.h">
       <Filter>Source\Level\Environments</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\ParallaxObject.h">
-      <Filter>Source\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\Monitor.h">
-      <Filter>Source\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\Objects.h">
-      <Filter>Source\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Source\Entities\Entities.h">
       <Filter>Source\Entities</Filter>
@@ -406,9 +403,6 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\Menus\Dialog\DialogMenu.h">
       <Filter>Source\GUI\Menus\Dialog</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\InstructionTest.h">
-      <Filter>Source\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Source\Shaders\ShaderUtils.h">
       <Filter>Source\Shaders</Filter>
@@ -424,6 +418,42 @@
     </ClInclude>
     <ClInclude Include="Source\Level\Backgrounds\MatrixRain\MatrixRain.h">
       <Filter>Source\Level\Backgrounds\MatrixRain</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\HackerMode\HackerModeWheel.h">
+      <Filter>Source\GUI\Menus\HackerMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\HackableObject\HackableObject.h">
+      <Filter>Source\Objects\HackableObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Collision\CollisionObject.h">
+      <Filter>Source\Objects\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Collision\CategoryGroup.h">
+      <Filter>Source\Objects\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Interactable\Monitor.h">
+      <Filter>Source\Objects\Interactable</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Interactable\WarpGate.h">
+      <Filter>Source\Objects\Interactable</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Interactable\WarpGateExactScanTutorial.h">
+      <Filter>Source\Objects\Interactable</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\ParallaxObject.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\IngameObject.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Objects.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Projectiles\EggProjectile.h">
+      <Filter>Source\Objects\Projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\HackableObject\InstructionTest.h">
+      <Filter>Source\Objects\HackableObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

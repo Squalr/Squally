@@ -1,6 +1,6 @@
 #pragma once
 #include "Objects/ParallaxObject.h"
-#include "Objects/InstructionTest.h"
-#include "Objects/Monitor.h"
-#include "Objects/WarpGate.h"
-#include "Objects/WarpGateExactScanTutorial.h"
+#include "Objects/HackableObject/InstructionTest.h"
+#include "Objects/Interactable/Monitor.h"
+#include "Objects/Interactable/WarpGate.h"
+#include "Objects/Interactable/WarpGateExactScanTutorial.h"

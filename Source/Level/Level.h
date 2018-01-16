@@ -8,6 +8,7 @@
 #include "Utils/Utils.h"
 #include "Shaders/PostProcess.h"
 #include "Level/Backgrounds/MatrixRain/MatrixRain.h"
+#include "Objects/HackableObject/HackableObject.h"
 #include "GUI/HUD/HUD.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
@@ -25,7 +26,6 @@ public:
 protected:
 	Level(std::string levelResourceFilePath);
 	~Level();
-
 
 private:
 	void initializeListeners();
@@ -52,6 +52,7 @@ private:
 	Layer * gameLayers;
 	PostProcess* gamePostProcessCrossHatch;
 	PostProcess* gamePostProcessNightVision;
+	Layer * hackableObjectsHud;
 	HUD * hud;
 
 	static Size mapSize;
