@@ -86,9 +86,10 @@ void MatrixLetter::spawn()
 	}
 }
 
-void MatrixLetter::despawn(float despawnTime)
+void MatrixLetter::despawn()
 {
-	this->runAction(FadeOut::create(despawnTime));
+	this->stopAllActions();
+	this->setOpacity(0);
 }
 
 void MatrixLetter::randomizeLetter()

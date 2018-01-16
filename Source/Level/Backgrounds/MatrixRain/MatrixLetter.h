@@ -10,7 +10,7 @@ public:
 	static MatrixLetter* create();
 
 	void spawn();
-	void despawn(float despawnTime);
+	void despawn();
 
 	static const int letterSize;
 
