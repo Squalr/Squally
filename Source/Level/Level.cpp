@@ -30,7 +30,7 @@ Level::Level(std::string levelResourceFilePath)
 	this->hackerModeBackground = Sprite::create(Resources::Ingame_Background_MatrixRain_HackerModeBackground);
 	this->hackerModeRain = MatrixRain::create();
 	this->hackerModePostProcessGlow = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_GrayBlur);
-	this->hackableObjectsHud = Layer::create();
+	this->hud = HUD::create();
 	this->backgroundParallax = LevelParser::initializeParallaxObjects(map, "background-parallax");
 	this->backgroundLayer = LevelParser::initializeTileLayer(map, "background");
 	this->backgroundDecor = LevelParser::initializeDecor(map, "background-decor");
@@ -38,14 +38,13 @@ Level::Level(std::string levelResourceFilePath)
 	this->midgroundDecor = LevelParser::initializeDecor(map, "midground-decor");
 	this->foregroundLayer = LevelParser::initializeTileLayer(map, "foreground");
 	this->foregroundDecor = LevelParser::initializeDecor(map, "foreground-decor");
-	this->objectLayer = LevelParser::initializeObjects(map, CC_CALLBACK_1(Level::registerHackableObject, this));
-	this->entityLayer = LevelParser::initializeEntities(map, CC_CALLBACK_1(Level::registerHackableObject, this));
+	this->objectLayer = LevelParser::initializeObjects(map, CC_CALLBACK_1(HUD::registerHackableObject, this->hud));
+	this->entityLayer = LevelParser::initializeEntities(map, CC_CALLBACK_1(HUD::registerHackableObject, this->hud));
 	this->collisionLayer = LevelParser::initializeCollision(map);
 	this->environmentLayer = LevelParser::initializeEnvironment(map);
 	this->gameLayers = Layer::create();
 	this->gamePostProcessCrossHatch = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_Inverse);
 	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
-	this->hud = HUD::create();
 	this->addChild(InputManager::claimInstance());
 
 	this->addChild(this->background);
@@ -66,7 +65,6 @@ Level::Level(std::string levelResourceFilePath)
 	this->addChild(this->gameLayers);
 	this->addChild(this->gamePostProcessCrossHatch);
 	this->addChild(this->gamePostProcessNightVision);
-	this->addChild(this->hackableObjectsHud);
 	this->addChild(this->hud);
 
 	this->scheduleUpdate();
@@ -77,16 +75,6 @@ Level::Level(std::string levelResourceFilePath)
 
 Level::~Level()
 {
-}
-
-void Level::registerHackableObject(HackableObject* hackableObject)
-{
-	if (hackableObject == nullptr)
-	{
-		return;
-	}
-
-	this->hackableObjectsHud->addChild(hackableObject);
 }
 
 void Level::onEnter()
@@ -139,6 +127,7 @@ void Level::update(float dt)
 void Level::initializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+
 	listener->onKeyPressed = CC_CALLBACK_2(Level::onKeyPressed, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
@@ -169,7 +158,7 @@ void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 		this->hackerModeRain->setVisible(false);
 		this->hackerModePostProcessGlow->setVisible(false);
 		this->gameLayers->setVisible(true);
-		this->hackableObjectsHud->setVisible(false);
+		this->hud->hackableObjectsHud->setVisible(false);
 		this->gamePostProcessCrossHatch->setVisible(false);
 		this->gamePostProcessNightVision->setVisible(false);
 
@@ -191,7 +180,7 @@ void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 		this->hackerModeRain->setVisible(true);
 		this->hackerModePostProcessGlow->setVisible(true);
 		this->gameLayers->setVisible(true);
-		this->hackableObjectsHud->setVisible(true);
+		this->hud->hackableObjectsHud->setVisible(true);
 		this->gamePostProcessCrossHatch->setVisible(true);
 		this->gamePostProcessNightVision->setVisible(true);
 

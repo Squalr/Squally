@@ -18,6 +18,7 @@ private:
 	MatrixLetter();
 	~MatrixLetter();
 
+	virtual void pause(void) override;
 	void randomizeLetter();
 
 	static const Color3B letterColor;

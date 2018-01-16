@@ -237,9 +237,6 @@
     <ClCompile Include="Source\Level\Backgrounds\MatrixRain\MatrixStrand.cpp">
       <Filter>Source\Level\Backgrounds\MatrixRain</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GUI\Menus\HackerMode\HackerModeWheel.cpp">
-      <Filter>Source\GUI\Menus\HackerMode</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Objects\Collision\CollisionObject.cpp">
       <Filter>Source\Objects\Collision</Filter>
     </ClCompile>
@@ -266,6 +263,9 @@
     </ClCompile>
     <ClCompile Include="Source\Objects\Interactables\WarpGateExactScanTutorial.cpp">
       <Filter>Source\Objects\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\HackerMode\DataCodeMenu.cpp">
+      <Filter>Source\GUI\Menus\HackerMode</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -419,9 +419,6 @@
     <ClInclude Include="Source\Level\Backgrounds\MatrixRain\MatrixRain.h">
       <Filter>Source\Level\Backgrounds\MatrixRain</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GUI\Menus\HackerMode\HackerModeWheel.h">
-      <Filter>Source\GUI\Menus\HackerMode</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Objects\Collision\CollisionObject.h">
       <Filter>Source\Objects\Collision</Filter>
     </ClInclude>
@@ -454,6 +451,9 @@
     </ClInclude>
     <ClInclude Include="Source\Objects\Interactables\WarpGateExactScanTutorial.h">
       <Filter>Source\Objects\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\HackerMode\DataCodeMenu.h">
+      <Filter>Source\GUI\Menus\HackerMode</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
