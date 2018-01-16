@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Entities/Entity.h"
-#include "Collision/CategoryGroup.h"
+#include "Objects/Collision/CategoryGroup.h"
 
 using namespace cocos2d;
 
