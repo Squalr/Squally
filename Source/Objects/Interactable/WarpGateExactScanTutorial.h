@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
-#include "Collision/CollisionObject.h"
-#include "Objects/WarpGate.h"
+#include "Objects/Collision/CollisionObject.h"
+#include "Objects/Interactable/WarpGate.h"
 #include "GUI/Components/OutlineLabel.h"
 #include "Utils/Utils.h"
 
