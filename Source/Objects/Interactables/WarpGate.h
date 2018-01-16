@@ -17,6 +17,7 @@ protected:
 	~WarpGate();
 
 private:
+	HackableObject * getHackableObject() override;
 
 	Sprite * gateOpen;
 	Sprite * gateClosed;

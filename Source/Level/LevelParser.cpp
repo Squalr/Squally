@@ -20,7 +20,7 @@ Layer* LevelParser::initializeEnvironment(experimental::TMXTiledMap* map)
 	return layer;
 }
 
-Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map)
+Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback)
 {
 	Layer* layer = Layer::create();
 	ValueVector objects = map->getObjectGroup("objects")->getObjects();
@@ -36,7 +36,7 @@ Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map)
 		ValueMap object = objects[index].asValueMap();
 		string type = object.at("type").asString();
 
-		Node* newObject = nullptr;
+		IngameObject* newObject = nullptr;
 
 		if (type == "warp-gate")
 		{
@@ -61,6 +61,8 @@ Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map)
 			throw exception("invalid object");
 		}
 
+		registerHackableCallback(newObject->getHackableObject());
+
 		newObject->setPosition(Vec2(object.at("x").asFloat() + object.at("width").asFloat() / 2, object.at("y").asFloat() + object.at("height").asFloat() / 2));
 		layer->addChild(newObject);
 	}
@@ -68,7 +70,7 @@ Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map)
 	return layer;
 }
 
-Layer* LevelParser::initializeEntities(experimental::TMXTiledMap* map)
+Layer* LevelParser::initializeEntities(experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback)
 {
 	Layer* layer = Layer::create();
 	ValueVector entities = map->getObjectGroup("entities")->getObjects();
@@ -84,7 +86,7 @@ Layer* LevelParser::initializeEntities(experimental::TMXTiledMap* map)
 		ValueMap entity = entities[index].asValueMap();
 		string type = entity.at("type").asString();
 
-		Node* newEntity = nullptr;
+		IngameObject* newEntity = nullptr;
 
 		if (type == "spawn")
 		{
@@ -110,6 +112,8 @@ Layer* LevelParser::initializeEntities(experimental::TMXTiledMap* map)
 		{
 			throw exception("invalid entity");
 		}
+
+		registerHackableCallback(newEntity->getHackableObject());
 
 		newEntity->setPosition(Vec2(entity.at("x").asFloat() + entity.at("width").asFloat() / 2, entity.at("y").asFloat() + entity.at("height").asFloat() / 2));
 		layer->addChild(newEntity);

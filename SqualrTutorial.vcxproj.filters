@@ -76,17 +76,17 @@
     <Filter Include="Source\GUI\Menus\HackerMode">
       <UniqueIdentifier>{b7fe6d4b-2ded-42d6-afd6-82356a8ce133}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Objects\HackableObject">
-      <UniqueIdentifier>{af157143-ff33-4a8a-888f-56b9fd04564e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Objects\Collision">
       <UniqueIdentifier>{94e5f613-0f3a-49b6-a7f0-ccafed96546a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Objects\Interactable">
-      <UniqueIdentifier>{0852c3e4-fc82-4678-9a59-dbb701f51a8f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Objects\Projectiles">
       <UniqueIdentifier>{9d7c6cdb-e262-4910-8cc2-e20e7dc00d4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Objects\Interactables">
+      <UniqueIdentifier>{0852c3e4-fc82-4678-9a59-dbb701f51a8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Objects\Hackables">
+      <UniqueIdentifier>{af157143-ff33-4a8a-888f-56b9fd04564e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -240,20 +240,8 @@
     <ClCompile Include="Source\GUI\Menus\HackerMode\HackerModeWheel.cpp">
       <Filter>Source\GUI\Menus\HackerMode</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Objects\HackableObject\HackableObject.cpp">
-      <Filter>Source\Objects\HackableObject</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Objects\Collision\CollisionObject.cpp">
       <Filter>Source\Objects\Collision</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\Interactable\Monitor.cpp">
-      <Filter>Source\Objects\Interactable</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\Interactable\WarpGate.cpp">
-      <Filter>Source\Objects\Interactable</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\Interactable\WarpGateExactScanTutorial.cpp">
-      <Filter>Source\Objects\Interactable</Filter>
     </ClCompile>
     <ClCompile Include="Source\Objects\IngameObject.cpp">
       <Filter>Source\Objects</Filter>
@@ -264,8 +252,20 @@
     <ClCompile Include="Source\Objects\Projectiles\EggProjectile.cpp">
       <Filter>Source\Objects\Projectiles</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Objects\HackableObject\InstructionTest.cpp">
-      <Filter>Source\Objects\HackableObject</Filter>
+    <ClCompile Include="Source\Objects\Interactables\WarpGate.cpp">
+      <Filter>Source\Objects\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Interactables\Monitor.cpp">
+      <Filter>Source\Objects\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Hackables\HackableObject.cpp">
+      <Filter>Source\Objects\Hackables</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Hackables\InstructionTest.cpp">
+      <Filter>Source\Objects\Hackables</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Interactables\WarpGateExactScanTutorial.cpp">
+      <Filter>Source\Objects\Interactables</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -422,23 +422,11 @@
     <ClInclude Include="Source\GUI\Menus\HackerMode\HackerModeWheel.h">
       <Filter>Source\GUI\Menus\HackerMode</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Objects\HackableObject\HackableObject.h">
-      <Filter>Source\Objects\HackableObject</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Objects\Collision\CollisionObject.h">
       <Filter>Source\Objects\Collision</Filter>
     </ClInclude>
     <ClInclude Include="Source\Objects\Collision\CategoryGroup.h">
       <Filter>Source\Objects\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\Interactable\Monitor.h">
-      <Filter>Source\Objects\Interactable</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\Interactable\WarpGate.h">
-      <Filter>Source\Objects\Interactable</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\Interactable\WarpGateExactScanTutorial.h">
-      <Filter>Source\Objects\Interactable</Filter>
     </ClInclude>
     <ClInclude Include="Source\Objects\ParallaxObject.h">
       <Filter>Source\Objects</Filter>
@@ -452,8 +440,20 @@
     <ClInclude Include="Source\Objects\Projectiles\EggProjectile.h">
       <Filter>Source\Objects\Projectiles</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Objects\HackableObject\InstructionTest.h">
-      <Filter>Source\Objects\HackableObject</Filter>
+    <ClInclude Include="Source\Objects\Interactables\WarpGate.h">
+      <Filter>Source\Objects\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Interactables\Monitor.h">
+      <Filter>Source\Objects\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Hackables\HackableObject.h">
+      <Filter>Source\Objects\Hackables</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Hackables\InstructionTest.h">
+      <Filter>Source\Objects\Hackables</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Interactables\WarpGateExactScanTutorial.h">
+      <Filter>Source\Objects\Interactables</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

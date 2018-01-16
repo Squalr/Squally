@@ -11,6 +11,7 @@ using namespace cocos2d;
 class MenuSprite : public Node
 {
 public:
+	static MenuSprite * create(std::string spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource);
 	static MenuSprite * create(Sprite* spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource);
 
 	void setClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick);
