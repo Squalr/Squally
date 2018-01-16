@@ -27,7 +27,8 @@ Level::Level(std::string levelResourceFilePath)
 	Level::mapSize = Size(map->getMapSize().width * map->getTileSize().width, map->getMapSize().height * map->getTileSize().height);
 
 	this->background = LevelParser::initializeBackground(map);
-	this->hackerModeBackground = MatrixRain::create();
+	this->hackerModeBackground = Sprite::create(Resources::Ingame_Background_MatrixRain_HackerModeBackground);
+	this->hackerModeRain = MatrixRain::create();
 	this->hackerModePostProcessGlow = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_GrayBlur);
 	this->backgroundParallax = LevelParser::initializeParallaxObjects(map, "background-parallax");
 	this->backgroundLayer = LevelParser::initializeTileLayer(map, "background");
@@ -41,13 +42,14 @@ Level::Level(std::string levelResourceFilePath)
 	this->collisionLayer = LevelParser::initializeCollision(map);
 	this->environmentLayer = LevelParser::initializeEnvironment(map);
 	this->gameLayers = Layer::create();
-	this->gamePostProcessCrossHatch = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_CrossHatch);
+	this->gamePostProcessCrossHatch = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_Inverse);
 	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
 	this->hud = HUD::create();
 	this->addChild(InputManager::claimInstance());
 
 	this->addChild(this->background);
 	this->addChild(this->hackerModeBackground);
+	this->addChild(this->hackerModeRain);
 	this->addChild(this->hackerModePostProcessGlow);
 	this->gameLayers->addChild(this->backgroundParallax);
 	this->gameLayers->addChild(this->backgroundLayer);
@@ -77,7 +79,11 @@ Level::~Level()
 
 void Level::onEnter()
 {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
 	FadeScene::onEnter();
+
+	this->hackerModeBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 
 	this->addChild(Mouse::claimInstance());
 }
@@ -148,6 +154,7 @@ void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 		// Set visibility of desired layers
 		this->background->setVisible(true);
 		this->hackerModeBackground->setVisible(false);
+		this->hackerModeRain->setVisible(false);
 		this->hackerModePostProcessGlow->setVisible(false);
 		this->gameLayers->setVisible(true);
 		this->gamePostProcessCrossHatch->setVisible(false);
@@ -168,6 +175,7 @@ void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 		// Set visibility of desired layers
 		this->background->setVisible(false);
 		this->hackerModeBackground->setVisible(true);
+		this->hackerModeRain->setVisible(true);
 		this->hackerModePostProcessGlow->setVisible(true);
 		this->gameLayers->setVisible(true);
 		this->gamePostProcessCrossHatch->setVisible(true);
@@ -184,7 +192,7 @@ void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 		this->environmentLayer->setVisible(false);
 
 		// Draw hackermode level
-		this->hackerModeBackground->draw();
+		this->hackerModeRain->draw();
 
 		this->gamePostProcessCrossHatch->draw(this->gameLayers);
 		this->gamePostProcessNightVision->draw(this->gamePostProcessCrossHatch);

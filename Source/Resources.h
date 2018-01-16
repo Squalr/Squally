@@ -14,6 +14,7 @@ public:
 	static const string Fonts_Alien_li;
 	static const string Fonts_AlienText;
 	static const string Fonts_Arial;
+	static const string Fonts_BooleanText;
 	static const string Fonts_Marker_Felt;
 	static const string Fonts_Montserrat_Medium;
 	static const string Fonts_Stormblade;
@@ -66,6 +67,7 @@ public:
 	static const string Ingame_Background_MatrixRain_Cloud;
 	static const string Ingame_Background_MatrixRain_FontChar0;
 	static const string Ingame_Background_MatrixRain_GreenFontsAlpha;
+	static const string Ingame_Background_MatrixRain_HackerModeBackground;
 	static const string Ingame_Background_MatrixRain_Point;
 	static const string Ingame_Background_MatrixRain_WhiteFontsAlpha;
 	static const string Ingame_Background_Night_Clouds_01;

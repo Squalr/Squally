@@ -35,7 +35,8 @@ private:
 	void onEnter() override;
 
 	Layer * background;
-	MatrixRain * hackerModeBackground;
+	Sprite * hackerModeBackground;
+	MatrixRain * hackerModeRain;
 	PostProcess* hackerModePostProcessGlow;
 	Layer * backgroundLayer;
 	Layer * backgroundDecor;

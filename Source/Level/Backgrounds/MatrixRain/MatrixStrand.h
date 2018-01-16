@@ -8,10 +8,10 @@ using namespace cocos2d;
 class MatrixStrand : public Node
 {
 public:
-	static MatrixStrand* create();
+	static MatrixStrand* create(int strandIndex);
 
 private:
-	MatrixStrand();
+	MatrixStrand(int strandIndex);
 	~MatrixStrand();
 
 	void update(float) override;
@@ -19,14 +19,15 @@ private:
 	void nextStrandAction();
 	void beginStrand();
 	void endStrand();
+	void killStrand();
 
 	void randomizePosition();
-	float getUpdateSpeed();
 	void setLetterCount();
 
 	std::vector<MatrixLetter*>* letters;
 
 	Action* updateAction;
+	float spawnSpeed;
 	int currentLetterIndex;
 	int letterCount;
 
@@ -36,6 +37,9 @@ private:
 	static const float strandScale;
 	static const float minSpawnSpeed;
 	static const float maxSpawnSpeed;
+	static const float overFlowX;
+	static const float overFlowY;
+	static const float underFlowY;
 	static const float minSpawnDistance;
 	static const float maxSpawnDistance;
 };
