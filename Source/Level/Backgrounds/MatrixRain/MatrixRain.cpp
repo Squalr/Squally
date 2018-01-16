@@ -1,6 +1,6 @@
 #include "MatrixRain.h"
 
-const int MatrixRain::strandCount = 64;
+const int MatrixRain::strandCount = 32;
 
 MatrixRain* MatrixRain::create()
 {
@@ -18,7 +18,7 @@ MatrixRain::MatrixRain()
 	// Initialize strands
 	for (int index = 0; index < MatrixRain::strandCount; index++)
 	{
-		MatrixStrand* strand = MatrixStrand::create();
+		MatrixStrand* strand = MatrixStrand::create(index);
 
 		this->strands->push_back(strand);
 		this->addChild(strand);
