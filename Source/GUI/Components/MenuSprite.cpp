@@ -99,7 +99,7 @@ void MenuSprite::onMouseSpriteMove(EventCustom* event)
 {
 	Mouse::MouseEventArgs* args = static_cast<Mouse::MouseEventArgs*>(event->getUserData());
 
-	if (this->isVisible())
+	if (Utils::isVisible(this))
 	{
 		// Mouse drag callback
 		if (args->innerEvent->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
@@ -153,7 +153,7 @@ void MenuSprite::onMouseSpriteMove(EventCustom* event)
 
 void MenuSprite::onMouseDown(EventMouse* event)
 {
-	if (this->mouseDragEvent != nullptr && this->isVisible())
+	if (this->mouseDragEvent != nullptr && Utils::isVisible(this))
 	{
 		if (Utils::intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{
@@ -167,7 +167,7 @@ void MenuSprite::onMouseDown(EventMouse* event)
 
 void MenuSprite::onMouseUp(EventMouse* event)
 {
-	if (this->mouseDragEvent != nullptr && this->isVisible())
+	if (this->mouseDragEvent != nullptr && Utils::isVisible(this))
 	{
 		if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
 		{
@@ -175,7 +175,7 @@ void MenuSprite::onMouseUp(EventMouse* event)
 		}
 	}
 
-	if (this->mouseClickEvent != nullptr && this->isVisible())
+	if (this->mouseClickEvent != nullptr && Utils::isVisible(this))
 	{
 		if (Utils::intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{

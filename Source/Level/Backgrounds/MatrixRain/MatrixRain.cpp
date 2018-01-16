@@ -32,6 +32,11 @@ MatrixRain::~MatrixRain()
 	delete(this->strands);
 }
 
+void MatrixRain::pause()
+{
+	// Ignore pause
+}
+
 void MatrixRain::setPositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();

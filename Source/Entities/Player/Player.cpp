@@ -37,6 +37,11 @@ Player::~Player()
 {
 }
 
+HackableObject* Player::getHackableObject()
+{
+	return HackableObject::create(this, Vec2(0, 72.0f));
+}
+
 void Player::update(float dt)
 {
 	Entity::update(dt);

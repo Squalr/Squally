@@ -603,6 +603,9 @@ public:
 	static const string Menus_Buttons_ChatButtonHover;
 	static const string Menus_Buttons_CloseButton;
 	static const string Menus_Buttons_CloseButtonClick;
+	static const string Menus_Buttons_CloseButtonGreen;
+	static const string Menus_Buttons_CloseButtonGreenClick;
+	static const string Menus_Buttons_CloseButtonGreenHover;
 	static const string Menus_Buttons_CloseButtonHover;
 	static const string Menus_Buttons_CrownButton;
 	static const string Menus_Buttons_CrownButtonClick;
@@ -646,6 +649,7 @@ public:
 	static const string Menus_DialogMenu_JungleBackground;
 	static const string Menus_DialogMenu_PlayerPortrait;
 	static const string Menus_DialogMenu_ShipBackground;
+	static const string Menus_HackerModeMenu_DataCodeMenu;
 	static const string Menus_IntroMenu_SpeechBubble;
 	static const string Menus_IntroMenu_Scene1_Scene1BG;
 	static const string Menus_IntroMenu_Scene1_Scene1_NPC;

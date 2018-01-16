@@ -1,5 +1,39 @@
 #include "Utils.h"
 
+// A better pause function that pauses recursively
+void Utils::pause(Node *node)
+{
+	// If the node is a scene node, pause physics
+	if (dynamic_cast<const Scene*>(node) != nullptr)
+	{
+		Director::getInstance()->getRunningScene()->getPhysicsWorld()->setSpeed(0.0f);
+	}
+
+	node->pauseSchedulerAndActions();
+
+	for (const auto &child : node->getChildren())
+	{
+		Utils::pause(child);
+	}
+}
+
+// A better resume function that resumes recursively
+void Utils::resume(Node *node)
+{
+	// If the node is a scene node, resume physics
+	if (dynamic_cast<const Scene*>(node) != nullptr)
+	{
+		Director::getInstance()->getRunningScene()->getPhysicsWorld()->setSpeed(1.0f);
+	}
+
+	node->resumeSchedulerAndActions();
+
+	for (const auto &child : node->getChildren())
+	{
+		Utils::resume(child);
+	}
+}
+
 std::string Utils::hexAddressOf(void* address)
 {
 	std::stringstream stream;
@@ -49,6 +83,21 @@ Rect Utils::getSceneBounds(Node* node)
 	resultRect.setRect(resultCoords.x, resultCoords.y, resultSize.x, resultSize.y);
 
 	return resultRect;
+}
+
+bool Utils::isVisible(Node* node)
+{
+	while (node != nullptr)
+	{
+		if (!node->isVisible())
+		{
+			return false;
+		}
+
+		node = node->getParent();
+	};
+
+	return true;
 }
 
 bool Utils::intersects(Node* node, Vec2 mousePos)

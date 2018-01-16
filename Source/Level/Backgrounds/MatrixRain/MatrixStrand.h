@@ -15,6 +15,7 @@ private:
 	~MatrixStrand();
 
 	void update(float) override;
+	virtual void pause(void) override;
 
 	void nextStrandAction();
 	void beginStrand();

@@ -53,6 +53,11 @@ MatrixStrand::~MatrixStrand()
 	delete(this->letters);
 }
 
+void MatrixStrand::pause()
+{
+	// Ignore pause
+}
+
 void MatrixStrand::update(float dt)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
