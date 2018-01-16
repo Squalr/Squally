@@ -173,7 +173,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\HUD\HUD.cpp" />
     <ClCompile Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\Dialog\DialogMenu.cpp" />
-    <ClCompile Include="Source\GUI\Menus\HackerMode\HackerModeWheel.cpp" />
+    <ClCompile Include="Source\GUI\Menus\HackerMode\DataCodeMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\Options\OptionsMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\Pause\PauseMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\MenuBackground.cpp" />
@@ -235,7 +235,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\HUD\HUD.h" />
     <ClInclude Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.h" />
     <ClInclude Include="Source\GUI\Menus\Dialog\DialogMenu.h" />
-    <ClInclude Include="Source\GUI\Menus\HackerMode\HackerModeWheel.h" />
+    <ClInclude Include="Source\GUI\Menus\HackerMode\DataCodeMenu.h" />
     <ClInclude Include="Source\GUI\Menus\Options\OptionsMenu.h" />
     <ClInclude Include="Source\GUI\Menus\Pause\PauseMenu.h" />
     <ClInclude Include="Source\GUI\Menus\MenuBackground.h" />

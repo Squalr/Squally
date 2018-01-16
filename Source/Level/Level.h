@@ -8,7 +8,6 @@
 #include "Utils/Utils.h"
 #include "Shaders/PostProcess.h"
 #include "Level/Backgrounds/MatrixRain/MatrixRain.h"
-#include "Objects/Hackables/HackableObject.h"
 #include "GUI/HUD/HUD.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
@@ -28,7 +27,6 @@ protected:
 	~Level();
 
 private:
-	void registerHackableObject(HackableObject* hackableObject);
 	void initializeListeners();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) override;
@@ -53,7 +51,6 @@ private:
 	Layer * gameLayers;
 	PostProcess* gamePostProcessCrossHatch;
 	PostProcess* gamePostProcessNightVision;
-	Layer * hackableObjectsHud;
 	HUD * hud;
 
 	static Size mapSize;

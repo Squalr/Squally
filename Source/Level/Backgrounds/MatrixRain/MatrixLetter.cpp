@@ -33,6 +33,11 @@ MatrixLetter::~MatrixLetter()
 {
 }
 
+void MatrixLetter::pause()
+{
+	// Ignore pause
+}
+
 void MatrixLetter::spawn()
 {
 	this->stopAllActions();
