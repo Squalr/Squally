@@ -75,7 +75,7 @@ void HUD::onHackableEdit(EventCustom* eventArgs)
 
 	this->addChild(Mouse::claimInstance());
 
-	this->dataCodeMenu->activate();
+	this->dataCodeMenu->activate(args);
 }
 
 void HUD::onDialogOpen(EventCustom* event)

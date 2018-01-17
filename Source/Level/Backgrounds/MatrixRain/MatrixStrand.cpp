@@ -41,7 +41,7 @@ MatrixStrand::MatrixStrand(int strandIndex)
 
 	// Delayed start to prevent all strands from being created at the same time
 	MatrixStrand* matrixStrand = this;
-	this->runAction(Sequence::create(DelayTime::create(strandIndex * RandomHelper::random_real(0.2f, 0.25f)), CallFunc::create([matrixStrand]()
+	this->runAction(Sequence::create(DelayTime::create((float)strandIndex * 0.15f), CallFunc::create([matrixStrand]()
 	{
 		matrixStrand->beginStrand();
 		matrixStrand->scheduleUpdate();

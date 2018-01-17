@@ -49,7 +49,7 @@ private:
 	Layer * foregroundDecor;
 	Layer * environmentLayer;
 	Layer * gameLayers;
-	PostProcess* gamePostProcessCrossHatch;
+	PostProcess* gamePostProcessInversion;
 	PostProcess* gamePostProcessNightVision;
 	HUD * hud;
 

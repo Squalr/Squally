@@ -25,6 +25,7 @@ public:
 
 	virtual bool init(const std::string& vertexShaderFile, const std::string& fragmentShaderFile);
 	void draw(cocos2d::Layer* layer);
+	void draw(cocos2d::Node* node);
 	static PostProcess* create(const std::string& vertexShaderFile, const std::string& fragmentShaderFile);
 
 private:

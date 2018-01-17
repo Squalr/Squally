@@ -74,7 +74,7 @@ WarpGate::~WarpGate()
 
 HackableObject* WarpGate::getHackableObject()
 {
-	return HackableObject::create(this, Vec2(0, -128.0f));
+	return HackableObject::create(this, Resources::Ingame_Objects_WarpGateOpen, Vec2(0, -128.0f));
 }
 
 void WarpGate::open()
