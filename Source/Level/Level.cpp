@@ -43,7 +43,7 @@ Level::Level(std::string levelResourceFilePath)
 	this->collisionLayer = LevelParser::initializeCollision(map);
 	this->environmentLayer = LevelParser::initializeEnvironment(map);
 	this->gameLayers = Layer::create();
-	this->gamePostProcessCrossHatch = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_Inverse);
+	this->gamePostProcessInversion = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_Inverse);
 	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
 	this->addChild(InputManager::claimInstance());
 
@@ -63,7 +63,7 @@ Level::Level(std::string levelResourceFilePath)
 	this->gameLayers->addChild(this->collisionLayer);
 	this->gameLayers->addChild(this->environmentLayer);
 	this->addChild(this->gameLayers);
-	this->addChild(this->gamePostProcessCrossHatch);
+	this->addChild(this->gamePostProcessInversion);
 	this->addChild(this->gamePostProcessNightVision);
 	this->addChild(this->hud);
 
@@ -159,7 +159,7 @@ void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 		this->hackerModePostProcessGlow->setVisible(false);
 		this->gameLayers->setVisible(true);
 		this->hud->hackableObjectsHud->setVisible(false);
-		this->gamePostProcessCrossHatch->setVisible(false);
+		this->gamePostProcessInversion->setVisible(false);
 		this->gamePostProcessNightVision->setVisible(false);
 
 		// Show parts of the game layer
@@ -181,7 +181,7 @@ void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 		this->hackerModePostProcessGlow->setVisible(true);
 		this->gameLayers->setVisible(true);
 		this->hud->hackableObjectsHud->setVisible(true);
-		this->gamePostProcessCrossHatch->setVisible(true);
+		this->gamePostProcessInversion->setVisible(true);
 		this->gamePostProcessNightVision->setVisible(true);
 
 		// Hide parts of the game layer
@@ -197,8 +197,8 @@ void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 		// Draw hackermode level
 		this->hackerModeRain->draw();
 
-		this->gamePostProcessCrossHatch->draw(this->gameLayers);
-		this->gamePostProcessNightVision->draw(this->gamePostProcessCrossHatch);
+		this->gamePostProcessInversion->draw(this->gameLayers);
+		this->gamePostProcessNightVision->draw(this->gamePostProcessInversion);
 
 		// Prevent double render
 		this->gameLayers->setVisible(false);
