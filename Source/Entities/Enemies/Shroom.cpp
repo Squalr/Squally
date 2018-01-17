@@ -37,6 +37,11 @@ Shroom::~Shroom()
 {
 }
 
+HackableObject* Shroom::getHackableObject()
+{
+	return HackableObject::create(this, Resources::Ingame_Sprites_Shroom_ShroomLarge, Vec2(0, 64.0f));
+}
+
 void Shroom::update(float dt)
 {
 	Entity::update(dt);

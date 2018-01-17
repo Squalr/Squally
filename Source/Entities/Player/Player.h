@@ -29,7 +29,6 @@ private:
 	~Player();
 
 	HackableObject* getHackableObject() override;
-
 	void update(float) override;
 
 	bool canJump;

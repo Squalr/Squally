@@ -20,6 +20,7 @@ private:
 	Shroom();
 	~Shroom();
 
+	HackableObject* getHackableObject() override;
 	void update(float) override;
 
 	Animation* walkAnimation;
