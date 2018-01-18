@@ -17,7 +17,7 @@ HackableObject::HackableObject(Node* parentNode, std::string previewResource, Ve
 	this->previewSpriteResource = previewResource;
 	this->buttonOffset = offset;
 
-	this->hackableMenuButton = MenuSprite::create(Resources::Menus_Buttons_HackButton, Resources::Menus_Buttons_HackButtonHover, Resources::Menus_Buttons_HackButtonClick);
+	this->hackableMenuButton = MenuSprite::create(Resources::Menus_HackerModeMenu_HackButton, Resources::Menus_HackerModeMenu_HackButtonHover, Resources::Menus_HackerModeMenu_HackButtonClick);
 	this->hackableMenuButton->setClickCallback(CC_CALLBACK_1(HackableObject::onObjectClick, this));
 
 	this->addChild(this->hackableMenuButton);

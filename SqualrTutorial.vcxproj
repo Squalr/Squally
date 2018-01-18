@@ -173,7 +173,9 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\HUD\HUD.cpp" />
     <ClCompile Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\Dialog\DialogMenu.cpp" />
-    <ClCompile Include="Source\GUI\Menus\HackerMode\DataCodeMenu.cpp" />
+    <ClCompile Include="Source\GUI\Menus\HackerMode\CodeMenu.cpp" />
+    <ClCompile Include="Source\GUI\Menus\HackerMode\DataMenu.cpp" />
+    <ClCompile Include="Source\GUI\Menus\HackerMode\RadialMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\Options\OptionsMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\Pause\PauseMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\MenuBackground.cpp" />
@@ -235,7 +237,9 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\HUD\HUD.h" />
     <ClInclude Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.h" />
     <ClInclude Include="Source\GUI\Menus\Dialog\DialogMenu.h" />
-    <ClInclude Include="Source\GUI\Menus\HackerMode\DataCodeMenu.h" />
+    <ClInclude Include="Source\GUI\Menus\HackerMode\CodeMenu.h" />
+    <ClInclude Include="Source\GUI\Menus\HackerMode\DataMenu.h" />
+    <ClInclude Include="Source\GUI\Menus\HackerMode\RadialMenu.h" />
     <ClInclude Include="Source\GUI\Menus\Options\OptionsMenu.h" />
     <ClInclude Include="Source\GUI\Menus\Pause\PauseMenu.h" />
     <ClInclude Include="Source\GUI\Menus\MenuBackground.h" />

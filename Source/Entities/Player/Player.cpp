@@ -39,7 +39,7 @@ Player::~Player()
 
 HackableObject* Player::getHackableObject()
 {
-	return HackableObject::create(this, Resources::Ingame_Sprites_Player_SquallyLarge, Vec2(0, 72.0f));
+	return HackableObject::create(this, Resources::Menus_HackerModeMenu_WireFrames_SquallyWireFrame, Vec2(0, 72.0f));
 }
 
 void Player::update(float dt)
