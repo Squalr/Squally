@@ -16,11 +16,11 @@ HUD::HUD()
 	this->dialogNode = Node::create();
 
 	this->hackableObjectsHud = Layer::create();
-	this->dataCodeMenu = DataCodeMenu::create();
+	this->radialMenu = RadialMenu::create();
 
-	this->dataCodeMenu->setVisible(false);
+	this->radialMenu->setVisible(false);
 
-	this->hackableObjectsHud->addChild(this->dataCodeMenu, 999);
+	this->hackableObjectsHud->addChild(this->radialMenu, 999);
 	this->addChild(this->healthBarFrame);
 	this->addChild(this->heart);
 	this->addChild(this->dialogNode);
@@ -75,7 +75,7 @@ void HUD::onHackableEdit(EventCustom* eventArgs)
 
 	this->addChild(Mouse::claimInstance());
 
-	this->dataCodeMenu->activate(args);
+	this->radialMenu->activate(args);
 }
 
 void HUD::onDialogOpen(EventCustom* event)

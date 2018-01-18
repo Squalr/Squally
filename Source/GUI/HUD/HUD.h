@@ -3,7 +3,7 @@
 #include "Resources.h"
 #include "Objects/Hackables/HackableObject.h"
 #include "GUI/Menus/Dialog/DialogMenu.h"
-#include "GUI/Menus/HackerMode/DataCodeMenu.h"
+#include "GUI/Menus/HackerMode/RadialMenu.h"
 #include "GUI/Components/Mouse.h"
 
 using namespace cocos2d;
@@ -30,7 +30,7 @@ private:
 	Sprite* heart;
 	Sprite* healthBarFrame;
 
-	DataCodeMenu* dataCodeMenu;
+	RadialMenu* radialMenu;
 	Node* dialogNode;
 };
 

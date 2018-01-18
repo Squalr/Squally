@@ -2,36 +2,42 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Shaders/PostProcess.h"
-#include "GUI/Components//MenuSprite.h"
+#include "GUI/Components/MenuSprite.h"
+#include "GUI/Menus/HackerMode/CodeMenu.h"
+#include "GUI/Menus/HackerMode/DataMenu.h"
 #include "Objects/Hackables/HackableObject.h"
 
 using namespace cocos2d;
 
-class DataCodeMenu : public Node
+class RadialMenu : public Node
 {
 public:
-	static DataCodeMenu * create();
+	static RadialMenu * create();
 
 	void activate(HackableObject::HackableObjectEditArgs* hackableObjectArgs);
 
 private:
-	DataCodeMenu();
-	~DataCodeMenu();
+	RadialMenu();
+	~RadialMenu();
 
 	void initializePositions();
 	void initializeListeners();
+	void onCodeMenuOpen(MenuSprite* menuSprite);
+	void onDataMenuOpen(MenuSprite* menuSprite);
 	void onClose(MenuSprite* menuSprite);
-	void draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) override;
+
+	CodeMenu* codeMenu;
+	DataMenu* dataMenu;
 
 	HackableObject* activeHackableObject;
-	Sprite* hackableObjectPreview;
 
 	LayerColor* layerColor;
 	Sprite* menuBackground;
+	Node* hackableObjectPreviewNode;
+	Sprite* hackableObjectPreview;
 	MenuSprite* dataButton;
 	MenuSprite* codeButton;
 	MenuSprite* returnButton;
-	PostProcess* gamePostProcessNightVision;
 
 	static const Size maxPreviewSize;
 };
