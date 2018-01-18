@@ -264,7 +264,13 @@
     <ClCompile Include="Source\Objects\Interactables\WarpGateExactScanTutorial.cpp">
       <Filter>Source\Objects\Interactables</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GUI\Menus\HackerMode\DataCodeMenu.cpp">
+    <ClCompile Include="Source\GUI\Menus\HackerMode\RadialMenu.cpp">
+      <Filter>Source\GUI\Menus\HackerMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\HackerMode\CodeMenu.cpp">
+      <Filter>Source\GUI\Menus\HackerMode</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\HackerMode\DataMenu.cpp">
       <Filter>Source\GUI\Menus\HackerMode</Filter>
     </ClCompile>
   </ItemGroup>
@@ -452,7 +458,13 @@
     <ClInclude Include="Source\Objects\Interactables\WarpGateExactScanTutorial.h">
       <Filter>Source\Objects\Interactables</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GUI\Menus\HackerMode\DataCodeMenu.h">
+    <ClInclude Include="Source\GUI\Menus\HackerMode\RadialMenu.h">
+      <Filter>Source\GUI\Menus\HackerMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\HackerMode\DataMenu.h">
+      <Filter>Source\GUI\Menus\HackerMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\HackerMode\CodeMenu.h">
       <Filter>Source\GUI\Menus\HackerMode</Filter>
     </ClInclude>
   </ItemGroup>
