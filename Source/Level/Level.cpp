@@ -77,6 +77,18 @@ Level::~Level()
 {
 }
 
+void Level::resume(void)
+{
+	Node::resume();
+
+	this->initializeListeners();
+
+	if (Level::hackerMode)
+	{
+		this->enableHackerMode();
+	}
+}
+
 void Level::onEnter()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -136,15 +148,43 @@ void Level::initializeListeners()
 // Implementation of the keyboard event callback function prototype
 void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	switch (keyCode)
+	if (Level::hackerMode)
 	{
-	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		Director::getInstance()->pushScene(PauseMenu::create());
-		break;
-	case EventKeyboard::KeyCode::KEY_TAB:
-		Level::hackerMode = !Level::hackerMode;
-		break;
+		switch (keyCode)
+		{
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
+		case EventKeyboard::KeyCode::KEY_TAB:
+			this->disableHackerMode();
+			break;
+		}
 	}
+	else
+	{
+		switch (keyCode)
+		{
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
+			Director::getInstance()->pushScene(PauseMenu::create());
+			break;
+		case EventKeyboard::KeyCode::KEY_TAB:
+			this->enableHackerMode();
+			break;
+		}
+	}
+}
+
+void Level::enableHackerMode()
+{
+	Level::hackerMode = true;
+	Utils::focus(this->hud);
+
+	// We still want to process input while paused
+	this->initializeListeners();
+}
+
+void Level::disableHackerMode()
+{
+	Level::hackerMode = false;
+	Utils::resumeAll();
 }
 
 void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)

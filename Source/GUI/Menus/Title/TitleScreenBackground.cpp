@@ -29,7 +29,7 @@ TitleScreenBackground::TitleScreenBackground()
 	this->foregroundGrassBottom = FloatingSprite::create(Resources::Menus_Backgrounds_BottomSoil, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
 	this->foregroundGrassTop = FloatingSprite::create(Resources::Menus_Backgrounds_TopLeaves, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
 	this->foregroundLight = Sprite::create(Resources::Menus_Backgrounds_Light);
-	this->squally = FloatingSprite::create(Resources::Menus_Backgrounds_Squally, Vec2(8.0f, 64.0f), Vec2(3.5f, 8.0f));
+	this->squally = FloatingSprite::create(Resources::Ingame_Sprites_Player_SquallyLarge, Vec2(8.0f, 64.0f), Vec2(3.5f, 8.0f));
 
 	this->etherParticles = ParticleGalaxy::create();
 	this->windParticles = ParticleSystemQuad::create(Resources::Particles_Wind);
@@ -50,6 +50,7 @@ TitleScreenBackground::TitleScreenBackground()
 	this->hackerModeLabel->setColor(Color3B(173, 135, 108));
 	this->hackerModeLabel->setSkewX(-12.0f);
 
+	this->squally->setScale(0.35f);
 	this->squally->setFlippedX(true);
 	this->fog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-92.0f, 0))));
 	this->foregroundFog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-196.0f, 0))));

@@ -18,7 +18,9 @@ private:
 
 	void initializePositions();
 	void initializeListeners();
+	void onClose(MenuSprite* menuSprite);
 
 	Sprite* codeMenuBackground;
+	MenuSprite* closeButton;
 };
 

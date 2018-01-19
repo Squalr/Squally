@@ -20,11 +20,11 @@ HUD::HUD()
 
 	this->radialMenu->setVisible(false);
 
-	this->hackableObjectsHud->addChild(this->radialMenu, 999);
 	this->addChild(this->healthBarFrame);
 	this->addChild(this->heart);
 	this->addChild(this->dialogNode);
 	this->addChild(this->hackableObjectsHud);
+	this->addChild(this->radialMenu);
 
 	this->initializeListeners();
 }
@@ -51,10 +51,8 @@ void HUD::initializePositions()
 void HUD::initializeListeners()
 {
 	EventListenerCustom* dialogListener = EventListenerCustom::create(DialogMenu::DialogOpenEvent, CC_CALLBACK_1(HUD::onDialogOpen, this));
-	EventListenerCustom* hackableEditListener = EventListenerCustom::create(HackableObject::HackableObjectEditEvent, CC_CALLBACK_1(HUD::onHackableEdit, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(dialogListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(hackableEditListener, this);
 }
 
 void HUD::registerHackableObject(HackableObject* hackableObject)
@@ -65,17 +63,6 @@ void HUD::registerHackableObject(HackableObject* hackableObject)
 	}
 
 	this->hackableObjectsHud->addChild(hackableObject);
-}
-
-void HUD::onHackableEdit(EventCustom* eventArgs)
-{
-	HackableObject::HackableObjectEditArgs*  args = (HackableObject::HackableObjectEditArgs*)(eventArgs->getUserData());
-
-	Utils::pause(Director::getInstance()->getRunningScene());
-
-	this->addChild(Mouse::claimInstance());
-
-	this->radialMenu->activate(args);
 }
 
 void HUD::onDialogOpen(EventCustom* event)
