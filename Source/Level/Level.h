@@ -28,8 +28,11 @@ protected:
 
 private:
 	void initializeListeners();
+	void enableHackerMode();
+	void disableHackerMode();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) override;
+	virtual void resume(void) override;
 	void update(float) override;
 	void onEnter() override;
 

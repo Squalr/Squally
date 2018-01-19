@@ -14,14 +14,13 @@ class RadialMenu : public Node
 public:
 	static RadialMenu * create();
 
-	void activate(HackableObject::HackableObjectEditArgs* hackableObjectArgs);
-
 private:
 	RadialMenu();
 	~RadialMenu();
 
 	void initializePositions();
 	void initializeListeners();
+	void onHackableEdit(EventCustom* eventArgs);
 	void onCodeMenuOpen(MenuSprite* menuSprite);
 	void onDataMenuOpen(MenuSprite* menuSprite);
 	void onClose(MenuSprite* menuSprite);

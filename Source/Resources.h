@@ -568,7 +568,6 @@ public:
 	static const string Menus_Backgrounds_LightTrees;
 	static const string Menus_Backgrounds_MidgroundTrees;
 	static const string Menus_Backgrounds_MidgroundTrees2;
-	static const string Menus_Backgrounds_Squally;
 	static const string Menus_Backgrounds_TopLeaves;
 	static const string Menus_Backgrounds_Tree;
 	static const string Menus_Backgrounds_Vines;
@@ -639,13 +638,14 @@ public:
 	static const string Menus_DialogMenu_JungleBackground;
 	static const string Menus_DialogMenu_PlayerPortrait;
 	static const string Menus_DialogMenu_ShipBackground;
-	static const string Menus_HackerModeMenu_CloseButtonGreen;
-	static const string Menus_HackerModeMenu_CloseButtonGreenClick;
-	static const string Menus_HackerModeMenu_CloseButtonGreenHover;
+	static const string Menus_HackerModeMenu_CloseButton;
+	static const string Menus_HackerModeMenu_CloseButtonClick;
+	static const string Menus_HackerModeMenu_CloseButtonHover;
+	static const string Menus_HackerModeMenu_CodeMenu;
 	static const string Menus_HackerModeMenu_CpuChip;
 	static const string Menus_HackerModeMenu_CpuChipClick;
 	static const string Menus_HackerModeMenu_CpuChipHover;
-	static const string Menus_HackerModeMenu_DataCodeMenu;
+	static const string Menus_HackerModeMenu_DataMenu;
 	static const string Menus_HackerModeMenu_HackButton;
 	static const string Menus_HackerModeMenu_HackButtonClick;
 	static const string Menus_HackerModeMenu_HackButtonHover;
