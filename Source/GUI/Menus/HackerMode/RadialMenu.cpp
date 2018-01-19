@@ -46,14 +46,16 @@ RadialMenu::~RadialMenu()
 {
 }
 
-void RadialMenu::activate(HackableObject::HackableObjectEditArgs* hackableObjectArgs)
+void RadialMenu::onHackableEdit(EventCustom* eventArgs)
 {
+	HackableObject::HackableObjectEditArgs*  args = (HackableObject::HackableObjectEditArgs*)(eventArgs->getUserData());
+
 	// Remove existing preview image
 	this->hackableObjectPreviewNode->removeAllChildren();
 
 	// Set target hackable object
-	this->activeHackableObject = hackableObjectArgs->hackableObject;
-	this->hackableObjectPreview = Sprite::create(hackableObjectArgs->previewResource);
+	this->activeHackableObject = args->hackableObject;
+	this->hackableObjectPreview = Sprite::create(args->previewResource);
 	this->setVisible(true);
 
 	// Position preview image and scale it
@@ -76,8 +78,7 @@ void RadialMenu::activate(HackableObject::HackableObjectEditArgs* hackableObject
 
 	this->hackableObjectPreviewNode->addChild(this->hackableObjectPreview);
 
-	// Ensure that this menu is running
-	Utils::resume(this);
+	Utils::focus(this);
 }
 
 void RadialMenu::initializePositions()
@@ -93,6 +94,10 @@ void RadialMenu::initializePositions()
 
 void RadialMenu::initializeListeners()
 {
+	EventListenerCustom* hackableEditListener = EventListenerCustom::create(HackableObject::HackableObjectEditEvent, CC_CALLBACK_1(RadialMenu::onHackableEdit, this));
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(hackableEditListener, this);
+
 	this->dataButton->setClickCallback(CC_CALLBACK_1(RadialMenu::onDataMenuOpen, this));
 	this->codeButton->setClickCallback(CC_CALLBACK_1(RadialMenu::onCodeMenuOpen, this));
 	this->returnButton->setClickCallback(CC_CALLBACK_1(RadialMenu::onClose, this));
@@ -102,21 +107,20 @@ void RadialMenu::onClose(MenuSprite* menuSprite)
 {
 	this->setVisible(false);
 
-	Utils::resume(Director::getInstance()->getRunningScene());
+	// Kinda a shitty way to navigate back to Hud > Level
+	Utils::focus(this->getParent()->getParent());
 }
 
 void RadialMenu::onCodeMenuOpen(MenuSprite* menuSprite)
 {
-	Utils::pause(this);
-
 	this->codeMenu->setVisible(true);
-	Utils::resume(this->codeMenu);
+
+	Utils::focus(this->codeMenu);
 }
 
 void RadialMenu::onDataMenuOpen(MenuSprite* menuSprite)
 {
-	Utils::pause(this);
-
 	this->dataMenu->setVisible(true);
-	Utils::resume(this->dataMenu);
+
+	Utils::focus(this->dataMenu);
 }

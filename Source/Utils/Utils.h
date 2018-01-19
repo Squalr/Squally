@@ -1,5 +1,6 @@
 #pragma once
 #include "cocos2d.h"
+#include "Gui/Components/Mouse.h"
 
 using namespace cocos2d;
 
@@ -8,6 +9,8 @@ class Utils
 public:
 	static void pause(Node *node);
 	static void resume(Node *node);
+	static void resumeAll();
+	static void focus(Node *node);
 	static std::string hexAddressOf(void* address);
 	static void accelerateParticles(ParticleSystem* particleSystem, float duration);
 	static void fadeInObject(Node* node, float delay, float duration);

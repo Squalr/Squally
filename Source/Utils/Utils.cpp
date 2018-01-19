@@ -34,6 +34,18 @@ void Utils::resume(Node *node)
 	}
 }
 
+void Utils::resumeAll()
+{
+	Utils::resume(Director::getInstance()->getRunningScene());
+}
+
+void Utils::focus(Node *node)
+{
+	Utils::pause(Director::getInstance()->getRunningScene());
+	Utils::resume(node);
+	node->addChild(Mouse::claimInstance());
+}
+
 std::string Utils::hexAddressOf(void* address)
 {
 	std::stringstream stream;
