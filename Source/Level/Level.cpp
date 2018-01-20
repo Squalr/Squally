@@ -79,14 +79,12 @@ Level::~Level()
 
 void Level::resume(void)
 {
-	Node::resume();
+	if (!Level::hackerMode)
+	{
+		Node::resume();
+	}
 
 	this->initializeListeners();
-
-	if (Level::hackerMode)
-	{
-		this->enableHackerMode();
-	}
 }
 
 void Level::onEnter()

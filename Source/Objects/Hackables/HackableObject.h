@@ -2,6 +2,8 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "GUI/Components/MenuSprite.h"
+#include "Objects/Hackables/HackableData.h"
+#include "Objects/Hackables/HackableCode.h"
 
 using namespace cocos2d;
 

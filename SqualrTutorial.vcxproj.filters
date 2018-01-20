@@ -273,6 +273,12 @@
     <ClCompile Include="Source\GUI\Menus\HackerMode\DataMenu.cpp">
       <Filter>Source\GUI\Menus\HackerMode</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Objects\Hackables\HackableCode.cpp">
+      <Filter>Source\Objects\Hackables</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Hackables\HackableData.cpp">
+      <Filter>Source\Objects\Hackables</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -466,6 +472,12 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\Menus\HackerMode\CodeMenu.h">
       <Filter>Source\GUI\Menus\HackerMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Hackables\HackableData.h">
+      <Filter>Source\Objects\Hackables</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Hackables\HackableCode.h">
+      <Filter>Source\Objects\Hackables</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

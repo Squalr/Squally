@@ -196,6 +196,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Level\LevelCamera.cpp" />
     <ClCompile Include="Source\Level\LevelParser.cpp" />
     <ClCompile Include="Source\Objects\Collision\CollisionObject.cpp" />
+    <ClCompile Include="Source\Objects\Hackables\HackableCode.cpp" />
+    <ClCompile Include="Source\Objects\Hackables\HackableData.cpp" />
     <ClCompile Include="Source\Objects\Hackables\HackableObject.cpp" />
     <ClCompile Include="Source\Objects\Hackables\InstructionTest.cpp" />
     <ClCompile Include="Source\Objects\IngameObject.cpp" />
@@ -261,6 +263,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Level\LevelParser.h" />
     <ClInclude Include="Source\Objects\Collision\CategoryGroup.h" />
     <ClInclude Include="Source\Objects\Collision\CollisionObject.h" />
+    <ClInclude Include="Source\Objects\Hackables\HackableCode.h" />
+    <ClInclude Include="Source\Objects\Hackables\HackableData.h" />
     <ClInclude Include="Source\Objects\Hackables\HackableObject.h" />
     <ClInclude Include="Source\Objects\Hackables\InstructionTest.h" />
     <ClInclude Include="Source\Objects\IngameObject.h" />
