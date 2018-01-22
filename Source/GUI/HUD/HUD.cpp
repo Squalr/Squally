@@ -62,7 +62,12 @@ void HUD::registerHackableObject(HackableObject* hackableObject)
 		return;
 	}
 
-	this->hackableObjectsHud->addChild(hackableObject);
+	// Create the hackable button for this hackable object
+	MenuSprite* hackableMenuButton = MenuSprite::create(Resources::Menus_HackerModeMenu_HackButton, Resources::Menus_HackerModeMenu_HackButtonHover, Resources::Menus_HackerModeMenu_HackButtonClick);
+	hackableMenuButton->setClickCallback(CC_CALLBACK_1(HackableObject::onHackableClick, hackableObject));
+	hackableObject->bindHackableButton(hackableMenuButton);
+
+	this->hackableObjectsHud->addChild(hackableMenuButton);
 }
 
 void HUD::onDialogOpen(EventCustom* event)

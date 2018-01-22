@@ -9,7 +9,7 @@ Snail* Snail::create()
 	return snail;
 }
 
-Snail::Snail()
+Snail::Snail() : Entity::Entity()
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;

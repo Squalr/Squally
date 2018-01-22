@@ -36,7 +36,7 @@ Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map, std::funct
 		ValueMap object = objects[index].asValueMap();
 		string type = object.at("type").asString();
 
-		IngameObject* newObject = nullptr;
+		HackableObject* newObject = nullptr;
 
 		if (type == "warp-gate")
 		{
@@ -61,7 +61,7 @@ Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map, std::funct
 			throw exception("invalid object");
 		}
 
-		registerHackableCallback(newObject->getHackableObject());
+		registerHackableCallback(newObject);
 
 		newObject->setPosition(Vec2(object.at("x").asFloat() + object.at("width").asFloat() / 2, object.at("y").asFloat() + object.at("height").asFloat() / 2));
 		layer->addChild(newObject);
@@ -86,7 +86,7 @@ Layer* LevelParser::initializeEntities(experimental::TMXTiledMap* map, std::func
 		ValueMap entity = entities[index].asValueMap();
 		string type = entity.at("type").asString();
 
-		IngameObject* newEntity = nullptr;
+		HackableObject* newEntity = nullptr;
 
 		if (type == "spawn")
 		{
@@ -113,7 +113,7 @@ Layer* LevelParser::initializeEntities(experimental::TMXTiledMap* map, std::func
 			throw exception("invalid entity");
 		}
 
-		registerHackableCallback(newEntity->getHackableObject());
+		registerHackableCallback(newEntity);
 
 		newEntity->setPosition(Vec2(entity.at("x").asFloat() + entity.at("width").asFloat() / 2, entity.at("y").asFloat() + entity.at("height").asFloat() / 2));
 		layer->addChild(newEntity);

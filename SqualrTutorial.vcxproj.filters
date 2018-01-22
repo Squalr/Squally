@@ -240,9 +240,6 @@
     <ClCompile Include="Source\Objects\Collision\CollisionObject.cpp">
       <Filter>Source\Objects\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Objects\IngameObject.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Objects\ParallaxObject.cpp">
       <Filter>Source\Objects</Filter>
     </ClCompile>
@@ -277,6 +274,9 @@
       <Filter>Source\Objects\Hackables</Filter>
     </ClCompile>
     <ClCompile Include="Source\Objects\Hackables\HackableData.cpp">
+      <Filter>Source\Objects\Hackables</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Hackables\HackableAttribute.cpp">
       <Filter>Source\Objects\Hackables</Filter>
     </ClCompile>
   </ItemGroup>
@@ -440,9 +440,6 @@
     <ClInclude Include="Source\Objects\ParallaxObject.h">
       <Filter>Source\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Objects\IngameObject.h">
-      <Filter>Source\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Objects\Objects.h">
       <Filter>Source\Objects</Filter>
     </ClInclude>
@@ -477,6 +474,9 @@
       <Filter>Source\Objects\Hackables</Filter>
     </ClInclude>
     <ClInclude Include="Source\Objects\Hackables\HackableCode.h">
+      <Filter>Source\Objects\Hackables</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Hackables\HackableAttribute.h">
       <Filter>Source\Objects\Hackables</Filter>
     </ClInclude>
   </ItemGroup>

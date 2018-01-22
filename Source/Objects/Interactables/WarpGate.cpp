@@ -66,15 +66,18 @@ WarpGate::WarpGate()
 	this->addChild(this->gateClosed);
 	this->addChild(this->gateClosedLightsNode);
 	this->addChild(this->gateParticles);
+
+	this->registerHackables();
 }
 
 WarpGate::~WarpGate()
 {
 }
 
-HackableObject* WarpGate::getHackableObject()
+void WarpGate::registerHackables()
 {
-	return HackableObject::create(this, Resources::Ingame_Objects_WarpGateOpen, Vec2(0, -128.0f));
+	this->setPreviewImage(Resources::Ingame_Objects_WarpGateOpen);
+	this->setButtonOffset(Vec2(0, -128.0f));
 }
 
 void WarpGate::open()

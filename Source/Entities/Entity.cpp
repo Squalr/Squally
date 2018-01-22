@@ -1,6 +1,6 @@
 #include "Entity.h"
 
-Entity::Entity()
+Entity::Entity() : CollisionObject::CollisionObject()
 {
 	this->actualGravityAcceleration = Entity::gravityAcceleration;
 	this->actualJumpLaunchVelocity = Entity::jumpLaunchVelocity;

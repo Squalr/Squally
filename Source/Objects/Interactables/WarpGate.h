@@ -17,7 +17,7 @@ protected:
 	~WarpGate();
 
 private:
-	HackableObject * getHackableObject() override;
+	void registerHackables();
 
 	Sprite * gateOpen;
 	Sprite * gateClosed;
@@ -26,6 +26,5 @@ private:
 	ParticleSystem * gateParticles;
 	ParticleSystem* sparkParticles;
 	ParticleSystem* sparkParticlesBack;
-
 	bool isOpen;
 };

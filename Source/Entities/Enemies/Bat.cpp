@@ -9,7 +9,7 @@ Bat* Bat::create()
 	return bat;
 }
 
-Bat::Bat()
+Bat::Bat() : Entity::Entity()
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;

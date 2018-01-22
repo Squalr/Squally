@@ -9,7 +9,7 @@ Poly* Poly::create()
 	return poly;
 }
 
-Poly::Poly()
+Poly::Poly() : Entity::Entity()
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
