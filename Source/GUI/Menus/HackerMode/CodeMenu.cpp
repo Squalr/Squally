@@ -13,6 +13,8 @@ CodeMenu::CodeMenu()
 {
 	this->codeMenuBackground = Sprite::create(Resources::Menus_HackerModeMenu_CodeMenu);
 	this->closeButton = MenuSprite::create(Resources::Menus_HackerModeMenu_CloseButton, Resources::Menus_HackerModeMenu_CloseButtonHover, Resources::Menus_HackerModeMenu_CloseButtonClick);
+	this->rows = Node::create();
+
 	this->addChild(this->codeMenuBackground);
 	this->addChild(this->closeButton);
 
@@ -35,6 +37,11 @@ void CodeMenu::initializePositions()
 void CodeMenu::initializeListeners()
 {
 	this->closeButton->setClickCallback(CC_CALLBACK_1(CodeMenu::onClose, this));
+}
+
+void CodeMenu::open(HackableObject* hackableObject)
+{
+	this->setVisible(true);
 }
 
 void CodeMenu::onClose(MenuSprite* menuSprite)

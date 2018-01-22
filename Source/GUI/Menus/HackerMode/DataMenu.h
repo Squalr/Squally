@@ -12,6 +12,8 @@ class DataMenu : public Node
 public:
 	static DataMenu * create();
 
+	void open(HackableObject* hackableObject);
+
 private:
 	DataMenu();
 	~DataMenu();
@@ -22,5 +24,5 @@ private:
 
 	Sprite* dataMenuBackground;
 	MenuSprite* closeButton;
+	Node* rows;
 };
-

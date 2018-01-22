@@ -4,16 +4,17 @@
 
 using namespace cocos2d;
 
-class HackableData : HackableAttribute
+class HackableData : public HackableAttribute
 {
 public:
-	static HackableData * create(void* dataAddress, std::type_info* typeInfo);
+	static HackableData * create(std::string name, void* dataAddress, const std::type_info* typeInfo);
+
+	std::string variableName;
+	void* dataPointer;
+	const std::type_info* dataType;
 
 private:
-	HackableData(void* dataAddress, std::type_info* typeInfo);
+	HackableData(std::string name, void* dataAddress, const std::type_info* typeInfo);
 	~HackableData();
-
-	void* dataPointer;
-	std::type_info* dataType;
 };
 

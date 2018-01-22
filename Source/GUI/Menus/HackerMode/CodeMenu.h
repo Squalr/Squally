@@ -12,6 +12,8 @@ class CodeMenu : public Node
 public:
 	static CodeMenu * create();
 
+	void open(HackableObject* hackableObject);
+
 private:
 	CodeMenu();
 	~CodeMenu();
@@ -22,5 +24,6 @@ private:
 
 	Sprite* codeMenuBackground;
 	MenuSprite* closeButton;
+	Node* rows;
 };
 
