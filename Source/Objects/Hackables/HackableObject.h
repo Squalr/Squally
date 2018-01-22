@@ -24,22 +24,22 @@ public:
 	void onHackableClick(MenuSprite* menuSprite);
 	void bindHackableButton(MenuSprite* hackableButton);
 
+	std::vector<HackableData*>* dataList;
+	std::vector<HackableCode*>* codeList;
+
 protected:
 	HackableObject();
 	~HackableObject();
 
 	void setPreviewImage(std::string previewResource);
 	void setButtonOffset(Vec2 offset);
-	void associateData(HackableData* hackableData);
-	void associateCode(HackableCode* hackableCode);
+	void registerData(HackableData* hackableData);
+	void registerCode(HackableCode* hackableCode);
 	void draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) override;
 
 private:
 	MenuSprite * boundHackableButton;
 	Sprite * previewSprite;
 	Vec2 buttonOffset;
-
-	std::vector<HackableData*>* dataList;
-	std::vector<HackableCode*>* codeList;
 };
 

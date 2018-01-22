@@ -48,7 +48,7 @@ RadialMenu::~RadialMenu()
 
 void RadialMenu::onHackableEdit(EventCustom* eventArgs)
 {
-	HackableObject::HackableObjectEditArgs*  args = (HackableObject::HackableObjectEditArgs*)(eventArgs->getUserData());
+	HackableObject::HackableObjectEditArgs* args = (HackableObject::HackableObjectEditArgs*)(eventArgs->getUserData());
 
 	// Remove existing preview image
 	this->hackableObjectPreviewNode->removeAllChildren();
@@ -117,14 +117,14 @@ void RadialMenu::onClose(MenuSprite* menuSprite)
 
 void RadialMenu::onCodeMenuOpen(MenuSprite* menuSprite)
 {
-	this->codeMenu->setVisible(true);
+	this->codeMenu->open(this->activeHackableObject);
 
 	Utils::focus(this->codeMenu);
 }
 
 void RadialMenu::onDataMenuOpen(MenuSprite* menuSprite)
 {
-	this->dataMenu->setVisible(true);
+	this->dataMenu->open(this->activeHackableObject);
 
 	Utils::focus(this->dataMenu);
 }

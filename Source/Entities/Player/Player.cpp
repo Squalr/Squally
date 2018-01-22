@@ -43,6 +43,10 @@ void Player::registerHackables()
 {
 	this->setPreviewImage(Resources::Menus_HackerModeMenu_WireFrames_SquallyWireFrame);
 	this->setButtonOffset(Vec2(0, 72.0f));
+
+	this->registerData(HackableData::create("Health", &this->health, &typeid(this->health)));
+	this->registerData(HackableData::create("X Position", &this->position.x, &typeid(this->position.x)));
+	this->registerData(HackableData::create("Y Position", &this->position.y, &typeid(this->position.y)));
 }
 
 void Player::update(float dt)
