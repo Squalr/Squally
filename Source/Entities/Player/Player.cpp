@@ -12,7 +12,7 @@ Player* Player::create()
 	return player;
 }
 
-Player::Player()
+Player::Player() : Entity::Entity()
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
@@ -31,15 +31,18 @@ Player::Player()
 
 	this->addChild(this->sprite);
 	this->addChild(this->hover);
+
+	this->registerHackables();
 }
 
 Player::~Player()
 {
 }
 
-HackableObject* Player::getHackableObject()
+void Player::registerHackables()
 {
-	return HackableObject::create(this, Resources::Menus_HackerModeMenu_WireFrames_SquallyWireFrame, Vec2(0, 72.0f));
+	this->setPreviewImage(Resources::Menus_HackerModeMenu_WireFrames_SquallyWireFrame);
+	this->setButtonOffset(Vec2(0, 72.0f));
 }
 
 void Player::update(float dt)

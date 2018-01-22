@@ -2,42 +2,66 @@
 
 const std::string HackableObject::HackableObjectEditEvent = "hackable_object_edit_event";
 
-HackableObject* HackableObject::create(Node* parentNode, std::string previewResource, Vec2 offset)
+HackableObject::HackableObject()
 {
-	HackableObject* hackableObject = new HackableObject(parentNode, previewResource, offset);
+	this->previewSprite = nullptr;
+	this->boundHackableButton = nullptr;
 
-	hackableObject->autorelease();
-
-	return hackableObject;
-}
-
-HackableObject::HackableObject(Node* parentNode, std::string previewResource, Vec2 offset)
-{
-	this->parent = parentNode;
-	this->previewSpriteResource = previewResource;
-	this->buttonOffset = offset;
-
-	this->hackableMenuButton = MenuSprite::create(Resources::Menus_HackerModeMenu_HackButton, Resources::Menus_HackerModeMenu_HackButtonHover, Resources::Menus_HackerModeMenu_HackButtonClick);
-	this->hackableMenuButton->setClickCallback(CC_CALLBACK_1(HackableObject::onObjectClick, this));
-
-	this->addChild(this->hackableMenuButton);
+	this->dataList = new std::vector<HackableData*>();
+	this->codeList = new std::vector<HackableCode*>();
 }
 
 HackableObject::~HackableObject()
 {
+	delete(this->dataList);
+	delete(this->codeList);
+
+	if (this->previewSprite != nullptr)
+	{
+		this->previewSprite->release();
+	}
 }
 
-void HackableObject::onObjectClick(MenuSprite* menuSprite)
+void HackableObject::bindHackableButton(MenuSprite* hackableButton)
+{
+	this->boundHackableButton = hackableButton;
+}
+
+void HackableObject::setPreviewImage(std::string previewResource)
+{
+	this->previewSprite = Sprite::create(previewResource);
+
+	this->previewSprite->retain();
+}
+
+void HackableObject::setButtonOffset(Vec2 offset)
+{
+	this->buttonOffset = offset;
+}
+
+void HackableObject::onHackableClick(MenuSprite* menuSprite)
 {
 	this->getEventDispatcher()->dispatchCustomEvent(
 		HackableObject::HackableObjectEditEvent,
-		&HackableObject::HackableObjectEditArgs(this, this->previewSpriteResource)
+		&HackableObject::HackableObjectEditArgs(this, this->previewSprite)
 	);
+}
+
+void HackableObject::associateData(HackableData* hackableData)
+{
+	this->dataList->push_back(hackableData);
+}
+
+void HackableObject::associateCode(HackableCode* hackableCode)
+{
+	this->codeList->push_back(hackableCode);
 }
 
 void HackableObject::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 {
-	this->setPosition(this->parent->getParent()->convertToWorldSpace(this->parent->getPosition()) + this->buttonOffset);
-
+	if (this->boundHackableButton != nullptr)
+	{
+		this->boundHackableButton->setPosition(this->getParent()->convertToWorldSpace(this->getPosition()) + this->buttonOffset);
+	}
 	Node::draw(renderer, transform, flags);
 }

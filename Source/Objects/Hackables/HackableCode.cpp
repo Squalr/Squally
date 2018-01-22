@@ -1,6 +1,6 @@
 #include "HackableCode.h"
 
-HackableCode * HackableCode::create(byte* codeStart, int codeLength)
+HackableCode * HackableCode::create(void* codeStart, int codeLength)
 {
 	HackableCode* hackableCode = new HackableCode(codeStart, codeLength);
 
@@ -9,7 +9,7 @@ HackableCode * HackableCode::create(byte* codeStart, int codeLength)
 	return hackableCode;
 }
 
-HackableCode::HackableCode(byte* codeStart, int codeLength)
+HackableCode::HackableCode(void* codeStart, int codeLength)
 {
 	this->codePointer = codeStart;
 	this->codeOriginalLength = codeLength;

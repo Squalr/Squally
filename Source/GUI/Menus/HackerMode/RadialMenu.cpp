@@ -55,28 +55,32 @@ void RadialMenu::onHackableEdit(EventCustom* eventArgs)
 
 	// Set target hackable object
 	this->activeHackableObject = args->hackableObject;
-	this->hackableObjectPreview = Sprite::create(args->previewResource);
+	this->hackableObjectPreview = args->previewSprite;
 	this->setVisible(true);
 
-	// Position preview image and scale it
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	this->hackableObjectPreview->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-
-	Size originalSize = this->hackableObjectPreview->getContentSize();
-	Size overFlowSize = originalSize - RadialMenu::maxPreviewSize;
-
-	if (overFlowSize.width > 0.0f && overFlowSize.width >= overFlowSize.height)
+	if (hackableObjectPreview != nullptr)
 	{
-		this->hackableObjectPreview->setScale(RadialMenu::maxPreviewSize.width / originalSize.width);
-	}
-	else if (overFlowSize.height > 0.0f)
-	{
-		this->hackableObjectPreview->setScale(RadialMenu::maxPreviewSize.height / originalSize.height);
-	}
+		// Position preview image and scale it
+		Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->hackableObjectPreview->setOpacity(196);
+		this->hackableObjectPreview->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 
-	this->hackableObjectPreviewNode->addChild(this->hackableObjectPreview);
+		Size originalSize = this->hackableObjectPreview->getContentSize();
+		Size overFlowSize = originalSize - RadialMenu::maxPreviewSize;
+
+		if (overFlowSize.width > 0.0f && overFlowSize.width >= overFlowSize.height)
+		{
+			this->hackableObjectPreview->setScale(RadialMenu::maxPreviewSize.width / originalSize.width);
+		}
+		else if (overFlowSize.height > 0.0f)
+		{
+			this->hackableObjectPreview->setScale(RadialMenu::maxPreviewSize.height / originalSize.height);
+		}
+
+		this->hackableObjectPreview->setOpacity(196);
+
+		this->hackableObjectPreviewNode->addChild(this->hackableObjectPreview);
+	}
 
 	Utils::focus(this);
 }

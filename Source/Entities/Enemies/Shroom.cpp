@@ -9,7 +9,7 @@ Shroom* Shroom::create()
 	return shroom;
 }
 
-Shroom::Shroom()
+Shroom::Shroom() : Entity::Entity()
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
@@ -31,15 +31,18 @@ Shroom::Shroom()
 	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CategoryGroup::G_Enemy, true, false);
 
 	this->addChild(this->sprite);
+
+	this->registerHackables();
 }
 
 Shroom::~Shroom()
 {
 }
 
-HackableObject* Shroom::getHackableObject()
+void Shroom::registerHackables()
 {
-	return HackableObject::create(this, Resources::Ingame_Sprites_Shroom_ShroomLarge, Vec2(0, 64.0f));
+	this->setPreviewImage(Resources::Ingame_Sprites_Shroom_ShroomLarge);
+	this->setButtonOffset(Vec2(0, 64.0f));
 }
 
 void Shroom::update(float dt)

@@ -10,31 +10,36 @@ using namespace cocos2d;
 class HackableObject : public Node
 {
 public:
-	static HackableObject * create(Node* parentNode, std::string previewResource, Vec2 offset);
-
-	static const std::string HackableObjectEditEvent;
-
 	struct HackableObjectEditArgs
 	{
 		HackableObject* hackableObject;
-		std::string previewResource;
+		Sprite* previewSprite;
 
-		HackableObjectEditArgs(HackableObject* hackableObject, std::string previewResource) : hackableObject(hackableObject), previewResource(previewResource)
+		HackableObjectEditArgs(HackableObject* hackableObject, Sprite* previewSprite) : hackableObject(hackableObject), previewSprite(previewSprite)
 		{
 		}
 	};
 
+	static const std::string HackableObjectEditEvent;
+	void onHackableClick(MenuSprite* menuSprite);
+	void bindHackableButton(MenuSprite* hackableButton);
+
+protected:
+	HackableObject();
+	~HackableObject();
+
+	void setPreviewImage(std::string previewResource);
+	void setButtonOffset(Vec2 offset);
+	void associateData(HackableData* hackableData);
+	void associateCode(HackableCode* hackableCode);
 	void draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) override;
 
 private:
-	HackableObject(Node* parentNode, std::string previewResource, Vec2 offset);
-	~HackableObject();
-
-	void onObjectClick(MenuSprite* menuSprite);
-
-	std::string previewSpriteResource;
-	MenuSprite* hackableMenuButton;
-	Node* parent;
+	MenuSprite * boundHackableButton;
+	Sprite * previewSprite;
 	Vec2 buttonOffset;
+
+	std::vector<HackableData*>* dataList;
+	std::vector<HackableCode*>* codeList;
 };
 
