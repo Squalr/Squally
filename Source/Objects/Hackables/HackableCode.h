@@ -1,18 +1,19 @@
 #pragma once
 #include "cocos2d.h"
+#include "Objects/Hackables/HackableAttribute.h"
 
 using namespace cocos2d;
 
-class HackableCode : public Node
+class HackableCode : public HackableAttribute
 {
 public:
-	static HackableCode * create(byte* codeStart, int codeLength);
+	static HackableCode * create(void* codeStart, int codeLength);
 
 private:
-	HackableCode(byte* codeStart, int codeLength);
+	HackableCode(void* codeStart, int codeLength);
 	~HackableCode();
 
-	byte* codePointer;
+	void* codePointer;
 	int codeOriginalLength;
 };
 

@@ -26,6 +26,7 @@ private:
 	void initializeListeners();
 	void onDialogOpen(EventCustom* event);
 
+
 	Sprite* heart;
 	Sprite* healthBarFrame;
 
