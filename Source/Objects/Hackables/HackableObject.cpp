@@ -47,13 +47,15 @@ void HackableObject::onHackableClick(MenuSprite* menuSprite)
 	);
 }
 
-void HackableObject::associateData(HackableData* hackableData)
+void HackableObject::registerData(HackableData* hackableData)
 {
+	hackableData->retain();
 	this->dataList->push_back(hackableData);
 }
 
-void HackableObject::associateCode(HackableCode* hackableCode)
+void HackableObject::registerCode(HackableCode* hackableCode)
 {
+	hackableCode->retain();
 	this->codeList->push_back(hackableCode);
 }
 
