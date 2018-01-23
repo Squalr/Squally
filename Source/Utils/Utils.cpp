@@ -46,20 +46,6 @@ void Utils::focus(Node *node)
 	node->addChild(Mouse::claimInstance());
 }
 
-std::string Utils::hexAddressOf(void* address)
-{
-	std::stringstream stream;
-
-	// Convert to hex
-	stream << std::hex << (int)(address);
-	std::string hexAddress = stream.str();
-
-	// Convert to upper
-	std::transform(hexAddress.begin(), hexAddress.end(), hexAddress.begin(), ::toupper);
-
-	return hexAddress;
-}
-
 void Utils::accelerateParticles(ParticleSystem* particleSystem, float duration)
 {
 	const float step = 0.0166660007;

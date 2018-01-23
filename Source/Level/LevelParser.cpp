@@ -58,7 +58,7 @@ Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map, std::funct
 		}
 		else
 		{
-			throw exception("invalid object");
+			throw std::invalid_argument("Invalid object");
 		}
 
 		registerHackableCallback(newObject);
@@ -110,7 +110,7 @@ Layer* LevelParser::initializeEntities(experimental::TMXTiledMap* map, std::func
 		}
 		else
 		{
-			throw exception("invalid entity");
+			throw std::invalid_argument("Invalid entity");
 		}
 
 		registerHackableCallback(newEntity);
@@ -171,7 +171,7 @@ Layer* LevelParser::initializeCollision(experimental::TMXTiledMap* map)
 		}
 		else
 		{
-			throw exception("Invalid type");
+			throw std::invalid_argument("Invalid type");
 		}
 
 		if (isPolygon)
@@ -231,7 +231,7 @@ Layer* LevelParser::initializeParallaxObjects(experimental::TMXTiledMap* map, st
 
 		if (!Utils::keyExists(object, "speed-x") && !Utils::keyExists(object, "speed-y"))
 		{
-			throw exception("Parallax objects must have speed properties");
+			throw std::invalid_argument("Parallax objects must have speed properties");
 		}
 
 		float speedX = object.at("speed-x").asFloat();

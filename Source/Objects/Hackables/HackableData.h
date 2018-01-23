@@ -11,7 +11,7 @@ public:
 
 	std::string variableName;
 	void* dataPointer;
-	const std::type_info* dataType;
+	HackUtils::DataType dataType;
 
 private:
 	HackableData(std::string name, void* dataAddress, const std::type_info* typeInfo);

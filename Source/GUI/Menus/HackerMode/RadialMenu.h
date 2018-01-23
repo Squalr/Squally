@@ -6,6 +6,7 @@
 #include "GUI/Menus/HackerMode/CodeMenu.h"
 #include "GUI/Menus/HackerMode/DataMenu.h"
 #include "Objects/Hackables/HackableObject.h"
+#include "Utils/HackUtils.h"
 
 using namespace cocos2d;
 

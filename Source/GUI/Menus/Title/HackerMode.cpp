@@ -26,7 +26,7 @@ HackerMode::~HackerMode()
 
 std::string HackerMode::getHackerModeAddressHex()
 {
-	return Utils::hexAddressOf(&HackerMode::hackerMode);
+	return HackUtils::hexAddressOf(&HackerMode::hackerMode, false, false);
 }
 
 void HackerMode::update(float dt)
