@@ -4,6 +4,7 @@
 #include "Shaders/PostProcess.h"
 #include "GUI/Components/MenuSprite.h"
 #include "Objects/Hackables/HackableObject.h"
+#include "Utils/HackUtils.h"
 
 using namespace cocos2d;
 

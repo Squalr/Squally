@@ -49,10 +49,10 @@ void DataMenu::open(HackableObject* hackableObject)
 		Node* newRow = Node::create();
 		HackableData* hackableData = *iterator;
 
-		Label* address = Label::create(Utils::hexAddressOf(hackableData->dataPointer), Resources::Fonts_Montserrat_Medium, fontSize);
+		Label* address = Label::create(HackUtils::hexAddressOf(hackableData->dataPointer, true, true), Resources::Fonts_Montserrat_Medium, fontSize);
 		Label* name = Label::create(hackableData->variableName, Resources::Fonts_Montserrat_Medium, fontSize);
-		Label* dataType = Label::create("Int32", Resources::Fonts_Montserrat_Medium, fontSize);
-		Label* value = Label::create("123", Resources::Fonts_Montserrat_Medium, fontSize);
+		Label* dataType = Label::create(HackUtils::dataTypeToString(hackableData->dataType), Resources::Fonts_Montserrat_Medium, fontSize);
+		Label* value = Label::create(HackUtils::valueStringOf(hackableData->dataPointer, hackableData->dataType), Resources::Fonts_Montserrat_Medium, fontSize);
 		Label* refCode = Label::create(">>", Resources::Fonts_Montserrat_Medium, fontSize);
 
 		address->setHorizontalAlignment(TextHAlignment::LEFT);
