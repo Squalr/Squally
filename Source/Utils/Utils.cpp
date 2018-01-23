@@ -83,6 +83,22 @@ Rect Utils::getSceneBounds(Node* node)
 	return resultRect;
 }
 
+Rect Utils::getSceneBoundsV2(Node* node)
+{
+	Rect resultRect = node->getBoundingBox();
+	Vec2 resultCoords = Vec2(resultRect.getMinX(), resultRect.getMinY());
+	Vec2 resultSize = Vec2(resultRect.size.width, resultRect.size.height);
+
+	if (node->getParent() != nullptr)
+	{
+		resultCoords = node->getParent()->convertToWorldSpace(resultCoords);
+	}
+
+	resultRect.setRect(resultCoords.x, resultCoords.y, resultSize.x, resultSize.y);
+
+	return resultRect;
+}
+
 bool Utils::isVisible(Node* node)
 {
 	while (node != nullptr)
@@ -103,6 +119,20 @@ bool Utils::intersects(Node* node, Vec2 mousePos)
 	Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
 
 	if (Utils::getSceneBounds(node).intersectsRect(mouseRect))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool Utils::intersectsV2(Node* node, Vec2 mousePos)
+{
+	Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
+
+	if (Utils::getSceneBoundsV2(node).intersectsRect(mouseRect))
 	{
 		return true;
 	}

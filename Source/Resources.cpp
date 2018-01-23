@@ -644,6 +644,7 @@ const string Resources::Menus_HackerModeMenu_DataMenu = "Menus\\HackerModeMenu\\
 const string Resources::Menus_HackerModeMenu_HackButton = "Menus\\HackerModeMenu\\HackButton.png";
 const string Resources::Menus_HackerModeMenu_HackButtonClick = "Menus\\HackerModeMenu\\HackButtonClick.png";
 const string Resources::Menus_HackerModeMenu_HackButtonHover = "Menus\\HackerModeMenu\\HackButtonHover.png";
+const string Resources::Menus_HackerModeMenu_MouseOverPanel = "Menus\\HackerModeMenu\\MouseOverPanel.png";
 const string Resources::Menus_HackerModeMenu_RadialMenu = "Menus\\HackerModeMenu\\RadialMenu.png";
 const string Resources::Menus_HackerModeMenu_Ram = "Menus\\HackerModeMenu\\Ram.png";
 const string Resources::Menus_HackerModeMenu_RamClick = "Menus\\HackerModeMenu\\RamClick.png";

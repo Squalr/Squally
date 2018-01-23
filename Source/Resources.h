@@ -649,6 +649,7 @@ public:
 	static const string Menus_HackerModeMenu_HackButton;
 	static const string Menus_HackerModeMenu_HackButtonClick;
 	static const string Menus_HackerModeMenu_HackButtonHover;
+	static const string Menus_HackerModeMenu_MouseOverPanel;
 	static const string Menus_HackerModeMenu_RadialMenu;
 	static const string Menus_HackerModeMenu_Ram;
 	static const string Menus_HackerModeMenu_RamClick;
