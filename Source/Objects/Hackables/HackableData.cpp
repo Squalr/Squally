@@ -14,10 +14,9 @@ HackableData::HackableData(std::string name, void* dataAddress, const std::type_
 {
 	this->variableName = name;
 	this->dataPointer = dataAddress;
-	this->dataType = typeInfo;
+	this->dataType = HackUtils::stdTypeToDataType(typeInfo);
 }
 
 HackableData::~HackableData()
 {
-	delete(this->dataType);
 }

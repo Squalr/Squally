@@ -11,7 +11,6 @@ public:
 	static void resume(Node *node);
 	static void resumeAll();
 	static void focus(Node *node);
-	static std::string hexAddressOf(void* address);
 	static void accelerateParticles(ParticleSystem* particleSystem, float duration);
 	static void fadeInObject(Node* node, float delay, float duration);
 	static Rect getSceneBounds(Node* node);

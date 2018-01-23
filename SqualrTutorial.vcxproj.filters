@@ -279,6 +279,9 @@
     <ClCompile Include="Source\Objects\Hackables\HackableAttribute.cpp">
       <Filter>Source\Objects\Hackables</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Utils\HackUtils.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -478,6 +481,9 @@
     </ClInclude>
     <ClInclude Include="Source\Objects\Hackables\HackableAttribute.h">
       <Filter>Source\Objects\Hackables</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\HackUtils.h">
+      <Filter>Source\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
