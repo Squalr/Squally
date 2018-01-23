@@ -3,6 +3,7 @@
 #include "Resources.h"
 #include "Shaders/PostProcess.h"
 #include "GUI/Components/MenuSprite.h"
+#include "GUI/Components/MouseOverPanel.h"
 #include "Objects/Hackables/HackableObject.h"
 #include "Utils/HackUtils.h"
 

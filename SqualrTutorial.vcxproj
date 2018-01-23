@@ -164,6 +164,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\Components\FloatingSprite.cpp" />
     <ClCompile Include="Source\GUI\Components\InfiniteParallaxNode.cpp" />
     <ClCompile Include="Source\GUI\Components\MenuLabel.cpp" />
+    <ClCompile Include="Source\GUI\Components\MouseOverPanel.cpp" />
     <ClCompile Include="Source\GUI\Components\OutlineLabel.cpp" />
     <ClCompile Include="Source\GUI\Components\MenuSprite.cpp" />
     <ClCompile Include="Source\GUI\Components\Mouse.cpp" />
@@ -231,6 +232,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\Components\FloatingSprite.h" />
     <ClInclude Include="Source\GUI\Components\InfiniteParallaxNode.h" />
     <ClInclude Include="Source\GUI\Components\MenuLabel.h" />
+    <ClInclude Include="Source\GUI\Components\MouseOverPanel.h" />
     <ClInclude Include="Source\GUI\Components\OutlineLabel.h" />
     <ClInclude Include="Source\GUI\Components\MenuSprite.h" />
     <ClInclude Include="Source\GUI\Components\Mouse.h" />

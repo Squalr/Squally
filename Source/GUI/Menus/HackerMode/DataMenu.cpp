@@ -49,17 +49,11 @@ void DataMenu::open(HackableObject* hackableObject)
 		Node* newRow = Node::create();
 		HackableData* hackableData = *iterator;
 
-		Label* address = Label::create(HackUtils::hexAddressOf(hackableData->dataPointer, true, true), Resources::Fonts_Montserrat_Medium, fontSize);
-		Label* name = Label::create(hackableData->variableName, Resources::Fonts_Montserrat_Medium, fontSize);
-		Label* dataType = Label::create(HackUtils::dataTypeToString(hackableData->dataType), Resources::Fonts_Montserrat_Medium, fontSize);
-		Label* value = Label::create(HackUtils::valueStringOf(hackableData->dataPointer, hackableData->dataType), Resources::Fonts_Montserrat_Medium, fontSize);
-		Label* refCode = Label::create(">>", Resources::Fonts_Montserrat_Medium, fontSize);
-
-		address->setHorizontalAlignment(TextHAlignment::LEFT);
-		name->setHorizontalAlignment(TextHAlignment::LEFT);
-		dataType->setHorizontalAlignment(TextHAlignment::LEFT);
-		value->setHorizontalAlignment(TextHAlignment::LEFT);
-		refCode->setHorizontalAlignment(TextHAlignment::LEFT);
+		Label* address = Label::create(HackUtils::hexAddressOf(hackableData->dataPointer, true, true), Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
+		Label* name = Label::create(hackableData->variableName, Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
+		Label* dataType = Label::create(HackUtils::dataTypeToString(hackableData->dataType), Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
+		Label* value = Label::create(HackUtils::valueStringOf(hackableData->dataPointer, hackableData->dataType), Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
+		Label* refCode = Label::create(">>", Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
 
 		address->setPosition(Vec2(-384.0f, spacing * index));
 		name->setPosition(Vec2(-160.0f, spacing * index));

@@ -7,13 +7,14 @@ using namespace cocos2d;
 class HackableCode : public HackableAttribute
 {
 public:
-	static HackableCode * create(void* codeStart, int codeLength);
+	static HackableCode * create(std::string name, void* codeStart, int codeLength);
 
-private:
-	HackableCode(void* codeStart, int codeLength);
-	~HackableCode();
-
+	std::string functionName;
 	void* codePointer;
 	int codeOriginalLength;
+
+private:
+	HackableCode(std::string name, void* codeStart, int codeLength);
+	~HackableCode();
 };
 

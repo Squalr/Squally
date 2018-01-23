@@ -24,5 +24,6 @@ public:
 	static DataType stdTypeToDataType(const std::type_info* typeInfo);
 	static std::string dataTypeToString(DataType dataType);
 	static std::string valueStringOf(void* dataPointer, DataType dataType);
+	static std::string arrayOfByteStringOf(void* dataPointer, int length, int maxLength);
 };
 

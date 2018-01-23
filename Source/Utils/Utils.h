@@ -14,8 +14,10 @@ public:
 	static void accelerateParticles(ParticleSystem* particleSystem, float duration);
 	static void fadeInObject(Node* node, float delay, float duration);
 	static Rect getSceneBounds(Node* node);
+	static Rect getSceneBoundsV2(Node* node);
 	static bool isVisible(Node* node);
 	static bool intersects(Node* node, Vec2 mousePos);
+	static bool intersectsV2(Node* node, Vec2 mousePos);
 	static bool keyExists(ValueMap valueMap, std::string key);
 };
 

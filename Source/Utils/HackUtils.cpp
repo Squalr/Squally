@@ -134,3 +134,37 @@ std::string HackUtils::valueStringOf(void* dataPointer, HackUtils::DataType data
 		throw std::invalid_argument("Invalid data type");
 	}
 }
+
+std::string HackUtils::arrayOfByteStringOf(void* dataPointer, int length, int maxLength)
+{
+	std::string result = std::string("[");
+
+	for (int index = 0; index < length; index++)
+	{
+		if (index >= maxLength)
+		{
+			result.append(" ...");
+			break;
+		}
+
+		std::stringstream stream;
+
+		// Convert to hex
+		stream << std::hex << (int)(((byte*)dataPointer)[index]);
+		std::string hexByte = stream.str();
+
+		// Convert to upper
+		std::transform(hexByte.begin(), hexByte.end(), hexByte.begin(), ::toupper);
+
+		result.append(hexByte);
+
+		if (index < length - 1)
+		{
+			result.append(", ");
+		}
+	}
+
+	result.append("]");
+
+	return result;
+}
