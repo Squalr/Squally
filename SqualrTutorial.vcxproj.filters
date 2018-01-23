@@ -282,6 +282,9 @@
     <ClCompile Include="Source\Utils\HackUtils.cpp">
       <Filter>Source\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GUI\Components\MouseOverPanel.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -484,6 +487,9 @@
     </ClInclude>
     <ClInclude Include="Source\Utils\HackUtils.h">
       <Filter>Source\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\MouseOverPanel.h">
+      <Filter>Source\GUI\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
