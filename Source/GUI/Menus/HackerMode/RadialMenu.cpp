@@ -118,13 +118,9 @@ void RadialMenu::onClose(MenuSprite* menuSprite)
 void RadialMenu::onCodeMenuOpen(MenuSprite* menuSprite)
 {
 	this->codeMenu->open(this->activeHackableObject);
-
-	Utils::focus(this->codeMenu);
 }
 
 void RadialMenu::onDataMenuOpen(MenuSprite* menuSprite)
 {
 	this->dataMenu->open(this->activeHackableObject);
-
-	Utils::focus(this->dataMenu);
 }
