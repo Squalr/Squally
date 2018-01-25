@@ -73,6 +73,7 @@ void DataMenu::open(HackableObject* hackableObject)
 	}
 
 	this->setVisible(true);
+	Utils::focus(this);
 }
 
 void DataMenu::initializeListeners()

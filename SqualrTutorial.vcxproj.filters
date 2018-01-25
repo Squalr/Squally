@@ -285,6 +285,9 @@
     <ClCompile Include="Source\GUI\Components\MouseOverPanel.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\HackerMode\CodeEditor.cpp">
+      <Filter>Source\GUI\Menus\HackerMode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -490,6 +493,9 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\Components\MouseOverPanel.h">
       <Filter>Source\GUI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\HackerMode\CodeEditor.h">
+      <Filter>Source\GUI\Menus\HackerMode</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

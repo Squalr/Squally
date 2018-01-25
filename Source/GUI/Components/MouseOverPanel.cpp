@@ -1,27 +1,34 @@
 #include "MouseOverPanel.h"
 
-MouseOverPanel * MouseOverPanel::create(Node* visibleContent, Node* mouseOverContent, Vec2 size)
+MouseOverPanel * MouseOverPanel::create(Node* visibleContent, Node* mouseOverContent, Node* panelParent, Size size)
 {
-	MouseOverPanel* outlineLabel = new MouseOverPanel(visibleContent, mouseOverContent, size);
+	MouseOverPanel* outlineLabel = new MouseOverPanel(visibleContent, mouseOverContent, panelParent, size);
 
 	outlineLabel->autorelease();
 
 	return outlineLabel;
 }
 
-MouseOverPanel::MouseOverPanel(Node* visibleContent, Node* mouseOverContent, Vec2 size)
+MouseOverPanel::MouseOverPanel(Node* visibleContent, Node* mouseOverContent, Node* panelParent, Size size)
 {
 	this->content = visibleContent;
 	this->panelContent = mouseOverContent;
-	this->panelBackground = Sprite::create(Resources::Menus_HackerModeMenu_MouseOverPanel);
+	this->panelParentHost = panelParent;
+	this->panelBackgroundFrame = LayerColor::create(Color4B(50, 50, 225, 196), size.width + MouseOverPanel::frameWidth * 2, size.height + MouseOverPanel::frameWidth * 2);
+	this->panelBackground = LayerColor::create(Color4B(0, 0, 0, 196), size.width, size.height);
 
 	this->addChild(this->content);
-	this->addChild(this->panelBackground);
-	this->addChild(this->panelContent);
+	panelParentHost->addChild(this->panelBackgroundFrame);
+	panelParentHost->addChild(this->panelBackground);
+	panelParentHost->addChild(this->panelContent);
 
-	this->panelBackground->setScaleX(size.x / this->panelBackground->getContentSize().width);
-	this->panelBackground->setScaleY(size.y / this->panelBackground->getContentSize().height);
+	this->panelBackgroundFrame->setPositionX(this->content->getPosition().x - MouseOverPanel::frameWidth);
+	this->panelBackgroundFrame->setPositionY(this->content->getPosition().y - size.height / 2 - MouseOverPanel::frameWidth);
+	this->panelBackground->setPositionX(this->content->getPosition().x);
+	this->panelBackground->setPositionY(this->content->getPosition().y - size.height / 2);
+	this->panelContent->setPosition(this->content->getPosition() + Vec2(size.width / 2, 0));
 
+	this->panelBackgroundFrame->setVisible(false);
 	this->panelBackground->setVisible(false);
 	this->panelContent->setVisible(false);
 
@@ -45,11 +52,13 @@ void MouseOverPanel::onMouseSpriteMove(EventCustom* event)
 
 	if (Utils::isVisible(this) && Utils::intersectsV2(this->content, Vec2(args->mouseX, args->mouseY)))
 	{
+		this->panelBackgroundFrame->setVisible(true);
 		this->panelBackground->setVisible(true);
 		this->panelContent->setVisible(true);
 	}
 	else
 	{
+		this->panelBackgroundFrame->setVisible(false);
 		this->panelBackground->setVisible(false);
 		this->panelContent->setVisible(false);
 	}
