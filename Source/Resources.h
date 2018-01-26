@@ -10,6 +10,7 @@ using namespace std;
 class Resources
 {
 public:
+	static const string EmptyImage;
 	static const string Dialog_DialogTutorialExactScanI;
 	static const string Fonts_Alien_li;
 	static const string Fonts_AlienText;
@@ -641,6 +642,7 @@ public:
 	static const string Menus_HackerModeMenu_CloseButton;
 	static const string Menus_HackerModeMenu_CloseButtonClick;
 	static const string Menus_HackerModeMenu_CloseButtonHover;
+	static const string Menus_HackerModeMenu_CodeEditMenu;
 	static const string Menus_HackerModeMenu_CodeMenu;
 	static const string Menus_HackerModeMenu_CpuChip;
 	static const string Menus_HackerModeMenu_CpuChipClick;
@@ -649,7 +651,6 @@ public:
 	static const string Menus_HackerModeMenu_HackButton;
 	static const string Menus_HackerModeMenu_HackButtonClick;
 	static const string Menus_HackerModeMenu_HackButtonHover;
-	static const string Menus_HackerModeMenu_MouseOverPanel;
 	static const string Menus_HackerModeMenu_RadialMenu;
 	static const string Menus_HackerModeMenu_Ram;
 	static const string Menus_HackerModeMenu_RamClick;

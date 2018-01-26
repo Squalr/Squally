@@ -1,5 +1,6 @@
 #pragma once
 #include "cocos2d.h"
+#include "ui/CocosGUI.h"
 #include "Resources.h"
 #include "Shaders/PostProcess.h"
 #include "GUI/Components/MenuLabel.h"
@@ -9,6 +10,7 @@
 #include "Utils/HackUtils.h"
 
 using namespace cocos2d;
+using namespace cocos2d::ui;
 
 class CodeEditor : public Node
 {
@@ -23,10 +25,17 @@ private:
 
 	void initializePositions();
 	void initializeListeners();
+	void update(float) override;
 	void onClose(MenuSprite* menuSprite);
 
 	Sprite* codeEditorBackground;
 	MenuSprite* closeButton;
-	Label* text;
+	EditBox* assemblyCodeText;
+	RichText* displayText;
+
+	std::vector<RichElementText*>* displayTextElements;
+	std::string previousAssemblyText;
+
+	static const Size textSize;
 };
 

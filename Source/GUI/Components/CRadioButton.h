@@ -5,20 +5,20 @@
 
 using namespace cocos2d;
 
-class RadioButton : public Node
+class CRadioButton : public Node
 {
 public:
-	static RadioButton * create(int groupIdentifier);
+	static CRadioButton * create(int groupIdentifier);
 
 	void check();
 	void uncheck();
-	void setCheckCallback(std::function<void(RadioButton*)> callback);
+	void setCheckCallback(std::function<void(CRadioButton*)> callback);
 
 	const std::string RadioButtonCheckEvent = "radio_button_check_event";
 
 private:
-	RadioButton(int groupIdentifier);
-	~RadioButton();
+	CRadioButton(int groupIdentifier);
+	~CRadioButton();
 
 	void onGroupCheck(EventCustom* event);
 	void onUncheckClick(MenuSprite* menuSprite);
@@ -30,6 +30,6 @@ private:
 	bool isChecked;
 
 	int groupId;
-	std::function<void(RadioButton*)> onCheckCallback;
+	std::function<void(CRadioButton*)> onCheckCallback;
 };
 

@@ -1,5 +1,7 @@
 #pragma once
 #include "cocos2d.h"
+#include "udis86.h"
+#include "fasm.h"
 
 using namespace cocos2d;
 
@@ -20,6 +22,8 @@ public:
 		Double,
 	};
 
+	static Fasm::FasmResult* assemble(std::string assembly, void* addressStart);
+	static std::string disassemble(void* bytes, int length);
 	static std::string hexAddressOf(void* address, bool zeroPad, bool prefix);
 	static DataType stdTypeToDataType(const std::type_info* typeInfo);
 	static std::string dataTypeToString(DataType dataType);

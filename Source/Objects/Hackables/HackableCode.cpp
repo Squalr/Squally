@@ -12,7 +12,7 @@ HackableCode * HackableCode::create(std::string name, void* codeStart, int codeL
 HackableCode::HackableCode(std::string name, void* codeStart, int codeLength)
 {
 	this->functionName = name;
-	this->codePointer = codeStart;
+	this->codePointer = (byte*)codeStart;
 	this->codeOriginalLength = codeLength;
 }
 

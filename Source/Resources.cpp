@@ -5,6 +5,7 @@
 #include "Resources.h"
 #include <string>
 
+const string Resources::EmptyImage = "EmptyImage.png";
 const string Resources::Dialog_DialogTutorialExactScanI = "Dialog\\DialogTutorialExactScanI.json";
 const string Resources::Fonts_Alien_li = "Fonts\\Alien-li.ttf";
 const string Resources::Fonts_AlienText = "Fonts\\AlienText.png";
@@ -636,6 +637,7 @@ const string Resources::Menus_DialogMenu_ShipBackground = "Menus\\DialogMenu\\Sh
 const string Resources::Menus_HackerModeMenu_CloseButton = "Menus\\HackerModeMenu\\CloseButton.png";
 const string Resources::Menus_HackerModeMenu_CloseButtonClick = "Menus\\HackerModeMenu\\CloseButtonClick.png";
 const string Resources::Menus_HackerModeMenu_CloseButtonHover = "Menus\\HackerModeMenu\\CloseButtonHover.png";
+const string Resources::Menus_HackerModeMenu_CodeEditMenu = "Menus\\HackerModeMenu\\CodeEditMenu.png";
 const string Resources::Menus_HackerModeMenu_CodeMenu = "Menus\\HackerModeMenu\\CodeMenu.png";
 const string Resources::Menus_HackerModeMenu_CpuChip = "Menus\\HackerModeMenu\\CpuChip.png";
 const string Resources::Menus_HackerModeMenu_CpuChipClick = "Menus\\HackerModeMenu\\CpuChipClick.png";
@@ -644,7 +646,6 @@ const string Resources::Menus_HackerModeMenu_DataMenu = "Menus\\HackerModeMenu\\
 const string Resources::Menus_HackerModeMenu_HackButton = "Menus\\HackerModeMenu\\HackButton.png";
 const string Resources::Menus_HackerModeMenu_HackButtonClick = "Menus\\HackerModeMenu\\HackButtonClick.png";
 const string Resources::Menus_HackerModeMenu_HackButtonHover = "Menus\\HackerModeMenu\\HackButtonHover.png";
-const string Resources::Menus_HackerModeMenu_MouseOverPanel = "Menus\\HackerModeMenu\\MouseOverPanel.png";
 const string Resources::Menus_HackerModeMenu_RadialMenu = "Menus\\HackerModeMenu\\RadialMenu.png";
 const string Resources::Menus_HackerModeMenu_Ram = "Menus\\HackerModeMenu\\Ram.png";
 const string Resources::Menus_HackerModeMenu_RamClick = "Menus\\HackerModeMenu\\RamClick.png";

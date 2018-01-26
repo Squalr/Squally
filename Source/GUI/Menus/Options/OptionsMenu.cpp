@@ -19,8 +19,8 @@ OptionsMenu::OptionsMenu()
 	this->musicIcon = Sprite::create(Resources::Menus_OptionsMenu_MusicIcon);
 	this->soundIcon = Sprite::create(Resources::Menus_OptionsMenu_SoundIcon);
 
-	this->musicSlider = Slider::create(SoundManager::getMusicVolume());
-	this->soundSlider = Slider::create(SoundManager::getSoundVolume());
+	this->musicSlider = CSlider::create(SoundManager::getMusicVolume());
+	this->soundSlider = CSlider::create(SoundManager::getSoundVolume());
 
 	this->fullScreenButton = ToggleButton::create(ConfigManager::getIsFullScreen(), CC_CALLBACK_1(OptionsMenu::onFullScreenChanged, this));
 
@@ -34,15 +34,15 @@ OptionsMenu::OptionsMenu()
 	this->label1600x1024 = Label::create("1600x1024", Resources::Fonts_Montserrat_Medium, 14);
 	this->label1920x1080 = Label::create("1920x1080", Resources::Fonts_Montserrat_Medium, 14);
 
-	this->option1080x768 = RadioButton::create(this->resolutionGroupId);
-	this->option1152x864 = RadioButton::create(this->resolutionGroupId);
-	this->option1280x720 = RadioButton::create(this->resolutionGroupId);
-	this->option1280x960 = RadioButton::create(this->resolutionGroupId);
-	this->option1280x1024 = RadioButton::create(this->resolutionGroupId);
-	this->option1440x900 = RadioButton::create(this->resolutionGroupId);
-	this->option1600x900 = RadioButton::create(this->resolutionGroupId);
-	this->option1600x1024 = RadioButton::create(this->resolutionGroupId);
-	this->option1920x1080 = RadioButton::create(this->resolutionGroupId);
+	this->option1080x768 = CRadioButton::create(this->resolutionGroupId);
+	this->option1152x864 = CRadioButton::create(this->resolutionGroupId);
+	this->option1280x720 = CRadioButton::create(this->resolutionGroupId);
+	this->option1280x960 = CRadioButton::create(this->resolutionGroupId);
+	this->option1280x1024 = CRadioButton::create(this->resolutionGroupId);
+	this->option1440x900 = CRadioButton::create(this->resolutionGroupId);
+	this->option1600x900 = CRadioButton::create(this->resolutionGroupId);
+	this->option1600x1024 = CRadioButton::create(this->resolutionGroupId);
+	this->option1920x1080 = CRadioButton::create(this->resolutionGroupId);
 
 	this->exitButton = MenuSprite::create(Sprite::create(Resources::Menus_OptionsMenu_ExitButton), Resources::Menus_OptionsMenu_ExitButtonHover, Resources::Menus_OptionsMenu_ExitButtonClick);
 
@@ -207,7 +207,7 @@ void OptionsMenu::onFullScreenChanged(bool isFullScreen)
 	this->initializePositions();
 }
 
-void OptionsMenu::onResolutionChanged(RadioButton* radioButton)
+void OptionsMenu::onResolutionChanged(CRadioButton* radioButton)
 {
 	if (radioButton == this->option1080x768)
 	{

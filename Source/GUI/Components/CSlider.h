@@ -5,17 +5,17 @@
 
 using namespace cocos2d;
 
-class Slider : public Node
+class CSlider : public Node
 {
 public:
-	static Slider * create(float progress);
+	static CSlider * create(float progress);
 
 	void setProgressUpdateCallback(std::function<void(float progress)> callback);
 	void initializePositions();
 
 protected:
-	Slider(float progress);
-	~Slider();
+	CSlider(float progress);
+	~CSlider();
 
 private:
 	void onDrag(MenuSprite* sprite, EventMouse* args);
