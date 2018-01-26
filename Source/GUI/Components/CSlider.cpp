@@ -1,15 +1,15 @@
-#include "Slider.h"
+#include "CSlider.h"
 
-Slider* Slider::create(float progress)
+CSlider* CSlider::create(float progress)
 {
-	Slider* slider = new Slider(progress);
+	CSlider* slider = new CSlider(progress);
 
 	slider->autorelease();
 
 	return slider;
 }
 
-Slider::Slider(float progress)
+CSlider::CSlider(float progress)
 {
 	this->progressUpdateEvent = nullptr;
 
@@ -22,7 +22,7 @@ Slider::Slider(float progress)
 	this->progressClip->setCascadeOpacityEnabled(true);
 	this->setProgress(progress);
 
-	this->slide->setMouseDragCallback(CC_CALLBACK_2(Slider::onDrag, this));
+	this->slide->setMouseDragCallback(CC_CALLBACK_2(CSlider::onDrag, this));
 
 	this->progressBar->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->progressClip->addChild(this->progressBar);
@@ -34,22 +34,22 @@ Slider::Slider(float progress)
 	this->initializePositions();
 }
 
-Slider::~Slider()
+CSlider::~CSlider()
 {
 }
 
-void Slider::initializePositions()
+void CSlider::initializePositions()
 {
 	this->progressClip->setPosition(Vec2(-this->progressBar->getContentSize().width / 2, 0));
 	this->slide->setPosition(Vec2(this->progress * this->frame->getContentSize().width - this->frame->getContentSize().width / 2, 0));
 }
 
-void Slider::setProgressUpdateCallback(std::function<void(float progress)> callback)
+void CSlider::setProgressUpdateCallback(std::function<void(float progress)> callback)
 {
 	this->progressUpdateEvent = callback;
 }
 
-void Slider::onDrag(MenuSprite* sprite, EventMouse* args)
+void CSlider::onDrag(MenuSprite* sprite, EventMouse* args)
 {
 	Vec2 newPosition = Vec2(args->getCursorX() - this->getPositionX(), this->slide->getPosition().y);
 
@@ -66,7 +66,7 @@ void Slider::onDrag(MenuSprite* sprite, EventMouse* args)
 	this->slide->setPosition(newPosition);
 }
 
-void Slider::setProgress(float newProgress)
+void CSlider::setProgress(float newProgress)
 {
 	if (newProgress < 0.0f)
 	{

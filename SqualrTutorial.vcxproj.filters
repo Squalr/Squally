@@ -132,17 +132,11 @@
     <ClCompile Include="Source\GUI\Components\Mouse.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GUI\Components\Slider.cpp">
-      <Filter>Source\GUI\Components</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GUI\Components\ToggleButton.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
     <ClCompile Include="Source\Config\SoundManager.cpp">
       <Filter>Source\Config</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\Components\RadioButton.cpp">
-      <Filter>Source\GUI\Components</Filter>
     </ClCompile>
     <ClCompile Include="Source\GUI\Menus\MenuBackground.cpp">
       <Filter>Source\GUI\Menus</Filter>
@@ -288,6 +282,12 @@
     <ClCompile Include="Source\GUI\Menus\HackerMode\CodeEditor.cpp">
       <Filter>Source\GUI\Menus\HackerMode</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GUI\Components\CRadioButton.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Components\CSlider.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -332,17 +332,11 @@
     <ClInclude Include="Source\GUI\Components\Mouse.h">
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GUI\Components\Slider.h">
-      <Filter>Source\GUI\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Source\GUI\Components\ToggleButton.h">
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\Config\SoundManager.h">
       <Filter>Source\Config</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GUI\Components\RadioButton.h">
-      <Filter>Source\GUI\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\GUI\Menus\MenuBackground.h">
       <Filter>Source\GUI\Menus</Filter>
@@ -496,6 +490,12 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\Menus\HackerMode\CodeEditor.h">
       <Filter>Source\GUI\Menus\HackerMode</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\CRadioButton.h">
+      <Filter>Source\GUI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\CSlider.h">
+      <Filter>Source\GUI\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,36 @@
 #include "HackUtils.h"
 
+Fasm::FasmResult* HackUtils::assemble(std::string assembly, void* addressStart)
+{
+	return Fasm::assemble(assembly, addressStart);
+}
+
+std::string HackUtils::disassemble(void* bytes, int length)
+{
+	static ud_t ud_obj;
+	static bool initialized = false;
+
+	// Only initialize the disassembler once
+	if (!initialized)
+	{
+		ud_init(&ud_obj);
+		ud_set_mode(&ud_obj, sizeof(void*) * 8);
+		ud_set_syntax(&ud_obj, UD_SYN_INTEL);
+	}
+
+	ud_set_input_buffer(&ud_obj, (byte*)bytes, length);
+
+	std::string instructions = "";
+
+	while (ud_disassemble(&ud_obj))
+	{
+		instructions += ud_insn_asm(&ud_obj);
+		instructions += "\r\n";
+	}
+
+	return instructions;
+}
+
 std::string HackUtils::hexAddressOf(void* address, bool zeroPad, bool prefix)
 {
 	std::stringstream stream;

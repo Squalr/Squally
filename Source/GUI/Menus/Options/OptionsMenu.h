@@ -8,8 +8,8 @@
 #include "GUI/Components/Mouse.h"
 #include "GUI/Components/OutlineLabel.h"
 #include "GUI/Components/MenuSprite.h"
-#include "GUI/Components/Slider.h"
-#include "GUI/Components/RadioButton.h"
+#include "GUI/Components/CSlider.h"
+#include "GUI/Components/CRadioButton.h"
 #include "GUI/Components/ToggleButton.h"
 #include "GUI/Menus/MenuBackground.h"
 
@@ -29,7 +29,7 @@ private:
 	void onSoundVolumeUpdate(float soundVolume);
 	void onMusicVolumeUpdate(float musicVolume);
 	void onFullScreenChanged(bool isFullScreen);
-	void onResolutionChanged(RadioButton* radioButton);
+	void onResolutionChanged(CRadioButton* radioButton);
 	void onCloseClick(MenuSprite* menuSprite);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void initializeListeners();
@@ -43,8 +43,8 @@ private:
 
 	Sprite* musicIcon;
 	Sprite* soundIcon;
-	Slider* musicSlider;
-	Slider* soundSlider;
+	CSlider* musicSlider;
+	CSlider* soundSlider;
 	OutlineLabel* fullScreenLabel;
 	ToggleButton* fullScreenButton;
 	MenuSprite* exitButton;
@@ -59,15 +59,15 @@ private:
 	Label* label1600x1024;
 	Label* label1920x1080;
 
-	RadioButton* option1080x768;
-	RadioButton* option1152x864;
-	RadioButton* option1280x720;
-	RadioButton* option1280x960;
-	RadioButton* option1280x1024;
-	RadioButton* option1440x900;
-	RadioButton* option1600x900;
-	RadioButton* option1600x1024;
-	RadioButton* option1920x1080;
+	CRadioButton* option1080x768;
+	CRadioButton* option1152x864;
+	CRadioButton* option1280x720;
+	CRadioButton* option1280x960;
+	CRadioButton* option1280x1024;
+	CRadioButton* option1440x900;
+	CRadioButton* option1600x900;
+	CRadioButton* option1600x1024;
+	CRadioButton* option1920x1080;
 
 	const int resolutionGroupId = 420;
 
