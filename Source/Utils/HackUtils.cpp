@@ -25,7 +25,7 @@ std::string HackUtils::disassemble(void* bytes, int length)
 	while (ud_disassemble(&ud_obj))
 	{
 		instructions += ud_insn_asm(&ud_obj);
-		instructions += "\r\n";
+		instructions += "\n";
 	}
 
 	return instructions;
