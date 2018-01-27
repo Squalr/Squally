@@ -30,7 +30,7 @@ private:
 
 	Sprite* codeEditorBackground;
 	MenuSprite* closeButton;
-	EditBox* assemblyCodeText;
+	TextField* assemblyCodeText;
 	RichText* displayText;
 
 	std::vector<RichElementText*>* displayTextElements;
