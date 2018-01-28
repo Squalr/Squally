@@ -8,6 +8,7 @@
 #include "GUI/Components/MouseOverPanel.h"
 #include "Objects/Hackables/HackableObject.h"
 #include "Utils/HackUtils.h"
+#include "Utils/StrUtils.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
@@ -23,9 +24,21 @@ private:
 	CodeEditor();
 	~CodeEditor();
 
+	struct token
+	{
+		std::string tokenStr;
+		Color3B color;
+
+		token(std::string tokenStr, Color3B color) : tokenStr(tokenStr), color(color)
+		{
+		}
+	};
+
 	void initializePositions();
 	void initializeListeners();
 	void update(float) override;
+	void constructRichText(std::string rawText);
+	std::vector<token>* createTokens(std::string tokenStr);
 	void onClose(MenuSprite* menuSprite);
 
 	Sprite* codeEditorBackground;
@@ -33,9 +46,14 @@ private:
 	TextField* assemblyCodeText;
 	RichText* displayText;
 
-	std::vector<RichElementText*>* displayTextElements;
+	std::vector<RichElement*>* displayTextElements;
 	std::string previousAssemblyText;
 
 	static const Size textSize;
+	static const std::string delimiters;
+	static const std::string subDelimiters;
+	static const Color3B defaultColor;
+	static const Color3B registerColor;
+	static const Color3B integerColor;
 };
 

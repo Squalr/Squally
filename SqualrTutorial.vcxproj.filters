@@ -288,6 +288,9 @@
     <ClCompile Include="Source\GUI\Components\CSlider.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Utils\StrUtils.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -496,6 +499,9 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\Components\CSlider.h">
       <Filter>Source\GUI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\StrUtils.h">
+      <Filter>Source\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
