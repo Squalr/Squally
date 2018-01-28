@@ -647,14 +647,47 @@ void TextFieldTTF::controlKey(EventKeyboard::KeyCode keyCode)
 		case EventKeyboard::KeyCode::KEY_UP_ARROW:
 			if (_cursorPosition)
 			{
-				setCursorPosition(_cursorPosition - 8);
-				updateCursorDisplayText();
+				// Get current row offset
+				std::size_t currentRowSearch = this->getString().rfind('\n', _cursorPosition <= 0 ? 0 : _cursorPosition - 1);
+				int currentRowStart = currentRowSearch != std::string::npos ? currentRowSearch + 1 : 0;
+				int currentRowOffset = _cursorPosition - currentRowStart;
+
+				// Disallow moving cursor up if on the first row
+				if (currentRowStart > 0)
+				{
+					// Calculate length of previous row
+					std::size_t previousRowSearch = this->getString().rfind('\n', currentRowSearch <= 0 ? 0 : currentRowSearch - 1);
+					int previousRowStart = previousRowSearch != std::string::npos ? previousRowSearch + 1 : 0;
+					int previousRowLength = currentRowStart - previousRowStart;
+
+					// Determine new cursor offset for previous row
+					int newOffset = previousRowLength < currentRowOffset ? previousRowLength <= 0 ? 0 : previousRowLength - 1 : currentRowOffset;
+					int newCursorPos = previousRowStart + newOffset;
+
+					setCursorPosition(newCursorPos);
+					updateCursorDisplayText();
+				}
 			}
 			break;
 		case EventKeyboard::KeyCode::KEY_DOWN_ARROW:
 			if (_cursorPosition < (std::size_t)_charCount)
 			{
-				setCursorPosition(_cursorPosition + 8);
+				// Get current row offset
+				std::size_t currentRowSearch = this->getString().rfind('\n', _cursorPosition <= 0 ? 0 : _cursorPosition - 1);
+				int currentRowStart = currentRowSearch != std::string::npos ? currentRowSearch + 1 : 0;
+				int currentRowOffset = _cursorPosition - currentRowStart;
+
+				// Calculate length of next row
+				std::size_t nextRowSearch = this->getString().find('\n', _cursorPosition <= 0 ? 0 : _cursorPosition);
+				std::size_t nextRowEndSearch = this->getString().find('\n', nextRowSearch + 1);
+				int nextRowStart = nextRowSearch != std::string::npos ? nextRowSearch + 1 : 0;
+				int nextRowLength = nextRowEndSearch != std::string::npos ? nextRowEndSearch - nextRowStart : _charCount - nextRowStart;
+
+				// Determine new cursor offset for next row
+				int newOffset = nextRowLength < currentRowOffset ? nextRowLength <= 0 ? 0 : nextRowLength - 1 : currentRowOffset;
+				int newCursorPos = nextRowStart + newOffset;
+
+				setCursorPosition(newCursorPos);
 				updateCursorDisplayText();
 			}
 			break;
