@@ -51,9 +51,10 @@ private:
 
 	static const Size textSize;
 	static const std::string delimiters;
-	static const std::string subDelimiters;
 	static const Color3B defaultColor;
 	static const Color3B registerColor;
 	static const Color3B integerColor;
+
+	static const std::set<std::string> registers;
 };
 
