@@ -53,7 +53,7 @@ private:
 	static const std::string delimiters;
 	static const Color3B defaultColor;
 	static const Color3B registerColor;
-	static const Color3B integerColor;
+	static const Color3B numberColor;
 
 	static const std::set<std::string> registers;
 };
