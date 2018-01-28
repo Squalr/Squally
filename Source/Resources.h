@@ -19,6 +19,10 @@ public:
 	static const string Fonts_Marker_Felt;
 	static const string Fonts_Montserrat_Medium;
 	static const string Fonts_Stormblade;
+	static const string Fonts_UbuntuMono_B;
+	static const string Fonts_UbuntuMono_BI;
+	static const string Fonts_UbuntuMono_R;
+	static const string Fonts_UbuntuMono_RI;
 	static const string Fonts_ZdykSagittarius;
 	static const string HUD_Egg;
 	static const string HUD_HealthBar;
