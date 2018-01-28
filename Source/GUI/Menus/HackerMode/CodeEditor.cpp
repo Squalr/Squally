@@ -3,8 +3,8 @@
 const Size CodeEditor::textSize = Size(480.0f, 640.0f);
 const std::string CodeEditor::delimiters = "[],; \n\t";
 const Color3B CodeEditor::defaultColor = Color3B::WHITE;
-const Color3B CodeEditor::registerColor = Color3B::BLUE;
-const Color3B CodeEditor::integerColor = Color3B::GREEN;
+const Color3B CodeEditor::registerColor = Color3B(51, 51, 212);
+const Color3B CodeEditor::numberColor = Color3B(51, 212, 51);
 
 const std::set<std::string> CodeEditor::registers =
 {
@@ -151,6 +151,10 @@ std::vector<CodeEditor::token>* CodeEditor::createTokens(std::string tokenStr)
 		if (CodeEditor::registers.find(innerToken) != CodeEditor::registers.end())
 		{
 			color = CodeEditor::registerColor;
+		}
+		else if (StrUtils::isInteger(innerToken) || StrUtils::isFloat(innerToken) || StrUtils::isHexNumber(innerToken))
+		{
+			color = CodeEditor::numberColor;
 		}
 
 		CodeEditor::token nextToken = CodeEditor::token(innerToken, color);

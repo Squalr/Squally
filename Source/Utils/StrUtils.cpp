@@ -91,6 +91,50 @@ std::vector<std::string>* StrUtils::splitOn(std::string str, std::string delimit
 	return tokens;
 }
 
+bool StrUtils::isInteger(std::string  str)
+{
+	if (StrUtils::startsWith(str, "-"))
+	{
+		str = str.substr(1, str.size() - 1);
+	}
+
+	return !str.empty() && str.find_first_not_of("0123456789") == std::string::npos;
+}
+
+bool StrUtils::isFloat(std::string str)
+{
+	std::istringstream iss(str);
+	float f;
+
+	iss >> noskipws >> f;
+
+	return iss.eof() && !iss.fail();
+}
+
+bool StrUtils::isHexNumber(std::string str)
+{
+	if (StrUtils::startsWith(str, "0x"))
+	{
+		str = str.substr(2, str.size() - 2);
+		return !str.empty() && str.find_first_not_of("0123456789abcdefABCDEF") == std::string::npos;
+	}
+
+	return false;
+}
+
+bool StrUtils::startsWith(std::string str, std::string prefix)
+{
+	if (str.size() >= prefix.size())
+	{
+		if (str.substr(0, prefix.size()) == prefix)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
 std::string StrUtils::replaceAll(std::string str, const std::string& from, const std::string& to)
 {
 	size_t start_pos = 0;
