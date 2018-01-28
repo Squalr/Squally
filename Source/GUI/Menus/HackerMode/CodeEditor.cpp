@@ -2,10 +2,39 @@
 
 const Size CodeEditor::textSize = Size(480.0f, 640.0f);
 const std::string CodeEditor::delimiters = "[],; \n\t";
-const std::string CodeEditor::subDelimiters = "\n";
 const Color3B CodeEditor::defaultColor = Color3B::WHITE;
 const Color3B CodeEditor::registerColor = Color3B::BLUE;
 const Color3B CodeEditor::integerColor = Color3B::GREEN;
+
+const std::set<std::string> CodeEditor::registers =
+{
+	// General registers
+	"ax", "bx", "cx", "dx", "si", "di", "bp", "sp",
+	"r8w", "r9w", "r10w", "r11w", "r12w", "r13w", "r14w", "r15w",
+	"al", "bl", "cl", "dl", "sil", "dil", "bpl", "spl",
+	"r8b", "r9b", "r10b", "r11b", "r12b", "r13b", "r14b", "r15b",
+	"eax", "ebx", "ecx" ,"edx" ,"esi", "edi", "ebp", "esp",
+	"r8d", "r9d", "r10d", "r11d", "r12d", "r13d", "r14d", "r15d",
+	"rax", "rbx", "rcx" ,"rdx" ,"rdi", "rsi", "rbp", "rsp",
+	"r8", "r9", "r10", "r11", "r12", "r13", "r14", "r15",
+
+	// FPU registers
+	"fp0", "fp1", "fp2", "fp3", "fp4", "fp5", "fp6", "fp7",
+
+	// MMX registers
+	"mm0", "mm1", "mm2", "mm3", "mm4", "mm5", "mm6", "mm7",
+	"mm8", "mm9", "mm10", "mm11", "mm12", "mm13", "mm14", "mm15",
+	"xmm0", "xmm1", "xmm2", "xmm3", "xmm4", "xmm5", "xmm6", "xmm7",
+	"xmm8", "xmm9", "xmm10", "xmm11", "xmm12", "xmm13", "xmm14", "xmm15",
+	"ymm0", "ymm1", "ymm2", "ymm3", "ymm4", "ymm5", "ymm6", "ymm7",
+	"ymm8", "ymm9", "ymm10", "ymm11", "ymm12", "ymm13", "ymm14", "ymm15",
+
+	// Segment registers
+	"cs", "ds", "es", "fs", "gs", "ss",
+
+	// Instruction pointers
+	"eip", "rip"
+};
 
 CodeEditor* CodeEditor::create()
 {
@@ -112,15 +141,14 @@ void CodeEditor::constructRichText(std::string rawText)
 std::vector<CodeEditor::token>* CodeEditor::createTokens(std::string tokenStr)
 {
 	std::vector<CodeEditor::token>* tokens = new std::vector<CodeEditor::token>();
-	std::vector <std::string> * tokenStrings = StrUtils::tokenize(tokenStr, CodeEditor::subDelimiters);
+	std::vector <std::string> * tokenStrings = StrUtils::splitOn(tokenStr, "\n");
 
 	for (auto tokenIterator = tokenStrings->begin(); tokenIterator != tokenStrings->end(); tokenIterator++)
 	{
 		std::string innerToken = *tokenIterator;
 		Color3B color = CodeEditor::defaultColor;
 
-		if (innerToken == "eax" || innerToken == "edx" || innerToken == "ecx" || innerToken == "edx" ||
-			innerToken == "edi" || innerToken == "esi" || innerToken == "ebp" || innerToken == "esp")
+		if (CodeEditor::registers.find(innerToken) != CodeEditor::registers.end())
 		{
 			color = CodeEditor::registerColor;
 		}
