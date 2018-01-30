@@ -1,10 +1,11 @@
-#include "CodeEditor.h"
+﻿#include "CodeEditor.h"
 
 const Size CodeEditor::textSize = Size(480.0f, 640.0f);
 const std::string CodeEditor::delimiters = "[],; \n\t";
 const Color3B CodeEditor::defaultColor = Color3B::WHITE;
-const Color3B CodeEditor::registerColor = Color3B(51, 51, 212);
-const Color3B CodeEditor::numberColor = Color3B(51, 212, 51);
+const Color3B CodeEditor::registerColor = Color3B(86, 156, 214);
+const Color3B CodeEditor::numberColor = Color3B(181, 206, 168); // Color3B(78, 201, 176);
+const Color3B CodeEditor::commentColor = Color3B(87, 166, 74);
 
 const std::set<std::string> CodeEditor::registers =
 {
@@ -47,24 +48,67 @@ CodeEditor* CodeEditor::create()
 
 CodeEditor::CodeEditor()
 {
+	this->activeHackableCode = nullptr;
 	this->displayTextElements = new std::vector<RichElement*>();
+	this->outputTextElements = new std::vector<RichElement*>();
+
 	this->codeEditorBackground = Sprite::create(Resources::Menus_HackerModeMenu_CodeEditMenu);
-	this->closeButton = MenuSprite::create(Resources::Menus_HackerModeMenu_CloseButton, Resources::Menus_HackerModeMenu_CloseButtonHover, Resources::Menus_HackerModeMenu_CloseButtonClick);
+	this->codeEditorScrollView = ScrollView::create();
 	this->assemblyCodeText = TextField::create("<Click to Edit Assembly Code>", Resources::Fonts_UbuntuMono_B, 32);
 	this->displayText = RichText::create();
+	this->cancelButton = MenuSprite::create(Resources::Menus_Buttons_CancelButton, Resources::Menus_Buttons_CancelButtonHover, Resources::Menus_Buttons_CancelButtonClick);
+	this->acceptButton = MenuSprite::create(Resources::Menus_Buttons_AcceptButton, Resources::Menus_Buttons_AcceptButtonHover, Resources::Menus_Buttons_AcceptButtonClick);
+	this->acceptButtonGrayed = Sprite::create(Resources::Menus_Buttons_AcceptButtonGray);
+	this->codeEditorTitle = MenuLabel::create("Code Editor", Resources::Fonts_Montserrat_Medium, 32);
+
+	this->allocEditorBackground = Sprite::create(Resources::Menus_HackerModeMenu_OutputMenu);
+	this->allocEditorTitle = MenuLabel::create("Alloc Editor", Resources::Fonts_Montserrat_Medium, 32);
+
+	this->outputBackground = Sprite::create(Resources::Menus_HackerModeMenu_OutputMenu);
+	this->outputTitle = MenuLabel::create("Status", Resources::Fonts_Montserrat_Medium, 32);
+	this->outputScrollView = ScrollView::create();
+	this->outputText = RichText::create();
+
+	this->acceptButtonGrayed->setVisible(false);
 
 	this->assemblyCodeText->setOpacity(0);
 	this->assemblyCodeText->setCascadeOpacityEnabled(false);
 	this->assemblyCodeText->setCursorEnabled(true);
 	this->assemblyCodeText->setHighlighted(true);
 
+	this->codeEditorScrollView->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->assemblyCodeText->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->displayText->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->outputScrollView->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->outputText->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->outputText->setSize(CodeEditor::textSize);
+	this->outputText->ignoreContentAdaptWithSize(false);
+
+	this->codeEditorScrollView->setSize(CodeEditor::textSize);
+	this->codeEditorScrollView->setDirection(SCROLLVIEW_DIR_BOTH);
+	this->codeEditorScrollView->setInnerContainerSize(Size(CodeEditor::textSize.width, CodeEditor::textSize.height * 2));
+
+	this->outputScrollView->setSize(CodeEditor::textSize);
+	this->outputScrollView->setDirection(SCROLLVIEW_DIR_BOTH);
+	this->outputScrollView->setInnerContainerSize(Size(CodeEditor::textSize.width, CodeEditor::textSize.height * 2));
+
+	this->codeEditorScrollView->addChild(this->assemblyCodeText);
+	this->codeEditorScrollView->addChild(this->displayText);
+	this->outputScrollView->addChild(this->outputText);
 
 	this->addChild(this->codeEditorBackground);
-	this->addChild(this->closeButton);
-	this->addChild(this->assemblyCodeText);
-	this->addChild(this->displayText);
+	this->addChild(this->codeEditorScrollView);
+	this->addChild(this->cancelButton);
+	this->addChild(this->acceptButton);
+	this->addChild(this->acceptButtonGrayed);
+	this->addChild(this->codeEditorTitle);
+
+	this->addChild(this->allocEditorBackground);
+	this->addChild(this->allocEditorTitle);
+
+	this->addChild(this->outputBackground);
+	this->addChild(this->outputTitle);
+	this->addChild(this->outputScrollView);
 
 	this->initializePositions();
 	this->initializeListeners();
@@ -74,6 +118,35 @@ CodeEditor::CodeEditor()
 CodeEditor::~CodeEditor()
 {
 	delete(this->displayTextElements);
+	delete(this->outputTextElements);
+}
+
+void CodeEditor::initializePositions()
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->codeEditorBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->acceptButton->setPosition(Vec2(this->codeEditorBackground->getPositionX() + 224.0f, this->codeEditorBackground->getPositionY() - 336.0f));
+	this->cancelButton->setPosition(Vec2(this->codeEditorBackground->getPositionX() - 224.0f, this->codeEditorBackground->getPositionY() - 336.0f));
+	this->acceptButtonGrayed->setPosition(this->acceptButton->getPosition());
+	this->codeEditorScrollView->setPosition(Vec2(this->codeEditorBackground->getPositionX() - CodeEditor::textSize.width / 2, this->codeEditorBackground->getPositionY() + CodeEditor::textSize.height / 2 - 32.0f));
+	this->assemblyCodeText->setPosition(Vec2(0.0f, this->codeEditorScrollView->getInnerContainerSize().height));
+	this->displayText->setPosition(this->assemblyCodeText->getPosition());
+	this->codeEditorTitle->setPosition(this->codeEditorBackground->getPositionX(), this->codeEditorBackground->getPositionY() + 340.0f);
+
+	this->allocEditorBackground->setPosition(Vec2(visibleSize.width / 2.0f + 640.0f, visibleSize.height / 2.0f));
+	this->allocEditorTitle->setPosition(this->allocEditorBackground->getPositionX(), this->allocEditorBackground->getPositionY() + 340.0f);
+
+	this->outputBackground->setPosition(Vec2(visibleSize.width / 2.0f - 640.0f, visibleSize.height / 2.0f));
+	this->outputTitle->setPosition(this->outputBackground->getPositionX(), this->outputBackground->getPositionY() + 340.0f);
+	this->outputScrollView->setPosition(Vec2(this->outputBackground->getPositionX() - CodeEditor::textSize.width / 2, this->outputBackground->getPositionY() + CodeEditor::textSize.height / 2 - 32.0f));
+	this->outputText->setPosition(Vec2(0.0f, this->outputScrollView->getInnerContainerSize().height));
+}
+
+void CodeEditor::initializeListeners()
+{
+	this->acceptButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onAccept, this));
+	this->cancelButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onCancel, this));
 }
 
 void CodeEditor::update(float dt)
@@ -88,10 +161,128 @@ void CodeEditor::update(float dt)
 	}
 
 	this->previousAssemblyText = currentText;
-	this->constructRichText(currentText);
+	this->constructCodeRichText(currentText);
+	this->compile(currentText);
 }
 
-void CodeEditor::constructRichText(std::string rawText)
+void CodeEditor::compile(std::string rawText)
+{
+	if (this->activeHackableCode == nullptr)
+	{
+		return;
+	}
+
+	// Remove existing rich text
+	for (auto iterator = this->outputTextElements->begin(); iterator != this->outputTextElements->end(); iterator++)
+	{
+		this->outputText->removeElement(*iterator);
+	}
+
+	this->outputTextElements->clear();
+
+	Fasm::FasmResult* compileResult = HackUtils::assemble(rawText, this->activeHackableCode->codePointer);
+
+	switch (compileResult->Condition)
+	{
+	case Fasm::FasmResultCode::CannotGenerateCode:
+	case Fasm::FasmResultCode::Error:
+	case Fasm::FasmResultCode::FormatLimitationsExcedded:
+	case Fasm::FasmResultCode::InvalidParameter:
+	case Fasm::FasmResultCode::OutOfMemory:
+	case Fasm::FasmResultCode::SourceNotFound:
+	case Fasm::FasmResultCode::StackOverflow:
+	case Fasm::FasmResultCode::UnexpectedEndOfSource:
+	case Fasm::FasmResultCode::Working:
+	case Fasm::FasmResultCode::WriteFailed:
+	{
+		switch (compileResult->Error)
+		{
+		case Fasm::FasmErrorCode::FileNotFound:
+		case Fasm::FasmErrorCode::ErrorReadingFile:
+		case Fasm::FasmErrorCode::InvalidFileFormat:
+		case Fasm::FasmErrorCode::InvalidMacroArguments:
+		case Fasm::FasmErrorCode::IncompleteMacro:
+		case Fasm::FasmErrorCode::UnexpectedCharacters:
+		case Fasm::FasmErrorCode::InvalidArgument:
+		case Fasm::FasmErrorCode::IllegalInstruction:
+		case Fasm::FasmErrorCode::InvalidOperand:
+		case Fasm::FasmErrorCode::InvalidOperandSize:
+		case Fasm::FasmErrorCode::OperandSizeNotSpecified:
+		case Fasm::FasmErrorCode::OperandSizesDoNotMatch:
+		case Fasm::FasmErrorCode::InvalidAddressSize:
+		case Fasm::FasmErrorCode::AddressSizesDoNotAgree:
+		case Fasm::FasmErrorCode::DisallowedCombinationOfRegisters:
+		case Fasm::FasmErrorCode::LongImmediateNotEncodable:
+		case Fasm::FasmErrorCode::RelativeJumpOutOfRange:
+		case Fasm::FasmErrorCode::InvalidExpression:
+		case Fasm::FasmErrorCode::InvalidAddress:
+		case Fasm::FasmErrorCode::InvalidValue:
+		case Fasm::FasmErrorCode::ValueOutOfRange:
+		case Fasm::FasmErrorCode::UndefinedSymbol:
+		case Fasm::FasmErrorCode::InvalidUseOfSymbol:
+		case Fasm::FasmErrorCode::NameTooLong:
+		case Fasm::FasmErrorCode::InvalidName:
+		case Fasm::FasmErrorCode::ReservedWordUsedAsSymbol:
+		case Fasm::FasmErrorCode::SymbolAlreadyDefined:
+		case Fasm::FasmErrorCode::MissingEndQuote:
+		case Fasm::FasmErrorCode::MissingEndDirective:
+		case Fasm::FasmErrorCode::UnexpectedInstruction:
+		case Fasm::FasmErrorCode::ExtraCharactersOnLine:
+		case Fasm::FasmErrorCode::SectionNotAlignedEnough:
+		case Fasm::FasmErrorCode::SettingAlreadySpecified:
+		case Fasm::FasmErrorCode::DataAlreadyDefined:
+		case Fasm::FasmErrorCode::TooManyRepeats:
+		case Fasm::FasmErrorCode::SymbolOutOfScope:
+		case Fasm::FasmErrorCode::UserError:
+		case Fasm::FasmErrorCode::AssertionFailed:
+		{
+			break;
+		}
+		}
+		std::string errorMessage(compileResult->OutputData, compileResult->OutputData + sizeof compileResult->OutputLength);
+		int lineNumber = compileResult->ErrorLine->LineNumber;
+
+		this->acceptButtonGrayed->setVisible(true);
+		this->acceptButton->setVisible(false);
+
+		break;
+	}
+	case Fasm::FasmResultCode::Ok:
+	{
+		RichElementText* statusLabel = RichElementText::create(0, CodeEditor::defaultColor, 0xFF, "Status: Compile Successful", Resources::Fonts_UbuntuMono_B, 32);
+		RichElementNewLine* newLine1 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
+		RichElementNewLine* newLine2 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
+		RichElementText* addressLabel = RichElementText::create(0, CodeEditor::defaultColor, 0xFF, "Address: " + HackUtils::hexAddressOf(this->activeHackableCode->codePointer, true, true), Resources::Fonts_UbuntuMono_B, 32);
+		RichElementNewLine* newLine3 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
+		RichElementNewLine* newLine4 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
+		RichElementText* bytesLabel = RichElementText::create(0, CodeEditor::defaultColor, 0xFF, "Bytes:" + HackUtils::arrayOfByteStringOf(compileResult->OutputData, compileResult->OutputLength, compileResult->OutputLength), Resources::Fonts_UbuntuMono_B, 32);
+
+		this->outputText->pushBackElement(statusLabel);
+		this->outputText->pushBackElement(newLine1);
+		this->outputText->pushBackElement(newLine2);
+		this->outputText->pushBackElement(addressLabel);
+		this->outputText->pushBackElement(newLine3);
+		this->outputText->pushBackElement(newLine4);
+		this->outputText->pushBackElement(bytesLabel);
+
+		this->outputTextElements->push_back(statusLabel);
+		this->outputTextElements->push_back(newLine1);
+		this->outputTextElements->push_back(newLine2);
+		this->outputTextElements->push_back(addressLabel);
+		this->outputTextElements->push_back(newLine3);
+		this->outputTextElements->push_back(newLine4);
+		this->outputTextElements->push_back(bytesLabel);
+
+		this->acceptButtonGrayed->setVisible(false);
+		this->acceptButton->setVisible(true);
+		break;
+	}
+	}
+
+	this->outputText->formatText();
+}
+
+void CodeEditor::constructCodeRichText(std::string rawText)
 {
 	// Remove existing rich text
 	for (auto iterator = this->displayTextElements->begin(); iterator != this->displayTextElements->end(); iterator++)
@@ -118,11 +309,11 @@ void CodeEditor::constructRichText(std::string rawText)
 			if (token.tokenStr == "\n")
 			{
 				// For some reason RichElementText is too fucking stupid to handle newlines -- these are their own object
-				element = RichElementNewLine::create(0, CodeEditor::defaultColor, 255);
+				element = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
 			}
 			else
 			{
-				element = RichElementText::create(0, token.color, 255, token.tokenStr, Resources::Fonts_UbuntuMono_B, 32);
+				element = RichElementText::create(0, token.color, 0xFF, token.tokenStr, Resources::Fonts_UbuntuMono_B, 32);
 
 			}
 
@@ -166,32 +357,28 @@ std::vector<CodeEditor::token>* CodeEditor::createTokens(std::string tokenStr)
 	return tokens;
 }
 
-void CodeEditor::initializePositions()
-{
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	this->codeEditorBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 304.0f, visibleSize.height / 2.0f + 380.0f));
-	this->assemblyCodeText->setPosition(Vec2(visibleSize.width / 2.0f - CodeEditor::textSize.width / 2, visibleSize.height / 2.0f + CodeEditor::textSize.height / 2));
-	this->displayText->setPosition(Vec2(visibleSize.width / 2.0f - CodeEditor::textSize.width / 2, visibleSize.height / 2.0f + CodeEditor::textSize.height / 2));
-}
-
-void CodeEditor::initializeListeners()
-{
-	this->closeButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onClose, this));
-}
-
 void CodeEditor::open(HackableCode* hackableCode)
 {
-	this->assemblyCodeText->setText(HackUtils::disassemble(hackableCode->codePointer, hackableCode->codeOriginalLength).c_str());
+	this->activeHackableCode = hackableCode;
 
+	this->codeEditorTitle->setText("Function '" + hackableCode->functionName + "'");
+
+	this->assemblyCodeText->setText(HackUtils::disassemble(hackableCode->codePointer, hackableCode->codeOriginalLength).c_str());
 	this->assemblyCodeText->attachWithIME();
 
 	this->setVisible(true);
 	Utils::focus(this);
 }
 
-void CodeEditor::onClose(MenuSprite* menuSprite)
+void CodeEditor::onAccept(MenuSprite* menuSprite)
+{
+	this->setVisible(false);
+
+	this->getParent()->setOpacity(0xFF);
+	Utils::focus(this->getParent());
+}
+
+void CodeEditor::onCancel(MenuSprite* menuSprite)
 {
 	this->setVisible(false);
 
