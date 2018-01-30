@@ -10,6 +10,7 @@ class MenuLabel : public Node
 public:
 	static MenuLabel * create(std::string labelText, std::string fontResource, float fontSize);
 
+	void setText(std::string text);
 	void setColor(Color4B color);
 	void setHoverColor(Color4B color);
 	void setGlowColor(Color4B color);
@@ -18,8 +19,6 @@ public:
 protected:
 	MenuLabel(std::string labelText, std::string fontResource, float fontSize);
 	~MenuLabel();
-
-	void setText(std::string text);
 
 private:
 	void onEnter() override;

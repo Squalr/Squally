@@ -20,9 +20,6 @@ public:
 	static const string Fonts_Montserrat_Medium;
 	static const string Fonts_Stormblade;
 	static const string Fonts_UbuntuMono_B;
-	static const string Fonts_UbuntuMono_BI;
-	static const string Fonts_UbuntuMono_R;
-	static const string Fonts_UbuntuMono_RI;
 	static const string Fonts_ZdykSagittarius;
 	static const string HUD_Egg;
 	static const string HUD_HealthBar;
@@ -579,6 +576,7 @@ public:
 	static const string Menus_Backgrounds_Webs;
 	static const string Menus_Buttons_AcceptButton;
 	static const string Menus_Buttons_AcceptButtonClick;
+	static const string Menus_Buttons_AcceptButtonGray;
 	static const string Menus_Buttons_AcceptButtonHover;
 	static const string Menus_Buttons_AudioButton;
 	static const string Menus_Buttons_AudioButtonClick;
@@ -597,6 +595,7 @@ public:
 	static const string Menus_Buttons_BrightnessButtonHovered;
 	static const string Menus_Buttons_CancelButton;
 	static const string Menus_Buttons_CancelButtonClick;
+	static const string Menus_Buttons_CancelButtonGray;
 	static const string Menus_Buttons_CancelButtonHover;
 	static const string Menus_Buttons_ChatButton;
 	static const string Menus_Buttons_ChatButtonClick;
@@ -655,6 +654,7 @@ public:
 	static const string Menus_HackerModeMenu_HackButton;
 	static const string Menus_HackerModeMenu_HackButtonClick;
 	static const string Menus_HackerModeMenu_HackButtonHover;
+	static const string Menus_HackerModeMenu_OutputMenu;
 	static const string Menus_HackerModeMenu_RadialMenu;
 	static const string Menus_HackerModeMenu_Ram;
 	static const string Menus_HackerModeMenu_RamClick;

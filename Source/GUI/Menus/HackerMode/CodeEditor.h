@@ -37,16 +37,33 @@ private:
 	void initializePositions();
 	void initializeListeners();
 	void update(float) override;
-	void constructRichText(std::string rawText);
+	void compile(std::string rawText);
+	void constructCodeRichText(std::string rawText);
 	std::vector<token>* createTokens(std::string tokenStr);
-	void onClose(MenuSprite* menuSprite);
+	void onAccept(MenuSprite* menuSprite);
+	void onCancel(MenuSprite* menuSprite);
+
+	HackableCode* activeHackableCode;
 
 	Sprite* codeEditorBackground;
-	MenuSprite* closeButton;
+	ScrollView* codeEditorScrollView;
 	TextField* assemblyCodeText;
 	RichText* displayText;
+	MenuSprite* cancelButton;
+	MenuSprite* acceptButton;
+	Sprite* acceptButtonGrayed;
+	MenuLabel* codeEditorTitle;
+
+	Sprite* allocEditorBackground;
+	MenuLabel* allocEditorTitle;
+
+	Sprite* outputBackground;
+	MenuLabel* outputTitle;
+	ScrollView* outputScrollView;
+	RichText* outputText;
 
 	std::vector<RichElement*>* displayTextElements;
+	std::vector<RichElement*>* outputTextElements;
 	std::string previousAssemblyText;
 
 	static const Size textSize;
@@ -54,6 +71,7 @@ private:
 	static const Color3B defaultColor;
 	static const Color3B registerColor;
 	static const Color3B numberColor;
+	static const Color3B commentColor;
 
 	static const std::set<std::string> registers;
 };
