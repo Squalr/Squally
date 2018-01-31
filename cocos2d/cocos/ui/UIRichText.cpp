@@ -1789,10 +1789,10 @@ void RichText::formarRenderers()
 		float newContentSizeHeight = 0.0f;
 		std::vector<float> maxHeights(_elementRenders.size());
 
+		float maxHeight = 0.0f;
 		for (size_t i = 0, size = _elementRenders.size(); i < size; i++)
 		{
 			Vector<Node*>& row = _elementRenders[i];
-			float maxHeight = 0.0f;
 			for (auto& iter : row)
 			{
 				maxHeight = MAX(iter->getContentSize().height, maxHeight);

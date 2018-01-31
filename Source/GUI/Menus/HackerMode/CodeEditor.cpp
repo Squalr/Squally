@@ -1,11 +1,14 @@
 ﻿#include "CodeEditor.h"
 
-const Size CodeEditor::textSize = Size(480.0f, 640.0f);
+const Size CodeEditor::textSize = Size(448.0f, 640.0f);
 const std::string CodeEditor::delimiters = "[],; \n\t";
 const Color3B CodeEditor::defaultColor = Color3B::WHITE;
+const Color3B CodeEditor::headerColor = Color3B(188, 188, 64);
+const Color3B CodeEditor::errorColor = Color3B(196, 82, 82);
 const Color3B CodeEditor::registerColor = Color3B(86, 156, 214);
 const Color3B CodeEditor::numberColor = Color3B(181, 206, 168); // Color3B(78, 201, 176);
 const Color3B CodeEditor::commentColor = Color3B(87, 166, 74);
+
 
 const std::set<std::string> CodeEditor::registers =
 {
@@ -71,14 +74,17 @@ CodeEditor::CodeEditor()
 
 	this->acceptButtonGrayed->setVisible(false);
 
+	this->codeEditorScrollView->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->assemblyCodeText->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->assemblyCodeText->setOpacity(0);
 	this->assemblyCodeText->setCascadeOpacityEnabled(false);
 	this->assemblyCodeText->setCursorEnabled(true);
 	this->assemblyCodeText->setHighlighted(true);
-
-	this->codeEditorScrollView->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->assemblyCodeText->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->assemblyCodeText->setSize(CodeEditor::textSize);
+	this->assemblyCodeText->ignoreContentAdaptWithSize(false);
 	this->displayText->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->displayText->setSize(CodeEditor::textSize);
+	this->displayText->ignoreContentAdaptWithSize(false);
 	this->outputScrollView->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->outputText->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->outputText->setSize(CodeEditor::textSize);
@@ -180,103 +186,83 @@ void CodeEditor::compile(std::string rawText)
 
 	this->outputTextElements->clear();
 
-	Fasm::FasmResult* compileResult = HackUtils::assemble(rawText, this->activeHackableCode->codePointer);
+	HackUtils::CompileResult compileResult = HackUtils::assemble(rawText, this->activeHackableCode->codePointer);
 
-	switch (compileResult->Condition)
+	if (!compileResult.hasError)
 	{
-	case Fasm::FasmResultCode::CannotGenerateCode:
-	case Fasm::FasmResultCode::Error:
-	case Fasm::FasmResultCode::FormatLimitationsExcedded:
-	case Fasm::FasmResultCode::InvalidParameter:
-	case Fasm::FasmResultCode::OutOfMemory:
-	case Fasm::FasmResultCode::SourceNotFound:
-	case Fasm::FasmResultCode::StackOverflow:
-	case Fasm::FasmResultCode::UnexpectedEndOfSource:
-	case Fasm::FasmResultCode::Working:
-	case Fasm::FasmResultCode::WriteFailed:
-	{
-		switch (compileResult->Error)
-		{
-		case Fasm::FasmErrorCode::FileNotFound:
-		case Fasm::FasmErrorCode::ErrorReadingFile:
-		case Fasm::FasmErrorCode::InvalidFileFormat:
-		case Fasm::FasmErrorCode::InvalidMacroArguments:
-		case Fasm::FasmErrorCode::IncompleteMacro:
-		case Fasm::FasmErrorCode::UnexpectedCharacters:
-		case Fasm::FasmErrorCode::InvalidArgument:
-		case Fasm::FasmErrorCode::IllegalInstruction:
-		case Fasm::FasmErrorCode::InvalidOperand:
-		case Fasm::FasmErrorCode::InvalidOperandSize:
-		case Fasm::FasmErrorCode::OperandSizeNotSpecified:
-		case Fasm::FasmErrorCode::OperandSizesDoNotMatch:
-		case Fasm::FasmErrorCode::InvalidAddressSize:
-		case Fasm::FasmErrorCode::AddressSizesDoNotAgree:
-		case Fasm::FasmErrorCode::DisallowedCombinationOfRegisters:
-		case Fasm::FasmErrorCode::LongImmediateNotEncodable:
-		case Fasm::FasmErrorCode::RelativeJumpOutOfRange:
-		case Fasm::FasmErrorCode::InvalidExpression:
-		case Fasm::FasmErrorCode::InvalidAddress:
-		case Fasm::FasmErrorCode::InvalidValue:
-		case Fasm::FasmErrorCode::ValueOutOfRange:
-		case Fasm::FasmErrorCode::UndefinedSymbol:
-		case Fasm::FasmErrorCode::InvalidUseOfSymbol:
-		case Fasm::FasmErrorCode::NameTooLong:
-		case Fasm::FasmErrorCode::InvalidName:
-		case Fasm::FasmErrorCode::ReservedWordUsedAsSymbol:
-		case Fasm::FasmErrorCode::SymbolAlreadyDefined:
-		case Fasm::FasmErrorCode::MissingEndQuote:
-		case Fasm::FasmErrorCode::MissingEndDirective:
-		case Fasm::FasmErrorCode::UnexpectedInstruction:
-		case Fasm::FasmErrorCode::ExtraCharactersOnLine:
-		case Fasm::FasmErrorCode::SectionNotAlignedEnough:
-		case Fasm::FasmErrorCode::SettingAlreadySpecified:
-		case Fasm::FasmErrorCode::DataAlreadyDefined:
-		case Fasm::FasmErrorCode::TooManyRepeats:
-		case Fasm::FasmErrorCode::SymbolOutOfScope:
-		case Fasm::FasmErrorCode::UserError:
-		case Fasm::FasmErrorCode::AssertionFailed:
-		{
-			break;
-		}
-		}
-		std::string errorMessage(compileResult->OutputData, compileResult->OutputData + sizeof compileResult->OutputLength);
-		int lineNumber = compileResult->ErrorLine->LineNumber;
-
-		this->acceptButtonGrayed->setVisible(true);
-		this->acceptButton->setVisible(false);
-
-		break;
-	}
-	case Fasm::FasmResultCode::Ok:
-	{
-		RichElementText* statusLabel = RichElementText::create(0, CodeEditor::defaultColor, 0xFF, "Status: Compile Successful", Resources::Fonts_UbuntuMono_B, 32);
+		RichElementText* statusHeaderLabel = RichElementText::create(0, CodeEditor::headerColor, 0xFF, "Status: ", Resources::Fonts_UbuntuMono_B, 32);
+		RichElementText* statusLabel = RichElementText::create(0, CodeEditor::defaultColor, 0xFF, "Compile Successful", Resources::Fonts_UbuntuMono_B, 32);
 		RichElementNewLine* newLine1 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
 		RichElementNewLine* newLine2 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-		RichElementText* addressLabel = RichElementText::create(0, CodeEditor::defaultColor, 0xFF, "Address: " + HackUtils::hexAddressOf(this->activeHackableCode->codePointer, true, true), Resources::Fonts_UbuntuMono_B, 32);
+		RichElementText* addressHeaderLabel = RichElementText::create(0, CodeEditor::headerColor, 0xFF, "Address: ", Resources::Fonts_UbuntuMono_B, 32);
+		RichElementText* addressLabel = RichElementText::create(0, CodeEditor::defaultColor, 0xFF, HackUtils::hexAddressOf(this->activeHackableCode->codePointer, true, true), Resources::Fonts_UbuntuMono_B, 32);
 		RichElementNewLine* newLine3 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
 		RichElementNewLine* newLine4 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-		RichElementText* bytesLabel = RichElementText::create(0, CodeEditor::defaultColor, 0xFF, "Bytes:" + HackUtils::arrayOfByteStringOf(compileResult->OutputData, compileResult->OutputLength, compileResult->OutputLength), Resources::Fonts_UbuntuMono_B, 32);
+		RichElementText* bytesHeaderLabel = RichElementText::create(0, CodeEditor::headerColor, 0xFF, "Bytes: ", Resources::Fonts_UbuntuMono_B, 32);
+		RichElementText* bytesLabel = RichElementText::create(0, CodeEditor::defaultColor, 0xFF, HackUtils::arrayOfByteStringOf(compileResult.compiledBytes, compileResult.byteCount, compileResult.byteCount), Resources::Fonts_UbuntuMono_B, 32);
 
+		this->outputText->pushBackElement(statusHeaderLabel);
 		this->outputText->pushBackElement(statusLabel);
 		this->outputText->pushBackElement(newLine1);
 		this->outputText->pushBackElement(newLine2);
+		this->outputText->pushBackElement(addressHeaderLabel);
 		this->outputText->pushBackElement(addressLabel);
 		this->outputText->pushBackElement(newLine3);
 		this->outputText->pushBackElement(newLine4);
+		this->outputText->pushBackElement(bytesHeaderLabel);
 		this->outputText->pushBackElement(bytesLabel);
 
+		this->outputTextElements->push_back(statusHeaderLabel);
 		this->outputTextElements->push_back(statusLabel);
 		this->outputTextElements->push_back(newLine1);
 		this->outputTextElements->push_back(newLine2);
+		this->outputTextElements->push_back(addressHeaderLabel);
 		this->outputTextElements->push_back(addressLabel);
 		this->outputTextElements->push_back(newLine3);
 		this->outputTextElements->push_back(newLine4);
+		this->outputTextElements->push_back(bytesHeaderLabel);
 		this->outputTextElements->push_back(bytesLabel);
 
 		this->acceptButtonGrayed->setVisible(false);
 		this->acceptButton->setVisible(true);
-		break;
 	}
+	else
+	{
+		RichElementText* statusHeaderLabel = RichElementText::create(0, CodeEditor::headerColor, 0xFF, "Status: ", Resources::Fonts_UbuntuMono_B, 32);
+		RichElementText* statusLabel = RichElementText::create(0, CodeEditor::errorColor, 0xFF, "Compile Errors", Resources::Fonts_UbuntuMono_B, 32);
+		RichElementNewLine* newLine1 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
+		RichElementNewLine* newLine2 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
+		RichElementText* errorHeaderLabel = RichElementText::create(0, CodeEditor::headerColor, 0xFF, "Error: ", Resources::Fonts_UbuntuMono_B, 32);
+		RichElementText* errorLabel = RichElementText::create(0, CodeEditor::defaultColor, 0xFF, compileResult.errorData.message, Resources::Fonts_UbuntuMono_B, 32);
+		RichElementNewLine* newLine3 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
+		RichElementNewLine* newLine4 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
+		RichElementText* innerErrorHeaderLabel = RichElementText::create(0, CodeEditor::headerColor, 0xFF, "Line Number: ", Resources::Fonts_UbuntuMono_B, 32);
+		RichElementText* innerErrorLabel = RichElementText::create(0, CodeEditor::defaultColor, 0xFF, to_string(compileResult.errorData.lineNumber), Resources::Fonts_UbuntuMono_B, 32);
+
+		this->outputText->pushBackElement(statusHeaderLabel);
+		this->outputText->pushBackElement(statusLabel);
+		this->outputText->pushBackElement(newLine1);
+		this->outputText->pushBackElement(newLine2);
+		this->outputText->pushBackElement(errorHeaderLabel);
+		this->outputText->pushBackElement(errorLabel);
+		this->outputText->pushBackElement(newLine3);
+		this->outputText->pushBackElement(newLine4);
+		this->outputText->pushBackElement(innerErrorHeaderLabel);
+		this->outputText->pushBackElement(innerErrorLabel);
+
+		this->outputTextElements->push_back(statusHeaderLabel);
+		this->outputTextElements->push_back(statusLabel);
+		this->outputTextElements->push_back(newLine1);
+		this->outputTextElements->push_back(newLine2);
+		this->outputTextElements->push_back(errorHeaderLabel);
+		this->outputTextElements->push_back(errorLabel);
+		this->outputTextElements->push_back(newLine3);
+		this->outputTextElements->push_back(newLine4);
+		this->outputTextElements->push_back(innerErrorHeaderLabel);
+		this->outputTextElements->push_back(innerErrorLabel);
+
+		this->acceptButtonGrayed->setVisible(true);
+		this->acceptButton->setVisible(false);
 	}
 
 	this->outputText->formatText();

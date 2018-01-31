@@ -1,8 +1,12 @@
 #include "HackUtils.h"
 
-Fasm::FasmResult* HackUtils::assemble(std::string assembly, void* addressStart)
+HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* addressStart)
 {
-	return Fasm::assemble(assembly, addressStart);
+	Fasm::FasmResult* fasmResult = Fasm::assemble(assembly, addressStart);
+	HackUtils::CompileResult compileResult = HackUtils::constructCompileResult(fasmResult);
+
+	delete(fasmResult);
+	return compileResult;
 }
 
 std::string HackUtils::disassemble(void* bytes, int length)
@@ -198,4 +202,161 @@ std::string HackUtils::arrayOfByteStringOf(void* dataPointer, int length, int ma
 	result.append("]");
 
 	return result;
+}
+
+HackUtils::CompileResult HackUtils::constructCompileResult(Fasm::FasmResult* fasmResult)
+{
+	CompileResult compileResult;
+
+	// Note the -2 here is due to the first two lines of FASM specifying 32/64 bit and the origin point
+	compileResult.errorData.lineNumber = fasmResult->ErrorLine->LineNumber - 2;
+
+	switch (fasmResult->Error)
+	{
+	case Fasm::FasmErrorCode::FileNotFound:
+		compileResult.errorData.message = "File Not Found";
+		break;
+	case Fasm::FasmErrorCode::ErrorReadingFile:
+		compileResult.errorData.message = "Error Reading File";
+		break;
+	case Fasm::FasmErrorCode::InvalidFileFormat:
+		compileResult.errorData.message = "Invalid File Format";
+		break;
+	case Fasm::FasmErrorCode::InvalidMacroArguments:
+		compileResult.errorData.message = "Invalid Macro Arguments";
+		break;
+	case Fasm::FasmErrorCode::IncompleteMacro:
+		compileResult.errorData.message = "Incomplete Macro";
+		break;
+	case Fasm::FasmErrorCode::UnexpectedCharacters:
+		compileResult.errorData.message = "Unexpected Characters";
+		break;
+	case Fasm::FasmErrorCode::InvalidArgument:
+		compileResult.errorData.message = "Invalid Argument";
+		break;
+	case Fasm::FasmErrorCode::IllegalInstruction:
+		compileResult.errorData.message = "Illegal Instruction";
+		break;
+	case Fasm::FasmErrorCode::InvalidOperand:
+		compileResult.errorData.message = "Invalid Operand";
+		break;
+	case Fasm::FasmErrorCode::InvalidOperandSize:
+		compileResult.errorData.message = "Invalid Operand Size";
+		break;
+	case Fasm::FasmErrorCode::OperandSizeNotSpecified:
+		compileResult.errorData.message = "Operand Size Not Specified";
+		break;
+	case Fasm::FasmErrorCode::OperandSizesDoNotMatch:
+		compileResult.errorData.message = "Operand Sizes Do Not Match";
+		break;
+	case Fasm::FasmErrorCode::InvalidAddressSize:
+		compileResult.errorData.message = "Invalid Address Size";
+		break;
+	case Fasm::FasmErrorCode::AddressSizesDoNotAgree:
+		compileResult.errorData.message = "Address Sizes Do Not Agree";
+		break;
+	case Fasm::FasmErrorCode::DisallowedCombinationOfRegisters:
+		compileResult.errorData.message = "Disallowed Combination Of Registers";
+		break;
+	case Fasm::FasmErrorCode::LongImmediateNotEncodable:
+		compileResult.errorData.message = "Long Immediate Not Encodable";
+		break;
+	case Fasm::FasmErrorCode::RelativeJumpOutOfRange:
+		compileResult.errorData.message = "Relative Jump Out Of Range";
+		break;
+	case Fasm::FasmErrorCode::InvalidExpression:
+		compileResult.errorData.message = "Invalid Expression";
+		break;
+	case Fasm::FasmErrorCode::InvalidAddress:
+		compileResult.errorData.message = "Invalid Address";
+		break;
+	case Fasm::FasmErrorCode::InvalidValue:
+		compileResult.errorData.message = "Invalid Value";
+		break;
+	case Fasm::FasmErrorCode::ValueOutOfRange:
+		compileResult.errorData.message = "Value Out Of Range";
+		break;
+	case Fasm::FasmErrorCode::UndefinedSymbol:
+		compileResult.errorData.message = "Undefined Symbol";
+		break;
+	case Fasm::FasmErrorCode::InvalidUseOfSymbol:
+		compileResult.errorData.message = "Invalid Use Of Symbol";
+		break;
+	case Fasm::FasmErrorCode::NameTooLong:
+		compileResult.errorData.message = "Name Too Long";
+		break;
+	case Fasm::FasmErrorCode::InvalidName:
+		compileResult.errorData.message = "Invalid Name";
+		break;
+	case Fasm::FasmErrorCode::ReservedWordUsedAsSymbol:
+		compileResult.errorData.message = "Reserved Word Used As Symbol";
+		break;
+	case Fasm::FasmErrorCode::SymbolAlreadyDefined:
+		compileResult.errorData.message = "Symbol Already Defined";
+		break;
+	case Fasm::FasmErrorCode::MissingEndQuote:
+		compileResult.errorData.message = "Missing End Quote";
+		break;
+	case Fasm::FasmErrorCode::MissingEndDirective:
+		compileResult.errorData.message = "Missing End Directive";
+		break;
+	case Fasm::FasmErrorCode::UnexpectedInstruction:
+		compileResult.errorData.message = "Unexpected Instruction";
+		break;
+	case Fasm::FasmErrorCode::ExtraCharactersOnLine:
+		compileResult.errorData.message = "Extra Characters On Line";
+		break;
+	case Fasm::FasmErrorCode::SectionNotAlignedEnough:
+		compileResult.errorData.message = "Section Not Aligned Enough";
+		break;
+	case Fasm::FasmErrorCode::SettingAlreadySpecified:
+		compileResult.errorData.message = "Setting Already Specified";
+		break;
+	case Fasm::FasmErrorCode::DataAlreadyDefined:
+		compileResult.errorData.message = "Data Already Defined";
+		break;
+	case Fasm::FasmErrorCode::TooManyRepeats:
+		compileResult.errorData.message = "Too Many Repeats";
+		break;
+	case Fasm::FasmErrorCode::SymbolOutOfScope:
+		compileResult.errorData.message = "Symbol Out Of Scope";
+		break;
+	case Fasm::FasmErrorCode::UserError:
+		compileResult.errorData.message = "User Error";
+		break;
+	case Fasm::FasmErrorCode::AssertionFailed:
+		compileResult.errorData.message = "Assertion Failed";
+		break;
+	default:
+		compileResult.errorData.message = "";
+		break;
+	}
+
+	switch (fasmResult->Condition)
+	{
+	case Fasm::FasmResultCode::CannotGenerateCode:
+	case Fasm::FasmResultCode::Error:
+	case Fasm::FasmResultCode::FormatLimitationsExcedded:
+	case Fasm::FasmResultCode::InvalidParameter:
+	case Fasm::FasmResultCode::OutOfMemory:
+	case Fasm::FasmResultCode::SourceNotFound:
+	case Fasm::FasmResultCode::StackOverflow:
+	case Fasm::FasmResultCode::UnexpectedEndOfSource:
+	case Fasm::FasmResultCode::Working:
+	case Fasm::FasmResultCode::WriteFailed:
+	{
+		compileResult.hasError = true;
+		break;
+	}
+	case Fasm::FasmResultCode::Ok:
+	default:
+		compileResult.byteCount = fasmResult->OutputLength;
+		compileResult.compiledBytes = new byte[fasmResult->OutputLength];
+		memcpy(compileResult.compiledBytes, fasmResult->OutputData, fasmResult->OutputLength);
+		compileResult.hasError = false;
+		break;
+	}
+
+
+	return compileResult;
 }
