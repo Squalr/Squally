@@ -69,6 +69,8 @@ private:
 	static const Size textSize;
 	static const std::string delimiters;
 	static const Color3B defaultColor;
+	static const Color3B headerColor;
+	static const Color3B errorColor;
 	static const Color3B registerColor;
 	static const Color3B numberColor;
 	static const Color3B commentColor;
