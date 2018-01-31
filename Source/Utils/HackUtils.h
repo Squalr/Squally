@@ -22,12 +22,30 @@ public:
 		Double,
 	};
 
-	static Fasm::FasmResult* assemble(std::string assembly, void* addressStart);
+	struct CompileResult
+	{
+		struct ErrorData
+		{
+			int lineNumber;
+			std::string message;
+		};
+
+		ErrorData errorData;
+		bool hasError;
+
+		unsigned char* compiledBytes;
+		int byteCount;
+	};
+
+	static HackUtils::CompileResult assemble(std::string assembly, void* addressStart);
 	static std::string disassemble(void* bytes, int length);
 	static std::string hexAddressOf(void* address, bool zeroPad, bool prefix);
 	static DataType stdTypeToDataType(const std::type_info* typeInfo);
 	static std::string dataTypeToString(DataType dataType);
 	static std::string valueStringOf(void* dataPointer, DataType dataType);
 	static std::string arrayOfByteStringOf(void* dataPointer, int length, int maxLength);
+
+private:
+	static CompileResult constructCompileResult(Fasm::FasmResult* fasmResult);
 };
 
