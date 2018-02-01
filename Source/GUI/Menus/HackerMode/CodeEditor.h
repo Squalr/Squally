@@ -50,7 +50,8 @@ private:
 	Sprite* codeEditorBackground;
 	ScrollView* codeEditorScrollView;
 	TextField* assemblyCodeText;
-	RichText* displayText;
+	RichText* lineNumbers;
+	RichText* assemblyCodeRichText;
 	MenuSprite* cancelButton;
 	MenuSprite* acceptButton;
 	Sprite* acceptButtonGrayed;
@@ -65,11 +66,13 @@ private:
 	RichText* outputText;
 
 	float compileDelay;
+	std::vector<RichElement*>* lineNumberElements;
 	std::vector<RichElement*>* displayTextElements;
 	std::vector<RichElement*>* outputTextElements;
 	std::string previousAssemblyText;
 
 	static const float compileDelayMaxSeconds;
+	static const float lineNumberMargin;
 	static const Size textSize;
 	static const std::string delimiters;
 	static const Color3B defaultColor;
