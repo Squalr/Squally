@@ -206,10 +206,12 @@ std::string HackUtils::arrayOfByteStringOf(void* dataPointer, int length, int ma
 
 HackUtils::CompileResult HackUtils::constructCompileResult(Fasm::FasmResult* fasmResult)
 {
+	// Note the 2 here is due to the first two lines of FASM specifying 32/64 bit and the origin point
+	const int lineOffset = 2;
+
 	CompileResult compileResult;
 
-	// Note the -2 here is due to the first two lines of FASM specifying 32/64 bit and the origin point
-	compileResult.errorData.lineNumber = fasmResult->ErrorLine->LineNumber - 2;
+	compileResult.errorData.lineNumber = fasmResult->ErrorLine->LineNumber - lineOffset;
 
 	switch (fasmResult->Error)
 	{
