@@ -37,6 +37,8 @@ private:
 	void initializePositions();
 	void initializeListeners();
 	void update(float) override;
+	void enableAccept();
+	void disableAccept();
 	void compile(std::string rawText);
 	void constructCodeRichText(std::string rawText);
 	std::vector<token>* createTokens(std::string tokenStr);
@@ -62,13 +64,16 @@ private:
 	ScrollView* outputScrollView;
 	RichText* outputText;
 
+	float compileDelay;
 	std::vector<RichElement*>* displayTextElements;
 	std::vector<RichElement*>* outputTextElements;
 	std::string previousAssemblyText;
 
+	static const float compileDelayMaxSeconds;
 	static const Size textSize;
 	static const std::string delimiters;
 	static const Color3B defaultColor;
+	static const Color3B subtextColor;
 	static const Color3B headerColor;
 	static const Color3B errorColor;
 	static const Color3B registerColor;
