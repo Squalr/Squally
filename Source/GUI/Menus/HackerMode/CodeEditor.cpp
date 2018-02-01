@@ -1,6 +1,7 @@
 ﻿#include "CodeEditor.h"
 
 const float CodeEditor::compileDelayMaxSeconds = 0.1f;
+const float CodeEditor::lineNumberMargin = 32.0f;;
 const Size CodeEditor::textSize = Size(448.0f, 640.0f);
 const std::string CodeEditor::delimiters = "[],; \n\t";
 const Color3B CodeEditor::defaultColor = Color3B::WHITE;
@@ -55,12 +56,14 @@ CodeEditor::CodeEditor()
 	this->compileDelay = CodeEditor::compileDelayMaxSeconds;
 	this->activeHackableCode = nullptr;
 	this->displayTextElements = new std::vector<RichElement*>();
+	this->lineNumberElements = new std::vector<RichElement*>();
 	this->outputTextElements = new std::vector<RichElement*>();
 
 	this->codeEditorBackground = Sprite::create(Resources::Menus_HackerModeMenu_CodeEditMenu);
 	this->codeEditorScrollView = ScrollView::create();
 	this->assemblyCodeText = TextField::create("<Click to Edit Assembly Code>", Resources::Fonts_UbuntuMono_B, 32);
-	this->displayText = RichText::create();
+	this->lineNumbers = RichText::create();
+	this->assemblyCodeRichText = RichText::create();
 	this->cancelButton = MenuSprite::create(Resources::Menus_Buttons_CancelButton, Resources::Menus_Buttons_CancelButtonHover, Resources::Menus_Buttons_CancelButtonClick);
 	this->acceptButton = MenuSprite::create(Resources::Menus_Buttons_AcceptButton, Resources::Menus_Buttons_AcceptButtonHover, Resources::Menus_Buttons_AcceptButtonClick);
 	this->acceptButtonGrayed = Sprite::create(Resources::Menus_Buttons_AcceptButtonGray);
@@ -84,9 +87,12 @@ CodeEditor::CodeEditor()
 	this->assemblyCodeText->setHighlighted(true);
 	this->assemblyCodeText->setSize(CodeEditor::textSize);
 	this->assemblyCodeText->ignoreContentAdaptWithSize(false);
-	this->displayText->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->displayText->setSize(CodeEditor::textSize);
-	this->displayText->ignoreContentAdaptWithSize(false);
+	this->lineNumbers->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->lineNumbers->setSize(CodeEditor::textSize);
+	this->lineNumbers->ignoreContentAdaptWithSize(false);
+	this->assemblyCodeRichText->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->assemblyCodeRichText->setSize(CodeEditor::textSize);
+	this->assemblyCodeRichText->ignoreContentAdaptWithSize(false);
 	this->outputScrollView->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->outputText->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->outputText->setSize(CodeEditor::textSize);
@@ -101,7 +107,8 @@ CodeEditor::CodeEditor()
 	this->outputScrollView->setInnerContainerSize(Size(CodeEditor::textSize.width, CodeEditor::textSize.height * 2));
 
 	this->codeEditorScrollView->addChild(this->assemblyCodeText);
-	this->codeEditorScrollView->addChild(this->displayText);
+	this->codeEditorScrollView->addChild(this->lineNumbers);
+	this->codeEditorScrollView->addChild(this->assemblyCodeRichText);
 	this->outputScrollView->addChild(this->outputText);
 
 	this->addChild(this->codeEditorBackground);
@@ -126,6 +133,7 @@ CodeEditor::CodeEditor()
 CodeEditor::~CodeEditor()
 {
 	delete(this->displayTextElements);
+	delete(this->lineNumberElements);
 	delete(this->outputTextElements);
 }
 
@@ -138,8 +146,9 @@ void CodeEditor::initializePositions()
 	this->cancelButton->setPosition(Vec2(this->codeEditorBackground->getPositionX() - 224.0f, this->codeEditorBackground->getPositionY() - 336.0f));
 	this->acceptButtonGrayed->setPosition(this->acceptButton->getPosition());
 	this->codeEditorScrollView->setPosition(Vec2(this->codeEditorBackground->getPositionX() - CodeEditor::textSize.width / 2, this->codeEditorBackground->getPositionY() + CodeEditor::textSize.height / 2 - 32.0f));
-	this->assemblyCodeText->setPosition(Vec2(0.0f, this->codeEditorScrollView->getInnerContainerSize().height));
-	this->displayText->setPosition(this->assemblyCodeText->getPosition());
+	this->assemblyCodeText->setPosition(Vec2(CodeEditor::lineNumberMargin, this->codeEditorScrollView->getInnerContainerSize().height));
+	this->lineNumbers->setPosition(Vec2(0.0f, this->codeEditorScrollView->getInnerContainerSize().height));
+	this->assemblyCodeRichText->setPosition(this->assemblyCodeText->getPosition());
 	this->codeEditorTitle->setPosition(this->codeEditorBackground->getPositionX(), this->codeEditorBackground->getPositionY() + 340.0f);
 
 	this->allocEditorBackground->setPosition(Vec2(visibleSize.width / 2.0f + 640.0f, visibleSize.height / 2.0f));
@@ -336,13 +345,34 @@ void CodeEditor::constructCodeRichText(std::string rawText)
 	// Remove existing rich text
 	for (auto iterator = this->displayTextElements->begin(); iterator != this->displayTextElements->end(); iterator++)
 	{
-		this->displayText->removeElement(*iterator);
+		this->assemblyCodeRichText->removeElement(*iterator);
+	}
+
+	for (auto iterator = this->lineNumberElements->begin(); iterator != this->lineNumberElements->end(); iterator++)
+	{
+		this->lineNumbers->removeElement(*iterator);
 	}
 
 	this->displayTextElements->clear();
+	this->lineNumberElements->clear();
 
 	// Tokenize x86/x64 assembly
 	std::vector <std::string> * tokenStrings = StrUtils::tokenize(rawText, CodeEditor::delimiters);
+	int lineNumber = 0;
+	bool insertLineNumber = true;
+
+	if (insertLineNumber)
+	{
+		RichElement* lineNumberText = RichElementText::create(0, CodeEditor::subtextColor, 0xFF, to_string(lineNumber++), Resources::Fonts_UbuntuMono_B, 32);
+		RichElement* lineNumberNewLine = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
+
+		this->lineNumberElements->push_back(lineNumberText);
+		this->lineNumbers->pushBackElement(lineNumberText);
+		this->lineNumberElements->push_back(lineNumberNewLine);
+		this->lineNumbers->pushBackElement(lineNumberNewLine);
+
+		insertLineNumber = false;
+	}
 
 	for (auto iterator = tokenStrings->begin(); iterator != tokenStrings->end(); iterator++)
 	{
@@ -359,14 +389,28 @@ void CodeEditor::constructCodeRichText(std::string rawText)
 			{
 				// For some reason RichElementText is too fucking stupid to handle newlines -- these are their own object
 				element = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
+				insertLineNumber = true;
 			}
 			else
 			{
 				element = RichElementText::create(0, token.color, 0xFF, token.tokenStr, Resources::Fonts_UbuntuMono_B, 32);
 			}
 
+			if (insertLineNumber)
+			{
+				RichElement* lineNumberText = RichElementText::create(0, CodeEditor::subtextColor, 0xFF, to_string(lineNumber++), Resources::Fonts_UbuntuMono_B, 32);
+				RichElement* lineNumberNewLine = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
+
+				this->lineNumberElements->push_back(lineNumberText);
+				this->lineNumbers->pushBackElement(lineNumberText);
+				this->lineNumberElements->push_back(lineNumberNewLine);
+				this->lineNumbers->pushBackElement(lineNumberNewLine);
+
+				insertLineNumber = false;
+			}
+
 			this->displayTextElements->push_back(element);
-			this->displayText->pushBackElement(element);
+			this->assemblyCodeRichText->pushBackElement(element);
 		}
 
 		delete(tokens);
@@ -374,7 +418,8 @@ void CodeEditor::constructCodeRichText(std::string rawText)
 
 	delete(tokenStrings);
 
-	this->displayText->formatText();
+	this->assemblyCodeRichText->formatText();
+	this->lineNumbers->formatText();
 }
 
 std::vector<CodeEditor::token>* CodeEditor::createTokens(std::string tokenStr)
