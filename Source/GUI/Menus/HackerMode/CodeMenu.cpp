@@ -12,7 +12,7 @@ CodeMenu* CodeMenu::create()
 CodeMenu::CodeMenu()
 {
 	this->editMap = new std::map<MenuLabel*, HackableCode*>();
-	this->codeMenuBackground = Sprite::create(Resources::Menus_HackerModeMenu_CodeMenu);
+	this->codeMenuBackground = Sprite::create(Resources::Menus_HackerModeMenu_EmptyFullScreenMenu);
 	this->closeButton = MenuSprite::create(Resources::Menus_HackerModeMenu_CloseButton, Resources::Menus_HackerModeMenu_CloseButtonHover, Resources::Menus_HackerModeMenu_CloseButtonClick);
 	this->rows = Node::create();
 	this->mouseOverMenuHost = Node::create();

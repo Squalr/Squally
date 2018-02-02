@@ -646,6 +646,7 @@ const string Resources::Menus_HackerModeMenu_CpuChip = "Menus\\HackerModeMenu\\C
 const string Resources::Menus_HackerModeMenu_CpuChipClick = "Menus\\HackerModeMenu\\CpuChipClick.png";
 const string Resources::Menus_HackerModeMenu_CpuChipHover = "Menus\\HackerModeMenu\\CpuChipHover.png";
 const string Resources::Menus_HackerModeMenu_DataMenu = "Menus\\HackerModeMenu\\DataMenu.png";
+const string Resources::Menus_HackerModeMenu_EmptyFullScreenMenu = "Menus\\HackerModeMenu\\EmptyFullScreenMenu.png";
 const string Resources::Menus_HackerModeMenu_HackButton = "Menus\\HackerModeMenu\\HackButton.png";
 const string Resources::Menus_HackerModeMenu_HackButtonClick = "Menus\\HackerModeMenu\\HackButtonClick.png";
 const string Resources::Menus_HackerModeMenu_HackButtonHover = "Menus\\HackerModeMenu\\HackButtonHover.png";

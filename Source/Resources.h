@@ -651,6 +651,7 @@ public:
 	static const string Menus_HackerModeMenu_CpuChipClick;
 	static const string Menus_HackerModeMenu_CpuChipHover;
 	static const string Menus_HackerModeMenu_DataMenu;
+	static const string Menus_HackerModeMenu_EmptyFullScreenMenu;
 	static const string Menus_HackerModeMenu_HackButton;
 	static const string Menus_HackerModeMenu_HackButtonClick;
 	static const string Menus_HackerModeMenu_HackButtonHover;

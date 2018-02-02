@@ -11,7 +11,7 @@ DataMenu* DataMenu::create()
 
 DataMenu::DataMenu()
 {
-	this->dataMenuBackground = Sprite::create(Resources::Menus_HackerModeMenu_DataMenu);
+	this->dataMenuBackground = Sprite::create(Resources::Menus_HackerModeMenu_EmptyFullScreenMenu);
 	this->closeButton = MenuSprite::create(Resources::Menus_HackerModeMenu_CloseButton, Resources::Menus_HackerModeMenu_CloseButtonHover, Resources::Menus_HackerModeMenu_CloseButtonClick);
 	this->rows = Node::create();
 
