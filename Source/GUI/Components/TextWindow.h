@@ -6,7 +6,6 @@
 #include "GUI/Components/MenuLabel.h"
 #include "GUI/Components/MenuSprite.h"
 #include "GUI/Components/MouseOverPanel.h"
-#include "GUI/Components/TextWindow.h"
 #include "Objects/Hackables/HackableObject.h"
 #include "Utils/HackUtils.h"
 #include "Utils/StrUtils.h"
@@ -14,49 +13,51 @@
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
-class CodeEditor : public Node
+class TextWindow : public Node
 {
 public:
-	static CodeEditor * create();
+	static TextWindow * create(std::string windowTitle);
 
-	void open(HackableCode* hackableCode);
+	struct token
+	{
+		std::string tokenStr;
+		Color3B color;
+
+		token(std::string tokenStr, Color3B color) : tokenStr(tokenStr), color(color)
+		{
+		}
+	};
+
+	void setTokenizationCallback(std::function<std::vector<TextWindow::token>*(std::string text)> newTokenizationCallback);
+	void setTitle(std::string title);
+	void setText(std::string text);
+	void focus();
 
 private:
-	CodeEditor();
-	~CodeEditor();
+	TextWindow(std::string windowTitle);
+	~TextWindow();
 
 	void initializePositions();
 	void initializeListeners();
 	void update(float) override;
-	void enableAccept();
-	void disableAccept();
-	void compile(std::string rawText);
-	void constructCodeRichText(std::string rawText);
-	std::vector<TextWindow::token>* tokenizeCallback(std::string text);
-	void onAccept(MenuSprite* menuSprite);
-	void onCancel(MenuSprite* menuSprite);
+	void constructCodeRichText(std::string currentText);
+	void insertLineNumber(int lineNumber);
 
-	Sprite* codeEditorBackground;
+	MenuLabel* windowTitle;
+	ScrollView* scrollView;
+	RichText* lineNumbers;
+	TextField* editableText;
+	RichText* displayedText;
 
-	TextWindow* outputWindow;
-	TextWindow* functionWindow;
-	TextWindow* secondaryWindow;
-
-	MenuSprite* cancelButton;
-	MenuSprite* acceptButton;
-	Sprite* acceptButtonGrayed;
-
-	HackableCode* activeHackableCode;
-	float compileDelay;
 	std::vector<RichElement*>* lineNumberElements;
 	std::vector<RichElement*>* displayTextElements;
-	std::vector<RichElement*>* outputTextElements;
 	std::string previousAssemblyText;
 
-	static const float compileDelayMaxSeconds;
+	std::function<std::vector<TextWindow::token>*(std::string text)> tokenizationCallback;
+
 	static const float lineNumberMargin;
 	static const Size textSize;
-	static const std::string delimiters;
+
 	static const Color3B defaultColor;
 	static const Color3B subtextColor;
 	static const Color3B headerColor;
@@ -64,7 +65,5 @@ private:
 	static const Color3B registerColor;
 	static const Color3B numberColor;
 	static const Color3B commentColor;
-
-	static const std::set<std::string> registers;
 };
 

@@ -170,6 +170,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\Components\Mouse.cpp" />
     <ClCompile Include="Source\GUI\Components\CRadioButton.cpp" />
     <ClCompile Include="Source\GUI\Components\CSlider.cpp" />
+    <ClCompile Include="Source\GUI\Components\TextWindow.cpp" />
     <ClCompile Include="Source\GUI\Components\ToggleButton.cpp" />
     <ClCompile Include="Source\GUI\HUD\HUD.cpp" />
     <ClCompile Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.cpp" />
@@ -240,6 +241,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\Components\Mouse.h" />
     <ClInclude Include="Source\GUI\Components\CRadioButton.h" />
     <ClInclude Include="Source\GUI\Components\CSlider.h" />
+    <ClInclude Include="Source\GUI\Components\TextWindow.h" />
     <ClInclude Include="Source\GUI\Components\ToggleButton.h" />
     <ClInclude Include="Source\GUI\HUD\HUD.h" />
     <ClInclude Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.h" />
