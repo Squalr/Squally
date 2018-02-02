@@ -6,6 +6,7 @@
 #include "GUI/Components/MenuLabel.h"
 #include "GUI/Components/MenuSprite.h"
 #include "GUI/Components/MouseOverPanel.h"
+#include "GUI/Components/TextWindow.h"
 #include "Objects/Hackables/HackableObject.h"
 #include "Utils/HackUtils.h"
 #include "Utils/StrUtils.h"
@@ -24,16 +25,6 @@ private:
 	CodeEditor();
 	~CodeEditor();
 
-	struct token
-	{
-		std::string tokenStr;
-		Color3B color;
-
-		token(std::string tokenStr, Color3B color) : tokenStr(tokenStr), color(color)
-		{
-		}
-	};
-
 	void initializePositions();
 	void initializeListeners();
 	void update(float) override;
@@ -41,30 +32,21 @@ private:
 	void disableAccept();
 	void compile(std::string rawText);
 	void constructCodeRichText(std::string rawText);
-	std::vector<token>* createTokens(std::string tokenStr);
+	std::vector<TextWindow::token>* tokenizeCallback(std::string text);
 	void onAccept(MenuSprite* menuSprite);
 	void onCancel(MenuSprite* menuSprite);
 
-	HackableCode* activeHackableCode;
-
 	Sprite* codeEditorBackground;
-	ScrollView* codeEditorScrollView;
-	TextField* assemblyCodeText;
-	RichText* lineNumbers;
-	RichText* assemblyCodeRichText;
+
+	TextWindow* outputWindow;
+	TextWindow* functionWindow;
+	TextWindow* secondaryWindow;
+
 	MenuSprite* cancelButton;
 	MenuSprite* acceptButton;
 	Sprite* acceptButtonGrayed;
-	MenuLabel* codeEditorTitle;
 
-	Sprite* allocEditorBackground;
-	MenuLabel* allocEditorTitle;
-
-	Sprite* outputBackground;
-	MenuLabel* outputTitle;
-	ScrollView* outputScrollView;
-	RichText* outputText;
-
+	HackableCode* activeHackableCode;
 	float compileDelay;
 	std::vector<RichElement*>* lineNumberElements;
 	std::vector<RichElement*>* displayTextElements;
