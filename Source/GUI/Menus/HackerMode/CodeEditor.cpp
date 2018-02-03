@@ -2,8 +2,11 @@
 
 const float CodeEditor::compileDelayMaxSeconds = 0.1f;
 const float CodeEditor::lineNumberMargin = 32.0f;;
-const Size CodeEditor::textSize = Size(448.0f, 640.0f);
-const std::string CodeEditor::delimiters = "[],; \n\t";
+const Size CodeEditor::textSize = Size(512.0f, 640.0f);
+const Size CodeEditor::statusSize = Size(512.0f, 640.0f);
+const Size CodeEditor::functionSize = Size(512.0f, 640.0f);
+const Size CodeEditor::secondarySize = Size(512.0f, 640.0f);
+const std::string CodeEditor::delimiters = "[],:; \n\t";
 const Color3B CodeEditor::defaultColor = Color3B::WHITE;
 const Color3B CodeEditor::subtextColor = Color3B::GRAY;
 const Color3B CodeEditor::headerColor = Color3B(188, 188, 64);
@@ -57,13 +60,14 @@ CodeEditor::CodeEditor()
 	this->activeHackableCode = nullptr;
 
 	this->codeEditorBackground = Sprite::create(Resources::Menus_HackerModeMenu_EmptyFullScreenMenu);
+	this->codeEditorTitle = MenuLabel::create("Script Editor", Resources::Fonts_Montserrat_Medium, 32);
 
-	this->outputWindow = TextWindow::create("Status", Size(480.0f, 640.0f), 32, CodeEditor::defaultColor);
-	this->functionWindow = EditableTextWindow::create("Code Editor", Size(480.0f, 640.0f), 32, CodeEditor::defaultColor);
-	this->secondaryWindow = EditableTextWindow::create("Allocation Editor", Size(480.0f, 640.0f), 32, CodeEditor::defaultColor);
-	this->cancelButton = MenuSprite::create(Resources::Menus_Buttons_CancelButton, Resources::Menus_Buttons_CancelButtonHover, Resources::Menus_Buttons_CancelButtonClick);
-	this->acceptButton = MenuSprite::create(Resources::Menus_Buttons_AcceptButton, Resources::Menus_Buttons_AcceptButtonHover, Resources::Menus_Buttons_AcceptButtonClick);
-	this->acceptButtonGrayed = Sprite::create(Resources::Menus_Buttons_AcceptButtonGray);
+	this->statusWindow = TextWindow::create("Status", CodeEditor::statusSize, 32, CodeEditor::defaultColor);
+	this->functionWindow = EditableTextWindow::create("Code Editor", CodeEditor::functionSize, 32, CodeEditor::defaultColor);
+	this->secondaryWindow = EditableTextWindow::create("Allocation Editor", CodeEditor::secondarySize, 32, CodeEditor::defaultColor);
+	this->cancelButton = MenuSprite::create(Resources::Menus_HackerModeMenu_TrashButton, Resources::Menus_HackerModeMenu_TrashButtonHover, Resources::Menus_HackerModeMenu_TrashButtonClick);
+	this->acceptButton = MenuSprite::create(Resources::Menus_HackerModeMenu_PlayButton, Resources::Menus_HackerModeMenu_PlayButtonHover, Resources::Menus_HackerModeMenu_PlayButtonClick);
+	this->acceptButtonGrayed = Sprite::create(Resources::Menus_HackerModeMenu_PlayButtonGray);
 
 	this->functionWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
 	this->secondaryWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
@@ -73,7 +77,8 @@ CodeEditor::CodeEditor()
 	this->secondaryWindow->setMarginSize(32.0f);
 
 	this->addChild(this->codeEditorBackground);
-	this->addChild(this->outputWindow);
+	this->addChild(this->codeEditorTitle);
+	this->addChild(this->statusWindow);
 	this->addChild(this->functionWindow);
 	this->addChild(this->secondaryWindow);
 	this->addChild(this->cancelButton);
@@ -94,13 +99,14 @@ void CodeEditor::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->codeEditorBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->acceptButton->setPosition(Vec2(224.0f, visibleSize.height / 2.0f - 336.0f));
-	this->cancelButton->setPosition(Vec2(-224.0f, visibleSize.height / 2.0f - 336.0f));
+	this->codeEditorTitle->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 444.0f));
+	this->acceptButton->setPosition(Vec2(visibleSize.width / 2.0f + 224.0f, visibleSize.height / 2.0f + 348.0f));
+	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 224.0f, visibleSize.height / 2.0f + 348.0f));
 	this->acceptButtonGrayed->setPosition(this->acceptButton->getPosition());
 
-	this->outputWindow->setPosition(Vec2(visibleSize.width / 2.0f - 640.0f, visibleSize.height / 2.0f));
-	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->secondaryWindow->setPosition(Vec2(visibleSize.width / 2.0f + 640.0f, visibleSize.height / 2.0f));
+	this->statusWindow->setPosition(Vec2(visibleSize.width / 2.0f - 560.0f, visibleSize.height / 2.0f - 64.0f));
+	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 64.0f));
+	this->secondaryWindow->setPosition(Vec2(visibleSize.width / 2.0f + 560.0f, visibleSize.height / 2.0f - 64.0f));
 }
 
 void CodeEditor::initializeListeners()
@@ -156,37 +162,36 @@ void CodeEditor::compile(std::string assemblyText)
 		return;
 	}
 
-	this->outputWindow->clearText();
+	this->statusWindow->clearText();
 
 	// Do the actual compile
 	HackUtils::CompileResult compileResult = HackUtils::assemble(assemblyText, this->activeHackableCode->codePointer);
-
 
 	// Build text and enable/disable the accept button
 	if (!compileResult.hasError)
 	{
 		bool byteOverflow = compileResult.byteCount > this->activeHackableCode->codeOriginalLength;
 
-		this->outputWindow->insertText("Status:", CodeEditor::headerColor);
-		this->outputWindow->insertText("Compile Successful", CodeEditor::defaultColor);
-		this->outputWindow->insertNewline();
-		this->outputWindow->insertNewline();
-		this->outputWindow->insertText("Address:", CodeEditor::headerColor);
-		this->outputWindow->insertText(HackUtils::hexAddressOf(this->activeHackableCode->codePointer, true, true), CodeEditor::defaultColor);
-		this->outputWindow->insertNewline();
-		this->outputWindow->insertNewline();
-		this->outputWindow->insertText("Byte Count:", CodeEditor::headerColor);
-		this->outputWindow->insertText(to_string(compileResult.byteCount) + " / " + to_string(this->activeHackableCode->codeOriginalLength), byteOverflow ? CodeEditor::errorColor : CodeEditor::defaultColor);
-		this->outputWindow->insertNewline();
-		this->outputWindow->insertNewline();
+		this->statusWindow->insertText("Status:", CodeEditor::headerColor);
+		this->statusWindow->insertText("Compile Successful", CodeEditor::defaultColor);
+		this->statusWindow->insertNewline();
+		this->statusWindow->insertNewline();
+		this->statusWindow->insertText("Address:", CodeEditor::headerColor);
+		this->statusWindow->insertText(HackUtils::hexAddressOf(this->activeHackableCode->codePointer, true, true), CodeEditor::defaultColor);
+		this->statusWindow->insertNewline();
+		this->statusWindow->insertNewline();
+		this->statusWindow->insertText("Byte Count:", CodeEditor::headerColor);
+		this->statusWindow->insertText(to_string(compileResult.byteCount) + " / " + to_string(this->activeHackableCode->codeOriginalLength), byteOverflow ? CodeEditor::errorColor : CodeEditor::defaultColor);
+		this->statusWindow->insertNewline();
+		this->statusWindow->insertNewline();
 		if (compileResult.byteCount != this->activeHackableCode->codeOriginalLength)
 		{
-			this->outputWindow->insertText(byteOverflow ? "Byte overflow! Use allocations to write more assembly." : "Unfilled bytes will be filled with nop (empty) instructions.", byteOverflow ? CodeEditor::errorColor : CodeEditor::subtextColor);
-			this->outputWindow->insertNewline();
-			this->outputWindow->insertNewline();
+			this->statusWindow->insertText(byteOverflow ? "Byte overflow! Use allocations to write more assembly." : "Unfilled bytes will be filled with nop (empty) instructions.", byteOverflow ? CodeEditor::errorColor : CodeEditor::subtextColor);
+			this->statusWindow->insertNewline();
+			this->statusWindow->insertNewline();
 		}
-		this->outputWindow->insertText("Bytes:", CodeEditor::headerColor);
-		this->outputWindow->insertText(HackUtils::arrayOfByteStringOf(compileResult.compiledBytes, compileResult.byteCount, compileResult.byteCount), CodeEditor::defaultColor);
+		this->statusWindow->insertText("Bytes:", CodeEditor::headerColor);
+		this->statusWindow->insertText(HackUtils::arrayOfByteStringOf(compileResult.compiledBytes, compileResult.byteCount, compileResult.byteCount), CodeEditor::defaultColor);
 
 		if (byteOverflow)
 		{
@@ -199,16 +204,16 @@ void CodeEditor::compile(std::string assemblyText)
 	}
 	else
 	{
-		this->outputWindow->insertText("Status:", CodeEditor::headerColor);
-		this->outputWindow->insertText("Compile Errors", CodeEditor::errorColor);
-		this->outputWindow->insertNewline();
-		this->outputWindow->insertNewline();
-		this->outputWindow->insertText("Error:", CodeEditor::headerColor);
-		this->outputWindow->insertText(compileResult.errorData.message, CodeEditor::defaultColor);
-		this->outputWindow->insertNewline();
-		this->outputWindow->insertNewline();
-		this->outputWindow->insertText("Line Number:", CodeEditor::headerColor);
-		this->outputWindow->insertText(to_string(compileResult.errorData.lineNumber), CodeEditor::defaultColor);
+		this->statusWindow->insertText("Status:", CodeEditor::headerColor);
+		this->statusWindow->insertText("Compile Errors", CodeEditor::errorColor);
+		this->statusWindow->insertNewline();
+		this->statusWindow->insertNewline();
+		this->statusWindow->insertText("Error:", CodeEditor::headerColor);
+		this->statusWindow->insertText(compileResult.errorData.message, CodeEditor::defaultColor);
+		this->statusWindow->insertNewline();
+		this->statusWindow->insertNewline();
+		this->statusWindow->insertText("Line Number:", CodeEditor::headerColor);
+		this->statusWindow->insertText(to_string(compileResult.errorData.lineNumber), CodeEditor::defaultColor);
 
 		this->disableAccept();
 	}

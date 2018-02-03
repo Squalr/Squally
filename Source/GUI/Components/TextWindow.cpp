@@ -1,5 +1,7 @@
 ﻿#include "TextWindow.h"
 
+const float TextWindow::titleBarHeight = 48.0f;
+
 TextWindow* TextWindow::create(std::string windowTitle, Size initWindowSize, int initFontSize, Color3B initFontColor)
 {
 	TextWindow* codeEditor = new TextWindow(windowTitle, initWindowSize, initFontSize, initFontColor);
@@ -19,6 +21,8 @@ TextWindow::TextWindow(std::string windowTitle, Size initWindowSize, int initFon
 
 	this->scrollView = ScrollView::create();
 	this->displayedText = RichText::create();
+	this->background = LayerColor::create(Color4B(16, 19, 23, 192), initWindowSize.width, initWindowSize.height);
+	this->titleBar = LayerColor::create(Color4B(16, 81, 56, 128), initWindowSize.width, TextWindow::titleBarHeight);
 	this->windowTitle = MenuLabel::create(windowTitle, Resources::Fonts_Montserrat_Medium, this->fontSize);
 
 	this->scrollView->setAnchorPoint(Vec2(0.5f, 0.5f));
@@ -31,6 +35,8 @@ TextWindow::TextWindow(std::string windowTitle, Size initWindowSize, int initFon
 
 	this->scrollView->addChild(this->displayedText);
 
+	this->addChild(this->background);
+	this->addChild(this->titleBar);
 	this->addChild(this->windowTitle);
 	this->addChild(this->scrollView);
 
@@ -88,7 +94,9 @@ void TextWindow::clearText()
 void TextWindow::initializePositions()
 {
 	this->scrollView->setPosition(Vec2(0.0f, 0.0f));
+	this->background->setPosition(-this->windowSize.width / 2.0f, -this->windowSize.height / 2.0f);
 	this->displayedText->setPosition(Vec2(this->marginSize, this->scrollView->getInnerContainerSize().height));
+	this->titleBar->setPosition(-this->titleBar->getContentSize().width / 2.0f, this->windowSize.height / 2.0f - this->titleBar->getContentSize().height / 2.0f + this->fontSize);
 	this->windowTitle->setPosition(0.0f, this->windowSize.height / 2 + this->fontSize);
 }
 
