@@ -40,7 +40,8 @@ private:
 
 	Sprite* codeEditorBackground;
 
-	TextWindow* outputWindow;
+	TextWindow* statusWindow;
+	MenuLabel* codeEditorTitle;
 	EditableTextWindow* functionWindow;
 	EditableTextWindow* secondaryWindow;
 
@@ -54,6 +55,9 @@ private:
 	static const float compileDelayMaxSeconds;
 	static const float lineNumberMargin;
 	static const Size textSize;
+	static const Size statusSize;
+	static const Size functionSize;
+	static const Size secondarySize;
 	static const std::string delimiters;
 	static const Color3B defaultColor;
 	static const Color3B subtextColor;
@@ -62,7 +66,6 @@ private:
 	static const Color3B registerColor;
 	static const Color3B numberColor;
 	static const Color3B commentColor;
-
 	static const std::set<std::string> registers;
 };
 

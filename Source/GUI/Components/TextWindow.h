@@ -33,6 +33,8 @@ private:
 	void initializeListeners();
 	void update(float) override;
 
+	LayerColor* background;
+	LayerColor* titleBar;
 	MenuLabel* windowTitle;
 	RichText* displayedText;
 
@@ -41,5 +43,7 @@ private:
 	float fontSize;
 	Color3B fontColor;
 	Size windowSize;
+
+	static const float titleBarHeight;
 };
 

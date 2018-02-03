@@ -11,8 +11,10 @@ CodeMenu* CodeMenu::create()
 
 CodeMenu::CodeMenu()
 {
+	this->activeHackableObject = nullptr;
 	this->editMap = new std::map<MenuLabel*, HackableCode*>();
 	this->codeMenuBackground = Sprite::create(Resources::Menus_HackerModeMenu_EmptyFullScreenMenu);
+	this->codeMenuTitle = MenuLabel::create("Code", Resources::Fonts_Montserrat_Medium, 32);
 	this->closeButton = MenuSprite::create(Resources::Menus_HackerModeMenu_CloseButton, Resources::Menus_HackerModeMenu_CloseButtonHover, Resources::Menus_HackerModeMenu_CloseButtonClick);
 	this->rows = Node::create();
 	this->mouseOverMenuHost = Node::create();
@@ -21,6 +23,7 @@ CodeMenu::CodeMenu()
 	this->codeEditor->setVisible(false);
 
 	this->addChild(this->codeMenuBackground);
+	this->addChild(this->codeMenuTitle);
 	this->addChild(this->closeButton);
 	this->addChild(this->rows);
 	this->addChild(this->mouseOverMenuHost);
@@ -40,7 +43,8 @@ void CodeMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->codeMenuBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 612.0f, visibleSize.height / 2.0f + 336.0f));
+	this->codeMenuTitle->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 444.0f));
+	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 848.0f, visibleSize.height / 2.0f + 444.0f));
 	this->rows->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 196.0f));
 	this->mouseOverMenuHost->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }
@@ -52,6 +56,30 @@ void CodeMenu::initializeListeners()
 
 void CodeMenu::open(HackableObject* hackableObject)
 {
+	this->activeHackableObject = hackableObject;
+
+	this->populateRows();
+
+	this->setVisible(true);
+
+	Utils::focus(this);
+}
+
+void CodeMenu::resume()
+{
+	this->populateRows();
+
+	this->codeMenuBackground->setVisible(true);
+	this->codeMenuTitle->setVisible(true);
+	this->closeButton->setVisible(true);
+	this->rows->setVisible(true);
+	this->mouseOverMenuHost->setVisible(true);
+
+	Node::resume();
+}
+
+void CodeMenu::populateRows()
+{
 	const float spacing = -36.0f;
 	const float fontSize = 24.0f;
 
@@ -59,52 +87,58 @@ void CodeMenu::open(HackableObject* hackableObject)
 	this->editMap->clear();
 	int index = 0;
 
-	for (auto iterator = hackableObject->codeList->begin(); iterator != hackableObject->codeList->end(); iterator++)
+	if (this->activeHackableObject != nullptr)
 	{
-		Node* newRow = Node::create();
-		HackableCode* hackableCode = *iterator;
+		for (auto iterator = this->activeHackableObject->codeList->begin(); iterator != this->activeHackableObject->codeList->end(); iterator++)
+		{
+			Node* newRow = Node::create();
+			HackableCode* hackableCode = *iterator;
 
-		Label* address = Label::create(HackUtils::hexAddressOf(hackableCode->codePointer, true, true), Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
-		Label* name = Label::create(hackableCode->functionName, Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
-		Label* byteLength = Label::create(std::to_string(hackableCode->codeOriginalLength), Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
-		MenuLabel* editLabel = MenuLabel::create("Edit", Resources::Fonts_Montserrat_Medium, fontSize);
-		Label* bytes = Label::create(HackUtils::arrayOfByteStringOf(hackableCode->codePointer, hackableCode->codeOriginalLength, 6), Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
-		Label* refData = Label::create(">>", Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
+			Label* address = Label::create(HackUtils::hexAddressOf(hackableCode->codePointer, true, true), Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
+			Label* name = Label::create(hackableCode->functionName, Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
+			Label* byteLength = Label::create(std::to_string(hackableCode->codeOriginalLength), Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
+			MenuLabel* editLabel = MenuLabel::create("Edit", Resources::Fonts_Montserrat_Medium, fontSize);
+			Label* bytes = Label::create(HackUtils::arrayOfByteStringOf(hackableCode->codePointer, hackableCode->codeOriginalLength, 6), Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
+			Label* refData = Label::create(">>", Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
 
-		address->setPosition(Vec2(-540.0f, spacing * index));
-		name->setPosition(Vec2(-280.0f, spacing * index));
-		byteLength->setPosition(Vec2(-80.0f, spacing * index));
-		editLabel->setPosition(Vec2(32.0f, spacing * index));
-		bytes->setPosition(Vec2(252.0f, spacing * index));
-		refData->setPosition(Vec2(536.0f, spacing * index));
+			address->setPosition(Vec2(-540.0f, spacing * index));
+			name->setPosition(Vec2(-280.0f, spacing * index));
+			byteLength->setPosition(Vec2(-80.0f, spacing * index));
+			editLabel->setPosition(Vec2(32.0f, spacing * index));
+			bytes->setPosition(Vec2(252.0f, spacing * index));
+			refData->setPosition(Vec2(536.0f, spacing * index));
 
-		MouseOverPanel* addressMouseOver = this->constructAddressMouseOver(hackableCode, address);
-		MouseOverPanel* nameMouseOver = this->constructNameMouseOver(hackableCode, name);
-		MouseOverPanel* byteLengthMouseOver = this->constructByteLengthMouseOver(hackableCode, byteLength);
-		MouseOverPanel* bytesMouseOver = this->constructBytesMouseOver(hackableCode, bytes);
+			MouseOverPanel* addressMouseOver = this->constructAddressMouseOver(hackableCode, address);
+			MouseOverPanel* nameMouseOver = this->constructNameMouseOver(hackableCode, name);
+			MouseOverPanel* byteLengthMouseOver = this->constructByteLengthMouseOver(hackableCode, byteLength);
+			MouseOverPanel* bytesMouseOver = this->constructBytesMouseOver(hackableCode, bytes);
 
-		newRow->addChild(addressMouseOver);
-		newRow->addChild(nameMouseOver);
-		newRow->addChild(editLabel);
-		newRow->addChild(byteLengthMouseOver);
-		newRow->addChild(bytesMouseOver);
-		newRow->addChild(refData);
+			newRow->addChild(addressMouseOver);
+			newRow->addChild(nameMouseOver);
+			newRow->addChild(editLabel);
+			newRow->addChild(byteLengthMouseOver);
+			newRow->addChild(bytesMouseOver);
+			newRow->addChild(refData);
 
-		editLabel->setCallback(CC_CALLBACK_1(CodeMenu::onCodeEditClick, this));
+			editLabel->setCallback(CC_CALLBACK_1(CodeMenu::onCodeEditClick, this));
 
-		this->editMap->insert_or_assign(editLabel, hackableCode);
-		this->rows->addChild(newRow);
+			this->editMap->insert_or_assign(editLabel, hackableCode);
+			this->rows->addChild(newRow);
 
-		index++;
+			index++;
+		}
 	}
-
-	this->setVisible(true);
-	Utils::focus(this);
 }
 
 void CodeMenu::onCodeEditClick(MenuLabel* menuLabel)
 {
 	HackableCode* hackableCode = this->editMap->at(menuLabel);
+
+	this->codeMenuBackground->setVisible(false);
+	this->codeMenuTitle->setVisible(false);
+	this->closeButton->setVisible(false);
+	this->rows->setVisible(false);
+	this->mouseOverMenuHost->setVisible(false);
 
 	this->codeEditor->open(hackableCode);
 }
