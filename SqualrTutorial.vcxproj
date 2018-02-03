@@ -160,6 +160,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Entities\Entity.cpp" />
     <ClCompile Include="Source\Entities\Player\Hover.cpp" />
     <ClCompile Include="Source\Entities\Player\Player.cpp" />
+    <ClCompile Include="Source\GUI\Components\EditableTextWindow.cpp" />
     <ClCompile Include="Source\GUI\Components\FadeScene.cpp" />
     <ClCompile Include="Source\GUI\Components\FloatingSprite.cpp" />
     <ClCompile Include="Source\GUI\Components\InfiniteParallaxNode.cpp" />
@@ -231,6 +232,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Entities\Entity.h" />
     <ClInclude Include="Source\Entities\Player\Hover.h" />
     <ClInclude Include="Source\Entities\Player\Player.h" />
+    <ClInclude Include="Source\GUI\Components\EditableTextWindow.h" />
     <ClInclude Include="Source\GUI\Components\FadeScene.h" />
     <ClInclude Include="Source\GUI\Components\FloatingSprite.h" />
     <ClInclude Include="Source\GUI\Components\InfiniteParallaxNode.h" />

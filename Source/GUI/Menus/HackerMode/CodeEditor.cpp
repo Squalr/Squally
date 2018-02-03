@@ -55,21 +55,22 @@ CodeEditor::CodeEditor()
 {
 	this->compileDelay = CodeEditor::compileDelayMaxSeconds;
 	this->activeHackableCode = nullptr;
-	this->displayTextElements = new std::vector<RichElement*>();
-	this->lineNumberElements = new std::vector<RichElement*>();
-	this->outputTextElements = new std::vector<RichElement*>();
 
 	this->codeEditorBackground = Sprite::create(Resources::Menus_HackerModeMenu_EmptyFullScreenMenu);
 
-	this->outputWindow = TextWindow::create("Status");
-	this->functionWindow = TextWindow::create("Code Editor");
-	this->secondaryWindow = TextWindow::create("Allocation Editor");
+	this->outputWindow = TextWindow::create("Status", Size(480.0f, 640.0f), 32, CodeEditor::defaultColor);
+	this->functionWindow = EditableTextWindow::create("Code Editor", Size(480.0f, 640.0f), 32, CodeEditor::defaultColor);
+	this->secondaryWindow = EditableTextWindow::create("Allocation Editor", Size(480.0f, 640.0f), 32, CodeEditor::defaultColor);
 	this->cancelButton = MenuSprite::create(Resources::Menus_Buttons_CancelButton, Resources::Menus_Buttons_CancelButtonHover, Resources::Menus_Buttons_CancelButtonClick);
 	this->acceptButton = MenuSprite::create(Resources::Menus_Buttons_AcceptButton, Resources::Menus_Buttons_AcceptButtonHover, Resources::Menus_Buttons_AcceptButtonClick);
 	this->acceptButtonGrayed = Sprite::create(Resources::Menus_Buttons_AcceptButtonGray);
 
-	this->functionWindow->setTokenizationCallback(CC_CALLBACK_1(CodeEditor::tokenizeCallback, this));
-	this->secondaryWindow->setTokenizationCallback(CC_CALLBACK_1(CodeEditor::tokenizeCallback, this));
+	this->functionWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
+	this->secondaryWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
+	this->functionWindow->setOnEditCallback(CC_CALLBACK_1(CodeEditor::compile, this));
+	this->secondaryWindow->setOnEditCallback(CC_CALLBACK_1(CodeEditor::compile, this));
+	this->functionWindow->setMarginSize(32.0f);
+	this->secondaryWindow->setMarginSize(32.0f);
 
 	this->addChild(this->codeEditorBackground);
 	this->addChild(this->outputWindow);
@@ -86,9 +87,6 @@ CodeEditor::CodeEditor()
 
 CodeEditor::~CodeEditor()
 {
-	delete(this->displayTextElements);
-	delete(this->lineNumberElements);
-	delete(this->outputTextElements);
 }
 
 void CodeEditor::initializePositions()
@@ -111,15 +109,22 @@ void CodeEditor::initializeListeners()
 	this->cancelButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onCancel, this));
 }
 
+void CodeEditor::onFunctionTextUpdate(std::string text)
+{
+	// Reset compile delay
+	this->disableAccept();
+	this->compileDelay = 0.0f;
+}
+
+void CodeEditor::onAllocationTextUpdate(std::string text)
+{
+	// Reset compile delay
+	this->disableAccept();
+	this->compileDelay = 0.0f;
+}
+
 void CodeEditor::update(float dt)
 {
-	return;
-	/*
-	std::string currentText = this->assemblyCodeText->getString();
-
-	// Keep the assembly code editor focused. Will need to update this when alloc editor is supported.
-	this->assemblyCodeText->attachWithIME();
-
 	// Update compile based on compile delay
 	if (this->compileDelay <= CodeEditor::compileDelayMaxSeconds)
 	{
@@ -127,19 +132,9 @@ void CodeEditor::update(float dt)
 
 		if (this->compileDelay > CodeEditor::compileDelayMaxSeconds)
 		{
-			this->compile(currentText);
+			this->compile(this->functionWindow->getText());
 		}
 	}
-
-	if (this->previousAssemblyText != currentText)
-	{
-		this->previousAssemblyText = currentText;
-		this->constructCodeRichText(currentText);
-
-		// Reset compile delay
-		this->disableAccept();
-		this->compileDelay = 0.0f;
-	}*/
 }
 
 void CodeEditor::enableAccept()
@@ -154,89 +149,44 @@ void CodeEditor::disableAccept()
 	this->acceptButton->setVisible(false);
 }
 
-void CodeEditor::compile(std::string rawText)
+void CodeEditor::compile(std::string assemblyText)
 {
-	/*
 	if (this->activeHackableCode == nullptr)
 	{
 		return;
 	}
 
-	// Remove existing rich text
-	for (auto iterator = this->outputTextElements->begin(); iterator != this->outputTextElements->end(); iterator++)
-	{
-		this->outputText->removeElement(*iterator);
-	}
-
-	this->outputTextElements->clear();
+	this->outputWindow->clearText();
 
 	// Do the actual compile
-	HackUtils::CompileResult compileResult = HackUtils::assemble(rawText, this->activeHackableCode->codePointer);
+	HackUtils::CompileResult compileResult = HackUtils::assemble(assemblyText, this->activeHackableCode->codePointer);
+
 
 	// Build text and enable/disable the accept button
 	if (!compileResult.hasError)
 	{
 		bool byteOverflow = compileResult.byteCount > this->activeHackableCode->codeOriginalLength;
 
-		RichElementText* statusHeaderLabel = RichElementText::create(0, CodeEditor::headerColor, 0xFF, "Status: ", Resources::Fonts_UbuntuMono_B, 32);
-		RichElementText* statusLabel = RichElementText::create(0, CodeEditor::defaultColor, 0xFF, "Compile Successful", Resources::Fonts_UbuntuMono_B, 32);
-		RichElementNewLine* newLine1 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-		RichElementNewLine* newLine2 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-		RichElementText* addressHeaderLabel = RichElementText::create(0, CodeEditor::headerColor, 0xFF, "Address: ", Resources::Fonts_UbuntuMono_B, 32);
-		RichElementText* addressLabel = RichElementText::create(0, CodeEditor::defaultColor, 0xFF, HackUtils::hexAddressOf(this->activeHackableCode->codePointer, true, true), Resources::Fonts_UbuntuMono_B, 32);
-		RichElementNewLine* newLine3 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-		RichElementNewLine* newLine4 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-		RichElementText* byteCountHeaderLabel = RichElementText::create(0, CodeEditor::headerColor, 0xFF, "Byte Count: ", Resources::Fonts_UbuntuMono_B, 32);
-		RichElementText* byteCountLabel = RichElementText::create(0, byteOverflow ? CodeEditor::errorColor : CodeEditor::defaultColor, 0xFF, to_string(compileResult.byteCount) + " / " + to_string(this->activeHackableCode->codeOriginalLength), Resources::Fonts_UbuntuMono_B, 32);
-		RichElementNewLine* newLine5 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-		RichElementNewLine* newLine6 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-		RichElementText* byteCountaddendum = RichElementText::create(0, byteOverflow ? CodeEditor::errorColor : CodeEditor::subtextColor, 0xFF, byteOverflow ? "Byte overflow! Use allocations to write more assembly." : "Unfilled bytes will be filled with nop (empty) instructions.", Resources::Fonts_UbuntuMono_B, 32);
-		RichElementNewLine* newLine7 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-		RichElementNewLine* newLine8 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-		RichElementText* bytesHeaderLabel = RichElementText::create(0, CodeEditor::headerColor, 0xFF, "Bytes: ", Resources::Fonts_UbuntuMono_B, 32);
-		RichElementText* bytesLabel = RichElementText::create(0, CodeEditor::defaultColor, 0xFF, HackUtils::arrayOfByteStringOf(compileResult.compiledBytes, compileResult.byteCount, compileResult.byteCount), Resources::Fonts_UbuntuMono_B, 32);
-
-		this->outputText->pushBackElement(statusHeaderLabel);
-		this->outputText->pushBackElement(statusLabel);
-		this->outputText->pushBackElement(newLine1);
-		this->outputText->pushBackElement(newLine2);
-		this->outputText->pushBackElement(addressHeaderLabel);
-		this->outputText->pushBackElement(addressLabel);
-		this->outputText->pushBackElement(newLine3);
-		this->outputText->pushBackElement(newLine4);
-		this->outputText->pushBackElement(byteCountHeaderLabel);
-		this->outputText->pushBackElement(byteCountLabel);
+		this->outputWindow->insertText("Status:", CodeEditor::headerColor);
+		this->outputWindow->insertText("Compile Successful", CodeEditor::defaultColor);
+		this->outputWindow->insertNewline();
+		this->outputWindow->insertNewline();
+		this->outputWindow->insertText("Address:", CodeEditor::headerColor);
+		this->outputWindow->insertText(HackUtils::hexAddressOf(this->activeHackableCode->codePointer, true, true), CodeEditor::defaultColor);
+		this->outputWindow->insertNewline();
+		this->outputWindow->insertNewline();
+		this->outputWindow->insertText("Byte Count:", CodeEditor::headerColor);
+		this->outputWindow->insertText(to_string(compileResult.byteCount) + " / " + to_string(this->activeHackableCode->codeOriginalLength), byteOverflow ? CodeEditor::errorColor : CodeEditor::defaultColor);
+		this->outputWindow->insertNewline();
+		this->outputWindow->insertNewline();
 		if (compileResult.byteCount != this->activeHackableCode->codeOriginalLength)
 		{
-			this->outputText->pushBackElement(newLine5);
-			this->outputText->pushBackElement(newLine6);
-			this->outputText->pushBackElement(byteCountaddendum);
+			this->outputWindow->insertText(byteOverflow ? "Byte overflow! Use allocations to write more assembly." : "Unfilled bytes will be filled with nop (empty) instructions.", byteOverflow ? CodeEditor::errorColor : CodeEditor::subtextColor);
+			this->outputWindow->insertNewline();
+			this->outputWindow->insertNewline();
 		}
-		this->outputText->pushBackElement(newLine7);
-		this->outputText->pushBackElement(newLine8);
-		this->outputText->pushBackElement(bytesHeaderLabel);
-		this->outputText->pushBackElement(bytesLabel);
-
-		this->outputTextElements->push_back(statusHeaderLabel);
-		this->outputTextElements->push_back(statusLabel);
-		this->outputTextElements->push_back(newLine1);
-		this->outputTextElements->push_back(newLine2);
-		this->outputTextElements->push_back(addressHeaderLabel);
-		this->outputTextElements->push_back(addressLabel);
-		this->outputTextElements->push_back(newLine3);
-		this->outputTextElements->push_back(newLine4);
-		this->outputTextElements->push_back(byteCountHeaderLabel);
-		this->outputTextElements->push_back(byteCountLabel);
-		if (compileResult.byteCount != this->activeHackableCode->codeOriginalLength)
-		{
-			this->outputTextElements->push_back(newLine5);
-			this->outputTextElements->push_back(newLine6);
-			this->outputTextElements->push_back(byteCountaddendum);
-		}
-		this->outputTextElements->push_back(newLine7);
-		this->outputTextElements->push_back(newLine8);
-		this->outputTextElements->push_back(bytesHeaderLabel);
-		this->outputTextElements->push_back(bytesLabel);
+		this->outputWindow->insertText("Bytes:", CodeEditor::headerColor);
+		this->outputWindow->insertText(HackUtils::arrayOfByteStringOf(compileResult.compiledBytes, compileResult.byteCount, compileResult.byteCount), CodeEditor::defaultColor);
 
 		if (byteOverflow)
 		{
@@ -249,132 +199,24 @@ void CodeEditor::compile(std::string rawText)
 	}
 	else
 	{
-		RichElementText* statusHeaderLabel = RichElementText::create(0, CodeEditor::headerColor, 0xFF, "Status: ", Resources::Fonts_UbuntuMono_B, 32);
-		RichElementText* statusLabel = RichElementText::create(0, CodeEditor::errorColor, 0xFF, "Compile Errors", Resources::Fonts_UbuntuMono_B, 32);
-		RichElementNewLine* newLine1 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-		RichElementNewLine* newLine2 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-		RichElementText* errorHeaderLabel = RichElementText::create(0, CodeEditor::headerColor, 0xFF, "Error: ", Resources::Fonts_UbuntuMono_B, 32);
-		RichElementText* errorLabel = RichElementText::create(0, CodeEditor::defaultColor, 0xFF, compileResult.errorData.message, Resources::Fonts_UbuntuMono_B, 32);
-		RichElementNewLine* newLine3 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-		RichElementNewLine* newLine4 = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-		RichElementText* innerErrorHeaderLabel = RichElementText::create(0, CodeEditor::headerColor, 0xFF, "Line Number: ", Resources::Fonts_UbuntuMono_B, 32);
-		RichElementText* innerErrorLabel = RichElementText::create(0, CodeEditor::defaultColor, 0xFF, to_string(compileResult.errorData.lineNumber), Resources::Fonts_UbuntuMono_B, 32);
-
-		this->outputText->pushBackElement(statusHeaderLabel);
-		this->outputText->pushBackElement(statusLabel);
-		this->outputText->pushBackElement(newLine1);
-		this->outputText->pushBackElement(newLine2);
-		this->outputText->pushBackElement(errorHeaderLabel);
-		this->outputText->pushBackElement(errorLabel);
-		this->outputText->pushBackElement(newLine3);
-		this->outputText->pushBackElement(newLine4);
-		this->outputText->pushBackElement(innerErrorHeaderLabel);
-		this->outputText->pushBackElement(innerErrorLabel);
-
-		this->outputTextElements->push_back(statusHeaderLabel);
-		this->outputTextElements->push_back(statusLabel);
-		this->outputTextElements->push_back(newLine1);
-		this->outputTextElements->push_back(newLine2);
-		this->outputTextElements->push_back(errorHeaderLabel);
-		this->outputTextElements->push_back(errorLabel);
-		this->outputTextElements->push_back(newLine3);
-		this->outputTextElements->push_back(newLine4);
-		this->outputTextElements->push_back(innerErrorHeaderLabel);
-		this->outputTextElements->push_back(innerErrorLabel);
+		this->outputWindow->insertText("Status:", CodeEditor::headerColor);
+		this->outputWindow->insertText("Compile Errors", CodeEditor::errorColor);
+		this->outputWindow->insertNewline();
+		this->outputWindow->insertNewline();
+		this->outputWindow->insertText("Error:", CodeEditor::headerColor);
+		this->outputWindow->insertText(compileResult.errorData.message, CodeEditor::defaultColor);
+		this->outputWindow->insertNewline();
+		this->outputWindow->insertNewline();
+		this->outputWindow->insertText("Line Number:", CodeEditor::headerColor);
+		this->outputWindow->insertText(to_string(compileResult.errorData.lineNumber), CodeEditor::defaultColor);
 
 		this->disableAccept();
 	}
-
-	this->outputText->formatText();*/
 }
 
-void CodeEditor::constructCodeRichText(std::string rawText)
-{
-	/*
-	// Remove existing rich text
-	for (auto iterator = this->displayTextElements->begin(); iterator != this->displayTextElements->end(); iterator++)
-	{
-		this->assemblyCodeRichText->removeElement(*iterator);
-	}
-
-	for (auto iterator = this->lineNumberElements->begin(); iterator != this->lineNumberElements->end(); iterator++)
-	{
-		this->lineNumbers->removeElement(*iterator);
-	}
-
-	this->displayTextElements->clear();
-	this->lineNumberElements->clear();
-
-	// Tokenize x86/x64 assembly
-	std::vector <std::string> * tokenStrings = StrUtils::tokenize(rawText, CodeEditor::delimiters);
-	int lineNumber = 1;
-	bool insertLineNumber = true;
-
-	if (insertLineNumber)
-	{
-		RichElement* lineNumberText = RichElementText::create(0, CodeEditor::subtextColor, 0xFF, to_string(lineNumber++), Resources::Fonts_UbuntuMono_B, 32);
-		RichElement* lineNumberNewLine = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-
-		this->lineNumberElements->push_back(lineNumberText);
-		this->lineNumbers->pushBackElement(lineNumberText);
-		this->lineNumberElements->push_back(lineNumberNewLine);
-		this->lineNumbers->pushBackElement(lineNumberNewLine);
-
-		insertLineNumber = false;
-	}
-
-	for (auto iterator = tokenStrings->begin(); iterator != tokenStrings->end(); iterator++)
-	{
-		// Create tokens from the token string (usually this is 1:1, but can sometimes break down further due to edge cases with newlines)
-		std::vector<CodeEditor::token>* tokens = this->createTokens(*iterator);
-
-		for (auto tokenIterator = tokens->begin(); tokenIterator != tokens->end(); tokenIterator++)
-		{
-			CodeEditor::token token = *tokenIterator;
-
-			RichElement* element;
-
-			if (token.tokenStr == "\n")
-			{
-				// For some reason RichElementText is too fucking stupid to handle newlines -- these are their own object
-				element = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-				insertLineNumber = true;
-			}
-			else
-			{
-				element = RichElementText::create(0, token.color, 0xFF, token.tokenStr, Resources::Fonts_UbuntuMono_B, 32);
-			}
-
-			if (insertLineNumber)
-			{
-				RichElement* lineNumberText = RichElementText::create(0, CodeEditor::subtextColor, 0xFF, to_string(lineNumber++), Resources::Fonts_UbuntuMono_B, 32);
-				RichElement* lineNumberNewLine = RichElementNewLine::create(0, CodeEditor::defaultColor, 0xFF);
-
-				this->lineNumberElements->push_back(lineNumberText);
-				this->lineNumbers->pushBackElement(lineNumberText);
-				this->lineNumberElements->push_back(lineNumberNewLine);
-				this->lineNumbers->pushBackElement(lineNumberNewLine);
-
-				insertLineNumber = false;
-			}
-
-			this->displayTextElements->push_back(element);
-			this->assemblyCodeRichText->pushBackElement(element);
-		}
-
-		delete(tokens);
-	}
-
-	delete(tokenStrings);
-
-	this->assemblyCodeRichText->formatText();
-	this->lineNumbers->formatText();*/
-}
-
-std::vector<TextWindow::token>* CodeEditor::tokenizeCallback(std::string text)
+void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWindow::token>* tokens)
 {
 	std::vector<std::string>* tokenStrings = StrUtils::tokenize(text, CodeEditor::delimiters);
-	std::vector<TextWindow::token>* tokens = new std::vector<TextWindow::token>();
 
 	for (auto iterator = tokenStrings->begin(); iterator != tokenStrings->end(); iterator++)
 	{
@@ -397,14 +239,12 @@ std::vector<TextWindow::token>* CodeEditor::tokenizeCallback(std::string text)
 				color = CodeEditor::numberColor;
 			}
 
-			TextWindow::token nextToken = TextWindow::token(innerToken, color);
+			EditableTextWindow::token nextToken = EditableTextWindow::token(innerToken, color);
 			tokens->push_back(nextToken);
 		}
 	}
 
 	delete(tokenStrings);
-
-	return tokens;
 }
 
 void CodeEditor::open(HackableCode* hackableCode)
@@ -420,8 +260,8 @@ void CodeEditor::open(HackableCode* hackableCode)
 }
 
 void CodeEditor::onAccept(MenuSprite* menuSprite)
-{/*
-	HackUtils::CompileResult compileResult = HackUtils::assemble(this->assemblyCodeText->getString(), this->activeHackableCode->codePointer);
+{
+	HackUtils::CompileResult compileResult = HackUtils::assemble(this->functionWindow->getText(), this->activeHackableCode->codePointer);
 
 	// Sanity check that the code compiles -- it should at this point
 	if (compileResult.hasError || compileResult.byteCount > this->activeHackableCode->codeOriginalLength)
@@ -439,7 +279,7 @@ void CodeEditor::onAccept(MenuSprite* menuSprite)
 		const byte nop = 0x90;
 		((byte*)this->activeHackableCode->codePointer)[compileResult.byteCount + index] = nop;
 	}
-	*/
+
 	this->setVisible(false);
 
 	this->getParent()->setOpacity(0xFF);
