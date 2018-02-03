@@ -294,6 +294,9 @@
     <ClCompile Include="Source\GUI\Components\TextWindow.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GUI\Components\EditableTextWindow.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -507,6 +510,9 @@
       <Filter>Source\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Source\GUI\Components\TextWindow.h">
+      <Filter>Source\GUI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\EditableTextWindow.h">
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
   </ItemGroup>
