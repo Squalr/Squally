@@ -6,6 +6,7 @@
 #include "GUI/Components/MenuLabel.h"
 #include "GUI/Components/MenuSprite.h"
 #include "GUI/Components/MouseOverPanel.h"
+#include "GUI/Components/EditableTextWindow.h"
 #include "GUI/Components/TextWindow.h"
 #include "Objects/Hackables/HackableObject.h"
 #include "Utils/HackUtils.h"
@@ -31,16 +32,17 @@ private:
 	void enableAccept();
 	void disableAccept();
 	void compile(std::string rawText);
-	void constructCodeRichText(std::string rawText);
-	std::vector<TextWindow::token>* tokenizeCallback(std::string text);
+	void onFunctionTextUpdate(std::string text);
+	void onAllocationTextUpdate(std::string text);
+	void tokenizeCallback(std::string text, std::vector<EditableTextWindow::token>*);
 	void onAccept(MenuSprite* menuSprite);
 	void onCancel(MenuSprite* menuSprite);
 
 	Sprite* codeEditorBackground;
 
 	TextWindow* outputWindow;
-	TextWindow* functionWindow;
-	TextWindow* secondaryWindow;
+	EditableTextWindow* functionWindow;
+	EditableTextWindow* secondaryWindow;
 
 	MenuSprite* cancelButton;
 	MenuSprite* acceptButton;
@@ -48,10 +50,6 @@ private:
 
 	HackableCode* activeHackableCode;
 	float compileDelay;
-	std::vector<RichElement*>* lineNumberElements;
-	std::vector<RichElement*>* displayTextElements;
-	std::vector<RichElement*>* outputTextElements;
-	std::string previousAssemblyText;
 
 	static const float compileDelayMaxSeconds;
 	static const float lineNumberMargin;
