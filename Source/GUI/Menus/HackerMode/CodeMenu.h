@@ -24,6 +24,8 @@ private:
 
 	void initializePositions();
 	void initializeListeners();
+	void populateRows();
+	void resume() override;
 	void onCodeEditClick(MenuLabel* menuLabel);
 	void onClose(MenuSprite* menuSprite);
 
@@ -32,7 +34,9 @@ private:
 	MouseOverPanel* constructByteLengthMouseOver(HackableCode* hackableCode, Label* byteLength);
 	MouseOverPanel* constructBytesMouseOver(HackableCode* hackableCode, Label* bytes);
 
+	HackableObject* activeHackableObject;
 	Sprite* codeMenuBackground;
+	MenuLabel* codeMenuTitle;
 	MenuSprite* closeButton;
 	Node* rows;
 	Node* mouseOverMenuHost;
