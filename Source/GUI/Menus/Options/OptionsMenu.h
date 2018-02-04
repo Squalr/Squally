@@ -4,13 +4,13 @@
 #include "Resources.h"
 #include "Config/SoundManager.h"
 #include "Config/ConfigManager.h"
+#include "GUI/Components/CCheckbox.h"
+#include "GUI/Components/CRadioButton.h"
+#include "GUI/Components/CSlider.h"
 #include "GUI/Components/FadeScene.h"
+#include "GUI/Components/MenuSprite.h"
 #include "GUI/Components/Mouse.h"
 #include "GUI/Components/OutlineLabel.h"
-#include "GUI/Components/MenuSprite.h"
-#include "GUI/Components/CSlider.h"
-#include "GUI/Components/CRadioButton.h"
-#include "GUI/Components/ToggleButton.h"
 #include "GUI/Menus/MenuBackground.h"
 
 using namespace cocos2d;
@@ -46,7 +46,7 @@ private:
 	CSlider* musicSlider;
 	CSlider* soundSlider;
 	OutlineLabel* fullScreenLabel;
-	ToggleButton* fullScreenButton;
+	CCheckbox* fullScreenButton;
 	MenuSprite* exitButton;
 
 	Label* label1080x768;

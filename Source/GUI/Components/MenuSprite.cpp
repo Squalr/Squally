@@ -2,32 +2,43 @@
 
 MenuSprite* MenuSprite::create(std::string spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource)
 {
-	return MenuSprite::create(Sprite::create(spriteNormal), spriteSelectedResource, spriteClickedResource);
+	return MenuSprite::create(Sprite::create(spriteNormal), Sprite::create(spriteSelectedResource), Sprite::create(spriteClickedResource));
 }
 
-MenuSprite* MenuSprite::create(Sprite* spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource)
+MenuSprite* MenuSprite::create(Node* spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource)
 {
-	MenuSprite* menuSprite = new MenuSprite(spriteNormal, spriteSelectedResource, spriteClickedResource);
+	MenuSprite* menuSprite = new MenuSprite(spriteNormal, Sprite::create(spriteSelectedResource), Sprite::create(spriteClickedResource));
 
 	menuSprite->autorelease();
 
 	return menuSprite;
 }
 
-MenuSprite::MenuSprite(Sprite* spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource)
+MenuSprite* MenuSprite::create(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
+{
+	MenuSprite* menuSprite = new MenuSprite(nodeNormal, nodeSelected, nodeClicked);
+
+	menuSprite->autorelease();
+
+	return menuSprite;
+}
+
+MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
 {
 	this->mouseClickEvent = nullptr;
 	this->mouseDownEvent = nullptr;
 	this->mouseDragEvent = nullptr;
 	this->mouseOverEvent = nullptr;
+	this->isClickInit = false;
+	this->isClicked = false;
 	this->isDragging = false;
 
 	this->clickSound = Resources::Sounds_ButtonClick1;
 	this->mouseOverSound = "";
 
-	this->sprite = spriteNormal;
-	this->spriteClicked = Sprite::create(spriteClickedResource);
-	this->spriteSelected = Sprite::create(spriteSelectedResource);
+	this->sprite = nodeNormal;
+	this->spriteSelected = nodeSelected;
+	this->spriteClicked = nodeClicked;
 
 	this->setCascadeOpacityEnabled(true);
 	this->spriteClicked->setVisible(false);
@@ -95,6 +106,16 @@ void MenuSprite::initializeListeners()
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
 
+bool MenuSprite::intersects(Vec2 mousePos)
+{
+	if (dynamic_cast<const LayerColor*>(this->sprite) != nullptr)
+	{
+		return Utils::intersectsV2(this, Vec2(mousePos.x, mousePos.y));
+	}
+
+	return Utils::intersects(this, Vec2(mousePos.x, mousePos.y));
+}
+
 void MenuSprite::onMouseSpriteMove(EventCustom* event)
 {
 	Mouse::MouseEventArgs* args = static_cast<Mouse::MouseEventArgs*>(event->getUserData());
@@ -110,7 +131,7 @@ void MenuSprite::onMouseSpriteMove(EventCustom* event)
 			}
 		}
 
-		if (Utils::intersects(this, Vec2(args->mouseX, args->mouseY)))
+		if (this->intersects(Vec2(args->mouseX, args->mouseY)))
 		{
 			Mouse::getInstance()->setCanClick(true);
 
@@ -153,15 +174,28 @@ void MenuSprite::onMouseSpriteMove(EventCustom* event)
 
 void MenuSprite::onMouseDown(EventMouse* event)
 {
-	if (this->mouseDragEvent != nullptr && Utils::isVisible(this))
+	if (Utils::isVisible(this))
 	{
-		if (Utils::intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
+		if (this->intersects(Vec2(event->getCursorX(), event->getCursorY())))
 		{
 			if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
 			{
-				this->isDragging = true;
+				if (this->mouseDragEvent != nullptr)
+				{
+					this->isDragging = true;
+				}
+
+				if (!this->isClickInit)
+				{
+					this->isClicked = true;
+				}
 			}
 		}
+	}
+
+	if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
+	{
+		this->isClickInit = true;
 	}
 }
 
@@ -177,18 +211,27 @@ void MenuSprite::onMouseUp(EventMouse* event)
 
 	if (this->mouseClickEvent != nullptr && Utils::isVisible(this))
 	{
-		if (Utils::intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
+		if (this->intersects(Vec2(event->getCursorX(), event->getCursorY())))
 		{
-			// Mouse click callback
-			this->mouseClickEvent(this, event);
-
-			// Play click sound
-			if (this->clickSound.length() > 0)
+			if (this->isClicked)
 			{
-				SoundManager::playSoundResource(this->clickSound);
-			}
+				// Mouse click callback
+				this->mouseClickEvent(this, event);
 
-			event->stopPropagation();
+				// Play click sound
+				if (this->clickSound.length() > 0)
+				{
+					SoundManager::playSoundResource(this->clickSound);
+				}
+
+				event->stopPropagation();
+			}
 		}
+	}
+
+	if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
+	{
+		this->isClickInit = false;
+		this->isClicked = false;
 	}
 }

@@ -7,7 +7,6 @@ Fasm::FasmResult* Fasm::assemble(string assembly, void* baseAddress)
 	std::string buffAsStdStr = buff;
 	assembly = buffAsStdStr + assembly;
 
-	// assembly = snprintf("use32\norg 0x{0:X8}\n") + assembly;
 	int lineCount = 1;
 
 	// Count the number of instructions given to us (well, just count the newlines because it's easier)

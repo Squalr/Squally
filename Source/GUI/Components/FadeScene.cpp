@@ -2,6 +2,7 @@
 
 FadeScene::FadeScene()
 {
+	this->fadeAction = nullptr;
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 255));
 
 	this->addChild(this->layerColor);
@@ -21,5 +22,18 @@ void FadeScene::onEnter()
 	this->layerColor->setZOrder(999);
 
 	// Fade into the scene
-	this->layerColor->runAction(FadeOut::create(0.75f));
+	this->fadeAction = FadeOut::create(0.75f);
+	this->layerColor->runAction(this->fadeAction);
+}
+
+void FadeScene::pause()
+{
+	// On pause cancel the fade in animation
+	if (this->fadeAction != nullptr)
+	{
+		this->stopAction(this->fadeAction);
+		this->layerColor->setOpacity(0.0f);
+	}
+
+	Scene::pause();
 }
