@@ -22,7 +22,9 @@ OptionsMenu::OptionsMenu()
 	this->musicSlider = CSlider::create(SoundManager::getMusicVolume());
 	this->soundSlider = CSlider::create(SoundManager::getSoundVolume());
 
-	this->fullScreenButton = ToggleButton::create(ConfigManager::getIsFullScreen(), CC_CALLBACK_1(OptionsMenu::onFullScreenChanged, this));
+	MenuSprite* uncheckedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_ToggleButtonOff, Resources::Menus_OptionsMenu_ToggleButtonOffHover, Resources::Menus_OptionsMenu_ToggleButtonOffClick);
+	MenuSprite* checkedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_ToggleButtonOn, Resources::Menus_OptionsMenu_ToggleButtonOffHover, Resources::Menus_OptionsMenu_ToggleButtonOffClick);
+	this->fullScreenButton = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_1(OptionsMenu::onFullScreenChanged, this));
 
 	this->label1080x768 = Label::create("1080x768", Resources::Fonts_Montserrat_Medium, 14);
 	this->label1152x864 = Label::create("1152x864", Resources::Fonts_Montserrat_Medium, 14);

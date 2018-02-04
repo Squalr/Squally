@@ -1,5 +1,10 @@
 #include "CodeMenu.h"
 
+const float CodeMenu::activeColumnOffset = -640.0f;
+const float CodeMenu::addressColumnOffset = -480.0f;
+const float CodeMenu::functionNameColumnOffset = 0.0f;
+const float CodeMenu::dataReferencesColumnOffset = 480.0f;
+
 CodeMenu* CodeMenu::create()
 {
 	CodeMenu* codeMenu = new CodeMenu();
@@ -12,19 +17,41 @@ CodeMenu* CodeMenu::create()
 CodeMenu::CodeMenu()
 {
 	this->activeHackableObject = nullptr;
-	this->editMap = new std::map<MenuLabel*, HackableCode*>();
+	this->editMap = new std::map<MenuSprite*, HackableCode*>();
 	this->codeMenuBackground = Sprite::create(Resources::Menus_HackerModeMenu_EmptyFullScreenMenu);
 	this->codeMenuTitle = MenuLabel::create("Code", Resources::Fonts_Montserrat_Medium, 32);
 	this->closeButton = MenuSprite::create(Resources::Menus_HackerModeMenu_CloseButton, Resources::Menus_HackerModeMenu_CloseButtonHover, Resources::Menus_HackerModeMenu_CloseButtonClick);
+	this->header = Node::create();
 	this->rows = Node::create();
 	this->mouseOverMenuHost = Node::create();
 	this->codeEditor = CodeEditor::create();
+
+	const float fontSize = 32.0f;
+
+	LayerColor* headerBackground = LayerColor::create(Color4B(16, 56, 81, 128), 1600.0f, 48.0f);
+	Label* active = Label::create("Active", Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
+	Label* address = Label::create("Address", Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
+	Label* name = Label::create("Function Name", Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
+	Label* refData = Label::create("Data References", Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
+
+	headerBackground->setPosition(Vec2(-headerBackground->getContentSize().width / 2.0f, -headerBackground->getContentSize().height / 2.0f));
+	active->setPosition(Vec2(CodeMenu::activeColumnOffset, 0.0f));
+	address->setPosition(Vec2(CodeMenu::addressColumnOffset, 0.0f));
+	name->setPosition(Vec2(CodeMenu::functionNameColumnOffset, 0.0f));
+	refData->setPosition(Vec2(CodeMenu::dataReferencesColumnOffset, 0.0f));
+
+	this->header->addChild(headerBackground);
+	this->header->addChild(active);
+	this->header->addChild(address);
+	this->header->addChild(name);
+	this->header->addChild(refData);
 
 	this->codeEditor->setVisible(false);
 
 	this->addChild(this->codeMenuBackground);
 	this->addChild(this->codeMenuTitle);
 	this->addChild(this->closeButton);
+	this->addChild(this->header);
 	this->addChild(this->rows);
 	this->addChild(this->mouseOverMenuHost);
 	this->addChild(this->codeEditor);
@@ -45,6 +72,7 @@ void CodeMenu::initializePositions()
 	this->codeMenuBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->codeMenuTitle->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 444.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 848.0f, visibleSize.height / 2.0f + 444.0f));
+	this->header->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 256.0f));
 	this->rows->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 196.0f));
 	this->mouseOverMenuHost->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }
@@ -80,8 +108,11 @@ void CodeMenu::resume()
 
 void CodeMenu::populateRows()
 {
-	const float spacing = -36.0f;
+	const float spacing = 4.0f;
 	const float fontSize = 24.0f;
+	const float checkboxOffset = 224.0f;
+	const float rowWidth = 1600.0f;
+	const float rowHeight = 48.0f;
 
 	this->rows->removeAllChildren();
 	this->editMap->clear();
@@ -94,35 +125,34 @@ void CodeMenu::populateRows()
 			Node* newRow = Node::create();
 			HackableCode* hackableCode = *iterator;
 
+			MenuSprite* uncheckedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_CheckboxEmpty, Resources::Menus_OptionsMenu_CheckboxHover, Resources::Menus_OptionsMenu_CheckboxHover);
+			MenuSprite* checkedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_CheckboxSelected, Resources::Menus_OptionsMenu_CheckboxSelected, Resources::Menus_OptionsMenu_CheckboxSelected);
+			CCheckbox* isActive = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_1(CodeMenu::onActivated, this));
+
+			LayerColor* normalBackground = LayerColor::create(Color4B(16, 56, 81, 0), rowWidth - checkboxOffset, rowHeight);
+			LayerColor* selectedBackground = LayerColor::create(Color4B(16, 56, 81, 128), rowWidth - checkboxOffset, rowHeight);
+			LayerColor* clickedBackground = LayerColor::create(Color4B(16, 56, 81, 128), rowWidth - checkboxOffset, rowHeight);
+			MenuSprite* rowSelection = MenuSprite::create(normalBackground, selectedBackground, clickedBackground);
 			Label* address = Label::create(HackUtils::hexAddressOf(hackableCode->codePointer, true, true), Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
 			Label* name = Label::create(hackableCode->functionName, Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
-			Label* byteLength = Label::create(std::to_string(hackableCode->codeOriginalLength), Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
-			MenuLabel* editLabel = MenuLabel::create("Edit", Resources::Fonts_Montserrat_Medium, fontSize);
-			Label* bytes = Label::create(HackUtils::arrayOfByteStringOf(hackableCode->codePointer, hackableCode->codeOriginalLength, 6), Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
-			Label* refData = Label::create(">>", Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
+			MenuSprite* refData = MenuSprite::create(Resources::Menus_HackerModeMenu_ExitRightButton, Resources::Menus_HackerModeMenu_ExitRightButtonHover, Resources::Menus_HackerModeMenu_ExitRightButtonClick);
 
-			address->setPosition(Vec2(-540.0f, spacing * index));
-			name->setPosition(Vec2(-280.0f, spacing * index));
-			byteLength->setPosition(Vec2(-80.0f, spacing * index));
-			editLabel->setPosition(Vec2(32.0f, spacing * index));
-			bytes->setPosition(Vec2(252.0f, spacing * index));
-			refData->setPosition(Vec2(536.0f, spacing * index));
+			rowSelection->setPosition(Vec2(-rowSelection->getContentSize().width / 2.0f + checkboxOffset / 2.0f, (-rowHeight - spacing) * index - rowSelection->getContentSize().height / 2.0f));
+			isActive->setPosition(Vec2(CodeMenu::activeColumnOffset, (-rowHeight - spacing)* index));
+			address->setPosition(Vec2(CodeMenu::addressColumnOffset, (-rowHeight - spacing)* index));
+			name->setPosition(Vec2(CodeMenu::functionNameColumnOffset, (-rowHeight - spacing)* index));
+			refData->setPosition(Vec2(CodeMenu::dataReferencesColumnOffset, (-rowHeight - spacing) * index));
 
-			MouseOverPanel* addressMouseOver = this->constructAddressMouseOver(hackableCode, address);
-			MouseOverPanel* nameMouseOver = this->constructNameMouseOver(hackableCode, name);
-			MouseOverPanel* byteLengthMouseOver = this->constructByteLengthMouseOver(hackableCode, byteLength);
-			MouseOverPanel* bytesMouseOver = this->constructBytesMouseOver(hackableCode, bytes);
-
-			newRow->addChild(addressMouseOver);
-			newRow->addChild(nameMouseOver);
-			newRow->addChild(editLabel);
-			newRow->addChild(byteLengthMouseOver);
-			newRow->addChild(bytesMouseOver);
+			newRow->addChild(rowSelection);
+			newRow->addChild(isActive);
+			newRow->addChild(address);
+			newRow->addChild(name);
 			newRow->addChild(refData);
 
-			editLabel->setCallback(CC_CALLBACK_1(CodeMenu::onCodeEditClick, this));
+			refData->setClickCallback(CC_CALLBACK_1(CodeMenu::onDataReferencesClick, this));
+			rowSelection->setClickCallback(CC_CALLBACK_1(CodeMenu::onCodeEditClick, this));
 
-			this->editMap->insert_or_assign(editLabel, hackableCode);
+			this->editMap->insert_or_assign(rowSelection, hackableCode);
 			this->rows->addChild(newRow);
 
 			index++;
@@ -130,9 +160,19 @@ void CodeMenu::populateRows()
 	}
 }
 
-void CodeMenu::onCodeEditClick(MenuLabel* menuLabel)
+void CodeMenu::onActivated(bool isActivated)
 {
-	HackableCode* hackableCode = this->editMap->at(menuLabel);
+
+}
+
+void CodeMenu::onDataReferencesClick(MenuSprite* menuSprite)
+{
+
+}
+
+void CodeMenu::onCodeEditClick(MenuSprite* menuSprite)
+{
+	HackableCode* hackableCode = this->editMap->at(menuSprite);
 
 	this->codeMenuBackground->setVisible(false);
 	this->codeMenuTitle->setVisible(false);
@@ -153,7 +193,6 @@ void CodeMenu::onClose(MenuSprite* menuSprite)
 MouseOverPanel* CodeMenu::constructAddressMouseOver(HackableCode* hackableCode, Label* address)
 {
 	const Size panelSize = Size(320.0f, 320.0f);
-
 	const float fontSize = 24.0f;
 
 	Node* addressMouseOverContent = Node::create();

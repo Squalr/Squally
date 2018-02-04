@@ -6,14 +6,14 @@
 
 using namespace cocos2d;
 
-class ToggleButton : public Node
+class CCheckbox : public Node
 {
 public:
-	static ToggleButton * create(bool initialState, std::function<void(bool)> callback);
+	static CCheckbox * create(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState, std::function<void(bool)> callback);
 
 protected:
-	ToggleButton(bool initialState, std::function<void(bool)> callback);
-	~ToggleButton();
+	CCheckbox(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState, std::function<void(bool)> callback);
+	~CCheckbox();
 
 private:
 	void initializeListeners();

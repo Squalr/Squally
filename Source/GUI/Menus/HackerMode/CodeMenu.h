@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Shaders/PostProcess.h"
+#include "GUI/Components/CCheckbox.h"
 #include "GUI/Components/MenuLabel.h"
 #include "GUI/Components/MenuSprite.h"
 #include "GUI/Components/MouseOverPanel.h"
@@ -26,7 +27,9 @@ private:
 	void initializeListeners();
 	void populateRows();
 	void resume() override;
-	void onCodeEditClick(MenuLabel* menuLabel);
+	void onActivated(bool isActivated);
+	void onCodeEditClick(MenuSprite* menuSprite);
+	void onDataReferencesClick(MenuSprite* menuSprite);
 	void onClose(MenuSprite* menuSprite);
 
 	MouseOverPanel* constructAddressMouseOver(HackableCode* hackableCode, Label* address);
@@ -38,9 +41,15 @@ private:
 	Sprite* codeMenuBackground;
 	MenuLabel* codeMenuTitle;
 	MenuSprite* closeButton;
+	Node* header;
 	Node* rows;
 	Node* mouseOverMenuHost;
 	CodeEditor* codeEditor;
-	std::map<MenuLabel*, HackableCode*>* editMap;
+	std::map<MenuSprite*, HackableCode*>* editMap;
+
+	static const float activeColumnOffset;
+	static const float addressColumnOffset;
+	static const float functionNameColumnOffset;
+	static const float dataReferencesColumnOffset;
 };
 
