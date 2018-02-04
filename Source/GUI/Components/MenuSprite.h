@@ -12,7 +12,8 @@ class MenuSprite : public Node
 {
 public:
 	static MenuSprite * create(std::string spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource);
-	static MenuSprite * create(Sprite* spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource);
+	static MenuSprite * create(Node* spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource);
+	static MenuSprite * create(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked);
 
 	void setClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick);
 	void setMouseOverCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick);
@@ -22,12 +23,13 @@ public:
 	void setClickSound(std::string soundResource);
 
 protected:
-	MenuSprite(Sprite* spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource);
+	MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked);
 	~MenuSprite();
 
 private:
 	void initializeListeners();
 	void update(float) override;
+	bool intersects(Vec2 mousePos);
 	void onMouseSpriteMove(EventCustom* args);
 	void onMouseDown(EventMouse* event);
 	void onMouseUp(EventMouse* event);
@@ -35,11 +37,13 @@ private:
 	std::string mouseOverSound;
 	std::string clickSound;
 
-	Sprite* sprite;
-	Sprite* spriteClicked;
-	Sprite* spriteSelected;
+	Node* sprite;
+	Node* spriteClicked;
+	Node* spriteSelected;
 
 	bool isDragging;
+	bool isClickInit;
+	bool isClicked;
 
 	std::function<void(MenuSprite*, EventMouse* args)> mouseClickEvent;
 	std::function<void(MenuSprite*, EventMouse* args)> mouseDownEvent;

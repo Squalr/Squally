@@ -13,5 +13,9 @@ protected:
 	void onEnter() override;
 
 	LayerColor* layerColor;
+	FiniteTimeAction* fadeAction;
+
+private:
+	void pause() override;
 };
 

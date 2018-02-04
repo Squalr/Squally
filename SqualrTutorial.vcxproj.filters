@@ -132,9 +132,6 @@
     <ClCompile Include="Source\GUI\Components\Mouse.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GUI\Components\ToggleButton.cpp">
-      <Filter>Source\GUI\Components</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Config\SoundManager.cpp">
       <Filter>Source\Config</Filter>
     </ClCompile>
@@ -297,6 +294,9 @@
     <ClCompile Include="Source\GUI\Components\EditableTextWindow.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GUI\Components\CCheckbox.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -339,9 +339,6 @@
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\GUI\Components\Mouse.h">
-      <Filter>Source\GUI\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GUI\Components\ToggleButton.h">
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\Config\SoundManager.h">
@@ -513,6 +510,9 @@
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\GUI\Components\EditableTextWindow.h">
+      <Filter>Source\GUI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\CCheckbox.h">
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
   </ItemGroup>
