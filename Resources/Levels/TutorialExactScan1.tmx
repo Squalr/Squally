@@ -89,7 +89,6 @@
    </properties>
   </object>
   <object id="171" name="warp-gate-exact-scan-1" type="warp-gate-exact-scan-1" x="2588" y="430" width="512" height="512"/>
-  <object id="172" name="instruction-test" type="instruction-test" x="568" y="254" width="288" height="204"/>
  </objectgroup>
  <objectgroup name="entities">
   <object id="72" name="spawn" type="spawn" x="381.243" y="417.006" width="128" height="128"/>
