@@ -2,8 +2,8 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Config/SoundManager.h"
-#include "Utils/Utils.h"
 #include "GUI/Components/Mouse.h"
+#include "Utils/Utils.h"
 #include <typeinfo>
 
 using namespace cocos2d;
@@ -41,7 +41,6 @@ private:
 	Node* spriteClicked;
 	Node* spriteSelected;
 
-	bool isDragging;
 	bool isClickInit;
 	bool isClicked;
 

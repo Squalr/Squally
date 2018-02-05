@@ -25,14 +25,12 @@ EditableTextWindow::EditableTextWindow(std::string windowTitle, Size initWindowS
 	this->editableText = TextField::create("<Edit Text>", Resources::Fonts_UbuntuMono_B, this->fontSize);
 
 	this->lineNumbers->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->lineNumbers->setSize(windowSize);
 	this->lineNumbers->ignoreContentAdaptWithSize(false);
 	this->editableText->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->editableText->setOpacity(0);
 	this->editableText->setCascadeOpacityEnabled(false);
 	this->editableText->setCursorEnabled(true);
 	this->editableText->setHighlighted(true);
-	this->editableText->setSize(windowSize);
 	this->editableText->ignoreContentAdaptWithSize(false);
 
 	this->scrollView->addChild(this->lineNumbers);
@@ -78,6 +76,9 @@ void EditableTextWindow::initializePositions()
 {
 	this->lineNumbers->setPosition(Vec2(0.0f, this->scrollView->getInnerContainerSize().height));
 	this->editableText->setPosition(Vec2(this->marginSize, this->scrollView->getInnerContainerSize().height));
+
+	this->lineNumbers->setSize(Size(windowSize.width - this->marginSize, windowSize.height));
+	this->editableText->setSize(Size(windowSize.width - this->marginSize, windowSize.height));
 
 	TextWindow::initializePositions();
 }
