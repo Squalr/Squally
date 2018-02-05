@@ -1,9 +1,9 @@
 #include "CodeMenu.h"
 
-const float CodeMenu::activeColumnOffset = -640.0f;
+const float CodeMenu::activeColumnOffset = -704.0f;
 const float CodeMenu::addressColumnOffset = -480.0f;
 const float CodeMenu::functionNameColumnOffset = 0.0f;
-const float CodeMenu::dataReferencesColumnOffset = 480.0f;
+const float CodeMenu::dataReferencesColumnOffset = 608.0f;
 
 CodeMenu* CodeMenu::create()
 {
@@ -110,7 +110,6 @@ void CodeMenu::populateRows()
 {
 	const float spacing = 4.0f;
 	const float fontSize = 24.0f;
-	const float checkboxOffset = 224.0f;
 	const float rowWidth = 1600.0f;
 	const float rowHeight = 48.0f;
 
@@ -129,15 +128,15 @@ void CodeMenu::populateRows()
 			MenuSprite* checkedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_CheckboxSelected, Resources::Menus_OptionsMenu_CheckboxSelected, Resources::Menus_OptionsMenu_CheckboxSelected);
 			CCheckbox* isActive = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_1(CodeMenu::onActivated, this));
 
-			LayerColor* normalBackground = LayerColor::create(Color4B(16, 56, 81, 0), rowWidth - checkboxOffset, rowHeight);
-			LayerColor* selectedBackground = LayerColor::create(Color4B(16, 56, 81, 128), rowWidth - checkboxOffset, rowHeight);
-			LayerColor* clickedBackground = LayerColor::create(Color4B(16, 56, 81, 128), rowWidth - checkboxOffset, rowHeight);
+			LayerColor* normalBackground = LayerColor::create(Color4B(16, 56, 81, 0), rowWidth, rowHeight);
+			LayerColor* selectedBackground = LayerColor::create(Color4B(16, 56, 81, 128), rowWidth, rowHeight);
+			LayerColor* clickedBackground = LayerColor::create(Color4B(16, 56, 81, 128), rowWidth, rowHeight);
 			MenuSprite* rowSelection = MenuSprite::create(normalBackground, selectedBackground, clickedBackground);
 			Label* address = Label::create(HackUtils::hexAddressOf(hackableCode->codePointer, true, true), Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
 			Label* name = Label::create(hackableCode->functionName, Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
 			MenuSprite* refData = MenuSprite::create(Resources::Menus_HackerModeMenu_ExitRightButton, Resources::Menus_HackerModeMenu_ExitRightButtonHover, Resources::Menus_HackerModeMenu_ExitRightButtonClick);
 
-			rowSelection->setPosition(Vec2(-rowSelection->getContentSize().width / 2.0f + checkboxOffset / 2.0f, (-rowHeight - spacing) * index - rowSelection->getContentSize().height / 2.0f));
+			rowSelection->setPosition(Vec2(-rowSelection->getContentSize().width / 2.0f, (-rowHeight - spacing) * index - rowSelection->getContentSize().height / 2.0f));
 			isActive->setPosition(Vec2(CodeMenu::activeColumnOffset, (-rowHeight - spacing)* index));
 			address->setPosition(Vec2(CodeMenu::addressColumnOffset, (-rowHeight - spacing)* index));
 			name->setPosition(Vec2(CodeMenu::functionNameColumnOffset, (-rowHeight - spacing)* index));
@@ -212,7 +211,6 @@ MouseOverPanel* CodeMenu::constructAddressMouseOver(HackableCode* hackableCode, 
 MouseOverPanel* CodeMenu::constructNameMouseOver(HackableCode* hackableCode, Label* name)
 {
 	const Size panelSize = Size(320.0f, 320.0f);
-
 	const float fontSize = 24.0f;
 
 	Node* nameMouseOverContent = Node::create();
@@ -229,7 +227,6 @@ MouseOverPanel* CodeMenu::constructNameMouseOver(HackableCode* hackableCode, Lab
 MouseOverPanel* CodeMenu::constructByteLengthMouseOver(HackableCode* hackableCode, Label* byteLength)
 {
 	const Size panelSize = Size(320.0f, 320.0f);
-
 	const float fontSize = 24.0f;
 
 	Node* byteLengthMouseOverContent = Node::create();
@@ -246,7 +243,6 @@ MouseOverPanel* CodeMenu::constructByteLengthMouseOver(HackableCode* hackableCod
 MouseOverPanel* CodeMenu::constructBytesMouseOver(HackableCode* hackableCode, Label* bytes)
 {
 	const Size panelSize = Size(320.0f, 320.0f);
-
 	const float fontSize = 24.0f;
 
 	Node* bytesMouseOverContent = Node::create();

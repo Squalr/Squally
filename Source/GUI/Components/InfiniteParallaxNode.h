@@ -14,6 +14,6 @@ protected:
 
 	void update(float dt) override;
 
-	Sprite* nodeA;
-	Sprite* nodeB;
+	std::vector<Node*>* nodes;
+	float spriteWidth;
 };

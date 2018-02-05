@@ -65,9 +65,9 @@ CodeEditor::CodeEditor()
 	this->statusWindow = TextWindow::create("Status", CodeEditor::statusSize, 32, CodeEditor::defaultColor);
 	this->functionWindow = EditableTextWindow::create("Code Editor", CodeEditor::functionSize, 32, CodeEditor::defaultColor);
 	this->secondaryWindow = EditableTextWindow::create("Allocation Editor", CodeEditor::secondarySize, 32, CodeEditor::defaultColor);
-	this->cancelButton = MenuSprite::create(Resources::Menus_HackerModeMenu_TrashButton, Resources::Menus_HackerModeMenu_TrashButtonHover, Resources::Menus_HackerModeMenu_TrashButtonClick);
-	this->acceptButton = MenuSprite::create(Resources::Menus_HackerModeMenu_PlayButton, Resources::Menus_HackerModeMenu_PlayButtonHover, Resources::Menus_HackerModeMenu_PlayButtonClick);
-	this->acceptButtonGrayed = Sprite::create(Resources::Menus_HackerModeMenu_PlayButtonGray);
+	this->cancelButton = MenuSprite::create(Resources::Menus_HackerModeMenu_CancelButton, Resources::Menus_HackerModeMenu_CancelButtonHover, Resources::Menus_HackerModeMenu_CancelButtonClick);
+	this->acceptButton = MenuSprite::create(Resources::Menus_HackerModeMenu_AcceptButton, Resources::Menus_HackerModeMenu_AcceptButtonHover, Resources::Menus_HackerModeMenu_AcceptButtonClick);
+	this->acceptButtonGrayed = Sprite::create(Resources::Menus_HackerModeMenu_AcceptButtonGray);
 
 	this->functionWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
 	this->secondaryWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
@@ -100,8 +100,8 @@ void CodeEditor::initializePositions()
 
 	this->codeEditorBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->codeEditorTitle->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 444.0f));
-	this->acceptButton->setPosition(Vec2(visibleSize.width / 2.0f + 224.0f, visibleSize.height / 2.0f + 348.0f));
-	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 224.0f, visibleSize.height / 2.0f + 348.0f));
+	this->acceptButton->setPosition(Vec2(visibleSize.width / 2.0f + 224.0f, visibleSize.height / 2.0f - 432.0f));
+	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 224.0f, visibleSize.height / 2.0f - 432.0f));
 	this->acceptButtonGrayed->setPosition(this->acceptButton->getPosition());
 
 	this->statusWindow->setPosition(Vec2(visibleSize.width / 2.0f - 560.0f, visibleSize.height / 2.0f - 64.0f));
