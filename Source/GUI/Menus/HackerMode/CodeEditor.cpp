@@ -221,35 +221,91 @@ void CodeEditor::compile(std::string assemblyText)
 
 void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWindow::token>* tokens)
 {
-	std::vector<std::string>* tokenStrings = StrUtils::tokenize(text, CodeEditor::delimiters);
+	// Due to RichTextBoxes being garbage, we need to split text down further if they contain newlines
+	// Also split them down further if they contain comments
+	std::vector<std::string>* splitText = StrUtils::splitOn(text, ";\n");
+	std::vector<std::string>* textJoined = new std::vector <std::string>();
+	std::string currentString = "";
+	bool isJoiningComment = false;
 
-	for (auto iterator = tokenStrings->begin(); iterator != tokenStrings->end(); iterator++)
+	for (auto splitTextIterator = splitText->begin(); splitTextIterator != splitText->end(); splitTextIterator++)
 	{
-		std::string tokenString = *iterator;
+		std::string next = *splitTextIterator;
 
-		// Due to RichTextBoxes being garbage, we need to split tokens down further if they contain newlines
-		std::vector <std::string> * tokenStrings = StrUtils::splitOn(tokenString, "\n");
+		// Newlines end comments
+		if (next == "\n")
+		{
+			if (currentString != "")
+			{
+				textJoined->push_back(currentString);
+			}
 
+			textJoined->push_back(next);
+
+			isJoiningComment = false;
+			currentString = "";
+		}
+		else if (next == ";" || isJoiningComment)
+		{
+			isJoiningComment = true;
+			currentString += next;
+		}
+		else
+		{
+			textJoined->push_back(next);
+		}
+
+	}
+
+	// Add final joined comment if exists
+	if (isJoiningComment && currentString != "")
+	{
+		textJoined->push_back(currentString);
+	}
+
+	for (auto joinedTextIterator = textJoined->begin(); joinedTextIterator != textJoined->end(); joinedTextIterator++)
+	{
+		std::vector<std::string>* tokenStrings;
+
+		// Tokenize the string if it isn't a comment -- otherwise treat it as one token
+		if (!StrUtils::startsWith(*joinedTextIterator, ";"))
+		{
+			tokenStrings = StrUtils::tokenize(*joinedTextIterator, CodeEditor::delimiters);
+		}
+		else
+		{
+			tokenStrings = new vector<std::string>();
+			tokenStrings->push_back(*joinedTextIterator);
+		}
+
+		// Iterate tokens
 		for (auto tokenIterator = tokenStrings->begin(); tokenIterator != tokenStrings->end(); tokenIterator++)
 		{
-			std::string innerToken = *tokenIterator;
+			std::string token = *tokenIterator;
 			Color3B color = CodeEditor::defaultColor;
 
-			if (CodeEditor::registers.find(innerToken) != CodeEditor::registers.end())
+			if (CodeEditor::registers.find(token) != CodeEditor::registers.end())
 			{
 				color = CodeEditor::registerColor;
 			}
-			else if (StrUtils::isInteger(innerToken) || StrUtils::isFloat(innerToken) || StrUtils::isHexNumber(innerToken))
+			else if (StrUtils::isInteger(token) || StrUtils::isFloat(token) || StrUtils::isHexNumber(token))
 			{
 				color = CodeEditor::numberColor;
 			}
+			else if (StrUtils::startsWith(token, ";"))
+			{
+				color = CodeEditor::commentColor;
+			}
 
-			EditableTextWindow::token nextToken = EditableTextWindow::token(innerToken, color);
+			EditableTextWindow::token nextToken = EditableTextWindow::token(token, color);
 			tokens->push_back(nextToken);
 		}
+
+		delete(tokenStrings);
 	}
 
-	delete(tokenStrings);
+	delete(textJoined);
+	delete(splitText);
 }
 
 void CodeEditor::open(HackableCode* hackableCode)
