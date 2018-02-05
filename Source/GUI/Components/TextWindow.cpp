@@ -26,11 +26,8 @@ TextWindow::TextWindow(std::string windowTitle, Size initWindowSize, int initFon
 	this->windowTitle = MenuLabel::create(windowTitle, Resources::Fonts_Montserrat_Medium, this->fontSize);
 
 	this->scrollView->setAnchorPoint(Vec2(0.5f, 0.5f));
-	this->scrollView->setSize(windowSize);
 	this->scrollView->setDirection(SCROLLVIEW_DIR_BOTH);
-	this->scrollView->setInnerContainerSize(Size(windowSize.width, windowSize.height * 2));
 	this->displayedText->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->displayedText->setSize(windowSize);
 	this->displayedText->ignoreContentAdaptWithSize(false);
 
 	this->scrollView->addChild(this->displayedText);
@@ -93,6 +90,10 @@ void TextWindow::clearText()
 
 void TextWindow::initializePositions()
 {
+	this->scrollView->setSize(windowSize);
+	this->scrollView->setInnerContainerSize(Size(windowSize.width, windowSize.height * 2));
+	this->displayedText->setSize(Size(windowSize.width - this->marginSize, windowSize.height));
+
 	this->scrollView->setPosition(Vec2(0.0f, 0.0f));
 	this->background->setPosition(-this->windowSize.width / 2.0f, -this->windowSize.height / 2.0f);
 	this->displayedText->setPosition(Vec2(this->marginSize, this->scrollView->getInnerContainerSize().height));

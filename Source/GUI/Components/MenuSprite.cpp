@@ -31,7 +31,6 @@ MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
 	this->mouseOverEvent = nullptr;
 	this->isClickInit = false;
 	this->isClicked = false;
-	this->isDragging = false;
 
 	this->clickSound = Resources::Sounds_ButtonClick1;
 	this->mouseOverSound = "";
@@ -125,10 +124,15 @@ void MenuSprite::onMouseSpriteMove(EventCustom* event)
 		// Mouse drag callback
 		if (args->innerEvent->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
 		{
-			if (this->isDragging && this->mouseDragEvent != nullptr)
+			if (this->isClicked && this->mouseDragEvent != nullptr)
 			{
 				this->mouseDragEvent(this, args->innerEvent);
 			}
+		}
+		else
+		{
+			this->isClickInit = false;
+			this->isClicked = false;
 		}
 
 		if (this->intersects(Vec2(args->mouseX, args->mouseY)))
@@ -180,38 +184,25 @@ void MenuSprite::onMouseDown(EventMouse* event)
 		{
 			if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
 			{
-				if (this->mouseDragEvent != nullptr)
-				{
-					this->isDragging = true;
-				}
-
 				if (!this->isClickInit)
 				{
 					this->isClicked = true;
 				}
 			}
 		}
-	}
 
-	if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
-	{
-		this->isClickInit = true;
+		if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
+		{
+			this->isClickInit = true;
+		}
 	}
 }
 
 void MenuSprite::onMouseUp(EventMouse* event)
 {
-	if (this->mouseDragEvent != nullptr && Utils::isVisible(this))
+	if (Utils::isVisible(this) && this->intersects(Vec2(event->getCursorX(), event->getCursorY())))
 	{
-		if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
-		{
-			this->isDragging = false;
-		}
-	}
-
-	if (this->mouseClickEvent != nullptr && Utils::isVisible(this))
-	{
-		if (this->intersects(Vec2(event->getCursorX(), event->getCursorY())))
+		if (this->mouseClickEvent != nullptr)
 		{
 			if (this->isClicked)
 			{
@@ -227,11 +218,11 @@ void MenuSprite::onMouseUp(EventMouse* event)
 				event->stopPropagation();
 			}
 		}
-	}
 
-	if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
-	{
-		this->isClickInit = false;
-		this->isClicked = false;
+		if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
+		{
+			this->isClickInit = false;
+			this->isClicked = false;
+		}
 	}
 }
