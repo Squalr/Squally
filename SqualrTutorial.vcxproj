@@ -204,7 +204,6 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Objects\Hackables\HackableCode.cpp" />
     <ClCompile Include="Source\Objects\Hackables\HackableData.cpp" />
     <ClCompile Include="Source\Objects\Hackables\HackableObject.cpp" />
-    <ClCompile Include="Source\Objects\Hackables\InstructionTest.cpp" />
     <ClCompile Include="Source\Objects\Interactables\Monitor.cpp" />
     <ClCompile Include="Source\Objects\Interactables\WarpGate.cpp" />
     <ClCompile Include="Source\Objects\Interactables\WarpGateExactScanTutorial.cpp" />
@@ -277,7 +276,6 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Objects\Hackables\HackableCode.h" />
     <ClInclude Include="Source\Objects\Hackables\HackableData.h" />
     <ClInclude Include="Source\Objects\Hackables\HackableObject.h" />
-    <ClInclude Include="Source\Objects\Hackables\InstructionTest.h" />
     <ClInclude Include="Source\Objects\Interactables\Monitor.h" />
     <ClInclude Include="Source\Objects\Interactables\WarpGate.h" />
     <ClInclude Include="Source\Objects\Interactables\WarpGateExactScanTutorial.h" />

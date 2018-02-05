@@ -246,9 +246,6 @@
     <ClCompile Include="Source\Objects\Hackables\HackableObject.cpp">
       <Filter>Source\Objects\Hackables</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Objects\Hackables\InstructionTest.cpp">
-      <Filter>Source\Objects\Hackables</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Objects\Interactables\WarpGateExactScanTutorial.cpp">
       <Filter>Source\Objects\Interactables</Filter>
     </ClCompile>
@@ -462,9 +459,6 @@
       <Filter>Source\Objects\Interactables</Filter>
     </ClInclude>
     <ClInclude Include="Source\Objects\Hackables\HackableObject.h">
-      <Filter>Source\Objects\Hackables</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\Hackables\InstructionTest.h">
       <Filter>Source\Objects\Hackables</Filter>
     </ClInclude>
     <ClInclude Include="Source\Objects\Interactables\WarpGateExactScanTutorial.h">

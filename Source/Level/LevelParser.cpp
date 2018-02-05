@@ -52,10 +52,6 @@ Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map, std::funct
 
 			newObject = Monitor::create("Dialog\\" + dialog + ".json");
 		}
-		else if (type == "instruction-test")
-		{
-			newObject = InstructionTest::create();
-		}
 		else
 		{
 			throw std::invalid_argument("Invalid object");
