@@ -17,8 +17,7 @@ InfiniteParallaxNode::InfiniteParallaxNode(std::string spriteResourcePath)
 
 	Sprite* nextSprite = Sprite::create(spriteResourcePath);
 	this->spriteWidth = nextSprite->getContentSize().width;
-	// TODO: Grab screen width from config
-	float remainingSize = 1920.0f * 4.0f;
+	float remainingSize = Director::getInstance()->getOpenGLView()->getDesignResolutionSize().width * 4.0f;
 
 	Vec2 nextPosition = Vec2(-this->spriteWidth, 0.0f);
 

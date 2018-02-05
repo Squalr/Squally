@@ -1,8 +1,11 @@
 #include "FadeScene.h"
 
+const float FadeScene::defaultFadeSpeed = 0.75f;
+
 FadeScene::FadeScene()
 {
 	this->fadeAction = nullptr;
+	this->fadeSpeed = FadeScene::defaultFadeSpeed;
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 255));
 
 	this->addChild(this->layerColor);
@@ -10,6 +13,11 @@ FadeScene::FadeScene()
 
 FadeScene::~FadeScene()
 {
+}
+
+void FadeScene::setFadeSpeed(float newFadeSpeed)
+{
+	this->fadeSpeed = newFadeSpeed;
 }
 
 void FadeScene::onEnter()
@@ -22,7 +30,7 @@ void FadeScene::onEnter()
 	this->layerColor->setZOrder(999);
 
 	// Fade into the scene
-	this->fadeAction = FadeOut::create(0.75f);
+	this->fadeAction = FadeOut::create(this->fadeSpeed);
 	this->layerColor->runAction(this->fadeAction);
 }
 

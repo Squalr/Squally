@@ -257,7 +257,7 @@ void CodeEditor::open(HackableCode* hackableCode)
 	this->activeHackableCode = hackableCode;
 
 	this->functionWindow->setTitle("Function '" + hackableCode->functionName + "'");
-	this->functionWindow->setText(HackUtils::disassemble(hackableCode->codePointer, hackableCode->codeOriginalLength).c_str());
+	this->functionWindow->setText(hackableCode->assemblyString);
 	this->functionWindow->focus();
 
 	this->setVisible(true);
@@ -275,18 +275,10 @@ void CodeEditor::onAccept(MenuSprite* menuSprite)
 		return;
 	}
 
-	int unfilledBytes = this->activeHackableCode->codeOriginalLength - compileResult.byteCount;
-
-	memcpy(this->activeHackableCode->codePointer, compileResult.compiledBytes, compileResult.byteCount);
-
-	for (int index = 0; index < unfilledBytes; index++)
-	{
-		const byte nop = 0x90;
-		((byte*)this->activeHackableCode->codePointer)[compileResult.byteCount + index] = nop;
-	}
+	// Set new assembly
+	this->activeHackableCode->assemblyString = this->functionWindow->getText();
 
 	this->setVisible(false);
-
 	this->getParent()->setOpacity(0xFF);
 	Utils::focus(this->getParent());
 }

@@ -24,7 +24,7 @@ OptionsMenu::OptionsMenu()
 
 	MenuSprite* uncheckedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_ToggleButtonOff, Resources::Menus_OptionsMenu_ToggleButtonOffHover, Resources::Menus_OptionsMenu_ToggleButtonOffClick);
 	MenuSprite* checkedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_ToggleButtonOn, Resources::Menus_OptionsMenu_ToggleButtonOffHover, Resources::Menus_OptionsMenu_ToggleButtonOffClick);
-	this->fullScreenButton = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_1(OptionsMenu::onFullScreenChanged, this));
+	this->fullScreenButton = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_2(OptionsMenu::onFullScreenChanged, this));
 
 	this->label1080x768 = Label::create("1080x768", Resources::Fonts_Montserrat_Medium, 14);
 	this->label1152x864 = Label::create("1152x864", Resources::Fonts_Montserrat_Medium, 14);
@@ -141,6 +141,7 @@ OptionsMenu::OptionsMenu()
 		this->showResolutionOptions();
 	}
 
+	this->setFadeSpeed(0.0f);
 	this->initializePositions();
 	this->initializeListeners();
 }
@@ -193,7 +194,7 @@ void OptionsMenu::onEnter()
 	this->addChild(Mouse::claimInstance());
 }
 
-void OptionsMenu::onFullScreenChanged(bool isFullScreen)
+bool OptionsMenu::onFullScreenChanged(CCheckbox* checkbox, bool isFullScreen)
 {
 	ConfigManager::setIsFullScreen(isFullScreen);
 
@@ -207,6 +208,8 @@ void OptionsMenu::onFullScreenChanged(bool isFullScreen)
 	}
 
 	this->initializePositions();
+
+	return isFullScreen;
 }
 
 void OptionsMenu::onResolutionChanged(CRadioButton* radioButton)

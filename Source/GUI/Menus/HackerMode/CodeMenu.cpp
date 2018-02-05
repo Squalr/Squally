@@ -17,6 +17,7 @@ CodeMenu* CodeMenu::create()
 CodeMenu::CodeMenu()
 {
 	this->activeHackableObject = nullptr;
+	this->checkboxMap = new  std::map<CCheckbox*, HackableCode*>();
 	this->editMap = new std::map<MenuSprite*, HackableCode*>();
 	this->codeMenuBackground = Sprite::create(Resources::Menus_HackerModeMenu_EmptyFullScreenMenu);
 	this->codeMenuTitle = MenuLabel::create("Code", Resources::Fonts_Montserrat_Medium, 32);
@@ -62,6 +63,7 @@ CodeMenu::CodeMenu()
 
 CodeMenu::~CodeMenu()
 {
+	delete(this->checkboxMap);
 	delete(this->editMap);
 }
 
@@ -114,6 +116,7 @@ void CodeMenu::populateRows()
 	const float rowHeight = 48.0f;
 
 	this->rows->removeAllChildren();
+	this->checkboxMap->clear();
 	this->editMap->clear();
 	int index = 0;
 
@@ -126,7 +129,7 @@ void CodeMenu::populateRows()
 
 			MenuSprite* uncheckedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_CheckboxEmpty, Resources::Menus_OptionsMenu_CheckboxHover, Resources::Menus_OptionsMenu_CheckboxHover);
 			MenuSprite* checkedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_CheckboxSelected, Resources::Menus_OptionsMenu_CheckboxSelected, Resources::Menus_OptionsMenu_CheckboxSelected);
-			CCheckbox* isActive = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_1(CodeMenu::onActivated, this));
+			CCheckbox* isActiveCheckbox = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_2(CodeMenu::onActivated, this));
 
 			LayerColor* normalBackground = LayerColor::create(Color4B(16, 56, 81, 0), rowWidth, rowHeight);
 			LayerColor* selectedBackground = LayerColor::create(Color4B(16, 56, 81, 128), rowWidth, rowHeight);
@@ -137,13 +140,13 @@ void CodeMenu::populateRows()
 			MenuSprite* refData = MenuSprite::create(Resources::Menus_HackerModeMenu_ExitRightButton, Resources::Menus_HackerModeMenu_ExitRightButtonHover, Resources::Menus_HackerModeMenu_ExitRightButtonClick);
 
 			rowSelection->setPosition(Vec2(-rowSelection->getContentSize().width / 2.0f, (-rowHeight - spacing) * index - rowSelection->getContentSize().height / 2.0f));
-			isActive->setPosition(Vec2(CodeMenu::activeColumnOffset, (-rowHeight - spacing)* index));
+			isActiveCheckbox->setPosition(Vec2(CodeMenu::activeColumnOffset, (-rowHeight - spacing)* index));
 			address->setPosition(Vec2(CodeMenu::addressColumnOffset, (-rowHeight - spacing)* index));
 			name->setPosition(Vec2(CodeMenu::functionNameColumnOffset, (-rowHeight - spacing)* index));
 			refData->setPosition(Vec2(CodeMenu::dataReferencesColumnOffset, (-rowHeight - spacing) * index));
 
 			newRow->addChild(rowSelection);
-			newRow->addChild(isActive);
+			newRow->addChild(isActiveCheckbox);
 			newRow->addChild(address);
 			newRow->addChild(name);
 			newRow->addChild(refData);
@@ -151,6 +154,7 @@ void CodeMenu::populateRows()
 			refData->setClickCallback(CC_CALLBACK_1(CodeMenu::onDataReferencesClick, this));
 			rowSelection->setClickCallback(CC_CALLBACK_1(CodeMenu::onCodeEditClick, this));
 
+			this->checkboxMap->insert_or_assign(isActiveCheckbox, hackableCode);
 			this->editMap->insert_or_assign(rowSelection, hackableCode);
 			this->rows->addChild(newRow);
 
@@ -159,9 +163,26 @@ void CodeMenu::populateRows()
 	}
 }
 
-void CodeMenu::onActivated(bool isActivated)
+bool CodeMenu::onActivated(CCheckbox* checkbox, bool isActivated)
 {
+	HackableCode* hackableCode = this->checkboxMap->at(checkbox);
 
+	if (isActivated)
+	{
+		bool activationSuccess = hackableCode->applyCustomCode();
+
+		if (!activationSuccess)
+		{
+			// TODO: Some sort of warning indicating the activation failed
+			return false;
+		}
+	}
+	else
+	{
+		hackableCode->restoreOriginalCode();
+	}
+
+	return isActivated;
 }
 
 void CodeMenu::onDataReferencesClick(MenuSprite* menuSprite)

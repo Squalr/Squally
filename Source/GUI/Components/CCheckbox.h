@@ -9,10 +9,10 @@ using namespace cocos2d;
 class CCheckbox : public Node
 {
 public:
-	static CCheckbox * create(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState, std::function<void(bool)> callback);
+	static CCheckbox * create(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState, std::function<bool(CCheckbox*, bool)> callback);
 
 protected:
-	CCheckbox(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState, std::function<void(bool)> callback);
+	CCheckbox(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState, std::function<bool(CCheckbox*, bool)> callback);
 	~CCheckbox();
 
 private:
@@ -24,7 +24,7 @@ private:
 	MenuSprite* offSwitch;
 
 	bool isToggled;
-	std::function<void(bool)> toggleCallback;
+	std::function<bool(CCheckbox*, bool)> toggleCallback;
 	std::vector<MenuSprite*>* clickableMenus;
 };
 

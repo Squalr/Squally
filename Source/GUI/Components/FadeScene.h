@@ -10,6 +10,7 @@ protected:
 	FadeScene();
 	~FadeScene();
 
+	void setFadeSpeed(float newFadeSpeed);
 	void onEnter() override;
 
 	LayerColor* layerColor;
@@ -17,5 +18,8 @@ protected:
 
 private:
 	void pause() override;
+
+	float fadeSpeed;
+	static const float defaultFadeSpeed;
 };
 

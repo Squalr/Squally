@@ -33,6 +33,8 @@ ConfirmationMenu::ConfirmationMenu(std::string confirmationMessage, std::functio
 	this->addChild(this->cancelButton);
 	this->addChild(this->confirmButton);
 	this->addChild(this->confirmationLabel);
+
+	this->setFadeSpeed(0.0f);
 }
 
 ConfirmationMenu::~ConfirmationMenu()
