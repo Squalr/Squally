@@ -15,6 +15,40 @@ HackableCode::HackableCode(std::string name, void* codeStart, int codeLength)
 	this->codePointer = (byte*)codeStart;
 	this->codeOriginalLength = codeLength;
 	this->allocations = new std::map<void*, int>();
+
+	this->originalCodeCopy = new byte(codeLength);
+	memcpy(originalCodeCopy, codeStart, codeLength);
+
+	this->assemblyString = HackUtils::disassemble(codeStart, codeLength);
+}
+
+void HackableCode::restoreOriginalCode()
+{
+	memcpy(this->codePointer, this->originalCodeCopy, this->codeOriginalLength);
+}
+
+bool HackableCode::applyCustomCode()
+{
+	HackUtils::CompileResult compileResult = HackUtils::assemble(this->assemblyString, this->codePointer);
+
+	// Sanity check that the code compiles -- there isn't any reason it shouldn't
+	if (compileResult.hasError || compileResult.byteCount > this->codeOriginalLength)
+	{
+		// Fail the activation
+		return false;
+	}
+
+	// Write new assembly code
+	memcpy(this->codePointer, compileResult.compiledBytes, compileResult.byteCount);
+
+	int unfilledBytes = this->codeOriginalLength - compileResult.byteCount;
+
+	// Fill remaining bytes with NOPs
+	for (int index = 0; index < unfilledBytes; index++)
+	{
+		const byte nop = 0x90;
+		((byte*)this->codePointer)[compileResult.byteCount + index] = nop;
+	}
 }
 
 void* HackableCode::allocateMemory(int allocationSize)
@@ -32,5 +66,6 @@ HackableCode::~HackableCode()
 		delete(iterator->first);
 	}
 
+	delete(this->originalCodeCopy);
 	delete(this->allocations);
 }

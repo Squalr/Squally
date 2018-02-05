@@ -27,7 +27,7 @@ private:
 	void initializeListeners();
 	void populateRows();
 	void resume() override;
-	void onActivated(bool isActivated);
+	bool onActivated(CCheckbox* checkbox, bool isActivated);
 	void onCodeEditClick(MenuSprite* menuSprite);
 	void onDataReferencesClick(MenuSprite* menuSprite);
 	void onClose(MenuSprite* menuSprite);
@@ -45,6 +45,7 @@ private:
 	Node* rows;
 	Node* mouseOverMenuHost;
 	CodeEditor* codeEditor;
+	std::map<CCheckbox*, HackableCode*>* checkboxMap;
 	std::map<MenuSprite*, HackableCode*>* editMap;
 
 	static const float activeColumnOffset;

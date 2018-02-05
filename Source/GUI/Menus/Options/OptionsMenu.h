@@ -28,7 +28,7 @@ private:
 	void onEnter() override;
 	void onSoundVolumeUpdate(float soundVolume);
 	void onMusicVolumeUpdate(float musicVolume);
-	void onFullScreenChanged(bool isFullScreen);
+	bool onFullScreenChanged(CCheckbox* checkbox, bool isFullScreen);
 	void onResolutionChanged(CRadioButton* radioButton);
 	void onCloseClick(MenuSprite* menuSprite);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
