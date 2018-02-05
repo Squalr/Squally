@@ -48,6 +48,8 @@ private:
 	std::map<CCheckbox*, HackableCode*>* checkboxMap;
 	std::map<MenuSprite*, HackableCode*>* editMap;
 
+	static const Color4B defaultHeaderColor;
+	static const Color4B defaultRowSelectionColor;
 	static const float activeColumnOffset;
 	static const float addressColumnOffset;
 	static const float functionNameColumnOffset;

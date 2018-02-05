@@ -74,11 +74,11 @@ void EditableTextWindow::focus()
 
 void EditableTextWindow::initializePositions()
 {
-	this->lineNumbers->setPosition(Vec2(0.0f, this->scrollView->getInnerContainerSize().height));
-	this->editableText->setPosition(Vec2(this->marginSize, this->scrollView->getInnerContainerSize().height));
+	this->lineNumbers->setPosition(Vec2(TextWindow::padding.width, this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
+	this->editableText->setPosition(Vec2(this->marginSize + TextWindow::padding.width, this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
 
-	this->lineNumbers->setSize(Size(windowSize.width - this->marginSize, windowSize.height));
-	this->editableText->setSize(Size(windowSize.width - this->marginSize, windowSize.height));
+	this->lineNumbers->setSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f, windowSize.height - TextWindow::padding.height * 2.0f));
+	this->editableText->setSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f, windowSize.height - TextWindow::padding.height * 2.0f));
 
 	TextWindow::initializePositions();
 }
