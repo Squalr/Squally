@@ -646,9 +646,16 @@ public:
 	static const string Menus_HackerModeMenu_AcceptButtonClick;
 	static const string Menus_HackerModeMenu_AcceptButtonGray;
 	static const string Menus_HackerModeMenu_AcceptButtonHover;
+	static const string Menus_HackerModeMenu_AcceptTextButton;
+	static const string Menus_HackerModeMenu_AcceptTextButtonClick;
+	static const string Menus_HackerModeMenu_AcceptTextButtonGray;
+	static const string Menus_HackerModeMenu_AcceptTextButtonHover;
 	static const string Menus_HackerModeMenu_CancelButton;
 	static const string Menus_HackerModeMenu_CancelButtonClick;
 	static const string Menus_HackerModeMenu_CancelButtonHover;
+	static const string Menus_HackerModeMenu_CancelTextButton;
+	static const string Menus_HackerModeMenu_CancelTextButtonClick;
+	static const string Menus_HackerModeMenu_CancelTextButtonHover;
 	static const string Menus_HackerModeMenu_CloseButton;
 	static const string Menus_HackerModeMenu_CloseButtonClick;
 	static const string Menus_HackerModeMenu_CloseButtonHover;
@@ -662,6 +669,9 @@ public:
 	static const string Menus_HackerModeMenu_ExitRightButton;
 	static const string Menus_HackerModeMenu_ExitRightButtonClick;
 	static const string Menus_HackerModeMenu_ExitRightButtonHover;
+	static const string Menus_HackerModeMenu_ExportButton;
+	static const string Menus_HackerModeMenu_ExportButtonClick;
+	static const string Menus_HackerModeMenu_ExportButtonHover;
 	static const string Menus_HackerModeMenu_GraphButton;
 	static const string Menus_HackerModeMenu_GraphButtonClick;
 	static const string Menus_HackerModeMenu_GraphButtonHover;

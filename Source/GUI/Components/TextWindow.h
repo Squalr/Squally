@@ -24,26 +24,34 @@ protected:
 	~TextWindow();
 
 	virtual void initializePositions();
+	void setWindowColor(Color4B newWindowColor);
+	void setTitleBarColor(Color4B newTitleBarColor);
 
 	ScrollView* scrollView;
 	float marginSize;
+
+	static const Size padding;
 
 private:
 
 	void initializeListeners();
 	void update(float) override;
 
-	LayerColor* background;
-	LayerColor* titleBar;
+	Node* background;
+	Node* titleBar;
 	MenuLabel* windowTitle;
 	RichText* displayedText;
 
 	std::vector<RichElement*>* displayTextElements;
 
 	float fontSize;
+	Color4B titleBarColor;
+	Color4B windowColor;
 	Color3B fontColor;
 	Size windowSize;
 
 	static const float titleBarHeight;
+	static const Color4B defaultTitleBarColor;
+	static const Color4B defaultWindowColor;
 };
 

@@ -1,6 +1,9 @@
 ﻿#include "TextWindow.h"
 
+const Size TextWindow::padding = Size(4.0f, 4.0f);
 const float TextWindow::titleBarHeight = 48.0f;
+const Color4B TextWindow::defaultTitleBarColor = Color4B(59, 92, 97, 192);
+const Color4B TextWindow::defaultWindowColor = Color4B(39, 58, 61, 192);
 
 TextWindow* TextWindow::create(std::string windowTitle, Size initWindowSize, int initFontSize, Color3B initFontColor)
 {
@@ -19,15 +22,22 @@ TextWindow::TextWindow(std::string windowTitle, Size initWindowSize, int initFon
 	this->fontSize = initFontSize;
 	this->windowSize = initWindowSize;
 
+	this->windowColor = TextWindow::defaultWindowColor;
+	this->titleBarColor = TextWindow::defaultTitleBarColor;
+
 	this->scrollView = ScrollView::create();
 	this->displayedText = RichText::create();
-	this->background = LayerColor::create(Color4B(16, 19, 23, 192), initWindowSize.width, initWindowSize.height);
-	this->titleBar = LayerColor::create(Color4B(16, 81, 56, 128), initWindowSize.width, TextWindow::titleBarHeight);
+	this->background = Node::create();
+	this->titleBar = Node::create();
 	this->windowTitle = MenuLabel::create(windowTitle, Resources::Fonts_Montserrat_Medium, this->fontSize);
+
+	this->background->addChild(LayerColor::create(this->windowColor, this->windowSize.width, this->windowSize.height));
+	this->titleBar->addChild(LayerColor::create(this->titleBarColor, this->windowSize.width, TextWindow::titleBarHeight));
 
 	this->scrollView->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->scrollView->setDirection(SCROLLVIEW_DIR_BOTH);
 	this->displayedText->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->displayedText->setWrapMode(RichText::WrapMode::WRAP_PER_CHAR);
 	this->displayedText->ignoreContentAdaptWithSize(false);
 
 	this->scrollView->addChild(this->displayedText);
@@ -45,6 +55,21 @@ TextWindow::TextWindow(std::string windowTitle, Size initWindowSize, int initFon
 TextWindow::~TextWindow()
 {
 	delete(this->displayTextElements);
+}
+void TextWindow::setWindowColor(Color4B newWindowColor)
+{
+	this->windowColor = newWindowColor;
+	this->background->removeAllChildren();
+	this->background->addChild(LayerColor::create(this->windowColor, this->windowSize.width, this->windowSize.height));
+	this->initializePositions();
+}
+
+void TextWindow::setTitleBarColor(Color4B newTitleBarColor)
+{
+	this->titleBarColor = newTitleBarColor;
+	this->titleBar->removeAllChildren();
+	this->titleBar->addChild(LayerColor::create(this->titleBarColor, this->windowSize.width, TextWindow::titleBarHeight));
+	this->initializePositions();
 }
 
 void TextWindow::setTitle(std::string text)
@@ -92,12 +117,12 @@ void TextWindow::initializePositions()
 {
 	this->scrollView->setSize(windowSize);
 	this->scrollView->setInnerContainerSize(Size(windowSize.width, windowSize.height * 2));
-	this->displayedText->setSize(Size(windowSize.width - this->marginSize, windowSize.height));
+	this->displayedText->setSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f, windowSize.height - TextWindow::padding.height * 2.0f));
 
 	this->scrollView->setPosition(Vec2(0.0f, 0.0f));
 	this->background->setPosition(-this->windowSize.width / 2.0f, -this->windowSize.height / 2.0f);
-	this->displayedText->setPosition(Vec2(this->marginSize, this->scrollView->getInnerContainerSize().height));
-	this->titleBar->setPosition(-this->titleBar->getContentSize().width / 2.0f, this->windowSize.height / 2.0f - this->titleBar->getContentSize().height / 2.0f + this->fontSize);
+	this->displayedText->setPosition(Vec2(this->marginSize + TextWindow::padding.width, this->scrollView->getInnerContainerSize().height - TextWindow::padding.width));
+	this->titleBar->setPosition(-this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - TextWindow::titleBarHeight / 2.0f + this->fontSize);
 	this->windowTitle->setPosition(0.0f, this->windowSize.height / 2 + this->fontSize);
 }
 

@@ -4,6 +4,8 @@ const float CodeMenu::activeColumnOffset = -704.0f;
 const float CodeMenu::addressColumnOffset = -480.0f;
 const float CodeMenu::functionNameColumnOffset = 0.0f;
 const float CodeMenu::dataReferencesColumnOffset = 608.0f;
+const Color4B CodeMenu::defaultHeaderColor = Color4B(59, 92, 97, 192);
+const Color4B CodeMenu::defaultRowSelectionColor = Color4B(39, 58, 61, 192);
 
 CodeMenu* CodeMenu::create()
 {
@@ -29,7 +31,7 @@ CodeMenu::CodeMenu()
 
 	const float fontSize = 32.0f;
 
-	LayerColor* headerBackground = LayerColor::create(Color4B(16, 56, 81, 128), 1600.0f, 48.0f);
+	LayerColor* headerBackground = LayerColor::create(CodeMenu::defaultHeaderColor, 1600.0f, 48.0f);
 	Label* active = Label::create("Active", Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
 	Label* address = Label::create("Address", Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
 	Label* name = Label::create("Function Name", Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
@@ -131,9 +133,9 @@ void CodeMenu::populateRows()
 			MenuSprite* checkedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_CheckboxSelected, Resources::Menus_OptionsMenu_CheckboxSelected, Resources::Menus_OptionsMenu_CheckboxSelected);
 			CCheckbox* isActiveCheckbox = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_2(CodeMenu::onActivated, this));
 
-			LayerColor* normalBackground = LayerColor::create(Color4B(16, 56, 81, 0), rowWidth, rowHeight);
-			LayerColor* selectedBackground = LayerColor::create(Color4B(16, 56, 81, 128), rowWidth, rowHeight);
-			LayerColor* clickedBackground = LayerColor::create(Color4B(16, 56, 81, 128), rowWidth, rowHeight);
+			LayerColor* normalBackground = LayerColor::create(Color4B(0, 0, 0, 0), rowWidth, rowHeight);
+			LayerColor* selectedBackground = LayerColor::create(CodeMenu::defaultRowSelectionColor, rowWidth, rowHeight);
+			LayerColor* clickedBackground = LayerColor::create(CodeMenu::defaultRowSelectionColor, rowWidth, rowHeight);
 			MenuSprite* rowSelection = MenuSprite::create(normalBackground, selectedBackground, clickedBackground);
 			Label* address = Label::create(HackUtils::hexAddressOf(hackableCode->codePointer, true, true), Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
 			Label* name = Label::create(hackableCode->functionName, Resources::Fonts_Montserrat_Medium, fontSize, Size::ZERO, TextHAlignment::CENTER);
