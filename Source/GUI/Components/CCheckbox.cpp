@@ -1,6 +1,6 @@
 #include "CCheckbox.h"
 
-CCheckbox* CCheckbox::create(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState, std::function<void(bool)> callback)
+CCheckbox* CCheckbox::create(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState, std::function<bool(CCheckbox*, bool)> callback)
 {
 	CCheckbox* checkbox = new CCheckbox(uncheckedButton, checkedButton, initialState, callback);
 
@@ -9,7 +9,7 @@ CCheckbox* CCheckbox::create(MenuSprite* uncheckedButton, MenuSprite* checkedBut
 	return checkbox;
 }
 
-CCheckbox::CCheckbox(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState, std::function<void(bool)> callback)
+CCheckbox::CCheckbox(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState, std::function<bool(CCheckbox*, bool)> callback)
 {
 	this->isToggled = initialState;
 	this->toggleCallback = callback;
@@ -54,22 +54,30 @@ void CCheckbox::initializeListeners()
 
 void CCheckbox::onToggleClick(MenuSprite* menuSprite)
 {
+	// Toggle button
 	if (menuSprite == offSwitch)
 	{
 		this->isToggled = true;
 
+	}
+	else
+	{
+		this->isToggled = false;
+	}
+
+	// Accept or reject the toggle based on the callback result
+	this->isToggled = this->toggleCallback(this, this->isToggled);
+
+	if (this->isToggled)
+	{
 		this->offSwitch->setVisible(false);
 		this->onSwitch->setVisible(true);
 	}
 	else
 	{
-		this->isToggled = false;
-
 		this->offSwitch->setVisible(true);
 		this->onSwitch->setVisible(false);
 	}
-
-	this->toggleCallback(this->isToggled);
 }
 
 void CCheckbox::onMouseMove(EventMouse* event)

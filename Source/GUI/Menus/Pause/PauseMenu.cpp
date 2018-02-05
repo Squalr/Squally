@@ -54,6 +54,7 @@ void PauseMenu::onEnter()
 
 	this->background->addChild(MenuBackground::claimInstance());
 
+	this->setFadeSpeed(0.0f);
 	this->initializePositions();
 
 	this->addChild(Mouse::claimInstance());
