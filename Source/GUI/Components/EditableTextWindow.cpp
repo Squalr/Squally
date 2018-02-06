@@ -22,16 +22,16 @@ EditableTextWindow::EditableTextWindow(std::string windowTitle, Size initWindowS
 	this->windowSize = initWindowSize;
 
 	this->lineNumbers = RichText::create();
-	this->editableText = TextField::create("<Edit Text>", Resources::Fonts_UbuntuMono_B, this->fontSize);
+	this->editableText = UICCTextField::create("<Click to Edit>", Resources::Fonts_UbuntuMono_B, this->fontSize);
 
 	this->lineNumbers->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->lineNumbers->ignoreContentAdaptWithSize(false);
 	this->editableText->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->editableText->setLineBreakWithoutSpace(true);
 	this->editableText->setOpacity(0);
 	this->editableText->setCascadeOpacityEnabled(false);
 	this->editableText->setCursorEnabled(true);
-	this->editableText->setHighlighted(true);
-	this->editableText->ignoreContentAdaptWithSize(false);
+	this->editableText->enableWrap(true);
 
 	this->scrollView->addChild(this->lineNumbers);
 	this->scrollView->addChild(this->editableText);
@@ -78,7 +78,8 @@ void EditableTextWindow::initializePositions()
 	this->editableText->setPosition(Vec2(this->marginSize + TextWindow::padding.width, this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
 
 	this->lineNumbers->setSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f, windowSize.height - TextWindow::padding.height * 2.0f));
-	this->editableText->setSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f, windowSize.height - TextWindow::padding.height * 2.0f));
+	this->editableText->setContentSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f, windowSize.height - TextWindow::padding.height * 2.0f));
+	this->editableText->setDimensions(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f, windowSize.height - TextWindow::padding.height * 2.0f);
 
 	TextWindow::initializePositions();
 }
