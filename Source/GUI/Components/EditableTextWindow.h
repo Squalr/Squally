@@ -39,7 +39,7 @@ private:
 	void initializeListeners();
 	void constructTokenizedText(std::string currentText);
 
-	TextField* editableText;
+	UICCTextField* editableText;
 	RichText* lineNumbers;
 
 	int currentLineNumber;
