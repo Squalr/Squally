@@ -1,6 +1,6 @@
 ﻿#include "TextWindow.h"
 
-const Size TextWindow::padding = Size(4.0f, 4.0f);
+const Size TextWindow::padding = Size(8.0f, 4.0f);
 const float TextWindow::titleBarHeight = 48.0f;
 const Color4B TextWindow::defaultTitleBarColor = Color4B(59, 92, 97, 192);
 const Color4B TextWindow::defaultWindowColor = Color4B(39, 58, 61, 192);
@@ -121,7 +121,7 @@ void TextWindow::initializePositions()
 
 	this->scrollView->setPosition(Vec2(0.0f, 0.0f));
 	this->background->setPosition(-this->windowSize.width / 2.0f, -this->windowSize.height / 2.0f);
-	this->displayedText->setPosition(Vec2(this->marginSize + TextWindow::padding.width, this->scrollView->getInnerContainerSize().height - TextWindow::padding.width));
+	this->displayedText->setPosition(Vec2(this->marginSize + TextWindow::padding.width, this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
 	this->titleBar->setPosition(-this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - TextWindow::titleBarHeight / 2.0f + this->fontSize);
 	this->windowTitle->setPosition(0.0f, this->windowSize.height / 2 + this->fontSize);
 }
