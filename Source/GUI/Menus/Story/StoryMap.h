@@ -4,6 +4,7 @@
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/OutlineLabel.h"
 #include "GUI/Components/Mouse.h"
+#include "GUI/Menus/Story/MapNode.h"
 
 using namespace cocos2d;
 
@@ -22,7 +23,16 @@ private:
 	void initializeListeners();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
+	MapNode* jungle;
+	MapNode* waterRuins;
+	MapNode* forest;
+	MapNode* caverns;
+	MapNode* iceCaps;
+	MapNode* obelisk;
+	MapNode* volcano;
+
 	Sprite* background;
+	Sprite* foreground;
 	OutlineLabel* titleLabel;
 	OutlineLabel* infoLabel;
 
