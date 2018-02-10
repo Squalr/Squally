@@ -33,6 +33,7 @@ PauseMenu::PauseMenu()
 	this->addChild(this->exitButton);
 
 	this->initializeListeners();
+	this->setFadeSpeed(0.25f);
 }
 
 PauseMenu::~PauseMenu()
@@ -43,8 +44,8 @@ void PauseMenu::onEnter()
 {
 	FadeScene::onEnter();
 
-	float delay = 0.25f;
-	float duration = 0.35f;
+	float delay = 0.1f;
+	float duration = 0.25f;
 
 	Utils::fadeInObject(this->pauseWindow, delay, duration);
 	Utils::fadeInObject(this->closeButton, delay, duration);
@@ -54,7 +55,6 @@ void PauseMenu::onEnter()
 
 	this->background->addChild(MenuBackground::claimInstance());
 
-	this->setFadeSpeed(0.0f);
 	this->initializePositions();
 
 	this->addChild(Mouse::claimInstance());
@@ -77,6 +77,7 @@ void PauseMenu::initializePositions()
 void PauseMenu::initializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+
 	listener->onKeyPressed = CC_CALLBACK_2(PauseMenu::onKeyPressed, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
@@ -84,16 +85,21 @@ void PauseMenu::initializeListeners()
 
 void PauseMenu::onExitConfirm()
 {
-	Director::getInstance()->popToSceneStackLevel(2);
+	Director::getInstance()->popToSceneStackLevel(1);
 }
 
-// Implementation of the keyboard event callback function prototype
 void PauseMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
+	if (!this->isVisible())
+	{
+		return;
+	}
+
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		Director::getInstance()->popScene();
+		event->stopPropagation();
 		break;
 	}
 }
