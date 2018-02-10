@@ -14,7 +14,6 @@ public:
 	static MapNode * create(std::string resource, std::string resourceSelected, std::string resourceLocked, std::string mapName, std::string mapFile);
 
 	void setLocked(bool isLocked);
-	void setCallBack(std::function<void(MapNode*)> onMouseOver);
 
 	std::string nodeMapName;
 	std::string nodeMapFile;
@@ -27,8 +26,6 @@ private:
 	void initializePositions();
 	void initializeListeners();
 	void onNodeClick(MenuSprite* menuSprite, EventMouse* args);
-
-	std::function<void(MapNode*)> onMouseOverEvent;
 
 	Mouse* mouse;
 	MenuSprite* mapSprite;

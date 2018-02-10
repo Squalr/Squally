@@ -21,6 +21,7 @@ private:
 
 	void initializePositions();
 	void initializeListeners();
+	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onHackableEdit(EventCustom* eventArgs);
 	void onCodeMenuOpen(MenuSprite* menuSprite);
 	void onDataMenuOpen(MenuSprite* menuSprite);

@@ -51,8 +51,28 @@ void HUD::initializePositions()
 void HUD::initializeListeners()
 {
 	EventListenerCustom* dialogListener = EventListenerCustom::create(DialogMenu::DialogOpenEvent, CC_CALLBACK_1(HUD::onDialogOpen, this));
+	EventListenerKeyboard* listener = EventListenerKeyboard::create();
 
+	listener->onKeyPressed = CC_CALLBACK_2(HUD::onKeyPressed, this);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(dialogListener, this);
+}
+
+void HUD::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+{
+	if (Utils::isFocused(this))
+	{
+		switch (keyCode)
+		{
+		case EventKeyboard::KeyCode::KEY_TAB:
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
+			Utils::focus(this->getParent());
+			event->stopPropagation();
+
+			break;
+		}
+	}
 }
 
 void HUD::registerHackableObject(HackableObject* hackableObject)

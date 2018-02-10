@@ -24,8 +24,8 @@ private:
 	void onEnter() override;
 	void initializePositions();
 	void initializeListeners();
+	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onDialogOpen(EventCustom* event);
-
 
 	Sprite* heart;
 	Sprite* healthBarFrame;

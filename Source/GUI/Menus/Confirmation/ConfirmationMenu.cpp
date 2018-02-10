@@ -21,10 +21,6 @@ ConfirmationMenu::ConfirmationMenu(std::string confirmationMessage, std::functio
 	this->confirmButton = MenuSprite::create(Sprite::create(Resources::Menus_Buttons_AcceptButton), Resources::Menus_Buttons_AcceptButtonHover, Resources::Menus_Buttons_AcceptButtonClick);
 	this->confirmationLabel = Label::create(confirmationMessage, Resources::Fonts_Montserrat_Medium, 20);
 
-	this->cancelButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onCancelClick, this));
-	this->confirmButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onConfirmClick, this));
-
-	this->closeButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onCloseClick, this));
 	this->closeButton->setClickSound(Resources::Sounds_ClickBack1);
 
 	this->addChild(this->background);
@@ -35,6 +31,8 @@ ConfirmationMenu::ConfirmationMenu(std::string confirmationMessage, std::functio
 	this->addChild(this->confirmationLabel);
 
 	this->setFadeSpeed(0.0f);
+
+	this->initializeListeners();
 }
 
 ConfirmationMenu::~ConfirmationMenu()
@@ -65,6 +63,38 @@ void ConfirmationMenu::initializePositions()
 
 	MenuBackground::getInstance()->initializePositions();
 }
+
+void ConfirmationMenu::initializeListeners()
+{
+	this->cancelButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onCancelClick, this));
+	this->confirmButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onConfirmClick, this));
+
+	this->closeButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onCloseClick, this));
+
+	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+
+	listener->onKeyPressed = CC_CALLBACK_2(ConfirmationMenu::onKeyPressed, this);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+void ConfirmationMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+{
+	switch (keyCode)
+	{
+	case EventKeyboard::KeyCode::KEY_ESCAPE:
+		Director::getInstance()->popScene();
+
+		if (this->onCancelCallback != nullptr)
+		{
+			this->onCancelCallback();
+		}
+
+		event->stopPropagation();
+		break;
+	}
+}
+
 
 void ConfirmationMenu::onCloseClick(MenuSprite* menuSprite)
 {

@@ -10,6 +10,7 @@ public:
 	static void pause(Node *node);
 	static void resume(Node *node);
 	static void resumeAll();
+	static bool isFocused(Node *node);
 	static void focus(Node *node);
 	static void accelerateParticles(ParticleSystem* particleSystem, float duration);
 	static void fadeInObject(Node* node, float delay, float duration);

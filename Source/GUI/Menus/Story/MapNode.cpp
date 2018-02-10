@@ -13,7 +13,6 @@ MapNode::MapNode(std::string resource, std::string resourceSelected, std::string
 {
 	this->nodeMapName = mapName;
 	this->nodeMapFile = mapFile;
-	this->onMouseOverEvent = nullptr;
 
 	this->mapSprite = MenuSprite::create(resource, resourceSelected, resourceSelected);
 	this->mapSpriteLocked = Sprite::create(resourceLocked);
@@ -43,11 +42,6 @@ void MapNode::setLocked(bool isLocked)
 		this->mapSprite->setVisible(true);
 		this->mapSpriteLocked->setVisible(false);
 	}
-}
-
-void MapNode::setCallBack(std::function<void(MapNode*)> onMouseOver)
-{
-	this->onMouseOverEvent = onMouseOver;
 }
 
 void MapNode::initializePositions()
