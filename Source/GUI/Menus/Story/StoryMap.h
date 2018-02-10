@@ -21,8 +21,10 @@ private:
 	void onEnter() override;
 	void initializePositions();
 	void initializeListeners();
+	void onMouseSpriteMove(EventCustom* args);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
+	std::vector<MapNode*>* mapNodes;
 	MapNode* jungle;
 	MapNode* waterRuins;
 	MapNode* forest;

@@ -235,6 +235,7 @@ void TutorialScreen::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		Director::getInstance()->popScene();
+		event->stopPropagation();
 		break;
 	}
 }

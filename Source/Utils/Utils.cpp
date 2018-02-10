@@ -39,6 +39,20 @@ void Utils::resumeAll()
 	Utils::resume(Director::getInstance()->getRunningScene());
 }
 
+bool Utils::isFocused(Node *node)
+{
+	if (node->getParent() != nullptr && node->getParent()->isPaused() && !node->isPaused())
+	{
+		return true;
+	}
+	else if (node->getParent() == nullptr && !node->isPaused())
+	{
+		return true;
+	}
+
+	return false;
+}
+
 void Utils::focus(Node *node)
 {
 	Utils::pause(Director::getInstance()->getRunningScene());

@@ -11,8 +11,9 @@ StoryMap * StoryMap::create()
 
 StoryMap::StoryMap()
 {
-	this->titleLabel = OutlineLabel::create("Level Select", Resources::Fonts_Marker_Felt, this->titleFontSize);
-	this->infoLabel = OutlineLabel::create("Level 1", Resources::Fonts_Marker_Felt, this->infoFontSize);
+	this->mapNodes = new std::vector<MapNode*>();
+	this->titleLabel = OutlineLabel::create("Level Select", Resources::Fonts_Montserrat_Medium, this->titleFontSize);
+	this->infoLabel = OutlineLabel::create("Level 1", Resources::Fonts_Montserrat_Medium, this->infoFontSize);
 	this->background = Sprite::create(Resources::Menus_WorldMaps_StoryMap);
 	this->foreground = Sprite::create(Resources::Menus_WorldMaps_StoryMapFront);
 
@@ -72,6 +73,13 @@ StoryMap::StoryMap()
 		Resources::Levels_TutorialExactScan1
 	);
 
+	this->mapNodes->push_back(this->jungle);
+	this->mapNodes->push_back(this->waterRuins);
+	this->mapNodes->push_back(this->forest);
+	this->mapNodes->push_back(this->caverns);
+	this->mapNodes->push_back(this->iceCaps);
+	this->mapNodes->push_back(this->obelisk);
+	this->mapNodes->push_back(this->volcano);
 
 	this->addChild(this->background);
 	this->addChild(this->jungle);
@@ -90,6 +98,7 @@ StoryMap::StoryMap()
 
 StoryMap::~StoryMap()
 {
+	delete(this->mapNodes);
 }
 
 void StoryMap::onEnter()
@@ -121,20 +130,45 @@ void StoryMap::initializePositions()
 
 void StoryMap::initializeListeners()
 {
+	EventListenerCustom* customListener = EventListenerCustom::create(Mouse::MouseMoveEvent, CC_CALLBACK_1(StoryMap::onMouseSpriteMove, this));
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
 
 	listener->onKeyPressed = CC_CALLBACK_2(StoryMap::onKeyPressed, this);
 
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(customListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-// Implementation of the keyboard event callback function prototype
 void StoryMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
+	if (!this->isVisible())
+	{
+		return;
+	}
+
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		Director::getInstance()->popScene();
 		break;
 	}
+}
+
+void StoryMap::onMouseSpriteMove(EventCustom* event)
+{
+	Mouse::MouseEventArgs* args = static_cast<Mouse::MouseEventArgs*>(event->getUserData());
+	Vec2 mouseCoords = Vec2(args->mouseX, args->mouseY);
+
+	for (auto it = this->mapNodes->begin(); it != this->mapNodes->end(); it++)
+	{
+		MapNode* node = *it;
+
+		if (Utils::intersects(node, mouseCoords))
+		{
+			this->infoLabel->setText(node->nodeMapName);
+			return;
+		}
+	}
+
+	this->infoLabel->setText("");
 }

@@ -98,21 +98,39 @@ void RadialMenu::initializePositions()
 
 void RadialMenu::initializeListeners()
 {
-	EventListenerCustom* hackableEditListener = EventListenerCustom::create(HackableObject::HackableObjectEditEvent, CC_CALLBACK_1(RadialMenu::onHackableEdit, this));
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(hackableEditListener, this);
-
 	this->dataButton->setClickCallback(CC_CALLBACK_1(RadialMenu::onDataMenuOpen, this));
 	this->codeButton->setClickCallback(CC_CALLBACK_1(RadialMenu::onCodeMenuOpen, this));
 	this->returnButton->setClickCallback(CC_CALLBACK_1(RadialMenu::onClose, this));
+
+	EventListenerCustom* hackableEditListener = EventListenerCustom::create(HackableObject::HackableObjectEditEvent, CC_CALLBACK_1(RadialMenu::onHackableEdit, this));
+	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+	listener->onKeyPressed = CC_CALLBACK_2(RadialMenu::onKeyPressed, this);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(hackableEditListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+void RadialMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+{
+	if (!this->isVisible())
+	{
+		return;
+	}
+
+	switch (keyCode)
+	{
+	case EventKeyboard::KeyCode::KEY_ESCAPE:
+		this->setVisible(false);
+		Utils::focus(this->getParent());
+		event->stopPropagation();
+		break;
+	}
 }
 
 void RadialMenu::onClose(MenuSprite* menuSprite)
 {
 	this->setVisible(false);
-
-	// Kinda a shitty way to navigate back to Hud > Level
-	Utils::focus(this->getParent()->getParent());
+	Utils::focus(this->getParent());
 }
 
 void RadialMenu::onCodeMenuOpen(MenuSprite* menuSprite)
