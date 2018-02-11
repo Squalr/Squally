@@ -30,7 +30,9 @@ TitleScreenBackground::TitleScreenBackground()
 	this->foregroundGrassTop = FloatingSprite::create(Resources::Menus_Backgrounds_TopLeaves, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
 	this->foregroundLight = Sprite::create(Resources::Menus_Backgrounds_Light);
 	this->slime = Sprite::create(Resources::Menus_TitleScreen_Slime_0000_SlimeFrames008);
-	this->squally = FloatingSprite::create(Resources::Ingame_Sprites_Player_SquallyLarge, Vec2(8.0f, 64.0f), Vec2(3.5f, 8.0f));
+	this->squallyNode = Node::create();
+	this->squally = Sprite::create(Resources::Menus_TitleScreen_Squally);
+	this->squallyWand = Sprite::create(Resources::Menus_TitleScreen_SquallyWand);
 
 	this->createSlimeAnimation();
 
@@ -49,14 +51,82 @@ TitleScreenBackground::TitleScreenBackground()
 	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesB3);
 	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesB4);
 
-	this->slime->runAction(RepeatForever::create(Sequence::create(DelayTime::create(1.0f), Animate::create(this->slimeAnimation), nullptr)));
+	const float floatSpeed = 3.0f;
+	const float floatSpeedLarge = 6.0f;
+	const float floatDeltaSmall = 64.0f;
+	const float floatDeltaLarge = 344.0f;
+
+	FiniteTimeAction* bounceX1 = EaseSineInOut::create(MoveBy::create(5.0f, Vec2(-8.0f, 0.0f)));
+	FiniteTimeAction* bounceX2 = EaseSineInOut::create(MoveBy::create(5.0f, Vec2(8.0f, 0.0f)));
+	FiniteTimeAction* bounceY1 = EaseSineInOut::create(MoveBy::create(floatSpeedLarge, Vec2(0.0f, -floatDeltaLarge)));
+	FiniteTimeAction* bounceY2 = EaseSineInOut::create(MoveBy::create(floatSpeedLarge, Vec2(0.0f, floatDeltaLarge)));
+	FiniteTimeAction* bounceY3 = EaseSineInOut::create(MoveBy::create(floatSpeed, Vec2(0.0f, -floatDeltaSmall)));
+	FiniteTimeAction* bounceY4 = EaseSineInOut::create(MoveBy::create(floatSpeed, Vec2(0.0f, floatDeltaSmall)));
+
+	// Prepare parameters to pass to lambdas
+	Node* slimeNode = this->slime;
+	Node* wandNode = this->squallyWand;
+	Animation* slimeActionNode = this->slimeAnimation;
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	this->slimeAnimation->retain();
+
+	// Func to restore initial states to prevent floating point drift
+	CallFunc* restoreState = CallFunc::create([wandNode] {
+		wandNode->runAction(RotateTo::create(0.1f, 0.0f));
+	});
+
+	CallFunc* softRotateArm = CallFunc::create([wandNode] {
+		wandNode->runAction(Sequence::create(RotateBy::create(5.0f, 8.0f), RotateBy::create(5.0f, -8.0f), nullptr));
+	});
+
+	CallFunc* rotateArm = CallFunc::create([wandNode] {
+		wandNode->runAction(Sequence::create(RotateBy::create(0.1f, 15.0f), RotateBy::create(0.1f, -15.0f), nullptr));
+	});
+
+	CallFunc* pokeSlime = CallFunc::create([slimeNode, slimeActionNode] {
+		slimeNode->runAction(Animate::create(slimeActionNode));
+	});
+
+	this->squallyNode->runAction(RepeatForever::create(
+		Sequence::create(
+			bounceX1,
+			bounceX2,
+			nullptr
+		))
+	);
+
+	this->squallyNode->runAction(RepeatForever::create(
+		Sequence::create(
+			restoreState,
+			softRotateArm,
+			bounceY3,
+			bounceY4,
+			bounceY3,
+			bounceY4,
+			bounceY1,
+			rotateArm,
+			pokeSlime,
+			bounceY4,
+			bounceY3,
+			rotateArm,
+			pokeSlime,
+			bounceY2,
+			softRotateArm,
+			bounceY3,
+			bounceY4,
+			bounceY3,
+			bounceY4,
+			nullptr
+		))
+	);
 
 	this->hackerModeLabel = Label::create(HackerMode::getInstance()->getHackerModeAddressHex(), Resources::Fonts_Stormblade, 20);
 	this->hackerModeLabel->setColor(Color3B(173, 135, 108));
 	this->hackerModeLabel->setSkewX(-12.0f);
 
-	this->squally->setScale(0.35f);
-	this->squally->setFlippedX(true);
+	this->squally->setFlipX(true);
+	this->squallyWand->setFlipX(true);
+	this->squallyNode->setScale(0.35f);
 	this->fog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-92.0f, 0))));
 	this->foregroundFog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-196.0f, 0))));
 	this->eyes1Anim->setDelayPerUnit(0.025f);
@@ -69,6 +139,9 @@ TitleScreenBackground::TitleScreenBackground()
 	this->etherParticles->setVisible(false);
 	this->etherParticles->stopSystem();
 	this->etherParticles->setOpacity(0);
+
+	this->squallyNode->addChild(this->squally);
+	this->squallyNode->addChild(this->squallyWand);
 
 	this->addChild(this->background);
 	this->addChild(this->backgroundTrees);
@@ -89,7 +162,7 @@ TitleScreenBackground::TitleScreenBackground()
 	this->addChild(this->foregroundGrassTop);
 	this->addChild(this->foregroundLight);
 	this->addChild(this->slime);
-	this->addChild(this->squally);
+	this->addChild(this->squallyNode);
 
 	this->initializeListeners();
 }
@@ -130,30 +203,29 @@ void TitleScreenBackground::initializeListeners()
 void TitleScreenBackground::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	this->hackerModeLabel->setPosition(Vec2(origin.x + visibleSize.width / 2 - 96.0f, origin.x + visibleSize.height / 2 + 296.0f));
+	this->hackerModeLabel->setPosition(Vec2(visibleSize.width / 2 - 96.0f, visibleSize.height / 2 + 296.0f));
 
-	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
-	this->backgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
-	this->backgroundVines->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 320.0f));
-	this->midgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
-	this->tree->setPosition(Vec2(origin.x + visibleSize.width / 2 + 38.0f, origin.y + visibleSize.height / 2 + 180.0f));
-	this->ether->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->ether->getContentSize().height + 372.0f));
-	this->etherParticles->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - this->ether->getContentSize().height + 372.0f));
+	this->background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+	this->backgroundTrees->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+	this->backgroundVines->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - 320.0f));
+	this->midgroundTrees->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+	this->tree->setPosition(Vec2(visibleSize.width / 2 + 38.0f, visibleSize.height / 2 + 180.0f));
+	this->ether->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - this->ether->getContentSize().height + 372.0f));
+	this->etherParticles->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - this->ether->getContentSize().height + 372.0f));
 
-	this->eyes1->setPosition(Vec2(origin.x + visibleSize.width / 2 + 48.0f, origin.y + visibleSize.height / 2 - 180.0f));
-	this->eyes2->setPosition(Vec2(origin.x + visibleSize.width / 2 + 48.0f, origin.y + visibleSize.height / 2 - 180.0f));
-	this->fog->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 120.0f));
-	this->foregroundFog->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 256.0f));
-	this->foregroundVines->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 196.0f));
-	this->foregroundGrassBottom->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y));
-	this->foregroundGrassTop->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 32.0f));
-	this->foregroundLight->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - foregroundLight->getContentSize().height / 2));
-	this->windParticles->setPosition(Vec2(origin.x + visibleSize.width, origin.y + visibleSize.height / 2));
-	this->fireflyParticles->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
-	this->slime->setPosition(Vec2(origin.x + visibleSize.width / 2 + 128.0f, origin.y + visibleSize.height / 2 - 320.0f));
-	this->squally->setPosition(Vec2(origin.x + visibleSize.width / 2 + 240.0f, origin.y + visibleSize.height / 2 - 32.0f));
+	this->eyes1->setPosition(Vec2(visibleSize.width / 2 + 48.0f, visibleSize.height / 2 - 180.0f));
+	this->eyes2->setPosition(Vec2(visibleSize.width / 2 + 48.0f, visibleSize.height / 2 - 180.0f));
+	this->fog->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 120.0f));
+	this->foregroundFog->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 256.0f));
+	this->foregroundVines->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - 196.0f));
+	this->foregroundGrassBottom->setPosition(Vec2(visibleSize.width / 2, 0.0f));
+	this->foregroundGrassTop->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - 32.0f));
+	this->foregroundLight->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - foregroundLight->getContentSize().height / 2));
+	this->windParticles->setPosition(Vec2(visibleSize.width, visibleSize.height / 2));
+	this->fireflyParticles->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+	this->slime->setPosition(Vec2(visibleSize.width / 2 + 112.0f, visibleSize.height / 2 - 320.0f));
+	this->squallyNode->setPosition(Vec2(visibleSize.width / 2 + 240.0f, visibleSize.height / 2 + 96.0f));
 }
 
 void TitleScreenBackground::onHackerModeEnabled(EventCustom* args)

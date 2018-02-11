@@ -28,7 +28,9 @@ private:
 	void onHackerModeEnabled(EventCustom* args);
 	void createSlimeAnimation();
 
-	FloatingSprite* squally;
+	Node* squallyNode;
+	Sprite* squally;
+	Sprite* squallyWand;
 	Sprite* slime;
 	Animation* slimeAnimation;
 	Sprite* background;
