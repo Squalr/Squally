@@ -106,7 +106,7 @@ bool StrUtils::isFloat(std::string str)
 	std::istringstream iss(str);
 	float f;
 
-	iss >> noskipws >> f;
+	iss >> std::noskipws >> f;
 
 	return iss.eof() && !iss.fail();
 }

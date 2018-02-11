@@ -34,6 +34,6 @@ foreach (string file in Directory.EnumerateFiles(this.Host.ResolvePath("../Resou
 	string variableName = Path.GetFileNameWithoutExtension(file.Replace(this.Host.ResolvePath("../Resources"), "").TrimStart('\\').Replace(@"\", "_").Replace(" ", "_").Replace("-", "_").Replace("(", "_").Replace(")", "_"));
 	string relativeFilePath = file.Replace(this.Host.ResolvePath("../Resources"), "").TrimStart('\\').Replace(@"\", @"\\");
 
-	WriteLine("const string Resources::" + variableName + " = \"" + relativeFilePath + "\";");
+	WriteLine("const std::string Resources::" + variableName + " = \"" + relativeFilePath + "\";");
 }
 #>

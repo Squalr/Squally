@@ -26,8 +26,11 @@ private:
 	void onEnter() override;
 	void initializeListeners();
 	void onHackerModeEnabled(EventCustom* args);
+	void createSlimeAnimation();
 
-	FloatingSprite * squally;
+	FloatingSprite* squally;
+	Sprite* slime;
+	Animation* slimeAnimation;
 	Sprite* background;
 	FloatingSprite* backgroundVines;
 	FloatingSprite* backgroundTrees;

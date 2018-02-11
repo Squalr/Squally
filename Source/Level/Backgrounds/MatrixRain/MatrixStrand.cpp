@@ -131,7 +131,7 @@ void MatrixStrand::endStrand()
 
 	// float speedPercent = (1.0f - (this->spawnSpeed - MatrixStrand::minSpawnSpeed) / (MatrixStrand::maxSpawnSpeed - MatrixStrand::minSpawnSpeed));
 	float remainingDistance = 1024.0f - this->getPositionZ();
-	float despawnTime = max(0.0f, remainingDistance / MatrixStrand::movementSpeed);
+	float despawnTime = std::max(0.0f, remainingDistance / MatrixStrand::movementSpeed);
 
 	this->runAction(Sequence::create(DelayTime::create(despawnTime),
 		CallFunc::create(CC_CALLBACK_0(MatrixStrand::beginStrand, this)), nullptr));

@@ -16,7 +16,7 @@ CCheckbox::CCheckbox(MenuSprite* uncheckedButton, MenuSprite* checkedButton, boo
 	this->offSwitch = uncheckedButton;
 	this->onSwitch = checkedButton;
 
-	this->clickableMenus = new vector<MenuSprite*>();
+	this->clickableMenus = new std::vector<MenuSprite*>();
 
 	this->clickableMenus->push_back(this->offSwitch);
 	this->clickableMenus->push_back(this->onSwitch);
