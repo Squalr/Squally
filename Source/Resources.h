@@ -507,6 +507,19 @@ public:
 	static const std::string Ingame_Objects_WarpGateClosed;
 	static const std::string Ingame_Objects_WarpGateClosedLights;
 	static const std::string Ingame_Objects_WarpGateOpen;
+	static const std::string Ingame_Objects_Spells_aura01;
+	static const std::string Ingame_Objects_Spells_aura02;
+	static const std::string Ingame_Objects_Spells_aura03;
+	static const std::string Ingame_Objects_Spells_aura04;
+	static const std::string Ingame_Objects_Spells_aura05;
+	static const std::string Ingame_Objects_Spells_aura06;
+	static const std::string Ingame_Objects_Spells_aura07;
+	static const std::string Ingame_Objects_Spells_aura08;
+	static const std::string Ingame_Objects_Spells_circle01;
+	static const std::string Ingame_Objects_Spells_circle02;
+	static const std::string Ingame_Objects_Spells_circle03;
+	static const std::string Ingame_Objects_Spells_circle04;
+	static const std::string Ingame_Objects_Spells_circle05;
 	static const std::string Ingame_Sprites_EggProjectile;
 	static const std::string Ingame_Sprites_Bat_BatLarge;
 	static const std::string Ingame_Sprites_Bat_Death1;
@@ -845,6 +858,8 @@ public:
 	static const std::string Menus_WorldMaps_WaterRuinsLocked;
 	static const std::string Menus_WorldMaps_WaterRuinsSelected;
 	static const std::string Menus_WorldMaps_WorldMapSelector;
+	static const std::string Music_BurdenOfTime;
+	static const std::string Music_Lullaby_Bells;
 	static const std::string Music_Will_we_get_there_Together;
 	static const std::string Particles_BeamMeUp;
 	static const std::string Particles_BlueNether;

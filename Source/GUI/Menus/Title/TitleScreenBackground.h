@@ -29,8 +29,11 @@ private:
 	void createSlimeAnimation();
 
 	Node* squallyNode;
+	Sprite* spellEffect;
 	Sprite* squally;
 	Sprite* squallyWand;
+	Node* slimeNode;
+	Sprite* slimeBubble;
 	Sprite* slime;
 	Animation* slimeAnimation;
 	Sprite* background;
