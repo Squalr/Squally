@@ -29,12 +29,21 @@ TitleScreenBackground::TitleScreenBackground()
 	this->foregroundGrassBottom = FloatingSprite::create(Resources::Menus_Backgrounds_BottomSoil, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
 	this->foregroundGrassTop = FloatingSprite::create(Resources::Menus_Backgrounds_TopLeaves, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
 	this->foregroundLight = Sprite::create(Resources::Menus_Backgrounds_Light);
+	this->slimeNode = Node::create();
 	this->slime = Sprite::create(Resources::Menus_TitleScreen_Slime_0000_SlimeFrames008);
+	this->slimeBubble = Sprite::create(Resources::Ingame_Objects_Spells_circle05);
 	this->squallyNode = Node::create();
 	this->squally = Sprite::create(Resources::Menus_TitleScreen_Squally);
 	this->squallyWand = Sprite::create(Resources::Menus_TitleScreen_SquallyWand);
+	this->spellEffect = Sprite::create(Resources::Ingame_Objects_Spells_aura02);
 
 	this->createSlimeAnimation();
+
+	this->slimeBubble->setOpacity(0);
+	this->slimeBubble->setColor(Color3B(78, 201, 176));
+	this->slimeBubble->setScale(0.25f);
+	this->spellEffect->setOpacity(0);
+	this->spellEffect->setColor(Color3B(78, 201, 176));
 
 	this->etherParticles = ParticleGalaxy::create();
 	this->windParticles = ParticleSystemQuad::create(Resources::Particles_Wind);
@@ -64,28 +73,44 @@ TitleScreenBackground::TitleScreenBackground()
 	FiniteTimeAction* bounceY4 = EaseSineInOut::create(MoveBy::create(floatSpeed, Vec2(0.0f, floatDeltaSmall)));
 
 	// Prepare parameters to pass to lambdas
-	Node* slimeNode = this->slime;
+	Node* slimeNodeLocal = this->slimeNode;
+	Node* slimeSpriteLocal = this->slime;
 	Node* wandNode = this->squallyWand;
+	Node* spellNode = this->spellEffect;
+	Node* bubbleNode = this->slimeBubble;
 	Animation* slimeActionNode = this->slimeAnimation;
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	this->slimeAnimation->retain();
 
-	// Func to restore initial states to prevent floating point drift
-	CallFunc* restoreState = CallFunc::create([wandNode] {
-		wandNode->runAction(RotateTo::create(0.1f, 0.0f));
+	CallFunc* floatSlime = CallFunc::create([slimeSpriteLocal, slimeActionNode] {
+		slimeSpriteLocal->runAction(Animate::create(slimeActionNode));
 	});
 
-	CallFunc* softRotateArm = CallFunc::create([wandNode] {
-		wandNode->runAction(Sequence::create(RotateBy::create(5.0f, 8.0f), RotateBy::create(5.0f, -8.0f), nullptr));
+	floatSlime->retain();
+
+	CallFunc* pokeSlime = CallFunc::create([wandNode, floatSlime] {
+		wandNode->runAction(Sequence::create(RotateTo::create(0.1f, 15.0f), RotateTo::create(0.1f, -5.0f), nullptr));
+		floatSlime->execute();
 	});
 
-	CallFunc* rotateArm = CallFunc::create([wandNode] {
-		wandNode->runAction(Sequence::create(RotateBy::create(0.1f, 15.0f), RotateBy::create(0.1f, -15.0f), nullptr));
+	pokeSlime->retain();
+
+	CallFunc* castSpell = CallFunc::create([slimeNodeLocal, wandNode, spellNode, bubbleNode, floatSlime] {
+		float castTime = 0.25f;
+		float castSustainTime = 2.0f;
+		float castFadeTime = 0.35f;
+
+		FiniteTimeAction* liftY1 = EaseSineInOut::create(MoveBy::create(castTime, Vec2(0.0f, 64.0f)));
+		FiniteTimeAction* liftY2 = EaseSineInOut::create(MoveBy::create(0.35f, Vec2(0.0f, -64.0f)));
+
+		wandNode->runAction(Sequence::create(RotateTo::create(castTime, 45.0f), DelayTime::create(castSustainTime), RotateTo::create(castFadeTime, 0.0f), nullptr));
+		bubbleNode->runAction(Sequence::create(FadeIn::create(castTime), DelayTime::create(castSustainTime), FadeOut::create(castFadeTime), nullptr));
+		spellNode->runAction(Sequence::create(FadeIn::create(castTime), nullptr));
+		spellNode->runAction(Sequence::create(ScaleTo::create(castTime, 1.5f), DelayTime::create(castSustainTime), FadeOut::create(castFadeTime), nullptr));
+		slimeNodeLocal->runAction(Sequence::create(liftY1, floatSlime, DelayTime::create(castSustainTime), liftY2, floatSlime, nullptr));
 	});
 
-	CallFunc* pokeSlime = CallFunc::create([slimeNode, slimeActionNode] {
-		slimeNode->runAction(Animate::create(slimeActionNode));
-	});
+	castSpell->retain();
 
 	this->squallyNode->runAction(RepeatForever::create(
 		Sequence::create(
@@ -97,25 +122,25 @@ TitleScreenBackground::TitleScreenBackground()
 
 	this->squallyNode->runAction(RepeatForever::create(
 		Sequence::create(
-			restoreState,
-			softRotateArm,
+			bounceY3,
+			bounceY4,
+			bounceY3,
+			bounceY4,
+			bounceY3,
+			bounceY4,
+			castSpell,
+			bounceY3,
+			bounceY4,
 			bounceY3,
 			bounceY4,
 			bounceY3,
 			bounceY4,
 			bounceY1,
-			rotateArm,
 			pokeSlime,
 			bounceY4,
 			bounceY3,
-			rotateArm,
 			pokeSlime,
 			bounceY2,
-			softRotateArm,
-			bounceY3,
-			bounceY4,
-			bounceY3,
-			bounceY4,
 			nullptr
 		))
 	);
@@ -140,8 +165,11 @@ TitleScreenBackground::TitleScreenBackground()
 	this->etherParticles->stopSystem();
 	this->etherParticles->setOpacity(0);
 
+	this->slimeNode->addChild(this->slime);
+	this->slimeNode->addChild(this->slimeBubble);
 	this->squallyNode->addChild(this->squally);
 	this->squallyNode->addChild(this->squallyWand);
+	this->squallyNode->addChild(this->spellEffect);
 
 	this->addChild(this->background);
 	this->addChild(this->backgroundTrees);
@@ -161,7 +189,7 @@ TitleScreenBackground::TitleScreenBackground()
 	this->addChild(this->foregroundGrassBottom);
 	this->addChild(this->foregroundGrassTop);
 	this->addChild(this->foregroundLight);
-	this->addChild(this->slime);
+	this->addChild(this->slimeNode);
 	this->addChild(this->squallyNode);
 
 	this->initializeListeners();
@@ -224,7 +252,7 @@ void TitleScreenBackground::initializePositions()
 	this->foregroundLight->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - foregroundLight->getContentSize().height / 2));
 	this->windParticles->setPosition(Vec2(visibleSize.width, visibleSize.height / 2));
 	this->fireflyParticles->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->slime->setPosition(Vec2(visibleSize.width / 2 + 112.0f, visibleSize.height / 2 - 320.0f));
+	this->slimeNode->setPosition(Vec2(visibleSize.width / 2 + 112.0f, visibleSize.height / 2 - 320.0f));
 	this->squallyNode->setPosition(Vec2(visibleSize.width / 2 + 240.0f, visibleSize.height / 2 + 96.0f));
 }
 
