@@ -275,11 +275,11 @@ Sprite* LevelParser::loadObject(ValueMap object)
 	string type = object.at("type").asString();
 
 	// For decor, simply grab the resource of the same name of the object type
-	Sprite* newObject = Sprite::create("Ingame\\Decor\\" + type + ".png");
+	Sprite* newObject = Sprite::create("Ingame/Decor/" + type + ".png");
 
 	if (newObject == nullptr)
 	{
-		throw exception("Non-existant decor");
+		throw std::invalid_argument("Non-existant decor");
 	}
 
 	float width = object.at("width").asFloat();
