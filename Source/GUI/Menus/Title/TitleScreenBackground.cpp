@@ -60,17 +60,22 @@ TitleScreenBackground::TitleScreenBackground()
 	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesB3);
 	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesB4);
 
-	const float floatSpeed = 3.0f;
-	const float floatSpeedLarge = 6.0f;
-	const float floatDeltaSmall = 64.0f;
-	const float floatDeltaLarge = 356.0f;
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	Vec2 base = Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 160.0f);
 
-	FiniteTimeAction* bounceX1 = EaseSineInOut::create(MoveBy::create(5.0f, Vec2(-8.0f, 0.0f)));
-	FiniteTimeAction* bounceX2 = EaseSineInOut::create(MoveBy::create(5.0f, Vec2(8.0f, 0.0f)));
-	FiniteTimeAction* bounceY1 = EaseSineInOut::create(MoveBy::create(floatSpeedLarge, Vec2(0.0f, -floatDeltaLarge)));
-	FiniteTimeAction* bounceY2 = EaseSineInOut::create(MoveBy::create(floatSpeedLarge, Vec2(0.0f, floatDeltaLarge)));
-	FiniteTimeAction* bounceY3 = EaseSineInOut::create(MoveBy::create(floatSpeed, Vec2(0.0f, -floatDeltaSmall)));
-	FiniteTimeAction* bounceY4 = EaseSineInOut::create(MoveBy::create(floatSpeed, Vec2(0.0f, floatDeltaSmall)));
+	const float floatSpeed = 3.0f;
+	const float floatSpeedPostSink = 2.0f;
+	const float sinkSpeed = 6.0f;
+	const float floatDelta = 64.0f;
+	const float floatDeltaPostSink = 32.0f;
+	const float sinkOffset = 420.0f;
+
+	FiniteTimeAction* bounceDown = EaseSineInOut::create(MoveTo::create(floatSpeed, Vec2(base.x, base.y - floatDelta)));
+	FiniteTimeAction* bounceUp = EaseSineInOut::create(MoveTo::create(floatSpeed, Vec2(base.x, base.y)));
+	FiniteTimeAction* sinkDown = EaseSineInOut::create(MoveTo::create(sinkSpeed, Vec2(base.x, base.y - sinkOffset)));
+	FiniteTimeAction* bounceUpPostSink = EaseSineInOut::create(MoveTo::create(floatSpeed, Vec2(base.x, base.y - sinkOffset + floatDeltaPostSink)));
+	FiniteTimeAction* bounceDownPostSink = EaseSineInOut::create(MoveTo::create(floatSpeed, Vec2(base.x, base.y - sinkOffset)));
+	FiniteTimeAction* sinkUp = EaseSineInOut::create(MoveTo::create(sinkSpeed, Vec2(base.x, base.y)));
 
 	// Prepare parameters to pass to lambdas
 	Node* slimeNodeLocal = this->slimeNode;
@@ -79,7 +84,6 @@ TitleScreenBackground::TitleScreenBackground()
 	Node* spellNode = this->spellEffect;
 	Node* bubbleNode = this->slimeBubble;
 	Animation* slimeActionNode = this->slimeAnimation;
-	Size visibleSize = Director::getInstance()->getVisibleSize();
 	this->slimeAnimation->retain();
 
 	CallFunc* floatSlime = CallFunc::create([slimeSpriteLocal, slimeActionNode] {
@@ -114,33 +118,25 @@ TitleScreenBackground::TitleScreenBackground()
 
 	this->squallyNode->runAction(RepeatForever::create(
 		Sequence::create(
-			bounceX1,
-			bounceX2,
-			nullptr
-		))
-	);
-
-	this->squallyNode->runAction(RepeatForever::create(
-		Sequence::create(
-			bounceY3,
-			bounceY4,
-			bounceY3,
-			bounceY4,
-			bounceY3,
-			bounceY4,
+			bounceDown,
+			bounceUp,
+			bounceDown,
+			bounceUp,
+			bounceDown,
+			bounceUp,
 			castSpell,
-			bounceY3,
-			bounceY4,
-			bounceY3,
-			bounceY4,
-			bounceY3,
-			bounceY4,
-			bounceY1,
+			bounceDown,
+			bounceUp,
+			bounceDown,
+			bounceUp,
+			bounceDown,
+			bounceUp,
+			sinkDown,
 			pokeSlime,
-			bounceY4,
-			bounceY3,
+			bounceUpPostSink,
+			bounceDownPostSink,
 			pokeSlime,
-			bounceY2,
+			sinkUp,
 			nullptr
 		))
 	);
@@ -253,7 +249,7 @@ void TitleScreenBackground::initializePositions()
 	this->windParticles->setPosition(Vec2(visibleSize.width, visibleSize.height / 2));
 	this->fireflyParticles->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	this->slimeNode->setPosition(Vec2(visibleSize.width / 2 + 112.0f, visibleSize.height / 2 - 320.0f));
-	this->squallyNode->setPosition(Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 96.0f));
+	this->squallyNode->setPosition(Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 160.0f));
 }
 
 void TitleScreenBackground::onHackerModeEnabled(EventCustom* args)
