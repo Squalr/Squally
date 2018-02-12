@@ -63,7 +63,7 @@ TitleScreenBackground::TitleScreenBackground()
 	const float floatSpeed = 3.0f;
 	const float floatSpeedLarge = 6.0f;
 	const float floatDeltaSmall = 64.0f;
-	const float floatDeltaLarge = 344.0f;
+	const float floatDeltaLarge = 356.0f;
 
 	FiniteTimeAction* bounceX1 = EaseSineInOut::create(MoveBy::create(5.0f, Vec2(-8.0f, 0.0f)));
 	FiniteTimeAction* bounceX2 = EaseSineInOut::create(MoveBy::create(5.0f, Vec2(8.0f, 0.0f)));
@@ -253,7 +253,7 @@ void TitleScreenBackground::initializePositions()
 	this->windParticles->setPosition(Vec2(visibleSize.width, visibleSize.height / 2));
 	this->fireflyParticles->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	this->slimeNode->setPosition(Vec2(visibleSize.width / 2 + 112.0f, visibleSize.height / 2 - 320.0f));
-	this->squallyNode->setPosition(Vec2(visibleSize.width / 2 + 240.0f, visibleSize.height / 2 + 96.0f));
+	this->squallyNode->setPosition(Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 96.0f));
 }
 
 void TitleScreenBackground::onHackerModeEnabled(EventCustom* args)
