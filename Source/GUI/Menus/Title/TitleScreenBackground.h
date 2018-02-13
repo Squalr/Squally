@@ -27,6 +27,7 @@ private:
 	void initializeListeners();
 	void onHackerModeEnabled(EventCustom* args);
 	void createSlimeAnimation();
+	void createGhostAnimation();
 
 	Node* squallyNode;
 	Sprite* spellEffect;
@@ -36,6 +37,8 @@ private:
 	Sprite* slimeBubble;
 	Sprite* slime;
 	Animation* slimeAnimation;
+	Sprite* ghost;
+	Animation* ghostAnimation;
 	Sprite* background;
 	FloatingSprite* backgroundVines;
 	FloatingSprite* backgroundTrees;
