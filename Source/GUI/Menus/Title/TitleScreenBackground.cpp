@@ -30,15 +30,19 @@ TitleScreenBackground::TitleScreenBackground()
 	this->foregroundGrassTop = FloatingSprite::create(Resources::Menus_Backgrounds_TopLeaves, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
 	this->foregroundLight = Sprite::create(Resources::Menus_Backgrounds_Light);
 	this->slimeNode = Node::create();
-	this->slime = Sprite::create(Resources::Menus_TitleScreen_Slime_0000_SlimeFrames008);
+	this->ghost = Sprite::create(Resources::Menus_TitleScreen_Ghost_Ghost_0000_Layer_0);
+	this->slime = Sprite::create(Resources::Menus_TitleScreen_Slime_Slime_0000_SlimeFrames008);
 	this->slimeBubble = Sprite::create(Resources::Ingame_Objects_Spells_circle05);
 	this->squallyNode = Node::create();
 	this->squally = Sprite::create(Resources::Menus_TitleScreen_Squally);
 	this->squallyWand = Sprite::create(Resources::Menus_TitleScreen_SquallyWand);
 	this->spellEffect = Sprite::create(Resources::Ingame_Objects_Spells_aura02);
 
+	this->createGhostAnimation();
 	this->createSlimeAnimation();
 
+	this->ghost->setOpacity(0);
+	this->ghost->setScale(2.0f);
 	this->slimeBubble->setOpacity(0);
 	this->slimeBubble->setColor(Color3B(78, 201, 176));
 	this->slimeBubble->setScale(0.25f);
@@ -64,7 +68,7 @@ TitleScreenBackground::TitleScreenBackground()
 	Vec2 base = Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 160.0f);
 
 	const float floatSpeed = 3.0f;
-	const float floatSpeedPostSink = 2.0f;
+	const float floatSpeedPostSink = 1.5f;
 	const float sinkSpeed = 6.0f;
 	const float floatDelta = 64.0f;
 	const float floatDeltaPostSink = 32.0f;
@@ -73,51 +77,87 @@ TitleScreenBackground::TitleScreenBackground()
 	FiniteTimeAction* bounceDown = EaseSineInOut::create(MoveTo::create(floatSpeed, Vec2(base.x, base.y - floatDelta)));
 	FiniteTimeAction* bounceUp = EaseSineInOut::create(MoveTo::create(floatSpeed, Vec2(base.x, base.y)));
 	FiniteTimeAction* sinkDown = EaseSineInOut::create(MoveTo::create(sinkSpeed, Vec2(base.x, base.y - sinkOffset)));
-	FiniteTimeAction* bounceUpPostSink = EaseSineInOut::create(MoveTo::create(floatSpeed, Vec2(base.x, base.y - sinkOffset + floatDeltaPostSink)));
-	FiniteTimeAction* bounceDownPostSink = EaseSineInOut::create(MoveTo::create(floatSpeed, Vec2(base.x, base.y - sinkOffset)));
+	FiniteTimeAction* bounceUpPostSink = EaseSineInOut::create(MoveTo::create(floatSpeedPostSink, Vec2(base.x, base.y - sinkOffset + floatDeltaPostSink)));
+	FiniteTimeAction* bounceDownPostSink = EaseSineInOut::create(MoveTo::create(floatSpeedPostSink, Vec2(base.x, base.y - sinkOffset)));
 	FiniteTimeAction* sinkUp = EaseSineInOut::create(MoveTo::create(sinkSpeed, Vec2(base.x, base.y)));
 
 	// Prepare parameters to pass to lambdas
 	Node* slimeNodeLocal = this->slimeNode;
 	Node* slimeSpriteLocal = this->slime;
+	Node* ghostNode = this->ghost;
 	Node* wandNode = this->squallyWand;
 	Node* spellNode = this->spellEffect;
 	Node* bubbleNode = this->slimeBubble;
+	Animation* ghostActionNode = this->ghostAnimation;
 	Animation* slimeActionNode = this->slimeAnimation;
+	this->ghostAnimation->retain();
 	this->slimeAnimation->retain();
 
-	CallFunc* floatSlime = CallFunc::create([slimeSpriteLocal, slimeActionNode] {
+	CallFunc* jiggleSlime = CallFunc::create([slimeSpriteLocal, slimeActionNode] {
 		slimeSpriteLocal->runAction(Animate::create(slimeActionNode));
 	});
 
-	floatSlime->retain();
+	jiggleSlime->retain();
 
-	CallFunc* pokeSlime = CallFunc::create([wandNode, floatSlime] {
+	CallFunc* pokeSlime = CallFunc::create([wandNode, jiggleSlime] {
 		wandNode->runAction(Sequence::create(RotateTo::create(0.1f, 15.0f), RotateTo::create(0.1f, -5.0f), nullptr));
-		floatSlime->execute();
+		jiggleSlime->execute();
 	});
 
 	pokeSlime->retain();
 
-	CallFunc* castSpell = CallFunc::create([slimeNodeLocal, wandNode, spellNode, bubbleNode, floatSlime] {
+	CallFunc* castSpell = CallFunc::create([slimeNodeLocal, wandNode, spellNode, bubbleNode, jiggleSlime] {
 		float castTime = 0.25f;
 		float castSustainTime = 2.0f;
 		float castFadeTime = 0.35f;
 
 		FiniteTimeAction* liftY1 = EaseSineInOut::create(MoveBy::create(castTime, Vec2(0.0f, 64.0f)));
-		FiniteTimeAction* liftY2 = EaseSineInOut::create(MoveBy::create(0.35f, Vec2(0.0f, -64.0f)));
+		FiniteTimeAction* liftY2 = EaseSineIn::create(MoveBy::create(0.35f, Vec2(0.0f, -64.0f)));
 
 		wandNode->runAction(Sequence::create(RotateTo::create(castTime, 45.0f), DelayTime::create(castSustainTime), RotateTo::create(castFadeTime, 0.0f), nullptr));
 		bubbleNode->runAction(Sequence::create(FadeIn::create(castTime), DelayTime::create(castSustainTime), FadeOut::create(castFadeTime), nullptr));
 		spellNode->runAction(Sequence::create(FadeIn::create(castTime), nullptr));
 		spellNode->runAction(Sequence::create(ScaleTo::create(castTime, 1.5f), DelayTime::create(castSustainTime), FadeOut::create(castFadeTime), nullptr));
-		slimeNodeLocal->runAction(Sequence::create(liftY1, floatSlime, DelayTime::create(castSustainTime), liftY2, floatSlime, nullptr));
+		slimeNodeLocal->runAction(Sequence::create(liftY1, jiggleSlime, DelayTime::create(castSustainTime), liftY2, jiggleSlime, nullptr));
 	});
 
 	castSpell->retain();
 
+	CallFunc* summonGhost = CallFunc::create([slimeNodeLocal, jiggleSlime, ghostNode, ghostActionNode, visibleSize, spellNode, wandNode] {
+		float castTime = 0.25f;
+		float castSustainTime = 1.0f;
+		float castFadeTime = 0.35f;
+		const float flySpeed = 0.85f;
+
+		Vec2 ghostSpawn = Vec2(visibleSize.width / 2 + 420.0f, visibleSize.height / 2 + 160.0f);
+
+		FiniteTimeAction* spawnGhost = MoveTo::create(0.0f, Vec2(ghostSpawn.x, ghostSpawn.y));
+		FiniteTimeAction* moveGhost = EaseSineIn::create(MoveTo::create(flySpeed, Vec2(ghostSpawn.x - 240.0f, ghostSpawn.y - 640.0f)));
+
+		wandNode->runAction(Sequence::create(RotateTo::create(castTime, 45.0f), DelayTime::create(castSustainTime), RotateTo::create(castFadeTime, 0.0f), nullptr));
+		ghostNode->runAction(Sequence::create(spawnGhost, FadeTo::create(castTime, 64), moveGhost, FadeOut::create(castFadeTime), nullptr));
+		ghostNode->runAction(Animate::create(ghostActionNode));
+		spellNode->runAction(Sequence::create(FadeIn::create(castTime), nullptr));
+		spellNode->runAction(Sequence::create(ScaleTo::create(castTime, 1.5f), DelayTime::create(castSustainTime), FadeOut::create(castFadeTime), nullptr));
+		slimeNodeLocal->runAction(Sequence::create(DelayTime::create(castSustainTime), jiggleSlime, nullptr));
+	});
+
+	summonGhost->retain();
+
 	this->squallyNode->runAction(RepeatForever::create(
 		Sequence::create(
+			bounceDown,
+			bounceUp,
+			bounceDown,
+			bounceUp,
+			bounceDown,
+			bounceUp,
+			sinkDown,
+			pokeSlime,
+			bounceUpPostSink,
+			bounceDownPostSink,
+			pokeSlime,
+			sinkUp,
 			bounceDown,
 			bounceUp,
 			bounceDown,
@@ -131,12 +171,7 @@ TitleScreenBackground::TitleScreenBackground()
 			bounceUp,
 			bounceDown,
 			bounceUp,
-			sinkDown,
-			pokeSlime,
-			bounceUpPostSink,
-			bounceDownPostSink,
-			pokeSlime,
-			sinkUp,
+			summonGhost,
 			nullptr
 		))
 	);
@@ -179,14 +214,15 @@ TitleScreenBackground::TitleScreenBackground()
 	this->addChild(this->etherParticles);
 	this->addChild(this->eyes1);
 	this->addChild(this->eyes2);
+	this->addChild(this->ghost);
+	this->addChild(this->slimeNode);
+	this->addChild(this->squallyNode);
 	this->addChild(this->fireflyParticles);
 	this->addChild(this->windParticles);
 	this->addChild(this->foregroundFog);
 	this->addChild(this->foregroundGrassBottom);
 	this->addChild(this->foregroundGrassTop);
 	this->addChild(this->foregroundLight);
-	this->addChild(this->slimeNode);
-	this->addChild(this->squallyNode);
 
 	this->initializeListeners();
 }
@@ -248,6 +284,7 @@ void TitleScreenBackground::initializePositions()
 	this->foregroundLight->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - foregroundLight->getContentSize().height / 2));
 	this->windParticles->setPosition(Vec2(visibleSize.width, visibleSize.height / 2));
 	this->fireflyParticles->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+	this->ghost->setPosition(Vec2(visibleSize.width / 2 + 112.0f, visibleSize.height / 2 - 320.0f));
 	this->slimeNode->setPosition(Vec2(visibleSize.width / 2 + 112.0f, visibleSize.height / 2 - 320.0f));
 	this->squallyNode->setPosition(Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 160.0f));
 }
@@ -266,42 +303,94 @@ void TitleScreenBackground::createSlimeAnimation()
 	this->slimeAnimation = Animation::create();
 	this->slimeAnimation->setDelayPerUnit(0.035f);
 
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0000_SlimeFrames008);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0001_SlimeFrames009);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0002_SlimeFrames010);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0003_SlimeFrames011);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0004_SlimeFrames012);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0005_SlimeFrames013);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0006_SlimeFrames014);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0007_SlimeFrames015);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0008_SlimeFrames016);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0009_SlimeFrames017);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0010_SlimeFrames018);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0011_SlimeFrames019);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0012_SlimeFrames020);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0013_SlimeFrames021);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0014_SlimeFrames022);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0015_SlimeFrames023);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0016_SlimeFrames024);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0017_SlimeFrames025);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0018_SlimeFrames026);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0019_SlimeFrames027);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0020_SlimeFrames028);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0021_SlimeFrames029);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0022_SlimeFrames030);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0023_SlimeFrames031);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0024_SlimeFrames032);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0025_SlimeFrames033);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0026_SlimeFrames034);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0027_SlimeFrames035);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0028_SlimeFrames036);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0029_SlimeFrames037);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0030_SlimeFrames038);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0031_SlimeFrames039);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0032_SlimeFrames040);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0033_SlimeFrames041);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0034_SlimeFrames042);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0035_SlimeFrames043);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0036_SlimeFrames044);
-	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_0037_SlimeFrames045);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0000_SlimeFrames008);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0001_SlimeFrames009);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0002_SlimeFrames010);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0003_SlimeFrames011);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0004_SlimeFrames012);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0005_SlimeFrames013);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0006_SlimeFrames014);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0007_SlimeFrames015);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0008_SlimeFrames016);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0009_SlimeFrames017);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0010_SlimeFrames018);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0011_SlimeFrames019);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0012_SlimeFrames020);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0013_SlimeFrames021);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0014_SlimeFrames022);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0015_SlimeFrames023);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0016_SlimeFrames024);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0017_SlimeFrames025);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0018_SlimeFrames026);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0019_SlimeFrames027);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0020_SlimeFrames028);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0021_SlimeFrames029);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0022_SlimeFrames030);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0023_SlimeFrames031);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0024_SlimeFrames032);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0025_SlimeFrames033);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0026_SlimeFrames034);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0027_SlimeFrames035);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0028_SlimeFrames036);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0029_SlimeFrames037);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0030_SlimeFrames038);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0031_SlimeFrames039);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0032_SlimeFrames040);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0033_SlimeFrames041);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0034_SlimeFrames042);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0035_SlimeFrames043);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0036_SlimeFrames044);
+	this->slimeAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Slime_Slime_0037_SlimeFrames045);
+}
+
+void TitleScreenBackground::createGhostAnimation()
+{
+	this->ghostAnimation = Animation::create();
+	this->ghostAnimation->setDelayPerUnit(0.035f);
+
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0000_Layer_0);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0001_Layer_1);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0002_Layer_2);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0003_Layer_3);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0004_Layer_4);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0005_Layer_5);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0006_Layer_6);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0007_Layer_7);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0008_Layer_8);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0009_Layer_9);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0010_Layer_10);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0011_Layer_11);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0012_Layer_12);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0013_Layer_13);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0014_Layer_14);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0015_Layer_15);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0016_Layer_16);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0017_Layer_17);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0018_Layer_18);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0019_Layer_19);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0020_Layer_20);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0021_Layer_21);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0022_Layer_22);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0023_Layer_23);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0024_Layer_24);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0025_Layer_25);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0026_Layer_26);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0027_Layer_27);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0028_Layer_28);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0029_Layer_29);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0030_Layer_30);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0031_Layer_31);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0032_Layer_32);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0033_Layer_33);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0034_Layer_34);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0035_Layer_35);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0036_Layer_36);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0037_Layer_37);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0038_Layer_38);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0039_Layer_39);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0040_Layer_40);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0041_Layer_41);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0042_Layer_42);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0043_Layer_43);
+	this->ghostAnimation->addSpriteFrameWithFileName(Resources::Menus_TitleScreen_Ghost_Ghost_0044_Layer_44);
 }
