@@ -31,6 +31,7 @@ private:
 
 	Node* squallyNode;
 	Sprite* spellEffect;
+	Sprite* spellEffect2;
 	Sprite* squally;
 	Sprite* squallyWand;
 	Node* slimeNode;

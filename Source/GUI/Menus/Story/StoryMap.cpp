@@ -22,7 +22,7 @@ StoryMap::StoryMap()
 		Resources::Menus_WorldMaps_JungleSelected,
 		Resources::Menus_WorldMaps_JungleLocked,
 		"Jungle",
-		Resources::Levels_TutorialExactScan1
+		Resources::Levels_Jungle
 	);
 
 	this->waterRuins = MapNode::create(
@@ -30,7 +30,7 @@ StoryMap::StoryMap()
 		Resources::Menus_WorldMaps_WaterRuinsSelected,
 		Resources::Menus_WorldMaps_WaterRuinsLocked,
 		"Aquatic Ruins",
-		Resources::Levels_TutorialExactScan1
+		Resources::Levels_AquaticRuins
 	);
 
 	this->forest = MapNode::create(
@@ -38,7 +38,7 @@ StoryMap::StoryMap()
 		Resources::Menus_WorldMaps_ForestSelected,
 		Resources::Menus_WorldMaps_ForestLocked,
 		"Forest",
-		Resources::Levels_TutorialExactScan1
+		Resources::Levels_Forest
 	);
 
 	this->caverns = MapNode::create(
@@ -46,7 +46,7 @@ StoryMap::StoryMap()
 		Resources::Menus_WorldMaps_MountainSelected,
 		Resources::Menus_WorldMaps_MountainLocked,
 		"Caverns",
-		Resources::Levels_TutorialExactScan1
+		Resources::Levels_Caverns
 	);
 
 	this->iceCaps = MapNode::create(
@@ -54,7 +54,7 @@ StoryMap::StoryMap()
 		Resources::Menus_WorldMaps_IceMountainSelected,
 		Resources::Menus_WorldMaps_IceMountainLocked,
 		"Ice Caps",
-		Resources::Levels_TutorialExactScan1
+		Resources::Levels_IceCaps
 	);
 
 	this->obelisk = MapNode::create(
@@ -62,7 +62,7 @@ StoryMap::StoryMap()
 		Resources::Menus_WorldMaps_MonolithSelected,
 		Resources::Menus_WorldMaps_MonolithLocked,
 		"The Obelisk",
-		Resources::Levels_TutorialExactScan1
+		Resources::Levels_Obelisk
 	);
 
 	this->volcano = MapNode::create(
@@ -70,7 +70,7 @@ StoryMap::StoryMap()
 		Resources::Menus_WorldMaps_VolcanoSelected,
 		Resources::Menus_WorldMaps_VolcanoLocked,
 		"Volcano",
-		Resources::Levels_TutorialExactScan1
+		Resources::Levels_Volcano
 	);
 
 	this->mapNodes->push_back(this->jungle);
