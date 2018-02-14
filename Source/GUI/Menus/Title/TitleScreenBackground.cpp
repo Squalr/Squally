@@ -37,6 +37,7 @@ TitleScreenBackground::TitleScreenBackground()
 	this->squally = Sprite::create(Resources::Menus_TitleScreen_Squally);
 	this->squallyWand = Sprite::create(Resources::Menus_TitleScreen_SquallyWand);
 	this->spellEffect = Sprite::create(Resources::Ingame_Objects_Spells_aura02);
+	this->spellEffect2 = Sprite::create(Resources::Ingame_Objects_Spells_circle02);
 
 	this->createGhostAnimation();
 	this->createSlimeAnimation();
@@ -48,6 +49,8 @@ TitleScreenBackground::TitleScreenBackground()
 	this->slimeBubble->setScale(0.25f);
 	this->spellEffect->setOpacity(0);
 	this->spellEffect->setColor(Color3B(78, 201, 176));
+	this->spellEffect2->setOpacity(0);
+	this->spellEffect2->setColor(Color3B(178, 102, 178));
 
 	this->etherParticles = ParticleGalaxy::create();
 	this->windParticles = ParticleSystemQuad::create(Resources::Particles_Wind);
@@ -68,10 +71,10 @@ TitleScreenBackground::TitleScreenBackground()
 	Vec2 base = Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 160.0f);
 
 	const float floatSpeed = 3.0f;
-	const float floatSpeedPostSink = 1.5f;
+	const float floatSpeedPostSink = 1.25f;
 	const float sinkSpeed = 6.0f;
 	const float floatDelta = 64.0f;
-	const float floatDeltaPostSink = 32.0f;
+	const float floatDeltaPostSink = 8.0f;
 	const float sinkOffset = 420.0f;
 
 	FiniteTimeAction* bounceDown = EaseSineInOut::create(MoveTo::create(floatSpeed, Vec2(base.x, base.y - floatDelta)));
@@ -87,6 +90,7 @@ TitleScreenBackground::TitleScreenBackground()
 	Node* ghostNode = this->ghost;
 	Node* wandNode = this->squallyWand;
 	Node* spellNode = this->spellEffect;
+	Node* spellNode2 = this->spellEffect2;
 	Node* bubbleNode = this->slimeBubble;
 	Animation* ghostActionNode = this->ghostAnimation;
 	Animation* slimeActionNode = this->slimeAnimation;
@@ -123,7 +127,7 @@ TitleScreenBackground::TitleScreenBackground()
 
 	castSpell->retain();
 
-	CallFunc* summonGhost = CallFunc::create([slimeNodeLocal, jiggleSlime, ghostNode, ghostActionNode, visibleSize, spellNode, wandNode] {
+	CallFunc* summonGhost = CallFunc::create([slimeNodeLocal, jiggleSlime, ghostNode, ghostActionNode, visibleSize, spellNode2, wandNode] {
 		float castTime = 0.25f;
 		float castSustainTime = 1.0f;
 		float castFadeTime = 0.35f;
@@ -137,8 +141,8 @@ TitleScreenBackground::TitleScreenBackground()
 		wandNode->runAction(Sequence::create(RotateTo::create(castTime, 45.0f), DelayTime::create(castSustainTime), RotateTo::create(castFadeTime, 0.0f), nullptr));
 		ghostNode->runAction(Sequence::create(spawnGhost, FadeTo::create(castTime, 64), moveGhost, FadeOut::create(castFadeTime), nullptr));
 		ghostNode->runAction(Animate::create(ghostActionNode));
-		spellNode->runAction(Sequence::create(FadeIn::create(castTime), nullptr));
-		spellNode->runAction(Sequence::create(ScaleTo::create(castTime, 1.5f), DelayTime::create(castSustainTime), FadeOut::create(castFadeTime), nullptr));
+		spellNode2->runAction(Sequence::create(FadeIn::create(castTime), nullptr));
+		spellNode2->runAction(Sequence::create(ScaleTo::create(castTime, 1.5f), DelayTime::create(castSustainTime), FadeOut::create(castFadeTime), nullptr));
 		slimeNodeLocal->runAction(Sequence::create(DelayTime::create(castSustainTime), jiggleSlime, nullptr));
 	});
 
@@ -165,6 +169,8 @@ TitleScreenBackground::TitleScreenBackground()
 			bounceDown,
 			bounceUp,
 			castSpell,
+			bounceDown,
+			bounceUp,
 			bounceDown,
 			bounceUp,
 			bounceDown,
@@ -201,6 +207,7 @@ TitleScreenBackground::TitleScreenBackground()
 	this->squallyNode->addChild(this->squally);
 	this->squallyNode->addChild(this->squallyWand);
 	this->squallyNode->addChild(this->spellEffect);
+	this->squallyNode->addChild(this->spellEffect2);
 
 	this->addChild(this->background);
 	this->addChild(this->backgroundTrees);

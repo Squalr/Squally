@@ -202,10 +202,14 @@ Layer* LevelParser::initializeCollision(experimental::TMXTiledMap* map)
 Layer* LevelParser::initializeTileLayer(experimental::TMXTiledMap* map, std::string tileLayer)
 {
 	Layer* layer = Layer::create();
-	experimental::TMXLayer* background = map->getLayer(tileLayer);
+	experimental::TMXLayer* tileMap = map->getLayer(tileLayer);
 
-	map->removeChild(background);
-	layer->addChild(background);
+	// Can be a nullptr if the layer is empty
+	if (tileMap != nullptr)
+	{
+		map->removeChild(tileMap);
+		layer->addChild(tileMap);
+	}
 
 	return layer;
 }
