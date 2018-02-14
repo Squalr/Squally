@@ -120,7 +120,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;Source;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Libraries\Fasm;$(ProjectDir)Libraries\RapidJson;$(ProjectDir)Libraries\Udis86;$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;Source;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -140,6 +140,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -199,6 +200,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Level\Environments\JungleEnvironment.cpp" />
     <ClCompile Include="Source\Level\LevelCamera.cpp" />
     <ClCompile Include="Source\Level\LevelParser.cpp" />
+    <ClCompile Include="Source\Minigames\Bejeweled.cpp" />
     <ClCompile Include="Source\Objects\Collision\CollisionObject.cpp" />
     <ClCompile Include="Source\Objects\Hackables\HackableAttribute.cpp" />
     <ClCompile Include="Source\Objects\Hackables\HackableCode.cpp" />
@@ -270,6 +272,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Level\Environments\JungleEnvironment.h" />
     <ClInclude Include="Source\Level\LevelCamera.h" />
     <ClInclude Include="Source\Level\LevelParser.h" />
+    <ClInclude Include="Source\Minigames\Bejeweled.h" />
     <ClInclude Include="Source\Objects\Collision\CategoryGroup.h" />
     <ClInclude Include="Source\Objects\Collision\CollisionObject.h" />
     <ClInclude Include="Source\Objects\Hackables\HackableAttribute.h" />

@@ -13,6 +13,8 @@ class Player : public Entity
 public:
 	static Player * create();
 
+	Size getSize() override;
+
 	static int health;
 	static Vec2 position;
 
@@ -30,9 +32,18 @@ private:
 
 	void registerHackables();
 	void update(float) override;
+	void setFlippedX(bool isFlipped);
 
 	bool canJump;
 
 	InputManager* inputManager;
 	Hover* hover;
+
+	Sprite* baseSprite;
+	Sprite* mouthSprite;
+	Sprite* eyesSprite;
+	Sprite* armSprite;
+	Sprite* wandSprite;
+
+	static const float playerScale;
 };

@@ -17,11 +17,13 @@ Hover::Hover(Entity* initParent)
 	this->contactUpdateCallback = nullptr;
 	this->contactEndCallback = nullptr;
 
+	Size parentSize = this->parent->getSize();
+
 	this->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->setPosition(0, -this->parent->getHeight() / 2);
+	this->setPosition(0, -parentSize.height / 2);
 	this->setContentSize(Size(0, Hover::hoverHeight));
 
-	this->init(PhysicsBody::createBox(Size(this->parent->getWidth(), Hover::hoverHeight)), CategoryGroup::G_Force, true, false);
+	this->init(PhysicsBody::createBox(Size(parentSize.width, Hover::hoverHeight)), CategoryGroup::G_Force, true, false);
 
 	FiniteTimeAction* bounceY1 = EaseSineInOut::create(ScaleTo::create(3.0f, 1.0f, 0.25f));
 	FiniteTimeAction* bounceY2 = EaseSineInOut::create(ScaleTo::create(3.0f, 1.0f, 1.0f));
@@ -53,7 +55,7 @@ void Hover::update(float dt)
 	CollisionObject::update(dt);
 
 	// Keep hover node underneath parent
-	this->setPosition(0, -this->parent->getHeight() / 2 + 1.0f);
+	this->setPosition(0, -this->parent->getSize().height / 2 + 1.0f);
 	this->setVelocity(this->parent->getVelocity());
 }
 

@@ -19,18 +19,20 @@ Shroom::Shroom() : Entity::Entity()
 	this->movement.x = -1.0f;
 	this->movement.y = 0.0f;
 
-	this->sprite = Sprite::create(Resources::Ingame_Sprites_Shroom_ShroomWalking1);
+	this->shroomSprite = Sprite::create(Resources::Ingame_Sprites_Shroom_ShroomWalking1);
 	this->walkAnimation = Animation::create();
 	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Shroom_ShroomWalking1);
 	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Shroom_ShroomWalking2);
 	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Shroom_ShroomWalking3);
 	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Shroom_ShroomWalking4);
 	this->walkAnimation->setDelayPerUnit(0.1f);
-	this->sprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
+	this->shroomSprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
 
-	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CategoryGroup::G_Enemy, true, false);
+	this->init(PhysicsBody::createBox(this->shroomSprite->getContentSize()), CategoryGroup::G_Enemy, true, false);
 
-	this->addChild(this->sprite);
+	this->spriteNode = Node::create();
+	this->spriteNode->addChild(this->shroomSprite);
+	this->addChild(this->spriteNode);
 
 	this->registerHackables();
 }
@@ -53,11 +55,11 @@ void Shroom::update(float dt)
 
 	if (this->movement.x > 0.0f)
 	{
-		this->sprite->setFlippedX(true);
+		this->shroomSprite->setFlippedX(true);
 	}
 	else
 	{
-		this->sprite->setFlippedX(false);
+		this->shroomSprite->setFlippedX(false);
 	}
 }
 
