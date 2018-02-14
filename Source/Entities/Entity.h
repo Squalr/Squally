@@ -8,8 +8,7 @@ using namespace cocos2d;
 class Entity : public CollisionObject
 {
 public:
-	float getWidth();
-	float getHeight();
+	virtual Size getSize();
 
 protected:
 	Entity();
@@ -18,7 +17,7 @@ protected:
 	void onEnter() override;
 	void update(float) override;
 
-	Sprite * sprite;
+	Node * spriteNode;
 	Vec2 movement;
 
 	bool isOnGround;

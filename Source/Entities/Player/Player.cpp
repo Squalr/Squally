@@ -2,6 +2,7 @@
 
 Vec2 Player::position;
 int Player::health;
+const float Player::playerScale = 0.22f;
 
 Player* Player::create()
 {
@@ -21,15 +22,27 @@ Player::Player() : Entity::Entity()
 
 	this->inputManager = InputManager::getInstance();
 
-	this->sprite = Sprite::create(Resources::Ingame_Sprites_Player_Idle);
-	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CategoryGroup::G_Player, true, false);
+	this->spriteNode = Node::create();
+	this->baseSprite = Sprite::create(Resources::Ingame_Sprites_Player_SquallyBase);
+	this->mouthSprite = Sprite::create(Resources::Ingame_Sprites_Player_SquallyMouthOpen);
+	this->eyesSprite = Sprite::create(Resources::Ingame_Sprites_Player_SquallyEyesOpen);
+	this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandStick);
+	this->armSprite = Sprite::create(Resources::Ingame_Sprites_Player_SquallyFrontArm);
+	this->init(PhysicsBody::createBox(this->baseSprite->getContentSize() * Player::playerScale), CategoryGroup::G_Player, true, false);
 	this->hover = Hover::create(this);
+
+	this->spriteNode->setScale(Player::playerScale);
 
 	this->hover->setContactBeginCallback(CC_CALLBACK_1(Player::hoverContactBegin, this));
 	this->hover->setContactUpdateCallback(CC_CALLBACK_1(Player::hoverContactUpdate, this));
 	this->hover->setContactEndCallback(CC_CALLBACK_1(Player::hoverContactEnd, this));
 
-	this->addChild(this->sprite);
+	this->spriteNode->addChild(this->baseSprite);
+	this->spriteNode->addChild(this->mouthSprite);
+	this->spriteNode->addChild(this->eyesSprite);
+	this->spriteNode->addChild(this->wandSprite);
+	this->spriteNode->addChild(this->armSprite);
+	this->addChild(this->spriteNode);
 	this->addChild(this->hover);
 
 	this->registerHackables();
@@ -71,13 +84,13 @@ void Player::update(float dt)
 	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_A))
 	{
 		this->movement.x = -1.0f;
-		this->sprite->setFlippedX(true);
+		this->setFlippedX(true);
 	}
 
 	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_D))
 	{
 		this->movement.x = 1.0f;
-		this->sprite->setFlippedX(false);
+		this->setFlippedX(false);
 	}
 
 	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_W) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_SPACE))
@@ -91,6 +104,15 @@ void Player::update(float dt)
 	}
 
 	this->position = this->getPosition();
+}
+
+void Player::setFlippedX(bool isFlipped)
+{
+	this->baseSprite->setFlippedX(isFlipped);
+	this->mouthSprite->setFlippedX(isFlipped);
+	this->eyesSprite->setFlippedX(isFlipped);
+	this->armSprite->setFlippedX(isFlipped);
+	this->wandSprite->setFlippedX(isFlipped);
 }
 
 bool Player::hoverContactBegin(CollisionData data)
@@ -178,4 +200,9 @@ bool Player::contactEnd(CollisionData data)
 	}
 
 	return true;
+}
+
+Size Player::getSize()
+{
+	return this->baseSprite->getContentSize() * Player::playerScale;
 }

@@ -59,12 +59,7 @@ void Entity::update(float dt)
 	this->setVelocity(velocity);
 }
 
-float Entity::getWidth()
+Size Entity::getSize()
 {
-	return this->sprite->getContentSize().width;
-}
-
-float Entity::getHeight()
-{
-	return this->sprite->getContentSize().height;
+	return Size(this->spriteNode->getContentSize().width * this->spriteNode->getScaleX(), this->spriteNode->getContentSize().height* this->spriteNode->getScaleY());
 }

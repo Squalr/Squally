@@ -25,4 +25,6 @@ private:
 	Animation* walkAnimation;
 	Animation* jumpAnimation;
 	Animation* deathAnimation;
+
+	Sprite* batSprite;
 };

@@ -133,13 +133,13 @@ TitleScreenBackground::TitleScreenBackground()
 		float castFadeTime = 0.35f;
 		const float flySpeed = 0.85f;
 
-		Vec2 ghostSpawn = Vec2(visibleSize.width / 2 + 420.0f, visibleSize.height / 2 + 160.0f);
+		Vec2 ghostSpawn = Vec2(visibleSize.width / 2 + 448.0f, visibleSize.height / 2 + 160.0f);
 
 		FiniteTimeAction* spawnGhost = MoveTo::create(0.0f, Vec2(ghostSpawn.x, ghostSpawn.y));
-		FiniteTimeAction* moveGhost = EaseSineIn::create(MoveTo::create(flySpeed, Vec2(ghostSpawn.x - 240.0f, ghostSpawn.y - 640.0f)));
+		FiniteTimeAction* moveGhost = EaseSineIn::create(MoveTo::create(flySpeed, Vec2(ghostSpawn.x - 320.0f, ghostSpawn.y - 720.0f)));
 
 		wandNode->runAction(Sequence::create(RotateTo::create(castTime, 45.0f), DelayTime::create(castSustainTime), RotateTo::create(castFadeTime, 0.0f), nullptr));
-		ghostNode->runAction(Sequence::create(spawnGhost, FadeTo::create(castTime, 64), moveGhost, FadeOut::create(castFadeTime), nullptr));
+		ghostNode->runAction(Sequence::create(spawnGhost, FadeTo::create(castTime, 80), moveGhost, FadeOut::create(castFadeTime), nullptr));
 		ghostNode->runAction(Animate::create(ghostActionNode));
 		spellNode2->runAction(Sequence::create(FadeIn::create(castTime), nullptr));
 		spellNode2->runAction(Sequence::create(ScaleTo::create(castTime, 1.5f), DelayTime::create(castSustainTime), FadeOut::create(castFadeTime), nullptr));
@@ -162,7 +162,7 @@ TitleScreenBackground::TitleScreenBackground()
 			bounceDownPostSink,
 			pokeSlime,
 			sinkUp,
-			bounceDown,
+			/*bounceDown,
 			bounceUp,
 			bounceDown,
 			bounceUp,
@@ -177,7 +177,7 @@ TitleScreenBackground::TitleScreenBackground()
 			bounceUp,
 			bounceDown,
 			bounceUp,
-			summonGhost,
+			summonGhost,*/
 			nullptr
 		))
 	);
