@@ -88,6 +88,9 @@
     <Filter Include="Source\Objects\Hackables">
       <UniqueIdentifier>{af157143-ff33-4a8a-888f-56b9fd04564e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Minigames">
+      <UniqueIdentifier>{08081095-b5ff-4eae-af2d-267645d6584d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -293,6 +296,9 @@
     </ClCompile>
     <ClCompile Include="Source\GUI\Components\CCheckbox.cpp">
       <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Bejeweled.cpp">
+      <Filter>Source\Minigames</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -508,6 +514,9 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\Components\CCheckbox.h">
       <Filter>Source\GUI\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Bejeweled.h">
+      <Filter>Source\Minigames</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

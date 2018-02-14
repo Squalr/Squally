@@ -19,18 +19,20 @@ Bat::Bat() : Entity::Entity()
 	this->movement.x = -1.0f;
 	this->movement.y = 0.0f;
 
-	this->sprite = Sprite::create(Resources::Ingame_Sprites_Bat_Fly1);
+	this->spriteNode = Node::create();
+	this->batSprite = Sprite::create(Resources::Ingame_Sprites_Bat_Fly1);
 	this->walkAnimation = Animation::create();
 	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Bat_Fly1);
 	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Bat_Fly2);
 	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Bat_Fly3);
 	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Bat_Fly4);
 	this->walkAnimation->setDelayPerUnit(0.1f);
-	this->sprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
+	this->batSprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
 
-	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CategoryGroup::G_EnemyFlying, true, false);
+	this->init(PhysicsBody::createBox(this->batSprite->getContentSize()), CategoryGroup::G_EnemyFlying, true, false);
 
-	this->addChild(this->sprite);
+	this->spriteNode->addChild(this->batSprite);
+	this->addChild(this->spriteNode);
 }
 
 Bat::~Bat()
@@ -45,11 +47,11 @@ void Bat::update(float dt)
 
 	if (this->movement.x < 0.0f)
 	{
-		this->sprite->setFlippedX(true);
+		this->batSprite->setFlippedX(true);
 	}
 	else
 	{
-		this->sprite->setFlippedX(false);
+		this->batSprite->setFlippedX(false);
 	}
 }
 

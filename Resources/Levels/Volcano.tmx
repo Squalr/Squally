@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" nextobjectid="173">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" nextobjectid="175">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../Ingame/Tiles/TileMap.png" width="5760" height="3200"/>
@@ -45,9 +45,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="background-decor">
-  <object id="139" name="Forest/Thorns10" type="Forest/Thorns10" x="754.242" y="906.36" width="279.741" height="259.846"/>
- </objectgroup>
+ <objectgroup name="background-decor"/>
  <layer name="midground" width="32" height="24">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -57,7 +55,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,364,365,
 586,586,586,586,586,371,0,0,370,586,586,586,586,366,367,0,0,0,0,0,0,0,0,0,0,0,0,0,364,365,409,410,
-542,542,542,542,542,416,0,0,415,542,542,542,542,411,412,587,587,587,587,587,587,587,587,587,587,587,587,587,409,410,542,542,
+542,542,542,542,542,416,0,0,415,542,542,542,542,411,412,586,586,586,586,586,586,586,586,586,586,586,586,586,409,410,542,542,
 542,542,542,542,542,416,0,0,415,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,
 542,542,542,542,542,416,0,0,415,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,
 542,542,542,542,542,416,0,0,415,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,542,
@@ -129,5 +127,6 @@
   <object id="165" name="solid" type="solid" x="4091.45" y="694">
    <polygon points="0,0 1.87499,271.648 -538.125,274"/>
   </object>
+  <object id="174" name="solid" type="solid" x="730.318" y="822.788" width="345.424" height="99.8788"/>
  </objectgroup>
 </map>
