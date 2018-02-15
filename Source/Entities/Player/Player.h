@@ -30,10 +30,24 @@ private:
 	Player();
 	~Player();
 
+	enum Wand
+	{
+		None,
+		Stick,
+		Snake,
+		Ancient,
+		Spider,
+		Crystal,
+		Dragon,
+		Skeleton
+	};
+
 	void registerHackables();
 	void update(float) override;
-	void setFlippedX(bool isFlipped);
+	void setFlippedX(bool newIsFlipped);
+	void equipWand(Wand wand);
 
+	bool isFlipped;
 	bool canJump;
 
 	InputManager* inputManager;
@@ -43,6 +57,7 @@ private:
 	Sprite* mouthSprite;
 	Sprite* eyesSprite;
 	Sprite* armSprite;
+	Node* wandNode;
 	Sprite* wandSprite;
 
 	static const float playerScale;

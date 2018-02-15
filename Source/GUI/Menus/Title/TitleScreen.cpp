@@ -20,12 +20,19 @@ TitleScreen::TitleScreen()
 	this->optionsButton = MenuSprite::create(Sprite::create(Resources::Menus_TitleScreen_OptionsButton), Resources::Menus_TitleScreen_OptionsButtonHover, Resources::Menus_TitleScreen_OptionsButtonClick);
 	this->exitButton = MenuSprite::create(Sprite::create(Resources::Menus_TitleScreen_ExitButton), Resources::Menus_TitleScreen_ExitButtonHover, Resources::Menus_TitleScreen_ExitButtonClick);
 
-	this->background->setMatrixClickCallback(CC_CALLBACK_1(TitleScreen::onMatrixClick, this));
+	this->ether = MenuSprite::create(Sprite::create(Resources::Menus_Backgrounds_Ether), Resources::Menus_Backgrounds_EtherSelected, Resources::Menus_Backgrounds_EtherSelected);
+	this->etherParticles = ParticleGalaxy::create();
+
+	this->etherParticles->start();
+
+	this->ether->setClickCallback(CC_CALLBACK_1(TitleScreen::onMatrixClick, this));
 	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));
 	this->optionsButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onOptionsClick, this));
 	this->exitButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onExitClick, this));
 
 	this->addChild(this->background);
+	this->addChild(this->ether);
+	this->addChild(this->etherParticles);
 	this->addChild(this->titleBar);
 	this->addChild(this->title);
 	this->addChild(this->storyModeButton);
@@ -49,6 +56,10 @@ void TitleScreen::onEnter()
 	float delay = 0.5f;
 	float duration = 0.75f;
 
+	Utils::accelerateParticles(this->etherParticles, 5.0f);
+
+	Utils::fadeInObject(this->ether, delay, duration);
+	Utils::fadeInObject(this->etherParticles, delay, duration);
 	Utils::fadeInObject(this->titleBar, delay, duration);
 	Utils::fadeInObject(this->title, delay, duration);
 	Utils::fadeInObject(this->storyModeButton, delay, duration);
@@ -62,6 +73,9 @@ void TitleScreen::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
+
+	this->ether->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - this->ether->getContentSize().height + 372.0f));
+	this->etherParticles->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - this->ether->getContentSize().height + 372.0f));
 
 	this->titleBar->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2));
 	this->title->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height - this->title->getContentSize().height / 2));
