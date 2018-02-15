@@ -21,8 +21,6 @@ TitleScreenBackground::TitleScreenBackground()
 	this->backgroundVines = FloatingSprite::create(Resources::Menus_Backgrounds_FarVines, Vec2(64.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->midgroundTrees = FloatingSprite::create(Resources::Menus_Backgrounds_MidgroundTrees, Vec2(8.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->tree = Sprite::create(Resources::Menus_Backgrounds_Tree);
-	this->ether = MenuSprite::create(Sprite::create(Resources::Menus_Backgrounds_Ether), Resources::Menus_Backgrounds_EtherSelected, Resources::Menus_Backgrounds_EtherSelected);
-	this->etherParticles = ParticleGalaxy::create();
 	this->eyes1 = Sprite::create();
 	this->eyes2 = Sprite::create();
 	this->foregroundVines = FloatingSprite::create(Resources::Menus_Backgrounds_Vines, Vec2(-24.0f, 0.0f), Vec2(7.0f, 5.0f));
@@ -51,8 +49,6 @@ TitleScreenBackground::TitleScreenBackground()
 	this->spellEffect->setColor(Color3B(78, 201, 176));
 	this->spellEffect2->setOpacity(0);
 	this->spellEffect2->setColor(Color3B(178, 102, 178));
-
-	this->etherParticles = ParticleGalaxy::create();
 	this->windParticles = ParticleSystemQuad::create(Resources::Particles_Wind);
 	this->fireflyParticles = ParticleSystemQuad::create(Resources::Particles_Fireflies2);
 
@@ -162,6 +158,12 @@ TitleScreenBackground::TitleScreenBackground()
 			bounceDownPostSink,
 			pokeSlime,
 			sinkUp,
+			bounceDown,
+			bounceUp,
+			bounceDown,
+			bounceUp,
+			bounceDown,
+			bounceUp,
 			/*bounceDown,
 			bounceUp,
 			bounceDown,
@@ -182,10 +184,6 @@ TitleScreenBackground::TitleScreenBackground()
 		))
 	);
 
-	this->hackerModeLabel = Label::create(HackerMode::getInstance()->getHackerModeAddressHex(), Resources::Fonts_Stormblade, 20);
-	this->hackerModeLabel->setColor(Color3B(173, 135, 108));
-	this->hackerModeLabel->setSkewX(-12.0f);
-
 	this->squally->setFlipX(true);
 	this->squallyWand->setFlipX(true);
 	this->squallyNode->setScale(0.35f);
@@ -195,12 +193,6 @@ TitleScreenBackground::TitleScreenBackground()
 	this->eyes2Anim->setDelayPerUnit(0.025f);
 	this->eyes1->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes1Anim)->reverse(), DelayTime::create(1.54f), Animate::create(this->eyes1Anim), DelayTime::create(2.5f), nullptr)));
 	this->eyes2->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes2Anim)->reverse(), DelayTime::create(1.25f), Animate::create(this->eyes2Anim), DelayTime::create(3.25f), nullptr)));
-
-	this->ether->setVisible(false);
-	this->etherParticles->setCascadeOpacityEnabled(true);
-	this->etherParticles->setVisible(false);
-	this->etherParticles->stopSystem();
-	this->etherParticles->setOpacity(0);
 
 	this->slimeNode->addChild(this->slime);
 	this->slimeNode->addChild(this->slimeBubble);
@@ -216,9 +208,6 @@ TitleScreenBackground::TitleScreenBackground()
 	this->addChild(this->fog);
 	this->addChild(this->foregroundVines);
 	this->addChild(this->tree);
-	this->addChild(this->hackerModeLabel);
-	this->addChild(this->ether);
-	this->addChild(this->etherParticles);
 	this->addChild(this->eyes1);
 	this->addChild(this->eyes2);
 	this->addChild(this->ghost);
@@ -238,11 +227,6 @@ TitleScreenBackground::~TitleScreenBackground()
 {
 }
 
-void TitleScreenBackground::setMatrixClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick)
-{
-	this->ether->setClickCallback(onMouseClick);
-}
-
 void TitleScreenBackground::onEnter()
 {
 	Node::onEnter();
@@ -250,36 +234,21 @@ void TitleScreenBackground::onEnter()
 	// Initialize particles to an intermediate state
 	Utils::accelerateParticles(this->fireflyParticles, 2.0f);
 	Utils::accelerateParticles(this->windParticles, 5.0f);
-
-	if (this->etherParticles->isVisible())
-	{
-		Utils::accelerateParticles(this->etherParticles, 5.0f);
-	}
 }
 
 void TitleScreenBackground::initializeListeners()
 {
-	EventListenerCustom* customListener = EventListenerCustom::create(HackerMode::HackerModeEnabledEvent, CC_CALLBACK_1(TitleScreenBackground::onHackerModeEnabled, this));
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(customListener, this);
-
-	// Add the hackermode node. This will allow for it's update method to run.
-	this->addChild(HackerMode::getInstance());
 }
 
 void TitleScreenBackground::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->hackerModeLabel->setPosition(Vec2(visibleSize.width / 2 - 96.0f, visibleSize.height / 2 + 296.0f));
-
 	this->background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	this->backgroundTrees->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	this->backgroundVines->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - 320.0f));
 	this->midgroundTrees->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	this->tree->setPosition(Vec2(visibleSize.width / 2 + 38.0f, visibleSize.height / 2 + 180.0f));
-	this->ether->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - this->ether->getContentSize().height + 372.0f));
-	this->etherParticles->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - this->ether->getContentSize().height + 372.0f));
 
 	this->eyes1->setPosition(Vec2(visibleSize.width / 2 + 48.0f, visibleSize.height / 2 - 180.0f));
 	this->eyes2->setPosition(Vec2(visibleSize.width / 2 + 48.0f, visibleSize.height / 2 - 180.0f));
@@ -294,15 +263,6 @@ void TitleScreenBackground::initializePositions()
 	this->ghost->setPosition(Vec2(visibleSize.width / 2 + 112.0f, visibleSize.height / 2 - 320.0f));
 	this->slimeNode->setPosition(Vec2(visibleSize.width / 2 + 112.0f, visibleSize.height / 2 - 320.0f));
 	this->squallyNode->setPosition(Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 160.0f));
-}
-
-void TitleScreenBackground::onHackerModeEnabled(EventCustom* args)
-{
-	this->ether->setVisible(true);
-	this->ether->runAction(FadeIn::create(1.0f));
-	this->etherParticles->setVisible(true);
-	this->etherParticles->runAction(FadeIn::create(2.0f));
-	this->etherParticles->start();
 }
 
 void TitleScreenBackground::createSlimeAnimation()

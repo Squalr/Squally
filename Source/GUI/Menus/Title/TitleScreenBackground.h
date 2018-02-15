@@ -2,7 +2,6 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Utils/Utils.h"
-#include "GUI/Menus/Title/HackerMode.h"
 #include "GUI/Menus/Tutorial/TutorialScreen.h"
 #include "GUI/Components/FloatingSprite.h"
 #include "GUI/Components/MenuSprite.h"
@@ -16,7 +15,6 @@ class TitleScreenBackground : public Node
 public:
 	static TitleScreenBackground * create();
 
-	void setMatrixClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick);
 	void initializePositions();
 
 private:
@@ -25,7 +23,6 @@ private:
 
 	void onEnter() override;
 	void initializeListeners();
-	void onHackerModeEnabled(EventCustom* args);
 	void createSlimeAnimation();
 	void createGhostAnimation();
 
@@ -56,11 +53,6 @@ private:
 	FloatingSprite* foregroundGrassTop;
 	Sprite* foregroundLight;
 
-	ParticleSystem* etherParticles;
 	ParticleSystem* windParticles;
 	ParticleSystem* fireflyParticles;
-
-	MenuSprite* ether;
-
-	Label* hackerModeLabel;
 };

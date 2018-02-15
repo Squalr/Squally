@@ -26,7 +26,7 @@ Player::Player() : Entity::Entity()
 	this->baseSprite = Sprite::create(Resources::Ingame_Sprites_Player_SquallyBase);
 	this->mouthSprite = Sprite::create(Resources::Ingame_Sprites_Player_SquallyMouthOpen);
 	this->eyesSprite = Sprite::create(Resources::Ingame_Sprites_Player_SquallyEyesOpen);
-	this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandStick);
+	this->wandNode = Node::create();
 	this->armSprite = Sprite::create(Resources::Ingame_Sprites_Player_SquallyFrontArm);
 	this->init(PhysicsBody::createBox(this->baseSprite->getContentSize() * Player::playerScale), CategoryGroup::G_Player, true, false);
 	this->hover = Hover::create(this);
@@ -40,10 +40,13 @@ Player::Player() : Entity::Entity()
 	this->spriteNode->addChild(this->baseSprite);
 	this->spriteNode->addChild(this->mouthSprite);
 	this->spriteNode->addChild(this->eyesSprite);
-	this->spriteNode->addChild(this->wandSprite);
+	this->spriteNode->addChild(this->wandNode);
 	this->spriteNode->addChild(this->armSprite);
 	this->addChild(this->spriteNode);
 	this->addChild(this->hover);
+
+	// TODO: Load from save
+	this->equipWand(Wand::Stick);
 
 	this->registerHackables();
 }
@@ -103,16 +106,96 @@ void Player::update(float dt)
 		this->hover->setHeight(16.0f);
 	}
 
+	// TODO: Prolly break this out to a radial menu
+	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_1))
+	{
+		this->equipWand(Wand::Stick);
+	}
+	else if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_2))
+	{
+		this->equipWand(Wand::Snake);
+	}
+	else if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_3))
+	{
+		this->equipWand(Wand::Ancient);
+	}
+	else if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_4))
+	{
+		this->equipWand(Wand::Spider);
+	}
+	else if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_5))
+	{
+		this->equipWand(Wand::Crystal);
+	}
+	else if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_6))
+	{
+		this->equipWand(Wand::Dragon);
+	}
+	else if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_7))
+	{
+		this->equipWand(Wand::Skeleton);
+	}
+
 	this->position = this->getPosition();
 }
 
-void Player::setFlippedX(bool isFlipped)
+void Player::equipWand(Wand wand)
 {
-	this->baseSprite->setFlippedX(isFlipped);
-	this->mouthSprite->setFlippedX(isFlipped);
-	this->eyesSprite->setFlippedX(isFlipped);
-	this->armSprite->setFlippedX(isFlipped);
-	this->wandSprite->setFlippedX(isFlipped);
+	this->wandNode->removeAllChildren();
+
+	switch (wand)
+	{
+	case Stick:
+		this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandStick);
+		break;
+	case Snake:
+		this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandSnake);
+		break;
+	case Ancient:
+		this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandAncient);
+		break;
+	case Spider:
+		this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandSpider);
+		break;
+	case Crystal:
+		this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandCrystal);
+		break;
+	case Dragon:
+		this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandDragon);
+		break;
+	case Skeleton:
+		this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandSkeleton);
+		break;
+	case None:
+	default:
+		this->wandSprite = Sprite::create();
+		break;
+	}
+
+	this->wandSprite->setScale(0.8f);
+	this->wandSprite->setPosition(Vec2(72.0f, -174.0f));
+	this->setFlippedX(this->isFlipped);
+
+	this->wandNode->addChild(this->wandSprite);
+}
+
+void Player::setFlippedX(bool newIsFlipped)
+{
+	this->isFlipped = newIsFlipped;
+
+	this->baseSprite->setFlippedX(newIsFlipped);
+	this->mouthSprite->setFlippedX(newIsFlipped);
+	this->eyesSprite->setFlippedX(newIsFlipped);
+	this->armSprite->setFlippedX(newIsFlipped);
+
+	if (this->isFlipped)
+	{
+		this->wandSprite->setRotation(-75.0f);
+	}
+	else
+	{
+		this->wandSprite->setRotation(75.0f);
+	}
 }
 
 bool Player::hoverContactBegin(CollisionData data)

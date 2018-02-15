@@ -38,6 +38,10 @@ private:
 	void onExitClick(MenuSprite* menuSprite);
 
 	TitleScreenBackground* background;
+
+	MenuSprite* ether;
+	ParticleSystem* etherParticles;
+
 	MenuSprite* storyModeButton;
 	MenuSprite* optionsButton;
 	MenuSprite* exitButton;
