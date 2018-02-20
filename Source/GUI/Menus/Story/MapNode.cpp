@@ -56,5 +56,5 @@ void MapNode::initializeListeners()
 
 void MapNode::onNodeClick(MenuSprite* menuSprite, EventMouse* args)
 {
-	Director::getInstance()->replaceScene(Level::create(this->nodeMapFile));
+	Director::getInstance()->pushScene(Level::create(this->nodeMapFile));
 }

@@ -85,7 +85,7 @@ void PauseMenu::initializeListeners()
 
 void PauseMenu::onExitConfirm()
 {
-	Director::getInstance()->popToSceneStackLevel(1);
+	Director::getInstance()->popToSceneStackLevel(2);
 }
 
 void PauseMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)

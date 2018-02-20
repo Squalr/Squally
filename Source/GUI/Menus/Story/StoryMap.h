@@ -35,6 +35,7 @@ private:
 
 	Sprite* background;
 	Sprite* foreground;
+	Sprite* infoPanel;
 	OutlineLabel* titleLabel;
 	OutlineLabel* infoLabel;
 
