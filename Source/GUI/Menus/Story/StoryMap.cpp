@@ -12,10 +12,11 @@ StoryMap * StoryMap::create()
 StoryMap::StoryMap()
 {
 	this->mapNodes = new std::vector<MapNode*>();
-	this->titleLabel = OutlineLabel::create("Level Select", Resources::Fonts_Montserrat_Medium, this->titleFontSize);
-	this->infoLabel = OutlineLabel::create("Level 1", Resources::Fonts_Montserrat_Medium, this->infoFontSize);
 	this->background = Sprite::create(Resources::Menus_WorldMaps_StoryMap);
 	this->foreground = Sprite::create(Resources::Menus_WorldMaps_StoryMapFront);
+	this->infoPanel = Sprite::create(Resources::Menus_WorldMaps_MapPanel);
+	this->titleLabel = OutlineLabel::create("Level Select", Resources::Fonts_Montserrat_Medium, this->titleFontSize);
+	this->infoLabel = OutlineLabel::create("Level 1", Resources::Fonts_Montserrat_Medium, this->infoFontSize);
 
 	this->jungle = MapNode::create(
 		Resources::Menus_WorldMaps_Jungle,
@@ -90,6 +91,7 @@ StoryMap::StoryMap()
 	this->addChild(this->obelisk);
 	this->addChild(this->volcano);
 	this->addChild(this->foreground);
+	this->addChild(this->infoPanel);
 	this->addChild(this->titleLabel);
 	this->addChild(this->infoLabel);
 
@@ -107,25 +109,32 @@ void StoryMap::onEnter()
 
 	this->initializePositions();
 
+	const float delay = 0.5f;
+	const float duration = 0.75f;
+
+	Utils::fadeInObject(this->infoPanel, delay, duration);
+	Utils::fadeInObject(this->titleLabel, delay, duration);
+	Utils::fadeInObject(this->infoLabel, delay, duration);
+
 	this->addChild(Mouse::claimInstance());
 }
 
 void StoryMap::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	this->titleLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->titleLabel->getContentSize().height / 2));
-	this->infoLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - this->infoLabel->getContentSize().height / 2 - 48));
-	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
-	this->jungle->setPosition(Vec2(origin.x + visibleSize.width / 2 + 624.0f, origin.y + visibleSize.height / 2 - 292.0f));
-	this->waterRuins->setPosition(Vec2(origin.x + visibleSize.width / 2 - 104.0f, origin.y + visibleSize.height / 2 - 340.0f));
-	this->forest->setPosition(Vec2(origin.x + visibleSize.width / 2 - 688.0f, origin.y + visibleSize.height / 2 - 340.0f));
-	this->caverns->setPosition(Vec2(origin.x + visibleSize.width / 2 - 564.0f, origin.y + visibleSize.height / 2 + 180.0f));
-	this->iceCaps->setPosition(Vec2(origin.x + visibleSize.width / 2 + 112.0f, origin.y + visibleSize.height / 2 + 496.0f));
-	this->obelisk->setPosition(Vec2(origin.x + visibleSize.width / 2 + 720.0f, origin.y + visibleSize.height / 2 + 420.0f));
-	this->volcano->setPosition(Vec2(origin.x + visibleSize.width / 2 + 168.0f, origin.y + visibleSize.height / 2 + 72.0f));
-	this->foreground->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->infoPanel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - this->infoPanel->getContentSize().height / 2.0f - 24.0f));
+	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - this->titleLabel->getContentSize().height / 2.0f - 64.0f));
+	this->infoLabel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - this->infoLabel->getContentSize().height / 2.0f - 64.0f - 48.0f));
+	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->jungle->setPosition(Vec2(visibleSize.width / 2.0f + 624.0f, visibleSize.height / 2.0f - 292.0f));
+	this->waterRuins->setPosition(Vec2(visibleSize.width / 2.0f - 104.0f, visibleSize.height / 2.0f - 340.0f));
+	this->forest->setPosition(Vec2(visibleSize.width / 2.0f - 688.0f, visibleSize.height / 2.0f - 340.0f));
+	this->caverns->setPosition(Vec2(visibleSize.width / 2.0f - 564.0f, visibleSize.height / 2.0f + 180.0f));
+	this->iceCaps->setPosition(Vec2(visibleSize.width / 2.0f + 112.0f, visibleSize.height / 2.0f + 496.0f));
+	this->obelisk->setPosition(Vec2(visibleSize.width / 2.0f + 720.0f, visibleSize.height / 2.0f + 420.0f));
+	this->volcano->setPosition(Vec2(visibleSize.width / 2.0f + 168.0f, visibleSize.height / 2.0f + 72.0f));
+	this->foreground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }
 
 void StoryMap::initializeListeners()
