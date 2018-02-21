@@ -821,6 +821,7 @@ public:
 	static const std::string Ingame_Sprites_Bat_Fly2;
 	static const std::string Ingame_Sprites_Bat_Fly3;
 	static const std::string Ingame_Sprites_Bat_Fly4;
+	static const std::string Ingame_Sprites_Knight_KnightStanding;
 	static const std::string Ingame_Sprites_Player_Player_Underwater;
 	static const std::string Ingame_Sprites_Player_SquallyBase;
 	static const std::string Ingame_Sprites_Player_SquallyEyesOpen;
