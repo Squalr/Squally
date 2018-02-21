@@ -200,7 +200,11 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Level\Environments\JungleEnvironment.cpp" />
     <ClCompile Include="Source\Level\LevelCamera.cpp" />
     <ClCompile Include="Source\Level\LevelParser.cpp" />
-    <ClCompile Include="Source\Minigames\Bejeweled.cpp" />
+    <ClCompile Include="Source\Minigames\Binarium\Binarium.cpp" />
+    <ClCompile Include="Source\Minigames\Binarium\Card.cpp" />
+    <ClCompile Include="Source\Minigames\Binarium\CardStorage.cpp" />
+    <ClCompile Include="Source\Minigames\Binarium\Deck.cpp" />
+    <ClCompile Include="Source\Minigames\Binarium\Hand.cpp" />
     <ClCompile Include="Source\Objects\Collision\CollisionObject.cpp" />
     <ClCompile Include="Source\Objects\Hackables\HackableAttribute.cpp" />
     <ClCompile Include="Source\Objects\Hackables\HackableCode.cpp" />
@@ -272,7 +276,12 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Level\Environments\JungleEnvironment.h" />
     <ClInclude Include="Source\Level\LevelCamera.h" />
     <ClInclude Include="Source\Level\LevelParser.h" />
-    <ClInclude Include="Source\Minigames\Bejeweled.h" />
+    <ClInclude Include="Source\Minigames\Binarium\Binarium.h" />
+    <ClInclude Include="Source\Minigames\Binarium\Card.h" />
+    <ClInclude Include="Source\Minigames\Binarium\CardStorage.h" />
+    <ClInclude Include="Source\Minigames\Binarium\Deck.h" />
+    <ClInclude Include="Source\Minigames\Binarium\Hand.h" />
+    <ClInclude Include="Source\Minigames\Minigames.h" />
     <ClInclude Include="Source\Objects\Collision\CategoryGroup.h" />
     <ClInclude Include="Source\Objects\Collision\CollisionObject.h" />
     <ClInclude Include="Source\Objects\Hackables\HackableAttribute.h" />
