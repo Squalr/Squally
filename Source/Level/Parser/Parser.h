@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-class LevelParser
+class Parser
 {
 public:
 	static Layer* initializeTileLayer(experimental::TMXTiledMap* map, std::string tileLayer);
