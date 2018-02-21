@@ -1,6 +1,6 @@
-#include "LevelParser.h"
+#include "Parser.h"
 
-Layer* LevelParser::initializeBackground(experimental::TMXTiledMap* map)
+Layer* Parser::initializeBackground(experimental::TMXTiledMap* map)
 {
 	Layer* layer = Layer::create();
 
@@ -9,7 +9,7 @@ Layer* LevelParser::initializeBackground(experimental::TMXTiledMap* map)
 	return layer;
 }
 
-Layer* LevelParser::initializeEnvironment(experimental::TMXTiledMap* map)
+Layer* Parser::initializeEnvironment(experimental::TMXTiledMap* map)
 {
 	Layer* layer = Layer::create();
 
@@ -20,7 +20,7 @@ Layer* LevelParser::initializeEnvironment(experimental::TMXTiledMap* map)
 	return layer;
 }
 
-Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback)
+Layer* Parser::initializeObjects(experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback)
 {
 	Layer* layer = Layer::create();
 	ValueVector objects = map->getObjectGroup("objects")->getObjects();
@@ -66,7 +66,7 @@ Layer* LevelParser::initializeObjects(experimental::TMXTiledMap* map, std::funct
 	return layer;
 }
 
-Layer* LevelParser::initializeEntities(experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback)
+Layer* Parser::initializeEntities(experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback)
 {
 	Layer* layer = Layer::create();
 	ValueVector entities = map->getObjectGroup("entities")->getObjects();
@@ -104,9 +104,19 @@ Layer* LevelParser::initializeEntities(experimental::TMXTiledMap* map, std::func
 		{
 			newEntity = Poly::create();
 		}
+		else if (type == "knight")
+		{
+			newEntity = Knight::create();
+		}
+		else if (type == "skeleton")
+		{
+			newEntity = Skeleton::create();
+		}
 		else
 		{
-			throw std::invalid_argument("Invalid entity");
+			const std::string error = "Invalid entity: " + type;
+
+			throw std::invalid_argument(error);
 		}
 
 		registerHackableCallback(newEntity);
@@ -118,7 +128,7 @@ Layer* LevelParser::initializeEntities(experimental::TMXTiledMap* map, std::func
 	return layer;
 }
 
-Layer* LevelParser::initializeCollision(experimental::TMXTiledMap* map)
+Layer* Parser::initializeCollision(experimental::TMXTiledMap* map)
 {
 	ValueVector collisionObjects = map->getObjectGroup("collision")->getObjects();
 	Layer* layer = Layer::create();
@@ -199,7 +209,7 @@ Layer* LevelParser::initializeCollision(experimental::TMXTiledMap* map)
 	return layer;
 }
 
-Layer* LevelParser::initializeTileLayer(experimental::TMXTiledMap* map, std::string tileLayer)
+Layer* Parser::initializeTileLayer(experimental::TMXTiledMap* map, std::string tileLayer)
 {
 	Layer* layer = Layer::create();
 	experimental::TMXLayer* tileMap = map->getLayer(tileLayer);
@@ -214,7 +224,7 @@ Layer* LevelParser::initializeTileLayer(experimental::TMXTiledMap* map, std::str
 	return layer;
 }
 
-Layer* LevelParser::initializeParallaxObjects(experimental::TMXTiledMap* map, std::string parallaxLayer)
+Layer* Parser::initializeParallaxObjects(experimental::TMXTiledMap* map, std::string parallaxLayer)
 {
 	Layer* layer = Layer::create();
 	ValueVector objects = map->getObjectGroup(parallaxLayer)->getObjects();
@@ -237,7 +247,7 @@ Layer* LevelParser::initializeParallaxObjects(experimental::TMXTiledMap* map, st
 		float speedX = object.at("speed-x").asFloat();
 		float speedY = object.at("speed-y").asFloat();
 
-		Sprite* sprite = LevelParser::loadObject(object);
+		Sprite* sprite = Parser::loadObject(object);
 		Vec2 position = sprite->getPosition();
 		Node *node = Node::create();
 
@@ -252,7 +262,7 @@ Layer* LevelParser::initializeParallaxObjects(experimental::TMXTiledMap* map, st
 	return layer;
 }
 
-Layer* LevelParser::initializeDecor(experimental::TMXTiledMap* map, std::string decorLayer)
+Layer* Parser::initializeDecor(experimental::TMXTiledMap* map, std::string decorLayer)
 {
 	Layer* layer = Layer::create();
 	ValueVector objects = map->getObjectGroup(decorLayer)->getObjects();
@@ -266,7 +276,7 @@ Layer* LevelParser::initializeDecor(experimental::TMXTiledMap* map, std::string 
 		}
 
 		ValueMap object = objects[index].asValueMap();
-		Sprite* sprite = LevelParser::loadObject(object);
+		Sprite* sprite = Parser::loadObject(object);
 
 		layer->addChild(sprite);
 	}
@@ -274,7 +284,7 @@ Layer* LevelParser::initializeDecor(experimental::TMXTiledMap* map, std::string 
 	return layer;
 }
 
-Sprite* LevelParser::loadObject(ValueMap object)
+Sprite* Parser::loadObject(ValueMap object)
 {
 	string type = object.at("type").asString();
 

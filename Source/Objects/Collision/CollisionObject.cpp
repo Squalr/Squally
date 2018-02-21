@@ -193,6 +193,7 @@ CategoryGroup CollisionObject::getCollisionGroups()
 	case CategoryGroup::G_Solid:
 		return (CategoryGroup)(
 			CategoryGroup::G_Player
+			| CategoryGroup::G_Npc
 			| CategoryGroup::G_Enemy
 			| CategoryGroup::G_EnemyFlying
 			| CategoryGroup::G_Force
@@ -200,6 +201,7 @@ CategoryGroup CollisionObject::getCollisionGroups()
 	case CategoryGroup::G_PassThrough:
 		return (CategoryGroup)(
 			CategoryGroup::G_Player
+			| CategoryGroup::G_Npc
 			| CategoryGroup::G_Enemy
 			| CategoryGroup::G_EnemyFlying
 			| CategoryGroup::G_Force
@@ -213,6 +215,12 @@ CategoryGroup CollisionObject::getCollisionGroups()
 			| CategoryGroup::G_PassThrough
 			| CategoryGroup::G_SolidNpc
 			| CategoryGroup::G_Lava
+			);
+	case CategoryGroup::G_Npc:
+		return (CategoryGroup)(
+			CategoryGroup::G_Solid
+			| CategoryGroup::G_PassThrough
+			| CategoryGroup::G_SolidNpc
 			);
 	case CategoryGroup::G_Enemy:
 		return (CategoryGroup)(
@@ -242,7 +250,8 @@ CategoryGroup CollisionObject::getCollisionGroups()
 			);
 	case CategoryGroup::G_SolidNpc:
 		return (CategoryGroup)(
-			CategoryGroup::G_Enemy
+			CategoryGroup::G_Npc
+			| CategoryGroup::G_Enemy
 			| CategoryGroup::G_EnemyFlying
 			);
 	case CategoryGroup::G_SolidFlyingNpc:

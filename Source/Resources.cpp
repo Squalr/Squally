@@ -818,6 +818,7 @@ const std::string Resources::Ingame_Sprites_Bat_Fly1 = "Ingame\\Sprites\\Bat\\Fl
 const std::string Resources::Ingame_Sprites_Bat_Fly2 = "Ingame\\Sprites\\Bat\\Fly2.png";
 const std::string Resources::Ingame_Sprites_Bat_Fly3 = "Ingame\\Sprites\\Bat\\Fly3.png";
 const std::string Resources::Ingame_Sprites_Bat_Fly4 = "Ingame\\Sprites\\Bat\\Fly4.png";
+const std::string Resources::Ingame_Sprites_Knight_KnightStanding = "Ingame\\Sprites\\Knight\\KnightStanding.png";
 const std::string Resources::Ingame_Sprites_Player_Player_Underwater = "Ingame\\Sprites\\Player\\Player_Underwater.png";
 const std::string Resources::Ingame_Sprites_Player_SquallyBase = "Ingame\\Sprites\\Player\\SquallyBase.png";
 const std::string Resources::Ingame_Sprites_Player_SquallyEyesOpen = "Ingame\\Sprites\\Player\\SquallyEyesOpen.png";

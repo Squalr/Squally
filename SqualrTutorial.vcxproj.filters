@@ -94,6 +94,12 @@
     <Filter Include="Source\Minigames\Binarium">
       <UniqueIdentifier>{f4b1560a-37c3-4bc4-996d-b5034b0d838d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Entities\Npcs">
+      <UniqueIdentifier>{1febd58c-fd81-4bf6-a498-dc590c8d3379}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Level\Parser">
+      <UniqueIdentifier>{b43fde59-32a1-4a22-a5ff-05d9b70d3a27}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -191,9 +197,6 @@
     </ClCompile>
     <ClCompile Include="Source\Entities\Enemies\Bat.cpp">
       <Filter>Source\Entities\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Level\LevelParser.cpp">
-      <Filter>Source\Level</Filter>
     </ClCompile>
     <ClCompile Include="Source\Level\Backgrounds\MountainBackground.cpp">
       <Filter>Source\Level\Backgrounds</Filter>
@@ -315,6 +318,15 @@
     <ClCompile Include="Source\Minigames\Binarium\CardStorage.cpp">
       <Filter>Source\Minigames\Binarium</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Entities\Npcs\Skeleton.cpp">
+      <Filter>Source\Entities\Npcs</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Entities\Npcs\Knight.cpp">
+      <Filter>Source\Entities\Npcs</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Level\Parser\Parser.cpp">
+      <Filter>Source\Level\Parser</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -415,9 +427,6 @@
     </ClInclude>
     <ClInclude Include="Source\Entities\Enemies\Bat.h">
       <Filter>Source\Entities\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Level\LevelParser.h">
-      <Filter>Source\Level</Filter>
     </ClInclude>
     <ClInclude Include="Source\Level\Backgrounds\MountainBackground.h">
       <Filter>Source\Level\Backgrounds</Filter>
@@ -547,6 +556,15 @@
     </ClInclude>
     <ClInclude Include="Source\Minigames\Binarium\CardStorage.h">
       <Filter>Source\Minigames\Binarium</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entities\Npcs\Skeleton.h">
+      <Filter>Source\Entities\Npcs</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entities\Npcs\Knight.h">
+      <Filter>Source\Entities\Npcs</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\Parser\Parser.h">
+      <Filter>Source\Level\Parser</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
