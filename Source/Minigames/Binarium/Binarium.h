@@ -5,14 +5,14 @@
 
 using namespace cocos2d;
 
-class Bejeweled : public Node
+class Binarium : public Node
 {
 public:
-	static Bejeweled * create();
+	static Binarium * create();
 
 private:
-	Bejeweled();
-	~Bejeweled();
+	Binarium();
+	~Binarium();
 
 	void initializePositions();
 	void initializeListeners();

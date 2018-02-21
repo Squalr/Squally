@@ -91,6 +91,9 @@
     <Filter Include="Source\Minigames">
       <UniqueIdentifier>{08081095-b5ff-4eae-af2d-267645d6584d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Minigames\Binarium">
+      <UniqueIdentifier>{f4b1560a-37c3-4bc4-996d-b5034b0d838d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -297,8 +300,20 @@
     <ClCompile Include="Source\GUI\Components\CCheckbox.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Bejeweled.cpp">
-      <Filter>Source\Minigames</Filter>
+    <ClCompile Include="Source\Minigames\Binarium\Binarium.cpp">
+      <Filter>Source\Minigames\Binarium</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Binarium\Card.cpp">
+      <Filter>Source\Minigames\Binarium</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Binarium\Deck.cpp">
+      <Filter>Source\Minigames\Binarium</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Binarium\Hand.cpp">
+      <Filter>Source\Minigames\Binarium</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Binarium\CardStorage.cpp">
+      <Filter>Source\Minigames\Binarium</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -515,8 +530,23 @@
     <ClInclude Include="Source\GUI\Components\CCheckbox.h">
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Bejeweled.h">
+    <ClInclude Include="Source\Minigames\Binarium\Binarium.h">
+      <Filter>Source\Minigames\Binarium</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Binarium\Hand.h">
+      <Filter>Source\Minigames\Binarium</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Binarium\Card.h">
+      <Filter>Source\Minigames\Binarium</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Binarium\Deck.h">
+      <Filter>Source\Minigames\Binarium</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Minigames.h">
       <Filter>Source\Minigames</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Binarium\CardStorage.h">
+      <Filter>Source\Minigames\Binarium</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

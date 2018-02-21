@@ -1,41 +1,41 @@
-#include "Bejeweled.h"
+#include "Binarium.h"
 
-Bejeweled* Bejeweled::create()
+Binarium* Binarium::create()
 {
-	Bejeweled* bejeweled = new Bejeweled();
+	Binarium* binarium = new Binarium();
 
-	bejeweled->autorelease();
+	binarium->autorelease();
 
-	return bejeweled;
+	return binarium;
 }
 
-Bejeweled::Bejeweled()
+Binarium::Binarium()
 {
 	this->initializePositions();
 	this->initializeListeners();
 }
 
-Bejeweled::~Bejeweled()
+Binarium::~Binarium()
 {
 }
 
-void Bejeweled::initializePositions()
+void Binarium::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
-void Bejeweled::initializeListeners()
+void Binarium::initializeListeners()
 {
-	// this->returnButton->setClickCallback(CC_CALLBACK_1(Bejeweled::onClose, this));
+	// this->returnButton->setClickCallback(CC_CALLBACK_1(Binarium::onClose, this));
 
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
 
-	listener->onKeyPressed = CC_CALLBACK_2(Bejeweled::onKeyPressed, this);
+	listener->onKeyPressed = CC_CALLBACK_2(Binarium::onKeyPressed, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-void Bejeweled::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+void Binarium::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	if (!this->isVisible())
 	{
@@ -52,7 +52,7 @@ void Bejeweled::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void Bejeweled::onClose(MenuSprite* menuSprite)
+void Binarium::onClose(MenuSprite* menuSprite)
 {
 	this->setVisible(false);
 	Utils::focus(this->getParent());

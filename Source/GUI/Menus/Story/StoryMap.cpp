@@ -16,7 +16,7 @@ StoryMap::StoryMap()
 	this->foreground = Sprite::create(Resources::Menus_WorldMaps_StoryMapFront);
 	this->infoPanel = Sprite::create(Resources::Menus_WorldMaps_MapPanel);
 	this->titleLabel = OutlineLabel::create("Level Select", Resources::Fonts_Montserrat_Medium, this->titleFontSize);
-	this->infoLabel = OutlineLabel::create("Level 1", Resources::Fonts_Montserrat_Medium, this->infoFontSize);
+	this->infoLabel = OutlineLabel::create("", Resources::Fonts_Montserrat_Medium, this->infoFontSize);
 
 	this->jungle = MapNode::create(
 		Resources::Menus_WorldMaps_Jungle,
@@ -125,7 +125,7 @@ void StoryMap::initializePositions()
 
 	this->infoPanel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - this->infoPanel->getContentSize().height / 2.0f - 24.0f));
 	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - this->titleLabel->getContentSize().height / 2.0f - 64.0f));
-	this->infoLabel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - this->infoLabel->getContentSize().height / 2.0f - 64.0f - 48.0f));
+	this->infoLabel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - 48.0f - 64.0f - 48.0f));
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->jungle->setPosition(Vec2(visibleSize.width / 2.0f + 624.0f, visibleSize.height / 2.0f - 292.0f));
 	this->waterRuins->setPosition(Vec2(visibleSize.width / 2.0f - 104.0f, visibleSize.height / 2.0f - 340.0f));
