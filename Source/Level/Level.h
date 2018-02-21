@@ -3,6 +3,7 @@
 #include "Resources.h"
 #include "Level/LevelCamera.h"
 #include "Level/LevelParser.h"
+#include "Minigames/Minigames.h"
 #include "Entities/Player/Player.h"
 #include "Input/InputManager.h"
 #include "Utils/Utils.h"

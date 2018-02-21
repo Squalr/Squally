@@ -18,18 +18,20 @@ WriteLine("{");
 WriteLine("public:");
 foreach (string file in Directory.EnumerateFiles(this.Host.ResolvePath("../Resources"), "*.*", SearchOption.AllDirectories))
 {
-	if (!file.EndsWith(".png") &&
-		!file.EndsWith(".jpg") &&
-		!file.EndsWith(".bmp") &&
-		!file.EndsWith(".tif") &&
-		!file.EndsWith(".ttf") &&
-		!file.EndsWith(".frag") &&
-		!file.EndsWith(".vert") &&
-		!file.EndsWith(".mp3") &&
-		!file.EndsWith(".wav") &&
-		!file.EndsWith(".plist") &&
-		!file.EndsWith(".json") &&
-		!file.EndsWith(".tmx")) {
+	string fileToLower = file.ToLower();
+
+	if (!fileToLower.EndsWith(".png") &&
+		!fileToLower.EndsWith(".jpg") &&
+		!fileToLower.EndsWith(".bmp") &&
+		!fileToLower.EndsWith(".tif") &&
+		!fileToLower.EndsWith(".ttf") &&
+		!fileToLower.EndsWith(".frag") &&
+		!fileToLower.EndsWith(".vert") &&
+		!fileToLower.EndsWith(".mp3") &&
+		!fileToLower.EndsWith(".wav") &&
+		!fileToLower.EndsWith(".plist") &&
+		!fileToLower.EndsWith(".json") &&
+		!fileToLower.EndsWith(".tmx")) {
 			continue;
 		}
 
