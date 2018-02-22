@@ -91,14 +91,14 @@
     <Filter Include="Source\Minigames">
       <UniqueIdentifier>{08081095-b5ff-4eae-af2d-267645d6584d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Minigames\Binarium">
-      <UniqueIdentifier>{f4b1560a-37c3-4bc4-996d-b5034b0d838d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Entities\Npcs">
       <UniqueIdentifier>{1febd58c-fd81-4bf6-a498-dc590c8d3379}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Level\Parser">
       <UniqueIdentifier>{b43fde59-32a1-4a22-a5ff-05d9b70d3a27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Minigames\Hexium">
+      <UniqueIdentifier>{f4b1560a-37c3-4bc4-996d-b5034b0d838d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -300,21 +300,6 @@
     <ClCompile Include="Source\GUI\Components\CCheckbox.cpp">
       <Filter>Source\GUI\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Binarium\Binarium.cpp">
-      <Filter>Source\Minigames\Binarium</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Minigames\Binarium\Card.cpp">
-      <Filter>Source\Minigames\Binarium</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Minigames\Binarium\Deck.cpp">
-      <Filter>Source\Minigames\Binarium</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Minigames\Binarium\Hand.cpp">
-      <Filter>Source\Minigames\Binarium</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Minigames\Binarium\CardStorage.cpp">
-      <Filter>Source\Minigames\Binarium</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Entities\Npcs\Skeleton.cpp">
       <Filter>Source\Entities\Npcs</Filter>
     </ClCompile>
@@ -332,6 +317,21 @@
     </ClCompile>
     <ClCompile Include="Source\GUI\HUD\Hud.cpp">
       <Filter>Source\GUI\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Card.cpp">
+      <Filter>Source\Minigames\Hexium</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\CardStorage.cpp">
+      <Filter>Source\Minigames\Hexium</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Deck.cpp">
+      <Filter>Source\Minigames\Hexium</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Hand.cpp">
+      <Filter>Source\Minigames\Hexium</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Hexium.cpp">
+      <Filter>Source\Minigames\Hexium</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -542,23 +542,8 @@
     <ClInclude Include="Source\GUI\Components\CCheckbox.h">
       <Filter>Source\GUI\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Binarium\Binarium.h">
-      <Filter>Source\Minigames\Binarium</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Minigames\Binarium\Hand.h">
-      <Filter>Source\Minigames\Binarium</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Minigames\Binarium\Card.h">
-      <Filter>Source\Minigames\Binarium</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Minigames\Binarium\Deck.h">
-      <Filter>Source\Minigames\Binarium</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Minigames\Minigames.h">
       <Filter>Source\Minigames</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Minigames\Binarium\CardStorage.h">
-      <Filter>Source\Minigames\Binarium</Filter>
     </ClInclude>
     <ClInclude Include="Source\Entities\Npcs\Skeleton.h">
       <Filter>Source\Entities\Npcs</Filter>
@@ -577,6 +562,21 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\HUD\Hud.h">
       <Filter>Source\GUI\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Hexium.h">
+      <Filter>Source\Minigames\Hexium</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Card.h">
+      <Filter>Source\Minigames\Hexium</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\CardStorage.h">
+      <Filter>Source\Minigames\Hexium</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Deck.h">
+      <Filter>Source\Minigames\Hexium</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Hand.h">
+      <Filter>Source\Minigames\Hexium</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
