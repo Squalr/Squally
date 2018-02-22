@@ -6,7 +6,7 @@
  </tileset>
  <objectgroup name="environment"/>
  <objectgroup name="background-parallax">
-  <object id="134" name="Forest/Ruins4" type="Forest/Ruins4" x="3450.91" y="175.879" width="320" height="640">
+  <object id="134" name="Forest/Ruins4" type="Forest/Ruins4" x="1154.91" y="119.879" width="320" height="640">
    <properties>
     <property name="float-time-x" type="float" value="8"/>
     <property name="float-time-y" type="float" value="8"/>
@@ -235,8 +235,7 @@
  <objectgroup name="entities">
   <object id="72" name="spawn" type="spawn" x="557.243" y="753.006" width="128" height="128"/>
   <object id="144" name="shroom" type="shroom" x="1997.39" y="925.455" width="100.364" height="88.2424"/>
-  <object id="180" name="knight" type="knight" x="2462.06" y="846.727" width="200" height="288"/>
-  <object id="181" name="knight" type="knight" x="244" y="760" width="200" height="288"/>
+  <object id="180" name="knight" type="knight" x="246.06" y="798.727" width="200" height="288"/>
  </objectgroup>
  <layer name="foreground" width="117" height="96">
   <data encoding="csv">
