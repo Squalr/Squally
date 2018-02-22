@@ -50,7 +50,7 @@ void MouseOverPanel::onMouseSpriteMove(EventCustom* event)
 {
 	Mouse::MouseEventArgs* args = static_cast<Mouse::MouseEventArgs*>(event->getUserData());
 
-	if (Utils::isVisible(this) && Utils::intersectsV2(this->content, Vec2(args->mouseX, args->mouseY)))
+	if (GameUtils::isVisible(this) && GameUtils::intersectsV2(this->content, Vec2(args->mouseX, args->mouseY)))
 	{
 		this->panelBackgroundFrame->setVisible(true);
 		this->panelBackground->setVisible(true);

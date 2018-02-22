@@ -157,35 +157,35 @@ void OptionsMenu::onEnter()
 	float delay = 0.25f;
 	float duration = 0.35f;
 
-	Utils::fadeInObject(this->optionsWindow, delay, duration);
-	Utils::fadeInObject(this->closeButton, delay, duration);
-	Utils::fadeInObject(this->musicIcon, delay, duration);
-	Utils::fadeInObject(this->soundIcon, delay, duration);
-	Utils::fadeInObject(this->musicSlider, delay, duration);
-	Utils::fadeInObject(this->soundSlider, delay, duration);
-	Utils::fadeInObject(this->fullScreenLabel, delay, duration);
-	Utils::fadeInObject(this->fullScreenButton, delay, duration);
-	Utils::fadeInObject(this->exitButton, delay, duration);
+	GameUtils::fadeInObject(this->optionsWindow, delay, duration);
+	GameUtils::fadeInObject(this->closeButton, delay, duration);
+	GameUtils::fadeInObject(this->musicIcon, delay, duration);
+	GameUtils::fadeInObject(this->soundIcon, delay, duration);
+	GameUtils::fadeInObject(this->musicSlider, delay, duration);
+	GameUtils::fadeInObject(this->soundSlider, delay, duration);
+	GameUtils::fadeInObject(this->fullScreenLabel, delay, duration);
+	GameUtils::fadeInObject(this->fullScreenButton, delay, duration);
+	GameUtils::fadeInObject(this->exitButton, delay, duration);
 
-	Utils::fadeInObject(this->label1080x768, delay, duration);
-	Utils::fadeInObject(this->label1152x864, delay, duration);
-	Utils::fadeInObject(this->label1280x720, delay, duration);
-	Utils::fadeInObject(this->label1280x960, delay, duration);
-	Utils::fadeInObject(this->label1280x1024, delay, duration);
-	Utils::fadeInObject(this->label1440x900, delay, duration);
-	Utils::fadeInObject(this->label1600x900, delay, duration);
-	Utils::fadeInObject(this->label1600x1024, delay, duration);
-	Utils::fadeInObject(this->label1920x1080, delay, duration);
+	GameUtils::fadeInObject(this->label1080x768, delay, duration);
+	GameUtils::fadeInObject(this->label1152x864, delay, duration);
+	GameUtils::fadeInObject(this->label1280x720, delay, duration);
+	GameUtils::fadeInObject(this->label1280x960, delay, duration);
+	GameUtils::fadeInObject(this->label1280x1024, delay, duration);
+	GameUtils::fadeInObject(this->label1440x900, delay, duration);
+	GameUtils::fadeInObject(this->label1600x900, delay, duration);
+	GameUtils::fadeInObject(this->label1600x1024, delay, duration);
+	GameUtils::fadeInObject(this->label1920x1080, delay, duration);
 
-	Utils::fadeInObject(this->option1080x768, delay, duration);
-	Utils::fadeInObject(this->option1152x864, delay, duration);
-	Utils::fadeInObject(this->option1280x720, delay, duration);
-	Utils::fadeInObject(this->option1280x960, delay, duration);
-	Utils::fadeInObject(this->option1280x1024, delay, duration);
-	Utils::fadeInObject(this->option1440x900, delay, duration);
-	Utils::fadeInObject(this->option1600x900, delay, duration);
-	Utils::fadeInObject(this->option1600x1024, delay, duration);
-	Utils::fadeInObject(this->option1920x1080, delay, duration);
+	GameUtils::fadeInObject(this->option1080x768, delay, duration);
+	GameUtils::fadeInObject(this->option1152x864, delay, duration);
+	GameUtils::fadeInObject(this->option1280x720, delay, duration);
+	GameUtils::fadeInObject(this->option1280x960, delay, duration);
+	GameUtils::fadeInObject(this->option1280x1024, delay, duration);
+	GameUtils::fadeInObject(this->option1440x900, delay, duration);
+	GameUtils::fadeInObject(this->option1600x900, delay, duration);
+	GameUtils::fadeInObject(this->option1600x1024, delay, duration);
+	GameUtils::fadeInObject(this->option1920x1080, delay, duration);
 
 	this->background->addChild(MenuBackground::claimInstance());
 

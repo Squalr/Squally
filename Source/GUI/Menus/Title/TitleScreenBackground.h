@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
-#include "Utils/Utils.h"
+#include "Utils/GameUtils.h"
 #include "GUI/Menus/Tutorial/TutorialScreen.h"
 #include "GUI/Components/FloatingSprite.h"
 #include "GUI/Components/MenuSprite.h"

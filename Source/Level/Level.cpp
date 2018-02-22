@@ -166,13 +166,13 @@ void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 void Level::enableHackerMode()
 {
 	Level::hackerMode = true;
-	Utils::focus(this->hackerModeHud);
+	GameUtils::focus(this->hackerModeHud);
 }
 
 void Level::disableHackerMode()
 {
 	Level::hackerMode = false;
-	Utils::resumeAll();
+	GameUtils::resumeAll();
 }
 
 void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)

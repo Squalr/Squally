@@ -80,7 +80,7 @@ void MenuLabel::onMouseMove(EventMouse* event)
 {
 	if (this->menuOnMouseClick != nullptr && this->isVisible())
 	{
-		if (Utils::intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
+		if (GameUtils::intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{
 			this->label->setTextColor(this->hoverColor);
 			this->labelHighlighted->setTextColor(this->hoverColor);
@@ -101,7 +101,7 @@ void MenuLabel::onMouseDown(EventMouse* event)
 {
 	if (this->menuOnMouseClick != nullptr && this->isVisible())
 	{
-		if (Utils::intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
+		if (GameUtils::intersects(this, Vec2(event->getCursorX(), event->getCursorY())))
 		{
 			this->menuOnMouseClick(this);
 		}

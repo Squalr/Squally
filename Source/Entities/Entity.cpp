@@ -52,8 +52,8 @@ void Entity::update(float dt)
 	}
 
 	// Prevent fast speeds
-	velocity.x = Utils::clamp(velocity.x, -this->maxMoveSpeed, this->maxMoveSpeed);
-	velocity.y = Utils::clamp(velocity.y, -this->maxFallSpeed, this->maxFallSpeed);
+	velocity.x = MathUtils::clamp(velocity.x, -this->maxMoveSpeed, this->maxMoveSpeed);
+	velocity.y = MathUtils::clamp(velocity.y, -this->maxFallSpeed, this->maxFallSpeed);
 
 	// Apply velocity
 	this->setVelocity(velocity);

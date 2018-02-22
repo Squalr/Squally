@@ -317,7 +317,7 @@ void CodeEditor::open(HackableCode* hackableCode)
 	this->functionWindow->focus();
 
 	this->setVisible(true);
-	Utils::focus(this);
+	GameUtils::focus(this);
 }
 
 void CodeEditor::onAccept(MenuSprite* menuSprite)
@@ -336,12 +336,12 @@ void CodeEditor::onAccept(MenuSprite* menuSprite)
 
 	this->setVisible(false);
 	this->getParent()->setOpacity(0xFF);
-	Utils::focus(this->getParent());
+	GameUtils::focus(this->getParent());
 }
 
 void CodeEditor::onCancel(MenuSprite* menuSprite)
 {
 	this->setVisible(false);
 
-	Utils::focus(this->getParent());
+	GameUtils::focus(this->getParent());
 }

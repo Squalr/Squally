@@ -82,7 +82,7 @@ void RadialMenu::onHackableEdit(EventCustom* eventArgs)
 		this->hackableObjectPreviewNode->addChild(this->hackableObjectPreview);
 	}
 
-	Utils::focus(this);
+	GameUtils::focus(this);
 }
 
 void RadialMenu::initializePositions()
@@ -121,7 +121,7 @@ void RadialMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		this->setVisible(false);
-		Utils::focus(this->getParent());
+		GameUtils::focus(this->getParent());
 		event->stopPropagation();
 		break;
 	}
@@ -130,7 +130,7 @@ void RadialMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 void RadialMenu::onClose(MenuSprite* menuSprite)
 {
 	this->setVisible(false);
-	Utils::focus(this->getParent());
+	GameUtils::focus(this->getParent());
 }
 
 void RadialMenu::onCodeMenuOpen(MenuSprite* menuSprite)
