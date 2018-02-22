@@ -9,7 +9,8 @@
 #include "Input/InputManager.h"
 #include "Utils/Utils.h"
 #include "Shaders/PostProcess.h"
-#include "GUI/HUD/HUD.h"
+#include "GUI/HUD/Hud.h"
+#include "GUI/HUD/HackerModeHud.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
 #include "GUI/Components/Mouse.h"
@@ -55,7 +56,8 @@ private:
 	Layer * gameLayers;
 	PostProcess* gamePostProcessInversion;
 	PostProcess* gamePostProcessNightVision;
-	HUD * hud;
+	Hud * hud;
+	HackerModeHud * hackerModeHud;
 
 	static Size mapSize;
 	static bool hackerMode;

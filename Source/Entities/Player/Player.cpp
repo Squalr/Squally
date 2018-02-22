@@ -144,7 +144,7 @@ void Player::equipWand(Wand wand)
 	this->wandNode->removeAllChildren();
 
 	switch (wand)
-	{
+	{/*
 	case Stick:
 		this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandStick);
 		break;
@@ -165,7 +165,7 @@ void Player::equipWand(Wand wand)
 		break;
 	case Skeleton:
 		this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandSkeleton);
-		break;
+		break;*/
 	case None:
 	default:
 		this->wandSprite = Sprite::create();
