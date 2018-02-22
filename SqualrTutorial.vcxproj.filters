@@ -123,9 +123,6 @@
     <ClCompile Include="Source\Config\ConfigManager.cpp">
       <Filter>Source\Config</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Utils\Utils.cpp">
-      <Filter>Source\Utils</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GUI\Menus\Options\OptionsMenu.cpp">
       <Filter>Source\GUI\Menus\Options</Filter>
     </ClCompile>
@@ -333,6 +330,12 @@
     <ClCompile Include="Source\Minigames\Hexium\Hexium.cpp">
       <Filter>Source\Minigames\Hexium</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Utils\GameUtils.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utils\MathUtils.cpp">
+      <Filter>Source\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -355,9 +358,6 @@
     </ClInclude>
     <ClInclude Include="Source\Config\ConfigManager.h">
       <Filter>Source\Config</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Utils\Utils.h">
-      <Filter>Source\Utils</Filter>
     </ClInclude>
     <ClInclude Include="Source\GUI\Menus\Options\OptionsMenu.h">
       <Filter>Source\GUI\Menus\Options</Filter>
@@ -577,6 +577,12 @@
     </ClInclude>
     <ClInclude Include="Source\Minigames\Hexium\Hand.h">
       <Filter>Source\Minigames\Hexium</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\GameUtils.h">
+      <Filter>Source\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\MathUtils.h">
+      <Filter>Source\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

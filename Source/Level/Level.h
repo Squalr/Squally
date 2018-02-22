@@ -7,7 +7,7 @@
 #include "Minigames/Minigames.h"
 #include "Entities/Player/Player.h"
 #include "Input/InputManager.h"
-#include "Utils/Utils.h"
+#include "Utils/GameUtils.h"
 #include "Shaders/PostProcess.h"
 #include "GUI/HUD/Hud.h"
 #include "GUI/HUD/HackerModeHud.h"

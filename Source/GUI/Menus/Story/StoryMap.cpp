@@ -112,9 +112,9 @@ void StoryMap::onEnter()
 	const float delay = 0.5f;
 	const float duration = 0.75f;
 
-	Utils::fadeInObject(this->infoPanel, delay, duration);
-	Utils::fadeInObject(this->titleLabel, delay, duration);
-	Utils::fadeInObject(this->infoLabel, delay, duration);
+	GameUtils::fadeInObject(this->infoPanel, delay, duration);
+	GameUtils::fadeInObject(this->titleLabel, delay, duration);
+	GameUtils::fadeInObject(this->infoLabel, delay, duration);
 
 	this->addChild(Mouse::claimInstance());
 }
@@ -172,7 +172,7 @@ void StoryMap::onMouseSpriteMove(EventCustom* event)
 	{
 		MapNode* node = *it;
 
-		if (Utils::intersects(node, mouseCoords))
+		if (GameUtils::intersects(node, mouseCoords))
 		{
 			this->infoLabel->setText(node->nodeMapName);
 			return;

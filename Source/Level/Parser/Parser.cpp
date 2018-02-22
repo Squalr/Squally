@@ -150,7 +150,7 @@ Layer* Parser::initializeCollision(experimental::TMXTiledMap* map)
 		float x = object.at("x").asFloat() + width / 2.0f;
 		float y = object.at("y").asFloat() + height / 2.0f;
 
-		if (Utils::keyExists(object, "points"))
+		if (GameUtils::keyExists(object, "points"))
 		{
 			isPolygon = true;
 			polygonPoints = &(object.at("points").asValueVector());
@@ -239,7 +239,7 @@ Layer* Parser::initializeParallaxObjects(experimental::TMXTiledMap* map, std::st
 
 		ValueMap object = objects[index].asValueMap();
 
-		if (!Utils::keyExists(object, "speed-x") && !Utils::keyExists(object, "speed-y"))
+		if (!GameUtils::keyExists(object, "speed-x") && !GameUtils::keyExists(object, "speed-y"))
 		{
 			throw std::invalid_argument("Parallax objects must have speed properties");
 		}
@@ -308,30 +308,30 @@ Sprite* Parser::loadObject(ValueMap object)
 	newObject->setAnchorPoint(Vec2(0.0f, 1.0f));
 	newObject->setPosition(Vec2(x - width / 2.0f, y + height / 2.0f));
 
-	if (Utils::keyExists(object, "rotation"))
+	if (GameUtils::keyExists(object, "rotation"))
 	{
 		float rotation = object.at("rotation").asFloat();
 		newObject->setRotation(rotation);
 	}
 
-	if (Utils::keyExists(object, "flip-x"))
+	if (GameUtils::keyExists(object, "flip-x"))
 	{
 		bool flipX = object.at("flip-x").asBool();
 		newObject->setFlippedX(flipX);
 	}
 
-	if (Utils::keyExists(object, "flip-y"))
+	if (GameUtils::keyExists(object, "flip-y"))
 	{
 		bool flipY = object.at("flip-y").asBool();
 		newObject->setFlippedY(flipY);
 	}
 
-	if (Utils::keyExists(object, "float-x"))
+	if (GameUtils::keyExists(object, "float-x"))
 	{
 		float floatX = object.at("float-x").asFloat();
 		float timeX = 1.0f;
 
-		if (Utils::keyExists(object, "float-time-x"))
+		if (GameUtils::keyExists(object, "float-time-x"))
 		{
 			timeX = object.at("float-time-x").asFloat();
 		}
@@ -342,12 +342,12 @@ Sprite* Parser::loadObject(ValueMap object)
 		newObject->runAction(RepeatForever::create(Sequence::create(bounceX1, bounceX2, nullptr)));
 	}
 
-	if (Utils::keyExists(object, "float-y"))
+	if (GameUtils::keyExists(object, "float-y"))
 	{
 		float floatY = object.at("float-y").asFloat();
 		float timeY = 1.0f;
 
-		if (Utils::keyExists(object, "float-time-y"))
+		if (GameUtils::keyExists(object, "float-time-y"))
 		{
 			timeY = object.at("float-time-y").asFloat();
 		}

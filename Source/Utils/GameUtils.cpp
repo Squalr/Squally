@@ -1,7 +1,7 @@
-#include "Utils.h"
+#include "GameUtils.h"
 
 // A better pause function that pauses recursively
-void Utils::pause(Node *node)
+void GameUtils::pause(Node *node)
 {
 	// If the node is a scene node, pause physics
 	if (dynamic_cast<const Scene*>(node) != nullptr)
@@ -13,12 +13,12 @@ void Utils::pause(Node *node)
 
 	for (const auto &child : node->getChildren())
 	{
-		Utils::pause(child);
+		GameUtils::pause(child);
 	}
 }
 
 // A better resume function that resumes recursively
-void Utils::resume(Node *node)
+void GameUtils::resume(Node *node)
 {
 	// If the node is a scene node, resume physics
 	if (dynamic_cast<const Scene*>(node) != nullptr)
@@ -30,16 +30,16 @@ void Utils::resume(Node *node)
 
 	for (const auto &child : node->getChildren())
 	{
-		Utils::resume(child);
+		GameUtils::resume(child);
 	}
 }
 
-void Utils::resumeAll()
+void GameUtils::resumeAll()
 {
-	Utils::resume(Director::getInstance()->getRunningScene());
+	GameUtils::resume(Director::getInstance()->getRunningScene());
 }
 
-bool Utils::isFocused(Node *node)
+bool GameUtils::isFocused(Node *node)
 {
 	if (node->getParent() != nullptr && node->getParent()->isPaused() && !node->isPaused())
 	{
@@ -53,14 +53,14 @@ bool Utils::isFocused(Node *node)
 	return false;
 }
 
-void Utils::focus(Node *node)
+void GameUtils::focus(Node *node)
 {
-	Utils::pause(Director::getInstance()->getRunningScene());
-	Utils::resume(node);
+	GameUtils::pause(Director::getInstance()->getRunningScene());
+	GameUtils::resume(node);
 	node->addChild(Mouse::claimInstance());
 }
 
-void Utils::accelerateParticles(ParticleSystem* particleSystem, float duration)
+void GameUtils::accelerateParticles(ParticleSystem* particleSystem, float duration)
 {
 	const float step = 0.0166660007;
 
@@ -72,7 +72,7 @@ void Utils::accelerateParticles(ParticleSystem* particleSystem, float duration)
 	}
 }
 
-void Utils::fadeInObject(Node* node, float delay, float duration)
+void GameUtils::fadeInObject(Node* node, float delay, float duration)
 {
 	Sequence* sequence = Sequence::create(DelayTime::create(delay), FadeIn::create(duration), nullptr);
 
@@ -81,7 +81,7 @@ void Utils::fadeInObject(Node* node, float delay, float duration)
 	node->runAction(sequence);
 }
 
-Rect Utils::getSceneBounds(Node* node)
+Rect GameUtils::getSceneBounds(Node* node)
 {
 	Rect resultRect = node->getBoundingBox();
 	Vec2 resultCoords = Vec2(resultRect.getMinX() - resultRect.size.width / 2, resultRect.getMinY() - resultRect.size.height / 2);
@@ -97,7 +97,7 @@ Rect Utils::getSceneBounds(Node* node)
 	return resultRect;
 }
 
-Rect Utils::getSceneBoundsV2(Node* node)
+Rect GameUtils::getSceneBoundsV2(Node* node)
 {
 	Rect resultRect = node->getBoundingBox();
 	Vec2 resultCoords = Vec2(resultRect.getMinX(), resultRect.getMinY());
@@ -113,12 +113,7 @@ Rect Utils::getSceneBoundsV2(Node* node)
 	return resultRect;
 }
 
-float Utils::clamp(float n, float lower, float upper)
-{
-	return std::max(lower, std::min(n, upper));
-}
-
-bool Utils::isVisible(Node* node)
+bool GameUtils::isVisible(Node* node)
 {
 	while (node != nullptr)
 	{
@@ -133,11 +128,11 @@ bool Utils::isVisible(Node* node)
 	return true;
 }
 
-bool Utils::intersects(Node* node, Vec2 mousePos)
+bool GameUtils::intersects(Node* node, Vec2 mousePos)
 {
 	Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
 
-	if (Utils::getSceneBounds(node).intersectsRect(mouseRect))
+	if (GameUtils::getSceneBounds(node).intersectsRect(mouseRect))
 	{
 		return true;
 	}
@@ -147,11 +142,11 @@ bool Utils::intersects(Node* node, Vec2 mousePos)
 	}
 }
 
-bool Utils::intersectsV2(Node* node, Vec2 mousePos)
+bool GameUtils::intersectsV2(Node* node, Vec2 mousePos)
 {
 	Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
 
-	if (Utils::getSceneBoundsV2(node).intersectsRect(mouseRect))
+	if (GameUtils::getSceneBoundsV2(node).intersectsRect(mouseRect))
 	{
 		return true;
 	}
@@ -161,7 +156,7 @@ bool Utils::intersectsV2(Node* node, Vec2 mousePos)
 	}
 }
 
-bool Utils::keyExists(ValueMap valueMap, std::string key)
+bool GameUtils::keyExists(ValueMap valueMap, std::string key)
 {
 	auto pointsIterator = valueMap.find(key);
 

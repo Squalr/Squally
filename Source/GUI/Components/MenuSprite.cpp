@@ -109,17 +109,17 @@ bool MenuSprite::intersects(Vec2 mousePos)
 {
 	if (dynamic_cast<const LayerColor*>(this->sprite) != nullptr)
 	{
-		return Utils::intersectsV2(this, Vec2(mousePos.x, mousePos.y));
+		return GameUtils::intersectsV2(this, Vec2(mousePos.x, mousePos.y));
 	}
 
-	return Utils::intersects(this, Vec2(mousePos.x, mousePos.y));
+	return GameUtils::intersects(this, Vec2(mousePos.x, mousePos.y));
 }
 
 void MenuSprite::onMouseSpriteMove(EventCustom* event)
 {
 	Mouse::MouseEventArgs* args = static_cast<Mouse::MouseEventArgs*>(event->getUserData());
 
-	if (Utils::isVisible(this))
+	if (GameUtils::isVisible(this))
 	{
 		// Mouse drag callback
 		if (args->innerEvent->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
@@ -178,7 +178,7 @@ void MenuSprite::onMouseSpriteMove(EventCustom* event)
 
 void MenuSprite::onMouseDown(EventMouse* event)
 {
-	if (Utils::isVisible(this))
+	if (GameUtils::isVisible(this))
 	{
 		if (this->intersects(Vec2(event->getCursorX(), event->getCursorY())))
 		{
@@ -200,7 +200,7 @@ void MenuSprite::onMouseDown(EventMouse* event)
 
 void MenuSprite::onMouseUp(EventMouse* event)
 {
-	if (Utils::isVisible(this) && this->intersects(Vec2(event->getCursorX(), event->getCursorY())))
+	if (GameUtils::isVisible(this) && this->intersects(Vec2(event->getCursorX(), event->getCursorY())))
 	{
 		if (this->mouseClickEvent != nullptr)
 		{

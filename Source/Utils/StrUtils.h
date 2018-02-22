@@ -1,6 +1,5 @@
 #pragma once
 #include "cocos2d.h"
-#include "Gui/Components/Mouse.h"
 #include <string>
 #include <locale>         
 #include <sstream> 

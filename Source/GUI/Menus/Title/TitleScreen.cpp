@@ -56,15 +56,15 @@ void TitleScreen::onEnter()
 	float delay = 0.5f;
 	float duration = 0.75f;
 
-	Utils::accelerateParticles(this->etherParticles, 5.0f);
+	GameUtils::accelerateParticles(this->etherParticles, 5.0f);
 
-	Utils::fadeInObject(this->ether, delay, duration);
-	Utils::fadeInObject(this->etherParticles, delay, duration);
-	Utils::fadeInObject(this->titleBar, delay, duration);
-	Utils::fadeInObject(this->title, delay, duration);
-	Utils::fadeInObject(this->storyModeButton, delay, duration);
-	Utils::fadeInObject(this->optionsButton, delay, duration);
-	Utils::fadeInObject(this->exitButton, delay, duration);
+	GameUtils::fadeInObject(this->ether, delay, duration);
+	GameUtils::fadeInObject(this->etherParticles, delay, duration);
+	GameUtils::fadeInObject(this->titleBar, delay, duration);
+	GameUtils::fadeInObject(this->title, delay, duration);
+	GameUtils::fadeInObject(this->storyModeButton, delay, duration);
+	GameUtils::fadeInObject(this->optionsButton, delay, duration);
+	GameUtils::fadeInObject(this->exitButton, delay, duration);
 
 	this->addChild(Mouse::claimInstance());
 }

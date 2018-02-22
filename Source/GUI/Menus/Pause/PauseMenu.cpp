@@ -47,11 +47,11 @@ void PauseMenu::onEnter()
 	float delay = 0.1f;
 	float duration = 0.25f;
 
-	Utils::fadeInObject(this->pauseWindow, delay, duration);
-	Utils::fadeInObject(this->closeButton, delay, duration);
-	Utils::fadeInObject(this->resumeButton, delay, duration);
-	Utils::fadeInObject(this->optionsButton, delay, duration);
-	Utils::fadeInObject(this->exitButton, delay, duration);
+	GameUtils::fadeInObject(this->pauseWindow, delay, duration);
+	GameUtils::fadeInObject(this->closeButton, delay, duration);
+	GameUtils::fadeInObject(this->resumeButton, delay, duration);
+	GameUtils::fadeInObject(this->optionsButton, delay, duration);
+	GameUtils::fadeInObject(this->exitButton, delay, duration);
 
 	this->background->addChild(MenuBackground::claimInstance());
 

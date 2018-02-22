@@ -49,7 +49,7 @@ void Hexium::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		this->setVisible(false);
-		Utils::focus(this->getParent());
+		GameUtils::focus(this->getParent());
 		event->stopPropagation();
 		break;
 	}
@@ -58,5 +58,5 @@ void Hexium::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 void Hexium::onClose(MenuSprite* menuSprite)
 {
 	this->setVisible(false);
-	Utils::focus(this->getParent());
+	GameUtils::focus(this->getParent());
 }
