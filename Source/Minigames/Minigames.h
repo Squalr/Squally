@@ -1,2 +1,2 @@
 #pragma once
-#include "Minigames/Binarium/Binarium.h"
+#include "Minigames/Hexium/Hexium.h"

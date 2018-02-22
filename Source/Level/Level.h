@@ -58,6 +58,7 @@ private:
 	PostProcess* gamePostProcessNightVision;
 	Hud * hud;
 	HackerModeHud * hackerModeHud;
+	Hexium* hexium;
 
 	static Size mapSize;
 	static bool hackerMode;
