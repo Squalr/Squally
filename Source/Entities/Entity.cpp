@@ -52,8 +52,8 @@ void Entity::update(float dt)
 	}
 
 	// Prevent fast speeds
-	//this->velocity.x = MathHelper.Clamp(Velocity.X, -MaxMoveSpeed, MaxMoveSpeed);
-	//this->velocity.y = MathHelper.Clamp(Velocity.Y, -ActualMaxFallSpeed, ActualMaxFallSpeed);
+	velocity.x = Utils::clamp(velocity.x, -this->maxMoveSpeed, this->maxMoveSpeed);
+	velocity.y = Utils::clamp(velocity.y, -this->maxFallSpeed, this->maxFallSpeed);
 
 	// Apply velocity
 	this->setVelocity(velocity);

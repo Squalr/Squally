@@ -160,6 +160,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Entities\Enemies\Snail.cpp" />
     <ClCompile Include="Source\Entities\Entity.cpp" />
     <ClCompile Include="Source\Entities\Npcs\Knight.cpp" />
+    <ClCompile Include="Source\Entities\Npcs\NpcBase.cpp" />
     <ClCompile Include="Source\Entities\Npcs\Skeleton.cpp" />
     <ClCompile Include="Source\Entities\Player\Hover.cpp" />
     <ClCompile Include="Source\Entities\Player\Player.cpp" />
@@ -176,7 +177,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\Components\CSlider.cpp" />
     <ClCompile Include="Source\GUI\Components\TextWindow.cpp" />
     <ClCompile Include="Source\GUI\Components\CCheckbox.cpp" />
-    <ClCompile Include="Source\GUI\HUD\HUD.cpp" />
+    <ClCompile Include="Source\GUI\HUD\HackerModeHud.cpp" />
+    <ClCompile Include="Source\GUI\HUD\Hud.cpp" />
     <ClCompile Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\Dialog\DialogMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\HackerMode\CodeEditor.cpp" />
@@ -238,6 +240,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Entities\Entities.h" />
     <ClInclude Include="Source\Entities\Entity.h" />
     <ClInclude Include="Source\Entities\Npcs\Knight.h" />
+    <ClInclude Include="Source\Entities\Npcs\NpcBase.h" />
     <ClInclude Include="Source\Entities\Npcs\Skeleton.h" />
     <ClInclude Include="Source\Entities\Player\Hover.h" />
     <ClInclude Include="Source\Entities\Player\Player.h" />
@@ -254,7 +257,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\Components\CSlider.h" />
     <ClInclude Include="Source\GUI\Components\TextWindow.h" />
     <ClInclude Include="Source\GUI\Components\CCheckbox.h" />
-    <ClInclude Include="Source\GUI\HUD\HUD.h" />
+    <ClInclude Include="Source\GUI\HUD\HackerModeHud.h" />
+    <ClInclude Include="Source\GUI\HUD\Hud.h" />
     <ClInclude Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.h" />
     <ClInclude Include="Source\GUI\Menus\Dialog\DialogMenu.h" />
     <ClInclude Include="Source\GUI\Menus\HackerMode\CodeEditor.h" />

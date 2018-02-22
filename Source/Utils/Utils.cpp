@@ -113,6 +113,11 @@ Rect Utils::getSceneBoundsV2(Node* node)
 	return resultRect;
 }
 
+float Utils::clamp(float n, float lower, float upper)
+{
+	return std::max(lower, std::min(n, upper));
+}
+
 bool Utils::isVisible(Node* node)
 {
 	while (node != nullptr)

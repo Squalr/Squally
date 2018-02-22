@@ -30,7 +30,8 @@ Level::Level(std::string levelResourceFilePath)
 	this->hackerModeBackground = Sprite::create(Resources::Ingame_Background_MatrixRain_HackerModeBackground);
 	this->hackerModeRain = MatrixRain::create();
 	this->hackerModePostProcessGlow = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_GrayBlur);
-	this->hud = HUD::create();
+	this->hud = Hud::create();
+	this->hackerModeHud = HackerModeHud::create();
 	this->backgroundParallax = Parser::initializeParallaxObjects(map, "background-parallax");
 	this->backgroundLayer = Parser::initializeTileLayer(map, "background");
 	this->backgroundDecor = Parser::initializeDecor(map, "background-decor");
@@ -38,8 +39,8 @@ Level::Level(std::string levelResourceFilePath)
 	this->midgroundDecor = Parser::initializeDecor(map, "midground-decor");
 	this->foregroundLayer = Parser::initializeTileLayer(map, "foreground");
 	this->foregroundDecor = Parser::initializeDecor(map, "foreground-decor");
-	this->objectLayer = Parser::initializeObjects(map, CC_CALLBACK_1(HUD::registerHackableObject, this->hud));
-	this->entityLayer = Parser::initializeEntities(map, CC_CALLBACK_1(HUD::registerHackableObject, this->hud));
+	this->objectLayer = Parser::initializeObjects(map, CC_CALLBACK_1(HackerModeHud::registerHackableObject, this->hackerModeHud));
+	this->entityLayer = Parser::initializeEntities(map, CC_CALLBACK_1(HackerModeHud::registerHackableObject, this->hackerModeHud));
 	this->collisionLayer = Parser::initializeCollision(map);
 	this->environmentLayer = Parser::initializeEnvironment(map);
 	this->gameLayers = Layer::create();
@@ -66,6 +67,7 @@ Level::Level(std::string levelResourceFilePath)
 	this->addChild(this->gamePostProcessInversion);
 	this->addChild(this->gamePostProcessNightVision);
 	this->addChild(this->hud);
+	this->addChild(this->hackerModeHud);
 
 	this->scheduleUpdate();
 	this->update(0.0f);
@@ -159,7 +161,7 @@ void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 void Level::enableHackerMode()
 {
 	Level::hackerMode = true;
-	Utils::focus(this->hud);
+	Utils::focus(this->hackerModeHud);
 }
 
 void Level::disableHackerMode()
@@ -179,7 +181,8 @@ void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 		this->hackerModeRain->setVisible(false);
 		this->hackerModePostProcessGlow->setVisible(false);
 		this->gameLayers->setVisible(true);
-		this->hud->hackableObjectsHud->setVisible(false);
+		this->hud->setVisible(true);
+		this->hackerModeHud->setVisible(false);
 		this->gamePostProcessInversion->setVisible(false);
 		this->gamePostProcessNightVision->setVisible(false);
 
@@ -201,7 +204,8 @@ void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 		this->hackerModeRain->setVisible(true);
 		this->hackerModePostProcessGlow->setVisible(true);
 		this->gameLayers->setVisible(true);
-		this->hud->hackableObjectsHud->setVisible(true);
+		this->hud->setVisible(false);
+		this->hackerModeHud->setVisible(true);
 		this->gamePostProcessInversion->setVisible(true);
 		this->gamePostProcessNightVision->setVisible(true);
 

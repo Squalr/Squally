@@ -177,9 +177,6 @@
     <ClCompile Include="Source\Input\InputManager.cpp">
       <Filter>Source\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GUI\HUD\HUD.cpp">
-      <Filter>Source\GUI\HUD</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Entities\Player\Player.cpp">
       <Filter>Source\Entities\Player</Filter>
     </ClCompile>
@@ -327,6 +324,15 @@
     <ClCompile Include="Source\Level\Parser\Parser.cpp">
       <Filter>Source\Level\Parser</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GUI\HUD\HackerModeHud.cpp">
+      <Filter>Source\GUI\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Entities\Npcs\NpcBase.cpp">
+      <Filter>Source\Entities\Npcs</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\HUD\Hud.cpp">
+      <Filter>Source\GUI\HUD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -406,9 +412,6 @@
     </ClInclude>
     <ClInclude Include="Source\Input\InputManager.h">
       <Filter>Source\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GUI\HUD\HUD.h">
-      <Filter>Source\GUI\HUD</Filter>
     </ClInclude>
     <ClInclude Include="Source\Entities\Player\Player.h">
       <Filter>Source\Entities\Player</Filter>
@@ -565,6 +568,15 @@
     </ClInclude>
     <ClInclude Include="Source\Level\Parser\Parser.h">
       <Filter>Source\Level\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\HUD\HackerModeHud.h">
+      <Filter>Source\GUI\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entities\Npcs\NpcBase.h">
+      <Filter>Source\Entities\Npcs</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\HUD\Hud.h">
+      <Filter>Source\GUI\HUD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
