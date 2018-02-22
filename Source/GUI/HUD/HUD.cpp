@@ -54,13 +54,13 @@ void Hud::initializeListeners()
 
 void Hud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (Utils::isFocused(this))
+	if (GameUtils::isFocused(this))
 	{
 		switch (keyCode)
 		{
 		case EventKeyboard::KeyCode::KEY_TAB:
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
-			Utils::focus(this->getParent());
+			GameUtils::focus(this->getParent());
 			event->stopPropagation();
 
 			break;

@@ -80,19 +80,19 @@ void TutorialScreen::onEnter()
 	float delay = 0.25f;
 	float duration = 0.35f;
 
-	Utils::fadeInObject(this->tutorialWindow, delay, duration);
-	Utils::fadeInObject(this->descriptionBox, delay, duration);
-	Utils::fadeInObject(this->description, delay, duration);
-	Utils::fadeInObject(this->closeButton, delay, duration);
+	GameUtils::fadeInObject(this->tutorialWindow, delay, duration);
+	GameUtils::fadeInObject(this->descriptionBox, delay, duration);
+	GameUtils::fadeInObject(this->description, delay, duration);
+	GameUtils::fadeInObject(this->closeButton, delay, duration);
 
 	for (std::vector<TutorialItem*>::iterator it = this->tutorialButtons->begin(); it != this->tutorialButtons->end(); ++it)
 	{
-		Utils::fadeInObject(*it, delay, duration);
+		GameUtils::fadeInObject(*it, delay, duration);
 	}
 
 	// Initialize particles to an intermediate state
-	Utils::accelerateParticles(this->swirl, 5.0f);
-	Utils::accelerateParticles(this->nether, 1.0f);
+	GameUtils::accelerateParticles(this->swirl, 5.0f);
+	GameUtils::accelerateParticles(this->nether, 1.0f);
 
 	this->initializePositions();
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
-#include "Utils/Utils.h"
+#include "Utils/GameUtils.h"
 #include "Objects/Hackables/HackableObject.h"
 #include "Level/Backgrounds/JungleBackground.h"
 #include "Level/Backgrounds/MountainBackground.h"

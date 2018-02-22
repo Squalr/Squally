@@ -4,7 +4,7 @@
 #include "GUI/Components/Mouse.h"
 #include "GUI/Components/MenuSprite.h"
 #include "Level/Level.h"
-#include "Utils/Utils.h"
+#include "Utils/GameUtils.h"
 
 using namespace cocos2d;
 

@@ -232,8 +232,8 @@ void TitleScreenBackground::onEnter()
 	Node::onEnter();
 
 	// Initialize particles to an intermediate state
-	Utils::accelerateParticles(this->fireflyParticles, 2.0f);
-	Utils::accelerateParticles(this->windParticles, 5.0f);
+	GameUtils::accelerateParticles(this->fireflyParticles, 2.0f);
+	GameUtils::accelerateParticles(this->windParticles, 5.0f);
 }
 
 void TitleScreenBackground::initializeListeners()

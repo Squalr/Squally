@@ -3,7 +3,7 @@
 #include "Objects/Collision/CollisionObject.h"
 #include "Objects/Interactables/WarpGate.h"
 #include "GUI/Components/OutlineLabel.h"
-#include "Utils/Utils.h"
+#include "Utils/GameUtils.h"
 
 using namespace cocos2d;
 

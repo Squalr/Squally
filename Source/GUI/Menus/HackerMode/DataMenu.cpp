@@ -73,7 +73,7 @@ void DataMenu::open(HackableObject* hackableObject)
 	}
 
 	this->setVisible(true);
-	Utils::focus(this);
+	GameUtils::focus(this);
 }
 
 void DataMenu::initializeListeners()
@@ -85,5 +85,5 @@ void DataMenu::onClose(MenuSprite* menuSprite)
 {
 	this->setVisible(false);
 
-	Utils::focus(this->getParent());
+	GameUtils::focus(this->getParent());
 }
