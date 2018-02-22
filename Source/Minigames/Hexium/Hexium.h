@@ -5,14 +5,26 @@
 
 using namespace cocos2d;
 
-class Binarium : public Node
+class Hexium : public Node
 {
 public:
-	static Binarium * create();
+	static Hexium * create();
+
+	static const std::string HexiumGameStartEvent;
+	static const std::string HexiumGameEndEvent;
+
+	struct HexiumGameEventArgs
+	{
+		int temp;
+
+		HexiumGameEventArgs(int temp) : temp(temp)
+		{
+		}
+	};
 
 private:
-	Binarium();
-	~Binarium();
+	Hexium();
+	~Hexium();
 
 	void initializePositions();
 	void initializeListeners();
