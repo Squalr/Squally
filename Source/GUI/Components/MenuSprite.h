@@ -28,6 +28,7 @@ protected:
 
 private:
 	void initializeListeners();
+	void onEnter() override;
 	void update(float) override;
 	bool intersects(Vec2 mousePos);
 	void onMouseSpriteMove(EventCustom* args);

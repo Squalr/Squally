@@ -158,7 +158,7 @@ void StoryMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		Director::getInstance()->popScene();
+		GameUtils::navigateBack();
 		break;
 	}
 }

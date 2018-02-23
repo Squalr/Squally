@@ -8,6 +8,7 @@
 #include "GUI/Components/InfiniteParallaxNode.h"
 #include "GUI/Components/MenuSprite.h"
 #include "GUI/Components/Mouse.h"
+#include "Utils/GameUtils.h"
 
 using namespace cocos2d;
 

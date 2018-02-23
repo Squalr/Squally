@@ -29,8 +29,6 @@ MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
 	this->mouseDownEvent = nullptr;
 	this->mouseDragEvent = nullptr;
 	this->mouseOverEvent = nullptr;
-	this->isClickInit = false;
-	this->isClicked = false;
 
 	this->clickSound = Resources::Sounds_ButtonClick1;
 	this->mouseOverSound = "";
@@ -39,26 +37,36 @@ MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
 	this->spriteSelected = nodeSelected;
 	this->spriteClicked = nodeClicked;
 
-	this->setCascadeOpacityEnabled(true);
-	this->spriteClicked->setVisible(false);
-	this->spriteSelected->setVisible(false);
-
 	this->setContentSize(this->sprite->getContentSize());
 
 	this->addChild(this->sprite);
 	this->addChild(this->spriteClicked);
 	this->addChild(this->spriteSelected);
-
-	this->initializeListeners();
-	this->scheduleUpdate();
 }
 
 MenuSprite::~MenuSprite()
 {
 }
 
-void MenuSprite::update(float)
+void MenuSprite::onEnter()
 {
+	Node::onEnter();
+
+	this->isClickInit = false;
+	this->isClicked = false;
+
+	this->setCascadeOpacityEnabled(true);
+	this->spriteClicked->setVisible(false);
+	this->spriteSelected->setVisible(false);
+
+	this->initializeListeners();
+	this->scheduleUpdate();
+}
+
+void MenuSprite::update(float dt)
+{
+	Node::update(dt);
+
 	this->spriteClicked->setPosition(this->sprite->getPosition());
 	this->spriteSelected->setPosition(this->sprite->getPosition());
 }

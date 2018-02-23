@@ -22,10 +22,12 @@ using namespace cocos2d;
 class Level : public FadeScene
 {
 public:
-	static Level* create(std::string levelResourceFilePath);
+	static Level* create();
+
+	void loadLevel(std::string levelFile);
 
 protected:
-	Level(std::string levelResourceFilePath);
+	Level();
 	~Level();
 
 private:

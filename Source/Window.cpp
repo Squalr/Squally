@@ -50,7 +50,8 @@ bool Window::applicationDidFinishLaunching()
 	director->setDisplayStats(true);
 
 	// Start the game
-	Game* game = new Game();
+	Game* game = Game::create();
+	game->retain();
 
 	return true;
 }
