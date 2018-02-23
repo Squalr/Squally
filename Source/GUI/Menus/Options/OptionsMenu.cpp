@@ -327,17 +327,17 @@ void OptionsMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		Director::getInstance()->popScene();
 		ConfigManager::save();
 		event->stopPropagation();
+		GameUtils::navigateBack();
 		break;
 	}
 }
 
 void OptionsMenu::onCloseClick(MenuSprite* menuSprite)
 {
-	Director::getInstance()->popScene();
 	ConfigManager::save();
+	GameUtils::navigateBack();
 }
 
 void OptionsMenu::showResolutionOptions()

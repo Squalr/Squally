@@ -5,7 +5,7 @@
 
 using namespace cocos2d;
 
-class Hexium : public Node
+class Hexium : public Scene
 {
 public:
 	static Hexium * create();

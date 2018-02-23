@@ -3,27 +3,50 @@
 Size Level::mapSize = Size::ZERO;
 bool Level::hackerMode = false;
 
-Level* Level::create(std::string levelResourceFilePath)
+Level* Level::create()
 {
-	Level* level = new Level(levelResourceFilePath);
+	Level* level = new Level();
 
 	level->autorelease();
 
 	return level;
 }
 
-Level::Level(std::string levelResourceFilePath)
+Level::Level()
 {
 	if (!FadeScene::initWithPhysics())
 	{
 		throw std::uncaught_exception();
 	}
+}
+
+Level::~Level()
+{
+}
+
+void Level::onEnter()
+{
+	FadeScene::onEnter();
+
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->hackerModeBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+
+	this->addChild(Mouse::claimInstance());
+
+	this->scheduleUpdate();
+	this->initializeListeners();
+	this->update(0.0f);
+}
+
+void Level::loadLevel(std::string levelFile)
+{
 
 	// Physics / collision debugging
 	//this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, 0.0f));
 
-	experimental::TMXTiledMap* map = experimental::TMXTiledMap::create(levelResourceFilePath);
+	experimental::TMXTiledMap* map = experimental::TMXTiledMap::create(levelFile);
 	Level::mapSize = Size(map->getMapSize().width * map->getTileSize().width, map->getMapSize().height * map->getTileSize().height);
 
 	this->background = Parser::initializeBackground(map);
@@ -73,15 +96,6 @@ Level::Level(std::string levelResourceFilePath)
 	this->addChild(this->hud);
 	this->addChild(this->hackerModeHud);
 	this->addChild(this->hexium);
-
-	this->scheduleUpdate();
-	this->update(0.0f);
-
-	this->initializeListeners();
-}
-
-Level::~Level()
-{
 }
 
 void Level::resume(void)
@@ -92,17 +106,6 @@ void Level::resume(void)
 	}
 
 	Node::resume();
-}
-
-void Level::onEnter()
-{
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	FadeScene::onEnter();
-
-	this->hackerModeBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-
-	this->addChild(Mouse::claimInstance());
 }
 
 void Level::update(float dt)

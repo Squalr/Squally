@@ -57,11 +57,54 @@ TitleScreenBackground::TitleScreenBackground()
 	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesA3);
 	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesA4);
 	this->eyes1Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesA5);
+	this->eyes1Anim->retain();
 
 	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesB1);
 	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesB2);
 	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesB3);
 	this->eyes2Anim->addSpriteFrameWithFileName(Resources::Menus_Backgrounds_EyesB4);
+	this->eyes2Anim->retain();
+
+	this->slimeNode->addChild(this->slime);
+	this->slimeNode->addChild(this->slimeBubble);
+	this->squallyNode->addChild(this->squally);
+	this->squallyNode->addChild(this->squallyWand);
+	this->squallyNode->addChild(this->spellEffect);
+	this->squallyNode->addChild(this->spellEffect2);
+
+	this->addChild(this->background);
+	this->addChild(this->backgroundTrees);
+	this->addChild(this->backgroundVines);
+	this->addChild(this->midgroundTrees);
+	this->addChild(this->fog);
+	this->addChild(this->foregroundVines);
+	this->addChild(this->tree);
+	this->addChild(this->eyes1);
+	this->addChild(this->eyes2);
+	this->addChild(this->ghost);
+	this->addChild(this->slimeNode);
+	this->addChild(this->squallyNode);
+	this->addChild(this->fireflyParticles);
+	this->addChild(this->windParticles);
+	this->addChild(this->foregroundFog);
+	this->addChild(this->foregroundGrassBottom);
+	this->addChild(this->foregroundGrassTop);
+	this->addChild(this->foregroundLight);
+
+	this->initializeListeners();
+}
+
+TitleScreenBackground::~TitleScreenBackground()
+{
+}
+
+void TitleScreenBackground::onEnter()
+{
+	Node::onEnter();
+
+	// Initialize particles to an intermediate state
+	GameUtils::accelerateParticles(this->fireflyParticles, 2.0f);
+	GameUtils::accelerateParticles(this->windParticles, 5.0f);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 base = Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 160.0f);
@@ -194,46 +237,6 @@ TitleScreenBackground::TitleScreenBackground()
 	this->eyes1->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes1Anim)->reverse(), DelayTime::create(1.54f), Animate::create(this->eyes1Anim), DelayTime::create(2.5f), nullptr)));
 	this->eyes2->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes2Anim)->reverse(), DelayTime::create(1.25f), Animate::create(this->eyes2Anim), DelayTime::create(3.25f), nullptr)));
 
-	this->slimeNode->addChild(this->slime);
-	this->slimeNode->addChild(this->slimeBubble);
-	this->squallyNode->addChild(this->squally);
-	this->squallyNode->addChild(this->squallyWand);
-	this->squallyNode->addChild(this->spellEffect);
-	this->squallyNode->addChild(this->spellEffect2);
-
-	this->addChild(this->background);
-	this->addChild(this->backgroundTrees);
-	this->addChild(this->backgroundVines);
-	this->addChild(this->midgroundTrees);
-	this->addChild(this->fog);
-	this->addChild(this->foregroundVines);
-	this->addChild(this->tree);
-	this->addChild(this->eyes1);
-	this->addChild(this->eyes2);
-	this->addChild(this->ghost);
-	this->addChild(this->slimeNode);
-	this->addChild(this->squallyNode);
-	this->addChild(this->fireflyParticles);
-	this->addChild(this->windParticles);
-	this->addChild(this->foregroundFog);
-	this->addChild(this->foregroundGrassBottom);
-	this->addChild(this->foregroundGrassTop);
-	this->addChild(this->foregroundLight);
-
-	this->initializeListeners();
-}
-
-TitleScreenBackground::~TitleScreenBackground()
-{
-}
-
-void TitleScreenBackground::onEnter()
-{
-	Node::onEnter();
-
-	// Initialize particles to an intermediate state
-	GameUtils::accelerateParticles(this->fireflyParticles, 2.0f);
-	GameUtils::accelerateParticles(this->windParticles, 5.0f);
 }
 
 void TitleScreenBackground::initializeListeners()

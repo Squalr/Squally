@@ -234,13 +234,13 @@ void TutorialScreen::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		Director::getInstance()->popScene();
 		event->stopPropagation();
+		GameUtils::navigateBack();
 		break;
 	}
 }
 
 void TutorialScreen::onCloseClick(MenuSprite* menuSprite)
 {
-	Director::getInstance()->popScene();
+	GameUtils::navigateBack();
 }

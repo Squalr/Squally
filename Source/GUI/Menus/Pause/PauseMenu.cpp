@@ -85,7 +85,7 @@ void PauseMenu::initializeListeners()
 
 void PauseMenu::onExitConfirm()
 {
-	Director::getInstance()->popToSceneStackLevel(2);
+	GameUtils::navigateBack(2);
 }
 
 void PauseMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -98,7 +98,7 @@ void PauseMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		Director::getInstance()->popScene();
+		GameUtils::navigateBack();
 		event->stopPropagation();
 		break;
 	}
@@ -106,17 +106,17 @@ void PauseMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 void PauseMenu::onCloseClick(MenuSprite* menuSprite)
 {
-	Director::getInstance()->popScene();
+	GameUtils::navigateBack();
 }
 
 void PauseMenu::onResumeClick(MenuSprite* menuSprite)
 {
-	Director::getInstance()->popScene();
+	GameUtils::navigateBack();
 }
 
 void PauseMenu::onOptionsClick(MenuSprite* menuSprite)
 {
-	Director::getInstance()->pushScene(OptionsMenu::create());
+	GameUtils::navigate(GameUtils::GameScreen::Options);
 }
 
 void PauseMenu::onExitClick(MenuSprite* menuSprite)
