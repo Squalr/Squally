@@ -73,7 +73,7 @@ void TutorialItem::initializePositions()
 
 void TutorialItem::onTutorialClick(MenuSprite* tutorialItem)
 {
-	Director::getInstance()->pushScene(Level::create(this->tutorialMapFile));
+	GameUtils::loadLevel(this->tutorialMapFile);
 }
 
 void TutorialItem::onTutorialMouseOver(MenuSprite* tutorialItem)

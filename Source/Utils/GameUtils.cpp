@@ -1,5 +1,33 @@
 #include "GameUtils.h"
 
+const std::string GameUtils::gameNavigateNewEvent = "game_navigate_new_event";
+const std::string GameUtils::gameNavigateBackEvent = "game_navigate_back_event";
+const std::string GameUtils::gameNavigateNewLevelEvent = "game_navigate_new_level_event";
+
+void GameUtils::navigateBack(int count)
+{
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		GameUtils::gameNavigateBackEvent,
+		&NavigateBackEventArgs(count)
+	);
+}
+
+void GameUtils::navigate(GameScreen gameScreen)
+{
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		GameUtils::gameNavigateNewEvent,
+		&NavigateEventArgs(gameScreen)
+	);
+}
+
+void GameUtils::loadLevel(std::string levelFile)
+{
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		GameUtils::gameNavigateNewLevelEvent,
+		&NavigateNewLevelEvent(levelFile)
+	);
+}
+
 // A better pause function that pauses recursively
 void GameUtils::pause(Node *node)
 {

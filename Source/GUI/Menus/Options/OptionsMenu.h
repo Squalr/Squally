@@ -12,6 +12,7 @@
 #include "GUI/Components/Mouse.h"
 #include "GUI/Components/OutlineLabel.h"
 #include "GUI/Menus/MenuBackground.h"
+#include "Utils/GameUtils.h"
 
 using namespace cocos2d;
 

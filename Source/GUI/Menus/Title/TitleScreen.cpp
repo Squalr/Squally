@@ -11,8 +11,6 @@ TitleScreen * TitleScreen::create()
 
 TitleScreen::TitleScreen()
 {
-	SoundManager::playMusicResource(Resources::Music_Will_we_get_there_Together);
-
 	this->titleBar = Sprite::create(Resources::Menus_TitleScreen_TitleBar);
 	this->title = Sprite::create(Resources::Menus_TitleScreen_Title);
 	this->background = TitleScreenBackground::create();
@@ -23,13 +21,6 @@ TitleScreen::TitleScreen()
 	this->ether = MenuSprite::create(Sprite::create(Resources::Menus_Backgrounds_Ether), Resources::Menus_Backgrounds_EtherSelected, Resources::Menus_Backgrounds_EtherSelected);
 	this->etherParticles = ParticleGalaxy::create();
 
-	this->etherParticles->start();
-
-	this->ether->setClickCallback(CC_CALLBACK_1(TitleScreen::onMatrixClick, this));
-	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));
-	this->optionsButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onOptionsClick, this));
-	this->exitButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onExitClick, this));
-
 	this->addChild(this->background);
 	this->addChild(this->ether);
 	this->addChild(this->etherParticles);
@@ -38,8 +29,6 @@ TitleScreen::TitleScreen()
 	this->addChild(this->storyModeButton);
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
-
-	this->scheduleUpdate();
 }
 
 TitleScreen::~TitleScreen()
@@ -50,13 +39,19 @@ void TitleScreen::onEnter()
 {
 	FadeScene::onEnter();
 
-	this->background->initializePositions();
+	SoundManager::playMusicResource(Resources::Music_Will_we_get_there_Together);
+
 	this->initializePositions();
-
-	float delay = 0.5f;
-	float duration = 0.75f;
-
+	this->etherParticles->start();
 	GameUtils::accelerateParticles(this->etherParticles, 5.0f);
+
+	this->ether->setClickCallback(CC_CALLBACK_1(TitleScreen::onMatrixClick, this));
+	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));
+	this->optionsButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onOptionsClick, this));
+	this->exitButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onExitClick, this));
+
+	const float delay = 0.5f;
+	const float duration = 0.75f;
 
 	GameUtils::fadeInObject(this->ether, delay, duration);
 	GameUtils::fadeInObject(this->etherParticles, delay, duration);
@@ -67,10 +62,14 @@ void TitleScreen::onEnter()
 	GameUtils::fadeInObject(this->exitButton, delay, duration);
 
 	this->addChild(Mouse::claimInstance());
+
+	this->scheduleUpdate();
 }
 
 void TitleScreen::initializePositions()
 {
+	this->background->initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
@@ -86,17 +85,17 @@ void TitleScreen::initializePositions()
 
 void TitleScreen::onMatrixClick(MenuSprite* menuSprite)
 {
-	Director::getInstance()->pushScene(TutorialScreen::create());
+	GameUtils::navigate(GameUtils::GameScreen::Tutorial);
 }
 
 void TitleScreen::onStoryModeClick(MenuSprite* menuSprite)
 {
-	Director::getInstance()->pushScene(StoryMap::create());
+	GameUtils::navigate(GameUtils::GameScreen::StoryMap);
 }
 
 void TitleScreen::onOptionsClick(MenuSprite* menuSprite)
 {
-	Director::getInstance()->pushScene(OptionsMenu::create());
+	GameUtils::navigate(GameUtils::GameScreen::Options);
 }
 
 void TitleScreen::onExitClick(MenuSprite* menuSprite)
