@@ -25,13 +25,21 @@ void FadeScene::onEnter()
 	Scene::onEnter();
 
 	// Make fade in visible, fullscreen, and topmost
-	this->layerColor->setContentSize(Director::getInstance()->getOpenGLView()->getDesignResolutionSize());
-	this->layerColor->setOpacity(255);
-	this->layerColor->setZOrder(999);
+	if (this->fadeSpeed > 0.0f)
+	{
+		this->layerColor->setContentSize(Director::getInstance()->getOpenGLView()->getDesignResolutionSize());
+		this->layerColor->setOpacity(255);
 
-	// Fade into the scene
-	this->fadeAction = FadeOut::create(this->fadeSpeed);
-	this->layerColor->runAction(this->fadeAction);
+		// Fade into the scene
+		this->fadeAction = FadeOut::create(this->fadeSpeed);
+		this->layerColor->runAction(this->fadeAction);
+	}
+	else
+	{
+		this->layerColor->setOpacity(0);
+	}
+
+	this->layerColor->setZOrder(999);
 }
 
 void FadeScene::pause()

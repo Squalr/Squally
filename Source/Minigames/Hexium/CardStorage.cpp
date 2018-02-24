@@ -2,11 +2,11 @@
 
 CardStorage* CardStorage::create()
 {
-	CardStorage* hand = new CardStorage();
+	CardStorage* cardStorage = new CardStorage();
 
-	hand->autorelease();
+	cardStorage->autorelease();
 
-	return hand;
+	return cardStorage;
 }
 
 CardStorage::CardStorage()

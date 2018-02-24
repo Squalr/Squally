@@ -6,6 +6,7 @@
 #include "GUI/Menus/Story/StoryMap.h"
 #include "GUI/Menus/Options/OptionsMenu.h"
 #include "GUI/Menus/Pause/PauseMenu.h"
+#include "GUI/Menus/Confirmation/ConfirmationMenu.h"
 #include "Level/Level.h"
 #include "Minigames/Minigames.h"
 #include "Utils/GameUtils.h"
@@ -23,6 +24,7 @@ private:
 
 	void onGameNavigateNew(EventCustom* eventCustom);
 	void onGameNavigateBack(EventCustom* eventCustom);
+	void onGameNavigateConfirm(EventCustom* eventCustom);
 	void onGameNavigateNewLevel(EventCustom* eventCustom);
 	void loadScene(Scene* scene);
 	void initializeEventListeners();
@@ -33,6 +35,7 @@ private:
 	Level* level;
 	OptionsMenu* optionsMenu;
 	PauseMenu* pauseMenu;
+	ConfirmationMenu* confirmationMenu;
 	Hexium* hexium;
 
 	std::stack<Scene*>* sceneHistory;
