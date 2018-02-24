@@ -12,13 +12,14 @@ using namespace cocos2d;
 class ConfirmationMenu : public FadeScene
 {
 public:
-	static ConfirmationMenu * create(std::string confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
+	static ConfirmationMenu * create();
 
-protected:
-	ConfirmationMenu(std::string confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
-	~ConfirmationMenu();
+	void initialize(std::string confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
 
 private:
+	ConfirmationMenu();
+	~ConfirmationMenu();
+
 	void onEnter() override;
 	void initializePositions();
 	void initializeListeners();

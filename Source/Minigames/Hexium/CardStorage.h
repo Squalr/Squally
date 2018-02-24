@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "Minigames/Hexium/Card.h"
 
 using namespace cocos2d;
 

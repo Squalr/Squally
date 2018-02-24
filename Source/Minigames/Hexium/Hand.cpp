@@ -28,3 +28,7 @@ void Hand::initializeListeners()
 {
 }
 
+void Hand::insertCard(Card* card)
+{
+
+}

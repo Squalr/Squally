@@ -27,3 +27,8 @@ void Deck::initializePositions()
 void Deck::initializeListeners()
 {
 }
+
+Card* Deck::drawCard()
+{
+	return nullptr;
+}

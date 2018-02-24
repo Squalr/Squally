@@ -27,8 +27,9 @@ void NpcBase::update(float dt)
 	Entity::update(dt);
 }
 
-void NpcBase::onInteractButtonClick(MenuSprite* menuSprite) {
-
+void NpcBase::onInteractButtonClick(MenuSprite* menuSprite)
+{
+	GameUtils::navigate(GameUtils::GameScreen::Hexium);
 }
 
 bool NpcBase::contactBegin(CollisionData data)

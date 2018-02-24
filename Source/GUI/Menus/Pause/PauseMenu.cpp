@@ -18,13 +18,6 @@ PauseMenu::PauseMenu()
 	this->optionsButton = MenuSprite::create(Sprite::create(Resources::Menus_PauseMenu_OptionsButton), Resources::Menus_PauseMenu_OptionsButtonHover, Resources::Menus_PauseMenu_OptionsButtonClick);
 	this->exitButton = MenuSprite::create(Sprite::create(Resources::Menus_PauseMenu_QuitButton), Resources::Menus_PauseMenu_QuitButtonHover, Resources::Menus_PauseMenu_QuitButtonClick);
 
-	this->resumeButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onResumeClick, this));
-	this->optionsButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onOptionsClick, this));
-	this->exitButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onExitClick, this));
-
-	this->closeButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onCloseClick, this));
-	this->closeButton->setClickSound(Resources::Sounds_ClickBack1);
-
 	this->addChild(this->background);
 	this->addChild(this->pauseWindow);
 	this->addChild(this->closeButton);
@@ -32,8 +25,7 @@ PauseMenu::PauseMenu()
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
 
-	this->initializeListeners();
-	this->setFadeSpeed(0.25f);
+	this->setFadeSpeed(0.0f);
 }
 
 PauseMenu::~PauseMenu()
@@ -56,6 +48,7 @@ void PauseMenu::onEnter()
 	this->background->addChild(MenuBackground::claimInstance());
 
 	this->initializePositions();
+	this->initializeListeners();
 
 	this->addChild(Mouse::claimInstance());
 }
@@ -80,26 +73,28 @@ void PauseMenu::initializeListeners()
 
 	listener->onKeyPressed = CC_CALLBACK_2(PauseMenu::onKeyPressed, this);
 
+	this->resumeButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onResumeClick, this));
+	this->optionsButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onOptionsClick, this));
+	this->exitButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onExitClick, this));
+
+	this->closeButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onCloseClick, this));
+	this->closeButton->setClickSound(Resources::Sounds_ClickBack1);
+
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
 void PauseMenu::onExitConfirm()
 {
-	GameUtils::navigateBack(2);
+	GameUtils::navigateBack();
 }
 
 void PauseMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!this->isVisible())
-	{
-		return;
-	}
-
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		GameUtils::navigateBack();
 		event->stopPropagation();
+		GameUtils::navigateBack();
 		break;
 	}
 }
@@ -121,5 +116,5 @@ void PauseMenu::onOptionsClick(MenuSprite* menuSprite)
 
 void PauseMenu::onExitClick(MenuSprite* menuSprite)
 {
-	Director::getInstance()->pushScene(ConfirmationMenu::create("Exit this level?", CC_CALLBACK_0(PauseMenu::onExitConfirm, this), nullptr));
+	GameUtils::navigateConfirm("Exit this level?", CC_CALLBACK_0(PauseMenu::onExitConfirm, this), nullptr);
 }

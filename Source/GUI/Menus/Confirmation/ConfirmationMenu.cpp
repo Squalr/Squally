@@ -1,25 +1,25 @@
 #include "ConfirmationMenu.h"
 
-ConfirmationMenu * ConfirmationMenu::create(std::string confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback)
+ConfirmationMenu * ConfirmationMenu::create()
 {
-	ConfirmationMenu* pauseMenu = new ConfirmationMenu(confirmationMessage, confirmCallback, cancelCallback);
+	ConfirmationMenu* pauseMenu = new ConfirmationMenu();
 
 	pauseMenu->autorelease();
 
 	return pauseMenu;
 }
 
-ConfirmationMenu::ConfirmationMenu(std::string confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback)
+ConfirmationMenu::ConfirmationMenu()
 {
-	this->onConfirmCallback = confirmCallback;
-	this->onCancelCallback = cancelCallback;
+	this->onConfirmCallback = nullptr;
+	this->onCancelCallback = nullptr;
 
 	this->background = Node::create();
 	this->pauseWindow = Sprite::create(Resources::Menus_ConfirmMenu_ConfirmMenuWindow);
 	this->closeButton = MenuSprite::create(Sprite::create(Resources::Menus_Buttons_CloseButton), Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
 	this->cancelButton = MenuSprite::create(Sprite::create(Resources::Menus_Buttons_CancelButton), Resources::Menus_Buttons_CancelButtonHover, Resources::Menus_Buttons_CancelButtonClick);
 	this->confirmButton = MenuSprite::create(Sprite::create(Resources::Menus_Buttons_AcceptButton), Resources::Menus_Buttons_AcceptButtonHover, Resources::Menus_Buttons_AcceptButtonClick);
-	this->confirmationLabel = Label::create(confirmationMessage, Resources::Fonts_Montserrat_Medium, 20);
+	this->confirmationLabel = Label::create("", Resources::Fonts_Montserrat_Medium, 20);
 
 	this->closeButton->setClickSound(Resources::Sounds_ClickBack1);
 
@@ -31,12 +31,18 @@ ConfirmationMenu::ConfirmationMenu(std::string confirmationMessage, std::functio
 	this->addChild(this->confirmationLabel);
 
 	this->setFadeSpeed(0.0f);
-
-	this->initializeListeners();
 }
 
 ConfirmationMenu::~ConfirmationMenu()
 {
+}
+
+void ConfirmationMenu::initialize(std::string confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback)
+{
+	this->onConfirmCallback = confirmCallback;
+	this->onCancelCallback = cancelCallback;
+
+	this->confirmationLabel->setString(confirmationMessage);
 }
 
 void ConfirmationMenu::onEnter()
@@ -46,6 +52,7 @@ void ConfirmationMenu::onEnter()
 	this->background->addChild(MenuBackground::claimInstance());
 
 	this->initializePositions();
+	this->initializeListeners();
 
 	this->addChild(Mouse::claimInstance());
 }
@@ -83,7 +90,6 @@ void ConfirmationMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		Director::getInstance()->popScene();
 
 		if (this->onCancelCallback != nullptr)
 		{
@@ -91,6 +97,8 @@ void ConfirmationMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event
 		}
 
 		event->stopPropagation();
+
+		GameUtils::navigateBack();
 		break;
 	}
 }
@@ -98,30 +106,30 @@ void ConfirmationMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event
 
 void ConfirmationMenu::onCloseClick(MenuSprite* menuSprite)
 {
-	Director::getInstance()->popScene();
-
 	if (this->onCancelCallback != nullptr)
 	{
 		this->onCancelCallback();
 	}
+
+	GameUtils::navigateBack();
 }
 
 void ConfirmationMenu::onCancelClick(MenuSprite* menuSprite)
 {
-	Director::getInstance()->popScene();
-
 	if (this->onCancelCallback != nullptr)
 	{
 		this->onCancelCallback();
 	}
+
+	GameUtils::navigateBack();
 }
 
 void ConfirmationMenu::onConfirmClick(MenuSprite* menuSprite)
 {
-	Director::getInstance()->popScene();
-
 	if (this->onConfirmCallback != nullptr)
 	{
 		this->onConfirmCallback();
 	}
+
+	GameUtils::navigateBack();
 }

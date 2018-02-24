@@ -18,6 +18,7 @@ Game::Game()
 	this->level = Level::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->pauseMenu = PauseMenu::create();
+	this->confirmationMenu = ConfirmationMenu::create();
 	this->hexium = Hexium::create();
 
 	// Start title screen first (TODO: Eventually splash screen? Do we want one?)
@@ -33,6 +34,7 @@ Game::Game()
 	this->level->retain();
 	this->optionsMenu->retain();
 	this->pauseMenu->retain();
+	this->confirmationMenu->retain();
 	this->hexium->retain();
 }
 
@@ -85,6 +87,9 @@ void Game::onGameNavigateNew(EventCustom* eventCustom)
 	case GameUtils::GameScreen::Options:
 		newScene = this->optionsMenu;
 		break;
+	case GameUtils::GameScreen::Confirm:
+		newScene = this->confirmationMenu;
+		break;
 	case GameUtils::GameScreen::Level:
 		newScene = this->level;
 		break;
@@ -93,6 +98,7 @@ void Game::onGameNavigateNew(EventCustom* eventCustom)
 		break;
 	}
 
+	this->sceneHistory->push(Director::getInstance()->getRunningScene());
 	this->loadScene(newScene);
 }
 
@@ -116,18 +122,26 @@ void Game::onGameNavigateBack(EventCustom* eventCustom)
 	this->loadScene(scene);
 }
 
+void Game::onGameNavigateConfirm(EventCustom* eventCustom)
+{
+	GameUtils::NavigateConfirmArgs* args = (GameUtils::NavigateConfirmArgs*)(eventCustom->getUserData());
+
+	this->sceneHistory->push(Director::getInstance()->getRunningScene());
+	this->confirmationMenu->initialize(args->message, args->confirmCallback, args->cancelCallback);
+	this->loadScene(this->confirmationMenu);
+}
+
 void Game::onGameNavigateNewLevel(EventCustom* eventCustom)
 {
-	GameUtils::NavigateNewLevelEvent* args = (GameUtils::NavigateNewLevelEvent*)(eventCustom->getUserData());
+	GameUtils::NavigateNewLevelArgs* args = (GameUtils::NavigateNewLevelArgs*)(eventCustom->getUserData());
 
+	this->sceneHistory->push(Director::getInstance()->getRunningScene());
 	this->level->loadLevel(args->levelFile);
 	this->loadScene(this->level);
 }
 
 void Game::loadScene(Scene* scene)
 {
-	this->sceneHistory->push(Director::getInstance()->getRunningScene());
-
 	// Although this is counter-intuitive, add Game as a child to whichever scene is active.
 	// This will allows for Game to listen for navigation events while the active scene runs.
 	this->getParent()->removeChild(this);
