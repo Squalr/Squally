@@ -142,8 +142,6 @@ OptionsMenu::OptionsMenu()
 	}
 
 	this->setFadeSpeed(0.0f);
-	this->initializePositions();
-	this->initializeListeners();
 }
 
 OptionsMenu::~OptionsMenu()
@@ -190,6 +188,7 @@ void OptionsMenu::onEnter()
 	this->background->addChild(MenuBackground::claimInstance());
 
 	this->initializePositions();
+	this->initializeListeners();
 
 	this->addChild(Mouse::claimInstance());
 }

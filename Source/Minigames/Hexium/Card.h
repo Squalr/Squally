@@ -9,6 +9,9 @@ class Card : public Node
 public:
 	static Card * create();
 
+	void reveal();
+	void hide();
+
 private:
 	Card();
 	~Card();

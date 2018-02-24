@@ -158,7 +158,7 @@ void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		Director::getInstance()->pushScene(PauseMenu::create());
+		GameUtils::navigate(GameUtils::GameScreen::Pause);
 		break;
 	case EventKeyboard::KeyCode::KEY_TAB:
 		this->enableHackerMode();

@@ -14,17 +14,28 @@ Hexium* Hexium::create()
 
 Hexium::Hexium()
 {
-	this->initializePositions();
-	this->initializeListeners();
+	this->gameBackground = Sprite::create(Resources::Minigames_Hexium_Gameboard);
+
+	this->addChild(this->gameBackground);
 }
 
 Hexium::~Hexium()
 {
 }
 
+void Hexium::onEnter()
+{
+	FadeScene::onEnter();
+
+	this->initializePositions();
+	this->initializeListeners();
+}
+
 void Hexium::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->gameBackground->setPosition(visibleSize.width / 2.0f, visibleSize.height / 2.0f);
 }
 
 void Hexium::initializeListeners()
@@ -40,16 +51,10 @@ void Hexium::initializeListeners()
 
 void Hexium::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!this->isVisible())
-	{
-		return;
-	}
-
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		this->setVisible(false);
-		GameUtils::focus(this->getParent());
+		GameUtils::navigateBack();
 		event->stopPropagation();
 		break;
 	}
@@ -57,6 +62,5 @@ void Hexium::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 void Hexium::onClose(MenuSprite* menuSprite)
 {
-	this->setVisible(false);
-	GameUtils::focus(this->getParent());
+	GameUtils::navigateBack();
 }

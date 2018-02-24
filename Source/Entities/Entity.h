@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Objects/Collision/CollisionObject.h"
+#include "Utils/GameUtils.h"
 #include "Utils/MathUtils.h"
 
 using namespace cocos2d;

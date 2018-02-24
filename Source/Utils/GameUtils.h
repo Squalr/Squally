@@ -9,6 +9,7 @@ class GameUtils
 public:
 	static const std::string gameNavigateNewEvent;
 	static const std::string gameNavigateBackEvent;
+	static const std::string gameNavigateConfirmEvent;
 	static const std::string gameNavigateNewLevelEvent;
 
 	enum GameScreen {
@@ -17,6 +18,7 @@ public:
 		Tutorial,
 		Pause,
 		Options,
+		Confirm,
 		Level,
 		Hexium,
 	};
@@ -35,15 +37,26 @@ public:
 		NavigateEventArgs(GameScreen gameScreen) : gameScreen(gameScreen) { }
 	};
 
-	struct NavigateNewLevelEvent
+	struct NavigateNewLevelArgs
 	{
 		std::string levelFile;
 
-		NavigateNewLevelEvent(std::string levelFile = "") : levelFile(levelFile) { }
+		NavigateNewLevelArgs(std::string levelFile) : levelFile(levelFile) { }
+	};
+
+	struct NavigateConfirmArgs
+	{
+		std::string message;
+		std::function<void()> confirmCallback;
+		std::function<void()> cancelCallback;
+
+		NavigateConfirmArgs(std::string message, std::function<void()> confirmCallback, std::function<void()> cancelCallback) :
+			message(message), confirmCallback(confirmCallback), cancelCallback(cancelCallback) { }
 	};
 
 	static void navigateBack(int count = 1);
 	static void navigate(GameScreen gameScreen);
+	static void navigateConfirm(std::string confirmMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
 	static void loadLevel(std::string levelFile);
 	static void pause(Node *node);
 	static void resume(Node *node);

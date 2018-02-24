@@ -27,3 +27,13 @@ void Card::initializePositions()
 void Card::initializeListeners()
 {
 }
+
+void Card::reveal()
+{
+
+}
+
+void Card::hide()
+{
+
+}

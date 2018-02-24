@@ -2,6 +2,7 @@
 
 const std::string GameUtils::gameNavigateNewEvent = "game_navigate_new_event";
 const std::string GameUtils::gameNavigateBackEvent = "game_navigate_back_event";
+const std::string GameUtils::gameNavigateConfirmEvent = "game_navigate_confirm_event";
 const std::string GameUtils::gameNavigateNewLevelEvent = "game_navigate_new_level_event";
 
 void GameUtils::navigateBack(int count)
@@ -20,11 +21,19 @@ void GameUtils::navigate(GameScreen gameScreen)
 	);
 }
 
+void GameUtils::navigateConfirm(std::string confirmMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback)
+{
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		GameUtils::gameNavigateConfirmEvent,
+		&NavigateConfirmArgs(confirmMessage, confirmCallback, cancelCallback)
+	);
+}
+
 void GameUtils::loadLevel(std::string levelFile)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		GameUtils::gameNavigateNewLevelEvent,
-		&NavigateNewLevelEvent(levelFile)
+		&NavigateNewLevelArgs(levelFile)
 	);
 }
 
