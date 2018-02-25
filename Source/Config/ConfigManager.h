@@ -39,8 +39,6 @@ private:
 	ConfigManager();
 	~ConfigManager();
 
-	void loadConfigFileMap();
-
 	ValueMap valueMap;
 
 	static ConfigManager * configManagerInstance;

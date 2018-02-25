@@ -100,6 +100,9 @@
     <Filter Include="Source\Minigames\Hexium">
       <UniqueIdentifier>{f4b1560a-37c3-4bc4-996d-b5034b0d838d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Save">
+      <UniqueIdentifier>{b6ef2437-2a70-445e-adb7-dd0b257f1047}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -338,6 +341,9 @@
     </ClCompile>
     <ClCompile Include="Source\Minigames\Hexium\CardData.cpp">
       <Filter>Source\Minigames\Hexium</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Save\SaveManager.cpp">
+      <Filter>Source\Save</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -590,8 +596,14 @@
     <ClInclude Include="Source\Minigames\Hexium\CardData.h">
       <Filter>Source\Minigames\Hexium</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Save\SaveManager.h">
+      <Filter>Source\Save</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resources.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
