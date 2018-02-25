@@ -1,0 +1,76 @@
+#include "CardData.h"
+
+// Use a map here instead of an array. This allows us to remove cards without fucking up the ids of other cards.
+// ie) The case of putting out a steam patch to remove a broken card without ruining existing save files.
+std::map<int, CardData*> CardData::cardList = {
+{ 0, &CardData(Resources::Minigames_Hexium_Binary_0, "Pebble", CardType::Binary) },
+{ 1, &CardData(Resources::Minigames_Hexium_Binary_1, "Peanut", CardType::Binary) },
+{ 2, &CardData(Resources::Minigames_Hexium_Binary_2, "Skitters", CardType::Binary) },
+{ 3, &CardData(Resources::Minigames_Hexium_Binary_4, "Shroomy", CardType::Binary) },
+{ 4, &CardData(Resources::Minigames_Hexium_Binary_5, "Stabby", CardType::Binary) },
+{ 5, &CardData(Resources::Minigames_Hexium_Binary_6, "Stabby II", CardType::Binary) },
+{ 6, &CardData(Resources::Minigames_Hexium_Binary_7, "M-Bot", CardType::Binary) },
+{ 7, &CardData(Resources::Minigames_Hexium_Binary_8, "N.E.P.T.U.N.E", CardType::Binary) },
+{ 8, &CardData(Resources::Minigames_Hexium_Binary_9, "Crush-o-matic", CardType::Binary) },
+{ 9, &CardData(Resources::Minigames_Hexium_Binary_10, "Magma Golem", CardType::Binary) },
+{ 10, &CardData(Resources::Minigames_Hexium_Binary_11, "Mantis", CardType::Binary) },
+{ 11, &CardData(Resources::Minigames_Hexium_Binary_12, "Rock Golem", CardType::Binary) },
+{ 12, &CardData(Resources::Minigames_Hexium_Binary_13, "Tree Spirit", CardType::Binary) },
+{ 13, &CardData(Resources::Minigames_Hexium_Binary_15, "Gem Golem", CardType::Binary) },
+{ 14, &CardData(Resources::Minigames_Hexium_Binary_15, "Yeti", CardType::Binary) },
+{ 15, &CardData(Resources::Minigames_Hexium_Decimal_0, "Carrot", CardType::Decimal) },
+{ 16, &CardData(Resources::Minigames_Hexium_Decimal_1, "Jess", CardType::Decimal) },
+{ 17, &CardData(Resources::Minigames_Hexium_Decimal_2, "Fisherman", CardType::Decimal) },
+{ 18, &CardData(Resources::Minigames_Hexium_Decimal_3, "Maurader", CardType::Decimal) },
+{ 19, &CardData(Resources::Minigames_Hexium_Decimal_4, "Iden", CardType::Decimal) },
+{ 20, &CardData(Resources::Minigames_Hexium_Decimal_5, "Caine 'One Eye' Thorn", CardType::Decimal) },
+{ 21, &CardData(Resources::Minigames_Hexium_Decimal_6, "Kovius", CardType::Decimal) },
+{ 22, &CardData(Resources::Minigames_Hexium_Decimal_7, "Jax", CardType::Decimal) },
+{ 23, &CardData(Resources::Minigames_Hexium_Decimal_8, "Powerfox", CardType::Decimal) },
+{ 24, &CardData(Resources::Minigames_Hexium_Decimal_9, "Aiden", CardType::Decimal) },
+{ 25, &CardData(Resources::Minigames_Hexium_Decimal_10, "Irrius", CardType::Decimal) },
+{ 26, &CardData(Resources::Minigames_Hexium_Decimal_11, "Klide", CardType::Decimal) },
+{ 27, &CardData(Resources::Minigames_Hexium_Decimal_12, "Zatrax", CardType::Decimal) },
+{ 28, &CardData(Resources::Minigames_Hexium_Decimal_13, "Getic the Insane", CardType::Decimal) },
+{ 29, &CardData(Resources::Minigames_Hexium_Decimal_14, "Berserker", CardType::Decimal) },
+{ 30, &CardData(Resources::Minigames_Hexium_Decimal_15, "The Keeper", CardType::Decimal) },
+{ 31, &CardData(Resources::Minigames_Hexium_Hex_0, "Demon Haunch", CardType::Decimal) },
+{ 32, &CardData(Resources::Minigames_Hexium_Hex_1, "Gweeb", CardType::Decimal) },
+{ 33, &CardData(Resources::Minigames_Hexium_Hex_2, "Blat", CardType::Decimal) },
+{ 34, &CardData(Resources::Minigames_Hexium_Hex_3, "Jacob", CardType::Decimal) },
+{ 35, &CardData(Resources::Minigames_Hexium_Hex_4, "Gnip", CardType::Decimal) },
+{ 36, &CardData(Resources::Minigames_Hexium_Hex_5, "Spooks", CardType::Decimal) },
+{ 37, &CardData(Resources::Minigames_Hexium_Hex_6, "Doob", CardType::Decimal) },
+{ 38, &CardData(Resources::Minigames_Hexium_Hex_7, "Sp00ks", CardType::Decimal) },
+{ 39, &CardData(Resources::Minigames_Hexium_Hex_8, "Mother", CardType::Decimal) },
+{ 40, &CardData(Resources::Minigames_Hexium_Hex_9, "Hydra", CardType::Decimal) },
+{ 41, &CardData(Resources::Minigames_Hexium_Hex_10, "Carl", CardType::Decimal) },
+{ 42, &CardData(Resources::Minigames_Hexium_Hex_11, "Shaman", CardType::Decimal) },
+{ 43, &CardData(Resources::Minigames_Hexium_Hex_12, "Captain Sp00ks", CardType::Decimal) },
+{ 44, &CardData(Resources::Minigames_Hexium_Hex_13, "King Sp00ks", CardType::Decimal) },
+{ 45, &CardData(Resources::Minigames_Hexium_Hex_14, "Goliath", CardType::Decimal) },
+{ 46, &CardData(Resources::Minigames_Hexium_Hex_15, "Xarth", CardType::Decimal) },
+{ 47, &CardData(Resources::Minigames_Hexium_Special_BinaryAddition, "Binary Addition", CardType::Special) },
+{ 48, &CardData(Resources::Minigames_Hexium_Special_BinarySubtraction, "Binary Subtraction", CardType::Special) },
+{ 49, &CardData(Resources::Minigames_Hexium_Special_Flip1, "Flip Bit 1", CardType::Special) },
+{ 50, &CardData(Resources::Minigames_Hexium_Special_Flip2, "Flip Bit 2", CardType::Special) },
+{ 51, &CardData(Resources::Minigames_Hexium_Special_Flip3, "Flip Bit 3", CardType::Special) },
+{ 52, &CardData(Resources::Minigames_Hexium_Special_Flip4, "Flip Bit 4", CardType::Special) },
+{ 53, &CardData(Resources::Minigames_Hexium_Special_LogicalAnd, "Logical AND", CardType::Special) },
+{ 54, &CardData(Resources::Minigames_Hexium_Special_LogicalOr, "Logical OR", CardType::Special) },
+{ 55, &CardData(Resources::Minigames_Hexium_Special_LogicalXor, "Logical XOR", CardType::Special) },
+{ 56, &CardData(Resources::Minigames_Hexium_Special_ShiftLeft, "Shift Left", CardType::Special) },
+{ 57, &CardData(Resources::Minigames_Hexium_Special_ShiftRight, "Shift Right", CardType::Special) },
+{ 58, &CardData(Resources::Minigames_Hexium_Special_BitFlip, "Bit Flip", CardType::Special) },
+{ 59, &CardData(Resources::Minigames_Hexium_Special_Clear , "Clear", CardType::Special) },
+{ 60, &CardData(Resources::Minigames_Hexium_Special_Greed, "Draw 2", CardType::Special) },
+{ 61, &CardData(Resources::Minigames_Hexium_Special_Peek, "Peek", CardType::Special) },
+};
+
+CardData::CardData(std::string resourceFile, std::string cardName, CardType cardType)
+{
+}
+
+CardData::~CardData()
+{
+}

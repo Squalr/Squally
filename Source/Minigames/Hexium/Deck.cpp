@@ -28,6 +28,11 @@ void Deck::initializeListeners()
 {
 }
 
+void Deck::CopyDeck(Deck* deck)
+{
+
+}
+
 Card* Deck::drawCard()
 {
 	return nullptr;
