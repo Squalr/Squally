@@ -205,6 +205,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Level\LevelCamera.cpp" />
     <ClCompile Include="Source\Level\Parser\Parser.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Card.cpp" />
+    <ClCompile Include="Source\Minigames\Hexium\CardData.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\CardStorage.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Deck.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Hand.cpp" />
@@ -286,6 +287,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Level\LevelCamera.h" />
     <ClInclude Include="Source\Level\Parser\Parser.h" />
     <ClInclude Include="Source\Minigames\Hexium\Card.h" />
+    <ClInclude Include="Source\Minigames\Hexium\CardData.h" />
     <ClInclude Include="Source\Minigames\Hexium\CardStorage.h" />
     <ClInclude Include="Source\Minigames\Hexium\Deck.h" />
     <ClInclude Include="Source\Minigames\Hexium\Hand.h" />

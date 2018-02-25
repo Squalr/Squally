@@ -10,6 +10,7 @@ class Deck : public Node
 public:
 	static Deck * create();
 
+	void CopyDeck(Deck* deck);
 	Card* drawCard();
 
 private:

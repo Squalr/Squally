@@ -26,6 +26,8 @@ public:
 		}
 	};
 
+	void startGame(Deck* playerDeckStart, Deck* enemyDeckStart);
+
 private:
 	Hexium();
 	~Hexium();
@@ -36,11 +38,30 @@ private:
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onClose(MenuSprite* menuSprite);
 
+	Sprite* emblem;
+
+	Sprite* playerFrame;
+	Sprite* playerSocketA;
+	Sprite* playerSocketB;
+	Sprite* playerSkullA;
+	Sprite* playerSkullB;
+	Sprite* playerPadDeck;
+	Sprite* playerPadGrave;
+
+	Sprite* enemyFrame;
+	Sprite* enemySocketA;
+	Sprite* enemySocketB;
+	Sprite* enemySkullA;
+	Sprite* enemySkullB;
+	Sprite* enemyPadDeck;
+	Sprite* enemyPadGrave;
+
 	Deck* playerDeck;
 	Hand* playerHand;
-
+	Deck* playerGraveyard;
 	Deck* enemyDeck;
 	Hand* enemyHand;
+	Deck* enemyGraveyard;
 
 	Sprite* gameBackground;
 };

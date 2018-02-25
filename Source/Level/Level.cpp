@@ -28,15 +28,27 @@ void Level::onEnter()
 {
 	FadeScene::onEnter();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	this->hackerModeBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-
 	this->addChild(Mouse::claimInstance());
 
 	this->scheduleUpdate();
+	this->initializePositions();
 	this->initializeListeners();
-	this->update(0.0f);
+}
+
+void Level::initializePositions()
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->hackerModeBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+}
+
+void Level::initializeListeners()
+{
+	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+
+	listener->onKeyPressed = CC_CALLBACK_2(Level::onKeyPressed, this);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
 void Level::loadLevel(std::string levelFile)
@@ -144,24 +156,22 @@ void Level::update(float dt)
 	this->gameLayers->setPosition(-LevelCamera::cameraPosition);
 }
 
-void Level::initializeListeners()
-{
-	EventListenerKeyboard* listener = EventListenerKeyboard::create();
-
-	listener->onKeyPressed = CC_CALLBACK_2(Level::onKeyPressed, this);
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-}
-
 void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
+	if (!this->isRunning() || !this->isVisible())
+	{
+		return;
+	}
+
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		GameUtils::navigate(GameUtils::GameScreen::Pause);
+		event->stopPropagation();
 		break;
 	case EventKeyboard::KeyCode::KEY_TAB:
 		this->enableHackerMode();
+		event->stopPropagation();
 		break;
 	}
 }

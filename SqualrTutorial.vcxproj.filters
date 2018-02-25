@@ -336,6 +336,9 @@
     <ClCompile Include="Source\Utils\MathUtils.cpp">
       <Filter>Source\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\CardData.cpp">
+      <Filter>Source\Minigames\Hexium</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -583,6 +586,9 @@
     </ClInclude>
     <ClInclude Include="Source\Utils\MathUtils.h">
       <Filter>Source\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\CardData.h">
+      <Filter>Source\Minigames\Hexium</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
