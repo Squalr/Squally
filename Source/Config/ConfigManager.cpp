@@ -20,16 +20,11 @@ ConfigManager* ConfigManager::getInstance()
 
 ConfigManager::ConfigManager()
 {
-	this->loadConfigFileMap();
+	this->valueMap = FileUtils::getInstance()->getValueMapFromFile(FileUtils::sharedFileUtils()->getWritablePath() + "\\" + ConfigManager::ConfigFile);
 }
 
 ConfigManager::~ConfigManager()
 {
-}
-
-void ConfigManager::loadConfigFileMap()
-{
-	this->valueMap = FileUtils::getInstance()->getValueMapFromFile(FileUtils::sharedFileUtils()->getWritablePath() + "\\" + ConfigManager::ConfigFile);
 }
 
 void ConfigManager::save()

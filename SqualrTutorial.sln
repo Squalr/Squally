@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.0
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SqualrTutorial", "SqualrTutorial.vcxproj", "{76A39BB2-9B84-4C65-98A5-654D86B86F2A}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -24,7 +24,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rapidJson", "Libraries\Rapi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libudis86", "Libraries\Udis86\libudis86.vcxproj", "{D5C34A21-7218-4A08-9578-1EBB35280A42}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fasm", "Libraries\Fasm\Fasm.vcxproj", "{08FBD6FC-AEBC-48E2-AD8D-B5E301522E2D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fasm", "Libraries\Fasm\Fasm.vcxproj", "{08FBD6FC-AEBC-48E2-AD8D-B5E301522E2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
