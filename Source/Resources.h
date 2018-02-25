@@ -1238,7 +1238,14 @@ public:
 	static const std::string Menus_WorldMaps_WaterRuinsLocked;
 	static const std::string Menus_WorldMaps_WaterRuinsSelected;
 	static const std::string Menus_WorldMaps_WorldMapSelector;
+	static const std::string Minigames_Hexium_AvatarFrame;
+	static const std::string Minigames_Hexium_CardBackRobotic;
+	static const std::string Minigames_Hexium_CardBackShadow;
+	static const std::string Minigames_Hexium_CardPad;
+	static const std::string Minigames_Hexium_Emblem;
 	static const std::string Minigames_Hexium_Gameboard;
+	static const std::string Minigames_Hexium_Skull;
+	static const std::string Minigames_Hexium_Socket;
 	static const std::string Minigames_Hexium_Binary_0;
 	static const std::string Minigames_Hexium_Binary_1;
 	static const std::string Minigames_Hexium_Binary_10;

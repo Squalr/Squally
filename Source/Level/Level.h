@@ -31,6 +31,7 @@ protected:
 	~Level();
 
 private:
+	void initializePositions();
 	void initializeListeners();
 	void enableHackerMode();
 	void disableHackerMode();
