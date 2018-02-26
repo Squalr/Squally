@@ -42,74 +42,74 @@
 #define ERRORLOG(msg) log("fun:%s,line:%d,msg:%s",__func__,__LINE__,#msg)
 
 NS_CC_BEGIN
-    namespace experimental{
-class AudioEngineImpl;
+namespace cocos_experimental {
+	class AudioEngineImpl;
 
-class AudioPlayer
-{
-public:
-    AudioPlayer();
-    ~AudioPlayer();
+	class AudioPlayer
+	{
+	public:
+		AudioPlayer();
+		~AudioPlayer();
 
-    void init(const std::string& fileFullPath, float volume, bool loop);
-    void stopPlayer();
+		void init(const std::string& fileFullPath, float volume, bool loop);
+		void stopPlayer();
 
-    player_h _playerHandle;
-    std::function<void()> _initCallback;
-    std::mutex _taskMutex;
+		player_h _playerHandle;
+		std::function<void()> _initCallback;
+		std::mutex _taskMutex;
 
-private:
-    bool _playOver;
-    float _duration;
-    int _audioID;
-    bool _initSucceed;
-    
-    std::function<void (int, const std::string &)> _finishCallback;
+	private:
+		bool _playOver;
+		float _duration;
+		int _audioID;
+		bool _initSucceed;
 
-    friend class AudioEngineImpl;
-};
+		std::function<void(int, const std::string &)> _finishCallback;
 
-class AudioEngineImpl : public cocos2d::Ref
-{
-public:
-    AudioEngineImpl();
-    ~AudioEngineImpl();
+		friend class AudioEngineImpl;
+	};
 
-    bool init();
-    int play2d(const std::string &fileFullPath ,bool loop ,float volume);
-    void setVolume(int audioID,float volume);
-    void setLoop(int audioID, bool loop);
-    void pause(int audioID);
-    void resume(int audioID);
-    void stop(int audioID);
-    void stopAll();
-    float getDuration(int audioID);
-    float getCurrentTime(int audioID);
-    bool setCurrentTime(int audioID, float time);
-    void setFinishCallback(int audioID, const std::function<void (int, const std::string &)> &callback);
+	class AudioEngineImpl : public cocos2d::Ref
+	{
+	public:
+		AudioEngineImpl();
+		~AudioEngineImpl();
 
-    void uncache(const std::string& filePath){}
-    void uncacheAll(){}
-    
-    void update(float dt);
+		bool init();
+		int play2d(const std::string &fileFullPath, bool loop, float volume);
+		void setVolume(int audioID, float volume);
+		void setLoop(int audioID, bool loop);
+		void pause(int audioID);
+		void resume(int audioID);
+		void stop(int audioID);
+		void stopAll();
+		float getDuration(int audioID);
+		float getCurrentTime(int audioID);
+		bool setCurrentTime(int audioID, float time);
+		void setFinishCallback(int audioID, const std::function<void(int, const std::string &)> &callback);
 
-    void preload(const std::string& filePath, std::function<void(bool)> callback);
+		void uncache(const std::string& filePath) {}
+		void uncacheAll() {}
 
-private:
-    void initPlayerCallback(AudioPlayer *player, int audioID);
+		void update(float dt);
 
-    //audioID,AudioInfo
-    std::unordered_map<int, AudioPlayer>  _audioPlayers;
+		void preload(const std::string& filePath, std::function<void(bool)> callback);
 
-    std::mutex _threadMutex;
-    std::vector<int> _toRemoveAudioIDs;
+	private:
+		void initPlayerCallback(AudioPlayer *player, int audioID);
 
-    int currentAudioID;
-    
-    bool _lazyInitLoop;
-};
+		//audioID,AudioInfo
+		std::unordered_map<int, AudioPlayer>  _audioPlayers;
 
- }
+		std::mutex _threadMutex;
+		std::vector<int> _toRemoveAudioIDs;
+
+		int currentAudioID;
+
+		bool _lazyInitLoop;
+	};
+
+}
 NS_CC_END
 
 #endif // __AUDIO_ENGINE_TIZEN_H_

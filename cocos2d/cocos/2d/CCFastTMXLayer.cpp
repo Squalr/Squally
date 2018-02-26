@@ -47,7 +47,7 @@ THE SOFTWARE.
 #include "base/ccUTF8.h"
 
 NS_CC_BEGIN
-namespace experimental {
+namespace cocos_experimental {
 
 const int TMXLayer::FAST_TMX_ORIENTATION_ORTHO = 0;
 const int TMXLayer::FAST_TMX_ORIENTATION_HEX = 1;
@@ -893,6 +893,6 @@ std::string TMXLayer::getDescription() const
     return StringUtils::format("<FastTMXLayer | tag = %d, size = %d,%d>", _tag, (int)_mapTileSize.width, (int)_mapTileSize.height);
 }
 
-} //end of namespace experimental
+} //end of namespace cocos_experimental
 
 NS_CC_END

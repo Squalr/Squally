@@ -1,6 +1,6 @@
 #include "Parser.h"
 
-Layer* Parser::initializeBackground(experimental::TMXTiledMap* map)
+Layer* Parser::initializeBackground(cocos_experimental::TMXTiledMap* map)
 {
 	Layer* layer = Layer::create();
 
@@ -9,7 +9,7 @@ Layer* Parser::initializeBackground(experimental::TMXTiledMap* map)
 	return layer;
 }
 
-Layer* Parser::initializeEnvironment(experimental::TMXTiledMap* map)
+Layer* Parser::initializeEnvironment(cocos_experimental::TMXTiledMap* map)
 {
 	Layer* layer = Layer::create();
 
@@ -20,7 +20,7 @@ Layer* Parser::initializeEnvironment(experimental::TMXTiledMap* map)
 	return layer;
 }
 
-Layer* Parser::initializeObjects(experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback)
+Layer* Parser::initializeObjects(cocos_experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback)
 {
 	Layer* layer = Layer::create();
 	ValueVector objects = map->getObjectGroup("objects")->getObjects();
@@ -66,7 +66,7 @@ Layer* Parser::initializeObjects(experimental::TMXTiledMap* map, std::function<v
 	return layer;
 }
 
-Layer* Parser::initializeEntities(experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback)
+Layer* Parser::initializeEntities(cocos_experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback)
 {
 	Layer* layer = Layer::create();
 	ValueVector entities = map->getObjectGroup("entities")->getObjects();
@@ -128,7 +128,7 @@ Layer* Parser::initializeEntities(experimental::TMXTiledMap* map, std::function<
 	return layer;
 }
 
-Layer* Parser::initializeCollision(experimental::TMXTiledMap* map)
+Layer* Parser::initializeCollision(cocos_experimental::TMXTiledMap* map)
 {
 	ValueVector collisionObjects = map->getObjectGroup("collision")->getObjects();
 	Layer* layer = Layer::create();
@@ -209,10 +209,10 @@ Layer* Parser::initializeCollision(experimental::TMXTiledMap* map)
 	return layer;
 }
 
-Layer* Parser::initializeTileLayer(experimental::TMXTiledMap* map, std::string tileLayer)
+Layer* Parser::initializeTileLayer(cocos_experimental::TMXTiledMap* map, std::string tileLayer)
 {
 	Layer* layer = Layer::create();
-	experimental::TMXLayer* tileMap = map->getLayer(tileLayer);
+	cocos_experimental::TMXLayer* tileMap = map->getLayer(tileLayer);
 
 	// Can be a nullptr if the layer is empty
 	if (tileMap != nullptr)
@@ -224,7 +224,7 @@ Layer* Parser::initializeTileLayer(experimental::TMXTiledMap* map, std::string t
 	return layer;
 }
 
-Layer* Parser::initializeParallaxObjects(experimental::TMXTiledMap* map, std::string parallaxLayer)
+Layer* Parser::initializeParallaxObjects(cocos_experimental::TMXTiledMap* map, std::string parallaxLayer)
 {
 	Layer* layer = Layer::create();
 	ValueVector objects = map->getObjectGroup(parallaxLayer)->getObjects();
@@ -262,7 +262,7 @@ Layer* Parser::initializeParallaxObjects(experimental::TMXTiledMap* map, std::st
 	return layer;
 }
 
-Layer* Parser::initializeDecor(experimental::TMXTiledMap* map, std::string decorLayer)
+Layer* Parser::initializeDecor(cocos_experimental::TMXTiledMap* map, std::string decorLayer)
 {
 	Layer* layer = Layer::create();
 	ValueVector objects = map->getObjectGroup(decorLayer)->getObjects();

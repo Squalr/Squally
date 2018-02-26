@@ -38,69 +38,69 @@
 #include "base/CCRef.h"
 
 NS_CC_BEGIN
-    namespace experimental{
+namespace cocos_experimental {
 #define MAX_AUDIOINSTANCES 32
 
-class CC_DLL AudioEngineImpl : public cocos2d::Ref
-{
-public:
-    AudioEngineImpl();
-    ~AudioEngineImpl();
-    
-    bool init();
-    int play2d(const std::string &fileFullPath ,bool loop ,float volume);
-    void setVolume(int audioID,float volume);
-    void setLoop(int audioID, bool loop);
-    bool pause(int audioID);
-    bool resume(int audioID);
-    bool stop(int audioID);
-    void stopAll();
-    float getDuration(int audioID);
-    float getCurrentTime(int audioID);
-    bool setCurrentTime(int audioID, float time);
-    void setFinishCallback(int audioID, const std::function<void (int, const std::string &)> &callback);
-    
-    void uncache(const std::string& filePath);
-    void uncacheAll();
-    
+	class CC_DLL AudioEngineImpl : public cocos2d::Ref
+	{
+	public:
+		AudioEngineImpl();
+		~AudioEngineImpl();
 
-    int preload(const std::string& filePath, std::function<void(bool isSuccess)> callback);
-    
-    void update(float dt);
-    
-    /**
-     * used internally by ffmod callback 
-     */ 
-    void onSoundFinished(FMOD::Channel * channel); 
-    
-private:
-  
-    /**
-    * returns null if a sound with the given path is not found
-    */
-    FMOD::Sound * findSound(const std::string &path);
-  
-    FMOD::Channel * getChannel(FMOD::Sound *);
-  
-    struct ChannelInfo{
-        int id;
-        std::string path; 
-        FMOD::Sound * sound;
-        FMOD::Channel * channel; 
-        bool loop; 
-        float volume; 
-        std::function<void (int, const std::string &)> callback;
-    };
-    
-    std::map<int, ChannelInfo> mapChannelInfo;
+		bool init();
+		int play2d(const std::string &fileFullPath, bool loop, float volume);
+		void setVolume(int audioID, float volume);
+		void setLoop(int audioID, bool loop);
+		bool pause(int audioID);
+		bool resume(int audioID);
+		bool stop(int audioID);
+		void stopAll();
+		float getDuration(int audioID);
+		float getCurrentTime(int audioID);
+		bool setCurrentTime(int audioID, float time);
+		void setFinishCallback(int audioID, const std::function<void(int, const std::string &)> &callback);
 
-    std::map<std::string, int> mapId;
-    
-    std::map<std::string, FMOD::Sound *> mapSound;  
-    
-    FMOD::System* pSystem;
-    
-};
+		void uncache(const std::string& filePath);
+		void uncacheAll();
+
+
+		int preload(const std::string& filePath, std::function<void(bool isSuccess)> callback);
+
+		void update(float dt);
+
+		/**
+		 * used internally by ffmod callback
+		 */
+		void onSoundFinished(FMOD::Channel * channel);
+
+	private:
+
+		/**
+		* returns null if a sound with the given path is not found
+		*/
+		FMOD::Sound * findSound(const std::string &path);
+
+		FMOD::Channel * getChannel(FMOD::Sound *);
+
+		struct ChannelInfo {
+			int id;
+			std::string path;
+			FMOD::Sound * sound;
+			FMOD::Channel * channel;
+			bool loop;
+			float volume;
+			std::function<void(int, const std::string &)> callback;
+		};
+
+		std::map<int, ChannelInfo> mapChannelInfo;
+
+		std::map<std::string, int> mapId;
+
+		std::map<std::string, FMOD::Sound *> mapSound;
+
+		FMOD::System* pSystem;
+
+	};
 }
 NS_CC_END
 #endif // __AUDIO_ENGINE_LINUX_H_

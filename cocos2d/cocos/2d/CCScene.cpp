@@ -273,7 +273,7 @@ void Scene::render(Renderer* renderer, const Mat4* eyeTransforms, const Mat4* ey
 #endif
 
     Camera::_visitingCamera = nullptr;
-//    experimental::FrameBuffer::applyDefaultFBO();
+//    cocos_experimental::FrameBuffer::applyDefaultFBO();
 }
 
 void Scene::removeAllChildren()

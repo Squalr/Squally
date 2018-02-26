@@ -32,39 +32,41 @@ THE SOFTWARE.
 #include "base/CCConsole.h"
 #include "mpg123.h"
 
-namespace cocos2d { namespace experimental {
+namespace cocos2d {
+	namespace cocos_experimental {
 
-static bool __mp3Inited = false;
+		static bool __mp3Inited = false;
 
-bool AudioDecoderManager::init()
-{
-    return true;
-}
+		bool AudioDecoderManager::init()
+		{
+			return true;
+		}
 
-void AudioDecoderManager::destroy()
-{
-    AudioDecoderMp3::destroy();
-}
+		void AudioDecoderManager::destroy()
+		{
+			AudioDecoderMp3::destroy();
+		}
 
-AudioDecoder* AudioDecoderManager::createDecoder(const char* path)
-{
-    std::string suffix = FileUtils::getInstance()->getFileExtension(path);
-    if (suffix == ".ogg")
-    {
-        return new (std::nothrow) AudioDecoderOgg();
-    }
-    else if (suffix == ".mp3")
-    {
-        return new (std::nothrow) AudioDecoderMp3();
-    }
+		AudioDecoder* AudioDecoderManager::createDecoder(const char* path)
+		{
+			std::string suffix = FileUtils::getInstance()->getFileExtension(path);
+			if (suffix == ".ogg")
+			{
+				return new (std::nothrow) AudioDecoderOgg();
+			}
+			else if (suffix == ".mp3")
+			{
+				return new (std::nothrow) AudioDecoderMp3();
+			}
 
-    return nullptr;
-}
+			return nullptr;
+		}
 
-void AudioDecoderManager::destroyDecoder(AudioDecoder* decoder)
-{
-    delete decoder;
-}
+		void AudioDecoderManager::destroyDecoder(AudioDecoder* decoder)
+		{
+			delete decoder;
+		}
 
-}} // namespace cocos2d { namespace experimental {
+	}
+} // namespace cocos2d { namespace cocos_experimental {
 

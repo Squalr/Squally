@@ -40,7 +40,7 @@
 #include "platform/CCPlatformMacros.h"
 
 NS_CC_BEGIN
-namespace experimental{
+namespace cocos_experimental{
 
 class AudioCache;
 class AudioEngineImpl;

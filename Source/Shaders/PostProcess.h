@@ -4,7 +4,6 @@
 #include <memory>
 #include <string>
 
-using namespace std;
 using namespace cocos2d;
 
 class PostProcess : public cocos2d::Layer

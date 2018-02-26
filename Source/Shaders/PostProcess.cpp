@@ -17,7 +17,7 @@ PostProcess* PostProcess::create(const std::string& vertexShaderFile, const std:
 	}
 }
 
-PostProcess::PostProcess() : mpImpl(make_unique<PostProcess::Impl>(this))
+PostProcess::PostProcess() : mpImpl(std::make_unique<PostProcess::Impl>(this))
 {
 
 }

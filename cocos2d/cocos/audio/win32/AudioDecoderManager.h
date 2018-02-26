@@ -24,7 +24,7 @@ THE SOFTWARE.
 
 #pragma once
 
-namespace cocos2d { namespace experimental {
+namespace cocos2d { namespace cocos_experimental {
 
 class AudioDecoder;
 
@@ -37,5 +37,5 @@ public:
     static void destroyDecoder(AudioDecoder* decoder);
 };
 
-}} // namespace cocos2d { namespace experimental {
+}} // namespace cocos2d { namespace cocos_experimental {
 

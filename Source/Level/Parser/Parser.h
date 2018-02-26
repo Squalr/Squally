@@ -14,15 +14,15 @@ using namespace cocos2d;
 class Parser
 {
 public:
-	static Layer* initializeTileLayer(experimental::TMXTiledMap* map, std::string tileLayer);
-	static Layer* initializeDecor(experimental::TMXTiledMap* map, std::string decorLayer);
-	static Layer* initializeParallaxObjects(experimental::TMXTiledMap* map, std::string parallaxLayer);
+	static Layer* initializeTileLayer(cocos_experimental::TMXTiledMap* map, std::string tileLayer);
+	static Layer* initializeDecor(cocos_experimental::TMXTiledMap* map, std::string decorLayer);
+	static Layer* initializeParallaxObjects(cocos_experimental::TMXTiledMap* map, std::string parallaxLayer);
 
-	static Layer* initializeBackground(experimental::TMXTiledMap* map);
-	static Layer* initializeEnvironment(experimental::TMXTiledMap* map);
-	static Layer* initializeEntities(experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback);
-	static Layer* initializeObjects(experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback);
-	static Layer* initializeCollision(experimental::TMXTiledMap* map);
+	static Layer* initializeBackground(cocos_experimental::TMXTiledMap* map);
+	static Layer* initializeEnvironment(cocos_experimental::TMXTiledMap* map);
+	static Layer* initializeEntities(cocos_experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback);
+	static Layer* initializeObjects(cocos_experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback);
+	static Layer* initializeCollision(cocos_experimental::TMXTiledMap* map);
 
 private:
 	static Sprite* loadObject(ValueMap object);

@@ -77,10 +77,10 @@ void VRGenericRenderer::setup(GLView* /*glview*/)
 
     _texSize = Size(vp._width, vp._height);
 
-    _fb = experimental::FrameBuffer::create(1, _texSize.width, _texSize.height);
+    _fb = cocos_experimental::FrameBuffer::create(1, _texSize.width, _texSize.height);
     _fb->retain();
-    auto rt = experimental::RenderTarget::create(_texSize.width, _texSize.height);
-    auto ds = experimental::RenderTargetDepthStencil::create(_texSize.width, _texSize.height);
+    auto rt = cocos_experimental::RenderTarget::create(_texSize.width, _texSize.height);
+    auto ds = cocos_experimental::RenderTargetDepthStencil::create(_texSize.width, _texSize.height);
     _fb->attachRenderTarget(rt);
     _fb->attachDepthStencilTarget(ds);
     _fb->setClearColor(Color4F(0,0,0,1));

@@ -58,7 +58,7 @@ void Level::loadLevel(std::string levelFile)
 	//this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, 0.0f));
 
-	experimental::TMXTiledMap* map = experimental::TMXTiledMap::create(levelFile);
+	cocos_experimental::TMXTiledMap* map = cocos_experimental::TMXTiledMap::create(levelFile);
 	Level::mapSize = Size(map->getMapSize().width * map->getTileSize().width, map->getMapSize().height * map->getTileSize().height);
 
 	this->background = Parser::initializeBackground(map);

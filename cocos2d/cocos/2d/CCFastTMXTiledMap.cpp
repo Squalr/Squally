@@ -29,7 +29,7 @@ THE SOFTWARE.
 #include "base/ccUTF8.h"
 
 NS_CC_BEGIN
-namespace experimental {
+namespace cocos_experimental {
 
 // implementation FastTMXTiledMap
 
@@ -255,7 +255,7 @@ std::string TMXTiledMap::getDescription() const
     return StringUtils::format("<FastTMXTiledMap | Tag = %d, Layers = %d", _tag, static_cast<int>(_children.size()));
 }
 
-} //end of namespace experimental
+} //end of namespace cocos_experimental
 
 NS_CC_END
 
