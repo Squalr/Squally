@@ -9,13 +9,18 @@ class Deck : public Node
 {
 public:
 	static Deck * create();
+	static Deck * create(Card::CardStyle cardStyle, std::vector<CardData*>* cards);
 
 	void CopyDeck(Deck* deck);
 	Card* drawCard();
 
 private:
 	Deck();
+	Deck(Card::CardStyle cardStyle, std::vector<CardData*>* cards);
 	~Deck();
+	void onEnter() override;
+
+	std::vector<Card*>* deckCards;
 
 	void initializePositions();
 	void initializeListeners();
