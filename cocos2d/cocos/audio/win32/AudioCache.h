@@ -41,7 +41,7 @@
 #include "audio/win32/AudioMacros.h"
 
 NS_CC_BEGIN
-namespace experimental{
+namespace cocos_experimental{
 
 class AudioEngineImpl;
 class AudioPlayer;

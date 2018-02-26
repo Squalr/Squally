@@ -4,7 +4,7 @@
 #include "ConfigManager.h"
 
 using namespace cocos2d;
-using namespace experimental;
+using namespace cocos_experimental;
 
 class SoundManager
 {

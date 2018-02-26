@@ -28,7 +28,7 @@
 
 #include "vorbis/vorbisfile.h"
 
-namespace cocos2d { namespace experimental {
+namespace cocos2d { namespace cocos_experimental {
 
 /**
  * @brief The class for decoding compressed audio file to PCM buffer.
@@ -116,4 +116,4 @@ protected:
     friend class AudioDecoderManager;
 };
 
-}} // namespace cocos2d { namespace experimental {
+}} // namespace cocos2d { namespace cocos_experimental {

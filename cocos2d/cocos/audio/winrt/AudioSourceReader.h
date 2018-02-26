@@ -35,121 +35,121 @@
 #include "vorbis/vorbisfile.h"
 
 NS_CC_BEGIN
-namespace experimental{
+namespace cocos_experimental {
 
-const size_t PCMDATA_CACHEMAXSIZE = 2621440;
-const size_t QUEUEBUFFER_NUM = 4;
-const size_t CHUNK_SIZE_MAX = PCMDATA_CACHEMAXSIZE / QUEUEBUFFER_NUM;
+	const size_t PCMDATA_CACHEMAXSIZE = 2621440;
+	const size_t QUEUEBUFFER_NUM = 4;
+	const size_t CHUNK_SIZE_MAX = PCMDATA_CACHEMAXSIZE / QUEUEBUFFER_NUM;
 
-typedef std::vector<BYTE> PCMBuffer;
+	typedef std::vector<BYTE> PCMBuffer;
 
-enum class FileFormat
-{
-    UNKNOWN,
-    WAV,
-    MP3,
-    OGG
-};
+	enum class FileFormat
+	{
+		UNKNOWN,
+		WAV,
+		MP3,
+		OGG
+	};
 
-typedef struct AudioDataChunk
-{
-    std::shared_ptr<PCMBuffer> _data;
-    size_t _dataSize;
-    bool _endOfStream;
-    int _seqNo;
-} AudioDataChunk;
+	typedef struct AudioDataChunk
+	{
+		std::shared_ptr<PCMBuffer> _data;
+		size_t _dataSize;
+		bool _endOfStream;
+		int _seqNo;
+	} AudioDataChunk;
 
 
-class AudioSourceReader
-{
-public:
-    AudioSourceReader();
-    virtual ~AudioSourceReader();
+	class AudioSourceReader
+	{
+	public:
+		AudioSourceReader();
+		virtual ~AudioSourceReader();
 
-    bool isStreamingSource() { return _isStreaming; }
-    std::string getFilePath() { return _filePath; }
-    virtual size_t getTotalAudioBytes() { return _audioSize; }
-    
-    virtual bool initialize(const std::string& filePath) = 0;
-    virtual FileFormat getFileFormat() = 0;
-    virtual  bool consumeChunk(AudioDataChunk& chunk) = 0;
-    virtual  void produceChunk() = 0;
-    virtual void seekTo(const float ratio) = 0;
-    virtual const WAVEFORMATEX& getWaveFormatInfo() { return _wfx; }
+		bool isStreamingSource() { return _isStreaming; }
+		std::string getFilePath() { return _filePath; }
+		virtual size_t getTotalAudioBytes() { return _audioSize; }
 
-protected:
-    void flushChunks();
+		virtual bool initialize(const std::string& filePath) = 0;
+		virtual FileFormat getFileFormat() = 0;
+		virtual  bool consumeChunk(AudioDataChunk& chunk) = 0;
+		virtual  void produceChunk() = 0;
+		virtual void seekTo(const float ratio) = 0;
+		virtual const WAVEFORMATEX& getWaveFormatInfo() { return _wfx; }
 
-protected:
-    bool _isDirty;
-    size_t _bytesRead;
-    bool _isStreaming;
-    std::string _filePath;
-    size_t _audioSize;
-    WAVEFORMATEX _wfx;
-    std::mutex _rwMutex;
-    std::queue<AudioDataChunk> _chnkQ;
-};
+	protected:
+		void flushChunks();
 
-class WAVReader : public AudioSourceReader
- {
- public:
-     WAVReader();
-     virtual ~WAVReader();
+	protected:
+		bool _isDirty;
+		size_t _bytesRead;
+		bool _isStreaming;
+		std::string _filePath;
+		size_t _audioSize;
+		WAVEFORMATEX _wfx;
+		std::mutex _rwMutex;
+		std::queue<AudioDataChunk> _chnkQ;
+	};
 
-     virtual bool initialize(const std::string& filePath) override;
-     virtual FileFormat getFileFormat() override { return FileFormat::WAV; }
-     virtual bool consumeChunk(AudioDataChunk& chunk) override;
-     virtual void produceChunk() override;
-     virtual void seekTo(const float ratio) override;
+	class WAVReader : public AudioSourceReader
+	{
+	public:
+		WAVReader();
+		virtual ~WAVReader();
 
- private:
-     MediaStreamer^ _streamer;
- };
+		virtual bool initialize(const std::string& filePath) override;
+		virtual FileFormat getFileFormat() override { return FileFormat::WAV; }
+		virtual bool consumeChunk(AudioDataChunk& chunk) override;
+		virtual void produceChunk() override;
+		virtual void seekTo(const float ratio) override;
 
-class MP3Reader : public AudioSourceReader
- {
- public:
-     MP3Reader();
-     virtual ~MP3Reader();
+	private:
+		MediaStreamer ^ _streamer;
+	};
 
-     virtual bool initialize(const std::string& filePath) override;
-     virtual FileFormat getFileFormat() override { return FileFormat::WAV; }
-     virtual bool consumeChunk(AudioDataChunk& chunk) override;
-     virtual void produceChunk() override;
-     virtual void seekTo(const float ratio) override;
+	class MP3Reader : public AudioSourceReader
+	{
+	public:
+		MP3Reader();
+		virtual ~MP3Reader();
 
-     // for backward compatibility with simple audio engine
-     void doLargeFileSupport(bool action) { _largeFileSupport = action; }
+		virtual bool initialize(const std::string& filePath) override;
+		virtual FileFormat getFileFormat() override { return FileFormat::WAV; }
+		virtual bool consumeChunk(AudioDataChunk& chunk) override;
+		virtual void produceChunk() override;
+		virtual void seekTo(const float ratio) override;
 
- protected:
-     HRESULT configureSourceReader(IMFSourceReader* pReader, IMFMediaType** ppDecomprsdAudioType);
-     HRESULT readAudioData(IMFSourceReader* pReader);
-     void chunkify(PCMBuffer& buffer);
-     bool appendToMappedWavFile(PCMBuffer& buffer);
-     void readFromMappedWavFile(BYTE *data, size_t offset, size_t size, UINT *pRetSize);
-     Microsoft::WRL::Wrappers::FileHandle openFile(const std::string& path, bool append = false);
+		// for backward compatibility with simple audio engine
+		void doLargeFileSupport(bool action) { _largeFileSupport = action; }
 
- private:
-     bool _largeFileSupport;
-     std::string _mappedWavFile;
- };
+	protected:
+		HRESULT configureSourceReader(IMFSourceReader* pReader, IMFMediaType** ppDecomprsdAudioType);
+		HRESULT readAudioData(IMFSourceReader* pReader);
+		void chunkify(PCMBuffer& buffer);
+		bool appendToMappedWavFile(PCMBuffer& buffer);
+		void readFromMappedWavFile(BYTE *data, size_t offset, size_t size, UINT *pRetSize);
+		Microsoft::WRL::Wrappers::FileHandle openFile(const std::string& path, bool append = false);
 
-class OGGReader : public AudioSourceReader
-{
-public:
-    OGGReader();
-    virtual ~OGGReader();
+	private:
+		bool _largeFileSupport;
+		std::string _mappedWavFile;
+	};
 
-    virtual bool initialize(const std::string& filePath) override;
-    virtual FileFormat getFileFormat() override { return FileFormat::WAV; }
-    virtual bool consumeChunk(AudioDataChunk& chunk) override;
-    virtual void produceChunk() override;
-    virtual void seekTo(const float ratio) override;
+	class OGGReader : public AudioSourceReader
+	{
+	public:
+		OGGReader();
+		virtual ~OGGReader();
 
-private:
-    std::unique_ptr<OggVorbis_File> _vorbisFd;
-};
+		virtual bool initialize(const std::string& filePath) override;
+		virtual FileFormat getFileFormat() override { return FileFormat::WAV; }
+		virtual bool consumeChunk(AudioDataChunk& chunk) override;
+		virtual void produceChunk() override;
+		virtual void seekTo(const float ratio) override;
+
+	private:
+		std::unique_ptr<OggVorbis_File> _vorbisFd;
+	};
 
 }
 NS_CC_END

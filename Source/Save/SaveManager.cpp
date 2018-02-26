@@ -16,13 +16,14 @@ SaveManager* SaveManager::getInstance()
 
 SaveManager::SaveManager()
 {
-	// this->saveData = nullptr;
+	this->saveData = new ValueMap();
 
 	SaveManager::setActiveSave(0);
 }
 
 SaveManager::~SaveManager()
 {
+	delete(this->saveData);
 }
 
 void SaveManager::setActiveSave(int index)
@@ -38,11 +39,4 @@ void SaveManager::setActiveSave(int index)
 	// instance->saveData = binn_object();
 
 	// TODO: load from save data
-}
-
-void SaveManager::save()
-{
-	SaveManager* instance = SaveManager::getInstance();
-
-	FileUtils::sharedFileUtils()->getWritablePath() + "\\" + instance->saveFile;
 }

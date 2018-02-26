@@ -17,7 +17,7 @@
 #include <string>
 
 using namespace cocos2d;
-using namespace experimental;
+using namespace cocos_experimental;
 
 class TitleScreen : public FadeScene
 {

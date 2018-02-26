@@ -31,7 +31,7 @@
 #include "ui/UIWebViewImpl-tizen.h"
 
 NS_CC_BEGIN
-namespace experimental{
+namespace cocos_experimental{
     namespace ui{
 
         WebView::WebView()
@@ -240,7 +240,7 @@ namespace experimental{
         }
 
     } // namespace ui
-} // namespace experimental
+} // namespace cocos_experimental
 } //namespace cocos2d
 
 /// @endcond
