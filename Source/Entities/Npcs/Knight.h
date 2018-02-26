@@ -12,6 +12,9 @@ class Knight : public NpcBase
 public:
 	static Knight * create();
 
+protected:
+	void initializeCardData() override;
+
 private:
 	Knight();
 	~Knight();

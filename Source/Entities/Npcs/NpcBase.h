@@ -3,6 +3,7 @@
 #include "Resources.h"
 #include "Entities/Entity.h"
 #include "Objects/Collision/CategoryGroup.h"
+#include "Minigames/Hexium/Hexium.h"
 
 using namespace cocos2d;
 
@@ -18,9 +19,13 @@ protected:
 
 	void update(float) override;
 
-private:
+protected:
+	virtual void onInteractButtonClick(MenuSprite* menuSprite);
+	virtual void initializeCardData();
 
-	void onInteractButtonClick(MenuSprite* menuSprite);
+	Deck* deck;
+
+private:
 
 	MenuSprite * interactButton;
 };
