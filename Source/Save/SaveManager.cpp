@@ -1,42 +1,46 @@
 #include "SaveManager.h"
 
-const std::string SaveManager::musicVolumeKey = "music";
+const std::string SaveManager::saveFileName = "SaveGame_%d.sav";
 
-SaveManager* SaveManager::configManagerInstance = nullptr;
-
-SaveManager* SaveManager::getInstance()
-{
-	if (SaveManager::configManagerInstance == nullptr)
-	{
-		SaveManager::configManagerInstance = new SaveManager();
-	}
-
-	return SaveManager::configManagerInstance;
-}
+SaveManager* SaveManager::saveManagerInstance = nullptr;
 
 SaveManager::SaveManager()
 {
-	this->saveData = new ValueMap();
-
 	SaveManager::setActiveSave(0);
 }
 
 SaveManager::~SaveManager()
 {
-	delete(this->saveData);
+}
+
+SaveManager* SaveManager::getInstance()
+{
+	if (SaveManager::saveManagerInstance == nullptr)
+	{
+		SaveManager::saveManagerInstance = new SaveManager();
+	}
+
+	return SaveManager::saveManagerInstance;
+}
+
+ValueMap* SaveManager::getValueMap()
+{
+	SaveManager* instance = SaveManager::getInstance();
+
+	return &instance->saveData;
 }
 
 void SaveManager::setActiveSave(int index)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
-	// if (instance->saveData != nullptr)
-	{
-		// delete(instance->saveData);
-	}
+	instance->saveFile = (FileUtils::sharedFileUtils()->getWritablePath() + "\\").c_str() + printf_s(SaveManager::saveFileName.c_str(), index);
+	instance->saveData = FileUtils::getInstance()->deserializeValueMapFromFile(instance->saveFile);
+}
 
-	instance->saveFile = printf_s("SaveGame_%d.sav", index);
-	// instance->saveData = binn_object();
+void SaveManager::save()
+{
+	SaveManager* instance = SaveManager::getInstance();
 
-	// TODO: load from save data
+	FileUtils::getInstance()->writeValueMapToFile(instance->saveData, instance->saveFile);
 }

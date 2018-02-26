@@ -13,7 +13,7 @@ public:
 		Shadow,
 	};
 
-	static Card * create(CardStyle cardStyle, int id);
+	static Card* create(CardStyle cardStyle, CardData* data);
 
 	void reveal();
 	void hide();
@@ -21,7 +21,7 @@ public:
 	static const float cardScale;
 
 private:
-	Card(CardStyle cardStyle, int id);
+	Card(CardStyle cardStyle, CardData* data);
 	~Card();
 
 	void initializePositions();

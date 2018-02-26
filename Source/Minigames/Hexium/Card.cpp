@@ -2,18 +2,18 @@
 
 const float Card::cardScale = 0.4f;
 
-Card* Card::create(CardStyle cardStyle, int id)
+Card* Card::create(CardStyle cardStyle, CardData* data)
 {
-	Card* card = new Card(cardStyle, id);
+	Card* card = new Card(cardStyle, data);
 
 	card->autorelease();
 
 	return card;
 }
 
-Card::Card(CardStyle cardStyle, int id)
+Card::Card(CardStyle cardStyle, CardData* data)
 {
-	this->cardData = CardData::cardList.at(id);
+	this->cardData = data;
 
 	switch (cardStyle)
 	{

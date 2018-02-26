@@ -16,6 +16,8 @@ NpcBase::NpcBase() : Entity::Entity()
 	this->interactButton->setPosition(Vec2(this->interactButton->getContentSize().width / 4.0f, 196.0f));
 
 	this->addChild(this->interactButton);
+
+	this->initializeCardData();
 }
 
 NpcBase::~NpcBase()
@@ -30,6 +32,11 @@ void NpcBase::update(float dt)
 void NpcBase::onInteractButtonClick(MenuSprite* menuSprite)
 {
 	GameUtils::navigate(GameUtils::GameScreen::Hexium);
+}
+
+void NpcBase::initializeCardData()
+{
+	this->deck = nullptr;
 }
 
 bool NpcBase::contactBegin(CollisionData data)
