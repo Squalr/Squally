@@ -28,7 +28,7 @@
 
 #define LOG_TAG "AudioDecoder"
 
-namespace cocos2d { namespace experimental {
+namespace cocos2d { namespace cocos_experimental {
 
 AudioDecoder::AudioDecoder()
     : _isOpened(false)
@@ -88,4 +88,4 @@ AudioDecoder::AudioDecoder()
         return _channelCount;
     }
 
-}} // namespace cocos2d { namespace experimental {
+}} // namespace cocos2d { namespace cocos_experimental {

@@ -37,58 +37,58 @@
 #include <OpenAL/al.h>
 
 NS_CC_BEGIN
-namespace experimental{
+namespace cocos_experimental {
 
-class AudioCache;
-class AudioEngineImpl;
+	class AudioCache;
+	class AudioEngineImpl;
 
-class AudioPlayer
-{
-public:
-    AudioPlayer();
-    ~AudioPlayer();
+	class AudioPlayer
+	{
+	public:
+		AudioPlayer();
+		~AudioPlayer();
 
-    void destroy();
+		void destroy();
 
-    //queue buffer related stuff
-    bool setTime(float time);
-    float getTime() { return _currTime;}
-    bool setLoop(bool loop);
+		//queue buffer related stuff
+		bool setTime(float time);
+		float getTime() { return _currTime; }
+		bool setLoop(bool loop);
 
-protected:
-    void setCache(AudioCache* cache);
-    void rotateBufferThread(int offsetFrame);
-    bool play2d();
-    void wakeupRotateThread();
+	protected:
+		void setCache(AudioCache* cache);
+		void rotateBufferThread(int offsetFrame);
+		bool play2d();
+		void wakeupRotateThread();
 
-    AudioCache* _audioCache;
+		AudioCache* _audioCache;
 
-    float _volume;
-    bool _loop;
-    std::function<void (int, const std::string &)> _finishCallbak;
+		float _volume;
+		bool _loop;
+		std::function<void(int, const std::string &)> _finishCallbak;
 
-    bool _isDestroyed;
-    bool _removeByAudioEngine;
-    bool _ready;
-    ALuint _alSource;
+		bool _isDestroyed;
+		bool _removeByAudioEngine;
+		bool _ready;
+		ALuint _alSource;
 
-    //play by circular buffer
-    float _currTime;
-    bool _streamingSource;
-    ALuint _bufferIds[QUEUEBUFFER_NUM];
-    std::thread* _rotateBufferThread;
-    std::condition_variable _sleepCondition;
-    std::mutex _sleepMutex;
-    bool _timeDirty;
-    bool _isRotateThreadExited;
-    std::atomic_bool _needWakeupRotateThread;
+		//play by circular buffer
+		float _currTime;
+		bool _streamingSource;
+		ALuint _bufferIds[QUEUEBUFFER_NUM];
+		std::thread* _rotateBufferThread;
+		std::condition_variable _sleepCondition;
+		std::mutex _sleepMutex;
+		bool _timeDirty;
+		bool _isRotateThreadExited;
+		std::atomic_bool _needWakeupRotateThread;
 
-    std::mutex _play2dMutex;
+		std::mutex _play2dMutex;
 
-    unsigned int _id;
+		unsigned int _id;
 
-    friend class AudioEngineImpl;
-};
+		friend class AudioEngineImpl;
+	};
 
 }
 NS_CC_END

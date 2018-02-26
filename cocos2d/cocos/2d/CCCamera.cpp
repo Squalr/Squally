@@ -39,7 +39,7 @@
 NS_CC_BEGIN
 
 Camera* Camera::_visitingCamera = nullptr;
-experimental::Viewport Camera::_defaultViewport;
+cocos_experimental::Viewport Camera::_defaultViewport;
 
 // start static methods
 
@@ -90,11 +90,11 @@ Camera* Camera::getDefaultCamera()
     return nullptr;
 }
 
-const experimental::Viewport& Camera::getDefaultViewport()
+const cocos_experimental::Viewport& Camera::getDefaultViewport()
 {
     return _defaultViewport;
 }
-void Camera::setDefaultViewport(const experimental::Viewport& vp)
+void Camera::setDefaultViewport(const cocos_experimental::Viewport& vp)
 {
     _defaultViewport = vp;
 }
@@ -431,7 +431,7 @@ void Camera::clearBackground()
     }
 }
 
-void Camera::setFrameBufferObject(experimental::FrameBuffer *fbo)
+void Camera::setFrameBufferObject(cocos_experimental::FrameBuffer *fbo)
 {
     CC_SAFE_RETAIN(fbo);
     CC_SAFE_RELEASE_NULL(_fbo);
@@ -455,7 +455,7 @@ void Camera::applyFrameBufferObject()
     {
         // inherit from context if it doesn't have a FBO
         // don't call apply the default one
-//        experimental::FrameBuffer::applyDefaultFBO();
+//        cocos_experimental::FrameBuffer::applyDefaultFBO();
     }
     else
     {
@@ -478,7 +478,7 @@ void Camera::applyViewport()
     }
 }
 
-void Camera::setViewport(const experimental::Viewport& vp)
+void Camera::setViewport(const cocos_experimental::Viewport& vp)
 {
     _viewport = vp;
 }
@@ -495,7 +495,7 @@ void Camera::restoreFrameBufferObject()
     {
         // it was inherited from context if it doesn't have a FBO
         // don't call restore the default one... just keep using the previous one
-//        experimental::FrameBuffer::applyDefaultFBO();
+//        cocos_experimental::FrameBuffer::applyDefaultFBO();
     }
     else
     {

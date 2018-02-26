@@ -941,6 +941,55 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\..\extensions\Particle3D\PU\CCPUVortexAffectorTranslator.h" />
     <ClInclude Include="..\..\extensions\physics-nodes\CCPhysicsDebugNode.h" />
     <ClInclude Include="..\..\extensions\physics-nodes\CCPhysicsSprite.h" />
+    <ClInclude Include="..\..\external\cereal\access.hpp" />
+    <ClInclude Include="..\..\external\cereal\archives\binary.hpp" />
+    <ClInclude Include="..\..\external\cereal\archives\json.hpp" />
+    <ClInclude Include="..\..\external\cereal\archives\portable_binary.hpp" />
+    <ClInclude Include="..\..\external\cereal\archives\xml.hpp" />
+    <ClInclude Include="..\..\external\cereal\cereal.hpp" />
+    <ClInclude Include="..\..\external\cereal\details\helpers.hpp" />
+    <ClInclude Include="..\..\external\cereal\details\polymorphic_impl.hpp" />
+    <ClInclude Include="..\..\external\cereal\details\static_object.hpp" />
+    <ClInclude Include="..\..\external\cereal\details\traits.hpp" />
+    <ClInclude Include="..\..\external\cereal\details\util.hpp" />
+    <ClInclude Include="..\..\external\cereal\external\base64.hpp" />
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\document.h" />
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\filestream.h" />
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\genericstream.h" />
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\internal\pow10.h" />
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\internal\stack.h" />
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\internal\strfunc.h" />
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\prettywriter.h" />
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\rapidjson.h" />
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\reader.h" />
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\stringbuffer.h" />
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\writer.h" />
+    <ClInclude Include="..\..\external\cereal\external\rapidxml\rapidxml.hpp" />
+    <ClInclude Include="..\..\external\cereal\external\rapidxml\rapidxml_iterators.hpp" />
+    <ClInclude Include="..\..\external\cereal\external\rapidxml\rapidxml_print.hpp" />
+    <ClInclude Include="..\..\external\cereal\external\rapidxml\rapidxml_utils.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\array.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\base_class.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\bitset.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\boost_variant.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\chrono.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\common.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\complex.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\deque.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\forward_list.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\list.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\map.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\memory.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\polymorphic.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\queue.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\set.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\stack.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\string.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\tuple.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\unordered_map.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\unordered_set.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\utility.hpp" />
+    <ClInclude Include="..\..\external\cereal\types\vector.hpp" />
     <ClInclude Include="..\..\external\clipper\clipper.hpp" />
     <ClInclude Include="..\..\external\ConvertUTF\ConvertUTF.h" />
     <ClInclude Include="..\..\external\edtaa3func\edtaa3func.h" />
@@ -1407,6 +1456,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="CCTweenFunction.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\external\cereal\external\rapidxml\manual.html" />
     <None Include="..\3d\CCAnimationCurve.inl" />
     <None Include="..\math\Mat4.inl" />
     <None Include="..\math\MathUtil.inl" />
@@ -1429,6 +1479,5 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>

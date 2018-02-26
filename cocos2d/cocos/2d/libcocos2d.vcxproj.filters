@@ -292,6 +292,30 @@
     <Filter Include="external\md5">
       <UniqueIdentifier>{d3d38486-e13f-47b4-96b0-51a7c78e6d69}</UniqueIdentifier>
     </Filter>
+    <Filter Include="external\cereal">
+      <UniqueIdentifier>{d7f464fe-5a77-4f90-9ee1-4ee146e180e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\cereal\archive">
+      <UniqueIdentifier>{7ccb5e23-99e9-4b50-8745-8f1e2037df51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\cereal\details">
+      <UniqueIdentifier>{687a521d-9d9c-4b0a-aae9-9a033089dea7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\cereal\external">
+      <UniqueIdentifier>{d150428f-e16f-4b9d-b287-10c266783262}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\cereal\types">
+      <UniqueIdentifier>{b838a69a-7b36-41bc-823a-8e8a176661fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\cereal\external\rapidjson">
+      <UniqueIdentifier>{a4402327-6829-4380-9675-1d3b6f35644b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\cereal\external\rapidxml">
+      <UniqueIdentifier>{0c4ddd33-41f0-4e71-9b43-079742171c91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\cereal\external\rapidjson\internal">
+      <UniqueIdentifier>{b1557f8b-83cf-42ce-a896-d2d5bd308876}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\physics\CCPhysicsBody.cpp">
@@ -3911,6 +3935,153 @@
     <ClInclude Include="..\base\CCController.h" />
     <ClInclude Include="..\base\CCEventController.h" />
     <ClInclude Include="..\base\CCEventListenerController.h" />
+    <ClInclude Include="..\..\external\cereal\access.hpp">
+      <Filter>external\cereal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\cereal.hpp">
+      <Filter>external\cereal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\archives\binary.hpp">
+      <Filter>external\cereal\archive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\archives\json.hpp">
+      <Filter>external\cereal\archive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\archives\portable_binary.hpp">
+      <Filter>external\cereal\archive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\archives\xml.hpp">
+      <Filter>external\cereal\archive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\details\helpers.hpp">
+      <Filter>external\cereal\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\details\polymorphic_impl.hpp">
+      <Filter>external\cereal\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\details\static_object.hpp">
+      <Filter>external\cereal\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\details\traits.hpp">
+      <Filter>external\cereal\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\details\util.hpp">
+      <Filter>external\cereal\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\array.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\base_class.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\bitset.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\boost_variant.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\chrono.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\common.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\complex.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\deque.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\forward_list.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\list.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\map.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\memory.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\polymorphic.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\queue.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\set.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\stack.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\tuple.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\unordered_map.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\unordered_set.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\utility.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\vector.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\external\base64.hpp">
+      <Filter>external\cereal\external</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\external\rapidxml\rapidxml_utils.hpp">
+      <Filter>external\cereal\external\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\external\rapidxml\rapidxml.hpp">
+      <Filter>external\cereal\external\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\external\rapidxml\rapidxml_iterators.hpp">
+      <Filter>external\cereal\external\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\external\rapidxml\rapidxml_print.hpp">
+      <Filter>external\cereal\external\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\document.h">
+      <Filter>external\cereal\external\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\filestream.h">
+      <Filter>external\cereal\external\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\genericstream.h">
+      <Filter>external\cereal\external\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\prettywriter.h">
+      <Filter>external\cereal\external\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\rapidjson.h">
+      <Filter>external\cereal\external\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\reader.h">
+      <Filter>external\cereal\external\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\stringbuffer.h">
+      <Filter>external\cereal\external\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\writer.h">
+      <Filter>external\cereal\external\rapidjson</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\internal\pow10.h">
+      <Filter>external\cereal\external\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\internal\stack.h">
+      <Filter>external\cereal\external\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\external\rapidjson\internal\strfunc.h">
+      <Filter>external\cereal\external\rapidjson\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\external\cereal\types\string.hpp">
+      <Filter>external\cereal\types</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\math\Mat4.inl">
@@ -3937,6 +4108,9 @@
     <None Include="cocos2d.def" />
     <None Include="..\3d\CCAnimationCurve.inl">
       <Filter>3d</Filter>
+    </None>
+    <None Include="..\..\external\cereal\external\rapidxml\manual.html">
+      <Filter>external</Filter>
     </None>
   </ItemGroup>
 </Project>

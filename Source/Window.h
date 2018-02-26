@@ -5,7 +5,7 @@
 #include "audio/include/AudioEngine.h"
 
 using namespace cocos2d;
-using namespace experimental;
+using namespace cocos_experimental;
 
 /**
 @brief The cocos2d Application.
