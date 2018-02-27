@@ -26,6 +26,8 @@ Knight::Knight() : NpcBase::NpcBase()
 
 	this->spriteNode->addChild(this->knightSprite);
 	this->addChild(this->spriteNode);
+
+	this->initializeCardData();
 }
 
 Knight::~Knight()

@@ -32,3 +32,8 @@ void Hand::insertCard(Card* card)
 {
 
 }
+
+void Hand::clear()
+{
+
+}

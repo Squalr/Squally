@@ -10,6 +10,7 @@ WriteLine("/////////////////////////////////////////////////////////////////////
 WriteLine("// THIS C++ FILE IS GENERATED DO NOT EDIT. MAKE CHANGES IN THE RESOURCE TEXT TEMPLATING FILE //");
 WriteLine("///////////////////////////////////////////////////////////////////////////////////////////////");
 WriteLine("");
+WriteLine("#pragma init_seg(\".CRT$XCU-010\")");
 WriteLine("#include \"Resources.h\"");
 WriteLine("#include <string>");
 WriteLine("");

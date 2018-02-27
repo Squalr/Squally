@@ -4,7 +4,6 @@
 #include "Level/Backgrounds/MatrixRain/MatrixRain.h"
 #include "Level/LevelCamera.h"
 #include "Level/Parser/Parser.h"
-#include "Minigames/Minigames.h"
 #include "Entities/Player/Player.h"
 #include "Input/InputManager.h"
 #include "Utils/GameUtils.h"
@@ -61,7 +60,6 @@ private:
 	PostProcess* gamePostProcessNightVision;
 	Hud * hud;
 	HackerModeHud * hackerModeHud;
-	Hexium* hexium;
 
 	static Size mapSize;
 	static bool hackerMode;
