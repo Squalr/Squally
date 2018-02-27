@@ -1,7 +1,7 @@
 #include "Hexium.h"
 
-const std::string BinariumGameStartEvent = "hexium_game_start_event";
-const std::string BinariumGameEndEvent = "hexium_game_end_event";
+const std::string Hexium::HexiumGameStartEvent = "hexium_game_start_event";
+const std::string Hexium::HexiumGameEndEvent = "hexium_game_end_event";
 
 Hexium* Hexium::create()
 {
@@ -14,11 +14,6 @@ Hexium* Hexium::create()
 
 Hexium::Hexium()
 {
-	this->playerDeck = nullptr;
-	this->playerHand = nullptr;
-	this->enemyDeck = nullptr;
-	this->enemyHand = nullptr;
-
 	this->gameBackground = Sprite::create(Resources::Minigames_Hexium_Gameboard);
 	this->emblem = Sprite::create(Resources::Minigames_Hexium_Emblem);
 
@@ -69,25 +64,16 @@ Hexium::Hexium()
 	this->addChild(this->enemySkullB);
 	this->addChild(this->emblem);
 
+	this->addChild(this->playerGraveyard);
+	this->addChild(this->enemyGraveyard);
 	this->addChild(this->playerDeck);
 	this->addChild(this->enemyDeck);
 	this->addChild(this->playerHand);
 	this->addChild(this->enemyHand);
-	this->addChild(this->playerGraveyard);
-	this->addChild(this->enemyGraveyard);
 }
 
 Hexium::~Hexium()
 {
-}
-
-void Hexium::startGame(Deck* playerDeckStart, Deck* enemyDeckStart)
-{
-	// TODO: Clear deck, hand, and graveyard
-
-	// TODO: Copy cards from one deck to the other
-	this->playerDeck = playerDeckStart;
-	this->enemyDeck = enemyDeckStart;
 }
 
 void Hexium::onEnter()
@@ -137,16 +123,8 @@ void Hexium::initializePositions()
 	this->playerGraveyard->setPosition(visibleSize.width / 2.0f + rightColumnCenter, visibleSize.height / 2.0f - graveyardOffsetY);
 	this->enemyHand->setPosition(visibleSize.width / 2.0f + centerColumnCenter, visibleSize.height / 2.0f + handOffsetY);
 	this->playerHand->setPosition(visibleSize.width / 2.0f + centerColumnCenter, visibleSize.height / 2.0f - handOffsetY);
-
-	if (this->playerDeck != nullptr)
-	{
-		this->playerDeck->setPosition(visibleSize.width / 2.0f + rightColumnCenter, visibleSize.height / 2.0f - deckOffsetY);
-	}
-
-	if (this->enemyDeck != nullptr)
-	{
-		this->enemyDeck->setPosition(visibleSize.width / 2.0f + rightColumnCenter, visibleSize.height / 2.0f + deckOffsetY);
-	}
+	this->playerDeck->setPosition(visibleSize.width / 2.0f + rightColumnCenter, visibleSize.height / 2.0f - deckOffsetY);
+	this->enemyDeck->setPosition(visibleSize.width / 2.0f + rightColumnCenter, visibleSize.height / 2.0f + deckOffsetY);
 }
 
 void Hexium::initializeListeners()
@@ -156,6 +134,23 @@ void Hexium::initializeListeners()
 	listener->onKeyPressed = CC_CALLBACK_2(Hexium::onKeyPressed, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+void Hexium::onGameStart(EventCustom* eventCustom)
+{
+	Hexium::HexiumGameEventArgs* args = (Hexium::HexiumGameEventArgs*)(eventCustom->getUserData());
+
+	this->playerGraveyard->clear();
+	this->enemyGraveyard->clear();
+	this->playerHand->clear();
+	this->enemyHand->clear();
+	this->playerDeck->clear();
+	this->enemyDeck->clear();
+
+	args->playerDeck->copyTo(this->playerDeck);
+	args->enemyDeck->copyTo(this->enemyDeck);
+
+	GameUtils::navigate(GameUtils::GameScreen::Hexium);
 }
 
 void Hexium::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
