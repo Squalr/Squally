@@ -20,16 +20,17 @@ Deck* Deck::create(Card::CardStyle cardStyle, std::vector<CardData*>* cards)
 
 Deck::Deck()
 {
-	this->deckCards = nullptr;
+	this->deckCards = new std::vector<Card*>();
 }
 
 Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*>* cards)
 {
+	this->style = cardStyle;
 	this->deckCards = new std::vector<Card*>();
 
 	for (auto it = cards->begin(); it != cards->end(); *it++)
 	{
-		Card* card = Card::create(Card::CardStyle::Robotic, *it);
+		Card* card = Card::create(this->style, *it);
 
 		this->deckCards->push_back(card);
 		this->addChild(card);
@@ -38,10 +39,7 @@ Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*>* cards)
 
 Deck::~Deck()
 {
-	if (this->deckCards != nullptr)
-	{
-		delete(this->deckCards);
-	}
+	delete(this->deckCards);
 }
 
 void Deck::onEnter()
@@ -59,9 +57,24 @@ void Deck::initializeListeners()
 {
 }
 
-void Deck::CopyDeck(Deck* deck)
+void Deck::copyTo(Deck* otherDeck)
 {
+	otherDeck->clear();
+	otherDeck->style = this->style;
 
+	for (auto it = this->deckCards->begin(); it != this->deckCards->end(); *it++)
+	{
+		Card* card = Card::create(this->style, (*it)->cardData);
+
+		otherDeck->deckCards->push_back(card);
+		otherDeck->addChild(card);
+	}
+}
+
+void Deck::clear()
+{
+	this->removeAllChildren();
+	this->deckCards->clear();
 }
 
 Card* Deck::drawCard()

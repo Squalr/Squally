@@ -2,6 +2,7 @@
 // THIS C++ FILE IS GENERATED DO NOT EDIT. MAKE CHANGES IN THE RESOURCE TEXT TEMPLATING FILE //
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+#pragma init_seg(".CRT$XCU-010")
 #include "Resources.h"
 #include <string>
 

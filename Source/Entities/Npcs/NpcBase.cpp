@@ -31,7 +31,10 @@ void NpcBase::update(float dt)
 
 void NpcBase::onInteractButtonClick(MenuSprite* menuSprite)
 {
-	GameUtils::navigate(GameUtils::GameScreen::Hexium);
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		Hexium::HexiumGameStartEvent,
+		&Hexium::HexiumGameEventArgs(this->deck, this->deck)
+	);
 }
 
 void NpcBase::initializeCardData()

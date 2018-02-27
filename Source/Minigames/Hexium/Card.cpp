@@ -25,6 +25,14 @@ Card::Card(CardStyle cardStyle, CardData* data)
 		this->cardBack = Sprite::create(Resources::Minigames_Hexium_CardBackRobotic);
 		break;
 	}
+
+	this->cardFront = Sprite::create(data->cardResourceFile);
+
+	this->cardBack->setScale(Card::cardScale);
+	this->cardFront->setScale(Card::cardScale);
+
+	this->addChild(this->cardBack);
+	this->addChild(this->cardFront);
 }
 
 Card::~Card()

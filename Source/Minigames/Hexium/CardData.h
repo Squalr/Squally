@@ -17,6 +17,10 @@ public:
 		Special = 3,
 	};
 
+	std::string cardResourceFile;
+	std::string cardName;
+	CardType cardType;
+
 	static const std::string Binary0;
 	static const std::string Binary1;
 	static const std::string Binary2;
@@ -82,7 +86,7 @@ public:
 	static const std::string Peek;
 
 private:
-	CardData(std::string resourceFile, std::string cardName, CardType cardType);
+	CardData(std::string newCardResourceFile, std::string newCardName, CardType newCardType);
 	~CardData();
 };
 

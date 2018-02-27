@@ -19,14 +19,16 @@ public:
 
 	struct HexiumGameEventArgs
 	{
-		int temp;
+		Deck* playerDeck;
+		Deck* enemyDeck;
 
-		HexiumGameEventArgs(int temp) : temp(temp)
+		HexiumGameEventArgs(Deck* playerDeck, Deck* enemyDeck) : playerDeck(playerDeck), enemyDeck(enemyDeck)
 		{
 		}
 	};
 
-	void startGame(Deck* playerDeckStart, Deck* enemyDeckStart);
+	// Make this event public. Note that Game.h fires this event because this scene can't listen for events until it is created.
+	void onGameStart(EventCustom* eventCustom);
 
 private:
 	Hexium();

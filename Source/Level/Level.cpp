@@ -81,9 +81,6 @@ void Level::loadLevel(std::string levelFile)
 	this->gameLayers = Layer::create();
 	this->gamePostProcessInversion = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_Inverse);
 	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
-	this->hexium = Hexium::create();
-
-	this->hexium->setVisible(false);
 
 	this->addChild(InputManager::claimInstance());
 
@@ -107,7 +104,6 @@ void Level::loadLevel(std::string levelFile)
 	this->addChild(this->gamePostProcessNightVision);
 	this->addChild(this->hud);
 	this->addChild(this->hackerModeHud);
-	this->addChild(this->hexium);
 }
 
 void Level::resume(void)

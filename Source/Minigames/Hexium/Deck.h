@@ -11,15 +11,19 @@ public:
 	static Deck * create();
 	static Deck * create(Card::CardStyle cardStyle, std::vector<CardData*>* cards);
 
-	void CopyDeck(Deck* deck);
+	void copyTo(Deck* otherDeck);
+
 	Card* drawCard();
+	void clear();
 
 private:
 	Deck();
+	Deck(Card::CardStyle cardStyle, std::vector<Card*>* cards);
 	Deck(Card::CardStyle cardStyle, std::vector<CardData*>* cards);
 	~Deck();
 	void onEnter() override;
 
+	Card::CardStyle style;
 	std::vector<Card*>* deckCards;
 
 	void initializePositions();

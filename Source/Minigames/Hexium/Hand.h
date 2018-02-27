@@ -11,6 +11,7 @@ public:
 	static Hand * create();
 
 	void insertCard(Card* card);
+	void clear();
 
 private:
 	Hand();

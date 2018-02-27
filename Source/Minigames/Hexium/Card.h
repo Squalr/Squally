@@ -20,6 +20,8 @@ public:
 
 	static const float cardScale;
 
+	CardData* cardData;
+
 private:
 	Card(CardStyle cardStyle, CardData* data);
 	~Card();
@@ -28,7 +30,6 @@ private:
 	void initializeListeners();
 	void onEnter() override;
 
-	CardData* cardData;
 	Sprite* cardBack;
 	Sprite* cardFront;
 };
