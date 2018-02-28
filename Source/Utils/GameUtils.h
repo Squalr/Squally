@@ -63,6 +63,7 @@ public:
 	static void resumeAll();
 	static bool isFocused(Node *node);
 	static void focus(Node *node);
+	static Node* changeParent(Node* node, Node* newParent, bool retainPosition);
 	static void accelerateParticles(ParticleSystem* particleSystem, float duration);
 	static void fadeInObject(Node* node, float delay, float duration);
 	static Rect getSceneBounds(Node* node);

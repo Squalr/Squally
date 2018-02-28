@@ -91,7 +91,7 @@ void Hexium::initializePositions()
 
 	const float rightColumnCenter = 780.0f;
 	const float leftColumnCenter = -712.0f;
-	const float centerColumnCenter = -64.0f;
+	const float centerColumnCenter = 64.0f;
 	const float emblemOffsetX = -84.0f;
 	const float frameOffsetX = -72.0f;
 	const float frameOffsetY = 368.0f;
@@ -150,6 +150,8 @@ void Hexium::onGameStart(EventCustom* eventCustom)
 	args->playerDeck->copyTo(this->playerDeck);
 	args->enemyDeck->copyTo(this->enemyDeck);
 
+	this->gameStart();
+
 	GameUtils::navigate(GameUtils::GameScreen::Hexium);
 }
 
@@ -173,3 +175,94 @@ void Hexium::onClose(MenuSprite* menuSprite)
 {
 	GameUtils::navigateBack();
 }
+
+void Hexium::gameStart()
+{
+	this->playerLosses = 0;
+	this->enemyLosses = 0;
+	this->allowControl = false;
+
+	this->randomizeTurn();
+}
+
+void Hexium::randomizeTurn()
+{
+	const float turnAnimationDelay = 2.0f;
+
+	if (RandomHelper::random_real(0.0f, 1.0f) > 0.5f)
+	{
+		this->turn = Turn::Player;
+	}
+	else
+	{
+		this->turn = Turn::Enemy;
+	}
+
+	// TEMP DEBUG:
+	this->turn = Turn::Player;
+
+	this->runAction(Sequence::create(
+		DelayTime::create(turnAnimationDelay),
+		CallFunc::create(CC_CALLBACK_0(Hexium::drawCard, this)),
+		nullptr
+	));
+}
+
+void Hexium::drawCard()
+{
+	switch (turn)
+	{
+	case Turn::Enemy:
+		if (!this->enemyDeck->hasCards())
+		{
+			this->yieldControl();
+			return;
+		}
+		break;
+	case Turn::Player:
+	default:
+		if (!this->playerDeck->hasCards())
+		{
+			this->yieldControl();
+			return;
+		}
+		break;
+	}
+
+	switch (turn)
+	{
+	case Turn::Enemy:
+		// Simply insert the card directly into the enemy hand for the enemy
+		enemyHand->insertCard(this->enemyDeck->drawCard(), 0.0f);
+		break;
+	case Turn::Player:
+	default:
+		Card * card = this->playerDeck->drawCard();
+		Hand * hand = this->playerHand;
+		float cardDrawDelay = 3.0f;
+		float cardInsertDelay = 3.0f;
+
+		GameUtils::changeParent(card, this, true);
+
+		this->runAction(Sequence::create(
+			CallFunc::create(CC_CALLBACK_0(Card::doDrawAnimation, card, cardDrawDelay)),
+			DelayTime::create(cardDrawDelay),
+			CallFunc::create(CC_CALLBACK_0(Hand::insertCard, hand, card, cardInsertDelay)),
+			DelayTime::create(cardInsertDelay),
+			CallFunc::create(CC_CALLBACK_0(Hexium::yieldControl, this)),
+			nullptr
+		));
+		break;
+	}
+}
+
+void Hexium::yieldControl()
+{
+	this->allowControl = true;
+}
+
+void Hexium::endTurn()
+{
+
+}
+
