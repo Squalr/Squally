@@ -34,12 +34,29 @@ private:
 	Hexium();
 	~Hexium();
 
+	enum Turn {
+		Player,
+		Enemy,
+	};
+
 	void onEnter() override;
 	void initializePositions();
 	void initializeListeners();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onClose(MenuSprite* menuSprite);
+	void gameStart();
+	void randomizeTurn();
+	void drawCard();
+	void yieldControl();
+	void endTurn();
 
+	// Game state
+	bool allowControl;
+	Turn turn;
+	int playerLosses;
+	int enemyLosses;
+
+	// Images
 	Sprite* emblem;
 
 	Sprite* playerFrame;

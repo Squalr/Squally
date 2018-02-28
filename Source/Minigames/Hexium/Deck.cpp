@@ -44,6 +44,8 @@ Deck::~Deck()
 
 void Deck::onEnter()
 {
+	Node::onEnter();
+
 	this->initializePositions();
 	this->initializeListeners();
 }
@@ -64,10 +66,7 @@ void Deck::copyTo(Deck* otherDeck)
 
 	for (auto it = this->deckCards->begin(); it != this->deckCards->end(); *it++)
 	{
-		Card* card = Card::create(this->style, (*it)->cardData);
-
-		otherDeck->deckCards->push_back(card);
-		otherDeck->addChild(card);
+		otherDeck->insertCardRandom(Card::create(this->style, (*it)->cardData));
 	}
 }
 
@@ -84,4 +83,32 @@ Card* Deck::drawCard()
 	this->deckCards->pop_back();
 
 	return card;
+}
+
+bool Deck::hasCards()
+{
+	if (this->deckCards->size() > 0)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+void Deck::insertCardTop(Card* card)
+{
+	this->deckCards->push_back(card);
+	GameUtils::changeParent(card, this, false);
+}
+
+void Deck::insertCardBottom(Card* card)
+{
+	this->deckCards->push_back(card);
+	GameUtils::changeParent(card, this, false);
+}
+
+void Deck::insertCardRandom(Card* card)
+{
+	this->deckCards->push_back(card);
+	GameUtils::changeParent(card, this, false);
 }

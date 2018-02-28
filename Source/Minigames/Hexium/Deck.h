@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Minigames/Hexium/Card.h"
+#include "Utils/GameUtils.h"
 
 using namespace cocos2d;
 
@@ -14,6 +15,10 @@ public:
 	void copyTo(Deck* otherDeck);
 
 	Card* drawCard();
+	bool hasCards();
+	void insertCardTop(Card* card);
+	void insertCardBottom(Card* card);
+	void insertCardRandom(Card* card);
 	void clear();
 
 private:
