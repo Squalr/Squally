@@ -17,6 +17,7 @@ public:
 
 	void reveal();
 	void hide();
+	void doDrawAnimation(float cardDrawDelay);
 
 	static const float cardScale;
 

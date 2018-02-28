@@ -28,11 +28,12 @@ Card::Card(CardStyle cardStyle, CardData* data)
 
 	this->cardFront = Sprite::create(data->cardResourceFile);
 
-	this->cardBack->setScale(Card::cardScale);
-	this->cardFront->setScale(Card::cardScale);
+	this->setScale(Card::cardScale);
 
 	this->addChild(this->cardBack);
 	this->addChild(this->cardFront);
+
+	this->hide();
 }
 
 Card::~Card()
@@ -41,6 +42,8 @@ Card::~Card()
 
 void Card::onEnter()
 {
+	Node::onEnter();
+
 	this->initializePositions();
 	this->initializeListeners();
 }
@@ -56,10 +59,32 @@ void Card::initializeListeners()
 
 void Card::reveal()
 {
-
+	this->cardBack->setVisible(true);
+	this->cardFront->setVisible(false);
 }
 
 void Card::hide()
 {
+	this->cardBack->setVisible(false);
+	this->cardFront->setVisible(true);
+}
 
+void Card::doDrawAnimation(float cardDrawDelay)
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->runAction(
+		MoveTo::create(cardDrawDelay, Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f))
+	);
+
+	this->runAction(
+		ScaleTo::create(cardDrawDelay, 1.0f)
+	);
+
+	this->runAction(
+		Sequence::create(
+			DelayTime::create(cardDrawDelay),
+			CallFunc::create(CC_CALLBACK_0(Card::hide, this)),
+			nullptr
+		));
 }

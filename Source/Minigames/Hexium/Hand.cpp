@@ -11,12 +11,20 @@ Hand* Hand::create()
 
 Hand::Hand()
 {
-	this->initializePositions();
-	this->initializeListeners();
+	this->handCards = new std::vector<Card*>();
 }
 
 Hand::~Hand()
 {
+	delete(this->handCards);
+}
+
+void Hand::onEnter()
+{
+	Node::onEnter();
+
+	this->initializePositions();
+	this->initializeListeners();
 }
 
 void Hand::initializePositions()
@@ -28,9 +36,11 @@ void Hand::initializeListeners()
 {
 }
 
-void Hand::insertCard(Card* card)
+void Hand::insertCard(Card* card, float cardInsertDelay)
 {
+	GameUtils::changeParent(card, this, false);
 
+	this->handCards->push_back(card);
 }
 
 void Hand::clear()

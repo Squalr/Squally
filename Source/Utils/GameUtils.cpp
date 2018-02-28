@@ -97,6 +97,28 @@ void GameUtils::focus(Node *node)
 	node->addChild(Mouse::claimInstance());
 }
 
+Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition)
+{
+	Vec2 newPosition = Vec2::ZERO;
+
+	if (retainPosition)
+	{
+		newPosition = newParent->convertToNodeSpace(node->convertToWorldSpace(node->getPosition()));
+	}
+
+	if (node->getParent() != nullptr)
+	{
+		node->retain();
+		node->removeFromParent();
+	}
+
+	newParent->addChild(node);
+	node->setPosition(newPosition);
+
+	// Returns the same node that was given. Just a convenience thing for chaining methods.
+	return node;
+}
+
 void GameUtils::accelerateParticles(ParticleSystem* particleSystem, float duration)
 {
 	const float step = 0.0166660007;
