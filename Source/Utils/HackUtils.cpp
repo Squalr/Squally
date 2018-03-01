@@ -62,6 +62,31 @@ std::string HackUtils::hexAddressOf(void* address, bool zeroPad, bool prefix)
 	return hexAddress;
 }
 
+std::string HackUtils::toHex(int value)
+{
+	std::stringstream stream;
+
+	// Convert to hex
+	stream << std::hex << (int)(value);
+	std::string hexString = stream.str();
+
+	// Convert to upper
+	std::transform(hexString.begin(), hexString.end(), hexString.begin(), ::toupper);
+
+	return hexString;
+}
+
+std::string HackUtils::toBinary4(int value)
+{
+	std::stringstream stream;
+
+	// Convert to hex
+	stream << std::bitset<4>(value);
+	std::string binaryString = stream.str();
+
+	return binaryString;
+}
+
 HackUtils::DataType HackUtils::stdTypeToDataType(const std::type_info* typeInfo)
 {
 	std::string typeName = typeInfo->name();
