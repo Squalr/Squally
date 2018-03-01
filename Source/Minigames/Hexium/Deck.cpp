@@ -30,10 +30,7 @@ Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*>* cards)
 
 	for (auto it = cards->begin(); it != cards->end(); *it++)
 	{
-		Card* card = Card::create(this->style, *it);
-
-		this->deckCards->push_back(card);
-		this->addChild(card);
+		this->insertCardBottom(Card::create(this->style, *it));
 	}
 }
 
@@ -70,17 +67,13 @@ void Deck::copyTo(Deck* otherDeck)
 	}
 }
 
-void Deck::clear()
-{
-	this->removeAllChildren();
-	this->deckCards->clear();
-}
-
 Card* Deck::drawCard()
 {
 	Card* card = this->deckCards->back();
 
 	this->deckCards->pop_back();
+
+	// Note: We let the caller remove the child because it allows for control over positioning
 
 	return card;
 }
@@ -97,18 +90,41 @@ bool Deck::hasCards()
 
 void Deck::insertCardTop(Card* card)
 {
+	card->hide();
 	this->deckCards->push_back(card);
 	GameUtils::changeParent(card, this, false);
 }
 
 void Deck::insertCardBottom(Card* card)
 {
-	this->deckCards->push_back(card);
+	card->hide();
+	this->deckCards->insert(this->deckCards->begin(), card);
 	GameUtils::changeParent(card, this, false);
 }
 
 void Deck::insertCardRandom(Card* card)
 {
-	this->deckCards->push_back(card);
+	int index = RandomHelper::random_int(0, (int)this->deckCards->size());
+
+	card->hide();
+	this->deckCards->insert(this->deckCards->begin() + index, card);
 	GameUtils::changeParent(card, this, false);
+}
+
+void Deck::clear()
+{
+	this->removeAllChildren();
+	this->deckCards->clear();
+}
+
+void Deck::setCardOrder()
+{
+	// Fix the order of all cards in the deck
+	for (auto it = this->deckCards->begin(); it != this->deckCards->end(); it++)
+	{
+		Card* card = *it;
+		card->retain();
+		this->removeChild(card);
+		this->addChild(card);
+	}
 }

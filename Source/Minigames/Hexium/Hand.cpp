@@ -38,12 +38,44 @@ void Hand::initializeListeners()
 
 void Hand::insertCard(Card* card, float cardInsertDelay)
 {
-	GameUtils::changeParent(card, this, false);
+	GameUtils::changeParent(card, this, true);
 
 	this->handCards->push_back(card);
+
+	this->setCardPositions(cardInsertDelay);
 }
 
 void Hand::clear()
 {
+	this->removeAllChildren();
+	this->handCards->clear();
+}
 
+void Hand::setCardPositions(float cardRepositionDelay)
+{
+	int cardCount = this->handCards->size();
+	int index = 0;
+
+	float cardWidth = 225.0f * Card::cardScale;
+	float boardWidth = 992.0f;
+	float spacing = 128.0f;
+
+	// Start overlapping cards after the row fills
+	if (cardCount > 8)
+	{
+		spacing = (boardWidth - cardWidth) / (cardCount - 1);
+	}
+
+
+	for (auto it = this->handCards->begin(); it != this->handCards->end(); it++)
+	{
+		Card* card = *it;
+
+		float newX = (index * spacing) - (spacing * (cardCount - 1)) / 2.0f;
+
+		card->runAction(EaseSineInOut::create(MoveTo::create(cardRepositionDelay, Vec2(newX, 0.0f))));
+		card->runAction(ScaleTo::create(cardRepositionDelay, Card::cardScale));
+
+		index++;
+	}
 }
