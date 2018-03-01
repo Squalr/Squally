@@ -10,16 +10,30 @@ public:
 	static std::map<std::string, CardData*> cardListByName;
 	static std::map<int, CardData*> cardListById;
 
+	// Note: Hard code enum values to allow for future proofing if we ever remove an id
 	enum CardType {
 		Binary = 0,
 		Decimal = 1,
 		Hexidecimal = 2,
-		Special = 3,
+		Special_AND = 3,
+		Special_OR = 4,
+		Special_XOR = 5,
+		Special_SHL = 6,
+		Special_SHR = 7,
+		Special_INV = 8,
+		Special_FLIP1 = 9,
+		Special_FLIP2 = 10,
+		Special_FLIP3 = 11,
+		Special_FLIP4 = 12,
+		Special_ADD = 13,
+		Special_SUB = 14,
+		Special = 99,
 	};
 
 	std::string cardResourceFile;
 	std::string cardName;
 	CardType cardType;
+	int attack;
 
 	static const std::string Binary0;
 	static const std::string Binary1;
@@ -86,7 +100,7 @@ public:
 	static const std::string Peek;
 
 private:
-	CardData(std::string newCardResourceFile, std::string newCardName, CardType newCardType);
+	CardData(std::string newCardResourceFile, std::string newCardName, CardType newCardType, int newAttack);
 	~CardData();
 };
 
