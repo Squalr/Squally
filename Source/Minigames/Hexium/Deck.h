@@ -27,6 +27,7 @@ private:
 	Deck(Card::CardStyle cardStyle, std::vector<CardData*>* cards);
 	~Deck();
 	void onEnter() override;
+	void setCardOrder();
 
 	Card::CardStyle style;
 	std::vector<Card*>* deckCards;
