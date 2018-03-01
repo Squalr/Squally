@@ -91,13 +91,15 @@ void Hexium::initializePositions()
 
 	const float rightColumnCenter = 780.0f;
 	const float leftColumnCenter = -712.0f;
-	const float centerColumnCenter = 64.0f;
+	const float centerColumnCenter = 68.0f;
 	const float emblemOffsetX = -84.0f;
 	const float frameOffsetX = -72.0f;
 	const float frameOffsetY = 368.0f;
+	const float deckOffsetX = 64.0f;
 	const float deckOffsetY = 420.0f;
 	const float handOffsetY = 472.0f;
-	const float graveyardOffsetY = 196.0f;
+	const float graveyardOffsetX = -64.0f;
+	const float graveyardOffsetY = deckOffsetY;
 	const float socketOffsetY = 236.0f;
 	const float socketAOffsetX = 64.0f;
 	const float socketBOffsetX = socketAOffsetX + 112.0f;
@@ -106,10 +108,10 @@ void Hexium::initializePositions()
 	this->emblem->setPosition(visibleSize.width / 2.0f + leftColumnCenter + emblemOffsetX, visibleSize.height / 2.0f);
 	this->playerFrame->setPosition(visibleSize.width / 2.0f + leftColumnCenter + frameOffsetX, visibleSize.height / 2.0f - frameOffsetY);
 	this->enemyFrame->setPosition(visibleSize.width / 2.0f + leftColumnCenter + frameOffsetX, visibleSize.height / 2.0f + frameOffsetY);
-	this->playerPadDeck->setPosition(visibleSize.width / 2.0f + rightColumnCenter, visibleSize.height / 2.0f - deckOffsetY);
-	this->playerPadGrave->setPosition(visibleSize.width / 2.0f + rightColumnCenter, visibleSize.height / 2.0f - graveyardOffsetY);
-	this->enemyPadDeck->setPosition(visibleSize.width / 2.0f + rightColumnCenter, visibleSize.height / 2.0f + deckOffsetY);
-	this->enemyPadGrave->setPosition(visibleSize.width / 2.0f + rightColumnCenter, visibleSize.height / 2.0f + graveyardOffsetY);
+	this->playerPadDeck->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX, visibleSize.height / 2.0f - deckOffsetY);
+	this->playerPadGrave->setPosition(visibleSize.width / 2.0f + rightColumnCenter + graveyardOffsetX, visibleSize.height / 2.0f - graveyardOffsetY);
+	this->enemyPadDeck->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX, visibleSize.height / 2.0f + deckOffsetY);
+	this->enemyPadGrave->setPosition(visibleSize.width / 2.0f + rightColumnCenter + graveyardOffsetX, visibleSize.height / 2.0f + graveyardOffsetY);
 	this->playerSocketA->setPosition(visibleSize.width / 2.0f + leftColumnCenter + socketAOffsetX, visibleSize.height / 2.0f - socketOffsetY);
 	this->playerSocketB->setPosition(visibleSize.width / 2.0f + leftColumnCenter + socketBOffsetX, visibleSize.height / 2.0f - socketOffsetY);
 	this->playerSkullA->setPosition(visibleSize.width / 2.0f + leftColumnCenter + socketAOffsetX, visibleSize.height / 2.0f - socketOffsetY);
@@ -119,12 +121,12 @@ void Hexium::initializePositions()
 	this->enemySkullA->setPosition(visibleSize.width / 2.0f + leftColumnCenter + socketAOffsetX, visibleSize.height / 2.0f + socketOffsetY);
 	this->enemySkullB->setPosition(visibleSize.width / 2.0f + leftColumnCenter + socketBOffsetX, visibleSize.height / 2.0f + socketOffsetY);
 
-	this->enemyGraveyard->setPosition(visibleSize.width / 2.0f + rightColumnCenter, visibleSize.height / 2.0f + graveyardOffsetY);
-	this->playerGraveyard->setPosition(visibleSize.width / 2.0f + rightColumnCenter, visibleSize.height / 2.0f - graveyardOffsetY);
+	this->enemyGraveyard->setPosition(visibleSize.width / 2.0f + rightColumnCenter + graveyardOffsetX, visibleSize.height / 2.0f + graveyardOffsetY);
+	this->playerGraveyard->setPosition(visibleSize.width / 2.0f + rightColumnCenter + graveyardOffsetX, visibleSize.height / 2.0f - graveyardOffsetY);
 	this->enemyHand->setPosition(visibleSize.width / 2.0f + centerColumnCenter, visibleSize.height / 2.0f + handOffsetY);
 	this->playerHand->setPosition(visibleSize.width / 2.0f + centerColumnCenter, visibleSize.height / 2.0f - handOffsetY);
-	this->playerDeck->setPosition(visibleSize.width / 2.0f + rightColumnCenter, visibleSize.height / 2.0f - deckOffsetY);
-	this->enemyDeck->setPosition(visibleSize.width / 2.0f + rightColumnCenter, visibleSize.height / 2.0f + deckOffsetY);
+	this->playerDeck->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX, visibleSize.height / 2.0f - deckOffsetY);
+	this->enemyDeck->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX, visibleSize.height / 2.0f + deckOffsetY);
 }
 
 void Hexium::initializeListeners()
@@ -210,7 +212,7 @@ void Hexium::randomizeTurn()
 
 void Hexium::drawCard()
 {
-	switch (turn)
+	switch (this->turn)
 	{
 	case Turn::Enemy:
 		if (!this->enemyDeck->hasCards())
@@ -229,24 +231,27 @@ void Hexium::drawCard()
 		break;
 	}
 
-	switch (turn)
+	switch (this->turn)
 	{
 	case Turn::Enemy:
 		// Simply insert the card directly into the enemy hand for the enemy
 		enemyHand->insertCard(this->enemyDeck->drawCard(), 0.0f);
+		this->yieldControl();
 		break;
 	case Turn::Player:
 	default:
 		Card * card = this->playerDeck->drawCard();
 		Hand * hand = this->playerHand;
-		float cardDrawDelay = 3.0f;
-		float cardInsertDelay = 3.0f;
+		float cardDrawDelay = 0.75f;
+		float revealDelay = 0.25f;
+		float cardInsertDelay = 0.5f;
 
 		GameUtils::changeParent(card, this, true);
 
 		this->runAction(Sequence::create(
 			CallFunc::create(CC_CALLBACK_0(Card::doDrawAnimation, card, cardDrawDelay)),
 			DelayTime::create(cardDrawDelay),
+			DelayTime::create(revealDelay),
 			CallFunc::create(CC_CALLBACK_0(Hand::insertCard, hand, card, cardInsertDelay)),
 			DelayTime::create(cardInsertDelay),
 			CallFunc::create(CC_CALLBACK_0(Hexium::yieldControl, this)),
@@ -259,10 +264,30 @@ void Hexium::drawCard()
 void Hexium::yieldControl()
 {
 	this->allowControl = true;
+
+	// TEMP DEBUG:
+	this->endTurn();
 }
 
 void Hexium::endTurn()
 {
+	switch (this->turn)
+	{
+	case Turn::Enemy:
+		this->turn = Turn::Player;
+		break;
+	case Turn::Player:
+	default:
+		this->turn = Turn::Enemy;
+		break;
+	}
 
+	const float endTurnDelay = 0.25f;
+
+	this->runAction(Sequence::create(
+		DelayTime::create(endTurnDelay),
+		CallFunc::create(CC_CALLBACK_0(Hexium::drawCard, this)),
+		nullptr
+	));
 }
 

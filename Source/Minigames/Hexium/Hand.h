@@ -21,6 +21,7 @@ private:
 	void onEnter() override;
 	void initializePositions();
 	void initializeListeners();
+	void setCardPositions(float cardRepositionDelay);
 
 	std::vector<Card*>* handCards;
 };
