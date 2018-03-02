@@ -1240,6 +1240,7 @@ const std::string Resources::Minigames_Hexium_AvatarFrame = "Minigames\\Hexium\\
 const std::string Resources::Minigames_Hexium_CardBackRobotic = "Minigames\\Hexium\\CardBackRobotic.png";
 const std::string Resources::Minigames_Hexium_CardBackShadow = "Minigames\\Hexium\\CardBackShadow.png";
 const std::string Resources::Minigames_Hexium_CardPad = "Minigames\\Hexium\\CardPad.png";
+const std::string Resources::Minigames_Hexium_CardSelect = "Minigames\\Hexium\\CardSelect.png";
 const std::string Resources::Minigames_Hexium_Emblem = "Minigames\\Hexium\\Emblem.png";
 const std::string Resources::Minigames_Hexium_Gameboard = "Minigames\\Hexium\\Gameboard.png";
 const std::string Resources::Minigames_Hexium_Skull = "Minigames\\Hexium\\Skull.png";

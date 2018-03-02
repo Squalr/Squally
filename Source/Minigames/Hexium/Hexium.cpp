@@ -203,11 +203,6 @@ void Hexium::onGameStart(EventCustom* eventCustom)
 	args->playerDeck->copyTo(this->playerDeck);
 	args->enemyDeck->copyTo(this->enemyDeck);
 
-	this->playerDeckCardCountText->setString(std::to_string(this->playerDeck->getCardCount()));
-	this->enemyDeckCardCountText->setString(std::to_string(this->enemyDeck->getCardCount()));
-	this->playerHandCardCountText->setString(std::to_string(this->playerHand->getCardCount()));
-	this->enemyHandCardCountText->setString(std::to_string(this->enemyHand->getCardCount()));
-
 	this->gameStart();
 
 	GameUtils::navigate(GameUtils::GameScreen::Hexium);
@@ -239,6 +234,30 @@ void Hexium::gameStart()
 	this->playerLosses = 0;
 	this->enemyLosses = 0;
 	this->allowControl = false;
+
+	// Draw starting cards
+	const int initialCardCount = 15;
+	int drawnCount = 0;
+
+	while (playerDeck->hasCards() && drawnCount < initialCardCount)
+	{
+		playerHand->insertCard(this->playerDeck->drawCard(), 0.0f);
+		drawnCount++;
+	}
+
+	drawnCount = 0;
+
+	while (enemyDeck->hasCards() && drawnCount < initialCardCount)
+	{
+		enemyHand->insertCard(this->enemyDeck->drawCard(), 0.0f);
+		drawnCount++;
+	}
+
+	// Initialize dispaly counters
+	this->playerDeckCardCountText->setString(std::to_string(this->playerDeck->getCardCount()));
+	this->enemyDeckCardCountText->setString(std::to_string(this->enemyDeck->getCardCount()));
+	this->playerHandCardCountText->setString(std::to_string(this->playerHand->getCardCount()));
+	this->enemyHandCardCountText->setString(std::to_string(this->enemyHand->getCardCount()));
 
 	this->randomizeTurn();
 }
@@ -273,7 +292,7 @@ void Hexium::drawCard()
 	case Turn::Enemy:
 		if (!this->enemyDeck->hasCards())
 		{
-			this->yieldControl();
+			this->giveControl();
 			return;
 		}
 		break;
@@ -281,7 +300,7 @@ void Hexium::drawCard()
 	default:
 		if (!this->playerDeck->hasCards())
 		{
-			this->yieldControl();
+			this->giveControl();
 			return;
 		}
 		break;
@@ -294,7 +313,7 @@ void Hexium::drawCard()
 		enemyHand->insertCard(this->enemyDeck->drawCard(), 0.0f);
 		this->enemyDeckCardCountText->setString(std::to_string(this->enemyDeck->getCardCount()));
 		this->enemyHandCardCountText->setString(std::to_string(this->enemyHand->getCardCount()));
-		this->yieldControl();
+		this->giveControl();
 		break;
 	case Turn::Player:
 	default:
@@ -316,19 +335,16 @@ void Hexium::drawCard()
 			DelayTime::create(revealDelay),
 			CallFunc::create(CC_CALLBACK_0(Hand::insertCard, hand, card, cardInsertDelay)),
 			DelayTime::create(cardInsertDelay),
-			CallFunc::create(CC_CALLBACK_0(Hexium::yieldControl, this)),
+			CallFunc::create(CC_CALLBACK_0(Hexium::giveControl, this)),
 			nullptr
 		));
 		break;
 	}
 }
 
-void Hexium::yieldControl()
+void Hexium::giveControl()
 {
 	this->allowControl = true;
-
-	// TEMP DEBUG:
-	this->endTurn();
 }
 
 void Hexium::endTurn()
