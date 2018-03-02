@@ -31,9 +31,14 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	}
 
 	this->cardFront = Sprite::create(data->cardResourceFile);
+	this->cardSelected = Node::create();
+	this->cardSelected->addChild(Sprite::create(data->cardResourceFile));
+	this->cardSelected->addChild(Sprite::create(Resources::Minigames_Hexium_CardSelect));
+	this->cardSprite = MenuSprite::create(this->cardFront, this->cardSelected, Sprite::create(data->cardResourceFile));
+
 	this->attackFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->attackFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->cardText = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
+	this->cardText = Label::create("", Resources::Fonts_UbuntuMono_B, 64.0f);
 	this->cardText->setAlignment(TextHAlignment::LEFT);
 	this->cardText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
@@ -41,7 +46,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->updateText();
 
 	this->addChild(this->cardBack);
-	this->addChild(this->cardFront);
+	this->addChild(this->cardSprite);
 	this->addChild(this->attackFrame);
 	this->addChild(this->cardText);
 
@@ -66,17 +71,26 @@ void Card::initializePositions()
 	Size cardSize = this->cardFront->getContentSize() * Card::cardScale;
 
 	this->cardText->setPosition(Vec2(-cardSize.width / 2.0f - 48.0f, cardSize.height / 2.0f + 96.0f));
-	this->attackFrame->setPosition(Vec2(-cardSize.width / 2.0f - 64.0f, cardSize.height / 2.0f + 48.0f));
+	this->attackFrame->setPosition(Vec2(-cardSize.width / 2.0f - 64.0f, cardSize.height / 2.0f + 32.0f));
 }
 
 void Card::initializeListeners()
 {
 }
 
+void Card::setScale(float scale)
+{
+	Node::setScale(scale);
+	this->cardSprite->setContentScale(scale);
+
+	// Seriously I do not understand why this is needed. Cocos2d-x is pretty shitty when it comes to dealing with scale.
+	this->cardSprite->setOffsetCorrection(Vec2(28.0f, 36.0f));
+}
+
 void Card::reveal()
 {
 	this->cardBack->setVisible(false);
-	this->cardFront->setVisible(true);
+	this->cardSprite->setVisible(true);
 	this->cardText->setVisible(true);
 	this->attackFrame->setOpacity(196);
 }
@@ -84,7 +98,7 @@ void Card::reveal()
 void Card::hide()
 {
 	this->cardBack->setVisible(true);
-	this->cardFront->setVisible(false);
+	this->cardSprite->setVisible(false);
 	this->cardText->setVisible(false);
 	this->attackFrame->setOpacity(0);
 }
@@ -174,5 +188,5 @@ void Card::updateText()
 		break;
 	}
 
-	this->attackFrame->setContentSize(Size(32.0f + this->cardText->getString().length() * 24.0f, 48.0f));
+	this->attackFrame->setContentSize(Size(32.0f + this->cardText->getString().length() * 32.0f, 64.0f));
 }

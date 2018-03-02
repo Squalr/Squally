@@ -37,6 +37,8 @@ MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
 	this->spriteSelected = nodeSelected;
 	this->spriteClicked = nodeClicked;
 
+	this->offsetCorrection = Vec2::ZERO;
+
 	this->setContentSize(this->sprite->getContentSize());
 
 	this->addChild(this->sprite);
@@ -69,6 +71,16 @@ void MenuSprite::update(float dt)
 
 	this->spriteClicked->setPosition(this->sprite->getPosition());
 	this->spriteSelected->setPosition(this->sprite->getPosition());
+}
+
+void MenuSprite::setContentScale(float scale)
+{
+	this->setContentSize(this->sprite->getContentSize() * scale);
+}
+
+void MenuSprite::setOffsetCorrection(Vec2 newOffsetCorrection)
+{
+	this->offsetCorrection = newOffsetCorrection;
 }
 
 void MenuSprite::setClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick)
@@ -117,10 +129,10 @@ bool MenuSprite::intersects(Vec2 mousePos)
 {
 	if (dynamic_cast<const LayerColor*>(this->sprite) != nullptr)
 	{
-		return GameUtils::intersectsV2(this, Vec2(mousePos.x, mousePos.y));
+		return GameUtils::intersectsV2(this, Vec2(mousePos.x, mousePos.y) + this->offsetCorrection);
 	}
 
-	return GameUtils::intersects(this, Vec2(mousePos.x, mousePos.y));
+	return GameUtils::intersects(this, Vec2(mousePos.x, mousePos.y) + this->offsetCorrection);
 }
 
 void MenuSprite::onMouseSpriteMove(EventCustom* event)
@@ -143,7 +155,7 @@ void MenuSprite::onMouseSpriteMove(EventCustom* event)
 			this->isClicked = false;
 		}
 
-		if (this->intersects(Vec2(args->mouseX, args->mouseY)))
+		if (!args->handled && this->intersects(Vec2(args->mouseX, args->mouseY)))
 		{
 			Mouse::getInstance()->setCanClick(true);
 
@@ -173,6 +185,10 @@ void MenuSprite::onMouseSpriteMove(EventCustom* event)
 			{
 				this->mouseOverEvent(this, args->innerEvent);
 			}
+
+			// For the use cases of this game, I see no case in which we want to mouse over two things at once
+			// If this changes, we will have to make this line optional/configurable
+			args->handled = true;
 		}
 		else
 		{
