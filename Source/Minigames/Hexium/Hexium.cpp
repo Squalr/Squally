@@ -40,6 +40,34 @@ Hexium::Hexium()
 	this->enemySkullA = Sprite::create(Resources::Minigames_Hexium_Skull);
 	this->enemySkullB = Sprite::create(Resources::Minigames_Hexium_Skull);
 
+	this->playerDeckCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
+	this->playerDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->playerDeckCardCountFrame->setContentSize(Size(48.0f, 32.0f));
+	this->playerDeckCardCountText = Label::create("", Resources::Fonts_UbuntuMono_B, 32.0f);
+	this->playerDeckCardCountText->setAlignment(TextHAlignment::LEFT);
+	this->playerDeckCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
+
+	this->enemyDeckCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
+	this->enemyDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->enemyDeckCardCountFrame->setContentSize(Size(48.0f, 32.0f));
+	this->enemyDeckCardCountText = Label::create("", Resources::Fonts_UbuntuMono_B, 32.0f);
+	this->enemyDeckCardCountText->setAlignment(TextHAlignment::LEFT);
+	this->enemyDeckCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
+
+	this->playerHandCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
+	this->playerHandCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->playerHandCardCountFrame->setContentSize(Size(48.0f, 32.0f));
+	this->playerHandCardCountText = Label::create("", Resources::Fonts_UbuntuMono_B, 32.0f);
+	this->playerHandCardCountText->setAlignment(TextHAlignment::LEFT);
+	this->playerHandCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
+
+	this->enemyHandCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
+	this->enemyHandCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->enemyHandCardCountFrame->setContentSize(Size(48.0f, 32.0f));
+	this->enemyHandCardCountText = Label::create("", Resources::Fonts_UbuntuMono_B, 32.0f);
+	this->enemyHandCardCountText->setAlignment(TextHAlignment::LEFT);
+	this->enemyHandCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
+
 	this->playerPadDeck->setScale(Card::cardScale);
 	this->playerPadGrave->setScale(Card::cardScale);
 	this->enemyPadDeck->setScale(Card::cardScale);
@@ -70,6 +98,16 @@ Hexium::Hexium()
 	this->addChild(this->enemyDeck);
 	this->addChild(this->playerHand);
 	this->addChild(this->enemyHand);
+
+	this->addChild(this->playerDeckCardCountFrame);
+	this->addChild(this->playerDeckCardCountText);
+	this->addChild(this->enemyDeckCardCountFrame);
+	this->addChild(this->enemyDeckCardCountText);
+
+	this->addChild(this->playerHandCardCountFrame);
+	this->addChild(this->playerHandCardCountText);
+	this->addChild(this->enemyHandCardCountFrame);
+	this->addChild(this->enemyHandCardCountText);
 }
 
 Hexium::~Hexium()
@@ -98,8 +136,10 @@ void Hexium::initializePositions()
 	const float deckOffsetX = 64.0f;
 	const float deckOffsetY = 420.0f;
 	const float handOffsetY = 472.0f;
+	const float labelsOffsetY = 72.0f;
 	const float graveyardOffsetX = -64.0f;
 	const float graveyardOffsetY = deckOffsetY;
+	const float handCardCountOffsetX = 196.0f;
 	const float socketOffsetY = 236.0f;
 	const float socketAOffsetX = 64.0f;
 	const float socketBOffsetX = socketAOffsetX + 112.0f;
@@ -127,6 +167,17 @@ void Hexium::initializePositions()
 	this->playerHand->setPosition(visibleSize.width / 2.0f + centerColumnCenter, visibleSize.height / 2.0f - handOffsetY);
 	this->playerDeck->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX, visibleSize.height / 2.0f - deckOffsetY);
 	this->enemyDeck->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX, visibleSize.height / 2.0f + deckOffsetY);
+
+	this->playerDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX - 24.0f, visibleSize.height / 2.0f - deckOffsetY - labelsOffsetY - 32.0f);
+	this->playerDeckCardCountText->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f - deckOffsetY + 32.0f - labelsOffsetY - 32.0f);
+	this->enemyDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX - 24.0f, visibleSize.height / 2.0f + deckOffsetY + labelsOffsetY);
+	this->enemyDeckCardCountText->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f + deckOffsetY + 32.0f + labelsOffsetY);
+
+	this->playerHandCardCountFrame->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX - 24.0f, visibleSize.height / 2.0f - deckOffsetY + labelsOffsetY);
+	this->playerHandCardCountText->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f - deckOffsetY + 32.0f + labelsOffsetY);
+	this->enemyHandCardCountFrame->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX - 24.0f, visibleSize.height / 2.0f + deckOffsetY - labelsOffsetY - 32.0f);
+	this->enemyHandCardCountText->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f + deckOffsetY - labelsOffsetY);
+
 }
 
 void Hexium::initializeListeners()
@@ -151,6 +202,11 @@ void Hexium::onGameStart(EventCustom* eventCustom)
 
 	args->playerDeck->copyTo(this->playerDeck);
 	args->enemyDeck->copyTo(this->enemyDeck);
+
+	this->playerDeckCardCountText->setString(std::to_string(this->playerDeck->getCardCount()));
+	this->enemyDeckCardCountText->setString(std::to_string(this->enemyDeck->getCardCount()));
+	this->playerHandCardCountText->setString(std::to_string(this->playerHand->getCardCount()));
+	this->enemyHandCardCountText->setString(std::to_string(this->enemyHand->getCardCount()));
 
 	this->gameStart();
 
@@ -236,6 +292,8 @@ void Hexium::drawCard()
 	case Turn::Enemy:
 		// Simply insert the card directly into the enemy hand for the enemy
 		enemyHand->insertCard(this->enemyDeck->drawCard(), 0.0f);
+		this->enemyDeckCardCountText->setString(std::to_string(this->enemyDeck->getCardCount()));
+		this->enemyHandCardCountText->setString(std::to_string(this->enemyHand->getCardCount()));
 		this->yieldControl();
 		break;
 	case Turn::Player:
@@ -247,6 +305,10 @@ void Hexium::drawCard()
 		float cardInsertDelay = 0.5f;
 
 		GameUtils::changeParent(card, this, true);
+
+		this->playerDeckCardCountText->setString(std::to_string(this->playerDeck->getCardCount()));
+		// Note: Just adding +1 here because the insert is delayed because of the animation
+		this->playerHandCardCountText->setString(std::to_string(this->playerHand->getCardCount() + 1));
 
 		this->runAction(Sequence::create(
 			CallFunc::create(CC_CALLBACK_0(Card::doDrawAnimation, card, cardDrawDelay)),

@@ -2,7 +2,6 @@
 #include "cocos2d.h"
 #include "Objects/Collision/CollisionObject.h"
 #include "Objects/Interactables/WarpGate.h"
-#include "GUI/Components/OutlineLabel.h"
 #include "Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -18,7 +17,7 @@ private:
 
 	void update(float) override;
 
-	OutlineLabel* valueLabel;
+	Label* valueLabel;
 
 	int previousValue;
 	int previousValueMax;
