@@ -45,6 +45,11 @@ void Hand::insertCard(Card* card, float cardInsertDelay)
 	this->setCardPositions(cardInsertDelay);
 }
 
+int Hand::getCardCount()
+{
+	return this->handCards->size();
+}
+
 void Hand::clear()
 {
 	this->removeAllChildren();

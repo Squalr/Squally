@@ -13,6 +13,7 @@ public:
 	static Deck * create(Card::CardStyle cardStyle, std::vector<CardData*>* cards);
 
 	void copyTo(Deck* otherDeck);
+	int getCardCount();
 
 	Card* drawCard();
 	bool hasCards();

@@ -12,6 +12,7 @@ public:
 	static Hand * create();
 
 	void insertCard(Card* card, float cardInsertDelay);
+	int getCardCount();
 	void clear();
 
 private:

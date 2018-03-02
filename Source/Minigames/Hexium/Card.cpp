@@ -34,7 +34,6 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->attackFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->attackFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->cardText = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
-	// this->cardText->enableOutline(Color4B::BLACK, 4.0f);
 	this->cardText->setAlignment(TextHAlignment::LEFT);
 	this->cardText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
@@ -174,9 +173,6 @@ void Card::updateText()
 		this->cardText->setTextColor(Card::specialColor);
 		break;
 	}
-
-	int dbg = this->cardText->getString().length();
-	std::string deeebg = this->cardText->getString();
 
 	this->attackFrame->setContentSize(Size(32.0f + this->cardText->getString().length() * 24.0f, 48.0f));
 }

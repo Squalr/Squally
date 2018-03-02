@@ -10,7 +10,6 @@
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/MenuSprite.h"
 #include "GUI/Components/Mouse.h"
-#include "GUI/Components/OutlineLabel.h"
 #include "GUI/Menus/MenuBackground.h"
 #include "Utils/GameUtils.h"
 
@@ -46,7 +45,7 @@ private:
 	Sprite* soundIcon;
 	CSlider* musicSlider;
 	CSlider* soundSlider;
-	OutlineLabel* fullScreenLabel;
+	Label* fullScreenLabel;
 	CCheckbox* fullScreenButton;
 	MenuSprite* exitButton;
 

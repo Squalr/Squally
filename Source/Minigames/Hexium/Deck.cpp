@@ -67,6 +67,11 @@ void Deck::copyTo(Deck* otherDeck)
 	}
 }
 
+int Deck::getCardCount()
+{
+	return this->deckCards->size();
+}
+
 Card* Deck::drawCard()
 {
 	Card* card = this->deckCards->back();

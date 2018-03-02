@@ -204,9 +204,6 @@
     <ClCompile Include="Source\Entities\Enemies\Poly.cpp">
       <Filter>Source\Entities\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GUI\Components\OutlineLabel.cpp">
-      <Filter>Source\GUI\Components</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Level\Environments\JungleEnvironment.cpp">
       <Filter>Source\Level\Environments</Filter>
     </ClCompile>
@@ -448,9 +445,6 @@
     </ClInclude>
     <ClInclude Include="Source\Entities\Enemies\Poly.h">
       <Filter>Source\Entities\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GUI\Components\OutlineLabel.h">
-      <Filter>Source\GUI\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\Level\Environments\JungleEnvironment.h">
       <Filter>Source\Level\Environments</Filter>

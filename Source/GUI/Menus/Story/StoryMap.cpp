@@ -15,8 +15,11 @@ StoryMap::StoryMap()
 	this->background = Sprite::create(Resources::Menus_WorldMaps_StoryMap);
 	this->foreground = Sprite::create(Resources::Menus_WorldMaps_StoryMapFront);
 	this->infoPanel = Sprite::create(Resources::Menus_WorldMaps_MapPanel);
-	this->titleLabel = OutlineLabel::create("Level Select", Resources::Fonts_Montserrat_Medium, this->titleFontSize);
-	this->infoLabel = OutlineLabel::create("", Resources::Fonts_Montserrat_Medium, this->infoFontSize);
+	this->titleLabel = Label::create("Level Select", Resources::Fonts_Montserrat_Medium, this->titleFontSize);
+	this->infoLabel = Label::create("", Resources::Fonts_Montserrat_Medium, this->infoFontSize);
+
+	this->titleLabel->enableOutline(Color4B::BLACK, 2.0f);
+	this->infoLabel->enableOutline(Color4B::BLACK, 2.0f);
 
 	this->jungle = MapNode::create(
 		Resources::Menus_WorldMaps_Jungle,
@@ -174,10 +177,10 @@ void StoryMap::onMouseSpriteMove(EventCustom* event)
 
 		if (GameUtils::intersects(node, mouseCoords))
 		{
-			this->infoLabel->setText(node->nodeMapName);
+			this->infoLabel->setString(node->nodeMapName);
 			return;
 		}
 	}
 
-	this->infoLabel->setText("");
+	this->infoLabel->setString("");
 }

@@ -14,9 +14,10 @@ WarpGateExactScanTutorial* WarpGateExactScanTutorial::create()
 
 WarpGateExactScanTutorial::WarpGateExactScanTutorial() : WarpGate::WarpGate()
 {
-	this->valueLabel = OutlineLabel::create("Temp", Resources::Fonts_Montserrat_Medium, 24);
+	this->valueLabel = Label::create("Temp", Resources::Fonts_Montserrat_Medium, 24);
 
 	this->valueLabel->setPosition(0, 256.0f);
+	this->valueLabel->enableOutline(Color4B::BLACK, 2.0f);
 
 	this->addChild(this->valueLabel);
 
@@ -36,7 +37,7 @@ void WarpGateExactScanTutorial::update(float dt)
 		WarpGateExactScanTutorial::warpGatePower = min(WarpGateExactScanTutorial::warpGatePower, WarpGateExactScanTutorial::warpGatePowerMax);
 
 		// Update text
-		this->valueLabel->setText(std::to_string(WarpGateExactScanTutorial::warpGatePower) + " / " + std::to_string(WarpGateExactScanTutorial::warpGatePowerMax));
+		this->valueLabel->setString(std::to_string(WarpGateExactScanTutorial::warpGatePower) + " / " + std::to_string(WarpGateExactScanTutorial::warpGatePowerMax));
 
 		// Set color
 		if (WarpGateExactScanTutorial::warpGatePower < WarpGateExactScanTutorial::warpGatePowerMax)

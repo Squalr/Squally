@@ -2,7 +2,6 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "GUI/Components/FadeScene.h"
-#include "GUI/Components/OutlineLabel.h"
 #include "GUI/Components/Mouse.h"
 #include "GUI/Menus/Story/MapNode.h"
 #include "Utils/GameUtils.h"
@@ -37,8 +36,8 @@ private:
 	Sprite* background;
 	Sprite* foreground;
 	Sprite* infoPanel;
-	OutlineLabel* titleLabel;
-	OutlineLabel* infoLabel;
+	Label* titleLabel;
+	Label* infoLabel;
 
 	const float titleFontSize = 48.0f;
 	const float infoFontSize = 32.0f;
