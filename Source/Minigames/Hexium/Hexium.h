@@ -82,6 +82,15 @@ private:
 	Hand* enemyHand;
 	Deck* enemyGraveyard;
 
+	LayerColor* playerDeckCardCountFrame;
+	Label* playerDeckCardCountText;
+	LayerColor* enemyDeckCardCountFrame;
+	Label* enemyDeckCardCountText;
+	LayerColor* playerHandCardCountFrame;
+	Label* playerHandCardCountText;
+	LayerColor* enemyHandCardCountFrame;
+	Label* enemyHandCardCountText;
+
 	Sprite* gameBackground;
 };
 
