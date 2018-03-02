@@ -47,7 +47,7 @@ private:
 	void gameStart();
 	void randomizeTurn();
 	void drawCard();
-	void yieldControl();
+	void giveControl();
 	void endTurn();
 
 	// Game state

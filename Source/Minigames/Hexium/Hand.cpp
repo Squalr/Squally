@@ -40,8 +40,9 @@ void Hand::insertCard(Card* card, float cardInsertDelay)
 {
 	GameUtils::changeParent(card, this, true);
 
-	this->handCards->push_back(card);
+	card->reveal();
 
+	this->handCards->push_back(card);
 	this->setCardPositions(cardInsertDelay);
 }
 
@@ -78,9 +79,14 @@ void Hand::setCardPositions(float cardRepositionDelay)
 
 		float newX = (index * spacing) - (spacing * (cardCount - 1)) / 2.0f;
 
-		card->runAction(EaseSineInOut::create(MoveTo::create(cardRepositionDelay, Vec2(newX, 0.0f))));
-		card->runAction(ScaleTo::create(cardRepositionDelay, Card::cardScale));
-
+		if (cardRepositionDelay > 0.0f) {
+			card->runAction(EaseSineInOut::create(MoveTo::create(cardRepositionDelay, Vec2(newX, 0.0f))));
+			card->runAction(ScaleTo::create(cardRepositionDelay, Card::cardScale));
+		}
+		else {
+			card->setPosition(Vec2(newX, 0.0f));
+			card->setScale(Card::cardScale);
+		}
 		index++;
 	}
 }

@@ -3,6 +3,7 @@
 #include "Resources.h"
 #include "Minigames/Hexium/CardData.h"
 #include "Utils/HackUtils.h"
+#include "GUI/Components/MenuSprite.h"
 
 using namespace cocos2d;
 
@@ -19,6 +20,7 @@ public:
 	void reveal();
 	void hide();
 	void doDrawAnimation(float cardDrawDelay);
+	void setScale(float scale) override;
 
 	static const float cardScale;
 
@@ -35,6 +37,8 @@ private:
 
 	Sprite* cardBack;
 	Sprite* cardFront;
+	Node* cardSelected;
+	MenuSprite* cardSprite;
 	LayerColor* attackFrame;
 	Label* cardText;
 

@@ -1242,6 +1242,7 @@ public:
 	static const std::string Minigames_Hexium_CardBackRobotic;
 	static const std::string Minigames_Hexium_CardBackShadow;
 	static const std::string Minigames_Hexium_CardPad;
+	static const std::string Minigames_Hexium_CardSelect;
 	static const std::string Minigames_Hexium_Emblem;
 	static const std::string Minigames_Hexium_Gameboard;
 	static const std::string Minigames_Hexium_Skull;

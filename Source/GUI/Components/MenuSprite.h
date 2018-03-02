@@ -15,6 +15,8 @@ public:
 	static MenuSprite * create(Node* spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource);
 	static MenuSprite * create(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked);
 
+	void setContentScale(float scale);
+	void setOffsetCorrection(Vec2 newOffsetCorrection);
 	void setClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick);
 	void setMouseOverCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick);
 	void setMouseDownCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseDown);
@@ -41,6 +43,7 @@ private:
 	Node* sprite;
 	Node* spriteClicked;
 	Node* spriteSelected;
+	Vec2 offsetCorrection;
 
 	bool isClickInit;
 	bool isClicked;
