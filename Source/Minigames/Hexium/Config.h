@@ -7,6 +7,9 @@ using namespace cocos2d;
 class Config
 {
 public:
+	static const float handWidth;
+	static const float rowWidth;
+	static const float defaultCardSpacing;
 	static const float rightColumnCenter;
 	static const float leftColumnCenter;
 	static const float centerColumnCenter;

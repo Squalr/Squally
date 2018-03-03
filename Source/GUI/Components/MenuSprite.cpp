@@ -239,6 +239,11 @@ void MenuSprite::onMouseUp(EventMouse* event)
 					SoundManager::playSoundResource(this->clickSound);
 				}
 
+				// Show mouse hover sprite
+				this->sprite->setVisible(false);
+				this->spriteClicked->setVisible(false);
+				this->spriteSelected->setVisible(true);
+
 				event->stopPropagation();
 			}
 		}

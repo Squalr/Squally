@@ -157,6 +157,7 @@ void Hexium::initializeListeners()
 	listener->onKeyPressed = CC_CALLBACK_2(Hexium::onKeyPressed, this);
 	this->gameState->setCardPreviewCallback(CC_CALLBACK_1(Hexium::previewCard, this));
 	this->gameState->setUpdateStateCallback(CC_CALLBACK_1(Hexium::updateDisplayState, this));
+	this->gameState->setRequestAiCallback(Ai::performAiActions);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
