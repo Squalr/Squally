@@ -18,11 +18,19 @@ Hexium::Hexium()
 	this->emblem = Sprite::create(Resources::Minigames_Hexium_Emblem);
 
 	this->playerDeck = Deck::create();
-	this->playerHand = Hand::create();
+	this->playerHand = CardRow::create();
 	this->playerGraveyard = Deck::create();
+	this->playerBinaryCards = CardRow::create();
+	this->playerDecimalCards = CardRow::create();
+	this->playerHexCards = CardRow::create();
+
 	this->enemyDeck = Deck::create();
-	this->enemyHand = Hand::create();
+	this->enemyHand = CardRow::create();
 	this->enemyGraveyard = Deck::create();
+	this->enemyBinaryCards = CardRow::create();
+	this->enemyDecimalCards = CardRow::create();
+	this->enemyHexCards = CardRow::create();
+
 	this->previewPanel = Node::create();
 	this->previewCard = nullptr;
 
@@ -97,9 +105,16 @@ Hexium::Hexium()
 	this->addChild(this->playerGraveyard);
 	this->addChild(this->enemyGraveyard);
 	this->addChild(this->playerDeck);
+	this->addChild(this->playerBinaryCards);
+	this->addChild(this->playerDecimalCards);
+	this->addChild(this->playerHexCards);
+
 	this->addChild(this->enemyDeck);
 	this->addChild(this->playerHand);
 	this->addChild(this->enemyHand);
+	this->addChild(this->enemyBinaryCards);
+	this->addChild(this->enemyDecimalCards);
+	this->addChild(this->enemyHexCards);
 
 	this->addChild(this->playerDeckCardCountFrame);
 	this->addChild(this->playerDeckCardCountText);
@@ -140,6 +155,10 @@ void Hexium::initializePositions()
 	const float deckOffsetX = 64.0f;
 	const float deckOffsetY = 420.0f;
 	const float handOffsetY = 472.0f;
+	const float boardCenterOffsetY = 72.0f;
+	const float binaryRowOffsetY = 72.0f;
+	const float decimalRowOffsetY = 228.0f;
+	const float hexRowOffsetY = 384.0f;
 	const float labelsOffsetY = 72.0f;
 	const float previewOffsetY = 64.0f;
 	const float graveyardOffsetX = -64.0f;
@@ -168,10 +187,19 @@ void Hexium::initializePositions()
 
 	this->enemyGraveyard->setPosition(visibleSize.width / 2.0f + rightColumnCenter + graveyardOffsetX, visibleSize.height / 2.0f + graveyardOffsetY);
 	this->playerGraveyard->setPosition(visibleSize.width / 2.0f + rightColumnCenter + graveyardOffsetX, visibleSize.height / 2.0f - graveyardOffsetY);
-	this->enemyHand->setPosition(visibleSize.width / 2.0f + centerColumnCenter, visibleSize.height / 2.0f + handOffsetY);
-	this->playerHand->setPosition(visibleSize.width / 2.0f + centerColumnCenter, visibleSize.height / 2.0f - handOffsetY);
+
 	this->playerDeck->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX, visibleSize.height / 2.0f - deckOffsetY);
 	this->enemyDeck->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX, visibleSize.height / 2.0f + deckOffsetY);
+
+	this->playerHand->setPosition(visibleSize.width / 2.0f + centerColumnCenter, visibleSize.height / 2.0f - handOffsetY);
+	this->playerBinaryCards->setPosition(visibleSize.width / 2.0f + centerColumnCenter, visibleSize.height / 2.0f + boardCenterOffsetY - binaryRowOffsetY);
+	this->playerDecimalCards->setPosition(visibleSize.width / 2.0f + centerColumnCenter, visibleSize.height / 2.0f + boardCenterOffsetY - decimalRowOffsetY);
+	this->playerHexCards->setPosition(visibleSize.width / 2.0f + centerColumnCenter, visibleSize.height / 2.0f + boardCenterOffsetY - hexRowOffsetY);
+
+	this->enemyHand->setPosition(visibleSize.width / 2.0f + centerColumnCenter, visibleSize.height / 2.0f + handOffsetY);
+	this->enemyBinaryCards->setPosition(visibleSize.width / 2.0f + centerColumnCenter, visibleSize.height / 2.0f + boardCenterOffsetY + binaryRowOffsetY);
+	this->enemyDecimalCards->setPosition(visibleSize.width / 2.0f + centerColumnCenter, visibleSize.height / 2.0f + boardCenterOffsetY + decimalRowOffsetY);
+	this->enemyHexCards->setPosition(visibleSize.width / 2.0f + centerColumnCenter, visibleSize.height / 2.0f + boardCenterOffsetY + hexRowOffsetY);
 
 	this->playerDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX - 24.0f, visibleSize.height / 2.0f - deckOffsetY - labelsOffsetY - 32.0f);
 	this->playerDeckCardCountText->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f - deckOffsetY + 32.0f - labelsOffsetY - 32.0f);
@@ -189,9 +217,29 @@ void Hexium::initializePositions()
 void Hexium::initializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
-
 	listener->onKeyPressed = CC_CALLBACK_2(Hexium::onKeyPressed, this);
+
 	this->playerHand->setMouseOverCallback(CC_CALLBACK_1(Hexium::onCardMouseOver, this));
+	this->enemyHand->setMouseOverCallback(CC_CALLBACK_1(Hexium::onCardMouseOver, this));
+
+	this->playerBinaryCards->setMouseOverCallback(CC_CALLBACK_1(Hexium::onCardMouseOver, this));
+	this->playerDecimalCards->setMouseOverCallback(CC_CALLBACK_1(Hexium::onCardMouseOver, this));
+	this->playerHexCards->setMouseOverCallback(CC_CALLBACK_1(Hexium::onCardMouseOver, this));
+
+	this->enemyBinaryCards->setMouseOverCallback(CC_CALLBACK_1(Hexium::onCardMouseOver, this));
+	this->enemyDecimalCards->setMouseOverCallback(CC_CALLBACK_1(Hexium::onCardMouseOver, this));
+	this->enemyHexCards->setMouseOverCallback(CC_CALLBACK_1(Hexium::onCardMouseOver, this));
+
+	this->playerHand->setMouseClickCallback(CC_CALLBACK_1(Hexium::onHandCardClick, this));
+	this->enemyHand->setMouseClickCallback(CC_CALLBACK_1(Hexium::onHandCardClick, this));
+
+	this->playerBinaryCards->setMouseClickCallback(CC_CALLBACK_1(Hexium::onRowCardClick, this));
+	this->playerDecimalCards->setMouseClickCallback(CC_CALLBACK_1(Hexium::onRowCardClick, this));
+	this->playerHexCards->setMouseClickCallback(CC_CALLBACK_1(Hexium::onRowCardClick, this));
+
+	this->enemyBinaryCards->setMouseClickCallback(CC_CALLBACK_1(Hexium::onRowCardClick, this));
+	this->enemyDecimalCards->setMouseClickCallback(CC_CALLBACK_1(Hexium::onRowCardClick, this));
+	this->enemyHexCards->setMouseClickCallback(CC_CALLBACK_1(Hexium::onRowCardClick, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
@@ -260,10 +308,10 @@ void Hexium::onCardMouseOver(Card* card)
 				specialLabel->setString("Sacrifice a card from your hand and XOR it with all cards in a row.");
 				break;
 			case CardData::CardType::Special_SHL:
-				specialLabel->setString("Shift the bits of all cards in a row left.");
+				specialLabel->setString("Shift the bits left of all cards in a row.");
 				break;
 			case CardData::CardType::Special_SHR:
-				specialLabel->setString("Shift the bits of all cards in a row right.");
+				specialLabel->setString("Shift the bits right of all cards in a row.");
 				break;
 			case CardData::CardType::Special_INV:
 				specialLabel->setString("Invert all bits in a row.");
@@ -298,6 +346,29 @@ void Hexium::onCardMouseOver(Card* card)
 		}
 		}
 	}
+}
+
+void Hexium::onHandCardClick(Card* card)
+{
+	switch (card->cardData->cardType) {
+	case CardData::CardType::Binary:
+		this->playerHand->removeCard(card);
+		this->playerBinaryCards->insertCard(card, CardRow::standardInsertDelay);
+		break;
+	case CardData::CardType::Decimal:
+		this->playerHand->removeCard(card);
+		this->playerDecimalCards->insertCard(card, CardRow::standardInsertDelay);
+		break;
+	case CardData::CardType::Hexidecimal:
+		this->playerHand->removeCard(card);
+		this->playerHexCards->insertCard(card, CardRow::standardInsertDelay);
+		break;
+	}
+}
+
+void Hexium::onRowCardClick(Card* card)
+{
+
 }
 
 void Hexium::onGameStart(EventCustom* eventCustom)
@@ -429,10 +500,10 @@ void Hexium::drawCard()
 	case Turn::Player:
 	default:
 		Card * card = this->playerDeck->drawCard();
-		Hand * hand = this->playerHand;
+		CardRow * hand = this->playerHand;
 		float cardDrawDelay = 0.75f;
 		float revealDelay = 0.25f;
-		float cardInsertDelay = 0.5f;
+		float cardInsertDelay = CardRow::standardInsertDelay;
 
 		GameUtils::changeParent(card, this, true);
 
@@ -444,7 +515,7 @@ void Hexium::drawCard()
 			CallFunc::create(CC_CALLBACK_0(Card::doDrawAnimation, card, cardDrawDelay)),
 			DelayTime::create(cardDrawDelay),
 			DelayTime::create(revealDelay),
-			CallFunc::create(CC_CALLBACK_0(Hand::insertCard, hand, card, cardInsertDelay)),
+			CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, card, cardInsertDelay)),
 			DelayTime::create(cardInsertDelay),
 			CallFunc::create(CC_CALLBACK_0(Hexium::giveControl, this)),
 			nullptr

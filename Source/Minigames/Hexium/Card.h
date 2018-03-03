@@ -27,6 +27,7 @@ public:
 	void doDrawAnimation(float cardDrawDelay);
 	void setScale(float scale) override;
 	void setMouseOverCallback(std::function<void(Card*)> callback);
+	void setMouseClickCallback(std::function<void(Card*)> callback);
 
 	CardData* cardData;
 
@@ -45,6 +46,7 @@ private:
 	void onEnter() override;
 	void updateText();
 	void onMouseOver(MenuSprite* menuSprite);
+	void onMouseClick(MenuSprite* menuSprite);
 
 	Sprite* cardBack;
 	Sprite* cardFront;
@@ -53,6 +55,7 @@ private:
 	MenuSprite* cardSprite;
 	LayerColor* attackFrame;
 	Label* cardText;
-	std::function<void(Card*)>  mouseOverCallback;
+	std::function<void(Card*)> mouseOverCallback;
+	std::function<void(Card*)> mouseClickCallback;
 };
 
