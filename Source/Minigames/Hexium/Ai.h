@@ -1,22 +1,14 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
-#include "Minigames/Hexium/CardRow.h"
+#include "Minigames/Hexium/GameState.h"
 
 using namespace cocos2d;
 
 class Ai
 {
 public:
-	enum Difficulty {
-		Stupid,
-		Easy,
-		Medium,
-		Hard,
-		Expert,
-	};
-
-	static void performAction(Difficulty difficulty, CardRow* hand);
+	static void performAiActions(GameState* gameState);
 
 private:
 };

@@ -13,6 +13,7 @@ GameState::GameState()
 {
 	this->updateStateCallback = nullptr;
 	this->cardPreviewCallback = nullptr;
+	this->requestAiCallback = nullptr;
 
 	this->playerDeck = Deck::create();
 	this->playerHand = CardRow::create();
@@ -29,6 +30,8 @@ GameState::GameState()
 	this->enemyHexCards = CardRow::create();
 
 	this->enemyHand->setVisible(false);
+	this->playerHand->setRowWidth(Config::handWidth);
+	this->enemyHand->setRowWidth(Config::handWidth);
 
 	this->addChild(this->playerGraveyard);
 	this->addChild(this->enemyGraveyard);
@@ -151,8 +154,8 @@ void GameState::gameStart(Deck* startPlayerDeck, Deck* startEnemyDeck)
 	this->playerDeck->clear();
 	this->enemyDeck->clear();
 
-	this->playerDeck = startPlayerDeck;
-	this->enemyDeck = startEnemyDeck;
+	startPlayerDeck->copyTo(this->playerDeck);
+	startEnemyDeck->copyTo(this->enemyDeck);
 
 	// Draw starting cards
 	const int initialCardCount = 15;
@@ -171,6 +174,8 @@ void GameState::gameStart(Deck* startPlayerDeck, Deck* startEnemyDeck)
 		enemyHand->insertCard(this->enemyDeck->drawCard(), 0.0f);
 		drawnCount++;
 	}
+
+	this->disableUserInteraction();
 
 	if (this->updateStateCallback != nullptr) {
 		this->updateStateCallback(false);
@@ -192,9 +197,6 @@ void GameState::randomizeTurn()
 		this->turn = Turn::Enemy;
 	}
 
-	// TEMP DEBUG:
-	this->turn = Turn::Player;
-
 	this->runAction(Sequence::create(
 		DelayTime::create(turnAnimationDelay),
 		CallFunc::create(CC_CALLBACK_0(GameState::drawCard, this)),
@@ -207,25 +209,13 @@ void GameState::drawCard()
 	switch (this->turn)
 	{
 	case Turn::Enemy:
+	{
 		if (!this->enemyDeck->hasCards())
 		{
 			this->giveControl();
 			return;
 		}
-		break;
-	case Turn::Player:
-	default:
-		if (!this->playerDeck->hasCards())
-		{
-			this->giveControl();
-			return;
-		}
-		break;
-	}
 
-	switch (this->turn)
-	{
-	case Turn::Enemy:
 		// Simply insert the card directly into the enemy hand for the enemy
 		enemyHand->insertCard(this->enemyDeck->drawCard(), 0.0f);
 
@@ -233,10 +223,24 @@ void GameState::drawCard()
 			this->updateStateCallback(false);
 		}
 
-		this->giveControl();
+		const float npcDrawDelay = 0.25f;
+
+		this->runAction(Sequence::create(
+			DelayTime::create(npcDrawDelay),
+			CallFunc::create(CC_CALLBACK_0(GameState::giveControl, this)),
+			nullptr
+		));
 		break;
+	}
 	case Turn::Player:
 	default:
+	{
+		if (!this->playerDeck->hasCards())
+		{
+			this->giveControl();
+			return;
+		}
+
 		Card * card = this->playerDeck->drawCard();
 		CardRow * hand = this->playerHand;
 		float cardDrawDelay = 0.75f;
@@ -260,6 +264,7 @@ void GameState::drawCard()
 		));
 		break;
 	}
+	}
 }
 
 void GameState::giveControl()
@@ -267,9 +272,13 @@ void GameState::giveControl()
 	switch (this->turn)
 	{
 	case Turn::Enemy:
+		if (this->requestAiCallback != nullptr) {
+			this->requestAiCallback(this);
+		}
 		break;
 	case Turn::Player:
 	default:
+		this->enableUserInteraction();
 		break;
 	}
 }
@@ -283,6 +292,7 @@ void GameState::endTurn()
 		break;
 	case Turn::Player:
 	default:
+		this->disableUserInteraction();
 		this->turn = Turn::Enemy;
 		break;
 	}
@@ -304,4 +314,31 @@ void GameState::setCardPreviewCallback(std::function<void(Card*)> callback)
 void GameState::setUpdateStateCallback(std::function<void(bool)> callback)
 {
 	this->updateStateCallback = callback;
+}
+
+void GameState::setRequestAiCallback(std::function<void(GameState*)> callback)
+{
+	this->requestAiCallback = callback;
+}
+
+void GameState::enableUserInteraction()
+{
+	this->playerHand->enableInteraction();
+	this->playerBinaryCards->enableInteraction();
+	this->playerDecimalCards->enableInteraction();
+	this->playerHexCards->enableInteraction();
+	this->enemyBinaryCards->enableInteraction();
+	this->enemyDecimalCards->enableInteraction();
+	this->enemyHexCards->enableInteraction();
+}
+
+void GameState::disableUserInteraction()
+{
+	this->playerHand->disableInteraction();
+	this->playerBinaryCards->disableInteraction();
+	this->playerDecimalCards->disableInteraction();
+	this->playerHexCards->disableInteraction();
+	this->enemyBinaryCards->disableInteraction();
+	this->enemyDecimalCards->disableInteraction();
+	this->enemyHexCards->disableInteraction();
 }

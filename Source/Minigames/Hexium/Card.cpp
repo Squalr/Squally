@@ -49,10 +49,13 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	}
 
 	this->cardImage = Sprite::create(data->cardResourceFile);
-	this->cardSelected = Node::create();
-	this->cardSelected->addChild(Sprite::create(data->cardResourceFile));
-	this->cardSelected->addChild(Sprite::create(Resources::Minigames_Hexium_CardSelect));
-	this->cardSprite = MenuSprite::create(this->cardImage, this->cardSelected, Sprite::create(data->cardResourceFile));
+	Node* cardSelected = Node::create();
+	cardSelected->addChild(Sprite::create(data->cardResourceFile));
+	cardSelected->addChild(Sprite::create(Resources::Minigames_Hexium_CardSelect));
+	Node* cardSelected2 = Node::create();
+	cardSelected2->addChild(Sprite::create(data->cardResourceFile));
+	cardSelected2->addChild(Sprite::create(Resources::Minigames_Hexium_CardSelect));
+	this->cardSprite = MenuSprite::create(this->cardImage, cardSelected, cardSelected2);
 
 	this->attackFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->attackFrame->setAnchorPoint(Vec2(0.0f, 1.0f));

@@ -20,6 +20,15 @@ public:
 	void endTurn();
 	void setCardPreviewCallback(std::function<void(Card*)> callback);
 	void setUpdateStateCallback(std::function<void(bool)> callback);
+	void setRequestAiCallback(std::function<void(GameState*)> callback);
+
+	enum Difficulty {
+		Stupid,
+		Easy,
+		Medium,
+		Hard,
+		Expert,
+	};
 
 	enum Turn {
 		Player,
@@ -28,6 +37,7 @@ public:
 
 	// Game state
 	Turn turn;
+	Difficulty difficulty;
 	int playerLosses;
 	int enemyLosses;
 
@@ -53,10 +63,14 @@ private:
 	void onHandCardClick(Card* card);
 	void onRowCardClick(Card* card);
 
+	void enableUserInteraction();
+	void disableUserInteraction();
+
 	void initializePositions();
 	void initializeListeners();
 
 	std::function<void(Card*)> cardPreviewCallback;
 	std::function<void(bool)> updateStateCallback;
+	std::function<void(GameState*)> requestAiCallback;
 };
 
