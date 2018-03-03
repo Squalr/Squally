@@ -16,6 +16,8 @@ CardRow::CardRow()
 	this->mouseOverCallback = nullptr;
 	this->mouseClickCallback = nullptr;
 
+	this->rowWidth = Config::rowWidth;
+
 	this->rowCards = new std::vector<Card*>();
 }
 
@@ -41,12 +43,37 @@ void CardRow::initializeListeners()
 {
 }
 
+void CardRow::disableInteraction()
+{
+	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	{
+		Card* card = *it;
+
+		card->setMouseClickCallback(nullptr);
+	}
+}
+
+void CardRow::enableInteraction()
+{
+	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	{
+		Card* card = *it;
+
+		card->setMouseClickCallback(this->mouseClickCallback);
+	}
+}
+
+void CardRow::setRowWidth(float newRowWidth)
+{
+	this->rowWidth = newRowWidth;
+}
+
 void CardRow::insertCard(Card* card, float cardInsertDelay)
 {
 	GameUtils::changeParent(card, this, true);
 
 	card->setMouseOverCallback(this->mouseOverCallback);
-	card->setMouseClickCallback(this->mouseClickCallback);
+	card->setMouseClickCallback(nullptr);
 	card->reveal();
 
 	this->rowCards->push_back(card);
@@ -89,13 +116,6 @@ void CardRow::setMouseOverCallback(std::function<void(Card*)> callback)
 void CardRow::setMouseClickCallback(std::function<void(Card*)> callback)
 {
 	this->mouseClickCallback = callback;
-
-	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
-	{
-		Card* card = *it;
-
-		card->setMouseClickCallback(this->mouseClickCallback);
-	}
 }
 
 void CardRow::setCardPositions(float cardRepositionDelay)
@@ -104,13 +124,12 @@ void CardRow::setCardPositions(float cardRepositionDelay)
 	int index = 0;
 
 	float cardWidth = 225.0f * Card::cardScale;
-	float boardWidth = 992.0f;
-	float spacing = 128.0f;
+	float spacing = Config::defaultCardSpacing;
 
 	// Start overlapping cards after the row fills
-	if (cardCount > 8)
+	if (cardCount > 7)
 	{
-		spacing = (boardWidth - cardWidth) / (cardCount - 1);
+		spacing = (this->rowWidth - cardWidth) / (cardCount - 1);
 	}
 
 	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)

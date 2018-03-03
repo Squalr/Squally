@@ -51,7 +51,6 @@ private:
 	Sprite* cardBack;
 	Sprite* cardFront;
 	Sprite* cardImage;
-	Node* cardSelected;
 	MenuSprite* cardSprite;
 	LayerColor* attackFrame;
 	Label* cardText;

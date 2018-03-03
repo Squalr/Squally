@@ -1,7 +1,7 @@
 #include "Ai.h"
 
-
-void performAction(Ai::Difficulty difficulty, CardRow* hand)
+void Ai::performAiActions(GameState* gameState)
 {
 
+	gameState->endTurn();
 }
