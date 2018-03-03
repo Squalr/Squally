@@ -97,6 +97,7 @@ void Card::initializePositions()
 void Card::initializeListeners()
 {
 	this->cardSprite->setMouseOverCallback(CC_CALLBACK_1(Card::onMouseOver, this));
+	this->cardSprite->setClickCallback(CC_CALLBACK_1(Card::onMouseClick, this));
 }
 
 void Card::setScale(float scale)
@@ -189,9 +190,21 @@ void Card::setMouseOverCallback(std::function<void(Card*)> callback)
 	this->mouseOverCallback = callback;
 }
 
+void Card::setMouseClickCallback(std::function<void(Card*)> callback)
+{
+	this->mouseClickCallback = callback;
+}
+
 void Card::onMouseOver(MenuSprite* menuSprite)
 {
 	if (this->mouseOverCallback != nullptr) {
 		this->mouseOverCallback(this);
+	}
+}
+
+void Card::onMouseClick(MenuSprite* menuSprite)
+{
+	if (this->mouseClickCallback != nullptr) {
+		this->mouseClickCallback(this);
 	}
 }

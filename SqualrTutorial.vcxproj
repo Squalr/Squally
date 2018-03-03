@@ -207,7 +207,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Minigames\Hexium\CardData.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\CardStorage.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Deck.cpp" />
-    <ClCompile Include="Source\Minigames\Hexium\Hand.cpp" />
+    <ClCompile Include="Source\Minigames\Hexium\CardRow.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Hexium.cpp" />
     <ClCompile Include="Source\Objects\Collision\CollisionObject.cpp" />
     <ClCompile Include="Source\Objects\Hackables\HackableAttribute.cpp" />
@@ -289,7 +289,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Minigames\Hexium\CardData.h" />
     <ClInclude Include="Source\Minigames\Hexium\CardStorage.h" />
     <ClInclude Include="Source\Minigames\Hexium\Deck.h" />
-    <ClInclude Include="Source\Minigames\Hexium\Hand.h" />
+    <ClInclude Include="Source\Minigames\Hexium\CardRow.h" />
     <ClInclude Include="Source\Minigames\Hexium\Hexium.h" />
     <ClInclude Include="Source\Minigames\Minigames.h" />
     <ClInclude Include="Source\Objects\Collision\CategoryGroup.h" />

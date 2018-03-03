@@ -3,7 +3,7 @@
 #include "Resources.h"
 #include "MiniGames/Hexium/Card.h"
 #include "MiniGames/Hexium/Deck.h"
-#include "MiniGames/Hexium/Hand.h"
+#include "MiniGames/Hexium/CardRow.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/MenuSprite.h"
 #include "Utils/StrUtils.h"
@@ -51,6 +51,8 @@ private:
 	void giveControl();
 	void endTurn();
 	void onCardMouseOver(Card* card);
+	void onHandCardClick(Card* card);
+	void onRowCardClick(Card* card);
 
 	// Game state
 	bool allowControl;
@@ -78,11 +80,18 @@ private:
 	Sprite* enemyPadGrave;
 
 	Deck* playerDeck;
-	Hand* playerHand;
+	CardRow* playerHand;
 	Deck* playerGraveyard;
+	CardRow* playerBinaryCards;
+	CardRow* playerDecimalCards;
+	CardRow* playerHexCards;
+
 	Deck* enemyDeck;
-	Hand* enemyHand;
+	CardRow* enemyHand;
 	Deck* enemyGraveyard;
+	CardRow* enemyBinaryCards;
+	CardRow* enemyDecimalCards;
+	CardRow* enemyHexCards;
 
 	LayerColor* playerDeckCardCountFrame;
 	Label* playerDeckCardCountText;
