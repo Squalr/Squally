@@ -16,7 +16,7 @@ CardRow::CardRow()
 	this->mouseOverCallback = nullptr;
 	this->mouseClickCallback = nullptr;
 
-	this->rowCards = new std::set<Card*>();
+	this->rowCards = new std::vector<Card*>();
 }
 
 CardRow::~CardRow()
@@ -49,13 +49,13 @@ void CardRow::insertCard(Card* card, float cardInsertDelay)
 	card->setMouseClickCallback(this->mouseClickCallback);
 	card->reveal();
 
-	this->rowCards->insert(card);
+	this->rowCards->push_back(card);
 	this->setCardPositions(cardInsertDelay);
 }
 
 Card* CardRow::removeCard(Card* card)
 {
-	this->rowCards->erase(card);
+	this->rowCards->erase(std::remove(this->rowCards->begin(), this->rowCards->end(), card), this->rowCards->end());
 	this->setCardPositions(CardRow::standardInsertDelay);
 
 	// Note: We let the caller remove the child because it allows for control over positioning

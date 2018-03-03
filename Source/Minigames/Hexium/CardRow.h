@@ -29,7 +29,7 @@ private:
 	void initializeListeners();
 	void setCardPositions(float cardRepositionDelay);
 
-	std::set<Card*>* rowCards;
+	std::vector<Card*>* rowCards;
 	std::function<void(Card*)> mouseOverCallback;
 	std::function<void(Card*)> mouseClickCallback;
 };

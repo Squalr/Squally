@@ -1,9 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
-#include "MiniGames/Hexium/Card.h"
-#include "MiniGames/Hexium/Deck.h"
-#include "MiniGames/Hexium/CardRow.h"
+#include "MiniGames/Hexium/GameState.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/MenuSprite.h"
 #include "Utils/StrUtils.h"
@@ -35,30 +33,15 @@ private:
 	Hexium();
 	~Hexium();
 
-	enum Turn {
-		Player,
-		Enemy,
-	};
-
 	void onEnter() override;
 	void initializePositions();
 	void initializeListeners();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onClose(MenuSprite* menuSprite);
-	void gameStart();
-	void randomizeTurn();
-	void drawCard();
-	void giveControl();
-	void endTurn();
-	void onCardMouseOver(Card* card);
-	void onHandCardClick(Card* card);
-	void onRowCardClick(Card* card);
+	void previewCard(Card* card);
+	void updateDisplayState(bool prePlayerDraw);
 
-	// Game state
-	bool allowControl;
-	Turn turn;
-	int playerLosses;
-	int enemyLosses;
+	GameState* gameState;
 
 	// Images
 	Sprite* emblem;
@@ -79,20 +62,6 @@ private:
 	Sprite* enemyPadDeck;
 	Sprite* enemyPadGrave;
 
-	Deck* playerDeck;
-	CardRow* playerHand;
-	Deck* playerGraveyard;
-	CardRow* playerBinaryCards;
-	CardRow* playerDecimalCards;
-	CardRow* playerHexCards;
-
-	Deck* enemyDeck;
-	CardRow* enemyHand;
-	Deck* enemyGraveyard;
-	CardRow* enemyBinaryCards;
-	CardRow* enemyDecimalCards;
-	CardRow* enemyHexCards;
-
 	LayerColor* playerDeckCardCountFrame;
 	Label* playerDeckCardCountText;
 	LayerColor* enemyDeckCardCountFrame;
@@ -102,7 +71,7 @@ private:
 	LayerColor* enemyHandCardCountFrame;
 	Label* enemyHandCardCountText;
 
-	Card* previewCard;
+	Card* currentPreviewCard;
 	Node* previewPanel;
 
 	Sprite* gameBackground;
