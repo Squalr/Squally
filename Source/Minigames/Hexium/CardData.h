@@ -7,6 +7,8 @@ using namespace cocos2d;
 class CardData
 {
 public:
+	std::string getCardTypeString();
+
 	static std::map<std::string, CardData*> cardListByName;
 	static std::map<int, CardData*> cardListById;
 

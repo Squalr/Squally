@@ -11,7 +11,11 @@ class Card : public Node
 {
 public:
 	enum CardStyle {
-		Robotic,
+		Earth,
+		Water,
+		Air,
+		Fire,
+		Light,
 		Shadow,
 	};
 
@@ -19,12 +23,18 @@ public:
 
 	void reveal();
 	void hide();
+	int getAttack();
 	void doDrawAnimation(float cardDrawDelay);
 	void setScale(float scale) override;
-
-	static const float cardScale;
+	void setMouseOverCallback(std::function<void(Card*)> callback);
 
 	CardData* cardData;
+
+	static const float cardScale;
+	static const Color4B binaryColor;
+	static const Color4B decimalColor;
+	static const Color4B hexColor;
+	static const Color4B specialColor;
 
 private:
 	Card(CardStyle cardStyle, CardData* data);
@@ -34,17 +44,15 @@ private:
 	void initializeListeners();
 	void onEnter() override;
 	void updateText();
+	void onMouseOver(MenuSprite* menuSprite);
 
 	Sprite* cardBack;
 	Sprite* cardFront;
+	Sprite* cardImage;
 	Node* cardSelected;
 	MenuSprite* cardSprite;
 	LayerColor* attackFrame;
 	Label* cardText;
-
-	static const Color4B binaryColor;
-	static const Color4B decimalColor;
-	static const Color4B hexColor;
-	static const Color4B specialColor;
+	std::function<void(Card*)>  mouseOverCallback;
 };
 

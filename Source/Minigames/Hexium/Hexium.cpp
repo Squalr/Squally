@@ -23,6 +23,8 @@ Hexium::Hexium()
 	this->enemyDeck = Deck::create();
 	this->enemyHand = Hand::create();
 	this->enemyGraveyard = Deck::create();
+	this->previewPanel = Node::create();
+	this->previewCard = nullptr;
 
 	this->playerFrame = Sprite::create(Resources::Minigames_Hexium_AvatarFrame);
 	this->playerPadDeck = Sprite::create(Resources::Minigames_Hexium_CardPad);
@@ -108,6 +110,8 @@ Hexium::Hexium()
 	this->addChild(this->playerHandCardCountText);
 	this->addChild(this->enemyHandCardCountFrame);
 	this->addChild(this->enemyHandCardCountText);
+
+	this->addChild(this->previewPanel);
 }
 
 Hexium::~Hexium()
@@ -137,6 +141,7 @@ void Hexium::initializePositions()
 	const float deckOffsetY = 420.0f;
 	const float handOffsetY = 472.0f;
 	const float labelsOffsetY = 72.0f;
+	const float previewOffsetY = 64.0f;
 	const float graveyardOffsetX = -64.0f;
 	const float graveyardOffsetY = deckOffsetY;
 	const float handCardCountOffsetX = 196.0f;
@@ -178,6 +183,7 @@ void Hexium::initializePositions()
 	this->enemyHandCardCountFrame->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX - 24.0f, visibleSize.height / 2.0f + deckOffsetY - labelsOffsetY - 32.0f);
 	this->enemyHandCardCountText->setPosition(visibleSize.width / 2.0f + rightColumnCenter + deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f + deckOffsetY - labelsOffsetY);
 
+	this->previewPanel->setPosition(visibleSize.width / 2.0f + rightColumnCenter, visibleSize.height / 2.0f + previewOffsetY);
 }
 
 void Hexium::initializeListeners()
@@ -185,8 +191,113 @@ void Hexium::initializeListeners()
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
 
 	listener->onKeyPressed = CC_CALLBACK_2(Hexium::onKeyPressed, this);
+	this->playerHand->setMouseOverCallback(CC_CALLBACK_1(Hexium::onCardMouseOver, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+void Hexium::onCardMouseOver(Card* card)
+{
+	if (card != this->previewCard)
+	{
+		this->previewCard = card;
+
+		this->previewPanel->removeAllChildren();
+
+		Sprite* previewSprite = Sprite::create(card->cardData->cardResourceFile);
+		this->previewPanel->addChild(previewSprite);
+
+		switch (card->cardData->cardType) {
+		case CardData::CardType::Decimal:
+		case CardData::CardType::Binary:
+		case CardData::CardType::Hexidecimal:
+		{
+			int attack = card->getAttack();
+
+			Label* binaryLabel = Label::create("BIN: " + HackUtils::toBinary4(attack), Resources::Fonts_UbuntuMono_B, 32);
+			Label* decimalLabel = Label::create("DEC: " + std::to_string(attack), Resources::Fonts_UbuntuMono_B, 32);
+			Label* hexLabel = Label::create("HEX: " + HackUtils::toHex(attack), Resources::Fonts_UbuntuMono_B, 32);
+
+			binaryLabel->setAnchorPoint(Vec2::ZERO);
+			decimalLabel->setAnchorPoint(Vec2::ZERO);
+			hexLabel->setAnchorPoint(Vec2::ZERO);
+
+			binaryLabel->setTextColor(Card::binaryColor);
+			decimalLabel->setTextColor(Card::decimalColor);
+			hexLabel->setTextColor(Card::hexColor);
+
+			binaryLabel->enableOutline(Color4B::BLACK, 3);
+			decimalLabel->enableOutline(Color4B::BLACK, 3);
+			hexLabel->enableOutline(Color4B::BLACK, 3);
+
+			binaryLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, -212.0f));
+			decimalLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, -212.0f - 40.0f));
+			hexLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, -212.0f - 80.0f));
+
+			this->previewPanel->addChild(binaryLabel);
+			this->previewPanel->addChild(decimalLabel);
+			this->previewPanel->addChild(hexLabel);
+		}
+		break;
+		default:
+		{
+			Label * specialLabel = Label::create("", Resources::Fonts_UbuntuMono_B, 28);
+
+			specialLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
+			specialLabel->setTextColor(Card::specialColor);
+			specialLabel->enableOutline(Color4B::BLACK, 2);
+			specialLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, -172.0f));
+			specialLabel->setDimensions(previewSprite->getContentSize().width - 16.0f, 0.0f);
+
+			switch (card->cardData->cardType) {
+			case CardData::CardType::Special_AND:
+				specialLabel->setString("Sacrifice a card from your hand and AND it with all cards in a row.");
+				break;
+			case CardData::CardType::Special_OR:
+				specialLabel->setString("Sacrifice a card from your hand and OR it with all cards in a row.");
+				break;
+			case CardData::CardType::Special_XOR:
+				specialLabel->setString("Sacrifice a card from your hand and XOR it with all cards in a row.");
+				break;
+			case CardData::CardType::Special_SHL:
+				specialLabel->setString("Shift the bits of all cards in a row left.");
+				break;
+			case CardData::CardType::Special_SHR:
+				specialLabel->setString("Shift the bits of all cards in a row right.");
+				break;
+			case CardData::CardType::Special_INV:
+				specialLabel->setString("Invert all bits in a row.");
+				break;
+			case CardData::CardType::Special_FLIP1:
+				specialLabel->setString("Flip the 1st bit of all cards in a row.");
+				break;
+			case CardData::CardType::Special_FLIP2:
+				specialLabel->setString("Flip the 2nd bit of all cards in a row.");
+				break;
+			case CardData::CardType::Special_FLIP3:
+				specialLabel->setString("Flip the 3rd bit of all cards in a row.");
+				break;
+			case CardData::CardType::Special_FLIP4:
+				specialLabel->setString("Flip the 4th bit of all cards in a row.");
+				break;
+			case CardData::CardType::Special_ADD:
+				specialLabel->setString("Sacrifice a card from your hand and ADD it to two cards.");
+				break;
+			case CardData::CardType::Special_SUB:
+				specialLabel->setString("Sacrifice a card from your hand and SUB it from two cards.");
+				break;
+			case CardData::CardType::Special:
+				specialLabel->setString("???.");
+				break;
+			default:
+				break;
+			}
+
+			this->previewPanel->addChild(specialLabel);
+			break;
+		}
+		}
+	}
 }
 
 void Hexium::onGameStart(EventCustom* eventCustom)
@@ -236,7 +347,7 @@ void Hexium::gameStart()
 	this->allowControl = false;
 
 	// Draw starting cards
-	const int initialCardCount = 15;
+	const int initialCardCount = 9;
 	int drawnCount = 0;
 
 	while (playerDeck->hasCards() && drawnCount < initialCardCount)
@@ -254,10 +365,10 @@ void Hexium::gameStart()
 	}
 
 	// Initialize dispaly counters
-	this->playerDeckCardCountText->setString(std::to_string(this->playerDeck->getCardCount()));
-	this->enemyDeckCardCountText->setString(std::to_string(this->enemyDeck->getCardCount()));
-	this->playerHandCardCountText->setString(std::to_string(this->playerHand->getCardCount()));
-	this->enemyHandCardCountText->setString(std::to_string(this->enemyHand->getCardCount()));
+	this->playerDeckCardCountText->setString(StrUtils::toStringZeroPad(this->playerDeck->getCardCount(), 2));
+	this->enemyDeckCardCountText->setString(StrUtils::toStringZeroPad(this->enemyDeck->getCardCount(), 2));
+	this->playerHandCardCountText->setString(StrUtils::toStringZeroPad(this->playerHand->getCardCount(), 2));
+	this->enemyHandCardCountText->setString(StrUtils::toStringZeroPad(this->enemyHand->getCardCount(), 2));
 
 	this->randomizeTurn();
 }
@@ -311,8 +422,8 @@ void Hexium::drawCard()
 	case Turn::Enemy:
 		// Simply insert the card directly into the enemy hand for the enemy
 		enemyHand->insertCard(this->enemyDeck->drawCard(), 0.0f);
-		this->enemyDeckCardCountText->setString(std::to_string(this->enemyDeck->getCardCount()));
-		this->enemyHandCardCountText->setString(std::to_string(this->enemyHand->getCardCount()));
+		this->enemyDeckCardCountText->setString(StrUtils::toStringZeroPad(this->enemyDeck->getCardCount(), 2));
+		this->enemyHandCardCountText->setString(StrUtils::toStringZeroPad(this->enemyHand->getCardCount(), 2));
 		this->giveControl();
 		break;
 	case Turn::Player:
@@ -325,9 +436,9 @@ void Hexium::drawCard()
 
 		GameUtils::changeParent(card, this, true);
 
-		this->playerDeckCardCountText->setString(std::to_string(this->playerDeck->getCardCount()));
+		this->playerDeckCardCountText->setString(StrUtils::toStringZeroPad(this->playerDeck->getCardCount(), 2));
 		// Note: Just adding +1 here because the insert is delayed because of the animation
-		this->playerHandCardCountText->setString(std::to_string(this->playerHand->getCardCount() + 1));
+		this->playerHandCardCountText->setString(StrUtils::toStringZeroPad(this->playerHand->getCardCount() + 1, 2));
 
 		this->runAction(Sequence::create(
 			CallFunc::create(CC_CALLBACK_0(Card::doDrawAnimation, card, cardDrawDelay)),
@@ -345,6 +456,15 @@ void Hexium::drawCard()
 void Hexium::giveControl()
 {
 	this->allowControl = true;
+
+	switch (this->turn)
+	{
+	case Turn::Enemy:
+		break;
+	case Turn::Player:
+	default:
+		break;
+	}
 }
 
 void Hexium::endTurn()
