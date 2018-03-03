@@ -324,9 +324,6 @@
     <ClCompile Include="Source\Minigames\Hexium\Deck.cpp">
       <Filter>Source\Minigames\Hexium</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Hand.cpp">
-      <Filter>Source\Minigames\Hexium</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Minigames\Hexium\Hexium.cpp">
       <Filter>Source\Minigames\Hexium</Filter>
     </ClCompile>
@@ -341,6 +338,9 @@
     </ClCompile>
     <ClCompile Include="Source\Save\SaveManager.cpp">
       <Filter>Source\Save</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\CardRow.cpp">
+      <Filter>Source\Minigames\Hexium</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -578,9 +578,6 @@
     <ClInclude Include="Source\Minigames\Hexium\Deck.h">
       <Filter>Source\Minigames\Hexium</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Hand.h">
-      <Filter>Source\Minigames\Hexium</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Utils\GameUtils.h">
       <Filter>Source\Utils</Filter>
     </ClInclude>
@@ -592,6 +589,9 @@
     </ClInclude>
     <ClInclude Include="Source\Save\SaveManager.h">
       <Filter>Source\Save</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\CardRow.h">
+      <Filter>Source\Minigames\Hexium</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -6,26 +6,31 @@
 
 using namespace cocos2d;
 
-class Hand : public Node
+class CardRow : public Node
 {
 public:
-	static Hand * create();
+	static CardRow * create();
 
 	void insertCard(Card* card, float cardInsertDelay);
+	Card* removeCard(Card* card);
 	int getCardCount();
 	void clear();
 	void setMouseOverCallback(std::function<void(Card*)> callback);
+	void setMouseClickCallback(std::function<void(Card*)> callback);
+
+	static const float standardInsertDelay;
 
 private:
-	Hand();
-	~Hand();
+	CardRow();
+	~CardRow();
 
 	void onEnter() override;
 	void initializePositions();
 	void initializeListeners();
 	void setCardPositions(float cardRepositionDelay);
 
-	std::vector<Card*>* handCards;
+	std::set<Card*>* rowCards;
 	std::function<void(Card*)> mouseOverCallback;
+	std::function<void(Card*)> mouseClickCallback;
 };
 
