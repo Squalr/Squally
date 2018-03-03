@@ -1,5 +1,17 @@
 #include "StrUtils.h"
 
+std::string StrUtils::toStringZeroPad(int value, int zeroCount)
+{
+	std::string result = std::to_string(value);
+
+	while (result.length() < zeroCount)
+	{
+		result = "0" + result;
+	}
+
+	return result;
+}
+
 std::vector<std::string>* StrUtils::tokenize(std::string str, std::string delimiters)
 {
 	std::vector<std::string>* tokens = new std::vector<std::string>();

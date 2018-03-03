@@ -6,6 +6,7 @@
 #include "MiniGames/Hexium/Hand.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/MenuSprite.h"
+#include "Utils/StrUtils.h"
 
 using namespace cocos2d;
 
@@ -49,6 +50,7 @@ private:
 	void drawCard();
 	void giveControl();
 	void endTurn();
+	void onCardMouseOver(Card* card);
 
 	// Game state
 	bool allowControl;
@@ -90,6 +92,9 @@ private:
 	Label* playerHandCardCountText;
 	LayerColor* enemyHandCardCountFrame;
 	Label* enemyHandCardCountText;
+
+	Card* previewCard;
+	Node* previewPanel;
 
 	Sprite* gameBackground;
 };

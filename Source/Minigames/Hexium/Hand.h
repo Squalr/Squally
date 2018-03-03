@@ -14,6 +14,7 @@ public:
 	void insertCard(Card* card, float cardInsertDelay);
 	int getCardCount();
 	void clear();
+	void setMouseOverCallback(std::function<void(Card*)> callback);
 
 private:
 	Hand();
@@ -25,5 +26,6 @@ private:
 	void setCardPositions(float cardRepositionDelay);
 
 	std::vector<Card*>* handCards;
+	std::function<void(Card*)> mouseOverCallback;
 };
 

@@ -40,6 +40,7 @@ void Hand::insertCard(Card* card, float cardInsertDelay)
 {
 	GameUtils::changeParent(card, this, true);
 
+	card->setMouseOverCallback(this->mouseOverCallback);
 	card->reveal();
 
 	this->handCards->push_back(card);
@@ -57,6 +58,18 @@ void Hand::clear()
 	this->handCards->clear();
 }
 
+void Hand::setMouseOverCallback(std::function<void(Card*)> callback)
+{
+	this->mouseOverCallback = callback;
+
+	for (auto it = this->handCards->begin(); it != this->handCards->end(); it++)
+	{
+		Card* card = *it;
+
+		card->setMouseOverCallback(this->mouseOverCallback);
+	}
+}
+
 void Hand::setCardPositions(float cardRepositionDelay)
 {
 	int cardCount = this->handCards->size();
@@ -71,7 +84,6 @@ void Hand::setCardPositions(float cardRepositionDelay)
 	{
 		spacing = (boardWidth - cardWidth) / (cardCount - 1);
 	}
-
 
 	for (auto it = this->handCards->begin(); it != this->handCards->end(); it++)
 	{
