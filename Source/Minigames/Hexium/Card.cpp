@@ -144,7 +144,7 @@ void Card::doDrawAnimation(float cardDrawDelay)
 	this->reveal();
 
 	this->runAction(
-		EaseSineInOut::create(MoveTo::create(cardDrawDelay, Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f)))
+		EaseSineInOut::create(MoveTo::create(cardDrawDelay, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f)))
 	);
 
 	this->runAction(

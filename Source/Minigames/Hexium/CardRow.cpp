@@ -1,7 +1,5 @@
 #include "CardRow.h"
 
-const float CardRow::standardInsertDelay = 0.5f;
-
 CardRow* CardRow::create()
 {
 	CardRow* cardRow = new CardRow();
@@ -83,7 +81,7 @@ void CardRow::insertCard(Card* card, float cardInsertDelay)
 Card* CardRow::removeCard(Card* card)
 {
 	this->rowCards->erase(std::remove(this->rowCards->begin(), this->rowCards->end(), card), this->rowCards->end());
-	this->setCardPositions(CardRow::standardInsertDelay);
+	this->setCardPositions(Config::insertDelay);
 
 	// Note: We let the caller remove the child because it allows for control over positioning
 
@@ -93,6 +91,20 @@ Card* CardRow::removeCard(Card* card)
 int CardRow::getCardCount()
 {
 	return this->rowCards->size();
+}
+
+int CardRow::getRowAttack()
+{
+	int attack = 0;
+
+	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	{
+		Card* card = *it;
+
+		attack += card->getAttack();
+	}
+
+	return attack;
 }
 
 void CardRow::clear()
