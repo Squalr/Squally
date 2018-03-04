@@ -20,6 +20,11 @@ void FadeScene::setFadeSpeed(float newFadeSpeed)
 	this->fadeSpeed = newFadeSpeed;
 }
 
+float FadeScene::getFadeSpeed()
+{
+	return this->fadeSpeed;
+}
+
 void FadeScene::onEnter()
 {
 	Scene::onEnter();

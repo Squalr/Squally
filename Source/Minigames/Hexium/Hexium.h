@@ -40,6 +40,7 @@ private:
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onClose(MenuSprite* menuSprite);
 	void previewCard(Card* card);
+	void doCoinFlipAnimation();
 	void updateDisplayState(bool prePlayerDraw);
 
 	GameState* gameState;
@@ -62,12 +63,22 @@ private:
 
 	LayerColor* playerDeckCardCountFrame;
 	Label* playerDeckCardCountText;
-	LayerColor* enemyDeckCardCountFrame;
-	Label* enemyDeckCardCountText;
 	LayerColor* playerHandCardCountFrame;
 	Label* playerHandCardCountText;
+	Sprite* playerHandCardIcon;
+
+	LayerColor* enemyDeckCardCountFrame;
+	Label* enemyDeckCardCountText;
 	LayerColor* enemyHandCardCountFrame;
 	Label* enemyHandCardCountText;
+	Sprite* enemyHandCardIcon;
+
+	Sprite* coin;
+	Animation* skeletonInAnimation;
+	Animation* skeletonOutAnimation;
+	Animation* lionInAnimation;
+	Animation* lionOutAnimation;
+	Animation* neutralAnimation;
 
 	Label* enemyBinaryCardTotal;
 	Label* enemyDecimalCardTotal;

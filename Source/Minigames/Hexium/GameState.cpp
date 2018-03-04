@@ -297,7 +297,8 @@ void GameState::endTurn()
 
 void GameState::updateState()
 {
-	if (this->updateStateCallback != nullptr) {
+	if (this->updateStateCallback != nullptr)
+	{
 		this->updateStateCallback(true);
 	}
 }

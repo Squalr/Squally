@@ -27,7 +27,9 @@ Hexium::Hexium()
 	this->playerSocketA = Sprite::create(Resources::Minigames_Hexium_Socket);
 	this->playerSocketB = Sprite::create(Resources::Minigames_Hexium_Socket);
 	this->playerSkullA = Sprite::create(Resources::Minigames_Hexium_Skull);
+	this->playerSkullA->setOpacity(0);
 	this->playerSkullB = Sprite::create(Resources::Minigames_Hexium_Skull);
+	this->playerSkullB->setOpacity(0);
 
 	this->enemyFrame = Sprite::create(Resources::Minigames_Hexium_AvatarFrame);
 	this->enemyPadDeck = Sprite::create(Resources::Minigames_Hexium_CardPad);
@@ -35,7 +37,9 @@ Hexium::Hexium()
 	this->enemySocketA = Sprite::create(Resources::Minigames_Hexium_Socket);
 	this->enemySocketB = Sprite::create(Resources::Minigames_Hexium_Socket);
 	this->enemySkullA = Sprite::create(Resources::Minigames_Hexium_Skull);
+	this->enemySkullA->setOpacity(0);
 	this->enemySkullB = Sprite::create(Resources::Minigames_Hexium_Skull);
+	this->enemySkullB->setOpacity(0);
 
 	this->playerDeckCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->playerDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -51,16 +55,18 @@ Hexium::Hexium()
 	this->enemyDeckCardCountText->setAlignment(TextHAlignment::LEFT);
 	this->enemyDeckCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
+	this->playerHandCardIcon = Sprite::create(Resources::Minigames_Hexium_CardIcons);
 	this->playerHandCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->playerHandCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->playerHandCardCountFrame->setContentSize(Size(48.0f, 32.0f));
+	this->playerHandCardCountFrame->setContentSize(Size(80.0f, 32.0f));
 	this->playerHandCardCountText = Label::create("", Resources::Fonts_UbuntuMono_B, 32.0f);
 	this->playerHandCardCountText->setAlignment(TextHAlignment::LEFT);
 	this->playerHandCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
+	this->enemyHandCardIcon = Sprite::create(Resources::Minigames_Hexium_CardIcons);
 	this->enemyHandCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->enemyHandCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->enemyHandCardCountFrame->setContentSize(Size(48.0f, 32.0f));
+	this->enemyHandCardCountFrame->setContentSize(Size(80.0f, 32.0f));
 	this->enemyHandCardCountText = Label::create("", Resources::Fonts_UbuntuMono_B, 32.0f);
 	this->enemyHandCardCountText->setAlignment(TextHAlignment::LEFT);
 	this->enemyHandCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -95,6 +101,38 @@ Hexium::Hexium()
 	this->enemyPadDeck->setScale(Card::cardScale);
 	this->enemyPadGrave->setScale(Card::cardScale);
 
+	this->coin = Sprite::create(Resources::Minigames_CoinFlipLion);
+	this->skeletonInAnimation = Animation::create();
+	this->skeletonOutAnimation = Animation::create();
+	this->lionInAnimation = Animation::create();
+	this->lionOutAnimation = Animation::create();
+	this->neutralAnimation = Animation::create();
+
+	this->skeletonInAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipSkeletonIn1);
+	this->skeletonInAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipSkeletonIn2);
+	this->skeletonInAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipSkeleton);
+	this->skeletonOutAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipSkeletonOut1);
+	this->skeletonOutAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipSkeletonOut2);
+	this->skeletonInAnimation->retain();
+	this->skeletonOutAnimation->retain();
+
+	this->lionInAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipLionIn1);
+	this->lionInAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipLionIn2);
+	this->lionInAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipLion);
+	this->lionOutAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipLionOut1);
+	this->lionOutAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipLionOut2);
+	this->lionInAnimation->retain();
+	this->lionOutAnimation->retain();
+
+	this->neutralAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipNeutral);
+	this->neutralAnimation->retain();
+
+	this->lionInAnimation->setDelayPerUnit(Config::coinFlipSpeed);
+	this->lionOutAnimation->setDelayPerUnit(Config::coinFlipSpeed);
+	this->skeletonInAnimation->setDelayPerUnit(Config::coinFlipSpeed);
+	this->skeletonOutAnimation->setDelayPerUnit(Config::coinFlipSpeed);
+	this->neutralAnimation->setDelayPerUnit(Config::coinFlipSpeed);
+
 	this->addChild(this->gameBackground);
 	this->addChild(this->playerFrame);
 	this->addChild(this->enemyFrame);
@@ -119,8 +157,11 @@ Hexium::Hexium()
 	this->addChild(this->enemyDeckCardCountText);
 
 	this->addChild(this->playerHandCardCountFrame);
+	this->addChild(this->playerHandCardIcon);
 	this->addChild(this->playerHandCardCountText);
+
 	this->addChild(this->enemyHandCardCountFrame);
+	this->addChild(this->enemyHandCardIcon);
 	this->addChild(this->enemyHandCardCountText);
 
 	this->addChild(this->enemyBinaryCardTotal);
@@ -139,6 +180,8 @@ Hexium::Hexium()
 	this->addChild(this->enemyTotal);
 
 	this->addChild(this->previewPanel);
+
+	this->addChild(this->coin);
 }
 
 Hexium::~Hexium()
@@ -152,6 +195,8 @@ void Hexium::onEnter()
 	this->initializePositions();
 	this->initializeListeners();
 	this->addChild(Mouse::claimInstance());
+
+	this->doCoinFlipAnimation();
 }
 
 void Hexium::initializePositions()
@@ -174,15 +219,19 @@ void Hexium::initializePositions()
 	this->enemySkullA->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::socketAOffsetX, visibleSize.height / 2.0f + Config::socketOffsetY);
 	this->enemySkullB->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::socketBOffsetX, visibleSize.height / 2.0f + Config::socketOffsetY);
 
-	this->playerDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f, visibleSize.height / 2.0f - Config::deckOffsetY - Config::labelsOffsetY - 32.0f);
-	this->playerDeckCardCountText->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f - Config::deckOffsetY + 32.0f - Config::labelsOffsetY - 32.0f);
-	this->enemyDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f, visibleSize.height / 2.0f + Config::deckOffsetY + Config::labelsOffsetY);
-	this->enemyDeckCardCountText->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f + Config::deckOffsetY + 32.0f + Config::labelsOffsetY);
+	this->playerDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f, visibleSize.height / 2.0f - Config::deckOffsetY - Config::deckCardCountOffsetY - 32.0f);
+	this->playerDeckCardCountText->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f - Config::deckOffsetY - Config::deckCardCountOffsetY);
 
-	this->playerHandCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f, visibleSize.height / 2.0f - Config::deckOffsetY + Config::labelsOffsetY);
-	this->playerHandCardCountText->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f - Config::deckOffsetY + 32.0f + Config::labelsOffsetY);
-	this->enemyHandCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f, visibleSize.height / 2.0f + Config::deckOffsetY - Config::labelsOffsetY - 32.0f);
-	this->enemyHandCardCountText->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f + Config::deckOffsetY - Config::labelsOffsetY);
+	this->enemyDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f, visibleSize.height / 2.0f + Config::deckOffsetY + Config::deckCardCountOffsetY);
+	this->enemyDeckCardCountText->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f + Config::deckOffsetY + Config::deckCardCountOffsetY + 32.0f);
+
+	this->playerHandCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 24.0f - 36.0f, visibleSize.height / 2.0f - Config::handCountOffsetY - 32.0f);
+	this->playerHandCardIcon->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 40.0f, visibleSize.height / 2.0f - Config::handCountOffsetY - 16.0f);
+	this->playerHandCardCountText->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f - Config::handCountOffsetY);
+
+	this->enemyHandCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 24.0f - 36.0f, visibleSize.height / 2.0f + Config::handCountOffsetY);
+	this->enemyHandCardIcon->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 40.0f, visibleSize.height / 2.0f + Config::handCountOffsetY + 16.0f);
+	this->enemyHandCardCountText->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f + Config::handCountOffsetY + 32.0f);
 
 	this->playerBinaryCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::binaryRowOffsetY - 0.0f);
 	this->playerDecimalCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::decimalRowOffsetY - 0.0f);
@@ -201,6 +250,7 @@ void Hexium::initializePositions()
 	this->enemyTotal->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f + Config::totalAttackOffsetY);
 
 	this->previewPanel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter, visibleSize.height / 2.0f + Config::previewOffsetY);
+	this->coin->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f);
 }
 
 void Hexium::initializeListeners()
@@ -378,17 +428,105 @@ void Hexium::updateDisplayState(bool prePlayerDraw)
 
 	if (playerTotalAttack > enemyTotalAttack)
 	{
-		this->playerLeaderEmblem->runAction(FadeTo::create(Config::emblemFadeSpeed, 255));
-		this->enemyLeaderEmblem->runAction(FadeTo::create(Config::emblemFadeSpeed, 0));
+		this->playerLeaderEmblem->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
+		this->enemyLeaderEmblem->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
 	}
 	else if (enemyTotalAttack > playerTotalAttack)
 	{
-		this->playerLeaderEmblem->runAction(FadeTo::create(Config::emblemFadeSpeed, 0));
-		this->enemyLeaderEmblem->runAction(FadeTo::create(Config::emblemFadeSpeed, 255));
+		this->playerLeaderEmblem->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
+		this->enemyLeaderEmblem->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
 	}
 	else
 	{
-		this->playerLeaderEmblem->runAction(FadeTo::create(Config::emblemFadeSpeed, 0));
-		this->enemyLeaderEmblem->runAction(FadeTo::create(Config::emblemFadeSpeed, 0));
+		this->playerLeaderEmblem->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
+		this->enemyLeaderEmblem->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
 	}
+
+	if (this->gameState->playerLosses >= 2)
+	{
+		this->playerSkullA->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
+		this->playerSkullB->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
+	}
+	else if (this->gameState->playerLosses >= 1)
+	{
+		this->playerSkullA->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
+		this->playerSkullB->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
+	}
+	else
+	{
+		this->playerSkullA->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
+		this->playerSkullB->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
+	}
+
+	if (this->gameState->enemyLosses >= 2)
+	{
+		this->enemySkullA->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
+		this->enemySkullB->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
+	}
+	else if (this->gameState->enemyLosses >= 1)
+	{
+		this->enemySkullA->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
+		this->enemySkullB->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
+	}
+	else
+	{
+		this->enemySkullA->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
+		this->enemySkullB->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
+	}
+}
+
+
+void Hexium::doCoinFlipAnimation()
+{
+	float introDelay = this->getFadeSpeed();
+	this->coin->setScale(Config::coinFlipStartScale);
+	this->coin->setOpacity(255);
+
+	switch (this->gameState->turn)
+	{
+	case GameState::Turn::Player:
+	{
+		Sequence * loopSequence = Sequence::create(
+			Animate::create(this->lionInAnimation->clone()),
+			Animate::create(this->lionOutAnimation->clone()),
+			Animate::create(this->neutralAnimation->clone()),
+			Animate::create(this->skeletonInAnimation->clone()),
+			Animate::create(this->skeletonOutAnimation->clone()),
+			Animate::create(this->neutralAnimation->clone()),
+			nullptr);
+
+		this->coin->runAction(Sequence::create(
+			DelayTime::create(introDelay),
+			Repeat::create(loopSequence, Config::coinFlipCount),
+			Animate::create(this->lionInAnimation->clone()),
+			nullptr));
+		break;
+	}
+	case GameState::Turn::Enemy:
+	{
+		Sequence * loopSequence = Sequence::create(
+			Animate::create(this->skeletonInAnimation->clone()),
+			Animate::create(this->skeletonOutAnimation->clone()),
+			Animate::create(this->neutralAnimation->clone()),
+			Animate::create(this->lionInAnimation->clone()),
+			Animate::create(this->lionOutAnimation->clone()),
+			Animate::create(this->neutralAnimation->clone()),
+			nullptr);
+
+		this->coin->runAction(Sequence::create(
+			DelayTime::create(introDelay),
+			Repeat::create(loopSequence, Config::coinFlipCount),
+			Animate::create(this->skeletonInAnimation->clone()),
+			nullptr));
+		break;
+	}
+	}
+
+	this->coin->runAction(Sequence::create(
+		DelayTime::create(introDelay),
+		EaseSineOut::create(ScaleTo::create(Config::coinFlipUpDuration, Config::coinFlipEndScale)),
+		EaseSineOut::create(ScaleTo::create(Config::coinFlipDownDuration, Config::coinFlipStartScale)),
+		DelayTime::create(Config::coinFlipRestDuration),
+		FadeOut::create(Config::coinFlipFadeSpeed),
+		nullptr));
 }
