@@ -31,21 +31,21 @@ GameState::GameState()
 
 	this->enemyHand->setVisible(false);
 	this->playerHand->setRowWidth(Config::handWidth);
-	this->enemyHand->setRowWidth(Config::handWidth);
+	this->enemyHand->setRowWidth(Config::enemyHandWidth);
+
+	this->addChild(this->enemyGraveyard);
+	this->addChild(this->enemyDeck);
+	this->addChild(this->enemyHexCards);
+	this->addChild(this->enemyDecimalCards);
+	this->addChild(this->enemyBinaryCards);
+	this->addChild(this->enemyHand);
 
 	this->addChild(this->playerGraveyard);
-	this->addChild(this->enemyGraveyard);
 	this->addChild(this->playerDeck);
-	this->addChild(this->playerBinaryCards);
-	this->addChild(this->playerDecimalCards);
 	this->addChild(this->playerHexCards);
-
-	this->addChild(this->enemyDeck);
+	this->addChild(this->playerDecimalCards);
+	this->addChild(this->playerBinaryCards);
 	this->addChild(this->playerHand);
-	this->addChild(this->enemyHand);
-	this->addChild(this->enemyBinaryCards);
-	this->addChild(this->enemyDecimalCards);
-	this->addChild(this->enemyHexCards);
 }
 
 GameState::~GameState()
@@ -75,7 +75,7 @@ void GameState::initializePositions()
 	this->playerDecimalCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::decimalRowOffsetY);
 	this->playerHexCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::hexRowOffsetY);
 
-	this->enemyHand->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::handOffsetY);
+	this->enemyHand->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::handOffsetY + 256.0f);
 	this->enemyBinaryCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::binaryRowOffsetY);
 	this->enemyDecimalCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::decimalRowOffsetY);
 	this->enemyHexCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY);
@@ -121,17 +121,17 @@ void GameState::onHandCardClick(Card* card)
 	switch (card->cardData->cardType) {
 	case CardData::CardType::Binary:
 		this->playerHand->removeCard(card);
-		this->playerBinaryCards->insertCard(card, CardRow::standardInsertDelay);
+		this->playerBinaryCards->insertCard(card, Config::insertDelay);
 		this->endTurn();
 		break;
 	case CardData::CardType::Decimal:
 		this->playerHand->removeCard(card);
-		this->playerDecimalCards->insertCard(card, CardRow::standardInsertDelay);
+		this->playerDecimalCards->insertCard(card, Config::insertDelay);
 		this->endTurn();
 		break;
 	case CardData::CardType::Hexidecimal:
 		this->playerHand->removeCard(card);
-		this->playerHexCards->insertCard(card, CardRow::standardInsertDelay);
+		this->playerHexCards->insertCard(card, Config::insertDelay);
 		this->endTurn();
 		break;
 	}
@@ -176,10 +176,6 @@ void GameState::gameStart(Deck* startPlayerDeck, Deck* startEnemyDeck)
 	}
 
 	this->disableUserInteraction();
-
-	if (this->updateStateCallback != nullptr) {
-		this->updateStateCallback(false);
-	}
 
 	this->randomizeTurn();
 }
@@ -243,9 +239,6 @@ void GameState::drawCard()
 
 		Card * card = this->playerDeck->drawCard();
 		CardRow * hand = this->playerHand;
-		float cardDrawDelay = 0.75f;
-		float revealDelay = 0.25f;
-		float cardInsertDelay = CardRow::standardInsertDelay;
 
 		GameUtils::changeParent(card, this, true);
 
@@ -254,11 +247,11 @@ void GameState::drawCard()
 		}
 
 		this->runAction(Sequence::create(
-			CallFunc::create(CC_CALLBACK_0(Card::doDrawAnimation, card, cardDrawDelay)),
-			DelayTime::create(cardDrawDelay),
-			DelayTime::create(revealDelay),
-			CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, card, cardInsertDelay)),
-			DelayTime::create(cardInsertDelay),
+			CallFunc::create(CC_CALLBACK_0(Card::doDrawAnimation, card, Config::cardDrawDelay)),
+			DelayTime::create(Config::cardDrawDelay),
+			DelayTime::create(Config::revealDelay),
+			CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, card, Config::insertDelay)),
+			DelayTime::create(Config::insertDelay),
 			CallFunc::create(CC_CALLBACK_0(GameState::giveControl, this)),
 			nullptr
 		));
@@ -285,9 +278,12 @@ void GameState::giveControl()
 
 void GameState::endTurn()
 {
+	float endTurnDelay = Config::endTurnDelay;
+
 	switch (this->turn)
 	{
 	case Turn::Enemy:
+		endTurnDelay = Config::enemyEndTurnDelay;
 		this->turn = Turn::Player;
 		break;
 	case Turn::Player:
@@ -296,8 +292,6 @@ void GameState::endTurn()
 		this->turn = Turn::Enemy;
 		break;
 	}
-
-	const float endTurnDelay = 0.25f;
 
 	this->runAction(Sequence::create(
 		DelayTime::create(endTurnDelay),

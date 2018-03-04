@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Minigames/Hexium/CardData.h"
+#include "Minigames/Hexium/Config.h"
 #include "Utils/HackUtils.h"
 #include "GUI/Components/MenuSprite.h"
 

@@ -7,18 +7,29 @@ using namespace cocos2d;
 class Config
 {
 public:
+
+	static const float endTurnDelay;
+	static const float enemyEndTurnDelay;
+	static const float insertDelay;
+	static const float cardDrawDelay;
+	static const float revealDelay;
+
+	static const float enemyHandWidth;
 	static const float handWidth;
 	static const float rowWidth;
+
 	static const float defaultCardSpacing;
 	static const float rightColumnCenter;
 	static const float leftColumnCenter;
 	static const float centerColumnCenter;
+	static const float cardTotalOffsetX;
 	static const float emblemOffsetX;
 	static const float frameOffsetX;
 	static const float frameOffsetY;
 	static const float deckOffsetX;
 	static const float deckOffsetY;
 	static const float handOffsetY;
+	static const float enemyHandOffscreenY;
 	static const float boardCenterOffsetY;
 	static const float binaryRowOffsetY;
 	static const float decimalRowOffsetY;
