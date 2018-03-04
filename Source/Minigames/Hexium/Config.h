@@ -8,11 +8,15 @@ class Config
 {
 public:
 
+	static const int startingCardAmount;
 	static const float endTurnDelay;
+	static const float enemyDrawDelay;
+	static const float turnAnimationDelay;
 	static const float enemyEndTurnDelay;
 	static const float insertDelay;
 	static const float cardDrawDelay;
 	static const float revealDelay;
+	static const float emblemFadeSpeed;
 
 	static const float enemyHandWidth;
 	static const float handWidth;
@@ -42,5 +46,8 @@ public:
 	static const float socketOffsetY;
 	static const float socketAOffsetX;
 	static const float socketBOffsetX;
+	static const float totalAttackOffsetX;
+	static const float totalAttackOffsetY;
+	static const float leaderEmblemOffsetY;
 };
 

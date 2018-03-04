@@ -18,6 +18,8 @@ public:
 	void drawCard();
 	void giveControl();
 	void endTurn();
+	int getPlayerTotal();
+	int getEnemyTotal();
 	void setCardPreviewCallback(std::function<void(Card*)> callback);
 	void setUpdateStateCallback(std::function<void(bool)> callback);
 	void setRequestAiCallback(std::function<void(GameState*)> callback);
@@ -63,6 +65,7 @@ private:
 	void onHandCardClick(Card* card);
 	void onRowCardClick(Card* card);
 
+	void updateState();
 	void enableUserInteraction();
 	void disableUserInteraction();
 

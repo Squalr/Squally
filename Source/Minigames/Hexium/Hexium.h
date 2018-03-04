@@ -44,9 +44,6 @@ private:
 
 	GameState* gameState;
 
-	// Images
-	Sprite* emblem;
-
 	Sprite* playerFrame;
 	Sprite* playerSocketA;
 	Sprite* playerSocketB;
@@ -79,9 +76,16 @@ private:
 	Label* playerDecimalCardTotal;
 	Label* playerHexCardTotal;
 
+	Sprite* playerTotalFrame;
+	Label* playerTotal;
+	Sprite* playerLeaderEmblem;
+
+	Sprite* enemyTotalFrame;
+	Label* enemyTotal;
+	Sprite* enemyLeaderEmblem;
+
 	Card* currentPreviewCard;
 	Node* previewPanel;
 
 	Sprite* gameBackground;
 };
-

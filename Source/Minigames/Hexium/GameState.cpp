@@ -158,10 +158,9 @@ void GameState::gameStart(Deck* startPlayerDeck, Deck* startEnemyDeck)
 	startEnemyDeck->copyTo(this->enemyDeck);
 
 	// Draw starting cards
-	const int initialCardCount = 15;
 	int drawnCount = 0;
 
-	while (playerDeck->hasCards() && drawnCount < initialCardCount)
+	while (playerDeck->hasCards() && drawnCount < Config::startingCardAmount)
 	{
 		playerHand->insertCard(this->playerDeck->drawCard(), 0.0f);
 		drawnCount++;
@@ -169,7 +168,7 @@ void GameState::gameStart(Deck* startPlayerDeck, Deck* startEnemyDeck)
 
 	drawnCount = 0;
 
-	while (enemyDeck->hasCards() && drawnCount < initialCardCount)
+	while (enemyDeck->hasCards() && drawnCount < Config::startingCardAmount)
 	{
 		enemyHand->insertCard(this->enemyDeck->drawCard(), 0.0f);
 		drawnCount++;
@@ -182,8 +181,6 @@ void GameState::gameStart(Deck* startPlayerDeck, Deck* startEnemyDeck)
 
 void GameState::randomizeTurn()
 {
-	const float turnAnimationDelay = 2.0f;
-
 	if (RandomHelper::random_real(0.0f, 1.0f) > 0.5f)
 	{
 		this->turn = Turn::Player;
@@ -194,7 +191,7 @@ void GameState::randomizeTurn()
 	}
 
 	this->runAction(Sequence::create(
-		DelayTime::create(turnAnimationDelay),
+		DelayTime::create(Config::turnAnimationDelay),
 		CallFunc::create(CC_CALLBACK_0(GameState::drawCard, this)),
 		nullptr
 	));
@@ -215,14 +212,10 @@ void GameState::drawCard()
 		// Simply insert the card directly into the enemy hand for the enemy
 		enemyHand->insertCard(this->enemyDeck->drawCard(), 0.0f);
 
-		if (this->updateStateCallback != nullptr) {
-			this->updateStateCallback(false);
-		}
-
-		const float npcDrawDelay = 0.25f;
+		this->updateState();
 
 		this->runAction(Sequence::create(
-			DelayTime::create(npcDrawDelay),
+			DelayTime::create(Config::enemyDrawDelay),
 			CallFunc::create(CC_CALLBACK_0(GameState::giveControl, this)),
 			nullptr
 		));
@@ -242,19 +235,19 @@ void GameState::drawCard()
 
 		GameUtils::changeParent(card, this, true);
 
-		if (this->updateStateCallback != nullptr) {
-			this->updateStateCallback(true);
-		}
+		this->updateState();
 
 		this->runAction(Sequence::create(
 			CallFunc::create(CC_CALLBACK_0(Card::doDrawAnimation, card, Config::cardDrawDelay)),
 			DelayTime::create(Config::cardDrawDelay),
 			DelayTime::create(Config::revealDelay),
 			CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, card, Config::insertDelay)),
+			CallFunc::create(CC_CALLBACK_0(GameState::updateState, this)),
 			DelayTime::create(Config::insertDelay),
 			CallFunc::create(CC_CALLBACK_0(GameState::giveControl, this)),
 			nullptr
 		));
+
 		break;
 	}
 	}
@@ -293,11 +286,42 @@ void GameState::endTurn()
 		break;
 	}
 
+	this->updateState();
+
 	this->runAction(Sequence::create(
 		DelayTime::create(endTurnDelay),
 		CallFunc::create(CC_CALLBACK_0(GameState::drawCard, this)),
 		nullptr
 	));
+}
+
+void GameState::updateState()
+{
+	if (this->updateStateCallback != nullptr) {
+		this->updateStateCallback(true);
+	}
+}
+
+int GameState::getPlayerTotal()
+{
+	int total = 0;
+
+	total += this->playerBinaryCards->getRowAttack();
+	total += this->playerDecimalCards->getRowAttack();
+	total += this->playerHexCards->getRowAttack();
+
+	return total;
+}
+
+int GameState::getEnemyTotal()
+{
+	int total = 0;
+
+	total += this->enemyBinaryCards->getRowAttack();
+	total += this->enemyDecimalCards->getRowAttack();
+	total += this->enemyHexCards->getRowAttack();
+
+	return total;
 }
 
 void GameState::setCardPreviewCallback(std::function<void(Card*)> callback)
