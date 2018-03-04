@@ -11,6 +11,7 @@ protected:
 	~FadeScene();
 
 	void setFadeSpeed(float newFadeSpeed);
+	float getFadeSpeed();
 	void onEnter() override;
 
 	LayerColor* layerColor;

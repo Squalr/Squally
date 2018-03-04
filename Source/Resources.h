@@ -1238,6 +1238,17 @@ public:
 	static const std::string Menus_WorldMaps_WaterRuinsLocked;
 	static const std::string Menus_WorldMaps_WaterRuinsSelected;
 	static const std::string Menus_WorldMaps_WorldMapSelector;
+	static const std::string Minigames_CoinFlipLion;
+	static const std::string Minigames_CoinFlipLionIn1;
+	static const std::string Minigames_CoinFlipLionIn2;
+	static const std::string Minigames_CoinFlipLionOut1;
+	static const std::string Minigames_CoinFlipLionOut2;
+	static const std::string Minigames_CoinFlipNeutral;
+	static const std::string Minigames_CoinFlipSkeleton;
+	static const std::string Minigames_CoinFlipSkeletonIn1;
+	static const std::string Minigames_CoinFlipSkeletonIn2;
+	static const std::string Minigames_CoinFlipSkeletonOut1;
+	static const std::string Minigames_CoinFlipSkeletonOut2;
 	static const std::string Minigames_Hexium_AvatarFrame;
 	static const std::string Minigames_Hexium_CardBackAir;
 	static const std::string Minigames_Hexium_CardBackEarth;
@@ -1251,6 +1262,7 @@ public:
 	static const std::string Minigames_Hexium_CardFrontLight;
 	static const std::string Minigames_Hexium_CardFrontShadow;
 	static const std::string Minigames_Hexium_CardFrontWater;
+	static const std::string Minigames_Hexium_CardIcons;
 	static const std::string Minigames_Hexium_CardPad;
 	static const std::string Minigames_Hexium_CardSelect;
 	static const std::string Minigames_Hexium_Gameboard;
