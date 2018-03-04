@@ -37,7 +37,7 @@ Knight::~Knight()
 
 void Knight::initializeCardData()
 {
-	this->deck = Deck::create(Card::CardStyle::Shadow, new std::vector<CardData*>({
+	this->deck = Deck::create(Card::CardStyle::Earth, new std::vector<CardData*>({
 		CardData::cardListByName.at(CardData::Binary0),
 		CardData::cardListByName.at(CardData::Binary1),
 		CardData::cardListByName.at(CardData::Binary2),

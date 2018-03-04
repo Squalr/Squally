@@ -1,10 +1,14 @@
 #include "Config.h"
 
+const int Config::startingCardAmount = 8;
+const float Config::turnAnimationDelay = 2.0f;
 const float Config::endTurnDelay = 0.75f;
+const float Config::enemyDrawDelay = 0.25f;
 const float Config::enemyEndTurnDelay = 1.25f;
 const float Config::insertDelay = 0.5f;
 const float Config::cardDrawDelay = 0.5f;
 const float Config::revealDelay = 0.25f;
+const float Config::emblemFadeSpeed = 0.25f;
 
 const float Config::enemyHandWidth = 256.0f;
 const float Config::handWidth = 992.0f;
@@ -33,3 +37,6 @@ const float Config::handCardCountOffsetX = 196.0f;
 const float Config::socketOffsetY = 236.0f;
 const float Config::socketAOffsetX = 64.0f;
 const float Config::socketBOffsetX = Config::socketAOffsetX + 112.0f;
+const float Config::totalAttackOffsetX = 116.0f;
+const float Config::totalAttackOffsetY = 78.0f;
+const float Config::leaderEmblemOffsetY = Config::totalAttackOffsetY + 64.0f;

@@ -15,7 +15,6 @@ Hexium* Hexium::create()
 Hexium::Hexium()
 {
 	this->gameBackground = Sprite::create(Resources::Minigames_Hexium_Gameboard);
-	this->emblem = Sprite::create(Resources::Minigames_Hexium_Emblem);
 
 	this->gameState = GameState::create();
 
@@ -79,6 +78,18 @@ Hexium::Hexium()
 	this->playerHexCardTotal = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
 	this->playerHexCardTotal->enableOutline(Color4B::BLACK, 3);
 
+	this->playerTotalFrame = Sprite::create(Resources::Minigames_Hexium_ScoreBox);
+	this->playerTotal = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
+	this->playerTotal->enableOutline(Color4B::BLACK, 3);
+	this->playerLeaderEmblem = Sprite::create(Resources::Minigames_Hexium_LeaderEmblem);
+	this->playerLeaderEmblem->setOpacity(0);
+
+	this->enemyTotalFrame = Sprite::create(Resources::Minigames_Hexium_ScoreBox);
+	this->enemyTotal = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
+	this->enemyTotal->enableOutline(Color4B::BLACK, 3);
+	this->enemyLeaderEmblem = Sprite::create(Resources::Minigames_Hexium_LeaderEmblem);
+	this->enemyLeaderEmblem->setOpacity(0);
+
 	this->playerPadDeck->setScale(Card::cardScale);
 	this->playerPadGrave->setScale(Card::cardScale);
 	this->enemyPadDeck->setScale(Card::cardScale);
@@ -99,7 +110,6 @@ Hexium::Hexium()
 	this->addChild(this->enemySocketB);
 	this->addChild(this->enemySkullA);
 	this->addChild(this->enemySkullB);
-	this->addChild(this->emblem);
 
 	this->addChild(this->gameState);
 
@@ -119,6 +129,14 @@ Hexium::Hexium()
 	this->addChild(this->playerBinaryCardTotal);
 	this->addChild(this->playerDecimalCardTotal);
 	this->addChild(this->playerHexCardTotal);
+
+	this->addChild(this->playerTotalFrame);
+	this->addChild(this->playerLeaderEmblem);
+	this->addChild(this->playerTotal);
+
+	this->addChild(this->enemyTotalFrame);
+	this->addChild(this->enemyLeaderEmblem);
+	this->addChild(this->enemyTotal);
 
 	this->addChild(this->previewPanel);
 }
@@ -141,7 +159,6 @@ void Hexium::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->gameBackground->setPosition(visibleSize.width / 2.0f, visibleSize.height / 2.0f);
-	this->emblem->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::emblemOffsetX, visibleSize.height / 2.0f);
 	this->playerFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f - Config::frameOffsetY);
 	this->enemyFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f + Config::frameOffsetY);
 	this->playerPadDeck->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX, visibleSize.height / 2.0f - Config::deckOffsetY);
@@ -174,6 +191,14 @@ void Hexium::initializePositions()
 	this->enemyBinaryCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::binaryRowOffsetY + 0.0f);
 	this->enemyDecimalCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::decimalRowOffsetY + 0.0f);
 	this->enemyHexCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY + 0.0f);
+
+	this->playerTotalFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f - Config::totalAttackOffsetY);
+	this->playerLeaderEmblem->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f - Config::leaderEmblemOffsetY);
+	this->playerTotal->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f - Config::totalAttackOffsetY);
+
+	this->enemyTotalFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f + Config::totalAttackOffsetY);
+	this->enemyLeaderEmblem->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f + Config::leaderEmblemOffsetY);
+	this->enemyTotal->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f + Config::totalAttackOffsetY);
 
 	this->previewPanel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter, visibleSize.height / 2.0f + Config::previewOffsetY);
 }
@@ -341,4 +366,29 @@ void Hexium::updateDisplayState(bool prePlayerDraw)
 	this->enemyBinaryCardTotal->setString(std::to_string(this->gameState->enemyBinaryCards->getRowAttack()));
 	this->enemyDecimalCardTotal->setString(std::to_string(this->gameState->enemyDecimalCards->getRowAttack()));
 	this->enemyHexCardTotal->setString(std::to_string(this->gameState->enemyHexCards->getRowAttack()));
+
+	int playerTotalAttack = this->gameState->getPlayerTotal();
+	int enemyTotalAttack = this->gameState->getEnemyTotal();
+
+	this->playerTotal->setString(std::to_string(playerTotalAttack));
+	this->enemyTotal->setString(std::to_string(enemyTotalAttack));
+
+	this->playerLeaderEmblem->stopAllActions();
+	this->enemyLeaderEmblem->stopAllActions();
+
+	if (playerTotalAttack > enemyTotalAttack)
+	{
+		this->playerLeaderEmblem->runAction(FadeTo::create(Config::emblemFadeSpeed, 255));
+		this->enemyLeaderEmblem->runAction(FadeTo::create(Config::emblemFadeSpeed, 0));
+	}
+	else if (enemyTotalAttack > playerTotalAttack)
+	{
+		this->playerLeaderEmblem->runAction(FadeTo::create(Config::emblemFadeSpeed, 0));
+		this->enemyLeaderEmblem->runAction(FadeTo::create(Config::emblemFadeSpeed, 255));
+	}
+	else
+	{
+		this->playerLeaderEmblem->runAction(FadeTo::create(Config::emblemFadeSpeed, 0));
+		this->enemyLeaderEmblem->runAction(FadeTo::create(Config::emblemFadeSpeed, 0));
+	}
 }
