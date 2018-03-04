@@ -72,6 +72,13 @@ private:
 	LayerColor* enemyHandCardCountFrame;
 	Label* enemyHandCardCountText;
 
+	Label* enemyBinaryCardTotal;
+	Label* enemyDecimalCardTotal;
+	Label* enemyHexCardTotal;
+	Label* playerBinaryCardTotal;
+	Label* playerDecimalCardTotal;
+	Label* playerHexCardTotal;
+
 	Card* currentPreviewCard;
 	Node* previewPanel;
 

@@ -66,6 +66,19 @@ Hexium::Hexium()
 	this->enemyHandCardCountText->setAlignment(TextHAlignment::LEFT);
 	this->enemyHandCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
+	this->enemyBinaryCardTotal = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
+	this->enemyBinaryCardTotal->enableOutline(Color4B::BLACK, 3);
+	this->enemyDecimalCardTotal = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
+	this->enemyDecimalCardTotal->enableOutline(Color4B::BLACK, 3);
+	this->enemyHexCardTotal = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
+	this->enemyHexCardTotal->enableOutline(Color4B::BLACK, 3);
+	this->playerBinaryCardTotal = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
+	this->playerBinaryCardTotal->enableOutline(Color4B::BLACK, 3);
+	this->playerDecimalCardTotal = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
+	this->playerDecimalCardTotal->enableOutline(Color4B::BLACK, 3);
+	this->playerHexCardTotal = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
+	this->playerHexCardTotal->enableOutline(Color4B::BLACK, 3);
+
 	this->playerPadDeck->setScale(Card::cardScale);
 	this->playerPadGrave->setScale(Card::cardScale);
 	this->enemyPadDeck->setScale(Card::cardScale);
@@ -99,6 +112,13 @@ Hexium::Hexium()
 	this->addChild(this->playerHandCardCountText);
 	this->addChild(this->enemyHandCardCountFrame);
 	this->addChild(this->enemyHandCardCountText);
+
+	this->addChild(this->enemyBinaryCardTotal);
+	this->addChild(this->enemyDecimalCardTotal);
+	this->addChild(this->enemyHexCardTotal);
+	this->addChild(this->playerBinaryCardTotal);
+	this->addChild(this->playerDecimalCardTotal);
+	this->addChild(this->playerHexCardTotal);
 
 	this->addChild(this->previewPanel);
 }
@@ -147,6 +167,14 @@ void Hexium::initializePositions()
 	this->enemyHandCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f, visibleSize.height / 2.0f + Config::deckOffsetY - Config::labelsOffsetY - 32.0f);
 	this->enemyHandCardCountText->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f + Config::deckOffsetY - Config::labelsOffsetY);
 
+	this->playerBinaryCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::binaryRowOffsetY - 0.0f);
+	this->playerDecimalCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::decimalRowOffsetY - 0.0f);
+	this->playerHexCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::hexRowOffsetY - 0.0f);
+
+	this->enemyBinaryCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::binaryRowOffsetY + 0.0f);
+	this->enemyDecimalCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::decimalRowOffsetY + 0.0f);
+	this->enemyHexCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY + 0.0f);
+
 	this->previewPanel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter, visibleSize.height / 2.0f + Config::previewOffsetY);
 }
 
@@ -167,6 +195,7 @@ void Hexium::onGameStart(EventCustom* eventCustom)
 	Hexium::HexiumGameEventArgs* args = (Hexium::HexiumGameEventArgs*)(eventCustom->getUserData());
 
 	this->gameState->gameStart(args->playerDeck, args->enemyDeck);
+	this->updateDisplayState(false);
 
 	GameUtils::navigate(GameUtils::GameScreen::Hexium);
 }
@@ -305,4 +334,11 @@ void Hexium::updateDisplayState(bool prePlayerDraw)
 	this->enemyDeckCardCountText->setString(StrUtils::toStringZeroPad(this->gameState->enemyDeck->getCardCount(), 2));
 	this->playerHandCardCountText->setString(StrUtils::toStringZeroPad(playerHandCount, 2));
 	this->enemyHandCardCountText->setString(StrUtils::toStringZeroPad(this->gameState->enemyHand->getCardCount(), 2));
+
+	this->playerBinaryCardTotal->setString(std::to_string(this->gameState->playerBinaryCards->getRowAttack()));
+	this->playerDecimalCardTotal->setString(std::to_string(this->gameState->playerDecimalCards->getRowAttack()));
+	this->playerHexCardTotal->setString(std::to_string(this->gameState->playerHexCards->getRowAttack()));
+	this->enemyBinaryCardTotal->setString(std::to_string(this->gameState->enemyBinaryCards->getRowAttack()));
+	this->enemyDecimalCardTotal->setString(std::to_string(this->gameState->enemyDecimalCards->getRowAttack()));
+	this->enemyHexCardTotal->setString(std::to_string(this->gameState->enemyHexCards->getRowAttack()));
 }

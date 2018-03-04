@@ -15,6 +15,7 @@ public:
 	void insertCard(Card* card, float cardInsertDelay);
 	Card* removeCard(Card* card);
 	int getCardCount();
+	int getRowAttack();
 	void setRowWidth(float newRowWidth);
 	void clear();
 	void disableInteraction();
@@ -22,7 +23,7 @@ public:
 	void setMouseOverCallback(std::function<void(Card*)> callback);
 	void setMouseClickCallback(std::function<void(Card*)> callback);
 
-	static const float standardInsertDelay;
+	std::vector<Card*>* rowCards;
 
 private:
 	CardRow();
@@ -34,7 +35,6 @@ private:
 	void setCardPositions(float cardRepositionDelay);
 
 	float rowWidth;
-	std::vector<Card*>* rowCards;
 	std::function<void(Card*)> mouseOverCallback;
 	std::function<void(Card*)> mouseClickCallback;
 };
