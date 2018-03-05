@@ -37,6 +37,9 @@ public:
 	static const float handWidth;
 	static const float rowWidth;
 
+	static const float cardSelectSpeed;
+	static const float cardSelectOffsetY;
+
 	static const float defaultCardSpacing;
 	static const float rightColumnCenter;
 	static const float leftColumnCenter;

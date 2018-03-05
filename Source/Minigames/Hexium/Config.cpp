@@ -25,6 +25,9 @@ const float Config::coinFlipBannerDisplayDelay = 0.5f;
 const float Config::bannerFadeSpeed = 0.25f;
 const float Config::bannerDisplayDuration = 1.25f;
 
+const float Config::cardSelectSpeed = 0.25f;
+const float Config::cardSelectOffsetY = 48.0f;
+
 const float Config::enemyHandWidth = 256.0f;
 const float Config::handWidth = 992.0f;
 const float Config::rowWidth = 928.0f;
@@ -32,7 +35,7 @@ const float Config::defaultCardSpacing = 128.0f;
 const float Config::rightColumnCenter = 780.0f;
 const float Config::leftColumnCenter = -712.0f;
 const float Config::cardTotalOffsetX = -522.0f;
-const float Config::centerColumnCenter = 68.0f;
+const float Config::centerColumnCenter = 71.0f;
 const float Config::frameOffsetX = -72.0f;
 const float Config::frameOffsetY = 354.0f;
 const float Config::deckOffsetX = 64.0f;
