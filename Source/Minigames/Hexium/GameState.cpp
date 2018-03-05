@@ -12,6 +12,7 @@ GameState* GameState::create()
 GameState::GameState()
 {
 	this->updateStateCallback = nullptr;
+	this->endTurnCallback = nullptr;
 	this->cardPreviewCallback = nullptr;
 	this->requestAiCallback = nullptr;
 
@@ -286,10 +287,11 @@ void GameState::endTurn()
 		break;
 	}
 
-	this->updateState();
-
 	this->runAction(Sequence::create(
+		CallFunc::create(CC_CALLBACK_0(GameState::updateState, this)),
 		DelayTime::create(endTurnDelay),
+		CallFunc::create(CC_CALLBACK_0(GameState::callEndTurn, this)),
+		DelayTime::create(Config::betweenTurnDelay),
 		CallFunc::create(CC_CALLBACK_0(GameState::drawCard, this)),
 		nullptr
 	));
@@ -300,6 +302,14 @@ void GameState::updateState()
 	if (this->updateStateCallback != nullptr)
 	{
 		this->updateStateCallback(true);
+	}
+}
+
+void GameState::callEndTurn()
+{
+	if (this->endTurnCallback != nullptr)
+	{
+		this->endTurnCallback();
 	}
 }
 
@@ -333,6 +343,11 @@ void GameState::setCardPreviewCallback(std::function<void(Card*)> callback)
 void GameState::setUpdateStateCallback(std::function<void(bool)> callback)
 {
 	this->updateStateCallback = callback;
+}
+
+void GameState::setEndTurnCallback(std::function<void()> callback)
+{
+	this->endTurnCallback = callback;
 }
 
 void GameState::setRequestAiCallback(std::function<void(GameState*)> callback)

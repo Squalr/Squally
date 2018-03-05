@@ -133,6 +133,14 @@ Hexium::Hexium()
 	this->skeletonOutAnimation->setDelayPerUnit(Config::coinFlipSpeed);
 	this->neutralAnimation->setDelayPerUnit(Config::coinFlipSpeed);
 
+	this->statusBanner = LayerColor::create(Color4B(0, 0, 0, 127), 1920.0f, 144.0f);
+	this->statusLabel = Label::create("", Resources::Fonts_Montserrat_Medium, 48.0f);
+
+	this->statusBanner->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->statusLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->statusBanner->setOpacity(0);
+	this->statusLabel->setOpacity(0);
+
 	this->addChild(this->gameBackground);
 	this->addChild(this->playerFrame);
 	this->addChild(this->enemyFrame);
@@ -182,6 +190,8 @@ Hexium::Hexium()
 	this->addChild(this->previewPanel);
 
 	this->addChild(this->coin);
+	this->addChild(this->statusBanner);
+	this->addChild(this->statusLabel);
 }
 
 Hexium::~Hexium()
@@ -251,6 +261,9 @@ void Hexium::initializePositions()
 
 	this->previewPanel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter, visibleSize.height / 2.0f + Config::previewOffsetY);
 	this->coin->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f);
+
+	this->statusBanner->setPosition(0.0f, visibleSize.height / 2.0f - this->statusBanner->getContentSize().height / 2 + 320.0f);
+	this->statusLabel->setPosition(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 320.0f);
 }
 
 void Hexium::initializeListeners()
@@ -260,6 +273,7 @@ void Hexium::initializeListeners()
 	listener->onKeyPressed = CC_CALLBACK_2(Hexium::onKeyPressed, this);
 	this->gameState->setCardPreviewCallback(CC_CALLBACK_1(Hexium::previewCard, this));
 	this->gameState->setUpdateStateCallback(CC_CALLBACK_1(Hexium::updateDisplayState, this));
+	this->gameState->setEndTurnCallback(CC_CALLBACK_0(Hexium::displayTurnBanner, this));
 	this->gameState->setRequestAiCallback(Ai::performAiActions);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
@@ -499,6 +513,8 @@ void Hexium::doCoinFlipAnimation()
 			DelayTime::create(introDelay),
 			Repeat::create(loopSequence, Config::coinFlipCount),
 			Animate::create(this->lionInAnimation->clone()),
+			DelayTime::create(Config::coinFlipBannerDisplayDelay),
+			CallFunc::create(CC_CALLBACK_0(Hexium::displayStatusBannerMessage, this, "YOU GO FIRST")),
 			nullptr));
 		break;
 	}
@@ -517,6 +533,8 @@ void Hexium::doCoinFlipAnimation()
 			DelayTime::create(introDelay),
 			Repeat::create(loopSequence, Config::coinFlipCount),
 			Animate::create(this->skeletonInAnimation->clone()),
+			DelayTime::create(Config::coinFlipBannerDisplayDelay),
+			CallFunc::create(CC_CALLBACK_0(Hexium::displayStatusBannerMessage, this, "ENEMY GOES FIRST")),
 			nullptr));
 		break;
 	}
@@ -529,4 +547,35 @@ void Hexium::doCoinFlipAnimation()
 		DelayTime::create(Config::coinFlipRestDuration),
 		FadeOut::create(Config::coinFlipFadeSpeed),
 		nullptr));
+}
+
+void Hexium::displayStatusBannerMessage(std::string message)
+{
+	this->statusLabel->setString(message);
+
+	this->statusLabel->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 255),
+		DelayTime::create(Config::bannerDisplayDuration),
+		FadeTo::create(Config::bannerFadeSpeed, 0),
+		nullptr
+	));
+
+	this->statusBanner->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 127),
+		DelayTime::create(Config::bannerDisplayDuration),
+		FadeTo::create(Config::bannerFadeSpeed, 0),
+		nullptr
+	));
+}
+
+void Hexium::displayTurnBanner()
+{
+	switch (this->gameState->turn)
+	{
+	case GameState::Turn::Player:
+		this->displayStatusBannerMessage("YOUR TURN");
+		break;
+	case GameState::Turn::Enemy:
+		break;
+	}
 }

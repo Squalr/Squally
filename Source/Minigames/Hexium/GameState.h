@@ -22,6 +22,7 @@ public:
 	int getEnemyTotal();
 	void setCardPreviewCallback(std::function<void(Card*)> callback);
 	void setUpdateStateCallback(std::function<void(bool)> callback);
+	void setEndTurnCallback(std::function<void()> callback);
 	void setRequestAiCallback(std::function<void(GameState*)> callback);
 
 	enum Difficulty {
@@ -66,6 +67,7 @@ private:
 	void onRowCardClick(Card* card);
 
 	void updateState();
+	void callEndTurn();
 	void enableUserInteraction();
 	void disableUserInteraction();
 
@@ -74,6 +76,7 @@ private:
 
 	std::function<void(Card*)> cardPreviewCallback;
 	std::function<void(bool)> updateStateCallback;
+	std::function<void()> endTurnCallback;
 	std::function<void(GameState*)> requestAiCallback;
 };
 
