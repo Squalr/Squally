@@ -27,10 +27,13 @@ public:
 	int getAttack();
 	void doDrawAnimation(float cardDrawDelay);
 	void setScale(float scale) override;
+	void disableInteraction();
+	void enableInteraction();
 	void setMouseOverCallback(std::function<void(Card*)> callback);
 	void setMouseClickCallback(std::function<void(Card*)> callback);
 
 	CardData* cardData;
+	Vec2 position;
 
 	static const float cardScale;
 	static const Color4B binaryColor;

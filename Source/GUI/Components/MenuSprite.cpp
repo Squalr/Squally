@@ -29,6 +29,7 @@ MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
 	this->mouseDownEvent = nullptr;
 	this->mouseDragEvent = nullptr;
 	this->mouseOverEvent = nullptr;
+	this->interactionEnabled = true;
 
 	this->clickSound = Resources::Sounds_ButtonClick1;
 	this->mouseOverSound = "";
@@ -71,6 +72,21 @@ void MenuSprite::update(float dt)
 
 	this->spriteClicked->setPosition(this->sprite->getPosition());
 	this->spriteSelected->setPosition(this->sprite->getPosition());
+}
+
+void MenuSprite::disableInteraction()
+{
+	this->interactionEnabled = false;
+
+	// Restore normal sprite
+	this->sprite->setVisible(true);
+	this->spriteClicked->setVisible(false);
+	this->spriteSelected->setVisible(false);
+}
+
+void MenuSprite::enableInteraction()
+{
+	this->interactionEnabled = true;
 }
 
 void MenuSprite::setContentScale(float scale)
@@ -139,6 +155,11 @@ void MenuSprite::onMouseSpriteMove(EventCustom* event)
 {
 	Mouse::MouseEventArgs* args = static_cast<Mouse::MouseEventArgs*>(event->getUserData());
 
+	if (!this->interactionEnabled)
+	{
+		return;
+	}
+
 	if (GameUtils::isVisible(this))
 	{
 		// Mouse drag callback
@@ -202,6 +223,11 @@ void MenuSprite::onMouseSpriteMove(EventCustom* event)
 
 void MenuSprite::onMouseDown(EventMouse* event)
 {
+	if (!this->interactionEnabled)
+	{
+		return;
+	}
+
 	if (GameUtils::isVisible(this))
 	{
 		if (this->intersects(Vec2(event->getCursorX(), event->getCursorY())))
@@ -224,6 +250,11 @@ void MenuSprite::onMouseDown(EventMouse* event)
 
 void MenuSprite::onMouseUp(EventMouse* event)
 {
+	if (!this->interactionEnabled)
+	{
+		return;
+	}
+
 	if (GameUtils::isVisible(this) && this->intersects(Vec2(event->getCursorX(), event->getCursorY())))
 	{
 		if (this->mouseClickEvent != nullptr)

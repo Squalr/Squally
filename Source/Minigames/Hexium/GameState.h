@@ -20,6 +20,7 @@ public:
 	void endTurn();
 	int getPlayerTotal();
 	int getEnemyTotal();
+	void cancelCurrentAction();
 	void setCardPreviewCallback(std::function<void(Card*)> callback);
 	void setUpdateStateCallback(std::function<void(bool)> callback);
 	void setEndTurnCallback(std::function<void()> callback);
@@ -68,12 +69,15 @@ private:
 
 	void updateState();
 	void callEndTurn();
+	void playSelectedCard();
+	void selectCard(Card* card);
 	void enableUserInteraction();
 	void disableUserInteraction();
 
 	void initializePositions();
 	void initializeListeners();
 
+	Card* selectedCard;
 	std::function<void(Card*)> cardPreviewCallback;
 	std::function<void(bool)> updateStateCallback;
 	std::function<void()> endTurnCallback;

@@ -11,6 +11,7 @@ GameState* GameState::create()
 
 GameState::GameState()
 {
+	this->selectedCard = nullptr;
 	this->updateStateCallback = nullptr;
 	this->endTurnCallback = nullptr;
 	this->cardPreviewCallback = nullptr;
@@ -80,7 +81,6 @@ void GameState::initializePositions()
 	this->enemyBinaryCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::binaryRowOffsetY);
 	this->enemyDecimalCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::decimalRowOffsetY);
 	this->enemyHexCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY);
-
 }
 
 void GameState::initializeListeners()
@@ -119,28 +119,94 @@ void GameState::onCardMouseOver(Card* card)
 
 void GameState::onHandCardClick(Card* card)
 {
-	switch (card->cardData->cardType) {
+	this->selectCard(card);
+}
+
+void GameState::selectCard(Card* card)
+{
+	if (this->selectedCard != nullptr)
+	{
+		this->selectedCard->stopAllActions();
+		this->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->selectedCard->position));
+	}
+
+	this->selectedCard = card;
+
+	if (this->selectedCard == nullptr)
+	{
+		return;
+	}
+
+	this->selectedCard->stopAllActions();
+	this->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->selectedCard->position + Vec2(0.0f, Config::cardSelectOffsetY)));
+
+	switch (this->selectedCard->cardData->cardType)
+	{
 	case CardData::CardType::Binary:
-		this->playerHand->removeCard(card);
-		this->playerBinaryCards->insertCard(card, Config::insertDelay);
-		this->endTurn();
+		this->playerBinaryCards->enableRowSelection(CC_CALLBACK_0(GameState::playSelectedCard, this));
 		break;
 	case CardData::CardType::Decimal:
-		this->playerHand->removeCard(card);
-		this->playerDecimalCards->insertCard(card, Config::insertDelay);
-		this->endTurn();
+		this->playerDecimalCards->enableRowSelection(CC_CALLBACK_0(GameState::playSelectedCard, this));
 		break;
 	case CardData::CardType::Hexidecimal:
-		this->playerHand->removeCard(card);
-		this->playerHexCards->insertCard(card, Config::insertDelay);
-		this->endTurn();
+		this->playerHexCards->enableRowSelection(CC_CALLBACK_0(GameState::playSelectedCard, this));
 		break;
+	}
+}
+
+void GameState::cancelCurrentAction()
+{
+	if (this->selectedCard != nullptr)
+	{
+		switch (this->selectedCard->cardData->cardType)
+		{
+		case CardData::CardType::Binary:
+			this->playerBinaryCards->disableRowSelection();
+			break;
+		case CardData::CardType::Decimal:
+			this->playerDecimalCards->disableRowSelection();
+			break;
+		case CardData::CardType::Hexidecimal:
+			this->playerHexCards->disableRowSelection();
+			break;
+		}
+
+		this->selectCard(nullptr);
 	}
 }
 
 void GameState::onRowCardClick(Card* card)
 {
+	// TODO: potentially store up xor/and/or targets if one is queued up
+}
 
+void GameState::playSelectedCard()
+{
+	if (this->selectedCard == nullptr)
+	{
+		return;
+	}
+
+	switch (this->selectedCard->cardData->cardType) {
+	case CardData::CardType::Binary:
+		this->playerHand->removeCard(this->selectedCard);
+		this->playerBinaryCards->disableRowSelection();
+		this->playerBinaryCards->insertCard(this->selectedCard, Config::insertDelay);
+		this->endTurn();
+		break;
+	case CardData::CardType::Decimal:
+		this->playerHand->removeCard(this->selectedCard);
+		this->playerDecimalCards->disableRowSelection();
+		this->playerDecimalCards->insertCard(this->selectedCard, Config::insertDelay);
+		this->endTurn();
+		break;
+	case CardData::CardType::Hexidecimal:
+		this->playerHand->removeCard(this->selectedCard);
+		this->playerHexCards->disableRowSelection();
+		this->playerHexCards->insertCard(this->selectedCard, Config::insertDelay);
+		this->endTurn();
+		break;
+	}
 }
 
 void GameState::gameStart(Deck* startPlayerDeck, Deck* startEnemyDeck)
