@@ -41,7 +41,9 @@ private:
 	void onClose(MenuSprite* menuSprite);
 	void previewCard(Card* card);
 	void doCoinFlipAnimation();
+	void displayTurnBanner();
 	void updateDisplayState(bool prePlayerDraw);
+	void displayStatusBannerMessage(std::string message);
 
 	GameState* gameState;
 
@@ -73,13 +75,6 @@ private:
 	Label* enemyHandCardCountText;
 	Sprite* enemyHandCardIcon;
 
-	Sprite* coin;
-	Animation* skeletonInAnimation;
-	Animation* skeletonOutAnimation;
-	Animation* lionInAnimation;
-	Animation* lionOutAnimation;
-	Animation* neutralAnimation;
-
 	Label* enemyBinaryCardTotal;
 	Label* enemyDecimalCardTotal;
 	Label* enemyHexCardTotal;
@@ -97,6 +92,16 @@ private:
 
 	Card* currentPreviewCard;
 	Node* previewPanel;
+
+	Sprite* coin;
+	Animation* skeletonInAnimation;
+	Animation* skeletonOutAnimation;
+	Animation* lionInAnimation;
+	Animation* lionOutAnimation;
+	Animation* neutralAnimation;
+
+	LayerColor* statusBanner;
+	Label* statusLabel;
 
 	Sprite* gameBackground;
 };
