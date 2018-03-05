@@ -35,7 +35,7 @@ public:
 	std::string cardResourceFile;
 	std::string cardName;
 	CardType cardType;
-	int attack;
+	unsigned int attack;
 
 	static const std::string Binary0;
 	static const std::string Binary1;
@@ -102,7 +102,7 @@ public:
 	static const std::string Peek;
 
 private:
-	CardData(std::string newCardResourceFile, std::string newCardName, CardType newCardType, int newAttack);
+	CardData(std::string newCardResourceFile, std::string newCardName, CardType newCardType, unsigned int newAttack);
 	~CardData();
 };
 

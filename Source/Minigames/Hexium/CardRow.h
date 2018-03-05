@@ -16,7 +16,7 @@ public:
 	Card* removeCard(Card* card);
 	int getCardCount();
 	int getRowAttack();
-	void enableRowSelection(std::function<void()> callback);
+	void enableRowSelection(std::function<void(CardRow*)> callback);
 	void disableRowSelection();
 	void setRowWidth(float newRowWidth);
 	void clear();
@@ -39,7 +39,7 @@ private:
 
 	float rowWidth;
 	MenuSprite* rowSelectSprite;
-	std::function<void()> rowSelectCallback;
+	std::function<void(CardRow*)> rowSelectCallback;
 	std::function<void(Card*)> mouseOverCallback;
 	std::function<void(Card*)> mouseClickCallback;
 };
