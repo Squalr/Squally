@@ -16,6 +16,8 @@ public:
 	Card* removeCard(Card* card);
 	int getCardCount();
 	int getRowAttack();
+	void enableRowSelection(std::function<void()> callback);
+	void disableRowSelection();
 	void setRowWidth(float newRowWidth);
 	void clear();
 	void disableInteraction();
@@ -33,8 +35,11 @@ private:
 	void initializePositions();
 	void initializeListeners();
 	void setCardPositions(float cardRepositionDelay);
+	void onRowSelectClick(MenuSprite* menuSprite);
 
 	float rowWidth;
+	MenuSprite* rowSelectSprite;
+	std::function<void()> rowSelectCallback;
 	std::function<void(Card*)> mouseOverCallback;
 	std::function<void(Card*)> mouseClickCallback;
 };

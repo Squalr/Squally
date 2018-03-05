@@ -11,12 +11,18 @@ CardRow* CardRow::create()
 
 CardRow::CardRow()
 {
+	this->rowCards = new std::vector<Card*>();
 	this->mouseOverCallback = nullptr;
 	this->mouseClickCallback = nullptr;
-
+	this->rowSelectCallback = nullptr;
 	this->rowWidth = Config::rowWidth;
 
-	this->rowCards = new std::vector<Card*>();
+	this->rowSelectSprite = MenuSprite::create(Resources::Minigames_Hexium_RowSelection, Resources::Minigames_Hexium_RowSelectionHighlight, Resources::Minigames_Hexium_RowSelectionHighlight);
+
+	this->rowSelectSprite->setOpacity(0);
+	this->rowSelectSprite->setVisible(false);
+
+	this->addChild(this->rowSelectSprite);
 }
 
 CardRow::~CardRow()
@@ -34,11 +40,11 @@ void CardRow::onEnter()
 
 void CardRow::initializePositions()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 void CardRow::initializeListeners()
 {
+	this->rowSelectSprite->setClickCallback(CC_CALLBACK_1(CardRow::onRowSelectClick, this));
 }
 
 void CardRow::disableInteraction()
@@ -107,6 +113,50 @@ int CardRow::getRowAttack()
 	return attack;
 }
 
+void CardRow::enableRowSelection(std::function<void()> callback)
+{
+	this->rowSelectCallback = callback;
+
+	this->rowSelectSprite->stopAllActions();
+
+	this->rowSelectSprite->setVisible(true);
+	this->rowSelectSprite->stopAllActions();
+
+	this->rowSelectSprite->runAction(Sequence::create(
+		FadeTo::create(0.25f, 255),
+		nullptr));
+
+	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	{
+		Card* card = *it;
+
+		card->disableInteraction();
+	}
+}
+
+void CardRow::disableRowSelection()
+{
+	this->rowSelectCallback = nullptr;
+
+	MenuSprite* sprite = this->rowSelectSprite;
+
+	this->rowSelectSprite->stopAllActions();
+	this->rowSelectSprite->runAction(Sequence::create(
+		FadeTo::create(0.25f, 0),
+		CallFunc::create([sprite]
+	{
+		sprite->setVisible(false);
+	}),
+		nullptr));
+
+	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	{
+		Card* card = *it;
+
+		card->enableInteraction();
+	}
+}
+
 void CardRow::clear()
 {
 	this->removeAllChildren();
@@ -150,15 +200,25 @@ void CardRow::setCardPositions(float cardRepositionDelay)
 
 		float newX = (index * spacing) - (spacing * (cardCount - 1)) / 2.0f;
 
+		card->position = Vec2(newX, 0.0f);
+
 		if (cardRepositionDelay > 0.0f) {
 			card->stopAllActions();
-			card->runAction(EaseSineInOut::create(MoveTo::create(cardRepositionDelay, Vec2(newX, 0.0f))));
+			card->runAction(EaseSineInOut::create(MoveTo::create(cardRepositionDelay, card->position)));
 			card->runAction(ScaleTo::create(cardRepositionDelay, Card::cardScale));
 		}
 		else {
-			card->setPosition(Vec2(newX, 0.0f));
+			card->setPosition(card->position);
 			card->setScale(Card::cardScale);
 		}
 		index++;
+	}
+}
+
+void CardRow::onRowSelectClick(MenuSprite* menuSprite)
+{
+	if (this->rowSelectCallback != nullptr)
+	{
+		this->rowSelectCallback();
 	}
 }

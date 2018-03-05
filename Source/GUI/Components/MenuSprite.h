@@ -23,6 +23,8 @@ public:
 	void setMouseDragCallback(std::function<void(MenuSprite*, EventMouse* args)> onDrag);
 	void setMouseOverSound(std::string soundResource);
 	void setClickSound(std::string soundResource);
+	void disableInteraction();
+	void enableInteraction();
 
 protected:
 	MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked);
@@ -45,6 +47,7 @@ private:
 	Node* spriteSelected;
 	Vec2 offsetCorrection;
 
+	bool interactionEnabled;
 	bool isClickInit;
 	bool isClicked;
 
