@@ -17,9 +17,9 @@ public:
 
 	Card* drawCard();
 	bool hasCards();
-	void insertCardTop(Card* card);
-	void insertCardBottom(Card* card);
-	void insertCardRandom(Card* card);
+	void insertCardTop(Card* card, bool faceUp, float insertDelay);
+	void insertCardBottom(Card* card, bool faceUp, float insertDelay);
+	void insertCardRandom(Card* card, bool faceUp, float insertDelay);
 	void clear();
 
 private:
@@ -29,6 +29,7 @@ private:
 	~Deck();
 	void onEnter() override;
 	void setCardOrder();
+	void doInsertAnimation(Card* card, bool faceUp, float insertDelay);
 
 	Card::CardStyle style;
 	std::vector<Card*>* deckCards;

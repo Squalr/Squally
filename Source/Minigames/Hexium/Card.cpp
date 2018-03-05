@@ -3,8 +3,10 @@
 const float Card::cardScale = 0.4f;
 const Color4B Card::binaryColor = Color4B(35, 150, 255, 255);
 const Color4B Card::decimalColor = Color4B(255, 255, 255, 255);
-const Color4B Card::hexColor = Color4B(30, 223, 0, 255);
+const Color4B Card::hexColor = Color4B(153, 50, 153, 255);
 const Color4B Card::specialColor = Color4B(255, 116, 0, 255);
+const Color4B Card::debuffColor = Color4B(225, 0, 0, 255);
+const Color4B Card::buffColor = Color4B(30, 223, 0, 255);
 
 Card* Card::create(CardStyle cardStyle, CardData* data)
 {
@@ -18,6 +20,8 @@ Card* Card::create(CardStyle cardStyle, CardData* data)
 Card::Card(CardStyle cardStyle, CardData* data)
 {
 	this->mouseOverCallback = nullptr;
+	this->operations = new std::vector<Operation>();
+
 	this->cardData = data;
 
 	switch (cardStyle)
@@ -78,6 +82,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 
 Card::~Card()
 {
+	delete(this->operations);
 }
 
 void Card::onEnter()
@@ -103,6 +108,12 @@ void Card::initializeListeners()
 	this->cardSprite->setClickCallback(CC_CALLBACK_1(Card::onMouseClick, this));
 }
 
+void Card::addOperation(Operation operation)
+{
+	this->operations->push_back(operation);
+	this->updateText();
+}
+
 void Card::disableInteraction()
 {
 	this->cardSprite->disableInteraction();
@@ -123,10 +134,75 @@ void Card::setScale(float scale)
 	this->cardSprite->setOffsetCorrection(cardOffsetCorrection);
 }
 
-int Card::getAttack()
+Card::Operation Card::toOperation(CardData::CardType playedCardType, unsigned int immediate)
 {
-	// TODO: Apply transformations here
-	return this->cardData->attack;
+	switch (playedCardType) {
+	case CardData::CardType::Special_SHL:
+		return Operation(Operation::OperationType::SHL, 1);
+	case CardData::CardType::Special_SHR:
+		return Operation(Operation::OperationType::SHR, 1);
+	case CardData::CardType::Special_FLIP1:
+		return Operation(Operation::OperationType::XOR, 0b0001);
+	case CardData::CardType::Special_FLIP2:
+		return Operation(Operation::OperationType::XOR, 0b0010);
+	case CardData::CardType::Special_FLIP3:
+		return Operation(Operation::OperationType::XOR, 0b0100);
+	case CardData::CardType::Special_FLIP4:
+		return Operation(Operation::OperationType::XOR, 0b1000);
+	case CardData::CardType::Special_AND:
+		return Operation(Operation::OperationType::AND, immediate);
+	case CardData::CardType::Special_OR:
+		return Operation(Operation::OperationType::OR, immediate);
+	case CardData::CardType::Special_XOR:
+		return Operation(Operation::OperationType::XOR, immediate);
+	case CardData::CardType::Special_ADD:
+		return Operation(Operation::OperationType::XOR, immediate);
+	case CardData::CardType::Special_SUB:
+		return Operation(Operation::OperationType::XOR, immediate);
+	case CardData::CardType::Special_INV:
+		return Operation(Operation::OperationType::XOR, 0b1111);
+	}
+}
+
+unsigned int Card::getAttack()
+{
+	unsigned int attack = this->cardData->attack;
+	const unsigned int attackMask = 0b1111;
+
+	for (auto it = this->operations->begin(); it != this->operations->end(); it++)
+	{
+		Operation operation = *it;
+
+		switch (operation.opterationType)
+		{
+		case Operation::OperationType::SHL:
+			attack <<= operation.immediate;
+			break;
+		case Operation::OperationType::SHR:
+			attack >>= operation.immediate;
+			break;
+		case Operation::OperationType::AND:
+			attack &= operation.immediate;
+			break;
+		case Operation::OperationType::OR:
+			attack |= operation.immediate;
+			break;
+		case Operation::OperationType::XOR:
+			attack ^= operation.immediate;
+			break;
+		case Operation::OperationType::ADD:
+			attack += operation.immediate;
+			break;
+		case Operation::OperationType::SUB:
+			attack = operation.immediate > attack ? 0 : attack - operation.immediate;
+			break;
+		}
+
+		// Ensure only as many as the first 4 bits are set
+		attack &= attackMask;
+	}
+
+	return attack;
 }
 
 void Card::reveal()
@@ -164,18 +240,20 @@ void Card::doDrawAnimation(float cardDrawDelay)
 
 void Card::updateText()
 {
+	int actualAttack = this->getAttack();
+
 	switch (this->cardData->cardType)
 	{
 	case CardData::CardType::Binary:
-		this->cardText->setString(HackUtils::toBinary4(this->cardData->attack));
+		this->cardText->setString(HackUtils::toBinary4(this->getAttack()));
 		this->cardText->setTextColor(Card::binaryColor);
 		break;
 	case CardData::CardType::Decimal:
-		this->cardText->setString(std::to_string(this->cardData->attack));
+		this->cardText->setString(std::to_string(this->getAttack()));
 		this->cardText->setTextColor(Card::decimalColor);
 		break;
 	case CardData::CardType::Hexidecimal:
-		this->cardText->setString(HackUtils::toHex(this->cardData->attack));
+		this->cardText->setString(HackUtils::toHex(this->getAttack()));
 		this->cardText->setTextColor(Card::hexColor);
 		break;
 	case CardData::CardType::Special_AND:
@@ -193,6 +271,15 @@ void Card::updateText()
 	case CardData::CardType::Special:
 		this->cardText->setString(this->cardData->getCardTypeString());
 		this->cardText->setTextColor(Card::specialColor);
+	}
+
+	if (actualAttack > this->cardData->attack)
+	{
+		this->cardText->setTextColor(Card::buffColor);
+	}
+	else if (actualAttack < this->cardData->attack)
+	{
+		this->cardText->setTextColor(Card::debuffColor);
 	}
 
 	this->attackFrame->setContentSize(Size(32.0f + this->cardText->getString().length() * 32.0f, 64.0f));

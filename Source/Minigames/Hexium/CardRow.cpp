@@ -113,7 +113,7 @@ int CardRow::getRowAttack()
 	return attack;
 }
 
-void CardRow::enableRowSelection(std::function<void()> callback)
+void CardRow::enableRowSelection(std::function<void(CardRow*)> callback)
 {
 	this->rowSelectCallback = callback;
 
@@ -219,6 +219,6 @@ void CardRow::onRowSelectClick(MenuSprite* menuSprite)
 {
 	if (this->rowSelectCallback != nullptr)
 	{
-		this->rowSelectCallback();
+		this->rowSelectCallback(this);
 	}
 }
