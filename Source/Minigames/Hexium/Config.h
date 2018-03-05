@@ -10,6 +10,7 @@ public:
 
 	static const int startingCardAmount;
 	static const float endTurnDelay;
+	static const float betweenTurnDelay;
 	static const float enemyDrawDelay;
 	static const float turnAnimationDelay;
 	static const float enemyEndTurnDelay;
@@ -27,6 +28,10 @@ public:
 	static const float coinFlipRestDuration;
 	static const float coinFlipFadeSpeed;
 	static const int coinFlipCount;
+	static const float coinFlipBannerDisplayDelay;
+
+	static const float bannerFadeSpeed;
+	static const float bannerDisplayDuration;
 
 	static const float enemyHandWidth;
 	static const float handWidth;
