@@ -200,7 +200,7 @@ std::map<int, CardData*> CardData::cardListById = {
 	{ 61, CardData::cardListByName.at(CardData::Peek) },
 };
 
-CardData::CardData(std::string newCardResourceFile, std::string newCardName, CardType newCardType, int newAttack)
+CardData::CardData(std::string newCardResourceFile, std::string newCardName, CardType newCardType, unsigned int newAttack)
 {
 	this->cardResourceFile = newCardResourceFile;
 	this->cardName = newCardName;

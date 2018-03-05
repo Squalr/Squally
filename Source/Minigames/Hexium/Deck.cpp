@@ -30,7 +30,7 @@ Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*>* cards)
 
 	for (auto it = cards->begin(); it != cards->end(); *it++)
 	{
-		this->insertCardBottom(Card::create(this->style, *it));
+		this->insertCardBottom(Card::create(this->style, *it), false, 0.0f);
 	}
 }
 
@@ -63,7 +63,7 @@ void Deck::copyTo(Deck* otherDeck)
 
 	for (auto it = this->deckCards->begin(); it != this->deckCards->end(); *it++)
 	{
-		otherDeck->insertCardRandom(Card::create(this->style, (*it)->cardData));
+		otherDeck->insertCardRandom(Card::create(this->style, (*it)->cardData), false, 0.0f);
 	}
 }
 
@@ -93,27 +93,46 @@ bool Deck::hasCards()
 	return false;
 }
 
-void Deck::insertCardTop(Card* card)
+void Deck::insertCardTop(Card* card, bool faceUp, float insertDelay)
 {
-	card->hide();
 	this->deckCards->push_back(card);
-	GameUtils::changeParent(card, this, false);
+
+	this->doInsertAnimation(card, faceUp, insertDelay);
 }
 
-void Deck::insertCardBottom(Card* card)
+void Deck::insertCardBottom(Card* card, bool faceUp, float insertDelay)
 {
 	card->hide();
 	this->deckCards->insert(this->deckCards->begin(), card);
-	GameUtils::changeParent(card, this, false);
+
+	this->doInsertAnimation(card, faceUp, insertDelay);
 }
 
-void Deck::insertCardRandom(Card* card)
+void Deck::insertCardRandom(Card* card, bool faceUp, float insertDelay)
 {
 	int index = RandomHelper::random_int(0, (int)this->deckCards->size());
-
-	card->hide();
 	this->deckCards->insert(this->deckCards->begin() + index, card);
-	GameUtils::changeParent(card, this, false);
+
+	this->doInsertAnimation(card, faceUp, insertDelay);
+}
+
+void Deck::doInsertAnimation(Card* card, bool faceUp, float insertDelay)
+{
+	if (faceUp)
+	{
+		card->reveal();
+	}
+	else
+	{
+		card->hide();
+	}
+
+	GameUtils::changeParent(card, this, true);
+
+	card->setMouseOverCallback(nullptr);
+	card->setMouseClickCallback(nullptr);
+	card->stopAllActions();
+	card->runAction(MoveTo::create(insertDelay, Vec2::ZERO));
 }
 
 void Deck::clear()

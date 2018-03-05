@@ -20,11 +20,35 @@ public:
 		Shadow,
 	};
 
+	struct Operation
+	{
+		enum OperationType
+		{
+			SHL,
+			SHR,
+			AND,
+			OR,
+			XOR,
+			ADD,
+			SUB,
+		};
+
+		OperationType opterationType;
+		unsigned int immediate;
+
+		Operation(OperationType opterationType, unsigned int immediate) : opterationType(opterationType), immediate(immediate)
+		{
+
+		}
+	};
+
 	static Card* create(CardStyle cardStyle, CardData* data);
+	static Operation toOperation(CardData::CardType playedCardType, unsigned int immediate);
 
 	void reveal();
 	void hide();
-	int getAttack();
+	void addOperation(Operation operation);
+	unsigned int getAttack();
 	void doDrawAnimation(float cardDrawDelay);
 	void setScale(float scale) override;
 	void disableInteraction();
@@ -40,6 +64,8 @@ public:
 	static const Color4B decimalColor;
 	static const Color4B hexColor;
 	static const Color4B specialColor;
+	static const Color4B debuffColor;
+	static const Color4B buffColor;
 
 private:
 	Card(CardStyle cardStyle, CardData* data);
@@ -52,6 +78,7 @@ private:
 	void onMouseOver(MenuSprite* menuSprite);
 	void onMouseClick(MenuSprite* menuSprite);
 
+	std::vector<Operation>* operations;
 	Sprite* cardBack;
 	Sprite* cardFront;
 	Sprite* cardImage;

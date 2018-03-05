@@ -26,7 +26,7 @@ const float Config::bannerFadeSpeed = 0.25f;
 const float Config::bannerDisplayDuration = 1.25f;
 
 const float Config::cardSelectSpeed = 0.25f;
-const float Config::cardSelectOffsetY = 48.0f;
+const float Config::cardSelectOffsetY = 24.0f;
 
 const float Config::enemyHandWidth = 256.0f;
 const float Config::handWidth = 992.0f;
