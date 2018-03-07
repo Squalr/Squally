@@ -134,6 +134,16 @@ void CardRow::enableRowSelection(std::function<void(CardRow*)> callback)
 	}
 }
 
+void CardRow::enableRowCardSelection(std::function<void(Card*)> callback)
+{
+	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	{
+		Card* card = *it;
+
+		card->setMouseClickCallback(callback);
+	}
+}
+
 void CardRow::disableRowSelection()
 {
 	this->rowSelectCallback = nullptr;

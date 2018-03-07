@@ -17,6 +17,7 @@ public:
 	int getCardCount();
 	int getRowAttack();
 	void enableRowSelection(std::function<void(CardRow*)> callback);
+	void enableRowCardSelection(std::function<void(Card*)> callback);
 	void disableRowSelection();
 	void setRowWidth(float newRowWidth);
 	void clear();

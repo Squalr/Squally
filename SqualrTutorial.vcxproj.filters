@@ -103,6 +103,9 @@
     <Filter Include="Source\Save">
       <UniqueIdentifier>{b6ef2437-2a70-445e-adb7-dd0b257f1047}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Minigames\Hexium\Components">
+      <UniqueIdentifier>{87c40124-5e4e-4a9d-a46c-ded427cf7a16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -350,6 +353,9 @@
     </ClCompile>
     <ClCompile Include="Source\Minigames\Hexium\Config.cpp">
       <Filter>Source\Minigames\Hexium</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Components\CoinFlip.cpp">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -610,6 +616,9 @@
     </ClInclude>
     <ClInclude Include="Source\Minigames\Hexium\Config.h">
       <Filter>Source\Minigames\Hexium</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\CoinFlip.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

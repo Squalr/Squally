@@ -30,6 +30,23 @@ public:
 	// Make this event public. Note that Game.h fires this event because this scene can't listen for events until it is created.
 	void onGameStart(EventCustom* eventCustom);
 
+
+	///////////////
+
+
+
+	void gameStart(Deck* startPlayerDeck, Deck* startEnemyDeck);
+	void drawCard();
+	void giveControl();
+	void endTurn();
+	int getPlayerTotal();
+	int getEnemyTotal();
+	void cancelCurrentAction(bool clearSelectedCard);
+	void setCardPreviewCallback(std::function<void(Card*)> callback);
+	void setUpdateStateCallback(std::function<void(bool)> callback);
+	void setEndTurnCallback(std::function<void()> callback);
+	void setRequestAiCallback(std::function<void(GameState*)> callback);
+
 private:
 	Hexium();
 	~Hexium();
@@ -45,7 +62,42 @@ private:
 	void updateDisplayState(bool prePlayerDraw);
 	void displayStatusBannerMessage(std::string message);
 
+	/////////////////////
+
+
+	void onEnter() override;
+	void onCardMouseOver(Card* card);
+	void onHandCardClick(Card* card);
+	void onRowCardClick(Card* card);
+
+	void updateState();
+	void callEndTurn();
+	void playSelectedCard(CardRow* cardRow);
+	void stageSelectedSacrificeCard(Card* card);
+	void selectCard(Card* card);
+	void enableUserInteraction();
+	void disableUserInteraction();
+
+	void initializePositions();
+	void initializeListeners();
+
+	///////////
+
 	GameState* gameState;
+
+	Deck* playerDeck;
+	CardRow* playerHand;
+	Deck* playerGraveyard;
+	CardRow* playerBinaryCards;
+	CardRow* playerDecimalCards;
+	CardRow* playerHexCards;
+
+	Deck* enemyDeck;
+	CardRow* enemyHand;
+	Deck* enemyGraveyard;
+	CardRow* enemyBinaryCards;
+	CardRow* enemyDecimalCards;
+	CardRow* enemyHexCards;
 
 	Sprite* playerFrame;
 	Sprite* playerSocketA;

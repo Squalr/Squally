@@ -8,23 +8,18 @@
 
 using namespace cocos2d;
 
-class GameState : public Node
+class GameState
 {
 public:
-	static GameState * create();
-
-	void gameStart(Deck* startPlayerDeck, Deck* startEnemyDeck);
-	void randomizeTurn();
-	void drawCard();
-	void giveControl();
-	void endTurn();
-	int getPlayerTotal();
-	int getEnemyTotal();
-	void cancelCurrentAction(bool clearSelectedCard);
-	void setCardPreviewCallback(std::function<void(Card*)> callback);
-	void setUpdateStateCallback(std::function<void(bool)> callback);
-	void setEndTurnCallback(std::function<void()> callback);
-	void setRequestAiCallback(std::function<void(GameState*)> callback);
+	enum StateType {
+		CoinFlip,
+		FirstSideBanner,
+		TurnBanner,
+		Draw,
+		DrawAnimation,
+		Control,
+		EndTurn,
+	};
 
 	enum Difficulty {
 		Stupid,
@@ -39,48 +34,32 @@ public:
 		Enemy,
 	};
 
-	// Game state
+	GameState(StateType stateType,
+		Turn turn,
+		Difficulty difficulty,
+		int playerLosses,
+		int enemyLosses,
+		Card* stagedSacrifice,
+		Card* selectedCard,
+		std::string bannerMessage,
+		std::function<void(Card*)> cardPreviewCallback,
+		std::function<void(bool)> updateStateCallback,
+		std::function<void()> endTurnCallback,
+		std::function<void(GameState*)> requestAiCallback);
+	~GameState();
+
+	StateType stateType;
 	Turn turn;
 	Difficulty difficulty;
 	int playerLosses;
 	int enemyLosses;
-
-	Deck* playerDeck;
-	CardRow* playerHand;
-	Deck* playerGraveyard;
-	CardRow* playerBinaryCards;
-	CardRow* playerDecimalCards;
-	CardRow* playerHexCards;
-
-	Deck* enemyDeck;
-	CardRow* enemyHand;
-	Deck* enemyGraveyard;
-	CardRow* enemyBinaryCards;
-	CardRow* enemyDecimalCards;
-	CardRow* enemyHexCards;
-
-private:
-	GameState();
-	~GameState();
-	void onEnter() override;
-	void onCardMouseOver(Card* card);
-	void onHandCardClick(Card* card);
-	void onRowCardClick(Card* card);
-
-	void updateState();
-	void callEndTurn();
-	void playSelectedCard(CardRow* cardRow);
-	void selectCard(Card* card);
-	void enableUserInteraction();
-	void disableUserInteraction();
-
-	void initializePositions();
-	void initializeListeners();
-
+	Card* stagedSacrifice;
 	Card* selectedCard;
+	std::string bannerMessage;
 	std::function<void(Card*)> cardPreviewCallback;
 	std::function<void(bool)> updateStateCallback;
 	std::function<void()> endTurnCallback;
 	std::function<void(GameState*)> requestAiCallback;
-};
 
+	static const std::string onStateUpdateEvent;
+};

@@ -11,6 +11,7 @@ const float Config::revealDelay = 0.25f;
 const float Config::emblemFadeSpeed = 0.25f;
 const float Config::skullFadeSpeed = 0.25f;
 
+const float Config::coinFlipStartDelay = 0.5f;
 const float Config::turnAnimationDelay = 6.0f;
 const float Config::coinFlipStartScale = 0.5f;
 const float Config::coinFlipEndScale = 1.0f;
