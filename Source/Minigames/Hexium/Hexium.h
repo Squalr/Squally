@@ -53,14 +53,9 @@ private:
 	void initializeListeners();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onClose(MenuSprite* menuSprite);
-	void doCoinFlipAnimation();
-	void displayTurnBanner();
-	void updateDisplayState(bool prePlayerDraw);
-	void displayStatusBannerMessage(std::string message);
 
 	/////////////////////
 
-	void onEnter() override;
 	void onCardMouseOver(Card* card);
 	void onHandCardClick(Card* card);
 	void onRowCardClick(Card* card);
@@ -73,42 +68,9 @@ private:
 	void enableUserInteraction();
 	void disableUserInteraction();
 
-	void initializePositions();
-	void initializeListeners();
-
 	///////////
 
 	GameState* gameState;
-
-	Sprite* playerFrame;
-	Sprite* playerPadDeck;
-	Sprite* playerPadGrave;
-
-	Sprite* enemyFrame;
-	Sprite* enemyPadDeck;
-	Sprite* enemyPadGrave;
-
-	LayerColor* playerDeckCardCountFrame;
-	Label* playerDeckCardCountText;
-	LayerColor* playerHandCardCountFrame;
-	Label* playerHandCardCountText;
-	Sprite* playerHandCardIcon;
-
-	LayerColor* enemyDeckCardCountFrame;
-	Label* enemyDeckCardCountText;
-	LayerColor* enemyHandCardCountFrame;
-	Label* enemyHandCardCountText;
-	Sprite* enemyHandCardIcon;
-
-	Label* enemyBinaryCardTotal;
-	Label* enemyDecimalCardTotal;
-	Label* enemyHexCardTotal;
-	Label* playerBinaryCardTotal;
-	Label* playerDecimalCardTotal;
-	Label* playerHexCardTotal;
-
-	LayerColor* statusBanner;
-	Label* statusLabel;
 
 	Sprite* gameBackground;
 };

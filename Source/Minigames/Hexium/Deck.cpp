@@ -27,6 +27,11 @@ Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*>* cards)
 {
 	this->style = cardStyle;
 	this->deckCards = new std::vector<Card*>();
+	this->pad = Sprite::create(Resources::Minigames_Hexium_AvatarFrame);
+
+	this->pad->setScale(Card::cardScale);
+
+	this->addChild(this->pad);
 
 	for (auto it = cards->begin(); it != cards->end(); *it++)
 	{
