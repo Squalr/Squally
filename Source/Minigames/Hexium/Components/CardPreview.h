@@ -7,27 +7,23 @@
 
 using namespace cocos2d;
 
-class CoinFlip : public ComponentBase
+class CardPreview : public ComponentBase
 {
 public:
-	static CoinFlip * create();
+	static CardPreview * create();
 
 protected:
 	void onStateChange(GameState* gameState) override;
 
 private:
-	CoinFlip();
-	~CoinFlip();
+	CardPreview();
+	~CardPreview();
 
 	void onEnter() override;
 	void initializePositions();
 	void initializeListeners();
-	void doCoinFlip(GameState* gameState);
+	void previewCard(Card* card);
 
-	Sprite* coin;
-	Animation* skeletonInAnimation;
-	Animation* skeletonOutAnimation;
-	Animation* lionInAnimation;
-	Animation* lionOutAnimation;
-	Animation* neutralAnimation;
+	Card* currentPreviewCard;
+	Node* previewPanel;
 };
