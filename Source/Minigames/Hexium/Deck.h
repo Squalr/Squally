@@ -31,6 +31,7 @@ private:
 	void setCardOrder();
 	void doInsertAnimation(Card* card, bool faceUp, float insertDelay);
 
+	Sprite* pad;
 	Card::CardStyle style;
 	std::vector<Card*>* deckCards;
 

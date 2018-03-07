@@ -15,103 +15,10 @@ Hexium* Hexium::create()
 Hexium::Hexium()
 {
 	this->gameBackground = Sprite::create(Resources::Minigames_Hexium_Gameboard);
-
 	this->gameState = GameState::create();
 
-	this->playerFrame = Sprite::create(Resources::Minigames_Hexium_AvatarFrame);
-	this->playerPadDeck = Sprite::create(Resources::Minigames_Hexium_CardPad);
-	this->playerPadGrave = Sprite::create(Resources::Minigames_Hexium_CardPad);
-
-	this->enemyFrame = Sprite::create(Resources::Minigames_Hexium_AvatarFrame);
-	this->enemyPadDeck = Sprite::create(Resources::Minigames_Hexium_CardPad);
-	this->enemyPadGrave = Sprite::create(Resources::Minigames_Hexium_CardPad);
-
-	this->playerDeckCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
-	this->playerDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->playerDeckCardCountFrame->setContentSize(Size(48.0f, 32.0f));
-	this->playerDeckCardCountText = Label::create("", Resources::Fonts_UbuntuMono_B, 32.0f);
-	this->playerDeckCardCountText->setAlignment(TextHAlignment::LEFT);
-	this->playerDeckCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
-
-	this->enemyDeckCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
-	this->enemyDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->enemyDeckCardCountFrame->setContentSize(Size(48.0f, 32.0f));
-	this->enemyDeckCardCountText = Label::create("", Resources::Fonts_UbuntuMono_B, 32.0f);
-	this->enemyDeckCardCountText->setAlignment(TextHAlignment::LEFT);
-	this->enemyDeckCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
-
-	this->playerHandCardIcon = Sprite::create(Resources::Minigames_Hexium_CardIcons);
-	this->playerHandCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
-	this->playerHandCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->playerHandCardCountFrame->setContentSize(Size(80.0f, 32.0f));
-	this->playerHandCardCountText = Label::create("", Resources::Fonts_UbuntuMono_B, 32.0f);
-	this->playerHandCardCountText->setAlignment(TextHAlignment::LEFT);
-	this->playerHandCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
-
-	this->enemyHandCardIcon = Sprite::create(Resources::Minigames_Hexium_CardIcons);
-	this->enemyHandCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
-	this->enemyHandCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->enemyHandCardCountFrame->setContentSize(Size(80.0f, 32.0f));
-	this->enemyHandCardCountText = Label::create("", Resources::Fonts_UbuntuMono_B, 32.0f);
-	this->enemyHandCardCountText->setAlignment(TextHAlignment::LEFT);
-	this->enemyHandCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
-
-	this->enemyBinaryCardTotal = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
-	this->enemyBinaryCardTotal->enableOutline(Color4B::BLACK, 3);
-	this->enemyDecimalCardTotal = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
-	this->enemyDecimalCardTotal->enableOutline(Color4B::BLACK, 3);
-	this->enemyHexCardTotal = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
-	this->enemyHexCardTotal->enableOutline(Color4B::BLACK, 3);
-	this->playerBinaryCardTotal = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
-	this->playerBinaryCardTotal->enableOutline(Color4B::BLACK, 3);
-	this->playerDecimalCardTotal = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
-	this->playerDecimalCardTotal->enableOutline(Color4B::BLACK, 3);
-	this->playerHexCardTotal = Label::create("", Resources::Fonts_UbuntuMono_B, 48.0f);
-	this->playerHexCardTotal->enableOutline(Color4B::BLACK, 3);
-
-	this->playerPadDeck->setScale(Card::cardScale);
-	this->playerPadGrave->setScale(Card::cardScale);
-	this->enemyPadDeck->setScale(Card::cardScale);
-	this->enemyPadGrave->setScale(Card::cardScale);
-
-	this->statusBanner = LayerColor::create(Color4B(0, 0, 0, 127), 1920.0f, 144.0f);
-	this->statusLabel = Label::create("", Resources::Fonts_Montserrat_Medium, 48.0f);
-
-	this->statusBanner->setAnchorPoint(Vec2(0.5f, 0.5f));
-	this->statusLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
-	this->statusBanner->setOpacity(0);
-	this->statusLabel->setOpacity(0);
-
 	this->addChild(this->gameBackground);
-	this->addChild(this->playerFrame);
-	this->addChild(this->enemyFrame);
-	this->addChild(this->playerPadDeck);
-	this->addChild(this->playerPadGrave);
-	this->addChild(this->enemyPadDeck);
-	this->addChild(this->enemyPadGrave);
-
-	this->addChild(this->playerDeckCardCountFrame);
-	this->addChild(this->playerDeckCardCountText);
-	this->addChild(this->enemyDeckCardCountFrame);
-	this->addChild(this->enemyDeckCardCountText);
-
-	this->addChild(this->playerHandCardCountFrame);
-	this->addChild(this->playerHandCardIcon);
-	this->addChild(this->playerHandCardCountText);
-
-	this->addChild(this->enemyHandCardCountFrame);
-	this->addChild(this->enemyHandCardIcon);
-	this->addChild(this->enemyHandCardCountText);
-
-	this->addChild(this->enemyBinaryCardTotal);
-	this->addChild(this->enemyDecimalCardTotal);
-	this->addChild(this->enemyHexCardTotal);
-	this->addChild(this->playerBinaryCardTotal);
-	this->addChild(this->playerDecimalCardTotal);
-	this->addChild(this->playerHexCardTotal);
-
-	this->addChild(this->statusBanner);
-	this->addChild(this->statusLabel);
+	this->addChild(this->gameState);
 }
 
 Hexium::~Hexium()
@@ -125,8 +32,6 @@ void Hexium::onEnter()
 	this->initializePositions();
 	this->initializeListeners();
 	this->addChild(Mouse::claimInstance());
-
-	this->doCoinFlipAnimation();
 }
 
 void Hexium::initializePositions()
@@ -134,37 +39,6 @@ void Hexium::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->gameBackground->setPosition(visibleSize.width / 2.0f, visibleSize.height / 2.0f);
-	this->playerFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f - Config::frameOffsetY);
-	this->enemyFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f + Config::frameOffsetY);
-	this->playerPadDeck->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX, visibleSize.height / 2.0f - Config::deckOffsetY);
-	this->playerPadGrave->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f - Config::graveyardOffsetY);
-	this->enemyPadDeck->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX, visibleSize.height / 2.0f + Config::deckOffsetY);
-	this->enemyPadGrave->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f + Config::graveyardOffsetY);
-
-	this->playerDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f, visibleSize.height / 2.0f - Config::deckOffsetY - Config::deckCardCountOffsetY - 32.0f);
-	this->playerDeckCardCountText->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f - Config::deckOffsetY - Config::deckCardCountOffsetY);
-
-	this->enemyDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f, visibleSize.height / 2.0f + Config::deckOffsetY + Config::deckCardCountOffsetY);
-	this->enemyDeckCardCountText->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f + Config::deckOffsetY + Config::deckCardCountOffsetY + 32.0f);
-
-	this->playerHandCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 24.0f - 36.0f, visibleSize.height / 2.0f - Config::handCountOffsetY - 32.0f);
-	this->playerHandCardIcon->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 40.0f, visibleSize.height / 2.0f - Config::handCountOffsetY - 16.0f);
-	this->playerHandCardCountText->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f - Config::handCountOffsetY);
-
-	this->enemyHandCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 24.0f - 36.0f, visibleSize.height / 2.0f + Config::handCountOffsetY);
-	this->enemyHandCardIcon->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 40.0f, visibleSize.height / 2.0f + Config::handCountOffsetY + 16.0f);
-	this->enemyHandCardCountText->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f + Config::handCountOffsetY + 32.0f);
-
-	this->playerBinaryCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::binaryRowOffsetY - 0.0f);
-	this->playerDecimalCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::decimalRowOffsetY - 0.0f);
-	this->playerHexCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::hexRowOffsetY - 0.0f);
-
-	this->enemyBinaryCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::binaryRowOffsetY + 0.0f);
-	this->enemyDecimalCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::decimalRowOffsetY + 0.0f);
-	this->enemyHexCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY + 0.0f);
-
-	this->statusBanner->setPosition(0.0f, visibleSize.height / 2.0f - this->statusBanner->getContentSize().height / 2 + 320.0f);
-	this->statusLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 320.0f);
 }
 
 void Hexium::initializeListeners()
@@ -184,9 +58,10 @@ void Hexium::onGameStart(EventCustom* eventCustom)
 {
 	Hexium::HexiumGameEventArgs* args = (Hexium::HexiumGameEventArgs*)(eventCustom->getUserData());
 
+	args->playerDeck->copyTo(this->gameState->playerDeck);
+	args->enemyDeck->copyTo(this->gameState->enemyDeck);
+
 	GameState::updateState(this->gameState, GameState::StateType::CoinFlip);
-	//this->gameState->gameStart(args->playerDeck, args->enemyDeck);
-	this->updateDisplayState(false);
 
 	GameUtils::navigate(GameUtils::GameScreen::Hexium);
 }
@@ -209,56 +84,6 @@ void Hexium::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 void Hexium::onClose(MenuSprite* menuSprite)
 {
 	GameUtils::navigateBack();
-}
-
-
-void Hexium::updateDisplayState(bool prePlayerDraw)
-{
-	// Note: If updating state right before player draw, add +1 because the insert is delayed because of the animation
-	int playerHandCount = prePlayerDraw ? this->gameState->playerHand->getCardCount() + 1 : this->gameState->playerHand->getCardCount();
-
-	this->playerDeckCardCountText->setString(StrUtils::toStringZeroPad(this->gameState->playerDeck->getCardCount(), 2));
-	this->enemyDeckCardCountText->setString(StrUtils::toStringZeroPad(this->gameState->enemyDeck->getCardCount(), 2));
-	this->playerHandCardCountText->setString(StrUtils::toStringZeroPad(playerHandCount, 2));
-	this->enemyHandCardCountText->setString(StrUtils::toStringZeroPad(this->gameState->enemyHand->getCardCount(), 2));
-
-	this->playerBinaryCardTotal->setString(std::to_string(this->gameState->playerBinaryCards->getRowAttack()));
-	this->playerDecimalCardTotal->setString(std::to_string(this->gameState->playerDecimalCards->getRowAttack()));
-	this->playerHexCardTotal->setString(std::to_string(this->gameState->playerHexCards->getRowAttack()));
-	this->enemyBinaryCardTotal->setString(std::to_string(this->gameState->enemyBinaryCards->getRowAttack()));
-	this->enemyDecimalCardTotal->setString(std::to_string(this->gameState->enemyDecimalCards->getRowAttack()));
-	this->enemyHexCardTotal->setString(std::to_string(this->gameState->enemyHexCards->getRowAttack()));
-}
-
-void Hexium::displayStatusBannerMessage(std::string message)
-{
-	this->statusLabel->setString(message);
-
-	this->statusLabel->runAction(Sequence::create(
-		FadeTo::create(Config::bannerFadeSpeed, 255),
-		DelayTime::create(Config::bannerDisplayDuration),
-		FadeTo::create(Config::bannerFadeSpeed, 0),
-		nullptr
-	));
-
-	this->statusBanner->runAction(Sequence::create(
-		FadeTo::create(Config::bannerFadeSpeed, 127),
-		DelayTime::create(Config::bannerDisplayDuration),
-		FadeTo::create(Config::bannerFadeSpeed, 0),
-		nullptr
-	));
-}
-
-void Hexium::displayTurnBanner()
-{
-	switch (this->gameState->turn)
-	{
-	case GameState::Turn::Player:
-		this->displayStatusBannerMessage("YOUR TURN");
-		break;
-	case GameState::Turn::Enemy:
-		break;
-	}
 }
 
 /*

@@ -369,6 +369,21 @@
     <ClCompile Include="Source\Minigames\Hexium\Components\ComponentBase.cpp">
       <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Components\RowTotals.cpp">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Components\DeckCardCountDisplay.cpp">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Components\HandCardCountDisplay.cpp">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Components\Avatars.cpp">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Components\Banners.cpp">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -642,6 +657,21 @@
       <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\Minigames\Hexium\Components\ComponentBase.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\RowTotals.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\HandCardCountDisplay.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\DeckCardCountDisplay.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\Banners.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\Avatars.h">
       <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClInclude>
   </ItemGroup>
