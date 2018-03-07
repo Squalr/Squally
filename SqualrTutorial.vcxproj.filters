@@ -357,6 +357,18 @@
     <ClCompile Include="Source\Minigames\Hexium\Components\CoinFlip.cpp">
       <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Components\CardPreview.cpp">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Components\LossesDisplay.cpp">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Components\ScoreTotal.cpp">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Components\ComponentBase.cpp">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -618,6 +630,18 @@
       <Filter>Source\Minigames\Hexium</Filter>
     </ClInclude>
     <ClInclude Include="Source\Minigames\Hexium\Components\CoinFlip.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\CardPreview.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\LossesDisplay.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\ScoreTotal.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\ComponentBase.h">
       <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClInclude>
   </ItemGroup>

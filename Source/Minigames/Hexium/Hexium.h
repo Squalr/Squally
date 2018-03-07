@@ -30,10 +30,7 @@ public:
 	// Make this event public. Note that Game.h fires this event because this scene can't listen for events until it is created.
 	void onGameStart(EventCustom* eventCustom);
 
-
 	///////////////
-
-
 
 	void gameStart(Deck* startPlayerDeck, Deck* startEnemyDeck);
 	void drawCard();
@@ -56,14 +53,12 @@ private:
 	void initializeListeners();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onClose(MenuSprite* menuSprite);
-	void previewCard(Card* card);
 	void doCoinFlipAnimation();
 	void displayTurnBanner();
 	void updateDisplayState(bool prePlayerDraw);
 	void displayStatusBannerMessage(std::string message);
 
 	/////////////////////
-
 
 	void onEnter() override;
 	void onCardMouseOver(Card* card);
@@ -85,33 +80,11 @@ private:
 
 	GameState* gameState;
 
-	Deck* playerDeck;
-	CardRow* playerHand;
-	Deck* playerGraveyard;
-	CardRow* playerBinaryCards;
-	CardRow* playerDecimalCards;
-	CardRow* playerHexCards;
-
-	Deck* enemyDeck;
-	CardRow* enemyHand;
-	Deck* enemyGraveyard;
-	CardRow* enemyBinaryCards;
-	CardRow* enemyDecimalCards;
-	CardRow* enemyHexCards;
-
 	Sprite* playerFrame;
-	Sprite* playerSocketA;
-	Sprite* playerSocketB;
-	Sprite* playerSkullA;
-	Sprite* playerSkullB;
 	Sprite* playerPadDeck;
 	Sprite* playerPadGrave;
 
 	Sprite* enemyFrame;
-	Sprite* enemySocketA;
-	Sprite* enemySocketB;
-	Sprite* enemySkullA;
-	Sprite* enemySkullB;
 	Sprite* enemyPadDeck;
 	Sprite* enemyPadGrave;
 
@@ -133,24 +106,6 @@ private:
 	Label* playerBinaryCardTotal;
 	Label* playerDecimalCardTotal;
 	Label* playerHexCardTotal;
-
-	Sprite* playerTotalFrame;
-	Label* playerTotal;
-	Sprite* playerLeaderEmblem;
-
-	Sprite* enemyTotalFrame;
-	Label* enemyTotal;
-	Sprite* enemyLeaderEmblem;
-
-	Card* currentPreviewCard;
-	Node* previewPanel;
-
-	Sprite* coin;
-	Animation* skeletonInAnimation;
-	Animation* skeletonOutAnimation;
-	Animation* lionInAnimation;
-	Animation* lionOutAnimation;
-	Animation* neutralAnimation;
 
 	LayerColor* statusBanner;
 	Label* statusLabel;
