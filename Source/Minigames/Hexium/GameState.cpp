@@ -12,9 +12,9 @@ GameState* GameState::create()
 }
 
 GameState::GameState()
-	: stateType(StateType::None),
-	turn(Turn::None),
-	difficulty(Difficulty::None),
+	: stateType(StateType::CoinFlip),
+	turn(Turn::Player),
+	difficulty(Difficulty::Stupid),
 	playerLosses(0),
 	enemyLosses(0),
 	stagedSacrifice(nullptr),

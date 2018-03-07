@@ -8,11 +8,10 @@
 
 using namespace cocos2d;
 
-class GameState : Node
+class GameState : public Node
 {
 public:
 	enum StateType {
-		None,
 		CoinFlip,
 		FirstSideBanner,
 		TurnBanner,
@@ -26,7 +25,6 @@ public:
 	};
 
 	enum Difficulty {
-		None,
 		Stupid,
 		Easy,
 		Medium,
@@ -35,7 +33,6 @@ public:
 	};
 
 	enum Turn {
-		None,
 		Player,
 		Enemy,
 	};

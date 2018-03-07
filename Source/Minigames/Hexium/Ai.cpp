@@ -33,5 +33,5 @@ void Ai::performAiActions(GameState* gameState)
 		}
 	}
 
-	gameState->endTurn();
+	GameState::updateState(gameState, GameState::StateType::EndTurn);
 }

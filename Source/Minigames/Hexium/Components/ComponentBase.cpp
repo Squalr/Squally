@@ -38,3 +38,7 @@ void ComponentBase::onStateChange(EventCustom* eventCustom)
 {
 	this->onStateChange((GameState*)(eventCustom->getUserData()));
 }
+
+void ComponentBase::onStateChange(GameState* gameState)
+{
+}
