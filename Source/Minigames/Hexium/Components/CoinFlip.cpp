@@ -52,7 +52,7 @@ CoinFlip::~CoinFlip()
 
 void CoinFlip::onEnter()
 {
-	Node::onEnter();
+	ComponentBase::onEnter();
 
 	this->initializePositions();
 	this->initializeListeners();
@@ -67,20 +67,13 @@ void CoinFlip::initializePositions()
 
 void CoinFlip::initializeListeners()
 {
-	EventListenerCustom* listener = EventListenerCustom::create(GameState::onStateUpdateEvent, CC_CALLBACK_1(CoinFlip::onStateChange, this));
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-void CoinFlip::onStateChange(EventCustom* eventCustom)
+void CoinFlip::onStateChange(GameState* gameState)
 {
-	GameState* args = (GameState*)(eventCustom->getUserData());
-
-	if (args->stateType == GameState::StateType::CoinFlip) {
-		this->doCoinFlip(args);
+	if (gameState->stateType == GameState::StateType::CoinFlip) {
+		this->doCoinFlip(gameState);
 	}
-
-	GameUtils::navigate(GameUtils::GameScreen::Hexium);
 }
 
 void CoinFlip::doCoinFlip(GameState* gameState)
@@ -101,15 +94,14 @@ void CoinFlip::doCoinFlip(GameState* gameState)
 
 	CallFunc* onCoinFlipEnd = CallFunc::create([gameState]
 	{
-		gameState->stateType = GameState::StateType::FirstSideBanner;
-		Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::onStateUpdateEvent, gameState);
+		GameState::updateState(gameState, GameState::StateType::FirstSideBanner);
 	});
 
 	switch (gameState->turn)
 	{
 	case GameState::Turn::Player:
 	{
-		Sequence * loopSequence = Sequence::create(
+		Sequence* loopSequence = Sequence::create(
 			Animate::create(this->lionInAnimation->clone()),
 			Animate::create(this->lionOutAnimation->clone()),
 			Animate::create(this->neutralAnimation->clone()),
@@ -129,7 +121,7 @@ void CoinFlip::doCoinFlip(GameState* gameState)
 	}
 	case GameState::Turn::Enemy:
 	{
-		Sequence * loopSequence = Sequence::create(
+		Sequence* loopSequence = Sequence::create(
 			Animate::create(this->skeletonInAnimation->clone()),
 			Animate::create(this->skeletonOutAnimation->clone()),
 			Animate::create(this->neutralAnimation->clone()),
