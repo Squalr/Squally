@@ -20,6 +20,7 @@ public:
 	static const float emblemFadeSpeed;
 	static const float skullFadeSpeed;
 
+	static const float coinFlipStartDelay;
 	static const float coinFlipStartScale;
 	static const float coinFlipEndScale;
 	static const float coinFlipUpDuration;

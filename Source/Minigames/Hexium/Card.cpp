@@ -3,7 +3,7 @@
 const float Card::cardScale = 0.4f;
 const Color4B Card::binaryColor = Color4B(35, 150, 255, 255);
 const Color4B Card::decimalColor = Color4B(255, 255, 255, 255);
-const Color4B Card::hexColor = Color4B(153, 50, 153, 255);
+const Color4B Card::hexColor = Color4B(229, 66, 243, 255);
 const Color4B Card::specialColor = Color4B(255, 116, 0, 255);
 const Color4B Card::debuffColor = Color4B(225, 0, 0, 255);
 const Color4B Card::buffColor = Color4B(30, 223, 0, 255);
