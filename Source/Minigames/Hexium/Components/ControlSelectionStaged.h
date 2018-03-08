@@ -7,24 +7,24 @@
 
 using namespace cocos2d;
 
-class CardPreview : public ComponentBase
+class ControlSelectionStaged : public ComponentBase
 {
 public:
-	static CardPreview * create();
+	static ControlSelectionStaged * create();
 
 protected:
 	void onStateChange(GameState* gameState) override;
 
 private:
-	CardPreview();
-	~CardPreview();
+	ControlSelectionStaged();
+	~ControlSelectionStaged();
 
 	void onEnter() override;
 	void initializePositions();
 	void initializeListeners();
 	void initializeCallbacks(GameState* gameState);
-	void previewCard(Card* card);
+	void selectCard(Card* card);
+	void playSelectedCard(CardRow* cardRow);
 
-	Card* currentPreviewCard;
-	Node* previewPanel;
+	GameState* activeGameState;
 };

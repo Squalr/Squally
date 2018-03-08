@@ -387,6 +387,18 @@
     <ClCompile Include="Source\Minigames\Hexium\Components\ControlDraw.cpp">
       <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Components\ControlNeutral.cpp">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Components\ControlSacrificeStaged.cpp">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Components\ControlSelectionStaged.cpp">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Components\ControlEndTurn.cpp">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -681,6 +693,18 @@
       <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\Minigames\Hexium\Components\ControlDraw.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\ControlNeutral.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\ControlSacrificeStaged.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\ControlSelectionStaged.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\ControlEndTurn.h">
       <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClInclude>
   </ItemGroup>

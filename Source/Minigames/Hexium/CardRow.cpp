@@ -12,8 +12,6 @@ CardRow* CardRow::create()
 CardRow::CardRow()
 {
 	this->rowCards = new std::vector<Card*>();
-	this->mouseOverCallback = nullptr;
-	this->mouseClickCallback = nullptr;
 	this->rowSelectCallback = nullptr;
 	this->rowWidth = Config::rowWidth;
 
@@ -47,26 +45,6 @@ void CardRow::initializeListeners()
 	this->rowSelectSprite->setClickCallback(CC_CALLBACK_1(CardRow::onRowSelectClick, this));
 }
 
-void CardRow::disableInteraction()
-{
-	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
-	{
-		Card* card = *it;
-
-		card->setMouseClickCallback(nullptr);
-	}
-}
-
-void CardRow::enableInteraction()
-{
-	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
-	{
-		Card* card = *it;
-
-		card->setMouseClickCallback(this->mouseClickCallback);
-	}
-}
-
 void CardRow::setRowWidth(float newRowWidth)
 {
 	this->rowWidth = newRowWidth;
@@ -76,7 +54,7 @@ void CardRow::insertCard(Card* card, float cardInsertDelay)
 {
 	GameUtils::changeParent(card, this, true);
 
-	card->setMouseOverCallback(this->mouseOverCallback);
+	card->setMouseOverCallback(nullptr);
 	card->setMouseClickCallback(nullptr);
 	card->reveal();
 
@@ -175,19 +153,22 @@ void CardRow::clear()
 
 void CardRow::setMouseOverCallback(std::function<void(Card*)> callback)
 {
-	this->mouseOverCallback = callback;
-
 	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
 	{
 		Card* card = *it;
 
-		card->setMouseOverCallback(this->mouseOverCallback);
+		card->setMouseOverCallback(callback);
 	}
 }
 
 void CardRow::setMouseClickCallback(std::function<void(Card*)> callback)
 {
-	this->mouseClickCallback = callback;
+	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	{
+		Card* card = *it;
+
+		card->setMouseClickCallback(callback);
+	}
 }
 
 void CardRow::setCardPositions(float cardRepositionDelay)
@@ -221,6 +202,7 @@ void CardRow::setCardPositions(float cardRepositionDelay)
 			card->setPosition(card->position);
 			card->setScale(Card::cardScale);
 		}
+
 		index++;
 	}
 }

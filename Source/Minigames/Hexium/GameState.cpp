@@ -100,6 +100,16 @@ void GameState::initializeListeners()
 {
 }
 
+void GameState::clearCallbackStates()
+{
+	this->playerBinaryCards->disableRowSelection();
+	this->playerDecimalCards->disableRowSelection();
+	this->playerHexCards->disableRowSelection();
+	this->enemyBinaryCards->disableRowSelection();
+	this->enemyDecimalCards->disableRowSelection();
+	this->enemyHexCards->disableRowSelection();
+}
+
 int GameState::getPlayerTotal()
 {
 	int total = 0;
