@@ -54,7 +54,33 @@ void Banners::onStateChange(GameState* gameState)
 
 void Banners::updateBanner(GameState* gameState)
 {
+	if (std::empty(gameState->bannerMessage))
+	{
+		return;
+	}
+
 	this->statusLabel->setString(gameState->bannerMessage);
+
+	CallFunc* stateTransition = nullptr;
+
+	switch (gameState->stateType)
+	{
+	case GameState::StateType::FirstSideBanner:
+		stateTransition = CallFunc::create([gameState]
+		{
+			GameState::updateState(gameState, GameState::StateType::Draw);
+		});
+		break;
+	case GameState::StateType::TurnBanner:
+		stateTransition = CallFunc::create([gameState]
+		{
+			GameState::updateState(gameState, GameState::StateType::Draw);
+		});
+		break;
+	default:
+		stateTransition = CallFunc::create([] {});
+		break;
+	}
 
 	this->statusLabel->runAction(Sequence::create(
 		FadeTo::create(Config::bannerFadeSpeed, 255),
@@ -67,6 +93,9 @@ void Banners::updateBanner(GameState* gameState)
 		FadeTo::create(Config::bannerFadeSpeed, 127),
 		DelayTime::create(Config::bannerDisplayDuration),
 		FadeTo::create(Config::bannerFadeSpeed, 0),
+		stateTransition,
 		nullptr
 	));
+
+	gameState->bannerMessage = "";
 }

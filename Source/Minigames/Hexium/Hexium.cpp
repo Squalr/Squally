@@ -16,9 +16,29 @@ Hexium::Hexium()
 {
 	this->gameBackground = Sprite::create(Resources::Minigames_Hexium_Gameboard);
 	this->gameState = GameState::create();
+	this->avatars = Avatars::create();
+	this->banners = Banners::create();
+	this->cardPreview = CardPreview::create();
+	this->controlDraw = ControlDraw::create();
+	this->coinFlip = CoinFlip::create();
+	this->deckCardCountDisplay = DeckCardCountDisplay::create();
+	this->handCardCountDisplay = HandCardCountDisplay::create();
+	this->lossesDisplay = LossesDisplay::create();
+	this->rowTotals = RowTotals::create();
+	this->scoreTotal = ScoreTotal::create();
 
 	this->addChild(this->gameBackground);
 	this->addChild(this->gameState);
+	this->addChild(this->avatars);
+	this->addChild(this->cardPreview);
+	this->addChild(this->controlDraw);
+	this->addChild(this->lossesDisplay);
+	this->addChild(this->deckCardCountDisplay);
+	this->addChild(this->handCardCountDisplay);
+	this->addChild(this->rowTotals);
+	this->addChild(this->scoreTotal);
+	this->addChild(this->coinFlip);
+	this->addChild(this->banners);
 }
 
 Hexium::~Hexium()
@@ -32,6 +52,8 @@ void Hexium::onEnter()
 	this->initializePositions();
 	this->initializeListeners();
 	this->addChild(Mouse::claimInstance());
+
+	GameState::updateState(this->gameState, GameState::StateType::DrawInitialCards);
 }
 
 void Hexium::initializePositions()
@@ -60,8 +82,6 @@ void Hexium::onGameStart(EventCustom* eventCustom)
 
 	args->playerDeck->copyTo(this->gameState->playerDeck);
 	args->enemyDeck->copyTo(this->gameState->enemyDeck);
-
-	GameState::updateState(this->gameState, GameState::StateType::CoinFlip);
 
 	GameUtils::navigate(GameUtils::GameScreen::Hexium);
 }
@@ -109,26 +129,6 @@ this->initializePositions();
 this->initializeListeners();
 }
 
-void GameState::initializePositions()
-{
-Size visibleSize = Director::getInstance()->getVisibleSize();
-
-this->enemyGraveyard->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f + Config::graveyardOffsetY);
-this->playerGraveyard->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f - Config::graveyardOffsetY);
-
-this->playerDeck->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX, visibleSize.height / 2.0f - Config::deckOffsetY);
-this->enemyDeck->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX, visibleSize.height / 2.0f + Config::deckOffsetY);
-
-this->playerHand->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::handOffsetY);
-this->playerBinaryCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::binaryRowOffsetY);
-this->playerDecimalCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::decimalRowOffsetY);
-this->playerHexCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::hexRowOffsetY);
-
-this->enemyHand->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::handOffsetY + 256.0f);
-this->enemyBinaryCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::binaryRowOffsetY);
-this->enemyDecimalCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::decimalRowOffsetY);
-this->enemyHexCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY);
-}
 
 void GameState::initializeListeners()
 {
@@ -400,81 +400,9 @@ this->enemyDeck->clear();
 startPlayerDeck->copyTo(this->playerDeck);
 startEnemyDeck->copyTo(this->enemyDeck);
 
-// Draw starting cards
-int drawnCount = 0;
-
-while (playerDeck->hasCards() && drawnCount < Config::startingCardAmount)
-{
-playerHand->insertCard(this->playerDeck->drawCard(), 0.0f);
-drawnCount++;
-}
-
-drawnCount = 0;
-
-while (enemyDeck->hasCards() && drawnCount < Config::startingCardAmount)
-{
-enemyHand->insertCard(this->enemyDeck->drawCard(), 0.0f);
-drawnCount++;
-}
 
 this->disableUserInteraction();
 this->randomizeTurn();
-}
-
-void GameState::drawCard()
-{
-switch (this->turn)
-{
-case Turn::Enemy:
-{
-if (!this->enemyDeck->hasCards())
-{
-this->giveControl();
-return;
-}
-
-// Simply insert the card directly into the enemy hand for the enemy
-enemyHand->insertCard(this->enemyDeck->drawCard(), 0.0f);
-
-this->updateState();
-
-this->runAction(Sequence::create(
-DelayTime::create(Config::enemyDrawDelay),
-CallFunc::create(CC_CALLBACK_0(GameState::giveControl, this)),
-nullptr
-));
-break;
-}
-case Turn::Player:
-default:
-{
-if (!this->playerDeck->hasCards())
-{
-this->giveControl();
-return;
-}
-
-Card * card = this->playerDeck->drawCard();
-CardRow * hand = this->playerHand;
-
-GameUtils::changeParent(card, this, true);
-
-this->updateState();
-
-this->runAction(Sequence::create(
-CallFunc::create(CC_CALLBACK_0(Card::doDrawAnimation, card, Config::cardDrawDelay)),
-DelayTime::create(Config::cardDrawDelay),
-DelayTime::create(Config::revealDelay),
-CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, card, Config::insertDelay)),
-CallFunc::create(CC_CALLBACK_0(GameState::updateState, this)),
-DelayTime::create(Config::insertDelay),
-CallFunc::create(CC_CALLBACK_0(GameState::giveControl, this)),
-nullptr
-));
-
-break;
-}
-}
 }
 
 void GameState::giveControl()
@@ -534,28 +462,6 @@ if (this->endTurnCallback != nullptr)
 {
 this->endTurnCallback();
 }
-}
-
-int GameState::getPlayerTotal()
-{
-int total = 0;
-
-total += this->playerBinaryCards->getRowAttack();
-total += this->playerDecimalCards->getRowAttack();
-total += this->playerHexCards->getRowAttack();
-
-return total;
-}
-
-int GameState::getEnemyTotal()
-{
-int total = 0;
-
-total += this->enemyBinaryCards->getRowAttack();
-total += this->enemyDecimalCards->getRowAttack();
-total += this->enemyHexCards->getRowAttack();
-
-return total;
 }
 
 void GameState::setCardPreviewCallback(std::function<void(Card*)> callback)

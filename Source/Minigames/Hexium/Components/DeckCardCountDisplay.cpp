@@ -60,10 +60,7 @@ void DeckCardCountDisplay::initializeListeners()
 
 void DeckCardCountDisplay::onStateChange(GameState* gameState)
 {
-	switch (gameState->stateType) {
-	case GameState::StateType::ControlNeutral:
-		break;
-	}
+	this->updateTotals(gameState);
 }
 
 void DeckCardCountDisplay::updateTotals(GameState* gameState)

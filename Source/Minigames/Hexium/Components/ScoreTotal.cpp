@@ -63,17 +63,13 @@ void ScoreTotal::initializeListeners()
 
 void ScoreTotal::onStateChange(GameState* gameState)
 {
-	switch (gameState->stateType) {
-	case GameState::StateType::ControlNeutral:
-		break;
-	}
+	this->updateTotals(gameState);
 }
 
 void ScoreTotal::updateTotals(GameState* gameState)
 {
-	// TODO: Calculate these
-	int playerTotalAttack = 66;
-	int enemyTotalAttack = 123;
+	int playerTotalAttack = gameState->getPlayerTotal();
+	int enemyTotalAttack = gameState->getEnemyTotal();
 
 	this->playerTotal->setString(std::to_string(playerTotalAttack));
 	this->enemyTotal->setString(std::to_string(enemyTotalAttack));

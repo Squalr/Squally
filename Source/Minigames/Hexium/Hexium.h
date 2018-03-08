@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "MiniGames/Hexium/Components/Components.h"
 #include "MiniGames/Hexium/GameState.h"
 #include "MiniGames/Hexium/Ai.h"
 #include "GUI/Components/FadeScene.h"
@@ -36,8 +37,6 @@ public:
 	void drawCard();
 	void giveControl();
 	void endTurn();
-	int getPlayerTotal();
-	int getEnemyTotal();
 	void cancelCurrentAction(bool clearSelectedCard);
 	void setCardPreviewCallback(std::function<void(Card*)> callback);
 	void setUpdateStateCallback(std::function<void(bool)> callback);
@@ -71,6 +70,17 @@ private:
 	///////////
 
 	GameState* gameState;
-
 	Sprite* gameBackground;
+
+	// Components
+	Avatars* avatars;
+	Banners* banners;
+	CardPreview* cardPreview;
+	CoinFlip* coinFlip;
+	ControlDraw* controlDraw;
+	DeckCardCountDisplay* deckCardCountDisplay;
+	HandCardCountDisplay* handCardCountDisplay;
+	LossesDisplay* lossesDisplay;
+	RowTotals* rowTotals;
+	ScoreTotal* scoreTotal;
 };
