@@ -67,10 +67,7 @@ void HandCardCountDisplay::initializeListeners()
 
 void HandCardCountDisplay::onStateChange(GameState* gameState)
 {
-	switch (gameState->stateType) {
-	case GameState::StateType::ControlNeutral:
-		break;
-	}
+	this->updateTotals(gameState);
 }
 
 void HandCardCountDisplay::updateTotals(GameState* gameState)

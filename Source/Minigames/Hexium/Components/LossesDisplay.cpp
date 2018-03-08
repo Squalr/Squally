@@ -1,5 +1,14 @@
 #include "LossesDisplay.h"
 
+LossesDisplay* LossesDisplay::create()
+{
+	LossesDisplay* lossesDisplay = new LossesDisplay();
+
+	lossesDisplay->autorelease();
+
+	return lossesDisplay;
+}
+
 LossesDisplay::LossesDisplay()
 {
 	this->playerSocketA = Sprite::create(Resources::Minigames_Hexium_Socket);
@@ -57,10 +66,7 @@ void LossesDisplay::initializeListeners()
 
 void LossesDisplay::onStateChange(GameState* gameState)
 {
-	switch (gameState->stateType) {
-	case GameState::StateType::ControlNeutral:
-		break;
-	}
+	this->updateDisplayedLosses(gameState);
 }
 
 void LossesDisplay::updateDisplayedLosses(GameState* gameState)

@@ -9,6 +9,8 @@ using namespace cocos2d;
 
 class LossesDisplay : public ComponentBase
 {
+public:
+	static LossesDisplay* create();
 protected:
 	void onStateChange(GameState* eventCustom) override;
 

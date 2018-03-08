@@ -384,6 +384,9 @@
     <ClCompile Include="Source\Minigames\Hexium\Components\Banners.cpp">
       <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Components\ControlDraw.cpp">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -672,6 +675,12 @@
       <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\Minigames\Hexium\Components\Avatars.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\Components.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\ControlDraw.h">
       <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClInclude>
   </ItemGroup>

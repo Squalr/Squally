@@ -7,9 +7,6 @@ using namespace cocos2d;
 
 class ComponentBase : public Node
 {
-public:
-	static ComponentBase * create();
-
 protected:
 	ComponentBase();
 	~ComponentBase();
@@ -21,5 +18,5 @@ private:
 
 	void initializePositions();
 	void initializeListeners();
-	void onStateChange(EventCustom* eventCustom);
+	void onStateChangeEvent(EventCustom* eventCustom);
 };
