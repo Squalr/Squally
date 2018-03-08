@@ -21,8 +21,6 @@ public:
 	void disableRowSelection();
 	void setRowWidth(float newRowWidth);
 	void clear();
-	void disableInteraction();
-	void enableInteraction();
 	void setMouseOverCallback(std::function<void(Card*)> callback);
 	void setMouseClickCallback(std::function<void(Card*)> callback);
 
@@ -41,7 +39,5 @@ private:
 	float rowWidth;
 	MenuSprite* rowSelectSprite;
 	std::function<void(CardRow*)> rowSelectCallback;
-	std::function<void(Card*)> mouseOverCallback;
-	std::function<void(Card*)> mouseClickCallback;
 };
 

@@ -39,6 +39,7 @@ public:
 
 	static GameState * create();
 	static void updateState(GameState* gameState, StateType newState);
+	void clearCallbackStates();
 	int getPlayerTotal();
 	int getEnemyTotal();
 

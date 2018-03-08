@@ -213,6 +213,10 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Minigames\Hexium\Components\CoinFlip.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Components\ComponentBase.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Components\ControlDraw.cpp" />
+    <ClCompile Include="Source\Minigames\Hexium\Components\ControlEndTurn.cpp" />
+    <ClCompile Include="Source\Minigames\Hexium\Components\ControlNeutral.cpp" />
+    <ClCompile Include="Source\Minigames\Hexium\Components\ControlSacrificeStaged.cpp" />
+    <ClCompile Include="Source\Minigames\Hexium\Components\ControlSelectionStaged.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Components\DeckCardCountDisplay.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Components\HandCardCountDisplay.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Components\LossesDisplay.cpp" />
@@ -310,6 +314,10 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Minigames\Hexium\Components\ComponentBase.h" />
     <ClInclude Include="Source\Minigames\Hexium\Components\Components.h" />
     <ClInclude Include="Source\Minigames\Hexium\Components\ControlDraw.h" />
+    <ClInclude Include="Source\Minigames\Hexium\Components\ControlEndTurn.h" />
+    <ClInclude Include="Source\Minigames\Hexium\Components\ControlNeutral.h" />
+    <ClInclude Include="Source\Minigames\Hexium\Components\ControlSacrificeStaged.h" />
+    <ClInclude Include="Source\Minigames\Hexium\Components\ControlSelectionStaged.h" />
     <ClInclude Include="Source\Minigames\Hexium\Components\DeckCardCountDisplay.h" />
     <ClInclude Include="Source\Minigames\Hexium\Components\HandCardCountDisplay.h" />
     <ClInclude Include="Source\Minigames\Hexium\Components\LossesDisplay.h" />
