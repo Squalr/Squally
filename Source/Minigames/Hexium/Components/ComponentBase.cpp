@@ -1,14 +1,5 @@
 #include "ComponentBase.h"
 
-ComponentBase* ComponentBase::create()
-{
-	ComponentBase* componentBase = new ComponentBase();
-
-	componentBase->autorelease();
-
-	return componentBase;
-}
-
 ComponentBase::ComponentBase()
 {
 }
@@ -32,9 +23,12 @@ void ComponentBase::initializePositions()
 
 void ComponentBase::initializeListeners()
 {
+	EventListenerCustom* stateListener = EventListenerCustom::create(GameState::onStateUpdateEvent, CC_CALLBACK_1(ComponentBase::onStateChangeEvent, this));
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(stateListener, this);
 }
 
-void ComponentBase::onStateChange(EventCustom* eventCustom)
+void ComponentBase::onStateChangeEvent(EventCustom* eventCustom)
 {
 	this->onStateChange((GameState*)(eventCustom->getUserData()));
 }

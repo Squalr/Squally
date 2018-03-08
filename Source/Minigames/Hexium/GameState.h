@@ -15,8 +15,8 @@ public:
 		CoinFlip,
 		FirstSideBanner,
 		TurnBanner,
+		DrawInitialCards,
 		Draw,
-		DrawAnimation,
 		Control,
 		ControlNeutral,
 		ControlSelectionStaged,
@@ -39,6 +39,8 @@ public:
 
 	static GameState * create();
 	static void updateState(GameState* gameState, StateType newState);
+	int getPlayerTotal();
+	int getEnemyTotal();
 
 	StateType stateType;
 	Turn turn;
@@ -72,4 +74,7 @@ private:
 	GameState();
 	~GameState();
 
+	void onEnter() override;
+	void initializePositions();
+	void initializeListeners();
 };
