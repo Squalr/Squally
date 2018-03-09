@@ -11,20 +11,23 @@ using namespace cocos2d;
 class GameState : public Node
 {
 public:
-	enum StateType {
+	enum StateType
+	{
+		EmptyState,
 		CoinFlip,
 		FirstSideBanner,
 		TurnBanner,
 		DrawInitialCards,
 		Draw,
-		Control,
+		ControlReplaceCards,
 		ControlNeutral,
 		ControlSelectionStaged,
 		ControlSacrificeStaged,
 		EndTurn,
 	};
 
-	enum Difficulty {
+	enum Difficulty
+	{
 		Stupid,
 		Easy,
 		Medium,
@@ -32,7 +35,8 @@ public:
 		Expert,
 	};
 
-	enum Turn {
+	enum Turn
+	{
 		Player,
 		Enemy,
 	};
@@ -44,6 +48,7 @@ public:
 	int getEnemyTotal();
 
 	StateType stateType;
+	StateType previousStateType;
 	Turn turn;
 	Difficulty difficulty;
 	int playerLosses;

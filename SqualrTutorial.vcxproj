@@ -165,6 +165,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Entities\Npcs\Skeleton.cpp" />
     <ClCompile Include="Source\Entities\Player\Hover.cpp" />
     <ClCompile Include="Source\Entities\Player\Player.cpp" />
+    <ClCompile Include="Source\Fight\Fight.cpp" />
     <ClCompile Include="Source\GUI\Components\EditableTextWindow.cpp" />
     <ClCompile Include="Source\GUI\Components\FadeScene.cpp" />
     <ClCompile Include="Source\GUI\Components\FloatingSprite.cpp" />
@@ -215,6 +216,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Minigames\Hexium\Components\ControlDraw.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Components\ControlEndTurn.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Components\ControlNeutral.cpp" />
+    <ClCompile Include="Source\Minigames\Hexium\Components\ControlReplaceCards.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Components\ControlSacrificeStaged.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Components\ControlSelectionStaged.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Components\DeckCardCountDisplay.cpp" />
@@ -264,6 +266,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Entities\Npcs\Skeleton.h" />
     <ClInclude Include="Source\Entities\Player\Hover.h" />
     <ClInclude Include="Source\Entities\Player\Player.h" />
+    <ClInclude Include="Source\Fight\Fight.h" />
     <ClInclude Include="Source\GUI\Components\EditableTextWindow.h" />
     <ClInclude Include="Source\GUI\Components\FadeScene.h" />
     <ClInclude Include="Source\GUI\Components\FloatingSprite.h" />
@@ -315,6 +318,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Minigames\Hexium\Components\ControlDraw.h" />
     <ClInclude Include="Source\Minigames\Hexium\Components\ControlEndTurn.h" />
     <ClInclude Include="Source\Minigames\Hexium\Components\ControlNeutral.h" />
+    <ClInclude Include="Source\Minigames\Hexium\Components\ControlReplaceCards.h" />
     <ClInclude Include="Source\Minigames\Hexium\Components\ControlSacrificeStaged.h" />
     <ClInclude Include="Source\Minigames\Hexium\Components\ControlSelectionStaged.h" />
     <ClInclude Include="Source\Minigames\Hexium\Components\DeckCardCountDisplay.h" />

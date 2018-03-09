@@ -12,7 +12,7 @@ GameState* GameState::create()
 }
 
 GameState::GameState()
-	: stateType(StateType::CoinFlip),
+	: stateType(StateType::EmptyState),
 	turn(Turn::Player),
 	difficulty(Difficulty::Stupid),
 	playerLosses(0),
@@ -60,10 +60,12 @@ GameState::GameState()
 
 GameState::~GameState()
 {
+	delete(this->stagedSacrificeTargets);
 }
 
 void GameState::updateState(GameState* gameState, StateType newState)
 {
+	gameState->previousStateType = gameState->stateType;
 	gameState->stateType = newState;
 	gameState->clearCallbackStates();
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::onStateUpdateEvent, gameState);

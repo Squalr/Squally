@@ -64,7 +64,7 @@ void ControlDraw::doInitialCardDraw(GameState* gameState)
 		drawnCount++;
 	}
 
-	GameState::updateState(gameState, GameState::StateType::CoinFlip);
+	GameState::updateState(gameState, GameState::StateType::ControlReplaceCards);
 }
 
 void ControlDraw::doCardDraw(GameState* gameState)

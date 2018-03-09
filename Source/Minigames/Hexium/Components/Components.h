@@ -8,6 +8,7 @@
 #include "MiniGames/Hexium/Components/ControlDraw.h"
 #include "MiniGames/Hexium/Components/ControlEndturn.h"
 #include "MiniGames/Hexium/Components/ControlNeutral.h"
+#include "MiniGames/Hexium/Components/ControlReplaceCards.h"
 #include "MiniGames/Hexium/Components/ControlSacrificeStaged.h"
 #include "MiniGames/Hexium/Components/ControlSelectionStaged.h"
 #include "MiniGames/Hexium/Components/DeckCardCountDisplay.h"
