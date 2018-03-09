@@ -3,7 +3,6 @@
 #include "Resources.h"
 #include "MiniGames/Hexium/Components/Components.h"
 #include "MiniGames/Hexium/GameState.h"
-#include "MiniGames/Hexium/Ai.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/MenuSprite.h"
 #include "Utils/StrUtils.h"
