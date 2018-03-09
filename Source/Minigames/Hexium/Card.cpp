@@ -60,6 +60,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	cardSelected2->addChild(Sprite::create(data->cardResourceFile));
 	cardSelected2->addChild(Sprite::create(Resources::Minigames_Hexium_CardSelect));
 	this->cardSprite = MenuSprite::create(this->cardImage, cardSelected, cardSelected2);
+	this->cardFocus = Sprite::create(Resources::Minigames_Hexium_CardFocus);
 
 	this->attackFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->attackFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -74,10 +75,12 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->addChild(this->cardBack);
 	this->addChild(this->cardFront);
 	this->addChild(this->cardSprite);
+	this->addChild(this->cardFocus);
 	this->addChild(this->attackFrame);
 	this->addChild(this->cardText);
 
 	this->hide();
+	this->unfocus();
 }
 
 Card::~Card()
@@ -223,6 +226,16 @@ void Card::hide()
 	this->attackFrame->setOpacity(0);
 }
 
+void Card::focus()
+{
+	this->cardFocus->setOpacity(255);
+}
+
+void Card::unfocus()
+{
+	this->cardFocus->setOpacity(0);
+}
+
 void Card::doDrawAnimation(float cardDrawDelay)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -268,7 +281,6 @@ void Card::updateText()
 	case CardData::CardType::Special_FLIP4:
 	case CardData::CardType::Special_ADD:
 	case CardData::CardType::Special_SUB:
-	case CardData::CardType::Special:
 		this->cardText->setString(this->cardData->getCardTypeString());
 		this->cardText->setTextColor(Card::specialColor);
 	}

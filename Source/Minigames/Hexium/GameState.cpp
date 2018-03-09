@@ -114,6 +114,13 @@ void GameState::clearCallbackStates()
 	this->enemyBinaryCards->disableRowSelection();
 	this->enemyDecimalCards->disableRowSelection();
 	this->enemyHexCards->disableRowSelection();
+
+	this->playerBinaryCards->disableRowCardSelection();
+	this->playerDecimalCards->disableRowCardSelection();
+	this->playerHexCards->disableRowCardSelection();
+	this->enemyBinaryCards->disableRowCardSelection();
+	this->enemyDecimalCards->disableRowCardSelection();
+	this->enemyHexCards->disableRowCardSelection();
 }
 
 int GameState::getPlayerTotal()

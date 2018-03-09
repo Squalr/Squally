@@ -126,9 +126,6 @@ std::map<std::string, CardData*> CardData::cardListByName = {
 	{ CardData::ShiftLeft, new CardData(Resources::Minigames_Hexium_Special_ShiftLeft, CardData::ShiftLeft, CardType::Special_SHL, 0) },
 	{ CardData::ShiftRight, new CardData(Resources::Minigames_Hexium_Special_ShiftRight, CardData::ShiftRight, CardType::Special_SHR, 0) },
 	{ CardData::BitFlip, new CardData(Resources::Minigames_Hexium_Special_BitFlip, CardData::BitFlip, CardType::Special_INV, 0) },
-	{ CardData::Clear, new CardData(Resources::Minigames_Hexium_Special_Clear , CardData::Clear, CardType::Special, 0) },
-	{ CardData::Greed, new CardData(Resources::Minigames_Hexium_Special_Greed, CardData::Greed, CardType::Special, 0) },
-	{ CardData::Peek, new CardData(Resources::Minigames_Hexium_Special_Peek, CardData::Peek, CardType::Special, 0) },
 };
 
 // Use a map here instead of an array. This allows us to remove cards without fucking up the ids of other cards.
@@ -195,9 +192,6 @@ std::map<int, CardData*> CardData::cardListById = {
 	{ 56, CardData::cardListByName.at(CardData::ShiftLeft) },
 	{ 57, CardData::cardListByName.at(CardData::ShiftRight) },
 	{ 58, CardData::cardListByName.at(CardData::BitFlip) },
-	{ 59, CardData::cardListByName.at(CardData::Clear) },
-	{ 60, CardData::cardListByName.at(CardData::Greed) },
-	{ 61, CardData::cardListByName.at(CardData::Peek) },
 };
 
 CardData::CardData(std::string newCardResourceFile, std::string newCardName, CardType newCardType, unsigned int newAttack)
@@ -246,7 +240,5 @@ std::string CardData::getCardTypeString()
 		return "ADD";
 	case CardData::CardType::Special_SUB:
 		return "SUB";
-	case CardData::CardType::Special:
-		return "???";
 	}
 }

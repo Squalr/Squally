@@ -153,9 +153,6 @@ void CardPreview::previewCard(Card* card)
 			case CardData::CardType::Special_SUB:
 				specialLabel->setString("Sacrifice one of your cards on the field and SUB it from two cards of the same type.");
 				break;
-			case CardData::CardType::Special:
-				specialLabel->setString("???.");
-				break;
 			default:
 				break;
 			}
