@@ -203,7 +203,6 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Level\Environments\JungleEnvironment.cpp" />
     <ClCompile Include="Source\Level\LevelCamera.cpp" />
     <ClCompile Include="Source\Level\Parser\Parser.cpp" />
-    <ClCompile Include="Source\Minigames\Hexium\Ai.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Card.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\CardData.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\CardStorage.cpp" />
@@ -303,7 +302,6 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Level\Environments\JungleEnvironment.h" />
     <ClInclude Include="Source\Level\LevelCamera.h" />
     <ClInclude Include="Source\Level\Parser\Parser.h" />
-    <ClInclude Include="Source\Minigames\Hexium\Ai.h" />
     <ClInclude Include="Source\Minigames\Hexium\Card.h" />
     <ClInclude Include="Source\Minigames\Hexium\CardData.h" />
     <ClInclude Include="Source\Minigames\Hexium\CardStorage.h" />

@@ -39,8 +39,15 @@ void ControlSelectionStaged::onStateChange(GameState* gameState)
 	this->activeGameState = gameState;
 
 	if (gameState->stateType == GameState::StateType::ControlSelectionStaged) {
-		gameState->clearCallbackStates();
-		this->initializeCallbacks(gameState);
+		switch (gameState->turn)
+		{
+		case GameState::Turn::Player:
+			this->initializeCallbacks(gameState);
+			break;
+		case GameState::Turn::Enemy:
+			this->aiPerformAction(gameState);
+			break;
+		}
 	}
 }
 
@@ -167,6 +174,35 @@ void ControlSelectionStaged::playSelectedCard(CardRow* cardRow)
 	}
 
 	this->activeGameState->selectedCard = nullptr;
+}
+
+void ControlSelectionStaged::aiPerformAction(GameState* gameState)
+{
+	Card* selectedCard = this->activeGameState->selectedCard;
+
+	if (selectedCard != nullptr)
+	{
+		switch (selectedCard->cardData->cardType)
+		{
+		case CardData::CardType::Binary:
+			gameState->enemyHand->removeCard(selectedCard);
+			gameState->enemyBinaryCards->insertCard(selectedCard, Config::insertDelay);
+			GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+			return;
+		case CardData::CardType::Decimal:
+			gameState->enemyHand->removeCard(selectedCard);
+			gameState->enemyDecimalCards->insertCard(selectedCard, Config::insertDelay);
+			GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+			return;
+		case CardData::CardType::Hexidecimal:
+			gameState->enemyHand->removeCard(selectedCard);
+			gameState->enemyHexCards->insertCard(selectedCard, Config::insertDelay);
+			GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+			return;
+		}
+	}
+
+	GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 }
 
 /*

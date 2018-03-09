@@ -39,8 +39,15 @@ void ControlNeutral::onStateChange(GameState* gameState)
 	this->activeGameState = gameState;
 
 	if (gameState->stateType == GameState::StateType::ControlNeutral) {
-		gameState->clearCallbackStates();
-		this->initializeCallbacks(gameState);
+		switch (gameState->turn)
+		{
+		case GameState::Turn::Player:
+			this->initializeCallbacks(gameState);
+			break;
+		case GameState::Turn::Enemy:
+			this->aiDoSelection(gameState);
+			break;
+		}
 	}
 }
 
@@ -55,6 +62,35 @@ void ControlNeutral::selectCard(Card* card)
 	this->activeGameState->selectedCard = card;
 	this->activeGameState->selectedCard->stopAllActions();
 	this->activeGameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedCard->position + Vec2(0.0f, Config::cardSelectOffsetY)));
+
+	GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
+}
+
+void ControlNeutral::aiDoSelection(GameState* gameState)
+{
+	bool selectionMade = false;
+
+	this->activeGameState->selectedCard = nullptr;
+
+	for (auto it = gameState->enemyHand->rowCards->begin(); it != gameState->enemyHand->rowCards->end(); it++)
+	{
+		Card* card = *it;
+
+		switch (card->cardData->cardType)
+		{
+		case CardData::CardType::Binary:
+		case CardData::CardType::Decimal:
+		case CardData::CardType::Hexidecimal:
+			this->activeGameState->selectedCard = card;
+			selectionMade = true;
+			break;
+		}
+
+		if (selectionMade)
+		{
+			break;
+		}
+	}
 
 	GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
 }

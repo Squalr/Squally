@@ -23,6 +23,7 @@ private:
 	void initializePositions();
 	void initializeListeners();
 	void initializeCallbacks(GameState* gameState);
+	void aiDoSelection(GameState* gameState);
 	void selectCard(Card* card);
 
 	GameState* activeGameState;
