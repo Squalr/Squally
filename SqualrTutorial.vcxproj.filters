@@ -106,6 +106,9 @@
     <Filter Include="Source\Minigames\Hexium\Components">
       <UniqueIdentifier>{87c40124-5e4e-4a9d-a46c-ded427cf7a16}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Fight">
+      <UniqueIdentifier>{8a90eea5-d921-44a6-993e-18919fca3c49}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -394,6 +397,12 @@
       <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClCompile>
     <ClCompile Include="Source\Minigames\Hexium\Components\ControlEndTurn.cpp">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Fight\Fight.cpp">
+      <Filter>Source\Fight</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Minigames\Hexium\Components\ControlReplaceCards.cpp">
       <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -699,6 +708,12 @@
       <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\Minigames\Hexium\Components\ControlEndTurn.h">
+      <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Fight\Fight.h">
+      <Filter>Source\Fight</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Minigames\Hexium\Components\ControlReplaceCards.h">
       <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClInclude>
   </ItemGroup>
