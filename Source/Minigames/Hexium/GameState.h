@@ -49,8 +49,10 @@ public:
 	int playerLosses;
 	int enemyLosses;
 	Card* stagedSacrifice;
+	CardRow* stagedSacrificeCardRow;
 	Card* selectedCard;
 	std::string bannerMessage;
+	std::set<Card*>* stagedSacrificeTargets;
 	std::function<void(Card*)> cardPreviewCallback;
 	std::function<void(bool)> updateStateCallback;
 	std::function<void()> endTurnCallback;

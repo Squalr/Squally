@@ -24,6 +24,7 @@ GameState::GameState()
 	endTurnCallback(nullptr),
 	requestAiCallback(nullptr)
 {
+	this->stagedSacrificeTargets = new std::set<Card*>();
 	this->playerDeck = Deck::create();
 	this->playerHand = CardRow::create();
 	this->playerGraveyard = Deck::create();
