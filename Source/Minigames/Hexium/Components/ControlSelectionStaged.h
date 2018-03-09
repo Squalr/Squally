@@ -25,8 +25,8 @@ private:
 	void initializeCallbacks(GameState* gameState);
 	void aiPerformAction(GameState* gameState);
 	void selectCard(Card* card);
-	void playSelectedCard(CardRow* cardRow);
 	void stageSelectedSacrificeCard(Card* card);
+	void playSelectedCard(CardRow* cardRow);
 
 	GameState* activeGameState;
 };

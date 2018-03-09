@@ -23,7 +23,9 @@ private:
 	void initializePositions();
 	void initializeListeners();
 	void initializeCallbacks(GameState* gameState);
+	void aiPerformAction(GameState* gameState);
 	void selectCard(Card* card);
+	void stageSacrificeTarget(Card* card);
 
 	GameState* activeGameState;
 };

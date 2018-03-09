@@ -228,12 +228,18 @@ void Card::hide()
 
 void Card::focus()
 {
-	this->cardFocus->setOpacity(255);
+	this->cardFocus->setOpacity(196);
 }
 
 void Card::unfocus()
 {
 	this->cardFocus->setOpacity(0);
+	this->cardFocus->setColor(Color3B::WHITE);
+}
+
+void Card::setFocusTint(Color3B color)
+{
+	this->cardFocus->setColor(color);
 }
 
 void Card::doDrawAnimation(float cardDrawDelay)
