@@ -53,6 +53,7 @@ private:
 	ControlEndTurn* controlEndTurn;
 	ControlSacrificeStaged* controlSacrificeStaged;
 	ControlSelectionStaged* controlSelectionStaged;
+	ControlReplaceCards* controlReplaceCards;
 	DeckCardCountDisplay* deckCardCountDisplay;
 	HandCardCountDisplay* handCardCountDisplay;
 	LossesDisplay* lossesDisplay;

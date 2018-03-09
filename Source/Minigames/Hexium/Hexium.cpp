@@ -24,6 +24,7 @@ Hexium::Hexium()
 	this->controlEndTurn = ControlEndTurn::create();
 	this->controlSacrificeStaged = ControlSacrificeStaged::create();
 	this->controlSelectionStaged = ControlSelectionStaged::create();
+	this->controlReplaceCards = ControlReplaceCards::create();
 	this->coinFlip = CoinFlip::create();
 	this->deckCardCountDisplay = DeckCardCountDisplay::create();
 	this->handCardCountDisplay = HandCardCountDisplay::create();
@@ -38,6 +39,7 @@ Hexium::Hexium()
 	this->addChild(this->controlNeutral);
 	this->addChild(this->controlSelectionStaged);
 	this->addChild(this->controlSacrificeStaged);
+	this->addChild(this->controlReplaceCards);
 	this->addChild(this->controlEndTurn);
 	this->addChild(this->cardPreview);
 	this->addChild(this->lossesDisplay);

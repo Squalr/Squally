@@ -43,6 +43,8 @@ CoinFlip::CoinFlip()
 	this->skeletonOutAnimation->setDelayPerUnit(Config::coinFlipSpeed);
 	this->neutralAnimation->setDelayPerUnit(Config::coinFlipSpeed);
 
+	this->coin->setOpacity(0);
+
 	this->addChild(this->coin);
 }
 
@@ -91,7 +93,7 @@ void CoinFlip::doCoinFlip(GameState* gameState)
 	}
 
 	this->coin->setScale(Config::coinFlipStartScale);
-	this->coin->setOpacity(255);
+	this->coin->runAction(FadeTo::create(0.25f, 255));
 
 	CallFunc* onCoinFlipEnd = CallFunc::create([gameState]
 	{
