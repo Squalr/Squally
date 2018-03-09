@@ -19,6 +19,7 @@ public:
 	void enableRowSelection(std::function<void(CardRow*)> callback);
 	void enableRowCardSelection(std::function<void(Card*)> callback);
 	void disableRowSelection();
+	void disableRowCardSelection();
 	void setRowWidth(float newRowWidth);
 	void clear();
 	void setMouseOverCallback(std::function<void(Card*)> callback);

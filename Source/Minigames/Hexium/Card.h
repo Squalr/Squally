@@ -47,6 +47,8 @@ public:
 
 	void reveal();
 	void hide();
+	void focus();
+	void unfocus();
 	void addOperation(Operation operation);
 	unsigned int getAttack();
 	void doDrawAnimation(float cardDrawDelay);
@@ -83,6 +85,7 @@ private:
 	Sprite* cardFront;
 	Sprite* cardImage;
 	MenuSprite* cardSprite;
+	Sprite* cardFocus;
 	LayerColor* attackFrame;
 	Label* cardText;
 	std::function<void(Card*)> mouseOverCallback;

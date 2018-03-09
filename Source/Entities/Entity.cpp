@@ -8,7 +8,6 @@ Entity::Entity() : CollisionObject::CollisionObject()
 
 	this->isOnGround = false;
 	this->movement = Vec2(0, 0);
-	this->scheduleUpdate();
 }
 
 Entity::~Entity()
@@ -18,6 +17,8 @@ Entity::~Entity()
 void Entity::onEnter()
 {
 	CollisionObject::onEnter();
+
+	this->scheduleUpdate();
 }
 
 void Entity::update(float dt)

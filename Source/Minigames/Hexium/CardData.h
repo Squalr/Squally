@@ -29,7 +29,6 @@ public:
 		Special_FLIP4 = 12,
 		Special_ADD = 13,
 		Special_SUB = 14,
-		Special = 99,
 	};
 
 	std::string cardResourceFile;

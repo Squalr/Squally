@@ -12,8 +12,6 @@ InputManager* InputManager::claimInstance()
 		inputManager->getParent()->removeChild(InputManager::inputManagerInstance);
 	}
 
-	inputManager->InitializeListeners();
-
 	return InputManager::inputManagerInstance;
 }
 
@@ -31,12 +29,18 @@ InputManager::InputManager()
 {
 	this->pressedKeys = new std::unordered_map<EventKeyboard::KeyCode, bool>();
 	this->pressedKeysPrevious = new std::unordered_map<EventKeyboard::KeyCode, bool>();
-
-	this->scheduleUpdate();
 }
 
 InputManager::~InputManager()
 {
+}
+
+void InputManager::onEnter()
+{
+	Node::onEnter();
+
+	this->scheduleUpdate();
+	this->InitializeListeners();
 }
 
 bool InputManager::isKeyJustPressed(EventKeyboard::KeyCode keyCode)
