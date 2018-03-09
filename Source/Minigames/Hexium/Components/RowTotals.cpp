@@ -63,10 +63,7 @@ void RowTotals::initializeListeners()
 
 void RowTotals::onStateChange(GameState* gameState)
 {
-	switch (gameState->stateType) {
-	case GameState::StateType::ControlNeutral:
-		break;
-	}
+	this->updateTotals(gameState);
 }
 
 void RowTotals::updateTotals(GameState* gameState)

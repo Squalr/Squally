@@ -49,6 +49,7 @@ public:
 	void hide();
 	void focus();
 	void unfocus();
+	void setFocusTint(Color3B color);
 	void addOperation(Operation operation);
 	unsigned int getAttack();
 	void doDrawAnimation(float cardDrawDelay);

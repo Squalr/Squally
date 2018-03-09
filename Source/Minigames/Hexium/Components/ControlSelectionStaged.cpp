@@ -117,6 +117,27 @@ void ControlSelectionStaged::selectCard(Card* card)
 	GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
 }
 
+void ControlSelectionStaged::stageSelectedSacrificeCard(Card* card)
+{
+	if (this->activeGameState->selectedCard == nullptr)
+	{
+		return;
+	}
+
+	switch (this->activeGameState->selectedCard->cardData->cardType) {
+	case CardData::CardType::Special_AND:
+	case CardData::CardType::Special_OR:
+	case CardData::CardType::Special_XOR:
+	case CardData::CardType::Special_ADD:
+	case CardData::CardType::Special_SUB:
+		this->activeGameState->stagedSacrifice = card;
+		this->activeGameState->stagedSacrificeCardRow = dynamic_cast<CardRow*>(card->getParent());
+
+		GameState::updateState(this->activeGameState, GameState::StateType::ControlSacrificeStaged);
+		break;
+	}
+}
+
 void ControlSelectionStaged::playSelectedCard(CardRow* cardRow)
 {
 	if (this->activeGameState->selectedCard == nullptr)
@@ -193,29 +214,4 @@ void ControlSelectionStaged::aiPerformAction(GameState* gameState)
 	}
 
 	GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
-}
-
-void ControlSelectionStaged::stageSelectedSacrificeCard(Card* card)
-{
-	if (this->activeGameState->selectedCard == nullptr)
-	{
-		return;
-	}
-
-	switch (this->activeGameState->selectedCard->cardData->cardType) {
-	case CardData::CardType::Special_AND:
-	case CardData::CardType::Special_OR:
-	case CardData::CardType::Special_XOR:
-	case CardData::CardType::Special_ADD:
-	case CardData::CardType::Special_SUB:
-		this->activeGameState->stagedSacrifice = card;
-		this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
-		this->activeGameState->selectedCard->disableInteraction();
-		this->activeGameState->playerGraveyard->insertCardTop(this->activeGameState->selectedCard, true, Config::insertDelay);
-
-		Card::Operation operation = Card::toOperation(this->activeGameState->selectedCard->cardData->cardType, 0);
-		card->addOperation(operation);
-
-		break;
-	}
 }
