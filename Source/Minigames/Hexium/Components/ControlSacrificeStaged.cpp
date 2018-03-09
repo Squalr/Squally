@@ -39,7 +39,6 @@ void ControlSacrificeStaged::onStateChange(GameState* gameState)
 	this->activeGameState = gameState;
 
 	if (gameState->stateType == GameState::StateType::ControlSacrificeStaged) {
-		gameState->clearCallbackStates();
 		this->initializeCallbacks(gameState);
 	}
 }

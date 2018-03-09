@@ -64,6 +64,7 @@ GameState::~GameState()
 void GameState::updateState(GameState* gameState, StateType newState)
 {
 	gameState->stateType = newState;
+	gameState->clearCallbackStates();
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::onStateUpdateEvent, gameState);
 }
 
@@ -102,6 +103,11 @@ void GameState::initializeListeners()
 
 void GameState::clearCallbackStates()
 {
+	this->playerHand->setMouseClickCallback(nullptr);
+	this->playerHand->setMouseOverCallback(nullptr);
+	this->enemyHand->setMouseClickCallback(nullptr);
+	this->enemyHand->setMouseOverCallback(nullptr);
+
 	this->playerBinaryCards->disableRowSelection();
 	this->playerDecimalCards->disableRowSelection();
 	this->playerHexCards->disableRowSelection();
