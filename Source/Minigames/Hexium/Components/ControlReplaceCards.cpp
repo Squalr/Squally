@@ -49,6 +49,30 @@ void ControlReplaceCards::onStateChange(GameState* gameState)
 		this->initializeCallbacks(gameState);
 		break;
 	}
+	switch (gameState->previousStateType) {
+	case GameState::StateType::ControlReplaceCards:
+		if (gameState->stateType == GameState::StateType::ControlReplaceCards)
+		{
+			break;
+		}
+
+		// Restore hand to proper position
+		Size visibleSize = Director::getInstance()->getVisibleSize();
+		GameUtils::changeParent(gameState->playerHand, gameState, true);
+		gameState->playerHand->setCardScale(Card::cardScale, 0.25f);
+		gameState->playerHand->setRowWidth(Config::handWidth, 0.25f);
+		gameState->playerHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::handOffsetY)));
+
+		// Insert replaced cards back to deck
+		for (auto it = this->replacedCards->begin(); it != this->replacedCards->end(); it++)
+		{
+			Card* card = *it;
+
+			card->setScale(Card::cardScale);
+			gameState->playerDeck->insertCardRandom(card, false, 0.0f);
+		}
+		break;
+	}
 }
 
 void ControlReplaceCards::initializeCardReplace(GameState* gameState)
@@ -57,14 +81,10 @@ void ControlReplaceCards::initializeCardReplace(GameState* gameState)
 	this->replacedCards->clear();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+	GameUtils::changeParent(gameState->playerHand, this, true);
 	gameState->playerHand->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-
-	for (auto it = gameState->playerHand->rowCards->begin(); it != gameState->playerHand->rowCards->end(); it++)
-	{
-		Card* card = *it;
-
-		card->setScale(0.75f);
-	}
+	gameState->playerHand->setCardScale(0.6f, 0.0f);
+	gameState->playerHand->setRowWidth(Config::previewWidth, 0.25f);
 }
 
 void ControlReplaceCards::initializeCallbacks(GameState* gameState)
@@ -80,7 +100,7 @@ void ControlReplaceCards::replaceCard(Card* card)
 	this->replacedCards->insert(card);
 	this->activeGameState->playerHand->removeCard(card);
 
-	card->runAction(MoveTo::create(0.5f, Vec2(card->getPositionX(), visibleSize.height)));
+	card->runAction(MoveTo::create(0.5f, Vec2(card->getPositionX(), -visibleSize.height/ 2.0f - 128.0f)));
 
 	CallFunc* stateTransition;
 	
@@ -108,10 +128,9 @@ void ControlReplaceCards::replaceCard(Card* card)
 
 	GameUtils::changeParent(replacement, this, true);
 
+	replacement->reveal();
+
 	this->runAction(Sequence::create(
-		CallFunc::create(CC_CALLBACK_0(Card::doDrawAnimation, replacement, Config::cardDrawDelay)),
-		DelayTime::create(Config::cardDrawDelay),
-		DelayTime::create(Config::revealDelay),
 		CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, replacement, Config::insertDelay)),
 		DelayTime::create(Config::insertDelay),
 		stateTransition,

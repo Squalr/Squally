@@ -37,6 +37,7 @@ public:
 	static const float enemyHandWidth;
 	static const float handWidth;
 	static const float rowWidth;
+	static const float previewWidth;
 
 	static const float cardSelectSpeed;
 	static const float cardSelectOffsetY;

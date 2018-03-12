@@ -20,6 +20,8 @@ CardRow::CardRow()
 	this->rowSelectSprite->setOpacity(0);
 	this->rowSelectSprite->setVisible(false);
 
+	this->setCardScale(Card::cardScale, 0.0f);
+
 	this->addChild(this->rowSelectSprite);
 }
 
@@ -45,9 +47,35 @@ void CardRow::initializeListeners()
 	this->rowSelectSprite->setClickCallback(CC_CALLBACK_1(CardRow::onRowSelectClick, this));
 }
 
-void CardRow::setRowWidth(float newRowWidth)
+void CardRow::setRowWidth(float newRowWidth, float duration)
 {
 	this->rowWidth = newRowWidth;
+
+	this->setCardPositions(duration);
+}
+
+void CardRow::setCardScale(float scale, float scaleSpeed)
+{
+	this->cardScale = scale;
+
+	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	{
+		Card* card = *it;
+
+		if (scaleSpeed > 0.0f) {
+			card->stopAllActions();
+			card->runAction(ScaleTo::create(scaleSpeed , this->cardScale));
+		}
+		else {
+			card->setPosition(card->position);
+			card->setScale(this->cardScale);
+		}
+	}
+}
+
+float CardRow::getCardScale()
+{
+	return this->cardScale;
 }
 
 void CardRow::insertCard(Card* card, float cardInsertDelay)
@@ -188,7 +216,7 @@ void CardRow::setCardPositions(float cardRepositionDelay)
 	int cardCount = this->rowCards->size();
 	int index = 0;
 
-	float cardWidth = 225.0f * Card::cardScale;
+	float cardWidth = 225.0f * this->cardScale;
 	float spacing = Config::defaultCardSpacing;
 
 	// Start overlapping cards after the row fills
@@ -208,11 +236,11 @@ void CardRow::setCardPositions(float cardRepositionDelay)
 		if (cardRepositionDelay > 0.0f) {
 			card->stopAllActions();
 			card->runAction(EaseSineInOut::create(MoveTo::create(cardRepositionDelay, card->position)));
-			card->runAction(ScaleTo::create(cardRepositionDelay, Card::cardScale));
+			card->runAction(ScaleTo::create(cardRepositionDelay, this->cardScale));
 		}
 		else {
 			card->setPosition(card->position);
-			card->setScale(Card::cardScale);
+			card->setScale(this->cardScale);
 		}
 
 		index++;

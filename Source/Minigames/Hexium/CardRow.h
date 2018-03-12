@@ -16,14 +16,16 @@ public:
 	Card* removeCard(Card* card);
 	int getCardCount();
 	int getRowAttack();
+	void setCardScale(float scale, float scaleSpeed);
+	float getCardScale();
 	void enableRowSelection(std::function<void(CardRow*)> callback);
 	void enableRowCardSelection(std::function<void(Card*)> callback);
-	void disableRowSelection();
-	void disableRowCardSelection();
-	void setRowWidth(float newRowWidth);
-	void clear();
 	void setMouseOverCallback(std::function<void(Card*)> callback);
 	void setMouseClickCallback(std::function<void(Card*)> callback);
+	void disableRowSelection();
+	void disableRowCardSelection();
+	void setRowWidth(float newRowWidth, float duration);
+	void clear();
 
 	std::vector<Card*>* rowCards;
 
@@ -38,6 +40,7 @@ private:
 	void onRowSelectClick(MenuSprite* menuSprite);
 
 	float rowWidth;
+	float cardScale;
 	MenuSprite* rowSelectSprite;
 	std::function<void(CardRow*)> rowSelectCallback;
 };
