@@ -106,9 +106,18 @@ void ControlSacrificeStaged::stageSacrificeTarget(Card* card)
 	case CardData::CardType::Special_XOR:
 	case CardData::CardType::Special_ADD:
 	case CardData::CardType::Special_SUB:
-		card->focus();
-		card->setFocusTint(Color3B::BLUE);
-		this->activeGameState->stagedSacrificeTargets->insert(card);
+		if (this->activeGameState->stagedSacrificeTargets->find(card) == this->activeGameState->stagedSacrificeTargets->end())
+		{
+			card->focus();
+			card->setFocusTint(Color3B::BLUE);
+			this->activeGameState->stagedSacrificeTargets->insert(card);
+		}
+		else
+		{
+
+			card->unfocus();
+			this->activeGameState->stagedSacrificeTargets->erase(this->activeGameState->stagedSacrificeTargets->find(card));
+		}
 		break;
 	}
 
