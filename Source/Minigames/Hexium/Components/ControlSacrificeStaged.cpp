@@ -59,6 +59,9 @@ void ControlSacrificeStaged::initializeCallbacks(GameState* gameState)
 	gameState->playerBinaryCards->enableRowCardSelection(CC_CALLBACK_1(ControlSacrificeStaged::stageSacrificeTarget, this));
 	gameState->playerDecimalCards->enableRowCardSelection(CC_CALLBACK_1(ControlSacrificeStaged::stageSacrificeTarget, this));
 	gameState->playerHexCards->enableRowCardSelection(CC_CALLBACK_1(ControlSacrificeStaged::stageSacrificeTarget, this));
+	gameState->enemyBinaryCards->enableRowCardSelection(CC_CALLBACK_1(ControlSacrificeStaged::stageSacrificeTarget, this));
+	gameState->enemyDecimalCards->enableRowCardSelection(CC_CALLBACK_1(ControlSacrificeStaged::stageSacrificeTarget, this));
+	gameState->enemyHexCards->enableRowCardSelection(CC_CALLBACK_1(ControlSacrificeStaged::stageSacrificeTarget, this));
 
 	gameState->stagedSacrificeTargets->clear();
 	gameState->stagedSacrifice->setFocusTint(Color3B::RED);
