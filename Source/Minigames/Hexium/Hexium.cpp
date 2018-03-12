@@ -39,7 +39,6 @@ Hexium::Hexium()
 	this->addChild(this->controlNeutral);
 	this->addChild(this->controlSelectionStaged);
 	this->addChild(this->controlSacrificeStaged);
-	this->addChild(this->controlReplaceCards);
 	this->addChild(this->controlEndTurn);
 	this->addChild(this->cardPreview);
 	this->addChild(this->lossesDisplay);
@@ -47,6 +46,7 @@ Hexium::Hexium()
 	this->addChild(this->handCardCountDisplay);
 	this->addChild(this->rowTotals);
 	this->addChild(this->scoreTotal);
+	this->addChild(this->controlReplaceCards);
 	this->addChild(this->coinFlip);
 	this->addChild(this->banners);
 }
