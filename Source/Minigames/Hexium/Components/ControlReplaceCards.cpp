@@ -12,6 +12,17 @@ ControlReplaceCards* ControlReplaceCards::create()
 ControlReplaceCards::ControlReplaceCards()
 {
 	this->replacedCards = new std::set<Card*>();
+
+	this->bannerBackground = LayerColor::create(Color4B(0, 0, 0, 127), 1920.0f, 144.0f);
+	this->bannerLabel = Label::create("", Resources::Fonts_Montserrat_Medium, 48.0f);
+
+	this->bannerBackground->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->bannerLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->bannerBackground->setOpacity(0);
+	this->bannerLabel->setOpacity(0);
+
+	this->addChild(this->bannerBackground);
+	this->addChild(this->bannerLabel);
 }
 
 ControlReplaceCards::~ControlReplaceCards()
@@ -30,6 +41,9 @@ void ControlReplaceCards::onEnter()
 void ControlReplaceCards::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->bannerBackground->setPosition(0.0f, visibleSize.height / 2.0f - this->bannerBackground->getContentSize().height / 2 + 320.0f);
+	this->bannerLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 320.0f);
 }
 
 void ControlReplaceCards::initializeListeners()
@@ -47,6 +61,25 @@ void ControlReplaceCards::onStateChange(GameState* gameState)
 			this->initializeCardReplace(gameState);
 		}
 		this->initializeCallbacks(gameState);
+
+		if (this->replaceCount == 1)
+		{
+			this->bannerLabel->setString("REPLACE " + std::to_string(this->replaceCount) + " MORE CARD");
+		}
+		else
+		{
+			this->bannerLabel->setString("REPLACE " + std::to_string(this->replaceCount) + " MORE CARDS");
+		}
+
+		this->bannerLabel->runAction(Sequence::create(
+			FadeTo::create(Config::bannerFadeSpeed, 255),
+			nullptr
+		));
+
+		this->bannerBackground->runAction(Sequence::create(
+			FadeTo::create(Config::bannerFadeSpeed, 127),
+			nullptr
+		));
 		break;
 	}
 	switch (gameState->previousStateType) {
@@ -71,6 +104,16 @@ void ControlReplaceCards::onStateChange(GameState* gameState)
 			card->setScale(Card::cardScale);
 			gameState->playerDeck->insertCardRandom(card, false, 0.0f);
 		}
+
+		this->bannerLabel->runAction(Sequence::create(
+			FadeTo::create(Config::bannerFadeSpeed, 0),
+			nullptr
+		));
+
+		this->bannerBackground->runAction(Sequence::create(
+			FadeTo::create(Config::bannerFadeSpeed, 0),
+			nullptr
+		));
 		break;
 	}
 }

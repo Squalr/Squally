@@ -28,5 +28,7 @@ private:
 
 	int replaceCount;
 	std::set<Card*>* replacedCards;
+	LayerColor* bannerBackground;
+	Label* bannerLabel;
 	GameState* activeGameState;
 };
