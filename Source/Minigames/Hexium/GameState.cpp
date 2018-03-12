@@ -40,8 +40,8 @@ GameState::GameState()
 	this->enemyHexCards = CardRow::create();
 
 	this->enemyHand->setVisible(false);
-	this->playerHand->setRowWidth(Config::handWidth);
-	this->enemyHand->setRowWidth(Config::enemyHandWidth);
+	this->playerHand->setRowWidth(Config::handWidth, 0.0f);
+	this->enemyHand->setRowWidth(Config::enemyHandWidth, 0.0f);
 
 	this->addChild(this->enemyGraveyard);
 	this->addChild(this->enemyDeck);
