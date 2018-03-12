@@ -60,26 +60,9 @@ void ControlReplaceCards::onStateChange(GameState* gameState)
 		{
 			this->initializeCardReplace(gameState);
 		}
+
 		this->initializeCallbacks(gameState);
-
-		if (this->replaceCount == 1)
-		{
-			this->bannerLabel->setString("REPLACE " + std::to_string(this->replaceCount) + " MORE CARD");
-		}
-		else
-		{
-			this->bannerLabel->setString("REPLACE " + std::to_string(this->replaceCount) + " MORE CARDS");
-		}
-
-		this->bannerLabel->runAction(Sequence::create(
-			FadeTo::create(Config::bannerFadeSpeed, 255),
-			nullptr
-		));
-
-		this->bannerBackground->runAction(Sequence::create(
-			FadeTo::create(Config::bannerFadeSpeed, 127),
-			nullptr
-		));
+		this->updateBanner();
 		break;
 	}
 	switch (gameState->previousStateType) {
@@ -105,15 +88,7 @@ void ControlReplaceCards::onStateChange(GameState* gameState)
 			gameState->playerDeck->insertCardRandom(card, false, 0.0f);
 		}
 
-		this->bannerLabel->runAction(Sequence::create(
-			FadeTo::create(Config::bannerFadeSpeed, 0),
-			nullptr
-		));
-
-		this->bannerBackground->runAction(Sequence::create(
-			FadeTo::create(Config::bannerFadeSpeed, 0),
-			nullptr
-		));
+		this->updateBanner();
 		break;
 	}
 }
@@ -179,4 +154,48 @@ void ControlReplaceCards::replaceCard(Card* card)
 		stateTransition,
 		nullptr
 	));
+
+	this->updateBanner();
+}
+
+void ControlReplaceCards::updateBanner()
+{
+	if (this->replaceCount == 1)
+	{
+		this->bannerLabel->setString("REPLACE " + std::to_string(this->replaceCount) + " MORE CARD");
+	}
+	else if (this->replaceCount <= 0)
+	{
+		this->bannerLabel->setString("");
+	}
+	else
+	{
+		this->bannerLabel->setString("REPLACE " + std::to_string(this->replaceCount) + " MORE CARDS");
+	}
+
+	switch (this->activeGameState->stateType)
+	{
+		case GameState::StateType::ControlReplaceCards:
+			this->bannerLabel->runAction(Sequence::create(
+				FadeTo::create(Config::bannerFadeSpeed, 255),
+				nullptr
+			));
+
+			this->bannerBackground->runAction(Sequence::create(
+				FadeTo::create(Config::bannerFadeSpeed, 127),
+				nullptr
+			));
+			break;
+		default:
+			this->bannerLabel->runAction(Sequence::create(
+				FadeTo::create(Config::bannerFadeSpeed, 0),
+				nullptr
+			));
+
+			this->bannerBackground->runAction(Sequence::create(
+				FadeTo::create(Config::bannerFadeSpeed, 0),
+				nullptr
+			));
+			break;
+	}
 }
