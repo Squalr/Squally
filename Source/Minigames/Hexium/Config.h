@@ -61,6 +61,7 @@ public:
 	static const float decimalRowOffsetY;
 	static const float hexRowOffsetY;
 	static const float previewOffsetY;
+	static const float statusLabelWidth;
 	static const float graveyardOffsetX;
 	static const float graveyardOffsetY;
 	static const float socketOffsetY;
