@@ -11,6 +11,21 @@ ControlSelectionStaged* ControlSelectionStaged::create()
 
 ControlSelectionStaged::ControlSelectionStaged()
 {
+	this->selectionLabel = Label::create("", Resources::Fonts_Montserrat_Medium, 28.0f);
+
+	this->selectionLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->selectionLabel->setTextColor(Color4B::WHITE);
+	this->selectionLabel->enableOutline(Color4B::BLACK, 2);
+	this->selectionLabel->setDimensions(Config::statusLabelWidth, 0.0f);
+	this->selectionLabel->setOpacity(0);
+
+	this->cancelButton = MenuSprite::create(Resources::Menus_HackerModeMenu_CancelButton, Resources::Menus_HackerModeMenu_CancelButtonHover, Resources::Menus_HackerModeMenu_CancelButtonClick);
+	this->cancelButton->setCascadeOpacityEnabled(true);
+	this->cancelButton->setOpacity(0.0f);
+	this->cancelButton->setAnchorPoint(Vec2(0.0f, 1.0f));
+
+	this->addChild(this->selectionLabel);
+	this->addChild(this->cancelButton);
 }
 
 ControlSelectionStaged::~ControlSelectionStaged()
@@ -28,6 +43,9 @@ void ControlSelectionStaged::onEnter()
 void ControlSelectionStaged::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->cancelButton->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::statusLabelWidth / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
+	this->selectionLabel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter - Config::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
 }
 
 void ControlSelectionStaged::initializeListeners()
@@ -49,10 +67,13 @@ void ControlSelectionStaged::onStateChange(GameState* gameState)
 			break;
 		}
 	}
+
+	this->updateSelectionStatus();
 }
 
 void ControlSelectionStaged::initializeCallbacks(GameState* gameState)
 {
+	this->cancelButton->setClickCallback(CC_CALLBACK_1(ControlSelectionStaged::onSelectionCancel, this));
 	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(ControlSelectionStaged::selectCard, this));
 	gameState->enemyHand->setMouseClickCallback(CC_CALLBACK_1(ControlSelectionStaged::selectCard, this));
 
@@ -214,4 +235,46 @@ void ControlSelectionStaged::aiPerformAction(GameState* gameState)
 	}
 
 	GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+}
+
+void ControlSelectionStaged::onSelectionCancel(MenuSprite* menuSprite)
+{
+	this->selectCard(this->activeGameState->selectedCard);
+}
+
+void ControlSelectionStaged::updateSelectionStatus()
+{
+	if (this->activeGameState->turn == GameState::Turn::Player && this->activeGameState->selectedCard != nullptr && this->activeGameState->stateType == GameState::StateType::ControlSelectionStaged)
+	{
+		switch (this->activeGameState->selectedCard->cardData->cardType) {
+			case CardData::CardType::Special_AND:
+			case CardData::CardType::Special_OR:
+			case CardData::CardType::Special_XOR:
+			case CardData::CardType::Special_ADD:
+			case CardData::CardType::Special_SUB:
+				this->selectionLabel->setString("Choose a card to sacrifice");
+				break;
+			case CardData::CardType::Binary:
+			case CardData::CardType::Decimal:
+			case CardData::CardType::Hexidecimal:
+			case CardData::CardType::Special_SHL:
+			case CardData::CardType::Special_SHR:
+			case CardData::CardType::Special_FLIP1:
+			case CardData::CardType::Special_FLIP2:
+			case CardData::CardType::Special_FLIP3:
+			case CardData::CardType::Special_FLIP4:
+			case CardData::CardType::Special_INV:
+			default:
+				this->selectionLabel->setString("Choose a row to play the card");
+				break;
+		}
+
+		this->selectionLabel->runAction(FadeTo::create(0.25f, 255));
+		this->cancelButton->runAction(FadeTo::create(0.25f, 255));
+	}
+	else
+	{
+		this->selectionLabel->runAction(FadeTo::create(0.25f, 0));
+		this->cancelButton->runAction(FadeTo::create(0.25f, 0));
+	}
 }

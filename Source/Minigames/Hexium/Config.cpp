@@ -54,6 +54,7 @@ const float Config::decimalRowOffsetY = 234.0f;
 const float Config::hexRowOffsetY = 390.0f;
 const float Config::previewOffsetY = 128.0f;
 const float Config::statusLabelWidth = 256.0f;
+const float Config::statusLabelOffsetY = -224.0f;
 const float Config::graveyardOffsetX = -64.0f;
 const float Config::graveyardOffsetY = Config::deckOffsetY;
 const float Config::socketOffsetY = 78.0f;
