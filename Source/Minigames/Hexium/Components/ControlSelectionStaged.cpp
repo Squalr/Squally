@@ -16,7 +16,7 @@ ControlSelectionStaged::ControlSelectionStaged()
 	this->selectionLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->selectionLabel->setTextColor(Color4B::WHITE);
 	this->selectionLabel->enableOutline(Color4B::BLACK, 2);
-	this->selectionLabel->setDimensions(Config::statusLabelWidth, 0.0f);
+	this->selectionLabel->setDimensions(Config::statusLabelWidth - 48.0f, 0.0f);
 	this->selectionLabel->setOpacity(0);
 
 	this->cancelButton = MenuSprite::create(Resources::Menus_HackerModeMenu_CancelButton, Resources::Menus_HackerModeMenu_CancelButtonHover, Resources::Menus_HackerModeMenu_CancelButtonClick);
@@ -24,8 +24,14 @@ ControlSelectionStaged::ControlSelectionStaged()
 	this->cancelButton->setOpacity(0.0f);
 	this->cancelButton->setAnchorPoint(Vec2(0.0f, 1.0f));
 
+	this->helpButton = MenuSprite::create(Resources::Menus_HackerModeMenu_GraphButton, Resources::Menus_HackerModeMenu_GraphButtonHover, Resources::Menus_HackerModeMenu_GraphButtonClick);
+	this->helpButton->setCascadeOpacityEnabled(true);
+	this->helpButton->setOpacity(0.0f);
+	this->helpButton->setAnchorPoint(Vec2(0.0f, 1.0f));
+
 	this->addChild(this->selectionLabel);
 	this->addChild(this->cancelButton);
+	this->addChild(this->helpButton);
 }
 
 ControlSelectionStaged::~ControlSelectionStaged()
@@ -44,7 +50,8 @@ void ControlSelectionStaged::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->cancelButton->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::statusLabelWidth / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
+	this->cancelButton->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
+	this->helpButton->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::statusLabelWidth / 2.0f + this->cancelButton->getContentSize().width / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
 	this->selectionLabel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter - Config::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
 }
 
@@ -74,6 +81,7 @@ void ControlSelectionStaged::onStateChange(GameState* gameState)
 void ControlSelectionStaged::initializeCallbacks(GameState* gameState)
 {
 	this->cancelButton->setClickCallback(CC_CALLBACK_1(ControlSelectionStaged::onSelectionCancel, this));
+	this->helpButton->setClickCallback(CC_CALLBACK_1(ControlSelectionStaged::onHelpClick, this));
 	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(ControlSelectionStaged::selectCard, this));
 	gameState->enemyHand->setMouseClickCallback(CC_CALLBACK_1(ControlSelectionStaged::selectCard, this));
 
@@ -242,6 +250,45 @@ void ControlSelectionStaged::onSelectionCancel(MenuSprite* menuSprite)
 	this->selectCard(this->activeGameState->selectedCard);
 }
 
+void ControlSelectionStaged::onHelpClick(MenuSprite* menuSprite)
+{
+	// TODO: Show help menu for the type
+	switch (this->activeGameState->selectedCard->cardData->cardType) {
+	case CardData::CardType::Binary:
+		break;
+	case CardData::CardType::Decimal:
+		break;
+	case CardData::CardType::Hexidecimal:
+		break;
+	case CardData::CardType::Special_AND:
+		break;
+	case CardData::CardType::Special_OR:
+		break;
+	case CardData::CardType::Special_XOR:
+		break;
+	case CardData::CardType::Special_ADD:
+		break;
+	case CardData::CardType::Special_SUB:
+		break;
+	case CardData::CardType::Special_SHL:
+		break;
+	case CardData::CardType::Special_SHR:
+		break;
+	case CardData::CardType::Special_FLIP1:
+		break;
+	case CardData::CardType::Special_FLIP2:
+		break;
+	case CardData::CardType::Special_FLIP3:
+		break;
+	case CardData::CardType::Special_FLIP4:
+		break;
+	case CardData::CardType::Special_INV:
+		break;
+	default:
+		break;
+	}
+}
+
 void ControlSelectionStaged::updateSelectionStatus()
 {
 	if (this->activeGameState->turn == GameState::Turn::Player && this->activeGameState->selectedCard != nullptr && this->activeGameState->stateType == GameState::StateType::ControlSelectionStaged)
@@ -271,10 +318,12 @@ void ControlSelectionStaged::updateSelectionStatus()
 
 		this->selectionLabel->runAction(FadeTo::create(0.25f, 255));
 		this->cancelButton->runAction(FadeTo::create(0.25f, 255));
+		this->helpButton->runAction(FadeTo::create(0.25f, 255));
 	}
 	else
 	{
 		this->selectionLabel->runAction(FadeTo::create(0.25f, 0));
 		this->cancelButton->runAction(FadeTo::create(0.25f, 0));
+		this->helpButton->runAction(FadeTo::create(0.25f, 0));
 	}
 }

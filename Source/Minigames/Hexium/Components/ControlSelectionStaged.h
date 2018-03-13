@@ -29,8 +29,10 @@ private:
 	void playSelectedCard(CardRow* cardRow);
 	void updateSelectionStatus();
 	void onSelectionCancel(MenuSprite* menuSprite);
+	void onHelpClick(MenuSprite* menuSprite);
 
 	GameState* activeGameState;
 	Label* selectionLabel;
 	MenuSprite* cancelButton;
+	MenuSprite* helpButton;
 };
