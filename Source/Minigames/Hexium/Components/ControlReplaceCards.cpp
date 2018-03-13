@@ -164,38 +164,33 @@ void ControlReplaceCards::updateBanner()
 	{
 		this->bannerLabel->setString("REPLACE " + std::to_string(this->replaceCount) + " MORE CARD");
 	}
-	else if (this->replaceCount <= 0)
-	{
-		this->bannerLabel->setString("");
-	}
 	else
 	{
 		this->bannerLabel->setString("REPLACE " + std::to_string(this->replaceCount) + " MORE CARDS");
 	}
 
-	switch (this->activeGameState->stateType)
+	if (this->replaceCount > 0 && this->activeGameState->stateType == GameState::StateType::ControlReplaceCards)
 	{
-		case GameState::StateType::ControlReplaceCards:
-			this->bannerLabel->runAction(Sequence::create(
-				FadeTo::create(Config::bannerFadeSpeed, 255),
-				nullptr
-			));
+		this->bannerLabel->runAction(Sequence::create(
+			FadeTo::create(Config::bannerFadeSpeed, 255),
+			nullptr
+		));
 
-			this->bannerBackground->runAction(Sequence::create(
-				FadeTo::create(Config::bannerFadeSpeed, 127),
-				nullptr
-			));
-			break;
-		default:
-			this->bannerLabel->runAction(Sequence::create(
-				FadeTo::create(Config::bannerFadeSpeed, 0),
-				nullptr
-			));
+		this->bannerBackground->runAction(Sequence::create(
+			FadeTo::create(Config::bannerFadeSpeed, 127),
+			nullptr
+		));
+	}
+	else
+	{
+		this->bannerLabel->runAction(Sequence::create(
+			FadeTo::create(Config::bannerFadeSpeed, 0),
+			nullptr
+		));
 
-			this->bannerBackground->runAction(Sequence::create(
-				FadeTo::create(Config::bannerFadeSpeed, 0),
-				nullptr
-			));
-			break;
+		this->bannerBackground->runAction(Sequence::create(
+			FadeTo::create(Config::bannerFadeSpeed, 0),
+			nullptr
+		));
 	}
 }

@@ -27,6 +27,10 @@ private:
 	void selectCard(Card* card);
 	void stageSelectedSacrificeCard(Card* card);
 	void playSelectedCard(CardRow* cardRow);
+	void updateSelectionStatus();
+	void onSelectionCancel(MenuSprite* menuSprite);
 
 	GameState* activeGameState;
+	Label* selectionLabel;
+	MenuSprite* cancelButton;
 };
