@@ -11,6 +11,21 @@ ControlSacrificeStaged* ControlSacrificeStaged::create()
 
 ControlSacrificeStaged::ControlSacrificeStaged()
 {
+	this->sacrificeStatus = Label::create("", Resources::Fonts_Montserrat_Medium, 28.0f);
+
+	this->sacrificeStatus->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->sacrificeStatus->setTextColor(Color4B::WHITE);
+	this->sacrificeStatus->enableOutline(Color4B::BLACK, 2);
+	this->sacrificeStatus->setDimensions(Config::statusLabelWidth, 0.0f);
+	this->sacrificeStatus->setOpacity(0);
+
+	this->cancelButton = MenuSprite::create(Resources::Menus_HackerModeMenu_CancelButton, Resources::Menus_HackerModeMenu_CancelButtonHover, Resources::Menus_HackerModeMenu_CancelButtonClick);
+	this->cancelButton->setCascadeOpacityEnabled(true);
+	this->cancelButton->setOpacity(0.0f);
+	this->cancelButton->setAnchorPoint(Vec2(0.0f, 1.0f));
+
+	this->addChild(this->sacrificeStatus);
+	this->addChild(this->cancelButton);
 }
 
 ControlSacrificeStaged::~ControlSacrificeStaged()
@@ -28,6 +43,9 @@ void ControlSacrificeStaged::onEnter()
 void ControlSacrificeStaged::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->cancelButton->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::statusLabelWidth / 2.0f, visibleSize.height / 2.0f - 224.0f);
+	this->sacrificeStatus->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter - Config::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width / 2.0f, visibleSize.height / 2.0f - 224.0f);
 }
 
 void ControlSacrificeStaged::initializeListeners()
@@ -43,6 +61,7 @@ void ControlSacrificeStaged::onStateChange(GameState* gameState)
 		{
 		case GameState::Turn::Player:
 			this->initializeCallbacks(gameState);
+			this->updateSacrificeStatus();
 			break;
 		case GameState::Turn::Enemy:
 			this->aiPerformAction(gameState);
@@ -53,6 +72,8 @@ void ControlSacrificeStaged::onStateChange(GameState* gameState)
 
 void ControlSacrificeStaged::initializeCallbacks(GameState* gameState)
 {
+	this->cancelButton->setClickCallback(CC_CALLBACK_1(ControlSacrificeStaged::onSacrificeCancel, this));
+
 	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(ControlSacrificeStaged::selectCard, this));
 	gameState->enemyHand->setMouseClickCallback(CC_CALLBACK_1(ControlSacrificeStaged::selectCard, this));
 
@@ -93,7 +114,7 @@ void ControlSacrificeStaged::selectCard(Card* card)
 	this->activeGameState->selectedCard->stopAllActions();
 	this->activeGameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedCard->position + Vec2(0.0f, Config::cardSelectOffsetY)));
 
-	// Transition to the same state (re-initialize things)
+	// Transition to the selection state (re-initialize things)
 	GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
 }
 
@@ -150,4 +171,53 @@ void ControlSacrificeStaged::stageSacrificeTarget(Card* card)
 		break;
 	}
 
+	this->updateSacrificeStatus();
+}
+
+void ControlSacrificeStaged::onSacrificeCancel(MenuSprite* menuSprite)
+{
+	// Deselect current card (by selecting the selected card)
+	this->selectCard(this->activeGameState->selectedCard);
+
+	this->updateSacrificeStatus();
+}
+
+void ControlSacrificeStaged::updateSacrificeStatus()
+{
+	if (this->activeGameState->turn != GameState::Turn::Player)
+	{
+		return;
+	}
+
+	switch (this->activeGameState->stateType)
+	{
+	case GameState::StateType::ControlSacrificeStaged:
+
+		switch (this->activeGameState->selectedCard->cardData->cardType) {
+		case CardData::CardType::Special_AND:
+		case CardData::CardType::Special_OR:
+		case CardData::CardType::Special_XOR:
+		case CardData::CardType::Special_ADD:
+		case CardData::CardType::Special_SUB:
+			int remaining = 2 - this->activeGameState->stagedSacrificeTargets->size();
+
+			if (remaining == 1)
+			{
+				this->sacrificeStatus->setString("Choose " + std::to_string(remaining) + " more target");
+			}
+			else
+			{
+				this->sacrificeStatus->setString("Choose " + std::to_string(remaining) + " more targets");
+			}
+
+			break;
+		}
+
+		this->sacrificeStatus->runAction(FadeTo::create(0.25f, 255));
+		this->cancelButton->runAction(FadeTo::create(0.25f, 255));
+		break;
+	default:
+		this->sacrificeStatus->runAction(FadeTo::create(0.25f, 0));
+		this->cancelButton->runAction(FadeTo::create(0.25f, 0));
+	}
 }

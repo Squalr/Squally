@@ -26,6 +26,10 @@ private:
 	void aiPerformAction(GameState* gameState);
 	void selectCard(Card* card);
 	void stageSacrificeTarget(Card* card);
+	void updateSacrificeStatus();
+	void onSacrificeCancel(MenuSprite* menuSprite);
 
 	GameState* activeGameState;
+	Label* sacrificeStatus;
+	MenuSprite* cancelButton;
 };
