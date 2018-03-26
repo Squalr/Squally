@@ -98,7 +98,7 @@ public:
     /**
      * @js ctor
      */
-    TMXLayerInfo();
+    TMXLayerInfo(int index = 0);
     /**
      * @js NA
      * @lua NA
@@ -116,6 +116,7 @@ public:
     unsigned char       _opacity;
     bool                _ownTiles;
     Vec2               _offset;
+	int					_layerIndex;
 };
 
 /** @brief TMXTilesetInfo contains the information about the tilesets like:
@@ -300,14 +301,15 @@ public:
 protected:
     void internalInit(const std::string& tmxFileName, const std::string& resourcePath);
 
+	int    _currentLayerIndex;
     /// map orientation
     int    _orientation;
     ///map staggerAxis
     int    _staggerAxis;
     ///map staggerIndex
     int    _staggerIndex;
-    ///map hexsidelength
-    int    _hexSideLength;
+	///map hexsidelength
+	int    _hexSideLength;
     /// map width & height
     Size _mapSize;
     /// tiles width & height

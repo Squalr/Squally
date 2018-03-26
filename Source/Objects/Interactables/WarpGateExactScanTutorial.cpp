@@ -1,7 +1,7 @@
 #include "WarpGateExactScanTutorial.h"
 
-int WarpGateExactScanTutorial::warpGatePower = 69420666;
-int WarpGateExactScanTutorial::warpGatePowerMax = 70100200;
+int WarpGateExactScanTutorial::warpGatePower = 0;
+int WarpGateExactScanTutorial::warpGatePowerMax = 70100;
 
 WarpGateExactScanTutorial* WarpGateExactScanTutorial::create()
 {
@@ -14,18 +14,82 @@ WarpGateExactScanTutorial* WarpGateExactScanTutorial::create()
 
 WarpGateExactScanTutorial::WarpGateExactScanTutorial() : WarpGate::WarpGate()
 {
-	this->valueLabel = Label::create("Temp", Resources::Fonts_Montserrat_Medium, 24);
+	this->valueLabel = Label::create(std::to_string(WarpGateExactScanTutorial::warpGatePower), Resources::Fonts_Montserrat_Medium, 24);
 
 	this->valueLabel->setPosition(0, 256.0f);
 	this->valueLabel->enableOutline(Color4B::BLACK, 2.0f);
 
 	this->addChild(this->valueLabel);
-
-	this->scheduleUpdate();
 }
 
 WarpGateExactScanTutorial::~WarpGateExactScanTutorial()
 {
+}
+
+void WarpGateExactScanTutorial::onEnter()
+{
+	WarpGate::onEnter();
+
+	CallFunc* incPower = CallFunc::create([=]
+	{
+		this->incrementPower();
+	});
+
+	incPower->retain();
+
+	this->runAction(RepeatForever::create(
+		Sequence::create(
+			incPower,
+			DelayTime::create(1.0f),
+			nullptr)
+		)
+	);
+
+	this->scheduleUpdate();
+}
+
+void WarpGateExactScanTutorial::incrementPower()
+{
+	__asm
+	{
+		push eax;
+		mov eax, WarpGateExactScanTutorial::warpGatePower;
+	}
+startIncrementPower:
+	__asm
+	{
+		inc eax;
+		nop; 
+		nop;
+		nop;
+		nop;
+	}
+endIncrementPower:
+	__asm
+	{
+		mov WarpGateExactScanTutorial::warpGatePower, eax
+		pop eax;
+	}
+
+	static bool init = false;
+
+	if (!init)
+	{
+		init = true;
+
+		void* assemblyAddressStart = nullptr;
+		void* assemblyAddressEnd = nullptr;
+
+		__asm
+		{
+			mov assemblyAddressStart, offset startIncrementPower
+			mov assemblyAddressEnd, offset endIncrementPower
+		}
+
+		int byteCount = (unsigned int)assemblyAddressEnd - (unsigned int)assemblyAddressStart;
+		HackableCode* hackablePower = HackableCode::create("Recharge Power", assemblyAddressStart, byteCount);
+		this->registerCode(hackablePower);
+	}
 }
 
 void WarpGateExactScanTutorial::update(float dt)

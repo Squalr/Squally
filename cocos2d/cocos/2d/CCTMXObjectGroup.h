@@ -48,7 +48,7 @@ public:
     /**
      * @js ctor
      */
-    TMXObjectGroup();
+    TMXObjectGroup(int layerIndex = 0);
     /**
      * @js NA
      * @lua NA
@@ -127,7 +127,9 @@ public:
     void setObjects(const ValueVector& objects) {
         _objects = objects;
     }
-    
+
+	int layerIndex;
+
 protected:
     /** name of the group */
     std::string _groupName;

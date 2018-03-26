@@ -60,21 +60,21 @@ void Player::registerHackables()
 	this->setPreviewImage(Resources::Menus_HackerModeMenu_WireFrames_SquallyWireFrame);
 	this->setButtonOffset(Vec2(0, 72.0f));
 
-	HackableData* hackableDataHealth = HackableData::create("Health", &this->health, &typeid(this->health));
-	HackableData* hackableDataPositionX = HackableData::create("X Position", &this->position.x, &typeid(this->position.x));
-	HackableData* hackableDataPositionY = HackableData::create("Y Position", &this->position.y, &typeid(this->position.y));
+	//HackableData* hackableDataHealth = HackableData::create("Health", &this->health, &typeid(this->health));
+	//HackableData* hackableDataPositionX = HackableData::create("X Position", &this->position.x, &typeid(this->position.x));
+	//HackableData* hackableDataPositionY = HackableData::create("Y Position", &this->position.y, &typeid(this->position.y));
 
-	HackableCode* hackableVelocity = HackableCode::create("Take Damage", &this->_displayedColor, 8);
-	HackableCode* hackableVelocityA = HackableCode::create("Set X Velocity", &this->_actionManager, 4);
-	HackableCode* hackableVelocityB = HackableCode::create("Set Y Velocity", &this->_scaleX, 7);
+	//HackableCode* hackableVelocity = HackableCode::create("Take Damage", &this->_displayedColor, 8);
+	//HackableCode* hackableVelocityA = HackableCode::create("Set X Velocity", &this->_actionManager, 4);
+	//HackableCode* hackableVelocityB = HackableCode::create("Set Y Velocity", &this->_scaleX, 7);
 
-	this->registerData(hackableDataHealth);
-	this->registerData(hackableDataPositionX);
-	this->registerData(hackableDataPositionY);
+	//this->registerData(hackableDataHealth);
+	//this->registerData(hackableDataPositionX);
+	//this->registerData(hackableDataPositionY);
 
-	this->registerCode(hackableVelocity);
-	this->registerCode(hackableVelocityA);
-	this->registerCode(hackableVelocityB);
+	//this->registerCode(hackableVelocity);
+	//this->registerCode(hackableVelocityA);
+	//this->registerCode(hackableVelocityB);
 }
 
 void Player::update(float dt)

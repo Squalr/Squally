@@ -138,6 +138,8 @@ void StoryMap::initializePositions()
 	this->obelisk->setPosition(Vec2(visibleSize.width / 2.0f + 720.0f, visibleSize.height / 2.0f + 420.0f));
 	this->volcano->setPosition(Vec2(visibleSize.width / 2.0f + 168.0f, visibleSize.height / 2.0f + 72.0f));
 	this->foreground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+
+	this->initializedLocked();
 }
 
 void StoryMap::initializeListeners()
@@ -166,6 +168,25 @@ void StoryMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
+void StoryMap::initializedLocked()
+{
+	MapNode* jungle;
+	MapNode* waterRuins;
+	MapNode* forest;
+	MapNode* caverns;
+	MapNode* iceCaps;
+	MapNode* obelisk;
+	MapNode* volcano;
+
+	this->jungle->setLocked(false);
+	this->waterRuins->setLocked(true);
+	this->forest->setLocked(true);
+	this->caverns->setLocked(true);
+	this->iceCaps->setLocked(true);
+	this->obelisk->setLocked(true);
+	this->volcano->setLocked(true);
+}
+
 void StoryMap::onMouseSpriteMove(EventCustom* event)
 {
 	Mouse::MouseEventArgs* args = static_cast<Mouse::MouseEventArgs*>(event->getUserData());
@@ -175,7 +196,7 @@ void StoryMap::onMouseSpriteMove(EventCustom* event)
 	{
 		MapNode* node = *it;
 
-		if (GameUtils::intersects(node, mouseCoords))
+		if (GameUtils::intersects(node, mouseCoords) && !node->isLocked())
 		{
 			this->infoLabel->setString(node->nodeMapName);
 			return;

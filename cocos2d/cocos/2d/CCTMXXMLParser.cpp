@@ -40,11 +40,12 @@ using namespace std;
 NS_CC_BEGIN
 
 // implementation TMXLayerInfo
-TMXLayerInfo::TMXLayerInfo()
+TMXLayerInfo::TMXLayerInfo(int index)
 : _name("")
 , _tiles(nullptr)
 , _ownTiles(true)
 {
+	this->_layerIndex = index;
 }
 
 TMXLayerInfo::~TMXLayerInfo()
@@ -164,6 +165,7 @@ TMXMapInfo::TMXMapInfo()
 : _orientation(TMXOrientationOrtho)
 , _staggerAxis(TMXStaggerAxis_Y)
 , _staggerIndex(TMXStaggerIndex_Even)
+, _currentLayerIndex(0)
 , _hexSideLength(0)
 , _parentElement(0)
 , _parentGID(0)
@@ -372,7 +374,7 @@ void TMXMapInfo::startElement(void* /*ctx*/, const char *name, const char **atts
     }
     else if (elementName == "layer")
     {
-        TMXLayerInfo *layer = new (std::nothrow) TMXLayerInfo();
+        TMXLayerInfo *layer = new (std::nothrow) TMXLayerInfo(_currentLayerIndex++);
         layer->_name = attributeDict["name"].asString();
 
         Size s;
@@ -398,7 +400,7 @@ void TMXMapInfo::startElement(void* /*ctx*/, const char *name, const char **atts
     } 
     else if (elementName == "objectgroup")
     {
-        TMXObjectGroup *objectGroup = new (std::nothrow) TMXObjectGroup();
+        TMXObjectGroup *objectGroup = new (std::nothrow) TMXObjectGroup(_currentLayerIndex++);
         objectGroup->setGroupName(attributeDict["name"].asString());
         Vec2 positionOffset;
         positionOffset.x = attributeDict["x"].asFloat() * tmxMapInfo->getTileSize().width;
