@@ -207,6 +207,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Level\Backgrounds\MountainBackground.cpp" />
     <ClCompile Include="Source\Level\Environments\JungleEnvironment.cpp" />
     <ClCompile Include="Source\Level\LevelCamera.cpp" />
+    <ClCompile Include="Source\Level\LevelMap.cpp" />
     <ClCompile Include="Source\Level\Parser\CollisionParser.cpp" />
     <ClCompile Include="Source\Level\Parser\DecorParser.cpp" />
     <ClCompile Include="Source\Level\Parser\EntityParser.cpp" />
@@ -315,6 +316,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Level\Backgrounds\MountainBackground.h" />
     <ClInclude Include="Source\Level\Environments\JungleEnvironment.h" />
     <ClInclude Include="Source\Level\LevelCamera.h" />
+    <ClInclude Include="Source\Level\LevelMap.h" />
     <ClInclude Include="Source\Level\Parser\CollisionParser.h" />
     <ClInclude Include="Source\Level\Parser\DecorParser.h" />
     <ClInclude Include="Source\Level\Parser\EntityParser.h" />

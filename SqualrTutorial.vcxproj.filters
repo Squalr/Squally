@@ -426,6 +426,9 @@
     <ClCompile Include="Source\Level\Parser\EntityParser.cpp">
       <Filter>Source\Level\Parser</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Level\LevelMap.cpp">
+      <Filter>Source\Level</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -757,6 +760,9 @@
     </ClInclude>
     <ClInclude Include="Source\Level\Parser\EntityParser.h">
       <Filter>Source\Level\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\LevelMap.h">
+      <Filter>Source\Level</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
