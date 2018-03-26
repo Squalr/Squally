@@ -1,27 +1,44 @@
 #include "EnvironmentParser.h"
 
-Layer* EnvironmentParser::parse(TMXObjectGroup* objectGroup)
+Layer* EnvironmentParser::parseBackground(TMXObjectGroup* objectGroup)
 {
 	Layer* layer = Layer::create();
-
 	ValueMap properties = objectGroup->getProperties();
 
-	std::string music = properties.at("music").asString();
 	std::string background = properties.at("background").asString();
-	std::string weather = properties.at("weather").asString();
 
-	if (weather == "jungle")
+	if (background == "jungle")
 	{
 		JungleBackground* jungle = JungleBackground::create();
 		layer->addChild(jungle);
 	}
 
-	if (weather == "jungle")
+	return layer;
+}
+
+Layer* EnvironmentParser::parseWeather(TMXObjectGroup* objectGroup)
+{
+	Layer* layer = Layer::create();
+	ValueMap properties = objectGroup->getProperties();
+
+	std::string weather = properties.at("weather").asString();
+
+	if (weather == "rain")
 	{
 		JungleEnvironment* environment = JungleEnvironment::create();
 		layer->addChild(environment);
 	}
 
+
+	return layer;
+}
+
+Layer* EnvironmentParser::parseMusic(TMXObjectGroup* objectGroup)
+{
+	Layer* layer = Layer::create();
+	ValueMap properties = objectGroup->getProperties();
+
+	std::string music = properties.at("music").asString();
 
 	return layer;
 }

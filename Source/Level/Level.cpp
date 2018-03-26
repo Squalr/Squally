@@ -1,6 +1,5 @@
 #include "Level.h"
 
-Size Level::mapSize = Size::ZERO;
 bool Level::hackerMode = false;
 
 Level* Level::create()
@@ -59,7 +58,7 @@ void Level::loadLevel(std::string levelFile)
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, 0.0f));
 
 	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(levelFile);
-	Level::mapSize = Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
+	LevelMap::mapSize = Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
 
 	this->hackerModeBackground = Sprite::create(Resources::Ingame_Background_MatrixRain_HackerModeBackground);
 	this->hackerModeRain = MatrixRain::create();
@@ -119,10 +118,10 @@ void Level::update(float dt)
 	}
 
 	// Prevent camera from leaving level bounds
-	LevelCamera::cameraPosition.x = min(LevelCamera::cameraPosition.x, this->mapSize.width - visibleSize.width);
+	LevelCamera::cameraPosition.x = min(LevelCamera::cameraPosition.x, LevelMap::mapSize.width - visibleSize.width);
 	LevelCamera::cameraPosition.x = max(LevelCamera::cameraPosition.x, 0.0f);
 
-	LevelCamera::cameraPosition.y = min(LevelCamera::cameraPosition.y, this->mapSize.height - visibleSize.height);
+	LevelCamera::cameraPosition.y = min(LevelCamera::cameraPosition.y, LevelMap::mapSize.height - visibleSize.height);
 	LevelCamera::cameraPosition.y = max(LevelCamera::cameraPosition.y, 0.0f);
 
 	// Scroll world // TODO: Trigger scroll event or something
@@ -164,19 +163,7 @@ void Level::disableHackerMode()
 void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 {
 	// Manual drawing (to apply post processing effects)
-	if (!Level::hackerMode)
-	{
-		// Set visibility of desired layers
-		this->hackerModeBackground->setVisible(false);
-		this->hackerModeRain->setVisible(false);
-		this->hackerModePostProcessGlow->setVisible(false);
-		this->hud->setVisible(true);
-		this->hackerModeHud->setVisible(false);
-		this->gamePostProcessInversion->setVisible(false);
-		this->gamePostProcessNightVision->setVisible(false);
-		this->map->setVisible(true);
-	}
-	else
+	if (Level::hackerMode)
 	{
 		// Set visibility of desired layers
 		this->hackerModeBackground->setVisible(true);
@@ -186,7 +173,8 @@ void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 		this->hackerModeHud->setVisible(true);
 		this->gamePostProcessInversion->setVisible(true);
 		this->gamePostProcessNightVision->setVisible(true);
-		this->map->setVisible(true);
+
+		this->map->hackerModeEnable();
 
 		// Draw hackermode level
 		this->hackerModeRain->draw();
@@ -196,5 +184,18 @@ void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 
 		// Prevent double render
 		this->map->setVisible(false);
+	}
+	else
+	{
+		// Set visibility of desired layers
+		this->hackerModeBackground->setVisible(false);
+		this->hackerModeRain->setVisible(false);
+		this->hackerModePostProcessGlow->setVisible(false);
+		this->hud->setVisible(true);
+		this->hackerModeHud->setVisible(false);
+		this->gamePostProcessInversion->setVisible(false);
+		this->gamePostProcessNightVision->setVisible(false);
+
+		this->map->hackerModeDisable();
 	}
 }

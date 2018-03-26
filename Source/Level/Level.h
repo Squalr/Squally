@@ -3,6 +3,7 @@
 #include "Resources.h"
 #include "Level/Backgrounds/MatrixRain/MatrixRain.h"
 #include "Level/LevelCamera.h"
+#include "Level/LevelMap.h"
 #include "Level/Parser/Parser.h"
 #include "Entities/Player/Player.h"
 #include "Input/InputManager.h"
@@ -40,7 +41,7 @@ private:
 	void update(float) override;
 	void onEnter() override;
 
-	Node* map;
+	LevelMap* map;
 	Sprite * hackerModeBackground;
 	MatrixRain * hackerModeRain;
 	PostProcess* hackerModePostProcessGlow;
@@ -50,5 +51,4 @@ private:
 	HackerModeHud * hackerModeHud;
 
 	static bool hackerMode;
-	static Size mapSize;
 };

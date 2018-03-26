@@ -4,6 +4,13 @@
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../Ingame/Tiles/TileMap.png" width="5760" height="3200"/>
  </tileset>
+ <objectgroup name="ENV_environment">
+  <properties>
+   <property name="background" value="jungle"/>
+   <property name="music" value="Music/BurdenOfTime.mp3"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
  <objectgroup name="PARALLAX_background">
   <object id="134" name="Forest/Ruins4" type="Forest/Ruins4" x="1154.91" y="119.879" width="320" height="640">
    <properties>
@@ -119,13 +126,6 @@
  <objectgroup name="DECOR_background">
   <object id="139" name="Forest/Thorns10" type="Forest/Thorns10" x="1906.24" y="1290.36" width="279.741" height="259.846"/>
   <object id="140" name="Forest/Thorns8" type="Forest/Thorns8" x="1873.83" y="1666.34" width="358.529" height="338.634"/>
- </objectgroup>
- <objectgroup name="ENV_environment">
-  <properties>
-   <property name="background" value="jungle"/>
-   <property name="music" value="Music/BurdenOfTime.mp3"/>
-   <property name="weather" value="rain"/>
-  </properties>
  </objectgroup>
  <layer name="TILES_midground" width="117" height="96">
   <data encoding="csv">
@@ -358,5 +358,4 @@
 </data>
  </layer>
  <objectgroup name="DECOR_foreground"/>
- <objectgroup name="HUD_hud"/>
 </map>

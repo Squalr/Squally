@@ -3,6 +3,7 @@
 #include "Resources.h"
 #include "Utils/GameUtils.h"
 #include "Utils/StrUtils.h"
+#include "Level/LevelMap.h"
 #include "Level/Parser/CollisionParser.h"
 #include "Level/Parser/DecorParser.h"
 #include "Level/Parser/EntityParser.h"
@@ -16,5 +17,5 @@ using namespace cocos2d;
 class Parser
 {
 public:
-	static Node* parseMap(cocos_experimental::TMXTiledMap* mapRaw, std::function<void(HackableObject*)> registerHackableCallback);
+	static LevelMap* parseMap(cocos_experimental::TMXTiledMap* mapRaw, std::function<void(HackableObject*)> registerHackableCallback);
 };
