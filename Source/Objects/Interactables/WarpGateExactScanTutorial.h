@@ -15,7 +15,9 @@ private:
 	WarpGateExactScanTutorial();
 	~WarpGateExactScanTutorial();
 
+	void onEnter() override;
 	void update(float) override;
+	void incrementPower();
 
 	Label* valueLabel;
 

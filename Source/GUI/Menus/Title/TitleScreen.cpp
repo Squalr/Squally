@@ -39,7 +39,7 @@ void TitleScreen::onEnter()
 {
 	FadeScene::onEnter();
 
-	SoundManager::playMusicResource(Resources::Music_Will_we_get_there_Together);
+	SoundManager::playMusicResource(Resources::Music_WeWillGetThereTogether);
 
 	this->initializePositions();
 	this->etherParticles->start();

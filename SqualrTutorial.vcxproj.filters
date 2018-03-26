@@ -405,6 +405,27 @@
     <ClCompile Include="Source\Minigames\Hexium\Components\ControlReplaceCards.cpp">
       <Filter>Source\Minigames\Hexium\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Level\Parser\CollisionParser.cpp">
+      <Filter>Source\Level\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Level\Parser\DecorParser.cpp">
+      <Filter>Source\Level\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Level\Parser\ObjectParser.cpp">
+      <Filter>Source\Level\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Level\Parser\ParallaxParser.cpp">
+      <Filter>Source\Level\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Level\Parser\TileParser.cpp">
+      <Filter>Source\Level\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Level\Parser\EnvironmentParser.cpp">
+      <Filter>Source\Level\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Level\Parser\EntityParser.cpp">
+      <Filter>Source\Level\Parser</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -715,6 +736,27 @@
     </ClInclude>
     <ClInclude Include="Source\Minigames\Hexium\Components\ControlReplaceCards.h">
       <Filter>Source\Minigames\Hexium\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\Parser\CollisionParser.h">
+      <Filter>Source\Level\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\Parser\DecorParser.h">
+      <Filter>Source\Level\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\Parser\ObjectParser.h">
+      <Filter>Source\Level\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\Parser\ParallaxParser.h">
+      <Filter>Source\Level\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\Parser\TileParser.h">
+      <Filter>Source\Level\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\Parser\EnvironmentParser.h">
+      <Filter>Source\Level\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\Parser\EntityParser.h">
+      <Filter>Source\Level\Parser</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

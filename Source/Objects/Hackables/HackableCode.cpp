@@ -24,6 +24,8 @@ HackableCode::HackableCode(std::string name, void* codeStart, int codeLength)
 
 void HackableCode::restoreOriginalCode()
 {
+	DWORD old;
+	VirtualProtect(this->codePointer, this->codeOriginalLength, PAGE_EXECUTE_READWRITE, &old);
 	memcpy(this->codePointer, this->originalCodeCopy, this->codeOriginalLength);
 }
 
@@ -39,6 +41,8 @@ bool HackableCode::applyCustomCode()
 	}
 
 	// Write new assembly code
+	DWORD old;
+	VirtualProtect(this->codePointer, compileResult.byteCount, PAGE_EXECUTE_READWRITE, &old);
 	memcpy(this->codePointer, compileResult.compiledBytes, compileResult.byteCount);
 
 	int unfilledBytes = this->codeOriginalLength - compileResult.byteCount;

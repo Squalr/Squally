@@ -131,7 +131,7 @@ void CodeMenu::populateRows()
 
 			MenuSprite* uncheckedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_CheckboxEmpty, Resources::Menus_OptionsMenu_CheckboxHover, Resources::Menus_OptionsMenu_CheckboxHover);
 			MenuSprite* checkedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_CheckboxSelected, Resources::Menus_OptionsMenu_CheckboxSelected, Resources::Menus_OptionsMenu_CheckboxSelected);
-			CCheckbox* isActiveCheckbox = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_2(CodeMenu::onActivated, this));
+			CCheckbox* isActiveCheckbox = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, false, CC_CALLBACK_2(CodeMenu::onActivated, this));
 
 			LayerColor* normalBackground = LayerColor::create(Color4B(0, 0, 0, 0), rowWidth, rowHeight);
 			LayerColor* selectedBackground = LayerColor::create(CodeMenu::defaultRowSelectionColor, rowWidth, rowHeight);

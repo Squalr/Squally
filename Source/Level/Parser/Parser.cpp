@@ -1,361 +1,62 @@
 #include "Parser.h"
 
-Layer* Parser::initializeBackground(cocos_experimental::TMXTiledMap* map)
+Node* Parser::parseMap(cocos_experimental::TMXTiledMap* mapRaw, std::function<void(HackableObject*)> registerHackableCallback)
 {
-	Layer* layer = Layer::create();
+	Node* map = Node::create();
+	std::map<int, std::string> layers = std::map<int, std::string>();
 
-	layer->addChild(JungleBackground::create());
-
-	return layer;
-}
-
-Layer* Parser::initializeEnvironment(cocos_experimental::TMXTiledMap* map)
-{
-	Layer* layer = Layer::create();
-
-	JungleEnvironment* environment = JungleEnvironment::create();
-
-	layer->addChild(environment);
-
-	return layer;
-}
-
-Layer* Parser::initializeObjects(cocos_experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback)
-{
-	Layer* layer = Layer::create();
-	ValueVector objects = map->getObjectGroup("objects")->getObjects();
-
-	// Create objects
-	for (int index = 0; index < size(objects); index++)
+	// Pull out object layers
+	for (auto it = mapRaw->getObjectGroups().begin(); it != mapRaw->getObjectGroups().end(); it++)
 	{
-		if (objects[index].getType() != cocos2d::Value::Type::MAP)
-		{
-			continue;
-		}
-
-		ValueMap object = objects[index].asValueMap();
-		string type = object.at("type").asString();
-
-		HackableObject* newObject = nullptr;
-
-		if (type == "warp-gate")
-		{
-			newObject = WarpGate::create();
-		}
-		else if (type == "warp-gate-exact-scan-1")
-		{
-			newObject = WarpGateExactScanTutorial::create();
-		}
-		else if (type == "monitor")
-		{
-			string dialog = object.at("dialog").asString();
-
-			newObject = Monitor::create("Dialog\\" + dialog + ".json");
-		}
-		else
-		{
-			throw std::invalid_argument("Invalid object");
-		}
-
-		registerHackableCallback(newObject);
-
-		newObject->setPosition(Vec2(object.at("x").asFloat() + object.at("width").asFloat() / 2, object.at("y").asFloat() + object.at("height").asFloat() / 2));
-		layer->addChild(newObject);
+		TMXObjectGroup* object = *it;
+		layers.insert_or_assign(object->layerIndex, object->getGroupName());
 	}
 
-	return layer;
-}
-
-Layer* Parser::initializeEntities(cocos_experimental::TMXTiledMap* map, std::function<void(HackableObject*)> registerHackableCallback)
-{
-	Layer* layer = Layer::create();
-	ValueVector entities = map->getObjectGroup("entities")->getObjects();
-
-	// Create entities
-	for (int index = 0; index < size(entities); index++)
+	// Pull out tile layers
+	for (auto it = mapRaw->getChildren().begin(); it != mapRaw->getChildren().end(); it++)
 	{
-		if (entities[index].getType() != cocos2d::Value::Type::MAP)
-		{
-			continue;
-		}
+		cocos_experimental::TMXLayer* tileLayer = dynamic_cast<cocos_experimental::TMXLayer*>(*it);
 
-		ValueMap entity = entities[index].asValueMap();
-		string type = entity.at("type").asString();
-
-		HackableObject* newEntity = nullptr;
-
-		if (type == "spawn")
+		if (tileLayer != nullptr)
 		{
-			newEntity = Player::create();
+			layers.insert_or_assign(tileLayer->layerIndex, tileLayer->getLayerName());
 		}
-		else if (type == "bat")
-		{
-			newEntity = Bat::create();
-		}
-		else if (type == "shroom")
-		{
-			newEntity = Shroom::create();
-		}
-		else if (type == "snail")
-		{
-			newEntity = Snail::create();
-		}
-		else if (type == "poly")
-		{
-			newEntity = Poly::create();
-		}
-		else if (type == "knight")
-		{
-			newEntity = Knight::create();
-		}
-		else if (type == "skeleton")
-		{
-			newEntity = Skeleton::create();
-		}
-		else
-		{
-			const std::string error = "Invalid entity: " + type;
-
-			throw std::invalid_argument(error);
-		}
-
-		registerHackableCallback(newEntity);
-
-		newEntity->setPosition(Vec2(entity.at("x").asFloat() + entity.at("width").asFloat() / 2, entity.at("y").asFloat() + entity.at("height").asFloat() / 2));
-		layer->addChild(newEntity);
 	}
 
-	return layer;
-}
-
-Layer* Parser::initializeCollision(cocos_experimental::TMXTiledMap* map)
-{
-	ValueVector collisionObjects = map->getObjectGroup("collision")->getObjects();
-	Layer* layer = Layer::create();
-
-	for (int index = 0; index < size(collisionObjects); index++)
+	// Iterate through layers (now that they are in order) and build them
+	for (auto it = layers.begin(); it != layers.end(); it++)
 	{
-		if (collisionObjects[index].getType() != cocos2d::Value::Type::MAP)
+		std::string layerName = it->second;
+
+		if (StrUtils::startsWith(layerName, "TILES_"))
 		{
-			continue;
+			map->addChild(TileParser::parse(mapRaw->getLayer(layerName)));
 		}
-
-		ValueMap object = collisionObjects[index].asValueMap();
-		ValueVector* polygonPoints = nullptr;
-
-		std::string type = object.at("type").asString();
-		bool isPolygon = false;
-		float width = object.at("width").asFloat();
-		float height = object.at("height").asFloat();
-		float x = object.at("x").asFloat() + width / 2.0f;
-		float y = object.at("y").asFloat() + height / 2.0f;
-
-		if (GameUtils::keyExists(object, "points"))
+		else if (StrUtils::startsWith(layerName, "COLLISION_"))
 		{
-			isPolygon = true;
-			polygonPoints = &(object.at("points").asValueVector());
+			map->addChild(CollisionParser::parse(mapRaw->getObjectGroup(layerName)));
 		}
-
-		CollisionObject* collisionBox = new CollisionObject();
-		CategoryGroup collisionGroup = CategoryGroup::G_None;
-
-		if (type == "solid")
+		else if (StrUtils::startsWith(layerName, "DECOR_"))
 		{
-			collisionGroup = CategoryGroup::G_Solid;
+			map->addChild(DecorParser::parse(mapRaw->getObjectGroup(layerName)));
 		}
-		else if (type == "water")
+		else if (StrUtils::startsWith(layerName, "ENV_"))
 		{
-			collisionGroup = CategoryGroup::G_Water;
+			map->addChild(EnvironmentParser::parse(mapRaw->getObjectGroup(layerName)));
 		}
-		else if (type == "npc")
+		else if (StrUtils::startsWith(layerName, "OBJECTS_"))
 		{
-			collisionGroup = CategoryGroup::G_SolidNpc;
+			map->addChild(ObjectParser::parse(mapRaw->getObjectGroup(layerName), registerHackableCallback));
 		}
-		else if (type == "npc-flying")
+		else if (StrUtils::startsWith(layerName, "ENTITIES_"))
 		{
-			collisionGroup = CategoryGroup::G_SolidFlyingNpc;
+			map->addChild(EntityParser::parse(mapRaw->getObjectGroup(layerName), registerHackableCallback));
 		}
-		else
+		else if (StrUtils::startsWith(layerName, "PARALLAX_"))
 		{
-			throw std::invalid_argument("Invalid type");
+			map->addChild(ParallaxParser::parse(mapRaw->getObjectGroup(layerName)));
 		}
-
-		if (isPolygon)
-		{
-			Vec2* points = new Vec2[polygonPoints->size()];
-			int index = 0;
-
-			for (auto it = polygonPoints->begin(); it != polygonPoints->end(); ++it)
-			{
-				auto point = it->asValueMap();
-
-				float deltaX = point.at("x").asFloat();
-				float deltaY = point.at("y").asFloat();
-
-				points[index++] = Vec2(x + deltaX, y - deltaY);
-			}
-
-			collisionBox->init(PhysicsBody::createPolygon(points, polygonPoints->size(), PhysicsMaterial(0.0f, 0.0f, 0.0f)), collisionGroup, false, false);
-		}
-		else
-		{
-			collisionBox->init(PhysicsBody::createBox(Size(width, height), PhysicsMaterial(0.0f, 0.0f, 0.0f)), collisionGroup, false, false);
-			collisionBox->setPosition(x, y);
-		}
-
-		layer->addChild(collisionBox);
 	}
 
-	return layer;
-}
-
-Layer* Parser::initializeTileLayer(cocos_experimental::TMXTiledMap* map, std::string tileLayer)
-{
-	Layer* layer = Layer::create();
-	cocos_experimental::TMXLayer* tileMap = map->getLayer(tileLayer);
-
-	// Can be a nullptr if the layer is empty
-	if (tileMap != nullptr)
-	{
-		map->removeChild(tileMap);
-		layer->addChild(tileMap);
-	}
-
-	return layer;
-}
-
-Layer* Parser::initializeParallaxObjects(cocos_experimental::TMXTiledMap* map, std::string parallaxLayer)
-{
-	Layer* layer = Layer::create();
-	ValueVector objects = map->getObjectGroup(parallaxLayer)->getObjects();
-
-	// Create objects
-	for (int index = 0; index < size(objects); index++)
-	{
-		if (objects[index].getType() != cocos2d::Value::Type::MAP)
-		{
-			continue;
-		}
-
-		ValueMap object = objects[index].asValueMap();
-
-		if (!GameUtils::keyExists(object, "speed-x") && !GameUtils::keyExists(object, "speed-y"))
-		{
-			throw std::invalid_argument("Parallax objects must have speed properties");
-		}
-
-		float speedX = object.at("speed-x").asFloat();
-		float speedY = object.at("speed-y").asFloat();
-
-		Sprite* sprite = Parser::loadObject(object);
-		Vec2 position = sprite->getPosition();
-		Node *node = Node::create();
-
-		sprite->setPosition(Vec2::ZERO);
-		node->addChild(sprite);
-
-		ParallaxObject* parallaxObject = ParallaxObject::create(node, position, Vec2(speedX, speedY));
-
-		layer->addChild(parallaxObject);
-	}
-
-	return layer;
-}
-
-Layer* Parser::initializeDecor(cocos_experimental::TMXTiledMap* map, std::string decorLayer)
-{
-	Layer* layer = Layer::create();
-	ValueVector objects = map->getObjectGroup(decorLayer)->getObjects();
-
-	// Create objects
-	for (int index = 0; index < size(objects); index++)
-	{
-		if (objects[index].getType() != cocos2d::Value::Type::MAP)
-		{
-			continue;
-		}
-
-		ValueMap object = objects[index].asValueMap();
-		Sprite* sprite = Parser::loadObject(object);
-
-		layer->addChild(sprite);
-	}
-
-	return layer;
-}
-
-Sprite* Parser::loadObject(ValueMap object)
-{
-	string type = object.at("type").asString();
-
-	// For decor, simply grab the resource of the same name of the object type
-	Sprite* newObject = Sprite::create("Ingame/Decor/" + type + ".png");
-
-	if (newObject == nullptr)
-	{
-		throw std::invalid_argument("Non-existant decor");
-	}
-
-	float width = object.at("width").asFloat();
-	float height = object.at("height").asFloat();
-	float x = object.at("x").asFloat() + width / 2.0f;
-	float y = object.at("y").asFloat() + height / 2.0f;
-
-	// Scale decor based on rectangle size (only using height for simplicity)
-	newObject->setScale(height / newObject->getContentSize().height);
-
-	// TMX tile maps rotate around a different anchor point than cocos2d-x by default, so we have to account for this
-	newObject->setAnchorPoint(Vec2(0.0f, 1.0f));
-	newObject->setPosition(Vec2(x - width / 2.0f, y + height / 2.0f));
-
-	if (GameUtils::keyExists(object, "rotation"))
-	{
-		float rotation = object.at("rotation").asFloat();
-		newObject->setRotation(rotation);
-	}
-
-	if (GameUtils::keyExists(object, "flip-x"))
-	{
-		bool flipX = object.at("flip-x").asBool();
-		newObject->setFlippedX(flipX);
-	}
-
-	if (GameUtils::keyExists(object, "flip-y"))
-	{
-		bool flipY = object.at("flip-y").asBool();
-		newObject->setFlippedY(flipY);
-	}
-
-	if (GameUtils::keyExists(object, "float-x"))
-	{
-		float floatX = object.at("float-x").asFloat();
-		float timeX = 1.0f;
-
-		if (GameUtils::keyExists(object, "float-time-x"))
-		{
-			timeX = object.at("float-time-x").asFloat();
-		}
-
-		FiniteTimeAction* bounceX1 = EaseSineInOut::create(MoveBy::create(timeX, Vec2(floatX, 0.0f)));
-		FiniteTimeAction* bounceX2 = EaseSineInOut::create(MoveBy::create(timeX, Vec2(-floatX, 0.0f)));
-
-		newObject->runAction(RepeatForever::create(Sequence::create(bounceX1, bounceX2, nullptr)));
-	}
-
-	if (GameUtils::keyExists(object, "float-y"))
-	{
-		float floatY = object.at("float-y").asFloat();
-		float timeY = 1.0f;
-
-		if (GameUtils::keyExists(object, "float-time-y"))
-		{
-			timeY = object.at("float-time-y").asFloat();
-		}
-
-		FiniteTimeAction* bounceY1 = EaseSineInOut::create(MoveBy::create(timeY, Vec2(0.0f, floatY)));
-		FiniteTimeAction* bounceY2 = EaseSineInOut::create(MoveBy::create(timeY, Vec2(0.0f, -floatY)));
-		newObject->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
-	}
-
-	return newObject;
+	return map;
 }

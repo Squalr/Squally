@@ -58,48 +58,25 @@ void Level::loadLevel(std::string levelFile)
 	//this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, 0.0f));
 
-	cocos_experimental::TMXTiledMap* map = cocos_experimental::TMXTiledMap::create(levelFile);
-	Level::mapSize = Size(map->getMapSize().width * map->getTileSize().width, map->getMapSize().height * map->getTileSize().height);
+	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(levelFile);
+	Level::mapSize = Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
 
-	this->background = Parser::initializeBackground(map);
 	this->hackerModeBackground = Sprite::create(Resources::Ingame_Background_MatrixRain_HackerModeBackground);
 	this->hackerModeRain = MatrixRain::create();
 	this->hackerModePostProcessGlow = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_GrayBlur);
 	this->hud = Hud::create();
 	this->hackerModeHud = HackerModeHud::create();
-	this->backgroundParallax = Parser::initializeParallaxObjects(map, "background-parallax");
-	this->backgroundLayer = Parser::initializeTileLayer(map, "background");
-	this->backgroundDecor = Parser::initializeDecor(map, "background-decor");
-	this->midgroundLayer = Parser::initializeTileLayer(map, "midground");
-	this->midgroundDecor = Parser::initializeDecor(map, "midground-decor");
-	this->foregroundLayer = Parser::initializeTileLayer(map, "foreground");
-	this->foregroundDecor = Parser::initializeDecor(map, "foreground-decor");
-	this->objectLayer = Parser::initializeObjects(map, CC_CALLBACK_1(HackerModeHud::registerHackableObject, this->hackerModeHud));
-	this->entityLayer = Parser::initializeEntities(map, CC_CALLBACK_1(HackerModeHud::registerHackableObject, this->hackerModeHud));
-	this->collisionLayer = Parser::initializeCollision(map);
-	this->environmentLayer = Parser::initializeEnvironment(map);
-	this->gameLayers = Layer::create();
 	this->gamePostProcessInversion = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_Inverse);
 	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
 
+	this->map = Parser::parseMap(mapRaw, CC_CALLBACK_1(HackerModeHud::registerHackableObject, this->hackerModeHud));
+
 	this->addChild(InputManager::claimInstance());
 
-	this->addChild(this->background);
 	this->addChild(this->hackerModeBackground);
 	this->addChild(this->hackerModeRain);
 	this->addChild(this->hackerModePostProcessGlow);
-	this->gameLayers->addChild(this->backgroundParallax);
-	this->gameLayers->addChild(this->backgroundLayer);
-	this->gameLayers->addChild(this->backgroundDecor);
-	this->gameLayers->addChild(this->midgroundLayer);
-	this->gameLayers->addChild(this->midgroundDecor);
-	this->gameLayers->addChild(this->objectLayer);
-	this->gameLayers->addChild(this->entityLayer);
-	this->gameLayers->addChild(this->foregroundLayer);
-	this->gameLayers->addChild(this->foregroundDecor);
-	this->gameLayers->addChild(this->collisionLayer);
-	this->gameLayers->addChild(this->environmentLayer);
-	this->addChild(this->gameLayers);
+	this->addChild(this->map);
 	this->addChild(this->gamePostProcessInversion);
 	this->addChild(this->gamePostProcessNightVision);
 	this->addChild(this->hud);
@@ -148,8 +125,8 @@ void Level::update(float dt)
 	LevelCamera::cameraPosition.y = min(LevelCamera::cameraPosition.y, this->mapSize.height - visibleSize.height);
 	LevelCamera::cameraPosition.y = max(LevelCamera::cameraPosition.y, 0.0f);
 
-	// Scroll world
-	this->gameLayers->setPosition(-LevelCamera::cameraPosition);
+	// Scroll world // TODO: Trigger scroll event or something
+	this->map->setPosition(-LevelCamera::cameraPosition);
 }
 
 void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -190,56 +167,34 @@ void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 	if (!Level::hackerMode)
 	{
 		// Set visibility of desired layers
-		this->background->setVisible(true);
 		this->hackerModeBackground->setVisible(false);
 		this->hackerModeRain->setVisible(false);
 		this->hackerModePostProcessGlow->setVisible(false);
-		this->gameLayers->setVisible(true);
 		this->hud->setVisible(true);
 		this->hackerModeHud->setVisible(false);
 		this->gamePostProcessInversion->setVisible(false);
 		this->gamePostProcessNightVision->setVisible(false);
-
-		// Show parts of the game layer
-		this->backgroundParallax->setVisible(true);
-		this->backgroundLayer->setVisible(true);
-		this->backgroundDecor->setVisible(true);
-		this->midgroundLayer->setVisible(true);
-		this->midgroundDecor->setVisible(true);
-		this->foregroundLayer->setVisible(true);
-		this->foregroundDecor->setVisible(true);
-		this->environmentLayer->setVisible(true);
+		this->map->setVisible(true);
 	}
 	else
 	{
 		// Set visibility of desired layers
-		this->background->setVisible(false);
 		this->hackerModeBackground->setVisible(true);
 		this->hackerModeRain->setVisible(true);
 		this->hackerModePostProcessGlow->setVisible(true);
-		this->gameLayers->setVisible(true);
 		this->hud->setVisible(false);
 		this->hackerModeHud->setVisible(true);
 		this->gamePostProcessInversion->setVisible(true);
 		this->gamePostProcessNightVision->setVisible(true);
-
-		// Hide parts of the game layer
-		this->backgroundParallax->setVisible(false);
-		this->backgroundLayer->setVisible(false);
-		this->backgroundDecor->setVisible(false);
-		this->midgroundLayer->setVisible(false);
-		this->midgroundDecor->setVisible(false);
-		this->foregroundLayer->setVisible(false);
-		this->foregroundDecor->setVisible(false);
-		this->environmentLayer->setVisible(false);
+		this->map->setVisible(true);
 
 		// Draw hackermode level
 		this->hackerModeRain->draw();
 
-		this->gamePostProcessInversion->draw(this->gameLayers);
+		this->gamePostProcessInversion->draw(this->map);
 		this->gamePostProcessNightVision->draw(this->gamePostProcessInversion);
 
 		// Prevent double render
-		this->gameLayers->setVisible(false);
+		this->map->setVisible(false);
 	}
 }

@@ -40,27 +40,15 @@ private:
 	void update(float) override;
 	void onEnter() override;
 
-	Layer * background;
+	Node* map;
 	Sprite * hackerModeBackground;
 	MatrixRain * hackerModeRain;
 	PostProcess* hackerModePostProcessGlow;
-	Layer * backgroundLayer;
-	Layer * backgroundDecor;
-	Layer * backgroundParallax;
-	Layer * midgroundLayer;
-	Layer * midgroundDecor;
-	Layer * entityLayer;
-	Layer * objectLayer;
-	Layer * collisionLayer;
-	Layer * foregroundLayer;
-	Layer * foregroundDecor;
-	Layer * environmentLayer;
-	Layer * gameLayers;
 	PostProcess* gamePostProcessInversion;
 	PostProcess* gamePostProcessNightVision;
 	Hud * hud;
 	HackerModeHud * hackerModeHud;
 
-	static Size mapSize;
 	static bool hackerMode;
+	static Size mapSize;
 };
