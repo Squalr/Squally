@@ -13,7 +13,8 @@ class MapNode : public Node
 public:
 	static MapNode * create(std::string resource, std::string resourceSelected, std::string resourceLocked, std::string mapName, std::string mapFile);
 
-	void setLocked(bool isLocked);
+	void setLocked(bool newLocked);
+	bool isLocked();
 
 	std::string nodeMapName;
 	std::string nodeMapFile;
@@ -27,6 +28,7 @@ private:
 	void initializeListeners();
 	void onNodeClick(MenuSprite* menuSprite, EventMouse* args);
 
+	bool locked;
 	Mouse* mouse;
 	MenuSprite* mapSprite;
 	Sprite* mapSpriteLocked;

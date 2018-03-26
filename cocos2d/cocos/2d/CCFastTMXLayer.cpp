@@ -76,7 +76,8 @@ bool TMXLayer::initWithTilesetInfo(TMXTilesetInfo *tilesetInfo, TMXLayerInfo *la
     }
 
     // layerInfo
-    _layerName = layerInfo->_name;
+	layerIndex = layerInfo->_layerIndex;
+	_layerName = layerInfo->_name;
     _layerSize = layerInfo->_layerSize;
     _tiles = layerInfo->_tiles;
     _quadsDirty = true;

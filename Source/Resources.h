@@ -1357,7 +1357,7 @@ public:
 	static const std::string Minigames_Hexium_Special_Unwanted_Well;
 	static const std::string Music_BurdenOfTime;
 	static const std::string Music_Lullaby_Bells;
-	static const std::string Music_Will_we_get_there_Together;
+	static const std::string Music_WeWillGetThereTogether;
 	static const std::string Particles_BeamMeUp;
 	static const std::string Particles_BlueNether;
 	static const std::string Particles_BluePlasma;

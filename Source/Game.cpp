@@ -60,6 +60,11 @@ void Game::initializeEventListeners()
 		CC_CALLBACK_1(Game::onGameNavigateNewLevel, this)
 	);
 
+	EventListenerCustom* navigateConfirmEventListener = EventListenerCustom::create(
+		GameUtils::gameNavigateConfirmEvent,
+		CC_CALLBACK_1(Game::onGameNavigateConfirm, this)
+	);
+
 	EventListenerCustom* hexiumGameStartListener = EventListenerCustom::create(
 		Hexium::HexiumGameStartEvent,
 		CC_CALLBACK_1(Hexium::onGameStart, this->hexium)
@@ -69,6 +74,7 @@ void Game::initializeEventListeners()
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateNewEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateBackEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateNewLevelEventListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateConfirmEventListener, this);
 }
 
 void Game::onGameNavigateNew(EventCustom* eventCustom)

@@ -30,9 +30,9 @@ MapNode::~MapNode()
 {
 }
 
-void MapNode::setLocked(bool isLocked)
+void MapNode::setLocked(bool newLocked)
 {
-	if (isLocked)
+	if (newLocked)
 	{
 		this->mapSprite->setVisible(false);
 		this->mapSpriteLocked->setVisible(true);
@@ -42,6 +42,13 @@ void MapNode::setLocked(bool isLocked)
 		this->mapSprite->setVisible(true);
 		this->mapSpriteLocked->setVisible(false);
 	}
+
+	this->locked = newLocked;
+}
+
+bool MapNode::isLocked()
+{
+	return this->locked;
 }
 
 void MapNode::initializePositions()

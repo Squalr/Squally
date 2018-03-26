@@ -270,6 +270,8 @@ namespace cocos_experimental {
 		virtual void draw(Renderer *renderer, const Mat4& transform, uint32_t flags) override;
 		void removeChild(Node* child, bool cleanup = true) override;
 
+		int layerIndex;
+
 	protected:
 
 		bool initWithTilesetInfo(TMXTilesetInfo *tilesetInfo, TMXLayerInfo *layerInfo, TMXMapInfo *mapInfo);

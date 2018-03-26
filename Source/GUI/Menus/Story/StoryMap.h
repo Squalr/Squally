@@ -19,6 +19,7 @@ protected:
 
 private:
 	void onEnter() override;
+	void initializedLocked();
 	void initializePositions();
 	void initializeListeners();
 	void onMouseSpriteMove(EventCustom* args);

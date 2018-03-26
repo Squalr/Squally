@@ -116,6 +116,9 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <Link>
       <ImageHasSafeExceptionHandlers Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ImageHasSafeExceptionHandlers>
     </Link>
+    <ClCompile>
+      <ExceptionHandling Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Async</ExceptionHandling>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -204,7 +207,14 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Level\Backgrounds\MountainBackground.cpp" />
     <ClCompile Include="Source\Level\Environments\JungleEnvironment.cpp" />
     <ClCompile Include="Source\Level\LevelCamera.cpp" />
+    <ClCompile Include="Source\Level\Parser\CollisionParser.cpp" />
+    <ClCompile Include="Source\Level\Parser\DecorParser.cpp" />
+    <ClCompile Include="Source\Level\Parser\EntityParser.cpp" />
+    <ClCompile Include="Source\Level\Parser\EnvironmentParser.cpp" />
+    <ClCompile Include="Source\Level\Parser\ObjectParser.cpp" />
+    <ClCompile Include="Source\Level\Parser\ParallaxParser.cpp" />
     <ClCompile Include="Source\Level\Parser\Parser.cpp" />
+    <ClCompile Include="Source\Level\Parser\TileParser.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\Card.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\CardData.cpp" />
     <ClCompile Include="Source\Minigames\Hexium\CardStorage.cpp" />
@@ -305,7 +315,14 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Level\Backgrounds\MountainBackground.h" />
     <ClInclude Include="Source\Level\Environments\JungleEnvironment.h" />
     <ClInclude Include="Source\Level\LevelCamera.h" />
+    <ClInclude Include="Source\Level\Parser\CollisionParser.h" />
+    <ClInclude Include="Source\Level\Parser\DecorParser.h" />
+    <ClInclude Include="Source\Level\Parser\EntityParser.h" />
+    <ClInclude Include="Source\Level\Parser\EnvironmentParser.h" />
+    <ClInclude Include="Source\Level\Parser\ObjectParser.h" />
+    <ClInclude Include="Source\Level\Parser\ParallaxParser.h" />
     <ClInclude Include="Source\Level\Parser\Parser.h" />
+    <ClInclude Include="Source\Level\Parser\TileParser.h" />
     <ClInclude Include="Source\Minigames\Hexium\Card.h" />
     <ClInclude Include="Source\Minigames\Hexium\CardData.h" />
     <ClInclude Include="Source\Minigames\Hexium\CardStorage.h" />

@@ -132,7 +132,8 @@ TMXLayer::TMXLayer()
 ,_staggerAxis(TMXStaggerAxis_Y)
 ,_staggerIndex(TMXStaggerIndex_Even)
 ,_hexSideLength(0)
-{}
+{
+}
 
 TMXLayer::~TMXLayer()
 {

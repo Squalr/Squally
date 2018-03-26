@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="117" height="96" tilewidth="128" tileheight="128" nextobjectid="182">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="117" height="96" tilewidth="128" tileheight="128" nextobjectid="183">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../Ingame/Tiles/TileMap.png" width="5760" height="3200"/>
  </tileset>
- <objectgroup name="environment"/>
- <objectgroup name="background-parallax">
+ <objectgroup name="PARALLAX_background">
   <object id="134" name="Forest/Ruins4" type="Forest/Ruins4" x="1154.91" y="119.879" width="320" height="640">
    <properties>
     <property name="float-time-x" type="float" value="8"/>
@@ -17,7 +16,7 @@
    </properties>
   </object>
  </objectgroup>
- <layer name="background" width="117" height="96">
+ <layer name="TILES_background" width="117" height="96">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -117,11 +116,18 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="background-decor">
+ <objectgroup name="DECOR_background">
   <object id="139" name="Forest/Thorns10" type="Forest/Thorns10" x="1906.24" y="1290.36" width="279.741" height="259.846"/>
-  <object id="140" name="Forest/Thorns8" type="Forest/Thorns8" x="1913.22" y="1705.73" width="279.741" height="259.846"/>
+  <object id="140" name="Forest/Thorns8" type="Forest/Thorns8" x="1873.83" y="1666.34" width="358.529" height="338.634"/>
  </objectgroup>
- <layer name="midground" width="117" height="96">
+ <objectgroup name="ENV_environment">
+  <properties>
+   <property name="background" value="jungle"/>
+   <property name="music" value="Music/BurdenOfTime.mp3"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
+ <layer name="TILES_midground" width="117" height="96">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -221,23 +227,37 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="midground-decor">
+ <objectgroup name="DECOR_midground">
   <object id="123" name="Forest/GrassPlane6" type="Forest/GrassPlane6" x="2335.26" y="1115.33" width="432" height="90.5454"/>
   <object id="168" name="Forest/Ruins1" type="Forest/Ruins1" x="4291.63" y="820.78" width="512" height="512"/>
  </objectgroup>
- <objectgroup name="objects">
-  <object id="28" name="monitor" type="monitor" x="3182.7" y="964.037" width="288" height="204">
+ <objectgroup name="OBJECTS_objects">
+  <object id="182" name="warp-gate-exact-scan-1" type="warp-gate-exact-scan-1" x="3521.21" y="782.848" width="648.364" height="601.818">
    <properties>
     <property name="dialog" value="DialogTutorialExactScanI"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="entities">
+ <objectgroup name="ENTITIES_entities">
   <object id="72" name="spawn" type="spawn" x="557.243" y="753.006" width="128" height="128"/>
   <object id="144" name="shroom" type="shroom" x="1997.39" y="925.455" width="100.364" height="88.2424"/>
   <object id="180" name="knight" type="knight" x="246.06" y="798.727" width="200" height="288"/>
  </objectgroup>
- <layer name="foreground" width="117" height="96">
+ <objectgroup name="COLLISION_collision">
+  <object id="39" name="solid" type="solid" x="2186.82" y="1326.61" width="3048.67" height="1253"/>
+  <object id="41" name="solid" type="solid" x="2765.04" y="1172.39">
+   <polygon points="0,0 486.022,219.098 0,222.576"/>
+  </object>
+  <object id="49" name="solid" type="solid" x="2190.82" y="1174.61" width="598.667" height="929.333"/>
+  <object id="51" name="solid" type="solid" x="1871.28" y="1220.73" width="345.424" height="99.8788"/>
+  <object id="70" name="solid" type="solid" x="1148.14" y="1190.51" width="757.712" height="1397.15"/>
+  <object id="165" name="solid" type="solid" x="5243.45" y="1078">
+   <polygon points="0,0 1.87499,271.648 -538.125,274"/>
+  </object>
+  <object id="176" name="solid" type="solid" x="21.144" y="1191.12" width="718.318" height="1378.97"/>
+  <object id="177" name="solid" type="solid" x="697.833" y="1195.52" width="518.151" height="105.939"/>
+ </objectgroup>
+ <layer name="TILES_foreground" width="117" height="96">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -337,19 +357,6 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="foreground-decor"/>
- <objectgroup name="collision">
-  <object id="39" name="solid" type="solid" x="2186.82" y="1326.61" width="3048.67" height="1253"/>
-  <object id="41" name="solid" type="solid" x="2765.04" y="1172.39">
-   <polygon points="0,0 486.022,219.098 0,222.576"/>
-  </object>
-  <object id="49" name="solid" type="solid" x="2190.82" y="1174.61" width="598.667" height="929.333"/>
-  <object id="51" name="solid" type="solid" x="1871.28" y="1220.73" width="345.424" height="99.8788"/>
-  <object id="70" name="solid" type="solid" x="1148.14" y="1190.51" width="757.712" height="1397.15"/>
-  <object id="165" name="solid" type="solid" x="5243.45" y="1078">
-   <polygon points="0,0 1.87499,271.648 -538.125,274"/>
-  </object>
-  <object id="176" name="solid" type="solid" x="21.144" y="1191.12" width="718.318" height="1378.97"/>
-  <object id="177" name="solid" type="solid" x="697.833" y="1195.52" width="518.151" height="105.939"/>
- </objectgroup>
+ <objectgroup name="DECOR_foreground"/>
+ <objectgroup name="HUD_hud"/>
 </map>
