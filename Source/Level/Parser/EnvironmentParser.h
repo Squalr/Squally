@@ -11,6 +11,8 @@ using namespace cocos2d;
 class EnvironmentParser
 {
 public:
-static Layer* parse(TMXObjectGroup* objectGroup);
+	static Layer* parseBackground(TMXObjectGroup* objectGroup);
+	static Layer* parseWeather(TMXObjectGroup* objectGroup);
+	static Layer* parseMusic(TMXObjectGroup* objectGroup);
 
 };
