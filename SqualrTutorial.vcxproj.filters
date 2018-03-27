@@ -109,6 +109,9 @@
     <Filter Include="Source\Fight">
       <UniqueIdentifier>{8a90eea5-d921-44a6-993e-18919fca3c49}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\GUI\Menus\LoadingScreen">
+      <UniqueIdentifier>{5b766df7-ace8-43f1-bf59-f0f9d699f795}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -428,6 +431,9 @@
     </ClCompile>
     <ClCompile Include="Source\Level\LevelMap.cpp">
       <Filter>Source\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Menus\LoadingScreen\LoadingScreen.cpp">
+      <Filter>Source\GUI\Menus\LoadingScreen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -763,6 +769,9 @@
     </ClInclude>
     <ClInclude Include="Source\Level\LevelMap.h">
       <Filter>Source\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Menus\LoadingScreen\LoadingScreen.h">
+      <Filter>Source\GUI\Menus\LoadingScreen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

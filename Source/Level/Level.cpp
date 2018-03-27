@@ -50,15 +50,11 @@ void Level::initializeListeners()
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-void Level::loadLevel(std::string levelFile)
+void Level::loadLevel(void* levelMap)
 {
-
 	// Physics / collision debugging
 	//this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, 0.0f));
-
-	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(levelFile);
-	LevelMap::mapSize = Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
 
 	this->hackerModeBackground = Sprite::create(Resources::Ingame_Background_MatrixRain_HackerModeBackground);
 	this->hackerModeRain = MatrixRain::create();
@@ -68,7 +64,8 @@ void Level::loadLevel(std::string levelFile)
 	this->gamePostProcessInversion = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_Inverse);
 	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
 
-	this->map = Parser::parseMap(mapRaw, CC_CALLBACK_1(HackerModeHud::registerHackableObject, this->hackerModeHud));
+	// Unfortunate use of a void* to avoid a cyclic dependency
+	this->map = (LevelMap*)levelMap;
 
 	this->addChild(InputManager::claimInstance());
 

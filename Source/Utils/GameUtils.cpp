@@ -3,7 +3,8 @@
 const std::string GameUtils::gameNavigateNewEvent = "game_navigate_new_event";
 const std::string GameUtils::gameNavigateBackEvent = "game_navigate_back_event";
 const std::string GameUtils::gameNavigateConfirmEvent = "game_navigate_confirm_event";
-const std::string GameUtils::gameNavigateNewLevelEvent = "game_navigate_new_level_event";
+const std::string GameUtils::gameNavigateLoadLevelEvent = "game_navigate_load_level_event";
+const std::string GameUtils::gameNavigateEnterLevelEvent = "game_navigate_enter_level_event";
 
 void GameUtils::navigateBack(int count)
 {
@@ -32,8 +33,16 @@ void GameUtils::navigateConfirm(std::string confirmMessage, std::function<void()
 void GameUtils::loadLevel(std::string levelFile)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		GameUtils::gameNavigateNewLevelEvent,
-		&NavigateNewLevelArgs(levelFile)
+		GameUtils::gameNavigateLoadLevelEvent,
+		&NavigateLoadLevelArgs(levelFile)
+	);
+}
+
+void GameUtils::enterLevel(void* levelMap)
+{
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		GameUtils::gameNavigateEnterLevelEvent,
+		&NavigateEnterLevelArgs(levelMap)
 	);
 }
 
@@ -221,6 +230,18 @@ bool GameUtils::keyExists(ValueMap valueMap, std::string key)
 	auto pointsIterator = valueMap.find(key);
 
 	if (pointsIterator != valueMap.end())
+	{
+		return true;
+	}
+
+	return false;
+}
+
+bool GameUtils::isSupportedImagePath(std::string str)
+{
+	if (StrUtils::endsWith(str, ".png", true) ||
+		StrUtils::endsWith(str, ".jpg", true) ||
+		StrUtils::endsWith(str, ".jpeg", true))
 	{
 		return true;
 	}

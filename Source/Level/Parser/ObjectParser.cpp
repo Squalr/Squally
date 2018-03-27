@@ -1,6 +1,6 @@
 #include "ObjectParser.h"
 
-Layer* ObjectParser::parse(TMXObjectGroup* objectGroup, std::function<void(HackableObject*)> registerHackableCallback)
+Layer* ObjectParser::parse(TMXObjectGroup* objectGroup)
 {
 	Layer* layer = Layer::create();
 	ValueVector objects = objectGroup->getObjects();
@@ -36,8 +36,6 @@ Layer* ObjectParser::parse(TMXObjectGroup* objectGroup, std::function<void(Hacka
 		{
 			throw std::invalid_argument("Invalid object");
 		}
-
-		registerHackableCallback(newObject);
 
 		newObject->setPosition(Vec2(object.at("x").asFloat() + object.at("width").asFloat() / 2, object.at("y").asFloat() + object.at("height").asFloat() / 2));
 		layer->addChild(newObject);
