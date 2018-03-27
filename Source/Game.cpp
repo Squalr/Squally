@@ -15,6 +15,7 @@ Game::Game()
 	this->titleScreen = TitleScreen::create();
 	this->tutorialScreen = TutorialScreen::create();
 	this->storyMap = StoryMap::create();
+	this->loadingScreen = LoadingScreen::create();
 	this->level = Level::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->pauseMenu = PauseMenu::create();
@@ -31,6 +32,7 @@ Game::Game()
 	this->titleScreen->retain();
 	this->tutorialScreen->retain();
 	this->storyMap->retain();
+	this->loadingScreen->retain();
 	this->level->retain();
 	this->optionsMenu->retain();
 	this->pauseMenu->retain();
@@ -56,8 +58,13 @@ void Game::initializeEventListeners()
 	);
 
 	EventListenerCustom* navigateNewLevelEventListener = EventListenerCustom::create(
-		GameUtils::gameNavigateNewLevelEvent,
-		CC_CALLBACK_1(Game::onGameNavigateNewLevel, this)
+		GameUtils::gameNavigateLoadLevelEvent,
+		CC_CALLBACK_1(Game::onGameNavigateLoadLevel, this)
+	);
+
+	EventListenerCustom* navigateEnterLevelEventListener = EventListenerCustom::create(
+		GameUtils::gameNavigateEnterLevelEvent,
+		CC_CALLBACK_1(Game::onGameNavigateEnterLevel, this)
 	);
 
 	EventListenerCustom* navigateConfirmEventListener = EventListenerCustom::create(
@@ -74,6 +81,7 @@ void Game::initializeEventListeners()
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateNewEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateBackEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateNewLevelEventListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateEnterLevelEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateConfirmEventListener, this);
 }
 
@@ -101,6 +109,9 @@ void Game::onGameNavigateNew(EventCustom* eventCustom)
 		break;
 	case GameUtils::GameScreen::Confirm:
 		newScene = this->confirmationMenu;
+		break;
+	case GameUtils::GameScreen::Loading:
+		newScene = this->loadingScreen;
 		break;
 	case GameUtils::GameScreen::Level:
 		newScene = this->level;
@@ -143,12 +154,21 @@ void Game::onGameNavigateConfirm(EventCustom* eventCustom)
 	this->loadScene(this->confirmationMenu);
 }
 
-void Game::onGameNavigateNewLevel(EventCustom* eventCustom)
+void Game::onGameNavigateLoadLevel(EventCustom* eventCustom)
 {
-	GameUtils::NavigateNewLevelArgs* args = (GameUtils::NavigateNewLevelArgs*)(eventCustom->getUserData());
+	GameUtils::NavigateLoadLevelArgs* args = (GameUtils::NavigateLoadLevelArgs*)(eventCustom->getUserData());
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
-	this->level->loadLevel(args->levelFile);
+	this->loadScene(this->loadingScreen);
+	this->loadingScreen->loadLevel(args->levelFile);
+}
+
+void Game::onGameNavigateEnterLevel(EventCustom* eventCustom)
+{
+	GameUtils::NavigateEnterLevelArgs* args = (GameUtils::NavigateEnterLevelArgs*)(eventCustom->getUserData());
+
+	this->sceneHistory->push(Director::getInstance()->getRunningScene());
+	this->level->loadLevel(args->levelMap);
 	this->loadScene(this->level);
 }
 

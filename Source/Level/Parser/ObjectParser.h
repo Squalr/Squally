@@ -9,6 +9,6 @@ using namespace cocos2d;
 class ObjectParser
 {
 public:
-	static Layer* parse(TMXObjectGroup* objectGroup, std::function<void(HackableObject*)> registerHackableCallback);
+	static Layer* parse(TMXObjectGroup* objectGroup);
 	static Sprite* loadObject(ValueMap object);
 };

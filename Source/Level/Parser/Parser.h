@@ -17,5 +17,5 @@ using namespace cocos2d;
 class Parser
 {
 public:
-	static LevelMap* parseMap(cocos_experimental::TMXTiledMap* mapRaw, std::function<void(HackableObject*)> registerHackableCallback);
+	static LevelMap* parseMap(cocos_experimental::TMXTiledMap* mapRaw);
 };

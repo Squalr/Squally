@@ -10,5 +10,5 @@ using namespace cocos2d;
 class EntityParser
 {
 public:
-	static Layer* parse(TMXObjectGroup* objectGroup, std::function<void(HackableObject*)> registerHackableCallback);
+	static Layer* parse(TMXObjectGroup* objectGroup);
 };

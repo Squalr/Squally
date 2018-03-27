@@ -1,6 +1,6 @@
 #include "EntityParser.h"
 
-Layer* EntityParser::parse(TMXObjectGroup* objectGroup, std::function<void(HackableObject*)> registerHackableCallback)
+Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
 {
 	Layer* layer = Layer::create();
 	ValueVector entities = objectGroup->getObjects();
@@ -52,8 +52,6 @@ Layer* EntityParser::parse(TMXObjectGroup* objectGroup, std::function<void(Hacka
 
 			throw std::invalid_argument(error);
 		}
-
-		registerHackableCallback(newEntity);
 
 		newEntity->setPosition(Vec2(entity.at("x").asFloat() + entity.at("width").asFloat() / 2, entity.at("y").asFloat() + entity.at("height").asFloat() / 2));
 		layer->addChild(newEntity);

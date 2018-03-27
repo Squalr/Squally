@@ -3,6 +3,7 @@
 #include "Resources.h"
 #include "GUI/Menus/Title/TitleScreen.h"
 #include "GUI/Menus/Tutorial/TutorialScreen.h"
+#include "GUI/Menus/LoadingScreen/LoadingScreen.h"
 #include "GUI/Menus/Story/StoryMap.h"
 #include "GUI/Menus/Options/OptionsMenu.h"
 #include "GUI/Menus/Pause/PauseMenu.h"
@@ -25,13 +26,15 @@ private:
 	void onGameNavigateNew(EventCustom* eventCustom);
 	void onGameNavigateBack(EventCustom* eventCustom);
 	void onGameNavigateConfirm(EventCustom* eventCustom);
-	void onGameNavigateNewLevel(EventCustom* eventCustom);
+	void onGameNavigateLoadLevel(EventCustom* eventCustom);
+	void onGameNavigateEnterLevel(EventCustom* eventCustom);
 	void loadScene(Scene* scene);
 	void initializeEventListeners();
 
 	TitleScreen* titleScreen;
 	TutorialScreen* tutorialScreen;
 	StoryMap* storyMap;
+	LoadingScreen* loadingScreen;
 	Level* level;
 	OptionsMenu* optionsMenu;
 	PauseMenu* pauseMenu;
