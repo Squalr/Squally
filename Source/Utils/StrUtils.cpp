@@ -105,7 +105,7 @@ std::vector<std::string>* StrUtils::splitOn(std::string str, std::string delimit
 
 bool StrUtils::isInteger(std::string  str)
 {
-	if (StrUtils::startsWith(str, "-"))
+	if (StrUtils::startsWith(str, "-", false))
 	{
 		str = str.substr(1, str.size() - 1);
 	}
@@ -125,7 +125,7 @@ bool StrUtils::isFloat(std::string str)
 
 bool StrUtils::isHexNumber(std::string str)
 {
-	if (StrUtils::startsWith(str, "0x"))
+	if (StrUtils::startsWith(str, "0x", false))
 	{
 		str = str.substr(2, str.size() - 2);
 		return !str.empty() && str.find_first_not_of("0123456789abcdefABCDEF") == std::string::npos;
@@ -134,11 +134,44 @@ bool StrUtils::isHexNumber(std::string str)
 	return false;
 }
 
-bool StrUtils::startsWith(std::string str, std::string prefix)
+bool StrUtils::startsWith(std::string str, std::string prefix, bool ignoreCase)
 {
 	if (str.size() >= prefix.size())
 	{
-		if (str.substr(0, prefix.size()) == prefix)
+		std::string stringStart = str.substr(0, prefix.size());
+
+		if (ignoreCase)
+		{
+			if (stricmp(stringStart.c_str(), prefix.c_str()) == 0)
+			{
+				return true;
+			}
+		}
+
+		if (stringStart == prefix)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool StrUtils::endsWith(std::string str, std::string suffix, bool ignoreCase)
+{
+	if (str.size() >= suffix.size())
+	{
+		std::string stringEnd = str.substr(str.size() - suffix.size(), suffix.size());
+
+		if (ignoreCase)
+		{
+			if (stricmp(stringEnd.c_str(), suffix.c_str()) == 0)
+			{
+				return true;
+			}
+		}
+
+		if (stringEnd == suffix)
 		{
 			return true;
 		}

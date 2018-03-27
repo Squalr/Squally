@@ -268,7 +268,7 @@ void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWind
 		std::vector<std::string>* tokenStrings;
 
 		// Tokenize the string if it isn't a comment -- otherwise treat it as one token
-		if (!StrUtils::startsWith(*joinedTextIterator, ";"))
+		if (!StrUtils::startsWith(*joinedTextIterator, ";", false))
 		{
 			tokenStrings = StrUtils::tokenize(*joinedTextIterator, CodeEditor::delimiters);
 		}
@@ -292,7 +292,7 @@ void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWind
 			{
 				color = CodeEditor::numberColor;
 			}
-			else if (StrUtils::startsWith(token, ";"))
+			else if (StrUtils::startsWith(token, ";", false))
 			{
 				color = CodeEditor::commentColor;
 			}

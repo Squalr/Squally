@@ -4,7 +4,6 @@
 #include "Level/Backgrounds/MatrixRain/MatrixRain.h"
 #include "Level/LevelCamera.h"
 #include "Level/LevelMap.h"
-#include "Level/Parser/Parser.h"
 #include "Entities/Player/Player.h"
 #include "Input/InputManager.h"
 #include "Utils/GameUtils.h"
@@ -24,7 +23,7 @@ class Level : public FadeScene
 public:
 	static Level* create();
 
-	void loadLevel(std::string levelFile);
+	void loadLevel(void* levelMap);
 
 protected:
 	Level();

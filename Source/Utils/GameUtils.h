@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Gui/Components/Mouse.h"
+#include "Utils/StrUtils.h"
 
 using namespace cocos2d;
 
@@ -10,7 +11,8 @@ public:
 	static const std::string gameNavigateNewEvent;
 	static const std::string gameNavigateBackEvent;
 	static const std::string gameNavigateConfirmEvent;
-	static const std::string gameNavigateNewLevelEvent;
+	static const std::string gameNavigateLoadLevelEvent;
+	static const std::string gameNavigateEnterLevelEvent;
 
 	enum GameScreen {
 		Title,
@@ -19,6 +21,7 @@ public:
 		Pause,
 		Options,
 		Confirm,
+		Loading,
 		Level,
 		Hexium,
 	};
@@ -37,11 +40,18 @@ public:
 		NavigateEventArgs(GameScreen gameScreen) : gameScreen(gameScreen) { }
 	};
 
-	struct NavigateNewLevelArgs
+	struct NavigateLoadLevelArgs
 	{
 		std::string levelFile;
 
-		NavigateNewLevelArgs(std::string levelFile) : levelFile(levelFile) { }
+		NavigateLoadLevelArgs(std::string levelFile) : levelFile(levelFile) { }
+	};
+
+	struct NavigateEnterLevelArgs
+	{
+		void* levelMap;
+
+		NavigateEnterLevelArgs(void* levelMap) : levelMap(levelMap) { }
 	};
 
 	struct NavigateConfirmArgs
@@ -58,6 +68,7 @@ public:
 	static void navigate(GameScreen gameScreen);
 	static void navigateConfirm(std::string confirmMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
 	static void loadLevel(std::string levelFile);
+	static void enterLevel(void* levelMap);
 	static void pause(Node *node);
 	static void resume(Node *node);
 	static void resumeAll();
@@ -72,5 +83,6 @@ public:
 	static bool intersects(Node* node, Vec2 mousePos);
 	static bool intersectsV2(Node* node, Vec2 mousePos);
 	static bool keyExists(ValueMap valueMap, std::string key);
+	static bool isSupportedImagePath(std::string str);
 };
 

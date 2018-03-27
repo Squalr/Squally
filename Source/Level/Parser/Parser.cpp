@@ -1,6 +1,6 @@
 #include "Parser.h"
 
-LevelMap* Parser::parseMap(cocos_experimental::TMXTiledMap* mapRaw, std::function<void(HackableObject*)> registerHackableCallback)
+LevelMap* Parser::parseMap(cocos_experimental::TMXTiledMap* mapRaw)
 {
 	LevelMap* map = LevelMap::create();
 	std::map<int, std::string> layers = std::map<int, std::string>();
@@ -28,22 +28,22 @@ LevelMap* Parser::parseMap(cocos_experimental::TMXTiledMap* mapRaw, std::functio
 	{
 		std::string layerName = it->second;
 
-		if (StrUtils::startsWith(layerName, "TILES_"))
+		if (StrUtils::startsWith(layerName, "TILES_", false))
 		{
 			Layer* tileLayer = TileParser::parse(mapRaw->getLayer(layerName));
 			map->insertDynamicMember(tileLayer, true);
 		}
-		else if (StrUtils::startsWith(layerName, "COLLISION_"))
+		else if (StrUtils::startsWith(layerName, "COLLISION_", false))
 		{
 			Layer* collisionLayer = CollisionParser::parse(mapRaw->getObjectGroup(layerName));
 			map->insertDynamicMember(collisionLayer, false);
 		}
-		else if (StrUtils::startsWith(layerName, "DECOR_"))
+		else if (StrUtils::startsWith(layerName, "DECOR_", false))
 		{
 			Layer* decorLayer = DecorParser::parse(mapRaw->getObjectGroup(layerName));
 			map->insertDynamicMember(decorLayer, true);
 		}
-		else if (StrUtils::startsWith(layerName, "ENV_"))
+		else if (StrUtils::startsWith(layerName, "ENV_", false))
 		{
 			Layer* backgroundLayer = EnvironmentParser::parseBackground(mapRaw->getObjectGroup(layerName));
 			Layer* weatherLayer = EnvironmentParser::parseWeather(mapRaw->getObjectGroup(layerName));
@@ -53,17 +53,17 @@ LevelMap* Parser::parseMap(cocos_experimental::TMXTiledMap* mapRaw, std::functio
 			map->insertDynamicMember(weatherLayer, true);
 			map->insertStaticMember(musicLayer, true);
 		}
-		else if (StrUtils::startsWith(layerName, "OBJECTS_"))
+		else if (StrUtils::startsWith(layerName, "OBJECTS_", false))
 		{
-			Layer* objectLayer = ObjectParser::parse(mapRaw->getObjectGroup(layerName), registerHackableCallback);
+			Layer* objectLayer = ObjectParser::parse(mapRaw->getObjectGroup(layerName));
 			map->insertDynamicMember(objectLayer, false);
 		}
-		else if (StrUtils::startsWith(layerName, "ENTITIES_"))
+		else if (StrUtils::startsWith(layerName, "ENTITIES_", false))
 		{
-			Layer* entityLayer = EntityParser::parse(mapRaw->getObjectGroup(layerName), registerHackableCallback);
+			Layer* entityLayer = EntityParser::parse(mapRaw->getObjectGroup(layerName));
 			map->insertDynamicMember(entityLayer, false);
 		}
-		else if (StrUtils::startsWith(layerName, "PARALLAX_"))
+		else if (StrUtils::startsWith(layerName, "PARALLAX_", false))
 		{
 			Layer* parallaxLayer = ParallaxParser::parse(mapRaw->getObjectGroup(layerName));
 			map->insertDynamicMember(parallaxLayer, true);
