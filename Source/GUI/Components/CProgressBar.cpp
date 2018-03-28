@@ -20,6 +20,7 @@ CProgressBar::CProgressBar()
 
 	this->progressBar->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->progressClip->addChild(this->progressBar);
+	this->setProgress(0.0f);
 
 	this->addChild(this->frame);
 	this->addChild(this->progressClip);

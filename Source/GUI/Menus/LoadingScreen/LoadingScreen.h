@@ -1,6 +1,4 @@
 #pragma once
-#include <iostream>
-#include <filesystem>
 #include "cocos2d.h"
 #include "Resources.h"
 #include "GUI/Menus/MenuBackground.h"
@@ -11,6 +9,7 @@
 #include <mutex>
 
 using namespace cocos2d;
+using namespace cocos_experimental;
 
 class LoadingScreen : public FadeScene
 {
@@ -25,8 +24,14 @@ protected:
 
 private:
 	void onEnter() override;
-	void onAssetLoaded(Texture2D* asset);
+	void onFileEnumerationComplete(std::vector<std::string> files);
+	void onTextureAssetLoaded(Texture2D* asset);
+	void onSoundAssetLoaded();
+	void incrementLoadedFileCount();
 	void initializePositions();
+
+	static bool isPreloadableImage(std::string filePath);
+	static bool isPreloadableSound(std::string filePath);
 
 	Node* background;
 	Sprite* loadingWindow;
