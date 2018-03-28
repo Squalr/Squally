@@ -1023,6 +1023,8 @@ public:
 	static const std::string Menus_IntroMenu_Scene3_Scene3_Apple;
 	static const std::string Menus_IntroMenu_Scene3_Scene3_Player;
 	static const std::string Menus_IntroMenu_Scene3_Scene3_TRex;
+	static const std::string Menus_LoadingMenu_LoadingFrame;
+	static const std::string Menus_LoadingMenu_LoadingFrameFill;
 	static const std::string Menus_OptionsMenu_CheckboxEmpty;
 	static const std::string Menus_OptionsMenu_CheckboxHover;
 	static const std::string Menus_OptionsMenu_CheckboxSelected;
