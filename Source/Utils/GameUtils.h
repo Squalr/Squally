@@ -83,6 +83,5 @@ public:
 	static bool intersects(Node* node, Vec2 mousePos);
 	static bool intersectsV2(Node* node, Vec2 mousePos);
 	static bool keyExists(ValueMap valueMap, std::string key);
-	static bool isSupportedImagePath(std::string str);
 };
 

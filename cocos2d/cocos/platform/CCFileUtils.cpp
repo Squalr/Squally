@@ -26,6 +26,8 @@ THE SOFTWARE.
 #include "platform/CCFileUtils.h"
 
 #include <stack>
+#include <iostream>
+#include <filesystem>
 
 #include "base/CCData.h"
 #include "base/ccMacros.h"
@@ -1198,10 +1200,15 @@ void FileUtils::listFilesAsync(const std::string& dirPath, std::function<void(st
 
 void FileUtils::listFilesRecursivelyAsync(const std::string& dirPath, std::function<void(std::vector<std::string>)> callback) const
 {
-	auto fullPath = fullPathForFilename(dirPath);
-	performOperationOffthread([fullPath]() {
+	performOperationOffthread([dirPath]() {
 		std::vector<std::string> retval;
-		FileUtils::getInstance()->listFilesRecursively(fullPath, &retval);
+		for (std::tr2::sys::recursive_directory_iterator it(dirPath), end; it != end; ++it)
+		{
+			if (!std::tr2::sys::is_directory(it->path()))
+			{
+				retval.push_back(it->path().generic_string());
+			}
+		}
 		return retval;
 	}, std::move(callback));
 }
