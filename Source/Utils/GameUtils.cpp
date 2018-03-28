@@ -236,15 +236,3 @@ bool GameUtils::keyExists(ValueMap valueMap, std::string key)
 
 	return false;
 }
-
-bool GameUtils::isSupportedImagePath(std::string str)
-{
-	if (StrUtils::endsWith(str, ".png", true) ||
-		StrUtils::endsWith(str, ".jpg", true) ||
-		StrUtils::endsWith(str, ".jpeg", true))
-	{
-		return true;
-	}
-
-	return false;
-}
