@@ -267,17 +267,16 @@ void OptionsMenu::initializeListeners()
 void OptionsMenu::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	this->optionsWindow->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
-	this->closeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 302.0f, origin.y + visibleSize.height / 2 + 228.0f));
+	this->optionsWindow->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+	this->closeButton->setPosition(Vec2(visibleSize.width / 2 + 302.0f, visibleSize.height / 2 + 228.0f));
 
-	this->soundIcon->setPosition(Vec2(origin.x + visibleSize.width / 2 - 276.0f, origin.y + visibleSize.height / 2 + 144.0f));
-	this->musicIcon->setPosition(Vec2(origin.x + visibleSize.width / 2 - 276.0f, origin.y + visibleSize.height / 2 + 64.0f));
-	this->soundSlider->setPosition(Vec2(origin.x + visibleSize.width / 2 + 32.0f, origin.y + visibleSize.height / 2 + 144.0f));
-	this->musicSlider->setPosition(Vec2(origin.x + visibleSize.width / 2 + 32.0f, origin.y + visibleSize.height / 2 + 64.0f));
-	this->fullScreenLabel->setPosition(Vec2(origin.x + visibleSize.width / 2 - 216.0f, origin.y + visibleSize.height / 2 - 8.0f));
-	this->fullScreenButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - 32.0f, origin.y + visibleSize.height / 2 - 8.0f));
+	this->soundIcon->setPosition(Vec2(visibleSize.width / 2 - 276.0f, visibleSize.height / 2 + 144.0f));
+	this->musicIcon->setPosition(Vec2(visibleSize.width / 2 - 276.0f, visibleSize.height / 2 + 64.0f));
+	this->soundSlider->setPosition(Vec2(visibleSize.width / 2 + 32.0f, visibleSize.height / 2 + 144.0f));
+	this->musicSlider->setPosition(Vec2(visibleSize.width / 2 + 32.0f, visibleSize.height / 2 + 64.0f));
+	this->fullScreenLabel->setPosition(Vec2(visibleSize.width / 2 - 216.0f, visibleSize.height / 2 - 8.0f));
+	this->fullScreenButton->setPosition(Vec2(visibleSize.width / 2 - 32.0f, visibleSize.height / 2 - 8.0f));
 
 	const float spacing = 128.0f;
 	const float base = 232.0f;
@@ -285,27 +284,27 @@ void OptionsMenu::initializePositions()
 	const float offsetY = 48.0f;
 	const float textOffset = 64.0f;
 
-	this->label1080x768->setPosition(Vec2(origin.x + visibleSize.width / 2 - base + spacing * 0, origin.y + visibleSize.height / 2 + baseY));
-	this->label1152x864->setPosition(Vec2(origin.x + visibleSize.width / 2 - base + spacing * 0, origin.y + visibleSize.height / 2 + baseY - offsetY));
-	this->label1280x720->setPosition(Vec2(origin.x + visibleSize.width / 2 - base + spacing * 1, origin.y + visibleSize.height / 2 + baseY));
-	this->label1280x960->setPosition(Vec2(origin.x + visibleSize.width / 2 - base + spacing * 1, origin.y + visibleSize.height / 2 + baseY - offsetY));
-	this->label1280x1024->setPosition(Vec2(origin.x + visibleSize.width / 2 - base + spacing * 2, origin.y + visibleSize.height / 2 + baseY));
-	this->label1440x900->setPosition(Vec2(origin.x + visibleSize.width / 2 - base + spacing * 2, origin.y + visibleSize.height / 2 + baseY - offsetY));
-	this->label1600x900->setPosition(Vec2(origin.x + visibleSize.width / 2 - base + spacing * 3, origin.y + visibleSize.height / 2 + baseY));
-	this->label1600x1024->setPosition(Vec2(origin.x + visibleSize.width / 2 - base + spacing * 3, origin.y + visibleSize.height / 2 + baseY - offsetY));
-	this->label1920x1080->setPosition(Vec2(origin.x + visibleSize.width / 2 - base + spacing * 4, origin.y + visibleSize.height / 2 + baseY));
+	this->label1080x768->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 0, visibleSize.height / 2 + baseY));
+	this->label1152x864->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 0, visibleSize.height / 2 + baseY - offsetY));
+	this->label1280x720->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 1, visibleSize.height / 2 + baseY));
+	this->label1280x960->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 1, visibleSize.height / 2 + baseY - offsetY));
+	this->label1280x1024->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 2, visibleSize.height / 2 + baseY));
+	this->label1440x900->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 2, visibleSize.height / 2 + baseY - offsetY));
+	this->label1600x900->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 3, visibleSize.height / 2 + baseY));
+	this->label1600x1024->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 3, visibleSize.height / 2 + baseY - offsetY));
+	this->label1920x1080->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 4, visibleSize.height / 2 + baseY));
 
-	this->option1080x768->setPosition(Vec2(origin.x + visibleSize.width / 2 - (base + textOffset) + spacing * 0, origin.y + visibleSize.height / 2 + baseY));
-	this->option1152x864->setPosition(Vec2(origin.x + visibleSize.width / 2 - (base + textOffset) + spacing * 0, origin.y + visibleSize.height / 2 + baseY - offsetY));
-	this->option1280x720->setPosition(Vec2(origin.x + visibleSize.width / 2 - (base + textOffset) + spacing * 1, origin.y + visibleSize.height / 2 + baseY));
-	this->option1280x960->setPosition(Vec2(origin.x + visibleSize.width / 2 - (base + textOffset) + spacing * 1, origin.y + visibleSize.height / 2 + baseY - offsetY));
-	this->option1280x1024->setPosition(Vec2(origin.x + visibleSize.width / 2 - (base + textOffset) + spacing * 2, origin.y + visibleSize.height / 2 + baseY));
-	this->option1440x900->setPosition(Vec2(origin.x + visibleSize.width / 2 - (base + textOffset) + spacing * 2, origin.y + visibleSize.height / 2 + baseY - offsetY));
-	this->option1600x900->setPosition(Vec2(origin.x + visibleSize.width / 2 - (base + textOffset) + spacing * 3, origin.y + visibleSize.height / 2 + baseY));
-	this->option1600x1024->setPosition(Vec2(origin.x + visibleSize.width / 2 - (base + textOffset) + spacing * 3, origin.y + visibleSize.height / 2 + baseY - offsetY));
-	this->option1920x1080->setPosition(Vec2(origin.x + visibleSize.width / 2 - (base + textOffset) + spacing * 4, origin.y + visibleSize.height / 2 + baseY));
+	this->option1080x768->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 0, visibleSize.height / 2 + baseY));
+	this->option1152x864->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 0, visibleSize.height / 2 + baseY - offsetY));
+	this->option1280x720->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 1, visibleSize.height / 2 + baseY));
+	this->option1280x960->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 1, visibleSize.height / 2 + baseY - offsetY));
+	this->option1280x1024->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 2, visibleSize.height / 2 + baseY));
+	this->option1440x900->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 2, visibleSize.height / 2 + baseY - offsetY));
+	this->option1600x900->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 3, visibleSize.height / 2 + baseY));
+	this->option1600x1024->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 3, visibleSize.height / 2 + baseY - offsetY));
+	this->option1920x1080->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 4, visibleSize.height / 2 + baseY));
 
-	this->exitButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 196.0f));
+	this->exitButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 196.0f));
 
 	this->musicSlider->initializePositions();
 	this->soundSlider->initializePositions();

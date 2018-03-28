@@ -435,6 +435,9 @@
     <ClCompile Include="Source\GUI\Menus\LoadingScreen\LoadingScreen.cpp">
       <Filter>Source\GUI\Menus\LoadingScreen</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GUI\Components\CProgressBar.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -772,6 +775,9 @@
     </ClInclude>
     <ClInclude Include="Source\GUI\Menus\LoadingScreen\LoadingScreen.h">
       <Filter>Source\GUI\Menus\LoadingScreen</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\CProgressBar.h">
+      <Filter>Source\GUI\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

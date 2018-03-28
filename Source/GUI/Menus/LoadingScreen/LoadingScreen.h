@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "GUI/Menus/MenuBackground.h"
+#include "GUI/Components/CProgressBar.h"
 #include "GUI/Components/FadeScene.h"
 #include "Utils/StrUtils.h"
 #include "Level/Parser/Parser.h"
@@ -25,9 +26,12 @@ protected:
 private:
 	void onEnter() override;
 	void onAssetLoaded(Texture2D* asset);
+	void initializePositions();
 
 	Node* background;
 	Sprite* loadingWindow;
+	CProgressBar* progressBar;
+
 	int totalFileCount;
 	std::atomic_int loadedFileCount;
 	std::string currentLevelFile;
