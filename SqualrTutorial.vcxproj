@@ -169,6 +169,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Entities\Player\Hover.cpp" />
     <ClCompile Include="Source\Entities\Player\Player.cpp" />
     <ClCompile Include="Source\Fight\Fight.cpp" />
+    <ClCompile Include="Source\GUI\Components\CProgressBar.cpp" />
     <ClCompile Include="Source\GUI\Components\EditableTextWindow.cpp" />
     <ClCompile Include="Source\GUI\Components\FadeScene.cpp" />
     <ClCompile Include="Source\GUI\Components\FloatingSprite.cpp" />
@@ -279,6 +280,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Entities\Player\Hover.h" />
     <ClInclude Include="Source\Entities\Player\Player.h" />
     <ClInclude Include="Source\Fight\Fight.h" />
+    <ClInclude Include="Source\GUI\Components\CProgressBar.h" />
     <ClInclude Include="Source\GUI\Components\EditableTextWindow.h" />
     <ClInclude Include="Source\GUI\Components\FadeScene.h" />
     <ClInclude Include="Source\GUI\Components\FloatingSprite.h" />
