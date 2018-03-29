@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "Config/SoundManager.h"
 #include "Utils/GameUtils.h"
 #include "Level/Backgrounds/JungleBackground.h"
 #include "Level/Backgrounds/MountainBackground.h"
@@ -13,6 +14,5 @@ class EnvironmentParser
 public:
 	static Layer* parseBackground(TMXObjectGroup* objectGroup);
 	static Layer* parseWeather(TMXObjectGroup* objectGroup);
-	static Layer* parseMusic(TMXObjectGroup* objectGroup);
-
+	static void playMusic(TMXObjectGroup* objectGroup);
 };

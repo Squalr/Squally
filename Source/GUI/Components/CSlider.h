@@ -23,7 +23,7 @@ private:
 
 	MenuSprite* slide;
 	Sprite* frame;
-	Sprite* progressBar;
+	MenuSprite* progressBar;
 	ClippingRectangleNode* progressClip;
 
 	float progress;
