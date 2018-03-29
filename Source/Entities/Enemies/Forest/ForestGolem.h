@@ -6,10 +6,10 @@
 
 using namespace cocos2d;
 
-class Shroom : public Entity
+class Snail : public Entity
 {
 public:
-	static Shroom * create();
+	static Snail * create();
 
 protected:
 	bool contactBegin(CollisionData data) override;
@@ -17,15 +17,14 @@ protected:
 	bool contactEnd(CollisionData data) override;
 
 private:
-	Shroom();
-	~Shroom();
+	Snail();
+	~Snail();
 
-	void registerHackables();
 	void update(float) override;
 
 	Animation* walkAnimation;
 	Animation* jumpAnimation;
 	Animation* deathAnimation;
 
-	Sprite* shroomSprite;
+	Sprite* snailSprite;
 };

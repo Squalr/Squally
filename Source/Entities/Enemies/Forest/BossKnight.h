@@ -6,10 +6,10 @@
 
 using namespace cocos2d;
 
-class Poly : public Entity
+class Snail : public Entity
 {
 public:
-	static Poly * create();
+	static Snail * create();
 
 protected:
 	bool contactBegin(CollisionData data) override;
@@ -17,8 +17,8 @@ protected:
 	bool contactEnd(CollisionData data) override;
 
 private:
-	Poly();
-	~Poly();
+	Snail();
+	~Snail();
 
 	void update(float) override;
 
@@ -26,5 +26,5 @@ private:
 	Animation* jumpAnimation;
 	Animation* deathAnimation;
 
-	Sprite* polySprite;
+	Sprite* snailSprite;
 };

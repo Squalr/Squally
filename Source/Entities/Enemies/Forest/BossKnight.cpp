@@ -1,15 +1,15 @@
-#include "Poly.h"
+#include "Snail.h"
 
-Poly* Poly::create()
+Snail* Snail::create()
 {
-	Poly* poly = new Poly();
+	Snail* snail = new Snail();
 
-	poly->autorelease();
+	snail->autorelease();
 
-	return poly;
+	return snail;
 }
 
-Poly::Poly() : Entity::Entity()
+Snail::Snail() : Entity::Entity()
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
@@ -20,26 +20,26 @@ Poly::Poly() : Entity::Entity()
 	this->movement.y = 0.0f;
 
 	this->spriteNode = Node::create();
-	this->polySprite = Sprite::create(Resources::Ingame_Sprites_Poly_idle_1);
+	this->snailSprite = Sprite::create(Resources::Ingame_Sprites_Snail_SnailWalking1);
 	this->walkAnimation = Animation::create();
-	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Poly_idle_1);
-	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Poly_idle_1);
-	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Poly_idle_1);
-	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Poly_idle_1);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Snail_SnailWalking1);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Snail_SnailWalking2);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Snail_SnailWalking3);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Snail_SnailWalking4);
 	this->walkAnimation->setDelayPerUnit(0.15f);
-	this->polySprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
+	this->snailSprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
 
-	this->init(PhysicsBody::createBox(this->polySprite->getContentSize()), CategoryGroup::G_Enemy, true, false);
+	this->init(PhysicsBody::createBox(this->snailSprite->getContentSize()), CategoryGroup::G_Enemy, true, false);
 
-	this->spriteNode->addChild(this->polySprite);
+	this->spriteNode->addChild(this->snailSprite);
 	this->addChild(this->spriteNode);
 }
 
-Poly::~Poly()
+Snail::~Snail()
 {
 }
 
-void Poly::update(float dt)
+void Snail::update(float dt)
 {
 	Entity::update(dt);
 
@@ -48,29 +48,29 @@ void Poly::update(float dt)
 	/*
 	if (this->getRotation() < -15.0f)
 	{
-	this->setRotation(-15.0f);
+		this->setRotation(-15.0f);
 	}
 	else if (this->getRotation() > 15.0f)
 	{
-	this->setRotation(15.0f);
+		this->setRotation(15.0f);
 	}*/
 
 	if (this->movement.x < 0.0f)
 	{
-		this->polySprite->setFlippedX(true);
+		this->snailSprite->setFlippedX(true);
 	}
 	else
 	{
-		this->polySprite->setFlippedX(false);
+		this->snailSprite->setFlippedX(false);
 	}
 }
 
-bool Poly::contactBegin(CollisionData data)
+bool Snail::contactBegin(CollisionData data)
 {
 	return false;
 }
 
-bool Poly::contactUpdate(CollisionData data)
+bool Snail::contactUpdate(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
@@ -101,7 +101,7 @@ bool Poly::contactUpdate(CollisionData data)
 	return false;
 }
 
-bool Poly::contactEnd(CollisionData data)
+bool Snail::contactEnd(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
