@@ -25,13 +25,13 @@ void SoundManager::playMusicResource(std::string musicResource)
 {
 	SoundManager* instance = SoundManager::getInstance();
 
-	if (instance->backgroundMusicId != SoundManager::INVALID_ID)
-	{
-		AudioEngine::stop(instance->backgroundMusicId);
-	}
-
 	if (instance->currentMusicResource != musicResource)
 	{
+		if (instance->backgroundMusicId != SoundManager::INVALID_ID)
+		{
+			AudioEngine::stop(instance->backgroundMusicId);
+		}
+
 		instance->currentMusicResource = musicResource;
 		instance->backgroundMusicId = AudioEngine::play2d(musicResource, true, instance->getMusicVolume());
 	}
