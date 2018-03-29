@@ -47,11 +47,10 @@ LevelMap* Parser::parseMap(cocos_experimental::TMXTiledMap* mapRaw)
 		{
 			Layer* backgroundLayer = EnvironmentParser::parseBackground(mapRaw->getObjectGroup(layerName));
 			Layer* weatherLayer = EnvironmentParser::parseWeather(mapRaw->getObjectGroup(layerName));
-			Layer* musicLayer = EnvironmentParser::parseMusic(mapRaw->getObjectGroup(layerName));
+			EnvironmentParser::playMusic(mapRaw->getObjectGroup(layerName));
 
 			map->insertStaticMember(backgroundLayer, true);
 			map->insertDynamicMember(weatherLayer, true);
-			map->insertStaticMember(musicLayer, true);
 		}
 		else if (StrUtils::startsWith(layerName, "OBJECTS_", false))
 		{
