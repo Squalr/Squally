@@ -20,7 +20,7 @@ Knight::Knight() : NpcBase::NpcBase()
 	this->movement.y = 0.0f;
 
 	this->spriteNode = Node::create();
-	this->knightSprite = Sprite::create(Resources::Ingame_Sprites_Knight_KnightStanding);
+	this->knightSprite = Sprite::create(Resources::Entities_Player_SquallyBase);
 
 	this->init(PhysicsBody::createBox(this->knightSprite->getContentSize()), CategoryGroup::G_Npc, true, false);
 

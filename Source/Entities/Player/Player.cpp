@@ -23,11 +23,11 @@ Player::Player() : Entity::Entity()
 	this->inputManager = InputManager::getInstance();
 
 	this->spriteNode = Node::create();
-	this->baseSprite = Sprite::create(Resources::Ingame_Sprites_Player_SquallyBase);
-	this->mouthSprite = Sprite::create(Resources::Ingame_Sprites_Player_SquallyMouthOpen);
-	this->eyesSprite = Sprite::create(Resources::Ingame_Sprites_Player_SquallyEyesOpen);
+	this->baseSprite = Sprite::create(Resources::Entities_Player_SquallyBase);
+	this->mouthSprite = Sprite::create(Resources::Entities_Player_SquallyMouthOpen);
+	this->eyesSprite = Sprite::create(Resources::Entities_Player_SquallyEyesOpen);
 	this->wandNode = Node::create();
-	this->armSprite = Sprite::create(Resources::Ingame_Sprites_Player_SquallyFrontArm);
+	this->armSprite = Sprite::create(Resources::Entities_Player_SquallyFrontArm);
 	this->init(PhysicsBody::createBox(this->baseSprite->getContentSize() * Player::playerScale), CategoryGroup::G_Player, true, false);
 	this->hover = Hover::create(this);
 
@@ -146,25 +146,25 @@ void Player::equipWand(Wand wand)
 	switch (wand)
 	{/*
 	case Stick:
-		this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandStick);
+		this->wandSprite = Sprite::create(Resources::Sprites_Player_WandStick);
 		break;
 	case Snake:
-		this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandSnake);
+		this->wandSprite = Sprite::create(Resources::Sprites_Player_WandSnake);
 		break;
 	case Ancient:
-		this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandAncient);
+		this->wandSprite = Sprite::create(Resources::Sprites_Player_WandAncient);
 		break;
 	case Spider:
-		this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandSpider);
+		this->wandSprite = Sprite::create(Resources::Sprites_Player_WandSpider);
 		break;
 	case Crystal:
-		this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandCrystal);
+		this->wandSprite = Sprite::create(Resources::Sprites_Player_WandCrystal);
 		break;
 	case Dragon:
-		this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandDragon);
+		this->wandSprite = Sprite::create(Resources::Sprites_Player_WandDragon);
 		break;
 	case Skeleton:
-		this->wandSprite = Sprite::create(Resources::Ingame_Sprites_Player_WandSkeleton);
+		this->wandSprite = Sprite::create(Resources::Sprites_Player_WandSkeleton);
 		break;*/
 	case None:
 	default:

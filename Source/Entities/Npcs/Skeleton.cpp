@@ -20,7 +20,7 @@ Skeleton::Skeleton() : NpcBase::NpcBase()
 	this->movement.y = 0.0f;
 
 	this->spriteNode = Node::create();
-	this->skeletonSprite = Sprite::create(Resources::Ingame_Sprites_Knight_KnightStanding);
+	this->skeletonSprite = Sprite::create(Resources::Entities_Environment_Ruins_SkeletalMage_attack__000);
 
 	this->init(PhysicsBody::createBox(this->skeletonSprite->getContentSize()), CategoryGroup::G_Npc, true, false);
 

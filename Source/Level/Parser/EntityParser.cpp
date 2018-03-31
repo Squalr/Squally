@@ -22,22 +22,6 @@ Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
 		{
 			newEntity = Player::create();
 		}
-		else if (type == "bat")
-		{
-			newEntity = Bat::create();
-		}
-		else if (type == "shroom")
-		{
-			newEntity = Shroom::create();
-		}
-		else if (type == "snail")
-		{
-			newEntity = Snail::create();
-		}
-		else if (type == "poly")
-		{
-			newEntity = Poly::create();
-		}
 		else if (type == "knight")
 		{
 			newEntity = Knight::create();
@@ -48,9 +32,7 @@ Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
 		}
 		else
 		{
-			const std::string error = "Invalid entity: " + type;
-
-			throw std::invalid_argument(error);
+			continue;
 		}
 
 		newEntity->setPosition(Vec2(entity.at("x").asFloat() + entity.at("width").asFloat() / 2, entity.at("y").asFloat() + entity.at("height").asFloat() / 2));
