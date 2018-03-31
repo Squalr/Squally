@@ -11,11 +11,11 @@ JungleBackground* JungleBackground::create()
 
 JungleBackground::JungleBackground()
 {
-	this->background = Sprite::create(Resources::Ingame_Background_Jungle_Background);
-	this->layer6 = InfiniteParallaxNode::create(Resources::Ingame_Background_Jungle_Layer_6);
-	this->layer5 = InfiniteParallaxNode::create(Resources::Ingame_Background_Jungle_Layer_5);
-	this->layer4 = InfiniteParallaxNode::create(Resources::Ingame_Background_Jungle_Layer_4);
-	this->layer2 = InfiniteParallaxNode::create(Resources::Ingame_Background_Jungle_Layer_2);
+	this->background = Sprite::create(Resources::Backgrounds_Jungle_Background);
+	this->layer6 = InfiniteParallaxNode::create(Resources::Backgrounds_Jungle_Layer_6);
+	this->layer5 = InfiniteParallaxNode::create(Resources::Backgrounds_Jungle_Layer_5);
+	this->layer4 = InfiniteParallaxNode::create(Resources::Backgrounds_Jungle_Layer_4);
+	this->layer2 = InfiniteParallaxNode::create(Resources::Backgrounds_Jungle_Layer_2);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();

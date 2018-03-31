@@ -13,9 +13,9 @@ WarpGate::WarpGate()
 {
 	this->isOpen = false;
 
-	this->gateOpen = Sprite::create(Resources::Ingame_Objects_WarpGateOpen);
-	this->gateClosed = Sprite::create(Resources::Ingame_Objects_WarpGateClosed);
-	this->gateClosedLights = Sprite::create(Resources::Ingame_Objects_WarpGateClosedLights);
+	this->gateOpen = Sprite::create(Resources::Objects_WarpGateOpen);
+	this->gateClosed = Sprite::create(Resources::Objects_WarpGateClosed);
+	this->gateClosedLights = Sprite::create(Resources::Objects_WarpGateClosedLights);
 	this->gateClosedLightsNode = Node::create();
 	this->gateParticles = ParticleSystemQuad::create(Resources::Particles_WarpGate);
 
@@ -76,7 +76,7 @@ WarpGate::~WarpGate()
 
 void WarpGate::registerHackables()
 {
-	this->setPreviewImage(Resources::Ingame_Objects_WarpGateOpen);
+	this->setPreviewImage(Resources::Objects_WarpGateOpen);
 	this->setButtonOffset(Vec2(0, -128.0f));
 }
 

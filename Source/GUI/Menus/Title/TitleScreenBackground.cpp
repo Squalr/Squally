@@ -30,12 +30,12 @@ TitleScreenBackground::TitleScreenBackground()
 	this->slimeNode = Node::create();
 	this->ghost = Sprite::create(Resources::Menus_TitleScreen_Ghost_Ghost_0000_Layer_0);
 	this->slime = Sprite::create(Resources::Menus_TitleScreen_Slime_Slime_0000_SlimeFrames008);
-	this->slimeBubble = Sprite::create(Resources::Ingame_Objects_Spells_circle05);
+	this->slimeBubble = Sprite::create(Resources::Objects_Spells_circle05);
 	this->squallyNode = Node::create();
 	this->squally = Sprite::create(Resources::Menus_TitleScreen_Squally);
 	this->squallyWand = Sprite::create(Resources::Menus_TitleScreen_SquallyWand);
-	this->spellEffect = Sprite::create(Resources::Ingame_Objects_Spells_aura02);
-	this->spellEffect2 = Sprite::create(Resources::Ingame_Objects_Spells_circle02);
+	this->spellEffect = Sprite::create(Resources::Objects_Spells_aura02);
+	this->spellEffect2 = Sprite::create(Resources::Objects_Spells_circle02);
 
 	this->createGhostAnimation();
 	this->createSlimeAnimation();
