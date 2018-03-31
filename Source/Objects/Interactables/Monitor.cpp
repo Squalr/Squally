@@ -14,8 +14,8 @@ Monitor::Monitor(std::string dialogFile)
 	this->monitorDialog = DialogMenu::loadDialogFromFile(dialogFile);
 	this->monitorDialog->retain();
 
-	this->monitorSpriteFloating = FloatingSprite::create(Resources::Ingame_Objects_Monitor, Vec2(2.0f, 24.0f), Vec2(7.0f, 7.0f));
-	this->monitorSprite = MenuSprite::create(this->monitorSpriteFloating, Resources::Ingame_Objects_MonitorSelected, Resources::Ingame_Objects_MonitorSelected);
+	this->monitorSpriteFloating = FloatingSprite::create(Resources::Objects_Monitor, Vec2(2.0f, 24.0f), Vec2(7.0f, 7.0f));
+	this->monitorSprite = MenuSprite::create(this->monitorSpriteFloating, Resources::Objects_MonitorSelected, Resources::Objects_MonitorSelected);
 	this->monitorParticles = ParticleSystemQuad::create(Resources::Particles_Spark);
 	this->monitorParticlesBack = ParticleSystemQuad::create(Resources::Particles_Spark);
 	this->monitorSparkles = ParticleSystemQuad::create(Resources::Particles_Sparkles);

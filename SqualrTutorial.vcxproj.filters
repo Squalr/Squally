@@ -112,6 +112,27 @@
     <Filter Include="Source\GUI\Menus\LoadingScreen">
       <UniqueIdentifier>{5b766df7-ace8-43f1-bf59-f0f9d699f795}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Entities\Enemies\Caverns">
+      <UniqueIdentifier>{ffa13134-18c2-4485-8a7c-bfb335334408}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Enemies\Forest">
+      <UniqueIdentifier>{ffedeb11-512c-47dc-b60b-a91df41e1fe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Enemies\Jungle">
+      <UniqueIdentifier>{2f08e056-7425-407e-9bf1-f9d1abd6e318}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Enemies\Obelisk">
+      <UniqueIdentifier>{88d85204-53bb-4bce-9762-7d15f46c7797}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Enemies\Ruins">
+      <UniqueIdentifier>{3dc074bf-579d-4e42-a335-d6e656dfac6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Enemies\Snow">
+      <UniqueIdentifier>{1d5d0fa9-2bc6-4d2d-9b86-e4495c16d8de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Enemies\Volcano">
+      <UniqueIdentifier>{d1f43d9a-31f0-4f52-bf65-da343e7884bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -192,26 +213,14 @@
     <ClCompile Include="Source\Entities\Player\Hover.cpp">
       <Filter>Source\Entities\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Entities\Enemies\Shroom.cpp">
-      <Filter>Source\Entities\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Level\LevelCamera.cpp">
       <Filter>Source\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Entities\Enemies\Snail.cpp">
-      <Filter>Source\Entities\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Entities\Enemies\Bat.cpp">
-      <Filter>Source\Entities\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Source\Level\Backgrounds\MountainBackground.cpp">
       <Filter>Source\Level\Backgrounds</Filter>
     </ClCompile>
     <ClCompile Include="Source\Level\Backgrounds\JungleBackground.cpp">
       <Filter>Source\Level\Backgrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Entities\Enemies\Poly.cpp">
-      <Filter>Source\Entities\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Source\Level\Environments\JungleEnvironment.cpp">
       <Filter>Source\Level\Environments</Filter>
@@ -521,26 +530,14 @@
     <ClInclude Include="Source\Entities\Player\Hover.h">
       <Filter>Source\Entities\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entities\Enemies\Shroom.h">
-      <Filter>Source\Entities\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Level\LevelCamera.h">
       <Filter>Source\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Entities\Enemies\Snail.h">
-      <Filter>Source\Entities\Enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Entities\Enemies\Bat.h">
-      <Filter>Source\Entities\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Source\Level\Backgrounds\MountainBackground.h">
       <Filter>Source\Level\Backgrounds</Filter>
     </ClInclude>
     <ClInclude Include="Source\Level\Backgrounds\JungleBackground.h">
       <Filter>Source\Level\Backgrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Entities\Enemies\Poly.h">
-      <Filter>Source\Entities\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Source\Level\Environments\JungleEnvironment.h">
       <Filter>Source\Level\Environments</Filter>

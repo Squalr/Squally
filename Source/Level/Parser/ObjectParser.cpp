@@ -49,7 +49,7 @@ Sprite* ObjectParser::loadObject(ValueMap object)
 	std::string type = object.at("type").asString();
 
 	// For decor, simply grab the resource of the same name of the object type
-	Sprite* newObject = Sprite::create("Ingame/Decor/" + type + ".png");
+	Sprite* newObject = Sprite::create("Decor/" + type + ".png");
 
 	if (newObject == nullptr)
 	{

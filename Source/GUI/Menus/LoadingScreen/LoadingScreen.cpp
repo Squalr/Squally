@@ -65,6 +65,7 @@ void LoadingScreen::onFileEnumerationComplete(std::vector<std::string> files)
 			LoadingScreen::isPreloadableSound(file))
 		{
 			this->totalFileCount++;
+			break;
 		}
 	}
 
@@ -82,6 +83,7 @@ void LoadingScreen::onFileEnumerationComplete(std::vector<std::string> files)
 			// Load sound
 			AudioEngine::preload(file, soundLoadCallback);
 		}
+		break;
 	}
 }
 
