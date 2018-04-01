@@ -53,6 +53,14 @@ StoryMap::StoryMap()
 		Resources::Levels_Caverns
 	);
 
+	this->castle = MapNode::create(
+		Resources::Menus_WorldMaps_Castle,
+		Resources::Menus_WorldMaps_CastleSelected,
+		Resources::Menus_WorldMaps_CastleLocked,
+		"Castle",
+		Resources::Levels_Castle
+	);
+
 	this->iceCaps = MapNode::create(
 		Resources::Menus_WorldMaps_IceMountain,
 		Resources::Menus_WorldMaps_IceMountainSelected,
@@ -77,26 +85,40 @@ StoryMap::StoryMap()
 		Resources::Levels_Volcano
 	);
 
+	this->mecha = MapNode::create(
+		Resources::Menus_WorldMaps_Mecha,
+		Resources::Menus_WorldMaps_MechaSelected,
+		Resources::Menus_WorldMaps_MechaLocked,
+		"Mecha",
+		Resources::Levels_Mecha
+	);
+
 	this->mapNodes->push_back(this->jungle);
 	this->mapNodes->push_back(this->waterRuins);
 	this->mapNodes->push_back(this->forest);
 	this->mapNodes->push_back(this->caverns);
+	this->mapNodes->push_back(this->castle);
 	this->mapNodes->push_back(this->iceCaps);
 	this->mapNodes->push_back(this->obelisk);
 	this->mapNodes->push_back(this->volcano);
+	this->mapNodes->push_back(this->mecha);
 
 	this->addChild(this->background);
 	this->addChild(this->jungle);
 	this->addChild(this->waterRuins);
 	this->addChild(this->forest);
 	this->addChild(this->caverns);
+	this->addChild(this->castle);
 	this->addChild(this->iceCaps);
 	this->addChild(this->obelisk);
 	this->addChild(this->volcano);
+	this->addChild(this->mecha);
 	this->addChild(this->foreground);
 	this->addChild(this->infoPanel);
 	this->addChild(this->titleLabel);
 	this->addChild(this->infoLabel);
+
+	this->infoPanel->setVisible(false);
 
 	this->initializeListeners();
 }
@@ -115,9 +137,9 @@ void StoryMap::onEnter()
 	const float delay = 0.5f;
 	const float duration = 0.75f;
 
-	GameUtils::fadeInObject(this->infoPanel, delay, duration);
-	GameUtils::fadeInObject(this->titleLabel, delay, duration);
-	GameUtils::fadeInObject(this->infoLabel, delay, duration);
+	//GameUtils::fadeInObject(this->infoPanel, delay, duration);
+	//GameUtils::fadeInObject(this->titleLabel, delay, duration);
+	//GameUtils::fadeInObject(this->infoLabel, delay, duration);
 
 	this->addChild(Mouse::claimInstance());
 }
@@ -132,11 +154,13 @@ void StoryMap::initializePositions()
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->jungle->setPosition(Vec2(visibleSize.width / 2.0f + 624.0f, visibleSize.height / 2.0f - 292.0f));
 	this->waterRuins->setPosition(Vec2(visibleSize.width / 2.0f - 104.0f, visibleSize.height / 2.0f - 340.0f));
-	this->forest->setPosition(Vec2(visibleSize.width / 2.0f - 688.0f, visibleSize.height / 2.0f - 340.0f));
-	this->caverns->setPosition(Vec2(visibleSize.width / 2.0f - 564.0f, visibleSize.height / 2.0f + 180.0f));
+	this->forest->setPosition(Vec2(visibleSize.width / 2.0f - 704.0f, visibleSize.height / 2.0f - 308.0f));
+	this->caverns->setPosition(Vec2(visibleSize.width / 2.0f - 668.0f, visibleSize.height / 2.0f + 32.0f));
+	this->castle->setPosition(Vec2(visibleSize.width / 2.0f - 388.0f, visibleSize.height / 2.0f + 344.0f));
 	this->iceCaps->setPosition(Vec2(visibleSize.width / 2.0f + 112.0f, visibleSize.height / 2.0f + 496.0f));
 	this->obelisk->setPosition(Vec2(visibleSize.width / 2.0f + 720.0f, visibleSize.height / 2.0f + 420.0f));
-	this->volcano->setPosition(Vec2(visibleSize.width / 2.0f + 168.0f, visibleSize.height / 2.0f + 72.0f));
+	this->volcano->setPosition(Vec2(visibleSize.width / 2.0f + 196.0f, visibleSize.height / 2.0f + 64.0f));
+	this->mecha->setPosition(Vec2(visibleSize.width / 2.0f + 696.0f, visibleSize.height / 2.0f - 38.0f));
 	this->foreground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 
 	this->initializedLocked();
@@ -179,12 +203,14 @@ void StoryMap::initializedLocked()
 	MapNode* volcano;
 
 	this->jungle->setLocked(false);
-	this->waterRuins->setLocked(true);
-	this->forest->setLocked(true);
-	this->caverns->setLocked(true);
-	this->iceCaps->setLocked(true);
-	this->obelisk->setLocked(true);
-	this->volcano->setLocked(true);
+	this->waterRuins->setLocked(false);
+	this->forest->setLocked(false);
+	this->caverns->setLocked(false);
+	this->castle->setLocked(false);
+	this->iceCaps->setLocked(false);
+	this->obelisk->setLocked(false);
+	this->volcano->setLocked(false);
+	this->mecha->setLocked(false);
 }
 
 void StoryMap::onMouseSpriteMove(EventCustom* event)
