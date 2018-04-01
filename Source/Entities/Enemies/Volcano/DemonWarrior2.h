@@ -6,10 +6,10 @@
 
 using namespace cocos2d;
 
-class Bat : public Entity
+class DemonWarrior2 : public Entity
 {
 public:
-	static Bat * create();
+	static DemonWarrior2 * create();
 
 protected:
 	bool contactBegin(CollisionData data) override;
@@ -17,14 +17,13 @@ protected:
 	bool contactEnd(CollisionData data) override;
 
 private:
-	Bat();
-	~Bat();
+	DemonWarrior2();
+	~DemonWarrior2();
 
 	void update(float) override;
 
 	Animation* walkAnimation;
-	Animation* jumpAnimation;
 	Animation* deathAnimation;
 
-	Sprite* batSprite;
+	Sprite* sprite;
 };

@@ -1,89 +1,83 @@
-#include "Snail.h"
+#include "BossRhinoman.h"
 
-Snail* Snail::create()
+BossRhinoman* BossRhinoman::create()
 {
-	Snail* snail = new Snail();
+	BossRhinoman* instance = new BossRhinoman();
 
-	snail->autorelease();
+	instance->autorelease();
 
-	return snail;
+	return instance;
 }
 
-Snail::Snail() : Entity::Entity()
+BossRhinoman::BossRhinoman() : Entity::Entity()
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
 	this->actualMaxFallSpeed = 600.0f;
-	this->moveAcceleration = 3000.0f;
+	this->moveAcceleration = 4000.0f;
 
 	this->movement.x = -1.0f;
 	this->movement.y = 0.0f;
 
 	this->spriteNode = Node::create();
-	this->snailSprite = Sprite::create(Resources::Ingame_Sprites_Snail_SnailWalking1);
+	this->sprite = Sprite::create(Resources::Entities_Environment_Castle_Harpy_Idle_0001);
 	this->walkAnimation = Animation::create();
-	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Snail_SnailWalking1);
-	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Snail_SnailWalking2);
-	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Snail_SnailWalking3);
-	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Snail_SnailWalking4);
-	this->walkAnimation->setDelayPerUnit(0.15f);
-	this->snailSprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0001);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0002);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0003);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0004);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0005);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0006);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0007);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0008);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0009);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0010);
+	this->walkAnimation->setDelayPerUnit(0.1f);
+	this->sprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
 
-	this->init(PhysicsBody::createBox(this->snailSprite->getContentSize()), CategoryGroup::G_Enemy, true, false);
+	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CategoryGroup::G_EnemyFlying, true, false);
 
-	this->spriteNode->addChild(this->snailSprite);
+	this->spriteNode->addChild(this->sprite);
 	this->addChild(this->spriteNode);
 }
 
-Snail::~Snail()
+BossRhinoman::~BossRhinoman()
 {
 }
 
-void Snail::update(float dt)
+void BossRhinoman::update(float dt)
 {
 	Entity::update(dt);
 
 	this->movement.y = 0.0f;
 
-	/*
-	if (this->getRotation() < -15.0f)
-	{
-		this->setRotation(-15.0f);
-	}
-	else if (this->getRotation() > 15.0f)
-	{
-		this->setRotation(15.0f);
-	}*/
-
 	if (this->movement.x < 0.0f)
 	{
-		this->snailSprite->setFlippedX(true);
+		this->sprite->setFlippedX(true);
 	}
 	else
 	{
-		this->snailSprite->setFlippedX(false);
+		this->sprite->setFlippedX(false);
 	}
 }
 
-bool Snail::contactBegin(CollisionData data)
+bool BossRhinoman::contactBegin(CollisionData data)
 {
 	return false;
 }
 
-bool Snail::contactUpdate(CollisionData data)
+bool BossRhinoman::contactUpdate(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
 	case CategoryGroup::G_SolidNpc:
 	case CategoryGroup::G_SolidFlyingNpc:
 	case CategoryGroup::G_Solid:
-		if (abs(data.normal.y) >= Entity::normalJumpThreshold)
-		{
-			this->isOnGround = true;
-		}
-
 		switch (data.direction)
 		{
+		case CollisionDirection::Down:
+			this->isOnGround = true;
+			break;
 		case CollisionDirection::Left:
 			this->movement.x = 1.0f;
 			break;
@@ -92,7 +86,7 @@ bool Snail::contactUpdate(CollisionData data)
 			break;
 		case CollisionDirection::StepLeft:
 		case CollisionDirection::StepRight:
-			this->movement.y = 0.35f;
+			this->movement.y = 0.5f;
 			break;
 		}
 		return true;
@@ -101,7 +95,7 @@ bool Snail::contactUpdate(CollisionData data)
 	return false;
 }
 
-bool Snail::contactEnd(CollisionData data)
+bool BossRhinoman::contactEnd(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
