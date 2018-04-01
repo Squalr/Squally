@@ -6,10 +6,10 @@
 
 using namespace cocos2d;
 
-class Snail : public Entity
+class BossRhinoman : public Entity
 {
 public:
-	static Snail * create();
+	static BossRhinoman * create();
 
 protected:
 	bool contactBegin(CollisionData data) override;
@@ -17,14 +17,13 @@ protected:
 	bool contactEnd(CollisionData data) override;
 
 private:
-	Snail();
-	~Snail();
+	BossRhinoman();
+	~BossRhinoman();
 
 	void update(float) override;
 
 	Animation* walkAnimation;
-	Animation* jumpAnimation;
 	Animation* deathAnimation;
 
-	Sprite* snailSprite;
+	Sprite* sprite;
 };

@@ -1,15 +1,15 @@
-#include "Bat.h"
+#include "SkeletonWarrior2.h"
 
-Bat* Bat::create()
+SkeletonWarrior2* SkeletonWarrior2::create()
 {
-	Bat* bat = new Bat();
+	SkeletonWarrior2* instance = new SkeletonWarrior2();
 
-	bat->autorelease();
+	instance->autorelease();
 
-	return bat;
+	return instance;
 }
 
-Bat::Bat() : Entity::Entity()
+SkeletonWarrior2::SkeletonWarrior2() : Entity::Entity()
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
@@ -20,26 +20,32 @@ Bat::Bat() : Entity::Entity()
 	this->movement.y = 0.0f;
 
 	this->spriteNode = Node::create();
-	this->batSprite = Sprite::create(Resources::Ingame_Sprites_Bat_Fly1);
+	this->sprite = Sprite::create(Resources::Entities_Environment_Castle_Harpy_Idle_0001);
 	this->walkAnimation = Animation::create();
-	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Bat_Fly1);
-	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Bat_Fly2);
-	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Bat_Fly3);
-	this->walkAnimation->addSpriteFrameWithFileName(Resources::Ingame_Sprites_Bat_Fly4);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0001);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0002);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0003);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0004);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0005);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0006);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0007);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0008);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0009);
+	this->walkAnimation->addSpriteFrameWithFileName(Resources::Entities_Environment_Castle_Harpy_Walk_0010);
 	this->walkAnimation->setDelayPerUnit(0.1f);
-	this->batSprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
+	this->sprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
 
-	this->init(PhysicsBody::createBox(this->batSprite->getContentSize()), CategoryGroup::G_EnemyFlying, true, false);
+	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), CategoryGroup::G_EnemyFlying, true, false);
 
-	this->spriteNode->addChild(this->batSprite);
+	this->spriteNode->addChild(this->sprite);
 	this->addChild(this->spriteNode);
 }
 
-Bat::~Bat()
+SkeletonWarrior2::~SkeletonWarrior2()
 {
 }
 
-void Bat::update(float dt)
+void SkeletonWarrior2::update(float dt)
 {
 	Entity::update(dt);
 
@@ -47,20 +53,20 @@ void Bat::update(float dt)
 
 	if (this->movement.x < 0.0f)
 	{
-		this->batSprite->setFlippedX(true);
+		this->sprite->setFlippedX(true);
 	}
 	else
 	{
-		this->batSprite->setFlippedX(false);
+		this->sprite->setFlippedX(false);
 	}
 }
 
-bool Bat::contactBegin(CollisionData data)
+bool SkeletonWarrior2::contactBegin(CollisionData data)
 {
 	return false;
 }
 
-bool Bat::contactUpdate(CollisionData data)
+bool SkeletonWarrior2::contactUpdate(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
@@ -89,7 +95,7 @@ bool Bat::contactUpdate(CollisionData data)
 	return false;
 }
 
-bool Bat::contactEnd(CollisionData data)
+bool SkeletonWarrior2::contactEnd(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
