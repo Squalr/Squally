@@ -14,7 +14,6 @@ StoryMap::StoryMap()
 	this->mapNodes = new std::vector<MapNode*>();
 	this->background = Sprite::create(Resources::Menus_WorldMaps_StoryMap);
 	this->foreground = Sprite::create(Resources::Menus_WorldMaps_StoryMapFront);
-	this->infoPanel = Sprite::create(Resources::Menus_WorldMaps_MapPanel);
 	this->titleLabel = Label::create("Level Select", Resources::Fonts_Montserrat_Medium, this->titleFontSize);
 	this->infoLabel = Label::create("", Resources::Fonts_Montserrat_Medium, this->infoFontSize);
 
@@ -114,11 +113,8 @@ StoryMap::StoryMap()
 	this->addChild(this->volcano);
 	this->addChild(this->mecha);
 	this->addChild(this->foreground);
-	this->addChild(this->infoPanel);
 	this->addChild(this->titleLabel);
 	this->addChild(this->infoLabel);
-
-	this->infoPanel->setVisible(false);
 
 	this->initializeListeners();
 }
@@ -137,9 +133,8 @@ void StoryMap::onEnter()
 	const float delay = 0.5f;
 	const float duration = 0.75f;
 
-	//GameUtils::fadeInObject(this->infoPanel, delay, duration);
-	//GameUtils::fadeInObject(this->titleLabel, delay, duration);
-	//GameUtils::fadeInObject(this->infoLabel, delay, duration);
+	GameUtils::fadeInObject(this->titleLabel, delay, duration);
+	GameUtils::fadeInObject(this->infoLabel, delay, duration);
 
 	this->addChild(Mouse::claimInstance());
 }
@@ -148,7 +143,6 @@ void StoryMap::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->infoPanel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - this->infoPanel->getContentSize().height / 2.0f - 24.0f));
 	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - this->titleLabel->getContentSize().height / 2.0f - 64.0f));
 	this->infoLabel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - 48.0f - 64.0f - 48.0f));
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
