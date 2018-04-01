@@ -38,7 +38,6 @@ private:
 
 	Sprite* background;
 	Sprite* foreground;
-	Sprite* infoPanel;
 	Label* titleLabel;
 	Label* infoLabel;
 
