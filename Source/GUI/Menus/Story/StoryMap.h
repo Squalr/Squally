@@ -30,9 +30,11 @@ private:
 	MapNode* waterRuins;
 	MapNode* forest;
 	MapNode* caverns;
+	MapNode* castle;
 	MapNode* iceCaps;
 	MapNode* obelisk;
 	MapNode* volcano;
+	MapNode* mecha;
 
 	Sprite* background;
 	Sprite* foreground;
