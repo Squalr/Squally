@@ -98,7 +98,7 @@ void ConfirmationMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event
 
 		event->stopPropagation();
 
-		GameUtils::navigateBack();
+		NavigationEvents::navigateBack();
 		break;
 	}
 }
@@ -111,7 +111,7 @@ void ConfirmationMenu::onCloseClick(MenuSprite* menuSprite)
 		this->onCancelCallback();
 	}
 
-	GameUtils::navigateBack();
+	NavigationEvents::navigateBack();
 }
 
 void ConfirmationMenu::onCancelClick(MenuSprite* menuSprite)
@@ -121,7 +121,7 @@ void ConfirmationMenu::onCancelClick(MenuSprite* menuSprite)
 		this->onCancelCallback();
 	}
 
-	GameUtils::navigateBack();
+	NavigationEvents::navigateBack();
 }
 
 void ConfirmationMenu::onConfirmClick(MenuSprite* menuSprite)
@@ -131,5 +131,5 @@ void ConfirmationMenu::onConfirmClick(MenuSprite* menuSprite)
 		this->onConfirmCallback();
 	}
 
-	GameUtils::navigateBack();
+	NavigationEvents::navigateBack();
 }

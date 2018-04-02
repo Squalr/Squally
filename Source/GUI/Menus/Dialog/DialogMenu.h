@@ -8,6 +8,7 @@
 #include "Resources.h"
 #include "GUI/Components/FloatingSprite.h"
 #include "GUI/Components/MenuLabel.h"
+#include "Events/DialogEvents.h"
 
 using namespace cocos2d;
 using namespace rapidjson;
@@ -16,17 +17,6 @@ class DialogMenu : public Node
 {
 public:
 	static DialogMenu * loadDialogFromFile(std::string filePath);
-
-	static const std::string DialogOpenEvent;
-
-	struct DialogOpenArgs
-	{
-		DialogMenu* dialogMenu;
-
-		DialogOpenArgs(DialogMenu* dialogMenu) : dialogMenu(dialogMenu)
-		{
-		}
-	};
 
 protected:
 	enum Portrait

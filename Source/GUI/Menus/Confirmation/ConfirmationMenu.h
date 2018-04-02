@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "Events/NavigationEvents.h"
 #include "GUI/Menus/MenuBackground.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/InfiniteParallaxNode.h"

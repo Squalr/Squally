@@ -132,7 +132,7 @@ void MenuSprite::setClickSound(std::string soundResource)
 void MenuSprite::initializeListeners()
 {
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
-	EventListenerCustom* customListener = EventListenerCustom::create(Mouse::MouseMoveEvent, CC_CALLBACK_1(MenuSprite::onMouseSpriteMove, this));
+	EventListenerCustom* customListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MenuSprite::onMouseSpriteMove, this));
 
 	mouseListener->onMouseUp = CC_CALLBACK_1(MenuSprite::onMouseUp, this);
 	mouseListener->onMouseDown = CC_CALLBACK_1(MenuSprite::onMouseDown, this);
@@ -153,7 +153,7 @@ bool MenuSprite::intersects(Vec2 mousePos)
 
 void MenuSprite::onMouseSpriteMove(EventCustom* event)
 {
-	Mouse::MouseEventArgs* args = static_cast<Mouse::MouseEventArgs*>(event->getUserData());
+	MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(event->getUserData());
 
 	if (!this->interactionEnabled)
 	{

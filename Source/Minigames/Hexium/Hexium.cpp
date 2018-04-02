@@ -99,7 +99,7 @@ void Hexium::onGameStart(EventCustom* eventCustom)
 	args->playerDeck->copyTo(this->gameState->playerDeck);
 	args->enemyDeck->copyTo(this->gameState->enemyDeck);
 
-	GameUtils::navigate(GameUtils::GameScreen::Hexium);
+	NavigationEvents::navigate(NavigationEvents::GameScreen::Hexium);
 }
 
 void Hexium::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -119,5 +119,5 @@ void Hexium::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 void Hexium::onClose(MenuSprite* menuSprite)
 {
-	GameUtils::navigateBack();
+	NavigationEvents::navigateBack();
 }

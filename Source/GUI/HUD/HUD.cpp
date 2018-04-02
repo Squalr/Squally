@@ -43,7 +43,7 @@ void Hud::initializePositions()
 
 void Hud::initializeListeners()
 {
-	EventListenerCustom* dialogListener = EventListenerCustom::create(DialogMenu::DialogOpenEvent, CC_CALLBACK_1(Hud::onDialogOpen, this));
+	EventListenerCustom* dialogListener = EventListenerCustom::create(DialogEvents::DialogOpenEvent, CC_CALLBACK_1(Hud::onDialogOpen, this));
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
 
 	listener->onKeyPressed = CC_CALLBACK_2(Hud::onKeyPressed, this);
@@ -70,8 +70,8 @@ void Hud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 void Hud::onDialogOpen(EventCustom* event)
 {
-	DialogMenu::DialogOpenArgs* args = static_cast<DialogMenu::DialogOpenArgs*>(event->getUserData());
+	DialogEvents::DialogOpenArgs* args = static_cast<DialogEvents::DialogOpenArgs*>(event->getUserData());
 
 	this->dialogNode->removeAllChildren();
-	this->dialogNode->addChild(args->dialogMenu);
+	//this->dialogNode->addChild(args->dialogMenu);
 }

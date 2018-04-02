@@ -7,6 +7,7 @@
 #include "GUI/Components/Mouse.h"
 #include "GUI/Components/MenuSprite.h"
 #include "GUI/Components/FloatingSprite.h"
+#include "Events/NavigationEvents.h"
 #include "Utils/GameUtils.h"
 
 using namespace cocos2d;
