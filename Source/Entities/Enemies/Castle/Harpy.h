@@ -13,6 +13,4 @@ public:
 private:
 	Harpy();
 	~Harpy();
-
-	Sprite* sprite;
 };
