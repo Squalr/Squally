@@ -19,6 +19,9 @@ public:
 	Vec2 getVelocity();
 	void setVelocity(Vec2 velocity);
 
+	virtual void disablePhysics();
+	virtual void enablePhysics();
+
 protected:
 	enum CollisionDirection
 	{

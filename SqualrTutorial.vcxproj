@@ -262,6 +262,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Entities\Enemies\Volcano\RedDragon2.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Volcano\RedWyvern1.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Volcano\RedWyvern2.cpp" />
+    <ClCompile Include="Source\Entities\Enemy.cpp" />
     <ClCompile Include="Source\Entities\Entity.cpp" />
     <ClCompile Include="Source\Entities\Npcs\Knight.cpp" />
     <ClCompile Include="Source\Entities\Npcs\NpcBase.cpp" />
@@ -474,6 +475,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Entities\Enemies\Volcano\RedDragon2.h" />
     <ClInclude Include="Source\Entities\Enemies\Volcano\RedWyvern1.h" />
     <ClInclude Include="Source\Entities\Enemies\Volcano\RedWyvern2.h" />
+    <ClInclude Include="Source\Entities\Enemy.h" />
     <ClInclude Include="Source\Entities\Entities.h" />
     <ClInclude Include="Source\Entities\Entity.h" />
     <ClInclude Include="Source\Entities\Npcs\Knight.h" />

@@ -8,6 +8,7 @@ using namespace cocos2d;
 class GameUtils
 {
 public:
+	static std::vector<std::string> getAllAnimationFiles(std::string firstFrameResource);
 	static void pause(Node *node);
 	static void resume(Node *node);
 	static void resumeAll();
