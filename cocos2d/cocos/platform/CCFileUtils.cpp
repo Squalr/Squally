@@ -1192,24 +1192,15 @@ void FileUtils::getFileSize(const std::string &filepath, std::function<void(long
 
 void FileUtils::listFilesAsync(const std::string& dirPath, std::function<void(std::vector<std::string>)> callback) const
 {
-	auto fullPath = fullPathForFilename(dirPath);
-	performOperationOffthread([fullPath]() {
-		return FileUtils::getInstance()->listFiles(fullPath);
+	performOperationOffthread([dirPath]() {
+		return FileUtils::getInstance()->listFiles(dirPath);
 	}, std::move(callback));
 }
 
 void FileUtils::listFilesRecursivelyAsync(const std::string& dirPath, std::function<void(std::vector<std::string>)> callback) const
 {
 	performOperationOffthread([dirPath]() {
-		std::vector<std::string> retval;
-		for (std::tr2::sys::recursive_directory_iterator it(dirPath), end; it != end; ++it)
-		{
-			if (!std::tr2::sys::is_directory(it->path()))
-			{
-				retval.push_back(it->path().generic_string());
-			}
-		}
-		return retval;
+		return FileUtils::getInstance()->listFilesRecursively(dirPath);
 	}, std::move(callback));
 }
 
@@ -1265,14 +1256,28 @@ long FileUtils::getFileSize(const std::string &filepath)
 
 std::vector<std::string> FileUtils::listFiles(const std::string& dirPath) const
 {
-	CCASSERT(false, "FileUtils not support listFiles");
-	return std::vector<std::string>();
+	std::vector<std::string> retval;
+	for (std::tr2::sys::directory_iterator it(dirPath), end; it != end; ++it)
+	{
+		if (!std::tr2::sys::is_directory(it->path()))
+		{
+			retval.push_back(it->path().generic_string());
+		}
+	}
+	return retval;
 }
 
-void FileUtils::listFilesRecursively(const std::string& dirPath, std::vector<std::string> *files) const
+std::vector<std::string> FileUtils::listFilesRecursively(const std::string& dirPath) const
 {
-	CCASSERT(false, "FileUtils not support listFilesRecursively");
-	return;
+	std::vector<std::string> retval;
+	for (std::tr2::sys::recursive_directory_iterator it(dirPath), end; it != end; ++it)
+	{
+		if (!std::tr2::sys::is_directory(it->path()))
+		{
+			retval.push_back(it->path().generic_string());
+		}
+	}
+	return retval;
 }
 
 #else

@@ -774,6 +774,9 @@
     <ClCompile Include="Source\Events\NavigationEvents.cpp">
       <Filter>Source\Events</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Entities\Enemy.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -1420,6 +1423,9 @@
     </ClInclude>
     <ClInclude Include="Source\Events\NavigationEvents.h">
       <Filter>Source\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entities\Enemy.h">
+      <Filter>Source\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

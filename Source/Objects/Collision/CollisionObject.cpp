@@ -24,6 +24,16 @@ void CollisionObject::init(PhysicsBody* initPhysicsBody, CategoryGroup initCateg
 	this->initializeEventListeners();
 }
 
+void CollisionObject::disablePhysics()
+{
+	this->physicsBody->setEnabled(false);
+}
+
+void CollisionObject::enablePhysics()
+{
+	this->physicsBody->setEnabled(true);
+}
+
 Vec2 CollisionObject::getVelocity()
 {
 	return this->physicsBody->getVelocity();
