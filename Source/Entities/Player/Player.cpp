@@ -236,6 +236,21 @@ bool Player::hoverContactEnd(CollisionData data)
 
 bool Player::contactBegin(CollisionData data)
 {
+	switch (data.other->getCategoryGroup())
+	{
+	case CategoryGroup::G_Enemy:
+	case CategoryGroup::G_EnemyFlying:
+		Entity * enemy = dynamic_cast<Entity*>(data.other);
+
+		if (enemy != nullptr)
+		{
+			std::tuple<void*, void*> args = std::tuple<void*, void*>(this, enemy);
+			NavigationEvents::loadFight(args);
+		}
+
+		return false;
+	}
+
 	return true;
 }
 

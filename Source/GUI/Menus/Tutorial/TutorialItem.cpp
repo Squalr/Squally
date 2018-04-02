@@ -73,7 +73,7 @@ void TutorialItem::initializePositions()
 
 void TutorialItem::onTutorialClick(MenuSprite* tutorialItem)
 {
-	GameUtils::loadLevel(this->tutorialMapFile);
+	NavigationEvents::loadLevel(this->tutorialMapFile);
 }
 
 void TutorialItem::onTutorialMouseOver(MenuSprite* tutorialItem)

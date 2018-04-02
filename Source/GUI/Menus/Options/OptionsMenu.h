@@ -11,7 +11,7 @@
 #include "GUI/Components/MenuSprite.h"
 #include "GUI/Components/Mouse.h"
 #include "GUI/Menus/MenuBackground.h"
-#include "Utils/GameUtils.h"
+#include "Events/NavigationEvents.h"
 
 using namespace cocos2d;
 

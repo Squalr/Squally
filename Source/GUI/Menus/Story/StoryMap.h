@@ -4,6 +4,8 @@
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/Mouse.h"
 #include "GUI/Menus/Story/MapNode.h"
+#include "Events/NavigationEvents.h"
+#include "Events/MouseEvents.h"
 #include "Utils/GameUtils.h"
 
 using namespace cocos2d;

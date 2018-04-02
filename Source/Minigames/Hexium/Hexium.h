@@ -5,6 +5,7 @@
 #include "MiniGames/Hexium/GameState.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/MenuSprite.h"
+#include "Events/NavigationEvents.h"
 #include "Utils/StrUtils.h"
 
 using namespace cocos2d;

@@ -6,6 +6,7 @@
 #include "Level/LevelMap.h"
 #include "Entities/Player/Player.h"
 #include "Input/InputManager.h"
+#include "Events/NavigationEvents.h"
 #include "Utils/GameUtils.h"
 #include "Shaders/PostProcess.h"
 #include "GUI/HUD/Hud.h"

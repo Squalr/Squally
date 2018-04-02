@@ -17,6 +17,7 @@ Game::Game()
 	this->storyMap = StoryMap::create();
 	this->loadingScreen = LoadingScreen::create();
 	this->level = Level::create();
+	this->fight = Fight::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->pauseMenu = PauseMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
@@ -34,6 +35,7 @@ Game::Game()
 	this->storyMap->retain();
 	this->loadingScreen->retain();
 	this->level->retain();
+	this->fight->retain();
 	this->optionsMenu->retain();
 	this->pauseMenu->retain();
 	this->confirmationMenu->retain();
@@ -48,27 +50,32 @@ Game::~Game()
 void Game::initializeEventListeners()
 {
 	EventListenerCustom* navigateNewEventListener = EventListenerCustom::create(
-		GameUtils::gameNavigateNewEvent,
+		NavigationEvents::gameNavigateNewEvent,
 		CC_CALLBACK_1(Game::onGameNavigateNew, this)
 	);
 
 	EventListenerCustom* navigateBackEventListener = EventListenerCustom::create(
-		GameUtils::gameNavigateBackEvent,
+		NavigationEvents::gameNavigateBackEvent,
 		CC_CALLBACK_1(Game::onGameNavigateBack, this)
 	);
 
 	EventListenerCustom* navigateNewLevelEventListener = EventListenerCustom::create(
-		GameUtils::gameNavigateLoadLevelEvent,
+		NavigationEvents::gameNavigateLoadLevelEvent,
 		CC_CALLBACK_1(Game::onGameNavigateLoadLevel, this)
 	);
 
 	EventListenerCustom* navigateEnterLevelEventListener = EventListenerCustom::create(
-		GameUtils::gameNavigateEnterLevelEvent,
+		NavigationEvents::gameNavigateEnterLevelEvent,
 		CC_CALLBACK_1(Game::onGameNavigateEnterLevel, this)
 	);
 
+	EventListenerCustom* navigateFightEventListener = EventListenerCustom::create(
+		NavigationEvents::gameNavigateFightEvent,
+		CC_CALLBACK_1(Game::onGameNavigateFight, this)
+	);
+
 	EventListenerCustom* navigateConfirmEventListener = EventListenerCustom::create(
-		GameUtils::gameNavigateConfirmEvent,
+		NavigationEvents::gameNavigateConfirmEvent,
 		CC_CALLBACK_1(Game::onGameNavigateConfirm, this)
 	);
 
@@ -82,41 +89,42 @@ void Game::initializeEventListeners()
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateBackEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateNewLevelEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateEnterLevelEventListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateFightEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateConfirmEventListener, this);
 }
 
 void Game::onGameNavigateNew(EventCustom* eventCustom)
 {
-	GameUtils::NavigateEventArgs* args = (GameUtils::NavigateEventArgs*)(eventCustom->getUserData());
+	NavigationEvents::NavigateEventArgs* args = (NavigationEvents::NavigateEventArgs*)(eventCustom->getUserData());
 	Scene* newScene = nullptr;
 
 	switch (args->gameScreen)
 	{
-	case GameUtils::GameScreen::Title:
+	case NavigationEvents::GameScreen::Title:
 		newScene = this->titleScreen;
 		break;
-	case GameUtils::GameScreen::Tutorial:
+	case NavigationEvents::GameScreen::Tutorial:
 		newScene = this->tutorialScreen;
 		break;
-	case GameUtils::GameScreen::StoryMap:
+	case NavigationEvents::GameScreen::StoryMap:
 		newScene = this->storyMap;
 		break;
-	case GameUtils::GameScreen::Pause:
+	case NavigationEvents::GameScreen::Pause:
 		newScene = this->pauseMenu;
 		break;
-	case GameUtils::GameScreen::Options:
+	case NavigationEvents::GameScreen::Options:
 		newScene = this->optionsMenu;
 		break;
-	case GameUtils::GameScreen::Confirm:
+	case NavigationEvents::GameScreen::Confirm:
 		newScene = this->confirmationMenu;
 		break;
-	case GameUtils::GameScreen::Loading:
+	case NavigationEvents::GameScreen::Loading:
 		newScene = this->loadingScreen;
 		break;
-	case GameUtils::GameScreen::Level:
+	case NavigationEvents::GameScreen::Level:
 		newScene = this->level;
 		break;
-	case GameUtils::GameScreen::Hexium:
+	case NavigationEvents::GameScreen::Hexium:
 		newScene = this->hexium;
 		break;
 	}
@@ -127,7 +135,7 @@ void Game::onGameNavigateNew(EventCustom* eventCustom)
 
 void Game::onGameNavigateBack(EventCustom* eventCustom)
 {
-	GameUtils::NavigateBackEventArgs* args = (GameUtils::NavigateBackEventArgs*)(eventCustom->getUserData());
+	NavigationEvents::NavigateBackEventArgs* args = (NavigationEvents::NavigateBackEventArgs*)(eventCustom->getUserData());
 
 	Scene* scene = Director::getInstance()->getRunningScene();
 
@@ -147,7 +155,7 @@ void Game::onGameNavigateBack(EventCustom* eventCustom)
 
 void Game::onGameNavigateConfirm(EventCustom* eventCustom)
 {
-	GameUtils::NavigateConfirmArgs* args = (GameUtils::NavigateConfirmArgs*)(eventCustom->getUserData());
+	NavigationEvents::NavigateConfirmArgs* args = (NavigationEvents::NavigateConfirmArgs*)(eventCustom->getUserData());
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
 	this->confirmationMenu->initialize(args->message, args->confirmCallback, args->cancelCallback);
@@ -156,7 +164,7 @@ void Game::onGameNavigateConfirm(EventCustom* eventCustom)
 
 void Game::onGameNavigateLoadLevel(EventCustom* eventCustom)
 {
-	GameUtils::NavigateLoadLevelArgs* args = (GameUtils::NavigateLoadLevelArgs*)(eventCustom->getUserData());
+	NavigationEvents::NavigateLoadLevelArgs* args = (NavigationEvents::NavigateLoadLevelArgs*)(eventCustom->getUserData());
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
 	this->loadScene(this->loadingScreen);
@@ -165,11 +173,20 @@ void Game::onGameNavigateLoadLevel(EventCustom* eventCustom)
 
 void Game::onGameNavigateEnterLevel(EventCustom* eventCustom)
 {
-	GameUtils::NavigateEnterLevelArgs* args = (GameUtils::NavigateEnterLevelArgs*)(eventCustom->getUserData());
+	NavigationEvents::NavigateEnterLevelArgs* args = (NavigationEvents::NavigateEnterLevelArgs*)(eventCustom->getUserData());
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
 	this->level->loadLevel(args->levelMap);
 	this->loadScene(this->level);
+}
+
+void Game::onGameNavigateFight(EventCustom* eventCustom)
+{
+	NavigationEvents::NavigateFightArgs* args = (NavigationEvents::NavigateFightArgs*)(eventCustom->getUserData());
+
+	this->sceneHistory->push(Director::getInstance()->getRunningScene());
+	this->fight->loadFight((Player*)std::get<0>(args->entities), (Entity*)std::get<1>(args->entities));
+	this->loadScene(this->fight);
 }
 
 void Game::loadScene(Scene* scene)

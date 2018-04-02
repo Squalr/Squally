@@ -85,17 +85,17 @@ void TitleScreen::initializePositions()
 
 void TitleScreen::onMatrixClick(MenuSprite* menuSprite)
 {
-	GameUtils::navigate(GameUtils::GameScreen::Tutorial);
+	NavigationEvents::navigate(NavigationEvents::GameScreen::Tutorial);
 }
 
 void TitleScreen::onStoryModeClick(MenuSprite* menuSprite)
 {
-	GameUtils::navigate(GameUtils::GameScreen::StoryMap);
+	NavigationEvents::navigate(NavigationEvents::GameScreen::StoryMap);
 }
 
 void TitleScreen::onOptionsClick(MenuSprite* menuSprite)
 {
-	GameUtils::navigate(GameUtils::GameScreen::Options);
+	NavigationEvents::navigate(NavigationEvents::GameScreen::Options);
 }
 
 void TitleScreen::onExitClick(MenuSprite* menuSprite)

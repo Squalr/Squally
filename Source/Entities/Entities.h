@@ -5,7 +5,6 @@
 
 // NPCS
 #include "Entities/Npcs/Knight.h"
-#include "Entities/Npcs/Skeleton.h"
 
 // Enemies
 #include "Entities/Enemies/Castle/BossWitch.h"

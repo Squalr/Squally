@@ -4,6 +4,7 @@
 #include "GUI/Components/FloatingSprite.h"
 #include "GUI/Components/MenuSprite.h"
 #include "GUI/Menus/Dialog/DialogMenu.h"
+#include "Events/DialogEvents.h"
 
 using namespace cocos2d;
 

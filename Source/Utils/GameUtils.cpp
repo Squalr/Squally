@@ -1,51 +1,5 @@
 #include "GameUtils.h"
 
-const std::string GameUtils::gameNavigateNewEvent = "game_navigate_new_event";
-const std::string GameUtils::gameNavigateBackEvent = "game_navigate_back_event";
-const std::string GameUtils::gameNavigateConfirmEvent = "game_navigate_confirm_event";
-const std::string GameUtils::gameNavigateLoadLevelEvent = "game_navigate_load_level_event";
-const std::string GameUtils::gameNavigateEnterLevelEvent = "game_navigate_enter_level_event";
-
-void GameUtils::navigateBack(int count)
-{
-	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		GameUtils::gameNavigateBackEvent,
-		&NavigateBackEventArgs(count)
-	);
-}
-
-void GameUtils::navigate(GameScreen gameScreen)
-{
-	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		GameUtils::gameNavigateNewEvent,
-		&NavigateEventArgs(gameScreen)
-	);
-}
-
-void GameUtils::navigateConfirm(std::string confirmMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback)
-{
-	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		GameUtils::gameNavigateConfirmEvent,
-		&NavigateConfirmArgs(confirmMessage, confirmCallback, cancelCallback)
-	);
-}
-
-void GameUtils::loadLevel(std::string levelFile)
-{
-	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		GameUtils::gameNavigateLoadLevelEvent,
-		&NavigateLoadLevelArgs(levelFile)
-	);
-}
-
-void GameUtils::enterLevel(void* levelMap)
-{
-	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		GameUtils::gameNavigateEnterLevelEvent,
-		&NavigateEnterLevelArgs(levelMap)
-	);
-}
-
 // A better pause function that pauses recursively
 void GameUtils::pause(Node *node)
 {

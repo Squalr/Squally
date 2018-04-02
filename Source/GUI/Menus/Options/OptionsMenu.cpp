@@ -329,7 +329,7 @@ void OptionsMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		ConfigManager::save();
 		event->stopPropagation();
-		GameUtils::navigateBack();
+		NavigationEvents::navigateBack();
 		break;
 	}
 }
@@ -337,7 +337,7 @@ void OptionsMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 void OptionsMenu::onCloseClick(MenuSprite* menuSprite)
 {
 	ConfigManager::save();
-	GameUtils::navigateBack();
+	NavigationEvents::navigateBack();
 }
 
 void OptionsMenu::showResolutionOptions()

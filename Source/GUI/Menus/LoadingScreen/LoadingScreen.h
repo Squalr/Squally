@@ -6,6 +6,7 @@
 #include "GUI/Components/FadeScene.h"
 #include "Utils/StrUtils.h"
 #include "Level/Parser/Parser.h"
+#include "Events/NavigationEvents.h"
 #include <mutex>
 
 using namespace cocos2d;

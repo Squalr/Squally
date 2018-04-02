@@ -30,6 +30,10 @@ Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
 		{
 			newEntity = Skeleton::create();
 		}
+		else if (type == "harpy")
+		{
+			newEntity = Harpy::create();
+		}
 		else
 		{
 			continue;

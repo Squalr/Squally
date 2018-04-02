@@ -8,67 +8,6 @@ using namespace cocos2d;
 class GameUtils
 {
 public:
-	static const std::string gameNavigateNewEvent;
-	static const std::string gameNavigateBackEvent;
-	static const std::string gameNavigateConfirmEvent;
-	static const std::string gameNavigateLoadLevelEvent;
-	static const std::string gameNavigateEnterLevelEvent;
-
-	enum GameScreen {
-		Title,
-		StoryMap,
-		Tutorial,
-		Pause,
-		Options,
-		Confirm,
-		Loading,
-		Level,
-		Hexium,
-	};
-
-	struct NavigateBackEventArgs
-	{
-		int backCount;
-
-		NavigateBackEventArgs(int backCount) : backCount(backCount) { };
-	};
-
-	struct NavigateEventArgs
-	{
-		GameScreen gameScreen;
-
-		NavigateEventArgs(GameScreen gameScreen) : gameScreen(gameScreen) { }
-	};
-
-	struct NavigateLoadLevelArgs
-	{
-		std::string levelFile;
-
-		NavigateLoadLevelArgs(std::string levelFile) : levelFile(levelFile) { }
-	};
-
-	struct NavigateEnterLevelArgs
-	{
-		void* levelMap;
-
-		NavigateEnterLevelArgs(void* levelMap) : levelMap(levelMap) { }
-	};
-
-	struct NavigateConfirmArgs
-	{
-		std::string message;
-		std::function<void()> confirmCallback;
-		std::function<void()> cancelCallback;
-
-		NavigateConfirmArgs(std::string message, std::function<void()> confirmCallback, std::function<void()> cancelCallback) :
-			message(message), confirmCallback(confirmCallback), cancelCallback(cancelCallback) { }
-	};
-
-	static void navigateBack(int count = 1);
-	static void navigate(GameScreen gameScreen);
-	static void navigateConfirm(std::string confirmMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
-	static void loadLevel(std::string levelFile);
-	static void enterLevel(void* levelMap);
 	static void pause(Node *node);
 	static void resume(Node *node);
 	static void resumeAll();
