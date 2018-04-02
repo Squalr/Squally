@@ -139,6 +139,9 @@
     <Filter Include="Source\Entities\Enemies\Mecha">
       <UniqueIdentifier>{76e6c2db-8ed9-4f39-8662-c09195d7ea0a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Events">
+      <UniqueIdentifier>{e9ef9eef-8a01-4d65-b231-b8b59fc9ac49}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -320,9 +323,6 @@
     </ClCompile>
     <ClCompile Include="Source\GUI\Components\CCheckbox.cpp">
       <Filter>Source\GUI\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Entities\Npcs\Skeleton.cpp">
-      <Filter>Source\Entities\Npcs</Filter>
     </ClCompile>
     <ClCompile Include="Source\Entities\Npcs\Knight.cpp">
       <Filter>Source\Entities\Npcs</Filter>
@@ -765,6 +765,15 @@
     <ClCompile Include="Source\Entities\Enemies\Mecha\DarkBot.cpp">
       <Filter>Source\Entities\Enemies\Mecha</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Events\DialogEvents.cpp">
+      <Filter>Source\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Events\MouseEvents.cpp">
+      <Filter>Source\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Events\NavigationEvents.cpp">
+      <Filter>Source\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -958,9 +967,6 @@
     </ClInclude>
     <ClInclude Include="Source\Minigames\Minigames.h">
       <Filter>Source\Minigames</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Entities\Npcs\Skeleton.h">
-      <Filter>Source\Entities\Npcs</Filter>
     </ClInclude>
     <ClInclude Include="Source\Entities\Npcs\Knight.h">
       <Filter>Source\Entities\Npcs</Filter>
@@ -1405,6 +1411,15 @@
     </ClInclude>
     <ClInclude Include="Source\Entities\Enemies\Mecha\DarkBot.h">
       <Filter>Source\Entities\Enemies\Mecha</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Events\DialogEvents.h">
+      <Filter>Source\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Events\MouseEvents.h">
+      <Filter>Source\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Events\NavigationEvents.h">
+      <Filter>Source\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "Events/MouseEvents.h"
 #include "Utils/GameUtils.h"
 
 using namespace cocos2d;

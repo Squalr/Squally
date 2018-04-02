@@ -8,7 +8,9 @@
 #include "GUI/Menus/Options/OptionsMenu.h"
 #include "GUI/Menus/Pause/PauseMenu.h"
 #include "GUI/Menus/Confirmation/ConfirmationMenu.h"
+#include "Events/NavigationEvents.h"
 #include "Level/Level.h"
+#include "Fight/Fight.h"
 #include "Minigames/Minigames.h"
 #include "Utils/GameUtils.h"
 
@@ -28,6 +30,7 @@ private:
 	void onGameNavigateConfirm(EventCustom* eventCustom);
 	void onGameNavigateLoadLevel(EventCustom* eventCustom);
 	void onGameNavigateEnterLevel(EventCustom* eventCustom);
+	void onGameNavigateFight(EventCustom* eventCustom);
 	void loadScene(Scene* scene);
 	void initializeEventListeners();
 
@@ -36,6 +39,7 @@ private:
 	StoryMap* storyMap;
 	LoadingScreen* loadingScreen;
 	Level* level;
+	Fight* fight;
 	OptionsMenu* optionsMenu;
 	PauseMenu* pauseMenu;
 	ConfirmationMenu* confirmationMenu;

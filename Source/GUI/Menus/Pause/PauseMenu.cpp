@@ -85,7 +85,7 @@ void PauseMenu::initializeListeners()
 
 void PauseMenu::onExitConfirm()
 {
-	GameUtils::navigateBack();
+	NavigationEvents::navigateBack();
 }
 
 void PauseMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -94,27 +94,27 @@ void PauseMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		event->stopPropagation();
-		GameUtils::navigateBack();
+		NavigationEvents::navigateBack();
 		break;
 	}
 }
 
 void PauseMenu::onCloseClick(MenuSprite* menuSprite)
 {
-	GameUtils::navigateBack();
+	NavigationEvents::navigateBack();
 }
 
 void PauseMenu::onResumeClick(MenuSprite* menuSprite)
 {
-	GameUtils::navigateBack();
+	NavigationEvents::navigateBack();
 }
 
 void PauseMenu::onOptionsClick(MenuSprite* menuSprite)
 {
-	GameUtils::navigate(GameUtils::GameScreen::Options);
+	NavigationEvents::navigate(NavigationEvents::GameScreen::Options);
 }
 
 void PauseMenu::onExitClick(MenuSprite* menuSprite)
 {
-	GameUtils::navigateConfirm("Exit this level?", CC_CALLBACK_0(PauseMenu::onExitConfirm, this), nullptr);
+	NavigationEvents::navigateConfirm("Exit this level?", CC_CALLBACK_0(PauseMenu::onExitConfirm, this), nullptr);
 }

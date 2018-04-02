@@ -3,7 +3,7 @@
 #include "Resources.h"
 #include "GUI/Components/MenuSprite.h"
 #include "Level/Level.h"
-#include "Utils/GameUtils.h"
+#include "Events/NavigationEvents.h"
 
 using namespace cocos2d;
 

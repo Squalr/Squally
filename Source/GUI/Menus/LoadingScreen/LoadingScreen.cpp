@@ -107,7 +107,7 @@ void LoadingScreen::incrementLoadedFileCount()
 		LevelMap::mapSize = Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
 
 		LevelMap* map = Parser::parseMap(mapRaw);
-		GameUtils::enterLevel(map);
+		NavigationEvents::enterLevel(map);
 	}
 }
 

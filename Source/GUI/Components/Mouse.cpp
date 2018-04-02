@@ -2,8 +2,6 @@
 
 Mouse* Mouse::mouseInstance = nullptr;
 
-const std::string Mouse::MouseMoveEvent = "mouse_move_event";
-
 Mouse* Mouse::claimInstance()
 {
 	Mouse* mouse = Mouse::getInstance();
@@ -76,5 +74,5 @@ void Mouse::onMouseMove(EventMouse* event)
 	this->mouseSpritePoint->setPosition(Vec2(event->getCursorX(), event->getCursorY()));
 
 	this->setCanClick(false);
-	this->getEventDispatcher()->dispatchCustomEvent(this->MouseMoveEvent, &MouseEventArgs(event->getCursorX(), event->getCursorY(), event));
+	MouseEvents::TriggerMouseMove(MouseEvents::MouseEventArgs(event->getCursorX(), event->getCursorY(), event));
 }

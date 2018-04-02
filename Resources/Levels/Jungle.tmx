@@ -124,7 +124,7 @@
 </data>
  </layer>
  <objectgroup name="DECOR_background">
-  <object id="139" name="Forest/Thorns10" type="Forest/Thorns10" x="1906.24" y="1290.36" width="279.741" height="259.846"/>
+  <object id="139" name="Forest/Thorns10" type="Forest/Thorns10" x="1846.24" y="1254.36" width="391.741" height="363.846"/>
   <object id="140" name="Forest/Thorns8" type="Forest/Thorns8" x="1873.83" y="1666.34" width="358.529" height="338.634"/>
  </objectgroup>
  <layer name="TILES_midground" width="117" height="96">
@@ -240,7 +240,13 @@
  </objectgroup>
  <objectgroup name="ENTITIES_entities">
   <object id="72" name="spawn" type="spawn" x="557.243" y="753.006" width="128" height="128"/>
-  <object id="144" name="shroom" type="shroom" x="1997.39" y="925.455" width="100.364" height="88.2424"/>
+  <object id="144" name="harpy" type="harpy" x="1933.39" y="821.455" width="164.364" height="180.242">
+   <properties>
+    <property name="ally1" value="harpy"/>
+    <property name="ally2" value="harpy"/>
+    <property name="map" value="jungle"/>
+   </properties>
+  </object>
   <object id="180" name="knight" type="knight" x="246.06" y="798.727" width="200" height="288"/>
  </objectgroup>
  <objectgroup name="COLLISION_collision">

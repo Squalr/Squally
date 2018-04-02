@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Objects/Hackables/HackableObject.h"
+#include "Events/DialogEvents.h"
 #include "GUI/Menus/Dialog/DialogMenu.h"
 #include "GUI/Menus/HackerMode/RadialMenu.h"
 #include "GUI/Components/Mouse.h"
@@ -28,4 +29,3 @@ private:
 
 	Node* dialogNode;
 };
-

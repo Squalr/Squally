@@ -60,5 +60,5 @@ Monitor::~Monitor()
 
 void Monitor::onMonitorClick(MenuSprite* menuSprite)
 {
-	this->getEventDispatcher()->dispatchCustomEvent(DialogMenu::DialogOpenEvent, &DialogMenu::DialogOpenArgs(this->monitorDialog));
+	// this->getEventDispatcher()->dispatchCustomEvent(DialogEvents::DialogOpenEvent, DialogEvents::DialogOpenArgs(this->monitorDialog));
 }

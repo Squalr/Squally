@@ -162,7 +162,7 @@ void StoryMap::initializePositions()
 
 void StoryMap::initializeListeners()
 {
-	EventListenerCustom* customListener = EventListenerCustom::create(Mouse::MouseMoveEvent, CC_CALLBACK_1(StoryMap::onMouseSpriteMove, this));
+	EventListenerCustom* customListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(StoryMap::onMouseSpriteMove, this));
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
 
 	listener->onKeyPressed = CC_CALLBACK_2(StoryMap::onKeyPressed, this);
@@ -181,7 +181,7 @@ void StoryMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		GameUtils::navigateBack();
+		NavigationEvents::navigateBack();
 		break;
 	}
 }
@@ -209,7 +209,7 @@ void StoryMap::initializedLocked()
 
 void StoryMap::onMouseSpriteMove(EventCustom* event)
 {
-	Mouse::MouseEventArgs* args = static_cast<Mouse::MouseEventArgs*>(event->getUserData());
+	MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(event->getUserData());
 	Vec2 mouseCoords = Vec2(args->mouseX, args->mouseY);
 
 	for (auto it = this->mapNodes->begin(); it != this->mapNodes->end(); it++)

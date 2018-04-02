@@ -31,21 +31,20 @@ void Fight::onEnter()
 void Fight::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	this->hackerModeBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }
 
 void Fight::initializeListeners()
 {
 }
 
-void Fight::loadFight(Fight::FightData fightData)
+void Fight::loadFight(Player* player, Entity* enemy)
 {
 	this->addChild(InputManager::claimInstance());
 
-	this->addChild(this->background);
-	this->addChild(this->objectLayer);
-	this->addChild(this->entityLayer);
+	// this->addChild(this->background);
+	// this->addChild(this->objectLayer);
+	// this->addChild(this->entityLayer);
+
 }
 
 void Fight::update(float dt)

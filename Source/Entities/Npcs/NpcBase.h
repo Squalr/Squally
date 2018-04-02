@@ -26,6 +26,5 @@ protected:
 	Deck* deck;
 
 private:
-
 	MenuSprite * interactButton;
 };

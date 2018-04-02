@@ -135,7 +135,7 @@ void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		GameUtils::navigate(GameUtils::GameScreen::Pause);
+		NavigationEvents::navigate(NavigationEvents::GameScreen::Pause);
 		event->stopPropagation();
 		break;
 	case EventKeyboard::KeyCode::KEY_TAB:

@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Config/SoundManager.h"
+#include "Events/NavigationEvents.h"
 #include "Utils/GameUtils.h"
 #include "GUI/Menus/Title/HackerMode.h"
 #include "GUI/Menus/Title/TitleScreenBackground.h"

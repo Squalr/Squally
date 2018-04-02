@@ -63,5 +63,5 @@ void MapNode::initializeListeners()
 
 void MapNode::onNodeClick(MenuSprite* menuSprite, EventMouse* args)
 {
-	GameUtils::loadLevel(this->nodeMapFile);
+	NavigationEvents::loadLevel(this->nodeMapFile);
 }

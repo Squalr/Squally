@@ -41,14 +41,14 @@ MouseOverPanel::~MouseOverPanel()
 
 void MouseOverPanel::initializeListeners()
 {
-	EventListenerCustom* customListener = EventListenerCustom::create(Mouse::MouseMoveEvent, CC_CALLBACK_1(MouseOverPanel::onMouseSpriteMove, this));
+	EventListenerCustom* customListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MouseOverPanel::onMouseSpriteMove, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(customListener, this);
 }
 
 void MouseOverPanel::onMouseSpriteMove(EventCustom* event)
 {
-	Mouse::MouseEventArgs* args = static_cast<Mouse::MouseEventArgs*>(event->getUserData());
+	MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(event->getUserData());
 
 	if (GameUtils::isVisible(this) && GameUtils::intersectsV2(this->content, Vec2(args->mouseX, args->mouseY)))
 	{

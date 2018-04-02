@@ -1,7 +1,5 @@
 #include "DialogMenu.h"
 
-const std::string DialogMenu::DialogOpenEvent = "dialog_open_event";
-
 DialogMenu * DialogMenu::loadDialogFromFile(std::string filePath)
 {
 	return DialogMenu::loadDialogFromJson(FileUtils::getInstance()->getStringFromFile(filePath.c_str()));
@@ -229,7 +227,7 @@ void DialogMenu::onChooseDialog(MenuLabel* dialogMenu)
 		if (value.first == dialogMenu)
 		{
 			// Open the dialog from the selected choice
-			this->getEventDispatcher()->dispatchCustomEvent(DialogMenu::DialogOpenEvent, &DialogOpenArgs(value.second));
+			DialogEvents::TriggerDialog(DialogEvents::DialogOpenArgs("")); // value.second
 			return;
 		}
 	}
