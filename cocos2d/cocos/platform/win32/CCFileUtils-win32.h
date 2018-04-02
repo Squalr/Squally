@@ -134,14 +134,6 @@ protected:
     virtual std::string getFullPathForDirectoryAndFilename(const std::string& directory, const std::string& filename) const override;
 
     /**
-    *  List all files in a directory.
-    *
-    *  @param dirPath The path of the directory, it could be a relative or an absolute path.
-    *  @return File paths in a string vector
-    */
-    virtual std::vector<std::string> listFiles(const std::string& dirPath) const;
-
-    /**
     *  List all files recursively in a directory.
     *
     *  @param dirPath The path of the directory, it could be a relative or an absolute path.
