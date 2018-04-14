@@ -870,7 +870,6 @@ const std::string Resources::Entities_Environment_Castle_Harpy_Walk_0038 = "Enti
 const std::string Resources::Entities_Environment_Castle_Harpy_Walk_0039 = "Entities\\Environment_Castle\\Harpy\\Walk\\0039.png";
 const std::string Resources::Entities_Environment_Castle_Harpy_Walk_0040 = "Entities\\Environment_Castle\\Harpy\\Walk\\0040.png";
 const std::string Resources::Entities_Environment_Castle_Harpy_Walk_0041 = "Entities\\Environment_Castle\\Harpy\\Walk\\0041.png";
-const std::string Resources::Entities_Environment_Castle_Harpy_Walk_0042 = "Entities\\Environment_Castle\\Harpy\\Walk\\0042.png";
 const std::string Resources::Entities_Environment_Caverns_Beetle_Attack_Attack__1_ = "Entities\\Environment_Caverns\\Beetle\\Attack\\Attack (1).png";
 const std::string Resources::Entities_Environment_Caverns_Beetle_Attack_Attack__10_ = "Entities\\Environment_Caverns\\Beetle\\Attack\\Attack (10).png";
 const std::string Resources::Entities_Environment_Caverns_Beetle_Attack_Attack__2_ = "Entities\\Environment_Caverns\\Beetle\\Attack\\Attack (2).png";
