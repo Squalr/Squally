@@ -22,6 +22,20 @@ NS_CC_BEGIN
         ~AnimationNode ();
         void update (float dt) override;
 
+		/**
+		* Sets whether the sprite should be flipped horizontally or not.
+		*
+		* @param flippedX true if the sprite should be flipped horizontally, false otherwise.
+		*/
+		void setFlippedX(bool flippedX);
+
+		/**
+		* Sets whether the sprite should be flipped vertically or not.
+		*
+		* @param flippedY true if the sprite should be flipped vertically, false otherwise.
+		*/
+		void setFlippedY(bool flippedY);
+
         /**
          * Creates and schedules for maintenance a SpriterPlusPlus animation
          * entity. Once the animation completes once it will be deleted, even if it
@@ -65,6 +79,8 @@ NS_CC_BEGIN
         static SpriteLoader fileLoader();
         static SpriteLoader cacheLoader();
     private:
+		bool isFlippedX;
+		bool isFlippedY;
         class impl;
         std::unique_ptr<impl> self;
     };
