@@ -872,7 +872,6 @@ public:
 	static const std::string Entities_Environment_Castle_Harpy_Walk_0039;
 	static const std::string Entities_Environment_Castle_Harpy_Walk_0040;
 	static const std::string Entities_Environment_Castle_Harpy_Walk_0041;
-	static const std::string Entities_Environment_Castle_Harpy_Walk_0042;
 	static const std::string Entities_Environment_Caverns_Beetle_Attack_Attack__1_;
 	static const std::string Entities_Environment_Caverns_Beetle_Attack_Attack__10_;
 	static const std::string Entities_Environment_Caverns_Beetle_Attack_Attack__2_;
