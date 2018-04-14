@@ -57,6 +57,7 @@ void Enemy::initializeEnemy2(std::string scmlResource, std::string idleAnimation
 	this->walkAnimation = Animation::create();
 
 	this->animationNode = AnimationNode::create(Resources::Entities_Environment_Lava_BossDemonKing_Animations);
+	this->animationNode->setScale(0.5f);
 
 	SpriterEngine::EntityInstance* entity = this->animationNode->play("BossDemonKing");
 	entity->setCurrentAnimation("Idle");
@@ -64,7 +65,7 @@ void Enemy::initializeEnemy2(std::string scmlResource, std::string idleAnimation
 	CategoryGroup categoryGroup = isFlying ? CategoryGroup::G_EnemyFlying : CategoryGroup::G_Enemy;
 
 	this->sprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
-	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), categoryGroup, true, false);
+	this->init(PhysicsBody::createBox(Size(196.0f,256.0f)), categoryGroup, true, false);
 
 	this->spriteNode->addChild(this->sprite);
 	this->spriteNode->addChild(this->animationNode);
@@ -85,10 +86,12 @@ void Enemy::update(float dt)
 	if (this->movement.x < 0.0f)
 	{
 		this->sprite->setFlippedX(true);
+		this->animationNode->setFlippedX(true);
 	}
 	else
 	{
 		this->sprite->setFlippedX(false);
+		this->animationNode->setFlippedX(false);
 	}
 }
 
