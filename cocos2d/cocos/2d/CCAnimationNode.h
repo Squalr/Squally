@@ -16,7 +16,7 @@ NS_CC_BEGIN
 
     typedef std::function<void(SpriterEngine::EntityInstance*)> EntityEvent;
 
-    class AnimationNode : public cocos2d::Node {
+    class CC_DLL AnimationNode : public cocos2d::Node {
     public:
         AnimationNode(const std::string& scmlFile, SpriteLoader loader);
         ~AnimationNode ();

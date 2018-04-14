@@ -11,11 +11,10 @@ BossDemon* BossDemon::create()
 
 BossDemon::BossDemon() : Enemy::Enemy()
 {
-	this->initializeEnemy(
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
+	this->initializeEnemy2(
+		Resources::Entities_Environment_Lava_BossDemonKing_Animations,
+		"Idle",
+		"Walk",
 		true
 	);
 }
