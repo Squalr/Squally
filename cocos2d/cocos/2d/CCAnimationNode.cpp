@@ -4,7 +4,7 @@
 #include "2d/CCSprite.h"
 #include <sstream>
 
-#include "AnimationNode.h"
+#include "CCAnimationNode.h"
 #include "CCObjectFactory.h"
 
 NS_CC_BEGIN

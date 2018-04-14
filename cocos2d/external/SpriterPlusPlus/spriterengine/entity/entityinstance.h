@@ -25,7 +25,7 @@ namespace SpriterEngine
 	typedef std::vector<FileReference*> FileReferenceVector;
 	typedef std::list<std::string> StringList;
 
-	class EntityInstance : public UniversalObjectInterface
+	class __declspec(dllexport) EntityInstance : public UniversalObjectInterface
 	{
 	public:
 		EntityInstance();

@@ -21,7 +21,7 @@ namespace SpriterEngine
 
 	typedef std::vector<UniversalObjectInterface*> ObjectInterfaceVector;
 	
-	class UniversalObjectInterface
+	class __declspec(dllexport) UniversalObjectInterface
 	{
 	public:
 		UniversalObjectInterface();
