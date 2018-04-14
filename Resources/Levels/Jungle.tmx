@@ -240,7 +240,7 @@
  </objectgroup>
  <objectgroup name="ENTITIES_entities">
   <object id="72" name="spawn" type="spawn" x="557.243" y="753.006" width="128" height="128"/>
-  <object id="144" name="harpy" type="harpy" x="1933.39" y="821.455" width="164.364" height="180.242">
+  <object id="144" name="boss_demon_king" type="boss_demon_king" x="2065.39" y="609.455" width="164.364" height="180.242">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>

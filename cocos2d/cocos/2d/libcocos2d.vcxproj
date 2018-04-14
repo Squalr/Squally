@@ -769,7 +769,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\vr\CCVRDistortionMesh.cpp" />
     <ClCompile Include="..\vr\CCVRGenericHeadTracker.cpp" />
     <ClCompile Include="..\vr\CCVRGenericRenderer.cpp" />
-    <ClCompile Include="AnimationNode.cpp" />
+    <ClCompile Include="CCAnimationNode.cpp" />
     <ClCompile Include="CCAction.cpp" />
     <ClCompile Include="CCActionCamera.cpp" />
     <ClCompile Include="CCActionCatmullRom.cpp" />
@@ -1556,7 +1556,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\vr\CCVRGenericHeadTracker.h" />
     <ClInclude Include="..\vr\CCVRGenericRenderer.h" />
     <ClInclude Include="..\vr\CCVRProtocol.h" />
-    <ClInclude Include="AnimationNode.h" />
+    <ClInclude Include="CCAnimationNode.h" />
     <ClInclude Include="CCAction.h" />
     <ClInclude Include="CCActionCamera.h" />
     <ClInclude Include="CCActionCatmullRom.h" />

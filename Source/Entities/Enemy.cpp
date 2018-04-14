@@ -49,6 +49,28 @@ void Enemy::initializeEnemy(std::string baseIdleResource, float idleFrameSpeed, 
 	this->addChild(this->spriteNode);
 }
 
+void Enemy::initializeEnemy2(std::string scmlResource, std::string idleAnimation, std::string walkAnimation, bool isFlying)
+{
+	this->spriteNode = Node::create();
+	this->sprite = Sprite::create(Resources::EmptyImage);
+	this->idleAnimation = Animation::create();
+	this->walkAnimation = Animation::create();
+
+	this->animationNode = AnimationNode::create(Resources::Entities_Environment_Lava_BossDemonKing_Animations);
+
+	SpriterEngine::EntityInstance* entity = this->animationNode->play("BossDemonKing");
+	entity->setCurrentAnimation("Idle");
+
+	CategoryGroup categoryGroup = isFlying ? CategoryGroup::G_EnemyFlying : CategoryGroup::G_Enemy;
+
+	this->sprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
+	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), categoryGroup, true, false);
+
+	this->spriteNode->addChild(this->sprite);
+	this->spriteNode->addChild(this->animationNode);
+	this->addChild(this->spriteNode);
+}
+
 void Enemy::update(float dt)
 {
 	Entity::update(dt);

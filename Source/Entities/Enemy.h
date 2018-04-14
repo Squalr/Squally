@@ -17,9 +17,11 @@ protected:
 	bool contactEnd(CollisionData data) override;
 
 	void initializeEnemy(std::string baseIdleResource, float idleFrameSpeed, std::string baseWalkResource, float walkFrameSpeed, bool isFlying);
+	void initializeEnemy2(std::string scmlResource, std::string idleAnimation, std::string walkAnimation, bool isFlying);
 
 	void update(float) override;
 	Sprite* sprite;
+	AnimationNode* animationNode;
 
 	Animation* walkAnimation;
 	Animation* idleAnimation;

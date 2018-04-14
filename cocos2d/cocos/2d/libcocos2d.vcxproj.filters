@@ -2037,9 +2037,6 @@
     <ClCompile Include="TinyXmlSpriterFileElementWrapper.cpp">
       <Filter>2d</Filter>
     </ClCompile>
-    <ClCompile Include="AnimationNode.cpp">
-      <Filter>2d</Filter>
-    </ClCompile>
     <ClCompile Include="CCBoneInstanceInfo.cpp">
       <Filter>2d</Filter>
     </ClCompile>
@@ -2294,6 +2291,9 @@
     </ClCompile>
     <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterobjectfactory.cpp">
       <Filter>external\SpriterPlusPlus</Filter>
+    </ClCompile>
+    <ClCompile Include="CCAnimationNode.cpp">
+      <Filter>2d</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -4363,9 +4363,6 @@
     <ClInclude Include="TinyXmlSpriterFileDocumentWrapper.h">
       <Filter>2d</Filter>
     </ClInclude>
-    <ClInclude Include="AnimationNode.h">
-      <Filter>2d</Filter>
-    </ClInclude>
     <ClInclude Include="CCBoneInstanceInfo.h">
       <Filter>2d</Filter>
     </ClInclude>
@@ -4638,6 +4635,9 @@
     </ClInclude>
     <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterobjectfactory.h">
       <Filter>external\SpriterPlusPlus</Filter>
+    </ClInclude>
+    <ClInclude Include="CCAnimationNode.h">
+      <Filter>2d</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

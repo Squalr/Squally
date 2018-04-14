@@ -30,7 +30,8 @@ foreach (string file in Directory.EnumerateFiles(this.Host.ResolvePath("../Resou
 		!fileToLower.EndsWith(".wav") &&
 		!fileToLower.EndsWith(".plist") &&
 		!fileToLower.EndsWith(".json") &&
-		!fileToLower.EndsWith(".tmx")) {
+		!fileToLower.EndsWith(".tmx") &&
+		!fileToLower.EndsWith(".scml")) {
 			continue;
 		}
 		
