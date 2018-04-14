@@ -69,9 +69,18 @@ NS_CC_BEGIN
             remove = nullptr;
         }
 
+		void updateFlipped(bool isFlippedX, bool isFlippedY)
+		{
+			for (auto it = this->entities.begin(); it != this->entities.end(); *it++)
+			{
+				it->entity->setScale(SpriterEngine::point(isFlippedX ? -1.0f : 1.0f, isFlippedY ? -1.0f : 1.0f));
+			}
+		}
+
+
     private:
+		std::vector<EntityCommand> entities;
         CCFileFactory* files;
-        std::vector<EntityCommand> entities;
         SpriterEngine::SpriterModel model;
     };
 
@@ -79,7 +88,10 @@ NS_CC_BEGIN
 
 
     AnimationNode::AnimationNode(const std::string& scmlFile, SpriteLoader loader)
-            : self(new impl(this, loader, scmlFile)) {}
+            : self(new impl(this, loader, scmlFile)) {
+		this->isFlippedX = false;
+		this->isFlippedY = false;
+	}
 
     AnimationNode::~AnimationNode() {}
 
@@ -88,20 +100,43 @@ NS_CC_BEGIN
         self->update(dt);
     }
 
+	void AnimationNode::setFlippedX(bool flippedX)
+	{
+		this->isFlippedX = flippedX;
+		this->self->updateFlipped(this->isFlippedX, this->isFlippedY);
+	}
+
+	void AnimationNode::setFlippedY(bool flippedY)
+	{
+		this->isFlippedY = flippedY;
+		this->self->updateFlipped(this->isFlippedX, this->isFlippedY);
+	}
 
     SpriterEngine::EntityInstance* AnimationNode::playOnce(const std::string &name)
     {
-        return self->createEntity(name, PlayOnce, doNothing);
+		SpriterEngine::EntityInstance* instance = self->createEntity(name, PlayOnce, doNothing);
+
+		this->self->updateFlipped(this->isFlippedX, this->isFlippedY);
+
+		return instance;
     }
 
     SpriterEngine::EntityInstance* AnimationNode::playOnce(const std::string &name
                                                ,EntityEvent onComplete)
     {
-        return self->createEntity(name, PlayOnce, onComplete);
+		SpriterEngine::EntityInstance* instance = self->createEntity(name, PlayOnce, onComplete);
+
+		this->self->updateFlipped(this->isFlippedX, this->isFlippedY);
+
+		return instance;
     }
 
     SpriterEngine::EntityInstance *AnimationNode::play(const std::string &name) {
-        return self->createEntity(name, PlayRepeat, doNothing);
+		SpriterEngine::EntityInstance* instance = self->createEntity(name, PlayRepeat, doNothing);
+
+		this->self->updateFlipped(this->isFlippedX, this->isFlippedY);
+
+		return instance;
     }
 
     AnimationNode* AnimationNode::create(const std::string& scmlFile, SpriteLoader loader)
