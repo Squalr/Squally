@@ -9,15 +9,11 @@ Vampiress1* Vampiress1::create()
 	return instance;
 }
 
-Vampiress1::Vampiress1() : Enemy::Enemy()
+Vampiress1::Vampiress1() : Enemy::Enemy(
+	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
+	"BossDemonKing",
+	false)
 {
-	this->initializeEnemy(
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		true
-	);
 }
 
 Vampiress1::~Vampiress1()

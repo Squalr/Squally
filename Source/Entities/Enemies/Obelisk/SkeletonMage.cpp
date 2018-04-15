@@ -9,15 +9,11 @@ SkeletonMage* SkeletonMage::create()
 	return instance;
 }
 
-SkeletonMage::SkeletonMage() : Enemy::Enemy()
+SkeletonMage::SkeletonMage() : Enemy::Enemy(
+	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
+	"BossDemonKing",
+	false)
 {
-	this->initializeEnemy(
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		true
-	);
 }
 
 SkeletonMage::~SkeletonMage()

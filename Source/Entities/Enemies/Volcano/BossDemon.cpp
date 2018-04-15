@@ -9,14 +9,11 @@ BossDemon* BossDemon::create()
 	return instance;
 }
 
-BossDemon::BossDemon() : Enemy::Enemy()
+BossDemon::BossDemon() : Enemy::Enemy(
+	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
+	"BossDemonKing",
+	false)
 {
-	this->initializeEnemy2(
-		Resources::Entities_Environment_Lava_BossDemonKing_Animations,
-		"Idle",
-		"Walk",
-		true
-	);
 }
 
 BossDemon::~BossDemon()

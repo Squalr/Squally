@@ -9,15 +9,11 @@ RedWyvern1* RedWyvern1::create()
 	return instance;
 }
 
-RedWyvern1::RedWyvern1() : Enemy::Enemy()
+RedWyvern1::RedWyvern1() : Enemy::Enemy(
+	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
+	"BossDemonKing",
+	false)
 {
-	this->initializeEnemy(
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		true
-	);
 }
 
 RedWyvern1::~RedWyvern1()

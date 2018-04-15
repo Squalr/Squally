@@ -9,15 +9,11 @@ VoidDemon* VoidDemon::create()
 	return instance;
 }
 
-VoidDemon::VoidDemon() : Enemy::Enemy()
+VoidDemon::VoidDemon() : Enemy::Enemy(
+	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
+	"BossDemonKing",
+	false)
 {
-	this->initializeEnemy(
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		true
-	);
 }
 
 VoidDemon::~VoidDemon()

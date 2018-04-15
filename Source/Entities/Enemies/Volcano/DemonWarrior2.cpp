@@ -9,15 +9,11 @@ DemonWarrior2* DemonWarrior2::create()
 	return instance;
 }
 
-DemonWarrior2::DemonWarrior2() : Enemy::Enemy()
+DemonWarrior2::DemonWarrior2() : Enemy::Enemy(
+	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
+	"BossDemonKing",
+	false)
 {
-	this->initializeEnemy(
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		true
-	);
 }
 
 DemonWarrior2::~DemonWarrior2()
