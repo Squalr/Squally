@@ -12,7 +12,10 @@ BossDemon* BossDemon::create()
 BossDemon::BossDemon() : Enemy::Enemy(
 	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
 	"BossDemonKing",
-	false)
+	false,
+	Size(480.0f, 480.0f),
+	0.6f,
+	Vec2(0.0f, -112.0f))
 {
 }
 

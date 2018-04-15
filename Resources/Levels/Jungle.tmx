@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="117" height="96" tilewidth="128" tileheight="128" nextobjectid="183">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="117" height="96" tilewidth="128" tileheight="128" nextobjectid="184">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../Tiles/TileMap.png" width="5760" height="3200"/>
@@ -248,6 +248,13 @@
    </properties>
   </object>
   <object id="180" name="knight" type="knight" x="246.06" y="798.727" width="200" height="288"/>
+  <object id="183" name="black_widow" type="black_widow" x="1525.82" y="677.879" width="164.364" height="180.242">
+   <properties>
+    <property name="ally1" value="harpy"/>
+    <property name="ally2" value="harpy"/>
+    <property name="map" value="jungle"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="COLLISION_collision">
   <object id="39" name="solid" type="solid" x="2186.82" y="1326.61" width="3048.67" height="1253"/>
