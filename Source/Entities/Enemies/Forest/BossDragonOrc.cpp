@@ -9,15 +9,11 @@ BossDragonOrc* BossDragonOrc::create()
 	return instance;
 }
 
-BossDragonOrc::BossDragonOrc() : Enemy::Enemy()
+BossDragonOrc::BossDragonOrc() : Enemy::Enemy(
+	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
+	"BossDemonKing",
+	false)
 {
-	this->initializeEnemy(
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		true
-	);
 }
 
 BossDragonOrc::~BossDragonOrc()

@@ -9,15 +9,11 @@ Abomination* Abomination::create()
 	return instance;
 }
 
-Abomination::Abomination() : Enemy::Enemy()
+Abomination::Abomination() : Enemy::Enemy(
+	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
+	"BossDemonKing",
+	false)
 {
-	this->initializeEnemy(
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		true
-	);
 }
 
 Abomination::~Abomination()

@@ -1,82 +1,41 @@
 #include "Enemy.h"
 
-Enemy::Enemy() : Entity::Entity()
+Enemy::Enemy(std::string scmlResource, std::string entityName, bool isFlying) : Entity::Entity()
 {
-	this->sprite = nullptr;
-	this->spriteNode = nullptr;
+	this->spriteNode = Node::create();
+	this->animationNode = AnimationNode::create(scmlResource);
+	this->animationNode->setScale(0.5f);
 
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
 	this->actualMaxFallSpeed = 600.0f;
 	this->moveAcceleration = 4000.0f;
 
-	this->movement.x = -1.0f;
+	// TODO: Configurable/randomizable start direction (if any)
+	this->movement.x = 0.0f;
 	this->movement.y = 0.0f;
 
+	SpriterEngine::EntityInstance* entity = this->animationNode->play(entityName);
+	entity->setCurrentAnimation("Idle");
+
+	CategoryGroup categoryGroup = isFlying ? CategoryGroup::G_EnemyFlying : CategoryGroup::G_Enemy;
+
+	// TODO: Size configurable
+	this->init(PhysicsBody::createBox(Size(196.0f, 256.0f)), categoryGroup, true, false);
+
+	this->spriteNode->addChild(this->animationNode);
+	this->addChild(this->spriteNode);
 }
 
 Enemy::~Enemy()
 {
 }
 
-void Enemy::initializeEnemy(std::string baseIdleResource, float idleFrameSpeed, std::string baseWalkResource, float walkFrameSpeed, bool isFlying)
-{
-	this->spriteNode = Node::create();
-	this->sprite = Sprite::create(baseIdleResource);
-	this->idleAnimation = Animation::create();
-	this->walkAnimation = Animation::create();
-
-	CategoryGroup categoryGroup = isFlying ? CategoryGroup::G_EnemyFlying : CategoryGroup::G_Enemy;
-	std::vector<std::string> idleAnimationResources = GameUtils::getAllAnimationFiles(baseIdleResource);
-	std::vector<std::string> walkAnimationResources = GameUtils::getAllAnimationFiles(baseWalkResource);
-
-	for (auto it = idleAnimationResources.begin(); it != idleAnimationResources.end(); it++)
-	{
-		this->idleAnimation->addSpriteFrameWithFileName(*it);
-	}
-
-	for (auto it = walkAnimationResources.begin(); it != walkAnimationResources.end(); it++)
-	{
-		this->walkAnimation->addSpriteFrameWithFileName(*it);
-	}
-
-	this->idleAnimation->setDelayPerUnit(idleFrameSpeed);
-	this->walkAnimation->setDelayPerUnit(walkFrameSpeed);
-	this->sprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
-	this->init(PhysicsBody::createBox(this->sprite->getContentSize()), categoryGroup, true, false);
-
-	this->spriteNode->addChild(this->sprite);
-	this->addChild(this->spriteNode);
-}
-
-void Enemy::initializeEnemy2(std::string scmlResource, std::string idleAnimation, std::string walkAnimation, bool isFlying)
-{
-	this->spriteNode = Node::create();
-	this->sprite = Sprite::create(Resources::EmptyImage);
-	this->idleAnimation = Animation::create();
-	this->walkAnimation = Animation::create();
-
-	this->animationNode = AnimationNode::create(Resources::Entities_Environment_Lava_BossDemonKing_Animations);
-	this->animationNode->setScale(0.5f);
-
-	SpriterEngine::EntityInstance* entity = this->animationNode->play("BossDemonKing");
-	entity->setCurrentAnimation("Idle");
-
-	CategoryGroup categoryGroup = isFlying ? CategoryGroup::G_EnemyFlying : CategoryGroup::G_Enemy;
-
-	this->sprite->runAction(RepeatForever::create(Sequence::create(Animate::create(this->walkAnimation), nullptr)));
-	this->init(PhysicsBody::createBox(Size(196.0f,256.0f)), categoryGroup, true, false);
-
-	this->spriteNode->addChild(this->sprite);
-	this->spriteNode->addChild(this->animationNode);
-	this->addChild(this->spriteNode);
-}
-
 void Enemy::update(float dt)
 {
 	Entity::update(dt);
 
-	if (sprite == nullptr || spriteNode == nullptr)
+	if (this->animationNode == nullptr || this->spriteNode == nullptr)
 	{
 		return;
 	}
@@ -85,12 +44,10 @@ void Enemy::update(float dt)
 
 	if (this->movement.x < 0.0f)
 	{
-		this->sprite->setFlippedX(true);
 		this->animationNode->setFlippedX(true);
 	}
 	else
 	{
-		this->sprite->setFlippedX(false);
 		this->animationNode->setFlippedX(false);
 	}
 }
