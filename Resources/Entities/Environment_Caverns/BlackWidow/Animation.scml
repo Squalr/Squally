@@ -15,142 +15,29 @@
         <file id="11" name="slash-4.png" width="460" height="467" pivot_x="0.5" pivot_y="0.5"/>
         <file id="12" name="spider-web.png" width="257" height="341" pivot_x="0.0194553" pivot_y="0.316716"/>
     </folder>
-    <entity id="0" name="spider">
-        <obj_info name="spider_spider" realname="spider" type="bone" w="84.986" h="25"/>
-        <obj_info name="spider_b_body" realname="b_body" type="bone" w="332.898" h="25"/>
-        <obj_info name="spider_b_head" realname="b_head" type="bone" w="133.749" h="25"/>
-        <obj_info name="spider_b_upper_leg_r_f" realname="b_upper_leg_r_f" type="bone" w="203.526" h="25"/>
-        <obj_info name="spider_b_lower_leg_r_f" realname="b_lower_leg_r_f" type="bone" w="237.892" h="25"/>
-        <obj_info name="spider_b_feet_r_f" realname="b_feet_r_f" type="bone" w="260.018" h="25"/>
-        <obj_info name="spider_b_upper_leg_r_c" realname="b_upper_leg_r_c" type="bone" w="203.526" h="25"/>
-        <obj_info name="spider_b_lower_leg_r_c" realname="b_lower_leg_r_c" type="bone" w="237.892" h="25"/>
-        <obj_info name="spider_b_feet_r_c" realname="b_feet_r_c" type="bone" w="260.018" h="25"/>
-        <obj_info name="spider_b_upper_leg_r_b" realname="b_upper_leg_r_b" type="bone" w="203.526" h="25"/>
-        <obj_info name="spider_b_lower_leg_r_b" realname="b_lower_leg_r_b" type="bone" w="237.892" h="25"/>
-        <obj_info name="spider_b_feet_r_b" realname="b_feet_r_b" type="bone" w="260.018" h="25"/>
-        <obj_info name="spider_b_upper_leg_l_f" realname="b_upper_leg_l_f" type="bone" w="270.473" h="25"/>
-        <obj_info name="spider_b_lower_leg_l_f" realname="b_lower_leg_l_f" type="bone" w="234.686" h="25"/>
-        <obj_info name="spider_b_feet_l_f" realname="b_feet_l_f" type="bone" w="258.216" h="25"/>
-        <obj_info name="spider_b_upper_leg_l_b" realname="b_upper_leg_l_b" type="bone" w="270.473" h="25"/>
-        <obj_info name="spider_b_lower_leg_l_b" realname="b_lower_leg_l_b" type="bone" w="234.686" h="25"/>
-        <obj_info name="spider_b_feet_l_b" realname="b_feet_l_b" type="bone" w="258.216" h="25"/>
-        <obj_info name="spider_b_upper_leg_l_c" realname="b_upper_leg_l_c" type="bone" w="270.473" h="25"/>
-        <obj_info name="spider_b_lower_leg_l_c" realname="b_lower_leg_l_c" type="bone" w="234.686" h="25"/>
-        <obj_info name="spider_b_feet_l_c" realname="b_feet_l_c" type="bone" w="258.216" h="25"/>
-        <obj_info name="spider_lower leg" realname="lower leg" type="sprite">
-            <frames>
-                <i folder="0" file="0"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_upper leg" realname="upper leg" type="sprite">
-            <frames>
-                <i folder="0" file="1"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_feet" realname="feet" type="sprite">
-            <frames>
-                <i folder="0" file="3"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_upper leg_r_c" realname="upper leg_r_c" type="sprite">
-            <frames>
-                <i folder="0" file="1"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_lower leg_r_c" realname="lower leg_r_c" type="sprite">
-            <frames>
-                <i folder="0" file="0"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_feet_r_c" realname="feet_r_c" type="sprite">
-            <frames>
-                <i folder="0" file="3"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_upper leg_r_b" realname="upper leg_r_b" type="sprite">
-            <frames>
-                <i folder="0" file="1"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_lower leg_r_b" realname="lower leg_r_b" type="sprite">
-            <frames>
-                <i folder="0" file="0"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_feet_r_b" realname="feet_r_b" type="sprite">
-            <frames>
-                <i folder="0" file="3"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_feet-l" realname="feet-l" type="sprite">
-            <frames>
-                <i folder="0" file="5"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_lower-leg-l" realname="lower-leg-l" type="sprite">
-            <frames>
-                <i folder="0" file="6"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_upper-leg-l" realname="upper-leg-l" type="sprite">
-            <frames>
-                <i folder="0" file="7"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_upper-leg-l_b" realname="upper-leg-l_b" type="sprite">
-            <frames>
-                <i folder="0" file="7"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_lower-leg-l_b" realname="lower-leg-l_b" type="sprite">
-            <frames>
-                <i folder="0" file="6"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_feet-l_b" realname="feet-l_b" type="sprite">
-            <frames>
-                <i folder="0" file="5"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_upper-leg-l_c" realname="upper-leg-l_c" type="sprite">
-            <frames>
-                <i folder="0" file="7"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_lower-leg-l_c" realname="lower-leg-l_c" type="sprite">
-            <frames>
-                <i folder="0" file="6"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_feet-l_c" realname="feet-l_c" type="sprite">
-            <frames>
-                <i folder="0" file="5"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_body" realname="body" type="sprite">
-            <frames>
-                <i folder="0" file="4"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_head" realname="head" type="sprite">
-            <frames>
-                <i folder="0" file="2"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_slash-1" realname="slash-1" type="sprite">
-            <frames>
-                <i folder="0" file="8"/>
-                <i folder="0" file="9"/>
-                <i folder="0" file="10"/>
-                <i folder="0" file="11"/>
-            </frames>
-        </obj_info>
-        <obj_info name="spider_spider-web" realname="spider-web" type="sprite">
-            <frames>
-                <i folder="0" file="12"/>
-            </frames>
-        </obj_info>
-        <animation id="0" name="default" length="1200" interval="100" l="-1400" t="-1250" r="2131" b="127">
+    <entity id="0" name="BlackWidow">
+        <obj_info name="spider" type="bone" w="84.986" h="25"/>
+        <obj_info name="b_body" type="bone" w="332.898" h="25"/>
+        <obj_info name="b_head" type="bone" w="133.749" h="25"/>
+        <obj_info name="b_upper_leg_r_f" type="bone" w="203.526" h="25"/>
+        <obj_info name="b_lower_leg_r_f" type="bone" w="237.892" h="25"/>
+        <obj_info name="b_feet_r_f" type="bone" w="260.018" h="25"/>
+        <obj_info name="b_upper_leg_r_c" type="bone" w="203.526" h="25"/>
+        <obj_info name="b_lower_leg_r_c" type="bone" w="237.892" h="25"/>
+        <obj_info name="b_feet_r_c" type="bone" w="260.018" h="25"/>
+        <obj_info name="b_upper_leg_r_b" type="bone" w="203.526" h="25"/>
+        <obj_info name="b_lower_leg_r_b" type="bone" w="237.892" h="25"/>
+        <obj_info name="b_feet_r_b" type="bone" w="260.018" h="25"/>
+        <obj_info name="b_upper_leg_l_f" type="bone" w="270.473" h="25"/>
+        <obj_info name="b_lower_leg_l_f" type="bone" w="234.686" h="25"/>
+        <obj_info name="b_feet_l_f" type="bone" w="258.216" h="25"/>
+        <obj_info name="b_upper_leg_l_b" type="bone" w="270.473" h="25"/>
+        <obj_info name="b_lower_leg_l_b" type="bone" w="234.686" h="25"/>
+        <obj_info name="b_feet_l_b" type="bone" w="258.216" h="25"/>
+        <obj_info name="b_upper_leg_l_c" type="bone" w="270.473" h="25"/>
+        <obj_info name="b_lower_leg_l_c" type="bone" w="234.686" h="25"/>
+        <obj_info name="b_feet_l_c" type="bone" w="258.216" h="25"/>
+        <animation id="0" name="Default" length="1200" interval="100" l="-1400" t="-1250" r="2131" b="127">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="2" key="0"/>
@@ -174,34 +61,34 @@
                     <bone_ref id="18" parent="1" timeline="27" key="0"/>
                     <bone_ref id="19" parent="18" timeline="29" key="0"/>
                     <bone_ref id="20" parent="19" timeline="30" key="0"/>
-                    <object_ref id="0" parent="20" name="feet-l_b" folder="0" file="5" abs_x="255.190173" abs_y="589.446675" abs_angle="355.633596" abs_scale_x="0.72" abs_scale_y="0.72" abs_a="1" timeline="32" key="0" z_index="0"/>
-                    <object_ref id="1" parent="19" name="lower-leg-l_b" folder="0" file="6" abs_x="282.646387" abs_y="826.138273" abs_angle="312.187938" abs_scale_x="0.72" abs_scale_y="0.72" abs_a="1" timeline="31" key="0" z_index="1"/>
-                    <object_ref id="2" parent="18" name="upper-leg-l_b" folder="0" file="7" abs_x="118.35546" abs_y="784.916154" abs_angle="22.533787" abs_scale_x="0.72" abs_scale_y="0.72" abs_a="1" timeline="28" key="0" z_index="2"/>
-                    <object_ref id="3" parent="16" name="lower-leg-l_c" folder="0" file="6" abs_x="435.027828" abs_y="718.807264" abs_angle="333.368948" abs_scale_x="0.72" abs_scale_y="0.72" abs_a="1" timeline="37" key="0" z_index="3"/>
-                    <object_ref id="4" parent="15" name="upper-leg-l_c" folder="0" file="7" abs_x="294.473214" abs_y="741.714719" abs_angle="0.6285" abs_scale_x="0.72" abs_scale_y="0.72" abs_a="1" timeline="35" key="0" z_index="4"/>
-                    <object_ref id="5" parent="17" name="feet-l_c" folder="0" file="5" abs_x="508.517365" abs_y="497.336146" abs_angle="348.774688" abs_scale_x="0.72" abs_scale_y="0.72" abs_a="1" timeline="38" key="0" z_index="5"/>
-                    <object_ref id="6" parent="12" name="upper-leg-l" folder="0" file="7" abs_x="436.195808" abs_y="682.067849" abs_angle="334.039323" abs_scale_x="0.8" abs_scale_y="0.8" abs_a="1" timeline="23" key="0" z_index="6"/>
-                    <object_ref id="7" parent="13" name="lower-leg-l" folder="0" file="6" abs_x="552.353463" abs_y="595.711938" abs_angle="341.613523" abs_scale_x="0.8" abs_scale_y="0.8" abs_a="1" timeline="22" key="0" z_index="7"/>
-                    <object_ref id="8" parent="14" name="feet-l" folder="0" file="5" abs_x="677.59758" abs_y="363.413702" abs_angle="341.613523" abs_scale_x="0.8" abs_scale_y="0.8" abs_a="1" timeline="21" key="0" z_index="8"/>
-                    <object_ref id="9" parent="1" name="body" folder="0" file="4" abs_x="-246.75724" abs_y="676.648715" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="39" key="0" z_index="9"/>
-                    <object_ref id="10" parent="9" name="upper leg_r_b" folder="0" file="1" abs_x="-273.103183" abs_y="633.26865" abs_angle="29.163008" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="17" key="0" z_index="10"/>
-                    <object_ref id="11" parent="6" name="upper leg_r_c" folder="0" file="1" abs_x="-154.728509" abs_y="718.627396" abs_angle="11.727708" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="11" key="0" z_index="11"/>
-                    <object_ref id="12" parent="3" name="upper leg" folder="0" file="1" abs_x="-37.311007" abs_y="694.242511" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="1" key="0" z_index="12"/>
-                    <object_ref id="13" parent="2" name="head" folder="0" file="2" abs_x="150.838735" abs_y="409.855974" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="40" key="0" z_index="13"/>
-                    <object_ref id="14" parent="10" name="lower leg_r_b" folder="0" file="0" abs_x="-480.456799" abs_y="634.434993" abs_angle="1.339977" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="18" key="0" z_index="14"/>
-                    <object_ref id="15" parent="11" name="feet_r_b" folder="0" file="3" abs_x="-502.319724" abs_y="413.591965" abs_angle="1.339977" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="20" key="0" z_index="15"/>
-                    <object_ref id="16" parent="7" name="lower leg_r_c" folder="0" file="0" abs_x="-377.029989" abs_y="624.331678" abs_angle="14.685614" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="13" key="0" z_index="16"/>
-                    <object_ref id="17" parent="8" name="feet_r_c" folder="0" file="3" abs_x="-344.985738" abs_y="417.590806" abs_angle="359.903482" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="14" key="0" z_index="17"/>
-                    <object_ref id="18" parent="4" name="lower leg" folder="0" file="0" abs_x="-253.894746" abs_y="483.983433" abs_angle="31.976028" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="18"/>
-                    <object_ref id="19" parent="5" name="feet" folder="0" file="3" abs_x="-158.754536" abs_y="265.927874" abs_angle="41.92698" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="8" key="0" z_index="19"/>
+                    <object_ref id="0" parent="20" timeline="32" key="0" z_index="0"/>
+                    <object_ref id="1" parent="19" timeline="31" key="0" z_index="1"/>
+                    <object_ref id="2" parent="18" timeline="28" key="0" z_index="2"/>
+                    <object_ref id="3" parent="16" timeline="37" key="0" z_index="3"/>
+                    <object_ref id="4" parent="15" timeline="35" key="0" z_index="4"/>
+                    <object_ref id="5" parent="17" timeline="38" key="0" z_index="5"/>
+                    <object_ref id="6" parent="12" timeline="23" key="0" z_index="6"/>
+                    <object_ref id="7" parent="13" timeline="22" key="0" z_index="7"/>
+                    <object_ref id="8" parent="14" timeline="21" key="0" z_index="8"/>
+                    <object_ref id="9" parent="1" timeline="39" key="0" z_index="9"/>
+                    <object_ref id="10" parent="9" timeline="17" key="0" z_index="10"/>
+                    <object_ref id="11" parent="6" timeline="11" key="0" z_index="11"/>
+                    <object_ref id="12" parent="3" timeline="1" key="0" z_index="12"/>
+                    <object_ref id="13" parent="2" timeline="40" key="0" z_index="13"/>
+                    <object_ref id="14" parent="10" timeline="18" key="0" z_index="14"/>
+                    <object_ref id="15" parent="11" timeline="20" key="0" z_index="15"/>
+                    <object_ref id="16" parent="7" timeline="13" key="0" z_index="16"/>
+                    <object_ref id="17" parent="8" timeline="14" key="0" z_index="17"/>
+                    <object_ref id="18" parent="4" timeline="0" key="0" z_index="18"/>
+                    <object_ref id="19" parent="5" timeline="8" key="0" z_index="19"/>
                 </key>
             </mainline>
-            <timeline id="0" obj="21" name="lower leg">
+            <timeline id="0" name="lower leg">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="1" obj="22" name="upper leg">
+            <timeline id="1" name="upper leg">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="2.293362" y="0.69794" angle="243.434949"/>
                 </key>
@@ -236,7 +123,7 @@
                     <bone x="335.793923" y="1.687259" angle="48.905844"/>
                 </key>
             </timeline>
-            <timeline id="8" obj="23" name="feet">
+            <timeline id="8" name="feet">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
@@ -251,7 +138,7 @@
                     <bone x="403.485393" y="5.211021" angle="109.118766"/>
                 </key>
             </timeline>
-            <timeline id="11" obj="24" name="upper leg_r_c">
+            <timeline id="11" name="upper leg_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="9.665015" y="3.155158" angle="243.434949"/>
                 </key>
@@ -261,12 +148,12 @@
                     <bone x="334.680359" y="2.625354" angle="24.17276"/>
                 </key>
             </timeline>
-            <timeline id="13" obj="25" name="lower leg_r_c">
+            <timeline id="13" name="lower leg_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="14" obj="26" name="feet_r_c">
+            <timeline id="14" name="feet_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
@@ -281,12 +168,12 @@
                     <bone x="384.97894" y="-4.484147" angle="78.337829"/>
                 </key>
             </timeline>
-            <timeline id="17" obj="27" name="upper leg_r_b">
+            <timeline id="17" name="upper leg_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="-8.764117" y="9.298202" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="18" obj="28" name="lower leg_r_b">
+            <timeline id="18" name="lower leg_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
@@ -296,22 +183,22 @@
                     <bone x="330.165682" y="2.056239" angle="38.954892"/>
                 </key>
             </timeline>
-            <timeline id="20" obj="29" name="feet_r_b">
+            <timeline id="20" name="feet_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
-            <timeline id="21" obj="30" name="feet-l">
+            <timeline id="21" name="feet-l">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="22" obj="31" name="lower-leg-l">
+            <timeline id="22" name="lower-leg-l">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="23" obj="32" name="upper-leg-l">
+            <timeline id="23" name="upper-leg-l">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="439.965697" y="13.838802" angle="295.016893"/>
                 </key>
@@ -336,7 +223,7 @@
                     <bone x="444.292807" y="210.375964" angle="101.654456" scale_x="0.72" scale_y="0.72"/>
                 </key>
             </timeline>
-            <timeline id="28" obj="33" name="upper-leg-l_b">
+            <timeline id="28" name="upper-leg-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="443.460574" y="16.59928" angle="295.016893"/>
                 </key>
@@ -351,12 +238,12 @@
                     <bone x="324.592838" y="6.985064" angle="3.01111"/>
                 </key>
             </timeline>
-            <timeline id="31" obj="34" name="lower-leg-l_b">
+            <timeline id="31" name="lower-leg-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="32" obj="35" name="feet-l_b">
+            <timeline id="32" name="feet-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
@@ -371,7 +258,7 @@
                     <bone x="388.358366" y="-23.433871" angle="224.732275"/>
                 </key>
             </timeline>
-            <timeline id="35" obj="36" name="upper-leg-l_c">
+            <timeline id="35" name="upper-leg-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="442.009083" y="12.353327" angle="295.016893"/>
                 </key>
@@ -381,28 +268,28 @@
                     <bone x="332.939747" y="6.628931" angle="334.971192"/>
                 </key>
             </timeline>
-            <timeline id="37" obj="37" name="lower-leg-l_c">
+            <timeline id="37" name="lower-leg-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="38" obj="38" name="feet-l_c">
+            <timeline id="38" name="feet-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="39" obj="39" name="body">
+            <timeline id="39" name="body">
                 <key id="0" spin="0">
                     <object folder="0" file="4" x="522.077632" y="27.011819" angle="14.137562"/>
                 </key>
             </timeline>
-            <timeline id="40" obj="40" name="head">
+            <timeline id="40" name="head">
                 <key id="0" spin="0">
                     <object folder="0" file="2" x="0.440057" y="-29.195475" angle="36.142041"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="1" name="idle" length="1200" interval="100" l="-1400" t="-1250" r="2131" b="127">
+        <animation id="1" name="Idle" length="1200" interval="100" l="-1400" t="-1250" r="2131" b="127">
             <gline pos="-23"/>
             <gline pos="-186"/>
             <gline pos="-642" v="1"/>
@@ -435,26 +322,26 @@
                     <bone_ref id="18" parent="1" timeline="27" key="0"/>
                     <bone_ref id="19" parent="18" timeline="29" key="0"/>
                     <bone_ref id="20" parent="19" timeline="30" key="0"/>
-                    <object_ref id="0" parent="20" name="feet-l_b" folder="0" file="5" abs_x="-171.338049" abs_y="406.517148" abs_angle="340.245787" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="32" key="0" z_index="0"/>
-                    <object_ref id="1" parent="19" name="lower-leg-l_b" folder="0" file="6" abs_x="-59.740164" abs_y="682.668545" abs_angle="296.800129" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="31" key="0" z_index="1"/>
-                    <object_ref id="2" parent="18" name="upper-leg-l_b" folder="0" file="7" abs_x="-271.414835" abs_y="687.481512" abs_angle="7.145978" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="28" key="0" z_index="2"/>
-                    <object_ref id="3" parent="16" name="lower-leg-l_c" folder="0" file="6" abs_x="145.506694" abs_y="689.200618" abs_angle="333.368948" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="37" key="0" z_index="3"/>
-                    <object_ref id="4" parent="15" name="upper-leg-l_c" folder="0" file="7" abs_x="-30.186574" abs_y="717.834937" abs_angle="0.6285" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="35" key="0" z_index="4"/>
-                    <object_ref id="5" parent="17" name="feet-l_c" folder="0" file="5" abs_x="237.368615" abs_y="412.36172" abs_angle="348.774688" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="38" key="0" z_index="5"/>
-                    <object_ref id="6" parent="12" name="upper-leg-l" folder="0" file="7" abs_x="437.601888" abs_y="766.334953" abs_angle="334.039323" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="23" key="0" z_index="6"/>
-                    <object_ref id="7" parent="13" name="lower-leg-l" folder="0" file="6" abs_x="568.27925" abs_y="669.184553" abs_angle="341.613523" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="22" key="0" z_index="7"/>
-                    <object_ref id="8" parent="14" name="feet-l" folder="0" file="5" abs_x="709.178882" abs_y="407.849038" abs_angle="341.613523" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="21" key="0" z_index="8"/>
-                    <object_ref id="9" parent="1" name="body" folder="0" file="4" abs_x="-246.75724" abs_y="676.648715" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="39" key="0" z_index="9"/>
-                    <object_ref id="10" parent="9" name="upper leg_r_b" folder="0" file="1" abs_x="-297.405292" abs_y="586.920525" abs_angle="35.803041" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="17" key="0" z_index="10"/>
-                    <object_ref id="11" parent="6" name="upper leg_r_c" folder="0" file="1" abs_x="-154.728509" abs_y="718.627396" abs_angle="11.727708" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="11" key="0" z_index="11"/>
-                    <object_ref id="12" parent="3" name="upper leg" folder="0" file="1" abs_x="-37.311007" abs_y="694.242511" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="1" key="0" z_index="12"/>
-                    <object_ref id="13" parent="2" name="head" folder="0" file="2" abs_x="150.838735" abs_y="409.855974" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="40" key="0" z_index="13"/>
-                    <object_ref id="14" parent="10" name="lower leg_r_b" folder="0" file="0" abs_x="-503.670722" abs_y="599.562639" abs_angle="0.703093" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="18" key="0" z_index="14"/>
-                    <object_ref id="15" parent="11" name="feet_r_b" folder="0" file="3" abs_x="-514.708265" abs_y="400.905662" abs_angle="339.373127" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="20" key="0" z_index="15"/>
-                    <object_ref id="16" parent="7" name="lower leg_r_c" folder="0" file="0" abs_x="-377.029989" abs_y="624.331678" abs_angle="14.685614" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="13" key="0" z_index="16"/>
-                    <object_ref id="17" parent="8" name="feet_r_c" folder="0" file="3" abs_x="-344.985738" abs_y="417.590806" abs_angle="359.903482" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="14" key="0" z_index="17"/>
-                    <object_ref id="18" parent="4" name="lower leg" folder="0" file="0" abs_x="-253.894746" abs_y="483.983433" abs_angle="31.976028" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="18"/>
-                    <object_ref id="19" parent="5" name="feet" folder="0" file="3" abs_x="-158.754536" abs_y="265.927874" abs_angle="41.92698" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="8" key="0" z_index="19"/>
+                    <object_ref id="0" parent="20" timeline="32" key="0" z_index="0"/>
+                    <object_ref id="1" parent="19" timeline="31" key="0" z_index="1"/>
+                    <object_ref id="2" parent="18" timeline="28" key="0" z_index="2"/>
+                    <object_ref id="3" parent="16" timeline="37" key="0" z_index="3"/>
+                    <object_ref id="4" parent="15" timeline="35" key="0" z_index="4"/>
+                    <object_ref id="5" parent="17" timeline="38" key="0" z_index="5"/>
+                    <object_ref id="6" parent="12" timeline="23" key="0" z_index="6"/>
+                    <object_ref id="7" parent="13" timeline="22" key="0" z_index="7"/>
+                    <object_ref id="8" parent="14" timeline="21" key="0" z_index="8"/>
+                    <object_ref id="9" parent="1" timeline="39" key="0" z_index="9"/>
+                    <object_ref id="10" parent="9" timeline="17" key="0" z_index="10"/>
+                    <object_ref id="11" parent="6" timeline="11" key="0" z_index="11"/>
+                    <object_ref id="12" parent="3" timeline="1" key="0" z_index="12"/>
+                    <object_ref id="13" parent="2" timeline="40" key="0" z_index="13"/>
+                    <object_ref id="14" parent="10" timeline="18" key="0" z_index="14"/>
+                    <object_ref id="15" parent="11" timeline="20" key="0" z_index="15"/>
+                    <object_ref id="16" parent="7" timeline="13" key="0" z_index="16"/>
+                    <object_ref id="17" parent="8" timeline="14" key="0" z_index="17"/>
+                    <object_ref id="18" parent="4" timeline="0" key="0" z_index="18"/>
+                    <object_ref id="19" parent="5" timeline="8" key="0" z_index="19"/>
                 </key>
                 <key id="1" time="600">
                     <bone_ref id="0" timeline="2" key="0"/>
@@ -500,12 +387,12 @@
                     <object_ref id="19" parent="5" timeline="8" key="0" z_index="19"/>
                 </key>
             </mainline>
-            <timeline id="0" obj="21" name="lower leg">
+            <timeline id="0" name="lower leg">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="1" obj="22" name="upper leg">
+            <timeline id="1" name="upper leg">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="2.293362" y="0.69794" angle="243.434949"/>
                 </key>
@@ -552,7 +439,7 @@
                     <bone x="335.793923" y="1.687259" angle="54.959619"/>
                 </key>
             </timeline>
-            <timeline id="8" obj="23" name="feet">
+            <timeline id="8" name="feet">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
@@ -573,7 +460,7 @@
                     <bone x="403.485393" y="5.211021" angle="110.834331"/>
                 </key>
             </timeline>
-            <timeline id="11" obj="24" name="upper leg_r_c">
+            <timeline id="11" name="upper leg_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="9.665015" y="3.155158" angle="243.434949"/>
                 </key>
@@ -586,12 +473,12 @@
                     <bone x="334.680359" y="2.625354" angle="25.780199"/>
                 </key>
             </timeline>
-            <timeline id="13" obj="25" name="lower leg_r_c">
+            <timeline id="13" name="lower leg_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="14" obj="26" name="feet_r_c">
+            <timeline id="14" name="feet_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
@@ -612,12 +499,12 @@
                     <bone x="384.97894" y="-4.484147" angle="60.406633"/>
                 </key>
             </timeline>
-            <timeline id="17" obj="27" name="upper leg_r_b">
+            <timeline id="17" name="upper leg_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="-8.764117" y="9.298202" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="18" obj="28" name="lower leg_r_b">
+            <timeline id="18" name="lower leg_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
@@ -630,22 +517,22 @@
                     <bone x="330.165682" y="2.056239" angle="35.157175"/>
                 </key>
             </timeline>
-            <timeline id="20" obj="29" name="feet_r_b">
+            <timeline id="20" name="feet_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
-            <timeline id="21" obj="30" name="feet-l">
+            <timeline id="21" name="feet-l">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="22" obj="31" name="lower-leg-l">
+            <timeline id="22" name="lower-leg-l">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="23" obj="32" name="upper-leg-l">
+            <timeline id="23" name="upper-leg-l">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="439.965697" y="13.838802" angle="295.016893"/>
                 </key>
@@ -682,7 +569,7 @@
                     <bone x="53.406425" y="-91.586094" angle="94.193803" scale_x="0.9" scale_y="0.9"/>
                 </key>
             </timeline>
-            <timeline id="28" obj="33" name="upper-leg-l_b">
+            <timeline id="28" name="upper-leg-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="443.460574" y="16.59928" angle="295.016893"/>
                 </key>
@@ -703,12 +590,12 @@
                     <bone x="324.592838" y="6.985064" angle="332.38193"/>
                 </key>
             </timeline>
-            <timeline id="31" obj="34" name="lower-leg-l_b">
+            <timeline id="31" name="lower-leg-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="32" obj="35" name="feet-l_b">
+            <timeline id="32" name="feet-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
@@ -729,7 +616,7 @@
                     <bone x="388.358366" y="-23.433871" angle="228.908244"/>
                 </key>
             </timeline>
-            <timeline id="35" obj="36" name="upper-leg-l_c">
+            <timeline id="35" name="upper-leg-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="442.009083" y="12.353327" angle="295.016893"/>
                 </key>
@@ -742,28 +629,28 @@
                     <bone x="332.939747" y="6.628931" angle="324.333706"/>
                 </key>
             </timeline>
-            <timeline id="37" obj="37" name="lower-leg-l_c">
+            <timeline id="37" name="lower-leg-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="38" obj="38" name="feet-l_c">
+            <timeline id="38" name="feet-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="39" obj="39" name="body">
+            <timeline id="39" name="body">
                 <key id="0" spin="0">
                     <object folder="0" file="4" x="522.077632" y="27.011819" angle="14.137562"/>
                 </key>
             </timeline>
-            <timeline id="40" obj="40" name="head">
+            <timeline id="40" name="head">
                 <key id="0" spin="0">
                     <object folder="0" file="2" x="0.440057" y="-29.195475" angle="36.142041"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="2" name="hurt" length="800" interval="100" l="-1400" t="-1250" r="2131" b="127">
+        <animation id="2" name="Hurt" length="800" interval="100" l="-1400" t="-1250" r="2131" b="127">
             <gline pos="630" v="1"/>
             <gline pos="133" v="1"/>
             <gline pos="-379" v="1"/>
@@ -795,26 +682,26 @@
                     <bone_ref id="18" parent="1" timeline="18" key="0"/>
                     <bone_ref id="19" parent="18" timeline="19" key="0"/>
                     <bone_ref id="20" parent="19" timeline="20" key="0"/>
-                    <object_ref id="0" parent="20" name="feet-l_b" folder="0" file="5" abs_x="-171.338049" abs_y="406.517148" abs_angle="340.245787" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="21" key="0" z_index="0"/>
-                    <object_ref id="1" parent="19" name="lower-leg-l_b" folder="0" file="6" abs_x="-59.740164" abs_y="682.668545" abs_angle="296.800129" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="22" key="0" z_index="1"/>
-                    <object_ref id="2" parent="18" name="upper-leg-l_b" folder="0" file="7" abs_x="-271.414835" abs_y="687.481512" abs_angle="7.145978" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="23" key="0" z_index="2"/>
-                    <object_ref id="3" parent="16" name="lower-leg-l_c" folder="0" file="6" abs_x="145.506694" abs_y="689.200618" abs_angle="333.368948" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="24" key="0" z_index="3"/>
-                    <object_ref id="4" parent="15" name="upper-leg-l_c" folder="0" file="7" abs_x="-30.186574" abs_y="717.834937" abs_angle="0.6285" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="25" key="0" z_index="4"/>
-                    <object_ref id="5" parent="17" name="feet-l_c" folder="0" file="5" abs_x="237.368615" abs_y="412.36172" abs_angle="348.774688" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="26" key="0" z_index="5"/>
-                    <object_ref id="6" parent="12" name="upper-leg-l" folder="0" file="7" abs_x="437.601888" abs_y="766.334953" abs_angle="334.039323" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="27" key="0" z_index="6"/>
-                    <object_ref id="7" parent="13" name="lower-leg-l" folder="0" file="6" abs_x="568.27925" abs_y="669.184553" abs_angle="341.613523" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="28" key="0" z_index="7"/>
-                    <object_ref id="8" parent="14" name="feet-l" folder="0" file="5" abs_x="709.178882" abs_y="407.849038" abs_angle="341.613523" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="29" key="0" z_index="8"/>
-                    <object_ref id="9" parent="1" name="body" folder="0" file="4" abs_x="-246.75724" abs_y="676.648715" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="30" key="0" z_index="9"/>
-                    <object_ref id="10" parent="9" name="upper leg_r_b" folder="0" file="1" abs_x="-297.405292" abs_y="586.920525" abs_angle="35.803041" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="31" key="0" z_index="10"/>
-                    <object_ref id="11" parent="6" name="upper leg_r_c" folder="0" file="1" abs_x="-154.728509" abs_y="718.627396" abs_angle="11.727708" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="32" key="0" z_index="11"/>
-                    <object_ref id="12" parent="3" name="upper leg" folder="0" file="1" abs_x="-37.311007" abs_y="694.242511" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="33" key="0" z_index="12"/>
-                    <object_ref id="13" parent="2" name="head" folder="0" file="2" abs_x="150.838735" abs_y="409.855974" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="34" key="0" z_index="13"/>
-                    <object_ref id="14" parent="10" name="lower leg_r_b" folder="0" file="0" abs_x="-503.670722" abs_y="599.562639" abs_angle="0.703093" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="35" key="0" z_index="14"/>
-                    <object_ref id="15" parent="11" name="feet_r_b" folder="0" file="3" abs_x="-514.708265" abs_y="400.905662" abs_angle="339.373127" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="36" key="0" z_index="15"/>
-                    <object_ref id="16" parent="7" name="lower leg_r_c" folder="0" file="0" abs_x="-377.029989" abs_y="624.331678" abs_angle="14.685614" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="37" key="0" z_index="16"/>
-                    <object_ref id="17" parent="8" name="feet_r_c" folder="0" file="3" abs_x="-344.985738" abs_y="417.590806" abs_angle="359.903482" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="38" key="0" z_index="17"/>
-                    <object_ref id="18" parent="4" name="lower leg" folder="0" file="0" abs_x="-253.894746" abs_y="483.983433" abs_angle="31.976028" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="39" key="0" z_index="18"/>
-                    <object_ref id="19" parent="5" name="feet" folder="0" file="3" abs_x="-158.754536" abs_y="265.927874" abs_angle="41.92698" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="40" key="0" z_index="19"/>
+                    <object_ref id="0" parent="20" timeline="21" key="0" z_index="0"/>
+                    <object_ref id="1" parent="19" timeline="22" key="0" z_index="1"/>
+                    <object_ref id="2" parent="18" timeline="23" key="0" z_index="2"/>
+                    <object_ref id="3" parent="16" timeline="24" key="0" z_index="3"/>
+                    <object_ref id="4" parent="15" timeline="25" key="0" z_index="4"/>
+                    <object_ref id="5" parent="17" timeline="26" key="0" z_index="5"/>
+                    <object_ref id="6" parent="12" timeline="27" key="0" z_index="6"/>
+                    <object_ref id="7" parent="13" timeline="28" key="0" z_index="7"/>
+                    <object_ref id="8" parent="14" timeline="29" key="0" z_index="8"/>
+                    <object_ref id="9" parent="1" timeline="30" key="0" z_index="9"/>
+                    <object_ref id="10" parent="9" timeline="31" key="0" z_index="10"/>
+                    <object_ref id="11" parent="6" timeline="32" key="0" z_index="11"/>
+                    <object_ref id="12" parent="3" timeline="33" key="0" z_index="12"/>
+                    <object_ref id="13" parent="2" timeline="34" key="0" z_index="13"/>
+                    <object_ref id="14" parent="10" timeline="35" key="0" z_index="14"/>
+                    <object_ref id="15" parent="11" timeline="36" key="0" z_index="15"/>
+                    <object_ref id="16" parent="7" timeline="37" key="0" z_index="16"/>
+                    <object_ref id="17" parent="8" timeline="38" key="0" z_index="17"/>
+                    <object_ref id="18" parent="4" timeline="39" key="0" z_index="18"/>
+                    <object_ref id="19" parent="5" timeline="40" key="0" z_index="19"/>
                 </key>
                 <key id="1" time="100">
                     <bone_ref id="0" timeline="0" key="1"/>
@@ -1225,7 +1112,7 @@
                     <bone x="324.592838" y="6.985064" angle="3.01111"/>
                 </key>
             </timeline>
-            <timeline id="21" obj="35" name="feet-l_b">
+            <timeline id="21" name="feet-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
@@ -1233,7 +1120,7 @@
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="22" obj="34" name="lower-leg-l_b">
+            <timeline id="22" name="lower-leg-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
@@ -1241,7 +1128,7 @@
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="23" obj="33" name="upper-leg-l_b">
+            <timeline id="23" name="upper-leg-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="443.460574" y="16.59928" angle="295.016893"/>
                 </key>
@@ -1249,7 +1136,7 @@
                     <object folder="0" file="7" x="443.460574" y="16.59928" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="24" obj="37" name="lower-leg-l_c">
+            <timeline id="24" name="lower-leg-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
@@ -1257,7 +1144,7 @@
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="25" obj="36" name="upper-leg-l_c">
+            <timeline id="25" name="upper-leg-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="442.009083" y="12.353327" angle="295.016893"/>
                 </key>
@@ -1265,7 +1152,7 @@
                     <object folder="0" file="7" x="442.009083" y="12.353327" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="26" obj="38" name="feet-l_c">
+            <timeline id="26" name="feet-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
@@ -1273,7 +1160,7 @@
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="27" obj="32" name="upper-leg-l">
+            <timeline id="27" name="upper-leg-l">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="439.965697" y="13.838802" angle="295.016893"/>
                 </key>
@@ -1281,7 +1168,7 @@
                     <object folder="0" file="7" x="439.965697" y="13.838802" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="28" obj="31" name="lower-leg-l">
+            <timeline id="28" name="lower-leg-l">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
@@ -1289,7 +1176,7 @@
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="29" obj="30" name="feet-l">
+            <timeline id="29" name="feet-l">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
@@ -1297,7 +1184,7 @@
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="30" obj="39" name="body">
+            <timeline id="30" name="body">
                 <key id="0" spin="0">
                     <object folder="0" file="4" x="522.077632" y="27.011819" angle="14.137562"/>
                 </key>
@@ -1305,7 +1192,7 @@
                     <object folder="0" file="4" x="522.077632" y="27.011819" angle="14.137562"/>
                 </key>
             </timeline>
-            <timeline id="31" obj="27" name="upper leg_r_b">
+            <timeline id="31" name="upper leg_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="-8.764117" y="9.298202" angle="243.434949"/>
                 </key>
@@ -1313,7 +1200,7 @@
                     <object folder="0" file="1" x="-8.764117" y="9.298202" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="32" obj="24" name="upper leg_r_c">
+            <timeline id="32" name="upper leg_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="9.665015" y="3.155158" angle="243.434949"/>
                 </key>
@@ -1321,7 +1208,7 @@
                     <object folder="0" file="1" x="9.665015" y="3.155158" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="33" obj="22" name="upper leg">
+            <timeline id="33" name="upper leg">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="2.293362" y="0.69794" angle="243.434949"/>
                 </key>
@@ -1329,7 +1216,7 @@
                     <object folder="0" file="1" x="2.293362" y="0.69794" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="34" obj="40" name="head">
+            <timeline id="34" name="head">
                 <key id="0" spin="0">
                     <object folder="0" file="2" x="0.440057" y="-29.195475" angle="36.142041"/>
                 </key>
@@ -1337,7 +1224,7 @@
                     <object folder="0" file="2" x="0.440057" y="-29.195475" angle="36.142041"/>
                 </key>
             </timeline>
-            <timeline id="35" obj="28" name="lower leg_r_b">
+            <timeline id="35" name="lower leg_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
@@ -1345,23 +1232,7 @@
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="36" obj="29" name="feet_r_b">
-                <key id="0" spin="0">
-                    <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
-                </key>
-                <key id="1" time="500" spin="0">
-                    <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
-                </key>
-            </timeline>
-            <timeline id="37" obj="25" name="lower leg_r_c">
-                <key id="0" spin="0">
-                    <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
-                </key>
-                <key id="1" time="500" spin="0">
-                    <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
-                </key>
-            </timeline>
-            <timeline id="38" obj="26" name="feet_r_c">
+            <timeline id="36" name="feet_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
@@ -1369,7 +1240,7 @@
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
-            <timeline id="39" obj="21" name="lower leg">
+            <timeline id="37" name="lower leg_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
@@ -1377,7 +1248,23 @@
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="40" obj="23" name="feet">
+            <timeline id="38" name="feet_r_c">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
+                </key>
+                <key id="1" time="500" spin="0">
+                    <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
+                </key>
+            </timeline>
+            <timeline id="39" name="lower leg">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
+                </key>
+                <key id="1" time="500" spin="0">
+                    <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
+                </key>
+            </timeline>
+            <timeline id="40" name="feet">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
@@ -1386,7 +1273,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="3" name="walk" length="800" interval="100" l="-1400" t="-1250" r="2131" b="127">
+        <animation id="3" name="Walk" length="800" interval="100" l="-1400" t="-1250" r="2131" b="127">
             <gline pos="-75"/>
             <mainline>
                 <key id="0">
@@ -1411,26 +1298,26 @@
                     <bone_ref id="18" parent="1" timeline="18" key="0"/>
                     <bone_ref id="19" parent="18" timeline="19" key="0"/>
                     <bone_ref id="20" parent="19" timeline="20" key="0"/>
-                    <object_ref id="0" parent="20" name="feet-l_b" folder="0" file="5" abs_x="66.444002" abs_y="524.191743" abs_angle="15.666104" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="21" key="0" z_index="0"/>
-                    <object_ref id="1" parent="19" name="lower-leg-l_b" folder="0" file="6" abs_x="-2.661504" abs_y="813.912489" abs_angle="332.220446" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="22" key="0" z_index="1"/>
-                    <object_ref id="2" parent="18" name="upper-leg-l_b" folder="0" file="7" abs_x="-181.842876" abs_y="734.388717" abs_angle="33.521687" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="23" key="0" z_index="2"/>
-                    <object_ref id="3" parent="16" name="lower-leg-l_c" folder="0" file="6" abs_x="343.239544" abs_y="737.769759" abs_angle="326.302383" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="24" key="0" z_index="3"/>
-                    <object_ref id="4" parent="15" name="upper-leg-l_c" folder="0" file="7" abs_x="151.959445" abs_y="702.629554" abs_angle="19.027287" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="25" key="0" z_index="4"/>
-                    <object_ref id="5" parent="17" name="feet-l_c" folder="0" file="5" abs_x="383.806232" abs_y="435.551105" abs_angle="9.103329" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="26" key="0" z_index="5"/>
-                    <object_ref id="6" parent="12" name="upper-leg-l" folder="0" file="7" abs_x="295.068446" abs_y="721.581827" abs_angle="8.648813" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="27" key="0" z_index="6"/>
-                    <object_ref id="7" parent="13" name="lower-leg-l" folder="0" file="6" abs_x="496.372437" abs_y="735.38156" abs_angle="307.925892" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="28" key="0" z_index="7"/>
-                    <object_ref id="8" parent="14" name="feet-l" folder="0" file="5" abs_x="449.709886" abs_y="436.354146" abs_angle="332.84182" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="29" key="0" z_index="8"/>
-                    <object_ref id="9" parent="1" name="body" folder="0" file="4" abs_x="-246.75724" abs_y="676.648715" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="30" key="0" z_index="9"/>
-                    <object_ref id="10" parent="9" name="upper leg_r_b" folder="0" file="1" abs_x="-230.127501" abs_y="748.822925" abs_angle="11.094985" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="31" key="0" z_index="10"/>
-                    <object_ref id="11" parent="6" name="upper leg_r_c" folder="0" file="1" abs_x="-242.472369" abs_y="618.201046" abs_angle="28.042429" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="32" key="0" z_index="11"/>
-                    <object_ref id="12" parent="3" name="upper leg" folder="0" file="1" abs_x="151.860253" abs_y="817.644288" abs_angle="337.038829" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="33" key="0" z_index="12"/>
-                    <object_ref id="13" parent="2" name="head" folder="0" file="2" abs_x="150.838735" abs_y="409.855974" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="34" key="0" z_index="13"/>
-                    <object_ref id="14" parent="10" name="lower leg_r_b" folder="0" file="0" abs_x="-423.043363" abs_y="606.228663" abs_angle="26.990127" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="35" key="0" z_index="14"/>
-                    <object_ref id="15" parent="11" name="feet_r_b" folder="0" file="3" abs_x="-347.134868" abs_y="411.76889" abs_angle="15.319376" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="36" key="0" z_index="15"/>
-                    <object_ref id="16" parent="7" name="lower leg_r_c" folder="0" file="0" abs_x="-457.578773" abs_y="625.58849" abs_angle="357.122451" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="37" key="0" z_index="16"/>
-                    <object_ref id="17" parent="8" name="feet_r_c" folder="0" file="3" abs_x="-493.422526" abs_y="413.313279" abs_angle="347.973917" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="38" key="0" z_index="17"/>
-                    <object_ref id="18" parent="4" name="lower leg" folder="0" file="0" abs_x="-103.088057" abs_y="611.662431" abs_angle="29.723268" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="39" key="0" z_index="18"/>
-                    <object_ref id="19" parent="5" name="feet" folder="0" file="3" abs_x="-20.149008" abs_y="411.973874" abs_angle="21.209714" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="40" key="0" z_index="19"/>
+                    <object_ref id="0" parent="20" timeline="21" key="0" z_index="0"/>
+                    <object_ref id="1" parent="19" timeline="22" key="0" z_index="1"/>
+                    <object_ref id="2" parent="18" timeline="23" key="0" z_index="2"/>
+                    <object_ref id="3" parent="16" timeline="24" key="0" z_index="3"/>
+                    <object_ref id="4" parent="15" timeline="25" key="0" z_index="4"/>
+                    <object_ref id="5" parent="17" timeline="26" key="0" z_index="5"/>
+                    <object_ref id="6" parent="12" timeline="27" key="0" z_index="6"/>
+                    <object_ref id="7" parent="13" timeline="28" key="0" z_index="7"/>
+                    <object_ref id="8" parent="14" timeline="29" key="0" z_index="8"/>
+                    <object_ref id="9" parent="1" timeline="30" key="0" z_index="9"/>
+                    <object_ref id="10" parent="9" timeline="31" key="0" z_index="10"/>
+                    <object_ref id="11" parent="6" timeline="32" key="0" z_index="11"/>
+                    <object_ref id="12" parent="3" timeline="33" key="0" z_index="12"/>
+                    <object_ref id="13" parent="2" timeline="34" key="0" z_index="13"/>
+                    <object_ref id="14" parent="10" timeline="35" key="0" z_index="14"/>
+                    <object_ref id="15" parent="11" timeline="36" key="0" z_index="15"/>
+                    <object_ref id="16" parent="7" timeline="37" key="0" z_index="16"/>
+                    <object_ref id="17" parent="8" timeline="38" key="0" z_index="17"/>
+                    <object_ref id="18" parent="4" timeline="39" key="0" z_index="18"/>
+                    <object_ref id="19" parent="5" timeline="40" key="0" z_index="19"/>
                 </key>
                 <key id="1" time="130">
                     <bone_ref id="0" timeline="0" key="0"/>
@@ -1824,108 +1711,108 @@
                     <bone x="324.592838" y="6.985064" angle="346.739475"/>
                 </key>
             </timeline>
-            <timeline id="21" obj="35" name="feet-l_b">
+            <timeline id="21" name="feet-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="22" obj="34" name="lower-leg-l_b">
+            <timeline id="22" name="lower-leg-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="23" obj="33" name="upper-leg-l_b">
+            <timeline id="23" name="upper-leg-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="443.460574" y="16.59928" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="24" obj="37" name="lower-leg-l_c">
+            <timeline id="24" name="lower-leg-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="25" obj="36" name="upper-leg-l_c">
+            <timeline id="25" name="upper-leg-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="442.009083" y="12.353327" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="26" obj="38" name="feet-l_c">
+            <timeline id="26" name="feet-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="27" obj="32" name="upper-leg-l">
+            <timeline id="27" name="upper-leg-l">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="439.965697" y="13.838802" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="28" obj="31" name="lower-leg-l">
+            <timeline id="28" name="lower-leg-l">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="29" obj="30" name="feet-l">
+            <timeline id="29" name="feet-l">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="30" obj="39" name="body">
+            <timeline id="30" name="body">
                 <key id="0" spin="0">
                     <object folder="0" file="4" x="522.077632" y="27.011819" angle="14.137562"/>
                 </key>
             </timeline>
-            <timeline id="31" obj="27" name="upper leg_r_b">
+            <timeline id="31" name="upper leg_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="-8.764117" y="9.298202" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="32" obj="24" name="upper leg_r_c">
+            <timeline id="32" name="upper leg_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="9.665015" y="3.155158" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="33" obj="22" name="upper leg">
+            <timeline id="33" name="upper leg">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="2.293362" y="0.69794" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="34" obj="40" name="head">
+            <timeline id="34" name="head">
                 <key id="0" spin="0">
                     <object folder="0" file="2" x="0.440057" y="-29.195475" angle="36.142041"/>
                 </key>
             </timeline>
-            <timeline id="35" obj="28" name="lower leg_r_b">
+            <timeline id="35" name="lower leg_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="36" obj="29" name="feet_r_b">
+            <timeline id="36" name="feet_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
-            <timeline id="37" obj="25" name="lower leg_r_c">
+            <timeline id="37" name="lower leg_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="38" obj="26" name="feet_r_c">
+            <timeline id="38" name="feet_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
-            <timeline id="39" obj="21" name="lower leg">
+            <timeline id="39" name="lower leg">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="40" obj="23" name="feet">
+            <timeline id="40" name="feet">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="4" name="crouch" length="1200" interval="100" l="-1400" t="-1250" r="2131" b="127">
+        <animation id="4" name="Crouch" length="1200" interval="100" l="-1400" t="-1250" r="2131" b="127">
             <gline pos="-78"/>
             <gline pos="-525" v="1"/>
             <gline pos="-158" v="1"/>
@@ -1955,26 +1842,26 @@
                     <bone_ref id="18" parent="1" timeline="18" key="0"/>
                     <bone_ref id="19" parent="18" timeline="19" key="0"/>
                     <bone_ref id="20" parent="19" timeline="20" key="0"/>
-                    <object_ref id="0" parent="20" name="feet-l_b" folder="0" file="5" abs_x="187.088163" abs_y="440.951072" abs_angle="19.132551" abs_scale_x="0.72" abs_scale_y="0.72" abs_a="1" timeline="21" key="0" z_index="0"/>
-                    <object_ref id="1" parent="19" name="lower-leg-l_b" folder="0" file="6" abs_x="117.890765" abs_y="668.960888" abs_angle="335.686893" abs_scale_x="0.72" abs_scale_y="0.72" abs_a="1" timeline="22" key="0" z_index="1"/>
-                    <object_ref id="2" parent="18" name="upper-leg-l_b" folder="0" file="7" abs_x="-21.941908" abs_y="577.759158" abs_angle="41.341151" abs_scale_x="0.72" abs_scale_y="0.72" abs_a="1" timeline="23" key="0" z_index="2"/>
-                    <object_ref id="3" parent="16" name="lower-leg-l_c" folder="0" file="6" abs_x="541.016359" abs_y="534.370742" abs_angle="353.631313" abs_scale_x="0.72" abs_scale_y="0.72" abs_a="1" timeline="24" key="0" z_index="3"/>
-                    <object_ref id="4" parent="15" name="upper-leg-l_c" folder="0" file="7" abs_x="463.58484" abs_y="636.495834" abs_angle="327.203917" abs_scale_x="0.72" abs_scale_y="0.72" abs_a="1" timeline="25" key="0" z_index="4"/>
-                    <object_ref id="5" parent="17" name="feet-l_c" folder="0" file="5" abs_x="683.998649" abs_y="347.015545" abs_angle="17.398143" abs_scale_x="0.72" abs_scale_y="0.72" abs_a="1" timeline="26" key="0" z_index="5"/>
-                    <object_ref id="6" parent="12" name="upper-leg-l" folder="0" file="7" abs_x="512.047695" abs_y="569.190337" abs_angle="318.043518" abs_scale_x="0.8" abs_scale_y="0.8" abs_a="1" timeline="27" key="0" z_index="6"/>
-                    <object_ref id="7" parent="13" name="lower-leg-l" folder="0" file="6" abs_x="576.224561" abs_y="437.223405" abs_angle="15.966552" abs_scale_x="0.8" abs_scale_y="0.8" abs_a="1" timeline="28" key="0" z_index="7"/>
-                    <object_ref id="8" parent="14" name="feet-l" folder="0" file="5" abs_x="813.622056" abs_y="321.369741" abs_angle="8.035272" abs_scale_x="0.8" abs_scale_y="0.8" abs_a="1" timeline="29" key="0" z_index="8"/>
-                    <object_ref id="9" parent="1" name="body" folder="0" file="4" abs_x="-228.386182" abs_y="648.707937" abs_angle="356.02139" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="30" key="0" z_index="9"/>
-                    <object_ref id="10" parent="9" name="upper leg_r_b" folder="0" file="1" abs_x="-257.864071" abs_y="470.365931" abs_angle="46.268422" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="31" key="0" z_index="10"/>
-                    <object_ref id="11" parent="6" name="upper leg_r_c" folder="0" file="1" abs_x="-103.156326" abs_y="700.940836" abs_angle="14.480734" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="32" key="0" z_index="11"/>
-                    <object_ref id="12" parent="3" name="upper leg" folder="0" file="1" abs_x="167.015986" abs_y="756.642398" abs_angle="338.241242" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="33" key="0" z_index="12"/>
-                    <object_ref id="13" parent="2" name="head" folder="0" file="2" abs_x="160.902333" abs_y="345.165339" abs_angle="18.944523" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="34" key="0" z_index="13"/>
-                    <object_ref id="14" parent="10" name="lower leg_r_b" folder="0" file="0" abs_x="-414.831755" abs_y="639.788168" abs_angle="329.15027" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="35" key="0" z_index="14"/>
-                    <object_ref id="15" parent="11" name="feet_r_b" folder="0" file="3" abs_x="-574.888936" abs_y="429.369418" abs_angle="4.904998" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="36" key="0" z_index="15"/>
-                    <object_ref id="16" parent="7" name="lower leg_r_c" folder="0" file="0" abs_x="-327.849908" abs_y="645.868575" abs_angle="7.108075" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="37" key="0" z_index="16"/>
-                    <object_ref id="17" parent="8" name="feet_r_c" folder="0" file="3" abs_x="-331.96492" abs_y="401.859048" abs_angle="22.364415" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="38" key="0" z_index="17"/>
-                    <object_ref id="18" parent="4" name="lower leg" folder="0" file="0" abs_x="-110.930609" abs_y="632.425872" abs_angle="12.123837" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="39" key="0" z_index="18"/>
-                    <object_ref id="19" parent="5" name="feet" folder="0" file="3" abs_x="-94.796093" abs_y="405.902373" abs_angle="13.044622" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="40" key="0" z_index="19"/>
+                    <object_ref id="0" parent="20" timeline="21" key="0" z_index="0"/>
+                    <object_ref id="1" parent="19" timeline="22" key="0" z_index="1"/>
+                    <object_ref id="2" parent="18" timeline="23" key="0" z_index="2"/>
+                    <object_ref id="3" parent="16" timeline="24" key="0" z_index="3"/>
+                    <object_ref id="4" parent="15" timeline="25" key="0" z_index="4"/>
+                    <object_ref id="5" parent="17" timeline="26" key="0" z_index="5"/>
+                    <object_ref id="6" parent="12" timeline="27" key="0" z_index="6"/>
+                    <object_ref id="7" parent="13" timeline="28" key="0" z_index="7"/>
+                    <object_ref id="8" parent="14" timeline="29" key="0" z_index="8"/>
+                    <object_ref id="9" parent="1" timeline="30" key="0" z_index="9"/>
+                    <object_ref id="10" parent="9" timeline="31" key="0" z_index="10"/>
+                    <object_ref id="11" parent="6" timeline="32" key="0" z_index="11"/>
+                    <object_ref id="12" parent="3" timeline="33" key="0" z_index="12"/>
+                    <object_ref id="13" parent="2" timeline="34" key="0" z_index="13"/>
+                    <object_ref id="14" parent="10" timeline="35" key="0" z_index="14"/>
+                    <object_ref id="15" parent="11" timeline="36" key="0" z_index="15"/>
+                    <object_ref id="16" parent="7" timeline="37" key="0" z_index="16"/>
+                    <object_ref id="17" parent="8" timeline="38" key="0" z_index="17"/>
+                    <object_ref id="18" parent="4" timeline="39" key="0" z_index="18"/>
+                    <object_ref id="19" parent="5" timeline="40" key="0" z_index="19"/>
                 </key>
                 <key id="1" time="600">
                     <bone_ref id="0" timeline="0" key="1"/>
@@ -2176,108 +2063,108 @@
                     <bone x="324.592838" y="6.985064" angle="3.01111"/>
                 </key>
             </timeline>
-            <timeline id="21" obj="35" name="feet-l_b">
+            <timeline id="21" name="feet-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="22" obj="34" name="lower-leg-l_b">
+            <timeline id="22" name="lower-leg-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="23" obj="33" name="upper-leg-l_b">
+            <timeline id="23" name="upper-leg-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="443.460574" y="16.59928" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="24" obj="37" name="lower-leg-l_c">
+            <timeline id="24" name="lower-leg-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="25" obj="36" name="upper-leg-l_c">
+            <timeline id="25" name="upper-leg-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="442.009083" y="12.353327" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="26" obj="38" name="feet-l_c">
+            <timeline id="26" name="feet-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="27" obj="32" name="upper-leg-l">
+            <timeline id="27" name="upper-leg-l">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="439.965697" y="13.838802" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="28" obj="31" name="lower-leg-l">
+            <timeline id="28" name="lower-leg-l">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="29" obj="30" name="feet-l">
+            <timeline id="29" name="feet-l">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="30" obj="39" name="body">
+            <timeline id="30" name="body">
                 <key id="0" spin="0">
                     <object folder="0" file="4" x="522.077632" y="27.011819" angle="14.137562"/>
                 </key>
             </timeline>
-            <timeline id="31" obj="27" name="upper leg_r_b">
+            <timeline id="31" name="upper leg_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="-8.764117" y="9.298202" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="32" obj="24" name="upper leg_r_c">
+            <timeline id="32" name="upper leg_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="9.665015" y="3.155158" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="33" obj="22" name="upper leg">
+            <timeline id="33" name="upper leg">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="2.293362" y="0.69794" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="34" obj="40" name="head">
+            <timeline id="34" name="head">
                 <key id="0" spin="0">
                     <object folder="0" file="2" x="0.440057" y="-29.195475" angle="36.142041"/>
                 </key>
             </timeline>
-            <timeline id="35" obj="28" name="lower leg_r_b">
+            <timeline id="35" name="lower leg_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="36" obj="29" name="feet_r_b">
+            <timeline id="36" name="feet_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
-            <timeline id="37" obj="25" name="lower leg_r_c">
+            <timeline id="37" name="lower leg_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="38" obj="26" name="feet_r_c">
+            <timeline id="38" name="feet_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
-            <timeline id="39" obj="21" name="lower leg">
+            <timeline id="39" name="lower leg">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="40" obj="23" name="feet">
+            <timeline id="40" name="feet">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="5" name="die" length="800" interval="100" l="-1400" t="-1250" r="2131" b="127">
+        <animation id="5" name="Die" length="800" interval="100" l="-1400" t="-1250" r="2131" b="127">
             <gline pos="-638" v="1"/>
             <gline pos="-335" v="1"/>
             <gline pos="-230" v="1"/>
@@ -2307,26 +2194,26 @@
                     <bone_ref id="18" parent="1" timeline="18" key="0"/>
                     <bone_ref id="19" parent="18" timeline="19" key="0"/>
                     <bone_ref id="20" parent="19" timeline="20" key="0"/>
-                    <object_ref id="0" parent="20" name="feet-l_b" folder="0" file="5" abs_x="-171.338049" abs_y="406.517148" abs_angle="340.245787" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="21" key="0" z_index="0"/>
-                    <object_ref id="1" parent="19" name="lower-leg-l_b" folder="0" file="6" abs_x="-59.740164" abs_y="682.668545" abs_angle="296.800129" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="22" key="0" z_index="1"/>
-                    <object_ref id="2" parent="18" name="upper-leg-l_b" folder="0" file="7" abs_x="-271.414835" abs_y="687.481512" abs_angle="7.145978" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="23" key="0" z_index="2"/>
-                    <object_ref id="3" parent="16" name="lower-leg-l_c" folder="0" file="6" abs_x="145.506694" abs_y="689.200618" abs_angle="333.368948" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="24" key="0" z_index="3"/>
-                    <object_ref id="4" parent="15" name="upper-leg-l_c" folder="0" file="7" abs_x="-30.186574" abs_y="717.834937" abs_angle="0.6285" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="25" key="0" z_index="4"/>
-                    <object_ref id="5" parent="17" name="feet-l_c" folder="0" file="5" abs_x="237.368615" abs_y="412.36172" abs_angle="348.774688" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="26" key="0" z_index="5"/>
-                    <object_ref id="6" parent="12" name="upper-leg-l" folder="0" file="7" abs_x="437.601888" abs_y="766.334953" abs_angle="334.039323" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="27" key="0" z_index="6"/>
-                    <object_ref id="7" parent="13" name="lower-leg-l" folder="0" file="6" abs_x="568.27925" abs_y="669.184553" abs_angle="341.613523" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="28" key="0" z_index="7"/>
-                    <object_ref id="8" parent="14" name="feet-l" folder="0" file="5" abs_x="709.178882" abs_y="407.849038" abs_angle="341.613523" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="29" key="0" z_index="8"/>
-                    <object_ref id="9" parent="1" name="body" folder="0" file="4" abs_x="-246.75724" abs_y="676.648715" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="30" key="0" z_index="9"/>
-                    <object_ref id="10" parent="9" name="upper leg_r_b" folder="0" file="1" abs_x="-297.405292" abs_y="586.920525" abs_angle="35.803041" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="31" key="0" z_index="10"/>
-                    <object_ref id="11" parent="6" name="upper leg_r_c" folder="0" file="1" abs_x="-154.728509" abs_y="718.627396" abs_angle="11.727708" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="32" key="0" z_index="11"/>
-                    <object_ref id="12" parent="3" name="upper leg" folder="0" file="1" abs_x="-37.311007" abs_y="694.242511" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="33" key="0" z_index="12"/>
-                    <object_ref id="13" parent="2" name="head" folder="0" file="2" abs_x="150.838735" abs_y="409.855974" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="34" key="0" z_index="13"/>
-                    <object_ref id="14" parent="10" name="lower leg_r_b" folder="0" file="0" abs_x="-503.670722" abs_y="599.562639" abs_angle="0.703093" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="35" key="0" z_index="14"/>
-                    <object_ref id="15" parent="11" name="feet_r_b" folder="0" file="3" abs_x="-514.708265" abs_y="400.905662" abs_angle="339.373127" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="36" key="0" z_index="15"/>
-                    <object_ref id="16" parent="7" name="lower leg_r_c" folder="0" file="0" abs_x="-377.029989" abs_y="624.331678" abs_angle="14.685614" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="37" key="0" z_index="16"/>
-                    <object_ref id="17" parent="8" name="feet_r_c" folder="0" file="3" abs_x="-344.985738" abs_y="417.590806" abs_angle="359.903482" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="38" key="0" z_index="17"/>
-                    <object_ref id="18" parent="4" name="lower leg" folder="0" file="0" abs_x="-253.894746" abs_y="483.983433" abs_angle="31.976028" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="39" key="0" z_index="18"/>
-                    <object_ref id="19" parent="5" name="feet" folder="0" file="3" abs_x="-158.754536" abs_y="265.927874" abs_angle="41.92698" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="40" key="0" z_index="19"/>
+                    <object_ref id="0" parent="20" timeline="21" key="0" z_index="0"/>
+                    <object_ref id="1" parent="19" timeline="22" key="0" z_index="1"/>
+                    <object_ref id="2" parent="18" timeline="23" key="0" z_index="2"/>
+                    <object_ref id="3" parent="16" timeline="24" key="0" z_index="3"/>
+                    <object_ref id="4" parent="15" timeline="25" key="0" z_index="4"/>
+                    <object_ref id="5" parent="17" timeline="26" key="0" z_index="5"/>
+                    <object_ref id="6" parent="12" timeline="27" key="0" z_index="6"/>
+                    <object_ref id="7" parent="13" timeline="28" key="0" z_index="7"/>
+                    <object_ref id="8" parent="14" timeline="29" key="0" z_index="8"/>
+                    <object_ref id="9" parent="1" timeline="30" key="0" z_index="9"/>
+                    <object_ref id="10" parent="9" timeline="31" key="0" z_index="10"/>
+                    <object_ref id="11" parent="6" timeline="32" key="0" z_index="11"/>
+                    <object_ref id="12" parent="3" timeline="33" key="0" z_index="12"/>
+                    <object_ref id="13" parent="2" timeline="34" key="0" z_index="13"/>
+                    <object_ref id="14" parent="10" timeline="35" key="0" z_index="14"/>
+                    <object_ref id="15" parent="11" timeline="36" key="0" z_index="15"/>
+                    <object_ref id="16" parent="7" timeline="37" key="0" z_index="16"/>
+                    <object_ref id="17" parent="8" timeline="38" key="0" z_index="17"/>
+                    <object_ref id="18" parent="4" timeline="39" key="0" z_index="18"/>
+                    <object_ref id="19" parent="5" timeline="40" key="0" z_index="19"/>
                 </key>
                 <key id="1" time="100">
                     <bone_ref id="0" timeline="0" key="1"/>
@@ -3102,108 +2989,108 @@
                     <bone x="324.592838" y="6.985064" angle="3.01111"/>
                 </key>
             </timeline>
-            <timeline id="21" obj="35" name="feet-l_b">
+            <timeline id="21" name="feet-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="22" obj="34" name="lower-leg-l_b">
+            <timeline id="22" name="lower-leg-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="23" obj="33" name="upper-leg-l_b">
+            <timeline id="23" name="upper-leg-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="443.460574" y="16.59928" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="24" obj="37" name="lower-leg-l_c">
+            <timeline id="24" name="lower-leg-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="25" obj="36" name="upper-leg-l_c">
+            <timeline id="25" name="upper-leg-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="442.009083" y="12.353327" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="26" obj="38" name="feet-l_c">
+            <timeline id="26" name="feet-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="27" obj="32" name="upper-leg-l">
+            <timeline id="27" name="upper-leg-l">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="439.965697" y="13.838802" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="28" obj="31" name="lower-leg-l">
+            <timeline id="28" name="lower-leg-l">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="29" obj="30" name="feet-l">
+            <timeline id="29" name="feet-l">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="30" obj="39" name="body">
+            <timeline id="30" name="body">
                 <key id="0" spin="0">
                     <object folder="0" file="4" x="522.077632" y="27.011819" angle="14.137562"/>
                 </key>
             </timeline>
-            <timeline id="31" obj="27" name="upper leg_r_b">
+            <timeline id="31" name="upper leg_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="-8.764117" y="9.298202" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="32" obj="24" name="upper leg_r_c">
+            <timeline id="32" name="upper leg_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="9.665015" y="3.155158" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="33" obj="22" name="upper leg">
+            <timeline id="33" name="upper leg">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="2.293362" y="0.69794" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="34" obj="40" name="head">
+            <timeline id="34" name="head">
                 <key id="0" spin="0">
                     <object folder="0" file="2" x="0.440057" y="-29.195475" angle="36.142041"/>
                 </key>
             </timeline>
-            <timeline id="35" obj="28" name="lower leg_r_b">
+            <timeline id="35" name="lower leg_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="36" obj="29" name="feet_r_b">
+            <timeline id="36" name="feet_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
-            <timeline id="37" obj="25" name="lower leg_r_c">
+            <timeline id="37" name="lower leg_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="38" obj="26" name="feet_r_c">
+            <timeline id="38" name="feet_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
-            <timeline id="39" obj="21" name="lower leg">
+            <timeline id="39" name="lower leg">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="40" obj="23" name="feet">
+            <timeline id="40" name="feet">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="6" name="attack" length="1600" interval="100" l="-1400" t="-1250" r="2131" b="127">
+        <animation id="6" name="Attack" length="1600" interval="100" l="-1400" t="-1250" r="2131" b="127">
             <gline pos="-69"/>
             <gline pos="-528" v="1"/>
             <gline pos="-159" v="1"/>
@@ -3239,26 +3126,26 @@
                     <bone_ref id="18" parent="1" timeline="18" key="0"/>
                     <bone_ref id="19" parent="18" timeline="19" key="0"/>
                     <bone_ref id="20" parent="19" timeline="20" key="0"/>
-                    <object_ref id="0" parent="20" name="feet-l_b" folder="0" file="5" abs_x="-171.338049" abs_y="406.517148" abs_angle="340.245787" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="21" key="0" z_index="0"/>
-                    <object_ref id="1" parent="19" name="lower-leg-l_b" folder="0" file="6" abs_x="-59.740164" abs_y="682.668545" abs_angle="296.800129" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="22" key="0" z_index="1"/>
-                    <object_ref id="2" parent="18" name="upper-leg-l_b" folder="0" file="7" abs_x="-271.414835" abs_y="687.481512" abs_angle="7.145978" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="23" key="0" z_index="2"/>
-                    <object_ref id="3" parent="16" name="lower-leg-l_c" folder="0" file="6" abs_x="145.506694" abs_y="689.200618" abs_angle="333.368948" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="24" key="0" z_index="3"/>
-                    <object_ref id="4" parent="15" name="upper-leg-l_c" folder="0" file="7" abs_x="-30.186574" abs_y="717.834937" abs_angle="0.6285" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="25" key="0" z_index="4"/>
-                    <object_ref id="5" parent="17" name="feet-l_c" folder="0" file="5" abs_x="237.368615" abs_y="412.36172" abs_angle="348.774688" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="26" key="0" z_index="5"/>
-                    <object_ref id="6" parent="12" name="upper-leg-l" folder="0" file="7" abs_x="437.601888" abs_y="766.334953" abs_angle="334.039323" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="27" key="0" z_index="6"/>
-                    <object_ref id="7" parent="13" name="lower-leg-l" folder="0" file="6" abs_x="568.27925" abs_y="669.184553" abs_angle="341.613523" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="28" key="0" z_index="7"/>
-                    <object_ref id="8" parent="14" name="feet-l" folder="0" file="5" abs_x="709.178882" abs_y="407.849038" abs_angle="341.613523" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="29" key="0" z_index="8"/>
-                    <object_ref id="9" parent="1" name="body" folder="0" file="4" abs_x="-246.75724" abs_y="676.648715" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="30" key="0" z_index="9"/>
-                    <object_ref id="10" parent="9" name="upper leg_r_b" folder="0" file="1" abs_x="-297.405292" abs_y="586.920525" abs_angle="35.803041" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="31" key="0" z_index="10"/>
-                    <object_ref id="11" parent="6" name="upper leg_r_c" folder="0" file="1" abs_x="-154.728509" abs_y="718.627396" abs_angle="11.727708" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="32" key="0" z_index="11"/>
-                    <object_ref id="12" parent="3" name="upper leg" folder="0" file="1" abs_x="-37.311007" abs_y="694.242511" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="33" key="0" z_index="12"/>
-                    <object_ref id="13" parent="2" name="head" folder="0" file="2" abs_x="150.838735" abs_y="409.855974" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="34" key="0" z_index="13"/>
-                    <object_ref id="14" parent="10" name="lower leg_r_b" folder="0" file="0" abs_x="-503.670722" abs_y="599.562639" abs_angle="0.703093" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="35" key="0" z_index="14"/>
-                    <object_ref id="15" parent="11" name="feet_r_b" folder="0" file="3" abs_x="-514.708265" abs_y="400.905662" abs_angle="339.373127" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="36" key="0" z_index="15"/>
-                    <object_ref id="16" parent="7" name="lower leg_r_c" folder="0" file="0" abs_x="-377.029989" abs_y="624.331678" abs_angle="14.685614" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="37" key="0" z_index="16"/>
-                    <object_ref id="17" parent="8" name="feet_r_c" folder="0" file="3" abs_x="-344.985738" abs_y="417.590806" abs_angle="359.903482" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="38" key="0" z_index="17"/>
-                    <object_ref id="18" parent="4" name="lower leg" folder="0" file="0" abs_x="-253.894746" abs_y="483.983433" abs_angle="31.976028" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="39" key="0" z_index="18"/>
-                    <object_ref id="19" parent="5" name="feet" folder="0" file="3" abs_x="-158.754536" abs_y="265.927874" abs_angle="41.92698" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="40" key="0" z_index="19"/>
+                    <object_ref id="0" parent="20" timeline="21" key="0" z_index="0"/>
+                    <object_ref id="1" parent="19" timeline="22" key="0" z_index="1"/>
+                    <object_ref id="2" parent="18" timeline="23" key="0" z_index="2"/>
+                    <object_ref id="3" parent="16" timeline="24" key="0" z_index="3"/>
+                    <object_ref id="4" parent="15" timeline="25" key="0" z_index="4"/>
+                    <object_ref id="5" parent="17" timeline="26" key="0" z_index="5"/>
+                    <object_ref id="6" parent="12" timeline="27" key="0" z_index="6"/>
+                    <object_ref id="7" parent="13" timeline="28" key="0" z_index="7"/>
+                    <object_ref id="8" parent="14" timeline="29" key="0" z_index="8"/>
+                    <object_ref id="9" parent="1" timeline="30" key="0" z_index="9"/>
+                    <object_ref id="10" parent="9" timeline="31" key="0" z_index="10"/>
+                    <object_ref id="11" parent="6" timeline="32" key="0" z_index="11"/>
+                    <object_ref id="12" parent="3" timeline="33" key="0" z_index="12"/>
+                    <object_ref id="13" parent="2" timeline="34" key="0" z_index="13"/>
+                    <object_ref id="14" parent="10" timeline="35" key="0" z_index="14"/>
+                    <object_ref id="15" parent="11" timeline="36" key="0" z_index="15"/>
+                    <object_ref id="16" parent="7" timeline="37" key="0" z_index="16"/>
+                    <object_ref id="17" parent="8" timeline="38" key="0" z_index="17"/>
+                    <object_ref id="18" parent="4" timeline="39" key="0" z_index="18"/>
+                    <object_ref id="19" parent="5" timeline="40" key="0" z_index="19"/>
                 </key>
                 <key id="1" time="100">
                     <bone_ref id="0" timeline="0" key="1"/>
@@ -4586,7 +4473,7 @@
                     <bone x="324.592838" y="6.985064" angle="3.01111"/>
                 </key>
             </timeline>
-            <timeline id="21" obj="35" name="feet-l_b">
+            <timeline id="21" name="feet-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
@@ -4603,7 +4490,7 @@
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="22" obj="34" name="lower-leg-l_b">
+            <timeline id="22" name="lower-leg-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
@@ -4620,7 +4507,7 @@
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="23" obj="33" name="upper-leg-l_b">
+            <timeline id="23" name="upper-leg-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="443.460574" y="16.59928" angle="295.016893"/>
                 </key>
@@ -4637,7 +4524,7 @@
                     <object folder="0" file="7" x="443.460574" y="16.59928" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="24" obj="37" name="lower-leg-l_c">
+            <timeline id="24" name="lower-leg-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
@@ -4654,7 +4541,7 @@
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="25" obj="36" name="upper-leg-l_c">
+            <timeline id="25" name="upper-leg-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="442.009083" y="12.353327" angle="295.016893"/>
                 </key>
@@ -4671,7 +4558,7 @@
                     <object folder="0" file="7" x="442.009083" y="12.353327" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="26" obj="38" name="feet-l_c">
+            <timeline id="26" name="feet-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
@@ -4688,7 +4575,7 @@
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="27" obj="32" name="upper-leg-l">
+            <timeline id="27" name="upper-leg-l">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="439.965697" y="13.838802" angle="295.016893"/>
                 </key>
@@ -4705,7 +4592,7 @@
                     <object folder="0" file="7" x="439.965697" y="13.838802" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="28" obj="31" name="lower-leg-l">
+            <timeline id="28" name="lower-leg-l">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
@@ -4722,7 +4609,7 @@
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="29" obj="30" name="feet-l">
+            <timeline id="29" name="feet-l">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
@@ -4739,7 +4626,7 @@
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="30" obj="39" name="body">
+            <timeline id="30" name="body">
                 <key id="0" spin="0">
                     <object folder="0" file="4" x="522.077632" y="27.011819" angle="14.137562"/>
                 </key>
@@ -4756,7 +4643,7 @@
                     <object folder="0" file="4" x="522.077632" y="27.011819" angle="14.137562"/>
                 </key>
             </timeline>
-            <timeline id="31" obj="27" name="upper leg_r_b">
+            <timeline id="31" name="upper leg_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="-8.764117" y="9.298202" angle="243.434949"/>
                 </key>
@@ -4773,7 +4660,7 @@
                     <object folder="0" file="1" x="-8.764117" y="9.298202" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="32" obj="24" name="upper leg_r_c">
+            <timeline id="32" name="upper leg_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="9.665015" y="3.155158" angle="243.434949"/>
                 </key>
@@ -4790,7 +4677,7 @@
                     <object folder="0" file="1" x="9.665015" y="3.155158" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="33" obj="22" name="upper leg">
+            <timeline id="33" name="upper leg">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="2.293362" y="0.69794" angle="243.434949"/>
                 </key>
@@ -4807,7 +4694,7 @@
                     <object folder="0" file="1" x="2.293362" y="0.69794" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="34" obj="40" name="head">
+            <timeline id="34" name="head">
                 <key id="0" spin="0">
                     <object folder="0" file="2" x="0.440057" y="-29.195475" angle="36.142041"/>
                 </key>
@@ -4824,7 +4711,7 @@
                     <object folder="0" file="2" x="0.440057" y="-29.195475" angle="36.142041"/>
                 </key>
             </timeline>
-            <timeline id="35" obj="28" name="lower leg_r_b">
+            <timeline id="35" name="lower leg_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
@@ -4841,7 +4728,7 @@
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="36" obj="29" name="feet_r_b">
+            <timeline id="36" name="feet_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
@@ -4858,7 +4745,7 @@
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
-            <timeline id="37" obj="25" name="lower leg_r_c">
+            <timeline id="37" name="lower leg_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
@@ -4875,7 +4762,7 @@
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="38" obj="26" name="feet_r_c">
+            <timeline id="38" name="feet_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
@@ -4892,7 +4779,7 @@
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
-            <timeline id="39" obj="21" name="lower leg">
+            <timeline id="39" name="lower leg">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
@@ -4909,7 +4796,7 @@
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="40" obj="23" name="feet">
+            <timeline id="40" name="feet">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
@@ -4926,7 +4813,7 @@
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
-            <timeline id="41" obj="41" name="slash-1">
+            <timeline id="41" name="slash-1">
                 <key id="0" time="800" spin="0">
                     <object folder="0" file="8" x="578.284362" y="63.486749" angle="353.289281" scale_x="1.5" scale_y="-3.028846"/>
                 </key>
@@ -4959,7 +4846,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="7" name="spit web attack" length="1200" interval="100" l="-1400" t="-1250" r="2131" b="127">
+        <animation id="7" name="Attack2" length="1200" interval="100" l="-1400" t="-1250" r="2131" b="127">
             <gline pos="-78"/>
             <gline pos="-527" v="1"/>
             <gline pos="-159" v="1"/>
@@ -4990,26 +4877,26 @@
                     <bone_ref id="18" parent="1" timeline="18" key="0"/>
                     <bone_ref id="19" parent="18" timeline="19" key="0"/>
                     <bone_ref id="20" parent="19" timeline="20" key="0"/>
-                    <object_ref id="0" parent="20" name="feet-l_b" folder="0" file="5" abs_x="-171.338049" abs_y="406.517148" abs_angle="340.245787" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="21" key="0" z_index="0"/>
-                    <object_ref id="1" parent="19" name="lower-leg-l_b" folder="0" file="6" abs_x="-59.740164" abs_y="682.668545" abs_angle="296.800129" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="22" key="0" z_index="1"/>
-                    <object_ref id="2" parent="18" name="upper-leg-l_b" folder="0" file="7" abs_x="-271.414835" abs_y="687.481512" abs_angle="7.145978" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="23" key="0" z_index="2"/>
-                    <object_ref id="3" parent="16" name="lower-leg-l_c" folder="0" file="6" abs_x="145.506694" abs_y="689.200618" abs_angle="333.368948" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="24" key="0" z_index="3"/>
-                    <object_ref id="4" parent="15" name="upper-leg-l_c" folder="0" file="7" abs_x="-30.186574" abs_y="717.834937" abs_angle="0.6285" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="25" key="0" z_index="4"/>
-                    <object_ref id="5" parent="17" name="feet-l_c" folder="0" file="5" abs_x="237.368615" abs_y="412.36172" abs_angle="348.774688" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="26" key="0" z_index="5"/>
-                    <object_ref id="6" parent="12" name="upper-leg-l" folder="0" file="7" abs_x="437.601888" abs_y="766.334953" abs_angle="334.039323" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="27" key="0" z_index="6"/>
-                    <object_ref id="7" parent="13" name="lower-leg-l" folder="0" file="6" abs_x="568.27925" abs_y="669.184553" abs_angle="341.613523" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="28" key="0" z_index="7"/>
-                    <object_ref id="8" parent="14" name="feet-l" folder="0" file="5" abs_x="709.178882" abs_y="407.849038" abs_angle="341.613523" abs_scale_x="0.9" abs_scale_y="0.9" abs_a="1" timeline="29" key="0" z_index="8"/>
-                    <object_ref id="9" parent="1" name="body" folder="0" file="4" abs_x="-246.75724" abs_y="676.648715" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="30" key="0" z_index="9"/>
-                    <object_ref id="10" parent="9" name="upper leg_r_b" folder="0" file="1" abs_x="-297.405292" abs_y="586.920525" abs_angle="35.803041" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="31" key="0" z_index="10"/>
-                    <object_ref id="11" parent="6" name="upper leg_r_c" folder="0" file="1" abs_x="-154.728509" abs_y="718.627396" abs_angle="11.727708" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="32" key="0" z_index="11"/>
-                    <object_ref id="12" parent="3" name="upper leg" folder="0" file="1" abs_x="-37.311007" abs_y="694.242511" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="33" key="0" z_index="12"/>
-                    <object_ref id="13" parent="2" name="head" folder="0" file="2" abs_x="150.838735" abs_y="409.855974" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="34" key="0" z_index="13"/>
-                    <object_ref id="14" parent="10" name="lower leg_r_b" folder="0" file="0" abs_x="-503.670722" abs_y="599.562639" abs_angle="0.703093" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="35" key="0" z_index="14"/>
-                    <object_ref id="15" parent="11" name="feet_r_b" folder="0" file="3" abs_x="-514.708265" abs_y="400.905662" abs_angle="339.373127" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="36" key="0" z_index="15"/>
-                    <object_ref id="16" parent="7" name="lower leg_r_c" folder="0" file="0" abs_x="-377.029989" abs_y="624.331678" abs_angle="14.685614" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="37" key="0" z_index="16"/>
-                    <object_ref id="17" parent="8" name="feet_r_c" folder="0" file="3" abs_x="-344.985738" abs_y="417.590806" abs_angle="359.903482" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="38" key="0" z_index="17"/>
-                    <object_ref id="18" parent="4" name="lower leg" folder="0" file="0" abs_x="-253.894746" abs_y="483.983433" abs_angle="31.976028" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="39" key="0" z_index="18"/>
-                    <object_ref id="19" parent="5" name="feet" folder="0" file="3" abs_x="-158.754536" abs_y="265.927874" abs_angle="41.92698" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="40" key="0" z_index="19"/>
+                    <object_ref id="0" parent="20" timeline="21" key="0" z_index="0"/>
+                    <object_ref id="1" parent="19" timeline="22" key="0" z_index="1"/>
+                    <object_ref id="2" parent="18" timeline="23" key="0" z_index="2"/>
+                    <object_ref id="3" parent="16" timeline="24" key="0" z_index="3"/>
+                    <object_ref id="4" parent="15" timeline="25" key="0" z_index="4"/>
+                    <object_ref id="5" parent="17" timeline="26" key="0" z_index="5"/>
+                    <object_ref id="6" parent="12" timeline="27" key="0" z_index="6"/>
+                    <object_ref id="7" parent="13" timeline="28" key="0" z_index="7"/>
+                    <object_ref id="8" parent="14" timeline="29" key="0" z_index="8"/>
+                    <object_ref id="9" parent="1" timeline="30" key="0" z_index="9"/>
+                    <object_ref id="10" parent="9" timeline="31" key="0" z_index="10"/>
+                    <object_ref id="11" parent="6" timeline="32" key="0" z_index="11"/>
+                    <object_ref id="12" parent="3" timeline="33" key="0" z_index="12"/>
+                    <object_ref id="13" parent="2" timeline="34" key="0" z_index="13"/>
+                    <object_ref id="14" parent="10" timeline="35" key="0" z_index="14"/>
+                    <object_ref id="15" parent="11" timeline="36" key="0" z_index="15"/>
+                    <object_ref id="16" parent="7" timeline="37" key="0" z_index="16"/>
+                    <object_ref id="17" parent="8" timeline="38" key="0" z_index="17"/>
+                    <object_ref id="18" parent="4" timeline="39" key="0" z_index="18"/>
+                    <object_ref id="19" parent="5" timeline="40" key="0" z_index="19"/>
                 </key>
                 <key id="1" time="100">
                     <bone_ref id="0" timeline="0" key="1"/>
@@ -5883,7 +5770,7 @@
                     <bone x="324.592838" y="6.985064" angle="3.01111"/>
                 </key>
             </timeline>
-            <timeline id="21" obj="35" name="feet-l_b">
+            <timeline id="21" name="feet-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
@@ -5897,7 +5784,7 @@
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="22" obj="34" name="lower-leg-l_b">
+            <timeline id="22" name="lower-leg-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
@@ -5911,7 +5798,7 @@
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="23" obj="33" name="upper-leg-l_b">
+            <timeline id="23" name="upper-leg-l_b">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="443.460574" y="16.59928" angle="295.016893"/>
                 </key>
@@ -5925,7 +5812,7 @@
                     <object folder="0" file="7" x="443.460574" y="16.59928" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="24" obj="37" name="lower-leg-l_c">
+            <timeline id="24" name="lower-leg-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
@@ -5939,7 +5826,7 @@
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="25" obj="36" name="upper-leg-l_c">
+            <timeline id="25" name="upper-leg-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="442.009083" y="12.353327" angle="295.016893"/>
                 </key>
@@ -5953,7 +5840,7 @@
                     <object folder="0" file="7" x="442.009083" y="12.353327" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="26" obj="38" name="feet-l_c">
+            <timeline id="26" name="feet-l_c">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
@@ -5967,7 +5854,7 @@
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="27" obj="32" name="upper-leg-l">
+            <timeline id="27" name="upper-leg-l">
                 <key id="0" spin="0">
                     <object folder="0" file="7" x="439.965697" y="13.838802" angle="295.016893"/>
                 </key>
@@ -5981,7 +5868,7 @@
                     <object folder="0" file="7" x="439.965697" y="13.838802" angle="295.016893"/>
                 </key>
             </timeline>
-            <timeline id="28" obj="31" name="lower-leg-l">
+            <timeline id="28" name="lower-leg-l">
                 <key id="0" spin="0">
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
@@ -5995,7 +5882,7 @@
                     <object folder="0" file="6" x="-11.547169" y="0.398178" angle="43.025066"/>
                 </key>
             </timeline>
-            <timeline id="29" obj="30" name="feet-l">
+            <timeline id="29" name="feet-l">
                 <key id="0" spin="0">
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
@@ -6009,7 +5896,7 @@
                     <object folder="0" file="5" x="-6.606386" y="-3.68327" angle="83.459614"/>
                 </key>
             </timeline>
-            <timeline id="30" obj="39" name="body">
+            <timeline id="30" name="body">
                 <key id="0" spin="0">
                     <object folder="0" file="4" x="522.077632" y="27.011819" angle="14.137562"/>
                 </key>
@@ -6023,7 +5910,7 @@
                     <object folder="0" file="4" x="522.077632" y="27.011819" angle="14.137562"/>
                 </key>
             </timeline>
-            <timeline id="31" obj="27" name="upper leg_r_b">
+            <timeline id="31" name="upper leg_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="-8.764117" y="9.298202" angle="243.434949"/>
                 </key>
@@ -6037,7 +5924,7 @@
                     <object folder="0" file="1" x="-8.764117" y="9.298202" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="32" obj="24" name="upper leg_r_c">
+            <timeline id="32" name="upper leg_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="9.665015" y="3.155158" angle="243.434949"/>
                 </key>
@@ -6051,7 +5938,7 @@
                     <object folder="0" file="1" x="9.665015" y="3.155158" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="33" obj="22" name="upper leg">
+            <timeline id="33" name="upper leg">
                 <key id="0" spin="0">
                     <object folder="0" file="1" x="2.293362" y="0.69794" angle="243.434949"/>
                 </key>
@@ -6065,7 +5952,7 @@
                     <object folder="0" file="1" x="2.293362" y="0.69794" angle="243.434949"/>
                 </key>
             </timeline>
-            <timeline id="34" obj="40" name="head">
+            <timeline id="34" name="head">
                 <key id="0" spin="0">
                     <object folder="0" file="2" x="0.440057" y="-29.195475" angle="36.142041"/>
                 </key>
@@ -6079,7 +5966,7 @@
                     <object folder="0" file="2" x="0.440057" y="-29.195475" angle="36.142041"/>
                 </key>
             </timeline>
-            <timeline id="35" obj="28" name="lower leg_r_b">
+            <timeline id="35" name="lower leg_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
@@ -6093,7 +5980,7 @@
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="36" obj="29" name="feet_r_b">
+            <timeline id="36" name="feet_r_b">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
@@ -6107,7 +5994,7 @@
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
-            <timeline id="37" obj="25" name="lower leg_r_c">
+            <timeline id="37" name="lower leg_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
@@ -6121,7 +6008,7 @@
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="38" obj="26" name="feet_r_c">
+            <timeline id="38" name="feet_r_c">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
@@ -6135,7 +6022,7 @@
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
-            <timeline id="39" obj="21" name="lower leg">
+            <timeline id="39" name="lower leg">
                 <key id="0" spin="0">
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
@@ -6149,7 +6036,7 @@
                     <object folder="0" file="0" x="-3.70262" y="1.295975" angle="137.274089"/>
                 </key>
             </timeline>
-            <timeline id="40" obj="23" name="feet">
+            <timeline id="40" name="feet">
                 <key id="0" spin="0">
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
@@ -6163,7 +6050,7 @@
                     <object folder="0" file="3" x="0.163908" y="2.339735" angle="98.319197"/>
                 </key>
             </timeline>
-            <timeline id="41" obj="42" name="spider-web">
+            <timeline id="41" name="spider-web">
                 <key id="0" time="300" spin="-1">
                     <object folder="0" file="12" x="602.916667" y="575.333489" angle="0"/>
                 </key>

@@ -1,10 +1,10 @@
 #include "Enemy.h"
 
-Enemy::Enemy(std::string scmlResource, std::string entityName, bool isFlying) : Entity::Entity()
+Enemy::Enemy(std::string scmlResource, std::string entityName, bool isFlying, Size size, float scale, Vec2 collisionOffset) : Entity::Entity()
 {
 	this->spriteNode = Node::create();
 	this->animationNode = AnimationNode::create(scmlResource);
-	this->animationNode->setScale(0.5f);
+	this->animationNode->setScale(scale);
 
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
@@ -21,7 +21,9 @@ Enemy::Enemy(std::string scmlResource, std::string entityName, bool isFlying) : 
 	CategoryGroup categoryGroup = isFlying ? CategoryGroup::G_EnemyFlying : CategoryGroup::G_Enemy;
 
 	// TODO: Size configurable
-	this->init(PhysicsBody::createBox(Size(196.0f, 256.0f)), categoryGroup, true, false);
+	this->init(PhysicsBody::createBox(size * scale), categoryGroup, true, false);
+
+	animationNode->setPosition(collisionOffset * scale);
 
 	this->spriteNode->addChild(this->animationNode);
 	this->addChild(this->spriteNode);

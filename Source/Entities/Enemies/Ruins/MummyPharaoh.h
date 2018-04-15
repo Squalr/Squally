@@ -5,12 +5,12 @@
 
 using namespace cocos2d;
 
-class MummyPharoh : public Enemy
+class MummyPharaoh : public Enemy
 {
 public:
-	static MummyPharoh * create();
+	static MummyPharaoh * create();
 
 private:
-	MummyPharoh();
-	~MummyPharoh();
+	MummyPharaoh();
+	~MummyPharaoh();
 };
