@@ -10,8 +10,16 @@ using namespace cocos2d;
 class Enemy : public Entity
 {
 protected:
-	Enemy(std::string scmlResource, std::string entityName, bool isFlying);
+	Enemy(
+		std::string scmlResource,
+		std::string entityName,
+		bool isFlying,
+		Size size = Size(256.0f, 256.0f),
+		float scale = 1.0f,
+		Vec2 collisionOffset = Vec2(0.0f, 0.0f));
+
 	~Enemy();
+
 	bool contactBegin(CollisionData data) override;
 	bool contactUpdate(CollisionData data) override;
 	bool contactEnd(CollisionData data) override;

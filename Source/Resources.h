@@ -730,6 +730,7 @@ public:
 	static const std::string Decor_Water_Tree2;
 	static const std::string Decor_Water_Vines1;
 	static const std::string Dialog_DialogTutorialExactScanI;
+	static const std::string Entities_Environment_Castle_BossWitch_Animations;
 	static const std::string Entities_Environment_Castle_BossWitch_B_HAIR;
 	static const std::string Entities_Environment_Castle_BossWitch_BAG;
 	static const std::string Entities_Environment_Castle_BossWitch_BASE_FLYING_PUMPKIN;
@@ -783,6 +784,7 @@ public:
 	static const std::string Entities_Environment_Castle_Guard_Right_Hand;
 	static const std::string Entities_Environment_Castle_Guard_Right_Thigh;
 	static const std::string Entities_Environment_Castle_Guard_Right_Wrist;
+	static const std::string Entities_Environment_Castle_Harpy_Animations;
 	static const std::string Entities_Environment_Castle_Harpy_harpy_arm_L;
 	static const std::string Entities_Environment_Castle_Harpy_harpy_arm_R;
 	static const std::string Entities_Environment_Castle_Harpy_harpy_belt;
@@ -812,6 +814,26 @@ public:
 	static const std::string Entities_Environment_Castle_Harpy_harpy_leg_R_3;
 	static const std::string Entities_Environment_Castle_Harpy_harpy_shadow;
 	static const std::string Entities_Environment_Castle_Harpy_harpy_weapon;
+	static const std::string Entities_Environment_Castle_Jack_Animations;
+	static const std::string Entities_Environment_Castle_Jack_BELT;
+	static const std::string Entities_Environment_Castle_Jack_COVER;
+	static const std::string Entities_Environment_Castle_Jack_HAT;
+	static const std::string Entities_Environment_Castle_Jack_HEAD;
+	static const std::string Entities_Environment_Castle_Jack_KNIFE;
+	static const std::string Entities_Environment_Castle_Jack_L_ARM_1;
+	static const std::string Entities_Environment_Castle_Jack_L_ARM_2;
+	static const std::string Entities_Environment_Castle_Jack_L_FINGERS;
+	static const std::string Entities_Environment_Castle_Jack_L_HAND;
+	static const std::string Entities_Environment_Castle_Jack_L_LEG_1;
+	static const std::string Entities_Environment_Castle_Jack_L_LEG_2;
+	static const std::string Entities_Environment_Castle_Jack_L_SHOE;
+	static const std::string Entities_Environment_Castle_Jack_R_ARM_1;
+	static const std::string Entities_Environment_Castle_Jack_R_ARM_2;
+	static const std::string Entities_Environment_Castle_Jack_R_HAND;
+	static const std::string Entities_Environment_Castle_Jack_R_LEG_1;
+	static const std::string Entities_Environment_Castle_Jack_R_LEG_2;
+	static const std::string Entities_Environment_Castle_Jack_R_SHOE;
+	static const std::string Entities_Environment_Castle_Jack_TORSO;
 	static const std::string Entities_Environment_Castle_Knight_Animations;
 	static const std::string Entities_Environment_Castle_Knight_Body;
 	static const std::string Entities_Environment_Castle_Knight_Cloak;
@@ -834,6 +856,7 @@ public:
 	static const std::string Entities_Environment_Castle_Knight_Right_Thigh;
 	static const std::string Entities_Environment_Castle_Knight_Right_Wrist;
 	static const std::string Entities_Environment_Castle_Knight_Weapon;
+	static const std::string Entities_Environment_Castle_Mummy_Animations;
 	static const std::string Entities_Environment_Castle_Mummy_mummy_arm_L;
 	static const std::string Entities_Environment_Castle_Mummy_mummy_arm_R;
 	static const std::string Entities_Environment_Castle_Mummy_mummy_body;
@@ -845,6 +868,7 @@ public:
 	static const std::string Entities_Environment_Castle_Mummy_mummy_shadow;
 	static const std::string Entities_Environment_Castle_Mummy_mummy_weapon_1;
 	static const std::string Entities_Environment_Castle_Mummy_mummy_weapon_2;
+	static const std::string Entities_Environment_Castle_VampireLord_Animations;
 	static const std::string Entities_Environment_Castle_VampireLord_BACK_HAIR;
 	static const std::string Entities_Environment_Castle_VampireLord_BELT;
 	static const std::string Entities_Environment_Castle_VampireLord_BLOOD_SUCKER;
@@ -864,6 +888,7 @@ public:
 	static const std::string Entities_Environment_Castle_VampireLord_R_LEG_1;
 	static const std::string Entities_Environment_Castle_VampireLord_R_LEG_2;
 	static const std::string Entities_Environment_Castle_VampireLord_TORSO;
+	static const std::string Entities_Environment_Castle_Vampiress_Animations;
 	static const std::string Entities_Environment_Castle_Vampiress_BACK_HAIR;
 	static const std::string Entities_Environment_Castle_Vampiress_COVER_1;
 	static const std::string Entities_Environment_Castle_Vampiress_HEAD;
@@ -881,6 +906,7 @@ public:
 	static const std::string Entities_Environment_Castle_Vampiress_R_LEG_2;
 	static const std::string Entities_Environment_Castle_Vampiress_R_WING;
 	static const std::string Entities_Environment_Castle_Vampiress_TORSO;
+	static const std::string Entities_Environment_Castle_Vampiress2_Animations;
 	static const std::string Entities_Environment_Castle_Vampiress2_vampires_arm_L_1;
 	static const std::string Entities_Environment_Castle_Vampiress2_vampires_arm_L_2;
 	static const std::string Entities_Environment_Castle_Vampiress2_vampires_arm_R_1;
@@ -897,6 +923,7 @@ public:
 	static const std::string Entities_Environment_Castle_Vampiress2_vampires_leg_R_2;
 	static const std::string Entities_Environment_Castle_Vampiress2_vampires_shadow;
 	static const std::string Entities_Environment_Castle_Vampiress2_vampires_weapon;
+	static const std::string Entities_Environment_Castle_Zombie1_Animations;
 	static const std::string Entities_Environment_Castle_Zombie1_BELT;
 	static const std::string Entities_Environment_Castle_Zombie1_HEAD;
 	static const std::string Entities_Environment_Castle_Zombie1_L_ARM;
@@ -908,6 +935,7 @@ public:
 	static const std::string Entities_Environment_Castle_Zombie1_R_LEG_1;
 	static const std::string Entities_Environment_Castle_Zombie1_TORSO;
 	static const std::string Entities_Environment_Castle_Zombie1_WEAPON;
+	static const std::string Entities_Environment_Castle_Zombie2_Animations;
 	static const std::string Entities_Environment_Castle_Zombie2_BELT;
 	static const std::string Entities_Environment_Castle_Zombie2_HEAD;
 	static const std::string Entities_Environment_Castle_Zombie2_L_ARM;
@@ -919,6 +947,7 @@ public:
 	static const std::string Entities_Environment_Castle_Zombie2_R_LEG_1;
 	static const std::string Entities_Environment_Castle_Zombie2_TORSO;
 	static const std::string Entities_Environment_Castle_Zombie2_WEAPON;
+	static const std::string Entities_Environment_Castle_Zombie3_Animations;
 	static const std::string Entities_Environment_Castle_Zombie3_BELT;
 	static const std::string Entities_Environment_Castle_Zombie3_HEAD;
 	static const std::string Entities_Environment_Castle_Zombie3_L_ARM;
@@ -939,6 +968,21 @@ public:
 	static const std::string Entities_Environment_Caverns_Beetle_Head__1_;
 	static const std::string Entities_Environment_Caverns_Beetle_Head__2_;
 	static const std::string Entities_Environment_Caverns_Beetle_LegTop;
+	static const std::string Entities_Environment_Caverns_BlackWidow_Animation;
+	static const std::string Entities_Environment_Caverns_BlackWidow_body;
+	static const std::string Entities_Environment_Caverns_BlackWidow_feet_l;
+	static const std::string Entities_Environment_Caverns_BlackWidow_feet;
+	static const std::string Entities_Environment_Caverns_BlackWidow_head;
+	static const std::string Entities_Environment_Caverns_BlackWidow_lower_leg;
+	static const std::string Entities_Environment_Caverns_BlackWidow_lower_leg_l;
+	static const std::string Entities_Environment_Caverns_BlackWidow_slash_1;
+	static const std::string Entities_Environment_Caverns_BlackWidow_slash_2;
+	static const std::string Entities_Environment_Caverns_BlackWidow_slash_3;
+	static const std::string Entities_Environment_Caverns_BlackWidow_slash_4;
+	static const std::string Entities_Environment_Caverns_BlackWidow_spider_web_circle;
+	static const std::string Entities_Environment_Caverns_BlackWidow_spider_web;
+	static const std::string Entities_Environment_Caverns_BlackWidow_upper_leg;
+	static const std::string Entities_Environment_Caverns_BlackWidow_upper_leg_l;
 	static const std::string Entities_Environment_Caverns_BossKrampus_BASKET_BACK_PART;
 	static const std::string Entities_Environment_Caverns_BossKrampus_BASKET_TOP;
 	static const std::string Entities_Environment_Caverns_BossKrampus_BASKET;
@@ -1004,22 +1048,7 @@ public:
 	static const std::string Entities_Environment_Caverns_ForestGolem_Right_Hand;
 	static const std::string Entities_Environment_Caverns_ForestGolem_Right_Thigh;
 	static const std::string Entities_Environment_Caverns_ForestGolem_Right_Wrist;
-	static const std::string Entities_Environment_Caverns_Spider_Animation;
-	static const std::string Entities_Environment_Caverns_Spider_black_widow_spider;
-	static const std::string Entities_Environment_Caverns_Spider_body;
-	static const std::string Entities_Environment_Caverns_Spider_feet_l;
-	static const std::string Entities_Environment_Caverns_Spider_feet;
-	static const std::string Entities_Environment_Caverns_Spider_head;
-	static const std::string Entities_Environment_Caverns_Spider_lower_leg;
-	static const std::string Entities_Environment_Caverns_Spider_lower_leg_l;
-	static const std::string Entities_Environment_Caverns_Spider_slash_1;
-	static const std::string Entities_Environment_Caverns_Spider_slash_2;
-	static const std::string Entities_Environment_Caverns_Spider_slash_3;
-	static const std::string Entities_Environment_Caverns_Spider_slash_4;
-	static const std::string Entities_Environment_Caverns_Spider_spider_web_circle;
-	static const std::string Entities_Environment_Caverns_Spider_spider_web;
-	static const std::string Entities_Environment_Caverns_Spider_upper_leg;
-	static const std::string Entities_Environment_Caverns_Spider_upper_leg_l;
+	static const std::string Entities_Environment_Forest_Cyclops_Animations;
 	static const std::string Entities_Environment_Forest_Cyclops_BELT;
 	static const std::string Entities_Environment_Forest_Cyclops_COVER_1;
 	static const std::string Entities_Environment_Forest_Cyclops_HEAD;
@@ -1035,7 +1064,7 @@ public:
 	static const std::string Entities_Environment_Forest_Cyclops_R_LEG_1;
 	static const std::string Entities_Environment_Forest_Cyclops_SKULL_CRUSHER;
 	static const std::string Entities_Environment_Forest_Cyclops_TORSO;
-	static const std::string Entities_Environment_Forest_GoblinGrunt_Animation;
+	static const std::string Entities_Environment_Forest_GoblinGrunt_Animations;
 	static const std::string Entities_Environment_Forest_GoblinGrunt_image_01;
 	static const std::string Entities_Environment_Forest_GoblinGrunt_image_02;
 	static const std::string Entities_Environment_Forest_GoblinGrunt_image_03;
@@ -1050,6 +1079,7 @@ public:
 	static const std::string Entities_Environment_Forest_GoblinGrunt_image_12;
 	static const std::string Entities_Environment_Forest_GoblinGrunt_image_13;
 	static const std::string Entities_Environment_Forest_GoblinGrunt_splash;
+	static const std::string Entities_Environment_Forest_GoblinGruntBoar_Animations;
 	static const std::string Entities_Environment_Forest_GoblinGruntBoar_BELT;
 	static const std::string Entities_Environment_Forest_GoblinGruntBoar_HEAD;
 	static const std::string Entities_Environment_Forest_GoblinGruntBoar_L_ARM_CLOTH;
@@ -1081,6 +1111,7 @@ public:
 	static const std::string Entities_Environment_Forest_GoblinGuard_Right_Thigh;
 	static const std::string Entities_Environment_Forest_GoblinGuard_Right_Wrist;
 	static const std::string Entities_Environment_Forest_GoblinGuard_Weapon;
+	static const std::string Entities_Environment_Forest_GoblinShaman_Animations;
 	static const std::string Entities_Environment_Forest_GoblinShaman_BELT;
 	static const std::string Entities_Environment_Forest_GoblinShaman_HEAD;
 	static const std::string Entities_Environment_Forest_GoblinShaman_L_ARM_CLOTH;
@@ -1095,7 +1126,7 @@ public:
 	static const std::string Entities_Environment_Forest_GoblinShaman_STAFF;
 	static const std::string Entities_Environment_Forest_GoblinShaman_TORSO;
 	static const std::string Entities_Environment_Forest_GoblinShaman_VOODO_DOLL;
-	static const std::string Entities_Environment_Forest_GoblinSwordsman_Animation;
+	static const std::string Entities_Environment_Forest_GoblinSwordsman_Animations;
 	static const std::string Entities_Environment_Forest_GoblinSwordsman_image_01;
 	static const std::string Entities_Environment_Forest_GoblinSwordsman_image_02;
 	static const std::string Entities_Environment_Forest_GoblinSwordsman_image_03;
@@ -1110,7 +1141,7 @@ public:
 	static const std::string Entities_Environment_Forest_GoblinSwordsman_image_12;
 	static const std::string Entities_Environment_Forest_GoblinSwordsman_image_13;
 	static const std::string Entities_Environment_Forest_GoblinSwordsman_splash;
-	static const std::string Entities_Environment_Forest_GoblinWarrior_Animation;
+	static const std::string Entities_Environment_Forest_GoblinWarrior_Animations;
 	static const std::string Entities_Environment_Forest_GoblinWarrior_image_01;
 	static const std::string Entities_Environment_Forest_GoblinWarrior_image_02;
 	static const std::string Entities_Environment_Forest_GoblinWarrior_image_03;
@@ -1125,6 +1156,7 @@ public:
 	static const std::string Entities_Environment_Forest_GoblinWarrior_image_12;
 	static const std::string Entities_Environment_Forest_GoblinWarrior_image_13;
 	static const std::string Entities_Environment_Forest_GoblinWarrior_splash;
+	static const std::string Entities_Environment_Forest_GoblinWarriorPig_Animations;
 	static const std::string Entities_Environment_Forest_GoblinWarriorPig_BELT;
 	static const std::string Entities_Environment_Forest_GoblinWarriorPig_HEAD;
 	static const std::string Entities_Environment_Forest_GoblinWarriorPig_HELMET;
@@ -1143,6 +1175,7 @@ public:
 	static const std::string Entities_Environment_Forest_GoblinWarriorPig_Pig_B_FRONT_LEG_1;
 	static const std::string Entities_Environment_Forest_GoblinWarriorPig_Pig_F_BACK_LEG;
 	static const std::string Entities_Environment_Forest_GoblinWarriorPig_Pig_TORSO;
+	static const std::string Entities_Environment_Forest_OrcGrunt_Animations;
 	static const std::string Entities_Environment_Forest_OrcGrunt_BELT;
 	static const std::string Entities_Environment_Forest_OrcGrunt_HEAD;
 	static const std::string Entities_Environment_Forest_OrcGrunt_JAW;
@@ -1157,6 +1190,7 @@ public:
 	static const std::string Entities_Environment_Forest_OrcGrunt_R_LEG_1;
 	static const std::string Entities_Environment_Forest_OrcGrunt_TORSO;
 	static const std::string Entities_Environment_Forest_OrcGrunt_WEAPON_4;
+	static const std::string Entities_Environment_Forest_OrcWarrior_Animations;
 	static const std::string Entities_Environment_Forest_OrcWarrior_BELT;
 	static const std::string Entities_Environment_Forest_OrcWarrior_HEAD;
 	static const std::string Entities_Environment_Forest_OrcWarrior_HELMET;
@@ -1174,6 +1208,7 @@ public:
 	static const std::string Entities_Environment_Forest_OrcWarrior_TORSO;
 	static const std::string Entities_Environment_Forest_OrcWarrior_WEAPON_1;
 	static const std::string Entities_Environment_Forest_OrcWarrior_WEAPON_2;
+	static const std::string Entities_Environment_Forest_PLACEHOLDER_BossDragonOrcKing_Animations;
 	static const std::string Entities_Environment_Forest_PLACEHOLDER_BossDragonOrcKing_CROWN;
 	static const std::string Entities_Environment_Forest_PLACEHOLDER_BossDragonOrcKing_Dragon_B_BACK_LEG_1;
 	static const std::string Entities_Environment_Forest_PLACEHOLDER_BossDragonOrcKing_Dragon_B_BACK_LEG_2;
@@ -1204,6 +1239,7 @@ public:
 	static const std::string Entities_Environment_Forest_PLACEHOLDER_BossDragonOrcKing_Dragon_R_WING_R_WING_4;
 	static const std::string Entities_Environment_Forest_PLACEHOLDER_BossDragonOrcKing_Dragon_R_WING_R_WING_5;
 	static const std::string Entities_Environment_Forest_PLACEHOLDER_BossDragonOrcKing_Dragon_R_WING_R_WING_6;
+	static const std::string Entities_Environment_Forest_Troll_Animations;
 	static const std::string Entities_Environment_Forest_Troll_COVER_1;
 	static const std::string Entities_Environment_Forest_Troll_HEAD;
 	static const std::string Entities_Environment_Forest_Troll_JAW;
@@ -1220,6 +1256,7 @@ public:
 	static const std::string Entities_Environment_Forest_Troll_R_LEG_2;
 	static const std::string Entities_Environment_Forest_Troll_TORSO;
 	static const std::string Entities_Environment_Forest_Troll_WEAPON;
+	static const std::string Entities_Environment_Jungle_Bear_Animations;
 	static const std::string Entities_Environment_Jungle_Bear_B_BACK_LEG_1;
 	static const std::string Entities_Environment_Jungle_Bear_B_BACK_LEG_2;
 	static const std::string Entities_Environment_Jungle_Bear_B_FRONT_LEG_1;
@@ -1232,6 +1269,7 @@ public:
 	static const std::string Entities_Environment_Jungle_Bear_JAW;
 	static const std::string Entities_Environment_Jungle_Bear_TAIL;
 	static const std::string Entities_Environment_Jungle_Bear_TORSO;
+	static const std::string Entities_Environment_Jungle_BossRhinoman_Animations;
 	static const std::string Entities_Environment_Jungle_BossRhinoman_COVER_1;
 	static const std::string Entities_Environment_Jungle_BossRhinoman_HEAD;
 	static const std::string Entities_Environment_Jungle_BossRhinoman_L_ARM_1;
@@ -1265,6 +1303,7 @@ public:
 	static const std::string Entities_Environment_Jungle_BossRhinoman_Elephant_TAIL;
 	static const std::string Entities_Environment_Jungle_BossRhinoman_Elephant_TORSO_SADDLE;
 	static const std::string Entities_Environment_Jungle_BossRhinoman_Elephant_TORSO;
+	static const std::string Entities_Environment_Jungle_JungleDragon_Animations;
 	static const std::string Entities_Environment_Jungle_JungleDragon_dragonOfRevenge_arm_L_1;
 	static const std::string Entities_Environment_Jungle_JungleDragon_dragonOfRevenge_arm_L_2;
 	static const std::string Entities_Environment_Jungle_JungleDragon_dragonOfRevenge_arm_R_1;
@@ -1281,6 +1320,7 @@ public:
 	static const std::string Entities_Environment_Jungle_JungleDragon_dragonOfRevenge_leg_R_2;
 	static const std::string Entities_Environment_Jungle_JungleDragon_dragonOfRevenge_shadow;
 	static const std::string Entities_Environment_Jungle_JungleDragon_dragonOfRevenge_skirt;
+	static const std::string Entities_Environment_Jungle_Lion_Animations;
 	static const std::string Entities_Environment_Jungle_Lion_B_BACK_LEG_1;
 	static const std::string Entities_Environment_Jungle_Lion_B_BACK_LEG_2;
 	static const std::string Entities_Environment_Jungle_Lion_B_BACK_LEG_3;
@@ -1296,6 +1336,7 @@ public:
 	static const std::string Entities_Environment_Jungle_Lion_HEAD_JAW;
 	static const std::string Entities_Environment_Jungle_Lion_TAIL;
 	static const std::string Entities_Environment_Jungle_Lion_TORSO;
+	static const std::string Entities_Environment_Jungle_MantisDragon_Animations;
 	static const std::string Entities_Environment_Jungle_MantisDragon_claw_armor_L;
 	static const std::string Entities_Environment_Jungle_MantisDragon_claw_armor_R;
 	static const std::string Entities_Environment_Jungle_MantisDragon_claw_arm_L_1;
@@ -1314,6 +1355,7 @@ public:
 	static const std::string Entities_Environment_Jungle_MantisDragon_claw_leg_R_3;
 	static const std::string Entities_Environment_Jungle_MantisDragon_claw_shadow;
 	static const std::string Entities_Environment_Jungle_MantisDragon_claw_tail;
+	static const std::string Entities_Environment_Jungle_Minotaur_Animations;
 	static const std::string Entities_Environment_Jungle_Minotaur_BELT;
 	static const std::string Entities_Environment_Jungle_Minotaur_COVER_1;
 	static const std::string Entities_Environment_Jungle_Minotaur_HEAD;
@@ -1334,6 +1376,7 @@ public:
 	static const std::string Entities_Environment_Jungle_Minotaur_TORSO_CLOTH;
 	static const std::string Entities_Environment_Jungle_Minotaur_TORSO;
 	static const std::string Entities_Environment_Jungle_Minotaur_WEAPON;
+	static const std::string Entities_Environment_Jungle_PigDemon_Animations;
 	static const std::string Entities_Environment_Jungle_PigDemon_pig_arm_L;
 	static const std::string Entities_Environment_Jungle_PigDemon_pig_arm_R;
 	static const std::string Entities_Environment_Jungle_PigDemon_pig_body;
@@ -1346,6 +1389,7 @@ public:
 	static const std::string Entities_Environment_Jungle_PigDemon_pig_leg_R;
 	static const std::string Entities_Environment_Jungle_PigDemon_pig_shadow;
 	static const std::string Entities_Environment_Jungle_PigDemon_pig_weapon;
+	static const std::string Entities_Environment_Jungle_PurpleDinosaur_Animations;
 	static const std::string Entities_Environment_Jungle_PurpleDinosaur_velociraptor_armor_L;
 	static const std::string Entities_Environment_Jungle_PurpleDinosaur_velociraptor_armor_R;
 	static const std::string Entities_Environment_Jungle_PurpleDinosaur_velociraptor_arm_L_1;
@@ -1363,7 +1407,16 @@ public:
 	static const std::string Entities_Environment_Jungle_PurpleDinosaur_velociraptor_leg_R_3;
 	static const std::string Entities_Environment_Jungle_PurpleDinosaur_velociraptor_shadow;
 	static const std::string Entities_Environment_Jungle_PurpleDinosaur_velociraptor_tail;
-	static const std::string Entities_Environment_Jungle_TikiWarrior_Parts;
+	static const std::string Entities_Environment_Jungle_TikiWarrior_Animations;
+	static const std::string Entities_Environment_Jungle_TikiWarrior_TikiArm1;
+	static const std::string Entities_Environment_Jungle_TikiWarrior_TikiArm2;
+	static const std::string Entities_Environment_Jungle_TikiWarrior_TikiHand1;
+	static const std::string Entities_Environment_Jungle_TikiWarrior_TikiHandSword;
+	static const std::string Entities_Environment_Jungle_TikiWarrior_TikiLeg1;
+	static const std::string Entities_Environment_Jungle_TikiWarrior_TikiLeg2;
+	static const std::string Entities_Environment_Jungle_TikiWarrior_TikiMask;
+	static const std::string Entities_Environment_Jungle_TikiWarrior_TikiTorso;
+	static const std::string Entities_Environment_Jungle_Wolf_Animations;
 	static const std::string Entities_Environment_Jungle_Wolf_B_BACK_LEG_1;
 	static const std::string Entities_Environment_Jungle_Wolf_B_BACK_LEG_2;
 	static const std::string Entities_Environment_Jungle_Wolf_B_BACK_LEG_3;
@@ -1374,11 +1427,11 @@ public:
 	static const std::string Entities_Environment_Jungle_Wolf_F_BACK_LEG_3;
 	static const std::string Entities_Environment_Jungle_Wolf_F_FRONT_LEG_1;
 	static const std::string Entities_Environment_Jungle_Wolf_F_FRONT_LEG_2;
+	static const std::string Entities_Environment_Jungle_Wolf_HEAD_2;
+	static const std::string Entities_Environment_Jungle_Wolf_HEAD_3;
 	static const std::string Entities_Environment_Jungle_Wolf_HEAD;
 	static const std::string Entities_Environment_Jungle_Wolf_TAIL;
 	static const std::string Entities_Environment_Jungle_Wolf_TORSO;
-	static const std::string Entities_Environment_Jungle_Wolf_+FRAMES_HEAD_2;
-	static const std::string Entities_Environment_Jungle_Wolf_+FRAMES_HEAD_3;
 	static const std::string Entities_Environment_Lava_BossDemonKing_Animations;
 	static const std::string Entities_Environment_Lava_BossDemonKing_BELT;
 	static const std::string Entities_Environment_Lava_BossDemonKing_HEAD;
@@ -1404,6 +1457,7 @@ public:
 	static const std::string Entities_Environment_Lava_BossDemonKing_TAIL;
 	static const std::string Entities_Environment_Lava_BossDemonKing_TORSO;
 	static const std::string Entities_Environment_Lava_BossDemonKing_WEAPON;
+	static const std::string Entities_Environment_Lava_Chimera_Animations;
 	static const std::string Entities_Environment_Lava_Chimera_twin_body;
 	static const std::string Entities_Environment_Lava_Chimera_twin_head;
 	static const std::string Entities_Environment_Lava_Chimera_twin_head_L_1;
@@ -1428,6 +1482,7 @@ public:
 	static const std::string Entities_Environment_Lava_Chimera_twin_wing_R_2;
 	static const std::string Entities_Environment_Lava_Chimera_twin_wing_R_3;
 	static const std::string Entities_Environment_Lava_Chimera_twin_wing_R_4;
+	static const std::string Entities_Environment_Lava_CritterDemon_Animations;
 	static const std::string Entities_Environment_Lava_CritterDemon_B_LEG_1;
 	static const std::string Entities_Environment_Lava_CritterDemon_B_LEG_2;
 	static const std::string Entities_Environment_Lava_CritterDemon_BODY;
@@ -1435,6 +1490,7 @@ public:
 	static const std::string Entities_Environment_Lava_CritterDemon_F_LEG_2;
 	static const std::string Entities_Environment_Lava_CritterDemon_JAW;
 	static const std::string Entities_Environment_Lava_CritterDemon_TAIL;
+	static const std::string Entities_Environment_Lava_Demon_Archer_Animations;
 	static const std::string Entities_Environment_Lava_Demon_Archer_ARROW_2;
 	static const std::string Entities_Environment_Lava_Demon_Archer_ARROW;
 	static const std::string Entities_Environment_Lava_Demon_Archer_BACK_HAIR_1;
@@ -1459,6 +1515,7 @@ public:
 	static const std::string Entities_Environment_Lava_Demon_Archer_SWORD;
 	static const std::string Entities_Environment_Lava_Demon_Archer_TORSO_CLOTH;
 	static const std::string Entities_Environment_Lava_Demon_Archer_TORSO;
+	static const std::string Entities_Environment_Lava_DemonDragon_Animations;
 	static const std::string Entities_Environment_Lava_DemonDragon_magma_arm_L_1;
 	static const std::string Entities_Environment_Lava_DemonDragon_magma_arm_L_2;
 	static const std::string Entities_Environment_Lava_DemonDragon_magma_arm_R_1;
@@ -1477,6 +1534,7 @@ public:
 	static const std::string Entities_Environment_Lava_DemonDragon_magma_tail;
 	static const std::string Entities_Environment_Lava_DemonDragon_magma_wing_L;
 	static const std::string Entities_Environment_Lava_DemonDragon_magma_wing_R;
+	static const std::string Entities_Environment_Lava_DemonRogue_Animations;
 	static const std::string Entities_Environment_Lava_DemonRogue_BELT;
 	static const std::string Entities_Environment_Lava_DemonRogue_HEAD;
 	static const std::string Entities_Environment_Lava_DemonRogue_L_ARM_1_ARMOR_1;
@@ -1498,6 +1556,7 @@ public:
 	static const std::string Entities_Environment_Lava_DemonRogue_TAIL;
 	static const std::string Entities_Environment_Lava_DemonRogue_TORSO;
 	static const std::string Entities_Environment_Lava_DemonRogue_WEAPON;
+	static const std::string Entities_Environment_Lava_DemonShaman_Animations;
 	static const std::string Entities_Environment_Lava_DemonShaman_BELT;
 	static const std::string Entities_Environment_Lava_DemonShaman_HEAD;
 	static const std::string Entities_Environment_Lava_DemonShaman_L_ARM_1_ARMOR_1;
@@ -1520,6 +1579,7 @@ public:
 	static const std::string Entities_Environment_Lava_DemonShaman_STAFF;
 	static const std::string Entities_Environment_Lava_DemonShaman_TAIL;
 	static const std::string Entities_Environment_Lava_DemonShaman_TORSO;
+	static const std::string Entities_Environment_Lava_DemonSwordsman_Animations;
 	static const std::string Entities_Environment_Lava_DemonSwordsman_BELT;
 	static const std::string Entities_Environment_Lava_DemonSwordsman_HEAD;
 	static const std::string Entities_Environment_Lava_DemonSwordsman_L_ARM_1_ARMOR_1;
@@ -1539,6 +1599,7 @@ public:
 	static const std::string Entities_Environment_Lava_DemonSwordsman_TORSO_BELT;
 	static const std::string Entities_Environment_Lava_DemonSwordsman_TORSO;
 	static const std::string Entities_Environment_Lava_DemonSwordsman_WEAPON;
+	static const std::string Entities_Environment_Lava_DemonWarrior1_Animations;
 	static const std::string Entities_Environment_Lava_DemonWarrior1_BELT;
 	static const std::string Entities_Environment_Lava_DemonWarrior1_HEAD;
 	static const std::string Entities_Environment_Lava_DemonWarrior1_HEAD1;
@@ -1557,6 +1618,7 @@ public:
 	static const std::string Entities_Environment_Lava_DemonWarrior1_TAIL;
 	static const std::string Entities_Environment_Lava_DemonWarrior1_TORSO;
 	static const std::string Entities_Environment_Lava_DemonWarrior1_WEAPON;
+	static const std::string Entities_Environment_Lava_DemonWarrior2_Animations;
 	static const std::string Entities_Environment_Lava_DemonWarrior2_BELT;
 	static const std::string Entities_Environment_Lava_DemonWarrior2_HEAD;
 	static const std::string Entities_Environment_Lava_DemonWarrior2_HEAD2;
@@ -1575,6 +1637,7 @@ public:
 	static const std::string Entities_Environment_Lava_DemonWarrior2_TAIL;
 	static const std::string Entities_Environment_Lava_DemonWarrior2_TORSO;
 	static const std::string Entities_Environment_Lava_DemonWarrior2_WEAPON;
+	static const std::string Entities_Environment_Lava_DemonWarrior3_Animations;
 	static const std::string Entities_Environment_Lava_DemonWarrior3_BELT;
 	static const std::string Entities_Environment_Lava_DemonWarrior3_HEAD;
 	static const std::string Entities_Environment_Lava_DemonWarrior3_HEAD2;
@@ -1611,6 +1674,7 @@ public:
 	static const std::string Entities_Environment_Lava_LavaGolem_Right_Hand;
 	static const std::string Entities_Environment_Lava_LavaGolem_Right_Thigh;
 	static const std::string Entities_Environment_Lava_LavaGolem_Right_Wrist;
+	static const std::string Entities_Environment_Lava_RedDragon_Animations;
 	static const std::string Entities_Environment_Lava_RedDragon_fiery_armor_L;
 	static const std::string Entities_Environment_Lava_RedDragon_fiery_armor_R;
 	static const std::string Entities_Environment_Lava_RedDragon_fiery_arm_L_1;
@@ -1631,6 +1695,7 @@ public:
 	static const std::string Entities_Environment_Lava_RedDragon_fiery_tail_3;
 	static const std::string Entities_Environment_Lava_RedDragon_fiery_wing_L;
 	static const std::string Entities_Environment_Lava_RedDragon_fiery_wing_R;
+	static const std::string Entities_Environment_Lava_RedWyvern1_Animations;
 	static const std::string Entities_Environment_Lava_RedWyvern1_death_body;
 	static const std::string Entities_Environment_Lava_RedWyvern1_death_head_1;
 	static const std::string Entities_Environment_Lava_RedWyvern1_death_head_2;
@@ -1651,6 +1716,7 @@ public:
 	static const std::string Entities_Environment_Lava_RedWyvern1_death_wing_R_2;
 	static const std::string Entities_Environment_Lava_RedWyvern1_death_wing_R_3;
 	static const std::string Entities_Environment_Lava_RedWyvern1_death_wing_R_4;
+	static const std::string Entities_Environment_Lava_RedWyvern2_Animations;
 	static const std::string Entities_Environment_Lava_RedWyvern2_terror_arm_L_1;
 	static const std::string Entities_Environment_Lava_RedWyvern2_terror_arm_L_2;
 	static const std::string Entities_Environment_Lava_RedWyvern2_terror_arm_L_3;
@@ -1693,11 +1759,13 @@ public:
 	static const std::string Entities_Environment_Mech_Bot_Right_Hand;
 	static const std::string Entities_Environment_Mech_Bot_Right_Thigh;
 	static const std::string Entities_Environment_Mech_Bot_Right_Wrist;
+	static const std::string Entities_Environment_Mech_EvilEye_Animations;
 	static const std::string Entities_Environment_Mech_EvilEye_evilEye_cape;
 	static const std::string Entities_Environment_Mech_EvilEye_evilEye_head_1;
 	static const std::string Entities_Environment_Mech_EvilEye_evilEye_head_2;
 	static const std::string Entities_Environment_Mech_EvilEye_evilEye_head_3;
 	static const std::string Entities_Environment_Mech_EvilEye_evilEye_shadow;
+	static const std::string Entities_Environment_Mech_Exterminator_Animations;
 	static const std::string Entities_Environment_Mech_Exterminator_AXE;
 	static const std::string Entities_Environment_Mech_Exterminator_BELLY;
 	static const std::string Entities_Environment_Mech_Exterminator_BELT;
@@ -1846,6 +1914,7 @@ public:
 	static const std::string Entities_Environment_Mech_VikingBotSmall_shoulder;
 	static const std::string Entities_Environment_Mech_VikingBotSmall_torso_2;
 	static const std::string Entities_Environment_Mech_VikingBotSmall_torso;
+	static const std::string Entities_Environment_Obelisk_Abomination_Animations;
 	static const std::string Entities_Environment_Obelisk_Abomination_caveman_arm_L_1;
 	static const std::string Entities_Environment_Obelisk_Abomination_caveman_arm_L_2;
 	static const std::string Entities_Environment_Obelisk_Abomination_caveman_arm_R_1;
@@ -1859,6 +1928,7 @@ public:
 	static const std::string Entities_Environment_Obelisk_Abomination_caveman_leg_R_2;
 	static const std::string Entities_Environment_Obelisk_Abomination_caveman_shadow;
 	static const std::string Entities_Environment_Obelisk_Abomination_caveman_weapon;
+	static const std::string Entities_Environment_Obelisk_BossSkeletonKing_Animations;
 	static const std::string Entities_Environment_Obelisk_BossSkeletonKing_BELT;
 	static const std::string Entities_Environment_Obelisk_BossSkeletonKing_CAPE;
 	static const std::string Entities_Environment_Obelisk_BossSkeletonKing_COVER_1;
@@ -1882,6 +1952,7 @@ public:
 	static const std::string Entities_Environment_Obelisk_BossSkeletonKing_R_LEG_2;
 	static const std::string Entities_Environment_Obelisk_BossSkeletonKing_TORSO;
 	static const std::string Entities_Environment_Obelisk_BossSkeletonKing_WEAPON;
+	static const std::string Entities_Environment_Obelisk_DarkDragon_Animations;
 	static const std::string Entities_Environment_Obelisk_DarkDragon_black_armor;
 	static const std::string Entities_Environment_Obelisk_DarkDragon_black_arm_L_1;
 	static const std::string Entities_Environment_Obelisk_DarkDragon_black_arm_L_2;
@@ -1900,6 +1971,7 @@ public:
 	static const std::string Entities_Environment_Obelisk_DarkDragon_black_tail;
 	static const std::string Entities_Environment_Obelisk_DarkDragon_black_wing_L;
 	static const std::string Entities_Environment_Obelisk_DarkDragon_black_wing_R;
+	static const std::string Entities_Environment_Obelisk_SkeletonArcher_Animations;
 	static const std::string Entities_Environment_Obelisk_SkeletonArcher_ARROW;
 	static const std::string Entities_Environment_Obelisk_SkeletonArcher_BELT;
 	static const std::string Entities_Environment_Obelisk_SkeletonArcher_BOW_1;
@@ -1918,6 +1990,7 @@ public:
 	static const std::string Entities_Environment_Obelisk_SkeletonArcher_R_LEG_1;
 	static const std::string Entities_Environment_Obelisk_SkeletonArcher_R_LEG_2;
 	static const std::string Entities_Environment_Obelisk_SkeletonArcher_TORSO;
+	static const std::string Entities_Environment_Obelisk_SkeletonBaron_Animations;
 	static const std::string Entities_Environment_Obelisk_SkeletonBaron_blackKnight_arm_L_1;
 	static const std::string Entities_Environment_Obelisk_SkeletonBaron_blackKnight_arm_L_2;
 	static const std::string Entities_Environment_Obelisk_SkeletonBaron_blackKnight_arm_R_1;
@@ -1939,6 +2012,7 @@ public:
 	static const std::string Entities_Environment_Obelisk_SkeletonBaron_Horse_undeadHorse_leg_1_R;
 	static const std::string Entities_Environment_Obelisk_SkeletonBaron_Horse_undeadHorse_leg_2_L;
 	static const std::string Entities_Environment_Obelisk_SkeletonBaron_Horse_undeadHorse_leg_2_R;
+	static const std::string Entities_Environment_Obelisk_SkeletonFighter_Animations;
 	static const std::string Entities_Environment_Obelisk_SkeletonFighter_BELT;
 	static const std::string Entities_Environment_Obelisk_SkeletonFighter_HEAD_BAN;
 	static const std::string Entities_Environment_Obelisk_SkeletonFighter_HEAD;
@@ -1954,6 +2028,7 @@ public:
 	static const std::string Entities_Environment_Obelisk_SkeletonFighter_R_LEG_2;
 	static const std::string Entities_Environment_Obelisk_SkeletonFighter_TORSO;
 	static const std::string Entities_Environment_Obelisk_SkeletonFighter_WEAPON;
+	static const std::string Entities_Environment_Obelisk_SkeletonMage_Animations;
 	static const std::string Entities_Environment_Obelisk_SkeletonMage_ghost_arm_L;
 	static const std::string Entities_Environment_Obelisk_SkeletonMage_ghost_arm_R;
 	static const std::string Entities_Environment_Obelisk_SkeletonMage_ghost_body_1;
@@ -1965,6 +2040,7 @@ public:
 	static const std::string Entities_Environment_Obelisk_SkeletonMage_ghost_head_1;
 	static const std::string Entities_Environment_Obelisk_SkeletonMage_ghost_head_2;
 	static const std::string Entities_Environment_Obelisk_SkeletonMage_ghost_shadow;
+	static const std::string Entities_Environment_Obelisk_SkeletonNecromancer_Animations;
 	static const std::string Entities_Environment_Obelisk_SkeletonNecromancer_CAPE;
 	static const std::string Entities_Environment_Obelisk_SkeletonNecromancer_HEAD;
 	static const std::string Entities_Environment_Obelisk_SkeletonNecromancer_L_ARM_CLOTH;
@@ -1982,6 +2058,7 @@ public:
 	static const std::string Entities_Environment_Obelisk_SkeletonNecromancer_STAFF_1;
 	static const std::string Entities_Environment_Obelisk_SkeletonNecromancer_TORSO_CLOTH;
 	static const std::string Entities_Environment_Obelisk_SkeletonNecromancer_TORSO;
+	static const std::string Entities_Environment_Obelisk_SkeletonWarrior_Animations;
 	static const std::string Entities_Environment_Obelisk_SkeletonWarrior_skeleton_arm_L;
 	static const std::string Entities_Environment_Obelisk_SkeletonWarrior_skeleton_arm_R;
 	static const std::string Entities_Environment_Obelisk_SkeletonWarrior_skeleton_body;
@@ -1994,6 +2071,7 @@ public:
 	static const std::string Entities_Environment_Obelisk_SkeletonWarrior_skeleton_leg_R;
 	static const std::string Entities_Environment_Obelisk_SkeletonWarrior_skeleton_shadow;
 	static const std::string Entities_Environment_Obelisk_SkeletonWarrior_skeleton_weapon;
+	static const std::string Entities_Environment_Obelisk_Undead_Animations;
 	static const std::string Entities_Environment_Obelisk_Undead_zombie_arm_L;
 	static const std::string Entities_Environment_Obelisk_Undead_zombie_arm_R;
 	static const std::string Entities_Environment_Obelisk_Undead_zombie_belt;
@@ -2006,6 +2084,7 @@ public:
 	static const std::string Entities_Environment_Obelisk_Undead_zombie_leg_R;
 	static const std::string Entities_Environment_Obelisk_Undead_zombie_shadow;
 	static const std::string Entities_Environment_Obelisk_Undead_zombie_weapon;
+	static const std::string Entities_Environment_Obelisk_VoidDemon_Animations;
 	static const std::string Entities_Environment_Obelisk_VoidDemon_shadowFiend_arm_L1_1;
 	static const std::string Entities_Environment_Obelisk_VoidDemon_shadowFiend_arm_L1_2;
 	static const std::string Entities_Environment_Obelisk_VoidDemon_shadowFiend_arm_L1_3;
@@ -2212,6 +2291,7 @@ public:
 	static const std::string Entities_Environment_Ruins_Medusa1_HEAD_PARTS_H8;
 	static const std::string Entities_Environment_Ruins_Medusa1_HEAD_PARTS_H9_2;
 	static const std::string Entities_Environment_Ruins_Medusa1_HEAD_PARTS_H9;
+	static const std::string Entities_Environment_Ruins_Medusa2_Animations;
 	static const std::string Entities_Environment_Ruins_Medusa2_medusa_arm_L;
 	static const std::string Entities_Environment_Ruins_Medusa2_medusa_arm_R;
 	static const std::string Entities_Environment_Ruins_Medusa2_medusa_body;
@@ -2267,7 +2347,7 @@ public:
 	static const std::string Entities_Environment_Ruins_MummyPharoh_STAFF;
 	static const std::string Entities_Environment_Ruins_MummyPharoh_TORSO;
 	static const std::string Entities_Environment_Ruins_Skeleton_additional_012;
-	static const std::string Entities_Environment_Ruins_Skeleton_Animation;
+	static const std::string Entities_Environment_Ruins_Skeleton_Animations;
 	static const std::string Entities_Environment_Ruins_Skeleton_body;
 	static const std::string Entities_Environment_Ruins_Skeleton_effect_sword;
 	static const std::string Entities_Environment_Ruins_Skeleton_head01;
@@ -2355,6 +2435,7 @@ public:
 	static const std::string Entities_Environment_Ruins_Tigress_TORSO_CLOTH;
 	static const std::string Entities_Environment_Ruins_Tigress_TORSO;
 	static const std::string Entities_Environment_Ruins_Tigress_WEAPON;
+	static const std::string Entities_Environment_Snow_BossIceGolem_Animations;
 	static const std::string Entities_Environment_Snow_BossIceGolem_BELT;
 	static const std::string Entities_Environment_Snow_BossIceGolem_COVER;
 	static const std::string Entities_Environment_Snow_BossIceGolem_COVER_1;
@@ -2374,6 +2455,7 @@ public:
 	static const std::string Entities_Environment_Snow_BossIceGolem_R_LEG_2;
 	static const std::string Entities_Environment_Snow_BossIceGolem_TORSO;
 	static const std::string Entities_Environment_Snow_BossIceGolem_WEAPON;
+	static const std::string Entities_Environment_Snow_BossSanta_Animations;
 	static const std::string Entities_Environment_Snow_BossSanta_BELT;
 	static const std::string Entities_Environment_Snow_BossSanta_COVER;
 	static const std::string Entities_Environment_Snow_BossSanta_HAT;
@@ -2396,6 +2478,7 @@ public:
 	static const std::string Entities_Environment_Snow_BossSanta_R_LEG_2;
 	static const std::string Entities_Environment_Snow_BossSanta_STAFF;
 	static const std::string Entities_Environment_Snow_BossSanta_TORSO;
+	static const std::string Entities_Environment_Snow_EvilSnowman_Animations;
 	static const std::string Entities_Environment_Snow_EvilSnowman_CANDY_STICK;
 	static const std::string Entities_Environment_Snow_EvilSnowman_HAT;
 	static const std::string Entities_Environment_Snow_EvilSnowman_HEAD;
@@ -2412,6 +2495,7 @@ public:
 	static const std::string Entities_Environment_Snow_EvilSnowman_R_LEG_2;
 	static const std::string Entities_Environment_Snow_EvilSnowman_SCARF;
 	static const std::string Entities_Environment_Snow_EvilSnowman_TORSO;
+	static const std::string Entities_Environment_Snow_GoblinElf_Animations;
 	static const std::string Entities_Environment_Snow_GoblinElf_BACK_HAT;
 	static const std::string Entities_Environment_Snow_GoblinElf_BELT;
 	static const std::string Entities_Environment_Snow_GoblinElf_COVER;
@@ -2430,6 +2514,7 @@ public:
 	static const std::string Entities_Environment_Snow_GoblinElf_R_LEG_2;
 	static const std::string Entities_Environment_Snow_GoblinElf_TORSO;
 	static const std::string Entities_Environment_Snow_GoblinElf_TREE_SWORD;
+	static const std::string Entities_Environment_Snow_IceDragon_Animations;
 	static const std::string Entities_Environment_Snow_IceDragon_thunder_armor_L;
 	static const std::string Entities_Environment_Snow_IceDragon_thunder_armor_R;
 	static const std::string Entities_Environment_Snow_IceDragon_thunder_arm_L_1;
@@ -2449,6 +2534,7 @@ public:
 	static const std::string Entities_Environment_Snow_IceDragon_thunder_tail;
 	static const std::string Entities_Environment_Snow_IceDragon_thunder_wing_L;
 	static const std::string Entities_Environment_Snow_IceDragon_thunder_wing_R;
+	static const std::string Entities_Environment_Snow_PenguinShooter_Animations;
 	static const std::string Entities_Environment_Snow_PenguinShooter_BACK_PACKAGE;
 	static const std::string Entities_Environment_Snow_PenguinShooter_CAP;
 	static const std::string Entities_Environment_Snow_PenguinShooter_HAND_ON_GUN;
@@ -2465,6 +2551,7 @@ public:
 	static const std::string Entities_Environment_Snow_PenguinShooter_TORSO_CLOTH;
 	static const std::string Entities_Environment_Snow_PenguinShooter_TORSO;
 	static const std::string Entities_Environment_Snow_PenguinShooter_WEAPON;
+	static const std::string Entities_Environment_Snow_PenguinWarrior1_Animations;
 	static const std::string Entities_Environment_Snow_PenguinWarrior1_HEAD;
 	static const std::string Entities_Environment_Snow_PenguinWarrior1_HELMET;
 	static const std::string Entities_Environment_Snow_PenguinWarrior1_L_ARM;
@@ -2476,6 +2563,7 @@ public:
 	static const std::string Entities_Environment_Snow_PenguinWarrior1_TAIL;
 	static const std::string Entities_Environment_Snow_PenguinWarrior1_TORSO;
 	static const std::string Entities_Environment_Snow_PenguinWarrior1_WEAPON;
+	static const std::string Entities_Environment_Snow_PenguinWarrior2_Animations;
 	static const std::string Entities_Environment_Snow_PenguinWarrior2_HAT;
 	static const std::string Entities_Environment_Snow_PenguinWarrior2_HEAD;
 	static const std::string Entities_Environment_Snow_PenguinWarrior2_L_ARM_CLOTH_1;
@@ -2489,6 +2577,7 @@ public:
 	static const std::string Entities_Environment_Snow_PenguinWarrior2_TORSO_CLOTH;
 	static const std::string Entities_Environment_Snow_PenguinWarrior2_TORSO;
 	static const std::string Entities_Environment_Snow_PenguinWarrior2_WEAPON;
+	static const std::string Entities_Environment_Snow_Reindeer_Animations;
 	static const std::string Entities_Environment_Snow_Reindeer_B_ANTLER;
 	static const std::string Entities_Environment_Snow_Reindeer_B_BACK_FOOT;
 	static const std::string Entities_Environment_Snow_Reindeer_B_BACK_LEG_1;
@@ -2508,13 +2597,13 @@ public:
 	static const std::string Entities_Environment_Snow_Reindeer_HEAD;
 	static const std::string Entities_Environment_Snow_Reindeer_L_EAR;
 	static const std::string Entities_Environment_Snow_Reindeer_NECK_PART;
+	static const std::string Entities_Environment_Snow_Reindeer_NECK_PART_1;
 	static const std::string Entities_Environment_Snow_Reindeer_NECK;
+	static const std::string Entities_Environment_Snow_Reindeer_NECK_1;
 	static const std::string Entities_Environment_Snow_Reindeer_R_EAR;
 	static const std::string Entities_Environment_Snow_Reindeer_TAIL;
+	static const std::string Entities_Environment_Snow_Reindeer_TORSO_2;
 	static const std::string Entities_Environment_Snow_Reindeer_TORSO;
-	static const std::string Entities_Environment_Snow_Reindeer_+_Frames_NECK_PART_1;
-	static const std::string Entities_Environment_Snow_Reindeer_+_Frames_NECK_1;
-	static const std::string Entities_Environment_Snow_Reindeer_+_Frames_TORSO_2;
 	static const std::string Entities_Environment_Snow_TinyIceGolem_Animations;
 	static const std::string Entities_Environment_Snow_TinyIceGolem_Body;
 	static const std::string Entities_Environment_Snow_TinyIceGolem_Eyes01;
@@ -2562,6 +2651,7 @@ public:
 	static const std::string Entities_Environment_Snow_Yeti3_image_07;
 	static const std::string Entities_Environment_Snow_Yeti3_image_08;
 	static const std::string Entities_Environment_Snow_Yeti3_image_09;
+	static const std::string Entities_Environment_Snow_YetiElderly_Animations;
 	static const std::string Entities_Environment_Snow_YetiElderly_HEAD;
 	static const std::string Entities_Environment_Snow_YetiElderly_JAW;
 	static const std::string Entities_Environment_Snow_YetiElderly_L_ARM_1;
@@ -2571,6 +2661,7 @@ public:
 	static const std::string Entities_Environment_Snow_YetiElderly_R_ARM_2;
 	static const std::string Entities_Environment_Snow_YetiElderly_R_LEG_1;
 	static const std::string Entities_Environment_Snow_YetiElderly_TORSO;
+	static const std::string Entities_Environment_Snow_YetiShaved_Animations;
 	static const std::string Entities_Environment_Snow_YetiShaved_BELT;
 	static const std::string Entities_Environment_Snow_YetiShaved_HEAD;
 	static const std::string Entities_Environment_Snow_YetiShaved_JAW;
@@ -2628,6 +2719,7 @@ public:
 	static const std::string Entities_Helpers_GhostFat_tail_haunting;
 	static const std::string Entities_Helpers_GhostFat_tail_idle;
 	static const std::string Entities_Helpers_GhostFat_top_arm;
+	static const std::string Entities_Helpers_King_Animations;
 	static const std::string Entities_Helpers_King_BELT;
 	static const std::string Entities_Helpers_King_CAPE;
 	static const std::string Entities_Helpers_King_COVER_1;
@@ -2664,6 +2756,7 @@ public:
 	static const std::string Entities_Helpers_Robot_SlashFX_001;
 	static const std::string Entities_Helpers_Robot_SlashFX_002;
 	static const std::string Entities_Helpers_Robot_SlashFX_003;
+	static const std::string Entities_Player_Animations;
 	static const std::string Entities_Player_SquallyBase;
 	static const std::string Entities_Player_SquallyEyesOpen;
 	static const std::string Entities_Player_SquallyFrontArm;
