@@ -10,19 +10,13 @@ using namespace cocos2d;
 class Enemy : public Entity
 {
 protected:
-	Enemy();
+	Enemy(std::string scmlResource, std::string entityName, bool isFlying);
 	~Enemy();
 	bool contactBegin(CollisionData data) override;
 	bool contactUpdate(CollisionData data) override;
 	bool contactEnd(CollisionData data) override;
 
-	void initializeEnemy(std::string baseIdleResource, float idleFrameSpeed, std::string baseWalkResource, float walkFrameSpeed, bool isFlying);
-	void initializeEnemy2(std::string scmlResource, std::string idleAnimation, std::string walkAnimation, bool isFlying);
-
 	void update(float) override;
-	Sprite* sprite;
-	AnimationNode* animationNode;
 
-	Animation* walkAnimation;
-	Animation* idleAnimation;
+	AnimationNode* animationNode;
 };

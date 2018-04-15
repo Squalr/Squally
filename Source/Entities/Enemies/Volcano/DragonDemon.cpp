@@ -9,15 +9,11 @@ DragonDemon* DragonDemon::create()
 	return instance;
 }
 
-DragonDemon::DragonDemon() : Enemy::Enemy()
+DragonDemon::DragonDemon() : Enemy::Enemy(
+	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
+	"BossDemonKing",
+	false)
 {
-	this->initializeEnemy(
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		true
-	);
 }
 
 DragonDemon::~DragonDemon()

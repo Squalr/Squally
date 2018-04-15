@@ -9,15 +9,11 @@ Yeti3* Yeti3::create()
 	return instance;
 }
 
-Yeti3::Yeti3() : Enemy::Enemy()
+Yeti3::Yeti3() : Enemy::Enemy(
+	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
+	"BossDemonKing",
+	false)
 {
-	this->initializeEnemy(
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		true
-	);
 }
 
 Yeti3::~Yeti3()

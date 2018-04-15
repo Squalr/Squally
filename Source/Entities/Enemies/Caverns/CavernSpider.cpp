@@ -9,15 +9,11 @@ CavernSpider* CavernSpider::create()
 	return instance;
 }
 
-CavernSpider::CavernSpider() : Enemy::Enemy()
+CavernSpider::CavernSpider() : Enemy::Enemy(
+	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
+	"BossDemonKing",
+	false)
 {
-	this->initializeEnemy(
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		Resources::Entities_Environment_Castle_Harpy_Walk_0001,
-		0.1f,
-		true
-	);
 }
 
 CavernSpider::~CavernSpider()
