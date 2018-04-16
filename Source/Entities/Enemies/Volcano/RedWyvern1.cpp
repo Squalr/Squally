@@ -10,7 +10,7 @@ RedWyvern1* RedWyvern1::create()
 }
 
 RedWyvern1::RedWyvern1() : Enemy::Enemy(
-	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
+	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
 	"BossDemonKing",
 	false)
 {

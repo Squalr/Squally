@@ -10,7 +10,7 @@ LionWarrior* LionWarrior::create()
 }
 
 LionWarrior::LionWarrior() : Enemy::Enemy(
-	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
+	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
 	"BossDemonKing",
 	false)
 {

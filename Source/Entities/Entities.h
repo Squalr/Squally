@@ -85,7 +85,7 @@
 #include "Entities/Enemies/Ruins/Medusa.h"
 #include "Entities/Enemies/Ruins/MedusaWarrior.h"
 #include "Entities/Enemies/Ruins/Mermaid.h"
-#include "Entities/Enemies/Ruins/MummyPharoh.h"
+#include "Entities/Enemies/Ruins/MummyPharaoh.h"
 #include "Entities/Enemies/Ruins/TigerWarrior.h"
 #include "Entities/Enemies/Ruins/TigerWarrior2.h"
 
