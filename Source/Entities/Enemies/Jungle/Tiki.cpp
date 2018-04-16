@@ -10,7 +10,7 @@ Tiki* Tiki::create()
 }
 
 Tiki::Tiki() : Enemy::Enemy(
-	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
+	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
 	"BossDemonKing",
 	false)
 {

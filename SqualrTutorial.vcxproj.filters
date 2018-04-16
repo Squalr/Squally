@@ -666,9 +666,6 @@
     <ClCompile Include="Source\Entities\Enemies\Ruins\Mermaid.cpp">
       <Filter>Source\Entities\Enemies\Ruins</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Entities\Enemies\Ruins\MummyPharoh.cpp">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Entities\Enemies\Ruins\TigerWarrior.cpp">
       <Filter>Source\Entities\Enemies\Ruins</Filter>
     </ClCompile>
@@ -776,6 +773,9 @@
     </ClCompile>
     <ClCompile Include="Source\Entities\Enemy.cpp">
       <Filter>Source\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Entities\Enemies\Ruins\MummyPharaoh.cpp">
+      <Filter>Source\Entities\Enemies\Ruins</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1319,9 +1319,6 @@
     <ClInclude Include="Source\Entities\Enemies\Ruins\Mermaid.h">
       <Filter>Source\Entities\Enemies\Ruins</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entities\Enemies\Ruins\MummyPharoh.h">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Entities\Enemies\Ruins\TigerWarrior.h">
       <Filter>Source\Entities\Enemies\Ruins</Filter>
     </ClInclude>
@@ -1426,6 +1423,9 @@
     </ClInclude>
     <ClInclude Include="Source\Entities\Enemy.h">
       <Filter>Source\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entities\Enemies\Ruins\MummyPharaoh.h">
+      <Filter>Source\Entities\Enemies\Ruins</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

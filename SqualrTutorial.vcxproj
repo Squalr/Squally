@@ -230,7 +230,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Entities\Enemies\Ruins\Medusa.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Ruins\MedusaWarrior.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Ruins\Mermaid.cpp" />
-    <ClCompile Include="Source\Entities\Enemies\Ruins\MummyPharoh.cpp" />
+    <ClCompile Include="Source\Entities\Enemies\Ruins\MummyPharaoh.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Ruins\TigerWarrior.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Ruins\TigerWarrior2.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Snow\BossFrostGolem.cpp" />
@@ -443,7 +443,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Entities\Enemies\Ruins\Medusa.h" />
     <ClInclude Include="Source\Entities\Enemies\Ruins\MedusaWarrior.h" />
     <ClInclude Include="Source\Entities\Enemies\Ruins\Mermaid.h" />
-    <ClInclude Include="Source\Entities\Enemies\Ruins\MummyPharoh.h" />
+    <ClInclude Include="Source\Entities\Enemies\Ruins\MummyPharaoh.h" />
     <ClInclude Include="Source\Entities\Enemies\Ruins\TigerWarrior.h" />
     <ClInclude Include="Source\Entities\Enemies\Ruins\TigerWarrior2.h" />
     <ClInclude Include="Source\Entities\Enemies\Snow\BossFrostGolem.h" />

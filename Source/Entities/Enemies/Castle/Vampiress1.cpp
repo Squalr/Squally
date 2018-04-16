@@ -10,7 +10,7 @@ Vampiress1* Vampiress1::create()
 }
 
 Vampiress1::Vampiress1() : Enemy::Enemy(
-	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
+	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
 	"BossDemonKing",
 	false)
 {
