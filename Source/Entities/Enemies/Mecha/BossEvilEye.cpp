@@ -10,9 +10,12 @@ BossEvilEye* BossEvilEye::create()
 }
 
 BossEvilEye::BossEvilEye() : Enemy::Enemy(
-	Resources::Entities_Environment_Lava_BossDemonKing_Animations,
-	"BossDemonKing",
-	false)
+	Resources::Entities_Environment_Mech_BossEvilEye_Animations,
+	"BossEvilEye",
+	false,
+	Size(720.0f, 960.0f),
+	0.5f,
+	Vec2(0.0f, 0.0f))
 {
 }
 
