@@ -48,7 +48,7 @@ RadialMenu::~RadialMenu()
 
 void RadialMenu::onHackableEdit(EventCustom* eventArgs)
 {
-	HackableObject::HackableObjectEditArgs* args = (HackableObject::HackableObjectEditArgs*)(eventArgs->getUserData());
+	HackableEvents::HackableObjectEditArgs* args = (HackableEvents::HackableObjectEditArgs*)(eventArgs->getUserData());
 
 	// Remove existing preview image
 	this->hackableObjectPreviewNode->removeAllChildren();
@@ -102,7 +102,7 @@ void RadialMenu::initializeListeners()
 	this->codeButton->setClickCallback(CC_CALLBACK_1(RadialMenu::onCodeMenuOpen, this));
 	this->returnButton->setClickCallback(CC_CALLBACK_1(RadialMenu::onClose, this));
 
-	EventListenerCustom* hackableEditListener = EventListenerCustom::create(HackableObject::HackableObjectEditEvent, CC_CALLBACK_1(RadialMenu::onHackableEdit, this));
+	EventListenerCustom* hackableEditListener = EventListenerCustom::create(HackableEvents::HackableObjectEditEvent, CC_CALLBACK_1(RadialMenu::onHackableEdit, this));
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
 	listener->onKeyPressed = CC_CALLBACK_2(RadialMenu::onKeyPressed, this);
 

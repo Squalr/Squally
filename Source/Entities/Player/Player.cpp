@@ -240,12 +240,11 @@ bool Player::contactBegin(CollisionData data)
 	{
 	case CategoryGroup::G_Enemy:
 	case CategoryGroup::G_EnemyFlying:
-		Entity * enemy = dynamic_cast<Entity*>(data.other);
+		Enemy * enemy = dynamic_cast<Enemy*>(data.other);
 
 		if (enemy != nullptr)
 		{
-			std::tuple<void*, void*> args = std::tuple<void*, void*>(this, enemy);
-			NavigationEvents::loadFight(args);
+			NavigationEvents::loadFight(this, enemy);
 		}
 
 		return false;

@@ -4,23 +4,14 @@
 #include "GUI/Components/MenuSprite.h"
 #include "Objects/Hackables/HackableData.h"
 #include "Objects/Hackables/HackableCode.h"
+#include "Events/HackableEvents.h"
 
 using namespace cocos2d;
 
 class HackableObject : public Node
 {
 public:
-	struct HackableObjectEditArgs
-	{
-		HackableObject* hackableObject;
-		Sprite* previewSprite;
 
-		HackableObjectEditArgs(HackableObject* hackableObject, Sprite* previewSprite) : hackableObject(hackableObject), previewSprite(previewSprite)
-		{
-		}
-	};
-
-	static const std::string HackableObjectEditEvent;
 	void onHackableClick(MenuSprite* menuSprite);
 	void bindHackableButton(MenuSprite* hackableButton);
 
@@ -30,6 +21,8 @@ public:
 protected:
 	HackableObject();
 	~HackableObject();
+
+	void onEnterTransitionDidFinish() override;
 
 	void setPreviewImage(std::string previewResource);
 	void setButtonOffset(Vec2 offset);

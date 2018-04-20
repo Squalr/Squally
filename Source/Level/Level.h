@@ -19,12 +19,14 @@
 
 using namespace cocos2d;
 
+class LevelMap;
+
 class Level : public FadeScene
 {
 public:
 	static Level* create();
 
-	void loadLevel(void* levelMap);
+	void loadLevel(LevelMap* levelMap);
 
 protected:
 	Level();

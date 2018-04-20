@@ -26,6 +26,10 @@ Layer* ObjectParser::parse(TMXObjectGroup* objectGroup)
 		{
 			newObject = WarpGateExactScanTutorial::create();
 		}
+		else if (type == "plushie_monkey")
+		{
+			newObject = PlushieMonkey::create();
+		}
 		else if (type == "monitor")
 		{
 			string dialog = object.at("dialog").asString();

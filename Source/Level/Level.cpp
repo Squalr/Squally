@@ -50,10 +50,10 @@ void Level::initializeListeners()
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-void Level::loadLevel(void* levelMap)
+void Level::loadLevel(LevelMap* levelMap)
 {
 	// Physics / collision debugging
-	this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	// this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, 0.0f));
 
 	this->hackerModeBackground = Sprite::create(Resources::Backgrounds_MatrixRain_HackerModeBackground);
@@ -64,8 +64,7 @@ void Level::loadLevel(void* levelMap)
 	this->gamePostProcessInversion = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_Inverse);
 	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
 
-	// Unfortunate use of a void* to avoid a cyclic dependency
-	this->map = (LevelMap*)levelMap;
+	this->map = levelMap;
 
 	this->addChild(InputManager::claimInstance());
 
