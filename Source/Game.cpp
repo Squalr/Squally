@@ -185,7 +185,7 @@ void Game::onGameNavigateFight(EventCustom* eventCustom)
 	NavigationEvents::NavigateFightArgs* args = (NavigationEvents::NavigateFightArgs*)(eventCustom->getUserData());
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
-	this->fight->loadFight((Player*)std::get<0>(args->entities), (Entity*)std::get<1>(args->entities));
+	this->fight->loadFight(args->player, args->enemy);
 	this->loadScene(this->fight);
 }
 

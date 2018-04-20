@@ -4,15 +4,17 @@
 
 using namespace cocos2d;
 
-class Plushie1 : public Plushie
+class PlushieMonkey : public Plushie
 {
 public:
-	static Plushie1* create();
+	static PlushieMonkey* create();
 
 protected:
 	void update(float) override;
 
 protected:
-	Plushie1();
-	~Plushie1();
+	PlushieMonkey();
+	~PlushieMonkey();
+
+	void registerHackables() override;
 };
