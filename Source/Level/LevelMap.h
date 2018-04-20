@@ -24,6 +24,10 @@ protected:
 	~LevelMap();
 
 private:
+
+	void registerHackableObject(EventCustom* args);
+	void initializeEventListeners();
+
 	std::vector<Node*>* staticMembers;
 	std::vector<Node*>* dynamicMembers;
 	std::vector<Node*>* hackerModeHiddenMembers;

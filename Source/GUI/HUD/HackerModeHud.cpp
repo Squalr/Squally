@@ -2,11 +2,11 @@
 
 HackerModeHud* HackerModeHud::create()
 {
-	HackerModeHud* hackerModeHud = new HackerModeHud();
+	HackerModeHud* instance = new HackerModeHud();
 
-	hackerModeHud->autorelease();
+	instance->autorelease();
 
-	return hackerModeHud;
+	return instance;
 }
 
 HackerModeHud::HackerModeHud()
@@ -18,8 +18,6 @@ HackerModeHud::HackerModeHud()
 
 	this->addChild(this->hackableObjectsHud);
 	this->addChild(this->radialMenu);
-
-	this->initializeListeners();
 }
 
 HackerModeHud::~HackerModeHud()
@@ -31,6 +29,7 @@ void HackerModeHud::onEnter()
 	Node::onEnter();
 
 	this->initializePositions();
+	this->initializeListeners();
 
 	this->addChild(Mouse::claimInstance());
 }
@@ -44,10 +43,15 @@ void HackerModeHud::initializePositions()
 void HackerModeHud::initializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+	EventListenerCustom* hackableRegisterListener = EventListenerCustom::create(
+		HackableEvents::HackableObjectRegisterEvent,
+		CC_CALLBACK_1(HackerModeHud::registerHackableObject, this)
+	);
 
 	listener->onKeyPressed = CC_CALLBACK_2(HackerModeHud::onKeyPressed, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(hackableRegisterListener, this);
 }
 
 void HackerModeHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -66,8 +70,11 @@ void HackerModeHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void HackerModeHud::registerHackableObject(HackableObject* hackableObject)
+void HackerModeHud::registerHackableObject(EventCustom* args)
 {
+	HackableEvents::HackableObjectRegisterArgs* innerArgs = (HackableEvents::HackableObjectRegisterArgs*)args->getUserData();
+	HackableObject* hackableObject = innerArgs->hackableObject;
+
 	if (hackableObject == nullptr)
 	{
 		return;

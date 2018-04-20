@@ -14,8 +14,6 @@ public:
 
 	Layer * hackableObjectsHud;
 
-	void registerHackableObject(HackableObject* hackableObject);
-
 private:
 	HackerModeHud();
 	~HackerModeHud();
@@ -24,6 +22,8 @@ private:
 	void initializePositions();
 	void initializeListeners();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+
+	void registerHackableObject(EventCustom* args);
 
 	RadialMenu* radialMenu;
 };

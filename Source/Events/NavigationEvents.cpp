@@ -40,15 +40,15 @@ void NavigationEvents::loadLevel(std::string levelFile)
 	);
 }
 
-void NavigationEvents::loadFight(std::tuple<void*, void*> entities)
+void NavigationEvents::loadFight(Player* player, Enemy* enemy)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::gameNavigateFightEvent,
-		&NavigateFightArgs(entities)
+		&NavigateFightArgs(player, enemy)
 	);
 }
 
-void NavigationEvents::enterLevel(void* levelMap)
+void NavigationEvents::enterLevel(LevelMap* levelMap)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::gameNavigateEnterLevelEvent,

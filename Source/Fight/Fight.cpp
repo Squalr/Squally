@@ -37,7 +37,7 @@ void Fight::initializeListeners()
 {
 }
 
-void Fight::loadFight(Player* player, Entity* enemy)
+void Fight::loadFight(Player* player, Enemy* enemy)
 {
 	this->addChild(InputManager::claimInstance());
 

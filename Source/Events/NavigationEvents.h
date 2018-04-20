@@ -1,8 +1,16 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
+#include "Entities/Player/Player.h"
+#include "Entities/Enemy.h"
+#include "Level/LevelMap.h"
 
 using namespace cocos2d;
+
+// Forward declarations
+class Player;
+class Enemy;
+class LevelMap;
 
 class NavigationEvents
 {
@@ -50,16 +58,17 @@ public:
 
 	struct NavigateEnterLevelArgs
 	{
-		void* levelMap;
+		LevelMap* levelMap;
 
-		NavigateEnterLevelArgs(void* levelMap) : levelMap(levelMap) { }
+		NavigateEnterLevelArgs(LevelMap* levelMap) : levelMap(levelMap) { }
 	};
 
 	struct NavigateFightArgs
 	{
-		std::tuple<void*, void*> entities;
+		Player* player;
+		Enemy* enemy;
 
-		NavigateFightArgs(std::tuple<void*, void*> entities) : entities(entities) { }
+		NavigateFightArgs(Player*player, Enemy* enemy) : player(player), enemy(enemy) { }
 	};
 
 	struct NavigateConfirmArgs
@@ -76,6 +85,6 @@ public:
 	static void navigate(GameScreen gameScreen);
 	static void navigateConfirm(std::string confirmMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
 	static void loadLevel(std::string levelFile);
-	static void loadFight(std::tuple<void*, void*> entities);
-	static void enterLevel(void* levelMap);
+	static void loadFight(Player* player, Enemy* enemy);
+	static void enterLevel(LevelMap* levelMap);
 };

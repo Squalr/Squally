@@ -142,6 +142,9 @@
     <Filter Include="Source\Events">
       <UniqueIdentifier>{e9ef9eef-8a01-4d65-b231-b8b59fc9ac49}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Objects\Interactables\Plushies">
+      <UniqueIdentifier>{66257141-b1a3-4a9a-bdd3-890ecc9ac4ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Game.cpp">
@@ -776,6 +779,18 @@
     </ClCompile>
     <ClCompile Include="Source\Entities\Enemies\Ruins\MummyPharaoh.cpp">
       <Filter>Source\Entities\Enemies\Ruins</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Interactables\Plushies\Plushie.cpp">
+      <Filter>Source\Objects\Interactables\Plushies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Interactables\Plushies\PlushieMonkey.cpp">
+      <Filter>Source\Objects\Interactables\Plushies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Interactables\Chest.cpp">
+      <Filter>Source\Objects\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Events\HackableEvents.cpp">
+      <Filter>Source\Events</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1426,6 +1441,21 @@
     </ClInclude>
     <ClInclude Include="Source\Entities\Enemies\Ruins\MummyPharaoh.h">
       <Filter>Source\Entities\Enemies\Ruins</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Interactables\Plushies\Plushie.h">
+      <Filter>Source\Objects\Interactables\Plushies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Interactables\Plushies\PlushieMonkey.h">
+      <Filter>Source\Objects\Interactables\Plushies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Interactables\Plushies\Plushies.h">
+      <Filter>Source\Objects\Interactables\Plushies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Interactables\Chest.h">
+      <Filter>Source\Objects\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Events\HackableEvents.h">
+      <Filter>Source\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
