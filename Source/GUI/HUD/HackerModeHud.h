@@ -22,6 +22,7 @@ private:
 	void initializePositions();
 	void initializeListeners();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onRadialMenuClose();
 
 	void registerHackableObject(EventCustom* args);
 
