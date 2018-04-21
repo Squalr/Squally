@@ -3,18 +3,19 @@
 const int RadialMenu::radialMenuRadius = 256;
 const Size RadialMenu::maxPreviewSize = Size(340.0f, 340.0f);
 
-RadialMenu* RadialMenu::create()
+RadialMenu* RadialMenu::create(std::function<void()> onCloseCallback)
 {
-	RadialMenu* radialMenu = new RadialMenu();
+	RadialMenu* radialMenu = new RadialMenu(onCloseCallback);
 
 	radialMenu->autorelease();
 
 	return radialMenu;
 }
 
-RadialMenu::RadialMenu()
+RadialMenu::RadialMenu(std::function<void()> onCloseCallback)
 {
 	this->activeHackableObject = nullptr;
+	this->onRadialMenuCloseCallback = onCloseCallback;
 
 	this->radialNode = Node::create();
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 48));
@@ -147,8 +148,7 @@ void RadialMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		this->setVisible(false);
-		GameUtils::focus(this->getParent());
+		this->close();
 		event->stopPropagation();
 		break;
 	}
@@ -156,7 +156,17 @@ void RadialMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 void RadialMenu::onClose(MenuSprite* menuSprite)
 {
+	this->close();
+}
+
+void RadialMenu::close()
+{
 	this->setVisible(false);
 	this->radialNode->removeAllChildren();
 	GameUtils::focus(this->getParent());
+
+	if (this->onRadialMenuCloseCallback != nullptr)
+	{
+		this->onRadialMenuCloseCallback();
+	}
 }

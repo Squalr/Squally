@@ -14,10 +14,10 @@ using namespace cocos2d;
 class RadialMenu : public Node
 {
 public:
-	static RadialMenu * create();
+	static RadialMenu * create(std::function<void()> onCloseCallback);
 
 private:
-	RadialMenu();
+	RadialMenu(std::function<void()> onCloseCallback);
 	~RadialMenu();
 
 	void initializePositions();
@@ -26,6 +26,7 @@ private:
 	void onHackableEdit(EventCustom* eventArgs);
 	void onHackableAttributeClick(MenuSprite* menuSprite);
 	void onClose(MenuSprite* menuSprite);
+	void close();
 
 	CodeEditor* codeEditor;
 	DataMenu* dataMenu;
@@ -35,6 +36,8 @@ private:
 	LayerColor* layerColor;
 	Node* radialNode;
 	MenuSprite* returnButton;
+
+	std::function<void()> onRadialMenuCloseCallback;
 
 	static const int radialMenuRadius;
 	static const Size maxPreviewSize;

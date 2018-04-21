@@ -12,7 +12,7 @@ HackerModeHud* HackerModeHud::create()
 HackerModeHud::HackerModeHud()
 {
 	this->hackableObjectsHud = Layer::create();
-	this->radialMenu = RadialMenu::create();
+	this->radialMenu = RadialMenu::create(CC_CALLBACK_0(HackerModeHud::onRadialMenuClose, this));
 
 	this->radialMenu->setVisible(false);
 
@@ -68,6 +68,11 @@ void HackerModeHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 			break;
 		}
 	}
+}
+
+void HackerModeHud::onRadialMenuClose()
+{
+	GameUtils::focus(this->getParent());
 }
 
 void HackerModeHud::registerHackableObject(EventCustom* args)
