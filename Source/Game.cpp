@@ -80,7 +80,7 @@ void Game::initializeEventListeners()
 	);
 
 	EventListenerCustom* hexiumGameStartListener = EventListenerCustom::create(
-		Hexium::HexiumGameStartEvent,
+		HexusEvents::HexusGameStartEvent,
 		CC_CALLBACK_1(Hexium::onGameStart, this->hexium)
 	);
 

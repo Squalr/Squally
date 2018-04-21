@@ -1,8 +1,5 @@
 #include "Hexium.h"
 
-const std::string Hexium::HexiumGameStartEvent = "hexium_game_start_event";
-const std::string Hexium::HexiumGameEndEvent = "hexium_game_end_event";
-
 Hexium* Hexium::create()
 {
 	Hexium* hexium = new Hexium();
@@ -84,7 +81,7 @@ void Hexium::initializeListeners()
 
 void Hexium::onGameStart(EventCustom* eventCustom)
 {
-	Hexium::HexiumGameEventArgs* args = (Hexium::HexiumGameEventArgs*)(eventCustom->getUserData());
+	HexusEvents::HexusGameEventArgs* args = (HexusEvents::HexusGameEventArgs*)(eventCustom->getUserData());
 
 	this->gameState->playerLosses = 0;
 	this->gameState->enemyLosses = 0;

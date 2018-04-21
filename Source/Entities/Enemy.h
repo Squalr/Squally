@@ -19,12 +19,4 @@ protected:
 		Vec2 collisionOffset = Vec2(0.0f, 0.0f));
 
 	~Enemy();
-
-	bool contactBegin(CollisionData data) override;
-	bool contactUpdate(CollisionData data) override;
-	bool contactEnd(CollisionData data) override;
-
-	void update(float) override;
-
-	AnimationNode* animationNode;
 };
