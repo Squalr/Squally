@@ -14,24 +14,23 @@ RadialMenu* RadialMenu::create()
 
 RadialMenu::RadialMenu()
 {
-	this->line = nullptr;
 	this->activeHackableObject = nullptr;
 
 	this->radialNode = Node::create();
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 48));
 	this->returnButton = MenuSprite::create(Resources::Menus_HackerModeMenu_Return, Resources::Menus_HackerModeMenu_ReturnHover, Resources::Menus_HackerModeMenu_ReturnClick);
 
-	this->codeMenu = CodeMenu::create();
+	this->codeEditor = CodeEditor::create();
 	this->dataMenu = DataMenu::create();
 
 	this->returnButton->setScale(0.5f);
-	this->codeMenu->setVisible(false);
+	this->codeEditor->setVisible(false);
 	this->dataMenu->setVisible(false);
 
 	this->addChild(this->layerColor);
 	this->addChild(this->returnButton);
 	this->addChild(this->radialNode);
-	this->addChild(this->codeMenu);
+	this->addChild(this->codeEditor);
 	this->addChild(this->dataMenu);
 
 	this->initializePositions();
@@ -44,45 +43,79 @@ RadialMenu::~RadialMenu()
 
 void RadialMenu::onHackableEdit(EventCustom* eventArgs)
 {
+	this->setVisible(true);
+
 	HackableEvents::HackableObjectEditArgs* args = (HackableEvents::HackableObjectEditArgs*)(eventArgs->getUserData());
 
 	// Set target hackable object
 	this->activeHackableObject = args->hackableObject;
 
-	if (this->line != nullptr)
+	DrawNode* line = DrawNode::create(2.0f);
+
+	line->drawLine(args->sourceLocation - Director::getInstance()->getVisibleSize() / 2.0f, Vec2::ZERO, Color4F(Color4B(86, 214, 156, 96)));
+	
+	this->radialNode->addChild(line);
+
+	std::vector<HackableAttribute*> hackables = std::vector<HackableAttribute*>();
+
+	for (auto it = this->activeHackableObject->dataList->begin(); it != this->activeHackableObject->dataList->end(); it++)
 	{
-		this->removeChild(this->line);
+		hackables.push_back(*it);
 	}
 
-	this->line = DrawNode::create(2.0f);
-
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	this->line->removeAllChildren();
-	this->line->drawLine(args->sourceLocation, visibleSize / 2.0f, Color4F(Color4B(86, 214, 156, 96)));
-	this->setVisible(true);
+	for (auto it = this->activeHackableObject->codeList->begin(); it != this->activeHackableObject->codeList->end(); it++)
+	{
+		hackables.push_back(*it);
+	}
 
 	int hackableCount = this->activeHackableObject->dataList->size() + this->activeHackableObject->codeList->size();
 	float step = (3.14159f * 2.0f) / (float)hackableCount;
 	float current = 0.0f;
 
-	for (auto it = this->activeHackableObject->dataList->begin(); it != this->activeHackableObject->dataList->end(); it++)
+	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{
 		HackableAttribute* hackableAttribute = *it;
 
-		float x = sin(current) * (float)RadialMenu::radialMenuRadius;
-		float y = cos(current) * (float)RadialMenu::radialMenuRadius;
-
+		Vec2 position = Vec2(sin(current) * (float)RadialMenu::radialMenuRadius, cos(current) * (float)RadialMenu::radialMenuRadius);
+		DrawNode* nextLine = DrawNode::create(2.0f);
+		Sprite* nextBack = Sprite::create(hackableAttribute->iconBackResource);
 		Sprite* next = Sprite::create(hackableAttribute->iconResource);
-		next->setPosition(Vec2(x, y));
+		MenuSprite* nextMenuSprite = MenuSprite::create(hackableAttribute->iconResource, hackableAttribute->iconResource, hackableAttribute->iconResource);
+
+		nextLine->drawLine(Vec2::ZERO, position, Color4F(Color4B(86, 214, 156, 96)));
+		nextBack->setPosition(position);
+		next->setPosition(position);
+		nextMenuSprite->setPosition(position);
+
+		nextMenuSprite->setTag((int)hackableAttribute);
+		nextMenuSprite->setClickCallback(CC_CALLBACK_1(RadialMenu::onHackableAttributeClick, this));
+
+		this->radialNode->addChild(nextLine);
+		this->radialNode->addChild(nextBack);
 		this->radialNode->addChild(next);
+		this->radialNode->addChild(nextMenuSprite);
 
 		current += step;
 	}
 
-	this->addChild(this->line);
-
 	GameUtils::focus(this);
 }
+
+void RadialMenu::onHackableAttributeClick(MenuSprite* menuSprite)
+{
+	HackableAttribute* hackableAttribute = (HackableAttribute*)menuSprite->getTag();
+
+	if (dynamic_cast<HackableCode*>(hackableAttribute) != nullptr)
+	{
+		this->codeEditor->open((HackableCode*)hackableAttribute);
+	}
+
+	if (dynamic_cast<HackableData*>(hackableAttribute) != nullptr)
+	{
+		// this->dataEditor->open((HackableData*)hackableAttribute);
+	}
+}
+
 
 void RadialMenu::initializePositions()
 {
@@ -124,5 +157,6 @@ void RadialMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 void RadialMenu::onClose(MenuSprite* menuSprite)
 {
 	this->setVisible(false);
+	this->radialNode->removeAllChildren();
 	GameUtils::focus(this->getParent());
 }
