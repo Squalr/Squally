@@ -24,7 +24,6 @@ protected:
 
 	void onEnterTransitionDidFinish() override;
 
-	void setPreviewImage(std::string previewResource);
 	void setButtonOffset(Vec2 offset);
 	void registerData(HackableData* hackableData);
 	void registerCode(HackableCode* hackableCode);
@@ -32,7 +31,6 @@ protected:
 
 private:
 	MenuSprite * boundHackableButton;
-	Sprite * previewSprite;
 	Vec2 buttonOffset;
 };
 

@@ -86,7 +86,10 @@ void HackerModeHud::registerHackableObject(EventCustom* args)
 	}
 
 	// Create the hackable button for this hackable object
-	MenuSprite* hackableMenuButton = MenuSprite::create(Resources::Menus_HackerModeMenu_HackButton, Resources::Menus_HackerModeMenu_HackButtonHover, Resources::Menus_HackerModeMenu_HackButtonClick);
+	Node* clickableNode = Node::create();
+	clickableNode->setContentSize(Size(256.0f, 256.0f));
+
+	MenuSprite* hackableMenuButton = MenuSprite::create(clickableNode, Node::create(), Node::create());
 	hackableMenuButton->setClickCallback(CC_CALLBACK_1(HackableObject::onHackableClick, hackableObject));
 	hackableObject->bindHackableButton(hackableMenuButton);
 
