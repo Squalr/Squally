@@ -31,6 +31,7 @@ void PlushieMonkey::registerHackables()
 {
 	Plushie::registerHackables();
 
-	this->registerData(HackableData::create("Key", this->chest, &typeid((int)this->chest), Resources::Menus_HackerModeMenu_Icons_Heart, Resources::Menus_HackerModeMenu_Icons_Heart));
-	this->registerCode(HackableCode::create("Test", this->chest, 10, Resources::Menus_HackerModeMenu_Icons_Heart, Resources::Menus_HackerModeMenu_Icons_Heart));
+	this->registerData(HackableData::create("Key", this->chest, &typeid((int)this->chest), Resources::Minigames_Hexium_Socket, Resources::Menus_HackerModeMenu_Icons_Lock));
+	this->registerData(HackableData::create("Key", this->chest, &typeid((int)this->chest), Resources::Minigames_Hexium_Socket, Resources::Menus_HackerModeMenu_Icons_Heart));
+	this->registerCode(HackableCode::create("Test", this->chest, 10, Resources::Minigames_Hexium_Socket, Resources::Menus_HackerModeMenu_Icons_AlchemyPot));
 }
