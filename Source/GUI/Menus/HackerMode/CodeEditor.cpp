@@ -6,7 +6,7 @@ const Size CodeEditor::textSize = Size(512.0f, 640.0f);
 const Size CodeEditor::statusSize = Size(512.0f, 640.0f);
 const Size CodeEditor::functionSize = Size(512.0f, 640.0f);
 const Size CodeEditor::secondarySize = Size(512.0f, 640.0f);
-const std::string CodeEditor::delimiters = "[],:; \n\t";
+const std::string CodeEditor::delimiters = "[],:; +-*\n\t";
 const Color3B CodeEditor::defaultColor = Color3B::WHITE;
 const Color3B CodeEditor::subtextColor = Color3B::GRAY;
 const Color3B CodeEditor::headerColor = Color3B(188, 188, 64);
@@ -18,11 +18,12 @@ const Color3B CodeEditor::commentColor = Color3B(87, 166, 74);
 const std::set<std::string> CodeEditor::registers =
 {
 	// General registers
-	"ax", "bx", "cx", "dx", "si", "di", "bp", "sp",
-	"r8w", "r9w", "r10w", "r11w", "r12w", "r13w", "r14w", "r15w",
+	"ax", "bx", "cx", "dx", "si", "di", "bp", "sp", "ip",
 	"al", "bl", "cl", "dl", "sil", "dil", "bpl", "spl",
-	"r8b", "r9b", "r10b", "r11b", "r12b", "r13b", "r14b", "r15b",
+	"ah", "bh", "ch", "dh", 
 	"eax", "ebx", "ecx" ,"edx" ,"esi", "edi", "ebp", "esp",
+	"r8w", "r9w", "r10w", "r11w", "r12w", "r13w", "r14w", "r15w",
+	"r8b", "r9b", "r10b", "r11b", "r12b", "r13b", "r14b", "r15b",
 	"r8d", "r9d", "r10d", "r11d", "r12d", "r13d", "r14d", "r15d",
 	"rax", "rbx", "rcx" ,"rdx" ,"rdi", "rsi", "rbp", "rsp",
 	"r8", "r9", "r10", "r11", "r12", "r13", "r14", "r15",
