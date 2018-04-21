@@ -17,9 +17,9 @@ public:
 	struct HackableObjectEditArgs
 	{
 		HackableObject* hackableObject;
-		Sprite* previewSprite;
-
-		HackableObjectEditArgs(HackableObject* hackableObject, Sprite* previewSprite) : hackableObject(hackableObject), previewSprite(previewSprite)
+		Vec2 sourceLocation;
+		 
+		HackableObjectEditArgs(HackableObject* hackableObject, Vec2 sourceLocation) : hackableObject(hackableObject), sourceLocation(sourceLocation)
 		{
 		}
 	};
