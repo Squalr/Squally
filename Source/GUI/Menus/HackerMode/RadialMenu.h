@@ -24,18 +24,19 @@ private:
 	void initializeListeners();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onHackableEdit(EventCustom* eventArgs);
+	void onHackableAttributeClick(MenuSprite* menuSprite);
 	void onClose(MenuSprite* menuSprite);
 
-	CodeMenu* codeMenu;
+	CodeEditor* codeEditor;
 	DataMenu* dataMenu;
 
 	HackableObject* activeHackableObject;
 
 	LayerColor* layerColor;
-	DrawNode* line;
 	Node* radialNode;
 	MenuSprite* returnButton;
 
+	static const int radialMenuRadius;
 	static const Size maxPreviewSize;
 };
 
