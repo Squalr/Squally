@@ -9,6 +9,7 @@
 #include "GUI/Menus/Pause/PauseMenu.h"
 #include "GUI/Menus/Confirmation/ConfirmationMenu.h"
 #include "Events/NavigationEvents.h"
+#include "Events/HexusEvents.h"
 #include "Level/Level.h"
 #include "Fight/Fight.h"
 #include "Minigames/Minigames.h"

@@ -1,13 +1,30 @@
 #include "Entity.h"
 
-Entity::Entity() : CollisionObject::CollisionObject()
+Entity::Entity(std::string scmlResource, std::string entityName, bool isFlying, Size size, float scale, Vec2 collisionOffset) : CollisionObject::CollisionObject()
 {
+	this->animationNode = AnimationNode::create(scmlResource);
+	this->animationNode->setScale(scale);
+
+	SpriterEngine::EntityInstance* entity = this->animationNode->play(entityName);
+	entity->setCurrentAnimation("Idle");
+
+	// TODO: Configurable/randomizable start direction (if any)
+	this->movement.x = 0.0f;
+	this->movement.y = 0.0f;
+
 	this->actualGravityAcceleration = Entity::gravityAcceleration;
 	this->actualJumpLaunchVelocity = Entity::jumpLaunchVelocity;
 	this->actualMaxFallSpeed = Entity::maxFallSpeed;
+	this->moveAcceleration = Entity::moveAcceleration;
 
 	this->isOnGround = false;
 	this->movement = Vec2(0, 0);
+
+	this->size = size;
+
+	animationNode->setPosition(collisionOffset * scale);
+
+	this->addChild(this->animationNode);
 }
 
 Entity::~Entity()
@@ -58,9 +75,70 @@ void Entity::update(float dt)
 
 	// Apply velocity
 	this->setVelocity(velocity);
+
+	// Update flip
+	if (this->animationNode != nullptr)
+	{
+		if (this->movement.x < 0.0f)
+		{
+			this->animationNode->setFlippedX(true);
+		}
+		else
+		{
+			this->animationNode->setFlippedX(false);
+		}
+	}
 }
 
 Size Entity::getSize()
 {
-	return Size(this->spriteNode->getContentSize().width * this->spriteNode->getScaleX(), this->spriteNode->getContentSize().height* this->spriteNode->getScaleY());
+	return this->size;
+}
+
+bool Entity::contactBegin(CollisionData data)
+{
+	return false;
+}
+
+bool Entity::contactUpdate(CollisionData data)
+{
+	switch (data.other->getCategoryGroup())
+	{
+	case CategoryGroup::G_SolidNpc:
+	case CategoryGroup::G_SolidFlyingNpc:
+	case CategoryGroup::G_Solid:
+		switch (data.direction)
+		{
+		case CollisionDirection::Down:
+			this->isOnGround = true;
+			break;
+		case CollisionDirection::Left:
+			this->movement.x = 1.0f;
+			break;
+		case CollisionDirection::Right:
+			this->movement.x = -1.0f;
+			break;
+		case CollisionDirection::StepLeft:
+		case CollisionDirection::StepRight:
+			this->movement.y = 0.5f;
+			break;
+		}
+		return true;
+	}
+
+	return false;
+}
+
+bool Entity::contactEnd(CollisionData data)
+{
+	switch (data.other->getCategoryGroup())
+	{
+	case CategoryGroup::G_Solid:
+	case CategoryGroup::G_SolidNpc:
+	case CategoryGroup::G_SolidFlyingNpc:
+		this->isOnGround = false;
+		return true;
+	}
+
+	return false;
 }

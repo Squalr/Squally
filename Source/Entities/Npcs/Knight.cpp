@@ -9,7 +9,7 @@ Knight* Knight::create()
 	return knight;
 }
 
-Knight::Knight() : NpcBase::NpcBase()
+Knight::Knight() : NpcBase::NpcBase(Resources::Entities_Npcs_EgyptianMummy_Animations, "EgyptianMummy", false, Size(256.0f, 256.0f), 0.5f, Vec2::ZERO)
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
@@ -19,13 +19,7 @@ Knight::Knight() : NpcBase::NpcBase()
 	this->movement.x = 0.0f;
 	this->movement.y = 0.0f;
 
-	this->spriteNode = Node::create();
-	this->knightSprite = Sprite::create(Resources::Entities_Player_SquallyBase);
-
-	this->init(PhysicsBody::createBox(this->knightSprite->getContentSize()), CategoryGroup::G_Npc, true, false);
-
-	this->spriteNode->addChild(this->knightSprite);
-	this->addChild(this->spriteNode);
+	this->init(PhysicsBody::createBox(this->size), CategoryGroup::G_Npc, true, false);
 
 	this->initializeCardData();
 }

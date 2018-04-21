@@ -15,7 +15,7 @@
         <file id="11" name="Face 02.png" width="320" height="240" pivot_x="0" pivot_y="1"/>
         <file id="12" name="Weapon.png" width="400" height="128" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Egyptian Mummy">
+    <entity id="0" name="EgyptianMummy">
         <obj_info name="bone_000" type="bone" w="51.9178" h="10"/>
         <obj_info name="bone_001" type="bone" w="51.0504" h="10"/>
         <obj_info name="bone_002" type="bone" w="57.4062" h="10"/>

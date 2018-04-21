@@ -54,12 +54,5 @@ private:
 	InputManager* inputManager;
 	Hover* hover;
 
-	Sprite* baseSprite;
-	Sprite* mouthSprite;
-	Sprite* eyesSprite;
-	Sprite* armSprite;
-	Node* wandNode;
-	Sprite* wandSprite;
-
 	static const float playerScale;
 };

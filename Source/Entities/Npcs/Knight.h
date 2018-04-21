@@ -20,7 +20,4 @@ private:
 	~Knight();
 
 	void update(float) override;
-
-	Animation* idleAnimation;
-	Sprite* knightSprite;
 };

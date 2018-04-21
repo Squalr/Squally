@@ -792,6 +792,9 @@
     <ClCompile Include="Source\Events\HackableEvents.cpp">
       <Filter>Source\Events</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Events\HexusEvents.cpp">
+      <Filter>Source\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -1455,6 +1458,9 @@
       <Filter>Source\Objects\Interactables</Filter>
     </ClInclude>
     <ClInclude Include="Source\Events\HackableEvents.h">
+      <Filter>Source\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Events\HexusEvents.h">
       <Filter>Source\Events</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,15 +1,8 @@
 #include "NpcBase.h"
 
-NpcBase::NpcBase() : Entity::Entity()
+NpcBase::NpcBase(std::string scmlResource, std::string entityName, bool isFlying, Size size, float scale, Vec2 collisionOffset)
+	: Entity::Entity(scmlResource, entityName, isFlying, size, scale, collisionOffset)
 {
-	this->actualJumpLaunchVelocity = 640.0f;
-	this->actualGravityAcceleration = 1000.0f;
-	this->actualMaxFallSpeed = 600.0f;
-	this->moveAcceleration = 3000.0f;
-
-	this->movement.x = 0.0f;
-	this->movement.y = 0.0f;
-
 	this->interactButton = MenuSprite::create(Resources::Menus_Buttons_ChatButton, Resources::Menus_Buttons_ChatButtonHover, Resources::Menus_Buttons_ChatButtonClick);
 	this->interactButton->setClickCallback(CC_CALLBACK_1(NpcBase::onInteractButtonClick, this));
 
@@ -31,10 +24,7 @@ void NpcBase::update(float dt)
 
 void NpcBase::onInteractButtonClick(MenuSprite* menuSprite)
 {
-	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		Hexium::HexiumGameStartEvent,
-		&Hexium::HexiumGameEventArgs(this->deck, this->deck)
-	);
+	HexusEvents::startGame(HexusEvents::HexusGameEventArgs(this->deck, this->deck));
 }
 
 void NpcBase::initializeCardData()
