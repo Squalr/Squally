@@ -6,14 +6,14 @@ const float Player::playerScale = 0.22f;
 
 Player* Player::create()
 {
-	Player* player = new Player();
+	Player* instance = new Player();
 
-	player->autorelease();
+	instance->autorelease();
 
-	return player;
+	return instance;
 }
 
-Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, "Squally", false, Size(256.0f, 256.0f), Player::playerScale, Vec2::ZERO)
+Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, "Squally", false, Size(372.0f, 372.0f), Player::playerScale, Vec2::ZERO)
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
@@ -25,18 +25,9 @@ Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, "Squall
 	this->init(PhysicsBody::createBox(size * Player::playerScale), CategoryGroup::G_Player, true, false);
 	this->hover = Hover::create(this);
 
-	//this->spriteNode->setScale(Player::playerScale);
-
 	this->hover->setContactBeginCallback(CC_CALLBACK_1(Player::hoverContactBegin, this));
 	this->hover->setContactUpdateCallback(CC_CALLBACK_1(Player::hoverContactUpdate, this));
 	this->hover->setContactEndCallback(CC_CALLBACK_1(Player::hoverContactEnd, this));
-
-	//this->spriteNode->addChild(this->baseSprite);
-	//this->spriteNode->addChild(this->mouthSprite);
-	//this->spriteNode->addChild(this->eyesSprite);
-	//this->spriteNode->addChild(this->wandNode);
-	//this->spriteNode->addChild(this->armSprite);
-	//this->addChild(this->spriteNode);
 	this->addChild(this->hover);
 
 	// TODO: Load from save
@@ -51,7 +42,6 @@ Player::~Player()
 
 void Player::registerHackables()
 {
-	this->setPreviewImage(Resources::Menus_HackerModeMenu_WireFrames_SquallyWireFrame);
 	this->setButtonOffset(Vec2(0, 72.0f));
 
 	//HackableData* hackableDataHealth = HackableData::create("Health", &this->health, &typeid(this->health));

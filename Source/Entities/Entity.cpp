@@ -2,23 +2,21 @@
 
 Entity::Entity(std::string scmlResource, std::string entityName, bool isFlying, Size size, float scale, Vec2 collisionOffset) : CollisionObject::CollisionObject()
 {
+	this->actualJumpLaunchVelocity = 640.0f;
+	this->actualGravityAcceleration = 1000.0f;
+	this->actualMaxFallSpeed = 600.0f;
+	this->moveAcceleration = 14000.0f;
+
 	this->animationNode = AnimationNode::create(scmlResource);
 	this->animationNode->setScale(scale);
 
 	SpriterEngine::EntityInstance* entity = this->animationNode->play(entityName);
 	entity->setCurrentAnimation("Idle");
 
-	// TODO: Configurable/randomizable start direction (if any)
-	this->movement.x = 0.0f;
-	this->movement.y = 0.0f;
-
-	this->actualGravityAcceleration = Entity::gravityAcceleration;
-	this->actualJumpLaunchVelocity = Entity::jumpLaunchVelocity;
-	this->actualMaxFallSpeed = Entity::maxFallSpeed;
-	this->moveAcceleration = Entity::moveAcceleration;
-
 	this->isOnGround = false;
-	this->movement = Vec2(0, 0);
+
+	// TODO: Configurable/randomizable start direction (if any)
+	this->movement = Vec2(0.0f, 0.0f);
 
 	this->size = size;
 
@@ -83,7 +81,7 @@ void Entity::update(float dt)
 		{
 			this->animationNode->setFlippedX(true);
 		}
-		else
+		else if (this->movement.x > 0.0f)
 		{
 			this->animationNode->setFlippedX(false);
 		}

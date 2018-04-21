@@ -2,14 +2,14 @@
 
 Knight* Knight::create()
 {
-	Knight* knight = new Knight();
+	Knight* instance = new Knight();
 
-	knight->autorelease();
+	instance->autorelease();
 
-	return knight;
+	return instance;
 }
 
-Knight::Knight() : NpcBase::NpcBase(Resources::Entities_Npcs_EgyptianMummy_Animations, "EgyptianMummy", false, Size(256.0f, 256.0f), 0.5f, Vec2::ZERO)
+Knight::Knight() : NpcBase::NpcBase(Resources::Entities_Npcs_EgyptianMummy_Animations, "EgyptianMummy", false, Size(96.0f, 128.0f), 0.25f, Vec2(0.0f, -224.0f))
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;

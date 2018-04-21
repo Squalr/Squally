@@ -2,7 +2,6 @@
 
 HackableObject::HackableObject()
 {
-	this->previewSprite = nullptr;
 	this->boundHackableButton = nullptr;
 
 	this->dataList = new std::vector<HackableData*>();
@@ -14,11 +13,6 @@ HackableObject::~HackableObject()
 {
 	delete(this->dataList);
 	delete(this->codeList);
-
-	if (this->previewSprite != nullptr)
-	{
-		this->previewSprite->release();
-	}
 }
 
 void HackableObject::onEnterTransitionDidFinish()
@@ -36,13 +30,6 @@ void HackableObject::bindHackableButton(MenuSprite* hackableButton)
 	{
 		this->boundHackableButton->setVisible(false);
 	}
-}
-
-void HackableObject::setPreviewImage(std::string previewResource)
-{
-	this->previewSprite = Sprite::create(previewResource);
-
-	this->previewSprite->retain();
 }
 
 void HackableObject::setButtonOffset(Vec2 offset)
