@@ -1,15 +1,15 @@
 #include "HackableCode.h"
 
-HackableCode * HackableCode::create(std::string name, void* codeStart, int codeLength)
+HackableCode * HackableCode::create(std::string name, void* codeStart, int codeLength, std::string iconBackResource, std::string iconResource)
 {
-	HackableCode* hackableCode = new HackableCode(name, codeStart, codeLength);
+	HackableCode* hackableCode = new HackableCode(name, codeStart, codeLength, iconBackResource, iconResource);
 
 	hackableCode->autorelease();
 
 	return hackableCode;
 }
 
-HackableCode::HackableCode(std::string name, void* codeStart, int codeLength)
+HackableCode::HackableCode(std::string name, void* codeStart, int codeLength, std::string iconBackResource, std::string iconResource) : HackableAttribute(iconBackResource, iconResource)
 {
 	this->functionName = name;
 	this->codePointer = (byte*)codeStart;
