@@ -65,6 +65,8 @@ void LoadingScreen::onFileEnumerationComplete(std::vector<std::string> files)
 			LoadingScreen::isPreloadableSound(file))
 		{
 			this->totalFileCount++;
+
+			// TEMP: Remove me to bring back loading screen
 			break;
 		}
 	}

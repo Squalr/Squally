@@ -52,7 +52,7 @@ void HackableObject::setButtonOffset(Vec2 offset)
 
 void HackableObject::onHackableClick(MenuSprite* menuSprite)
 {
-	HackableEvents::editHackable(HackableEvents::HackableObjectEditArgs(this, this->previewSprite));
+	HackableEvents::editHackable(HackableEvents::HackableObjectEditArgs(this, this->getParent()->convertToWorldSpace(this->getPosition())));
 }
 
 void HackableObject::registerData(HackableData* hackableData)

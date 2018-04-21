@@ -87,7 +87,7 @@ endIncrementPower:
 		}
 
 		int byteCount = (unsigned int)assemblyAddressEnd - (unsigned int)assemblyAddressStart;
-		HackableCode* hackablePower = HackableCode::create("Recharge Power", assemblyAddressStart, byteCount);
+		HackableCode* hackablePower = HackableCode::create("Recharge Power", assemblyAddressStart, byteCount, Resources::Menus_HackerModeMenu_Icons_Heart, Resources::Menus_HackerModeMenu_Icons_Heart);
 		this->registerCode(hackablePower);
 	}
 }

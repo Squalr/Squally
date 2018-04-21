@@ -24,8 +24,6 @@ private:
 	void initializeListeners();
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onHackableEdit(EventCustom* eventArgs);
-	void onCodeMenuOpen(MenuSprite* menuSprite);
-	void onDataMenuOpen(MenuSprite* menuSprite);
 	void onClose(MenuSprite* menuSprite);
 
 	CodeMenu* codeMenu;
@@ -34,11 +32,8 @@ private:
 	HackableObject* activeHackableObject;
 
 	LayerColor* layerColor;
-	Sprite* menuBackground;
-	Node* hackableObjectPreviewNode;
-	Sprite* hackableObjectPreview;
-	MenuSprite* dataButton;
-	MenuSprite* codeButton;
+	DrawNode* line;
+	Node* radialNode;
 	MenuSprite* returnButton;
 
 	static const Size maxPreviewSize;
