@@ -6,6 +6,7 @@
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/MenuSprite.h"
 #include "Events/NavigationEvents.h"
+#include "Events/HexusEvents.h"
 #include "Utils/StrUtils.h"
 
 using namespace cocos2d;
@@ -14,19 +15,6 @@ class Hexium : public FadeScene
 {
 public:
 	static Hexium * create();
-
-	static const std::string HexiumGameStartEvent;
-	static const std::string HexiumGameEndEvent;
-
-	struct HexiumGameEventArgs
-	{
-		Deck* playerDeck;
-		Deck* enemyDeck;
-
-		HexiumGameEventArgs(Deck* playerDeck, Deck* enemyDeck) : playerDeck(playerDeck), enemyDeck(enemyDeck)
-		{
-		}
-	};
 
 	// Make this event public. Note that Game.h fires this event because this scene can't listen for events until it is created.
 	void onGameStart(EventCustom* eventCustom);

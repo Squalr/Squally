@@ -13,7 +13,7 @@ Player* Player::create()
 	return player;
 }
 
-Player::Player() : Entity::Entity()
+Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, "Squally", false, Size(256.0f, 256.0f), Player::playerScale, Vec2::ZERO)
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
@@ -22,27 +22,21 @@ Player::Player() : Entity::Entity()
 
 	this->inputManager = InputManager::getInstance();
 
-	this->spriteNode = Node::create();
-	this->baseSprite = Sprite::create(Resources::Entities_Player_SquallyBase);
-	this->mouthSprite = Sprite::create(Resources::Entities_Player_SquallyMouthOpen);
-	this->eyesSprite = Sprite::create(Resources::Entities_Player_SquallyEyesOpen);
-	this->wandNode = Node::create();
-	this->armSprite = Sprite::create(Resources::Entities_Player_SquallyFrontArm);
-	this->init(PhysicsBody::createBox(this->baseSprite->getContentSize() * Player::playerScale), CategoryGroup::G_Player, true, false);
+	this->init(PhysicsBody::createBox(size * Player::playerScale), CategoryGroup::G_Player, true, false);
 	this->hover = Hover::create(this);
 
-	this->spriteNode->setScale(Player::playerScale);
+	//this->spriteNode->setScale(Player::playerScale);
 
 	this->hover->setContactBeginCallback(CC_CALLBACK_1(Player::hoverContactBegin, this));
 	this->hover->setContactUpdateCallback(CC_CALLBACK_1(Player::hoverContactUpdate, this));
 	this->hover->setContactEndCallback(CC_CALLBACK_1(Player::hoverContactEnd, this));
 
-	this->spriteNode->addChild(this->baseSprite);
-	this->spriteNode->addChild(this->mouthSprite);
-	this->spriteNode->addChild(this->eyesSprite);
-	this->spriteNode->addChild(this->wandNode);
-	this->spriteNode->addChild(this->armSprite);
-	this->addChild(this->spriteNode);
+	//this->spriteNode->addChild(this->baseSprite);
+	//this->spriteNode->addChild(this->mouthSprite);
+	//this->spriteNode->addChild(this->eyesSprite);
+	//this->spriteNode->addChild(this->wandNode);
+	//this->spriteNode->addChild(this->armSprite);
+	//this->addChild(this->spriteNode);
 	this->addChild(this->hover);
 
 	// TODO: Load from save
@@ -141,61 +135,12 @@ void Player::update(float dt)
 
 void Player::equipWand(Wand wand)
 {
-	this->wandNode->removeAllChildren();
-
-	switch (wand)
-	{/*
-	case Stick:
-		this->wandSprite = Sprite::create(Resources::Sprites_Player_WandStick);
-		break;
-	case Snake:
-		this->wandSprite = Sprite::create(Resources::Sprites_Player_WandSnake);
-		break;
-	case Ancient:
-		this->wandSprite = Sprite::create(Resources::Sprites_Player_WandAncient);
-		break;
-	case Spider:
-		this->wandSprite = Sprite::create(Resources::Sprites_Player_WandSpider);
-		break;
-	case Crystal:
-		this->wandSprite = Sprite::create(Resources::Sprites_Player_WandCrystal);
-		break;
-	case Dragon:
-		this->wandSprite = Sprite::create(Resources::Sprites_Player_WandDragon);
-		break;
-	case Skeleton:
-		this->wandSprite = Sprite::create(Resources::Sprites_Player_WandSkeleton);
-		break;*/
-	case None:
-	default:
-		this->wandSprite = Sprite::create();
-		break;
-	}
-
-	this->wandSprite->setScale(0.8f);
-	this->wandSprite->setPosition(Vec2(72.0f, -174.0f));
 	this->setFlippedX(this->isFlipped);
-
-	this->wandNode->addChild(this->wandSprite);
 }
 
 void Player::setFlippedX(bool newIsFlipped)
 {
 	this->isFlipped = newIsFlipped;
-
-	this->baseSprite->setFlippedX(newIsFlipped);
-	this->mouthSprite->setFlippedX(newIsFlipped);
-	this->eyesSprite->setFlippedX(newIsFlipped);
-	this->armSprite->setFlippedX(newIsFlipped);
-
-	if (this->isFlipped)
-	{
-		this->wandSprite->setRotation(-75.0f);
-	}
-	else
-	{
-		this->wandSprite->setRotation(75.0f);
-	}
 }
 
 bool Player::hoverContactBegin(CollisionData data)
@@ -301,5 +246,5 @@ bool Player::contactEnd(CollisionData data)
 
 Size Player::getSize()
 {
-	return this->baseSprite->getContentSize() * Player::playerScale;
+	return this->size * Player::playerScale;
 }

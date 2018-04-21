@@ -13,15 +13,26 @@ public:
 	virtual Size getSize();
 
 protected:
-	Entity();
+	Entity(
+		std::string scmlResource,
+		std::string entityName,
+		bool isFlying,
+		Size size = Size(256.0f, 256.0f),
+		float scale = 1.0f,
+		Vec2 collisionOffset = Vec2(0.0f, 0.0f));
 	~Entity();
 
 	void onEnter() override;
 	void update(float) override;
 
-	Node * spriteNode;
+	bool contactBegin(CollisionData data) override;
+	bool contactUpdate(CollisionData data) override;
+	bool contactEnd(CollisionData data) override;
+
+	AnimationNode* animationNode;
 	Vec2 movement;
 
+	Size size;
 	bool isOnGround;
 
 	// CURRENT STATE
