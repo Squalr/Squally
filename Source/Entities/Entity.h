@@ -32,7 +32,6 @@ protected:
 	AnimationNode* animationNode;
 	Vec2 movement;
 
-	Size size;
 	bool isOnGround;
 
 	// CURRENT STATE
