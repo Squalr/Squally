@@ -81,7 +81,9 @@ void RadialMenu::onHackableEdit(EventCustom* eventArgs)
 		DrawNode* nextLine = DrawNode::create(2.0f);
 		Sprite* nextBack = Sprite::create(hackableAttribute->iconBackResource);
 		Sprite* next = Sprite::create(hackableAttribute->iconResource);
-		MenuSprite* nextMenuSprite = MenuSprite::create(hackableAttribute->iconResource, hackableAttribute->iconResource, hackableAttribute->iconResource);
+		Node* clickableNode = Node::create();
+		clickableNode->setContentSize(nextBack->getContentSize());
+		MenuSprite* nextMenuSprite = MenuSprite::create(clickableNode, Node::create(), Node::create());
 
 		nextLine->drawLine(Vec2::ZERO, position, Color4F(Color4B(86, 214, 156, 96)));
 		nextBack->setPosition(position);
