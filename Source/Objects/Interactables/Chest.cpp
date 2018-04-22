@@ -20,6 +20,8 @@ Chest::Chest()
 	this->chestOpenSprite = Sprite::create(Resources::Objects_ChestBaseFront);
 	this->chestClosedSprite = Sprite::create(Resources::Objects_ChestClosed);
 
+	this->size = this->chestClosedSprite->getContentSize();
+
 	this->close();
 
 	this->addChild(this->contentNode);

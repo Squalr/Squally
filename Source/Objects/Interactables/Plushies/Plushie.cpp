@@ -22,5 +22,6 @@ void Plushie::update(float dt)
 
 void Plushie::registerHackables()
 {
-	this->setButtonOffset(Vec2(-24.0f, 96.0f));
+	this->size = chest->size;
+	// this->setButtonOffset(Vec2(-24.0f, 96.0f));
 }

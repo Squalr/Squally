@@ -8,6 +8,9 @@
 
 using namespace cocos2d;
 
+#define HACKABLE_CODE_BEGIN \
+okay: \
+
 class HackableObject : public Node
 {
 public:
@@ -15,6 +18,7 @@ public:
 	void onHackableClick(MenuSprite* menuSprite);
 	void bindHackableButton(MenuSprite* hackableButton);
 
+	Size size;
 	std::vector<HackableData*>* dataList;
 	std::vector<HackableCode*>* codeList;
 

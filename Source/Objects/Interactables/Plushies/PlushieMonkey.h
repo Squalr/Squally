@@ -10,11 +10,12 @@ public:
 	static PlushieMonkey* create();
 
 protected:
-	void update(float) override;
-
-protected:
 	PlushieMonkey();
 	~PlushieMonkey();
 
+	void update(float) override;
 	void registerHackables() override;
+
+private:
+	static int puzzleLock;
 };
