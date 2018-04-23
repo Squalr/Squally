@@ -2804,7 +2804,7 @@ public:
 	static const std::string Entities_Player_WandStick;
 	static const std::string Fonts_Alien_li;
 	static const std::string Fonts_AlienText;
-	static const std::string Fonts_arial;
+	static const std::string Fonts_Arial;
 	static const std::string Fonts_BooleanText;
 	static const std::string Fonts_Marker_Felt;
 	static const std::string Fonts_Montserrat_Medium;
@@ -2942,9 +2942,6 @@ public:
 	static const std::string Menus_HackerModeMenu_CogButton;
 	static const std::string Menus_HackerModeMenu_CogButtonClick;
 	static const std::string Menus_HackerModeMenu_CogButtonHover;
-	static const std::string Menus_HackerModeMenu_CpuChip;
-	static const std::string Menus_HackerModeMenu_CpuChipClick;
-	static const std::string Menus_HackerModeMenu_CpuChipHover;
 	static const std::string Menus_HackerModeMenu_EmptyFullScreenMenu;
 	static const std::string Menus_HackerModeMenu_ExitRightButton;
 	static const std::string Menus_HackerModeMenu_ExitRightButtonClick;
@@ -2962,10 +2959,6 @@ public:
 	static const std::string Menus_HackerModeMenu_PlayButtonClick;
 	static const std::string Menus_HackerModeMenu_PlayButtonGray;
 	static const std::string Menus_HackerModeMenu_PlayButtonHover;
-	static const std::string Menus_HackerModeMenu_RadialMenu;
-	static const std::string Menus_HackerModeMenu_Ram;
-	static const std::string Menus_HackerModeMenu_RamClick;
-	static const std::string Menus_HackerModeMenu_RamHover;
 	static const std::string Menus_HackerModeMenu_RedoButton;
 	static const std::string Menus_HackerModeMenu_RedoButtonClick;
 	static const std::string Menus_HackerModeMenu_RedoButtonHover;
@@ -3051,7 +3044,6 @@ public:
 	static const std::string Menus_HackerModeMenu_Icons_TreasureChest;
 	static const std::string Menus_HackerModeMenu_Icons_Wand;
 	static const std::string Menus_HackerModeMenu_Icons_WheelBurrow;
-	static const std::string Menus_HackerModeMenu_WireFrames_SquallyWireFrame;
 	static const std::string Menus_LoadingMenu_LoadingFrame;
 	static const std::string Menus_LoadingMenu_LoadingFrameFill;
 	static const std::string Menus_OptionsMenu_CheckboxEmpty;

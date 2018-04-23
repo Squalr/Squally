@@ -49,7 +49,7 @@ void LoadingScreen::loadLevel(std::string levelFile)
 	this->currentLevelFile = levelFile;
 
 	// Asyncronously get all files under the game, and load them
-	FileUtils::getInstance()->listFilesRecursivelyAsync("./Resources/", CC_CALLBACK_1(LoadingScreen::onFileEnumerationComplete, this));
+	FileUtils::getInstance()->listFilesRecursivelyAsync(FileUtils::getInstance()->getDefaultResourceRootPath(), CC_CALLBACK_1(LoadingScreen::onFileEnumerationComplete, this));
 }
 
 void LoadingScreen::onFileEnumerationComplete(std::vector<std::string> files)
@@ -79,13 +79,24 @@ void LoadingScreen::onFileEnumerationComplete(std::vector<std::string> files)
 		{
 			// Load texture
 			Director::getInstance()->getTextureCache()->addImageAsync(file, textureLoadCallback);
+
+			// TEMP: Remove me to bring back loading screen
+			break;
 		}
 		else if (LoadingScreen::isPreloadableSound(file))
 		{
 			// Load sound
 			AudioEngine::preload(file, soundLoadCallback);
+
+			// TEMP: Remove me to bring back loading screen
+			break;
 		}
-		break;
+	}
+
+	// Fail safe if no files are found
+	if (files.size() <= 0)
+	{
+		this->incrementLoadedFileCount();
 	}
 }
 

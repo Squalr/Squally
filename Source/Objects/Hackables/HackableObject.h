@@ -3,13 +3,9 @@
 #include "Resources.h"
 #include "GUI/Components/MenuSprite.h"
 #include "Objects/Hackables/HackableData.h"
-#include "Objects/Hackables/HackableCode.h"
 #include "Events/HackableEvents.h"
 
 using namespace cocos2d;
-
-#define HACKABLE_CODE_BEGIN \
-okay: \
 
 class HackableObject : public Node
 {
@@ -20,7 +16,6 @@ public:
 
 	Size size;
 	std::vector<HackableData*>* dataList;
-	std::vector<HackableCode*>* codeList;
 
 protected:
 	HackableObject();
@@ -30,7 +25,6 @@ protected:
 
 	void setButtonOffset(Vec2 offset);
 	void registerData(HackableData* hackableData);
-	void registerCode(HackableCode* hackableCode);
 	void draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) override;
 
 private:
