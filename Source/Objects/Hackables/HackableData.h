@@ -8,10 +8,10 @@ using namespace cocos2d;
 class HackableData : public HackableAttribute
 {
 public:
-	static HackableData * create(std::string name, void* dataAddress, const std::type_info* typeInfo, std::string iconBackResource, std::string iconResource);
+	static HackableData * create(std::string name, void* dataAddress, const std::type_info* typeInfo, std::string iconResource);
 
 	void registerCode(HackableCode* hackableCode);
-	void registerCode(void* startAddress, void* endAddress, std::string functionName, std::string iconBackResource, std::string iconResource);
+	void registerCode(void* startAddress, void* endAddress, std::string functionName, std::string iconResource);
 
 	std::vector<HackableCode*>* codeList;
 
@@ -20,7 +20,7 @@ public:
 	HackUtils::DataType dataType;
 
 private:
-	HackableData(std::string name, void* dataAddress, const std::type_info* typeInfo, std::string iconBackResource, std::string iconResource);
+	HackableData(std::string name, void* dataAddress, const std::type_info* typeInfo, std::string iconResource);
 	~HackableData();
 
 	std::set<void*>* codeTable;
