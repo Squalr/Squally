@@ -20,6 +20,7 @@ private:
 
 	void InitializeListeners();
 
+	void resume() override;
 	void onEnter() override;
 	void update(float dt) override;
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);

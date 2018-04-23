@@ -17,5 +17,6 @@ protected:
 	void registerHackables() override;
 
 private:
+	HackableData * puzzleData;
 	static int puzzleLock;
 };

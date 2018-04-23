@@ -285,12 +285,6 @@
     <ClCompile Include="Source\GUI\Menus\HackerMode\RadialMenu.cpp">
       <Filter>Source\GUI\Menus\HackerMode</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GUI\Menus\HackerMode\CodeMenu.cpp">
-      <Filter>Source\GUI\Menus\HackerMode</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\Menus\HackerMode\DataMenu.cpp">
-      <Filter>Source\GUI\Menus\HackerMode</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Objects\Hackables\HackableCode.cpp">
       <Filter>Source\Objects\Hackables</Filter>
     </ClCompile>
@@ -942,12 +936,6 @@
       <Filter>Source\Objects\Interactables</Filter>
     </ClInclude>
     <ClInclude Include="Source\GUI\Menus\HackerMode\RadialMenu.h">
-      <Filter>Source\GUI\Menus\HackerMode</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GUI\Menus\HackerMode\DataMenu.h">
-      <Filter>Source\GUI\Menus\HackerMode</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GUI\Menus\HackerMode\CodeMenu.h">
       <Filter>Source\GUI\Menus\HackerMode</Filter>
     </ClInclude>
     <ClInclude Include="Source\Objects\Hackables\HackableData.h">

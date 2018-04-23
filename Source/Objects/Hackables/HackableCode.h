@@ -2,6 +2,20 @@
 #include "cocos2d.h"
 #include "Objects/Hackables/HackableAttribute.h"
 
+#define HACKABLE_CODE_BEGIN(address, label) \
+_asm \
+{ \
+	_asm mov address, offset label \
+	_asm label: \
+}
+
+#define HACKABLE_CODE_END(address, label) \
+_asm \
+{ \
+	_asm label: \
+	_asm mov address, offset label \
+}
+
 using namespace cocos2d;
 
 class HackableCode : public HackableAttribute

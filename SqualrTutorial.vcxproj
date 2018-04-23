@@ -292,8 +292,6 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\Dialog\DialogMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\HackerMode\CodeEditor.cpp" />
-    <ClCompile Include="Source\GUI\Menus\HackerMode\CodeMenu.cpp" />
-    <ClCompile Include="Source\GUI\Menus\HackerMode\DataMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\HackerMode\RadialMenu.cpp" />
     <ClCompile Include="Source\GUI\Menus\LoadingScreen\LoadingScreen.cpp" />
     <ClCompile Include="Source\GUI\Menus\Options\OptionsMenu.cpp" />
@@ -511,8 +509,6 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.h" />
     <ClInclude Include="Source\GUI\Menus\Dialog\DialogMenu.h" />
     <ClInclude Include="Source\GUI\Menus\HackerMode\CodeEditor.h" />
-    <ClInclude Include="Source\GUI\Menus\HackerMode\CodeMenu.h" />
-    <ClInclude Include="Source\GUI\Menus\HackerMode\DataMenu.h" />
     <ClInclude Include="Source\GUI\Menus\HackerMode\RadialMenu.h" />
     <ClInclude Include="Source\GUI\Menus\LoadingScreen\LoadingScreen.h" />
     <ClInclude Include="Source\GUI\Menus\Options\OptionsMenu.h" />
