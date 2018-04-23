@@ -43,6 +43,14 @@ void InputManager::onEnter()
 	this->InitializeListeners();
 }
 
+void InputManager::resume()
+{
+	// Anything could have happened to the key states while paused, best just to clear them
+	this->pressedKeys->clear();
+
+	Node::resume();
+}
+
 bool InputManager::isKeyJustPressed(EventKeyboard::KeyCode keyCode)
 {
 	if (this->pressedKeys->count(keyCode) > 0)

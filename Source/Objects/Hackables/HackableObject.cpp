@@ -5,14 +5,11 @@ HackableObject::HackableObject()
 	this->boundHackableButton = nullptr;
 
 	this->dataList = new std::vector<HackableData*>();
-	this->codeList = new std::vector<HackableCode*>();
-
 }
 
 HackableObject::~HackableObject()
 {
 	delete(this->dataList);
-	delete(this->codeList);
 }
 
 void HackableObject::onEnterTransitionDidFinish()
@@ -26,7 +23,7 @@ void HackableObject::bindHackableButton(MenuSprite* hackableButton)
 {
 	this->boundHackableButton = hackableButton;
 
-	if (this->codeList->size() <= 0 && this->dataList->size() <= 0)
+	if (this->dataList->size() <= 0)
 	{
 		this->boundHackableButton->setVisible(false);
 	}
@@ -46,17 +43,6 @@ void HackableObject::registerData(HackableData* hackableData)
 {
 	hackableData->retain();
 	this->dataList->push_back(hackableData);
-
-	if (this->boundHackableButton != nullptr)
-	{
-		this->boundHackableButton->setVisible(true);
-	}
-}
-
-void HackableObject::registerCode(HackableCode* hackableCode)
-{
-	hackableCode->retain();
-	this->codeList->push_back(hackableCode);
 
 	if (this->boundHackableButton != nullptr)
 	{

@@ -3,8 +3,7 @@
 #include "Resources.h"
 #include "Shaders/PostProcess.h"
 #include "GUI/Components/MenuSprite.h"
-#include "GUI/Menus/HackerMode/CodeMenu.h"
-#include "GUI/Menus/HackerMode/DataMenu.h"
+#include "GUI/Menus/HackerMode/CodeEditor.h"
 #include "Objects/Hackables/HackableObject.h"
 #include "Utils/HackUtils.h"
 #include "Events/HackableEvents.h"
@@ -29,7 +28,6 @@ private:
 	void close();
 
 	CodeEditor* codeEditor;
-	DataMenu* dataMenu;
 
 	HackableObject* activeHackableObject;
 
@@ -39,7 +37,11 @@ private:
 
 	std::function<void()> onRadialMenuCloseCallback;
 
-	static const int radialMenuRadius;
-	static const Size maxPreviewSize;
+	static const float radialMenuRadius;
+	static const float lineWidth;
+	static const Color4F lineColor;
+	static const Color4F dataColor;
+	static const Color4F codeColor;
+	static const float iconRadius;
 };
 
