@@ -33,13 +33,11 @@ private:
 
 	LayerColor* layerColor;
 	Node* radialNode;
-	MenuSprite* returnButton;
 
 	std::function<void()> onRadialMenuCloseCallback;
 
 	static const float radialMenuRadius;
 	static const float lineWidth;
-	static const Color4F lineColor;
 	static const Color4F dataColor;
 	static const Color4F codeColor;
 	static const float iconRadius;

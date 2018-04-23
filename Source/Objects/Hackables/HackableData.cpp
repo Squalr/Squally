@@ -1,16 +1,16 @@
 #include "HackableData.h"
 
-HackableData * HackableData::create(std::string name, void* dataAddress, const std::type_info* typeInfo, std::string iconBackResource, std::string iconResource)
+HackableData * HackableData::create(std::string name, void* dataAddress, const std::type_info* typeInfo, std::string iconResource)
 {
 
-	HackableData* hackableData = new HackableData(name, dataAddress, typeInfo, iconBackResource, iconResource);
+	HackableData* hackableData = new HackableData(name, dataAddress, typeInfo, iconResource);
 
 	hackableData->autorelease();
 
 	return hackableData;
 }
 
-HackableData::HackableData(std::string name, void* dataAddress, const std::type_info* typeInfo, std::string iconBackResource, std::string iconResource) : HackableAttribute(iconBackResource, iconResource)
+HackableData::HackableData(std::string name, void* dataAddress, const std::type_info* typeInfo, std::string iconResource) : HackableAttribute(iconResource)
 {
 	this->variableName = name;
 	this->dataPointer = dataAddress;
@@ -39,7 +39,7 @@ void HackableData::registerCode(HackableCode* hackableCode)
 	this->codeTable->insert(hackableCode->codePointer);
 }
 
-void HackableData::registerCode(void* startAddress, void* endAddress, std::string functionName, std::string iconBackResource, std::string iconResource)
+void HackableData::registerCode(void* startAddress, void* endAddress, std::string functionName, std::string iconResource)
 {
 	// Check if already registered
 	if (this->codeTable->find(startAddress) != this->codeTable->end())
@@ -47,7 +47,7 @@ void HackableData::registerCode(void* startAddress, void* endAddress, std::strin
 		return;
 	}
 
-	HackableCode* hackableCode = HackableCode::create(functionName, startAddress, (unsigned int)endAddress - (unsigned int)startAddress, iconBackResource, iconResource);
+	HackableCode* hackableCode = HackableCode::create(functionName, startAddress, (unsigned int)endAddress - (unsigned int)startAddress, iconResource);
 	hackableCode->retain();
 	this->codeList->push_back(hackableCode);
 	this->codeTable->insert(startAddress);
