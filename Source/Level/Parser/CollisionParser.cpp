@@ -15,6 +15,16 @@ Layer* CollisionParser::parse(TMXObjectGroup* objectGroup)
 		ValueMap object = collisionObjects[index].asValueMap();
 		ValueVector* polygonPoints = nullptr;
 
+		if (!GameUtils::keyExists(object, "type") ||
+			!GameUtils::keyExists(object, "width") ||
+			!GameUtils::keyExists(object, "height") ||
+			!GameUtils::keyExists(object, "x") ||
+			!GameUtils::keyExists(object, "y"))
+		{
+			CCLOG("Missing properties on collision object");
+			continue;
+		}
+
 		std::string type = object.at("type").asString();
 		bool isPolygon = false;
 		float width = object.at("width").asFloat();
@@ -49,7 +59,8 @@ Layer* CollisionParser::parse(TMXObjectGroup* objectGroup)
 		}
 		else
 		{
-			throw std::invalid_argument("Invalid type");
+			CCLOG("Unknown collision type");
+			continue;
 		}
 
 		if (isPolygon)

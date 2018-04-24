@@ -14,6 +14,17 @@ Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
 		}
 
 		ValueMap entity = entities[index].asValueMap();
+
+		if (!GameUtils::keyExists(entity, "type") ||
+			!GameUtils::keyExists(entity, "width") ||
+			!GameUtils::keyExists(entity, "height") ||
+			!GameUtils::keyExists(entity, "x") ||
+			!GameUtils::keyExists(entity, "y"))
+		{
+			CCLOG("Missing properties on entity");
+			continue;
+		}
+
 		string type = entity.at("type").asString();
 
 		HackableObject* newEntity = nullptr;
@@ -48,6 +59,7 @@ Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
 		}
 		else
 		{
+			CCLOG("Missing type on entity");
 			continue;
 		}
 
