@@ -67,6 +67,11 @@ LevelMap* Parser::parseMap(cocos_experimental::TMXTiledMap* mapRaw)
 			Layer* parallaxLayer = ParallaxParser::parse(mapRaw->getObjectGroup(layerName));
 			map->insertDynamicMember(parallaxLayer, true);
 		}
+		else
+		{
+			CCLOG("Unknown layer type in level file -- ignoring");
+			continue;
+		}
 	}
 
 	return map;

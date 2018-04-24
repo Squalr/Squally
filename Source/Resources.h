@@ -2995,6 +2995,7 @@ public:
 	static const std::string Menus_HackerModeMenu_Icons_Clones;
 	static const std::string Menus_HackerModeMenu_Icons_Coins;
 	static const std::string Menus_HackerModeMenu_Icons_Crate;
+	static const std::string Menus_HackerModeMenu_Icons_Cross;
 	static const std::string Menus_HackerModeMenu_Icons_CrossHair;
 	static const std::string Menus_HackerModeMenu_Icons_Crystals;
 	static const std::string Menus_HackerModeMenu_Icons_CrystalShard;

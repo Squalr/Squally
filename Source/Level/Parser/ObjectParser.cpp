@@ -14,6 +14,17 @@ Layer* ObjectParser::parse(TMXObjectGroup* objectGroup)
 		}
 
 		ValueMap object = objects[index].asValueMap();
+
+		if (!GameUtils::keyExists(object, "type") ||
+			!GameUtils::keyExists(object, "width") ||
+			!GameUtils::keyExists(object, "height") ||
+			!GameUtils::keyExists(object, "x") ||
+			!GameUtils::keyExists(object, "y"))
+		{
+			CCLOG("Missing properties on object");
+			continue;
+		}
+
 		std::string type = object.at("type").asString();
 
 		HackableObject* newObject = nullptr;
@@ -38,7 +49,8 @@ Layer* ObjectParser::parse(TMXObjectGroup* objectGroup)
 		}
 		else
 		{
-			throw std::invalid_argument("Invalid object");
+			CCLOG("Missing properties on object");
+			continue;
 		}
 
 		newObject->setPosition(Vec2(object.at("x").asFloat() + object.at("width").asFloat() / 2, object.at("y").asFloat() + object.at("height").asFloat() / 2));
