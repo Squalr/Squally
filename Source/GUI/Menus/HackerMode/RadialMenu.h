@@ -27,8 +27,7 @@ private:
 	void onClose(MenuSprite* menuSprite);
 	void close();
 
-	DrawNode* createRadialNode(std::string iconResource, Vec2 position, Color4F color, std::function<void(MenuSprite*, EventMouse* args)> callback, int tag);
-	DrawNode* createLineBetweenNodes(Vec2 nodeAPosition, Vec2 nodeBPosition, Color4F color);
+	Node* createRadialNode(std::string iconResource, Vec2 nodePosition, Color4F color, std::function<void(MenuSprite*, EventMouse* args)> callback, int tag);
 
 	CodeEditor* codeEditor;
 

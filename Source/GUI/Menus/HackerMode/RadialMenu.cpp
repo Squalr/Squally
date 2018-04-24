@@ -53,6 +53,14 @@ void RadialMenu::onHackableEdit(EventCustom* eventArgs)
 	float dataAngleStep = (3.14159f * 2.0f) / (float)this->activeHackableObject->dataList->size();
 	float currentDataAngle = 0.0f;
 
+	Node* rootNode = Node::create();
+	Vec2 rootLocation = args->sourceLocation - Director::getInstance()->getVisibleSize() / 2.0f;
+	rootNode->setPosition(rootLocation);
+
+	Node* returnRadialNode = this->createRadialNode(Resources::Menus_HackerModeMenu_Icons_Cross, -rootLocation, RadialMenu::dataColor, CC_CALLBACK_1(RadialMenu::onClose, this), 0);
+	
+	rootNode->addChild(returnRadialNode);
+
 	for (auto it = this->activeHackableObject->dataList->begin(); it != this->activeHackableObject->dataList->end(); it++)
 	{
 		HackableData* hackableData = *it;
@@ -60,38 +68,25 @@ void RadialMenu::onHackableEdit(EventCustom* eventArgs)
 		float codeAngleStep = hackableData->codeList->size() <= 1 ? 0.0f : ((3.14159f * 2.0f) / ((float)(hackableData->codeList->size() - 1))) / 3.0f;
 		float currentCodeAngle = currentDataAngle - (3.14159f / 3.0f);
 
-		Node* dataNode = Node::create();
 		Vec2 nextDataIconPosition = Vec2(sin(currentDataAngle) * RadialMenu::radialMenuRadius, cos(currentDataAngle) * RadialMenu::radialMenuRadius);
-		DrawNode* nextDataIconLine = this->createLineBetweenNodes(Vec2::ZERO, nextDataIconPosition, RadialMenu::dataColor);
-		DrawNode* nextDataRadialNode = this->createRadialNode(hackableData->iconResource, nextDataIconPosition, RadialMenu::dataColor, CC_CALLBACK_1(RadialMenu::onHackableAttributeClick, this), (int)hackableData);
-
-		this->radialMenuItems->addChild(dataNode);
-		this->radialMenuItems->addChild(nextDataRadialNode);
+		Node* dataNode = this->createRadialNode(hackableData->iconResource, nextDataIconPosition, RadialMenu::dataColor, CC_CALLBACK_1(RadialMenu::onHackableAttributeClick, this), (int)hackableData);
 
 		// Draw code icons
 		for (auto it = hackableData->codeList->begin(); it != hackableData->codeList->end(); it++)
 		{
 			HackableCode* hackableCode = *it;
+			Vec2 codeNodePosition = Vec2(sin(currentCodeAngle) * RadialMenu::radialMenuRadius, cos(currentCodeAngle) * RadialMenu::radialMenuRadius);
+			Node* codeNode = this->createRadialNode(hackableCode->iconResource, codeNodePosition, RadialMenu::codeColor, CC_CALLBACK_1(RadialMenu::onHackableAttributeClick, this), (int)hackableCode);
 
-			Vec2 nextCodeIconPosition = Vec2(sin(currentCodeAngle) * RadialMenu::radialMenuRadius, cos(currentCodeAngle) * RadialMenu::radialMenuRadius);
-
-			DrawNode* nextCodeIconLine = this->createLineBetweenNodes(nextDataIconPosition, nextCodeIconPosition, RadialMenu::codeColor);
-			DrawNode* nextCodeRadialNode = this->createRadialNode(hackableCode->iconResource, nextCodeIconPosition, RadialMenu::codeColor, CC_CALLBACK_1(RadialMenu::onHackableAttributeClick, this), (int)hackableCode);
-
-			dataNode->addChild(nextCodeIconLine);
-			dataNode->addChild(nextCodeRadialNode);
-
+			dataNode->addChild(codeNode);
 			currentCodeAngle += codeAngleStep;
 		}
 
+		returnRadialNode->addChild(dataNode);
 		currentDataAngle += dataAngleStep;
 	}
 
-	DrawNode* initialLine = this->createLineBetweenNodes(args->sourceLocation - Director::getInstance()->getVisibleSize() / 2.0f, Vec2::ZERO, RadialMenu::dataColor);
-	DrawNode* returnRadialNode = this->createRadialNode(Resources::Menus_HackerModeMenu_Icons_Cross, Vec2::ZERO, RadialMenu::dataColor, CC_CALLBACK_1(RadialMenu::onClose, this), 0);
-
-	this->radialMenuItems->addChild(initialLine);
-	this->radialMenuItems->addChild(returnRadialNode);
+	this->radialMenuItems->addChild(rootNode);
 
 	GameUtils::focus(this);
 }
@@ -161,30 +156,24 @@ void RadialMenu::close()
 	}
 }
 
-DrawNode* RadialMenu::createRadialNode(std::string iconResource, Vec2 position, Color4F color, std::function<void(MenuSprite*, EventMouse* args)> callback, int tag)
+Node* RadialMenu::createRadialNode(std::string iconResource, Vec2 nodePosition, Color4F color, std::function<void(MenuSprite*, EventMouse* args)> callback, int tag)
 {
 	DrawNode* radialNode = DrawNode::create(RadialMenu::lineWidth);
+	DrawNode* line = DrawNode::create();
 	Sprite* radialNodeIcon = Sprite::create(iconResource);
 	Node* clickableNode = Node::create();
 	clickableNode->setContentSize(Size(RadialMenu::iconRadius * 2.0f, RadialMenu::iconRadius * 2.0f));
 	MenuSprite* radialNodeClickableSprite = MenuSprite::create(clickableNode, Node::create(), Node::create());
 
+	line->drawLine(Vec2::ZERO, -nodePosition, color);
 	radialNode->drawCircle(Vec2::ZERO, RadialMenu::iconRadius, 0.0f, 64, false, color);
 	radialNodeClickableSprite->setTag(tag);
 	radialNodeClickableSprite->setClickCallback(callback);
 
-	radialNode->setPosition(position);
+	radialNode->setPosition(nodePosition);
 	radialNode->addChild(radialNodeIcon);
 	radialNode->addChild(radialNodeClickableSprite);
+	radialNode->addChild(line);
 
 	return radialNode;
-}
-
-DrawNode* RadialMenu::createLineBetweenNodes(Vec2 nodeAPosition, Vec2 nodeBPosition, Color4F color)
-{
-	DrawNode* line = DrawNode::create();
-
-	line->drawLine(nodeAPosition, nodeBPosition, color);
-
-	return line;
 }
