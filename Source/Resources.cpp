@@ -2993,6 +2993,7 @@ const std::string Resources::Menus_HackerModeMenu_Icons_Clock = "Menus\\HackerMo
 const std::string Resources::Menus_HackerModeMenu_Icons_Clones = "Menus\\HackerModeMenu\\Icons\\Clones.png";
 const std::string Resources::Menus_HackerModeMenu_Icons_Coins = "Menus\\HackerModeMenu\\Icons\\Coins.png";
 const std::string Resources::Menus_HackerModeMenu_Icons_Crate = "Menus\\HackerModeMenu\\Icons\\Crate.png";
+const std::string Resources::Menus_HackerModeMenu_Icons_Cross = "Menus\\HackerModeMenu\\Icons\\Cross.png";
 const std::string Resources::Menus_HackerModeMenu_Icons_CrossHair = "Menus\\HackerModeMenu\\Icons\\CrossHair.png";
 const std::string Resources::Menus_HackerModeMenu_Icons_Crystals = "Menus\\HackerModeMenu\\Icons\\Crystals.png";
 const std::string Resources::Menus_HackerModeMenu_Icons_CrystalShard = "Menus\\HackerModeMenu\\Icons\\CrystalShard.png";

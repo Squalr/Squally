@@ -24,7 +24,7 @@ Layer* EnvironmentParser::parseWeather(TMXObjectGroup* objectGroup)
 	Layer* layer = Layer::create();
 	ValueMap properties = objectGroup->getProperties();
 
-	if (GameUtils::keyExists(properties, "music"))
+	if (GameUtils::keyExists(properties, "weather"))
 	{
 		std::string weather = properties.at("weather").asString();
 

@@ -17,7 +17,8 @@ Layer* ParallaxParser::parse(TMXObjectGroup* objectGroup)
 
 		if (!GameUtils::keyExists(object, "speed-x") && !GameUtils::keyExists(object, "speed-y"))
 		{
-			throw std::invalid_argument("Parallax objects must have speed properties");
+			CCLOG("Missing speed propertie(s) on parallax object");
+			continue;
 		}
 
 		float speedX = object.at("speed-x").asFloat();
