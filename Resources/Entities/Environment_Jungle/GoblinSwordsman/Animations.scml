@@ -16,7 +16,7 @@
         <file id="12" name="image-01.png" width="800" height="600" pivot_x="0" pivot_y="1"/>
         <file id="13" name="splash.png" width="632" height="503" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="_">
+    <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="205.002" h="10"/>
         <obj_info name="bone_001" type="bone" w="66.4831" h="10"/>
         <obj_info name="bone_002" type="bone" w="106.367" h="10"/>
