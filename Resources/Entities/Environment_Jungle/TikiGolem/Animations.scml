@@ -22,7 +22,7 @@
         <file id="2" name="thigh_0.png" width="93" height="97" pivot_x="0.178947" pivot_y="0.464646"/>
         <file id="3" name="foot_0.png" width="59" height="130" pivot_x="0.262295" pivot_y="0.416667"/>
     </folder>
-    <entity id="0" name="TotemEnemy">
+    <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="167.628" h="10"/>
         <obj_info name="bone_002" type="bone" w="53.7595" h="10"/>
         <obj_info name="bone_003" type="bone" w="76.5582" h="10"/>

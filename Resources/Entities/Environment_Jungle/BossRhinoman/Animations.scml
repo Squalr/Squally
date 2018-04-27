@@ -36,7 +36,7 @@
         <file id="15" name="Elephant/B BACK LEG 1.png" width="123" height="143" pivot_x="0" pivot_y="1"/>
         <file id="16" name="Elephant/B BACK LEG 2.png" width="118" height="138" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Rhinoman">
+    <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="1000" interval="100">
             <mainline>
                 <key id="0">
