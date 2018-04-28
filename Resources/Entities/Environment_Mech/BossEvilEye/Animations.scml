@@ -19,7 +19,7 @@
         <file id="15" name="evilEye_head_2.png" width="173" height="175" pivot_x="0.323699" pivot_y="0.16"/>
         <file id="16" name="TRIDENT.png" width="983" height="1691" pivot_x="0.643646" pivot_y="0.387821"/>
     </folder>
-    <entity id="0" name="BossEvilEye">
+    <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="237.464" h="10"/>
         <obj_info name="bone_001" type="bone" w="111.937" h="10"/>
         <obj_info name="bone_002" type="bone" w="289.931" h="10"/>
@@ -198,7 +198,7 @@
                     <bone x="111.936981" angle="308.843597"/>
                 </key>
                 <key id="1" time="800">
-                    <bone x="111.936981" y="0" angle="299.599502"/>
+                    <bone x="111.936981" angle="299.599502"/>
                 </key>
             </timeline>
             <timeline id="18" obj="3" name="bone_003" object_type="bone">

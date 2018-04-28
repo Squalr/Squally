@@ -13,7 +13,7 @@
         <file id="9" name="SlashFX.png" width="496" height="496" pivot_x="0" pivot_y="1"/>
         <file id="10" name="Shield.png" width="200" height="200" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Very Heavy Armored Frontier Defender">
+    <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="51.9178" h="10"/>
         <obj_info name="bone_001" type="bone" w="51.0504" h="10"/>
         <obj_info name="bone_002" type="bone" w="57.4062" h="10"/>
@@ -523,7 +523,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="2" name="Slashing" length="400" interval="100" l="-475" t="-731" r="424" b="168">
+        <animation id="2" name="Attack" length="400" interval="100" l="-475" t="-731" r="424" b="168">
             <gline pos="1" v="1"/>
             <mainline>
                 <key id="0">
@@ -1798,7 +1798,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="3" name="Throwing" length="400" interval="100" l="-475" t="-731" r="424" b="168">
+        <animation id="3" name="Attack3" length="400" interval="100" l="-475" t="-731" r="424" b="168">
             <gline pos="1" v="1"/>
             <mainline>
                 <key id="0">
@@ -2926,7 +2926,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="4" name="Kicking" length="400" interval="100" l="-475" t="-731" r="424" b="168">
+        <animation id="4" name="Attack2" length="400" interval="100" l="-475" t="-731" r="424" b="168">
             <gline pos="1" v="1"/>
             <mainline>
                 <key id="0">
@@ -10639,7 +10639,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="16" name="Dying" length="500" interval="100" l="-475" t="-731" r="424" b="168">
+        <animation id="16" name="Die" length="500" interval="100" l="-475" t="-731" r="424" b="168">
             <gline pos="1" v="1"/>
             <gline pos="36" v="1"/>
             <gline pos="38" v="1"/>

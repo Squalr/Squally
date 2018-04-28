@@ -11,7 +11,6 @@ Vampiress2* Vampiress2::create()
 
 Vampiress2::Vampiress2() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
-	"BossDemonKing",
 	false)
 {
 }

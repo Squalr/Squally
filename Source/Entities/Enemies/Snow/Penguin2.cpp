@@ -11,7 +11,6 @@ Penguin2* Penguin2::create()
 
 Penguin2::Penguin2() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
-	"BossDemonKing",
 	false)
 {
 }

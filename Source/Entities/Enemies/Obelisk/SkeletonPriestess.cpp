@@ -11,7 +11,6 @@ SkeletonPriestess* SkeletonPriestess::create()
 
 SkeletonPriestess::SkeletonPriestess() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
-	"BossDemonKing",
 	false)
 {
 }

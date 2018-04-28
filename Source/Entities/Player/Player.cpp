@@ -2,7 +2,7 @@
 
 Vec2 Player::position;
 int Player::health;
-const float Player::playerScale = 0.22f;
+const float Player::playerScale = 0.13f;
 
 Player* Player::create()
 {
@@ -13,7 +13,7 @@ Player* Player::create()
 	return instance;
 }
 
-Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, "Squally", false, Size(372.0f, 372.0f), Player::playerScale, Vec2::ZERO)
+Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, false, Size(372.0f, 372.0f), Player::playerScale, Vec2::ZERO)
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;

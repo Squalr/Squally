@@ -12,7 +12,6 @@ class Enemy : public Entity
 protected:
 	Enemy(
 		std::string scmlResource,
-		std::string entityName,
 		bool isFlying,
 		Size size = Size(256.0f, 256.0f),
 		float scale = 1.0f,

@@ -11,7 +11,6 @@ FrostGunman* FrostGunman::create()
 
 FrostGunman::FrostGunman() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
-	"BossDemonKing",
 	false)
 {
 }
