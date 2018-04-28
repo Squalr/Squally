@@ -11,7 +11,6 @@ BossEvilEye* BossEvilEye::create()
 
 BossEvilEye::BossEvilEye() : Enemy::Enemy(
 	Resources::Entities_Environment_Mech_BossEvilEye_Animations,
-	"BossEvilEye",
 	false,
 	Size(720.0f, 960.0f),
 	0.5f,

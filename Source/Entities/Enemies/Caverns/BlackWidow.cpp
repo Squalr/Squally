@@ -11,7 +11,6 @@ BlackWidow* BlackWidow::create()
 
 BlackWidow::BlackWidow() : Enemy::Enemy(
 	Resources::Entities_Environment_Caverns_BlackWidow_Animation,
-	"BlackWidow",
 	false,
 	Size(1024.0f, 960.0f),
 	0.20f,

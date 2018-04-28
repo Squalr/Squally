@@ -11,7 +11,6 @@ BossDemon* BossDemon::create()
 
 BossDemon::BossDemon() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
-	"BossDemonKing",
 	false,
 	Size(480.0f, 480.0f),
 	0.6f,

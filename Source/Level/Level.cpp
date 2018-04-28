@@ -53,7 +53,7 @@ void Level::initializeListeners()
 void Level::loadLevel(LevelMap* levelMap)
 {
 	// Physics / collision debugging
-	this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	// this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, 0.0f));
 
 	this->hackerModeBackground = Sprite::create(Resources::Backgrounds_MatrixRain_HackerModeBackground);
@@ -153,7 +153,7 @@ void Level::enableHackerMode()
 
 void Level::disableHackerMode()
 {
-	this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	// this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	Level::hackerMode = false;
 	GameUtils::resumeAll();
 }
