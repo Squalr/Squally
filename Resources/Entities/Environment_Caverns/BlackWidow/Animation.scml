@@ -15,7 +15,7 @@
         <file id="11" name="slash-4.png" width="460" height="467" pivot_x="0.5" pivot_y="0.5"/>
         <file id="12" name="spider-web.png" width="257" height="341" pivot_x="0.0194553" pivot_y="0.316716"/>
     </folder>
-    <entity id="0" name="BlackWidow">
+    <entity id="0" name="Entity">
         <obj_info name="spider" type="bone" w="84.986" h="25"/>
         <obj_info name="b_body" type="bone" w="332.898" h="25"/>
         <obj_info name="b_head" type="bone" w="133.749" h="25"/>

@@ -11,7 +11,6 @@ MechGolem* MechGolem::create()
 
 MechGolem::MechGolem() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
-	"BossDemonKing",
 	false)
 {
 }

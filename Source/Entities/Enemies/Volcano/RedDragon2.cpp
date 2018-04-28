@@ -11,7 +11,6 @@ RedDragon2* RedDragon2::create()
 
 RedDragon2::RedDragon2() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
-	"BossDemonKing",
 	false)
 {
 }

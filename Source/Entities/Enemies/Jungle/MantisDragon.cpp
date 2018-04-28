@@ -11,7 +11,6 @@ MantisDragon* MantisDragon::create()
 
 MantisDragon::MantisDragon() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
-	"BossDemonKing",
 	false)
 {
 }

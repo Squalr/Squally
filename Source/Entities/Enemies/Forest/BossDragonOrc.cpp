@@ -11,7 +11,6 @@ BossDragonOrc* BossDragonOrc::create()
 
 BossDragonOrc::BossDragonOrc() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
-	"BossDemonKing",
 	false)
 {
 }

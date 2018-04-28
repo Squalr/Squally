@@ -18,7 +18,7 @@
         <obj_info name="bone_004" type="bone" w="213.413" h="10"/>
         <obj_info name="bone_005" type="bone" w="211.948" h="10"/>
         <obj_info name="bone_006" type="bone" w="396.983" h="10"/>
-        <animation id="0" name="_DIE" length="1000" interval="100">
+        <animation id="0" name="Die" length="1000" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="6" key="0"/>
@@ -239,7 +239,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="1" name="_HURT" length="800" interval="100">
+        <animation id="1" name="Hurt" length="800" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="6" key="0"/>
@@ -373,7 +373,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="2" name="_ATTACK" length="1000" interval="100">
+        <animation id="2" name="Attack" length="1000" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="6" key="0"/>
@@ -562,7 +562,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="3" name="_JUMP" length="1000" interval="100">
+        <animation id="3" name="Jump" length="1000" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="6" key="0"/>
@@ -696,7 +696,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="4" name="_RUN" length="1000" interval="100">
+        <animation id="4" name="Run" length="1000" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="6" key="0"/>
@@ -830,7 +830,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="5" name="_WALK" length="1000" interval="100">
+        <animation id="5" name="Walk" length="1000" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="6" key="0"/>
@@ -961,7 +961,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="6" name="_IDLE" length="1000" interval="100">
+        <animation id="6" name="Idle" length="1000" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="6" key="0"/>

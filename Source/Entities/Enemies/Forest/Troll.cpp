@@ -11,7 +11,6 @@ Troll* Troll::create()
 
 Troll::Troll() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
-	"BossDemonKing",
 	false)
 {
 }

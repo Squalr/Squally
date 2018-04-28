@@ -11,7 +11,6 @@ Abomination* Abomination::create()
 
 Abomination::Abomination() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
-	"BossDemonKing",
 	false)
 {
 }

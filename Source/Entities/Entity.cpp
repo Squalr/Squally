@@ -1,6 +1,6 @@
 #include "Entity.h"
 
-Entity::Entity(std::string scmlResource, std::string entityName, bool isFlying, Size size, float scale, Vec2 collisionOffset) : CollisionObject::CollisionObject()
+Entity::Entity(std::string scmlResource, bool isFlying, Size size, float scale, Vec2 collisionOffset) : CollisionObject::CollisionObject()
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
@@ -10,7 +10,7 @@ Entity::Entity(std::string scmlResource, std::string entityName, bool isFlying, 
 	this->animationNode = AnimationNode::create(scmlResource);
 	this->animationNode->setScale(scale);
 
-	SpriterEngine::EntityInstance* entity = this->animationNode->play(entityName);
+	SpriterEngine::EntityInstance* entity = this->animationNode->play("Entity");
 	entity->setCurrentAnimation("Idle");
 
 	this->isOnGround = false;

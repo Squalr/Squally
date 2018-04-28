@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b10">
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
     <folder id="0">
         <file id="0" name="Right Thigh.png" width="105" height="170" pivot_x="0" pivot_y="1"/>
         <file id="1" name="Right Arm.png" width="105" height="200" pivot_x="0" pivot_y="1"/>
@@ -16,7 +16,7 @@
         <file id="12" name="Body.png" width="450" height="450" pivot_x="0" pivot_y="1"/>
         <file id="13" name="Head01.png" width="450" height="450" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Big Hand 01">
+    <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="131.44" h="10"/>
         <obj_info name="bone_001" type="bone" w="169.576" h="10"/>
         <obj_info name="bone_002" type="bone" w="119.857" h="10"/>
@@ -31,7 +31,7 @@
         <obj_info name="bone_013" type="bone" w="174.539" h="10"/>
         <obj_info name="bone_014" type="bone" w="125.486" h="10"/>
         <obj_info name="bone_006" type="bone" w="267.576" h="10"/>
-        <animation id="0" name="Idle" length="800">
+        <animation id="0" name="Idle" length="800" interval="100">
             <gline pos="-8"/>
             <gline pos="1" v="1"/>
             <mainline>
@@ -381,7 +381,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="1" name="Walking" length="1200">
+        <animation id="1" name="Walking" length="1200" interval="100">
             <gline pos="-5"/>
             <gline pos="20" v="1"/>
             <gline pos="-284"/>
@@ -1703,7 +1703,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="2" name="Smack" length="600">
+        <animation id="2" name="Smack" length="600" interval="100">
             <gline pos="-8"/>
             <gline pos="1" v="1"/>
             <mainline>
@@ -2392,7 +2392,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="3" name="Kick" length="600">
+        <animation id="3" name="Kick" length="600" interval="100">
             <gline pos="-8"/>
             <gline pos="1" v="1"/>
             <mainline>
@@ -3063,7 +3063,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="4" name="Hurt" length="500">
+        <animation id="4" name="Hurt" length="500" interval="100">
             <gline pos="-9"/>
             <gline pos="1" v="1"/>
             <mainline>
@@ -3767,7 +3767,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="5" name="Knocked" length="500">
+        <animation id="5" name="Knocked" length="500" interval="100">
             <gline pos="-3"/>
             <gline pos="6" v="1"/>
             <mainline>

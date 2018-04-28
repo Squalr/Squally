@@ -11,7 +11,6 @@ LavaGolem* LavaGolem::create()
 
 LavaGolem::LavaGolem() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
-	"BossDemonKing",
 	false)
 {
 }
