@@ -14,11 +14,14 @@ StoryMap::StoryMap()
 	this->mapNodes = new std::vector<MapNode*>();
 	this->background = Sprite::create(Resources::Menus_WorldMaps_StoryMap);
 	this->foreground = Sprite::create(Resources::Menus_WorldMaps_StoryMapFront);
+	this->fogA = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
+	this->fogB = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
+	this->fogC = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
 	this->titleLabel = Label::create("Level Select", Resources::Fonts_Montserrat_Medium, this->titleFontSize);
 	this->infoLabel = Label::create("", Resources::Fonts_Montserrat_Medium, this->infoFontSize);
 
-	this->titleLabel->enableOutline(Color4B::BLACK, 2.0f);
-	this->infoLabel->enableOutline(Color4B::BLACK, 2.0f);
+	this->titleLabel->setVisible(false);
+	this->infoLabel->setVisible(false);
 
 	this->jungle = MapNode::create(
 		Resources::Menus_WorldMaps_Jungle,
@@ -92,6 +95,16 @@ StoryMap::StoryMap()
 		Resources::Levels_Mecha
 	);
 
+	this->fogA->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-40.0f, 0))));
+	this->fogA->setOpacity(127);
+	this->fogA->setCascadeOpacityEnabled(true);
+	this->fogB->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-32.0f, 0))));
+	this->fogB->setOpacity(127);
+	this->fogB->setCascadeOpacityEnabled(true);
+	this->fogC->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-24.0f, 0))));
+	this->fogC->setOpacity(127);
+	this->fogC->setCascadeOpacityEnabled(true);
+
 	this->mapNodes->push_back(this->jungle);
 	this->mapNodes->push_back(this->waterRuins);
 	this->mapNodes->push_back(this->forest);
@@ -113,6 +126,9 @@ StoryMap::StoryMap()
 	this->addChild(this->volcano);
 	this->addChild(this->mecha);
 	this->addChild(this->foreground);
+	this->addChild(this->fogA);
+	this->addChild(this->fogB);
+	this->addChild(this->fogC);
 	this->addChild(this->titleLabel);
 	this->addChild(this->infoLabel);
 
@@ -156,6 +172,10 @@ void StoryMap::initializePositions()
 	this->volcano->setPosition(Vec2(visibleSize.width / 2.0f + 196.0f, visibleSize.height / 2.0f + 64.0f));
 	this->mecha->setPosition(Vec2(visibleSize.width / 2.0f + 696.0f, visibleSize.height / 2.0f - 38.0f));
 	this->foreground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+
+	this->fogA->setPosition(Vec2(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f + 420.0f));
+	this->fogB->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->fogC->setPosition(Vec2(visibleSize.width / 2.0f - 420.0f, visibleSize.height / 2.0f - 420.0f));
 
 	this->initializedLocked();
 }
