@@ -24,19 +24,13 @@ private:
 	void onEnter() override;
 	void initializeListeners();
 	void createSlimeAnimation();
-	void createGhostAnimation();
 
 	Node* squallyNode;
-	Sprite* spellEffect;
-	Sprite* spellEffect2;
-	Sprite* squally;
-	Sprite* squallyWand;
+	AnimationNode* squally;
+	SpriterEngine::EntityInstance* squallyEntity;
 	Node* slimeNode;
-	Sprite* slimeBubble;
 	Sprite* slime;
 	Animation* slimeAnimation;
-	Sprite* ghost;
-	Animation* ghostAnimation;
 	Sprite* background;
 	FloatingSprite* backgroundVines;
 	FloatingSprite* backgroundTrees;

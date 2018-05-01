@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "GUI/Components/FadeScene.h"
+#include "GUI/Components/InfiniteParallaxNode.h"
 #include "GUI/Components/Mouse.h"
 #include "GUI/Menus/Story/MapNode.h"
 #include "Events/NavigationEvents.h"
@@ -40,6 +41,9 @@ private:
 
 	Sprite* background;
 	Sprite* foreground;
+	InfiniteParallaxNode* fogA;
+	InfiniteParallaxNode* fogB;
+	InfiniteParallaxNode* fogC;
 	Label* titleLabel;
 	Label* infoLabel;
 

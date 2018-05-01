@@ -4,7 +4,7 @@
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../Tiles/TileMap.png" width="5760" height="3200"/>
  </tileset>
- <objectgroup name="ENV_environment">
+ <objectgroup name="ENV_environment" opacity="0.9">
   <properties>
    <property name="background" value="jungle"/>
    <property name="music" value="Music/BurdenOfTime.mp3"/>
@@ -245,14 +245,14 @@
  </objectgroup>
  <objectgroup name="ENTITIES_entities">
   <object id="72" name="spawn" type="spawn" x="477.243" y="681.006" width="128" height="128"/>
-  <object id="144" name="boss_evil_eye" type="boss_evil_eye" x="2065.39" y="609.455" width="164.364" height="180.242">
+  <object id="144" name="boss_evil_eye" type="boss_evil_eye" x="4921.39" y="577.455" width="164.364" height="180.242">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="180" name="knight" type="knight" x="246.06" y="798.727" width="200" height="288"/>
+  <object id="180" name="knight" type="knight" x="3198.06" y="910.727" width="200" height="288"/>
   <object id="183" name="black_widow" type="black_widow" x="2545.82" y="617.879" width="164.364" height="180.242">
    <properties>
     <property name="ally1" value="harpy"/>
