@@ -3,9 +3,8 @@
 #include "Resources.h"
 #include "Config/SoundManager.h"
 #include "Utils/GameUtils.h"
-#include "Level/Backgrounds/JungleBackground.h"
-#include "Level/Backgrounds/MountainBackground.h"
-#include "Level/Environments/JungleEnvironment.h"
+#include "Level/Backgrounds/Backgrounds.h"
+#include "Level/Environments/Environments.h"
 
 using namespace cocos2d;
 

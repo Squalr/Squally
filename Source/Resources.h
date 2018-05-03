@@ -55,7 +55,6 @@ public:
 	static const std::string Backgrounds_Rain_Trees_01;
 	static const std::string Backgrounds_Rain_Trees_02;
 	static const std::string Backgrounds_Rain_Trees_03;
-	static const std::string Backgrounds_Snow_flat_snowmountains;
 	static const std::string Backgrounds_Snow_snowmountains_acc;
 	static const std::string Backgrounds_Snow_snowmountains_bg;
 	static const std::string Backgrounds_Snow_snowmountains_fg;
@@ -2305,6 +2304,9 @@ public:
 	static const std::string Entities_Environment_Snow_YetiWarrior_image_09;
 	static const std::string Entities_Environment_Volcano_BossDemonKing_Animations;
 	static const std::string Entities_Environment_Volcano_BossDemonKing_BELT;
+	static const std::string Entities_Environment_Volcano_BossDemonKing_ddd_000;
+	static const std::string Entities_Environment_Volcano_BossDemonKing_ddd_001;
+	static const std::string Entities_Environment_Volcano_BossDemonKing_ddd_002;
 	static const std::string Entities_Environment_Volcano_BossDemonKing_HEAD;
 	static const std::string Entities_Environment_Volcano_BossDemonKing_JAW;
 	static const std::string Entities_Environment_Volcano_BossDemonKing_L_ARM_1_ARMOR_1;
@@ -2356,6 +2358,8 @@ public:
 	static const std::string Entities_Environment_Volcano_DemonDragon_magma_wing_L;
 	static const std::string Entities_Environment_Volcano_DemonDragon_magma_wing_R;
 	static const std::string Entities_Environment_Volcano_DemonGhost_5;
+	static const std::string Entities_Environment_Volcano_DemonGhost_aaa_000;
+	static const std::string Entities_Environment_Volcano_DemonGhost_Animations;
 	static const std::string Entities_Environment_Volcano_DemonGhost_B_WING;
 	static const std::string Entities_Environment_Volcano_DemonGhost_BODY;
 	static const std::string Entities_Environment_Volcano_DemonGhost_F_WING;
@@ -2804,6 +2808,7 @@ public:
 	static const std::string Entities_Player_SquallyFrontArm;
 	static const std::string Entities_Player_SquallyLarge;
 	static const std::string Entities_Player_SquallyMouthOpen;
+	static const std::string Entities_Player_STAFF_1;
 	static const std::string Entities_Player_STEM;
 	static const std::string Entities_Player_WandAncient;
 	static const std::string Entities_Player_WandCrystal;
@@ -3460,6 +3465,7 @@ public:
 	static const std::string Particles_Electric;
 	static const std::string Particles_Fireflies;
 	static const std::string Particles_Fireflies2;
+	static const std::string Particles_Gust;
 	static const std::string Particles_Heal;
 	static const std::string Particles_Hover;
 	static const std::string Particles_MindBlast;

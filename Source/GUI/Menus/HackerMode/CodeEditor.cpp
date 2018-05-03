@@ -335,6 +335,9 @@ void CodeEditor::onAccept(MenuSprite* menuSprite)
 	// Set new assembly
 	this->activeHackableCode->assemblyString = this->functionWindow->getText();
 
+	// Enable hack
+	this->activeHackableCode->applyCustomCode();
+
 	this->setVisible(false);
 	this->getParent()->setOpacity(0xFF);
 	GameUtils::focus(this->getParent());
