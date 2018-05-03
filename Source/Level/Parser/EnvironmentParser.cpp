@@ -14,6 +14,11 @@ Layer* EnvironmentParser::parseBackground(TMXObjectGroup* objectGroup)
 			JungleBackground* jungle = JungleBackground::create();
 			layer->addChild(jungle);
 		}
+		else if (background == "snow")
+		{
+			SnowBackground* snowBackground = SnowBackground::create();
+			layer->addChild(snowBackground);
+		}
 	}
 
 	return layer;
@@ -32,6 +37,11 @@ Layer* EnvironmentParser::parseWeather(TMXObjectGroup* objectGroup)
 		{
 			JungleEnvironment* environment = JungleEnvironment::create();
 			layer->addChild(environment);
+		}
+		else if (weather == "snow")
+		{
+			SnowEnvironment* snowEnvironment = SnowEnvironment::create();
+			layer->addChild(snowEnvironment);
 		}
 	}
 

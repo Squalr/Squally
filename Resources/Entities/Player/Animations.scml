@@ -332,7 +332,7 @@
             </timeline>
             <timeline id="18" obj="7" name="bone_007" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="118.184662" y="0.524355" angle="271.462471" scale_x="1" scale_y="4.842978"/>
+                    <bone x="118.184662" y="0.524355" angle="271.462471" scale_y="4.842978"/>
                 </key>
             </timeline>
         </animation>
@@ -587,13 +587,16 @@
             </timeline>
             <timeline id="18" obj="7" name="bone_007" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="118.184662" y="0.524355" angle="271.462471" scale_x="1" scale_y="4.842978"/>
+                    <bone x="118.184662" y="0.524355" angle="271.462471" scale_y="4.842978"/>
                 </key>
                 <key id="1" time="300" spin="0">
-                    <bone x="118.184662" y="0.524355" angle="271.462471" scale_x="1" scale_y="4.842978"/>
+                    <bone x="118.184662" y="0.524355" angle="271.462471" scale_y="4.842978"/>
                 </key>
             </timeline>
             <eventline id="0" name="AnimationComplete">
+                <key id="0" time="300"/>
+            </eventline>
+            <eventline id="1" name="AnimationEnd">
                 <key id="0" time="300"/>
             </eventline>
         </animation>

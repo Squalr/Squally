@@ -13,22 +13,22 @@ Player* Player::create()
 	return instance;
 }
 
-Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, false, Size(372.0f, 372.0f), Player::playerScale, Vec2::ZERO)
+Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, false, Size(640.0f, 1800.0f), Player::playerScale, Vec2::ZERO)
 {
 	this->actualJumpLaunchVelocity = 640.0f;
-	this->actualGravityAcceleration = 1000.0f;
+	this->actualGravityAcceleration = 400.0f;
 	this->actualMaxFallSpeed = 600.0f;
 	this->moveAcceleration = 14000.0f;
 
 	this->inputManager = InputManager::getInstance();
 
 	this->init(PhysicsBody::createBox(size * Player::playerScale), CategoryGroup::G_Player, true, false);
-	this->hover = Hover::create(this);
+	// this->hover = Hover::create(this);
 
-	this->hover->setContactBeginCallback(CC_CALLBACK_1(Player::hoverContactBegin, this));
-	this->hover->setContactUpdateCallback(CC_CALLBACK_1(Player::hoverContactUpdate, this));
-	this->hover->setContactEndCallback(CC_CALLBACK_1(Player::hoverContactEnd, this));
-	this->addChild(this->hover);
+	//this->hover->setContactBeginCallback(CC_CALLBACK_1(Player::hoverContactBegin, this));
+	//this->hover->setContactUpdateCallback(CC_CALLBACK_1(Player::hoverContactUpdate, this));
+	//this->hover->setContactEndCallback(CC_CALLBACK_1(Player::hoverContactEnd, this));
+	//this->addChild(this->hover);
 
 	// TODO: Load from save
 	this->equipWand(Wand::Stick);

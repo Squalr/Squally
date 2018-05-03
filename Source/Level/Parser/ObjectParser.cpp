@@ -26,6 +26,9 @@ Layer* ObjectParser::parse(TMXObjectGroup* objectGroup)
 		}
 
 		std::string type = object.at("type").asString();
+		float width = object.at("width").asFloat();
+		float height = object.at("height").asFloat();
+		Size size = Size(width, height);
 
 		HackableObject* newObject = nullptr;
 
@@ -46,6 +49,23 @@ Layer* ObjectParser::parse(TMXObjectGroup* objectGroup)
 			string dialog = object.at("dialog").asString();
 
 			newObject = Monitor::create("Dialog\\" + dialog + ".json");
+		}
+		else if (type == "wind")
+		{
+			float speedX = 0.0f; 
+			float speedY = 0.0f; 
+
+			if (GameUtils::keyExists(object, "speed-x"))
+			{
+				speedX = object.at("speed-x").asFloat();
+			}
+
+			if (GameUtils::keyExists(object, "speed-y"))
+			{
+				speedY = object.at("speed-y").asFloat();
+			}
+
+			newObject = Wind::create(size, Vec2(speedX, speedY));
 		}
 		else
 		{

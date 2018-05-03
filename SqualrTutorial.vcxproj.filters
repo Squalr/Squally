@@ -789,6 +789,15 @@
     <ClCompile Include="Source\Events\HexusEvents.cpp">
       <Filter>Source\Events</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Objects\Interactables\Wind.cpp">
+      <Filter>Source\Objects\Interactables</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Level\Backgrounds\SnowBackground.cpp">
+      <Filter>Source\Level\Backgrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Level\Environments\SnowEnvironment.cpp">
+      <Filter>Source\Level\Environments</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -1450,6 +1459,21 @@
     </ClInclude>
     <ClInclude Include="Source\Events\HexusEvents.h">
       <Filter>Source\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Interactables\Wind.h">
+      <Filter>Source\Objects\Interactables</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\Backgrounds\SnowBackground.h">
+      <Filter>Source\Level\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\Environments\SnowEnvironment.h">
+      <Filter>Source\Level\Environments</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\Environments\Environments.h">
+      <Filter>Source\Level\Environments</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\Backgrounds\Backgrounds.h">
+      <Filter>Source\Level\Backgrounds</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

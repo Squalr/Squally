@@ -311,7 +311,9 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Level\Backgrounds\MatrixRain\MatrixRain.cpp" />
     <ClCompile Include="Source\Level\Backgrounds\MatrixRain\MatrixStrand.cpp" />
     <ClCompile Include="Source\Level\Backgrounds\MountainBackground.cpp" />
+    <ClCompile Include="Source\Level\Backgrounds\SnowBackground.cpp" />
     <ClCompile Include="Source\Level\Environments\JungleEnvironment.cpp" />
+    <ClCompile Include="Source\Level\Environments\SnowEnvironment.cpp" />
     <ClCompile Include="Source\Level\LevelCamera.cpp" />
     <ClCompile Include="Source\Level\LevelMap.cpp" />
     <ClCompile Include="Source\Level\Parser\CollisionParser.cpp" />
@@ -357,6 +359,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Objects\Interactables\Plushies\PlushieMonkey.cpp" />
     <ClCompile Include="Source\Objects\Interactables\WarpGate.cpp" />
     <ClCompile Include="Source\Objects\Interactables\WarpGateExactScanTutorial.cpp" />
+    <ClCompile Include="Source\Objects\Interactables\Wind.cpp" />
     <ClCompile Include="Source\Objects\ParallaxObject.cpp" />
     <ClCompile Include="Source\Objects\Projectiles\EggProjectile.cpp" />
     <ClCompile Include="Source\Save\SaveManager.cpp" />
@@ -523,12 +526,16 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\Menus\Tutorial\TutorialItem.h" />
     <ClInclude Include="Source\GUI\Menus\Tutorial\TutorialScreen.h" />
     <ClInclude Include="Source\Input\InputManager.h" />
+    <ClInclude Include="Source\Level\Backgrounds\Backgrounds.h" />
     <ClInclude Include="Source\Level\Backgrounds\JungleBackground.h" />
     <ClInclude Include="Source\Level\Backgrounds\MatrixRain\MatrixLetter.h" />
     <ClInclude Include="Source\Level\Backgrounds\MatrixRain\MatrixRain.h" />
     <ClInclude Include="Source\Level\Backgrounds\MatrixRain\MatrixStrand.h" />
     <ClInclude Include="Source\Level\Backgrounds\MountainBackground.h" />
+    <ClInclude Include="Source\Level\Backgrounds\SnowBackground.h" />
+    <ClInclude Include="Source\Level\Environments\Environments.h" />
     <ClInclude Include="Source\Level\Environments\JungleEnvironment.h" />
+    <ClInclude Include="Source\Level\Environments\SnowEnvironment.h" />
     <ClInclude Include="Source\Level\LevelCamera.h" />
     <ClInclude Include="Source\Level\LevelMap.h" />
     <ClInclude Include="Source\Level\Parser\CollisionParser.h" />
@@ -578,6 +585,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Objects\Interactables\Plushies\Plushies.h" />
     <ClInclude Include="Source\Objects\Interactables\WarpGate.h" />
     <ClInclude Include="Source\Objects\Interactables\WarpGateExactScanTutorial.h" />
+    <ClInclude Include="Source\Objects\Interactables\Wind.h" />
     <ClInclude Include="Source\Objects\Objects.h" />
     <ClInclude Include="Source\Objects\ParallaxObject.h" />
     <ClInclude Include="Source\Objects\Projectiles\EggProjectile.h" />

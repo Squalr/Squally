@@ -99,7 +99,7 @@ void TitleScreenBackground::onEnter()
 	const float sinkSpeed = 6.0f;
 	const float floatDelta = 64.0f;
 	const float floatDeltaPostSink = 8.0f;
-	const float sinkOffset = 420.0f;
+	const float sinkOffset = 432.0f;
 
 	FiniteTimeAction* bounceDown = EaseSineInOut::create(MoveTo::create(floatSpeed, Vec2(base.x, base.y - floatDelta)));
 	FiniteTimeAction* bounceUp = EaseSineInOut::create(MoveTo::create(floatSpeed, Vec2(base.x, base.y)));
@@ -111,6 +111,7 @@ void TitleScreenBackground::onEnter()
 	// Prepare parameters to pass to lambdas
 	Node* slimeNodeLocal = this->slimeNode;
 	Node* slimeSpriteLocal = this->slime;
+	AnimationNode* animationNodeLocal = this->squally;
 	SpriterEngine::EntityInstance* squallyLocal = this->squallyEntity;
 	Animation* slimeActionNode = this->slimeAnimation;
 	this->slimeAnimation->retain();
@@ -121,8 +122,9 @@ void TitleScreenBackground::onEnter()
 
 	jiggleSlime->retain();
 
-	CallFunc* pokeSlime = CallFunc::create([squallyLocal, jiggleSlime] {
-		squallyLocal->setCurrentAnimation("TitlePoke");
+	CallFunc* pokeSlime = CallFunc::create([squallyLocal, animationNodeLocal, jiggleSlime] {
+		SpriterEngine::EntityInstance* poke = animationNodeLocal->playOnce("Entity");
+		poke->setCurrentAnimation("TitlePoke");
 		jiggleSlime->execute();
 	});
 
