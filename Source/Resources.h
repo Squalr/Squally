@@ -11,7 +11,9 @@ public:
 	static const std::string EmptyImage;
 	static const std::string Backgrounds_Background1;
 	static const std::string Backgrounds_Background2;
+	static const std::string Backgrounds_Beach;
 	static const std::string Backgrounds_Moon;
+	static const std::string Backgrounds_Ocean;
 	static const std::string Backgrounds_Sun;
 	static const std::string Backgrounds_Boss_Time_Clouds_Tiling;
 	static const std::string Backgrounds_Boss_Time_Mountains_01;
@@ -611,8 +613,6 @@ public:
 	static const std::string Decor_Temple_Grass1;
 	static const std::string Decor_Temple_Grass2;
 	static const std::string Decor_Temple_Grass3;
-	static const std::string Decor_Temple_Item_14;
-	static const std::string Decor_Temple_Item_7;
 	static const std::string Decor_Temple_Ladder1;
 	static const std::string Decor_Temple_Ladder2;
 	static const std::string Decor_Temple_Ladder3;
@@ -622,6 +622,8 @@ public:
 	static const std::string Decor_Temple_Statue2;
 	static const std::string Decor_Temple_Tree1;
 	static const std::string Decor_Temple_Tree2;
+	static const std::string Decor_Temple_Tree3;
+	static const std::string Decor_Temple_Tree4;
 	static const std::string Decor_Temple_Urn1;
 	static const std::string Decor_Temple_Urn2;
 	static const std::string Decor_Temple_Urn3;

@@ -10,9 +10,13 @@ Mermaid* Mermaid::create()
 }
 
 Mermaid::Mermaid() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
-	false)
+	Resources::Entities_Environment_Ruins_Mermaid_Animations,
+	false,
+	Size(378.0f, 378.0f),
+	0.60f,
+	Vec2(0.0f, -172.0f))
 {
+	this->animationNode->setFlippedX(true);
 }
 
 Mermaid::~Mermaid()

@@ -19,6 +19,16 @@ Layer* EnvironmentParser::parseBackground(TMXObjectGroup* objectGroup)
 			SnowBackground* snowBackground = SnowBackground::create();
 			layer->addChild(snowBackground);
 		}
+		else if (background == "ocean")
+		{
+			OceanBackground* oceanBackground = OceanBackground::create();
+			layer->addChild(oceanBackground);
+		}
+		else if (background == "mountain")
+		{
+			MountainBackground* mountainBackground = MountainBackground::create();
+			layer->addChild(mountainBackground);
+		}
 	}
 
 	return layer;
