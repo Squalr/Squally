@@ -16,6 +16,6 @@ protected:
 	virtual void registerHackables();
 	void update(float) override;
 
-	Sprite* sprite;
+	Node* sprite;
 	Chest* chest;
 };

@@ -14,9 +14,19 @@ protected:
 	~PlushieMonkey();
 
 	void update(float) override;
+	void onEnter() override;
 	void registerHackables() override;
 
 private:
 	HackableData * puzzleData;
-	static int puzzleLock;
+
+	void incrementPower();
+
+	Label* valueLabel;
+
+	int previousValue;
+	int previousValueMax;
+
+	static int warpGatePower;
+	static int warpGatePowerMax;
 };

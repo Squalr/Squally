@@ -798,6 +798,9 @@
     <ClCompile Include="Source\Level\Environments\SnowEnvironment.cpp">
       <Filter>Source\Level\Environments</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Level\Backgrounds\OceanBackground.cpp">
+      <Filter>Source\Level\Backgrounds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -1473,6 +1476,9 @@
       <Filter>Source\Level\Environments</Filter>
     </ClInclude>
     <ClInclude Include="Source\Level\Backgrounds\Backgrounds.h">
+      <Filter>Source\Level\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\Backgrounds\OceanBackground.h">
       <Filter>Source\Level\Backgrounds</Filter>
     </ClInclude>
   </ItemGroup>

@@ -45,6 +45,10 @@ Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
 		{
 			newEntity = Harpy::create();
 		}
+		else if (type == "mermaid")
+		{
+			newEntity = Mermaid::create();
+		}
 		else if (type == "boss_evil_eye")
 		{
 			newEntity = BossEvilEye::create();

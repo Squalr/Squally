@@ -7,23 +7,19 @@ using namespace cocos2d;
 class Chest : public CollisionObject
 {
 public:
-	static Chest * create();
+	static Chest * create(Node* contentNode);
 
 	virtual void open();
 	virtual void close();
 
-	Node* contentNode;
-
 protected:
-	Chest();
+	Chest(Node* contentNode);
 	~Chest();
 
 	void update(float) override;
 
-	Sprite* chestOpenLidSprite;
-	Sprite* chestOpenFrontSprite;
-	Sprite* chestOpenSprite;
-	Sprite* chestClosedSprite;
-	Sprite* sprite;
+	Node* content;
+	Node* chestOpen;
+	Node* chestClosed;
 
 };

@@ -311,6 +311,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Level\Backgrounds\MatrixRain\MatrixRain.cpp" />
     <ClCompile Include="Source\Level\Backgrounds\MatrixRain\MatrixStrand.cpp" />
     <ClCompile Include="Source\Level\Backgrounds\MountainBackground.cpp" />
+    <ClCompile Include="Source\Level\Backgrounds\OceanBackground.cpp" />
     <ClCompile Include="Source\Level\Backgrounds\SnowBackground.cpp" />
     <ClCompile Include="Source\Level\Environments\JungleEnvironment.cpp" />
     <ClCompile Include="Source\Level\Environments\SnowEnvironment.cpp" />
@@ -532,6 +533,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Level\Backgrounds\MatrixRain\MatrixRain.h" />
     <ClInclude Include="Source\Level\Backgrounds\MatrixRain\MatrixStrand.h" />
     <ClInclude Include="Source\Level\Backgrounds\MountainBackground.h" />
+    <ClInclude Include="Source\Level\Backgrounds\OceanBackground.h" />
     <ClInclude Include="Source\Level\Backgrounds\SnowBackground.h" />
     <ClInclude Include="Source\Level\Environments\Environments.h" />
     <ClInclude Include="Source\Level\Environments\JungleEnvironment.h" />
