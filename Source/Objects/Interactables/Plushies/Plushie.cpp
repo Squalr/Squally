@@ -2,7 +2,8 @@
 
 Plushie::Plushie()
 {
-	this->chest = Chest::create();
+	this->sprite = Node::create();
+	this->chest = Chest::create(this->sprite);
 
 	this->registerHackables();
 

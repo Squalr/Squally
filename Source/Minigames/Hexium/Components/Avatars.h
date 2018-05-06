@@ -24,6 +24,10 @@ private:
 	void initializeListeners();
 	void setAvatars(GameState* gameState);
 
-	Sprite* playerFrame;
-	Sprite* enemyFrame;
+	ClippingNode* clipPlayer;
+	ClippingNode* clipEnemy;
+	Sprite* framePlayer;
+	Sprite* frameEnemy;
+	Node* avatarPlayer;
+	Node* avatarEnemy;
 };
