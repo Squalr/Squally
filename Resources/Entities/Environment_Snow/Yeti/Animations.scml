@@ -11,7 +11,7 @@
         <file id="7" name="image-06.png" width="187" height="162" pivot_x="0" pivot_y="1"/>
         <file id="8" name="image-09.png" width="484" height="502" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="entity_000">
+    <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="153.013" h="10"/>
         <obj_info name="bone_001" type="bone" w="101.079" h="10"/>
         <obj_info name="bone_002" type="bone" w="136" h="10"/>
@@ -640,7 +640,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="3" name="Attack-1" length="10" interval="100">
+        <animation id="3" name="Attack1" length="10" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="8" key="0"/>
@@ -915,7 +915,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="4" name="Attack-2" length="10" interval="100">
+        <animation id="4" name="Attack2" length="10" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="8" key="0"/>

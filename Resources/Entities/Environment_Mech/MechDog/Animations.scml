@@ -19,7 +19,7 @@
         <file id="15" name="Tail (2).png" width="59" height="37" pivot_x="0" pivot_y="1"/>
         <file id="16" name="Tail (1).png" width="36" height="43" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Dog">
+    <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="160.017" h="10"/>
         <obj_info name="bone_001" type="bone" w="141.265" h="10"/>
         <obj_info name="bone_002" type="bone" w="54.1875" h="10"/>

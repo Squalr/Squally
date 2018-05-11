@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r4.1">
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
     <folder id="0">
         <file id="0" name="Head01.png" width="500" height="500" pivot_x="0" pivot_y="1"/>
         <file id="1" name="Body.png" width="450" height="500" pivot_x="0" pivot_y="1"/>
@@ -17,7 +17,7 @@
         <file id="13" name="Right Wrist.png" width="200" height="250" pivot_x="0" pivot_y="1"/>
         <file id="14" name="Weapon.png" width="450" height="750" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="The Executioner">
+    <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="120.657" h="10"/>
         <obj_info name="bone_001" type="bone" w="114.418" h="10"/>
         <obj_info name="bone_002" type="bone" w="189.457" h="10"/>

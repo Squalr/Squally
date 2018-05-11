@@ -10,7 +10,7 @@ EarthGolem* EarthGolem::create()
 }
 
 EarthGolem::EarthGolem() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Caverns_EarthGolem_Animations,
 	false)
 {
 }

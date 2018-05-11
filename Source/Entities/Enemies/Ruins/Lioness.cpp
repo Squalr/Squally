@@ -10,7 +10,7 @@ Lioness* Lioness::create()
 }
 
 Lioness::Lioness() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Ruins_Lioness_Animations,
 	false)
 {
 }

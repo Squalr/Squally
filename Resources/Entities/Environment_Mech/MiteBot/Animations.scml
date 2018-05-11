@@ -10,7 +10,7 @@
         <file id="6" name="LeftFrontLeg (2).png" width="99" height="169" pivot_x="0" pivot_y="1"/>
         <file id="7" name="LeftBackLeg (2).png" width="99" height="170" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Mite">
+    <entity id="0" name="Entity">
         <obj_info name="BodyBone" type="bone" w="275.352" h="10"/>
         <obj_info name="RightFrontLegBone1" type="bone" w="68.9935" h="10"/>
         <obj_info name="RightFrontLegBone2" type="bone" w="156.549" h="10"/>

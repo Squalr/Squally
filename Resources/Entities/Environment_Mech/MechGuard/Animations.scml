@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b10">
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
     <folder id="0">
         <file id="0" name="Head01.png" width="450" height="450" pivot_x="0" pivot_y="1"/>
         <file id="1" name="Body.png" width="200" height="220" pivot_x="0" pivot_y="1"/>
@@ -21,7 +21,7 @@
         <file id="17" name="Head02.png" width="450" height="450" pivot_x="0" pivot_y="1"/>
         <file id="18" name="Axe.png" width="270" height="400" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Evil Bot">
+    <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="74.2569" h="10"/>
         <obj_info name="bone_001" type="bone" w="76.1753" h="10"/>
         <obj_info name="bone_002" type="bone" w="72.358" h="10"/>
@@ -36,7 +36,7 @@
         <obj_info name="bone_011" type="bone" w="96.4774" h="10"/>
         <obj_info name="bone_014" type="bone" w="87.0003" h="10"/>
         <obj_info name="bone_015" type="bone" w="77.9569" h="10"/>
-        <animation id="0" name="Idle" length="800">
+        <animation id="0" name="Idle" length="800" interval="100">
             <gline pos="0" v="1"/>
             <gline pos="-164"/>
             <mainline>
@@ -359,7 +359,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="1" name="Sliding" length="200">
+        <animation id="1" name="Sliding" length="200" interval="100">
             <gline pos="0" v="1"/>
             <gline pos="-164"/>
             <mainline>
@@ -611,7 +611,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="2" name="Hurt" length="500">
+        <animation id="2" name="Hurt" length="500" interval="100">
             <gline pos="0" v="1"/>
             <gline pos="-164"/>
             <mainline>
@@ -1248,7 +1248,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="3" name="Dying" length="500">
+        <animation id="3" name="Dying" length="500" interval="100">
             <gline pos="0" v="1"/>
             <gline pos="-164"/>
             <mainline>
@@ -2340,7 +2340,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="4" name="Throwing" length="400">
+        <animation id="4" name="Throwing" length="400" interval="100">
             <gline pos="0" v="1"/>
             <gline pos="-164"/>
             <mainline>
@@ -2887,7 +2887,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="5" name="Squat" length="800">
+        <animation id="5" name="Squat" length="800" interval="100">
             <gline pos="0" v="1"/>
             <mainline>
                 <key id="0">
@@ -3209,7 +3209,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="6" name="Squat Hurt" length="400">
+        <animation id="6" name="Squat Hurt" length="400" interval="100">
             <gline pos="0" v="1"/>
             <mainline>
                 <key id="0">
@@ -3682,7 +3682,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="7" name="Squat Melee" length="400">
+        <animation id="7" name="Squat Melee" length="400" interval="100">
             <gline pos="0" v="1"/>
             <mainline>
                 <key id="0">
@@ -4070,7 +4070,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="8" name="Squat Throwing" length="400">
+        <animation id="8" name="Squat Throwing" length="400" interval="100">
             <gline pos="0" v="1"/>
             <mainline>
                 <key id="0">
@@ -4543,7 +4543,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="9" name="Squat Shooting" length="150">
+        <animation id="9" name="Squat Shooting" length="150" interval="100">
             <gline pos="0" v="1"/>
             <mainline>
                 <key id="0">
@@ -4797,7 +4797,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="10" name="Melee" length="400">
+        <animation id="10" name="Melee" length="400" interval="100">
             <gline pos="0" v="1"/>
             <gline pos="-164"/>
             <mainline>
@@ -5207,7 +5207,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="11" name="Jumping" length="1000">
+        <animation id="11" name="Jumping" length="1000" interval="100">
             <gline pos="0" v="1"/>
             <gline pos="-164"/>
             <mainline>
@@ -5872,7 +5872,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="12" name="Running" length="600">
+        <animation id="12" name="Running" length="600" interval="100">
             <gline pos="0" v="1"/>
             <gline pos="-179"/>
             <gline pos="-195"/>
@@ -6570,7 +6570,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="13" name="Run Shooting" length="600">
+        <animation id="13" name="Run Shooting" length="600" interval="100">
             <gline pos="0" v="1"/>
             <gline pos="-179"/>
             <gline pos="-195"/>
@@ -7268,7 +7268,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="14" name="Shooting" length="150">
+        <animation id="14" name="Shooting" length="150" interval="100">
             <gline pos="0" v="1"/>
             <gline pos="-164"/>
             <mainline>

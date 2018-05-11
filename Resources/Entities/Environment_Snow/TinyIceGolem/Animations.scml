@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r4.1">
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
     <folder id="0">
         <file id="0" name="Left Arm.png" width="400" height="401" pivot_x="0" pivot_y="1"/>
         <file id="1" name="Left Wrist.png" width="400" height="501" pivot_x="0" pivot_y="1"/>
@@ -18,7 +18,7 @@
         <file id="14" name="Eyes01.png" width="370" height="151" pivot_x="0" pivot_y="1"/>
         <file id="15" name="Eyes02.png" width="370" height="151" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Tiny Ice Monster">
+    <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="182.142" h="10"/>
         <obj_info name="bone_002" type="bone" w="207.41" h="10"/>
         <obj_info name="bone_003" type="bone" w="256.557" h="10"/>
@@ -1384,7 +1384,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="4" name="Dying 01" length="500" interval="100">
+        <animation id="4" name="Die" length="500" interval="100">
             <gline pos="-393"/>
             <gline pos="2" v="1"/>
             <gline pos="-27" v="1"/>
@@ -2125,7 +2125,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="5" name="Dying 02" length="500" interval="100">
+        <animation id="5" name="Die2" length="500" interval="100">
             <gline pos="-393"/>
             <gline pos="2" v="1"/>
             <gline pos="-27" v="1"/>
@@ -2876,7 +2876,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="6" name="Walking" length="800" interval="100">
+        <animation id="6" name="Walk" length="800" interval="100">
             <gline pos="-411"/>
             <gline pos="2" v="1"/>
             <gline pos="-9"/>
@@ -3572,7 +3572,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="7" name="Attacking" length="500" interval="100">
+        <animation id="7" name="Attack" length="500" interval="100">
             <gline pos="-393"/>
             <gline pos="2" v="1"/>
             <gline pos="-11"/>

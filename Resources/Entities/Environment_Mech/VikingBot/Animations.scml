@@ -21,7 +21,7 @@
         <file id="6" name="leg.png" width="600" height="600" pivot_x="0.483333" pivot_y="0.676667"/>
         <file id="7" name="torso.png" width="800" height="900" pivot_x="0.435897" pivot_y="0.259484"/>
     </folder>
-    <entity id="0" name="Viking boss">
+    <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="343.993" h="10"/>
         <obj_info name="bone_001" type="bone" w="89.0852" h="10"/>
         <obj_info name="bone_002" type="bone" w="73.7927" h="10"/>
@@ -29,7 +29,7 @@
         <obj_info name="bone_004" type="bone" w="141.885" h="10"/>
         <obj_info name="bone_005" type="bone" w="422.357" h="10"/>
         <obj_info name="bone_006" type="bone" w="317.507" h="10"/>
-        <animation id="0" name="idle" length="400" interval="100">
+        <animation id="0" name="Idle" length="400" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="9" key="0"/>
@@ -229,7 +229,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="1" name="attack" length="700" interval="100">
+        <animation id="1" name="Attack" length="700" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="9" key="0"/>
@@ -4997,7 +4997,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="2" name="walk" length="800" interval="100">
+        <animation id="2" name="Walk" length="800" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="0" key="0"/>
@@ -5251,7 +5251,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="3" name="hurt" length="300" interval="100">
+        <animation id="3" name="Hurt" length="300" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="0" key="0"/>
@@ -5455,7 +5455,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="4" name="death" length="500" interval="100">
+        <animation id="4" name="Die" length="500" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="0" key="0"/>
