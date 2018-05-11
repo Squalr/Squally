@@ -10,7 +10,7 @@ BossRhinoman* BossRhinoman::create()
 }
 
 BossRhinoman::BossRhinoman() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Jungle_BossRhinoman_Animations,
 	false)
 {
 }

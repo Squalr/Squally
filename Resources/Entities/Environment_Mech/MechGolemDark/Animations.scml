@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r10">
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
     <folder id="0">
         <file id="0" name="Body.png" width="320" height="320" pivot_x="0" pivot_y="1"/>
         <file id="1" name="Head.png" width="320" height="280" pivot_x="0" pivot_y="1"/>
@@ -19,7 +19,7 @@
         <file id="15" name="PunchFX_002.png" width="160" height="160" pivot_x="0" pivot_y="1"/>
         <file id="16" name="Eyes 02.png" width="200" height="128" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Giant Robot">
+    <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="134.488" h="10"/>
         <obj_info name="bone_001" type="bone" w="159.19" h="10"/>
         <obj_info name="bone_002" type="bone" w="61.1237" h="10"/>
@@ -1100,13 +1100,13 @@
                     <bone x="61.123736" angle="348.883294"/>
                 </key>
                 <key id="1" time="200" spin="-1">
-                    <bone x="61.123736" y="0"/>
+                    <bone x="61.123736" angle="0"/>
                 </key>
                 <key id="2" time="400">
                     <bone x="61.123736" angle="348.883294"/>
                 </key>
                 <key id="3" time="600" spin="-1">
-                    <bone x="61.123736" y="0" angle="351.422154"/>
+                    <bone x="61.123736" angle="351.422154"/>
                 </key>
             </timeline>
             <timeline id="12" name="Left Leg">
@@ -1156,13 +1156,13 @@
                     <bone x="63.96626" angle="345.549977"/>
                 </key>
                 <key id="1" time="200" spin="-1">
-                    <bone x="63.96626" y="0" angle="348.864173"/>
+                    <bone x="63.96626" angle="348.864173"/>
                 </key>
                 <key id="2" time="400">
                     <bone x="63.96626" angle="345.549977"/>
                 </key>
                 <key id="3" time="600" spin="-1">
-                    <bone x="63.96626" y="0" angle="357.38467"/>
+                    <bone x="63.96626" angle="357.38467"/>
                 </key>
             </timeline>
             <timeline id="16" obj="6" name="bone_006" object_type="bone">
@@ -1181,19 +1181,19 @@
             </timeline>
             <timeline id="17" obj="7" name="bone_007" object_type="bone">
                 <key id="0">
-                    <bone x="201.457115" y="-0" angle="355.136017"/>
+                    <bone x="201.457115" angle="355.136017"/>
                 </key>
                 <key id="1" time="50" spin="-1">
-                    <bone x="201.457115" y="-0" angle="357.248191"/>
+                    <bone x="201.457115" angle="357.248191"/>
                 </key>
                 <key id="2" time="250">
-                    <bone x="201.457115" y="-0" angle="351.168294"/>
+                    <bone x="201.457115" angle="351.168294"/>
                 </key>
                 <key id="3" time="450" spin="-1">
-                    <bone x="201.457115" y="-0" angle="357.248619"/>
+                    <bone x="201.457115" angle="357.248619"/>
                 </key>
                 <key id="4" time="650">
-                    <bone x="201.457115" y="-0" angle="351.169632"/>
+                    <bone x="201.457115" angle="351.169632"/>
                 </key>
             </timeline>
             <timeline id="18" obj="8" name="bone_008" object_type="bone">
@@ -1254,16 +1254,16 @@
             </timeline>
             <timeline id="22" obj="10" name="bone_010" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="133.869022" y="0" angle="53.322838"/>
+                    <bone x="133.869022" angle="53.322838"/>
                 </key>
                 <key id="1" time="200">
-                    <bone x="133.869022" y="-0" angle="43.382152"/>
+                    <bone x="133.869022" angle="43.382152"/>
                 </key>
                 <key id="2" time="400" spin="-1">
-                    <bone x="133.869022" y="0" angle="53.322838"/>
+                    <bone x="133.869022" angle="53.322838"/>
                 </key>
                 <key id="3" time="600">
-                    <bone x="133.869022" y="0" angle="50.737824"/>
+                    <bone x="133.869022" angle="50.737824"/>
                 </key>
             </timeline>
             <timeline id="23" name="PunchFX_000">
@@ -1653,13 +1653,13 @@
                     <bone x="61.123736" angle="348.883294"/>
                 </key>
                 <key id="1" time="150" spin="-1">
-                    <bone x="61.123736" y="-0"/>
+                    <bone x="61.123736" angle="0"/>
                 </key>
                 <key id="2" time="300" spin="-1">
                     <bone x="61.123736" angle="348.883294"/>
                 </key>
                 <key id="3" time="450">
-                    <bone x="61.123736" y="-0" angle="328.094905"/>
+                    <bone x="61.123736" angle="328.094905"/>
                 </key>
             </timeline>
             <timeline id="12" name="Left Leg">
@@ -1715,7 +1715,7 @@
                     <bone x="63.96626" angle="345.549977"/>
                 </key>
                 <key id="3" time="450" spin="-1">
-                    <bone x="63.96626" y="-0" angle="360"/>
+                    <bone x="63.96626"/>
                 </key>
             </timeline>
             <timeline id="16" obj="6" name="bone_006" object_type="bone">
@@ -1734,19 +1734,19 @@
             </timeline>
             <timeline id="17" obj="7" name="bone_007" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="201.457115" y="-0" angle="355.136017"/>
+                    <bone x="201.457115" angle="355.136017"/>
                 </key>
                 <key id="1" time="50">
-                    <bone x="201.457115" y="-0" angle="350.622999"/>
+                    <bone x="201.457115" angle="350.622999"/>
                 </key>
                 <key id="2" time="200" spin="-1">
-                    <bone x="201.457115" y="-0" angle="3.170859"/>
+                    <bone x="201.457115" angle="3.170859"/>
                 </key>
                 <key id="3" time="350">
-                    <bone x="201.457115" y="-0" angle="350.624408"/>
+                    <bone x="201.457115" angle="350.624408"/>
                 </key>
                 <key id="4" time="500" spin="-1">
-                    <bone x="201.457115" y="-0" angle="3.171204"/>
+                    <bone x="201.457115" angle="3.171204"/>
                 </key>
             </timeline>
             <timeline id="18" obj="8" name="bone_008" object_type="bone">
@@ -1807,16 +1807,16 @@
             </timeline>
             <timeline id="22" obj="10" name="bone_010" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="133.869022" y="0" angle="53.322838"/>
+                    <bone x="133.869022" angle="53.322838"/>
                 </key>
                 <key id="1" time="150">
-                    <bone x="133.869022" y="-0" angle="45.266057"/>
+                    <bone x="133.869022" angle="45.266057"/>
                 </key>
                 <key id="2" time="300" spin="-1">
-                    <bone x="133.869022" y="0" angle="53.322838"/>
+                    <bone x="133.869022" angle="53.322838"/>
                 </key>
                 <key id="3" time="450">
-                    <bone x="133.869022" y="-0" angle="48.138506"/>
+                    <bone x="133.869022" angle="48.138506"/>
                 </key>
             </timeline>
             <timeline id="23" name="PunchFX_000">
@@ -1957,10 +1957,10 @@
             </timeline>
             <timeline id="11" obj="3" name="bone_003" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="61.123736" y="-0" angle="293.94878"/>
+                    <bone x="61.123736" angle="293.94878"/>
                 </key>
                 <key id="1" time="100">
-                    <bone x="61.123736" y="-0" angle="287.552783"/>
+                    <bone x="61.123736" angle="287.552783"/>
                 </key>
             </timeline>
             <timeline id="12" name="Left Leg">
@@ -1983,7 +1983,7 @@
             </timeline>
             <timeline id="15" obj="5" name="bone_005" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="63.96626" y="-0" angle="2.491397"/>
+                    <bone x="63.96626" angle="2.491397"/>
                 </key>
             </timeline>
             <timeline id="16" obj="6" name="bone_006" object_type="bone">
@@ -1996,10 +1996,10 @@
             </timeline>
             <timeline id="17" obj="7" name="bone_007" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="201.457115" y="-0" angle="328.443611"/>
+                    <bone x="201.457115" angle="328.443611"/>
                 </key>
                 <key id="1" time="100">
-                    <bone x="201.457115" y="-0" angle="325.958069"/>
+                    <bone x="201.457115" angle="325.958069"/>
                 </key>
             </timeline>
             <timeline id="18" obj="8" name="bone_008" object_type="bone">
@@ -2027,10 +2027,10 @@
             </timeline>
             <timeline id="22" obj="10" name="bone_010" object_type="bone">
                 <key id="0">
-                    <bone x="133.869022" y="0" angle="71.921144"/>
+                    <bone x="133.869022" angle="71.921144"/>
                 </key>
                 <key id="1" time="100" spin="-1">
-                    <bone x="133.869022" y="0" angle="74.744128"/>
+                    <bone x="133.869022" angle="74.744128"/>
                 </key>
             </timeline>
             <timeline id="23" name="PunchFX_000">
@@ -2189,7 +2189,7 @@
                     <bone x="61.123736" angle="348.883294"/>
                 </key>
                 <key id="1" time="200" spin="-1">
-                    <bone x="61.123736" angle="360"/>
+                    <bone x="61.123736"/>
                 </key>
             </timeline>
             <timeline id="12" name="Left Leg">
@@ -2221,7 +2221,7 @@
                     <bone x="63.96626" angle="345.549977"/>
                 </key>
                 <key id="1" time="200">
-                    <bone x="63.96626" y="0" angle="281.412956"/>
+                    <bone x="63.96626" angle="281.412956"/>
                 </key>
             </timeline>
             <timeline id="16" obj="6" name="bone_006" object_type="bone">
@@ -2234,10 +2234,10 @@
             </timeline>
             <timeline id="17" obj="7" name="bone_007" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="201.457115" y="-0" angle="355.136017"/>
+                    <bone x="201.457115" angle="355.136017"/>
                 </key>
                 <key id="1" time="200">
-                    <bone x="201.457115" y="-0" angle="340.282987"/>
+                    <bone x="201.457115" angle="340.282987"/>
                 </key>
             </timeline>
             <timeline id="18" obj="8" name="bone_008" object_type="bone">
@@ -2274,10 +2274,10 @@
             </timeline>
             <timeline id="22" obj="10" name="bone_010" object_type="bone">
                 <key id="0">
-                    <bone x="133.869022" y="0" angle="53.322838"/>
+                    <bone x="133.869022" angle="53.322838"/>
                 </key>
                 <key id="1" time="200" spin="-1">
-                    <bone x="133.869022" y="0" angle="73.108233"/>
+                    <bone x="133.869022" angle="73.108233"/>
                 </key>
             </timeline>
             <timeline id="23" name="PunchFX_000">
@@ -2412,7 +2412,7 @@
             </timeline>
             <timeline id="11" obj="3" name="bone_003" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="61.123736" angle="360"/>
+                    <bone x="61.123736"/>
                 </key>
             </timeline>
             <timeline id="12" name="Left Leg">
@@ -2435,10 +2435,10 @@
             </timeline>
             <timeline id="15" obj="5" name="bone_005" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="63.96626" y="0" angle="281.412956"/>
+                    <bone x="63.96626" angle="281.412956"/>
                 </key>
                 <key id="1" time="100">
-                    <bone x="63.96626" y="0" angle="275.731325"/>
+                    <bone x="63.96626" angle="275.731325"/>
                 </key>
             </timeline>
             <timeline id="16" obj="6" name="bone_006" object_type="bone">
@@ -2451,10 +2451,10 @@
             </timeline>
             <timeline id="17" obj="7" name="bone_007" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="201.457115" y="-0" angle="340.282987"/>
+                    <bone x="201.457115" angle="340.282987"/>
                 </key>
                 <key id="1" time="100">
-                    <bone x="201.457115" y="-0" angle="338.253371"/>
+                    <bone x="201.457115" angle="338.253371"/>
                 </key>
             </timeline>
             <timeline id="18" obj="8" name="bone_008" object_type="bone">
@@ -2482,10 +2482,10 @@
             </timeline>
             <timeline id="22" obj="10" name="bone_010" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="133.869022" y="0" angle="73.108233"/>
+                    <bone x="133.869022" angle="73.108233"/>
                 </key>
                 <key id="1" time="100">
-                    <bone x="133.869022" y="0" angle="68.142298"/>
+                    <bone x="133.869022" angle="68.142298"/>
                 </key>
             </timeline>
             <timeline id="23" name="PunchFX_000">
@@ -2617,10 +2617,10 @@
             </timeline>
             <timeline id="11" obj="3" name="bone_003" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="61.123736" y="-0" angle="277.649222"/>
+                    <bone x="61.123736" angle="277.649222"/>
                 </key>
                 <key id="1" time="100">
-                    <bone x="61.123736" y="-0" angle="275.073702"/>
+                    <bone x="61.123736" angle="275.073702"/>
                 </key>
             </timeline>
             <timeline id="12" name="Left Leg">
@@ -2643,7 +2643,7 @@
             </timeline>
             <timeline id="15" obj="5" name="bone_005" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="63.96626" y="0" angle="360"/>
+                    <bone x="63.96626"/>
                 </key>
             </timeline>
             <timeline id="16" obj="6" name="bone_006" object_type="bone">
@@ -2656,10 +2656,10 @@
             </timeline>
             <timeline id="17" obj="7" name="bone_007" object_type="bone">
                 <key id="0">
-                    <bone x="201.457115" y="-0" angle="340.282987"/>
+                    <bone x="201.457115" angle="340.282987"/>
                 </key>
                 <key id="1" time="100" spin="-1">
-                    <bone x="201.457115" y="-0" angle="343.146533"/>
+                    <bone x="201.457115" angle="343.146533"/>
                 </key>
             </timeline>
             <timeline id="18" obj="8" name="bone_008" object_type="bone">
@@ -2687,10 +2687,10 @@
             </timeline>
             <timeline id="22" obj="10" name="bone_010" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="133.869022" y="0" angle="73.91022"/>
+                    <bone x="133.869022" angle="73.91022"/>
                 </key>
                 <key id="1" time="100">
-                    <bone x="133.869022" y="0" angle="71.207976"/>
+                    <bone x="133.869022" angle="71.207976"/>
                 </key>
             </timeline>
             <timeline id="23" name="PunchFX_000">
@@ -3002,10 +3002,10 @@
             </timeline>
             <timeline id="17" obj="7" name="bone_007" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="201.457115" y="-0" angle="355.136017"/>
+                    <bone x="201.457115" angle="355.136017"/>
                 </key>
                 <key id="1" time="50">
-                    <bone x="201.457115" y="-0" angle="345.108288"/>
+                    <bone x="201.457115" angle="345.108288"/>
                 </key>
                 <key id="2" time="200" spin="-1">
                     <bone x="214.126389" y="6.770857" angle="11.325391"/>
@@ -3054,16 +3054,16 @@
             </timeline>
             <timeline id="22" obj="10" name="bone_010" object_type="bone">
                 <key id="0">
-                    <bone x="133.869022" y="0" angle="53.322838"/>
+                    <bone x="133.869022" angle="53.322838"/>
                 </key>
                 <key id="1" time="50" spin="-1">
-                    <bone x="133.869022" y="0" angle="59.886322"/>
+                    <bone x="133.869022" angle="59.886322"/>
                 </key>
                 <key id="2" time="150" spin="-1">
-                    <bone x="133.869022" y="0" angle="43.642737"/>
+                    <bone x="133.869022" angle="43.642737"/>
                 </key>
                 <key id="3" time="200">
-                    <bone x="133.869022" y="0" angle="41.173121"/>
+                    <bone x="133.869022" angle="41.173121"/>
                 </key>
             </timeline>
             <timeline id="23" name="PunchFX_000">
@@ -3475,16 +3475,16 @@
                     <bone x="61.123736" angle="348.883294"/>
                 </key>
                 <key id="1" time="300">
-                    <bone x="61.123736" y="-0" angle="331.900536"/>
+                    <bone x="61.123736" angle="331.900536"/>
                 </key>
                 <key id="2" time="350" spin="0">
-                    <bone x="61.123736" y="-0" angle="355.612667"/>
+                    <bone x="61.123736" angle="355.612667"/>
                 </key>
                 <key id="3" time="375" spin="0">
-                    <bone x="61.123736" y="-0" angle="355.612667"/>
+                    <bone x="61.123736" angle="355.612667"/>
                 </key>
                 <key id="4" time="500" spin="-1">
-                    <bone x="61.123736" y="-0" angle="355.612667"/>
+                    <bone x="61.123736" angle="355.612667"/>
                 </key>
             </timeline>
             <timeline id="12" name="Left Leg">
@@ -3552,16 +3552,16 @@
                     <bone x="63.96626" angle="339.967578"/>
                 </key>
                 <key id="2" time="300" spin="0">
-                    <bone x="63.96626" y="-0" angle="335.52029"/>
+                    <bone x="63.96626" angle="335.52029"/>
                 </key>
                 <key id="3" time="350" spin="0">
-                    <bone x="63.96626" y="-0" angle="335.52029"/>
+                    <bone x="63.96626" angle="335.52029"/>
                 </key>
                 <key id="4" time="375" spin="0">
-                    <bone x="63.96626" y="-0" angle="335.52029"/>
+                    <bone x="63.96626" angle="335.52029"/>
                 </key>
                 <key id="5" time="500">
-                    <bone x="63.96626" y="-0" angle="335.52029"/>
+                    <bone x="63.96626" angle="335.52029"/>
                 </key>
             </timeline>
             <timeline id="16" obj="6" name="bone_006" object_type="bone">
@@ -3589,13 +3589,13 @@
             </timeline>
             <timeline id="17" obj="7" name="bone_007" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="201.457115" y="-0" angle="355.136017"/>
+                    <bone x="201.457115" angle="355.136017"/>
                 </key>
                 <key id="1" time="100" spin="-1">
-                    <bone x="201.457115" y="-0" angle="347.711127"/>
+                    <bone x="201.457115" angle="347.711127"/>
                 </key>
                 <key id="2" time="200">
-                    <bone x="201.457115" y="-0" angle="340.703718"/>
+                    <bone x="201.457115" angle="340.703718"/>
                 </key>
                 <key id="3" time="300">
                     <bone x="203.470976" y="-8.277913" angle="340.815006"/>
@@ -3686,19 +3686,19 @@
             </timeline>
             <timeline id="22" obj="10" name="bone_010" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="133.869022" y="0" angle="53.322838"/>
+                    <bone x="133.869022" angle="53.322838"/>
                 </key>
                 <key id="1" time="300" spin="-1">
-                    <bone x="133.869022" y="-0" angle="53.322838"/>
+                    <bone x="133.869022" angle="53.322838"/>
                 </key>
                 <key id="2" time="350" spin="0">
-                    <bone x="133.869022" y="-0" angle="17.370214"/>
+                    <bone x="133.869022" angle="17.370214"/>
                 </key>
                 <key id="3" time="375" spin="0">
-                    <bone x="133.869022" y="-0" angle="17.370214"/>
+                    <bone x="133.869022" angle="17.370214"/>
                 </key>
                 <key id="4" time="500">
-                    <bone x="133.869022" y="-0" angle="17.370214"/>
+                    <bone x="133.869022" angle="17.370214"/>
                 </key>
             </timeline>
             <timeline id="23" name="PunchFX_000">

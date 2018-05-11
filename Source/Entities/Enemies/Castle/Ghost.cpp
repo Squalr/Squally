@@ -10,7 +10,7 @@ Ghost* Ghost::create()
 }
 
 Ghost::Ghost() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Castle_Ghost_Animations,
 	false)
 {
 }

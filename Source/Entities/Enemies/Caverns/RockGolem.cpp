@@ -10,7 +10,7 @@ RockGolem* RockGolem::create()
 }
 
 RockGolem::RockGolem() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Caverns_RockGolem_Animations,
 	false)
 {
 }

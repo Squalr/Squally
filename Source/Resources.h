@@ -768,7 +768,7 @@ public:
 	static const std::string Entities_Environment_Castle_Executioner_Right_Thigh;
 	static const std::string Entities_Environment_Castle_Executioner_Right_Wrist;
 	static const std::string Entities_Environment_Castle_Executioner_Weapon;
-	static const std::string Entities_Environment_Castle_Ghost_Animation;
+	static const std::string Entities_Environment_Castle_Ghost_Animations;
 	static const std::string Entities_Environment_Castle_Ghost_Eyes01;
 	static const std::string Entities_Environment_Castle_Ghost_Eyes02;
 	static const std::string Entities_Environment_Castle_Ghost_Head;
@@ -937,6 +937,7 @@ public:
 	static const std::string Entities_Environment_Caverns_BlackWidow_spider_web;
 	static const std::string Entities_Environment_Caverns_BlackWidow_upper_leg;
 	static const std::string Entities_Environment_Caverns_BlackWidow_upper_leg_l;
+	static const std::string Entities_Environment_Caverns_BossKrampus_Animations;
 	static const std::string Entities_Environment_Caverns_BossKrampus_BASKET_BACK_PART;
 	static const std::string Entities_Environment_Caverns_BossKrampus_BASKET_TOP;
 	static const std::string Entities_Environment_Caverns_BossKrampus_BASKET;
@@ -1682,7 +1683,6 @@ public:
 	static const std::string Entities_Environment_Obelisk_Abomination_caveman_shadow;
 	static const std::string Entities_Environment_Obelisk_Abomination_caveman_weapon;
 	static const std::string Entities_Environment_Obelisk_BatDemon_1_tail;
-	static const std::string Entities_Environment_Obelisk_BatDemon_3;
 	static const std::string Entities_Environment_Obelisk_BatDemon_3_body;
 	static const std::string Entities_Environment_Obelisk_BatDemon_3_demon;
 	static const std::string Entities_Environment_Obelisk_BatDemon_3_fireboll_1;
@@ -1698,6 +1698,7 @@ public:
 	static const std::string Entities_Environment_Obelisk_BatDemon_3_right_wing;
 	static const std::string Entities_Environment_Obelisk_BatDemon_3_stick;
 	static const std::string Entities_Environment_Obelisk_BatDemon_3_tail;
+	static const std::string Entities_Environment_Obelisk_BatDemon_Animations;
 	static const std::string Entities_Environment_Obelisk_BossSkeletonKing_Animations;
 	static const std::string Entities_Environment_Obelisk_BossSkeletonKing_BELT;
 	static const std::string Entities_Environment_Obelisk_BossSkeletonKing_CAPE;
@@ -1895,6 +1896,7 @@ public:
 	static const std::string Entities_Environment_Ruins_AnubisWarrior_R_LEG_2;
 	static const std::string Entities_Environment_Ruins_AnubisWarrior_TORSO;
 	static const std::string Entities_Environment_Ruins_AnubisWarrior_WEAPON;
+	static const std::string Entities_Environment_Ruins_BossEgyptianGoddess_Animations;
 	static const std::string Entities_Environment_Ruins_BossEgyptianGoddess_BACK_HAIR;
 	static const std::string Entities_Environment_Ruins_BossEgyptianGoddess_BACK_MIDDLE_HAIR;
 	static const std::string Entities_Environment_Ruins_BossEgyptianGoddess_BELT;
@@ -2306,9 +2308,6 @@ public:
 	static const std::string Entities_Environment_Snow_YetiWarrior_image_09;
 	static const std::string Entities_Environment_Volcano_BossDemonKing_Animations;
 	static const std::string Entities_Environment_Volcano_BossDemonKing_BELT;
-	static const std::string Entities_Environment_Volcano_BossDemonKing_ddd_000;
-	static const std::string Entities_Environment_Volcano_BossDemonKing_ddd_001;
-	static const std::string Entities_Environment_Volcano_BossDemonKing_ddd_002;
 	static const std::string Entities_Environment_Volcano_BossDemonKing_HEAD;
 	static const std::string Entities_Environment_Volcano_BossDemonKing_JAW;
 	static const std::string Entities_Environment_Volcano_BossDemonKing_L_ARM_1_ARMOR_1;
@@ -2359,8 +2358,6 @@ public:
 	static const std::string Entities_Environment_Volcano_DemonDragon_magma_tail;
 	static const std::string Entities_Environment_Volcano_DemonDragon_magma_wing_L;
 	static const std::string Entities_Environment_Volcano_DemonDragon_magma_wing_R;
-	static const std::string Entities_Environment_Volcano_DemonGhost_5;
-	static const std::string Entities_Environment_Volcano_DemonGhost_aaa_000;
 	static const std::string Entities_Environment_Volcano_DemonGhost_Animations;
 	static const std::string Entities_Environment_Volcano_DemonGhost_B_WING;
 	static const std::string Entities_Environment_Volcano_DemonGhost_BODY;
@@ -2574,10 +2571,10 @@ public:
 	static const std::string Entities_Helpers_Gecko_SlashFX;
 	static const std::string Entities_Helpers_Gecko_Tail___Back;
 	static const std::string Entities_Helpers_Gecko_Tail;
+	static const std::string Entities_Helpers_Ghost_Animations;
 	static const std::string Entities_Helpers_Ghost_back_arm;
 	static const std::string Entities_Helpers_Ghost_body;
 	static const std::string Entities_Helpers_Ghost_cross_eye;
-	static const std::string Entities_Helpers_Ghost_Ghosts;
 	static const std::string Entities_Helpers_Ghost_head_top_1;
 	static const std::string Entities_Helpers_Ghost_head_top_2;
 	static const std::string Entities_Helpers_Ghost_icon_ghost_style_one;
@@ -2601,9 +2598,9 @@ public:
 	static const std::string Entities_Helpers_Ghost_tail_2;
 	static const std::string Entities_Helpers_Ghost_tail_3;
 	static const std::string Entities_Helpers_Ghost_top_arm;
+	static const std::string Entities_Helpers_GhostFat_Animations;
 	static const std::string Entities_Helpers_GhostFat_back_arm;
 	static const std::string Entities_Helpers_GhostFat_body;
-	static const std::string Entities_Helpers_GhostFat_ghost_2;
 	static const std::string Entities_Helpers_GhostFat_head;
 	static const std::string Entities_Helpers_GhostFat_head_top_part;
 	static const std::string Entities_Helpers_GhostFat_head_top_part_scarey;

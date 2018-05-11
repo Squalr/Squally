@@ -37,10 +37,6 @@ Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
 		{
 			newEntity = Knight::create();
 		}
-		else if (type == "skeleton")
-		{
-			newEntity = Skeleton::create();
-		}
 		else if (type == "harpy")
 		{
 			newEntity = Harpy::create();
@@ -59,7 +55,7 @@ Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
 		}
 		else if (type == "boss_demon_king")
 		{
-			newEntity = BossDemon::create();
+			newEntity = BossDemonKing::create();
 		}
 		else
 		{

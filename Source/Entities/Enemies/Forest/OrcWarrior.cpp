@@ -10,7 +10,7 @@ OrcWarrior* OrcWarrior::create()
 }
 
 OrcWarrior::OrcWarrior() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Forest_OrcWarrior_Animations,
 	false)
 {
 }

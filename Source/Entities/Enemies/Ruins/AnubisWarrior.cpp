@@ -10,7 +10,7 @@ AnubisWarrior* AnubisWarrior::create()
 }
 
 AnubisWarrior::AnubisWarrior() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Ruins_AnubisWarrior_Animations,
 	false)
 {
 }

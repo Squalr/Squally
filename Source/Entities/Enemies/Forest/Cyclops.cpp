@@ -10,7 +10,7 @@ Cyclops* Cyclops::create()
 }
 
 Cyclops::Cyclops() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Forest_Cyclops_Animations,
 	false)
 {
 }

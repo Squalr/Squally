@@ -10,7 +10,7 @@ BossWitch* BossWitch::create()
 }
 
 BossWitch::BossWitch() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Castle_BossWitch_Animations,
 	false)
 {
 }
