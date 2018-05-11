@@ -10,7 +10,7 @@ ForestGolem* ForestGolem::create()
 }
 
 ForestGolem::ForestGolem() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Caverns_ForestGolem_Animations,
 	false)
 {
 }

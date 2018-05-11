@@ -10,7 +10,7 @@ SkeletonBaron* SkeletonBaron::create()
 }
 
 SkeletonBaron::SkeletonBaron() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Obelisk_SkeletonBaron_Animations,
 	false)
 {
 }

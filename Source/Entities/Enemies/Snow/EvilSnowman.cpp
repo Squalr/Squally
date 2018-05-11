@@ -10,7 +10,7 @@ EvilSnowman* EvilSnowman::create()
 }
 
 EvilSnowman::EvilSnowman() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Snow_EvilSnowman_Animations,
 	false)
 {
 }

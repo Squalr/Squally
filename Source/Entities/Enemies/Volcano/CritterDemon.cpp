@@ -10,7 +10,7 @@ CritterDemon* CritterDemon::create()
 }
 
 CritterDemon::CritterDemon() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Volcano_CritterDemon_Animations,
 	false)
 {
 }

@@ -10,7 +10,7 @@ SkeletonCleaver* SkeletonCleaver::create()
 }
 
 SkeletonCleaver::SkeletonCleaver() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Obelisk_SkeletonCleaver_Animations,
 	false)
 {
 }

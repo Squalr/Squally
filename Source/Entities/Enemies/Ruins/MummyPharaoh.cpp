@@ -10,7 +10,7 @@ MummyPharaoh* MummyPharaoh::create()
 }
 
 MummyPharaoh::MummyPharaoh() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Ruins_MummyPharaoh_Animations,
 	false)
 {
 }

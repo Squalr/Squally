@@ -10,7 +10,7 @@ DemonShaman* DemonShaman::create()
 }
 
 DemonShaman::DemonShaman() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Volcano_DemonShaman_Animations,
 	false)
 {
 }

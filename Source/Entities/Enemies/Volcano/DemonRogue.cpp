@@ -10,7 +10,7 @@ DemonRogue* DemonRogue::create()
 }
 
 DemonRogue::DemonRogue() : Enemy::Enemy(
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Environment_Volcano_DemonRogue_Animations,
 	false)
 {
 }
