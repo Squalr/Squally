@@ -12,8 +12,8 @@ GoblinElf* GoblinElf::create()
 GoblinElf::GoblinElf() : Enemy::Enemy(
 	Resources::Entities_Environment_Snow_GoblinElf_Animations,
 	false,
-	Size(96.0f, 204.0f),
-	0.8f,
+	Size(140.0f, 296.0f),
+	0.6f,
 	Vec2(0.0f, 0.0f))
 {
 }

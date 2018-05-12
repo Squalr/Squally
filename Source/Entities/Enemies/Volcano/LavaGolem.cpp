@@ -12,9 +12,9 @@ LavaGolem* LavaGolem::create()
 LavaGolem::LavaGolem() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_LavaGolem_Animations,
 	false,
-	Size(820.0f, 1480.0f),
-	0.20f,
-	Vec2(0.0f, -740.0f))
+	Size(980.0f, 1200.0f),
+	0.17f,
+	Vec2(0.0f, -600.0f))
 {
 }
 
