@@ -12,8 +12,8 @@ BossSanta* BossSanta::create()
 BossSanta::BossSanta() : Enemy::Enemy(
 	Resources::Entities_Environment_Snow_BossSanta_Animations,
 	false,
-	Size(240.0f, 312.0f),
-	1.0f,
+	Size(420.0f, 420.0f),
+	0.7f,
 	Vec2(0.0f, 0.0f))
 {
 }

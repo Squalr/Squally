@@ -24,37 +24,37 @@
             </mainline>
             <timeline id="0" name="B LEG 2">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-59" y="25"/>
+                    <object folder="0" file="0" x="-54.829609" y="-15.031076" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="B LEG 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="7" y="-1"/>
+                    <object folder="0" file="1" x="11.170391" y="-41.031076" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="TAIL">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-126" y="17"/>
+                    <object folder="0" file="2" x="-121.829609" y="-23.031076" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="BODY">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="-95" y="116"/>
+                    <object folder="0" file="3" x="-90.829609" y="75.968924" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="F LEG 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="-25" y="-6"/>
+                    <object folder="0" file="4" x="-20.829609" y="-46.031076" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="F LEG 2">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-79" y="19"/>
+                    <object folder="0" file="5" x="-74.829609" y="-21.031076" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="JAW">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-15" y="23"/>
+                    <object folder="0" file="6" x="-10.829609" y="-17.031076" angle="0"/>
                 </key>
             </timeline>
         </animation>

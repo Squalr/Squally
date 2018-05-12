@@ -11,7 +11,10 @@ DemonShaman* DemonShaman::create()
 
 DemonShaman::DemonShaman() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_DemonShaman_Animations,
-	false)
+	false,
+	Size(212.0f, 280.0f),
+	0.65f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

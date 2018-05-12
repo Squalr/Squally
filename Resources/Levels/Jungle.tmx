@@ -463,7 +463,7 @@
   </object>
  </objectgroup>
  <objectgroup name="ENTITIES_entities">
-  <object id="72" name="spawn" type="spawn" x="7528.15" y="12047" width="128" height="128"/>
+  <object id="72" name="spawn" type="spawn" x="120.15" y="6479" width="128" height="128"/>
   <object id="180" name="knight" type="knight" x="342.06" y="758.727" width="200" height="288"/>
   <object id="222" name="boss_rhinoman" type="boss_rhinoman" x="1057.82" y="6696" width="196" height="196">
    <properties>
@@ -1231,7 +1231,7 @@
   </object>
   <object id="268" name="solid" type="solid" x="26.755" y="15635.5" width="7906.49" height="77"/>
   <object id="269" name="solid" type="solid" x="778.755" y="15261.5" width="6426.49" height="85"/>
-  <object id="270" name="solid" type="solid" x="770.755" y="13181.5" width="6378.49" height="117"/>
+  <object id="270" name="solid" type="solid" x="774.422" y="13203.8" width="6378.49" height="80"/>
   <object id="271" name="solid" type="solid" x="775.725" y="11193.9" width="6378.49" height="77"/>
   <object id="272" name="solid" type="solid" x="764.755" y="10177.5" width="6378.49" height="41"/>
   <object id="273" name="solid" type="solid" x="818.755" y="9125.5" width="6350.49" height="73"/>

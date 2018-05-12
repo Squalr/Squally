@@ -11,7 +11,10 @@ CritterDemon* CritterDemon::create()
 
 CritterDemon::CritterDemon() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_CritterDemon_Animations,
-	false)
+	false,
+	Size(188.0f, 160.0f),
+	0.7f,
+	Vec2(0.0f, 0.0f))
 {
 }
 
