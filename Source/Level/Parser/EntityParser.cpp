@@ -377,6 +377,10 @@ Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
 		{
 			newEntity = BossSkeletonKing::create();
 		}
+		else if (type == "abomination")
+		{
+			newEntity = Abomination::create();
+		}
 		else if (type == "dark_dragon")
 		{
 			newEntity = DarkDragon::create();

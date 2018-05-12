@@ -46,92 +46,92 @@
             </mainline>
             <timeline id="0" name="harpy_cape_L_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-9.041667" y="119.416667" angle="0"/>
+                    <object folder="0" file="0" x="-37.041667" y="55.416667" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="harpy_arm_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="43" y="95" angle="0"/>
+                    <object folder="0" file="2" x="15" y="31" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="harpy_hand_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="85" y="18" angle="0"/>
+                    <object folder="0" file="3" x="57" y="-46" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="harpy_hand_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="70" y="12" angle="0"/>
+                    <object folder="0" file="4" x="42" y="-52" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="harpy_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="171" y="105" angle="298.935816"/>
+                    <object folder="0" file="5" x="143" y="41" angle="298.935816"/>
                 </key>
             </timeline>
             <timeline id="5" name="harpy_leg_L_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="28" y="30" angle="0"/>
+                    <object folder="0" file="6" y="-34" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="harpy_leg_L_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="23" y="14.083333" angle="0"/>
+                    <object folder="0" file="7" x="-5" y="-49.916667" angle="0"/>
                 </key>
             </timeline>
             <timeline id="7" name="harpy_leg_L_3">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="12.958333" y="-15.75" angle="0"/>
+                    <object folder="0" file="8" x="-15.041667" y="-79.75" angle="0"/>
                 </key>
             </timeline>
             <timeline id="8" name="harpy_body">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="3" y="104" angle="0"/>
+                    <object folder="0" file="9" x="-25" y="40" angle="0"/>
                 </key>
             </timeline>
             <timeline id="9" name="harpy_belt">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="10" y="52" angle="0"/>
+                    <object folder="0" file="10" x="-18" y="-12" angle="0"/>
                 </key>
             </timeline>
             <timeline id="10" name="harpy_leg_R_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="4" y="25" angle="0"/>
+                    <object folder="0" file="11" x="-24" y="-39" angle="0"/>
                 </key>
             </timeline>
             <timeline id="11" name="harpy_leg_R_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="-1.916667" y="14.291667" angle="0"/>
+                    <object folder="0" file="12" x="-29.916667" y="-49.708333" angle="0"/>
                 </key>
             </timeline>
             <timeline id="12" name="harpy_leg_R_3">
                 <key id="0" spin="0">
-                    <object folder="0" file="13" x="-15.958333" y="-15.666667" angle="0"/>
+                    <object folder="0" file="13" x="-43.958333" y="-79.666667" angle="0"/>
                 </key>
             </timeline>
             <timeline id="13" name="harpy_head">
                 <key id="0" spin="0">
-                    <object folder="0" file="14" x="-21" y="230" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="0" file="14" x="-49" y="166" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
             </timeline>
             <timeline id="14" name="harpy_arm_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="15" x="-21" y="76" angle="0"/>
+                    <object folder="0" file="15" x="-49" y="12" angle="0"/>
                 </key>
             </timeline>
             <timeline id="15" name="harpy_cape_R_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-127.416667" y="117.708333" angle="0"/>
+                    <object folder="0" file="1" x="-155.416667" y="53.708333" angle="0"/>
                 </key>
             </timeline>
             <timeline id="16" name="harpy_hair_4">
                 <key id="0" spin="0">
-                    <object folder="0" file="16" x="-15.333333" y="137.625" angle="0"/>
+                    <object folder="0" file="16" x="-43.333333" y="73.625" angle="0"/>
                 </key>
             </timeline>
             <timeline id="17" name="harpy_hair_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="17" x="-64.583333" y="156.25" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="0" file="17" x="-92.583333" y="92.25" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
             </timeline>
         </animation>

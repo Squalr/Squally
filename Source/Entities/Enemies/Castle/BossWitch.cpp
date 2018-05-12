@@ -11,7 +11,10 @@ BossWitch* BossWitch::create()
 
 BossWitch::BossWitch() : Enemy::Enemy(
 	Resources::Entities_Environment_Castle_BossWitch_Animations,
-	false)
+	false,
+	Size(360.0f, 420.0f),
+	0.9f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

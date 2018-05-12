@@ -11,7 +11,10 @@ Executioner* Executioner::create()
 
 Executioner::Executioner() : Enemy::Enemy(
 	Resources::Entities_Environment_Castle_Executioner_Animations,
-	false)
+	false,
+	Size(472.0f, 820.0f),
+	0.3f,
+	Vec2(-24.0f, -410.0f))
 {
 }
 

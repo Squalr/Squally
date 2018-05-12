@@ -11,7 +11,10 @@ Harpy* Harpy::create()
 
 Harpy::Harpy() : Enemy::Enemy(
 	Resources::Entities_Environment_Castle_Harpy_Animations,
-	false)
+	false,
+	Size(172.0f, 256.0f),
+	0.8f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

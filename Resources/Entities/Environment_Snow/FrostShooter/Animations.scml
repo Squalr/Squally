@@ -38,67 +38,67 @@
             </mainline>
             <timeline id="0" name="TORSO">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-65.594966" y="187.594966" angle="0"/>
+                    <object folder="0" file="2" x="-88.421053" y="20.203662" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="TAIL">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-96" y="79"/>
+                    <object folder="0" file="1" x="-118.826087" y="-88.391304" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="L FOOT">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="31" y="57"/>
+                    <object folder="0" file="4" x="8.173913" y="-110.391304" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="R FOOT">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-34.457944" y="55.392523"/>
+                    <object folder="0" file="5" x="-57.284031" y="-111.998781" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="TORSO CLOTH">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-81.308411" y="182.765256"/>
+                    <object folder="0" file="6" x="-104.134498" y="15.373952" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="CAP">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="-74.471948" y="345.791137"/>
+                    <object folder="0" file="7" x="-97.298035" y="178.399833" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="L ARM">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="61.30031" y="164.305986"/>
+                    <object folder="0" file="8" x="38.474223" y="-3.085318" angle="0"/>
                 </key>
             </timeline>
             <timeline id="7" name="L ARM CLOTH 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="58.668731" y="166.060372"/>
+                    <object folder="0" file="9" x="35.842644" y="-1.330932" angle="0"/>
                 </key>
             </timeline>
             <timeline id="8" name="R ARM CLOTH 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="-63.115386" y="147.920218"/>
+                    <object folder="0" file="11" x="-85.941473" y="-19.471086" angle="0"/>
                 </key>
             </timeline>
             <timeline id="9" name="SCARF">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="-63.235294" y="216.176471"/>
+                    <object folder="0" file="12" x="-86.061381" y="48.785167" angle="0"/>
                 </key>
             </timeline>
             <timeline id="10" name="WEAPON">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="10.294118" y="227.205882" angle="329.209691" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="3" x="-12.531969" y="59.814578" angle="329.209691"/>
                 </key>
             </timeline>
             <timeline id="11" name="HAND ON GUN">
                 <key id="0" spin="0">
-                    <object folder="0" file="13" x="-19.852941" y="127.205882" scale_x="1.005479"/>
+                    <object folder="0" file="13" x="-42.679028" y="-40.185422" angle="0" scale_x="1.005479"/>
                 </key>
             </timeline>
             <timeline id="12" name="BACK PACKAGE">
                 <key id="0" spin="0">
-                    <object folder="0" file="14" x="-116.176471" y="252.205882"/>
+                    <object folder="0" file="14" x="-139.002558" y="84.814578" angle="0"/>
                 </key>
             </timeline>
         </animation>

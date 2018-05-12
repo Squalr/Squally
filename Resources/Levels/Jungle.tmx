@@ -463,7 +463,7 @@
   </object>
  </objectgroup>
  <objectgroup name="ENTITIES_entities">
-  <object id="72" name="spawn" type="spawn" x="7488.15" y="10095" width="128" height="128"/>
+  <object id="72" name="spawn" type="spawn" x="7528.15" y="12047" width="128" height="128"/>
   <object id="180" name="knight" type="knight" x="342.06" y="758.727" width="200" height="288"/>
   <object id="222" name="boss_rhinoman" type="boss_rhinoman" x="1057.82" y="6696" width="196" height="196">
    <properties>
@@ -1088,7 +1088,7 @@
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="343" name="big_hands_bot" type="big_hands_bot" x="1622" y="14870" width="196" height="196">
+  <object id="343" name="robot" type="robot" x="5678" y="14910" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
@@ -1102,49 +1102,49 @@
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="345" name="exterminator" type="exterminator" x="2206" y="14870" width="196" height="196">
+  <object id="345" name="exterminator" type="exterminator" x="1662" y="14886" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="346" name="mech_box_drone" type="mech_box_drone" x="2786" y="14870" width="196" height="196">
+  <object id="346" name="mech_box_drone" type="mech_box_drone" x="2242" y="14886" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="347" name="mech_dog" type="mech_dog" x="3374" y="14862" width="196" height="196">
+  <object id="347" name="mech_dog" type="mech_dog" x="2830" y="14878" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="348" name="mech_golem" type="mech_golem" x="3926" y="14838" width="196" height="196">
+  <object id="348" name="mech_golem" type="mech_golem" x="3382" y="14854" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="349" name="mech_golem_dark" type="mech_golem_dark" x="4550" y="14826" width="196" height="196">
+  <object id="349" name="mech_golem_dark" type="mech_golem_dark" x="4006" y="14842" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="350" name="mech_guard" type="mech_guard" x="5110" y="14834" width="196" height="196">
+  <object id="350" name="mech_guard" type="mech_guard" x="4566" y="14850" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="351" name="mite_bot" type="mite_bot" x="5650" y="14858" width="196" height="196">
+  <object id="351" name="mite_bot" type="mite_bot" x="5138" y="14874" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
@@ -1232,7 +1232,7 @@
   <object id="268" name="solid" type="solid" x="26.755" y="15635.5" width="7906.49" height="77"/>
   <object id="269" name="solid" type="solid" x="778.755" y="15261.5" width="6426.49" height="85"/>
   <object id="270" name="solid" type="solid" x="770.755" y="13181.5" width="6378.49" height="117"/>
-  <object id="271" name="solid" type="solid" x="778.755" y="11157.5" width="6378.49" height="77"/>
+  <object id="271" name="solid" type="solid" x="775.725" y="11193.9" width="6378.49" height="77"/>
   <object id="272" name="solid" type="solid" x="764.755" y="10177.5" width="6378.49" height="41"/>
   <object id="273" name="solid" type="solid" x="818.755" y="9125.5" width="6350.49" height="73"/>
   <object id="274" name="solid" type="solid" x="410.755" y="12189.5" width="6746.49" height="117"/>
