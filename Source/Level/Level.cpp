@@ -52,9 +52,7 @@ void Level::initializeListeners()
 
 void Level::loadLevel(LevelMap* levelMap)
 {
-	// Physics / collision debugging
-	// this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-	this->getPhysicsWorld()->setGravity(Vec2(0.0f, 0.0f));
+	this->getPhysicsWorld()->setGravity(Vec2::ZERO);
 
 	this->hackerModeBackground = Sprite::create(Resources::Backgrounds_MatrixRain_HackerModeBackground);
 	this->hackerModeRain = MatrixRain::create();
@@ -137,6 +135,17 @@ void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		NavigationEvents::navigate(NavigationEvents::GameScreen::Pause);
 		event->stopPropagation();
 		break;
+	case EventKeyboard::KeyCode::KEY_GRAVE:
+		if (this->getPhysicsWorld()->getDebugDrawMask() == PhysicsWorld::DEBUGDRAW_ALL)
+		{
+			this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
+		}
+		else
+		{
+			this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+		}
+		event->stopPropagation();
+		break;
 	case EventKeyboard::KeyCode::KEY_TAB:
 		this->enableHackerMode();
 		event->stopPropagation();
@@ -146,14 +155,12 @@ void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 void Level::enableHackerMode()
 {
-	this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
 	Level::hackerMode = true;
 	GameUtils::focus(this->hackerModeHud);
 }
 
 void Level::disableHackerMode()
 {
-	// this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	Level::hackerMode = false;
 	GameUtils::resumeAll();
 }

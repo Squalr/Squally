@@ -11,7 +11,10 @@ GoblinGrunt* GoblinGrunt::create()
 
 GoblinGrunt::GoblinGrunt() : Enemy::Enemy(
 	Resources::Entities_Environment_Jungle_GoblinGrunt_Animations,
-	false)
+	false,
+	Size(312.0f, 512.0f),
+	0.35f,
+	Vec2(0.0f, -224.0f))
 {
 }
 

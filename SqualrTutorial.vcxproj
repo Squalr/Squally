@@ -160,6 +160,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Config\ConfigManager.cpp" />
     <ClCompile Include="Source\Config\SoundManager.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Castle\BossWitch.cpp" />
+    <ClCompile Include="Source\Entities\Enemies\Castle\Executioner.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Castle\Ghost.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Castle\Guard.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Castle\Harpy.cpp" />
@@ -202,7 +203,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Entities\Enemies\Jungle\PigDemon.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Jungle\PurpleDinosaur.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Jungle\TikiWarrior.cpp" />
-    <ClCompile Include="Source\Entities\Enemies\Mech\BigHandsBot.cpp" />
+    <ClCompile Include="Source\Entities\Enemies\Mech\MechBoxDrone.cpp" />
+    <ClCompile Include="Source\Entities\Enemies\Mech\Robot.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Mech\BossEvilEye.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Mech\MechGolemDark.cpp" />
     <ClCompile Include="Source\Entities\Enemies\Mech\Exterminator.cpp" />
@@ -374,6 +376,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Config\ConfigManager.h" />
     <ClInclude Include="Source\Config\SoundManager.h" />
     <ClInclude Include="Source\Entities\Enemies\Castle\BossWitch.h" />
+    <ClInclude Include="Source\Entities\Enemies\Castle\Executioner.h" />
     <ClInclude Include="Source\Entities\Enemies\Castle\Ghost.h" />
     <ClInclude Include="Source\Entities\Enemies\Castle\Guard.h" />
     <ClInclude Include="Source\Entities\Enemies\Castle\Harpy.h" />
@@ -416,7 +419,8 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Entities\Enemies\Jungle\PigDemon.h" />
     <ClInclude Include="Source\Entities\Enemies\Jungle\PurpleDinosaur.h" />
     <ClInclude Include="Source\Entities\Enemies\Jungle\TikiWarrior.h" />
-    <ClInclude Include="Source\Entities\Enemies\Mech\BigHandsBot.h" />
+    <ClInclude Include="Source\Entities\Enemies\Mech\MechBoxDrone.h" />
+    <ClInclude Include="Source\Entities\Enemies\Mech\Robot.h" />
     <ClInclude Include="Source\Entities\Enemies\Mech\BossEvilEye.h" />
     <ClInclude Include="Source\Entities\Enemies\Mech\MechGolemDark.h" />
     <ClInclude Include="Source\Entities\Enemies\Mech\Exterminator.h" />

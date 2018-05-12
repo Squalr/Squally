@@ -22,6 +22,29 @@ void CollisionObject::init(PhysicsBody* initPhysicsBody, CategoryGroup initCateg
 	this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
 
 	this->initializeEventListeners();
+	this->scheduleUpdate();
+}
+
+void CollisionObject::update(float dt)
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	Vec2 pos = this->getPosition();
+
+	const float STOP_PHYSICS_OFFSET = 2048.0f;
+
+	// Handle camera scrolling from player traveling past scroll distance
+	if (pos.x > LevelCamera::cameraPosition.x + visibleSize.width + STOP_PHYSICS_OFFSET ||
+		pos.x < LevelCamera::cameraPosition.x - STOP_PHYSICS_OFFSET ||
+		pos.y > LevelCamera::cameraPosition.y + visibleSize.height + STOP_PHYSICS_OFFSET ||
+		pos.y < LevelCamera::cameraPosition.y - STOP_PHYSICS_OFFSET)
+	{
+		// this->disablePhysics();
+	}
+	else
+	{
+		this->enablePhysics();
+	}
 }
 
 void CollisionObject::disablePhysics()

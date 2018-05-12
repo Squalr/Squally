@@ -11,7 +11,10 @@ PigDemon* PigDemon::create()
 
 PigDemon::PigDemon() : Enemy::Enemy(
 	Resources::Entities_Environment_Jungle_PigDemon_Animations,
-	false)
+	false,
+	Size(256.0f, 240.0f),
+	0.8f,
+	Vec2(-64.0f, -32.0f))
 {
 }
 
