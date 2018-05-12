@@ -1,10 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0">
+        <file id="0" name="ghost_arm_L.png" width="74" height="76" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="ghost_body_1.png" width="147" height="132" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="ghost_arm_R.png" width="63" height="81" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="ghost_cape_L.png" width="80" height="54" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="ghost_cape_R.png" width="80" height="54" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="ghost_head_1.png" width="206" height="217" pivot_x="0" pivot_y="1"/>
+    </folder>
     <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="1000" interval="100">
             <mainline>
-                <key id="0"/>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="4" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="1" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="0" z_index="5"/>
+                </key>
             </mainline>
+            <timeline id="0" name="ghost_arm_L">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="89" y="88"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="ghost_body_1">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-3" y="105"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="ghost_arm_R">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="4" y="86"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="ghost_cape_L">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="5" y="111"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="ghost_cape_R">
+                <key id="0" spin="0">
+                    <object folder="0" file="4" x="91" y="110"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="ghost_head_1">
+                <key id="0" spin="0">
+                    <object folder="0" file="5" x="-17" y="286"/>
+                </key>
+            </timeline>
         </animation>
     </entity>
 </spriter_data>

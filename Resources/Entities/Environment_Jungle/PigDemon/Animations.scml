@@ -27,42 +27,42 @@
             </mainline>
             <timeline id="0" name="pig_leg_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="55.089888" y="-40.764045"/>
+                    <object folder="0" file="0" x="56.126157" y="-42.318449" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="pig_hand_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="119.941863" y="0.084591" angle="341.285932" scale_x="1"/>
+                    <object folder="0" file="1" x="119.941863" y="0.084591" angle="341.285932"/>
                 </key>
             </timeline>
             <timeline id="2" name="pig_arm_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="72.662921" y="47.853933"/>
+                    <object folder="0" file="2" x="72.662921" y="47.853933" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="pig_hand_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="106.150414" y="2.956969" angle="341.285932" scale_x="1"/>
+                    <object folder="0" file="3" x="106.150414" y="2.956969" angle="341.285932"/>
                 </key>
             </timeline>
             <timeline id="4" name="pig_body">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="-67.41573" y="132.58427"/>
+                    <object folder="0" file="4" x="-67.41573" y="132.58427" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="pig_leg_R_000">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="19.101124" y="-44.94382"/>
+                    <object folder="0" file="0" x="19.101124" y="-48.052628" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="pig_arm_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-18.287723" y="35.741366"/>
+                    <object folder="0" file="5" x="-18.287723" y="35.741366" angle="0"/>
                 </key>
             </timeline>
             <timeline id="7" name="pig_head_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-17.322835" y="144.094488"/>
+                    <object folder="0" file="6" x="-17.322835" y="144.094488" angle="0"/>
                 </key>
             </timeline>
             <timeline id="8" name="pig_weapon">

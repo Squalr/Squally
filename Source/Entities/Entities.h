@@ -8,6 +8,7 @@
 
 // Enemies
 #include "Entities/Enemies/Castle/BossWitch.h"
+#include "Entities/Enemies/Castle/Executioner.h"
 #include "Entities/Enemies/Castle/Ghost.h"
 #include "Entities/Enemies/Castle/Guard.h"
 #include "Entities/Enemies/Castle/Harpy.h"
@@ -54,9 +55,10 @@
 #include "Entities/Enemies/Jungle/Tikigolem.h"
 #include "Entities/Enemies/Jungle/TikiWarrior.h"
 
-#include "Entities/Enemies/Mech/BigHandsBot.h"
+#include "Entities/Enemies/Mech/Robot.h"
 #include "Entities/Enemies/Mech/BossEvilEye.h"
 #include "Entities/Enemies/Mech/Exterminator.h"
+#include "Entities/Enemies/Mech/MechBoxDrone.h"
 #include "Entities/Enemies/Mech/MechDog.h"
 #include "Entities/Enemies/Mech/MechGolem.h"
 #include "Entities/Enemies/Mech/MechGolemDark.h"

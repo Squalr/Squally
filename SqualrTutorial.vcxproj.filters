@@ -708,9 +708,6 @@
     <ClCompile Include="Source\Entities\Enemies\Volcano\DemonSwordsman.cpp">
       <Filter>Source\Entities\Enemies\Volcano</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Entities\Enemies\Mech\BigHandsBot.cpp">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Entities\Enemies\Mech\BossEvilEye.cpp">
       <Filter>Source\Entities\Enemies\Mech</Filter>
     </ClCompile>
@@ -782,6 +779,15 @@
     </ClCompile>
     <ClCompile Include="Source\Entities\Enemies\Ruins\TigerMan.cpp">
       <Filter>Source\Entities\Enemies\Ruins</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Entities\Enemies\Mech\Robot.cpp">
+      <Filter>Source\Entities\Enemies\Mech</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Entities\Enemies\Castle\Executioner.cpp">
+      <Filter>Source\Entities\Enemies\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Entities\Enemies\Mech\MechBoxDrone.cpp">
+      <Filter>Source\Entities\Enemies\Mech</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1370,9 +1376,6 @@
     <ClInclude Include="Source\Entities\Enemies\Volcano\DemonSwordsman.h">
       <Filter>Source\Entities\Enemies\Volcano</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Entities\Enemies\Mech\BigHandsBot.h">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Entities\Enemies\Mech\BossEvilEye.h">
       <Filter>Source\Entities\Enemies\Mech</Filter>
     </ClInclude>
@@ -1444,6 +1447,15 @@
     </ClInclude>
     <ClInclude Include="Source\Entities\Enemies\Ruins\TigerMan.h">
       <Filter>Source\Entities\Enemies\Ruins</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entities\Enemies\Mech\Robot.h">
+      <Filter>Source\Entities\Enemies\Mech</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entities\Enemies\Castle\Executioner.h">
+      <Filter>Source\Entities\Enemies\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entities\Enemies\Mech\MechBoxDrone.h">
+      <Filter>Source\Entities\Enemies\Mech</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
