@@ -14,7 +14,7 @@ TikiWarrior::TikiWarrior() : Enemy::Enemy(
 	false,
 	Size(128.0f, 128.0f),
 	1.0f,
-	Vec2(-24.0f, -24.0f))
+	Vec2(0.0f, 0.0f))
 {
 }
 

@@ -12,9 +12,9 @@ Mermaid* Mermaid::create()
 Mermaid::Mermaid() : Enemy::Enemy(
 	Resources::Entities_Environment_Ruins_Mermaid_Animations,
 	false,
-	Size(378.0f, 378.0f),
-	0.75f,
-	Vec2(0.0f, -172.0f))
+	Size(172.0f, 296.0f),
+	0.8f,
+	Vec2(0.0f, -140.0f))
 {
 	this->animationNode->setFlippedX(true);
 }

@@ -11,7 +11,10 @@ OrcGrunt* OrcGrunt::create()
 
 OrcGrunt::OrcGrunt() : Enemy::Enemy(
 	Resources::Entities_Environment_Forest_OrcGrunt_Animations,
-	false)
+	false,
+	Size(256.0f, 218.0f),
+	1.0f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

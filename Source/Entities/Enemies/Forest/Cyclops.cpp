@@ -11,7 +11,10 @@ Cyclops* Cyclops::create()
 
 Cyclops::Cyclops() : Enemy::Enemy(
 	Resources::Entities_Environment_Forest_Cyclops_Animations,
-	false)
+	false,
+	Size(296.0f, 256.0f),
+	1.0f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

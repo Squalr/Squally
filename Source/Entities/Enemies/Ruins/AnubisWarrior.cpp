@@ -11,7 +11,10 @@ AnubisWarrior* AnubisWarrior::create()
 
 AnubisWarrior::AnubisWarrior() : Enemy::Enemy(
 	Resources::Entities_Environment_Ruins_AnubisWarrior_Animations,
-	false)
+	false,
+	Size(256.0f, 292.0f),
+	1.0f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

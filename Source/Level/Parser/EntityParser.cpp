@@ -87,7 +87,7 @@ Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
 		//////////////////
 		// RUINS
 		//////////////////
-		else if (type == "boss_egyptian_godess")
+		else if (type == "boss_egyptian_goddess")
 		{
 			newEntity = BossEgyptianGoddess::create();
 		}
@@ -103,7 +103,7 @@ Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
 		{
 			newEntity = Lioness::create();
 		}
-		else if (type == "LionMan")
+		else if (type == "lion_man")
 		{
 			newEntity = LionMan::create();
 		}

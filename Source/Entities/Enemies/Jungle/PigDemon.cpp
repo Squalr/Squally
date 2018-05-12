@@ -14,7 +14,7 @@ PigDemon::PigDemon() : Enemy::Enemy(
 	false,
 	Size(256.0f, 240.0f),
 	0.8f,
-	Vec2(-64.0f, -32.0f))
+	Vec2(0.0f, 0.0f))
 {
 }
 
