@@ -11,7 +11,10 @@ SkeletonNecromancer* SkeletonNecromancer::create()
 
 SkeletonNecromancer::SkeletonNecromancer() : Enemy::Enemy(
 	Resources::Entities_Environment_Caverns_SkeletonNecromancer_Animations,
-	false)
+	false,
+	Size(128.0f, 228.0f),
+	0.8f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

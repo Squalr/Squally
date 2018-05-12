@@ -11,7 +11,10 @@ MedusaSmall* MedusaSmall::create()
 
 MedusaSmall::MedusaSmall() : Enemy::Enemy(
 	Resources::Entities_Environment_Ruins_MedusaSmall_Animations,
-	false)
+	false,
+	Size(224.0f, 288.0f),
+	0.7f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

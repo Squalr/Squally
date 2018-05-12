@@ -11,7 +11,10 @@ Lioness* Lioness::create()
 
 Lioness::Lioness() : Enemy::Enemy(
 	Resources::Entities_Environment_Ruins_Lioness_Animations,
-	false)
+	false,
+	Size(128.0f, 278.0f),
+	0.8f,
+	Vec2(0.0f, 0.0f))
 {
 }
 
