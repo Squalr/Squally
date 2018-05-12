@@ -11,7 +11,10 @@ Zombie* Zombie::create()
 
 Zombie::Zombie() : Enemy::Enemy(
 	Resources::Entities_Environment_Castle_Zombie_Animations,
-	false)
+	false,
+	Size(114.0f, 208.0f),
+	0.9f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

@@ -11,7 +11,10 @@ Jack* Jack::create()
 
 Jack::Jack() : Enemy::Enemy(
 	Resources::Entities_Environment_Castle_Jack_Animations,
-	false)
+	false,
+	Size(432.0f, 768.0f),
+	0.25f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

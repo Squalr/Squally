@@ -11,7 +11,10 @@ WaterElemental* WaterElemental::create()
 
 WaterElemental::WaterElemental() : Enemy::Enemy(
 	Resources::Entities_Environment_Snow_WaterElemental_Animations,
-	false)
+	false,
+	Size(820.0f, 1480.0f),
+	0.20f,
+	Vec2(0.0f, -740.0f))
 {
 }
 

@@ -11,7 +11,10 @@ SkeletonMage* SkeletonMage::create()
 
 SkeletonMage::SkeletonMage() : Enemy::Enemy(
 	Resources::Entities_Environment_Castle_SkeletonMage_Animations,
-	false)
+	false,
+	Size(142.0f, 400.0f),
+	0.5f,
+	Vec2(0.0f, 40.0f))
 {
 }
 
