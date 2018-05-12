@@ -11,7 +11,10 @@ EvilSnowman* EvilSnowman::create()
 
 EvilSnowman::EvilSnowman() : Enemy::Enemy(
 	Resources::Entities_Environment_Snow_EvilSnowman_Animations,
-	false)
+	false,
+	Size(240.0f, 312.0f),
+	1.0f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

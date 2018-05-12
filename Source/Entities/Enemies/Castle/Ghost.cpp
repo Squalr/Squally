@@ -11,7 +11,10 @@ Ghost* Ghost::create()
 
 Ghost::Ghost() : Enemy::Enemy(
 	Resources::Entities_Environment_Castle_Ghost_Animations,
-	false)
+	false,
+	Size(480.0f, 692.0f),
+	0.3f,
+	Vec2(-32.0f, -224.0f))
 {
 }
 

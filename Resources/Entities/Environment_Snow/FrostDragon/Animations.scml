@@ -43,82 +43,82 @@
             </mainline>
             <timeline id="0" name="thunder_tail">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-420.105695" y="169.566607" angle="0" scale_y="0.999996"/>
+                    <object folder="0" file="0" x="-371.296171" y="89.804702" angle="0" scale_y="0.999996"/>
                 </key>
             </timeline>
             <timeline id="1" name="thunder_leg_L_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-73.120909" y="108.404448" angle="0.000001" scale_y="0.999998"/>
+                    <object folder="0" file="1" x="-24.311385" y="28.642543" angle="0.000001" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="2" name="thunder_leg_L_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-79.058858" y="47.711808" angle="0.000001" scale_y="0.999998"/>
+                    <object folder="0" file="2" x="-30.249334" y="-32.050097" angle="0.000001" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="3" name="thunder_arm_L_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="53.351411" y="19.061854" angle="0" scale_y="0.999998"/>
+                    <object folder="0" file="3" x="102.160935" y="-60.700051" angle="0" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="4" name="thunder_arm_L_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="52.991061" y="96.669865" scale_y="0.999998"/>
+                    <object folder="0" file="4" x="101.800585" y="16.90796" angle="0" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="5" name="thunder_wing_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-240.238733" y="261.57454" angle="0.000001" scale_y="0.999998"/>
+                    <object folder="0" file="5" x="-191.429209" y="181.812635" angle="0.000001" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="6" name="thunder_arm_R_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-0.125629" y="71.084649" angle="0" scale_y="0.999998"/>
+                    <object folder="0" file="6" x="48.683895" y="-8.677256" angle="0" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="7" name="thunder_arm_R_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="-4.076302" y="-1.085134" angle="0" scale_y="0.999998"/>
+                    <object folder="0" file="7" x="44.733222" y="-80.847039" angle="0" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="8" name="thunder_wing_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="-320.895572" y="226.376782" angle="0.000001" scale_y="0.999998"/>
+                    <object folder="0" file="8" x="-272.086048" y="146.614877" angle="0.000001" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="9" name="thunder_leg_R_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="-134.61923" y="18.089637" angle="0.000001" scale_y="0.999998"/>
+                    <object folder="0" file="9" x="-85.809706" y="-61.672268" angle="0.000001" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="10" name="thunder_leg_R_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="-130.620914" y="73.631586" angle="0.000001" scale_y="0.999998"/>
+                    <object folder="0" file="10" x="-81.81139" y="-6.130319" angle="0.000001" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="11" name="thunder_head_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="116.306007" y="326.137553" angle="349.845377" scale_y="0.999998"/>
+                    <object folder="0" file="11" x="165.115531" y="246.375648" angle="349.845377" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="12" name="thunder_body">
                 <key id="0" spin="0">
-                    <object folder="0" file="13" x="-109.73382" y="258.129134" angle="349.845377" scale_y="0.999998"/>
+                    <object folder="0" file="13" x="-60.924296" y="178.367229" angle="349.845377" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="13" name="thunder_neck">
                 <key id="0" spin="0">
-                    <object folder="0" file="14" x="129.285714" y="230.52381" angle="347.899831" scale_y="1"/>
+                    <object folder="0" file="14" x="178.095238" y="150.761905" angle="347.899831"/>
                 </key>
             </timeline>
             <timeline id="14" name="thunder_armor_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="15" x="59.782609" y="107.608696"/>
+                    <object folder="0" file="15" x="108.592133" y="27.846791" angle="0"/>
                 </key>
             </timeline>
             <timeline id="15" name="thunder_armor_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="16" x="1.086957" y="91.304348"/>
+                    <object folder="0" file="16" x="49.896481" y="11.542443" angle="0"/>
                 </key>
             </timeline>
         </animation>

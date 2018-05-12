@@ -22,32 +22,32 @@
             </mainline>
             <timeline id="0" name="ghost_arm_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="89" y="88"/>
+                    <object folder="0" file="0" x="0.956522" y="-40.26087" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="ghost_body_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-3" y="105"/>
+                    <object folder="0" file="1" x="-91.043478" y="-23.26087" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="ghost_arm_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="4" y="86"/>
+                    <object folder="0" file="2" x="-84.043478" y="-42.26087" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="ghost_cape_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="5" y="111"/>
+                    <object folder="0" file="3" x="-83.043478" y="-17.26087" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="ghost_cape_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="91" y="110"/>
+                    <object folder="0" file="4" x="2.956522" y="-18.26087" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="ghost_head_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-17" y="286"/>
+                    <object folder="0" file="5" x="-105.043478" y="157.73913" angle="0"/>
                 </key>
             </timeline>
         </animation>

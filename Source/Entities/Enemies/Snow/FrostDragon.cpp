@@ -11,7 +11,10 @@ FrostDragon* FrostDragon::create()
 
 FrostDragon::FrostDragon() : Enemy::Enemy(
 	Resources::Entities_Environment_Snow_FrostDragon_Animations,
-	false)
+	false,
+	Size(640.0f, 356.0f),
+	0.8f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

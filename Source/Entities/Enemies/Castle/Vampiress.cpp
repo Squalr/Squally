@@ -11,7 +11,10 @@ Vampiress* Vampiress::create()
 
 Vampiress::Vampiress() : Enemy::Enemy(
 	Resources::Entities_Environment_Castle_Vampiress_Animations,
-	false)
+	false,
+	Size(96.0f, 236.0f),
+	0.9f,
+	Vec2(0.0f, 0.0f))
 {
 }
 
