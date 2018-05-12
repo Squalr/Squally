@@ -11,7 +11,10 @@ ForestGolem* ForestGolem::create()
 
 ForestGolem::ForestGolem() : Enemy::Enemy(
 	Resources::Entities_Environment_Caverns_ForestGolem_Animations,
-	false)
+	false,
+	Size(768.0f, 840.0f),
+	0.30f,
+	Vec2(0.0f, -420.0f))
 {
 }
 

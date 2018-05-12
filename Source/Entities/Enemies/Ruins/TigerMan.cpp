@@ -11,7 +11,10 @@ TigerMan* TigerMan::create()
 
 TigerMan::TigerMan() : Enemy::Enemy(
 	Resources::Entities_Environment_Ruins_TigerMan_Animations,
-	false)
+	false,
+	Size(256.0f, 308.0f),
+	1.0f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

@@ -11,7 +11,7 @@
         <file id="7" name="pig_weapon.png" width="156" height="149" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="Entity">
-        <animation id="0" name="Idle" length="1000" interval="100">
+        <animation id="0" name="Idle" length="100" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -52,7 +52,7 @@
             </timeline>
             <timeline id="5" name="pig_leg_R_000">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="19.101124" y="-48.052628" angle="0"/>
+                    <object folder="0" file="0" x="21.999675" y="-48.777266" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="pig_arm_R">

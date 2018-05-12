@@ -12,9 +12,9 @@ EarthElemental* EarthElemental::create()
 EarthElemental::EarthElemental() : Enemy::Enemy(
 	Resources::Entities_Environment_Caverns_EarthElemental_Animations,
 	false,
-	Size(1024.0f, 960.0f),
+	Size(820.0f, 1480.0f),
 	0.20f,
-	Vec2(0.0f, -480.0f))
+	Vec2(0.0f, -740.0f))
 {
 }
 

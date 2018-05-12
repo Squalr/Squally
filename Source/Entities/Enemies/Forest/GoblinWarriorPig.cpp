@@ -11,7 +11,10 @@ GoblinWarriorPig* GoblinWarriorPig::create()
 
 GoblinWarriorPig::GoblinWarriorPig() : Enemy::Enemy(
 	Resources::Entities_Environment_Forest_GoblinWarriorPig_Animations,
-	false)
+	false,
+	Size(128.0f, 296.0f),
+	0.8f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

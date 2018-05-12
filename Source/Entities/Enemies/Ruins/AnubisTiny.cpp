@@ -11,7 +11,10 @@ AnubisTiny* AnubisTiny::create()
 
 AnubisTiny::AnubisTiny() : Enemy::Enemy(
 	Resources::Entities_Environment_Ruins_AnubisTiny_Animations,
-	false)
+	false,
+	Size(128.0f, 186.0f),
+	0.8f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

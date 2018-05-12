@@ -11,7 +11,10 @@ MummyPharaoh* MummyPharaoh::create()
 
 MummyPharaoh::MummyPharaoh() : Enemy::Enemy(
 	Resources::Entities_Environment_Ruins_MummyPharaoh_Animations,
-	false)
+	false,
+	Size(324.0f, 316.0f),
+	1.0f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

@@ -26,42 +26,42 @@
             </mainline>
             <timeline id="0" name="TikiLeg2">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="17.290076" y="-47.618321" angle="90.784825" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="0" x="1.290076" y="-62.618321" angle="90.784825"/>
                 </key>
             </timeline>
             <timeline id="1" name="TikiArm2">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="32.357143" y="22.428571"/>
+                    <object folder="0" file="1" x="16.357143" y="7.428571" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="TikiHandSword">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="61.357143" y="87.428571"/>
+                    <object folder="0" file="2" x="45.357143" y="72.428571" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="TikiTorso">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="-11" y="28"/>
+                    <object folder="0" file="3" x="-27" y="13" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="TikiLeg1">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="-6.419847" y="-13.618321"/>
+                    <object folder="0" file="4" x="-22.419847" y="-28.618321" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="TikiArm1">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-35.695699" y="-3.067125" angle="40.138888" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="5" x="-51.695699" y="-18.067125" angle="40.138888"/>
                 </key>
             </timeline>
             <timeline id="6" name="TikiHand1">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-37.299073" y="-13.575654" angle="40.138888" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="6" x="-53.299073" y="-28.575654" angle="40.138888"/>
                 </key>
             </timeline>
             <timeline id="7" name="TikiMask">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="-24.990405" y="104.070536"/>
+                    <object folder="0" file="7" x="-40.990405" y="89.070536" angle="0"/>
                 </key>
             </timeline>
         </animation>

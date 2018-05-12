@@ -11,7 +11,10 @@ BossKrampus* BossKrampus::create()
 
 BossKrampus::BossKrampus() : Enemy::Enemy(
 	Resources::Entities_Environment_Caverns_BossKrampus_Animations,
-	false)
+	false,
+	Size(396.0f, 412.0f),
+	1.0f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

@@ -13,7 +13,7 @@ Player* Player::create()
 	return instance;
 }
 
-Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, false, Size(640.0f, 1800.0f), Player::playerScale, Vec2::ZERO)
+Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, false, Size(640.0f, 900.0f), Player::playerScale, Vec2(0.0f, 480.0f))
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 400.0f;

@@ -137,7 +137,7 @@
             </timeline>
             <timeline id="14" obj="0" name="bone_000" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="85.070796" y="86.300885" angle="202.661794" scale_y="3.66222"/>
+                    <bone x="78.57729" y="-26.686128" angle="202.661794" scale_y="3.66222"/>
                 </key>
             </timeline>
             <timeline id="15" obj="1" name="bone_001" object_type="bone">

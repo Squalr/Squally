@@ -11,7 +11,10 @@ EntMage* EntMage::create()
 
 EntMage::EntMage() : Enemy::Enemy(
 	Resources::Entities_Environment_Forest_EntMage_Animations,
-	false)
+	false,
+	Size(512.0f, 820.0f),
+	0.3f,
+	Vec2(24.0f, -410.0f))
 {
 }
 

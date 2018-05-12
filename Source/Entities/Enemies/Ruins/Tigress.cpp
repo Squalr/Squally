@@ -11,7 +11,10 @@ Tigress* Tigress::create()
 
 Tigress::Tigress() : Enemy::Enemy(
 	Resources::Entities_Environment_Ruins_Tigress_Animations,
-	false)
+	false,
+	Size(128.0f, 256.0f),
+	0.8f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

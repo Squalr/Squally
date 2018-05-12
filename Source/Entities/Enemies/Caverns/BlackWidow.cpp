@@ -12,9 +12,9 @@ BlackWidow* BlackWidow::create()
 BlackWidow::BlackWidow() : Enemy::Enemy(
 	Resources::Entities_Environment_Caverns_BlackWidow_Animation,
 	false,
-	Size(1024.0f, 960.0f),
+	Size(1280.0f, 920.0f),
 	0.20f,
-	Vec2(0.0f, -480.0f))
+	Vec2(-112.0f, -396.0f))
 {
 }
 

@@ -40,77 +40,77 @@
             </mainline>
             <timeline id="0" name="velociraptor_leg_L_3">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-37" y="-125"/>
+                    <object folder="0" file="0" x="-37" y="-155" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="velociraptor_leg_L_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-23" y="-98"/>
+                    <object folder="0" file="1" x="-23" y="-128" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="velociraptor_leg_L_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="6" y="-50"/>
+                    <object folder="0" file="2" x="6" y="-80" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="velociraptor_tail">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="-216" y="-4"/>
+                    <object folder="0" file="3" x="-216" y="-34" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="velociraptor_arm_L_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="72" y="-23" angle="27.699473" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="4" x="72" y="-53" angle="27.699473"/>
                 </key>
             </timeline>
             <timeline id="5" name="velociraptor_arm_L_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="57.922173" y="10.268826" angle="27.699473" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="5" x="57.922173" y="-19.731174" angle="27.699473"/>
                 </key>
             </timeline>
             <timeline id="6" name="velociraptor_armor_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="55.243845" y="32.580853" angle="27.699473" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="6" x="55.243845" y="2.580853" angle="27.699473"/>
                 </key>
             </timeline>
             <timeline id="7" name="velociraptor_body">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="-66" y="103"/>
+                    <object folder="0" file="7" x="-66" y="73" angle="0"/>
                 </key>
             </timeline>
             <timeline id="8" name="velociraptor_leg_R_3">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="-103" y="-127"/>
+                    <object folder="0" file="9" x="-103" y="-157" angle="0"/>
                 </key>
             </timeline>
             <timeline id="9" name="velociraptor_leg_R_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="-91" y="-96"/>
+                    <object folder="0" file="10" x="-91" y="-126" angle="0"/>
                 </key>
             </timeline>
             <timeline id="10" name="velociraptor_leg_R_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="-62" y="-48"/>
+                    <object folder="0" file="8" x="-62" y="-78" angle="0"/>
                 </key>
             </timeline>
             <timeline id="11" name="velociraptor_arm_R_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="3" y="34"/>
+                    <object folder="0" file="11" x="3" y="4" angle="0"/>
                 </key>
             </timeline>
             <timeline id="12" name="velociraptor_arm_R_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="7" y="-4"/>
+                    <object folder="0" file="12" x="7" y="-34" angle="0"/>
                 </key>
             </timeline>
             <timeline id="13" name="velociraptor_armor_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="13" x="21" y="54"/>
+                    <object folder="0" file="13" x="21" y="24" angle="0"/>
                 </key>
             </timeline>
             <timeline id="14" name="velociraptor_head_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="14" x="15" y="223"/>
+                    <object folder="0" file="14" x="15" y="193" angle="0"/>
                 </key>
             </timeline>
         </animation>

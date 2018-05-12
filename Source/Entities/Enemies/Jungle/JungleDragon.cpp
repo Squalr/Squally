@@ -14,7 +14,7 @@ JungleDragon::JungleDragon() : Enemy::Enemy(
 	false,
 	Size(640.0f, 356.0f),
 	0.8f,
-	Vec2(0.0f, -112.0f))
+	Vec2(0.0f, 0.0f))
 {
 }
 
