@@ -11,7 +11,10 @@ JungleDragon* JungleDragon::create()
 
 JungleDragon::JungleDragon() : Enemy::Enemy(
 	Resources::Entities_Environment_Jungle_JungleDragon_Animations,
-	false)
+	false,
+	Size(640.0f, 356.0f),
+	0.8f,
+	Vec2(0.0f, -112.0f))
 {
 }
 

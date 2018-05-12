@@ -5,12 +5,12 @@
 
 using namespace cocos2d;
 
-class BigHandsBot : public Enemy
+class MechBoxDrone : public Enemy
 {
 public:
-	static BigHandsBot * create();
+	static MechBoxDrone * create();
 
 private:
-	BigHandsBot();
-	~BigHandsBot();
+	MechBoxDrone();
+	~MechBoxDrone();
 };
