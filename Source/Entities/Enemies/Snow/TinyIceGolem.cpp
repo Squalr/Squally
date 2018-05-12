@@ -12,9 +12,9 @@ TinyIceGolem* TinyIceGolem::create()
 TinyIceGolem::TinyIceGolem() : Enemy::Enemy(
 	Resources::Entities_Environment_Snow_TinyIceGolem_Animations,
 	false,
-	Size(820.0f, 1480.0f),
-	0.20f,
-	Vec2(0.0f, -740.0f))
+	Size(980.0f, 1360.0f),
+	0.17f,
+	Vec2(0.0f, -680.0f))
 {
 }
 

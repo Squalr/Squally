@@ -12,7 +12,7 @@ ToySoldierGoblin* ToySoldierGoblin::create()
 ToySoldierGoblin::ToySoldierGoblin() : Enemy::Enemy(
 	Resources::Entities_Environment_Snow_ToySoldierGoblin_Animations,
 	false,
-	Size(96.0f, 204.0f),
+	Size(112.0f, 288.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))
 {

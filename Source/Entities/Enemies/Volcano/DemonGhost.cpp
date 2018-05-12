@@ -11,7 +11,10 @@ DemonGhost* DemonGhost::create()
 
 DemonGhost::DemonGhost() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_DemonGhost_Animations,
-	false)
+	false,
+	Size(256.0f, 320.0f),
+	0.7f,
+	Vec2(0.0f, 40.0f))
 {
 }
 

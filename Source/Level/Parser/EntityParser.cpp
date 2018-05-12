@@ -381,6 +381,10 @@ Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
 		{
 			newEntity = Abomination::create();
 		}
+		else if (type == "bat_demon")
+		{
+			newEntity = BatDemon::create();
+		}
 		else if (type == "dark_dragon")
 		{
 			newEntity = DarkDragon::create();

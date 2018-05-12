@@ -11,7 +11,10 @@ DemonRogue* DemonRogue::create()
 
 DemonRogue::DemonRogue() : Enemy::Enemy(
 	Resources::Entities_Environment_Volcano_DemonRogue_Animations,
-	false)
+	false,
+	Size(212.0f, 268.0f),
+	0.65f,
+	Vec2(0.0f, 0.0f))
 {
 }
 
