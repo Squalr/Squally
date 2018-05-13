@@ -11,7 +11,10 @@ MechGuard* MechGuard::create()
 
 MechGuard::MechGuard() : Enemy::Enemy(
 	Resources::Entities_Environment_Mech_MechGuard_Animations,
-	false)
+	false,
+	Size(472.0f, 596.0f),
+	0.3f,
+	Vec2(-24.0f, -298.0f))
 {
 }
 

@@ -11,7 +11,10 @@ DemonArcher* DemonArcher::create()
 
 DemonArcher::DemonArcher() : Enemy::Enemy(
 	Resources::Entities_Environment_Obelisk_DemonArcher_Animations,
-	false)
+	false,
+	Size(196.0f, 348.0f),
+	0.65f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

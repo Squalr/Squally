@@ -46,9 +46,6 @@ bool Window::applicationDidFinishLaunching()
 	director->setOpenGLView(glView);
 	glView->setCursorVisible(false);
 
-	// Debugging: Turn on display FPS
-	// director->setDisplayStats(true);
-
 	// Start the game
 	Game* game = Game::create();
 	game->retain();

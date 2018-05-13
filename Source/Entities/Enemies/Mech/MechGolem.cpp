@@ -11,7 +11,10 @@ MechGolem* MechGolem::create()
 
 MechGolem::MechGolem() : Enemy::Enemy(
 	Resources::Entities_Environment_Mech_MechGolem_Animations,
-	false)
+	false,
+	Size(640.0f, 720.0f),
+	0.7f,
+	Vec2(-48.0f, 0.0f))
 {
 }
 

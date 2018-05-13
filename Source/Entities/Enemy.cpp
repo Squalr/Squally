@@ -5,7 +5,7 @@ Enemy::Enemy(std::string scmlResource, bool isFlying, Size size, float scale, Ve
 {
 	CategoryGroup categoryGroup = isFlying ? CategoryGroup::G_EnemyFlying : CategoryGroup::G_Enemy;
 
-	this->init(PhysicsBody::createBox(size * scale), categoryGroup, true, false);
+	this->init(PhysicsBody::createBox(size * scale, PhysicsMaterial(0.0f, 0.0f, 0.0f)), categoryGroup, true, false);
 }
 
 Enemy::~Enemy()

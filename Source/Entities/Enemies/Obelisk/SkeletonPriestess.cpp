@@ -11,7 +11,10 @@ SkeletonPriestess* SkeletonPriestess::create()
 
 SkeletonPriestess::SkeletonPriestess() : Enemy::Enemy(
 	Resources::Entities_Environment_Obelisk_SkeletonPriestess_Animations,
-	false)
+	false,
+	Size(196.0f, 312.0f),
+	0.8f,
+	Vec2(0.0f, 0.0f))
 {
 }
 
