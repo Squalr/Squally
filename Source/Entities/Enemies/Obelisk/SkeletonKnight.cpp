@@ -11,7 +11,10 @@ SkeletonKnight* SkeletonKnight::create()
 
 SkeletonKnight::SkeletonKnight() : Enemy::Enemy(
 	Resources::Entities_Environment_Obelisk_SkeletonKnight_Animations,
-	false)
+	false,
+	Size(212.0f, 280.0f),
+	0.8f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

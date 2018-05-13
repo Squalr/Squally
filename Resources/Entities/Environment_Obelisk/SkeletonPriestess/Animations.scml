@@ -28,47 +28,47 @@
             </mainline>
             <timeline id="0" name="Skeleton_Wizard_Armor_ArmU_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="75" y="158"/>
+                    <object folder="0" file="0" x="16.304348" y="-3.956522" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="Skeleton_Wizard_Armor_ArmD_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="89" y="120"/>
+                    <object folder="0" file="1" x="30.304348" y="-41.956522" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="Skeleton_Wizard">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="6" y="182"/>
+                    <object folder="0" file="2" x="-52.695652" y="20.043478" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="Skeleton_Wizard_Armor_ArmU_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="-1" y="163"/>
+                    <object folder="0" file="3" x="-59.695652" y="1.043478" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="Skeleton_Wizard_Armor_ArmD_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="-2" y="111"/>
+                    <object folder="0" file="4" x="-60.695652" y="-50.956522" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="Skeleton_Wing_Wizard">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-81.524764" y="235.798439"/>
+                    <object folder="0" file="5" x="-140.220416" y="73.841917" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="Skeleton_Head_Wizard">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-31.687726" y="319.034622" scale_x="0.8" scale_y="0.8"/>
+                    <object folder="0" file="6" x="-90.383378" y="157.0781" angle="0" scale_x="0.8" scale_y="0.8"/>
                 </key>
             </timeline>
             <timeline id="7" name="Skeleton_Weapon_WizardWand">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="57.608696" y="218.478261"/>
+                    <object folder="0" file="7" x="-1.086956" y="56.521739" angle="0"/>
                 </key>
             </timeline>
             <timeline id="8" name="Skeleton_Eyes_LightRed">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="47.767157" y="239.891568" scale_x="0.8" scale_y="0.8"/>
+                    <object folder="0" file="8" x="-10.928495" y="77.935046" angle="0" scale_x="0.8" scale_y="0.8"/>
                 </key>
             </timeline>
         </animation>

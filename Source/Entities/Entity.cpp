@@ -62,10 +62,6 @@ void Entity::update(float dt)
 			this->isOnGround = false;
 		}
 	}
-	else
-	{
-		velocity.y -= this->actualGravityAcceleration * dt;
-	}
 
 	// Prevent fast speeds
 	velocity.x = MathUtils::clamp(velocity.x, -this->maxMoveSpeed, this->maxMoveSpeed);

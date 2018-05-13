@@ -34,62 +34,62 @@
             </mainline>
             <timeline id="0" name="caveman_arm_L_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-57.378273" y="215.451214"/>
+                    <object folder="0" file="0" x="25.907441" y="109.022643" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="caveman_arm_L_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-29.111906" y="132.796042"/>
+                    <object folder="0" file="1" x="54.173808" y="26.367471" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="caveman_leg_L_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-73.141136" y="41.242687"/>
+                    <object folder="0" file="2" x="10.144578" y="-65.185884" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="caveman_leg_L_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="-75.377518" y="-3.197593"/>
+                    <object folder="0" file="3" x="7.908196" y="-109.626164" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="caveman_leg_R_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="-135.144308" y="-8.813601"/>
+                    <object folder="0" file="4" x="-51.858594" y="-115.242172" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="caveman_leg_R_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-126.323718" y="33.077954"/>
+                    <object folder="0" file="5" x="-43.038004" y="-73.350617" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="caveman_body">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-217.658385" y="342.037267"/>
+                    <object folder="0" file="6" x="-134.372671" y="235.608696" angle="0"/>
                 </key>
             </timeline>
             <timeline id="7" name="caveman_belt">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="-131.746056" y="75.749625"/>
+                    <object folder="0" file="7" x="-48.460342" y="-30.678946" angle="0"/>
                 </key>
             </timeline>
             <timeline id="8" name="caveman_arm_R_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="-254.639425" y="208.547565"/>
+                    <object folder="0" file="8" x="-171.353711" y="102.118994" angle="0"/>
                 </key>
             </timeline>
             <timeline id="9" name="caveman_arm_R_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="-238.672408" y="129.324676"/>
+                    <object folder="0" file="9" x="-155.386694" y="22.896105" angle="0"/>
                 </key>
             </timeline>
             <timeline id="10" name="caveman_head">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="-116.113763" y="289.062439"/>
+                    <object folder="0" file="10" x="-32.828049" y="182.633868" angle="0"/>
                 </key>
             </timeline>
             <timeline id="11" name="caveman_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="-67.962406" y="109.541353" angle="274.267893" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="11" x="15.323308" y="3.112782" angle="274.267893"/>
                 </key>
             </timeline>
         </animation>

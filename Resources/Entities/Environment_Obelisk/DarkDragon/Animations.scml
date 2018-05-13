@@ -41,77 +41,77 @@
             </mainline>
             <timeline id="0" name="black_tail">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-413.105695" y="182.566607" angle="0" scale_y="0.999996"/>
+                    <object folder="0" file="0" x="-382.534266" y="47.042797" angle="0" scale_y="0.999996"/>
                 </key>
             </timeline>
             <timeline id="1" name="black_leg_L_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-73.120909" y="108.404448" angle="0.000001" scale_y="0.999998"/>
+                    <object folder="0" file="1" x="-42.54948" y="-27.119362" angle="0.000001" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="2" name="black_leg_L_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-79.058858" y="47.711808" angle="0.000001" scale_y="0.999998"/>
+                    <object folder="0" file="2" x="-48.487429" y="-87.812002" angle="0.000001" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="3" name="black_arm_L_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="53.351411" y="19.061854" angle="0" scale_y="0.999998"/>
+                    <object folder="0" file="3" x="85.081141" y="-109.126049" angle="0" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="4" name="black_arm_L_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="52.991061" y="96.669865" angle="360" scale_y="0.999998"/>
+                    <object folder="0" file="4" x="84.720791" y="-31.518038" angle="0" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="5" name="black_wing_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-44.238733" y="363.183236" angle="0.000001" scale_y="0.999998"/>
+                    <object folder="0" file="5" x="-13.667304" y="227.659426" angle="0.000001" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="6" name="black_armor">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-98.325216" y="213.830736" angle="357.122435" scale_y="0.999998"/>
+                    <object folder="0" file="6" x="-67.753787" y="78.306926" angle="357.122435" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="7" name="black_arm_R_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="-0.125629" y="71.084649" angle="0" scale_y="0.999998"/>
+                    <object folder="0" file="7" x="59.017229" y="-61.350358" angle="0" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="8" name="black_arm_R_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="-4.076302" y="-3.085134" angle="0" scale_y="0.999998"/>
+                    <object folder="0" file="8" x="55.066556" y="-135.520141" angle="0" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="9" name="black_wing_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="-166.591224" y="286.072434" angle="0.000001" scale_y="0.999998"/>
+                    <object folder="0" file="9" x="-136.019795" y="150.548624" angle="0.000001" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="10" name="black_leg_R_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="-136.184447" y="28.785289" angle="0.000001" scale_y="0.999998"/>
+                    <object folder="0" file="10" x="-105.613018" y="-106.738521" angle="0.000001" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="11" name="black_leg_R_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="-120.838305" y="88.848977" angle="0.000001" scale_y="0.999998"/>
+                    <object folder="0" file="11" x="-90.266876" y="-46.674833" angle="0.000001" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="12" name="black_head_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="131.306007" y="339.137553" angle="349.845377" scale_y="0.999998"/>
+                    <object folder="0" file="12" x="161.877436" y="203.613743" angle="349.845377" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="13" name="black_body">
                 <key id="0" spin="0">
-                    <object folder="0" file="14" x="-99.73382" y="226.129134" angle="349.845377" scale_y="0.999998"/>
+                    <object folder="0" file="14" x="-69.162391" y="90.605324" angle="349.845377" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="14" name="black_neck">
                 <key id="0" spin="0">
-                    <object folder="0" file="15" x="68.285714" y="240.52381"/>
+                    <object folder="0" file="15" x="98.857143" y="105" angle="0"/>
                 </key>
             </timeline>
         </animation>

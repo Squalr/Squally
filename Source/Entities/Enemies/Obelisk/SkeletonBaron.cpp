@@ -11,7 +11,10 @@ SkeletonBaron* SkeletonBaron::create()
 
 SkeletonBaron::SkeletonBaron() : Enemy::Enemy(
 	Resources::Entities_Environment_Obelisk_SkeletonBaron_Animations,
-	false)
+	false,
+	Size(472.0f, 368.0f),
+	0.8f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

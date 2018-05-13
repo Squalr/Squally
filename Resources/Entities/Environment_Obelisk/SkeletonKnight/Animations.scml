@@ -36,72 +36,72 @@
             </mainline>
             <timeline id="0" name="Skeleton_KnightBoss_Armor_ArmD_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="93.874351" y="240.968333" angle="0"/>
+                    <object folder="0" file="0" x="48.541018" y="-1.698334" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="Skeleton_KnightBoss_Armor_ArmU_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="69.565217" y="285.652174" angle="0"/>
+                    <object folder="0" file="1" x="24.231884" y="42.985507" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="Skeleton_Weapon_KnightBossSword">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="52.173913" y="315.652174" angle="0"/>
+                    <object folder="0" file="2" x="6.84058" y="72.985507" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="Skeleton_KnightBoss_Armor_LegU">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="63.478261" y="169.565217" angle="0"/>
+                    <object folder="0" file="3" x="18.144928" y="-73.10145" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="Skeleton_KnightBoss_Armor_LegD">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="64.347826" y="154.782609" angle="0"/>
+                    <object folder="0" file="4" x="19.014493" y="-87.884058" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="Skeleton_KnightBoss_Armor_LegU_000">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="20.869565" y="169.565217" angle="0"/>
+                    <object folder="0" file="3" x="-24.463768" y="-73.10145" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="Skeleton_KnightBoss_Armor_LegD_000">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="21.73913" y="153.913043" angle="0"/>
+                    <object folder="0" file="4" x="-23.594203" y="-88.753624" angle="0"/>
                 </key>
             </timeline>
             <timeline id="7" name="Skeleton_KnightBoss">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="20" y="251.304348" angle="0"/>
+                    <object folder="0" file="6" x="-25.333333" y="8.637681" angle="0"/>
                 </key>
             </timeline>
             <timeline id="8" name="Skeleton_KnightBoss_Armor_ArmU_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-39.130435" y="273.913043" angle="0"/>
+                    <object folder="0" file="5" x="-84.463768" y="31.246376" angle="0"/>
                 </key>
             </timeline>
             <timeline id="9" name="Skeleton_KnightBoss_Armor_ArmD_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="-35.652174" y="233.913043" angle="0"/>
+                    <object folder="0" file="7" x="-80.985507" y="-8.753624" angle="0"/>
                 </key>
             </timeline>
             <timeline id="10" name="Skeleton_Head_KnightBoss">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="-74.120082" y="386.086957" angle="0" scale_x="0.8" scale_y="0.8"/>
+                    <object folder="0" file="8" x="-119.453415" y="143.42029" angle="0" scale_x="0.8" scale_y="0.8"/>
                 </key>
             </timeline>
             <timeline id="11" name="Skeleton_Eyes_LightRed">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="51.171842" y="304.658385" angle="0" scale_x="0.8" scale_y="0.8"/>
+                    <object folder="0" file="9" x="5.838509" y="61.991718" angle="0" scale_x="0.8" scale_y="0.8"/>
                 </key>
             </timeline>
             <timeline id="12" name="Skeleton_Cloak_KnightBoss">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="-53.043478" y="216.521739" angle="0"/>
+                    <object folder="0" file="10" x="-98.376811" y="-26.144928" angle="0"/>
                 </key>
             </timeline>
             <timeline id="13" name="Skeleton_Shield_KnightBoss">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="-64.347826" y="256.521739" angle="0"/>
+                    <object folder="0" file="11" x="-109.681159" y="13.855072" angle="0"/>
                 </key>
             </timeline>
         </animation>

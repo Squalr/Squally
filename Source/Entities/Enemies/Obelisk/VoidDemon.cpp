@@ -11,7 +11,10 @@ VoidDemon* VoidDemon::create()
 
 VoidDemon::VoidDemon() : Enemy::Enemy(
 	Resources::Entities_Environment_Obelisk_VoidDemon_Animations,
-	false)
+	false,
+	Size(338.0f, 342.0f),
+	0.7f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

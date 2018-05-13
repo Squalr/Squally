@@ -432,6 +432,10 @@ Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
 		{
 			newEntity = MechBoxDrone::create();
 		}
+		else if (type == "mech_dog")
+		{
+			newEntity = MechDog::create();
+		}
 		else if (type == "mech_golem")
 		{
 			newEntity = MechGolem::create();
