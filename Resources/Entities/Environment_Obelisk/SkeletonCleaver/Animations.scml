@@ -26,42 +26,42 @@
             </mainline>
             <timeline id="0" name="Skeleton_Devil_Armor_ArmD_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="76" y="19" angle="0"/>
+                    <object folder="0" file="0" x="28.639344" y="-29.590164" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="Skeleton_Devil">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-10" y="62" angle="0"/>
+                    <object folder="0" file="1" x="-57.360656" y="13.409836" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="Skeleton_Devil_Armor_ArmU_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="64" y="77" angle="0"/>
+                    <object folder="0" file="2" x="16.639344" y="28.409836" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="Skeleton_Devil_Armor_ArmU_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="-5" y="72" angle="0"/>
+                    <object folder="0" file="3" x="-52.360656" y="23.409836" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="Skeleton_Head_Devil">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="-31.243273" y="231.674339" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="0" file="4" x="-88.147497" y="212.959694" angle="0" scale_x="0.8" scale_y="0.8"/>
                 </key>
             </timeline>
             <timeline id="5" name="Skeleton_Devil_Armor_ArmD_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-16" y="20" angle="0"/>
+                    <object folder="0" file="5" x="-63.360656" y="-28.590164" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="Skeleton_Weapon_Sickle1">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="63" y="34" angle="298.274865"/>
+                    <object folder="0" file="6" x="15.639344" y="-14.590164" angle="298.274865"/>
                 </key>
             </timeline>
             <timeline id="7" name="Skeleton_Eyes_Red">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="36.5607" y="103.017385" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="0" file="7" x="-9.97008" y="65.215603" angle="0" scale_x="0.8" scale_y="0.8"/>
                 </key>
             </timeline>
         </animation>

@@ -11,7 +11,10 @@ Abomination* Abomination::create()
 
 Abomination::Abomination() : Enemy::Enemy(
 	Resources::Entities_Environment_Obelisk_Abomination_Animations,
-	false)
+	false,
+	Size(296.0f, 356.0f),
+	0.6f,
+	Vec2(0.0f, 0.0f))
 {
 }
 

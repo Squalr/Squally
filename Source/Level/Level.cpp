@@ -52,7 +52,7 @@ void Level::initializeListeners()
 
 void Level::loadLevel(LevelMap* levelMap)
 {
-	this->getPhysicsWorld()->setGravity(Vec2::ZERO);
+	this->getPhysicsWorld()->setGravity(Vec2(0.0f, -512.0f));
 
 	this->hackerModeBackground = Sprite::create(Resources::Backgrounds_MatrixRain_HackerModeBackground);
 	this->hackerModeRain = MatrixRain::create();
@@ -139,10 +139,12 @@ void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		if (this->getPhysicsWorld()->getDebugDrawMask() == PhysicsWorld::DEBUGDRAW_ALL)
 		{
 			this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
+			Director::getInstance()->setDisplayStats(false);
 		}
 		else
 		{
 			this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+			Director::getInstance()->setDisplayStats(true);
 		}
 		event->stopPropagation();
 		break;

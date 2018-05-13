@@ -32,57 +32,57 @@
             </mainline>
             <timeline id="0" name="zombie_leg_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="36" y="56.226415"/>
+                    <object folder="0" file="1" x="5" y="-53.773585" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="zombie_arm_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="45.005963" y="111.32488" angle="7.870083" scale_y="1"/>
+                    <object folder="0" file="0" x="14.005963" y="1.32488" angle="7.870083"/>
                 </key>
             </timeline>
             <timeline id="2" name="zombie_hand_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="92.32814" y="61.10515" angle="7.870083" scale_y="1"/>
+                    <object folder="0" file="3" x="61.32814" y="-48.89485" angle="7.870083"/>
                 </key>
             </timeline>
             <timeline id="3" name="zombie_hand_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="76.446752" y="51.843317" angle="7.870083" scale_y="1"/>
+                    <object folder="0" file="4" x="45.446752" y="-58.156683" angle="7.870083"/>
                 </key>
             </timeline>
             <timeline id="4" name="zombie_body">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-15.169811" y="147.056604" angle="0"/>
+                    <object folder="0" file="6" x="-46.169811" y="37.056604" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="zombie_belt">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-14" y="70"/>
+                    <object folder="0" file="5" x="-45" y="-40" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="zombie_leg_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="-16.056604" y="53.226415"/>
+                    <object folder="0" file="7" x="-47.056604" y="-56.773585" angle="0"/>
                 </key>
             </timeline>
             <timeline id="7" name="zombie_cape">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="-61.716981" y="147.132075"/>
+                    <object folder="0" file="8" x="-92.716981" y="37.132075" angle="0"/>
                 </key>
             </timeline>
             <timeline id="8" name="zombie_arm_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-56.113208" y="112.622642"/>
+                    <object folder="0" file="2" x="-87.113208" y="2.622642" angle="0"/>
                 </key>
             </timeline>
             <timeline id="9" name="zombie_weapon">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="72.113208" y="163.528302" angle="354.71254" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="9" x="41.113208" y="53.528302" angle="354.71254"/>
                 </key>
             </timeline>
             <timeline id="10" name="zombie_head">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="-45.336253" y="271.338275" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="0" file="10" x="-76.336253" y="161.338275" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
             </timeline>
         </animation>

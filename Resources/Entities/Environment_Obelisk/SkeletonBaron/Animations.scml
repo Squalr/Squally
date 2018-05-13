@@ -52,102 +52,102 @@
             </mainline>
             <timeline id="0" name="undeadHorse_leg_1_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-76.157895" y="47.578947"/>
+                    <object folder="0" file="0" x="-152.348371" y="-113.706767" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="undeadHorse_leg_2_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="9.736842" y="47.526316"/>
+                    <object folder="0" file="1" x="-66.453634" y="-113.759398" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="undeadHorse_cape">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-152.578947" y="114"/>
+                    <object folder="0" file="2" x="-228.769423" y="-47.285714" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="blackKnight_leg_L">
                 <key id="0" spin="0">
-                    <object folder="1" file="0" x="-53.257118" y="139.364107" angle="0"/>
+                    <object folder="1" file="0" x="-129.447594" y="-21.921607" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="undeadHorse_body">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="25" y="195"/>
+                    <object folder="0" file="3" x="-51.190476" y="33.714286" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="undeadHorse_belt">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="-116" y="137"/>
+                    <object folder="0" file="4" x="-192.190476" y="-24.285714" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="undeadHorse_head">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="53" y="344"/>
+                    <object folder="0" file="5" x="-23.190476" y="182.714286" angle="0"/>
                 </key>
             </timeline>
             <timeline id="7" name="blackKnight_arm_L_1">
                 <key id="0" spin="0">
-                    <object folder="1" file="1" x="11.955003" y="214.050976" angle="0"/>
+                    <object folder="1" file="1" x="-64.235473" y="52.765262" angle="0"/>
                 </key>
             </timeline>
             <timeline id="8" name="blackKnight_arm_L_2">
                 <key id="0" spin="0">
-                    <object folder="1" file="2" x="15.944902" y="196.111582" angle="0"/>
+                    <object folder="1" file="2" x="-60.245574" y="34.825868" angle="0"/>
                 </key>
             </timeline>
             <timeline id="9" name="blackKnight_body">
                 <key id="0" spin="0">
-                    <object folder="1" file="4" x="-108.257118" y="257.364107" angle="0"/>
+                    <object folder="1" file="4" x="-184.447594" y="96.078393" angle="0"/>
                 </key>
             </timeline>
             <timeline id="10" name="blackKnight_belt">
                 <key id="0" spin="0">
-                    <object folder="1" file="5" x="-106.257118" y="172.364107" angle="0"/>
+                    <object folder="1" file="5" x="-182.447594" y="11.078393" angle="0"/>
                 </key>
             </timeline>
             <timeline id="11" name="blackKnight_leg_R">
                 <key id="0" spin="0">
-                    <object folder="1" file="6" x="-89.519413" y="138.28214" angle="0"/>
+                    <object folder="1" file="6" x="-165.709889" y="-23.003574" angle="0"/>
                 </key>
             </timeline>
             <timeline id="12" name="blackKnight_head">
                 <key id="0" spin="0">
-                    <object folder="1" file="7" x="-125.785994" y="383.014563" angle="0"/>
+                    <object folder="1" file="7" x="-185.847438" y="198.341752" angle="0" scale_x="0.8" scale_y="0.8"/>
                 </key>
             </timeline>
             <timeline id="13" name="blackKnight_cape_L">
                 <key id="0" spin="0">
-                    <object folder="1" file="8" x="-16.640957" y="265.343905" angle="0"/>
+                    <object folder="1" file="8" x="-92.831433" y="104.058191" angle="0"/>
                 </key>
             </timeline>
             <timeline id="14" name="blackKnight_cape_R">
                 <key id="0" spin="0">
-                    <object folder="1" file="9" x="-168.156108" y="274.434814" angle="0"/>
+                    <object folder="1" file="9" x="-244.346584" y="113.1491" angle="0"/>
                 </key>
             </timeline>
             <timeline id="15" name="blackKnight_arm_R_1">
                 <key id="0" spin="0">
-                    <object folder="1" file="3" x="-142.903583" y="199.687339" angle="0"/>
+                    <object folder="1" file="3" x="-219.094059" y="38.401625" angle="0"/>
                 </key>
             </timeline>
             <timeline id="16" name="blackKnight_arm_R_2">
                 <key id="0" spin="0">
-                    <object folder="1" file="10" x="-157.044997" y="171.404511" angle="0"/>
+                    <object folder="1" file="10" x="-233.235473" y="10.118797" angle="0"/>
                 </key>
             </timeline>
             <timeline id="17" name="blackKnight_weapon">
                 <key id="0" spin="0">
-                    <object folder="1" file="11" x="421.730188" y="236.669656" angle="278.173048" scale_x="1" scale_y="1"/>
+                    <object folder="1" file="11" x="345.539712" y="75.383942" angle="278.173048"/>
                 </key>
             </timeline>
             <timeline id="18" name="undeadHorse_leg_1_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-94.736842" y="42.105263"/>
+                    <object folder="0" file="6" x="-170.927318" y="-119.180451" angle="0"/>
                 </key>
             </timeline>
             <timeline id="19" name="undeadHorse_leg_2_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="-9.210526" y="40.789474"/>
+                    <object folder="0" file="7" x="-85.401002" y="-120.49624" angle="0"/>
                 </key>
             </timeline>
         </animation>

@@ -11,7 +11,10 @@ VikingBot* VikingBot::create()
 
 VikingBot::VikingBot() : Enemy::Enemy(
 	Resources::Entities_Environment_Mech_VikingBot_Animations,
-	false)
+	false,
+	Size(768.0f, 960.0f),
+	0.5f,
+	Vec2(-332.0f, 0.0f))
 {
 }
 

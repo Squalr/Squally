@@ -27,42 +27,42 @@
             </mainline>
             <timeline id="0" name="shadowFiend_arm_L1_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="63" y="152"/>
+                    <object folder="0" file="0" x="53" y="38" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="shadowFiend_arm_L2_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="77" y="84"/>
+                    <object folder="0" file="2" x="67" y="-30" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="shadowFiend_body_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="-72" y="173"/>
+                    <object folder="0" file="3" x="-82" y="59" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="shadowFiend_cape_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="45" y="216"/>
+                    <object folder="0" file="4" x="35" y="102" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="shadowFiend_cape_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-127" y="247"/>
+                    <object folder="0" file="5" x="-137" y="133" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="shadowFiend_arm_R1_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-157" y="153"/>
+                    <object folder="0" file="6" x="-167" y="39" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="shadowFiend_arm_R2_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="-167" y="95"/>
+                    <object folder="0" file="7" x="-177" y="-19" angle="0"/>
                 </key>
             </timeline>
             <timeline id="7" name="shadowFiend_head">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="-51" y="284"/>
+                    <object folder="0" file="8" x="-61" y="170" angle="0"/>
                 </key>
             </timeline>
         </animation>

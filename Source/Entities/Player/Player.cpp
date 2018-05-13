@@ -13,7 +13,7 @@ Player* Player::create()
 	return instance;
 }
 
-Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, false, Size(640.0f, 900.0f), Player::playerScale, Vec2(0.0f, 480.0f))
+Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, false, Size(720.0f, 1600.0f), Player::playerScale, Vec2(0.0f, 600.0f))
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 400.0f;
@@ -22,7 +22,7 @@ Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, false, 
 
 	this->inputManager = InputManager::getInstance();
 
-	this->init(PhysicsBody::createBox(size * Player::playerScale), CategoryGroup::G_Player, true, false);
+	this->init(PhysicsBody::createBox(size * Player::playerScale, PhysicsMaterial(0.0f, 0.0f, 0.0f)), CategoryGroup::G_Player, true, false);
 	// this->hover = Hover::create(this);
 
 	//this->hover->setContactBeginCallback(CC_CALLBACK_1(Player::hoverContactBegin, this));

@@ -23,7 +23,7 @@ Hover::Hover(Entity* initParent)
 	this->setPosition(0, -parentSize.height / 2);
 	this->setContentSize(Size(0, Hover::hoverHeight));
 
-	this->init(PhysicsBody::createBox(Size(parentSize.width, Hover::hoverHeight)), CategoryGroup::G_Force, true, false);
+	this->init(PhysicsBody::createBox(Size(parentSize.width, Hover::hoverHeight), PhysicsMaterial(0.0f, 0.0f, 0.0f)), CategoryGroup::G_Force, true, false);
 
 	FiniteTimeAction* bounceY1 = EaseSineInOut::create(ScaleTo::create(3.0f, 1.0f, 0.25f));
 	FiniteTimeAction* bounceY2 = EaseSineInOut::create(ScaleTo::create(3.0f, 1.0f, 1.0f));
