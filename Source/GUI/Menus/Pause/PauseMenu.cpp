@@ -85,7 +85,7 @@ void PauseMenu::initializeListeners()
 
 void PauseMenu::onExitConfirm()
 {
-	NavigationEvents::navigateBack();
+	NavigationEvents::navigate(NavigationEvents::Title);
 }
 
 void PauseMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
