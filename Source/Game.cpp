@@ -176,6 +176,12 @@ void Game::onGameNavigateEnterLevel(EventCustom* eventCustom)
 	NavigationEvents::NavigateEnterLevelArgs* args = (NavigationEvents::NavigateEnterLevelArgs*)(eventCustom->getUserData());
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
+
+	// Destroy the current level object explicitly and re-create it
+	this->level->release();
+	this->level = Level::create();
+	this->level->retain();
+
 	this->level->loadLevel(args->levelMap);
 	this->loadScene(this->level);
 }
