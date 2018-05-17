@@ -21,8 +21,14 @@ void CollisionObject::init(PhysicsBody* initPhysicsBody, CategoryGroup initCateg
 	this->physicsBody->setCollisionBitmask(this->getCollisionGroups());
 	this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
 
-	this->initializeEventListeners();
 	this->scheduleUpdate();
+}
+
+void CollisionObject::onEnter()
+{
+	HackableObject::onEnter();
+
+	this->initializeEventListeners();
 }
 
 void CollisionObject::update(float dt)
