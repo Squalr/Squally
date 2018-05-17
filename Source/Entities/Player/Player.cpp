@@ -20,8 +20,6 @@ Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, false, 
 	this->actualMaxFallSpeed = 600.0f;
 	this->moveAcceleration = 14000.0f;
 
-	this->inputManager = InputManager::getInstance();
-
 	this->init(PhysicsBody::createBox(size * Player::playerScale, PhysicsMaterial(0.0f, 0.0f, 0.0f)), CategoryGroup::G_Player, true, false);
 	// this->hover = Hover::create(this);
 
@@ -38,6 +36,13 @@ Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, false, 
 
 Player::~Player()
 {
+}
+
+void Player::onEnter()
+{
+	Entity::onEnter();
+
+	this->inputManager = InputManager::getInstance();
 }
 
 void Player::registerHackables()
