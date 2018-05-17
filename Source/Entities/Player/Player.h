@@ -44,6 +44,7 @@ private:
 	};
 
 	void registerHackables();
+	void onEnter() override;
 	void update(float) override;
 	void setFlippedX(bool newIsFlipped);
 	void equipWand(Wand wand);

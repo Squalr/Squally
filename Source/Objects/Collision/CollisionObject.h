@@ -52,6 +52,7 @@ protected:
 	virtual bool contactUpdate(CollisionData data);
 	virtual bool contactEnd(CollisionData data);
 
+	void onEnter() override;
 	void update(float dt) override;
 
 private:
