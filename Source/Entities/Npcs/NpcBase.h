@@ -3,7 +3,7 @@
 #include "Resources.h"
 #include "Entities/Entity.h"
 #include "Objects/Collision/CategoryGroup.h"
-#include "Minigames/Hexium/Hexium.h"
+#include "Minigames/Hexus/Hexus.h"
 #include "Events/HexusEvents.h"
 
 using namespace cocos2d;

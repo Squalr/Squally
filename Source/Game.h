@@ -44,7 +44,7 @@ private:
 	OptionsMenu* optionsMenu;
 	PauseMenu* pauseMenu;
 	ConfirmationMenu* confirmationMenu;
-	Hexium* hexium;
+	Hexus* hexus;
 
 	std::stack<Scene*>* sceneHistory;
 };

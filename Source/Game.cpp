@@ -21,7 +21,7 @@ Game::Game()
 	this->optionsMenu = OptionsMenu::create();
 	this->pauseMenu = PauseMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
-	this->hexium = Hexium::create();
+	this->hexus = Hexus::create();
 
 	// Start title screen first (TODO: Eventually splash screen? Do we want one?)
 	this->titleScreen->addChild(this);
@@ -39,7 +39,7 @@ Game::Game()
 	this->optionsMenu->retain();
 	this->pauseMenu->retain();
 	this->confirmationMenu->retain();
-	this->hexium->retain();
+	this->hexus->retain();
 }
 
 Game::~Game()
@@ -81,7 +81,7 @@ void Game::initializeEventListeners()
 
 	EventListenerCustom* hexiumGameStartListener = EventListenerCustom::create(
 		HexusEvents::HexusGameStartEvent,
-		CC_CALLBACK_1(Hexium::onGameStart, this->hexium)
+		CC_CALLBACK_1(Hexus::onGameStart, this->hexus)
 	);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(hexiumGameStartListener, this);
@@ -124,8 +124,8 @@ void Game::onGameNavigateNew(EventCustom* eventCustom)
 	case NavigationEvents::GameScreen::Level:
 		newScene = this->level;
 		break;
-	case NavigationEvents::GameScreen::Hexium:
-		newScene = this->hexium;
+	case NavigationEvents::GameScreen::Hexus:
+		newScene = this->hexus;
 		break;
 	}
 

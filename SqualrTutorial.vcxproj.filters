@@ -97,14 +97,8 @@
     <Filter Include="Source\Level\Parser">
       <UniqueIdentifier>{b43fde59-32a1-4a22-a5ff-05d9b70d3a27}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Minigames\Hexium">
-      <UniqueIdentifier>{f4b1560a-37c3-4bc4-996d-b5034b0d838d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Save">
       <UniqueIdentifier>{b6ef2437-2a70-445e-adb7-dd0b257f1047}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Minigames\Hexium\Components">
-      <UniqueIdentifier>{87c40124-5e4e-4a9d-a46c-ded427cf7a16}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Fight">
       <UniqueIdentifier>{8a90eea5-d921-44a6-993e-18919fca3c49}</UniqueIdentifier>
@@ -144,6 +138,12 @@
     </Filter>
     <Filter Include="Source\Entities\Enemies\Mech">
       <UniqueIdentifier>{76e6c2db-8ed9-4f39-8662-c09195d7ea0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Minigames\Hexus">
+      <UniqueIdentifier>{f4b1560a-37c3-4bc4-996d-b5034b0d838d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Minigames\Hexus\Components">
+      <UniqueIdentifier>{87c40124-5e4e-4a9d-a46c-ded427cf7a16}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -336,17 +336,17 @@
     <ClCompile Include="Source\GUI\HUD\Hud.cpp">
       <Filter>Source\GUI\HUD</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Card.cpp">
-      <Filter>Source\Minigames\Hexium</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Card.cpp">
+      <Filter>Source\Minigames\Hexus</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\CardStorage.cpp">
-      <Filter>Source\Minigames\Hexium</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\CardStorage.cpp">
+      <Filter>Source\Minigames\Hexus</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Deck.cpp">
-      <Filter>Source\Minigames\Hexium</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Deck.cpp">
+      <Filter>Source\Minigames\Hexus</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Hexium.cpp">
-      <Filter>Source\Minigames\Hexium</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Hexus.cpp">
+      <Filter>Source\Minigames\Hexus</Filter>
     </ClCompile>
     <ClCompile Include="Source\Utils\GameUtils.cpp">
       <Filter>Source\Utils</Filter>
@@ -354,71 +354,71 @@
     <ClCompile Include="Source\Utils\MathUtils.cpp">
       <Filter>Source\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\CardData.cpp">
-      <Filter>Source\Minigames\Hexium</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\CardData.cpp">
+      <Filter>Source\Minigames\Hexus</Filter>
     </ClCompile>
     <ClCompile Include="Source\Save\SaveManager.cpp">
       <Filter>Source\Save</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\CardRow.cpp">
-      <Filter>Source\Minigames\Hexium</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\CardRow.cpp">
+      <Filter>Source\Minigames\Hexus</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\GameState.cpp">
-      <Filter>Source\Minigames\Hexium</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\GameState.cpp">
+      <Filter>Source\Minigames\Hexus</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Config.cpp">
-      <Filter>Source\Minigames\Hexium</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Config.cpp">
+      <Filter>Source\Minigames\Hexus</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Components\CoinFlip.cpp">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Components\CoinFlip.cpp">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Components\CardPreview.cpp">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Components\CardPreview.cpp">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Components\LossesDisplay.cpp">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Components\LossesDisplay.cpp">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Components\ScoreTotal.cpp">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Components\ScoreTotal.cpp">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Components\ComponentBase.cpp">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Components\ComponentBase.cpp">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Components\RowTotals.cpp">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Components\RowTotals.cpp">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Components\DeckCardCountDisplay.cpp">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Components\DeckCardCountDisplay.cpp">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Components\HandCardCountDisplay.cpp">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Components\HandCardCountDisplay.cpp">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Components\Avatars.cpp">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Components\Avatars.cpp">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Components\Banners.cpp">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Components\Banners.cpp">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Components\ControlDraw.cpp">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Components\ControlDraw.cpp">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Components\ControlNeutral.cpp">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Components\ControlNeutral.cpp">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Components\ControlSacrificeStaged.cpp">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Components\ControlSacrificeStaged.cpp">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Components\ControlSelectionStaged.cpp">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Components\ControlSelectionStaged.cpp">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Components\ControlEndTurn.cpp">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Components\ControlEndTurn.cpp">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClCompile>
     <ClCompile Include="Source\Fight\Fight.cpp">
       <Filter>Source\Fight</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Minigames\Hexium\Components\ControlReplaceCards.cpp">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClCompile Include="Source\Minigames\Hexus\Components\ControlReplaceCards.cpp">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClCompile>
     <ClCompile Include="Source\Level\Parser\CollisionParser.cpp">
       <Filter>Source\Level\Parser</Filter>
@@ -992,17 +992,17 @@
     <ClInclude Include="Source\GUI\HUD\Hud.h">
       <Filter>Source\GUI\HUD</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Hexium.h">
-      <Filter>Source\Minigames\Hexium</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Hexus.h">
+      <Filter>Source\Minigames\Hexus</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Card.h">
-      <Filter>Source\Minigames\Hexium</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Card.h">
+      <Filter>Source\Minigames\Hexus</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\CardStorage.h">
-      <Filter>Source\Minigames\Hexium</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\CardStorage.h">
+      <Filter>Source\Minigames\Hexus</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Deck.h">
-      <Filter>Source\Minigames\Hexium</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Deck.h">
+      <Filter>Source\Minigames\Hexus</Filter>
     </ClInclude>
     <ClInclude Include="Source\Utils\GameUtils.h">
       <Filter>Source\Utils</Filter>
@@ -1010,74 +1010,74 @@
     <ClInclude Include="Source\Utils\MathUtils.h">
       <Filter>Source\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\CardData.h">
-      <Filter>Source\Minigames\Hexium</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\CardData.h">
+      <Filter>Source\Minigames\Hexus</Filter>
     </ClInclude>
     <ClInclude Include="Source\Save\SaveManager.h">
       <Filter>Source\Save</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\CardRow.h">
-      <Filter>Source\Minigames\Hexium</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\CardRow.h">
+      <Filter>Source\Minigames\Hexus</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\GameState.h">
-      <Filter>Source\Minigames\Hexium</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\GameState.h">
+      <Filter>Source\Minigames\Hexus</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Config.h">
-      <Filter>Source\Minigames\Hexium</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Config.h">
+      <Filter>Source\Minigames\Hexus</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\CoinFlip.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\CoinFlip.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\CardPreview.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\CardPreview.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\LossesDisplay.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\LossesDisplay.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\ScoreTotal.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\ScoreTotal.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\ComponentBase.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\ComponentBase.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\RowTotals.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\RowTotals.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\HandCardCountDisplay.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\HandCardCountDisplay.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\DeckCardCountDisplay.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\DeckCardCountDisplay.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\Banners.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\Banners.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\Avatars.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\Avatars.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\Components.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\Components.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\ControlDraw.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\ControlDraw.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\ControlNeutral.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\ControlNeutral.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\ControlSacrificeStaged.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\ControlSacrificeStaged.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\ControlSelectionStaged.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\ControlSelectionStaged.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\ControlEndTurn.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\ControlEndTurn.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\Fight\Fight.h">
       <Filter>Source\Fight</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Minigames\Hexium\Components\ControlReplaceCards.h">
-      <Filter>Source\Minigames\Hexium\Components</Filter>
+    <ClInclude Include="Source\Minigames\Hexus\Components\ControlReplaceCards.h">
+      <Filter>Source\Minigames\Hexus\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\Level\Parser\CollisionParser.h">
       <Filter>Source\Level\Parser</Filter>

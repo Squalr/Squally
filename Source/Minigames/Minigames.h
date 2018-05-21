@@ -1,2 +1,2 @@
 #pragma once
-#include "Minigames/Hexium/Hexium.h"
+#include "Minigames/Hexus/Hexus.h"
