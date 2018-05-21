@@ -32,7 +32,7 @@ public:
 		Loading,
 		Level,
 		Fight,
-		Hexium,
+		Hexus,
 	};
 
 	struct NavigateBackEventArgs

@@ -1,12 +1,12 @@
 #pragma once
 #include "cocos2d.h"
 #include "Resources.h"
-#include "Minigames/Hexium/Hexium.h"
+#include "Minigames/Hexus/Hexus.h"
 
 using namespace cocos2d;
 
 // Forward declarations
-class Hexium;
+class Hexus;
 
 class HexusEvents
 {
