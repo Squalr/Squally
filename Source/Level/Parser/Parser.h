@@ -17,5 +17,5 @@ using namespace cocos2d;
 class Parser
 {
 public:
-	static LevelMap* parseMap(cocos_experimental::TMXTiledMap* mapRaw);
+	static LevelMap* parseMap(std::string levelFile);
 };

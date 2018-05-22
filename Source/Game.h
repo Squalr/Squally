@@ -10,7 +10,9 @@
 #include "GUI/Menus/Confirmation/ConfirmationMenu.h"
 #include "Events/NavigationEvents.h"
 #include "Events/HexusEvents.h"
+#include "Events/PauseEvents.h"
 #include "Level/Level.h"
+#include "Level/LevelEditor.h"
 #include "Fight/Fight.h"
 #include "Minigames/Minigames.h"
 #include "Utils/GameUtils.h"
@@ -31,6 +33,8 @@ private:
 	void onGameNavigateConfirm(EventCustom* eventCustom);
 	void onGameNavigateLoadLevel(EventCustom* eventCustom);
 	void onGameNavigateEnterLevel(EventCustom* eventCustom);
+	void onGameNavigateLoadLevelEditor(EventCustom* eventCustom);
+	void onGameNavigateEnterLevelEditor(EventCustom* eventCustom);
 	void onGameNavigateFight(EventCustom* eventCustom);
 	void loadScene(Scene* scene);
 	void initializeEventListeners();
@@ -40,6 +44,7 @@ private:
 	StoryMap* storyMap;
 	LoadingScreen* loadingScreen;
 	Level* level;
+	LevelEditor* levelEditor;
 	Fight* fight;
 	OptionsMenu* optionsMenu;
 	PauseMenu* pauseMenu;

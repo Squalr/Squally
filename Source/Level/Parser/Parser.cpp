@@ -1,8 +1,9 @@
 #include "Parser.h"
 
-LevelMap* Parser::parseMap(cocos_experimental::TMXTiledMap* mapRaw)
+LevelMap* Parser::parseMap(std::string levelFile)
 {
-	LevelMap* map = LevelMap::create(Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height));
+	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(levelFile);
+	LevelMap* map = LevelMap::create(levelFile, Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height));
 	std::map<int, std::string> layers = std::map<int, std::string>();
 
 	// Pull out object layers

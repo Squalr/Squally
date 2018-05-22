@@ -13,6 +13,7 @@ public:
 
 	Vec2 getCameraPosition();
 	void setBounds(Rect bounds);
+	void setScrollOffset(Vec2 offset);
 	void setTarget(Node* newTarget);
 	void pushTarget(Node* newTarget);
 	void popTarget();
@@ -26,9 +27,7 @@ private:
 	std::stack<Node*>* targetStack;
 	Vec2 cameraPosition;
 	Rect cameraBounds;
-
-	float cameraScrollOffsetX;
-	float cameraScrollOffsetY;
+	Vec2 cameraScrollOffset;
 
 	static LevelCamera* cameraInstance;
 };

@@ -270,6 +270,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Events\HexusEvents.cpp" />
     <ClCompile Include="Source\Events\NavigationEvents.cpp" />
     <ClCompile Include="Source\Events\MouseEvents.cpp" />
+    <ClCompile Include="Source\Events\PauseEvents.cpp" />
     <ClCompile Include="Source\Fight\Fight.cpp" />
     <ClCompile Include="Source\GUI\Components\CProgressBar.cpp" />
     <ClCompile Include="Source\GUI\Components\EditableTextWindow.cpp" />
@@ -312,6 +313,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Level\Environments\JungleEnvironment.cpp" />
     <ClCompile Include="Source\Level\Environments\SnowEnvironment.cpp" />
     <ClCompile Include="Source\Level\LevelCamera.cpp" />
+    <ClCompile Include="Source\Level\LevelEditor.cpp" />
     <ClCompile Include="Source\Level\LevelMap.cpp" />
     <ClCompile Include="Source\Level\Parser\CollisionParser.cpp" />
     <ClCompile Include="Source\Level\Parser\DecorParser.cpp" />
@@ -487,6 +489,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Events\HexusEvents.h" />
     <ClInclude Include="Source\Events\NavigationEvents.h" />
     <ClInclude Include="Source\Events\MouseEvents.h" />
+    <ClInclude Include="Source\Events\PauseEvents.h" />
     <ClInclude Include="Source\Fight\Fight.h" />
     <ClInclude Include="Source\GUI\Components\CProgressBar.h" />
     <ClInclude Include="Source\GUI\Components\EditableTextWindow.h" />
@@ -531,6 +534,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Level\Environments\JungleEnvironment.h" />
     <ClInclude Include="Source\Level\Environments\SnowEnvironment.h" />
     <ClInclude Include="Source\Level\LevelCamera.h" />
+    <ClInclude Include="Source\Level\LevelEditor.h" />
     <ClInclude Include="Source\Level\LevelMap.h" />
     <ClInclude Include="Source\Level\Parser\CollisionParser.h" />
     <ClInclude Include="Source\Level\Parser\DecorParser.h" />

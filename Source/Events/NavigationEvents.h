@@ -20,6 +20,8 @@ public:
 	static const std::string gameNavigateConfirmEvent;
 	static const std::string gameNavigateLoadLevelEvent;
 	static const std::string gameNavigateEnterLevelEvent;
+	static const std::string gameNavigateLoadLevelEditorEvent;
+	static const std::string gameNavigateEnterLevelEditorEvent;
 	static const std::string gameNavigateFightEvent;
 
 	enum GameScreen {
@@ -31,6 +33,7 @@ public:
 		Confirm,
 		Loading,
 		Level,
+		LevelEditor,
 		Fight,
 		Hexus,
 	};
@@ -63,6 +66,22 @@ public:
 		NavigateEnterLevelArgs(LevelMap* levelMap) : levelMap(levelMap) { }
 	};
 
+	struct NavigateLoadLevelEditorArgs
+	{
+		std::string levelFile;
+		Vec2 initPosition;
+
+		NavigateLoadLevelEditorArgs(std::string levelFile, Vec2 initPosition) : levelFile(levelFile), initPosition(initPosition) { }
+	};
+
+	struct NavigateEnterLevelEditorArgs
+	{
+		LevelMap* levelMap;
+		Vec2 initPosition;
+
+		NavigateEnterLevelEditorArgs(LevelMap* levelMap, Vec2 initPosition) : levelMap(levelMap), initPosition(initPosition) { }
+	};
+
 	struct NavigateFightArgs
 	{
 		Player* player;
@@ -85,6 +104,8 @@ public:
 	static void navigate(GameScreen gameScreen);
 	static void navigateConfirm(std::string confirmMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
 	static void loadLevel(std::string levelFile);
-	static void loadFight(Player* player, Enemy* enemy);
 	static void enterLevel(LevelMap* levelMap);
+	static void loadLevelEditor(std::string levelFile, Vec2 initPosition);
+	static void enterLevelEditor(LevelMap* levelMap, Vec2 initPosition);
+	static void loadFight(Player* player, Enemy* enemy);
 };

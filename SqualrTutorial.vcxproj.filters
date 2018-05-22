@@ -789,6 +789,12 @@
     <ClCompile Include="Source\Entities\Enemies\Mech\MechBoxDrone.cpp">
       <Filter>Source\Entities\Enemies\Mech</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Level\LevelEditor.cpp">
+      <Filter>Source\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Events\PauseEvents.cpp">
+      <Filter>Source\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -1456,6 +1462,12 @@
     </ClInclude>
     <ClInclude Include="Source\Entities\Enemies\Mech\MechBoxDrone.h">
       <Filter>Source\Entities\Enemies\Mech</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Level\LevelEditor.h">
+      <Filter>Source\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Events\PauseEvents.h">
+      <Filter>Source\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

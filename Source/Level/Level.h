@@ -7,6 +7,7 @@
 #include "Entities/Player/Player.h"
 #include "Input/InputManager.h"
 #include "Events/NavigationEvents.h"
+#include "Events/PauseEvents.h"
 #include "Utils/GameUtils.h"
 #include "Shaders/PostProcess.h"
 #include "GUI/HUD/Hud.h"
@@ -19,6 +20,7 @@
 
 using namespace cocos2d;
 
+// Forward declarations
 class LevelMap;
 
 class Level : public FadeScene

@@ -21,9 +21,8 @@ LevelCamera::LevelCamera()
 {
 	this->cameraPosition = Vec2::ZERO;
 	this->targetStack = new std::stack<Node*>();
-
-	this->cameraScrollOffsetX = 128.0f;
-	this->cameraScrollOffsetY = 96.0f;
+	this->cameraScrollOffset = Vec2::ZERO;
+	this->cameraBounds = Rect::ZERO;
 
 	this->scheduleUpdate();
 }
@@ -41,22 +40,22 @@ void LevelCamera::update(float dt)
 		Size visibleSize = Director::getInstance()->getVisibleSize();
 
 		// Handle camera scrolling from player traveling past scroll distance
-		if (this->cameraPosition.x < targetPosition.x - this->cameraScrollOffsetX - visibleSize.width / 2)
+		if (this->cameraPosition.x < targetPosition.x - this->cameraScrollOffset.x - visibleSize.width / 2)
 		{
-			this->cameraPosition.x = targetPosition.x - this->cameraScrollOffsetX - visibleSize.width / 2;
+			this->cameraPosition.x = targetPosition.x - this->cameraScrollOffset.x - visibleSize.width / 2;
 		}
-		else if (this->cameraPosition.x > targetPosition.x + this->cameraScrollOffsetX - visibleSize.width / 2)
+		else if (this->cameraPosition.x > targetPosition.x + this->cameraScrollOffset.x - visibleSize.width / 2)
 		{
-			this->cameraPosition.x = targetPosition.x + this->cameraScrollOffsetX - visibleSize.width / 2;
+			this->cameraPosition.x = targetPosition.x + this->cameraScrollOffset.x - visibleSize.width / 2;
 		}
 
-		if (this->cameraPosition.y < targetPosition.y - this->cameraScrollOffsetY - visibleSize.height / 2)
+		if (this->cameraPosition.y < targetPosition.y - this->cameraScrollOffset.y - visibleSize.height / 2)
 		{
-			this->cameraPosition.y = targetPosition.y - this->cameraScrollOffsetY - visibleSize.height / 2;
+			this->cameraPosition.y = targetPosition.y - this->cameraScrollOffset.y - visibleSize.height / 2;
 		}
-		else if (this->cameraPosition.y > targetPosition.y + this->cameraScrollOffsetY - visibleSize.height / 2)
+		else if (this->cameraPosition.y > targetPosition.y + this->cameraScrollOffset.y - visibleSize.height / 2)
 		{
-			this->cameraPosition.y = targetPosition.y + this->cameraScrollOffsetY - visibleSize.height / 2;
+			this->cameraPosition.y = targetPosition.y + this->cameraScrollOffset.y - visibleSize.height / 2;
 		}
 
 		// Prevent camera from leaving level bounds
@@ -71,6 +70,11 @@ void LevelCamera::update(float dt)
 void LevelCamera::setBounds(Rect bounds)
 {
 	this->cameraBounds = bounds;
+}
+
+void LevelCamera::setScrollOffset(Vec2 offset)
+{
+	this->cameraScrollOffset = offset;
 }
 
 void LevelCamera::setTarget(Node* newTarget)

@@ -4,11 +4,11 @@ bool Level::hackerMode = false;
 
 Level* Level::create()
 {
-	Level* level = new Level();
+	Level* instance = new Level();
 
-	level->autorelease();
+	instance->autorelease();
 
-	return level;
+	return instance;
 }
 
 Level::Level()
@@ -66,6 +66,7 @@ void Level::loadLevel(LevelMap* levelMap)
 
 	this->camera->setTarget(Player::getInstance());
 	this->camera->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
+	this->camera->setScrollOffset(Vec2(128.0f, 96.0f));
 
 	this->addChild(InputManager::claimInstance());
 	this->addChild(this->hackerModeBackground);
@@ -93,7 +94,6 @@ void Level::update(float dt)
 {
 	FadeScene::update(dt);
 
-	// Scroll world // TODO: Trigger scroll event or something
 	this->map->setPosition(-LevelCamera::getInstance()->getCameraPosition());
 }
 
@@ -107,7 +107,7 @@ void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		NavigationEvents::navigate(NavigationEvents::GameScreen::Pause);
+		PauseEvents::pauseLevel(PauseEvents::PauseEventArgs(this->map->getMapFileName(), Player::getInstance()->getPosition()));
 		event->stopPropagation();
 		break;
 	case EventKeyboard::KeyCode::KEY_GRAVE:
