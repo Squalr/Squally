@@ -42,11 +42,12 @@ void LoadingScreen::initializePositions()
 	this->progressBar->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 480.0f));
 }
 
-void LoadingScreen::loadLevel(std::string levelFile)
+void LoadingScreen::loadLevel(std::string levelFile, const std::function<void(LevelMap*)> newOnLoadCallback)
 {
 	this->totalFileCount = 0;
 	this->loadedFileCount = 0;
 	this->currentLevelFile = levelFile;
+	this->onLoadCallback = newOnLoadCallback;
 
 	// Asyncronously get all files under the game, and load them
 	FileUtils::getInstance()->listFilesRecursivelyAsync(FileUtils::getInstance()->getDefaultResourceRootPath(), CC_CALLBACK_1(LoadingScreen::onFileEnumerationComplete, this));
@@ -116,11 +117,12 @@ void LoadingScreen::incrementLoadedFileCount()
 
 	if (this->loadedFileCount.fetch_add(1) >= this->totalFileCount - 1)
 	{
-		cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(this->currentLevelFile);
+		LevelMap* map = Parser::parseMap(this->currentLevelFile);
 
-		LevelMap* map = Parser::parseMap(mapRaw);
-
-		NavigationEvents::enterLevel(map);
+		if (this->onLoadCallback != nullptr)
+		{
+			this->onLoadCallback(map);
+		}
 	}
 }
 

@@ -8,7 +8,7 @@ using namespace cocos2d;
 class LevelMap : public Node
 {
 public:
-	static LevelMap* create(Size initMapSize);
+	static LevelMap* create(std::string initLevelMapFileName, Size initMapSize);
 
 	void insertStaticMember(Node* node, bool hackerModeHidden);
 	void insertDynamicMember(Node* node, bool hackerModeHidden);
@@ -17,13 +17,15 @@ public:
 	Size getMapSize();
 	void hackerModeEnable();
 	void hackerModeDisable();
+	std::string getMapFileName();
 
 protected:
-	LevelMap(Size initMapSize);
+	LevelMap(std::string initLevelMapFileName, Size initMapSize);
 	~LevelMap();
 
 private:
 
+	std::string levelMapFileName;
 	Size mapSize;
 
 	std::vector<Node*>* staticMembers;

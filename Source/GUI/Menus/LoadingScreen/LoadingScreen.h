@@ -17,7 +17,7 @@ class LoadingScreen : public FadeScene
 public:
 	static LoadingScreen * create();
 
-	void loadLevel(std::string levelFile);
+	void loadLevel(std::string levelFile, const std::function<void(LevelMap*)> newOnLoadCallback);
 
 protected:
 	LoadingScreen();
@@ -37,6 +37,7 @@ private:
 	Node* background;
 	Sprite* loadingWindow;
 	CProgressBar* progressBar;
+	std::function<void(LevelMap*)> onLoadCallback;
 
 	int totalFileCount;
 	std::atomic_int loadedFileCount;

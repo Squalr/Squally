@@ -16,7 +16,7 @@ class Hexus : public FadeScene
 public:
 	static Hexus * create();
 
-	// Make this event public. Note that Game.h fires this event because this scene can't listen for events until it is created.
+	// Note that Game.h fires this event because this scene can't listen for events while it is inactive
 	void onGameStart(EventCustom* eventCustom);
 
 private:

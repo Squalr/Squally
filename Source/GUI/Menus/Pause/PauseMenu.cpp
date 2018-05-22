@@ -25,6 +25,15 @@ PauseMenu::PauseMenu()
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
 
+	// TEMP: Level editor
+	Node* label = Label::create("Level editor", Resources::Fonts_Montserrat_Medium, 24);
+	Node* labelHover = Label::create("Level editor", Resources::Fonts_Montserrat_Medium, 24);
+	Node* labelClick = Label::create("Level editor", Resources::Fonts_Montserrat_Medium, 24);
+	labelHover->setColor(Color3B::YELLOW);
+	labelClick->setColor(Color3B::YELLOW);
+	this->levelEditorButton = MenuSprite::create(label, labelHover, labelClick);
+	this->addChild(this->levelEditorButton);
+
 	this->setFadeSpeed(0.0f);
 }
 
@@ -43,6 +52,7 @@ void PauseMenu::onEnter()
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 	GameUtils::fadeInObject(this->resumeButton, delay, duration);
 	GameUtils::fadeInObject(this->optionsButton, delay, duration);
+	GameUtils::fadeInObject(this->levelEditorButton, delay, duration);
 	GameUtils::fadeInObject(this->exitButton, delay, duration);
 
 	this->background->addChild(MenuBackground::claimInstance());
@@ -62,6 +72,7 @@ void PauseMenu::initializePositions()
 	this->closeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 136.0f, origin.y + visibleSize.height / 2 + 204.0f));
 	this->resumeButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 + 128.0f));
 	this->optionsButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 + 0.0f));
+	this->levelEditorButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 96.0f));
 	this->exitButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 180.0f));
 
 	MenuBackground::getInstance()->initializePositions();
@@ -75,12 +86,23 @@ void PauseMenu::initializeListeners()
 
 	this->resumeButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onResumeClick, this));
 	this->optionsButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onOptionsClick, this));
+	this->levelEditorButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onLevelEditorClick, this));
 	this->exitButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onExitClick, this));
 
 	this->closeButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onCloseClick, this));
 	this->closeButton->setClickSound(Resources::Sounds_ClickBack1);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+void PauseMenu::onLevelPause(EventCustom* eventCustom)
+{
+	PauseEvents::PauseEventArgs* args = (PauseEvents::PauseEventArgs*)(eventCustom->getUserData());
+
+	this->currentLevelFile = args->currentLevelFile;
+	this->pauseLocation = args->pauseLocation;
+
+	NavigationEvents::navigate(NavigationEvents::GameScreen::Pause);
 }
 
 void PauseMenu::onExitConfirm()
@@ -112,6 +134,11 @@ void PauseMenu::onResumeClick(MenuSprite* menuSprite)
 void PauseMenu::onOptionsClick(MenuSprite* menuSprite)
 {
 	NavigationEvents::navigate(NavigationEvents::GameScreen::Options);
+}
+
+void PauseMenu::onLevelEditorClick(MenuSprite* menuSprite)
+{
+	NavigationEvents::loadLevelEditor(this->currentLevelFile, this->pauseLocation);
 }
 
 void PauseMenu::onExitClick(MenuSprite* menuSprite)

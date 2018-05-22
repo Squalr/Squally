@@ -1,16 +1,17 @@
 #include "LevelMap.h"
 
-LevelMap* LevelMap::create(Size initMapSize)
+LevelMap* LevelMap::create(std::string initLevelMapFileName, Size initMapSize)
 {
-	LevelMap* levelMap = new LevelMap(initMapSize);
+	LevelMap* levelMap = new LevelMap(initLevelMapFileName, initMapSize);
 
 	levelMap->autorelease();
 
 	return levelMap;
 }
 
-LevelMap::LevelMap(Size initMapSize)
+LevelMap::LevelMap(std::string initLevelMapFileName, Size initMapSize)
 {
+	this->levelMapFileName = initLevelMapFileName;
 	this->mapSize = initMapSize;
 	this->hackerModeHiddenMembers = new std::vector<Node*>();
 	this->staticMembers = new std::vector<Node*>();
@@ -22,6 +23,11 @@ LevelMap::~LevelMap()
 	delete(this->hackerModeHiddenMembers);
 	delete(this->staticMembers);
 	delete(this->dynamicMembers);
+}
+
+std::string LevelMap::getMapFileName()
+{
+	return this->levelMapFileName;
 }
 
 void LevelMap::hackerModeEnable()
