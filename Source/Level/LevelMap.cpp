@@ -1,18 +1,17 @@
 #include "LevelMap.h"
 
-Size LevelMap::mapSize = Size::ZERO;
-
-LevelMap* LevelMap::create()
+LevelMap* LevelMap::create(Size initMapSize)
 {
-	LevelMap* levelMap = new LevelMap();
+	LevelMap* levelMap = new LevelMap(initMapSize);
 
 	levelMap->autorelease();
 
 	return levelMap;
 }
 
-LevelMap::LevelMap()
+LevelMap::LevelMap(Size initMapSize)
 {
+	this->mapSize = initMapSize;
 	this->hackerModeHiddenMembers = new std::vector<Node*>();
 	this->staticMembers = new std::vector<Node*>();
 	this->dynamicMembers = new std::vector<Node*>();
@@ -52,6 +51,11 @@ void LevelMap::setPosition(const Vec2& position)
 	{
 		(*it)->setPosition(position);
 	}
+}
+
+Size LevelMap::getMapSize()
+{
+	return this->mapSize;
 }
 
 void LevelMap::insertStaticMember(Node* node, bool hackerModeHidden)

@@ -61,11 +61,13 @@ void Level::loadLevel(LevelMap* levelMap)
 	this->hackerModeHud = HackerModeHud::create();
 	this->gamePostProcessInversion = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_Inverse);
 	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
-
+	this->camera = LevelCamera::create();
 	this->map = levelMap;
 
-	this->addChild(InputManager::claimInstance());
+	this->camera->setTarget(Player::getInstance());
+	this->camera->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
 
+	this->addChild(InputManager::claimInstance());
 	this->addChild(this->hackerModeBackground);
 	this->addChild(this->hackerModeRain);
 	this->addChild(this->hackerModePostProcessGlow);
@@ -74,6 +76,7 @@ void Level::loadLevel(LevelMap* levelMap)
 	this->addChild(this->gamePostProcessNightVision);
 	this->addChild(this->hud);
 	this->addChild(this->hackerModeHud);
+	this->addChild(this->camera);
 }
 
 void Level::resume(void)
@@ -90,36 +93,8 @@ void Level::update(float dt)
 {
 	FadeScene::update(dt);
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	// Handle camera scrolling from player traveling past scroll distance
-	if (LevelCamera::cameraPosition.x < Player::position.x - LevelCamera::cameraScrollOffsetX - visibleSize.width / 2)
-	{
-		LevelCamera::cameraPosition.x = Player::position.x - LevelCamera::cameraScrollOffsetX - visibleSize.width / 2;
-	}
-	else if (LevelCamera::cameraPosition.x > Player::position.x + LevelCamera::cameraScrollOffsetX - visibleSize.width / 2)
-	{
-		LevelCamera::cameraPosition.x = Player::position.x + LevelCamera::cameraScrollOffsetX - visibleSize.width / 2;
-	}
-
-	if (LevelCamera::cameraPosition.y < Player::position.y - LevelCamera::cameraScrollOffsetY - visibleSize.height / 2)
-	{
-		LevelCamera::cameraPosition.y = Player::position.y - LevelCamera::cameraScrollOffsetY - visibleSize.height / 2;
-	}
-	else if (LevelCamera::cameraPosition.y > Player::position.y + LevelCamera::cameraScrollOffsetY - visibleSize.height / 2)
-	{
-		LevelCamera::cameraPosition.y = Player::position.y + LevelCamera::cameraScrollOffsetY - visibleSize.height / 2;
-	}
-
-	// Prevent camera from leaving level bounds
-	LevelCamera::cameraPosition.x = min(LevelCamera::cameraPosition.x, LevelMap::mapSize.width - visibleSize.width);
-	LevelCamera::cameraPosition.x = max(LevelCamera::cameraPosition.x, 0.0f);
-
-	LevelCamera::cameraPosition.y = min(LevelCamera::cameraPosition.y, LevelMap::mapSize.height - visibleSize.height);
-	LevelCamera::cameraPosition.y = max(LevelCamera::cameraPosition.y, 0.0f);
-
 	// Scroll world // TODO: Trigger scroll event or something
-	this->map->setPosition(-LevelCamera::cameraPosition);
+	this->map->setPosition(-LevelCamera::getInstance()->getCameraPosition());
 }
 
 void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
