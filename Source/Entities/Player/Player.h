@@ -6,6 +6,7 @@
 #include "Events/NavigationEvents.h"
 #include "Objects/Collision/CategoryGroup.h"
 #include "Input/InputManager.h"
+#include <mutex>
 
 using namespace cocos2d;
 
@@ -13,11 +14,11 @@ class Player : public Entity
 {
 public:
 	static Player * create();
+	static Player * getInstance();
 
 	Size getSize() override;
 
 	static int health;
-	static Vec2 position;
 
 protected:
 	bool contactBegin(CollisionData data) override;
@@ -31,23 +32,10 @@ private:
 	Player();
 	~Player();
 
-	enum Wand
-	{
-		None,
-		Stick,
-		Snake,
-		Ancient,
-		Spider,
-		Crystal,
-		Dragon,
-		Skeleton
-	};
-
 	void registerHackables();
 	void onEnter() override;
 	void update(float) override;
 	void setFlippedX(bool newIsFlipped);
-	void equipWand(Wand wand);
 
 	bool isFlipped;
 	bool canJump;
@@ -56,4 +44,5 @@ private:
 	Hover* hover;
 
 	static const float playerScale;
+	static Player* playerInstance;
 };

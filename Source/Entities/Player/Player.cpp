@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Vec2 Player::position;
+Player* Player::playerInstance = nullptr;
 int Player::health;
 const float Player::playerScale = 0.13f;
 
@@ -8,9 +8,15 @@ Player* Player::create()
 {
 	Player* instance = new Player();
 
+	Player::playerInstance = instance;
 	instance->autorelease();
 
 	return instance;
+}
+
+Player* Player::getInstance()
+{
+	return Player::playerInstance;
 }
 
 Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, false, Size(720.0f, 1600.0f), Player::playerScale, Vec2(0.0f, 600.0f))
@@ -27,9 +33,6 @@ Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, false, 
 	//this->hover->setContactUpdateCallback(CC_CALLBACK_1(Player::hoverContactUpdate, this));
 	//this->hover->setContactEndCallback(CC_CALLBACK_1(Player::hoverContactEnd, this));
 	//this->addChild(this->hover);
-
-	// TODO: Load from save
-	this->equipWand(Wand::Stick);
 
 	this->registerHackables();
 }
@@ -94,43 +97,6 @@ void Player::update(float dt)
 	{
 		this->hover->setHeight(16.0f);
 	}
-
-	// TODO: Prolly break this out to a radial menu
-	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_1))
-	{
-		this->equipWand(Wand::Stick);
-	}
-	else if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_2))
-	{
-		this->equipWand(Wand::Snake);
-	}
-	else if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_3))
-	{
-		this->equipWand(Wand::Ancient);
-	}
-	else if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_4))
-	{
-		this->equipWand(Wand::Spider);
-	}
-	else if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_5))
-	{
-		this->equipWand(Wand::Crystal);
-	}
-	else if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_6))
-	{
-		this->equipWand(Wand::Dragon);
-	}
-	else if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_7))
-	{
-		this->equipWand(Wand::Skeleton);
-	}
-
-	this->position = this->getPosition();
-}
-
-void Player::equipWand(Wand wand)
-{
-	this->setFlippedX(this->isFlipped);
 }
 
 void Player::setFlippedX(bool newIsFlipped)

@@ -117,9 +117,9 @@ void LoadingScreen::incrementLoadedFileCount()
 	if (this->loadedFileCount.fetch_add(1) >= this->totalFileCount - 1)
 	{
 		cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(this->currentLevelFile);
-		LevelMap::mapSize = Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
 
 		LevelMap* map = Parser::parseMap(mapRaw);
+
 		NavigationEvents::enterLevel(map);
 	}
 }

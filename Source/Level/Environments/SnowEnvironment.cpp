@@ -28,6 +28,7 @@ void SnowEnvironment::update(float dt)
 	Layer::update(dt);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+	Vec2 cameraPosition = LevelCamera::getInstance()->getCameraPosition();
 
-	this->snow->setSourcePosition(Vec2(LevelCamera::cameraPosition.x + visibleSize.width / 2, LevelCamera::cameraPosition.y + visibleSize.height + 64.0f));
+	this->snow->setSourcePosition(Vec2(cameraPosition.x + visibleSize.width / 2, cameraPosition.y + visibleSize.height + 64.0f));
 }

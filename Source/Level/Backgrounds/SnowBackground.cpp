@@ -43,7 +43,8 @@ void SnowBackground::update(float dt)
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	float widthOffset = Director::getInstance()->getVisibleSize().width / 2;
+	Vec2 cameraPosition = LevelCamera::getInstance()->getCameraPosition();
 
-	this->layer6->runAction(MoveTo::create(0.0f, Vec2(-LevelCamera::cameraPosition.x / 80.0f, this->layer6->getPosition().y)));
-	this->layer5->runAction(MoveTo::create(0.0f, Vec2(-LevelCamera::cameraPosition.x / 60.0f, this->layer5->getPosition().y)));
+	this->layer6->runAction(MoveTo::create(0.0f, Vec2(-cameraPosition.x / 80.0f, this->layer6->getPosition().y)));
+	this->layer5->runAction(MoveTo::create(0.0f, Vec2(-cameraPosition.x / 60.0f, this->layer5->getPosition().y)));
 }

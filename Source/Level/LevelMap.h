@@ -8,25 +8,23 @@ using namespace cocos2d;
 class LevelMap : public Node
 {
 public:
-	static LevelMap* create();
+	static LevelMap* create(Size initMapSize);
 
 	void insertStaticMember(Node* node, bool hackerModeHidden);
 	void insertDynamicMember(Node* node, bool hackerModeHidden);
 
-	static Size mapSize;
-
 	void setPosition(const Vec2& position) override;
+	Size getMapSize();
 	void hackerModeEnable();
 	void hackerModeDisable();
 
 protected:
-	LevelMap();
+	LevelMap(Size initMapSize);
 	~LevelMap();
 
 private:
 
-	void registerHackableObject(EventCustom* args);
-	void initializeEventListeners();
+	Size mapSize;
 
 	std::vector<Node*>* staticMembers;
 	std::vector<Node*>* dynamicMembers;

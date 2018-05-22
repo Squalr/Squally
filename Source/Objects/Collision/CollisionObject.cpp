@@ -41,10 +41,12 @@ void CollisionObject::update(float dt)
 
 	if (this->physicsBody->isDynamic())
 	{
-		if (pos.x > LevelCamera::cameraPosition.x + visibleSize.width + STOP_PHYSICS_OFFSET ||
-			pos.x < LevelCamera::cameraPosition.x - STOP_PHYSICS_OFFSET ||
-			pos.y > LevelCamera::cameraPosition.y + visibleSize.height + STOP_PHYSICS_OFFSET ||
-			pos.y < LevelCamera::cameraPosition.y - STOP_PHYSICS_OFFSET)
+		Vec2 cameraPosition = LevelCamera::getInstance()->getCameraPosition();
+
+		if (pos.x > cameraPosition.x + visibleSize.width + STOP_PHYSICS_OFFSET ||
+			pos.x < cameraPosition.x - STOP_PHYSICS_OFFSET ||
+			pos.y > cameraPosition.y + visibleSize.height + STOP_PHYSICS_OFFSET ||
+			pos.y < cameraPosition.y - STOP_PHYSICS_OFFSET)
 		{
 			// Bypass setter to force disable physics for this object
 			this->physicsBody->setEnabled(false);
@@ -168,11 +170,12 @@ CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsCo
 	collisionData.other = (CollisionObject*)other->getBody()->getNode();
 	collisionData.normal = contact.getContactData()->normal;
 	collisionData.pointCount = contact.getContactData()->count;
+	Vec2 cameraPosition = LevelCamera::LevelCamera::getInstance()->getCameraPosition();
 
 	// Convert collision coordinates to level coordinates
 	for (int index = 0; index < collisionData.pointCount; index++)
 	{
-		collisionData.points[index] = Vec2(contact.getContactData()->points[index].x + LevelCamera::cameraPosition.x, contact.getContactData()->points[index].y + LevelCamera::cameraPosition.y);
+		collisionData.points[index] = Vec2(contact.getContactData()->points[index].x + cameraPosition.x, contact.getContactData()->points[index].y + cameraPosition.y);
 	}
 
 	// Determines how large the

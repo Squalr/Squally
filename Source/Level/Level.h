@@ -51,6 +51,7 @@ private:
 	PostProcess* gamePostProcessNightVision;
 	Hud * hud;
 	HackerModeHud * hackerModeHud;
+	LevelCamera* camera;
 
 	static bool hackerMode;
 };

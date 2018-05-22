@@ -33,6 +33,8 @@ void JungleEnvironment::update(float dt)
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->fireflies->setSourcePosition(LevelCamera::cameraPosition + visibleSize / 2);
-	this->rain->setSourcePosition(Vec2(LevelCamera::cameraPosition.x + visibleSize.width / 2, LevelCamera::cameraPosition.y + visibleSize.height + 64.0f));
+	Vec2 cameraPosition = LevelCamera::getInstance()->getCameraPosition();
+
+	this->fireflies->setSourcePosition(cameraPosition + visibleSize / 2);
+	this->rain->setSourcePosition(Vec2(cameraPosition.x + visibleSize.width / 2, cameraPosition.y + visibleSize.height + 64.0f));
 }
