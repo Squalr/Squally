@@ -37,30 +37,30 @@ void CollisionObject::update(float dt)
 
 	Vec2 pos = this->getPosition();
 
-	const float STOP_PHYSICS_OFFSET = 2048.0f;
+	const float STOP_PHYSICS_OFFSET = 1024.0f;
 
-	// Handle camera scrolling from player traveling past scroll distance
-	if (pos.x > LevelCamera::cameraPosition.x + visibleSize.width + STOP_PHYSICS_OFFSET ||
-		pos.x < LevelCamera::cameraPosition.x - STOP_PHYSICS_OFFSET ||
-		pos.y > LevelCamera::cameraPosition.y + visibleSize.height + STOP_PHYSICS_OFFSET ||
-		pos.y < LevelCamera::cameraPosition.y - STOP_PHYSICS_OFFSET)
+	if (this->physicsBody->isDynamic())
 	{
-		// this->disablePhysics();
-	}
-	else
-	{
-		this->enablePhysics();
+		if (pos.x > LevelCamera::cameraPosition.x + visibleSize.width + STOP_PHYSICS_OFFSET ||
+			pos.x < LevelCamera::cameraPosition.x - STOP_PHYSICS_OFFSET ||
+			pos.y > LevelCamera::cameraPosition.y + visibleSize.height + STOP_PHYSICS_OFFSET ||
+			pos.y < LevelCamera::cameraPosition.y - STOP_PHYSICS_OFFSET)
+		{
+			// Bypass setter to force disable physics for this object
+			this->physicsBody->setEnabled(false);
+		}
+		else
+		{
+			// Use setter such that if physics was disabled for a reason other than being off-screen, we do not overwrite that
+			this->setPhysicsEnabled(this->physicsEnabled);
+		}
 	}
 }
 
-void CollisionObject::disablePhysics()
+void CollisionObject::setPhysicsEnabled(bool enabled)
 {
-	this->physicsBody->setEnabled(false);
-}
-
-void CollisionObject::enablePhysics()
-{
-	this->physicsBody->setEnabled(true);
+	this->physicsEnabled = enabled;
+	this->physicsBody->setEnabled(enabled);
 }
 
 Vec2 CollisionObject::getVelocity()

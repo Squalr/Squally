@@ -19,8 +19,7 @@ public:
 	Vec2 getVelocity();
 	void setVelocity(Vec2 velocity);
 
-	virtual void disablePhysics();
-	virtual void enablePhysics();
+	virtual void setPhysicsEnabled(bool enabled);
 
 protected:
 	enum CollisionDirection
@@ -67,4 +66,6 @@ private:
 
 	CategoryGroup categoryGroup;
 	PhysicsBody * physicsBody;
+
+	bool physicsEnabled;
 };
