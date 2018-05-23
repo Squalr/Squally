@@ -213,8 +213,11 @@ bool Camera::initDefault()
         }
         case Director::Projection::_3D:
         {
+			// Zac: Unfortunately this engine does not make this easy to update the draw depth after initialization, so it's best just to set it here.
+			// This game has no reason to do far culling, so it's easiest that we set this to a large value and forget about it.
+			const float farPlaneDepth = 65535.0f;
             float zeye = Director::getInstance()->getZEye();
-            initPerspective(60, (GLfloat)size.width / size.height, 10, zeye + size.height / 2.0f);
+            initPerspective(60, (GLfloat)size.width / size.height, 10, farPlaneDepth /*zeye + size.height / 2.0f*/);
             Vec3 eye(size.width/2, size.height/2.0f, zeye), center(size.width/2, size.height/2, 0.0f), up(0.0f, 1.0f, 0.0f);
             setPosition3D(eye);
             lookAt(center, up);
