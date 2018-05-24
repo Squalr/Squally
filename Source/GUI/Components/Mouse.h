@@ -8,10 +8,7 @@ using namespace cocos2d;
 class Mouse : public Node
 {
 public:
-	static Mouse * claimInstance();
-	static Mouse * getInstance();
-
-	void setCanClick(bool canClick);
+	static Mouse * create();
 
 protected:
 	Mouse();
@@ -19,11 +16,14 @@ protected:
 
 private:
 	void initializeListeners();
+	void onMouseCanClickEvent(EventCustom* eventCustom);
+	void setCanClick(bool canClick);
 	void onMouseMove(EventMouse* event);
+	void onEnter() override;
 
 	Sprite* mouseSpriteIdle;
 	Sprite* mouseSpritePoint;
 
-	static Mouse * mouseInstance;
+	static Vec2 mousePosition;
 };
 

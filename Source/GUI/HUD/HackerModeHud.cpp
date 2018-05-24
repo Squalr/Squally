@@ -18,6 +18,7 @@ HackerModeHud::HackerModeHud()
 
 	this->addChild(this->hackableObjectsHud);
 	this->addChild(this->radialMenu);
+	this->addChild(Mouse::create());
 }
 
 HackerModeHud::~HackerModeHud()
@@ -30,8 +31,6 @@ void HackerModeHud::onEnter()
 
 	this->initializePositions();
 	this->initializeListeners();
-
-	this->addChild(Mouse::claimInstance());
 }
 
 void HackerModeHud::initializePositions()

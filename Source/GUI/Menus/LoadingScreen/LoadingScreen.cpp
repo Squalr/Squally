@@ -16,6 +16,7 @@ LoadingScreen::LoadingScreen()
 
 	this->addChild(this->background);
 	this->addChild(this->progressBar);
+	this->addChild(Mouse::create());
 
 	this->setFadeSpeed(0.0f);
 }
@@ -29,8 +30,6 @@ void LoadingScreen::onEnter()
 	FadeScene::onEnter();
 
 	this->background->addChild(MenuBackground::claimInstance());
-
-	this->addChild(Mouse::claimInstance());
 
 	this->initializePositions();
 }

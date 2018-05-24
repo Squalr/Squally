@@ -111,7 +111,6 @@ void GameUtils::focus(Node *node)
 {
 	GameUtils::pause(Director::getInstance()->getRunningScene());
 	GameUtils::resume(node);
-	node->addChild(Mouse::claimInstance());
 }
 
 Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition)

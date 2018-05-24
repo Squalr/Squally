@@ -21,7 +21,7 @@ Player* Player::getInstance()
 
 Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, false, Size(720.0f, 1600.0f), Player::playerScale, Vec2(0.0f, 600.0f))
 {
-	this->actualJumpLaunchVelocity = 640.0f;
+	this->actualJumpLaunchVelocity = 1280.0f;
 	this->actualGravityAcceleration = 400.0f;
 	this->actualMaxFallSpeed = 600.0f;
 	this->moveAcceleration = 14000.0f;

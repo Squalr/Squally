@@ -3,7 +3,6 @@
 #include "Resources.h"
 #include "Config/SoundManager.h"
 #include "Events/MouseEvents.h"
-#include "GUI/Components/Mouse.h"
 #include "Utils/GameUtils.h"
 #include <typeinfo>
 

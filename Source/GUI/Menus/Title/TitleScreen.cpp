@@ -29,6 +29,7 @@ TitleScreen::TitleScreen()
 	this->addChild(this->storyModeButton);
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
+	this->addChild(Mouse::create());
 }
 
 TitleScreen::~TitleScreen()
@@ -60,8 +61,6 @@ void TitleScreen::onEnter()
 	GameUtils::fadeInObject(this->storyModeButton, delay, duration);
 	GameUtils::fadeInObject(this->optionsButton, delay, duration);
 	GameUtils::fadeInObject(this->exitButton, delay, duration);
-
-	this->addChild(Mouse::claimInstance());
 
 	this->scheduleUpdate();
 }

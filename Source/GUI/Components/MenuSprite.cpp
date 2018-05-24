@@ -178,7 +178,7 @@ void MenuSprite::onMouseSpriteMove(EventCustom* event)
 
 		if (!args->handled && this->intersects(Vec2(args->mouseX, args->mouseY)))
 		{
-			Mouse::getInstance()->setCanClick(true);
+			MouseEvents::TriggerCanClickEvent(MouseEvents::MouseCanClickEventArgs(true));
 
 			if (args->innerEvent->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
 			{

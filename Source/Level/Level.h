@@ -45,6 +45,7 @@ private:
 	void update(float) override;
 	void onEnter() override;
 
+	Node* mapNode;
 	LevelMap* map;
 	Sprite * hackerModeBackground;
 	MatrixRain * hackerModeRain;

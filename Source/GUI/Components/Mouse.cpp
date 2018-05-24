@@ -1,40 +1,23 @@
 #include "Mouse.h"
 
-Mouse* Mouse::mouseInstance = nullptr;
+Vec2 Mouse::mousePosition = Vec2::ZERO;
 
-Mouse* Mouse::claimInstance()
+Mouse* Mouse::create()
 {
-	Mouse* mouse = Mouse::getInstance();
+	Mouse* instance = new Mouse();
+	
+	instance->autorelease();
 
-	// Free the mouse from it's parent
-	if (mouse->getParent() != nullptr)
-	{
-		mouse->getParent()->removeChild(Mouse::mouseInstance);
-	}
-
-	Mouse::mouseInstance->initializeListeners();
-
-	return Mouse::mouseInstance;
-}
-
-Mouse* Mouse::getInstance()
-{
-	if (mouseInstance == nullptr)
-	{
-		Mouse::mouseInstance = new Mouse();
-	}
-
-	return Mouse::mouseInstance;
+	return instance;
 }
 
 Mouse::Mouse()
 {
-	Director::getInstance();
 	this->mouseSpriteIdle = Sprite::create(Resources::Menus_MouseIdle);
-	this->mouseSpriteIdle->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->mouseSpritePoint = Sprite::create(Resources::Menus_MousePoint);
-	this->mouseSpritePoint->setAnchorPoint(Vec2(0.0f, 1.0f));
 
+	this->mouseSpriteIdle->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->mouseSpritePoint->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->mouseSpritePoint->setVisible(false);
 
 	this->addChild(this->mouseSpriteIdle);
@@ -43,6 +26,26 @@ Mouse::Mouse()
 
 Mouse::~Mouse()
 {
+}
+
+void Mouse::onEnter()
+{
+	Node::onEnter();
+
+	this->initializeListeners();
+
+	// Initialize positions to whatever the previous saved position was (allows for seamless cursor across scenes)
+	this->mouseSpriteIdle->setPosition(Vec2(Mouse::mousePosition));
+	this->mouseSpritePoint->setPosition(Vec2(Mouse::mousePosition));
+
+	this->setCanClick(false);
+}
+
+void Mouse::onMouseCanClickEvent(EventCustom* eventCustom)
+{
+	MouseEvents::MouseCanClickEventArgs* args = (MouseEvents::MouseCanClickEventArgs*)(eventCustom->getUserData());
+	
+	this->setCanClick(args->canClick);
 }
 
 void Mouse::setCanClick(bool canClick)
@@ -62,17 +65,24 @@ void Mouse::setCanClick(bool canClick)
 void Mouse::initializeListeners()
 {
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
+	EventListenerCustom* mouseCanClickListener = EventListenerCustom::create(
+		MouseEvents::MouseCanClickEvent,
+		CC_CALLBACK_1(Mouse::onMouseCanClickEvent, this)
+	);
 
 	mouseListener->onMouseMove = CC_CALLBACK_1(Mouse::onMouseMove, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseCanClickListener, this);
 }
 
 void Mouse::onMouseMove(EventMouse* event)
 {
-	this->mouseSpriteIdle->setPosition(Vec2(event->getCursorX(), event->getCursorY()));
-	this->mouseSpritePoint->setPosition(Vec2(event->getCursorX(), event->getCursorY()));
+	Mouse::mousePosition = Vec2(event->getCursorX(), event->getCursorY());
+
+	this->mouseSpriteIdle->setPosition(Mouse::mousePosition);
+	this->mouseSpritePoint->setPosition(Mouse::mousePosition);
 
 	this->setCanClick(false);
-	MouseEvents::TriggerMouseMove(MouseEvents::MouseEventArgs(event->getCursorX(), event->getCursorY(), event));
+	MouseEvents::TriggerMouseMove(MouseEvents::MouseEventArgs(Mouse::mousePosition.x, Mouse::mousePosition.y, event));
 }
