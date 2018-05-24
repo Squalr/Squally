@@ -26,8 +26,6 @@ void LevelEditor::onEnter()
 {
 	FadeScene::onEnter();
 
-	this->addChild(Mouse::claimInstance());
-
 	this->scheduleUpdate();
 	this->initializePositions();
 	this->initializeListeners();
@@ -65,6 +63,7 @@ void LevelEditor::loadLevel(LevelMap* levelMap, Vec2 initPosition)
 
 	this->addChild(InputManager::claimInstance());
 	this->addChild(this->map);
+	this->addChild(Mouse::create());
 	this->addChild(this->cameraNode);
 	this->addChild(this->camera);
 }
@@ -72,17 +71,32 @@ void LevelEditor::loadLevel(LevelMap* levelMap, Vec2 initPosition)
 void LevelEditor::update(float dt)
 {
 	FadeScene::update(dt);
-
-	this->map->setPosition(-LevelCamera::getInstance()->getCameraPosition());
 }
 
 void LevelEditor::onMouseMove(EventMouse* event)
 {
+	Size screenCenter = Director::getInstance()->getVisibleSize() / 2.0f;
+	Vec2 mouseDelta = Vec2(event->getCursorX(), event->getCursorY()) - screenCenter;
+	Vec2 scrollOffset = this->camera->getScrollOffset();
+	Vec2 delta = Vec2::ZERO;
+
+	if (mouseDelta.x < -scrollOffset.x || mouseDelta.x > scrollOffset.x)
+	{
+		delta.x = (mouseDelta.x - scrollOffset.x);
+	}
+
+	if (mouseDelta.y < -scrollOffset.y || mouseDelta.y > scrollOffset.y)
+	{
+		delta.y = (mouseDelta.y - scrollOffset.y);
+	}
+
+	// this->cameraNode->setPosition(this->cameraNode->getPosition() + delta);
 }
 
 void LevelEditor::onMouseWheelScroll(EventMouse* event)
 {
-	float delta = event->getScrollY() * 16.0f;
+	float delta = event->getScrollY() * 64.0f;
+
 	Camera::getDefaultCamera()->setPositionZ(Camera::getDefaultCamera()->getPositionZ() + delta);
 }
 

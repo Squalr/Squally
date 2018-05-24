@@ -101,6 +101,7 @@ OptionsMenu::OptionsMenu()
 	this->addChild(this->option1920x1080);
 
 	this->addChild(this->exitButton);
+	this->addChild(Mouse::create());
 
 	switch (ConfigManager::getResolution())
 	{
@@ -191,8 +192,6 @@ void OptionsMenu::onEnter()
 
 	this->initializePositions();
 	this->initializeListeners();
-
-	this->addChild(Mouse::claimInstance());
 }
 
 bool OptionsMenu::onFullScreenChanged(CCheckbox* checkbox, bool isFullScreen)

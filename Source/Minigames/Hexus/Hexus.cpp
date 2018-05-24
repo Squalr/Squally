@@ -46,6 +46,7 @@ Hexus::Hexus()
 	this->addChild(this->controlReplaceCards);
 	this->addChild(this->coinFlip);
 	this->addChild(this->banners);
+	this->addChild(Mouse::create());
 }
 
 Hexus::~Hexus()
@@ -58,7 +59,6 @@ void Hexus::onEnter()
 
 	this->initializePositions();
 	this->initializeListeners();
-	this->addChild(Mouse::claimInstance());
 
 	GameState::updateState(this->gameState, GameState::StateType::DrawInitialCards);
 }

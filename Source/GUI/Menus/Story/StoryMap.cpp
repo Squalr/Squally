@@ -131,6 +131,7 @@ StoryMap::StoryMap()
 	this->addChild(this->fogC);
 	this->addChild(this->titleLabel);
 	this->addChild(this->infoLabel);
+	this->addChild(Mouse::create());
 
 	this->initializeListeners();
 }
@@ -151,8 +152,6 @@ void StoryMap::onEnter()
 
 	GameUtils::fadeInObject(this->titleLabel, delay, duration);
 	GameUtils::fadeInObject(this->infoLabel, delay, duration);
-
-	this->addChild(Mouse::claimInstance());
 }
 
 void StoryMap::initializePositions()

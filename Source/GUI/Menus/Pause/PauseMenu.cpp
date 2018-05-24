@@ -34,6 +34,8 @@ PauseMenu::PauseMenu()
 	this->levelEditorButton = MenuSprite::create(label, labelHover, labelClick);
 	this->addChild(this->levelEditorButton);
 
+	this->addChild(Mouse::create());
+
 	this->setFadeSpeed(0.0f);
 }
 
@@ -59,8 +61,6 @@ void PauseMenu::onEnter()
 
 	this->initializePositions();
 	this->initializeListeners();
-
-	this->addChild(Mouse::claimInstance());
 }
 
 void PauseMenu::initializePositions()

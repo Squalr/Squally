@@ -58,6 +58,9 @@ TutorialScreen::TutorialScreen()
 	this->addChild(this->description);
 
 	this->loadLevels();
+
+	this->addChild(Mouse::create());
+
 	this->closeButton->setClickCallback(CC_CALLBACK_1(TutorialScreen::onCloseClick, this));
 	this->closeButton->setClickSound(Resources::Sounds_ClickBack1);
 
@@ -95,8 +98,6 @@ void TutorialScreen::onEnter()
 	GameUtils::accelerateParticles(this->nether, 1.0f);
 
 	this->initializePositions();
-
-	this->addChild(Mouse::claimInstance());
 }
 
 void TutorialScreen::initializePositions()

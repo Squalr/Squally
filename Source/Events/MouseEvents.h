@@ -8,6 +8,7 @@ class MouseEvents
 {
 public:
 	static const std::string MouseMoveEvent;
+	static const std::string MouseCanClickEvent;
 
 	struct MouseEventArgs
 	{
@@ -21,5 +22,15 @@ public:
 		}
 	};
 
+	struct MouseCanClickEventArgs
+	{
+		bool canClick;
+
+		MouseCanClickEventArgs(bool canClick) : canClick(canClick)
+		{
+		}
+	};
+
+	static void TriggerCanClickEvent(MouseCanClickEventArgs args);
 	static void TriggerMouseMove(MouseEventArgs args);
 };

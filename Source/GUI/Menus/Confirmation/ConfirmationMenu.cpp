@@ -29,6 +29,7 @@ ConfirmationMenu::ConfirmationMenu()
 	this->addChild(this->cancelButton);
 	this->addChild(this->confirmButton);
 	this->addChild(this->confirmationLabel);
+	this->addChild(Mouse::create());
 
 	this->setFadeSpeed(0.0f);
 }
@@ -53,8 +54,6 @@ void ConfirmationMenu::onEnter()
 
 	this->initializePositions();
 	this->initializeListeners();
-
-	this->addChild(Mouse::claimInstance());
 }
 
 void ConfirmationMenu::initializePositions()

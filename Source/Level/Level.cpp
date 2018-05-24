@@ -17,6 +17,33 @@ Level::Level()
 	{
 		throw std::uncaught_exception();
 	}
+
+	this->getPhysicsWorld()->setGravity(Vec2(0.0f, -768.0f));
+
+	this->hackerModeBackground = Sprite::create(Resources::Backgrounds_MatrixRain_HackerModeBackground);
+	this->hackerModeRain = MatrixRain::create();
+	this->hackerModePostProcessGlow = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_GrayBlur);
+	this->hud = Hud::create();
+	this->hackerModeHud = HackerModeHud::create();
+	this->gamePostProcessInversion = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_Inverse);
+	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
+	this->camera = LevelCamera::create();
+	this->mapNode = Node::create();
+
+	this->camera->setScrollOffset(Vec2(64.0f, 32.0f));
+	this->camera->setFollowSpeed(Vec2(0.075f, 0.075f));
+
+	this->addChild(InputManager::claimInstance());
+	this->addChild(this->hackerModeBackground);
+	this->addChild(this->hackerModeRain);
+	this->addChild(this->hackerModePostProcessGlow);
+	this->addChild(this->mapNode);
+	this->addChild(this->gamePostProcessInversion);
+	this->addChild(this->gamePostProcessNightVision);
+	this->addChild(this->hud);
+	this->addChild(this->hackerModeHud);
+	this->addChild(Mouse::create());
+	this->addChild(this->camera);
 }
 
 Level::~Level()
@@ -26,8 +53,6 @@ Level::~Level()
 void Level::onEnter()
 {
 	FadeScene::onEnter();
-
-	this->addChild(Mouse::claimInstance());
 
 	this->scheduleUpdate();
 	this->initializePositions();
@@ -52,32 +77,13 @@ void Level::initializeListeners()
 
 void Level::loadLevel(LevelMap* levelMap)
 {
-	this->getPhysicsWorld()->setGravity(Vec2(0.0f, -512.0f));
-
-	this->hackerModeBackground = Sprite::create(Resources::Backgrounds_MatrixRain_HackerModeBackground);
-	this->hackerModeRain = MatrixRain::create();
-	this->hackerModePostProcessGlow = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_GrayBlur);
-	this->hud = Hud::create();
-	this->hackerModeHud = HackerModeHud::create();
-	this->gamePostProcessInversion = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_Inverse);
-	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
-	this->camera = LevelCamera::create();
 	this->map = levelMap;
 
-	this->camera->setTarget(Player::getInstance());
-	this->camera->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
-	this->camera->setScrollOffset(Vec2(128.0f, 96.0f));
+	this->mapNode->removeAllChildren();
+	this->mapNode->addChild(this->map);
 
-	this->addChild(InputManager::claimInstance());
-	this->addChild(this->hackerModeBackground);
-	this->addChild(this->hackerModeRain);
-	this->addChild(this->hackerModePostProcessGlow);
-	this->addChild(this->map);
-	this->addChild(this->gamePostProcessInversion);
-	this->addChild(this->gamePostProcessNightVision);
-	this->addChild(this->hud);
-	this->addChild(this->hackerModeHud);
-	this->addChild(this->camera);
+	this->camera->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
+	this->camera->setTarget(Player::getInstance());
 }
 
 void Level::resume(void)
@@ -93,8 +99,6 @@ void Level::resume(void)
 void Level::update(float dt)
 {
 	FadeScene::update(dt);
-
-	this->map->setPosition(-LevelCamera::getInstance()->getCameraPosition());
 }
 
 void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)

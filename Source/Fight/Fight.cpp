@@ -11,6 +11,7 @@ Fight* Fight::create()
 
 Fight::Fight()
 {
+	this->addChild(Mouse::create());
 }
 
 Fight::~Fight()
@@ -20,8 +21,6 @@ Fight::~Fight()
 void Fight::onEnter()
 {
 	FadeScene::onEnter();
-
-	this->addChild(Mouse::claimInstance());
 
 	this->scheduleUpdate();
 	this->initializePositions();
