@@ -152,6 +152,13 @@ void TMXLayer::draw(Renderer *renderer, const Mat4& transform, uint32_t flags)
     if( flags != 0 || _dirty || _quadsDirty || isViewProjectionUpdated)
     {
         Size s = Director::getInstance()->getVisibleSize();
+
+		// Zac: Fix engine tile rendering to account for camera distance for tile draw culling
+		float frustumHeight = Camera::getVisitingCamera()->getPositionZ() * 1.154700538379252f; // (2 * tanf(M_PI/6))
+		float frustumWidth = (s.width * frustumHeight) / s.height;
+		s.width = frustumWidth;
+		s.height = frustumHeight;
+
         auto rect = Rect(Camera::getVisitingCamera()->getPositionX() - s.width * 0.5f,
                      Camera::getVisitingCamera()->getPositionY() - s.height * 0.5f,
                      s.width,
