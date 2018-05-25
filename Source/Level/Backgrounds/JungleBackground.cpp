@@ -41,7 +41,7 @@ JungleBackground::~JungleBackground()
 
 void JungleBackground::update(float dt)
 {
-	Layer::update(dt);
+	UILayer::update(dt);
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

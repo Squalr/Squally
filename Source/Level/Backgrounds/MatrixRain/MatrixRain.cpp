@@ -39,7 +39,4 @@ void MatrixRain::pause()
 
 void MatrixRain::setPositions()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	this->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }

@@ -150,9 +150,6 @@
     <ClCompile Include="Source\Game.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Level\Level.cpp">
-      <Filter>Source\Level</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Entities\Entity.cpp">
       <Filter>Source\Entities</Filter>
     </ClCompile>
@@ -794,6 +791,12 @@
     </ClCompile>
     <ClCompile Include="Source\Events\PauseEvents.cpp">
       <Filter>Source\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\Components\UILayer.cpp">
+      <Filter>Source\GUI\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Level\Level.cpp">
+      <Filter>Source\Level</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1468,6 +1471,9 @@
     </ClInclude>
     <ClInclude Include="Source\Events\PauseEvents.h">
       <Filter>Source\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\Components\UILayer.h">
+      <Filter>Source\GUI\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

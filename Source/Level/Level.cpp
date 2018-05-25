@@ -29,6 +29,8 @@ Level::Level()
 	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
 	this->camera = LevelCamera::create();
 	this->mapNode = Node::create();
+	this->mouse = Mouse::create();
+	this->uiLayer = UILayer::create();
 
 	this->camera->setScrollOffset(Vec2(64.0f, 32.0f));
 	this->camera->setFollowSpeed(Vec2(0.075f, 0.075f));
@@ -40,9 +42,10 @@ Level::Level()
 	this->addChild(this->mapNode);
 	this->addChild(this->gamePostProcessInversion);
 	this->addChild(this->gamePostProcessNightVision);
-	this->addChild(this->hud);
-	this->addChild(this->hackerModeHud);
-	this->addChild(Mouse::create());
+	this->addChild(this->uiLayer);
+	this->uiLayer->addChild(this->hud);
+	this->uiLayer->addChild(this->hackerModeHud);
+	this->uiLayer->addChild(this->mouse);
 	this->addChild(this->camera);
 }
 
@@ -61,9 +64,6 @@ void Level::onEnter()
 
 void Level::initializePositions()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	this->hackerModeBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }
 
 void Level::initializeListeners()
@@ -137,51 +137,57 @@ void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 void Level::enableHackerMode()
 {
 	Level::hackerMode = true;
+
+	this->map->hackerModeEnable();
+	this->mapNode->setVisible(true);
+	this->map->setVisible(true);
+	this->hud->setVisible(false);
+	this->mouse->setVisible(false);
+
+	this->hackerModeBackground->setVisible(true);
+	this->hackerModeRain->setVisible(true);
+	this->hackerModePostProcessGlow->setVisible(true);
+	this->hackerModeHud->setVisible(true);
+	this->gamePostProcessInversion->setVisible(true);
+	this->gamePostProcessNightVision->setVisible(true);
+
 	GameUtils::focus(this->hackerModeHud);
 }
 
 void Level::disableHackerMode()
 {
 	Level::hackerMode = false;
+
+	this->map->hackerModeDisable();
+	this->mapNode->setVisible(true);
+	this->map->setVisible(true);
+	this->hud->setVisible(true);
+	this->mouse->setVisible(true);
+
+	this->hackerModeBackground->setVisible(false);
+	this->hackerModeRain->setVisible(false);
+	this->hackerModePostProcessGlow->setVisible(false);
+	this->hackerModeHud->setVisible(false);
+	this->gamePostProcessInversion->setVisible(false);
+	this->gamePostProcessNightVision->setVisible(false);
+
 	GameUtils::resumeAll();
 }
 
 void Level::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 {
-	// Manual drawing (to apply post processing effects)
 	if (Level::hackerMode)
 	{
-		// Set visibility of desired layers
-		this->hackerModeBackground->setVisible(true);
-		this->hackerModeRain->setVisible(true);
-		this->hackerModePostProcessGlow->setVisible(true);
-		this->hud->setVisible(false);
-		this->hackerModeHud->setVisible(true);
-		this->gamePostProcessInversion->setVisible(true);
-		this->gamePostProcessNightVision->setVisible(true);
+		// Zac : well, using the camera correctly fucked my shaders -- these apparently render at the origin rather than the camera position
+		/*
+		this->mapNode->setVisible(true);
 
-		this->map->hackerModeEnable();
-
-		// Draw hackermode level
-		this->hackerModeRain->draw();
-
+		// Draw map with shaders
 		this->gamePostProcessInversion->draw(this->map);
 		this->gamePostProcessNightVision->draw(this->gamePostProcessInversion);
 
 		// Prevent double render
-		this->map->setVisible(false);
-	}
-	else
-	{
-		// Set visibility of desired layers
-		this->hackerModeBackground->setVisible(false);
-		this->hackerModeRain->setVisible(false);
-		this->hackerModePostProcessGlow->setVisible(false);
-		this->hud->setVisible(true);
-		this->hackerModeHud->setVisible(false);
-		this->gamePostProcessInversion->setVisible(false);
-		this->gamePostProcessNightVision->setVisible(false);
-
-		this->map->hackerModeDisable();
+		this->mapNode->setVisible(false);
+		*/
 	}
 }

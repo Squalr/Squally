@@ -61,7 +61,9 @@ void HackerModeHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		{
 		case EventKeyboard::KeyCode::KEY_TAB:
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
-			GameUtils::focus(this->getParent());
+			// This is a little too "all knowing" as this HUD is expecting Level > UILayer > HackerModeHud
+			// To avoid this parent of parent bullshit, we need to implement push/pop focus
+			GameUtils::focus(this->getParent()->getParent());
 			event->stopPropagation();
 
 			break;
