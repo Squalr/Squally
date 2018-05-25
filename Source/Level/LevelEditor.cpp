@@ -63,9 +63,9 @@ void LevelEditor::loadLevel(LevelMap* levelMap, Vec2 initPosition)
 
 	this->addChild(InputManager::claimInstance());
 	this->addChild(this->map);
-	this->addChild(Mouse::create());
 	this->addChild(this->cameraNode);
 	this->addChild(this->camera);
+	this->camera->addChild(Mouse::create());
 }
 
 void LevelEditor::update(float dt)

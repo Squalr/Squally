@@ -29,5 +29,5 @@ OceanBackground::~OceanBackground()
 
 void OceanBackground::update(float dt)
 {
-	Layer::update(dt);
+	UILayer::update(dt);
 }

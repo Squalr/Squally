@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="124" height="196" tilewidth="128" tileheight="128" nextobjectid="362">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="124" height="196" tilewidth="128" tileheight="128" nextobjectid="364">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../Tiles/TileMap.png" width="5760" height="3200"/>
@@ -463,7 +463,7 @@
   </object>
  </objectgroup>
  <objectgroup name="ENTITIES_entities">
-  <object id="72" name="spawn" type="spawn" x="128.15" y="6503" width="128" height="128"/>
+  <object id="72" name="spawn" type="spawn" x="1920.15" y="21311" width="128" height="128"/>
   <object id="180" name="knight" type="knight" x="342.06" y="758.727" width="200" height="288"/>
   <object id="222" name="boss_rhinoman" type="boss_rhinoman" x="6169.82" y="6688" width="196" height="196">
    <properties>
@@ -1242,6 +1242,8 @@
   <object id="359" name="solid" type="solid" x="52.575" y="10901.5" width="342.85" height="117"/>
   <object id="360" name="solid" type="solid" x="116.575" y="12949.5" width="278.85" height="101"/>
   <object id="361" name="solid" type="solid" x="108.575" y="15005.5" width="278.85" height="101"/>
+  <object id="362" name="solid" type="solid" x="1760.84" y="21902.5" width="558.318" height="218.97"/>
+  <object id="363" name="solid" type="solid" x="1736.84" y="22890.5" width="974.318" height="218.97"/>
  </objectgroup>
  <layer name="TILES_foreground" width="124" height="196">
   <data encoding="csv">

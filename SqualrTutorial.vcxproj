@@ -285,6 +285,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\GUI\Components\CSlider.cpp" />
     <ClCompile Include="Source\GUI\Components\TextWindow.cpp" />
     <ClCompile Include="Source\GUI\Components\CCheckbox.cpp" />
+    <ClCompile Include="Source\GUI\Components\UILayer.cpp" />
     <ClCompile Include="Source\GUI\HUD\HackerModeHud.cpp" />
     <ClCompile Include="Source\GUI\HUD\Hud.cpp" />
     <ClCompile Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.cpp" />
@@ -504,6 +505,7 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\GUI\Components\CSlider.h" />
     <ClInclude Include="Source\GUI\Components\TextWindow.h" />
     <ClInclude Include="Source\GUI\Components\CCheckbox.h" />
+    <ClInclude Include="Source\GUI\Components\UILayer.h" />
     <ClInclude Include="Source\GUI\HUD\HackerModeHud.h" />
     <ClInclude Include="Source\GUI\HUD\Hud.h" />
     <ClInclude Include="Source\GUI\Menus\Confirmation\ConfirmationMenu.h" />

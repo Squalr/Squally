@@ -6,11 +6,10 @@ const float MatrixStrand::movementSpeed = 128.0f;
 const float MatrixStrand::strandScale = 0.35f;
 const float MatrixStrand::minSpawnSpeed = 0.02f;
 const float MatrixStrand::maxSpawnSpeed = 0.20f;
-const float MatrixStrand::overFlowX = 196.0f;
 const float MatrixStrand::overFlowY = 256.0f;
 const float MatrixStrand::underFlowY = 256.0f;
 const float MatrixStrand::minSpawnDistance = -256.0f;
-const float MatrixStrand::maxSpawnDistance = -512.0f; // -512.0f seems to be the max supported camera distance
+const float MatrixStrand::maxSpawnDistance = -512.0f;
 
 MatrixStrand* MatrixStrand::create(int strandIndex)
 {
@@ -66,12 +65,12 @@ void MatrixStrand::update(float dt)
 	this->setPositionY(this->getPositionY() - dt * movementSpeed / 4.0f);
 	this->setPositionZ(this->getPositionZ() + dt * movementSpeed);
 
-	Vec2 realPosition = Director::getInstance()->getRunningScene()->getDefaultCamera()->projectGL(this->getPosition3D());
+	// TODO: Bounds checking should be updated to be the projected 3d => 2d X position. This seems to not be working as intended after the camera updates.
 
 	// Kill off-screen strands
-	if (realPosition.x < -MatrixLetter::letterSize ||
-		realPosition.x > visibleSize.width + MatrixLetter::letterSize ||
-		this->getPositionZ() > 960.0f)
+	if (this->getPositionX() < 0 - MatrixLetter::letterSize ||
+		this->getPositionX() > visibleSize.width + MatrixLetter::letterSize ||
+		this->getPositionZ() > Director::getInstance()->getRunningScene()->getDefaultCamera()->getPositionZ() + 64.0f)
 	{
 		this->killStrand();
 	}
@@ -97,10 +96,6 @@ void MatrixStrand::nextStrandAction()
 
 		this->currentLetterIndex++;
 	}
-	else
-	{
-		this->endStrand();
-	}
 }
 
 void MatrixStrand::beginStrand()
@@ -125,22 +120,9 @@ void MatrixStrand::beginStrand()
 	this->runAction(this->updateAction);
 }
 
-void MatrixStrand::endStrand()
-{
-	this->stopAllActions();
-
-	// float speedPercent = (1.0f - (this->spawnSpeed - MatrixStrand::minSpawnSpeed) / (MatrixStrand::maxSpawnSpeed - MatrixStrand::minSpawnSpeed));
-	float remainingDistance = 1024.0f - this->getPositionZ();
-	float despawnTime = std::max(0.0f, remainingDistance / MatrixStrand::movementSpeed);
-
-	this->runAction(Sequence::create(DelayTime::create(despawnTime),
-		CallFunc::create(CC_CALLBACK_0(MatrixStrand::beginStrand, this)), nullptr));
-}
-
 void MatrixStrand::killStrand()
 {
 	this->stopAllActions();
-
 	this->beginStrand();
 }
 
@@ -154,7 +136,7 @@ void MatrixStrand::randomizePosition()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	Vec3 position;
-	position.x = RandomHelper::random_real(-MatrixStrand::overFlowX, visibleSize.width + MatrixStrand::overFlowX);
+	position.x = RandomHelper::random_real(0.0f, visibleSize.width);
 	position.y = RandomHelper::random_real(visibleSize.height - MatrixStrand::underFlowY, visibleSize.height + MatrixStrand::overFlowY);
 	position.z = RandomHelper::random_real(MatrixStrand::maxSpawnDistance, MatrixStrand::minSpawnDistance);
 

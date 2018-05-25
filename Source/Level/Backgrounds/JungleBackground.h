@@ -3,10 +3,11 @@
 #include "Resources.h"
 #include "Level/LevelCamera.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
+#include "GUI/Components/UILayer.h"
 
 using namespace cocos2d;
 
-class JungleBackground : public Layer
+class JungleBackground : public UILayer
 {
 public:
 	static JungleBackground * create();

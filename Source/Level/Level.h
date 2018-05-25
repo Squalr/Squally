@@ -15,6 +15,7 @@
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
 #include "GUI/Components/Mouse.h"
+#include "GUI/Components/UILayer.h"
 #include "GUI/Menus/Dialog/DialogMenu.h"
 #include "GUI/Menus/Pause/PauseMenu.h"
 
@@ -47,13 +48,16 @@ private:
 
 	Node* mapNode;
 	LevelMap* map;
-	Sprite * hackerModeBackground;
+	Sprite* hackerModeBackground;
 	MatrixRain * hackerModeRain;
 	PostProcess* hackerModePostProcessGlow;
 	PostProcess* gamePostProcessInversion;
 	PostProcess* gamePostProcessNightVision;
-	Hud * hud;
-	HackerModeHud * hackerModeHud;
+
+	UILayer* uiLayer;
+	Hud* hud;
+	HackerModeHud* hackerModeHud;
+	Mouse* mouse;
 	LevelCamera* camera;
 
 	static bool hackerMode;

@@ -19,7 +19,6 @@ private:
 
 	void nextStrandAction();
 	void beginStrand();
-	void endStrand();
 	void killStrand();
 
 	void randomizePosition();
@@ -38,7 +37,6 @@ private:
 	static const float strandScale;
 	static const float minSpawnSpeed;
 	static const float maxSpawnSpeed;
-	static const float overFlowX;
 	static const float overFlowY;
 	static const float underFlowY;
 	static const float minSpawnDistance;
