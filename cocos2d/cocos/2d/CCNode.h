@@ -1968,6 +1968,8 @@ protected:
 
 	bool _running;                  ///< is running
 
+	bool _paused;                  ///< is paused
+
 	bool _visible;                  ///< is this node visible
 
 	bool _ignoreAnchorPointForPosition; ///< true if the Anchor Vec2 will be (0,0) when you position the Node, false otherwise.

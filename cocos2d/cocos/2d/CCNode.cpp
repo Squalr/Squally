@@ -96,6 +96,7 @@ Node::Node()
 	, _userObject(nullptr)
 	, _glProgramState(nullptr)
 	, _running(false)
+	, _paused(false)
 	, _visible(true)
 	, _ignoreAnchorPointForPosition(false)
 	, _reorderChildDirty(false)
@@ -1621,11 +1622,13 @@ void Node::unscheduleAllCallbacks()
 
 bool Node::isPaused()
 {
-	return _scheduler->isTargetPaused(this);
+	// Zac: _scheduler->isTargetPaused(this) proves unreliable for certain Node types, so let's just track this state manually.
+	return _paused; // _scheduler->isTargetPaused(this);
 }
 
 void Node::resume()
 {
+	_paused = false;
 	_scheduler->resumeTarget(this);
 	_actionManager->resumeTarget(this);
 	_eventDispatcher->resumeEventListenersForTarget(this);
@@ -1633,6 +1636,7 @@ void Node::resume()
 
 void Node::pause()
 {
+	_paused = true;
 	_scheduler->pauseTarget(this);
 	_actionManager->pauseTarget(this);
 	_eventDispatcher->pauseEventListenersForTarget(this);
