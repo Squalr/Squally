@@ -28,7 +28,7 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML-2.3.2/include/SFML/Config.hpp>
+#include <SFML/Config.hpp>
 
 // Windows' HWND is a typedef on struct HWND__*
 #if defined(SFML_SYSTEM_WINDOWS)

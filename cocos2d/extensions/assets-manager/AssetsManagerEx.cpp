@@ -1,5 +1,6 @@
 /****************************************************************************
  Copyright (c) 2014 cocos2d-x.org
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
  http://www.cocos2d-x.org
 
@@ -755,7 +756,8 @@ void AssetsManagerEx::updateSucceed()
     if (_fileUtils->isDirectoryExist(_tempStoragePath))
     {
         // Merging all files in temp storage path to storage path
-        std::vector<std::string> files = _fileUtils->listFilesRecursively(_tempStoragePath);
+        std::vector<std::string> files;
+        _fileUtils->listFilesRecursively(_tempStoragePath);
         int baseOffset = (int)_tempStoragePath.length();
         std::string relativePath, dstPath;
         for (std::vector<std::string>::iterator it = files.begin(); it != files.end(); ++it)

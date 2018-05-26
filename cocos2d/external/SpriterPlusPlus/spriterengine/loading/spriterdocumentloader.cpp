@@ -6,7 +6,7 @@
 #include "../override/spriterfiledocumentwrapper.h"
 #include "../override/spriterfileelementwrapper.h"
 #include "../override/spriterfileattributewrapper.h"
-#include "../override/filefactory.h"
+#include "../override/SPPfilefactory.h"
 
 #include "../../spriterengine/model/spritermodel.h"
 #include "../../spriterengine/global/global.h"

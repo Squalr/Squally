@@ -249,7 +249,7 @@ bool operator ==(const Vector3<T>& left, const Vector3<T>& right);
 template <typename T>
 bool operator !=(const Vector3<T>& left, const Vector3<T>& right);
 
-#include <SFML-2.3.2/include/SFML/System/Vector3.inl>
+#include <SFML/System/Vector3.inl>
 
 // Define the most common types
 typedef Vector3<int>   Vector3i;

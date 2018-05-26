@@ -1,5 +1,6 @@
 /****************************************************************************
- Copyright (c) 2014-2017 Chukong Technologies Inc.
+ Copyright (c) 2014-2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
  http://www.cocos2d-x.org
 
@@ -42,67 +43,67 @@ NS_CC_BEGIN
 class EventCustom;
 class EventListener;
 
-namespace cocos_experimental {
+namespace experimental {
 
-	class IAudioPlayer;
-	class AudioPlayerProvider;
+class IAudioPlayer;
+class AudioPlayerProvider;
 
-	class AudioEngineImpl;
+class AudioEngineImpl;
 
-	class AudioEngineImpl : public cocos2d::Ref
-	{
-	public:
-		AudioEngineImpl();
-		~AudioEngineImpl();
+class AudioEngineImpl : public cocos2d::Ref
+{
+public:
+    AudioEngineImpl();
+    ~AudioEngineImpl();
 
-		bool init();
-		int play2d(const std::string &fileFullPath, bool loop, float volume);
-		void setVolume(int audioID, float volume);
-		void setLoop(int audioID, bool loop);
-		void pause(int audioID);
-		void resume(int audioID);
-		void stop(int audioID);
-		void stopAll();
-		float getDuration(int audioID);
-		float getCurrentTime(int audioID);
-		bool setCurrentTime(int audioID, float time);
-		void setFinishCallback(int audioID, const std::function<void(int, const std::string &)> &callback);
+    bool init();
+    int play2d(const std::string &fileFullPath ,bool loop ,float volume);
+    void setVolume(int audioID,float volume);
+    void setLoop(int audioID, bool loop);
+    void pause(int audioID);
+    void resume(int audioID);
+    void stop(int audioID);
+    void stopAll();
+    float getDuration(int audioID);
+    float getCurrentTime(int audioID);
+    bool setCurrentTime(int audioID, float time);
+    void setFinishCallback(int audioID, const std::function<void (int, const std::string &)> &callback);
 
-		void uncache(const std::string& filePath);
-		void uncacheAll();
-		void preload(const std::string& filePath, const std::function<void(bool)>& callback);
+    void uncache(const std::string& filePath);
+    void uncacheAll();
+    void preload(const std::string& filePath, const std::function<void(bool)>& callback);
 
-		void setAudioFocusForAllPlayers(bool isFocus);
-	private:
+    void setAudioFocusForAllPlayers(bool isFocus);
+private:
 
-		void onEnterBackground(EventCustom* event);
-		void onEnterForeground(EventCustom* event);
+    void onEnterBackground(EventCustom* event);
+    void onEnterForeground(EventCustom* event);
 
-		// engine interfaces
-		SLObjectItf _engineObject;
-		SLEngineItf _engineEngine;
+    // engine interfaces
+    SLObjectItf _engineObject;
+    SLEngineItf _engineEngine;
 
-		// output mix interfaces
-		SLObjectItf _outputMixObject;
+    // output mix interfaces
+    SLObjectItf _outputMixObject;
 
-		//audioID,AudioInfo
-		std::unordered_map<int, IAudioPlayer*>  _audioPlayers;
-		std::unordered_map<int, std::function<void(int, const std::string &)>> _callbackMap;
+    //audioID,AudioInfo
+    std::unordered_map<int, IAudioPlayer*>  _audioPlayers;
+    std::unordered_map<int, std::function<void (int, const std::string &)>> _callbackMap;
 
-		// UrlAudioPlayers which need to resumed while entering foreground
-		std::unordered_map<int, IAudioPlayer*> _urlAudioPlayersNeedResume;
+    // UrlAudioPlayers which need to resumed while entering foreground
+    std::unordered_map<int, IAudioPlayer*> _urlAudioPlayersNeedResume;
 
-		AudioPlayerProvider* _audioPlayerProvider;
-		EventListener* _onPauseListener;
-		EventListener* _onResumeListener;
+    AudioPlayerProvider* _audioPlayerProvider;
+    EventListener* _onPauseListener;
+    EventListener* _onResumeListener;
 
-		int _audioIDIndex;
-
-		bool _lazyInitLoop;
-	};
+    int _audioIDIndex;
+    
+    bool _lazyInitLoop;
+};
 
 #endif // __AUDIO_ENGINE_INL_H_
-}
+ }
 NS_CC_END
 
 #endif

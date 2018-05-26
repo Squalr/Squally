@@ -247,7 +247,7 @@ bool operator ==(const Vector2<T>& left, const Vector2<T>& right);
 template <typename T>
 bool operator !=(const Vector2<T>& left, const Vector2<T>& right);
 
-#include <SFML-2.3.2/include/SFML/System/Vector2.inl>
+#include <SFML/System/Vector2.inl>
 
 // Define the most common types
 typedef Vector2<int>          Vector2i;

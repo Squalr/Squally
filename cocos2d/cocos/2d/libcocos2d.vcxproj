@@ -15,7 +15,7 @@
     <ProjectGuid>{98A51BA8-FC3A-415B-AC8F-8C7BD464E93E}</ProjectGuid>
     <RootNamespace>cocos2d-x.win32</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -36,7 +36,7 @@
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0'">v141</PlatformToolset>
-    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v141_xp</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v141</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -54,11 +54,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration).win32\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration).win32\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
@@ -80,18 +80,19 @@
     </PreBuildEvent>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\include;$(EngineRoot)external\box2d;$(EngineRoot)external\sqlite3\include;$(EngineRoot)external\unzip;$(EngineRoot)external\edtaa3func;$(EngineRoot)external\tinyxml2;$(EngineRoot)external\png\include\win32;$(EngineRoot)external\jpeg\include\win32;$(EngineRoot)external\tiff\include\win32;$(EngineRoot)external\webp\include\win32;$(EngineRoot)external\freetype2\include\win32;$(EngineRoot)external\win32-specific\OpenalSoft\include;$(EngineRoot)external\win32-specific\MP3Decoder\include;$(EngineRoot)external\win32-specific\OggDecoder\include;$(EngineRoot)external\win32-specific\icon\include;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)external\chipmunk\include;$(EngineRoot)external\xxhash;$(EngineRoot)external\ConvertUTF;$(EngineRoot)external\curl\include\win32;$(EngineRoot)external\websockets\include\win32;$(EngineRoot)external\poly2tri\common;$(EngineRoot)external\poly2tri\sweep;$(EngineRoot)external\poly2tri;$(EngineRoot)external;$(EngineRoot)cocos;$(EngineRoot)cocos\editor-support;$(EngineRoot)cocos\platform\win8.1-universal;$(EngineRoot)extensions;$(EngineRoot);$(EngineRoot)external/bullet/include/bullet;$(EngineRoot)external/bullet/include;$(EngineRoot)external/SpriterPlusPlus;$(EngineRoot)external/SpriterPlusPlus/SFML-2.3.2/lib;$(EngineRoot)external/SpriterPlusPlus/SFML-2.3.2/include/SFML;$(EngineRoot)external/SpriterPlusPlus/nlohmann-json;$(EngineRoot)external/SpriterPlusPlus/pugixml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\include;$(EngineRoot)external\Box2D\include;$(EngineRoot)external\sqlite3\include;$(EngineRoot)external\unzip;$(EngineRoot)external\edtaa3func;$(EngineRoot)external\tinyxml2;$(EngineRoot)external\png\include\win32;$(EngineRoot)external\jpeg\include\win32;$(EngineRoot)external\tiff\include\win32;$(EngineRoot)external\webp\include\win32;$(EngineRoot)external\freetype2\include\win32;$(EngineRoot)external\win32-specific\OpenalSoft\include;$(EngineRoot)external\win32-specific\MP3Decoder\include;$(EngineRoot)external\win32-specific\OggDecoder\include;$(EngineRoot)external\win32-specific\icon\include;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)external\chipmunk\include;$(EngineRoot)external\xxhash;$(EngineRoot)external\ConvertUTF;$(EngineRoot)external\curl\include\win32;$(EngineRoot)external\websockets\include\win32;$(EngineRoot)external\poly2tri\common;$(EngineRoot)external\poly2tri\sweep;$(EngineRoot)external\poly2tri;$(EngineRoot)external;$(EngineRoot)cocos;$(EngineRoot)cocos\editor-support;$(EngineRoot)cocos\platform\win8.1-universal;$(EngineRoot)extensions;$(EngineRoot);$(EngineRoot)external/bullet/include/bullet;$(EngineRoot)external/bullet/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_USRDLL;_DEBUG;_WINDOWS;_LIB;LWS_DLL;COCOS2DXWIN32_EXPORTS;GL_GLEXT_PROTOTYPES;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_USE3DDLL;_EXPORT_DLL_;_USRSTUDIODLL;_USREXDLL;_USEGUIDLL;CC_ENABLE_CHIPMUNK_INTEGRATION=1;PROTOBUF_USE_DLLS;LIBPROTOBUF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
       <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <CompileAs>CompileAsCpp</CompileAs>
+      <PrecompiledHeaderFile>precheader.h</PrecompiledHeaderFile>
+      <ForcedIncludeFiles>precheader.h</ForcedIncludeFiles>
     </ClCompile>
     <PreLinkEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
@@ -112,6 +113,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\win32-specific\OggDecoder\prebuilt\*.*"
 xcopy /Y /Q "$(ProjectDir)..\..\external\sqlite3\libraries\win32\*.*" "$(OutDir)"
 xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*" "$(OutDir)"
 xcopy /Y /Q "$(ProjectDir)..\..\external\bullet\prebuilt\win32\debug\*.*" "$(OutDir)"
+xcopy /Y /Q "$(ProjectDir)..\..\external\Box2D\prebuilt\win32\debug\*.*" "$(OutDir)"
 xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"</Command>
     </PreLinkEvent>
     <Link>
@@ -125,6 +127,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
       <TargetMachine>MachineX86</TargetMachine>
       <ModuleDefinitionFile>cocos2d.def</ModuleDefinitionFile>
       <AdditionalDependencies>sqlite3.lib;libcurl.lib;websockets.lib;libcrypto.lib;libssl.lib;libmpg123.lib;libogg.lib;libvorbis.lib;libvorbisfile.lib;OpenAL32.lib;version.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <NoEntryPoint>false</NoEntryPoint>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -137,11 +140,10 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
       </Command>
     </PreBuildEvent>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\include;$(EngineRoot)external\sqlite3\include;$(EngineRoot)external\unzip;$(EngineRoot)external\edtaa3func;$(EngineRoot)external\tinyxml2;$(EngineRoot)external\png\include\win32;$(EngineRoot)external\jpeg\include\win32;$(EngineRoot)external\tiff\include\win32;$(EngineRoot)external\webp\include\win32;$(EngineRoot)external\freetype2\include\win32;$(EngineRoot)external\win32-specific\MP3Decoder\include;$(EngineRoot)external\win32-specific\OggDecoder\include;$(EngineRoot)external\win32-specific\OpenalSoft\include;$(EngineRoot)external\win32-specific\icon\include;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)external\chipmunk\include;$(EngineRoot)external\xxhash;$(EngineRoot)external\ConvertUTF;$(EngineRoot)external\Box2d;$(EngineRoot)external\curl\include\win32;$(EngineRoot)external\websockets\include\win32\;$(EngineRoot)external\poly2tri\common;$(EngineRoot)external\poly2tri\sweep;$(EngineRoot)external\poly2tri;$(EngineRoot)external;$(EngineRoot)cocos;$(EngineRoot)cocos\editor-support;$(EngineRoot)cocos\platform\win8.1-universal;$(EngineRoot)extensions;$(EngineRoot);$(EngineRoot)external/bullet/include;$(EngineRoot)external/bullet/include/bullet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\include;$(EngineRoot)external\sqlite3\include;$(EngineRoot)external\unzip;$(EngineRoot)external\edtaa3func;$(EngineRoot)external\tinyxml2;$(EngineRoot)external\png\include\win32;$(EngineRoot)external\jpeg\include\win32;$(EngineRoot)external\tiff\include\win32;$(EngineRoot)external\webp\include\win32;$(EngineRoot)external\freetype2\include\win32;$(EngineRoot)external\win32-specific\MP3Decoder\include;$(EngineRoot)external\win32-specific\OggDecoder\include;$(EngineRoot)external\win32-specific\OpenalSoft\include;$(EngineRoot)external\win32-specific\icon\include;$(EngineRoot)external\win32-specific\zlib\include;$(EngineRoot)external\chipmunk\include;$(EngineRoot)external\xxhash;$(EngineRoot)external\ConvertUTF;$(EngineRoot)external\Box2D\include;$(EngineRoot)external\curl\include\win32;$(EngineRoot)external\websockets\include\win32\;$(EngineRoot)external\poly2tri\common;$(EngineRoot)external\poly2tri\sweep;$(EngineRoot)external\poly2tri;$(EngineRoot)external;$(EngineRoot)cocos;$(EngineRoot)cocos\editor-support;$(EngineRoot)cocos\platform\win8.1-universal;$(EngineRoot)extensions;$(EngineRoot);$(EngineRoot)external/bullet/include;$(EngineRoot)external/bullet/include/bullet;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_USRDLL;NDEBUG;_WINDOWS;_LIB;LWS_DLL;COCOS2DXWIN32_EXPORTS;GL_GLEXT_PROTOTYPES;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;_USE3DDLL;_EXPORT_DLL_;_USRSTUDIODLL;_USREXDLL;_USEGUIDLL;CC_ENABLE_CHIPMUNK_INTEGRATION=1;PROTOBUF_USE_DLLS;LIBPROTOBUF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>None</DebugInformationFormat>
       <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
@@ -149,6 +151,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
       <CompileAs>CompileAsCpp</CompileAs>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <Optimization>MinSpace</Optimization>
+      <PrecompiledHeaderFile>precheader.h</PrecompiledHeaderFile>
+      <ForcedIncludeFiles>precheader.h</ForcedIncludeFiles>
     </ClCompile>
     <PreLinkEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
@@ -169,6 +173,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\win32-specific\OggDecoder\prebuilt\*.*"
 xcopy /Y /Q "$(ProjectDir)..\..\external\sqlite3\libraries\win32\*.*" "$(OutDir)"
 xcopy /Y /Q "$(ProjectDir)..\..\external\chipmunk\prebuilt\win32\release-lib\*.*" "$(OutDir)"
 xcopy /Y /Q "$(ProjectDir)..\..\external\bullet\prebuilt\win32\release\*.*" "$(OutDir)"
+xcopy /Y /Q "$(ProjectDir)..\..\external\Box2D\prebuilt\win32\release\*.*" "$(OutDir)"
 xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"</Command>
     </PreLinkEvent>
     <Link>
@@ -378,82 +383,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\..\external\poly2tri\sweep\cdt.cc" />
     <ClCompile Include="..\..\external\poly2tri\sweep\sweep.cc" />
     <ClCompile Include="..\..\external\poly2tri\sweep\sweep_context.cc" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\pugixml\pugixml.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\animation\animation.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\animation\animationinstance.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\animation\mainlinekey.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\animation\mainlinekeyinstance.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\charactermap\charactermap.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\charactermap\charactermapinstruction.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\entity\entity.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\entity\entityinstance.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\entity\entityinstancedata.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\entity\object.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\file\file.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\file\filereference.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\global\settings.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\loading\loader.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\loading\loadinghelpers.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\loading\spriterdocumentloader.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\model\spritermodel.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\angleinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\boneinstanceinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\boneobjectinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\boxinstanceinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\boxobjectinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\entityobjectinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\eventobjectinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\intvariableinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\pointinstanceinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\pointobjectinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\realvariableinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\soundobjectinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\spriteobjectinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\stringvariableinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\stringvariableinforeference.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\taglist.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\tagobjectinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\tagobjectinforeference.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\triggerobjectinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\universalobjectinterface.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\boneref.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\bonerefinstance.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\entityref.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\entityrefinstance.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\objectref.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\objectrefinstance.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\spriteref.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\spriterefinstance.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\transformprocessor.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\atlasfile.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\filefactory.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\imagefile.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterobjectfactory.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\soundfile.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\soundobjectinforeference.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterfileattributewrapper.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterfiledocumentwrapper.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterfileelementwrapper.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\beziereasingcurve.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\cubiceasingcurve.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\easingcurveinterface.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\instanteasingcurve.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\lineareasingcurve.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\quadraticeasingcurve.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\quarticeasingcurve.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\quinticeasingcurve.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\timeinfo.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\proxytimelinekey.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\soundtimelineinstance.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\tagtimelineinstance.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\timeline.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\timelineinstance.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\timelinekey.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\triggertimelineinstance.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\variabletimelineinstance.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\variable\variable.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\variable\variablecontainer.cpp" />
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\variable\variableinstancenameandidmap.cpp" />
     <ClCompile Include="..\..\external\tinyxml2\tinyxml2.cpp" />
     <ClCompile Include="..\..\external\unzip\ioapi_mem.cpp" />
     <ClCompile Include="..\..\external\unzip\ioapi.cpp" />
@@ -702,6 +631,12 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\platform\win32\CCFileUtils-win32.cpp" />
     <ClCompile Include="..\platform\win32\CCStdC-win32.cpp" />
     <ClCompile Include="..\platform\win32\CCUtils-win32.cpp" />
+    <ClCompile Include="..\precheader.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">precheader.h</PrecompiledHeaderFile>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">precheader.h</PrecompiledHeaderFile>
+    </ClCompile>
     <ClCompile Include="..\renderer\CCBatchCommand.cpp" />
     <ClCompile Include="..\renderer\CCCustomCommand.cpp" />
     <ClCompile Include="..\renderer\CCFrameBuffer.cpp" />
@@ -769,7 +704,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\vr\CCVRDistortionMesh.cpp" />
     <ClCompile Include="..\vr\CCVRGenericHeadTracker.cpp" />
     <ClCompile Include="..\vr\CCVRGenericRenderer.cpp" />
-    <ClCompile Include="CCAnimationNode.cpp" />
     <ClCompile Include="CCAction.cpp" />
     <ClCompile Include="CCActionCamera.cpp" />
     <ClCompile Include="CCActionCatmullRom.cpp" />
@@ -785,6 +719,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="CCActionTween.cpp" />
     <ClCompile Include="CCAnimation.cpp" />
     <ClCompile Include="CCAnimationCache.cpp" />
+    <ClCompile Include="CCAnimationNode.cpp" />
     <ClCompile Include="CCAtlasNode.cpp" />
     <ClCompile Include="CCAutoPolygon.cpp" />
     <ClCompile Include="CCBoneInstanceInfo.cpp" />
@@ -1031,55 +966,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\..\extensions\Particle3D\PU\CCPUVortexAffectorTranslator.h" />
     <ClInclude Include="..\..\extensions\physics-nodes\CCPhysicsDebugNode.h" />
     <ClInclude Include="..\..\extensions\physics-nodes\CCPhysicsSprite.h" />
-    <ClInclude Include="..\..\external\cereal\access.hpp" />
-    <ClInclude Include="..\..\external\cereal\archives\binary.hpp" />
-    <ClInclude Include="..\..\external\cereal\archives\json.hpp" />
-    <ClInclude Include="..\..\external\cereal\archives\portable_binary.hpp" />
-    <ClInclude Include="..\..\external\cereal\archives\xml.hpp" />
-    <ClInclude Include="..\..\external\cereal\cereal.hpp" />
-    <ClInclude Include="..\..\external\cereal\details\helpers.hpp" />
-    <ClInclude Include="..\..\external\cereal\details\polymorphic_impl.hpp" />
-    <ClInclude Include="..\..\external\cereal\details\static_object.hpp" />
-    <ClInclude Include="..\..\external\cereal\details\traits.hpp" />
-    <ClInclude Include="..\..\external\cereal\details\util.hpp" />
-    <ClInclude Include="..\..\external\cereal\external\base64.hpp" />
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\document.h" />
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\filestream.h" />
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\genericstream.h" />
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\internal\pow10.h" />
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\internal\stack.h" />
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\internal\strfunc.h" />
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\prettywriter.h" />
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\rapidjson.h" />
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\reader.h" />
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\stringbuffer.h" />
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\writer.h" />
-    <ClInclude Include="..\..\external\cereal\external\rapidxml\rapidxml.hpp" />
-    <ClInclude Include="..\..\external\cereal\external\rapidxml\rapidxml_iterators.hpp" />
-    <ClInclude Include="..\..\external\cereal\external\rapidxml\rapidxml_print.hpp" />
-    <ClInclude Include="..\..\external\cereal\external\rapidxml\rapidxml_utils.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\array.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\base_class.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\bitset.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\boost_variant.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\chrono.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\common.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\complex.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\deque.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\forward_list.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\list.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\map.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\memory.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\polymorphic.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\queue.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\set.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\stack.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\string.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\tuple.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\unordered_map.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\unordered_set.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\utility.hpp" />
-    <ClInclude Include="..\..\external\cereal\types\vector.hpp" />
     <ClInclude Include="..\..\external\clipper\clipper.hpp" />
     <ClInclude Include="..\..\external\ConvertUTF\ConvertUTF.h" />
     <ClInclude Include="..\..\external\edtaa3func\edtaa3func.h" />
@@ -1105,88 +991,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\..\external\poly2tri\sweep\cdt.h" />
     <ClInclude Include="..\..\external\poly2tri\sweep\sweep.h" />
     <ClInclude Include="..\..\external\poly2tri\sweep\sweep_context.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\nlohmann-json\json.hpp" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\pugixml\pugiconfig.hpp" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\pugixml\pugixml.hpp" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\animation\animation.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\animation\animationinstance.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\animation\mainlinekey.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\animation\mainlinekeyinstance.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\charactermap\charactermap.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\charactermap\charactermapinstruction.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\charactermap\charactermapinterface.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\entity\entity.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\entity\entityinstance.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\entity\entityinstancedata.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\entity\object.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\file\file.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\file\filereference.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\global\atlas.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\global\global.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\global\settings.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\loading\loader.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\loading\loadinghelpers.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\loading\spriterdocumentloader.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\model\spritermodel.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\angleinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\boneinstanceinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\boneobjectinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\boxinstanceinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\boxobjectinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\entityobjectinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\eventobjectinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\intvariableinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\pointinstanceinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\pointobjectinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\realvariableinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\soundobjectinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\spriteobjectinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\stringvariableinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\stringvariableinforeference.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\taglist.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\tagobjectinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\tagobjectinforeference.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\triggerobjectinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\universalobjectinterface.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\boneref.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\bonerefinstance.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\entityref.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\entityrefinstance.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\objectref.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\objectrefinstance.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\spriteref.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\spriterefinstance.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\transformprocessor.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\atlasfile.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\filefactory.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\imagefile.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterobjectfactory.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\soundfile.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\soundobjectinforeference.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterfileattributewrapper.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterfiledocumentwrapper.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterfileelementwrapper.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\spriterengine.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\beziereasingcurve.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\cubiceasingcurve.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\easingcurveinterface.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\instanteasingcurve.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\lineareasingcurve.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\quadraticeasingcurve.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\quarticeasingcurve.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\quinticeasingcurve.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\timeinfo.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\proxytimelinekey.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\soundtimelineinstance.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\tagtimelineinstance.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\timeline.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\timelineinstance.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\timelinekey.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\triggertimelineinstance.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\variabletimelineinstance.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\variable\variable.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\variable\variablecontainer.h" />
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\variable\variableinstancenameandidmap.h" />
     <ClInclude Include="..\..\external\tinyxml2\tinyxml2.h" />
     <ClInclude Include="..\..\external\unzip\ioapi_mem.h" />
     <ClInclude Include="..\..\external\unzip\ioapi.h" />
@@ -1487,6 +1291,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\platform\win32\CCStdC-win32.h" />
     <ClInclude Include="..\platform\win32\CCUtils-win32.h" />
     <ClInclude Include="..\platform\win32\compat\stdint.h" />
+    <ClInclude Include="..\precheader.h" />
     <ClInclude Include="..\renderer\CCBatchCommand.h" />
     <ClInclude Include="..\renderer\CCCustomCommand.h" />
     <ClInclude Include="..\renderer\CCFrameBuffer.h" />
@@ -1556,7 +1361,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\vr\CCVRGenericHeadTracker.h" />
     <ClInclude Include="..\vr\CCVRGenericRenderer.h" />
     <ClInclude Include="..\vr\CCVRProtocol.h" />
-    <ClInclude Include="CCAnimationNode.h" />
     <ClInclude Include="CCAction.h" />
     <ClInclude Include="CCActionCamera.h" />
     <ClInclude Include="CCActionCatmullRom.h" />
@@ -1572,6 +1376,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="CCActionTween.h" />
     <ClInclude Include="CCAnimation.h" />
     <ClInclude Include="CCAnimationCache.h" />
+    <ClInclude Include="CCAnimationNode.h" />
     <ClInclude Include="CCAtlasNode.h" />
     <ClInclude Include="CCAutoPolygon.h" />
     <ClInclude Include="CCBoneInstanceInfo.h" />
@@ -1642,7 +1447,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="TinyXmlSpriterFileElementWrapper.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\external\cereal\external\rapidxml\manual.html" />
     <None Include="..\3d\CCAnimationCurve.inl" />
     <None Include="..\math\Mat4.inl" />
     <None Include="..\math\MathUtil.inl" />
@@ -1654,16 +1458,17 @@ xcopy /Y /Q "$(ProjectDir)..\..\external\openssl\prebuilt\win32\*.*" "$(OutDir)"
     <None Include="cocos2d.def" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\external\Box2D\proj.win32\libbox2d.vcxproj">
-      <Project>{929480e7-23c0-4df6-8456-096d71547116}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\..\external\recast\proj.win32\librecast.vcxproj">
       <Project>{41e34993-647e-4282-8384-4ab1ae31a452}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\external\SpriterPlusPlus\SpriterPlusPlus.vcxproj">
+      <Project>{ec902f13-1e54-4dd0-a887-0a3a5bc1cc29}</Project>
     </ProjectReference>
     <ProjectReference Include="..\editor-support\spine\proj.win32\libSpine.vcxproj">
       <Project>{b7c2a162-dec9-4418-972e-240ab3cbfcae}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
 </Project>

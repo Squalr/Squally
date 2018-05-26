@@ -2,7 +2,7 @@
 
 #include "../global/settings.h"
 
-#include "../override/spriterobjectfactory.h"
+#include "../override/SPPobjectfactory.h"
 
 #include "../objectinfo/pointobjectinfo.h"
 #include "../objectinfo/boneobjectinfo.h"

@@ -2,7 +2,8 @@
 Copyright (c) 2009-2010 Ricardo Quesada
 Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2011      Zynga Inc.
-Copyright (c) 2013-2017 Chukong Technologies Inc.
+Copyright (c) 2013-2016 Chukong Technologies Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -91,7 +92,7 @@ bool TransitionScene::initWithDuration(float t, Scene *scene)
         if (_outScene == nullptr)
         {
             _outScene = Scene::create();
-            // just change its state is running that can run actoins later
+            // just change its state is running that can run actions later
             // issue: https://github.com/cocos2d/cocos2d-x/issues/17442
             _outScene->onEnter();
         }

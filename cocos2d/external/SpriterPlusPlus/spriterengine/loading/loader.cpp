@@ -3,7 +3,7 @@
 #include "../global/settings.h"
 
 #include "../override/spriterfiledocumentwrapper.h"
-#include "../override/filefactory.h"
+#include "../override/SPPfilefactory.h"
 
 namespace SpriterEngine
 {

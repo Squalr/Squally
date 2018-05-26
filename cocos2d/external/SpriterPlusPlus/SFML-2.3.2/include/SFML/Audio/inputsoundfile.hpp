@@ -28,9 +28,9 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML-2.3.2/include/SFML/Audio/Export.hpp>
-#include <SFML-2.3.2/include/SFML/System/NonCopyable.hpp>
-#include <SFML-2.3.2/include/SFML/System/Time.hpp>
+#include <SFML/Audio/Export.hpp>
+#include <SFML/System/NonCopyable.hpp>
+#include <SFML/System/Time.hpp>
 #include <string>
 
 
