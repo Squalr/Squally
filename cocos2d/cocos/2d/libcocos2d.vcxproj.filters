@@ -292,33 +292,6 @@
     <Filter Include="external\md5">
       <UniqueIdentifier>{d3d38486-e13f-47b4-96b0-51a7c78e6d69}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external\cereal">
-      <UniqueIdentifier>{d7f464fe-5a77-4f90-9ee1-4ee146e180e9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\cereal\archive">
-      <UniqueIdentifier>{7ccb5e23-99e9-4b50-8745-8f1e2037df51}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\cereal\details">
-      <UniqueIdentifier>{687a521d-9d9c-4b0a-aae9-9a033089dea7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\cereal\external">
-      <UniqueIdentifier>{d150428f-e16f-4b9d-b287-10c266783262}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\cereal\types">
-      <UniqueIdentifier>{b838a69a-7b36-41bc-823a-8e8a176661fe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\cereal\external\rapidjson">
-      <UniqueIdentifier>{a4402327-6829-4380-9675-1d3b6f35644b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\cereal\external\rapidxml">
-      <UniqueIdentifier>{0c4ddd33-41f0-4e71-9b43-079742171c91}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\cereal\external\rapidjson\internal">
-      <UniqueIdentifier>{b1557f8b-83cf-42ce-a896-d2d5bd308876}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\SpriterPlusPlus">
-      <UniqueIdentifier>{c86c0fbc-6e09-46c1-958d-7acd81ff0514}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\physics\CCPhysicsBody.cpp">
@@ -2027,14 +2000,8 @@
     <ClCompile Include="..\base\CCController-linux-win32.cpp" />
     <ClCompile Include="..\base\CCEventController.cpp" />
     <ClCompile Include="..\base\CCEventListenerController.cpp" />
-    <ClCompile Include="CCFont.cpp" />
-    <ClCompile Include="TinyXmlSpriterFileAttributeWrapper.cpp">
-      <Filter>2d</Filter>
-    </ClCompile>
-    <ClCompile Include="TinyXmlSpriterFileDocumentWrapper.cpp">
-      <Filter>2d</Filter>
-    </ClCompile>
-    <ClCompile Include="TinyXmlSpriterFileElementWrapper.cpp">
+    <ClCompile Include="..\precheader.cpp" />
+    <ClCompile Include="CCAnimationNode.cpp">
       <Filter>2d</Filter>
     </ClCompile>
     <ClCompile Include="CCBoneInstanceInfo.cpp">
@@ -2044,6 +2011,9 @@
       <Filter>2d</Filter>
     </ClCompile>
     <ClCompile Include="CCFileFactory.cpp">
+      <Filter>2d</Filter>
+    </ClCompile>
+    <ClCompile Include="CCFont.cpp">
       <Filter>2d</Filter>
     </ClCompile>
     <ClCompile Include="CCImageFile.cpp">
@@ -2058,241 +2028,19 @@
     <ClCompile Include="CCSoundFile.cpp">
       <Filter>2d</Filter>
     </ClCompile>
-    <ClCompile Include="CCTriggerObjectInfo.cpp">
-      <Filter>2d</Filter>
-    </ClCompile>
     <ClCompile Include="CCSoundObjectInfoReference.cpp">
       <Filter>2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\animation\animation.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
+    <ClCompile Include="CCTriggerObjectInfo.cpp">
+      <Filter>2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\animation\animationinstance.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
+    <ClCompile Include="TinyXmlSpriterFileAttributeWrapper.cpp">
+      <Filter>2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\animation\mainlinekey.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
+    <ClCompile Include="TinyXmlSpriterFileDocumentWrapper.cpp">
+      <Filter>2d</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\animation\mainlinekeyinstance.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\charactermap\charactermap.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\charactermap\charactermapinstruction.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\entity\entity.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\entity\entityinstance.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\entity\entityinstancedata.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\entity\object.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\file\file.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\file\filereference.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\global\settings.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\loading\loader.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\loading\loadinghelpers.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\loading\spriterdocumentloader.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\model\spritermodel.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\angleinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\boneinstanceinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\boneobjectinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\boxinstanceinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\boxobjectinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\entityobjectinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\eventobjectinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\intvariableinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\pointinstanceinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\pointobjectinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\realvariableinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\soundobjectinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\spriteobjectinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\stringvariableinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\stringvariableinforeference.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\taglist.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\tagobjectinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\tagobjectinforeference.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\triggerobjectinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\universalobjectinterface.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\boneref.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\bonerefinstance.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\entityref.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\entityrefinstance.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\objectref.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\objectrefinstance.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\spriteref.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\spriterefinstance.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\transformprocessor.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\atlasfile.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\filefactory.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\imagefile.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\soundfile.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\soundobjectinforeference.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterfileattributewrapper.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterfiledocumentwrapper.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterfileelementwrapper.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\beziereasingcurve.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\cubiceasingcurve.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\easingcurveinterface.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\instanteasingcurve.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\lineareasingcurve.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\quadraticeasingcurve.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\quarticeasingcurve.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\quinticeasingcurve.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\timeinfo.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\proxytimelinekey.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\soundtimelineinstance.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\tagtimelineinstance.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\timeline.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\timelineinstance.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\timelinekey.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\triggertimelineinstance.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\variabletimelineinstance.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\variable\variable.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\variable\variablecontainer.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\variable\variableinstancenameandidmap.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\pugixml\pugixml.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterobjectfactory.cpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClCompile>
-    <ClCompile Include="CCAnimationNode.cpp">
+    <ClCompile Include="TinyXmlSpriterFileElementWrapper.cpp">
       <Filter>2d</Filter>
     </ClCompile>
   </ItemGroup>
@@ -4206,161 +3954,8 @@
     <ClInclude Include="..\base\CCController.h" />
     <ClInclude Include="..\base\CCEventController.h" />
     <ClInclude Include="..\base\CCEventListenerController.h" />
-    <ClInclude Include="..\..\external\cereal\access.hpp">
-      <Filter>external\cereal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\cereal.hpp">
-      <Filter>external\cereal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\archives\binary.hpp">
-      <Filter>external\cereal\archive</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\archives\json.hpp">
-      <Filter>external\cereal\archive</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\archives\portable_binary.hpp">
-      <Filter>external\cereal\archive</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\archives\xml.hpp">
-      <Filter>external\cereal\archive</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\details\helpers.hpp">
-      <Filter>external\cereal\details</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\details\polymorphic_impl.hpp">
-      <Filter>external\cereal\details</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\details\static_object.hpp">
-      <Filter>external\cereal\details</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\details\traits.hpp">
-      <Filter>external\cereal\details</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\details\util.hpp">
-      <Filter>external\cereal\details</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\array.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\base_class.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\bitset.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\boost_variant.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\chrono.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\common.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\complex.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\deque.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\forward_list.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\list.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\map.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\memory.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\polymorphic.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\queue.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\set.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\stack.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\tuple.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\unordered_map.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\unordered_set.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\utility.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\vector.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\external\base64.hpp">
-      <Filter>external\cereal\external</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\external\rapidxml\rapidxml_utils.hpp">
-      <Filter>external\cereal\external\rapidxml</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\external\rapidxml\rapidxml.hpp">
-      <Filter>external\cereal\external\rapidxml</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\external\rapidxml\rapidxml_iterators.hpp">
-      <Filter>external\cereal\external\rapidxml</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\external\rapidxml\rapidxml_print.hpp">
-      <Filter>external\cereal\external\rapidxml</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\document.h">
-      <Filter>external\cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\filestream.h">
-      <Filter>external\cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\genericstream.h">
-      <Filter>external\cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\prettywriter.h">
-      <Filter>external\cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\rapidjson.h">
-      <Filter>external\cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\reader.h">
-      <Filter>external\cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\stringbuffer.h">
-      <Filter>external\cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\writer.h">
-      <Filter>external\cereal\external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\internal\pow10.h">
-      <Filter>external\cereal\external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\internal\stack.h">
-      <Filter>external\cereal\external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\external\rapidjson\internal\strfunc.h">
-      <Filter>external\cereal\external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\cereal\types\string.hpp">
-      <Filter>external\cereal\types</Filter>
-    </ClInclude>
-    <ClInclude Include="CCLabelTextFormatter.h" />
-    <ClInclude Include="TinyXmlSpriterFileElementWrapper.h">
-      <Filter>2d</Filter>
-    </ClInclude>
-    <ClInclude Include="TinyXmlSpriterFileAttributeWrapper.h">
-      <Filter>2d</Filter>
-    </ClInclude>
-    <ClInclude Include="TinyXmlSpriterFileDocumentWrapper.h">
+    <ClInclude Include="..\precheader.h" />
+    <ClInclude Include="CCAnimationNode.h">
       <Filter>2d</Filter>
     </ClInclude>
     <ClInclude Include="CCBoneInstanceInfo.h">
@@ -4373,6 +3968,9 @@
       <Filter>2d</Filter>
     </ClInclude>
     <ClInclude Include="CCImageFile.h">
+      <Filter>2d</Filter>
+    </ClInclude>
+    <ClInclude Include="CCLabelTextFormatter.h">
       <Filter>2d</Filter>
     </ClInclude>
     <ClInclude Include="CCObjectFactory.h">
@@ -4390,253 +3988,13 @@
     <ClInclude Include="CCTriggerObjectInfo.h">
       <Filter>2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\animation\animation.h">
-      <Filter>external\SpriterPlusPlus</Filter>
+    <ClInclude Include="TinyXmlSpriterFileAttributeWrapper.h">
+      <Filter>2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\animation\animationinstance.h">
-      <Filter>external\SpriterPlusPlus</Filter>
+    <ClInclude Include="TinyXmlSpriterFileDocumentWrapper.h">
+      <Filter>2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\animation\mainlinekey.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\animation\mainlinekeyinstance.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\charactermap\charactermap.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\charactermap\charactermapinstruction.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\charactermap\charactermapinterface.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\entity\entity.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\entity\entityinstance.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\entity\entityinstancedata.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\entity\object.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\file\file.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\file\filereference.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\global\atlas.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\global\global.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\global\settings.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\loading\loader.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\loading\loadinghelpers.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\loading\spriterdocumentloader.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\model\spritermodel.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\angleinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\boneinstanceinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\boneobjectinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\boxinstanceinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\boxobjectinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\entityobjectinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\eventobjectinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\intvariableinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\pointinstanceinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\pointobjectinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\realvariableinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\soundobjectinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\spriteobjectinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\stringvariableinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\stringvariableinforeference.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\taglist.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\tagobjectinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\tagobjectinforeference.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\triggerobjectinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectinfo\universalobjectinterface.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\boneref.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\bonerefinstance.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\entityref.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\entityrefinstance.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\objectref.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\objectrefinstance.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\spriteref.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\spriterefinstance.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\objectref\transformprocessor.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\atlasfile.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\filefactory.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\imagefile.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\soundfile.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\soundobjectinforeference.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterfileattributewrapper.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterfiledocumentwrapper.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterfileelementwrapper.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\beziereasingcurve.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\cubiceasingcurve.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\easingcurveinterface.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\instanteasingcurve.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\lineareasingcurve.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\quadraticeasingcurve.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\quarticeasingcurve.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\quinticeasingcurve.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeinfo\timeinfo.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\proxytimelinekey.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\soundtimelineinstance.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\tagtimelineinstance.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\timeline.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\timelineinstance.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\timelinekey.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\triggertimelineinstance.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\timeline\variabletimelineinstance.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\variable\variable.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\variable\variablecontainer.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\variable\variableinstancenameandidmap.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\spriterengine.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\pugixml\pugiconfig.hpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\pugixml\pugixml.hpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\nlohmann-json\json.hpp">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\external\SpriterPlusPlus\spriterengine\override\spriterobjectfactory.h">
-      <Filter>external\SpriterPlusPlus</Filter>
-    </ClInclude>
-    <ClInclude Include="CCAnimationNode.h">
+    <ClInclude Include="TinyXmlSpriterFileElementWrapper.h">
       <Filter>2d</Filter>
     </ClInclude>
   </ItemGroup>
@@ -4665,9 +4023,6 @@
     <None Include="cocos2d.def" />
     <None Include="..\3d\CCAnimationCurve.inl">
       <Filter>3d</Filter>
-    </None>
-    <None Include="..\..\external\cereal\external\rapidxml\manual.html">
-      <Filter>external</Filter>
     </None>
   </ItemGroup>
 </Project>

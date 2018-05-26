@@ -2,6 +2,7 @@
 * cocos2d-x   http://www.cocos2d-x.org
 *
 * Copyright (c) 2010-2011 - cocos2d-x community
+* Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 *
 * Portions Copyright (c) Microsoft Open Technologies, Inc.
 * All Rights Reserved
@@ -32,45 +33,45 @@
 #include "audio/winrt/AudioCachePlayer.h"
 
 NS_CC_BEGIN
-namespace cocos_experimental {
+    namespace experimental{
 #define MAX_AUDIOINSTANCES 32
 
-	class CC_DLL AudioEngineImpl : public cocos2d::Ref
-	{
-	public:
-		AudioEngineImpl();
-		~AudioEngineImpl();
+ class CC_DLL AudioEngineImpl : public cocos2d::Ref
+ {
+ public:
+     AudioEngineImpl();
+     ~AudioEngineImpl();
 
-		bool init();
-		int play2d(const std::string &fileFullPath, bool loop, float volume);
-		void setVolume(int audioID, float volume);
-		void setLoop(int audioID, bool loop);
-		bool pause(int audioID);
-		bool resume(int audioID);
-		bool stop(int audioID);
-		void stopAll();
-		float getDuration(int audioID);
-		float getCurrentTime(int audioID);
-		bool setCurrentTime(int audioID, float time);
-		void setFinishCallback(int audioID, const std::function<void(int, const std::string &)> &callback);
-		void uncache(const std::string& filePath);
-		void uncacheAll();
-		AudioCache* preload(const std::string& filePath, std::function<void(bool)> callback);
-		void update(float dt);
+     bool init();
+     int play2d(const std::string &fileFullPath, bool loop, float volume);
+     void setVolume(int audioID, float volume);
+     void setLoop(int audioID, bool loop);
+     bool pause(int audioID);
+     bool resume(int audioID);
+     bool stop(int audioID);
+     void stopAll();
+     float getDuration(int audioID);
+     float getCurrentTime(int audioID);
+     bool setCurrentTime(int audioID, float time);
+     void setFinishCallback(int audioID, const std::function<void(int, const std::string &)> &callback);
+     void uncache(const std::string& filePath);
+     void uncacheAll();
+     AudioCache* preload(const std::string& filePath, std::function<void(bool)> callback);
+     void update(float dt);
 
-	private:
-		void _play2d(AudioCache *cache, int audioID);
+ private:
+     void _play2d(AudioCache *cache, int audioID);
 
-	private:
-		std::unordered_map<int, AudioPlayer>  _audioPlayers;
-		std::unordered_map<std::string, AudioCache> _audioCaches;
-		std::vector<AudioCache*> _toRemoveCaches;
+ private:
+     std::unordered_map<int, AudioPlayer>  _audioPlayers;
+     std::unordered_map<std::string, AudioCache> _audioCaches;
+     std::vector<AudioCache*> _toRemoveCaches;
 
-		std::mutex _threadMutex;
-		std::vector<int> _toRemoveAudioIDs;
-		bool _lazyInitLoop;
-		int _currentAudioID;
-	};
+     std::mutex _threadMutex;
+     std::vector<int> _toRemoveAudioIDs;
+     bool _lazyInitLoop;
+     int _currentAudioID;
+ };
 }
 
 NS_CC_END

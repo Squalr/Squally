@@ -28,8 +28,8 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML-2.3.2/include/SFML/System/Export.hpp>
-#include <SFML-2.3.2/include/SFML/System/NonCopyable.hpp>
+#include <SFML/System/Export.hpp>
+#include <SFML/System/NonCopyable.hpp>
 
 
 namespace sf

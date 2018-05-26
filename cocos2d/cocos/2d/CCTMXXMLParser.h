@@ -2,7 +2,8 @@
 Copyright (c) 2009-2010 Ricardo Quesada
 Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2011      Zynga Inc.
-Copyright (c) 2013-2017 Chukong Technologies Inc.
+Copyright (c) 2013-2016 Chukong Technologies Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 http://www.cocos2d-x.org
 
@@ -115,7 +116,7 @@ public:
     bool                _visible;
     unsigned char       _opacity;
     bool                _ownTiles;
-    Vec2               _offset;
+    Vec2                _offset;
 	int					_layerIndex;
 };
 
@@ -308,8 +309,8 @@ protected:
     int    _staggerAxis;
     ///map staggerIndex
     int    _staggerIndex;
-	///map hexsidelength
-	int    _hexSideLength;
+    ///map hexsidelength
+    int    _hexSideLength;
     /// map width & height
     Size _mapSize;
     /// tiles width & height

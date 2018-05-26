@@ -7,8 +7,8 @@
 #include "../override/imagefile.h"
 #include "../override/soundfile.h"
 #include "../override/atlasfile.h"
-#include "../override/filefactory.h"
-#include "../override/spriterobjectfactory.h"
+#include "../override/SPPfilefactory.h"
+#include "../override/SPPobjectfactory.h"
 
 #include "../file/filereference.h"
 

@@ -1,5 +1,6 @@
 /****************************************************************************
- Copyright (c) 2016-2017 Chukong Technologies Inc.
+ Copyright (c) 2016 Chukong Technologies Inc.
+ Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
  http://www.cocos2d-x.org
 
@@ -47,7 +48,7 @@ struct CC_DLL VREye
     };
 
     EyeType type;
-    cocos_experimental::Viewport viewport;
+	cocos_experimental::Viewport viewport;
 };
 
 class CC_DLL VRGenericRenderer : public VRIRenderer
@@ -66,7 +67,7 @@ protected:
     void renderDistortionMesh(DistortionMesh *mesh, Texture2D* texture);
     DistortionMesh* createDistortionMesh(VREye::EyeType eyeType);
 
-    cocos_experimental::FrameBuffer* _fb;
+	cocos_experimental::FrameBuffer* _fb;
     Size _texSize;
     VREye _leftEye;
     VREye _rightEye;

@@ -2,7 +2,8 @@
 Copyright (c) 2008-2010 Ricardo Quesada
 Copyright (c) 2010-2012 cocos2d-x.org
 Copyright (c) 2011      Zynga Inc.
-Copyright (c) 2013-2017 Chukong Technologies Inc.
+Copyright (c) 2013-2016 Chukong Technologies Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
 
 Copyright (c) 2011 HKASoftware
 
@@ -77,7 +78,7 @@ bool TMXLayer::initWithTilesetInfo(TMXTilesetInfo *tilesetInfo, TMXLayerInfo *la
 
     // layerInfo
 	layerIndex = layerInfo->_layerIndex;
-	_layerName = layerInfo->_name;
+    _layerName = layerInfo->_name;
     _layerSize = layerInfo->_layerSize;
     _tiles = layerInfo->_tiles;
     _quadsDirty = true;

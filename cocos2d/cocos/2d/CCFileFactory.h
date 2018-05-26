@@ -3,7 +3,7 @@
 
 #include <memory>
 #include "2d/CCNode.h"
-#include "SpriterPlusPlus/spriterengine/override/filefactory.h"
+#include "SpriterPlusPlus/spriterengine/override/SPPfilefactory.h"
 #include "CCImageFile.h"
 
 NS_CC_BEGIN

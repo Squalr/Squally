@@ -28,7 +28,7 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML-2.3.2/include/SFML/Audio/Export.hpp>
+#include <SFML/Audio/Export.hpp>
 #include <string>
 #include <vector>
 
@@ -166,7 +166,7 @@ private:
 
 } // namespace sf
 
-#include <SFML-2.3.2/include/SFML/Audio/SoundFileFactory.inl>
+#include <SFML/Audio/SoundFileFactory.inl>
 
 #endif // SFML_SOUNDFILEFACTORY_HPP
 

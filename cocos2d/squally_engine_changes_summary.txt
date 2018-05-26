@@ -1,0 +1,24 @@
+Changes to engine:
+
+- experimental namespace changed to cocos_experimental due to conflicts with std::experimental
+
+- Added SpriterPlusPlus external dependency
+	SpriterPlusPlus changes:
+	- Changed filefactory.h to SPPfilefactory.h due to filename conflict in cocos (caused linker issues)
+	- Changed objectfactory.h to SPPobjectfactory.h due to filename conflict in cocos (caused linker issues)
+- Added files from https://github.com/jeremyjh/Spriter2dX directly into the engine
+
+- Implemented recursive file listing (async as well) in CCFileUtils. Some method definitions changed.
+
+- cereal added as an external dependency
+- ValueMaps, CCFileUtils updated to support binary serialization of ValueMaps
+
+- In CCCamera, the default far plane was increased to 65535.0f
+
+- In CCFastTMXLayer.cpp, frustum culling was updated to account for the camera distance
+
+- In CCNode, added IsPaused() to be able to determine if a node is paused
+
+- Moved from Windows 8 sdk to Windows 10
+
+- Engine is linked as .lib rather than .dll, although this isnt the case by default. This needs to be done since the engine relies on SpriterPlusPlus, and so does Squally (dll would result in multiple redefinitions of classes)

@@ -5,7 +5,7 @@
 
 #include "../animation/animationinstance.h"
 
-#include "../override/spriterobjectfactory.h"
+#include "../override/SPPobjectfactory.h"
 #include "../model/spritermodel.h"
 
 #include "entityinstance.h"

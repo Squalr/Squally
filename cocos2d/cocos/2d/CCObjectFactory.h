@@ -2,7 +2,7 @@
 #define CCOBJECTFACTORY_H
 
 #include "2d/CCNode.h"
-#include "SpriterPlusPlus/spriterengine/override/spriterobjectfactory.h"
+#include "SpriterPlusPlus/spriterengine/override/SPPobjectfactory.h"
 #include "CCPointInstanceInfo.h"
 #include "CCBoxInstanceInfo.h"
 #include "CCBoneInstanceInfo.h"

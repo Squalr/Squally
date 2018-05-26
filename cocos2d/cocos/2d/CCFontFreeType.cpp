@@ -1,6 +1,7 @@
 /****************************************************************************
 Copyright (c) 2013      Zynga Inc.
-Copyright (c) 2013-2017 Chukong Technologies Inc.
+Copyright (c) 2013-2016 Chukong Technologies Inc.
+Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  
 http://www.cocos2d-x.org
 
@@ -63,6 +64,7 @@ FontFreeType * FontFreeType::create(const std::string &fontName, float fontSize,
         delete tempFont;
         return nullptr;
     }
+    tempFont->autorelease();
     return tempFont;
 }
 

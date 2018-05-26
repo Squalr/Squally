@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -22,11 +22,11 @@
     <ProjectGuid>{EC902F13-1E54-4DD0-A887-0A3A5BC1CC29}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SpriterPlusPlus</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -34,20 +34,20 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -71,6 +71,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir>$(Configuration).win32\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -192,6 +194,7 @@
     <ClCompile Include="spriterengine\objectinfo\boxinstanceinfo.cpp" />
     <ClCompile Include="spriterengine\objectinfo\boxobjectinfo.cpp" />
     <ClCompile Include="spriterengine\objectinfo\entityobjectinfo.cpp" />
+    <ClCompile Include="spriterengine\objectinfo\eventobjectinfo.cpp" />
     <ClCompile Include="spriterengine\objectinfo\intvariableinfo.cpp" />
     <ClCompile Include="spriterengine\objectinfo\pointinstanceinfo.cpp" />
     <ClCompile Include="spriterengine\objectinfo\pointobjectinfo.cpp" />
@@ -214,9 +217,10 @@
     <ClCompile Include="spriterengine\objectref\spriterefinstance.cpp" />
     <ClCompile Include="spriterengine\objectref\spriteref.cpp" />
     <ClCompile Include="spriterengine\objectref\transformprocessor.cpp" />
-    <ClCompile Include="spriterengine\override\filefactory.cpp" />
+    <ClCompile Include="spriterengine\override\atlasfile.cpp" />
+    <ClCompile Include="spriterengine\override\SPPfilefactory.cpp" />
     <ClCompile Include="spriterengine\override\imagefile.cpp" />
-    <ClCompile Include="spriterengine\override\objectfactory.cpp" />
+    <ClCompile Include="spriterengine\override\SPPobjectfactory.cpp" />
     <ClCompile Include="spriterengine\override\soundfile.cpp" />
     <ClCompile Include="spriterengine\override\soundobjectinforeference.cpp" />
     <ClCompile Include="spriterengine\override\spriterfileattributewrapper.cpp" />
@@ -259,6 +263,7 @@
     <ClInclude Include="example\override\tinyxmlspriterfileattributewrapper.h" />
     <ClInclude Include="example\override\tinyxmlspriterfiledocumentwrapper.h" />
     <ClInclude Include="example\override\tinyxmlspriterfileelementwrapper.h" />
+    <ClInclude Include="nlohmann-json\json.hpp" />
     <ClInclude Include="pugixml\pugiconfig.hpp" />
     <ClInclude Include="pugixml\pugixml.hpp" />
     <ClInclude Include="spriterengine\animation\animation.h" />
@@ -274,6 +279,7 @@
     <ClInclude Include="spriterengine\entity\object.h" />
     <ClInclude Include="spriterengine\file\file.h" />
     <ClInclude Include="spriterengine\file\filereference.h" />
+    <ClInclude Include="spriterengine\global\atlas.h" />
     <ClInclude Include="spriterengine\global\global.h" />
     <ClInclude Include="spriterengine\global\settings.h" />
     <ClInclude Include="spriterengine\loading\loader.h" />
@@ -286,6 +292,7 @@
     <ClInclude Include="spriterengine\objectinfo\boxinstanceinfo.h" />
     <ClInclude Include="spriterengine\objectinfo\boxobjectinfo.h" />
     <ClInclude Include="spriterengine\objectinfo\entityobjectinfo.h" />
+    <ClInclude Include="spriterengine\objectinfo\eventobjectinfo.h" />
     <ClInclude Include="spriterengine\objectinfo\intvariableinfo.h" />
     <ClInclude Include="spriterengine\objectinfo\pointinstanceinfo.h" />
     <ClInclude Include="spriterengine\objectinfo\pointobjectinfo.h" />
@@ -308,14 +315,16 @@
     <ClInclude Include="spriterengine\objectref\spriterefinstance.h" />
     <ClInclude Include="spriterengine\objectref\spriteref.h" />
     <ClInclude Include="spriterengine\objectref\transformprocessor.h" />
-    <ClInclude Include="spriterengine\override\filefactory.h" />
+    <ClInclude Include="spriterengine\override\atlasfile.h" />
+    <ClInclude Include="spriterengine\override\SPPfilefactory.h" />
     <ClInclude Include="spriterengine\override\imagefile.h" />
-    <ClInclude Include="spriterengine\override\objectfactory.h" />
+    <ClInclude Include="spriterengine\override\SPPobjectfactory.h" />
     <ClInclude Include="spriterengine\override\soundfile.h" />
     <ClInclude Include="spriterengine\override\soundobjectinforeference.h" />
     <ClInclude Include="spriterengine\override\spriterfileattributewrapper.h" />
     <ClInclude Include="spriterengine\override\spriterfiledocumentwrapper.h" />
     <ClInclude Include="spriterengine\override\spriterfileelementwrapper.h" />
+    <ClInclude Include="spriterengine\spriterengine.h" />
     <ClInclude Include="spriterengine\timeinfo\beziereasingcurve.h" />
     <ClInclude Include="spriterengine\timeinfo\cubiceasingcurve.h" />
     <ClInclude Include="spriterengine\timeinfo\easingcurveinterface.h" />
