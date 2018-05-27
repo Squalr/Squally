@@ -1634,6 +1634,7 @@ bool Node::isPaused()
 
 void Node::resume()
 {
+	_paused = false;
     _scheduler->resumeTarget(this);
     _actionManager->resumeTarget(this);
     _eventDispatcher->resumeEventListenersForTarget(this);
@@ -1641,6 +1642,7 @@ void Node::resume()
 
 void Node::pause()
 {
+	_paused = true;
     _scheduler->pauseTarget(this);
     _actionManager->pauseTarget(this);
     _eventDispatcher->pauseEventListenersForTarget(this);
