@@ -20,5 +20,3 @@ Changes to engine:
 - In CCNode, added IsPaused() to be able to determine if a node is paused
 
 - Moved from Windows 8 sdk to Windows 10
-
-- Engine is linked as .lib rather than .dll, although this isnt the case by default. This needs to be done since the engine relies on SpriterPlusPlus, and so does Squally (dll would result in multiple redefinitions of classes)
