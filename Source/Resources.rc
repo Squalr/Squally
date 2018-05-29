@@ -1,6 +1,6 @@
 // Microsoft Visual C++ generated resource script.
 //
-#include "Resources/resource.h"
+#include "../Resources/resource.h"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
@@ -30,7 +30,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 1 TEXTINCLUDE
 BEGIN
-"Resources/resource.h\0"
+"../Resources/resource.h\0"
 END
 
 #endif    // APSTUDIO_INVOKED
@@ -42,7 +42,7 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-GLFW_ICON           ICON                    "Resources\\icon.ico"
+GLFW_ICON           ICON                    "../Resources\\icon.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
