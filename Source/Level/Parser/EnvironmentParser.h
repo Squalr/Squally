@@ -5,6 +5,8 @@
 #include "Utils/GameUtils.h"
 #include "Level/Backgrounds/Backgrounds.h"
 #include "Level/Environments/Environments.h"
+#include "Level/Parser/Keys/EnvironmentKeys.h"
+#include "Level/Parser/Keys/GeneralKeys.h"
 
 using namespace cocos2d;
 

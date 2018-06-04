@@ -15,452 +15,452 @@ Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
 
 		ValueMap entity = entities[index].asValueMap();
 
-		if (!GameUtils::keyExists(entity, "type") ||
-			!GameUtils::keyExists(entity, "width") ||
-			!GameUtils::keyExists(entity, "height") ||
-			!GameUtils::keyExists(entity, "x") ||
-			!GameUtils::keyExists(entity, "y"))
+		if (!GameUtils::keyExists(entity, GeneralKeys::Type) ||
+			!GameUtils::keyExists(entity, GeneralKeys::Width) ||
+			!GameUtils::keyExists(entity, GeneralKeys::Height) ||
+			!GameUtils::keyExists(entity, GeneralKeys::XPosition) ||
+			!GameUtils::keyExists(entity, GeneralKeys::YPosition))
 		{
 			CCLOG("Missing properties on entity");
 			continue;
 		}
 
-		string type = entity.at("type").asString();
+		string type = entity.at(GeneralKeys::Type).asString();
 
 		HackableObject* newEntity = nullptr;
 
-		if (type == "spawn")
+		if (type == EntityKeys::SpawnProperty)
 		{
 			newEntity = Player::create();
 		}
-		else if (type == "knight")
+		else if (type == EntityKeys::NpcKnight)
 		{
 			newEntity = Knight::create();
 		}
 		//////////////////
 		// JUNGLE
 		//////////////////
-		else if (type == "boss_rhinoman")
+		else if (type == EntityKeys::EnemyBossRhinoman)
 		{
 			newEntity = BossRhinoman::create();
 		}
-		else if (type == "goblin_grunt")
+		else if (type == EntityKeys::EnemyGoblinGrunt)
 		{
 			newEntity = GoblinGrunt::create();
 		}
-		else if (type == "goblin_swordsman")
+		else if (type == EntityKeys::EnemyGoblinSwordsman)
 		{
 			newEntity = GoblinSwordsman::create();
 		}
-		else if (type == "goblin_warrior")
+		else if (type == EntityKeys::EnemyGoblinWarrior)
 		{
 			newEntity = GoblinWarrior::create();
 		}
-		else if (type == "jungle_dragon")
+		else if (type == EntityKeys::EnemyJungleDragon)
 		{
 			newEntity = JungleDragon::create();
 		}
-		else if (type == "mantis")
+		else if (type == EntityKeys::EnemyMantis)
 		{
 			newEntity = Mantis::create();
 		}
-		else if (type == "minotaur")
+		else if (type == EntityKeys::EnemyMinotaur)
 		{
 			newEntity = Minotaur::create();
 		}
-		else if (type == "pig_demon")
+		else if (type == EntityKeys::EnemyPigDemon)
 		{
 			newEntity = PigDemon::create();
 		}
-		else if (type == "purple_dinosaur")
+		else if (type == EntityKeys::EnemyPurpleDinosaur)
 		{
 			newEntity = PurpleDinosaur::create();
 		}
-		else if (type == "tiki_golem")
+		else if (type == EntityKeys::EnemyTikiGolem)
 		{
 			newEntity = TikiGolem::create();
 		}
-		else if (type == "tiki_warrior")
+		else if (type == EntityKeys::EnemyTikiWarrior)
 		{
 			newEntity = TikiWarrior::create();
 		}
 		//////////////////
 		// RUINS
 		//////////////////
-		else if (type == "boss_egyptian_goddess")
+		else if (type == EntityKeys::EnemyBossEgyptianGoddess)
 		{
 			newEntity = BossEgyptianGoddess::create();
 		}
-		else if (type == "anubis_tiny")
+		else if (type == EntityKeys::EnemyAnubisTiny)
 		{
 			newEntity = AnubisTiny::create();
 		}
-		else if (type == "anubis_warrior")
+		else if (type == EntityKeys::EnemyAnubisWarrior)
 		{
 			newEntity = AnubisWarrior::create();
 		}
-		else if (type == "lioness")
+		else if (type == EntityKeys::EnemyLioness)
 		{
 			newEntity = Lioness::create();
 		}
-		else if (type == "lion_man")
+		else if (type == EntityKeys::EnemyLionMan)
 		{
 			newEntity = LionMan::create();
 		}
-		else if (type == "medusa")
+		else if (type == EntityKeys::EnemyMedusa)
 		{
 			newEntity = Medusa::create();
 		}
-		else if (type == "medusa_small")
+		else if (type == EntityKeys::EnemyMedusaSmall)
 		{
 			newEntity = MedusaSmall::create();
 		}
-		else if (type == "mermaid")
+		else if (type == EntityKeys::EnemyMermaid)
 		{
 			newEntity = Mermaid::create();
 		}
-		else if (type == "mummy_pharaoh")
+		else if (type == EntityKeys::EnemyMummyPharaoh)
 		{
 			newEntity = MummyPharaoh::create();
 		}
-		else if (type == "tiger_man")
+		else if (type == EntityKeys::EnemyTigerMan)
 		{
 			newEntity = TigerMan::create();
 		}
-		else if (type == "tigress")
+		else if (type == EntityKeys::EnemyTigress)
 		{
 			newEntity = Tigress::create();
 		}
 		//////////////////
 		// FOREST
 		//////////////////
-		else if (type == "boss_dragon_orc_king")
+		else if (type == EntityKeys::EnemyBossDragonOrcKing)
 		{
 			newEntity = BossDragonOrcKing::create();
 		}
-		else if (type == "cyclops")
+		else if (type == EntityKeys::EnemyCyclops)
 		{
 			newEntity = Cyclops::create();
 		}
-		else if (type == "ent")
+		else if (type == EntityKeys::EnemyEnt)
 		{
 			newEntity = Ent::create();
 		}
-		else if (type == "ent_mage")
+		else if (type == EntityKeys::EnemyEntMage)
 		{
 			newEntity = EntMage::create();
 		}
-		else if (type == "goblin_grunt_boar")
+		else if (type == EntityKeys::EnemyGoblinGruntBoar)
 		{
 			newEntity = GoblinGruntBoar::create();
 		}
-		else if (type == "goblin_guard")
+		else if (type == EntityKeys::EnemyGoblinGuard)
 		{
 			newEntity = GoblinGuard::create();
 		}
-		else if (type == "goblin_shaman")
+		else if (type == EntityKeys::EnemyGoblinShaman)
 		{
 			newEntity = GoblinShaman::create();
 		}
-		else if (type == "goblin_warrior_pig")
+		else if (type == EntityKeys::EnemyGoblinWarriorPig)
 		{
 			newEntity = GoblinWarriorPig::create();
 		}
-		else if (type == "orc_grunt")
+		else if (type == EntityKeys::EnemyOrcGrunt)
 		{
 			newEntity = OrcGrunt::create();
 		}
-		else if (type == "orc_warrior")
+		else if (type == EntityKeys::EnemyOrcWarrior)
 		{
 			newEntity = OrcWarrior::create();
 		}
-		else if (type == "troll")
+		else if (type == EntityKeys::EnemyTroll)
 		{
 			newEntity = Troll::create();
 		}
 		//////////////////
 		// CAVERNS
 		//////////////////
-		else if (type == "boss_krampus")
+		else if (type == EntityKeys::EnemyBossKrampus)
 		{
 			newEntity = BossKrampus::create();
 		}
-		else if (type == "black_widow")
+		else if (type == EntityKeys::EnemyBlackWidow)
 		{
 			newEntity = BlackWidow::create();
 		}
-		else if (type == "earth_elemental")
+		else if (type == EntityKeys::EnemyEarthElemental)
 		{
 			newEntity = EarthElemental::create();
 		}
-		else if (type == "earth_golem")
+		else if (type == EntityKeys::EnemyEarthGolem)
 		{
 			newEntity = EarthGolem::create();
 		}
-		else if (type == "forest_golem")
+		else if (type == EntityKeys::EnemyForestGolem)
 		{
 			newEntity = ForestGolem::create();
 		}
-		else if (type == "genie")
+		else if (type == EntityKeys::EnemyGenie)
 		{
 			newEntity = Genie::create();
 		}
-		else if (type == "rock_golem")
+		else if (type == EntityKeys::EnemyRockGolem)
 		{
 			newEntity = RockGolem::create();
 		}
-		else if (type == "shaman")
+		else if (type == EntityKeys::EnemyShaman)
 		{
 			newEntity = Shaman::create();
 		}
-		else if (type == "skeleton_archer")
+		else if (type == EntityKeys::EnemySkeletonArcher)
 		{
 			newEntity = SkeletonArcher::create();
 		}
-		else if (type == "skeleton_necromancer")
+		else if (type == EntityKeys::EnemySkeletonNecromancer)
 		{
 			newEntity = SkeletonNecromancer::create();
 		}
-		else if (type == "skeleton_warrior")
+		else if (type == EntityKeys::EnemySkeletonWarrior)
 		{
 			newEntity = SkeletonWarrior::create();
 		}
 		//////////////////
 		// CASTLE
 		//////////////////
-		else if (type == "boss_witch")
+		else if (type == EntityKeys::EnemyBossWitch)
 		{
 			newEntity = BossWitch::create();
 		}
-		else if (type == "executioner")
+		else if (type == EntityKeys::EnemyExecutioner)
 		{
 			newEntity = Executioner::create();
 		}
-		else if (type == "ghost")
+		else if (type == EntityKeys::EnemyGhost)
 		{
 			newEntity = Ghost::create();
 		}
-		else if (type == "guard")
+		else if (type == EntityKeys::EnemyGuard)
 		{
 			newEntity = Guard::create();
 		}
-		else if (type == "harpy")
+		else if (type == EntityKeys::EnemyHarpy)
 		{
 			newEntity = Harpy::create();
 		}
-		else if (type == "jack")
+		else if (type == EntityKeys::EnemyJack)
 		{
 			newEntity = Jack::create();
 		}
-		else if (type == "reaper")
+		else if (type == EntityKeys::EnemyReaper)
 		{
 			newEntity = Reaper::create();
 		}
-		else if (type == "skeleton_mage")
+		else if (type == EntityKeys::EnemySkeletonMage)
 		{
 			newEntity = SkeletonMage::create();
 		}
-		else if (type == "vampire_lord")
+		else if (type == EntityKeys::EnemyVampireLord)
 		{
 			newEntity = VampireLord::create();
 		}
-		else if (type == "vampiress")
+		else if (type == EntityKeys::EnemyVampiress)
 		{
 			newEntity = Vampiress::create();
 		}
-		else if (type == "zombie")
+		else if (type == EntityKeys::EnemyZombie)
 		{
 			newEntity = Zombie::create();
 		}
 		//////////////////
 		// SNOW
 		//////////////////
-		else if (type == "boss_ice_golem")
+		else if (type == EntityKeys::EnemyBossIceGolem)
 		{
 			newEntity = BossIceGolem::create();
 		}
-		else if (type == "boss_santa")
+		else if (type == EntityKeys::EnemyBossSanta)
 		{
 			newEntity = BossSanta::create();
 		}
-		else if (type == "evil_snowman")
+		else if (type == EntityKeys::EnemyEvilSnowman)
 		{
 			newEntity = EvilSnowman::create();
 		}
-		else if (type == "frost_dragon")
+		else if (type == EntityKeys::EnemyFrostDragon)
 		{
 			newEntity = FrostDragon::create();
 		}
-		else if (type == "frost_shooter")
+		else if (type == EntityKeys::EnemyFrostShooter)
 		{
 			newEntity = FrostShooter::create();
 		}
-		else if (type == "goblin_elf")
+		else if (type == EntityKeys::EnemyGoblinElf)
 		{
 			newEntity = GoblinElf::create();
 		}
-		else if (type == "ice_golem")
+		else if (type == EntityKeys::EnemyIceGolem)
 		{
 			newEntity = IceGolem::create();
 		}
-		else if (type == "tiny_ice_golem")
+		else if (type == EntityKeys::EnemyTinyIceGolem)
 		{
 			newEntity = TinyIceGolem::create();
 		}
-		else if (type == "toy_soldier_goblin")
+		else if (type == EntityKeys::EnemyToySoldierGoblin)
 		{
 			newEntity = ToySoldierGoblin::create();
 		}
-		else if (type == "water_elemental")
+		else if (type == EntityKeys::EnemyWaterElemental)
 		{
 			newEntity = WaterElemental::create();
 		}
-		else if (type == "yeti")
+		else if (type == EntityKeys::EnemyYeti)
 		{
 			newEntity = Yeti::create();
 		}
-		else if (type == "yeti_warrior")
+		else if (type == EntityKeys::EnemyYetiWarrior)
 		{
 			newEntity = YetiWarrior::create();
 		}
 		//////////////////
 		// VOLCANO
 		//////////////////
-		else if (type == "boss_demon_king")
+		else if (type == EntityKeys::EnemyBossDemonKing)
 		{
 			newEntity = BossDemonKing::create();
 		}
-		else if (type == "critter_demon")
+		else if (type == EntityKeys::EnemyCritterDemon)
 		{
 			newEntity = CritterDemon::create();
 		}
-		else if (type == "demon_dragon")
+		else if (type == EntityKeys::EnemyDemonDragon)
 		{
 			newEntity = DemonDragon::create();
 		}
-		else if (type == "demon_ghost")
+		else if (type == EntityKeys::EnemyDemonGhost)
 		{
 			newEntity = DemonGhost::create();
 		}
-		else if (type == "demon_grunt")
+		else if (type == EntityKeys::EnemyDemonGrunt)
 		{
 			newEntity = DemonGrunt::create();
 		}
-		else if (type == "demon_rogue")
+		else if (type == EntityKeys::EnemyDemonRogue)
 		{
 			newEntity = DemonRogue::create();
 		}
-		else if (type == "demon_shaman")
+		else if (type == EntityKeys::EnemyDemonShaman)
 		{
 			newEntity = DemonShaman::create();
 		}
-		else if (type == "demon_swordsman")
+		else if (type == EntityKeys::EnemyDemonSwordsman)
 		{
 			newEntity = DemonSwordsman::create();
 		}
-		else if (type == "demon_warrior")
+		else if (type == EntityKeys::EnemyDemonWarrior)
 		{
 			newEntity = DemonWarrior::create();
 		}
-		else if (type == "fire_elemental")
+		else if (type == EntityKeys::EnemyFireElemental)
 		{
 			newEntity = FireElemental::create();
 		}
-		else if (type == "lava_golem")
+		else if (type == EntityKeys::EnemyLavaGolem)
 		{
 			newEntity = LavaGolem::create();
 		}
 		//////////////////
 		// OBELISK
 		//////////////////
-		else if (type == "boss_skeleton_king")
+		else if (type == EntityKeys::EnemyBossSkeletonKing)
 		{
 			newEntity = BossSkeletonKing::create();
 		}
-		else if (type == "abomination")
+		else if (type == EntityKeys::EnemyAbomination)
 		{
 			newEntity = Abomination::create();
 		}
-		else if (type == "bat_demon")
+		else if (type == EntityKeys::EnemyBatDemon)
 		{
 			newEntity = BatDemon::create();
 		}
-		else if (type == "dark_dragon")
+		else if (type == EntityKeys::EnemyDarkDragon)
 		{
 			newEntity = DarkDragon::create();
 		}
-		else if (type == "demon_archer")
+		else if (type == EntityKeys::EnemyDemonArcher)
 		{
 			newEntity = DemonArcher::create();
 		}
-		else if (type == "skeleton_baron")
+		else if (type == EntityKeys::EnemySkeletonBaron)
 		{
 			newEntity = SkeletonBaron::create();
 		}
-		else if (type == "skeleton_cleaver")
+		else if (type == EntityKeys::EnemySkeletonCleaver)
 		{
 			newEntity = SkeletonCleaver::create();
 		}
-		else if (type == "skeleton_knight")
+		else if (type == EntityKeys::EnemySkeletonKnight)
 		{
 			newEntity = SkeletonKnight::create();
 		}
-		else if (type == "skeleton_priestess")
+		else if (type == EntityKeys::EnemySkeletonPriestess)
 		{
 			newEntity = SkeletonPriestess::create();
 		}
-		else if (type == "undead")
+		else if (type == EntityKeys::EnemyUndead)
 		{
 			newEntity = Undead::create();
 		}
-		else if (type == "void_demon")
+		else if (type == EntityKeys::EnemyVoidDemon)
 		{
 			newEntity = VoidDemon::create();
 		}
 		//////////////////
 		// MECH
 		//////////////////
-		else if (type == "boss_evil_eye")
+		else if (type == EntityKeys::EnemyBossEvilEye)
 		{
 			newEntity = BossEvilEye::create();
 		}
-		else if (type == "exterminator")
+		else if (type == EntityKeys::EnemyExterminator)
 		{
 			newEntity = Exterminator::create();
 		}
-		else if (type == "mech_box_drone")
+		else if (type == EntityKeys::EnemyMechBoxDrone)
 		{
 			newEntity = MechBoxDrone::create();
 		}
-		else if (type == "mech_dog")
+		else if (type == EntityKeys::EnemyMechDog)
 		{
 			newEntity = MechDog::create();
 		}
-		else if (type == "mech_golem")
+		else if (type == EntityKeys::EnemyMechGolem)
 		{
 			newEntity = MechGolem::create();
 		}
-		else if (type == "mech_golem_dark")
+		else if (type == EntityKeys::EnemyMechGolemDark)
 		{
 			newEntity = MechGolemDark::create();
 		}
-		else if (type == "mech_guard")
+		else if (type == EntityKeys::EnemyMechGuard)
 		{
 			newEntity = MechGuard::create();
 		}
-		else if (type == "mite_bot")
+		else if (type == EntityKeys::EnemyMiteBot)
 		{
 			newEntity = MiteBot::create();
 		}
-		else if (type == "robot")
+		else if (type == EntityKeys::EnemyRobot)
 		{
 			newEntity = Robot::create();
 		}
-		else if (type == "viking_bot")
+		else if (type == EntityKeys::EnemyVikingBot)
 		{
 			newEntity = VikingBot::create();
 		}
-		else if (type == "viking_bot_small")
+		else if (type == EntityKeys::EnemyVikingBotSmall)
 		{
 			newEntity = VikingBotSmall::create();
 		}
@@ -470,7 +470,11 @@ Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
 			continue;
 		}
 
-		newEntity->setPosition(Vec2(entity.at("x").asFloat() + entity.at("width").asFloat() / 2, entity.at("y").asFloat() + entity.at("height").asFloat() / 2));
+		newEntity->setPosition(Vec2(
+			entity.at(GeneralKeys::XPosition).asFloat() + entity.at(GeneralKeys::Width).asFloat() / 2,
+			entity.at(GeneralKeys::YPosition).asFloat() + entity.at(GeneralKeys::Height).asFloat() / 2)
+		);
+
 		layer->addChild(newEntity);
 	}
 

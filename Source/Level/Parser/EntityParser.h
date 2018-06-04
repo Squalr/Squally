@@ -4,6 +4,8 @@
 #include "Entities/Entities.h"
 #include "Utils/GameUtils.h"
 #include "Level/Parser/ObjectParser.h"
+#include "Level/Parser/Keys/GeneralKeys.h"
+#include "Level/Parser/Keys/EntityKeys.h"
 
 using namespace cocos2d;
 

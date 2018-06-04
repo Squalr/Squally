@@ -15,19 +15,19 @@ Layer* ObjectParser::parse(TMXObjectGroup* objectGroup)
 
 		ValueMap object = objects[index].asValueMap();
 
-		if (!GameUtils::keyExists(object, "type") ||
-			!GameUtils::keyExists(object, "width") ||
-			!GameUtils::keyExists(object, "height") ||
-			!GameUtils::keyExists(object, "x") ||
-			!GameUtils::keyExists(object, "y"))
+		if (!GameUtils::keyExists(object, GeneralKeys::Type) ||
+			!GameUtils::keyExists(object, GeneralKeys::Width) ||
+			!GameUtils::keyExists(object, GeneralKeys::Height) ||
+			!GameUtils::keyExists(object, GeneralKeys::XPosition) ||
+			!GameUtils::keyExists(object, GeneralKeys::YPosition))
 		{
 			CCLOG("Missing properties on object");
 			continue;
 		}
 
-		std::string type = object.at("type").asString();
-		float width = object.at("width").asFloat();
-		float height = object.at("height").asFloat();
+		std::string type = object.at(GeneralKeys::Type).asString();
+		float width = object.at(GeneralKeys::Width).asFloat();
+		float height = object.at(GeneralKeys::Height).asFloat();
 		Size size = Size(width, height);
 
 		HackableObject* newObject = nullptr;
@@ -73,7 +73,11 @@ Layer* ObjectParser::parse(TMXObjectGroup* objectGroup)
 			continue;
 		}
 
-		newObject->setPosition(Vec2(object.at("x").asFloat() + object.at("width").asFloat() / 2, object.at("y").asFloat() + object.at("height").asFloat() / 2));
+		newObject->setPosition(Vec2(
+			object.at(GeneralKeys::XPosition).asFloat() + object.at(GeneralKeys::Width).asFloat() / 2.0f,
+			object.at(GeneralKeys::YPosition).asFloat() + object.at(GeneralKeys::Height).asFloat() / 2.0f)
+		);
+
 		layer->addChild(newObject);
 	}
 
@@ -82,7 +86,7 @@ Layer* ObjectParser::parse(TMXObjectGroup* objectGroup)
 
 Sprite* ObjectParser::loadObject(ValueMap object)
 {
-	std::string type = object.at("type").asString();
+	std::string type = object.at(GeneralKeys::Type).asString();
 
 	// For decor, simply grab the resource of the same name of the object type
 	Sprite* newObject = Sprite::create("Decor/" + type + ".png");
@@ -92,10 +96,10 @@ Sprite* ObjectParser::loadObject(ValueMap object)
 		throw std::invalid_argument("Non-existant decor");
 	}
 
-	float width = object.at("width").asFloat();
-	float height = object.at("height").asFloat();
-	float x = object.at("x").asFloat() + width / 2.0f;
-	float y = object.at("y").asFloat() + height / 2.0f;
+	float width = object.at(GeneralKeys::Width).asFloat();
+	float height = object.at(GeneralKeys::Height).asFloat();
+	float x = object.at(GeneralKeys::XPosition).asFloat() + width / 2.0f;
+	float y = object.at(GeneralKeys::YPosition).asFloat() + height / 2.0f;
 
 	// Scale decor based on rectangle size (only using height for simplicity)
 	newObject->setScale(height / newObject->getContentSize().height);
@@ -104,9 +108,9 @@ Sprite* ObjectParser::loadObject(ValueMap object)
 	newObject->setAnchorPoint(Vec2(0.0f, 1.0f));
 	newObject->setPosition(Vec2(x - width / 2.0f, y + height / 2.0f));
 
-	if (GameUtils::keyExists(object, "rotation"))
+	if (GameUtils::keyExists(object, GeneralKeys::Rotation))
 	{
-		float rotation = object.at("rotation").asFloat();
+		float rotation = object.at(GeneralKeys::Rotation).asFloat();
 		newObject->setRotation(rotation);
 	}
 

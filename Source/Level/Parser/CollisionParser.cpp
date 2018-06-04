@@ -15,45 +15,45 @@ Layer* CollisionParser::parse(TMXObjectGroup* objectGroup)
 		ValueMap object = collisionObjects[index].asValueMap();
 		ValueVector* polygonPoints = nullptr;
 
-		if (!GameUtils::keyExists(object, "type") ||
-			!GameUtils::keyExists(object, "width") ||
-			!GameUtils::keyExists(object, "height") ||
-			!GameUtils::keyExists(object, "x") ||
-			!GameUtils::keyExists(object, "y"))
+		if (!GameUtils::keyExists(object, CollisionKeys::CollisionTypeProperty) ||
+			!GameUtils::keyExists(object, GeneralKeys::Width) ||
+			!GameUtils::keyExists(object, GeneralKeys::Height) ||
+			!GameUtils::keyExists(object, GeneralKeys::XPosition) ||
+			!GameUtils::keyExists(object, GeneralKeys::YPosition))
 		{
 			CCLOG("Missing properties on collision object");
 			continue;
 		}
 
-		std::string type = object.at("type").asString();
+		std::string type = object.at(CollisionKeys::CollisionTypeProperty).asString();
 		bool isPolygon = false;
-		float width = object.at("width").asFloat();
-		float height = object.at("height").asFloat();
-		float x = object.at("x").asFloat() + width / 2.0f;
-		float y = object.at("y").asFloat() + height / 2.0f;
+		float width = object.at(GeneralKeys::Width).asFloat();
+		float height = object.at(GeneralKeys::Height).asFloat();
+		float x = object.at(GeneralKeys::XPosition).asFloat() + width / 2.0f;
+		float y = object.at(GeneralKeys::YPosition).asFloat() + height / 2.0f;
 
-		if (GameUtils::keyExists(object, "points"))
+		if (GameUtils::keyExists(object, CollisionKeys::CollisionPointsProperty))
 		{
 			isPolygon = true;
-			polygonPoints = &(object.at("points").asValueVector());
+			polygonPoints = &(object.at(CollisionKeys::CollisionPointsProperty).asValueVector());
 		}
 
 		CollisionObject* collisionBox = new CollisionObject();
 		CategoryGroup collisionGroup = CategoryGroup::G_None;
 
-		if (type == "solid")
+		if (type == CollisionKeys::CollisionTypeSolid)
 		{
 			collisionGroup = CategoryGroup::G_Solid;
 		}
-		else if (type == "water")
+		else if (type == CollisionKeys::CollisionTypeWater)
 		{
 			collisionGroup = CategoryGroup::G_Water;
 		}
-		else if (type == "npc")
+		else if (type == CollisionKeys::CollisionTypeSolidNpc)
 		{
 			collisionGroup = CategoryGroup::G_SolidNpc;
 		}
-		else if (type == "npc-flying")
+		else if (type == CollisionKeys::CollisionTypeSolidNpcFlying)
 		{
 			collisionGroup = CategoryGroup::G_SolidFlyingNpc;
 		}
@@ -72,8 +72,8 @@ Layer* CollisionParser::parse(TMXObjectGroup* objectGroup)
 			{
 				auto point = it->asValueMap();
 
-				float deltaX = point.at("x").asFloat();
-				float deltaY = point.at("y").asFloat();
+				float deltaX = point.at(GeneralKeys::XPosition).asFloat();
+				float deltaY = point.at(GeneralKeys::YPosition).asFloat();
 
 				points[index++] = Vec2(x + deltaX, y - deltaY);
 			}
