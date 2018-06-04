@@ -320,6 +320,10 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="Source\Level\Parser\DecorParser.cpp" />
     <ClCompile Include="Source\Level\Parser\EntityParser.cpp" />
     <ClCompile Include="Source\Level\Parser\EnvironmentParser.cpp" />
+    <ClCompile Include="Source\Level\Parser\Keys\CollisionKeys.cpp" />
+    <ClCompile Include="Source\Level\Parser\Keys\EntityKeys.cpp" />
+    <ClCompile Include="Source\Level\Parser\Keys\EnvironmentKeys.cpp" />
+    <ClCompile Include="Source\Level\Parser\Keys\GeneralKeys.cpp" />
     <ClCompile Include="Source\Level\Parser\ObjectParser.cpp" />
     <ClCompile Include="Source\Level\Parser\ParallaxParser.cpp" />
     <ClCompile Include="Source\Level\Parser\Parser.cpp" />
@@ -542,6 +546,10 @@ xcopy "$(ProjectDir)Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="Source\Level\Parser\DecorParser.h" />
     <ClInclude Include="Source\Level\Parser\EntityParser.h" />
     <ClInclude Include="Source\Level\Parser\EnvironmentParser.h" />
+    <ClInclude Include="Source\Level\Parser\Keys\CollisionKeys.h" />
+    <ClInclude Include="Source\Level\Parser\Keys\EntityKeys.h" />
+    <ClInclude Include="Source\Level\Parser\Keys\EnvironmentKeys.h" />
+    <ClInclude Include="Source\Level\Parser\Keys\GeneralKeys.h" />
     <ClInclude Include="Source\Level\Parser\ObjectParser.h" />
     <ClInclude Include="Source\Level\Parser\ParallaxParser.h" />
     <ClInclude Include="Source\Level\Parser\Parser.h" />
