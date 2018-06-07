@@ -288,6 +288,10 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Engine/Rendering\Components\UILayer.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\HUD\HackerModeHud.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\HUD\Hud.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\CollisionKeys.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\EntityKeys.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\EnvironmentKeys.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\GeneralKeys.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Confirmation\ConfirmationMenu.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Dialog\DialogMenu.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.cpp" />
@@ -508,6 +512,10 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Engine/Rendering\Components\UILayer.h" />
     <ClInclude Include="..\Source\Engine/Rendering\HUD\HackerModeHud.h" />
     <ClInclude Include="..\Source\Engine/Rendering\HUD\Hud.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\CollisionKeys.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\EntityKeys.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\EnvironmentKeys.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\GeneralKeys.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Confirmation\ConfirmationMenu.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Dialog\DialogMenu.h" />
     <ClInclude Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.h" />

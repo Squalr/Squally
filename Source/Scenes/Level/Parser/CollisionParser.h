@@ -5,6 +5,9 @@
 #include "Resources.h"
 #include "Utils/GameUtils.h"
 
+#include "Keys/CollisionKeys.h"
+#include "Keys/GeneralKeys.h"
+
 using namespace cocos2d;
 
 class CollisionParser

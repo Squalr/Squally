@@ -154,6 +154,9 @@
     <Filter Include="Source\Engine\Rendering\Shaders">
       <UniqueIdentifier>{2e9ff4e8-254e-4582-b2f9-f801a48d1ff2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Scenes\Level\Parser\Keys">
+      <UniqueIdentifier>{6eba8a91-5a58-4f2f-a137-2a72870f1f4c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Entities\Entity.cpp">
@@ -167,18 +170,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\Pause\PauseMenu.cpp">
       <Filter>Source\Scenes\Menus\Pause</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\Components\InfiniteParallaxNode.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\Components\MenuSprite.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\Components\FloatingSprite.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\Components\Mouse.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Engine\Sound\SoundManager.cpp">
       <Filter>Source\Engine\Sound</Filter>
@@ -207,9 +198,6 @@
     <ClCompile Include="..\Source\Scenes\Menus\Confirmation\ConfirmationMenu.cpp">
       <Filter>Source\Scenes\Menus\Confirmation</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\Components\FadeScene.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Engine\Input\InputManager.cpp">
       <Filter>Source\Engine\Input</Filter>
     </ClCompile>
@@ -230,9 +218,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Level\Environments\JungleEnvironment.cpp">
       <Filter>Source\Scenes\Level\Environments</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\Components\MenuLabel.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\Title\TitleScreenBackground.cpp">
       <Filter>Source\Scenes\Menus\Title</Filter>
@@ -285,29 +270,11 @@
     <ClCompile Include="..\Source\Utils\HackUtils.cpp">
       <Filter>Source\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\Components\MouseOverPanel.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.cpp">
       <Filter>Source\Scenes\Menus\HackerMode</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\Components\CRadioButton.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\Components\CSlider.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Utils\StrUtils.cpp">
       <Filter>Source\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\Components\TextWindow.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\Components\EditableTextWindow.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\Components\CCheckbox.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Entities\Npcs\Knight.cpp">
       <Filter>Source\Entities\Npcs</Filter>
@@ -315,14 +282,8 @@
     <ClCompile Include="..\Source\Scenes\Level\Parser\Parser.cpp">
       <Filter>Source\Scenes\Level\Parser</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\HUD\HackerModeHud.cpp">
-      <Filter>Source\Engine\Rendering\HUD</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Entities\Npcs\NpcBase.cpp">
       <Filter>Source\Entities\Npcs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\HUD\Hud.cpp">
-      <Filter>Source\Engine\Rendering\HUD</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Card.cpp">
       <Filter>Source\Scenes\Minigames\Hexus</Filter>
@@ -428,9 +389,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\LoadingScreen\LoadingScreen.cpp">
       <Filter>Source\Scenes\Menus\LoadingScreen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\Components\CProgressBar.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Entities\Enemies\Castle\BossWitch.cpp">
       <Filter>Source\Entities\Enemies\Castle</Filter>
@@ -777,19 +735,10 @@
     <ClCompile Include="..\Source\Events\PauseEvents.cpp">
       <Filter>Source\Events</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\Components\UILayer.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Scenes\Level\Level.cpp">
       <Filter>Source\Scenes\Level</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="..\Source\Engine\Rendering\Shaders\ShaderUtils.cpp">
-      <Filter>Source\Engine\Rendering\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\Shaders\PostProcess.cpp">
-      <Filter>Source\Engine\Rendering\Shaders</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Engine\Save\SaveManager.cpp">
       <Filter>Source\Engine\Save</Filter>
     </ClCompile>
@@ -804,6 +753,36 @@
     </ClCompile>
     <ClCompile Include="..\Source\Window.cpp">
       <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine/Rendering\Components\CProgressBar.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\EditableTextWindow.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\FadeScene.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\FloatingSprite.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\InfiniteParallaxNode.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\MenuLabel.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\MouseOverPanel.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\MenuSprite.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\Mouse.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\CRadioButton.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\CSlider.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\TextWindow.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\CCheckbox.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\UILayer.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\HUD\HackerModeHud.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\HUD\Hud.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Shaders\PostProcess.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\CollisionKeys.cpp">
+      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\EntityKeys.cpp">
+      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\EnvironmentKeys.cpp">
+      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\GeneralKeys.cpp">
+      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -821,18 +800,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\Pause\PauseMenu.h">
       <Filter>Source\Scenes\Menus\Pause</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Components\MenuSprite.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Components\InfiniteParallaxNode.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Components\FloatingSprite.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Components\Mouse.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Engine\Sound\SoundManager.h">
       <Filter>Source\Engine\Sound</Filter>
@@ -864,9 +831,6 @@
     <ClInclude Include="..\Source\Scenes\Menus\Confirmation\ConfirmationMenu.h">
       <Filter>Source\Scenes\Menus\Confirmation</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Components\FadeScene.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Entities\Player\Player.h">
       <Filter>Source\Entities\Player</Filter>
     </ClInclude>
@@ -887,9 +851,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Entities\Entities.h">
       <Filter>Source\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Components\MenuLabel.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\Dialog\DialogMenu.h">
       <Filter>Source\Scenes\Menus\Dialog</Filter>
@@ -945,29 +906,11 @@
     <ClInclude Include="..\Source\Utils\HackUtils.h">
       <Filter>Source\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Components\MouseOverPanel.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.h">
       <Filter>Source\Scenes\Menus\HackerMode</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Components\CRadioButton.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Components\CSlider.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Utils\StrUtils.h">
       <Filter>Source\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Components\TextWindow.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Components\EditableTextWindow.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Components\CCheckbox.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Minigames\Minigames.h">
       <Filter>Source\Scenes\Minigames</Filter>
@@ -978,14 +921,8 @@
     <ClInclude Include="..\Source\Scenes\Level\Parser\Parser.h">
       <Filter>Source\Scenes\Level\Parser</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\HUD\HackerModeHud.h">
-      <Filter>Source\Engine\Rendering\HUD</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Entities\Npcs\NpcBase.h">
       <Filter>Source\Entities\Npcs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\HUD\Hud.h">
-      <Filter>Source\Engine\Rendering\HUD</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Hexus.h">
       <Filter>Source\Scenes\Minigames\Hexus</Filter>
@@ -1097,9 +1034,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\LoadingScreen\LoadingScreen.h">
       <Filter>Source\Scenes\Menus\LoadingScreen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Components\CProgressBar.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Entities\Enemies\Castle\BossWitch.h">
       <Filter>Source\Entities\Enemies\Castle</Filter>
@@ -1452,9 +1386,6 @@
     <ClInclude Include="..\Source\Events\PauseEvents.h">
       <Filter>Source\Events</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Components\UILayer.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
     <ClInclude Include="Main.h" />
     <ClInclude Include="..\Source\Input\InputManager.h">
       <Filter>Source\Engine\Input</Filter>
@@ -1474,11 +1405,35 @@
     <ClInclude Include="..\Source\Config\ConfigManager.h">
       <Filter>Source\Config</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Shaders\PostProcess.h">
-      <Filter>Source\Engine\Rendering\Shaders</Filter>
+    <ClInclude Include="..\Source\Engine/Rendering\Components\CProgressBar.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\EditableTextWindow.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\FadeScene.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\FloatingSprite.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\InfiniteParallaxNode.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\MenuLabel.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\MouseOverPanel.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\MenuSprite.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\Mouse.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\CRadioButton.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\CSlider.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\TextWindow.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\CCheckbox.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\UILayer.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\HUD\HackerModeHud.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\HUD\Hud.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Shaders\PostProcess.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\CollisionKeys.h">
+      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Shaders\ShaderUtils.h">
-      <Filter>Source\Engine\Rendering\Shaders</Filter>
+    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\EntityKeys.h">
+      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\EnvironmentKeys.h">
+      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\GeneralKeys.h">
+      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

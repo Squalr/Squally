@@ -6,6 +6,8 @@
 #include "Utils/GameUtils.h"
 
 #include "ObjectParser.h"
+#include "Keys/GeneralKeys.h"
+#include "Keys/EntityKeys.h"
 
 using namespace cocos2d;
 
