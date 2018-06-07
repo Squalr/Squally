@@ -7,6 +7,9 @@
 #include "Scenes/Level/Environments/Environments.h"
 #include "Utils/GameUtils.h"
 
+#include "Keys/EnvironmentKeys.h"
+#include "Keys/GeneralKeys.h"
+
 using namespace cocos2d;
 
 class EnvironmentParser
