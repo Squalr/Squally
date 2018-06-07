@@ -1,9 +1,10 @@
 #pragma once
 #include "cocos2d.h"
-#include "Resources.h"
+
 #include "Entities/Entity.h"
 #include "Entities/Npcs/NpcBase.h"
 #include "Objects/Collision/CategoryGroup.h"
+#include "Resources.h"
 
 using namespace cocos2d;
 

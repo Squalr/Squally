@@ -1,9 +1,10 @@
 #pragma once
 #include "cocos2d.h"
-#include "Resources.h"
-#include "Objects/Hackables/HackableObject.h"
+
 #include "Objects/Collision/CategoryGroup.h"
-#include "Level/LevelCamera.h"
+#include "Objects/Hackables/HackableObject.h"
+#include "Resources.h"
+#include "Scenes/Level/LevelCamera.h"
 
 using namespace cocos2d;
 

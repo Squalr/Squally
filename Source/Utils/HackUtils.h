@@ -1,8 +1,9 @@
 #pragma once
 #include <bitset>
+
 #include "cocos2d.h"
-#include "udis86.h"
 #include "fasm.h"
+#include "udis86.h"
 
 using namespace cocos2d;
 
