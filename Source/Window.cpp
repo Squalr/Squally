@@ -46,9 +46,9 @@ bool Window::applicationDidFinishLaunching()
 	director->setOpenGLView(glView);
 	glView->setCursorVisible(false);
 
-	// Start the game
-	Game* game = Game::create();
-	game->retain();
+	// Start the Window
+	SceneDirector* Window = SceneDirector::create();
+	Window->retain();
 
 	return true;
 }

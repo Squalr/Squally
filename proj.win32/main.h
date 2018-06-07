@@ -4,5 +4,7 @@
 #include <windows.h>			// Windows header files
 #include <tchar.h>				// Windows header files
 #include "platform/CCStdC.h"	// C RunTime header files
-#include "../Source/Window.h"
-#include "cocos2d.h"
+
+#include "cocos2d.h"  // Vendor headers
+
+#include "Source/Window.h" // Application headers

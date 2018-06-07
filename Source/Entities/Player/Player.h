@@ -1,12 +1,13 @@
 #pragma once
+#include <mutex>
 #include "cocos2d.h"
-#include "Resources.h"
+
+#include "Engine/Input/InputManager.h"
 #include "Entities/Entity.h"
 #include "Entities/Player/Hover.h"
 #include "Events/NavigationEvents.h"
 #include "Objects/Collision/CategoryGroup.h"
-#include "Input/InputManager.h"
-#include <mutex>
+#include "Resources.h"
 
 using namespace cocos2d;
 

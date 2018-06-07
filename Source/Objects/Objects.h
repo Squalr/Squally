@@ -1,7 +1,7 @@
 #pragma once
-#include "Objects/ParallaxObject.h"
-#include "Objects/Interactables/Plushies/Plushies.h"
-#include "Objects/Interactables/Monitor.h"
-#include "Objects/Interactables/WarpGate.h"
-#include "Objects/Interactables/WarpGateExactScanTutorial.h"
-#include "Objects/Interactables/Wind.h"
+#include "ParallaxObject.h"
+#include "Interactables/Plushies/Plushies.h"
+#include "Interactables/Monitor.h"
+#include "Interactables/WarpGate.h"
+#include "Interactables/WarpGateExactScanTutorial.h"
+#include "Interactables/Wind.h"

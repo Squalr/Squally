@@ -1,9 +1,11 @@
 #pragma once
 #include "cocos2d.h"
-#include "Resources.h"
-#include "GUI/Components/MenuSprite.h"
-#include "Objects/Hackables/HackableData.h"
+
 #include "Events/HackableEvents.h"
+#include "Engine/Rendering/Components/MenuSprite.h"
+#include "Resources.h"
+
+#include "HackableData.h"
 
 using namespace cocos2d;
 
