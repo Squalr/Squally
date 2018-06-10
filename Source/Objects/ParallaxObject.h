@@ -1,10 +1,11 @@
 #pragma once
 #include "cocos2d.h"
 #include "Level/LevelCamera.h"
+#include "SerializableObject.h"
 
 using namespace cocos2d;
 
-class ParallaxObject : public Node
+class ParallaxObject : public SerializableObject
 {
 public:
 	static ParallaxObject* create(Node* parallaxChild, Vec2 parallaxPosition, Vec2 parallaxSpeed);

@@ -813,6 +813,12 @@
     <ClCompile Include="Source\Level\Parser\Keys\GeneralKeys.cpp">
       <Filter>Source\Level\Parser\Keys</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Objects\SerializableObject.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\SerializableLayer.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Game.h">
@@ -1501,6 +1507,12 @@
     </ClInclude>
     <ClInclude Include="Source\Level\Parser\Keys\GeneralKeys.h">
       <Filter>Source\Level\Parser\Keys</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\SerializableObject.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\SerializableLayer.h">
+      <Filter>Source\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

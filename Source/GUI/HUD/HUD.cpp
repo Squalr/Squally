@@ -2,11 +2,11 @@
 
 Hud* Hud::create()
 {
-	Hud* hud = new Hud();
+	Hud* instance = new Hud();
 
-	hud->autorelease();
+	instance->autorelease();
 
-	return hud;
+	return instance;
 }
 
 Hud::Hud()

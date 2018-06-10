@@ -12,6 +12,11 @@ std::string StrUtils::toStringZeroPad(int value, int zeroCount)
 	return result;
 }
 
+std::string StrUtils::quote(std::string value)
+{
+	return "\"" + value + "\"";
+}
+
 std::vector<std::string>* StrUtils::tokenize(std::string str, std::string delimiters)
 {
 	std::vector<std::string>* tokens = new std::vector<std::string>();

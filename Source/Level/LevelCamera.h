@@ -29,6 +29,7 @@ public:
 private:
 	LevelCamera();
 	~LevelCamera();
+	void onEnter() override;
 	void update(float dt) override;
 
 	std::stack<Node*>* targetStack;

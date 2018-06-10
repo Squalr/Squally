@@ -52,6 +52,13 @@ MatrixStrand::~MatrixStrand()
 	delete(this->letters);
 }
 
+void MatrixStrand::onEnter()
+{
+	Node::onEnter();
+
+	this->scheduleUpdate();
+}
+
 void MatrixStrand::pause()
 {
 	// Ignore pause

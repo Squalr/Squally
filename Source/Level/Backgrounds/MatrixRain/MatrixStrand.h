@@ -14,6 +14,7 @@ private:
 	MatrixStrand(int strandIndex);
 	~MatrixStrand();
 
+	void onEnter() override;
 	void update(float) override;
 	virtual void pause(void) override;
 

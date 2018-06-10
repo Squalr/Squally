@@ -22,13 +22,18 @@ LevelCamera::LevelCamera()
 	this->targetStack = new std::stack<Node*>();
 	this->cameraScrollOffset = Vec2::ZERO;
 	this->cameraBounds = Rect::ZERO;
-
-	this->scheduleUpdate();
 }
 
 LevelCamera::~LevelCamera()
 {
 	delete(this->targetStack);
+}
+
+void LevelCamera::onEnter()
+{
+	Node::onEnter();
+
+	this->scheduleUpdate();
 }
 
 void LevelCamera::update(float dt)

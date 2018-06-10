@@ -12,6 +12,7 @@ public:
 	static std::vector<std::string>* tokenize(std::string str, std::string delimiters);
 	static std::vector<std::string>* splitOn(std::string str, std::string delimiter);
 	static std::string toStringZeroPad(int value, int zeroCount);
+	static std::string quote(std::string value);
 	static bool isInteger(std::string str);
 	static bool isFloat(std::string str);
 	static bool isHexNumber(std::string str);

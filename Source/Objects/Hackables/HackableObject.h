@@ -4,10 +4,11 @@
 #include "GUI/Components/MenuSprite.h"
 #include "Objects/Hackables/HackableData.h"
 #include "Events/HackableEvents.h"
+#include "../SerializableObject.h"
 
 using namespace cocos2d;
 
-class HackableObject : public Node
+class HackableObject : public SerializableObject
 {
 public:
 
