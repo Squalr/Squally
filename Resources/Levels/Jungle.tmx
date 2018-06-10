@@ -463,7 +463,7 @@
   </object>
  </objectgroup>
  <objectgroup name="ENTITIES_entities">
-  <object id="72" name="spawn" type="spawn" x="1920.15" y="21311" width="128" height="128"/>
+  <object id="72" name="spawn" type="spawn" x="133.847" y="6306.64" width="128" height="128"/>
   <object id="180" name="knight" type="knight" x="342.06" y="758.727" width="200" height="288"/>
   <object id="222" name="boss_rhinoman" type="boss_rhinoman" x="6169.82" y="6688" width="196" height="196">
    <properties>

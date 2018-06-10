@@ -12,6 +12,7 @@
 #include "Shaders/PostProcess.h"
 #include "GUI/HUD/Hud.h"
 #include "GUI/HUD/HackerModeHud.h"
+#include "GUI/HUD/DeveloperHud.h"
 #include "GUI/Components/FadeScene.h"
 #include "GUI/Components/InfiniteParallaxNode.h"
 #include "GUI/Components/Mouse.h"
@@ -40,6 +41,8 @@ private:
 	void initializeListeners();
 	void enableHackerMode();
 	void disableHackerMode();
+	void toggleDeveloperMode();
+	void onMouseWheelScroll(EventMouse* event);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) override;
 	virtual void resume(void) override;
@@ -56,9 +59,12 @@ private:
 
 	UILayer* uiLayer;
 	Hud* hud;
+	DeveloperHud* developerHud;
 	HackerModeHud* hackerModeHud;
 	Mouse* mouse;
+
 	LevelCamera* camera;
 
 	static bool hackerMode;
+	static bool developerMode;
 };

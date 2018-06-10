@@ -1,6 +1,7 @@
 #include "Level.h"
 
 bool Level::hackerMode = false;
+bool Level::developerMode = false;
 
 Level* Level::create()
 {
@@ -24,6 +25,7 @@ Level::Level()
 	this->hackerModeRain = MatrixRain::create();
 	this->hackerModePostProcessGlow = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_GrayBlur);
 	this->hud = Hud::create();
+	this->developerHud = DeveloperHud::create();
 	this->hackerModeHud = HackerModeHud::create();
 	this->gamePostProcessInversion = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_Inverse);
 	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
@@ -35,6 +37,10 @@ Level::Level()
 	this->camera->setScrollOffset(Vec2(64.0f, 32.0f));
 	this->camera->setFollowSpeed(Vec2(0.075f, 0.075f));
 
+	// Call disable to initialize hidden hackermode stuff
+	this->disableHackerMode();
+	this->developerHud->setVisible(false);
+
 	this->addChild(InputManager::claimInstance());
 	this->addChild(this->hackerModeBackground);
 	this->addChild(this->hackerModeRain);
@@ -44,6 +50,7 @@ Level::Level()
 	this->addChild(this->gamePostProcessNightVision);
 	this->addChild(this->uiLayer);
 	this->uiLayer->addChild(this->hud);
+	this->uiLayer->addChild(this->developerHud);
 	this->uiLayer->addChild(this->hackerModeHud);
 	this->uiLayer->addChild(this->mouse);
 	this->addChild(this->camera);
@@ -69,9 +76,12 @@ void Level::initializePositions()
 void Level::initializeListeners()
 {
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+	EventListenerMouse* mouseListener = EventListenerMouse::create();
 
 	listener->onKeyPressed = CC_CALLBACK_2(Level::onKeyPressed, this);
+	mouseListener->onMouseScroll = CC_CALLBACK_1(Level::onMouseWheelScroll, this);
 
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
@@ -101,6 +111,16 @@ void Level::update(float dt)
 	FadeScene::update(dt);
 }
 
+void Level::onMouseWheelScroll(EventMouse* event)
+{
+	if (this->developerMode)
+	{
+		float delta = event->getScrollY() * 64.0f;
+
+		Camera::getDefaultCamera()->setPositionZ(Camera::getDefaultCamera()->getPositionZ() + delta);
+	}
+}
+
 void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	if (!this->isRunning() || !this->isVisible())
@@ -115,22 +135,29 @@ void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		event->stopPropagation();
 		break;
 	case EventKeyboard::KeyCode::KEY_GRAVE:
-		if (this->getPhysicsWorld()->getDebugDrawMask() == PhysicsWorld::DEBUGDRAW_ALL)
-		{
-			this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
-			Director::getInstance()->setDisplayStats(false);
-		}
-		else
-		{
-			this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-			Director::getInstance()->setDisplayStats(true);
-		}
+		this->toggleDeveloperMode();
 		event->stopPropagation();
 		break;
 	case EventKeyboard::KeyCode::KEY_TAB:
 		this->enableHackerMode();
 		event->stopPropagation();
 		break;
+	}
+}
+
+void Level::toggleDeveloperMode()
+{
+	this->developerMode = !this->developerMode;
+
+	if (this->developerMode)
+	{
+		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+		Director::getInstance()->setDisplayStats(true);
+	}
+	else
+	{
+		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
+		Director::getInstance()->setDisplayStats(false);
 	}
 }
 

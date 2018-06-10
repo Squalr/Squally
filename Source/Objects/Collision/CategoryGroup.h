@@ -4,7 +4,7 @@
 
 using namespace cocos2d;
 
-const static enum CategoryGroup
+const enum CategoryGroup
 {
 	G_None = 0,
 	G_Solid = 1 << 1,
