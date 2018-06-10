@@ -1,8 +1,8 @@
 #include "EnvironmentParser.h"
 
-Layer* EnvironmentParser::parseBackground(TMXObjectGroup* objectGroup)
+SerializableLayer* EnvironmentParser::parseBackground(TMXObjectGroup* objectGroup)
 {
-	Layer* layer = Layer::create();
+	SerializableLayer* layer = SerializableLayer::create("");
 	ValueMap properties = objectGroup->getProperties();
 
 	if (GameUtils::keyExists(properties, EnvironmentKeys::BackgroundProperty))
@@ -34,9 +34,9 @@ Layer* EnvironmentParser::parseBackground(TMXObjectGroup* objectGroup)
 	return layer;
 }
 
-Layer* EnvironmentParser::parseWeather(TMXObjectGroup* objectGroup)
+SerializableLayer* EnvironmentParser::parseWeather(TMXObjectGroup* objectGroup)
 {
-	Layer* layer = Layer::create();
+	SerializableLayer* layer = SerializableLayer::create("");
 	ValueMap properties = objectGroup->getProperties();
 
 	if (GameUtils::keyExists(properties, EnvironmentKeys::WeatherProperty))

@@ -52,7 +52,7 @@ Level::Level()
 	this->addChild(this->mapNode);
 	this->addChild(this->gamePostProcessInversion);
 	this->addChild(this->gamePostProcessNightVision);
-	this->addChild(this->uiLayer);
+	this->camera->addChild(this->uiLayer);
 	this->uiLayer->addChild(this->hud);
 	this->uiLayer->addChild(this->developerHud);
 	this->uiLayer->addChild(this->hackerModeHud);
@@ -96,6 +96,8 @@ void Level::loadLevel(LevelMap* levelMap)
 	this->mapNode->removeAllChildren();
 	this->mapNode->addChild(this->map);
 
+	this->developerHud->loadLevel(levelMap);
+
 	this->camera->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
 	this->camera->setTarget(Player::getInstance());
 }
@@ -120,8 +122,7 @@ void Level::onMouseWheelScroll(EventMouse* event)
 	if (this->developerMode)
 	{
 		float delta = event->getScrollY() * 64.0f;
-
-		Camera::getDefaultCamera()->setPositionZ(Camera::getDefaultCamera()->getPositionZ() + delta);
+		this->camera->setCameraDistance(this->camera->getCameraDistance() + delta);
 	}
 }
 
@@ -155,11 +156,13 @@ void Level::toggleDeveloperMode()
 
 	if (this->developerMode)
 	{
+		this->developerHud->setVisible(true);
 		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 		Director::getInstance()->setDisplayStats(true);
 	}
 	else
 	{
+		this->developerHud->setVisible(false);
 		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
 		Director::getInstance()->setDisplayStats(false);
 	}

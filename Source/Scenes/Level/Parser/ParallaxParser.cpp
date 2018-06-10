@@ -1,8 +1,8 @@
 #include "ParallaxParser.h"
 
-Layer* ParallaxParser::parse(TMXObjectGroup* objectGroup)
+SerializableLayer* ParallaxParser::parse(TMXObjectGroup* objectGroup)
 {
-	Layer* layer = Layer::create();
+	SerializableLayer* layer = SerializableLayer::create("");
 	ValueVector objects = objectGroup->getObjects();
 
 	// Create objects

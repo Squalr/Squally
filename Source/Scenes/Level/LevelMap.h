@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Objects/Objects.h"
+#include "Objects/SerializableLayer.h"
 
 using namespace cocos2d;
 
@@ -10,8 +11,8 @@ class LevelMap : public Node
 public:
 	static LevelMap* create(std::string initLevelMapFileName, Size initMapSize);
 
-	void insertStaticMember(Node* node, bool hackerModeHidden);
-	void insertDynamicMember(Node* node, bool hackerModeHidden);
+	void insertStaticLayer(SerializableLayer* node, bool hackerModeHidden);
+	void insertDynamicLayer(SerializableLayer* node, bool hackerModeHidden);
 
 	void setPosition(const Vec2& position) override;
 	Size getMapSize();
@@ -28,7 +29,7 @@ private:
 	std::string levelMapFileName;
 	Size mapSize;
 
-	std::vector<Node*>* staticMembers;
-	std::vector<Node*>* dynamicMembers;
-	std::vector<Node*>* hackerModeHiddenMembers;
+	std::vector<SerializableLayer*>* staticMembers;
+	std::vector<SerializableLayer*>* dynamicMembers;
+	std::vector<SerializableLayer*>* hackerModeHiddenMembers;
 };

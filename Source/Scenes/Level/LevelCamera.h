@@ -15,6 +15,8 @@ public:
 	static LevelCamera* create();
 	static LevelCamera* getInstance();
 
+	float getCameraDistance();
+	void setCameraDistance(float distance);
 	Vec2 getCameraPosition();
 	void setCameraPosition(Vec2 position);
 	Vec2 getScrollOffset();
@@ -36,6 +38,7 @@ private:
 	void update(float dt) override;
 
 	std::stack<Node*>* targetStack;
+	float defaultDistance;
 	Vec2 cameraPosition;
 	Rect cameraBounds;
 	Vec2 cameraScrollOffset;

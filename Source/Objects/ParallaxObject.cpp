@@ -2,11 +2,11 @@
 
 ParallaxObject* ParallaxObject::create(Node* parallaxChild, Vec2 parallaxPosition, Vec2 parallaxSpeed)
 {
-	ParallaxObject* parallaxObject = new ParallaxObject(parallaxChild, parallaxPosition, parallaxSpeed);
+	ParallaxObject* instance = new ParallaxObject(parallaxChild, parallaxPosition, parallaxSpeed);
 
-	parallaxObject->autorelease();
+	instance->autorelease();
 
-	return parallaxObject;
+	return instance;
 }
 
 ParallaxObject::ParallaxObject(Node* parallaxChild, Vec2 parallaxPosition, Vec2 parallaxSpeed)
