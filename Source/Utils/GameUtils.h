@@ -1,7 +1,9 @@
 #pragma once
 #include "cocos2d.h"
-#include "Gui/Components/Mouse.h"
-#include "Utils/StrUtils.h"
+
+#include "Engine/Rendering/Components/Mouse.h"
+
+#include "StrUtils.h"
 
 using namespace cocos2d;
 

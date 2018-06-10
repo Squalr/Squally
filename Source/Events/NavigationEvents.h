@@ -1,9 +1,10 @@
 #pragma once
 #include "cocos2d.h"
-#include "Resources.h"
+
 #include "Entities/Player/Player.h"
 #include "Entities/Enemy.h"
-#include "Level/LevelMap.h"
+#include "Resources.h"
+#include "Scenes/Level/LevelMap.h"
 
 using namespace cocos2d;
 

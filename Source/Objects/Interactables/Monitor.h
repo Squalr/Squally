@@ -1,10 +1,12 @@
 #pragma once
 #include "cocos2d.h"
-#include "Objects/Collision/CollisionObject.h"
-#include "GUI/Components/FloatingSprite.h"
-#include "GUI/Components/MenuSprite.h"
-#include "GUI/Menus/Dialog/DialogMenu.h"
+
 #include "Events/DialogEvents.h"
+#include "Objects/Collision/CollisionObject.h"
+#include "Engine/Rendering/Components/FloatingSprite.h"
+#include "Engine/Rendering/Components/MenuSprite.h"
+#include "Scenes/Menus/Dialog/DialogMenu.h"
+
 
 using namespace cocos2d;
 

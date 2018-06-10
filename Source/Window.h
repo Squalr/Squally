@@ -1,8 +1,9 @@
 #pragma once
-#include "cocos2d.h"
-#include "Config\ConfigManager.h"
-#include "Game.h"
 #include "audio/include/AudioEngine.h"
+#include "cocos2d.h"
+
+#include "Config/ConfigManager.h"
+#include "Scenes/SceneDirector.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;

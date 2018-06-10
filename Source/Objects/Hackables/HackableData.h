@@ -1,7 +1,8 @@
 #pragma once
 #include "cocos2d.h"
-#include "Objects/Hackables/HackableAttribute.h"
-#include "Objects/Hackables/HackableCode.h"
+
+#include "HackableAttribute.h"
+#include "HackableCode.h"
 
 using namespace cocos2d;
 

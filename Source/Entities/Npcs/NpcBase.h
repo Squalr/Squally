@@ -1,10 +1,11 @@
 #pragma once
 #include "cocos2d.h"
-#include "Resources.h"
+
 #include "Entities/Entity.h"
-#include "Objects/Collision/CategoryGroup.h"
-#include "Minigames/Hexus/Hexus.h"
 #include "Events/HexusEvents.h"
+#include "Objects/Collision/CategoryGroup.h"
+#include "Resources.h"
+#include "Scenes/Minigames/Hexus/Hexus.h"
 
 using namespace cocos2d;
 

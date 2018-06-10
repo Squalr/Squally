@@ -14,6 +14,8 @@
     <ProjectGuid>{76A39BB2-9B84-4C65-98A5-654D86B86F2A}</ProjectGuid>
     <RootNamespace>test_win32</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <ProjectName>Squally</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -35,7 +37,7 @@
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0'">v141</PlatformToolset>
-    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v141_xp</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v141</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -56,8 +58,8 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration).win32\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration).win32\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
@@ -75,7 +77,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Libraries\Fasm;..\Libraries\RapidJson\include\rapidjson;..\Libraries\Udis86;$(EngineRoot);$(EngineRoot)external;..\cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Source;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -83,14 +85,14 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
       <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <AdditionalDependencies>libcurl.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Libraries\RapidJson;$(OutDir);%(AdditionalLibraryDirectories);..\Libraries\Fasm;$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
@@ -100,24 +102,30 @@
       </Command>
     </PostBuildEvent>
     <PreLinkEvent>
-      <Command></Command>
+      <Command>
+      </Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup>
     <CustomBuildStep>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
+xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
       </Command>
       <Outputs>$(TargetName).cab</Outputs>
       <Inputs>$(TargetFileName)</Inputs>
     </CustomBuildStep>
+    <Link>
+      <ImageHasSafeExceptionHandlers Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <ClCompile>
+      <ExceptionHandling Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Async</ExceptionHandling>
+    </ClCompile>
   </ItemDefinitionGroup>
-
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Libraries\Fasm;$(EngineRoot)Libraries\RapidJson;$(EngineRoot)Libraries\Udis86;$(EngineRoot);$(EngineRoot)external;$(EngineRoot)cocos\audio\include;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;Source;..;%(AdditionalIncludeDirectories);$(_COCOS_HEADER_WIN32_BEGIN);$(_COCOS_HEADER_WIN32_END)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -137,41 +145,494 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <PostBuildEvent>
       <Command>
       </Command>
     </PostBuildEvent>
     <PreLinkEvent>
-      <Command></Command>
+      <Command>
+      </Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\Source\Config\ConfigManager.cpp" />
+    <ClCompile Include="..\Source\Engine\Rendering\HUD\DeveloperHud.cpp" />
+    <ClCompile Include="..\Source\Engine\Sound\SoundManager.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Castle\BossWitch.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Castle\Executioner.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Castle\Ghost.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Castle\Guard.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Castle\Harpy.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Castle\Jack.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Castle\Reaper.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Castle\SkeletonMage.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Castle\VampireLord.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Castle\Vampiress.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Castle\Zombie.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Caverns\BlackWidow.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Caverns\BossKrampus.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Caverns\EarthElemental.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Caverns\EarthGolem.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Caverns\ForestGolem.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Caverns\Genie.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Caverns\RockGolem.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Caverns\Shaman.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Caverns\SkeletonArcher.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Caverns\SkeletonNecromancer.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Caverns\SkeletonWarrior.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Forest\GoblinGuard.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Forest\GoblinGruntBoar.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Forest\BossDragonOrcKing.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Forest\Cyclops.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Forest\Ent.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Forest\GoblinShaman.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Forest\EntMage.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Forest\OrcGrunt.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Forest\OrcWarrior.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Forest\GoblinWarriorPig.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Forest\Troll.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Jungle\GoblinGrunt.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Jungle\BossRhinoman.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Jungle\GoblinSwordsman.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Jungle\GoblinWarrior.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Jungle\JungleDragon.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Jungle\TikiGolem.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Jungle\Mantis.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Jungle\Minotaur.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Jungle\PigDemon.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Jungle\PurpleDinosaur.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Jungle\TikiWarrior.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Mech\MechBoxDrone.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Mech\Robot.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Mech\BossEvilEye.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Mech\MechGolemDark.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Mech\Exterminator.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Mech\MechGuard.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Mech\MechDog.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Mech\MechGolem.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Mech\MiteBot.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Mech\VikingBot.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Mech\VikingBotSmall.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\Abomination.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\BossSkeletonKing.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\DarkDragon.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\BatDemon.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\DemonArcher.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\SkeletonBaron.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\SkeletonCleaver.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\SkeletonKnight.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\SkeletonPriestess.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\Undead.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\VoidDemon.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Ruins\AnubisWarrior.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Ruins\BossEgyptianGoddess.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Ruins\Lioness.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Ruins\LionMan.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Ruins\AnubisTiny.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Ruins\Medusa.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Ruins\MedusaSmall.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Ruins\Mermaid.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Ruins\MummyPharaoh.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Ruins\TigerMan.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Ruins\Tigress.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Snow\BossIceGolem.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Snow\BossSanta.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Snow\EvilSnowman.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Snow\FrostDragon.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Snow\FrostShooter.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Snow\GoblinElf.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Snow\IceGolem.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Snow\ToySoldierGoblin.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Snow\WaterElemental.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Snow\TinyIceGolem.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Snow\Yeti.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Snow\YetiWarrior.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Volcano\BossDemonKing.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Volcano\CritterDemon.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Volcano\DemonSwordsman.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Volcano\DemonRogue.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Volcano\DemonShaman.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Volcano\DemonWarrior.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Volcano\DemonGhost.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Volcano\FireElemental.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Volcano\DemonGrunt.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Volcano\DemonDragon.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemies\Volcano\LavaGolem.cpp" />
+    <ClCompile Include="..\Source\Entities\Enemy.cpp" />
+    <ClCompile Include="..\Source\Entities\Entity.cpp" />
+    <ClCompile Include="..\Source\Entities\Npcs\Knight.cpp" />
+    <ClCompile Include="..\Source\Entities\Npcs\NpcBase.cpp" />
+    <ClCompile Include="..\Source\Entities\Player\Hover.cpp" />
+    <ClCompile Include="..\Source\Entities\Player\Player.cpp" />
+    <ClCompile Include="..\Source\Events\DialogEvents.cpp" />
+    <ClCompile Include="..\Source\Events\HackableEvents.cpp" />
+    <ClCompile Include="..\Source\Events\HexusEvents.cpp" />
+    <ClCompile Include="..\Source\Events\NavigationEvents.cpp" />
+    <ClCompile Include="..\Source\Events\MouseEvents.cpp" />
+    <ClCompile Include="..\Source\Events\PauseEvents.cpp" />
+    <ClCompile Include="..\Source\Objects\SerializableLayer.cpp" />
+    <ClCompile Include="..\Source\Objects\SerializableObject.cpp" />
+    <ClCompile Include="..\Source\Scenes\Fight\Fight.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\CProgressBar.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\EditableTextWindow.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\FadeScene.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\FloatingSprite.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\InfiniteParallaxNode.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\MenuLabel.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\MouseOverPanel.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\MenuSprite.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\Mouse.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\CRadioButton.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\CSlider.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\TextWindow.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\CCheckbox.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Components\UILayer.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\HUD\HackerModeHud.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\HUD\Hud.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\CollisionKeys.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\EntityKeys.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\EnvironmentKeys.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\GeneralKeys.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\Confirmation\ConfirmationMenu.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\Dialog\DialogMenu.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\HackerMode\RadialMenu.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\LoadingScreen\LoadingScreen.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\Options\OptionsMenu.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\Pause\PauseMenu.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\MenuBackground.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\Story\MapNode.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\Story\StoryMap.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\Title\HackerMode.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\Title\TitleScreen.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\Title\TitleScreenBackground.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\Tutorial\TutorialItem.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\Tutorial\TutorialScreen.cpp" />
+    <ClCompile Include="..\Source\Engine\Input\InputManager.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\JungleBackground.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixLetter.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixRain.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixStrand.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\MountainBackground.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\OceanBackground.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\SnowBackground.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Environments\JungleEnvironment.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Environments\SnowEnvironment.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\LevelCamera.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\LevelEditor.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\LevelMap.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\CollisionParser.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\DecorParser.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\EntityParser.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\EnvironmentParser.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\ObjectParser.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\ParallaxParser.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\Parser.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Parser\TileParser.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Card.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\CardData.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\CardStorage.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\Avatars.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\Banners.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\CardPreview.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\CoinFlip.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ComponentBase.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ControlDraw.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ControlEndTurn.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ControlNeutral.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ControlReplaceCards.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ControlSacrificeStaged.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ControlSelectionStaged.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\DeckCardCountDisplay.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\HandCardCountDisplay.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\LossesDisplay.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\RowTotals.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ScoreTotal.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Config.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Deck.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\CardRow.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\GameState.cpp" />
+    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Hexus.cpp" />
+    <ClCompile Include="..\Source\Objects\Collision\CollisionObject.cpp" />
+    <ClCompile Include="..\Source\Objects\Hackables\HackableAttribute.cpp" />
+    <ClCompile Include="..\Source\Objects\Hackables\HackableCode.cpp" />
+    <ClCompile Include="..\Source\Objects\Hackables\HackableData.cpp" />
+    <ClCompile Include="..\Source\Objects\Hackables\HackableObject.cpp" />
+    <ClCompile Include="..\Source\Objects\Interactables\Chest.cpp" />
+    <ClCompile Include="..\Source\Objects\Interactables\Monitor.cpp" />
+    <ClCompile Include="..\Source\Objects\Interactables\Plushies\Plushie.cpp" />
+    <ClCompile Include="..\Source\Objects\Interactables\Plushies\PlushieMonkey.cpp" />
+    <ClCompile Include="..\Source\Objects\Interactables\WarpGate.cpp" />
+    <ClCompile Include="..\Source\Objects\Interactables\WarpGateExactScanTutorial.cpp" />
+    <ClCompile Include="..\Source\Objects\Interactables\Wind.cpp" />
+    <ClCompile Include="..\Source\Objects\ParallaxObject.cpp" />
+    <ClCompile Include="..\Source\Objects\Projectiles\EggProjectile.cpp" />
+    <ClCompile Include="..\Source\Engine\Save\SaveManager.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Shaders\PostProcess.cpp" />
+    <ClCompile Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.cpp" />
+    <ClCompile Include="..\Source\Utils\HackUtils.cpp" />
+    <ClCompile Include="..\Source\Utils\MathUtils.cpp" />
+    <ClCompile Include="..\Source\Utils\StrUtils.cpp" />
+    <ClCompile Include="..\Source\Utils\GameUtils.cpp" />
+    <ClCompile Include="..\Source\Window.cpp" />
+    <ClCompile Include="..\Source\Scenes\SceneDirector.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Level.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="..\Source\Resources.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Classes\AppDelegate.h" />
-    <ClInclude Include="..\Classes\HelloWorldScene.h" />
-    <ClInclude Include="main.h" />
+    <ClInclude Include="..\Source\Config\ConfigManager.h" />
+    <ClInclude Include="..\Source\Engine\Rendering\HUD\DeveloperHud.h" />
+    <ClInclude Include="..\Source\Engine\Sound\SoundManager.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Castle\BossWitch.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Castle\Executioner.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Castle\Ghost.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Castle\Guard.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Castle\Harpy.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Castle\Jack.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Castle\Reaper.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Castle\SkeletonMage.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Castle\VampireLord.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Castle\Vampiress.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Castle\Zombie.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Caverns\BlackWidow.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Caverns\BossKrampus.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Caverns\EarthElemental.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Caverns\EarthGolem.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Caverns\ForestGolem.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Caverns\Genie.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Caverns\RockGolem.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Caverns\Shaman.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Caverns\SkeletonArcher.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Caverns\SkeletonNecromancer.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Caverns\SkeletonWarrior.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Forest\GoblinGuard.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Forest\GoblinGruntBoar.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Forest\BossDragonOrcKing.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Forest\Cyclops.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Forest\Ent.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Forest\GoblinShaman.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Forest\EntMage.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Forest\OrcGrunt.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Forest\OrcWarrior.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Forest\GoblinWarriorPig.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Forest\Troll.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Jungle\GoblinGrunt.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Jungle\BossRhinoman.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Jungle\GoblinSwordsman.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Jungle\GoblinWarrior.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Jungle\JungleDragon.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Jungle\TikiGolem.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Jungle\Mantis.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Jungle\Minotaur.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Jungle\PigDemon.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Jungle\PurpleDinosaur.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Jungle\TikiWarrior.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Mech\MechBoxDrone.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Mech\Robot.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Mech\BossEvilEye.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Mech\MechGolemDark.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Mech\Exterminator.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Mech\MechGuard.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Mech\MechDog.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Mech\MechGolem.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Mech\MiteBot.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Mech\VikingBot.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Mech\VikingBotSmall.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\Abomination.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\BossSkeletonKing.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\DarkDragon.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\BatDemon.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\DemonArcher.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\SkeletonBaron.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\SkeletonCleaver.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\SkeletonKnight.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\SkeletonPriestess.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\Undead.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\VoidDemon.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Ruins\AnubisWarrior.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Ruins\BossEgyptianGoddess.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Ruins\Lioness.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Ruins\LionMan.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Ruins\AnubisTiny.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Ruins\Medusa.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Ruins\MedusaSmall.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Ruins\Mermaid.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Ruins\MummyPharaoh.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Ruins\TigerMan.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Ruins\Tigress.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Snow\BossIceGolem.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Snow\BossSanta.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Snow\EvilSnowman.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Snow\FrostDragon.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Snow\FrostShooter.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Snow\GoblinElf.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Snow\IceGolem.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Snow\ToySoldierGoblin.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Snow\WaterElemental.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Snow\TinyIceGolem.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Snow\Yeti.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Snow\YetiWarrior.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Volcano\BossDemonKing.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Volcano\CritterDemon.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Volcano\DemonSwordsman.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Volcano\DemonRogue.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Volcano\DemonShaman.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Volcano\DemonWarrior.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Volcano\DemonGhost.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Volcano\FireElemental.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Volcano\DemonGrunt.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Volcano\DemonDragon.h" />
+    <ClInclude Include="..\Source\Entities\Enemies\Volcano\LavaGolem.h" />
+    <ClInclude Include="..\Source\Entities\Enemy.h" />
+    <ClInclude Include="..\Source\Entities\Entities.h" />
+    <ClInclude Include="..\Source\Entities\Entity.h" />
+    <ClInclude Include="..\Source\Entities\Npcs\Knight.h" />
+    <ClInclude Include="..\Source\Entities\Npcs\NpcBase.h" />
+    <ClInclude Include="..\Source\Entities\Player\Hover.h" />
+    <ClInclude Include="..\Source\Entities\Player\Player.h" />
+    <ClInclude Include="..\Source\Events\DialogEvents.h" />
+    <ClInclude Include="..\Source\Events\HackableEvents.h" />
+    <ClInclude Include="..\Source\Events\HexusEvents.h" />
+    <ClInclude Include="..\Source\Events\NavigationEvents.h" />
+    <ClInclude Include="..\Source\Events\MouseEvents.h" />
+    <ClInclude Include="..\Source\Events\PauseEvents.h" />
+    <ClInclude Include="..\Source\Objects\SerializableLayer.h" />
+    <ClInclude Include="..\Source\Objects\SerializableObject.h" />
+    <ClInclude Include="..\Source\Scenes\Fight\Fight.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\CProgressBar.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\EditableTextWindow.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\FadeScene.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\FloatingSprite.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\InfiniteParallaxNode.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\MenuLabel.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\MouseOverPanel.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\MenuSprite.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\Mouse.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\CRadioButton.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\CSlider.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\TextWindow.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\CCheckbox.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Components\UILayer.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\HUD\HackerModeHud.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\HUD\Hud.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\CollisionKeys.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\EntityKeys.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\EnvironmentKeys.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\GeneralKeys.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\Confirmation\ConfirmationMenu.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\Dialog\DialogMenu.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\HackerMode\RadialMenu.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\LoadingScreen\LoadingScreen.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\Options\OptionsMenu.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\Pause\PauseMenu.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\MenuBackground.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\Story\MapNode.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\Story\StoryMap.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\Title\HackerMode.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\Title\TitleScreen.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\Title\TitleScreenBackground.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\Tutorial\TutorialItem.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\Tutorial\TutorialScreen.h" />
+    <ClInclude Include="..\Source\Input\InputManager.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\Backgrounds.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\JungleBackground.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixLetter.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixRain.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixStrand.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\MountainBackground.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\OceanBackground.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\SnowBackground.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Environments.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\JungleEnvironment.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\SnowEnvironment.h" />
+    <ClInclude Include="..\Source\Scenes\Level\LevelCamera.h" />
+    <ClInclude Include="..\Source\Scenes\Level\LevelEditor.h" />
+    <ClInclude Include="..\Source\Scenes\Level\LevelMap.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\CollisionParser.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\DecorParser.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\EntityParser.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\EnvironmentParser.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\ObjectParser.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\ParallaxParser.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\Parser.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Parser\TileParser.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Card.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\CardData.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\CardStorage.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\Avatars.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\Banners.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\CardPreview.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\CoinFlip.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ComponentBase.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\Components.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ControlDraw.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ControlEndTurn.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ControlNeutral.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ControlReplaceCards.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ControlSacrificeStaged.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ControlSelectionStaged.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\DeckCardCountDisplay.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\HandCardCountDisplay.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\LossesDisplay.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\RowTotals.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ScoreTotal.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Config.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Deck.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\CardRow.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\GameState.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Hexus.h" />
+    <ClInclude Include="..\Source\Scenes\Minigames\Minigames.h" />
+    <ClInclude Include="..\Source\Objects\Collision\CategoryGroup.h" />
+    <ClInclude Include="..\Source\Objects\Collision\CollisionObject.h" />
+    <ClInclude Include="..\Source\Objects\Hackables\HackableAttribute.h" />
+    <ClInclude Include="..\Source\Objects\Hackables\HackableCode.h" />
+    <ClInclude Include="..\Source\Objects\Hackables\HackableData.h" />
+    <ClInclude Include="..\Source\Objects\Hackables\HackableObject.h" />
+    <ClInclude Include="..\Source\Objects\Interactables\Chest.h" />
+    <ClInclude Include="..\Source\Objects\Interactables\Monitor.h" />
+    <ClInclude Include="..\Source\Objects\Interactables\Plushies\Plushie.h" />
+    <ClInclude Include="..\Source\Objects\Interactables\Plushies\PlushieMonkey.h" />
+    <ClInclude Include="..\Source\Objects\Interactables\Plushies\Plushies.h" />
+    <ClInclude Include="..\Source\Objects\Interactables\WarpGate.h" />
+    <ClInclude Include="..\Source\Objects\Interactables\WarpGateExactScanTutorial.h" />
+    <ClInclude Include="..\Source\Objects\Interactables\Wind.h" />
+    <ClInclude Include="..\Source\Objects\Objects.h" />
+    <ClInclude Include="..\Source\Objects\ParallaxObject.h" />
+    <ClInclude Include="..\Source\Objects\Projectiles\EggProjectile.h" />
+    <ClInclude Include="..\Source\Engine\Save\SaveManager.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Shaders\PostProcess.h" />
+    <ClInclude Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.h" />
+    <ClInclude Include="..\Source\Utils\HackUtils.h" />
+    <ClInclude Include="..\Source\Utils\MathUtils.h" />
+    <ClInclude Include="..\Source\Utils\StrUtils.h" />
+    <ClInclude Include="..\Source\Utils\GameUtils.h" />
+    <ClInclude Include="..\Source\Window.h" />
+    <ClInclude Include="..\Source\Scenes\SceneDirector.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Level.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="..\Source\Resources.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cocos2d\cocos\2d\libcocos2d.vcxproj">
       <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\cocos2d\cocos\editor-support\spine\proj.win32\libSpine.vcxproj">
-      <Project>{b7c2a162-dec9-4418-972e-240ab3cbfcae}</Project>
+    <ProjectReference Include="..\cocos2d\external\SpriterPlusPlus\SpriterPlusPlus.vcxproj">
+      <Project>{ec902f13-1e54-4dd0-a887-0a3a5bc1cc29}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\cocos2d\external\Box2D\proj.win32\libbox2d.vcxproj">
-      <Project>{929480e7-23c0-4df6-8456-096d71547116}</Project>
+    <ProjectReference Include="..\Libraries\Fasm\Fasm.vcxproj">
+      <Project>{08fbd6fc-aebc-48e2-ad8d-b5e301522e2d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Udis86\libudis86.vcxproj">
+      <Project>{d5c34a21-7218-4a08-9578-1ebb35280a42}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="game.rc" />
+    <ResourceCompile Include="..\Source\Resources.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>

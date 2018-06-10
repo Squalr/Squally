@@ -1,8 +1,10 @@
 #pragma once
-#include "cocos2d.h"
 #include <string>
 #include <locale>         
 #include <sstream> 
+
+#include "cocos2d.h"
+
 
 using namespace cocos2d;
 
