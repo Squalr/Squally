@@ -1,8 +1,8 @@
 #include "EntityParser.h"
 
-Layer* EntityParser::parse(TMXObjectGroup* objectGroup)
+SerializableLayer* EntityParser::parse(TMXObjectGroup* objectGroup)
 {
-	Layer* layer = Layer::create();
+	SerializableLayer* layer = SerializableLayer::create("");
 	ValueVector entities = objectGroup->getObjects();
 
 	// Create entities

@@ -1,5 +1,14 @@
 #include "SerializableLayer.h"
 
+SerializableLayer* SerializableLayer::create(std::string name)
+{
+	SerializableLayer* instance = new SerializableLayer(name);
+
+	instance->autorelease();
+
+	return instance;
+}
+
 SerializableLayer::SerializableLayer(std::string name)
 {
 	this->layerName = name;

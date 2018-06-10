@@ -1,9 +1,9 @@
 #include "CollisionParser.h"
 
-Layer* CollisionParser::parse(TMXObjectGroup* objectGroup)
+SerializableLayer* CollisionParser::parse(TMXObjectGroup* objectGroup)
 {
 	ValueVector collisionObjects = objectGroup->getObjects();
-	Layer* layer = Layer::create();
+	SerializableLayer* layer = SerializableLayer::create("");
 
 	for (int index = 0; index < size(collisionObjects); index++)
 	{

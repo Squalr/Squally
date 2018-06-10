@@ -13,9 +13,9 @@ LevelMap::LevelMap(std::string initLevelMapFileName, Size initMapSize)
 {
 	this->levelMapFileName = initLevelMapFileName;
 	this->mapSize = initMapSize;
-	this->hackerModeHiddenMembers = new std::vector<Node*>();
-	this->staticMembers = new std::vector<Node*>();
-	this->dynamicMembers = new std::vector<Node*>();
+	this->hackerModeHiddenMembers = new std::vector<SerializableLayer*>();
+	this->staticMembers = new std::vector<SerializableLayer*>();
+	this->dynamicMembers = new std::vector<SerializableLayer*>();
 }
 
 LevelMap::~LevelMap()
@@ -64,7 +64,7 @@ Size LevelMap::getMapSize()
 	return this->mapSize;
 }
 
-void LevelMap::insertStaticMember(Node* node, bool hackerModeHidden)
+void LevelMap::insertStaticLayer(SerializableLayer* node, bool hackerModeHidden)
 {
 	if (hackerModeHidden)
 	{
@@ -75,7 +75,7 @@ void LevelMap::insertStaticMember(Node* node, bool hackerModeHidden)
 	this->addChild(node);
 }
 
-void LevelMap::insertDynamicMember(Node* node, bool hackerModeHidden)
+void LevelMap::insertDynamicLayer(SerializableLayer* node, bool hackerModeHidden)
 {
 	if (hackerModeHidden)
 	{

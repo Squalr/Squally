@@ -1,8 +1,8 @@
 #include "DecorParser.h"
 
-Layer* DecorParser::parse(TMXObjectGroup* objectGroup)
+SerializableLayer* DecorParser::parse(TMXObjectGroup* objectGroup)
 {
-	Layer* layer = Layer::create();
+	SerializableLayer* layer = SerializableLayer::create("");
 	ValueVector objects = objectGroup->getObjects();
 
 	// Create objects

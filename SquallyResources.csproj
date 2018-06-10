@@ -40,7 +40,6 @@
   <ItemGroup>
     <None Include="Source\Resources.t">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Source\Resources.cpp</LastGenOutput>
     </None>
     <Content Include="Source\Resources.cpp">
       <AutoGen>True</AutoGen>
@@ -54,7 +53,6 @@
     </Content>
     <Content Include="Source\Resources.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Source\Resources.h</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

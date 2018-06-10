@@ -22,6 +22,8 @@ LevelCamera::LevelCamera()
 	this->targetStack = new std::stack<Node*>();
 	this->cameraScrollOffset = Vec2::ZERO;
 	this->cameraBounds = Rect::ZERO;
+
+	this->defaultDistance = Director::getInstance()->getZEye();
 }
 
 LevelCamera::~LevelCamera()
@@ -108,6 +110,17 @@ void LevelCamera::update(float dt)
 
 		this->setCameraPosition(this->cameraPosition);
 	}
+}
+
+float LevelCamera::getCameraDistance()
+{
+	return Camera::getDefaultCamera()->getPositionZ();
+}
+
+void LevelCamera::setCameraDistance(float distance)
+{
+	this->setPositionZ(distance - this->defaultDistance);
+	Camera::getDefaultCamera()->setPositionZ(distance);
 }
 
 Vec2 LevelCamera::getCameraPosition()

@@ -1,5 +1,7 @@
 #include "DeveloperHud.h"
 
+const Color4B DeveloperHud::menuColor = Color4B(54.0f, 112.0f, 106.0f, 196.0f);
+
 DeveloperHud* DeveloperHud::create()
 {
 	DeveloperHud* instance = new DeveloperHud();
@@ -11,17 +13,27 @@ DeveloperHud* DeveloperHud::create()
 
 DeveloperHud::DeveloperHud()
 {
-	this->initializeListeners();
+	this->layerSelectionBackground = LayerColor::create(menuColor, 320.0f, 1280.0f);
+
+	this->layerSelectionBackground->setAnchorPoint(Vec2(0.0f, 1.0f));
+	
+	this->addChild(this->layerSelectionBackground);
 }
 
 DeveloperHud::~DeveloperHud()
 {
 }
 
+void DeveloperHud::loadLevel(LevelMap* map)
+{
+	this->levelMap = map;
+}
+
 void DeveloperHud::onEnter()
 {
 	Node::onEnter();
 
+	this->initializeListeners();
 	this->initializePositions();
 }
 
