@@ -1,9 +1,10 @@
 #pragma once
 #include "cocos2d.h"
-#include "Resources.h"
+
+#include "Engine/Input/InputManager.h"
 #include "Entities/Entity.h"
-#include "Input/InputManager.h"
 #include "Objects/Collision/CollisionObject.h"
+#include "Resources.h"
 
 using namespace cocos2d;
 
