@@ -1,8 +1,8 @@
 #include "TileParser.h"
 
-SerializableLayer* TileParser::parse(cocos_experimental::TMXLayer* tileLayer)
+SerializableTileLayer* TileParser::parse(cocos_experimental::TMXLayer* tileLayer)
 {
-	SerializableLayer* layer = SerializableLayer::create("");
+	SerializableTileLayer* layer = SerializableTileLayer::create(tileLayer);
 
 	// Can be a nullptr if the layer is empty
 	if (tileLayer != nullptr)

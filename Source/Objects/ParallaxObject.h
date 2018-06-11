@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Objects/SerializableObject.h"
+#include "Engine/Maps/SerializableObject.h"
 #include "Scenes/Level/LevelCamera.h"
 
 using namespace cocos2d;

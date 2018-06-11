@@ -5,6 +5,7 @@
 #include "Entities/Player/Player.h"
 #include "Events/NavigationEvents.h"
 #include "Events/PauseEvents.h"
+#include "Engine/Maps/SerializableMap.h"
 #include "Engine/Rendering/Components/FadeScene.h"
 #include "Engine/Rendering/Components/InfiniteParallaxNode.h"
 #include "Engine/Rendering/Components/Mouse.h"
@@ -20,19 +21,18 @@
 
 #include "Backgrounds/MatrixRain/MatrixRain.h"
 #include "LevelCamera.h"
-#include "LevelMap.h"
 
 using namespace cocos2d;
 
 // Forward declarations
-class LevelMap;
+class SerializableMap;
 
 class Level : public FadeScene
 {
 public:
 	static Level* create();
 
-	void loadLevel(LevelMap* levelMap);
+	void loadLevel(SerializableMap* levelMap);
 
 protected:
 	Level();
@@ -52,7 +52,7 @@ private:
 	void onEnter() override;
 
 	Node* mapNode;
-	LevelMap* map;
+	SerializableMap* map;
 	Sprite* hackerModeBackground;
 	MatrixRain * hackerModeRain;
 	PostProcess* hackerModePostProcessGlow;

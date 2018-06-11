@@ -89,7 +89,7 @@ void Level::initializeListeners()
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-void Level::loadLevel(LevelMap* levelMap)
+void Level::loadLevel(SerializableMap* levelMap)
 {
 	this->map = levelMap;
 

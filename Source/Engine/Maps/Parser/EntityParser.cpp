@@ -2,7 +2,7 @@
 
 SerializableLayer* EntityParser::parse(TMXObjectGroup* objectGroup)
 {
-	SerializableLayer* layer = SerializableLayer::create("");
+	SerializableLayer* layer = SerializableLayer::create(objectGroup);
 	ValueVector entities = objectGroup->getObjects();
 
 	// Create entities

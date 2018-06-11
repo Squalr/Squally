@@ -2,7 +2,7 @@
 
 SerializableLayer* EnvironmentParser::parseBackground(TMXObjectGroup* objectGroup)
 {
-	SerializableLayer* layer = SerializableLayer::create("");
+	SerializableLayer* layer = SerializableLayer::create(objectGroup);
 	ValueMap properties = objectGroup->getProperties();
 
 	if (GameUtils::keyExists(properties, EnvironmentKeys::BackgroundProperty))
@@ -36,7 +36,7 @@ SerializableLayer* EnvironmentParser::parseBackground(TMXObjectGroup* objectGrou
 
 SerializableLayer* EnvironmentParser::parseWeather(TMXObjectGroup* objectGroup)
 {
-	SerializableLayer* layer = SerializableLayer::create("");
+	SerializableLayer* layer = SerializableLayer::create(objectGroup);
 	ValueMap properties = objectGroup->getProperties();
 
 	if (GameUtils::keyExists(properties, EnvironmentKeys::WeatherProperty))

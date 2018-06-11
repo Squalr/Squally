@@ -6,8 +6,6 @@ const std::string NavigationEvents::gameNavigateBackEvent = "game_navigate_back_
 const std::string NavigationEvents::gameNavigateConfirmEvent = "game_navigate_confirm_event";
 const std::string NavigationEvents::gameNavigateLoadLevelEvent = "game_navigate_load_level_event";
 const std::string NavigationEvents::gameNavigateEnterLevelEvent = "game_navigate_enter_level_event";
-const std::string NavigationEvents::gameNavigateLoadLevelEditorEvent = "game_navigate_load_level_editor_event";
-const std::string NavigationEvents::gameNavigateEnterLevelEditorEvent = "game_navigate_enter_level_editor_event";
 const std::string NavigationEvents::gameNavigateFightEvent = "game_navigate_fight_event";
 
 void NavigationEvents::navigateBack(int count)
@@ -42,27 +40,11 @@ void NavigationEvents::loadLevel(std::string levelFile)
 	);
 }
 
-void NavigationEvents::enterLevel(LevelMap* levelMap)
+void NavigationEvents::enterLevel(SerializableMap* levelMap)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::gameNavigateEnterLevelEvent,
 		&NavigateEnterLevelArgs(levelMap)
-	);
-}
-
-void NavigationEvents::loadLevelEditor(std::string levelFile, Vec2 initPosition)
-{
-	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::gameNavigateLoadLevelEditorEvent,
-		&NavigateLoadLevelEditorArgs(levelFile, initPosition)
-	);
-}
-
-void NavigationEvents::enterLevelEditor(LevelMap* levelMap, Vec2 initPosition)
-{
-	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::gameNavigateEnterLevelEditorEvent,
-		&NavigateEnterLevelEditorArgs(levelMap, initPosition)
 	);
 }
 

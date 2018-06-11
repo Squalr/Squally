@@ -3,14 +3,13 @@
 
 #include "cocos2d.h"
 
+#include "Engine/Maps/Parser/Parser.h"
 #include "Events/NavigationEvents.h"
 #include "Engine/Rendering/Components/CProgressBar.h"
 #include "Engine/Rendering/Components/FadeScene.h"
 #include "Resources.h"
-#include "Scenes/Level/Parser/Parser.h"
 #include "Scenes/Menus/MenuBackground.h"
 #include "Utils/StrUtils.h"
-
 
 using namespace cocos2d;
 using namespace cocos_experimental;
@@ -20,7 +19,7 @@ class LoadingScreen : public FadeScene
 public:
 	static LoadingScreen * create();
 
-	void loadLevel(std::string levelFile, const std::function<void(LevelMap*)> newOnLoadCallback);
+	void loadLevel(std::string levelFile, const std::function<void(SerializableMap*)> newOnLoadCallback);
 
 protected:
 	LoadingScreen();
@@ -40,7 +39,7 @@ private:
 	Node* background;
 	Sprite* loadingWindow;
 	CProgressBar* progressBar;
-	std::function<void(LevelMap*)> onLoadCallback;
+	std::function<void(SerializableMap*)> onLoadCallback;
 
 	int totalFileCount;
 	std::atomic_int loadedFileCount;

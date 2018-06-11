@@ -3,7 +3,7 @@
 SerializableLayer* CollisionParser::parse(TMXObjectGroup* objectGroup)
 {
 	ValueVector collisionObjects = objectGroup->getObjects();
-	SerializableLayer* layer = SerializableLayer::create("");
+	SerializableLayer* layer = SerializableLayer::create(objectGroup);
 
 	for (int index = 0; index < size(collisionObjects); index++)
 	{

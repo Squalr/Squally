@@ -1,9 +1,9 @@
 #include "Parser.h"
 
-LevelMap* Parser::parseMap(std::string levelFile)
+SerializableMap* Parser::parseMap(std::string levelFile)
 {
 	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(levelFile);
-	LevelMap* map = LevelMap::create(levelFile, Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height));
+	SerializableMap* map = SerializableMap::deserialize(levelFile, Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height));
 	std::map<int, std::string> layers = std::map<int, std::string>();
 
 	// Pull out object layers
@@ -32,17 +32,17 @@ LevelMap* Parser::parseMap(std::string levelFile)
 		if (StrUtils::startsWith(layerName, "TILES_", false))
 		{
 			SerializableLayer* tileLayer = TileParser::parse(mapRaw->getLayer(layerName));
-			map->insertDynamicLayer(tileLayer, true);
+			map->insertLayer(tileLayer); // true
 		}
 		else if (StrUtils::startsWith(layerName, "COLLISION_", false))
 		{
 			SerializableLayer* collisionLayer = CollisionParser::parse(mapRaw->getObjectGroup(layerName));
-			map->insertDynamicLayer(collisionLayer, false);
+			map->insertLayer(collisionLayer); // false
 		}
 		else if (StrUtils::startsWith(layerName, "DECOR_", false))
 		{
 			SerializableLayer* decorLayer = DecorParser::parse(mapRaw->getObjectGroup(layerName));
-			map->insertDynamicLayer(decorLayer, true);
+			map->insertLayer(decorLayer); // true
 		}
 		else if (StrUtils::startsWith(layerName, "ENV_", false))
 		{
@@ -50,23 +50,23 @@ LevelMap* Parser::parseMap(std::string levelFile)
 			SerializableLayer* weatherLayer = EnvironmentParser::parseWeather(mapRaw->getObjectGroup(layerName));
 			EnvironmentParser::playMusic(mapRaw->getObjectGroup(layerName));
 
-			map->insertStaticLayer(backgroundLayer, true);
-			map->insertDynamicLayer(weatherLayer, true);
+			map->insertLayer(backgroundLayer); // true
+			map->insertLayer(weatherLayer); // true
 		}
 		else if (StrUtils::startsWith(layerName, "OBJECTS_", false))
 		{
 			SerializableLayer* objectLayer = ObjectParser::parse(mapRaw->getObjectGroup(layerName));
-			map->insertDynamicLayer(objectLayer, false);
+			map->insertLayer(objectLayer); // false
 		}
 		else if (StrUtils::startsWith(layerName, "ENTITIES_", false))
 		{
 			SerializableLayer* entityLayer = EntityParser::parse(mapRaw->getObjectGroup(layerName));
-			map->insertDynamicLayer(entityLayer, false);
+			map->insertLayer(entityLayer); // false
 		}
 		else if (StrUtils::startsWith(layerName, "PARALLAX_", false))
 		{
 			SerializableLayer* parallaxLayer = ParallaxParser::parse(mapRaw->getObjectGroup(layerName));
-			map->insertDynamicLayer(parallaxLayer, true);
+			map->insertLayer(parallaxLayer); // true
 		}
 		else
 		{
