@@ -1,17 +1,17 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Maps/SerializableLayer.h"
 #include "Objects/Objects.h"
-#include "Objects/SerializableLayer.h"
 #include "Resources.h"
-#include "Scenes/Level/Parser/Keys/GeneralKeys.h"
 #include "Utils/GameUtils.h"
+
+#include "ObjectParser.h"
 
 using namespace cocos2d;
 
-class ObjectParser
+class ParallaxParser
 {
 public:
 	static SerializableLayer* parse(TMXObjectGroup* objectGroup);
-	static Sprite* loadObject(ValueMap object);
 };

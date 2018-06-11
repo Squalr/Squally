@@ -24,7 +24,7 @@ DeveloperHud::~DeveloperHud()
 {
 }
 
-void DeveloperHud::loadLevel(LevelMap* map)
+void DeveloperHud::loadLevel(SerializableMap* map)
 {
 	this->levelMap = map;
 }

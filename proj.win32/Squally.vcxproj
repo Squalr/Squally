@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -158,6 +158,22 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Config\ConfigManager.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\Keys\CollisionKeys.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\Keys\EntityKeys.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\Keys\EnvironmentKeys.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\Keys\GeneralKeys.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\Parser\CollisionParser.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\Parser\DecorParser.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\Parser\EntityParser.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\Parser\EnvironmentParser.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\Parser\ObjectParser.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\Parser\ParallaxParser.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\Parser\Parser.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\Parser\TileParser.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\SerializableLayer.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\SerializableMap.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\SerializableObject.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\SerializableTileLayer.cpp" />
     <ClCompile Include="..\Source\Engine\Rendering\HUD\DeveloperHud.cpp" />
     <ClCompile Include="..\Source\Engine\Sound\SoundManager.cpp" />
     <ClCompile Include="..\Source\Entities\Enemies\Castle\BossWitch.cpp" />
@@ -272,8 +288,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Events\NavigationEvents.cpp" />
     <ClCompile Include="..\Source\Events\MouseEvents.cpp" />
     <ClCompile Include="..\Source\Events\PauseEvents.cpp" />
-    <ClCompile Include="..\Source\Objects\SerializableLayer.cpp" />
-    <ClCompile Include="..\Source\Objects\SerializableObject.cpp" />
     <ClCompile Include="..\Source\Scenes\Fight\Fight.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Components\CProgressBar.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Components\EditableTextWindow.cpp" />
@@ -291,10 +305,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Engine/Rendering\Components\UILayer.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\HUD\HackerModeHud.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\HUD\Hud.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\CollisionKeys.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\EntityKeys.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\EnvironmentKeys.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\GeneralKeys.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Confirmation\ConfirmationMenu.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Dialog\DialogMenu.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.cpp" />
@@ -321,16 +331,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Scenes\Level\Environments\JungleEnvironment.cpp" />
     <ClCompile Include="..\Source\Scenes\Level\Environments\SnowEnvironment.cpp" />
     <ClCompile Include="..\Source\Scenes\Level\LevelCamera.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\LevelEditor.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\LevelMap.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\CollisionParser.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\DecorParser.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\EntityParser.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\EnvironmentParser.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\ObjectParser.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\ParallaxParser.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Parser.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\TileParser.cpp" />
     <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Card.cpp" />
     <ClCompile Include="..\Source\Scenes\Minigames\Hexus\CardData.cpp" />
     <ClCompile Include="..\Source\Scenes\Minigames\Hexus\CardStorage.cpp" />
@@ -384,6 +384,22 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Config\ConfigManager.h" />
+    <ClInclude Include="..\Source\Engine\Maps\Keys\CollisionKeys.h" />
+    <ClInclude Include="..\Source\Engine\Maps\Keys\EntityKeys.h" />
+    <ClInclude Include="..\Source\Engine\Maps\Keys\EnvironmentKeys.h" />
+    <ClInclude Include="..\Source\Engine\Maps\Keys\GeneralKeys.h" />
+    <ClInclude Include="..\Source\Engine\Maps\Parser\CollisionParser.h" />
+    <ClInclude Include="..\Source\Engine\Maps\Parser\DecorParser.h" />
+    <ClInclude Include="..\Source\Engine\Maps\Parser\EntityParser.h" />
+    <ClInclude Include="..\Source\Engine\Maps\Parser\EnvironmentParser.h" />
+    <ClInclude Include="..\Source\Engine\Maps\Parser\ObjectParser.h" />
+    <ClInclude Include="..\Source\Engine\Maps\Parser\ParallaxParser.h" />
+    <ClInclude Include="..\Source\Engine\Maps\Parser\Parser.h" />
+    <ClInclude Include="..\Source\Engine\Maps\Parser\TileParser.h" />
+    <ClInclude Include="..\Source\Engine\Maps\SerializableLayer.h" />
+    <ClInclude Include="..\Source\Engine\Maps\SerializableMap.h" />
+    <ClInclude Include="..\Source\Engine\Maps\SerializableObject.h" />
+    <ClInclude Include="..\Source\Engine\Maps\SerializableTileLayer.h" />
     <ClInclude Include="..\Source\Engine\Rendering\HUD\DeveloperHud.h" />
     <ClInclude Include="..\Source\Engine\Sound\SoundManager.h" />
     <ClInclude Include="..\Source\Entities\Enemies\Castle\BossWitch.h" />
@@ -499,8 +515,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Events\NavigationEvents.h" />
     <ClInclude Include="..\Source\Events\MouseEvents.h" />
     <ClInclude Include="..\Source\Events\PauseEvents.h" />
-    <ClInclude Include="..\Source\Objects\SerializableLayer.h" />
-    <ClInclude Include="..\Source\Objects\SerializableObject.h" />
     <ClInclude Include="..\Source\Scenes\Fight\Fight.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Components\CProgressBar.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Components\EditableTextWindow.h" />
@@ -518,10 +532,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Engine/Rendering\Components\UILayer.h" />
     <ClInclude Include="..\Source\Engine/Rendering\HUD\HackerModeHud.h" />
     <ClInclude Include="..\Source\Engine/Rendering\HUD\Hud.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\CollisionKeys.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\EntityKeys.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\EnvironmentKeys.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\GeneralKeys.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Confirmation\ConfirmationMenu.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Dialog\DialogMenu.h" />
     <ClInclude Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.h" />
@@ -550,16 +560,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Scenes\Level\Environments\JungleEnvironment.h" />
     <ClInclude Include="..\Source\Scenes\Level\Environments\SnowEnvironment.h" />
     <ClInclude Include="..\Source\Scenes\Level\LevelCamera.h" />
-    <ClInclude Include="..\Source\Scenes\Level\LevelEditor.h" />
-    <ClInclude Include="..\Source\Scenes\Level\LevelMap.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\CollisionParser.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\DecorParser.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\EntityParser.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\EnvironmentParser.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\ObjectParser.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\ParallaxParser.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Parser.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\TileParser.h" />
     <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Card.h" />
     <ClInclude Include="..\Source\Scenes\Minigames\Hexus\CardData.h" />
     <ClInclude Include="..\Source\Scenes\Minigames\Hexus\CardStorage.h" />

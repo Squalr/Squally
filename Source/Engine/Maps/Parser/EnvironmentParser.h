@@ -1,13 +1,13 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Maps/SerializableLayer.h"
+#include "Engine/Maps/Keys/EnvironmentKeys.h"
+#include "Engine/Maps/Keys/GeneralKeys.h"
 #include "Engine/Sound/SoundManager.h"
-#include "Objects/SerializableLayer.h"
 #include "Resources.h"
 #include "Scenes/Level/Backgrounds/Backgrounds.h"
 #include "Scenes/Level/Environments/Environments.h"
-#include "Scenes/Level/Parser/Keys/EnvironmentKeys.h"
-#include "Scenes/Level/Parser/Keys/GeneralKeys.h"
 #include "Utils/GameUtils.h"
 
 using namespace cocos2d;

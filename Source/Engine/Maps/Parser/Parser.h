@@ -1,8 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Maps/SerializableMap.h"
 #include "Resources.h"
-#include "Scenes/Level/LevelMap.h"
 #include "Utils/GameUtils.h"
 #include "Utils/StrUtils.h"
 
@@ -19,5 +19,5 @@ using namespace cocos2d;
 class Parser
 {
 public:
-	static LevelMap* parseMap(std::string levelFile);
+	static SerializableMap* parseMap(std::string levelFile);
 };

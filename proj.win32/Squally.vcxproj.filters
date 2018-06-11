@@ -157,6 +157,15 @@
     <Filter Include="Source\Scenes\Level\Parser\Keys">
       <UniqueIdentifier>{6eba8a91-5a58-4f2f-a137-2a72870f1f4c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Engine\Maps">
+      <UniqueIdentifier>{7389bbbb-d25e-4562-80a7-0e5f8e6dc7b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Maps\Keys">
+      <UniqueIdentifier>{4c8b4215-6be2-4b1d-80e2-d3f7e4c4f085}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Maps\Parser">
+      <UniqueIdentifier>{b4812dd2-2c83-4d0c-8ccb-20733f24694e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Entities\Entity.cpp">
@@ -279,9 +288,6 @@
     <ClCompile Include="..\Source\Entities\Npcs\Knight.cpp">
       <Filter>Source\Entities\Npcs</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Parser.cpp">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Entities\Npcs\NpcBase.cpp">
       <Filter>Source\Entities\Npcs</Filter>
     </ClCompile>
@@ -362,30 +368,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ControlReplaceCards.cpp">
       <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\CollisionParser.cpp">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\DecorParser.cpp">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\ObjectParser.cpp">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\ParallaxParser.cpp">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\TileParser.cpp">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\EnvironmentParser.cpp">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\EntityParser.cpp">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\LevelMap.cpp">
-      <Filter>Source\Scenes\Level</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\LoadingScreen\LoadingScreen.cpp">
       <Filter>Source\Scenes\Menus\LoadingScreen</Filter>
@@ -729,9 +711,6 @@
     <ClCompile Include="..\Source\Entities\Enemies\Mech\MechBoxDrone.cpp">
       <Filter>Source\Entities\Enemies\Mech</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\LevelEditor.cpp">
-      <Filter>Source\Scenes\Level</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Events\PauseEvents.cpp">
       <Filter>Source\Events</Filter>
     </ClCompile>
@@ -753,18 +732,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Window.cpp">
       <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\CollisionKeys.cpp">
-      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\EntityKeys.cpp">
-      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\EnvironmentKeys.cpp">
-      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\GeneralKeys.cpp">
-      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Engine/Rendering\HUD\Hud.cpp">
       <Filter>Source\Engine\Rendering\HUD</Filter>
@@ -820,14 +787,56 @@
     <ClCompile Include="..\Source\Engine/Rendering\Shaders\PostProcess.cpp">
       <Filter>Source\Engine\Rendering\Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Objects\SerializableLayer.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\SerializableObject.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Engine\Rendering\HUD\DeveloperHud.cpp">
       <Filter>Source\Engine\Rendering\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\SerializableMap.cpp">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\SerializableLayer.cpp">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\SerializableObject.cpp">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\Keys\CollisionKeys.cpp">
+      <Filter>Source\Engine\Maps\Keys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\Keys\EntityKeys.cpp">
+      <Filter>Source\Engine\Maps\Keys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\Keys\EnvironmentKeys.cpp">
+      <Filter>Source\Engine\Maps\Keys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\Keys\GeneralKeys.cpp">
+      <Filter>Source\Engine\Maps\Keys</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\Parser\ObjectParser.cpp">
+      <Filter>Source\Engine\Maps\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\Parser\ParallaxParser.cpp">
+      <Filter>Source\Engine\Maps\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\Parser\Parser.cpp">
+      <Filter>Source\Engine\Maps\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\Parser\EnvironmentParser.cpp">
+      <Filter>Source\Engine\Maps\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\Parser\EntityParser.cpp">
+      <Filter>Source\Engine\Maps\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\Parser\DecorParser.cpp">
+      <Filter>Source\Engine\Maps\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\Parser\CollisionParser.cpp">
+      <Filter>Source\Engine\Maps\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\Parser\TileParser.cpp">
+      <Filter>Source\Engine\Maps\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\SerializableTileLayer.cpp">
+      <Filter>Source\Engine\Maps</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -963,9 +972,6 @@
     <ClInclude Include="..\Source\Entities\Npcs\Knight.h">
       <Filter>Source\Entities\Npcs</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Parser.h">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Entities\Npcs\NpcBase.h">
       <Filter>Source\Entities\Npcs</Filter>
     </ClInclude>
@@ -1052,30 +1058,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ControlReplaceCards.h">
       <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\CollisionParser.h">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\DecorParser.h">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\ObjectParser.h">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\ParallaxParser.h">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\TileParser.h">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\EnvironmentParser.h">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\EntityParser.h">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\LevelMap.h">
-      <Filter>Source\Scenes\Level</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\LoadingScreen\LoadingScreen.h">
       <Filter>Source\Scenes\Menus\LoadingScreen</Filter>
@@ -1441,26 +1423,11 @@
     <ClInclude Include="..\Source\Scenes\SceneDirector.h">
       <Filter>Source\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\LevelEditor.h">
-      <Filter>Source\Scenes\Level</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Window.h">
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Config\ConfigManager.h">
       <Filter>Source\Config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\CollisionKeys.h">
-      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\EntityKeys.h">
-      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\EnvironmentKeys.h">
-      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\GeneralKeys.h">
-      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Engine/Rendering\HUD\Hud.h">
       <Filter>Source\Engine\Rendering\HUD</Filter>
@@ -1516,14 +1483,56 @@
     <ClInclude Include="..\Source\Engine/Rendering\Shaders\PostProcess.h">
       <Filter>Source\Engine\Rendering\Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Objects\SerializableLayer.h">
-      <Filter>Source\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\SerializableObject.h">
-      <Filter>Source\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Engine\Rendering\HUD\DeveloperHud.h">
       <Filter>Source\Engine\Rendering\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\SerializableMap.h">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\SerializableObject.h">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\SerializableLayer.h">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\Keys\CollisionKeys.h">
+      <Filter>Source\Engine\Maps\Keys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\Keys\EntityKeys.h">
+      <Filter>Source\Engine\Maps\Keys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\Keys\EnvironmentKeys.h">
+      <Filter>Source\Engine\Maps\Keys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\Keys\GeneralKeys.h">
+      <Filter>Source\Engine\Maps\Keys</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\Parser\Parser.h">
+      <Filter>Source\Engine\Maps\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\Parser\ObjectParser.h">
+      <Filter>Source\Engine\Maps\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\Parser\ParallaxParser.h">
+      <Filter>Source\Engine\Maps\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\Parser\EnvironmentParser.h">
+      <Filter>Source\Engine\Maps\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\Parser\EntityParser.h">
+      <Filter>Source\Engine\Maps\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\Parser\DecorParser.h">
+      <Filter>Source\Engine\Maps\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\Parser\CollisionParser.h">
+      <Filter>Source\Engine\Maps\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\Parser\TileParser.h">
+      <Filter>Source\Engine\Maps\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\SerializableTileLayer.h">
+      <Filter>Source\Engine\Maps</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -19,9 +19,6 @@ class PauseMenu : public FadeScene
 public:
 	static PauseMenu * create();
 
-	// Note that Game.h fires this event because this scene can't listen for events while it is inactive
-	void onLevelPause(EventCustom* eventCustom);
-
 protected:
 	PauseMenu();
 	~PauseMenu();
@@ -35,7 +32,6 @@ private:
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onResumeClick(MenuSprite* menuSprite);
 	void onOptionsClick(MenuSprite* menuSprite);
-	void onLevelEditorClick(MenuSprite* menuSprite);
 	void onExitClick(MenuSprite* menuSprite);
 
 	Node* background;
@@ -43,10 +39,6 @@ private:
 	MenuSprite* closeButton;
 	MenuSprite* resumeButton;
 	MenuSprite* optionsButton;
-	MenuSprite* levelEditorButton;
 	MenuSprite* exitButton;
-
-	std::string currentLevelFile;
-	Vec2 pauseLocation;
 };
 
