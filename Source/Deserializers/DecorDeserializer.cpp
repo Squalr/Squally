@@ -1,8 +1,8 @@
-#include "DecorParser.h"
+#include "DecorDeserializer.h"
 
-SerializableLayer* DecorParser::parse(TMXObjectGroup* objectGroup)
+SerializableLayer* DecorDeserializer::deserialize(TMXObjectGroup* objectGroup)
 {
-	SerializableLayer* layer = SerializableLayer::create(objectGroup);
+	SerializableLayer* layer = SerializableLayer::deserialize(objectGroup);
 	ValueVector objects = objectGroup->getObjects();
 
 	// Create objects
@@ -14,7 +14,7 @@ SerializableLayer* DecorParser::parse(TMXObjectGroup* objectGroup)
 		}
 
 		ValueMap object = objects[index].asValueMap();
-		Sprite* sprite = ObjectParser::loadObject(object);
+		Sprite* sprite = ObjectDeserializer::loadObject(object);
 
 		layer->addChild(sprite);
 	}

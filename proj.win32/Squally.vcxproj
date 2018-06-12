@@ -158,18 +158,13 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Config\ConfigManager.cpp" />
-    <ClCompile Include="..\Source\Engine\Maps\Keys\CollisionKeys.cpp" />
-    <ClCompile Include="..\Source\Engine\Maps\Keys\EntityKeys.cpp" />
-    <ClCompile Include="..\Source\Engine\Maps\Keys\EnvironmentKeys.cpp" />
-    <ClCompile Include="..\Source\Engine\Maps\Keys\GeneralKeys.cpp" />
-    <ClCompile Include="..\Source\Engine\Maps\Parser\CollisionParser.cpp" />
-    <ClCompile Include="..\Source\Engine\Maps\Parser\DecorParser.cpp" />
-    <ClCompile Include="..\Source\Engine\Maps\Parser\EntityParser.cpp" />
-    <ClCompile Include="..\Source\Engine\Maps\Parser\EnvironmentParser.cpp" />
-    <ClCompile Include="..\Source\Engine\Maps\Parser\ObjectParser.cpp" />
-    <ClCompile Include="..\Source\Engine\Maps\Parser\ParallaxParser.cpp" />
-    <ClCompile Include="..\Source\Engine\Maps\Parser\Parser.cpp" />
-    <ClCompile Include="..\Source\Engine\Maps\Parser\TileParser.cpp" />
+    <ClCompile Include="..\Source\Deserializers\CollisionDeserializer.cpp" />
+    <ClCompile Include="..\Source\Deserializers\DecorDeserializer.cpp" />
+    <ClCompile Include="..\Source\Deserializers\EntityDeserializer.cpp" />
+    <ClCompile Include="..\Source\Deserializers\EnvironmentDeserializer.cpp" />
+    <ClCompile Include="..\Source\Deserializers\ObjectDeserializer.cpp" />
+    <ClCompile Include="..\Source\Deserializers\ParallaxDeserializer.cpp" />
+    <ClCompile Include="..\Source\Deserializers\TileDeserializer.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableLayer.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableMap.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableObject.cpp" />
@@ -282,6 +277,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Entities\Npcs\NpcBase.cpp" />
     <ClCompile Include="..\Source\Entities\Player\Hover.cpp" />
     <ClCompile Include="..\Source\Entities\Player\Player.cpp" />
+    <ClCompile Include="..\Source\Events\DeserializationEvents.cpp" />
     <ClCompile Include="..\Source\Events\DialogEvents.cpp" />
     <ClCompile Include="..\Source\Events\HackableEvents.cpp" />
     <ClCompile Include="..\Source\Events\HexusEvents.cpp" />
@@ -368,7 +364,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Objects\Interactables\WarpGateExactScanTutorial.cpp" />
     <ClCompile Include="..\Source\Objects\Interactables\Wind.cpp" />
     <ClCompile Include="..\Source\Objects\ParallaxObject.cpp" />
-    <ClCompile Include="..\Source\Objects\Projectiles\EggProjectile.cpp" />
     <ClCompile Include="..\Source\Engine\Save\SaveManager.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Shaders\PostProcess.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.cpp" />
@@ -384,18 +379,13 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Config\ConfigManager.h" />
-    <ClInclude Include="..\Source\Engine\Maps\Keys\CollisionKeys.h" />
-    <ClInclude Include="..\Source\Engine\Maps\Keys\EntityKeys.h" />
-    <ClInclude Include="..\Source\Engine\Maps\Keys\EnvironmentKeys.h" />
-    <ClInclude Include="..\Source\Engine\Maps\Keys\GeneralKeys.h" />
-    <ClInclude Include="..\Source\Engine\Maps\Parser\CollisionParser.h" />
-    <ClInclude Include="..\Source\Engine\Maps\Parser\DecorParser.h" />
-    <ClInclude Include="..\Source\Engine\Maps\Parser\EntityParser.h" />
-    <ClInclude Include="..\Source\Engine\Maps\Parser\EnvironmentParser.h" />
-    <ClInclude Include="..\Source\Engine\Maps\Parser\ObjectParser.h" />
-    <ClInclude Include="..\Source\Engine\Maps\Parser\ParallaxParser.h" />
-    <ClInclude Include="..\Source\Engine\Maps\Parser\Parser.h" />
-    <ClInclude Include="..\Source\Engine\Maps\Parser\TileParser.h" />
+    <ClInclude Include="..\Source\Deserializers\CollisionDeserializer.h" />
+    <ClInclude Include="..\Source\Deserializers\DecorDeserializer.h" />
+    <ClInclude Include="..\Source\Deserializers\EntityDeserializer.h" />
+    <ClInclude Include="..\Source\Deserializers\EnvironmentDeserializer.h" />
+    <ClInclude Include="..\Source\Deserializers\ObjectDeserializer.h" />
+    <ClInclude Include="..\Source\Deserializers\ParallaxDeserializer.h" />
+    <ClInclude Include="..\Source\Deserializers\TileDeserializer.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableLayer.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableMap.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableObject.h" />
@@ -509,6 +499,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Entities\Npcs\NpcBase.h" />
     <ClInclude Include="..\Source\Entities\Player\Hover.h" />
     <ClInclude Include="..\Source\Entities\Player\Player.h" />
+    <ClInclude Include="..\Source\Events\DeserializationEvents.h" />
     <ClInclude Include="..\Source\Events\DialogEvents.h" />
     <ClInclude Include="..\Source\Events\HackableEvents.h" />
     <ClInclude Include="..\Source\Events\HexusEvents.h" />
@@ -602,7 +593,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Objects\Interactables\Wind.h" />
     <ClInclude Include="..\Source\Objects\Objects.h" />
     <ClInclude Include="..\Source\Objects\ParallaxObject.h" />
-    <ClInclude Include="..\Source\Objects\Projectiles\EggProjectile.h" />
     <ClInclude Include="..\Source\Engine\Save\SaveManager.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Shaders\PostProcess.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.h" />

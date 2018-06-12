@@ -1,8 +1,8 @@
-#include "ParallaxParser.h"
+#include "ParallaxDeserializer.h"
 
-SerializableLayer* ParallaxParser::parse(TMXObjectGroup* objectGroup)
+SerializableLayer* ParallaxDeserializer::deserialize(TMXObjectGroup* objectGroup)
 {
-	SerializableLayer* layer = SerializableLayer::create(objectGroup);
+	SerializableLayer* layer = SerializableLayer::deserialize(objectGroup);
 	ValueVector objects = objectGroup->getObjects();
 
 	// Create objects
@@ -24,7 +24,7 @@ SerializableLayer* ParallaxParser::parse(TMXObjectGroup* objectGroup)
 		float speedX = object.at("speed-x").asFloat();
 		float speedY = object.at("speed-y").asFloat();
 
-		Sprite* sprite = ObjectParser::loadObject(object);
+		Sprite* sprite = ObjectDeserializer::loadObject(object);
 		Vec2 position = sprite->getPosition();
 		Node *node = Node::create();
 

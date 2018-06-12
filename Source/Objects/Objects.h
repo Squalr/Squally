@@ -5,3 +5,4 @@
 #include "Interactables/WarpGate.h"
 #include "Interactables/WarpGateExactScanTutorial.h"
 #include "Interactables/Wind.h"
+#include "Objects/Collision/CollisionObject.h"

@@ -116,7 +116,7 @@ void LoadingScreen::incrementLoadedFileCount()
 
 	if (this->loadedFileCount.fetch_add(1) >= this->totalFileCount - 1)
 	{
-		SerializableMap* map = Parser::parseMap(this->currentLevelFile);
+		SerializableMap* map = SerializableMap::deserialize(this->currentLevelFile);
 
 		if (this->onLoadCallback != nullptr)
 		{

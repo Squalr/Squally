@@ -76,9 +76,6 @@
     <Filter Include="Source\Objects\Collision">
       <UniqueIdentifier>{94e5f613-0f3a-49b6-a7f0-ccafed96546a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Objects\Projectiles">
-      <UniqueIdentifier>{9d7c6cdb-e262-4910-8cc2-e20e7dc00d4e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Objects\Interactables">
       <UniqueIdentifier>{0852c3e4-fc82-4678-9a59-dbb701f51a8f}</UniqueIdentifier>
     </Filter>
@@ -90,9 +87,6 @@
     </Filter>
     <Filter Include="Source\Entities\Npcs">
       <UniqueIdentifier>{1febd58c-fd81-4bf6-a498-dc590c8d3379}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Scenes\Level\Parser">
-      <UniqueIdentifier>{b43fde59-32a1-4a22-a5ff-05d9b70d3a27}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Scenes\Menus\LoadingScreen">
       <UniqueIdentifier>{5b766df7-ace8-43f1-bf59-f0f9d699f795}</UniqueIdentifier>
@@ -154,17 +148,11 @@
     <Filter Include="Source\Engine\Rendering\Shaders">
       <UniqueIdentifier>{2e9ff4e8-254e-4582-b2f9-f801a48d1ff2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Scenes\Level\Parser\Keys">
-      <UniqueIdentifier>{6eba8a91-5a58-4f2f-a137-2a72870f1f4c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Engine\Maps">
       <UniqueIdentifier>{7389bbbb-d25e-4562-80a7-0e5f8e6dc7b6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Engine\Maps\Keys">
-      <UniqueIdentifier>{4c8b4215-6be2-4b1d-80e2-d3f7e4c4f085}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Engine\Maps\Parser">
-      <UniqueIdentifier>{b4812dd2-2c83-4d0c-8ccb-20733f24694e}</UniqueIdentifier>
+    <Filter Include="Source\Deserializers">
+      <UniqueIdentifier>{5b3a1dbd-645a-4546-8463-50c1da29aff3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -248,9 +236,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Objects\ParallaxObject.cpp">
       <Filter>Source\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\Projectiles\EggProjectile.cpp">
-      <Filter>Source\Objects\Projectiles</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Objects\Interactables\WarpGate.cpp">
       <Filter>Source\Objects\Interactables</Filter>
@@ -799,44 +784,32 @@
     <ClCompile Include="..\Source\Engine\Maps\SerializableObject.cpp">
       <Filter>Source\Engine\Maps</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Engine\Maps\Keys\CollisionKeys.cpp">
-      <Filter>Source\Engine\Maps\Keys</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Maps\Keys\EntityKeys.cpp">
-      <Filter>Source\Engine\Maps\Keys</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Maps\Keys\EnvironmentKeys.cpp">
-      <Filter>Source\Engine\Maps\Keys</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Maps\Keys\GeneralKeys.cpp">
-      <Filter>Source\Engine\Maps\Keys</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Maps\Parser\ObjectParser.cpp">
-      <Filter>Source\Engine\Maps\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Maps\Parser\ParallaxParser.cpp">
-      <Filter>Source\Engine\Maps\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Maps\Parser\Parser.cpp">
-      <Filter>Source\Engine\Maps\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Maps\Parser\EnvironmentParser.cpp">
-      <Filter>Source\Engine\Maps\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Maps\Parser\EntityParser.cpp">
-      <Filter>Source\Engine\Maps\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Maps\Parser\DecorParser.cpp">
-      <Filter>Source\Engine\Maps\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Maps\Parser\CollisionParser.cpp">
-      <Filter>Source\Engine\Maps\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Maps\Parser\TileParser.cpp">
-      <Filter>Source\Engine\Maps\Parser</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Engine\Maps\SerializableTileLayer.cpp">
       <Filter>Source\Engine\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Events\DeserializationEvents.cpp">
+      <Filter>Source\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Deserializers\CollisionDeserializer.cpp">
+      <Filter>Source\Deserializers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Deserializers\DecorDeserializer.cpp">
+      <Filter>Source\Deserializers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Deserializers\EntityDeserializer.cpp">
+      <Filter>Source\Deserializers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Deserializers\EnvironmentDeserializer.cpp">
+      <Filter>Source\Deserializers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Deserializers\ObjectDeserializer.cpp">
+      <Filter>Source\Deserializers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Deserializers\ParallaxDeserializer.cpp">
+      <Filter>Source\Deserializers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Deserializers\TileDeserializer.cpp">
+      <Filter>Source\Deserializers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -929,9 +902,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Objects\Objects.h">
       <Filter>Source\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\Projectiles\EggProjectile.h">
-      <Filter>Source\Objects\Projectiles</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Objects\Interactables\WarpGate.h">
       <Filter>Source\Objects\Interactables</Filter>
@@ -1495,44 +1465,32 @@
     <ClInclude Include="..\Source\Engine\Maps\SerializableLayer.h">
       <Filter>Source\Engine\Maps</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Engine\Maps\Keys\CollisionKeys.h">
-      <Filter>Source\Engine\Maps\Keys</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Maps\Keys\EntityKeys.h">
-      <Filter>Source\Engine\Maps\Keys</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Maps\Keys\EnvironmentKeys.h">
-      <Filter>Source\Engine\Maps\Keys</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Maps\Keys\GeneralKeys.h">
-      <Filter>Source\Engine\Maps\Keys</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Maps\Parser\Parser.h">
-      <Filter>Source\Engine\Maps\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Maps\Parser\ObjectParser.h">
-      <Filter>Source\Engine\Maps\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Maps\Parser\ParallaxParser.h">
-      <Filter>Source\Engine\Maps\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Maps\Parser\EnvironmentParser.h">
-      <Filter>Source\Engine\Maps\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Maps\Parser\EntityParser.h">
-      <Filter>Source\Engine\Maps\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Maps\Parser\DecorParser.h">
-      <Filter>Source\Engine\Maps\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Maps\Parser\CollisionParser.h">
-      <Filter>Source\Engine\Maps\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Maps\Parser\TileParser.h">
-      <Filter>Source\Engine\Maps\Parser</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Engine\Maps\SerializableTileLayer.h">
       <Filter>Source\Engine\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Events\DeserializationEvents.h">
+      <Filter>Source\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Deserializers\CollisionDeserializer.h">
+      <Filter>Source\Deserializers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Deserializers\DecorDeserializer.h">
+      <Filter>Source\Deserializers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Deserializers\EntityDeserializer.h">
+      <Filter>Source\Deserializers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Deserializers\EnvironmentDeserializer.h">
+      <Filter>Source\Deserializers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Deserializers\ObjectDeserializer.h">
+      <Filter>Source\Deserializers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Deserializers\ParallaxDeserializer.h">
+      <Filter>Source\Deserializers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Deserializers\TileDeserializer.h">
+      <Filter>Source\Deserializers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

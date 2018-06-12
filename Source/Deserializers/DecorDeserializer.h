@@ -2,16 +2,15 @@
 #include "cocos2d.h"
 
 #include "Engine/Maps/SerializableLayer.h"
-#include "Objects/Objects.h"
 #include "Resources.h"
 #include "Utils/GameUtils.h"
 
-#include "ObjectParser.h"
+#include "ObjectDeserializer.h"
 
 using namespace cocos2d;
 
-class ParallaxParser
+class DecorDeserializer
 {
 public:
-	static SerializableLayer* parse(TMXObjectGroup* objectGroup);
+	static SerializableLayer* deserialize(TMXObjectGroup* objectGroup);
 };

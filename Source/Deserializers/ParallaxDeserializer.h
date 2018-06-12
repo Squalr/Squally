@@ -2,17 +2,16 @@
 #include "cocos2d.h"
 
 #include "Engine/Maps/SerializableLayer.h"
-#include "Engine/Maps/Keys/CollisionKeys.h"
-#include "Engine/Maps/Keys/GeneralKeys.h"
 #include "Objects/Objects.h"
 #include "Resources.h"
 #include "Utils/GameUtils.h"
 
+#include "ObjectDeserializer.h"
+
 using namespace cocos2d;
 
-class CollisionParser
+class ParallaxDeserializer
 {
 public:
-static SerializableLayer* parse(TMXObjectGroup* objectGroup);
-
+	static SerializableLayer* deserialize(TMXObjectGroup* objectGroup);
 };
