@@ -1,8 +1,8 @@
-#include "ObjectParser.h"
+#include "ObjectDeserializer.h"
 
-SerializableLayer* ObjectParser::parse(TMXObjectGroup* objectGroup)
+SerializableLayer* ObjectDeserializer::deserialize(TMXObjectGroup* objectGroup)
 {
-	SerializableLayer* layer = SerializableLayer::create(objectGroup);
+	SerializableLayer* layer = SerializableLayer::deserialize(objectGroup);
 	ValueVector objects = objectGroup->getObjects();
 
 	// Create objects
@@ -15,19 +15,19 @@ SerializableLayer* ObjectParser::parse(TMXObjectGroup* objectGroup)
 
 		ValueMap object = objects[index].asValueMap();
 
-		if (!GameUtils::keyExists(object, GeneralKeys::Type) ||
-			!GameUtils::keyExists(object, GeneralKeys::Width) ||
-			!GameUtils::keyExists(object, GeneralKeys::Height) ||
-			!GameUtils::keyExists(object, GeneralKeys::XPosition) ||
-			!GameUtils::keyExists(object, GeneralKeys::YPosition))
+		if (!GameUtils::keyExists(object, SerializableObject::KeyType) ||
+			!GameUtils::keyExists(object, SerializableObject::KeyWidth) ||
+			!GameUtils::keyExists(object, SerializableObject::KeyHeight) ||
+			!GameUtils::keyExists(object, SerializableObject::KeyXPosition) ||
+			!GameUtils::keyExists(object, SerializableObject::KeyYPosition))
 		{
 			CCLOG("Missing properties on object");
 			continue;
 		}
 
-		std::string type = object.at(GeneralKeys::Type).asString();
-		float width = object.at(GeneralKeys::Width).asFloat();
-		float height = object.at(GeneralKeys::Height).asFloat();
+		std::string type = object.at(SerializableObject::KeyType).asString();
+		float width = object.at(SerializableObject::KeyWidth).asFloat();
+		float height = object.at(SerializableObject::KeyHeight).asFloat();
 		Size size = Size(width, height);
 
 		HackableObject* newObject = nullptr;
@@ -74,8 +74,8 @@ SerializableLayer* ObjectParser::parse(TMXObjectGroup* objectGroup)
 		}
 
 		newObject->setPosition(Vec2(
-			object.at(GeneralKeys::XPosition).asFloat() + object.at(GeneralKeys::Width).asFloat() / 2.0f,
-			object.at(GeneralKeys::YPosition).asFloat() + object.at(GeneralKeys::Height).asFloat() / 2.0f)
+			object.at(SerializableObject::KeyXPosition).asFloat() + object.at(SerializableObject::KeyWidth).asFloat() / 2.0f,
+			object.at(SerializableObject::KeyYPosition).asFloat() + object.at(SerializableObject::KeyHeight).asFloat() / 2.0f)
 		);
 
 		layer->addChild(newObject);
@@ -84,9 +84,9 @@ SerializableLayer* ObjectParser::parse(TMXObjectGroup* objectGroup)
 	return layer;
 }
 
-Sprite* ObjectParser::loadObject(ValueMap object)
+Sprite* ObjectDeserializer::loadObject(ValueMap object)
 {
-	std::string type = object.at(GeneralKeys::Type).asString();
+	std::string type = object.at(SerializableObject::KeyType).asString();
 
 	// For decor, simply grab the resource of the same name of the object type
 	Sprite* newObject = Sprite::create("Decor/" + type + ".png");
@@ -96,10 +96,10 @@ Sprite* ObjectParser::loadObject(ValueMap object)
 		throw std::invalid_argument("Non-existant decor");
 	}
 
-	float width = object.at(GeneralKeys::Width).asFloat();
-	float height = object.at(GeneralKeys::Height).asFloat();
-	float x = object.at(GeneralKeys::XPosition).asFloat() + width / 2.0f;
-	float y = object.at(GeneralKeys::YPosition).asFloat() + height / 2.0f;
+	float width = object.at(SerializableObject::KeyWidth).asFloat();
+	float height = object.at(SerializableObject::KeyHeight).asFloat();
+	float x = object.at(SerializableObject::KeyXPosition).asFloat() + width / 2.0f;
+	float y = object.at(SerializableObject::KeyYPosition).asFloat() + height / 2.0f;
 
 	// Scale decor based on rectangle size (only using height for simplicity)
 	newObject->setScale(height / newObject->getContentSize().height);
@@ -108,9 +108,9 @@ Sprite* ObjectParser::loadObject(ValueMap object)
 	newObject->setAnchorPoint(Vec2(0.0f, 1.0f));
 	newObject->setPosition(Vec2(x - width / 2.0f, y + height / 2.0f));
 
-	if (GameUtils::keyExists(object, GeneralKeys::Rotation))
+	if (GameUtils::keyExists(object, SerializableObject::KeyRotation))
 	{
-		float rotation = object.at(GeneralKeys::Rotation).asFloat();
+		float rotation = object.at(SerializableObject::KeyRotation).asFloat();
 		newObject->setRotation(rotation);
 	}
 

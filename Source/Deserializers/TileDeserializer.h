@@ -7,8 +7,8 @@
 
 using namespace cocos2d;
 
-class TileParser
+class TileDeserializer
 {
 public:
-	static SerializableTileLayer* parse(cocos_experimental::TMXLayer* tileLayer);
+	static SerializableTileLayer* deserialize(cocos_experimental::TMXLayer* tileLayer);
 };

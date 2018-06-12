@@ -3,10 +3,10 @@
 
 #include "cocos2d.h"
 
-#include "Engine/Maps/Parser/Parser.h"
 #include "Events/NavigationEvents.h"
 #include "Engine/Rendering/Components/CProgressBar.h"
 #include "Engine/Rendering/Components/FadeScene.h"
+#include "Engine/Maps/SerializableMap.h"
 #include "Resources.h"
 #include "Scenes/Menus/MenuBackground.h"
 #include "Utils/StrUtils.h"

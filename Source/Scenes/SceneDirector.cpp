@@ -197,8 +197,8 @@ void SceneDirector::onGameNavigateFight(EventCustom* eventCustom)
 
 void SceneDirector::loadScene(Scene* scene)
 {
-	// Although this is counter-intuitive, add Game as a child to whichever scene is active.
-	// This will allows for Game to listen for navigation events while the active scene runs.
+	// Although this is counter-intuitive, add the Scene Director as a child to whichever scene is active.
+	// This will allows for the Scene Director to listen for navigation events while the active scene runs.
 	this->getParent()->removeChild(this);
 	scene->addChild(this);
 	Director::getInstance()->replaceScene(scene);

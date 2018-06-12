@@ -1,14 +1,24 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Events/DeserializationEvents.h"
+#include "Utils/GameUtils.h"
+
 using namespace cocos2d;
 
 class SerializableObject : public Node
 {
 public:
-	static SerializableObject* deserialize(ValueMap object);
+	static void deserialize(ValueMap object);
 
 	std::string serialize();
+
+	static const std::string KeyType;
+	static const std::string KeyWidth;
+	static const std::string KeyHeight;
+	static const std::string KeyXPosition;
+	static const std::string KeyYPosition;
+	static const std::string KeyRotation;
 
 protected:
 	SerializableObject();

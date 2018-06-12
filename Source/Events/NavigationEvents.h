@@ -11,7 +11,7 @@ using namespace cocos2d;
 // Forward declarations
 class Player;
 class Enemy;
-class LevelMap;
+class SerializableMap;
 
 class NavigationEvents
 {

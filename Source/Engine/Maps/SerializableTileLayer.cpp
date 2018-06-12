@@ -1,6 +1,6 @@
 #include "SerializableTileLayer.h"
 
-SerializableTileLayer* SerializableTileLayer::create(cocos_experimental::TMXLayer* tileLayer)
+SerializableTileLayer* SerializableTileLayer::deserialize(cocos_experimental::TMXLayer* tileLayer)
 {
 	SerializableTileLayer* instance = new SerializableTileLayer(tileLayer);
 
@@ -12,7 +12,7 @@ SerializableTileLayer* SerializableTileLayer::create(cocos_experimental::TMXLaye
 SerializableTileLayer::SerializableTileLayer(cocos_experimental::TMXLayer* tileLayer)
 {
 	this->layerName = tileLayer->getLayerName();
-	this->properties = tileLayer->getProperties();
+	this->layerProperties = tileLayer->getProperties();
 }
 
 SerializableTileLayer::~SerializableTileLayer()
