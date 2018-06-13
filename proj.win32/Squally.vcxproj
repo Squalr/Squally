@@ -165,6 +165,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Deserializers\ObjectDeserializer.cpp" />
     <ClCompile Include="..\Source\Deserializers\ParallaxDeserializer.cpp" />
     <ClCompile Include="..\Source\Deserializers\TileDeserializer.cpp" />
+    <ClCompile Include="..\Source\Engine\GlobalDirector.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableLayer.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableMap.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableObject.cpp" />
@@ -284,6 +285,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Events\NavigationEvents.cpp" />
     <ClCompile Include="..\Source\Events\MouseEvents.cpp" />
     <ClCompile Include="..\Source\Events\PauseEvents.cpp" />
+    <ClCompile Include="..\Source\Objects\Collision\CollisionDeserializer.cpp" />
     <ClCompile Include="..\Source\Scenes\Fight\Fight.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Components\CProgressBar.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Components\EditableTextWindow.cpp" />
@@ -386,6 +388,8 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Deserializers\ObjectDeserializer.h" />
     <ClInclude Include="..\Source\Deserializers\ParallaxDeserializer.h" />
     <ClInclude Include="..\Source\Deserializers\TileDeserializer.h" />
+    <ClInclude Include="..\Source\Engine\GlobalDirector.h" />
+    <ClInclude Include="..\Source\Engine\GlobalNode.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableLayer.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableMap.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableObject.h" />
@@ -506,6 +510,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Events\NavigationEvents.h" />
     <ClInclude Include="..\Source\Events\MouseEvents.h" />
     <ClInclude Include="..\Source\Events\PauseEvents.h" />
+    <ClInclude Include="..\Source\Objects\Collision\CollisionDeserializer.h" />
     <ClInclude Include="..\Source\Scenes\Fight\Fight.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Components\CProgressBar.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Components\EditableTextWindow.h" />

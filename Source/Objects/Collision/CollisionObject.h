@@ -22,6 +22,8 @@ public:
 
 	virtual void setPhysicsEnabled(bool enabled);
 
+	static std::string KeyTypeCollision;
+
 protected:
 	enum CollisionDirection
 	{

@@ -1,12 +1,16 @@
 #include "SceneDirector.h"
 
-SceneDirector* SceneDirector::create()
+SceneDirector* SceneDirector::instance = nullptr;
+
+void SceneDirector::registerGlobalNode()
 {
-	SceneDirector* game = new SceneDirector();
+	if (SceneDirector::instance == nullptr)
+	{
+		SceneDirector::instance = new SceneDirector();
 
-	game->autorelease();
-
-	return game;
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(SceneDirector::instance);
+	}
 }
 
 SceneDirector::SceneDirector()
@@ -24,10 +28,7 @@ SceneDirector::SceneDirector()
 	this->hexus = Hexus::create();
 
 	// Start title screen first (TODO: Eventually splash screen? Do we want one?)
-	this->titleScreen->addChild(this);
-	Director::getInstance()->runWithScene(this->titleScreen);
-
-	this->initializeEventListeners();
+	GlobalDirector::getInstance()->loadScene(this->titleScreen);
 
 	// Prevent disposal of game objects
 	this->titleScreen->retain();
@@ -130,7 +131,7 @@ void SceneDirector::onGameNavigateNew(EventCustom* eventCustom)
 	}
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
-	this->loadScene(newScene);
+	GlobalDirector::getInstance()->loadScene(newScene);
 }
 
 void SceneDirector::onGameNavigateBack(EventCustom* eventCustom)
@@ -150,7 +151,7 @@ void SceneDirector::onGameNavigateBack(EventCustom* eventCustom)
 		this->sceneHistory->pop();
 	}
 
-	this->loadScene(scene);
+	GlobalDirector::getInstance()->loadScene(scene);
 }
 
 void SceneDirector::onGameNavigateConfirm(EventCustom* eventCustom)
@@ -159,7 +160,7 @@ void SceneDirector::onGameNavigateConfirm(EventCustom* eventCustom)
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
 	this->confirmationMenu->initialize(args->message, args->confirmCallback, args->cancelCallback);
-	this->loadScene(this->confirmationMenu);
+	GlobalDirector::getInstance()->loadScene(this->confirmationMenu);
 }
 
 void SceneDirector::onGameNavigateLoadLevel(EventCustom* eventCustom)
@@ -167,7 +168,7 @@ void SceneDirector::onGameNavigateLoadLevel(EventCustom* eventCustom)
 	NavigationEvents::NavigateLoadLevelArgs* args = (NavigationEvents::NavigateLoadLevelArgs*)(eventCustom->getUserData());
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
-	this->loadScene(this->loadingScreen);
+	GlobalDirector::getInstance()->loadScene(this->loadingScreen);
 	this->loadingScreen->loadLevel(args->levelFile, [](SerializableMap* levelMap){ NavigationEvents::enterLevel(levelMap); });
 }
 
@@ -183,7 +184,7 @@ void SceneDirector::onGameNavigateEnterLevel(EventCustom* eventCustom)
 	this->level->retain();
 
 	this->level->loadLevel(args->levelMap);
-	this->loadScene(this->level);
+	GlobalDirector::getInstance()->loadScene(this->level);
 }
 
 void SceneDirector::onGameNavigateFight(EventCustom* eventCustom)
@@ -192,15 +193,5 @@ void SceneDirector::onGameNavigateFight(EventCustom* eventCustom)
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
 	this->fight->loadFight(args->player, args->enemy);
-	this->loadScene(this->fight);
-}
-
-void SceneDirector::loadScene(Scene* scene)
-{
-	// Although this is counter-intuitive, add the Scene Director as a child to whichever scene is active.
-	// This will allows for the Scene Director to listen for navigation events while the active scene runs.
-	this->getParent()->removeChild(this);
-	scene->addChild(this);
-	Director::getInstance()->replaceScene(scene);
-	this->initializeEventListeners();
+	GlobalDirector::getInstance()->loadScene(this->fight);
 }

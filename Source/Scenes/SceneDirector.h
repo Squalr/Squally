@@ -1,6 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/GlobalNode.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Events/HexusEvents.h"
 #include "Events/NavigationEvents.h"
@@ -20,10 +22,10 @@
 
 using namespace cocos2d;
 
-class SceneDirector : public Node
+class SceneDirector : public GlobalNode
 {
 public:
-	static SceneDirector * create();
+	static void registerGlobalNode();
 
 private:
 	SceneDirector();
@@ -35,8 +37,7 @@ private:
 	void onGameNavigateLoadLevel(EventCustom* eventCustom);
 	void onGameNavigateEnterLevel(EventCustom* eventCustom);
 	void onGameNavigateFight(EventCustom* eventCustom);
-	void loadScene(Scene* scene);
-	void initializeEventListeners();
+	void initializeEventListeners() override;
 
 	TitleScreen* titleScreen;
 	TutorialScreen* tutorialScreen;
@@ -50,4 +51,6 @@ private:
 	Hexus* hexus;
 
 	std::stack<Scene*>* sceneHistory;
+
+	static SceneDirector* instance;
 };

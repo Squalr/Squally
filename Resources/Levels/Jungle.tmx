@@ -1167,81 +1167,81 @@
   </object>
  </objectgroup>
  <objectgroup name="COLLISION_collision">
-  <object id="39" name="solid" type="solid" x="2186.82" y="1326.61" width="3048.67" height="1253"/>
-  <object id="41" name="solid" type="solid" x="2765.04" y="1172.39">
+  <object id="39" name="solid" type="collision" x="2186.82" y="1326.61" width="3048.67" height="1253"/>
+  <object id="41" name="solid" type="collision" x="2765.04" y="1172.39">
    <polygon points="0,0 486.022,219.098 0,222.576"/>
   </object>
-  <object id="49" name="solid" type="solid" x="2190.82" y="1174.61" width="598.667" height="929.333"/>
+  <object id="49" name="solid" type="collision" x="2190.82" y="1186.61" width="598.667" height="917.333"/>
   <object id="51" name="solid" type="solid" x="1871.28" y="1220.73" width="345.424" height="99.8788"/>
-  <object id="70" name="solid" type="solid" x="1148.14" y="1190.51" width="757.712" height="1397.15"/>
-  <object id="165" name="solid" type="solid" x="5243.45" y="1078">
+  <object id="70" name="solid" type="collision" x="1148.14" y="1190.51" width="757.712" height="1397.15"/>
+  <object id="165" name="solid" type="collision" x="5243.45" y="1078">
    <polygon points="0,0 1.87499,271.648 -538.125,274"/>
   </object>
-  <object id="176" name="solid" type="solid" x="21.144" y="1191.12" width="718.318" height="1378.97"/>
+  <object id="176" name="solid" type="collision" x="21.144" y="1191.12" width="718.318" height="1378.97"/>
   <object id="177" name="solid" type="solid" x="697.833" y="1195.52" width="518.151" height="105.939"/>
-  <object id="187" name="solid" type="solid" x="8339.66" y="933.5" width="848.67" height="1621"/>
-  <object id="188" name="solid" type="solid" x="9735.67" y="962.712" width="992.428" height="1599.79"/>
-  <object id="196" name="solid" type="solid" x="130.21" y="3976.53" width="5103.22" height="1004.52"/>
-  <object id="198" name="solid" type="solid" x="2175.76" y="3860.61">
+  <object id="187" name="solid" type="collision" x="8339.66" y="933.5" width="848.67" height="1621"/>
+  <object id="188" name="solid" type="collision" x="9735.67" y="962.712" width="992.428" height="1599.79"/>
+  <object id="196" name="solid" type="collision" x="130.21" y="3976.53" width="5103.22" height="1004.52"/>
+  <object id="198" name="solid" type="collision" x="2175.76" y="3860.61">
    <polygon points="0,0 437.537,213.132 0,216.515"/>
   </object>
-  <object id="200" name="solid" type="solid" x="1930.3" y="3842.42">
+  <object id="200" name="solid" type="collision" x="1930.3" y="3842.42">
    <polygon points="0,0 1.87499,271.648 -538.125,274"/>
   </object>
-  <object id="201" name="solid" type="solid" x="1927.18" y="3849.26" width="245.639" height="165.126"/>
-  <object id="203" name="solid" type="solid" x="2813.13" y="3215.15">
+  <object id="201" name="solid" type="collision" x="1927.18" y="3849.26" width="245.639" height="165.126"/>
+  <object id="203" name="solid" type="collision" x="2813.13" y="3215.15">
    <polygon points="0,0 0.864894,121.433 -248.226,122.485"/>
   </object>
-  <object id="204" name="solid" type="solid" x="2565.06" y="3326.53" width="112.306" height="125.732"/>
-  <object id="205" name="solid" type="solid" x="2810.51" y="3217.44" width="294.124" height="110.581"/>
-  <object id="220" name="solid" type="solid" x="29.6044" y="7469.38" width="6906.49" height="117"/>
-  <object id="221" name="solid" type="solid" x="759.665" y="7073.5" width="6422.85" height="117"/>
-  <object id="234" name="solid" type="solid" x="772.755" y="8076.5" width="6390.49" height="97"/>
-  <object id="248" name="solid" type="solid" x="6916" y="7468">
+  <object id="204" name="solid" type="collision" x="2565.06" y="3326.53" width="112.306" height="125.732"/>
+  <object id="205" name="solid" type="collision" x="2810.51" y="3217.44" width="294.124" height="110.581"/>
+  <object id="220" name="solid" type="collision" x="29.6044" y="7469.38" width="6906.49" height="117"/>
+  <object id="221" name="solid" type="collision" x="759.665" y="7073.5" width="6422.85" height="117"/>
+  <object id="234" name="solid" type="collision" x="772.755" y="8076.5" width="6390.49" height="97"/>
+  <object id="248" name="solid" type="collision" x="6916" y="7468">
    <polygon points="0,0 270.022,156.098 0,158.576"/>
   </object>
-  <object id="249" name="solid" type="solid" x="1021.27" y="8482.98" width="6962.01" height="117"/>
-  <object id="250" name="solid" type="solid" x="7940.76" y="6020.5" width="114.49" height="12613"/>
-  <object id="251" name="solid" type="solid" x="1027.96" y="8485">
+  <object id="249" name="solid" type="collision" x="1021.27" y="8482.98" width="6962.01" height="117"/>
+  <object id="250" name="solid" type="collision" x="7940.76" y="6020.5" width="114.49" height="12613"/>
+  <object id="251" name="solid" type="collision" x="1027.96" y="8485">
    <polygon points="0,0 0.916662,132.85 -263.083,134"/>
   </object>
-  <object id="252" name="solid" type="solid" x="26.755" y="9509.5" width="6906.49" height="117"/>
-  <object id="253" name="solid" type="solid" x="6913.15" y="9508.1">
+  <object id="252" name="solid" type="collision" x="26.755" y="9509.5" width="6906.49" height="117"/>
+  <object id="253" name="solid" type="collision" x="6913.15" y="9508.1">
    <polygon points="0,0 270.022,156.098 0,158.576"/>
   </object>
-  <object id="254" name="solid" type="solid" x="58.755" y="11549.5" width="6906.49" height="85"/>
-  <object id="255" name="solid" type="solid" x="6945.15" y="11548.1">
+  <object id="254" name="solid" type="collision" x="58.755" y="11549.5" width="6906.49" height="85"/>
+  <object id="255" name="solid" type="collision" x="6945.15" y="11548.1">
    <polygon points="0,0 270.022,156.098 0,158.576"/>
   </object>
   <object id="256" name="solid" type="solid" x="-1.245" y="13593.5" width="6906.49" height="101"/>
-  <object id="257" name="solid" type="solid" x="6885.15" y="13592.1">
+  <object id="257" name="solid" type="collision" x="6885.15" y="13592.1">
    <polygon points="0,0 270.022,156.098 0,158.576"/>
   </object>
-  <object id="262" name="solid" type="solid" x="983" y="10523.5" width="6962.01" height="65"/>
-  <object id="263" name="solid" type="solid" x="1029.69" y="10527.5">
+  <object id="262" name="solid" type="collision" x="983" y="10523.5" width="6962.01" height="65"/>
+  <object id="263" name="solid" type="collision" x="1029.69" y="10527.5">
    <polygon points="0,0 0.916662,132.85 -263.083,134"/>
   </object>
-  <object id="264" name="solid" type="solid" x="1097" y="12581.5" width="6842.01" height="69"/>
+  <object id="264" name="solid" type="collision" x="1097" y="12581.5" width="6842.01" height="69"/>
   <object id="265" name="solid" type="solid" x="1133.69" y="12591.5">
    <polygon points="0,0 0.916662,132.85 -263.083,134"/>
   </object>
-  <object id="266" name="solid" type="solid" x="1105" y="14623.5" width="6834.01" height="69"/>
-  <object id="267" name="solid" type="solid" x="1149.69" y="14631.5">
+  <object id="266" name="solid" type="collision" x="1105" y="14623.5" width="6834.01" height="69"/>
+  <object id="267" name="solid" type="collision" x="1149.69" y="14631.5">
    <polygon points="0,0 0.916662,132.85 -263.083,134"/>
   </object>
-  <object id="268" name="solid" type="solid" x="26.755" y="15635.5" width="7906.49" height="77"/>
-  <object id="269" name="solid" type="solid" x="773.422" y="15285.5" width="6394.49" height="85"/>
-  <object id="270" name="solid" type="solid" x="774.422" y="13203.8" width="6378.49" height="80"/>
-  <object id="271" name="solid" type="solid" x="775.725" y="11193.9" width="6378.49" height="77"/>
-  <object id="272" name="solid" type="solid" x="764.755" y="10177.5" width="6378.49" height="41"/>
-  <object id="273" name="solid" type="solid" x="818.755" y="9125.5" width="6350.49" height="73"/>
-  <object id="274" name="solid" type="solid" x="410.755" y="12189.5" width="6746.49" height="117"/>
-  <object id="354" name="solid" type="solid" x="804.755" y="14253.5" width="6342.49" height="53"/>
-  <object id="356" name="solid" type="solid" x="20.575" y="6805.5" width="318.85" height="101"/>
-  <object id="357" name="solid" type="solid" x="60.575" y="8853.5" width="318.85" height="125"/>
-  <object id="359" name="solid" type="solid" x="52.575" y="10901.5" width="342.85" height="117"/>
-  <object id="360" name="solid" type="solid" x="116.575" y="12949.5" width="278.85" height="101"/>
-  <object id="361" name="solid" type="solid" x="108.575" y="15005.5" width="278.85" height="101"/>
+  <object id="268" name="solid" type="collision" x="26.755" y="15635.5" width="7906.49" height="77"/>
+  <object id="269" name="solid" type="collision" x="773.422" y="15285.5" width="6394.49" height="85"/>
+  <object id="270" name="solid" type="collision" x="774.422" y="13203.8" width="6378.49" height="80"/>
+  <object id="271" name="solid" type="collision" x="775.725" y="11193.9" width="6378.49" height="77"/>
+  <object id="272" name="solid" type="collision" x="764.755" y="10177.5" width="6378.49" height="41"/>
+  <object id="273" name="solid" type="collision" x="818.755" y="9125.5" width="6350.49" height="73"/>
+  <object id="274" name="solid" type="collision" x="410.755" y="12189.5" width="6746.49" height="117"/>
+  <object id="354" name="solid" type="collision" x="804.755" y="14253.5" width="6342.49" height="53"/>
+  <object id="356" name="solid" type="collision" x="20.575" y="6805.5" width="318.85" height="101"/>
+  <object id="357" name="solid" type="collision" x="60.575" y="8853.5" width="318.85" height="125"/>
+  <object id="359" name="solid" type="collision" x="52.575" y="10901.5" width="342.85" height="117"/>
+  <object id="360" name="solid" type="collision" x="116.575" y="12949.5" width="278.85" height="101"/>
+  <object id="361" name="solid" type="collision" x="108.575" y="15005.5" width="278.85" height="101"/>
   <object id="362" name="solid" type="solid" x="1760.84" y="21902.5" width="558.318" height="218.97"/>
   <object id="363" name="solid" type="solid" x="1736.84" y="22890.5" width="974.318" height="218.97"/>
  </objectgroup>
