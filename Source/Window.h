@@ -4,6 +4,7 @@
 
 #include "Config/ConfigManager.h"
 #include "Scenes/SceneDirector.h"
+#include "Objects/Collision/CollisionDeserializer.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;

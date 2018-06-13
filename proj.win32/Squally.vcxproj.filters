@@ -811,6 +811,12 @@
     <ClCompile Include="..\Source\Deserializers\TileDeserializer.cpp">
       <Filter>Source\Deserializers</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Engine\GlobalDirector.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Collision\CollisionDeserializer.cpp">
+      <Filter>Source\Objects\Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Scenes\Level\Level.h">
@@ -1491,6 +1497,15 @@
     </ClInclude>
     <ClInclude Include="..\Source\Deserializers\TileDeserializer.h">
       <Filter>Source\Deserializers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\GlobalDirector.h">
+      <Filter>Source\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Collision\CollisionDeserializer.h">
+      <Filter>Source\Objects\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\GlobalNode.h">
+      <Filter>Source\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -21,7 +21,7 @@ void SerializableObject::deserialize(ValueMap object)
 
 	if (GameUtils::keyExists(object, SerializableObject::KeyType))
 	{
-		std::string typeName = object.at(SerializableObject::KeyType).asString();
+		typeName = object.at(SerializableObject::KeyType).asString();
 	}
 	else
 	{
