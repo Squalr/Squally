@@ -1,6 +1,7 @@
 #include "SerializableObject.h"
 
 const std::string SerializableObject::KeyType = "type";
+const std::string SerializableObject::KeyName = "name";
 const std::string SerializableObject::KeyWidth = "width";
 const std::string SerializableObject::KeyHeight = "height";
 const std::string SerializableObject::KeyXPosition = "x";
@@ -15,7 +16,7 @@ SerializableObject::~SerializableObject()
 {
 }
 
-void SerializableObject::deserialize(ValueMap object)
+void SerializableObject::deserialize(ValueMap object, std::function<void(SerializableObject*)> callback)
 {
 	std::string typeName = "";
 
@@ -29,7 +30,7 @@ void SerializableObject::deserialize(ValueMap object)
 	}
 
 	// Fire the deserialization request
-	DeserializationEvents::TriggerDeserializationRequest(DeserializationEvents::DeserializationRequestArgs(typeName, object));
+	DeserializationEvents::TriggerDeserializationRequest(DeserializationEvents::DeserializationRequestArgs(typeName, object, callback));
 }
 
 std::string SerializableObject::serialize()

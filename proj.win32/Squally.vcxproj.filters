@@ -790,9 +790,6 @@
     <ClCompile Include="..\Source\Events\DeserializationEvents.cpp">
       <Filter>Source\Events</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Deserializers\CollisionDeserializer.cpp">
-      <Filter>Source\Deserializers</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Deserializers\DecorDeserializer.cpp">
       <Filter>Source\Deserializers</Filter>
     </ClCompile>
@@ -1476,9 +1473,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Events\DeserializationEvents.h">
       <Filter>Source\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Deserializers\CollisionDeserializer.h">
-      <Filter>Source\Deserializers</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Deserializers\DecorDeserializer.h">
       <Filter>Source\Deserializers</Filter>
