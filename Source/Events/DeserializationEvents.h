@@ -19,8 +19,9 @@ public:
 	{
 		std::string typeName;
 		ValueMap valueMap;
+		std::function<void(SerializableObject*)> callback;
 
-		DeserializationRequestArgs(std::string typeName, ValueMap valueMap) : typeName(typeName), valueMap(valueMap)
+		DeserializationRequestArgs(std::string typeName, ValueMap valueMap, std::function<void(SerializableObject*)> callback) : typeName(typeName), valueMap(valueMap), callback(callback)
 		{
 		}
 	};
@@ -29,7 +30,7 @@ public:
 	{
 		SerializableObject* serializableObject;
 
-		DeserializeArgs(std::string typeName, ValueMap valueMap) : serializableObject(serializableObject)
+		DeserializeArgs(SerializableObject* serializableObject) : serializableObject(serializableObject)
 		{
 		}
 	};

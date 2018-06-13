@@ -158,7 +158,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Config\ConfigManager.cpp" />
-    <ClCompile Include="..\Source\Deserializers\CollisionDeserializer.cpp" />
     <ClCompile Include="..\Source\Deserializers\DecorDeserializer.cpp" />
     <ClCompile Include="..\Source\Deserializers\EntityDeserializer.cpp" />
     <ClCompile Include="..\Source\Deserializers\EnvironmentDeserializer.cpp" />
@@ -381,7 +380,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Config\ConfigManager.h" />
-    <ClInclude Include="..\Source\Deserializers\CollisionDeserializer.h" />
     <ClInclude Include="..\Source\Deserializers\DecorDeserializer.h" />
     <ClInclude Include="..\Source\Deserializers\EntityDeserializer.h" />
     <ClInclude Include="..\Source\Deserializers\EnvironmentDeserializer.h" />

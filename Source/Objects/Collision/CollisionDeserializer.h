@@ -16,6 +16,13 @@ public:
 
 	void onDeserializationRequest(EventCustom* eventCustom);
 
+	static const std::string KeyCollisionTypeSolid;
+	static const std::string KeyCollisionTypeWater;
+	static const std::string KeyCollisionTypeSolidNpc;
+	static const std::string KeyCollisionTypeSolidNpcFlying;
+
+	static const std::string KeyCollisionPointsProperty;
+
 private:
 	CollisionDeserializer();
 	~CollisionDeserializer();

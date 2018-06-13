@@ -27,20 +27,14 @@ SerializableLayer* SerializableLayer::deserialize(TMXObjectGroup* objectGroup)
 	ValueMap properties = objectGroup->getProperties();
 	std::vector<SerializableObject*>* deserializedObjects = new std::vector<SerializableObject*>();
 
-	// Listen for deserialization events. This allows for the engine to not have to worry about knowing every type of serializable object
-	EventListenerCustom* deserializationResultListener = EventListenerCustom::create(DeserializationEvents::DeserializeEvent, [deserializedObjects](EventCustom* event) {
-		DeserializationEvents::DeserializeArgs* args = static_cast<DeserializationEvents::DeserializeArgs*>(event->getUserData());
-		deserializedObjects->push_back(args->serializableObject);
-
-	});
-	Director::getInstance()->getRunningScene()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(deserializationResultListener, Director::getInstance()->getRunningScene());
-
 	// Fire deserialization events for objects
 	for (int index = 0; index < size(objects); index++)
 	{
 		if (objects[index].getType() == cocos2d::Value::Type::MAP)
 		{
-			SerializableObject::deserialize(objects[index].asValueMap());
+			SerializableObject::deserialize(objects[index].asValueMap(), [deserializedObjects](SerializableObject* object) {
+				deserializedObjects->push_back(object);
+			});
 		}
 	}
 
