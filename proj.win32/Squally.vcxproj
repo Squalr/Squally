@@ -283,7 +283,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Objects\DecorDeserializer.cpp" />
     <ClCompile Include="..\Source\Objects\EnvironmentDeserializer.cpp" />
     <ClCompile Include="..\Source\Objects\ObjectDeserializer.cpp" />
-    <ClCompile Include="..\Source\Objects\TileDeserializer.cpp" />
     <ClCompile Include="..\Source\Scenes\Fight\Fight.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Components\CProgressBar.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Components\EditableTextWindow.cpp" />
@@ -506,7 +505,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Objects\DecorDeserializer.h" />
     <ClInclude Include="..\Source\Objects\EnvironmentDeserializer.h" />
     <ClInclude Include="..\Source\Objects\ObjectDeserializer.h" />
-    <ClInclude Include="..\Source\Objects\TileDeserializer.h" />
     <ClInclude Include="..\Source\Scenes\Fight\Fight.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Components\CProgressBar.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Components\EditableTextWindow.h" />
