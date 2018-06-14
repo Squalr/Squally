@@ -6,6 +6,11 @@ SerializableMap::SerializableMap(std::string mapFileName, std::vector<Serializab
 	this->serializableLayers = layers;
 	this->mapUnitSize = unitSize;
 	this->mapTileSize = tileSize;
+
+	for (auto it = layers->begin(); it != layers->end(); it++)
+	{
+		this->addChild(*it);
+	}
 }
 
 SerializableMap::~SerializableMap()

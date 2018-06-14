@@ -158,12 +158,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Config\ConfigManager.cpp" />
-    <ClCompile Include="..\Source\Deserializers\DecorDeserializer.cpp" />
-    <ClCompile Include="..\Source\Deserializers\EntityDeserializer.cpp" />
-    <ClCompile Include="..\Source\Deserializers\EnvironmentDeserializer.cpp" />
-    <ClCompile Include="..\Source\Deserializers\ObjectDeserializer.cpp" />
-    <ClCompile Include="..\Source\Deserializers\ParallaxDeserializer.cpp" />
-    <ClCompile Include="..\Source\Deserializers\TileDeserializer.cpp" />
     <ClCompile Include="..\Source\Engine\GlobalDirector.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableLayer.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableMap.cpp" />
@@ -273,6 +267,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Entities\Enemies\Volcano\LavaGolem.cpp" />
     <ClCompile Include="..\Source\Entities\Enemy.cpp" />
     <ClCompile Include="..\Source\Entities\Entity.cpp" />
+    <ClCompile Include="..\Source\Entities\EntityDeserializer.cpp" />
     <ClCompile Include="..\Source\Entities\Npcs\Knight.cpp" />
     <ClCompile Include="..\Source\Entities\Npcs\NpcBase.cpp" />
     <ClCompile Include="..\Source\Entities\Player\Hover.cpp" />
@@ -285,6 +280,10 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Events\MouseEvents.cpp" />
     <ClCompile Include="..\Source\Events\PauseEvents.cpp" />
     <ClCompile Include="..\Source\Objects\Collision\CollisionDeserializer.cpp" />
+    <ClCompile Include="..\Source\Objects\DecorDeserializer.cpp" />
+    <ClCompile Include="..\Source\Objects\EnvironmentDeserializer.cpp" />
+    <ClCompile Include="..\Source\Objects\ObjectDeserializer.cpp" />
+    <ClCompile Include="..\Source\Objects\TileDeserializer.cpp" />
     <ClCompile Include="..\Source\Scenes\Fight\Fight.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Components\CProgressBar.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Components\EditableTextWindow.cpp" />
@@ -380,12 +379,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Config\ConfigManager.h" />
-    <ClInclude Include="..\Source\Deserializers\DecorDeserializer.h" />
-    <ClInclude Include="..\Source\Deserializers\EntityDeserializer.h" />
-    <ClInclude Include="..\Source\Deserializers\EnvironmentDeserializer.h" />
-    <ClInclude Include="..\Source\Deserializers\ObjectDeserializer.h" />
-    <ClInclude Include="..\Source\Deserializers\ParallaxDeserializer.h" />
-    <ClInclude Include="..\Source\Deserializers\TileDeserializer.h" />
     <ClInclude Include="..\Source\Engine\GlobalDirector.h" />
     <ClInclude Include="..\Source\Engine\GlobalNode.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableLayer.h" />
@@ -497,6 +490,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Entities\Enemy.h" />
     <ClInclude Include="..\Source\Entities\Entities.h" />
     <ClInclude Include="..\Source\Entities\Entity.h" />
+    <ClInclude Include="..\Source\Entities\EntityDeserializer.h" />
     <ClInclude Include="..\Source\Entities\Npcs\Knight.h" />
     <ClInclude Include="..\Source\Entities\Npcs\NpcBase.h" />
     <ClInclude Include="..\Source\Entities\Player\Hover.h" />
@@ -509,6 +503,10 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Events\MouseEvents.h" />
     <ClInclude Include="..\Source\Events\PauseEvents.h" />
     <ClInclude Include="..\Source\Objects\Collision\CollisionDeserializer.h" />
+    <ClInclude Include="..\Source\Objects\DecorDeserializer.h" />
+    <ClInclude Include="..\Source\Objects\EnvironmentDeserializer.h" />
+    <ClInclude Include="..\Source\Objects\ObjectDeserializer.h" />
+    <ClInclude Include="..\Source\Objects\TileDeserializer.h" />
     <ClInclude Include="..\Source\Scenes\Fight\Fight.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Components\CProgressBar.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Components\EditableTextWindow.h" />

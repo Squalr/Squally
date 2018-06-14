@@ -3,6 +3,7 @@
 #include "cocos2d.h"
 
 #include "Config/ConfigManager.h"
+#include "Entities/EntityDeserializer.h"
 #include "Scenes/SceneDirector.h"
 #include "Objects/Collision/CollisionDeserializer.h"
 

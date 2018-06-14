@@ -463,702 +463,702 @@
   </object>
  </objectgroup>
  <objectgroup name="ENTITIES_entities">
-  <object id="72" name="spawn" type="spawn" x="133.847" y="6306.64" width="128" height="128"/>
-  <object id="180" name="knight" type="knight" x="342.06" y="758.727" width="200" height="288"/>
-  <object id="222" name="boss_rhinoman" type="boss_rhinoman" x="6169.82" y="6688" width="196" height="196">
+  <object id="72" name="spawn" type="entity" x="133.847" y="6306.64" width="128" height="128"/>
+  <object id="180" name="knight" type="entity" x="342.06" y="758.727" width="200" height="288"/>
+  <object id="222" name="boss_rhinoman" type="entity" x="6169.82" y="6688" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="224" name="goblin_grunt" type="goblin_grunt" x="1054" y="6704" width="196" height="196">
+  <object id="224" name="goblin_grunt" type="entity" x="1054" y="6704" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="225" name="goblin_swordsman" type="goblin_swordsman" x="1562" y="6696" width="196" height="196">
+  <object id="225" name="goblin_swordsman" type="entity" x="1562" y="6696" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="226" name="jungle_dragon" type="jungle_dragon" x="5154" y="6696" width="196" height="196">
+  <object id="226" name="jungle_dragon" type="entity" x="5154" y="6696" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="227" name="goblin_warrior" type="goblin_warrior" x="2070" y="6696" width="196" height="196">
+  <object id="227" name="goblin_warrior" type="entity" x="2070" y="6696" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="228" name="mantis" type="mantis" x="3626" y="6664" width="196" height="196">
+  <object id="228" name="mantis" type="entity" x="3626" y="6664" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="229" name="minotaur" type="minotaur" x="3098" y="6696" width="196" height="196">
+  <object id="229" name="minotaur" type="entity" x="3098" y="6696" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="230" name="pig_demon" type="pig_demon" x="4126" y="6672" width="196" height="196">
+  <object id="230" name="pig_demon" type="entity" x="4126" y="6672" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="231" name="purple_dinosaur" type="purple_dinosaur" x="4642" y="6672" width="196" height="196">
+  <object id="231" name="purple_dinosaur" type="entity" x="4642" y="6672" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="232" name="tiki_golem" type="tiki_golem" x="5662" y="6688" width="196" height="196">
+  <object id="232" name="tiki_golem" type="entity" x="5662" y="6688" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="233" name="tiki_warrior" type="tiki_warrior" x="2579.7" y="6680" width="196" height="196">
+  <object id="233" name="tiki_warrior" type="entity" x="2579.7" y="6680" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="237" name="anubis_tiny" type="anubis_tiny" x="5650" y="7734" width="196" height="196">
+  <object id="237" name="anubis_tiny" type="entity" x="5650" y="7734" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="238" name="anubis_warrior" type="anubis_warrior" x="3066" y="7726" width="196" height="196">
+  <object id="238" name="anubis_warrior" type="entity" x="3066" y="7726" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="239" name="boss_egyptian_goddess" type="boss_egyptian_goddess" x="1566" y="7714" width="196" height="196">
+  <object id="239" name="boss_egyptian_goddess" type="entity" x="1566" y="7714" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="240" name="lioness" type="lioness" x="6170" y="7702" width="196" height="196">
+  <object id="240" name="lioness" type="entity" x="6170" y="7702" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="241" name="lion_man" type="lion_man" x="4626" y="7722" width="196" height="196">
+  <object id="241" name="lion_man" type="entity" x="4626" y="7722" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="242" name="medusa" type="medusa" x="3614" y="7710" width="196" height="196">
+  <object id="242" name="medusa" type="entity" x="3614" y="7710" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="243" name="medusa_small" type="medusa_small" x="5106" y="7714" width="196" height="196">
+  <object id="243" name="medusa_small" type="entity" x="5106" y="7714" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="244" name="mermaid" type="mermaid" x="2566" y="7698" width="196" height="196">
+  <object id="244" name="mermaid" type="entity" x="2566" y="7698" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="245" name="mummy_pharaoh" type="mummy_pharaoh" x="2078" y="7710" width="196" height="196">
+  <object id="245" name="mummy_pharaoh" type="entity" x="2078" y="7710" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="246" name="tiger_man" type="tiger_man" x="4110" y="7718" width="196" height="196">
+  <object id="246" name="tiger_man" type="entity" x="4110" y="7718" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="247" name="tigress" type="tigress" x="6674" y="7718" width="196" height="196">
+  <object id="247" name="tigress" type="entity" x="6674" y="7718" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="275" name="boss_dragon_orc_king" type="boss_dragon_orc_king" x="6186" y="8714" width="196" height="196">
+  <object id="275" name="boss_dragon_orc_king" type="entity" x="6186" y="8714" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="276" name="cyclops" type="cyclops" x="5150" y="8730" width="196" height="196">
+  <object id="276" name="cyclops" type="entity" x="5150" y="8730" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="277" name="ent" type="ent" x="3600" y="8738" width="196" height="196">
+  <object id="277" name="ent" type="entity" x="3600" y="8738" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="278" name="ent_mage" type="ent_mage" x="4154" y="8742" width="196" height="196">
+  <object id="278" name="ent_mage" type="entity" x="4154" y="8742" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="279" name="goblin_grunt_boar" type="goblin_grunt_boar" x="2074" y="8746" width="196" height="196">
+  <object id="279" name="goblin_grunt_boar" type="entity" x="2074" y="8746" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="280" name="goblin_guard" type="goblin_guard" x="4674" y="8722" width="196" height="196">
+  <object id="280" name="goblin_guard" type="entity" x="4674" y="8722" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="281" name="goblin_shaman" type="goblin_shaman" x="1550" y="8730" width="196" height="196">
+  <object id="281" name="goblin_shaman" type="entity" x="1550" y="8730" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="282" name="goblin_warrior_pig" type="goblin_warrior_pig" x="2594" y="8742" width="196" height="196">
+  <object id="282" name="goblin_warrior_pig" type="entity" x="2594" y="8742" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="283" name="orc_grunt" type="orc_grunt" x="1074" y="8742" width="196" height="196">
+  <object id="283" name="orc_grunt" type="entity" x="1074" y="8742" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="284" name="orc_warrior" type="orc_warrior" x="3106" y="8734" width="196" height="196">
+  <object id="284" name="orc_warrior" type="entity" x="3106" y="8734" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="285" name="troll" type="troll" x="5662" y="8722" width="196" height="196">
+  <object id="285" name="troll" type="entity" x="5662" y="8722" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="286" name="boss_krampus" type="boss_krampus" x="1582" y="9770" width="196" height="196">
+  <object id="286" name="boss_krampus" type="entity" x="1582" y="9770" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="287" name="black_widow" type="black_widow" x="6706" y="9778" width="196" height="196">
+  <object id="287" name="black_widow" type="entity" x="6706" y="9778" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="288" name="earth_elemental" type="earth_elemental" x="2626" y="9750" width="196" height="196">
+  <object id="288" name="earth_elemental" type="entity" x="2626" y="9750" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="289" name="earth_golem" type="earth_golem" x="3634" y="9742" width="196" height="196">
+  <object id="289" name="earth_golem" type="entity" x="3634" y="9742" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="290" name="forest_golem" type="forest_golem" x="4166" y="9762" width="196" height="196">
+  <object id="290" name="forest_golem" type="entity" x="4166" y="9762" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="291" name="genie" type="genie" x="3138" y="9754" width="196" height="196">
+  <object id="291" name="genie" type="entity" x="3138" y="9754" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="292" name="rock_golem" type="rock_golem" x="2102" y="9754" width="196" height="196">
+  <object id="292" name="rock_golem" type="entity" x="2102" y="9754" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="293" name="shaman" type="shaman" x="4686" y="9746" width="196" height="196">
+  <object id="293" name="shaman" type="entity" x="4686" y="9746" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="294" name="skeleton_archer" type="skeleton_archer" x="5686" y="9758" width="196" height="196">
+  <object id="294" name="skeleton_archer" type="entity" x="5686" y="9758" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="295" name="skeleton_necromancer" type="skeleton_necromancer" x="5190" y="9738" width="196" height="196">
+  <object id="295" name="skeleton_necromancer" type="entity" x="5190" y="9738" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="296" name="skeleton_warrior" type="skeleton_warrior" x="6218" y="9750" width="196" height="196">
+  <object id="296" name="skeleton_warrior" type="entity" x="6218" y="9750" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="297" name="boss_witch" type="boss_witch" x="6058" y="10778" width="196" height="196">
+  <object id="297" name="boss_witch" type="entity" x="6058" y="10778" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="298" name="executioner" type="executioner" x="4018" y="10754" width="196" height="196">
+  <object id="298" name="executioner" type="entity" x="4018" y="10754" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="299" name="ghost" type="ghost" x="1062" y="10774" width="196" height="196">
+  <object id="299" name="ghost" type="entity" x="1062" y="10774" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="300" name="guard" type="guard" x="4530" y="10774" width="196" height="196">
+  <object id="300" name="guard" type="entity" x="4530" y="10774" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="302" name="harpy" type="harpy" x="1590" y="10790" width="196" height="196">
+  <object id="302" name="harpy" type="entity" x="1590" y="10790" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="303" name="jack" type="jack" x="5038" y="10782" width="196" height="196">
+  <object id="303" name="jack" type="entity" x="5038" y="10782" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="304" name="reaper" type="reaper" x="5522" y="10782" width="196" height="196">
+  <object id="304" name="reaper" type="entity" x="5522" y="10782" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="305" name="skeleton_mage" type="skeleton_mage" x="2110" y="10786" width="196" height="196">
+  <object id="305" name="skeleton_mage" type="entity" x="2110" y="10786" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="306" name="vampire_lord" type="vampire_lord" x="3090" y="10782" width="196" height="196">
+  <object id="306" name="vampire_lord" type="entity" x="3090" y="10782" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="307" name="vampiress" type="vampiress" x="2586" y="10798" width="196" height="196">
+  <object id="307" name="vampiress" type="entity" x="2586" y="10798" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="308" name="zombie" type="zombie" x="3494" y="10778" width="196" height="196">
+  <object id="308" name="zombie" type="entity" x="3494" y="10778" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="309" name="boss_ice_golem" type="boss_ice_golem" x="490" y="11834" width="196" height="196">
+  <object id="309" name="boss_ice_golem" type="entity" x="490" y="11834" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="310" name="boss_santa" type="boss_santa" x="1014" y="11810" width="196" height="196">
+  <object id="310" name="boss_santa" type="entity" x="1014" y="11810" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="311" name="evil_snowman" type="evil_snowman" x="1614" y="11790" width="196" height="196">
+  <object id="311" name="evil_snowman" type="entity" x="1614" y="11790" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="312" name="frost_dragon" type="frost_dragon" x="2214" y="11806" width="196" height="196">
+  <object id="312" name="frost_dragon" type="entity" x="2214" y="11806" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="313" name="frost_shooter" type="frost_shooter" x="2774" y="11806" width="196" height="196">
+  <object id="313" name="frost_shooter" type="entity" x="2774" y="11806" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="314" name="goblin_elf" type="goblin_elf" x="3338" y="11782" width="196" height="196">
+  <object id="314" name="goblin_elf" type="entity" x="3338" y="11782" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="315" name="ice_golem" type="ice_golem" x="3926" y="11778" width="196" height="196">
+  <object id="315" name="ice_golem" type="entity" x="3926" y="11778" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="316" name="tiny_ice_golem" type="tiny_ice_golem" x="4534" y="11778" width="196" height="196">
+  <object id="316" name="tiny_ice_golem" type="entity" x="4534" y="11778" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="317" name="toy_soldier_goblin" type="toy_soldier_goblin" x="5086" y="11766" width="196" height="196">
+  <object id="317" name="toy_soldier_goblin" type="entity" x="5086" y="11766" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="318" name="water_elemental" type="water_elemental" x="5610" y="11770" width="196" height="196">
+  <object id="318" name="water_elemental" type="entity" x="5610" y="11770" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="319" name="yeti" type="yeti" x="6162" y="11782" width="196" height="196">
+  <object id="319" name="yeti" type="entity" x="6162" y="11782" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="320" name="yeti_warrior" type="yeti_warrior" x="6606" y="11806" width="196" height="196">
+  <object id="320" name="yeti_warrior" type="entity" x="6606" y="11806" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="321" name="boss_demon_king" type="boss_demon_king" x="6158" y="12838" width="196" height="196">
+  <object id="321" name="boss_demon_king" type="entity" x="6158" y="12838" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="322" name="critter_demon" type="critter_demon" x="1054" y="12838" width="196" height="196">
+  <object id="322" name="critter_demon" type="entity" x="1054" y="12838" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="323" name="demon_dragon" type="demon_dragon" x="5162" y="12834" width="196" height="196">
+  <object id="323" name="demon_dragon" type="entity" x="5162" y="12834" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="324" name="demon_ghost" type="demon_ghost" x="3622" y="12834" width="196" height="196">
+  <object id="324" name="demon_ghost" type="entity" x="3622" y="12834" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="325" name="demon_grunt" type="demon_grunt" x="3106" y="12826" width="196" height="196">
+  <object id="325" name="demon_grunt" type="entity" x="3106" y="12826" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="326" name="demon_rogue" type="demon_rogue" x="2078" y="12826" width="196" height="196">
+  <object id="326" name="demon_rogue" type="entity" x="2078" y="12826" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="327" name="demon_shaman" type="demon_shaman" x="2610" y="12814" width="196" height="196">
+  <object id="327" name="demon_shaman" type="entity" x="2610" y="12814" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="328" name="demon_swordsman" type="demon_swordsman" x="1566" y="12830" width="196" height="196">
+  <object id="328" name="demon_swordsman" type="entity" x="1566" y="12830" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="329" name="demon_warrior" type="demon_warrior" x="5658" y="12834" width="196" height="196">
+  <object id="329" name="demon_warrior" type="entity" x="5658" y="12834" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="330" name="fire_elemental" type="fire_elemental" x="4634" y="12830" width="196" height="196">
+  <object id="330" name="fire_elemental" type="entity" x="4634" y="12830" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="331" name="lava_golem" type="lava_golem" x="4134" y="12826" width="196" height="196">
+  <object id="331" name="lava_golem" type="entity" x="4134" y="12826" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="332" name="boss_skeleton_king" type="boss_skeleton_king" x="1442" y="13862" width="196" height="196">
+  <object id="332" name="boss_skeleton_king" type="entity" x="1442" y="13862" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="333" name="abomination" type="abomination" x="4018" y="13862" width="196" height="196">
+  <object id="333" name="abomination" type="entity" x="4018" y="13862" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="334" name="bat_demon" type="bat_demon" x="5534" y="13850" width="196" height="196">
+  <object id="334" name="bat_demon" type="entity" x="5534" y="13850" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="335" name="dark_dragon" type="dark_dragon" x="1934" y="13862" width="196" height="196">
+  <object id="335" name="dark_dragon" type="entity" x="1934" y="13862" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="336" name="demon_archer" type="demon_archer" x="4494" y="13866" width="196" height="196">
+  <object id="336" name="demon_archer" type="entity" x="4494" y="13866" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="337" name="skeleton_baron" type="skeleton_baron" x="3478" y="13850" width="196" height="196">
+  <object id="337" name="skeleton_baron" type="entity" x="3478" y="13850" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="338" name="skeleton_cleaver" type="skeleton_cleaver" x="5038" y="13854" width="196" height="196">
+  <object id="338" name="skeleton_cleaver" type="entity" x="5038" y="13854" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="339" name="skeleton_knight" type="skeleton_knight" x="2938" y="13862" width="196" height="196">
+  <object id="339" name="skeleton_knight" type="entity" x="2938" y="13862" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="340" name="skeleton_priestess" type="skeleton_priestess" x="2450" y="13854" width="196" height="196">
+  <object id="340" name="skeleton_priestess" type="entity" x="2450" y="13854" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="341" name="undead" type="undead" x="6028" y="13862" width="196" height="196">
+  <object id="341" name="undead" type="entity" x="6028" y="13862" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="342" name="void_demon" type="void_demon" x="6534" y="13864" width="196" height="196">
+  <object id="342" name="void_demon" type="entity" x="6534" y="13864" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="343" name="robot" type="robot" x="2210" y="14874" width="196" height="196">
+  <object id="343" name="robot" type="entity" x="2210" y="14874" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="344" name="boss_evil_eye" type="boss_evil_eye" x="6302" y="14890" width="196" height="196">
+  <object id="344" name="boss_evil_eye" type="entity" x="6302" y="14890" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="345" name="exterminator" type="exterminator" x="5790" y="14874" width="196" height="196">
+  <object id="345" name="exterminator" type="entity" x="5790" y="14874" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="346" name="mech_box_drone" type="mech_box_drone" x="1182" y="14886" width="196" height="196">
+  <object id="346" name="mech_box_drone" type="entity" x="1182" y="14886" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="347" name="mech_dog" type="mech_dog" x="3222" y="14886" width="196" height="196">
+  <object id="347" name="mech_dog" type="entity" x="3222" y="14886" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="348" name="mech_golem" type="mech_golem" x="5294" y="14886" width="196" height="196">
+  <object id="348" name="mech_golem" type="entity" x="5294" y="14886" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="349" name="mech_golem_dark" type="mech_golem_dark" x="3750" y="14870" width="196" height="196">
+  <object id="349" name="mech_golem_dark" type="entity" x="3750" y="14870" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="350" name="mech_guard" type="mech_guard" x="4266" y="14882" width="196" height="196">
+  <object id="350" name="mech_guard" type="entity" x="4266" y="14882" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="351" name="mite_bot" type="mite_bot" x="1694" y="14874" width="196" height="196">
+  <object id="351" name="mite_bot" type="entity" x="1694" y="14874" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="352" name="viking_bot" type="viking_bot" x="4774" y="14866" width="196" height="196">
+  <object id="352" name="viking_bot" type="entity" x="4774" y="14866" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="353" name="viking_bot_small" type="viking_bot_small" x="2730" y="14882" width="196" height="196">
+  <object id="353" name="viking_bot_small" type="entity" x="2730" y="14882" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>

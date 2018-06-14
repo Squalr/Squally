@@ -1,19 +1,23 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Maps/SerializableLayer.h"
+#include "Engine/GlobalDirector.h"
+#include "Engine/GlobalNode.h"
+#include "Events/DeserializationEvents.h"
 #include "Entities/Entities.h"
 #include "Resources.h"
 #include "Utils/GameUtils.h"
 
-#include "ObjectDeserializer.h"
-
 using namespace cocos2d;
 
-class EntityDeserializer
+class EntityDeserializer : public GlobalNode
 {
 public:
-	static SerializableLayer* deserialize(TMXObjectGroup* objectGroup);
+	static void registerGlobalNode();
+
+	void onDeserializationRequest(EventCustom* eventCustom);
+
+	static const std::string KeyTypeEntity;
 
 	static const std::string KeySpawnProperty;
 
@@ -127,4 +131,12 @@ public:
 	static const std::string KeyEnemyRobot;
 	static const std::string KeyEnemyVikingBot;
 	static const std::string KeyEnemyVikingBotSmall;
+
+private:
+	EntityDeserializer();
+	~EntityDeserializer();
+
+	void initializeEventListeners() override;
+
+	static EntityDeserializer* instance;
 };
