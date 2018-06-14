@@ -27,14 +27,16 @@ SerializableLayer* SerializableLayer::deserialize(TMXObjectGroup* objectGroup)
 	ValueMap properties = objectGroup->getProperties();
 	std::vector<SerializableObject*>* deserializedObjects = new std::vector<SerializableObject*>();
 
+	auto onDeserializeCallback = [deserializedObjects](SerializableObject* object) {
+		deserializedObjects->push_back(object);
+	};
+
 	// Fire deserialization events for objects
 	for (int index = 0; index < size(objects); index++)
 	{
 		if (objects[index].getType() == cocos2d::Value::Type::MAP)
 		{
-			SerializableObject::deserialize(objects[index].asValueMap(), [deserializedObjects](SerializableObject* object) {
-				deserializedObjects->push_back(object);
-			});
+			SerializableObject::deserialize(objects[index].asValueMap(), onDeserializeCallback);
 		}
 	}
 

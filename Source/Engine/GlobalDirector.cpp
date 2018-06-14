@@ -44,12 +44,6 @@ void GlobalDirector::loadScene(Scene* scene)
 	}
 
 	this->activeScene = scene;
-
-	// Reinitialize the listeners -- they will have been disposed from the scene change
-	for (auto it = this->globalNodes->begin(); it != this->globalNodes->end(); it++)
-	{
-		(*it)->initializeEventListeners();
-	}
 }
 
 void GlobalDirector::registerGlobalNode(GlobalNode* node)

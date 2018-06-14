@@ -48,6 +48,7 @@ bool Window::applicationDidFinishLaunching()
 	// Register global nodes
 	SceneDirector::registerGlobalNode();
 	CollisionDeserializer::registerGlobalNode();
+	EntityDeserializer::registerGlobalNode();
 
 	return true;
 }

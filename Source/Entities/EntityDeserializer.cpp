@@ -1,5 +1,7 @@
 #include "EntityDeserializer.h"
 
+const std::string EntityDeserializer::KeyTypeEntity = "entity";
+
 const std::string EntityDeserializer::KeySpawnProperty = "spawn";
 
 const std::string EntityDeserializer::KeyNpcKnight = "knight";
@@ -113,474 +115,498 @@ const std::string EntityDeserializer::KeyEnemyRobot = "robot";
 const std::string EntityDeserializer::KeyEnemyVikingBot = "viking_bot";
 const std::string EntityDeserializer::KeyEnemyVikingBotSmall = "viking_bot_small";
 
-SerializableLayer* EntityDeserializer::deserialize(TMXObjectGroup* objectGroup)
+EntityDeserializer* EntityDeserializer::instance = nullptr;
+
+void EntityDeserializer::registerGlobalNode()
 {
-	SerializableLayer* layer = SerializableLayer::deserialize(objectGroup);
-	ValueVector entities = objectGroup->getObjects();
-
-	// Create entities
-	for (int index = 0; index < size(entities); index++)
+	if (EntityDeserializer::instance == nullptr)
 	{
-		if (entities[index].getType() != cocos2d::Value::Type::MAP)
-		{
-			continue;
-		}
+		EntityDeserializer::instance = new EntityDeserializer();
 
-		ValueMap entity = entities[index].asValueMap();
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(EntityDeserializer::instance);
+	}
+}
 
-		if (!GameUtils::keyExists(entity, SerializableObject::KeyType) ||
+EntityDeserializer::EntityDeserializer()
+{
+}
+
+EntityDeserializer::~EntityDeserializer()
+{
+}
+
+void EntityDeserializer::initializeEventListeners()
+{
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::DeserializationRequestEvent,
+		CC_CALLBACK_1(EntityDeserializer::onDeserializationRequest, this)
+	);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(deserializationRequestListener, this);
+}
+
+void EntityDeserializer::onDeserializationRequest(EventCustom* eventCustom)
+{
+	DeserializationEvents::DeserializationRequestArgs* args = (DeserializationEvents::DeserializationRequestArgs*)(eventCustom->getUserData());
+
+	if (args->typeName == EntityDeserializer::KeyTypeEntity)
+	{
+		ValueMap entity = args->valueMap;
+
+		if (!GameUtils::keyExists(entity, SerializableObject::KeyName) ||
 			!GameUtils::keyExists(entity, SerializableObject::KeyWidth) ||
 			!GameUtils::keyExists(entity, SerializableObject::KeyHeight) ||
 			!GameUtils::keyExists(entity, SerializableObject::KeyXPosition) ||
 			!GameUtils::keyExists(entity, SerializableObject::KeyYPosition))
 		{
 			CCLOG("Missing properties on entity");
-			continue;
+			return;
 		}
 
-		string type = entity.at(SerializableObject::KeyType).asString();
+		string name = entity.at(SerializableObject::KeyName).asString();
 
 		HackableObject* newEntity = nullptr;
 
-		if (type == EntityDeserializer::KeySpawnProperty)
+		if (name == EntityDeserializer::KeySpawnProperty)
 		{
 			newEntity = Player::create();
 		}
-		else if (type == EntityDeserializer::KeyNpcKnight)
+		else if (name == EntityDeserializer::KeyNpcKnight)
 		{
 			newEntity = Knight::create();
 		}
 		//////////////////
 		// JUNGLE
 		//////////////////
-		else if (type == EntityDeserializer::KeyEnemyBossRhinoman)
+		else if (name == EntityDeserializer::KeyEnemyBossRhinoman)
 		{
 			newEntity = BossRhinoman::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyGoblinGrunt)
+		else if (name == EntityDeserializer::KeyEnemyGoblinGrunt)
 		{
 			newEntity = GoblinGrunt::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyGoblinSwordsman)
+		else if (name == EntityDeserializer::KeyEnemyGoblinSwordsman)
 		{
 			newEntity = GoblinSwordsman::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyGoblinWarrior)
+		else if (name == EntityDeserializer::KeyEnemyGoblinWarrior)
 		{
 			newEntity = GoblinWarrior::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyJungleDragon)
+		else if (name == EntityDeserializer::KeyEnemyJungleDragon)
 		{
 			newEntity = JungleDragon::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyMantis)
+		else if (name == EntityDeserializer::KeyEnemyMantis)
 		{
 			newEntity = Mantis::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyMinotaur)
+		else if (name == EntityDeserializer::KeyEnemyMinotaur)
 		{
 			newEntity = Minotaur::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyPigDemon)
+		else if (name == EntityDeserializer::KeyEnemyPigDemon)
 		{
 			newEntity = PigDemon::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyPurpleDinosaur)
+		else if (name == EntityDeserializer::KeyEnemyPurpleDinosaur)
 		{
 			newEntity = PurpleDinosaur::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyTikiGolem)
+		else if (name == EntityDeserializer::KeyEnemyTikiGolem)
 		{
 			newEntity = TikiGolem::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyTikiWarrior)
+		else if (name == EntityDeserializer::KeyEnemyTikiWarrior)
 		{
 			newEntity = TikiWarrior::create();
 		}
 		//////////////////
 		// RUINS
 		//////////////////
-		else if (type == EntityDeserializer::KeyEnemyBossEgyptianGoddess)
+		else if (name == EntityDeserializer::KeyEnemyBossEgyptianGoddess)
 		{
 			newEntity = BossEgyptianGoddess::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyAnubisTiny)
+		else if (name == EntityDeserializer::KeyEnemyAnubisTiny)
 		{
 			newEntity = AnubisTiny::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyAnubisWarrior)
+		else if (name == EntityDeserializer::KeyEnemyAnubisWarrior)
 		{
 			newEntity = AnubisWarrior::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyLioness)
+		else if (name == EntityDeserializer::KeyEnemyLioness)
 		{
 			newEntity = Lioness::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyLionMan)
+		else if (name == EntityDeserializer::KeyEnemyLionMan)
 		{
 			newEntity = LionMan::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyMedusa)
+		else if (name == EntityDeserializer::KeyEnemyMedusa)
 		{
 			newEntity = Medusa::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyMedusaSmall)
+		else if (name == EntityDeserializer::KeyEnemyMedusaSmall)
 		{
 			newEntity = MedusaSmall::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyMermaid)
+		else if (name == EntityDeserializer::KeyEnemyMermaid)
 		{
 			newEntity = Mermaid::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyMummyPharaoh)
+		else if (name == EntityDeserializer::KeyEnemyMummyPharaoh)
 		{
 			newEntity = MummyPharaoh::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyTigerMan)
+		else if (name == EntityDeserializer::KeyEnemyTigerMan)
 		{
 			newEntity = TigerMan::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyTigress)
+		else if (name == EntityDeserializer::KeyEnemyTigress)
 		{
 			newEntity = Tigress::create();
 		}
 		//////////////////
 		// FOREST
 		//////////////////
-		else if (type == EntityDeserializer::KeyEnemyBossDragonOrcKing)
+		else if (name == EntityDeserializer::KeyEnemyBossDragonOrcKing)
 		{
 			newEntity = BossDragonOrcKing::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyCyclops)
+		else if (name == EntityDeserializer::KeyEnemyCyclops)
 		{
 			newEntity = Cyclops::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyEnt)
+		else if (name == EntityDeserializer::KeyEnemyEnt)
 		{
 			newEntity = Ent::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyEntMage)
+		else if (name == EntityDeserializer::KeyEnemyEntMage)
 		{
 			newEntity = EntMage::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyGoblinGruntBoar)
+		else if (name == EntityDeserializer::KeyEnemyGoblinGruntBoar)
 		{
 			newEntity = GoblinGruntBoar::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyGoblinGuard)
+		else if (name == EntityDeserializer::KeyEnemyGoblinGuard)
 		{
 			newEntity = GoblinGuard::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyGoblinShaman)
+		else if (name == EntityDeserializer::KeyEnemyGoblinShaman)
 		{
 			newEntity = GoblinShaman::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyGoblinWarriorPig)
+		else if (name == EntityDeserializer::KeyEnemyGoblinWarriorPig)
 		{
 			newEntity = GoblinWarriorPig::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyOrcGrunt)
+		else if (name == EntityDeserializer::KeyEnemyOrcGrunt)
 		{
 			newEntity = OrcGrunt::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyOrcWarrior)
+		else if (name == EntityDeserializer::KeyEnemyOrcWarrior)
 		{
 			newEntity = OrcWarrior::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyTroll)
+		else if (name == EntityDeserializer::KeyEnemyTroll)
 		{
 			newEntity = Troll::create();
 		}
 		//////////////////
 		// CAVERNS
 		//////////////////
-		else if (type == EntityDeserializer::KeyEnemyBossKrampus)
+		else if (name == EntityDeserializer::KeyEnemyBossKrampus)
 		{
 			newEntity = BossKrampus::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyBlackWidow)
+		else if (name == EntityDeserializer::KeyEnemyBlackWidow)
 		{
 			newEntity = BlackWidow::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyEarthElemental)
+		else if (name == EntityDeserializer::KeyEnemyEarthElemental)
 		{
 			newEntity = EarthElemental::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyEarthGolem)
+		else if (name == EntityDeserializer::KeyEnemyEarthGolem)
 		{
 			newEntity = EarthGolem::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyForestGolem)
+		else if (name == EntityDeserializer::KeyEnemyForestGolem)
 		{
 			newEntity = ForestGolem::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyGenie)
+		else if (name == EntityDeserializer::KeyEnemyGenie)
 		{
 			newEntity = Genie::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyRockGolem)
+		else if (name == EntityDeserializer::KeyEnemyRockGolem)
 		{
 			newEntity = RockGolem::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyShaman)
+		else if (name == EntityDeserializer::KeyEnemyShaman)
 		{
 			newEntity = Shaman::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemySkeletonArcher)
+		else if (name == EntityDeserializer::KeyEnemySkeletonArcher)
 		{
 			newEntity = SkeletonArcher::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemySkeletonNecromancer)
+		else if (name == EntityDeserializer::KeyEnemySkeletonNecromancer)
 		{
 			newEntity = SkeletonNecromancer::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemySkeletonWarrior)
+		else if (name == EntityDeserializer::KeyEnemySkeletonWarrior)
 		{
 			newEntity = SkeletonWarrior::create();
 		}
 		//////////////////
 		// CASTLE
 		//////////////////
-		else if (type == EntityDeserializer::KeyEnemyBossWitch)
+		else if (name == EntityDeserializer::KeyEnemyBossWitch)
 		{
 			newEntity = BossWitch::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyExecutioner)
+		else if (name == EntityDeserializer::KeyEnemyExecutioner)
 		{
 			newEntity = Executioner::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyGhost)
+		else if (name == EntityDeserializer::KeyEnemyGhost)
 		{
 			newEntity = Ghost::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyGuard)
+		else if (name == EntityDeserializer::KeyEnemyGuard)
 		{
 			newEntity = Guard::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyHarpy)
+		else if (name == EntityDeserializer::KeyEnemyHarpy)
 		{
 			newEntity = Harpy::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyJack)
+		else if (name == EntityDeserializer::KeyEnemyJack)
 		{
 			newEntity = Jack::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyReaper)
+		else if (name == EntityDeserializer::KeyEnemyReaper)
 		{
 			newEntity = Reaper::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemySkeletonMage)
+		else if (name == EntityDeserializer::KeyEnemySkeletonMage)
 		{
 			newEntity = SkeletonMage::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyVampireLord)
+		else if (name == EntityDeserializer::KeyEnemyVampireLord)
 		{
 			newEntity = VampireLord::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyVampiress)
+		else if (name == EntityDeserializer::KeyEnemyVampiress)
 		{
 			newEntity = Vampiress::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyZombie)
+		else if (name == EntityDeserializer::KeyEnemyZombie)
 		{
 			newEntity = Zombie::create();
 		}
 		//////////////////
 		// SNOW
 		//////////////////
-		else if (type == EntityDeserializer::KeyEnemyBossIceGolem)
+		else if (name == EntityDeserializer::KeyEnemyBossIceGolem)
 		{
 			newEntity = BossIceGolem::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyBossSanta)
+		else if (name == EntityDeserializer::KeyEnemyBossSanta)
 		{
 			newEntity = BossSanta::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyEvilSnowman)
+		else if (name == EntityDeserializer::KeyEnemyEvilSnowman)
 		{
 			newEntity = EvilSnowman::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyFrostDragon)
+		else if (name == EntityDeserializer::KeyEnemyFrostDragon)
 		{
 			newEntity = FrostDragon::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyFrostShooter)
+		else if (name == EntityDeserializer::KeyEnemyFrostShooter)
 		{
 			newEntity = FrostShooter::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyGoblinElf)
+		else if (name == EntityDeserializer::KeyEnemyGoblinElf)
 		{
 			newEntity = GoblinElf::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyIceGolem)
+		else if (name == EntityDeserializer::KeyEnemyIceGolem)
 		{
 			newEntity = IceGolem::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyTinyIceGolem)
+		else if (name == EntityDeserializer::KeyEnemyTinyIceGolem)
 		{
 			newEntity = TinyIceGolem::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyToySoldierGoblin)
+		else if (name == EntityDeserializer::KeyEnemyToySoldierGoblin)
 		{
 			newEntity = ToySoldierGoblin::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyWaterElemental)
+		else if (name == EntityDeserializer::KeyEnemyWaterElemental)
 		{
 			newEntity = WaterElemental::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyYeti)
+		else if (name == EntityDeserializer::KeyEnemyYeti)
 		{
 			newEntity = Yeti::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyYetiWarrior)
+		else if (name == EntityDeserializer::KeyEnemyYetiWarrior)
 		{
 			newEntity = YetiWarrior::create();
 		}
 		//////////////////
 		// VOLCANO
 		//////////////////
-		else if (type == EntityDeserializer::KeyEnemyBossDemonKing)
+		else if (name == EntityDeserializer::KeyEnemyBossDemonKing)
 		{
 			newEntity = BossDemonKing::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyCritterDemon)
+		else if (name == EntityDeserializer::KeyEnemyCritterDemon)
 		{
 			newEntity = CritterDemon::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyDemonDragon)
+		else if (name == EntityDeserializer::KeyEnemyDemonDragon)
 		{
 			newEntity = DemonDragon::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyDemonGhost)
+		else if (name == EntityDeserializer::KeyEnemyDemonGhost)
 		{
 			newEntity = DemonGhost::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyDemonGrunt)
+		else if (name == EntityDeserializer::KeyEnemyDemonGrunt)
 		{
 			newEntity = DemonGrunt::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyDemonRogue)
+		else if (name == EntityDeserializer::KeyEnemyDemonRogue)
 		{
 			newEntity = DemonRogue::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyDemonShaman)
+		else if (name == EntityDeserializer::KeyEnemyDemonShaman)
 		{
 			newEntity = DemonShaman::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyDemonSwordsman)
+		else if (name == EntityDeserializer::KeyEnemyDemonSwordsman)
 		{
 			newEntity = DemonSwordsman::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyDemonWarrior)
+		else if (name == EntityDeserializer::KeyEnemyDemonWarrior)
 		{
 			newEntity = DemonWarrior::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyFireElemental)
+		else if (name == EntityDeserializer::KeyEnemyFireElemental)
 		{
 			newEntity = FireElemental::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyLavaGolem)
+		else if (name == EntityDeserializer::KeyEnemyLavaGolem)
 		{
 			newEntity = LavaGolem::create();
 		}
 		//////////////////
 		// OBELISK
 		//////////////////
-		else if (type == EntityDeserializer::KeyEnemyBossSkeletonKing)
+		else if (name == EntityDeserializer::KeyEnemyBossSkeletonKing)
 		{
 			newEntity = BossSkeletonKing::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyAbomination)
+		else if (name == EntityDeserializer::KeyEnemyAbomination)
 		{
 			newEntity = Abomination::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyBatDemon)
+		else if (name == EntityDeserializer::KeyEnemyBatDemon)
 		{
 			newEntity = BatDemon::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyDarkDragon)
+		else if (name == EntityDeserializer::KeyEnemyDarkDragon)
 		{
 			newEntity = DarkDragon::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyDemonArcher)
+		else if (name == EntityDeserializer::KeyEnemyDemonArcher)
 		{
 			newEntity = DemonArcher::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemySkeletonBaron)
+		else if (name == EntityDeserializer::KeyEnemySkeletonBaron)
 		{
 			newEntity = SkeletonBaron::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemySkeletonCleaver)
+		else if (name == EntityDeserializer::KeyEnemySkeletonCleaver)
 		{
 			newEntity = SkeletonCleaver::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemySkeletonKnight)
+		else if (name == EntityDeserializer::KeyEnemySkeletonKnight)
 		{
 			newEntity = SkeletonKnight::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemySkeletonPriestess)
+		else if (name == EntityDeserializer::KeyEnemySkeletonPriestess)
 		{
 			newEntity = SkeletonPriestess::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyUndead)
+		else if (name == EntityDeserializer::KeyEnemyUndead)
 		{
 			newEntity = Undead::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyVoidDemon)
+		else if (name == EntityDeserializer::KeyEnemyVoidDemon)
 		{
 			newEntity = VoidDemon::create();
 		}
 		//////////////////
 		// MECH
 		//////////////////
-		else if (type == EntityDeserializer::KeyEnemyBossEvilEye)
+		else if (name == EntityDeserializer::KeyEnemyBossEvilEye)
 		{
 			newEntity = BossEvilEye::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyExterminator)
+		else if (name == EntityDeserializer::KeyEnemyExterminator)
 		{
 			newEntity = Exterminator::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyMechBoxDrone)
+		else if (name == EntityDeserializer::KeyEnemyMechBoxDrone)
 		{
 			newEntity = MechBoxDrone::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyMechDog)
+		else if (name == EntityDeserializer::KeyEnemyMechDog)
 		{
 			newEntity = MechDog::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyMechGolem)
+		else if (name == EntityDeserializer::KeyEnemyMechGolem)
 		{
 			newEntity = MechGolem::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyMechGolemDark)
+		else if (name == EntityDeserializer::KeyEnemyMechGolemDark)
 		{
 			newEntity = MechGolemDark::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyMechGuard)
+		else if (name == EntityDeserializer::KeyEnemyMechGuard)
 		{
 			newEntity = MechGuard::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyMiteBot)
+		else if (name == EntityDeserializer::KeyEnemyMiteBot)
 		{
 			newEntity = MiteBot::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyRobot)
+		else if (name == EntityDeserializer::KeyEnemyRobot)
 		{
 			newEntity = Robot::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyVikingBot)
+		else if (name == EntityDeserializer::KeyEnemyVikingBot)
 		{
 			newEntity = VikingBot::create();
 		}
-		else if (type == EntityDeserializer::KeyEnemyVikingBotSmall)
+		else if (name == EntityDeserializer::KeyEnemyVikingBotSmall)
 		{
 			newEntity = VikingBotSmall::create();
 		}
 		else
 		{
 			CCLOG("Missing type on entity");
-			continue;
+			return;
 		}
 
 		newEntity->setPosition(Vec2(
@@ -588,8 +614,7 @@ SerializableLayer* EntityDeserializer::deserialize(TMXObjectGroup* objectGroup)
 			entity.at(SerializableObject::KeyYPosition).asFloat() + entity.at(SerializableObject::KeyHeight).asFloat() / 2)
 		);
 
-		layer->addChild(newEntity);
+		// Fire an event indicating successful deserialization
+		args->callback(newEntity);
 	}
-
-	return layer;
 }

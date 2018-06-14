@@ -151,9 +151,6 @@
     <Filter Include="Source\Engine\Maps">
       <UniqueIdentifier>{7389bbbb-d25e-4562-80a7-0e5f8e6dc7b6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Deserializers">
-      <UniqueIdentifier>{5b3a1dbd-645a-4546-8463-50c1da29aff3}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Entities\Entity.cpp">
@@ -790,29 +787,26 @@
     <ClCompile Include="..\Source\Events\DeserializationEvents.cpp">
       <Filter>Source\Events</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Deserializers\DecorDeserializer.cpp">
-      <Filter>Source\Deserializers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Deserializers\EntityDeserializer.cpp">
-      <Filter>Source\Deserializers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Deserializers\EnvironmentDeserializer.cpp">
-      <Filter>Source\Deserializers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Deserializers\ObjectDeserializer.cpp">
-      <Filter>Source\Deserializers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Deserializers\ParallaxDeserializer.cpp">
-      <Filter>Source\Deserializers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Deserializers\TileDeserializer.cpp">
-      <Filter>Source\Deserializers</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Engine\GlobalDirector.cpp">
       <Filter>Source\Engine</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Objects\Collision\CollisionDeserializer.cpp">
       <Filter>Source\Objects\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\DecorDeserializer.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\EntityDeserializer.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\EnvironmentDeserializer.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\ObjectDeserializer.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\TileDeserializer.cpp">
+      <Filter>Source\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1474,24 +1468,6 @@
     <ClInclude Include="..\Source\Events\DeserializationEvents.h">
       <Filter>Source\Events</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Deserializers\DecorDeserializer.h">
-      <Filter>Source\Deserializers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Deserializers\EntityDeserializer.h">
-      <Filter>Source\Deserializers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Deserializers\EnvironmentDeserializer.h">
-      <Filter>Source\Deserializers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Deserializers\ObjectDeserializer.h">
-      <Filter>Source\Deserializers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Deserializers\ParallaxDeserializer.h">
-      <Filter>Source\Deserializers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Deserializers\TileDeserializer.h">
-      <Filter>Source\Deserializers</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Engine\GlobalDirector.h">
       <Filter>Source\Engine</Filter>
     </ClInclude>
@@ -1500,6 +1476,21 @@
     </ClInclude>
     <ClInclude Include="..\Source\Engine\GlobalNode.h">
       <Filter>Source\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\DecorDeserializer.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\EntityDeserializer.h">
+      <Filter>Source\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\EnvironmentDeserializer.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\ObjectDeserializer.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\TileDeserializer.h">
+      <Filter>Source\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,13 +1,13 @@
 #include "CollisionDeserializer.h"
 
-CollisionDeserializer* CollisionDeserializer::instance = nullptr;
-
 const std::string CollisionDeserializer::KeyCollisionTypeSolid = "solid";
 const std::string CollisionDeserializer::KeyCollisionTypeWater = "water";
 const std::string CollisionDeserializer::KeyCollisionTypeSolidNpc = "npc";
 const std::string CollisionDeserializer::KeyCollisionTypeSolidNpcFlying = "npc-flying";
 
 const std::string CollisionDeserializer::KeyCollisionPointsProperty = "points";
+
+CollisionDeserializer* CollisionDeserializer::instance = nullptr;
 
 void CollisionDeserializer::registerGlobalNode()
 {
@@ -26,7 +26,6 @@ CollisionDeserializer::CollisionDeserializer()
 
 CollisionDeserializer::~CollisionDeserializer()
 {
-
 }
 
 void CollisionDeserializer::initializeEventListeners()
@@ -48,7 +47,8 @@ void CollisionDeserializer::onDeserializationRequest(EventCustom* eventCustom)
 		ValueMap object = args->valueMap;
 		ValueVector* polygonPoints = nullptr;
 
-		if (!GameUtils::keyExists(object, SerializableObject::KeyWidth) ||
+		if (!GameUtils::keyExists(object, SerializableObject::KeyName) ||
+			!GameUtils::keyExists(object, SerializableObject::KeyWidth) ||
 			!GameUtils::keyExists(object, SerializableObject::KeyHeight) ||
 			!GameUtils::keyExists(object, SerializableObject::KeyXPosition) ||
 			!GameUtils::keyExists(object, SerializableObject::KeyYPosition))
