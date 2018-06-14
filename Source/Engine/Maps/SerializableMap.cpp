@@ -31,15 +31,23 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 		extractedLayers.insert_or_assign(object->layerIndex, SerializableLayer::deserialize(object));
 	}
 
-	// Deserialize out tile layers
+	std::vector<cocos_experimental::TMXLayer*> tileLayers = std::vector<cocos_experimental::TMXLayer*>();
+
+	// Pull out tile layers
 	for (auto it = mapRaw->getChildren().begin(); it != mapRaw->getChildren().end(); it++)
 	{
 		cocos_experimental::TMXLayer* tileLayer = dynamic_cast<cocos_experimental::TMXLayer*>(*it);
 
 		if (tileLayer != nullptr)
 		{
-			extractedLayers.insert_or_assign(tileLayer->layerIndex, SerializableTileLayer::deserialize(tileLayer));
+			tileLayers.push_back(tileLayer);
 		}
+	}
+
+	// Deserialize tiles (separate step from pulling them out because deserialization removes the child and would ruin the getChildren() iterator)
+	for (auto it = tileLayers.begin(); it != tileLayers.end(); it++)
+	{
+		extractedLayers.insert_or_assign((*it)->layerIndex, SerializableTileLayer::deserialize((*it)));
 	}
 
 	// Convert from map to ordered vector

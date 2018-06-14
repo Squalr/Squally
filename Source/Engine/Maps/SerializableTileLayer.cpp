@@ -13,6 +13,14 @@ SerializableTileLayer::SerializableTileLayer(cocos_experimental::TMXLayer* tileL
 {
 	this->layerName = tileLayer->getLayerName();
 	this->layerProperties = tileLayer->getProperties();
+
+	// Can be a nullptr if the layer is empty
+	if (tileLayer != nullptr)
+	{
+		tileLayer->retain();
+		tileLayer->getParent()->removeChild(tileLayer);
+		this->addChild(tileLayer);
+	}
 }
 
 SerializableTileLayer::~SerializableTileLayer()

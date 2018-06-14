@@ -805,9 +805,6 @@
     <ClCompile Include="..\Source\Objects\ObjectDeserializer.cpp">
       <Filter>Source\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Objects\TileDeserializer.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Scenes\Level\Level.h">
@@ -1487,9 +1484,6 @@
       <Filter>Source\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Objects\ObjectDeserializer.h">
-      <Filter>Source\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\TileDeserializer.h">
       <Filter>Source\Objects</Filter>
     </ClInclude>
   </ItemGroup>
