@@ -1,7 +1,6 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Events/DeserializationEvents.h"
 #include "Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -9,8 +8,6 @@ using namespace cocos2d;
 class SerializableObject : public Node
 {
 public:
-	static void deserialize(ValueMap object, std::function<void(SerializableObject*)> callback);
-
 	std::string serialize();
 
 	static const std::string KeyType;

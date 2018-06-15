@@ -45,10 +45,8 @@ bool Window::applicationDidFinishLaunching()
 	director->setOpenGLView(glView);
 	glView->setCursorVisible(false);
 
-	// Register global nodes
+	// Start scene director
 	SceneDirector::registerGlobalNode();
-	CollisionDeserializer::registerGlobalNode();
-	EntityDeserializer::registerGlobalNode();
 
 	return true;
 }

@@ -115,19 +115,6 @@ const std::string EntityDeserializer::KeyEnemyRobot = "robot";
 const std::string EntityDeserializer::KeyEnemyVikingBot = "viking_bot";
 const std::string EntityDeserializer::KeyEnemyVikingBotSmall = "viking_bot_small";
 
-EntityDeserializer* EntityDeserializer::instance = nullptr;
-
-void EntityDeserializer::registerGlobalNode()
-{
-	if (EntityDeserializer::instance == nullptr)
-	{
-		EntityDeserializer::instance = new EntityDeserializer();
-
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(EntityDeserializer::instance);
-	}
-}
-
 EntityDeserializer::EntityDeserializer()
 {
 }
@@ -136,36 +123,12 @@ EntityDeserializer::~EntityDeserializer()
 {
 }
 
-void EntityDeserializer::initializeEventListeners()
+void EntityDeserializer::onDeserializationRequest(DeserializationRequestArgs* args)
 {
-	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::DeserializationRequestEvent,
-		CC_CALLBACK_1(EntityDeserializer::onDeserializationRequest, this)
-	);
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(deserializationRequestListener, this);
-}
-
-void EntityDeserializer::onDeserializationRequest(EventCustom* eventCustom)
-{
-	DeserializationEvents::DeserializationRequestArgs* args = (DeserializationEvents::DeserializationRequestArgs*)(eventCustom->getUserData());
-
 	if (args->typeName == EntityDeserializer::KeyTypeEntity)
 	{
 		ValueMap entity = args->valueMap;
-
-		if (!GameUtils::keyExists(entity, SerializableObject::KeyName) ||
-			!GameUtils::keyExists(entity, SerializableObject::KeyWidth) ||
-			!GameUtils::keyExists(entity, SerializableObject::KeyHeight) ||
-			!GameUtils::keyExists(entity, SerializableObject::KeyXPosition) ||
-			!GameUtils::keyExists(entity, SerializableObject::KeyYPosition))
-		{
-			CCLOG("Missing properties on entity");
-			return;
-		}
-
 		string name = entity.at(SerializableObject::KeyName).asString();
-
 		HackableObject* newEntity = nullptr;
 
 		if (name == EntityDeserializer::KeySpawnProperty)

@@ -784,9 +784,6 @@
     <ClCompile Include="..\Source\Engine\Maps\SerializableTileLayer.cpp">
       <Filter>Source\Engine\Maps</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Events\DeserializationEvents.cpp">
-      <Filter>Source\Events</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Engine\GlobalDirector.cpp">
       <Filter>Source\Engine</Filter>
     </ClCompile>
@@ -803,6 +800,9 @@
       <Filter>Source\Objects</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Objects\ObjectDeserializer.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\DecorObject.cpp">
       <Filter>Source\Objects</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1462,9 +1462,6 @@
     <ClInclude Include="..\Source\Engine\Maps\SerializableTileLayer.h">
       <Filter>Source\Engine\Maps</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Events\DeserializationEvents.h">
-      <Filter>Source\Events</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Engine\GlobalDirector.h">
       <Filter>Source\Engine</Filter>
     </ClInclude>
@@ -1484,6 +1481,12 @@
       <Filter>Source\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Objects\ObjectDeserializer.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\IDeserializer.h">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\DecorObject.h">
       <Filter>Source\Objects</Filter>
     </ClInclude>
   </ItemGroup>

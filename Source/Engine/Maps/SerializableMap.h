@@ -3,6 +3,7 @@
 
 #include "Resources.h"
 #include "Objects/Objects.h"
+#include "Engine/Maps/IDeserializer.h"
 #include "Engine/Maps/SerializableLayer.h"
 #include "Engine/Maps/SerializableTileLayer.h"
 
@@ -11,7 +12,7 @@ using namespace cocos2d;
 class SerializableMap : public Node
 {
 public:
-	static SerializableMap* deserialize(std::string mapFileName);
+	static SerializableMap* deserialize(std::string mapFileName, std::vector<IDeserializer*>* deserializers);
 	void serialize();
 
 	void appendLayer(SerializableLayer* layer);

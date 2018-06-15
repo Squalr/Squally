@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="124" height="196" tilewidth="128" tileheight="128" nextobjectid="364">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="124" height="196" tilewidth="128" tileheight="128" nextobjectid="365">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../Tiles/TileMap.png" width="5760" height="3200"/>
  </tileset>
- <objectgroup name="ENV_environment" opacity="0.9">
+ <objectgroup name="environment" opacity="0.9">
   <properties>
    <property name="background" value="ocean"/>
    <property name="music" value="Music/BurdenOfTime.mp3"/>
    <property name="weather" value="aa"/>
   </properties>
  </objectgroup>
- <objectgroup name="PARALLAX_background">
-  <object id="134" name="Forest/Ruins4" type="Forest/Ruins4" x="1154.91" y="119.879" width="320" height="640">
+ <objectgroup name="parallax_background">
+  <object id="134" name="Forest/Ruins4" type="decor" x="1154.91" y="119.879" width="320" height="640">
    <properties>
     <property name="float-time-x" type="float" value="8"/>
     <property name="float-time-y" type="float" value="8"/>
     <property name="float-x" type="float" value="8"/>
     <property name="float-y" type="float" value="-128"/>
-    <property name="speed-x" type="float" value="0.25"/>
-    <property name="speed-y" type="float" value="0.01"/>
+    <property name="isParallax" type="bool" value="true"/>
+    <property name="parallax-speed-x" type="float" value="0.25"/>
+    <property name="parallax-speed-y" type="float" value="0.01"/>
    </properties>
   </object>
  </objectgroup>
- <layer name="TILES_background" width="124" height="196">
+ <layer name="tiles_background" width="124" height="196">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -223,11 +224,11 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="DECOR_background">
+ <objectgroup name="decor_background">
   <object id="139" name="Forest/Thorns10" type="Forest/Thorns10" x="1846.24" y="1254.36" width="391.741" height="363.846"/>
-  <object id="140" name="Forest/Thorns8" type="Forest/Thorns8" x="1873.83" y="1666.34" width="358.529" height="338.634"/>
+  <object id="140" name="Forest/Thorns8" type="decor" x="1873.83" y="1666.34" width="358.529" height="338.634"/>
  </objectgroup>
- <layer name="TILES_midground" width="124" height="196">
+ <layer name="tiles_midground" width="124" height="196">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -427,43 +428,43 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="DECOR_midground">
-  <object id="123" name="Forest/GrassPlane6" type="Forest/GrassPlane6" x="2335.26" y="1115.33" width="432" height="90.5454"/>
-  <object id="168" name="Forest/Ruins1" type="Forest/Ruins1" x="4291.63" y="820.78" width="512" height="512"/>
-  <object id="189" name="Ice/Bush1" type="Ice/Bush1" x="9032" y="856" width="72" height="72"/>
-  <object id="190" name="Ice/Rock1" type="Ice/Rock1" x="8390.79" y="743.758" width="226.424" height="216.485"/>
-  <object id="194" name="Ice/Tree2" type="Ice/Tree2" x="9611.03" y="173.576" width="626.424" height="792.243"/>
-  <object id="209" name="Generic/Spikes2" type="Generic/Spikes2" x="1450.06" y="3890.73" width="70.0606" height="83.9999"/>
-  <object id="210" name="Temple/Statue1" type="Temple/Statue1" x="1048" y="3376.73" width="317.819" height="601.091"/>
-  <object id="211" name="Temple/Statue2" type="Temple/Statue2" x="3002.18" y="3367.33" width="329.94" height="613.212"/>
-  <object id="212" name="Temple/Urn1" type="Temple/Urn1" x="2569.21" y="3833" width="124.485" height="140.485"/>
+ <objectgroup name="decor_midground">
+  <object id="123" name="Forest/GrassPlane6" type="decor" x="147.382" y="1115.33" width="432" height="90.5454"/>
+  <object id="168" name="Forest/Ruins1" type="decor" x="4291.63" y="820.78" width="512" height="512"/>
+  <object id="189" name="Ice/Bush1" type="decor" x="9032" y="856" width="72" height="72"/>
+  <object id="190" name="Ice/Rock1" type="decor" x="8390.79" y="743.758" width="226.424" height="216.485"/>
+  <object id="194" name="Ice/Tree2" type="decor" x="9611.03" y="173.576" width="626.424" height="792.243"/>
+  <object id="209" name="Generic/Spikes2" type="decor" x="1450.06" y="3890.73" width="70.0606" height="83.9999"/>
+  <object id="210" name="Temple/Statue1" type="decor" x="1048" y="3376.73" width="317.819" height="601.091"/>
+  <object id="211" name="Temple/Statue2" type="decor" x="3002.18" y="3367.33" width="329.94" height="613.212"/>
+  <object id="212" name="Temple/Urn1" type="decor" x="2569.21" y="3833" width="124.485" height="140.485"/>
   <object id="213" name="Temple/Urn2" type="Temple/Urn2" x="3310.91" y="3830.03" width="133.576" height="137.455"/>
-  <object id="214" name="Temple/Urn3" type="Temple/Urn3" x="479.121" y="3750.79" width="212.364" height="222.303"/>
-  <object id="215" name="Temple/Tree4" type="Temple/Tree4" x="1888.21" y="3320.85" width="279.516" height="532.848"/>
-  <object id="216" name="Temple/Urn3" type="Temple/Urn3" x="4805.94" y="3752.48" width="212.364" height="222.303"/>
-  <object id="217" name="Temple/Urn2" type="Temple/Urn2" x="2860.48" y="3073.7" width="133.576" height="137.455"/>
-  <object id="219" name="Temple/Urn2" type="Temple/Urn2" x="1518.06" y="3067.64" width="133.576" height="137.455"/>
+  <object id="214" name="Temple/Urn3" type="decor" x="479.121" y="3750.79" width="212.364" height="222.303"/>
+  <object id="215" name="Temple/Tree4" type="decor" x="1888.21" y="3320.85" width="279.516" height="532.848"/>
+  <object id="216" name="Temple/Urn3" type="decor" x="4805.94" y="3752.48" width="212.364" height="222.303"/>
+  <object id="217" name="Temple/Urn2" type="decor" x="2860.48" y="3073.7" width="133.576" height="137.455"/>
+  <object id="219" name="Temple/Urn2" type="decor" x="1518.06" y="3067.64" width="133.576" height="137.455"/>
  </objectgroup>
- <objectgroup name="OBJECTS_objects">
-  <object id="182" name="warp-gate-exact-scan-1" type="warp-gate-exact-scan-1" x="3521.21" y="782.848" width="648.364" height="601.818">
+ <objectgroup name="objects">
+  <object id="182" name="warp-gate-exact-scan-1" type="object" x="3521.21" y="782.848" width="648.364" height="601.818">
    <properties>
     <property name="dialog" value="DialogTutorialExactScanI"/>
    </properties>
   </object>
-  <object id="185" name="plushie_monkey" type="plushie_monkey" x="1371.15" y="1009.76" width="196" height="196">
+  <object id="185" name="plushie_monkey" type="object" x="1371.15" y="1009.76" width="196" height="196">
    <properties>
     <property name="dialog" value="DialogTutorialExactScanI"/>
    </properties>
   </object>
-  <object id="192" name="wind" type="wind" x="9332.97" y="1067.06" width="252.242" height="74.977">
+  <object id="192" name="wind" type="object" x="9332.97" y="1067.06" width="252.242" height="74.977">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="-4"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="ENTITIES_entities">
-  <object id="72" name="spawn" type="entity" x="133.847" y="6306.64" width="128" height="128"/>
+ <objectgroup name="entities">
+  <object id="72" name="spawn" type="entity" x="61.847" y="682.64" width="128" height="128"/>
   <object id="180" name="knight" type="entity" x="342.06" y="758.727" width="200" height="288"/>
   <object id="222" name="boss_rhinoman" type="entity" x="6169.82" y="6688" width="196" height="196">
    <properties>
@@ -1166,19 +1167,19 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="COLLISION_collision">
+ <objectgroup name="collision_collision">
   <object id="39" name="solid" type="collision" x="2186.82" y="1326.61" width="3048.67" height="1253"/>
   <object id="41" name="solid" type="collision" x="2765.04" y="1172.39">
    <polygon points="0,0 486.022,219.098 0,222.576"/>
   </object>
   <object id="49" name="solid" type="collision" x="2190.82" y="1186.61" width="598.667" height="917.333"/>
-  <object id="51" name="solid" type="solid" x="1871.28" y="1220.73" width="345.424" height="99.8788"/>
+  <object id="51" name="solid" type="collision" x="1871.28" y="1220.73" width="345.424" height="99.8788"/>
   <object id="70" name="solid" type="collision" x="1148.14" y="1190.51" width="757.712" height="1397.15"/>
   <object id="165" name="solid" type="collision" x="5243.45" y="1078">
    <polygon points="0,0 1.87499,271.648 -538.125,274"/>
   </object>
   <object id="176" name="solid" type="collision" x="21.144" y="1191.12" width="718.318" height="1378.97"/>
-  <object id="177" name="solid" type="solid" x="697.833" y="1195.52" width="518.151" height="105.939"/>
+  <object id="177" name="solid" type="collision" x="697.833" y="1195.52" width="518.151" height="105.939"/>
   <object id="187" name="solid" type="collision" x="8339.66" y="933.5" width="848.67" height="1621"/>
   <object id="188" name="solid" type="collision" x="9735.67" y="962.712" width="992.428" height="1599.79"/>
   <object id="196" name="solid" type="collision" x="130.21" y="3976.53" width="5103.22" height="1004.52"/>
@@ -1242,10 +1243,10 @@
   <object id="359" name="solid" type="collision" x="52.575" y="10901.5" width="342.85" height="117"/>
   <object id="360" name="solid" type="collision" x="116.575" y="12949.5" width="278.85" height="101"/>
   <object id="361" name="solid" type="collision" x="108.575" y="15005.5" width="278.85" height="101"/>
-  <object id="362" name="solid" type="solid" x="1760.84" y="21902.5" width="558.318" height="218.97"/>
-  <object id="363" name="solid" type="solid" x="1736.84" y="22890.5" width="974.318" height="218.97"/>
+  <object id="362" name="solid" type="collision" x="1760.84" y="21902.5" width="558.318" height="218.97"/>
+  <object id="363" name="solid" type="collision" x="1736.84" y="22890.5" width="974.318" height="218.97"/>
  </objectgroup>
- <layer name="TILES_foreground" width="124" height="196">
+ <layer name="tiles_foreground" width="124" height="196">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -1445,5 +1446,5 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="DECOR_foreground"/>
+ <objectgroup name="decor_foreground"/>
 </map>

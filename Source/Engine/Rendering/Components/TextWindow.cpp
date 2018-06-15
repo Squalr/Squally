@@ -79,7 +79,7 @@ void TextWindow::setTitle(std::string text)
 
 void TextWindow::insertText(std::string text, Color3B color)
 {
-	RichElement* element = RichElementText::create(0, color, 0xFF, text, Resources::Fonts_UbuntuMono_B, this->fontSize);
+	RichElement* element = RichElementText::create(0, color, 0xFF, text, Resources::Fonts_UbuntuMono_Bold, this->fontSize);
 
 	this->displayTextElements->push_back(element);
 	this->displayedText->pushBackElement(element);

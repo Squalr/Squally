@@ -7,19 +7,6 @@ const std::string CollisionDeserializer::KeyCollisionTypeSolidNpcFlying = "npc-f
 
 const std::string CollisionDeserializer::KeyCollisionPointsProperty = "points";
 
-CollisionDeserializer* CollisionDeserializer::instance = nullptr;
-
-void CollisionDeserializer::registerGlobalNode()
-{
-	if (CollisionDeserializer::instance == nullptr)
-	{
-		CollisionDeserializer::instance = new CollisionDeserializer();
-
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(CollisionDeserializer::instance);
-	}
-}
-
 CollisionDeserializer::CollisionDeserializer()
 {
 }
@@ -28,35 +15,12 @@ CollisionDeserializer::~CollisionDeserializer()
 {
 }
 
-void CollisionDeserializer::initializeEventListeners()
+void CollisionDeserializer::onDeserializationRequest(DeserializationRequestArgs* args)
 {
-	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::DeserializationRequestEvent,
-		CC_CALLBACK_1(CollisionDeserializer::onDeserializationRequest, this)
-	);
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(deserializationRequestListener, this);
-}
-
-void CollisionDeserializer::onDeserializationRequest(EventCustom* eventCustom)
-{
-	DeserializationEvents::DeserializationRequestArgs* args = (DeserializationEvents::DeserializationRequestArgs*)(eventCustom->getUserData());
-
 	if (args->typeName == CollisionObject::KeyTypeCollision)
 	{
 		ValueMap object = args->valueMap;
 		ValueVector* polygonPoints = nullptr;
-
-		if (!GameUtils::keyExists(object, SerializableObject::KeyName) ||
-			!GameUtils::keyExists(object, SerializableObject::KeyWidth) ||
-			!GameUtils::keyExists(object, SerializableObject::KeyHeight) ||
-			!GameUtils::keyExists(object, SerializableObject::KeyXPosition) ||
-			!GameUtils::keyExists(object, SerializableObject::KeyYPosition))
-		{
-			CCLOG("Missing properties on collision object");
-			return;
-		}
-
 		std::string name = object.at(SerializableObject::KeyName).asString();
 		bool isPolygon = false;
 		float width = object.at(SerializableObject::KeyWidth).asFloat();

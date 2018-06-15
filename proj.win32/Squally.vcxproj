@@ -272,7 +272,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Entities\Npcs\NpcBase.cpp" />
     <ClCompile Include="..\Source\Entities\Player\Hover.cpp" />
     <ClCompile Include="..\Source\Entities\Player\Player.cpp" />
-    <ClCompile Include="..\Source\Events\DeserializationEvents.cpp" />
     <ClCompile Include="..\Source\Events\DialogEvents.cpp" />
     <ClCompile Include="..\Source\Events\HackableEvents.cpp" />
     <ClCompile Include="..\Source\Events\HexusEvents.cpp" />
@@ -281,6 +280,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Events\PauseEvents.cpp" />
     <ClCompile Include="..\Source\Objects\Collision\CollisionDeserializer.cpp" />
     <ClCompile Include="..\Source\Objects\DecorDeserializer.cpp" />
+    <ClCompile Include="..\Source\Objects\DecorObject.cpp" />
     <ClCompile Include="..\Source\Objects\EnvironmentDeserializer.cpp" />
     <ClCompile Include="..\Source\Objects\ObjectDeserializer.cpp" />
     <ClCompile Include="..\Source\Scenes\Fight\Fight.cpp" />
@@ -380,6 +380,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Config\ConfigManager.h" />
     <ClInclude Include="..\Source\Engine\GlobalDirector.h" />
     <ClInclude Include="..\Source\Engine\GlobalNode.h" />
+    <ClInclude Include="..\Source\Engine\Maps\IDeserializer.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableLayer.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableMap.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableObject.h" />
@@ -494,7 +495,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Entities\Npcs\NpcBase.h" />
     <ClInclude Include="..\Source\Entities\Player\Hover.h" />
     <ClInclude Include="..\Source\Entities\Player\Player.h" />
-    <ClInclude Include="..\Source\Events\DeserializationEvents.h" />
     <ClInclude Include="..\Source\Events\DialogEvents.h" />
     <ClInclude Include="..\Source\Events\HackableEvents.h" />
     <ClInclude Include="..\Source\Events\HexusEvents.h" />
@@ -503,6 +503,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Events\PauseEvents.h" />
     <ClInclude Include="..\Source\Objects\Collision\CollisionDeserializer.h" />
     <ClInclude Include="..\Source\Objects\DecorDeserializer.h" />
+    <ClInclude Include="..\Source\Objects\DecorObject.h" />
     <ClInclude Include="..\Source\Objects\EnvironmentDeserializer.h" />
     <ClInclude Include="..\Source\Objects\ObjectDeserializer.h" />
     <ClInclude Include="..\Source\Scenes\Fight\Fight.h" />

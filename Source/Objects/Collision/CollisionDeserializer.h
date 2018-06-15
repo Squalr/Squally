@@ -1,20 +1,19 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/GlobalDirector.h"
-#include "Engine/GlobalNode.h"
-#include "Events/DeserializationEvents.h"
+#include "Engine/Maps/IDeserializer.h"
 #include "Objects/Collision/CollisionObject.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 
-class CollisionDeserializer : public GlobalNode
+class CollisionDeserializer : public IDeserializer
 {
 public:
-	static void registerGlobalNode();
+	CollisionDeserializer();
+	~CollisionDeserializer();
 
-	void onDeserializationRequest(EventCustom* eventCustom);
+	void onDeserializationRequest(DeserializationRequestArgs* args) override;
 
 	static const std::string KeyCollisionTypeSolid;
 	static const std::string KeyCollisionTypeWater;
@@ -22,12 +21,4 @@ public:
 	static const std::string KeyCollisionTypeSolidNpcFlying;
 
 	static const std::string KeyCollisionPointsProperty;
-
-private:
-	CollisionDeserializer();
-	~CollisionDeserializer();
-
-	void initializeEventListeners() override;
-
-	static CollisionDeserializer* instance;
 };

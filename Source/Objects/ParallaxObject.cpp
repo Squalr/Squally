@@ -1,17 +1,16 @@
 #include "ParallaxObject.h"
 
-ParallaxObject* ParallaxObject::create(Node* parallaxChild, Vec2 parallaxPosition, Vec2 parallaxSpeed)
+ParallaxObject* ParallaxObject::create(Node* parallaxChild, Vec2 parallaxSpeed)
 {
-	ParallaxObject* instance = new ParallaxObject(parallaxChild, parallaxPosition, parallaxSpeed);
+	ParallaxObject* instance = new ParallaxObject(parallaxChild,parallaxSpeed);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ParallaxObject::ParallaxObject(Node* parallaxChild, Vec2 parallaxPosition, Vec2 parallaxSpeed)
+ParallaxObject::ParallaxObject(Node* parallaxChild,Vec2 parallaxSpeed)
 {
-	this->initialPosition = parallaxPosition;
 	this->speed = parallaxSpeed;
 	this->child = parallaxChild;
 
@@ -29,8 +28,8 @@ void ParallaxObject::update(float dt)
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 cameraPosition = LevelCamera::getInstance()->getCameraPosition();
 
-	this->child->setPosition(this->initialPosition + Vec2(
-		(cameraPosition.x + visibleSize.width / 2 - this->initialPosition.x) * this->speed.x,
-		(cameraPosition.y + visibleSize.height / 2 - this->initialPosition.y) * this->speed.y
+	this->child->setPosition(Vec2(
+		(cameraPosition.x + visibleSize.width / 2 - this->getPositionX()) * this->speed.x,
+		(cameraPosition.y + visibleSize.height / 2 - this->getPositionY()) * this->speed.y
 	));
 }

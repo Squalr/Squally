@@ -20,7 +20,7 @@ SerializableLayer::~SerializableLayer()
 {
 }
 
-SerializableLayer* SerializableLayer::deserialize(TMXObjectGroup* objectGroup)
+SerializableLayer* SerializableLayer::deserialize(TMXObjectGroup* objectGroup, std::vector<IDeserializer*>* deserializers)
 {
 	std::string name = objectGroup->getGroupName();
 	ValueVector objects = objectGroup->getObjects();
@@ -36,7 +36,54 @@ SerializableLayer* SerializableLayer::deserialize(TMXObjectGroup* objectGroup)
 	{
 		if (objects[index].getType() == cocos2d::Value::Type::MAP)
 		{
-			SerializableObject::deserialize(objects[index].asValueMap(), onDeserializeCallback);
+			ValueMap object = objects[index].asValueMap();
+			std::string typeName = "";
+
+			if (!GameUtils::keyExists(object, SerializableObject::KeyType))
+			{
+				CCLOG("Missing type on object");
+				continue;
+			}
+
+			if (!GameUtils::keyExists(object, SerializableObject::KeyName))
+			{
+				CCLOG("Missing name on object");
+				continue;
+			}
+
+			if (!GameUtils::keyExists(object, SerializableObject::KeyWidth))
+			{
+				CCLOG("Missing width on object");
+				continue;
+			}
+
+			if (!GameUtils::keyExists(object, SerializableObject::KeyHeight))
+			{
+				CCLOG("Missing height on object");
+				continue;
+			}
+
+			if (!GameUtils::keyExists(object, SerializableObject::KeyXPosition))
+			{
+				CCLOG("Missing x position on object");
+				continue;
+			}
+
+			if (!GameUtils::keyExists(object, SerializableObject::KeyYPosition))
+			{
+				CCLOG("Missing y position on object");
+				continue;
+			}
+
+			typeName = object.at(SerializableObject::KeyType).asString();
+
+			// Ask all deserializers to try to deserialize object
+			IDeserializer::DeserializationRequestArgs args = IDeserializer::DeserializationRequestArgs(typeName, object, onDeserializeCallback);
+
+			for (auto it = deserializers->begin(); it != deserializers->end(); it++)
+			{
+				(*it)->onDeserializationRequest(&args);
+			}
 		}
 	}
 

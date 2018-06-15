@@ -14,7 +14,7 @@ const std::string EnvironmentDeserializer::KeyMusicProperty = "music";
 
 SerializableLayer* EnvironmentDeserializer::deserializeBackground(TMXObjectGroup* objectGroup)
 {
-	SerializableLayer* layer = SerializableLayer::deserialize(objectGroup);
+	SerializableLayer* layer = nullptr; // SerializableLayer::deserialize(objectGroup);
 	ValueMap properties = objectGroup->getProperties();
 
 	if (GameUtils::keyExists(properties, EnvironmentDeserializer::KeyBackgroundProperty))
@@ -48,7 +48,7 @@ SerializableLayer* EnvironmentDeserializer::deserializeBackground(TMXObjectGroup
 
 SerializableLayer* EnvironmentDeserializer::deserializeWeather(TMXObjectGroup* objectGroup)
 {
-	SerializableLayer* layer = SerializableLayer::deserialize(objectGroup);
+	SerializableLayer* layer = nullptr; // SerializableLayer::deserialize(objectGroup);
 	ValueMap properties = objectGroup->getProperties();
 
 	if (GameUtils::keyExists(properties, EnvironmentDeserializer::KeyWeatherProperty))
