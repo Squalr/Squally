@@ -1,5 +1,12 @@
 #include "LoadingScreen.h"
 
+std::vector<IDeserializer*> LoadingScreen::deserializers = {
+	new EntityDeserializer(),
+	new CollisionDeserializer(),
+	new DecorDeserializer(),
+	new ObjectDeserializer(),
+};
+
 LoadingScreen * LoadingScreen::create()
 {
 	LoadingScreen* loadingScreen = new LoadingScreen();
@@ -116,7 +123,7 @@ void LoadingScreen::incrementLoadedFileCount()
 
 	if (this->loadedFileCount.fetch_add(1) >= this->totalFileCount - 1)
 	{
-		SerializableMap* map = SerializableMap::deserialize(this->currentLevelFile);
+		SerializableMap* map = SerializableMap::deserialize(this->currentLevelFile, &LoadingScreen::deserializers);
 
 		if (this->onLoadCallback != nullptr)
 		{

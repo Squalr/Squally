@@ -18,7 +18,7 @@ SerializableMap::~SerializableMap()
 	delete(this->serializableLayers);
 }
 
-SerializableMap* SerializableMap::deserialize(std::string mapFileName)
+SerializableMap* SerializableMap::deserialize(std::string mapFileName, std::vector<IDeserializer*>* deserializers)
 {
 	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(mapFileName);
 	std::map<int, SerializableLayer*> extractedLayers = std::map<int, SerializableLayer*>();
@@ -28,7 +28,7 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 	for (auto it = mapRaw->getObjectGroups().begin(); it != mapRaw->getObjectGroups().end(); it++)
 	{
 		TMXObjectGroup* object = *it;
-		extractedLayers.insert_or_assign(object->layerIndex, SerializableLayer::deserialize(object));
+		extractedLayers.insert_or_assign(object->layerIndex, SerializableLayer::deserialize(object, deserializers));
 	}
 
 	std::vector<cocos_experimental::TMXLayer*> tileLayers = std::vector<cocos_experimental::TMXLayer*>();

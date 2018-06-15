@@ -16,23 +16,6 @@ SerializableObject::~SerializableObject()
 {
 }
 
-void SerializableObject::deserialize(ValueMap object, std::function<void(SerializableObject*)> callback)
-{
-	std::string typeName = "";
-
-	if (GameUtils::keyExists(object, SerializableObject::KeyType))
-	{
-		typeName = object.at(SerializableObject::KeyType).asString();
-	}
-	else
-	{
-		CCLOG("Missing type on object");
-	}
-
-	// Fire the deserialization request
-	DeserializationEvents::TriggerDeserializationRequest(DeserializationEvents::DeserializationRequestArgs(typeName, object, callback));
-}
-
 std::string SerializableObject::serialize()
 {
 	return "";

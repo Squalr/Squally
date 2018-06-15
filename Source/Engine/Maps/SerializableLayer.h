@@ -1,8 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Maps/IDeserializer.h"
 #include "Engine/Maps/SerializableObject.h"
-#include "Events/DeserializationEvents.h"
 #include "Utils/StrUtils.h"
 
 using namespace cocos2d;
@@ -10,7 +10,7 @@ using namespace cocos2d;
 class SerializableLayer : public Layer
 {
 public:
-	static SerializableLayer * deserialize(TMXObjectGroup* objectGroup);
+	static SerializableLayer * deserialize(TMXObjectGroup* objectGroup, std::vector<IDeserializer*>* deserializers);
 	virtual std::string serialize();
 
 protected:

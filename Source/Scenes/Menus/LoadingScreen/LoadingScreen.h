@@ -6,7 +6,12 @@
 #include "Events/NavigationEvents.h"
 #include "Engine/Rendering/Components/CProgressBar.h"
 #include "Engine/Rendering/Components/FadeScene.h"
+#include "Engine/Maps/IDeserializer.h"
 #include "Engine/Maps/SerializableMap.h"
+#include "Entities/EntityDeserializer.h"
+#include "Objects/Collision/CollisionDeserializer.h"
+#include "Objects/DecorDeserializer.h"
+#include "Objects/ObjectDeserializer.h"
 #include "Resources.h"
 #include "Scenes/Menus/MenuBackground.h"
 #include "Utils/StrUtils.h"
@@ -44,5 +49,7 @@ private:
 	int totalFileCount;
 	std::atomic_int loadedFileCount;
 	std::string currentLevelFile;
+
+	static std::vector<IDeserializer*> deserializers;
 };
 

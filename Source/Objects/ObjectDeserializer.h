@@ -1,16 +1,17 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Maps/SerializableLayer.h"
+#include "Engine/Maps/IDeserializer.h"
 #include "Objects/Objects.h"
 #include "Resources.h"
 #include "Utils/GameUtils.h"
 
 using namespace cocos2d;
 
-class ObjectDeserializer
+class ObjectDeserializer : public IDeserializer
 {
 public:
-	static SerializableLayer* deserialize(TMXObjectGroup* objectGroup);
-	static Sprite* loadObject(ValueMap object);
+	void onDeserializationRequest(DeserializationRequestArgs* args) override;
+
+	static const std::string KeyTypeObject;
 };

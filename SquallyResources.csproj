@@ -38,21 +38,23 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <None Include="Source\Resources.t">
-      <Generator>TextTemplatingFileGenerator</Generator>
-    </None>
-    <Content Include="Source\Resources.cpp">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Source\Resources.t</DependentUpon>
-    </Content>
     <Content Include="Source\Resources.h">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Source\Resources.tt</DependentUpon>
+      <DependentUpon>Resources.tt</DependentUpon>
     </Content>
+    <Content Include="Source\Resources.cpp">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.t</DependentUpon>
+    </Content>
+    <None Include="Source\Resources.t">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Resources.cpp</LastGenOutput>
+    </None>
     <Content Include="Source\Resources.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Resources.h</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
