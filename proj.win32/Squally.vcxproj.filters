@@ -52,9 +52,6 @@
     <Filter Include="Source\Entities\Enemies">
       <UniqueIdentifier>{2775143e-43a8-40c2-9698-8781690f3110}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Scenes\Level\Backgrounds">
-      <UniqueIdentifier>{f7b63e6b-1146-490c-9a7d-ad73d9447c1f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Scenes\Level\Environments">
       <UniqueIdentifier>{ddea15c5-7454-4e0d-9488-79b4dd7987ff}</UniqueIdentifier>
     </Filter>
@@ -67,17 +64,11 @@
     <Filter Include="Source\Engine\Sound">
       <UniqueIdentifier>{8367ac51-ce2e-46e9-b371-6f6c31939b5c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Scenes\Level\Backgrounds\MatrixRain">
-      <UniqueIdentifier>{c0c0cd09-b0fd-4c81-a0e2-b0f360621af6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Scenes\Menus\HackerMode">
       <UniqueIdentifier>{b7fe6d4b-2ded-42d6-afd6-82356a8ce133}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Objects\Collision">
       <UniqueIdentifier>{94e5f613-0f3a-49b6-a7f0-ccafed96546a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Objects\Projectiles">
-      <UniqueIdentifier>{9d7c6cdb-e262-4910-8cc2-e20e7dc00d4e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Objects\Interactables">
       <UniqueIdentifier>{0852c3e4-fc82-4678-9a59-dbb701f51a8f}</UniqueIdentifier>
@@ -90,9 +81,6 @@
     </Filter>
     <Filter Include="Source\Entities\Npcs">
       <UniqueIdentifier>{1febd58c-fd81-4bf6-a498-dc590c8d3379}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Scenes\Level\Parser">
-      <UniqueIdentifier>{b43fde59-32a1-4a22-a5ff-05d9b70d3a27}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Scenes\Menus\LoadingScreen">
       <UniqueIdentifier>{5b766df7-ace8-43f1-bf59-f0f9d699f795}</UniqueIdentifier>
@@ -154,8 +142,17 @@
     <Filter Include="Source\Engine\Rendering\Shaders">
       <UniqueIdentifier>{2e9ff4e8-254e-4582-b2f9-f801a48d1ff2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Scenes\Level\Parser\Keys">
-      <UniqueIdentifier>{6eba8a91-5a58-4f2f-a137-2a72870f1f4c}</UniqueIdentifier>
+    <Filter Include="Source\Engine\Maps">
+      <UniqueIdentifier>{7389bbbb-d25e-4562-80a7-0e5f8e6dc7b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes\Level\Environments\Backgrounds">
+      <UniqueIdentifier>{eab4dd14-9013-4f67-ab84-af92be28aea5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes\Level\Environments\Backgrounds\MatrixRain">
+      <UniqueIdentifier>{bbc5ca1a-e7fa-48ed-89ac-6fd974bcb259}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes\Level\Environments\Weather">
+      <UniqueIdentifier>{b77f62d5-4f51-45f2-b6f8-a800e4b3e931}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -210,38 +207,17 @@
     <ClCompile Include="..\Source\Scenes\Level\LevelCamera.cpp">
       <Filter>Source\Scenes\Level</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\MountainBackground.cpp">
-      <Filter>Source\Scenes\Level\Backgrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\JungleBackground.cpp">
-      <Filter>Source\Scenes\Level\Backgrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Environments\JungleEnvironment.cpp">
-      <Filter>Source\Scenes\Level\Environments</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\Title\TitleScreenBackground.cpp">
       <Filter>Source\Scenes\Menus\Title</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\Dialog\DialogMenu.cpp">
       <Filter>Source\Scenes\Menus\Dialog</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixLetter.cpp">
-      <Filter>Source\Scenes\Level\Backgrounds\MatrixRain</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixRain.cpp">
-      <Filter>Source\Scenes\Level\Backgrounds\MatrixRain</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixStrand.cpp">
-      <Filter>Source\Scenes\Level\Backgrounds\MatrixRain</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Objects\Collision\CollisionObject.cpp">
       <Filter>Source\Objects\Collision</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Objects\ParallaxObject.cpp">
       <Filter>Source\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\Projectiles\EggProjectile.cpp">
-      <Filter>Source\Objects\Projectiles</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Objects\Interactables\WarpGate.cpp">
       <Filter>Source\Objects\Interactables</Filter>
@@ -278,9 +254,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Entities\Npcs\Knight.cpp">
       <Filter>Source\Entities\Npcs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Parser.cpp">
-      <Filter>Source\Scenes\Level\Parser</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Entities\Npcs\NpcBase.cpp">
       <Filter>Source\Entities\Npcs</Filter>
@@ -362,30 +335,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ControlReplaceCards.cpp">
       <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\CollisionParser.cpp">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\DecorParser.cpp">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\ObjectParser.cpp">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\ParallaxParser.cpp">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\TileParser.cpp">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\EnvironmentParser.cpp">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\EntityParser.cpp">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\LevelMap.cpp">
-      <Filter>Source\Scenes\Level</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\LoadingScreen\LoadingScreen.cpp">
       <Filter>Source\Scenes\Menus\LoadingScreen</Filter>
@@ -545,15 +494,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Objects\Interactables\Wind.cpp">
       <Filter>Source\Objects\Interactables</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\SnowBackground.cpp">
-      <Filter>Source\Scenes\Level\Backgrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Environments\SnowEnvironment.cpp">
-      <Filter>Source\Scenes\Level\Environments</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\OceanBackground.cpp">
-      <Filter>Source\Scenes\Level\Backgrounds</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Entities\Enemies\Forest\BossDragonOrcKing.cpp">
       <Filter>Source\Entities\Enemies\Forest</Filter>
@@ -729,9 +669,6 @@
     <ClCompile Include="..\Source\Entities\Enemies\Mech\MechBoxDrone.cpp">
       <Filter>Source\Entities\Enemies\Mech</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\LevelEditor.cpp">
-      <Filter>Source\Scenes\Level</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Events\PauseEvents.cpp">
       <Filter>Source\Events</Filter>
     </ClCompile>
@@ -753,18 +690,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Window.cpp">
       <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\CollisionKeys.cpp">
-      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\EntityKeys.cpp">
-      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\EnvironmentKeys.cpp">
-      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\GeneralKeys.cpp">
-      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Engine/Rendering\HUD\Hud.cpp">
       <Filter>Source\Engine\Rendering\HUD</Filter>
@@ -820,14 +745,83 @@
     <ClCompile Include="..\Source\Engine/Rendering\Shaders\PostProcess.cpp">
       <Filter>Source\Engine\Rendering\Shaders</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Objects\SerializableLayer.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\SerializableObject.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Engine\Rendering\HUD\DeveloperHud.cpp">
       <Filter>Source\Engine\Rendering\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\SerializableMap.cpp">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\SerializableLayer.cpp">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\SerializableObject.cpp">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\SerializableTileLayer.cpp">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\GlobalDirector.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Collision\CollisionDeserializer.cpp">
+      <Filter>Source\Objects\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\DecorDeserializer.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\EntityDeserializer.cpp">
+      <Filter>Source\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\ObjectDeserializer.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\DecorObject.cpp">
+      <Filter>Source\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Maps\DefaultLayerDeserializer.cpp">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Environments\MusicDeserializer.cpp">
+      <Filter>Source\Scenes\Level\Environments</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\JungleBackground.cpp">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\MountainBackground.cpp">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\OceanBackground.cpp">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\SnowBackground.cpp">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\BackgroundDeserializer.cpp">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixLetter.cpp">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds\MatrixRain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixRain.cpp">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds\MatrixRain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixStrand.cpp">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds\MatrixRain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Weather\Rain.cpp">
+      <Filter>Source\Scenes\Level\Environments\Weather</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Weather\Fireflies.cpp">
+      <Filter>Source\Scenes\Level\Environments\Weather</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Weather\Snow.cpp">
+      <Filter>Source\Scenes\Level\Environments\Weather</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Weather\WeatherDeserializer.cpp">
+      <Filter>Source\Scenes\Level\Environments\Weather</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\BackgroundBase.cpp">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -885,29 +879,11 @@
     <ClInclude Include="..\Source\Scenes\Level\LevelCamera.h">
       <Filter>Source\Scenes\Level</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\MountainBackground.h">
-      <Filter>Source\Scenes\Level\Backgrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\JungleBackground.h">
-      <Filter>Source\Scenes\Level\Backgrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\JungleEnvironment.h">
-      <Filter>Source\Scenes\Level\Environments</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Entities\Entities.h">
       <Filter>Source\Entities</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\Dialog\DialogMenu.h">
       <Filter>Source\Scenes\Menus\Dialog</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixStrand.h">
-      <Filter>Source\Scenes\Level\Backgrounds\MatrixRain</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixLetter.h">
-      <Filter>Source\Scenes\Level\Backgrounds\MatrixRain</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixRain.h">
-      <Filter>Source\Scenes\Level\Backgrounds\MatrixRain</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Objects\Collision\CollisionObject.h">
       <Filter>Source\Objects\Collision</Filter>
@@ -920,9 +896,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Objects\Objects.h">
       <Filter>Source\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\Projectiles\EggProjectile.h">
-      <Filter>Source\Objects\Projectiles</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Objects\Interactables\WarpGate.h">
       <Filter>Source\Objects\Interactables</Filter>
@@ -962,9 +935,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Entities\Npcs\Knight.h">
       <Filter>Source\Entities\Npcs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Parser.h">
-      <Filter>Source\Scenes\Level\Parser</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Entities\Npcs\NpcBase.h">
       <Filter>Source\Entities\Npcs</Filter>
@@ -1052,30 +1022,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ControlReplaceCards.h">
       <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\CollisionParser.h">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\DecorParser.h">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\ObjectParser.h">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\ParallaxParser.h">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\TileParser.h">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\EnvironmentParser.h">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\EntityParser.h">
-      <Filter>Source\Scenes\Level\Parser</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\LevelMap.h">
-      <Filter>Source\Scenes\Level</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\LoadingScreen\LoadingScreen.h">
       <Filter>Source\Scenes\Menus\LoadingScreen</Filter>
@@ -1238,21 +1184,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Objects\Interactables\Wind.h">
       <Filter>Source\Objects\Interactables</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\SnowBackground.h">
-      <Filter>Source\Scenes\Level\Backgrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\SnowEnvironment.h">
-      <Filter>Source\Scenes\Level\Environments</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\Environments.h">
-      <Filter>Source\Scenes\Level\Environments</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\Backgrounds.h">
-      <Filter>Source\Scenes\Level\Backgrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\OceanBackground.h">
-      <Filter>Source\Scenes\Level\Backgrounds</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Entities\Enemies\Forest\BossDragonOrcKing.h">
       <Filter>Source\Entities\Enemies\Forest</Filter>
@@ -1441,26 +1372,11 @@
     <ClInclude Include="..\Source\Scenes\SceneDirector.h">
       <Filter>Source\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\LevelEditor.h">
-      <Filter>Source\Scenes\Level</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Window.h">
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Config\ConfigManager.h">
       <Filter>Source\Config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\CollisionKeys.h">
-      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\EntityKeys.h">
-      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\EnvironmentKeys.h">
-      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\GeneralKeys.h">
-      <Filter>Source\Scenes\Level\Parser\Keys</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Engine/Rendering\HUD\Hud.h">
       <Filter>Source\Engine\Rendering\HUD</Filter>
@@ -1516,14 +1432,95 @@
     <ClInclude Include="..\Source\Engine/Rendering\Shaders\PostProcess.h">
       <Filter>Source\Engine\Rendering\Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Objects\SerializableLayer.h">
-      <Filter>Source\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\SerializableObject.h">
-      <Filter>Source\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Engine\Rendering\HUD\DeveloperHud.h">
       <Filter>Source\Engine\Rendering\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\SerializableMap.h">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\SerializableObject.h">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\SerializableLayer.h">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\SerializableTileLayer.h">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\GlobalDirector.h">
+      <Filter>Source\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Collision\CollisionDeserializer.h">
+      <Filter>Source\Objects\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\GlobalNode.h">
+      <Filter>Source\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\DecorDeserializer.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\EntityDeserializer.h">
+      <Filter>Source\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\ObjectDeserializer.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\DecorObject.h">
+      <Filter>Source\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\IObjectDeserializer.h">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\ILayerDeserializer.h">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Maps\DefaultLayerDeserializer.h">
+      <Filter>Source\Engine\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Environments\MusicDeserializer.h">
+      <Filter>Source\Scenes\Level\Environments</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\Backgrounds.h">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\JungleBackground.h">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\MountainBackground.h">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\OceanBackground.h">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\SnowBackground.h">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\BackgroundDeserializer.h">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixLetter.h">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds\MatrixRain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixRain.h">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds\MatrixRain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixStrand.h">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds\MatrixRain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Weather\Rain.h">
+      <Filter>Source\Scenes\Level\Environments\Weather</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Weather\Fireflies.h">
+      <Filter>Source\Scenes\Level\Environments\Weather</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Weather\Snow.h">
+      <Filter>Source\Scenes\Level\Environments\Weather</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Weather\WeatherDeserializer.h">
+      <Filter>Source\Scenes\Level\Environments\Weather</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\BackgroundBase.h">
+      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

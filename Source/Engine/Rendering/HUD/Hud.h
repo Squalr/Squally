@@ -4,13 +4,14 @@
 #include "Events/DialogEvents.h"
 #include "Objects/Hackables/HackableObject.h"
 #include "Engine/Rendering/Components/Mouse.h"
+#include "Engine/Rendering/Components/UILayer.h"
 #include "Resources.h"
 #include "Scenes/Menus/Dialog/DialogMenu.h"
 #include "Scenes/Menus/HackerMode/RadialMenu.h"
 
 using namespace cocos2d;
 
-class Hud : public Node
+class Hud : public UILayer
 {
 public:
 	static Hud * create();

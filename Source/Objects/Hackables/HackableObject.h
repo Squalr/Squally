@@ -3,7 +3,7 @@
 
 #include "Events/HackableEvents.h"
 #include "Engine/Rendering/Components/MenuSprite.h"
-#include "Objects/SerializableObject.h"
+#include "Engine/Maps/SerializableObject.h"
 #include "Resources.h"
 
 #include "HackableData.h"

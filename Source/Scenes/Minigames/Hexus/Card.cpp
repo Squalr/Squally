@@ -64,7 +64,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 
 	this->attackFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->attackFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->cardText = Label::create("", Resources::Fonts_UbuntuMono_B, 64.0f);
+	this->cardText = Label::create("", Resources::Fonts_UbuntuMono_Bold, 64.0f);
 	this->cardText->setAlignment(TextHAlignment::LEFT);
 	this->cardText->setAnchorPoint(Vec2(0.0f, 1.0f));
 

@@ -32,7 +32,7 @@ Level::Level()
 	this->camera = LevelCamera::create();
 	this->mapNode = Node::create();
 	this->mouse = Mouse::create();
-	this->uiLayer = UILayer::create();
+	this->mouseLayer = UILayer::create();
 
 	this->camera->setScrollOffset(Vec2(64.0f, 32.0f));
 	this->camera->setFollowSpeed(Vec2(0.075f, 0.075f));
@@ -52,11 +52,11 @@ Level::Level()
 	this->addChild(this->mapNode);
 	this->addChild(this->gamePostProcessInversion);
 	this->addChild(this->gamePostProcessNightVision);
-	this->camera->addChild(this->uiLayer);
-	this->uiLayer->addChild(this->hud);
-	this->uiLayer->addChild(this->developerHud);
-	this->uiLayer->addChild(this->hackerModeHud);
-	this->uiLayer->addChild(this->mouse);
+	this->addChild(this->hud);
+	this->addChild(this->developerHud);
+	this->addChild(this->hackerModeHud);
+	this->addChild(this->mouseLayer);
+	this->mouseLayer->addChild(this->mouse);
 	this->addChild(this->camera);
 }
 
@@ -89,7 +89,7 @@ void Level::initializeListeners()
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-void Level::loadLevel(LevelMap* levelMap)
+void Level::loadLevel(SerializableMap* levelMap)
 {
 	this->map = levelMap;
 

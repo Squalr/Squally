@@ -14,17 +14,19 @@ DeveloperHud* DeveloperHud::create()
 DeveloperHud::DeveloperHud()
 {
 	this->layerSelectionBackground = LayerColor::create(menuColor, 320.0f, 1280.0f);
+	this->saveButton = MenuSprite::create(Resources::Menus_DeveloperMenu_SaveButton, Resources::Menus_DeveloperMenu_SaveButtonHover, Resources::Menus_DeveloperMenu_SaveButtonClick);
 
 	this->layerSelectionBackground->setAnchorPoint(Vec2(0.0f, 1.0f));
-	
+
 	this->addChild(this->layerSelectionBackground);
+	this->addChild(this->saveButton);
 }
 
 DeveloperHud::~DeveloperHud()
 {
 }
 
-void DeveloperHud::loadLevel(LevelMap* map)
+void DeveloperHud::loadLevel(SerializableMap* map)
 {
 	this->levelMap = map;
 }
@@ -40,15 +42,19 @@ void DeveloperHud::onEnter()
 void DeveloperHud::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->saveButton->setPosition(Vec2(visibleSize.width - this->saveButton->getContentSize().width, visibleSize.height - this->saveButton->getContentSize().height));
 }
 
 void DeveloperHud::initializeListeners()
 {
-	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
-	listener->onKeyPressed = CC_CALLBACK_2(DeveloperHud::onKeyPressed, this);
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(DeveloperHud::onKeyPressed, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	this->saveButton->setClickCallback(CC_CALLBACK_1(DeveloperHud::onSaveClick, this));
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 }
 
 void DeveloperHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -65,4 +71,9 @@ void DeveloperHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 			break;
 		}
 	}
+}
+
+void DeveloperHud::onSaveClick(MenuSprite* menuSprite)
+{
+	this->levelMap->serialize();
 }
