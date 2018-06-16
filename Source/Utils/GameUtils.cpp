@@ -168,6 +168,7 @@ Rect GameUtils::getSceneBounds(Node* node)
 		resultCoords = node->getParent()->convertToWorldSpace(resultCoords);
 	}
 
+	resultCoords -= (Camera::getDefaultCamera()->getPosition() - Director::getInstance()->getVisibleSize() / 2.0f);
 	resultRect.setRect(resultCoords.x, resultCoords.y, resultSize.x, resultSize.y);
 
 	return resultRect;
@@ -184,6 +185,7 @@ Rect GameUtils::getSceneBoundsV2(Node* node)
 		resultCoords = node->getParent()->convertToWorldSpace(resultCoords);
 	}
 
+	resultCoords -= (Camera::getDefaultCamera()->getPosition() - Director::getInstance()->getVisibleSize() / 2.0f);
 	resultRect.setRect(resultCoords.x, resultCoords.y, resultSize.x, resultSize.y);
 
 	return resultRect;
