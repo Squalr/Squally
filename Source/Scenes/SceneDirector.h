@@ -1,12 +1,14 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/GlobalNode.h"
+#include "Engine/Maps/SerializableMap.h"
 #include "Events/HexusEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Events/PauseEvents.h"
 #include "Fight/Fight.h"
 #include "Level/Level.h"
-#include "Level/LevelEditor.h"
 #include "Minigames/Minigames.h"
 #include "Resources.h"
 #include "Scenes/Menus/Confirmation/ConfirmationMenu.h"
@@ -20,10 +22,10 @@
 
 using namespace cocos2d;
 
-class SceneDirector : public Node
+class SceneDirector : public GlobalNode
 {
 public:
-	static SceneDirector * create();
+	static void registerGlobalNode();
 
 private:
 	SceneDirector();
@@ -34,18 +36,14 @@ private:
 	void onGameNavigateConfirm(EventCustom* eventCustom);
 	void onGameNavigateLoadLevel(EventCustom* eventCustom);
 	void onGameNavigateEnterLevel(EventCustom* eventCustom);
-	void onGameNavigateLoadLevelEditor(EventCustom* eventCustom);
-	void onGameNavigateEnterLevelEditor(EventCustom* eventCustom);
 	void onGameNavigateFight(EventCustom* eventCustom);
-	void loadScene(Scene* scene);
-	void initializeEventListeners();
+	void initializeEventListeners() override;
 
 	TitleScreen* titleScreen;
 	TutorialScreen* tutorialScreen;
 	StoryMap* storyMap;
 	LoadingScreen* loadingScreen;
 	Level* level;
-	LevelEditor* levelEditor;
 	Fight* fight;
 	OptionsMenu* optionsMenu;
 	PauseMenu* pauseMenu;
@@ -53,4 +51,6 @@ private:
 	Hexus* hexus;
 
 	std::stack<Scene*>* sceneHistory;
+
+	static SceneDirector* instance;
 };

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -158,6 +158,12 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Config\ConfigManager.cpp" />
+    <ClCompile Include="..\Source\Engine\GlobalDirector.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\DefaultLayerDeserializer.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\SerializableLayer.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\SerializableMap.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\SerializableObject.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\SerializableTileLayer.cpp" />
     <ClCompile Include="..\Source\Engine\Rendering\HUD\DeveloperHud.cpp" />
     <ClCompile Include="..\Source\Engine\Sound\SoundManager.cpp" />
     <ClCompile Include="..\Source\Entities\Enemies\Castle\BossWitch.cpp" />
@@ -262,6 +268,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Entities\Enemies\Volcano\LavaGolem.cpp" />
     <ClCompile Include="..\Source\Entities\Enemy.cpp" />
     <ClCompile Include="..\Source\Entities\Entity.cpp" />
+    <ClCompile Include="..\Source\Entities\EntityDeserializer.cpp" />
     <ClCompile Include="..\Source\Entities\Npcs\Knight.cpp" />
     <ClCompile Include="..\Source\Entities\Npcs\NpcBase.cpp" />
     <ClCompile Include="..\Source\Entities\Player\Hover.cpp" />
@@ -272,8 +279,10 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Events\NavigationEvents.cpp" />
     <ClCompile Include="..\Source\Events\MouseEvents.cpp" />
     <ClCompile Include="..\Source\Events\PauseEvents.cpp" />
-    <ClCompile Include="..\Source\Objects\SerializableLayer.cpp" />
-    <ClCompile Include="..\Source\Objects\SerializableObject.cpp" />
+    <ClCompile Include="..\Source\Objects\Collision\CollisionDeserializer.cpp" />
+    <ClCompile Include="..\Source\Objects\DecorDeserializer.cpp" />
+    <ClCompile Include="..\Source\Objects\DecorObject.cpp" />
+    <ClCompile Include="..\Source\Objects\ObjectDeserializer.cpp" />
     <ClCompile Include="..\Source\Scenes\Fight\Fight.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Components\CProgressBar.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Components\EditableTextWindow.cpp" />
@@ -291,10 +300,20 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Engine/Rendering\Components\UILayer.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\HUD\HackerModeHud.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\HUD\Hud.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\CollisionKeys.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\EntityKeys.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\EnvironmentKeys.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Keys\GeneralKeys.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\BackgroundBase.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\BackgroundDeserializer.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\JungleBackground.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixLetter.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixRain.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixStrand.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\MountainBackground.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\OceanBackground.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\SnowBackground.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Environments\MusicDeserializer.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Weather\Fireflies.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Weather\Rain.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Weather\Snow.cpp" />
+    <ClCompile Include="..\Source\Scenes\Level\Environments\Weather\WeatherDeserializer.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Confirmation\ConfirmationMenu.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Dialog\DialogMenu.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.cpp" />
@@ -311,26 +330,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Scenes\Menus\Tutorial\TutorialItem.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Tutorial\TutorialScreen.cpp" />
     <ClCompile Include="..\Source\Engine\Input\InputManager.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\JungleBackground.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixLetter.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixRain.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixStrand.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\MountainBackground.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\OceanBackground.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Backgrounds\SnowBackground.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Environments\JungleEnvironment.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Environments\SnowEnvironment.cpp" />
     <ClCompile Include="..\Source\Scenes\Level\LevelCamera.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\LevelEditor.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\LevelMap.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\CollisionParser.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\DecorParser.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\EntityParser.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\EnvironmentParser.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\ObjectParser.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\ParallaxParser.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\Parser.cpp" />
-    <ClCompile Include="..\Source\Scenes\Level\Parser\TileParser.cpp" />
     <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Card.cpp" />
     <ClCompile Include="..\Source\Scenes\Minigames\Hexus\CardData.cpp" />
     <ClCompile Include="..\Source\Scenes\Minigames\Hexus\CardStorage.cpp" />
@@ -368,7 +368,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Objects\Interactables\WarpGateExactScanTutorial.cpp" />
     <ClCompile Include="..\Source\Objects\Interactables\Wind.cpp" />
     <ClCompile Include="..\Source\Objects\ParallaxObject.cpp" />
-    <ClCompile Include="..\Source\Objects\Projectiles\EggProjectile.cpp" />
     <ClCompile Include="..\Source\Engine\Save\SaveManager.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Shaders\PostProcess.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.cpp" />
@@ -384,6 +383,15 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Config\ConfigManager.h" />
+    <ClInclude Include="..\Source\Engine\GlobalDirector.h" />
+    <ClInclude Include="..\Source\Engine\GlobalNode.h" />
+    <ClInclude Include="..\Source\Engine\Maps\DefaultLayerDeserializer.h" />
+    <ClInclude Include="..\Source\Engine\Maps\ILayerDeserializer.h" />
+    <ClInclude Include="..\Source\Engine\Maps\IObjectDeserializer.h" />
+    <ClInclude Include="..\Source\Engine\Maps\SerializableLayer.h" />
+    <ClInclude Include="..\Source\Engine\Maps\SerializableMap.h" />
+    <ClInclude Include="..\Source\Engine\Maps\SerializableObject.h" />
+    <ClInclude Include="..\Source\Engine\Maps\SerializableTileLayer.h" />
     <ClInclude Include="..\Source\Engine\Rendering\HUD\DeveloperHud.h" />
     <ClInclude Include="..\Source\Engine\Sound\SoundManager.h" />
     <ClInclude Include="..\Source\Entities\Enemies\Castle\BossWitch.h" />
@@ -489,6 +497,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Entities\Enemy.h" />
     <ClInclude Include="..\Source\Entities\Entities.h" />
     <ClInclude Include="..\Source\Entities\Entity.h" />
+    <ClInclude Include="..\Source\Entities\EntityDeserializer.h" />
     <ClInclude Include="..\Source\Entities\Npcs\Knight.h" />
     <ClInclude Include="..\Source\Entities\Npcs\NpcBase.h" />
     <ClInclude Include="..\Source\Entities\Player\Hover.h" />
@@ -499,8 +508,10 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Events\NavigationEvents.h" />
     <ClInclude Include="..\Source\Events\MouseEvents.h" />
     <ClInclude Include="..\Source\Events\PauseEvents.h" />
-    <ClInclude Include="..\Source\Objects\SerializableLayer.h" />
-    <ClInclude Include="..\Source\Objects\SerializableObject.h" />
+    <ClInclude Include="..\Source\Objects\Collision\CollisionDeserializer.h" />
+    <ClInclude Include="..\Source\Objects\DecorDeserializer.h" />
+    <ClInclude Include="..\Source\Objects\DecorObject.h" />
+    <ClInclude Include="..\Source\Objects\ObjectDeserializer.h" />
     <ClInclude Include="..\Source\Scenes\Fight\Fight.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Components\CProgressBar.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Components\EditableTextWindow.h" />
@@ -518,10 +529,21 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Engine/Rendering\Components\UILayer.h" />
     <ClInclude Include="..\Source\Engine/Rendering\HUD\HackerModeHud.h" />
     <ClInclude Include="..\Source\Engine/Rendering\HUD\Hud.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\CollisionKeys.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\EntityKeys.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\EnvironmentKeys.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Keys\GeneralKeys.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\BackgroundBase.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\BackgroundDeserializer.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\Backgrounds.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\JungleBackground.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixLetter.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixRain.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixStrand.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\MountainBackground.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\OceanBackground.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\SnowBackground.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\MusicDeserializer.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Weather\Fireflies.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Weather\Rain.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Weather\Snow.h" />
+    <ClInclude Include="..\Source\Scenes\Level\Environments\Weather\WeatherDeserializer.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Confirmation\ConfirmationMenu.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Dialog\DialogMenu.h" />
     <ClInclude Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.h" />
@@ -538,28 +560,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Scenes\Menus\Tutorial\TutorialItem.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Tutorial\TutorialScreen.h" />
     <ClInclude Include="..\Source\Input\InputManager.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\Backgrounds.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\JungleBackground.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixLetter.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixRain.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\MatrixRain\MatrixStrand.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\MountainBackground.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\OceanBackground.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Backgrounds\SnowBackground.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Environments\Environments.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Environments\JungleEnvironment.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Environments\SnowEnvironment.h" />
     <ClInclude Include="..\Source\Scenes\Level\LevelCamera.h" />
-    <ClInclude Include="..\Source\Scenes\Level\LevelEditor.h" />
-    <ClInclude Include="..\Source\Scenes\Level\LevelMap.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\CollisionParser.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\DecorParser.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\EntityParser.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\EnvironmentParser.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\ObjectParser.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\ParallaxParser.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\Parser.h" />
-    <ClInclude Include="..\Source\Scenes\Level\Parser\TileParser.h" />
     <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Card.h" />
     <ClInclude Include="..\Source\Scenes\Minigames\Hexus\CardData.h" />
     <ClInclude Include="..\Source\Scenes\Minigames\Hexus\CardStorage.h" />
@@ -602,7 +603,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Objects\Interactables\Wind.h" />
     <ClInclude Include="..\Source\Objects\Objects.h" />
     <ClInclude Include="..\Source\Objects\ParallaxObject.h" />
-    <ClInclude Include="..\Source\Objects\Projectiles\EggProjectile.h" />
     <ClInclude Include="..\Source\Engine\Save\SaveManager.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Shaders\PostProcess.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.h" />

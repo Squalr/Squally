@@ -15,7 +15,7 @@ HandCardCountDisplay::HandCardCountDisplay()
 	this->playerHandCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->playerHandCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->playerHandCardCountFrame->setContentSize(Size(80.0f, 32.0f));
-	this->playerHandCardCountText = Label::create("", Resources::Fonts_UbuntuMono_B, 32.0f);
+	this->playerHandCardCountText = Label::create("", Resources::Fonts_UbuntuMono_Bold, 32.0f);
 	this->playerHandCardCountText->setAlignment(TextHAlignment::LEFT);
 	this->playerHandCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
@@ -23,7 +23,7 @@ HandCardCountDisplay::HandCardCountDisplay()
 	this->enemyHandCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->enemyHandCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->enemyHandCardCountFrame->setContentSize(Size(80.0f, 32.0f));
-	this->enemyHandCardCountText = Label::create("", Resources::Fonts_UbuntuMono_B, 32.0f);
+	this->enemyHandCardCountText = Label::create("", Resources::Fonts_UbuntuMono_Bold, 32.0f);
 	this->enemyHandCardCountText->setAlignment(TextHAlignment::LEFT);
 	this->enemyHandCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
 

@@ -170,8 +170,12 @@ void LevelCamera::setFollowSpeed(Vec2 speed)
 void LevelCamera::setTarget(Node* newTarget)
 {
 	this->clearTargets();
-	this->pushTarget(newTarget);
-	this->setCameraPosition(newTarget->getPosition());
+
+	if (newTarget != nullptr)
+	{
+		this->pushTarget(newTarget);
+		this->setCameraPosition(newTarget->getPosition());
+	}
 }
 
 void LevelCamera::pushTarget(Node* newTarget)

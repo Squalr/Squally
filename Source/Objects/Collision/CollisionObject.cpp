@@ -1,5 +1,7 @@
 #include "CollisionObject.h"
 
+std::string CollisionObject::KeyTypeCollision = "collision";
+
 CollisionObject::CollisionObject() : HackableObject::HackableObject()
 {
 }

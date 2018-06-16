@@ -42,13 +42,11 @@ bool Window::applicationDidFinishLaunching()
 		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
 	}
 
-
 	director->setOpenGLView(glView);
 	glView->setCursorVisible(false);
 
-	// Start the Window
-	SceneDirector* Window = SceneDirector::create();
-	Window->retain();
+	// Start scene director
+	SceneDirector::registerGlobalNode();
 
 	return true;
 }

@@ -6,11 +6,20 @@
 #include "Events/NavigationEvents.h"
 #include "Engine/Rendering/Components/CProgressBar.h"
 #include "Engine/Rendering/Components/FadeScene.h"
+#include "Engine/Maps/DefaultLayerDeserializer.h"
+#include "Engine/Maps/ILayerDeserializer.h"
+#include "Engine/Maps/IObjectDeserializer.h"
+#include "Engine/Maps/SerializableMap.h"
+#include "Entities/EntityDeserializer.h"
+#include "Objects/Collision/CollisionDeserializer.h"
+#include "Objects/DecorDeserializer.h"
+#include "Objects/ObjectDeserializer.h"
 #include "Resources.h"
-#include "Scenes/Level/Parser/Parser.h"
+#include "Scenes/Level/Environments/Backgrounds/BackgroundDeserializer.h"
+#include "Scenes/Level/Environments/MusicDeserializer.h"
+#include "Scenes/Level/Environments/Weather/WeatherDeserializer.h"
 #include "Scenes/Menus/MenuBackground.h"
 #include "Utils/StrUtils.h"
-
 
 using namespace cocos2d;
 using namespace cocos_experimental;
@@ -20,7 +29,7 @@ class LoadingScreen : public FadeScene
 public:
 	static LoadingScreen * create();
 
-	void loadLevel(std::string levelFile, const std::function<void(LevelMap*)> newOnLoadCallback);
+	void loadLevel(std::string levelFile, const std::function<void(SerializableMap*)> newOnLoadCallback);
 
 protected:
 	LoadingScreen();
@@ -40,10 +49,13 @@ private:
 	Node* background;
 	Sprite* loadingWindow;
 	CProgressBar* progressBar;
-	std::function<void(LevelMap*)> onLoadCallback;
+	std::function<void(SerializableMap*)> onLoadCallback;
 
 	int totalFileCount;
 	std::atomic_int loadedFileCount;
 	std::string currentLevelFile;
+
+	static std::vector<ILayerDeserializer*> layerDeserializers;
+	static std::vector<IObjectDeserializer*> objectDeserializers;
 };
 

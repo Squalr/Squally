@@ -1,5 +1,19 @@
 #include "LoadingScreen.h"
 
+std::vector<ILayerDeserializer*> LoadingScreen::layerDeserializers = {
+	new BackgroundDeserializer(),
+	new MusicDeserializer(),
+	new WeatherDeserializer(),
+	new DefaultLayerDeserializer(),
+};
+
+std::vector<IObjectDeserializer*> LoadingScreen::objectDeserializers = {
+	new EntityDeserializer(),
+	new CollisionDeserializer(),
+	new DecorDeserializer(),
+	new ObjectDeserializer(),
+};
+
 LoadingScreen * LoadingScreen::create()
 {
 	LoadingScreen* loadingScreen = new LoadingScreen();
@@ -41,7 +55,7 @@ void LoadingScreen::initializePositions()
 	this->progressBar->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 480.0f));
 }
 
-void LoadingScreen::loadLevel(std::string levelFile, const std::function<void(LevelMap*)> newOnLoadCallback)
+void LoadingScreen::loadLevel(std::string levelFile, const std::function<void(SerializableMap*)> newOnLoadCallback)
 {
 	this->totalFileCount = 0;
 	this->loadedFileCount = 0;
@@ -116,7 +130,7 @@ void LoadingScreen::incrementLoadedFileCount()
 
 	if (this->loadedFileCount.fetch_add(1) >= this->totalFileCount - 1)
 	{
-		LevelMap* map = Parser::parseMap(this->currentLevelFile);
+		SerializableMap* map = SerializableMap::deserialize(this->currentLevelFile, &LoadingScreen::layerDeserializers, &LoadingScreen::objectDeserializers);
 
 		if (this->onLoadCallback != nullptr)
 		{

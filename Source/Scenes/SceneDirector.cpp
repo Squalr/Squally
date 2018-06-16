@@ -1,12 +1,16 @@
 #include "SceneDirector.h"
 
-SceneDirector* SceneDirector::create()
+SceneDirector* SceneDirector::instance = nullptr;
+
+void SceneDirector::registerGlobalNode()
 {
-	SceneDirector* game = new SceneDirector();
+	if (SceneDirector::instance == nullptr)
+	{
+		SceneDirector::instance = new SceneDirector();
 
-	game->autorelease();
-
-	return game;
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(SceneDirector::instance);
+	}
 }
 
 SceneDirector::SceneDirector()
@@ -17,7 +21,6 @@ SceneDirector::SceneDirector()
 	this->storyMap = StoryMap::create();
 	this->loadingScreen = LoadingScreen::create();
 	this->level = Level::create();
-	this->levelEditor = LevelEditor::create();
 	this->fight = Fight::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->pauseMenu = PauseMenu::create();
@@ -25,10 +28,7 @@ SceneDirector::SceneDirector()
 	this->hexus = Hexus::create();
 
 	// Start title screen first (TODO: Eventually splash screen? Do we want one?)
-	this->titleScreen->addChild(this);
-	Director::getInstance()->runWithScene(this->titleScreen);
-
-	this->initializeEventListeners();
+	GlobalDirector::getInstance()->loadScene(this->titleScreen);
 
 	// Prevent disposal of game objects
 	this->titleScreen->retain();
@@ -36,7 +36,6 @@ SceneDirector::SceneDirector()
 	this->storyMap->retain();
 	this->loadingScreen->retain();
 	this->level->retain();
-	this->levelEditor->retain();
 	this->fight->retain();
 	this->optionsMenu->retain();
 	this->pauseMenu->retain();
@@ -61,11 +60,6 @@ void SceneDirector::initializeEventListeners()
 		CC_CALLBACK_1(SceneDirector::onGameNavigateBack, this)
 	);
 
-	EventListenerCustom* pauseEventListener = EventListenerCustom::create(
-		PauseEvents::PauseEvent,
-		CC_CALLBACK_1(PauseMenu::onLevelPause, this->pauseMenu)
-	);
-
 	EventListenerCustom* navigateNewLevelEventListener = EventListenerCustom::create(
 		NavigationEvents::gameNavigateLoadLevelEvent,
 		CC_CALLBACK_1(SceneDirector::onGameNavigateLoadLevel, this)
@@ -74,16 +68,6 @@ void SceneDirector::initializeEventListeners()
 	EventListenerCustom* navigateEnterLevelEventListener = EventListenerCustom::create(
 		NavigationEvents::gameNavigateEnterLevelEvent,
 		CC_CALLBACK_1(SceneDirector::onGameNavigateEnterLevel, this)
-	);
-
-	EventListenerCustom* navigateNewLevelEditorEventListener = EventListenerCustom::create(
-		NavigationEvents::gameNavigateLoadLevelEditorEvent,
-		CC_CALLBACK_1(SceneDirector::onGameNavigateLoadLevelEditor, this)
-	);
-
-	EventListenerCustom* navigateEnterLevelEditorEventListener = EventListenerCustom::create(
-		NavigationEvents::gameNavigateEnterLevelEditorEvent,
-		CC_CALLBACK_1(SceneDirector::onGameNavigateEnterLevelEditor, this)
 	);
 
 	EventListenerCustom* navigateFightEventListener = EventListenerCustom::create(
@@ -102,13 +86,10 @@ void SceneDirector::initializeEventListeners()
 	);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(hexiumGameStartListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(pauseEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateNewEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateBackEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateNewLevelEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateEnterLevelEventListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateNewLevelEditorEventListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateEnterLevelEditorEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateFightEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateConfirmEventListener, this);
 }
@@ -150,7 +131,7 @@ void SceneDirector::onGameNavigateNew(EventCustom* eventCustom)
 	}
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
-	this->loadScene(newScene);
+	GlobalDirector::getInstance()->loadScene(newScene);
 }
 
 void SceneDirector::onGameNavigateBack(EventCustom* eventCustom)
@@ -170,7 +151,7 @@ void SceneDirector::onGameNavigateBack(EventCustom* eventCustom)
 		this->sceneHistory->pop();
 	}
 
-	this->loadScene(scene);
+	GlobalDirector::getInstance()->loadScene(scene);
 }
 
 void SceneDirector::onGameNavigateConfirm(EventCustom* eventCustom)
@@ -179,7 +160,7 @@ void SceneDirector::onGameNavigateConfirm(EventCustom* eventCustom)
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
 	this->confirmationMenu->initialize(args->message, args->confirmCallback, args->cancelCallback);
-	this->loadScene(this->confirmationMenu);
+	GlobalDirector::getInstance()->loadScene(this->confirmationMenu);
 }
 
 void SceneDirector::onGameNavigateLoadLevel(EventCustom* eventCustom)
@@ -187,8 +168,8 @@ void SceneDirector::onGameNavigateLoadLevel(EventCustom* eventCustom)
 	NavigationEvents::NavigateLoadLevelArgs* args = (NavigationEvents::NavigateLoadLevelArgs*)(eventCustom->getUserData());
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
-	this->loadScene(this->loadingScreen);
-	this->loadingScreen->loadLevel(args->levelFile, [](LevelMap* levelMap){ NavigationEvents::enterLevel(levelMap); });
+	GlobalDirector::getInstance()->loadScene(this->loadingScreen);
+	this->loadingScreen->loadLevel(args->levelFile, [](SerializableMap* levelMap){ NavigationEvents::enterLevel(levelMap); });
 }
 
 void SceneDirector::onGameNavigateEnterLevel(EventCustom* eventCustom)
@@ -203,33 +184,7 @@ void SceneDirector::onGameNavigateEnterLevel(EventCustom* eventCustom)
 	this->level->retain();
 
 	this->level->loadLevel(args->levelMap);
-	this->loadScene(this->level);
-}
-
-void SceneDirector::onGameNavigateLoadLevelEditor(EventCustom* eventCustom)
-{
-	NavigationEvents::NavigateLoadLevelEditorArgs* args = (NavigationEvents::NavigateLoadLevelEditorArgs*)(eventCustom->getUserData());
-
-	Vec2 initPosition = args->initPosition;
-
-	this->sceneHistory->push(Director::getInstance()->getRunningScene());
-	this->loadScene(this->loadingScreen);
-	this->loadingScreen->loadLevel(args->levelFile, [initPosition](LevelMap* levelMap) { NavigationEvents::enterLevelEditor(levelMap, initPosition); });
-}
-
-void SceneDirector::onGameNavigateEnterLevelEditor(EventCustom* eventCustom)
-{
-	NavigationEvents::NavigateEnterLevelEditorArgs* args = (NavigationEvents::NavigateEnterLevelEditorArgs*)(eventCustom->getUserData());
-
-	this->sceneHistory->push(Director::getInstance()->getRunningScene());
-
-	// Destroy the current level editor object explicitly and re-create it
-	this->levelEditor->release();
-	this->levelEditor = LevelEditor::create();
-	this->levelEditor->retain();
-
-	this->levelEditor->loadLevel(args->levelMap, args->initPosition);
-	this->loadScene(this->levelEditor);
+	GlobalDirector::getInstance()->loadScene(this->level);
 }
 
 void SceneDirector::onGameNavigateFight(EventCustom* eventCustom)
@@ -238,15 +193,5 @@ void SceneDirector::onGameNavigateFight(EventCustom* eventCustom)
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
 	this->fight->loadFight(args->player, args->enemy);
-	this->loadScene(this->fight);
-}
-
-void SceneDirector::loadScene(Scene* scene)
-{
-	// Although this is counter-intuitive, add Game as a child to whichever scene is active.
-	// This will allows for Game to listen for navigation events while the active scene runs.
-	this->getParent()->removeChild(this);
-	scene->addChild(this);
-	Director::getInstance()->replaceScene(scene);
-	this->initializeEventListeners();
+	GlobalDirector::getInstance()->loadScene(this->fight);
 }
