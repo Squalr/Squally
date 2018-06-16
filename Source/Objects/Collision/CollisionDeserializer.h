@@ -1,19 +1,19 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Maps/IDeserializer.h"
+#include "Engine/Maps/IObjectDeserializer.h"
 #include "Objects/Collision/CollisionObject.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 
-class CollisionDeserializer : public IDeserializer
+class CollisionDeserializer : public IObjectDeserializer
 {
 public:
 	CollisionDeserializer();
 	~CollisionDeserializer();
 
-	void onDeserializationRequest(DeserializationRequestArgs* args) override;
+	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
 
 	static const std::string KeyCollisionTypeSolid;
 	static const std::string KeyCollisionTypeWater;

@@ -2,7 +2,7 @@
 
 const std::string DecorDeserializer::KeyTypeDecor = "decor";
 
-void DecorDeserializer::onDeserializationRequest(DeserializationRequestArgs* args)
+void DecorDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
 {
 	if (args->typeName == DecorDeserializer::KeyTypeDecor)
 	{

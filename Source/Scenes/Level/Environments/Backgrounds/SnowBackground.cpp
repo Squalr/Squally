@@ -1,15 +1,17 @@
 #include "SnowBackground.h"
 
-SnowBackground* SnowBackground::create()
+const std::string SnowBackground::KeyBackgroundSnow = "snow";
+
+SnowBackground* SnowBackground::create(std::string name, ValueMap properties)
 {
-	SnowBackground* instance = new SnowBackground();
+	SnowBackground* instance = new SnowBackground(name, properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SnowBackground::SnowBackground()
+SnowBackground::SnowBackground(std::string name, ValueMap properties) : BackgroundBase(name, properties)
 {
 	this->background = Sprite::create(Resources::Backgrounds_Snow_snowmountains_bg);
 	this->layer6 = InfiniteParallaxNode::create(Resources::Backgrounds_Snow_snowmountains_fg);
@@ -38,7 +40,8 @@ SnowBackground::~SnowBackground()
 
 void SnowBackground::update(float dt)
 {
-	UILayer::update(dt);
+	SerializableLayer::update(dt);
+
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

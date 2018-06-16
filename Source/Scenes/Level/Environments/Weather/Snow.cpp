@@ -1,31 +1,40 @@
-#include "SnowEnvironment.h"
+#include "Snow.h"
 
-SnowEnvironment* SnowEnvironment::create()
+const std::string Snow::KeyWeatherSnow = "snow";
+
+Snow* Snow::create(std::string name, ValueMap properties)
 {
-	SnowEnvironment* instance = new SnowEnvironment();
+	Snow* instance = new Snow(name, properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SnowEnvironment::SnowEnvironment()
+Snow::Snow(std::string name, ValueMap properties) : SerializableLayer(name, nullptr, properties)
 {
 	this->snow = ParticleSystemQuad::create(Resources::Particles_Rain);
 	this->snow->setPositionType(ParticleSystem::PositionType::GROUPED);
 
+	this->snow->start();
+
 	this->addChild(this->snow);
+}
+
+Snow::~Snow()
+{
+}
+
+void Snow::onEnter()
+{
+	SerializableLayer::onEnter();
 
 	this->scheduleUpdate();
 }
 
-SnowEnvironment::~SnowEnvironment()
+void Snow::update(float dt)
 {
-}
-
-void SnowEnvironment::update(float dt)
-{
-	Layer::update(dt);
+	SerializableLayer::update(dt);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 cameraPosition = LevelCamera::getInstance()->getCameraPosition();

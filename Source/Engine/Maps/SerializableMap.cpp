@@ -18,17 +18,33 @@ SerializableMap::~SerializableMap()
 	delete(this->serializableLayers);
 }
 
-SerializableMap* SerializableMap::deserialize(std::string mapFileName, std::vector<IDeserializer*>* deserializers)
+SerializableMap* SerializableMap::deserialize(std::string mapFileName, std::vector<ILayerDeserializer*>* layerDeserializers, std::vector<IObjectDeserializer*>* objectDeserializers)
 {
 	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(mapFileName);
-	std::map<int, SerializableLayer*> extractedLayers = std::map<int, SerializableLayer*>();
-	std::vector<SerializableLayer*>* layers = new std::vector<SerializableLayer*>();
+	std::map<int, SerializableLayer*> deserializedLayerMap = std::map<int, SerializableLayer*>();
+	std::vector<SerializableLayer*>* deserializedLayers = new std::vector<SerializableLayer*>();
 
-	// Deserialize object layers
+	auto onDeserializeCallback = [&](SerializableLayer* layer, int layerIndex) {
+		deserializedLayerMap.insert_or_assign(layerIndex, layer);
+	};
+
+	// Deserialize layers
 	for (auto it = mapRaw->getObjectGroups().begin(); it != mapRaw->getObjectGroups().end(); it++)
 	{
-		TMXObjectGroup* object = *it;
-		extractedLayers.insert_or_assign(object->layerIndex, SerializableLayer::deserialize(object, deserializers));
+		TMXObjectGroup* objectGroup = *it;
+
+		// Ask all deserializers to try to deserialize object
+		ILayerDeserializer::LayerDeserializationRequestArgs args = ILayerDeserializer::LayerDeserializationRequestArgs(objectGroup, objectDeserializers, onDeserializeCallback);
+
+		for (auto it = layerDeserializers->begin(); it != layerDeserializers->end(); it++)
+		{
+			(*it)->onDeserializationRequest(&args);
+
+			if (args.handled)
+			{
+				break;
+			}
+		}
 	}
 
 	std::vector<cocos_experimental::TMXLayer*> tileLayers = std::vector<cocos_experimental::TMXLayer*>();
@@ -47,16 +63,16 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName, std::vect
 	// Deserialize tiles (separate step from pulling them out because deserialization removes the child and would ruin the getChildren() iterator)
 	for (auto it = tileLayers.begin(); it != tileLayers.end(); it++)
 	{
-		extractedLayers.insert_or_assign((*it)->layerIndex, SerializableTileLayer::deserialize((*it)));
+		deserializedLayerMap.insert_or_assign((*it)->layerIndex, SerializableTileLayer::deserialize((*it)));
 	}
 
 	// Convert from map to ordered vector
-	for (auto it = extractedLayers.begin(); it != extractedLayers.end(); it++)
+	for (auto it = deserializedLayerMap.begin(); it != deserializedLayerMap.end(); it++)
 	{
-		layers->push_back(it->second);
+		deserializedLayers->push_back(it->second);
 	}
 
-	SerializableMap* instance = new SerializableMap(mapFileName, layers, mapRaw->getMapSize(), mapRaw->getTileSize());
+	SerializableMap* instance = new SerializableMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize());
 
 	instance->autorelease();
 

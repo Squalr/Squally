@@ -123,7 +123,7 @@ EntityDeserializer::~EntityDeserializer()
 {
 }
 
-void EntityDeserializer::onDeserializationRequest(DeserializationRequestArgs* args)
+void EntityDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
 {
 	if (args->typeName == EntityDeserializer::KeyTypeEntity)
 	{
