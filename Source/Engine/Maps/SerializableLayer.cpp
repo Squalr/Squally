@@ -40,9 +40,12 @@ std::string SerializableLayer::serialize()
 
 	std::string content = "";
 
-	for (auto it = this->serializableObjects->begin(); it != this->serializableObjects->end(); it++)
+	if (serializableObjects != nullptr)
 	{
-		content += (*it)->serialize();
+		for (auto it = this->serializableObjects->begin(); it != this->serializableObjects->end(); it++)
+		{
+			content += (*it)->serialize();
+		}
 	}
 
 	return prefix + content + suffix;

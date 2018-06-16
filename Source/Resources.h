@@ -2985,6 +2985,9 @@ public:
 	static const std::string Menus_DeveloperMenu_PlusButton;
 	static const std::string Menus_DeveloperMenu_PlusButtonClick;
 	static const std::string Menus_DeveloperMenu_PlusButtonHover;
+	static const std::string Menus_DeveloperMenu_SaveButton;
+	static const std::string Menus_DeveloperMenu_SaveButtonClick;
+	static const std::string Menus_DeveloperMenu_SaveButtonHover;
 	static const std::string Menus_DeveloperMenu_VisibleCheckBoxChecked;
 	static const std::string Menus_DeveloperMenu_VisibleCheckBoxEmpty;
 	static const std::string Menus_DeveloperMenu_VisibleCheckBoxHover;

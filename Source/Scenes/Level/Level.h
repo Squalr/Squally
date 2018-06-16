@@ -59,7 +59,7 @@ private:
 	PostProcess* gamePostProcessInversion;
 	PostProcess* gamePostProcessNightVision;
 
-	UILayer* uiLayer;
+	UILayer* mouseLayer;
 	Hud* hud;
 	DeveloperHud* developerHud;
 	HackerModeHud* hackerModeHud;
