@@ -6,13 +6,18 @@
 #include "Events/NavigationEvents.h"
 #include "Engine/Rendering/Components/CProgressBar.h"
 #include "Engine/Rendering/Components/FadeScene.h"
-#include "Engine/Maps/IDeserializer.h"
+#include "Engine/Maps/DefaultLayerDeserializer.h"
+#include "Engine/Maps/ILayerDeserializer.h"
+#include "Engine/Maps/IObjectDeserializer.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Entities/EntityDeserializer.h"
 #include "Objects/Collision/CollisionDeserializer.h"
 #include "Objects/DecorDeserializer.h"
 #include "Objects/ObjectDeserializer.h"
 #include "Resources.h"
+#include "Scenes/Level/Environments/Backgrounds/BackgroundDeserializer.h"
+#include "Scenes/Level/Environments/MusicDeserializer.h"
+#include "Scenes/Level/Environments/Weather/WeatherDeserializer.h"
 #include "Scenes/Menus/MenuBackground.h"
 #include "Utils/StrUtils.h"
 
@@ -50,6 +55,7 @@ private:
 	std::atomic_int loadedFileCount;
 	std::string currentLevelFile;
 
-	static std::vector<IDeserializer*> deserializers;
+	static std::vector<ILayerDeserializer*> layerDeserializers;
+	static std::vector<IObjectDeserializer*> objectDeserializers;
 };
 

@@ -15,7 +15,7 @@ CollisionDeserializer::~CollisionDeserializer()
 {
 }
 
-void CollisionDeserializer::onDeserializationRequest(DeserializationRequestArgs* args)
+void CollisionDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
 {
 	if (args->typeName == CollisionObject::KeyTypeCollision)
 	{

@@ -1,15 +1,17 @@
 #include "MountainBackground.h"
 
-MountainBackground* MountainBackground::create()
+const std::string MountainBackground::KeyBackgroundMountains = "mountains";
+
+MountainBackground* MountainBackground::create(std::string name, ValueMap properties)
 {
-	MountainBackground* newBackground = new MountainBackground();
+	MountainBackground* instance = new MountainBackground(name, properties);
 
-	newBackground->autorelease();
+	instance->autorelease();
 
-	return newBackground;
+	return instance;
 }
 
-MountainBackground::MountainBackground()
+MountainBackground::MountainBackground(std::string name, ValueMap properties) : BackgroundBase(name, properties)
 {
 	this->background = Sprite::create(Resources::Backgrounds_Day_Sky);
 	this->clouds = InfiniteParallaxNode::create(Resources::Backgrounds_Day_Clouds_01);
@@ -64,7 +66,8 @@ MountainBackground::~MountainBackground()
 
 void MountainBackground::update(float dt)
 {
-	UILayer::update(dt);
+	SerializableLayer::update(dt);
+
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

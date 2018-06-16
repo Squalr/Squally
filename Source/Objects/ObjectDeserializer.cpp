@@ -2,7 +2,7 @@
 
 const std::string ObjectDeserializer::KeyTypeObject = "object";
 
-void ObjectDeserializer::onDeserializationRequest(DeserializationRequestArgs* args)
+void ObjectDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
 {
 	if (args->typeName == ObjectDeserializer::KeyTypeObject)
 	{

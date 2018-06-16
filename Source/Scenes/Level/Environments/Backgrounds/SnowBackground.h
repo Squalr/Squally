@@ -2,22 +2,25 @@
 #include "cocos2d.h"
 
 #include "Engine/Rendering/Components/InfiniteParallaxNode.h"
-#include "Engine/Rendering/Components/UILayer.h"
 #include "Resources.h"
+#include "Scenes/Level/Environments/Backgrounds/BackgroundBase.h"
 #include "Scenes/Level/LevelCamera.h"
 
 using namespace cocos2d;
 
-class SnowBackground : public UILayer
+class SnowBackground : public BackgroundBase
 {
 public:
-	static SnowBackground * create();
+	static SnowBackground * create(std::string name, ValueMap properties);
+
+	static const std::string KeyBackgroundSnow;
+
+private:
+	SnowBackground(std::string name, ValueMap properties);
+	~SnowBackground();
 
 	void update(float) override;
 
-private:
-	SnowBackground();
-	~SnowBackground();
 	Sprite * background;
 	InfiniteParallaxNode * layer6;
 	InfiniteParallaxNode * layer5;

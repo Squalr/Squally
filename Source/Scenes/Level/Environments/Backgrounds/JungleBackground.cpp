@@ -1,15 +1,17 @@
 #include "JungleBackground.h"
 
-JungleBackground* JungleBackground::create()
+const std::string JungleBackground::KeyBackgroundJungle = "jungle";
+
+JungleBackground* JungleBackground::create(std::string name, ValueMap properties)
 {
-	JungleBackground* newBackground = new JungleBackground();
+	JungleBackground* instance = new JungleBackground(name, properties);
 
-	newBackground->autorelease();
+	instance->autorelease();
 
-	return newBackground;
+	return instance;
 }
 
-JungleBackground::JungleBackground()
+JungleBackground::JungleBackground(std::string name, ValueMap properties) : BackgroundBase(name, properties)
 {
 	this->background = Sprite::create(Resources::Backgrounds_Jungle_Background);
 	this->layer6 = InfiniteParallaxNode::create(Resources::Backgrounds_Jungle_Layer_6);
@@ -41,7 +43,8 @@ JungleBackground::~JungleBackground()
 
 void JungleBackground::update(float dt)
 {
-	UILayer::update(dt);
+	SerializableLayer::update(dt);
+
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

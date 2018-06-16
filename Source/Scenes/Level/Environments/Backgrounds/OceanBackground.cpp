@@ -1,15 +1,17 @@
 #include "OceanBackground.h"
 
-OceanBackground* OceanBackground::create()
+const std::string OceanBackground::KeyBackgroundOcean = "ocean";
+
+OceanBackground* OceanBackground::create(std::string name, ValueMap properties)
 {
-	OceanBackground* instance = new OceanBackground();
+	OceanBackground* instance = new OceanBackground(name, properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-OceanBackground::OceanBackground()
+OceanBackground::OceanBackground(std::string name, ValueMap properties) : BackgroundBase(name, properties)
 {
 	this->background = Sprite::create(Resources::Backgrounds_Beach);
 
@@ -29,5 +31,5 @@ OceanBackground::~OceanBackground()
 
 void OceanBackground::update(float dt)
 {
-	UILayer::update(dt);
+	SerializableLayer::update(dt);
 }
