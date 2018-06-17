@@ -16,7 +16,7 @@ Mermaid::Mermaid() : Enemy::Enemy(
 	0.8f,
 	Vec2(0.0f, -140.0f))
 {
-	this->animationNode->setFlippedX(true);
+	// this->animationNode->setFlippedX(true);
 }
 
 Mermaid::~Mermaid()

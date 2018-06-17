@@ -2,9 +2,9 @@
 
 const std::string SerializableLayer::KeyType = "type";
 
-SerializableLayer* SerializableLayer::create(std::string name, std::vector<SerializableObject*>* objects, ValueMap properties)
+SerializableLayer* SerializableLayer::create(ValueMap* initProperties, std::string name, std::vector<SerializableObject*>* objects)
 {
-	SerializableLayer* instance = new SerializableLayer(name, objects, properties);
+	SerializableLayer* instance = new SerializableLayer(initProperties, name, objects);
 
 	instance->autorelease();
 
@@ -12,13 +12,17 @@ SerializableLayer* SerializableLayer::create(std::string name, std::vector<Seria
 }
 SerializableLayer::SerializableLayer()
 {
+	if (this->properties != nullptr)
+	{
+		delete(this->properties);
+	}
 }
 
-SerializableLayer::SerializableLayer(std::string name, std::vector<SerializableObject*>* objects, ValueMap properties)
+SerializableLayer::SerializableLayer(ValueMap* initProperties, std::string name, std::vector<SerializableObject*>* objects)
 {
 	this->layerName = name;
 	this->serializableObjects = objects;
-	this->layerProperties = properties;
+	this->properties = initProperties;
 
 	if (objects != nullptr)
 	{
@@ -35,8 +39,8 @@ SerializableLayer::~SerializableLayer()
 
 std::string SerializableLayer::serialize()
 {
-	std::string prefix = "<objectgroup name=" + StrUtils::quote(this->layerName) + ">";
-	std::string suffix = "</objectgroup>";
+	std::string prefix = "<objectgroup name=" + StrUtils::quote(this->layerName) + ">" + std::string("\n");
+	std::string suffix = "</objectgroup>" + std::string("\n");
 
 	std::string content = "";
 

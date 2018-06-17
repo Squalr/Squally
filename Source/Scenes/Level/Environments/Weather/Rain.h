@@ -9,12 +9,12 @@ using namespace cocos2d;
 class Rain : public SerializableLayer
 {
 public:
-	static Rain * create(std::string name, ValueMap properties);
+	static Rain * create(ValueMap* properties, std::string name);
 
 	static const std::string KeyWeatherRain;
 
 private:
-	Rain(std::string name, ValueMap properties);
+	Rain(ValueMap* properties, std::string name);
 	~Rain();
 
 	void onEnter() override;

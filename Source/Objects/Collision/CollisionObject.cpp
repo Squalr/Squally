@@ -2,7 +2,7 @@
 
 std::string CollisionObject::KeyTypeCollision = "collision";
 
-CollisionObject::CollisionObject() : HackableObject::HackableObject()
+CollisionObject::CollisionObject(ValueMap* initProperties) : HackableObject::HackableObject(initProperties)
 {
 }
 

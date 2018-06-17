@@ -9,10 +9,10 @@ using namespace cocos2d;
 class ParallaxObject : public SerializableObject
 {
 public:
-	static ParallaxObject* create(Node* parallaxChild, Vec2 parallaxSpeed);
+	static ParallaxObject* create(ValueMap* initProperties, Node* parallaxChild, Vec2 parallaxSpeed);
 
 private:
-	ParallaxObject(Node* parallaxChild, Vec2 parallaxSpeed);
+	ParallaxObject(ValueMap* initProperties, Node* parallaxChild, Vec2 parallaxSpeed);
 	~ParallaxObject();
 
 	void update(float) override;

@@ -234,11 +234,11 @@ bool GameUtils::intersectsV2(Node* node, Vec2 mousePos)
 	}
 }
 
-bool GameUtils::keyExists(ValueMap valueMap, std::string key)
+bool GameUtils::keyExists(ValueMap* valueMap, std::string key)
 {
-	auto pointsIterator = valueMap.find(key);
+	auto pointsIterator = valueMap->find(key);
 
-	if (pointsIterator != valueMap.end())
+	if (pointsIterator != valueMap->end())
 	{
 		return true;
 	}

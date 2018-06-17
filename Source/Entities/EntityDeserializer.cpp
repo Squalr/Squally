@@ -127,8 +127,8 @@ void EntityDeserializer::onDeserializationRequest(ObjectDeserializationRequestAr
 {
 	if (args->typeName == EntityDeserializer::KeyTypeEntity)
 	{
-		ValueMap entity = args->valueMap;
-		string name = entity.at(SerializableObject::KeyName).asString();
+		ValueMap properties = args->properties;
+		string name = properties.at(SerializableObject::KeyName).asString();
 		HackableObject* newEntity = nullptr;
 
 		if (name == EntityDeserializer::KeySpawnProperty)
@@ -573,8 +573,8 @@ void EntityDeserializer::onDeserializationRequest(ObjectDeserializationRequestAr
 		}
 
 		newEntity->setPosition(Vec2(
-			entity.at(SerializableObject::KeyXPosition).asFloat() + entity.at(SerializableObject::KeyWidth).asFloat() / 2,
-			entity.at(SerializableObject::KeyYPosition).asFloat() + entity.at(SerializableObject::KeyHeight).asFloat() / 2)
+			properties.at(SerializableObject::KeyXPosition).asFloat() + properties.at(SerializableObject::KeyWidth).asFloat() / 2,
+			properties.at(SerializableObject::KeyYPosition).asFloat() + properties.at(SerializableObject::KeyHeight).asFloat() / 2)
 		);
 
 		// Fire an event indicating successful deserialization

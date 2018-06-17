@@ -7,7 +7,7 @@ void WeatherDeserializer::onDeserializationRequest(LayerDeserializationRequestAr
 	std::string name = args->objectGroup->getGroupName();
 	ValueMap properties = args->objectGroup->getProperties();
 
-	if (!GameUtils::keyExists(properties, SerializableLayer::KeyType))
+	if (!GameUtils::keyExists(&properties, SerializableLayer::KeyType))
 	{
 		return;
 	}
@@ -21,7 +21,7 @@ void WeatherDeserializer::onDeserializationRequest(LayerDeserializationRequestAr
 
 	args->handled = true;
 
-	if (!GameUtils::keyExists(properties, WeatherDeserializer::KeyWeather))
+	if (!GameUtils::keyExists(&properties, WeatherDeserializer::KeyWeather))
 	{
 		CCLOG("No weather property on weather layer");
 		return;
@@ -30,15 +30,15 @@ void WeatherDeserializer::onDeserializationRequest(LayerDeserializationRequestAr
 
 	if (weather == Fireflies::KeyWeatherFireflies)
 	{
-		args->callback(Fireflies::create(name, properties), args->objectGroup->layerIndex);
+		args->callback(Fireflies::create(new ValueMap(properties), name), args->objectGroup->layerIndex);
 	}
 	else if (weather == Rain::KeyWeatherRain)
 	{
-		args->callback(Rain::create(name, properties), args->objectGroup->layerIndex);
+		args->callback(Rain::create(new ValueMap(properties), name), args->objectGroup->layerIndex);
 	}
 	else if (weather == Snow::KeyWeatherSnow)
 	{
-		args->callback(Snow::create(name, properties), args->objectGroup->layerIndex);
+		args->callback(Snow::create(new ValueMap(properties), name), args->objectGroup->layerIndex);
 	}
 	else
 	{

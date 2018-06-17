@@ -19,37 +19,37 @@ void DefaultLayerDeserializer::onDeserializationRequest(LayerDeserializationRequ
 			ValueMap object = objects[index].asValueMap();
 			std::string typeName = "";
 
-			if (!GameUtils::keyExists(object, SerializableObject::KeyType))
+			if (!GameUtils::keyExists(&object, SerializableObject::KeyType))
 			{
 				CCLOG("Missing type on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(object, SerializableObject::KeyName))
+			if (!GameUtils::keyExists(&object, SerializableObject::KeyName))
 			{
 				CCLOG("Missing name on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(object, SerializableObject::KeyWidth))
+			if (!GameUtils::keyExists(&object, SerializableObject::KeyWidth))
 			{
 				CCLOG("Missing width on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(object, SerializableObject::KeyHeight))
+			if (!GameUtils::keyExists(&object, SerializableObject::KeyHeight))
 			{
 				CCLOG("Missing height on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(object, SerializableObject::KeyXPosition))
+			if (!GameUtils::keyExists(&object, SerializableObject::KeyXPosition))
 			{
 				CCLOG("Missing x position on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(object, SerializableObject::KeyYPosition))
+			if (!GameUtils::keyExists(&object, SerializableObject::KeyYPosition))
 			{
 				CCLOG("Missing y position on object");
 				continue;
@@ -72,7 +72,7 @@ void DefaultLayerDeserializer::onDeserializationRequest(LayerDeserializationRequ
 		}
 	}
 
-	SerializableLayer* instance = SerializableLayer::create(name, deserializedObjects, properties);
+	SerializableLayer* instance = SerializableLayer::create(new ValueMap(properties), name, deserializedObjects);
 
 	args->callback(instance, args->objectGroup->layerIndex);
 }

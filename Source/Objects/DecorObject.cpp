@@ -1,15 +1,15 @@
 #include "DecorObject.h"
 
-DecorObject* DecorObject::create()
+DecorObject* DecorObject::create(ValueMap* initProperties)
 {
-	DecorObject* instance = new DecorObject();
+	DecorObject* instance = new DecorObject(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DecorObject::DecorObject()
+DecorObject::DecorObject(ValueMap* initProperties) : SerializableObject(initProperties)
 {
 }
 

@@ -143,7 +143,7 @@ ConfigManager::ResolutionSetting ConfigManager::getResolution()
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 
-	if (!GameUtils::keyExists(instance->valueMap, ConfigManager::ResolutionKey))
+	if (!GameUtils::keyExists(&instance->valueMap, ConfigManager::ResolutionKey))
 	{
 		return ResolutionSetting::R1920x1080;
 	}
@@ -157,7 +157,7 @@ bool ConfigManager::getIsFullScreen()
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 
-	if (!GameUtils::keyExists(instance->valueMap, ConfigManager::FullScreenKey))
+	if (!GameUtils::keyExists(&instance->valueMap, ConfigManager::FullScreenKey))
 	{
 		return true;
 	}
@@ -171,7 +171,7 @@ float ConfigManager::getSoundVolume()
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 
-	if (GameUtils::keyExists(instance->valueMap, ConfigManager::SoundVolumeKey))
+	if (GameUtils::keyExists(&instance->valueMap, ConfigManager::SoundVolumeKey))
 	{
 		return instance->valueMap[ConfigManager::SoundVolumeKey].asFloat();
 	}
@@ -185,7 +185,7 @@ float ConfigManager::getMusicVolume()
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 
-	if (GameUtils::keyExists(instance->valueMap, ConfigManager::MusicVolumeKey))
+	if (GameUtils::keyExists(&instance->valueMap, ConfigManager::MusicVolumeKey))
 	{
 		return instance->valueMap[ConfigManager::MusicVolumeKey].asFloat();
 	}

@@ -11,12 +11,12 @@ using namespace cocos2d;
 class MountainBackground : public BackgroundBase
 {
 public:
-	static MountainBackground * create(std::string name, ValueMap properties);
+	static MountainBackground * create(ValueMap* properties, std::string name);
 
 	static const std::string KeyBackgroundMountains;
 
 private:
-	MountainBackground(std::string name, ValueMap properties);
+	MountainBackground(ValueMap* properties, std::string name);
 	~MountainBackground();
 
 	void update(float) override;

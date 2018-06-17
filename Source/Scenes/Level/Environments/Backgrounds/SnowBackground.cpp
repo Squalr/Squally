@@ -2,16 +2,16 @@
 
 const std::string SnowBackground::KeyBackgroundSnow = "snow";
 
-SnowBackground* SnowBackground::create(std::string name, ValueMap properties)
+SnowBackground* SnowBackground::create(ValueMap* properties, std::string name)
 {
-	SnowBackground* instance = new SnowBackground(name, properties);
+	SnowBackground* instance = new SnowBackground(properties, name);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SnowBackground::SnowBackground(std::string name, ValueMap properties) : BackgroundBase(name, properties)
+SnowBackground::SnowBackground(ValueMap* properties, std::string name) : BackgroundBase(properties, name)
 {
 	this->background = Sprite::create(Resources::Backgrounds_Snow_snowmountains_bg);
 	this->layer6 = InfiniteParallaxNode::create(Resources::Backgrounds_Snow_snowmountains_fg);

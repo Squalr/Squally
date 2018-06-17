@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="124" height="196" tilewidth="128" tileheight="128" nextobjectid="365">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="124" height="196" tilewidth="128" tileheight="128" nextobjectid="366">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../Tiles/TileMap.png" width="5760" height="3200"/>
  </tileset>
- <objectgroup name="music" opacity="0.9">
+ <objectgroup name="music">
   <properties>
    <property name="music" value="Music/BurdenOfTime.mp3"/>
    <property name="type" value="music"/>
@@ -676,13 +676,6 @@
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="244" name="mermaid" type="entity" x="2566" y="7698" width="196" height="196">
-   <properties>
-    <property name="ally1" value="harpy"/>
-    <property name="ally2" value="harpy"/>
-    <property name="map" value="jungle"/>
-   </properties>
-  </object>
   <object id="245" name="mummy_pharaoh" type="entity" x="2078" y="7710" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
@@ -1244,6 +1237,13 @@
    </properties>
   </object>
   <object id="353" name="viking_bot_small" type="entity" x="2730" y="14882" width="196" height="196">
+   <properties>
+    <property name="ally1" value="harpy"/>
+    <property name="ally2" value="harpy"/>
+    <property name="map" value="jungle"/>
+   </properties>
+  </object>
+  <object id="365" name="mermaid" type="entity" x="2570" y="7734" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>

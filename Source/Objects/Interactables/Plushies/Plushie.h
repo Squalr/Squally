@@ -10,7 +10,7 @@ class Plushie : public CollisionObject
 public:
 
 protected:
-	Plushie();
+	Plushie(ValueMap* initProperties);
 	~Plushie();
 
 	virtual void registerHackables();

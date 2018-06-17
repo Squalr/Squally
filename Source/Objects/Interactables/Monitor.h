@@ -13,10 +13,10 @@ using namespace cocos2d;
 class Monitor : public CollisionObject
 {
 public:
-	static Monitor* create(std::string dialogFile);
+	static Monitor* create(ValueMap* initProperties, std::string dialogFile);
 
 protected:
-	Monitor(std::string dialogFile);
+	Monitor(ValueMap* initProperties, std::string dialogFile);
 	~Monitor();
 
 private:

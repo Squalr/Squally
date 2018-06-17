@@ -1,15 +1,15 @@
 #include "Chest.h"
 
-Chest* Chest::create(Node* contentNode)
+Chest* Chest::create(ValueMap* initProperties, Node* contentNode)
 {
-	Chest* instance = new Chest(contentNode);
+	Chest* instance = new Chest(initProperties, contentNode);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Chest::Chest(Node* contentNode)
+Chest::Chest(ValueMap* initProperties, Node* contentNode) : CollisionObject(initProperties)
 {
 	this->content = contentNode;
 	this->chestOpen = Node::create();

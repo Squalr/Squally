@@ -2,16 +2,16 @@
 
 const std::string MountainBackground::KeyBackgroundMountains = "mountains";
 
-MountainBackground* MountainBackground::create(std::string name, ValueMap properties)
+MountainBackground* MountainBackground::create(ValueMap* properties, std::string name)
 {
-	MountainBackground* instance = new MountainBackground(name, properties);
+	MountainBackground* instance = new MountainBackground(properties, name);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MountainBackground::MountainBackground(std::string name, ValueMap properties) : BackgroundBase(name, properties)
+MountainBackground::MountainBackground(ValueMap* properties, std::string name) : BackgroundBase(properties, name)
 {
 	this->background = Sprite::create(Resources::Backgrounds_Day_Sky);
 	this->clouds = InfiniteParallaxNode::create(Resources::Backgrounds_Day_Clouds_01);

@@ -8,10 +8,10 @@ using namespace cocos2d;
 class Wind : public CollisionObject
 {
 public:
-	static Wind* create(Size startSize, Vec2 startSpeed);
+	static Wind* create(ValueMap* initProperties, Size startSize, Vec2 startSpeed);
 
 protected:
-	Wind(Size startSize, Vec2 startSpeed);
+	Wind(ValueMap* initProperties, Size startSize, Vec2 startSpeed);
 	~Wind();
 
 private:

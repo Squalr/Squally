@@ -8,15 +8,23 @@ const std::string SerializableObject::KeyXPosition = "x";
 const std::string SerializableObject::KeyYPosition = "y";
 const std::string SerializableObject::KeyRotation = "rotation";
 
-SerializableObject::SerializableObject()
+SerializableObject::SerializableObject(ValueMap* initProperties)
 {
+	this->properties = initProperties;
 }
 
 SerializableObject::~SerializableObject()
 {
+	if (this->properties != nullptr)
+	{
+		delete(this->properties);
+	}
 }
 
 std::string SerializableObject::serialize()
 {
-	return "";
+	std::string propertiesPrefix = "<properties>" + std::string("\n");
+	std::string propertiexSuffix = "</properties>" + std::string("\n");
+
+	return propertiesPrefix + propertiexSuffix;
 }

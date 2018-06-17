@@ -13,7 +13,6 @@ using namespace cocos2d;
 class HackableObject : public SerializableObject
 {
 public:
-
 	void onHackableClick(MenuSprite* menuSprite);
 	void bindHackableButton(MenuSprite* hackableButton);
 
@@ -21,7 +20,7 @@ public:
 	std::vector<HackableData*>* dataList;
 
 protected:
-	HackableObject();
+	HackableObject(ValueMap* initProperties);
 	~HackableObject();
 
 	void onEnterTransitionDidFinish() override;

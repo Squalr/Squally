@@ -8,13 +8,13 @@ using namespace cocos2d;
 class WarpGate : public CollisionObject
 {
 public:
-	static WarpGate* create();
+	static WarpGate* create(ValueMap* initProperties);
 
 	void open();
 	void close();
 
 protected:
-	WarpGate();
+	WarpGate(ValueMap* initProperties);
 	~WarpGate();
 
 private:
