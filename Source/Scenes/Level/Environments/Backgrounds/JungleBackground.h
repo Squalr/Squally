@@ -11,12 +11,12 @@ using namespace cocos2d;
 class JungleBackground : public BackgroundBase
 {
 public:
-	static JungleBackground * create(std::string name, ValueMap properties);
+	static JungleBackground * create(ValueMap* properties, std::string name);
 
 	static const std::string KeyBackgroundJungle;
 
 private:
-	JungleBackground(std::string name, ValueMap properties);
+	JungleBackground(ValueMap* properties, std::string name);
 	~JungleBackground();
 
 	void update(float) override;

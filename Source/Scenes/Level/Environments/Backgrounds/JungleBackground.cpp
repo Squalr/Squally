@@ -2,16 +2,16 @@
 
 const std::string JungleBackground::KeyBackgroundJungle = "jungle";
 
-JungleBackground* JungleBackground::create(std::string name, ValueMap properties)
+JungleBackground* JungleBackground::create(ValueMap* properties, std::string name)
 {
-	JungleBackground* instance = new JungleBackground(name, properties);
+	JungleBackground* instance = new JungleBackground(properties, name);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-JungleBackground::JungleBackground(std::string name, ValueMap properties) : BackgroundBase(name, properties)
+JungleBackground::JungleBackground(ValueMap* properties, std::string name) : BackgroundBase(properties, name)
 {
 	this->background = Sprite::create(Resources::Backgrounds_Jungle_Background);
 	this->layer6 = InfiniteParallaxNode::create(Resources::Backgrounds_Jungle_Layer_6);

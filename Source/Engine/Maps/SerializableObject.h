@@ -19,6 +19,8 @@ public:
 	static const std::string KeyRotation;
 
 protected:
-	SerializableObject();
+	SerializableObject(ValueMap* initProperties);
 	~SerializableObject();
+
+	ValueMap* properties;
 };

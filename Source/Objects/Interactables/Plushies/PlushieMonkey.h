@@ -7,10 +7,10 @@ using namespace cocos2d;
 class PlushieMonkey : public Plushie
 {
 public:
-	static PlushieMonkey* create();
+	static PlushieMonkey* create(ValueMap* initProperties);
 
 protected:
-	PlushieMonkey();
+	PlushieMonkey(ValueMap* initProperties);
 	~PlushieMonkey();
 
 	void update(float) override;

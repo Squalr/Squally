@@ -9,12 +9,12 @@ using namespace cocos2d;
 class Fireflies : public SerializableLayer
 {
 public:
-	static Fireflies * create(std::string name, ValueMap properties);
+	static Fireflies * create(ValueMap* properties, std::string name);
 
 	static const std::string KeyWeatherFireflies;
 
 private:
-	Fireflies(std::string name, ValueMap properties);
+	Fireflies(ValueMap* properties, std::string name);
 	~Fireflies();
 
 	void onEnter() override;

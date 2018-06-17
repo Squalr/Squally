@@ -9,11 +9,8 @@ SerializableTileLayer* SerializableTileLayer::deserialize(cocos_experimental::TM
 	return instance;
 }
 
-SerializableTileLayer::SerializableTileLayer(cocos_experimental::TMXLayer* tileLayer)
+SerializableTileLayer::SerializableTileLayer(cocos_experimental::TMXLayer* tileLayer) : SerializableLayer(new ValueMap(tileLayer->getProperties()), tileLayer->getLayerName(), nullptr)
 {
-	this->layerName = tileLayer->getLayerName();
-	this->layerProperties = tileLayer->getProperties();
-
 	// Can be a nullptr if the layer is empty
 	if (tileLayer != nullptr)
 	{

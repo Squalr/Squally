@@ -2,16 +2,16 @@
 
 const std::string Fireflies::KeyWeatherFireflies = "fireflies";
 
-Fireflies* Fireflies::create(std::string name, ValueMap properties)
+Fireflies* Fireflies::create(ValueMap* properties, std::string name)
 {
-	Fireflies* instance = new Fireflies(name, properties);
+	Fireflies* instance = new Fireflies(properties, name);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Fireflies::Fireflies(std::string name, ValueMap properties) : SerializableLayer(name, nullptr, properties)
+Fireflies::Fireflies(ValueMap* properties, std::string name) : SerializableLayer(properties, name, nullptr)
 {
 	this->fireflies = ParticleSystemQuad::create(Resources::Particles_Fireflies2);
 	this->fireflies->setPositionType(ParticleSystem::PositionType::GROUPED);

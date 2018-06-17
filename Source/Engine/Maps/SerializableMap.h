@@ -1,4 +1,6 @@
 #pragma once
+#include <fstream>
+#include <iostream>
 #include "cocos2d.h"
 
 #include "Resources.h"

@@ -3,16 +3,16 @@
 int WarpGateExactScanTutorial::warpGatePower = 0;
 int WarpGateExactScanTutorial::warpGatePowerMax = 70100;
 
-WarpGateExactScanTutorial* WarpGateExactScanTutorial::create()
+WarpGateExactScanTutorial* WarpGateExactScanTutorial::create(ValueMap* initProperties)
 {
-	WarpGateExactScanTutorial* warpGate = new WarpGateExactScanTutorial();
+	WarpGateExactScanTutorial* warpGate = new WarpGateExactScanTutorial(initProperties);
 
 	warpGate->autorelease();
 
 	return warpGate;
 }
 
-WarpGateExactScanTutorial::WarpGateExactScanTutorial() : WarpGate::WarpGate()
+WarpGateExactScanTutorial::WarpGateExactScanTutorial(ValueMap* initProperties) : WarpGate(initProperties)
 {
 	this->valueLabel = Label::create(std::to_string(WarpGateExactScanTutorial::warpGatePower), Resources::Fonts_Montserrat_Medium, 24);
 

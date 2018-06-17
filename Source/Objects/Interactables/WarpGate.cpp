@@ -1,15 +1,15 @@
 #include "WarpGate.h"
 
-WarpGate* WarpGate::create()
+WarpGate* WarpGate::create(ValueMap* initProperties)
 {
-	WarpGate* warpGate = new WarpGate();
+	WarpGate* warpGate = new WarpGate(initProperties);
 
 	warpGate->autorelease();
 
 	return warpGate;
 }
 
-WarpGate::WarpGate()
+WarpGate::WarpGate(ValueMap* initProperties) : CollisionObject(initProperties)
 {
 	this->isOpen = false;
 

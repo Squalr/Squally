@@ -7,7 +7,7 @@ void BackgroundDeserializer::onDeserializationRequest(LayerDeserializationReques
 	std::string name = args->objectGroup->getGroupName();
 	ValueMap properties = args->objectGroup->getProperties();
 
-	if (!GameUtils::keyExists(properties, SerializableLayer::KeyType))
+	if (!GameUtils::keyExists(&properties, SerializableLayer::KeyType))
 	{
 		return;
 	}
@@ -21,7 +21,7 @@ void BackgroundDeserializer::onDeserializationRequest(LayerDeserializationReques
 
 	args->handled = true;
 
-	if (!GameUtils::keyExists(properties, BackgroundDeserializer::KeyBackground))
+	if (!GameUtils::keyExists(&properties, BackgroundDeserializer::KeyBackground))
 	{
 		CCLOG("No background property on background layer");
 		return;
@@ -31,19 +31,19 @@ void BackgroundDeserializer::onDeserializationRequest(LayerDeserializationReques
 
 	if (background == JungleBackground::KeyBackgroundJungle)
 	{
-		args->callback(JungleBackground::create(name, properties), args->objectGroup->layerIndex);
+		args->callback(JungleBackground::create(new ValueMap(properties), name), args->objectGroup->layerIndex);
 	}
 	else if (background == MountainBackground::KeyBackgroundMountains)
 	{
-		args->callback(MountainBackground::create(name, properties), args->objectGroup->layerIndex);
+		args->callback(MountainBackground::create(new ValueMap(properties), name), args->objectGroup->layerIndex);
 	}
 	else if (background == OceanBackground::KeyBackgroundOcean)
 	{
-		args->callback(OceanBackground::create(name, properties), args->objectGroup->layerIndex);
+		args->callback(OceanBackground::create(new ValueMap(properties), name), args->objectGroup->layerIndex);
 	}
 	else if (background == SnowBackground::KeyBackgroundSnow)
 	{
-		args->callback(SnowBackground::create(name, properties), args->objectGroup->layerIndex);
+		args->callback(SnowBackground::create(new ValueMap(properties), name), args->objectGroup->layerIndex);
 	}
 	else
 	{

@@ -1,6 +1,6 @@
 #include "BackgroundBase.h"
 
-BackgroundBase::BackgroundBase(std::string name, ValueMap properties) : SerializableLayer(name, nullptr, properties)
+BackgroundBase::BackgroundBase(ValueMap* properties, std::string name) : SerializableLayer(properties, name, nullptr)
 {
 }
 

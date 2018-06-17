@@ -10,10 +10,10 @@ using namespace cocos2d;
 class WarpGateExactScanTutorial : public WarpGate
 {
 public:
-	static WarpGateExactScanTutorial* create();
+	static WarpGateExactScanTutorial* create(ValueMap* initProperties);
 
 private:
-	WarpGateExactScanTutorial();
+	WarpGateExactScanTutorial(ValueMap* initProperties);
 	~WarpGateExactScanTutorial();
 
 	void onEnter() override;

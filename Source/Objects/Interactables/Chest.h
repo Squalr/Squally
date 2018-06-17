@@ -8,13 +8,13 @@ using namespace cocos2d;
 class Chest : public CollisionObject
 {
 public:
-	static Chest * create(Node* contentNode);
+	static Chest * create(ValueMap* initProperties, Node* contentNode);
 
 	virtual void open();
 	virtual void close();
 
 protected:
-	Chest(Node* contentNode);
+	Chest(ValueMap* initProperties, Node* contentNode);
 	~Chest();
 
 	void update(float) override;

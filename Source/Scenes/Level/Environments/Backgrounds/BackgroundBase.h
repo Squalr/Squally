@@ -9,7 +9,7 @@ using namespace cocos2d;
 class BackgroundBase : public SerializableLayer
 {
 protected:
-	BackgroundBase(std::string name, ValueMap properties);
+	BackgroundBase(ValueMap* properties, std::string name);
 	~BackgroundBase();
 
 	void draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) override;

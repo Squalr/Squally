@@ -1,15 +1,15 @@
 #include "Wind.h"
 
-Wind* Wind::create(Size startSize, Vec2 startSpeed)
+Wind* Wind::create(ValueMap* initProperties, Size startSize, Vec2 startSpeed)
 {
-	Wind* instance = new Wind(startSize, startSpeed);
+	Wind* instance = new Wind(initProperties, startSize, startSpeed);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Wind::Wind(Size startSize, Vec2 startSpeed)
+Wind::Wind(ValueMap* initProperties, Size startSize, Vec2 startSpeed) : CollisionObject(initProperties)
 {
 	this->size = startSize;
 	this->windSpeed = startSpeed;

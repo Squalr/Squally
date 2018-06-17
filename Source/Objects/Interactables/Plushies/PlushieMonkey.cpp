@@ -3,16 +3,16 @@
 int PlushieMonkey::warpGatePower = 0;
 int PlushieMonkey::warpGatePowerMax = 234900;
 
-PlushieMonkey* PlushieMonkey::create()
+PlushieMonkey* PlushieMonkey::create(ValueMap* initProperties)
 {
-	PlushieMonkey* instance = new PlushieMonkey();
+	PlushieMonkey* instance = new PlushieMonkey(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PlushieMonkey::PlushieMonkey()
+PlushieMonkey::PlushieMonkey(ValueMap* initProperties) : Plushie(initProperties)
 {
 	Sprite* coin = Sprite::create(Resources::Menus_HackerModeMenu_Icons_Coins);
 	Label* gold = Label::create("+200", Resources::Fonts_Montserrat_Medium, 24);

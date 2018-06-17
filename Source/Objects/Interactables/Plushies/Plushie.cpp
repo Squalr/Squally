@@ -1,9 +1,9 @@
 #include "Plushie.h"
 
-Plushie::Plushie()
+Plushie::Plushie(ValueMap* initProperties) : CollisionObject(initProperties)
 {
 	this->sprite = Node::create();
-	this->chest = Chest::create(this->sprite);
+	this->chest = Chest::create(initProperties, this->sprite);
 
 	this->registerHackables();
 

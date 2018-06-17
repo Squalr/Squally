@@ -19,22 +19,22 @@ void CollisionDeserializer::onDeserializationRequest(ObjectDeserializationReques
 {
 	if (args->typeName == CollisionObject::KeyTypeCollision)
 	{
-		ValueMap object = args->valueMap;
+		ValueMap* properties = new ValueMap(args->properties);
 		ValueVector* polygonPoints = nullptr;
-		std::string name = object.at(SerializableObject::KeyName).asString();
+		std::string name = properties->at(SerializableObject::KeyName).asString();
 		bool isPolygon = false;
-		float width = object.at(SerializableObject::KeyWidth).asFloat();
-		float height = object.at(SerializableObject::KeyHeight).asFloat();
-		float x = object.at(SerializableObject::KeyXPosition).asFloat() + width / 2.0f;
-		float y = object.at(SerializableObject::KeyYPosition).asFloat() + height / 2.0f;
+		float width = properties->at(SerializableObject::KeyWidth).asFloat();
+		float height = properties->at(SerializableObject::KeyHeight).asFloat();
+		float x = properties->at(SerializableObject::KeyXPosition).asFloat() + width / 2.0f;
+		float y = properties->at(SerializableObject::KeyYPosition).asFloat() + height / 2.0f;
 
-		if (GameUtils::keyExists(object, CollisionDeserializer::KeyCollisionPointsProperty))
+		if (GameUtils::keyExists(properties, CollisionDeserializer::KeyCollisionPointsProperty))
 		{
 			isPolygon = true;
-			polygonPoints = &(object.at(CollisionDeserializer::KeyCollisionPointsProperty).asValueVector());
+			polygonPoints = &(properties->at(CollisionDeserializer::KeyCollisionPointsProperty).asValueVector());
 		}
 
-		CollisionObject* collisionBox = new CollisionObject();
+		CollisionObject* collisionBox = new CollisionObject(properties);
 		CategoryGroup collisionGroup = CategoryGroup::G_None;
 
 		if (name == CollisionDeserializer::KeyCollisionTypeSolid)

@@ -81,32 +81,46 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName, std::vect
 
 void SerializableMap::serialize()
 {
-	std::string header = "<?xml version=" + StrUtils::quote("1.0") + " encoding=" + StrUtils::quote("UTF - 8") + "?>";
-	std::string prefix = "<map version=" + StrUtils::quote("1.0") +
-		" tiledversion=" + StrUtils::quote("1.0.03") + 
-		" orientation=" + StrUtils::quote("orthogonal") + " renderorder=" + StrUtils::quote("right - down") +
-		" width=" + StrUtils::quote("124") +
-		" height=" + StrUtils::quote("196") + 
-		" tilewidth=" + StrUtils::quote("128") + 
-		" tileheight=" + StrUtils::quote("128") +
-		" nextobjectid=" + StrUtils::quote("364") + ">";
-	std::string suffix = "</map>";
 	std::string content = "";
-
-	// TODO: Tileset as such:
-	/*
-	<tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
-	<grid orientation="orthogonal" width="64" height="64"/>
-	<image source="../Tiles/TileMap.png" width="5760" height="3200"/>
-	</tileset>
-	*/
 
 	for (auto it = this->serializableLayers->begin(); it != this->serializableLayers->end(); it++)
 	{
 		content += (*it)->serialize();
 	}
 
-	std::string result = header + prefix + content + suffix;
+	std::string header = "<?xml version=" + StrUtils::quote("1.0") + " encoding=" + StrUtils::quote("UTF-8") + "?>" + std::string("\n");
+	std::string mapPrefix = "<map version=" + StrUtils::quote("1.0") +
+		" tiledversion=" + StrUtils::quote("1.0.3") + 
+		" orientation=" + StrUtils::quote("orthogonal") + " renderorder=" + StrUtils::quote("right-down") +
+		" width=" + StrUtils::quote(std::to_string((int)this->getMapUnitSize().width)) +
+		" height=" + StrUtils::quote(std::to_string((int)this->getMapUnitSize().height)) +
+		" tilewidth=" + StrUtils::quote(std::to_string((int)this->getMapTileSize().width)) + 
+		" tileheight=" + StrUtils::quote(std::to_string((int)this->getMapTileSize().height)) +
+		" nextobjectid=" + StrUtils::quote("365") + // TODO ugh
+		">" + std::string("\n");
+	std::string tilesetPrefix = "<tileset firstgid=" + StrUtils::quote("1") + 
+		" name=" + StrUtils::quote("TileMap") +
+		" tilewidth=" + StrUtils::quote(std::to_string((int)this->getMapTileSize().width)) +
+		" tileheight=" + StrUtils::quote(std::to_string((int)this->getMapTileSize().height)) +
+		" tilecount=" + StrUtils::quote(std::to_string(1125)) + // TODO ugh
+		" columns=" + StrUtils::quote(std::to_string(45)) + // TODO ugh
+		">" + std::string("\n");
+	std::string grid = "<grid orientation=" + StrUtils::quote("orthogonal") +
+		" width=" + StrUtils::quote(std::to_string(64)) + // TODO ugh
+		" height=" + StrUtils::quote(std::to_string(64)) + // TODO ugh
+		"/>" + std::string("\n");
+	std::string image = "<image source=" + StrUtils::quote("../Tiles/TileMap.png") +
+		" width=" + StrUtils::quote(std::to_string(5760)) + // TODO ugh
+		" height=" + StrUtils::quote(std::to_string(3200)) + // TODO ugh
+		"/>" + std::string("\n");
+	std::string tilesetSuffix = "</tileset>" + std::string("\n");
+	std::string mapSuffix = "</map>" + std::string("\n");
+
+	std::string result = header + mapPrefix + tilesetPrefix + grid + image + tilesetSuffix + content + mapSuffix;
+	std::string filePath = CCFileUtils::sharedFileUtils()->fullPathForFilename(this->levelMapFileName);
+	std::ofstream file(filePath + ".dbg");
+	file << result;
+	file.close();
 }
 
 std::string SerializableMap::getMapFileName()

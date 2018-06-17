@@ -2,16 +2,16 @@
 
 const std::string Snow::KeyWeatherSnow = "snow";
 
-Snow* Snow::create(std::string name, ValueMap properties)
+Snow* Snow::create(ValueMap* properties, std::string name)
 {
-	Snow* instance = new Snow(name, properties);
+	Snow* instance = new Snow(properties, name);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Snow::Snow(std::string name, ValueMap properties) : SerializableLayer(name, nullptr, properties)
+Snow::Snow(ValueMap* properties, std::string name) : SerializableLayer(properties, name, nullptr)
 {
 	this->snow = ParticleSystemQuad::create(Resources::Particles_Rain);
 	this->snow->setPositionType(ParticleSystem::PositionType::GROUPED);

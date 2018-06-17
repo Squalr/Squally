@@ -1,15 +1,15 @@
 #include "Monitor.h"
 
-Monitor* Monitor::create(std::string dialogFile)
+Monitor* Monitor::create(ValueMap* initProperties, std::string dialogFile)
 {
-	Monitor* monitor = new Monitor(dialogFile);
+	Monitor* monitor = new Monitor(initProperties, dialogFile);
 
 	monitor->autorelease();
 
 	return monitor;
 }
 
-Monitor::Monitor(std::string dialogFile)
+Monitor::Monitor(ValueMap* initProperties, std::string dialogFile) : CollisionObject(initProperties)
 {
 	this->monitorDialog = DialogMenu::loadDialogFromFile(dialogFile);
 	this->monitorDialog->retain();

@@ -2,16 +2,16 @@
 
 const std::string OceanBackground::KeyBackgroundOcean = "ocean";
 
-OceanBackground* OceanBackground::create(std::string name, ValueMap properties)
+OceanBackground* OceanBackground::create(ValueMap* properties, std::string name)
 {
-	OceanBackground* instance = new OceanBackground(name, properties);
+	OceanBackground* instance = new OceanBackground(properties, name);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-OceanBackground::OceanBackground(std::string name, ValueMap properties) : BackgroundBase(name, properties)
+OceanBackground::OceanBackground(ValueMap* properties, std::string name) : BackgroundBase(properties, name)
 {
 	this->background = Sprite::create(Resources::Backgrounds_Beach);
 

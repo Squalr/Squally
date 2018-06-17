@@ -11,7 +11,7 @@ using namespace cocos2d;
 class CollisionObject : public HackableObject
 {
 public:
-	CollisionObject();
+	CollisionObject(ValueMap* initProperties);
 	~CollisionObject();
 
 	void init(PhysicsBody* initPhysicsBody, CategoryGroup initCategoryGroup, bool isDynamic, bool canRotate);

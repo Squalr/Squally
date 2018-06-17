@@ -6,48 +6,48 @@ void ObjectDeserializer::onDeserializationRequest(ObjectDeserializationRequestAr
 {
 	if (args->typeName == ObjectDeserializer::KeyTypeObject)
 	{
-		ValueMap object = args->valueMap;
-		std::string name = object.at(SerializableObject::KeyName).asString();
-		float width = object.at(SerializableObject::KeyWidth).asFloat();
-		float height = object.at(SerializableObject::KeyHeight).asFloat();
+		ValueMap properties = args->properties;
+		std::string name = properties.at(SerializableObject::KeyName).asString();
+		float width = properties.at(SerializableObject::KeyWidth).asFloat();
+		float height = properties.at(SerializableObject::KeyHeight).asFloat();
 		Size size = Size(width, height);
 
 		HackableObject* newObject = nullptr;
 
 		if (name == "warp-gate")
 		{
-			newObject = WarpGate::create();
+			newObject = WarpGate::create(new ValueMap(properties));
 		}
 		else if (name == "warp-gate-exact-scan-1")
 		{
-			newObject = WarpGateExactScanTutorial::create();
+			newObject = WarpGateExactScanTutorial::create(new ValueMap(properties));
 		}
 		else if (name == "plushie_monkey")
 		{
-			newObject = PlushieMonkey::create();
+			newObject = PlushieMonkey::create(new ValueMap(properties));
 		}
 		else if (name == "monitor")
 		{
-			string dialog = object.at("dialog").asString();
+			string dialog = properties.at("dialog").asString();
 
-			newObject = Monitor::create("Dialog\\" + dialog + ".json");
+			newObject = Monitor::create(new ValueMap(properties), "Dialog\\" + dialog + ".json");
 		}
 		else if (name == "wind")
 		{
 			float speedX = 0.0f;
 			float speedY = 0.0f;
 
-			if (GameUtils::keyExists(object, "speed-x"))
+			if (GameUtils::keyExists(&properties, "speed-x"))
 			{
-				speedX = object.at("speed-x").asFloat();
+				speedX = properties.at("speed-x").asFloat();
 			}
 
-			if (GameUtils::keyExists(object, "speed-y"))
+			if (GameUtils::keyExists(&properties, "speed-y"))
 			{
-				speedY = object.at("speed-y").asFloat();
+				speedY = properties.at("speed-y").asFloat();
 			}
 
-			newObject = Wind::create(size, Vec2(speedX, speedY));
+			newObject = Wind::create(&properties, size, Vec2(speedX, speedY));
 		}
 		else
 		{
@@ -56,8 +56,8 @@ void ObjectDeserializer::onDeserializationRequest(ObjectDeserializationRequestAr
 		}
 
 		newObject->setPosition(Vec2(
-			object.at(SerializableObject::KeyXPosition).asFloat() + object.at(SerializableObject::KeyWidth).asFloat() / 2.0f,
-			object.at(SerializableObject::KeyYPosition).asFloat() + object.at(SerializableObject::KeyHeight).asFloat() / 2.0f)
+			properties.at(SerializableObject::KeyXPosition).asFloat() + properties.at(SerializableObject::KeyWidth).asFloat() / 2.0f,
+			properties.at(SerializableObject::KeyYPosition).asFloat() + properties.at(SerializableObject::KeyHeight).asFloat() / 2.0f)
 		);
 
 		args->callback(newObject);

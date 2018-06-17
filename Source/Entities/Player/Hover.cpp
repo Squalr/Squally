@@ -9,7 +9,7 @@ Hover* Hover::create(Entity* initParent)
 	return hover;
 }
 
-Hover::Hover(Entity* initParent)
+Hover::Hover(Entity* initParent) : CollisionObject(nullptr)
 {
 	this->parent = initParent;
 

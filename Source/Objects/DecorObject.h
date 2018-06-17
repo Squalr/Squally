@@ -9,9 +9,9 @@ using namespace cocos2d;
 class DecorObject : public SerializableObject
 {
 public:
-	static DecorObject* create();
+	static DecorObject* create(ValueMap* initProperties);
 
 private:
-	DecorObject();
+	DecorObject(ValueMap* initProperties);
 	~DecorObject();
 };

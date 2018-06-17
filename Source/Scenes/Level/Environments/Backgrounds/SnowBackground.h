@@ -11,12 +11,12 @@ using namespace cocos2d;
 class SnowBackground : public BackgroundBase
 {
 public:
-	static SnowBackground * create(std::string name, ValueMap properties);
+	static SnowBackground * create(ValueMap* properties, std::string name);
 
 	static const std::string KeyBackgroundSnow;
 
 private:
-	SnowBackground(std::string name, ValueMap properties);
+	SnowBackground(ValueMap* properties, std::string name);
 	~SnowBackground();
 
 	void update(float) override;

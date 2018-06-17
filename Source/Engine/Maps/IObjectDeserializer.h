@@ -12,11 +12,11 @@ public:
 	struct ObjectDeserializationRequestArgs
 	{
 		std::string typeName;
-		ValueMap valueMap;
+		ValueMap properties;
 		std::function<void(SerializableObject*)> callback;
 		bool handled = false;
 
-		ObjectDeserializationRequestArgs(std::string typeName, ValueMap valueMap, std::function<void(SerializableObject*)> callback) : typeName(typeName), valueMap(valueMap), callback(callback)
+		ObjectDeserializationRequestArgs(std::string typeName, ValueMap properties, std::function<void(SerializableObject*)> callback) : typeName(typeName), properties(properties), callback(callback)
 		{
 		}
 	};

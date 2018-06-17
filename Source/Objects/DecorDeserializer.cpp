@@ -6,8 +6,8 @@ void DecorDeserializer::onDeserializationRequest(ObjectDeserializationRequestArg
 {
 	if (args->typeName == DecorDeserializer::KeyTypeDecor)
 	{
-		ValueMap object = args->valueMap;
-		std::string name = object.at(SerializableObject::KeyName).asString();
+		ValueMap properties = args->properties;
+		std::string name = properties.at(SerializableObject::KeyName).asString();
 
 		// For decor, simply grab the resource of the same name of the object type
 		Sprite* sprite = Sprite::create("Decor/" + name + ".png");
@@ -18,37 +18,37 @@ void DecorDeserializer::onDeserializationRequest(ObjectDeserializationRequestArg
 			return;
 		}
 
-		float width = object.at(SerializableObject::KeyWidth).asFloat();
-		float height = object.at(SerializableObject::KeyHeight).asFloat();
-		float x = object.at(SerializableObject::KeyXPosition).asFloat() + width / 2.0f;
-		float y = object.at(SerializableObject::KeyYPosition).asFloat() + height / 2.0f;
+		float width = properties.at(SerializableObject::KeyWidth).asFloat();
+		float height = properties.at(SerializableObject::KeyHeight).asFloat();
+		float x = properties.at(SerializableObject::KeyXPosition).asFloat() + width / 2.0f;
+		float y = properties.at(SerializableObject::KeyYPosition).asFloat() + height / 2.0f;
 		SerializableObject* newObject = nullptr;
 		
-		if (GameUtils::keyExists(object, "isParallax"))
+		if (GameUtils::keyExists(&properties, "isParallax"))
 		{
-			bool isParallax = object.at("isParallax").asBool();
+			bool isParallax = properties.at("isParallax").asBool();
 
 			if (isParallax)
 			{
 				Vec2 parallaxSpeed = Vec2::ZERO;
 
-				if (GameUtils::keyExists(object, "parallax-speed-x"))
+				if (GameUtils::keyExists(&properties, "parallax-speed-x"))
 				{
-					parallaxSpeed.x = object.at("parallax-speed-x").asFloat();
+					parallaxSpeed.x = properties.at("parallax-speed-x").asFloat();
 				}
 
-				if (GameUtils::keyExists(object, "parallax-speed-y"))
+				if (GameUtils::keyExists(&properties, "parallax-speed-y"))
 				{
-					parallaxSpeed.y = object.at("parallax-speed-y").asFloat();
+					parallaxSpeed.y = properties.at("parallax-speed-y").asFloat();
 				}
 
-				newObject = ParallaxObject::create(sprite, parallaxSpeed);
+				newObject = ParallaxObject::create(new ValueMap(properties), sprite, parallaxSpeed);
 			}
 		}
 		
 		if (newObject == nullptr)
 		{
-			newObject = DecorObject::create();
+			newObject = DecorObject::create(new ValueMap(properties));
 			newObject->addChild(sprite);
 		}
 
@@ -59,32 +59,32 @@ void DecorDeserializer::onDeserializationRequest(ObjectDeserializationRequestArg
 		sprite->setAnchorPoint(Vec2(0.0f, 1.0f));
 		newObject->setPosition(Vec2(x - width / 2.0f, y + height / 2.0f));
 
-		if (GameUtils::keyExists(object, SerializableObject::KeyRotation))
+		if (GameUtils::keyExists(&properties, SerializableObject::KeyRotation))
 		{
-			float rotation = object.at(SerializableObject::KeyRotation).asFloat();
+			float rotation = properties.at(SerializableObject::KeyRotation).asFloat();
 			newObject->setRotation(rotation);
 		}
 
-		if (GameUtils::keyExists(object, "flip-x"))
+		if (GameUtils::keyExists(&properties, "flip-x"))
 		{
-			bool flipX = object.at("flip-x").asBool();
+			bool flipX = properties.at("flip-x").asBool();
 			sprite->setFlippedX(flipX);
 		}
 
-		if (GameUtils::keyExists(object, "flip-y"))
+		if (GameUtils::keyExists(&properties, "flip-y"))
 		{
-			bool flipY = object.at("flip-y").asBool();
+			bool flipY = properties.at("flip-y").asBool();
 			sprite->setFlippedY(flipY);
 		}
 
-		if (GameUtils::keyExists(object, "float-x"))
+		if (GameUtils::keyExists(&properties, "float-x"))
 		{
-			float floatX = object.at("float-x").asFloat();
+			float floatX = properties.at("float-x").asFloat();
 			float timeX = 1.0f;
 
-			if (GameUtils::keyExists(object, "float-time-x"))
+			if (GameUtils::keyExists(&properties, "float-time-x"))
 			{
-				timeX = object.at("float-time-x").asFloat();
+				timeX = properties.at("float-time-x").asFloat();
 			}
 
 			FiniteTimeAction* bounceX1 = EaseSineInOut::create(MoveBy::create(timeX, Vec2(floatX, 0.0f)));
@@ -93,14 +93,14 @@ void DecorDeserializer::onDeserializationRequest(ObjectDeserializationRequestArg
 			newObject->runAction(RepeatForever::create(Sequence::create(bounceX1, bounceX2, nullptr)));
 		}
 
-		if (GameUtils::keyExists(object, "float-y"))
+		if (GameUtils::keyExists(&properties, "float-y"))
 		{
-			float floatY = object.at("float-y").asFloat();
+			float floatY = properties.at("float-y").asFloat();
 			float timeY = 1.0f;
 
-			if (GameUtils::keyExists(object, "float-time-y"))
+			if (GameUtils::keyExists(&properties, "float-time-y"))
 			{
-				timeY = object.at("float-time-y").asFloat();
+				timeY = properties.at("float-time-y").asFloat();
 			}
 
 			FiniteTimeAction* bounceY1 = EaseSineInOut::create(MoveBy::create(timeY, Vec2(0.0f, floatY)));

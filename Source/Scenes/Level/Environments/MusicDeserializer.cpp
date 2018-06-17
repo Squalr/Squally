@@ -4,7 +4,7 @@ void MusicDeserializer::onDeserializationRequest(LayerDeserializationRequestArgs
 {
 	ValueMap properties = args->objectGroup->getProperties();
 
-	if (!GameUtils::keyExists(properties, SerializableLayer::KeyType))
+	if (!GameUtils::keyExists(&properties, SerializableLayer::KeyType))
 	{
 		return;
 	}
