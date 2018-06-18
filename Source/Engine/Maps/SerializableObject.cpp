@@ -21,10 +21,38 @@ SerializableObject::~SerializableObject()
 	}
 }
 
-std::string SerializableObject::serialize()
+void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement)
 {
-	std::string propertiesPrefix = "<properties>" + std::string("\n");
-	std::string propertiexSuffix = "</properties>" + std::string("\n");
+	tinyxml2::XMLElement* propertiesElement = documentRoot->NewElement("properties");
 
-	return propertiesPrefix + propertiexSuffix;
+	if (properties != nullptr)
+	{
+		for (auto it = this->properties->begin(); it != this->properties->end(); it++)
+		{
+			tinyxml2::XMLElement* propertyElement = documentRoot->NewElement("property");
+
+			this->deserializeProperty(documentRoot, propertyElement, it->second);
+
+			propertiesElement->LinkEndChild(propertyElement);
+		}
+	}
+
+	parentElement->LinkEndChild(propertiesElement);
+}
+
+void SerializableObject::deserializeProperty(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* propertyElement, Value value)
+{
+	switch (value.getType())
+	{
+	case Value::Type::STRING:
+	case Value::Type::INTEGER:
+	case Value::Type::FLOAT:
+	case Value::Type::DOUBLE:
+	case Value::Type::BOOLEAN:
+		break;
+	case Value::Type::VECTOR:
+		break;
+	case Value::Type::MAP:
+		break;
+	}
 }

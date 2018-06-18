@@ -1,4 +1,5 @@
 #pragma once
+#include <tinyxml2/tinyxml2.h>
 #include <fstream>
 #include <iostream>
 #include "cocos2d.h"

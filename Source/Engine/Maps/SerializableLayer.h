@@ -1,4 +1,5 @@
 #pragma once
+#include <tinyxml2/tinyxml2.h>
 #include "cocos2d.h"
 
 #include "Engine/Maps/IObjectDeserializer.h"
@@ -11,7 +12,7 @@ class SerializableLayer : public Layer
 {
 public:
 	static SerializableLayer * create(ValueMap* initProperties, std::string name, std::vector<SerializableObject*>* objects);
-	virtual std::string serialize();
+	virtual void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement);
 
 	static const std::string KeyType;
 

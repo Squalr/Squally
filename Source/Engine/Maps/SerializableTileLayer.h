@@ -10,7 +10,8 @@ class SerializableTileLayer : public SerializableLayer
 {
 public:
 	static SerializableTileLayer * deserialize(cocos_experimental::TMXLayer* tileLayer);
-	std::string serialize() override;
+
+	void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement) override;
 
 protected:
 	SerializableTileLayer(cocos_experimental::TMXLayer* tileLayer);

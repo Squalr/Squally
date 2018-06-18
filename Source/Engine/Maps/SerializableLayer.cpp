@@ -37,20 +37,18 @@ SerializableLayer::~SerializableLayer()
 {
 }
 
-std::string SerializableLayer::serialize()
+void SerializableLayer::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement)
 {
-	std::string prefix = "<objectgroup name=" + StrUtils::quote(this->layerName) + ">" + std::string("\n");
-	std::string suffix = "</objectgroup>" + std::string("\n");
-
-	std::string content = "";
+	tinyxml2::XMLElement* objectGroupElement = documentRoot->NewElement("objectgroup");
+	objectGroupElement->SetAttribute("name", this->layerName.c_str());
 
 	if (serializableObjects != nullptr)
 	{
 		for (auto it = this->serializableObjects->begin(); it != this->serializableObjects->end(); it++)
 		{
-			content += (*it)->serialize();
+			(*it)->serialize(documentRoot, objectGroupElement);
 		}
 	}
 
-	return prefix + content + suffix;
+	parentElement->LinkEndChild(objectGroupElement);
 }
