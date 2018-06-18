@@ -1,5 +1,7 @@
 #include "CritterDemon.h"
 
+const std::string CritterDemon::KeyEnemyCritterDemon = "critter_demon";
+
 CritterDemon* CritterDemon::create()
 {
 	CritterDemon* instance = new CritterDemon();

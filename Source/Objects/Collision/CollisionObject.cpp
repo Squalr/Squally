@@ -2,7 +2,7 @@
 
 std::string CollisionObject::KeyTypeCollision = "collision";
 
-CollisionObject::CollisionObject(ValueMap* initProperties) : HackableObject::HackableObject(initProperties)
+CollisionObject::CollisionObject(ValueMap* initProperties) : SerializableObject(initProperties)
 {
 }
 
@@ -28,7 +28,7 @@ void CollisionObject::init(PhysicsBody* initPhysicsBody, CategoryGroup initCateg
 
 void CollisionObject::onEnter()
 {
-	HackableObject::onEnter();
+	SerializableObject::onEnter();
 
 	this->initializeEventListeners();
 }
@@ -200,7 +200,7 @@ CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsCo
 					collisionData.direction = CollisionDirection::Left;
 				}
 			}
-			else if (this->getPositionY() >= max(collisionData.points[0].y, collisionData.points[1].y))
+			else if (this->getPositionY() >= std::max(collisionData.points[0].y, collisionData.points[1].y))
 			{
 				if (this->getPositionX() < collisionData.other->getPositionX())
 				{

@@ -1,5 +1,7 @@
 #include "Robot.h"
 
+const std::string Robot::KeyEnemyRobot = "robot";
+
 Robot* Robot::create()
 {
 	Robot* instance = new Robot();

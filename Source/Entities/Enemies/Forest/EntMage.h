@@ -11,6 +11,8 @@ class EntMage : public Enemy
 public:
 	static EntMage * create();
 
+	static const std::string KeyEnemyEntMage;
+
 private:
 	EntMage();
 	~EntMage();

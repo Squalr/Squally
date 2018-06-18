@@ -11,6 +11,8 @@ class MummyPharaoh : public Enemy
 public:
 	static MummyPharaoh * create();
 
+	static const std::string KeyEnemyMummyPharaoh;
+
 private:
 	MummyPharaoh();
 	~MummyPharaoh();

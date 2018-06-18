@@ -1,5 +1,7 @@
 #include "Ghost.h"
 
+const std::string Ghost::KeyEnemyGhost = "ghost";
+
 Ghost* Ghost::create()
 {
 	Ghost* instance = new Ghost();

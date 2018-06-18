@@ -1,5 +1,7 @@
 #include "Cyclops.h"
 
+const std::string Cyclops::KeyEnemyCyclops = "cyclops";
+
 Cyclops* Cyclops::create()
 {
 	Cyclops* instance = new Cyclops();

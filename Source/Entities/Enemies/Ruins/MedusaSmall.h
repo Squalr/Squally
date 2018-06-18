@@ -11,6 +11,8 @@ class MedusaSmall : public Enemy
 public:
 	static MedusaSmall * create();
 
+	static const std::string KeyEnemyMedusaSmall;
+
 private:
 	MedusaSmall();
 	~MedusaSmall();

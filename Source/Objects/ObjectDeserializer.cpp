@@ -12,7 +12,7 @@ void ObjectDeserializer::onDeserializationRequest(ObjectDeserializationRequestAr
 		float height = properties.at(SerializableObject::KeyHeight).asFloat();
 		Size size = Size(width, height);
 
-		HackableObject* newObject = nullptr;
+		SerializableObject* newObject = nullptr;
 
 		if (name == "warp-gate")
 		{

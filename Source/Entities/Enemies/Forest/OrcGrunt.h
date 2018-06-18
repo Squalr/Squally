@@ -11,6 +11,8 @@ class OrcGrunt : public Enemy
 public:
 	static OrcGrunt * create();
 
+	static const std::string KeyEnemyOrcGrunt;
+
 private:
 	OrcGrunt();
 	~OrcGrunt();

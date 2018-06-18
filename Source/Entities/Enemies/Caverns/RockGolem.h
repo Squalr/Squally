@@ -11,6 +11,8 @@ class RockGolem : public Enemy
 public:
 	static RockGolem * create();
 
+	static const std::string KeyEnemyRockGolem;
+
 private:
 	RockGolem();
 	~RockGolem();

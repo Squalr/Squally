@@ -11,6 +11,8 @@ class DemonGrunt : public Enemy
 public:
 	static DemonGrunt * create();
 
+	static const std::string KeyEnemyDemonGrunt;
+
 private:
 	DemonGrunt();
 	~DemonGrunt();

@@ -11,6 +11,8 @@ class Lioness : public Enemy
 public:
 	static Lioness * create();
 
+	static const std::string KeyEnemyLioness;
+
 private:
 	Lioness();
 	~Lioness();

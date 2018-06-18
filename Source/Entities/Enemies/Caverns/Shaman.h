@@ -11,6 +11,8 @@ class Shaman : public Enemy
 public:
 	static Shaman * create();
 
+	static const std::string KeyEnemyShaman;
+
 private:
 	Shaman();
 	~Shaman();

@@ -1,5 +1,7 @@
 #include "TikiWarrior.h"
 
+const std::string TikiWarrior::KeyEnemyTikiWarrior = "tiki_warrior";
+
 TikiWarrior* TikiWarrior::create()
 {
 	TikiWarrior* instance = new TikiWarrior();

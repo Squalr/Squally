@@ -1,5 +1,7 @@
 #include "SkeletonArcher.h"
 
+const std::string SkeletonArcher::KeyEnemySkeletonArcher = "skeleton_archer";
+
 SkeletonArcher* SkeletonArcher::create()
 {
 	SkeletonArcher* instance = new SkeletonArcher();

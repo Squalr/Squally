@@ -1,5 +1,7 @@
 #include "Abomination.h"
 
+const std::string Abomination::KeyEnemyAbomination = "abomination";
+
 Abomination* Abomination::create()
 {
 	Abomination* instance = new Abomination();

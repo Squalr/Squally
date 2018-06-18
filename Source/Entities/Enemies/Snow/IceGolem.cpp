@@ -1,5 +1,7 @@
 #include "IceGolem.h"
 
+const std::string IceGolem::KeyEnemyIceGolem = "ice_golem";
+
 IceGolem* IceGolem::create()
 {
 	IceGolem* instance = new IceGolem();

@@ -1,5 +1,7 @@
 #include "VikingBot.h"
 
+const std::string VikingBot::KeyEnemyVikingBot = "viking_bot";
+
 VikingBot* VikingBot::create()
 {
 	VikingBot* instance = new VikingBot();

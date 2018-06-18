@@ -11,6 +11,8 @@ class YetiWarrior : public Enemy
 public:
 	static YetiWarrior * create();
 
+	static const std::string KeyEnemyYetiWarrior;
+
 private:
 	YetiWarrior();
 	~YetiWarrior();

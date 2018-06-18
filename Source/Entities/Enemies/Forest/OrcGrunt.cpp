@@ -1,5 +1,7 @@
 #include "OrcGrunt.h"
 
+const std::string OrcGrunt::KeyEnemyOrcGrunt = "orc_grunt";
+
 OrcGrunt* OrcGrunt::create()
 {
 	OrcGrunt* instance = new OrcGrunt();

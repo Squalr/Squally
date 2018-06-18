@@ -11,6 +11,8 @@ class MechGolemDark : public Enemy
 public:
 	static MechGolemDark * create();
 
+	static const std::string KeyEnemyMechGolemDark;
+
 private:
 	MechGolemDark();
 	~MechGolemDark();

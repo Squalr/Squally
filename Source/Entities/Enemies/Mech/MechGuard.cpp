@@ -1,5 +1,7 @@
 #include "MechGuard.h"
 
+const std::string MechGuard::KeyEnemyMechGuard = "mech_guard";
+
 MechGuard* MechGuard::create()
 {
 	MechGuard* instance = new MechGuard();

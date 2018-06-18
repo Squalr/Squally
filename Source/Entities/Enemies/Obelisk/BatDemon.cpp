@@ -1,5 +1,7 @@
 #include "BatDemon.h"
 
+const std::string BatDemon::KeyEnemyBatDemon = "bat_demon";
+
 BatDemon* BatDemon::create()
 {
 	BatDemon* instance = new BatDemon();

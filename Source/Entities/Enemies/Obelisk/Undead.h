@@ -11,6 +11,8 @@ class Undead : public Enemy
 public:
 	static Undead * create();
 
+	static const std::string KeyEnemyUndead;
+
 private:
 	Undead();
 	~Undead();

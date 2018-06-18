@@ -11,6 +11,8 @@ class Ent : public Enemy
 public:
 	static Ent * create();
 
+	static const std::string KeyEnemyEnt;
+
 private:
 	Ent();
 	~Ent();

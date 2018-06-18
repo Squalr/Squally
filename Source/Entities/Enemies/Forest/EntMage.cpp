@@ -1,5 +1,7 @@
 #include "EntMage.h"
 
+const std::string EntMage::KeyEnemyEntMage = "ent_mage";
+
 EntMage* EntMage::create()
 {
 	EntMage* instance = new EntMage();

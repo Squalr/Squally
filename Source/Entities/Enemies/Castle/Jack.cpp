@@ -1,5 +1,7 @@
 #include "Jack.h"
 
+const std::string Jack::KeyEnemyJack = "jack";
+
 Jack* Jack::create()
 {
 	Jack* instance = new Jack();

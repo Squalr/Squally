@@ -1,5 +1,7 @@
 #include "BossRhinoman.h"
 
+const std::string BossRhinoman::KeyEnemyBossRhinoman = "boss_rhinoman";
+
 BossRhinoman* BossRhinoman::create()
 {
 	BossRhinoman* instance = new BossRhinoman();

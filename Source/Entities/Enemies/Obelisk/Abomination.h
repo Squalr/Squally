@@ -11,6 +11,8 @@ class Abomination : public Enemy
 public:
 	static Abomination * create();
 
+	static const std::string KeyEnemyAbomination;
+
 private:
 	Abomination();
 	~Abomination();

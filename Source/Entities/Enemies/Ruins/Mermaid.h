@@ -11,6 +11,8 @@ class Mermaid : public Enemy
 public:
 	static Mermaid * create();
 
+	static const std::string KeyEnemyMermaid;
+
 private:
 	Mermaid();
 	~Mermaid();

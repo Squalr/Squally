@@ -1,5 +1,7 @@
 #include "MummyPharaoh.h"
 
+const std::string MummyPharaoh::KeyEnemyMummyPharaoh = "mummy_pharaoh";
+
 MummyPharaoh* MummyPharaoh::create()
 {
 	MummyPharaoh* instance = new MummyPharaoh();

@@ -1,5 +1,7 @@
 #include "EarthGolem.h"
 
+const std::string EarthGolem::KeyEnemyEarthGolem = "earth_golem";
+
 EarthGolem* EarthGolem::create()
 {
 	EarthGolem* instance = new EarthGolem();

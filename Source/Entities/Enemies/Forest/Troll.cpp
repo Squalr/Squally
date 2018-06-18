@@ -1,5 +1,7 @@
 #include "Troll.h"
 
+const std::string Troll::KeyEnemyTroll = "troll";
+
 Troll* Troll::create()
 {
 	Troll* instance = new Troll();

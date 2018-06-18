@@ -1,5 +1,7 @@
 #include "Exterminator.h"
 
+const std::string Exterminator::KeyEnemyExterminator = "exterminator";
+
 Exterminator* Exterminator::create()
 {
 	Exterminator* instance = new Exterminator();

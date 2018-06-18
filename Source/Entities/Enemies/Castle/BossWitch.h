@@ -11,6 +11,8 @@ class BossWitch : public Enemy
 public:
 	static BossWitch * create();
 
+	static const std::string KeyEnemyBossWitch;
+
 private:
 	BossWitch();
 	~BossWitch();

@@ -1,11 +1,11 @@
 #pragma once
 #include "cocos2d.h"
-#include "Objects/Collision/CollisionObject.h"
+#include "Objects/Hackables/HackableObject.h"
 #include "Objects/Interactables/Chest.h"
 
 using namespace cocos2d;
 
-class Plushie : public CollisionObject
+class Plushie : public HackableObject
 {
 public:
 

@@ -1,5 +1,7 @@
 #include "Minotaur.h"
 
+const std::string Minotaur::KeyEnemyMinotaur = "minotaur";
+
 Minotaur* Minotaur::create()
 {
 	Minotaur* instance = new Minotaur();

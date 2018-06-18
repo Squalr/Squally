@@ -1,5 +1,7 @@
 #include "YetiWarrior.h"
 
+const std::string YetiWarrior::KeyEnemyYetiWarrior = "yeti_warrior";
+
 YetiWarrior* YetiWarrior::create()
 {
 	YetiWarrior* instance = new YetiWarrior();

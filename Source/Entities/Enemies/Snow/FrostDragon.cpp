@@ -1,5 +1,7 @@
 #include "FrostDragon.h"
 
+const std::string FrostDragon::KeyEnemyFrostDragon = "frost_dragon";
+
 FrostDragon* FrostDragon::create()
 {
 	FrostDragon* instance = new FrostDragon();

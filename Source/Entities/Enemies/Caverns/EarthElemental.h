@@ -11,6 +11,8 @@ class EarthElemental : public Enemy
 public:
 	static EarthElemental * create();
 
+	static const std::string KeyEnemyEarthElemental;
+
 private:
 	EarthElemental();
 	~EarthElemental();

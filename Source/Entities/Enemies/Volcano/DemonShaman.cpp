@@ -1,5 +1,7 @@
 #include "DemonShaman.h"
 
+const std::string DemonShaman::KeyEnemyDemonShaman = "demon_shaman";
+
 DemonShaman* DemonShaman::create()
 {
 	DemonShaman* instance = new DemonShaman();

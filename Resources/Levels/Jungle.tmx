@@ -548,7 +548,7 @@
   </object>
  </objectgroup>
  <objectgroup name="entities">
-  <object id="72" name="spawn" type="entity" x="61.847" y="682.64" width="128" height="128"/>
+  <object id="72" name="squally" type="entity" x="109.847" y="6298.64" width="128" height="128"/>
   <object id="180" name="knight" type="entity" x="342.06" y="758.727" width="200" height="288"/>
   <object id="222" name="boss_rhinoman" type="entity" x="6169.82" y="6688" width="196" height="196">
    <properties>

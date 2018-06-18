@@ -9,7 +9,7 @@ Monitor* Monitor::create(ValueMap* initProperties, std::string dialogFile)
 	return monitor;
 }
 
-Monitor::Monitor(ValueMap* initProperties, std::string dialogFile) : CollisionObject(initProperties)
+Monitor::Monitor(ValueMap* initProperties, std::string dialogFile) : HackableObject(initProperties)
 {
 	this->monitorDialog = DialogMenu::loadDialogFromFile(dialogFile);
 	this->monitorDialog->retain();

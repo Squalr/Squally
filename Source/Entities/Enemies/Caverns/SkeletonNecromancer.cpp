@@ -1,5 +1,7 @@
 #include "SkeletonNecromancer.h"
 
+const std::string SkeletonNecromancer::KeyEnemySkeletonNecromancer = "skeleton_necromancer";
+
 SkeletonNecromancer* SkeletonNecromancer::create()
 {
 	SkeletonNecromancer* instance = new SkeletonNecromancer();

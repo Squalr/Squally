@@ -11,6 +11,8 @@ class BatDemon : public Enemy
 public:
 	static BatDemon * create();
 
+	static const std::string KeyEnemyBatDemon;
+
 private:
 	BatDemon();
 	~BatDemon();

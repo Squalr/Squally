@@ -1,5 +1,7 @@
 #include "Undead.h"
 
+const std::string Undead::KeyEnemyUndead = "undead";
+
 Undead* Undead::create()
 {
 	Undead* instance = new Undead();

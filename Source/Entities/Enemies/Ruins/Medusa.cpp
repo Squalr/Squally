@@ -1,5 +1,7 @@
 #include "Medusa.h"
 
+const std::string Medusa::KeyEnemyMedusa = "medusa";
+
 Medusa* Medusa::create()
 {
 	Medusa* instance = new Medusa();

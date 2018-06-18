@@ -1,5 +1,7 @@
 #include "Executioner.h"
 
+const std::string Executioner::KeyEnemyExecutioner = "executioner";
+
 Executioner* Executioner::create()
 {
 	Executioner* instance = new Executioner();

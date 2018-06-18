@@ -1,5 +1,7 @@
 #include "Reaper.h"
 
+const std::string Reaper::KeyEnemyReaper = "reaper";
+
 Reaper* Reaper::create()
 {
 	Reaper* instance = new Reaper();

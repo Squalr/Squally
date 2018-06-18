@@ -11,6 +11,8 @@ class MiteBot : public Enemy
 public:
 	static MiteBot * create();
 
+	static const std::string KeyEnemyMiteBot;
+
 private:
 	MiteBot();
 	~MiteBot();

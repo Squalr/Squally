@@ -11,6 +11,8 @@ class Tigress : public Enemy
 public:
 	static Tigress * create();
 
+	static const std::string KeyEnemyTigress;
+
 private:
 	Tigress();
 	~Tigress();

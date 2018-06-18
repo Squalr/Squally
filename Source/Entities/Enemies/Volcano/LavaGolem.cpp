@@ -1,5 +1,7 @@
 #include "LavaGolem.h"
 
+const std::string LavaGolem::KeyEnemyLavaGolem = "lava_golem";
+
 LavaGolem* LavaGolem::create()
 {
 	LavaGolem* instance = new LavaGolem();

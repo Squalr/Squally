@@ -1,5 +1,7 @@
 #include "SkeletonCleaver.h"
 
+const std::string SkeletonCleaver::KeyEnemySkeletonCleaver = "skeleton_cleaver";
+
 SkeletonCleaver* SkeletonCleaver::create()
 {
 	SkeletonCleaver* instance = new SkeletonCleaver();

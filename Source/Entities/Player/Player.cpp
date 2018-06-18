@@ -4,6 +4,8 @@ Player* Player::playerInstance = nullptr;
 int Player::health;
 const float Player::playerScale = 0.13f;
 
+const std::string Player::KeySquallyProperty = "squally";
+
 Player* Player::create()
 {
 	Player* instance = new Player();

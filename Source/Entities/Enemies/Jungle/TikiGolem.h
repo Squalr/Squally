@@ -11,6 +11,8 @@ class TikiGolem : public Enemy
 public:
 	static TikiGolem * create();
 
+	static const std::string KeyEnemyTikiGolem;
+
 private:
 	TikiGolem();
 	~TikiGolem();

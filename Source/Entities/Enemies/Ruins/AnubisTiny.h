@@ -11,6 +11,8 @@ class AnubisTiny : public Enemy
 public:
 	static AnubisTiny * create();
 
+	static const std::string KeyEnemyAnubisTiny;
+
 private:
 	AnubisTiny();
 	~AnubisTiny();

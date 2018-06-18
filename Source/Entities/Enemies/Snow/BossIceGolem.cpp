@@ -1,5 +1,7 @@
 #include "BossIceGolem.h"
 
+const std::string BossIceGolem::KeyEnemyBossIceGolem = "boss_ice_golem";
+
 BossIceGolem* BossIceGolem::create()
 {
 	BossIceGolem* instance = new BossIceGolem();

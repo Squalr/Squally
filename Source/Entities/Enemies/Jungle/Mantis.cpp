@@ -1,5 +1,7 @@
 #include "Mantis.h"
 
+const std::string Mantis::KeyEnemyMantis = "mantis";
+
 Mantis* Mantis::create()
 {
 	Mantis* instance = new Mantis();

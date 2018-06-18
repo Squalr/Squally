@@ -1,5 +1,7 @@
 #include "EvilSnowman.h"
 
+const std::string EvilSnowman::KeyEnemyEvilSnowman = "evil_snowman";
+
 EvilSnowman* EvilSnowman::create()
 {
 	EvilSnowman* instance = new EvilSnowman();

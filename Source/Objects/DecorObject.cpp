@@ -9,7 +9,7 @@ DecorObject* DecorObject::create(ValueMap* initProperties)
 	return instance;
 }
 
-DecorObject::DecorObject(ValueMap* initProperties) : SerializableObject(initProperties)
+DecorObject::DecorObject(ValueMap* initProperties) : HackableObject(initProperties)
 {
 }
 

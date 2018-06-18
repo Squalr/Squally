@@ -3,12 +3,12 @@
 
 #include "Engine/Input/InputManager.h"
 #include "Entities/Entity.h"
-#include "Objects/Collision/CollisionObject.h"
+#include "Objects/Hackables/HackableObject.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 
-class Hover : public CollisionObject
+class Hover : public HackableObject
 {
 public:
 	static Hover * create(Entity* initParent);

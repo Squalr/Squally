@@ -11,6 +11,8 @@ class Reaper : public Enemy
 public:
 	static Reaper * create();
 
+	static const std::string KeyEnemyReaper;
+
 private:
 	Reaper();
 	~Reaper();

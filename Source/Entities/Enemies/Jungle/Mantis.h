@@ -11,6 +11,8 @@ class Mantis : public Enemy
 public:
 	static Mantis * create();
 
+	static const std::string KeyEnemyMantis;
+
 private:
 	Mantis();
 	~Mantis();

@@ -11,6 +11,8 @@ class DemonWarrior : public Enemy
 public:
 	static DemonWarrior * create();
 
+	static const std::string KeyEnemyDemonWarrior;
+
 private:
 	DemonWarrior();
 	~DemonWarrior();

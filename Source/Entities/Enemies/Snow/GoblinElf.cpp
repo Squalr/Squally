@@ -1,5 +1,7 @@
 #include "GoblinElf.h"
 
+const std::string GoblinElf::KeyEnemyGoblinElf = "goblin_elf";
+
 GoblinElf* GoblinElf::create()
 {
 	GoblinElf* instance = new GoblinElf();

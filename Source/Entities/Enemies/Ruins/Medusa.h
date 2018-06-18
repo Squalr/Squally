@@ -11,6 +11,8 @@ class Medusa : public Enemy
 public:
 	static Medusa * create();
 
+	static const std::string KeyEnemyMedusa;
+
 private:
 	Medusa();
 	~Medusa();

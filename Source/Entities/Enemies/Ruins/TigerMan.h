@@ -11,6 +11,8 @@ class TigerMan : public Enemy
 public:
 	static TigerMan * create();
 
+	static const std::string KeyEnemyTigerMan;
+
 private:
 	TigerMan();
 	~TigerMan();

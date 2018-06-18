@@ -11,6 +11,8 @@ class SkeletonPriestess : public Enemy
 public:
 	static SkeletonPriestess * create();
 
+	static const std::string KeyEnemySkeletonPriestess;
+
 private:
 	SkeletonPriestess();
 	~SkeletonPriestess();

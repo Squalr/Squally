@@ -11,6 +11,8 @@ class Guard : public Enemy
 public:
 	static Guard * create();
 
+	static const std::string KeyEnemyGuard;
+
 private:
 	Guard();
 	~Guard();
