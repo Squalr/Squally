@@ -1,5 +1,7 @@
 #include "GoblinGruntBoar.h"
 
+const std::string GoblinGruntBoar::KeyEnemyGoblinGruntBoar = "goblin_grunt_boar";
+
 GoblinGruntBoar* GoblinGruntBoar::create()
 {
 	GoblinGruntBoar* instance = new GoblinGruntBoar();

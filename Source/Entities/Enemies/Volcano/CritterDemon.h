@@ -11,6 +11,8 @@ class CritterDemon : public Enemy
 public:
 	static CritterDemon * create();
 
+	static const std::string KeyEnemyCritterDemon;
+
 private:
 	CritterDemon();
 	~CritterDemon();

@@ -11,6 +11,8 @@ class Minotaur : public Enemy
 public:
 	static Minotaur * create();
 
+	static const std::string KeyEnemyMinotaur;
+
 private:
 	Minotaur();
 	~Minotaur();

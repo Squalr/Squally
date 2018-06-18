@@ -1,5 +1,7 @@
 #include "MiteBot.h"
 
+const std::string MiteBot::KeyEnemyMiteBot = "mite_bot";
+
 MiteBot* MiteBot::create()
 {
 	MiteBot* instance = new MiteBot();

@@ -9,7 +9,7 @@ ParallaxObject* ParallaxObject::create(ValueMap* initProperties, Node* parallaxC
 	return instance;
 }
 
-ParallaxObject::ParallaxObject(ValueMap* initProperties, Node* parallaxChild,Vec2 parallaxSpeed) : SerializableObject(initProperties)
+ParallaxObject::ParallaxObject(ValueMap* initProperties, Node* parallaxChild,Vec2 parallaxSpeed) : HackableObject(initProperties)
 {
 	this->speed = parallaxSpeed;
 	this->child = parallaxChild;

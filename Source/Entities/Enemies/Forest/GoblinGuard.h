@@ -11,6 +11,8 @@ class GoblinGuard : public Enemy
 public:
 	static GoblinGuard * create();
 
+	static const std::string KeyEnemyGoblinGuard;
+
 private:
 	GoblinGuard();
 	~GoblinGuard();

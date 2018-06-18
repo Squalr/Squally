@@ -11,6 +11,8 @@ class Jack : public Enemy
 public:
 	static Jack * create();
 
+	static const std::string KeyEnemyJack;
+
 private:
 	Jack();
 	~Jack();

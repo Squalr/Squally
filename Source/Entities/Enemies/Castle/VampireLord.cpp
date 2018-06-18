@@ -1,5 +1,7 @@
 #include "VampireLord.h"
 
+const std::string VampireLord::KeyEnemyVampireLord = "vampire_lord";
+
 VampireLord* VampireLord::create()
 {
 	VampireLord* instance = new VampireLord();

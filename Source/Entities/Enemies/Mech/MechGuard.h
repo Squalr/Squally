@@ -11,6 +11,8 @@ class MechGuard : public Enemy
 public:
 	static MechGuard * create();
 
+	static const std::string KeyEnemyMechGuard;
+
 private:
 	MechGuard();
 	~MechGuard();

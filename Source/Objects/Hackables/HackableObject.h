@@ -3,14 +3,14 @@
 
 #include "Events/HackableEvents.h"
 #include "Engine/Rendering/Components/MenuSprite.h"
-#include "Engine/Maps/SerializableObject.h"
+#include "Objects/Collision/CollisionObject.h"
 #include "Resources.h"
 
 #include "HackableData.h"
 
 using namespace cocos2d;
 
-class HackableObject : public SerializableObject
+class HackableObject : public CollisionObject
 {
 public:
 	void onHackableClick(MenuSprite* menuSprite);

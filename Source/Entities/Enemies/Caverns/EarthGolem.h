@@ -11,6 +11,8 @@ class EarthGolem : public Enemy
 public:
 	static EarthGolem * create();
 
+	static const std::string KeyEnemyEarthGolem;
+
 private:
 	EarthGolem();
 	~EarthGolem();

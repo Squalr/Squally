@@ -1,5 +1,7 @@
 #include "BlackWidow.h"
 
+const std::string BlackWidow::KeyEnemyBlackWidow = "black_widow";
+
 BlackWidow* BlackWidow::create()
 {
 	BlackWidow* instance = new BlackWidow();

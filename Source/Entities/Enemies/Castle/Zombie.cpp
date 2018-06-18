@@ -1,5 +1,7 @@
 #include "Zombie.h"
 
+const std::string Zombie::KeyEnemyZombie = "zombie";
+
 Zombie* Zombie::create()
 {
 	Zombie* instance = new Zombie();

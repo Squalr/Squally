@@ -1,5 +1,7 @@
 #include "Harpy.h"
 
+const std::string Harpy::KeyEnemyHarpy = "harpy";
+
 Harpy* Harpy::create()
 {
 	Harpy* instance = new Harpy();

@@ -11,6 +11,8 @@ class BossEvilEye : public Enemy
 public:
 	static BossEvilEye * create();
 
+	static const std::string KeyEnemyBossEvilEye;
+
 private:
 	BossEvilEye();
 	~BossEvilEye();

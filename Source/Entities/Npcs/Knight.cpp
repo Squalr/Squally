@@ -1,5 +1,7 @@
 #include "Knight.h"
 
+const std::string Knight::KeyNpcKnight = "knight";
+
 Knight* Knight::create()
 {
 	Knight* instance = new Knight();

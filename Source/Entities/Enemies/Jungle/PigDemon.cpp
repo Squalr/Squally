@@ -1,5 +1,7 @@
 #include "PigDemon.h"
 
+const std::string PigDemon::KeyEnemyPigDemon = "pig_demon";
+
 PigDemon* PigDemon::create()
 {
 	PigDemon* instance = new PigDemon();

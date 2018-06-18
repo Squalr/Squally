@@ -2,13 +2,13 @@
 #include "cocos2d.h"
 
 #include "Objects/Collision/CategoryGroup.h"
-#include "Objects/Hackables/HackableObject.h"
+#include "Engine/Maps/SerializableObject.h"
 #include "Resources.h"
 #include "Scenes/Level/LevelCamera.h"
 
 using namespace cocos2d;
 
-class CollisionObject : public HackableObject
+class CollisionObject : public SerializableObject
 {
 public:
 	CollisionObject(ValueMap* initProperties);

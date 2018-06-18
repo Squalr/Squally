@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 
 #include "Events/DialogEvents.h"
-#include "Objects/Collision/CollisionObject.h"
+#include "Objects/Hackables/HackableObject.h"
 #include "Engine/Rendering/Components/FloatingSprite.h"
 #include "Engine/Rendering/Components/MenuSprite.h"
 #include "Scenes/Menus/Dialog/DialogMenu.h"
@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-class Monitor : public CollisionObject
+class Monitor : public HackableObject
 {
 public:
 	static Monitor* create(ValueMap* initProperties, std::string dialogFile);

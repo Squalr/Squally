@@ -1,5 +1,7 @@
 #include "FrostShooter.h"
 
+const std::string FrostShooter::KeyEnemyFrostShooter = "frost_shooter";
+
 FrostShooter* FrostShooter::create()
 {
 	FrostShooter* instance = new FrostShooter();

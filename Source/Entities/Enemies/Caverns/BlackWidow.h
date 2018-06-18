@@ -11,6 +11,8 @@ class BlackWidow : public Enemy
 public:
 	static BlackWidow * create();
 
+	static const std::string KeyEnemyBlackWidow;
+
 private:
 	BlackWidow();
 	~BlackWidow();

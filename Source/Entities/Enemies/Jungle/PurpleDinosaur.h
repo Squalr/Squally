@@ -11,6 +11,8 @@ class PurpleDinosaur : public Enemy
 public:
 	static PurpleDinosaur * create();
 
+	static const std::string KeyEnemyPurpleDinosaur;
+
 private:
 	PurpleDinosaur();
 	~PurpleDinosaur();

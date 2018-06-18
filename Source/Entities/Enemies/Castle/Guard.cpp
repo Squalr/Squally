@@ -1,5 +1,7 @@
 #include "Guard.h"
 
+const std::string Guard::KeyEnemyGuard = "guard";
+
 Guard* Guard::create()
 {
 	Guard* instance = new Guard();

@@ -11,6 +11,8 @@ class VikingBotSmall : public Enemy
 public:
 	static VikingBotSmall * create();
 
+	static const std::string KeyEnemyVikingBotSmall;
+
 private:
 	VikingBotSmall();
 	~VikingBotSmall();

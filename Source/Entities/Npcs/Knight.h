@@ -13,6 +13,8 @@ class Knight : public NpcBase
 public:
 	static Knight * create();
 
+	static const std::string KeyNpcKnight;
+
 protected:
 	void initializeCardData() override;
 

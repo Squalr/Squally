@@ -1,5 +1,7 @@
 #include "LionMan.h"
 
+const std::string LionMan::KeyEnemyLionMan = "lion_man";
+
 LionMan* LionMan::create()
 {
 	LionMan* instance = new LionMan();

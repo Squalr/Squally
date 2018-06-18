@@ -1,14 +1,14 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Objects/Collision/CollisionObject.h"
+#include "Objects/Hackables/HackableObject.h"
 #include "Resources.h"
 #include "Utils/GameUtils.h"
 #include "Utils/MathUtils.h"
 
 using namespace cocos2d;
 
-class Entity : public CollisionObject
+class Entity : public HackableObject
 {
 public:
 	virtual Size getSize();

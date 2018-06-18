@@ -11,6 +11,8 @@ class Cyclops : public Enemy
 public:
 	static Cyclops * create();
 
+	static const std::string KeyEnemyCyclops;
+
 private:
 	Cyclops();
 	~Cyclops();

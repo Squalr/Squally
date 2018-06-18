@@ -11,6 +11,8 @@ class FireElemental : public Enemy
 public:
 	static FireElemental * create();
 
+	static const std::string KeyEnemyFireElemental;
+
 private:
 	FireElemental();
 	~FireElemental();

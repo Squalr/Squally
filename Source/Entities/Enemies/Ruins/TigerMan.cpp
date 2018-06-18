@@ -1,5 +1,7 @@
 #include "TigerMan.h"
 
+const std::string TigerMan::KeyEnemyTigerMan = "tiger_man";
+
 TigerMan* TigerMan::create()
 {
 	TigerMan* instance = new TigerMan();

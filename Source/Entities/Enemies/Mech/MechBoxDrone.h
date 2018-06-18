@@ -11,6 +11,8 @@ class MechBoxDrone : public Enemy
 public:
 	static MechBoxDrone * create();
 
+	static const std::string KeyEnemyMechBoxDrone;
+
 private:
 	MechBoxDrone();
 	~MechBoxDrone();

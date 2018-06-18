@@ -9,7 +9,7 @@ Chest* Chest::create(ValueMap* initProperties, Node* contentNode)
 	return instance;
 }
 
-Chest::Chest(ValueMap* initProperties, Node* contentNode) : CollisionObject(initProperties)
+Chest::Chest(ValueMap* initProperties, Node* contentNode) : HackableObject(initProperties)
 {
 	this->content = contentNode;
 	this->chestOpen = Node::create();

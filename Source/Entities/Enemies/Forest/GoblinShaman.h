@@ -11,6 +11,8 @@ class GoblinShaman : public Enemy
 public:
 	static GoblinShaman * create();
 
+	static const std::string KeyEnemyGoblinShaman;
+
 private:
 	GoblinShaman();
 	~GoblinShaman();

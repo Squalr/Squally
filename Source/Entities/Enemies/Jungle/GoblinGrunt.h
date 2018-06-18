@@ -11,6 +11,8 @@ class GoblinGrunt : public Enemy
 public:
 	static GoblinGrunt * create();
 
+	static const std::string KeyEnemyGoblinGrunt;
+
 private:
 	GoblinGrunt();
 	~GoblinGrunt();

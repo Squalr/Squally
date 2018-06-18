@@ -1,5 +1,7 @@
 #include "BossKrampus.h"
 
+const std::string BossKrampus::KeyEnemyBossKrampus = "boss_krampus";
+
 BossKrampus* BossKrampus::create()
 {
 	BossKrampus* instance = new BossKrampus();

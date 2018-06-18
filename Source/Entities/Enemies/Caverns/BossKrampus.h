@@ -11,6 +11,8 @@ class BossKrampus : public Enemy
 public:
 	static BossKrampus * create();
 
+	static const std::string KeyEnemyBossKrampus;
+
 private:
 	BossKrampus();
 	~BossKrampus();

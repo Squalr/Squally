@@ -1,5 +1,7 @@
 #include "FireElemental.h"
 
+const std::string FireElemental::KeyEnemyFireElemental = "fire_elemental";
+
 FireElemental* FireElemental::create()
 {
 	FireElemental* instance = new FireElemental();

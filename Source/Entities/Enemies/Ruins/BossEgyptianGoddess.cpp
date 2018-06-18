@@ -1,5 +1,7 @@
 #include "BossEgyptianGoddess.h"
 
+const std::string BossEgyptianGoddess::KeyEnemyBossEgyptianGoddess = "boss_egyptian_goddess";
+
 BossEgyptianGoddess* BossEgyptianGoddess::create()
 {
 	BossEgyptianGoddess* instance = new BossEgyptianGoddess();

@@ -1,5 +1,7 @@
 #include "Ent.h"
 
+const std::string Ent::KeyEnemyEnt = "ent";
+
 Ent* Ent::create()
 {
 	Ent* instance = new Ent();

@@ -1,5 +1,7 @@
 #include "BossEvilEye.h"
 
+const std::string BossEvilEye::KeyEnemyBossEvilEye = "boss_evil_eye";
+
 BossEvilEye* BossEvilEye::create()
 {
 	BossEvilEye* instance = new BossEvilEye();

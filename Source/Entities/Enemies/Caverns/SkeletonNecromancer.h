@@ -11,6 +11,8 @@ class SkeletonNecromancer : public Enemy
 public:
 	static SkeletonNecromancer * create();
 
+	static const std::string KeyEnemySkeletonNecromancer;
+
 private:
 	SkeletonNecromancer();
 	~SkeletonNecromancer();

@@ -11,6 +11,8 @@ class SkeletonCleaver : public Enemy
 public:
 	static SkeletonCleaver * create();
 
+	static const std::string KeyEnemySkeletonCleaver;
+
 private:
 	SkeletonCleaver();
 	~SkeletonCleaver();

@@ -1,5 +1,7 @@
 #include "GoblinSwordsman.h"
 
+const std::string GoblinSwordsman::KeyEnemyGoblinSwordsman = "goblin_swordsman";
+
 GoblinSwordsman* GoblinSwordsman::create()
 {
 	GoblinSwordsman* instance = new GoblinSwordsman();

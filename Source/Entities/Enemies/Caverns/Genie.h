@@ -11,6 +11,8 @@ class Genie : public Enemy
 public:
 	static Genie * create();
 
+	static const std::string KeyEnemyGenie;
+
 private:
 	Genie();
 	~Genie();

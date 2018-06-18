@@ -1,12 +1,12 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Maps/SerializableObject.h"
+#include "Objects/Hackables/HackableObject.h"
 #include "Scenes/Level/LevelCamera.h"
 
 using namespace cocos2d;
 
-class ParallaxObject : public SerializableObject
+class ParallaxObject : public HackableObject
 {
 public:
 	static ParallaxObject* create(ValueMap* initProperties, Node* parallaxChild, Vec2 parallaxSpeed);

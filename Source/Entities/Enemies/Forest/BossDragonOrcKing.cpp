@@ -1,5 +1,7 @@
 #include "BossDragonOrcKing.h"
 
+const std::string BossDragonOrcKing::KeyEnemyBossDragonOrcKing = "boss_dragon_orc_king";
+
 BossDragonOrcKing* BossDragonOrcKing::create()
 {
 	BossDragonOrcKing* instance = new BossDragonOrcKing();

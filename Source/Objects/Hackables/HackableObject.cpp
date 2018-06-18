@@ -1,6 +1,6 @@
 #include "HackableObject.h"
 
-HackableObject::HackableObject(ValueMap* initProperties) : SerializableObject(initProperties)
+HackableObject::HackableObject(ValueMap* initProperties) : CollisionObject(initProperties)
 {
 	this->boundHackableButton = nullptr;
 

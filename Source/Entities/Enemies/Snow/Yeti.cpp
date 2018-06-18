@@ -1,5 +1,7 @@
 #include "Yeti.h"
 
+const std::string Yeti::KeyEnemyYeti = "yeti";
+
 Yeti* Yeti::create()
 {
 	Yeti* instance = new Yeti();

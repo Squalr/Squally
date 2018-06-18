@@ -9,7 +9,7 @@ WarpGate* WarpGate::create(ValueMap* initProperties)
 	return warpGate;
 }
 
-WarpGate::WarpGate(ValueMap* initProperties) : CollisionObject(initProperties)
+WarpGate::WarpGate(ValueMap* initProperties) : HackableObject(initProperties)
 {
 	this->isOpen = false;
 

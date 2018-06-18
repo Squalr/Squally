@@ -11,6 +11,8 @@ class TikiWarrior : public Enemy
 public:
 	static TikiWarrior * create();
 
+	static const std::string KeyEnemyTikiWarrior;
+
 private:
 	TikiWarrior();
 	~TikiWarrior();

@@ -1,5 +1,7 @@
 #include "AnubisWarrior.h"
 
+const std::string AnubisWarrior::KeyEnemyAnubisWarrior = "anubis_warrior";
+
 AnubisWarrior* AnubisWarrior::create()
 {
 	AnubisWarrior* instance = new AnubisWarrior();

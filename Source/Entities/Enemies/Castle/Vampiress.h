@@ -11,6 +11,8 @@ class Vampiress : public Enemy
 public:
 	static Vampiress * create();
 
+	static const std::string KeyEnemyVampiress;
+
 private:
 	Vampiress();
 	~Vampiress();

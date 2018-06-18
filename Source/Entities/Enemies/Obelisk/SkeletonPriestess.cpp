@@ -1,5 +1,7 @@
 #include "SkeletonPriestess.h"
 
+const std::string SkeletonPriestess::KeyEnemySkeletonPriestess = "skeleton_priestess";
+
 SkeletonPriestess* SkeletonPriestess::create()
 {
 	SkeletonPriestess* instance = new SkeletonPriestess();

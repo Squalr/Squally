@@ -11,6 +11,8 @@ class BossDragonOrcKing : public Enemy
 public:
 	static BossDragonOrcKing * create();
 
+	static const std::string KeyEnemyBossDragonOrcKing;
+
 private:
 	BossDragonOrcKing();
 	~BossDragonOrcKing();

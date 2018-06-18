@@ -11,6 +11,8 @@ class Executioner : public Enemy
 public:
 	static Executioner * create();
 
+	static const std::string KeyEnemyExecutioner;
+
 private:
 	Executioner();
 	~Executioner();

@@ -11,6 +11,8 @@ class Robot : public Enemy
 public:
 	static Robot * create();
 
+	static const std::string KeyEnemyRobot;
+
 private:
 	Robot();
 	~Robot();

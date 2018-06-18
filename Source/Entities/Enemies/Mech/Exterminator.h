@@ -11,6 +11,8 @@ class Exterminator : public Enemy
 public:
 	static Exterminator * create();
 
+	static const std::string KeyEnemyExterminator;
+
 private:
 	Exterminator();
 	~Exterminator();

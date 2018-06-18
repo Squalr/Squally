@@ -11,6 +11,8 @@ class PigDemon : public Enemy
 public:
 	static PigDemon * create();
 
+	static const std::string KeyEnemyPigDemon;
+
 private:
 	PigDemon();
 	~PigDemon();

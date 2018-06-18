@@ -1,5 +1,7 @@
 #include "MechGolemDark.h"
 
+const std::string MechGolemDark::KeyEnemyMechGolemDark = "mech_golem_dark";
+
 MechGolemDark* MechGolemDark::create()
 {
 	MechGolemDark* instance = new MechGolemDark();

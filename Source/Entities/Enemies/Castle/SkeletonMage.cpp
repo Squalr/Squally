@@ -1,5 +1,7 @@
 #include "SkeletonMage.h"
 
+const std::string SkeletonMage::KeyEnemySkeletonMage = "skeleton_mage";
+
 SkeletonMage* SkeletonMage::create()
 {
 	SkeletonMage* instance = new SkeletonMage();

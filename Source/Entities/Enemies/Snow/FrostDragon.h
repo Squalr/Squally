@@ -11,6 +11,8 @@ class FrostDragon : public Enemy
 public:
 	static FrostDragon * create();
 
+	static const std::string KeyEnemyFrostDragon;
+
 private:
 	FrostDragon();
 	~FrostDragon();

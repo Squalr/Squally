@@ -1,5 +1,7 @@
 #include "TikiGolem.h"
 
+const std::string TikiGolem::KeyEnemyTikiGolem = "tiki_golem";
+
 TikiGolem* TikiGolem::create()
 {
 	TikiGolem* instance = new TikiGolem();

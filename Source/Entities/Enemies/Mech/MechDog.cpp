@@ -1,5 +1,7 @@
 #include "MechDog.h"
 
+const std::string MechDog::KeyEnemyMechDog = "mech_dog";
+
 MechDog* MechDog::create()
 {
 	MechDog* instance = new MechDog();

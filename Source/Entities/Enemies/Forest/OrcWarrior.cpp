@@ -1,5 +1,7 @@
 #include "OrcWarrior.h"
 
+const std::string OrcWarrior::KeyEnemyOrcWarrior = "orc_warrior";
+
 OrcWarrior* OrcWarrior::create()
 {
 	OrcWarrior* instance = new OrcWarrior();

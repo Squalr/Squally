@@ -1,5 +1,7 @@
 #include "VoidDemon.h"
 
+const std::string VoidDemon::KeyEnemyVoidDemon = "void_demon";
+
 VoidDemon* VoidDemon::create()
 {
 	VoidDemon* instance = new VoidDemon();

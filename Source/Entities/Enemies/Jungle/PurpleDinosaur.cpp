@@ -1,5 +1,7 @@
 #include "PurpleDinosaur.h"
 
+const std::string PurpleDinosaur::KeyEnemyPurpleDinosaur = "purple_dinosaur";
+
 PurpleDinosaur* PurpleDinosaur::create()
 {
 	PurpleDinosaur* instance = new PurpleDinosaur();

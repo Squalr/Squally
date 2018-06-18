@@ -11,6 +11,8 @@ class MechDog : public Enemy
 public:
 	static MechDog * create();
 
+	static const std::string KeyEnemyMechDog;
+
 private:
 	MechDog();
 	~MechDog();

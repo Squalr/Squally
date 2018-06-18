@@ -11,6 +11,8 @@ class IceGolem : public Enemy
 public:
 	static IceGolem * create();
 
+	static const std::string KeyEnemyIceGolem;
+
 private:
 	IceGolem();
 	~IceGolem();

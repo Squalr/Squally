@@ -11,6 +11,8 @@ class BossRhinoman : public Enemy
 public:
 	static BossRhinoman * create();
 
+	static const std::string KeyEnemyBossRhinoman;
+
 private:
 	BossRhinoman();
 	~BossRhinoman();

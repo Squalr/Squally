@@ -1,5 +1,7 @@
 #include "Genie.h"
 
+const std::string Genie::KeyEnemyGenie = "genie";
+
 Genie* Genie::create()
 {
 	Genie* instance = new Genie();

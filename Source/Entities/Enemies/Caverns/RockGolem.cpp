@@ -1,5 +1,7 @@
 #include "RockGolem.h"
 
+const std::string RockGolem::KeyEnemyRockGolem = "rock_golem";
+
 RockGolem* RockGolem::create()
 {
 	RockGolem* instance = new RockGolem();

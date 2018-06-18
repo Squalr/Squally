@@ -9,7 +9,7 @@ Wind* Wind::create(ValueMap* initProperties, Size startSize, Vec2 startSpeed)
 	return instance;
 }
 
-Wind::Wind(ValueMap* initProperties, Size startSize, Vec2 startSpeed) : CollisionObject(initProperties)
+Wind::Wind(ValueMap* initProperties, Size startSize, Vec2 startSpeed) : HackableObject(initProperties)
 {
 	this->size = startSize;
 	this->windSpeed = startSpeed;

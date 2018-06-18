@@ -11,6 +11,8 @@ class Troll : public Enemy
 public:
 	static Troll * create();
 
+	static const std::string KeyEnemyTroll;
+
 private:
 	Troll();
 	~Troll();

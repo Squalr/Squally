@@ -1,5 +1,7 @@
 #include "MechBoxDrone.h"
 
+const std::string MechBoxDrone::KeyEnemyMechBoxDrone = "mech_box_drone";
+
 MechBoxDrone* MechBoxDrone::create()
 {
 	MechBoxDrone* instance = new MechBoxDrone();

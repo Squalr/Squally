@@ -1,5 +1,7 @@
 #include "WaterElemental.h"
 
+const std::string WaterElemental::KeyEnemyWaterElemental = "water_elemental";
+
 WaterElemental* WaterElemental::create()
 {
 	WaterElemental* instance = new WaterElemental();

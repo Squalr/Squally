@@ -11,6 +11,8 @@ class JungleDragon : public Enemy
 public:
 	static JungleDragon * create();
 
+	static const std::string KeyEnemyJungleDragon;
+
 private:
 	JungleDragon();
 	~JungleDragon();

@@ -1,5 +1,7 @@
 #include "Mermaid.h"
 
+const std::string Mermaid::KeyEnemyMermaid = "mermaid";
+
 Mermaid* Mermaid::create()
 {
 	Mermaid* instance = new Mermaid();

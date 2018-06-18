@@ -11,6 +11,8 @@ class ForestGolem : public Enemy
 public:
 	static ForestGolem * create();
 
+	static const std::string KeyEnemyForestGolem;
+
 private:
 	ForestGolem();
 	~ForestGolem();

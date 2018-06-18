@@ -1,5 +1,7 @@
 #include "GoblinGuard.h"
 
+const std::string GoblinGuard::KeyEnemyGoblinGuard = "goblin_guard";
+
 GoblinGuard* GoblinGuard::create()
 {
 	GoblinGuard* instance = new GoblinGuard();

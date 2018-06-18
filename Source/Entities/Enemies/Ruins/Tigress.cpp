@@ -1,5 +1,7 @@
 #include "Tigress.h"
 
+const std::string Tigress::KeyEnemyTigress = "tigress";
+
 Tigress* Tigress::create()
 {
 	Tigress* instance = new Tigress();

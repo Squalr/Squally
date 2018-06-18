@@ -1,5 +1,7 @@
 #include "EarthElemental.h"
 
+const std::string EarthElemental::KeyEnemyEarthElemental = "earth_elemental";
+
 EarthElemental* EarthElemental::create()
 {
 	EarthElemental* instance = new EarthElemental();

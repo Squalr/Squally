@@ -1,5 +1,7 @@
 #include "MechGolem.h"
 
+const std::string MechGolem::KeyEnemyMechGolem = "mech_golem";
+
 MechGolem* MechGolem::create()
 {
 	MechGolem* instance = new MechGolem();

@@ -11,6 +11,8 @@ class VampireLord : public Enemy
 public:
 	static VampireLord * create();
 
+	static const std::string KeyEnemyVampireLord;
+
 private:
 	VampireLord();
 	~VampireLord();

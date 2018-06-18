@@ -1,5 +1,7 @@
 #include "DemonGrunt.h"
 
+const std::string DemonGrunt::KeyEnemyDemonGrunt = "demon_grunt";
+
 DemonGrunt* DemonGrunt::create()
 {
 	DemonGrunt* instance = new DemonGrunt();

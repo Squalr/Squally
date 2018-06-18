@@ -1,5 +1,7 @@
 #include "DarkDragon.h"
 
+const std::string DarkDragon::KeyEnemyDarkDragon = "dark_dragon";
+
 DarkDragon* DarkDragon::create()
 {
 	DarkDragon* instance = new DarkDragon();

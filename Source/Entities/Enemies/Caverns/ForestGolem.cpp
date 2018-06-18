@@ -1,5 +1,7 @@
 #include "ForestGolem.h"
 
+const std::string ForestGolem::KeyEnemyForestGolem = "forest_golem";
+
 ForestGolem* ForestGolem::create()
 {
 	ForestGolem* instance = new ForestGolem();
