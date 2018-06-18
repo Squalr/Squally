@@ -2,16 +2,16 @@
 
 const std::string Cyclops::KeyEnemyCyclops = "cyclops";
 
-Cyclops* Cyclops::create()
+Cyclops* Cyclops::deserialize(ValueMap* initProperties)
 {
-	Cyclops* instance = new Cyclops();
+	Cyclops* instance = new Cyclops(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Cyclops::Cyclops() : Enemy::Enemy(
+Cyclops::Cyclops(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Forest_Cyclops_Animations,
 	false,
 	Size(296.0f, 256.0f),

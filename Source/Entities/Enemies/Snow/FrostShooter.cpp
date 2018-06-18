@@ -2,16 +2,16 @@
 
 const std::string FrostShooter::KeyEnemyFrostShooter = "frost_shooter";
 
-FrostShooter* FrostShooter::create()
+FrostShooter* FrostShooter::deserialize(ValueMap* initProperties)
 {
-	FrostShooter* instance = new FrostShooter();
+	FrostShooter* instance = new FrostShooter(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FrostShooter::FrostShooter() : Enemy::Enemy(
+FrostShooter::FrostShooter(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Snow_FrostShooter_Animations,
 	false,
 	Size(212.0f, 296.0f),

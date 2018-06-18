@@ -2,16 +2,16 @@
 
 const std::string BossEgyptianGoddess::KeyEnemyBossEgyptianGoddess = "boss_egyptian_goddess";
 
-BossEgyptianGoddess* BossEgyptianGoddess::create()
+BossEgyptianGoddess* BossEgyptianGoddess::deserialize(ValueMap* initProperties)
 {
-	BossEgyptianGoddess* instance = new BossEgyptianGoddess();
+	BossEgyptianGoddess* instance = new BossEgyptianGoddess(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BossEgyptianGoddess::BossEgyptianGoddess() : Enemy::Enemy(
+BossEgyptianGoddess::BossEgyptianGoddess(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Ruins_BossEgyptianGoddess_Animations,
 	false,
 	Size(128.0f, 272.0f),

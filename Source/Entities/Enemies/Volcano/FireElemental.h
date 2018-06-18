@@ -9,11 +9,11 @@ using namespace cocos2d;
 class FireElemental : public Enemy
 {
 public:
-	static FireElemental * create();
+	static FireElemental * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyFireElemental;
 
 private:
-	FireElemental();
+	FireElemental(ValueMap* initProperties);
 	~FireElemental();
 };

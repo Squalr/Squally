@@ -2,16 +2,16 @@
 
 const std::string MechBoxDrone::KeyEnemyMechBoxDrone = "mech_box_drone";
 
-MechBoxDrone* MechBoxDrone::create()
+MechBoxDrone* MechBoxDrone::deserialize(ValueMap* initProperties)
 {
-	MechBoxDrone* instance = new MechBoxDrone();
+	MechBoxDrone* instance = new MechBoxDrone(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MechBoxDrone::MechBoxDrone() : Enemy::Enemy(
+MechBoxDrone::MechBoxDrone(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Mech_MechBoxDrone_Animations,
 	false,
 	Size(224.0f, 278.0f),

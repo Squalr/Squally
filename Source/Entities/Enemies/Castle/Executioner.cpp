@@ -2,16 +2,16 @@
 
 const std::string Executioner::KeyEnemyExecutioner = "executioner";
 
-Executioner* Executioner::create()
+Executioner* Executioner::deserialize(ValueMap* initProperties)
 {
-	Executioner* instance = new Executioner();
+	Executioner* instance = new Executioner(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Executioner::Executioner() : Enemy::Enemy(
+Executioner::Executioner(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Castle_Executioner_Animations,
 	false,
 	Size(472.0f, 820.0f),

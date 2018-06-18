@@ -2,16 +2,16 @@
 
 const std::string SkeletonMage::KeyEnemySkeletonMage = "skeleton_mage";
 
-SkeletonMage* SkeletonMage::create()
+SkeletonMage* SkeletonMage::deserialize(ValueMap* initProperties)
 {
-	SkeletonMage* instance = new SkeletonMage();
+	SkeletonMage* instance = new SkeletonMage(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SkeletonMage::SkeletonMage() : Enemy::Enemy(
+SkeletonMage::SkeletonMage(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Castle_SkeletonMage_Animations,
 	false,
 	Size(142.0f, 400.0f),

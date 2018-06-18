@@ -9,11 +9,11 @@ using namespace cocos2d;
 class WaterElemental : public Enemy
 {
 public:
-	static WaterElemental * create();
+	static WaterElemental * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyWaterElemental;
 
 private:
-	WaterElemental();
+	WaterElemental(ValueMap* initProperties);
 	~WaterElemental();
 };

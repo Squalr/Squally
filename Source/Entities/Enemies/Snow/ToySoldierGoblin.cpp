@@ -2,16 +2,16 @@
 
 const std::string ToySoldierGoblin::KeyEnemyToySoldierGoblin = "toy_soldier_goblin";
 
-ToySoldierGoblin* ToySoldierGoblin::create()
+ToySoldierGoblin* ToySoldierGoblin::deserialize(ValueMap* initProperties)
 {
-	ToySoldierGoblin* instance = new ToySoldierGoblin();
+	ToySoldierGoblin* instance = new ToySoldierGoblin(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ToySoldierGoblin::ToySoldierGoblin() : Enemy::Enemy(
+ToySoldierGoblin::ToySoldierGoblin(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Snow_ToySoldierGoblin_Animations,
 	false,
 	Size(112.0f, 288.0f),

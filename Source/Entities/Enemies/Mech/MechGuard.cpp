@@ -2,16 +2,16 @@
 
 const std::string MechGuard::KeyEnemyMechGuard = "mech_guard";
 
-MechGuard* MechGuard::create()
+MechGuard* MechGuard::deserialize(ValueMap* initProperties)
 {
-	MechGuard* instance = new MechGuard();
+	MechGuard* instance = new MechGuard(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MechGuard::MechGuard() : Enemy::Enemy(
+MechGuard::MechGuard(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Mech_MechGuard_Animations,
 	false,
 	Size(472.0f, 596.0f),

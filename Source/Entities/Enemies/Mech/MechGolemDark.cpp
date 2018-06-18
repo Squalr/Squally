@@ -2,16 +2,16 @@
 
 const std::string MechGolemDark::KeyEnemyMechGolemDark = "mech_golem_dark";
 
-MechGolemDark* MechGolemDark::create()
+MechGolemDark* MechGolemDark::deserialize(ValueMap* initProperties)
 {
-	MechGolemDark* instance = new MechGolemDark();
+	MechGolemDark* instance = new MechGolemDark(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MechGolemDark::MechGolemDark() : Enemy::Enemy(
+MechGolemDark::MechGolemDark(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Mech_MechGolemDark_Animations,
 	false,
 	Size(460.0f, 512.0f),

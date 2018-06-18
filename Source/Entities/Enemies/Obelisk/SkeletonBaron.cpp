@@ -2,16 +2,16 @@
 
 const std::string SkeletonBaron::KeyEnemySkeletonBaron = "skeleton_baron";
 
-SkeletonBaron* SkeletonBaron::create()
+SkeletonBaron* SkeletonBaron::deserialize(ValueMap* initProperties)
 {
-	SkeletonBaron* instance = new SkeletonBaron();
+	SkeletonBaron* instance = new SkeletonBaron(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SkeletonBaron::SkeletonBaron() : Enemy::Enemy(
+SkeletonBaron::SkeletonBaron(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Obelisk_SkeletonBaron_Animations,
 	false,
 	Size(472.0f, 368.0f),

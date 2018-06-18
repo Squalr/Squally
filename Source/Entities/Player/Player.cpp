@@ -6,9 +6,9 @@ const float Player::playerScale = 0.13f;
 
 const std::string Player::KeySquallyProperty = "squally";
 
-Player* Player::create()
+Player* Player::deserialize(ValueMap* initProperties)
 {
-	Player* instance = new Player();
+	Player* instance = new Player(initProperties);
 
 	Player::playerInstance = instance;
 	instance->autorelease();
@@ -21,7 +21,12 @@ Player* Player::getInstance()
 	return Player::playerInstance;
 }
 
-Player::Player() : Entity::Entity(Resources::Entities_Player_Animations, false, Size(720.0f, 1600.0f), Player::playerScale, Vec2(0.0f, 600.0f))
+Player::Player(ValueMap* initProperties) : Entity::Entity(initProperties,
+	Resources::Entities_Player_Animations, 
+	false,
+	Size(720.0f, 1600.0f), 
+	Player::playerScale, 
+	Vec2(0.0f, 600.0f))
 {
 	this->actualJumpLaunchVelocity = 1280.0f;
 	this->actualGravityAcceleration = 400.0f;

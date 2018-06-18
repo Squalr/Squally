@@ -2,16 +2,16 @@
 
 const std::string Lioness::KeyEnemyLioness = "lioness";
 
-Lioness* Lioness::create()
+Lioness* Lioness::deserialize(ValueMap* initProperties)
 {
-	Lioness* instance = new Lioness();
+	Lioness* instance = new Lioness(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Lioness::Lioness() : Enemy::Enemy(
+Lioness::Lioness(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Ruins_Lioness_Animations,
 	false,
 	Size(128.0f, 278.0f),

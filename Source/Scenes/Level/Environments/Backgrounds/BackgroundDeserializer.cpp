@@ -31,19 +31,19 @@ void BackgroundDeserializer::onDeserializationRequest(LayerDeserializationReques
 
 	if (background == JungleBackground::KeyBackgroundJungle)
 	{
-		args->callback(JungleBackground::create(new ValueMap(properties), name), args->objectGroup->layerIndex);
+		args->callback(JungleBackground::create(&properties, name), args->objectGroup->layerIndex);
 	}
 	else if (background == MountainBackground::KeyBackgroundMountains)
 	{
-		args->callback(MountainBackground::create(new ValueMap(properties), name), args->objectGroup->layerIndex);
+		args->callback(MountainBackground::create(&properties, name), args->objectGroup->layerIndex);
 	}
 	else if (background == OceanBackground::KeyBackgroundOcean)
 	{
-		args->callback(OceanBackground::create(new ValueMap(properties), name), args->objectGroup->layerIndex);
+		args->callback(OceanBackground::create(&properties, name), args->objectGroup->layerIndex);
 	}
 	else if (background == SnowBackground::KeyBackgroundSnow)
 	{
-		args->callback(SnowBackground::create(new ValueMap(properties), name), args->objectGroup->layerIndex);
+		args->callback(SnowBackground::create(&properties, name), args->objectGroup->layerIndex);
 	}
 	else
 	{

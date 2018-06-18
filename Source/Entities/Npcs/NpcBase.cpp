@@ -1,7 +1,7 @@
 #include "NpcBase.h"
 
-NpcBase::NpcBase(std::string scmlResource, bool isFlying, Size size, float scale, Vec2 collisionOffset)
-	: Entity(scmlResource, isFlying, size, scale, collisionOffset)
+NpcBase::NpcBase(ValueMap* initProperties, std::string scmlResource, bool isFlying, Size size, float scale, Vec2 collisionOffset)
+	: Entity(initProperties, scmlResource, isFlying, size, scale, collisionOffset)
 {
 	this->interactButton = MenuSprite::create(Resources::Menus_Buttons_ChatButton, Resources::Menus_Buttons_ChatButtonHover, Resources::Menus_Buttons_ChatButtonClick);
 	this->interactButton->setClickCallback(CC_CALLBACK_1(NpcBase::onInteractButtonClick, this));

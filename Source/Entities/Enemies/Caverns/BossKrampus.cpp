@@ -2,16 +2,16 @@
 
 const std::string BossKrampus::KeyEnemyBossKrampus = "boss_krampus";
 
-BossKrampus* BossKrampus::create()
+BossKrampus* BossKrampus::deserialize(ValueMap* initProperties)
 {
-	BossKrampus* instance = new BossKrampus();
+	BossKrampus* instance = new BossKrampus(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BossKrampus::BossKrampus() : Enemy::Enemy(
+BossKrampus::BossKrampus(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Caverns_BossKrampus_Animations,
 	false,
 	Size(396.0f, 412.0f),

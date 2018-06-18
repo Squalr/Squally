@@ -2,16 +2,16 @@
 
 const std::string Ghost::KeyEnemyGhost = "ghost";
 
-Ghost* Ghost::create()
+Ghost* Ghost::deserialize(ValueMap* initProperties)
 {
-	Ghost* instance = new Ghost();
+	Ghost* instance = new Ghost(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Ghost::Ghost() : Enemy::Enemy(
+Ghost::Ghost(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Castle_Ghost_Animations,
 	false,
 	Size(480.0f, 692.0f),

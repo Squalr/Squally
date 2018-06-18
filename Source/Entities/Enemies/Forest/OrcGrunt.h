@@ -9,11 +9,11 @@ using namespace cocos2d;
 class OrcGrunt : public Enemy
 {
 public:
-	static OrcGrunt * create();
+	static OrcGrunt * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyOrcGrunt;
 
 private:
-	OrcGrunt();
+	OrcGrunt(ValueMap* initProperties);
 	~OrcGrunt();
 };

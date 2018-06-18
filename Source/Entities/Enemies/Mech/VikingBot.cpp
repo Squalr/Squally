@@ -2,16 +2,16 @@
 
 const std::string VikingBot::KeyEnemyVikingBot = "viking_bot";
 
-VikingBot* VikingBot::create()
+VikingBot* VikingBot::deserialize(ValueMap* initProperties)
 {
-	VikingBot* instance = new VikingBot();
+	VikingBot* instance = new VikingBot(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-VikingBot::VikingBot() : Enemy::Enemy(
+VikingBot::VikingBot(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Mech_VikingBot_Animations,
 	false,
 	Size(768.0f, 960.0f),

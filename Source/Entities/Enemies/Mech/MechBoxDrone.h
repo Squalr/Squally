@@ -9,11 +9,11 @@ using namespace cocos2d;
 class MechBoxDrone : public Enemy
 {
 public:
-	static MechBoxDrone * create();
+	static MechBoxDrone * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyMechBoxDrone;
 
 private:
-	MechBoxDrone();
+	MechBoxDrone(ValueMap* initProperties);
 	~MechBoxDrone();
 };

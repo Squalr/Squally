@@ -2,16 +2,16 @@
 
 const std::string TikiWarrior::KeyEnemyTikiWarrior = "tiki_warrior";
 
-TikiWarrior* TikiWarrior::create()
+TikiWarrior* TikiWarrior::deserialize(ValueMap* initProperties)
 {
-	TikiWarrior* instance = new TikiWarrior();
+	TikiWarrior* instance = new TikiWarrior(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TikiWarrior::TikiWarrior() : Enemy::Enemy(
+TikiWarrior::TikiWarrior(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Jungle_TikiWarrior_Animations,
 	false,
 	Size(128.0f, 128.0f),

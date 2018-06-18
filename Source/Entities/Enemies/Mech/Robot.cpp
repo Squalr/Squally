@@ -2,16 +2,16 @@
 
 const std::string Robot::KeyEnemyRobot = "robot";
 
-Robot* Robot::create()
+Robot* Robot::deserialize(ValueMap* initProperties)
 {
-	Robot* instance = new Robot();
+	Robot* instance = new Robot(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Robot::Robot() : Enemy::Enemy(
+Robot::Robot(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Mech_Robot_Animations,
 	false,
 	Size(512.0f, 820.0f),

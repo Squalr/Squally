@@ -9,11 +9,11 @@ using namespace cocos2d;
 class MiteBot : public Enemy
 {
 public:
-	static MiteBot * create();
+	static MiteBot * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyMiteBot;
 
 private:
-	MiteBot();
+	MiteBot(ValueMap* initProperties);
 	~MiteBot();
 };

@@ -9,11 +9,11 @@ using namespace cocos2d;
 class AnubisTiny : public Enemy
 {
 public:
-	static AnubisTiny * create();
+	static AnubisTiny * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyAnubisTiny;
 
 private:
-	AnubisTiny();
+	AnubisTiny(ValueMap* initProperties);
 	~AnubisTiny();
 };

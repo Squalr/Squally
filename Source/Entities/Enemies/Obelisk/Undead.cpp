@@ -2,16 +2,16 @@
 
 const std::string Undead::KeyEnemyUndead = "undead";
 
-Undead* Undead::create()
+Undead* Undead::deserialize(ValueMap* initProperties)
 {
-	Undead* instance = new Undead();
+	Undead* instance = new Undead(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Undead::Undead() : Enemy::Enemy(
+Undead::Undead(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Obelisk_Undead_Animations,
 	false,
 	Size(146.0f, 248.0f),

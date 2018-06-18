@@ -2,16 +2,16 @@
 
 const std::string ForestGolem::KeyEnemyForestGolem = "forest_golem";
 
-ForestGolem* ForestGolem::create()
+ForestGolem* ForestGolem::deserialize(ValueMap* initProperties)
 {
-	ForestGolem* instance = new ForestGolem();
+	ForestGolem* instance = new ForestGolem(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ForestGolem::ForestGolem() : Enemy::Enemy(
+ForestGolem::ForestGolem(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Caverns_ForestGolem_Animations,
 	false,
 	Size(768.0f, 840.0f),

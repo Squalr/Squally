@@ -2,16 +2,16 @@
 
 const std::string SkeletonCleaver::KeyEnemySkeletonCleaver = "skeleton_cleaver";
 
-SkeletonCleaver* SkeletonCleaver::create()
+SkeletonCleaver* SkeletonCleaver::deserialize(ValueMap* initProperties)
 {
-	SkeletonCleaver* instance = new SkeletonCleaver();
+	SkeletonCleaver* instance = new SkeletonCleaver(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SkeletonCleaver::SkeletonCleaver() : Enemy::Enemy(
+SkeletonCleaver::SkeletonCleaver(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Obelisk_SkeletonCleaver_Animations,
 	false,
 	Size(128.0f, 312.0f),

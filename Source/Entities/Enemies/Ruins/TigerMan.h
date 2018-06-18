@@ -9,11 +9,11 @@ using namespace cocos2d;
 class TigerMan : public Enemy
 {
 public:
-	static TigerMan * create();
+	static TigerMan * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyTigerMan;
 
 private:
-	TigerMan();
+	TigerMan(ValueMap* initProperties);
 	~TigerMan();
 };

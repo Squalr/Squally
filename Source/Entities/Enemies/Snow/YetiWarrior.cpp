@@ -2,16 +2,16 @@
 
 const std::string YetiWarrior::KeyEnemyYetiWarrior = "yeti_warrior";
 
-YetiWarrior* YetiWarrior::create()
+YetiWarrior* YetiWarrior::deserialize(ValueMap* initProperties)
 {
-	YetiWarrior* instance = new YetiWarrior();
+	YetiWarrior* instance = new YetiWarrior(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-YetiWarrior::YetiWarrior() : Enemy::Enemy(
+YetiWarrior::YetiWarrior(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Snow_YetiWarrior_Animations,
 	false,
 	Size(380.0f, 572.0f),

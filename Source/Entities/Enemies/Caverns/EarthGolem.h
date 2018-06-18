@@ -9,11 +9,11 @@ using namespace cocos2d;
 class EarthGolem : public Enemy
 {
 public:
-	static EarthGolem * create();
+	static EarthGolem * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyEarthGolem;
 
 private:
-	EarthGolem();
+	EarthGolem(ValueMap* initProperties);
 	~EarthGolem();
 };

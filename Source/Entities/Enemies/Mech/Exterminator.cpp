@@ -2,16 +2,16 @@
 
 const std::string Exterminator::KeyEnemyExterminator = "exterminator";
 
-Exterminator* Exterminator::create()
+Exterminator* Exterminator::deserialize(ValueMap* initProperties)
 {
-	Exterminator* instance = new Exterminator();
+	Exterminator* instance = new Exterminator(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Exterminator::Exterminator() : Enemy::Enemy(
+Exterminator::Exterminator(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Mech_Exterminator_Animations,
 	false,
 	Size(320.0f, 278.0f),

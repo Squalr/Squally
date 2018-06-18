@@ -16,21 +16,21 @@ void ObjectDeserializer::onDeserializationRequest(ObjectDeserializationRequestAr
 
 		if (name == "warp-gate")
 		{
-			newObject = WarpGate::create(new ValueMap(properties));
+			newObject = WarpGate::create(&properties);
 		}
 		else if (name == "warp-gate-exact-scan-1")
 		{
-			newObject = WarpGateExactScanTutorial::create(new ValueMap(properties));
+			newObject = WarpGateExactScanTutorial::create(&properties);
 		}
 		else if (name == "plushie_monkey")
 		{
-			newObject = PlushieMonkey::create(new ValueMap(properties));
+			newObject = PlushieMonkey::create(&properties);
 		}
 		else if (name == "monitor")
 		{
 			string dialog = properties.at("dialog").asString();
 
-			newObject = Monitor::create(new ValueMap(properties), "Dialog\\" + dialog + ".json");
+			newObject = Monitor::create(&properties, "Dialog\\" + dialog + ".json");
 		}
 		else if (name == "wind")
 		{

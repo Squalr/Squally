@@ -9,11 +9,11 @@ using namespace cocos2d;
 class Mantis : public Enemy
 {
 public:
-	static Mantis * create();
+	static Mantis * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyMantis;
 
 private:
-	Mantis();
+	Mantis(ValueMap* initProperties);
 	~Mantis();
 };

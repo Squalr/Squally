@@ -2,16 +2,16 @@
 
 const std::string SkeletonPriestess::KeyEnemySkeletonPriestess = "skeleton_priestess";
 
-SkeletonPriestess* SkeletonPriestess::create()
+SkeletonPriestess* SkeletonPriestess::deserialize(ValueMap* initProperties)
 {
-	SkeletonPriestess* instance = new SkeletonPriestess();
+	SkeletonPriestess* instance = new SkeletonPriestess(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SkeletonPriestess::SkeletonPriestess() : Enemy::Enemy(
+SkeletonPriestess::SkeletonPriestess(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Obelisk_SkeletonPriestess_Animations,
 	false,
 	Size(196.0f, 312.0f),

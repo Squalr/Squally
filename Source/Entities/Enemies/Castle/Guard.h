@@ -9,11 +9,11 @@ using namespace cocos2d;
 class Guard : public Enemy
 {
 public:
-	static Guard * create();
+	static Guard * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyGuard;
 
 private:
-	Guard();
+	Guard(ValueMap* initProperties);
 	~Guard();
 };

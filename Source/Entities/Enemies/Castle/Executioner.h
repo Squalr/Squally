@@ -9,11 +9,11 @@ using namespace cocos2d;
 class Executioner : public Enemy
 {
 public:
-	static Executioner * create();
+	static Executioner * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyExecutioner;
 
 private:
-	Executioner();
+	Executioner(ValueMap* initProperties);
 	~Executioner();
 };

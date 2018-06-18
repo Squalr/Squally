@@ -2,16 +2,16 @@
 
 const std::string MiteBot::KeyEnemyMiteBot = "mite_bot";
 
-MiteBot* MiteBot::create()
+MiteBot* MiteBot::deserialize(ValueMap* initProperties)
 {
-	MiteBot* instance = new MiteBot();
+	MiteBot* instance = new MiteBot(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MiteBot::MiteBot() : Enemy::Enemy(
+MiteBot::MiteBot(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Mech_MiteBot_Animations,
 	false,
 	Size(420.0f, 296.0f),

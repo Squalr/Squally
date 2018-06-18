@@ -2,16 +2,16 @@
 
 const std::string BatDemon::KeyEnemyBatDemon = "bat_demon";
 
-BatDemon* BatDemon::create()
+BatDemon* BatDemon::deserialize(ValueMap* initProperties)
 {
-	BatDemon* instance = new BatDemon();
+	BatDemon* instance = new BatDemon(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BatDemon::BatDemon() : Enemy::Enemy(
+BatDemon::BatDemon(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Obelisk_BatDemon_Animations,
 	false,
 	Size(726.0f, 1024.0f),

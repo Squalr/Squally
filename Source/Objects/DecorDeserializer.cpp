@@ -42,13 +42,13 @@ void DecorDeserializer::onDeserializationRequest(ObjectDeserializationRequestArg
 					parallaxSpeed.y = properties.at("parallax-speed-y").asFloat();
 				}
 
-				newObject = ParallaxObject::create(new ValueMap(properties), sprite, parallaxSpeed);
+				newObject = ParallaxObject::create(&properties, sprite, parallaxSpeed);
 			}
 		}
 		
 		if (newObject == nullptr)
 		{
-			newObject = DecorObject::create(new ValueMap(properties));
+			newObject = DecorObject::create(&properties);
 			newObject->addChild(sprite);
 		}
 

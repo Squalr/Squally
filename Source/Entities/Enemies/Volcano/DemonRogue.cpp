@@ -2,16 +2,16 @@
 
 const std::string DemonRogue::KeyEnemyDemonRogue = "demon_rogue";
 
-DemonRogue* DemonRogue::create()
+DemonRogue* DemonRogue::deserialize(ValueMap* initProperties)
 {
-	DemonRogue* instance = new DemonRogue();
+	DemonRogue* instance = new DemonRogue(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DemonRogue::DemonRogue() : Enemy::Enemy(
+DemonRogue::DemonRogue(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Volcano_DemonRogue_Animations,
 	false,
 	Size(212.0f, 268.0f),

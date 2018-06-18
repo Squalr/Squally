@@ -2,16 +2,16 @@
 
 const std::string FrostDragon::KeyEnemyFrostDragon = "frost_dragon";
 
-FrostDragon* FrostDragon::create()
+FrostDragon* FrostDragon::deserialize(ValueMap* initProperties)
 {
-	FrostDragon* instance = new FrostDragon();
+	FrostDragon* instance = new FrostDragon(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FrostDragon::FrostDragon() : Enemy::Enemy(
+FrostDragon::FrostDragon(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Snow_FrostDragon_Animations,
 	false,
 	Size(720.0f, 356.0f),

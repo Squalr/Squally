@@ -9,11 +9,11 @@ using namespace cocos2d;
 class VikingBotSmall : public Enemy
 {
 public:
-	static VikingBotSmall * create();
+	static VikingBotSmall * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyVikingBotSmall;
 
 private:
-	VikingBotSmall();
+	VikingBotSmall(ValueMap* initProperties);
 	~VikingBotSmall();
 };

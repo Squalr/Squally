@@ -9,11 +9,11 @@ using namespace cocos2d;
 class EntMage : public Enemy
 {
 public:
-	static EntMage * create();
+	static EntMage * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyEntMage;
 
 private:
-	EntMage();
+	EntMage(ValueMap* initProperties);
 	~EntMage();
 };

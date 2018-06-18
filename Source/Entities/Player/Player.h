@@ -14,7 +14,7 @@ using namespace cocos2d;
 class Player : public Entity
 {
 public:
-	static Player * create();
+	static Player * deserialize(ValueMap* initProperties);
 	static Player * getInstance();
 
 	Size getSize() override;
@@ -32,7 +32,7 @@ protected:
 	bool hoverContactEnd(CollisionData data);
 
 private:
-	Player();
+	Player(ValueMap* initProperties);
 	~Player();
 
 	void registerHackables();

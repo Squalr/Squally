@@ -2,16 +2,16 @@
 
 const std::string Troll::KeyEnemyTroll = "troll";
 
-Troll* Troll::create()
+Troll* Troll::deserialize(ValueMap* initProperties)
 {
-	Troll* instance = new Troll();
+	Troll* instance = new Troll(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Troll::Troll() : Enemy::Enemy(
+Troll::Troll(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Forest_Troll_Animations,
 	false,
 	Size(256.0f, 248.0f),

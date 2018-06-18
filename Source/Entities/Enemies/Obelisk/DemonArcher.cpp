@@ -2,16 +2,16 @@
 
 const std::string DemonArcher::KeyEnemyDemonArcher = "demon_archer";
 
-DemonArcher* DemonArcher::create()
+DemonArcher* DemonArcher::deserialize(ValueMap* initProperties)
 {
-	DemonArcher* instance = new DemonArcher();
+	DemonArcher* instance = new DemonArcher(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DemonArcher::DemonArcher() : Enemy::Enemy(
+DemonArcher::DemonArcher(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Obelisk_DemonArcher_Animations,
 	false,
 	Size(196.0f, 348.0f),

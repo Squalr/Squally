@@ -2,16 +2,16 @@
 
 const std::string Guard::KeyEnemyGuard = "guard";
 
-Guard* Guard::create()
+Guard* Guard::deserialize(ValueMap* initProperties)
 {
-	Guard* instance = new Guard();
+	Guard* instance = new Guard(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Guard::Guard() : Enemy::Enemy(
+Guard::Guard(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Castle_Guard_Animations,
 	false,
 	Size(472.0f, 780.0f),

@@ -30,15 +30,15 @@ void WeatherDeserializer::onDeserializationRequest(LayerDeserializationRequestAr
 
 	if (weather == Fireflies::KeyWeatherFireflies)
 	{
-		args->callback(Fireflies::create(new ValueMap(properties), name), args->objectGroup->layerIndex);
+		args->callback(Fireflies::create(&properties, name), args->objectGroup->layerIndex);
 	}
 	else if (weather == Rain::KeyWeatherRain)
 	{
-		args->callback(Rain::create(new ValueMap(properties), name), args->objectGroup->layerIndex);
+		args->callback(Rain::create(&properties, name), args->objectGroup->layerIndex);
 	}
 	else if (weather == Snow::KeyWeatherSnow)
 	{
-		args->callback(Snow::create(new ValueMap(properties), name), args->objectGroup->layerIndex);
+		args->callback(Snow::create(&properties, name), args->objectGroup->layerIndex);
 	}
 	else
 	{

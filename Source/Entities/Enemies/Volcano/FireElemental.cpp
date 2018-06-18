@@ -2,16 +2,16 @@
 
 const std::string FireElemental::KeyEnemyFireElemental = "fire_elemental";
 
-FireElemental* FireElemental::create()
+FireElemental* FireElemental::deserialize(ValueMap* initProperties)
 {
-	FireElemental* instance = new FireElemental();
+	FireElemental* instance = new FireElemental(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FireElemental::FireElemental() : Enemy::Enemy(
+FireElemental::FireElemental(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Volcano_FireElemental_Animations,
 	false,
 	Size(820.0f, 1480.0f),

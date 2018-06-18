@@ -9,11 +9,11 @@ using namespace cocos2d;
 class MechGolemDark : public Enemy
 {
 public:
-	static MechGolemDark * create();
+	static MechGolemDark * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyMechGolemDark;
 
 private:
-	MechGolemDark();
+	MechGolemDark(ValueMap* initProperties);
 	~MechGolemDark();
 };

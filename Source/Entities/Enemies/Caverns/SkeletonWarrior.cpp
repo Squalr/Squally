@@ -2,16 +2,16 @@
 
 const std::string SkeletonWarrior::KeyEnemySkeletonWarrior = "skeleton_warrior";
 
-SkeletonWarrior* SkeletonWarrior::create()
+SkeletonWarrior* SkeletonWarrior::deserialize(ValueMap* initProperties)
 {
-	SkeletonWarrior* instance = new SkeletonWarrior();
+	SkeletonWarrior* instance = new SkeletonWarrior(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SkeletonWarrior::SkeletonWarrior() : Enemy::Enemy(
+SkeletonWarrior::SkeletonWarrior(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Caverns_SkeletonWarrior_Animations,
 	false,
 	Size(128.0f, 216.0f),

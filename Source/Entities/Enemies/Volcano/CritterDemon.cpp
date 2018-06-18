@@ -2,16 +2,16 @@
 
 const std::string CritterDemon::KeyEnemyCritterDemon = "critter_demon";
 
-CritterDemon* CritterDemon::create()
+CritterDemon* CritterDemon::deserialize(ValueMap* initProperties)
 {
-	CritterDemon* instance = new CritterDemon();
+	CritterDemon* instance = new CritterDemon(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CritterDemon::CritterDemon() : Enemy::Enemy(
+CritterDemon::CritterDemon(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Volcano_CritterDemon_Animations,
 	false,
 	Size(188.0f, 160.0f),

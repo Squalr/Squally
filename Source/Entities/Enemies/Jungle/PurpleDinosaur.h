@@ -9,11 +9,11 @@ using namespace cocos2d;
 class PurpleDinosaur : public Enemy
 {
 public:
-	static PurpleDinosaur * create();
+	static PurpleDinosaur * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyPurpleDinosaur;
 
 private:
-	PurpleDinosaur();
+	PurpleDinosaur(ValueMap* initProperties);
 	~PurpleDinosaur();
 };

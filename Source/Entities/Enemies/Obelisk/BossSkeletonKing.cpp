@@ -2,16 +2,16 @@
 
 const std::string BossSkeletonKing::KeyEnemyBossSkeletonKing = "boss_skeleton_king";
 
-BossSkeletonKing* BossSkeletonKing::create()
+BossSkeletonKing* BossSkeletonKing::deserialize(ValueMap* initProperties)
 {
-	BossSkeletonKing* instance = new BossSkeletonKing();
+	BossSkeletonKing* instance = new BossSkeletonKing(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BossSkeletonKing::BossSkeletonKing() : Enemy::Enemy(
+BossSkeletonKing::BossSkeletonKing(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Obelisk_BossSkeletonKing_Animations,
 	false,
 	Size(196.0f, 320.0f),

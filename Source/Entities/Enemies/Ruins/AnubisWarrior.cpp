@@ -2,16 +2,16 @@
 
 const std::string AnubisWarrior::KeyEnemyAnubisWarrior = "anubis_warrior";
 
-AnubisWarrior* AnubisWarrior::create()
+AnubisWarrior* AnubisWarrior::deserialize(ValueMap* initProperties)
 {
-	AnubisWarrior* instance = new AnubisWarrior();
+	AnubisWarrior* instance = new AnubisWarrior(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-AnubisWarrior::AnubisWarrior() : Enemy::Enemy(
+AnubisWarrior::AnubisWarrior(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Ruins_AnubisWarrior_Animations,
 	false,
 	Size(256.0f, 292.0f),

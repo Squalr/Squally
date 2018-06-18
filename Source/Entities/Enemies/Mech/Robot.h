@@ -9,11 +9,11 @@ using namespace cocos2d;
 class Robot : public Enemy
 {
 public:
-	static Robot * create();
+	static Robot * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyRobot;
 
 private:
-	Robot();
+	Robot(ValueMap* initProperties);
 	~Robot();
 };

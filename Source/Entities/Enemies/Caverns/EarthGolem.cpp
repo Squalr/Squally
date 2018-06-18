@@ -2,16 +2,16 @@
 
 const std::string EarthGolem::KeyEnemyEarthGolem = "earth_golem";
 
-EarthGolem* EarthGolem::create()
+EarthGolem* EarthGolem::deserialize(ValueMap* initProperties)
 {
-	EarthGolem* instance = new EarthGolem();
+	EarthGolem* instance = new EarthGolem(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EarthGolem::EarthGolem() : Enemy::Enemy(
+EarthGolem::EarthGolem(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Caverns_EarthGolem_Animations,
 	false,
 	Size(256.0f, 224.0f),

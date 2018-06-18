@@ -9,11 +9,11 @@ using namespace cocos2d;
 class LavaGolem : public Enemy
 {
 public:
-	static LavaGolem * create();
+	static LavaGolem * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyLavaGolem;
 
 private:
-	LavaGolem();
+	LavaGolem(ValueMap* initProperties);
 	~LavaGolem();
 };

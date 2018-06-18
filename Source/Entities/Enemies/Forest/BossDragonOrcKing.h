@@ -9,11 +9,11 @@ using namespace cocos2d;
 class BossDragonOrcKing : public Enemy
 {
 public:
-	static BossDragonOrcKing * create();
+	static BossDragonOrcKing * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyBossDragonOrcKing;
 
 private:
-	BossDragonOrcKing();
+	BossDragonOrcKing(ValueMap* initProperties);
 	~BossDragonOrcKing();
 };

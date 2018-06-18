@@ -9,11 +9,11 @@ using namespace cocos2d;
 class Undead : public Enemy
 {
 public:
-	static Undead * create();
+	static Undead * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyUndead;
 
 private:
-	Undead();
+	Undead(ValueMap* initProperties);
 	~Undead();
 };
