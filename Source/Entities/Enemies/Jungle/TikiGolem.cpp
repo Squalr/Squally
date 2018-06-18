@@ -2,16 +2,16 @@
 
 const std::string TikiGolem::KeyEnemyTikiGolem = "tiki_golem";
 
-TikiGolem* TikiGolem::create()
+TikiGolem* TikiGolem::deserialize(ValueMap* initProperties)
 {
-	TikiGolem* instance = new TikiGolem();
+	TikiGolem* instance = new TikiGolem(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TikiGolem::TikiGolem() : Enemy::Enemy(
+TikiGolem::TikiGolem(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Jungle_TikiGolem_Animations,
 	false,
 	Size(284.0f, 256.0f),

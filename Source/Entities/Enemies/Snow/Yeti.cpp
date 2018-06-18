@@ -2,16 +2,16 @@
 
 const std::string Yeti::KeyEnemyYeti = "yeti";
 
-Yeti* Yeti::create()
+Yeti* Yeti::deserialize(ValueMap* initProperties)
 {
-	Yeti* instance = new Yeti();
+	Yeti* instance = new Yeti(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Yeti::Yeti() : Enemy::Enemy(
+Yeti::Yeti(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Snow_Yeti_Animations,
 	false,
 	Size(380.0f, 572.0f),

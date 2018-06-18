@@ -2,16 +2,16 @@
 
 const std::string OrcWarrior::KeyEnemyOrcWarrior = "orc_warrior";
 
-OrcWarrior* OrcWarrior::create()
+OrcWarrior* OrcWarrior::deserialize(ValueMap* initProperties)
 {
-	OrcWarrior* instance = new OrcWarrior();
+	OrcWarrior* instance = new OrcWarrior(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-OrcWarrior::OrcWarrior() : Enemy::Enemy(
+OrcWarrior::OrcWarrior(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Forest_OrcWarrior_Animations,
 	false,
 	Size(256.0f, 228.0f),

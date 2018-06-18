@@ -15,6 +15,7 @@ public:
 
 protected:
 	Entity(
+		ValueMap* initProperties,
 		std::string scmlResource,
 		bool isFlying,
 		Size size = Size(256.0f, 256.0f),

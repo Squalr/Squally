@@ -2,16 +2,16 @@
 
 const std::string VoidDemon::KeyEnemyVoidDemon = "void_demon";
 
-VoidDemon* VoidDemon::create()
+VoidDemon* VoidDemon::deserialize(ValueMap* initProperties)
 {
-	VoidDemon* instance = new VoidDemon();
+	VoidDemon* instance = new VoidDemon(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-VoidDemon::VoidDemon() : Enemy::Enemy(
+VoidDemon::VoidDemon(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Obelisk_VoidDemon_Animations,
 	false,
 	Size(338.0f, 342.0f),

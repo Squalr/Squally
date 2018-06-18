@@ -9,11 +9,11 @@ using namespace cocos2d;
 class Cyclops : public Enemy
 {
 public:
-	static Cyclops * create();
+	static Cyclops * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyCyclops;
 
 private:
-	Cyclops();
+	Cyclops(ValueMap* initProperties);
 	~Cyclops();
 };

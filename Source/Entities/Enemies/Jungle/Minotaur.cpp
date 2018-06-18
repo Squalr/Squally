@@ -2,16 +2,16 @@
 
 const std::string Minotaur::KeyEnemyMinotaur = "minotaur";
 
-Minotaur* Minotaur::create()
+Minotaur* Minotaur::deserialize(ValueMap* initProperties)
 {
-	Minotaur* instance = new Minotaur();
+	Minotaur* instance = new Minotaur(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Minotaur::Minotaur() : Enemy::Enemy(
+Minotaur::Minotaur(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Jungle_Minotaur_Animations,
 	false,
 	Size(278.0f, 288.0f),

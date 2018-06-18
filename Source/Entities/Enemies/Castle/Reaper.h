@@ -9,11 +9,11 @@ using namespace cocos2d;
 class Reaper : public Enemy
 {
 public:
-	static Reaper * create();
+	static Reaper * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyReaper;
 
 private:
-	Reaper();
+	Reaper(ValueMap* initProperties);
 	~Reaper();
 };

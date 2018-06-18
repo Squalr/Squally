@@ -2,16 +2,16 @@
 
 const std::string Harpy::KeyEnemyHarpy = "harpy";
 
-Harpy* Harpy::create()
+Harpy* Harpy::deserialize(ValueMap* initProperties)
 {
-	Harpy* instance = new Harpy();
+	Harpy* instance = new Harpy(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Harpy::Harpy() : Enemy::Enemy(
+Harpy::Harpy(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Castle_Harpy_Animations,
 	false,
 	Size(172.0f, 256.0f),

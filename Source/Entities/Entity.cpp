@@ -1,6 +1,6 @@
 #include "Entity.h"
 
-Entity::Entity(std::string scmlResource, bool isFlying, Size size, float scale, Vec2 collisionOffset) : HackableObject(nullptr)
+Entity::Entity(ValueMap* initProperties, std::string scmlResource, bool isFlying, Size size, float scale, Vec2 collisionOffset) : HackableObject(initProperties)
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;

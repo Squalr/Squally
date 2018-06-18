@@ -9,11 +9,11 @@ using namespace cocos2d;
 class SkeletonCleaver : public Enemy
 {
 public:
-	static SkeletonCleaver * create();
+	static SkeletonCleaver * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemySkeletonCleaver;
 
 private:
-	SkeletonCleaver();
+	SkeletonCleaver(ValueMap* initProperties);
 	~SkeletonCleaver();
 };

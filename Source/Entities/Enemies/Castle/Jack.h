@@ -9,11 +9,11 @@ using namespace cocos2d;
 class Jack : public Enemy
 {
 public:
-	static Jack * create();
+	static Jack * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyJack;
 
 private:
-	Jack();
+	Jack(ValueMap* initProperties);
 	~Jack();
 };

@@ -2,16 +2,16 @@
 
 const std::string DemonGhost::KeyEnemyDemonGhost = "demon_ghost";
 
-DemonGhost* DemonGhost::create()
+DemonGhost* DemonGhost::deserialize(ValueMap* initProperties)
 {
-	DemonGhost* instance = new DemonGhost();
+	DemonGhost* instance = new DemonGhost(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DemonGhost::DemonGhost() : Enemy::Enemy(
+DemonGhost::DemonGhost(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Volcano_DemonGhost_Animations,
 	false,
 	Size(256.0f, 320.0f),

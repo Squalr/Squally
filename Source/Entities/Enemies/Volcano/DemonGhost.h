@@ -9,11 +9,11 @@ using namespace cocos2d;
 class DemonGhost : public Enemy
 {
 public:
-	static DemonGhost * create();
+	static DemonGhost * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyDemonGhost;
 
 private:
-	DemonGhost();
+	DemonGhost(ValueMap* initProperties);
 	~DemonGhost();
 };

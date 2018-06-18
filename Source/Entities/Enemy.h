@@ -11,7 +11,7 @@ using namespace cocos2d;
 class Enemy : public Entity
 {
 protected:
-	Enemy(
+	Enemy(ValueMap* initProperties,
 		std::string scmlResource,
 		bool isFlying,
 		Size size = Size(256.0f, 256.0f),

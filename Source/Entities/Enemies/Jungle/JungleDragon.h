@@ -9,11 +9,11 @@ using namespace cocos2d;
 class JungleDragon : public Enemy
 {
 public:
-	static JungleDragon * create();
+	static JungleDragon * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyJungleDragon;
 
 private:
-	JungleDragon();
+	JungleDragon(ValueMap* initProperties);
 	~JungleDragon();
 };

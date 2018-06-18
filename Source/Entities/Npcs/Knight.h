@@ -11,7 +11,7 @@ using namespace cocos2d;
 class Knight : public NpcBase
 {
 public:
-	static Knight * create();
+	static Knight * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyNpcKnight;
 
@@ -19,7 +19,7 @@ protected:
 	void initializeCardData() override;
 
 private:
-	Knight();
+	Knight(ValueMap* initProperties);
 	~Knight();
 
 	void update(float) override;

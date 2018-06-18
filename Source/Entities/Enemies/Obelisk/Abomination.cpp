@@ -2,16 +2,16 @@
 
 const std::string Abomination::KeyEnemyAbomination = "abomination";
 
-Abomination* Abomination::create()
+Abomination* Abomination::deserialize(ValueMap* initProperties)
 {
-	Abomination* instance = new Abomination();
+	Abomination* instance = new Abomination(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Abomination::Abomination() : Enemy::Enemy(
+Abomination::Abomination(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Obelisk_Abomination_Animations,
 	false,
 	Size(296.0f, 356.0f),

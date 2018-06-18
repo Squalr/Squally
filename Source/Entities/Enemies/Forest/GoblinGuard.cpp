@@ -2,16 +2,16 @@
 
 const std::string GoblinGuard::KeyEnemyGoblinGuard = "goblin_guard";
 
-GoblinGuard* GoblinGuard::create()
+GoblinGuard* GoblinGuard::deserialize(ValueMap* initProperties)
 {
-	GoblinGuard* instance = new GoblinGuard();
+	GoblinGuard* instance = new GoblinGuard(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-GoblinGuard::GoblinGuard() : Enemy::Enemy(
+GoblinGuard::GoblinGuard(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Forest_GoblinGuard_Animations,
 	false,
 	Size(472.0f, 768.0f),

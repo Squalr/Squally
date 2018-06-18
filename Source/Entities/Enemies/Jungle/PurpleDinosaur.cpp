@@ -2,16 +2,16 @@
 
 const std::string PurpleDinosaur::KeyEnemyPurpleDinosaur = "purple_dinosaur";
 
-PurpleDinosaur* PurpleDinosaur::create()
+PurpleDinosaur* PurpleDinosaur::deserialize(ValueMap* initProperties)
 {
-	PurpleDinosaur* instance = new PurpleDinosaur();
+	PurpleDinosaur* instance = new PurpleDinosaur(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PurpleDinosaur::PurpleDinosaur() : Enemy::Enemy(
+PurpleDinosaur::PurpleDinosaur(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Jungle_PurpleDinosaur_Animations,
 	false,
 	Size(412.0f, 388.0f),

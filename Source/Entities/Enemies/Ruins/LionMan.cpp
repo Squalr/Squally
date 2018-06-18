@@ -2,16 +2,16 @@
 
 const std::string LionMan::KeyEnemyLionMan = "lion_man";
 
-LionMan* LionMan::create()
+LionMan* LionMan::deserialize(ValueMap* initProperties)
 {
-	LionMan* instance = new LionMan();
+	LionMan* instance = new LionMan(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-LionMan::LionMan() : Enemy::Enemy(
+LionMan::LionMan(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Ruins_LionMan_Animations,
 	false,
 	Size(256.0f, 326.0f),

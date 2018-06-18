@@ -2,16 +2,16 @@
 
 const std::string MechGolem::KeyEnemyMechGolem = "mech_golem";
 
-MechGolem* MechGolem::create()
+MechGolem* MechGolem::deserialize(ValueMap* initProperties)
 {
-	MechGolem* instance = new MechGolem();
+	MechGolem* instance = new MechGolem(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MechGolem::MechGolem() : Enemy::Enemy(
+MechGolem::MechGolem(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Mech_MechGolem_Animations,
 	false,
 	Size(640.0f, 720.0f),

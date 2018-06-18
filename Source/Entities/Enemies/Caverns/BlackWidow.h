@@ -9,11 +9,11 @@ using namespace cocos2d;
 class BlackWidow : public Enemy
 {
 public:
-	static BlackWidow * create();
+	static BlackWidow * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyBlackWidow;
 
 private:
-	BlackWidow();
+	BlackWidow(ValueMap* initProperties);
 	~BlackWidow();
 };

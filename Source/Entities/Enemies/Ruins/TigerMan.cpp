@@ -2,16 +2,16 @@
 
 const std::string TigerMan::KeyEnemyTigerMan = "tiger_man";
 
-TigerMan* TigerMan::create()
+TigerMan* TigerMan::deserialize(ValueMap* initProperties)
 {
-	TigerMan* instance = new TigerMan();
+	TigerMan* instance = new TigerMan(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TigerMan::TigerMan() : Enemy::Enemy(
+TigerMan::TigerMan(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Ruins_TigerMan_Animations,
 	false,
 	Size(256.0f, 308.0f),

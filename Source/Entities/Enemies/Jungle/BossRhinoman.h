@@ -9,11 +9,11 @@ using namespace cocos2d;
 class BossRhinoman : public Enemy
 {
 public:
-	static BossRhinoman * create();
+	static BossRhinoman * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyBossRhinoman;
 
 private:
-	BossRhinoman();
+	BossRhinoman(ValueMap* initProperties);
 	~BossRhinoman();
 };

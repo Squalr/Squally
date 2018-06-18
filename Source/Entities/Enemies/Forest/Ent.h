@@ -9,11 +9,11 @@ using namespace cocos2d;
 class Ent : public Enemy
 {
 public:
-	static Ent * create();
+	static Ent * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyEnt;
 
 private:
-	Ent();
+	Ent(ValueMap* initProperties);
 	~Ent();
 };

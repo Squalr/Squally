@@ -2,16 +2,16 @@
 
 const std::string GoblinSwordsman::KeyEnemyGoblinSwordsman = "goblin_swordsman";
 
-GoblinSwordsman* GoblinSwordsman::create()
+GoblinSwordsman* GoblinSwordsman::deserialize(ValueMap* initProperties)
 {
-	GoblinSwordsman* instance = new GoblinSwordsman();
+	GoblinSwordsman* instance = new GoblinSwordsman(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-GoblinSwordsman::GoblinSwordsman() : Enemy::Enemy(
+GoblinSwordsman::GoblinSwordsman(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Jungle_GoblinSwordsman_Animations,
 	false,
 	Size(312.0f, 512.0f),

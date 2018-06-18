@@ -10,7 +10,7 @@ const std::string SerializableObject::KeyRotation = "rotation";
 
 SerializableObject::SerializableObject(ValueMap* initProperties)
 {
-	this->properties = initProperties;
+	this->properties = new ValueMap(*initProperties);
 }
 
 SerializableObject::~SerializableObject()

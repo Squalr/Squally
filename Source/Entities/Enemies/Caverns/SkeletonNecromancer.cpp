@@ -2,16 +2,16 @@
 
 const std::string SkeletonNecromancer::KeyEnemySkeletonNecromancer = "skeleton_necromancer";
 
-SkeletonNecromancer* SkeletonNecromancer::create()
+SkeletonNecromancer* SkeletonNecromancer::deserialize(ValueMap* initProperties)
 {
-	SkeletonNecromancer* instance = new SkeletonNecromancer();
+	SkeletonNecromancer* instance = new SkeletonNecromancer(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SkeletonNecromancer::SkeletonNecromancer() : Enemy::Enemy(
+SkeletonNecromancer::SkeletonNecromancer(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Caverns_SkeletonNecromancer_Animations,
 	false,
 	Size(128.0f, 228.0f),

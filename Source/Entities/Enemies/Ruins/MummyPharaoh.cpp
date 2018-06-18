@@ -2,16 +2,16 @@
 
 const std::string MummyPharaoh::KeyEnemyMummyPharaoh = "mummy_pharaoh";
 
-MummyPharaoh* MummyPharaoh::create()
+MummyPharaoh* MummyPharaoh::deserialize(ValueMap* initProperties)
 {
-	MummyPharaoh* instance = new MummyPharaoh();
+	MummyPharaoh* instance = new MummyPharaoh(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MummyPharaoh::MummyPharaoh() : Enemy::Enemy(
+MummyPharaoh::MummyPharaoh(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Ruins_MummyPharaoh_Animations,
 	false,
 	Size(324.0f, 316.0f),

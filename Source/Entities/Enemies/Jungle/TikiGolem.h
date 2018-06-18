@@ -9,11 +9,11 @@ using namespace cocos2d;
 class TikiGolem : public Enemy
 {
 public:
-	static TikiGolem * create();
+	static TikiGolem * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyTikiGolem;
 
 private:
-	TikiGolem();
+	TikiGolem(ValueMap* initProperties);
 	~TikiGolem();
 };

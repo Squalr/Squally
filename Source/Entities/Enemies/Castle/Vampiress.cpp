@@ -2,16 +2,16 @@
 
 const std::string Vampiress::KeyEnemyVampiress = "vampiress";
 
-Vampiress* Vampiress::create()
+Vampiress* Vampiress::deserialize(ValueMap* initProperties)
 {
-	Vampiress* instance = new Vampiress();
+	Vampiress* instance = new Vampiress(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Vampiress::Vampiress() : Enemy::Enemy(
+Vampiress::Vampiress(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Castle_Vampiress_Animations,
 	false,
 	Size(96.0f, 236.0f),

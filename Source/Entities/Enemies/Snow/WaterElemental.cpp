@@ -2,16 +2,16 @@
 
 const std::string WaterElemental::KeyEnemyWaterElemental = "water_elemental";
 
-WaterElemental* WaterElemental::create()
+WaterElemental* WaterElemental::deserialize(ValueMap* initProperties)
 {
-	WaterElemental* instance = new WaterElemental();
+	WaterElemental* instance = new WaterElemental(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-WaterElemental::WaterElemental() : Enemy::Enemy(
+WaterElemental::WaterElemental(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Snow_WaterElemental_Animations,
 	false,
 	Size(820.0f, 1480.0f),

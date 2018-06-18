@@ -2,16 +2,16 @@
 
 const std::string BossEvilEye::KeyEnemyBossEvilEye = "boss_evil_eye";
 
-BossEvilEye* BossEvilEye::create()
+BossEvilEye* BossEvilEye::deserialize(ValueMap* initProperties)
 {
-	BossEvilEye* instance = new BossEvilEye();
+	BossEvilEye* instance = new BossEvilEye(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BossEvilEye::BossEvilEye() : Enemy::Enemy(
+BossEvilEye::BossEvilEye(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Mech_BossEvilEye_Animations,
 	false,
 	Size(720.0f, 840.0f),

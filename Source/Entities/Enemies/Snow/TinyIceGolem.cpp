@@ -2,16 +2,16 @@
 
 const std::string TinyIceGolem::KeyEnemyTinyIceGolem = "tiny_ice_golem";
 
-TinyIceGolem* TinyIceGolem::create()
+TinyIceGolem* TinyIceGolem::deserialize(ValueMap* initProperties)
 {
-	TinyIceGolem* instance = new TinyIceGolem();
+	TinyIceGolem* instance = new TinyIceGolem(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TinyIceGolem::TinyIceGolem() : Enemy::Enemy(
+TinyIceGolem::TinyIceGolem(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Snow_TinyIceGolem_Animations,
 	false,
 	Size(980.0f, 1360.0f),

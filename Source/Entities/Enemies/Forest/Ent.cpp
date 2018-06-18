@@ -2,16 +2,16 @@
 
 const std::string Ent::KeyEnemyEnt = "ent";
 
-Ent* Ent::create()
+Ent* Ent::deserialize(ValueMap* initProperties)
 {
-	Ent* instance = new Ent();
+	Ent* instance = new Ent(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Ent::Ent() : Enemy::Enemy(
+Ent::Ent(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Forest_Ent_Animations,
 	false,
 	Size(512.0f, 960.0f),

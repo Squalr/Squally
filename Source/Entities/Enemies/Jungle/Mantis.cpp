@@ -2,16 +2,16 @@
 
 const std::string Mantis::KeyEnemyMantis = "mantis";
 
-Mantis* Mantis::create()
+Mantis* Mantis::deserialize(ValueMap* initProperties)
 {
-	Mantis* instance = new Mantis();
+	Mantis* instance = new Mantis(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Mantis::Mantis() : Enemy::Enemy(
+Mantis::Mantis(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Jungle_Mantis_Animations,
 	false,
 	Size(320.0f, 384.0f),

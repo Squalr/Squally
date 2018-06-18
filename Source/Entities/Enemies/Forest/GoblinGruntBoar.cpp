@@ -2,16 +2,16 @@
 
 const std::string GoblinGruntBoar::KeyEnemyGoblinGruntBoar = "goblin_grunt_boar";
 
-GoblinGruntBoar* GoblinGruntBoar::create()
+GoblinGruntBoar* GoblinGruntBoar::deserialize(ValueMap* initProperties)
 {
-	GoblinGruntBoar* instance = new GoblinGruntBoar();
+	GoblinGruntBoar* instance = new GoblinGruntBoar(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-GoblinGruntBoar::GoblinGruntBoar() : Enemy::Enemy(
+GoblinGruntBoar::GoblinGruntBoar(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Forest_GoblinGruntBoar_Animations,
 	false,
 	Size(128.0f, 296.0f),

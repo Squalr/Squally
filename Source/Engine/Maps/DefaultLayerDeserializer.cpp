@@ -72,7 +72,7 @@ void DefaultLayerDeserializer::onDeserializationRequest(LayerDeserializationRequ
 		}
 	}
 
-	SerializableLayer* instance = SerializableLayer::create(new ValueMap(properties), name, deserializedObjects);
+	SerializableLayer* instance = SerializableLayer::create(&properties, name, deserializedObjects);
 
 	args->callback(instance, args->objectGroup->layerIndex);
 }

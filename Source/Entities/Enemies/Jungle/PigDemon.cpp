@@ -2,16 +2,16 @@
 
 const std::string PigDemon::KeyEnemyPigDemon = "pig_demon";
 
-PigDemon* PigDemon::create()
+PigDemon* PigDemon::deserialize(ValueMap* initProperties)
 {
-	PigDemon* instance = new PigDemon();
+	PigDemon* instance = new PigDemon(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PigDemon::PigDemon() : Enemy::Enemy(
+PigDemon::PigDemon(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Jungle_PigDemon_Animations,
 	false,
 	Size(256.0f, 240.0f),

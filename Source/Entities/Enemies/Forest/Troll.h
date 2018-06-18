@@ -9,11 +9,11 @@ using namespace cocos2d;
 class Troll : public Enemy
 {
 public:
-	static Troll * create();
+	static Troll * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyTroll;
 
 private:
-	Troll();
+	Troll(ValueMap* initProperties);
 	~Troll();
 };

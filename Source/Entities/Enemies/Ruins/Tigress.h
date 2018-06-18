@@ -9,11 +9,11 @@ using namespace cocos2d;
 class Tigress : public Enemy
 {
 public:
-	static Tigress * create();
+	static Tigress * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyTigress;
 
 private:
-	Tigress();
+	Tigress(ValueMap* initProperties);
 	~Tigress();
 };

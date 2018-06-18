@@ -2,16 +2,16 @@
 
 const std::string Tigress::KeyEnemyTigress = "tigress";
 
-Tigress* Tigress::create()
+Tigress* Tigress::deserialize(ValueMap* initProperties)
 {
-	Tigress* instance = new Tigress();
+	Tigress* instance = new Tigress(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Tigress::Tigress() : Enemy::Enemy(
+Tigress::Tigress(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Ruins_Tigress_Animations,
 	false,
 	Size(128.0f, 256.0f),

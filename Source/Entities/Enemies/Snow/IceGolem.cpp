@@ -2,16 +2,16 @@
 
 const std::string IceGolem::KeyEnemyIceGolem = "ice_golem";
 
-IceGolem* IceGolem::create()
+IceGolem* IceGolem::deserialize(ValueMap* initProperties)
 {
-	IceGolem* instance = new IceGolem();
+	IceGolem* instance = new IceGolem(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-IceGolem::IceGolem() : Enemy::Enemy(
+IceGolem::IceGolem(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Snow_IceGolem_Animations,
 	false,
 	Size(1680.0f, 996.0f),

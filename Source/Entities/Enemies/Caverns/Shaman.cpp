@@ -2,16 +2,16 @@
 
 const std::string Shaman::KeyEnemyShaman = "shaman";
 
-Shaman* Shaman::create()
+Shaman* Shaman::deserialize(ValueMap* initProperties)
 {
-	Shaman* instance = new Shaman();
+	Shaman* instance = new Shaman(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Shaman::Shaman() : Enemy::Enemy(
+Shaman::Shaman(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Caverns_Shaman_Animations,
 	false,
 	Size(256.0f, 288.0f),

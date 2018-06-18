@@ -2,16 +2,16 @@
 
 const std::string Medusa::KeyEnemyMedusa = "medusa";
 
-Medusa* Medusa::create()
+Medusa* Medusa::deserialize(ValueMap* initProperties)
 {
-	Medusa* instance = new Medusa();
+	Medusa* instance = new Medusa(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Medusa::Medusa() : Enemy::Enemy(
+Medusa::Medusa(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Ruins_Medusa_Animations,
 	false,
 	Size(224.0f, 304.0f),

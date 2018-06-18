@@ -2,16 +2,16 @@
 
 const std::string OrcGrunt::KeyEnemyOrcGrunt = "orc_grunt";
 
-OrcGrunt* OrcGrunt::create()
+OrcGrunt* OrcGrunt::deserialize(ValueMap* initProperties)
 {
-	OrcGrunt* instance = new OrcGrunt();
+	OrcGrunt* instance = new OrcGrunt(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-OrcGrunt::OrcGrunt() : Enemy::Enemy(
+OrcGrunt::OrcGrunt(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Forest_OrcGrunt_Animations,
 	false,
 	Size(256.0f, 218.0f),

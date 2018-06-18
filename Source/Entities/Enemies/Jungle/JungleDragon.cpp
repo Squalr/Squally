@@ -2,16 +2,16 @@
 
 const std::string JungleDragon::KeyEnemyJungleDragon = "jungle_dragon";
 
-JungleDragon* JungleDragon::create()
+JungleDragon* JungleDragon::deserialize(ValueMap* initProperties)
 {
-	JungleDragon* instance = new JungleDragon();
+	JungleDragon* instance = new JungleDragon(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-JungleDragon::JungleDragon() : Enemy::Enemy(
+JungleDragon::JungleDragon(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Jungle_JungleDragon_Animations,
 	false,
 	Size(640.0f, 356.0f),

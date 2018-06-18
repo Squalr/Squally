@@ -9,11 +9,11 @@ using namespace cocos2d;
 class YetiWarrior : public Enemy
 {
 public:
-	static YetiWarrior * create();
+	static YetiWarrior * deserialize(ValueMap* initProperties);
 
 	static const std::string KeyEnemyYetiWarrior;
 
 private:
-	YetiWarrior();
+	YetiWarrior(ValueMap* initProperties);
 	~YetiWarrior();
 };

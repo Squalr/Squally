@@ -2,16 +2,16 @@
 
 const std::string BlackWidow::KeyEnemyBlackWidow = "black_widow";
 
-BlackWidow* BlackWidow::create()
+BlackWidow* BlackWidow::deserialize(ValueMap* initProperties)
 {
-	BlackWidow* instance = new BlackWidow();
+	BlackWidow* instance = new BlackWidow(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BlackWidow::BlackWidow() : Enemy::Enemy(
+BlackWidow::BlackWidow(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Caverns_BlackWidow_Animation,
 	false,
 	Size(1280.0f, 920.0f),

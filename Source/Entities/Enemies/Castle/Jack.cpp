@@ -2,16 +2,16 @@
 
 const std::string Jack::KeyEnemyJack = "jack";
 
-Jack* Jack::create()
+Jack* Jack::deserialize(ValueMap* initProperties)
 {
-	Jack* instance = new Jack();
+	Jack* instance = new Jack(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Jack::Jack() : Enemy::Enemy(
+Jack::Jack(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Castle_Jack_Animations,
 	false,
 	Size(432.0f, 768.0f),

@@ -2,16 +2,16 @@
 
 const std::string EvilSnowman::KeyEnemyEvilSnowman = "evil_snowman";
 
-EvilSnowman* EvilSnowman::create()
+EvilSnowman* EvilSnowman::deserialize(ValueMap* initProperties)
 {
-	EvilSnowman* instance = new EvilSnowman();
+	EvilSnowman* instance = new EvilSnowman(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EvilSnowman::EvilSnowman() : Enemy::Enemy(
+EvilSnowman::EvilSnowman(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Snow_EvilSnowman_Animations,
 	false,
 	Size(420.0f, 420.0f),

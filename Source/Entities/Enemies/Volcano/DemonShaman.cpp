@@ -2,16 +2,16 @@
 
 const std::string DemonShaman::KeyEnemyDemonShaman = "demon_shaman";
 
-DemonShaman* DemonShaman::create()
+DemonShaman* DemonShaman::deserialize(ValueMap* initProperties)
 {
-	DemonShaman* instance = new DemonShaman();
+	DemonShaman* instance = new DemonShaman(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DemonShaman::DemonShaman() : Enemy::Enemy(
+DemonShaman::DemonShaman(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Volcano_DemonShaman_Animations,
 	false,
 	Size(212.0f, 280.0f),

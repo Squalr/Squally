@@ -2,16 +2,16 @@
 
 const std::string EarthElemental::KeyEnemyEarthElemental = "earth_elemental";
 
-EarthElemental* EarthElemental::create()
+EarthElemental* EarthElemental::deserialize(ValueMap* initProperties)
 {
-	EarthElemental* instance = new EarthElemental();
+	EarthElemental* instance = new EarthElemental(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EarthElemental::EarthElemental() : Enemy::Enemy(
+EarthElemental::EarthElemental(ValueMap* initProperties) : Enemy(initProperties,
 	Resources::Entities_Environment_Caverns_EarthElemental_Animations,
 	false,
 	Size(820.0f, 1480.0f),
