@@ -81,46 +81,54 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName, std::vect
 
 void SerializableMap::serialize()
 {
-	std::string content = "";
+	tinyxml2::XMLDocument* documentRoot = new (std::nothrow)tinyxml2::XMLDocument();
+	tinyxml2::XMLDeclaration* declaration = documentRoot->NewDeclaration(("xml version=" + StrUtils::quote("1.0") + "encoding=" + StrUtils::quote("UTF-8")).c_str());
+	documentRoot->LinkEndChild(declaration);
 
+	tinyxml2::XMLElement* mapElement = documentRoot->NewElement("map");
+	mapElement->SetAttribute("version", "1.0");
+	mapElement->SetAttribute("tiledversion", "1.0.3");
+	mapElement->SetAttribute("orientation", "orthogonal");
+	mapElement->SetAttribute("render-order", "right-down");
+	mapElement->SetAttribute("width", std::to_string((int)this->getMapUnitSize().width).c_str());
+	mapElement->SetAttribute("height", std::to_string((int)this->getMapUnitSize().height).c_str());
+	mapElement->SetAttribute("tilewidth", std::to_string((int)this->getMapTileSize().width).c_str());
+	mapElement->SetAttribute("tileheight", std::to_string((int)this->getMapTileSize().height).c_str());
+
+	tinyxml2::XMLElement* tileSetElement = documentRoot->NewElement("tileset");
+	tileSetElement->SetAttribute("firstgid", "1");
+	tileSetElement->SetAttribute("name", "TileMap");
+	tileSetElement->SetAttribute("tilewidth", std::to_string((int)this->getMapTileSize().width).c_str());
+	tileSetElement->SetAttribute("tileheight", std::to_string((int)this->getMapTileSize().height).c_str());
+	tileSetElement->SetAttribute("tilecount", std::to_string(1125).c_str()); // TODO
+	tileSetElement->SetAttribute("columns", std::to_string(45).c_str()); // TODO
+
+	tinyxml2::XMLElement* gridElement = documentRoot->NewElement("grid");
+	gridElement->SetAttribute("orientation", "orthogonal");
+	gridElement->SetAttribute("width", std::to_string(64).c_str()); // TODO
+	gridElement->SetAttribute("height", std::to_string(64).c_str()); // TODO
+	tileSetElement->LinkEndChild(gridElement);
+
+	tinyxml2::XMLElement* imageElement = documentRoot->NewElement("grid");
+	imageElement->SetAttribute("source", "../Tiles/TileMap.png"); // TODO: Use Resource:: variable, converted to a relative link
+	imageElement->SetAttribute("width", std::to_string(5760).c_str()); // TODO
+	imageElement->SetAttribute("height", std::to_string(3200).c_str()); // TODO
+	tileSetElement->LinkEndChild(imageElement);
+
+	mapElement->LinkEndChild(tileSetElement);
+
+	// Serialize all layers
 	for (auto it = this->serializableLayers->begin(); it != this->serializableLayers->end(); it++)
 	{
-		content += (*it)->serialize();
+		(*it)->serialize(documentRoot, mapElement);
 	}
 
-	std::string header = "<?xml version=" + StrUtils::quote("1.0") + " encoding=" + StrUtils::quote("UTF-8") + "?>" + std::string("\n");
-	std::string mapPrefix = "<map version=" + StrUtils::quote("1.0") +
-		" tiledversion=" + StrUtils::quote("1.0.3") + 
-		" orientation=" + StrUtils::quote("orthogonal") + " renderorder=" + StrUtils::quote("right-down") +
-		" width=" + StrUtils::quote(std::to_string((int)this->getMapUnitSize().width)) +
-		" height=" + StrUtils::quote(std::to_string((int)this->getMapUnitSize().height)) +
-		" tilewidth=" + StrUtils::quote(std::to_string((int)this->getMapTileSize().width)) + 
-		" tileheight=" + StrUtils::quote(std::to_string((int)this->getMapTileSize().height)) +
-		" nextobjectid=" + StrUtils::quote("365") + // TODO ugh
-		">" + std::string("\n");
-	std::string tilesetPrefix = "<tileset firstgid=" + StrUtils::quote("1") + 
-		" name=" + StrUtils::quote("TileMap") +
-		" tilewidth=" + StrUtils::quote(std::to_string((int)this->getMapTileSize().width)) +
-		" tileheight=" + StrUtils::quote(std::to_string((int)this->getMapTileSize().height)) +
-		" tilecount=" + StrUtils::quote(std::to_string(1125)) + // TODO ugh
-		" columns=" + StrUtils::quote(std::to_string(45)) + // TODO ugh
-		">" + std::string("\n");
-	std::string grid = "<grid orientation=" + StrUtils::quote("orthogonal") +
-		" width=" + StrUtils::quote(std::to_string(64)) + // TODO ugh
-		" height=" + StrUtils::quote(std::to_string(64)) + // TODO ugh
-		"/>" + std::string("\n");
-	std::string image = "<image source=" + StrUtils::quote("../Tiles/TileMap.png") +
-		" width=" + StrUtils::quote(std::to_string(5760)) + // TODO ugh
-		" height=" + StrUtils::quote(std::to_string(3200)) + // TODO ugh
-		"/>" + std::string("\n");
-	std::string tilesetSuffix = "</tileset>" + std::string("\n");
-	std::string mapSuffix = "</map>" + std::string("\n");
+	// TODO: count obj ids
+	mapElement->SetAttribute("nextobjectid", std::to_string(366).c_str());
 
-	std::string result = header + mapPrefix + tilesetPrefix + grid + image + tilesetSuffix + content + mapSuffix;
-	std::string filePath = CCFileUtils::sharedFileUtils()->fullPathForFilename(this->levelMapFileName);
-	std::ofstream file(filePath + ".dbg");
-	file << result;
-	file.close();
+	documentRoot->LinkEndChild(mapElement);
+
+	bool result = tinyxml2::XML_SUCCESS == documentRoot->SaveFile(CCFileUtils::sharedFileUtils()->fullPathForFilename(this->levelMapFileName + ".dbg").c_str());
 }
 
 std::string SerializableMap::getMapFileName()
