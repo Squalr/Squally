@@ -1,6 +1,8 @@
 #include "SerializableLayer.h"
 
 const std::string SerializableLayer::KeyType = "type";
+const std::string SerializableLayer::KeyPropertyName = "name";
+const std::string SerializableLayer::KeyPropertyValue = "value";
 
 SerializableLayer* SerializableLayer::create(ValueMap* initProperties, std::string name, std::vector<SerializableObject*>* objects)
 {
@@ -22,7 +24,7 @@ SerializableLayer::SerializableLayer(ValueMap* initProperties, std::string name,
 {
 	this->layerName = name;
 	this->serializableObjects = objects;
-	this->properties = initProperties;
+	this->properties = new ValueMap(*initProperties);
 
 	if (objects != nullptr)
 	{
@@ -40,7 +42,24 @@ SerializableLayer::~SerializableLayer()
 void SerializableLayer::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement)
 {
 	tinyxml2::XMLElement* objectGroupElement = documentRoot->NewElement("objectgroup");
-	objectGroupElement->SetAttribute("name", this->layerName.c_str());
+	objectGroupElement->SetAttribute(SerializableLayer::KeyPropertyName.c_str(), this->layerName.c_str());
+
+	if (this->properties != nullptr)
+	{
+		tinyxml2::XMLElement* propertiesElement = documentRoot->NewElement("properties");
+
+		for (auto it = this->properties->begin(); it != this->properties->end(); it++)
+		{
+			tinyxml2::XMLElement* propertyElement = documentRoot->NewElement("property");
+
+			propertyElement->SetAttribute(SerializableLayer::KeyPropertyName.c_str(), it->first.c_str());
+			propertyElement->SetAttribute(SerializableLayer::KeyPropertyValue.c_str(), it->second.asString().c_str());
+
+			propertiesElement->InsertEndChild(propertyElement);
+		}
+
+		objectGroupElement->InsertEndChild(propertiesElement);
+	}
 
 	if (serializableObjects != nullptr)
 	{

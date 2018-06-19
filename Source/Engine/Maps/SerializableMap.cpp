@@ -82,14 +82,14 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName, std::vect
 void SerializableMap::serialize()
 {
 	tinyxml2::XMLDocument* documentRoot = new (std::nothrow)tinyxml2::XMLDocument();
-	tinyxml2::XMLDeclaration* declaration = documentRoot->NewDeclaration(("xml version=" + StrUtils::quote("1.0") + "encoding=" + StrUtils::quote("UTF-8")).c_str());
+	tinyxml2::XMLDeclaration* declaration = documentRoot->NewDeclaration(("xml version=" + StrUtils::quote("1.0") + " encoding=" + StrUtils::quote("UTF-8")).c_str());
 	documentRoot->LinkEndChild(declaration);
 
 	tinyxml2::XMLElement* mapElement = documentRoot->NewElement("map");
 	mapElement->SetAttribute("version", "1.0");
 	mapElement->SetAttribute("tiledversion", "1.0.3");
 	mapElement->SetAttribute("orientation", "orthogonal");
-	mapElement->SetAttribute("render-order", "right-down");
+	mapElement->SetAttribute("renderorder", "right-down");
 	mapElement->SetAttribute("width", std::to_string((int)this->getMapUnitSize().width).c_str());
 	mapElement->SetAttribute("height", std::to_string((int)this->getMapUnitSize().height).c_str());
 	mapElement->SetAttribute("tilewidth", std::to_string((int)this->getMapTileSize().width).c_str());
@@ -109,7 +109,7 @@ void SerializableMap::serialize()
 	gridElement->SetAttribute("height", std::to_string(64).c_str()); // TODO
 	tileSetElement->LinkEndChild(gridElement);
 
-	tinyxml2::XMLElement* imageElement = documentRoot->NewElement("grid");
+	tinyxml2::XMLElement* imageElement = documentRoot->NewElement("image");
 	imageElement->SetAttribute("source", "../Tiles/TileMap.png"); // TODO: Use Resource:: variable, converted to a relative link
 	imageElement->SetAttribute("width", std::to_string(5760).c_str()); // TODO
 	imageElement->SetAttribute("height", std::to_string(3200).c_str()); // TODO

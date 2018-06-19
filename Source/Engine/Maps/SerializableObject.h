@@ -19,6 +19,11 @@ public:
 	static const std::string KeyXPosition;
 	static const std::string KeyYPosition;
 	static const std::string KeyRotation;
+	static const std::string KeyPoints;
+
+	static const std::string KeyPropertyName;
+	static const std::string KeyPropertyType;
+	static const std::string KeyPropertyValue;
 
 protected:
 	SerializableObject(ValueMap* initProperties);
@@ -27,5 +32,8 @@ protected:
 	ValueMap* properties;
 
 private:
-	void deserializeProperty(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* propertyElement, Value value);
+	void serializeProperties(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement);
+	bool isPropertyObjectProperty(std::string propertyName);
+	bool containsObjectProperties();
+	bool containsGeneralProperties();
 };
