@@ -15,6 +15,8 @@ public:
 	virtual void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement);
 
 	static const std::string KeyType;
+	static const std::string KeyPropertyName;
+	static const std::string KeyPropertyValue;
 
 protected:
 	SerializableLayer(ValueMap* initProperties, std::string name, std::vector<SerializableObject*>* objects);
