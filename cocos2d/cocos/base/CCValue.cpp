@@ -714,12 +714,22 @@ std::string Value::asString() const
             ret << _field.unsignedVal;
             break;
         case Type::FLOAT:
-            ret << std::fixed << std::setprecision( 7 )<< _field.floatVal;
+		{
+            std::string floatStr = std::to_string(_field.floatVal);
+			floatStr.erase(floatStr.find_last_not_of('0') + 1, std::string::npos);
+			floatStr.erase(floatStr.find_last_not_of('.') + 1, std::string::npos);
+			ret << floatStr;
             break;
-        case Type::DOUBLE:
-            ret << std::fixed << std::setprecision( 16 ) << _field.doubleVal;
-            break;
-        case Type::BOOLEAN:
+		}
+		case Type::DOUBLE:
+		{
+			std::string doubleStr = std::to_string(_field.doubleVal);
+			doubleStr.erase(doubleStr.find_last_not_of('0') + 1, std::string::npos);
+			doubleStr.erase(doubleStr.find_last_not_of('.') + 1, std::string::npos);
+			ret << doubleStr;
+			break;
+		}
+		case Type::BOOLEAN:
             ret << (_field.boolVal ? "true" : "false");
             break;
         default:
