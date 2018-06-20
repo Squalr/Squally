@@ -30,7 +30,7 @@
 #include "cereal/access.hpp"
 #include "cereal/types/common.hpp"
 #include "cereal/types/string.hpp"
-#include "cereal/types/unordered_map.hpp"
+#include "cereal/types/map.hpp"
 #include "cereal/types/vector.hpp"
 #include "cereal/types/memory.hpp"
 #include "cereal/archives/binary.hpp"
@@ -38,7 +38,7 @@
 #include "base/ccMacros.h"
 #include <string>
 #include <vector>
-#include <unordered_map>
+#include <map>
 
 /**
  * @addtogroup base
@@ -50,8 +50,8 @@ NS_CC_BEGIN
 class Value;
 
 typedef std::vector<Value> ValueVector;
-typedef std::unordered_map<std::string, Value> ValueMap;
-typedef std::unordered_map<int, Value> ValueMapIntKey;
+typedef std::map<std::string, Value> ValueMap;
+typedef std::map<int, Value> ValueMapIntKey;
 
 CC_DLL extern const ValueVector ValueVectorNull;
 CC_DLL extern const ValueMap ValueMapNull;
