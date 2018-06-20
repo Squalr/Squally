@@ -12,14 +12,17 @@ class SerializableObject : public Node
 public:
 	void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement);
 
-	static const std::string KeyType;
+	static const std::string KeyId;
 	static const std::string KeyName;
+	static const std::string KeyPoints;
+	static const std::string KeyRotation;
+	static const std::string KeyType;
 	static const std::string KeyWidth;
 	static const std::string KeyHeight;
 	static const std::string KeyXPosition;
 	static const std::string KeyYPosition;
-	static const std::string KeyRotation;
-	static const std::string KeyPoints;
+
+	static const std::vector<std::string> AttributeKeys;
 
 	static const std::string KeyPropertyName;
 	static const std::string KeyPropertyType;
@@ -33,7 +36,7 @@ protected:
 
 private:
 	void serializeProperties(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement);
-	bool isPropertyObjectProperty(std::string propertyName);
-	bool containsObjectProperties();
-	bool containsGeneralProperties();
+	bool isPropertyAttribute(std::string propertyName);
+	bool containsAttributes();
+	bool containsProperties();
 };

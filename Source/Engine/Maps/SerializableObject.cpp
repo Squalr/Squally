@@ -1,5 +1,6 @@
 #include "SerializableObject.h"
 
+const std::string SerializableObject::KeyId = "id";
 const std::string SerializableObject::KeyType = "type";
 const std::string SerializableObject::KeyName = "name";
 const std::string SerializableObject::KeyWidth = "width";
@@ -8,6 +9,18 @@ const std::string SerializableObject::KeyXPosition = "x";
 const std::string SerializableObject::KeyYPosition = "y";
 const std::string SerializableObject::KeyRotation = "rotation";
 const std::string SerializableObject::KeyPoints = "points";
+
+const std::vector<std::string> SerializableObject::AttributeKeys =
+{
+	SerializableObject::KeyId,
+	SerializableObject::KeyName,
+	SerializableObject::KeyType,
+	SerializableObject::KeyXPosition,
+	SerializableObject::KeyYPosition,
+	SerializableObject::KeyWidth,
+	SerializableObject::KeyHeight,
+	SerializableObject::KeyRotation,
+};
 
 const std::string SerializableObject::KeyPropertyName = "name";
 const std::string SerializableObject::KeyPropertyType = "type";
@@ -28,43 +41,16 @@ SerializableObject::~SerializableObject()
 
 void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement)
 {
-	if (this->containsObjectProperties())
+	if (this->containsAttributes())
 	{
 		tinyxml2::XMLElement* objectElement = documentRoot->NewElement("object");
 
-		if (GameUtils::keyExists(this->properties, SerializableObject::KeyType))
+		for (auto it = SerializableObject::AttributeKeys.begin(); it != SerializableObject::AttributeKeys.end(); it++)
 		{
-			objectElement->SetAttribute(SerializableObject::KeyType.c_str(), this->properties->at(SerializableObject::KeyType).asString().c_str());
-		}
-
-		if (GameUtils::keyExists(this->properties, SerializableObject::KeyName))
-		{
-			objectElement->SetAttribute(SerializableObject::KeyName.c_str(), this->properties->at(SerializableObject::KeyName).asString().c_str());
-		}
-
-		if (GameUtils::keyExists(this->properties, SerializableObject::KeyWidth))
-		{
-			objectElement->SetAttribute(SerializableObject::KeyWidth.c_str(), this->properties->at(SerializableObject::KeyWidth).asString().c_str());
-		}
-
-		if (GameUtils::keyExists(this->properties, SerializableObject::KeyHeight))
-		{
-			objectElement->SetAttribute(SerializableObject::KeyHeight.c_str(), this->properties->at(SerializableObject::KeyHeight).asString().c_str());
-		}
-
-		if (GameUtils::keyExists(this->properties, SerializableObject::KeyXPosition))
-		{
-			objectElement->SetAttribute(SerializableObject::KeyXPosition.c_str(), this->properties->at(SerializableObject::KeyXPosition).asString().c_str());
-		}
-
-		if (GameUtils::keyExists(this->properties, SerializableObject::KeyYPosition))
-		{
-			objectElement->SetAttribute(SerializableObject::KeyYPosition.c_str(), this->properties->at(SerializableObject::KeyYPosition).asString().c_str());
-		}
-
-		if (GameUtils::keyExists(this->properties, SerializableObject::KeyRotation))
-		{
-			objectElement->SetAttribute(SerializableObject::KeyRotation.c_str(), this->properties->at(SerializableObject::KeyRotation).asString().c_str());
+			if (GameUtils::keyExists(this->properties, *it))
+			{
+				objectElement->SetAttribute((*it).c_str(), this->properties->at(*it).asString().c_str());
+			}
 		}
 
 		if (GameUtils::keyExists(this->properties, SerializableObject::KeyPoints))
@@ -89,21 +75,21 @@ void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2
 		}
 
 		parentElement->LinkEndChild(objectElement);
-	}
 
-	// Append additional properties
-	SerializableObject::serializeProperties(documentRoot, parentElement);
+		// Append additional properties
+		SerializableObject::serializeProperties(documentRoot, objectElement);
+	}
 }
 
 void SerializableObject::serializeProperties(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement)
 {
-	if (SerializableObject::containsGeneralProperties())
+	if (SerializableObject::containsProperties())
 	{
 		tinyxml2::XMLElement* propertiesElement = documentRoot->NewElement("properties");
 
 		for (auto it = this->properties->begin(); it != this->properties->end(); it++)
 		{
-			if (!SerializableObject::isPropertyObjectProperty(it->first))
+			if (!SerializableObject::isPropertyAttribute(it->first))
 			{
 				tinyxml2::XMLElement* propertyElement = documentRoot->NewElement("property");
 
@@ -140,18 +126,11 @@ void SerializableObject::serializeProperties(tinyxml2::XMLDocument* documentRoot
 	}
 }
 
-bool SerializableObject::containsObjectProperties()
+bool SerializableObject::containsAttributes()
 {
-	if (this->properties != nullptr)
+	for (auto it = SerializableObject::AttributeKeys.begin(); it != SerializableObject::AttributeKeys.end(); it++)
 	{
-		if (GameUtils::keyExists(this->properties, SerializableObject::KeyType) ||
-			GameUtils::keyExists(this->properties, SerializableObject::KeyName) ||
-			GameUtils::keyExists(this->properties, SerializableObject::KeyWidth) ||
-			GameUtils::keyExists(this->properties, SerializableObject::KeyHeight) ||
-			GameUtils::keyExists(this->properties, SerializableObject::KeyXPosition) ||
-			GameUtils::keyExists(this->properties, SerializableObject::KeyYPosition) ||
-			GameUtils::keyExists(this->properties, SerializableObject::KeyRotation) ||
-			GameUtils::keyExists(this->properties, SerializableObject::KeyPoints))
+		if (GameUtils::keyExists(this->properties, *it))
 		{
 			return true;
 		}
@@ -160,13 +139,13 @@ bool SerializableObject::containsObjectProperties()
 	return false;
 }
 
-bool SerializableObject::containsGeneralProperties()
+bool SerializableObject::containsProperties()
 {
 	if (this->properties != nullptr)
 	{
 		for (auto it = this->properties->begin(); it != this->properties->end(); it++)
 		{
-			if (!SerializableObject::isPropertyObjectProperty(it->first))
+			if (!SerializableObject::isPropertyAttribute(it->first))
 			{
 				return true;
 			}
@@ -176,19 +155,7 @@ bool SerializableObject::containsGeneralProperties()
 	return false;
 }
 
-bool SerializableObject::isPropertyObjectProperty(std::string propertyName)
+bool SerializableObject::isPropertyAttribute(std::string propertyName)
 {
-	if (propertyName == SerializableObject::KeyType ||
-		propertyName == SerializableObject::KeyName ||
-		propertyName == SerializableObject::KeyWidth ||
-		propertyName == SerializableObject::KeyHeight ||
-		propertyName == SerializableObject::KeyXPosition ||
-		propertyName == SerializableObject::KeyYPosition ||
-		propertyName == SerializableObject::KeyRotation ||
-		propertyName == SerializableObject::KeyPoints)
-	{
-		return true;
-	}
-
-	return false;
+	return std::find(SerializableObject::AttributeKeys.begin(), SerializableObject::AttributeKeys.end(), propertyName) != SerializableObject::AttributeKeys.end();
 }
