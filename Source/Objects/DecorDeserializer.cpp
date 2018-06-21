@@ -20,8 +20,8 @@ void DecorDeserializer::onDeserializationRequest(ObjectDeserializationRequestArg
 
 		float width = properties.at(SerializableObject::KeyWidth).asFloat();
 		float height = properties.at(SerializableObject::KeyHeight).asFloat();
-		float x = properties.at(SerializableObject::KeyXPosition).asFloat() + width / 2.0f;
-		float y = properties.at(SerializableObject::KeyYPosition).asFloat() + height / 2.0f;
+		float x = properties.at(SerializableObject::KeyXPosition).asFloat();
+		float y = properties.at(SerializableObject::KeyYPosition).asFloat() + height;
 		SerializableObject* newObject = nullptr;
 		
 		if (GameUtils::keyExists(&properties, "isParallax"))
@@ -57,7 +57,7 @@ void DecorDeserializer::onDeserializationRequest(ObjectDeserializationRequestArg
 
 		// TMX tile maps rotate around a different anchor point than cocos2d-x by default, so we have to account for this
 		sprite->setAnchorPoint(Vec2(0.0f, 1.0f));
-		newObject->setPosition(Vec2(x - width / 2.0f, y + height / 2.0f));
+		newObject->setPosition(Vec2(x, y + height));
 
 		if (GameUtils::keyExists(&properties, SerializableObject::KeyRotation))
 		{
