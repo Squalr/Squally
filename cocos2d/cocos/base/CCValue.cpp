@@ -715,7 +715,9 @@ std::string Value::asString() const
             break;
         case Type::FLOAT:
 		{
-            std::string floatStr = std::to_string(_field.floatVal);
+			std::stringstream stream;
+			stream << std::fixed << std::setprecision(2) << _field.floatVal;
+			std::string floatStr = stream.str();
 			floatStr.erase(floatStr.find_last_not_of('0') + 1, std::string::npos);
 			floatStr.erase(floatStr.find_last_not_of('.') + 1, std::string::npos);
 			ret << floatStr;
@@ -723,7 +725,9 @@ std::string Value::asString() const
 		}
 		case Type::DOUBLE:
 		{
-			std::string doubleStr = std::to_string(_field.doubleVal);
+			std::stringstream stream;
+			stream << std::fixed << std::setprecision(2) << _field.doubleVal;
+			std::string doubleStr = stream.str();
 			doubleStr.erase(doubleStr.find_last_not_of('0') + 1, std::string::npos);
 			doubleStr.erase(doubleStr.find_last_not_of('.') + 1, std::string::npos);
 			ret << doubleStr;

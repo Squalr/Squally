@@ -39,6 +39,8 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <iomanip> // setprecision
+#include <sstream> // stringstream
 
 /**
  * @addtogroup base
