@@ -24,7 +24,7 @@ SerializableTileLayer::~SerializableTileLayer()
 {
 }
 
-void SerializableTileLayer::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement)
+void SerializableTileLayer::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, float mapHeight)
 {
 	std::string prefix = "<layer name=" + StrUtils::quote(this->layerName) + 
 		" width=" + StrUtils::quote(this->layerName) +
