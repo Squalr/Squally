@@ -505,17 +505,17 @@ void TMXMapInfo::startElement(void* /*ctx*/, const char *name, const char **atts
 
         // But X and Y since they need special treatment
         // X
-        int x = attributeDict["x"].asInt();
+        float x = attributeDict["x"].asFloat();
         // Y
-        int y = attributeDict["y"].asInt();
+		float y = attributeDict["y"].asFloat();
         
-        Vec2 p(x + objectGroup->getPositionOffset().x, _mapSize.height * _tileSize.height - y  - objectGroup->getPositionOffset().y - attributeDict["height"].asInt());
+        Vec2 p(x + objectGroup->getPositionOffset().x, _mapSize.height * _tileSize.height - y  - objectGroup->getPositionOffset().y - attributeDict["height"].asFloat());
         p = CC_POINT_PIXELS_TO_POINTS(p);
         dict["x"] = Value(p.x);
         dict["y"] = Value(p.y);
         
-        int width = attributeDict["width"].asInt();
-        int height = attributeDict["height"].asInt();
+        float width = attributeDict["width"].asFloat();
+        float height = attributeDict["height"].asFloat();
         Size s(width, height);
         s = CC_SIZE_PIXELS_TO_POINTS(s);
         dict["width"] = Value(s.width);
