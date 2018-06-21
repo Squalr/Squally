@@ -531,6 +531,26 @@ void TMXMapInfo::startElement(void* /*ctx*/, const char *name, const char **atts
     } 
     else if (elementName == "property")
     {
+		if (tmxMapInfo->getParentElement() == TMXPropertyMap ||
+			tmxMapInfo->getParentElement() == TMXPropertyLayer || 
+			tmxMapInfo->getParentElement() == TMXPropertyObjectGroup || 
+			tmxMapInfo->getParentElement() == TMXPropertyObject ||
+			tmxMapInfo->getParentElement() == TMXPropertyTile)
+		{
+			if (attributeDict["type"].asString() == "float")
+			{
+				attributeDict["value"] = attributeDict["value"].asFloat();
+			}
+			else if (attributeDict["type"].asString() == "int")
+			{
+				attributeDict["value"] = attributeDict["value"].asInt();
+			}
+			else if (attributeDict["type"].asString() == "bool")
+			{
+				attributeDict["value"] = attributeDict["value"].asBool();
+			}
+		}
+
         if ( tmxMapInfo->getParentElement() == TMXPropertyNone ) 
         {
             CCLOG( "TMX tile map: Parent element is unsupported. Cannot add property named '%s' with value '%s'",
