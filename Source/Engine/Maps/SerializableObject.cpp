@@ -45,6 +45,7 @@ void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2
 {
 	tinyxml2::XMLElement* objectElement = documentRoot->NewElement("object");
 
+	// Serialize attributes
 	for (auto it = SerializableObject::AttributeKeys.begin(); it != SerializableObject::AttributeKeys.end(); it++)
 	{
 		if (GameUtils::keyExists(this->properties, *it))
@@ -61,6 +62,14 @@ void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2
 			}
 			else
 			{
+				// Width/Height/Rotation are not encoded if zero
+				if (*it == SerializableObject::KeyWidth && this->properties->at(*it).asFloat() == 0.0f ||
+					*it == SerializableObject::KeyHeight && this->properties->at(*it).asFloat() == 0.0f ||
+					*it == SerializableObject::KeyRotation && this->properties->at(*it).asFloat() == 0.0f)
+				{
+					continue;
+				}
+
 				objectElement->SetAttribute((*it).c_str(), this->properties->at(*it).asString().c_str());
 			}
 		}
@@ -94,7 +103,7 @@ void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2
 
 		for (auto it = this->properties->begin(); it != this->properties->end(); it++)
 		{
-			if (!SerializableObject::isAttributeOrGid(it->first))
+			if (!SerializableObject::isAttributeOrHiddenProperty(it->first))
 			{
 				tinyxml2::XMLElement* propertyElement = documentRoot->NewElement("property");
 
@@ -103,7 +112,6 @@ void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2
 				switch (it->second.getType())
 				{
 				case Value::Type::STRING:
-					propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "string");
 					propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
 					break;
 				case Value::Type::INTEGER:
@@ -154,7 +162,7 @@ bool SerializableObject::containsProperties()
 	{
 		for (auto it = this->properties->begin(); it != this->properties->end(); it++)
 		{
-			if (!SerializableObject::isAttributeOrGid(it->first))
+			if (!SerializableObject::isAttributeOrHiddenProperty(it->first))
 			{
 				return true;
 			}
@@ -164,9 +172,9 @@ bool SerializableObject::containsProperties()
 	return false;
 }
 
-bool SerializableObject::isAttributeOrGid(std::string propertyName)
+bool SerializableObject::isAttributeOrHiddenProperty(std::string propertyName)
 {
-	if (propertyName == SerializableObject::KeyGid)
+	if (propertyName == SerializableObject::KeyGid || propertyName == SerializableObject::KeyPoints)
 	{
 		return true;
 	}
