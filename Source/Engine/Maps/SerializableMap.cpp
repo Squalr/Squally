@@ -81,7 +81,6 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName, std::vect
 
 void SerializableMap::serialize()
 {
-	float mapHeight = this->getMapSize().height;
 	tinyxml2::XMLDocument* documentRoot = new (std::nothrow)tinyxml2::XMLDocument();
 	tinyxml2::XMLDeclaration* declaration = documentRoot->NewDeclaration(("xml version=" + StrUtils::quote("1.0") + " encoding=" + StrUtils::quote("UTF-8")).c_str());
 	documentRoot->LinkEndChild(declaration);
@@ -121,7 +120,7 @@ void SerializableMap::serialize()
 	// Serialize all layers
 	for (auto it = this->serializableLayers->begin(); it != this->serializableLayers->end(); it++)
 	{
-		(*it)->serialize(documentRoot, mapElement, mapHeight);
+		(*it)->serialize(documentRoot, mapElement, this->getMapUnitSize(), this->getMapTileSize());
 	}
 
 	// TODO: count obj ids
