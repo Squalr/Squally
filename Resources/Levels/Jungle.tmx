@@ -233,8 +233,8 @@
 </data>
  </layer>
  <objectgroup name="decor_background">
-  <object id="139" name="Forest/Thorns10" type="Forest/Thorns10" x="1846.24" y="1254.36" width="391.741" height="363.846"/>
-  <object id="140" name="Forest/Thorns8" type="decor" x="1873.83" y="1666.34" width="358.529" height="338.634"/>
+  <object id="139" name="Forest/Thorns10" type="decor" x="1846.24" y="1254.36" width="391.74" height="363.85"/>
+  <object id="140" name="Forest/Thorns8" type="decor" x="1873.83" y="1666.34" width="358.53" height="338.63"/>
  </objectgroup>
  <layer name="tiles_midground" width="124" height="196">
   <data encoding="csv">
@@ -437,103 +437,99 @@
 </data>
  </layer>
  <objectgroup name="decor_midground">
-  <object id="123" name="Forest/GrassPlane6" type="decor" x="147.382" y="1115.33" width="432" height="90.5454"/>
+  <object id="123" name="Forest/GrassPlane6" type="decor" x="147.38" y="1115.33" width="432" height="90.55"/>
   <object id="168" name="Forest/Ruins1" type="decor" x="4291.63" y="820.78" width="512" height="512"/>
   <object id="189" name="Ice/Bush1" type="decor" x="9032" y="856" width="72" height="72"/>
-  <object id="190" name="Ice/Rock1" type="decor" x="8390.79" y="743.758" width="226.424" height="216.485"/>
-  <object id="194" name="Ice/Tree2" type="decor" x="9611.03" y="173.576" width="626.424" height="792.243"/>
-  <object id="209" name="Generic/Spikes2" type="decor" x="1450.06" y="3890.73" width="70.0606" height="83.9999"/>
-  <object id="210" name="Temple/Statue1" type="decor" x="1048" y="3376.73" width="317.819" height="601.091"/>
-  <object id="211" name="Temple/Statue2" type="decor" x="3002.18" y="3367.33" width="329.94" height="613.212"/>
-  <object id="212" name="Temple/Urn1" type="decor" x="2569.21" y="3833" width="124.485" height="140.485"/>
-  <object id="213" name="Temple/Urn2" type="Temple/Urn2" x="3310.91" y="3830.03" width="133.576" height="137.455"/>
-  <object id="214" name="Temple/Urn3" type="decor" x="479.121" y="3750.79" width="212.364" height="222.303"/>
-  <object id="215" name="Temple/Tree4" type="decor" x="1888.21" y="3320.85" width="279.516" height="532.848"/>
-  <object id="216" name="Temple/Urn3" type="decor" x="4805.94" y="3752.48" width="212.364" height="222.303"/>
-  <object id="217" name="Temple/Urn2" type="decor" x="2860.48" y="3073.7" width="133.576" height="137.455"/>
-  <object id="219" name="Temple/Urn2" type="decor" x="1518.06" y="3067.64" width="133.576" height="137.455"/>
+  <object id="190" name="Ice/Rock1" type="decor" x="8390.79" y="743.76" width="226.42" height="216.49"/>
+  <object id="194" name="Ice/Tree2" type="decor" x="9611.03" y="173.58" width="626.42" height="792.24"/>
+  <object id="209" name="Generic/Spikes2" type="decor" x="1450.06" y="3890.73" width="70.06" height="84"/>
+  <object id="210" name="Temple/Statue1" type="decor" x="1048" y="3376.73" width="317.82" height="601.09"/>
+  <object id="211" name="Temple/Statue2" type="decor" x="3002.18" y="3367.33" width="329.94" height="613.21"/>
+  <object id="212" name="Temple/Urn1" type="decor" x="2569.21" y="3833" width="124.49" height="140.49"/>
+  <object id="213" name="Temple/Urn2" type="decor" x="3310.91" y="3830.03" width="133.58" height="137.46"/>
+  <object id="214" name="Temple/Urn3" type="decor" x="479.12" y="3750.79" width="212.36" height="222.3"/>
+  <object id="215" name="Temple/Tree4" type="decor" x="1888.21" y="3320.85" width="279.52" height="532.85"/>
+  <object id="216" name="Temple/Urn3" type="decor" x="4805.94" y="3752.48" width="212.36" height="222.3"/>
+  <object id="217" name="Temple/Urn2" type="decor" x="2860.48" y="3073.7" width="133.58" height="137.46"/>
+  <object id="219" name="Temple/Urn2" type="decor" x="1518.06" y="3067.64" width="133.58" height="137.46"/>
  </objectgroup>
  <objectgroup name="collision_collision">
   <object id="39" name="solid" type="collision" x="2186.82" y="1326.61" width="3048.67" height="1253"/>
   <object id="41" name="solid" type="collision" x="2765.04" y="1172.39">
-   <polygon points="0,0 486.022,219.098 0,222.576"/>
+   <polygon points="0,0 486.02,219.1 0,222.58"/>
   </object>
-  <object id="49" name="solid" type="collision" x="2190.82" y="1186.61" width="598.667" height="917.333"/>
-  <object id="51" name="solid" type="collision" x="1871.28" y="1220.73" width="345.424" height="99.8788"/>
-  <object id="70" name="solid" type="collision" x="1148.14" y="1190.51" width="757.712" height="1397.15"/>
+  <object id="49" name="solid" type="collision" x="2190.82" y="1186.61" width="598.67" height="917.33"/>
+  <object id="51" name="solid" type="collision" x="1871.28" y="1220.73" width="345.42" height="99.88"/>
+  <object id="70" name="solid" type="collision" x="1148.14" y="1190.51" width="757.71" height="1397.15"/>
   <object id="165" name="solid" type="collision" x="5243.45" y="1078">
-   <polygon points="0,0 1.87499,271.648 -538.125,274"/>
+   <polygon points="0,0 1.87,271.65 -538.13,274"/>
   </object>
-  <object id="176" name="solid" type="collision" x="21.144" y="1191.12" width="718.318" height="1378.97"/>
-  <object id="177" name="solid" type="collision" x="697.833" y="1195.52" width="518.151" height="105.939"/>
+  <object id="176" name="solid" type="collision" x="21.14" y="1191.12" width="718.32" height="1378.97"/>
+  <object id="177" name="solid" type="collision" x="697.83" y="1195.52" width="518.15" height="105.94"/>
   <object id="187" name="solid" type="collision" x="8339.66" y="933.5" width="848.67" height="1621"/>
-  <object id="188" name="solid" type="collision" x="9735.67" y="962.712" width="992.428" height="1599.79"/>
+  <object id="188" name="solid" type="collision" x="9735.67" y="962.71" width="992.43" height="1599.79"/>
   <object id="196" name="solid" type="collision" x="130.21" y="3976.53" width="5103.22" height="1004.52"/>
   <object id="198" name="solid" type="collision" x="2175.76" y="3860.61">
-   <polygon points="0,0 437.537,213.132 0,216.515"/>
+   <polygon points="0,0 437.54,213.13 0,216.51"/>
   </object>
   <object id="200" name="solid" type="collision" x="1930.3" y="3842.42">
-   <polygon points="0,0 1.87499,271.648 -538.125,274"/>
+   <polygon points="0,0 1.87,271.65 -538.13,274"/>
   </object>
-  <object id="201" name="solid" type="collision" x="1927.18" y="3849.26" width="245.639" height="165.126"/>
+  <object id="201" name="solid" type="collision" x="1927.18" y="3849.26" width="245.64" height="165.13"/>
   <object id="203" name="solid" type="collision" x="2813.13" y="3215.15">
-   <polygon points="0,0 0.864894,121.433 -248.226,122.485"/>
+   <polygon points="0,0 0.86,121.43 -248.23,122.49"/>
   </object>
-  <object id="204" name="solid" type="collision" x="2565.06" y="3326.53" width="112.306" height="125.732"/>
-  <object id="205" name="solid" type="collision" x="2810.51" y="3217.44" width="294.124" height="110.581"/>
-  <object id="220" name="solid" type="collision" x="29.6044" y="7469.38" width="6906.49" height="117"/>
-  <object id="221" name="solid" type="collision" x="759.665" y="7073.5" width="6422.85" height="117"/>
-  <object id="234" name="solid" type="collision" x="772.755" y="8076.5" width="6390.49" height="97"/>
+  <object id="204" name="solid" type="collision" x="2565.06" y="3326.53" width="112.31" height="125.73"/>
+  <object id="205" name="solid" type="collision" x="2810.51" y="3217.44" width="294.12" height="110.58"/>
+  <object id="220" name="solid" type="collision" x="29.6" y="7469.38" width="6906.49" height="117"/>
+  <object id="221" name="solid" type="collision" x="759.66" y="7073.5" width="6422.85" height="117"/>
+  <object id="234" name="solid" type="collision" x="772.76" y="8076.5" width="6390.49" height="97"/>
   <object id="248" name="solid" type="collision" x="6916" y="7468">
-   <polygon points="0,0 270.022,156.098 0,158.576"/>
+   <polygon points="0,0 270.02,156.1 0,158.58"/>
   </object>
   <object id="249" name="solid" type="collision" x="1021.27" y="8482.98" width="6962.01" height="117"/>
   <object id="250" name="solid" type="collision" x="7940.76" y="6020.5" width="114.49" height="12613"/>
   <object id="251" name="solid" type="collision" x="1027.96" y="8485">
-   <polygon points="0,0 0.916662,132.85 -263.083,134"/>
+   <polygon points="0,0 0.92,132.85 -263.08,134"/>
   </object>
-  <object id="252" name="solid" type="collision" x="26.755" y="9509.5" width="6906.49" height="117"/>
+  <object id="252" name="solid" type="collision" x="26.75" y="9509.5" width="6906.49" height="117"/>
   <object id="253" name="solid" type="collision" x="6913.15" y="9508.1">
-   <polygon points="0,0 270.022,156.098 0,158.576"/>
+   <polygon points="0,0 270.02,156.1 0,158.58"/>
   </object>
-  <object id="254" name="solid" type="collision" x="58.755" y="11549.5" width="6906.49" height="85"/>
+  <object id="254" name="solid" type="collision" x="58.76" y="11549.5" width="6906.49" height="85"/>
   <object id="255" name="solid" type="collision" x="6945.15" y="11548.1">
-   <polygon points="0,0 270.022,156.098 0,158.576"/>
+   <polygon points="0,0 270.02,156.1 0,158.58"/>
   </object>
-  <object id="256" name="solid" type="solid" x="-1.245" y="13593.5" width="6906.49" height="101"/>
   <object id="257" name="solid" type="collision" x="6885.15" y="13592.1">
-   <polygon points="0,0 270.022,156.098 0,158.576"/>
+   <polygon points="0,0 270.02,156.1 0,158.58"/>
   </object>
   <object id="262" name="solid" type="collision" x="983" y="10523.5" width="6962.01" height="65"/>
   <object id="263" name="solid" type="collision" x="1029.69" y="10527.5">
-   <polygon points="0,0 0.916662,132.85 -263.083,134"/>
+   <polygon points="0,0 0.92,132.85 -263.08,134"/>
   </object>
   <object id="264" name="solid" type="collision" x="1097" y="12581.5" width="6842.01" height="69"/>
-  <object id="265" name="solid" type="solid" x="1133.69" y="12591.5">
-   <polygon points="0,0 0.916662,132.85 -263.083,134"/>
-  </object>
   <object id="266" name="solid" type="collision" x="1105" y="14623.5" width="6834.01" height="69"/>
   <object id="267" name="solid" type="collision" x="1149.69" y="14631.5">
-   <polygon points="0,0 0.916662,132.85 -263.083,134"/>
+   <polygon points="0,0 0.92,132.85 -263.08,134"/>
   </object>
-  <object id="268" name="solid" type="collision" x="26.755" y="15635.5" width="7906.49" height="77"/>
-  <object id="269" name="solid" type="collision" x="773.422" y="15285.5" width="6394.49" height="85"/>
-  <object id="270" name="solid" type="collision" x="774.422" y="13203.8" width="6378.49" height="80"/>
-  <object id="271" name="solid" type="collision" x="775.725" y="11193.9" width="6378.49" height="77"/>
-  <object id="272" name="solid" type="collision" x="764.755" y="10177.5" width="6378.49" height="41"/>
-  <object id="273" name="solid" type="collision" x="818.755" y="9125.5" width="6350.49" height="73"/>
-  <object id="274" name="solid" type="collision" x="410.755" y="12189.5" width="6746.49" height="117"/>
-  <object id="354" name="solid" type="collision" x="804.755" y="14253.5" width="6342.49" height="53"/>
-  <object id="356" name="solid" type="collision" x="20.575" y="6805.5" width="318.85" height="101"/>
-  <object id="357" name="solid" type="collision" x="60.575" y="8853.5" width="318.85" height="125"/>
-  <object id="359" name="solid" type="collision" x="52.575" y="10901.5" width="342.85" height="117"/>
-  <object id="360" name="solid" type="collision" x="116.575" y="12949.5" width="278.85" height="101"/>
-  <object id="361" name="solid" type="collision" x="108.575" y="15005.5" width="278.85" height="101"/>
-  <object id="362" name="solid" type="collision" x="1760.84" y="21902.5" width="558.318" height="218.97"/>
-  <object id="363" name="solid" type="collision" x="1736.84" y="22890.5" width="974.318" height="218.97"/>
+  <object id="268" name="solid" type="collision" x="26.75" y="15635.5" width="7906.49" height="77"/>
+  <object id="269" name="solid" type="collision" x="773.42" y="15285.5" width="6394.49" height="85"/>
+  <object id="270" name="solid" type="collision" x="774.42" y="13203.8" width="6378.49" height="80"/>
+  <object id="271" name="solid" type="collision" x="775.72" y="11193.9" width="6378.49" height="77"/>
+  <object id="272" name="solid" type="collision" x="764.76" y="10177.5" width="6378.49" height="41"/>
+  <object id="273" name="solid" type="collision" x="818.76" y="9125.5" width="6350.49" height="73"/>
+  <object id="274" name="solid" type="collision" x="410.76" y="12189.5" width="6746.49" height="117"/>
+  <object id="354" name="solid" type="collision" x="804.76" y="14253.5" width="6342.49" height="53"/>
+  <object id="356" name="solid" type="collision" x="20.58" y="6805.5" width="318.85" height="101"/>
+  <object id="357" name="solid" type="collision" x="60.58" y="8853.5" width="318.85" height="125"/>
+  <object id="359" name="solid" type="collision" x="52.58" y="10901.5" width="342.85" height="117"/>
+  <object id="360" name="solid" type="collision" x="116.57" y="12949.5" width="278.85" height="101"/>
+  <object id="361" name="solid" type="collision" x="108.57" y="15005.5" width="278.85" height="101"/>
+  <object id="362" name="solid" type="collision" x="1760.84" y="21902.5" width="558.32" height="218.97"/>
+  <object id="363" name="solid" type="collision" x="1736.84" y="22890.5" width="974.32" height="218.97"/>
  </objectgroup>
  <objectgroup name="objects">
-  <object id="182" name="warp-gate-exact-scan-1" type="object" x="3521.21" y="782.848" width="648.364" height="601.818">
+  <object id="182" name="warp-gate-exact-scan-1" type="object" x="3521.21" y="782.85" width="648.36" height="601.82">
    <properties>
     <property name="dialog" value="DialogTutorialExactScanI"/>
    </properties>
@@ -543,7 +539,7 @@
     <property name="dialog" value="DialogTutorialExactScanI"/>
    </properties>
   </object>
-  <object id="192" name="wind" type="object" x="9332.97" y="1067.06" width="252.242" height="74.977">
+  <object id="192" name="wind" type="object" x="9332.97" y="1067.06" width="252.24" height="74.98">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="-4"/>
@@ -551,8 +547,8 @@
   </object>
  </objectgroup>
  <objectgroup name="entities">
-  <object id="72" name="squally" type="entity" x="109.847" y="6298.64" width="128" height="128"/>
-  <object id="180" name="knight" type="entity" x="342.06" y="758.727" width="200" height="288"/>
+  <object id="72" name="squally" type="entity" x="109.85" y="6298.64" width="128" height="128"/>
+  <object id="180" name="knight" type="entity" x="342.06" y="758.73" width="200" height="288"/>
   <object id="222" name="boss_rhinoman" type="entity" x="6169.82" y="6688" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>

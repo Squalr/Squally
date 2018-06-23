@@ -37,7 +37,7 @@ protected:
 	ValueMap* properties;
 
 private:
-	bool isAttributeOrGid(std::string propertyName);
+	bool isAttributeOrHiddenProperty(std::string propertyName);
 	bool containsAttributes();
 	bool containsProperties();
 };
