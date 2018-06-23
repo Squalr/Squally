@@ -39,12 +39,12 @@ SerializableLayer::~SerializableLayer()
 {
 }
 
-void SerializableLayer::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, float mapHeight)
+void SerializableLayer::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, Size mapUnitSize, Size mapTileSize)
 {
 	tinyxml2::XMLElement* objectGroupElement = documentRoot->NewElement("objectgroup");
 	objectGroupElement->SetAttribute(SerializableLayer::KeyPropertyName.c_str(), this->layerName.c_str());
 
-	if (this->properties != nullptr)
+	if (this->properties != nullptr && this->properties->size() > 0)
 	{
 		tinyxml2::XMLElement* propertiesElement = documentRoot->NewElement("properties");
 
@@ -65,7 +65,7 @@ void SerializableLayer::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2:
 	{
 		for (auto it = this->serializableObjects->begin(); it != this->serializableObjects->end(); it++)
 		{
-			(*it)->serialize(documentRoot, objectGroupElement, mapHeight);
+			(*it)->serialize(documentRoot, objectGroupElement, mapUnitSize, mapTileSize);
 		}
 	}
 

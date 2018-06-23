@@ -12,7 +12,7 @@ class SerializableLayer : public Layer
 {
 public:
 	static SerializableLayer * create(ValueMap* initProperties, std::string name, std::vector<SerializableObject*>* objects);
-	virtual void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, float mapHeight);
+	virtual void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, Size mapUnitSize, Size mapTileSize);
 
 	static const std::string KeyType;
 	static const std::string KeyPropertyName;

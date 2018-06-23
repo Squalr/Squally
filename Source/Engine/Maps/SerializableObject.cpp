@@ -41,101 +41,98 @@ SerializableObject::~SerializableObject()
 	}
 }
 
-void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, float mapHeight)
+void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, Size mapUnitSize, Size mapTileSize)
 {
-	if (this->containsAttributes())
+	tinyxml2::XMLElement* objectElement = documentRoot->NewElement("object");
+
+	for (auto it = SerializableObject::AttributeKeys.begin(); it != SerializableObject::AttributeKeys.end(); it++)
 	{
-		tinyxml2::XMLElement* objectElement = documentRoot->NewElement("object");
-
-		for (auto it = SerializableObject::AttributeKeys.begin(); it != SerializableObject::AttributeKeys.end(); it++)
+		if (GameUtils::keyExists(this->properties, *it))
 		{
-			if (GameUtils::keyExists(this->properties, *it))
+			// Special case for Y Position, which is stored in different coordinates and needs adjusting
+			if (*it == SerializableObject::KeyYPosition)
 			{
-				// Special case for Y Position, which is stored in different coordinates and needs adjusting
-				if (*it == SerializableObject::KeyYPosition)
-				{
-					float y = this->properties->at(*it).asFloat();
-					float height = this->properties->at(SerializableObject::KeyHeight).asFloat();
-					float newY = mapHeight - y - height;
-					Value reEncodedValue = Value(newY);
+				float y = this->properties->at(*it).asFloat();
+				float height = this->properties->at(SerializableObject::KeyHeight).asFloat();
+				float newY = mapUnitSize.height * mapTileSize.height - y - height;
+				Value reEncodedValue = Value(newY);
 
-					objectElement->SetAttribute((*it).c_str(), reEncodedValue.asString().c_str());
-				}
-				else
-				{
-					objectElement->SetAttribute((*it).c_str(), this->properties->at(*it).asString().c_str());
-				}
+				objectElement->SetAttribute((*it).c_str(), reEncodedValue.asString().c_str());
+			}
+			else
+			{
+				objectElement->SetAttribute((*it).c_str(), this->properties->at(*it).asString().c_str());
 			}
 		}
-
-		if (GameUtils::keyExists(this->properties, SerializableObject::KeyPoints))
-		{
-			ValueVector points = this->properties->at(SerializableObject::KeyPoints).asValueVector();
-
-			if (points.size() > 0)
-			{
-				tinyxml2::XMLElement* polygonElement = documentRoot->NewElement("polygon");
-				std::string pointPairs = "";
-
-				for (auto it = points.begin(); it != points.end(); it++)
-				{
-					ValueMap coordinates = it->asValueMap();
-
-					pointPairs += coordinates.at(SerializableObject::KeyXPosition).asString() + "," + coordinates.at(SerializableObject::KeyYPosition).asString() + " ";
-				}
-
-				polygonElement->SetAttribute(SerializableObject::KeyPoints.c_str(), pointPairs.substr(0, pointPairs.size() - 1).c_str());
-				objectElement->LinkEndChild(polygonElement);
-			}
-		}
-
-		// Append additional properties
-		if (SerializableObject::containsProperties())
-		{
-			tinyxml2::XMLElement* propertiesElement = documentRoot->NewElement("properties");
-
-			for (auto it = this->properties->begin(); it != this->properties->end(); it++)
-			{
-				if (!SerializableObject::isPropertyAttribute(it->first) && it->first != SerializableObject::KeyGid)
-				{
-					tinyxml2::XMLElement* propertyElement = documentRoot->NewElement("property");
-
-					propertyElement->SetAttribute(SerializableObject::KeyName.c_str(), it->first.c_str());
-
-					switch (it->second.getType())
-					{
-					case Value::Type::STRING:
-						propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "string");
-						propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
-						break;
-					case Value::Type::INTEGER:
-						propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "int");
-						propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
-						break;
-					case Value::Type::FLOAT:
-					case Value::Type::DOUBLE:
-						propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "float");
-						propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
-						break;
-					case Value::Type::BOOLEAN:
-						propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "bool");
-						propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
-						break;
-					case Value::Type::VECTOR:
-					case Value::Type::MAP:
-					default:
-						break;
-					}
-
-					propertiesElement->LinkEndChild(propertyElement);
-				}
-			}
-
-			objectElement->LinkEndChild(propertiesElement);
-		}
-
-		parentElement->LinkEndChild(objectElement);
 	}
+
+	if (GameUtils::keyExists(this->properties, SerializableObject::KeyPoints))
+	{
+		ValueVector points = this->properties->at(SerializableObject::KeyPoints).asValueVector();
+
+		if (points.size() > 0)
+		{
+			tinyxml2::XMLElement* polygonElement = documentRoot->NewElement("polygon");
+			std::string pointPairs = "";
+
+			for (auto it = points.begin(); it != points.end(); it++)
+			{
+				ValueMap coordinates = it->asValueMap();
+
+				pointPairs += coordinates.at(SerializableObject::KeyXPosition).asString() + "," + coordinates.at(SerializableObject::KeyYPosition).asString() + " ";
+			}
+
+			polygonElement->SetAttribute(SerializableObject::KeyPoints.c_str(), pointPairs.substr(0, pointPairs.size() - 1).c_str());
+			objectElement->LinkEndChild(polygonElement);
+		}
+	}
+
+	// Append additional properties
+	if (SerializableObject::containsProperties())
+	{
+		tinyxml2::XMLElement* propertiesElement = documentRoot->NewElement("properties");
+
+		for (auto it = this->properties->begin(); it != this->properties->end(); it++)
+		{
+			if (!SerializableObject::isAttributeOrGid(it->first))
+			{
+				tinyxml2::XMLElement* propertyElement = documentRoot->NewElement("property");
+
+				propertyElement->SetAttribute(SerializableObject::KeyName.c_str(), it->first.c_str());
+
+				switch (it->second.getType())
+				{
+				case Value::Type::STRING:
+					propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "string");
+					propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
+					break;
+				case Value::Type::INTEGER:
+					propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "int");
+					propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
+					break;
+				case Value::Type::FLOAT:
+				case Value::Type::DOUBLE:
+					propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "float");
+					propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
+					break;
+				case Value::Type::BOOLEAN:
+					propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "bool");
+					propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
+					break;
+				case Value::Type::VECTOR:
+				case Value::Type::MAP:
+				default:
+					break;
+				}
+
+				propertiesElement->LinkEndChild(propertyElement);
+			}
+		}
+
+		objectElement->LinkEndChild(propertiesElement);
+	}
+
+	parentElement->LinkEndChild(objectElement);
 }
 
 bool SerializableObject::containsAttributes()
@@ -157,7 +154,7 @@ bool SerializableObject::containsProperties()
 	{
 		for (auto it = this->properties->begin(); it != this->properties->end(); it++)
 		{
-			if (!SerializableObject::isPropertyAttribute(it->first))
+			if (!SerializableObject::isAttributeOrGid(it->first))
 			{
 				return true;
 			}
@@ -167,7 +164,12 @@ bool SerializableObject::containsProperties()
 	return false;
 }
 
-bool SerializableObject::isPropertyAttribute(std::string propertyName)
+bool SerializableObject::isAttributeOrGid(std::string propertyName)
 {
+	if (propertyName == SerializableObject::KeyGid)
+	{
+		return true;
+	}
+
 	return std::find(SerializableObject::AttributeKeys.begin(), SerializableObject::AttributeKeys.end(), propertyName) != SerializableObject::AttributeKeys.end();
 }

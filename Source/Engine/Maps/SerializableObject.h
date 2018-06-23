@@ -10,7 +10,7 @@ using namespace cocos2d;
 class SerializableObject : public Node
 {
 public:
-	void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, float mapHeight);
+	void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, Size mapUnitSize, Size mapTileSize);
 
 	static const std::string KeyId;
 	static const std::string KeyName;
@@ -37,7 +37,7 @@ protected:
 	ValueMap* properties;
 
 private:
-	bool isPropertyAttribute(std::string propertyName);
+	bool isAttributeOrGid(std::string propertyName);
 	bool containsAttributes();
 	bool containsProperties();
 };
