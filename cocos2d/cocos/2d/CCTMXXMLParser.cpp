@@ -624,14 +624,14 @@ void TMXMapInfo::startElement(void* /*ctx*/, const char *name, const char **atts
                 // set x
                 if (std::getline(pointStream, xStr, ','))
                 {
-                    int x = atoi(xStr.c_str()) + (int)objectGroup->getPositionOffset().x;
+                    float x = atof(xStr.c_str()) + objectGroup->getPositionOffset().x;
                     pointDict["x"] = Value(x);
                 }
 
                 // set y
                 if (std::getline(pointStream, yStr, ','))
                 {
-                    int y = atoi(yStr.c_str()) + (int)objectGroup->getPositionOffset().y;
+					float y = atof(yStr.c_str()) + objectGroup->getPositionOffset().y;
                     pointDict["y"] = Value(y);
                 }
                 

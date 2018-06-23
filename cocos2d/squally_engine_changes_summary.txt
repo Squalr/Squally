@@ -17,6 +17,8 @@ Changes to engine:
 
 - In CCFastTMXLayer.cpp, frustum culling was updated to account for the camera distance
 
+- In CCFastTMXTiledMap.cpp, empty tile layers were not deserialized
+
 - In CCNode, added IsPaused() to be able to determine if a node is paused
 
 - Moved from Windows 8 sdk to Windows 10
@@ -30,3 +32,5 @@ Changes to engine:
 - Fix to CCTMXXMLParser.cpp to convert the CCValue type of object/layer properties to the associated type in the TMX file (previously all values were deserialized as strings).
 
 - Fix to CCTMXXMLParser.cpp to deserialize x/y/width/height values as floats instead of ints
+
+- Fix to CCTMXXMLParser.cpp to deserialize polygoin x/y points as floats instead of ints
