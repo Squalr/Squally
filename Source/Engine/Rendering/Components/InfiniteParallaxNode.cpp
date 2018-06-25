@@ -37,8 +37,6 @@ InfiniteParallaxNode::InfiniteParallaxNode(std::string spriteResourcePath)
 		}
 
 	} while (remainingSize > 0.0f);
-
-	this->scheduleUpdate();
 }
 
 InfiniteParallaxNode::~InfiniteParallaxNode()
@@ -46,7 +44,7 @@ InfiniteParallaxNode::~InfiniteParallaxNode()
 	delete(this->nodes);
 }
 
-void InfiniteParallaxNode::update(float dt)
+void InfiniteParallaxNode::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
 {
 	Node* firstNode = this->nodes->at(0);
 	Node* lastNode = this->nodes->at(this->nodes->size() - 1);
@@ -61,4 +59,6 @@ void InfiniteParallaxNode::update(float dt)
 	{
 		this->setPosition(Vec2(0, this->getPosition().y));
 	}
+
+	ParallaxNode::visit(renderer, parentTransform, parentFlags);
 }
