@@ -13,10 +13,10 @@ using namespace cocos2d;
 class Monitor : public HackableObject
 {
 public:
-	static Monitor* create(ValueMap* initProperties, std::string dialogFile);
+	static Monitor* create(ValueMap* initProperties);
 
 protected:
-	Monitor(ValueMap* initProperties, std::string dialogFile);
+	Monitor(ValueMap* initProperties);
 	~Monitor();
 
 private:

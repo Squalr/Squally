@@ -17,7 +17,7 @@ class SerializableMap : public Node
 {
 public:
 	static SerializableMap* deserialize(std::string mapFileName, std::vector<ILayerDeserializer*>* layerDeserializers, std::vector<IObjectDeserializer*>* objectDeserializers);
-	void serialize();
+	bool serialize();
 
 	void appendLayer(SerializableLayer* layer);
 

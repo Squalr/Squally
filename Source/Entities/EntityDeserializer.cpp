@@ -459,11 +459,6 @@ void EntityDeserializer::onDeserializationRequest(ObjectDeserializationRequestAr
 			return;
 		}
 
-		newEntity->setPosition(Vec2(
-			properties.at(SerializableObject::KeyXPosition).asFloat() + properties.at(SerializableObject::KeyWidth).asFloat() / 2,
-			properties.at(SerializableObject::KeyYPosition).asFloat() + properties.at(SerializableObject::KeyHeight).asFloat() / 2)
-		);
-
 		// Fire an event indicating successful deserialization
 		args->callback(newEntity);
 	}

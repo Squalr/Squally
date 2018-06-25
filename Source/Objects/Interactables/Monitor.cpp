@@ -1,16 +1,17 @@
 #include "Monitor.h"
 
-Monitor* Monitor::create(ValueMap* initProperties, std::string dialogFile)
+Monitor* Monitor::create(ValueMap* initProperties)
 {
-	Monitor* monitor = new Monitor(initProperties, dialogFile);
+	Monitor* monitor = new Monitor(initProperties);
 
 	monitor->autorelease();
 
 	return monitor;
 }
 
-Monitor::Monitor(ValueMap* initProperties, std::string dialogFile) : HackableObject(initProperties)
+Monitor::Monitor(ValueMap* initProperties) : HackableObject(initProperties)
 {
+	string dialogFile = "Dialog\\" + this->properties->at("dialog").asString() + ".json";
 	this->monitorDialog = DialogMenu::loadDialogFromFile(dialogFile);
 	this->monitorDialog->retain();
 
