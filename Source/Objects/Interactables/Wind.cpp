@@ -1,18 +1,33 @@
 #include "Wind.h"
 
-Wind* Wind::create(ValueMap* initProperties, Size startSize, Vec2 startSpeed)
+Wind* Wind::create(ValueMap* initProperties)
 {
-	Wind* instance = new Wind(initProperties, startSize, startSpeed);
+	Wind* instance = new Wind(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Wind::Wind(ValueMap* initProperties, Size startSize, Vec2 startSpeed) : HackableObject(initProperties)
+Wind::Wind(ValueMap* initProperties) : HackableObject(initProperties)
 {
-	this->size = startSize;
-	this->windSpeed = startSpeed;
+	float width = this->properties->at(SerializableObject::KeyWidth).asFloat();
+	float height = this->properties->at(SerializableObject::KeyHeight).asFloat();
+	float speedX = 0.0f;
+	float speedY = 0.0f;
+
+	if (GameUtils::keyExists(this->properties, "speed-x"))
+	{
+		speedX = this->properties->at("speed-x").asFloat();
+	}
+
+	if (GameUtils::keyExists(this->properties, "speed-y"))
+	{
+		speedY = this->properties->at("speed-y").asFloat();
+	}
+
+	this->size = Size(width, height);
+	this->windSpeed = Vec2(speedX, speedY);
 	this->windParticles = ParticleSystemQuad::create(Resources::Particles_Gust);
 	this->windParticles->setPositionType(ParticleSystem::PositionType::GROUPED);
 

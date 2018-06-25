@@ -8,10 +8,10 @@ using namespace cocos2d;
 class Wind : public HackableObject
 {
 public:
-	static Wind* create(ValueMap* initProperties, Size startSize, Vec2 startSpeed);
+	static Wind* create(ValueMap* initProperties);
 
 protected:
-	Wind(ValueMap* initProperties, Size startSize, Vec2 startSpeed);
+	Wind(ValueMap* initProperties);
 	~Wind();
 
 private:

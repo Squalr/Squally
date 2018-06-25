@@ -31,6 +31,11 @@ const std::string SerializableObject::KeyPropertyValue = "value";
 SerializableObject::SerializableObject(ValueMap* initProperties)
 {
 	this->properties = new ValueMap(*initProperties);
+
+	this->setPosition(Vec2(
+		this->properties->at(SerializableObject::KeyXPosition).asFloat() + this->properties->at(SerializableObject::KeyWidth).asFloat() / 2,
+		this->properties->at(SerializableObject::KeyYPosition).asFloat() + this->properties->at(SerializableObject::KeyHeight).asFloat() / 2)
+	);
 }
 
 SerializableObject::~SerializableObject()

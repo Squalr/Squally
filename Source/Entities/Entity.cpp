@@ -23,6 +23,10 @@ Entity::Entity(ValueMap* initProperties, std::string scmlResource, bool isFlying
 	animationNode->setPosition(collisionOffset * scale);
 
 	this->addChild(this->animationNode);
+
+	// Update width to be serialized
+	(*this->properties)[Entity::KeyWidth] = size.width * scale;
+	(*this->properties)[Entity::KeyHeight] = size.height * scale;
 }
 
 Entity::~Entity()
