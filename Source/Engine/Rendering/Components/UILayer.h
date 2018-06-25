@@ -14,6 +14,6 @@ protected:
 	UILayer();
 	~UILayer();
 
-	void draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) override;
+	void visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags) override;
 };
 

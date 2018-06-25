@@ -12,6 +12,6 @@ protected:
 	BackgroundBase(ValueMap* properties, std::string name);
 	~BackgroundBase();
 
-	void draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) override;
+	void visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags) override;
 };
 

@@ -12,7 +12,7 @@ protected:
 	InfiniteParallaxNode(std::string spriteResourcePath);
 	~InfiniteParallaxNode();
 
-	void update(float dt) override;
+	void visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags) override;
 
 	std::vector<Node*>* nodes;
 	float spriteWidth;
