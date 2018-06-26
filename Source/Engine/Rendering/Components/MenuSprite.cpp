@@ -7,20 +7,20 @@ MenuSprite* MenuSprite::create(std::string spriteNormal, std::string spriteSelec
 
 MenuSprite* MenuSprite::create(Node* spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource)
 {
-	MenuSprite* menuSprite = new MenuSprite(spriteNormal, Sprite::create(spriteSelectedResource), Sprite::create(spriteClickedResource));
+	MenuSprite* instance = new MenuSprite(spriteNormal, Sprite::create(spriteSelectedResource), Sprite::create(spriteClickedResource));
 
-	menuSprite->autorelease();
+	instance->autorelease();
 
-	return menuSprite;
+	return instance;
 }
 
 MenuSprite* MenuSprite::create(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
 {
-	MenuSprite* menuSprite = new MenuSprite(nodeNormal, nodeSelected, nodeClicked);
+	MenuSprite* instance = new MenuSprite(nodeNormal, nodeSelected, nodeClicked);
 
-	menuSprite->autorelease();
+	instance->autorelease();
 
-	return menuSprite;
+	return instance;
 }
 
 MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
@@ -37,6 +37,10 @@ MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
 	this->sprite = nodeNormal;
 	this->spriteSelected = nodeSelected;
 	this->spriteClicked = nodeClicked;
+
+	this->sprite->setCascadeOpacityEnabled(true);
+	this->spriteSelected->setCascadeOpacityEnabled(true);
+	this->spriteClicked->setCascadeOpacityEnabled(true);
 
 	this->offsetCorrection = Vec2::ZERO;
 

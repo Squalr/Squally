@@ -159,11 +159,13 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ClCompile Include="..\Source\Config\ConfigManager.cpp" />
     <ClCompile Include="..\Source\Engine\GlobalDirector.cpp" />
+    <ClCompile Include="..\Source\Engine\Localization\Localization.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\DefaultLayerDeserializer.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableLayer.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableMap.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableObject.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableTileLayer.cpp" />
+    <ClCompile Include="..\Source\Engine\Rendering\Components\TextMenuSprite.cpp" />
     <ClCompile Include="..\Source\Engine\Rendering\HUD\DeveloperHud.cpp" />
     <ClCompile Include="..\Source\Engine\Sound\SoundManager.cpp" />
     <ClCompile Include="..\Source\Entities\Enemies\Castle\BossWitch.cpp" />
@@ -385,6 +387,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Config\ConfigManager.h" />
     <ClInclude Include="..\Source\Engine\GlobalDirector.h" />
     <ClInclude Include="..\Source\Engine\GlobalNode.h" />
+    <ClInclude Include="..\Source\Engine\Localization\Localization.h" />
     <ClInclude Include="..\Source\Engine\Maps\DefaultLayerDeserializer.h" />
     <ClInclude Include="..\Source\Engine\Maps\ILayerDeserializer.h" />
     <ClInclude Include="..\Source\Engine\Maps\IObjectDeserializer.h" />
@@ -392,6 +395,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Engine\Maps\SerializableMap.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableObject.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableTileLayer.h" />
+    <ClInclude Include="..\Source\Engine\Rendering\Components\TextMenuSprite.h" />
     <ClInclude Include="..\Source\Engine\Rendering\HUD\DeveloperHud.h" />
     <ClInclude Include="..\Source\Engine\Sound\SoundManager.h" />
     <ClInclude Include="..\Source\Entities\Enemies\Castle\BossWitch.h" />
