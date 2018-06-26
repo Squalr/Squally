@@ -3,6 +3,13 @@
 #include <string>
 #include "cocos2d.h"
 
+#include "Engine/Localization/Localization.h"
+#include "Engine/Rendering/Components/FadeScene.h"
+#include "Engine/Rendering/Components/FloatingSprite.h"
+#include "Engine/Rendering/Components/InfiniteParallaxNode.h"
+#include "Engine/Rendering/Components/MenuSprite.h"
+#include "Engine/Rendering/Components/Mouse.h"
+#include "Engine/Rendering/Components/TextMenuSprite.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Menus/Title/HackerMode.h"
@@ -10,11 +17,6 @@
 #include "Scenes/Menus/Tutorial/TutorialScreen.h"
 #include "Scenes/Menus/Story/StoryMap.h"
 #include "Scenes/Menus/Options/OptionsMenu.h"
-#include "Engine/Rendering/Components/FadeScene.h"
-#include "Engine/Rendering/Components/FloatingSprite.h"
-#include "Engine/Rendering/Components/InfiniteParallaxNode.h"
-#include "Engine/Rendering/Components/MenuSprite.h"
-#include "Engine/Rendering/Components/Mouse.h"
 #include "Resources.h"
 #include "Utils/GameUtils.h"
 
@@ -45,11 +47,15 @@ private:
 	MenuSprite* ether;
 	ParticleSystem* etherParticles;
 
-	MenuSprite* storyModeButton;
-	MenuSprite* optionsButton;
-	MenuSprite* exitButton;
+	TextMenuSprite* storyModeButton;
+	TextMenuSprite* optionsButton;
+	TextMenuSprite* exitButton;
 	Sprite* titleBar;
 	Sprite* title;
+
+	static const std::string StringKeyStoryMode;
+	static const std::string StringKeyOptions;
+	static const std::string StringKeyExit;
 
 	const float titleFontSize = 64.0f;
 	const float menuFontSize = 48.0f;

@@ -9,6 +9,7 @@ class Resources
 {
 public:
 	static const std::string EmptyImage;
+	static const std::string LocalizedStrings;
 	static const std::string Backgrounds_Background1;
 	static const std::string Backgrounds_Background2;
 	static const std::string Backgrounds_Beach;
@@ -3184,19 +3185,13 @@ public:
 	static const std::string Menus_PauseMenu_ResumeButton;
 	static const std::string Menus_PauseMenu_ResumeButtonClick;
 	static const std::string Menus_PauseMenu_ResumeButtonHover;
-	static const std::string Menus_TitleScreen_ExitButton;
-	static const std::string Menus_TitleScreen_ExitButtonClick;
-	static const std::string Menus_TitleScreen_ExitButtonHover;
-	static const std::string Menus_TitleScreen_OptionsButton;
-	static const std::string Menus_TitleScreen_OptionsButtonClick;
-	static const std::string Menus_TitleScreen_OptionsButtonHover;
 	static const std::string Menus_TitleScreen_Squally;
 	static const std::string Menus_TitleScreen_SquallyWand;
-	static const std::string Menus_TitleScreen_StoryModeButton;
-	static const std::string Menus_TitleScreen_StoryModeButtonClick;
-	static const std::string Menus_TitleScreen_StoryModeButtonHover;
 	static const std::string Menus_TitleScreen_Title;
 	static const std::string Menus_TitleScreen_TitleBar;
+	static const std::string Menus_TitleScreen_TitleButton;
+	static const std::string Menus_TitleScreen_TitleButtonClick;
+	static const std::string Menus_TitleScreen_TitleButtonHover;
 	static const std::string Menus_TitleScreen_Ghost_Ghost_0000_Layer_0;
 	static const std::string Menus_TitleScreen_Ghost_Ghost_0001_Layer_1;
 	static const std::string Menus_TitleScreen_Ghost_Ghost_0002_Layer_2;

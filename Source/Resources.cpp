@@ -7,6 +7,7 @@
 #include <string>
 
 const std::string Resources::EmptyImage = "EmptyImage.png";
+const std::string Resources::LocalizedStrings = "LocalizedStrings.json";
 const std::string Resources::Backgrounds_Background1 = "Backgrounds\\Background1.png";
 const std::string Resources::Backgrounds_Background2 = "Backgrounds\\Background2.png";
 const std::string Resources::Backgrounds_Beach = "Backgrounds\\Beach.png";
@@ -3182,19 +3183,13 @@ const std::string Resources::Menus_PauseMenu_QuitButtonHover = "Menus\\PauseMenu
 const std::string Resources::Menus_PauseMenu_ResumeButton = "Menus\\PauseMenu\\ResumeButton.png";
 const std::string Resources::Menus_PauseMenu_ResumeButtonClick = "Menus\\PauseMenu\\ResumeButtonClick.png";
 const std::string Resources::Menus_PauseMenu_ResumeButtonHover = "Menus\\PauseMenu\\ResumeButtonHover.png";
-const std::string Resources::Menus_TitleScreen_ExitButton = "Menus\\TitleScreen\\ExitButton.png";
-const std::string Resources::Menus_TitleScreen_ExitButtonClick = "Menus\\TitleScreen\\ExitButtonClick.png";
-const std::string Resources::Menus_TitleScreen_ExitButtonHover = "Menus\\TitleScreen\\ExitButtonHover.png";
-const std::string Resources::Menus_TitleScreen_OptionsButton = "Menus\\TitleScreen\\OptionsButton.png";
-const std::string Resources::Menus_TitleScreen_OptionsButtonClick = "Menus\\TitleScreen\\OptionsButtonClick.png";
-const std::string Resources::Menus_TitleScreen_OptionsButtonHover = "Menus\\TitleScreen\\OptionsButtonHover.png";
 const std::string Resources::Menus_TitleScreen_Squally = "Menus\\TitleScreen\\Squally.png";
 const std::string Resources::Menus_TitleScreen_SquallyWand = "Menus\\TitleScreen\\SquallyWand.png";
-const std::string Resources::Menus_TitleScreen_StoryModeButton = "Menus\\TitleScreen\\StoryModeButton.png";
-const std::string Resources::Menus_TitleScreen_StoryModeButtonClick = "Menus\\TitleScreen\\StoryModeButtonClick.png";
-const std::string Resources::Menus_TitleScreen_StoryModeButtonHover = "Menus\\TitleScreen\\StoryModeButtonHover.png";
 const std::string Resources::Menus_TitleScreen_Title = "Menus\\TitleScreen\\Title.png";
 const std::string Resources::Menus_TitleScreen_TitleBar = "Menus\\TitleScreen\\TitleBar.png";
+const std::string Resources::Menus_TitleScreen_TitleButton = "Menus\\TitleScreen\\TitleButton.png";
+const std::string Resources::Menus_TitleScreen_TitleButtonClick = "Menus\\TitleScreen\\TitleButtonClick.png";
+const std::string Resources::Menus_TitleScreen_TitleButtonHover = "Menus\\TitleScreen\\TitleButtonHover.png";
 const std::string Resources::Menus_TitleScreen_Ghost_Ghost_0000_Layer_0 = "Menus\\TitleScreen\\Ghost\\Ghost_0000_Layer-0.png";
 const std::string Resources::Menus_TitleScreen_Ghost_Ghost_0001_Layer_1 = "Menus\\TitleScreen\\Ghost\\Ghost_0001_Layer-1.png";
 const std::string Resources::Menus_TitleScreen_Ghost_Ghost_0002_Layer_2 = "Menus\\TitleScreen\\Ghost\\Ghost_0002_Layer-2.png";

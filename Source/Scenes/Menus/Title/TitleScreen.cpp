@@ -1,5 +1,9 @@
 #include "TitleScreen.h"
 
+const std::string TitleScreen::StringKeyStoryMode = "Menu_Story_Mode";
+const std::string TitleScreen::StringKeyOptions = "Menu_Options";
+const std::string TitleScreen::StringKeyExit = "Menu_Exit";
+
 TitleScreen * TitleScreen::create()
 {
 	TitleScreen* titleScreen = new TitleScreen();
@@ -14,9 +18,81 @@ TitleScreen::TitleScreen()
 	this->titleBar = Sprite::create(Resources::Menus_TitleScreen_TitleBar);
 	this->title = Sprite::create(Resources::Menus_TitleScreen_Title);
 	this->background = TitleScreenBackground::create();
-	this->storyModeButton = MenuSprite::create(Sprite::create(Resources::Menus_TitleScreen_StoryModeButton), Resources::Menus_TitleScreen_StoryModeButtonHover, Resources::Menus_TitleScreen_StoryModeButtonClick);
-	this->optionsButton = MenuSprite::create(Sprite::create(Resources::Menus_TitleScreen_OptionsButton), Resources::Menus_TitleScreen_OptionsButtonHover, Resources::Menus_TitleScreen_OptionsButtonClick);
-	this->exitButton = MenuSprite::create(Sprite::create(Resources::Menus_TitleScreen_ExitButton), Resources::Menus_TitleScreen_ExitButtonHover, Resources::Menus_TitleScreen_ExitButtonClick);
+	
+	int fontSize = 24;
+	Size shadowSize = Size(-4.0f, -4.0f);
+	int shadowBlur = 2;
+	int hoverOutlineSize = 2;
+	Color3B textColor = Color3B::WHITE;
+	Color4B shadowColor = Color4B::BLACK;
+	Color3B highlightColor = Color3B::YELLOW;
+	Color4B glowColor = Color4B::ORANGE;
+
+	Label* storyModeLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Resources::Fonts_Montserrat_Medium, fontSize);
+	Label* storyModeLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Resources::Fonts_Montserrat_Medium, fontSize);
+	Label* storyModeLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Resources::Fonts_Montserrat_Medium, fontSize);
+
+	Label* optionsLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Resources::Fonts_Montserrat_Medium, fontSize);
+	Label* optionsLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Resources::Fonts_Montserrat_Medium, fontSize);
+	Label* optionsLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Resources::Fonts_Montserrat_Medium, fontSize);
+
+	Label* exitLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Resources::Fonts_Montserrat_Medium, fontSize);
+	Label* exitLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Resources::Fonts_Montserrat_Medium, fontSize);
+	Label* exitLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Resources::Fonts_Montserrat_Medium, fontSize);
+
+	storyModeLabel->setColor(textColor);
+	storyModeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
+	storyModeLabel->enableGlow(shadowColor);
+	optionsLabel->setColor(textColor);
+	optionsLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
+	optionsLabel->enableGlow(shadowColor);
+	exitLabel->setColor(textColor);
+	exitLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
+	exitLabel->enableGlow(shadowColor);
+
+	storyModeLabelHover->setColor(highlightColor);
+	storyModeLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
+	storyModeLabelHover->enableGlow(glowColor);
+	optionsLabelHover->setColor(highlightColor);
+	optionsLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
+	optionsLabelHover->enableGlow(glowColor);
+	exitLabelHover->setColor(highlightColor);
+	exitLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
+	exitLabelHover->enableGlow(glowColor);
+
+	storyModeLabelClicked->setColor(highlightColor);
+	storyModeLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
+	storyModeLabelClicked->enableGlow(glowColor);
+	optionsLabelClicked->setColor(highlightColor);
+	optionsLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
+	optionsLabelClicked->enableGlow(glowColor);
+	exitLabelClicked->setColor(highlightColor);
+	exitLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
+	exitLabelClicked->enableGlow(glowColor);
+
+	this->storyModeButton = TextMenuSprite::create(
+		storyModeLabel,
+		storyModeLabelHover,
+		storyModeLabelClicked,
+		Resources::Menus_TitleScreen_TitleButton,
+		Resources::Menus_TitleScreen_TitleButtonHover,
+		Resources::Menus_TitleScreen_TitleButtonClick);
+
+	this->optionsButton = TextMenuSprite::create(
+		optionsLabel,
+		optionsLabelHover,
+		optionsLabelClicked,
+		Resources::Menus_TitleScreen_TitleButton,
+		Resources::Menus_TitleScreen_TitleButtonHover,
+		Resources::Menus_TitleScreen_TitleButtonClick);
+
+	this->exitButton = TextMenuSprite::create(
+		exitLabel,
+		exitLabelHover,
+		exitLabelClicked,
+		Resources::Menus_TitleScreen_TitleButton,
+		Resources::Menus_TitleScreen_TitleButtonHover,
+		Resources::Menus_TitleScreen_TitleButtonClick);
 
 	this->ether = MenuSprite::create(Sprite::create(Resources::Menus_Backgrounds_Ether), Resources::Menus_Backgrounds_EtherSelected, Resources::Menus_Backgrounds_EtherSelected);
 	this->etherParticles = ParticleGalaxy::create();

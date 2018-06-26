@@ -112,7 +112,7 @@ bool SerializableMap::serialize()
 	tileSetElement->LinkEndChild(gridElement);
 
 	tinyxml2::XMLElement* imageElement = documentRoot->NewElement("image");
-	imageElement->SetAttribute("source", (".." + Resources::Tiles_TileMap).c_str());
+	imageElement->SetAttribute("source", ("../" + StrUtils::replaceAll(Resources::Tiles_TileMap, "\\", "/")).c_str());
 	imageElement->SetAttribute("width", std::to_string((int)tileMap->getContentSize().width).c_str());
 	imageElement->SetAttribute("height", std::to_string((int)tileMap->getContentSize().height).c_str());
 	tileSetElement->LinkEndChild(imageElement);
