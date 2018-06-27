@@ -6,11 +6,11 @@ const std::string TitleScreen::StringKeyExit = "Menu_Exit";
 
 TitleScreen * TitleScreen::create()
 {
-	TitleScreen* titleScreen = new TitleScreen();
+	TitleScreen* instance = new TitleScreen();
 
-	titleScreen->autorelease();
+	instance->autorelease();
 
-	return titleScreen;
+	return instance;
 }
 
 TitleScreen::TitleScreen()

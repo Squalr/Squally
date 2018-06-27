@@ -136,7 +136,7 @@ void Level::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		PauseEvents::pauseLevel(PauseEvents::PauseEventArgs(this->map->getMapFileName(), Player::getInstance()->getPosition()));
+		NavigationEvents::navigate(NavigationEvents::GameScreen::Pause);
 		event->stopPropagation();
 		break;
 	case EventKeyboard::KeyCode::KEY_GRAVE:

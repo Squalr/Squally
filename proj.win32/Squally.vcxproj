@@ -280,7 +280,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Events\HexusEvents.cpp" />
     <ClCompile Include="..\Source\Events\NavigationEvents.cpp" />
     <ClCompile Include="..\Source\Events\MouseEvents.cpp" />
-    <ClCompile Include="..\Source\Events\PauseEvents.cpp" />
     <ClCompile Include="..\Source\Objects\Collision\CollisionDeserializer.cpp" />
     <ClCompile Include="..\Source\Objects\DecorDeserializer.cpp" />
     <ClCompile Include="..\Source\Objects\DecorObject.cpp" />
@@ -511,7 +510,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Events\HexusEvents.h" />
     <ClInclude Include="..\Source\Events\NavigationEvents.h" />
     <ClInclude Include="..\Source\Events\MouseEvents.h" />
-    <ClInclude Include="..\Source\Events\PauseEvents.h" />
     <ClInclude Include="..\Source\Objects\Collision\CollisionDeserializer.h" />
     <ClInclude Include="..\Source\Objects\DecorDeserializer.h" />
     <ClInclude Include="..\Source\Objects\DecorObject.h" />

@@ -66,9 +66,9 @@ CodeEditor::CodeEditor()
 	this->statusWindow = TextWindow::create("Status", CodeEditor::statusSize, 32, CodeEditor::defaultColor);
 	this->functionWindow = EditableTextWindow::create("Code Editor", CodeEditor::functionSize, 32, CodeEditor::defaultColor);
 	this->secondaryWindow = EditableTextWindow::create("Allocation Editor", CodeEditor::secondarySize, 32, CodeEditor::defaultColor);
-	this->cancelButton = MenuSprite::create(Resources::Menus_HackerModeMenu_CancelTextButton, Resources::Menus_HackerModeMenu_CancelTextButtonHover, Resources::Menus_HackerModeMenu_CancelTextButtonClick);
-	this->acceptButton = MenuSprite::create(Resources::Menus_HackerModeMenu_AcceptTextButton, Resources::Menus_HackerModeMenu_AcceptTextButtonHover, Resources::Menus_HackerModeMenu_AcceptTextButtonClick);
-	this->acceptButtonGrayed = Sprite::create(Resources::Menus_HackerModeMenu_AcceptTextButtonGray);
+	this->cancelButton = MenuSprite::create(Resources::Menus_Buttons_GenericHackButton, Resources::Menus_Buttons_GenericHackButtonHover, Resources::Menus_Buttons_GenericHackButtonClick);
+	this->acceptButton = MenuSprite::create(Resources::Menus_Buttons_GenericHackButton, Resources::Menus_Buttons_GenericHackButtonHover, Resources::Menus_Buttons_GenericHackButtonClick);
+	this->acceptButtonGrayed = Sprite::create(Resources::Menus_Buttons_GenericHackButtonGray);
 
 	this->functionWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
 	this->secondaryWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));

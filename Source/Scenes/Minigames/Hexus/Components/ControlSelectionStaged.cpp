@@ -19,12 +19,12 @@ ControlSelectionStaged::ControlSelectionStaged()
 	this->selectionLabel->setDimensions(Config::statusLabelWidth - 48.0f, 0.0f);
 	this->selectionLabel->setOpacity(0);
 
-	this->cancelButton = MenuSprite::create(Resources::Menus_HackerModeMenu_CancelButton, Resources::Menus_HackerModeMenu_CancelButtonHover, Resources::Menus_HackerModeMenu_CancelButtonClick);
+	this->cancelButton = MenuSprite::create(Resources::Menus_Buttons_CancelV2Button, Resources::Menus_Buttons_CancelV2ButtonHover, Resources::Menus_Buttons_CancelV2ButtonClick);
 	this->cancelButton->setCascadeOpacityEnabled(true);
 	this->cancelButton->setOpacity(0.0f);
 	this->cancelButton->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->helpButton = MenuSprite::create(Resources::Menus_HackerModeMenu_GraphButton, Resources::Menus_HackerModeMenu_GraphButtonHover, Resources::Menus_HackerModeMenu_GraphButtonClick);
+	this->helpButton = MenuSprite::create(Resources::Menus_Buttons_GraphV2Button, Resources::Menus_Buttons_GraphV2ButtonHover, Resources::Menus_Buttons_GraphV2ButtonClick);
 	this->helpButton->setCascadeOpacityEnabled(true);
 	this->helpButton->setOpacity(0.0f);
 	this->helpButton->setAnchorPoint(Vec2(0.0f, 1.0f));
