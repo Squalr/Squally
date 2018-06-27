@@ -64,6 +64,8 @@ void Mouse::setCanClick(bool canClick)
 
 void Mouse::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
+
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
 	EventListenerCustom* mouseCanClickListener = EventListenerCustom::create(
 		MouseEvents::MouseCanClickEvent,

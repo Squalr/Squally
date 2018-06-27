@@ -59,6 +59,7 @@ void Deck::initializePositions()
 
 void Deck::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void Deck::copyTo(Deck* otherDeck)

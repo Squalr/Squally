@@ -50,6 +50,7 @@ void ControlSacrificeStaged::initializePositions()
 
 void ControlSacrificeStaged::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void ControlSacrificeStaged::onStateChange(GameState* gameState)

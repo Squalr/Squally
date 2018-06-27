@@ -48,6 +48,8 @@ void DeveloperHud::initializePositions()
 
 void DeveloperHud::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
+
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(DeveloperHud::onKeyPressed, this);

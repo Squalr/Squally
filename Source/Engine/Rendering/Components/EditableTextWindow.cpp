@@ -86,6 +86,7 @@ void EditableTextWindow::initializePositions()
 
 void EditableTextWindow::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void EditableTextWindow::update(float dt)

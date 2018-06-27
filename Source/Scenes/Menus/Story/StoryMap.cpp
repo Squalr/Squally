@@ -181,13 +181,15 @@ void StoryMap::initializePositions()
 
 void StoryMap::initializeListeners()
 {
-	EventListenerCustom* customListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(StoryMap::onMouseSpriteMove, this));
-	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 
-	listener->onKeyPressed = CC_CALLBACK_2(StoryMap::onKeyPressed, this);
+	EventListenerCustom* mouseListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(StoryMap::onMouseSpriteMove, this));
+	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(customListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(StoryMap::onKeyPressed, this);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 }
 
 void StoryMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)

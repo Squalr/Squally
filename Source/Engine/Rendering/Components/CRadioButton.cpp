@@ -14,8 +14,8 @@ CRadioButton::CRadioButton(int groupIdentifier)
 	this->onCheckCallback = nullptr;
 	this->groupId = groupIdentifier;
 
-	this->checked = MenuSprite::create(Sprite::create(Resources::Menus_OptionsMenu_RadioButtonSelected), Resources::Menus_OptionsMenu_RadioButtonSelectedHover, Resources::Menus_OptionsMenu_RadioButtonSelectedHover);
-	this->unchecked = MenuSprite::create(Sprite::create(Resources::Menus_OptionsMenu_RadioButtonEmpty), Resources::Menus_OptionsMenu_RadioButtonHover, Resources::Menus_OptionsMenu_RadioButtonHover);
+	this->checked = MenuSprite::create(Resources::Menus_OptionsMenu_RadioButtonSelected, Resources::Menus_OptionsMenu_RadioButtonSelectedHover, Resources::Menus_OptionsMenu_RadioButtonSelectedHover);
+	this->unchecked = MenuSprite::create(Resources::Menus_OptionsMenu_RadioButtonEmpty, Resources::Menus_OptionsMenu_RadioButtonHover, Resources::Menus_OptionsMenu_RadioButtonHover);
 
 	this->checked->setClickCallback(CC_CALLBACK_1(CRadioButton::onUncheckClick, this));
 	this->unchecked->setClickCallback(CC_CALLBACK_1(CRadioButton::onCheckClick, this));
@@ -35,6 +35,8 @@ CRadioButton::~CRadioButton()
 
 void CRadioButton::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
+
 	EventListenerCustom* customListener = EventListenerCustom::create(this->RadioButtonCheckEvent, CC_CALLBACK_1(CRadioButton::onGroupCheck, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(customListener, this);

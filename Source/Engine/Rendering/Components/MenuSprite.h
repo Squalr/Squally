@@ -13,7 +13,6 @@ class MenuSprite : public Node
 {
 public:
 	static MenuSprite * create(std::string spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource);
-	static MenuSprite * create(Node* spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource);
 	static MenuSprite * create(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked);
 
 	void setContentScale(float scale);

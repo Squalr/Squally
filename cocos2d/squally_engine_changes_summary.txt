@@ -34,3 +34,5 @@ Changes to engine:
 - Fix to CCTMXXMLParser.cpp to deserialize x/y/width/height values as floats instead of ints
 
 - Fix to CCTMXXMLParser.cpp to deserialize polygoin x/y points as floats instead of ints
+
+- Update to CCNode::onEnter() to remove all existing events on the object

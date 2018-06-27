@@ -88,12 +88,14 @@ void InputManager::update(float dt)
 
 void InputManager::InitializeListeners()
 {
-	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 
-	listener->onKeyPressed = CC_CALLBACK_2(InputManager::onKeyPressed, this);
-	listener->onKeyReleased = CC_CALLBACK_2(InputManager::onKeyReleased, this);
+	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(InputManager::onKeyPressed, this);
+	keyboardListener->onKeyReleased = CC_CALLBACK_2(InputManager::onKeyReleased, this);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 }
 
 void InputManager::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)

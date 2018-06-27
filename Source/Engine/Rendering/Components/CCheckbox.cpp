@@ -45,6 +45,8 @@ CCheckbox::~CCheckbox()
 
 void CCheckbox::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
+
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
 
 	mouseListener->onMouseMove = CC_CALLBACK_1(CCheckbox::onMouseMove, this);

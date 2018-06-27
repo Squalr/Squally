@@ -56,6 +56,7 @@ void DeckCardCountDisplay::initializePositions()
 
 void DeckCardCountDisplay::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void DeckCardCountDisplay::onStateChange(GameState* gameState)

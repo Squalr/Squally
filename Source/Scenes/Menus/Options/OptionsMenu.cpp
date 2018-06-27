@@ -14,7 +14,7 @@ OptionsMenu::OptionsMenu()
 	this->background = Node::create();
 	this->optionsWindow = Sprite::create(Resources::Menus_OptionsMenu_OptionsMenu);
 	this->fullScreenLabel = Label::create("Full Screen", Resources::Fonts_Montserrat_Medium, menuFontSize);
-	this->closeButton = MenuSprite::create(Sprite::create(Resources::Menus_Buttons_CloseButton), Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
+	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
 
 	this->fullScreenLabel->enableOutline(Color4B::BLACK, 2.0f);
 
@@ -48,7 +48,7 @@ OptionsMenu::OptionsMenu()
 	this->option1600x1024 = CRadioButton::create(this->resolutionGroupId);
 	this->option1920x1080 = CRadioButton::create(this->resolutionGroupId);
 
-	this->exitButton = MenuSprite::create(Sprite::create(Resources::Menus_Buttons_GenericButton), Resources::Menus_Buttons_GenericButtonHover, Resources::Menus_Buttons_GenericButtonClick);
+	this->exitButton = MenuSprite::create(Resources::Menus_Buttons_GenericButton, Resources::Menus_Buttons_GenericButtonHover, Resources::Menus_Buttons_GenericButtonClick);
 
 	this->musicSlider->setProgressUpdateCallback(CC_CALLBACK_1(OptionsMenu::onMusicVolumeUpdate, this));
 	this->soundSlider->setProgressUpdateCallback(CC_CALLBACK_1(OptionsMenu::onSoundVolumeUpdate, this));
@@ -256,11 +256,13 @@ void OptionsMenu::onResolutionChanged(CRadioButton* radioButton)
 
 void OptionsMenu::initializeListeners()
 {
-	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 
-	listener->onKeyPressed = CC_CALLBACK_2(OptionsMenu::onKeyPressed, this);
+	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(OptionsMenu::onKeyPressed, this);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 }
 
 void OptionsMenu::initializePositions()

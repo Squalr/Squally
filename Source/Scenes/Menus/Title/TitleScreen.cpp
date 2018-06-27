@@ -94,7 +94,7 @@ TitleScreen::TitleScreen()
 		Resources::Menus_TitleScreen_TitleButtonHover,
 		Resources::Menus_TitleScreen_TitleButtonClick);
 
-	this->ether = MenuSprite::create(Sprite::create(Resources::Menus_Backgrounds_Ether), Resources::Menus_Backgrounds_EtherSelected, Resources::Menus_Backgrounds_EtherSelected);
+	this->ether = MenuSprite::create(Resources::Menus_Backgrounds_Ether, Resources::Menus_Backgrounds_EtherSelected, Resources::Menus_Backgrounds_EtherSelected);
 	this->etherParticles = ParticleGalaxy::create();
 
 	this->addChild(this->background);

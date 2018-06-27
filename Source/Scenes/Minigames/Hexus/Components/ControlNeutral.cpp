@@ -32,6 +32,7 @@ void ControlNeutral::initializePositions()
 
 void ControlNeutral::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void ControlNeutral::onStateChange(GameState* gameState)

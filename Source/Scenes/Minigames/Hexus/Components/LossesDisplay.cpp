@@ -62,6 +62,7 @@ void LossesDisplay::initializePositions()
 
 void LossesDisplay::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void LossesDisplay::onStateChange(GameState* gameState)

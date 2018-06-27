@@ -57,6 +57,7 @@ void ControlSelectionStaged::initializePositions()
 
 void ControlSelectionStaged::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void ControlSelectionStaged::onStateChange(GameState* gameState)

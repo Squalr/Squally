@@ -63,6 +63,7 @@ void HandCardCountDisplay::initializePositions()
 
 void HandCardCountDisplay::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void HandCardCountDisplay::onStateChange(GameState* gameState)

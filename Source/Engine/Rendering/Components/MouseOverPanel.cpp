@@ -41,9 +41,11 @@ MouseOverPanel::~MouseOverPanel()
 
 void MouseOverPanel::initializeListeners()
 {
-	EventListenerCustom* customListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MouseOverPanel::onMouseSpriteMove, this));
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(customListener, this);
+	EventListenerCustom* mouseListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MouseOverPanel::onMouseSpriteMove, this));
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
 
 void MouseOverPanel::onMouseSpriteMove(EventCustom* event)

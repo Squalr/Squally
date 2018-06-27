@@ -167,6 +167,7 @@ void TitleScreenBackground::onEnter()
 
 void TitleScreenBackground::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void TitleScreenBackground::initializePositions()

@@ -48,6 +48,7 @@ void ControlReplaceCards::initializePositions()
 
 void ControlReplaceCards::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void ControlReplaceCards::onStateChange(GameState* gameState)

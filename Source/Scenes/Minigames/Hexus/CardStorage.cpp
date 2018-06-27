@@ -26,5 +26,6 @@ void CardStorage::initializePositions()
 
 void CardStorage::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
