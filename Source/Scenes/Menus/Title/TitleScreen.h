@@ -20,7 +20,6 @@
 #include "Resources.h"
 #include "Utils/GameUtils.h"
 
-
 using namespace cocos2d;
 using namespace cocos_experimental;
 

@@ -19,7 +19,7 @@ ControlSacrificeStaged::ControlSacrificeStaged()
 	this->sacrificeStatus->setDimensions(Config::statusLabelWidth, 0.0f);
 	this->sacrificeStatus->setOpacity(0);
 
-	this->cancelButton = MenuSprite::create(Resources::Menus_HackerModeMenu_CancelButton, Resources::Menus_HackerModeMenu_CancelButtonHover, Resources::Menus_HackerModeMenu_CancelButtonClick);
+	this->cancelButton = MenuSprite::create(Resources::Menus_Buttons_CancelV2Button, Resources::Menus_Buttons_CancelV2ButtonHover, Resources::Menus_Buttons_CancelV2ButtonClick);
 	this->cancelButton->setCascadeOpacityEnabled(true);
 	this->cancelButton->setOpacity(0.0f);
 	this->cancelButton->setAnchorPoint(Vec2(0.0f, 1.0f));

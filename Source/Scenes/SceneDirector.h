@@ -6,7 +6,6 @@
 #include "Engine/Maps/SerializableMap.h"
 #include "Events/HexusEvents.h"
 #include "Events/NavigationEvents.h"
-#include "Events/PauseEvents.h"
 #include "Fight/Fight.h"
 #include "Level/Level.h"
 #include "Minigames/Minigames.h"

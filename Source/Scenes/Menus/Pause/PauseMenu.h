@@ -2,7 +2,6 @@
 #include "cocos2d.h"
 
 #include "Events/NavigationEvents.h"
-#include "Events/PauseEvents.h"
 #include "Engine/Rendering/Components/FadeScene.h"
 #include "Engine/Rendering/Components/InfiniteParallaxNode.h"
 #include "Engine/Rendering/Components/MenuSprite.h"

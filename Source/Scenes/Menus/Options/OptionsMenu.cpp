@@ -48,7 +48,7 @@ OptionsMenu::OptionsMenu()
 	this->option1600x1024 = CRadioButton::create(this->resolutionGroupId);
 	this->option1920x1080 = CRadioButton::create(this->resolutionGroupId);
 
-	this->exitButton = MenuSprite::create(Sprite::create(Resources::Menus_OptionsMenu_ExitButton), Resources::Menus_OptionsMenu_ExitButtonHover, Resources::Menus_OptionsMenu_ExitButtonClick);
+	this->exitButton = MenuSprite::create(Sprite::create(Resources::Menus_Buttons_GenericButton), Resources::Menus_Buttons_GenericButtonHover, Resources::Menus_Buttons_GenericButtonClick);
 
 	this->musicSlider->setProgressUpdateCallback(CC_CALLBACK_1(OptionsMenu::onMusicVolumeUpdate, this));
 	this->soundSlider->setProgressUpdateCallback(CC_CALLBACK_1(OptionsMenu::onSoundVolumeUpdate, this));

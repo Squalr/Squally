@@ -14,9 +14,9 @@ PauseMenu::PauseMenu()
 	this->background = Node::create();
 	this->pauseWindow = Sprite::create(Resources::Menus_PauseMenu_PauseMenu);
 	this->closeButton = MenuSprite::create(Sprite::create(Resources::Menus_Buttons_CloseButton), Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
-	this->resumeButton = MenuSprite::create(Sprite::create(Resources::Menus_PauseMenu_ResumeButton), Resources::Menus_PauseMenu_ResumeButtonHover, Resources::Menus_PauseMenu_ResumeButtonClick);
-	this->optionsButton = MenuSprite::create(Sprite::create(Resources::Menus_PauseMenu_OptionsButton), Resources::Menus_PauseMenu_OptionsButtonHover, Resources::Menus_PauseMenu_OptionsButtonClick);
-	this->exitButton = MenuSprite::create(Sprite::create(Resources::Menus_PauseMenu_QuitButton), Resources::Menus_PauseMenu_QuitButtonHover, Resources::Menus_PauseMenu_QuitButtonClick);
+	this->resumeButton = MenuSprite::create(Sprite::create(Resources::Menus_Buttons_GenericButton), Resources::Menus_Buttons_GenericButtonHover, Resources::Menus_Buttons_GenericButtonClick);
+	this->optionsButton = MenuSprite::create(Sprite::create(Resources::Menus_Buttons_GenericButton), Resources::Menus_Buttons_GenericButtonHover, Resources::Menus_Buttons_GenericButtonClick);
+	this->exitButton = MenuSprite::create(Sprite::create(Resources::Menus_Buttons_GenericButton), Resources::Menus_Buttons_GenericButtonHover, Resources::Menus_Buttons_GenericButtonClick);
 
 	this->addChild(this->background);
 	this->addChild(this->pauseWindow);

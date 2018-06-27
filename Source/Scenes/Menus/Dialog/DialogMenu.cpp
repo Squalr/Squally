@@ -241,7 +241,7 @@ Node* DialogMenu::getPortraitNode(Portrait portrait, bool isRight)
 	{
 		Node * node = Node::create();
 		Sprite* background = Sprite::create(Resources::Menus_DialogMenu_JungleBackground);
-		FloatingSprite * sprite = FloatingSprite::create(Resources::Menus_DialogMenu_PlayerPortrait, Vec2(2.0f, -24.0f), Vec2(6.25f, 6.25f));
+		FloatingSprite * sprite = FloatingSprite::create(Resources::Entities_Player_SquallyBase, Vec2(2.0f, -24.0f), Vec2(6.25f, 6.25f));
 		sprite->setFlippedX(isRight);
 
 		ParticleSystem* starParticles = ParticleSystemQuad::create(Resources::Particles_ColorfulStars);
