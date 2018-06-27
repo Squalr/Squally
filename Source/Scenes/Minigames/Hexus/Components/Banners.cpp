@@ -45,6 +45,7 @@ void Banners::initializePositions()
 
 void Banners::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void Banners::onStateChange(GameState* gameState)

@@ -16,7 +16,7 @@ TutorialScreen::TutorialScreen()
 	this->tutorialWindow = Sprite::create(Resources::Menus_TutorialMenu_TutorialSelect);
 	this->descriptionBox = Sprite::create(Resources::Menus_TutorialMenu_TutorialItem);
 	this->description = Label::create("", Resources::Fonts_Montserrat_Medium, 14);
-	this->closeButton = MenuSprite::create(Sprite::create(Resources::Menus_Buttons_CloseButton), Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
+	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
 
 	this->floatingBox1 = FloatingSprite::create(Resources::Menus_TutorialMenu_ObjectBox1, Vec2(-32.0f, -32.0f), Vec2(8.0f, 5.0f));
 	this->floatingBox2 = FloatingSprite::create(Resources::Menus_TutorialMenu_ObjectBox2, Vec2(32.0f, 32.0f), Vec2(8.0f, 8.0f));
@@ -223,11 +223,13 @@ void TutorialScreen::onMouseOver(TutorialItem* tutorialItem)
 
 void TutorialScreen::initializeListeners()
 {
-	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 
-	listener->onKeyPressed = CC_CALLBACK_2(TutorialScreen::onKeyPressed, this);
+	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(TutorialScreen::onKeyPressed, this);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 }
 
 void TutorialScreen::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)

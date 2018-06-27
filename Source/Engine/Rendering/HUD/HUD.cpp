@@ -43,12 +43,14 @@ void Hud::initializePositions()
 
 void Hud::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
+
 	EventListenerCustom* dialogListener = EventListenerCustom::create(DialogEvents::DialogOpenEvent, CC_CALLBACK_1(Hud::onDialogOpen, this));
-	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
-	listener->onKeyPressed = CC_CALLBACK_2(Hud::onKeyPressed, this);
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(Hud::onKeyPressed, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(dialogListener, this);
 }
 

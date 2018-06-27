@@ -79,14 +79,16 @@ void Level::initializePositions()
 
 void Level::initializeListeners()
 {
-	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
+
+	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
 
-	listener->onKeyPressed = CC_CALLBACK_2(Level::onKeyPressed, this);
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(Level::onKeyPressed, this);
 	mouseListener->onMouseScroll = CC_CALLBACK_1(Level::onMouseWheelScroll, this);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 }
 
 void Level::loadLevel(SerializableMap* levelMap)

@@ -107,6 +107,8 @@ void Card::initializePositions()
 
 void Card::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
+
 	this->cardSprite->setMouseOverCallback(CC_CALLBACK_1(Card::onMouseOver, this));
 	this->cardSprite->setClickCallback(CC_CALLBACK_1(Card::onMouseClick, this));
 }

@@ -68,6 +68,8 @@ void MenuLabel::onEnter()
 
 void MenuLabel::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
+
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
 
 	mouseListener->onMouseMove = CC_CALLBACK_1(MenuLabel::onMouseMove, this);

@@ -112,6 +112,8 @@ void CodeEditor::initializePositions()
 
 void CodeEditor::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
+
 	this->acceptButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onAccept, this));
 	this->cancelButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onCancel, this));
 }

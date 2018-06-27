@@ -69,6 +69,7 @@ void CoinFlip::initializePositions()
 
 void CoinFlip::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void CoinFlip::onStateChange(GameState* gameState)

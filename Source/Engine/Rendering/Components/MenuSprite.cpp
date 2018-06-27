@@ -5,15 +5,6 @@ MenuSprite* MenuSprite::create(std::string spriteNormal, std::string spriteSelec
 	return MenuSprite::create(Sprite::create(spriteNormal), Sprite::create(spriteSelectedResource), Sprite::create(spriteClickedResource));
 }
 
-MenuSprite* MenuSprite::create(Node* spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource)
-{
-	MenuSprite* instance = new MenuSprite(spriteNormal, Sprite::create(spriteSelectedResource), Sprite::create(spriteClickedResource));
-
-	instance->autorelease();
-
-	return instance;
-}
-
 MenuSprite* MenuSprite::create(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
 {
 	MenuSprite* instance = new MenuSprite(nodeNormal, nodeSelected, nodeClicked);
@@ -63,6 +54,7 @@ void MenuSprite::onEnter()
 	this->isClicked = false;
 
 	this->setCascadeOpacityEnabled(true);
+	this->sprite->setVisible(true);
 	this->spriteClicked->setVisible(false);
 	this->spriteSelected->setVisible(false);
 
@@ -74,6 +66,7 @@ void MenuSprite::update(float dt)
 {
 	Node::update(dt);
 
+	// Update the hover/click sprites to track the main sprite
 	this->spriteClicked->setPosition(this->sprite->getPosition());
 	this->spriteSelected->setPosition(this->sprite->getPosition());
 }
@@ -135,6 +128,8 @@ void MenuSprite::setClickSound(std::string soundResource)
 
 void MenuSprite::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
+
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
 	EventListenerCustom* customListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MenuSprite::onMouseSpriteMove, this));
 
@@ -274,7 +269,6 @@ void MenuSprite::onMouseUp(EventMouse* event)
 					SoundManager::playSoundResource(this->clickSound);
 				}
 
-				// Show mouse hover sprite
 				this->sprite->setVisible(false);
 				this->spriteClicked->setVisible(false);
 				this->spriteSelected->setVisible(true);

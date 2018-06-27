@@ -23,6 +23,8 @@ void ComponentBase::initializePositions()
 
 void ComponentBase::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
+
 	EventListenerCustom* stateListener = EventListenerCustom::create(GameState::onStateUpdateEvent, CC_CALLBACK_1(ComponentBase::onStateChangeEvent, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(stateListener, this);

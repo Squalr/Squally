@@ -128,6 +128,7 @@ void TextWindow::initializePositions()
 
 void TextWindow::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void TextWindow::update(float dt)

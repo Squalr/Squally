@@ -58,6 +58,8 @@ void MapNode::initializePositions()
 
 void MapNode::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
+
 	this->mapSprite->setClickCallback(CC_CALLBACK_2(MapNode::onNodeClick, this));
 }
 

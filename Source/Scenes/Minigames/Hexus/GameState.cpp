@@ -102,6 +102,7 @@ void GameState::initializePositions()
 
 void GameState::initializeListeners()
 {
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void GameState::clearCallbackStates()

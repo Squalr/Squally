@@ -72,11 +72,13 @@ void Hexus::initializePositions()
 
 void Hexus::initializeListeners()
 {
-	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
 
-	listener->onKeyPressed = CC_CALLBACK_2(Hexus::onKeyPressed, this);
+	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(Hexus::onKeyPressed, this);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 }
 
 void Hexus::onGameStart(EventCustom* eventCustom)
