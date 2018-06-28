@@ -1,98 +1,109 @@
 #include "StoryMap.h"
 
+const std::string StoryMap::StringKeySelectLevel = "Menu_Story_Select_Level";
+const std::string StoryMap::StringKeyLevelNameJungle = "Menu_Story_Level_Name_Jungle";
+const std::string StoryMap::StringKeyLevelNameAquaticRuins = "Menu_Story_Level_Name_Aquatic_Ruins";
+const std::string StoryMap::StringKeyLevelNameForest = "Menu_Story_Level_Name_Forest";
+const std::string StoryMap::StringKeyLevelNameCaverns = "Menu_Story_Level_Name_Caverns";
+const std::string StoryMap::StringKeyLevelNameCastle = "Menu_Story_Level_Name_Castle";
+const std::string StoryMap::StringKeyLevelNameIceCaps = "Menu_Story_Level_Name_Ice_Caps";
+const std::string StoryMap::StringKeyLevelNameObelisk = "Menu_Story_Level_Name_Obelisk";
+const std::string StoryMap::StringKeyLevelNameVolcano = "Menu_Story_Level_Name_Volcano";
+const std::string StoryMap::StringKeyLevelNameMech = "Menu_Story_Level_Name_Mech";
+
 StoryMap * StoryMap::create()
 {
-	StoryMap* storyMap = new StoryMap();
+	StoryMap* instance = new StoryMap();
 
-	storyMap->autorelease();
+	instance->autorelease();
 
-	return storyMap;
+	return instance;
 }
 
 StoryMap::StoryMap()
 {
 	this->mapNodes = new std::vector<MapNode*>();
-	this->background = Sprite::create(Resources::Menus_WorldMaps_StoryMap);
-	this->foreground = Sprite::create(Resources::Menus_WorldMaps_StoryMapFront);
+	this->background = Sprite::create(Resources::Menus_StoryMenu_StoryMap);
+	this->foreground = Sprite::create(Resources::Menus_StoryMenu_StoryMapFront);
 	this->fogA = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
 	this->fogB = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
 	this->fogC = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
-	this->titleLabel = Label::create("Level Select", Resources::Fonts_Montserrat_Medium, this->titleFontSize);
+	this->titleLabel = Label::create(Localization::resolveString(StoryMap::StringKeySelectLevel), Resources::Fonts_Montserrat_Medium, this->titleFontSize);
 	this->infoLabel = Label::create("", Resources::Fonts_Montserrat_Medium, this->infoFontSize);
 
-	this->titleLabel->setVisible(false);
-	this->infoLabel->setVisible(false);
+	this->titleLabel->enableOutline(Color4B::BLACK, 2);
+	this->infoLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->jungle = MapNode::create(
-		Resources::Menus_WorldMaps_Jungle,
-		Resources::Menus_WorldMaps_JungleSelected,
-		Resources::Menus_WorldMaps_JungleLocked,
-		"Jungle",
-		Resources::Levels_Jungle
+		Resources::Menus_StoryMenu_Jungle,
+		Resources::Menus_StoryMenu_JungleSelected,
+		Resources::Menus_StoryMenu_JungleLocked,
+		Localization::resolveString(StoryMap::StringKeyLevelNameJungle),
+		Resources::Levels_Jungle_Jungle
 	);
 
 	this->waterRuins = MapNode::create(
-		Resources::Menus_WorldMaps_WaterRuins,
-		Resources::Menus_WorldMaps_WaterRuinsSelected,
-		Resources::Menus_WorldMaps_WaterRuinsLocked,
-		"Aquatic Ruins",
-		Resources::Levels_AquaticRuins
+		Resources::Menus_StoryMenu_WaterRuins,
+		Resources::Menus_StoryMenu_WaterRuinsSelected,
+		Resources::Menus_StoryMenu_WaterRuinsLocked,
+		Localization::resolveString(StoryMap::StringKeyLevelNameAquaticRuins),
+		Resources::Levels_AquaticRuins_AquaticRuins
 	);
 
 	this->forest = MapNode::create(
-		Resources::Menus_WorldMaps_Forest,
-		Resources::Menus_WorldMaps_ForestSelected,
-		Resources::Menus_WorldMaps_ForestLocked,
-		"Forest",
-		Resources::Levels_Forest
+		Resources::Menus_StoryMenu_Forest,
+		Resources::Menus_StoryMenu_ForestSelected,
+		Resources::Menus_StoryMenu_ForestLocked,
+		Localization::resolveString(StoryMap::StringKeyLevelNameForest),
+		Resources::Levels_Forest_Forest
 	);
 
 	this->caverns = MapNode::create(
-		Resources::Menus_WorldMaps_Mountain,
-		Resources::Menus_WorldMaps_MountainSelected,
-		Resources::Menus_WorldMaps_MountainLocked,
-		"Caverns",
-		Resources::Levels_Caverns
+		Resources::Menus_StoryMenu_Mountain,
+		Resources::Menus_StoryMenu_MountainSelected,
+		Resources::Menus_StoryMenu_MountainLocked,
+		Localization::resolveString(StoryMap::StringKeyLevelNameCaverns),
+		Resources::Levels_Caverns_Caverns
 	);
 
 	this->castle = MapNode::create(
-		Resources::Menus_WorldMaps_Castle,
-		Resources::Menus_WorldMaps_CastleSelected,
-		Resources::Menus_WorldMaps_CastleLocked,
-		"Castle",
-		Resources::Levels_Castle
+		Resources::Menus_StoryMenu_Castle,
+		Resources::Menus_StoryMenu_CastleSelected,
+		Resources::Menus_StoryMenu_CastleLocked,
+		Localization::resolveString(StoryMap::StringKeyLevelNameCastle),
+		Resources::Levels_Castle_Castle
 	);
 
 	this->iceCaps = MapNode::create(
-		Resources::Menus_WorldMaps_IceMountain,
-		Resources::Menus_WorldMaps_IceMountainSelected,
-		Resources::Menus_WorldMaps_IceMountainLocked,
-		"Ice Caps",
-		Resources::Levels_IceCaps
+		Resources::Menus_StoryMenu_IceMountain,
+		Resources::Menus_StoryMenu_IceMountainSelected,
+		Resources::Menus_StoryMenu_IceMountainLocked,
+		Localization::resolveString(StoryMap::StringKeyLevelNameIceCaps),
+		Resources::Levels_IceCaps_IceCaps
 	);
 
 	this->obelisk = MapNode::create(
-		Resources::Menus_WorldMaps_Monolith,
-		Resources::Menus_WorldMaps_MonolithSelected,
-		Resources::Menus_WorldMaps_MonolithLocked,
-		"The Obelisk",
-		Resources::Levels_Obelisk
+		Resources::Menus_StoryMenu_Obelisk,
+		Resources::Menus_StoryMenu_ObeliskSelected,
+		Resources::Menus_StoryMenu_ObeliskLocked,
+		Localization::resolveString(StoryMap::StringKeyLevelNameObelisk),
+		Resources::Levels_Obelisk_Obelisk
 	);
 
 	this->volcano = MapNode::create(
-		Resources::Menus_WorldMaps_Volcano,
-		Resources::Menus_WorldMaps_VolcanoSelected,
-		Resources::Menus_WorldMaps_VolcanoLocked,
-		"Volcano",
-		Resources::Levels_Volcano
+		Resources::Menus_StoryMenu_Volcano,
+		Resources::Menus_StoryMenu_VolcanoSelected,
+		Resources::Menus_StoryMenu_VolcanoLocked,
+		Localization::resolveString(StoryMap::StringKeyLevelNameVolcano),
+		Resources::Levels_Volcano_Volcano
 	);
 
 	this->mecha = MapNode::create(
-		Resources::Menus_WorldMaps_Mecha,
-		Resources::Menus_WorldMaps_MechaSelected,
-		Resources::Menus_WorldMaps_MechaLocked,
-		"Mecha",
-		Resources::Levels_Mecha
+		Resources::Menus_StoryMenu_Mech,
+		Resources::Menus_StoryMenu_MechSelected,
+		Resources::Menus_StoryMenu_MechLocked,
+		Localization::resolveString(StoryMap::StringKeyLevelNameMech),
+		Resources::Levels_Mech_Mech
 	);
 
 	this->fogA->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-40.0f, 0))));

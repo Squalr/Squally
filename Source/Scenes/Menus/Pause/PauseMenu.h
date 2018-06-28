@@ -6,6 +6,7 @@
 #include "Engine/Rendering/Components/InfiniteParallaxNode.h"
 #include "Engine/Rendering/Components/MenuSprite.h"
 #include "Engine/Rendering/Components/Mouse.h"
+#include "Engine/Rendering/Components/TextMenuSprite.h"
 #include "Resources.h"
 #include "Scenes/Menus/Confirmation/ConfirmationMenu.h"
 #include "Scenes/Menus/MenuBackground.h"
@@ -35,9 +36,17 @@ private:
 
 	Node* background;
 	Sprite* pauseWindow;
+	Label* titleLabel;
 	MenuSprite* closeButton;
-	MenuSprite* resumeButton;
-	MenuSprite* optionsButton;
-	MenuSprite* exitButton;
+	TextMenuSprite* resumeButton;
+	TextMenuSprite* optionsButton;
+	TextMenuSprite* exitButton;
+
+	static const Color3B TitleColor;
+	static const std::string StringKeyMenuPause;
+	static const std::string StringKeyResume;
+	static const std::string StringKeyOptions;
+	static const std::string StringKeyExit;
+	static const std::string StringKeyExitPrompt;
 };
 

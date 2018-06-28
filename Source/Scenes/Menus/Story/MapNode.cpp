@@ -2,11 +2,11 @@
 
 MapNode* MapNode::create(std::string resource, std::string resourceSelected, std::string resourceLocked, std::string mapName, std::string mapFile)
 {
-	MapNode* mapNode = new MapNode(resource, resourceSelected, resourceLocked, mapName, mapFile);
+	MapNode* instance = new MapNode(resource, resourceSelected, resourceLocked, mapName, mapFile);
 
-	mapNode->autorelease();
+	instance->autorelease();
 
-	return mapNode;
+	return instance;
 }
 
 MapNode::MapNode(std::string resource, std::string resourceSelected, std::string resourceLocked, std::string mapName, std::string mapFile)

@@ -2,11 +2,11 @@
 
 LossesDisplay* LossesDisplay::create()
 {
-	LossesDisplay* lossesDisplay = new LossesDisplay();
+	LossesDisplay* instance = new LossesDisplay();
 
-	lossesDisplay->autorelease();
+	instance->autorelease();
 
-	return lossesDisplay;
+	return instance;
 }
 
 LossesDisplay::LossesDisplay()

@@ -35,6 +35,7 @@ private:
 	int currentPage;
 
 	Sprite* tutorialWindow;
+	Label* titleLabel;
 	Sprite* descriptionBox;
 	Label* description;
 	MenuSprite* closeButton;
@@ -58,7 +59,7 @@ private:
 
 	std::vector<TutorialItem*>* tutorialButtons;
 
-	const float titleFontSize = 48.0f;
-	const float infoFontSize = 32.0f;
+	static const Color3B TitleColor;
+	static const std::string StringKeyMenuTutorials;
 };
 

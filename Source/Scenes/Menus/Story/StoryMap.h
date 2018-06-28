@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Localization/Localization.h"
 #include "Events/NavigationEvents.h"
 #include "Events/MouseEvents.h"
 #include "Engine/Rendering/Components/FadeScene.h"
@@ -51,5 +52,16 @@ private:
 
 	const float titleFontSize = 48.0f;
 	const float infoFontSize = 32.0f;
+
+	static const std::string StringKeySelectLevel;
+	static const std::string StringKeyLevelNameJungle;
+	static const std::string StringKeyLevelNameAquaticRuins;
+	static const std::string StringKeyLevelNameForest;
+	static const std::string StringKeyLevelNameCaverns;
+	static const std::string StringKeyLevelNameCastle;
+	static const std::string StringKeyLevelNameIceCaps;
+	static const std::string StringKeyLevelNameObelisk;
+	static const std::string StringKeyLevelNameVolcano;
+	static const std::string StringKeyLevelNameMech;
 };
 

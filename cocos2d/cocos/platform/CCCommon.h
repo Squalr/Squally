@@ -49,29 +49,38 @@ void CC_DLL MessageBox(const char * msg, const char * title);
 
 /**
 @brief Enum the language type supported now
+
+Zac: This was updated to reflect steam supported languages: https://partner.steamgames.com/doc/store/localization#supported_languages
 */
 enum class LanguageType
 {
-    ENGLISH = 0,
-    CHINESE,
-    FRENCH,
-    ITALIAN,
-    GERMAN,
-    SPANISH,
-    DUTCH,
-    RUSSIAN,
-    KOREAN,
-    JAPANESE,
-    HUNGARIAN,
-    PORTUGUESE,
-    ARABIC,
-    NORWEGIAN,
-    POLISH,
-    TURKISH,
-    UKRAINIAN,
-    ROMANIAN,
-    BULGARIAN,
-    BELARUSIAN
+	ARABIC,
+	BULGARIAN,
+	CHINESE_SIMPLIFIED,
+	CHINESE_TRADITIONAL,
+	CZECH,
+	DANISH,
+	DUTCH,
+	ENGLISH,
+	FINNISH,
+	FRENCH,
+	GERMAN,
+	GREEK,
+	HUNGARIAN,
+	ITALIAN,
+	JAPANESE,
+	KOREAN,
+	NORWEGIAN,
+	POLISH,
+	PORTUGUESE,
+	PORTUGUESE_BRAZIL,
+	ROMANIAN,
+	RUSSIAN,
+	SPANISH,
+	SWEDISH,
+	THAI,
+	TURKISH,
+	UKRAINIAN,
 };
 
 // END of platform group

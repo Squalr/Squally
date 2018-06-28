@@ -1,12 +1,15 @@
 #include "TutorialScreen.h"
 
+const Color3B TutorialScreen::TitleColor = Color3B(88, 188, 193);
+const std::string TutorialScreen::StringKeyMenuTutorials = "Menu_Tutorials";
+
 TutorialScreen * TutorialScreen::create()
 {
-	TutorialScreen* tutorialScreen = new TutorialScreen();
+	TutorialScreen* instance = new TutorialScreen();
 
-	tutorialScreen->autorelease();
+	instance->autorelease();
 
-	return tutorialScreen;
+	return instance;
 }
 
 TutorialScreen::TutorialScreen()
@@ -14,6 +17,7 @@ TutorialScreen::TutorialScreen()
 	this->currentPage = 0;
 
 	this->tutorialWindow = Sprite::create(Resources::Menus_TutorialMenu_TutorialSelect);
+	this->titleLabel = Label::create(Localization::resolveString(TutorialScreen::StringKeyMenuTutorials), Resources::Fonts_Montserrat_Medium, 32.0f);
 	this->descriptionBox = Sprite::create(Resources::Menus_TutorialMenu_TutorialItem);
 	this->description = Label::create("", Resources::Fonts_Montserrat_Medium, 14);
 	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
@@ -35,6 +39,9 @@ TutorialScreen::TutorialScreen()
 	this->nether = ParticleSystemQuad::create(Resources::Particles_BlueNether);
 	this->swirl = ParticleSystemQuad::create(Resources::Particles_BlueStarCircle);
 
+	this->titleLabel->setColor(TutorialScreen::TitleColor);
+	this->titleLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
+
 	this->addChild(this->nether);
 	this->addChild(this->swirl);
 
@@ -53,6 +60,7 @@ TutorialScreen::TutorialScreen()
 	this->addChild(this->floatingRocks2);
 
 	this->addChild(this->tutorialWindow);
+	this->addChild(this->titleLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->descriptionBox);
 	this->addChild(this->description);
@@ -84,6 +92,7 @@ void TutorialScreen::onEnter()
 	float duration = 0.35f;
 
 	GameUtils::fadeInObject(this->tutorialWindow, delay, duration);
+	GameUtils::fadeInObject(this->titleLabel, delay, duration);
 	GameUtils::fadeInObject(this->descriptionBox, delay, duration);
 	GameUtils::fadeInObject(this->description, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
@@ -123,6 +132,7 @@ void TutorialScreen::initializePositions()
 	this->floatingRocks2->setPosition(Vec2(origin.x + visibleSize.width / 2 + 240.0f, origin.y + visibleSize.height / 2 - 272.0f));
 
 	this->tutorialWindow->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->titleLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 248.0f));
 	this->closeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 308.0f, origin.y + visibleSize.height / 2 + 222.0f));
 	this->descriptionBox->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 196.0f));
 	this->description->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 196.0f));
@@ -144,70 +154,70 @@ void TutorialScreen::loadLevels()
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Exact Value Scan I",
-		Resources::Levels_TutorialExactScan1,
+		Resources::Levels_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Exact Value Scan II",
-		Resources::Levels_TutorialExactScan1,
+		Resources::Levels_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Unknown Value Scan",
-		Resources::Levels_TutorialExactScan1,
+		Resources::Levels_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Data Types - Float",
-		Resources::Levels_TutorialExactScan1,
+		Resources::Levels_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Data Types - Double",
-		Resources::Levels_TutorialExactScan1,
+		Resources::Levels_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Godmode",
-		Resources::Levels_TutorialExactScan1,
+		Resources::Levels_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Position I",
-		Resources::Levels_TutorialExactScan1,
+		Resources::Levels_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Position II",
-		Resources::Levels_TutorialExactScan1,
+		Resources::Levels_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Blink Godmode I",
-		Resources::Levels_TutorialExactScan1,
+		Resources::Levels_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Blink Godmode II",
-		Resources::Levels_TutorialExactScan1,
+		Resources::Levels_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));

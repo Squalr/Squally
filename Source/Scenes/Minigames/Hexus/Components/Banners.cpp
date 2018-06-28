@@ -2,11 +2,11 @@
 
 Banners* Banners::create()
 {
-	Banners* banners = new Banners();
+	Banners* instance = new Banners();
 
-	banners->autorelease();
+	instance->autorelease();
 
-	return banners;
+	return instance;
 }
 
 Banners::Banners()

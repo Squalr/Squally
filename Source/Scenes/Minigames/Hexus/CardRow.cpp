@@ -2,11 +2,11 @@
 
 CardRow* CardRow::create()
 {
-	CardRow* cardRow = new CardRow();
+	CardRow* instance = new CardRow();
 
-	cardRow->autorelease();
+	instance->autorelease();
 
-	return cardRow;
+	return instance;
 }
 
 CardRow::CardRow()

@@ -1,21 +1,32 @@
 #include "OptionsMenu.h"
 
+const Color3B OptionsMenu::TitleColor = Color3B(88, 188, 193);
+const std::string OptionsMenu::StringKeyMenuOptions = "Menu_Options";
+const std::string OptionsMenu::StringKeyFullScreen = "Menu_Options_Full_Screen";
+const std::string OptionsMenu::StringKeyReturn = "Menu_Return";
+const int OptionsMenu::ResolutionGroupId = 420;
+
 OptionsMenu * OptionsMenu::create()
 {
-	OptionsMenu* optionsMenu = new OptionsMenu();
+	OptionsMenu* instance = new OptionsMenu();
 
-	optionsMenu->autorelease();
+	instance->autorelease();
 
-	return optionsMenu;
+	return instance;
 }
 
 OptionsMenu::OptionsMenu()
 {
 	this->background = Node::create();
 	this->optionsWindow = Sprite::create(Resources::Menus_OptionsMenu_OptionsMenu);
-	this->fullScreenLabel = Label::create("Full Screen", Resources::Fonts_Montserrat_Medium, menuFontSize);
+	this->fullScreenLabel = Label::create(Localization::resolveString(OptionsMenu::StringKeyFullScreen), Resources::Fonts_Montserrat_Medium, 24.0f);
 	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
+	this->titleLabel = Label::create(Localization::resolveString(OptionsMenu::StringKeyMenuOptions), Resources::Fonts_Montserrat_Medium, 32.0f);
 
+	this->titleLabel->setColor(OptionsMenu::TitleColor);
+	this->titleLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
+
+	this->fullScreenLabel->setAlignment(TextHAlignment::LEFT);
 	this->fullScreenLabel->enableOutline(Color4B::BLACK, 2.0f);
 
 	this->musicIcon = Sprite::create(Resources::Menus_OptionsMenu_MusicIcon);
@@ -38,17 +49,48 @@ OptionsMenu::OptionsMenu()
 	this->label1600x1024 = Label::create("1600x1024", Resources::Fonts_Montserrat_Medium, 14);
 	this->label1920x1080 = Label::create("1920x1080", Resources::Fonts_Montserrat_Medium, 14);
 
-	this->option1080x768 = CRadioButton::create(this->resolutionGroupId);
-	this->option1152x864 = CRadioButton::create(this->resolutionGroupId);
-	this->option1280x720 = CRadioButton::create(this->resolutionGroupId);
-	this->option1280x960 = CRadioButton::create(this->resolutionGroupId);
-	this->option1280x1024 = CRadioButton::create(this->resolutionGroupId);
-	this->option1440x900 = CRadioButton::create(this->resolutionGroupId);
-	this->option1600x900 = CRadioButton::create(this->resolutionGroupId);
-	this->option1600x1024 = CRadioButton::create(this->resolutionGroupId);
-	this->option1920x1080 = CRadioButton::create(this->resolutionGroupId);
+	this->option1080x768 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
+	this->option1152x864 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
+	this->option1280x720 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
+	this->option1280x960 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
+	this->option1280x1024 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
+	this->option1440x900 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
+	this->option1600x900 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
+	this->option1600x1024 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
+	this->option1920x1080 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
 
-	this->exitButton = MenuSprite::create(Resources::Menus_Buttons_GenericButton, Resources::Menus_Buttons_GenericButtonHover, Resources::Menus_Buttons_GenericButtonClick);
+	int fontSize = 24;
+	Size shadowSize = Size(-4.0f, -4.0f);
+	int shadowBlur = 2;
+	int hoverOutlineSize = 2;
+	Color3B textColor = Color3B::WHITE;
+	Color4B shadowColor = Color4B::BLACK;
+	Color3B highlightColor = Color3B::YELLOW;
+	Color4B glowColor = Color4B::ORANGE;
+
+	Label* returnLabel = Label::create(Localization::resolveString(OptionsMenu::StringKeyReturn), Resources::Fonts_Montserrat_Medium, fontSize);
+	Label* returnLabelHover = Label::create(Localization::resolveString(OptionsMenu::StringKeyReturn), Resources::Fonts_Montserrat_Medium, fontSize);
+	Label* returnLabelClicked = Label::create(Localization::resolveString(OptionsMenu::StringKeyReturn), Resources::Fonts_Montserrat_Medium, fontSize);
+
+	returnLabel->setColor(textColor);
+	returnLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
+	returnLabel->enableGlow(shadowColor);
+
+	returnLabelHover->setColor(highlightColor);
+	returnLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
+	returnLabelHover->enableGlow(glowColor);
+
+	returnLabelClicked->setColor(highlightColor);
+	returnLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
+	returnLabelClicked->enableGlow(glowColor);
+
+	this->returnButton = TextMenuSprite::create(
+		returnLabel,
+		returnLabelHover,
+		returnLabelClicked,
+		Resources::Menus_Buttons_GenericButton,
+		Resources::Menus_Buttons_GenericButtonHover,
+		Resources::Menus_Buttons_GenericButtonClick);
 
 	this->musicSlider->setProgressUpdateCallback(CC_CALLBACK_1(OptionsMenu::onMusicVolumeUpdate, this));
 	this->soundSlider->setProgressUpdateCallback(CC_CALLBACK_1(OptionsMenu::onSoundVolumeUpdate, this));
@@ -67,11 +109,12 @@ OptionsMenu::OptionsMenu()
 	this->closeButton->setClickCallback(CC_CALLBACK_1(OptionsMenu::onCloseClick, this));
 	this->closeButton->setClickSound(Resources::Sounds_ClickBack1);
 
-	this->exitButton->setClickCallback(CC_CALLBACK_1(OptionsMenu::onCloseClick, this));
-	this->exitButton->setClickSound(Resources::Sounds_ClickBack1);
+	this->returnButton->setClickCallback(CC_CALLBACK_1(OptionsMenu::onCloseClick, this));
+	this->returnButton->setClickSound(Resources::Sounds_ClickBack1);
 
 	this->addChild(this->background);
 	this->addChild(this->optionsWindow);
+	this->addChild(this->titleLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->musicIcon);
 	this->addChild(this->soundIcon);
@@ -100,7 +143,7 @@ OptionsMenu::OptionsMenu()
 	this->addChild(this->option1600x1024);
 	this->addChild(this->option1920x1080);
 
-	this->addChild(this->exitButton);
+	this->addChild(this->returnButton);
 	this->addChild(Mouse::create());
 
 	switch (ConfigManager::getResolution())
@@ -159,6 +202,7 @@ void OptionsMenu::onEnter()
 	float duration = 0.35f;
 
 	GameUtils::fadeInObject(this->optionsWindow, delay, duration);
+	GameUtils::fadeInObject(this->titleLabel, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 	GameUtils::fadeInObject(this->musicIcon, delay, duration);
 	GameUtils::fadeInObject(this->soundIcon, delay, duration);
@@ -166,7 +210,7 @@ void OptionsMenu::onEnter()
 	GameUtils::fadeInObject(this->soundSlider, delay, duration);
 	GameUtils::fadeInObject(this->fullScreenLabel, delay, duration);
 	GameUtils::fadeInObject(this->fullScreenButton, delay, duration);
-	GameUtils::fadeInObject(this->exitButton, delay, duration);
+	GameUtils::fadeInObject(this->returnButton, delay, duration);
 
 	GameUtils::fadeInObject(this->label1080x768, delay, duration);
 	GameUtils::fadeInObject(this->label1152x864, delay, duration);
@@ -270,14 +314,15 @@ void OptionsMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->optionsWindow->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+	this->titleLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 256.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2 + 302.0f, visibleSize.height / 2 + 228.0f));
 
 	this->soundIcon->setPosition(Vec2(visibleSize.width / 2 - 276.0f, visibleSize.height / 2 + 144.0f));
 	this->musicIcon->setPosition(Vec2(visibleSize.width / 2 - 276.0f, visibleSize.height / 2 + 64.0f));
 	this->soundSlider->setPosition(Vec2(visibleSize.width / 2 + 32.0f, visibleSize.height / 2 + 144.0f));
 	this->musicSlider->setPosition(Vec2(visibleSize.width / 2 + 32.0f, visibleSize.height / 2 + 64.0f));
-	this->fullScreenLabel->setPosition(Vec2(visibleSize.width / 2 - 216.0f, visibleSize.height / 2 - 8.0f));
-	this->fullScreenButton->setPosition(Vec2(visibleSize.width / 2 - 32.0f, visibleSize.height / 2 - 8.0f));
+	this->fullScreenButton->setPosition(Vec2(visibleSize.width / 2 - 248.0f, visibleSize.height / 2 - 8.0f));
+	this->fullScreenLabel->setPosition(Vec2(visibleSize.width / 2 - 112.0f, visibleSize.height / 2 - 8.0f));
 
 	const float spacing = 128.0f;
 	const float base = 232.0f;
@@ -305,7 +350,7 @@ void OptionsMenu::initializePositions()
 	this->option1600x1024->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 3, visibleSize.height / 2 + baseY - offsetY));
 	this->option1920x1080->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 4, visibleSize.height / 2 + baseY));
 
-	this->exitButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 196.0f));
+	this->returnButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 196.0f));
 
 	this->musicSlider->initializePositions();
 	this->soundSlider->initializePositions();

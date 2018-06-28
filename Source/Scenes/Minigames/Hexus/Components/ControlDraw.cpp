@@ -2,11 +2,11 @@
 
 ControlDraw* ControlDraw::create()
 {
-	ControlDraw* controlDraw = new ControlDraw();
+	ControlDraw* instance = new ControlDraw();
 
-	controlDraw->autorelease();
+	instance->autorelease();
 
-	return controlDraw;
+	return instance;
 }
 
 ControlDraw::ControlDraw()

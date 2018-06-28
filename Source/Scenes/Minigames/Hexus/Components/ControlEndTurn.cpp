@@ -2,11 +2,11 @@
 
 ControlEndTurn* ControlEndTurn::create()
 {
-	ControlEndTurn* controlNeutral = new ControlEndTurn();
+	ControlEndTurn* instance = new ControlEndTurn();
 
-	controlNeutral->autorelease();
+	instance->autorelease();
 
-	return controlNeutral;
+	return instance;
 }
 
 ControlEndTurn::ControlEndTurn()

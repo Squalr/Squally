@@ -2,20 +2,20 @@
 
 Deck* Deck::create()
 {
-	Deck* deck = new Deck();
+	Deck* instance = new Deck();
 
-	deck->autorelease();
+	instance->autorelease();
 
-	return deck;
+	return instance;
 }
 
 Deck* Deck::create(Card::CardStyle cardStyle, std::vector<CardData*>* cards)
 {
-	Deck* deck = new Deck(cardStyle, cards);
+	Deck* instance = new Deck(cardStyle, cards);
 
-	deck->autorelease();
+	instance->autorelease();
 
-	return deck;
+	return instance;
 }
 
 Deck::Deck()

@@ -48,11 +48,11 @@ const std::set<std::string> CodeEditor::registers =
 
 CodeEditor* CodeEditor::create()
 {
-	CodeEditor* codeEditor = new CodeEditor();
+	CodeEditor* instance = new CodeEditor();
 
-	codeEditor->autorelease();
+	instance->autorelease();
 
-	return codeEditor;
+	return instance;
 }
 
 CodeEditor::CodeEditor()

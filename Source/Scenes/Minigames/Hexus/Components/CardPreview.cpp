@@ -2,11 +2,11 @@
 
 CardPreview* CardPreview::create()
 {
-	CardPreview* cardPreview = new CardPreview();
+	CardPreview* instance = new CardPreview();
 
-	cardPreview->autorelease();
+	instance->autorelease();
 
-	return cardPreview;
+	return instance;
 }
 
 CardPreview::CardPreview()

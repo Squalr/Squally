@@ -16,11 +16,11 @@ std::vector<IObjectDeserializer*> LoadingScreen::objectDeserializers = {
 
 LoadingScreen * LoadingScreen::create()
 {
-	LoadingScreen* loadingScreen = new LoadingScreen();
+	LoadingScreen* instance = new LoadingScreen();
 
-	loadingScreen->autorelease();
+	instance->autorelease();
 
-	return loadingScreen;
+	return instance;
 }
 
 LoadingScreen::LoadingScreen()
