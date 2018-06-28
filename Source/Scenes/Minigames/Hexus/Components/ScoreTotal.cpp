@@ -2,11 +2,11 @@
 
 ScoreTotal* ScoreTotal::create()
 {
-	ScoreTotal* scoreTotal = new ScoreTotal();
+	ScoreTotal* instance = new ScoreTotal();
 
-	scoreTotal->autorelease();
+	instance->autorelease();
 
-	return scoreTotal;
+	return instance;
 }
 
 ScoreTotal::ScoreTotal()

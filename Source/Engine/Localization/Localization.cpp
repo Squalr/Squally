@@ -25,107 +25,98 @@ Localization::~Localization()
 	delete(this->localizationMap);
 }
 
-std::string Localization::resolveDialog(std::string dialogFileEN)
+std::string Localization::resolveFile(std::string fileEn)
 {
-	Localization* manager = Localization::getInstance();
+	std::string fileBase = fileEn.substr(0, fileEn.length() - 2);
+	Localization* localization = Localization::getInstance();
+	std::string languageCode = localization->getLanguageCode(Application::getInstance()->getCurrentLanguage());
 
-	// This list is a joke, TODO update engine to support useful languages https://www.andovar.com/what-languages/
-
-	switch (Application::getInstance()->getCurrentLanguage())
-	{
-	case LanguageType::ARABIC:
-		break;
-	case LanguageType::BELARUSIAN:
-		break;
-	case LanguageType::BULGARIAN:
-		break;
-	case LanguageType::CHINESE:
-		break;
-	case LanguageType::DUTCH:
-		break;
-	case LanguageType::FRENCH:
-		break;
-	case LanguageType::GERMAN:
-		break;
-	case LanguageType::HUNGARIAN:
-		break;
-	case LanguageType::ITALIAN:
-		break;
-	case LanguageType::JAPANESE:
-		break;
-	case LanguageType::KOREAN:
-		break;
-	case LanguageType::NORWEGIAN:
-		break;
-	case LanguageType::ROMANIAN:
-		break;
-	case LanguageType::RUSSIAN:
-		break;
-	case LanguageType::SPANISH:
-		break;
-	case LanguageType::TURKISH:
-		break;
-	case LanguageType::UKRAINIAN:
-		break;
-	case LanguageType::ENGLISH:
-	default:
-		break;
-	}
-
-	return dialogFileEN;
+	return fileBase + languageCode;
 }
 
 std::string Localization::resolveString(std::string resourceKey)
 {
-	Localization* manager = Localization::getInstance();
+	Localization* localization = Localization::getInstance();
+	std::string languageCode = Localization::getLanguageCode(Application::getInstance()->getCurrentLanguage());
 
-	if (manager->localizationMap->HasMember(resourceKey.c_str()))
+	if (localization->localizationMap->HasMember(resourceKey.c_str()))
 	{
-		auto node = (*manager->localizationMap)[resourceKey.c_str()].GetObjectW();
-
-		switch (Application::getInstance()->getCurrentLanguage())
+		auto node = (*localization->localizationMap)[resourceKey.c_str()].GetObjectW();
+		if (node.HasMember(languageCode.c_str()))
 		{
-		case LanguageType::ARABIC:
-			break;
-		case LanguageType::BELARUSIAN:
-			break;
-		case LanguageType::BULGARIAN:
-			break;
-		case LanguageType::CHINESE:
-			break;
-		case LanguageType::DUTCH:
-			break;
-		case LanguageType::FRENCH:
-			break;
-		case LanguageType::GERMAN:
-			break;
-		case LanguageType::HUNGARIAN:
-			break;
-		case LanguageType::ITALIAN:
-			break;
-		case LanguageType::JAPANESE:
-			break;
-		case LanguageType::KOREAN:
-			break;
-		case LanguageType::NORWEGIAN:
-			break;
-		case LanguageType::ROMANIAN:
-			break;
-		case LanguageType::RUSSIAN:
-			break;
-		case LanguageType::SPANISH:
-			break;
-		case LanguageType::TURKISH:
-			break;
-		case LanguageType::UKRAINIAN:
-			break;
-		case LanguageType::ENGLISH:
-		default:
-			return node["EN"].GetString();
-			break;
+			return node[languageCode.c_str()].GetString();
+		}
+
+		if (node.HasMember("en"))
+		{
+			CCLOG(("Localization resource key not found: " + resourceKey + " for language code: " + languageCode).c_str());
+			CCLOG("Falling back on EN");
+			return node["en"].GetString();
 		}
 	}
 
 	CCLOG(("Localization resource key not found: " + resourceKey).c_str());
 	return resourceKey;
+}
+
+std::string Localization::getLanguageCode(LanguageType languageType)
+{
+	switch (Application::getInstance()->getCurrentLanguage())
+	{
+	case LanguageType::ARABIC:
+		return "ar";
+	case LanguageType::BULGARIAN:
+		return "bg";
+	case LanguageType::CHINESE_SIMPLIFIED:
+		return "zh-CN";
+	case LanguageType::CHINESE_TRADITIONAL:
+		return "zh-TW";
+	case LanguageType::CZECH:
+		return "cs";
+	case LanguageType::DANISH:
+		return "da";
+	case LanguageType::DUTCH:
+		return "nl";
+	case LanguageType::FINNISH:
+		return "fi";
+	case LanguageType::FRENCH:
+		return "fr";
+	case LanguageType::GERMAN:
+		return "de";
+	case LanguageType::GREEK:
+		return "el";
+	case LanguageType::HUNGARIAN:
+		return "hu";
+	case LanguageType::ITALIAN:
+		return "it";
+	case LanguageType::JAPANESE:
+		return "ja";
+	case LanguageType::KOREAN:
+		return "ko";
+	case LanguageType::NORWEGIAN:
+		return "no";
+	case LanguageType::POLISH:
+		return "pl";
+	case LanguageType::PORTUGUESE:
+		return "pt";
+	case LanguageType::PORTUGUESE_BRAZIL:
+		return "pt-BR";
+	case LanguageType::ROMANIAN:
+		return "ro";
+	case LanguageType::RUSSIAN:
+		return "ru";
+	case LanguageType::SPANISH:
+		return "es";
+	case LanguageType::SWEDISH:
+		return "sv";
+	case LanguageType::THAI:
+		return "th";
+	case LanguageType::TURKISH:
+		return "tr";
+	case LanguageType::UKRAINIAN:
+		return "uk";
+	case LanguageType::ENGLISH:
+	default:
+		return "en";
+	}
 }

@@ -2,11 +2,11 @@
 
 ControlNeutral* ControlNeutral::create()
 {
-	ControlNeutral* controlNeutral = new ControlNeutral();
+	ControlNeutral* instance = new ControlNeutral();
 
-	controlNeutral->autorelease();
+	instance->autorelease();
 
-	return controlNeutral;
+	return instance;
 }
 
 ControlNeutral::ControlNeutral()

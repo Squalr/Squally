@@ -2,11 +2,11 @@
 
 HandCardCountDisplay* HandCardCountDisplay::create()
 {
-	HandCardCountDisplay* handCardCountDisplay = new HandCardCountDisplay();
+	HandCardCountDisplay* instance = new HandCardCountDisplay();
 
-	handCardCountDisplay->autorelease();
+	instance->autorelease();
 
-	return handCardCountDisplay;
+	return instance;
 }
 
 HandCardCountDisplay::HandCardCountDisplay()

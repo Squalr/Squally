@@ -10,11 +10,11 @@ const Color4B Card::buffColor = Color4B(30, 223, 0, 255);
 
 Card* Card::create(CardStyle cardStyle, CardData* data)
 {
-	Card* card = new Card(cardStyle, data);
+	Card* instance = new Card(cardStyle, data);
 
-	card->autorelease();
+	instance->autorelease();
 
-	return card;
+	return instance;
 }
 
 Card::Card(CardStyle cardStyle, CardData* data)

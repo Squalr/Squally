@@ -15,8 +15,11 @@ using namespace rapidjson;
 class Localization
 {
 public:
-	static std::string resolveDialog(std::string dialogFileEN);
+	static std::string resolveFile(std::string fileEn);
 	static std::string resolveString(std::string resourceKey);
+
+protected:
+	static std::string getLanguageCode(LanguageType languageType);
 
 private:
 	static Localization* getInstance();

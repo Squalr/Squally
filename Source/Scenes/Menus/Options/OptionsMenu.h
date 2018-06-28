@@ -2,7 +2,8 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
-#include "Config/ConfigManager.h"
+#include "Engine/Config/ConfigManager.h"
+#include "Engine/Localization/Localization.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Events/NavigationEvents.h"
 #include "Engine/Rendering/Components/CCheckbox.h"
@@ -11,6 +12,7 @@
 #include "Engine/Rendering/Components/FadeScene.h"
 #include "Engine/Rendering/Components/MenuSprite.h"
 #include "Engine/Rendering/Components/Mouse.h"
+#include "Engine/Rendering/Components/TextMenuSprite.h"
 #include "Resources.h"
 #include "Scenes/Menus/MenuBackground.h"
 
@@ -40,6 +42,7 @@ private:
 
 	Node* background;
 	Sprite* optionsWindow;
+	Label* titleLabel;
 	MenuSprite* closeButton;
 
 	Sprite* musicIcon;
@@ -48,7 +51,7 @@ private:
 	CSlider* soundSlider;
 	Label* fullScreenLabel;
 	CCheckbox* fullScreenButton;
-	MenuSprite* exitButton;
+	TextMenuSprite* returnButton;
 
 	Label* label1080x768;
 	Label* label1152x864;
@@ -70,11 +73,10 @@ private:
 	CRadioButton* option1600x1024;
 	CRadioButton* option1920x1080;
 
-	const int resolutionGroupId = 420;
-
-	const float titleFontSize = 48.0f;
-	const float menuFontSize = 32.0f;
-	const float menuOffset = 0.0f;
-	const float spacing = -64.0f;
+	static const Color3B TitleColor;
+	static const std::string StringKeyMenuOptions;
+	static const std::string StringKeyFullScreen;
+	static const std::string StringKeyReturn;
+	static const int ResolutionGroupId;
 };
 

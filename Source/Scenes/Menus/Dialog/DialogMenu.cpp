@@ -49,11 +49,11 @@ DialogMenu * DialogMenu::loadDialogFromJson(std::string json)
 
 DialogMenu* DialogMenu::create(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::queue<std::pair<std::string, DialogMenu*>>* children)
 {
-	DialogMenu* dialogMenu = new DialogMenu(portraitLeft, portraitRight, speaker, textMood, text, children);
+	DialogMenu* instance = new DialogMenu(portraitLeft, portraitRight, speaker, textMood, text, children);
 
-	dialogMenu->autorelease();
+	instance->autorelease();
 
-	return dialogMenu;
+	return instance;
 }
 
 DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::queue<std::pair<std::string, DialogMenu*>>* children)

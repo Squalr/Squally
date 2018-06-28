@@ -447,82 +447,115 @@ LanguageType getLanguageTypeByISO2(const char* code)
     // except windows: cocos/platform/win32/CCApplication-win32.cpp
     LanguageType ret = LanguageType::ENGLISH;
 
-    if (strncmp(code, "zh", 2) == 0)
-    {
-        ret = LanguageType::CHINESE;
-    }
-    else if (strncmp(code, "ja", 2) == 0)
-    {
-        ret = LanguageType::JAPANESE;
-    }
-    else if (strncmp(code, "fr", 2) == 0)
-    {
-        ret = LanguageType::FRENCH;
-    }
-    else if (strncmp(code, "it", 2) == 0)
-    {
-        ret = LanguageType::ITALIAN;
-    }
-    else if (strncmp(code, "de", 2) == 0)
-    {
-        ret = LanguageType::GERMAN;
-    }
-    else if (strncmp(code, "es", 2) == 0)
-    {
-        ret = LanguageType::SPANISH;
-    }
-    else if (strncmp(code, "nl", 2) == 0)
-    {
-        ret = LanguageType::DUTCH;
-    }
-    else if (strncmp(code, "ru", 2) == 0)
-    {
-        ret = LanguageType::RUSSIAN;
-    }
-    else if (strncmp(code, "hu", 2) == 0)
-    {
-        ret = LanguageType::HUNGARIAN;
-    }
-    else if (strncmp(code, "pt", 2) == 0)
-    {
-        ret = LanguageType::PORTUGUESE;
-    }
-    else if (strncmp(code, "ko", 2) == 0)
-    {
-        ret = LanguageType::KOREAN;
-    }
-    else if (strncmp(code, "ar", 2) == 0)
+    if (strncmp(code, "ar", 2) == 0)
     {
         ret = LanguageType::ARABIC;
-    }
-    else if (strncmp(code, "nb", 2) == 0)
-    {
-        ret = LanguageType::NORWEGIAN;
-    }
-    else if (strncmp(code, "pl", 2) == 0)
-    {
-        ret = LanguageType::POLISH;
-    }
-    else if (strncmp(code, "tr", 2) == 0)
-    {
-        ret = LanguageType::TURKISH;
-    }
-    else if (strncmp(code, "uk", 2) == 0)
-    {
-        ret = LanguageType::UKRAINIAN;
-    }
-    else if (strncmp(code, "ro", 2) == 0)
-    {
-        ret = LanguageType::ROMANIAN;
     }
     else if (strncmp(code, "bg", 2) == 0)
     {
         ret = LanguageType::BULGARIAN;
     }
-    else if (strncmp(code, "be", 2) == 0)
+    else if (strncmp(code, "zh-CN", 5) == 0)
     {
-        ret = LanguageType::BELARUSIAN;
+        ret = LanguageType::CHINESE_SIMPLIFIED;
     }
+    else if (strncmp(code, "zh-TW", 5) == 0)
+    {
+        ret = LanguageType::CHINESE_TRADITIONAL;
+    }
+    else if (strncmp(code, "cs", 2) == 0)
+    {
+        ret = LanguageType::CZECH;
+    }
+    else if (strncmp(code, "da", 2) == 0)
+    {
+        ret = LanguageType::DANISH;
+    }
+    else if (strncmp(code, "nl", 2) == 0)
+    {
+        ret = LanguageType::DUTCH;
+    }
+    else if (strncmp(code, "en", 2) == 0)
+    {
+        ret = LanguageType::ENGLISH;
+    }
+    else if (strncmp(code, "fi", 2) == 0)
+    {
+        ret = LanguageType::FINNISH;
+    }
+    else if (strncmp(code, "fr", 2) == 0)
+    {
+        ret = LanguageType::FRENCH;
+    }
+    else if (strncmp(code, "de", 2) == 0)
+    {
+        ret = LanguageType::GERMAN;
+    }
+    else if (strncmp(code, "el", 2) == 0)
+    {
+        ret = LanguageType::GREEK;
+    }
+    else if (strncmp(code, "hu", 2) == 0)
+    {
+        ret = LanguageType::HUNGARIAN;
+    }
+    else if (strncmp(code, "it", 2) == 0)
+    {
+        ret = LanguageType::ITALIAN;
+    }
+    else if (strncmp(code, "ja", 2) == 0)
+    {
+        ret = LanguageType::JAPANESE;
+    }
+    else if (strncmp(code, "ko", 2) == 0)
+    {
+        ret = LanguageType::KOREAN;
+    }
+    else if (strncmp(code, "no", 2) == 0)
+    {
+        ret = LanguageType::NORWEGIAN;
+    }
+    else if (strncmp(code, "pl", 2) == 0)
+    {
+        ret = LanguageType::BULGARIAN;
+    }
+	else if (strncmp(code, "pt", 2) == 0)
+	{
+		ret = LanguageType::PORTUGUESE;
+	}
+	else if (strncmp(code, "pt-BR", 5) == 0)
+	{
+		ret = LanguageType::PORTUGUESE_BRAZIL;
+	}
+	else if (strncmp(code, "ro", 2) == 0)
+	{
+		ret = LanguageType::ROMANIAN;
+	}
+	else if (strncmp(code, "ru", 2) == 0)
+	{
+		ret = LanguageType::RUSSIAN;
+	}
+	else if (strncmp(code, "es", 2) == 0)
+	{
+		ret = LanguageType::SPANISH;
+	}
+	else if (strncmp(code, "sv", 2) == 0)
+	{
+		ret = LanguageType::SWEDISH;
+	}
+	else if (strncmp(code, "th", 2) == 0)
+	{
+		ret = LanguageType::THAI;
+	}
+	else if (strncmp(code, "tr", 2) == 0)
+	{
+		ret = LanguageType::TURKISH;
+	}
+	else if (strncmp(code, "uk", 2) == 0)
+	{
+		ret = LanguageType::UKRAINIAN;
+	}
+
     return ret;
 }
 

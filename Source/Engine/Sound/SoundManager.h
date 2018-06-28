@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 #include "audio/include/AudioEngine.h"
 
-#include "Config/ConfigManager.h"
+#include "Engine/Config/ConfigManager.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;

@@ -4,11 +4,11 @@ const std::string GameState::onStateUpdateEvent = "on_state_update_event";
 
 GameState* GameState::create()
 {
-	GameState* gameState = new GameState();
+	GameState* instance = new GameState();
 
-	gameState->autorelease();
+	instance->autorelease();
 
-	return gameState;
+	return instance;
 }
 
 GameState::GameState()

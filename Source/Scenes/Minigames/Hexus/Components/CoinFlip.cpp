@@ -2,11 +2,11 @@
 
 CoinFlip* CoinFlip::create()
 {
-	CoinFlip* coinFlip = new CoinFlip();
+	CoinFlip* instance = new CoinFlip();
 
-	coinFlip->autorelease();
+	instance->autorelease();
 
-	return coinFlip;
+	return instance;
 }
 
 CoinFlip::CoinFlip()

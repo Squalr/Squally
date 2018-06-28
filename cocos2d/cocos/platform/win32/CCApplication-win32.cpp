@@ -173,76 +173,80 @@ Application* Application::sharedApplication()
 
 LanguageType Application::getCurrentLanguage()
 {
-    LanguageType ret = LanguageType::ENGLISH;
-    
     LCID localeID = GetUserDefaultLCID();
-    unsigned short primaryLanguageID = localeID & 0xFF;
-    
+
+	unsigned short primaryLanguageID = localeID & 0xFF;
+	unsigned short sublanguageID = SUBLANGID(localeID);
+
     switch (primaryLanguageID)
     {
-        case LANG_CHINESE:
-            ret = LanguageType::CHINESE;
-            break;
-        case LANG_ENGLISH:
-            ret = LanguageType::ENGLISH;
-            break;
-        case LANG_FRENCH:
-            ret = LanguageType::FRENCH;
-            break;
-        case LANG_ITALIAN:
-            ret = LanguageType::ITALIAN;
-            break;
-        case LANG_GERMAN:
-            ret = LanguageType::GERMAN;
-            break;
-        case LANG_SPANISH:
-            ret = LanguageType::SPANISH;
-            break;
-        case LANG_DUTCH:
-            ret = LanguageType::DUTCH;
-            break;
-        case LANG_RUSSIAN:
-            ret = LanguageType::RUSSIAN;
-            break;
-        case LANG_KOREAN:
-            ret = LanguageType::KOREAN;
-            break;
-        case LANG_JAPANESE:
-            ret = LanguageType::JAPANESE;
-            break;
-        case LANG_HUNGARIAN:
-            ret = LanguageType::HUNGARIAN;
-            break;
-        case LANG_PORTUGUESE:
-            ret = LanguageType::PORTUGUESE;
-            break;
-        case LANG_ARABIC:
-            ret = LanguageType::ARABIC;
-            break;
-        case LANG_NORWEGIAN:
-            ret = LanguageType::NORWEGIAN;
-            break;
-        case LANG_POLISH:
-            ret = LanguageType::POLISH;
-            break;
-        case LANG_TURKISH:
-            ret = LanguageType::TURKISH;
-            break;
-        case LANG_UKRAINIAN:
-            ret = LanguageType::UKRAINIAN;
-            break;
-        case LANG_ROMANIAN:
-            ret = LanguageType::ROMANIAN;
-            break;
-        case LANG_BULGARIAN:
-            ret = LanguageType::BULGARIAN;
-            break;
-        case LANG_BELARUSIAN:
-            ret = LanguageType::BELARUSIAN;
-            break;
+	case LANG_ARABIC:
+		return LanguageType::ARABIC;
+	case LANG_BULGARIAN:
+		return LanguageType::BULGARIAN;
+    case LANG_CHINESE:
+		if (sublanguageID == SUBLANG_CHINESE_TRADITIONAL)
+		{
+			return LanguageType::CHINESE_TRADITIONAL;
+		}
+		else
+		{
+			return LanguageType::CHINESE_SIMPLIFIED;
+		}
+    case LANG_CZECH:
+        return LanguageType::CZECH;
+    case LANG_DANISH:
+        return LanguageType::DANISH;
+    case LANG_DUTCH:
+        return LanguageType::DUTCH;
+	case LANG_ENGLISH:
+		return LanguageType::ENGLISH;
+	case LANG_FINNISH:
+		return LanguageType::FINNISH;
+	case LANG_FRENCH:
+		return LanguageType::FRENCH;
+	case LANG_GERMAN:
+		return LanguageType::GERMAN;
+	case LANG_GREEK:
+		return LanguageType::GREEK;
+    case LANG_HUNGARIAN:
+        return LanguageType::HUNGARIAN;
+    case LANG_ITALIAN:
+        return LanguageType::ITALIAN;
+    case LANG_JAPANESE:
+        return LanguageType::JAPANESE;
+    case LANG_KOREAN:
+        return LanguageType::KOREAN;
+    case LANG_NORWEGIAN:
+        return LanguageType::NORWEGIAN;
+    case LANG_POLISH:
+        return LanguageType::POLISH;
+    case LANG_PORTUGUESE:
+		if (sublanguageID == SUBLANG_PORTUGUESE_BRAZILIAN)
+		{
+			return LanguageType::PORTUGUESE_BRAZIL;
+		}
+		else
+		{
+			return LanguageType::PORTUGUESE;
+		}
+    case LANG_ROMANIAN:
+        return LanguageType::ROMANIAN;
+    case LANG_RUSSIAN:
+        return LanguageType::RUSSIAN;
+    case LANG_SPANISH:
+        return LanguageType::SPANISH;
+    case LANG_SWEDISH:
+        return LanguageType::SWEDISH;
+    case LANG_THAI:
+        return LanguageType::THAI;
+	case LANG_TURKISH:
+		return LanguageType::TURKISH;
+	case LANG_UKRAINIAN:
+		return LanguageType::UKRAINIAN;
     }
     
-    return ret;
+    return LanguageType::ENGLISH;
 }
 
 const char * Application::getCurrentLanguageCode()

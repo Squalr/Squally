@@ -2,11 +2,11 @@
 
 CardStorage* CardStorage::create()
 {
-	CardStorage* cardStorage = new CardStorage();
+	CardStorage* instance = new CardStorage();
 
-	cardStorage->autorelease();
+	instance->autorelease();
 
-	return cardStorage;
+	return instance;
 }
 
 CardStorage::CardStorage()

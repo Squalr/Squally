@@ -2,11 +2,11 @@
 
 DeckCardCountDisplay* DeckCardCountDisplay::create()
 {
-	DeckCardCountDisplay* deckCardCountDisplay = new DeckCardCountDisplay();
+	DeckCardCountDisplay* instance = new DeckCardCountDisplay();
 
-	deckCardCountDisplay->autorelease();
+	instance->autorelease();
 
-	return deckCardCountDisplay;
+	return instance;
 }
 
 DeckCardCountDisplay::DeckCardCountDisplay()

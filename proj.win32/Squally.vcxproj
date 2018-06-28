@@ -157,7 +157,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Source\Config\ConfigManager.cpp" />
+    <ClCompile Include="..\Source\Engine\Config\ConfigManager.cpp" />
     <ClCompile Include="..\Source\Engine\GlobalDirector.cpp" />
     <ClCompile Include="..\Source\Engine\Localization\Localization.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\DefaultLayerDeserializer.cpp" />
@@ -383,7 +383,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Resources.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Source\Config\ConfigManager.h" />
+    <ClInclude Include="..\Source\Engine\Config\ConfigManager.h" />
     <ClInclude Include="..\Source\Engine\GlobalDirector.h" />
     <ClInclude Include="..\Source\Engine\GlobalNode.h" />
     <ClInclude Include="..\Source\Engine\Localization\Localization.h" />

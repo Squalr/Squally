@@ -2,11 +2,11 @@
 
 ConfirmationMenu * ConfirmationMenu::create()
 {
-	ConfirmationMenu* pauseMenu = new ConfirmationMenu();
+	ConfirmationMenu* instance = new ConfirmationMenu();
 
-	pauseMenu->autorelease();
+	instance->autorelease();
 
-	return pauseMenu;
+	return instance;
 }
 
 ConfirmationMenu::ConfirmationMenu()

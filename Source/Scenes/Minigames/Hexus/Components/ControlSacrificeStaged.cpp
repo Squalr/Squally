@@ -2,11 +2,11 @@
 
 ControlSacrificeStaged* ControlSacrificeStaged::create()
 {
-	ControlSacrificeStaged* controlSacrificeStaged = new ControlSacrificeStaged();
+	ControlSacrificeStaged* instance = new ControlSacrificeStaged();
 
-	controlSacrificeStaged->autorelease();
+	instance->autorelease();
 
-	return controlSacrificeStaged;
+	return instance;
 }
 
 ControlSacrificeStaged::ControlSacrificeStaged()

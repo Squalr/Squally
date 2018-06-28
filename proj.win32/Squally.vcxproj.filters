@@ -19,9 +19,6 @@
     <Filter Include="Source\Scenes\Level">
       <UniqueIdentifier>{4df6f466-fb7d-4ee4-b7d3-a451d4a61f2f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Config">
-      <UniqueIdentifier>{ad777ac4-678a-40fd-823b-e0b3188ba418}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Utils">
       <UniqueIdentifier>{8f7b5b30-247a-452b-96b8-2d42834c1248}</UniqueIdentifier>
     </Filter>
@@ -156,6 +153,9 @@
     </Filter>
     <Filter Include="Source\Engine\Localization">
       <UniqueIdentifier>{a7cc76b5-f620-4d85-aed6-328694f9b27f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Config">
+      <UniqueIdentifier>{ce5a0488-0b0e-462b-844a-951833d07495}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -682,9 +682,6 @@
     <ClCompile Include="..\Source\Scenes\Fight\Fight.cpp">
       <Filter>Source\Scenes\Fight</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Config\ConfigManager.cpp">
-      <Filter>Source\Config</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Scenes\SceneDirector.cpp">
       <Filter>Source\Scenes</Filter>
     </ClCompile>
@@ -828,6 +825,9 @@
     </ClCompile>
     <ClCompile Include="..\Source\Engine\Localization\Localization.cpp">
       <Filter>Source\Engine\Localization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Config\ConfigManager.cpp">
+      <Filter>Source\Engine\Config</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1378,9 +1378,6 @@
     <ClInclude Include="..\Source\Window.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Config\ConfigManager.h">
-      <Filter>Source\Config</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Engine/Rendering\HUD\Hud.h">
       <Filter>Source\Engine\Rendering\HUD</Filter>
     </ClInclude>
@@ -1530,6 +1527,9 @@
     </ClInclude>
     <ClInclude Include="..\Source\Engine\Localization\Localization.h">
       <Filter>Source\Engine\Localization</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Config\ConfigManager.h">
+      <Filter>Source\Engine\Config</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

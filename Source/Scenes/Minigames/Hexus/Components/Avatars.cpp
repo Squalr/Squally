@@ -2,11 +2,11 @@
 
 Avatars* Avatars::create()
 {
-	Avatars* avatars = new Avatars();
+	Avatars* instance = new Avatars();
 
-	avatars->autorelease();
+	instance->autorelease();
 
-	return avatars;
+	return instance;
 }
 
 Avatars::Avatars()

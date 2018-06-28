@@ -2,11 +2,11 @@
 
 ControlSelectionStaged* ControlSelectionStaged::create()
 {
-	ControlSelectionStaged* controlSelectionStaged = new ControlSelectionStaged();
+	ControlSelectionStaged* instance = new ControlSelectionStaged();
 
-	controlSelectionStaged->autorelease();
+	instance->autorelease();
 
-	return controlSelectionStaged;
+	return instance;
 }
 
 ControlSelectionStaged::ControlSelectionStaged()

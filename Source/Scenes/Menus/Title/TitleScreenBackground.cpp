@@ -2,11 +2,11 @@
 
 TitleScreenBackground * TitleScreenBackground::create()
 {
-	TitleScreenBackground* titleScreenBackground = new TitleScreenBackground();
+	TitleScreenBackground* instance = new TitleScreenBackground();
 
-	titleScreenBackground->autorelease();
+	instance->autorelease();
 
-	return titleScreenBackground;
+	return instance;
 }
 
 TitleScreenBackground::TitleScreenBackground()

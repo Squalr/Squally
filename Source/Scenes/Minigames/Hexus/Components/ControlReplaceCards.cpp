@@ -2,11 +2,11 @@
 
 ControlReplaceCards* ControlReplaceCards::create()
 {
-	ControlReplaceCards* controlReplaceCards = new ControlReplaceCards();
+	ControlReplaceCards* instance = new ControlReplaceCards();
 
-	controlReplaceCards->autorelease();
+	instance->autorelease();
 
-	return controlReplaceCards;
+	return instance;
 }
 
 ControlReplaceCards::ControlReplaceCards()

@@ -2,11 +2,11 @@
 
 TutorialItem* TutorialItem::create(std::string description, std::string mapFile, int index, std::function<void(TutorialItem*)> onMouseOver)
 {
-	TutorialItem* tutorialItem = new TutorialItem(description, mapFile, index, onMouseOver);
+	TutorialItem* instance = new TutorialItem(description, mapFile, index, onMouseOver);
 
-	tutorialItem->autorelease();
+	instance->autorelease();
 
-	return tutorialItem;
+	return instance;
 }
 
 TutorialItem::TutorialItem(std::string description, std::string mapFile, int index, std::function<void(TutorialItem*)> onMouseOver)

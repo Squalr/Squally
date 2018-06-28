@@ -2,11 +2,11 @@
 
 RowTotals* RowTotals::create()
 {
-	RowTotals* rowTotals = new RowTotals();
+	RowTotals* instance = new RowTotals();
 
-	rowTotals->autorelease();
+	instance->autorelease();
 
-	return rowTotals;
+	return instance;
 }
 
 RowTotals::RowTotals()
