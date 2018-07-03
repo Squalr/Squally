@@ -1535,4 +1535,9 @@
   <ItemGroup>
     <ResourceCompile Include="..\Source\Resources.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Source\GenerateResources.py">
+      <Filter>Source</Filter>
+    </None>
+  </ItemGroup>
 </Project>
