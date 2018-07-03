@@ -635,6 +635,9 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ResourceCompile Include="..\Source\Resources.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Source\GenerateResources.py" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>
