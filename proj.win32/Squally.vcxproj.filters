@@ -64,9 +64,6 @@
     <Filter Include="Source\Objects\Collision">
       <UniqueIdentifier>{94e5f613-0f3a-49b6-a7f0-ccafed96546a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Objects\Interactables">
-      <UniqueIdentifier>{0852c3e4-fc82-4678-9a59-dbb701f51a8f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Objects\Hackables">
       <UniqueIdentifier>{af157143-ff33-4a8a-888f-56b9fd04564e}</UniqueIdentifier>
     </Filter>
@@ -105,9 +102,6 @@
     </Filter>
     <Filter Include="Source\Events">
       <UniqueIdentifier>{e9ef9eef-8a01-4d65-b231-b8b59fc9ac49}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Objects\Interactables\Plushies">
-      <UniqueIdentifier>{66257141-b1a3-4a9a-bdd3-890ecc9ac4ea}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Entities\Enemies\Mech">
       <UniqueIdentifier>{76e6c2db-8ed9-4f39-8662-c09195d7ea0a}</UniqueIdentifier>
@@ -156,6 +150,12 @@
     </Filter>
     <Filter Include="Source\Engine\Utils">
       <UniqueIdentifier>{e8b7a6d3-2c54-426e-b0c9-2ef635084fbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Objects\Platformer">
+      <UniqueIdentifier>{ab9654e5-2c88-472d-bad9-a91efc983aee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Objects\Isometric">
+      <UniqueIdentifier>{7b8d45ee-52d5-450b-a931-f45d9bff107d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -219,20 +219,8 @@
     <ClCompile Include="..\Source\Objects\Collision\CollisionObject.cpp">
       <Filter>Source\Objects\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Objects\ParallaxObject.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\Interactables\WarpGate.cpp">
-      <Filter>Source\Objects\Interactables</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\Interactables\Monitor.cpp">
-      <Filter>Source\Objects\Interactables</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Objects\Hackables\HackableObject.cpp">
       <Filter>Source\Objects\Hackables</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\Interactables\WarpGateExactScanTutorial.cpp">
-      <Filter>Source\Objects\Interactables</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\HackerMode\RadialMenu.cpp">
       <Filter>Source\Scenes\Menus\HackerMode</Filter>
@@ -468,23 +456,11 @@
     <ClCompile Include="..\Source\Entities\Enemies\Ruins\MummyPharaoh.cpp">
       <Filter>Source\Entities\Enemies\Ruins</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Objects\Interactables\Plushies\Plushie.cpp">
-      <Filter>Source\Objects\Interactables\Plushies</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\Interactables\Plushies\PlushieMonkey.cpp">
-      <Filter>Source\Objects\Interactables\Plushies</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\Interactables\Chest.cpp">
-      <Filter>Source\Objects\Interactables</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Events\HackableEvents.cpp">
       <Filter>Source\Events</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Events\HexusEvents.cpp">
       <Filter>Source\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\Interactables\Wind.cpp">
-      <Filter>Source\Objects\Interactables</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Entities\Enemies\Forest\BossDragonOrcKing.cpp">
       <Filter>Source\Entities\Enemies\Forest</Filter>
@@ -751,17 +727,8 @@
     <ClCompile Include="..\Source\Objects\Collision\CollisionDeserializer.cpp">
       <Filter>Source\Objects\Collision</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Objects\DecorDeserializer.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Entities\EntityDeserializer.cpp">
       <Filter>Source\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\ObjectDeserializer.cpp">
-      <Filter>Source\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\DecorObject.cpp">
-      <Filter>Source\Objects</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Engine\Maps\DefaultLayerDeserializer.cpp">
       <Filter>Source\Engine\Maps</Filter>
@@ -828,6 +795,51 @@
     </ClCompile>
     <ClCompile Include="..\Source\Engine\Utils\StrUtils.cpp">
       <Filter>Source\Engine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Platformer\Plushies\Plushie.cpp">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Platformer\Plushies\PlushieMonkey.cpp">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Platformer\Chest.cpp">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Platformer\Monitor.cpp">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Platformer\WarpGate.cpp">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Platformer\WarpGateExactScanTutorial.cpp">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Platformer\Wind.cpp">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Platformer\PlatformerObjectDeserializer.cpp">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Platformer\PlatformerDecorDeserializer.cpp">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Platformer\PlatformerDecorObject.cpp">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Platformer\ParallaxObject.cpp">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Isometric\HexusArcade.cpp">
+      <Filter>Source\Objects\Isometric</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Isometric\IsometricDecorDeserializer.cpp">
+      <Filter>Source\Objects\Isometric</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Isometric\IsometricDecorObject.cpp">
+      <Filter>Source\Objects\Isometric</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Objects\Isometric\IsometricObjectDeserializer.cpp">
+      <Filter>Source\Objects\Isometric</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -897,23 +909,8 @@
     <ClInclude Include="..\Source\Objects\Collision\CategoryGroup.h">
       <Filter>Source\Objects\Collision</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Objects\ParallaxObject.h">
-      <Filter>Source\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\Objects.h">
-      <Filter>Source\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\Interactables\WarpGate.h">
-      <Filter>Source\Objects\Interactables</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\Interactables\Monitor.h">
-      <Filter>Source\Objects\Interactables</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Objects\Hackables\HackableObject.h">
       <Filter>Source\Objects\Hackables</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\Interactables\WarpGateExactScanTutorial.h">
-      <Filter>Source\Objects\Interactables</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\HackerMode\RadialMenu.h">
       <Filter>Source\Scenes\Menus\HackerMode</Filter>
@@ -1158,26 +1155,11 @@
     <ClInclude Include="..\Source\Entities\Enemies\Ruins\MummyPharaoh.h">
       <Filter>Source\Entities\Enemies\Ruins</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Objects\Interactables\Plushies\Plushie.h">
-      <Filter>Source\Objects\Interactables\Plushies</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\Interactables\Plushies\PlushieMonkey.h">
-      <Filter>Source\Objects\Interactables\Plushies</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\Interactables\Plushies\Plushies.h">
-      <Filter>Source\Objects\Interactables\Plushies</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\Interactables\Chest.h">
-      <Filter>Source\Objects\Interactables</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Events\HackableEvents.h">
       <Filter>Source\Events</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Events\HexusEvents.h">
       <Filter>Source\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\Interactables\Wind.h">
-      <Filter>Source\Objects\Interactables</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Entities\Enemies\Forest\BossDragonOrcKing.h">
       <Filter>Source\Entities\Enemies\Forest</Filter>
@@ -1444,17 +1426,8 @@
     <ClInclude Include="..\Source\Engine\GlobalNode.h">
       <Filter>Source\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Objects\DecorDeserializer.h">
-      <Filter>Source\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Entities\EntityDeserializer.h">
       <Filter>Source\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\ObjectDeserializer.h">
-      <Filter>Source\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\DecorObject.h">
-      <Filter>Source\Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Engine\Maps\IObjectDeserializer.h">
       <Filter>Source\Engine\Maps</Filter>
@@ -1530,6 +1503,60 @@
     </ClInclude>
     <ClInclude Include="..\Source\Engine\Utils\StrUtils.h">
       <Filter>Source\Engine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Platformer\Plushies\Plushie.h">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Platformer\Plushies\PlushieMonkey.h">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Platformer\Plushies\Plushies.h">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Platformer\Chest.h">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Platformer\Monitor.h">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Platformer\WarpGate.h">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Platformer\WarpGateExactScanTutorial.h">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Platformer\Wind.h">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Platformer\PlatformerObjects.h">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Platformer\PlatformerObjectDeserializer.h">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Platformer\PlatformerDecorDeserializer.h">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Platformer\PlatformerDecorObject.h">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Platformer\ParallaxObject.h">
+      <Filter>Source\Objects\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Isometric\HexusArcade.h">
+      <Filter>Source\Objects\Isometric</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Isometric\IsometricDecorDeserializer.h">
+      <Filter>Source\Objects\Isometric</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Isometric\IsometricDecorObject.h">
+      <Filter>Source\Objects\Isometric</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Isometric\IsometricObjectDeserializer.h">
+      <Filter>Source\Objects\Isometric</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Objects\Isometric\IsometricObjects.h">
+      <Filter>Source\Objects\Isometric</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

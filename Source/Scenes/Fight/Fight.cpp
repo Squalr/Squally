@@ -2,11 +2,11 @@
 
 Fight* Fight::create()
 {
-	Fight* fight = new Fight();
+	Fight* instance = new Fight();
 
-	fight->autorelease();
+	instance->autorelease();
 
-	return fight;
+	return instance;
 }
 
 Fight::Fight()

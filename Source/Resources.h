@@ -3069,6 +3069,10 @@ public:
 	static const std::string Entities_Helpers_Turtle_Shell___Back;
 	static const std::string Entities_Helpers_Turtle_Shell;
 	static const std::string Entities_Helpers_Turtle_SlashFX;
+	static const std::string Entities_Isometric_Squally_SquallyNE;
+	static const std::string Entities_Isometric_Squally_SquallyNW;
+	static const std::string Entities_Isometric_Squally_SquallySE;
+	static const std::string Entities_Isometric_Squally_SquallySW;
 	static const std::string Entities_Npcs_EgyptianMummy_Body;
 	static const std::string Entities_Npcs_EgyptianMummy_Face_01;
 	static const std::string Entities_Npcs_EgyptianMummy_Face_02;
