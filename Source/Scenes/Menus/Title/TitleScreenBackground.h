@@ -4,9 +4,9 @@
 #include "Engine/Rendering/Components/FloatingSprite.h"
 #include "Engine/Rendering/Components/MenuSprite.h"
 #include "Engine/Rendering/Components/InfiniteParallaxNode.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 #include "Scenes/Menus/Tutorial/TutorialScreen.h"
-#include "Utils/GameUtils.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;

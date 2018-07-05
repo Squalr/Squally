@@ -4,7 +4,7 @@
 
 #include "Engine/Maps/IObjectDeserializer.h"
 #include "Engine/Maps/SerializableObject.h"
-#include "Utils/StrUtils.h"
+#include "Engine/Utils/StrUtils.h"
 
 using namespace cocos2d;
 

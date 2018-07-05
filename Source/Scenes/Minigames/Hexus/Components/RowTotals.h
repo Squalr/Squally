@@ -2,8 +2,8 @@
 #include "cocos2d.h"
 
 #include "Engine/Rendering/Components/MenuSprite.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Resources.h"
-#include "Utils/StrUtils.h"
 
 #include "ComponentBase.h"
 

@@ -6,8 +6,8 @@
 #include "Engine/Rendering/Components/FloatingSprite.h"
 #include "Engine/Rendering/Components/MenuSprite.h"
 #include "Engine/Rendering/Components/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
-#include "Utils/GameUtils.h"
 
 #include "TutorialScreen.h"
 #include "TutorialItem.h"

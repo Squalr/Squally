@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/Maps/SerializableLayer.h"
-#include "Utils/StrUtils.h"
+#include "Engine/Utils/StrUtils.h"
 
 using namespace cocos2d;
 

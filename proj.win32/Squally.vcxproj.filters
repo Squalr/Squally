@@ -19,9 +19,6 @@
     <Filter Include="Source\Scenes\Level">
       <UniqueIdentifier>{4df6f466-fb7d-4ee4-b7d3-a451d4a61f2f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Utils">
-      <UniqueIdentifier>{8f7b5b30-247a-452b-96b8-2d42834c1248}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Scenes\Menus\Options">
       <UniqueIdentifier>{0eaeefbb-4b79-448f-b9c2-b11c54de4290}</UniqueIdentifier>
     </Filter>
@@ -157,6 +154,9 @@
     <Filter Include="Source\Engine\Config">
       <UniqueIdentifier>{ce5a0488-0b0e-462b-844a-951833d07495}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Engine\Utils">
+      <UniqueIdentifier>{e8b7a6d3-2c54-426e-b0c9-2ef635084fbc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Entities\Entity.cpp">
@@ -246,14 +246,8 @@
     <ClCompile Include="..\Source\Objects\Hackables\HackableAttribute.cpp">
       <Filter>Source\Objects\Hackables</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Utils\HackUtils.cpp">
-      <Filter>Source\Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.cpp">
       <Filter>Source\Scenes\Menus\HackerMode</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Utils\StrUtils.cpp">
-      <Filter>Source\Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Entities\Npcs\Knight.cpp">
       <Filter>Source\Entities\Npcs</Filter>
@@ -272,12 +266,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Hexus.cpp">
       <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Utils\GameUtils.cpp">
-      <Filter>Source\Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Utils\MathUtils.cpp">
-      <Filter>Source\Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Minigames\Hexus\CardData.cpp">
       <Filter>Source\Scenes\Minigames\Hexus</Filter>
@@ -829,6 +817,18 @@
     <ClCompile Include="..\Source\Engine\Config\ConfigManager.cpp">
       <Filter>Source\Engine\Config</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Engine\Utils\GameUtils.cpp">
+      <Filter>Source\Engine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Utils\HackUtils.cpp">
+      <Filter>Source\Engine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Utils\MathUtils.cpp">
+      <Filter>Source\Engine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Utils\StrUtils.cpp">
+      <Filter>Source\Engine\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Scenes\Level\Level.h">
@@ -927,14 +927,8 @@
     <ClInclude Include="..\Source\Objects\Hackables\HackableAttribute.h">
       <Filter>Source\Objects\Hackables</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Utils\HackUtils.h">
-      <Filter>Source\Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.h">
       <Filter>Source\Scenes\Menus\HackerMode</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Utils\StrUtils.h">
-      <Filter>Source\Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Minigames\Minigames.h">
       <Filter>Source\Scenes\Minigames</Filter>
@@ -956,12 +950,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Deck.h">
       <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Utils\GameUtils.h">
-      <Filter>Source\Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Utils\MathUtils.h">
-      <Filter>Source\Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Minigames\Hexus\CardData.h">
       <Filter>Source\Scenes\Minigames\Hexus</Filter>
@@ -1530,6 +1518,18 @@
     </ClInclude>
     <ClInclude Include="..\Source\Engine\Config\ConfigManager.h">
       <Filter>Source\Engine\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Utils\GameUtils.h">
+      <Filter>Source\Engine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Utils\HackUtils.h">
+      <Filter>Source\Engine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Utils\MathUtils.h">
+      <Filter>Source\Engine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Utils\StrUtils.h">
+      <Filter>Source\Engine\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

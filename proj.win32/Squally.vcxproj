@@ -168,6 +168,10 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Engine\Rendering\Components\TextMenuSprite.cpp" />
     <ClCompile Include="..\Source\Engine\Rendering\HUD\DeveloperHud.cpp" />
     <ClCompile Include="..\Source\Engine\Sound\SoundManager.cpp" />
+    <ClCompile Include="..\Source\Engine\Utils\GameUtils.cpp" />
+    <ClCompile Include="..\Source\Engine\Utils\HackUtils.cpp" />
+    <ClCompile Include="..\Source\Engine\Utils\MathUtils.cpp" />
+    <ClCompile Include="..\Source\Engine\Utils\StrUtils.cpp" />
     <ClCompile Include="..\Source\Entities\Enemies\Castle\BossWitch.cpp" />
     <ClCompile Include="..\Source\Entities\Enemies\Castle\Executioner.cpp" />
     <ClCompile Include="..\Source\Entities\Enemies\Castle\Ghost.cpp" />
@@ -372,10 +376,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Engine\Save\SaveManager.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Shaders\PostProcess.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.cpp" />
-    <ClCompile Include="..\Source\Utils\HackUtils.cpp" />
-    <ClCompile Include="..\Source\Utils\MathUtils.cpp" />
-    <ClCompile Include="..\Source\Utils\StrUtils.cpp" />
-    <ClCompile Include="..\Source\Utils\GameUtils.cpp" />
     <ClCompile Include="..\Source\Window.cpp" />
     <ClCompile Include="..\Source\Scenes\SceneDirector.cpp" />
     <ClCompile Include="..\Source\Scenes\Level\Level.cpp" />
@@ -397,6 +397,10 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Engine\Rendering\Components\TextMenuSprite.h" />
     <ClInclude Include="..\Source\Engine\Rendering\HUD\DeveloperHud.h" />
     <ClInclude Include="..\Source\Engine\Sound\SoundManager.h" />
+    <ClInclude Include="..\Source\Engine\Utils\GameUtils.h" />
+    <ClInclude Include="..\Source\Engine\Utils\HackUtils.h" />
+    <ClInclude Include="..\Source\Engine\Utils\MathUtils.h" />
+    <ClInclude Include="..\Source\Engine\Utils\StrUtils.h" />
     <ClInclude Include="..\Source\Entities\Enemies\Castle\BossWitch.h" />
     <ClInclude Include="..\Source\Entities\Enemies\Castle\Executioner.h" />
     <ClInclude Include="..\Source\Entities\Enemies\Castle\Ghost.h" />
@@ -608,10 +612,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Engine\Save\SaveManager.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Shaders\PostProcess.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.h" />
-    <ClInclude Include="..\Source\Utils\HackUtils.h" />
-    <ClInclude Include="..\Source\Utils\MathUtils.h" />
-    <ClInclude Include="..\Source\Utils\StrUtils.h" />
-    <ClInclude Include="..\Source\Utils\GameUtils.h" />
     <ClInclude Include="..\Source\Window.h" />
     <ClInclude Include="..\Source\Scenes\SceneDirector.h" />
     <ClInclude Include="..\Source\Scenes\Level\Level.h" />

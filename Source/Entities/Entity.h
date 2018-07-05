@@ -1,10 +1,10 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Objects/Hackables/HackableObject.h"
 #include "Resources.h"
-#include "Utils/GameUtils.h"
-#include "Utils/MathUtils.h"
 
 using namespace cocos2d;
 

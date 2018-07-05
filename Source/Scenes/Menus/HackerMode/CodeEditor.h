@@ -9,9 +9,9 @@
 #include "Engine/Rendering/Components/MouseOverPanel.h"
 #include "Engine/Rendering/Components/TextWindow.h"
 #include "Engine/Rendering/Shaders/PostProcess.h"
+#include "Engine/Utils/HackUtils.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Resources.h"
-#include "Utils/HackUtils.h"
-#include "Utils/StrUtils.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;

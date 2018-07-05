@@ -4,12 +4,13 @@
 #include "cocos2d.h"
 
 #include "Events/NavigationEvents.h"
-#include "Engine/Rendering/Components/CProgressBar.h"
-#include "Engine/Rendering/Components/FadeScene.h"
 #include "Engine/Maps/DefaultLayerDeserializer.h"
 #include "Engine/Maps/ILayerDeserializer.h"
 #include "Engine/Maps/IObjectDeserializer.h"
 #include "Engine/Maps/SerializableMap.h"
+#include "Engine/Rendering/Components/CProgressBar.h"
+#include "Engine/Rendering/Components/FadeScene.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Entities/EntityDeserializer.h"
 #include "Objects/Collision/CollisionDeserializer.h"
 #include "Objects/DecorDeserializer.h"
@@ -19,7 +20,6 @@
 #include "Scenes/Level/Environments/MusicDeserializer.h"
 #include "Scenes/Level/Environments/Weather/WeatherDeserializer.h"
 #include "Scenes/Menus/MenuBackground.h"
-#include "Utils/StrUtils.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;

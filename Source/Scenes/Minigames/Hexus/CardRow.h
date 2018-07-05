@@ -1,8 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
-#include "Utils/GameUtils.h"
 
 #include "Card.h"
 #include "Config.h"

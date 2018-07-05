@@ -4,6 +4,7 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/GlobalNode.h"
 #include "Engine/Maps/SerializableMap.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Events/HexusEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Fight/Fight.h"
@@ -17,7 +18,6 @@
 #include "Scenes/Menus/Story/StoryMap.h"
 #include "Scenes/Menus/Title/TitleScreen.h"
 #include "Scenes/Menus/Tutorial/TutorialScreen.h"
-#include "Utils/GameUtils.h"
 
 using namespace cocos2d;
 

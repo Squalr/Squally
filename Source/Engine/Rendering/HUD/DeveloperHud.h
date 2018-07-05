@@ -4,7 +4,7 @@
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Rendering/Components/Mouse.h"
 #include "Engine/Rendering/Components/UILayer.h"
-#include "Utils/GameUtils.h"
+#include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
 

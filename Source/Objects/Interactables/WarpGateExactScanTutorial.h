@@ -1,8 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Utils/GameUtils.h"
 #include "Objects/Interactables/WarpGate.h"
-#include "Utils/GameUtils.h"
 
 using namespace cocos2d;
 

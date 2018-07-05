@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 
-#include "Utils/GameUtils.h"
+#include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
 
