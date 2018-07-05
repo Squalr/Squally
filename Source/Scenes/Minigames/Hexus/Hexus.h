@@ -6,7 +6,7 @@
 #include "Events/HexusEvents.h"
 #include "Engine/Rendering/Components/FadeScene.h"
 #include "Engine/Rendering/Components/MenuSprite.h"
-#include "Utils/StrUtils.h"
+#include "Engine/Utils/StrUtils.h"
 
 #include "Components/Components.h"
 #include "GameState.h"

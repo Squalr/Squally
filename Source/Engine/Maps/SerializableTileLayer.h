@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Utils/StrUtils.h"
+#include "Engine/Utils/StrUtils.h"
 #include "SerializableLayer.h"
 
 using namespace cocos2d;

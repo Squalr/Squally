@@ -2,8 +2,6 @@
 #include "cocos2d.h"
 
 #include "Engine/Input/InputManager.h"
-#include "Entities/Player/Player.h"
-#include "Events/NavigationEvents.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Rendering/Components/FadeScene.h"
 #include "Engine/Rendering/Components/InfiniteParallaxNode.h"
@@ -13,11 +11,13 @@
 #include "Engine/Rendering/HUD/HackerModeHud.h"
 #include "Engine/Rendering/HUD/Hud.h"
 #include "Engine/Rendering/Shaders/PostProcess.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Entities/Player/Player.h"
+#include "Events/NavigationEvents.h"
 #include "Resources.h"
 #include "Scenes/Level/Environments/Backgrounds/MatrixRain/MatrixRain.h"
 #include "Scenes/Menus/Dialog/DialogMenu.h"
 #include "Scenes/Menus/Pause/PauseMenu.h"
-#include "Utils/GameUtils.h"
 
 #include "LevelCamera.h"
 

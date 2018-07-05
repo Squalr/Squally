@@ -11,6 +11,7 @@
 #include "Engine/Rendering/Components/Mouse.h"
 #include "Engine/Rendering/Components/TextMenuSprite.h"
 #include "Engine/Sound/SoundManager.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Menus/Title/HackerMode.h"
 #include "Scenes/Menus/Title/TitleScreenBackground.h"
@@ -18,7 +19,6 @@
 #include "Scenes/Menus/Story/StoryMap.h"
 #include "Scenes/Menus/Options/OptionsMenu.h"
 #include "Resources.h"
-#include "Utils/GameUtils.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;
