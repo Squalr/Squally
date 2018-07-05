@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/Interactables/WarpGate.h"
+#include "Objects/Platformer/WarpGate.h"
 
 using namespace cocos2d;
 

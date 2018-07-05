@@ -10,8 +10,10 @@ std::vector<ILayerDeserializer*> LoadingScreen::layerDeserializers = {
 std::vector<IObjectDeserializer*> LoadingScreen::objectDeserializers = {
 	new EntityDeserializer(),
 	new CollisionDeserializer(),
-	new DecorDeserializer(),
-	new ObjectDeserializer(),
+	new PlatformerDecorDeserializer(),
+	new PlatformerObjectDeserializer(),
+	new IsometricDecorDeserializer(),
+	new IsometricObjectDeserializer(),
 };
 
 LoadingScreen * LoadingScreen::create()

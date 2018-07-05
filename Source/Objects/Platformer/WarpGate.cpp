@@ -2,11 +2,11 @@
 
 WarpGate* WarpGate::create(ValueMap* initProperties)
 {
-	WarpGate* warpGate = new WarpGate(initProperties);
+	WarpGate* instance = new WarpGate(initProperties);
 
-	warpGate->autorelease();
+	instance->autorelease();
 
-	return warpGate;
+	return instance;
 }
 
 WarpGate::WarpGate(ValueMap* initProperties) : HackableObject(initProperties)

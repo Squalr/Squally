@@ -5,11 +5,11 @@ int WarpGateExactScanTutorial::warpGatePowerMax = 70100;
 
 WarpGateExactScanTutorial* WarpGateExactScanTutorial::create(ValueMap* initProperties)
 {
-	WarpGateExactScanTutorial* warpGate = new WarpGateExactScanTutorial(initProperties);
+	WarpGateExactScanTutorial* instance = new WarpGateExactScanTutorial(initProperties);
 
-	warpGate->autorelease();
+	instance->autorelease();
 
-	return warpGate;
+	return instance;
 }
 
 WarpGateExactScanTutorial::WarpGateExactScanTutorial(ValueMap* initProperties) : WarpGate(initProperties)

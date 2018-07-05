@@ -1,10 +1,10 @@
-#include "DecorDeserializer.h"
+#include "PlatformerDecorDeserializer.h"
 
-const std::string DecorDeserializer::KeyTypeDecor = "decor";
+const std::string PlatformerDecorDeserializer::KeyTypeDecor = "decor";
 
-void DecorDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void PlatformerDecorDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
 {
-	if (args->typeName == DecorDeserializer::KeyTypeDecor)
+	if (args->typeName == PlatformerDecorDeserializer::KeyTypeDecor)
 	{
 		ValueMap properties = args->properties;
 		std::string name = properties.at(SerializableObject::KeyName).asString();
@@ -48,7 +48,7 @@ void DecorDeserializer::onDeserializationRequest(ObjectDeserializationRequestArg
 		
 		if (newObject == nullptr)
 		{
-			newObject = DecorObject::create(&properties);
+			newObject = PlatformerDecorObject::create(&properties);
 			newObject->addChild(sprite);
 		}
 

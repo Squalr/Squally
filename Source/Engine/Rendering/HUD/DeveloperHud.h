@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "Resources.h"
 #include "Engine/Maps/SerializableMap.h"
+#include "Engine/Rendering/Components/MenuSprite.h"
 #include "Engine/Rendering/Components/Mouse.h"
 #include "Engine/Rendering/Components/UILayer.h"
 #include "Engine/Utils/GameUtils.h"

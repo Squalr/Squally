@@ -3,14 +3,13 @@
 
 #include "Engine/Maps/IObjectDeserializer.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/DecorObject.h"
+#include "Objects/Isometric/IsometricDecorObject.h"
+#include "Objects/Isometric/IsometricObjectDeserializer.h"
 #include "Resources.h"
-
-#include "ObjectDeserializer.h"
 
 using namespace cocos2d;
 
-class DecorDeserializer : public IObjectDeserializer
+class IsometricDecorDeserializer : public IObjectDeserializer
 {
 public:
 	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;

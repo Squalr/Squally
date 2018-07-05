@@ -1,10 +1,10 @@
-#include "ObjectDeserializer.h"
+#include "PlatformerObjectDeserializer.h"
 
-const std::string ObjectDeserializer::KeyTypeObject = "object";
+const std::string PlatformerObjectDeserializer::KeyTypeObject = "object";
 
-void ObjectDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void PlatformerObjectDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
 {
-	if (args->typeName == ObjectDeserializer::KeyTypeObject)
+	if (args->typeName == PlatformerObjectDeserializer::KeyTypeObject)
 	{
 		ValueMap properties = args->properties;
 		std::string name = properties.at(SerializableObject::KeyName).asString();
@@ -32,7 +32,7 @@ void ObjectDeserializer::onDeserializationRequest(ObjectDeserializationRequestAr
 		}
 		else
 		{
-			CCLOG("Missing properties on object");
+			CCLOG("Missing properties on platformer object");
 			return;
 		}
 

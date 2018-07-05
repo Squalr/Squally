@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "Objects/Hackables/HackableObject.h"
-#include "Objects/Interactables/Chest.h"
+#include "Objects/Platformer/Chest.h"
 
 using namespace cocos2d;
 
