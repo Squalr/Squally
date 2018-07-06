@@ -44,6 +44,7 @@ private:
 	void onSoundAssetLoaded();
 	void incrementLoadedFileCount();
 	void initializePositions();
+	bool levelIsLoaded();
 
 	static bool isPreloadableImage(std::string filePath);
 	static bool isPreloadableSound(std::string filePath);
