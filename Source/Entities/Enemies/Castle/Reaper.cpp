@@ -12,7 +12,7 @@ Reaper* Reaper::deserialize(ValueMap* initProperties)
 }
 
 Reaper::Reaper(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Castle_Reaper_Animations,
+	Resources::Entities_Platformer_Environment_Castle_Reaper_Animations,
 	false,
 	Size(196.0f, 512.0f),
 	0.8f,

@@ -12,7 +12,7 @@ Minotaur* Minotaur::deserialize(ValueMap* initProperties)
 }
 
 Minotaur::Minotaur(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Jungle_Minotaur_Animations,
+	Resources::Entities_Platformer_Environment_Jungle_Minotaur_Animations,
 	false,
 	Size(278.0f, 288.0f),
 	1.0f,

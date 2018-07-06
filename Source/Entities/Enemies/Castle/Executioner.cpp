@@ -12,7 +12,7 @@ Executioner* Executioner::deserialize(ValueMap* initProperties)
 }
 
 Executioner::Executioner(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Castle_Executioner_Animations,
+	Resources::Entities_Platformer_Environment_Castle_Executioner_Animations,
 	false,
 	Size(472.0f, 820.0f),
 	0.3f,

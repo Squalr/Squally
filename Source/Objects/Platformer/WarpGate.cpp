@@ -13,9 +13,9 @@ WarpGate::WarpGate(ValueMap* initProperties) : HackableObject(initProperties)
 {
 	this->isOpen = false;
 
-	this->gateOpen = Sprite::create(Resources::Objects_WarpGateOpen);
-	this->gateClosed = Sprite::create(Resources::Objects_WarpGateClosed);
-	this->gateClosedLights = Sprite::create(Resources::Objects_WarpGateClosedLights);
+	this->gateOpen = Sprite::create(Resources::Objects_Platformer_WarpGateOpen);
+	this->gateClosed = Sprite::create(Resources::Objects_Platformer_WarpGateClosed);
+	this->gateClosedLights = Sprite::create(Resources::Objects_Platformer_WarpGateClosedLights);
 	this->gateClosedLightsNode = Node::create();
 	this->gateParticles = ParticleSystemQuad::create(Resources::Particles_WarpGate);
 

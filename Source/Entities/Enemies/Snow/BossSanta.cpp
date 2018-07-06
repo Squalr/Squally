@@ -12,7 +12,7 @@ BossSanta* BossSanta::deserialize(ValueMap* initProperties)
 }
 
 BossSanta::BossSanta(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Snow_BossSanta_Animations,
+	Resources::Entities_Platformer_Environment_Snow_BossSanta_Animations,
 	false,
 	Size(420.0f, 452.0f),
 	0.7f,

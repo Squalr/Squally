@@ -12,7 +12,7 @@ GoblinSwordsman* GoblinSwordsman::deserialize(ValueMap* initProperties)
 }
 
 GoblinSwordsman::GoblinSwordsman(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Jungle_GoblinSwordsman_Animations,
+	Resources::Entities_Platformer_Environment_Jungle_GoblinSwordsman_Animations,
 	false,
 	Size(312.0f, 512.0f),
 	0.35f,

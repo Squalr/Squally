@@ -4,18 +4,18 @@
 
 #include "Engine/Input/InputManager.h"
 #include "Entities/Entity.h"
-#include "Entities/Player/Hover.h"
+#include "Entities/Squally/Hover.h"
 #include "Events/NavigationEvents.h"
 #include "Objects/Collision/CategoryGroup.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 
-class Player : public Entity
+class Squally : public Entity
 {
 public:
-	static Player * deserialize(ValueMap* initProperties);
-	static Player * getInstance();
+	static Squally * deserialize(ValueMap* initProperties);
+	static Squally * getInstance();
 
 	Size getSize() override;
 
@@ -32,8 +32,8 @@ protected:
 	bool hoverContactEnd(CollisionData data);
 
 private:
-	Player(ValueMap* initProperties);
-	~Player();
+	Squally(ValueMap* initProperties);
+	~Squally();
 
 	void registerHackables();
 	void onEnter() override;
@@ -46,6 +46,6 @@ private:
 	InputManager* inputManager;
 	Hover* hover;
 
-	static const float playerScale;
-	static Player* playerInstance;
+	static const float squallyScale;
+	static Squally* squallyInstance;
 };

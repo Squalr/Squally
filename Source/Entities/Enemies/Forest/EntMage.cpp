@@ -12,7 +12,7 @@ EntMage* EntMage::deserialize(ValueMap* initProperties)
 }
 
 EntMage::EntMage(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Forest_EntMage_Animations,
+	Resources::Entities_Platformer_Environment_Forest_EntMage_Animations,
 	false,
 	Size(512.0f, 820.0f),
 	0.3f,

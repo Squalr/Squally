@@ -12,7 +12,7 @@ JungleDragon* JungleDragon::deserialize(ValueMap* initProperties)
 }
 
 JungleDragon::JungleDragon(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Jungle_JungleDragon_Animations,
+	Resources::Entities_Platformer_Environment_Jungle_JungleDragon_Animations,
 	false,
 	Size(640.0f, 356.0f),
 	0.8f,

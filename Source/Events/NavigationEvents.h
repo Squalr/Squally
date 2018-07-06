@@ -2,14 +2,14 @@
 #include "cocos2d.h"
 
 #include "Engine/Maps/SerializableMap.h"
-#include "Entities/Player/Player.h"
+#include "Entities/Squally/Squally.h"
 #include "Entities/Enemy.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 
 // Forward declarations
-class Player;
+class Squally;
 class Enemy;
 class SerializableMap;
 
@@ -67,10 +67,10 @@ public:
 
 	struct NavigateFightArgs
 	{
-		Player* player;
+		Squally* squally;
 		Enemy* enemy;
 
-		NavigateFightArgs(Player*player, Enemy* enemy) : player(player), enemy(enemy) { }
+		NavigateFightArgs(Squally* squally, Enemy* enemy) : squally(squally), enemy(enemy) { }
 	};
 
 	struct NavigateConfirmArgs
@@ -88,5 +88,5 @@ public:
 	static void navigateConfirm(std::string confirmMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
 	static void loadLevel(std::string levelFile);
 	static void enterLevel(SerializableMap* levelMap);
-	static void loadFight(Player* player, Enemy* enemy);
+	static void loadFight(Squally* squally, Enemy* enemy);
 };

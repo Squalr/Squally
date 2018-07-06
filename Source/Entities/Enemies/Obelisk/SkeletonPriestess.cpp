@@ -12,7 +12,7 @@ SkeletonPriestess* SkeletonPriestess::deserialize(ValueMap* initProperties)
 }
 
 SkeletonPriestess::SkeletonPriestess(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Obelisk_SkeletonPriestess_Animations,
+	Resources::Entities_Platformer_Environment_Obelisk_SkeletonPriestess_Animations,
 	false,
 	Size(196.0f, 312.0f),
 	0.8f,

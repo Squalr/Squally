@@ -12,7 +12,7 @@ OrcGrunt* OrcGrunt::deserialize(ValueMap* initProperties)
 }
 
 OrcGrunt::OrcGrunt(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Forest_OrcGrunt_Animations,
+	Resources::Entities_Platformer_Environment_Forest_OrcGrunt_Animations,
 	false,
 	Size(256.0f, 218.0f),
 	1.0f,

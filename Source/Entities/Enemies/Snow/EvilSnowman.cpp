@@ -12,7 +12,7 @@ EvilSnowman* EvilSnowman::deserialize(ValueMap* initProperties)
 }
 
 EvilSnowman::EvilSnowman(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Snow_EvilSnowman_Animations,
+	Resources::Entities_Platformer_Environment_Snow_EvilSnowman_Animations,
 	false,
 	Size(420.0f, 420.0f),
 	0.7f,

@@ -12,7 +12,7 @@ BatDemon* BatDemon::deserialize(ValueMap* initProperties)
 }
 
 BatDemon::BatDemon(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Obelisk_BatDemon_Animations,
+	Resources::Entities_Platformer_Environment_Obelisk_BatDemon_Animations,
 	false,
 	Size(726.0f, 1024.0f),
 	0.23f,

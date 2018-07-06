@@ -12,7 +12,7 @@ SkeletonWarrior* SkeletonWarrior::deserialize(ValueMap* initProperties)
 }
 
 SkeletonWarrior::SkeletonWarrior(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Caverns_SkeletonWarrior_Animations,
+	Resources::Entities_Platformer_Environment_Caverns_SkeletonWarrior_Animations,
 	false,
 	Size(128.0f, 216.0f),
 	0.8f,

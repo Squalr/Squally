@@ -12,7 +12,7 @@ BlackWidow* BlackWidow::deserialize(ValueMap* initProperties)
 }
 
 BlackWidow::BlackWidow(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Caverns_BlackWidow_Animation,
+	Resources::Entities_Platformer_Environment_Caverns_BlackWidow_Animation,
 	false,
 	Size(1280.0f, 920.0f),
 	0.20f,

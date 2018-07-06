@@ -12,7 +12,7 @@ WaterElemental* WaterElemental::deserialize(ValueMap* initProperties)
 }
 
 WaterElemental::WaterElemental(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Snow_WaterElemental_Animations,
+	Resources::Entities_Platformer_Environment_Snow_WaterElemental_Animations,
 	false,
 	Size(820.0f, 1480.0f),
 	0.20f,

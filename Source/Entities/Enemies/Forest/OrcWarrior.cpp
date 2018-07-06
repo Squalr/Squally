@@ -12,7 +12,7 @@ OrcWarrior* OrcWarrior::deserialize(ValueMap* initProperties)
 }
 
 OrcWarrior::OrcWarrior(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Forest_OrcWarrior_Animations,
+	Resources::Entities_Platformer_Environment_Forest_OrcWarrior_Animations,
 	false,
 	Size(256.0f, 228.0f),
 	1.0f,

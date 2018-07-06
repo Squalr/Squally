@@ -12,7 +12,7 @@ FrostDragon* FrostDragon::deserialize(ValueMap* initProperties)
 }
 
 FrostDragon::FrostDragon(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Snow_FrostDragon_Animations,
+	Resources::Entities_Platformer_Environment_Snow_FrostDragon_Animations,
 	false,
 	Size(720.0f, 356.0f),
 	0.8f,

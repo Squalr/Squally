@@ -12,7 +12,7 @@ Ghost* Ghost::deserialize(ValueMap* initProperties)
 }
 
 Ghost::Ghost(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Castle_Ghost_Animations,
+	Resources::Entities_Platformer_Environment_Castle_Ghost_Animations,
 	false,
 	Size(480.0f, 692.0f),
 	0.3f,

@@ -12,7 +12,7 @@ Mantis* Mantis::deserialize(ValueMap* initProperties)
 }
 
 Mantis::Mantis(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Jungle_Mantis_Animations,
+	Resources::Entities_Platformer_Environment_Jungle_Mantis_Animations,
 	false,
 	Size(320.0f, 384.0f),
 	0.75f,

@@ -12,7 +12,7 @@ BossEgyptianGoddess* BossEgyptianGoddess::deserialize(ValueMap* initProperties)
 }
 
 BossEgyptianGoddess::BossEgyptianGoddess(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Ruins_BossEgyptianGoddess_Animations,
+	Resources::Entities_Platformer_Environment_Ruins_BossEgyptianGoddess_Animations,
 	false,
 	Size(128.0f, 272.0f),
 	0.8f,

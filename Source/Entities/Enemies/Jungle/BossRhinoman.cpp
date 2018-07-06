@@ -12,7 +12,7 @@ BossRhinoman* BossRhinoman::deserialize(ValueMap* initProperties)
 }
 
 BossRhinoman::BossRhinoman(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Jungle_BossRhinoman_Animations,
+	Resources::Entities_Platformer_Environment_Jungle_BossRhinoman_Animations,
 	false,
 	Size(592.0f, 592.0f),
 	1.0f,

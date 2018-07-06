@@ -12,7 +12,7 @@ MechGolemDark* MechGolemDark::deserialize(ValueMap* initProperties)
 }
 
 MechGolemDark::MechGolemDark(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Mech_MechGolemDark_Animations,
+	Resources::Entities_Platformer_Environment_Mech_MechGolemDark_Animations,
 	false,
 	Size(460.0f, 512.0f),
 	0.4f,

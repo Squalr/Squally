@@ -21,7 +21,7 @@ Level::Level()
 
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, -768.0f));
 
-	this->hackerModeBackground = Sprite::create(Resources::Backgrounds_MatrixRain_HackerModeBackground);
+	this->hackerModeBackground = Sprite::create(Resources::Backgrounds_Platformer_MatrixRain_HackerModeBackground);
 	this->hackerModeRain = MatrixRain::create();
 	this->hackerModePostProcessGlow = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_GrayBlur);
 	this->hud = Hud::create();
@@ -101,7 +101,7 @@ void Level::loadLevel(SerializableMap* levelMap)
 	this->developerHud->loadLevel(levelMap);
 
 	this->camera->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
-	this->camera->setTarget(Player::getInstance());
+	this->camera->setTarget(Squally::getInstance());
 }
 
 void Level::resume(void)

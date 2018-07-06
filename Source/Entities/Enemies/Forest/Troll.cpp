@@ -12,7 +12,7 @@ Troll* Troll::deserialize(ValueMap* initProperties)
 }
 
 Troll::Troll(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Forest_Troll_Animations,
+	Resources::Entities_Platformer_Environment_Forest_Troll_Animations,
 	false,
 	Size(256.0f, 248.0f),
 	1.0f,

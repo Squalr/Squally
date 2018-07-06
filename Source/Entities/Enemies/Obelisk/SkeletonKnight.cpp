@@ -12,7 +12,7 @@ SkeletonKnight* SkeletonKnight::deserialize(ValueMap* initProperties)
 }
 
 SkeletonKnight::SkeletonKnight(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Obelisk_SkeletonKnight_Animations,
+	Resources::Entities_Platformer_Environment_Obelisk_SkeletonKnight_Animations,
 	false,
 	Size(212.0f, 280.0f),
 	0.8f,

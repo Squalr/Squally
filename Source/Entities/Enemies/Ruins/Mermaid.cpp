@@ -12,7 +12,7 @@ Mermaid* Mermaid::deserialize(ValueMap* initProperties)
 }
 
 Mermaid::Mermaid(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Ruins_Mermaid_Animations,
+	Resources::Entities_Platformer_Environment_Ruins_Mermaid_Animations,
 	false,
 	Size(172.0f, 296.0f),
 	0.8f,

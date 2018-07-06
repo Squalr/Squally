@@ -12,7 +12,7 @@ GoblinGruntBoar* GoblinGruntBoar::deserialize(ValueMap* initProperties)
 }
 
 GoblinGruntBoar::GoblinGruntBoar(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Forest_GoblinGruntBoar_Animations,
+	Resources::Entities_Platformer_Environment_Forest_GoblinGruntBoar_Animations,
 	false,
 	Size(128.0f, 296.0f),
 	0.8f,

@@ -12,7 +12,7 @@ SkeletonCleaver* SkeletonCleaver::deserialize(ValueMap* initProperties)
 }
 
 SkeletonCleaver::SkeletonCleaver(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Obelisk_SkeletonCleaver_Animations,
+	Resources::Entities_Platformer_Environment_Obelisk_SkeletonCleaver_Animations,
 	false,
 	Size(128.0f, 312.0f),
 	0.8f,

@@ -18,9 +18,9 @@ void EntityDeserializer::onDeserializationRequest(ObjectDeserializationRequestAr
 		string name = properties.at(SerializableObject::KeyName).asString();
 		SerializableObject* newEntity = nullptr;
 
-		if (name == Player::KeySquallyProperty)
+		if (name == Squally::KeySquallyProperty)
 		{
-			newEntity = Player::deserialize(&properties);
+			newEntity = Squally::deserialize(&properties);
 		}
 		else if (name == Knight::KeyNpcKnight)
 		{

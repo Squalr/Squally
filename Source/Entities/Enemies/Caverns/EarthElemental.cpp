@@ -12,7 +12,7 @@ EarthElemental* EarthElemental::deserialize(ValueMap* initProperties)
 }
 
 EarthElemental::EarthElemental(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Caverns_EarthElemental_Animations,
+	Resources::Entities_Platformer_Environment_Caverns_EarthElemental_Animations,
 	false,
 	Size(820.0f, 1480.0f),
 	0.20f,

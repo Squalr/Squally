@@ -12,7 +12,7 @@ BossDemonKing* BossDemonKing::deserialize(ValueMap* initProperties)
 }
 
 BossDemonKing::BossDemonKing(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Platformer_Environment_Volcano_BossDemonKing_Animations,
 	false,
 	Size(480.0f, 480.0f),
 	0.7f,

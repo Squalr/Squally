@@ -12,7 +12,7 @@ Tigress* Tigress::deserialize(ValueMap* initProperties)
 }
 
 Tigress::Tigress(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Ruins_Tigress_Animations,
+	Resources::Entities_Platformer_Environment_Ruins_Tigress_Animations,
 	false,
 	Size(128.0f, 256.0f),
 	0.8f,

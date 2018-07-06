@@ -12,7 +12,7 @@ VoidDemon* VoidDemon::deserialize(ValueMap* initProperties)
 }
 
 VoidDemon::VoidDemon(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Obelisk_VoidDemon_Animations,
+	Resources::Entities_Platformer_Environment_Obelisk_VoidDemon_Animations,
 	false,
 	Size(338.0f, 342.0f),
 	0.7f,

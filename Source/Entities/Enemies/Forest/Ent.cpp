@@ -12,7 +12,7 @@ Ent* Ent::deserialize(ValueMap* initProperties)
 }
 
 Ent::Ent(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Forest_Ent_Animations,
+	Resources::Entities_Platformer_Environment_Forest_Ent_Animations,
 	false,
 	Size(512.0f, 960.0f),
 	0.3f,

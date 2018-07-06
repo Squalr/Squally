@@ -10,7 +10,7 @@ void PlatformerDecorDeserializer::onDeserializationRequest(ObjectDeserialization
 		std::string name = properties.at(SerializableObject::KeyName).asString();
 
 		// For decor, simply grab the resource of the same name of the object type
-		Sprite* sprite = Sprite::create("Decor/" + name + ".png");
+		Sprite* sprite = Sprite::create("Decor/Platformer/" + name + ".png");
 
 		if (sprite == nullptr)
 		{

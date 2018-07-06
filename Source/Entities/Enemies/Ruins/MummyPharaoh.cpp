@@ -12,7 +12,7 @@ MummyPharaoh* MummyPharaoh::deserialize(ValueMap* initProperties)
 }
 
 MummyPharaoh::MummyPharaoh(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Ruins_MummyPharaoh_Animations,
+	Resources::Entities_Platformer_Environment_Ruins_MummyPharaoh_Animations,
 	false,
 	Size(324.0f, 316.0f),
 	1.0f,
