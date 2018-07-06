@@ -96,6 +96,7 @@ void PlatformerMap::loadMap(SerializableMap* serializableMap)
 	this->map = serializableMap;
 
 	this->mapNode->removeAllChildren();
+	this->map->removeFromParent();
 	this->mapNode->addChild(this->map);
 
 	this->developerHud->loadMap(serializableMap);
