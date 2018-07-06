@@ -109,11 +109,17 @@ void LoadingScreen::onFileEnumerationComplete(std::vector<std::string> files)
 		}
 	}
 
-	// Fail safe if no files are found
-	if (files.size() <= 0)
-	{
-		this->incrementLoadedFileCount();
-	}
+	do {
+		if (this->levelIsLoaded())
+		{
+			SerializableMap* map = SerializableMap::deserialize(this->currentLevelFile, &LoadingScreen::layerDeserializers, &LoadingScreen::objectDeserializers);
+
+			if (this->onLoadCallback != nullptr)
+			{
+				this->onLoadCallback(map);
+			}
+		}
+	} while (!this->levelIsLoaded());
 }
 
 void LoadingScreen::onTextureAssetLoaded(Texture2D* asset)
@@ -129,16 +135,11 @@ void LoadingScreen::onSoundAssetLoaded()
 void LoadingScreen::incrementLoadedFileCount()
 {
 	this->progressBar->setProgress(this->totalFileCount == 0 ? 0.0f : (float)this->loadedFileCount / (float)this->totalFileCount);
+}
 
-	if (this->loadedFileCount.fetch_add(1) >= this->totalFileCount - 1)
-	{
-		SerializableMap* map = SerializableMap::deserialize(this->currentLevelFile, &LoadingScreen::layerDeserializers, &LoadingScreen::objectDeserializers);
-
-		if (this->onLoadCallback != nullptr)
-		{
-			this->onLoadCallback(map);
-		}
-	}
+bool LoadingScreen::levelIsLoaded() 
+{
+	return this->loadedFileCount.fetch_add(1) >= this->totalFileCount - 1;
 }
 
 bool LoadingScreen::isPreloadableImage(std::string filePath)
