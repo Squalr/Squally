@@ -1259,7 +1259,15 @@ std::vector<std::string> FileUtils::listFilesRecursively(const std::string& dirP
 			 {
 			retval.push_back(it->path().generic_string());
 			}
+		else {
+			auto nested = this->listFilesRecursively(it->path().generic_string());
+			for (auto it = nested.begin(); it != nested.end(); it++)
+			{
+				retval.push_back(*it);
+			}
 		}
+	}
+
 	return retval;
 }
 
