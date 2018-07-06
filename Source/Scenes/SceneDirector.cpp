@@ -184,10 +184,17 @@ void SceneDirector::onGameNavigateEnterLevel(EventCustom* eventCustom)
 		this->map->release();
 	}
 
-	// TODO: Determine if isometric needs to be loaded
-	this->map = PlatformerMap::create();
-	this->map->retain();
+	if (args->levelMap->isPlatformer()) {
+		this->map = PlatformerMap::create();
+	} 
+	else if (args->levelMap->isIsometric()) {
+		this->map = IsometricMap::create();
+	}
+	else {
+		throw exception("Invalid Map Type Loaded");
+	}
 
+	this->map->retain();
 	this->map->loadMap(args->levelMap);
 	GlobalDirector::getInstance()->loadScene(this->map);
 }
