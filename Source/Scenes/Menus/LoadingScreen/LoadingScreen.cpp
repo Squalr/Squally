@@ -81,9 +81,6 @@ void LoadingScreen::onFileEnumerationComplete(std::vector<std::string> files)
 			LoadingScreen::isPreloadableSound(file))
 		{
 			this->totalFileCount++;
-
-			// TEMP: Remove me to bring back loading screen
-			break;
 		}
 	}
 
@@ -95,51 +92,52 @@ void LoadingScreen::onFileEnumerationComplete(std::vector<std::string> files)
 		{
 			// Load texture
 			Director::getInstance()->getTextureCache()->addImageAsync(file, textureLoadCallback);
-
-			// TEMP: Remove me to bring back loading screen
-			break;
 		}
 		else if (LoadingScreen::isPreloadableSound(file))
 		{
 			// Load sound
 			AudioEngine::preload(file, soundLoadCallback);
-
-			// TEMP: Remove me to bring back loading screen
-			break;
 		}
 	}
 
-	do {
-		if (this->levelIsLoaded())
-		{
-			SerializableMap* map = SerializableMap::deserialize(this->currentLevelFile, &LoadingScreen::layerDeserializers, &LoadingScreen::objectDeserializers);
-
-			if (this->onLoadCallback != nullptr)
-			{
-				this->onLoadCallback(map);
-			}
-		}
-	} while (!this->levelIsLoaded());
+	// In case there are no assets to load we also need to check here
+	this->enterLevelIfDoneLoading();
 }
 
 void LoadingScreen::onTextureAssetLoaded(Texture2D* asset)
 {
 	this->incrementLoadedFileCount();
+	this->enterLevelIfDoneLoading();
 }
 
 void LoadingScreen::onSoundAssetLoaded()
 {
 	this->incrementLoadedFileCount();
+	this->enterLevelIfDoneLoading();
+}
+
+void LoadingScreen::enterLevelIfDoneLoading()
+{
+	if (this->levelIsLoaded())
+	{
+		SerializableMap* map = SerializableMap::deserialize(this->currentLevelFile, &LoadingScreen::layerDeserializers, &LoadingScreen::objectDeserializers);
+
+		if (this->onLoadCallback != nullptr)
+		{
+			this->onLoadCallback(map);
+		}
+	}
 }
 
 void LoadingScreen::incrementLoadedFileCount()
 {
+	this->loadedFileCount.fetch_add(1);
 	this->progressBar->setProgress(this->totalFileCount == 0 ? 0.0f : (float)this->loadedFileCount / (float)this->totalFileCount);
 }
 
 bool LoadingScreen::levelIsLoaded() 
 {
-	return this->loadedFileCount.fetch_add(1) >= this->totalFileCount - 1;
+	return this->loadedFileCount >= this->totalFileCount - 1;
 }
 
 bool LoadingScreen::isPreloadableImage(std::string filePath)
