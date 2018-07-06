@@ -90,12 +90,22 @@ StoryMap::StoryMap()
 		Resources::Levels_Platformer_Obelisk_Obelisk
 	);
 
+	/*
 	this->volcano = MapNode::create(
 		Resources::Menus_StoryMenu_Volcano,
 		Resources::Menus_StoryMenu_VolcanoSelected,
 		Resources::Menus_StoryMenu_VolcanoLocked,
 		Localization::resolveString(StoryMap::StringKeyLevelNameVolcano),
 		Resources::Levels_Platformer_Volcano_Volcano
+	);*/
+
+	// override volcano for arcade testing
+	this->volcano = MapNode::create(
+		Resources::Menus_StoryMenu_Volcano,
+		Resources::Menus_StoryMenu_VolcanoSelected,
+		Resources::Menus_StoryMenu_VolcanoLocked,
+		Localization::resolveString(StoryMap::StringKeyLevelNameVolcano),
+		Resources::Levels_Isometric_MainArcade
 	);
 
 	this->mecha = MapNode::create(
