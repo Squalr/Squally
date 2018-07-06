@@ -14,7 +14,7 @@ class DeveloperHud : public UILayer
 public:
 	static DeveloperHud * create();
 
-	void loadLevel(SerializableMap* map);
+	void loadMap(SerializableMap* serializableMapInit);
 
 private:
 	DeveloperHud();
@@ -26,7 +26,7 @@ private:
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onSaveClick(MenuSprite* menuSprite);
 
-	SerializableMap* levelMap;
+	SerializableMap* serializableMap;
 	LayerColor* layerSelectionBackground;
 	MenuSprite* saveButton;
 

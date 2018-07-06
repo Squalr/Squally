@@ -26,9 +26,9 @@ DeveloperHud::~DeveloperHud()
 {
 }
 
-void DeveloperHud::loadLevel(SerializableMap* map)
+void DeveloperHud::loadMap(SerializableMap* serializableMapInit)
 {
-	this->levelMap = map;
+	this->serializableMap = serializableMapInit;
 }
 
 void DeveloperHud::onEnter()
@@ -77,5 +77,5 @@ void DeveloperHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 void DeveloperHud::onSaveClick(MenuSprite* menuSprite)
 {
-	this->levelMap->serialize();
+	this->serializableMap->serialize();
 }

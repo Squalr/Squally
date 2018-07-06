@@ -18,10 +18,10 @@
 #include "Objects/Platformer/PlatformerDecorDeserializer.h"
 #include "Objects/Platformer/PlatformerObjectDeserializer.h"
 #include "Resources.h"
-#include "Scenes/Level/Environments/Backgrounds/BackgroundDeserializer.h"
-#include "Scenes/Level/Environments/MusicDeserializer.h"
-#include "Scenes/Level/Environments/Weather/WeatherDeserializer.h"
+#include "Scenes/Maps/Platformer/Backgrounds/BackgroundDeserializer.h"
+#include "Scenes/Maps/Platformer/Weather/WeatherDeserializer.h"
 #include "Scenes/Menus/MenuBackground.h"
+#include "Sound/MusicDeserializer.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;

@@ -20,7 +20,7 @@ SceneDirector::SceneDirector()
 	this->tutorialScreen = TutorialScreen::create();
 	this->storyMap = StoryMap::create();
 	this->loadingScreen = LoadingScreen::create();
-	this->level = Level::create();
+	this->map = nullptr;
 	this->fight = Fight::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->pauseMenu = PauseMenu::create();
@@ -35,7 +35,7 @@ SceneDirector::SceneDirector()
 	this->tutorialScreen->retain();
 	this->storyMap->retain();
 	this->loadingScreen->retain();
-	this->level->retain();
+	// this->map->retain(); // Initially nullptr -- do not retain
 	this->fight->retain();
 	this->optionsMenu->retain();
 	this->pauseMenu->retain();
@@ -123,7 +123,7 @@ void SceneDirector::onGameNavigateNew(EventCustom* eventCustom)
 		newScene = this->loadingScreen;
 		break;
 	case NavigationEvents::GameScreen::Level:
-		newScene = this->level;
+		newScene = this->map;
 		break;
 	case NavigationEvents::GameScreen::Hexus:
 		newScene = this->hexus;
@@ -179,12 +179,17 @@ void SceneDirector::onGameNavigateEnterLevel(EventCustom* eventCustom)
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
 
 	// Destroy the current level object explicitly and re-create it
-	this->level->release();
-	this->level = Level::create();
-	this->level->retain();
+	if (this->map != nullptr)
+	{
+		this->map->release();
+	}
 
-	this->level->loadLevel(args->levelMap);
-	GlobalDirector::getInstance()->loadScene(this->level);
+	// TODO: Determine if isometric needs to be loaded
+	this->map = PlatformerMap::create();
+	this->map->retain();
+
+	this->map->loadMap(args->levelMap);
+	GlobalDirector::getInstance()->loadScene(this->map);
 }
 
 void SceneDirector::onGameNavigateFight(EventCustom* eventCustom)

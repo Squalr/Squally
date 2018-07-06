@@ -16,9 +16,6 @@
     <Filter Include="Source\Scenes\Menus">
       <UniqueIdentifier>{ab031439-9498-4f06-b44f-e5be61ab5205}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Scenes\Level">
-      <UniqueIdentifier>{4df6f466-fb7d-4ee4-b7d3-a451d4a61f2f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Scenes\Menus\Options">
       <UniqueIdentifier>{0eaeefbb-4b79-448f-b9c2-b11c54de4290}</UniqueIdentifier>
     </Filter>
@@ -40,9 +37,6 @@
     <Filter Include="Source\Engine\Input">
       <UniqueIdentifier>{41b4695d-9be7-4d80-930f-d7fe7acdf1c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Scenes\Level\Environments">
-      <UniqueIdentifier>{ddea15c5-7454-4e0d-9488-79b4dd7987ff}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Scenes\Menus\Dialog">
       <UniqueIdentifier>{8474dc60-2c22-48a3-9d10-0fa486fe9f7f}</UniqueIdentifier>
     </Filter>
@@ -61,23 +55,11 @@
     <Filter Include="Source\Objects\Hackables">
       <UniqueIdentifier>{af157143-ff33-4a8a-888f-56b9fd04564e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Scenes\Minigames">
-      <UniqueIdentifier>{08081095-b5ff-4eae-af2d-267645d6584d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Scenes\Menus\LoadingScreen">
       <UniqueIdentifier>{5b766df7-ace8-43f1-bf59-f0f9d699f795}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Events">
       <UniqueIdentifier>{e9ef9eef-8a01-4d65-b231-b8b59fc9ac49}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Scenes\Minigames\Hexus">
-      <UniqueIdentifier>{f4b1560a-37c3-4bc4-996d-b5034b0d838d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Scenes\Minigames\Hexus\Components">
-      <UniqueIdentifier>{87c40124-5e4e-4a9d-a46c-ded427cf7a16}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Scenes\Fight">
-      <UniqueIdentifier>{87c40124-5e4e-4a9d-a46c-ded427cf7a18}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Engine\Save">
       <UniqueIdentifier>{e88216dc-aa29-470e-9232-cd2f85e723b1}</UniqueIdentifier>
@@ -96,15 +78,6 @@
     </Filter>
     <Filter Include="Source\Engine\Maps">
       <UniqueIdentifier>{7389bbbb-d25e-4562-80a7-0e5f8e6dc7b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Scenes\Level\Environments\Backgrounds">
-      <UniqueIdentifier>{eab4dd14-9013-4f67-ab84-af92be28aea5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Scenes\Level\Environments\Backgrounds\MatrixRain">
-      <UniqueIdentifier>{bbc5ca1a-e7fa-48ed-89ac-6fd974bcb259}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Scenes\Level\Environments\Weather">
-      <UniqueIdentifier>{b77f62d5-4f51-45f2-b6f8-a800e4b3e931}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Engine\Localization">
       <UniqueIdentifier>{a7cc76b5-f620-4d85-aed6-328694f9b27f}</UniqueIdentifier>
@@ -160,6 +133,42 @@
     <Filter Include="Source\Entities\Platformer\Enemies\Volcano">
       <UniqueIdentifier>{f38d7e80-848d-4a31-9fb7-cda07c1aaf1e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Engine\Camera">
+      <UniqueIdentifier>{b6be2b92-de69-431c-a971-3728104655d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Sound">
+      <UniqueIdentifier>{d4080745-89c8-49da-88a3-4259d5ec0ad6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes\Hexus">
+      <UniqueIdentifier>{bca1dd31-1015-4978-b174-bc645702905d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes\Hexus\Components">
+      <UniqueIdentifier>{013ff132-2f68-4c49-baf3-463b61aebb16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes\Hexus\HelpMenus">
+      <UniqueIdentifier>{f52b1262-ca53-4707-806c-d719a8a362d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes\Maps">
+      <UniqueIdentifier>{ac7fb220-954c-4942-b91c-eaed896ce222}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes\Fights">
+      <UniqueIdentifier>{2277158f-02fb-41a6-a4ef-ba8078681410}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes\Maps\Isometric">
+      <UniqueIdentifier>{a77d190e-d013-44e9-8292-42f5995e5de3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes\Maps\Platformer">
+      <UniqueIdentifier>{e34720fa-4c7f-4462-b257-7b2c4173d36b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes\Maps\Platformer\Backgrounds">
+      <UniqueIdentifier>{562ac6fb-3ffd-4aab-87f7-a4e56d767d04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain">
+      <UniqueIdentifier>{c9a5dcce-780b-4fd8-a9d9-7edb48d4db7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes\Maps\Platformer\Weather">
+      <UniqueIdentifier>{0255f5d0-639f-4402-b172-e922e204da0a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Resources.cpp">
@@ -201,9 +210,6 @@
     <ClCompile Include="..\Source\Engine\Input\InputManager.cpp">
       <Filter>Source\Engine\Input</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\LevelCamera.cpp">
-      <Filter>Source\Scenes\Level</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\Title\TitleScreenBackground.cpp">
       <Filter>Source\Scenes\Menus\Title</Filter>
     </ClCompile>
@@ -231,78 +237,6 @@
     <ClCompile Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.cpp">
       <Filter>Source\Scenes\Menus\HackerMode</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Card.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\CardStorage.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Deck.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Hexus.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\CardData.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\CardRow.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\GameState.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Config.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\CoinFlip.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\CardPreview.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\LossesDisplay.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ScoreTotal.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ComponentBase.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\RowTotals.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\DeckCardCountDisplay.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\HandCardCountDisplay.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\Avatars.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\Banners.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ControlDraw.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ControlNeutral.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ControlSacrificeStaged.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ControlSelectionStaged.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ControlEndTurn.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Components\ControlReplaceCards.cpp">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\LoadingScreen\LoadingScreen.cpp">
       <Filter>Source\Scenes\Menus\LoadingScreen</Filter>
     </ClCompile>
@@ -321,15 +255,9 @@
     <ClCompile Include="..\Source\Events\HexusEvents.cpp">
       <Filter>Source\Events</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Level.cpp">
-      <Filter>Source\Scenes\Level</Filter>
-    </ClCompile>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="..\Source\Engine\Save\SaveManager.cpp">
       <Filter>Source\Engine\Save</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Fight\Fight.cpp">
-      <Filter>Source\Scenes\Fight</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\SceneDirector.cpp">
       <Filter>Source\Scenes</Filter>
@@ -414,48 +342,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Engine\Maps\DefaultLayerDeserializer.cpp">
       <Filter>Source\Engine\Maps</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Environments\MusicDeserializer.cpp">
-      <Filter>Source\Scenes\Level\Environments</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\JungleBackground.cpp">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\MountainBackground.cpp">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\OceanBackground.cpp">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\SnowBackground.cpp">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\BackgroundDeserializer.cpp">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixLetter.cpp">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds\MatrixRain</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixRain.cpp">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds\MatrixRain</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixStrand.cpp">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds\MatrixRain</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Environments\Weather\Rain.cpp">
-      <Filter>Source\Scenes\Level\Environments\Weather</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Environments\Weather\Fireflies.cpp">
-      <Filter>Source\Scenes\Level\Environments\Weather</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Environments\Weather\Snow.cpp">
-      <Filter>Source\Scenes\Level\Environments\Weather</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Environments\Weather\WeatherDeserializer.cpp">
-      <Filter>Source\Scenes\Level\Environments\Weather</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Level\Environments\Backgrounds\BackgroundBase.cpp">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Engine\Rendering\Components\TextMenuSprite.cpp">
       <Filter>Source\Engine\Rendering\Components</Filter>
@@ -844,11 +730,140 @@
     <ClCompile Include="..\Source\Entities\Platformer\PlatformerEntityDeserializer.cpp">
       <Filter>Source\Entities\Platformer</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Engine\Camera\GameCamera.cpp">
+      <Filter>Source\Engine\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Sound\MusicDeserializer.cpp">
+      <Filter>Source\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Card.cpp">
+      <Filter>Source\Scenes\Hexus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\CardData.cpp">
+      <Filter>Source\Scenes\Hexus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\CardRow.cpp">
+      <Filter>Source\Scenes\Hexus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\CardStorage.cpp">
+      <Filter>Source\Scenes\Hexus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Config.cpp">
+      <Filter>Source\Scenes\Hexus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Deck.cpp">
+      <Filter>Source\Scenes\Hexus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\GameState.cpp">
+      <Filter>Source\Scenes\Hexus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Hexus.cpp">
+      <Filter>Source\Scenes\Hexus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\Avatars.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\Banners.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\CardPreview.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\CoinFlip.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\ComponentBase.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlDraw.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlEndTurn.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlNeutral.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlReplaceCards.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlSacrificeStaged.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlSelectionStaged.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\DeckCardCountDisplay.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\HandCardCountDisplay.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\LossesDisplay.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\RowTotals.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\ScoreTotal.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\HelpMenus\BinaryHelpMenu.cpp">
+      <Filter>Source\Scenes\Hexus\HelpMenus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\HelpMenus\HelpMenuBase.cpp">
+      <Filter>Source\Scenes\Hexus\HelpMenus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Fights\Fight.cpp">
+      <Filter>Source\Scenes\Fights</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Isometric\IsometricMap.cpp">
+      <Filter>Source\Scenes\Maps\Isometric</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\PlatformerMap.cpp">
+      <Filter>Source\Scenes\Maps\Platformer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\BackgroundBase.cpp">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\BackgroundDeserializer.cpp">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\JungleBackground.cpp">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MountainBackground.cpp">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\OceanBackground.cpp">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\SnowBackground.cpp">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain\MatrixLetter.cpp">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain\MatrixRain.cpp">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain\MatrixStrand.cpp">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\Weather\Fireflies.cpp">
+      <Filter>Source\Scenes\Maps\Platformer\Weather</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\Weather\Rain.cpp">
+      <Filter>Source\Scenes\Maps\Platformer\Weather</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\Weather\Snow.cpp">
+      <Filter>Source\Scenes\Maps\Platformer\Weather</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\Weather\WeatherDeserializer.cpp">
+      <Filter>Source\Scenes\Maps\Platformer\Weather</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Source\Scenes\Level\Level.h">
-      <Filter>Source\Scenes\Level</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Resources.h">
       <Filter>Source</Filter>
     </ClInclude>
@@ -888,9 +903,6 @@
     <ClInclude Include="..\Source\Scenes\Menus\Confirmation\ConfirmationMenu.h">
       <Filter>Source\Scenes\Menus\Confirmation</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\LevelCamera.h">
-      <Filter>Source\Scenes\Level</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\Dialog\DialogMenu.h">
       <Filter>Source\Scenes\Menus\Dialog</Filter>
     </ClInclude>
@@ -917,87 +929,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.h">
       <Filter>Source\Scenes\Menus\HackerMode</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Minigames.h">
-      <Filter>Source\Scenes\Minigames</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Hexus.h">
-      <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Card.h">
-      <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\CardStorage.h">
-      <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Deck.h">
-      <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\CardData.h">
-      <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\CardRow.h">
-      <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\GameState.h">
-      <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Config.h">
-      <Filter>Source\Scenes\Minigames\Hexus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\CoinFlip.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\CardPreview.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\LossesDisplay.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ScoreTotal.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ComponentBase.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\RowTotals.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\HandCardCountDisplay.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\DeckCardCountDisplay.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\Banners.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\Avatars.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\Components.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ControlDraw.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ControlNeutral.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ControlSacrificeStaged.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ControlSelectionStaged.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ControlEndTurn.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Fight\Fight.h">
-      <Filter>Source\Scenes\Fight</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Components\ControlReplaceCards.h">
-      <Filter>Source\Scenes\Minigames\Hexus\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\LoadingScreen\LoadingScreen.h">
       <Filter>Source\Scenes\Menus\LoadingScreen</Filter>
@@ -1116,51 +1047,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Engine\Maps\DefaultLayerDeserializer.h">
       <Filter>Source\Engine\Maps</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\MusicDeserializer.h">
-      <Filter>Source\Scenes\Level\Environments</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\Backgrounds.h">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\JungleBackground.h">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\MountainBackground.h">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\OceanBackground.h">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\SnowBackground.h">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\BackgroundDeserializer.h">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixLetter.h">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds\MatrixRain</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixRain.h">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds\MatrixRain</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\MatrixRain\MatrixStrand.h">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds\MatrixRain</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\Weather\Rain.h">
-      <Filter>Source\Scenes\Level\Environments\Weather</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\Weather\Fireflies.h">
-      <Filter>Source\Scenes\Level\Environments\Weather</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\Weather\Snow.h">
-      <Filter>Source\Scenes\Level\Environments\Weather</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\Weather\WeatherDeserializer.h">
-      <Filter>Source\Scenes\Level\Environments\Weather</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Level\Environments\Backgrounds\BackgroundBase.h">
-      <Filter>Source\Scenes\Level\Environments\Backgrounds</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Engine\Rendering\Components\TextMenuSprite.h">
       <Filter>Source\Engine\Rendering\Components</Filter>
@@ -1560,6 +1446,150 @@
     </ClInclude>
     <ClInclude Include="..\Source\Entities\Platformer\PlatformerEntityDeserializer.h">
       <Filter>Source\Entities\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Camera\GameCamera.h">
+      <Filter>Source\Engine\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Sound\MusicDeserializer.h">
+      <Filter>Source\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Card.h">
+      <Filter>Source\Scenes\Hexus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\CardData.h">
+      <Filter>Source\Scenes\Hexus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\CardRow.h">
+      <Filter>Source\Scenes\Hexus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\CardStorage.h">
+      <Filter>Source\Scenes\Hexus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Config.h">
+      <Filter>Source\Scenes\Hexus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Deck.h">
+      <Filter>Source\Scenes\Hexus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\GameState.h">
+      <Filter>Source\Scenes\Hexus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Hexus.h">
+      <Filter>Source\Scenes\Hexus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\Avatars.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\Banners.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\CardPreview.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\CoinFlip.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\ComponentBase.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\Components.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlDraw.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlEndTurn.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlNeutral.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlReplaceCards.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlSacrificeStaged.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlSelectionStaged.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\DeckCardCountDisplay.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\HandCardCountDisplay.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\LossesDisplay.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\RowTotals.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\ScoreTotal.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\HelpMenus\BinaryHelpMenu.h">
+      <Filter>Source\Scenes\Hexus\HelpMenus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\HelpMenus\HelpMenuBase.h">
+      <Filter>Source\Scenes\Hexus\HelpMenus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\HelpMenus\HelpMenus.h">
+      <Filter>Source\Scenes\Hexus\HelpMenus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Fights\Fight.h">
+      <Filter>Source\Scenes\Fights</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Isometric\IsometricMap.h">
+      <Filter>Source\Scenes\Maps\Isometric</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\PlatformerMap.h">
+      <Filter>Source\Scenes\Maps\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\BackgroundBase.h">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\BackgroundDeserializer.h">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\Backgrounds.h">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\JungleBackground.h">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MountainBackground.h">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\OceanBackground.h">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\SnowBackground.h">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain\MatrixLetter.h">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain\MatrixRain.h">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain\MatrixStrand.h">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\Weather\Fireflies.h">
+      <Filter>Source\Scenes\Maps\Platformer\Weather</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\Weather\Rain.h">
+      <Filter>Source\Scenes\Maps\Platformer\Weather</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\Weather\Snow.h">
+      <Filter>Source\Scenes\Maps\Platformer\Weather</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\Weather\WeatherDeserializer.h">
+      <Filter>Source\Scenes\Maps\Platformer\Weather</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\IMap.h">
+      <Filter>Source\Scenes\Maps</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
