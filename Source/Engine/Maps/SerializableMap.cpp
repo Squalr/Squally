@@ -1,11 +1,15 @@
 #include "SerializableMap.h"
 
-SerializableMap::SerializableMap(std::string mapFileName, std::vector<SerializableLayer*>* layers, Size unitSize, Size tileSize)
+const int PLATFORMER_MAP_TYPE = 0;
+const int ISOMETRIC_MAP_TYPE = 1;
+
+SerializableMap::SerializableMap(std::string mapFileName, std::vector<SerializableLayer*>* layers, Size unitSize, Size tileSize, int orientation)
 {
 	this->levelMapFileName = mapFileName;
 	this->serializableLayers = layers;
 	this->mapUnitSize = unitSize;
 	this->mapTileSize = tileSize;
+	this->orientation = orientation;
 
 	for (auto it = layers->begin(); it != layers->end(); it++)
 	{
@@ -72,7 +76,7 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName, std::vect
 		deserializedLayers->push_back(it->second);
 	}
 
-	SerializableMap* instance = new SerializableMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize());
+	SerializableMap* instance = new SerializableMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), mapRaw->getMapOrientation());
 
 	instance->autorelease();
 
@@ -106,7 +110,12 @@ bool SerializableMap::serialize()
 	tileSetElement->SetAttribute("columns", std::to_string((int)tileMap->getContentSize().width / (int)this->getMapTileSize().width).c_str());
 
 	tinyxml2::XMLElement* gridElement = documentRoot->NewElement("grid");
-	gridElement->SetAttribute("orientation", "orthogonal");
+	if (this->isPlatformer()) {
+		gridElement->SetAttribute("orientation", "orthogonal");
+	}
+	if (this->isIsometric()) {
+		gridElement->SetAttribute("orientation", "isometric");
+	}
 	gridElement->SetAttribute("width", std::to_string(64).c_str()); // Unused
 	gridElement->SetAttribute("height", std::to_string(64).c_str()); // Unused
 	tileSetElement->LinkEndChild(gridElement);
@@ -176,8 +185,18 @@ Size SerializableMap::getMapTileSize()
 	return this->mapTileSize;
 }
 
+bool SerializableMap::isIsometric()
+{
+	return this->orientation == ISOMETRIC_MAP_TYPE;
+}
+bool SerializableMap::isPlatformer()
+{
+	return this->orientation == PLATFORMER_MAP_TYPE;
+}
+
 void SerializableMap::appendLayer(SerializableLayer* layer)
 {
 	this->serializableLayers->push_back(layer);
 	this->addChild(layer);
 }
+
