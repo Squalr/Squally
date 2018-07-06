@@ -24,18 +24,22 @@ public:
 	Size getMapUnitSize();
 	Size getMapTileSize();
 
+	bool isIsometric();
+	bool isPlatformer();
+
 	void hackerModeEnable();
 	void hackerModeDisable();
 	std::string getMapFileName();
 
 protected:
-	SerializableMap(std::string mapFileName, std::vector<SerializableLayer*>* layers, Size unitSize, Size tileSize);
+	SerializableMap(std::string mapFileName, std::vector<SerializableLayer*>* layers, Size unitSize, Size tileSize, int orientation);
 	~SerializableMap();
 
 private:
 
 	std::vector<SerializableLayer*>* serializableLayers;
 	std::string levelMapFileName;
+	int orientation;
 	Size mapUnitSize;
 	Size mapTileSize;
 };

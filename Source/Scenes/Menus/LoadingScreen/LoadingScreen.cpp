@@ -64,6 +64,14 @@ void LoadingScreen::loadLevel(std::string levelFile, const std::function<void(Se
 	this->currentLevelFile = levelFile;
 	this->onLoadCallback = newOnLoadCallback;
 
+	/*
+	std::future<SerializableMap *> fut = std::async([levelFile]() {
+		return SerializableMap::deserialize(levelFile, &LoadingScreen::layerDeserializers, &LoadingScreen::objectDeserializers);
+	});
+	*/
+	this->map = SerializableMap::deserialize(levelFile, &LoadingScreen::layerDeserializers, &LoadingScreen::objectDeserializers);
+
+
 	// Asyncronously get all files under the game, and load them
 	FileUtils::getInstance()->listFilesRecursivelyAsync(FileUtils::getInstance()->getDefaultResourceRootPath(), CC_CALLBACK_1(LoadingScreen::onFileEnumerationComplete, this));
 }
@@ -120,11 +128,10 @@ void LoadingScreen::enterLevelIfDoneLoading()
 {
 	if (this->levelIsLoaded())
 	{
-		SerializableMap* map = SerializableMap::deserialize(this->currentLevelFile, &LoadingScreen::layerDeserializers, &LoadingScreen::objectDeserializers);
 
 		if (this->onLoadCallback != nullptr)
 		{
-			this->onLoadCallback(map);
+			this->onLoadCallback(this->map);
 		}
 	}
 }

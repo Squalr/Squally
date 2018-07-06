@@ -56,6 +56,7 @@ private:
 	Node* background;
 	Sprite* loadingWindow;
 	CProgressBar* progressBar;
+	SerializableMap* map;
 	std::function<void(SerializableMap*)> onLoadCallback;
 
 	int totalFileCount;
