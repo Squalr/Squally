@@ -7,10 +7,11 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/HexusEvents.h"
 #include "Events/NavigationEvents.h"
-#include "Fight/Fight.h"
-#include "Level/Level.h"
-#include "Minigames/Minigames.h"
+#include "Scenes/Maps/IMap.h"
+#include "Scenes/Maps/Isometric/IsometricMap.h"
+#include "Scenes/Maps/Platformer/PlatformerMap.h"
 #include "Resources.h"
+#include "Scenes/Fights/Fight.h"
 #include "Scenes/Menus/Confirmation/ConfirmationMenu.h"
 #include "Scenes/Menus/LoadingScreen/LoadingScreen.h"
 #include "Scenes/Menus/Options/OptionsMenu.h"
@@ -42,7 +43,7 @@ private:
 	TutorialScreen* tutorialScreen;
 	StoryMap* storyMap;
 	LoadingScreen* loadingScreen;
-	Level* level;
+	IMap* map;
 	Fight* fight;
 	OptionsMenu* optionsMenu;
 	PauseMenu* pauseMenu;

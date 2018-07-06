@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 
 #include "Resources.h"
-#include "Scenes/Minigames/Hexus/Hexus.h"
+#include "Scenes/Hexus/Hexus.h"
 
 using namespace cocos2d;
 

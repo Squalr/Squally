@@ -5,7 +5,8 @@
 #include "Events/NavigationEvents.h"
 #include "Engine/Rendering/Components/Mouse.h"
 #include "Engine/Rendering/Components/MenuSprite.h"
-#include "Scenes/Level/Level.h"
+#include "Scenes/Maps/Isometric/IsometricMap.h"
+#include "Scenes/Maps/Platformer/PlatformerMap.h"
 
 using namespace cocos2d;
 

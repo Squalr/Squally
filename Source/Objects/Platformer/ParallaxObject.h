@@ -1,8 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Camera/GameCamera.h"
 #include "Objects/Hackables/HackableObject.h"
-#include "Scenes/Level/LevelCamera.h"
 
 using namespace cocos2d;
 

@@ -2,9 +2,9 @@
 #include "cocos2d.h"
 
 #include "Objects/Collision/CategoryGroup.h"
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Maps/SerializableObject.h"
 #include "Resources.h"
-#include "Scenes/Level/LevelCamera.h"
 
 using namespace cocos2d;
 

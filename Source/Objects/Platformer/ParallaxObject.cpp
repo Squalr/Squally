@@ -26,7 +26,7 @@ ParallaxObject::~ParallaxObject()
 void ParallaxObject::update(float dt)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 cameraPosition = LevelCamera::getInstance()->getCameraPosition();
+	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 
 	this->child->setPosition(Vec2(
 		(cameraPosition.x + visibleSize.width / 2 - this->getPositionX()) * this->speed.x,

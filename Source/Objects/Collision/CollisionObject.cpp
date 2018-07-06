@@ -43,7 +43,7 @@ void CollisionObject::update(float dt)
 
 	if (this->physicsBody->isDynamic())
 	{
-		Vec2 cameraPosition = LevelCamera::getInstance()->getCameraPosition();
+		Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 
 		if (pos.x > cameraPosition.x + visibleSize.width + STOP_PHYSICS_OFFSET ||
 			pos.x < cameraPosition.x - STOP_PHYSICS_OFFSET ||
@@ -172,7 +172,7 @@ CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsCo
 	collisionData.other = (CollisionObject*)other->getBody()->getNode();
 	collisionData.normal = contact.getContactData()->normal;
 	collisionData.pointCount = contact.getContactData()->count;
-	Vec2 cameraPosition = LevelCamera::LevelCamera::getInstance()->getCameraPosition();
+	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 
 	// Convert collision coordinates to level coordinates
 	for (int index = 0; index < collisionData.pointCount; index++)
