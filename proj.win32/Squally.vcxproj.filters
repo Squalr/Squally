@@ -40,9 +40,6 @@
     <Filter Include="Source\Engine\Input">
       <UniqueIdentifier>{41b4695d-9be7-4d80-930f-d7fe7acdf1c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Entities\Enemies">
-      <UniqueIdentifier>{2775143e-43a8-40c2-9698-8781690f3110}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Scenes\Level\Environments">
       <UniqueIdentifier>{ddea15c5-7454-4e0d-9488-79b4dd7987ff}</UniqueIdentifier>
     </Filter>
@@ -67,41 +64,11 @@
     <Filter Include="Source\Scenes\Minigames">
       <UniqueIdentifier>{08081095-b5ff-4eae-af2d-267645d6584d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Entities\Npcs">
-      <UniqueIdentifier>{1febd58c-fd81-4bf6-a498-dc590c8d3379}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Scenes\Menus\LoadingScreen">
       <UniqueIdentifier>{5b766df7-ace8-43f1-bf59-f0f9d699f795}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Entities\Enemies\Caverns">
-      <UniqueIdentifier>{ffa13134-18c2-4485-8a7c-bfb335334408}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Entities\Enemies\Forest">
-      <UniqueIdentifier>{ffedeb11-512c-47dc-b60b-a91df41e1fe2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Entities\Enemies\Jungle">
-      <UniqueIdentifier>{2f08e056-7425-407e-9bf1-f9d1abd6e318}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Entities\Enemies\Obelisk">
-      <UniqueIdentifier>{88d85204-53bb-4bce-9762-7d15f46c7797}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Entities\Enemies\Ruins">
-      <UniqueIdentifier>{3dc074bf-579d-4e42-a335-d6e656dfac6c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Entities\Enemies\Snow">
-      <UniqueIdentifier>{1d5d0fa9-2bc6-4d2d-9b86-e4495c16d8de}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Entities\Enemies\Volcano">
-      <UniqueIdentifier>{d1f43d9a-31f0-4f52-bf65-da343e7884bf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Entities\Enemies\Castle">
-      <UniqueIdentifier>{03f87c9a-f720-465f-a5c1-2fee707e65e6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Events">
       <UniqueIdentifier>{e9ef9eef-8a01-4d65-b231-b8b59fc9ac49}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Entities\Enemies\Mech">
-      <UniqueIdentifier>{76e6c2db-8ed9-4f39-8662-c09195d7ea0a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Scenes\Minigames\Hexus">
       <UniqueIdentifier>{f4b1560a-37c3-4bc4-996d-b5034b0d838d}</UniqueIdentifier>
@@ -154,14 +121,47 @@
     <Filter Include="Source\Objects\Isometric">
       <UniqueIdentifier>{7b8d45ee-52d5-450b-a931-f45d9bff107d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Entities\Squally">
-      <UniqueIdentifier>{5487f111-1451-41a4-85de-0fae79c18df7}</UniqueIdentifier>
+    <Filter Include="Source\Entities\Platformer">
+      <UniqueIdentifier>{f6aac3de-4554-4e9f-9645-5e22d3878f08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Platformer\Enemies">
+      <UniqueIdentifier>{cce15b3c-2152-4d29-b92f-8b2b20869e7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Platformer\Npcs">
+      <UniqueIdentifier>{972b78f0-eb89-419d-a5e6-e7b5342854e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Platformer\Squally">
+      <UniqueIdentifier>{d20544c3-768f-4805-ae0b-74fed6bdf3e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Platformer\Enemies\Castle">
+      <UniqueIdentifier>{370883f1-a58e-4dbe-93b8-309026e0d475}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Platformer\Enemies\Caverns">
+      <UniqueIdentifier>{baeabeb8-a6c3-41d4-9ce4-736e9859e45f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Platformer\Enemies\Forest">
+      <UniqueIdentifier>{176fae01-c957-4fba-95ea-3035f8853211}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Platformer\Enemies\Jungle">
+      <UniqueIdentifier>{bf0719da-7f3e-4819-aff6-a8e7736f96f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Platformer\Enemies\Mech">
+      <UniqueIdentifier>{f141d109-bb92-49c4-8dff-9e788026a4c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Platformer\Enemies\Obelisk">
+      <UniqueIdentifier>{0f16408a-5f73-49bc-91d9-3121522a006c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Platformer\Enemies\Ruins">
+      <UniqueIdentifier>{0f862e6b-516b-498d-887a-25f5bd71eb57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Platformer\Enemies\Snow">
+      <UniqueIdentifier>{0dec2386-27c6-41a2-bdb3-a928b5626df0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Platformer\Enemies\Volcano">
+      <UniqueIdentifier>{f38d7e80-848d-4a31-9fb7-cda07c1aaf1e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Source\Entities\Entity.cpp">
-      <Filter>Source\Entities</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Resources.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -230,12 +230,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.cpp">
       <Filter>Source\Scenes\Menus\HackerMode</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Npcs\Knight.cpp">
-      <Filter>Source\Entities\Npcs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Npcs\NpcBase.cpp">
-      <Filter>Source\Entities\Npcs</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Minigames\Hexus\Card.cpp">
       <Filter>Source\Scenes\Minigames\Hexus</Filter>
@@ -312,129 +306,6 @@
     <ClCompile Include="..\Source\Scenes\Menus\LoadingScreen\LoadingScreen.cpp">
       <Filter>Source\Scenes\Menus\LoadingScreen</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Castle\BossWitch.cpp">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Castle\Ghost.cpp">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Castle\Harpy.cpp">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Castle\Jack.cpp">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Castle\VampireLord.cpp">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Caverns\BlackWidow.cpp">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Caverns\BossKrampus.cpp">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Caverns\EarthGolem.cpp">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Caverns\ForestGolem.cpp">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Caverns\RockGolem.cpp">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Forest\Cyclops.cpp">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Forest\GoblinShaman.cpp">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Forest\OrcGrunt.cpp">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Forest\OrcWarrior.cpp">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Forest\Troll.cpp">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Jungle\BossRhinoman.cpp">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Jungle\JungleDragon.cpp">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Jungle\Minotaur.cpp">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Jungle\PigDemon.cpp">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\Abomination.cpp">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\BossSkeletonKing.cpp">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\DarkDragon.cpp">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\SkeletonBaron.cpp">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\SkeletonCleaver.cpp">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\SkeletonPriestess.cpp">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\Undead.cpp">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\VoidDemon.cpp">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Ruins\AnubisWarrior.cpp">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Ruins\Lioness.cpp">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Ruins\Medusa.cpp">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Ruins\Mermaid.cpp">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Snow\EvilSnowman.cpp">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Snow\FrostDragon.cpp">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Snow\GoblinElf.cpp">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Snow\IceGolem.cpp">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Snow\TinyIceGolem.cpp">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Volcano\CritterDemon.cpp">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Volcano\DemonRogue.cpp">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Volcano\DemonShaman.cpp">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Volcano\DemonWarrior.cpp">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Volcano\LavaGolem.cpp">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Events\DialogEvents.cpp">
       <Filter>Source\Events</Filter>
     </ClCompile>
@@ -444,191 +315,11 @@
     <ClCompile Include="..\Source\Events\NavigationEvents.cpp">
       <Filter>Source\Events</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemy.cpp">
-      <Filter>Source\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Ruins\MummyPharaoh.cpp">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Events\HackableEvents.cpp">
       <Filter>Source\Events</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Events\HexusEvents.cpp">
       <Filter>Source\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Forest\BossDragonOrcKing.cpp">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Forest\GoblinGruntBoar.cpp">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Forest\GoblinGuard.cpp">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Forest\GoblinWarriorPig.cpp">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Forest\Ent.cpp">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Forest\EntMage.cpp">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Jungle\GoblinGrunt.cpp">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Jungle\GoblinSwordsman.cpp">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Jungle\Mantis.cpp">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Jungle\TikiGolem.cpp">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Jungle\PurpleDinosaur.cpp">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Jungle\TikiWarrior.cpp">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\DemonArcher.cpp">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\BatDemon.cpp">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Ruins\BossEgyptianGoddess.cpp">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Ruins\AnubisTiny.cpp">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Ruins\LionMan.cpp">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Ruins\MedusaSmall.cpp">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Ruins\Tigress.cpp">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Snow\BossIceGolem.cpp">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Snow\FrostShooter.cpp">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Snow\Yeti.cpp">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Snow\YetiWarrior.cpp">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Snow\ToySoldierGoblin.cpp">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Snow\WaterElemental.cpp">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Volcano\DemonDragon.cpp">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Volcano\DemonGhost.cpp">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Volcano\FireElemental.cpp">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Volcano\DemonGrunt.cpp">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Volcano\BossDemonKing.cpp">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Volcano\DemonSwordsman.cpp">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Mech\BossEvilEye.cpp">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Mech\Exterminator.cpp">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Mech\MechDog.cpp">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Mech\MechGolem.cpp">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Mech\MechGolemDark.cpp">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Mech\MechGuard.cpp">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Mech\MiteBot.cpp">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Mech\VikingBot.cpp">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Mech\VikingBotSmall.cpp">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Snow\BossSanta.cpp">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Caverns\EarthElemental.cpp">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Caverns\Genie.cpp">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Caverns\SkeletonNecromancer.cpp">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Caverns\SkeletonWarrior.cpp">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Caverns\Shaman.cpp">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Caverns\SkeletonArcher.cpp">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Castle\Guard.cpp">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Castle\Reaper.cpp">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Castle\Vampiress.cpp">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Castle\Zombie.cpp">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Castle\SkeletonMage.cpp">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Jungle\GoblinWarrior.cpp">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Obelisk\SkeletonKnight.cpp">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Ruins\TigerMan.cpp">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Mech\Robot.cpp">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Castle\Executioner.cpp">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Enemies\Mech\MechBoxDrone.cpp">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Level\Level.cpp">
       <Filter>Source\Scenes\Level</Filter>
@@ -720,9 +411,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Objects\Collision\CollisionDeserializer.cpp">
       <Filter>Source\Objects\Collision</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\EntityDeserializer.cpp">
-      <Filter>Source\Entities</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Engine\Maps\DefaultLayerDeserializer.cpp">
       <Filter>Source\Engine\Maps</Filter>
@@ -835,19 +523,331 @@
     <ClCompile Include="..\Source\Objects\Isometric\IsometricObjectDeserializer.cpp">
       <Filter>Source\Objects\Isometric</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Entities\Squally\Hover.cpp">
-      <Filter>Source\Entities\Squally</Filter>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Castle\Ghost.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Entities\Squally\Squally.cpp">
-      <Filter>Source\Entities\Squally</Filter>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Castle\Guard.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Castle\Harpy.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Castle\Jack.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Castle\Reaper.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Castle\SkeletonMage.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Castle\VampireLord.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Castle\Vampiress.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Castle\Zombie.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Castle\BossWitch.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Castle\Executioner.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Caverns\BlackWidow.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Caverns\BossKrampus.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Caverns\EarthElemental.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Caverns\EarthGolem.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Caverns\ForestGolem.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Caverns\Genie.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Caverns\RockGolem.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Caverns\Shaman.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Caverns\SkeletonArcher.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Caverns\SkeletonNecromancer.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Caverns\SkeletonWarrior.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Forest\BossDragonOrcKing.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Forest\Cyclops.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Forest\Ent.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Forest\EntMage.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Forest\GoblinGruntBoar.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Forest\GoblinGuard.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Forest\GoblinShaman.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Forest\GoblinWarriorPig.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Forest\OrcGrunt.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Forest\OrcWarrior.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Forest\Troll.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Jungle\BossRhinoman.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Jungle\GoblinGrunt.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Jungle\GoblinSwordsman.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Jungle\GoblinWarrior.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Jungle\JungleDragon.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Jungle\Mantis.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Jungle\Minotaur.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Jungle\PigDemon.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Jungle\PurpleDinosaur.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Jungle\TikiGolem.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Jungle\TikiWarrior.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Mech\BossEvilEye.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Mech\Exterminator.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Mech\MechBoxDrone.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Mech\MechDog.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Mech\MechGolem.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Mech\MechGolemDark.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Mech\MechGuard.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Mech\MiteBot.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Mech\Robot.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Mech\VikingBot.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Mech\VikingBotSmall.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Ruins\AnubisTiny.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Ruins\AnubisWarrior.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Ruins\BossEgyptianGoddess.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Ruins\Lioness.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Ruins\LionMan.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Ruins\Medusa.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Ruins\MedusaSmall.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Ruins\Mermaid.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Ruins\MummyPharaoh.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Ruins\TigerMan.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Ruins\Tigress.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Snow\BossIceGolem.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Snow\BossSanta.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Snow\EvilSnowman.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Snow\FrostDragon.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Snow\FrostShooter.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Snow\GoblinElf.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Snow\IceGolem.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Snow\TinyIceGolem.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Snow\ToySoldierGoblin.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Snow\WaterElemental.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Snow\Yeti.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Snow\YetiWarrior.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Obelisk\Abomination.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Obelisk\BatDemon.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Obelisk\BossSkeletonKing.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Obelisk\DarkDragon.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Obelisk\DemonArcher.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Obelisk\SkeletonBaron.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Obelisk\SkeletonCleaver.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Obelisk\SkeletonKnight.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Obelisk\SkeletonPriestess.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Obelisk\Undead.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Obelisk\VoidDemon.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Volcano\BossDemonKing.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Volcano\CritterDemon.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Volcano\DemonDragon.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Volcano\DemonGhost.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Volcano\DemonGrunt.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Volcano\DemonRogue.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Volcano\DemonShaman.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Volcano\DemonSwordsman.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Volcano\DemonWarrior.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Volcano\FireElemental.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Enemies\Volcano\LavaGolem.cpp">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Squally\Hover.cpp">
+      <Filter>Source\Entities\Platformer\Squally</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Squally\Squally.cpp">
+      <Filter>Source\Entities\Platformer\Squally</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Npcs\Knight.cpp">
+      <Filter>Source\Entities\Platformer\Npcs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\Npcs\NpcBase.cpp">
+      <Filter>Source\Entities\Platformer\Npcs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\PlatformerEnemy.cpp">
+      <Filter>Source\Entities\Platformer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\PlatformerEntity.cpp">
+      <Filter>Source\Entities\Platformer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\PlatformerEntityDeserializer.cpp">
+      <Filter>Source\Entities\Platformer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Scenes\Level\Level.h">
       <Filter>Source\Scenes\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Entity.h">
-      <Filter>Source\Entities</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Resources.h">
       <Filter>Source</Filter>
@@ -891,9 +891,6 @@
     <ClInclude Include="..\Source\Scenes\Level\LevelCamera.h">
       <Filter>Source\Scenes\Level</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Entities\Entities.h">
-      <Filter>Source\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\Dialog\DialogMenu.h">
       <Filter>Source\Scenes\Menus\Dialog</Filter>
     </ClInclude>
@@ -923,12 +920,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Minigames\Minigames.h">
       <Filter>Source\Scenes\Minigames</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Npcs\Knight.h">
-      <Filter>Source\Entities\Npcs</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Npcs\NpcBase.h">
-      <Filter>Source\Entities\Npcs</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Minigames\Hexus\Hexus.h">
       <Filter>Source\Scenes\Minigames\Hexus</Filter>
@@ -1011,129 +1002,6 @@
     <ClInclude Include="..\Source\Scenes\Menus\LoadingScreen\LoadingScreen.h">
       <Filter>Source\Scenes\Menus\LoadingScreen</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Castle\BossWitch.h">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Castle\Ghost.h">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Castle\Harpy.h">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Castle\Jack.h">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Castle\VampireLord.h">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Caverns\BlackWidow.h">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Caverns\BossKrampus.h">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Caverns\EarthGolem.h">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Caverns\ForestGolem.h">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Caverns\RockGolem.h">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Forest\Troll.h">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Forest\Cyclops.h">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Forest\GoblinShaman.h">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Forest\OrcGrunt.h">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Forest\OrcWarrior.h">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Jungle\BossRhinoman.h">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Jungle\JungleDragon.h">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Jungle\Minotaur.h">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Jungle\PigDemon.h">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\VoidDemon.h">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\Abomination.h">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\BossSkeletonKing.h">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\DarkDragon.h">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\SkeletonBaron.h">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\SkeletonCleaver.h">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\SkeletonPriestess.h">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\Undead.h">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Ruins\AnubisWarrior.h">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Ruins\Lioness.h">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Ruins\Medusa.h">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Ruins\Mermaid.h">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Snow\EvilSnowman.h">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Snow\FrostDragon.h">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Snow\GoblinElf.h">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Snow\IceGolem.h">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Snow\TinyIceGolem.h">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Volcano\CritterDemon.h">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Volcano\DemonRogue.h">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Volcano\DemonShaman.h">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Volcano\DemonWarrior.h">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Volcano\LavaGolem.h">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Events\DialogEvents.h">
       <Filter>Source\Events</Filter>
     </ClInclude>
@@ -1143,191 +1011,11 @@
     <ClInclude Include="..\Source\Events\NavigationEvents.h">
       <Filter>Source\Events</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemy.h">
-      <Filter>Source\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Ruins\MummyPharaoh.h">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Events\HackableEvents.h">
       <Filter>Source\Events</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Events\HexusEvents.h">
       <Filter>Source\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Forest\BossDragonOrcKing.h">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Forest\GoblinGruntBoar.h">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Forest\GoblinGuard.h">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Forest\GoblinWarriorPig.h">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Forest\Ent.h">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Forest\EntMage.h">
-      <Filter>Source\Entities\Enemies\Forest</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Jungle\GoblinGrunt.h">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Jungle\GoblinSwordsman.h">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Jungle\Mantis.h">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Jungle\TikiGolem.h">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Jungle\PurpleDinosaur.h">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Jungle\TikiWarrior.h">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\DemonArcher.h">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\BatDemon.h">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Ruins\BossEgyptianGoddess.h">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Ruins\AnubisTiny.h">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Ruins\LionMan.h">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Ruins\MedusaSmall.h">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Ruins\Tigress.h">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Snow\BossIceGolem.h">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Snow\FrostShooter.h">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Snow\Yeti.h">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Snow\YetiWarrior.h">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Snow\ToySoldierGoblin.h">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Snow\WaterElemental.h">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Volcano\DemonDragon.h">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Volcano\DemonGhost.h">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Volcano\FireElemental.h">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Volcano\DemonGrunt.h">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Volcano\BossDemonKing.h">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Volcano\DemonSwordsman.h">
-      <Filter>Source\Entities\Enemies\Volcano</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Mech\BossEvilEye.h">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Mech\Exterminator.h">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Mech\MechDog.h">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Mech\MechGolem.h">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Mech\MechGolemDark.h">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Mech\MechGuard.h">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Mech\MiteBot.h">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Mech\VikingBot.h">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Mech\VikingBotSmall.h">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Snow\BossSanta.h">
-      <Filter>Source\Entities\Enemies\Snow</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Caverns\EarthElemental.h">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Caverns\Genie.h">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Caverns\SkeletonWarrior.h">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Caverns\SkeletonNecromancer.h">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Caverns\Shaman.h">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Caverns\SkeletonArcher.h">
-      <Filter>Source\Entities\Enemies\Caverns</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Castle\Guard.h">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Castle\Reaper.h">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Castle\Vampiress.h">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Castle\Zombie.h">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Castle\SkeletonMage.h">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Jungle\GoblinWarrior.h">
-      <Filter>Source\Entities\Enemies\Jungle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Obelisk\SkeletonKnight.h">
-      <Filter>Source\Entities\Enemies\Obelisk</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Ruins\TigerMan.h">
-      <Filter>Source\Entities\Enemies\Ruins</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Mech\Robot.h">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Castle\Executioner.h">
-      <Filter>Source\Entities\Enemies\Castle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Enemies\Mech\MechBoxDrone.h">
-      <Filter>Source\Entities\Enemies\Mech</Filter>
     </ClInclude>
     <ClInclude Include="Main.h" />
     <ClInclude Include="..\Source\Input\InputManager.h">
@@ -1419,9 +1107,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Engine\GlobalNode.h">
       <Filter>Source\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\EntityDeserializer.h">
-      <Filter>Source\Entities</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Engine\Maps\IObjectDeserializer.h">
       <Filter>Source\Engine\Maps</Filter>
@@ -1552,11 +1237,329 @@
     <ClInclude Include="..\Source\Objects\Isometric\IsometricObjects.h">
       <Filter>Source\Objects\Isometric</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Entities\Squally\Hover.h">
-      <Filter>Source\Entities\Squally</Filter>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Castle\Ghost.h">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Entities\Squally\Squally.h">
-      <Filter>Source\Entities\Squally</Filter>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Castle\Guard.h">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Castle\Harpy.h">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Castle\Jack.h">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Castle\Reaper.h">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Castle\SkeletonMage.h">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Castle\VampireLord.h">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Castle\Vampiress.h">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Castle\Zombie.h">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Castle\BossWitch.h">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Castle\Executioner.h">
+      <Filter>Source\Entities\Platformer\Enemies\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Caverns\BlackWidow.h">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Caverns\BossKrampus.h">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Caverns\EarthElemental.h">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Caverns\EarthGolem.h">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Caverns\ForestGolem.h">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Caverns\Genie.h">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Caverns\RockGolem.h">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Caverns\Shaman.h">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Caverns\SkeletonArcher.h">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Caverns\SkeletonNecromancer.h">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Caverns\SkeletonWarrior.h">
+      <Filter>Source\Entities\Platformer\Enemies\Caverns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Forest\BossDragonOrcKing.h">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Forest\Cyclops.h">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Forest\Ent.h">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Forest\EntMage.h">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Forest\GoblinGruntBoar.h">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Forest\GoblinGuard.h">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Forest\GoblinShaman.h">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Forest\GoblinWarriorPig.h">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Forest\OrcGrunt.h">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Forest\OrcWarrior.h">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Forest\Troll.h">
+      <Filter>Source\Entities\Platformer\Enemies\Forest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Jungle\BossRhinoman.h">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Jungle\GoblinGrunt.h">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Jungle\GoblinSwordsman.h">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Jungle\GoblinWarrior.h">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Jungle\JungleDragon.h">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Jungle\Mantis.h">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Jungle\Minotaur.h">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Jungle\PigDemon.h">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Jungle\PurpleDinosaur.h">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Jungle\TikiGolem.h">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Jungle\TikiWarrior.h">
+      <Filter>Source\Entities\Platformer\Enemies\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Mech\BossEvilEye.h">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Mech\Exterminator.h">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Mech\MechBoxDrone.h">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Mech\MechDog.h">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Mech\MechGolem.h">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Mech\MechGolemDark.h">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Mech\MechGuard.h">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Mech\MiteBot.h">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Mech\Robot.h">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Mech\VikingBot.h">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Mech\VikingBotSmall.h">
+      <Filter>Source\Entities\Platformer\Enemies\Mech</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Ruins\AnubisTiny.h">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Ruins\AnubisWarrior.h">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Ruins\BossEgyptianGoddess.h">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Ruins\Lioness.h">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Ruins\LionMan.h">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Ruins\Medusa.h">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Ruins\MedusaSmall.h">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Ruins\Mermaid.h">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Ruins\MummyPharaoh.h">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Ruins\TigerMan.h">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Ruins\Tigress.h">
+      <Filter>Source\Entities\Platformer\Enemies\Ruins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Snow\BossIceGolem.h">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Snow\BossSanta.h">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Snow\EvilSnowman.h">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Snow\FrostDragon.h">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Snow\FrostShooter.h">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Snow\GoblinElf.h">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Snow\IceGolem.h">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Snow\TinyIceGolem.h">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Snow\ToySoldierGoblin.h">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Snow\WaterElemental.h">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Snow\Yeti.h">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Snow\YetiWarrior.h">
+      <Filter>Source\Entities\Platformer\Enemies\Snow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Obelisk\VoidDemon.h">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Obelisk\Abomination.h">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Obelisk\BatDemon.h">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Obelisk\BossSkeletonKing.h">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Obelisk\DarkDragon.h">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Obelisk\DemonArcher.h">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Obelisk\SkeletonBaron.h">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Obelisk\SkeletonCleaver.h">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Obelisk\SkeletonKnight.h">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Obelisk\SkeletonPriestess.h">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Obelisk\Undead.h">
+      <Filter>Source\Entities\Platformer\Enemies\Obelisk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Volcano\BossDemonKing.h">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Volcano\CritterDemon.h">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Volcano\DemonDragon.h">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Volcano\DemonGhost.h">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Volcano\DemonGrunt.h">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Volcano\DemonRogue.h">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Volcano\DemonShaman.h">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Volcano\DemonSwordsman.h">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Volcano\DemonWarrior.h">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Volcano\FireElemental.h">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Enemies\Volcano\LavaGolem.h">
+      <Filter>Source\Entities\Platformer\Enemies\Volcano</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Squally\Hover.h">
+      <Filter>Source\Entities\Platformer\Squally</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Squally\Squally.h">
+      <Filter>Source\Entities\Platformer\Squally</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Npcs\Knight.h">
+      <Filter>Source\Entities\Platformer\Npcs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\Npcs\NpcBase.h">
+      <Filter>Source\Entities\Platformer\Npcs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\PlatformerEnemy.h">
+      <Filter>Source\Entities\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\PlatformerEntities.h">
+      <Filter>Source\Entities\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\PlatformerEntity.h">
+      <Filter>Source\Entities\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\PlatformerEntityDeserializer.h">
+      <Filter>Source\Entities\Platformer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

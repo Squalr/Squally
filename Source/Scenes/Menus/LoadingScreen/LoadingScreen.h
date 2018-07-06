@@ -11,7 +11,7 @@
 #include "Engine/Rendering/Components/CProgressBar.h"
 #include "Engine/Rendering/Components/FadeScene.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Entities/EntityDeserializer.h"
+#include "Entities/Platformer/PlatformerEntityDeserializer.h"
 #include "Objects/Collision/CollisionDeserializer.h"
 #include "Objects/Isometric/IsometricDecorDeserializer.h"
 #include "Objects/Isometric/IsometricObjectDeserializer.h"

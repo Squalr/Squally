@@ -48,7 +48,7 @@ void NavigationEvents::enterLevel(SerializableMap* levelMap)
 	);
 }
 
-void NavigationEvents::loadFight(Squally* squally, Enemy* enemy)
+void NavigationEvents::loadFight(Squally* squally, PlatformerEnemy* enemy)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::gameNavigateFightEvent,
