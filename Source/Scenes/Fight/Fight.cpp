@@ -37,7 +37,7 @@ void Fight::initializeListeners()
 	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
-void Fight::loadFight(Squally* squally, Enemy* enemy)
+void Fight::loadFight(Squally* squally, PlatformerEnemy* enemy)
 {
 	this->addChild(InputManager::claimInstance());
 

@@ -12,7 +12,7 @@
 #include "Engine/Rendering/HUD/Hud.h"
 #include "Engine/Rendering/Shaders/PostProcess.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Entities/Squally/Squally.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NavigationEvents.h"
 #include "Resources.h"
 #include "Scenes/Level/Environments/Backgrounds/MatrixRain/MatrixRain.h"

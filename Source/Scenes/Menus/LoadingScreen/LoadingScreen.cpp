@@ -8,7 +8,7 @@ std::vector<ILayerDeserializer*> LoadingScreen::layerDeserializers = {
 };
 
 std::vector<IObjectDeserializer*> LoadingScreen::objectDeserializers = {
-	new EntityDeserializer(),
+	new PlatformerEntityDeserializer(),
 	new CollisionDeserializer(),
 	new PlatformerDecorDeserializer(),
 	new PlatformerObjectDeserializer(),
