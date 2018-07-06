@@ -12,7 +12,7 @@ DemonGhost* DemonGhost::deserialize(ValueMap* initProperties)
 }
 
 DemonGhost::DemonGhost(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Volcano_DemonGhost_Animations,
+	Resources::Entities_Platformer_Environment_Volcano_DemonGhost_Animations,
 	false,
 	Size(256.0f, 320.0f),
 	0.7f,

@@ -1,7 +1,7 @@
 #pragma once
 #include "Entities/Entity.h"
 
-#include "Entities/Player/Player.h"
+#include "Entities/Squally/Squally.h"
 
 // NPCS
 #include "Entities/Npcs/Knight.h"

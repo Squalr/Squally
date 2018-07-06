@@ -12,7 +12,7 @@ VampireLord* VampireLord::deserialize(ValueMap* initProperties)
 }
 
 VampireLord::VampireLord(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Castle_VampireLord_Animations,
+	Resources::Entities_Platformer_Environment_Castle_VampireLord_Animations,
 	false,
 	Size(240.0f, 312.0f),
 	1.0f,

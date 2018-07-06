@@ -12,7 +12,7 @@ GoblinElf* GoblinElf::deserialize(ValueMap* initProperties)
 }
 
 GoblinElf::GoblinElf(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Snow_GoblinElf_Animations,
+	Resources::Entities_Platformer_Environment_Snow_GoblinElf_Animations,
 	false,
 	Size(140.0f, 296.0f),
 	0.6f,

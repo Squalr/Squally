@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.0.3" orientation="isometric" renderorder="right-down" width="20" height="20" tilewidth="256" tileheight="128" nextobjectid="7">
  <tileset firstgid="1" name="TileMapIsometric" tilewidth="256" tileheight="128" tilecount="147" columns="7">
-  <image source="../Tiles/TileMapIsometric.png" width="1792" height="2688"/>
+  <image source="../../Tiles/TileMapIsometric.png" width="1792" height="2688"/>
  </tileset>
  <layer name="Tiles" width="20" height="20">
   <data encoding="csv">

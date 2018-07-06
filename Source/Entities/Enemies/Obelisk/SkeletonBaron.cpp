@@ -12,7 +12,7 @@ SkeletonBaron* SkeletonBaron::deserialize(ValueMap* initProperties)
 }
 
 SkeletonBaron::SkeletonBaron(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Obelisk_SkeletonBaron_Animations,
+	Resources::Entities_Platformer_Environment_Obelisk_SkeletonBaron_Animations,
 	false,
 	Size(472.0f, 368.0f),
 	0.8f,

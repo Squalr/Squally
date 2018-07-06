@@ -1,31 +1,31 @@
-#include "Player.h"
+#include "Squally.h"
 
-Player* Player::playerInstance = nullptr;
-int Player::health;
-const float Player::playerScale = 0.13f;
+Squally* Squally::squallyInstance = nullptr;
+int Squally::health;
+const float Squally::squallyScale = 0.13f;
 
-const std::string Player::KeySquallyProperty = "squally";
+const std::string Squally::KeySquallyProperty = "squally";
 
-Player* Player::deserialize(ValueMap* initProperties)
+Squally* Squally::deserialize(ValueMap* initProperties)
 {
-	Player* instance = new Player(initProperties);
+	Squally* instance = new Squally(initProperties);
 
-	Player::playerInstance = instance;
+	Squally::squallyInstance = instance;
 	instance->autorelease();
 
 	return instance;
 }
 
-Player* Player::getInstance()
+Squally* Squally::getInstance()
 {
-	return Player::playerInstance;
+	return Squally::squallyInstance;
 }
 
-Player::Player(ValueMap* initProperties) : Entity::Entity(initProperties,
-	Resources::Entities_Player_Animations, 
+Squally::Squally(ValueMap* initProperties) : Entity::Entity(initProperties,
+	Resources::Entities_Platformer_Squally_Animations, 
 	false,
 	Size(720.0f, 1600.0f), 
-	Player::playerScale, 
+	Squally::squallyScale,
 	Vec2(0.0f, 600.0f))
 {
 	this->actualJumpLaunchVelocity = 1280.0f;
@@ -33,29 +33,29 @@ Player::Player(ValueMap* initProperties) : Entity::Entity(initProperties,
 	this->actualMaxFallSpeed = 600.0f;
 	this->moveAcceleration = 14000.0f;
 
-	this->init(PhysicsBody::createBox(size * Player::playerScale, PhysicsMaterial(0.0f, 0.0f, 0.0f)), CategoryGroup::G_Player, true, false);
+	this->init(PhysicsBody::createBox(size * Squally::squallyScale, PhysicsMaterial(0.0f, 0.0f, 0.0f)), CategoryGroup::G_Player, true, false);
 	// this->hover = Hover::create(this);
 
-	//this->hover->setContactBeginCallback(CC_CALLBACK_1(Player::hoverContactBegin, this));
-	//this->hover->setContactUpdateCallback(CC_CALLBACK_1(Player::hoverContactUpdate, this));
-	//this->hover->setContactEndCallback(CC_CALLBACK_1(Player::hoverContactEnd, this));
+	//this->hover->setContactBeginCallback(CC_CALLBACK_1(Squally::hoverContactBegin, this));
+	//this->hover->setContactUpdateCallback(CC_CALLBACK_1(Squally::hoverContactUpdate, this));
+	//this->hover->setContactEndCallback(CC_CALLBACK_1(Squally::hoverContactEnd, this));
 	//this->addChild(this->hover);
 
 	this->registerHackables();
 }
 
-Player::~Player()
+Squally::~Squally()
 {
 }
 
-void Player::onEnter()
+void Squally::onEnter()
 {
 	Entity::onEnter();
 
 	this->inputManager = InputManager::getInstance();
 }
 
-void Player::registerHackables()
+void Squally::registerHackables()
 {
 	this->setButtonOffset(Vec2(0, 72.0f));
 
@@ -76,7 +76,7 @@ void Player::registerHackables()
 	//this->registerCode(hackableVelocityB);
 }
 
-void Player::update(float dt)
+void Squally::update(float dt)
 {
 	Entity::update(dt);
 
@@ -106,17 +106,17 @@ void Player::update(float dt)
 	}
 }
 
-void Player::setFlippedX(bool newIsFlipped)
+void Squally::setFlippedX(bool newIsFlipped)
 {
 	this->isFlipped = newIsFlipped;
 }
 
-bool Player::hoverContactBegin(CollisionData data)
+bool Squally::hoverContactBegin(CollisionData data)
 {
 	return true;
 }
 
-bool Player::hoverContactUpdate(CollisionData data)
+bool Squally::hoverContactUpdate(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
@@ -133,7 +133,7 @@ bool Player::hoverContactUpdate(CollisionData data)
 	return true;
 }
 
-bool Player::hoverContactEnd(CollisionData data)
+bool Squally::hoverContactEnd(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
@@ -147,7 +147,7 @@ bool Player::hoverContactEnd(CollisionData data)
 	return true;
 }
 
-bool Player::contactBegin(CollisionData data)
+bool Squally::contactBegin(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
@@ -166,7 +166,7 @@ bool Player::contactBegin(CollisionData data)
 	return true;
 }
 
-bool Player::contactUpdate(CollisionData data)
+bool Squally::contactUpdate(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
@@ -192,7 +192,7 @@ bool Player::contactUpdate(CollisionData data)
 	return true;
 }
 
-bool Player::contactEnd(CollisionData data)
+bool Squally::contactEnd(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
@@ -212,7 +212,7 @@ bool Player::contactEnd(CollisionData data)
 	return true;
 }
 
-Size Player::getSize()
+Size Squally::getSize()
 {
-	return this->size * Player::playerScale;
+	return this->size * Squally::squallyScale;
 }

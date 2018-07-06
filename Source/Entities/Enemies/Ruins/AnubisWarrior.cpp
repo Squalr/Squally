@@ -12,7 +12,7 @@ AnubisWarrior* AnubisWarrior::deserialize(ValueMap* initProperties)
 }
 
 AnubisWarrior::AnubisWarrior(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Ruins_AnubisWarrior_Animations,
+	Resources::Entities_Platformer_Environment_Ruins_AnubisWarrior_Animations,
 	false,
 	Size(256.0f, 292.0f),
 	1.0f,

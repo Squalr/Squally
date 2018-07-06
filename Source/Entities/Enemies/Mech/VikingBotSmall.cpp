@@ -12,7 +12,7 @@ VikingBotSmall* VikingBotSmall::deserialize(ValueMap* initProperties)
 }
 
 VikingBotSmall::VikingBotSmall(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Mech_VikingBotSmall_Animations,
+	Resources::Entities_Platformer_Environment_Mech_VikingBotSmall_Animations,
 	false,
 	Size(768.0f, 768.0f),
 	0.25f,

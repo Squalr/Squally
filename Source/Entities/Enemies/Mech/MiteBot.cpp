@@ -12,7 +12,7 @@ MiteBot* MiteBot::deserialize(ValueMap* initProperties)
 }
 
 MiteBot::MiteBot(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Mech_MiteBot_Animations,
+	Resources::Entities_Platformer_Environment_Mech_MiteBot_Animations,
 	false,
 	Size(420.0f, 296.0f),
 	0.4f,

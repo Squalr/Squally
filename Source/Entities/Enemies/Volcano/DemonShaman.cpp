@@ -12,7 +12,7 @@ DemonShaman* DemonShaman::deserialize(ValueMap* initProperties)
 }
 
 DemonShaman::DemonShaman(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Volcano_DemonShaman_Animations,
+	Resources::Entities_Platformer_Environment_Volcano_DemonShaman_Animations,
 	false,
 	Size(212.0f, 280.0f),
 	0.65f,

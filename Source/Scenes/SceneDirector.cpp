@@ -192,6 +192,6 @@ void SceneDirector::onGameNavigateFight(EventCustom* eventCustom)
 	NavigationEvents::NavigateFightArgs* args = (NavigationEvents::NavigateFightArgs*)(eventCustom->getUserData());
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
-	this->fight->loadFight(args->player, args->enemy);
+	this->fight->loadFight(args->squally, args->enemy);
 	GlobalDirector::getInstance()->loadScene(this->fight);
 }

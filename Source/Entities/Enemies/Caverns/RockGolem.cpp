@@ -12,7 +12,7 @@ RockGolem* RockGolem::deserialize(ValueMap* initProperties)
 }
 
 RockGolem::RockGolem(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Caverns_RockGolem_Animations,
+	Resources::Entities_Platformer_Environment_Caverns_RockGolem_Animations,
 	false,
 	Size(1108.0f, 1024.0f),
 	0.4f,

@@ -12,7 +12,7 @@ BossDragonOrcKing* BossDragonOrcKing::deserialize(ValueMap* initProperties)
 }
 
 BossDragonOrcKing::BossDragonOrcKing(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Forest_BossDragonOrcKing_Animations,
+	Resources::Entities_Platformer_Environment_Forest_BossDragonOrcKing_Animations,
 	false,
 	Size(412.0f, 412.0f),
 	1.0f,

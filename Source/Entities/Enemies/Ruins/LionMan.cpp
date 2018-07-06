@@ -12,7 +12,7 @@ LionMan* LionMan::deserialize(ValueMap* initProperties)
 }
 
 LionMan::LionMan(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Ruins_LionMan_Animations,
+	Resources::Entities_Platformer_Environment_Ruins_LionMan_Animations,
 	false,
 	Size(256.0f, 326.0f),
 	1.0f,

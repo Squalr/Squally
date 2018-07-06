@@ -12,7 +12,7 @@ Exterminator* Exterminator::deserialize(ValueMap* initProperties)
 }
 
 Exterminator::Exterminator(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Mech_Exterminator_Animations,
+	Resources::Entities_Platformer_Environment_Mech_Exterminator_Animations,
 	false,
 	Size(320.0f, 278.0f),
 	1.0f,

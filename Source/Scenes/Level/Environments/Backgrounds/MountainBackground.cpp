@@ -13,8 +13,8 @@ MountainBackground* MountainBackground::create(ValueMap* properties, std::string
 
 MountainBackground::MountainBackground(ValueMap* properties, std::string name) : BackgroundBase(properties, name)
 {
-	this->background = Sprite::create(Resources::Backgrounds_Day_Sky);
-	this->clouds = InfiniteParallaxNode::create(Resources::Backgrounds_Day_Clouds_01);
+	this->background = Sprite::create(Resources::Backgrounds_Platformer_Day_Sky);
+	this->clouds = InfiniteParallaxNode::create(Resources::Backgrounds_Platformer_Day_Clouds_01);
 	this->mountains = ParallaxNode::create();
 	this->mountains2 = ParallaxNode::create();
 	this->trees1 = ParallaxNode::create();
@@ -29,23 +29,23 @@ MountainBackground::MountainBackground(ValueMap* properties, std::string name) :
 	this->clouds->setPosition(Vec2(0, 720.0f));
 	this->clouds->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-16.0f, 0))));
 
-	Sprite* mountainSprite = Sprite::create(Resources::Backgrounds_Day_Mountains_01);
+	Sprite* mountainSprite = Sprite::create(Resources::Backgrounds_Platformer_Day_Mountains_01);
 	this->mountains->addChild(mountainSprite, 0, Vec2(1.0f, 1.0f), Vec2::ZERO);
 	this->mountains->setPosition(Vec2(mountainSprite->getContentSize().width / 2, 320.0f));
 
-	Sprite* mountainSprite2 = Sprite::create(Resources::Backgrounds_Day_Mountains_02);
+	Sprite* mountainSprite2 = Sprite::create(Resources::Backgrounds_Platformer_Day_Mountains_02);
 	this->mountains2->addChild(mountainSprite2, 0, Vec2(1.0f, 1.0f), Vec2::ZERO);
 	this->mountains2->setPosition(Vec2(mountainSprite2->getContentSize().width / 2, 224.0f));
 
-	Sprite* treesSprite1 = Sprite::create(Resources::Backgrounds_Day_Trees_01);
+	Sprite* treesSprite1 = Sprite::create(Resources::Backgrounds_Platformer_Day_Trees_01);
 	this->trees1->addChild(treesSprite1, 0, Vec2(1.0f, 1.0f), Vec2::ZERO);
 	this->trees1->setPosition(Vec2(treesSprite1->getContentSize().width / 2, 192.0f));
 
-	Sprite* treesSprite2 = Sprite::create(Resources::Backgrounds_Day_Trees_02);
+	Sprite* treesSprite2 = Sprite::create(Resources::Backgrounds_Platformer_Day_Trees_02);
 	this->trees2->addChild(treesSprite2, 0, Vec2(1.0f, 1.0f), Vec2::ZERO);
 	this->trees2->setPosition(Vec2(treesSprite2->getContentSize().width / 2, 128.0f));
 
-	Sprite* treesSprite3 = Sprite::create(Resources::Backgrounds_Day_Trees_03);
+	Sprite* treesSprite3 = Sprite::create(Resources::Backgrounds_Platformer_Day_Trees_03);
 	this->trees3->addChild(treesSprite3, 0, Vec2(1.0f, 1.0f), Vec2::ZERO);
 	this->trees3->setPosition(Vec2(treesSprite3->getContentSize().width / 2, 96.0f));
 

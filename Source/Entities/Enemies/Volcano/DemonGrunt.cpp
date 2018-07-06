@@ -12,7 +12,7 @@ DemonGrunt* DemonGrunt::deserialize(ValueMap* initProperties)
 }
 
 DemonGrunt::DemonGrunt(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Volcano_DemonGrunt_Animations,
+	Resources::Entities_Platformer_Environment_Volcano_DemonGrunt_Animations,
 	false,
 	Size(312.0f, 372.0f),
 	0.7f,

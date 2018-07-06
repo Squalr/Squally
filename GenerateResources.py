@@ -3,8 +3,8 @@ from os import path
 from os.path import isfile, join, splitext, abspath, realpath, basename, relpath
 import os
 
-outputHeader = "Resources.h"
-outputClass = "Resources.cpp"
+outputHeader = "Source/Resources.h"
+outputClass = "Source/Resources.cpp"
 
 extensions = (
 	'.png',
@@ -22,7 +22,7 @@ extensions = (
 	'.scml'
 )
 
-resourcePath = abspath(join(join(join(realpath(__file__), ".."), ".."), "Resources"))
+resourcePath = abspath(join(join(realpath(__file__), ".."), "Resources"))
 files = []
 
 for extension in extensions:

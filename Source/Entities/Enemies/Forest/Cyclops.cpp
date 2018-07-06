@@ -12,7 +12,7 @@ Cyclops* Cyclops::deserialize(ValueMap* initProperties)
 }
 
 Cyclops::Cyclops(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Forest_Cyclops_Animations,
+	Resources::Entities_Platformer_Environment_Forest_Cyclops_Animations,
 	false,
 	Size(296.0f, 256.0f),
 	1.0f,

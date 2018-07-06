@@ -12,7 +12,7 @@ GoblinGuard* GoblinGuard::deserialize(ValueMap* initProperties)
 }
 
 GoblinGuard::GoblinGuard(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Forest_GoblinGuard_Animations,
+	Resources::Entities_Platformer_Environment_Forest_GoblinGuard_Animations,
 	false,
 	Size(472.0f, 768.0f),
 	0.3f,

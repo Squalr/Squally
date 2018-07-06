@@ -277,8 +277,8 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Entities\EntityDeserializer.cpp" />
     <ClCompile Include="..\Source\Entities\Npcs\Knight.cpp" />
     <ClCompile Include="..\Source\Entities\Npcs\NpcBase.cpp" />
-    <ClCompile Include="..\Source\Entities\Player\Hover.cpp" />
-    <ClCompile Include="..\Source\Entities\Player\Player.cpp" />
+    <ClCompile Include="..\Source\Entities\Squally\Hover.cpp" />
+    <ClCompile Include="..\Source\Entities\Squally\Squally.cpp" />
     <ClCompile Include="..\Source\Events\DialogEvents.cpp" />
     <ClCompile Include="..\Source\Events\HackableEvents.cpp" />
     <ClCompile Include="..\Source\Events\HexusEvents.cpp" />
@@ -511,8 +511,8 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Entities\EntityDeserializer.h" />
     <ClInclude Include="..\Source\Entities\Npcs\Knight.h" />
     <ClInclude Include="..\Source\Entities\Npcs\NpcBase.h" />
-    <ClInclude Include="..\Source\Entities\Player\Hover.h" />
-    <ClInclude Include="..\Source\Entities\Player\Player.h" />
+    <ClInclude Include="..\Source\Entities\Squally\Hover.h" />
+    <ClInclude Include="..\Source\Entities\Squally\Squally.h" />
     <ClInclude Include="..\Source\Events\DialogEvents.h" />
     <ClInclude Include="..\Source\Events\HackableEvents.h" />
     <ClInclude Include="..\Source\Events\HexusEvents.h" />
@@ -643,9 +643,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Source\Resources.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Source\GenerateResources.py" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

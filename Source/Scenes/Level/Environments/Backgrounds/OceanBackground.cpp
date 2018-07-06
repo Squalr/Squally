@@ -13,7 +13,7 @@ OceanBackground* OceanBackground::create(ValueMap* properties, std::string name)
 
 OceanBackground::OceanBackground(ValueMap* properties, std::string name) : BackgroundBase(properties, name)
 {
-	this->background = Sprite::create(Resources::Backgrounds_Beach);
+	this->background = Sprite::create(Resources::Backgrounds_Platformer_Beach);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();

@@ -12,7 +12,7 @@ PigDemon* PigDemon::deserialize(ValueMap* initProperties)
 }
 
 PigDemon::PigDemon(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Jungle_PigDemon_Animations,
+	Resources::Entities_Platformer_Environment_Jungle_PigDemon_Animations,
 	false,
 	Size(256.0f, 240.0f),
 	0.8f,

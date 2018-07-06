@@ -12,7 +12,7 @@ PurpleDinosaur* PurpleDinosaur::deserialize(ValueMap* initProperties)
 }
 
 PurpleDinosaur::PurpleDinosaur(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Jungle_PurpleDinosaur_Animations,
+	Resources::Entities_Platformer_Environment_Jungle_PurpleDinosaur_Animations,
 	false,
 	Size(412.0f, 388.0f),
 	1.0f,

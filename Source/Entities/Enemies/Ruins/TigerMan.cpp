@@ -12,7 +12,7 @@ TigerMan* TigerMan::deserialize(ValueMap* initProperties)
 }
 
 TigerMan::TigerMan(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Ruins_TigerMan_Animations,
+	Resources::Entities_Platformer_Environment_Ruins_TigerMan_Animations,
 	false,
 	Size(256.0f, 308.0f),
 	1.0f,

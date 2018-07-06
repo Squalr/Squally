@@ -12,7 +12,7 @@ Medusa* Medusa::deserialize(ValueMap* initProperties)
 }
 
 Medusa::Medusa(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Ruins_Medusa_Animations,
+	Resources::Entities_Platformer_Environment_Ruins_Medusa_Animations,
 	false,
 	Size(224.0f, 304.0f),
 	0.8f,

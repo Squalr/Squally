@@ -12,7 +12,7 @@ Guard* Guard::deserialize(ValueMap* initProperties)
 }
 
 Guard::Guard(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Castle_Guard_Animations,
+	Resources::Entities_Platformer_Environment_Castle_Guard_Animations,
 	false,
 	Size(472.0f, 780.0f),
 	0.3f,

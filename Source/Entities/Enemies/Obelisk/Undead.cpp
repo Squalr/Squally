@@ -12,7 +12,7 @@ Undead* Undead::deserialize(ValueMap* initProperties)
 }
 
 Undead::Undead(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Obelisk_Undead_Animations,
+	Resources::Entities_Platformer_Environment_Obelisk_Undead_Animations,
 	false,
 	Size(146.0f, 248.0f),
 	0.8f,

@@ -12,7 +12,7 @@ SkeletonNecromancer* SkeletonNecromancer::deserialize(ValueMap* initProperties)
 }
 
 SkeletonNecromancer::SkeletonNecromancer(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Caverns_SkeletonNecromancer_Animations,
+	Resources::Entities_Platformer_Environment_Caverns_SkeletonNecromancer_Animations,
 	false,
 	Size(128.0f, 228.0f),
 	0.8f,

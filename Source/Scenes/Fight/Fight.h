@@ -15,7 +15,7 @@ class Fight : public FadeScene
 public:
 	static Fight* create();
 
-	void loadFight(Player* player, Enemy* enemy);
+	void loadFight(Squally* squally, Enemy* enemy);
 
 protected:
 	Fight();

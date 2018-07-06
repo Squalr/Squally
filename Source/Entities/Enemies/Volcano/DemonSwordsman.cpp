@@ -12,7 +12,7 @@ DemonSwordsman* DemonSwordsman::deserialize(ValueMap* initProperties)
 }
 
 DemonSwordsman::DemonSwordsman(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Volcano_DemonSwordsman_Animations,
+	Resources::Entities_Platformer_Environment_Volcano_DemonSwordsman_Animations,
 	false,
 	Size(212.0f, 268.0f),
 	0.65f,

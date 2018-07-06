@@ -12,7 +12,7 @@ DemonWarrior* DemonWarrior::deserialize(ValueMap* initProperties)
 }
 
 DemonWarrior::DemonWarrior(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Volcano_DemonWarrior_Animations,
+	Resources::Entities_Platformer_Environment_Volcano_DemonWarrior_Animations,
 	false,
 	Size(320.0f, 372.0f),
 	0.7f,

@@ -17,16 +17,16 @@ Avatars::Avatars()
 	this->avatarPlayer = Node::create();
 	this->avatarEnemy = Node::create();
 
-	this->avatarPlayer->addChild(Sprite::create(Resources::Backgrounds_Jungle_Background));
-	this->avatarEnemy->addChild(Sprite::create(Resources::Backgrounds_Day_Sky));
+	this->avatarPlayer->addChild(Sprite::create(Resources::Backgrounds_Platformer_Jungle_Background));
+	this->avatarEnemy->addChild(Sprite::create(Resources::Backgrounds_Platformer_Day_Sky));
 
-	AnimationNode* playerAnimation = AnimationNode::create(Resources::Entities_Player_Animations);
+	AnimationNode* playerAnimation = AnimationNode::create(Resources::Entities_Platformer_Squally_Animations);
 	SpriterEngine::EntityInstance* playerEntity = playerAnimation->play("Entity");
 	playerEntity->setCurrentAnimation("Idle");
 	playerAnimation->setScale(0.25f);
 	playerAnimation->setPosition(Vec2(-64.0f, -32.0f));
 
-	AnimationNode* enemyAnimation = AnimationNode::create(Resources::Entities_Environment_Snow_BossIceGolem_Animations);
+	AnimationNode* enemyAnimation = AnimationNode::create(Resources::Entities_Platformer_Environment_Snow_BossIceGolem_Animations);
 	SpriterEngine::EntityInstance* enemyEntity = enemyAnimation->play("Entity");
 	enemyEntity->setCurrentAnimation("Idle");
 	enemyAnimation->setPosition(Vec2(-24.0f, -212.0f));

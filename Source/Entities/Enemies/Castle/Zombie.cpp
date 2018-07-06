@@ -12,7 +12,7 @@ Zombie* Zombie::deserialize(ValueMap* initProperties)
 }
 
 Zombie::Zombie(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Castle_Zombie_Animations,
+	Resources::Entities_Platformer_Environment_Castle_Zombie_Animations,
 	false,
 	Size(114.0f, 208.0f),
 	0.9f,

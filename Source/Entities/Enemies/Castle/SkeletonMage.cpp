@@ -12,7 +12,7 @@ SkeletonMage* SkeletonMage::deserialize(ValueMap* initProperties)
 }
 
 SkeletonMage::SkeletonMage(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Castle_SkeletonMage_Animations,
+	Resources::Entities_Platformer_Environment_Castle_SkeletonMage_Animations,
 	false,
 	Size(142.0f, 400.0f),
 	0.5f,

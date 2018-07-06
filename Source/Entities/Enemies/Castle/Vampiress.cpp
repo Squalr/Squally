@@ -12,7 +12,7 @@ Vampiress* Vampiress::deserialize(ValueMap* initProperties)
 }
 
 Vampiress::Vampiress(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Castle_Vampiress_Animations,
+	Resources::Entities_Platformer_Environment_Castle_Vampiress_Animations,
 	false,
 	Size(96.0f, 236.0f),
 	0.9f,

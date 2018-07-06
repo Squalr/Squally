@@ -12,7 +12,7 @@ BossIceGolem* BossIceGolem::deserialize(ValueMap* initProperties)
 }
 
 BossIceGolem::BossIceGolem(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Snow_BossIceGolem_Animations,
+	Resources::Entities_Platformer_Environment_Snow_BossIceGolem_Animations,
 	false,
 	Size(420.0f, 420.0f),
 	0.7f,

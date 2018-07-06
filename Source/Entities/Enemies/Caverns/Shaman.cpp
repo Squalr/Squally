@@ -12,7 +12,7 @@ Shaman* Shaman::deserialize(ValueMap* initProperties)
 }
 
 Shaman::Shaman(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Caverns_Shaman_Animations,
+	Resources::Entities_Platformer_Environment_Caverns_Shaman_Animations,
 	false,
 	Size(256.0f, 288.0f),
 	0.75f,

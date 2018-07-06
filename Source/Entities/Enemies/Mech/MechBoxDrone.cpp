@@ -12,7 +12,7 @@ MechBoxDrone* MechBoxDrone::deserialize(ValueMap* initProperties)
 }
 
 MechBoxDrone::MechBoxDrone(ValueMap* initProperties) : Enemy(initProperties,
-	Resources::Entities_Environment_Mech_MechBoxDrone_Animations,
+	Resources::Entities_Platformer_Environment_Mech_MechBoxDrone_Animations,
 	false,
 	Size(224.0f, 278.0f),
 	0.7f,

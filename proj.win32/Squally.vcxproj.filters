@@ -40,9 +40,6 @@
     <Filter Include="Source\Engine\Input">
       <UniqueIdentifier>{41b4695d-9be7-4d80-930f-d7fe7acdf1c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Entities\Player">
-      <UniqueIdentifier>{90ad5dcd-68bc-4222-9ecb-c482d58a9543}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Entities\Enemies">
       <UniqueIdentifier>{2775143e-43a8-40c2-9698-8781690f3110}</UniqueIdentifier>
     </Filter>
@@ -157,6 +154,9 @@
     <Filter Include="Source\Objects\Isometric">
       <UniqueIdentifier>{7b8d45ee-52d5-450b-a931-f45d9bff107d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Entities\Squally">
+      <UniqueIdentifier>{5487f111-1451-41a4-85de-0fae79c18df7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Entities\Entity.cpp">
@@ -200,12 +200,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Engine\Input\InputManager.cpp">
       <Filter>Source\Engine\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Player\Player.cpp">
-      <Filter>Source\Entities\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Entities\Player\Hover.cpp">
-      <Filter>Source\Entities\Player</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Level\LevelCamera.cpp">
       <Filter>Source\Scenes\Level</Filter>
@@ -841,6 +835,12 @@
     <ClCompile Include="..\Source\Objects\Isometric\IsometricObjectDeserializer.cpp">
       <Filter>Source\Objects\Isometric</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Entities\Squally\Hover.cpp">
+      <Filter>Source\Entities\Squally</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Squally\Squally.cpp">
+      <Filter>Source\Entities\Squally</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Scenes\Level\Level.h">
@@ -887,12 +887,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\Confirmation\ConfirmationMenu.h">
       <Filter>Source\Scenes\Menus\Confirmation</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Player\Player.h">
-      <Filter>Source\Entities\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Entities\Player\Hover.h">
-      <Filter>Source\Entities\Player</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Level\LevelCamera.h">
       <Filter>Source\Scenes\Level</Filter>
@@ -1558,13 +1552,14 @@
     <ClInclude Include="..\Source\Objects\Isometric\IsometricObjects.h">
       <Filter>Source\Objects\Isometric</Filter>
     </ClInclude>
+    <ClInclude Include="..\Source\Entities\Squally\Hover.h">
+      <Filter>Source\Entities\Squally</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Squally\Squally.h">
+      <Filter>Source\Entities\Squally</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Source\Resources.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Source\GenerateResources.py">
-      <Filter>Source</Filter>
-    </None>
   </ItemGroup>
 </Project>
