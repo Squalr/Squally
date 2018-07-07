@@ -64,6 +64,14 @@ void LoadingScreen::loadLevel(std::string levelFile, const std::function<void(Se
 	this->currentLevelFile = levelFile;
 	this->onLoadCallback = newOnLoadCallback;
 
+	/*
+	std::future<SerializableMap *> fut = std::async([levelFile]() {
+		return SerializableMap::deserialize(levelFile, &LoadingScreen::layerDeserializers, &LoadingScreen::objectDeserializers);
+	});
+	*/
+	this->map = SerializableMap::deserialize(levelFile, &LoadingScreen::layerDeserializers, &LoadingScreen::objectDeserializers);
+	this->map->retain();
+
 	// Asyncronously get all files under the game, and load them
 	FileUtils::getInstance()->listFilesRecursivelyAsync(FileUtils::getInstance()->getDefaultResourceRootPath(), CC_CALLBACK_1(LoadingScreen::onFileEnumerationComplete, this));
 }
@@ -81,9 +89,6 @@ void LoadingScreen::onFileEnumerationComplete(std::vector<std::string> files)
 			LoadingScreen::isPreloadableSound(file))
 		{
 			this->totalFileCount++;
-
-			// TEMP: Remove me to bring back loading screen
-			break;
 		}
 	}
 
@@ -95,50 +100,51 @@ void LoadingScreen::onFileEnumerationComplete(std::vector<std::string> files)
 		{
 			// Load texture
 			Director::getInstance()->getTextureCache()->addImageAsync(file, textureLoadCallback);
-
-			// TEMP: Remove me to bring back loading screen
-			break;
 		}
 		else if (LoadingScreen::isPreloadableSound(file))
 		{
 			// Load sound
 			AudioEngine::preload(file, soundLoadCallback);
-
-			// TEMP: Remove me to bring back loading screen
-			break;
 		}
 	}
 
-	// Fail safe if no files are found
-	if (files.size() <= 0)
-	{
-		this->incrementLoadedFileCount();
-	}
+	// In case there are no assets to load we also need to check here
+	this->enterLevelIfDoneLoading();
 }
 
 void LoadingScreen::onTextureAssetLoaded(Texture2D* asset)
 {
 	this->incrementLoadedFileCount();
+	this->enterLevelIfDoneLoading();
 }
 
 void LoadingScreen::onSoundAssetLoaded()
 {
 	this->incrementLoadedFileCount();
+	this->enterLevelIfDoneLoading();
+}
+
+void LoadingScreen::enterLevelIfDoneLoading()
+{
+	if (this->levelIsLoaded())
+	{
+
+		if (this->onLoadCallback != nullptr)
+		{
+			this->onLoadCallback(this->map);
+		}
+	}
 }
 
 void LoadingScreen::incrementLoadedFileCount()
 {
+	this->loadedFileCount.fetch_add(1);
 	this->progressBar->setProgress(this->totalFileCount == 0 ? 0.0f : (float)this->loadedFileCount / (float)this->totalFileCount);
+}
 
-	if (this->loadedFileCount.fetch_add(1) >= this->totalFileCount - 1)
-	{
-		SerializableMap* map = SerializableMap::deserialize(this->currentLevelFile, &LoadingScreen::layerDeserializers, &LoadingScreen::objectDeserializers);
-
-		if (this->onLoadCallback != nullptr)
-		{
-			this->onLoadCallback(map);
-		}
-	}
+bool LoadingScreen::levelIsLoaded() 
+{
+	return this->loadedFileCount >= this->totalFileCount - 1;
 }
 
 bool LoadingScreen::isPreloadableImage(std::string filePath)
