@@ -1,3 +1,8 @@
+###################################################################################
+# This script will generate the Resources.cpp and Resources.h files.              #
+# Run this script every time files are added to the Squally/Resources/ directory. #
+###################################################################################
+
 from os import listdir
 from os import path
 from os.path import isfile, join, splitext, abspath, realpath, basename, relpath
@@ -35,7 +40,7 @@ for extension in extensions:
 with open(outputHeader,'w') as h, open(outputClass,'w') as cpp:
 
 	warning = ( "///////////////////////////////////////////////////////////////////////////////" + "\n" +
-		"// THIS C++ FILE IS GENERATED DO NOT EDIT. MAKE CHANGES IN THE PYTHON SCRIPT //" + "\n" +
+		"// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateResources.py TO GENERATE THIS FILE //" + "\n" +
 		"///////////////////////////////////////////////////////////////////////////////" + "\n")
 
 	h.write(warning)

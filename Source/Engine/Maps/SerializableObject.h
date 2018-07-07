@@ -22,6 +22,8 @@ public:
 	static const std::string KeyXPosition;
 	static const std::string KeyYPosition;
 
+	static const std::string KeyCollisionPointsProperty;
+
 	static const std::string KeyGid;
 
 	static const std::vector<std::string> AttributeKeys;

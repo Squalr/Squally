@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
-#include "Objects/Hackables/HackableObject.h"
+#include "Engine/Objects/Hackables/HackableObject.h"
 #include "Engine/Rendering/Components/EditableTextWindow.h"
 #include "Engine/Rendering/Components/MenuLabel.h"
 #include "Engine/Rendering/Components/MenuSprite.h"

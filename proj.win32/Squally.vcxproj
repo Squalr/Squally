@@ -157,8 +157,10 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Source\Bootstrapper.cpp" />
     <ClCompile Include="..\Source\Engine\Camera\GameCamera.cpp" />
     <ClCompile Include="..\Source\Engine\Config\ConfigManager.cpp" />
+    <ClCompile Include="..\Source\Engine\Events\DeserializationEvents.cpp" />
     <ClCompile Include="..\Source\Engine\GlobalDirector.cpp" />
     <ClCompile Include="..\Source\Engine\Localization\Localization.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\DefaultLayerDeserializer.cpp" />
@@ -166,6 +168,12 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Engine\Maps\SerializableMap.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableObject.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableTileLayer.cpp" />
+    <ClCompile Include="..\Source\Engine\Objects\Hackables\HackableAttribute.cpp" />
+    <ClCompile Include="..\Source\Engine\Objects\Hackables\HackableCode.cpp" />
+    <ClCompile Include="..\Source\Engine\Objects\Hackables\HackableData.cpp" />
+    <ClCompile Include="..\Source\Engine\Objects\Hackables\HackableObject.cpp" />
+    <ClCompile Include="..\Source\Engine\Physics\CollisionDeserializer.cpp" />
+    <ClCompile Include="..\Source\Engine\Physics\CollisionObject.cpp" />
     <ClCompile Include="..\Source\Engine\Rendering\Components\TextMenuSprite.cpp" />
     <ClCompile Include="..\Source\Engine\Rendering\HUD\DeveloperHud.cpp" />
     <ClCompile Include="..\Source\Engine\Sound\SoundManager.cpp" />
@@ -285,7 +293,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Events\HexusEvents.cpp" />
     <ClCompile Include="..\Source\Events\NavigationEvents.cpp" />
     <ClCompile Include="..\Source\Events\MouseEvents.cpp" />
-    <ClCompile Include="..\Source\Objects\Collision\CollisionDeserializer.cpp" />
     <ClCompile Include="..\Source\Objects\Isometric\HexusArcade.cpp" />
     <ClCompile Include="..\Source\Objects\Isometric\IsometricDecorDeserializer.cpp" />
     <ClCompile Include="..\Source\Objects\Isometric\IsometricDecorObject.cpp" />
@@ -354,6 +361,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MountainBackground.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\OceanBackground.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\SnowBackground.cpp" />
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\CollisionMapper.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\PlatformerMap.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Weather\Fireflies.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Weather\Rain.cpp" />
@@ -375,11 +383,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Scenes\Menus\Tutorial\TutorialItem.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Tutorial\TutorialScreen.cpp" />
     <ClCompile Include="..\Source\Engine\Input\InputManager.cpp" />
-    <ClCompile Include="..\Source\Objects\Collision\CollisionObject.cpp" />
-    <ClCompile Include="..\Source\Objects\Hackables\HackableAttribute.cpp" />
-    <ClCompile Include="..\Source\Objects\Hackables\HackableCode.cpp" />
-    <ClCompile Include="..\Source\Objects\Hackables\HackableData.cpp" />
-    <ClCompile Include="..\Source\Objects\Hackables\HackableObject.cpp" />
     <ClCompile Include="..\Source\Engine\Save\SaveManager.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Shaders\PostProcess.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.cpp" />
@@ -390,8 +393,10 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Resources.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Source\Bootstrapper.h" />
     <ClInclude Include="..\Source\Engine\Camera\GameCamera.h" />
     <ClInclude Include="..\Source\Engine\Config\ConfigManager.h" />
+    <ClInclude Include="..\Source\Engine\Events\DeserializationEvents.h" />
     <ClInclude Include="..\Source\Engine\GlobalDirector.h" />
     <ClInclude Include="..\Source\Engine\GlobalNode.h" />
     <ClInclude Include="..\Source\Engine\Localization\Localization.h" />
@@ -402,6 +407,12 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Engine\Maps\SerializableMap.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableObject.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableTileLayer.h" />
+    <ClInclude Include="..\Source\Engine\Objects\Hackables\HackableAttribute.h" />
+    <ClInclude Include="..\Source\Engine\Objects\Hackables\HackableCode.h" />
+    <ClInclude Include="..\Source\Engine\Objects\Hackables\HackableData.h" />
+    <ClInclude Include="..\Source\Engine\Objects\Hackables\HackableObject.h" />
+    <ClInclude Include="..\Source\Engine\Physics\CollisionDeserializer.h" />
+    <ClInclude Include="..\Source\Engine\Physics\CollisionObject.h" />
     <ClInclude Include="..\Source\Engine\Rendering\Components\TextMenuSprite.h" />
     <ClInclude Include="..\Source\Engine\Rendering\HUD\DeveloperHud.h" />
     <ClInclude Include="..\Source\Engine\Sound\SoundManager.h" />
@@ -522,7 +533,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Events\HexusEvents.h" />
     <ClInclude Include="..\Source\Events\NavigationEvents.h" />
     <ClInclude Include="..\Source\Events\MouseEvents.h" />
-    <ClInclude Include="..\Source\Objects\Collision\CollisionDeserializer.h" />
     <ClInclude Include="..\Source\Objects\Isometric\HexusArcade.h" />
     <ClInclude Include="..\Source\Objects\Isometric\IsometricDecorDeserializer.h" />
     <ClInclude Include="..\Source\Objects\Isometric\IsometricDecorObject.h" />
@@ -598,6 +608,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MountainBackground.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\OceanBackground.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\SnowBackground.h" />
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\CollisionMapper.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\PlatformerMap.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Weather\Fireflies.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Weather\Rain.h" />
@@ -619,12 +630,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Scenes\Menus\Tutorial\TutorialItem.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Tutorial\TutorialScreen.h" />
     <ClInclude Include="..\Source\Input\InputManager.h" />
-    <ClInclude Include="..\Source\Objects\Collision\CategoryGroup.h" />
-    <ClInclude Include="..\Source\Objects\Collision\CollisionObject.h" />
-    <ClInclude Include="..\Source\Objects\Hackables\HackableAttribute.h" />
-    <ClInclude Include="..\Source\Objects\Hackables\HackableCode.h" />
-    <ClInclude Include="..\Source\Objects\Hackables\HackableData.h" />
-    <ClInclude Include="..\Source\Objects\Hackables\HackableObject.h" />
     <ClInclude Include="..\Source\Engine\Save\SaveManager.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Shaders\PostProcess.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.h" />

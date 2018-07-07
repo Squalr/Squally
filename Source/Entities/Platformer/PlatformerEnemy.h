@@ -3,7 +3,6 @@
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Resources.h"
-#include "Objects/Collision/CategoryGroup.h"
 
 using namespace cocos2d;
 

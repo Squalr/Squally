@@ -2,15 +2,15 @@
 #include "cocos2d.h"
 
 #include "Events/HackableEvents.h"
+#include "Engine/Maps/SerializableObject.h"
 #include "Engine/Rendering/Components/MenuSprite.h"
-#include "Objects/Collision/CollisionObject.h"
 #include "Resources.h"
 
 #include "HackableData.h"
 
 using namespace cocos2d;
 
-class HackableObject : public CollisionObject
+class HackableObject : public SerializableObject
 {
 public:
 	void onHackableClick(MenuSprite* menuSprite);

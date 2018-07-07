@@ -111,7 +111,7 @@ void EditableTextWindow::update(float dt)
 
 void EditableTextWindow::insertNewline()
 {
-	RichElement* lineNumberText = RichElementText::create(0, EditableTextWindow::lineNumberColor, 0xFF, to_string(this->currentLineNumber++), Resources::Fonts_UbuntuMono_Bold, this->fontSize);
+	RichElement* lineNumberText = RichElementText::create(0, EditableTextWindow::lineNumberColor, 0xFF, std::to_string(this->currentLineNumber++), Resources::Fonts_UbuntuMono_Bold, this->fontSize);
 	RichElement* lineNumberNewLine = RichElementNewLine::create(0, this->fontColor, 0xFF);
 
 	this->lineNumberElements->push_back(lineNumberText);

@@ -1,8 +1,9 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Events/DeserializationEvents.h"
 #include "Engine/Maps/IObjectDeserializer.h"
-#include "Objects/Collision/CollisionObject.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Resources.h"
 
 using namespace cocos2d;
@@ -14,11 +15,4 @@ public:
 	~CollisionDeserializer();
 
 	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
-
-	static const std::string KeyCollisionTypeSolid;
-	static const std::string KeyCollisionTypeWater;
-	static const std::string KeyCollisionTypeSolidNpc;
-	static const std::string KeyCollisionTypeSolidNpcFlying;
-
-	static const std::string KeyCollisionPointsProperty;
 };

@@ -26,7 +26,7 @@ Knight::Knight(ValueMap* initProperties) : NpcBase::NpcBase(initProperties,
 	this->movement.x = 0.0f;
 	this->movement.y = 0.0f;
 
-	this->init(PhysicsBody::createBox(this->size), CategoryGroup::G_Npc, true, false);
+	//// this->init(PhysicsBody::createBox(this->size), CategoryGroup::G_Npc, true, false);
 
 	this->initializeCardData();
 }

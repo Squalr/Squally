@@ -2,10 +2,8 @@
 #include "ui/CocosGUI.h"
 #include "cocos2d.h"
 
+#include "Engine/Rendering/Components/MenuLabel.h"
 #include "Resources.h"
-#include "Objects/Hackables/HackableObject.h"
-
-#include "MenuLabel.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;

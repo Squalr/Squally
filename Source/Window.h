@@ -2,8 +2,8 @@
 #include "audio/include/AudioEngine.h"
 #include "cocos2d.h"
 
+#include "Bootstrapper.h"
 #include "Engine/Config/ConfigManager.h"
-#include "Scenes/SceneDirector.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;

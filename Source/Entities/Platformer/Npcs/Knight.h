@@ -3,7 +3,6 @@
 
 #include "Entities/Platformer/Npcs/NpcBase.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Collision/CategoryGroup.h"
 #include "Resources.h"
 
 using namespace cocos2d;
