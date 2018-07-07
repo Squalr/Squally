@@ -6,7 +6,6 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Hover.h"
 #include "Events/NavigationEvents.h"
-#include "Objects/Collision/CategoryGroup.h"
 #include "Resources.h"
 
 using namespace cocos2d;

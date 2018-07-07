@@ -9,7 +9,12 @@ Hover* Hover::create(PlatformerEntity* initParent)
 	return hover;
 }
 
-Hover::Hover(PlatformerEntity* initParent) : HackableObject(nullptr)
+Hover::Hover(PlatformerEntity* initParent) : CollisionObject(
+	nullptr,
+	PhysicsBody::createBox(Size(initParent->getSize().width, Hover::hoverHeight), PhysicsMaterial(0.0f, 0.0f, 0.0f)),
+	"solid",
+	true,
+	false)
 {
 	this->parent = initParent;
 
@@ -22,8 +27,6 @@ Hover::Hover(PlatformerEntity* initParent) : HackableObject(nullptr)
 	this->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->setPosition(0, -parentSize.height / 2);
 	this->setContentSize(Size(0, Hover::hoverHeight));
-
-	this->init(PhysicsBody::createBox(Size(parentSize.width, Hover::hoverHeight), PhysicsMaterial(0.0f, 0.0f, 0.0f)), CategoryGroup::G_Force, true, false);
 
 	FiniteTimeAction* bounceY1 = EaseSineInOut::create(ScaleTo::create(3.0f, 1.0f, 0.25f));
 	FiniteTimeAction* bounceY2 = EaseSineInOut::create(ScaleTo::create(3.0f, 1.0f, 1.0f));

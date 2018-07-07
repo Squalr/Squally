@@ -1,22 +1,24 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Objects/Collision/CategoryGroup.h"
 #include "Engine/Camera/GameCamera.h"
-#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Objects/Hackables/HackableObject.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 
-class CollisionObject : public SerializableObject
+typedef std::string CategoryName;
+typedef int CategoryGroup;
+
+class CollisionObject : public HackableObject
 {
 public:
-	CollisionObject(ValueMap* initProperties);
+	CollisionObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, CategoryName initCategoryName, bool isDynamic, bool canRotate);
 	~CollisionObject();
 
-	void init(PhysicsBody* initPhysicsBody, CategoryGroup initCategoryGroup, bool isDynamic, bool canRotate);
+	void setCollisionGroups(CategoryGroup categoryGroup, std::vector<CategoryGroup>* collidesWith);
 
-	CategoryGroup getCategoryGroup();
+	CategoryName getCategoryName();
 	Vec2 getVelocity();
 	void setVelocity(Vec2 velocity);
 
@@ -65,9 +67,8 @@ private:
 	bool onContactEnd(PhysicsContact& contact);
 
 	CollisionData constructCollisionData(PhysicsContact& contact);
-	CategoryGroup getCollisionGroups();
 
-	CategoryGroup categoryGroup;
+	CategoryName categoryName;
 	PhysicsBody * physicsBody;
 
 	bool physicsEnabled;

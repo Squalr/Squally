@@ -33,7 +33,7 @@ Squally::Squally(ValueMap* initProperties) : PlatformerEntity::PlatformerEntity(
 	this->actualMaxFallSpeed = 600.0f;
 	this->moveAcceleration = 14000.0f;
 
-	this->init(PhysicsBody::createBox(size * Squally::squallyScale, PhysicsMaterial(0.0f, 0.0f, 0.0f)), CategoryGroup::G_Player, true, false);
+	////this->init(PhysicsBody::createBox(size * Squally::squallyScale, PhysicsMaterial(0.0f, 0.0f, 0.0f)), CategoryGroup::G_Player, true, false);
 	// this->hover = Hover::create(this);
 
 	//this->hover->setContactBeginCallback(CC_CALLBACK_1(Squally::hoverContactBegin, this));
@@ -118,6 +118,7 @@ bool Squally::hoverContactBegin(CollisionData data)
 
 bool Squally::hoverContactUpdate(CollisionData data)
 {
+	/*
 	switch (data.other->getCategoryGroup())
 	{
 	case CategoryGroup::G_Solid:
@@ -129,12 +130,13 @@ bool Squally::hoverContactUpdate(CollisionData data)
 	case CategoryGroup::G_Player:
 		return true;
 	}
-
+	*/
 	return true;
 }
 
 bool Squally::hoverContactEnd(CollisionData data)
 {
+	/*
 	switch (data.other->getCategoryGroup())
 	{
 	case CategoryGroup::G_Solid:
@@ -143,12 +145,13 @@ bool Squally::hoverContactEnd(CollisionData data)
 	case CategoryGroup::G_Player:
 		return true;
 	}
-
+	*/
 	return true;
 }
 
 bool Squally::contactBegin(CollisionData data)
 {
+	/*
 	switch (data.other->getCategoryGroup())
 	{
 	case CategoryGroup::G_Enemy:
@@ -162,12 +165,14 @@ bool Squally::contactBegin(CollisionData data)
 
 		return false;
 	}
+	*/
 
 	return true;
 }
 
 bool Squally::contactUpdate(CollisionData data)
 {
+	/*
 	switch (data.other->getCategoryGroup())
 	{
 	case CategoryGroup::G_Solid:
@@ -188,12 +193,13 @@ bool Squally::contactUpdate(CollisionData data)
 	case CategoryGroup::G_SolidFlyingNpc:
 		return false;
 	}
-
+	*/
 	return true;
 }
 
 bool Squally::contactEnd(CollisionData data)
 {
+	/*
 	switch (data.other->getCategoryGroup())
 	{
 	case CategoryGroup::G_Solid:
@@ -207,7 +213,7 @@ bool Squally::contactEnd(CollisionData data)
 	case CategoryGroup::G_SolidNpc:
 	case CategoryGroup::G_SolidFlyingNpc:
 		return false;
-	}
+	}*/
 
 	return true;
 }

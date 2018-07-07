@@ -30,12 +30,30 @@ const std::string SerializableObject::KeyPropertyValue = "value";
 
 SerializableObject::SerializableObject(ValueMap* initProperties)
 {
-	this->properties = new ValueMap(*initProperties);
+	this->properties = initProperties == nullptr ? nullptr : new ValueMap(*initProperties);
 
-	this->setPosition(Vec2(
-		this->properties->at(SerializableObject::KeyXPosition).asFloat() + this->properties->at(SerializableObject::KeyWidth).asFloat() / 2,
-		this->properties->at(SerializableObject::KeyYPosition).asFloat() + this->properties->at(SerializableObject::KeyHeight).asFloat() / 2)
-	);
+	if (this->properties != nullptr)
+	{
+		if (GameUtils::keyExists(this->properties, SerializableObject::KeyXPosition))
+		{
+			this->setPositionX(this->properties->at(SerializableObject::KeyXPosition).asFloat());
+		}
+
+		if (GameUtils::keyExists(this->properties, SerializableObject::KeyWidth))
+		{
+			this->setPositionX(this->getPositionX() + this->properties->at(SerializableObject::KeyWidth).asFloat() / 2.0f);
+		}
+
+		if (GameUtils::keyExists(this->properties, SerializableObject::KeyYPosition))
+		{
+			this->setPositionY(this->properties->at(SerializableObject::KeyYPosition).asFloat());
+		}
+
+		if (GameUtils::keyExists(this->properties, SerializableObject::KeyHeight))
+		{
+			this->setPositionY(this->getPositionY() + this->properties->at(SerializableObject::KeyHeight).asFloat() / 2.0f);
+		}
+	}
 }
 
 SerializableObject::~SerializableObject()

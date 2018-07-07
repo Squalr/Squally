@@ -49,12 +49,6 @@
     <Filter Include="Source\Scenes\Menus\HackerMode">
       <UniqueIdentifier>{b7fe6d4b-2ded-42d6-afd6-82356a8ce133}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Objects\Collision">
-      <UniqueIdentifier>{94e5f613-0f3a-49b6-a7f0-ccafed96546a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Objects\Hackables">
-      <UniqueIdentifier>{af157143-ff33-4a8a-888f-56b9fd04564e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Scenes\Menus\LoadingScreen">
       <UniqueIdentifier>{5b766df7-ace8-43f1-bf59-f0f9d699f795}</UniqueIdentifier>
     </Filter>
@@ -169,6 +163,18 @@
     <Filter Include="Source\Scenes\Maps\Platformer\Weather">
       <UniqueIdentifier>{0255f5d0-639f-4402-b172-e922e204da0a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Engine\Objects">
+      <UniqueIdentifier>{498d0f50-c1be-4b6b-a6d7-866ea4dfe209}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Objects\Hackables">
+      <UniqueIdentifier>{c3757329-9cf7-472a-ac09-d9e6c6fdd813}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Physics">
+      <UniqueIdentifier>{66851be3-3f04-429d-9ae9-62fe731ae65b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Events">
+      <UniqueIdentifier>{da7825c7-ea92-4538-8731-1e75ba95b57a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Resources.cpp">
@@ -216,23 +222,8 @@
     <ClCompile Include="..\Source\Scenes\Menus\Dialog\DialogMenu.cpp">
       <Filter>Source\Scenes\Menus\Dialog</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Objects\Collision\CollisionObject.cpp">
-      <Filter>Source\Objects\Collision</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\Hackables\HackableObject.cpp">
-      <Filter>Source\Objects\Hackables</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\HackerMode\RadialMenu.cpp">
       <Filter>Source\Scenes\Menus\HackerMode</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\Hackables\HackableCode.cpp">
-      <Filter>Source\Objects\Hackables</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\Hackables\HackableData.cpp">
-      <Filter>Source\Objects\Hackables</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\Hackables\HackableAttribute.cpp">
-      <Filter>Source\Objects\Hackables</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.cpp">
       <Filter>Source\Scenes\Menus\HackerMode</Filter>
@@ -336,9 +327,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Engine\GlobalDirector.cpp">
       <Filter>Source\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Objects\Collision\CollisionDeserializer.cpp">
-      <Filter>Source\Objects\Collision</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Engine\Maps\DefaultLayerDeserializer.cpp">
       <Filter>Source\Engine\Maps</Filter>
@@ -862,6 +850,33 @@
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Weather\WeatherDeserializer.cpp">
       <Filter>Source\Scenes\Maps\Platformer\Weather</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Engine\Objects\Hackables\HackableAttribute.cpp">
+      <Filter>Source\Engine\Objects\Hackables</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Objects\Hackables\HackableCode.cpp">
+      <Filter>Source\Engine\Objects\Hackables</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Objects\Hackables\HackableData.cpp">
+      <Filter>Source\Engine\Objects\Hackables</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Objects\Hackables\HackableObject.cpp">
+      <Filter>Source\Engine\Objects\Hackables</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Physics\CollisionDeserializer.cpp">
+      <Filter>Source\Engine\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Physics\CollisionObject.cpp">
+      <Filter>Source\Engine\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\CollisionMapper.cpp">
+      <Filter>Source\Scenes\Maps\Platformer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Bootstrapper.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Events\DeserializationEvents.cpp">
+      <Filter>Source\Engine\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Resources.h">
@@ -906,26 +921,8 @@
     <ClInclude Include="..\Source\Scenes\Menus\Dialog\DialogMenu.h">
       <Filter>Source\Scenes\Menus\Dialog</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Objects\Collision\CollisionObject.h">
-      <Filter>Source\Objects\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\Collision\CategoryGroup.h">
-      <Filter>Source\Objects\Collision</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\Hackables\HackableObject.h">
-      <Filter>Source\Objects\Hackables</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\HackerMode\RadialMenu.h">
       <Filter>Source\Scenes\Menus\HackerMode</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\Hackables\HackableData.h">
-      <Filter>Source\Objects\Hackables</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\Hackables\HackableCode.h">
-      <Filter>Source\Objects\Hackables</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\Hackables\HackableAttribute.h">
-      <Filter>Source\Objects\Hackables</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.h">
       <Filter>Source\Scenes\Menus\HackerMode</Filter>
@@ -1032,9 +1029,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Engine\GlobalDirector.h">
       <Filter>Source\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Objects\Collision\CollisionDeserializer.h">
-      <Filter>Source\Objects\Collision</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Engine\GlobalNode.h">
       <Filter>Source\Engine</Filter>
@@ -1590,6 +1584,33 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Maps\IMap.h">
       <Filter>Source\Scenes\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Objects\Hackables\HackableAttribute.h">
+      <Filter>Source\Engine\Objects\Hackables</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Objects\Hackables\HackableCode.h">
+      <Filter>Source\Engine\Objects\Hackables</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Objects\Hackables\HackableData.h">
+      <Filter>Source\Engine\Objects\Hackables</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Objects\Hackables\HackableObject.h">
+      <Filter>Source\Engine\Objects\Hackables</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Physics\CollisionDeserializer.h">
+      <Filter>Source\Engine\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Physics\CollisionObject.h">
+      <Filter>Source\Engine\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\CollisionMapper.h">
+      <Filter>Source\Scenes\Maps\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Bootstrapper.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Events\DeserializationEvents.h">
+      <Filter>Source\Engine\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

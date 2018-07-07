@@ -3,7 +3,6 @@
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/HexusEvents.h"
-#include "Objects/Collision/CategoryGroup.h"
 #include "Resources.h"
 #include "Scenes/Hexus/Hexus.h"
 

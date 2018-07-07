@@ -1,6 +1,13 @@
 #include "PlatformerEntity.h"
 
-PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlResource, bool isFlying, Size size, float scale, Vec2 collisionOffset) : HackableObject(initProperties)
+PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlResource, bool isFlying, Size size, float scale, Vec2 collisionOffset) :
+	CollisionObject(
+		initProperties,
+		nullptr,
+		"",
+		true,
+		false
+	)
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
@@ -25,8 +32,11 @@ PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlRes
 	this->addChild(this->animationNode);
 
 	// Update width to be serialized
-	(*this->properties)[PlatformerEntity::KeyWidth] = size.width * scale;
-	(*this->properties)[PlatformerEntity::KeyHeight] = size.height * scale;
+	if (this->properties != nullptr)
+	{
+		(*this->properties)[PlatformerEntity::KeyWidth] = size.width * scale;
+		(*this->properties)[PlatformerEntity::KeyHeight] = size.height * scale;
+	}
 }
 
 PlatformerEntity::~PlatformerEntity()
@@ -100,6 +110,7 @@ bool PlatformerEntity::contactBegin(CollisionData data)
 
 bool PlatformerEntity::contactUpdate(CollisionData data)
 {
+	/*
 	switch (data.other->getCategoryGroup())
 	{
 	case CategoryGroup::G_SolidNpc:
@@ -123,12 +134,13 @@ bool PlatformerEntity::contactUpdate(CollisionData data)
 		}
 		return true;
 	}
-
+	*/
 	return false;
 }
 
 bool PlatformerEntity::contactEnd(CollisionData data)
 {
+	/*
 	switch (data.other->getCategoryGroup())
 	{
 	case CategoryGroup::G_Solid:
@@ -137,6 +149,6 @@ bool PlatformerEntity::contactEnd(CollisionData data)
 		this->isOnGround = false;
 		return true;
 	}
-
+	*/
 	return false;
 }

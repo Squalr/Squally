@@ -39,7 +39,8 @@ bool NpcBase::contactBegin(CollisionData data)
 
 bool NpcBase::contactUpdate(CollisionData data)
 {
-	switch (data.other->getCategoryGroup())
+	/*
+	switch (data.other->getCategoryName())
 	{
 	case CategoryGroup::G_SolidNpc:
 	case CategoryGroup::G_SolidFlyingNpc:
@@ -51,12 +52,13 @@ bool NpcBase::contactUpdate(CollisionData data)
 
 		return true;
 	}
-
+	*/
 	return false;
 }
 
 bool NpcBase::contactEnd(CollisionData data)
 {
+	/*
 	switch (data.other->getCategoryGroup())
 	{
 	case CategoryGroup::G_Solid:
@@ -65,6 +67,7 @@ bool NpcBase::contactEnd(CollisionData data)
 		this->isOnGround = false;
 		return true;
 	}
+	*/
 
 	return false;
 }

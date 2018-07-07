@@ -2,13 +2,13 @@
 #include "cocos2d.h"
 
 #include "Engine/Input/InputManager.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Hackables/HackableObject.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 
-class Hover : public HackableObject
+class Hover : public CollisionObject
 {
 public:
 	static Hover * create(PlatformerEntity* initParent);

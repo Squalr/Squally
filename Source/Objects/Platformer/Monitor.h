@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 
 #include "Events/DialogEvents.h"
-#include "Objects/Hackables/HackableObject.h"
+#include "Engine/Objects/Hackables/HackableObject.h"
 #include "Engine/Rendering/Components/FloatingSprite.h"
 #include "Engine/Rendering/Components/MenuSprite.h"
 #include "Scenes/Menus/Dialog/DialogMenu.h"

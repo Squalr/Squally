@@ -2,28 +2,38 @@
 
 std::string CollisionObject::KeyTypeCollision = "collision";
 
-CollisionObject::CollisionObject(ValueMap* initProperties) : SerializableObject(initProperties)
+CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, CategoryName initCategoryName, bool isDynamic, bool canRotate) : HackableObject(initProperties)
 {
+	this->physicsBody = initPhysicsBody;
+	this->categoryName = initCategoryName;
+
+	if (this->physicsBody != nullptr)
+	{
+		this->physicsBody->setRotationEnable(canRotate);
+		this->physicsBody->setDynamic(isDynamic);
+		this->setPhysicsBody(initPhysicsBody);
+	}
 }
 
 CollisionObject::~CollisionObject()
 {
 }
 
-void CollisionObject::init(PhysicsBody* initPhysicsBody, CategoryGroup initCategoryGroup, bool isDynamic, bool canRotate)
+void CollisionObject::setCollisionGroups(CategoryGroup categoryGroup, std::vector<CategoryGroup>* collidesWith)
 {
-	this->physicsBody = initPhysicsBody;
-	this->categoryGroup = initCategoryGroup;
+	int collidesWithBitmask = 0;
 
-	this->physicsBody->setRotationEnable(canRotate);
-	this->physicsBody->setDynamic(isDynamic);
-	this->setPhysicsBody(initPhysicsBody);
+	if (collidesWith != nullptr)
+	{
+		for (auto it = collidesWith->begin(); it != collidesWith->end(); it++)
+		{
+			collidesWithBitmask |= *it;
+		}
+	}
 
-	this->physicsBody->setCategoryBitmask(this->categoryGroup);
-	this->physicsBody->setCollisionBitmask(this->getCollisionGroups());
+	this->physicsBody->setCategoryBitmask(categoryGroup);
+	this->physicsBody->setCollisionBitmask(collidesWithBitmask);
 	this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
-
-	this->scheduleUpdate();
 }
 
 void CollisionObject::onEnter()
@@ -31,17 +41,16 @@ void CollisionObject::onEnter()
 	SerializableObject::onEnter();
 
 	this->initializeEventListeners();
+	this->scheduleUpdate();
 }
 
 void CollisionObject::update(float dt)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-
 	Vec2 pos = this->getPosition();
-
 	const float STOP_PHYSICS_OFFSET = 1024.0f;
 
-	if (this->physicsBody->isDynamic())
+	if (this->physicsBody != nullptr && this->physicsBody->isDynamic())
 	{
 		Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 
@@ -64,22 +73,29 @@ void CollisionObject::update(float dt)
 void CollisionObject::setPhysicsEnabled(bool enabled)
 {
 	this->physicsEnabled = enabled;
-	this->physicsBody->setEnabled(enabled);
+
+	if (this->physicsBody != nullptr)
+	{
+		this->physicsBody->setEnabled(enabled);
+	}
 }
 
 Vec2 CollisionObject::getVelocity()
 {
-	return this->physicsBody->getVelocity();
+	return this->physicsBody == nullptr ? Vec2::ZERO : this->physicsBody->getVelocity();
 }
 
 void CollisionObject::setVelocity(Vec2 velocity)
 {
-	this->physicsBody->setVelocity(velocity);
+	if (this->physicsBody != nullptr)
+	{
+		this->physicsBody->setVelocity(velocity);
+	}
 }
 
-CategoryGroup CollisionObject::getCategoryGroup()
+CategoryName CollisionObject::getCategoryName()
 {
-	return this->categoryGroup;
+	return this->categoryName;
 }
 
 bool CollisionObject::contactBegin(CollisionData data)
@@ -228,91 +244,4 @@ CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsCo
 	}
 
 	return collisionData;
-}
-
-CategoryGroup CollisionObject::getCollisionGroups()
-{
-	switch (this->categoryGroup)
-	{
-	case CategoryGroup::G_Solid:
-		return (CategoryGroup)(
-			CategoryGroup::G_Player
-			| CategoryGroup::G_Npc
-			| CategoryGroup::G_Enemy
-			| CategoryGroup::G_EnemyFlying
-			| CategoryGroup::G_Force
-			);
-	case CategoryGroup::G_PassThrough:
-		return (CategoryGroup)(
-			CategoryGroup::G_Player
-			| CategoryGroup::G_Npc
-			| CategoryGroup::G_Enemy
-			| CategoryGroup::G_EnemyFlying
-			| CategoryGroup::G_Force
-			);
-	case CategoryGroup::G_Player:
-		return (CategoryGroup)(
-			CategoryGroup::G_Enemy
-			| CategoryGroup::G_Force
-			| CategoryGroup::G_EnemyFlying
-			| CategoryGroup::G_Solid
-			| CategoryGroup::G_PassThrough
-			| CategoryGroup::G_SolidNpc
-			| CategoryGroup::G_Lava
-			);
-	case CategoryGroup::G_Npc:
-		return (CategoryGroup)(
-			CategoryGroup::G_Solid
-			| CategoryGroup::G_PassThrough
-			| CategoryGroup::G_SolidNpc
-			);
-	case CategoryGroup::G_Enemy:
-		return (CategoryGroup)(
-			CategoryGroup::G_Player
-			| CategoryGroup::G_Solid
-			| CategoryGroup::G_PassThrough
-			| CategoryGroup::G_SolidNpc
-			| CategoryGroup::G_Lava
-			);
-	case CategoryGroup::G_EnemyFlying:
-		return (CategoryGroup)(
-			CategoryGroup::G_Player
-			| CategoryGroup::G_Solid
-			| CategoryGroup::G_PassThrough
-			| CategoryGroup::G_SolidNpc
-			| CategoryGroup::G_SolidFlyingNpc
-			| CategoryGroup::G_Lava
-			);
-	case CategoryGroup::G_Force:
-		return (CategoryGroup)(
-			CategoryGroup::G_Player
-			| CategoryGroup::G_Solid
-			| CategoryGroup::G_PassThrough
-			| CategoryGroup::G_SolidNpc
-			| CategoryGroup::G_SolidFlyingNpc
-			| CategoryGroup::G_Lava
-			);
-	case CategoryGroup::G_SolidNpc:
-		return (CategoryGroup)(
-			CategoryGroup::G_Npc
-			| CategoryGroup::G_Enemy
-			| CategoryGroup::G_EnemyFlying
-			);
-	case CategoryGroup::G_SolidFlyingNpc:
-		return (CategoryGroup)(
-			CategoryGroup::G_EnemyFlying
-			);
-	case CategoryGroup::G_Water:
-		return (CategoryGroup)(
-			CategoryGroup::G_Player
-			| CategoryGroup::G_Enemy
-			);
-	case CategoryGroup::G_Lava:
-		return (CategoryGroup)(
-			CategoryGroup::G_Player
-			| CategoryGroup::G_Enemy
-			);
-	default:
-		return CategoryGroup::G_None;
-	}
 }

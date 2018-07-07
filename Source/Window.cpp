@@ -45,8 +45,8 @@ bool Window::applicationDidFinishLaunching()
 	director->setOpenGLView(glView);
 	glView->setCursorVisible(false);
 
-	// Start scene director
-	SceneDirector::registerGlobalNode();
+	// Initialize the game
+	Bootstrapper::initialize();
 
 	return true;
 }
