@@ -16,6 +16,8 @@ GlobalDirector::GlobalDirector()
 {
 	this->globalNodes = new std::vector<GlobalNode*>();
 	this->activeScene = nullptr;
+	// Must pass a full directory path so that cocos doesn't append
+	FileUtils::getInstance()->setDefaultResourceRootPath(FileUtils::getInstance()->getDefaultResourceRootPath() +"../../Resources");
 }
 
 GlobalDirector::~GlobalDirector()

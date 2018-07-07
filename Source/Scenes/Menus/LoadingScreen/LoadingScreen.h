@@ -1,5 +1,8 @@
 #pragma once
+#include <chrono>
 #include <mutex>
+#include <thread>
+#include <future> 
 
 #include "cocos2d.h"
 
@@ -44,6 +47,8 @@ private:
 	void onSoundAssetLoaded();
 	void incrementLoadedFileCount();
 	void initializePositions();
+	bool levelIsLoaded();
+	void enterLevelIfDoneLoading();
 
 	static bool isPreloadableImage(std::string filePath);
 	static bool isPreloadableSound(std::string filePath);
@@ -51,6 +56,7 @@ private:
 	Node* background;
 	Sprite* loadingWindow;
 	CProgressBar* progressBar;
+	SerializableMap* map;
 	std::function<void(SerializableMap*)> onLoadCallback;
 
 	int totalFileCount;
