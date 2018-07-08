@@ -37,7 +37,7 @@ PlatformerCollisionMapping::~PlatformerCollisionMapping()
 void PlatformerCollisionMapping::initializeEventListeners()
 {
 	EventListenerCustom* mapRequestEventListener = EventListenerCustom::create(
-		DeserializationEvents::RequestCollisionMappingEvent,
+		CollisionObject::RequestCollisionMappingEvent,
 		CC_CALLBACK_1(PlatformerCollisionMapping::onMapRequest, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mapRequestEventListener, this);
@@ -45,7 +45,7 @@ void PlatformerCollisionMapping::initializeEventListeners()
 
 void PlatformerCollisionMapping::onMapRequest(EventCustom* eventCustom)
 {
-	DeserializationEvents::CollisionMapRequestArgs* args = (DeserializationEvents::CollisionMapRequestArgs*)(eventCustom->getUserData());
+	CollisionObject::CollisionMapRequestArgs* args = (CollisionObject::CollisionMapRequestArgs*)(eventCustom->getUserData());
 
 	if (args == nullptr || args->collisionObject == nullptr)
 	{

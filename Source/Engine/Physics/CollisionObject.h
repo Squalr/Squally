@@ -13,12 +13,27 @@ typedef int CategoryGroup;
 class CollisionObject : public HackableObject
 {
 public:
+	static const std::string RequestCollisionMappingEvent;
+
+	struct CollisionMapRequestArgs
+	{
+		CategoryName categoryName;
+		CollisionObject* collisionObject;
+
+		CollisionMapRequestArgs(CategoryName categoryName, CollisionObject* collisionObject) : categoryName(categoryName), collisionObject(collisionObject)
+		{
+		}
+	};
+
+	static void requestCollisionMapping(CollisionMapRequestArgs args);
+
 	CollisionObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, CategoryName initCategoryName, bool isDynamic, bool canRotate);
 	~CollisionObject();
 
 	void setCollisionGroups(CategoryGroup categoryGroup, std::vector<CategoryGroup>* collidesWith);
 
 	CategoryName getCategoryName();
+	CategoryGroup getCategoryGroup();
 	Vec2 getVelocity();
 	void setVelocity(Vec2 velocity);
 

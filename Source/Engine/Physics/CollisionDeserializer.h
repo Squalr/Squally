@@ -1,7 +1,6 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Events/DeserializationEvents.h"
 #include "Engine/Maps/IObjectDeserializer.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Resources.h"

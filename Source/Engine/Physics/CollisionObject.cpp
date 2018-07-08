@@ -2,6 +2,17 @@
 
 std::string CollisionObject::KeyTypeCollision = "collision";
 
+const std::string CollisionObject::RequestCollisionMappingEvent = "request_collision_mapping";
+
+void CollisionObject::requestCollisionMapping(CollisionMapRequestArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CollisionObject::RequestCollisionMappingEvent,
+		&args
+	);
+}
+
+
 CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, CategoryName initCategoryName, bool isDynamic, bool canRotate) : HackableObject(initProperties)
 {
 	this->physicsBody = initPhysicsBody;
@@ -13,6 +24,9 @@ CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhys
 		this->physicsBody->setDynamic(isDynamic);
 		this->setPhysicsBody(initPhysicsBody);
 	}
+
+	// Fire event, allowing for the game to map what this collision object collides with
+	CollisionObject::requestCollisionMapping(CollisionObject::CollisionMapRequestArgs(this->categoryName, this));
 }
 
 CollisionObject::~CollisionObject()
@@ -21,19 +35,22 @@ CollisionObject::~CollisionObject()
 
 void CollisionObject::setCollisionGroups(CategoryGroup categoryGroup, std::vector<CategoryGroup>* collidesWith)
 {
-	int collidesWithBitmask = 0;
-
-	if (collidesWith != nullptr)
+	if (this->physicsBody != nullptr)
 	{
-		for (auto it = collidesWith->begin(); it != collidesWith->end(); it++)
-		{
-			collidesWithBitmask |= *it;
-		}
-	}
+		int collidesWithBitmask = 0;
 
-	this->physicsBody->setCategoryBitmask(categoryGroup);
-	this->physicsBody->setCollisionBitmask(collidesWithBitmask);
-	this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
+		if (collidesWith != nullptr)
+		{
+			for (auto it = collidesWith->begin(); it != collidesWith->end(); it++)
+			{
+				collidesWithBitmask |= *it;
+			}
+		}
+
+		this->physicsBody->setCategoryBitmask(categoryGroup);
+		this->physicsBody->setCollisionBitmask(collidesWithBitmask);
+		this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
+	}
 }
 
 void CollisionObject::onEnter()
@@ -96,6 +113,11 @@ void CollisionObject::setVelocity(Vec2 velocity)
 CategoryName CollisionObject::getCategoryName()
 {
 	return this->categoryName;
+}
+
+CategoryGroup CollisionObject::getCategoryGroup()
+{
+	return this->physicsBody == nullptr ? 0 : this->physicsBody->getCategoryBitmask();
 }
 
 bool CollisionObject::contactBegin(CollisionData data)

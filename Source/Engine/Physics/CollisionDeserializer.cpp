@@ -53,9 +53,6 @@ void CollisionDeserializer::onDeserializationRequest(ObjectDeserializationReques
 
 		CollisionObject* collisionObject = new CollisionObject(properties, physicsBody, categoryName, false, false);
 
-		// Fire event, allowing for the game to map what this collision object collides with
-		DeserializationEvents::requestCollisionMapping(DeserializationEvents::CollisionMapRequestArgs(categoryName, collisionObject));
-
 		// Fire an event indicating successful deserialization
 		args->callback(collisionObject);
 	}

@@ -1,7 +1,6 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Events/DeserializationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/GlobalNode.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -28,10 +27,6 @@ public:
 	static const std::string KeyCollisionTypeWater;
 	static const std::string KeyCollisionTypeLava;
 
-private:
-	PlatformerCollisionMapping();
-	~PlatformerCollisionMapping();
-
 	const enum CategoryGroupType
 	{
 		G_None = 0,
@@ -47,6 +42,10 @@ private:
 		G_Water = 1 << 10,
 		G_Lava = 1 << 11,
 	};
+
+private:
+	PlatformerCollisionMapping();
+	~PlatformerCollisionMapping();
 
 	void initializeEventListeners() override;
 
