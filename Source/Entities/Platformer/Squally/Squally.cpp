@@ -33,7 +33,6 @@ Squally::Squally(ValueMap* initProperties) : PlatformerEntity::PlatformerEntity(
 	this->actualMaxFallSpeed = 600.0f;
 	this->moveAcceleration = 14000.0f;
 
-	////this->init(PhysicsBody::createBox(size * Squally::squallyScale, PhysicsMaterial(0.0f, 0.0f, 0.0f)), CategoryGroup::G_Player, true, false);
 	// this->hover = Hover::create(this);
 
 	//this->hover->setContactBeginCallback(CC_CALLBACK_1(Squally::hoverContactBegin, this));
@@ -118,44 +117,41 @@ bool Squally::hoverContactBegin(CollisionData data)
 
 bool Squally::hoverContactUpdate(CollisionData data)
 {
-	/*
 	switch (data.other->getCategoryGroup())
 	{
-	case CategoryGroup::G_Solid:
+	case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
 		if (abs(data.normal.y) >= PlatformerEntity::normalJumpThreshold)
 		{
 			this->isOnGround = true;
 		}
 		return true;
-	case CategoryGroup::G_Player:
+	case PlatformerCollisionMapping::CategoryGroupType::G_Player:
 		return true;
 	}
-	*/
+
 	return true;
 }
 
 bool Squally::hoverContactEnd(CollisionData data)
 {
-	/*
 	switch (data.other->getCategoryGroup())
 	{
-	case CategoryGroup::G_Solid:
+	case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
 		this->isOnGround = false;
 		return true;
-	case CategoryGroup::G_Player:
+	case PlatformerCollisionMapping::CategoryGroupType::G_Player:
 		return true;
 	}
-	*/
+
 	return true;
 }
 
 bool Squally::contactBegin(CollisionData data)
 {
-	/*
 	switch (data.other->getCategoryGroup())
 	{
-	case CategoryGroup::G_Enemy:
-	case CategoryGroup::G_EnemyFlying:
+	case PlatformerCollisionMapping::CategoryGroupType::G_Enemy:
+	case PlatformerCollisionMapping::CategoryGroupType::G_EnemyFlying:
 		PlatformerEnemy * enemy = dynamic_cast<PlatformerEnemy*>(data.other);
 
 		if (enemy != nullptr)
@@ -165,17 +161,15 @@ bool Squally::contactBegin(CollisionData data)
 
 		return false;
 	}
-	*/
 
 	return true;
 }
 
 bool Squally::contactUpdate(CollisionData data)
 {
-	/*
 	switch (data.other->getCategoryGroup())
 	{
-	case CategoryGroup::G_Solid:
+	case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
 		switch (data.direction)
 		{
 		case CollisionDirection::Down:
@@ -183,37 +177,36 @@ bool Squally::contactUpdate(CollisionData data)
 			break;
 		}
 		return true;
-	case CategoryGroup::G_Force:
+	case PlatformerCollisionMapping::CategoryGroupType::G_Force:
 		return true;
-	case CategoryGroup::G_Enemy:
-	case CategoryGroup::G_EnemyFlying:
+	case PlatformerCollisionMapping::CategoryGroupType::G_Enemy:
+	case PlatformerCollisionMapping::CategoryGroupType::G_EnemyFlying:
 		// TODO: Damage
 		return false;
-	case CategoryGroup::G_SolidNpc:
-	case CategoryGroup::G_SolidFlyingNpc:
+	case PlatformerCollisionMapping::CategoryGroupType::G_SolidNpc:
+	case PlatformerCollisionMapping::CategoryGroupType::G_SolidFlyingNpc:
 		return false;
 	}
-	*/
+
 	return true;
 }
 
 bool Squally::contactEnd(CollisionData data)
 {
-	/*
 	switch (data.other->getCategoryGroup())
 	{
-	case CategoryGroup::G_Solid:
+	case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
 		this->isOnGround = false;
 		return true;
-	case CategoryGroup::G_Force:
+	case PlatformerCollisionMapping::CategoryGroupType::G_Force:
 		return true;
-	case CategoryGroup::G_Enemy:
-	case CategoryGroup::G_EnemyFlying:
+	case PlatformerCollisionMapping::CategoryGroupType::G_Enemy:
+	case PlatformerCollisionMapping::CategoryGroupType::G_EnemyFlying:
 		return false;
-	case CategoryGroup::G_SolidNpc:
-	case CategoryGroup::G_SolidFlyingNpc:
+	case PlatformerCollisionMapping::CategoryGroupType::G_SolidNpc:
+	case PlatformerCollisionMapping::CategoryGroupType::G_SolidFlyingNpc:
 		return false;
-	}*/
+	}
 
 	return true;
 }

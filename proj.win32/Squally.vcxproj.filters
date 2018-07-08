@@ -172,9 +172,6 @@
     <Filter Include="Source\Engine\Physics">
       <UniqueIdentifier>{66851be3-3f04-429d-9ae9-62fe731ae65b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Engine\Events">
-      <UniqueIdentifier>{da7825c7-ea92-4538-8731-1e75ba95b57a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Resources.cpp">
@@ -870,9 +867,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Bootstrapper.cpp">
       <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Events\DeserializationEvents.cpp">
-      <Filter>Source\Engine\Events</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Entities\Platformer\PlatformerCollisionMapping.cpp">
       <Filter>Source\Entities\Platformer</Filter>
@@ -1605,9 +1599,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Bootstrapper.h">
       <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Events\DeserializationEvents.h">
-      <Filter>Source\Engine\Events</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Entities\Platformer\PlatformerCollisionMapping.h">
       <Filter>Source\Entities\Platformer</Filter>

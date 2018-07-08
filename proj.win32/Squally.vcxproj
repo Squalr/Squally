@@ -160,7 +160,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Bootstrapper.cpp" />
     <ClCompile Include="..\Source\Engine\Camera\GameCamera.cpp" />
     <ClCompile Include="..\Source\Engine\Config\ConfigManager.cpp" />
-    <ClCompile Include="..\Source\Engine\Events\DeserializationEvents.cpp" />
     <ClCompile Include="..\Source\Engine\GlobalDirector.cpp" />
     <ClCompile Include="..\Source\Engine\Localization\Localization.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\DefaultLayerDeserializer.cpp" />
@@ -396,7 +395,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Bootstrapper.h" />
     <ClInclude Include="..\Source\Engine\Camera\GameCamera.h" />
     <ClInclude Include="..\Source\Engine\Config\ConfigManager.h" />
-    <ClInclude Include="..\Source\Engine\Events\DeserializationEvents.h" />
     <ClInclude Include="..\Source\Engine\GlobalDirector.h" />
     <ClInclude Include="..\Source\Engine\GlobalNode.h" />
     <ClInclude Include="..\Source\Engine\Localization\Localization.h" />

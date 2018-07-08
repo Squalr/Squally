@@ -110,12 +110,11 @@ bool PlatformerEntity::contactBegin(CollisionData data)
 
 bool PlatformerEntity::contactUpdate(CollisionData data)
 {
-	/*
 	switch (data.other->getCategoryGroup())
 	{
-	case CategoryGroup::G_SolidNpc:
-	case CategoryGroup::G_SolidFlyingNpc:
-	case CategoryGroup::G_Solid:
+	case PlatformerCollisionMapping::CategoryGroupType::G_SolidNpc:
+	case PlatformerCollisionMapping::CategoryGroupType::G_SolidFlyingNpc:
+	case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
 		switch (data.direction)
 		{
 		case CollisionDirection::Down:
@@ -134,21 +133,20 @@ bool PlatformerEntity::contactUpdate(CollisionData data)
 		}
 		return true;
 	}
-	*/
+
 	return false;
 }
 
 bool PlatformerEntity::contactEnd(CollisionData data)
 {
-	/*
 	switch (data.other->getCategoryGroup())
 	{
-	case CategoryGroup::G_Solid:
-	case CategoryGroup::G_SolidNpc:
-	case CategoryGroup::G_SolidFlyingNpc:
+	case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
+	case PlatformerCollisionMapping::CategoryGroupType::G_SolidNpc:
+	case PlatformerCollisionMapping::CategoryGroupType::G_SolidFlyingNpc:
 		this->isOnGround = false;
 		return true;
 	}
-	*/
+
 	return false;
 }

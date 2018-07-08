@@ -57,6 +57,11 @@ std::vector<std::string> GameUtils::getAllAnimationFiles(std::string firstFrameR
 // A better pause function that pauses recursively
 void GameUtils::pause(Node *node)
 {
+	if (node == nullptr)
+	{
+		return;
+	}
+
 	// If the node is a scene node, pause physics
 	if (dynamic_cast<const Scene*>(node) != nullptr)
 	{
@@ -74,10 +79,20 @@ void GameUtils::pause(Node *node)
 // A better resume function that resumes recursively
 void GameUtils::resume(Node *node)
 {
+	if (node == nullptr)
+	{
+		return;
+	}
+
 	// If the node is a scene node, resume physics
 	if (dynamic_cast<const Scene*>(node) != nullptr)
 	{
-		Director::getInstance()->getRunningScene()->getPhysicsWorld()->setSpeed(1.0f);
+		Scene* scene = (Scene*)node;
+
+		if (scene->getPhysicsWorld() != nullptr)
+		{
+			scene->getPhysicsWorld()->setSpeed(1.0f);
+		}
 	}
 
 	node->resumeSchedulerAndActions();

@@ -16,8 +16,9 @@ GlobalDirector::GlobalDirector()
 {
 	this->globalNodes = new std::vector<GlobalNode*>();
 	this->activeScene = nullptr;
+
 	// Must pass a full directory path so that cocos doesn't append
-	FileUtils::getInstance()->setDefaultResourceRootPath(FileUtils::getInstance()->getDefaultResourceRootPath() +"../../Resources");
+	FileUtils::getInstance()->setDefaultResourceRootPath(FileUtils::getInstance()->getDefaultResourceRootPath() + "../../Resources");
 }
 
 GlobalDirector::~GlobalDirector()
@@ -46,6 +47,9 @@ void GlobalDirector::loadScene(Scene* scene)
 	}
 
 	this->activeScene = scene;
+
+	// The engine likes to pause this node after it switches parents -- prevent this
+	GameUtils::resume(scene);
 }
 
 void GlobalDirector::registerGlobalNode(GlobalNode* node)
