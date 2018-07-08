@@ -6,5 +6,5 @@ void Bootstrapper::initialize()
 	SceneDirector::registerGlobalNode();
 
 	// Initialize global event listeners
-	CollisionMapper::registerGlobalNode();
+	PlatformerCollisionMapping::registerGlobalNode();
 }

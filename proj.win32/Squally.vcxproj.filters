@@ -868,14 +868,14 @@
     <ClCompile Include="..\Source\Engine\Physics\CollisionObject.cpp">
       <Filter>Source\Engine\Physics</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Maps\Platformer\CollisionMapper.cpp">
-      <Filter>Source\Scenes\Maps\Platformer</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Bootstrapper.cpp">
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Engine\Events\DeserializationEvents.cpp">
       <Filter>Source\Engine\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Platformer\PlatformerCollisionMapping.cpp">
+      <Filter>Source\Entities\Platformer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1603,14 +1603,14 @@
     <ClInclude Include="..\Source\Engine\Physics\CollisionObject.h">
       <Filter>Source\Engine\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Maps\Platformer\CollisionMapper.h">
-      <Filter>Source\Scenes\Maps\Platformer</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Bootstrapper.h">
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Engine\Events\DeserializationEvents.h">
       <Filter>Source\Engine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Platformer\PlatformerCollisionMapping.h">
+      <Filter>Source\Entities\Platformer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

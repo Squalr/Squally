@@ -13,7 +13,7 @@ DemonGrunt* DemonGrunt::deserialize(ValueMap* initProperties)
 
 DemonGrunt::DemonGrunt(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Volcano_DemonGrunt_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(312.0f, 372.0f),
 	0.7f,
 	Vec2(0.0f, 0.0f))

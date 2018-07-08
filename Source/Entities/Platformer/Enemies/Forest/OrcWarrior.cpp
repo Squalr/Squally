@@ -13,7 +13,7 @@ OrcWarrior* OrcWarrior::deserialize(ValueMap* initProperties)
 
 OrcWarrior::OrcWarrior(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Forest_OrcWarrior_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(256.0f, 228.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

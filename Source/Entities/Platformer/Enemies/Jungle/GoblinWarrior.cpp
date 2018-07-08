@@ -13,7 +13,7 @@ GoblinWarrior* GoblinWarrior::deserialize(ValueMap* initProperties)
 
 GoblinWarrior::GoblinWarrior(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Jungle_GoblinWarrior_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(312.0f, 512.0f),
 	0.35f,
 	Vec2(0.0f, -224.0f))

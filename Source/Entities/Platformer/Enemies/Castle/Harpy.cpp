@@ -13,7 +13,7 @@ Harpy* Harpy::deserialize(ValueMap* initProperties)
 
 Harpy::Harpy(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Castle_Harpy_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(172.0f, 256.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))

@@ -13,7 +13,7 @@ Ent* Ent::deserialize(ValueMap* initProperties)
 
 Ent::Ent(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Forest_Ent_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(512.0f, 960.0f),
 	0.3f,
 	Vec2(24.0f, -452.0f))

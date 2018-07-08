@@ -13,7 +13,7 @@ Undead* Undead::deserialize(ValueMap* initProperties)
 
 Undead::Undead(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Obelisk_Undead_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(146.0f, 248.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))

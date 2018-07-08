@@ -13,7 +13,7 @@ EarthGolem* EarthGolem::deserialize(ValueMap* initProperties)
 
 EarthGolem::EarthGolem(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Caverns_EarthGolem_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(256.0f, 224.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

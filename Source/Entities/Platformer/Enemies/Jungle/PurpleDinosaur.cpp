@@ -13,7 +13,7 @@ PurpleDinosaur* PurpleDinosaur::deserialize(ValueMap* initProperties)
 
 PurpleDinosaur::PurpleDinosaur(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Jungle_PurpleDinosaur_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(412.0f, 388.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

@@ -13,7 +13,7 @@ DemonGhost* DemonGhost::deserialize(ValueMap* initProperties)
 
 DemonGhost::DemonGhost(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Volcano_DemonGhost_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(256.0f, 320.0f),
 	0.7f,
 	Vec2(0.0f, 40.0f))

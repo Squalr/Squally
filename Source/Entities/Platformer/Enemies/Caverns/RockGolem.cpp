@@ -13,7 +13,7 @@ RockGolem* RockGolem::deserialize(ValueMap* initProperties)
 
 RockGolem::RockGolem(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Caverns_RockGolem_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(1108.0f, 1024.0f),
 	0.4f,
 	Vec2(0.0f, 0.0f))

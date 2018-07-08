@@ -13,7 +13,7 @@ Abomination* Abomination::deserialize(ValueMap* initProperties)
 
 Abomination::Abomination(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Obelisk_Abomination_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(296.0f, 356.0f),
 	0.6f,
 	Vec2(0.0f, 0.0f))

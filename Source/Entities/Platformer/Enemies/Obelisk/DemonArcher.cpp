@@ -13,7 +13,7 @@ DemonArcher* DemonArcher::deserialize(ValueMap* initProperties)
 
 DemonArcher::DemonArcher(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Obelisk_DemonArcher_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(196.0f, 348.0f),
 	0.65f,
 	Vec2(0.0f, 0.0f))

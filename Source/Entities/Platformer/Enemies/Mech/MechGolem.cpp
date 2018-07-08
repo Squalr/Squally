@@ -13,7 +13,7 @@ MechGolem* MechGolem::deserialize(ValueMap* initProperties)
 
 MechGolem::MechGolem(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Mech_MechGolem_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(640.0f, 720.0f),
 	0.7f,
 	Vec2(-48.0f, 0.0f))

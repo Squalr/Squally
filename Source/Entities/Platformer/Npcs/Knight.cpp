@@ -13,7 +13,7 @@ Knight* Knight::deserialize(ValueMap* initProperties)
 
 Knight::Knight(ValueMap* initProperties) : NpcBase::NpcBase(initProperties,
 	Resources::Entities_Platformer_Npcs_EgyptianMummy_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeNpc,
 	Size(96.0f, 128.0f),
 	0.25f, 
 	Vec2(0.0f, -224.0f))
@@ -25,8 +25,6 @@ Knight::Knight(ValueMap* initProperties) : NpcBase::NpcBase(initProperties,
 
 	this->movement.x = 0.0f;
 	this->movement.y = 0.0f;
-
-	//// this->init(PhysicsBody::createBox(this->size), CategoryGroup::G_Npc, true, false);
 
 	this->initializeCardData();
 }

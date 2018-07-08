@@ -13,7 +13,7 @@ DarkDragon* DarkDragon::deserialize(ValueMap* initProperties)
 
 DarkDragon::DarkDragon(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Obelisk_DarkDragon_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(658.0f, 412.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))

@@ -13,7 +13,7 @@ AnubisWarrior* AnubisWarrior::deserialize(ValueMap* initProperties)
 
 AnubisWarrior::AnubisWarrior(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Ruins_AnubisWarrior_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(256.0f, 292.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

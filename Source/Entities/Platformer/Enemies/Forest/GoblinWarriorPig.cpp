@@ -13,7 +13,7 @@ GoblinWarriorPig* GoblinWarriorPig::deserialize(ValueMap* initProperties)
 
 GoblinWarriorPig::GoblinWarriorPig(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Forest_GoblinWarriorPig_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(128.0f, 296.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))

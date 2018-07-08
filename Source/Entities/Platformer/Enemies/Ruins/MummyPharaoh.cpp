@@ -13,7 +13,7 @@ MummyPharaoh* MummyPharaoh::deserialize(ValueMap* initProperties)
 
 MummyPharaoh::MummyPharaoh(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Ruins_MummyPharaoh_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(324.0f, 316.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

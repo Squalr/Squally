@@ -13,7 +13,7 @@ EvilSnowman* EvilSnowman::deserialize(ValueMap* initProperties)
 
 EvilSnowman::EvilSnowman(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Snow_EvilSnowman_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(420.0f, 420.0f),
 	0.7f,
 	Vec2(0.0f, 0.0f))
