@@ -22,6 +22,8 @@ protected:
 	void update(float) override;
 
 	AnimationNode* animationNode;
+	SpriterEngine::EntityInstance* animationNodeEntity;
+
 	Vec2 movement;
 };
 
