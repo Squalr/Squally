@@ -1,6 +1,6 @@
-///////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. MAKE CHANGES IN THE PYTHON SCRIPT //
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateResources.py TO GENERATE THIS FILE //
+////////////////////////////////////////////////////////////////////////////////////////////
 
 #pragma init_seg(".CRT$XCU-010")
 #include "Resources.h"
@@ -3752,15 +3752,17 @@ const std::string Resources::Music_APaintersWish = "Music\\APaintersWish.mp3";
 const std::string Resources::Music_Artrium = "Music\\Artrium.mp3";
 const std::string Resources::Music_BurdenOfTime = "Music\\BurdenOfTime.mp3";
 const std::string Resources::Music_DramaticPiano = "Music\\DramaticPiano.mp3";
+const std::string Resources::Music_Flashlight = "Music\\Flashlight.mp3";
 const std::string Resources::Music_HeartBeat = "Music\\HeartBeat.mp3";
+const std::string Resources::Music_ISeeYou = "Music\\ISeeYou.mp3";
 const std::string Resources::Music_LastMarch = "Music\\LastMarch.mp3";
 const std::string Resources::Music_LastMarchFull = "Music\\LastMarchFull.mp3";
-const std::string Resources::Music_LullabyBells = "Music\\LullabyBells.mp3";
 const std::string Resources::Music_Melancholia = "Music\\Melancholia.mp3";
+const std::string Resources::Music_NightSwim = "Music\\NightSwim.mp3";
 const std::string Resources::Music_SorrowPiano = "Music\\SorrowPiano.mp3";
 const std::string Resources::Music_TheSadPiano = "Music\\TheSadPiano.mp3";
+const std::string Resources::Music_ThisWillPass = "Music\\ThisWillPass.mp3";
 const std::string Resources::Music_TrickOrTreat = "Music\\TrickOrTreat.mp3";
-const std::string Resources::Music_UnderwaterTheme = "Music\\UnderwaterTheme.mp3";
 const std::string Resources::Music_WeWillGetThereTogether = "Music\\WeWillGetThereTogether.mp3";
 const std::string Resources::Sounds_ButtonClick1 = "Sounds\\ButtonClick1.mp3";
 const std::string Resources::Sounds_ButtonClick2 = "Sounds\\ButtonClick2.mp3";
