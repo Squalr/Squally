@@ -13,7 +13,7 @@ BossRhinoman* BossRhinoman::deserialize(ValueMap* initProperties)
 
 BossRhinoman::BossRhinoman(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Jungle_BossRhinoman_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(592.0f, 592.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

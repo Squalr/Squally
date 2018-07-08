@@ -13,7 +13,7 @@ GoblinGuard* GoblinGuard::deserialize(ValueMap* initProperties)
 
 GoblinGuard::GoblinGuard(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Forest_GoblinGuard_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 768.0f),
 	0.3f,
 	Vec2(-24.0f, -368.0f))

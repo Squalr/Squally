@@ -13,7 +13,7 @@ LionMan* LionMan::deserialize(ValueMap* initProperties)
 
 LionMan::LionMan(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Ruins_LionMan_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(256.0f, 326.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

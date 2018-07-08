@@ -13,7 +13,7 @@ AnubisTiny* AnubisTiny::deserialize(ValueMap* initProperties)
 
 AnubisTiny::AnubisTiny(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Ruins_AnubisTiny_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(128.0f, 186.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))

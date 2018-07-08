@@ -13,7 +13,7 @@ YetiWarrior* YetiWarrior::deserialize(ValueMap* initProperties)
 
 YetiWarrior::YetiWarrior(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Snow_YetiWarrior_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(380.0f, 572.0f),
 	0.4f,
 	Vec2(24.0f, -280.0f))

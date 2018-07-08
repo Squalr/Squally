@@ -283,6 +283,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Entities\Platformer\Enemies\Volcano\LavaGolem.cpp" />
     <ClCompile Include="..\Source\Entities\Platformer\Npcs\Knight.cpp" />
     <ClCompile Include="..\Source\Entities\Platformer\Npcs\NpcBase.cpp" />
+    <ClCompile Include="..\Source\Entities\Platformer\PlatformerCollisionMapping.cpp" />
     <ClCompile Include="..\Source\Entities\Platformer\PlatformerEnemy.cpp" />
     <ClCompile Include="..\Source\Entities\Platformer\PlatformerEntity.cpp" />
     <ClCompile Include="..\Source\Entities\Platformer\PlatformerEntityDeserializer.cpp" />
@@ -361,7 +362,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MountainBackground.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\OceanBackground.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\SnowBackground.cpp" />
-    <ClCompile Include="..\Source\Scenes\Maps\Platformer\CollisionMapper.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\PlatformerMap.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Weather\Fireflies.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Weather\Rain.cpp" />
@@ -522,6 +522,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Entities\Platformer\Enemies\Volcano\LavaGolem.h" />
     <ClInclude Include="..\Source\Entities\Platformer\Npcs\Knight.h" />
     <ClInclude Include="..\Source\Entities\Platformer\Npcs\NpcBase.h" />
+    <ClInclude Include="..\Source\Entities\Platformer\PlatformerCollisionMapping.h" />
     <ClInclude Include="..\Source\Entities\Platformer\PlatformerEnemy.h" />
     <ClInclude Include="..\Source\Entities\Platformer\PlatformerEntities.h" />
     <ClInclude Include="..\Source\Entities\Platformer\PlatformerEntity.h" />
@@ -608,7 +609,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MountainBackground.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\OceanBackground.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\SnowBackground.h" />
-    <ClInclude Include="..\Source\Scenes\Maps\Platformer\CollisionMapper.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\PlatformerMap.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Weather\Fireflies.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Weather\Rain.h" />

@@ -13,7 +13,7 @@ MechGolemDark* MechGolemDark::deserialize(ValueMap* initProperties)
 
 MechGolemDark::MechGolemDark(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Mech_MechGolemDark_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(460.0f, 512.0f),
 	0.4f,
 	Vec2(0.0f, -248.0f))

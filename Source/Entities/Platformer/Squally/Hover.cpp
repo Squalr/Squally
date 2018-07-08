@@ -12,7 +12,7 @@ Hover* Hover::create(PlatformerEntity* initParent)
 Hover::Hover(PlatformerEntity* initParent) : CollisionObject(
 	nullptr,
 	PhysicsBody::createBox(Size(initParent->getSize().width, Hover::hoverHeight), PhysicsMaterial(0.0f, 0.0f, 0.0f)),
-	"solid",
+	PlatformerCollisionMapping::KeyCollisionTypeForce,
 	true,
 	false)
 {

@@ -13,7 +13,7 @@ SkeletonKnight* SkeletonKnight::deserialize(ValueMap* initProperties)
 
 SkeletonKnight::SkeletonKnight(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Obelisk_SkeletonKnight_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(212.0f, 280.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))

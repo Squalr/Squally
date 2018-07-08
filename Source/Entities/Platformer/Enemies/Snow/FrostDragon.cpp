@@ -13,7 +13,7 @@ FrostDragon* FrostDragon::deserialize(ValueMap* initProperties)
 
 FrostDragon::FrostDragon(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Snow_FrostDragon_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(720.0f, 356.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))

@@ -1,10 +1,10 @@
 #include "PlatformerEntity.h"
 
-PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlResource, bool isFlying, Size size, float scale, Vec2 collisionOffset) :
+PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlResource, CategoryName categoryName, Size size, float scale, Vec2 collisionOffset) :
 	CollisionObject(
 		initProperties,
-		nullptr,
-		"",
+		PhysicsBody::createBox(size * scale),
+		categoryName,
 		true,
 		false
 	)

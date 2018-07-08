@@ -13,7 +13,7 @@ Vampiress* Vampiress::deserialize(ValueMap* initProperties)
 
 Vampiress::Vampiress(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Castle_Vampiress_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(96.0f, 236.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))

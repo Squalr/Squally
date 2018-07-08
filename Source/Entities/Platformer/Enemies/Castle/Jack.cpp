@@ -13,7 +13,7 @@ Jack* Jack::deserialize(ValueMap* initProperties)
 
 Jack::Jack(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Castle_Jack_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(432.0f, 768.0f),
 	0.25f,
 	Vec2(0.0f, 0.0f))

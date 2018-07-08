@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Scenes/Maps/Platformer/CollisionMapper.h"
+#include "Entities/Platformer/PlatformerCollisionMapping.h"
 #include "Scenes/SceneDirector.h"
 
 using namespace cocos2d;

@@ -13,7 +13,7 @@ SkeletonMage* SkeletonMage::deserialize(ValueMap* initProperties)
 
 SkeletonMage::SkeletonMage(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Castle_SkeletonMage_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(142.0f, 400.0f),
 	0.5f,
 	Vec2(0.0f, 40.0f))

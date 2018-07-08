@@ -4,6 +4,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Entities/Platformer/PlatformerCollisionMapping.h"
 #include "Resources.h"
 
 using namespace cocos2d;
@@ -17,7 +18,7 @@ protected:
 	PlatformerEntity(
 		ValueMap* initProperties,
 		std::string scmlResource,
-		bool isFlying,
+		CategoryName categoryName,
 		Size size = Size(256.0f, 256.0f),
 		float scale = 1.0f,
 		Vec2 collisionOffset = Vec2(0.0f, 0.0f));

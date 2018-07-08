@@ -13,7 +13,7 @@ JungleDragon* JungleDragon::deserialize(ValueMap* initProperties)
 
 JungleDragon::JungleDragon(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	Resources::Entities_Platformer_Environment_Jungle_JungleDragon_Animations,
-	false,
+	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(640.0f, 356.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))
