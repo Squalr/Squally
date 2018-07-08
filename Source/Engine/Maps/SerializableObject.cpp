@@ -12,6 +12,10 @@ const std::string SerializableObject::KeyPoints = "points";
 
 const std::string SerializableObject::KeyGid = "gid";
 
+const std::string SerializableObject::KeyMetaIsIsometric = "meta_is_isometric";
+const std::string SerializableObject::KeyMetaMapHeight = "meta_map_height";
+const std::string SerializableObject::KeyMetaMapWidth = "meta_map_width";
+
 const std::vector<std::string> SerializableObject::AttributeKeys =
 {
 	SerializableObject::KeyId,
@@ -34,24 +38,75 @@ SerializableObject::SerializableObject(ValueMap* initProperties)
 
 	if (this->properties != nullptr)
 	{
-		if (GameUtils::keyExists(this->properties, SerializableObject::KeyXPosition))
+		// Map the coordinates of Tiled space to Cocos space for isometric games:
+		if (GameUtils::keyExists(this->properties, SerializableObject::KeyMetaIsIsometric) && this->properties->at(SerializableObject::KeyMetaIsIsometric).asBool())
 		{
-			this->setPositionX(this->properties->at(SerializableObject::KeyXPosition).asFloat());
-		}
+			Size mapSize = Size::ZERO;
+			Vec2 tiledPosition = Vec2::ZERO;
+			Size objectSize = Size::ZERO;
 
-		if (GameUtils::keyExists(this->properties, SerializableObject::KeyWidth))
-		{
-			this->setPositionX(this->getPositionX() + this->properties->at(SerializableObject::KeyWidth).asFloat() / 2.0f);
-		}
+			// Set map origin
+			if (GameUtils::keyExists(this->properties, SerializableObject::KeyMetaMapWidth))
+			{
+				mapSize.width = (this->properties->at(SerializableObject::KeyMetaMapWidth).asFloat() / 2.0f);
+			}
 
-		if (GameUtils::keyExists(this->properties, SerializableObject::KeyYPosition))
-		{
-			this->setPositionY(this->properties->at(SerializableObject::KeyYPosition).asFloat());
-		}
+			if (GameUtils::keyExists(this->properties, SerializableObject::KeyMetaMapHeight))
+			{
+				mapSize.height = (this->properties->at(SerializableObject::KeyMetaMapHeight).asFloat());
+			}
 
-		if (GameUtils::keyExists(this->properties, SerializableObject::KeyHeight))
+			// Update object position relative to this origin
+			if (GameUtils::keyExists(this->properties, SerializableObject::KeyXPosition))
+			{
+				tiledPosition.x = this->properties->at(SerializableObject::KeyXPosition).asFloat();
+			}
+
+			if (GameUtils::keyExists(this->properties, SerializableObject::KeyWidth))
+			{
+				objectSize.width = this->properties->at(SerializableObject::KeyWidth).asFloat();
+			}
+
+			if (GameUtils::keyExists(this->properties, SerializableObject::KeyYPosition))
+			{
+				tiledPosition.y =  this->properties->at(SerializableObject::KeyYPosition).asFloat();
+			}
+
+			if (GameUtils::keyExists(this->properties, SerializableObject::KeyHeight))
+			{
+				objectSize.height = this->properties->at(SerializableObject::KeyHeight).asFloat();
+			}
+
+			// Isometric position to screen position conversion magic
+			Vec2 convertedPosition = Vec2(
+				(tiledPosition.x - tiledPosition.y) - objectSize.width + mapSize.width,
+				(tiledPosition.x + tiledPosition.y) + objectSize.height
+			);
+
+			this->setPosition(convertedPosition);
+		}
+		// Map the coordinates of Tiled space to Cocos space for 2d games:
+		else
 		{
-			this->setPositionY(this->getPositionY() + this->properties->at(SerializableObject::KeyHeight).asFloat() / 2.0f);
+			if (GameUtils::keyExists(this->properties, SerializableObject::KeyXPosition))
+			{
+				this->setPositionX(this->properties->at(SerializableObject::KeyXPosition).asFloat());
+			}
+
+			if (GameUtils::keyExists(this->properties, SerializableObject::KeyWidth))
+			{
+				this->setPositionX(this->getPositionX() + this->properties->at(SerializableObject::KeyWidth).asFloat() / 2.0f);
+			}
+
+			if (GameUtils::keyExists(this->properties, SerializableObject::KeyYPosition))
+			{
+				this->setPositionY(this->properties->at(SerializableObject::KeyYPosition).asFloat());
+			}
+
+			if (GameUtils::keyExists(this->properties, SerializableObject::KeyHeight))
+			{
+				this->setPositionY(this->getPositionY() + this->properties->at(SerializableObject::KeyHeight).asFloat() / 2.0f);
+			}
 		}
 	}
 }

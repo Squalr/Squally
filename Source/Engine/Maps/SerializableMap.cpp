@@ -1,7 +1,7 @@
 #include "SerializableMap.h"
 
-const int PLATFORMER_MAP_TYPE = 0;
-const int ISOMETRIC_MAP_TYPE = 1;
+const int SerializableMap::PLATFORMER_MAP_TYPE = 0;
+const int SerializableMap::ISOMETRIC_MAP_TYPE = 2;
 
 SerializableMap::SerializableMap(std::string mapFileName, std::vector<SerializableLayer*>* layers, Size unitSize, Size tileSize, int orientation)
 {
@@ -38,7 +38,13 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName, std::vect
 		TMXObjectGroup* objectGroup = *it;
 
 		// Ask all deserializers to try to deserialize object
-		ILayerDeserializer::LayerDeserializationRequestArgs args = ILayerDeserializer::LayerDeserializationRequestArgs(objectGroup, objectDeserializers, onDeserializeCallback);
+		ILayerDeserializer::LayerDeserializationRequestArgs args = ILayerDeserializer::LayerDeserializationRequestArgs(
+			objectGroup,
+			objectDeserializers,
+			ILayerDeserializer::DeserializationMapMeta(
+				Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height),
+				mapRaw->getMapOrientation() == SerializableMap::ISOMETRIC_MAP_TYPE),
+			onDeserializeCallback);
 
 		for (auto it = layerDeserializers->begin(); it != layerDeserializers->end(); it++)
 		{
@@ -92,7 +98,16 @@ bool SerializableMap::serialize()
 	tinyxml2::XMLElement* mapElement = documentRoot->NewElement("map");
 	mapElement->SetAttribute("version", "1.0");
 	mapElement->SetAttribute("tiledversion", "1.0.3");
-	mapElement->SetAttribute("orientation", "orthogonal");
+
+	if (this->isPlatformer())
+	{
+		mapElement->SetAttribute("orientation", "orthogonal");
+	}
+	else if (this->isIsometric())
+	{
+		mapElement->SetAttribute("orientation", "isometric");
+	}
+
 	mapElement->SetAttribute("renderorder", "right-down");
 	mapElement->SetAttribute("width", std::to_string((int)this->getMapUnitSize().width).c_str());
 	mapElement->SetAttribute("height", std::to_string((int)this->getMapUnitSize().height).c_str());
@@ -110,12 +125,6 @@ bool SerializableMap::serialize()
 	tileSetElement->SetAttribute("columns", std::to_string((int)tileMap->getContentSize().width / (int)this->getMapTileSize().width).c_str());
 
 	tinyxml2::XMLElement* gridElement = documentRoot->NewElement("grid");
-	if (this->isPlatformer()) {
-		gridElement->SetAttribute("orientation", "orthogonal");
-	}
-	if (this->isIsometric()) {
-		gridElement->SetAttribute("orientation", "isometric");
-	}
 	gridElement->SetAttribute("width", std::to_string(64).c_str()); // Unused
 	gridElement->SetAttribute("height", std::to_string(64).c_str()); // Unused
 	tileSetElement->LinkEndChild(gridElement);

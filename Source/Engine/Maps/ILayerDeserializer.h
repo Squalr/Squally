@@ -9,15 +9,30 @@ using namespace cocos2d;
 class ILayerDeserializer 
 {
 public:
+	// Additional info used to help layer deserialization
+	struct DeserializationMapMeta {
+		Size mapSize;
+		bool isIsometric;
+
+		DeserializationMapMeta(Size mapSize, bool isIsometric) : mapSize(mapSize), isIsometric(isIsometric)
+		{
+		}
+	};
+
 	struct LayerDeserializationRequestArgs
 	{
 		TMXObjectGroup* objectGroup;
 		std::function<void(SerializableLayer*, int layerIndex)> callback;
 		std::vector<IObjectDeserializer*>* objectDeserializers;
+		DeserializationMapMeta mapMeta;
 		bool handled = false;
 
-		LayerDeserializationRequestArgs(TMXObjectGroup* objectGroup, std::vector<IObjectDeserializer*>* objectDeserializers, std::function<void(SerializableLayer*, int)> callback):
-			objectGroup(objectGroup), objectDeserializers(objectDeserializers), callback(callback)
+		LayerDeserializationRequestArgs(
+			TMXObjectGroup* objectGroup, 
+			std::vector<IObjectDeserializer*>* objectDeserializers,
+			DeserializationMapMeta mapMeta,
+			std::function<void(SerializableLayer*, int)> callback):
+			objectGroup(objectGroup), objectDeserializers(objectDeserializers), mapMeta(mapMeta), callback(callback)
 		{
 		}
 	};

@@ -102,7 +102,7 @@ void IsometricMap::loadMap(SerializableMap* serializableMap)
 	this->developerHud->loadMap(serializableMap);
 
 	this->camera->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
-	this->camera->setTarget(Squally::getInstance());
+	this->camera->setTarget(IsometricSqually::getInstance());
 }
 
 void IsometricMap::resume(void)

@@ -1,10 +1,10 @@
 #include "IsometricObjectDeserializer.h"
 
-const std::string IsometricObjectDeserializer::KeyTypeObject = "iso_object";
+const std::string IsometricObjectDeserializer::KeyTypeÌsometricObject = "iso_object";
 
 void IsometricObjectDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
 {
-	if (args->typeName == IsometricObjectDeserializer::KeyTypeObject)
+	if (args->typeName == IsometricObjectDeserializer::KeyTypeÌsometricObject)
 	{
 		ValueMap properties = args->properties;
 		std::string name = properties.at(SerializableObject::KeyName).asString();

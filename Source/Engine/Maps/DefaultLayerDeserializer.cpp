@@ -19,6 +19,11 @@ void DefaultLayerDeserializer::onDeserializationRequest(LayerDeserializationRequ
 			ValueMap object = objects[index].asValueMap();
 			std::string typeName = "";
 
+			// Append additional map metadata properties to object at load time to assist in deserialization
+			object[SerializableObject::KeyMetaIsIsometric] = args->mapMeta.isIsometric;
+			object[SerializableObject::KeyMetaMapWidth] = args->mapMeta.mapSize.width;
+			object[SerializableObject::KeyMetaMapHeight] = args->mapMeta.mapSize.height;
+
 			if (!GameUtils::keyExists(&object, SerializableObject::KeyType))
 			{
 				CCLOG("Missing type on object");

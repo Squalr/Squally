@@ -3,15 +3,20 @@
 
 #include "Engine/Maps/IObjectDeserializer.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/Isometric/IsometricObjects.h"
+#include "Entities/Isometric/IsometricEntities.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 
-class IsometricObjectDeserializer : public IObjectDeserializer
+class IsometricEntityDeserializer : public IObjectDeserializer
 {
 public:
+	IsometricEntityDeserializer();
+	~IsometricEntityDeserializer();
+
 	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
 
-	static const std::string KeyTypeÌsometricObject;
+	static const std::string KeyTypeIsometricEntity;
+
+
 };

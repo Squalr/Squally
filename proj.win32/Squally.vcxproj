@@ -180,6 +180,9 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Engine\Utils\HackUtils.cpp" />
     <ClCompile Include="..\Source\Engine\Utils\MathUtils.cpp" />
     <ClCompile Include="..\Source\Engine\Utils\StrUtils.cpp" />
+    <ClCompile Include="..\Source\Entities\Isometric\IsometricEntity.cpp" />
+    <ClCompile Include="..\Source\Entities\Isometric\IsometricEntityDeserializer.cpp" />
+    <ClCompile Include="..\Source\Entities\Isometric\Squally\IsometricSqually.cpp" />
     <ClCompile Include="..\Source\Entities\Platformer\Enemies\Castle\BossWitch.cpp" />
     <ClCompile Include="..\Source\Entities\Platformer\Enemies\Castle\Executioner.cpp" />
     <ClCompile Include="..\Source\Entities\Platformer\Enemies\Castle\Ghost.cpp" />
@@ -418,6 +421,10 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Engine\Utils\HackUtils.h" />
     <ClInclude Include="..\Source\Engine\Utils\MathUtils.h" />
     <ClInclude Include="..\Source\Engine\Utils\StrUtils.h" />
+    <ClInclude Include="..\Source\Entities\Isometric\IsometricEntities.h" />
+    <ClInclude Include="..\Source\Entities\Isometric\IsometricEntity.h" />
+    <ClInclude Include="..\Source\Entities\Isometric\IsometricEntityDeserializer.h" />
+    <ClInclude Include="..\Source\Entities\Isometric\Squally\IsometricSqually.h" />
     <ClInclude Include="..\Source\Entities\Platformer\Enemies\Castle\BossWitch.h" />
     <ClInclude Include="..\Source\Entities\Platformer\Enemies\Castle\Executioner.h" />
     <ClInclude Include="..\Source\Entities\Platformer\Enemies\Castle\Ghost.h" />
