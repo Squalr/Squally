@@ -3,6 +3,12 @@
  <tileset firstgid="1" name="TileMapIsometric" tilewidth="256" tileheight="128" tilecount="147" columns="7">
   <image source="../../Tiles/TileMapIsometric.png" width="1792" height="2688"/>
  </tileset>
+ <objectgroup name="music">
+  <properties>
+   <property name="music" value="Music/NightSwim.mp3"/>
+   <property name="type" value="music"/>
+  </properties>
+ </objectgroup>
  <layer name="Tiles" width="20" height="20">
   <data encoding="csv">
 29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,
@@ -27,11 +33,11 @@
 29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29
 </data>
  </layer>
- <objectgroup name="Entities">
-  <object id="1" name="squally" type="iso_entity" x="1920" y="1920" width="128" height="128"/>
- </objectgroup>
  <objectgroup name="Objects">
   <object id="5" name="hexus" type="iso_object" x="512" y="1280" width="128" height="128"/>
   <object id="6" name="some_arcade_game" type="iso_object" x="1280" y="512" width="128" height="128"/>
+ </objectgroup>
+ <objectgroup name="Entities">
+  <object id="1" name="squally" type="iso_entity" x="1920" y="1920" width="128" height="128"/>
  </objectgroup>
 </map>

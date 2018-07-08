@@ -11,4 +11,5 @@ class MusicDeserializer : public ILayerDeserializer
 public:
 	void onDeserializationRequest(LayerDeserializationRequestArgs* args) override;
 
+	static const std::string KeyMusicProperty;
 };
