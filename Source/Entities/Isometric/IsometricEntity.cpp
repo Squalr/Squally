@@ -10,8 +10,8 @@ IsometricEntity::IsometricEntity(ValueMap* initProperties, std::string scmlResou
 	this->animationNode = AnimationNode::create(scmlResource);
 	this->animationNode->setScale(scale);
 
-	SpriterEngine::EntityInstance* entity = this->animationNode->play("Entity");
-	entity->setCurrentAnimation("IdleNE");
+	this->animationNodeEntity = this->animationNode->play("Entity");
+	this->animationNodeEntity->setCurrentAnimation("IdleNE");
 
 	// Update width to be serialized
 	if (this->properties != nullptr)
@@ -37,4 +37,38 @@ void IsometricEntity::onEnter()
 void IsometricEntity::update(float dt)
 {
 	HackableObject::update(dt);
+
+	const float MOVE_SPEED = 256.0f;
+
+	if (this->movement != Vec2::ZERO)
+	{
+		// Le isometric magic
+		this->movement.x *= 2.0f;
+
+		// TODO: I didnt even check this code and it's bad, but at least the animations kinda change
+		if (abs(this->movement.x) >= abs(this->movement.y))
+		{
+			if (this->movement.x < 0.0f)
+			{;
+				this->animationNodeEntity->setCurrentAnimation("IdleNW");
+			}
+			else
+			{
+				this->animationNodeEntity->setCurrentAnimation("IdleNE");
+			}
+		}
+		else
+		{
+			if (this->movement.y < 0.0f)
+			{
+				this->animationNodeEntity->setCurrentAnimation("IdleSW");
+			}
+			else
+			{
+				this->animationNodeEntity->setCurrentAnimation("IdleSE");
+			}
+		}
+
+		this->setPosition(this->getPosition() + dt * this->movement * MOVE_SPEED);
+	}
 }
