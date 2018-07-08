@@ -3618,6 +3618,7 @@ public:
 	static const std::string Minigames_Hexus_Special_Unwanted_Sword;
 	static const std::string Minigames_Hexus_Special_Unwanted_Tentacle;
 	static const std::string Minigames_Hexus_Special_Unwanted_Well;
+	static const std::string Objects_Isometric_HexusArcade;
 	static const std::string Objects_Platformer_ChestBase;
 	static const std::string Objects_Platformer_ChestBaseFront;
 	static const std::string Objects_Platformer_ChestClosed;
@@ -3809,6 +3810,7 @@ public:
 	static const std::string Levels_Platformer_Obelisk_Obelisk;
 	static const std::string Levels_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1;
 	static const std::string Levels_Platformer_Volcano_Volcano;
+	static const std::string Entities_Isometric_Squally_Animations;
 	static const std::string Entities_Platformer_Environment_Castle_BossWitch_Animations;
 	static const std::string Entities_Platformer_Environment_Castle_Executioner_Animations;
 	static const std::string Entities_Platformer_Environment_Castle_Ghost_Animations;

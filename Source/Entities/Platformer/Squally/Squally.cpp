@@ -84,19 +84,19 @@ void Squally::update(float dt)
 
 	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_A))
 	{
-		this->movement.x = -1.0f;
+		this->movement.x -= 1.0f;
 		this->setFlippedX(true);
 	}
 
 	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_D))
 	{
-		this->movement.x = 1.0f;
+		this->movement.x += 1.0f;
 		this->setFlippedX(false);
 	}
 
 	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_W) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_SPACE))
 	{
-		this->movement.y = 1.0f;
+		this->movement.y += 1.0f;
 	}
 
 	if (this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || this->inputManager->isPressed(EventKeyboard::KeyCode::KEY_S))

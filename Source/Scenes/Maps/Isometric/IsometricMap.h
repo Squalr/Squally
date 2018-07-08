@@ -13,7 +13,7 @@
 #include "Engine/Rendering/HUD/Hud.h"
 #include "Engine/Rendering/Shaders/PostProcess.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Entities/Platformer/Squally/Squally.h"
+#include "Entities/Isometric/Squally/IsometricSqually.h"
 #include "Events/NavigationEvents.h"
 #include "Resources.h"
 #include "Scenes/Maps/IMap.h"

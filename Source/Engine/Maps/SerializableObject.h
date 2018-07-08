@@ -26,6 +26,10 @@ public:
 
 	static const std::string KeyGid;
 
+	static const std::string KeyMetaIsIsometric;
+	static const std::string KeyMetaMapHeight;
+	static const std::string KeyMetaMapWidth;
+
 	static const std::vector<std::string> AttributeKeys;
 
 	static const std::string KeyPropertyName;

@@ -42,4 +42,7 @@ private:
 	int orientation;
 	Size mapUnitSize;
 	Size mapTileSize;
+
+	static const int PLATFORMER_MAP_TYPE;
+	static const int ISOMETRIC_MAP_TYPE;
 };

@@ -172,6 +172,12 @@
     <Filter Include="Source\Engine\Physics">
       <UniqueIdentifier>{66851be3-3f04-429d-9ae9-62fe731ae65b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Entities\Ìsometric">
+      <UniqueIdentifier>{85269dfb-1f5e-430f-93b9-7fad00157c3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Entities\Ìsometric\Squally">
+      <UniqueIdentifier>{5808bb57-b483-4ed7-953d-6af19871d91d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Resources.cpp">
@@ -870,6 +876,15 @@
     </ClCompile>
     <ClCompile Include="..\Source\Entities\Platformer\PlatformerCollisionMapping.cpp">
       <Filter>Source\Entities\Platformer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Isometric\Squally\IsometricSqually.cpp">
+      <Filter>Source\Entities\Ìsometric\Squally</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Isometric\IsometricEntity.cpp">
+      <Filter>Source\Entities\Ìsometric</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Entities\Isometric\IsometricEntityDeserializer.cpp">
+      <Filter>Source\Entities\Ìsometric</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1602,6 +1617,18 @@
     </ClInclude>
     <ClInclude Include="..\Source\Entities\Platformer\PlatformerCollisionMapping.h">
       <Filter>Source\Entities\Platformer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Isometric\Squally\IsometricSqually.h">
+      <Filter>Source\Entities\Ìsometric\Squally</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Isometric\IsometricEntities.h">
+      <Filter>Source\Entities\Ìsometric</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Isometric\IsometricEntity.h">
+      <Filter>Source\Entities\Ìsometric</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Isometric\IsometricEntityDeserializer.h">
+      <Filter>Source\Entities\Ìsometric</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

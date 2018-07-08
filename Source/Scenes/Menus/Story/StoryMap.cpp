@@ -47,7 +47,7 @@ StoryMap::StoryMap()
 		Resources::Menus_StoryMenu_WaterRuinsSelected,
 		Resources::Menus_StoryMenu_WaterRuinsLocked,
 		Localization::resolveString(StoryMap::StringKeyLevelNameAquaticRuins),
-		Resources::Levels_Isometric_MainArcade
+		Resources::Levels_Platformer_AquaticRuins_AquaticRuins
 	);
 
 	this->forest = MapNode::create(

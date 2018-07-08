@@ -11,8 +11,7 @@ HexusArcade* HexusArcade::create(ValueMap* initProperties)
 
 HexusArcade::HexusArcade(ValueMap* initProperties) : HackableObject(initProperties)
 {
-	// TODO: Swap in arcade machine art once created
-	this->arcadeMachine = Sprite::create(Resources::Entities_Isometric_Squally_SquallyNW);
+	this->arcadeMachine = Sprite::create(Resources::Objects_Isometric_HexusArcade);
 
 	this->addChild(this->arcadeMachine);
 }

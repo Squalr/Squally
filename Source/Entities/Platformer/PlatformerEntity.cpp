@@ -29,14 +29,14 @@ PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlRes
 
 	animationNode->setPosition(collisionOffset * scale);
 
-	this->addChild(this->animationNode);
-
 	// Update width to be serialized
 	if (this->properties != nullptr)
 	{
 		(*this->properties)[PlatformerEntity::KeyWidth] = size.width * scale;
 		(*this->properties)[PlatformerEntity::KeyHeight] = size.height * scale;
 	}
+
+	this->addChild(this->animationNode);
 }
 
 PlatformerEntity::~PlatformerEntity()
