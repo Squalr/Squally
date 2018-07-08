@@ -1,6 +1,6 @@
-///////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. MAKE CHANGES IN THE PYTHON SCRIPT //
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
+// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateResources.py TO GENERATE THIS FILE //
+////////////////////////////////////////////////////////////////////////////////////////////
 #pragma once
 #include <string>
 
@@ -3753,15 +3753,17 @@ public:
 	static const std::string Music_Artrium;
 	static const std::string Music_BurdenOfTime;
 	static const std::string Music_DramaticPiano;
+	static const std::string Music_Flashlight;
 	static const std::string Music_HeartBeat;
+	static const std::string Music_ISeeYou;
 	static const std::string Music_LastMarch;
 	static const std::string Music_LastMarchFull;
-	static const std::string Music_LullabyBells;
 	static const std::string Music_Melancholia;
+	static const std::string Music_NightSwim;
 	static const std::string Music_SorrowPiano;
 	static const std::string Music_TheSadPiano;
+	static const std::string Music_ThisWillPass;
 	static const std::string Music_TrickOrTreat;
-	static const std::string Music_UnderwaterTheme;
 	static const std::string Music_WeWillGetThereTogether;
 	static const std::string Sounds_ButtonClick1;
 	static const std::string Sounds_ButtonClick2;

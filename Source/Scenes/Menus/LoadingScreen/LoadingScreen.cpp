@@ -69,6 +69,7 @@ void LoadingScreen::loadLevel(std::string levelFile, const std::function<void(Se
 		return SerializableMap::deserialize(levelFile, &LoadingScreen::layerDeserializers, &LoadingScreen::objectDeserializers);
 	});
 	*/
+
 	this->map = SerializableMap::deserialize(levelFile, &LoadingScreen::layerDeserializers, &LoadingScreen::objectDeserializers);
 	this->map->retain();
 
@@ -78,6 +79,13 @@ void LoadingScreen::loadLevel(std::string levelFile, const std::function<void(Se
 
 void LoadingScreen::onFileEnumerationComplete(std::vector<std::string> files)
 {
+	// TEMP DEBUG: Remove this to re-enable loading screen
+	if (this->onLoadCallback != nullptr)
+	{
+		this->onLoadCallback(this->map);
+		return;
+	}
+
 	auto textureLoadCallback = CC_CALLBACK_1(LoadingScreen::onTextureAssetLoaded, this);
 	auto soundLoadCallback = CC_CALLBACK_0(LoadingScreen::onSoundAssetLoaded, this);
 
@@ -128,7 +136,6 @@ void LoadingScreen::enterLevelIfDoneLoading()
 {
 	if (this->levelIsLoaded())
 	{
-
 		if (this->onLoadCallback != nullptr)
 		{
 			this->onLoadCallback(this->map);
