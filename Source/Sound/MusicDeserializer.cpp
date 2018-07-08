@@ -1,5 +1,7 @@
 #include "MusicDeserializer.h"
 
+const std::string MusicDeserializer::KeyMusicProperty = "music";
+
 void MusicDeserializer::onDeserializationRequest(LayerDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->objectGroup->getProperties();
@@ -9,6 +11,9 @@ void MusicDeserializer::onDeserializationRequest(LayerDeserializationRequestArgs
 		return;
 	}
 
-	//std::string music = properties.at(EnvironmentDeserializer::KeyMusicProperty).asString();
-	//SoundManager::playMusicResource(music);
+	if (properties.at(SerializableLayer::KeyType).asString() == MusicDeserializer::KeyMusicProperty)
+	{
+		std::string music = properties.at(MusicDeserializer::KeyMusicProperty).asString();
+		SoundManager::playMusicResource(music);
+	}
 }

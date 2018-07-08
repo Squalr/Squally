@@ -177,7 +177,7 @@ float ConfigManager::getSoundVolume()
 	}
 	else
 	{
-		return 1.0f;
+		return 0.5f;
 	}
 }
 
@@ -191,6 +191,6 @@ float ConfigManager::getMusicVolume()
 	}
 	else
 	{
-		return 1.0f;
+		return 0.5f;
 	}
 }
