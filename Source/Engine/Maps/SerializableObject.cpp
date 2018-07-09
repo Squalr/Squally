@@ -41,14 +41,16 @@ SerializableObject::SerializableObject(ValueMap* initProperties)
 		// Map the coordinates of Tiled space to Cocos space for isometric games:
 		if (GameUtils::keyExists(this->properties, SerializableObject::KeyMetaIsIsometric) && this->properties->at(SerializableObject::KeyMetaIsIsometric).asBool())
 		{
+			this->setAnchorPoint(Vec2(0.5f, 0.0f));
+
 			Size mapSize = Size::ZERO;
-			Vec2 tiledPosition = Vec2::ZERO;
+			Vec2 position = Vec2::ZERO;
 			Size objectSize = Size::ZERO;
 
 			// Set map origin
 			if (GameUtils::keyExists(this->properties, SerializableObject::KeyMetaMapWidth))
 			{
-				mapSize.width = (this->properties->at(SerializableObject::KeyMetaMapWidth).asFloat() / 2.0f);
+				mapSize.width = (this->properties->at(SerializableObject::KeyMetaMapWidth).asFloat());
 			}
 
 			if (GameUtils::keyExists(this->properties, SerializableObject::KeyMetaMapHeight))
@@ -59,7 +61,7 @@ SerializableObject::SerializableObject(ValueMap* initProperties)
 			// Update object position relative to this origin
 			if (GameUtils::keyExists(this->properties, SerializableObject::KeyXPosition))
 			{
-				tiledPosition.x = this->properties->at(SerializableObject::KeyXPosition).asFloat();
+				position.x = this->properties->at(SerializableObject::KeyXPosition).asFloat();
 			}
 
 			if (GameUtils::keyExists(this->properties, SerializableObject::KeyWidth))
@@ -69,7 +71,7 @@ SerializableObject::SerializableObject(ValueMap* initProperties)
 
 			if (GameUtils::keyExists(this->properties, SerializableObject::KeyYPosition))
 			{
-				tiledPosition.y =  this->properties->at(SerializableObject::KeyYPosition).asFloat();
+				position.y =  this->properties->at(SerializableObject::KeyYPosition).asFloat();
 			}
 
 			if (GameUtils::keyExists(this->properties, SerializableObject::KeyHeight))
@@ -79,8 +81,8 @@ SerializableObject::SerializableObject(ValueMap* initProperties)
 
 			// Isometric position to screen position conversion magic
 			Vec2 convertedPosition = Vec2(
-				(tiledPosition.x - tiledPosition.y) - objectSize.width + mapSize.width,
-				(tiledPosition.x + tiledPosition.y) + objectSize.height
+				(position.x + position.y) + objectSize.width,
+				(position.y - position.x) / 2.0f + objectSize.height * 1.5f + mapSize.height / 2.0f
 			);
 
 			this->setPosition(convertedPosition);
