@@ -40,6 +40,7 @@ protected:
 private:
 	void initializePositions();
 	void initializeListeners();
+	void isometricZSort(Node* node);
 	void enableHackerMode();
 	void disableHackerMode();
 	void toggleDeveloperMode();
