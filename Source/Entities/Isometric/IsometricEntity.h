@@ -15,7 +15,9 @@ protected:
 	IsometricEntity(
 		ValueMap* initProperties,
 		std::string scmlResource,
-		float scale = 1.0f);
+		float scale = 1.0f,
+		Vec2 offset = Vec2(0.0f, 0.0f),
+		Size size = Size(256.0f, 128.0f));
 	~IsometricEntity();
 
 	void onEnter() override;
