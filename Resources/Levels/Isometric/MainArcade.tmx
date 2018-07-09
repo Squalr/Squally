@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="isometric" renderorder="right-down" width="20" height="20" tilewidth="256" tileheight="128" nextobjectid="18">
+<map version="1.0" tiledversion="1.0.3" orientation="isometric" renderorder="right-down" width="20" height="20" tilewidth="256" tileheight="128" nextobjectid="19">
  <tileset firstgid="1" name="TileMapIsometric" tilewidth="256" tileheight="128" tilecount="147" columns="7">
   <image source="../../Tiles/TileMapIsometric.png" width="1792" height="2688"/>
  </tileset>
@@ -33,7 +33,7 @@
 29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29
 </data>
  </layer>
- <objectgroup name="Objects">
+ <objectgroup name="Main Layer">
   <object id="5" name="hexus" type="iso_object" x="512" y="1280" width="128" height="128"/>
   <object id="7" name="hexus" type="iso_object" x="1280" y="1280" width="128" height="128"/>
   <object id="9" name="hexus" type="iso_object" x="1152" y="1278" width="128" height="128"/>
@@ -45,8 +45,6 @@
   <object id="15" name="hexus" type="iso_object" x="0" y="1276" width="128" height="128"/>
   <object id="16" name="hexus" type="iso_object" x="2436" y="1280" width="128" height="128"/>
   <object id="17" name="hexus" type="iso_object" x="2432" y="2432" width="128" height="128"/>
- </objectgroup>
- <objectgroup name="Entities">
-  <object id="1" name="squally" type="iso_entity" x="1920" y="1920" width="128" height="128"/>
+  <object id="18" name="squally" type="iso_entity" x="1924" y="1924" width="128" height="128"/>
  </objectgroup>
 </map>
