@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="isometric" renderorder="right-down" width="20" height="20" tilewidth="256" tileheight="128" nextobjectid="19">
+<map version="1.0" tiledversion="1.0.3" orientation="isometric" renderorder="right-down" width="20" height="20" tilewidth="256" tileheight="128" nextobjectid="20">
  <tileset firstgid="1" name="TileMapIsometric" tilewidth="256" tileheight="128" tilecount="147" columns="7">
   <image source="../../Tiles/TileMapIsometric.png" width="1792" height="2688"/>
  </tileset>
@@ -36,7 +36,7 @@
  <objectgroup name="Main Layer">
   <object id="5" name="hexus" type="iso_object" x="512" y="1280" width="128" height="128"/>
   <object id="7" name="hexus" type="iso_object" x="1280" y="1280" width="128" height="128"/>
-  <object id="9" name="hexus" type="iso_object" x="1152" y="1278" width="128" height="128"/>
+  <object id="9" name="MiscArcade" type="iso_decor" x="1280" y="1152.5" width="128" height="128"/>
   <object id="10" name="hexus" type="iso_object" x="640" y="1280" width="128" height="128"/>
   <object id="11" name="hexus" type="iso_object" x="768" y="1278" width="128" height="128"/>
   <object id="12" name="hexus" type="iso_object" x="128" y="1280" width="128" height="128"/>
