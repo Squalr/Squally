@@ -79,11 +79,11 @@ void ConfirmationMenu::initializeListeners()
 
 	this->closeButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onCloseClick, this));
 
-	EventListenerKeyboard* listener = EventListenerKeyboard::create();
+	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
-	listener->onKeyPressed = CC_CALLBACK_2(ConfirmationMenu::onKeyPressed, this);
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(ConfirmationMenu::onKeyPressed, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 }
 
 void ConfirmationMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -130,6 +130,7 @@ void ConfirmationMenu::onConfirmClick(MenuSprite* menuSprite)
 	if (this->onConfirmCallback != nullptr)
 	{
 		this->onConfirmCallback();
+		return;
 	}
 
 	NavigationEvents::navigateBack();

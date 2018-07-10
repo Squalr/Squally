@@ -111,7 +111,6 @@ void TitleScreenBackground::onEnter()
 	// Prepare parameters to pass to lambdas
 	Node* slimeNodeLocal = this->slimeNode;
 	Node* slimeSpriteLocal = this->slime;
-	AnimationNode* animationNodeLocal = this->squally;
 	SpriterEngine::EntityInstance* squallyLocal = this->squallyEntity;
 	Animation* slimeActionNode = this->slimeAnimation;
 	this->slimeAnimation->retain();
@@ -122,27 +121,30 @@ void TitleScreenBackground::onEnter()
 
 	jiggleSlime->retain();
 
-	CallFunc* pokeSlime = CallFunc::create([squallyLocal, animationNodeLocal, jiggleSlime] {
-		SpriterEngine::EntityInstance* poke = animationNodeLocal->playOnce("Entity");
-		poke->setCurrentAnimation("TitlePoke");
+	CallFunc* pokeSlime = CallFunc::create([squallyLocal, jiggleSlime] {
+		squallyLocal->setCurrentTime(0.0f);
+		squallyLocal->setCurrentAnimation("TitlePoke", 0.25f);
 		jiggleSlime->execute();
+	});
+
+	CallFunc* returnToIdle = CallFunc::create([squallyLocal] {
+		squallyLocal->setCurrentTime(0.0f);
+		squallyLocal->setCurrentAnimation("Title", 0.25f);
 	});
 
 	pokeSlime->retain();
 
 	this->squallyNode->runAction(RepeatForever::create(
 		Sequence::create(
-			bounceDown,
-			bounceUp,
-			bounceDown,
-			bounceUp,
-			bounceDown,
-			bounceUp,
 			sinkDown,
 			pokeSlime,
+			DelayTime::create(0.3f),
+			returnToIdle,
 			bounceUpPostSink,
 			bounceDownPostSink,
 			pokeSlime,
+			DelayTime::create(0.3f),
+			returnToIdle,
 			sinkUp,
 			bounceDown,
 			bounceUp,
