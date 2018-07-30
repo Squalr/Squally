@@ -44,33 +44,41 @@ void IsometricEntity::update(float dt)
 
 	if (this->movement != Vec2::ZERO)
 	{
-		// Le isometric magic
+		float angle = atan2(this->movement.y, this->movement.x);
+		int octant = (int)std::round(8.0f * angle / (2.0f * std::_Pi) + 8.0f) % 8;
+
+		switch (octant)
+		{
+		case 0:
+			this->animationNodeEntity->setCurrentAnimation("Idle_E");
+			break;
+		case 1:
+			this->animationNodeEntity->setCurrentAnimation("Idle_NE");
+			break;
+		case 2:
+			this->animationNodeEntity->setCurrentAnimation("Idle_N");
+			break;
+		case 3:
+			this->animationNodeEntity->setCurrentAnimation("Idle_NW");
+			break;
+		case 4:
+			this->animationNodeEntity->setCurrentAnimation("Idle_W");
+			break;
+		case 5:
+			this->animationNodeEntity->setCurrentAnimation("Idle_SW");
+			break;
+		case 6:
+			this->animationNodeEntity->setCurrentAnimation("Idle_S");
+			break;
+		case 7:
+			this->animationNodeEntity->setCurrentAnimation("Idle_SE");
+			break;
+		default:
+			this->animationNodeEntity->setCurrentAnimation("Idle_NW");
+			break;
+		}
+
 		this->movement.x *= 2.0f;
-
-		// TODO: I didnt even check this code and it's bad, but at least the animations kinda change
-		if (abs(this->movement.x) >= abs(this->movement.y))
-		{
-			if (this->movement.x < 0.0f)
-			{;
-				this->animationNodeEntity->setCurrentAnimation("Idle_NW");
-			}
-			else
-			{
-				this->animationNodeEntity->setCurrentAnimation("Idle_NE");
-			}
-		}
-		else
-		{
-			if (this->movement.y < 0.0f)
-			{
-				this->animationNodeEntity->setCurrentAnimation("Idle_SW");
-			}
-			else
-			{
-				this->animationNodeEntity->setCurrentAnimation("Idle_SE");
-			}
-		}
-
 		this->setPosition(this->getPosition() + dt * this->movement * MOVE_SPEED);
 	}
 }
