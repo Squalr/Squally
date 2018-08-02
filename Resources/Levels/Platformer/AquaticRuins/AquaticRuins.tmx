@@ -17,9 +17,6 @@
   </properties>
  </objectgroup>
  <objectgroup name="parallax_background">
-  <properties>
-   <property name="Test" value="test"/>
-  </properties>
   <object id="134" name="Forest/Ruins4" type="decor" x="1154.91" y="119.88" width="320" height="640" rotation="0.01">
    <properties>
     <property name="float-time-x" type="float" value="8"/>

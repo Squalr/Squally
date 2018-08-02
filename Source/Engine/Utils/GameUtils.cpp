@@ -128,6 +128,35 @@ void GameUtils::focus(Node *node)
 	GameUtils::resume(node);
 }
 
+void GameUtils::flattenNode(Node* parent)
+{
+	if (parent->getChildren().size() <= 0)
+	{
+		return;
+	}
+
+	Vector<Node*> children = parent->getChildren();
+
+	for (auto it = children.begin(); it != children.end(); it++)
+	{
+		// Depth first recursion
+		GameUtils::flattenNode(*it);
+	}
+
+	children = parent->getChildren();
+
+	for (auto it = children.begin(); it != children.end(); it++)
+	{
+		Vector<Node*> childChildren = (*it)->getChildren();
+
+		// Make the child's children siblings
+		for (auto childIt = childChildren.begin(); childIt != childChildren.end(); childIt++)
+		{
+			GameUtils::changeParent(*childIt, parent, true);
+		}
+	}
+}
+
 Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition)
 {
 	Vec2 newPosition = Vec2::ZERO;
