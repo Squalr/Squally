@@ -19,6 +19,7 @@ public:
 	bool serialize();
 
 	void appendLayer(SerializableLayer* layer);
+	void setCollisionLayersVisible(bool isVisible);
 
 	Size getMapSize();
 	Size getMapUnitSize();
@@ -31,13 +32,22 @@ public:
 	void hackerModeDisable();
 	std::string getMapFileName();
 
+	static const std::string KeyTypeCollision;
+
 protected:
 	SerializableMap(std::string mapFileName, std::vector<SerializableLayer*>* layers, Size unitSize, Size tileSize, int orientation);
 	~SerializableMap();
 
 private:
+	void onEnter() override;
+	void update(float dt) override;
+	void isometricZSort(Node* node);
+	void isometricMapPreparation();
 
+	std::vector<SerializableTileLayer*>* collisionLayers;
+	std::vector<SerializableTileLayer*>* tileLayers;
 	std::vector<SerializableLayer*>* serializableLayers;
+
 	std::string levelMapFileName;
 	int orientation;
 	Size mapUnitSize;

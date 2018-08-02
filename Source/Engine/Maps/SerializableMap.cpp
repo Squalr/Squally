@@ -1,10 +1,14 @@
 #include "SerializableMap.h"
 
+const std::string SerializableMap::KeyTypeCollision = "collision";
+
 const int SerializableMap::PLATFORMER_MAP_TYPE = 0;
 const int SerializableMap::ISOMETRIC_MAP_TYPE = 2;
 
 SerializableMap::SerializableMap(std::string mapFileName, std::vector<SerializableLayer*>* layers, Size unitSize, Size tileSize, int orientation)
 {
+	this->collisionLayers = new std::vector<SerializableTileLayer*>();
+	this->tileLayers = new std::vector<SerializableTileLayer*>();
 	this->levelMapFileName = mapFileName;
 	this->serializableLayers = layers;
 	this->mapUnitSize = unitSize;
@@ -15,10 +19,17 @@ SerializableMap::SerializableMap(std::string mapFileName, std::vector<Serializab
 	{
 		this->addChild(*it);
 	}
+
+	if (this->orientation == SerializableMap::ISOMETRIC_MAP_TYPE)
+	{
+		this->isometricMapPreparation();
+	}
 }
 
 SerializableMap::~SerializableMap()
 {
+	delete(this->collisionLayers);
+	delete(this->tileLayers);
 	delete(this->serializableLayers);
 }
 
@@ -209,3 +220,108 @@ void SerializableMap::appendLayer(SerializableLayer* layer)
 	this->addChild(layer);
 }
 
+void SerializableMap::onEnter()
+{
+	Node::onEnter();
+
+	this->scheduleUpdate();
+}
+
+void SerializableMap::update(float dt)
+{
+	Node::update(dt);
+
+	this->isometricZSort(this);
+}
+
+void SerializableMap::setCollisionLayersVisible(bool isVisible)
+{
+	for (auto it = this->collisionLayers->begin(); it != this->collisionLayers->end(); it++)
+	{
+		(*it)->setVisible(isVisible);
+	}
+}
+
+void SerializableMap::isometricZSort(Node* node)
+{
+	if (this->orientation != SerializableMap::ISOMETRIC_MAP_TYPE || node == nullptr)
+	{
+		return;
+	}
+
+	// Only z sort the objects in the map (top left lowest, bottom right highest)
+	if (dynamic_cast<SerializableObject*>(node) != nullptr)
+	{
+		// Note: This sets local Z order, so make sure objects are on the same layer if you want them to dynamically sort.
+		// TODO: This works for most cases but is incomplete
+		Vec2 position = node->getParent()->convertToWorldSpace(node->getPosition());
+		node->setZOrder((int)(-position.y));
+	}
+
+	// Recurse
+	for (auto it = node->getChildren().begin(); it != node->getChildren().end(); it++)
+	{
+		this->isometricZSort(*it);
+	}
+}
+
+void SerializableMap::isometricMapPreparation()
+{
+	if (this->orientation != SerializableMap::ISOMETRIC_MAP_TYPE)
+	{
+		return;
+	}
+
+	// Flatten tile layers so all children are the immediate child of the layer (needed for Z sorting)
+	for (auto it = this->getChildren().begin(); it != this->getChildren().end(); it++)
+	{
+		if (dynamic_cast<SerializableTileLayer*>(*it) != nullptr)
+		{
+			//// GameUtils::flattenNode(dynamic_cast<SerializableTileLayer*>(*it));
+		}
+	}
+
+	for (auto it = this->getChildren().begin(); it != this->getChildren().end(); it++)
+	{
+		// Tile layers:
+		if (dynamic_cast<SerializableTileLayer*>(*it) != nullptr)
+		{
+			SerializableTileLayer* tileLayer = dynamic_cast<SerializableTileLayer*>(*it);
+
+			if (tileLayer->getType() == SerializableMap::KeyTypeCollision)
+			{
+				// Pull out collision layer
+				this->collisionLayers->push_back(tileLayer);
+			}
+			else
+			{
+				// Pull out standard tile layer
+				this->tileLayers->push_back(tileLayer);
+			}
+		}
+		// Object layers
+		else if (dynamic_cast<SerializableLayer*>(*it) != nullptr)
+		{
+			SerializableLayer* objectLayer = dynamic_cast<SerializableLayer*>(*it);
+
+			// Iterate through remaining layers to find the next tile layer
+			for (auto itClone = std::vector<Node*>::iterator(it); itClone != this->getChildren().end(); itClone++)
+			{
+				SerializableTileLayer* nextTileLayer = dynamic_cast<SerializableTileLayer*>(*itClone);
+
+				// Pull out objects and inject them into the next highest tile layer (allows for proper dynamic Z sorting)
+				if (nextTileLayer != nullptr && nextTileLayer->getType() != SerializableMap::KeyTypeCollision)
+				{
+					cocos2d::Vector<Node*> children = objectLayer->getChildren();
+
+					for (auto childIt = children.begin(); childIt != children.end(); childIt++)
+					{
+						GameUtils::changeParent(*childIt, nextTileLayer, true);
+					}
+				}
+			}
+		}
+
+		this->setCollisionLayersVisible(false);
+	}
+}

@@ -118,30 +118,6 @@ void IsometricMap::resume(void)
 void IsometricMap::update(float dt)
 {
 	FadeScene::update(dt);
-
-	this->isometricZSort(this);
-}
-
-void IsometricMap::isometricZSort(Node* node)
-{
-	if (node == nullptr)
-	{
-		return;
-	}
-
-	// Only z sort the objects in the map (top left lowest, bottom right highest)
-	if (dynamic_cast<SerializableObject*>(node) != nullptr)
-	{
-		// Note: This sets local Z order, so make sure objects are on the same layer if you want them to dynamically sort.
-		// TODO: This works for most cases but is incomplete
-		node->setZOrder((int)(-node->getPositionY()));
-	}
-
-	// Recurse
-	for (auto it = node->getChildren().begin(); it != node->getChildren().end(); it++)
-	{
-		IsometricMap::isometricZSort(*it);
-	}
 }
 
 void IsometricMap::onMouseWheelScroll(EventMouse* event)
@@ -183,12 +159,14 @@ void IsometricMap::toggleDeveloperMode()
 
 	if (this->developerMode)
 	{
+		this->map->setCollisionLayersVisible(true);
 		this->developerHud->setVisible(true);
 		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 		Director::getInstance()->setDisplayStats(true);
 	}
 	else
 	{
+		this->map->setCollisionLayersVisible(false);
 		this->developerHud->setVisible(false);
 		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
 		Director::getInstance()->setDisplayStats(false);

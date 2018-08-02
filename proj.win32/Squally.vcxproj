@@ -163,6 +163,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Engine\GlobalDirector.cpp" />
     <ClCompile Include="..\Source\Engine\Localization\Localization.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\DefaultLayerDeserializer.cpp" />
+    <ClCompile Include="..\Source\Engine\Maps\ObjectifiedTile.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableLayer.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableMap.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableObject.cpp" />
@@ -404,6 +405,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Engine\Maps\DefaultLayerDeserializer.h" />
     <ClInclude Include="..\Source\Engine\Maps\ILayerDeserializer.h" />
     <ClInclude Include="..\Source\Engine\Maps\IObjectDeserializer.h" />
+    <ClInclude Include="..\Source\Engine\Maps\ObjectifiedTile.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableLayer.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableMap.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableObject.h" />

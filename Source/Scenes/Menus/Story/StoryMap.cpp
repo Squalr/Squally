@@ -105,7 +105,7 @@ StoryMap::StoryMap()
 		Resources::Menus_StoryMenu_VolcanoSelected,
 		Resources::Menus_StoryMenu_VolcanoLocked,
 		Localization::resolveString(StoryMap::StringKeyLevelNameVolcano),
-		Resources::Levels_Isometric_MainArcade
+		Resources::Levels_Isometric_Overworld
 	);
 
 	this->mecha = MapNode::create(

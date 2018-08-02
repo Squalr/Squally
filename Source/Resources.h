@@ -151,6 +151,7 @@ public:
 	static const std::string Decor_Isometric_Light;
 	static const std::string Decor_Isometric_magazine;
 	static const std::string Decor_Isometric_Microwave;
+	static const std::string Decor_Isometric_MiscArcade;
 	static const std::string Decor_Isometric_nightstand;
 	static const std::string Decor_Isometric_Oven_Fires;
 	static const std::string Decor_Isometric_papers;
@@ -1110,10 +1111,14 @@ public:
 	static const std::string Decor_Platformer_Volcano_Tree1;
 	static const std::string Decor_Platformer_Volcano_Tree2;
 	static const std::string Decor_Platformer_Volcano_TreeStump1;
+	static const std::string Entities_Isometric_Squally_SquallyE;
+	static const std::string Entities_Isometric_Squally_SquallyN;
 	static const std::string Entities_Isometric_Squally_SquallyNE;
 	static const std::string Entities_Isometric_Squally_SquallyNW;
+	static const std::string Entities_Isometric_Squally_SquallyS;
 	static const std::string Entities_Isometric_Squally_SquallySE;
 	static const std::string Entities_Isometric_Squally_SquallySW;
+	static const std::string Entities_Isometric_Squally_SquallyW;
 	static const std::string Entities_Platformer_Environment_Castle_BossWitch_B_HAIR;
 	static const std::string Entities_Platformer_Environment_Castle_BossWitch_BAG;
 	static const std::string Entities_Platformer_Environment_Castle_BossWitch_BASE_FLYING_PUMPKIN;
@@ -3799,7 +3804,10 @@ public:
 	static const std::string Particles_Wind;
 	static const std::string LocalizedStrings;
 	static const std::string Dialog_DialogTutorialExactScanI;
-	static const std::string Levels_Isometric_MainArcade;
+	static const std::string Levels_Isometric_Overworld;
+	static const std::string Levels_Isometric_SquallyHome;
+	static const std::string Levels_Isometric_TheDarkWeb;
+	static const std::string Levels_Isometric_TheInternet;
 	static const std::string Levels_Platformer_AquaticRuins_AquaticRuins;
 	static const std::string Levels_Platformer_Castle_Castle;
 	static const std::string Levels_Platformer_Caverns_Caverns;
