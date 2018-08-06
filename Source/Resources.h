@@ -71,6 +71,17 @@ public:
 	static const std::string Backgrounds_Platformer_Sunset_Trees_03;
 	static const std::string Cutscenes_IntroSpace_Earth;
 	static const std::string Cutscenes_IntroSpace_Mars;
+	static const std::string Cutscenes_IntroSpace_StarLarge;
+	static const std::string Cutscenes_IntroSpace_StarMedium;
+	static const std::string Cutscenes_IntroSpace_StarShineExtraLarge_0000;
+	static const std::string Cutscenes_IntroSpace_StarShineExtraLarge_0001;
+	static const std::string Cutscenes_IntroSpace_StarShineLarge_0000;
+	static const std::string Cutscenes_IntroSpace_StarShineLarge_0001;
+	static const std::string Cutscenes_IntroSpace_StarShineSmallHallow_0000;
+	static const std::string Cutscenes_IntroSpace_StarShineSmallHallow_0001;
+	static const std::string Cutscenes_IntroSpace_StarShineSmall_0000;
+	static const std::string Cutscenes_IntroSpace_StarShineSmall_0001;
+	static const std::string Cutscenes_IntroSpace_StarSmall;
 	static const std::string Cutscenes_IntroSpace_Weaver_0000;
 	static const std::string Cutscenes_IntroSpace_Weaver_0001;
 	static const std::string Cutscenes_IntroSpace_Weaver_0002;
