@@ -20,11 +20,24 @@ protected:
 private:
 	void onEnter() override;
 	void update(float) override;
+	void createStars();
 	void initializePositions();
 	void initializeListeners();
 	void endCutscene();
 
-	Layer* starsLayer;
+	enum Stars {
+		StarSmall,
+		StarMedium,
+		StarLarge,
+		StarShineSmall,
+		StarShineSmallHallow,
+		StarShineLarge,
+		StarShineExtraLarge,
+	};
+
+	static std::map<Stars, int> frequencyMap;
+
+	Node* starsLayer;
 	Sprite* earth;
 	Sprite* mars;
 	Sprite* weaver1;
