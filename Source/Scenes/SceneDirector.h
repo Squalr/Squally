@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Cutscenes/Cutscenes.h" 
 #include "Engine/GlobalDirector.h"
 #include "Engine/GlobalNode.h"
 #include "Engine/Maps/SerializableMap.h"
@@ -34,6 +35,7 @@ private:
 	void onGameNavigateNew(EventCustom* eventCustom);
 	void onGameNavigateBack(EventCustom* eventCustom);
 	void onGameNavigateConfirm(EventCustom* eventCustom);
+	void onGameNavigateLoadCutscene(EventCustom* eventCustom);
 	void onGameNavigateLoadLevel(EventCustom* eventCustom);
 	void onGameNavigateEnterLevel(EventCustom* eventCustom);
 	void onGameNavigateFight(EventCustom* eventCustom);
@@ -42,6 +44,7 @@ private:
 	TitleScreen* titleScreen;
 	TutorialScreen* tutorialScreen;
 	StoryMap* storyMap;
+	Scene* cutscene;
 	LoadingScreen* loadingScreen;
 	IMap* map;
 	Fight* fight;

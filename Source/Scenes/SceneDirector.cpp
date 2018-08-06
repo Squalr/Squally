@@ -60,6 +60,11 @@ void SceneDirector::initializeEventListeners()
 		CC_CALLBACK_1(SceneDirector::onGameNavigateBack, this)
 	);
 
+	EventListenerCustom* navigateCutsceneEventListener = EventListenerCustom::create(
+		NavigationEvents::gameNavigateLoadCutsceneEvent,
+		CC_CALLBACK_1(SceneDirector::onGameNavigateLoadCutscene, this)
+	);
+
 	EventListenerCustom* navigateNewLevelEventListener = EventListenerCustom::create(
 		NavigationEvents::gameNavigateLoadLevelEvent,
 		CC_CALLBACK_1(SceneDirector::onGameNavigateLoadLevel, this)
@@ -88,6 +93,7 @@ void SceneDirector::initializeEventListeners()
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(hexiumGameStartListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateNewEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateBackEventListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateCutsceneEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateNewLevelEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateEnterLevelEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateFightEventListener, this);
@@ -161,6 +167,23 @@ void SceneDirector::onGameNavigateConfirm(EventCustom* eventCustom)
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
 	this->confirmationMenu->initialize(args->message, args->confirmCallback, args->cancelCallback);
 	GlobalDirector::getInstance()->loadScene(this->confirmationMenu);
+}
+
+void SceneDirector::onGameNavigateLoadCutscene(EventCustom* eventCustom)
+{
+	NavigationEvents::NavigateLoadCutsceneArgs* args = (NavigationEvents::NavigateLoadCutsceneArgs*)(eventCustom->getUserData());
+
+	switch (args->cutscene)
+	{
+	case NavigationEvents::CutsceneEnum::CutsceneIntroSpace:
+		this->cutscene = IntroSpace::create();
+		break;
+	default:
+		break;
+	}
+
+	// Load the scene (don't add it to scene history -- it does not make sense to ever be able to navigate 'back' to a cutscene
+	GlobalDirector::getInstance()->loadScene(this->cutscene);
 }
 
 void SceneDirector::onGameNavigateLoadLevel(EventCustom* eventCustom)

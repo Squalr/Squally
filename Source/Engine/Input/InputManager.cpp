@@ -6,11 +6,7 @@ InputManager* InputManager::claimInstance()
 {
 	InputManager* inputManager = InputManager::getInstance();
 
-	// Free the input manager from it's parent
-	if (inputManager->getParent() != nullptr)
-	{
-		inputManager->getParent()->removeChild(InputManager::inputManagerInstance);
-	}
+	GameUtils::changeParent(inputManager, nullptr, false);
 
 	return InputManager::inputManagerInstance;
 }
@@ -33,6 +29,8 @@ InputManager::InputManager()
 
 InputManager::~InputManager()
 {
+	delete(this->pressedKeys);
+	delete(this->pressedKeysPrevious);
 }
 
 void InputManager::onEnter()
@@ -100,10 +98,10 @@ void InputManager::InitializeListeners()
 
 void InputManager::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	pressedKeys->insert_or_assign(keyCode, true);
+	this->pressedKeys->insert_or_assign(keyCode, true);
 }
 
 void InputManager::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	pressedKeys->insert_or_assign(keyCode, false);
+	this->pressedKeys->insert_or_assign(keyCode, false);
 }

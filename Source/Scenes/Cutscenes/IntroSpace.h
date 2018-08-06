@@ -2,32 +2,39 @@
 #include "cocos2d.h"
 
 #include "Engine/Input/InputManager.h"
-#include "Engine/Rendering/Components/FadeScene.h"
-#include "Engine/Rendering/Components/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Entities/Platformer/PlatformerEntities.h"
 #include "Resources.h"
+#include "Scenes/Cutscenes/Cutscene.h"
 
 using namespace cocos2d;
 
-class Fight : public FadeScene
+class IntroSpace : public Cutscene
 {
 public:
-	static Fight* create();
-
-	void loadFight(Squally* squally, PlatformerEnemy* enemy);
+	static IntroSpace* create();
 
 protected:
-	Fight();
-	~Fight();
+	IntroSpace();
+	~IntroSpace();
 
 private:
 	void onEnter() override;
 	void update(float) override;
 	void initializePositions();
 	void initializeListeners();
+	void endCutscene();
 
-	Layer * background;
-	Layer * entityLayer;
-	Layer * objectLayer;
+	Layer* starsLayer;
+	Sprite* earth;
+	Sprite* mars;
+	Sprite* weaver1;
+	Animation* weaver1Anim;
+	Sprite* weaver2;
+	Animation* weaver2Anim;
+	Sprite* weaver3;
+	Animation* weaver3Anim;
+	Sprite* weaver4;
+	Animation* weaver4Anim;
+	Sprite* weaver5;
+	Animation* weaver5Anim;
 };
