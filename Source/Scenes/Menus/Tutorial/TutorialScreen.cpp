@@ -154,70 +154,70 @@ void TutorialScreen::loadLevels()
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Exact Value Scan I",
-		Resources::Levels_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Exact Value Scan II",
-		Resources::Levels_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Unknown Value Scan",
-		Resources::Levels_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Data Types - Float",
-		Resources::Levels_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Data Types - Double",
-		Resources::Levels_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Godmode",
-		Resources::Levels_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Position I",
-		Resources::Levels_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Position II",
-		Resources::Levels_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Blink Godmode I",
-		Resources::Levels_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->tutorialButtons->push_back(TutorialItem::create(
 		"Blink Godmode II",
-		Resources::Levels_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));

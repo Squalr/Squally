@@ -22,6 +22,10 @@ void IsometricEntityDeserializer::onDeserializationRequest(ObjectDeserialization
 		{
 			newEntity = IsometricSqually::deserialize(&properties);
 		}
+		else if (name == Shiftman::KeyShiftmanProperty)
+		{
+			newEntity = Shiftman::deserialize(&properties);
+		}
 		else
 		{
 			CCLOG("Missing type on entity");

@@ -39,7 +39,7 @@ StoryMap::StoryMap()
 		Resources::Menus_StoryMenu_JungleSelected,
 		Resources::Menus_StoryMenu_JungleLocked,
 		Localization::resolveString(StoryMap::StringKeyLevelNameJungle),
-		Resources::Levels_Platformer_Jungle_Jungle
+		Resources::Maps_Platformer_Jungle_Jungle
 	);
 
 	this->waterRuins = MapNode::create(
@@ -47,7 +47,7 @@ StoryMap::StoryMap()
 		Resources::Menus_StoryMenu_WaterRuinsSelected,
 		Resources::Menus_StoryMenu_WaterRuinsLocked,
 		Localization::resolveString(StoryMap::StringKeyLevelNameAquaticRuins),
-		Resources::Levels_Platformer_AquaticRuins_AquaticRuins
+		Resources::Maps_Platformer_AquaticRuins_AquaticRuins
 	);
 
 	this->forest = MapNode::create(
@@ -55,7 +55,7 @@ StoryMap::StoryMap()
 		Resources::Menus_StoryMenu_ForestSelected,
 		Resources::Menus_StoryMenu_ForestLocked,
 		Localization::resolveString(StoryMap::StringKeyLevelNameForest),
-		Resources::Levels_Platformer_Forest_Forest
+		Resources::Maps_Platformer_Forest_Forest
 	);
 
 	this->caverns = MapNode::create(
@@ -63,7 +63,7 @@ StoryMap::StoryMap()
 		Resources::Menus_StoryMenu_MountainSelected,
 		Resources::Menus_StoryMenu_MountainLocked,
 		Localization::resolveString(StoryMap::StringKeyLevelNameCaverns),
-		Resources::Levels_Platformer_Caverns_Caverns
+		Resources::Maps_Platformer_Caverns_Caverns
 	);
 
 	this->castle = MapNode::create(
@@ -71,7 +71,7 @@ StoryMap::StoryMap()
 		Resources::Menus_StoryMenu_CastleSelected,
 		Resources::Menus_StoryMenu_CastleLocked,
 		Localization::resolveString(StoryMap::StringKeyLevelNameCastle),
-		Resources::Levels_Platformer_Castle_Castle
+		Resources::Maps_Platformer_Castle_Castle
 	);
 
 	this->iceCaps = MapNode::create(
@@ -79,7 +79,7 @@ StoryMap::StoryMap()
 		Resources::Menus_StoryMenu_IceMountainSelected,
 		Resources::Menus_StoryMenu_IceMountainLocked,
 		Localization::resolveString(StoryMap::StringKeyLevelNameIceCaps),
-		Resources::Levels_Platformer_IceCaps_IceCaps
+		Resources::Maps_Platformer_IceCaps_IceCaps
 	);
 
 	this->obelisk = MapNode::create(
@@ -87,7 +87,7 @@ StoryMap::StoryMap()
 		Resources::Menus_StoryMenu_ObeliskSelected,
 		Resources::Menus_StoryMenu_ObeliskLocked,
 		Localization::resolveString(StoryMap::StringKeyLevelNameObelisk),
-		Resources::Levels_Platformer_Obelisk_Obelisk
+		Resources::Maps_Platformer_Obelisk_Obelisk
 	);
 
 	/*
@@ -96,7 +96,7 @@ StoryMap::StoryMap()
 		Resources::Menus_StoryMenu_VolcanoSelected,
 		Resources::Menus_StoryMenu_VolcanoLocked,
 		Localization::resolveString(StoryMap::StringKeyLevelNameVolcano),
-		Resources::Levels_Platformer_Volcano_Volcano
+		Resources::Maps_Platformer_Volcano_Volcano
 	);*/
 
 	// override volcano for arcade testing
@@ -105,7 +105,7 @@ StoryMap::StoryMap()
 		Resources::Menus_StoryMenu_VolcanoSelected,
 		Resources::Menus_StoryMenu_VolcanoLocked,
 		Localization::resolveString(StoryMap::StringKeyLevelNameVolcano),
-		Resources::Levels_Isometric_Overworld
+		Resources::Maps_Isometric_Sanctum
 	);
 
 	this->mecha = MapNode::create(
@@ -113,7 +113,7 @@ StoryMap::StoryMap()
 		Resources::Menus_StoryMenu_MechSelected,
 		Resources::Menus_StoryMenu_MechLocked,
 		Localization::resolveString(StoryMap::StringKeyLevelNameMech),
-		Resources::Levels_Platformer_Mech_Mech
+		Resources::Maps_Platformer_Mech_Mech
 	);
 
 	this->fogA->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-40.0f, 0))));

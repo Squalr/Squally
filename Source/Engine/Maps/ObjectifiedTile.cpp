@@ -13,7 +13,12 @@ ObjectifiedTile::ObjectifiedTile(Sprite* sprite, ValueMap* initProperties) : Hac
 {
 	this->innerSprite = sprite;
 
-	GameUtils::changeParent(sprite, this, true);
+	// Transfer position from sprite to this object
+	Vec2 spritePosition = sprite->getPosition();
+	this->setPosition(spritePosition);
+	sprite->setPosition(Vec2::ZERO);
+
+	GameUtils::changeParent(sprite, this, false);
 }
 
 ObjectifiedTile::~ObjectifiedTile()
