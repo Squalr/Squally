@@ -889,6 +889,9 @@
     <ClCompile Include="..\Source\Engine\Maps\ObjectifiedTile.cpp">
       <Filter>Source\Engine\Maps</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Entities\Isometric\Shiftman.cpp">
+      <Filter>Source\Entities\Ìsometric</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Resources.h">
@@ -1635,6 +1638,9 @@
     </ClInclude>
     <ClInclude Include="..\Source\Engine\Maps\ObjectifiedTile.h">
       <Filter>Source\Engine\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Entities\Isometric\Shiftman.h">
+      <Filter>Source\Entities\Ìsometric</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

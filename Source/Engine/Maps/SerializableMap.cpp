@@ -255,6 +255,12 @@ void SerializableMap::isometricZSort(Node* node)
 		// Note: This sets local Z order, so make sure objects are on the same layer if you want them to dynamically sort.
 		// TODO: This works for most cases but is incomplete
 		Vec2 position = node->getParent()->convertToWorldSpace(node->getPosition());
+
+		if (dynamic_cast<ObjectifiedTile*>(node) != nullptr)
+		{
+			position.y += this->mapTileSize.height;
+		}
+
 		node->setZOrder((int)(-position.y));
 	}
 
