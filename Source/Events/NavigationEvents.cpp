@@ -4,6 +4,7 @@
 const std::string NavigationEvents::gameNavigateNewEvent = "game_navigate_new_event";
 const std::string NavigationEvents::gameNavigateBackEvent = "game_navigate_back_event";
 const std::string NavigationEvents::gameNavigateConfirmEvent = "game_navigate_confirm_event";
+const std::string NavigationEvents::gameNavigateLoadCutsceneEvent = "game_navigate_load_cutscene_event";
 const std::string NavigationEvents::gameNavigateLoadLevelEvent = "game_navigate_load_level_event";
 const std::string NavigationEvents::gameNavigateEnterLevelEvent = "game_navigate_enter_level_event";
 const std::string NavigationEvents::gameNavigateFightEvent = "game_navigate_fight_event";
@@ -32,7 +33,15 @@ void NavigationEvents::navigateConfirm(std::string confirmMessage, std::function
 	);
 }
 
-void NavigationEvents::loadLevel(std::string levelFile)
+void NavigationEvents::loadCutscene(CutsceneEnum cutscene)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		NavigationEvents::gameNavigateLoadCutsceneEvent,
+		&NavigateLoadCutsceneArgs(cutscene)
+	);
+}
+
+void NavigationEvents::loadMap(std::string levelFile)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::gameNavigateLoadLevelEvent,

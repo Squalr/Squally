@@ -178,6 +178,9 @@
     <Filter Include="Source\Entities\Ìsometric\Squally">
       <UniqueIdentifier>{5808bb57-b483-4ed7-953d-6af19871d91d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Scenes\Cutscenes">
+      <UniqueIdentifier>{000ba59c-5fa8-458a-b978-43fc2768480f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Resources.cpp">
@@ -892,6 +895,12 @@
     <ClCompile Include="..\Source\Entities\Isometric\Shiftman.cpp">
       <Filter>Source\Entities\Ìsometric</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroSpace.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\Cutscene.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Resources.h">
@@ -961,9 +970,6 @@
       <Filter>Source\Events</Filter>
     </ClInclude>
     <ClInclude Include="Main.h" />
-    <ClInclude Include="..\Source\Input\InputManager.h">
-      <Filter>Source\Engine\Input</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Engine\Save\SaveManager.h">
       <Filter>Source\Engine\Save</Filter>
     </ClInclude>
@@ -1641,6 +1647,18 @@
     </ClInclude>
     <ClInclude Include="..\Source\Entities\Isometric\Shiftman.h">
       <Filter>Source\Entities\Ìsometric</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroSpace.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\Cutscene.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\Cutscenes.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Input\InputManager.h">
+      <Filter>Source\Engine\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -12,9 +12,8 @@ std::vector<std::string> GameUtils::getAllAnimationFiles(std::string firstFrameR
 	std::string extensionlessBaseName = firstFrameResource.substr(0, extensionIndex);
 	std::string extension = firstFrameResource.substr(extensionIndex, firstFrameResource.size());
 	size_t lastIndex = extensionlessBaseName.find_last_not_of("0123456789");
-	std::string animationNameBase = extensionlessBaseName.substr(0, lastIndex);
-
-	std::string directoryName = firstFrameResource.substr(0, firstFrameResource.find_last_of("/\\"));
+	std::string animationNameBase = FileUtils::getInstance()->getDefaultResourceRootPath() + extensionlessBaseName.substr(0, lastIndex);
+	std::string directoryName = FileUtils::getInstance()->getDefaultResourceRootPath() + firstFrameResource.substr(0, firstFrameResource.find_last_of("/\\"));
 
 	// These files wont be sorted on the filesystem because strings do not sort like ints -- build an ordered map of int to string
 	std::map<int, std::string> orderedAnimationFileMap = std::map<int, std::string>();
@@ -173,7 +172,11 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition)
 		node->removeFromParent();
 	}
 
-	newParent->addChild(node);
+	if (newParent != nullptr)
+	{
+		newParent->addChild(node);
+	}
+
 	node->setPosition(newPosition);
 
 	// Returns the same node that was given. Just a convenience thing for chaining methods.

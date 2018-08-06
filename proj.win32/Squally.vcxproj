@@ -329,6 +329,8 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Engine/Rendering\Components\UILayer.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\HUD\HackerModeHud.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\HUD\Hud.cpp" />
+    <ClCompile Include="..\Source\Scenes\Cutscenes\Cutscene.cpp" />
+    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroSpace.cpp" />
     <ClCompile Include="..\Source\Scenes\Fights\Fight.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\Card.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\CardData.cpp" />
@@ -402,6 +404,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Engine\Config\ConfigManager.h" />
     <ClInclude Include="..\Source\Engine\GlobalDirector.h" />
     <ClInclude Include="..\Source\Engine\GlobalNode.h" />
+    <ClInclude Include="..\Source\Engine\Input\InputManager.h" />
     <ClInclude Include="..\Source\Engine\Localization\Localization.h" />
     <ClInclude Include="..\Source\Engine\Maps\DefaultLayerDeserializer.h" />
     <ClInclude Include="..\Source\Engine\Maps\ILayerDeserializer.h" />
@@ -577,6 +580,9 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Engine/Rendering\Components\UILayer.h" />
     <ClInclude Include="..\Source\Engine/Rendering\HUD\HackerModeHud.h" />
     <ClInclude Include="..\Source\Engine/Rendering\HUD\Hud.h" />
+    <ClInclude Include="..\Source\Scenes\Cutscenes\Cutscene.h" />
+    <ClInclude Include="..\Source\Scenes\Cutscenes\Cutscenes.h" />
+    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroSpace.h" />
     <ClInclude Include="..\Source\Scenes\Fights\Fight.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\Card.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\CardData.h" />
@@ -638,7 +644,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Scenes\Menus\Title\TitleScreenBackground.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Tutorial\TutorialItem.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Tutorial\TutorialScreen.h" />
-    <ClInclude Include="..\Source\Input\InputManager.h" />
     <ClInclude Include="..\Source\Engine\Save\SaveManager.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Shaders\PostProcess.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.h" />

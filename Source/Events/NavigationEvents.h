@@ -19,9 +19,14 @@ public:
 	static const std::string gameNavigateNewEvent;
 	static const std::string gameNavigateBackEvent;
 	static const std::string gameNavigateConfirmEvent;
+	static const std::string gameNavigateLoadCutsceneEvent;
 	static const std::string gameNavigateLoadLevelEvent;
 	static const std::string gameNavigateEnterLevelEvent;
 	static const std::string gameNavigateFightEvent;
+
+	enum CutsceneEnum {
+		CutsceneIntroSpace,
+	};
 
 	enum GameScreen {
 		Title,
@@ -31,6 +36,7 @@ public:
 		Options,
 		Confirm,
 		Loading,
+		Cutscene,
 		Level,
 		LevelEditor,
 		Fight,
@@ -49,6 +55,13 @@ public:
 		GameScreen gameScreen;
 
 		NavigateEventArgs(GameScreen gameScreen) : gameScreen(gameScreen) { }
+	};
+
+	struct NavigateLoadCutsceneArgs
+	{
+		CutsceneEnum cutscene;
+
+		NavigateLoadCutsceneArgs(CutsceneEnum cutscene) : cutscene(cutscene) { }
 	};
 
 	struct NavigateLoadLevelArgs
@@ -86,7 +99,8 @@ public:
 	static void navigateBack(int count = 1);
 	static void navigate(GameScreen gameScreen);
 	static void navigateConfirm(std::string confirmMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
-	static void loadLevel(std::string levelFile);
+	static void loadCutscene(CutsceneEnum cutscene);
+	static void loadMap(std::string levelFile);
 	static void enterLevel(SerializableMap* levelMap);
 	static void loadFight(Squally* squally, PlatformerEnemy* enemy);
 };
