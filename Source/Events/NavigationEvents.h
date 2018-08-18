@@ -26,6 +26,7 @@ public:
 
 	enum CutsceneEnum {
 		CutsceneIntroSpace,
+		CutsceneVaporNet,
 	};
 
 	enum GameScreen {
