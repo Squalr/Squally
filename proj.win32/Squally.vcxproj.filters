@@ -901,6 +901,9 @@
     <ClCompile Include="..\Source\Scenes\Cutscenes\Cutscene.cpp">
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\VaporNet.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Resources.h">
@@ -1659,6 +1662,9 @@
     </ClInclude>
     <ClInclude Include="..\Source\Engine\Input\InputManager.h">
       <Filter>Source\Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\VaporNet.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
