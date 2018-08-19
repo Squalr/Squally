@@ -2,11 +2,11 @@
 
 InfiniteParallaxNode* InfiniteParallaxNode::create(std::string spriteResourcePath)
 {
-	InfiniteParallaxNode* node = new InfiniteParallaxNode(spriteResourcePath);
+	InfiniteParallaxNode* instance = new InfiniteParallaxNode(spriteResourcePath);
 
-	node->autorelease();
+	instance->autorelease();
 
-	return node;
+	return instance;
 }
 
 InfiniteParallaxNode::InfiniteParallaxNode(std::string spriteResourcePath)

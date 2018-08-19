@@ -2,11 +2,11 @@
 
 CCheckbox* CCheckbox::create(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState, std::function<bool(CCheckbox*, bool)> callback)
 {
-	CCheckbox* checkbox = new CCheckbox(uncheckedButton, checkedButton, initialState, callback);
+	CCheckbox* instance = new CCheckbox(uncheckedButton, checkedButton, initialState, callback);
 
-	checkbox->autorelease();
+	instance->autorelease();
 
-	return checkbox;
+	return instance;
 }
 
 CCheckbox::CCheckbox(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState, std::function<bool(CCheckbox*, bool)> callback)

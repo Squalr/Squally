@@ -2,11 +2,11 @@
 
 MenuLabel * MenuLabel::create(std::string labelText, std::string fontResource, float fontSize)
 {
-	MenuLabel* menuLabel = new MenuLabel(labelText, fontResource, fontSize);
+	MenuLabel* instance = new MenuLabel(labelText, fontResource, fontSize);
 
-	menuLabel->autorelease();
+	instance->autorelease();
 
-	return menuLabel;
+	return instance;
 }
 
 MenuLabel::MenuLabel(std::string labelText, std::string fontResource, float fontSize)

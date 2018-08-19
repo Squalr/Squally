@@ -24,26 +24,36 @@ private:
 	void initializeListeners();
 	void endCutscene();
 
-	Node* createLine(Vec2 source, Vec2 destination);
+	Node* createLine(Vec2 source, Vec2 destination, Color4F color);
 	void runForeverScroll();
+	void cutsceneIntro();
+	void cutsceneForest();
+	void cutsceneCaverns();
+	void cutsceneIceCaps();
+	void cutsceneObelisk();
 
 	int getCellIndex(int row, int column);
 	float getHorizon();
 	float getGridOffset();
 	Vec2 coordsToLocation(Vec2 coords);
 
-	Sprite* gridBackground;
+	Sprite* forestBackground;
+	LayerColor* dialogPlate;
+
 	std::vector<Node*>* horizontalLines;
 	std::vector<Node*>* verticalLines;
 	std::map<int, Sprite*>* cells;
+
 
 	static const int cellRows;
 	static const int cellColumns;
 	static const int lineRows;
 	static const int lineColumns;
+	static const int specialLineColumns;
 	static const float backPlane;
 
 	static const float scrollSpeed;
 
 	static const Color4F gridColor;
+	static const Color4F specialGridColor;
 };
