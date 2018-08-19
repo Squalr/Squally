@@ -169,7 +169,6 @@ void TitleScreenBackground::onEnter()
 	this->eyes2Anim->setDelayPerUnit(0.025f);
 	this->eyes1->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes1Anim)->reverse(), DelayTime::create(1.54f), Animate::create(this->eyes1Anim), DelayTime::create(2.5f), nullptr)));
 	this->eyes2->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes2Anim)->reverse(), DelayTime::create(1.25f), Animate::create(this->eyes2Anim), DelayTime::create(3.25f), nullptr)));
-
 }
 
 void TitleScreenBackground::initializeListeners()

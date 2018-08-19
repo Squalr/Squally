@@ -24,9 +24,12 @@ private:
 	void initializeListeners();
 	void endCutscene();
 
+	Node* createLine(Vec2 source, Vec2 destination);
+	void runForeverScroll();
+
 	int getCellIndex(int row, int column);
 	float getHorizon();
-	float getGridHeight();
+	float getGridOffset();
 	Vec2 coordsToLocation(Vec2 coords);
 
 	Sprite* gridBackground;
@@ -39,6 +42,8 @@ private:
 	static const int lineRows;
 	static const int lineColumns;
 	static const float backPlane;
+
+	static const float scrollSpeed;
 
 	static const Color4F gridColor;
 };
