@@ -1,13 +1,15 @@
 #include "VaporNet.h"
 
 const int VaporNet::cellColumns = 5;
-const int VaporNet::cellRows = 10;
+const int VaporNet::cellRows = 8;
 const int VaporNet::lineRows = 24;
-const int VaporNet::lineColumns = 48;
+const int VaporNet::lineColumns = 49;
+const int VaporNet::specialLineColumns = 5;
 const float VaporNet::backPlane = -8192;
 const float VaporNet::scrollSpeed = 0.5f;
 
 const Color4F VaporNet::gridColor = Color4F(Color3B(223, 61, 219));
+const Color4F VaporNet::specialGridColor = Color4F(Color3B(61, 138, 223));
 
 VaporNet* VaporNet::create()
 {
@@ -24,43 +26,43 @@ VaporNet::VaporNet()
 	this->verticalLines = new std::vector<Node*>();
 	this->cells = new std::map<int, Sprite*>();
 
-	this->gridBackground = Sprite::create(Resources::Cutscenes_VaporNet_Grid);
+	float test = this->getHorizon();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+	this->forestBackground = Sprite::create(Resources::Cutscenes_VaporNet_Forest_Background);
+	this->dialogPlate = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, 256.0f);
 
 	for (int row = 1; row <= VaporNet::lineRows; row++)
 	{
 		Vec2 source = Camera::getDefaultCamera()->project(Vec3(0.0f, 0.0f, VaporNet::backPlane / row));
 		Vec2 destination = Camera::getDefaultCamera()->project(Vec3(visibleSize.width, 0.0f, VaporNet::backPlane / row));
 
-		// Post-projection corrections
-		source.x = 0.0f;
-		source.y -= this->getGridOffset();
-		destination.x = visibleSize.width;
-		destination.y -= this->getGridOffset();
-
-		this->horizontalLines->push_back(this->createLine(source, destination));
-
-		// Duplicate the last row (to preserve edges in scrolling effect)
-		if (row == VaporNet::lineRows)
-		{
-			this->horizontalLines->push_back(this->createLine(source, destination));
-		}
+		// Create horizontal line (with offset and post-projection width corrections)
+		this->horizontalLines->push_back(this->createLine(
+			Vec2(0.0f, source.y - this->getGridOffset()),
+			Vec2(visibleSize.width, destination.y - this->getGridOffset()),
+			VaporNet::gridColor
+		));
 	}
+	
+	Vec2 backLineSource = Camera::getDefaultCamera()->project(Vec3(0.0f, 0.0f, VaporNet::backPlane));
+	Vec2 backLineDestination = Camera::getDefaultCamera()->project(Vec3(visibleSize.width, 0.0f, VaporNet::backPlane));
+	float originalBackPlaneWidth = backLineDestination.x - backLineSource.x;
+	float backPlaneWidth = visibleSize.width;
+	float frontPlaneWidth = (backPlaneWidth / originalBackPlaneWidth) * backPlaneWidth;
 
 	for (int column = 0; column <= VaporNet::lineColumns; column++)
 	{
-		Vec2 backLineSource = Camera::getDefaultCamera()->project(Vec3(0.0f, 0.0f, VaporNet::backPlane));
-		Vec2 backLineDestination = Camera::getDefaultCamera()->project(Vec3(visibleSize.width, 0.0f, VaporNet::backPlane));
-		float originalBackPlaneWidth = backLineDestination.x - backLineSource.x;
-		float backPlaneWidth = visibleSize.width;
-		float frontPlaneWidth = (backPlaneWidth / originalBackPlaneWidth) * backPlaneWidth;
-
 		int adjustedColumn = column - VaporNet::lineColumns / 2;
 
 		Vec2 source = Vec2((backPlaneWidth / VaporNet::lineColumns) * adjustedColumn + visibleSize.width / 2.0f, this->getHorizon());
 		Vec2 destination = Vec2((frontPlaneWidth / VaporNet::lineColumns) * adjustedColumn + visibleSize.width / 2.0f, 0.0f);
 
-		this->verticalLines->push_back(this->createLine(source, destination));
+		this->verticalLines->push_back(this->createLine(
+			source,
+			destination, 
+			abs(adjustedColumn) <= VaporNet::specialLineColumns / 2 ? VaporNet::specialGridColor : VaporNet::gridColor)
+		);
 	}
 
 	for (int column = 0; column < VaporNet::cellColumns; column++)
@@ -72,13 +74,18 @@ VaporNet::VaporNet()
 		}
 	}
 
+	this->forestBackground->setVisible(false);
+	this->addChild(this->forestBackground);
+
 	for (auto it = this->horizontalLines->begin(); it != this->horizontalLines->end(); it++)
 	{
+		(*it)->setVisible(false);
 		this->addChild(*it);
 	}
 
 	for (auto it = this->verticalLines->begin(); it != this->verticalLines->end(); it++)
 	{
+		(*it)->setVisible(false);
 		this->addChild(*it);
 	}
 
@@ -87,14 +94,18 @@ VaporNet::VaporNet()
 	{
 		for (int row = VaporNet::cellRows - 1; row >= 0; row--)
 		{
+			(*this->cells)[this->getCellIndex(row, column)]->setVisible(false);
 			this->addChild((*this->cells)[this->getCellIndex(row, column)]);
 
 			if (column != VaporNet::cellColumns / 2)
 			{
+				(*this->cells)[this->getCellIndex(row, VaporNet::cellColumns - column - 1)]->setVisible(false);
 				this->addChild((*this->cells)[this->getCellIndex(row, VaporNet::cellColumns - column - 1)]);
 			}
 		}
 	}
+
+	this->addChild(this->dialogPlate);
 }
 
 VaporNet::~VaporNet()
@@ -112,14 +123,15 @@ void VaporNet::onEnter()
 	this->initializePositions();
 	this->initializeListeners();
 
-	this->runForeverScroll();
+	this->cutsceneIntro();
 }
 
 void VaporNet::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->gridBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->forestBackground->setAnchorPoint(Vec2(0.5f, 0.0f));
+	this->forestBackground->setPosition(Vec2(visibleSize.width / 2.0f, this->getHorizon()));
 
 	for (int row = 0; row < VaporNet::cellRows; row++)
 	{
@@ -136,6 +148,8 @@ void VaporNet::initializePositions()
 			(*this->cells)[this->getCellIndex(row, column)]->setPosition(this->coordsToLocation(Vec2(gridRow, gridColumn)));
 		}
 	}
+
+	this->dialogPlate->setPosition(Vec2(visibleSize.width / 2.0f - this->dialogPlate->getContentSize().width / 2.0f, visibleSize.height - this->dialogPlate->getContentSize().height));
 }
 
 void VaporNet::initializeListeners()
@@ -158,12 +172,74 @@ void VaporNet::endCutscene()
 	NavigationEvents::loadMap(Resources::Maps_Isometric_Sanctum);
 }
 
-Node* VaporNet::createLine(Vec2 source, Vec2 destination)
+void VaporNet::cutsceneIntro()
+{
+	const float animationSpeed = 0.45f;
+	const float animationVelocity = 0.003f;
+	const float animationAcceleration = 0.009f;
+	const float fadeSpeed = 1.0f;
+
+	float cumulativeWaitTime = 0.0f;
+
+	for (int rowIndex = 0; rowIndex < VaporNet::lineRows; rowIndex++)
+	{
+		Node* horizontalLine = (*this->horizontalLines)[rowIndex];
+		cumulativeWaitTime += animationSpeed + animationVelocity * rowIndex - ((animationAcceleration * rowIndex * rowIndex) > animationSpeed ? animationSpeed : (animationAcceleration * rowIndex * rowIndex));
+
+		horizontalLine->setOpacity(0);
+		horizontalLine->setVisible(true);
+		horizontalLine->runAction(Sequence::create(DelayTime::create(cumulativeWaitTime), FadeIn::create(fadeSpeed), nullptr));
+	}
+
+	cumulativeWaitTime = 0.0f;
+
+	for (int columnIndex = VaporNet::lineColumns / 2; columnIndex >= 0; columnIndex--)
+	{
+		int inverseIndex = VaporNet::lineColumns / 2 - columnIndex;
+		Node* verticalLine = (*this->verticalLines)[columnIndex];
+		cumulativeWaitTime += animationSpeed + animationVelocity * inverseIndex - ((animationAcceleration * inverseIndex * inverseIndex) > animationSpeed ? animationSpeed : (animationAcceleration * inverseIndex * inverseIndex));
+
+		verticalLine->setOpacity(0);
+		verticalLine->setVisible(true);
+		verticalLine->runAction(Sequence::create(DelayTime::create(cumulativeWaitTime), FadeIn::create(fadeSpeed), nullptr));
+
+		if (columnIndex != VaporNet::lineColumns / 2)
+		{
+			Node* verticalLine2 = (*this->verticalLines)[VaporNet::lineColumns - columnIndex - 1];
+
+			verticalLine2->setOpacity(0);
+			verticalLine2->setVisible(true);
+			verticalLine2->runAction(Sequence::create(DelayTime::create(cumulativeWaitTime), FadeIn::create(fadeSpeed), nullptr));
+		}
+	}
+}
+
+void VaporNet::cutsceneForest()
+{
+
+}
+
+void VaporNet::cutsceneCaverns()
+{
+
+}
+
+void VaporNet::cutsceneIceCaps()
+{
+
+}
+
+void VaporNet::cutsceneObelisk()
+{
+
+}
+
+Node* VaporNet::createLine(Vec2 source, Vec2 destination, Color4F color)
 {
 	DrawNode* line = DrawNode::create();
 
 	// Instead of just drawing source to dest, offset it by source so that the lines's position can be saved
-	line->drawLine(source - source, destination - source, VaporNet::gridColor);
+	line->drawLine(source - source, destination - source, color);
 	line->setPosition(source);
 
 	return line;
@@ -171,12 +247,12 @@ Node* VaporNet::createLine(Vec2 source, Vec2 destination)
 
 void VaporNet::runForeverScroll()
 {
-	for (int lineIndex = 1; lineIndex < VaporNet::lineRows; lineIndex++)
+	for (int lineIndex = 0; lineIndex < VaporNet::lineRows - 1; lineIndex++)
 	{
-		Node* previous = (*this->horizontalLines)[lineIndex - 1];
 		Node* current = (*this->horizontalLines)[lineIndex];
-		Vec2 previousPosition = previous->getPosition();
+		Node* next = (*this->horizontalLines)[lineIndex + 1];
 		Vec2 originalPosition = current->getPosition();
+		Vec2 nextPosition = next->getPosition();
 
 		CallFunc* returnToStart = CallFunc::create([current, originalPosition] {
 			current->setPosition(originalPosition);
@@ -184,7 +260,7 @@ void VaporNet::runForeverScroll()
 
 		current->runAction(RepeatForever::create(
 			Sequence::create(
-				MoveTo::create(VaporNet::scrollSpeed, previousPosition),
+				MoveTo::create(VaporNet::scrollSpeed, nextPosition),
 				returnToStart,
 				nullptr
 			)

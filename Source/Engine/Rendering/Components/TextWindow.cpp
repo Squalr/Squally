@@ -7,11 +7,11 @@ const Color4B TextWindow::defaultWindowColor = Color4B(39, 58, 61, 192);
 
 TextWindow* TextWindow::create(std::string windowTitle, Size initWindowSize, int initFontSize, Color3B initFontColor)
 {
-	TextWindow* codeEditor = new TextWindow(windowTitle, initWindowSize, initFontSize, initFontColor);
+	TextWindow* instance = new TextWindow(windowTitle, initWindowSize, initFontSize, initFontColor);
 
-	codeEditor->autorelease();
+	instance->autorelease();
 
-	return codeEditor;
+	return instance;
 }
 
 TextWindow::TextWindow(std::string windowTitle, Size initWindowSize, int initFontSize, Color3B initFontColor)

@@ -904,6 +904,9 @@
     <ClCompile Include="..\Source\Scenes\Cutscenes\VaporNet.cpp">
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Engine\Rendering\Components\IntelliText.cpp">
+      <Filter>Source\Engine\Rendering\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Resources.h">
@@ -1665,6 +1668,9 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Cutscenes\VaporNet.h">
       <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Rendering\Components\IntelliText.h">
+      <Filter>Source\Engine\Rendering\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

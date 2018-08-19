@@ -2,11 +2,11 @@
 
 CSlider* CSlider::create(float progress)
 {
-	CSlider* slider = new CSlider(progress);
+	CSlider* instance = new CSlider(progress);
 
-	slider->autorelease();
+	instance->autorelease();
 
-	return slider;
+	return instance;
 }
 
 CSlider::CSlider(float progress)

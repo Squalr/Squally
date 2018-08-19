@@ -2,11 +2,11 @@
 
 CProgressBar* CProgressBar::create()
 {
-	CProgressBar* progressBar = new CProgressBar();
+	CProgressBar* instance = new CProgressBar();
 
-	progressBar->autorelease();
+	instance->autorelease();
 
-	return progressBar;
+	return instance;
 }
 
 CProgressBar::CProgressBar()

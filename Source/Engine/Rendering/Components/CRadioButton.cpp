@@ -2,11 +2,11 @@
 
 CRadioButton* CRadioButton::create(int groupIdentifier)
 {
-	CRadioButton* radioButton = new CRadioButton(groupIdentifier);
+	CRadioButton* instance = new CRadioButton(groupIdentifier);
 
-	radioButton->autorelease();
+	instance->autorelease();
 
-	return radioButton;
+	return instance;
 }
 
 CRadioButton::CRadioButton(int groupIdentifier)

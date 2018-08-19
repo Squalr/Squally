@@ -4,11 +4,11 @@ const Color3B EditableTextWindow::lineNumberColor = Color3B::GRAY;
 
 EditableTextWindow* EditableTextWindow::create(std::string windowTitle, Size initWindowSize, int initFontSize, Color3B initFontColor)
 {
-	EditableTextWindow* codeEditor = new EditableTextWindow(windowTitle, initWindowSize, initFontSize, initFontColor);
+	EditableTextWindow* instance = new EditableTextWindow(windowTitle, initWindowSize, initFontSize, initFontColor);
 
-	codeEditor->autorelease();
+	instance->autorelease();
 
-	return codeEditor;
+	return instance;
 }
 
 EditableTextWindow::EditableTextWindow(std::string windowTitle, Size initWindowSize, int initFontSize, Color3B initFontColor)

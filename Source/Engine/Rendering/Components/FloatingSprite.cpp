@@ -2,11 +2,11 @@
 
 FloatingSprite* FloatingSprite::create(std::string spriteResourcePath, Vec2 movement, Vec2 time)
 {
-	FloatingSprite* floatingSprite = new FloatingSprite(spriteResourcePath, movement, time);
+	FloatingSprite* instance = new FloatingSprite(spriteResourcePath, movement, time);
 
-	floatingSprite->autorelease();
+	instance->autorelease();
 
-	return floatingSprite;
+	return instance;
 }
 
 FloatingSprite::FloatingSprite(std::string spriteResourcePath, Vec2 movement, Vec2 time) : Sprite()

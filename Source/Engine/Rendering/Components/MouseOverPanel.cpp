@@ -2,11 +2,11 @@
 
 MouseOverPanel * MouseOverPanel::create(Node* visibleContent, Node* mouseOverContent, Node* panelParent, Size size)
 {
-	MouseOverPanel* outlineLabel = new MouseOverPanel(visibleContent, mouseOverContent, panelParent, size);
+	MouseOverPanel* instance = new MouseOverPanel(visibleContent, mouseOverContent, panelParent, size);
 
-	outlineLabel->autorelease();
+	instance->autorelease();
 
-	return outlineLabel;
+	return instance;
 }
 
 MouseOverPanel::MouseOverPanel(Node* visibleContent, Node* mouseOverContent, Node* panelParent, Size size)
