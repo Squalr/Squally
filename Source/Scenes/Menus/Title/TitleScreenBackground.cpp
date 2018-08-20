@@ -141,6 +141,12 @@ void TitleScreenBackground::onEnter()
 
 	this->squallyNode->runAction(RepeatForever::create(
 		Sequence::create(
+			bounceDown,
+			bounceUp,
+			bounceDown,
+			bounceUp,
+			bounceDown,
+			bounceUp,
 			sinkDown,
 			pokeSlime,
 			DelayTime::create(0.3f),

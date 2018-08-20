@@ -332,7 +332,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Engine/Rendering\HUD\Hud.cpp" />
     <ClCompile Include="..\Source\Scenes\Cutscenes\Cutscene.cpp" />
     <ClCompile Include="..\Source\Scenes\Cutscenes\IntroSpace.cpp" />
-    <ClCompile Include="..\Source\Scenes\Cutscenes\VaporNet.cpp" />
+    <ClCompile Include="..\Source\Scenes\Cutscenes\VaporWeb.cpp" />
     <ClCompile Include="..\Source\Scenes\Fights\Fight.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\Card.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\CardData.cpp" />
@@ -586,7 +586,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Scenes\Cutscenes\Cutscene.h" />
     <ClInclude Include="..\Source\Scenes\Cutscenes\Cutscenes.h" />
     <ClInclude Include="..\Source\Scenes\Cutscenes\IntroSpace.h" />
-    <ClInclude Include="..\Source\Scenes\Cutscenes\VaporNet.h" />
+    <ClInclude Include="..\Source\Scenes\Cutscenes\VaporWeb.h" />
     <ClInclude Include="..\Source\Scenes\Fights\Fight.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\Card.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\CardData.h" />

@@ -178,8 +178,8 @@ void SceneDirector::onGameNavigateLoadCutscene(EventCustom* eventCustom)
 	case NavigationEvents::CutsceneEnum::CutsceneIntroSpace:
 		this->cutscene = IntroSpace::create();
 		break;
-	case NavigationEvents::CutsceneEnum::CutsceneVaporNet:
-		this->cutscene = VaporNet::create();
+	case NavigationEvents::CutsceneEnum::CutsceneVaporWeb:
+		this->cutscene = VaporWeb::create();
 		break;
 	default:
 		break;

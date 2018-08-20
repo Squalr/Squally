@@ -8,14 +8,14 @@
 
 using namespace cocos2d;
 
-class VaporNet : public Cutscene
+class VaporWeb : public Cutscene
 {
 public:
-	static VaporNet* create();
+	static VaporWeb* create();
 
 protected:
-	VaporNet();
-	~VaporNet();
+	VaporWeb();
+	~VaporWeb();
 
 private:
 	void onEnter() override;
@@ -38,12 +38,16 @@ private:
 	Vec2 coordsToLocation(Vec2 coords);
 
 	Sprite* forestBackground;
-	LayerColor* dialogPlate;
 
 	std::vector<Node*>* horizontalLines;
 	std::vector<Node*>* verticalLines;
+	LayerGradient* distanceGradient;
 	std::map<int, Sprite*>* cells;
 
+	Sprite* darkLord;
+
+	LayerColor* dialogPlate;
+	Label* escapeLabel;
 
 	static const int cellRows;
 	static const int cellColumns;
