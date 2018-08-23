@@ -175,6 +175,9 @@ void SceneDirector::onGameNavigateLoadCutscene(EventCustom* eventCustom)
 
 	switch (args->cutscene)
 	{
+	case NavigationEvents::CutsceneEnum::CutsceneCity:
+		this->cutscene = City::create();
+		break;
 	case NavigationEvents::CutsceneEnum::CutsceneIntroSpace:
 		this->cutscene = IntroSpace::create();
 		break;

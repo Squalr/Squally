@@ -25,6 +25,7 @@ public:
 	static const std::string gameNavigateFightEvent;
 
 	enum CutsceneEnum {
+		CutsceneCity,
 		CutsceneIntroSpace,
 		CutsceneVaporWeb,
 	};
