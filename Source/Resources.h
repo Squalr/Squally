@@ -69,6 +69,10 @@ public:
 	static const std::string Backgrounds_Platformer_Sunset_Trees_01;
 	static const std::string Backgrounds_Platformer_Sunset_Trees_02;
 	static const std::string Backgrounds_Platformer_Sunset_Trees_03;
+	static const std::string Cutscenes_City_CityBackground;
+	static const std::string Cutscenes_City_CityForeground;
+	static const std::string Cutscenes_City_CityMidground;
+	static const std::string Cutscenes_City_VaporCorp;
 	static const std::string Cutscenes_IntroSpace_Earth;
 	static const std::string Cutscenes_IntroSpace_Mars;
 	static const std::string Cutscenes_IntroSpace_StarLarge;
