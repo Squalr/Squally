@@ -14,6 +14,7 @@ class Dialogue : public Node
 public:
 	static Dialogue * loadDialogueFromFile(std::string filePath, std::string fontResource);
 
+	void setDialogueSpeed(float speed);
 	bool showNextDialogue();
 
 	Label* label;
@@ -24,8 +25,14 @@ private:
 	Dialogue(DialogueTree* root, std::string fontResource);
 	~Dialogue();
 
+	void onEnter() override;
 	void updateLabels();
+	void runTypeWriterEffect();
 
+	float dialogueSpeed;
 	DialogueTree* dialogueRoot;
 	DialogueTree* currentDialogue;
+
+	static const std::string ScheduleKeyTypeWriterEffect;
+	static const float DefaultTypeSpeed;
 };

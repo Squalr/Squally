@@ -41,6 +41,8 @@ City::City()
 	this->dialogue = Dialogue::loadDialogueFromFile(Resources::Strings_Dialogue_CutsceneCity, Localization::getPixelFont());
 	this->escapeLabel = Label::create("Press esc to exit", Localization::getMainFont(), 28.0f, Size::ZERO, TextHAlignment::LEFT);
 
+	this->dialogue->setDialogueSpeed(0.1f);
+
 	this->escapeLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	this->addChild(InputManager::claimInstance());
