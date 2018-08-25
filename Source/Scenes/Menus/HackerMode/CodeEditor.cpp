@@ -61,11 +61,11 @@ CodeEditor::CodeEditor()
 	this->activeHackableCode = nullptr;
 
 	this->codeEditorBackground = Sprite::create(Resources::Menus_HackerModeMenu_EmptyFullScreenMenu);
-	this->codeEditorTitle = MenuLabel::create("Script Editor", Resources::Fonts_Montserrat_Medium, 32);
+	this->codeEditorTitle = MenuLabel::create("Assembler", Resources::Fonts_Montserrat_Regular, 32.0f);
 
-	this->statusWindow = TextWindow::create("Status", CodeEditor::statusSize, 32, CodeEditor::defaultColor);
-	this->functionWindow = EditableTextWindow::create("Code Editor", CodeEditor::functionSize, 32, CodeEditor::defaultColor);
-	this->secondaryWindow = EditableTextWindow::create("Allocation Editor", CodeEditor::secondarySize, 32, CodeEditor::defaultColor);
+	this->statusWindow = TextWindow::create("Status", CodeEditor::statusSize, 32.0f, CodeEditor::defaultColor);
+	this->functionWindow = EditableTextWindow::create("Code Editor", CodeEditor::functionSize, 32.0f, CodeEditor::defaultColor);
+	this->secondaryWindow = EditableTextWindow::create("Allocation Editor", CodeEditor::secondarySize, 32.0f, CodeEditor::defaultColor);
 	this->cancelButton = MenuSprite::create(Resources::Menus_Buttons_GenericHackButton, Resources::Menus_Buttons_GenericHackButtonHover, Resources::Menus_Buttons_GenericHackButtonClick);
 	this->acceptButton = MenuSprite::create(Resources::Menus_Buttons_GenericHackButton, Resources::Menus_Buttons_GenericHackButtonHover, Resources::Menus_Buttons_GenericHackButtonClick);
 	this->acceptButtonGrayed = Sprite::create(Resources::Menus_Buttons_GenericHackButtonGray);

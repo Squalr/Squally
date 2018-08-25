@@ -14,7 +14,7 @@ WarpGateExactScanTutorial* WarpGateExactScanTutorial::create(ValueMap* initPrope
 
 WarpGateExactScanTutorial::WarpGateExactScanTutorial(ValueMap* initProperties) : WarpGate(initProperties)
 {
-	this->valueLabel = Label::create(std::to_string(WarpGateExactScanTutorial::warpGatePower), Resources::Fonts_Montserrat_Medium, 24);
+	this->valueLabel = Label::create(std::to_string(WarpGateExactScanTutorial::warpGatePower), Resources::Fonts_Montserrat_Regular, 24);
 
 	this->valueLabel->setPosition(0, 256.0f);
 	this->valueLabel->enableOutline(Color4B::BLACK, 2.0f);

@@ -28,8 +28,8 @@ StoryMap::StoryMap()
 	this->fogA = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
 	this->fogB = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
 	this->fogC = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
-	this->titleLabel = Label::create(Localization::resolveString(StoryMap::StringKeySelectLevel), Resources::Fonts_Montserrat_Medium, this->titleFontSize);
-	this->infoLabel = Label::create("", Resources::Fonts_Montserrat_Medium, this->infoFontSize);
+	this->titleLabel = Label::create(Localization::resolveString(StoryMap::StringKeySelectLevel), Resources::Fonts_Montserrat_Regular, this->titleFontSize);
+	this->infoLabel = Label::create("", Resources::Fonts_Montserrat_Regular, this->infoFontSize);
 
 	this->titleLabel->enableOutline(Color4B::BLACK, 2);
 	this->infoLabel->enableOutline(Color4B::BLACK, 2);

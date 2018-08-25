@@ -15,7 +15,7 @@ PlushieMonkey* PlushieMonkey::create(ValueMap* initProperties)
 PlushieMonkey::PlushieMonkey(ValueMap* initProperties) : Plushie(initProperties)
 {
 	Sprite* coin = Sprite::create(Resources::Menus_HackerModeMenu_Icons_Coins);
-	Label* gold = Label::create("+200", Resources::Fonts_Montserrat_Medium, 24);
+	Label* gold = Label::create("+200", Resources::Fonts_Montserrat_Regular, 24);
 	gold->enableOutline(Color4B::BLACK, 2);
 
 	coin->setScale(0.5f);
@@ -25,7 +25,7 @@ PlushieMonkey::PlushieMonkey(ValueMap* initProperties) : Plushie(initProperties)
 	this->sprite->addChild(coin);
 	this->sprite->addChild(gold);
 
-	this->valueLabel = Label::create(std::to_string(PlushieMonkey::warpGatePower), Resources::Fonts_Montserrat_Medium, 24);
+	this->valueLabel = Label::create(std::to_string(PlushieMonkey::warpGatePower), Resources::Fonts_Montserrat_Regular, 24);
 
 	this->valueLabel->setPosition(-48.0f, 128.0f);
 	this->valueLabel->enableOutline(Color4B::BLACK, 2.0f);

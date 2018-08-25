@@ -61,7 +61,7 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 	this->spriteLeft = this->getPortraitNode(portraitLeft, false);
 	this->spriteRight = this->getPortraitNode(portraitRight, true);
 
-	this->dialogText = Label::create(text, Resources::Fonts_Montserrat_Medium, 24);
+	this->dialogText = Label::create(text, Resources::Fonts_Montserrat_Regular, 24);
 	this->dialogText->enableWrap(true);
 	this->dialogText->setDimensions(1024.0f, 224.0f);
 
@@ -74,11 +74,11 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 	// this->addChild(stencilLeft);
 	// this->addChild(stencilRight);
 
-	this->dialogMenu = Sprite::create(Resources::Menus_DialogMenu_DialogBox);
+	this->dialogMenu = Sprite::create(Resources::Menus_DialogueMenu_DialogueBox);
 	this->spriteLeftClip = ClippingNode::create(stencilLeft);
 	this->spriteRightClip = ClippingNode::create(stencilRight);
-	this->frameLeft = Sprite::create(Resources::Menus_DialogMenu_DialogFrameLeft);
-	this->frameRight = Sprite::create(Resources::Menus_DialogMenu_DialogFrameRight);
+	this->frameLeft = Sprite::create(Resources::Menus_DialogueMenu_DialogueFrameLeft);
+	this->frameRight = Sprite::create(Resources::Menus_DialogueMenu_DialogueFrameRight);
 
 	switch (speaker)
 	{
@@ -116,7 +116,7 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 		std::string choice = choiceDialogPair.first;
 		DialogMenu* dialogMenu = choiceDialogPair.second;
 
-		MenuLabel* label = MenuLabel::create(choice, Resources::Fonts_Montserrat_Medium, 24);
+		MenuLabel* label = MenuLabel::create(choice, Resources::Fonts_Montserrat_Regular, 24.0f);
 		label->setColor(Color4B::YELLOW);
 		label->setHoverColor(Color4B(0x6c, 0xa5, 0xad, 0xff));
 		label->setGlowColor(Color4B::WHITE);
@@ -240,7 +240,7 @@ Node* DialogMenu::getPortraitNode(Portrait portrait, bool isRight)
 	case Portrait::Player:
 	{
 		Node * node = Node::create();
-		Sprite* background = Sprite::create(Resources::Menus_DialogMenu_JungleBackground);
+		Sprite* background = Sprite::create(Resources::Menus_DialogueMenu_JungleBackground);
 		FloatingSprite * sprite = FloatingSprite::create(Resources::Entities_Platformer_Squally_SquallyBase, Vec2(2.0f, -24.0f), Vec2(6.25f, 6.25f));
 		sprite->setFlippedX(isRight);
 
@@ -255,8 +255,8 @@ Node* DialogMenu::getPortraitNode(Portrait portrait, bool isRight)
 	case Portrait::AI:
 	{
 		Node * node = Node::create();
-		Sprite* background = Sprite::create(Resources::Menus_DialogMenu_ShipBackground);
-		FloatingSprite * sprite = FloatingSprite::create(Resources::Menus_DialogMenu_AI, Vec2(2.0f, -24.0f), Vec2(6.25f, 6.25f));
+		Sprite* background = Sprite::create(Resources::Menus_DialogueMenu_ShipBackground);
+		FloatingSprite * sprite = FloatingSprite::create(Resources::Menus_DialogueMenu_AI, Vec2(2.0f, -24.0f), Vec2(6.25f, 6.25f));
 		sprite->setFlippedX(isRight);
 
 		ParticleSystem* staticParticles = ParticleSystemQuad::create(Resources::Particles_Static);

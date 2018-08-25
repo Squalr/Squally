@@ -14,7 +14,7 @@ Localization* Localization::getInstance()
 
 Localization::Localization()
 {
-	std::string localizedStringsJson = FileUtils::getInstance()->getStringFromFile(Resources::LocalizedStrings.c_str());
+	std::string localizedStringsJson = FileUtils::getInstance()->getStringFromFile(Resources::Strings_Menus.c_str());
 
 	this->localizationMap = new Document();
 	this->localizationMap->Parse<0>(localizedStringsJson.c_str());
@@ -29,7 +29,7 @@ std::string Localization::resolveFile(std::string fileEn)
 {
 	std::string fileBase = fileEn.substr(0, fileEn.length() - 2);
 	Localization* localization = Localization::getInstance();
-	std::string languageCode = localization->getLanguageCode(Application::getInstance()->getCurrentLanguage());
+	std::string languageCode = localization->getLanguageCode();
 
 	return fileBase + languageCode;
 }
@@ -37,7 +37,7 @@ std::string Localization::resolveFile(std::string fileEn)
 std::string Localization::resolveString(std::string resourceKey)
 {
 	Localization* localization = Localization::getInstance();
-	std::string languageCode = Localization::getLanguageCode(Application::getInstance()->getCurrentLanguage());
+	std::string languageCode = Localization::getLanguageCode();
 
 	if (localization->localizationMap->HasMember(resourceKey.c_str()))
 	{
@@ -59,7 +59,7 @@ std::string Localization::resolveString(std::string resourceKey)
 	return resourceKey;
 }
 
-std::string Localization::getLanguageCode(LanguageType languageType)
+std::string Localization::getLanguageCode()
 {
 	switch (Application::getInstance()->getCurrentLanguage())
 	{
@@ -119,4 +119,116 @@ std::string Localization::getLanguageCode(LanguageType languageType)
 	default:
 		return "en";
 	}
+}
+
+float Localization::fontSizeH1(std::string fontResource)
+{
+	if (fontResource == Resources::Fonts_Marker_Felt)
+	{
+		return 48.0f;
+	}
+	else if (fontResource == Resources::Fonts_Monobit)
+	{
+		return 64.0f;
+	}
+	else if (fontResource == Resources::Fonts_Montserrat_Bold ||
+		fontResource == Resources::Fonts_Montserrat_BoldItalic ||
+		fontResource == Resources::Fonts_Montserrat_Italic ||
+		fontResource == Resources::Fonts_Montserrat_Regular)
+	{
+		return 48.0f;
+	}
+	else if (fontResource == Resources::Fonts_UbuntuMono_Bold ||
+		fontResource == Resources::Fonts_UbuntuMono_BoldItalic ||
+		fontResource == Resources::Fonts_UbuntuMono_Italic ||
+		fontResource == Resources::Fonts_UbuntuMono_Regular)
+	{
+		return 48.0f;
+	}
+
+	return 48.0f;
+}
+
+float Localization::fontSizeH2(std::string fontResource)
+{
+	if (fontResource == Resources::Fonts_Marker_Felt)
+	{
+		return 40.0f;
+	}
+	else if (fontResource == Resources::Fonts_Monobit)
+	{
+		return 56.0f;
+	}
+	else if (fontResource == Resources::Fonts_Montserrat_Bold ||
+		fontResource == Resources::Fonts_Montserrat_BoldItalic ||
+		fontResource == Resources::Fonts_Montserrat_Italic ||
+		fontResource == Resources::Fonts_Montserrat_Regular)
+	{
+		return 40.0f;
+	}
+	else if (fontResource == Resources::Fonts_UbuntuMono_Bold ||
+		fontResource == Resources::Fonts_UbuntuMono_BoldItalic ||
+		fontResource == Resources::Fonts_UbuntuMono_Italic ||
+		fontResource == Resources::Fonts_UbuntuMono_Regular)
+	{
+		return 40.0f;
+	}
+
+	return 40.0f;
+}
+
+float Localization::fontSizeH3(std::string fontResource)
+{
+	if (fontResource == Resources::Fonts_Marker_Felt)
+	{
+		return 36.0f;
+	}
+	else if (fontResource == Resources::Fonts_Monobit)
+	{
+		return 52.0f;
+	}
+	else if (fontResource == Resources::Fonts_Montserrat_Bold ||
+		fontResource == Resources::Fonts_Montserrat_BoldItalic ||
+		fontResource == Resources::Fonts_Montserrat_Italic ||
+		fontResource == Resources::Fonts_Montserrat_Regular)
+	{
+		return 36.0f;
+	}
+	else if (fontResource == Resources::Fonts_UbuntuMono_Bold ||
+		fontResource == Resources::Fonts_UbuntuMono_BoldItalic ||
+		fontResource == Resources::Fonts_UbuntuMono_Italic ||
+		fontResource == Resources::Fonts_UbuntuMono_Regular)
+	{
+		return 36.0f;
+	}
+
+	return 36.0f;
+}
+
+float Localization::fontSizeP(std::string fontResource)
+{
+	if (fontResource == Resources::Fonts_Marker_Felt)
+	{
+		return 24.0f;
+	}
+	else if (fontResource == Resources::Fonts_Monobit)
+	{
+		return 48.0f;
+	}
+	else if (fontResource == Resources::Fonts_Montserrat_Bold ||
+		fontResource == Resources::Fonts_Montserrat_BoldItalic ||
+		fontResource == Resources::Fonts_Montserrat_Italic ||
+		fontResource == Resources::Fonts_Montserrat_Regular)
+	{
+		return 24.0f;
+	}
+	else if (fontResource == Resources::Fonts_UbuntuMono_Bold ||
+		fontResource == Resources::Fonts_UbuntuMono_BoldItalic ||
+		fontResource == Resources::Fonts_UbuntuMono_Italic ||
+		fontResource == Resources::Fonts_UbuntuMono_Regular)
+	{
+		return 24.0f;
+	}
+
+	return 24.0f;
 }

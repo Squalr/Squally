@@ -21,7 +21,7 @@ PauseMenu::PauseMenu()
 	this->background = Node::create();
 	this->pauseWindow = Sprite::create(Resources::Menus_PauseMenu_PauseMenu);
 	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
-	this->titleLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyMenuPause), Resources::Fonts_Montserrat_Medium, 32.0f);
+	this->titleLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyMenuPause), Resources::Fonts_Montserrat_Regular, 32.0f);
 
 	int fontSize = 24;
 	Size shadowSize = Size(-4.0f, -4.0f);
@@ -32,17 +32,17 @@ PauseMenu::PauseMenu()
 	Color3B highlightColor = Color3B::YELLOW;
 	Color4B glowColor = Color4B::ORANGE;
 
-	Label* resumeLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyResume), Resources::Fonts_Montserrat_Medium, fontSize);
-	Label* resumeLabelHover = Label::create(Localization::resolveString(PauseMenu::StringKeyResume), Resources::Fonts_Montserrat_Medium, fontSize);
-	Label* resumeLabelClicked = Label::create(Localization::resolveString(PauseMenu::StringKeyResume), Resources::Fonts_Montserrat_Medium, fontSize);
+	Label* resumeLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyResume), Resources::Fonts_Montserrat_Regular, fontSize);
+	Label* resumeLabelHover = Label::create(Localization::resolveString(PauseMenu::StringKeyResume), Resources::Fonts_Montserrat_Regular, fontSize);
+	Label* resumeLabelClicked = Label::create(Localization::resolveString(PauseMenu::StringKeyResume), Resources::Fonts_Montserrat_Regular, fontSize);
 
-	Label* optionsLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyOptions), Resources::Fonts_Montserrat_Medium, fontSize);
-	Label* optionsLabelHover = Label::create(Localization::resolveString(PauseMenu::StringKeyOptions), Resources::Fonts_Montserrat_Medium, fontSize);
-	Label* optionsLabelClicked = Label::create(Localization::resolveString(PauseMenu::StringKeyOptions), Resources::Fonts_Montserrat_Medium, fontSize);
+	Label* optionsLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyOptions), Resources::Fonts_Montserrat_Regular, fontSize);
+	Label* optionsLabelHover = Label::create(Localization::resolveString(PauseMenu::StringKeyOptions), Resources::Fonts_Montserrat_Regular, fontSize);
+	Label* optionsLabelClicked = Label::create(Localization::resolveString(PauseMenu::StringKeyOptions), Resources::Fonts_Montserrat_Regular, fontSize);
 
-	Label* exitLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyExit), Resources::Fonts_Montserrat_Medium, fontSize);
-	Label* exitLabelHover = Label::create(Localization::resolveString(PauseMenu::StringKeyExit), Resources::Fonts_Montserrat_Medium, fontSize);
-	Label* exitLabelClicked = Label::create(Localization::resolveString(PauseMenu::StringKeyExit), Resources::Fonts_Montserrat_Medium, fontSize);
+	Label* exitLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyExit), Resources::Fonts_Montserrat_Regular, fontSize);
+	Label* exitLabelHover = Label::create(Localization::resolveString(PauseMenu::StringKeyExit), Resources::Fonts_Montserrat_Regular, fontSize);
+	Label* exitLabelClicked = Label::create(Localization::resolveString(PauseMenu::StringKeyExit), Resources::Fonts_Montserrat_Regular, fontSize);
 
 	resumeLabel->setColor(textColor);
 	resumeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);

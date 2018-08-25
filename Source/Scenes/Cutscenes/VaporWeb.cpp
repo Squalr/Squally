@@ -31,7 +31,7 @@ VaporWeb::VaporWeb()
 	this->forestBackground = Sprite::create(Resources::Cutscenes_VaporWeb_Forest_Background);
 	this->darkLord = Sprite::create(Resources::Cutscenes_VaporWeb_DarkLord);
 	this->dialogPlate = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, 256.0f);
-	this->escapeLabel = Label::create("Press esc to exit", Resources::Fonts_arial, 28, Size::ZERO, TextHAlignment::LEFT);
+	this->escapeLabel = Label::create("Press esc to exit", Resources::Fonts_Montserrat_Regular, 28, Size::ZERO, TextHAlignment::LEFT);
 	this->escapeLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	for (int row = 1; row <= VaporWeb::lineRows; row++)
