@@ -28,17 +28,17 @@ TitleScreen::TitleScreen()
 	Color3B highlightColor = Color3B::YELLOW;
 	Color4B glowColor = Color4B::ORANGE;
 
-	Label* storyModeLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Resources::Fonts_Montserrat_Medium, fontSize);
-	Label* storyModeLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Resources::Fonts_Montserrat_Medium, fontSize);
-	Label* storyModeLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Resources::Fonts_Montserrat_Medium, fontSize);
+	Label* storyModeLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Resources::Fonts_Montserrat_Bold, fontSize);
+	Label* storyModeLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Resources::Fonts_Montserrat_Bold, fontSize);
+	Label* storyModeLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Resources::Fonts_Montserrat_Bold, fontSize);
 
-	Label* optionsLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Resources::Fonts_Montserrat_Medium, fontSize);
-	Label* optionsLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Resources::Fonts_Montserrat_Medium, fontSize);
-	Label* optionsLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Resources::Fonts_Montserrat_Medium, fontSize);
+	Label* optionsLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Resources::Fonts_Montserrat_Bold, fontSize);
+	Label* optionsLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Resources::Fonts_Montserrat_Bold, fontSize);
+	Label* optionsLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Resources::Fonts_Montserrat_Bold, fontSize);
 
-	Label* exitLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Resources::Fonts_Montserrat_Medium, fontSize);
-	Label* exitLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Resources::Fonts_Montserrat_Medium, fontSize);
-	Label* exitLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Resources::Fonts_Montserrat_Medium, fontSize);
+	Label* exitLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Resources::Fonts_Montserrat_Bold, fontSize);
+	Label* exitLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Resources::Fonts_Montserrat_Bold, fontSize);
+	Label* exitLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Resources::Fonts_Montserrat_Bold, fontSize);
 
 	storyModeLabel->setColor(textColor);
 	storyModeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);

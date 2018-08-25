@@ -5,7 +5,7 @@ const float TextWindow::titleBarHeight = 48.0f;
 const Color4B TextWindow::defaultTitleBarColor = Color4B(59, 92, 97, 192);
 const Color4B TextWindow::defaultWindowColor = Color4B(39, 58, 61, 192);
 
-TextWindow* TextWindow::create(std::string windowTitle, Size initWindowSize, int initFontSize, Color3B initFontColor)
+TextWindow* TextWindow::create(std::string windowTitle, Size initWindowSize, float initFontSize, Color3B initFontColor)
 {
 	TextWindow* instance = new TextWindow(windowTitle, initWindowSize, initFontSize, initFontColor);
 
@@ -14,7 +14,7 @@ TextWindow* TextWindow::create(std::string windowTitle, Size initWindowSize, int
 	return instance;
 }
 
-TextWindow::TextWindow(std::string windowTitle, Size initWindowSize, int initFontSize, Color3B initFontColor)
+TextWindow::TextWindow(std::string windowTitle, Size initWindowSize, float initFontSize, Color3B initFontColor)
 {
 	this->displayTextElements = new std::vector<RichElement*>();
 
@@ -29,7 +29,7 @@ TextWindow::TextWindow(std::string windowTitle, Size initWindowSize, int initFon
 	this->displayedText = RichText::create();
 	this->background = Node::create();
 	this->titleBar = Node::create();
-	this->windowTitle = MenuLabel::create(windowTitle, Resources::Fonts_Montserrat_Medium, this->fontSize);
+	this->windowTitle = MenuLabel::create(windowTitle, Resources::Fonts_Montserrat_Regular, this->fontSize);
 
 	this->background->addChild(LayerColor::create(this->windowColor, this->windowSize.width, this->windowSize.height));
 	this->titleBar->addChild(LayerColor::create(this->titleBarColor, this->windowSize.width, TextWindow::titleBarHeight));

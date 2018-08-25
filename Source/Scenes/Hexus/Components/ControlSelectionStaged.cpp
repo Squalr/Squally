@@ -11,7 +11,7 @@ ControlSelectionStaged* ControlSelectionStaged::create()
 
 ControlSelectionStaged::ControlSelectionStaged()
 {
-	this->selectionLabel = Label::create("", Resources::Fonts_Montserrat_Medium, 28.0f);
+	this->selectionLabel = Label::create("", Resources::Fonts_Montserrat_Regular, 28.0f);
 
 	this->selectionLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->selectionLabel->setTextColor(Color4B::WHITE);

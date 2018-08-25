@@ -14,7 +14,7 @@ ControlReplaceCards::ControlReplaceCards()
 	this->replacedCards = new std::set<Card*>();
 
 	this->bannerBackground = LayerColor::create(Color4B(0, 0, 0, 127), 1920.0f, 144.0f);
-	this->bannerLabel = Label::create("", Resources::Fonts_Montserrat_Medium, 48.0f);
+	this->bannerLabel = Label::create("", Resources::Fonts_Montserrat_Regular, 48.0f);
 
 	this->bannerBackground->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->bannerLabel->setAnchorPoint(Vec2(0.5f, 0.5f));

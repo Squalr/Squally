@@ -11,7 +11,7 @@ using namespace cocos2d::ui;
 class TextWindow : public Node
 {
 public:
-	static TextWindow * create(std::string windowTitle, Size initWindowSize, int initFontSize, Color3B initFontColor);
+	static TextWindow * create(std::string windowTitle, Size initWindowSize, float initFontSize, Color3B initFontColor);
 
 	void setTitle(std::string title);
 	void insertText(std::string text, Color3B color);
@@ -20,7 +20,7 @@ public:
 	virtual void clearText();
 
 protected:
-	TextWindow(std::string windowTitle, Size initWindowSize, int initFontSize, Color3B initFontColor);
+	TextWindow(std::string windowTitle, Size initWindowSize, float initFontSize, Color3B initFontColor);
 	~TextWindow();
 
 	virtual void initializePositions();

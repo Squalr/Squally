@@ -11,7 +11,7 @@ ControlSacrificeStaged* ControlSacrificeStaged::create()
 
 ControlSacrificeStaged::ControlSacrificeStaged()
 {
-	this->sacrificeStatus = Label::create("", Resources::Fonts_Montserrat_Medium, 28.0f);
+	this->sacrificeStatus = Label::create("", Resources::Fonts_Montserrat_Regular, 28.0f);
 
 	this->sacrificeStatus->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->sacrificeStatus->setTextColor(Color4B::WHITE);

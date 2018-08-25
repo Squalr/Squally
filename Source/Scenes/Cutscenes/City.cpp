@@ -15,13 +15,18 @@ City::City()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->sky = LayerGradient::create(Color4B::ORANGE, Color4B(115, 62, 149, 255), Vec2(0.0f, 1.0f));
+	this->sky = LayerGradient::create(Color4B::ORANGE, Color4B(70, 0, 131, 255), Vec2(0.0f, 1.04f));
+	this->darkFilter = LayerColor::create(Color4B::BLACK);
 	this->cityBackground = InfiniteParallaxNode::create(Resources::Cutscenes_City_CityBackground);
 	this->cityMidground = InfiniteParallaxNode::create(Resources::Cutscenes_City_CityMidground);
 	this->vaporCorp = Sprite::create(Resources::Cutscenes_City_VaporCorp);
 	this->cityForeground = InfiniteParallaxNode::create(Resources::Cutscenes_City_CityForeground);
 
-	this->sky->setContentSize(Size(visibleSize.width, visibleSize.height));
+	// Make this larger than the screen to maximize the initial orange light initially
+	this->sky->setContentSize(Size(visibleSize.width, visibleSize.height * 2.0f));
+	this->darkFilter->setOpacity(0);
+
+	this->sky->setAnchorPoint(Vec2(0.5f, 1.0f));
 	this->cityBackground->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->cityMidground->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->vaporCorp->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -32,18 +37,22 @@ City::City()
 	this->vaporCorp->setScale(1.0f);
 	this->cityForeground->setScale(0.35f);
 
-	this->dialogPlate = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, 256.0f);
-	this->escapeLabel = Label::create("Press esc to exit", Resources::Fonts_arial, 28, Size::ZERO, TextHAlignment::LEFT);
+	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, 256.0f);
+	this->dialogue = Dialogue::loadDialogueFromFile(Resources::Strings_Dialogue_CutsceneCity, Resources::Fonts_Monobit);
+	this->escapeLabel = Label::create("Press esc to exit", Resources::Fonts_Montserrat_Regular, 28, Size::ZERO, TextHAlignment::LEFT);
+
 	this->escapeLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	this->addChild(InputManager::claimInstance());
 
 	this->addChild(this->sky);
+	this->addChild(this->darkFilter);
 	this->addChild(this->cityBackground);
 	this->addChild(this->cityMidground);
 	this->addChild(this->vaporCorp);
 	this->addChild(this->cityForeground);
-	this->addChild(this->dialogPlate);
+	this->addChild(this->dialoguePlate);
+	this->addChild(this->dialogue);
 	this->addChild(this->escapeLabel);
 }
 
@@ -71,8 +80,9 @@ void City::initializePositions()
 	this->vaporCorp->setPosition(Vec2(visibleSize.width / 2.0f + City::vaporCorpOffset, 0.0f));
 	this->cityForeground->setPosition(Vec2(0.0f, 0.0f));
 
-	this->dialogPlate->setPosition(Vec2(visibleSize.width / 2.0f - this->dialogPlate->getContentSize().width / 2.0f, visibleSize.height - this->dialogPlate->getContentSize().height));
-	this->escapeLabel->setPosition(Vec2(24.0f, visibleSize.height - 48.0f));
+	this->dialoguePlate->setPosition(Vec2(visibleSize.width / 2.0f - this->dialoguePlate->getContentSize().width / 2.0f, visibleSize.height - this->dialoguePlate->getContentSize().height));
+	this->dialogue->setPosition(Vec2(24.0f, visibleSize.height - 24.0f));
+	this->escapeLabel->setPosition(Vec2(visibleSize.width - 128.0f, 48.0f));
 }
 
 void City::initializeListeners()
@@ -99,9 +109,11 @@ void City::cutscenePan()
 {
 	CallFunc* panCamera = CallFunc::create([=]()
 	{
-		const float moveDuration = 4.0f;
+		const float moveDuration = 5.0f;
 		const float deltaX = City::vaporCorpOffset;
 
+		this->sky->runAction(EaseSineInOut::create(ScaleTo::create(moveDuration, 4.0f)));
+		this->darkFilter->runAction(EaseSineInOut::create(FadeTo::create(moveDuration, 128)));
 		this->cityBackground->runAction(EaseSineInOut::create(MoveTo::create(moveDuration, Vec2(this->cityBackground->getPositionX() - deltaX + 256.0f, this->cityBackground->getPositionY()))));
 		this->cityMidground->runAction(EaseSineInOut::create(MoveTo::create(moveDuration, Vec2(this->cityMidground->getPositionX() - deltaX + 128.0f, this->cityMidground->getPositionY()))));
 		this->vaporCorp->runAction(EaseSineInOut::create(MoveTo::create(moveDuration, Vec2(this->vaporCorp->getPositionX() - deltaX, this->vaporCorp->getPositionY()))));
