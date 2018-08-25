@@ -18,7 +18,7 @@ TutorialItem::TutorialItem(std::string description, std::string mapFile, int ind
 	this->page = index / TutorialItem::MaxEntriesPerPage;
 
 	this->frame = Sprite::create(Resources::Menus_TutorialMenu_TutorialEntry);
-	this->indexLabel = Label::create(std::to_string(index + 1), Resources::Fonts_Montserrat_Regular, 28);
+	this->indexLabel = Label::create(std::to_string(index + 1), Localization::getMainFont(), 28.0f);
 
 	// TODO: Load save data (steam cloud)
 	this->isLevelComplete = true;

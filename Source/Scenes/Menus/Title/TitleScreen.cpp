@@ -19,7 +19,6 @@ TitleScreen::TitleScreen()
 	this->title = Sprite::create(Resources::Menus_TitleScreen_Title);
 	this->background = TitleScreenBackground::create();
 	
-	int fontSize = 24;
 	Size shadowSize = Size(-4.0f, -4.0f);
 	int shadowBlur = 2;
 	int hoverOutlineSize = 2;
@@ -28,17 +27,17 @@ TitleScreen::TitleScreen()
 	Color3B highlightColor = Color3B::YELLOW;
 	Color4B glowColor = Color4B::ORANGE;
 
-	Label* storyModeLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Resources::Fonts_Montserrat_Bold, fontSize);
-	Label* storyModeLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Resources::Fonts_Montserrat_Bold, fontSize);
-	Label* storyModeLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Resources::Fonts_Montserrat_Bold, fontSize);
+	Label* storyModeLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* storyModeLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* storyModeLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
-	Label* optionsLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Resources::Fonts_Montserrat_Bold, fontSize);
-	Label* optionsLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Resources::Fonts_Montserrat_Bold, fontSize);
-	Label* optionsLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Resources::Fonts_Montserrat_Bold, fontSize);
+	Label* optionsLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* optionsLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* optionsLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
-	Label* exitLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Resources::Fonts_Montserrat_Bold, fontSize);
-	Label* exitLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Resources::Fonts_Montserrat_Bold, fontSize);
-	Label* exitLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Resources::Fonts_Montserrat_Bold, fontSize);
+	Label* exitLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* exitLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* exitLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	storyModeLabel->setColor(textColor);
 	storyModeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);

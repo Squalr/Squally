@@ -121,114 +121,137 @@ std::string Localization::getLanguageCode()
 	}
 }
 
-float Localization::fontSizeH1(std::string fontResource)
+std::string Localization::getPixelFont()
 {
-	if (fontResource == Resources::Fonts_Marker_Felt)
+	switch (Application::getInstance()->getCurrentLanguage())
 	{
-		return 48.0f;
+	default:
+	case LanguageType::ENGLISH:
+	case LanguageType::CHINESE_SIMPLIFIED:
+	case LanguageType::CHINESE_TRADITIONAL:
+	case LanguageType::JAPANESE:
+	case LanguageType::KOREAN:
+		return Resources::Fonts_Pixel_Zpix;
+	case LanguageType::ARABIC:
+	case LanguageType::BULGARIAN:
+	case LanguageType::CZECH:
+	case LanguageType::DANISH:
+	case LanguageType::DUTCH:
+	case LanguageType::FINNISH:
+	case LanguageType::FRENCH:
+	case LanguageType::GERMAN:
+	case LanguageType::GREEK:
+	case LanguageType::HUNGARIAN:
+	case LanguageType::ITALIAN:
+	case LanguageType::NORWEGIAN:
+	case LanguageType::POLISH:
+	case LanguageType::PORTUGUESE:
+	case LanguageType::PORTUGUESE_BRAZIL:
+	case LanguageType::ROMANIAN:
+	case LanguageType::RUSSIAN:
+	case LanguageType::SPANISH:
+	case LanguageType::SWEDISH:
+	case LanguageType::THAI:
+	case LanguageType::TURKISH:
+	case LanguageType::UKRAINIAN:
+		// TODO
+		return Resources::Fonts_Pixel_Zpix;
 	}
-	else if (fontResource == Resources::Fonts_Monobit)
-	{
-		return 64.0f;
-	}
-	else if (fontResource == Resources::Fonts_Montserrat_Bold ||
-		fontResource == Resources::Fonts_Montserrat_BoldItalic ||
-		fontResource == Resources::Fonts_Montserrat_Italic ||
-		fontResource == Resources::Fonts_Montserrat_Regular)
-	{
-		return 48.0f;
-	}
-	else if (fontResource == Resources::Fonts_UbuntuMono_Bold ||
-		fontResource == Resources::Fonts_UbuntuMono_BoldItalic ||
-		fontResource == Resources::Fonts_UbuntuMono_Italic ||
-		fontResource == Resources::Fonts_UbuntuMono_Regular)
-	{
-		return 48.0f;
-	}
-
-	return 48.0f;
 }
 
-float Localization::fontSizeH2(std::string fontResource)
+std::string Localization::getMainFont()
 {
-	if (fontResource == Resources::Fonts_Marker_Felt)
+	switch (Application::getInstance()->getCurrentLanguage())
 	{
-		return 40.0f;
+	default:
+	case LanguageType::ENGLISH:
+		return Resources::Fonts_Montserrat_Medium;
+	case LanguageType::CHINESE_SIMPLIFIED:
+	case LanguageType::CHINESE_TRADITIONAL:
+	case LanguageType::JAPANESE:
+	case LanguageType::KOREAN:
+	case LanguageType::ARABIC:
+	case LanguageType::BULGARIAN:
+	case LanguageType::CZECH:
+	case LanguageType::DANISH:
+	case LanguageType::DUTCH:
+	case LanguageType::FINNISH:
+	case LanguageType::FRENCH:
+	case LanguageType::GERMAN:
+	case LanguageType::GREEK:
+	case LanguageType::HUNGARIAN:
+	case LanguageType::ITALIAN:
+	case LanguageType::NORWEGIAN:
+	case LanguageType::POLISH:
+	case LanguageType::PORTUGUESE:
+	case LanguageType::PORTUGUESE_BRAZIL:
+	case LanguageType::ROMANIAN:
+	case LanguageType::RUSSIAN:
+	case LanguageType::SPANISH:
+	case LanguageType::SWEDISH:
+	case LanguageType::THAI:
+	case LanguageType::TURKISH:
+	case LanguageType::UKRAINIAN:
+		// TODO
+		return Resources::Fonts_Montserrat_Medium;
 	}
-	else if (fontResource == Resources::Fonts_Monobit)
-	{
-		return 56.0f;
-	}
-	else if (fontResource == Resources::Fonts_Montserrat_Bold ||
-		fontResource == Resources::Fonts_Montserrat_BoldItalic ||
-		fontResource == Resources::Fonts_Montserrat_Italic ||
-		fontResource == Resources::Fonts_Montserrat_Regular)
-	{
-		return 40.0f;
-	}
-	else if (fontResource == Resources::Fonts_UbuntuMono_Bold ||
-		fontResource == Resources::Fonts_UbuntuMono_BoldItalic ||
-		fontResource == Resources::Fonts_UbuntuMono_Italic ||
-		fontResource == Resources::Fonts_UbuntuMono_Regular)
-	{
-		return 40.0f;
-	}
-
-	return 40.0f;
 }
 
-float Localization::fontSizeH3(std::string fontResource)
+std::string Localization::getCodingFont()
 {
-	if (fontResource == Resources::Fonts_Marker_Felt)
+	switch (Application::getInstance()->getCurrentLanguage())
 	{
-		return 36.0f;
+	default:
+	case LanguageType::ENGLISH:
+		return Resources::Fonts_UbuntuMono_Bold;
+	case LanguageType::CHINESE_SIMPLIFIED:
+	case LanguageType::CHINESE_TRADITIONAL:
+	case LanguageType::JAPANESE:
+	case LanguageType::KOREAN:
+		return Resources::Fonts_Ubuntu_WenQuanYiMicroHeiMono_02;
+	case LanguageType::ARABIC:
+	case LanguageType::BULGARIAN:
+	case LanguageType::CZECH:
+	case LanguageType::DANISH:
+	case LanguageType::DUTCH:
+	case LanguageType::FINNISH:
+	case LanguageType::FRENCH:
+	case LanguageType::GERMAN:
+	case LanguageType::GREEK:
+	case LanguageType::HUNGARIAN:
+	case LanguageType::ITALIAN:
+	case LanguageType::NORWEGIAN:
+	case LanguageType::POLISH:
+	case LanguageType::PORTUGUESE:
+	case LanguageType::PORTUGUESE_BRAZIL:
+	case LanguageType::ROMANIAN:
+	case LanguageType::RUSSIAN:
+	case LanguageType::SPANISH:
+	case LanguageType::SWEDISH:
+	case LanguageType::THAI:
+	case LanguageType::TURKISH:
+	case LanguageType::UKRAINIAN:
+		// TODO
+		return Resources::Fonts_UbuntuMono_Bold;
 	}
-	else if (fontResource == Resources::Fonts_Monobit)
-	{
-		return 52.0f;
-	}
-	else if (fontResource == Resources::Fonts_Montserrat_Bold ||
-		fontResource == Resources::Fonts_Montserrat_BoldItalic ||
-		fontResource == Resources::Fonts_Montserrat_Italic ||
-		fontResource == Resources::Fonts_Montserrat_Regular)
-	{
-		return 36.0f;
-	}
-	else if (fontResource == Resources::Fonts_UbuntuMono_Bold ||
-		fontResource == Resources::Fonts_UbuntuMono_BoldItalic ||
-		fontResource == Resources::Fonts_UbuntuMono_Italic ||
-		fontResource == Resources::Fonts_UbuntuMono_Regular)
-	{
-		return 36.0f;
-	}
-
-	return 36.0f;
 }
 
-float Localization::fontSizeP(std::string fontResource)
+float Localization::getFontSizeH1(std::string fontResource)
 {
-	if (fontResource == Resources::Fonts_Marker_Felt)
-	{
-		return 24.0f;
-	}
-	else if (fontResource == Resources::Fonts_Monobit)
-	{
-		return 48.0f;
-	}
-	else if (fontResource == Resources::Fonts_Montserrat_Bold ||
-		fontResource == Resources::Fonts_Montserrat_BoldItalic ||
-		fontResource == Resources::Fonts_Montserrat_Italic ||
-		fontResource == Resources::Fonts_Montserrat_Regular)
-	{
-		return 24.0f;
-	}
-	else if (fontResource == Resources::Fonts_UbuntuMono_Bold ||
-		fontResource == Resources::Fonts_UbuntuMono_BoldItalic ||
-		fontResource == Resources::Fonts_UbuntuMono_Italic ||
-		fontResource == Resources::Fonts_UbuntuMono_Regular)
-	{
-		return 24.0f;
-	}
+	return 32.0f;
+}
 
+float Localization::getFontSizeH2(std::string fontResource)
+{
+	return 28.0f;
+}
+
+float Localization::getFontSizeH3(std::string fontResource)
+{
 	return 24.0f;
+}
+
+float Localization::getFontSizeP(std::string fontResource)
+{
+	return 20.0f;
 }

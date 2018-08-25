@@ -17,9 +17,9 @@ TutorialScreen::TutorialScreen()
 	this->currentPage = 0;
 
 	this->tutorialWindow = Sprite::create(Resources::Menus_TutorialMenu_TutorialSelect);
-	this->titleLabel = Label::create(Localization::resolveString(TutorialScreen::StringKeyMenuTutorials), Resources::Fonts_Montserrat_Regular, 32.0f);
+	this->titleLabel = Label::create(Localization::resolveString(TutorialScreen::StringKeyMenuTutorials), Localization::getMainFont(), 32.0f);
 	this->descriptionBox = Sprite::create(Resources::Menus_TutorialMenu_TutorialItem);
-	this->description = Label::create("", Resources::Fonts_Montserrat_Regular, 14);
+	this->description = Label::create("", Localization::getMainFont(), 14.0f);
 	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
 
 	this->floatingBox1 = FloatingSprite::create(Resources::Menus_TutorialMenu_ObjectBox1, Vec2(-32.0f, -32.0f), Vec2(8.0f, 5.0f));

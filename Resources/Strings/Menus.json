@@ -1,8 +1,7 @@
 {
-  "Empty_Copy_Paste_Me":
-  {
-	"ar": "",
-	"bg": "",
+  "Empty_Copy_Paste_Me": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -29,10 +28,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Story_Mode":
-  {
-	"ar": "وضع القصة",
-	"bg": "Режим на историята",
+  "Menu_Story_Mode": {
+    "ar": "وضع القصة",
+    "bg": "Режим на историята",
     "cs": "Příběhový mód",
     "da": "Story Mode",
     "de": "Geschichtsmodus",
@@ -59,10 +57,9 @@
     "zh-CN": "故事模式",
     "zh-TW": "故事模式"
   },
-  "Menu_Options":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Options": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -89,10 +86,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Exit":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Exit": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -119,10 +115,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Return":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Return": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -149,10 +144,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Pause":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Pause": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -179,10 +173,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Pause_Resume":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Pause_Resume": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -209,10 +202,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Pause_Options":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Pause_Options": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -239,10 +231,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Pause_Quit_To_Title":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Pause_Quit_To_Title": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -269,10 +260,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Level_Prompt_Exit":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Level_Prompt_Exit": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -299,10 +289,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Tutorials":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Tutorials": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -329,10 +318,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Story_Select_Level":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Story_Select_Level": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -359,10 +347,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Story_Level_Name_Jungle":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Story_Level_Name_Jungle": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -389,10 +376,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Story_Level_Name_Aquatic_Ruins":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Story_Level_Name_Aquatic_Ruins": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -419,10 +405,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Story_Level_Name_Forest":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Story_Level_Name_Forest": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -449,10 +434,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Story_Level_Name_Caverns":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Story_Level_Name_Caverns": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -479,10 +463,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Story_Level_Name_Castle":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Story_Level_Name_Castle": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -509,10 +492,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Story_Level_Name_Ice_Caps":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Story_Level_Name_Ice_Caps": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -539,10 +521,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Story_Level_Name_Obelisk":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Story_Level_Name_Obelisk": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -569,10 +550,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Story_Level_Name_Volcano":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Story_Level_Name_Volcano": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -599,10 +579,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Story_Level_Name_Mech":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Story_Level_Name_Mech": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -629,10 +608,9 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Options_Full_Screen":
-  {
-	"ar": "",
-	"bg": "",
+  "Menu_Options_Full_Screen": {
+    "ar": "",
+    "bg": "",
     "cs": "",
     "da": "",
     "de": "",
@@ -641,6 +619,151 @@
     "es": "",
     "fi": "",
     "fr": "Plein écran",
+    "hu": "",
+    "it": "",
+    "ja": "",
+    "ko": "",
+    "nl": "",
+    "no": "",
+    "pl": "",
+    "pt": "",
+    "pt-BR": "",
+    "ro": "",
+    "ru": "",
+    "sv": "",
+    "th": "",
+    "tr": "",
+    "uk": "",
+    "zh-CN": "",
+    "zh-TW": ""
+  },
+  "Menu_CodeEditor_Title": {
+    "ar": "",
+    "bg": "",
+    "cs": "",
+    "da": "",
+    "de": "",
+    "el": "",
+    "en": "Assembler",
+    "es": "",
+    "fi": "",
+    "fr": "",
+    "hu": "",
+    "it": "",
+    "ja": "",
+    "ko": "",
+    "nl": "",
+    "no": "",
+    "pl": "",
+    "pt": "",
+    "pt-BR": "",
+    "ro": "",
+    "ru": "",
+    "sv": "",
+    "th": "",
+    "tr": "",
+    "uk": "",
+    "zh-CN": "",
+    "zh-TW": ""
+  },
+  "Menu_CodeEditor_Status": {
+    "ar": "",
+    "bg": "",
+    "cs": "",
+    "da": "",
+    "de": "",
+    "el": "",
+    "en": "Status",
+    "es": "",
+    "fi": "",
+    "fr": "",
+    "hu": "",
+    "it": "",
+    "ja": "",
+    "ko": "",
+    "nl": "",
+    "no": "",
+    "pl": "",
+    "pt": "",
+    "pt-BR": "",
+    "ro": "",
+    "ru": "",
+    "sv": "",
+    "th": "",
+    "tr": "",
+    "uk": "",
+    "zh-CN": "",
+    "zh-TW": ""
+  },
+  "Menu_CodeEditor_CodeEditor": {
+    "ar": "",
+    "bg": "",
+    "cs": "",
+    "da": "",
+    "de": "",
+    "el": "",
+    "en": "Code Editor",
+    "es": "",
+    "fi": "",
+    "fr": "",
+    "hu": "",
+    "it": "",
+    "ja": "",
+    "ko": "",
+    "nl": "",
+    "no": "",
+    "pl": "",
+    "pt": "",
+    "pt-BR": "",
+    "ro": "",
+    "ru": "",
+    "sv": "",
+    "th": "",
+    "tr": "",
+    "uk": "",
+    "zh-CN": "",
+    "zh-TW": ""
+  },
+  "Menu_CodeEditor_AllocationEditor": {
+    "ar": "",
+    "bg": "",
+    "cs": "",
+    "da": "",
+    "de": "",
+    "el": "",
+    "en": "Allocation Editor",
+    "es": "",
+    "fi": "",
+    "fr": "",
+    "hu": "",
+    "it": "",
+    "ja": "",
+    "ko": "",
+    "nl": "",
+    "no": "",
+    "pl": "",
+    "pt": "",
+    "pt-BR": "",
+    "ro": "",
+    "ru": "",
+    "sv": "",
+    "th": "",
+    "tr": "",
+    "uk": "",
+    "zh-CN": "",
+    "zh-TW": ""
+  },
+  "Menu_TextWindow_ClickToEdit": {
+    "ar": "",
+    "bg": "",
+    "cs": "",
+    "da": "",
+    "de": "",
+    "el": "",
+    "en": "<Click to Edit>",
+    "es": "",
+    "fi": "",
+    "fr": "",
     "hu": "",
     "it": "",
     "ja": "",

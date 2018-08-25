@@ -18,10 +18,13 @@ public:
 	static std::string resolveFile(std::string fileEn);
 	static std::string resolveString(std::string resourceKey);
 	static std::string getLanguageCode();
-	static float fontSizeH1(std::string fontResource);
-	static float fontSizeH2(std::string fontResource);
-	static float fontSizeH3(std::string fontResource);
-	static float fontSizeP(std::string fontResource);
+	static std::string getPixelFont();
+	static std::string getMainFont();
+	static std::string getCodingFont();
+	static float getFontSizeH1(std::string fontResource);
+	static float getFontSizeH2(std::string fontResource);
+	static float getFontSizeH3(std::string fontResource);
+	static float getFontSizeP(std::string fontResource);
 
 protected:
 

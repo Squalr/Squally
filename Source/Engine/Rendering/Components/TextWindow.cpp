@@ -29,7 +29,7 @@ TextWindow::TextWindow(std::string windowTitle, Size initWindowSize, float initF
 	this->displayedText = RichText::create();
 	this->background = Node::create();
 	this->titleBar = Node::create();
-	this->windowTitle = MenuLabel::create(windowTitle, Resources::Fonts_Montserrat_Regular, this->fontSize);
+	this->windowTitle = MenuLabel::create(windowTitle, Localization::getCodingFont(), this->fontSize);
 
 	this->background->addChild(LayerColor::create(this->windowColor, this->windowSize.width, this->windowSize.height));
 	this->titleBar->addChild(LayerColor::create(this->titleBarColor, this->windowSize.width, TextWindow::titleBarHeight));
@@ -79,7 +79,7 @@ void TextWindow::setTitle(std::string text)
 
 void TextWindow::insertText(std::string text, Color3B color)
 {
-	RichElement* element = RichElementText::create(0, color, 0xFF, text, Resources::Fonts_UbuntuMono_Bold, this->fontSize);
+	RichElement* element = RichElementText::create(0, color, 0xFF, text, Localization::getCodingFont(), this->fontSize);
 
 	this->displayTextElements->push_back(element);
 	this->displayedText->pushBackElement(element);

@@ -18,7 +18,7 @@ Dialogue::Dialogue(DialogueTree* root, std::string fontResource)
 {
 	this->dialogueRoot = root;
 	this->currentDialogue = this->dialogueRoot;
-	this->label = Label::create("", fontResource, Localization::fontSizeP(fontResource));
+	this->label = Label::create("", fontResource, Localization::getFontSizeH2(fontResource));
 
 	this->label->setHorizontalAlignment(TextHAlignment::LEFT);
 	this->label->setAnchorPoint(Vec2(0.0f, 1.0f));

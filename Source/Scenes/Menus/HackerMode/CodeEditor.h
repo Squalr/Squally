@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
+#include "Engine/Localization/Localization.h"
 #include "Engine/Objects/Hackables/HackableObject.h"
 #include "Engine/Rendering/Components/EditableTextWindow.h"
 #include "Engine/Rendering/Components/MenuLabel.h"
@@ -68,5 +69,10 @@ private:
 	static const Color3B numberColor;
 	static const Color3B commentColor;
 	static const std::set<std::string> registers;
+
+	static const std::string StringKeyTitle;
+	static const std::string StringKeyStatus;
+	static const std::string StringKeyCodeEditor;
+	static const std::string StringKeyAllocationEditor;
 };
 

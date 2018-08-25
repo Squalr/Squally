@@ -11,17 +11,17 @@ RowTotals* RowTotals::create()
 
 RowTotals::RowTotals()
 {
-	this->enemyBinaryCardTotal = Label::create("", Resources::Fonts_UbuntuMono_Bold, 48.0f);
+	this->enemyBinaryCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
 	this->enemyBinaryCardTotal->enableOutline(Color4B::BLACK, 3);
-	this->enemyDecimalCardTotal = Label::create("", Resources::Fonts_UbuntuMono_Bold, 48.0f);
+	this->enemyDecimalCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
 	this->enemyDecimalCardTotal->enableOutline(Color4B::BLACK, 3);
-	this->enemyHexCardTotal = Label::create("", Resources::Fonts_UbuntuMono_Bold, 48.0f);
+	this->enemyHexCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
 	this->enemyHexCardTotal->enableOutline(Color4B::BLACK, 3);
-	this->playerBinaryCardTotal = Label::create("", Resources::Fonts_UbuntuMono_Bold, 48.0f);
+	this->playerBinaryCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
 	this->playerBinaryCardTotal->enableOutline(Color4B::BLACK, 3);
-	this->playerDecimalCardTotal = Label::create("", Resources::Fonts_UbuntuMono_Bold, 48.0f);
+	this->playerDecimalCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
 	this->playerDecimalCardTotal->enableOutline(Color4B::BLACK, 3);
-	this->playerHexCardTotal = Label::create("", Resources::Fonts_UbuntuMono_Bold, 48.0f);
+	this->playerHexCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
 	this->playerHexCardTotal->enableOutline(Color4B::BLACK, 3);
 
 	this->addChild(this->enemyBinaryCardTotal);

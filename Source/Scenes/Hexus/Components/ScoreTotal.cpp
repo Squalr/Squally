@@ -12,13 +12,13 @@ ScoreTotal* ScoreTotal::create()
 ScoreTotal::ScoreTotal()
 {
 	this->playerTotalFrame = Sprite::create(Resources::Minigames_Hexus_ScoreBox);
-	this->playerTotal = Label::create("", Resources::Fonts_UbuntuMono_Bold, 48.0f);
+	this->playerTotal = Label::create("", Localization::getCodingFont(), 48.0f);
 	this->playerTotal->enableOutline(Color4B::BLACK, 3);
 	this->playerLeaderEmblem = Sprite::create(Resources::Minigames_Hexus_LeaderEmblem);
 	this->playerLeaderEmblem->setOpacity(0);
 
 	this->enemyTotalFrame = Sprite::create(Resources::Minigames_Hexus_ScoreBox);
-	this->enemyTotal = Label::create("", Resources::Fonts_UbuntuMono_Bold, 48.0f);
+	this->enemyTotal = Label::create("", Localization::getCodingFont(), 48.0f);
 	this->enemyTotal->enableOutline(Color4B::BLACK, 3);
 	this->enemyLeaderEmblem = Sprite::create(Resources::Minigames_Hexus_LeaderEmblem);
 	this->enemyLeaderEmblem->setOpacity(0);
