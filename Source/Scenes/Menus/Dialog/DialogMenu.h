@@ -6,9 +6,10 @@
 #include "stringbuffer.h"
 #include "writer.h"
 
-#include "Events/DialogEvents.h"
+#include "Engine/Localization/Localization.h"
 #include "Engine/Rendering/Components/FloatingSprite.h"
 #include "Engine/Rendering/Components/MenuLabel.h"
+#include "Events/DialogEvents.h"
 #include "Resources.h"
 
 using namespace cocos2d;

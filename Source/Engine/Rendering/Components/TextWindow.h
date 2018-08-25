@@ -2,6 +2,7 @@
 #include "ui/CocosGUI.h"
 #include "cocos2d.h"
 
+#include "Engine/Localization/Localization.h"
 #include "Engine/Rendering/Components/MenuLabel.h"
 #include "Resources.h"
 

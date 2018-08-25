@@ -1,6 +1,7 @@
 ﻿#include "EditableTextWindow.h"
 
 const Color3B EditableTextWindow::lineNumberColor = Color3B::GRAY;
+const std::string EditableTextWindow::StringKeyClickToEdit = "Menu_TextWindow_ClickToEdit";
 
 EditableTextWindow* EditableTextWindow::create(std::string windowTitle, Size initWindowSize, int initFontSize, Color3B initFontColor)
 {
@@ -22,7 +23,7 @@ EditableTextWindow::EditableTextWindow(std::string windowTitle, Size initWindowS
 	this->windowSize = initWindowSize;
 
 	this->lineNumbers = RichText::create();
-	this->editableText = UICCTextField::create("<Click to Edit>", Resources::Fonts_UbuntuMono_Bold, this->fontSize);
+	this->editableText = UICCTextField::create(Localization::resolveString(EditableTextWindow::StringKeyClickToEdit), Localization::getCodingFont(), this->fontSize);
 
 	this->lineNumbers->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->lineNumbers->ignoreContentAdaptWithSize(false);
@@ -111,7 +112,7 @@ void EditableTextWindow::update(float dt)
 
 void EditableTextWindow::insertNewline()
 {
-	RichElement* lineNumberText = RichElementText::create(0, EditableTextWindow::lineNumberColor, 0xFF, std::to_string(this->currentLineNumber++), Resources::Fonts_UbuntuMono_Bold, this->fontSize);
+	RichElement* lineNumberText = RichElementText::create(0, EditableTextWindow::lineNumberColor, 0xFF, std::to_string(this->currentLineNumber++), Localization::getCodingFont(), this->fontSize);
 	RichElement* lineNumberNewLine = RichElementNewLine::create(0, this->fontColor, 0xFF);
 
 	this->lineNumberElements->push_back(lineNumberText);

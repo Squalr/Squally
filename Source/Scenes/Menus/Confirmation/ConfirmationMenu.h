@@ -2,11 +2,12 @@
 #include "cocos2d.h"
 
 
-#include "Events/NavigationEvents.h"
+#include "Engine/Localization/Localization.h"
 #include "Engine/Rendering/Components/FadeScene.h"
 #include "Engine/Rendering/Components/InfiniteParallaxNode.h"
 #include "Engine/Rendering/Components/MenuSprite.h"
 #include "Engine/Rendering/Components/Mouse.h"
+#include "Events/NavigationEvents.h"
 #include "Resources.h"
 #include "Scenes/Menus/MenuBackground.h"
 

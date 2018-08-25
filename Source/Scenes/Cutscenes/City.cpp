@@ -38,8 +38,8 @@ City::City()
 	this->cityForeground->setScale(0.35f);
 
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, 256.0f);
-	this->dialogue = Dialogue::loadDialogueFromFile(Resources::Strings_Dialogue_CutsceneCity, Resources::Fonts_Monobit);
-	this->escapeLabel = Label::create("Press esc to exit", Resources::Fonts_Montserrat_Regular, 28, Size::ZERO, TextHAlignment::LEFT);
+	this->dialogue = Dialogue::loadDialogueFromFile(Resources::Strings_Dialogue_CutsceneCity, Localization::getPixelFont());
+	this->escapeLabel = Label::create("Press esc to exit", Localization::getMainFont(), 28.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 

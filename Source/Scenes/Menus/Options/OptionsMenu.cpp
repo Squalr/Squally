@@ -19,9 +19,9 @@ OptionsMenu::OptionsMenu()
 {
 	this->background = Node::create();
 	this->optionsWindow = Sprite::create(Resources::Menus_OptionsMenu_OptionsMenu);
-	this->fullScreenLabel = Label::create(Localization::resolveString(OptionsMenu::StringKeyFullScreen), Resources::Fonts_Montserrat_Regular, 24.0f);
+	this->fullScreenLabel = Label::create(Localization::resolveString(OptionsMenu::StringKeyFullScreen), Localization::getMainFont(), 24.0f);
 	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
-	this->titleLabel = Label::create(Localization::resolveString(OptionsMenu::StringKeyMenuOptions), Resources::Fonts_Montserrat_Regular, 32.0f);
+	this->titleLabel = Label::create(Localization::resolveString(OptionsMenu::StringKeyMenuOptions), Localization::getMainFont(), 32.0f);
 
 	this->titleLabel->setColor(OptionsMenu::TitleColor);
 	this->titleLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
@@ -39,15 +39,15 @@ OptionsMenu::OptionsMenu()
 	MenuSprite* checkedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_ToggleButtonOn, Resources::Menus_OptionsMenu_ToggleButtonOffHover, Resources::Menus_OptionsMenu_ToggleButtonOffClick);
 	this->fullScreenButton = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_2(OptionsMenu::onFullScreenChanged, this));
 
-	this->label1080x768 = Label::create("1080x768", Resources::Fonts_Montserrat_Regular, 14);
-	this->label1152x864 = Label::create("1152x864", Resources::Fonts_Montserrat_Regular, 14);
-	this->label1280x720 = Label::create("1280x720", Resources::Fonts_Montserrat_Regular, 14);
-	this->label1280x960 = Label::create("1280x960", Resources::Fonts_Montserrat_Regular, 14);
-	this->label1280x1024 = Label::create("1280x1024", Resources::Fonts_Montserrat_Regular, 14);
-	this->label1440x900 = Label::create("1440x900", Resources::Fonts_Montserrat_Regular, 14);
-	this->label1600x900 = Label::create("1600x900", Resources::Fonts_Montserrat_Regular, 14);
-	this->label1600x1024 = Label::create("1600x1024", Resources::Fonts_Montserrat_Regular, 14);
-	this->label1920x1080 = Label::create("1920x1080", Resources::Fonts_Montserrat_Regular, 14);
+	this->label1080x768 = Label::create("1080x768", Localization::getMainFont(), 14);
+	this->label1152x864 = Label::create("1152x864", Localization::getMainFont(), 14);
+	this->label1280x720 = Label::create("1280x720", Localization::getMainFont(), 14);
+	this->label1280x960 = Label::create("1280x960", Localization::getMainFont(), 14);
+	this->label1280x1024 = Label::create("1280x1024", Localization::getMainFont(), 14);
+	this->label1440x900 = Label::create("1440x900", Localization::getMainFont(), 14);
+	this->label1600x900 = Label::create("1600x900", Localization::getMainFont(), 14);
+	this->label1600x1024 = Label::create("1600x1024", Localization::getMainFont(), 14);
+	this->label1920x1080 = Label::create("1920x1080", Localization::getMainFont(), 14);
 
 	this->option1080x768 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
 	this->option1152x864 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
@@ -68,9 +68,9 @@ OptionsMenu::OptionsMenu()
 	Color3B highlightColor = Color3B::YELLOW;
 	Color4B glowColor = Color4B::ORANGE;
 
-	Label* returnLabel = Label::create(Localization::resolveString(OptionsMenu::StringKeyReturn), Resources::Fonts_Montserrat_Regular, fontSize);
-	Label* returnLabelHover = Label::create(Localization::resolveString(OptionsMenu::StringKeyReturn), Resources::Fonts_Montserrat_Regular, fontSize);
-	Label* returnLabelClicked = Label::create(Localization::resolveString(OptionsMenu::StringKeyReturn), Resources::Fonts_Montserrat_Regular, fontSize);
+	Label* returnLabel = Label::create(Localization::resolveString(OptionsMenu::StringKeyReturn), Localization::getMainFont(), fontSize);
+	Label* returnLabelHover = Label::create(Localization::resolveString(OptionsMenu::StringKeyReturn), Localization::getMainFont(), fontSize);
+	Label* returnLabelClicked = Label::create(Localization::resolveString(OptionsMenu::StringKeyReturn), Localization::getMainFont(), fontSize);
 
 	returnLabel->setColor(textColor);
 	returnLabel->enableShadow(shadowColor, shadowSize, shadowBlur);

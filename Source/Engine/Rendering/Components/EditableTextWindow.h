@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
+#include "Engine/Localization/Localization.h"
 #include "Resources.h"
 #include "TextWindow.h"
 
@@ -54,4 +55,5 @@ private:
 	std::function<void(std::string text)> onEditCallback;
 
 	static const Color3B lineNumberColor;
+	static const std::string StringKeyClickToEdit;
 };

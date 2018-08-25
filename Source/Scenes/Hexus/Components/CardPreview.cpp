@@ -82,9 +82,9 @@ void CardPreview::previewCard(Card* card)
 		{
 			int attack = card->getAttack();
 
-			Label* binaryLabel = Label::create("BIN: " + HackUtils::toBinary4(attack), Resources::Fonts_UbuntuMono_Bold, 32);
-			Label* decimalLabel = Label::create("DEC: " + std::to_string(attack), Resources::Fonts_UbuntuMono_Bold, 32);
-			Label* hexLabel = Label::create("HEX: " + HackUtils::toHex(attack), Resources::Fonts_UbuntuMono_Bold, 32);
+			Label* binaryLabel = Label::create("BIN: " + HackUtils::toBinary4(attack), Localization::getCodingFont(), 32.0f);
+			Label* decimalLabel = Label::create("DEC: " + std::to_string(attack), Localization::getCodingFont(), 32.0f);
+			Label* hexLabel = Label::create("HEX: " + HackUtils::toHex(attack), Localization::getCodingFont(), 32.0f);
 
 			binaryLabel->setAnchorPoint(Vec2::ZERO);
 			decimalLabel->setAnchorPoint(Vec2::ZERO);
@@ -109,7 +109,7 @@ void CardPreview::previewCard(Card* card)
 		break;
 		default:
 		{
-			Label * specialLabel = Label::create("", Resources::Fonts_UbuntuMono_Bold, 28);
+			Label * specialLabel = Label::create("", Localization::getCodingFont(), 28);
 
 			specialLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
 			specialLabel->setTextColor(Card::specialColor);

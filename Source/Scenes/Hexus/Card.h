@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Localization/Localization.h"
 #include "Engine/Rendering/Components/MenuSprite.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Resources.h"

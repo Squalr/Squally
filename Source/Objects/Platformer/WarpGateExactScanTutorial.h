@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Localization/Localization.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/WarpGate.h"
 

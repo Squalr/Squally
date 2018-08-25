@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/Input/InputManager.h"
+#include "Engine/Localization/Localization.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 #include "Scenes/Cutscenes/Cutscene.h"

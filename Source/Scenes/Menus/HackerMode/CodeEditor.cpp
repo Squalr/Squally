@@ -46,6 +46,11 @@ const std::set<std::string> CodeEditor::registers =
 	"eip", "rip"
 };
 
+const std::string CodeEditor::StringKeyTitle = "Menu_CodeEditor_Title";
+const std::string CodeEditor::StringKeyStatus = "Menu_CodeEditor_Status";
+const std::string CodeEditor::StringKeyCodeEditor = "Menu_CodeEditor_CodeEditor";
+const std::string CodeEditor::StringKeyAllocationEditor = "Menu_CodeEditor_AllocationEditor";
+
 CodeEditor* CodeEditor::create()
 {
 	CodeEditor* instance = new CodeEditor();
@@ -61,11 +66,11 @@ CodeEditor::CodeEditor()
 	this->activeHackableCode = nullptr;
 
 	this->codeEditorBackground = Sprite::create(Resources::Menus_HackerModeMenu_EmptyFullScreenMenu);
-	this->codeEditorTitle = MenuLabel::create("Assembler", Resources::Fonts_Montserrat_Regular, 32.0f);
+	this->codeEditorTitle = MenuLabel::create(Localization::resolveString(CodeEditor::StringKeyTitle), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
 
-	this->statusWindow = TextWindow::create("Status", CodeEditor::statusSize, 32.0f, CodeEditor::defaultColor);
-	this->functionWindow = EditableTextWindow::create("Code Editor", CodeEditor::functionSize, 32.0f, CodeEditor::defaultColor);
-	this->secondaryWindow = EditableTextWindow::create("Allocation Editor", CodeEditor::secondarySize, 32.0f, CodeEditor::defaultColor);
+	this->statusWindow = TextWindow::create(Localization::resolveString(CodeEditor::StringKeyStatus), CodeEditor::statusSize, Localization::getFontSizeH3(Localization::getCodingFont()), CodeEditor::defaultColor);
+	this->functionWindow = EditableTextWindow::create(Localization::resolveString(CodeEditor::StringKeyCodeEditor), CodeEditor::functionSize, Localization::getFontSizeH3(Localization::getCodingFont()), CodeEditor::defaultColor);
+	this->secondaryWindow = EditableTextWindow::create(Localization::resolveString(CodeEditor::StringKeyAllocationEditor), CodeEditor::secondarySize, Localization::getFontSizeH3(Localization::getCodingFont()), CodeEditor::defaultColor);
 	this->cancelButton = MenuSprite::create(Resources::Menus_Buttons_GenericHackButton, Resources::Menus_Buttons_GenericHackButtonHover, Resources::Menus_Buttons_GenericHackButtonClick);
 	this->acceptButton = MenuSprite::create(Resources::Menus_Buttons_GenericHackButton, Resources::Menus_Buttons_GenericHackButtonHover, Resources::Menus_Buttons_GenericHackButtonClick);
 	this->acceptButtonGrayed = Sprite::create(Resources::Menus_Buttons_GenericHackButtonGray);
