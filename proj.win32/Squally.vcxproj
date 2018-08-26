@@ -334,6 +334,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Scenes\Cutscenes\City.cpp" />
     <ClCompile Include="..\Source\Scenes\Cutscenes\Cutscene.cpp" />
     <ClCompile Include="..\Source\Scenes\Cutscenes\IntroSpace.cpp" />
+    <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\StarLayer.cpp" />
     <ClCompile Include="..\Source\Scenes\Cutscenes\VaporWeb.cpp" />
     <ClCompile Include="..\Source\Scenes\Fights\Fight.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\Card.cpp" />
@@ -590,6 +591,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Scenes\Cutscenes\Cutscene.h" />
     <ClInclude Include="..\Source\Scenes\Cutscenes\Cutscenes.h" />
     <ClInclude Include="..\Source\Scenes\Cutscenes\IntroSpace.h" />
+    <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\StarLayer.h" />
     <ClInclude Include="..\Source\Scenes\Cutscenes\VaporWeb.h" />
     <ClInclude Include="..\Source\Scenes\Fights\Fight.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\Card.h" />

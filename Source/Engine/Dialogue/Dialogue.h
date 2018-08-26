@@ -12,17 +12,16 @@ using namespace cocos2d;
 class Dialogue : public Node
 {
 public:
-	static Dialogue * loadDialogueFromFile(std::string filePath, std::string fontResource);
+	static Dialogue * create(std::string filePath, std::string fontResource, Size size);
 
 	void setDialogueSpeed(float speed);
 	bool showNextDialogue();
+	void setDialogueShownCallback(std::function<void()> callback);
 
 	Label* label;
 
 private:
-	static Dialogue* create(DialogueTree* root, std::string fontResource);
-
-	Dialogue(DialogueTree* root, std::string fontResource);
+	Dialogue(DialogueTree* root, std::string fontResource, Size size);
 	~Dialogue();
 
 	void onEnter() override;
@@ -32,6 +31,7 @@ private:
 	float dialogueSpeed;
 	DialogueTree* dialogueRoot;
 	DialogueTree* currentDialogue;
+	std::function<void()> dialogueShownCallback;
 
 	static const std::string ScheduleKeyTypeWriterEffect;
 	static const float DefaultTypeSpeed;

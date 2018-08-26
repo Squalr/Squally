@@ -1,24 +1,20 @@
 #include "Dialogue.h"
 
 const std::string Dialogue::ScheduleKeyTypeWriterEffect = "TYPE_WRITER_EFFECT";
-const float Dialogue::DefaultTypeSpeed = 0.05f;
+const float Dialogue::DefaultTypeSpeed = 0.04f;
 
-Dialogue* Dialogue::loadDialogueFromFile(std::string filePath, std::string fontResource)
+Dialogue* Dialogue::create(std::string filePath, std::string fontResource, Size size)
 {
-	return Dialogue::create(DialogueTree::loadDialogueFromFile(filePath), fontResource);
-}
-
-Dialogue* Dialogue::create(DialogueTree* root, std::string fontResource)
-{
-	Dialogue* instance = new Dialogue(root, fontResource);
+	Dialogue* instance = new Dialogue(DialogueTree::loadDialogueFromFile(filePath), fontResource, size);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Dialogue::Dialogue(DialogueTree* root, std::string fontResource)
+Dialogue::Dialogue(DialogueTree* root, std::string fontResource, Size size)
 {
+	this->dialogueShownCallback = nullptr;
 	this->dialogueRoot = root;
 	this->currentDialogue = this->dialogueRoot;
 	this->dialogueSpeed = Dialogue::DefaultTypeSpeed;
@@ -26,6 +22,9 @@ Dialogue::Dialogue(DialogueTree* root, std::string fontResource)
 
 	this->label->setHorizontalAlignment(TextHAlignment::LEFT);
 	this->label->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->label->enableWrap(true);
+	this->label->setDimensions(size.width, size.height);
+	this->label->setLineSpacing(8.0f);
 
 	this->addChild(this->label);
 }
@@ -42,6 +41,12 @@ Dialogue::~Dialogue()
 	delete(this->dialogueRoot);
 }
 
+
+void Dialogue::setDialogueShownCallback(std::function<void()> callback)
+{
+	this->dialogueShownCallback = callback;
+}
+
 void Dialogue::setDialogueSpeed(float speed)
 {
 	this->dialogueSpeed = speed;
@@ -49,10 +54,12 @@ void Dialogue::setDialogueSpeed(float speed)
 
 bool Dialogue::showNextDialogue()
 {
-	DialogueTree* next = currentDialogue == nullptr ? nullptr : currentDialogue->getNextDialogue();
+	currentDialogue = currentDialogue == nullptr ? nullptr : currentDialogue->getNextDialogue();
 
-	if (next != nullptr)
+	if (currentDialogue != nullptr)
 	{
+		this->updateLabels();
+
 		return true;
 	}
 
@@ -96,6 +103,7 @@ void Dialogue::runTypeWriterEffect()
 		}
 	}
 
+	// TODO: It would be cool to introduce some delay upon encountering a period. Of course w/ localization, this may be a unicode period (ie japanese)
 	this->label->schedule([=](float dt)
 	{
 		if (this->label->getLetter(it->second) != nullptr)
@@ -109,7 +117,11 @@ void Dialogue::runTypeWriterEffect()
 		{
 			this->label->unschedule(Dialogue::ScheduleKeyTypeWriterEffect);
 			mapTypeIdx.erase(it);
-			//// callback();
+
+			if (this->dialogueShownCallback != nullptr)
+			{
+				this->dialogueShownCallback();
+			}
 		}
 
 	}, this->dialogueSpeed, max - 1, 0, Dialogue::ScheduleKeyTypeWriterEffect);
