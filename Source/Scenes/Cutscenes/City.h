@@ -7,6 +7,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 #include "Scenes/Cutscenes/Cutscene.h"
+#include "Scenes/Cutscenes/Objects/StarLayer.h"
 
 using namespace cocos2d;
 
@@ -26,10 +27,12 @@ private:
 	void initializeListeners();
 
 	void cutscenePan();
+	void onDialogueShown();
 	void endCutscene();
 
 	LayerGradient* sky;
 	LayerColor* darkFilter;
+	StarLayer* starLayer;
 	InfiniteParallaxNode* cityBackground;
 	InfiniteParallaxNode* cityMidground;
 	Sprite* vaporCorp;

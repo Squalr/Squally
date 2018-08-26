@@ -5,6 +5,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 #include "Scenes/Cutscenes/Cutscene.h"
+#include "Scenes/Cutscenes/Objects/StarLayer.h"
 
 using namespace cocos2d;
 
@@ -20,24 +21,11 @@ protected:
 private:
 	void onEnter() override;
 	void update(float) override;
-	void createStars();
 	void initializePositions();
 	void initializeListeners();
 	void endCutscene();
 
-	enum Stars {
-		StarSmall,
-		StarMedium,
-		StarLarge,
-		StarShineSmall,
-		StarShineSmallHallow,
-		StarShineLarge,
-		StarShineExtraLarge,
-	};
-
-	static std::map<Stars, int> frequencyMap;
-
-	Node* starsLayer;
+	StarLayer* starLayer;
 	Sprite* earth;
 	Sprite* mars;
 	Sprite* weaver1;

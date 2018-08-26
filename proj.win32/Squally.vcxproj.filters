@@ -184,6 +184,9 @@
     <Filter Include="Source\Engine\Dialogue">
       <UniqueIdentifier>{078433c5-f484-433d-8473-904b5aaf952e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Scenes\Cutscenes\Objects">
+      <UniqueIdentifier>{9e2a88ed-4fde-4844-b076-4dc30e163506}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Resources.cpp">
@@ -915,6 +918,9 @@
     </ClCompile>
     <ClCompile Include="..\Source\Engine\Dialogue\Dialogue.cpp">
       <Filter>Source\Engine\Dialogue</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\StarLayer.cpp">
+      <Filter>Source\Scenes\Cutscenes\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1686,6 +1692,9 @@
     </ClInclude>
     <ClInclude Include="..\Source\Engine\Dialogue\Dialogue.h">
       <Filter>Source\Engine\Dialogue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\StarLayer.h">
+      <Filter>Source\Scenes\Cutscenes\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
