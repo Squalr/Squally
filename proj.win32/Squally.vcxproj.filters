@@ -910,9 +910,6 @@
     <ClCompile Include="..\Source\Scenes\Cutscenes\VaporWeb.cpp">
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Cutscenes\City.cpp">
-      <Filter>Source\Scenes\Cutscenes</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Engine\Dialogue\DialogueTree.cpp">
       <Filter>Source\Engine\Dialogue</Filter>
     </ClCompile>
@@ -921,6 +918,18 @@
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\StarLayer.cpp">
       <Filter>Source\Scenes\Cutscenes\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\FlyingCar.cpp">
+      <Filter>Source\Scenes\Cutscenes\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\VaporCorp.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\NeonCity.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\BoardMembers.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1684,9 +1693,6 @@
     <ClInclude Include="..\Source\Scenes\Cutscenes\VaporWeb.h">
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Cutscenes\City.h">
-      <Filter>Source\Scenes\Cutscenes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Engine\Dialogue\DialogueTree.h">
       <Filter>Source\Engine\Dialogue</Filter>
     </ClInclude>
@@ -1695,6 +1701,18 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\StarLayer.h">
       <Filter>Source\Scenes\Cutscenes\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\FlyingCar.h">
+      <Filter>Source\Scenes\Cutscenes\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\VaporCorp.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\NeonCity.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\BoardMembers.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

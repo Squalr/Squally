@@ -175,11 +175,17 @@ void SceneDirector::onGameNavigateLoadCutscene(EventCustom* eventCustom)
 
 	switch (args->cutscene)
 	{
-	case NavigationEvents::CutsceneEnum::CutsceneCity:
-		this->cutscene = City::create();
+	case NavigationEvents::CutsceneEnum::CutsceneBoardMembers:
+		this->cutscene = BoardMembers::create();
 		break;
 	case NavigationEvents::CutsceneEnum::CutsceneIntroSpace:
 		this->cutscene = IntroSpace::create();
+		break;
+	case NavigationEvents::CutsceneEnum::CutsceneNeonCity:
+		this->cutscene = NeonCity::create();
+		break;
+	case NavigationEvents::CutsceneEnum::CutsceneVaporCorp:
+		this->cutscene = VaporCorp::create();
 		break;
 	case NavigationEvents::CutsceneEnum::CutsceneVaporWeb:
 		this->cutscene = VaporWeb::create();

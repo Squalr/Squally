@@ -3,7 +3,6 @@
 
 #include "Engine/Dialogue/Dialogue.h"
 #include "Engine/Input/InputManager.h"
-#include "Engine/Rendering/Components/InfiniteParallaxNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 #include "Scenes/Cutscenes/Cutscene.h"
@@ -11,14 +10,14 @@
 
 using namespace cocos2d;
 
-class City : public Cutscene
+class BoardMembers : public Cutscene
 {
 public:
-	static City* create();
+	static BoardMembers* create();
 
 protected:
-	City();
-	~City();
+	BoardMembers();
+	~BoardMembers();
 
 private:
 	void onEnter() override;
@@ -26,21 +25,14 @@ private:
 	void initializePositions();
 	void initializeListeners();
 
-	void cutscenePan();
 	void onDialogueShown();
 	void endCutscene();
 
-	LayerGradient* sky;
-	LayerColor* darkFilter;
-	StarLayer* starLayer;
-	InfiniteParallaxNode* cityBackground;
-	InfiniteParallaxNode* cityMidground;
-	Sprite* vaporCorp;
-	InfiniteParallaxNode* cityForeground;
+	Sprite* background;
 
 	LayerColor* dialoguePlate;
 	Dialogue* dialogue;
 	Label* escapeLabel;
 
-	static const float vaporCorpOffset;
+	static const Vec2 panOffset;
 };
