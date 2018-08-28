@@ -127,7 +127,7 @@
                 "da": "",
                 "de": "",
                 "el": "",
-				"en": "Self-flying cars. Home assistant robots. AI doctors. A marvel of technical innovation.",
+                "en": "A marvel of technical innovation.",
                 "es": "",
                 "fi": "",
                 "fr": "",
@@ -149,7 +149,71 @@
                 "zh-CN": "",
                 "zh-TW": "",
                 "ar": ""
-              }
+              },
+              "Links": [
+                {
+                  "Choice": {
+                    "bg": "",
+                    "cs": "",
+                    "da": "",
+                    "de": "",
+                    "el": "",
+                    "en": "",
+                    "es": "",
+                    "fi": "",
+                    "fr": "",
+                    "it": "",
+                    "hu": "",
+                    "ja": "",
+                    "ko": "",
+                    "nl": "",
+                    "no": "",
+                    "pt": "",
+                    "pl": "",
+                    "pt-BR": "",
+                    "ro": "",
+                    "ru": "",
+                    "sv": "",
+                    "tr": "",
+                    "th": "",
+                    "uk": "",
+                    "zh-CN": "",
+                    "zh-TW": "",
+                    "ar": ""
+                  },
+                  "Node": {
+                    "Dialogue": {
+                      "bg": "",
+                      "cs": "",
+                      "da": "",
+                      "de": "",
+                      "el": "",
+                      "en": "The world relies on their self-flying cars...",
+                      "es": "",
+                      "fi": "",
+                      "fr": "",
+                      "it": "",
+                      "hu": "",
+                      "ja": "",
+                      "ko": "",
+                      "nl": "",
+                      "no": "",
+                      "pt": "",
+                      "pl": "",
+                      "pt-BR": "",
+                      "ro": "",
+                      "ru": "",
+                      "sv": "",
+                      "tr": "",
+                      "th": "",
+                      "uk": "",
+                      "zh-CN": "",
+                      "zh-TW": "",
+                      "ar": ""
+                    }
+                  }
+                }
+              ]
             }
           }
         ]

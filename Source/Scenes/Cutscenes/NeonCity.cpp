@@ -131,7 +131,7 @@ void NeonCity::onDialogueShown()
 		CallFunc::create([=]() {
 		if (!this->dialogue->showNextDialogue())
 		{
-			NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneBoardMembers);
+			NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneHomeAssistantRobot);
 		}
 		}),
 		nullptr
