@@ -178,11 +178,17 @@ void SceneDirector::onGameNavigateLoadCutscene(EventCustom* eventCustom)
 	case NavigationEvents::CutsceneEnum::CutsceneBoardMembers:
 		this->cutscene = BoardMembers::create();
 		break;
+	case NavigationEvents::CutsceneEnum::CutsceneHomeAssistantRobot:
+		this->cutscene = HomeAssistantRobot::create();
+		break;
 	case NavigationEvents::CutsceneEnum::CutsceneIntroSpace:
 		this->cutscene = IntroSpace::create();
 		break;
 	case NavigationEvents::CutsceneEnum::CutsceneNeonCity:
 		this->cutscene = NeonCity::create();
+		break;
+	case NavigationEvents::CutsceneEnum::CutsceneRobotDoctor:
+		this->cutscene = RobotDoctor::create();
 		break;
 	case NavigationEvents::CutsceneEnum::CutsceneVaporCorp:
 		this->cutscene = VaporCorp::create();

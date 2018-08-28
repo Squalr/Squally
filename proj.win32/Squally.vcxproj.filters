@@ -931,6 +931,12 @@
     <ClCompile Include="..\Source\Scenes\Cutscenes\BoardMembers.cpp">
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\HomeAssistantRobot.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\RobotDoctor.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Resources.h">
@@ -1712,6 +1718,12 @@
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Cutscenes\BoardMembers.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\HomeAssistantRobot.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\RobotDoctor.h">
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
   </ItemGroup>

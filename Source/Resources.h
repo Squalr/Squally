@@ -81,7 +81,10 @@ public:
 	static const std::string Cutscenes_General_Stars_StarShineSmall_0000;
 	static const std::string Cutscenes_General_Stars_StarShineSmall_0001;
 	static const std::string Cutscenes_General_Stars_StarSmall;
+	static const std::string Cutscenes_HomeAssistant_BrokenPlate;
+	static const std::string Cutscenes_HomeAssistant_Kitchen;
 	static const std::string Cutscenes_HomeAssistant_Robot;
+	static const std::string Cutscenes_HomeAssistant_RobotEvil;
 	static const std::string Cutscenes_IntroSpace_Earth;
 	static const std::string Cutscenes_IntroSpace_Mars;
 	static const std::string Cutscenes_IntroSpace_Weaver_0000;
@@ -3983,7 +3986,10 @@ public:
 	static const std::string Particles_WarpGate;
 	static const std::string Particles_WarpPoint;
 	static const std::string Particles_Wind;
+	static const std::string Strings_Dialogue_CutsceneBoardMembers;
+	static const std::string Strings_Dialogue_CutsceneHomeAssistantRobot;
 	static const std::string Strings_Dialogue_CutsceneNeonCity;
+	static const std::string Strings_Dialogue_CutsceneRobotDoctors;
 	static const std::string Strings_Dialogue_TutorialExactScanI;
 	static const std::string Strings_Menus;
 	static const std::string Maps_Isometric_Overworld;

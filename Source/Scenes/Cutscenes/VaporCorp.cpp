@@ -106,7 +106,10 @@ void VaporCorp::onDialogueShown()
 	this->dialogue->runAction(Sequence::create(
 		DelayTime::create(2.0f),
 		CallFunc::create([=]() {
-			this->dialogue->showNextDialogue();
+			if (!this->dialogue->showNextDialogue())
+			{
+				NavigationEvents::loadMap(Resources::Maps_Isometric_Sanctum);
+			}
 		}),
 		nullptr
 	));

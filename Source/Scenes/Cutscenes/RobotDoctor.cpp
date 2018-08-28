@@ -1,24 +1,24 @@
-#include "BoardMembers.h"
+#include "RobotDoctor.h"
 
-const Vec2 BoardMembers::panOffset = Vec2(-608.0f, 256.0f);
+const Vec2 RobotDoctor::panOffset = Vec2(-608.0f, 256.0f);
 
-BoardMembers* BoardMembers::create()
+RobotDoctor* RobotDoctor::create()
 {
-	BoardMembers* instance = new BoardMembers();
+	RobotDoctor* instance = new RobotDoctor();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BoardMembers::BoardMembers()
+RobotDoctor::RobotDoctor()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->background = Sprite::create(Resources::Cutscenes_BoardMembers_BoardMembers);
+	this->background = Sprite::create(Resources::Cutscenes_HomeAssistant_Kitchen);
 
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
-	this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneBoardMembers, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneRobotDoctors, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
@@ -31,11 +31,11 @@ BoardMembers::BoardMembers()
 	this->addChild(this->escapeLabel);
 }
 
-BoardMembers::~BoardMembers()
+RobotDoctor::~RobotDoctor()
 {
 }
 
-void BoardMembers::onEnter()
+void RobotDoctor::onEnter()
 {
 	Cutscene::onEnter();
 
@@ -44,7 +44,7 @@ void BoardMembers::onEnter()
 	this->initializeListeners();
 }
 
-void BoardMembers::initializePositions()
+void RobotDoctor::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -54,14 +54,14 @@ void BoardMembers::initializePositions()
 	this->escapeLabel->setPosition(Vec2(visibleSize.width - 24.0f, 24.0f));
 }
 
-void BoardMembers::initializeListeners()
+void RobotDoctor::initializeListeners()
 {
 	this->getEventDispatcher()->removeEventListenersForTarget(this);
 
-	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(BoardMembers::onDialogueShown, this));
+	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(RobotDoctor::onDialogueShown, this));
 }
 
-void BoardMembers::update(float dt)
+void RobotDoctor::update(float dt)
 {
 	FadeScene::update(dt);
 
@@ -71,19 +71,19 @@ void BoardMembers::update(float dt)
 	}
 }
 
-void BoardMembers::endCutscene()
+void RobotDoctor::endCutscene()
 {
 	NavigationEvents::loadMap(Resources::Maps_Isometric_Sanctum);
 }
 
-void BoardMembers::onDialogueShown()
+void RobotDoctor::onDialogueShown()
 {
 	this->dialogue->runAction(Sequence::create(
 		DelayTime::create(2.0f),
 		CallFunc::create([=]() {
 			if (!this->dialogue->showNextDialogue())
 			{
-				NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneVaporCorp);
+				NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneBoardMembers);
 			}
 		}),
 		nullptr
