@@ -118,6 +118,7 @@ public:
 	static const std::string Cutscenes_NeonCity_FlyingCars_Viper_0001;
 	static const std::string Cutscenes_NeonCity_FlyingCars_Viper_0002;
 	static const std::string Cutscenes_NeonCity_FlyingCars_Viper_0003;
+	static const std::string Cutscenes_RobotDoctor_RobotDoctor;
 	static const std::string Cutscenes_VaporCorp_CityView;
 	static const std::string Cutscenes_VaporCorp_Controls;
 	static const std::string Cutscenes_VaporCorp_Lab;
