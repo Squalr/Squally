@@ -117,6 +117,7 @@ const std::string Resources::Cutscenes_NeonCity_FlyingCars_Viper_0000 = "Cutscen
 const std::string Resources::Cutscenes_NeonCity_FlyingCars_Viper_0001 = "Cutscenes\\NeonCity\\FlyingCars\\Viper_0001.png";
 const std::string Resources::Cutscenes_NeonCity_FlyingCars_Viper_0002 = "Cutscenes\\NeonCity\\FlyingCars\\Viper_0002.png";
 const std::string Resources::Cutscenes_NeonCity_FlyingCars_Viper_0003 = "Cutscenes\\NeonCity\\FlyingCars\\Viper_0003.png";
+const std::string Resources::Cutscenes_RobotDoctor_RobotDoctor = "Cutscenes\\RobotDoctor\\RobotDoctor.png";
 const std::string Resources::Cutscenes_VaporCorp_CityView = "Cutscenes\\VaporCorp\\CityView.png";
 const std::string Resources::Cutscenes_VaporCorp_Controls = "Cutscenes\\VaporCorp\\Controls.png";
 const std::string Resources::Cutscenes_VaporCorp_Lab = "Cutscenes\\VaporCorp\\Lab.png";

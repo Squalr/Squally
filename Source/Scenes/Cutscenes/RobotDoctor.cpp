@@ -15,7 +15,7 @@ RobotDoctor::RobotDoctor()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->background = Sprite::create(Resources::Cutscenes_HomeAssistant_Kitchen);
+	this->background = Sprite::create(Resources::Cutscenes_RobotDoctor_RobotDoctor);
 
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
 	this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneRobotDoctors, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
