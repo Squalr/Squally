@@ -2,23 +2,34 @@
 
 const Vec2 RobotDoctor::panOffset = Vec2(-608.0f, 256.0f);
 
-RobotDoctor* RobotDoctor::create()
+RobotDoctor* RobotDoctor::create(RobotDoctorScene robotDoctorScene)
 {
-	RobotDoctor* instance = new RobotDoctor();
+	RobotDoctor* instance = new RobotDoctor(robotDoctorScene);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-RobotDoctor::RobotDoctor()
+RobotDoctor::RobotDoctor(RobotDoctorScene robotDoctorScene)
 {
+	this->activeScene = robotDoctorScene;
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->background = Sprite::create(Resources::Cutscenes_RobotDoctor_RobotDoctor);
 
+	switch (this->activeScene)
+	{
+	case RobotDoctorScene::Intro:
+		this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneRobotDoctor, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+		break;
+	case RobotDoctorScene::Singularity:
+		this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneRobotDoctorSingularity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+		break;
+	}
+
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
-	this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneRobotDoctors, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
@@ -83,7 +94,15 @@ void RobotDoctor::onDialogueShown()
 		CallFunc::create([=]() {
 			if (!this->dialogue->showNextDialogue())
 			{
-				NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneBoardMembers);
+				switch(this->activeScene)
+				{
+				case RobotDoctorScene::Intro:
+					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneNeonCityPt2);
+					break;
+				case RobotDoctorScene::Singularity:
+					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneVaporWeb);
+					break;
+				}
 			}
 		}),
 		nullptr

@@ -27,10 +27,14 @@ public:
 	enum CutsceneEnum {
 		CutsceneBoardMembers,
 		CutsceneHomeAssistantRobot,
+		CutsceneHomeAssistantRobotPt2,
 		CutsceneIntroSpace,
 		CutsceneNeonCity,
+		CutsceneNeonCityPt2,
+		CutsceneNeonCityPt3,
 		CutsceneRobotDoctor,
-		CutsceneVaporCorp,
+		CutsceneRobotDoctorPt2,
+		CutsceneVaporLabs,
 		CutsceneVaporWeb,
 	};
 

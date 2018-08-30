@@ -2,23 +2,38 @@
 
 const Vec2 HomeAssistantRobot::panOffset = Vec2(-608.0f, 256.0f);
 
-HomeAssistantRobot* HomeAssistantRobot::create()
+HomeAssistantRobot* HomeAssistantRobot::create(HomeAssistantRobotScene homeAssistantRobotScene)
 {
-	HomeAssistantRobot* instance = new HomeAssistantRobot();
+	HomeAssistantRobot* instance = new HomeAssistantRobot(homeAssistantRobotScene);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HomeAssistantRobot::HomeAssistantRobot()
+HomeAssistantRobot::HomeAssistantRobot(HomeAssistantRobotScene homeAssistantRobotScene)
 {
+	this->activeScene = homeAssistantRobotScene;
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->background = Sprite::create(Resources::Cutscenes_HomeAssistant_Kitchen);
+	this->brokenPlate = Sprite::create(Resources::Cutscenes_HomeAssistant_BrokenPlate);
+
+	switch (this->activeScene)
+	{
+	case HomeAssistantRobotScene::Intro:
+		this->robot = Sprite::create(Resources::Cutscenes_HomeAssistant_Robot);
+		this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneHomeAssistantRobot, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+		this->brokenPlate->setVisible(false);
+		break;
+	case HomeAssistantRobotScene::Singularity:
+		this->robot = Sprite::create(Resources::Cutscenes_HomeAssistant_RobotEvil);
+		this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneHomeAssistantRobotSingularity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+		break;
+	}
 
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
-	this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneHomeAssistantRobot, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
@@ -26,6 +41,8 @@ HomeAssistantRobot::HomeAssistantRobot()
 	this->addChild(InputManager::claimInstance());
 
 	this->addChild(this->background);
+	this->addChild(this->robot);
+	this->addChild(this->brokenPlate);
 	this->addChild(this->dialoguePlate);
 	this->addChild(this->dialogue);
 	this->addChild(this->escapeLabel);
@@ -42,6 +59,17 @@ void HomeAssistantRobot::onEnter()
 	this->scheduleUpdate();
 	this->initializePositions();
 	this->initializeListeners();
+
+	const float duration = 1.5f;
+	Vec2 start = this->robot->getPosition();
+	Vec2 end = start + Vec2(0.0f, 32.0f);
+
+	this->robot->runAction(RepeatForever::create(Sequence::create(
+		EaseSineInOut::create(MoveTo::create(duration, end)),
+		EaseSineInOut::create(MoveTo::create(duration, start)),
+		nullptr,
+		nullptr
+	)));
 }
 
 void HomeAssistantRobot::initializePositions()
@@ -49,6 +77,8 @@ void HomeAssistantRobot::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->robot->setPosition(Vec2(visibleSize.width / 2.0f - 420.0f, visibleSize.height / 2.0f - 96.0f));
+	this->brokenPlate->setPosition(Vec2(visibleSize.width / 2.0f - 320.0f, visibleSize.height / 2.0f - 432.0f));
 	this->dialoguePlate->setPosition(Vec2(visibleSize.width / 2.0f - this->dialoguePlate->getContentSize().width / 2.0f, 0.0f));
 	this->dialogue->setPosition(Vec2(24.0f, this->dialoguePlate->getContentSize().height - 24.0f));
 	this->escapeLabel->setPosition(Vec2(visibleSize.width - 24.0f, 24.0f));
@@ -83,7 +113,15 @@ void HomeAssistantRobot::onDialogueShown()
 		CallFunc::create([=]() {
 			if (!this->dialogue->showNextDialogue())
 			{
-				NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneRobotDoctor);
+				switch (this->activeScene)
+				{
+				case HomeAssistantRobotScene::Intro:
+					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneRobotDoctor);
+					break;
+				case HomeAssistantRobotScene::Singularity:
+					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneRobotDoctorPt2);
+					break;
+				}
 			}
 		}),
 		nullptr

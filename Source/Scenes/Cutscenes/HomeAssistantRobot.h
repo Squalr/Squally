@@ -13,10 +13,15 @@ using namespace cocos2d;
 class HomeAssistantRobot : public Cutscene
 {
 public:
-	static HomeAssistantRobot* create();
+	enum HomeAssistantRobotScene {
+		Intro,
+		Singularity
+	};
+
+	static HomeAssistantRobot* create(HomeAssistantRobotScene homeAssistantRobotScene);
 
 protected:
-	HomeAssistantRobot();
+	HomeAssistantRobot(HomeAssistantRobotScene homeAssistantRobotScene);
 	~HomeAssistantRobot();
 
 private:
@@ -28,7 +33,11 @@ private:
 	void onDialogueShown();
 	void endCutscene();
 
+	HomeAssistantRobotScene activeScene;
+
 	Sprite* background;
+	Sprite* robot;
+	Sprite* brokenPlate;
 
 	LayerColor* dialoguePlate;
 	Dialogue* dialogue;

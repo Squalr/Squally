@@ -922,9 +922,6 @@
     <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\FlyingCar.cpp">
       <Filter>Source\Scenes\Cutscenes\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Cutscenes\VaporCorp.cpp">
-      <Filter>Source\Scenes\Cutscenes</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Scenes\Cutscenes\NeonCity.cpp">
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
@@ -935,6 +932,9 @@
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Cutscenes\RobotDoctor.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\VaporLabs.cpp">
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1711,9 +1711,6 @@
     <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\FlyingCar.h">
       <Filter>Source\Scenes\Cutscenes\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Cutscenes\VaporCorp.h">
-      <Filter>Source\Scenes\Cutscenes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Scenes\Cutscenes\NeonCity.h">
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
@@ -1724,6 +1721,9 @@
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Cutscenes\RobotDoctor.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\VaporLabs.h">
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
   </ItemGroup>

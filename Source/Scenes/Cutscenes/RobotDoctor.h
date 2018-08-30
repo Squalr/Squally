@@ -13,10 +13,15 @@ using namespace cocos2d;
 class RobotDoctor : public Cutscene
 {
 public:
-	static RobotDoctor* create();
+	enum RobotDoctorScene {
+		Intro,
+		Singularity
+	};
+
+	static RobotDoctor* create(RobotDoctorScene robotDoctorScene);
 
 protected:
-	RobotDoctor();
+	RobotDoctor(RobotDoctorScene robotDoctorScene);
 	~RobotDoctor();
 
 private:
@@ -27,6 +32,8 @@ private:
 
 	void onDialogueShown();
 	void endCutscene();
+
+	RobotDoctorScene activeScene;
 
 	Sprite* background;
 
