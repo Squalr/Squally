@@ -2,17 +2,19 @@
 
 const float NeonCity::vaporCorpOffset = 1280;
 
-NeonCity* NeonCity::create()
+NeonCity* NeonCity::create(NeonCityScene neonCityScene)
 {
-	NeonCity* instance = new NeonCity();
+	NeonCity* instance = new NeonCity(neonCityScene);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-NeonCity::NeonCity()
+NeonCity::NeonCity(NeonCityScene neonCityScene)
 {
+	this->activeScene = neonCityScene;
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->sky = LayerGradient::create(Color4B::ORANGE, Color4B(70, 0, 131, 255), Vec2(0.0f, 1.0f));
@@ -45,10 +47,22 @@ NeonCity::NeonCity()
 	this->cityForeground->setScale(0.35f);
 
 	this->dialoguePlate = LayerColor::create(Color4B(16, 0, 16, 255), visibleSize.width, 256.0f);
-	this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneNeonCity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
+
+	switch (this->activeScene)
+	{
+	case NeonCityScene::Intro:
+		this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneNeonCity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+		break;
+	case NeonCityScene::Return:
+		this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneNeonCityReturn, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+		break;
+	case NeonCityScene::Singularity:
+		this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneNeonCitySingularity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+		break;
+	}
 
 	this->addChild(InputManager::claimInstance());
 
@@ -131,7 +145,18 @@ void NeonCity::onDialogueShown()
 		CallFunc::create([=]() {
 		if (!this->dialogue->showNextDialogue())
 		{
-			NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneHomeAssistantRobot);
+			switch(this->activeScene)
+			{
+			case NeonCityScene::Intro:
+				NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneHomeAssistantRobot);
+				break;
+			case NeonCityScene::Return:
+				NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneBoardMembers);
+				break;
+			case NeonCityScene::Singularity:
+				NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneHomeAssistantRobotPt2);
+				break;
+			}
 		}
 		}),
 		nullptr

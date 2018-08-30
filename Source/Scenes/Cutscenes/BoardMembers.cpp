@@ -83,7 +83,7 @@ void BoardMembers::onDialogueShown()
 		CallFunc::create([=]() {
 			if (!this->dialogue->showNextDialogue())
 			{
-				NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneVaporCorp);
+				NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneVaporLabs);
 			}
 		}),
 		nullptr

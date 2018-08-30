@@ -10,14 +10,14 @@
 
 using namespace cocos2d;
 
-class VaporCorp : public Cutscene
+class VaporLabs : public Cutscene
 {
 public:
-	static VaporCorp* create();
+	static VaporLabs* create();
 
 protected:
-	VaporCorp();
-	~VaporCorp();
+	VaporLabs();
+	~VaporLabs();
 
 private:
 	void onEnter() override;

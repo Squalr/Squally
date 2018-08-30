@@ -5,5 +5,5 @@
 #include "IntroSpace.h"
 #include "NeonCity.h"
 #include "RobotDoctor.h"
-#include "VaporCorp.h"
+#include "VaporLabs.h"
 #include "VaporWeb.h"

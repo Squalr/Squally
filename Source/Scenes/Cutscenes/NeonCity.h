@@ -15,10 +15,16 @@ using namespace cocos2d;
 class NeonCity : public Cutscene
 {
 public:
-	static NeonCity* create();
+	enum NeonCityScene {
+		Intro,
+		Return,
+		Singularity
+	};
+
+	static NeonCity* create(NeonCityScene neonCityScene);
 
 protected:
-	NeonCity();
+	NeonCity(NeonCityScene neonCityScene);
 	~NeonCity();
 
 private:
@@ -30,6 +36,8 @@ private:
 	void cutscenePan();
 	void onDialogueShown();
 	void endCutscene();
+
+	NeonCityScene activeScene;
 
 	LayerGradient* sky;
 	LayerColor* darkFilter;
