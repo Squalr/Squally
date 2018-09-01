@@ -1,6 +1,6 @@
 #include "Dialogue.h"
 
-const std::string Dialogue::ScheduleKeyTypeWriterEffect = "TYPE_WRITER_EFFECT";
+const std::string Dialogue::ScheduleKeyTypeWriterEffect = "SCHEDULE_TYPE_WRITER_EFFECT";
 const float Dialogue::DefaultTypeSpeed = 0.04f;
 
 Dialogue* Dialogue::create(std::string filePath, std::string fontResource, Size size)

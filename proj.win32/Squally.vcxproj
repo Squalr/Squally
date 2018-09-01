@@ -335,7 +335,9 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Scenes\Cutscenes\NeonCity.cpp" />
     <ClCompile Include="..\Source\Scenes\Cutscenes\Cutscene.cpp" />
     <ClCompile Include="..\Source\Scenes\Cutscenes\IntroSpace.cpp" />
+    <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\Explosion.cpp" />
     <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\FlyingCar.cpp" />
+    <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\Smoke.cpp" />
     <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\StarLayer.cpp" />
     <ClCompile Include="..\Source\Scenes\Cutscenes\BoardMembers.cpp" />
     <ClCompile Include="..\Source\Scenes\Cutscenes\RobotDoctor.cpp" />
@@ -597,7 +599,9 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Scenes\Cutscenes\Cutscene.h" />
     <ClInclude Include="..\Source\Scenes\Cutscenes\Cutscenes.h" />
     <ClInclude Include="..\Source\Scenes\Cutscenes\IntroSpace.h" />
+    <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\Explosion.h" />
     <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\FlyingCar.h" />
+    <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\Smoke.h" />
     <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\StarLayer.h" />
     <ClInclude Include="..\Source\Scenes\Cutscenes\BoardMembers.h" />
     <ClInclude Include="..\Source\Scenes\Cutscenes\RobotDoctor.h" />

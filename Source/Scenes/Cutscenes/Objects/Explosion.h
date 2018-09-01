@@ -3,29 +3,21 @@
 
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
-#include "Smoke.h"
 
 using namespace cocos2d;
 
-class FlyingCar : public Node
+class Explosion : public Node
 {
 public:
-	enum CarType {
-		Junker,
-		Viper,
-		Propeller
-	};
-
-	static FlyingCar* create(CarType carType, Vec2 speed);
+	static Explosion* create(Vec2 speed);
 
 private:
-	FlyingCar(CarType carType, Vec2 speed);
-	~FlyingCar();
+	Explosion(Vec2 speed);
+	~Explosion();
 
 	void onEnter() override;
 	void update(float dt) override;
 
-	Smoke* smoke;
 	Sprite* carSprite;
 	Vec2 flySpeed;
 };

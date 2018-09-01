@@ -12,6 +12,7 @@ FlyingCar* FlyingCar::create(CarType carType, Vec2 speed)
 FlyingCar::FlyingCar(CarType carType, Vec2 speed)
 {
 	this->flySpeed = speed;
+	this->smoke = nullptr;
 	this->carSprite = nullptr;
 
 	switch (carType)
@@ -29,6 +30,8 @@ FlyingCar::FlyingCar(CarType carType, Vec2 speed)
 
 			animation->setDelayPerUnit(0.2f);
 			this->carSprite->runAction(RepeatForever::create(Sequence::create(Animate::create(animation), nullptr)));
+
+			this->smoke = Smoke::create(this->carSprite);
 			break;
 		}
 		case CarType::Viper:
@@ -44,6 +47,8 @@ FlyingCar::FlyingCar(CarType carType, Vec2 speed)
 
 			animation->setDelayPerUnit(0.2f);
 			this->carSprite->runAction(RepeatForever::create(Sequence::create(Animate::create(animation), nullptr)));
+
+			this->smoke = Smoke::create(this->carSprite);
 			break;
 		}
 		case CarType::Propeller:
@@ -61,6 +66,11 @@ FlyingCar::FlyingCar(CarType carType, Vec2 speed)
 			this->carSprite->runAction(RepeatForever::create(Sequence::create(Animate::create(animation), nullptr)));
 			break;
 		}
+	}
+
+	if (this->smoke != nullptr)
+	{
+		this->addChild(this->smoke);
 	}
 
 	if (this->carSprite != nullptr)
