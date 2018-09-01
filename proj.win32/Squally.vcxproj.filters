@@ -937,6 +937,12 @@
     <ClCompile Include="..\Source\Scenes\Cutscenes\VaporLabs.cpp">
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\Explosion.cpp">
+      <Filter>Source\Scenes\Cutscenes\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\Smoke.cpp">
+      <Filter>Source\Scenes\Cutscenes\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Resources.h">
@@ -1725,6 +1731,12 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Cutscenes\VaporLabs.h">
       <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\Explosion.h">
+      <Filter>Source\Scenes\Cutscenes\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\Smoke.h">
+      <Filter>Source\Scenes\Cutscenes\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

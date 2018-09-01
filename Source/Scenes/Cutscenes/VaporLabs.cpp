@@ -1,6 +1,6 @@
 #include "VaporLabs.h"
 
-const Vec2 VaporLabs::panOffset = Vec2(-608.0f, 256.0f);
+const Vec2 VaporLabs::panOffset = Vec2(-512.0f, 24.0f);
 
 VaporLabs* VaporLabs::create()
 {
@@ -104,7 +104,7 @@ void VaporLabs::endCutscene()
 void VaporLabs::onDialogueShown()
 {
 	this->dialogue->runAction(Sequence::create(
-		DelayTime::create(2.0f),
+		DelayTime::create(4.0f),
 		CallFunc::create([=]() {
 			if (!this->dialogue->showNextDialogue())
 			{
@@ -117,5 +117,5 @@ void VaporLabs::onDialogueShown()
 
 void VaporLabs::cutscenePan()
 {
-	this->contentLayer->runAction(EaseSineInOut::create(MoveTo::create(5.0f, Vec2::ZERO)));
+	this->contentLayer->runAction(EaseSineInOut::create(MoveTo::create(4.0f, Vec2::ZERO)));
 }

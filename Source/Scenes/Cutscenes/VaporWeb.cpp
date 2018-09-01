@@ -183,7 +183,7 @@ void VaporWeb::update(float dt)
 
 void VaporWeb::endCutscene()
 {
-	NavigationEvents::loadMap(Resources::Maps_Isometric_Sanctum);
+	NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneIntroSpace);
 }
 
 void VaporWeb::cutsceneIntro()

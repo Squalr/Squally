@@ -165,9 +165,20 @@ void NeonCity::onDialogueShown()
 
 void NeonCity::cutscenePan()
 {
+	float moveDuration = 5.0f;
+
+	switch (this->activeScene)
+	{
+	case NeonCityScene::Intro:
+		break;
+	case NeonCityScene::Return:
+	case NeonCityScene::Singularity:
+		moveDuration = 0.0f;
+		break;
+	}
+
 	CallFunc* panCamera = CallFunc::create([=]()
 	{
-		const float moveDuration = 5.0f;
 		const float deltaX = NeonCity::vaporCorpOffset;
 
 		this->sky->runAction(EaseSineInOut::create(ScaleTo::create(moveDuration, 4.0f)));
