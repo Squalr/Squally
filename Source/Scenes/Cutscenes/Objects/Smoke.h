@@ -11,6 +11,8 @@ class Smoke : public Node
 public:
 	static Smoke* create(Node* followTarget);
 
+	void stopFollow();
+
 private:
 	Smoke(Node* followTarget);
 	~Smoke();

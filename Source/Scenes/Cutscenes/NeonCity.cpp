@@ -23,10 +23,11 @@ NeonCity::NeonCity(NeonCityScene neonCityScene)
 	this->cityBackground = InfiniteParallaxNode::create(Resources::Cutscenes_NeonCity_CityBackground);
 	this->cityMidground = InfiniteParallaxNode::create(Resources::Cutscenes_NeonCity_CityMidground);
 	this->vaporCorp = Sprite::create(Resources::Cutscenes_NeonCity_VaporCorp);
-	this->junker1 = FlyingCar::create(FlyingCar::CarType::Junker, Vec2(196.0f, 0.0f));
-	this->viper1 = FlyingCar::create(FlyingCar::CarType::Viper, Vec2(-256.0f, 0.0f));
-	this->viper2 = FlyingCar::create(FlyingCar::CarType::Viper, Vec2(-256.0f, 0.0f));
-	this->propeller1 = FlyingCar::create(FlyingCar::CarType::Propeller, Vec2(172.0f, 0.0f));
+	this->dialoguePlate = LayerColor::create(Color4B(16, 0, 16, 255), visibleSize.width, 256.0f);
+	this->junker1 = FlyingCar::create(FlyingCar::CarType::Junker, Vec2(196.0f, 0.0f), this->dialoguePlate->getContentSize().height);
+	this->viper1 = FlyingCar::create(FlyingCar::CarType::Viper, Vec2(-256.0f, 0.0f), this->dialoguePlate->getContentSize().height);
+	this->viper2 = FlyingCar::create(FlyingCar::CarType::Viper, Vec2(-256.0f, 0.0f), this->dialoguePlate->getContentSize().height);
+	this->propeller1 = FlyingCar::create(FlyingCar::CarType::Propeller, Vec2(172.0f, 0.0f), this->dialoguePlate->getContentSize().height);
 	this->cityForeground = InfiniteParallaxNode::create(Resources::Cutscenes_NeonCity_CityForeground);
 
 	// Make this larger than the screen to maximize the initial orange light initially
@@ -46,7 +47,6 @@ NeonCity::NeonCity(NeonCityScene neonCityScene)
 	this->vaporCorp->setScale(1.0f);
 	this->cityForeground->setScale(0.35f);
 
-	this->dialoguePlate = LayerColor::create(Color4B(16, 0, 16, 255), visibleSize.width, 256.0f);
 	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
@@ -73,10 +73,10 @@ NeonCity::NeonCity(NeonCityScene neonCityScene)
 	this->addChild(this->cityMidground);
 	this->addChild(this->propeller1);
 	this->addChild(this->vaporCorp);
-	this->addChild(this->junker1);
 	this->addChild(this->viper1);
 	this->addChild(this->viper2);
 	this->addChild(this->cityForeground);
+	this->addChild(this->junker1);
 	this->addChild(this->dialoguePlate);
 	this->addChild(this->dialogue);
 	this->addChild(this->escapeLabel);
@@ -93,6 +93,31 @@ void NeonCity::onEnter()
 	this->scheduleUpdate();
 	this->initializePositions();
 	this->initializeListeners();
+
+	switch (this->activeScene)
+	{
+	case NeonCityScene::Intro:
+		break;
+	case NeonCityScene::Return:
+		break;
+	case NeonCityScene::Singularity:
+		this->viper1->crash();
+		this->propeller1->runAction(Sequence::create(
+			DelayTime::create(2.5f),
+			CallFunc::create([=]() {
+			this->propeller1->crash();
+		}),
+			nullptr
+			));
+		this->junker1->runAction(Sequence::create(
+			DelayTime::create(4.5f),
+			CallFunc::create([=]() {
+			this->junker1->crash();
+		}),
+			nullptr
+			));
+		break;
+	}
 
 	this->cutscenePan();
 }
@@ -140,27 +165,45 @@ void NeonCity::endCutscene()
 
 void NeonCity::onDialogueShown()
 {
-	this->dialogue->runAction(Sequence::create(
-		DelayTime::create(2.0f),
-		CallFunc::create([=]() {
-		if (!this->dialogue->showNextDialogue())
-		{
-			switch(this->activeScene)
-			{
-			case NeonCityScene::Intro:
-				NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneHomeAssistantRobot);
-				break;
-			case NeonCityScene::Return:
-				NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneBoardMembers);
-				break;
-			case NeonCityScene::Singularity:
-				NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneHomeAssistantRobotPt2);
-				break;
-			}
-		}
-		}),
-		nullptr
-	));
+	switch (this->activeScene)
+	{
+	case NeonCityScene::Intro:
+		this->dialogue->runAction(Sequence::create(
+			DelayTime::create(2.0f),
+			CallFunc::create([=]() {
+				if (!this->dialogue->showNextDialogue())
+				{
+					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneHomeAssistantRobot);
+				}
+			}),
+			nullptr
+			));
+		break;
+	case NeonCityScene::Return:
+		this->dialogue->runAction(Sequence::create(
+			DelayTime::create(3.0f),
+			CallFunc::create([=]() {
+				if (!this->dialogue->showNextDialogue())
+				{
+					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneBoardMembers);
+				}
+			}),
+			nullptr
+			));
+		break;
+	case NeonCityScene::Singularity:
+		this->dialogue->runAction(Sequence::create(
+			DelayTime::create(8.0f),
+			CallFunc::create([=]() {
+				if (!this->dialogue->showNextDialogue())
+				{
+					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneHomeAssistantRobotPt2);
+				}
+			}),
+			nullptr
+			));
+		break;
+	}
 }
 
 void NeonCity::cutscenePan()
