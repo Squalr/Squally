@@ -102,13 +102,15 @@ void NeonCity::onEnter()
 		break;
 	case NeonCityScene::Singularity:
 		this->viper1->crash();
+
 		this->propeller1->runAction(Sequence::create(
 			DelayTime::create(2.5f),
 			CallFunc::create([=]() {
 			this->propeller1->crash();
-		}),
+			}),
 			nullptr
-			));
+		));
+
 		this->junker1->runAction(Sequence::create(
 			DelayTime::create(4.5f),
 			CallFunc::create([=]() {
@@ -116,6 +118,15 @@ void NeonCity::onEnter()
 		}),
 			nullptr
 			));
+
+		this->viper2->runAction(Sequence::create(
+			DelayTime::create(5.5f),
+			CallFunc::create([=]() {
+			this->viper2->crash();
+		}),
+			nullptr
+			));
+
 		break;
 	}
 
