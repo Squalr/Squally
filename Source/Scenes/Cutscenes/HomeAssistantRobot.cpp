@@ -108,22 +108,31 @@ void HomeAssistantRobot::endCutscene()
 
 void HomeAssistantRobot::onDialogueShown()
 {
-	this->dialogue->runAction(Sequence::create(
-		DelayTime::create(2.0f),
-		CallFunc::create([=]() {
-			if (!this->dialogue->showNextDialogue())
-			{
-				switch (this->activeScene)
+	switch (this->activeScene)
+	{
+	case HomeAssistantRobotScene::Intro:
+		this->dialogue->runAction(Sequence::create(
+			DelayTime::create(3.0f),
+			CallFunc::create([=]() {
+				if (!this->dialogue->showNextDialogue())
 				{
-				case HomeAssistantRobotScene::Intro:
 					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneRobotDoctor);
-					break;
-				case HomeAssistantRobotScene::Singularity:
-					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneRobotDoctorPt2);
-					break;
 				}
-			}
-		}),
-		nullptr
-	));
+			}),
+			nullptr
+		));
+		break;
+	case HomeAssistantRobotScene::Singularity:
+		this->dialogue->runAction(Sequence::create(
+			DelayTime::create(3.0f),
+			CallFunc::create([=]() {
+				if (!this->dialogue->showNextDialogue())
+				{
+					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneRobotDoctorPt2);
+				}
+			}),
+			nullptr
+		));
+		break;
+	}
 }

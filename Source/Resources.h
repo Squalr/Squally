@@ -110,6 +110,7 @@ public:
 	static const std::string Cutscenes_NeonCity_FlyingCars_explosion_0009;
 	static const std::string Cutscenes_NeonCity_FlyingCars_explosion_0010;
 	static const std::string Cutscenes_NeonCity_FlyingCars_explosion_0011;
+	static const std::string Cutscenes_NeonCity_FlyingCars_explosion_0012;
 	static const std::string Cutscenes_NeonCity_FlyingCars_Junker_0000;
 	static const std::string Cutscenes_NeonCity_FlyingCars_Junker_0001;
 	static const std::string Cutscenes_NeonCity_FlyingCars_Junker_0002;
@@ -126,11 +127,16 @@ public:
 	static const std::string Cutscenes_NeonCity_FlyingCars_Smoke_0004;
 	static const std::string Cutscenes_NeonCity_FlyingCars_Smoke_0005;
 	static const std::string Cutscenes_NeonCity_FlyingCars_Smoke_0006;
+	static const std::string Cutscenes_NeonCity_FlyingCars_Smoke_0007;
+	static const std::string Cutscenes_NeonCity_FlyingCars_Smoke_0008;
 	static const std::string Cutscenes_NeonCity_FlyingCars_Viper_0000;
 	static const std::string Cutscenes_NeonCity_FlyingCars_Viper_0001;
 	static const std::string Cutscenes_NeonCity_FlyingCars_Viper_0002;
 	static const std::string Cutscenes_NeonCity_FlyingCars_Viper_0003;
-	static const std::string Cutscenes_RobotDoctor_RobotDoctor;
+	static const std::string Cutscenes_RobotDoctor_Background;
+	static const std::string Cutscenes_RobotDoctor_Bed;
+	static const std::string Cutscenes_RobotDoctor_Doctor;
+	static const std::string Cutscenes_RobotDoctor_DoctorEvil;
 	static const std::string Cutscenes_VaporLabs_CityView;
 	static const std::string Cutscenes_VaporLabs_Controls;
 	static const std::string Cutscenes_VaporLabs_Lab;

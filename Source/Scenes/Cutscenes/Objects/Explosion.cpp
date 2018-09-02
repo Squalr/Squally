@@ -1,28 +1,23 @@
 #include "Explosion.h"
 
-Explosion* Explosion::create(Vec2 speed)
+Explosion* Explosion::create()
 {
-	Explosion* instance = new Explosion(speed);
+	Explosion* instance = new Explosion();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Explosion::Explosion(Vec2 speed)
+Explosion::Explosion()
 {
-	this->flySpeed = speed;
-	this->carSprite = nullptr;
+	this->setCascadeOpacityEnabled(true);
 
-	if (this->carSprite != nullptr)
-	{
-		if (this->flySpeed.x < 0.0f)
-		{
-			this->carSprite->setFlippedX(true);
-		}
+	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-		this->addChild(this->carSprite);
-	}
+	this->explosion = LayerColor::create(Color4B(255, 255, 255, 196), visibleSize.width, visibleSize.height);
+
+	this->addChild(this->explosion);
 }
 
 Explosion::~Explosion()
@@ -33,12 +28,15 @@ void Explosion::onEnter()
 {
 	Node::onEnter();
 
-	this->scheduleUpdate();
-}
+	const float flashSpeed = 0.015f;
 
-void Explosion::update(float dt)
-{
-	Node::update(dt);
-
-	this->carSprite->setPosition(this->carSprite->getPosition() + dt * this->flySpeed);
+	this->runAction(Sequence::create(
+		Repeat::create(Sequence::create(
+			FadeTo::create(flashSpeed, 0),
+			FadeTo::create(flashSpeed, 255),
+			nullptr
+		), 10),
+		FadeTo::create(flashSpeed, 0),
+		nullptr
+	));
 }

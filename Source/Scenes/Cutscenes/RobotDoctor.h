@@ -36,6 +36,8 @@ private:
 	RobotDoctorScene activeScene;
 
 	Sprite* background;
+	Sprite* robot;
+	Sprite* bed;
 
 	LayerColor* dialoguePlate;
 	Dialogue* dialogue;

@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/Utils/GameUtils.h"
+#include "Explosion.h"
 #include "Resources.h"
 #include "Smoke.h"
 
@@ -16,16 +17,25 @@ public:
 		Propeller
 	};
 
-	static FlyingCar* create(CarType carType, Vec2 speed);
+	static FlyingCar* create(CarType carType, Vec2 speed, float groundHeight);
+
+	void crash();
 
 private:
-	FlyingCar(CarType carType, Vec2 speed);
+	FlyingCar(CarType carType, Vec2 speed, float groundHeight);
 	~FlyingCar();
+
+	void explode();
 
 	void onEnter() override;
 	void update(float dt) override;
 
+	float height;
+	bool isCrashing;
 	Smoke* smoke;
 	Sprite* carSprite;
 	Vec2 flySpeed;
+
+	static const std::string ScheduleKeySputterSmoke;
+	static const float gravity;
 };

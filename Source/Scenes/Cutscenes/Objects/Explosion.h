@@ -9,15 +9,13 @@ using namespace cocos2d;
 class Explosion : public Node
 {
 public:
-	static Explosion* create(Vec2 speed);
+	static Explosion* create();
 
 private:
-	Explosion(Vec2 speed);
+	Explosion();
 	~Explosion();
 
 	void onEnter() override;
-	void update(float dt) override;
 
-	Sprite* carSprite;
-	Vec2 flySpeed;
+	LayerColor* explosion;
 };
