@@ -6,6 +6,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 #include "Scenes/Cutscenes/Cutscene.h"
+#include "Scenes/Cutscenes/Objects/Grid.h"
 
 using namespace cocos2d;
 
@@ -25,8 +26,6 @@ private:
 	void initializeListeners();
 	void endCutscene();
 
-	Node* createLine(Vec2 source, Vec2 destination, Color4F color);
-	void runForeverScroll();
 	void cutsceneIntro();
 	void cutsceneForest();
 	void cutsceneCaverns();
@@ -34,31 +33,18 @@ private:
 	void cutsceneObelisk();
 
 	int getCellIndex(int row, int column);
-	float getHorizon();
-	float getGridOffset();
-	Vec2 coordsToLocation(Vec2 coords);
 
 	Sprite* forestBackground;
-
-	std::vector<Node*>* horizontalLines;
-	std::vector<Node*>* verticalLines;
-	LayerGradient* distanceGradient;
 	std::map<int, Sprite*>* cells;
 
+	Grid* grid;
 	Sprite* darkLord;
 
-	LayerColor* dialogPlate;
+	LayerColor* dialoguePlate;
 	Label* escapeLabel;
+
+	static const float dialogueHeight;
 
 	static const int cellRows;
 	static const int cellColumns;
-	static const int lineRows;
-	static const int lineColumns;
-	static const int specialLineColumns;
-	static const float backPlane;
-
-	static const float scrollSpeed;
-
-	static const Color4F gridColor;
-	static const Color4F specialGridColor;
 };
