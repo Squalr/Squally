@@ -5,6 +5,7 @@ const int Grid::lineRows = 24;
 const int Grid::lineColumns = 49;
 const int Grid::specialLineColumns = 5;
 const float Grid::scrollSpeed = 0.5f;
+const float Grid::objectSpeed = Grid::scrollSpeed * 4.0f;
 
 const Color4F Grid::gridColor = Color4F(Color3B(223, 61, 219));
 const Color4F Grid::specialGridColor = Color4F(Color3B(61, 138, 223));
@@ -223,12 +224,26 @@ void Grid::update(float dt)
 		float inverseX = ((float)Grid::lineRows - coords.x);
 		float centerDelta = std::abs(coords.y - (float)Grid::lineColumns);
 
-		(*it)->setCoords(coords + Vec2(0.0f, Grid::scrollSpeed * dt));
-		(*it)->setScale(inverseX / (float)Grid::lineRows);
+		(*it)->setCoords(coords + Vec2(Grid::objectSpeed * dt, 0.0f));
+		(*it)->setScale(std::min(inverseX / (float)Grid::lineRows, 1.5f));
 		(*it)->setPosition(this->coordsToLocation(Vec2(coords.x, coords.y)));
 
 		(*it)->setZOrder(inverseX * visibleSize.width + centerDelta);
 	}
+	
+	// Remove off-screen objects
+	auto removed = std::remove_if(this->gridObjects->begin(), this->gridObjects->end(), [=](GridObject* object)
+	{
+		if (object->getScale() <= 0.0f)
+		{
+			this->removeChild(object);
+			return true;
+		}
+
+		return false;
+	});
+
+	this->gridObjects->erase(removed, this->gridObjects->end());
 }
 
 float Grid::getHorizon()
@@ -243,6 +258,12 @@ float Grid::getGridOffset()
 
 Vec2 Grid::coordsToLocation(Vec2 coords)
 {
+	// Prevent going too far off screen
+	if (coords.x < -5.0f)
+	{
+		coords.x = -5.0f;
+	}
+
 	// Calculate Y position
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 sourceRow = Camera::getDefaultCamera()->project(Vec3(0.0f, 0.0f, Grid::backPlane / (coords.x + 1.0f)));
@@ -255,10 +276,10 @@ Vec2 Grid::coordsToLocation(Vec2 coords)
 	float backPlaneWidth = visibleSize.width;
 	float frontPlaneWidth = (backPlaneWidth / originalBackPlaneWidth) * backPlaneWidth;
 
-	int adjustedColumn = coords.y - Grid::lineColumns / 2;
+	float adjustedColumn = coords.y - Grid::lineColumns / 2;
 
-	Vec2 source = Vec2((backPlaneWidth / Grid::lineColumns) * adjustedColumn + visibleSize.width / 2.0f, this->getHorizon());
-	Vec2 destination = Vec2((frontPlaneWidth / Grid::lineColumns) * adjustedColumn + visibleSize.width / 2.0f, 0.0f);
+	Vec2 source = Vec2((backPlaneWidth / (float)Grid::lineColumns) * adjustedColumn + visibleSize.width / 2.0f, this->getHorizon());
+	Vec2 destination = Vec2((frontPlaneWidth / (float)Grid::lineColumns) * adjustedColumn + visibleSize.width / 2.0f, 0.0f);
 
 	float resultX = visibleSize.width / 2.0f;
 

@@ -20,9 +20,12 @@ VaporWeb::VaporWeb()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->forestBackground = Sprite::create(Resources::Cutscenes_VaporWeb_Forest_Background);
+	this->cavernsBackground = Sprite::create(Resources::Cutscenes_VaporWeb_Caverns_Background);
+	this->obeliskBackground = Sprite::create(Resources::Cutscenes_VaporWeb_Obelisk_Background);
 	this->grid = Grid::create();
 	this->darkLord = Sprite::create(Resources::Cutscenes_VaporWeb_DarkLord);
 	this->dialoguePlate = LayerColor::create(Color4B(64, 0, 64, 255), visibleSize.width, VaporWeb::dialogueHeight);
+	this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneVaporLabs, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	for (int column = 0; column < VaporWeb::cellColumns; column++)
@@ -46,14 +49,24 @@ VaporWeb::VaporWeb()
 	}
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
-	this->forestBackground->setVisible(false);
+	this->forestBackground->setOpacity(0);
+	this->cavernsBackground->setOpacity(0);
+	this->obeliskBackground->setOpacity(0);
+
+	this->forestBackground->setAnchorPoint(Vec2(0.5f, 0.0f));
+	this->cavernsBackground->setAnchorPoint(Vec2(0.5f, 0.0f));
+	this->obeliskBackground->setAnchorPoint(Vec2(0.5f, 0.0f));
+
 	this->darkLord->setVisible(false);
 
 	this->addChild(InputManager::claimInstance());
 	this->addChild(this->forestBackground);
+	this->addChild(this->cavernsBackground);
+	this->addChild(this->obeliskBackground);
 	this->addChild(this->grid);
 	this->addChild(this->darkLord);
 	this->addChild(this->dialoguePlate);
+	this->addChild(this->dialogue);
 	this->addChild(this->escapeLabel);
 }
 
@@ -77,10 +90,13 @@ void VaporWeb::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->forestBackground->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->forestBackground->setPosition(Vec2(visibleSize.width / 2.0f, this->grid->getHorizon() + VaporWeb::dialogueHeight));
+	this->cavernsBackground->setPosition(Vec2(visibleSize.width / 2.0f, this->grid->getHorizon() + VaporWeb::dialogueHeight));
+	this->obeliskBackground->setPosition(Vec2(visibleSize.width / 2.0f, this->grid->getHorizon() + VaporWeb::dialogueHeight));
+
 	this->grid->setPosition(Vec2(0.0f, VaporWeb::dialogueHeight));
 	this->dialoguePlate->setPosition(Vec2(visibleSize.width / 2.0f - this->dialoguePlate->getContentSize().width / 2.0f, 0.0f));
+	this->dialogue->setPosition(Vec2(24.0f, this->dialoguePlate->getContentSize().height - 24.0f));
 	this->escapeLabel->setPosition(Vec2(visibleSize.width - 24.0f, 24.0f));
 }
 
@@ -101,7 +117,7 @@ void VaporWeb::update(float dt)
 
 void VaporWeb::endCutscene()
 {
-	NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneIntroSpace);
+	NavigationEvents::loadMap(Resources::Maps_Platformer_Volcano_Volcano);
 }
 
 void VaporWeb::runCutscene()
@@ -113,13 +129,18 @@ void VaporWeb::runCutscene()
 
 	});
 
+	CallFunc* nextCutscene = CallFunc::create([=]()
+	{
+		NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneIntroSpace);
+	});
+
 	this->runAction(Sequence::create(
 		dialogueBegin,
 		this->createCutsceneGridSetup(),
 		this->createCutsceneForest(),
 		this->createCutsceneCaverns(),
-		this->createCutsceneIceCaps(),
 		this->createCutsceneObelisk(),
+		nextCutscene,
 		nullptr
 	));
 }
@@ -189,35 +210,89 @@ FiniteTimeAction* VaporWeb::createCutsceneForest()
 
 	CallFunc* fadeInBackground = CallFunc::create([=]()
 	{
-		this->forestBackground->setOpacity(0);
-		this->forestBackground->setVisible(true);
 		this->forestBackground->runAction(FadeIn::create(fadeSpeed));
+	});
+
+	CallFunc* fadeOutBackground = CallFunc::create([=]()
+	{
+		this->forestBackground->runAction(FadeOut::create(fadeSpeed));
+	});
+
+	CallFunc* addObjects = CallFunc::create([=]()
+	{
+		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Forest_Tree1), Vec2(-2.0f, Grid::lineColumns / 2.0f - 3.5f), false));
+		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Forest_Tree2), Vec2(-3.0f, Grid::lineColumns / 2.0f + 3.0f), false));
+		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Forest_Shrine), Vec2(-10.0f, Grid::lineColumns / 2.0f + 0.0f), false));
+		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Forest_Ruins1), Vec2(-12.0f, Grid::lineColumns / 2.0f - 4.0f), false));
+		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Forest_Thorns1), Vec2(-15.0f, Grid::lineColumns / 2.0f - 2.0f), false));
 	});
 
 	return Sequence::create(
 		fadeInBackground,
-		DelayTime::create(4.0f),
+		addObjects,
+		DelayTime::create(10.0f),
+		fadeOutBackground,
 		nullptr
 	);
 }
 
 FiniteTimeAction* VaporWeb::createCutsceneCaverns()
 {
-	return Sequence::create(
-		nullptr
-	);
-}
+	const float fadeSpeed = 1.0f;
 
-FiniteTimeAction* VaporWeb::createCutsceneIceCaps()
-{
+	CallFunc* fadeInBackground = CallFunc::create([=]()
+	{
+		this->cavernsBackground->runAction(FadeIn::create(fadeSpeed));
+	});
+
+	CallFunc* fadeOutBackground = CallFunc::create([=]()
+	{
+		this->cavernsBackground->runAction(FadeOut::create(fadeSpeed));
+	});
+
+	CallFunc* addObjects = CallFunc::create([=]()
+	{
+		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Caverns_DryTree1), Vec2(-2.0f, Grid::lineColumns / 2.0f - 3.5f), false));
+		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Caverns_DryTree2), Vec2(-3.0f, Grid::lineColumns / 2.0f + 3.0f), false));
+		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Caverns_Skulls), Vec2(-10.0f, Grid::lineColumns / 2.0f + 0.0f), false));
+	});
+
 	return Sequence::create(
+		fadeInBackground,
+		addObjects,
+		DelayTime::create(8.0f),
+		fadeOutBackground,
 		nullptr
 	);
 }
 
 FiniteTimeAction* VaporWeb::createCutsceneObelisk()
 {
+	const float fadeSpeed = 1.0f;
+
+	CallFunc* fadeInBackground = CallFunc::create([=]()
+	{
+		this->obeliskBackground->runAction(FadeIn::create(fadeSpeed));
+	});
+
+	CallFunc* fadeOutBackground = CallFunc::create([=]()
+	{
+		this->obeliskBackground->runAction(FadeOut::create(fadeSpeed));
+	});
+
+	CallFunc* addObjects = CallFunc::create([=]()
+	{
+		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Obelisk_Tree1), Vec2(-2.0f, Grid::lineColumns / 2.0f - 3.5f), false));
+		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Obelisk_Door), Vec2(-3.0f, Grid::lineColumns / 2.0f + 3.0f), false));
+		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Obelisk_Obelisk), Vec2(-9.0f, Grid::lineColumns / 2.0f - 2.0f), false));
+		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Obelisk_Wall), Vec2(-13.0f, Grid::lineColumns / 2.0f - 4.0f), false));
+		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Obelisk_Tree2), Vec2(-18.0f, Grid::lineColumns / 2.0f + 3.0f), false));
+	});
+
 	return Sequence::create(
+		fadeInBackground,
+		addObjects,
+		DelayTime::create(18.0f),
 		nullptr
 	);
 }

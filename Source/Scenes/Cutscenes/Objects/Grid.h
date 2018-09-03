@@ -43,5 +43,6 @@ private:
 	static const Color4F specialGridColor;
 
 	static const float scrollSpeed;
+	static const float objectSpeed;
 	static const std::string ScheduleKeyScrollGridObjects;
 };
