@@ -14,6 +14,7 @@ Dialogue* Dialogue::create(std::string filePath, std::string fontResource, Size 
 
 Dialogue::Dialogue(DialogueTree* root, std::string fontResource, Size size)
 {
+	this->hasStarted = false;
 	this->dialogueShownCallback = nullptr;
 	this->dialogueRoot = root;
 	this->currentDialogue = this->dialogueRoot;
@@ -32,8 +33,6 @@ Dialogue::Dialogue(DialogueTree* root, std::string fontResource, Size size)
 void Dialogue::onEnter()
 {
 	Node::onEnter();
-
-	this->updateLabels();
 }
 
 Dialogue::~Dialogue()
@@ -54,9 +53,14 @@ void Dialogue::setDialogueSpeed(float speed)
 
 bool Dialogue::showNextDialogue()
 {
-	currentDialogue = currentDialogue == nullptr ? nullptr : currentDialogue->getNextDialogue();
+	if (this->hasStarted)
+	{
+		this->currentDialogue = this->currentDialogue == nullptr ? nullptr : this->currentDialogue->getNextDialogue();
+	}
 
-	if (currentDialogue != nullptr)
+	this->hasStarted = true;
+
+	if (this->currentDialogue != nullptr)
 	{
 		this->updateLabels();
 

@@ -17,12 +17,13 @@ VaporLabs::VaporLabs()
 
 	this->contentLayer = Node::create();
 	this->sky = LayerGradient::create(Color4B(70, 0, 131, 255), Color4B(64, 0, 64, 255), Vec2(0.0f, 1.0f));
-	this->starLayer = StarLayer::create();
+	this->starLayer = StarLayer::create(Size(480.0f, 256.0f));
 	this->cityView = Sprite::create(Resources::Cutscenes_VaporLabs_CityView);
 	this->background = Sprite::create(Resources::Cutscenes_VaporLabs_Lab);
 	this->console = Sprite::create(Resources::Cutscenes_VaporLabs_Controls);
 	this->monitor = Sprite::create(Resources::Cutscenes_VaporLabs_Monitor);
 	this->scientist = Sprite::create(Resources::Cutscenes_VaporLabs_Scientist);
+	this->siren = LayerColor::create(Color4B(255, 0, 0, 0));
 
 	this->sky->setContentSize(Size(480.0f, 256.0f));
 
@@ -35,13 +36,14 @@ VaporLabs::VaporLabs()
 	this->addChild(InputManager::claimInstance());
 
 	this->contentLayer->addChild(this->sky);
-	this->addChild(this->starLayer);
+	this->contentLayer->addChild(this->starLayer);
 	this->contentLayer->addChild(this->cityView);
 	this->contentLayer->addChild(this->background);
 	this->contentLayer->addChild(this->console);
 	this->contentLayer->addChild(this->scientist);
 	this->contentLayer->addChild(this->monitor);
 	this->addChild(this->contentLayer);
+	this->addChild(this->siren);
 	this->addChild(this->dialoguePlate);
 	this->addChild(this->dialogue);
 	this->addChild(this->escapeLabel);
@@ -55,11 +57,13 @@ void VaporLabs::onEnter()
 {
 	Cutscene::onEnter();
 
+	this->dialogue->showNextDialogue();
+
 	this->scheduleUpdate();
 	this->initializePositions();
 	this->initializeListeners();
 
-	this->cutscenePan();
+	this->runCutscene();
 }
 
 void VaporLabs::initializePositions()
@@ -68,6 +72,7 @@ void VaporLabs::initializePositions()
 
 	this->contentLayer->setPosition(VaporLabs::panOffset);
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->starLayer->setPosition(Vec2(visibleSize.width / 2.0f - this->starLayer->getContentSize().width / 2.0f, visibleSize.height / 2.0f - this->starLayer->getContentSize().height / 2.0f));
 	this->sky->setPosition(Vec2(visibleSize.width / 2.0f - this->sky->getContentSize().width / 2.0f, visibleSize.height / 2.0f - this->sky->getContentSize().height / 2.0f));
 	this->cityView->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->console->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 164.0f));
@@ -115,7 +120,26 @@ void VaporLabs::onDialogueShown()
 	));
 }
 
-void VaporLabs::cutscenePan()
+void VaporLabs::runCutscene()
 {
 	this->contentLayer->runAction(EaseSineInOut::create(MoveTo::create(4.0f, Vec2::ZERO)));
+
+	const float fadeSpeed = 0.75f;
+	const int endFade = 96;
+	const int startFade = 16;
+
+	this->siren->runAction(Sequence::create(
+		DelayTime::create(2.5f),
+		FadeTo::create(fadeSpeed, endFade),
+		FadeTo::create(fadeSpeed, startFade),
+		FadeTo::create(fadeSpeed, endFade),
+		FadeTo::create(fadeSpeed, startFade),
+		FadeTo::create(fadeSpeed, endFade),
+		FadeTo::create(fadeSpeed, startFade),
+		FadeTo::create(fadeSpeed, endFade),
+		FadeTo::create(fadeSpeed, startFade),
+		FadeTo::create(fadeSpeed, endFade),
+		FadeTo::create(fadeSpeed, startFade),
+		nullptr
+	));
 }

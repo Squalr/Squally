@@ -56,6 +56,8 @@ void HomeAssistantRobot::onEnter()
 {
 	Cutscene::onEnter();
 
+	this->dialogue->showNextDialogue();
+
 	this->scheduleUpdate();
 	this->initializePositions();
 	this->initializeListeners();

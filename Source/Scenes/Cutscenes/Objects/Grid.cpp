@@ -4,8 +4,8 @@ const float Grid::backPlane = -8192.0f;
 const int Grid::lineRows = 24;
 const int Grid::lineColumns = 49;
 const int Grid::specialLineColumns = 5;
-const float Grid::scrollSpeed = 0.5f;
-const float Grid::objectSpeed = Grid::scrollSpeed * 4.0f;
+const float Grid::scrollSpeed = 0.35f;
+const float Grid::objectSpeed = 1.0f / Grid::scrollSpeed;
 
 const Color4F Grid::gridColor = Color4F(Color3B(223, 61, 219));
 const Color4F Grid::specialGridColor = Color4F(Color3B(61, 138, 223));

@@ -26,6 +26,7 @@ private:
 	void update(float) override;
 	void initializePositions();
 	void initializeListeners();
+	void onDialogueShown();
 	void endCutscene();
 
 	void runCutscene();

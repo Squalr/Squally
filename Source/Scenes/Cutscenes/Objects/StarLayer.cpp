@@ -11,17 +11,20 @@ std::map<StarLayer::Stars, int> StarLayer::frequencyMap =
 	{ StarLayer::Stars::StarShineExtraLarge, 25 },
 };
 
-StarLayer* StarLayer::create()
+StarLayer* StarLayer::create(Vec2 size)
 {
-	StarLayer* instance = new StarLayer();
+	StarLayer* instance = new StarLayer(size);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-StarLayer::StarLayer()
+StarLayer::StarLayer(Vec2 size)
 {
+	this->layerSize = size;
+
+	this->setContentSize(this->layerSize);
 }
 
 StarLayer::~StarLayer()
@@ -38,7 +41,6 @@ void StarLayer::onEnter()
 
 void StarLayer::createStars()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
 	int frequencySum = 0;
 
 	for (auto it = frequencyMap.begin(); it != frequencyMap.end(); it++)
@@ -46,11 +48,11 @@ void StarLayer::createStars()
 		frequencySum += it->second;
 	}
 
-	const int stepSize = 48;
+	const float stepSize = 48;
 
-	for (int x = 0; x < (int)visibleSize.width; x+= stepSize)
+	for (float x = 0; x < this->layerSize.width; x+= stepSize)
 	{
-		for (int y = 0; y < (int)visibleSize.height; y+= stepSize)
+		for (float y = 0; y < this->layerSize.height; y+= stepSize)
 		{
 			StarLayer::Stars star = StarLayer::Stars::StarSmall;
 			int randStarFrequency = RandomHelper::random_int(0, frequencySum);
@@ -158,7 +160,7 @@ void StarLayer::createStars()
 			}
 
 			nextSprite->setScale(2);
-			nextSprite->setPosition(x + RandomHelper::random_int(-stepSize * 4, stepSize * 4), y + RandomHelper::random_int(-stepSize * 4, stepSize * 4));
+			nextSprite->setPosition(x + RandomHelper::random_real(-stepSize * 4, stepSize * 4), y + RandomHelper::random_real(-stepSize * 4, stepSize * 4));
 
 			this->addChild(nextSprite);
 		}

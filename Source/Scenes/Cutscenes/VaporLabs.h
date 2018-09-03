@@ -25,7 +25,7 @@ private:
 	void initializePositions();
 	void initializeListeners();
 
-	void cutscenePan();
+	void runCutscene();
 	void onDialogueShown();
 	void endCutscene();
 
@@ -37,6 +37,8 @@ private:
 	Sprite* console;
 	Sprite* monitor;
 	Sprite* scientist;
+
+	LayerColor* siren;
 
 	LayerColor* dialoguePlate;
 	Dialogue* dialogue;

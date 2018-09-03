@@ -9,10 +9,10 @@ using namespace cocos2d;
 class StarLayer : public Node
 {
 public:
-	static StarLayer* create();
+	static StarLayer* create(Vec2 size);
 
 protected:
-	StarLayer();
+	StarLayer(Vec2 size);
 	~StarLayer();
 
 private:
@@ -28,6 +28,8 @@ private:
 		StarShineLarge,
 		StarShineExtraLarge,
 	};
+
+	Size layerSize;
 
 	static std::map<Stars, int> frequencyMap;
 };

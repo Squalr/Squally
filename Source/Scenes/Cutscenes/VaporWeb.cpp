@@ -25,7 +25,7 @@ VaporWeb::VaporWeb()
 	this->grid = Grid::create();
 	this->darkLord = Sprite::create(Resources::Cutscenes_VaporWeb_DarkLord);
 	this->dialoguePlate = LayerColor::create(Color4B(64, 0, 64, 255), visibleSize.width, VaporWeb::dialogueHeight);
-	this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneVaporLabs, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneVaporWeb, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	for (int column = 0; column < VaporWeb::cellColumns; column++)
@@ -103,6 +103,8 @@ void VaporWeb::initializePositions()
 void VaporWeb::initializeListeners()
 {
 	this->getEventDispatcher()->removeEventListenersForTarget(this);
+
+	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(VaporWeb::onDialogueShown, this));
 }
 
 void VaporWeb::update(float dt)
@@ -115,6 +117,19 @@ void VaporWeb::update(float dt)
 	}
 }
 
+void VaporWeb::onDialogueShown()
+{
+	this->dialogue->runAction(Sequence::create(
+		DelayTime::create(6.0f),
+		CallFunc::create([=]() {
+		if (!this->dialogue->showNextDialogue())
+		{
+		}
+	}),
+	nullptr
+	));
+}
+
 void VaporWeb::endCutscene()
 {
 	NavigationEvents::loadMap(Resources::Maps_Platformer_Volcano_Volcano);
@@ -124,18 +139,12 @@ void VaporWeb::runCutscene()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	CallFunc* dialogueBegin = CallFunc::create([=]()
-	{
-
-	});
-
 	CallFunc* nextCutscene = CallFunc::create([=]()
 	{
 		NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneIntroSpace);
 	});
 
 	this->runAction(Sequence::create(
-		dialogueBegin,
 		this->createCutsceneGridSetup(),
 		this->createCutsceneForest(),
 		this->createCutsceneCaverns(),
@@ -169,6 +178,10 @@ FiniteTimeAction* VaporWeb::createCutsceneGridSetup()
 		}
 	});
 
+	CallFunc* beginDialogue = CallFunc::create([=]()
+	{
+		this->dialogue->showNextDialogue();
+	});
 
 	CallFunc* darkLordMoveIn = CallFunc::create([=]()
 	{
@@ -198,6 +211,7 @@ FiniteTimeAction* VaporWeb::createCutsceneGridSetup()
 	return Sequence::create(
 		darkLordMoveIn,
 		DelayTime::create(3.0f),
+		beginDialogue,
 		fadeInCells,
 		DelayTime::create(4.0f),
 		nullptr
@@ -285,14 +299,14 @@ FiniteTimeAction* VaporWeb::createCutsceneObelisk()
 		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Obelisk_Tree1), Vec2(-2.0f, Grid::lineColumns / 2.0f - 3.5f), false));
 		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Obelisk_Door), Vec2(-3.0f, Grid::lineColumns / 2.0f + 3.0f), false));
 		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Obelisk_Obelisk), Vec2(-9.0f, Grid::lineColumns / 2.0f - 2.0f), false));
+		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Obelisk_Tree2), Vec2(-12.0f, Grid::lineColumns / 2.0f + 3.0f), false));
 		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Obelisk_Wall), Vec2(-13.0f, Grid::lineColumns / 2.0f - 4.0f), false));
-		this->grid->addGridObject(GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Obelisk_Tree2), Vec2(-18.0f, Grid::lineColumns / 2.0f + 3.0f), false));
 	});
 
 	return Sequence::create(
 		fadeInBackground,
 		addObjects,
-		DelayTime::create(18.0f),
+		DelayTime::create(12.0f),
 		nullptr
 	);
 }
