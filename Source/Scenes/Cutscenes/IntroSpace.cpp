@@ -11,7 +11,9 @@ IntroSpace* IntroSpace::create()
 
 IntroSpace::IntroSpace()
 {
-	this->starLayer = StarLayer::create();
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->starLayer = StarLayer::create(Size(visibleSize.width * 2.0f, visibleSize.height));
 	this->earth = Sprite::create(Resources::Cutscenes_IntroSpace_Earth);
 	this->mars = Sprite::create(Resources::Cutscenes_IntroSpace_Mars);
 	this->weaver1 = Sprite::create();

@@ -28,6 +28,7 @@ private:
 	void updateLabels();
 	void runTypeWriterEffect();
 
+	bool hasStarted;
 	float dialogueSpeed;
 	DialogueTree* dialogueRoot;
 	DialogueTree* currentDialogue;

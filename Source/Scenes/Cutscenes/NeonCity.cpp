@@ -19,7 +19,7 @@ NeonCity::NeonCity(NeonCityScene neonCityScene)
 
 	this->sky = LayerGradient::create(Color4B::ORANGE, Color4B(70, 0, 131, 255), Vec2(0.0f, 1.0f));
 	this->darkFilter = LayerColor::create(Color4B::BLACK);
-	this->starLayer = StarLayer::create();
+	this->starLayer = StarLayer::create(visibleSize);
 	this->cityBackground = InfiniteParallaxNode::create(Resources::Cutscenes_NeonCity_CityBackground);
 	this->cityMidground = InfiniteParallaxNode::create(Resources::Cutscenes_NeonCity_CityMidground);
 	this->vaporCorp = Sprite::create(Resources::Cutscenes_NeonCity_VaporCorp);
@@ -89,6 +89,8 @@ NeonCity::~NeonCity()
 void NeonCity::onEnter()
 {
 	Cutscene::onEnter();
+
+	this->dialogue->showNextDialogue();
 
 	this->scheduleUpdate();
 	this->initializePositions();
