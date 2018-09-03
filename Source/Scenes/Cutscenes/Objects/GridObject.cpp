@@ -12,6 +12,7 @@ GridObject* GridObject::create(Node* inner, Vec2 spawnCoords, bool isObjectStati
 GridObject::GridObject(Node* inner, Vec2 spawnCoords, bool isObjectStatic)
 {
 	this->initCoords = spawnCoords;
+	this->isStatic = isObjectStatic;
 	this->gridCoords = this->initCoords;
 
 	inner->setAnchorPoint(Vec2(0.5f, 0.0f));
