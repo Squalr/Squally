@@ -16,49 +16,42 @@ VaporWeb* VaporWeb::create()
 
 VaporWeb::VaporWeb()
 {
-	this->cells = new std::map<int, Sprite*>();
-
+	this->cells = new std::map<int, GridObject*>();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+
 	this->forestBackground = Sprite::create(Resources::Cutscenes_VaporWeb_Forest_Background);
 	this->grid = Grid::create();
 	this->darkLord = Sprite::create(Resources::Cutscenes_VaporWeb_DarkLord);
 	this->dialoguePlate = LayerColor::create(Color4B(64, 0, 64, 255), visibleSize.width, VaporWeb::dialogueHeight);
 	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
-	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
-
 	for (int column = 0; column < VaporWeb::cellColumns; column++)
 	{
 		for (int row = 0; row < VaporWeb::cellRows; row++)
 		{
-			(*this->cells)[this->getCellIndex(row, column)] = Sprite::create(Resources::Cutscenes_VaporWeb_Cell);
-			(*this->cells)[this->getCellIndex(row, column)]->setAnchorPoint(Vec2(0.5f, 0.0f));
+			const float spacingRow = 2.0f;
+			const float spacingColumn = 1.0f;
+			const float offset = 3.0f;
+
+			float gridRow = row * spacingRow + offset;
+			float gridColumn = Grid::lineColumns / 2 - (VaporWeb::cellColumns / 2) * spacingColumn + column * spacingColumn;
+
+			GridObject* cell = GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Cell), Vec2(gridRow, gridColumn), true);
+			cell->setOpacity(0);
+
+			this->cells->insert_or_assign(this->getCellIndex(row, column), cell);
+
+			this->grid->addGridObject(cell);
 		}
 	}
 
+	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 	this->forestBackground->setVisible(false);
 	this->darkLord->setVisible(false);
 
 	this->addChild(InputManager::claimInstance());
 	this->addChild(this->forestBackground);
 	this->addChild(this->grid);
-
-	// Add cells symmetrically to preserve proper Z order
-	for (int column = 0; column <= VaporWeb::cellColumns / 2; column++)
-	{
-		for (int row = VaporWeb::cellRows - 1; row >= 0; row--)
-		{
-			(*this->cells)[this->getCellIndex(row, column)]->setVisible(false);
-			this->grid->addChild((*this->cells)[this->getCellIndex(row, column)]);
-
-			if (column != VaporWeb::cellColumns / 2)
-			{
-				(*this->cells)[this->getCellIndex(row, VaporWeb::cellColumns - column - 1)]->setVisible(false);
-				this->grid->addChild((*this->cells)[this->getCellIndex(row, VaporWeb::cellColumns - column - 1)]);
-			}
-		}
-	}
-
 	this->addChild(this->darkLord);
 	this->addChild(this->dialoguePlate);
 	this->addChild(this->escapeLabel);
@@ -77,7 +70,7 @@ void VaporWeb::onEnter()
 	this->initializePositions();
 	this->initializeListeners();
 
-	this->cutsceneIntro();
+	this->runCutscene();
 }
 
 void VaporWeb::initializePositions()
@@ -86,25 +79,7 @@ void VaporWeb::initializePositions()
 
 	this->forestBackground->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->forestBackground->setPosition(Vec2(visibleSize.width / 2.0f, this->grid->getHorizon() + VaporWeb::dialogueHeight));
-
 	this->grid->setPosition(Vec2(0.0f, VaporWeb::dialogueHeight));
-
-	for (int row = 0; row < VaporWeb::cellRows; row++)
-	{
-		for (int column = 0; column < VaporWeb::cellColumns; column++)
-		{
-			const float spacingRow = 2.0f;
-			const float spacingColumn = 1.0f;
-			const float offset = 3.0f;
-
-			float gridRow = row * spacingRow + offset;
-			float gridColumn = Grid::lineColumns / 2 - (VaporWeb::cellColumns / 2) * spacingColumn + column * spacingColumn;
-
-			(*this->cells)[this->getCellIndex(row, column)]->setScale(1.0f - row * 0.1f);
-			(*this->cells)[this->getCellIndex(row, column)]->setPosition(this->grid->coordsToLocation(Vec2(gridRow, gridColumn)));
-		}
-	}
-
 	this->dialoguePlate->setPosition(Vec2(visibleSize.width / 2.0f - this->dialoguePlate->getContentSize().width / 2.0f, 0.0f));
 	this->escapeLabel->setPosition(Vec2(visibleSize.width - 24.0f, 24.0f));
 }
@@ -129,14 +104,50 @@ void VaporWeb::endCutscene()
 	NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneIntroSpace);
 }
 
-void VaporWeb::cutsceneIntro()
+void VaporWeb::runCutscene()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	CallFunc* dialogBegin = CallFunc::create([=]()
+	CallFunc* dialogueBegin = CallFunc::create([=]()
 	{
 
 	});
+
+	this->runAction(Sequence::create(
+		dialogueBegin,
+		this->createCutsceneGridSetup(),
+		this->createCutsceneForest(),
+		this->createCutsceneCaverns(),
+		this->createCutsceneIceCaps(),
+		this->createCutsceneObelisk(),
+		nullptr
+	));
+}
+
+FiniteTimeAction* VaporWeb::createCutsceneGridSetup()
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	CallFunc* fadeInCells = CallFunc::create([=]()
+	{
+		const float fadeSpeed = 1.0f;
+		const float rowDelay = 0.5f;
+
+		for (int column = 0; column < VaporWeb::cellColumns; column++)
+		{
+			for (int row = 0; row < VaporWeb::cellRows; row++)
+			{
+				GridObject* cell = this->cells->at(this->getCellIndex(row, column));
+
+				cell->runAction(Sequence::create(
+					DelayTime::create(row * rowDelay),
+					FadeIn::create(fadeSpeed),
+					nullptr
+				));
+			}
+		}
+	});
+
 
 	CallFunc* darkLordMoveIn = CallFunc::create([=]()
 	{
@@ -163,51 +174,18 @@ void VaporWeb::cutsceneIntro()
 			));
 	});
 
-	const float rowDelay = 0.5f;
-
-	CallFunc* fadeInCells = CallFunc::create([=]()
-	{
-		const float fadeSpeed = 1.0f;
-
-		for (int rowIndex = 0; rowIndex < VaporWeb::cellRows; rowIndex++)
-		{
-			for (int columnIndex = 0; columnIndex < VaporWeb::cellColumns; columnIndex++)
-			{
-				(*this->cells)[this->getCellIndex(rowIndex, columnIndex)]->setOpacity(0);
-				(*this->cells)[this->getCellIndex(rowIndex, columnIndex)]->setVisible(true);
-				(*this->cells)[this->getCellIndex(rowIndex, columnIndex)]->runAction(Sequence::create(
-					DelayTime::create(rowIndex * rowDelay),
-					FadeIn::create(fadeSpeed),
-					nullptr
-				));
-			}
-		}
-	});
-
-	CallFunc* triggerNextEvent = CallFunc::create([=]()
-	{
-		this->cutsceneForest();
-	});
-
-	this->runAction(Sequence::create(
+	return Sequence::create(
 		darkLordMoveIn,
-		dialogBegin,
-		DelayTime::create(1.0f),
+		DelayTime::create(3.0f),
 		fadeInCells,
-		DelayTime::create(rowDelay * VaporWeb::cellRows),
-		triggerNextEvent,
+		DelayTime::create(4.0f),
 		nullptr
-	));
+	);
 }
 
-void VaporWeb::cutsceneForest()
+FiniteTimeAction* VaporWeb::createCutsceneForest()
 {
 	const float fadeSpeed = 1.0f;
-
-	CallFunc* dialogBegin = CallFunc::create([=]()
-	{
-
-	});
 
 	CallFunc* fadeInBackground = CallFunc::create([=]()
 	{
@@ -216,33 +194,32 @@ void VaporWeb::cutsceneForest()
 		this->forestBackground->runAction(FadeIn::create(fadeSpeed));
 	});
 
-	CallFunc* triggerNextEvent = CallFunc::create([=]()
-	{
-		this->cutsceneCaverns();
-	});
-
-	this->runAction(Sequence::create(
-		dialogBegin,
+	return Sequence::create(
 		fadeInBackground,
 		DelayTime::create(4.0f),
-		triggerNextEvent,
 		nullptr
-	));
+	);
 }
 
-void VaporWeb::cutsceneCaverns()
+FiniteTimeAction* VaporWeb::createCutsceneCaverns()
 {
-
+	return Sequence::create(
+		nullptr
+	);
 }
 
-void VaporWeb::cutsceneIceCaps()
+FiniteTimeAction* VaporWeb::createCutsceneIceCaps()
 {
-
+	return Sequence::create(
+		nullptr
+	);
 }
 
-void VaporWeb::cutsceneObelisk()
+FiniteTimeAction* VaporWeb::createCutsceneObelisk()
 {
-
+	return Sequence::create(
+		nullptr
+	);
 }
 
 int VaporWeb::getCellIndex(int row, int column)

@@ -7,6 +7,7 @@
 #include "Resources.h"
 #include "Scenes/Cutscenes/Cutscene.h"
 #include "Scenes/Cutscenes/Objects/Grid.h"
+#include "Scenes/Cutscenes/Objects/GridObject.h"
 
 using namespace cocos2d;
 
@@ -26,16 +27,18 @@ private:
 	void initializeListeners();
 	void endCutscene();
 
-	void cutsceneIntro();
-	void cutsceneForest();
-	void cutsceneCaverns();
-	void cutsceneIceCaps();
-	void cutsceneObelisk();
+	void runCutscene();
+	FiniteTimeAction* createCutsceneGridSetup();
+	FiniteTimeAction* createCutsceneForest();
+	FiniteTimeAction* createCutsceneCaverns();
+	FiniteTimeAction* createCutsceneIceCaps();
+	FiniteTimeAction* createCutsceneObelisk();
 
 	int getCellIndex(int row, int column);
 
+	std::map<int, GridObject*>* cells;
+
 	Sprite* forestBackground;
-	std::map<int, Sprite*>* cells;
 
 	Grid* grid;
 	Sprite* darkLord;

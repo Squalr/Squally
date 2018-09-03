@@ -9,6 +9,8 @@ const float Grid::scrollSpeed = 0.5f;
 const Color4F Grid::gridColor = Color4F(Color3B(223, 61, 219));
 const Color4F Grid::specialGridColor = Color4F(Color3B(61, 138, 223));
 
+const std::string Grid::ScheduleKeyScrollGridObjects = "SCHEDULE_KEY_SCROLL_GRID_OBJECTS";
+
 Grid* Grid::create()
 {
 	Grid* instance = new Grid();
@@ -22,6 +24,7 @@ Grid::Grid()
 {
 	this->horizontalLines = new std::vector<Node*>();
 	this->verticalLines = new std::vector<Node*>();
+	this->gridObjects = new std::vector<GridObject*>();
 	this->distanceGradient = LayerGradient::create(Color4B(0, 0, 0, 0), Color4B(0, 0, 0, 196), Vec2(0.0f, 1.0f));
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -78,6 +81,7 @@ Grid::~Grid()
 {
 	delete(this->horizontalLines);
 	delete(this->verticalLines);
+	delete(this->gridObjects);
 }
 
 void Grid::onEnter()
@@ -154,6 +158,8 @@ void Grid::onEnter()
 		gridMovementBegin,
 		nullptr
 	));
+
+	this->scheduleUpdate();
 }
 
 void Grid::initializePositions()
@@ -164,6 +170,13 @@ void Grid::initializePositions()
 	this->distanceGradient->changeWidth(visibleSize.width);
 	this->distanceGradient->changeHeight(this->getHorizon() - noShadowDistance + 1.0f); // Add line width
 	this->distanceGradient->setPosition(Vec2(visibleSize.width / 2.0f - this->distanceGradient->getContentSize().width / 2.0f, noShadowDistance));
+}
+
+void Grid::addGridObject(GridObject* gridObject)
+{
+	this->gridObjects->push_back(gridObject);
+
+	this->addChild(gridObject);
 }
 
 Node* Grid::createLine(Vec2 source, Vec2 destination, Color4F color)
@@ -197,6 +210,24 @@ void Grid::runForeverScroll()
 				nullptr
 			)
 		));
+	}
+}
+
+void Grid::update(float dt)
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	for (auto it = this->gridObjects->begin(); it != this->gridObjects->end(); it++)
+	{
+		Vec2 coords = (*it)->getCoords();
+		float inverseX = ((float)Grid::lineRows - coords.x);
+		float centerDelta = std::abs(coords.y - (float)Grid::lineColumns);
+
+		(*it)->setCoords(coords + Vec2(0.0f, Grid::scrollSpeed * dt));
+		(*it)->setScale(inverseX / (float)Grid::lineRows);
+		(*it)->setPosition(this->coordsToLocation(Vec2(coords.x, coords.y)));
+
+		(*it)->setZOrder(inverseX * visibleSize.width + centerDelta);
 	}
 }
 
