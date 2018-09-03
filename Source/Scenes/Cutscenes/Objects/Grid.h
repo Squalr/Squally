@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/Utils/GameUtils.h"
+#include "GridObject.h"
 #include "Resources.h"
 
 using namespace cocos2d;
@@ -11,6 +12,7 @@ class Grid : public Node
 public:
 	static Grid* create();
 
+	void addGridObject(GridObject* gridObject);
 	Vec2 coordsToLocation(Vec2 coords);
 	float getHorizon();
 
@@ -23,6 +25,7 @@ private:
 
 	void initializePositions();
 	void onEnter() override;
+	void update(float dt) override;
 
 	Node* createLine(Vec2 source, Vec2 destination, Color4F color);
 	void runForeverScroll();
@@ -30,6 +33,7 @@ private:
 
 	std::vector<Node*>* horizontalLines;
 	std::vector<Node*>* verticalLines;
+	std::vector<GridObject*>* gridObjects;
 	LayerGradient* distanceGradient;
 
 	static const float backPlane;
@@ -39,4 +43,5 @@ private:
 	static const Color4F specialGridColor;
 
 	static const float scrollSpeed;
+	static const std::string ScheduleKeyScrollGridObjects;
 };

@@ -338,6 +338,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\Explosion.cpp" />
     <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\FlyingCar.cpp" />
     <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\Grid.cpp" />
+    <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\GridObject.cpp" />
     <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\Smoke.cpp" />
     <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\StarLayer.cpp" />
     <ClCompile Include="..\Source\Scenes\Cutscenes\BoardMembers.cpp" />
@@ -603,6 +604,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\Explosion.h" />
     <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\FlyingCar.h" />
     <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\Grid.h" />
+    <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\GridObject.h" />
     <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\Smoke.h" />
     <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\StarLayer.h" />
     <ClInclude Include="..\Source\Scenes\Cutscenes\BoardMembers.h" />
