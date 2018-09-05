@@ -4005,6 +4005,7 @@ const std::string Resources::Particles_Wind = "Particles\\Wind.plist";
 const std::string Resources::Strings_Dialogue_CutsceneBoardMembers = "Strings\\Dialogue_CutsceneBoardMembers.json";
 const std::string Resources::Strings_Dialogue_CutsceneHomeAssistantRobot = "Strings\\Dialogue_CutsceneHomeAssistantRobot.json";
 const std::string Resources::Strings_Dialogue_CutsceneHomeAssistantRobotSingularity = "Strings\\Dialogue_CutsceneHomeAssistantRobotSingularity.json";
+const std::string Resources::Strings_Dialogue_CutsceneIntroSpace = "Strings\\Dialogue_CutsceneIntroSpace.json";
 const std::string Resources::Strings_Dialogue_CutsceneNeonCity = "Strings\\Dialogue_CutsceneNeonCity.json";
 const std::string Resources::Strings_Dialogue_CutsceneNeonCityReturn = "Strings\\Dialogue_CutsceneNeonCityReturn.json";
 const std::string Resources::Strings_Dialogue_CutsceneNeonCitySingularity = "Strings\\Dialogue_CutsceneNeonCitySingularity.json";

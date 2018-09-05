@@ -4006,6 +4006,7 @@ public:
 	static const std::string Strings_Dialogue_CutsceneBoardMembers;
 	static const std::string Strings_Dialogue_CutsceneHomeAssistantRobot;
 	static const std::string Strings_Dialogue_CutsceneHomeAssistantRobotSingularity;
+	static const std::string Strings_Dialogue_CutsceneIntroSpace;
 	static const std::string Strings_Dialogue_CutsceneNeonCity;
 	static const std::string Strings_Dialogue_CutsceneNeonCityReturn;
 	static const std::string Strings_Dialogue_CutsceneNeonCitySingularity;

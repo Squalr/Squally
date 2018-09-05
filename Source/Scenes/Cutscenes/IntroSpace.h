@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Dialogue/Dialogue.h"
 #include "Engine/Input/InputManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
@@ -23,11 +24,14 @@ private:
 	void update(float) override;
 	void initializePositions();
 	void initializeListeners();
+	void onDialogueShown();
+	void runCutscene();
 	void endCutscene();
 
 	StarLayer* starLayer;
 	Sprite* earth;
 	Sprite* mars;
+	Node* weavers;
 	Sprite* weaver1;
 	Animation* weaver1Anim;
 	Sprite* weaver2;
@@ -38,4 +42,14 @@ private:
 	Animation* weaver4Anim;
 	Sprite* weaver5;
 	Animation* weaver5Anim;
+
+	LayerColor* dialoguePlate;
+	Dialogue* dialogue;
+	Label* escapeLabel;
+
+	static const float dialogueHeight;
+
+	static const float earthDelta;
+	static const float weaverDelta;
+	static const float marsDelta;
 };
