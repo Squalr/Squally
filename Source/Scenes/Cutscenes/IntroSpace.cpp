@@ -38,6 +38,8 @@ IntroSpace::IntroSpace()
 	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
+	this->mars->setAnchorPoint(Vec2(0.0f, 0.0f));
+	this->earth->setAnchorPoint(Vec2(1.0f, 1.0f));
 	this->weaver1->setScale(0.12);
 	this->weaver2->setScale(0.14);
 	this->weaver3->setScale(0.16);
@@ -101,9 +103,7 @@ void IntroSpace::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->mars->setAnchorPoint(Vec2(0.0f, 0.0f));
 	this->mars->setPosition(Vec2(64.0f + marsDelta, 48.0f));
-	this->earth->setAnchorPoint(Vec2(1.0f, 1.0f));
 	this->earth->setPosition(Vec2(visibleSize.width - 32.0f + earthDelta, visibleSize.height - 32.0f));
 	this->weavers->setPositionX(weaverDelta);
 
@@ -142,6 +142,7 @@ void IntroSpace::onDialogueShown()
 		CallFunc::create([=]() {
 			if (!this->dialogue->showNextDialogue())
 			{
+				NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneSquallyUploadMars);
 			}
 		}),
 		nullptr

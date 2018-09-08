@@ -949,6 +949,12 @@
     <ClCompile Include="..\Source\Scenes\Cutscenes\Objects\GridObject.cpp">
       <Filter>Source\Scenes\Cutscenes\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\SquallyUploadMars.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\SquallyUploadSpace.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Resources.h">
@@ -1749,6 +1755,12 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Cutscenes\Objects\GridObject.h">
       <Filter>Source\Scenes\Cutscenes\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\SquallyUploadMars.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\SquallyUploadSpace.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

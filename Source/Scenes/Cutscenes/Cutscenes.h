@@ -5,5 +5,7 @@
 #include "IntroSpace.h"
 #include "NeonCity.h"
 #include "RobotDoctor.h"
+#include "SquallyUploadMars.h"
+#include "SquallyUploadSpace.h"
 #include "VaporLabs.h"
 #include "VaporWeb.h"
