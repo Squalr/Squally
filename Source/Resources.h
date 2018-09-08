@@ -137,6 +137,9 @@ public:
 	static const std::string Cutscenes_RobotDoctor_Bed;
 	static const std::string Cutscenes_RobotDoctor_Doctor;
 	static const std::string Cutscenes_RobotDoctor_DoctorEvil;
+	static const std::string Cutscenes_SquallyUploadMars_Scene;
+	static const std::string Cutscenes_SquallyUploadMars_SquallyPixel;
+	static const std::string Cutscenes_SquallyUploadSpace_Satellite;
 	static const std::string Cutscenes_VaporLabs_CityView;
 	static const std::string Cutscenes_VaporLabs_Controls;
 	static const std::string Cutscenes_VaporLabs_Lab;
@@ -3932,6 +3935,8 @@ public:
 	static const std::string Tiles_TileMapIsometric;
 	static const std::string Backgrounds_Platformer_Jungle_Background;
 	static const std::string Backgrounds_Platformer_Snow_snowmountains_bg;
+	static const std::string Music_AlbumArtSmall;
+	static const std::string Music_Folder;
 	static const std::string Backgrounds_Platformer_MatrixRain_Cloud;
 	static const std::string Backgrounds_Platformer_MatrixRain_Point;
 	static const std::string Decor_Platformer_Forest_Light3;
@@ -4012,6 +4017,8 @@ public:
 	static const std::string Strings_Dialogue_CutsceneNeonCitySingularity;
 	static const std::string Strings_Dialogue_CutsceneRobotDoctor;
 	static const std::string Strings_Dialogue_CutsceneRobotDoctorSingularity;
+	static const std::string Strings_Dialogue_CutsceneSquallyUploadMars;
+	static const std::string Strings_Dialogue_CutsceneSquallyUploadSpace;
 	static const std::string Strings_Dialogue_CutsceneVaporLabs;
 	static const std::string Strings_Dialogue_CutsceneVaporWeb;
 	static const std::string Strings_Dialogue_TutorialExactScanI;

@@ -202,6 +202,12 @@ void SceneDirector::onGameNavigateLoadCutscene(EventCustom* eventCustom)
 	case NavigationEvents::CutsceneEnum::CutsceneRobotDoctorPt2:
 		this->cutscene = RobotDoctor::create(RobotDoctor::RobotDoctorScene::Singularity);
 		break;
+	case NavigationEvents::CutsceneEnum::CutsceneSquallyUploadMars:
+		this->cutscene = SquallyUploadMars::create();
+		break;
+	case NavigationEvents::CutsceneEnum::CutsceneSquallyUploadSpace:
+		this->cutscene = SquallyUploadSpace::create();
+		break;
 	case NavigationEvents::CutsceneEnum::CutsceneVaporLabs:
 		this->cutscene = VaporLabs::create();
 		break;

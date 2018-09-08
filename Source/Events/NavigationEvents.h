@@ -34,6 +34,8 @@ public:
 		CutsceneNeonCityPt3,
 		CutsceneRobotDoctor,
 		CutsceneRobotDoctorPt2,
+		CutsceneSquallyUploadMars,
+		CutsceneSquallyUploadSpace,
 		CutsceneVaporLabs,
 		CutsceneVaporWeb,
 	};
