@@ -37,6 +37,10 @@ void BackgroundDeserializer::onDeserializationRequest(LayerDeserializationReques
 	{
 		args->callback(MountainBackground::create(&properties, name), args->objectGroup->layerIndex);
 	}
+	else if (background == ObeliskBackground::KeyBackgroundObelisk)
+	{
+		args->callback(ObeliskBackground::create(&properties, name), args->objectGroup->layerIndex);
+	}
 	else if (background == OceanBackground::KeyBackgroundOcean)
 	{
 		args->callback(OceanBackground::create(&properties, name), args->objectGroup->layerIndex);

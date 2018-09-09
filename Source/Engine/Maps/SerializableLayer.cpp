@@ -3,6 +3,7 @@
 const std::string SerializableLayer::KeyType = "type";
 const std::string SerializableLayer::KeyPropertyName = "name";
 const std::string SerializableLayer::KeyPropertyValue = "value";
+const std::string SerializableLayer::KeyPropertyIgnoreHackermode = "ignore_hackermode";
 
 SerializableLayer* SerializableLayer::create(ValueMap* initProperties, std::string name, std::vector<SerializableObject*>* objects)
 {
@@ -70,4 +71,14 @@ void SerializableLayer::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2:
 	}
 
 	parentElement->LinkEndChild(objectGroupElement);
+}
+
+bool SerializableLayer::isHackerModeIgnored()
+{
+	if (GameUtils::keyExists(this->properties, SerializableLayer::KeyPropertyIgnoreHackermode))
+	{
+		return this->properties->at(SerializableLayer::KeyPropertyIgnoreHackermode).asBool();
+	}
+	
+	return false;
 }

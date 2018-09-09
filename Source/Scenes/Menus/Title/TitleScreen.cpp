@@ -164,8 +164,8 @@ void TitleScreen::onMatrixClick(MenuSprite* menuSprite)
 
 void TitleScreen::onStoryModeClick(MenuSprite* menuSprite)
 {
-	//// NavigationEvents::navigate(NavigationEvents::GameScreen::StoryMap);
-	NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneNeonCity);
+	NavigationEvents::navigate(NavigationEvents::GameScreen::StoryMap);
+	////NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneNeonCity);
 }
 
 void TitleScreen::onOptionsClick(MenuSprite* menuSprite)

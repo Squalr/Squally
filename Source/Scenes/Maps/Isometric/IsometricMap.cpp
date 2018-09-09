@@ -26,7 +26,7 @@ IsometricMap::IsometricMap()
 	this->hackerModePostProcessGlow = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_GrayBlur);
 	this->hud = Hud::create();
 	this->developerHud = DeveloperHud::create();
-	this->hackerModeHud = HackerModeHud::create();
+	this->hackerModeHud = HackerModeHud::create(CC_CALLBACK_0(IsometricMap::toggleHackerMode, this));
 	this->gamePostProcessInversion = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_Inverse);
 	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
 	this->camera = GameCamera::create();
@@ -109,7 +109,7 @@ void IsometricMap::resume(void)
 {
 	if (IsometricMap::hackerMode)
 	{
-		this->disableHackerMode();
+		this->toggleHackerMode();
 	}
 
 	Node::resume();
@@ -147,7 +147,7 @@ void IsometricMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		event->stopPropagation();
 		break;
 	case EventKeyboard::KeyCode::KEY_TAB:
-		this->enableHackerMode();
+		this->toggleHackerMode();
 		event->stopPropagation();
 		break;
 	}
@@ -173,44 +173,46 @@ void IsometricMap::toggleDeveloperMode()
 	}
 }
 
-void IsometricMap::enableHackerMode()
+void IsometricMap::toggleHackerMode()
 {
-	IsometricMap::hackerMode = true;
+	IsometricMap::hackerMode = !IsometricMap::hackerMode;
 
-	this->map->hackerModeEnable();
-	this->mapNode->setVisible(true);
-	this->map->setVisible(true);
-	this->hud->setVisible(false);
-	this->mouse->setVisible(false);
+	if (IsometricMap::hackerMode)
+	{
+		this->map->hackerModeEnable();
+		this->mapNode->setVisible(true);
+		this->map->setVisible(true);
+		this->hud->setVisible(false);
+		this->mouse->setVisible(false);
 
-	this->hackerModeBackground->setVisible(true);
-	this->hackerModeRain->setVisible(true);
-	this->hackerModePostProcessGlow->setVisible(true);
-	this->hackerModeHud->setVisible(true);
-	this->gamePostProcessInversion->setVisible(true);
-	this->gamePostProcessNightVision->setVisible(true);
+		this->hackerModeBackground->setVisible(true);
+		this->hackerModeRain->setVisible(true);
+		this->hackerModePostProcessGlow->setVisible(true);
+		this->hackerModeHud->setVisible(true);
+		this->gamePostProcessInversion->setVisible(true);
+		this->gamePostProcessNightVision->setVisible(true);
 
-	GameUtils::focus(this->hackerModeHud);
-}
+		GameUtils::focus(this->hackerModeHud);
+	}
+	else
+	{
+		IsometricMap::hackerMode = false;
 
-void IsometricMap::disableHackerMode()
-{
-	IsometricMap::hackerMode = false;
+		this->map->hackerModeDisable();
+		this->mapNode->setVisible(true);
+		this->map->setVisible(true);
+		this->hud->setVisible(true);
+		this->mouse->setVisible(true);
 
-	this->map->hackerModeDisable();
-	this->mapNode->setVisible(true);
-	this->map->setVisible(true);
-	this->hud->setVisible(true);
-	this->mouse->setVisible(true);
+		this->hackerModeBackground->setVisible(false);
+		this->hackerModeRain->setVisible(false);
+		this->hackerModePostProcessGlow->setVisible(false);
+		this->hackerModeHud->setVisible(false);
+		this->gamePostProcessInversion->setVisible(false);
+		this->gamePostProcessNightVision->setVisible(false);
 
-	this->hackerModeBackground->setVisible(false);
-	this->hackerModeRain->setVisible(false);
-	this->hackerModePostProcessGlow->setVisible(false);
-	this->hackerModeHud->setVisible(false);
-	this->gamePostProcessInversion->setVisible(false);
-	this->gamePostProcessNightVision->setVisible(false);
-
-	GameUtils::resumeAll();
+		GameUtils::resumeAll();
+	}
 }
 
 void IsometricMap::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)

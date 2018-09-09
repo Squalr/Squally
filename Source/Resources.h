@@ -46,6 +46,16 @@ public:
 	static const std::string Backgrounds_Platformer_Night_Trees_01;
 	static const std::string Backgrounds_Platformer_Night_Trees_02;
 	static const std::string Backgrounds_Platformer_Night_Trees_03;
+	static const std::string Backgrounds_Platformer_Obelisk_background_plan_1;
+	static const std::string Backgrounds_Platformer_Obelisk_background_plan_2;
+	static const std::string Backgrounds_Platformer_Obelisk_middleground_1;
+	static const std::string Backgrounds_Platformer_Obelisk_middleground_2;
+	static const std::string Backgrounds_Platformer_Obelisk_middleground_3;
+	static const std::string Backgrounds_Platformer_Obelisk_middleground_4;
+	static const std::string Backgrounds_Platformer_Obelisk_middleground_5;
+	static const std::string Backgrounds_Platformer_Obelisk_middleground_6;
+	static const std::string Backgrounds_Platformer_Obelisk_middleground_7;
+	static const std::string Backgrounds_Platformer_Obelisk_sky;
 	static const std::string Backgrounds_Platformer_Rain_Clouds_01;
 	static const std::string Backgrounds_Platformer_Rain_Mountains_01;
 	static const std::string Backgrounds_Platformer_Rain_Mountains_02;

@@ -4,6 +4,7 @@
 
 #include "cocos2d.h"
 
+#include "Engine/Camera/GameCamera.h"
 
 using namespace cocos2d;
 

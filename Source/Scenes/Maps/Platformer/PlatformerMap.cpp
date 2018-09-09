@@ -26,7 +26,7 @@ PlatformerMap::PlatformerMap()
 	this->hackerModePostProcessGlow = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_GrayBlur);
 	this->hud = Hud::create();
 	this->developerHud = DeveloperHud::create();
-	this->hackerModeHud = HackerModeHud::create();
+	this->hackerModeHud = HackerModeHud::create(CC_CALLBACK_0(PlatformerMap::toggleHackerMode, this));
 	this->gamePostProcessInversion = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_Inverse);
 	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
 	this->camera = GameCamera::create();
@@ -36,6 +36,8 @@ PlatformerMap::PlatformerMap()
 
 	this->camera->setScrollOffset(Vec2(64.0f, 32.0f));
 	this->camera->setFollowSpeed(Vec2(0.075f, 0.075f));
+
+	this->hackerModeBackground->setAnchorPoint(Vec2(0.0f, 0.0f));
 
 	this->hackerModeBackground->setVisible(false);
 	this->hackerModeRain->setVisible(false);
@@ -109,7 +111,7 @@ void PlatformerMap::resume(void)
 {
 	if (PlatformerMap::hackerMode)
 	{
-		this->disableHackerMode();
+		this->toggleHackerMode();
 	}
 
 	Node::resume();
@@ -147,7 +149,7 @@ void PlatformerMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		event->stopPropagation();
 		break;
 	case EventKeyboard::KeyCode::KEY_TAB:
-		this->enableHackerMode();
+		this->toggleHackerMode();
 		event->stopPropagation();
 		break;
 	}
@@ -171,44 +173,44 @@ void PlatformerMap::toggleDeveloperMode()
 	}
 }
 
-void PlatformerMap::enableHackerMode()
+void PlatformerMap::toggleHackerMode()
 {
-	PlatformerMap::hackerMode = true;
+	PlatformerMap::hackerMode = !PlatformerMap::hackerMode;
 
-	this->map->hackerModeEnable();
-	this->mapNode->setVisible(true);
-	this->map->setVisible(true);
-	this->hud->setVisible(false);
-	this->mouse->setVisible(false);
+	if (PlatformerMap::hackerMode)
+	{
+		this->map->hackerModeEnable();
+		this->mapNode->setVisible(true);
+		this->map->setVisible(true);
+		this->hud->setVisible(false);
+		this->mouse->setVisible(false);
 
-	this->hackerModeBackground->setVisible(true);
-	this->hackerModeRain->setVisible(true);
-	this->hackerModePostProcessGlow->setVisible(true);
-	this->hackerModeHud->setVisible(true);
-	this->gamePostProcessInversion->setVisible(true);
-	this->gamePostProcessNightVision->setVisible(true);
+		this->hackerModeBackground->setVisible(true);
+		this->hackerModeRain->setVisible(true);
+		this->hackerModePostProcessGlow->setVisible(true);
+		this->hackerModeHud->setVisible(true);
+		this->gamePostProcessInversion->setVisible(true);
+		this->gamePostProcessNightVision->setVisible(true);
 
-	GameUtils::focus(this->hackerModeHud);
-}
+		GameUtils::focus(this->hackerModeHud);
+	}
+	else
+	{
+		this->map->hackerModeDisable();
+		this->mapNode->setVisible(true);
+		this->map->setVisible(true);
+		this->hud->setVisible(true);
+		this->mouse->setVisible(true);
 
-void PlatformerMap::disableHackerMode()
-{
-	PlatformerMap::hackerMode = false;
+		this->hackerModeBackground->setVisible(false);
+		this->hackerModeRain->setVisible(false);
+		this->hackerModePostProcessGlow->setVisible(false);
+		this->hackerModeHud->setVisible(false);
+		this->gamePostProcessInversion->setVisible(false);
+		this->gamePostProcessNightVision->setVisible(false);
 
-	this->map->hackerModeDisable();
-	this->mapNode->setVisible(true);
-	this->map->setVisible(true);
-	this->hud->setVisible(true);
-	this->mouse->setVisible(true);
-
-	this->hackerModeBackground->setVisible(false);
-	this->hackerModeRain->setVisible(false);
-	this->hackerModePostProcessGlow->setVisible(false);
-	this->hackerModeHud->setVisible(false);
-	this->gamePostProcessInversion->setVisible(false);
-	this->gamePostProcessNightVision->setVisible(false);
-
-	GameUtils::resumeAll();
+		GameUtils::resumeAll();
+	}
 }
 
 void PlatformerMap::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
@@ -216,15 +218,13 @@ void PlatformerMap::draw(Renderer *renderer, const Mat4 &transform, uint32_t fla
 	if (PlatformerMap::hackerMode)
 	{
 		// Zac : well, using the camera correctly fucked my shaders -- these apparently render at the origin rather than the camera position
-		/*
-		this->mapNode->setVisible(true);
+		/*this->mapNode->setVisible(true);
 
 		// Draw map with shaders
-		this->gamePostProcessInversion->draw(this->map);
+		this->gamePostProcessInversion->draw(this->mapNode);
 		this->gamePostProcessNightVision->draw(this->gamePostProcessInversion);
 
 		// Prevent double render
-		this->mapNode->setVisible(false);
-		*/
+		this->mapNode->setVisible(false);*/
 	}
 }

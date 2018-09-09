@@ -1,16 +1,17 @@
 #include "HackerModeHud.h"
 
-HackerModeHud* HackerModeHud::create()
+HackerModeHud* HackerModeHud::create(function<void()> toggleHackermodeCallback)
 {
-	HackerModeHud* instance = new HackerModeHud();
+	HackerModeHud* instance = new HackerModeHud(toggleHackermodeCallback);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HackerModeHud::HackerModeHud()
+HackerModeHud::HackerModeHud(function<void()> toggleHackermodeCallback)
 {
+	this->callback = toggleHackermodeCallback;
 	this->hackableObjectsHud = Layer::create();
 	this->radialMenu = RadialMenu::create(CC_CALLBACK_0(HackerModeHud::onRadialMenuClose, this));
 
@@ -63,9 +64,11 @@ void HackerModeHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		{
 		case EventKeyboard::KeyCode::KEY_TAB:
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
-			// This is a little too "all knowing" as this HUD is expecting Level > UILayer > HackerModeHud
-			// To avoid this parent of parent bullshit, we need to implement push/pop focus
-			GameUtils::focus(this->getParent()->getParent());
+			if (this->callback != nullptr)
+			{
+				this->callback();
+			}
+
 			event->stopPropagation();
 
 			break;

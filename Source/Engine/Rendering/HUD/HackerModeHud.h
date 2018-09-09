@@ -12,12 +12,12 @@ using namespace cocos2d;
 class HackerModeHud : public UILayer
 {
 public:
-	static HackerModeHud * create();
+	static HackerModeHud * create(function<void()> toggleHackermodeCallback);
 
 	Layer * hackableObjectsHud;
 
 private:
-	HackerModeHud();
+	HackerModeHud(function<void()> toggleHackermodeCallback);
 	~HackerModeHud();
 
 	void onEnter() override;
@@ -29,5 +29,6 @@ private:
 	void registerHackableObject(EventCustom* args);
 
 	RadialMenu* radialMenu;
+	function<void()> callback;
 };
 
