@@ -40,8 +40,7 @@ protected:
 private:
 	void initializePositions();
 	void initializeListeners();
-	void enableHackerMode();
-	void disableHackerMode();
+	void toggleHackerMode();
 	void toggleDeveloperMode();
 	void onMouseWheelScroll(EventMouse* event);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);

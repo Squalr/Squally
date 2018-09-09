@@ -169,18 +169,17 @@ std::string SerializableMap::getMapFileName()
 
 void SerializableMap::hackerModeEnable()
 {
-	this->setVisible(true);
-
 	for (auto it = this->serializableLayers->begin(); it != this->serializableLayers->end(); it++)
 	{
-		(*it)->setVisible(false);
+		if (!(*it)->isHackerModeIgnored())
+		{
+			(*it)->setVisible(false);
+		}
 	}
 }
 
 void SerializableMap::hackerModeDisable()
 {
-	this->setVisible(true);
-
 	for (auto it = this->serializableLayers->begin(); it != this->serializableLayers->end(); it++)
 	{
 		(*it)->setVisible(true);

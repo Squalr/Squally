@@ -382,6 +382,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain\MatrixRain.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain\MatrixStrand.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MountainBackground.cpp" />
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\ObeliskBackground.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\OceanBackground.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\SnowBackground.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\PlatformerMap.cpp" />
@@ -654,6 +655,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain\MatrixRain.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MatrixRain\MatrixStrand.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\MountainBackground.h" />
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\ObeliskBackground.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\OceanBackground.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\SnowBackground.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\PlatformerMap.h" />

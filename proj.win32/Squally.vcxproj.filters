@@ -955,6 +955,9 @@
     <ClCompile Include="..\Source\Scenes\Cutscenes\SquallyUploadSpace.cpp">
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\ObeliskBackground.cpp">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Resources.h">
@@ -1761,6 +1764,9 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Cutscenes\SquallyUploadSpace.h">
       <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\ObeliskBackground.h">
+      <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
