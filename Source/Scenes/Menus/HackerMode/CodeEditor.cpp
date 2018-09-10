@@ -46,6 +46,8 @@ const std::set<std::string> CodeEditor::registers =
 	"eip", "rip"
 };
 
+const std::string CodeEditor::StringKeyAccept = "Menu_Accept";
+const std::string CodeEditor::StringKeyCancel = "Menu_Cancel";
 const std::string CodeEditor::StringKeyTitle = "Menu_CodeEditor_Title";
 const std::string CodeEditor::StringKeyStatus = "Menu_CodeEditor_Status";
 const std::string CodeEditor::StringKeyCodeEditor = "Menu_CodeEditor_CodeEditor";
@@ -71,9 +73,65 @@ CodeEditor::CodeEditor()
 	this->statusWindow = TextWindow::create(Localization::resolveString(CodeEditor::StringKeyStatus), CodeEditor::statusSize, Localization::getFontSizeH3(Localization::getCodingFont()), CodeEditor::defaultColor);
 	this->functionWindow = EditableTextWindow::create(Localization::resolveString(CodeEditor::StringKeyCodeEditor), CodeEditor::functionSize, Localization::getFontSizeH3(Localization::getCodingFont()), CodeEditor::defaultColor);
 	this->secondaryWindow = EditableTextWindow::create(Localization::resolveString(CodeEditor::StringKeyAllocationEditor), CodeEditor::secondarySize, Localization::getFontSizeH3(Localization::getCodingFont()), CodeEditor::defaultColor);
-	this->cancelButton = MenuSprite::create(Resources::Menus_Buttons_GenericHackButton, Resources::Menus_Buttons_GenericHackButtonHover, Resources::Menus_Buttons_GenericHackButtonClick);
-	this->acceptButton = MenuSprite::create(Resources::Menus_Buttons_GenericHackButton, Resources::Menus_Buttons_GenericHackButtonHover, Resources::Menus_Buttons_GenericHackButtonClick);
-	this->acceptButtonGrayed = Sprite::create(Resources::Menus_Buttons_GenericHackButtonGray);
+
+	Label* acceptLabel = Label::create(Localization::resolveString(CodeEditor::StringKeyAccept), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+	Label* acceptLabelHover = Label::create(Localization::resolveString(CodeEditor::StringKeyAccept), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+	Label* acceptLabelClicked = Label::create(Localization::resolveString(CodeEditor::StringKeyAccept), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+
+	Label* cancelLabel = Label::create(Localization::resolveString(CodeEditor::StringKeyCancel), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+	Label* cancelLabelHover = Label::create(Localization::resolveString(CodeEditor::StringKeyCancel), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+	Label* cancelLabelClicked = Label::create(Localization::resolveString(CodeEditor::StringKeyCancel), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+
+	Size shadowSize = Size(-4.0f, -4.0f);
+	int shadowBlur = 2;
+	int hoverOutlineSize = 2;
+	Color3B textColor = Color3B::WHITE;
+	Color4B shadowColor = Color4B::BLACK;
+	Color3B highlightColor = Color3B::YELLOW;
+	Color4B glowColor = Color4B::ORANGE;
+
+	acceptLabel->setColor(textColor);
+	acceptLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
+	acceptLabel->enableGlow(shadowColor);
+	cancelLabel->setColor(textColor);
+	cancelLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
+	cancelLabel->enableGlow(shadowColor);
+
+	acceptLabelHover->setColor(highlightColor);
+	acceptLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
+	acceptLabelHover->enableGlow(glowColor);
+	cancelLabelHover->setColor(highlightColor);
+	cancelLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
+	cancelLabelHover->enableGlow(glowColor);
+
+	acceptLabelClicked->setColor(highlightColor);
+	acceptLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
+	acceptLabelClicked->enableGlow(glowColor);
+	cancelLabelClicked->setColor(highlightColor);
+	cancelLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
+	cancelLabelClicked->enableGlow(glowColor);
+
+	this->acceptButton = TextMenuSprite::create(
+		acceptLabel,
+		acceptLabelHover,
+		acceptLabelClicked,
+		Resources::Menus_Buttons_GenericHackButton,
+		Resources::Menus_Buttons_GenericHackButtonHover,
+		Resources::Menus_Buttons_GenericHackButtonClick);
+
+	this->cancelButton = TextMenuSprite::create(
+		cancelLabel,
+		cancelLabelHover,
+		cancelLabelClicked,
+		Resources::Menus_Buttons_GenericHackButton,
+		Resources::Menus_Buttons_GenericHackButtonHover,
+		Resources::Menus_Buttons_GenericHackButtonClick);
+
+	this->acceptButtonGrayed = Node::create();
+	this->acceptButtonGrayed->addChild(Sprite::create(Resources::Menus_Buttons_GenericHackButtonGray));
+	Label* acceptGray = Label::create(Localization::resolveString(CodeEditor::StringKeyAccept), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+	acceptGray->setTextColor(Color4B::GRAY);
+	this->acceptButtonGrayed->addChild(acceptGray);
 
 	this->functionWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
 	this->secondaryWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
