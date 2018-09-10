@@ -8,6 +8,7 @@
 #include "Engine/Rendering/Components/MenuLabel.h"
 #include "Engine/Rendering/Components/MenuSprite.h"
 #include "Engine/Rendering/Components/MouseOverPanel.h"
+#include "Engine/Rendering/Components/TextMenuSprite.h"
 #include "Engine/Rendering/Components/TextWindow.h"
 #include "Engine/Rendering/Shaders/PostProcess.h"
 #include "Engine/Utils/HackUtils.h"
@@ -47,9 +48,9 @@ private:
 	EditableTextWindow* functionWindow;
 	EditableTextWindow* secondaryWindow;
 
-	MenuSprite* cancelButton;
-	MenuSprite* acceptButton;
-	Sprite* acceptButtonGrayed;
+	TextMenuSprite* cancelButton;
+	TextMenuSprite* acceptButton;
+	Node* acceptButtonGrayed;
 
 	HackableCode* activeHackableCode;
 	float compileDelay;
@@ -70,6 +71,8 @@ private:
 	static const Color3B commentColor;
 	static const std::set<std::string> registers;
 
+	static const std::string StringKeyAccept;
+	static const std::string StringKeyCancel;
 	static const std::string StringKeyTitle;
 	static const std::string StringKeyStatus;
 	static const std::string StringKeyCodeEditor;
