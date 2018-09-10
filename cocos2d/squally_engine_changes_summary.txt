@@ -39,6 +39,6 @@ Changes to engine:
 
 - Update to engine localization to support all Steam languages
 
-- UIRichText, CCTextFieldTTF, and UITextField reverted to cocos 3.16, and some fixes applied to make the code editor work. Lots of things fixed here -- multi-line textfield support, arrow movement support, vertical line space fixes, others I do not remember.
+- UIRichText, CCTextFieldTTF, and UITextField, CCLabel, CCLabelTextFormatter reverted to cocos 3.16, and some fixes applied to make the code editor work. Lots of things fixed here -- multi-line textfield support, arrow movement support, vertical line space fixes, others I do not remember.
 
 - Fix to CCGLViewImpl-desktop to allow enter key to insert a newline
