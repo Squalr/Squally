@@ -32,7 +32,11 @@ void Shiftman::onEnter()
 
 void Shiftman::registerHackables()
 {
-	this->setButtonOffset(Vec2(0, 72.0f));
+}
+
+Vec2 Shiftman::getButtonOffset()
+{
+	return Vec2(0, 72.0f);
 }
 
 void Shiftman::update(float dt)

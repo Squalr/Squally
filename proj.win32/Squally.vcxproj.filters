@@ -187,6 +187,9 @@
     <Filter Include="Source\Scenes\Cutscenes\Objects">
       <UniqueIdentifier>{9e2a88ed-4fde-4844-b076-4dc30e163506}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Engine\Events">
+      <UniqueIdentifier>{e487d807-15a4-4295-be0c-f7729630d705}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Resources.cpp">

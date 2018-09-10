@@ -14,6 +14,8 @@ protected:
 	HexusArcade(ValueMap* initProperties);
 	~HexusArcade();
 
+	Vec2 getButtonOffset() override;
+
 private:
 	void registerHackables();
 

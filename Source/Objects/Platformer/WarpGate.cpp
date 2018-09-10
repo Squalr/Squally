@@ -76,7 +76,11 @@ WarpGate::~WarpGate()
 
 void WarpGate::registerHackables()
 {
-	this->setButtonOffset(Vec2(0, -128.0f));
+}
+
+Vec2 WarpGate::getButtonOffset()
+{
+	return Vec2(0, -128.0f);
 }
 
 void WarpGate::open()

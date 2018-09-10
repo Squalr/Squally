@@ -17,6 +17,8 @@ protected:
 	WarpGate(ValueMap* initProperties);
 	~WarpGate();
 
+	Vec2 getButtonOffset() override;
+
 private:
 	void registerHackables();
 

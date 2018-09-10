@@ -28,6 +28,7 @@ private:
 
 	void registerHackableObject(EventCustom* args);
 
+	Node* hackableButtonLayer;
 	RadialMenu* radialMenu;
 	function<void()> callback;
 };

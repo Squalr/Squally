@@ -30,6 +30,8 @@ protected:
 	bool hoverContactUpdate(CollisionData data);
 	bool hoverContactEnd(CollisionData data);
 
+	Vec2 getButtonOffset() override;
+
 private:
 	Squally(ValueMap* initProperties);
 	~Squally();
