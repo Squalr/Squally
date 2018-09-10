@@ -1487,7 +1487,7 @@ void RichText::formatText()
 				}
 			}
 		}
-		formatRenderers();
+		formarRenderers();
 		_formatTextDirty = false;
 	}
 }
@@ -1755,7 +1755,7 @@ void RichText::addNewLine()
 	_elementRenders.emplace_back();
 }
 
-void RichText::formatRenderers()
+void RichText::formarRenderers()
 {
 	if (_ignoreSize)
 	{
