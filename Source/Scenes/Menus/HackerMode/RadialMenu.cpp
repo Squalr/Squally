@@ -30,6 +30,7 @@ RadialMenu::RadialMenu(std::function<void()> onCloseCallback)
 	this->addChild(this->layerColor);
 	this->addChild(this->radialMenuItems);
 	this->addChild(this->codeEditor);
+	this->addChild(Mouse::create());
 
 	this->initializePositions();
 	this->initializeListeners();

@@ -39,7 +39,11 @@ void IsometricSqually::onEnter()
 
 void IsometricSqually::registerHackables()
 {
-	this->setButtonOffset(Vec2(0, 72.0f));
+}
+
+Vec2 IsometricSqually::getButtonOffset()
+{
+	return Vec2(0, 72.0f);
 }
 
 void IsometricSqually::update(float dt)

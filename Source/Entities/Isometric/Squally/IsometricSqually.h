@@ -17,6 +17,9 @@ public:
 
 	static const std::string KeySquallyProperty;
 
+protected:
+	Vec2 getButtonOffset() override;
+
 private:
 	IsometricSqually(ValueMap* initProperties);
 	~IsometricSqually();

@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 
 #include "Events/HackableEvents.h"
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Maps/SerializableObject.h"
 #include "Engine/Rendering/Components/MenuSprite.h"
 #include "Resources.h"
@@ -14,23 +15,24 @@ class HackableObject : public SerializableObject
 {
 public:
 	void onHackableClick(MenuSprite* menuSprite);
-	void bindHackableButton(MenuSprite* hackableButton);
 
 	Size size;
 	std::vector<HackableData*>* dataList;
+
+	MenuSprite * hackButton;
 
 protected:
 	HackableObject(ValueMap* initProperties);
 	~HackableObject();
 
+	void pause() override;
 	void onEnterTransitionDidFinish() override;
-
-	void setButtonOffset(Vec2 offset);
+	virtual Vec2 getButtonOffset();
 	void registerData(HackableData* hackableData);
-	void draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) override;
+
+	void visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags) override;
 
 private:
-	MenuSprite * boundHackableButton;
 	Vec2 buttonOffset;
 };
 

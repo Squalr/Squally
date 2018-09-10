@@ -13,6 +13,9 @@ public:
 
 	static const std::string KeyShiftmanProperty;
 
+protected:
+	Vec2 getButtonOffset() override;
+
 private:
 	Shiftman(ValueMap* initProperties);
 	~Shiftman();

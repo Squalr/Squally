@@ -2,9 +2,12 @@
 
 HackableObject::HackableObject(ValueMap* initProperties) : SerializableObject(initProperties)
 {
-	this->boundHackableButton = nullptr;
-
 	this->dataList = new std::vector<HackableData*>();
+	this->hackButton = MenuSprite::create(Resources::Menus_Buttons_CogV2Button, Resources::Menus_Buttons_CogV2ButtonHover, Resources::Menus_Buttons_CogV2ButtonClick);
+	
+	//this->hackButton->setVisible(false);
+
+	this->addChild(this->hackButton);
 }
 
 HackableObject::~HackableObject()
@@ -14,24 +17,23 @@ HackableObject::~HackableObject()
 
 void HackableObject::onEnterTransitionDidFinish()
 {
-	Node::onEnterTransitionDidFinish();
+	Node::onEnter();
+
+	this->hackButton->setClickCallback(CC_CALLBACK_1(HackableObject::onHackableClick, this));
 
 	HackableEvents::registerHackable(HackableEvents::HackableObjectRegisterArgs(this));
 }
 
-void HackableObject::bindHackableButton(MenuSprite* hackableButton)
+void HackableObject::pause()
 {
-	this->boundHackableButton = hackableButton;
+	SerializableObject::pause();
 
-	if (this->dataList->size() <= 0)
-	{
-		this->boundHackableButton->setVisible(false);
-	}
+	this->hackButton->resume();
 }
 
-void HackableObject::setButtonOffset(Vec2 offset)
+Vec2 HackableObject::getButtonOffset()
 {
-	this->buttonOffset = offset;
+	return Vec2::ZERO;
 }
 
 void HackableObject::onHackableClick(MenuSprite* menuSprite)
@@ -43,19 +45,14 @@ void HackableObject::registerData(HackableData* hackableData)
 {
 	hackableData->retain();
 	this->dataList->push_back(hackableData);
-
-	if (this->boundHackableButton != nullptr)
-	{
-		this->boundHackableButton->setVisible(true);
-	}
 }
 
-void HackableObject::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
+void HackableObject::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
 {
-	if (this->boundHackableButton != nullptr)
-	{
-		this->boundHackableButton->setPosition(this->getParent()->convertToWorldSpace(this->getPosition()) + this->buttonOffset);
-	}
+	// A little bit of magic to set the hackable button position
+	Vec2 screenPosition = this->getParent()->convertToWorldSpace(this->getPosition()) + this->getButtonOffset();
+	Vec2 newPosition = this->hackButton->getParent()->convertToNodeSpace(screenPosition);
+	this->hackButton->setPosition(newPosition);
 
-	Node::draw(renderer, transform, flags);
+	SerializableObject::visit(renderer, parentTransform, parentFlags);
 }

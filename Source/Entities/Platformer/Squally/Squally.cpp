@@ -56,8 +56,6 @@ void Squally::onEnter()
 
 void Squally::registerHackables()
 {
-	this->setButtonOffset(Vec2(0, 72.0f));
-
 	//HackableData* hackableDataHealth = HackableData::create("Health", &this->health, &typeid(this->health));
 	//HackableData* hackableDataPositionX = HackableData::create("X Position", &this->position.x, &typeid(this->position.x));
 	//HackableData* hackableDataPositionY = HackableData::create("Y Position", &this->position.y, &typeid(this->position.y));
@@ -73,6 +71,11 @@ void Squally::registerHackables()
 	//this->registerCode(hackableVelocity);
 	//this->registerCode(hackableVelocityA);
 	//this->registerCode(hackableVelocityB);
+}
+
+Vec2 Squally::getButtonOffset()
+{
+	return Vec2(0, 72.0f);
 }
 
 void Squally::update(float dt)

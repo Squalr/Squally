@@ -14,6 +14,8 @@ protected:
 	Wind(ValueMap* initProperties);
 	~Wind();
 
+	Vec2 getButtonOffset() override;
+
 private:
 	void registerHackables();
 

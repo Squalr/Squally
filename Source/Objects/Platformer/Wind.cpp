@@ -45,8 +45,11 @@ void Wind::registerHackables()
 {
 	this->windDataSpeedY = HackableData::create("Y Position", &this->windSpeed.y, &typeid(this->windSpeed.y), Resources::Menus_HackerModeMenu_Icons_AlchemyPot);
 	this->registerData(this->windDataSpeedY);
+}
 
-	this->setButtonOffset(Vec2(0.0f, 0.0f));
+Vec2 Wind::getButtonOffset()
+{
+	return Vec2::ZERO;
 }
 
 void Wind::update(float dt)
