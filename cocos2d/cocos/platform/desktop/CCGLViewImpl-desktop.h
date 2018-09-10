@@ -205,6 +205,11 @@ public:
 
     static void onGLFWKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
     {
+		if (key == GLFW_KEY_ENTER && action == 1)
+		{
+			onGLFWCharCallback(window, '\n');
+		}
+
         if (_view)
             _view->onGLFWKeyCallback(window, key, scancode, action, mods);
     }
