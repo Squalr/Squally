@@ -32,13 +32,24 @@ void Mouse::onEnter()
 {
 	Node::onEnter();
 
+	this->setSpriteToCursorPosition();
 	this->initializeListeners();
-
-	// Initialize positions to whatever the previous saved position was (allows for seamless cursor across scenes)
-	this->mouseSpriteIdle->setPosition(Vec2(Mouse::mousePosition));
-	this->mouseSpritePoint->setPosition(Vec2(Mouse::mousePosition));
-
 	this->setCanClick(false);
+}
+
+void Mouse::pause()
+{
+	this->setVisible(false);
+
+	Node::pause();
+}
+
+void Mouse::resume()
+{
+	this->setSpriteToCursorPosition();
+	this->setVisible(true);
+
+	Node::resume();
 }
 
 void Mouse::onMouseCanClickEvent(EventCustom* eventCustom)
@@ -82,9 +93,14 @@ void Mouse::onMouseMove(EventMouse* event)
 {
 	Mouse::mousePosition = Vec2(event->getCursorX(), event->getCursorY());
 
-	this->mouseSpriteIdle->setPosition(Mouse::mousePosition);
-	this->mouseSpritePoint->setPosition(Mouse::mousePosition);
+	this->setSpriteToCursorPosition();
 
 	this->setCanClick(false);
 	MouseEvents::TriggerMouseMove(MouseEvents::MouseEventArgs(Mouse::mousePosition.x, Mouse::mousePosition.y, event));
+}
+
+void Mouse::setSpriteToCursorPosition()
+{
+	this->mouseSpriteIdle->setPosition(Mouse::mousePosition);
+	this->mouseSpritePoint->setPosition(Mouse::mousePosition);
 }

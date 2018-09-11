@@ -1,15 +1,15 @@
 #include "Chest.h"
 
-Chest* Chest::create(ValueMap* initProperties, Node* contentNode)
+Chest* Chest::create(Node* contentNode)
 {
-	Chest* instance = new Chest(initProperties, contentNode);
+	Chest* instance = new Chest(contentNode);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Chest::Chest(ValueMap* initProperties, Node* contentNode) : HackableObject(initProperties)
+Chest::Chest(Node* contentNode) : Node()
 {
 	this->content = contentNode;
 	this->chestOpen = Node::create();
@@ -25,7 +25,6 @@ Chest::Chest(ValueMap* initProperties, Node* contentNode) : HackableObject(initP
 	this->chestClosed->addChild(chestClosedSprite);
 
 	this->content->setCascadeOpacityEnabled(true);
-	this->size = chestClosedSprite->getContentSize();
 
 	this->close();
 
@@ -35,11 +34,6 @@ Chest::Chest(ValueMap* initProperties, Node* contentNode) : HackableObject(initP
 
 Chest::~Chest()
 {
-}
-
-void Chest::update(float dt)
-{
-
 }
 
 void Chest::open()

@@ -83,7 +83,6 @@ void TextWindow::insertText(std::string text, Color3B color)
 
 	this->displayTextElements->push_back(element);
 	this->displayedText->pushBackElement(element);
-	this->displayedText->formatText();
 }
 
 void TextWindow::setMarginSize(float newMarginSize)

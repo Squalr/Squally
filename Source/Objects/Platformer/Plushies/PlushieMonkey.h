@@ -22,13 +22,12 @@ protected:
 private:
 	HackableData * puzzleData;
 
-	void incrementPower();
+	void decreaseLockTimer();
 
 	Label* valueLabel;
 
 	int previousValue;
 	int previousValueMax;
 
-	static int warpGatePower;
-	static int warpGatePowerMax;
+	static int lockCountDown;
 };

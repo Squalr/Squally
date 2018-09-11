@@ -1,7 +1,6 @@
 #include "PlushieMonkey.h"
 
-int PlushieMonkey::warpGatePower = 0;
-int PlushieMonkey::warpGatePowerMax = 234900;
+int PlushieMonkey::lockCountDown = 234900;
 
 PlushieMonkey* PlushieMonkey::create(ValueMap* initProperties)
 {
@@ -25,7 +24,7 @@ PlushieMonkey::PlushieMonkey(ValueMap* initProperties) : Plushie(initProperties)
 	this->sprite->addChild(coin);
 	this->sprite->addChild(gold);
 
-	this->valueLabel = Label::create(std::to_string(PlushieMonkey::warpGatePower), Localization::getMainFont(), 24.0f);
+	this->valueLabel = Label::create(std::to_string(PlushieMonkey::lockCountDown), Localization::getMainFont(), 24.0f);
 
 	this->valueLabel->setPosition(-48.0f, 128.0f);
 	this->valueLabel->enableOutline(Color4B::BLACK, 2.0f);
@@ -43,16 +42,16 @@ void PlushieMonkey::onEnter()
 {
 	Plushie::onEnter();
 
-	CallFunc* incPower = CallFunc::create([=]
+	CallFunc* decCountdown = CallFunc::create([=]
 	{
-		this->incrementPower();
+		this->decreaseLockTimer();
 	});
 
-	incPower->retain();
+	decCountdown->retain();
 
 	this->runAction(RepeatForever::create(
 		Sequence::create(
-			incPower,
+			decCountdown,
 			DelayTime::create(1.0f),
 			nullptr)
 	)
@@ -63,17 +62,19 @@ void PlushieMonkey::onEnter()
 
 void PlushieMonkey::update(float dt)
 {
+	Plushie::update(dt);
+
 	// Update text if values have changed
-	if (~previousValue != PlushieMonkey::warpGatePower || ~previousValueMax != PlushieMonkey::warpGatePowerMax)
+	if (~previousValue != PlushieMonkey::lockCountDown)
 	{
 		// Constrain value
-		PlushieMonkey::warpGatePower = min(PlushieMonkey::warpGatePower, PlushieMonkey::warpGatePowerMax);
+		PlushieMonkey::lockCountDown = max(0, PlushieMonkey::lockCountDown);
 
 		// Update text
-		this->valueLabel->setString(std::to_string(PlushieMonkey::warpGatePower) + " / " + std::to_string(PlushieMonkey::warpGatePowerMax));
+		this->valueLabel->setString(std::to_string(PlushieMonkey::lockCountDown));
 
 		// Set color
-		if (PlushieMonkey::warpGatePower < PlushieMonkey::warpGatePowerMax)
+		if (PlushieMonkey::lockCountDown > 0)
 		{
 			this->valueLabel->setColor(Color3B::RED);
 			this->chest->close();
@@ -85,12 +86,11 @@ void PlushieMonkey::update(float dt)
 		}
 
 		// Store the previous value as a bit inverse (so that the previous values do not show up in scan results)
-		previousValue = ~PlushieMonkey::warpGatePower;
-		previousValueMax = ~PlushieMonkey::warpGatePowerMax;
+		previousValue = ~PlushieMonkey::lockCountDown;
 	}
 }
 
-void PlushieMonkey::incrementPower()
+void PlushieMonkey::decreaseLockTimer()
 {
 	void* assemblyAddressStart = nullptr;
 	void* assemblyAddressEnd = nullptr;
@@ -98,13 +98,13 @@ void PlushieMonkey::incrementPower()
 	__asm
 	{
 		push eax;
-		mov eax, PlushieMonkey::warpGatePower;
+		mov eax, PlushieMonkey::lockCountDown;
 	}
 
 HACKABLE_CODE_BEGIN(assemblyAddressStart, puzzleStart)
 	__asm
 	{
-		inc eax;
+		dec eax;
 		nop;
 		nop;
 		nop;
@@ -114,11 +114,16 @@ HACKABLE_CODE_END(assemblyAddressEnd, puzzleEnd)
 
 	__asm
 	{
-		mov PlushieMonkey::warpGatePower, eax
+		mov PlushieMonkey::lockCountDown, eax
 		pop eax;
 	}
 
-	this->puzzleData->registerCode(assemblyAddressStart, assemblyAddressEnd, "Unlock Increment", Resources::Menus_HackerModeMenu_Icons_Safe);
+	if (PlushieMonkey::lockCountDown < 0)
+	{
+		PlushieMonkey::lockCountDown = 0;
+	}
+
+	this->puzzleData->registerCode(assemblyAddressStart, assemblyAddressEnd, "Lock Countdown", Resources::Menus_HackerModeMenu_Icons_Safe);
 	this->puzzleData->registerCode((void*)((int)assemblyAddressStart + 1), assemblyAddressEnd, "Puzzle Test", Resources::Menus_HackerModeMenu_Icons_FlamingScroll);
 	this->puzzleData->registerCode((void*)((int)assemblyAddressStart + 2), assemblyAddressEnd, "Puzzle Swag", Resources::Menus_HackerModeMenu_Icons_BookCrystal);
 }
@@ -127,7 +132,7 @@ void PlushieMonkey::registerHackables()
 {
 	Plushie::registerHackables();
 
-	this->puzzleData = HackableData::create("Key", &PlushieMonkey::warpGatePower, &typeid(PlushieMonkey::warpGatePower), Resources::Menus_HackerModeMenu_Icons_Lock);
+	this->puzzleData = HackableData::create("Key", &PlushieMonkey::lockCountDown, &typeid(PlushieMonkey::lockCountDown), Resources::Menus_HackerModeMenu_Icons_Lock);
 	this->registerData(this->puzzleData);
 	
 	this->registerData(HackableData::create("Health", this->chest, &typeid((int)this->chest), Resources::Menus_HackerModeMenu_Icons_Heart));

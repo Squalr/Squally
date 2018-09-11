@@ -18,10 +18,6 @@ void PlatformerObjectDeserializer::onDeserializationRequest(ObjectDeserializatio
 		{
 			newObject = WarpGateExactScanTutorial::create(&properties);
 		}
-		else if (name == "chest")
-		{
-			newObject = Chest::create(&properties, Sprite::create(Resources::Menus_HackerModeMenu_Icons_GoldBar));
-		}
 		else if (name == "plushie_monkey")
 		{
 			newObject = PlushieMonkey::create(&properties);

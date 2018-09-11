@@ -17,7 +17,7 @@ ObeliskBackground::ObeliskBackground(ValueMap* properties, std::string name) : B
 	this->background2 = InfiniteParallaxNode::create(Resources::Backgrounds_Platformer_Obelisk_background_plan_2);
 	this->background3 = InfiniteParallaxNode::create(Resources::Backgrounds_Platformer_Obelisk_background_plan_1);
 	this->midground1 = InfiniteParallaxNode::create(Resources::Backgrounds_Platformer_Obelisk_middleground_1);
-	this->midground2 = InfiniteParallaxNode::create(Resources::Backgrounds_Platformer_Obelisk_middleground_2);
+	this->midground2 = InfiniteParallaxNode::create(Resources::Backgrounds_Platformer_Obelisk_middleground_3);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
