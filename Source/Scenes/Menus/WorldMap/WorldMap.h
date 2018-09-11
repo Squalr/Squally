@@ -14,14 +14,14 @@
 
 using namespace cocos2d;
 
-class StoryMap : public FadeScene
+class WorldMap : public FadeScene
 {
 public:
-	static StoryMap * create();
+	static WorldMap * create();
 
 protected:
-	StoryMap();
-	~StoryMap();
+	WorldMap();
+	~WorldMap();
 
 private:
 	void onEnter() override;

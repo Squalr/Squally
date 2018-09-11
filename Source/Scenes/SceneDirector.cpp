@@ -17,8 +17,9 @@ SceneDirector::SceneDirector()
 {
 	this->sceneHistory = new std::stack<Scene*>();
 	this->titleScreen = TitleScreen::create();
+	this->arcadeMenu = ArcadeMenu::create();
 	this->tutorialScreen = TutorialScreen::create();
-	this->storyMap = StoryMap::create();
+	this->worldMap = WorldMap::create();
 	this->loadingScreen = LoadingScreen::create();
 	this->map = nullptr;
 	this->fight = Fight::create();
@@ -32,8 +33,9 @@ SceneDirector::SceneDirector()
 
 	// Prevent disposal of game objects
 	this->titleScreen->retain();
+	this->arcadeMenu->retain();
 	this->tutorialScreen->retain();
-	this->storyMap->retain();
+	this->worldMap->retain();
 	this->loadingScreen->retain();
 	// this->map->retain(); // Initially nullptr -- do not retain
 	this->fight->retain();
@@ -110,11 +112,14 @@ void SceneDirector::onGameNavigateNew(EventCustom* eventCustom)
 	case NavigationEvents::GameScreen::Title:
 		newScene = this->titleScreen;
 		break;
+	case NavigationEvents::GameScreen::Arcade:
+		newScene = this->arcadeMenu;
+		break;
 	case NavigationEvents::GameScreen::Tutorial:
 		newScene = this->tutorialScreen;
 		break;
 	case NavigationEvents::GameScreen::StoryMap:
-		newScene = this->storyMap;
+		newScene = this->worldMap;
 		break;
 	case NavigationEvents::GameScreen::Pause:
 		newScene = this->pauseMenu;

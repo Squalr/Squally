@@ -390,6 +390,9 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Weather\Rain.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Weather\Snow.cpp" />
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Weather\WeatherDeserializer.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\Arcade\ArcadeMenu.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\Arcade\Hexus\HexusMenu.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\Arcade\Hexus\HexusOpponentItem.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Confirmation\ConfirmationMenu.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Dialog\DialogMenu.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.cpp" />
@@ -398,8 +401,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Scenes\Menus\Options\OptionsMenu.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Pause\PauseMenu.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\MenuBackground.cpp" />
-    <ClCompile Include="..\Source\Scenes\Menus\Story\MapNode.cpp" />
-    <ClCompile Include="..\Source\Scenes\Menus\Story\StoryMap.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Title\HackerMode.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Title\TitleScreen.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Title\TitleScreenBackground.cpp" />
@@ -409,6 +410,8 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Engine\Save\SaveManager.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Shaders\PostProcess.cpp" />
     <ClCompile Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\WorldMap\MapNode.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\WorldMap\WorldMap.cpp" />
     <ClCompile Include="..\Source\Sound\MusicDeserializer.cpp" />
     <ClCompile Include="..\Source\Window.cpp" />
     <ClCompile Include="..\Source\Scenes\SceneDirector.cpp" />
@@ -663,6 +666,9 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Weather\Rain.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Weather\Snow.h" />
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Weather\WeatherDeserializer.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\Arcade\ArcadeMenu.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\Arcade\Hexus\HexusMenu.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\Arcade\Hexus\HexusOpponentItem.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Confirmation\ConfirmationMenu.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Dialog\DialogMenu.h" />
     <ClInclude Include="..\Source\Scenes\Menus\HackerMode\CodeEditor.h" />
@@ -671,8 +677,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Scenes\Menus\Options\OptionsMenu.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Pause\PauseMenu.h" />
     <ClInclude Include="..\Source\Scenes\Menus\MenuBackground.h" />
-    <ClInclude Include="..\Source\Scenes\Menus\Story\MapNode.h" />
-    <ClInclude Include="..\Source\Scenes\Menus\Story\StoryMap.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Title\HackerMode.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Title\TitleScreen.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Title\TitleScreenBackground.h" />
@@ -681,6 +685,8 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Engine\Save\SaveManager.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Shaders\PostProcess.h" />
     <ClInclude Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\WorldMap\MapNode.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\WorldMap\WorldMap.h" />
     <ClInclude Include="..\Source\Sound\MusicDeserializer.h" />
     <ClInclude Include="..\Source\Window.h" />
     <ClInclude Include="..\Source\Scenes\SceneDirector.h" />

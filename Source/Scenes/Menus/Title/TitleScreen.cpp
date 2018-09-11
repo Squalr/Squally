@@ -1,8 +1,14 @@
 #include "TitleScreen.h"
 
 const std::string TitleScreen::StringKeyStoryMode = "Menu_Story_Mode";
+const std::string TitleScreen::StringKeyArcadeMode = "Menu_Arcade_Mode";
 const std::string TitleScreen::StringKeyOptions = "Menu_Options";
 const std::string TitleScreen::StringKeyExit = "Menu_Exit";
+
+const float TitleScreen::titleFontSize = 64.0f;
+const float TitleScreen::menuFontSize = 48.0f;
+const float TitleScreen::menuOffset = 128.0f;
+const float TitleScreen::spacing = -96.0f;
 
 TitleScreen * TitleScreen::create()
 {
@@ -31,6 +37,10 @@ TitleScreen::TitleScreen()
 	Label* storyModeLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* storyModeLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
+	Label* arcadeModeLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyArcadeMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* arcadeModeLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyArcadeMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* arcadeModeLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyArcadeMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+
 	Label* optionsLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* optionsLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* optionsLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
@@ -42,6 +52,9 @@ TitleScreen::TitleScreen()
 	storyModeLabel->setColor(textColor);
 	storyModeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
 	storyModeLabel->enableGlow(shadowColor);
+	arcadeModeLabel->setColor(textColor);
+	arcadeModeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
+	arcadeModeLabel->enableGlow(shadowColor);
 	optionsLabel->setColor(textColor);
 	optionsLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
 	optionsLabel->enableGlow(shadowColor);
@@ -52,6 +65,9 @@ TitleScreen::TitleScreen()
 	storyModeLabelHover->setColor(highlightColor);
 	storyModeLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	storyModeLabelHover->enableGlow(glowColor);
+	arcadeModeLabelHover->setColor(highlightColor);
+	arcadeModeLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
+	arcadeModeLabelHover->enableGlow(glowColor);
 	optionsLabelHover->setColor(highlightColor);
 	optionsLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	optionsLabelHover->enableGlow(glowColor);
@@ -62,6 +78,9 @@ TitleScreen::TitleScreen()
 	storyModeLabelClicked->setColor(highlightColor);
 	storyModeLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
 	storyModeLabelClicked->enableGlow(glowColor);
+	arcadeModeLabelClicked->setColor(highlightColor);
+	arcadeModeLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
+	arcadeModeLabelClicked->enableGlow(glowColor);
 	optionsLabelClicked->setColor(highlightColor);
 	optionsLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
 	optionsLabelClicked->enableGlow(glowColor);
@@ -73,6 +92,14 @@ TitleScreen::TitleScreen()
 		storyModeLabel,
 		storyModeLabelHover,
 		storyModeLabelClicked,
+		Resources::Menus_TitleScreen_TitleButton,
+		Resources::Menus_TitleScreen_TitleButtonHover,
+		Resources::Menus_TitleScreen_TitleButtonClick);
+
+	this->arcadeModeButton = TextMenuSprite::create(
+		arcadeModeLabel,
+		arcadeModeLabelHover,
+		arcadeModeLabelClicked,
 		Resources::Menus_TitleScreen_TitleButton,
 		Resources::Menus_TitleScreen_TitleButtonHover,
 		Resources::Menus_TitleScreen_TitleButtonClick);
@@ -102,6 +129,7 @@ TitleScreen::TitleScreen()
 	this->addChild(this->titleBar);
 	this->addChild(this->title);
 	this->addChild(this->storyModeButton);
+	this->addChild(this->arcadeModeButton);
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
 	this->addChild(Mouse::create());
@@ -123,6 +151,7 @@ void TitleScreen::onEnter()
 
 	this->ether->setClickCallback(CC_CALLBACK_1(TitleScreen::onMatrixClick, this));
 	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));
+	this->arcadeModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onArcadeModeClick, this));
 	this->optionsButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onOptionsClick, this));
 	this->exitButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onExitClick, this));
 
@@ -134,6 +163,7 @@ void TitleScreen::onEnter()
 	GameUtils::fadeInObject(this->titleBar, delay, duration);
 	GameUtils::fadeInObject(this->title, delay, duration);
 	GameUtils::fadeInObject(this->storyModeButton, delay, duration);
+	GameUtils::fadeInObject(this->arcadeModeButton, delay, duration);
 	GameUtils::fadeInObject(this->optionsButton, delay, duration);
 	GameUtils::fadeInObject(this->exitButton, delay, duration);
 
@@ -147,14 +177,15 @@ void TitleScreen::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	this->ether->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - this->ether->getContentSize().height + 372.0f));
-	this->etherParticles->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - this->ether->getContentSize().height + 372.0f));
+	this->ether->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - this->ether->getContentSize().height + 372.0f));
+	this->etherParticles->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - this->ether->getContentSize().height + 372.0f));
 
-	this->titleBar->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2));
-	this->title->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height - this->title->getContentSize().height / 2));
-	this->storyModeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2 + 192.0f));
-	this->optionsButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2 + 64.0f));
-	this->exitButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - visibleSize.width / 3, origin.y + visibleSize.height / 2 - 128.0f));
+	this->titleBar->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f));
+	this->title->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height - this->title->getContentSize().height / 2));
+	this->storyModeButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f + 256.0f));
+	this->arcadeModeButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f + 128.0f));
+	this->optionsButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f - 0.0f));
+	this->exitButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f - 256.0f));
 }
 
 void TitleScreen::onMatrixClick(MenuSprite* menuSprite)
@@ -166,6 +197,11 @@ void TitleScreen::onStoryModeClick(MenuSprite* menuSprite)
 {
 	NavigationEvents::navigate(NavigationEvents::GameScreen::StoryMap);
 	////NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneNeonCity);
+}
+
+void TitleScreen::onArcadeModeClick(MenuSprite* menuSprite)
+{
+	NavigationEvents::navigate(NavigationEvents::GameScreen::Arcade);
 }
 
 void TitleScreen::onOptionsClick(MenuSprite* menuSprite)
