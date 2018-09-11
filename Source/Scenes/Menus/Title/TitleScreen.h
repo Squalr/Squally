@@ -16,7 +16,6 @@
 #include "Scenes/Menus/Title/HackerMode.h"
 #include "Scenes/Menus/Title/TitleScreenBackground.h"
 #include "Scenes/Menus/Tutorial/TutorialScreen.h"
-#include "Scenes/Menus/Story/StoryMap.h"
 #include "Scenes/Menus/Options/OptionsMenu.h"
 #include "Resources.h"
 
@@ -38,6 +37,7 @@ private:
 
 	void onMatrixClick(MenuSprite* menuSprite);
 	void onStoryModeClick(MenuSprite* menuSprite);
+	void onArcadeModeClick(MenuSprite* menuSprite);
 	void onOptionsClick(MenuSprite* menuSprite);
 	void onExitClick(MenuSprite* menuSprite);
 
@@ -47,18 +47,20 @@ private:
 	ParticleSystem* etherParticles;
 
 	TextMenuSprite* storyModeButton;
+	TextMenuSprite* arcadeModeButton;
 	TextMenuSprite* optionsButton;
 	TextMenuSprite* exitButton;
 	Sprite* titleBar;
 	Sprite* title;
 
 	static const std::string StringKeyStoryMode;
+	static const std::string StringKeyArcadeMode;
 	static const std::string StringKeyOptions;
 	static const std::string StringKeyExit;
 
-	const float titleFontSize = 64.0f;
-	const float menuFontSize = 48.0f;
-	const float menuOffset = 128.0f;
-	const float spacing = -96.0f;
+	static const float titleFontSize;
+	static const float menuFontSize;
+	static const float menuOffset;
+	static const float spacing;
 };
 

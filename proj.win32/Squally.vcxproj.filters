@@ -22,9 +22,6 @@
     <Filter Include="Source\Scenes\Menus\Pause">
       <UniqueIdentifier>{efb42e19-0f6a-4c9e-bb59-cf59233af7f2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Scenes\Menus\Story">
-      <UniqueIdentifier>{909eb5b2-aabc-45a3-88fd-7fbad17f7424}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Scenes\Menus\Tutorial">
       <UniqueIdentifier>{ce760e68-2034-4716-a741-75ff6bae1ffc}</UniqueIdentifier>
     </Filter>
@@ -190,6 +187,15 @@
     <Filter Include="Source\Engine\Events">
       <UniqueIdentifier>{e487d807-15a4-4295-be0c-f7729630d705}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Scenes\Menus\WorldMap">
+      <UniqueIdentifier>{86e128a2-e022-4c90-842d-bf8330506589}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes\Menus\Arcade">
+      <UniqueIdentifier>{0b71daba-fb70-40de-88e1-5652ff45a63b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Scenes\Menus\Arcade\Hexus">
+      <UniqueIdentifier>{266d14da-8bd5-4bbc-b433-908bda97a7c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Resources.cpp">
@@ -206,12 +212,6 @@
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\MenuBackground.cpp">
       <Filter>Source\Scenes\Menus</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Menus\Story\StoryMap.cpp">
-      <Filter>Source\Scenes\Menus\Story</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Menus\Story\MapNode.cpp">
-      <Filter>Source\Scenes\Menus\Story</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Menus\Tutorial\TutorialItem.cpp">
       <Filter>Source\Scenes\Menus\Tutorial</Filter>
@@ -961,6 +961,21 @@
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Backgrounds\ObeliskBackground.cpp">
       <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Menus\WorldMap\MapNode.cpp">
+      <Filter>Source\Scenes\Menus\WorldMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Menus\WorldMap\WorldMap.cpp">
+      <Filter>Source\Scenes\Menus\WorldMap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Menus\Arcade\Hexus\HexusMenu.cpp">
+      <Filter>Source\Scenes\Menus\Arcade\Hexus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Menus\Arcade\Hexus\HexusOpponentItem.cpp">
+      <Filter>Source\Scenes\Menus\Arcade\Hexus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Menus\Arcade\ArcadeMenu.cpp">
+      <Filter>Source\Scenes\Menus\Arcade</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Resources.h">
@@ -977,12 +992,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\MenuBackground.h">
       <Filter>Source\Scenes\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Menus\Story\StoryMap.h">
-      <Filter>Source\Scenes\Menus\Story</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Menus\Story\MapNode.h">
-      <Filter>Source\Scenes\Menus\Story</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Menus\Tutorial\TutorialScreen.h">
       <Filter>Source\Scenes\Menus\Tutorial</Filter>
@@ -1770,6 +1779,21 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Maps\Platformer\Backgrounds\ObeliskBackground.h">
       <Filter>Source\Scenes\Maps\Platformer\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Menus\WorldMap\MapNode.h">
+      <Filter>Source\Scenes\Menus\WorldMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Menus\WorldMap\WorldMap.h">
+      <Filter>Source\Scenes\Menus\WorldMap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Menus\Arcade\Hexus\HexusMenu.h">
+      <Filter>Source\Scenes\Menus\Arcade\Hexus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Menus\Arcade\Hexus\HexusOpponentItem.h">
+      <Filter>Source\Scenes\Menus\Arcade\Hexus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Menus\Arcade\ArcadeMenu.h">
+      <Filter>Source\Scenes\Menus\Arcade</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

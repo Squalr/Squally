@@ -43,6 +43,7 @@ public:
 	enum GameScreen {
 		Title,
 		StoryMap,
+		Arcade,
 		Tutorial,
 		Pause,
 		Options,

@@ -13,11 +13,12 @@
 #include "Scenes/Maps/Platformer/PlatformerMap.h"
 #include "Resources.h"
 #include "Scenes/Fights/Fight.h"
+#include "Scenes/Menus/Arcade/ArcadeMenu.h"
 #include "Scenes/Menus/Confirmation/ConfirmationMenu.h"
 #include "Scenes/Menus/LoadingScreen/LoadingScreen.h"
 #include "Scenes/Menus/Options/OptionsMenu.h"
 #include "Scenes/Menus/Pause/PauseMenu.h"
-#include "Scenes/Menus/Story/StoryMap.h"
+#include "Scenes/Menus/WorldMap/WorldMap.h"
 #include "Scenes/Menus/Title/TitleScreen.h"
 #include "Scenes/Menus/Tutorial/TutorialScreen.h"
 
@@ -42,8 +43,9 @@ private:
 	void initializeEventListeners() override;
 
 	TitleScreen* titleScreen;
+	ArcadeMenu* arcadeMenu;
 	TutorialScreen* tutorialScreen;
-	StoryMap* storyMap;
+	WorldMap* worldMap;
 	Scene* cutscene;
 	LoadingScreen* loadingScreen;
 	IMap* map;
