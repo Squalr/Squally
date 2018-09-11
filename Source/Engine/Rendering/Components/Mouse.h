@@ -21,6 +21,9 @@ private:
 	void setCanClick(bool canClick);
 	void onMouseMove(EventMouse* event);
 	void onEnter() override;
+	void pause() override;
+	void resume() override;
+	void setSpriteToCursorPosition();
 
 	Sprite* mouseSpriteIdle;
 	Sprite* mouseSpritePoint;

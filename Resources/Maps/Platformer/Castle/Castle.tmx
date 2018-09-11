@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="124" height="196" tilewidth="128" tileheight="128" nextobjectid="366">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="124" height="196" tilewidth="128" tileheight="128" nextobjectid="367">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../../../Tiles/TileMap.png" width="5760" height="3200"/>
@@ -529,6 +529,9 @@
   <object id="363" name="solid" type="collision" x="1736.84" y="22890.5" width="974.32" height="218.97"/>
  </objectgroup>
  <objectgroup name="objects">
+  <properties>
+   <property name="ignore_hackermode" type="bool" value="true"/>
+  </properties>
   <object id="182" name="warp-gate-exact-scan-1" type="object" x="3521.21" y="782.85" width="648.36" height="601.82">
    <properties>
     <property name="dialog" value="DialogTutorialExactScanI"/>
@@ -547,7 +550,10 @@
   </object>
  </objectgroup>
  <objectgroup name="entities">
-  <object id="72" name="squally" type="entity" x="109.85" y="6298.64" width="128" height="128"/>
+  <properties>
+   <property name="ignore_hackermode" type="bool" value="true"/>
+  </properties>
+  <object id="72" name="squally" type="entity" x="2009.85" y="790.64" width="128" height="128"/>
   <object id="180" name="knight" type="entity" x="342.06" y="758.73" width="200" height="288"/>
   <object id="222" name="boss_rhinoman" type="entity" x="6169.82" y="6688" width="196" height="196">
    <properties>
@@ -1243,6 +1249,13 @@
    </properties>
   </object>
   <object id="365" name="mermaid" type="entity" x="2570" y="7734" width="196" height="196">
+   <properties>
+    <property name="ally1" value="harpy"/>
+    <property name="ally2" value="harpy"/>
+    <property name="map" value="jungle"/>
+   </properties>
+  </object>
+  <object id="366" name="black_widow" type="entity" x="2630" y="926" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>

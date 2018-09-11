@@ -5,19 +5,17 @@
 
 using namespace cocos2d;
 
-class Chest : public HackableObject
+class Chest : public Node
 {
 public:
-	static Chest * create(ValueMap* initProperties, Node* contentNode);
+	static Chest * create(Node* contentNode);
 
 	virtual void open();
 	virtual void close();
 
 protected:
-	Chest(ValueMap* initProperties, Node* contentNode);
+	Chest(Node* contentNode);
 	~Chest();
-
-	void update(float) override;
 
 	Node* content;
 	Node* chestOpen;

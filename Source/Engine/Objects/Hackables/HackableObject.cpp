@@ -5,7 +5,7 @@ HackableObject::HackableObject(ValueMap* initProperties) : SerializableObject(in
 	this->dataList = new std::vector<HackableData*>();
 	this->hackButton = MenuSprite::create(Resources::Menus_Buttons_CogV2Button, Resources::Menus_Buttons_CogV2ButtonHover, Resources::Menus_Buttons_CogV2ButtonClick);
 	
-	//this->hackButton->setVisible(false);
+	this->hackButton->setVisible(false);
 
 	this->addChild(this->hackButton);
 }
@@ -38,13 +38,18 @@ Vec2 HackableObject::getButtonOffset()
 
 void HackableObject::onHackableClick(MenuSprite* menuSprite)
 {
-	HackableEvents::editHackable(HackableEvents::HackableObjectEditArgs(this, this->getParent()->convertToWorldSpace(this->getPosition())));
+	Vec2 screenPosition = this->getParent()->convertToWorldSpace(this->getPosition()) + this->getButtonOffset();
+	Vec2 newPosition = this->hackButton->getParent()->convertToNodeSpace(screenPosition);
+
+	HackableEvents::editHackable(HackableEvents::HackableObjectEditArgs(this, newPosition));
 }
 
 void HackableObject::registerData(HackableData* hackableData)
 {
 	hackableData->retain();
 	this->dataList->push_back(hackableData);
+
+	this->hackButton->setVisible(true);
 }
 
 void HackableObject::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)

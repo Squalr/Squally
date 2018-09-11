@@ -21,7 +21,7 @@ void PlatformerDecorDeserializer::onDeserializationRequest(ObjectDeserialization
 		float width = properties.at(SerializableObject::KeyWidth).asFloat();
 		float height = properties.at(SerializableObject::KeyHeight).asFloat();
 		float x = properties.at(SerializableObject::KeyXPosition).asFloat();
-		float y = properties.at(SerializableObject::KeyYPosition).asFloat() + height;
+		float y = properties.at(SerializableObject::KeyYPosition).asFloat();
 		SerializableObject* newObject = nullptr;
 		
 		if (GameUtils::keyExists(&properties, "isParallax"))

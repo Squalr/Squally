@@ -15,6 +15,7 @@ protected:
 	~Plushie();
 
 	virtual void registerHackables();
+	Vec2 getButtonOffset() override;
 	void update(float) override;
 
 	Node* sprite;
