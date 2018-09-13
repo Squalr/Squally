@@ -31,6 +31,8 @@ public:
 		Node* nodeSelected, 
 		Node* nodeClicked);
 
+	void setTextOffset(Vec2 offset);
+
 protected:
 	TextMenuSprite(
 		Label* normalLabel,
@@ -41,5 +43,10 @@ protected:
 		Node* nodeClicked);
 	~TextMenuSprite();
 
+	Label* normalContentLabel;
+	Label* selectedContentLabel;
+	Label* clickedContentLabel;
+	Node* normalContent;
+	Node* selectedContent;
+	Node* clickedContent;
 };
-

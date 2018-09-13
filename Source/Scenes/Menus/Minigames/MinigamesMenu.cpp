@@ -1,8 +1,8 @@
 #include "MinigamesMenu.h"
 
-const std::string MinigamesMenu::StringKeyHexus = "Menu_Minigame_Hexus";
-const std::string MinigamesMenu::StringKeyHexusPuzzles = "Menu_Minigame_Hexus_Puzzles";
-const std::string MinigamesMenu::StringKeyUnknown = "Menu_Minigame_Unknown";
+const std::string MinigamesMenu::StringKeyHexus = "Menu_Hexus";
+const std::string MinigamesMenu::StringKeyHexusPuzzles = "Menu_Hexus_Puzzles";
+const std::string MinigamesMenu::StringKeyComingSoon = "Menu_Coming_Soon";
 
 const float MinigamesMenu::titleFontSize = 64.0f;
 const float MinigamesMenu::menuFontSize = 48.0f;
@@ -22,15 +22,16 @@ MinigamesMenu::MinigamesMenu()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	Size shadowSize = Size(-4.0f, -4.0f);
-	int shadowBlur = 2;
-	int hoverOutlineSize = 2;
-	Color3B textColor = Color3B::WHITE;
-	Color4B shadowColor = Color4B::BLACK;
-	Color3B highlightColor = Color3B::YELLOW;
-	Color4B glowColor = Color4B::ORANGE;
+	const Size shadowSize = Size(-4.0f, -4.0f);
+	const int shadowBlur = 2;
+	const int hoverOutlineSize = 2;
+	const Color3B textColor = Color3B::WHITE;
+	const Color4B shadowColor = Color4B::BLACK;
+	const Color3B highlightColor = Color3B::YELLOW;
+	const Color4B glowColor = Color4B::ORANGE;
+	const Vec2 labelOffset = Vec2(48.0f, 0.0f);
 
-	this->background = MenuBackground::claimInstance();
+	this->background = Node::create();
 
 	this->scrollView = ScrollView::create();
 	this->scrollView->setCascadeOpacityEnabled(true);
@@ -60,6 +61,8 @@ MinigamesMenu::MinigamesMenu()
 		Resources::Menus_MinigamesMenu_Banner,
 		Resources::Menus_MinigamesMenu_BannerHover,
 		Resources::Menus_MinigamesMenu_BannerClick);
+
+	this->hexusButton->setTextOffset(labelOffset);
 
 	Sprite* hexusIcon = Sprite::create(Resources::Menus_HackerModeMenu_Icons_Banner);
 
@@ -92,6 +95,8 @@ MinigamesMenu::MinigamesMenu()
 		Resources::Menus_MinigamesMenu_BannerHover,
 		Resources::Menus_MinigamesMenu_BannerClick);
 
+	this->hexusPuzzlesButton->setTextOffset(labelOffset);
+
 	Sprite* hexusPuzzlesIcon = Sprite::create(Resources::Menus_HackerModeMenu_Icons_Gauntlet);
 
 	hexusPuzzlesIcon->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -99,26 +104,33 @@ MinigamesMenu::MinigamesMenu()
 
 	this->hexusPuzzlesButton->addChild(hexusPuzzlesIcon);
 
-	this->unknownButton1 = Node::create();
-	this->unknownButton2 = Node::create();
-	this->unknownButton3 = Node::create();
-	this->unknownButton4 = Node::create();
-	this->unknownButton5 = Node::create();
-	this->unknownButton6 = Node::create();
+	this->comingSoonButton1 = Node::create();
+	this->comingSoonButton2 = Node::create();
+	this->comingSoonButton3 = Node::create();
+	this->comingSoonButton4 = Node::create();
+	this->comingSoonButton5 = Node::create();
+	this->comingSoonButton6 = Node::create();
 
-	this->unknownButton1->addChild(Sprite::create(Resources::Menus_MinigamesMenu_BannerGray));
-	this->unknownButton2->addChild(Sprite::create(Resources::Menus_MinigamesMenu_BannerGray));
-	this->unknownButton3->addChild(Sprite::create(Resources::Menus_MinigamesMenu_BannerGray));
-	this->unknownButton4->addChild(Sprite::create(Resources::Menus_MinigamesMenu_BannerGray));
-	this->unknownButton5->addChild(Sprite::create(Resources::Menus_MinigamesMenu_BannerGray));
-	this->unknownButton6->addChild(Sprite::create(Resources::Menus_MinigamesMenu_BannerGray));
+	this->comingSoonButton1->addChild(Sprite::create(Resources::Menus_MinigamesMenu_BannerGray));
+	this->comingSoonButton2->addChild(Sprite::create(Resources::Menus_MinigamesMenu_BannerGray));
+	this->comingSoonButton3->addChild(Sprite::create(Resources::Menus_MinigamesMenu_BannerGray));
+	this->comingSoonButton4->addChild(Sprite::create(Resources::Menus_MinigamesMenu_BannerGray));
+	this->comingSoonButton5->addChild(Sprite::create(Resources::Menus_MinigamesMenu_BannerGray));
+	this->comingSoonButton6->addChild(Sprite::create(Resources::Menus_MinigamesMenu_BannerGray));
 
-	Label* comingSoon1 = Label::create(Localization::resolveString(MinigamesMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* comingSoon2 = Label::create(Localization::resolveString(MinigamesMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* comingSoon3 = Label::create(Localization::resolveString(MinigamesMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* comingSoon4 = Label::create(Localization::resolveString(MinigamesMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* comingSoon5 = Label::create(Localization::resolveString(MinigamesMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* comingSoon6 = Label::create(Localization::resolveString(MinigamesMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* comingSoon1 = Label::create(Localization::resolveString(MinigamesMenu::StringKeyComingSoon), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* comingSoon2 = Label::create(Localization::resolveString(MinigamesMenu::StringKeyComingSoon), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* comingSoon3 = Label::create(Localization::resolveString(MinigamesMenu::StringKeyComingSoon), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* comingSoon4 = Label::create(Localization::resolveString(MinigamesMenu::StringKeyComingSoon), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* comingSoon5 = Label::create(Localization::resolveString(MinigamesMenu::StringKeyComingSoon), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* comingSoon6 = Label::create(Localization::resolveString(MinigamesMenu::StringKeyComingSoon), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+
+	comingSoon1->setPosition(labelOffset);
+	comingSoon2->setPosition(labelOffset);
+	comingSoon3->setPosition(labelOffset);
+	comingSoon4->setPosition(labelOffset);
+	comingSoon5->setPosition(labelOffset);
+	comingSoon6->setPosition(labelOffset);
 
 	comingSoon1->setTextColor(Color4B::GRAY);
 	comingSoon2->setTextColor(Color4B::GRAY);
@@ -127,12 +139,12 @@ MinigamesMenu::MinigamesMenu()
 	comingSoon5->setTextColor(Color4B::GRAY);
 	comingSoon6->setTextColor(Color4B::GRAY);
 
-	this->unknownButton1->addChild(comingSoon1);
-	this->unknownButton2->addChild(comingSoon2);
-	this->unknownButton3->addChild(comingSoon3);
-	this->unknownButton4->addChild(comingSoon4);
-	this->unknownButton5->addChild(comingSoon5);
-	this->unknownButton6->addChild(comingSoon6);
+	this->comingSoonButton1->addChild(comingSoon1);
+	this->comingSoonButton2->addChild(comingSoon2);
+	this->comingSoonButton3->addChild(comingSoon3);
+	this->comingSoonButton4->addChild(comingSoon4);
+	this->comingSoonButton5->addChild(comingSoon5);
+	this->comingSoonButton6->addChild(comingSoon6);
 
 	this->scrollView->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->scrollView->setDirection(SCROLLVIEW_DIR_VERTICAL);
@@ -141,12 +153,12 @@ MinigamesMenu::MinigamesMenu()
 	this->scrollView->addChild(background);
 	this->scrollView->addChild(this->hexusButton);
 	this->scrollView->addChild(this->hexusPuzzlesButton);
-	this->scrollView->addChild(this->unknownButton1);
-	this->scrollView->addChild(this->unknownButton2);
-	this->scrollView->addChild(this->unknownButton3);
-	this->scrollView->addChild(this->unknownButton4);
-	this->scrollView->addChild(this->unknownButton5);
-	this->scrollView->addChild(this->unknownButton6);
+	this->scrollView->addChild(this->comingSoonButton1);
+	this->scrollView->addChild(this->comingSoonButton2);
+	this->scrollView->addChild(this->comingSoonButton3);
+	this->scrollView->addChild(this->comingSoonButton4);
+	this->scrollView->addChild(this->comingSoonButton5);
+	this->scrollView->addChild(this->comingSoonButton6);
 	this->addChild(this->scrollView);
 	this->addChild(Mouse::create());
 }
@@ -159,6 +171,8 @@ void MinigamesMenu::onEnter()
 {
 	FadeScene::onEnter();
 
+	this->background->addChild(MenuBackground::claimInstance());
+
 	this->initializePositions();
 	this->initializeListeners();
 
@@ -168,12 +182,12 @@ void MinigamesMenu::onEnter()
 	GameUtils::fadeInObject(this->scrollView, delay, duration);
 	GameUtils::fadeInObject(this->hexusButton, delay, duration);
 	GameUtils::fadeInObject(this->hexusPuzzlesButton, delay, duration);
-	GameUtils::fadeInObject(this->unknownButton1, delay, duration);
-	GameUtils::fadeInObject(this->unknownButton2, delay, duration);
-	GameUtils::fadeInObject(this->unknownButton3, delay, duration);
-	GameUtils::fadeInObject(this->unknownButton4, delay, duration);
-	GameUtils::fadeInObject(this->unknownButton5, delay, duration);
-	GameUtils::fadeInObject(this->unknownButton6, delay, duration);
+	GameUtils::fadeInObject(this->comingSoonButton1, delay, duration);
+	GameUtils::fadeInObject(this->comingSoonButton2, delay, duration);
+	GameUtils::fadeInObject(this->comingSoonButton3, delay, duration);
+	GameUtils::fadeInObject(this->comingSoonButton4, delay, duration);
+	GameUtils::fadeInObject(this->comingSoonButton5, delay, duration);
+	GameUtils::fadeInObject(this->comingSoonButton6, delay, duration);
 
 	this->scheduleUpdate();
 }
@@ -194,7 +208,7 @@ void MinigamesMenu::initializeListeners()
 void MinigamesMenu::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Size innerSize = Size(visibleSize.width / 2.0f + 256.0f, visibleSize.height / 2.0f + 896.0f);
+	Size innerSize = Size(visibleSize.width / 2.0f + 256.0f, visibleSize.height / 2.0f + 1024.0f);
 
 	MenuBackground::getInstance()->initializePositions();
 
@@ -204,12 +218,12 @@ void MinigamesMenu::initializePositions()
 
 	this->hexusButton->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 1 + 64.0f));
 	this->hexusPuzzlesButton->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 2 + 64.0f));
-	this->unknownButton1->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 3 + 64.0f));
-	this->unknownButton2->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 4 + 64.0f));
-	this->unknownButton3->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 5 + 64.0f));
-	this->unknownButton4->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 6 + 64.0f));
-	this->unknownButton5->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 7 + 64.0f));
-	this->unknownButton6->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 8 + 64.0f));
+	this->comingSoonButton1->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 3 + 64.0f));
+	this->comingSoonButton2->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 4 + 64.0f));
+	this->comingSoonButton3->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 5 + 64.0f));
+	this->comingSoonButton4->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 6 + 64.0f));
+	this->comingSoonButton5->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 7 + 64.0f));
+	this->comingSoonButton6->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 8 + 64.0f));
 }
 
 void MinigamesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)

@@ -67,6 +67,13 @@ TextMenuSprite::TextMenuSprite(
 	Node* nodeSelected,
 	Node* nodeClicked) : MenuSprite(nodeNormal, nodeSelected, nodeClicked)
 {
+	this->normalContentLabel = normalLabel;
+	this->selectedContentLabel = selectedLabel;
+	this->clickedContentLabel = clickedLabel;
+	this->normalContent = nodeNormal;
+	this->selectedContent = nodeSelected;
+	this->clickedContent = nodeClicked;
+
 	Vec2 center = this->getContentSize() / 2.0f;
 
 	normalLabel->setPosition(center);
@@ -80,4 +87,13 @@ TextMenuSprite::TextMenuSprite(
 
 TextMenuSprite::~TextMenuSprite()
 {
+}
+
+void TextMenuSprite::setTextOffset(Vec2 offset)
+{
+	Vec2 center = this->getContentSize() / 2.0f;
+
+	this->normalContentLabel->setPosition(center + offset);
+	this->selectedContentLabel->setPosition(center + offset);
+	this->clickedContentLabel->setPosition(center + offset);
 }

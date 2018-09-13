@@ -20,14 +20,14 @@ using namespace cocos2d;
 using namespace cocos2d::ui;
 using namespace cocos_experimental;
 
-class MinigamesMenu : public FadeScene
+class SaveSelectMenu : public FadeScene
 {
 public:
-	static MinigamesMenu * create();
+	static SaveSelectMenu * create();
 
 protected:
-	MinigamesMenu();
-	~MinigamesMenu();
+	SaveSelectMenu();
+	~SaveSelectMenu();
 
 private:
 	void onEnter() override;
@@ -35,23 +35,17 @@ private:
 	void initializePositions();
 
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	void onHexusClick(MenuSprite* menuSprite);
-	void onHexusPuzzlesClick(MenuSprite* menuSprite);
+	void onSaveGame1Click(MenuSprite* menuSprite);
+	void onSaveGame2Click(MenuSprite* menuSprite);
+	void onSaveGame3Click(MenuSprite* menuSprite);
 
-	ScrollView* scrollView;
 	Node* background;
-	TextMenuSprite* hexusButton;
-	TextMenuSprite* hexusPuzzlesButton;
-	Node* comingSoonButton1;
-	Node* comingSoonButton2;
-	Node* comingSoonButton3;
-	Node* comingSoonButton4;
-	Node* comingSoonButton5;
-	Node* comingSoonButton6;
+	TextMenuSprite* saveGame1;
+	TextMenuSprite* saveGame2;
+	TextMenuSprite* saveGame3;
 
-	static const std::string StringKeyHexus;
-	static const std::string StringKeyHexusPuzzles;
-	static const std::string StringKeyComingSoon;
+	static const std::string StringKeyNewGame;
+	static const std::string StringKeyContinueGame;
 
 	static const float titleFontSize;
 	static const float menuFontSize;

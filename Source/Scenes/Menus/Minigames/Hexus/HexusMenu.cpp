@@ -1,7 +1,7 @@
 #include "HexusMenu.h"
 
 const Color3B HexusMenu::TitleColor = Color3B(88, 188, 193);
-const std::string HexusMenu::StringKeyMenuTutorials = "Menu_Tutorials";
+const std::string HexusMenu::StringKeyMenuTutorials = "Menu_Hexus";
 
 HexusMenu * HexusMenu::create()
 {
