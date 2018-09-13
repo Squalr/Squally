@@ -19,6 +19,8 @@ ArcadeMenu * ArcadeMenu::create()
 
 ArcadeMenu::ArcadeMenu()
 {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
 	Size shadowSize = Size(-4.0f, -4.0f);
 	int shadowBlur = 2;
 	int hoverOutlineSize = 2;
@@ -27,62 +29,28 @@ ArcadeMenu::ArcadeMenu()
 	Color3B highlightColor = Color3B::YELLOW;
 	Color4B glowColor = Color4B::ORANGE;
 
-	this->nether = ParticleSystemQuad::create(Resources::Particles_BlueNether);
+	this->background = MenuBackground::claimInstance();
+
+	this->scrollView = ScrollView::create();
+	this->scrollView->setCascadeOpacityEnabled(true);
+
+	LayerColor* background = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, visibleSize.height * 2);
 
 	Label* hexusLabel = Label::create(Localization::resolveString(ArcadeMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* hexusLabelHover = Label::create(Localization::resolveString(ArcadeMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* hexusLabelClicked = Label::create(Localization::resolveString(ArcadeMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
-	Label* unknown1Label = Label::create(Localization::resolveString(ArcadeMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* unknown1LabelHover = Label::create(Localization::resolveString(ArcadeMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* unknown1LabelClicked = Label::create(Localization::resolveString(ArcadeMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-
-	Label* unknown2Label = Label::create(Localization::resolveString(ArcadeMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* unknown2LabelHover = Label::create(Localization::resolveString(ArcadeMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* unknown2LabelClicked = Label::create(Localization::resolveString(ArcadeMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-
-	Label* unknown3Label = Label::create(Localization::resolveString(ArcadeMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* unknown3LabelHover = Label::create(Localization::resolveString(ArcadeMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* unknown3LabelClicked = Label::create(Localization::resolveString(ArcadeMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-
 	hexusLabel->setColor(textColor);
 	hexusLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
 	hexusLabel->enableGlow(shadowColor);
-	unknown1Label->setColor(textColor);
-	unknown1Label->enableShadow(shadowColor, shadowSize, shadowBlur);
-	unknown1Label->enableGlow(shadowColor);
-	unknown2Label->setColor(textColor);
-	unknown2Label->enableShadow(shadowColor, shadowSize, shadowBlur);
-	unknown2Label->enableGlow(shadowColor);
-	unknown3Label->setColor(textColor);
-	unknown3Label->enableShadow(shadowColor, shadowSize, shadowBlur);
-	unknown3Label->enableGlow(shadowColor);
 
 	hexusLabelHover->setColor(highlightColor);
 	hexusLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	hexusLabelHover->enableGlow(glowColor);
-	unknown1LabelHover->setColor(highlightColor);
-	unknown1LabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
-	unknown1LabelHover->enableGlow(glowColor);
-	unknown2LabelHover->setColor(highlightColor);
-	unknown2LabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
-	unknown2LabelHover->enableGlow(glowColor);
-	unknown3LabelHover->setColor(highlightColor);
-	unknown3LabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
-	unknown3LabelHover->enableGlow(glowColor);
 
 	hexusLabelClicked->setColor(highlightColor);
 	hexusLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
 	hexusLabelClicked->enableGlow(glowColor);
-	unknown1LabelClicked->setColor(highlightColor);
-	unknown1LabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
-	unknown1LabelClicked->enableGlow(glowColor);
-	unknown2LabelClicked->setColor(highlightColor);
-	unknown2LabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
-	unknown2LabelClicked->enableGlow(glowColor);
-	unknown3LabelClicked->setColor(highlightColor);
-	unknown3LabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
-	unknown3LabelClicked->enableGlow(glowColor);
 
 	this->hexusButton = TextMenuSprite::create(
 		hexusLabel,
@@ -92,35 +60,61 @@ ArcadeMenu::ArcadeMenu()
 		Resources::Menus_ArcadeMenu_BannerHover,
 		Resources::Menus_ArcadeMenu_BannerClick);
 
-	this->unknownButton1 = TextMenuSprite::create(
-		unknown1Label,
-		unknown1LabelHover,
-		unknown1LabelClicked,
-		Resources::Menus_ArcadeMenu_Banner,
-		Resources::Menus_ArcadeMenu_BannerHover,
-		Resources::Menus_ArcadeMenu_BannerClick);
+	Sprite* hexusIcon = Sprite::create(Resources::Menus_ArcadeMenu_IconHexus);
 
-	this->unknownButton2 = TextMenuSprite::create(
-		unknown2Label,
-		unknown2LabelHover,
-		unknown2LabelClicked,
-		Resources::Menus_ArcadeMenu_Banner,
-		Resources::Menus_ArcadeMenu_BannerHover,
-		Resources::Menus_ArcadeMenu_BannerClick);
+	hexusIcon->setAnchorPoint(Vec2(0.0f, 0.5f));
+	hexusIcon->setPosition(Vec2(-this->hexusButton->getContentSize().width / 2.0f + 58.0f, 0.0f));
 
-	this->unknownButton3 = TextMenuSprite::create(
-		unknown3Label,
-		unknown3LabelHover,
-		unknown3LabelClicked,
-		Resources::Menus_ArcadeMenu_Banner,
-		Resources::Menus_ArcadeMenu_BannerHover,
-		Resources::Menus_ArcadeMenu_BannerClick);
+	this->hexusButton->addChild(hexusIcon);
 
-	this->addChild(this->nether);
-	this->addChild(this->hexusButton);
-	this->addChild(this->unknownButton1);
-	this->addChild(this->unknownButton2);
-	this->addChild(this->unknownButton3);
+	this->unknownButton1 = Node::create();
+	this->unknownButton2 = Node::create();
+	this->unknownButton3 = Node::create();
+	this->unknownButton4 = Node::create();
+	this->unknownButton5 = Node::create();
+	this->unknownButton6 = Node::create();
+
+	this->unknownButton1->addChild(Sprite::create(Resources::Menus_ArcadeMenu_BannerGray));
+	this->unknownButton2->addChild(Sprite::create(Resources::Menus_ArcadeMenu_BannerGray));
+	this->unknownButton3->addChild(Sprite::create(Resources::Menus_ArcadeMenu_BannerGray));
+	this->unknownButton4->addChild(Sprite::create(Resources::Menus_ArcadeMenu_BannerGray));
+	this->unknownButton5->addChild(Sprite::create(Resources::Menus_ArcadeMenu_BannerGray));
+	this->unknownButton6->addChild(Sprite::create(Resources::Menus_ArcadeMenu_BannerGray));
+
+	Label* comingSoon1 = Label::create(Localization::resolveString(ArcadeMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* comingSoon2 = Label::create(Localization::resolveString(ArcadeMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* comingSoon3 = Label::create(Localization::resolveString(ArcadeMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* comingSoon4 = Label::create(Localization::resolveString(ArcadeMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* comingSoon5 = Label::create(Localization::resolveString(ArcadeMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* comingSoon6 = Label::create(Localization::resolveString(ArcadeMenu::StringKeyUnknown), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+
+	comingSoon1->setTextColor(Color4B::GRAY);
+	comingSoon2->setTextColor(Color4B::GRAY);
+	comingSoon3->setTextColor(Color4B::GRAY);
+	comingSoon4->setTextColor(Color4B::GRAY);
+	comingSoon5->setTextColor(Color4B::GRAY);
+	comingSoon6->setTextColor(Color4B::GRAY);
+
+	this->unknownButton1->addChild(comingSoon1);
+	this->unknownButton2->addChild(comingSoon2);
+	this->unknownButton3->addChild(comingSoon3);
+	this->unknownButton4->addChild(comingSoon4);
+	this->unknownButton5->addChild(comingSoon5);
+	this->unknownButton6->addChild(comingSoon6);
+
+	this->scrollView->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->scrollView->setDirection(SCROLLVIEW_DIR_VERTICAL);
+
+	this->addChild(this->background);
+	this->scrollView->addChild(background);
+	this->scrollView->addChild(this->hexusButton);
+	this->scrollView->addChild(this->unknownButton1);
+	this->scrollView->addChild(this->unknownButton2);
+	this->scrollView->addChild(this->unknownButton3);
+	this->scrollView->addChild(this->unknownButton4);
+	this->scrollView->addChild(this->unknownButton5);
+	this->scrollView->addChild(this->unknownButton6);
+	this->addChild(this->scrollView);
 	this->addChild(Mouse::create());
 }
 
@@ -136,15 +130,16 @@ void ArcadeMenu::onEnter()
 
 	this->initializePositions();
 
-	GameUtils::accelerateParticles(this->nether, 1.0f);
-
 	const float delay = 0.5f;
 	const float duration = 0.75f;
 
-	GameUtils::fadeInObject(this->hexusButton, delay, duration);
+	GameUtils::fadeInObject(this->scrollView, delay, duration);
 	GameUtils::fadeInObject(this->unknownButton1, delay, duration);
 	GameUtils::fadeInObject(this->unknownButton2, delay, duration);
 	GameUtils::fadeInObject(this->unknownButton3, delay, duration);
+	GameUtils::fadeInObject(this->unknownButton4, delay, duration);
+	GameUtils::fadeInObject(this->unknownButton5, delay, duration);
+	GameUtils::fadeInObject(this->unknownButton6, delay, duration);
 
 	this->scheduleUpdate();
 }
@@ -152,13 +147,21 @@ void ArcadeMenu::onEnter()
 void ArcadeMenu::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
+	Size innerSize = Size(visibleSize.width / 2.0f + 256.0f, visibleSize.height / 2.0f + 896.0f);
 
-	this->nether->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
-	this->hexusButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 + 256.0f));
-	this->unknownButton1->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 + 128.0f));
-	this->unknownButton2->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 128.0f));
-	this->unknownButton3->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 256.0f));
+	MenuBackground::getInstance()->initializePositions();
+
+	this->scrollView->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->scrollView->setSize(Size(innerSize.width, visibleSize.height / 2.0f));
+	this->scrollView->setInnerContainerSize(innerSize);
+
+	this->hexusButton->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 1 + 64.0f));
+	this->unknownButton1->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 2 + 64.0f));
+	this->unknownButton2->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 3 + 64.0f));
+	this->unknownButton3->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 4 + 64.0f));
+	this->unknownButton4->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 5 + 64.0f));
+	this->unknownButton5->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 6 + 64.0f));
+	this->unknownButton6->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 7 + 64.0f));
 }
 
 void ArcadeMenu::onHexusClick(MenuSprite* menuSprite)

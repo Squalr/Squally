@@ -42,7 +42,7 @@ void GameCamera::update(float dt)
 {
 	if (this->targetStack->size() > 0)
 	{
-		Vec2 targetPosition = this->targetStack->top()->getPosition();
+		Vec2 targetPosition = this->targetStack->top()->getPosition() + Vec2(-320.0f, 256.0f);
 		Size visibleSize = Director::getInstance()->getVisibleSize();
 
 		// Handle camera scrolling from player traveling past scroll distance

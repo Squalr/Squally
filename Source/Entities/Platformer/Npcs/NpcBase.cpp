@@ -6,7 +6,7 @@ NpcBase::NpcBase(ValueMap* initProperties, std::string scmlResource, CategoryNam
 	this->interactButton = MenuSprite::create(Resources::Menus_Buttons_ChatButton, Resources::Menus_Buttons_ChatButtonHover, Resources::Menus_Buttons_ChatButtonClick);
 	this->interactButton->setClickCallback(CC_CALLBACK_1(NpcBase::onInteractButtonClick, this));
 
-	this->interactButton->setPosition(Vec2(0.0f, 128.0f));
+	this->interactButton->setPosition(Vec2(0.0f, 196.0f));
 
 	this->addChild(this->interactButton);
 

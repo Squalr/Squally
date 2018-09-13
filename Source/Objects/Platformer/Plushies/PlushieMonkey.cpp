@@ -97,14 +97,14 @@ void PlushieMonkey::decreaseLockTimer()
 
 	__asm
 	{
-		push eax;
-		mov eax, PlushieMonkey::lockCountDown;
+		push ecx;
+		mov ecx, PlushieMonkey::lockCountDown;
 	}
 
 HACKABLE_CODE_BEGIN(assemblyAddressStart, puzzleStart)
 	__asm
 	{
-		dec eax;
+		dec ecx;
 		nop;
 		nop;
 		nop;
@@ -114,8 +114,8 @@ HACKABLE_CODE_END(assemblyAddressEnd, puzzleEnd)
 
 	__asm
 	{
-		mov PlushieMonkey::lockCountDown, eax
-		pop eax;
+		mov PlushieMonkey::lockCountDown, ecx
+		pop ecx;
 	}
 
 	if (PlushieMonkey::lockCountDown < 0)
