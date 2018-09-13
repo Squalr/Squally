@@ -1,7 +1,7 @@
 #include "HexusPuzzlesMenu.h"
 
 const Color3B HexusPuzzlesMenu::TitleColor = Color3B(88, 188, 193);
-const std::string HexusPuzzlesMenu::StringKeyHexusPuzzles = "Menu_Minigame_Hexus_Puzzles";
+const std::string HexusPuzzlesMenu::StringKeyHexusPuzzles = "Menu_Hexus_Puzzles";
 
 HexusPuzzlesMenu * HexusPuzzlesMenu::create()
 {

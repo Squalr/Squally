@@ -20,6 +20,7 @@
 #include "Scenes/Menus/LoadingScreen/LoadingScreen.h"
 #include "Scenes/Menus/Options/OptionsMenu.h"
 #include "Scenes/Menus/Pause/PauseMenu.h"
+#include "Scenes/Menus/SaveSelect/SaveSelectMenu.h"
 #include "Scenes/Menus/WorldMap/WorldMap.h"
 #include "Scenes/Menus/Title/TitleScreen.h"
 #include "Scenes/Menus/Tutorial/TutorialScreen.h"
@@ -45,6 +46,7 @@ private:
 	void initializeEventListeners() override;
 
 	TitleScreen* titleScreen;
+	SaveSelectMenu* saveSelectMenu;
 	MinigamesMenu* minigamesMenu;
 	HexusMenu* hexusMenu;
 	HexusPuzzlesMenu* hexusPuzzlesMenu;

@@ -403,6 +403,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Scenes\Menus\Options\OptionsMenu.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Pause\PauseMenu.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\MenuBackground.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\SaveSelect\SaveSelectMenu.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Title\HackerMode.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Title\TitleScreen.cpp" />
     <ClCompile Include="..\Source\Scenes\Menus\Title\TitleScreenBackground.cpp" />
@@ -681,6 +682,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Scenes\Menus\Options\OptionsMenu.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Pause\PauseMenu.h" />
     <ClInclude Include="..\Source\Scenes\Menus\MenuBackground.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\SaveSelect\SaveSelectMenu.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Title\HackerMode.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Title\TitleScreen.h" />
     <ClInclude Include="..\Source\Scenes\Menus\Title\TitleScreenBackground.h" />

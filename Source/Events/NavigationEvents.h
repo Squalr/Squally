@@ -43,6 +43,7 @@ public:
 	enum GameScreen {
 		Title,
 		StoryMap,
+		SaveSelect,
 		Minigames,
 		Minigames_Hexus,
 		Minigames_Hexus_Puzzles,

@@ -202,6 +202,64 @@
     "zh-CN": "",
     "zh-TW": ""
   },
+  "Menu_New_Game": {
+    "ar": "",
+    "bg": "",
+    "cs": "",
+    "da": "",
+    "de": "",
+    "el": "",
+    "en": "New Game",
+    "es": "",
+    "fi": "",
+    "fr": "",
+    "hu": "",
+    "it": "",
+    "ja": "",
+    "ko": "",
+    "nl": "",
+    "no": "",
+    "pl": "",
+    "pt": "",
+    "pt-BR": "",
+    "ro": "",
+    "ru": "",
+    "sv": "",
+    "th": "",
+    "tr": "",
+    "uk": "",
+    "zh-CN": "",
+    "zh-TW": ""
+  },
+  "Menu_Continue_Game": {
+    "ar": "",
+    "bg": "",
+    "cs": "",
+    "da": "",
+    "de": "",
+    "el": "",
+    "en": "Continue Game",
+    "es": "",
+    "fi": "",
+    "fr": "",
+    "hu": "",
+    "it": "",
+    "ja": "",
+    "ko": "",
+    "nl": "",
+    "no": "",
+    "pl": "",
+    "pt": "",
+    "pt-BR": "",
+    "ro": "",
+    "ru": "",
+    "sv": "",
+    "th": "",
+    "tr": "",
+    "uk": "",
+    "zh-CN": "",
+    "zh-TW": ""
+  },
   "Menu_Return": {
     "ar": "",
     "bg": "",
@@ -405,7 +463,7 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Minigame_Hexus": {
+  "Menu_Hexus": {
     "ar": "",
     "bg": "",
     "cs": "",
@@ -434,7 +492,7 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Minigame_Hexus_Puzzles": {
+  "Menu_Hexus_Puzzles": {
     "ar": "",
     "bg": "",
     "cs": "",
@@ -463,7 +521,7 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Minigame_Unknown": {
+  "Menu_Coming_Soon": {
     "ar": "",
     "bg": "",
     "cs": "",
