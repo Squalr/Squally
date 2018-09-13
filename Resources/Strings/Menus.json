@@ -115,14 +115,14 @@
     "zh-CN": "故事模式",
     "zh-TW": "故事模式"
   },
-  "Menu_Arcade_Mode": {
+  "Menu_Minigames": {
     "ar": "",
     "bg": "",
     "cs": "",
     "da": "",
     "de": "",
     "el": "",
-    "en": "Arcade Mode",
+    "en": "Minigames",
     "es": "",
     "fi": "",
     "fr": "",
@@ -405,7 +405,7 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Arcade_Hexus": {
+  "Menu_Minigame_Hexus": {
     "ar": "",
     "bg": "",
     "cs": "",
@@ -434,7 +434,36 @@
     "zh-CN": "",
     "zh-TW": ""
   },
-  "Menu_Arcade_Unknown": {
+  "Menu_Minigame_Hexus_Puzzles": {
+    "ar": "",
+    "bg": "",
+    "cs": "",
+    "da": "",
+    "de": "",
+    "el": "",
+    "en": "Hexus Puzzles",
+    "es": "",
+    "fi": "",
+    "fr": "",
+    "hu": "",
+    "it": "",
+    "ja": "",
+    "ko": "",
+    "nl": "",
+    "no": "",
+    "pl": "",
+    "pt": "",
+    "pt-BR": "",
+    "ro": "",
+    "ru": "",
+    "sv": "",
+    "th": "",
+    "tr": "",
+    "uk": "",
+    "zh-CN": "",
+    "zh-TW": ""
+  },
+  "Menu_Minigame_Unknown": {
     "ar": "",
     "bg": "",
     "cs": "",

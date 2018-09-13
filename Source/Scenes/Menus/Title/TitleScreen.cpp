@@ -1,7 +1,7 @@
 #include "TitleScreen.h"
 
 const std::string TitleScreen::StringKeyStoryMode = "Menu_Story_Mode";
-const std::string TitleScreen::StringKeyArcadeMode = "Menu_Arcade_Mode";
+const std::string TitleScreen::StringKeyMinigames = "Menu_Minigames";
 const std::string TitleScreen::StringKeyOptions = "Menu_Options";
 const std::string TitleScreen::StringKeyExit = "Menu_Exit";
 
@@ -37,9 +37,9 @@ TitleScreen::TitleScreen()
 	Label* storyModeLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* storyModeLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
-	Label* arcadeModeLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyArcadeMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* arcadeModeLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyArcadeMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* arcadeModeLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyArcadeMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* arcadeModeLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyMinigames), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* arcadeModeLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyMinigames), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* arcadeModeLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyMinigames), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	Label* optionsLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* optionsLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
@@ -201,7 +201,7 @@ void TitleScreen::onStoryModeClick(MenuSprite* menuSprite)
 
 void TitleScreen::onArcadeModeClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Arcade);
+	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames);
 }
 
 void TitleScreen::onOptionsClick(MenuSprite* menuSprite)

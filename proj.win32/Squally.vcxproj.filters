@@ -190,11 +190,11 @@
     <Filter Include="Source\Scenes\Menus\WorldMap">
       <UniqueIdentifier>{86e128a2-e022-4c90-842d-bf8330506589}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Scenes\Menus\Arcade">
-      <UniqueIdentifier>{0b71daba-fb70-40de-88e1-5652ff45a63b}</UniqueIdentifier>
+    <Filter Include="Source\Scenes\Menus\Minigames">
+      <UniqueIdentifier>{5f4c236b-25b6-4758-a835-b7471ac47b1e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Scenes\Menus\Arcade\Hexus">
-      <UniqueIdentifier>{266d14da-8bd5-4bbc-b433-908bda97a7c7}</UniqueIdentifier>
+    <Filter Include="Source\Scenes\Menus\Minigames\Hexus">
+      <UniqueIdentifier>{00dfb80e-33c3-4703-9377-8eae8be8a13b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -967,14 +967,20 @@
     <ClCompile Include="..\Source\Scenes\Menus\WorldMap\WorldMap.cpp">
       <Filter>Source\Scenes\Menus\WorldMap</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Menus\Arcade\Hexus\HexusMenu.cpp">
-      <Filter>Source\Scenes\Menus\Arcade\Hexus</Filter>
+    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\HexusMenu.cpp">
+      <Filter>Source\Scenes\Menus\Minigames\Hexus</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Menus\Arcade\Hexus\HexusOpponentItem.cpp">
-      <Filter>Source\Scenes\Menus\Arcade\Hexus</Filter>
+    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\HexusOpponentItem.cpp">
+      <Filter>Source\Scenes\Menus\Minigames\Hexus</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Menus\Arcade\ArcadeMenu.cpp">
-      <Filter>Source\Scenes\Menus\Arcade</Filter>
+    <ClCompile Include="..\Source\Scenes\Menus\Minigames\MinigamesMenu.cpp">
+      <Filter>Source\Scenes\Menus\Minigames</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\HexusPuzzleItem.cpp">
+      <Filter>Source\Scenes\Menus\Minigames\Hexus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\HexusPuzzleMenu.cpp">
+      <Filter>Source\Scenes\Menus\Minigames\Hexus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1786,14 +1792,20 @@
     <ClInclude Include="..\Source\Scenes\Menus\WorldMap\WorldMap.h">
       <Filter>Source\Scenes\Menus\WorldMap</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Menus\Arcade\Hexus\HexusMenu.h">
-      <Filter>Source\Scenes\Menus\Arcade\Hexus</Filter>
+    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\HexusMenu.h">
+      <Filter>Source\Scenes\Menus\Minigames\Hexus</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Menus\Arcade\Hexus\HexusOpponentItem.h">
-      <Filter>Source\Scenes\Menus\Arcade\Hexus</Filter>
+    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\HexusOpponentItem.h">
+      <Filter>Source\Scenes\Menus\Minigames\Hexus</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Menus\Arcade\ArcadeMenu.h">
-      <Filter>Source\Scenes\Menus\Arcade</Filter>
+    <ClInclude Include="..\Source\Scenes\Menus\Minigames\MinigamesMenu.h">
+      <Filter>Source\Scenes\Menus\Minigames</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\HexusPuzzleItem.h">
+      <Filter>Source\Scenes\Menus\Minigames\Hexus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\HexusPuzzlesMenu.h">
+      <Filter>Source\Scenes\Menus\Minigames\Hexus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

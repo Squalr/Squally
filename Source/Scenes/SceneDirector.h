@@ -13,7 +13,9 @@
 #include "Scenes/Maps/Platformer/PlatformerMap.h"
 #include "Resources.h"
 #include "Scenes/Fights/Fight.h"
-#include "Scenes/Menus/Arcade/ArcadeMenu.h"
+#include "Scenes/Menus/Minigames/MinigamesMenu.h"
+#include "Scenes/Menus/Minigames/Hexus/HexusMenu.h"
+#include "Scenes/Menus/Minigames/Hexus/HexusPuzzlesMenu.h"
 #include "Scenes/Menus/Confirmation/ConfirmationMenu.h"
 #include "Scenes/Menus/LoadingScreen/LoadingScreen.h"
 #include "Scenes/Menus/Options/OptionsMenu.h"
@@ -43,7 +45,9 @@ private:
 	void initializeEventListeners() override;
 
 	TitleScreen* titleScreen;
-	ArcadeMenu* arcadeMenu;
+	MinigamesMenu* minigamesMenu;
+	HexusMenu* hexusMenu;
+	HexusPuzzlesMenu* hexusPuzzlesMenu;
 	TutorialScreen* tutorialScreen;
 	WorldMap* worldMap;
 	Scene* cutscene;
