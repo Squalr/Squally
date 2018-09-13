@@ -63,13 +63,13 @@ void Wind::update(float dt)
 	__asm
 	{
 		push ebx;
-		mov ebx, currentSpeed.x
+		mov ebx, currentSpeed.y
 	}
 
 	HACKABLE_CODE_BEGIN(assemblyAddressStart, windSpeedYStart)
 	__asm
 	{
-		mov speed.x, ebx
+		mov speed.y, ebx
 	}
 	HACKABLE_CODE_END(assemblyAddressEnd, windSpeedYEnd)
 
@@ -91,8 +91,7 @@ void Wind::update(float dt)
 	}
 
 	float angle = speed.x == 0.0f ? (speed.y > 0.0f ? -90.0f : 90.0f) : atan(speed.y / speed.x);
-	this->windParticles->setAngle(M_PI_2);
-	this->windParticles->setGravity(Vec2(-1.0f, 0.0f));
+	this->windParticles->setAngle(angle);
 	this->windParticles->setPosVar(Vec2(speed.y == 0.0f ? 0.0f : this->size.width, speed.x == 0.0f ? 0.0f : this->size.height));
 
 	this->windDataSpeedY->registerCode(assemblyAddressStart, assemblyAddressEnd, "Wind X Speed", Resources::Menus_HackerModeMenu_Icons_Tornado);

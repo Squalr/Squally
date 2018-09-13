@@ -15,8 +15,8 @@ Hud::Hud()
 	this->healthBarFrame = Sprite::create(Resources::HUD_HealthBarFrame);
 	this->dialogNode = Node::create();
 
-	this->addChild(this->healthBarFrame);
-	this->addChild(this->heart);
+	// this->addChild(this->healthBarFrame);
+	// this->addChild(this->heart);
 	this->addChild(this->dialogNode);
 
 	this->initializeListeners();
