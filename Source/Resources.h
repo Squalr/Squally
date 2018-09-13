@@ -3371,13 +3371,6 @@ public:
 	static const std::string HUD_Timer;
 	static const std::string Menus_MouseIdle;
 	static const std::string Menus_MousePoint;
-	static const std::string Menus_ArcadeMenu_Banner;
-	static const std::string Menus_ArcadeMenu_BannerClick;
-	static const std::string Menus_ArcadeMenu_BannerGray;
-	static const std::string Menus_ArcadeMenu_BannerHover;
-	static const std::string Menus_ArcadeMenu_IconHexus;
-	static const std::string Menus_ArcadeMenu_Hexus_EnemyFrame;
-	static const std::string Menus_ArcadeMenu_Hexus_EnemyFrameGray;
 	static const std::string Menus_Backgrounds_BottomLeaves;
 	static const std::string Menus_Backgrounds_BottomSoil;
 	static const std::string Menus_Backgrounds_DarkBackground;
@@ -3629,6 +3622,13 @@ public:
 	static const std::string Menus_HackerModeMenu_Icons_YinYang;
 	static const std::string Menus_LoadingMenu_LoadingFrame;
 	static const std::string Menus_LoadingMenu_LoadingFrameFill;
+	static const std::string Menus_MinigamesMenu_Banner;
+	static const std::string Menus_MinigamesMenu_BannerClick;
+	static const std::string Menus_MinigamesMenu_BannerGray;
+	static const std::string Menus_MinigamesMenu_BannerHover;
+	static const std::string Menus_MinigamesMenu_IconHexus;
+	static const std::string Menus_MinigamesMenu_Hexus_EnemyFrame;
+	static const std::string Menus_MinigamesMenu_Hexus_EnemyFrameGray;
 	static const std::string Menus_OptionsMenu_CheckboxEmpty;
 	static const std::string Menus_OptionsMenu_CheckboxHover;
 	static const std::string Menus_OptionsMenu_CheckboxSelected;

@@ -17,7 +17,9 @@ SceneDirector::SceneDirector()
 {
 	this->sceneHistory = new std::stack<Scene*>();
 	this->titleScreen = TitleScreen::create();
-	this->arcadeMenu = ArcadeMenu::create();
+	this->minigamesMenu = MinigamesMenu::create();
+	this->hexusMenu = HexusMenu::create();
+	this->hexusPuzzlesMenu = HexusPuzzlesMenu::create();
 	this->tutorialScreen = TutorialScreen::create();
 	this->worldMap = WorldMap::create();
 	this->loadingScreen = LoadingScreen::create();
@@ -33,7 +35,9 @@ SceneDirector::SceneDirector()
 
 	// Prevent disposal of game objects
 	this->titleScreen->retain();
-	this->arcadeMenu->retain();
+	this->minigamesMenu->retain();
+	this->hexusMenu->retain();
+	this->hexusPuzzlesMenu->retain();
 	this->tutorialScreen->retain();
 	this->worldMap->retain();
 	this->loadingScreen->retain();
@@ -112,8 +116,14 @@ void SceneDirector::onGameNavigateNew(EventCustom* eventCustom)
 	case NavigationEvents::GameScreen::Title:
 		newScene = this->titleScreen;
 		break;
-	case NavigationEvents::GameScreen::Arcade:
-		newScene = this->arcadeMenu;
+	case NavigationEvents::GameScreen::Minigames:
+		newScene = this->minigamesMenu;
+		break;
+	case NavigationEvents::GameScreen::Minigames_Hexus:
+		newScene = this->hexusMenu;
+		break;
+	case NavigationEvents::GameScreen::Minigames_Hexus_Puzzles:
+		newScene = this->hexusPuzzlesMenu;
 		break;
 	case NavigationEvents::GameScreen::Tutorial:
 		newScene = this->tutorialScreen;

@@ -43,7 +43,9 @@ public:
 	enum GameScreen {
 		Title,
 		StoryMap,
-		Arcade,
+		Minigames,
+		Minigames_Hexus,
+		Minigames_Hexus_Puzzles,
 		Tutorial,
 		Pause,
 		Options,

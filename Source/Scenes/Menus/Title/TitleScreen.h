@@ -54,7 +54,7 @@ private:
 	Sprite* title;
 
 	static const std::string StringKeyStoryMode;
-	static const std::string StringKeyArcadeMode;
+	static const std::string StringKeyMinigames;
 	static const std::string StringKeyOptions;
 	static const std::string StringKeyExit;
 
