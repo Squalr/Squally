@@ -17,7 +17,7 @@ HackableObject::~HackableObject()
 
 void HackableObject::onEnterTransitionDidFinish()
 {
-	Node::onEnter();
+	Node::onEnterTransitionDidFinish();
 
 	this->hackButton->setClickCallback(CC_CALLBACK_1(HackableObject::onHackableClick, this));
 

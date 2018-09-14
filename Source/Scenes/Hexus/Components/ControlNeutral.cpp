@@ -17,23 +17,6 @@ ControlNeutral::~ControlNeutral()
 {
 }
 
-void ControlNeutral::onEnter()
-{
-	ComponentBase::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
-}
-
-void ControlNeutral::initializePositions()
-{
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-}
-
-void ControlNeutral::initializeListeners()
-{
-}
-
 void ControlNeutral::onStateChange(GameState* gameState)
 {
 	this->activeGameState = gameState;

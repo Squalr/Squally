@@ -8,22 +8,9 @@ ComponentBase::~ComponentBase()
 {
 }
 
-void ComponentBase::onEnter()
-{
-	Node::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
-}
-
-void ComponentBase::initializePositions()
-{
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-}
-
 void ComponentBase::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	GameObject::initializeListeners();
 
 	EventListenerCustom* stateListener = EventListenerCustom::create(GameState::onStateUpdateEvent, CC_CALLBACK_1(ComponentBase::onStateChangeEvent, this));
 

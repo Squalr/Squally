@@ -36,16 +36,10 @@ ScoreTotal::~ScoreTotal()
 {
 }
 
-void ScoreTotal::onEnter()
-{
-	ComponentBase::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
-}
-
 void ScoreTotal::initializePositions()
 {
+	ComponentBase::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->playerTotalFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f - Config::totalAttackOffsetY);
@@ -55,10 +49,6 @@ void ScoreTotal::initializePositions()
 	this->enemyTotalFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f + Config::totalAttackOffsetY);
 	this->enemyLeaderEmblem->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f + Config::leaderEmblemOffsetY);
 	this->enemyTotal->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f + Config::totalAttackOffsetY);
-}
-
-void ScoreTotal::initializeListeners()
-{
 }
 
 void ScoreTotal::onStateChange(GameState* gameState)

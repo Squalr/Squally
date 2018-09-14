@@ -35,16 +35,10 @@ DeckCardCountDisplay::~DeckCardCountDisplay()
 {
 }
 
-void DeckCardCountDisplay::onEnter()
-{
-	ComponentBase::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
-}
-
 void DeckCardCountDisplay::initializePositions()
 {
+	ComponentBase::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->playerDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f, visibleSize.height / 2.0f - Config::deckOffsetY - Config::deckCardCountOffsetY - 32.0f);
@@ -52,10 +46,6 @@ void DeckCardCountDisplay::initializePositions()
 
 	this->enemyDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f, visibleSize.height / 2.0f + Config::deckOffsetY + Config::deckCardCountOffsetY);
 	this->enemyDeckCardCountText->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f + Config::deckOffsetY + Config::deckCardCountOffsetY + 32.0f);
-}
-
-void DeckCardCountDisplay::initializeListeners()
-{
 }
 
 void DeckCardCountDisplay::onStateChange(GameState* gameState)

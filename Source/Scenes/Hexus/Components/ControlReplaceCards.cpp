@@ -30,24 +30,14 @@ ControlReplaceCards::~ControlReplaceCards()
 	delete(this->replacedCards);
 }
 
-void ControlReplaceCards::onEnter()
-{
-	ComponentBase::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
-}
-
 void ControlReplaceCards::initializePositions()
 {
+	ComponentBase::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->bannerBackground->setPosition(0.0f, visibleSize.height / 2.0f - this->bannerBackground->getContentSize().height / 2 + 320.0f);
 	this->bannerLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 320.0f);
-}
-
-void ControlReplaceCards::initializeListeners()
-{
 }
 
 void ControlReplaceCards::onStateChange(GameState* gameState)

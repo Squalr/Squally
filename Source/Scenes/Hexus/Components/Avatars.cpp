@@ -58,26 +58,16 @@ Avatars::~Avatars()
 {
 }
 
-void Avatars::onEnter()
-{
-	ComponentBase::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
-}
-
 void Avatars::initializePositions()
 {
+	ComponentBase::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->framePlayer->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f - Config::frameOffsetY);
 	this->frameEnemy->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f + Config::frameOffsetY);
 	this->clipPlayer->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f - Config::frameOffsetY);
 	this->clipEnemy->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f + Config::frameOffsetY);
-}
-
-void Avatars::initializeListeners()
-{
 }
 
 void Avatars::onStateChange(GameState* gameState)

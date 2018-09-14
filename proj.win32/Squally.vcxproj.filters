@@ -991,6 +991,9 @@
     <ClCompile Include="..\Source\Scenes\Cutscenes\CutsceneManager.cpp">
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Engine\Objects\GameObject.cpp">
+      <Filter>Source\Engine\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Resources.h">
@@ -1821,6 +1824,9 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Cutscenes\CutsceneManager.h">
       <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Objects\GameObject.h">
+      <Filter>Source\Engine\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -22,9 +22,7 @@ private:
 	Banners();
 	~Banners();
 
-	void onEnter() override;
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
 	void updateBanner(GameState* gameState);
 
 	LayerColor* statusBanner;

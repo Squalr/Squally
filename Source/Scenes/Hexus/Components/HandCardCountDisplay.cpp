@@ -40,16 +40,10 @@ HandCardCountDisplay::~HandCardCountDisplay()
 {
 }
 
-void HandCardCountDisplay::onEnter()
-{
-	ComponentBase::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
-}
-
 void HandCardCountDisplay::initializePositions()
 {
+	ComponentBase::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->playerHandCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 24.0f - 36.0f, visibleSize.height / 2.0f - Config::handCountOffsetY - 32.0f);
@@ -59,10 +53,6 @@ void HandCardCountDisplay::initializePositions()
 	this->enemyHandCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 24.0f - 36.0f, visibleSize.height / 2.0f + Config::handCountOffsetY);
 	this->enemyHandCardIcon->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 40.0f, visibleSize.height / 2.0f + Config::handCountOffsetY + 16.0f);
 	this->enemyHandCardCountText->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f + Config::handCountOffsetY + 32.0f);
-}
-
-void HandCardCountDisplay::initializeListeners()
-{
 }
 
 void HandCardCountDisplay::onStateChange(GameState* gameState)

@@ -71,16 +71,10 @@ void GameState::updateState(GameState* gameState, StateType newState)
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::onStateUpdateEvent, gameState);
 }
 
-void GameState::onEnter()
-{
-	Node::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
-}
-
 void GameState::initializePositions()
 {
+	GameObject::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->enemyGraveyard->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f + Config::graveyardOffsetY);
@@ -98,11 +92,6 @@ void GameState::initializePositions()
 	this->enemyBinaryCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::binaryRowOffsetY);
 	this->enemyDecimalCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::decimalRowOffsetY);
 	this->enemyHexCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY);
-}
-
-void GameState::initializeListeners()
-{
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void GameState::clearCallbackStates()

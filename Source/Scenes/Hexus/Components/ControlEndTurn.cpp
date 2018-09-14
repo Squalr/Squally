@@ -17,23 +17,6 @@ ControlEndTurn::~ControlEndTurn()
 {
 }
 
-void ControlEndTurn::onEnter()
-{
-	ComponentBase::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
-}
-
-void ControlEndTurn::initializePositions()
-{
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-}
-
-void ControlEndTurn::initializeListeners()
-{
-}
-
 void ControlEndTurn::onStateChange(GameState* gameState)
 {
 	this->activeGameState = gameState;

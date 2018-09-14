@@ -22,9 +22,7 @@ private:
 	ControlReplaceCards();
 	~ControlReplaceCards();
 
-	void onEnter() override;
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
 	void initializeCardReplace(GameState* gameState);
 	void initializeCallbacks(GameState* gameState);
 	void replaceCard(Card* card);

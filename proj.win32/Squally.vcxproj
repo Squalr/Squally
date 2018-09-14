@@ -170,6 +170,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Engine\Maps\SerializableMap.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableObject.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\SerializableTileLayer.cpp" />
+    <ClCompile Include="..\Source\Engine\Objects\GameObject.cpp" />
     <ClCompile Include="..\Source\Engine\Objects\Hackables\HackableAttribute.cpp" />
     <ClCompile Include="..\Source\Engine\Objects\Hackables\HackableCode.cpp" />
     <ClCompile Include="..\Source\Engine\Objects\Hackables\HackableData.cpp" />
@@ -440,6 +441,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Engine\Maps\SerializableMap.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableObject.h" />
     <ClInclude Include="..\Source\Engine\Maps\SerializableTileLayer.h" />
+    <ClInclude Include="..\Source\Engine\Objects\GameObject.h" />
     <ClInclude Include="..\Source\Engine\Objects\Hackables\HackableAttribute.h" />
     <ClInclude Include="..\Source\Engine\Objects\Hackables\HackableCode.h" />
     <ClInclude Include="..\Source\Engine\Objects\Hackables\HackableData.h" />

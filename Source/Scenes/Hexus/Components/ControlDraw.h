@@ -22,9 +22,6 @@ private:
 	ControlDraw();
 	~ControlDraw();
 
-	void onEnter() override;
-	void initializePositions();
-	void initializeListeners();
 	void doInitialCardDraw(GameState* gameState);
 	void doCardDraw(GameState* gameState);
 };

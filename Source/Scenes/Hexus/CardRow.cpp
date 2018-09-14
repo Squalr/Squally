@@ -30,21 +30,9 @@ CardRow::~CardRow()
 	delete(this->rowCards);
 }
 
-void CardRow::onEnter()
-{
-	Node::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
-}
-
-void CardRow::initializePositions()
-{
-}
-
 void CardRow::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	GameObject::initializeListeners();
 
 	this->rowSelectSprite->setClickCallback(CC_CALLBACK_1(CardRow::onRowSelectClick, this));
 }
