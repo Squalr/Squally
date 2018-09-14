@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Input/InputManager.h"
+#include "Engine/Cutscenes/CutsceneClip.h"
 #include "Engine/UI/FadeScene.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
@@ -11,14 +11,23 @@ using namespace cocos2d;
 class Cutscene : public FadeScene
 {
 public:
-	void setCutsceneCompleteCallback(std::function<void()> callback);
+	static Cutscene* create(std::function<void()> cutsceneCompleteCallback);
+
+	void playCutscenes();
 
 protected:
-	Cutscene();
+	Cutscene(std::function<void()> cutsceneCompleteCallback);
 	~Cutscene();
 
+	void initializeListeners() override;
+	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void enqueueCutsceneClip(CutsceneClip* cutscene);
+	void cutsceneClipCompleteCallback();
 	void endCutscene();
 
 private:
-	std::function<void()> cutsceneCompleteCallback;
+	void playNextCutsceneClip();
+
+	std::deque<CutsceneClip*>* cutsceneClips;
+	std::function<void()> onCutsceneCompleteCallback;
 };

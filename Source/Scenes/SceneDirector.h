@@ -11,7 +11,6 @@
 #include "Scenes/Maps/Isometric/IsometricMap.h"
 #include "Scenes/Maps/Platformer/PlatformerMap.h"
 #include "Resources.h"
-#include "Scenes/Cutscenes/IntroSequence/IntroSequence.h" 
 #include "Scenes/Fights/Fight.h"
 #include "Scenes/Menus/Minigames/MinigamesMenu.h"
 #include "Scenes/Menus/Minigames/Hexus/HexusMenu.h"
@@ -36,6 +35,7 @@ private:
 	SceneDirector();
 	~SceneDirector();
 
+	void initializeEventListeners() override;
 	void onGameNavigateNew(EventCustom* eventCustom);
 	void onGameNavigateBack(EventCustom* eventCustom);
 	void onGameNavigateConfirm(EventCustom* eventCustom);
@@ -43,7 +43,6 @@ private:
 	void onGameNavigateLoadLevel(EventCustom* eventCustom);
 	void onGameNavigateEnterLevel(EventCustom* eventCustom);
 	void onGameNavigateFight(EventCustom* eventCustom);
-	void initializeEventListeners() override;
 
 	TitleScreen* titleScreen;
 	SaveSelectMenu* saveSelectMenu;
@@ -59,7 +58,7 @@ private:
 	PauseMenu* pauseMenu;
 	ConfirmationMenu* confirmationMenu;
 	Hexus* hexus;
-	CutsceneSequence* cutscene;
+	Cutscene* cutscene;
 
 	std::stack<Scene*>* sceneHistory;
 

@@ -64,8 +64,6 @@ NeonCity::NeonCity(NeonCityScene neonCityScene)
 		break;
 	}
 
-	this->addChild(InputManager::claimInstance());
-
 	this->addChild(this->sky);
 	this->addChild(this->darkFilter);
 	this->addChild(this->starLayer);
@@ -88,7 +86,7 @@ NeonCity::~NeonCity()
 
 void NeonCity::onEnter()
 {
-	Cutscene::onEnter();
+	CutsceneClip::onEnter();
 
 	this->dialogue->showNextDialogue();
 
@@ -133,7 +131,7 @@ void NeonCity::onEnter()
 
 void NeonCity::initializePositions()
 {
-	Cutscene::initializePositions();
+	CutsceneClip::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -154,7 +152,7 @@ void NeonCity::initializePositions()
 
 void NeonCity::initializeListeners()
 {
-	Cutscene::initializeListeners();
+	CutsceneClip::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(NeonCity::onDialogueShown, this));
 }
@@ -169,7 +167,7 @@ void NeonCity::onDialogueShown()
 			CallFunc::create([=]() {
 				if (!this->dialogue->showNextDialogue())
 				{
-					this->endCutscene();
+					this->endCutsceneClip();
 				}
 			}),
 			nullptr
@@ -181,7 +179,7 @@ void NeonCity::onDialogueShown()
 			CallFunc::create([=]() {
 				if (!this->dialogue->showNextDialogue())
 				{
-					this->endCutscene();
+					this->endCutsceneClip();
 				}
 			}),
 			nullptr
@@ -193,7 +191,7 @@ void NeonCity::onDialogueShown()
 			CallFunc::create([=]() {
 				if (!this->dialogue->showNextDialogue())
 				{
-					this->endCutscene();
+					this->endCutsceneClip();
 				}
 			}),
 			nullptr

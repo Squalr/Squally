@@ -29,8 +29,6 @@ SquallyUploadMars::SquallyUploadMars()
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 
-	this->addChild(InputManager::claimInstance());
-
 	this->addChild(this->background);
 	this->addChild(this->squally);
 	this->addChild(this->dialoguePlate);
@@ -44,7 +42,7 @@ SquallyUploadMars::~SquallyUploadMars()
 
 void SquallyUploadMars::onEnter()
 {
-	Cutscene::onEnter();
+	CutsceneClip::onEnter();
 
 	this->dialogue->showNextDialogue();
 
@@ -53,7 +51,7 @@ void SquallyUploadMars::onEnter()
 
 void SquallyUploadMars::initializePositions()
 {
-	Cutscene::initializePositions();
+	CutsceneClip::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -66,7 +64,7 @@ void SquallyUploadMars::initializePositions()
 
 void SquallyUploadMars::initializeListeners()
 {
-	Cutscene::initializeListeners();
+	CutsceneClip::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(SquallyUploadMars::onDialogueShown, this));
 }
@@ -124,7 +122,7 @@ void SquallyUploadMars::onDialogueShown()
 					DelayTime::create(5.0f),
 					CallFunc::create([=]()
 					{
-						this->endCutscene();
+						this->endCutsceneClip();
 					}),
 				nullptr));
 			}

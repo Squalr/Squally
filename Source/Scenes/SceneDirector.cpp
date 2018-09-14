@@ -193,7 +193,8 @@ void SceneDirector::onGameNavigateLoadCutscene(EventCustom* eventCustom)
 {
 	NavigationEvents::NavigateLoadCutsceneArgs* args = (NavigationEvents::NavigateLoadCutsceneArgs*)(eventCustom->getUserData());
 
-	this->cutscene = args->cutsceneSequence;
+	this->cutscene = args->cutscene;
+	this->cutscene->playCutscenes();
 
 	// Load the scene (don't add it to scene history -- it does not make sense to ever be able to navigate 'back' to a cutscene
 	GlobalDirector::getInstance()->loadScene(this->cutscene);

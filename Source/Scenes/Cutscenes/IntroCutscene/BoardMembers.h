@@ -1,23 +1,22 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Cutscenes/Cutscene.h"
+#include "Engine/Cutscenes/CutsceneClip.h"
 #include "Engine/Dialogue/Dialogue.h"
-#include "Engine/Input/InputManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 #include "Scenes/Cutscenes/Objects/StarLayer.h"
 
 using namespace cocos2d;
 
-class SquallyUploadSpace : public Cutscene
+class BoardMembers : public CutsceneClip
 {
 public:
-	static SquallyUploadSpace* create();
+	static BoardMembers* create();
 
 protected:
-	SquallyUploadSpace();
-	~SquallyUploadSpace();
+	BoardMembers();
+	~BoardMembers();
 
 private:
 	void onEnter() override;
@@ -25,12 +24,9 @@ private:
 	void initializeListeners() override;
 
 	void onDialogueShown();
-	void runCutscene();
 
-	StarLayer* starLayer;
-	Sprite* mars;
-	Node* beam;
-	Sprite* satellite;
+	Sprite* background;
+
 	LayerColor* dialoguePlate;
 	Dialogue* dialogue;
 	Label* escapeLabel;

@@ -33,8 +33,6 @@ VaporLabs::VaporLabs()
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 
-	this->addChild(InputManager::claimInstance());
-
 	this->contentLayer->addChild(this->sky);
 	this->contentLayer->addChild(this->starLayer);
 	this->contentLayer->addChild(this->cityView);
@@ -55,7 +53,7 @@ VaporLabs::~VaporLabs()
 
 void VaporLabs::onEnter()
 {
-	Cutscene::onEnter();
+	CutsceneClip::onEnter();
 
 	this->dialogue->showNextDialogue();
 
@@ -64,7 +62,7 @@ void VaporLabs::onEnter()
 
 void VaporLabs::initializePositions()
 {
-	Cutscene::initializePositions();
+	CutsceneClip::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -84,7 +82,7 @@ void VaporLabs::initializePositions()
 
 void VaporLabs::initializeListeners()
 {
-	Cutscene::initializeListeners();
+	CutsceneClip::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(VaporLabs::onDialogueShown, this));
 }
@@ -96,7 +94,7 @@ void VaporLabs::onDialogueShown()
 		CallFunc::create([=]() {
 			if (!this->dialogue->showNextDialogue())
 			{
-				this->endCutscene();
+				this->endCutsceneClip();
 			}
 		}),
 		nullptr
