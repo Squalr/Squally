@@ -33,7 +33,7 @@ void NavigationEvents::navigateConfirm(std::string confirmMessage, std::function
 	);
 }
 
-void NavigationEvents::loadCutscene(CutsceneSequence* cutscene)
+void NavigationEvents::loadCutscene(Cutscene* cutscene)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::gameNavigateLoadCutsceneEvent,

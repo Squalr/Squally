@@ -59,7 +59,6 @@ VaporWeb::VaporWeb()
 
 	this->darkLord->setVisible(false);
 
-	this->addChild(InputManager::claimInstance());
 	this->addChild(this->forestBackground);
 	this->addChild(this->cavernsBackground);
 	this->addChild(this->obeliskBackground);
@@ -77,18 +76,14 @@ VaporWeb::~VaporWeb()
 
 void VaporWeb::onEnter()
 {
-	Cutscene::onEnter();
-
-	this->scheduleUpdate();
-	this->initializePositions();
-	this->initializeListeners();
+	CutsceneClip::onEnter();
 
 	this->runCutscene();
 }
 
 void VaporWeb::initializePositions()
 {
-	Cutscene::initializePositions();
+	CutsceneClip::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -104,7 +99,7 @@ void VaporWeb::initializePositions()
 
 void VaporWeb::initializeListeners()
 {
-	Cutscene::initializeListeners();
+	CutsceneClip::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(VaporWeb::onDialogueShown, this));
 }
@@ -128,7 +123,7 @@ void VaporWeb::runCutscene()
 
 	CallFunc* nextCutscene = CallFunc::create([=]()
 	{
-		this->endCutscene();
+		this->endCutsceneClip();
 	});
 
 	this->runAction(Sequence::create(

@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Cutscenes/CutsceneSequence.h"
+#include "Engine/Cutscenes/Cutscene.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -60,9 +60,9 @@ public:
 
 	struct NavigateLoadCutsceneArgs
 	{
-		CutsceneSequence* cutsceneSequence;
+		Cutscene* cutscene;
 
-		NavigateLoadCutsceneArgs(CutsceneSequence* cutsceneSequence) : cutsceneSequence(cutsceneSequence) { }
+		NavigateLoadCutsceneArgs(Cutscene* cutscene) : cutscene(cutscene) { }
 	};
 
 	struct NavigateLoadLevelArgs
@@ -100,7 +100,7 @@ public:
 	static void navigateBack(int count = 1);
 	static void navigate(GameScreen gameScreen);
 	static void navigateConfirm(std::string confirmMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
-	static void loadCutscene(CutsceneSequence* cutscene);
+	static void loadCutscene(Cutscene* cutscene);
 	static void loadMap(std::string levelFile);
 	static void enterLevel(SerializableMap* levelMap);
 	static void loadFight(Squally* squally, PlatformerEnemy* enemy);

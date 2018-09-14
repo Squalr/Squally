@@ -1,9 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Cutscenes/Cutscene.h"
+#include "Engine/Cutscenes/CutsceneClip.h"
 #include "Engine/Dialogue/Dialogue.h"
-#include "Engine/Input/InputManager.h"
 #include "Engine/Localization/Localization.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
@@ -12,7 +11,7 @@
 
 using namespace cocos2d;
 
-class VaporWeb : public Cutscene
+class VaporWeb : public CutsceneClip
 {
 public:
 	static VaporWeb* create();

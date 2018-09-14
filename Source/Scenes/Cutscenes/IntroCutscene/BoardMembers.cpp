@@ -23,8 +23,6 @@ BoardMembers::BoardMembers()
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 
-	this->addChild(InputManager::claimInstance());
-
 	this->addChild(this->background);
 	this->addChild(this->dialoguePlate);
 	this->addChild(this->dialogue);
@@ -37,14 +35,14 @@ BoardMembers::~BoardMembers()
 
 void BoardMembers::onEnter()
 {
-	Cutscene::onEnter();
+	CutsceneClip::onEnter();
 
 	this->dialogue->showNextDialogue();
 }
 
 void BoardMembers::initializePositions()
 {
-	Cutscene::initializePositions();
+	CutsceneClip::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -56,7 +54,7 @@ void BoardMembers::initializePositions()
 
 void BoardMembers::initializeListeners()
 {
-	Cutscene::initializeListeners();
+	CutsceneClip::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(BoardMembers::onDialogueShown, this));
 }
@@ -68,7 +66,7 @@ void BoardMembers::onDialogueShown()
 		CallFunc::create([=]() {
 			if (!this->dialogue->showNextDialogue())
 			{
-				this->endCutscene();
+				this->endCutsceneClip();
 			}
 		}),
 		nullptr

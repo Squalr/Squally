@@ -199,9 +199,6 @@
     <Filter Include="Source\Engine\Cutscenes">
       <UniqueIdentifier>{c192f97b-8ea9-485b-aeff-f804a50d5c1d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Scenes\Cutscenes\IntroSequence">
-      <UniqueIdentifier>{007c9c4c-4cda-4990-82ed-00d6e4f8d927}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Resources.cpp">
@@ -964,41 +961,41 @@
     <ClCompile Include="..\Source\Engine\Hackables\HackableObject.cpp">
       <Filter>Source\Engine\Hackables</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Engine\Cutscenes\CutsceneClip.cpp">
+      <Filter>Source\Engine\Cutscenes</Filter>
+    </ClCompile>
     <ClCompile Include="..\Source\Engine\Cutscenes\Cutscene.cpp">
       <Filter>Source\Engine\Cutscenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Engine\Cutscenes\CutsceneSequence.cpp">
-      <Filter>Source\Engine\Cutscenes</Filter>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroCutscene\BoardMembers.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroSequence\BoardMembers.cpp">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroCutscene\HomeAssistantRobot.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroSequence\HomeAssistantRobot.cpp">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroCutscene\IntroCutscene.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroSequence\IntroSpace.cpp">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroCutscene\IntroSpace.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroSequence\NeonCity.cpp">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroCutscene\NeonCity.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroSequence\RobotDoctor.cpp">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroCutscene\RobotDoctor.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroSequence\SquallyUploadMars.cpp">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroCutscene\SquallyUploadMars.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroSequence\SquallyUploadSpace.cpp">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroCutscene\SquallyUploadSpace.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroSequence\VaporLabs.cpp">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroCutscene\VaporLabs.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroSequence\VaporWeb.cpp">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroSequence\IntroSequence.cpp">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClCompile Include="..\Source\Scenes\Cutscenes\IntroCutscene\VaporWeb.cpp">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1798,41 +1795,41 @@
     <ClInclude Include="..\Source\Engine\Hackables\HackableObject.h">
       <Filter>Source\Engine\Hackables</Filter>
     </ClInclude>
+    <ClInclude Include="..\Source\Engine\Cutscenes\CutsceneClip.h">
+      <Filter>Source\Engine\Cutscenes</Filter>
+    </ClInclude>
     <ClInclude Include="..\Source\Engine\Cutscenes\Cutscene.h">
       <Filter>Source\Engine\Cutscenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Engine\Cutscenes\CutsceneSequence.h">
-      <Filter>Source\Engine\Cutscenes</Filter>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroCutscene\BoardMembers.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroSequence\BoardMembers.h">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroCutscene\HomeAssistantRobot.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroSequence\HomeAssistantRobot.h">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroCutscene\IntroCutscene.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroSequence\IntroSpace.h">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroCutscene\IntroSpace.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroSequence\NeonCity.h">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroCutscene\NeonCity.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroSequence\RobotDoctor.h">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroCutscene\RobotDoctor.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroSequence\SquallyUploadMars.h">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroCutscene\SquallyUploadMars.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroSequence\SquallyUploadSpace.h">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroCutscene\SquallyUploadSpace.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroSequence\VaporLabs.h">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroCutscene\VaporLabs.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroSequence\VaporWeb.h">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroSequence\IntroSequence.h">
-      <Filter>Source\Scenes\Cutscenes\IntroSequence</Filter>
+    <ClInclude Include="..\Source\Scenes\Cutscenes\IntroCutscene\VaporWeb.h">
+      <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

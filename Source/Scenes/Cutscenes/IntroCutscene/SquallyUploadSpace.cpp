@@ -30,8 +30,6 @@ SquallyUploadSpace::SquallyUploadSpace()
 	this->beam->setCascadeOpacityEnabled(true);
 	this->beam->setOpacity(0);
 
-	this->addChild(InputManager::claimInstance());
-
 	this->addChild(this->starLayer);
 	this->addChild(this->mars);
 	this->addChild(this->beam);
@@ -47,20 +45,16 @@ SquallyUploadSpace::~SquallyUploadSpace()
 
 void SquallyUploadSpace::onEnter()
 {
-	Cutscene::onEnter();
+	CutsceneClip::onEnter();
 
 	this->dialogue->showNextDialogue();
-
-	this->scheduleUpdate();
-	this->initializePositions();
-	this->initializeListeners();
 
 	this->runCutscene();
 }
 
 void SquallyUploadSpace::initializePositions()
 {
-	SquallyUploadSpace::initializeListeners();
+	CutsceneClip::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -90,7 +84,7 @@ void SquallyUploadSpace::initializePositions()
 
 void SquallyUploadSpace::initializeListeners()
 {
-	Cutscene::initializeListeners();
+	CutsceneClip::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(SquallyUploadSpace::onDialogueShown, this));
 }
@@ -113,7 +107,7 @@ void SquallyUploadSpace::onDialogueShown()
 		CallFunc::create([=]() {
 			if (!this->dialogue->showNextDialogue())
 			{
-				this->endCutscene();
+				this->endCutsceneClip();
 			}
 		}),
 		nullptr

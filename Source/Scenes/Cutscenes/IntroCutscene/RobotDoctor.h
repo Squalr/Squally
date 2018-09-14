@@ -1,28 +1,27 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Cutscenes/Cutscene.h"
+#include "Engine/Cutscenes/CutsceneClip.h"
 #include "Engine/Dialogue/Dialogue.h"
-#include "Engine/Input/InputManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 #include "Scenes/Cutscenes/Objects/StarLayer.h"
 
 using namespace cocos2d;
 
-class HomeAssistantRobot : public Cutscene
+class RobotDoctor : public CutsceneClip
 {
 public:
-	enum HomeAssistantRobotScene {
+	enum RobotDoctorScene {
 		Intro,
 		Singularity
 	};
 
-	static HomeAssistantRobot* create(HomeAssistantRobotScene homeAssistantRobotScene);
+	static RobotDoctor* create(RobotDoctorScene robotDoctorScene);
 
 protected:
-	HomeAssistantRobot(HomeAssistantRobotScene homeAssistantRobotScene);
-	~HomeAssistantRobot();
+	RobotDoctor(RobotDoctorScene robotDoctorScene);
+	~RobotDoctor();
 
 private:
 	void onEnter() override;
@@ -30,11 +29,11 @@ private:
 	void initializeListeners() override;
 	void onDialogueShown();
 
-	HomeAssistantRobotScene activeScene;
+	RobotDoctorScene activeScene;
 
 	Sprite* background;
 	Sprite* robot;
-	Sprite* brokenPlate;
+	Sprite* bed;
 
 	LayerColor* dialoguePlate;
 	Dialogue* dialogue;

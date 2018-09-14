@@ -57,7 +57,6 @@ IntroSpace::IntroSpace()
 		this->weaver5Anim->addSpriteFrameWithFileName(*it);
 	}
 
-	this->addChild(InputManager::claimInstance());
 	this->addChild(this->starLayer);
 	this->addChild(this->earth);
 	this->addChild(this->mars);
@@ -78,7 +77,7 @@ IntroSpace::~IntroSpace()
 
 void IntroSpace::onEnter()
 {
-	Cutscene::onEnter();
+	CutsceneClip::onEnter();
 
 	this->weaver1Anim->setDelayPerUnit(0.2f);
 	this->weaver2Anim->setDelayPerUnit(0.225f);
@@ -97,7 +96,7 @@ void IntroSpace::onEnter()
 
 void IntroSpace::initializePositions()
 {
-	Cutscene::initializePositions();
+	CutsceneClip::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -118,7 +117,7 @@ void IntroSpace::initializePositions()
 
 void IntroSpace::initializeListeners()
 {
-	Cutscene::initializeListeners();
+	CutsceneClip::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(IntroSpace::onDialogueShown, this));
 }
@@ -130,7 +129,7 @@ void IntroSpace::onDialogueShown()
 		CallFunc::create([=]() {
 			if (!this->dialogue->showNextDialogue())
 			{
-				this->endCutscene();
+				this->endCutsceneClip();
 			}
 		}),
 		nullptr

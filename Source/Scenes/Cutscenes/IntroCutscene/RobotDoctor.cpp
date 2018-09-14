@@ -37,8 +37,6 @@ RobotDoctor::RobotDoctor(RobotDoctorScene robotDoctorScene)
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 
-	this->addChild(InputManager::claimInstance());
-
 	this->addChild(this->background);
 	this->addChild(this->robot);
 	this->addChild(this->bed);
@@ -53,7 +51,7 @@ RobotDoctor::~RobotDoctor()
 
 void RobotDoctor::onEnter()
 {
-	Cutscene::onEnter();
+	CutsceneClip::onEnter();
 
 	this->dialogue->showNextDialogue();
 
@@ -70,7 +68,7 @@ void RobotDoctor::onEnter()
 
 void RobotDoctor::initializePositions()
 {
-	Cutscene::initializePositions();
+	CutsceneClip::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -84,7 +82,7 @@ void RobotDoctor::initializePositions()
 
 void RobotDoctor::initializeListeners()
 {
-	Cutscene::initializeListeners();
+	CutsceneClip::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(RobotDoctor::onDialogueShown, this));
 }
@@ -99,7 +97,7 @@ void RobotDoctor::onDialogueShown()
 			CallFunc::create([=]() {
 				if (!this->dialogue->showNextDialogue())
 				{
-					this->endCutscene();
+					this->endCutsceneClip();
 				}
 			}),
 			nullptr
@@ -111,7 +109,7 @@ void RobotDoctor::onDialogueShown()
 			CallFunc::create([=]() {
 				if (!this->dialogue->showNextDialogue())
 				{
-					this->endCutscene();
+					this->endCutsceneClip();
 				}
 			}),
 			nullptr

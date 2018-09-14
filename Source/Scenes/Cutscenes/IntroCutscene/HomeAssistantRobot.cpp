@@ -38,8 +38,6 @@ HomeAssistantRobot::HomeAssistantRobot(HomeAssistantRobotScene homeAssistantRobo
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 
-	this->addChild(InputManager::claimInstance());
-
 	this->addChild(this->background);
 	this->addChild(this->robot);
 	this->addChild(this->brokenPlate);
@@ -54,7 +52,7 @@ HomeAssistantRobot::~HomeAssistantRobot()
 
 void HomeAssistantRobot::onEnter()
 {
-	Cutscene::onEnter();
+	CutsceneClip::onEnter();
 
 	this->dialogue->showNextDialogue();
 
@@ -72,7 +70,7 @@ void HomeAssistantRobot::onEnter()
 
 void HomeAssistantRobot::initializePositions()
 {
-	Cutscene::initializePositions();
+	CutsceneClip::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -86,7 +84,7 @@ void HomeAssistantRobot::initializePositions()
 
 void HomeAssistantRobot::initializeListeners()
 {
-	Cutscene::initializeListeners();
+	CutsceneClip::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(HomeAssistantRobot::onDialogueShown, this));
 }
@@ -101,7 +99,7 @@ void HomeAssistantRobot::onDialogueShown()
 			CallFunc::create([=]() {
 				if (!this->dialogue->showNextDialogue())
 				{
-					this->endCutscene();
+					this->endCutsceneClip();
 				}
 			}),
 			nullptr
@@ -113,7 +111,7 @@ void HomeAssistantRobot::onDialogueShown()
 			CallFunc::create([=]() {
 				if (!this->dialogue->showNextDialogue())
 				{
-					this->endCutscene();
+					this->endCutsceneClip();
 				}
 			}),
 			nullptr
