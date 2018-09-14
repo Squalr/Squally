@@ -38,7 +38,6 @@ void CardPreview::initializePositions()
 
 void CardPreview::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void CardPreview::onStateChange(GameState* gameState)

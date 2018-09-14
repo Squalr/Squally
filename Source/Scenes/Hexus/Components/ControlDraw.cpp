@@ -32,7 +32,6 @@ void ControlDraw::initializePositions()
 
 void ControlDraw::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void ControlDraw::onStateChange(GameState* gameState)

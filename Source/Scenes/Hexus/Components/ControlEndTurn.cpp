@@ -32,7 +32,6 @@ void ControlEndTurn::initializePositions()
 
 void ControlEndTurn::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void ControlEndTurn::onStateChange(GameState* gameState)
