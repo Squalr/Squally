@@ -88,6 +88,8 @@ void VaporWeb::onEnter()
 
 void VaporWeb::initializePositions()
 {
+	Cutscene::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->forestBackground->setPosition(Vec2(visibleSize.width / 2.0f, this->grid->getHorizon() + VaporWeb::dialogueHeight));
@@ -102,19 +104,9 @@ void VaporWeb::initializePositions()
 
 void VaporWeb::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	Cutscene::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(VaporWeb::onDialogueShown, this));
-}
-
-void VaporWeb::update(float dt)
-{
-	FadeScene::update(dt);
-
-	if (InputManager::getInstance()->isPressed(EventKeyboard::KeyCode::KEY_ESCAPE))
-	{
-		this->endCutscene();
-	}
 }
 
 void VaporWeb::onDialogueShown()
@@ -130,18 +122,13 @@ void VaporWeb::onDialogueShown()
 	));
 }
 
-void VaporWeb::endCutscene()
-{
-	NavigationEvents::loadMap(Resources::Maps_Platformer_Volcano_Volcano);
-}
-
 void VaporWeb::runCutscene()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	CallFunc* nextCutscene = CallFunc::create([=]()
 	{
-		NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneIntroSpace);
+		this->endCutscene();
 	});
 
 	this->runAction(Sequence::create(

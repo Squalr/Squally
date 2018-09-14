@@ -13,6 +13,7 @@
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
+#include "Scenes/Cutscenes/IntroSequence/IntroSequence.h"
 #include "Scenes/Menus/MenuBackground.h"
 #include "Resources.h"
 

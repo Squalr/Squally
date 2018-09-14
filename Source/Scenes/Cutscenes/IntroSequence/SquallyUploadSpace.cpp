@@ -60,6 +60,8 @@ void SquallyUploadSpace::onEnter()
 
 void SquallyUploadSpace::initializePositions()
 {
+	SquallyUploadSpace::initializeListeners();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->mars->setPosition(Vec2(visibleSize.width / 2.0f - 128.0f, 48.0f));
@@ -88,19 +90,9 @@ void SquallyUploadSpace::initializePositions()
 
 void SquallyUploadSpace::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	Cutscene::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(SquallyUploadSpace::onDialogueShown, this));
-}
-
-void SquallyUploadSpace::update(float dt)
-{
-	FadeScene::update(dt);
-
-	if (InputManager::getInstance()->isPressed(EventKeyboard::KeyCode::KEY_ESCAPE))
-	{
-		this->endCutscene();
-	}
 }
 
 void SquallyUploadSpace::runCutscene()
@@ -112,11 +104,6 @@ void SquallyUploadSpace::runCutscene()
 		FadeOut::create(0.2f),
 		nullptr
 	));
-}
-
-void SquallyUploadSpace::endCutscene()
-{
-	NavigationEvents::loadMap(Resources::Maps_Isometric_Sanctum);
 }
 
 void SquallyUploadSpace::onDialogueShown()

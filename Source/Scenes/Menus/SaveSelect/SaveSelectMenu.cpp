@@ -206,10 +206,10 @@ void SaveSelectMenu::onSaveGame1Click(MenuSprite* menuSprite)
 
 void SaveSelectMenu::onSaveGame2Click(MenuSprite* menuSprite)
 {
-	NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneNeonCity);
+	NavigationEvents::loadCutscene(IntroSequence::create([=]() { NavigationEvents::navigate(NavigationEvents::GameScreen::StoryMap); }));
 }
 
 void SaveSelectMenu::onSaveGame3Click(MenuSprite* menuSprite)
 {
-	NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneNeonCity);
+	NavigationEvents::loadCutscene(IntroSequence::create([=]() { NavigationEvents::navigate(NavigationEvents::GameScreen::StoryMap); }));
 }

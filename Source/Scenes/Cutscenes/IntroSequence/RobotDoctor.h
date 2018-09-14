@@ -1,42 +1,44 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Cutscenes/Cutscene.h"
 #include "Engine/Dialogue/Dialogue.h"
 #include "Engine/Input/InputManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
-#include "Scenes/Cutscenes/Cutscene.h"
 #include "Scenes/Cutscenes/Objects/StarLayer.h"
 
 using namespace cocos2d;
 
-class SquallyUploadMars : public Cutscene
+class RobotDoctor : public Cutscene
 {
 public:
-	static SquallyUploadMars* create();
+	enum RobotDoctorScene {
+		Intro,
+		Singularity
+	};
+
+	static RobotDoctor* create(RobotDoctorScene robotDoctorScene);
 
 protected:
-	SquallyUploadMars();
-	~SquallyUploadMars();
+	RobotDoctor(RobotDoctorScene robotDoctorScene);
+	~RobotDoctor();
 
 private:
 	void onEnter() override;
-	void update(float) override;
-	void initializePositions();
-	void initializeListeners();
-
+	void initializePositions() override;
+	void initializeListeners() override;
 	void onDialogueShown();
-	void runCutscene();
-	void runCutscenePt2();
-	void runCutscenePt3();
-	void endCutscene();
 
-	Sprite* squally;
+	RobotDoctorScene activeScene;
+
 	Sprite* background;
+	Sprite* robot;
+	Sprite* bed;
+
 	LayerColor* dialoguePlate;
 	Dialogue* dialogue;
 	Label* escapeLabel;
 
 	static const Vec2 panOffset;
-	int dialogueCount;
 };

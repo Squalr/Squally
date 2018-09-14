@@ -59,15 +59,13 @@ void VaporLabs::onEnter()
 
 	this->dialogue->showNextDialogue();
 
-	this->scheduleUpdate();
-	this->initializePositions();
-	this->initializeListeners();
-
 	this->runCutscene();
 }
 
 void VaporLabs::initializePositions()
 {
+	Cutscene::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->contentLayer->setPosition(VaporLabs::panOffset);
@@ -86,24 +84,9 @@ void VaporLabs::initializePositions()
 
 void VaporLabs::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	Cutscene::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(VaporLabs::onDialogueShown, this));
-}
-
-void VaporLabs::update(float dt)
-{
-	FadeScene::update(dt);
-
-	if (InputManager::getInstance()->isPressed(EventKeyboard::KeyCode::KEY_ESCAPE))
-	{
-		this->endCutscene();
-	}
-}
-
-void VaporLabs::endCutscene()
-{
-	NavigationEvents::loadMap(Resources::Maps_Isometric_Sanctum);
 }
 
 void VaporLabs::onDialogueShown()
@@ -113,7 +96,7 @@ void VaporLabs::onDialogueShown()
 		CallFunc::create([=]() {
 			if (!this->dialogue->showNextDialogue())
 			{
-				NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneNeonCityPt3);
+				this->endCutscene();
 			}
 		}),
 		nullptr

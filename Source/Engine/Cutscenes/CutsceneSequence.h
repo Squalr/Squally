@@ -1,27 +1,32 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Cutscene.h"
+#include "Engine/Cutscenes/Cutscene.h"
 #include "Engine/UI/FadeScene.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 
-class CutsceneManager : public FadeScene
+class CutsceneSequence : public FadeScene
 {
 public:
-	static CutsceneManager* create(std::function<void()> cutsceneCompleteCallback);
+	static CutsceneSequence* create();
 
+	void setCutsceneEndCallback(std::function<void()> cutsceneCompleteCallback);
+	void playCutscenes();
 
-private:
-	CutsceneManager(std::function<void()> cutsceneCompleteCallback);
-	~CutsceneManager();
+protected:
+	CutsceneSequence();
+	~CutsceneSequence();
 
 	void update(float dt) override;
 	void enqueueCutscene(Cutscene* cutscene);
-	void playCutscenes();
 	void onCutsceneEndCallback();
+	void cutsceneCompleteCallback();
+
+private:
+	void playNextCutscene();
 
 	std::deque<Cutscene*>* cutscenes;
 	std::function<void()> onCutsceneCompleteCallback;

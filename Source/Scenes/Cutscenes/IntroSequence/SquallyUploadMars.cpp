@@ -48,15 +48,13 @@ void SquallyUploadMars::onEnter()
 
 	this->dialogue->showNextDialogue();
 
-	this->scheduleUpdate();
-	this->initializePositions();
-	this->initializeListeners();
-
 	this->runCutscene();
 }
 
 void SquallyUploadMars::initializePositions()
 {
+	Cutscene::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
@@ -68,19 +66,9 @@ void SquallyUploadMars::initializePositions()
 
 void SquallyUploadMars::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	Cutscene::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(SquallyUploadMars::onDialogueShown, this));
-}
-
-void SquallyUploadMars::update(float dt)
-{
-	FadeScene::update(dt);
-
-	if (InputManager::getInstance()->isPressed(EventKeyboard::KeyCode::KEY_ESCAPE))
-	{
-		this->endCutscene();
-	}
 }
 
 void SquallyUploadMars::runCutscene()
@@ -113,11 +101,6 @@ void SquallyUploadMars::runCutscenePt3()
 	));
 }
 
-void SquallyUploadMars::endCutscene()
-{
-	NavigationEvents::loadMap(Resources::Maps_Isometric_Sanctum);
-}
-
 void SquallyUploadMars::onDialogueShown()
 {
 	this->dialogueCount++;
@@ -139,9 +122,10 @@ void SquallyUploadMars::onDialogueShown()
 			{
 				this->dialogue->runAction(Sequence::create(
 					DelayTime::create(5.0f),
-					CallFunc::create([=]() {
-					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneSquallyUploadSpace);
-				}),
+					CallFunc::create([=]()
+					{
+						this->endCutscene();
+					}),
 				nullptr));
 			}
 		}),

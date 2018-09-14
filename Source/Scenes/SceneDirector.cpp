@@ -193,50 +193,7 @@ void SceneDirector::onGameNavigateLoadCutscene(EventCustom* eventCustom)
 {
 	NavigationEvents::NavigateLoadCutsceneArgs* args = (NavigationEvents::NavigateLoadCutsceneArgs*)(eventCustom->getUserData());
 
-	switch (args->cutscene)
-	{
-	case NavigationEvents::CutsceneEnum::CutsceneBoardMembers:
-		this->cutscene = BoardMembers::create();
-		break;
-	case NavigationEvents::CutsceneEnum::CutsceneHomeAssistantRobot:
-		this->cutscene = HomeAssistantRobot::create(HomeAssistantRobot::HomeAssistantRobotScene::Intro);
-		break;
-	case NavigationEvents::CutsceneEnum::CutsceneHomeAssistantRobotPt2:
-		this->cutscene = HomeAssistantRobot::create(HomeAssistantRobot::HomeAssistantRobotScene::Singularity);
-		break;
-	case NavigationEvents::CutsceneEnum::CutsceneIntroSpace:
-		this->cutscene = IntroSpace::create();
-		break;
-	case NavigationEvents::CutsceneEnum::CutsceneNeonCity:
-		this->cutscene = NeonCity::create(NeonCity::NeonCityScene::Intro);
-		break;
-	case NavigationEvents::CutsceneEnum::CutsceneNeonCityPt2:
-		this->cutscene = NeonCity::create(NeonCity::NeonCityScene::Return);
-		break;
-	case NavigationEvents::CutsceneEnum::CutsceneNeonCityPt3:
-		this->cutscene = NeonCity::create(NeonCity::NeonCityScene::Singularity);
-		break;
-	case NavigationEvents::CutsceneEnum::CutsceneRobotDoctor:
-		this->cutscene = RobotDoctor::create(RobotDoctor::RobotDoctorScene::Intro);
-		break;
-	case NavigationEvents::CutsceneEnum::CutsceneRobotDoctorPt2:
-		this->cutscene = RobotDoctor::create(RobotDoctor::RobotDoctorScene::Singularity);
-		break;
-	case NavigationEvents::CutsceneEnum::CutsceneSquallyUploadMars:
-		this->cutscene = SquallyUploadMars::create();
-		break;
-	case NavigationEvents::CutsceneEnum::CutsceneSquallyUploadSpace:
-		this->cutscene = SquallyUploadSpace::create();
-		break;
-	case NavigationEvents::CutsceneEnum::CutsceneVaporLabs:
-		this->cutscene = VaporLabs::create();
-		break;
-	case NavigationEvents::CutsceneEnum::CutsceneVaporWeb:
-		this->cutscene = VaporWeb::create();
-		break;
-	default:
-		break;
-	}
+	this->cutscene = args->cutsceneSequence;
 
 	// Load the scene (don't add it to scene history -- it does not make sense to ever be able to navigate 'back' to a cutscene
 	GlobalDirector::getInstance()->loadScene(this->cutscene);

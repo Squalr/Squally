@@ -58,10 +58,6 @@ void HomeAssistantRobot::onEnter()
 
 	this->dialogue->showNextDialogue();
 
-	this->scheduleUpdate();
-	this->initializePositions();
-	this->initializeListeners();
-
 	const float duration = 1.5f;
 	Vec2 start = this->robot->getPosition();
 	Vec2 end = start + Vec2(0.0f, 32.0f);
@@ -76,6 +72,8 @@ void HomeAssistantRobot::onEnter()
 
 void HomeAssistantRobot::initializePositions()
 {
+	Cutscene::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
@@ -88,24 +86,9 @@ void HomeAssistantRobot::initializePositions()
 
 void HomeAssistantRobot::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	Cutscene::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(HomeAssistantRobot::onDialogueShown, this));
-}
-
-void HomeAssistantRobot::update(float dt)
-{
-	FadeScene::update(dt);
-
-	if (InputManager::getInstance()->isPressed(EventKeyboard::KeyCode::KEY_ESCAPE))
-	{
-		this->endCutscene();
-	}
-}
-
-void HomeAssistantRobot::endCutscene()
-{
-	NavigationEvents::loadMap(Resources::Maps_Isometric_Sanctum);
 }
 
 void HomeAssistantRobot::onDialogueShown()
@@ -118,7 +101,7 @@ void HomeAssistantRobot::onDialogueShown()
 			CallFunc::create([=]() {
 				if (!this->dialogue->showNextDialogue())
 				{
-					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneRobotDoctor);
+					this->endCutscene();
 				}
 			}),
 			nullptr
@@ -130,7 +113,7 @@ void HomeAssistantRobot::onDialogueShown()
 			CallFunc::create([=]() {
 				if (!this->dialogue->showNextDialogue())
 				{
-					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneRobotDoctorPt2);
+					this->endCutscene();
 				}
 			}),
 			nullptr

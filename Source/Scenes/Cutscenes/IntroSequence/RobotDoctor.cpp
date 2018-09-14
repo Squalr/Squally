@@ -57,10 +57,6 @@ void RobotDoctor::onEnter()
 
 	this->dialogue->showNextDialogue();
 
-	this->scheduleUpdate();
-	this->initializePositions();
-	this->initializeListeners();
-
 	const float floatOffset = 16.0f;
 	const float floatDuration = 2.0f;
 	Vec2 initialPosition = this->robot->getPosition();
@@ -74,6 +70,8 @@ void RobotDoctor::onEnter()
 
 void RobotDoctor::initializePositions()
 {
+	Cutscene::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
@@ -86,24 +84,9 @@ void RobotDoctor::initializePositions()
 
 void RobotDoctor::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	Cutscene::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(RobotDoctor::onDialogueShown, this));
-}
-
-void RobotDoctor::update(float dt)
-{
-	FadeScene::update(dt);
-
-	if (InputManager::getInstance()->isPressed(EventKeyboard::KeyCode::KEY_ESCAPE))
-	{
-		this->endCutscene();
-	}
-}
-
-void RobotDoctor::endCutscene()
-{
-	NavigationEvents::loadMap(Resources::Maps_Isometric_Sanctum);
 }
 
 void RobotDoctor::onDialogueShown()
@@ -116,7 +99,7 @@ void RobotDoctor::onDialogueShown()
 			CallFunc::create([=]() {
 				if (!this->dialogue->showNextDialogue())
 				{
-					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneNeonCityPt2);
+					this->endCutscene();
 				}
 			}),
 			nullptr
@@ -128,7 +111,7 @@ void RobotDoctor::onDialogueShown()
 			CallFunc::create([=]() {
 				if (!this->dialogue->showNextDialogue())
 				{
-					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneVaporWeb);
+					this->endCutscene();
 				}
 			}),
 			nullptr

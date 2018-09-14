@@ -155,8 +155,12 @@ void TitleScreen::onEnter()
 	this->optionsButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onOptionsClick, this));
 	this->exitButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onExitClick, this));
 
-	const float delay = 0.5f;
-	const float duration = 0.75f;
+	// Fade in slower when the game first boots. Once the user is in the game and navigating menus, this gets annoying if it is too slow.
+	static bool firstRun = true;
+	const float delay = firstRun ? 0.5f : 0.15f;
+	const float duration = firstRun ? 0.75f : 0.25f;
+
+	firstRun = false;
 
 	GameUtils::fadeInObject(this->ether, delay, duration);
 	GameUtils::fadeInObject(this->etherParticles, delay, duration);
