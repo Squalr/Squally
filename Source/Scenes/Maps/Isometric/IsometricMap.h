@@ -4,14 +4,13 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Input/InputManager.h"
 #include "Engine/Maps/SerializableMap.h"
-#include "Engine/Rendering/Components/FadeScene.h"
-#include "Engine/Rendering/Components/InfiniteParallaxNode.h"
-#include "Engine/Rendering/Components/Mouse.h"
-#include "Engine/Rendering/Components/UILayer.h"
-#include "Engine/Rendering/HUD/DeveloperHud.h"
-#include "Engine/Rendering/HUD/HackerModeHud.h"
-#include "Engine/Rendering/HUD/Hud.h"
-#include "Engine/Rendering/Shaders/PostProcess.h"
+#include "Engine/Shaders/PostProcess.h"
+#include "Engine/UI/Mouse.h"
+#include "Engine/UI/FadeScene.h"
+#include "Engine/UI/InfiniteParallaxNode.h"
+#include "Engine/UI/HUD/DeveloperHud.h"
+#include "Engine/UI/HUD/HackerModeHud.h"
+#include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Isometric/Squally/IsometricSqually.h"
 #include "Events/NavigationEvents.h"
@@ -57,7 +56,7 @@ private:
 	PostProcess* gamePostProcessInversion;
 	PostProcess* gamePostProcessNightVision;
 
-	UILayer* mouseLayer;
+	Hud* mouseLayer;
 	Hud* hud;
 	DeveloperHud* developerHud;
 	HackerModeHud* hackerModeHud;

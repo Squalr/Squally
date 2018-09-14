@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/Camera/GameCamera.h"
-#include "Engine/Rendering/Components/InfiniteParallaxNode.h"
+#include "Engine/UI/InfiniteParallaxNode.h"
 #include "Resources.h"
 #include "Scenes/Maps/Platformer/Backgrounds/BackgroundBase.h"
 

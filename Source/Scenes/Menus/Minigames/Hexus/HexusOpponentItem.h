@@ -3,7 +3,7 @@
 #include "Resources.h"
 
 #include "Events/HexusEvents.h"
-#include "Engine/Rendering/Components/MenuSprite.h"
+#include "Engine/UI/Controls/MenuSprite.h"
 #include "Scenes/Maps/Platformer/PlatformerMap.h"
 
 using namespace cocos2d;

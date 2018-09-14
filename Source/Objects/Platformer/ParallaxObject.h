@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/Camera/GameCamera.h"
-#include "Engine/Objects/Hackables/HackableObject.h"
+#include "Engine/Hackables/HackableObject.h"
 
 using namespace cocos2d;
 

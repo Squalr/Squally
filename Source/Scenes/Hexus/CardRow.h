@@ -1,16 +1,15 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Objects/GameObject.h"
+#include "Engine/SmartNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
-
-#include "Card.h"
-#include "Config.h"
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/Config.h"
 
 using namespace cocos2d;
 
-class CardRow : public GameObject
+class CardRow : public SmartNode
 {
 public:
 	static CardRow * create();

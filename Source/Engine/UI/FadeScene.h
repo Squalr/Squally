@@ -1,11 +1,12 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/SmartScene.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 
-class FadeScene : public Scene
+class FadeScene : public SmartScene
 {
 protected:
 	FadeScene();

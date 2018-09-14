@@ -33,14 +33,6 @@ InputManager::~InputManager()
 	delete(this->pressedKeysPrevious);
 }
 
-void InputManager::onEnter()
-{
-	Node::onEnter();
-
-	this->scheduleUpdate();
-	this->InitializeListeners();
-}
-
 void InputManager::resume()
 {
 	// Anything could have happened to the key states while paused, best just to clear them
@@ -79,14 +71,9 @@ bool InputManager::isReleased(EventKeyboard::KeyCode keyCode)
 	return false;
 }
 
-void InputManager::update(float dt)
+void InputManager::initializeListeners()
 {
-	Node::update(dt);
-}
-
-void InputManager::InitializeListeners()
-{
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	SmartNode::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 

@@ -5,11 +5,11 @@
 
 using namespace cocos2d;
 
-class GameObject : public Node
+class SmartNode : public Node
 {
 public:
-	GameObject();
-	~GameObject();
+	SmartNode();
+	~SmartNode();
 
 protected:
 	virtual void onEnter() override;

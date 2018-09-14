@@ -1,13 +1,12 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Events/HackableEvents.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Hackables/HackableData.h"
 #include "Engine/Maps/SerializableObject.h"
-#include "Engine/Rendering/Components/MenuSprite.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Events/HackableEvents.h"
 #include "Resources.h"
-
-#include "HackableData.h"
 
 using namespace cocos2d;
 

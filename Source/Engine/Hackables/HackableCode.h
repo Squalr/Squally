@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "HackableAttribute.h"
+#include "Engine/Hackables/HackableAttribute.h"
 
 #define HACKABLE_CODE_BEGIN(address, label) \
 _asm \

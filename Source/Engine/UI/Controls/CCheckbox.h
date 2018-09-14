@@ -3,8 +3,8 @@
 
 #include "Resources.h"
 
-#include "Mouse.h"
-#include "MenuSprite.h"
+#include "Engine/UI/Mouse.h"
+#include "Engine/UI/Controls/MenuSprite.h"
 
 using namespace cocos2d;
 

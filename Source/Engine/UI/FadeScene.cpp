@@ -27,7 +27,7 @@ float FadeScene::getFadeSpeed()
 
 void FadeScene::onEnter()
 {
-	Scene::onEnter();
+	Node::onEnter();
 
 	// Make fade in visible, fullscreen, and topmost
 	if (this->fadeSpeed > 0.0f)
@@ -56,5 +56,5 @@ void FadeScene::pause()
 		this->layerColor->setOpacity(0.0f);
 	}
 
-	Scene::pause();
+	Node::pause();
 }

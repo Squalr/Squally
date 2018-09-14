@@ -1,10 +1,10 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Objects/Hackables/HackableObject.h"
-#include "Engine/Rendering/Components/MenuSprite.h"
-#include "Engine/Rendering/Shaders/PostProcess.h"
+#include "Engine/Hackables/HackableObject.h"
+#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/HackUtils.h"
+#include "Engine/Shaders/PostProcess.h"
 #include "Events/HackableEvents.h"
 #include "Resources.h"
 

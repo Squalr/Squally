@@ -32,7 +32,7 @@ CardRow::~CardRow()
 
 void CardRow::initializeListeners()
 {
-	GameObject::initializeListeners();
+	SmartNode::initializeListeners();
 
 	this->rowSelectSprite->setClickCallback(CC_CALLBACK_1(CardRow::onRowSelectClick, this));
 }

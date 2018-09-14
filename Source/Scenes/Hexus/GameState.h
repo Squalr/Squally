@@ -1,17 +1,16 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Objects/GameObject.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Engine/SmartNode.h"
 #include "Resources.h"
-
-#include "CardRow.h"
-#include "Config.h"
-#include "Deck.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/Deck.h"
 
 using namespace cocos2d;
 
-class GameState : public GameObject
+class GameState : public SmartNode
 {
 public:
 	enum StateType

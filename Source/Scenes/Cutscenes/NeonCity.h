@@ -3,7 +3,7 @@
 
 #include "Engine/Dialogue/Dialogue.h"
 #include "Engine/Input/InputManager.h"
-#include "Engine/Rendering/Components/InfiniteParallaxNode.h"
+#include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 #include "Scenes/Cutscenes/Cutscene.h"

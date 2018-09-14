@@ -3,13 +3,14 @@
 
 #include "Engine/Dialogue/DialogueTree.h"
 #include "Engine/Localization/Localization.h"
-#include "Engine/Rendering/Components/MenuLabel.h"
+#include "Engine/SmartNode.h"
+#include "Engine/UI/Controls/MenuLabel.h"
 #include "Events/DialogEvents.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 
-class Dialogue : public Node
+class Dialogue : public SmartNode
 {
 public:
 	static Dialogue * create(std::string filePath, std::string fontResource, Size size);
@@ -24,7 +25,6 @@ private:
 	Dialogue(DialogueTree* root, std::string fontResource, Size size);
 	~Dialogue();
 
-	void onEnter() override;
 	void updateLabels();
 	void runTypeWriterEffect();
 

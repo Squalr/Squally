@@ -73,7 +73,7 @@ void GameState::updateState(GameState* gameState, StateType newState)
 
 void GameState::initializePositions()
 {
-	GameObject::initializePositions();
+	SmartNode::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

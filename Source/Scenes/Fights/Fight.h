@@ -2,8 +2,8 @@
 #include "cocos2d.h"
 
 #include "Engine/Input/InputManager.h"
-#include "Engine/Rendering/Components/FadeScene.h"
-#include "Engine/Rendering/Components/Mouse.h"
+#include "Engine/UI/FadeScene.h"
+#include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntities.h"
 #include "Resources.h"

@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 
 #include "Cutscene.h"
-#include "Engine/Rendering/Components/FadeScene.h"
+#include "Engine/UI/FadeScene.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 
