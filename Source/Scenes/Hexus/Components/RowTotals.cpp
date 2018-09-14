@@ -59,7 +59,6 @@ void RowTotals::initializePositions()
 
 void RowTotals::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void RowTotals::onStateChange(GameState* gameState)

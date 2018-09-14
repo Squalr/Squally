@@ -59,7 +59,6 @@ void ScoreTotal::initializePositions()
 
 void ScoreTotal::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void ScoreTotal::onStateChange(GameState* gameState)

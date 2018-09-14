@@ -78,7 +78,6 @@ void Avatars::initializePositions()
 
 void Avatars::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void Avatars::onStateChange(GameState* gameState)
