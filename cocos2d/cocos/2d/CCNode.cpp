@@ -1415,7 +1415,8 @@ void Node::onExit()
         _componentContainer->onExit();
     }
     
-    this->pause();
+	// Zac: Disabled this. Why pause on exit? Just dispose it. This causes dumb bugs.
+    // this->pause();
     
     _running = false;
     
