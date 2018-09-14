@@ -198,8 +198,8 @@ void OptionsMenu::onEnter()
 {
 	FadeScene::onEnter();
 
-	float delay = 0.25f;
-	float duration = 0.35f;
+	float delay = 0.1f;
+	float duration = 0.25f;
 
 	GameUtils::fadeInObject(this->optionsWindow, delay, duration);
 	GameUtils::fadeInObject(this->titleLabel, delay, duration);

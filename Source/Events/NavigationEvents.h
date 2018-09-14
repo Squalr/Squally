@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Cutscenes/CutsceneSequence.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -24,22 +25,6 @@ public:
 	static const std::string gameNavigateEnterLevelEvent;
 	static const std::string gameNavigateFightEvent;
 
-	enum CutsceneEnum {
-		CutsceneBoardMembers,
-		CutsceneHomeAssistantRobot,
-		CutsceneHomeAssistantRobotPt2,
-		CutsceneIntroSpace,
-		CutsceneNeonCity,
-		CutsceneNeonCityPt2,
-		CutsceneNeonCityPt3,
-		CutsceneRobotDoctor,
-		CutsceneRobotDoctorPt2,
-		CutsceneSquallyUploadMars,
-		CutsceneSquallyUploadSpace,
-		CutsceneVaporLabs,
-		CutsceneVaporWeb,
-	};
-
 	enum GameScreen {
 		Title,
 		StoryMap,
@@ -52,11 +37,11 @@ public:
 		Options,
 		Confirm,
 		Loading,
-		Cutscene,
 		Level,
 		LevelEditor,
 		Fight,
 		Hexus,
+		Cutscene_IntroSequence,
 	};
 
 	struct NavigateBackEventArgs
@@ -75,9 +60,9 @@ public:
 
 	struct NavigateLoadCutsceneArgs
 	{
-		CutsceneEnum cutscene;
+		CutsceneSequence* cutsceneSequence;
 
-		NavigateLoadCutsceneArgs(CutsceneEnum cutscene) : cutscene(cutscene) { }
+		NavigateLoadCutsceneArgs(CutsceneSequence* cutsceneSequence) : cutsceneSequence(cutsceneSequence) { }
 	};
 
 	struct NavigateLoadLevelArgs
@@ -115,7 +100,7 @@ public:
 	static void navigateBack(int count = 1);
 	static void navigate(GameScreen gameScreen);
 	static void navigateConfirm(std::string confirmMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
-	static void loadCutscene(CutsceneEnum cutscene);
+	static void loadCutscene(CutsceneSequence* cutscene);
 	static void loadMap(std::string levelFile);
 	static void enterLevel(SerializableMap* levelMap);
 	static void loadFight(Squally* squally, PlatformerEnemy* enemy);

@@ -40,14 +40,12 @@ void BoardMembers::onEnter()
 	Cutscene::onEnter();
 
 	this->dialogue->showNextDialogue();
-
-	this->scheduleUpdate();
-	this->initializePositions();
-	this->initializeListeners();
 }
 
 void BoardMembers::initializePositions()
 {
+	Cutscene::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
@@ -58,24 +56,9 @@ void BoardMembers::initializePositions()
 
 void BoardMembers::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	Cutscene::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(BoardMembers::onDialogueShown, this));
-}
-
-void BoardMembers::update(float dt)
-{
-	FadeScene::update(dt);
-
-	if (InputManager::getInstance()->isPressed(EventKeyboard::KeyCode::KEY_ESCAPE))
-	{
-		this->endCutscene();
-	}
-}
-
-void BoardMembers::endCutscene()
-{
-	NavigationEvents::loadMap(Resources::Maps_Isometric_Sanctum);
 }
 
 void BoardMembers::onDialogueShown()
@@ -85,7 +68,7 @@ void BoardMembers::onDialogueShown()
 		CallFunc::create([=]() {
 			if (!this->dialogue->showNextDialogue())
 			{
-				NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneVaporLabs);
+				this->endCutscene();
 			}
 		}),
 		nullptr

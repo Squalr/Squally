@@ -1,45 +1,36 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Cutscenes/Cutscene.h"
 #include "Engine/Dialogue/Dialogue.h"
 #include "Engine/Input/InputManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
-#include "Scenes/Cutscenes/Cutscene.h"
 #include "Scenes/Cutscenes/Objects/StarLayer.h"
 
 using namespace cocos2d;
 
-class VaporLabs : public Cutscene
+class SquallyUploadSpace : public Cutscene
 {
 public:
-	static VaporLabs* create();
+	static SquallyUploadSpace* create();
 
 protected:
-	VaporLabs();
-	~VaporLabs();
+	SquallyUploadSpace();
+	~SquallyUploadSpace();
 
 private:
 	void onEnter() override;
-	void update(float) override;
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
+	void initializeListeners() override;
 
-	void runCutscene();
 	void onDialogueShown();
-	void endCutscene();
+	void runCutscene();
 
-	Node* contentLayer;
-	LayerGradient* sky;
 	StarLayer* starLayer;
-	Sprite* cityView;
-	Sprite* background;
-	Sprite* console;
-	Sprite* monitor;
-	Sprite* scientist;
-
-	LayerColor* siren;
-
+	Sprite* mars;
+	Node* beam;
+	Sprite* satellite;
 	LayerColor* dialoguePlate;
 	Dialogue* dialogue;
 	Label* escapeLabel;

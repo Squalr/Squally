@@ -3,8 +3,8 @@
 const float IntroSpace::dialogueHeight = 256.0f;
 
 const float IntroSpace::marsDelta = 1280.0f;
-const float IntroSpace::weaverDelta = 1280.0f;// IntroSpace::marsDelta - 512.0f;
-const float IntroSpace::earthDelta = 1280.0f;// IntroSpace::weaverDelta - 1024.0f;
+const float IntroSpace::weaverDelta = 1280.0f;
+const float IntroSpace::earthDelta = 1280.0f;
 
 IntroSpace* IntroSpace::create()
 {
@@ -92,15 +92,13 @@ void IntroSpace::onEnter()
 	this->weaver4->runAction(RepeatForever::create(Sequence::create(Animate::create(this->weaver4Anim), nullptr)));
 	this->weaver5->runAction(RepeatForever::create(Sequence::create(Animate::create(this->weaver5Anim), nullptr)));
 
-	this->scheduleUpdate();
-	this->initializePositions();
-	this->initializeListeners();
-
 	this->runCutscene();
 }
 
 void IntroSpace::initializePositions()
 {
+	Cutscene::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->mars->setPosition(Vec2(64.0f + marsDelta, 48.0f));
@@ -120,19 +118,9 @@ void IntroSpace::initializePositions()
 
 void IntroSpace::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	Cutscene::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(IntroSpace::onDialogueShown, this));
-}
-
-void IntroSpace::update(float dt)
-{
-	FadeScene::update(dt);
-
-	if (InputManager::getInstance()->isPressed(EventKeyboard::KeyCode::KEY_ESCAPE))
-	{
-		this->endCutscene();
-	}
 }
 
 void IntroSpace::onDialogueShown()
@@ -142,7 +130,7 @@ void IntroSpace::onDialogueShown()
 		CallFunc::create([=]() {
 			if (!this->dialogue->showNextDialogue())
 			{
-				NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneSquallyUploadMars);
+				this->endCutscene();
 			}
 		}),
 		nullptr
@@ -166,10 +154,4 @@ void IntroSpace::runCutscene()
 		scroll,
 		nullptr
 	));
-}
-
-
-void IntroSpace::endCutscene()
-{
-	NavigationEvents::loadMap(Resources::Maps_Isometric_Sanctum);
 }

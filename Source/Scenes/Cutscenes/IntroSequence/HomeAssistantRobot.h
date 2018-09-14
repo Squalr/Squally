@@ -1,11 +1,11 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Cutscenes/Cutscene.h"
 #include "Engine/Dialogue/Dialogue.h"
 #include "Engine/Input/InputManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
-#include "Scenes/Cutscenes/Cutscene.h"
 #include "Scenes/Cutscenes/Objects/StarLayer.h"
 
 using namespace cocos2d;
@@ -26,12 +26,9 @@ protected:
 
 private:
 	void onEnter() override;
-	void update(float) override;
-	void initializePositions();
-	void initializeListeners();
-
+	void initializePositions() override;
+	void initializeListeners() override;
 	void onDialogueShown();
-	void endCutscene();
 
 	HomeAssistantRobotScene activeScene;
 

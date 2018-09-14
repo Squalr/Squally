@@ -92,10 +92,6 @@ void NeonCity::onEnter()
 
 	this->dialogue->showNextDialogue();
 
-	this->scheduleUpdate();
-	this->initializePositions();
-	this->initializeListeners();
-
 	switch (this->activeScene)
 	{
 	case NeonCityScene::Intro:
@@ -137,6 +133,8 @@ void NeonCity::onEnter()
 
 void NeonCity::initializePositions()
 {
+	Cutscene::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->sky->setPosition(Vec2(0.0f, this->dialoguePlate->getContentSize().height));
@@ -156,24 +154,9 @@ void NeonCity::initializePositions()
 
 void NeonCity::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	Cutscene::initializeListeners();
 
 	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(NeonCity::onDialogueShown, this));
-}
-
-void NeonCity::update(float dt)
-{
-	FadeScene::update(dt);
-
-	if (InputManager::getInstance()->isPressed(EventKeyboard::KeyCode::KEY_ESCAPE))
-	{
-		this->endCutscene();
-	}
-}
-
-void NeonCity::endCutscene()
-{
-	NavigationEvents::loadMap(Resources::Maps_Isometric_Sanctum);
 }
 
 void NeonCity::onDialogueShown()
@@ -186,7 +169,7 @@ void NeonCity::onDialogueShown()
 			CallFunc::create([=]() {
 				if (!this->dialogue->showNextDialogue())
 				{
-					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneHomeAssistantRobot);
+					this->endCutscene();
 				}
 			}),
 			nullptr
@@ -198,7 +181,7 @@ void NeonCity::onDialogueShown()
 			CallFunc::create([=]() {
 				if (!this->dialogue->showNextDialogue())
 				{
-					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneBoardMembers);
+					this->endCutscene();
 				}
 			}),
 			nullptr
@@ -210,7 +193,7 @@ void NeonCity::onDialogueShown()
 			CallFunc::create([=]() {
 				if (!this->dialogue->showNextDialogue())
 				{
-					NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneHomeAssistantRobotPt2);
+					this->endCutscene();
 				}
 			}),
 			nullptr

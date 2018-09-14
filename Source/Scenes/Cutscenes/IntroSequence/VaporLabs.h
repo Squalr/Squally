@@ -1,43 +1,42 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Cutscenes/Cutscene.h"
 #include "Engine/Dialogue/Dialogue.h"
 #include "Engine/Input/InputManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
-#include "Scenes/Cutscenes/Cutscene.h"
 #include "Scenes/Cutscenes/Objects/StarLayer.h"
 
 using namespace cocos2d;
 
-class RobotDoctor : public Cutscene
+class VaporLabs : public Cutscene
 {
 public:
-	enum RobotDoctorScene {
-		Intro,
-		Singularity
-	};
-
-	static RobotDoctor* create(RobotDoctorScene robotDoctorScene);
+	static VaporLabs* create();
 
 protected:
-	RobotDoctor(RobotDoctorScene robotDoctorScene);
-	~RobotDoctor();
+	VaporLabs();
+	~VaporLabs();
 
 private:
 	void onEnter() override;
-	void update(float) override;
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
+	void initializeListeners() override;
 
+	void runCutscene();
 	void onDialogueShown();
-	void endCutscene();
 
-	RobotDoctorScene activeScene;
-
+	Node* contentLayer;
+	LayerGradient* sky;
+	StarLayer* starLayer;
+	Sprite* cityView;
 	Sprite* background;
-	Sprite* robot;
-	Sprite* bed;
+	Sprite* console;
+	Sprite* monitor;
+	Sprite* scientist;
+
+	LayerColor* siren;
 
 	LayerColor* dialoguePlate;
 	Dialogue* dialogue;

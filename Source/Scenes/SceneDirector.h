@@ -1,7 +1,6 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Cutscenes/Cutscenes.h" 
 #include "Engine/GlobalDirector.h"
 #include "Engine/GlobalNode.h"
 #include "Engine/Maps/SerializableMap.h"
@@ -12,6 +11,7 @@
 #include "Scenes/Maps/Isometric/IsometricMap.h"
 #include "Scenes/Maps/Platformer/PlatformerMap.h"
 #include "Resources.h"
+#include "Scenes/Cutscenes/IntroSequence/IntroSequence.h" 
 #include "Scenes/Fights/Fight.h"
 #include "Scenes/Menus/Minigames/MinigamesMenu.h"
 #include "Scenes/Menus/Minigames/Hexus/HexusMenu.h"
@@ -52,7 +52,6 @@ private:
 	HexusPuzzlesMenu* hexusPuzzlesMenu;
 	TutorialScreen* tutorialScreen;
 	WorldMap* worldMap;
-	Scene* cutscene;
 	LoadingScreen* loadingScreen;
 	IMap* map;
 	Fight* fight;
@@ -60,6 +59,7 @@ private:
 	PauseMenu* pauseMenu;
 	ConfirmationMenu* confirmationMenu;
 	Hexus* hexus;
+	CutsceneSequence* cutscene;
 
 	std::stack<Scene*>* sceneHistory;
 
