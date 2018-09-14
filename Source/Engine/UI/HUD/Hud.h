@@ -1,19 +1,20 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Hackables/HackableObject.h"
+#include "Engine/UI/Mouse.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 
-class UILayer : public Node
+class Hud : public Node
 {
 public:
-	static UILayer* create();
+	static Hud * create();
 
 protected:
-	UILayer();
-	~UILayer();
+	Hud();
+	~Hud();
 
 	void visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags) override;
 };
-

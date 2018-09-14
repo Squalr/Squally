@@ -1,12 +1,12 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Objects/GameObject.h"
+#include "Engine/SmartNode.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 
-class HelpMenuBase : public GameObject
+class HelpMenuBase : public SmartNode
 {
 protected:
 	HelpMenuBase();

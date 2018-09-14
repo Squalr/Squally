@@ -1,15 +1,15 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Objects/Hackables/HackableObject.h"
-#include "Engine/Rendering/Components/Mouse.h"
-#include "Engine/Rendering/Components/UILayer.h"
+#include "Engine/Hackables/HackableObject.h"
+#include "Engine/UI/HUD/Hud.h"
+#include "Engine/UI/Mouse.h"
 #include "Resources.h"
 #include "Scenes/Menus/HackerMode/RadialMenu.h"
 
 using namespace cocos2d;
 
-class HackerModeHud : public UILayer
+class HackerModeHud : public Hud
 {
 public:
 	static HackerModeHud * create(function<void()> toggleHackermodeCallback);

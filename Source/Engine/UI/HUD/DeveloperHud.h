@@ -1,15 +1,16 @@
 #pragma once
 #include "cocos2d.h"
-#include "Resources.h"
+
 #include "Engine/Maps/SerializableMap.h"
-#include "Engine/Rendering/Components/MenuSprite.h"
-#include "Engine/Rendering/Components/Mouse.h"
-#include "Engine/Rendering/Components/UILayer.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/UI/HUD/Hud.h"
+#include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Resources.h"
 
 using namespace cocos2d;
 
-class DeveloperHud : public UILayer
+class DeveloperHud : public Hud
 {
 public:
 	static DeveloperHud * create();

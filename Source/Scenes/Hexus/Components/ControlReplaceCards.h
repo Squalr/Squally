@@ -2,11 +2,10 @@
 #include "cocos2d.h"
 
 #include "Engine/Localization/Localization.h"
-#include "Engine/Rendering/Components/MenuSprite.h"
+#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Resources.h"
-
-#include "ComponentBase.h"
+#include "Scenes/Hexus/Components/ComponentBase.h"
 
 using namespace cocos2d;
 

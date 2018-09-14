@@ -10,7 +10,7 @@ ComponentBase::~ComponentBase()
 
 void ComponentBase::initializeListeners()
 {
-	GameObject::initializeListeners();
+	SmartNode::initializeListeners();
 
 	EventListenerCustom* stateListener = EventListenerCustom::create(GameState::onStateUpdateEvent, CC_CALLBACK_1(ComponentBase::onStateChangeEvent, this));
 

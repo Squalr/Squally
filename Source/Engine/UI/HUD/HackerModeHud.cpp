@@ -28,7 +28,7 @@ HackerModeHud::~HackerModeHud()
 
 void HackerModeHud::onEnter()
 {
-	Node::onEnter();
+	Hud::onEnter();
 
 	this->initializePositions();
 	this->initializeListeners();

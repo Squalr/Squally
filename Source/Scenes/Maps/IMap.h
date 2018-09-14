@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/Maps/SerializableMap.h"
-#include "Engine/Rendering/Components/FadeScene.h"
+#include "Engine/UI/FadeScene.h"
 
 using namespace cocos2d;
 

@@ -1,14 +1,14 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Rendering/Components/UILayer.h"
+#include "Engine/UI/HUD/Hud.h"
 #include "Resources.h"
 
 #include "MatrixStrand.h"
 
 using namespace cocos2d;
 
-class MatrixRain : public UILayer
+class MatrixRain : public Hud
 {
 public:
 	static MatrixRain* create();

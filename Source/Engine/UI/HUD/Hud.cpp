@@ -1,23 +1,23 @@
-#include "UILayer.h"
+#include "Hud.h"
 
-UILayer* UILayer::create()
+Hud* Hud::create()
 {
-	UILayer* instance = new UILayer();
+	Hud* instance = new Hud();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-UILayer::UILayer()
+Hud::Hud()
 {
 }
 
-UILayer::~UILayer()
+Hud::~Hud()
 {
 }
 
-void UILayer::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
+void Hud::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();

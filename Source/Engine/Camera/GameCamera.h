@@ -3,13 +3,14 @@
 
 #include "cocos2d.h"
 
+#include "Engine/SmartNode.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Resources.h"
 
 
 using namespace cocos2d;
 
-class GameCamera : public Node
+class GameCamera : public SmartNode
 {
 public:
 	static GameCamera* create();

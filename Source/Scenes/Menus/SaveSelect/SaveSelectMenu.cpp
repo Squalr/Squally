@@ -34,9 +34,9 @@ SaveSelectMenu::SaveSelectMenu()
 
 	LayerColor* background = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, visibleSize.height * 2);
 
-	Label* saveGame1Label = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* saveGame1LabelHover = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* saveGame1LabelClicked = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* saveGame1Label = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* saveGame1LabelHover = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* saveGame1LabelClicked = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	saveGame1Label->setColor(textColor);
 	saveGame1Label->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -183,9 +183,9 @@ void SaveSelectMenu::initializePositions()
 
 	MenuBackground::getInstance()->initializePositions();
 
-	this->saveGame1->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 192.0f));
+	this->saveGame1->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 192.0f));
 	this->saveGame2->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 0.0f));
-	this->saveGame3->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 192.0f));
+	this->saveGame3->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 192.0f));
 }
 
 void SaveSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -201,7 +201,7 @@ void SaveSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 void SaveSelectMenu::onSaveGame1Click(MenuSprite* menuSprite)
 {
-	NavigationEvents::loadCutscene(NavigationEvents::CutsceneEnum::CutsceneNeonCity);
+	NavigationEvents::navigate(NavigationEvents::GameScreen::StoryMap);
 }
 
 void SaveSelectMenu::onSaveGame2Click(MenuSprite* menuSprite)

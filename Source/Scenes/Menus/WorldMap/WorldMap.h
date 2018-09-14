@@ -2,9 +2,9 @@
 #include "cocos2d.h"
 
 #include "Engine/Localization/Localization.h"
-#include "Engine/Rendering/Components/FadeScene.h"
-#include "Engine/Rendering/Components/InfiniteParallaxNode.h"
-#include "Engine/Rendering/Components/Mouse.h"
+#include "Engine/UI/FadeScene.h"
+#include "Engine/UI/InfiniteParallaxNode.h"
+#include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Events/MouseEvents.h"

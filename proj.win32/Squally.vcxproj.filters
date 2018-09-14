@@ -55,18 +55,6 @@
     <Filter Include="Source\Engine\Save">
       <UniqueIdentifier>{e88216dc-aa29-470e-9232-cd2f85e723b1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Engine\Rendering">
-      <UniqueIdentifier>{ed5bc229-752b-4036-b1e3-cfc6c071440e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Engine\Rendering\Components">
-      <UniqueIdentifier>{59d011ae-970a-4f51-a323-6c474be5079d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Engine\Rendering\HUD">
-      <UniqueIdentifier>{018da264-5fc8-4aef-89fe-d137b354ee9e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Engine\Rendering\Shaders">
-      <UniqueIdentifier>{2e9ff4e8-254e-4582-b2f9-f801a48d1ff2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Engine\Maps">
       <UniqueIdentifier>{7389bbbb-d25e-4562-80a7-0e5f8e6dc7b6}</UniqueIdentifier>
     </Filter>
@@ -160,12 +148,6 @@
     <Filter Include="Source\Scenes\Maps\Platformer\Weather">
       <UniqueIdentifier>{0255f5d0-639f-4402-b172-e922e204da0a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Engine\Objects">
-      <UniqueIdentifier>{498d0f50-c1be-4b6b-a6d7-866ea4dfe209}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Engine\Objects\Hackables">
-      <UniqueIdentifier>{c3757329-9cf7-472a-ac09-d9e6c6fdd813}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Engine\Physics">
       <UniqueIdentifier>{66851be3-3f04-429d-9ae9-62fe731ae65b}</UniqueIdentifier>
     </Filter>
@@ -198,6 +180,21 @@
     </Filter>
     <Filter Include="Source\Entities\Isometric\Squally">
       <UniqueIdentifier>{5808bb57-b483-4ed7-953d-6af19871d91d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Shaders">
+      <UniqueIdentifier>{33580adb-0332-4623-89dd-77c2c87c8e83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\UI">
+      <UniqueIdentifier>{c12696e6-c574-4222-8cf0-bb5c8aa9062f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\UI\Controls">
+      <UniqueIdentifier>{c55266bb-6500-4f1f-b5f0-769fff158626}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\UI\HUD">
+      <UniqueIdentifier>{d0559bcd-8158-4f9f-8dfd-b16da36b8c0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Hackables">
+      <UniqueIdentifier>{3753a678-7516-4f05-902b-bdbbf265ee20}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -274,63 +271,6 @@
     <ClCompile Include="..\Source\Window.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\HUD\Hud.cpp">
-      <Filter>Source\Engine\Rendering\HUD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\Components\InfiniteParallaxNode.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\Components\CProgressBar.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\Components\CRadioButton.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\Components\CSlider.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\Components\CCheckbox.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\Components\FadeScene.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\Components\FloatingSprite.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\Components\EditableTextWindow.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\Components\UILayer.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\Components\TextWindow.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\Components\MouseOverPanel.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\Components\MenuLabel.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\Components\MenuSprite.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\Components\Mouse.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\HUD\HackerModeHud.cpp">
-      <Filter>Source\Engine\Rendering\HUD</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.cpp">
-      <Filter>Source\Engine\Rendering\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine/Rendering\Shaders\PostProcess.cpp">
-      <Filter>Source\Engine\Rendering\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\HUD\DeveloperHud.cpp">
-      <Filter>Source\Engine\Rendering\HUD</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Engine\Maps\SerializableMap.cpp">
       <Filter>Source\Engine\Maps</Filter>
     </ClCompile>
@@ -343,14 +283,8 @@
     <ClCompile Include="..\Source\Engine\Maps\SerializableTileLayer.cpp">
       <Filter>Source\Engine\Maps</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Engine\GlobalDirector.cpp">
-      <Filter>Source\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Engine\Maps\DefaultLayerDeserializer.cpp">
       <Filter>Source\Engine\Maps</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Rendering\Components\TextMenuSprite.cpp">
-      <Filter>Source\Engine\Rendering\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Engine\Localization\Localization.cpp">
       <Filter>Source\Engine\Localization</Filter>
@@ -868,18 +802,6 @@
     <ClCompile Include="..\Source\Scenes\Maps\Platformer\Weather\WeatherDeserializer.cpp">
       <Filter>Source\Scenes\Maps\Platformer\Weather</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Engine\Objects\Hackables\HackableAttribute.cpp">
-      <Filter>Source\Engine\Objects\Hackables</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Objects\Hackables\HackableCode.cpp">
-      <Filter>Source\Engine\Objects\Hackables</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Objects\Hackables\HackableData.cpp">
-      <Filter>Source\Engine\Objects\Hackables</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Engine\Objects\Hackables\HackableObject.cpp">
-      <Filter>Source\Engine\Objects\Hackables</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Engine\Physics\CollisionDeserializer.cpp">
       <Filter>Source\Engine\Physics</Filter>
     </ClCompile>
@@ -991,8 +913,83 @@
     <ClCompile Include="..\Source\Scenes\Cutscenes\CutsceneManager.cpp">
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Engine\Objects\GameObject.cpp">
-      <Filter>Source\Engine\Objects</Filter>
+    <ClCompile Include="..\Source\Engine\Shaders\PostProcess.cpp">
+      <Filter>Source\Engine\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Shaders\ShaderUtils.cpp">
+      <Filter>Source\Engine\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\GlobalDirector.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\SmartNode.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\SmartScene.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\FadeScene.cpp">
+      <Filter>Source\Engine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\FloatingSprite.cpp">
+      <Filter>Source\Engine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\InfiniteParallaxNode.cpp">
+      <Filter>Source\Engine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\Controls\CCheckbox.cpp">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\Controls\CProgressBar.cpp">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\Controls\CRadioButton.cpp">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\Controls\CSlider.cpp">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\Controls\EditableTextWindow.cpp">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\Controls\MenuLabel.cpp">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\Controls\MenuSprite.cpp">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\Controls\MouseOverPanel.cpp">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\Controls\TextMenuSprite.cpp">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\Controls\TextWindow.cpp">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\HUD\DeveloperHud.cpp">
+      <Filter>Source\Engine\UI\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\HUD\HackerModeHud.cpp">
+      <Filter>Source\Engine\UI\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\HUD\Hud.cpp">
+      <Filter>Source\Engine\UI\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\Mouse.cpp">
+      <Filter>Source\Engine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Hackables\HackableAttribute.cpp">
+      <Filter>Source\Engine\Hackables</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Hackables\HackableCode.cpp">
+      <Filter>Source\Engine\Hackables</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Hackables\HackableData.cpp">
+      <Filter>Source\Engine\Hackables</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Hackables\HackableObject.cpp">
+      <Filter>Source\Engine\Hackables</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1066,63 +1063,6 @@
     <ClInclude Include="..\Source\Window.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\HUD\Hud.h">
-      <Filter>Source\Engine\Rendering\HUD</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\Components\InfiniteParallaxNode.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\Components\CSlider.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\Components\CCheckbox.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\Components\CProgressBar.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\Components\CRadioButton.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\Components\FloatingSprite.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\Components\FadeScene.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\Components\EditableTextWindow.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\Components\UILayer.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\Components\TextWindow.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\Components\MouseOverPanel.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\Components\Mouse.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\Components\MenuLabel.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\Components\MenuSprite.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\HUD\HackerModeHud.h">
-      <Filter>Source\Engine\Rendering\HUD</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\Shaders\ShaderUtils.h">
-      <Filter>Source\Engine\Rendering\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine/Rendering\Shaders\PostProcess.h">
-      <Filter>Source\Engine\Rendering\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\HUD\DeveloperHud.h">
-      <Filter>Source\Engine\Rendering\HUD</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Engine\Maps\SerializableMap.h">
       <Filter>Source\Engine\Maps</Filter>
     </ClInclude>
@@ -1135,12 +1075,6 @@
     <ClInclude Include="..\Source\Engine\Maps\SerializableTileLayer.h">
       <Filter>Source\Engine\Maps</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Engine\GlobalDirector.h">
-      <Filter>Source\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\GlobalNode.h">
-      <Filter>Source\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Engine\Maps\IObjectDeserializer.h">
       <Filter>Source\Engine\Maps</Filter>
     </ClInclude>
@@ -1149,9 +1083,6 @@
     </ClInclude>
     <ClInclude Include="..\Source\Engine\Maps\DefaultLayerDeserializer.h">
       <Filter>Source\Engine\Maps</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Rendering\Components\TextMenuSprite.h">
-      <Filter>Source\Engine\Rendering\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Engine\Localization\Localization.h">
       <Filter>Source\Engine\Localization</Filter>
@@ -1693,18 +1624,6 @@
     <ClInclude Include="..\Source\Scenes\Maps\IMap.h">
       <Filter>Source\Scenes\Maps</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Engine\Objects\Hackables\HackableAttribute.h">
-      <Filter>Source\Engine\Objects\Hackables</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Objects\Hackables\HackableCode.h">
-      <Filter>Source\Engine\Objects\Hackables</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Objects\Hackables\HackableData.h">
-      <Filter>Source\Engine\Objects\Hackables</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Engine\Objects\Hackables\HackableObject.h">
-      <Filter>Source\Engine\Objects\Hackables</Filter>
-    </ClInclude>
     <ClInclude Include="..\Source\Engine\Physics\CollisionDeserializer.h">
       <Filter>Source\Engine\Physics</Filter>
     </ClInclude>
@@ -1825,8 +1744,86 @@
     <ClInclude Include="..\Source\Scenes\Cutscenes\CutsceneManager.h">
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Source\Engine\Objects\GameObject.h">
-      <Filter>Source\Engine\Objects</Filter>
+    <ClInclude Include="..\Source\Engine\Shaders\PostProcess.h">
+      <Filter>Source\Engine\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Shaders\ShaderUtils.h">
+      <Filter>Source\Engine\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\GlobalDirector.h">
+      <Filter>Source\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\GlobalNode.h">
+      <Filter>Source\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\SmartNode.h">
+      <Filter>Source\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\SmartScene.h">
+      <Filter>Source\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\FadeScene.h">
+      <Filter>Source\Engine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\FloatingSprite.h">
+      <Filter>Source\Engine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\InfiniteParallaxNode.h">
+      <Filter>Source\Engine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\Controls\CCheckbox.h">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\Controls\CProgressBar.h">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\Controls\CRadioButton.h">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\Controls\CSlider.h">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\Controls\EditableTextWindow.h">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\Controls\MenuLabel.h">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\Controls\MenuSprite.h">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\Controls\MouseOverPanel.h">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\Controls\TextMenuSprite.h">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\Controls\TextWindow.h">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\HUD\DeveloperHud.h">
+      <Filter>Source\Engine\UI\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\HUD\HackerModeHud.h">
+      <Filter>Source\Engine\UI\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\HUD\Hud.h">
+      <Filter>Source\Engine\UI\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\Mouse.h">
+      <Filter>Source\Engine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Hackables\HackableAttribute.h">
+      <Filter>Source\Engine\Hackables</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Hackables\HackableCode.h">
+      <Filter>Source\Engine\Hackables</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Hackables\HackableData.h">
+      <Filter>Source\Engine\Hackables</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Hackables\HackableObject.h">
+      <Filter>Source\Engine\Hackables</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

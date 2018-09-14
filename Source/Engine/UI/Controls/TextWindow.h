@@ -3,7 +3,7 @@
 #include "cocos2d.h"
 
 #include "Engine/Localization/Localization.h"
-#include "Engine/Rendering/Components/MenuLabel.h"
+#include "Engine/UI/Controls/MenuLabel.h"
 #include "Resources.h"
 
 using namespace cocos2d;

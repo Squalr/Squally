@@ -30,11 +30,6 @@ Dialogue::Dialogue(DialogueTree* root, std::string fontResource, Size size)
 	this->addChild(this->label);
 }
 
-void Dialogue::onEnter()
-{
-	Node::onEnter();
-}
-
 Dialogue::~Dialogue()
 {
 	delete(this->dialogueRoot);

@@ -1,13 +1,13 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Objects/GameObject.h"
+#include "Engine/SmartNode.h"
 #include "Resources.h"
 #include "Scenes/Hexus/GameState.h"
 
 using namespace cocos2d;
 
-class ComponentBase : public GameObject
+class ComponentBase : public SmartNode
 {
 protected:
 	ComponentBase();

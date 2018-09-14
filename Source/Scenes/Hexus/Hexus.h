@@ -1,15 +1,14 @@
 #pragma once
 #include "cocos2d.h"
-#include "Resources.h"
 
 #include "Events/NavigationEvents.h"
 #include "Events/HexusEvents.h"
-#include "Engine/Rendering/Components/FadeScene.h"
-#include "Engine/Rendering/Components/MenuSprite.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/UI/FadeScene.h"
 #include "Engine/Utils/StrUtils.h"
-
-#include "Components/Components.h"
-#include "GameState.h"
+#include "Resources.h"
+#include "Scenes/Hexus/Components/Components.h"
+#include "Scenes/Hexus/GameState.h"
 
 using namespace cocos2d;
 

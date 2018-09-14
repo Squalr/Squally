@@ -32,7 +32,7 @@ PlatformerMap::PlatformerMap()
 	this->camera = GameCamera::create();
 	this->mapNode = Node::create();
 	this->mouse = Mouse::create();
-	this->mouseLayer = UILayer::create();
+	this->mouseLayer = Node::create();
 
 	this->camera->setScrollOffset(Vec2(64.0f, 32.0f));
 	this->camera->setFollowSpeed(Vec2(0.075f, 0.075f));

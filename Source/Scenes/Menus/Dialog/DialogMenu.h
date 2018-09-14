@@ -7,8 +7,8 @@
 #include "writer.h"
 
 #include "Engine/Localization/Localization.h"
-#include "Engine/Rendering/Components/FloatingSprite.h"
-#include "Engine/Rendering/Components/MenuLabel.h"
+#include "Engine/UI/Controls/MenuLabel.h"
+#include "Engine/UI/FloatingSprite.h"
 #include "Events/DialogEvents.h"
 #include "Resources.h"
 

@@ -2,12 +2,11 @@
 #include "cocos2d.h"
 
 #include "Resources.h"
-
-#include "Card.h"
+#include "Scenes/Hexus/Card.h"
 
 using namespace cocos2d;
 
-class CardStorage : public GameObject
+class CardStorage : public SmartNode
 {
 public:
 	static CardStorage * create();

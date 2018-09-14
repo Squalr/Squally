@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Rendering/Components/Mouse.h"
+#include "Engine/UI/Mouse.h"
 
 #include "StrUtils.h"
 

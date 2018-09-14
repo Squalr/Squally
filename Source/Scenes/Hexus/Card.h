@@ -2,17 +2,16 @@
 #include "cocos2d.h"
 
 #include "Engine/Localization/Localization.h"
-#include "Engine/Objects/GameObject.h"
-#include "Engine/Rendering/Components/MenuSprite.h"
+#include "Engine/SmartNode.h"
+#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Resources.h"
-
-#include "CardData.h"
-#include "Config.h"
+#include "Scenes/Hexus/CardData.h"
+#include "Scenes/Hexus/Config.h"
 
 using namespace cocos2d;
 
-class Card : public GameObject
+class Card : public SmartNode
 {
 public:
 	enum CardStyle {
