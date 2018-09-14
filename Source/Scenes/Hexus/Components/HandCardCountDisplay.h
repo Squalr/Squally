@@ -22,9 +22,7 @@ private:
 	HandCardCountDisplay();
 	~HandCardCountDisplay();
 
-	void onEnter() override;
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
 	void updateTotals(GameState* gameState);
 
 	LayerColor* playerHandCardCountFrame;

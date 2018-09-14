@@ -1,6 +1,3 @@
-#pragma once
-#include "cocos2d.h"
-
 #include "Avatars.h"
 #include "Banners.h"
 #include "CardPreview.h"
@@ -17,6 +14,3 @@
 #include "Resources.h"
 #include "RowTotals.h"
 #include "ScoreTotal.h"
-
-using namespace cocos2d;
-

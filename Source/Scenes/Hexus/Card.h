@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/Localization/Localization.h"
+#include "Engine/Objects/GameObject.h"
 #include "Engine/Rendering/Components/MenuSprite.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Resources.h"
@@ -11,7 +12,7 @@
 
 using namespace cocos2d;
 
-class Card : public Node
+class Card : public GameObject
 {
 public:
 	enum CardStyle {
@@ -77,9 +78,8 @@ private:
 	Card(CardStyle cardStyle, CardData* data);
 	~Card();
 
-	void initializePositions();
-	void initializeListeners();
-	void onEnter() override;
+	void initializePositions() override;
+	void initializeListeners() override;
 	void updateText();
 	void onMouseOver(MenuSprite* menuSprite);
 	void onMouseClick(MenuSprite* menuSprite);

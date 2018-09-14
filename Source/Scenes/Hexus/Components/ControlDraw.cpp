@@ -17,23 +17,6 @@ ControlDraw::~ControlDraw()
 {
 }
 
-void ControlDraw::onEnter()
-{
-	ComponentBase::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
-}
-
-void ControlDraw::initializePositions()
-{
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-}
-
-void ControlDraw::initializeListeners()
-{
-}
-
 void ControlDraw::onStateChange(GameState* gameState)
 {
 	if (gameState->stateType == GameState::StateType::DrawInitialCards) {

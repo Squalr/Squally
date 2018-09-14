@@ -32,24 +32,13 @@ ControlSacrificeStaged::~ControlSacrificeStaged()
 {
 }
 
-void ControlSacrificeStaged::onEnter()
-{
-	ComponentBase::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
-}
-
 void ControlSacrificeStaged::initializePositions()
 {
+	ComponentBase::initializePositions();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->cancelButton->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::statusLabelWidth / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
 	this->sacrificeStatus->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter - Config::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
-}
-
-void ControlSacrificeStaged::initializeListeners()
-{
 }
 
 void ControlSacrificeStaged::onStateChange(GameState* gameState)

@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-class CardStorage : public Node
+class CardStorage : public GameObject
 {
 public:
 	static CardStorage * create();
@@ -15,8 +15,5 @@ public:
 private:
 	CardStorage();
 	~CardStorage();
-
-	void initializePositions();
-	void initializeListeners();
 };
 

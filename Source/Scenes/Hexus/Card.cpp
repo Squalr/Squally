@@ -88,16 +88,10 @@ Card::~Card()
 	delete(this->operations);
 }
 
-void Card::onEnter()
-{
-	Node::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
-}
-
 void Card::initializePositions()
 {
+	GameObject::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Size cardSize = this->cardImage->getContentSize() * Card::cardScale;
 
@@ -107,7 +101,7 @@ void Card::initializePositions()
 
 void Card::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	GameObject::initializeListeners();
 
 	this->cardSprite->setMouseOverCallback(CC_CALLBACK_1(Card::onMouseOver, this));
 	this->cardSprite->setClickCallback(CC_CALLBACK_1(Card::onMouseClick, this));
@@ -131,7 +125,7 @@ void Card::enableInteraction()
 
 void Card::setScale(float scale)
 {
-	Node::setScale(scale);
+	GameObject::setScale(scale);
 	this->cardSprite->setContentScale(scale);
 
 	// Seriously I do not understand why this is needed. Cocos2d-x is pretty shitty when it comes to dealing with scale.

@@ -20,9 +20,7 @@ private:
 	LossesDisplay();
 	~LossesDisplay();
 
-	void onEnter() override;
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
 	void updateDisplayedLosses(GameState* gameState);
 
 	Sprite* playerSocketA;

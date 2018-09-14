@@ -52,23 +52,13 @@ CoinFlip::~CoinFlip()
 {
 }
 
-void CoinFlip::onEnter()
-{
-	ComponentBase::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
-}
-
 void CoinFlip::initializePositions()
 {
+	ComponentBase::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->coin->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f);
-}
-
-void CoinFlip::initializeListeners()
-{
 }
 
 void CoinFlip::onStateChange(GameState* gameState)

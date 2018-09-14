@@ -44,24 +44,6 @@ Deck::~Deck()
 	delete(this->deckCards);
 }
 
-void Deck::onEnter()
-{
-	Node::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
-}
-
-void Deck::initializePositions()
-{
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-}
-
-void Deck::initializeListeners()
-{
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
-}
-
 void Deck::copyTo(Deck* otherDeck)
 {
 	otherDeck->clear();

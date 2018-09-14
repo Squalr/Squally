@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Objects/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 
@@ -9,7 +10,7 @@
 
 using namespace cocos2d;
 
-class CardRow : public Node
+class CardRow : public GameObject
 {
 public:
 	static CardRow * create();
@@ -35,9 +36,7 @@ private:
 	CardRow();
 	~CardRow();
 
-	void onEnter() override;
-	void initializePositions();
-	void initializeListeners();
+	void initializeListeners() override;
 	void setCardPositions(float cardRepositionDelay);
 	void onRowSelectClick(MenuSprite* menuSprite);
 
@@ -46,4 +45,3 @@ private:
 	MenuSprite* rowSelectSprite;
 	std::function<void(CardRow*)> rowSelectCallback;
 };
-

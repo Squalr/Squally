@@ -21,9 +21,6 @@ private:
 	ControlNeutral();
 	~ControlNeutral();
 
-	void onEnter() override;
-	void initializePositions();
-	void initializeListeners();
 	void initializeCallbacks(GameState* gameState);
 	void aiDoSelection(GameState* gameState);
 	void selectCard(Card* card);

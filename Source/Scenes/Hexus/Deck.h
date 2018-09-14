@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Objects/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 
@@ -8,7 +9,7 @@
 
 using namespace cocos2d;
 
-class Deck : public Node
+class Deck : public GameObject
 {
 public:
 	static Deck * create();
@@ -29,15 +30,12 @@ private:
 	Deck(Card::CardStyle cardStyle, std::vector<Card*>* cards);
 	Deck(Card::CardStyle cardStyle, std::vector<CardData*>* cards);
 	~Deck();
-	void onEnter() override;
+
 	void setCardOrder();
 	void doInsertAnimation(Card* card, bool faceUp, float insertDelay);
 
 	Sprite* pad;
 	Card::CardStyle style;
 	std::vector<Card*>* deckCards;
-
-	void initializePositions();
-	void initializeListeners();
 };
 

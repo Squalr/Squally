@@ -21,9 +21,6 @@ private:
 	ControlEndTurn();
 	~ControlEndTurn();
 
-	void onEnter() override;
-	void initializePositions();
-	void initializeListeners();
 	void endTurn(GameState* gameState);
 
 	GameState* activeGameState;

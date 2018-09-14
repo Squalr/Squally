@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Objects/GameObject.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Resources.h"
 
@@ -10,7 +11,7 @@
 
 using namespace cocos2d;
 
-class GameState : public Node
+class GameState : public GameObject
 {
 public:
 	enum StateType
@@ -84,7 +85,5 @@ private:
 	GameState();
 	~GameState();
 
-	void onEnter() override;
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
 };

@@ -22,9 +22,7 @@ private:
 	ControlSelectionStaged();
 	~ControlSelectionStaged();
 
-	void onEnter() override;
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
 	void initializeCallbacks(GameState* gameState);
 	void aiPerformAction(GameState* gameState);
 	void selectCard(Card* card);

@@ -21,23 +21,13 @@ CardPreview::~CardPreview()
 {
 }
 
-void CardPreview::onEnter()
-{
-	ComponentBase::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
-}
-
 void CardPreview::initializePositions()
 {
+	ComponentBase::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->previewPanel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter, visibleSize.height / 2.0f + Config::previewOffsetY);
-}
-
-void CardPreview::initializeListeners()
-{
 }
 
 void CardPreview::onStateChange(GameState* gameState)

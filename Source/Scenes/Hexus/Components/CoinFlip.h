@@ -21,9 +21,7 @@ private:
 	CoinFlip();
 	~CoinFlip();
 
-	void onEnter() override;
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
 	void doCoinFlip(GameState* gameState);
 
 	Sprite* coin;
