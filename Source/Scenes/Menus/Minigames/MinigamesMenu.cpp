@@ -32,11 +32,7 @@ MinigamesMenu::MinigamesMenu()
 	const Vec2 labelOffset = Vec2(48.0f, 0.0f);
 
 	this->background = Node::create();
-
-	this->scrollView = ScrollView::create();
-	this->scrollView->setCascadeOpacityEnabled(true);
-
-	LayerColor* background = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, visibleSize.height * 2);
+	this->scrollPane = ScrollPane::create(Size(1024.0f, 768.0f), Color4B(0, 0, 0, 127));
 
 	Label* hexusLabel = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* hexusLabelHover = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
@@ -146,20 +142,16 @@ MinigamesMenu::MinigamesMenu()
 	this->comingSoonButton5->addChild(comingSoon5);
 	this->comingSoonButton6->addChild(comingSoon6);
 
-	this->scrollView->setAnchorPoint(Vec2(0.5f, 0.5f));
-	this->scrollView->setDirection(SCROLLVIEW_DIR_VERTICAL);
-
 	this->addChild(this->background);
-	this->scrollView->addChild(background);
-	this->scrollView->addChild(this->hexusButton);
-	this->scrollView->addChild(this->hexusPuzzlesButton);
-	this->scrollView->addChild(this->comingSoonButton1);
-	this->scrollView->addChild(this->comingSoonButton2);
-	this->scrollView->addChild(this->comingSoonButton3);
-	this->scrollView->addChild(this->comingSoonButton4);
-	this->scrollView->addChild(this->comingSoonButton5);
-	this->scrollView->addChild(this->comingSoonButton6);
-	this->addChild(this->scrollView);
+	this->scrollPane->addChild(this->hexusButton);
+	this->scrollPane->addChild(this->hexusPuzzlesButton);
+	this->scrollPane->addChild(this->comingSoonButton1);
+	this->scrollPane->addChild(this->comingSoonButton2);
+	this->scrollPane->addChild(this->comingSoonButton3);
+	this->scrollPane->addChild(this->comingSoonButton4);
+	this->scrollPane->addChild(this->comingSoonButton5);
+	this->scrollPane->addChild(this->comingSoonButton6);
+	this->addChild(this->scrollPane);
 	this->addChild(Mouse::create());
 }
 
@@ -179,7 +171,7 @@ void MinigamesMenu::onEnter()
 	const float delay = 0.5f;
 	const float duration = 0.75f;
 
-	GameUtils::fadeInObject(this->scrollView, delay, duration);
+	GameUtils::fadeInObject(this->scrollPane, delay, duration);
 	GameUtils::fadeInObject(this->hexusButton, delay, duration);
 	GameUtils::fadeInObject(this->hexusPuzzlesButton, delay, duration);
 	GameUtils::fadeInObject(this->comingSoonButton1, delay, duration);
@@ -208,22 +200,20 @@ void MinigamesMenu::initializeListeners()
 void MinigamesMenu::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Size innerSize = Size(visibleSize.width / 2.0f + 256.0f, visibleSize.height / 2.0f + 1024.0f);
-
+	Size paneSize = this->scrollPane->getPaneSize();
 	MenuBackground::getInstance()->initializePositions();
 
-	this->scrollView->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->scrollView->setSize(Size(innerSize.width, visibleSize.height / 2.0f));
-	this->scrollView->setInnerContainerSize(innerSize);
+	this->scrollPane->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 
-	this->hexusButton->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 1 + 64.0f));
-	this->hexusPuzzlesButton->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 2 + 64.0f));
-	this->comingSoonButton1->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 3 + 64.0f));
-	this->comingSoonButton2->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 4 + 64.0f));
-	this->comingSoonButton3->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 5 + 64.0f));
-	this->comingSoonButton4->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 6 + 64.0f));
-	this->comingSoonButton5->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 7 + 64.0f));
-	this->comingSoonButton6->setPosition(Vec2(innerSize.width / 2.0f, innerSize.height - 192.0f * 8 + 64.0f));
+	this->hexusButton->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 0 + 128.0f));
+	this->hexusPuzzlesButton->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 1 + 128.0f));
+	this->comingSoonButton1->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 2 + 128.0f));
+	this->comingSoonButton2->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 3 + 128.0f));
+	this->comingSoonButton3->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 4 + 128.0f));
+	this->comingSoonButton4->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 5 + 128.0f));
+	this->comingSoonButton5->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 6 + 128.0f));
+	this->comingSoonButton6->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 7 + 128.0f));
+	this->scrollPane->fitSizeToContent();
 }
 
 void MinigamesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
