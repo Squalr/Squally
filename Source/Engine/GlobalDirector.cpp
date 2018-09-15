@@ -32,6 +32,7 @@ void GlobalDirector::loadScene(Scene* scene)
 		this->getParent()->removeChild(this);
 	}
 
+	scene->setVisible(true);
 	scene->addChild(this);
 
 	if (this->activeScene == nullptr)
@@ -40,6 +41,7 @@ void GlobalDirector::loadScene(Scene* scene)
 	}
 	else
 	{
+		this->activeScene->setVisible(false);
 		Director::getInstance()->replaceScene(scene);
 	}
 

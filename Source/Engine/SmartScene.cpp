@@ -18,10 +18,14 @@ void SmartScene::onEnter()
 
 void SmartScene::initializePositions()
 {
-
 }
 
 void SmartScene::initializeListeners()
+{
+	this->removeAllListeners();
+}
+
+void SmartScene::removeAllListeners()
 {
 	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
