@@ -393,6 +393,8 @@ public:
     virtual void onTouchCancelled(Touch *touch, Event *unusedEvent) override;
     virtual void update(float dt) override;
 
+	virtual void scrollChildren(const Vec2& deltaMove);
+
     /**
      * @brief Toggle bounce enabled when scroll to the edge.
      *
@@ -650,8 +652,6 @@ protected:
     bool startBounceBackIfNeeded();
 
     void jumpToDestination(const Vec2& des);
-
-    virtual void scrollChildren(const Vec2& deltaMove);
 
     virtual void handlePressLogic(Touch *touch);
     virtual void handleMoveLogic(Touch *touch);
