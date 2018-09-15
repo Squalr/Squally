@@ -21,6 +21,8 @@ Changes to engine:
 
 - In CCNode, added IsPaused() to be able to determine if a node is paused
 
+- In CCNode.cpp, removed call to pause() in onExit(). This caused crashes when the game was closing.
+
 - Moved from Windows 8 sdk to Windows 10
 
 - Updated CCValue float/double serialization to exclude trailing zeros and to limit precision to 2 decimal places (as does TMX)
