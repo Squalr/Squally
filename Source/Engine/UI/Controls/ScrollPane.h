@@ -26,6 +26,7 @@ private:
 
 	void initializeListeners() override;
 	void initializePositions() override;
+	void onMouseScroll(EventMouse* event);
 
 	Size paneSize;
 	Color4B backgroundColor;
@@ -33,5 +34,6 @@ private:
 	ScrollView* scrollView;
 	
 	static const Size marginSize;
+	static const float scrollSpeed;
 };
 

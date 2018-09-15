@@ -15,5 +15,6 @@ protected:
 	virtual void onEnter() override;
 	virtual void initializePositions();
 	virtual void initializeListeners();
+	virtual void removeAllListeners();
 };
 

@@ -37,6 +37,22 @@ void Mouse::onEnter()
 	this->setCanClick(false);
 }
 
+void Mouse::initializeListeners()
+{
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
+
+	EventListenerMouse* mouseListener = EventListenerMouse::create();
+	EventListenerCustom* mouseCanClickListener = EventListenerCustom::create(
+		MouseEvents::MouseCanClickEvent,
+		CC_CALLBACK_1(Mouse::onMouseCanClickEvent, this)
+	);
+
+	mouseListener->onMouseMove = CC_CALLBACK_1(Mouse::onMouseMove, this);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseCanClickListener, this);
+}
+
 void Mouse::pause()
 {
 	this->setVisible(false);
@@ -71,22 +87,6 @@ void Mouse::setCanClick(bool canClick)
 		this->mouseSpriteIdle->setVisible(true);
 		this->mouseSpritePoint->setVisible(false);
 	}
-}
-
-void Mouse::initializeListeners()
-{
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
-
-	EventListenerMouse* mouseListener = EventListenerMouse::create();
-	EventListenerCustom* mouseCanClickListener = EventListenerCustom::create(
-		MouseEvents::MouseCanClickEvent,
-		CC_CALLBACK_1(Mouse::onMouseCanClickEvent, this)
-	);
-
-	mouseListener->onMouseMove = CC_CALLBACK_1(Mouse::onMouseMove, this);
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseCanClickListener, this);
 }
 
 void Mouse::onMouseMove(EventMouse* event)

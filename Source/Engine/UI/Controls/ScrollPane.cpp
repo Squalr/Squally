@@ -1,6 +1,7 @@
 ﻿#include "ScrollPane.h"
 
-const Size ScrollPane::marginSize = Size(8.0f, 4.0f);
+const Size ScrollPane::marginSize = Size(24.0f, 24.0f);
+const float ScrollPane::scrollSpeed = 48.0f;
 
 ScrollPane* ScrollPane::create(Size initPaneSize, Color4B initBackgroundColor)
 {
@@ -16,13 +17,12 @@ ScrollPane::ScrollPane(Size initPaneSize, Color4B initBackgroundColor)
 	this->paneSize = initPaneSize;
 	this->backgroundColor = initBackgroundColor;
 
-	this->background = LayerColor::create(this->backgroundColor, initPaneSize.width, initPaneSize.height);
+	this->background = LayerColor::create(this->backgroundColor, initPaneSize.width + marginSize.width * 2.0f, initPaneSize.height + marginSize.height * 2.0f);
 	this->scrollView = ScrollView::create();
 
 	this->scrollView->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->scrollView->setDirection(SCROLLVIEW_DIR_VERTICAL);
 	this->scrollView->setSize(Size(initPaneSize.width, initPaneSize.height));
-	this->scrollView->setInnerContainerSize(initPaneSize - ScrollPane::marginSize * 2.0f);
 
 	// We override addchild to pass through to the scrollview -- but in this case we want to avoid that
 	SmartNode::addChild(this->background);
@@ -31,6 +31,24 @@ ScrollPane::ScrollPane(Size initPaneSize, Color4B initBackgroundColor)
 
 ScrollPane::~ScrollPane()
 {
+}
+
+void ScrollPane::initializePositions()
+{
+	SmartNode::initializePositions();
+
+	this->background->setPosition(Vec2(-this->paneSize.width / 2.0f - ScrollPane::marginSize.width, -this->paneSize.height / 2.0f - ScrollPane::marginSize.height));
+}
+
+void ScrollPane::initializeListeners()
+{
+	SmartNode::initializeListeners();
+
+	EventListenerMouse* mouseListener = EventListenerMouse::create();
+
+	mouseListener->onMouseScroll = CC_CALLBACK_1(ScrollPane::onMouseScroll, this);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
 
 Size ScrollPane::getPaneSize()
@@ -66,18 +84,10 @@ void ScrollPane::fitSizeToContent()
 		node->setPosition(Vec2(node->getPositionX(), highestItem - node->getPositionY() + this->paneSize.height / 2.0f));
 	}
 
-	this->scrollView->setInnerContainerSize(Size(this->paneSize.width - ScrollPane::marginSize.width, highestItem + this->paneSize.height / 2.0f));
+	this->scrollView->setInnerContainerSize(Size(this->paneSize.width, highestItem + this->paneSize.height / 2.0f));
 }
 
-void ScrollPane::initializePositions()
+void ScrollPane::onMouseScroll(EventMouse* event)
 {
-	SmartNode::initializePositions();
-
-	this->background->setPosition(Vec2(-this->paneSize.width / 2.0f, -this->paneSize.height / 2.0f));
-	this->scrollView->setPosition(ScrollPane::marginSize);
-}
-
-void ScrollPane::initializeListeners()
-{
-	SmartNode::initializeListeners();
+	this->scrollView->scrollChildren(Vec2(0.0f, event->getScrollY() * ScrollPane::scrollSpeed));
 }
