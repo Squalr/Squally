@@ -3,10 +3,10 @@
 #include <string>
 
 #include "cocos2d.h"
-#include "ui/CocosGUI.h"
 
 #include "Engine/Localization/Localization.h"
 #include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
@@ -17,8 +17,6 @@
 #include "Resources.h"
 
 using namespace cocos2d;
-using namespace cocos2d::ui;
-using namespace cocos_experimental;
 
 class MinigamesMenu : public FadeScene
 {
@@ -38,7 +36,7 @@ private:
 	void onHexusClick(MenuSprite* menuSprite);
 	void onHexusPuzzlesClick(MenuSprite* menuSprite);
 
-	ScrollView* scrollView;
+	ScrollPane* scrollPane;
 	Node* background;
 	TextMenuSprite* hexusButton;
 	TextMenuSprite* hexusPuzzlesButton;

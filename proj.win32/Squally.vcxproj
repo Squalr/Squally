@@ -191,6 +191,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Engine\UI\Controls\MenuLabel.cpp" />
     <ClCompile Include="..\Source\Engine\UI\Controls\MenuSprite.cpp" />
     <ClCompile Include="..\Source\Engine\UI\Controls\MouseOverPanel.cpp" />
+    <ClCompile Include="..\Source\Engine\UI\Controls\ScrollPane.cpp" />
     <ClCompile Include="..\Source\Engine\UI\Controls\TextMenuSprite.cpp" />
     <ClCompile Include="..\Source\Engine\UI\Controls\TextWindow.cpp" />
     <ClCompile Include="..\Source\Engine\UI\FadeScene.cpp" />
@@ -463,6 +464,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Engine\UI\Controls\MenuLabel.h" />
     <ClInclude Include="..\Source\Engine\UI\Controls\MenuSprite.h" />
     <ClInclude Include="..\Source\Engine\UI\Controls\MouseOverPanel.h" />
+    <ClInclude Include="..\Source\Engine\UI\Controls\ScrollPane.h" />
     <ClInclude Include="..\Source\Engine\UI\Controls\TextMenuSprite.h" />
     <ClInclude Include="..\Source\Engine\UI\Controls\TextWindow.h" />
     <ClInclude Include="..\Source\Engine\UI\FadeScene.h" />

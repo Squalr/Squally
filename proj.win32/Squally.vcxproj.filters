@@ -997,6 +997,9 @@
     <ClCompile Include="..\Source\Scenes\Cutscenes\IntroCutscene\VaporWeb.cpp">
       <Filter>Source\Scenes\Cutscenes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Engine\UI\Controls\ScrollPane.cpp">
+      <Filter>Source\Engine\UI\Controls</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Resources.h">
@@ -1830,6 +1833,9 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Cutscenes\IntroCutscene\VaporWeb.h">
       <Filter>Source\Scenes\Cutscenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\UI\Controls\ScrollPane.h">
+      <Filter>Source\Engine\UI\Controls</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
