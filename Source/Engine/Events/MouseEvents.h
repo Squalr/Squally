@@ -13,6 +13,7 @@ public:
 	static void TriggerMouseMove(MouseEventArgs args);
 	static void TriggerMouseDown(MouseEventArgs args);
 	static void TriggerMouseUp(MouseEventArgs args);
+	static void TriggerMouseScroll();
 	static void TriggerStateChange(MouseEventArgs args);
 	static void TriggerClickableMouseOverEvent();
 	static void TriggerClickableMouseOutEvent();
@@ -23,10 +24,10 @@ public:
 		Vec2 mouseCoords;
 		bool isDragging;
 		bool canClick;
-		EventMouse::MouseButton mouseButton;
+		bool isLeftClicked;
 		bool handled;
 
-		MouseEventArgs(Vec2 mouseCoords, bool isDragging, bool canClick, EventMouse::MouseButton mouseButton) : mouseCoords(mouseCoords), isDragging(isDragging), canClick(canClick), mouseButton(mouseButton), handled(false)
+		MouseEventArgs(Vec2 mouseCoords, bool isDragging, bool canClick, bool isLeftClicked) : mouseCoords(mouseCoords), isDragging(isDragging), canClick(canClick), isLeftClicked(isLeftClicked), handled(false)
 		{
 		}
 	};
@@ -34,6 +35,7 @@ public:
 	static const std::string MouseMoveEvent;
 	static const std::string MouseDownEvent;
 	static const std::string MouseUpEvent;
+	static const std::string MouseScrollEvent;
 	static const std::string MouseStateUpdateEvent;
 	static const std::string ClickableMouseOverEvent;
 	static const std::string ClickableMouseOutEvent;

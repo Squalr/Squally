@@ -23,6 +23,7 @@ private:
 	void onMouseMove(EventMouse* event);
 	void onMouseDown(EventMouse* event);
 	void onMouseUp(EventMouse* event);
+	void onMouseScroll();
 	void onClickableMouseOverEvent(EventCustom* eventCustom);
 	void onClickableMouseOutEvent(EventCustom* eventCustom);
 	void onMouseDragEvent(EventCustom* eventCustom);
@@ -31,7 +32,7 @@ private:
 	static Vec2 mousePosition;
 	static bool canClick;
 	static bool isDragging;
-	static EventMouse::MouseButton mouseButton;
+	static bool isLeftClicked;
 
 	static MouseState* instance;
 };

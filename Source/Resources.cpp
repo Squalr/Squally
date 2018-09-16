@@ -3371,6 +3371,7 @@ const std::string Resources::HUD_Timer = "HUD\\Timer.png";
 const std::string Resources::Menus_MouseDrag = "Menus\\MouseDrag.png";
 const std::string Resources::Menus_MouseIdle = "Menus\\MouseIdle.png";
 const std::string Resources::Menus_MousePoint = "Menus\\MousePoint.png";
+const std::string Resources::Menus_MousePointPressed = "Menus\\MousePointPressed.png";
 const std::string Resources::Menus_Backgrounds_BottomLeaves = "Menus\\Backgrounds\\BottomLeaves.png";
 const std::string Resources::Menus_Backgrounds_BottomSoil = "Menus\\Backgrounds\\BottomSoil.png";
 const std::string Resources::Menus_Backgrounds_DarkBackground = "Menus\\Backgrounds\\DarkBackground.png";

@@ -1,7 +1,7 @@
 ﻿#include "ScrollPane.h"
 
 const Size ScrollPane::marginSize = Size(24.0f, 24.0f);
-const float ScrollPane::scrollSpeed = 48.0f;
+const float ScrollPane::scrollSpeed = 64.0f;
 
 ScrollPane* ScrollPane::create(Size initPaneSize, Color4B initBackgroundColor)
 {
@@ -45,9 +45,12 @@ void ScrollPane::initializeListeners()
 	SmartNode::initializeListeners();
 
 	EventListenerMouse* mouseScrollListener = EventListenerMouse::create();
+	EventListenerMouse* mouseMoveListener = EventListenerMouse::create();
 
 	mouseScrollListener->onMouseScroll = CC_CALLBACK_1(ScrollPane::onMouseScroll, this);
+	mouseScrollListener->onMouseMove = CC_CALLBACK_1(ScrollPane::onScrollViewMouseMove, this);
 
+	this->scrollView->addEventListenerScrollView(mouseMoveListener, nullptr);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseScrollListener, this);
 }
 
@@ -97,4 +100,17 @@ void ScrollPane::fitSizeToContent()
 void ScrollPane::onMouseScroll(EventMouse* event)
 {
 	this->scrollView->scrollChildren(Vec2(0.0f, event->getScrollY() * ScrollPane::scrollSpeed));
+
+	MouseEvents::TriggerClickableMouseOutEvent();
+	MouseEvents::TriggerMouseScroll();
+}
+
+void ScrollPane::onScrollViewMouseMove(EventMouse* event)
+{
+	// Start drag animation
+	if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
+	{
+		MouseEvents::TriggerDragEvent();
+		MouseEvents::TriggerClickableMouseOutEvent();
+	}
 }
