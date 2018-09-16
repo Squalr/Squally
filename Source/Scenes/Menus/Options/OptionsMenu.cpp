@@ -428,6 +428,8 @@ void OptionsMenu::showResolutionOptions()
 	this->label1600x900->setVisible(true);
 	this->label1600x1024->setVisible(true);
 	this->label1920x1080->setVisible(true);
+	this->label2560x1440->setVisible(true);
+	this->label3840x2160->setVisible(true);
 
 	this->option1080x768->setVisible(true);
 	this->option1152x864->setVisible(true);
@@ -439,6 +441,8 @@ void OptionsMenu::showResolutionOptions()
 	this->option1600x900->setVisible(true);
 	this->option1600x1024->setVisible(true);
 	this->option1920x1080->setVisible(true);
+	this->option2560x1440->setVisible(true);
+	this->option3840x2160->setVisible(true);
 }
 
 void OptionsMenu::hideResolutionOptions()
@@ -452,6 +456,8 @@ void OptionsMenu::hideResolutionOptions()
 	this->label1600x900->setVisible(false);
 	this->label1600x1024->setVisible(false);
 	this->label1920x1080->setVisible(false);
+	this->label2560x1440->setVisible(false);
+	this->label3840x2160->setVisible(false);
 
 	this->option1080x768->setVisible(false);
 	this->option1152x864->setVisible(false);
@@ -462,4 +468,6 @@ void OptionsMenu::hideResolutionOptions()
 	this->option1600x900->setVisible(false);
 	this->option1600x1024->setVisible(false);
 	this->option1920x1080->setVisible(false);
+	this->option2560x1440->setVisible(false);
+	this->option3840x2160->setVisible(false);
 }
