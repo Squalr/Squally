@@ -29,6 +29,7 @@ private:
 	Sprite* activeMouseSprite;
 	Sprite* mouseSpriteIdle;
 	Sprite* mouseSpritePoint;
+	Sprite* mouseSpritePointPressed;
 	Sprite* mouseSpriteDrag;
 };
 

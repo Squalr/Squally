@@ -161,10 +161,11 @@ void MenuSprite::onMouseMove(EventCustom* event)
 	if (GameUtils::isVisible(this))
 	{
 		// Mouse drag callback
-		if (args->mouseButton == EventMouse::MouseButton::BUTTON_LEFT)
+		if (args->isLeftClicked)
 		{
 			if (this->isClicked && this->mouseDragEvent != nullptr)
 			{
+				MouseEvents::TriggerDragEvent();
 				this->mouseDragEvent(this, args);
 			}
 		}
@@ -178,7 +179,7 @@ void MenuSprite::onMouseMove(EventCustom* event)
 		{
 			MouseEvents::TriggerClickableMouseOverEvent();
 
-			if (args->mouseButton == EventMouse::MouseButton::BUTTON_LEFT)
+			if (!args->isDragging && args->isLeftClicked)
 			{
 				// Show mouse click sprite
 				this->sprite->setVisible(false);
@@ -232,16 +233,22 @@ void MenuSprite::onMouseDown(EventCustom* event)
 	{
 		if (this->intersects(args->mouseCoords))
 		{
-			if (args->mouseButton == EventMouse::MouseButton::BUTTON_LEFT)
+			if (args->isLeftClicked)
 			{
 				if (!this->isClickInit)
 				{
+					if (this->mouseDragEvent != nullptr)
+					{
+						MouseEvents::TriggerDragEvent();
+					}
+
 					this->isClicked = true;
 				}
+
 			}
 		}
 
-		if (args->mouseButton == EventMouse::MouseButton::BUTTON_LEFT)
+		if (args->isLeftClicked)
 		{
 			this->isClickInit = true;
 		}
@@ -261,7 +268,7 @@ void MenuSprite::onMouseUp(EventCustom* event)
 	{
 		if (this->mouseClickEvent != nullptr)
 		{
-			if (this->isClicked)
+			if (!args->isDragging && this->isClicked)
 			{
 				// Mouse click callback
 				this->mouseClickEvent(this, args);
@@ -280,7 +287,7 @@ void MenuSprite::onMouseUp(EventCustom* event)
 			}
 		}
 
-		if (args->mouseButton == EventMouse::MouseButton::BUTTON_LEFT)
+		if (args->isLeftClicked)
 		{
 			this->isClickInit = false;
 			this->isClicked = false;

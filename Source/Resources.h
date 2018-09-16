@@ -3372,6 +3372,7 @@ public:
 	static const std::string Menus_MouseDrag;
 	static const std::string Menus_MouseIdle;
 	static const std::string Menus_MousePoint;
+	static const std::string Menus_MousePointPressed;
 	static const std::string Menus_Backgrounds_BottomLeaves;
 	static const std::string Menus_Backgrounds_BottomSoil;
 	static const std::string Menus_Backgrounds_DarkBackground;

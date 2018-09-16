@@ -27,6 +27,7 @@ private:
 	void initializeListeners() override;
 	void initializePositions() override;
 	void onMouseScroll(EventMouse* event);
+	void onScrollViewMouseMove(EventMouse* event);
 
 	Size paneSize;
 	Color4B backgroundColor;
