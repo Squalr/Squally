@@ -35,7 +35,7 @@ private:
 	SceneDirector();
 	~SceneDirector();
 
-	void initializeEventListeners() override;
+	void initializeListeners() override;
 	void onGameNavigateNew(EventCustom* eventCustom);
 	void onGameNavigateBack(EventCustom* eventCustom);
 	void onGameNavigateConfirm(EventCustom* eventCustom);

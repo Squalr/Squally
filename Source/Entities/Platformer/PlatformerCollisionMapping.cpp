@@ -34,8 +34,10 @@ PlatformerCollisionMapping::~PlatformerCollisionMapping()
 {
 }
 
-void PlatformerCollisionMapping::initializeEventListeners()
+void PlatformerCollisionMapping::initializeListeners()
 {
+	GlobalNode::initializeListeners();
+
 	EventListenerCustom* mapRequestEventListener = EventListenerCustom::create(
 		CollisionObject::RequestCollisionMappingEvent,
 		CC_CALLBACK_1(PlatformerCollisionMapping::onMapRequest, this));

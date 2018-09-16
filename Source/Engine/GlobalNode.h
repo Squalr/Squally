@@ -1,10 +1,11 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/SmartNode.h"
+
 using namespace cocos2d;
 
-class GlobalNode : public Node
+class GlobalNode : public SmartNode
 {
 public:
-	virtual void initializeEventListeners() = 0;
 };

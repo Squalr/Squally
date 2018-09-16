@@ -194,7 +194,7 @@ void WorldMap::initializeListeners()
 {
 	this->getEventDispatcher()->removeEventListenersForTarget(this);
 
-	EventListenerCustom* mouseListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(WorldMap::onMouseSpriteMove, this));
+	EventListenerCustom* mouseListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(WorldMap::onMouseMove, this));
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(WorldMap::onKeyPressed, this);
@@ -240,16 +240,15 @@ void WorldMap::initializedLocked()
 	this->mecha->setLocked(false);
 }
 
-void WorldMap::onMouseSpriteMove(EventCustom* event)
+void WorldMap::onMouseMove(EventCustom* event)
 {
 	MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(event->getUserData());
-	Vec2 mouseCoords = Vec2(args->mouseX, args->mouseY);
 
 	for (auto it = this->mapNodes->begin(); it != this->mapNodes->end(); it++)
 	{
 		MapNode* node = *it;
 
-		if (GameUtils::intersects(node, mouseCoords) && !node->isLocked())
+		if (GameUtils::intersects(node, args->mouseCoords) && !node->isLocked())
 		{
 			this->infoLabel->setString(node->nodeMapName);
 			return;

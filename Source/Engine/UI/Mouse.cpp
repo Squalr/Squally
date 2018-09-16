@@ -1,7 +1,5 @@
 #include "Mouse.h"
 
-Vec2 Mouse::mousePosition = Vec2::ZERO;
-
 Mouse* Mouse::create()
 {
 	Mouse* instance = new Mouse();
@@ -15,13 +13,18 @@ Mouse::Mouse()
 {
 	this->mouseSpriteIdle = Sprite::create(Resources::Menus_MouseIdle);
 	this->mouseSpritePoint = Sprite::create(Resources::Menus_MousePoint);
+	this->mouseSpriteDrag = Sprite::create(Resources::Menus_MouseDrag);
 
+	// Anchor point is the top left for the mouse -- this is where the click happens
 	this->mouseSpriteIdle->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->mouseSpritePoint->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->mouseSpritePoint->setVisible(false);
+	this->mouseSpriteDrag->setAnchorPoint(Vec2(0.0f, 1.0f));
+
+	this->setActiveMouseSprite(this->mouseSpriteIdle);
 
 	this->addChild(this->mouseSpriteIdle);
 	this->addChild(this->mouseSpritePoint);
+	this->addChild(this->mouseSpriteDrag);
 }
 
 Mouse::~Mouse()
@@ -30,34 +33,29 @@ Mouse::~Mouse()
 
 void Mouse::onEnter()
 {
-	Node::onEnter();
+	SmartNode::onEnter();
 
 	this->setSpriteToCursorPosition();
-	this->initializeListeners();
-	this->setCanClick(false);
+	this->setActiveMouseSprite(this->mouseSpriteIdle);
 }
 
 void Mouse::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	SmartNode::initializeListeners();
 
-	EventListenerMouse* mouseListener = EventListenerMouse::create();
-	EventListenerCustom* mouseCanClickListener = EventListenerCustom::create(
-		MouseEvents::MouseCanClickEvent,
-		CC_CALLBACK_1(Mouse::onMouseCanClickEvent, this)
+	EventListenerCustom* mouseStateUpdateListener = EventListenerCustom::create(
+		MouseEvents::MouseStateUpdateEvent,
+		CC_CALLBACK_1(Mouse::onMouseStateUpdateEvent, this)
 	);
 
-	mouseListener->onMouseMove = CC_CALLBACK_1(Mouse::onMouseMove, this);
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseCanClickListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseStateUpdateListener, this);
 }
 
 void Mouse::pause()
 {
 	this->setVisible(false);
 
-	Node::pause();
+	SmartNode::pause();
 }
 
 void Mouse::resume()
@@ -65,42 +63,30 @@ void Mouse::resume()
 	this->setSpriteToCursorPosition();
 	this->setVisible(true);
 
-	Node::resume();
+	SmartNode::resume();
 }
 
-void Mouse::onMouseCanClickEvent(EventCustom* eventCustom)
+void Mouse::onMouseStateUpdateEvent(EventCustom* eventCustom)
 {
-	MouseEvents::MouseCanClickEventArgs* args = (MouseEvents::MouseCanClickEventArgs*)(eventCustom->getUserData());
-	
-	this->setCanClick(args->canClick);
-}
+	MouseEvents::MouseEventArgs* args = (MouseEvents::MouseEventArgs*)(eventCustom->getUserData());
 
-void Mouse::setCanClick(bool canClick)
-{
-	if (canClick)
-	{
-		this->mouseSpriteIdle->setVisible(false);
-		this->mouseSpritePoint->setVisible(true);
-	}
-	else
-	{
-		this->mouseSpriteIdle->setVisible(true);
-		this->mouseSpritePoint->setVisible(false);
-	}
-}
-
-void Mouse::onMouseMove(EventMouse* event)
-{
-	Mouse::mousePosition = Vec2(event->getCursorX(), event->getCursorY());
-
+	this->setActiveMouseSprite(args->canClick ? this->mouseSpritePoint : this->mouseSpriteIdle);
 	this->setSpriteToCursorPosition();
+}
 
-	this->setCanClick(false);
-	MouseEvents::TriggerMouseMove(MouseEvents::MouseEventArgs(Mouse::mousePosition.x, Mouse::mousePosition.y, event));
+void Mouse::setActiveMouseSprite(Sprite* mouseSprite)
+{
+	this->mouseSpriteIdle->setVisible(false);
+	this->mouseSpritePoint->setVisible(false);
+	this->mouseSpriteDrag->setVisible(false);
+
+	// This will be one of the ones above
+	mouseSprite->setVisible(true);
 }
 
 void Mouse::setSpriteToCursorPosition()
 {
-	this->mouseSpriteIdle->setPosition(Mouse::mousePosition);
-	this->mouseSpritePoint->setPosition(Mouse::mousePosition);
+	this->mouseSpriteIdle->setPosition(MouseState::getMousePosition());
+	this->mouseSpritePoint->setPosition(MouseState::getMousePosition());
+	this->mouseSpriteDrag->setPosition(MouseState::getMousePosition());
 }

@@ -2,6 +2,8 @@
 
 void Bootstrapper::initialize()
 {
+	EngineBootstrapper::initialize();
+
 	// Start scene director
 	SceneDirector::registerGlobalNode();
 

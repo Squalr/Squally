@@ -57,6 +57,5 @@ void GlobalDirector::registerGlobalNode(GlobalNode* node)
 	{
 		this->addChild(node);
 		this->globalNodes->push_back(node);
-		node->initializeEventListeners();
 	}
 }

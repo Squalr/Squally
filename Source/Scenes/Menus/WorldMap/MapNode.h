@@ -28,7 +28,7 @@ protected:
 private:
 	void initializePositions();
 	void initializeListeners();
-	void onNodeClick(MenuSprite* menuSprite, EventMouse* args);
+	void onNodeClick(MenuSprite* menuSprite);
 
 	bool locked;
 	Mouse* mouse;

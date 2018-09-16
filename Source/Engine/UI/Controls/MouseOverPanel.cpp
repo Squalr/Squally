@@ -43,16 +43,16 @@ void MouseOverPanel::initializeListeners()
 {
 	this->getEventDispatcher()->removeEventListenersForTarget(this);
 
-	EventListenerCustom* mouseListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MouseOverPanel::onMouseSpriteMove, this));
+	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MouseOverPanel::onMouseMove, this));
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseMoveListener, this);
 }
 
-void MouseOverPanel::onMouseSpriteMove(EventCustom* event)
+void MouseOverPanel::onMouseMove(EventCustom* event)
 {
 	MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(event->getUserData());
 
-	if (GameUtils::isVisible(this) && GameUtils::intersectsV2(this->content, Vec2(args->mouseX, args->mouseY)))
+	if (GameUtils::isVisible(this) && GameUtils::intersectsV2(this->content, args->mouseCoords))
 	{
 		this->panelBackgroundFrame->setVisible(true);
 		this->panelBackground->setVisible(true);

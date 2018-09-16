@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Events/MouseEvents.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/HackUtils.h"
@@ -29,7 +30,7 @@ private:
 	void onClose(MenuSprite* menuSprite);
 	void close();
 
-	Node* createRadialNode(std::string iconResource, Vec2 nodePosition, Color4F color, std::function<void(MenuSprite*, EventMouse* args)> callback, int tag);
+	Node* createRadialNode(std::string iconResource, Vec2 nodePosition, Color4F color, std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> callback, int tag);
 
 	CodeEditor* codeEditor;
 

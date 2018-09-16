@@ -158,17 +158,20 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Bootstrapper.cpp" />
+    <ClCompile Include="..\Source\Engine\EngineBootstrapper.cpp" />
     <ClCompile Include="..\Source\Engine\Camera\GameCamera.cpp" />
     <ClCompile Include="..\Source\Engine\Config\ConfigManager.cpp" />
     <ClCompile Include="..\Source\Engine\Cutscenes\CutsceneClip.cpp" />
     <ClCompile Include="..\Source\Engine\Cutscenes\Cutscene.cpp" />
     <ClCompile Include="..\Source\Engine\Dialogue\Dialogue.cpp" />
     <ClCompile Include="..\Source\Engine\Dialogue\DialogueTree.cpp" />
+    <ClCompile Include="..\Source\Engine\Events\MouseEvents.cpp" />
     <ClCompile Include="..\Source\Engine\GlobalDirector.cpp" />
     <ClCompile Include="..\Source\Engine\Hackables\HackableAttribute.cpp" />
     <ClCompile Include="..\Source\Engine\Hackables\HackableCode.cpp" />
     <ClCompile Include="..\Source\Engine\Hackables\HackableData.cpp" />
     <ClCompile Include="..\Source\Engine\Hackables\HackableObject.cpp" />
+    <ClCompile Include="..\Source\Engine\Input\MouseState.cpp" />
     <ClCompile Include="..\Source\Engine\Localization\Localization.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\DefaultLayerDeserializer.cpp" />
     <ClCompile Include="..\Source\Engine\Maps\ObjectifiedTile.cpp" />
@@ -321,7 +324,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Events\HackableEvents.cpp" />
     <ClCompile Include="..\Source\Events\HexusEvents.cpp" />
     <ClCompile Include="..\Source\Events\NavigationEvents.cpp" />
-    <ClCompile Include="..\Source\Events\MouseEvents.cpp" />
     <ClCompile Include="..\Source\Objects\Isometric\HexusArcade.cpp" />
     <ClCompile Include="..\Source\Objects\Isometric\IsometricDecorDeserializer.cpp" />
     <ClCompile Include="..\Source\Objects\Isometric\IsometricDecorObject.cpp" />
@@ -427,12 +429,14 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Bootstrapper.h" />
+    <ClInclude Include="..\Source\Engine\EngineBootstrapper.h" />
     <ClInclude Include="..\Source\Engine\Camera\GameCamera.h" />
     <ClInclude Include="..\Source\Engine\Config\ConfigManager.h" />
     <ClInclude Include="..\Source\Engine\Cutscenes\CutsceneClip.h" />
     <ClInclude Include="..\Source\Engine\Cutscenes\Cutscene.h" />
     <ClInclude Include="..\Source\Engine\Dialogue\Dialogue.h" />
     <ClInclude Include="..\Source\Engine\Dialogue\DialogueTree.h" />
+    <ClInclude Include="..\Source\Engine\Events\MouseEvents.h" />
     <ClInclude Include="..\Source\Engine\GlobalDirector.h" />
     <ClInclude Include="..\Source\Engine\GlobalNode.h" />
     <ClInclude Include="..\Source\Engine\Hackables\HackableAttribute.h" />
@@ -440,6 +444,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Engine\Hackables\HackableData.h" />
     <ClInclude Include="..\Source\Engine\Hackables\HackableObject.h" />
     <ClInclude Include="..\Source\Engine\Input\InputManager.h" />
+    <ClInclude Include="..\Source\Engine\Input\MouseState.h" />
     <ClInclude Include="..\Source\Engine\Localization\Localization.h" />
     <ClInclude Include="..\Source\Engine\Maps\DefaultLayerDeserializer.h" />
     <ClInclude Include="..\Source\Engine\Maps\ILayerDeserializer.h" />
@@ -596,7 +601,6 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Events\HackableEvents.h" />
     <ClInclude Include="..\Source\Events\HexusEvents.h" />
     <ClInclude Include="..\Source\Events\NavigationEvents.h" />
-    <ClInclude Include="..\Source\Events\MouseEvents.h" />
     <ClInclude Include="..\Source\Objects\Isometric\HexusArcade.h" />
     <ClInclude Include="..\Source\Objects\Isometric\IsometricDecorDeserializer.h" />
     <ClInclude Include="..\Source\Objects\Isometric\IsometricDecorObject.h" />

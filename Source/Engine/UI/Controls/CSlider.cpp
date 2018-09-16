@@ -50,9 +50,9 @@ void CSlider::setProgressUpdateCallback(std::function<void(float progress)> call
 	this->progressUpdateEvent = callback;
 }
 
-void CSlider::onDrag(MenuSprite* sprite, EventMouse* args)
+void CSlider::onDrag(MenuSprite* sprite, MouseEvents::MouseEventArgs* args)
 {
-	Vec2 newPosition = Vec2(args->getCursorX() - this->getPositionX(), this->slide->getPosition().y);
+	Vec2 newPosition = Vec2(args->mouseCoords.x - this->getPositionX(), this->slide->getPosition().y);
 
 	if (newPosition.x < -this->frame->getContentSize().width / 2)
 	{

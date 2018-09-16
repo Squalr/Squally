@@ -96,22 +96,22 @@ void MenuSprite::setOffsetCorrection(Vec2 newOffsetCorrection)
 	this->offsetCorrection = newOffsetCorrection;
 }
 
-void MenuSprite::setClickCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseClick)
+void MenuSprite::setClickCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onMouseClick)
 {
 	this->mouseClickEvent = onMouseClick;
 }
 
-void MenuSprite::setMouseDownCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseDown)
+void MenuSprite::setMouseDownCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onMouseDown)
 {
 	this->mouseDownEvent = onMouseDown;
 }
 
-void MenuSprite::setMouseDragCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseDrag)
+void MenuSprite::setMouseDragCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onMouseDrag)
 {
 	this->mouseDragEvent = onMouseDrag;
 }
 
-void MenuSprite::setMouseOverCallback(std::function<void(MenuSprite*, EventMouse* args)> onMouseOver)
+void MenuSprite::setMouseOverCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onMouseOver)
 {
 	this->mouseOverEvent = onMouseOver;
 }
@@ -130,14 +130,13 @@ void MenuSprite::initializeListeners()
 {
 	this->getEventDispatcher()->removeEventListenersForTarget(this);
 
-	EventListenerMouse* mouseListener = EventListenerMouse::create();
-	EventListenerCustom* customListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MenuSprite::onMouseSpriteMove, this));
+	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MenuSprite::onMouseMove, this));
+	EventListenerCustom* mouseDownListener = EventListenerCustom::create(MouseEvents::MouseDownEvent, CC_CALLBACK_1(MenuSprite::onMouseDown, this));
+	EventListenerCustom* mouseUpListener = EventListenerCustom::create(MouseEvents::MouseUpEvent, CC_CALLBACK_1(MenuSprite::onMouseUp, this));
 
-	mouseListener->onMouseUp = CC_CALLBACK_1(MenuSprite::onMouseUp, this);
-	mouseListener->onMouseDown = CC_CALLBACK_1(MenuSprite::onMouseDown, this);
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(customListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseMoveListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseDownListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseUpListener, this);
 }
 
 bool MenuSprite::intersects(Vec2 mousePos)
@@ -150,7 +149,7 @@ bool MenuSprite::intersects(Vec2 mousePos)
 	return GameUtils::intersects(this, Vec2(mousePos.x, mousePos.y) + this->offsetCorrection);
 }
 
-void MenuSprite::onMouseSpriteMove(EventCustom* event)
+void MenuSprite::onMouseMove(EventCustom* event)
 {
 	MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(event->getUserData());
 
@@ -162,11 +161,11 @@ void MenuSprite::onMouseSpriteMove(EventCustom* event)
 	if (GameUtils::isVisible(this))
 	{
 		// Mouse drag callback
-		if (args->innerEvent->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
+		if (args->mouseButton == EventMouse::MouseButton::BUTTON_LEFT)
 		{
 			if (this->isClicked && this->mouseDragEvent != nullptr)
 			{
-				this->mouseDragEvent(this, args->innerEvent);
+				this->mouseDragEvent(this, args);
 			}
 		}
 		else
@@ -175,11 +174,11 @@ void MenuSprite::onMouseSpriteMove(EventCustom* event)
 			this->isClicked = false;
 		}
 
-		if (!args->handled && this->intersects(Vec2(args->mouseX, args->mouseY)))
+		if (!args->handled && this->intersects(args->mouseCoords))
 		{
-			MouseEvents::TriggerCanClickEvent(MouseEvents::MouseCanClickEventArgs(true));
+			MouseEvents::TriggerClickableMouseOverEvent();
 
-			if (args->innerEvent->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
+			if (args->mouseButton == EventMouse::MouseButton::BUTTON_LEFT)
 			{
 				// Show mouse click sprite
 				this->sprite->setVisible(false);
@@ -189,7 +188,7 @@ void MenuSprite::onMouseSpriteMove(EventCustom* event)
 				// Mouse down callback
 				if (this->mouseDownEvent != nullptr)
 				{
-					this->mouseDownEvent(this, args->innerEvent);
+					this->mouseDownEvent(this, args);
 				}
 			}
 			else
@@ -203,7 +202,7 @@ void MenuSprite::onMouseSpriteMove(EventCustom* event)
 			// Mouse over callback
 			if (this->mouseOverEvent != nullptr)
 			{
-				this->mouseOverEvent(this, args->innerEvent);
+				this->mouseOverEvent(this, args);
 			}
 
 			// For the use cases of this game, I see no case in which we want to mouse over two things at once
@@ -220,8 +219,10 @@ void MenuSprite::onMouseSpriteMove(EventCustom* event)
 	}
 }
 
-void MenuSprite::onMouseDown(EventMouse* event)
+void MenuSprite::onMouseDown(EventCustom* event)
 {
+	MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(event->getUserData());
+
 	if (!this->interactionEnabled)
 	{
 		return;
@@ -229,9 +230,9 @@ void MenuSprite::onMouseDown(EventMouse* event)
 
 	if (GameUtils::isVisible(this))
 	{
-		if (this->intersects(Vec2(event->getCursorX(), event->getCursorY())))
+		if (this->intersects(args->mouseCoords))
 		{
-			if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
+			if (args->mouseButton == EventMouse::MouseButton::BUTTON_LEFT)
 			{
 				if (!this->isClickInit)
 				{
@@ -240,28 +241,30 @@ void MenuSprite::onMouseDown(EventMouse* event)
 			}
 		}
 
-		if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
+		if (args->mouseButton == EventMouse::MouseButton::BUTTON_LEFT)
 		{
 			this->isClickInit = true;
 		}
 	}
 }
 
-void MenuSprite::onMouseUp(EventMouse* event)
+void MenuSprite::onMouseUp(EventCustom* event)
 {
+	MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(event->getUserData());
+
 	if (!this->interactionEnabled)
 	{
 		return;
 	}
 
-	if (GameUtils::isVisible(this) && this->intersects(Vec2(event->getCursorX(), event->getCursorY())))
+	if (GameUtils::isVisible(this) && this->intersects(args->mouseCoords))
 	{
 		if (this->mouseClickEvent != nullptr)
 		{
 			if (this->isClicked)
 			{
 				// Mouse click callback
-				this->mouseClickEvent(this, event);
+				this->mouseClickEvent(this, args);
 
 				// Play click sound
 				if (this->clickSound.length() > 0)
@@ -277,7 +280,7 @@ void MenuSprite::onMouseUp(EventMouse* event)
 			}
 		}
 
-		if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
+		if (args->mouseButton == EventMouse::MouseButton::BUTTON_LEFT)
 		{
 			this->isClickInit = false;
 			this->isClicked = false;

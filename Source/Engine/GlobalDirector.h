@@ -1,12 +1,13 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/SmartNode.h"
 #include "Engine/GlobalNode.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
 
-class GlobalDirector : public Node
+class GlobalDirector : public SmartNode
 {
 public:
 	static GlobalDirector* getInstance();

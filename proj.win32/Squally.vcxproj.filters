@@ -252,9 +252,6 @@
     <ClCompile Include="..\Source\Events\DialogEvents.cpp">
       <Filter>Source\Events</Filter>
     </ClCompile>
-    <ClCompile Include="..\Source\Events\MouseEvents.cpp">
-      <Filter>Source\Events</Filter>
-    </ClCompile>
     <ClCompile Include="..\Source\Events\NavigationEvents.cpp">
       <Filter>Source\Events</Filter>
     </ClCompile>
@@ -1000,6 +997,15 @@
     <ClCompile Include="..\Source\Engine\UI\Controls\ScrollPane.cpp">
       <Filter>Source\Engine\UI\Controls</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Engine\Events\MouseEvents.cpp">
+      <Filter>Source\Engine\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\Input\MouseState.cpp">
+      <Filter>Source\Engine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Engine\EngineBootstrapper.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Resources.h">
@@ -1048,9 +1054,6 @@
       <Filter>Source\Scenes\Menus\LoadingScreen</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Events\DialogEvents.h">
-      <Filter>Source\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Events\MouseEvents.h">
       <Filter>Source\Events</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Events\NavigationEvents.h">
@@ -1836,6 +1839,15 @@
     </ClInclude>
     <ClInclude Include="..\Source\Engine\UI\Controls\ScrollPane.h">
       <Filter>Source\Engine\UI\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Events\MouseEvents.h">
+      <Filter>Source\Engine\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\Input\MouseState.h">
+      <Filter>Source\Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Engine\EngineBootstrapper.h">
+      <Filter>Source\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
