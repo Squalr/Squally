@@ -21,7 +21,7 @@ SaveSelectMenu::SaveSelectMenu()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	const Size shadowSize = Size(-4.0f, -4.0f);
+	const Size shadowSize = Size(-2.0f, -2.0f);
 	const int shadowBlur = 2;
 	const int hoverOutlineSize = 2;
 	const Color3B textColor = Color3B::WHITE;
