@@ -70,7 +70,7 @@ void Mouse::onMouseStateUpdateEvent(EventCustom* eventCustom)
 {
 	MouseEvents::MouseEventArgs* args = (MouseEvents::MouseEventArgs*)(eventCustom->getUserData());
 
-	this->setActiveMouseSprite(args->canClick ? this->mouseSpritePoint : this->mouseSpriteIdle);
+	this->setActiveMouseSprite(args->isDragging ? this->mouseSpriteDrag : (args->canClick ? this->mouseSpritePoint : this->mouseSpriteIdle));
 	this->setSpriteToCursorPosition();
 }
 

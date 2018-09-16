@@ -64,6 +64,7 @@ void MouseState::initializeListeners()
 void MouseState::onMouseDown(EventMouse* event)
 {
 	MouseState::mousePosition = Vec2(event->getCursorX(), event->getCursorY());
+	MouseState::mouseButton = event->getMouseButton();
 
 	MouseEvents::TriggerMouseDown(this->buildArgs());
 	MouseEvents::TriggerStateChange(this->buildArgs());
@@ -72,6 +73,7 @@ void MouseState::onMouseDown(EventMouse* event)
 void MouseState::onMouseUp(EventMouse* event)
 {
 	MouseState::mousePosition = Vec2(event->getCursorX(), event->getCursorY());
+	MouseState::mouseButton = event->getMouseButton();
 
 	MouseEvents::TriggerMouseUp(this->buildArgs());
 	MouseEvents::TriggerStateChange(this->buildArgs());
@@ -80,6 +82,7 @@ void MouseState::onMouseUp(EventMouse* event)
 void MouseState::onMouseMove(EventMouse* event)
 {
 	MouseState::mousePosition = Vec2(event->getCursorX(), event->getCursorY());
+	MouseState::mouseButton = event->getMouseButton();
 	MouseState::canClick = false;
 
 	MouseEvents::TriggerMouseMove(this->buildArgs());
@@ -104,7 +107,6 @@ void MouseState::onMouseDragEvent(EventCustom* eventCustom)
 {
 	MouseState::isDragging = true;
 
-	MouseEvents::TriggerMouseUp(this->buildArgs());
 	MouseEvents::TriggerStateChange(this->buildArgs());
 }
 

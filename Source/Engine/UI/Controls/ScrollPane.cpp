@@ -44,11 +44,11 @@ void ScrollPane::initializeListeners()
 {
 	SmartNode::initializeListeners();
 
-	EventListenerMouse* mouseListener = EventListenerMouse::create();
+	EventListenerMouse* mouseScrollListener = EventListenerMouse::create();
 
-	mouseListener->onMouseScroll = CC_CALLBACK_1(ScrollPane::onMouseScroll, this);
+	mouseScrollListener->onMouseScroll = CC_CALLBACK_1(ScrollPane::onMouseScroll, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseScrollListener, this);
 }
 
 Size ScrollPane::getPaneSize()
