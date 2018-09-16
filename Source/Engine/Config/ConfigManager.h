@@ -20,6 +20,8 @@ public:
 		R1600x900,
 		R1600x1024,
 		R1920x1080,
+		R2560x1440,
+		R3840x2160,
 	};
 
 	static void setResolution(ResolutionSetting resolution);
