@@ -62,6 +62,8 @@ private:
 	Label* label1600x900;
 	Label* label1600x1024;
 	Label* label1920x1080;
+	Label* label2560x1440;
+	Label* label3840x2160;
 
 	CRadioButton* option1080x768;
 	CRadioButton* option1152x864;
@@ -72,6 +74,8 @@ private:
 	CRadioButton* option1600x900;
 	CRadioButton* option1600x1024;
 	CRadioButton* option1920x1080;
+	CRadioButton* option2560x1440;
+	CRadioButton* option3840x2160;
 
 	static const Color3B TitleColor;
 	static const std::string StringKeyMenuOptions;

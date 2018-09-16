@@ -48,6 +48,8 @@ OptionsMenu::OptionsMenu()
 	this->label1600x900 = Label::create("1600x900", Localization::getMainFont(), 14);
 	this->label1600x1024 = Label::create("1600x1024", Localization::getMainFont(), 14);
 	this->label1920x1080 = Label::create("1920x1080", Localization::getMainFont(), 14);
+	this->label2560x1440 = Label::create("2560x1440", Localization::getMainFont(), 14);
+	this->label3840x2160 = Label::create("3840x2160", Localization::getMainFont(), 14);
 
 	this->option1080x768 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
 	this->option1152x864 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
@@ -58,6 +60,8 @@ OptionsMenu::OptionsMenu()
 	this->option1600x900 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
 	this->option1600x1024 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
 	this->option1920x1080 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
+	this->option2560x1440 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
+	this->option3840x2160 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
 
 	int fontSize = 24;
 	Size shadowSize = Size(-4.0f, -4.0f);
@@ -105,6 +109,8 @@ OptionsMenu::OptionsMenu()
 	this->option1600x900->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
 	this->option1600x1024->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
 	this->option1920x1080->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
+	this->option2560x1440->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
+	this->option3840x2160->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
 
 	this->closeButton->setClickCallback(CC_CALLBACK_1(OptionsMenu::onCloseClick, this));
 	this->closeButton->setClickSound(Resources::Sounds_ClickBack1);
@@ -132,6 +138,8 @@ OptionsMenu::OptionsMenu()
 	this->addChild(this->label1600x900);
 	this->addChild(this->label1600x1024);
 	this->addChild(this->label1920x1080);
+	this->addChild(this->label2560x1440);
+	this->addChild(this->label3840x2160);
 
 	this->addChild(this->option1080x768);
 	this->addChild(this->option1152x864);
@@ -142,6 +150,8 @@ OptionsMenu::OptionsMenu()
 	this->addChild(this->option1600x900);
 	this->addChild(this->option1600x1024);
 	this->addChild(this->option1920x1080);
+	this->addChild(this->option2560x1440);
+	this->addChild(this->option3840x2160);
 
 	this->addChild(this->returnButton);
 	this->addChild(Mouse::create());
@@ -173,8 +183,14 @@ OptionsMenu::OptionsMenu()
 		this->option1600x1024->check();
 		break;
 	case ConfigManager::ResolutionSetting::R1920x1080:
-	default:
 		this->option1920x1080->check();
+		break;
+	case ConfigManager::ResolutionSetting::R2560x1440:
+		this->option2560x1440->check();
+		break;
+	case ConfigManager::ResolutionSetting::R3840x2160:
+	default:
+		this->option3840x2160->check();
 		break;
 	}
 
@@ -231,6 +247,8 @@ void OptionsMenu::onEnter()
 	GameUtils::fadeInObject(this->option1600x900, delay, duration);
 	GameUtils::fadeInObject(this->option1600x1024, delay, duration);
 	GameUtils::fadeInObject(this->option1920x1080, delay, duration);
+	GameUtils::fadeInObject(this->option2560x1440, delay, duration);
+	GameUtils::fadeInObject(this->option3840x2160, delay, duration);
 
 	this->background->addChild(MenuBackground::claimInstance());
 
@@ -294,6 +312,14 @@ void OptionsMenu::onResolutionChanged(CRadioButton* radioButton)
 	{
 		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1920x1080);
 	}
+	else if (radioButton == this->option2560x1440)
+	{
+		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R2560x1440);
+	}
+	else if (radioButton == this->option3840x2160)
+	{
+		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R3840x2160);
+	}
 
 	this->initializePositions();
 }
@@ -314,7 +340,7 @@ void OptionsMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->optionsWindow->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->titleLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 256.0f));
+	this->titleLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 286.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2 + 302.0f, visibleSize.height / 2 + 228.0f));
 
 	this->soundIcon->setPosition(Vec2(visibleSize.width / 2 - 276.0f, visibleSize.height / 2 + 144.0f));
@@ -324,33 +350,38 @@ void OptionsMenu::initializePositions()
 	this->fullScreenButton->setPosition(Vec2(visibleSize.width / 2 - 248.0f, visibleSize.height / 2 - 8.0f));
 	this->fullScreenLabel->setPosition(Vec2(visibleSize.width / 2 - 112.0f, visibleSize.height / 2 - 8.0f));
 
-	const float spacing = 128.0f;
-	const float base = 232.0f;
+	const float spacing = 140.0f;
+	const float base = 225.0f;
 	const float baseY = -64.0f;
 	const float offsetY = 48.0f;
 	const float textOffset = 64.0f;
 
 	this->label1080x768->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 0, visibleSize.height / 2 + baseY));
-	this->label1152x864->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 0, visibleSize.height / 2 + baseY - offsetY));
-	this->label1280x720->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 1, visibleSize.height / 2 + baseY));
-	this->label1280x960->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 1, visibleSize.height / 2 + baseY - offsetY));
-	this->label1280x1024->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 2, visibleSize.height / 2 + baseY));
-	this->label1440x900->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 2, visibleSize.height / 2 + baseY - offsetY));
-	this->label1600x900->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 3, visibleSize.height / 2 + baseY));
-	this->label1600x1024->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 3, visibleSize.height / 2 + baseY - offsetY));
-	this->label1920x1080->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 4, visibleSize.height / 2 + baseY));
-
+	this->label1152x864->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 1, visibleSize.height / 2 + baseY));
+	this->label1280x720->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 2, visibleSize.height / 2 + baseY));
+	this->label1280x960->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 3, visibleSize.height / 2 + baseY));
 	this->option1080x768->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 0, visibleSize.height / 2 + baseY));
-	this->option1152x864->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 0, visibleSize.height / 2 + baseY - offsetY));
-	this->option1280x720->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 1, visibleSize.height / 2 + baseY));
-	this->option1280x960->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 1, visibleSize.height / 2 + baseY - offsetY));
-	this->option1280x1024->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 2, visibleSize.height / 2 + baseY));
-	this->option1440x900->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 2, visibleSize.height / 2 + baseY - offsetY));
-	this->option1600x900->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 3, visibleSize.height / 2 + baseY));
-	this->option1600x1024->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 3, visibleSize.height / 2 + baseY - offsetY));
-	this->option1920x1080->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 4, visibleSize.height / 2 + baseY));
+	this->option1152x864->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 1, visibleSize.height / 2 + baseY));
+	this->option1280x720->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 2, visibleSize.height / 2 + baseY));
+	this->option1280x960->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 3, visibleSize.height / 2 + baseY));
 
-	this->returnButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 196.0f));
+	this->label1280x1024->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 0, visibleSize.height / 2 + baseY - offsetY));
+	this->label1440x900->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 1, visibleSize.height / 2 + baseY - offsetY));
+	this->label1600x900->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 2, visibleSize.height / 2 + baseY - offsetY));
+	this->label1600x1024->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 3, visibleSize.height / 2 + baseY - offsetY));
+	this->option1280x1024->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 0, visibleSize.height / 2 + baseY - offsetY));
+	this->option1440x900->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 1, visibleSize.height / 2 + baseY - offsetY));
+	this->option1600x900->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 2, visibleSize.height / 2 + baseY - offsetY));
+	this->option1600x1024->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 3, visibleSize.height / 2 + baseY - offsetY));
+
+	this->label1920x1080->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 0, visibleSize.height / 2 + baseY - offsetY*2));
+	this->label2560x1440->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 1, visibleSize.height / 2 + baseY - offsetY*2));
+	this->label3840x2160->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 2, visibleSize.height / 2 + baseY - offsetY*2));
+	this->option1920x1080->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 0, visibleSize.height / 2 + baseY - offsetY*2));
+	this->option2560x1440->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 1, visibleSize.height / 2 + baseY - offsetY*2));
+	this->option3840x2160->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 2, visibleSize.height / 2 + baseY - offsetY*2));
+
+	this->returnButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - offsetY * 5));
 
 	this->musicSlider->initializePositions();
 	this->soundSlider->initializePositions();

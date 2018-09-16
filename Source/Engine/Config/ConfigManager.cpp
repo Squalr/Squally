@@ -132,6 +132,14 @@ Size ConfigManager::getResolutionSize()
 		size.width = 1920;
 		size.height = 1080;
 		break;
+	case R2560x1440:
+		size.width = 2560;
+		size.height = 1440;
+		break;
+	case R3840x2160:
+		size.width = 3840;
+		size.height = 2160;
+		break;
 	default:
 		break;
 	}
