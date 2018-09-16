@@ -121,7 +121,6 @@ void MouseState::onMouseDragEvent(EventCustom* eventCustom)
 {
 	MouseState::isDragging = true;
 
-	MouseEvents::TriggerMouseMove(this->buildArgs());
 	MouseEvents::TriggerStateChange(this->buildArgs());
 }
 
