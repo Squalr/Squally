@@ -60,7 +60,7 @@ SaveSelectMenu::SaveSelectMenu()
 
 	this->saveGame1->setTextOffset(labelOffset);
 
-	Sprite* saveGame1Icon = Sprite::create(Resources::Menus_HackerModeMenu_Icons_Health);
+	Sprite* saveGame1Icon = Sprite::create(Resources::Menus_HackerModeMenu_Icons_BookSpellsArcane);
 
 	saveGame1Icon->setAnchorPoint(Vec2(0.0f, 0.5f));
 	saveGame1Icon->setPosition(Vec2(-this->saveGame1->getContentSize().width / 2.0f + 78.0f, 0.0f));

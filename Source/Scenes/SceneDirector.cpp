@@ -56,8 +56,10 @@ SceneDirector::~SceneDirector()
 	delete(this->sceneHistory);
 }
 
-void SceneDirector::initializeEventListeners()
+void SceneDirector::initializeListeners()
 {
+	GlobalNode::initializeListeners();
+
 	EventListenerCustom* navigateNewEventListener = EventListenerCustom::create(
 		NavigationEvents::gameNavigateNewEvent,
 		CC_CALLBACK_1(SceneDirector::onGameNavigateNew, this)

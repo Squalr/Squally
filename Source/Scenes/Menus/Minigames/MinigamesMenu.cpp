@@ -32,7 +32,7 @@ MinigamesMenu::MinigamesMenu()
 	const Vec2 labelOffset = Vec2(48.0f, 0.0f);
 
 	this->background = Node::create();
-	this->scrollPane = ScrollPane::create(Size(1024.0f, 768.0f), Color4B(0, 0, 0, 127));
+	this->scrollPane = ScrollPane::create(Size(1152.0f, 768.0f), Color4B(0, 0, 0, 127));
 
 	Label* hexusLabel = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* hexusLabelHover = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));

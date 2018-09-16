@@ -47,7 +47,7 @@ private:
 	PlatformerCollisionMapping();
 	~PlatformerCollisionMapping();
 
-	void initializeEventListeners() override;
+	void initializeListeners() override;
 
 	static PlatformerCollisionMapping* instance;
 };

@@ -3368,6 +3368,7 @@ const std::string Resources::HUD_MindPowerBack = "HUD\\MindPowerBack.png";
 const std::string Resources::HUD_MindPowerCover = "HUD\\MindPowerCover.png";
 const std::string Resources::HUD_TimeBar = "HUD\\TimeBar.png";
 const std::string Resources::HUD_Timer = "HUD\\Timer.png";
+const std::string Resources::Menus_MouseDrag = "Menus\\MouseDrag.png";
 const std::string Resources::Menus_MouseIdle = "Menus\\MouseIdle.png";
 const std::string Resources::Menus_MousePoint = "Menus\\MousePoint.png";
 const std::string Resources::Menus_Backgrounds_BottomLeaves = "Menus\\Backgrounds\\BottomLeaves.png";

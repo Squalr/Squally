@@ -1,13 +1,13 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Events/MouseEvents.h"
 #include "Engine/Localization/Localization.h"
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
-#include "Events/MouseEvents.h"
 #include "Resources.h"
 
 #include "MapNode.h"
@@ -28,7 +28,7 @@ private:
 	void initializedLocked();
 	void initializePositions();
 	void initializeListeners();
-	void onMouseSpriteMove(EventCustom* args);
+	void onMouseMove(EventCustom* args);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
 	std::vector<MapNode*>* mapNodes;

@@ -1,8 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Events/MouseEvents.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/MouseEvents.h"
 #include "Resources.h"
 
 using namespace cocos2d;
@@ -17,7 +17,7 @@ private:
 	~MouseOverPanel();
 
 	void initializeListeners();
-	void onMouseSpriteMove(EventCustom* args);
+	void onMouseMove(EventCustom* args);
 
 	LayerColor* panelBackgroundFrame;
 	LayerColor* panelBackground;

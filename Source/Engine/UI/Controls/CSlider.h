@@ -20,7 +20,7 @@ protected:
 	~CSlider();
 
 private:
-	void onDrag(MenuSprite* sprite, EventMouse* args);
+	void onDrag(MenuSprite* sprite, MouseEvents::MouseEventArgs* args);
 	void setProgress(float newProgress);
 
 	MenuSprite* slide;

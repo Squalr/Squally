@@ -159,7 +159,7 @@ void RadialMenu::close()
 	}
 }
 
-Node* RadialMenu::createRadialNode(std::string iconResource, Vec2 nodePosition, Color4F color, std::function<void(MenuSprite*, EventMouse* args)> callback, int tag)
+Node* RadialMenu::createRadialNode(std::string iconResource, Vec2 nodePosition, Color4F color, std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> callback, int tag)
 {
 	DrawNode* radialNode = DrawNode::create(RadialMenu::lineWidth);
 	DrawNode* line = DrawNode::create();

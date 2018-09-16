@@ -3369,6 +3369,7 @@ public:
 	static const std::string HUD_MindPowerCover;
 	static const std::string HUD_TimeBar;
 	static const std::string HUD_Timer;
+	static const std::string Menus_MouseDrag;
 	static const std::string Menus_MouseIdle;
 	static const std::string Menus_MousePoint;
 	static const std::string Menus_Backgrounds_BottomLeaves;

@@ -68,23 +68,30 @@ void ScrollPane::addChild(Node* child)
 
 void ScrollPane::fitSizeToContent()
 {
-	float highestItem = 0.0f;
+	float newHeight = 0.0f;
+
+	for (auto it = this->scrollView->getChildren().begin(); it != this->scrollView->getChildren().end(); it++)
+	{
+		newHeight = std::max((*it)->getBoundingBox().getMaxY(), newHeight);
+	}
+
+	float minItem = newHeight;
+
+	for (auto it = this->scrollView->getChildren().begin(); it != this->scrollView->getChildren().end(); it++)
+	{
+		minItem = std::min((*it)->getBoundingBox().getMinY(), minItem);
+	}
+
+	newHeight += minItem;
 
 	for (auto it = this->scrollView->getChildren().begin(); it != this->scrollView->getChildren().end(); it++)
 	{
 		Node* node = *it;
 
-		highestItem = std::max(node->getBoundingBox().getMaxY(), highestItem);
+		node->setPosition(Vec2(node->getPositionX(), newHeight - node->getPositionY()));
 	}
 
-	for (auto it = this->scrollView->getChildren().begin(); it != this->scrollView->getChildren().end(); it++)
-	{
-		Node* node = *it;
-
-		node->setPosition(Vec2(node->getPositionX(), highestItem - node->getPositionY() + this->paneSize.height / 2.0f));
-	}
-
-	this->scrollView->setInnerContainerSize(Size(this->paneSize.width, highestItem + this->paneSize.height / 2.0f));
+	this->scrollView->setInnerContainerSize(Size(this->paneSize.width, newHeight));
 }
 
 void ScrollPane::onMouseScroll(EventMouse* event)

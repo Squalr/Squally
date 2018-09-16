@@ -60,10 +60,10 @@ void MapNode::initializeListeners()
 {
 	this->getEventDispatcher()->removeEventListenersForTarget(this);
 
-	this->mapSprite->setClickCallback(CC_CALLBACK_2(MapNode::onNodeClick, this));
+	this->mapSprite->setClickCallback(CC_CALLBACK_1(MapNode::onNodeClick, this));
 }
 
-void MapNode::onNodeClick(MenuSprite* menuSprite, EventMouse* args)
+void MapNode::onNodeClick(MenuSprite* menuSprite)
 {
 	NavigationEvents::loadMap(this->nodeMapFile);
 }

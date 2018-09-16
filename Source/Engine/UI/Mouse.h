@@ -1,12 +1,14 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Events/MouseEvents.h"
+#include "Engine/SmartNode.h"
+#include "Engine/Events/MouseEvents.h"
+#include "Engine/Input/MouseState.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 
-class Mouse : public Node
+class Mouse : public SmartNode
 {
 public:
 	static Mouse * create();
@@ -16,18 +18,17 @@ protected:
 	~Mouse();
 
 private:
-	void initializeListeners();
-	void onMouseCanClickEvent(EventCustom* eventCustom);
-	void setCanClick(bool canClick);
-	void onMouseMove(EventMouse* event);
+	void initializeListeners() override;
 	void onEnter() override;
 	void pause() override;
 	void resume() override;
+	void onMouseStateUpdateEvent(EventCustom* eventCustom);
+	void setActiveMouseSprite(Sprite* mouseSprite);
 	void setSpriteToCursorPosition();
 
+	Sprite* activeMouseSprite;
 	Sprite* mouseSpriteIdle;
 	Sprite* mouseSpritePoint;
-
-	static Vec2 mousePosition;
+	Sprite* mouseSpriteDrag;
 };
 
