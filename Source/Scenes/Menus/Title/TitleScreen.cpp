@@ -25,7 +25,7 @@ TitleScreen::TitleScreen()
 	this->title = Sprite::create(Resources::Menus_TitleScreen_Title);
 	this->background = TitleScreenBackground::create();
 	
-	Size shadowSize = Size(-4.0f, -4.0f);
+	Size shadowSize = Size(-2.0f, -2.0f);
 	int shadowBlur = 2;
 	int hoverOutlineSize = 2;
 	Color3B textColor = Color3B::WHITE;
