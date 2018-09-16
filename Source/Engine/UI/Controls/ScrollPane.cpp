@@ -99,18 +99,24 @@ void ScrollPane::fitSizeToContent()
 
 void ScrollPane::onMouseScroll(EventMouse* event)
 {
-	this->scrollView->scrollChildren(Vec2(0.0f, event->getScrollY() * ScrollPane::scrollSpeed));
+	if (GameUtils::isVisible(this))
+	{
+		this->scrollView->scrollChildren(Vec2(0.0f, event->getScrollY() * ScrollPane::scrollSpeed));
 
-	MouseEvents::TriggerClickableMouseOutEvent();
-	MouseEvents::TriggerMouseScroll();
+		MouseEvents::TriggerClickableMouseOutEvent();
+		MouseEvents::TriggerMouseScroll();
+	}
 }
 
 void ScrollPane::onScrollViewMouseMove(EventMouse* event)
 {
-	// Start drag animation
-	if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
+	if (GameUtils::isVisible(this) && GameUtils::intersectsV2(this->background, Vec2(event->getCursorX(), event->getCursorY())))
 	{
-		MouseEvents::TriggerDragEvent();
-		MouseEvents::TriggerClickableMouseOutEvent();
+		// Start drag animation
+		if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
+		{
+			MouseEvents::TriggerDragEvent();
+			MouseEvents::TriggerClickableMouseOutEvent();
+		}
 	}
 }
