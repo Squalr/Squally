@@ -64,7 +64,12 @@ void GameUtils::pause(Node *node)
 	// If the node is a scene node, pause physics
 	if (dynamic_cast<const Scene*>(node) != nullptr)
 	{
-		Director::getInstance()->getRunningScene()->getPhysicsWorld()->setSpeed(0.0f);
+		const Scene* scene = dynamic_cast<const Scene*>(node);
+
+		if (scene->getPhysicsWorld() != nullptr)
+		{
+			scene->getPhysicsWorld()->setSpeed(0.0f);
+		}
 	}
 
 	node->pauseSchedulerAndActions();
