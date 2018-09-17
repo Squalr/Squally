@@ -1628,7 +1628,7 @@ void Node::unscheduleAllCallbacks()
     _scheduler->unscheduleAllForTarget(this);
 }
 
-bool Node::isPaused()
+const bool Node::isPaused()
 {
 	return _paused;
 }

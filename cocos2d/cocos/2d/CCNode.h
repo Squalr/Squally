@@ -1498,7 +1498,7 @@ public:
 
     CC_DEPRECATED_ATTRIBUTE void unscheduleAllSelectors() { unscheduleAllCallbacks(); }
 
-	virtual bool isPaused(void);
+	virtual const bool isPaused(void);
     /**
      * Resumes all scheduled selectors, actions and event listeners.
      * This method is called internally by onEnter.
