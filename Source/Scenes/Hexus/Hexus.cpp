@@ -20,6 +20,7 @@ Hexus::Hexus()
 	this->controlNeutral = ControlNeutral::create();
 	this->controlEndTurn = ControlEndTurn::create();
 	this->controlSacrificeStaged = ControlSacrificeStaged::create();
+	this->controlCombineStaged = ControlCombineStaged::create();
 	this->controlSelectionStaged = ControlSelectionStaged::create();
 	this->controlReplaceCards = ControlReplaceCards::create();
 	this->coinFlip = CoinFlip::create();
@@ -37,6 +38,7 @@ Hexus::Hexus()
 	this->addChild(this->controlNeutral);
 	this->addChild(this->controlSelectionStaged);
 	this->addChild(this->controlSacrificeStaged);
+	this->addChild(this->controlCombineStaged);
 	this->addChild(this->controlEndTurn);
 	this->addChild(this->cardPreview);
 	this->addChild(this->lossesDisplay);

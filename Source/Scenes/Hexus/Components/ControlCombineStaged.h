@@ -9,31 +9,27 @@
 
 using namespace cocos2d;
 
-class ControlSelectionStaged : public ComponentBase
+class ControlCombineStaged : public ComponentBase
 {
 public:
-	static ControlSelectionStaged * create();
+	static ControlCombineStaged * create();
 
 protected:
 	void onStateChange(GameState* gameState) override;
 
 private:
-	ControlSelectionStaged();
-	~ControlSelectionStaged();
+	ControlCombineStaged();
+	~ControlCombineStaged();
 
 	void initializePositions() override;
 	void initializeCallbacks(GameState* gameState);
 	void aiPerformAction(GameState* gameState);
 	void selectCard(Card* card);
-	void stageSelectedSacrificeCard(Card* card);
-	void stageSelectedCombineCard(Card* card);
-	void playSelectedCard(CardRow* cardRow);
-	void updateSelectionStatus();
-	void onSelectionCancel(MenuSprite* menuSprite);
-	void onHelpClick(MenuSprite* menuSprite);
+	void stageCombineTarget(Card* card);
+	void updateCombineStatus();
+	void onCombineCancel(MenuSprite* menuSprite);
 
 	GameState* activeGameState;
-	Label* selectionLabel;
+	Label* combineStatus;
 	MenuSprite* cancelButton;
-	MenuSprite* helpButton;
 };

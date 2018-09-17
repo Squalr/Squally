@@ -365,6 +365,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Scenes\Hexus\Components\CardPreview.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\Components\CoinFlip.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\Components\ComponentBase.cpp" />
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlCombineStaged.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlDraw.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlEndTurn.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlNeutral.cpp" />
@@ -647,6 +648,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Scenes\Hexus\Components\CoinFlip.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\Components\ComponentBase.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\Components\Components.h" />
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlCombineStaged.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlDraw.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlEndTurn.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlNeutral.h" />
