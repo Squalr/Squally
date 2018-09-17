@@ -16,18 +16,11 @@ elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL GNU)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wno-sign-compare -Wno-reorder -Wno-unused-variable")
 elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL Intel)
   # using Intel C++
-elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
+elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC)
   # using Visual Studio C++
 endif()
 
-message(WARNING ${CMAKE_CXX_COMPILER_ID})
-
 option(SKIP_EXAMPLES "Only build the spriterengine and skip all examples" ON)
-
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Release/GreyGuy
-    ${CMAKE_CURRENT_SOURCE_DIR}/Release/GreyGuyAtlas
-    ${CMAKE_CURRENT_SOURCE_DIR}/Release/PT-Sans
-    DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 
 add_subdirectory(spriterengine)
 

@@ -78,6 +78,21 @@ set(COCOS_2D_HEADER
     2d/CCCamera.h
     2d/CCParallaxNode.h
     2d/CCGrabber.h
+	
+	# Spriter++
+	2d/CCAnimationNode.h
+	2d/CCBoneInstanceInfo.h
+	2d/CCBoxInstanceInfo.h
+	2d/CCFileFactory.h
+	2d/CCImageFile.h
+	2d/CCObjectFactory.h
+	2d/CCPointInstanceInfo.h
+	2d/CCSoundFile.h
+	2d/CCSoundObjectInfoReference.h
+	2d/CCTriggerObjectInfo.h
+	2d/TinyXmlSpriterFileAttributeWrapper.h
+	2d/TinyXmlSpriterFileDocumentWrapper.h
+	2d/TinyXmlSpriterFileElementWrapper.h
 
     )
 
@@ -155,5 +170,20 @@ set(COCOS_2D_SRC
     2d/CCTransitionPageTurn.cpp
     2d/CCTransitionProgress.cpp
     2d/CCTweenFunction.cpp
+	
+	# Spriter++
+	2d/CCAnimationNode.cpp
+	2d/CCBoneInstanceInfo.cpp
+	2d/CCBoxInstanceInfo.cpp
+	2d/CCFileFactory.cpp
+	2d/CCImageFile.cpp
+	2d/CCObjectFactory.cpp
+	2d/CCPointInstanceInfo.cpp
+	2d/CCSoundFile.cpp
+	2d/CCSoundObjectInfoReference.cpp
+	2d/CCTriggerObjectInfo.cpp
+	2d/TinyXmlSpriterFileAttributeWrapper.cpp
+	2d/TinyXmlSpriterFileDocumentWrapper.cpp
+	2d/TinyXmlSpriterFileElementWrapper.cpp
 
     )

@@ -11,6 +11,11 @@ add_library(fasm STATIC
   ${FASM_SRC}
 )
 
+target_link_libraries(
+    fasm
+    ${CMAKE_CURRENT_SOURCE_DIR}/Fasm.obj
+)
+
 set_target_properties(fasm
     PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"

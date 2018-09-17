@@ -14,7 +14,7 @@
 #
 
 find_path(RAPIDJSON_INCLUDE_DIR
-	NAMES RAPIDJSON/include/rapidjson/rapidjson.h
+	NAMES RAPIDJSON/rapidjson.h
 	PATH_SUFFIXES include
 )
 
