@@ -44,7 +44,7 @@ void ControlEndTurn::endTurn(GameState* gameState)
 	}
 
 	CallFunc* changeState = CallFunc::create([gameState] {
-		GameState::updateState(gameState, GameState::StateType::Draw);
+		GameState::updateState(gameState, GameState::StateType::ControlNeutral);
 	});
 
 	this->runAction(Sequence::create(

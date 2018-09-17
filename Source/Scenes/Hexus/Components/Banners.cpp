@@ -58,13 +58,13 @@ void Banners::updateBanner(GameState* gameState)
 	case GameState::StateType::FirstSideBanner:
 		stateTransition = CallFunc::create([gameState]
 		{
-			GameState::updateState(gameState, GameState::StateType::Draw);
+			GameState::updateState(gameState, GameState::StateType::ControlNeutral);
 		});
 		break;
 	case GameState::StateType::TurnBanner:
 		stateTransition = CallFunc::create([gameState]
 		{
-			GameState::updateState(gameState, GameState::StateType::Draw);
+			GameState::updateState(gameState, GameState::StateType::ControlNeutral);
 		});
 		break;
 	default:
