@@ -1,5 +1,13 @@
 #include "MenuSprite.h"
 
+/*
+NOTE TO OTHER DEVELOPERS:
+
+This is the worst written class in this entire codebase. If you need to change something here, probably just ask Zac.
+
+One day I'll figure out how to refactor this sphagetti garbage fire of state variables.
+*/
+
 MenuSprite* MenuSprite::create(std::string spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource)
 {
 	return MenuSprite::create(Sprite::create(spriteNormal), Sprite::create(spriteSelectedResource), Sprite::create(spriteClickedResource));
@@ -74,16 +82,13 @@ void MenuSprite::update(float dt)
 void MenuSprite::disableInteraction()
 {
 	this->interactionEnabled = false;
-
-	// Restore normal sprite
-	this->sprite->setVisible(true);
-	this->spriteClicked->setVisible(false);
-	this->spriteSelected->setVisible(false);
+	this->showSprite(this->sprite);
 }
 
 void MenuSprite::enableInteraction()
 {
 	this->interactionEnabled = true;
+	this->showSprite(this->sprite);
 }
 
 void MenuSprite::setContentScale(float scale)
@@ -149,6 +154,25 @@ bool MenuSprite::intersects(Vec2 mousePos)
 	return GameUtils::intersects(this, Vec2(mousePos.x, mousePos.y) + this->offsetCorrection);
 }
 
+void MenuSprite::showSprite(Node* sprite)
+{
+	// Hide everything
+	this->sprite->setVisible(false);
+	this->spriteClicked->setVisible(false);
+	this->spriteSelected->setVisible(false);
+
+	if (this->interactionEnabled)
+	{
+		// Show the specified one
+		sprite->setVisible(true);
+	}
+	else
+	{
+		// Interaction disabled -- only show the main sprite
+		this->sprite->setVisible(true);
+	}
+}
+
 void MenuSprite::onMouseMove(EventCustom* event)
 {
 	MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(event->getUserData());
@@ -181,10 +205,7 @@ void MenuSprite::onMouseMove(EventCustom* event)
 
 			if (!args->isDragging && args->isLeftClicked)
 			{
-				// Show mouse click sprite
-				this->sprite->setVisible(false);
-				this->spriteClicked->setVisible(true);
-				this->spriteSelected->setVisible(false);
+				this->showSprite(this->spriteClicked);
 
 				// Mouse down callback
 				if (this->mouseDownEvent != nullptr)
@@ -194,10 +215,7 @@ void MenuSprite::onMouseMove(EventCustom* event)
 			}
 			else
 			{
-				// Show mouse hover sprite
-				this->sprite->setVisible(false);
-				this->spriteClicked->setVisible(false);
-				this->spriteSelected->setVisible(true);
+				this->showSprite(this->spriteSelected);
 			}
 
 			// Mouse over callback
@@ -212,10 +230,7 @@ void MenuSprite::onMouseMove(EventCustom* event)
 		}
 		else
 		{
-			// Show normal sprite
-			this->sprite->setVisible(true);
-			this->spriteClicked->setVisible(false);
-			this->spriteSelected->setVisible(false);
+			this->showSprite(this->sprite);
 		}
 	}
 }
@@ -279,9 +294,7 @@ void MenuSprite::onMouseUp(EventCustom* event)
 					SoundManager::playSoundResource(this->clickSound);
 				}
 
-				this->sprite->setVisible(false);
-				this->spriteClicked->setVisible(false);
-				this->spriteSelected->setVisible(true);
+				this->showSprite(this->spriteSelected);
 
 				event->stopPropagation();
 			}

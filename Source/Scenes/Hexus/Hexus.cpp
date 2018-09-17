@@ -26,6 +26,7 @@ Hexus::Hexus()
 	this->deckCardCountDisplay = DeckCardCountDisplay::create();
 	this->handCardCountDisplay = HandCardCountDisplay::create();
 	this->lossesDisplay = LossesDisplay::create();
+	this->passButton = PassButton::create();
 	this->rowTotals = RowTotals::create();
 	this->scoreTotal = ScoreTotal::create();
 
@@ -39,6 +40,7 @@ Hexus::Hexus()
 	this->addChild(this->controlEndTurn);
 	this->addChild(this->cardPreview);
 	this->addChild(this->lossesDisplay);
+	this->addChild(this->passButton);
 	this->addChild(this->deckCardCountDisplay);
 	this->addChild(this->handCardCountDisplay);
 	this->addChild(this->rowTotals);

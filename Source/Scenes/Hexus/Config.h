@@ -66,6 +66,8 @@ public:
 	static const float statusLabelOffsetY;
 	static const float graveyardOffsetX;
 	static const float graveyardOffsetY;
+	static const float passButtonOffsetX;
+	static const float passButtonOffsetY;
 	static const float socketOffsetY;
 	static const float socketAOffsetX;
 	static const float socketBOffsetX;

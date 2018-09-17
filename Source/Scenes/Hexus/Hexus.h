@@ -46,6 +46,7 @@ private:
 	DeckCardCountDisplay* deckCardCountDisplay;
 	HandCardCountDisplay* handCardCountDisplay;
 	LossesDisplay* lossesDisplay;
+	PassButton* passButton;
 	RowTotals* rowTotals;
 	ScoreTotal* scoreTotal;
 };
