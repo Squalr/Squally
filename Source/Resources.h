@@ -3636,6 +3636,7 @@ public:
 	static const std::string Menus_OptionsMenu_CheckboxSelected;
 	static const std::string Menus_OptionsMenu_MusicIcon;
 	static const std::string Menus_OptionsMenu_OptionsMenu;
+	static const std::string Menus_OptionsMenu_OptionsMenu_orginal;
 	static const std::string Menus_OptionsMenu_RadioButtonEmpty;
 	static const std::string Menus_OptionsMenu_RadioButtonHover;
 	static const std::string Menus_OptionsMenu_RadioButtonSelected;
@@ -3762,6 +3763,9 @@ public:
 	static const std::string Minigames_CoinFlipSkeletonOut1;
 	static const std::string Minigames_CoinFlipSkeletonOut2;
 	static const std::string Minigames_Hexus_AvatarFrame;
+	static const std::string Minigames_Hexus_Button;
+	static const std::string Minigames_Hexus_ButtonClick;
+	static const std::string Minigames_Hexus_ButtonHover;
 	static const std::string Minigames_Hexus_CardBackAir;
 	static const std::string Minigames_Hexus_CardBackEarth;
 	static const std::string Minigames_Hexus_CardBackFire;

@@ -32,7 +32,6 @@ void GlobalDirector::loadScene(Scene* scene)
 		this->getParent()->removeChild(this);
 	}
 
-	scene->setVisible(true);
 	scene->addChild(this);
 
 	if (this->activeScene == nullptr)
@@ -41,13 +40,11 @@ void GlobalDirector::loadScene(Scene* scene)
 	}
 	else
 	{
-		this->activeScene->setVisible(false);
+		GameUtils::pause(this->activeScene);
 		Director::getInstance()->replaceScene(scene);
 	}
 
 	this->activeScene = scene;
-
-	// The engine likes to pause this node after it switches parents -- prevent this
 	GameUtils::resume(scene);
 }
 

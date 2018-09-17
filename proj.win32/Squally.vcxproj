@@ -375,6 +375,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Source\Scenes\Hexus\Components\DeckCardCountDisplay.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\Components\HandCardCountDisplay.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\Components\LossesDisplay.cpp" />
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\PassButton.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\Components\RowTotals.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\Components\ScoreTotal.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\Config.cpp" />
@@ -657,6 +658,7 @@ xcopy "../Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Source\Scenes\Hexus\Components\DeckCardCountDisplay.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\Components\HandCardCountDisplay.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\Components\LossesDisplay.h" />
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\PassButton.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\Components\RowTotals.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\Components\ScoreTotal.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\Config.h" />
