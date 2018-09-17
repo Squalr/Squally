@@ -22,7 +22,7 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#include "../Classes/AppDelegate.h"
+#include "../Source/GameWindow.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -34,6 +34,6 @@ USING_NS_CC;
 int main(int argc, char **argv)
 {
     // create the application instance
-    AppDelegate app;
+    GameWindow app;
     return Application::getInstance()->run();
 }
