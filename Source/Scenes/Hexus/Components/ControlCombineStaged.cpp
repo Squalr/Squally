@@ -105,18 +105,32 @@ void ControlCombineStaged::selectCard(Card* card)
 
 void ControlCombineStaged::stageCombineTarget(Card* card)
 {
+	// If we click a card that is already selected our source, deselect our source
 	if (this->activeGameState->stagedCombineSourceCard == card) {
 		card->unfocus();
 		this->activeGameState->stagedCombineSourceCard = nullptr;
+		this->updateCombineStatus();
+		return;
 	}
 
+	// If we click a card that is already selected our destination, deselect our destination
+	if (this->activeGameState->stagedCombineTargetCard == card) {
+		card->unfocus();
+		this->activeGameState->stagedCombineTargetCard = nullptr;
+		this->updateCombineStatus();
+		return;
+	}
+
+	// we assign the source card first, then the destination/target
 	if (this->activeGameState->stagedCombineSourceCard == nullptr) {
 		card->focus();
 		this->activeGameState->stagedCombineSourceCard = card;
+		this->updateCombineStatus();
 	}
 	else {
 		card->focus();
 		this->activeGameState->stagedCombineTargetCard = card;
+		this->updateCombineStatus();
 	}
 
 	switch (this->activeGameState->selectedCard->cardData->cardType) {
@@ -141,8 +155,6 @@ void ControlCombineStaged::stageCombineTarget(Card* card)
 		}
 		break;
 	}
-
-	this->updateCombineStatus();
 }
 
 void ControlCombineStaged::onCombineCancel(MenuSprite* menuSprite)
@@ -160,29 +172,17 @@ void ControlCombineStaged::updateCombineStatus()
 		return;
 	}
 	
-	switch (this->activeGameState->stateType)
-	{
-	case GameState::StateType::ControlCombineStaged:
-
-		switch (this->activeGameState->selectedCard->cardData->cardType) {
-		case CardData::CardType::Special_AND:
-		case CardData::CardType::Special_OR:
-		case CardData::CardType::Special_XOR:
-		case CardData::CardType::Special_ADD:
-		case CardData::CardType::Special_SUB:
-
-			if (this->activeGameState->stagedCombineSourceCard == nullptr) {
-				this->combineStatus->setString("Choose the source card for your operation");
-			}
-			else {
-				this->combineStatus->setString("Choose the target/destination card for your operation");
-			}
-		}
-
+	if (this->activeGameState->stagedCombineSourceCard == nullptr) {
+		this->combineStatus->setString("Choose the source card for your operation");
 		this->combineStatus->runAction(FadeTo::create(0.25f, 255));
 		this->cancelButton->runAction(FadeTo::create(0.25f, 255));
-		break;
-	default:
+	}
+	else if (this->activeGameState->stagedCombineTargetCard == nullptr) {
+		this->combineStatus->setString("Choose the target/destination card for your operation");
+		this->combineStatus->runAction(FadeTo::create(0.25f, 255));
+		this->cancelButton->runAction(FadeTo::create(0.25f, 255));
+	}
+	else {
 		this->combineStatus->runAction(FadeTo::create(0.25f, 0));
 		this->cancelButton->runAction(FadeTo::create(0.25f, 0));
 	}
