@@ -32,6 +32,8 @@ project(${APP_NAME})
 set(COCOS2DX_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cocos2d)
 set(CMAKE_MODULE_PATH ${COCOS2DX_ROOT_PATH}/cmake/Modules/)
 
+set(USE_COCOS_PREBUILT OFF)
+
 include(CocosBuildSet)
 if(NOT USE_COCOS_PREBUILT)
     add_subdirectory(${COCOS2DX_ROOT_PATH}/cocos ${ENGINE_BINARY_PATH}/cocos/core)
@@ -49,24 +51,11 @@ if(APPLE OR WINDOWS)
 endif()
 
 include_directories(
-        Source
+        ${CMAKE_CURRENT_SOURCE_DIR}/Source/
         ${COCOS2DX_ROOT_PATH}/cocos/audio/include/
 )
-# add cross-platforms source files and header files
-list(APPEND GAME_SOURCE
-     Source/main.cpp
-     )
-list(APPEND GAME_HEADER
-     Source/main.h
-     )
 
-if(ANDROID)
-    # change APP_NAME to the share library name for Android, it's value depend on AndroidManifest.xml
-    set(APP_NAME MyGame)
-    list(APPEND GAME_SOURCE
-         proj.android/app/jni/hellocpp/main.cpp
-         )
-elseif(LINUX)
+if(LINUX)
     list(APPEND GAME_SOURCE
          proj.linux/main.cpp
          )
@@ -81,24 +70,7 @@ elseif(WINDOWS)
          ${common_res_files}
          )
 elseif(APPLE)
-    if(IOS)
-        list(APPEND GAME_HEADER
-             proj.ios_mac/ios/AppController.h
-             proj.ios_mac/ios/RootViewController.h
-             )
-        set(APP_UI_RES
-            proj.ios_mac/ios/LaunchScreen.storyboard
-            proj.ios_mac/ios/LaunchScreenBackground.png
-            proj.ios_mac/ios/Images.xcassets
-            )
-        list(APPEND GAME_SOURCE
-             proj.ios_mac/ios/main.m
-             proj.ios_mac/ios/AppController.mm
-             proj.ios_mac/ios/RootViewController.mm
-             proj.ios_mac/ios/Prefix.pch
-             ${APP_UI_RES}
-             )
-    elseif(MACOSX)
+    if(MACOSX)
         set(APP_UI_RES
             proj.ios_mac/mac/Icon.icns
             proj.ios_mac/mac/Info.plist
@@ -120,7 +92,6 @@ set(APP_SRC
 cocos_build_app(${APP_NAME}
                 APP_SRC "${APP_SRC}"
                 DEPEND_COMMON_LIBS "cocos2d"
-                DEPEND_ANDROID_LIBS "cocos2d_android"
                 )
 
 if(APPLE)
@@ -129,9 +100,6 @@ if(APPLE)
         set_target_properties(${APP_NAME} PROPERTIES
                               MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/proj.ios_mac/mac/Info.plist"
                               )
-    elseif(IOS)
-        cocos_pak_xcode(${APP_NAME} INFO_PLIST "iOSBundleInfo.plist.in")
-        set_xcode_property(${APP_NAME} ASSETCATALOG_COMPILER_APPICON_NAME "AppIcon")
     endif()
 elseif(WINDOWS)
     cocos_copy_target_dll(${APP_NAME} COPY_TO ${APP_BIN_DIR})

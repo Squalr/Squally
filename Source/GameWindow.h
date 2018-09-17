@@ -13,11 +13,11 @@ using namespace cocos_experimental;
 
 Private inheritance here hides part of interface from Director.
 */
-class  Window : private Application
+class  GameWindow : private Application
 {
 public:
-	Window();
-	virtual ~Window();
+	GameWindow();
+	virtual ~GameWindow();
 
 	virtual void initGLContextAttrs();
 
@@ -41,5 +41,5 @@ public:
 	virtual void applicationWillEnterForeground();
 
 private:
-	std::string windowTitle = "Squally";
+	std::string GameWindowTitle = "Squally";
 };

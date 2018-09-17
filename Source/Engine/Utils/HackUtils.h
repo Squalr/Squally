@@ -2,7 +2,7 @@
 #include <bitset>
 
 #include "cocos2d.h"
-#include "fasm.h"
+#include "Fasm.h"
 #include "udis86.h"
 
 using namespace cocos2d;
