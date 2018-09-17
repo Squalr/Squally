@@ -1009,6 +1009,9 @@
     <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlCombineStaged.cpp">
       <Filter>Source\Scenes\Hexus\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\PassButton.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Resources.h">
@@ -1853,6 +1856,9 @@
       <Filter>Source\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlCombineStaged.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\PassButton.h">
       <Filter>Source\Scenes\Hexus\Components</Filter>
     </ClInclude>
   </ItemGroup>
