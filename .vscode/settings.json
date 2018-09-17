@@ -1,1 +1,6 @@
-{}
+{
+    "files.associations": {
+        "type_traits": "cpp"
+    },
+    "C_Cpp.configurationWarnings": "Disabled"
+}
