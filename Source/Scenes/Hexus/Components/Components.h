@@ -11,6 +11,6 @@
 #include "DeckCardCountDisplay.h"
 #include "HandCardCountDisplay.h"
 #include "LossesDisplay.h"
-#include "Resources.h"
+#include "PassButton.h"
 #include "RowTotals.h"
 #include "ScoreTotal.h"

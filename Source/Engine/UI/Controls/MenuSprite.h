@@ -35,6 +35,7 @@ private:
 	void onEnter() override;
 	void update(float) override;
 	bool intersects(Vec2 mousePos);
+	void showSprite(Node* sprite);
 	void onMouseMove(EventCustom* event);
 	void onMouseDown(EventCustom* event);
 	void onMouseUp(EventCustom* event);
