@@ -19,7 +19,7 @@ BinaryHelpMenu::~BinaryHelpMenu()
 
 void BinaryHelpMenu::onEnter()
 {
-	BinaryHelpMenu::onEnter();
+	HelpMenuBase::onEnter();
 
 	this->initializePositions();
 	this->initializeListeners();

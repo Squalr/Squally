@@ -55,6 +55,16 @@ include_directories(
         ${COCOS2DX_ROOT_PATH}/cocos/audio/include/
 )
 
+# add cross-platforms source files
+file(GLOB_RECURSE GAME_SOURCE
+    "Source/*.cpp"
+)
+
+# add cross-platforms header files
+file(GLOB_RECURSE GAME_HEADER
+    "Source/*.h"
+)
+
 if(LINUX)
     list(APPEND GAME_SOURCE
          proj.linux/main.cpp
