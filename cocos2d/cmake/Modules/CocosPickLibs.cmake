@@ -162,6 +162,10 @@ set(all_prebuilt_libs
     Box2D
     luajit
     spidermonkey
+	spriterengine
+	fasm
+	udis86
+	rapidjson
     )
 
 
