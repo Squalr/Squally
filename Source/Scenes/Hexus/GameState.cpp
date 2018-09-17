@@ -25,6 +25,8 @@ GameState::GameState()
 	requestAiCallback(nullptr)
 {
 	this->stagedSacrificeTargets = new std::set<Card*>();
+	this->stagedCombineSourceCard = nullptr;
+	this->stagedCombineTargetCard = nullptr;
 	this->playerDeck = Deck::create();
 	this->playerHand = CardRow::create();
 	this->playerGraveyard = Deck::create();
