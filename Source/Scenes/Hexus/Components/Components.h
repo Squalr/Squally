@@ -6,6 +6,7 @@
 #include "ControlEndturn.h"
 #include "ControlNeutral.h"
 #include "ControlReplaceCards.h"
+#include "ControlCombineStaged.h"
 #include "ControlSacrificeStaged.h"
 #include "ControlSelectionStaged.h"
 #include "DeckCardCountDisplay.h"
