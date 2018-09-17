@@ -155,9 +155,9 @@ Card::Operation Card::toOperation(CardData::CardType playedCardType, unsigned in
 	case CardData::CardType::Special_XOR:
 		return Operation(Operation::OperationType::XOR, immediate);
 	case CardData::CardType::Special_ADD:
-		return Operation(Operation::OperationType::XOR, immediate);
+		return Operation(Operation::OperationType::ADD, immediate);
 	case CardData::CardType::Special_SUB:
-		return Operation(Operation::OperationType::XOR, immediate);
+		return Operation(Operation::OperationType::SUB, immediate);
 	case CardData::CardType::Special_INV:
 		return Operation(Operation::OperationType::XOR, 0b1111);
 	}
