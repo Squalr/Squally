@@ -25,6 +25,7 @@ public:
 		ControlNeutral,
 		ControlSelectionStaged,
 		ControlSacrificeStaged,
+		ControlCombineStaged,
 		EndTurn,
 	};
 
@@ -57,6 +58,8 @@ public:
 	int enemyLosses;
 	Card* stagedSacrifice;
 	CardRow* stagedSacrificeCardRow;
+	Card* stagedCombineSourceCard;
+	Card* stagedCombineTargetCard;
 	Card* selectedCard;
 	std::string bannerMessage;
 	std::set<Card*>* stagedSacrificeTargets;

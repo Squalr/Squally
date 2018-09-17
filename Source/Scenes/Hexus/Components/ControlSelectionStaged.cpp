@@ -105,10 +105,9 @@ void ControlSelectionStaged::initializeCallbacks(GameState* gameState)
 	case CardData::CardType::Special_XOR:
 	case CardData::CardType::Special_ADD:
 	case CardData::CardType::Special_SUB:
-		// These cards require a sacrifice
-		gameState->playerBinaryCards->enableRowCardSelection(CC_CALLBACK_1(ControlSelectionStaged::stageSelectedSacrificeCard, this));
-		gameState->playerDecimalCards->enableRowCardSelection(CC_CALLBACK_1(ControlSelectionStaged::stageSelectedSacrificeCard, this));
-		gameState->playerHexCards->enableRowCardSelection(CC_CALLBACK_1(ControlSelectionStaged::stageSelectedSacrificeCard, this));
+		gameState->playerBinaryCards->enableRowCardSelection(CC_CALLBACK_1(ControlSelectionStaged::stageSelectedCombineCard, this));
+		gameState->playerDecimalCards->enableRowCardSelection(CC_CALLBACK_1(ControlSelectionStaged::stageSelectedCombineCard, this));
+		gameState->playerHexCards->enableRowCardSelection(CC_CALLBACK_1(ControlSelectionStaged::stageSelectedCombineCard, this));
 		break;
 	}
 }
@@ -144,15 +143,27 @@ void ControlSelectionStaged::stageSelectedSacrificeCard(Card* card)
 	}
 
 	switch (this->activeGameState->selectedCard->cardData->cardType) {
-	case CardData::CardType::Special_AND:
-	case CardData::CardType::Special_OR:
-	case CardData::CardType::Special_XOR:
-	case CardData::CardType::Special_ADD:
-	case CardData::CardType::Special_SUB:
+	default:
 		this->activeGameState->stagedSacrifice = card;
 		this->activeGameState->stagedSacrificeCardRow = dynamic_cast<CardRow*>(card->getParent());
 
 		GameState::updateState(this->activeGameState, GameState::StateType::ControlSacrificeStaged);
+		break;
+	}
+}
+
+void ControlSelectionStaged::stageSelectedCombineCard(Card* card)
+{
+	if (this->activeGameState->selectedCard == nullptr)
+	{
+		return;
+	}
+
+	switch (this->activeGameState->selectedCard->cardData->cardType) {
+	default:
+		this->activeGameState->stagedCombineSourceCard = card;
+
+		GameState::updateState(this->activeGameState, GameState::StateType::ControlCombineStaged);
 		break;
 	}
 }
@@ -289,7 +300,7 @@ void ControlSelectionStaged::updateSelectionStatus()
 			case CardData::CardType::Special_XOR:
 			case CardData::CardType::Special_ADD:
 			case CardData::CardType::Special_SUB:
-				this->selectionLabel->setString("Choose a card to sacrifice");
+				this->selectionLabel->setString("Choose a source card for the operation");
 				break;
 			case CardData::CardType::Binary:
 			case CardData::CardType::Decimal:

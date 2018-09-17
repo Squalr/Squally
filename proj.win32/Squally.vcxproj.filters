@@ -1006,6 +1006,9 @@
     <ClCompile Include="..\Source\Engine\EngineBootstrapper.cpp">
       <Filter>Source\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlCombineStaged.cpp">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Resources.h">
@@ -1848,6 +1851,9 @@
     </ClInclude>
     <ClInclude Include="..\Source\Engine\EngineBootstrapper.h">
       <Filter>Source\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlCombineStaged.h">
+      <Filter>Source\Scenes\Hexus\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
