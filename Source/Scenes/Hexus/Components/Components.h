@@ -3,7 +3,7 @@
 #include "CardPreview.h"
 #include "CoinFlip.h"
 #include "ControlDraw.h"
-#include "ControlEndturn.h"
+#include "ControlEndTurn.h"
 #include "ControlNeutral.h"
 #include "ControlReplaceCards.h"
 #include "ControlCombineStaged.h"
