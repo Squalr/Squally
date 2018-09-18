@@ -52,7 +52,7 @@
 #include "Entities/Platformer/Enemies/Jungle/Minotaur.h"
 #include "Entities/Platformer/Enemies/Jungle/PigDemon.h"
 #include "Entities/Platformer/Enemies/Jungle/PurpleDinosaur.h"
-#include "Entities/Platformer/Enemies/Jungle/Tikigolem.h"
+#include "Entities/Platformer/Enemies/Jungle/TikiGolem.h"
 #include "Entities/Platformer/Enemies/Jungle/TikiWarrior.h"
 
 #include "Entities/Platformer/Enemies/Mech/Robot.h"
