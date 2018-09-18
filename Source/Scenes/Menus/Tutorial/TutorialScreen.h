@@ -26,8 +26,8 @@ protected:
 private:
 	void loadLevels();
 	void onEnter() override;
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
+	void initializeListeners() override;
 	void onCloseClick(MenuSprite* menuSprite);
 	void onMouseOver(TutorialItem* tutorialItem);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);

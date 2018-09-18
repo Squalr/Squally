@@ -25,8 +25,8 @@ protected:
 
 private:
 	void onEnter() override;
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
+	void initializeListeners() override;
 	void onExitConfirm();
 	void onCloseClick(MenuSprite* menuSprite);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);

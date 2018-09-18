@@ -84,7 +84,7 @@ void Dialogue::runTypeWriterEffect()
 
 	if (it == mapTypeIdx.end())
 	{
-		std::pair<std::map<Label*, int>::iterator, bool> ret = mapTypeIdx.insert(std::pair<Label*, int>(this->label, 0));
+		mapTypeIdx.insert(std::pair<Label*, int>(this->label, 0));
 		it = mapTypeIdx.find(this->label);
 	}
 	else

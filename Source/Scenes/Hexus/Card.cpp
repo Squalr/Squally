@@ -160,6 +160,8 @@ Card::Operation Card::toOperation(CardData::CardType playedCardType, unsigned in
 		return Operation(Operation::OperationType::SUB, immediate);
 	case CardData::CardType::Special_INV:
 		return Operation(Operation::OperationType::XOR, 0b1111);
+	default:
+		return Operation(Operation::OperationType::AND, 0b000);
 	}
 }
 

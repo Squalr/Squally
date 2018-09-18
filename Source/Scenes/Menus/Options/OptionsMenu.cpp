@@ -251,9 +251,6 @@ void OptionsMenu::onEnter()
 	GameUtils::fadeInObject(this->option3840x2160, delay, duration);
 
 	this->background->addChild(MenuBackground::claimInstance());
-
-	this->initializePositions();
-	this->initializeListeners();
 }
 
 bool OptionsMenu::onFullScreenChanged(CCheckbox* checkbox, bool isFullScreen)
@@ -320,13 +317,11 @@ void OptionsMenu::onResolutionChanged(CRadioButton* radioButton)
 	{
 		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R3840x2160);
 	}
-
-	this->initializePositions();
 }
 
 void OptionsMenu::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	FadeScene::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -337,6 +332,8 @@ void OptionsMenu::initializeListeners()
 
 void OptionsMenu::initializePositions()
 {
+	FadeScene::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->optionsWindow->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
@@ -403,11 +400,13 @@ void OptionsMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode)
 	{
-	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		ConfigManager::save();
-		event->stopPropagation();
-		NavigationEvents::navigateBack();
-		break;
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
+			ConfigManager::save();
+			event->stopPropagation();
+			NavigationEvents::navigateBack();
+			break;
+		default:
+			break;
 	}
 }
 

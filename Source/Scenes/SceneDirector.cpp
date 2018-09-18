@@ -156,6 +156,8 @@ void SceneDirector::onGameNavigateNew(EventCustom* eventCustom)
 	case NavigationEvents::GameScreen::Hexus:
 		newScene = this->hexus;
 		break;
+	default:
+		return;
 	}
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());

@@ -61,14 +61,13 @@ void Hexus::onEnter()
 {
 	FadeScene::onEnter();
 
-	this->initializePositions();
-	this->initializeListeners();
-
 	GameState::updateState(this->gameState, GameState::StateType::DrawInitialCards);
 }
 
 void Hexus::initializePositions()
 {
+	FadeScene::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->gameBackground->setPosition(visibleSize.width / 2.0f, visibleSize.height / 2.0f);
@@ -76,8 +75,8 @@ void Hexus::initializePositions()
 
 void Hexus::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
-
+	FadeScene::initializeListeners();
+	
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(Hexus::onKeyPressed, this);
@@ -114,9 +113,11 @@ void Hexus::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 	switch (keyCode)
 	{
-	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		//this->gameState->cancelCurrentAction(true);
-		break;
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
+			//this->gameState->cancelCurrentAction(true);
+			break;
+		default:
+			break;
 	}
 }
 

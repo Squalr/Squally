@@ -175,43 +175,46 @@ void ControlSelectionStaged::playSelectedCard(CardRow* cardRow)
 		return;
 	}
 
-	switch (this->activeGameState->selectedCard->cardData->cardType) {
-	case CardData::CardType::Binary:
-		this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
-		this->activeGameState->playerBinaryCards->insertCard(this->activeGameState->selectedCard, Config::insertDelay);
-		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
-		break;
-	case CardData::CardType::Decimal:
-		this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
-		this->activeGameState->playerDecimalCards->insertCard(this->activeGameState->selectedCard, Config::insertDelay);
-		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
-		break;
-	case CardData::CardType::Hexidecimal:
-		this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
-		this->activeGameState->playerHexCards->insertCard(this->activeGameState->selectedCard, Config::insertDelay);
-		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
-		break;
-	case CardData::CardType::Special_SHL:
-	case CardData::CardType::Special_SHR:
-	case CardData::CardType::Special_FLIP1:
-	case CardData::CardType::Special_FLIP2:
-	case CardData::CardType::Special_FLIP3:
-	case CardData::CardType::Special_FLIP4:
-	case CardData::CardType::Special_INV:
-		this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
-		this->activeGameState->playerGraveyard->insertCardTop(this->activeGameState->selectedCard, true, Config::insertDelay);
+	switch (this->activeGameState->selectedCard->cardData->cardType)
+	{
+		case CardData::CardType::Binary:
+			this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
+			this->activeGameState->playerBinaryCards->insertCard(this->activeGameState->selectedCard, Config::insertDelay);
+			GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+			break;
+		case CardData::CardType::Decimal:
+			this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
+			this->activeGameState->playerDecimalCards->insertCard(this->activeGameState->selectedCard, Config::insertDelay);
+			GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+			break;
+		case CardData::CardType::Hexidecimal:
+			this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
+			this->activeGameState->playerHexCards->insertCard(this->activeGameState->selectedCard, Config::insertDelay);
+			GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+			break;
+		case CardData::CardType::Special_SHL:
+		case CardData::CardType::Special_SHR:
+		case CardData::CardType::Special_FLIP1:
+		case CardData::CardType::Special_FLIP2:
+		case CardData::CardType::Special_FLIP3:
+		case CardData::CardType::Special_FLIP4:
+		case CardData::CardType::Special_INV:
+			this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
+			this->activeGameState->playerGraveyard->insertCardTop(this->activeGameState->selectedCard, true, Config::insertDelay);
 
-		Card::Operation operation = Card::toOperation(this->activeGameState->selectedCard->cardData->cardType, 0);
+			Card::Operation operation = Card::toOperation(this->activeGameState->selectedCard->cardData->cardType, 0);
 
-		for (auto it = cardRow->rowCards->begin(); it != cardRow->rowCards->end(); it++)
-		{
-			Card* card = *it;
+			for (auto it = cardRow->rowCards->begin(); it != cardRow->rowCards->end(); it++)
+			{
+				Card* card = *it;
 
-			card->addOperation(operation);
-		}
+				card->addOperation(operation);
+			}
 
-		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
-		break;
+			GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+			break;
+		default:
+			break;
 	}
 
 	this->activeGameState->selectedCard = nullptr;

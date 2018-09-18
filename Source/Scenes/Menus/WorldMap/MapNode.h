@@ -4,7 +4,6 @@
 #include "Resources.h"
 #include "Events/NavigationEvents.h"
 #include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Mouse.h"
 #include "Scenes/Maps/Isometric/IsometricMap.h"
 #include "Scenes/Maps/Platformer/PlatformerMap.h"
 
@@ -31,7 +30,6 @@ private:
 	void onNodeClick(MenuSprite* menuSprite);
 
 	bool locked;
-	Mouse* mouse;
 	MenuSprite* mapSprite;
 	Sprite* mapSpriteLocked;
 };

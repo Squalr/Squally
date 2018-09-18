@@ -44,42 +44,49 @@ void ControlReplaceCards::onStateChange(GameState* gameState)
 {
 	this->activeGameState = gameState;
 
-	switch (gameState->stateType) {
-	case GameState::StateType::ControlReplaceCards:
-		if (gameState->stateType != gameState->previousStateType)
-		{
-			this->initializeCardReplace(gameState);
-		}
+	switch (gameState->stateType)
+	{
+		case GameState::StateType::ControlReplaceCards:
+			if (gameState->stateType != gameState->previousStateType)
+			{
+				this->initializeCardReplace(gameState);
+			}
 
-		this->initializeCallbacks(gameState);
-		this->updateBanner();
-		break;
-	}
-	switch (gameState->previousStateType) {
-	case GameState::StateType::ControlReplaceCards:
-		if (gameState->stateType == GameState::StateType::ControlReplaceCards)
-		{
+			this->initializeCallbacks(gameState);
+			this->updateBanner();
 			break;
-		}
+		default:
+			break;
+	}
 
-		// Restore hand to proper position
-		Size visibleSize = Director::getInstance()->getVisibleSize();
-		GameUtils::changeParent(gameState->playerHand, gameState, true);
-		gameState->playerHand->setCardScale(Card::cardScale, 0.25f);
-		gameState->playerHand->setRowWidth(Config::handWidth, 0.25f);
-		gameState->playerHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::handOffsetY)));
+	switch (gameState->previousStateType)
+	{
+		case GameState::StateType::ControlReplaceCards:
+			if (gameState->stateType == GameState::StateType::ControlReplaceCards)
+			{
+				break;
+			}
 
-		// Insert replaced cards back to deck
-		for (auto it = this->replacedCards->begin(); it != this->replacedCards->end(); it++)
-		{
-			Card* card = *it;
+			// Restore hand to proper position
+			Size visibleSize = Director::getInstance()->getVisibleSize();
+			GameUtils::changeParent(gameState->playerHand, gameState, true);
+			gameState->playerHand->setCardScale(Card::cardScale, 0.25f);
+			gameState->playerHand->setRowWidth(Config::handWidth, 0.25f);
+			gameState->playerHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::handOffsetY)));
 
-			card->setScale(Card::cardScale);
-			gameState->playerDeck->insertCardRandom(card, false, 0.0f);
-		}
+			// Insert replaced cards back to deck
+			for (auto it = this->replacedCards->begin(); it != this->replacedCards->end(); it++)
+			{
+				Card* card = *it;
 
-		this->updateBanner();
-		break;
+				card->setScale(Card::cardScale);
+				gameState->playerDeck->insertCardRandom(card, false, 0.0f);
+			}
+
+			this->updateBanner();
+			break;
+		default:
+			break;
 	}
 }
 

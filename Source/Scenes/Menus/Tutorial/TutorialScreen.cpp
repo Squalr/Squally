@@ -105,12 +105,12 @@ void TutorialScreen::onEnter()
 	// Initialize particles to an intermediate state
 	GameUtils::accelerateParticles(this->swirl, 5.0f);
 	GameUtils::accelerateParticles(this->nether, 1.0f);
-
-	this->initializePositions();
 }
 
 void TutorialScreen::initializePositions()
 {
+	TutorialScreen::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 

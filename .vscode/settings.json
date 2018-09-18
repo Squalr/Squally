@@ -20,7 +20,17 @@
         "unordered_map": "cpp",
         "unordered_set": "cpp",
         "vector": "cpp",
-        "memory": "cpp"
+        "memory": "cpp",
+        "__bit_reference": "cpp",
+        "__hash_table": "cpp",
+        "__split_buffer": "cpp",
+        "__tree": "cpp",
+        "array": "cpp",
+        "forward_list": "cpp",
+        "iterator": "cpp",
+        "regex": "cpp",
+        "string": "cpp",
+        "string_view": "cpp"
     },
     "C_Cpp.configurationWarnings": "Disabled"
 }

@@ -106,7 +106,6 @@ void Grid::onEnter()
 
 		for (int rowIndex = 0; rowIndex < Grid::lineRows; rowIndex++)
 		{
-			int inverseIndex = Grid::lineRows - rowIndex - 1;
 			Node* horizontalLine = (*this->horizontalLines)[rowIndex];
 			cumulativeWaitTimeX += animationSpeedX + animationVelocityX * rowIndex - ((animationAccelerationX * rowIndex * rowIndex) > animationSpeedX ? animationSpeedX : (animationAccelerationX * rowIndex * rowIndex));
 

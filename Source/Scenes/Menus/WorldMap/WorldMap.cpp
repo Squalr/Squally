@@ -143,8 +143,6 @@ WorldMap::WorldMap()
 	this->addChild(this->titleLabel);
 	this->addChild(this->infoLabel);
 	this->addChild(Mouse::create());
-
-	this->initializeListeners();
 }
 
 WorldMap::~WorldMap()
@@ -156,8 +154,6 @@ void WorldMap::onEnter()
 {
 	FadeScene::onEnter();
 
-	this->initializePositions();
-
 	const float delay = 0.5f;
 	const float duration = 0.75f;
 
@@ -167,6 +163,8 @@ void WorldMap::onEnter()
 
 void WorldMap::initializePositions()
 {
+	FadeScene::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - this->titleLabel->getContentSize().height / 2.0f - 64.0f));
@@ -192,7 +190,7 @@ void WorldMap::initializePositions()
 
 void WorldMap::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	FadeScene::initializeListeners();
 
 	EventListenerCustom* mouseListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(WorldMap::onMouseMove, this));
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
@@ -215,6 +213,8 @@ void WorldMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	case EventKeyboard::KeyCode::KEY_ESCAPE:
 		event->stopPropagation();
 		NavigationEvents::navigateBack();
+		break;
+	default:
 		break;
 	}
 }

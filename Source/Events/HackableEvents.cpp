@@ -1,4 +1,3 @@
-#pragma once
 #include "HackableEvents.h"
 
 const std::string HackableEvents::HackableObjectEditEvent = "hackable_object_edit_event";
