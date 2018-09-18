@@ -109,7 +109,7 @@ void TutorialScreen::onEnter()
 
 void TutorialScreen::initializePositions()
 {
-	TutorialScreen::initializePositions();
+	FadeScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -145,8 +145,6 @@ void TutorialScreen::initializePositions()
 
 void TutorialScreen::loadLevels()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	auto callback = CC_CALLBACK_1(TutorialScreen::onMouseOver, this);
 	int index = 0;
 
@@ -246,10 +244,12 @@ void TutorialScreen::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode)
 	{
-	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		event->stopPropagation();
-		NavigationEvents::navigateBack();
-		break;
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
+			event->stopPropagation();
+			NavigationEvents::navigateBack();
+			break;
+		default:
+			break;
 	}
 }
 

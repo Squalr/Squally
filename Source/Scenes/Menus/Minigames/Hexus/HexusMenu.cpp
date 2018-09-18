@@ -113,8 +113,6 @@ void HexusMenu::initializeListeners()
 
 void HexusMenu::loadLevels()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	auto callback = CC_CALLBACK_1(HexusMenu::onMouseOver, this);
 	int index = 0;
 
@@ -201,10 +199,12 @@ void HexusMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode)
 	{
-	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		event->stopPropagation();
-		NavigationEvents::navigateBack();
-		break;
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
+			event->stopPropagation();
+			NavigationEvents::navigateBack();
+			break;
+		default:
+			break;
 	}
 }
 
