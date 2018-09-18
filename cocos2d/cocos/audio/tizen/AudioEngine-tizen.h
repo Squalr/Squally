@@ -43,7 +43,7 @@
 #define ERRORLOG(msg) log("fun:%s,line:%d,msg:%s",__func__,__LINE__,#msg)
 
 NS_CC_BEGIN
-    namespace experimental{
+    namespace cocos_experimental{
 class AudioEngineImpl;
 
 class AudioPlayer

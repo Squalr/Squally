@@ -159,7 +159,7 @@ std::string getUrlStringByFileName(const std::string &fileName) {
 } // namespace
 
 namespace cocos2d {
-    namespace experimental {
+    namespace cocos_experimental {
         namespace ui{
 
             static std::unordered_map<int, cocos2d::experimental::ui::WebViewImpl*> s_WebViewImpls;
@@ -304,7 +304,7 @@ namespace cocos2d {
                 // empty function as this was mainly a fix for iOS
             }
         } // namespace ui
-    } // namespace experimental
+    } // namespace cocos_experimental
 } //namespace cocos2d
 
 #endif // __ANDROID__

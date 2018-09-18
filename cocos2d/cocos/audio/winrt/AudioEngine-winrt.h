@@ -33,7 +33,7 @@
 #include "audio/winrt/AudioCachePlayer.h"
 
 NS_CC_BEGIN
-    namespace experimental{
+    namespace cocos_experimental{
 #define MAX_AUDIOINSTANCES 32
 
  class CC_DLL AudioEngineImpl : public cocos2d::Ref

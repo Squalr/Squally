@@ -27,7 +27,7 @@
 #include "audio/winrt/AudioSourceReader.h"
 
 NS_CC_BEGIN
-namespace experimental{
+namespace cocos_experimental{
 
 typedef struct AudioInfo
 {
