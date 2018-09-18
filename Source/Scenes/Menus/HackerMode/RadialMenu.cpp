@@ -70,14 +70,14 @@ void RadialMenu::onHackableEdit(EventCustom* eventArgs)
 		float currentCodeAngle = currentDataAngle - (3.14159f / 3.0f);
 
 		Vec2 nextDataIconPosition = Vec2(sin(currentDataAngle) * RadialMenu::radialMenuRadius, cos(currentDataAngle) * RadialMenu::radialMenuRadius);
-		Node* dataNode = this->createRadialNode(hackableData->iconResource, nextDataIconPosition, RadialMenu::dataColor, CC_CALLBACK_1(RadialMenu::onHackableAttributeClick, this), (int)hackableData);
+		Node* dataNode = this->createRadialNode(hackableData->iconResource, nextDataIconPosition, RadialMenu::dataColor, CC_CALLBACK_1(RadialMenu::onHackableAttributeClick, this), (int)(unsigned long)hackableData);
 
 		// Draw code icons
 		for (auto it = hackableData->codeList->begin(); it != hackableData->codeList->end(); it++)
 		{
 			HackableCode* hackableCode = *it;
 			Vec2 codeNodePosition = Vec2(sin(currentCodeAngle) * RadialMenu::radialMenuRadius, cos(currentCodeAngle) * RadialMenu::radialMenuRadius);
-			Node* codeNode = this->createRadialNode(hackableCode->iconResource, codeNodePosition, RadialMenu::codeColor, CC_CALLBACK_1(RadialMenu::onHackableAttributeClick, this), (int)hackableCode);
+			Node* codeNode = this->createRadialNode(hackableCode->iconResource, codeNodePosition, RadialMenu::codeColor, CC_CALLBACK_1(RadialMenu::onHackableAttributeClick, this), (int)(unsigned long)hackableCode);
 
 			dataNode->addChild(codeNode);
 			currentCodeAngle += codeAngleStep;

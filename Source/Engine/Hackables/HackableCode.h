@@ -7,19 +7,27 @@
 	#include <sys/mman.h>
 #endif
 
+#ifdef _MSC_VER
+#   define ASM(asm_literal) \
+        __asm { \
+            asm_literal \
+        };
+#elif __GNUC__ || __clang__
+#   define ASM(asm_literal) \
+        "__asm__(\".intel_syntax noprefix\");" \
+        "__asm__(\"" \
+            #asm_literal \
+        "\" : : );" \
+        "__asm__(\".att_syntax prefix\");"
+#endif
+
 #define HACKABLE_CODE_BEGIN(address, label) \
-_asm \
-{ \
-	_asm mov address, offset label \
-	_asm label: \
-}
+ASM("mov address, offset label") \
+ASM(label:)
 
 #define HACKABLE_CODE_END(address, label) \
-_asm \
-{ \
-	_asm label: \
-	_asm mov address, offset label \
-}
+ASM(label:) \
+ASM("mov address, offset label")
 
 using namespace cocos2d;
 

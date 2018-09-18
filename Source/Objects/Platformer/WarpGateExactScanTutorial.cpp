@@ -50,26 +50,22 @@ void WarpGateExactScanTutorial::onEnter()
 
 void WarpGateExactScanTutorial::incrementPower()
 {
-	__asm
-	{
-		push eax;
-		mov eax, WarpGateExactScanTutorial::warpGatePower;
-	}
-startIncrementPower:
-	__asm
-	{
-		inc eax;
-		nop; 
-		nop;
-		nop;
-		nop;
-	}
-endIncrementPower:
-	__asm
-	{
-		mov WarpGateExactScanTutorial::warpGatePower, eax
-		pop eax;
-	}
+	ASM(push eax);
+	ASM(mov eax dword WarpGateExactScanTutorial::warpGatePower);
+
+	void* assemblyAddressStart = nullptr;
+	void* assemblyAddressEnd = nullptr;
+
+	HACKABLE_CODE_BEGIN(assemblyAddressStart, startIncrementPower)
+	ASM(inc eax);
+	ASM(nop);
+	ASM(nop);
+	ASM(nop);
+	ASM(nop);
+	HACKABLE_CODE_BEGIN(assemblyAddressEnd, endIncrementPower)
+
+	ASM(mov WarpGateExactScanTutorial::warpGatePower dword eax);
+	ASM(pop eax);
 
 	static bool init = false;
 
@@ -77,16 +73,7 @@ endIncrementPower:
 	{
 		init = true;
 
-		void* assemblyAddressStart = nullptr;
-		void* assemblyAddressEnd = nullptr;
-
-		__asm
-		{
-			mov assemblyAddressStart, offset startIncrementPower
-			mov assemblyAddressEnd, offset endIncrementPower
-		}
-
-		int byteCount = (unsigned int)assemblyAddressEnd - (unsigned int)assemblyAddressStart;
+		int byteCount = (int)((unsigned long)assemblyAddressEnd - (unsigned long)assemblyAddressStart);
 		// HackableCode* hackablePower = HackableCode::create("Recharge Power", assemblyAddressStart, byteCount, Resources::Menus_HackerModeMenu_Icons_Heart, Resources::Menus_HackerModeMenu_Icons_Heart);
 		// this->registerCode(hackablePower);
 	}
