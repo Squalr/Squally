@@ -34,7 +34,8 @@ void SaveManager::setActiveSave(int index)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
-	instance->saveFile = (FileUtils::sharedFileUtils()->getWritablePath() + "\\").c_str() + printf_s(SaveManager::saveFileName.c_str(), index);
+	std::string resultSaveFileName = StrUtils::replaceAll(SaveManager::saveFileName.c_str(), "%d", std::to_string(index));
+	instance->saveFile = (FileUtils::sharedFileUtils()->getWritablePath() + "\\").c_str() + resultSaveFileName;
 	instance->saveData = FileUtils::getInstance()->deserializeValueMapFromFile(instance->saveFile);
 }
 

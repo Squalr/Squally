@@ -45,7 +45,7 @@ void IsometricEntity::update(float dt)
 	if (this->movement != Vec2::ZERO)
 	{
 		float angle = atan2(this->movement.y, this->movement.x);
-		int octant = (int)std::round(8.0f * angle / (2.0f * std::_Pi) + 8.0f) % 8;
+		int octant = (int)std::round(8.0f * angle / (2.0f * M_PI) + 8.0f) % 8;
 
 		switch (octant)
 		{

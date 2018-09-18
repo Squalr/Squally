@@ -40,7 +40,7 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName, std::vect
 	std::vector<SerializableLayer*>* deserializedLayers = new std::vector<SerializableLayer*>();
 
 	auto onDeserializeCallback = [&](SerializableLayer* layer, int layerIndex) {
-		deserializedLayerMap.insert_or_assign(layerIndex, layer);
+		deserializedLayerMap.emplace(layerIndex, layer);
 	};
 
 	// Deserialize layers
@@ -84,7 +84,7 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName, std::vect
 	// Deserialize tiles (separate step from pulling them out because deserialization removes the child and would ruin the getChildren() iterator)
 	for (auto it = tileLayers.begin(); it != tileLayers.end(); it++)
 	{
-		deserializedLayerMap.insert_or_assign((*it)->layerIndex, SerializableTileLayer::deserialize((*it)));
+		deserializedLayerMap.emplace((*it)->layerIndex, SerializableTileLayer::deserialize((*it)));
 	}
 
 	// Convert from map to ordered vector
