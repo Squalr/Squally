@@ -70,8 +70,7 @@ void CoinFlip::onStateChange(GameState* gameState)
 
 void CoinFlip::doCoinFlip(GameState* gameState)
 {
-	// TEMP: ALWAYS PLAYER 1st
-	if (true || RandomHelper::random_real(0.0f, 1.0f) > 0.5f)
+	if (RandomHelper::random_real(0.0f, 1.0f) > 0.5f)
 	{
 		gameState->bannerMessage = "YOU GO FIRST";
 		gameState->turn = GameState::Turn::Player;
