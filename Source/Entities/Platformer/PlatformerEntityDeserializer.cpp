@@ -15,7 +15,7 @@ void PlatformerEntityDeserializer::onDeserializationRequest(ObjectDeserializatio
 	if (args->typeName == PlatformerEntityDeserializer::KeyTypeEntity)
 	{
 		ValueMap properties = args->properties;
-		string name = properties.at(SerializableObject::KeyName).asString();
+		std::string name = properties.at(SerializableObject::KeyName).asString();
 		SerializableObject* newEntity = nullptr;
 
 		if (name == Squally::KeySquallyProperty)

@@ -234,21 +234,21 @@
  
  message(STATUS "spriterengine include dirs: ${SPRITER_ENGINE_INCLUDE_DIRS}")
 
- # Fasm
- if(USE_EXTERNAL_PREBUILT)
-     set(fasm_prefix FASM)
-     set(FASM_INCLUDE_DIRS ${COCOS2DX_ROOT_PATH}/external/Fasm)
-     include_directories(${FASM_INCLUDE_DIRS})
-     if(USE_COCOS_PREBUILT)
-         cocos_find_prebuilt_lib_by_name(fasm FASM_LIBRARIES)
-     else()
-         add_subdirectory(${COCOS2DX_ROOT_PATH}/external/Fasm ${ENGINE_BINARY_PATH}/external/Fasm)
-         set(FASM_LIBRARIES fasm)
-     endif()
-     message(STATUS "fasm include dirs: ${FASM_INCLUDE_DIRS}")
- else()
-     cocos_find_package(fasm fasm REQUIRED)
- endif()
+ # AsmJit
+if(USE_EXTERNAL_PREBUILT)
+    set(asmjit_prefix ASMJIT)
+    set(ASMJIT_INCLUDE_DIRS ${COCOS2DX_ROOT_PATH}/external/asmjit/src/asmjit)
+    include_directories(${ASMJIT_INCLUDE_DIRS})
+    if(USE_COCOS_PREBUILT)
+        cocos_find_prebuilt_lib_by_name(asmjit ASMJIT_LIBRARIES)
+    else()
+        add_subdirectory(${COCOS2DX_ROOT_PATH}/external/asmjit ${ENGINE_BINARY_PATH}/external/asmjit)
+        set(ASMJIT_LIBRARIES asmjit)
+    endif()
+    message(STATUS "asmjit include dirs: ${ASMJIT_INCLUDE_DIRS}")
+else()
+    cocos_find_package(asmjit asmjit REQUIRED)
+endif()
 
  # Udis86
  if(USE_EXTERNAL_PREBUILT)

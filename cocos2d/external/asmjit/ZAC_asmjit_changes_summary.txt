@@ -1,0 +1,8 @@
+- in asmjit_build.h ASMJIT_API macro was replaced with a macro that does nothing. This used to define dllexport, but this library is statically linked, not a DLL.
+- Class Label was renamed to AsmLabel to avoid conflict with Cocos2d-x Label class
+- AsmTK repository was combined with this one. I could not get the linker to properly handle:
+	- AsmTK => AsmJit
+	- Squally => AsmTK
+	- Squally => AsmJit
+	
+	So the easy solution was to make AsmJit and AsmTk all under AsmJit.

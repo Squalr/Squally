@@ -85,7 +85,7 @@ void WarpGateExactScanTutorial::update(float dt)
 	if (~previousValue != WarpGateExactScanTutorial::warpGatePower || ~previousValueMax != WarpGateExactScanTutorial::warpGatePowerMax)
 	{
 		// Constrain value
-		WarpGateExactScanTutorial::warpGatePower = min(WarpGateExactScanTutorial::warpGatePower, WarpGateExactScanTutorial::warpGatePowerMax);
+		WarpGateExactScanTutorial::warpGatePower = std::min(WarpGateExactScanTutorial::warpGatePower, WarpGateExactScanTutorial::warpGatePowerMax);
 
 		// Update text
 		this->valueLabel->setString(std::to_string(WarpGateExactScanTutorial::warpGatePower) + " / " + std::to_string(WarpGateExactScanTutorial::warpGatePowerMax));
