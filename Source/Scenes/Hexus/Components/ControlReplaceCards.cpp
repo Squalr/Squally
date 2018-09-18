@@ -62,6 +62,7 @@ void ControlReplaceCards::onStateChange(GameState* gameState)
 	switch (gameState->previousStateType)
 	{
 		case GameState::StateType::ControlReplaceCards:
+		{
 			if (gameState->stateType == GameState::StateType::ControlReplaceCards)
 			{
 				break;
@@ -85,6 +86,7 @@ void ControlReplaceCards::onStateChange(GameState* gameState)
 
 			this->updateBanner();
 			break;
+		}
 		default:
 			break;
 	}

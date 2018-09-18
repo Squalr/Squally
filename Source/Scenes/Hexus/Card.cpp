@@ -257,7 +257,7 @@ void Card::doDrawAnimation(float cardDrawDelay)
 
 void Card::updateText()
 {
-	int actualAttack = this->getAttack();
+	unsigned int actualAttack = this->getAttack();
 
 	switch (this->cardData->cardType)
 	{
