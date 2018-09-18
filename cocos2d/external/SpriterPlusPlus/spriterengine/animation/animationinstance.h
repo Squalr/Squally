@@ -2,6 +2,9 @@
 #define ANIMATIONINSTANCE_H
 
 #include <vector>
+#include <string>
+#include <sstream>
+#include <iostream>
 
 #include "mainlinekeyinstance.h"
 

@@ -68,7 +68,7 @@ void PlushieMonkey::update(float dt)
 	if (~previousValue != PlushieMonkey::lockCountDown)
 	{
 		// Constrain value
-		PlushieMonkey::lockCountDown = max(0, PlushieMonkey::lockCountDown);
+		PlushieMonkey::lockCountDown = std::max(0, PlushieMonkey::lockCountDown);
 
 		// Update text
 		this->valueLabel->setString(std::to_string(PlushieMonkey::lockCountDown));
@@ -95,28 +95,19 @@ void PlushieMonkey::decreaseLockTimer()
 	void* assemblyAddressStart = nullptr;
 	void* assemblyAddressEnd = nullptr;
 
-	__asm
-	{
-		push ecx;
-		mov ecx, PlushieMonkey::lockCountDown;
-	}
+	ASM(push ecx);
+	ASM(mov ecx, PlushieMonkey::lockCountDown);
 
-HACKABLE_CODE_BEGIN(assemblyAddressStart, puzzleStart)
-	__asm
-	{
-		dec ecx;
-		nop;
-		nop;
-		nop;
-		nop;
-	}
-HACKABLE_CODE_END(assemblyAddressEnd, puzzleEnd)
+	HACKABLE_CODE_BEGIN(assemblyAddressStart, puzzleStart);
+	ASM(dec ecx);
+	ASM(nop);
+	ASM(nop);
+	ASM(nop);
+	ASM(nop);
+	HACKABLE_CODE_END(assemblyAddressEnd, puzzleEnd);
 
-	__asm
-	{
-		mov PlushieMonkey::lockCountDown, ecx
-		pop ecx;
-	}
+	ASM(mov PlushieMonkey::lockCountDown, ecx);
+	ASM(pop ecx);
 
 	if (PlushieMonkey::lockCountDown < 0)
 	{
@@ -124,8 +115,8 @@ HACKABLE_CODE_END(assemblyAddressEnd, puzzleEnd)
 	}
 
 	this->puzzleData->registerCode(assemblyAddressStart, assemblyAddressEnd, "Lock Countdown", Resources::Menus_HackerModeMenu_Icons_Safe);
-	this->puzzleData->registerCode((void*)((int)assemblyAddressStart + 1), assemblyAddressEnd, "Puzzle Test", Resources::Menus_HackerModeMenu_Icons_FlamingScroll);
-	this->puzzleData->registerCode((void*)((int)assemblyAddressStart + 2), assemblyAddressEnd, "Puzzle Swag", Resources::Menus_HackerModeMenu_Icons_BookCrystal);
+	this->puzzleData->registerCode((void*)((unsigned int)((unsigned long)assemblyAddressStart + 1)), assemblyAddressEnd, "Puzzle Test", Resources::Menus_HackerModeMenu_Icons_FlamingScroll);
+	this->puzzleData->registerCode((void*)((unsigned int)((unsigned long)assemblyAddressStart + 2)), assemblyAddressEnd, "Puzzle Swag", Resources::Menus_HackerModeMenu_Icons_BookCrystal);
 }
 
 void PlushieMonkey::registerHackables()
@@ -135,6 +126,6 @@ void PlushieMonkey::registerHackables()
 	this->puzzleData = HackableData::create("Key", &PlushieMonkey::lockCountDown, &typeid(PlushieMonkey::lockCountDown), Resources::Menus_HackerModeMenu_Icons_Lock);
 	this->registerData(this->puzzleData);
 	
-	this->registerData(HackableData::create("Health", this->chest, &typeid((int)this->chest), Resources::Menus_HackerModeMenu_Icons_Heart));
+	this->registerData(HackableData::create("Health", this->chest, &typeid((unsigned int)((unsigned long)this->chest)), Resources::Menus_HackerModeMenu_Icons_Heart));
 	//this->registerCode(HackableCode::create("Test", this->chest, 10, Resources::Menus_HackerModeMenu_Icons_AlchemyPot));
 }

@@ -29,7 +29,7 @@ DialogMenu * DialogMenu::loadDialogFromJson(std::string json)
 			for (auto member = choiceIterator->MemberBegin(); member != choiceIterator->MemberEnd(); ++member)
 			{
 				auto choice = member->name.GetString();
-				auto dialogObject = member->value.GetObjectW();
+				auto dialogObject = member->value.GetObject();
 
 				rapidjson::StringBuffer stringBuffer;
 				rapidjson::Writer<rapidjson::StringBuffer> writer(stringBuffer);

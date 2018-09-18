@@ -14,7 +14,7 @@ DialogueTree * DialogueTree::loadDialogueFromJson(std::string json)
 
 	if (document.HasMember("Dialogue"))
 	{
-		GenericObject<false, rapidjson::Value::ValueType> dialogueObject = document["Dialogue"].GetObjectW();
+		GenericObject<false, rapidjson::Value::ValueType> dialogueObject = document["Dialogue"].GetObject();
 		dialogueText = DialogueTree::resolveDialogue(&dialogueObject);
 	}
 
@@ -37,13 +37,13 @@ DialogueTree * DialogueTree::loadDialogueFromJson(std::string json)
 
 				if (field == "Choice")
 				{
-					GenericObject<true, rapidjson::Value::ValueType> choiceObject = member->value.GetObjectW();
+					GenericObject<true, rapidjson::Value::ValueType> choiceObject = member->value.GetObject();
 					choiceText = DialogueTree::resolveDialogue(&choiceObject);
 				}
 
 				if (field == "Node")
 				{
-					auto value = member->value.GetObjectW();
+					auto value = member->value.GetObject();
 
 					rapidjson::StringBuffer stringBuffer;
 					rapidjson::Writer<rapidjson::StringBuffer> writer(stringBuffer);

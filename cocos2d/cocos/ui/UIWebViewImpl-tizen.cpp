@@ -43,7 +43,7 @@ void JScallback(Evas_Object* o, const char* result_value, void* user_data)
 }
 
 namespace cocos2d {
-    namespace experimental {
+    namespace cocos_experimental {
         namespace ui{
 
             WebViewImpl::WebViewImpl(WebView *webView) : _webView(webView) {
@@ -177,7 +177,7 @@ namespace cocos2d {
                 //TODO
             }
         } // namespace ui
-    } // namespace experimental
+    } // namespace cocos_experimental
 } //namespace cocos2d
 
 #endif // #if (CC_TARGET_PLATFORM == CC_PLATFORM_TIZEN)

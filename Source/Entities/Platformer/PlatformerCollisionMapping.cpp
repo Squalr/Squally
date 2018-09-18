@@ -56,129 +56,161 @@ void PlatformerCollisionMapping::onMapRequest(EventCustom* eventCustom)
 
 	if (args->categoryName == KeyCollisionTypeSolid)
 	{
+		std::vector<CategoryGroup> groups = std::vector<CategoryGroup>({
+			(int)CategoryGroupType::G_Player,
+			(int)CategoryGroupType::G_Npc,
+			(int)CategoryGroupType::G_Enemy,
+			(int)CategoryGroupType::G_EnemyFlying,
+			(int)CategoryGroupType::G_Force,
+		});
+
 		args->collisionObject->setCollisionGroups(
-			CategoryGroupType::G_Solid,
-			&std::vector<CategoryGroup>({
-				CategoryGroupType::G_Player,
-				CategoryGroupType::G_Npc,
-				CategoryGroupType::G_Enemy,
-				CategoryGroupType::G_EnemyFlying,
-				CategoryGroupType::G_Force,
-			}));
+			(int)CategoryGroupType::G_Solid,
+			&groups
+		);
 	}
 	else if (args->categoryName == KeyCollisionTypePassThrough)
 	{
+		std::vector<CategoryGroup> groups = std::vector<CategoryGroup>({
+			(int)CategoryGroupType::G_Player,
+			(int)CategoryGroupType::G_Npc,
+			(int)CategoryGroupType::G_Enemy,
+			(int)CategoryGroupType::G_EnemyFlying,
+			(int)CategoryGroupType::G_Force,
+		});
+
 		args->collisionObject->setCollisionGroups(
-			CategoryGroupType::G_PassThrough,
-			&std::vector<CategoryGroup>({
-				CategoryGroupType::G_Player,
-				CategoryGroupType::G_Npc,
-				CategoryGroupType::G_Enemy,
-				CategoryGroupType::G_EnemyFlying,
-				CategoryGroupType::G_Force,
-				}));
+			(int)CategoryGroupType::G_PassThrough,
+			&groups
+		);
 	}
 	else if (args->categoryName == KeyCollisionTypePlayer)
 	{
+		std::vector<CategoryGroup> groups = std::vector<CategoryGroup>({
+			(int)CategoryGroupType::G_Force,
+			(int)CategoryGroupType::G_EnemyFlying,
+			(int)CategoryGroupType::G_Solid,
+			(int)CategoryGroupType::G_PassThrough,
+			(int)CategoryGroupType::G_SolidNpc,
+			(int)CategoryGroupType::G_Lava,
+		});
+		
 		args->collisionObject->setCollisionGroups(
-			CategoryGroupType::G_Player,
-			&std::vector<CategoryGroup>({
-				CategoryGroupType::G_Force,
-				CategoryGroupType::G_EnemyFlying,
-				CategoryGroupType::G_Solid,
-				CategoryGroupType::G_PassThrough,
-				CategoryGroupType::G_SolidNpc,
-				CategoryGroupType::G_Lava,
-				}));
+			(int)CategoryGroupType::G_Player,
+			&groups
+		);
 	}
 	else if (args->categoryName == KeyCollisionTypeNpc)
 	{
+		std::vector<CategoryGroup> groups = std::vector<CategoryGroup>({
+			(int)CategoryGroupType::G_Solid,
+			(int)CategoryGroupType::G_PassThrough,
+			(int)CategoryGroupType::G_SolidNpc,
+		});
+		
 		args->collisionObject->setCollisionGroups(
-			CategoryGroupType::G_Npc,
-			&std::vector<CategoryGroup>({
-				CategoryGroupType::G_Solid,
-				CategoryGroupType::G_PassThrough,
-				CategoryGroupType::G_SolidNpc,
-				}));
+			(int)CategoryGroupType::G_Npc,
+			&groups
+		);
 	}
 	else if (args->categoryName == KeyCollisionTypeEnemy)
 	{
+		std::vector<CategoryGroup> groups = std::vector<CategoryGroup>({
+			(int)CategoryGroupType::G_Player,
+			(int)CategoryGroupType::G_Solid,
+			(int)CategoryGroupType::G_PassThrough,
+			(int)CategoryGroupType::G_SolidNpc,
+			(int)CategoryGroupType::G_Lava,
+		});
+		
 		args->collisionObject->setCollisionGroups(
-			CategoryGroupType::G_Enemy,
-			&std::vector<CategoryGroup>({
-				CategoryGroupType::G_Player,
-				CategoryGroupType::G_Solid,
-				CategoryGroupType::G_PassThrough,
-				CategoryGroupType::G_SolidNpc,
-				CategoryGroupType::G_Lava,
-				}));
+			(int)CategoryGroupType::G_Enemy,
+			&groups
+		);
 	}
 	else if (args->categoryName == KeyCollisionTypeEnemyFlying)
 	{
+		std::vector<CategoryGroup> groups = std::vector<CategoryGroup>({
+			(int)CategoryGroupType::G_Player,
+			(int)CategoryGroupType::G_Solid,
+			(int)CategoryGroupType::G_PassThrough,
+			(int)CategoryGroupType::G_SolidNpc,
+			(int)CategoryGroupType::G_SolidFlyingNpc,
+			(int)CategoryGroupType::G_Lava,
+		});
+
 		args->collisionObject->setCollisionGroups(
-			CategoryGroupType::G_EnemyFlying,
-			&std::vector<CategoryGroup>({
-				CategoryGroupType::G_Player,
-				CategoryGroupType::G_Solid,
-				CategoryGroupType::G_PassThrough,
-				CategoryGroupType::G_SolidNpc,
-				CategoryGroupType::G_SolidFlyingNpc,
-				CategoryGroupType::G_Lava,
-				}));
+			(int)CategoryGroupType::G_EnemyFlying,
+			&groups
+		);
 	}
 	else if (args->categoryName == KeyCollisionTypeForce)
 	{
+		std::vector<CategoryGroup> groups = std::vector<CategoryGroup>({
+			(int)CategoryGroupType::G_Player,
+			(int)CategoryGroupType::G_Solid,
+			(int)CategoryGroupType::G_PassThrough,
+			(int)CategoryGroupType::G_SolidNpc,
+			(int)CategoryGroupType::G_SolidFlyingNpc,
+			(int)CategoryGroupType::G_Lava,
+		});
+
 		args->collisionObject->setCollisionGroups(
-			CategoryGroupType::G_Force,
-			&std::vector<CategoryGroup>({
-				CategoryGroupType::G_Player,
-				CategoryGroupType::G_Solid,
-				CategoryGroupType::G_PassThrough,
-				CategoryGroupType::G_SolidNpc,
-				CategoryGroupType::G_SolidFlyingNpc,
-				CategoryGroupType::G_Lava,
-				}));
+			(int)CategoryGroupType::G_Force,
+			&groups
+		);
 	}
 	else if (args->categoryName == KeyCollisionTypeSolidNpc)
 	{
+		std::vector<CategoryGroup> groups = std::vector<CategoryGroup>({
+			(int)CategoryGroupType::G_Npc,
+			(int)CategoryGroupType::G_Enemy,
+			(int)CategoryGroupType::G_EnemyFlying,
+		});
+
 		args->collisionObject->setCollisionGroups(
-			CategoryGroupType::G_SolidNpc,
-			&std::vector<CategoryGroup>({
-				CategoryGroupType::G_Npc,
-				CategoryGroupType::G_Enemy,
-				CategoryGroupType::G_EnemyFlying,
-				}));
+			(int)CategoryGroupType::G_SolidNpc,
+			&groups
+		);
 	}
 	else if (args->categoryName == KeyCollisionTypeSolidNpcFlying)
 	{
+		std::vector<CategoryGroup> groups = std::vector<CategoryGroup>({
+			(int)CategoryGroupType::G_EnemyFlying,
+		});
+
 		args->collisionObject->setCollisionGroups(
-			CategoryGroupType::G_SolidFlyingNpc,
-			&std::vector<CategoryGroup>({
-				CategoryGroupType::G_EnemyFlying,
-				}));
+			(int)CategoryGroupType::G_SolidFlyingNpc,
+			&groups
+		);
 	}
 	else if (args->categoryName == KeyCollisionTypeWater)
 	{
+		std::vector<CategoryGroup> groups = std::vector<CategoryGroup>({
+			(int)CategoryGroupType::G_Player,
+			(int)CategoryGroupType::G_Npc,
+			(int)CategoryGroupType::G_Enemy,
+			(int)CategoryGroupType::G_EnemyFlying,
+			(int)CategoryGroupType::G_Force,
+		});
+		
 		args->collisionObject->setCollisionGroups(
-			CategoryGroupType::G_Water,
-			&std::vector<CategoryGroup>({
-				CategoryGroupType::G_Player,
-				CategoryGroupType::G_Npc,
-				CategoryGroupType::G_Enemy,
-				CategoryGroupType::G_EnemyFlying,
-				CategoryGroupType::G_Force,
-				}));
+			(int)CategoryGroupType::G_Water,
+			&groups
+		);
 	}
 	else if (args->categoryName == KeyCollisionTypeLava)
 	{
+		std::vector<CategoryGroup> groups = std::vector<CategoryGroup>({
+			(int)CategoryGroupType::G_Player,
+			(int)CategoryGroupType::G_Npc,
+			(int)CategoryGroupType::G_Enemy,
+			(int)CategoryGroupType::G_Force,
+		});
+
 		args->collisionObject->setCollisionGroups(
-			CategoryGroupType::G_Lava,
-			&std::vector<CategoryGroup>({
-				CategoryGroupType::G_Player,
-				CategoryGroupType::G_Npc,
-				CategoryGroupType::G_Enemy,
-				CategoryGroupType::G_EnemyFlying,
-				CategoryGroupType::G_Force,
-				}));
+			(int)CategoryGroupType::G_Lava,
+			&groups
+		);
 	}
 }

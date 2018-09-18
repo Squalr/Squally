@@ -42,7 +42,7 @@ VaporWeb::VaporWeb()
 			GridObject* cell = GridObject::create(Sprite::create(Resources::Cutscenes_VaporWeb_Cell), Vec2(gridRow, gridColumn), true);
 			cell->setOpacity(0);
 
-			this->cells->insert_or_assign(this->getCellIndex(row, column), cell);
+			this->cells->emplace(this->getCellIndex(row, column), cell);
 
 			this->grid->addGridObject(cell);
 		}

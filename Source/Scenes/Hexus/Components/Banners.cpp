@@ -44,7 +44,7 @@ void Banners::onStateChange(GameState* gameState)
 
 void Banners::updateBanner(GameState* gameState)
 {
-	if (std::empty(gameState->bannerMessage))
+	if (gameState->bannerMessage.size() == 0)
 	{
 		return;
 	}

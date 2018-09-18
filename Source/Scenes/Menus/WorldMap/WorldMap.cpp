@@ -221,14 +221,6 @@ void WorldMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 void WorldMap::initializedLocked()
 {
-	MapNode* jungle;
-	MapNode* waterRuins;
-	MapNode* forest;
-	MapNode* caverns;
-	MapNode* iceCaps;
-	MapNode* obelisk;
-	MapNode* volcano;
-
 	this->jungle->setLocked(false);
 	this->waterRuins->setLocked(false);
 	this->forest->setLocked(false);

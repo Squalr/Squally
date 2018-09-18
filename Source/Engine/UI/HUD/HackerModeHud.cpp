@@ -1,6 +1,6 @@
 #include "HackerModeHud.h"
 
-HackerModeHud* HackerModeHud::create(function<void()> toggleHackermodeCallback)
+HackerModeHud* HackerModeHud::create(std::function<void()> toggleHackermodeCallback)
 {
 	HackerModeHud* instance = new HackerModeHud(toggleHackermodeCallback);
 
@@ -9,7 +9,7 @@ HackerModeHud* HackerModeHud::create(function<void()> toggleHackermodeCallback)
 	return instance;
 }
 
-HackerModeHud::HackerModeHud(function<void()> toggleHackermodeCallback)
+HackerModeHud::HackerModeHud(std::function<void()> toggleHackermodeCallback)
 {
 	this->callback = toggleHackermodeCallback;
 	this->hackableButtonLayer = Node::create();
