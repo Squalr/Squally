@@ -27,7 +27,7 @@ public:
 	static const std::string KeyCollisionTypeWater;
 	static const std::string KeyCollisionTypeLava;
 
-	const enum CategoryGroupType
+	enum CategoryGroupType
 	{
 		G_None = 0,
 		G_Solid = 1 << 1,

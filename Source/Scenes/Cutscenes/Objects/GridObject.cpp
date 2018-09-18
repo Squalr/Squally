@@ -17,9 +17,7 @@ GridObject::GridObject(Node* inner, Vec2 spawnCoords, bool isObjectStatic)
 
 	inner->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setCascadeOpacityEnabled(true);
-
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
+	
 	this->addChild(inner);
 }
 

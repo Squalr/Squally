@@ -23,18 +23,18 @@ void Fight::onEnter()
 	FadeScene::onEnter();
 
 	this->scheduleUpdate();
-	this->initializePositions();
-	this->initializeListeners();
 }
 
 void Fight::initializePositions()
 {
+	FadeScene::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 void Fight::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	FadeScene::initializeListeners();
 }
 
 void Fight::loadFight(Squally* squally, PlatformerEnemy* enemy)

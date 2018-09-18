@@ -20,8 +20,6 @@ MinigamesMenu * MinigamesMenu::create()
 
 MinigamesMenu::MinigamesMenu()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
 	const Size shadowSize = Size(-2.0f, -2.0f);
 	const int shadowBlur = 2;
 	const int hoverOutlineSize = 2;
@@ -165,9 +163,6 @@ void MinigamesMenu::onEnter()
 
 	this->background->addChild(MenuBackground::claimInstance());
 
-	this->initializePositions();
-	this->initializeListeners();
-
 	const float delay = 0.5f;
 	const float duration = 0.75f;
 
@@ -186,7 +181,7 @@ void MinigamesMenu::onEnter()
 
 void MinigamesMenu::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	FadeScene::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -199,6 +194,8 @@ void MinigamesMenu::initializeListeners()
 
 void MinigamesMenu::initializePositions()
 {
+	FadeScene::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Size paneSize = this->scrollPane->getPaneSize();
 	MenuBackground::getInstance()->initializePositions();
@@ -220,10 +217,12 @@ void MinigamesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode)
 	{
-	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		event->stopPropagation();
-		NavigationEvents::navigateBack();
-		break;
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
+			event->stopPropagation();
+			NavigationEvents::navigateBack();
+			break;
+		default:
+			break;
 	}
 }
 

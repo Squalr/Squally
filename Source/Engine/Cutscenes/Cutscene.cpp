@@ -44,6 +44,8 @@ void Cutscene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		event->stopPropagation();
 		this->endCutscene();
 		break;
+	default:
+		break;
 	}
 }
 

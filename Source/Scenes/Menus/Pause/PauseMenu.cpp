@@ -133,29 +133,27 @@ void PauseMenu::onEnter()
 	GameUtils::fadeInObject(this->exitButton, delay, duration);
 
 	this->background->addChild(MenuBackground::claimInstance());
-
-	this->initializePositions();
-	this->initializeListeners();
 }
 
 void PauseMenu::initializePositions()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
+	FadeScene::initializePositions();
 
-	this->pauseWindow->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->pauseWindow->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	this->titleLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 230.0f));
-	this->closeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 136.0f, origin.y + visibleSize.height / 2 + 204.0f));
-	this->resumeButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 + 128.0f));
-	this->optionsButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 + 0.0f));
-	this->exitButton->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 180.0f));
+	this->closeButton->setPosition(Vec2(visibleSize.width / 2 + 136.0f, visibleSize.height / 2 + 204.0f));
+	this->resumeButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 128.0f));
+	this->optionsButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 0.0f));
+	this->exitButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 180.0f));
 
 	MenuBackground::getInstance()->initializePositions();
 }
 
 void PauseMenu::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	FadeScene::initializeListeners();
 
 	EventListenerKeyboard* listener = EventListenerKeyboard::create();
 

@@ -57,21 +57,22 @@ void ConfirmationMenu::onEnter()
 
 void ConfirmationMenu::initializePositions()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
+	FadeScene::initializePositions();
 
-	this->pauseWindow->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
-	this->closeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 136.0f, origin.y + visibleSize.height / 2 + 124.0f));
-	this->confirmationLabel->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 + 32.0f));
-	this->cancelButton->setPosition(Vec2(origin.x + visibleSize.width / 2 - 96.0f, origin.y + visibleSize.height / 2 - 64.0f));
-	this->confirmButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 96.0f, origin.y + visibleSize.height / 2 - 64.0f));
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	
+	this->pauseWindow->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+	this->closeButton->setPosition(Vec2(visibleSize.width / 2 + 136.0f, visibleSize.height / 2 + 124.0f));
+	this->confirmationLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 32.0f));
+	this->cancelButton->setPosition(Vec2(visibleSize.width / 2 - 96.0f, visibleSize.height / 2 - 64.0f));
+	this->confirmButton->setPosition(Vec2(visibleSize.width / 2 + 96.0f, visibleSize.height / 2 - 64.0f));
 
 	MenuBackground::getInstance()->initializePositions();
 }
 
 void ConfirmationMenu::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	FadeScene::initializeListeners();
 
 	this->cancelButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onCancelClick, this));
 	this->confirmButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onConfirmClick, this));
@@ -89,17 +90,19 @@ void ConfirmationMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event
 {
 	switch (keyCode)
 	{
-	case EventKeyboard::KeyCode::KEY_ESCAPE:
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
 
-		if (this->onCancelCallback != nullptr)
-		{
-			this->onCancelCallback();
-		}
+			if (this->onCancelCallback != nullptr)
+			{
+				this->onCancelCallback();
+			}
 
-		event->stopPropagation();
+			event->stopPropagation();
 
-		NavigationEvents::navigateBack();
-		break;
+			NavigationEvents::navigateBack();
+			break;
+		default:
+			break;
 	}
 }
 

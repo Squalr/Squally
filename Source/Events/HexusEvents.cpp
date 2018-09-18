@@ -1,4 +1,3 @@
-#pragma once
 #include "HexusEvents.h"
 
 const std::string HexusEvents::HexusGameStartEvent = "hexium_game_start_event";

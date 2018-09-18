@@ -24,8 +24,8 @@ protected:
 private:
 	void onEnter() override;
 	void update(float) override;
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
+	void initializeListeners() override;
 
 	Layer * background;
 	Layer * entityLayer;

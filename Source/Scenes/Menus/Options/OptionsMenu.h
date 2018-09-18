@@ -29,14 +29,14 @@ protected:
 
 private:
 	void onEnter() override;
+	void initializeListeners() override;
+	void initializePositions() override;
 	void onSoundVolumeUpdate(float soundVolume);
 	void onMusicVolumeUpdate(float musicVolume);
 	bool onFullScreenChanged(CCheckbox* checkbox, bool isFullScreen);
 	void onResolutionChanged(CRadioButton* radioButton);
 	void onCloseClick(MenuSprite* menuSprite);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	void initializeListeners();
-	void initializePositions();
 	void showResolutionOptions();
 	void hideResolutionOptions();
 

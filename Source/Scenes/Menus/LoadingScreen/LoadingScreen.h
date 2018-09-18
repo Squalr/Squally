@@ -43,11 +43,11 @@ protected:
 
 private:
 	void onEnter() override;
+	void initializePositions() override;
 	void onFileEnumerationComplete(std::vector<std::string> files);
 	void onTextureAssetLoaded(Texture2D* asset);
 	void onSoundAssetLoaded();
 	void incrementLoadedFileCount();
-	void initializePositions();
 	bool levelIsLoaded();
 	void enterLevelIfDoneLoading();
 
@@ -55,7 +55,6 @@ private:
 	static bool isPreloadableSound(std::string filePath);
 
 	Node* background;
-	Sprite* loadingWindow;
 	CProgressBar* progressBar;
 	SerializableMap* map;
 	std::function<void(SerializableMap*)> onLoadCallback;
