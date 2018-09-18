@@ -27,6 +27,8 @@ public:
 		ControlSacrificeStaged,
 		ControlCombineStaged,
 		EndTurn,
+		Score,
+		Finish
 	};
 
 	enum Difficulty
@@ -53,9 +55,12 @@ public:
 	StateType stateType;
 	StateType previousStateType;
 	Turn turn;
+	bool playerPass;
+	bool enemyPass;
 	Difficulty difficulty;
 	int playerLosses;
 	int enemyLosses;
+	int round;
 	Card* stagedSacrifice;
 	CardRow* stagedSacrificeCardRow;
 	Card* stagedCombineSourceCard;

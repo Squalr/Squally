@@ -31,6 +31,55 @@ void ControlEndTurn::endTurn(GameState* gameState)
 {
 	float endTurnDelay = Config::endTurnDelay;
 
+	// If both players pass than we end the game
+	if (gameState->playerPass && gameState->enemyPass) {
+		CallFunc* changeState = CallFunc::create([gameState] {
+			GameState::updateState(gameState, GameState::StateType::Score);
+		});
+
+		this->runAction(Sequence::create(
+			DelayTime::create(endTurnDelay),
+			DelayTime::create(Config::betweenTurnDelay),
+			changeState,
+			nullptr
+		));
+		return;
+	}
+
+	// If the player passes it is the enemies turn
+	if (gameState->playerPass) {
+		endTurnDelay = Config::enemyEndTurnDelay;
+		gameState->turn = GameState::Turn::Enemy;
+		CallFunc* changeState = CallFunc::create([gameState] {
+			GameState::updateState(gameState, GameState::StateType::ControlNeutral);
+		});
+
+		this->runAction(Sequence::create(
+			DelayTime::create(endTurnDelay),
+			DelayTime::create(Config::betweenTurnDelay),
+			changeState,
+			nullptr
+		));
+		return;
+	}
+
+	// If the enemy passes it is the players turn
+	if (gameState->enemyPass) {
+		gameState->turn = GameState::Turn::Player;
+		CallFunc* changeState = CallFunc::create([gameState] {
+			GameState::updateState(gameState, GameState::StateType::ControlNeutral);
+		});
+
+		this->runAction(Sequence::create(
+			DelayTime::create(endTurnDelay),
+			DelayTime::create(Config::betweenTurnDelay),
+			changeState,
+			nullptr
+		));
+		return;
+	}
+
+	//  If no one has passed we alternate turns
 	switch (gameState->turn)
 	{
 	case GameState::Turn::Enemy:
@@ -38,7 +87,6 @@ void ControlEndTurn::endTurn(GameState* gameState)
 		gameState->turn = GameState::Turn::Player;
 		break;
 	case GameState::Turn::Player:
-	default:
 		gameState->turn = GameState::Turn::Enemy;
 		break;
 	}
