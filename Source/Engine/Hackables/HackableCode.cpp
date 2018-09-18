@@ -12,11 +12,11 @@ HackableCode * HackableCode::create(std::string name, void* codeStart, int codeL
 HackableCode::HackableCode(std::string name, void* codeStart, int codeLength, std::string iconResource) : HackableAttribute(iconResource)
 {
 	this->functionName = name;
-	this->codePointer = (byte*)codeStart;
+	this->codePointer = (unsigned char*)codeStart;
 	this->codeOriginalLength = codeLength;
 	this->allocations = new std::map<void*, int>();
 
-	this->originalCodeCopy = new byte(codeLength);
+	this->originalCodeCopy = new unsigned char(codeLength);
 	memcpy(originalCodeCopy, codeStart, codeLength);
 
 	this->assemblyString = HackUtils::disassemble(codeStart, codeLength);

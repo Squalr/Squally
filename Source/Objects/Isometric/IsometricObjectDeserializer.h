@@ -13,5 +13,5 @@ class IsometricObjectDeserializer : public IObjectDeserializer
 public:
 	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
 
-	static const std::string KeyTypeÌsometricObject;
+	static const std::string KeyTypeIsometricObject;
 };
