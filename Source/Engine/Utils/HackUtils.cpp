@@ -2,10 +2,44 @@
 
 HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* addressStart)
 {
-	Fasm::FasmResult* fasmResult = Fasm::assemble(assembly, addressStart);
-	HackUtils::CompileResult compileResult = HackUtils::constructCompileResult(fasmResult);
+	CompileResult compileResult;
 
-	delete(fasmResult);
+	CodeInfo ci(ArchInfo::kTypeX86);
+	CodeHolder code;
+	code.init(ci);
+
+	// Attach X86Assembler `code`.
+	X86Assembler a(&code);
+
+	// Create AsmParser that will emit to X86Assembler.
+	AsmParser p(&a);
+
+	// Parse some assembly.
+	Error err = p.parse(
+		"push eax\n"
+		"mov eax, ebx\n"
+		"pop eax\n"
+	);
+
+	// Error handling (use asmjit::ErrorHandler for more robust error handling).
+	if (err)
+	{
+		printf("ERROR: %08x (%s)\n", err, DebugUtils::errorAsString(err));
+		//return 1;
+	}
+
+	// If we are done, you must detach the Assembler from CodeHolder or sync
+	// it, so its internal state and position is synced with CodeHolder.
+	code.sync();
+
+	// Now you can print the code, which is stored in the first section (.text).
+	CodeBuffer& buffer = code.getSectionEntry(0)->getBuffer();
+	//dumpCode(buffer.getData(), buffer.getLength());
+
+	//Fasm::FasmResult* fasmResult = Fasm::assemble(assembly, addressStart);
+	//HackUtils::CompileResult compileResult = HackUtils::constructCompileResult(fasmResult);
+
+	//delete(fasmResult);
 	return compileResult;
 }
 
@@ -13,6 +47,16 @@ std::string HackUtils::disassemble(void* bytes, int length)
 {
 	static ud_t ud_obj;
 	static bool initialized = false;
+
+	if (bytes == nullptr)
+	{
+		return "nullptr";
+	}
+
+	if (length <= 0)
+	{
+		return "";
+	}
 
 	// Only initialize the disassembler once
 	if (!initialized)
@@ -229,6 +273,7 @@ std::string HackUtils::arrayOfByteStringOf(void* dataPointer, int length, int ma
 	return result;
 }
 
+/*
 HackUtils::CompileResult HackUtils::constructCompileResult(Fasm::FasmResult* fasmResult)
 {
 	// Note the 2 here is due to the first two lines of FASM specifying 32/64 bit and the origin point
@@ -395,3 +440,4 @@ HackUtils::CompileResult HackUtils::constructCompileResult(Fasm::FasmResult* fas
 
 	return compileResult;
 }
+*/

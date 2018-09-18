@@ -68,7 +68,7 @@ void PlushieMonkey::update(float dt)
 	if (~previousValue != PlushieMonkey::lockCountDown)
 	{
 		// Constrain value
-		PlushieMonkey::lockCountDown = max(0, PlushieMonkey::lockCountDown);
+		PlushieMonkey::lockCountDown = std::max(0, PlushieMonkey::lockCountDown);
 
 		// Update text
 		this->valueLabel->setString(std::to_string(PlushieMonkey::lockCountDown));
@@ -96,7 +96,7 @@ void PlushieMonkey::decreaseLockTimer()
 	void* assemblyAddressEnd = nullptr;
 
 	ASM(push eax);
-	ASM(mov ecx dword PlushieMonkey::lockCountDown);
+	ASM(mov ecx, PlushieMonkey::lockCountDown);
 
 	HACKABLE_CODE_BEGIN(assemblyAddressStart, puzzleStart)
 	ASM(dec ecx);
@@ -106,7 +106,7 @@ void PlushieMonkey::decreaseLockTimer()
 	ASM(nop);
 	HACKABLE_CODE_END(assemblyAddressEnd, puzzleEnd)
 
-	ASM(mov PlushieMonkey::lockCountDown dword ecx);
+	ASM(mov PlushieMonkey::lockCountDown, ecx);
 	ASM(pop ecx);
 
 	if (PlushieMonkey::lockCountDown < 0)

@@ -248,7 +248,7 @@ void CodeEditor::compile(std::string assemblyText)
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertText("Byte Count:", CodeEditor::headerColor);
-		this->statusWindow->insertText(to_string(compileResult.byteCount) + " / " + to_string(this->activeHackableCode->codeOriginalLength), byteOverflow ? CodeEditor::errorColor : CodeEditor::defaultColor);
+		this->statusWindow->insertText(std::to_string(compileResult.byteCount) + " / " + std::to_string(this->activeHackableCode->codeOriginalLength), byteOverflow ? CodeEditor::errorColor : CodeEditor::defaultColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
 		if (compileResult.byteCount != this->activeHackableCode->codeOriginalLength)
@@ -280,7 +280,7 @@ void CodeEditor::compile(std::string assemblyText)
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertText("Line Number:", CodeEditor::headerColor);
-		this->statusWindow->insertText(to_string(compileResult.errorData.lineNumber), CodeEditor::defaultColor);
+		this->statusWindow->insertText(std::to_string(compileResult.errorData.lineNumber), CodeEditor::defaultColor);
 
 		this->disableAccept();
 	}
@@ -341,7 +341,7 @@ void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWind
 		}
 		else
 		{
-			tokenStrings = new vector<std::string>();
+			tokenStrings = new std::vector<std::string>();
 			tokenStrings->push_back(*joinedTextIterator);
 		}
 

@@ -11,7 +11,7 @@ Monitor* Monitor::create(ValueMap* initProperties)
 
 Monitor::Monitor(ValueMap* initProperties) : HackableObject(initProperties)
 {
-	string dialogFile = "Dialog\\" + this->properties->at("dialog").asString() + ".json";
+	std::string dialogFile = "Dialog\\" + this->properties->at("dialog").asString() + ".json";
 	this->monitorDialog = DialogMenu::loadDialogFromFile(dialogFile);
 	this->monitorDialog->retain();
 

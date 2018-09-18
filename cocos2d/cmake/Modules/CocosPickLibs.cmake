@@ -163,7 +163,7 @@ set(all_prebuilt_libs
     luajit
     spidermonkey
 	spriterengine
-	fasm
+	asmjit
 	udis86
 	rapidjson
     )
