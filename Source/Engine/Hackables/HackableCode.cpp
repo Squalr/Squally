@@ -16,14 +16,26 @@ HackableCode::HackableCode(std::string name, void* codeStart, int codeLength, st
 	this->codeOriginalLength = codeLength;
 	this->allocations = new std::map<void*, int>();
 
-	this->originalCodeCopy = new unsigned char(codeLength);
-	memcpy(originalCodeCopy, codeStart, codeLength);
+	if (codeStart != nullptr && codeLength > 0)
+	{
+		this->originalCodeCopy = new unsigned char(codeLength);
+		memcpy(originalCodeCopy, codeStart, codeLength);
+	}
+	else
+	{
+		this->originalCodeCopy = nullptr;
+	}
 
 	this->assemblyString = HackUtils::disassemble(codeStart, codeLength);
 }
 
 void HackableCode::restoreOriginalCode()
 {
+	if (this->codePointer == nullptr || this->originalCodeCopy == nullptr)
+	{
+		return;
+	}
+
 	#ifdef _WIN32
 		DWORD old;
 		VirtualProtect(this->codePointer, this->codeOriginalLength, PAGE_EXECUTE_READWRITE, &old);
@@ -36,6 +48,11 @@ void HackableCode::restoreOriginalCode()
 
 bool HackableCode::applyCustomCode()
 {
+	if (this->codePointer == nullptr)
+	{
+		return false;
+	}
+
 	HackUtils::CompileResult compileResult = HackUtils::assemble(this->assemblyString, this->codePointer);
 
 	// Sanity check that the code compiles -- there isn't any reason it shouldn't

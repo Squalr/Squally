@@ -51,20 +51,20 @@ void WarpGateExactScanTutorial::onEnter()
 void WarpGateExactScanTutorial::incrementPower()
 {
 	ASM(push eax);
-	ASM(mov eax dword WarpGateExactScanTutorial::warpGatePower);
+	ASM(mov eax, WarpGateExactScanTutorial::warpGatePower);
 
 	void* assemblyAddressStart = nullptr;
 	void* assemblyAddressEnd = nullptr;
 
-	HACKABLE_CODE_BEGIN(assemblyAddressStart, startIncrementPower)
+	HACKABLE_CODE_BEGIN(assemblyAddressStart, startIncrementPower);
 	ASM(inc eax);
 	ASM(nop);
 	ASM(nop);
 	ASM(nop);
 	ASM(nop);
-	HACKABLE_CODE_BEGIN(assemblyAddressEnd, endIncrementPower)
+	HACKABLE_CODE_BEGIN(assemblyAddressEnd, endIncrementPower);
 
-	ASM(mov WarpGateExactScanTutorial::warpGatePower dword eax);
+	ASM(mov WarpGateExactScanTutorial::warpGatePower, eax);
 	ASM(pop eax);
 
 	static bool init = false;
