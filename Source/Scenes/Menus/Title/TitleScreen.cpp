@@ -176,6 +176,8 @@ void TitleScreen::onEnter()
 
 void TitleScreen::initializePositions()
 {
+	FadeScene::initializePositions();
+	
 	this->background->initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();

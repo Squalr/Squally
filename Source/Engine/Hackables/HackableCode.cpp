@@ -80,6 +80,8 @@ bool HackableCode::applyCustomCode()
 		const unsigned char nop = 0x90;
 		((unsigned char*)this->codePointer)[compileResult.byteCount + index] = nop;
 	}
+
+	return true;
 }
 
 void* HackableCode::allocateMemory(int allocationSize)

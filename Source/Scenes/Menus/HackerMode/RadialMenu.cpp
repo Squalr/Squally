@@ -136,10 +136,12 @@ void RadialMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 	switch (keyCode)
 	{
-	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		this->close();
-		event->stopPropagation();
-		break;
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
+			this->close();
+			event->stopPropagation();
+			break;
+		default:
+			break;
 	}
 }
 

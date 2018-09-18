@@ -26,8 +26,8 @@ protected:
 private:
 	void onEnter() override;
 	void initializedLocked();
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
+	void initializeListeners() override;
 	void onMouseMove(EventCustom* args);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 

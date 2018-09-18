@@ -69,18 +69,17 @@ void IsometricMap::onEnter()
 	FadeScene::onEnter();
 
 	this->scheduleUpdate();
-	this->initializePositions();
-	this->initializeListeners();
 }
 
 void IsometricMap::initializePositions()
 {
+	IMap::initializePositions();
 }
 
 void IsometricMap::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
-
+	IMap::initializeListeners();
+	
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
 
@@ -138,18 +137,20 @@ void IsometricMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 	switch (keyCode)
 	{
-	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		NavigationEvents::navigate(NavigationEvents::GameScreen::Pause);
-		event->stopPropagation();
-		break;
-	case EventKeyboard::KeyCode::KEY_GRAVE:
-		this->toggleDeveloperMode();
-		event->stopPropagation();
-		break;
-	case EventKeyboard::KeyCode::KEY_TAB:
-		this->toggleHackerMode();
-		event->stopPropagation();
-		break;
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
+			NavigationEvents::navigate(NavigationEvents::GameScreen::Pause);
+			event->stopPropagation();
+			break;
+		case EventKeyboard::KeyCode::KEY_GRAVE:
+			this->toggleDeveloperMode();
+			event->stopPropagation();
+			break;
+		case EventKeyboard::KeyCode::KEY_TAB:
+			this->toggleHackerMode();
+			event->stopPropagation();
+			break;
+		default:
+			break;
 	}
 }
 

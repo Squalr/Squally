@@ -21,9 +21,6 @@ MountainBackground::MountainBackground(ValueMap* properties, std::string name) :
 	this->trees2 = ParallaxNode::create();
 	this->trees3 = ParallaxNode::create();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
 	this->background->setPosition(Vec2(this->background->getContentSize().width / 2, this->background->getContentSize().height / 2));
 
 	this->clouds->setPosition(Vec2(0, 720.0f));
@@ -67,11 +64,6 @@ MountainBackground::~MountainBackground()
 void MountainBackground::update(float dt)
 {
 	SerializableLayer::update(dt);
-
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	float widthOffset = Director::getInstance()->getVisibleSize().width / 2;
 
 	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 

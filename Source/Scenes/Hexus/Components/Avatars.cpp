@@ -72,9 +72,12 @@ void Avatars::initializePositions()
 
 void Avatars::onStateChange(GameState* gameState)
 {
-	switch (gameState->stateType) {
-	case GameState::StateType::ControlNeutral:
-		break;
+	switch (gameState->stateType)
+	{
+		case GameState::StateType::ControlNeutral:
+			break;
+		default:
+			break;
 	}
 }
 

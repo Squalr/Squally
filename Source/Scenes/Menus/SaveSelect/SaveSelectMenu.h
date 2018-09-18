@@ -32,8 +32,8 @@ protected:
 
 private:
 	void onEnter() override;
-	void initializeListeners();
-	void initializePositions();
+	void initializeListeners() override;
+	void initializePositions() override;
 
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onSaveGame1Click(MenuSprite* menuSprite);
