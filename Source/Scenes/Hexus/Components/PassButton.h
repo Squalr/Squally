@@ -25,4 +25,5 @@ private:
 
 	TextMenuSprite* passButton;
 	static const std::string StringKeyHexusPass;
+	GameState* activeGameState;
 };

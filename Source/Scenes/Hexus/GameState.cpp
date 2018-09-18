@@ -17,16 +17,19 @@ GameState::GameState()
 	difficulty(Difficulty::Stupid),
 	playerLosses(0),
 	enemyLosses(0),
+	round(0),
+	playerPass(false),
+	enemyPass(false),
 	stagedSacrifice(nullptr),
 	selectedCard(nullptr),
 	cardPreviewCallback(nullptr),
 	updateStateCallback(nullptr),
 	endTurnCallback(nullptr),
-	requestAiCallback(nullptr)
+	requestAiCallback(nullptr),
+	stagedCombineSourceCard(nullptr),
+	stagedCombineTargetCard(nullptr)
 {
 	this->stagedSacrificeTargets = new std::set<Card*>();
-	this->stagedCombineSourceCard = nullptr;
-	this->stagedCombineTargetCard = nullptr;
 	this->playerDeck = Deck::create();
 	this->playerHand = CardRow::create();
 	this->playerGraveyard = Deck::create();
