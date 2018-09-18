@@ -36,7 +36,7 @@
 #include "vorbis/vorbisfile.h"
 
 NS_CC_BEGIN
-namespace experimental{
+namespace cocos_experimental{
 
 const size_t PCMDATA_CACHEMAXSIZE = 2621440;
 const size_t QUEUEBUFFER_NUM = 4;

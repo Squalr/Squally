@@ -293,7 +293,7 @@ static std::string getFixedBaseUrl(const std::string& baseUrl)
 
 
 namespace cocos2d {
-namespace experimental {
+namespace cocos_experimental {
     namespace ui{
 
 WebViewImpl::WebViewImpl(WebView *webView)
@@ -438,7 +438,7 @@ void WebViewImpl::setBackgroundTransparent(){
 
         
     } // namespace ui
-} // namespace experimental
+} // namespace cocos_experimental
 } //namespace cocos2d
 
 #endif // CC_TARGET_PLATFORM == CC_PLATFORM_IOS

@@ -38,7 +38,7 @@ class Data;
 class Renderer;
 class Mat4;
     
-namespace experimental {
+namespace cocos_experimental {
     namespace ui{
     
 class WebView;
@@ -97,7 +97,7 @@ private:
 };
 
     } // namespace ui
-  } // namespace experimental
+  } // namespace cocos_experimental
 }//namespace cocos2d
 
 /// @endcond

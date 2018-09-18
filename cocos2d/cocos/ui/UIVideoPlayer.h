@@ -36,7 +36,7 @@
  */
 
 NS_CC_BEGIN
-namespace experimental{
+namespace cocos_experimental{
     namespace ui{
 
         /**

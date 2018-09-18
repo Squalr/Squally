@@ -38,7 +38,7 @@
 #include "audio/apple/AudioMacros.h"
 
 NS_CC_BEGIN
-namespace experimental{
+namespace cocos_experimental{
 
 class AudioEngineImpl;
 class AudioPlayer;

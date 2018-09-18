@@ -1,6 +1,16 @@
 {
     "files.associations": {
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "__config": "cpp",
+        "__nullptr": "cpp",
+        "exception": "cpp",
+        "initializer_list": "cpp",
+        "new": "cpp",
+        "stdexcept": "cpp",
+        "typeinfo": "cpp",
+        "algorithm": "cpp",
+        "ios": "cpp",
+        "random": "cpp"
     },
     "C_Cpp.configurationWarnings": "Disabled"
 }
