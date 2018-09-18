@@ -114,7 +114,6 @@ void TitleScreenBackground::onEnter()
 	FiniteTimeAction* sinkUp = EaseSineInOut::create(MoveTo::create(sinkSpeed, Vec2(base.x, base.y)));
 
 	// Prepare parameters to pass to lambdas
-	Node* slimeNodeLocal = this->slimeNode;
 	Node* slimeSpriteLocal = this->slime;
 	SpriterEngine::EntityInstance* squallyLocal = this->squallyEntity;
 	Animation* slimeActionNode = this->slimeAnimation;

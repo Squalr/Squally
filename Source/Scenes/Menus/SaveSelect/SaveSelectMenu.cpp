@@ -32,8 +32,6 @@ SaveSelectMenu::SaveSelectMenu()
 
 	this->background = Node::create();
 
-	LayerColor* background = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, visibleSize.height * 2);
-
 	Label* saveGame1Label = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* saveGame1LabelHover = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* saveGame1LabelClicked = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
@@ -150,9 +148,6 @@ void SaveSelectMenu::onEnter()
 
 	this->background->addChild(MenuBackground::claimInstance());
 
-	this->initializePositions();
-	this->initializeListeners();
-
 	const float delay = 0.5f;
 	const float duration = 0.75f;
 
@@ -165,7 +160,7 @@ void SaveSelectMenu::onEnter()
 
 void SaveSelectMenu::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	FadeScene::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -179,6 +174,8 @@ void SaveSelectMenu::initializeListeners()
 
 void SaveSelectMenu::initializePositions()
 {
+	FadeScene::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	MenuBackground::getInstance()->initializePositions();
@@ -192,10 +189,12 @@ void SaveSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode)
 	{
-	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		event->stopPropagation();
-		NavigationEvents::navigateBack();
-		break;
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
+			event->stopPropagation();
+			NavigationEvents::navigateBack();
+			break;
+		default:
+			break;
 	}
 }
 
