@@ -145,6 +145,11 @@ macro(cocos2d_depend_libs)
     if(USE_RECAST)
         list(APPEND PREBUILT_SPECIFIC_LIBS RECAST)
     endif()
+	
+	list(APPEND PREBUILT_SPECIFIC_LIBS SPRITER_ENGINE)
+	list(APPEND PREBUILT_SPECIFIC_LIBS FASM)
+	list(APPEND PREBUILT_SPECIFIC_LIBS UDIS86)
+	list(APPEND PREBUILT_SPECIFIC_LIBS RAPIDJSON)
 endmacro()
 
 macro(target_use_cocos2d_depend_libs target)
