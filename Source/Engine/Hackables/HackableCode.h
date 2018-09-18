@@ -14,6 +14,7 @@
 #define VA_SIZE( ... ) GET_COUNT( __VA_ARGS__, 6, 5, 4, 3, 2, 1 )
 #define VA_SELECT( NAME, ... ) SELECT( NAME, VA_SIZE(__VA_ARGS__) )(__VA_ARGS__)
 
+
 // Define macros for inlining x86 assembly in a compiler-independent way
 #ifdef _MSC_VER
 	#define ASM( ... ) VA_SELECT( ASM, __VA_ARGS__ )
@@ -46,12 +47,12 @@
 #endif
 
 #define HACKABLE_CODE_BEGIN(address, label) \
-ASM("mov address, offset label") \
-ASM(label:)
+ASM_2("mov " #address, "offset " #label) \
+ASM_1(label:)
 
 #define HACKABLE_CODE_END(address, label) \
-ASM(label:) \
-ASM("mov address, offset label")
+ASM_1(label:) \
+ASM_2("mov " #address, "offset " #label)
 
 using namespace cocos2d;
 

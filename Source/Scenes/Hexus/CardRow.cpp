@@ -2,11 +2,18 @@
 
 CardRow* CardRow::create()
 {
-	CardRow* instance = new CardRow();
+    CardRow * instance = new (std::nothrow) CardRow();
 
-	instance->autorelease();
+    if (instance && instance->init())
+    {
+        instance->autorelease();
+    }
+    else
+    {
+        CC_SAFE_DELETE(instance);
+    }
 
-	return instance;
+    return instance;
 }
 
 CardRow::CardRow()
@@ -177,7 +184,11 @@ void CardRow::disableRowCardSelection()
 
 void CardRow::clear()
 {
-	this->removeAllChildren();
+	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	{
+		this->removeChild(*it);
+	}
+
 	this->rowCards->clear();
 }
 
