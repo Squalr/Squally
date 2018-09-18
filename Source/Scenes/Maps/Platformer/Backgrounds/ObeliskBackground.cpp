@@ -45,10 +45,6 @@ void ObeliskBackground::update(float dt)
 {
 	SerializableLayer::update(dt);
 
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	float widthOffset = Director::getInstance()->getVisibleSize().width / 2;
 	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 
 	this->background2->runAction(MoveTo::create(0.0f, Vec2(-cameraPosition.x / 80.0f, this->background2->getPosition().y)));

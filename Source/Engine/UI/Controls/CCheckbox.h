@@ -20,7 +20,6 @@ protected:
 private:
 	void initializeListeners();
 	void onToggleClick(MenuSprite* menuSprite);
-	void onMouseMove(EventMouse* event);
 
 	MenuSprite* onSwitch;
 	MenuSprite* offSwitch;

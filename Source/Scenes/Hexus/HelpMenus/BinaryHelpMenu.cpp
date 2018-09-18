@@ -20,16 +20,14 @@ BinaryHelpMenu::~BinaryHelpMenu()
 void BinaryHelpMenu::onEnter()
 {
 	HelpMenuBase::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
 }
 
 void BinaryHelpMenu::initializePositions()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	HelpMenuBase::initializePositions();
 }
 
 void BinaryHelpMenu::initializeListeners()
 {
+	HelpMenuBase::initializeListeners();
 }

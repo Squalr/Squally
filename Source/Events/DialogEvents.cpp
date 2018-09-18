@@ -1,4 +1,3 @@
-#pragma once
 #include "DialogEvents.h"
 
 const std::string DialogEvents::DialogOpenEvent = "dialog_open_event";

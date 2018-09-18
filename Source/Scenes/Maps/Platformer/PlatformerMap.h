@@ -37,8 +37,8 @@ protected:
 	~PlatformerMap();
 
 private:
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
+	void initializeListeners() override;
 	void toggleHackerMode();
 	void toggleDeveloperMode();
 	void onMouseWheelScroll(EventMouse* event);

@@ -189,6 +189,8 @@ bool Squally::contactUpdate(CollisionData data)
 	case PlatformerCollisionMapping::CategoryGroupType::G_SolidNpc:
 	case PlatformerCollisionMapping::CategoryGroupType::G_SolidFlyingNpc:
 		return false;
+	default:
+		break;
 	}
 
 	return true;
@@ -209,6 +211,8 @@ bool Squally::contactEnd(CollisionData data)
 	case PlatformerCollisionMapping::CategoryGroupType::G_SolidNpc:
 	case PlatformerCollisionMapping::CategoryGroupType::G_SolidFlyingNpc:
 		return false;
+	default:
+		break;
 	}
 
 	return true;

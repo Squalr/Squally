@@ -50,8 +50,6 @@ HexusMenu::HexusMenu()
 	}
 
 	this->addChild(Mouse::create());
-
-	this->initializeListeners();
 }
 
 HexusMenu::~HexusMenu()
@@ -79,23 +77,22 @@ void HexusMenu::onEnter()
 	// Initialize particles to an intermediate state
 	GameUtils::accelerateParticles(this->swirl, 5.0f);
 	GameUtils::accelerateParticles(this->nether, 1.0f);
-
-	this->initializePositions();
 }
 
 void HexusMenu::initializePositions()
 {
+	FadeScene::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	this->nether->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
-	this->swirl->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->nether->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+	this->swirl->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 
-	this->tutorialWindow->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->tutorialWindow->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	this->titleLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 248.0f));
-	this->closeButton->setPosition(Vec2(origin.x + visibleSize.width / 2 + 308.0f, origin.y + visibleSize.height / 2 + 222.0f));
-	this->descriptionBox->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 196.0f));
-	this->description->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 196.0f));
+	this->closeButton->setPosition(Vec2(visibleSize.width / 2 + 308.0f, visibleSize.height / 2 + 222.0f));
+	this->descriptionBox->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 196.0f));
+	this->description->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 196.0f));
 
 	for (std::vector<HexusOpponentItem*>::iterator it = this->hexusOpponentItems->begin(); it != this->hexusOpponentItems->end(); ++it)
 	{
@@ -103,10 +100,19 @@ void HexusMenu::initializePositions()
 	}
 }
 
+void HexusMenu::initializeListeners()
+{
+	FadeScene::initializeListeners();
+
+	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusMenu::onKeyPressed, this);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+}
+
 void HexusMenu::loadLevels()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	auto callback = CC_CALLBACK_1(HexusMenu::onMouseOver, this);
 	int index = 0;
 
@@ -189,25 +195,16 @@ void HexusMenu::onMouseOver(HexusOpponentItem* tutorialItem)
 	}
 }
 
-void HexusMenu::initializeListeners()
-{
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
-
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
-
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusMenu::onKeyPressed, this);
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
-}
-
 void HexusMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode)
 	{
-	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		event->stopPropagation();
-		NavigationEvents::navigateBack();
-		break;
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
+			event->stopPropagation();
+			NavigationEvents::navigateBack();
+			break;
+		default:
+			break;
 	}
 }
 

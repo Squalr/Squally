@@ -33,7 +33,7 @@ protected:
 
 private:
 	void onEnter() override;
-	void initializePositions();
+	void initializePositions() override;
 
 	void onMatrixClick(MenuSprite* menuSprite);
 	void onStoryModeClick(MenuSprite* menuSprite);

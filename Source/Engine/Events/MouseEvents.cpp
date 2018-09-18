@@ -1,4 +1,3 @@
-#pragma once
 #include "MouseEvents.h"
 
 const std::string MouseEvents::MouseMoveEvent = "EVENT_MOUSE_MOVE";

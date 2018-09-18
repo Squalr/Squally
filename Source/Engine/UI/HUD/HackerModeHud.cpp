@@ -72,6 +72,8 @@ void HackerModeHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 			event->stopPropagation();
 
 			break;
+		default:
+			break;
 		}
 	}
 }

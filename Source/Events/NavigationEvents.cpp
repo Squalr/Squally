@@ -1,4 +1,3 @@
-#pragma once
 #include "NavigationEvents.h"
 
 const std::string NavigationEvents::gameNavigateNewEvent = "game_navigate_new_event";

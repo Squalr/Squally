@@ -47,12 +47,12 @@ void LoadingScreen::onEnter()
 	FadeScene::onEnter();
 
 	this->background->addChild(MenuBackground::claimInstance());
-
-	this->initializePositions();
 }
 
 void LoadingScreen::initializePositions()
 {
+	FadeScene::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->progressBar->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 480.0f));

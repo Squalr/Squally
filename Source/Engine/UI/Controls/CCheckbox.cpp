@@ -46,12 +46,6 @@ CCheckbox::~CCheckbox()
 void CCheckbox::initializeListeners()
 {
 	this->getEventDispatcher()->removeEventListenersForTarget(this);
-
-	EventListenerMouse* mouseListener = EventListenerMouse::create();
-
-	mouseListener->onMouseMove = CC_CALLBACK_1(CCheckbox::onMouseMove, this);
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
 }
 
 void CCheckbox::onToggleClick(MenuSprite* menuSprite)
@@ -79,13 +73,5 @@ void CCheckbox::onToggleClick(MenuSprite* menuSprite)
 	{
 		this->offSwitch->setVisible(true);
 		this->onSwitch->setVisible(false);
-	}
-}
-
-void CCheckbox::onMouseMove(EventMouse* event)
-{
-	for (std::vector<MenuSprite*>::iterator it = this->clickableMenus->begin(); it != this->clickableMenus->end(); ++it)
-	{
-		MenuSprite* menuSprite = *it;
 	}
 }

@@ -82,8 +82,6 @@ void InfiniteParallaxNode::rebuildNodes()
 
 void InfiniteParallaxNode::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
 {
-	Node* firstNode = this->nodes->at(0);
-	Node* lastNode = this->nodes->at(this->nodes->size() - 1);
 	Vec2 position = this->getParent()->convertToWorldSpace(this->getPosition());
 
 	if (position.x < -this->spriteWidth)
