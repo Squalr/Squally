@@ -3,6 +3,10 @@
 
 #include "Engine/Hackables/HackableAttribute.h"
 
+#ifndef _WIN32
+	#include <sys/mman.h>
+#endif
+
 #define HACKABLE_CODE_BEGIN(address, label) \
 _asm \
 { \

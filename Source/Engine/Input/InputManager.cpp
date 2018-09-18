@@ -85,10 +85,10 @@ void InputManager::initializeListeners()
 
 void InputManager::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	this->pressedKeys->insert_or_assign(keyCode, true);
+	this->pressedKeys->emplace(keyCode, true);
 }
 
 void InputManager::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	this->pressedKeys->insert_or_assign(keyCode, false);
+	this->pressedKeys->emplace(keyCode, false);
 }

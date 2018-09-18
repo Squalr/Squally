@@ -24,8 +24,13 @@ HackableCode::HackableCode(std::string name, void* codeStart, int codeLength, st
 
 void HackableCode::restoreOriginalCode()
 {
-	DWORD old;
-	VirtualProtect(this->codePointer, this->codeOriginalLength, PAGE_EXECUTE_READWRITE, &old);
+	#ifdef _WIN32
+		DWORD old;
+		VirtualProtect(this->codePointer, this->codeOriginalLength, PAGE_EXECUTE_READWRITE, &old);
+	#else
+		mprotect(this->codePointer, this->codeOriginalLength, PROT_READ | PROT_WRITE | PROT_EXEC);
+	#endif
+	
 	memcpy(this->codePointer, this->originalCodeCopy, this->codeOriginalLength);
 }
 
@@ -41,8 +46,13 @@ bool HackableCode::applyCustomCode()
 	}
 
 	// Write new assembly code
-	DWORD old;
-	VirtualProtect(this->codePointer, compileResult.byteCount, PAGE_EXECUTE_READWRITE, &old);
+	#ifdef _WIN32
+		DWORD old;
+		VirtualProtect(this->codePointer, compileResult.byteCount, PAGE_EXECUTE_READWRITE, &old);
+	#else
+		mprotect(this->codePointer, compileResult.byteCount, PROT_READ | PROT_WRITE | PROT_EXEC);
+	#endif
+
 	memcpy(this->codePointer, compileResult.compiledBytes, compileResult.byteCount);
 
 	int unfilledBytes = this->codeOriginalLength - compileResult.byteCount;
@@ -50,15 +60,15 @@ bool HackableCode::applyCustomCode()
 	// Fill remaining bytes with NOPs
 	for (int index = 0; index < unfilledBytes; index++)
 	{
-		const byte nop = 0x90;
-		((byte*)this->codePointer)[compileResult.byteCount + index] = nop;
+		const unsigned char nop = 0x90;
+		((unsigned char*)this->codePointer)[compileResult.byteCount + index] = nop;
 	}
 }
 
 void* HackableCode::allocateMemory(int allocationSize)
 {
 	void* allocation = malloc(allocationSize);
-	this->allocations->insert_or_assign(allocation, allocationSize);
+	this->allocations->emplace(allocation, allocationSize);
 
 	return allocation;
 }

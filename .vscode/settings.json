@@ -10,7 +10,16 @@
         "typeinfo": "cpp",
         "algorithm": "cpp",
         "ios": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "queue": "cpp",
+        "set": "cpp",
+        "stack": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "vector": "cpp"
     },
     "C_Cpp.configurationWarnings": "Disabled"
 }
