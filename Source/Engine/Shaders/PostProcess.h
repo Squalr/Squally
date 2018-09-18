@@ -11,6 +11,12 @@ using namespace cocos2d;
 class PostProcess : public cocos2d::Layer
 {
 public:
+	// Redefine this, not all compilers can find the std:: impl
+	template<typename T, typename... Args>
+	std::unique_ptr<T> make_unique(Args&&... args) {
+		return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
+	}
+
 	struct Impl
 	{
 	public:

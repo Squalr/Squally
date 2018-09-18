@@ -36,7 +36,7 @@ std::vector<std::string> GameUtils::getAllAnimationFiles(std::string firstFrameR
 				int index = std::stoi(animationFrameIndex);
 
 				// Now that we have the actual index as an integer, store it in our mapping
-				orderedAnimationFileMap.insert_or_assign(index, fileName);
+				orderedAnimationFileMap.emplace(index, fileName);
 			}
 		}
 	}

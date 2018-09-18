@@ -147,10 +147,17 @@ bool StrUtils::startsWith(std::string str, std::string prefix, bool ignoreCase)
 
 		if (ignoreCase)
 		{
-			if (stricmp(stringStart.c_str(), prefix.c_str()) == 0)
-			{
-				return true;
-			}
+			#ifdef _WIN32
+				if (stricmp(stringStart.c_str(), prefix.c_str()) == 0)
+				{
+					return true;
+				}
+			#else
+				if (strcasecmp(stringStart.c_str(), prefix.c_str()) == 0)
+				{
+					return true;
+				}
+			#endif
 		}
 
 		if (stringStart == prefix)
@@ -170,10 +177,17 @@ bool StrUtils::endsWith(std::string str, std::string suffix, bool ignoreCase)
 
 		if (ignoreCase)
 		{
-			if (stricmp(stringEnd.c_str(), suffix.c_str()) == 0)
-			{
-				return true;
-			}
+			#ifdef _WIN32
+				if (stricmp(stringEnd.c_str(), suffix.c_str()) == 0)
+				{
+					return true;
+				}
+			#else
+				if (strcasecmp(stringEnd.c_str(), suffix.c_str()) == 0)
+				{
+					return true;
+				}
+			#endif
 		}
 
 		if (stringEnd == suffix)

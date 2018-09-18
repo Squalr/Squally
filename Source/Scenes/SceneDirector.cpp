@@ -230,7 +230,7 @@ void SceneDirector::onGameNavigateEnterLevel(EventCustom* eventCustom)
 		this->map = IsometricMap::create();
 	}
 	else {
-		throw exception("Invalid Map Type Loaded");
+		throw std::runtime_error("Invalid Map Type Loaded");
 	}
 
 	this->map->retain();

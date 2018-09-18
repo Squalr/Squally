@@ -2,10 +2,44 @@
 
 HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* addressStart)
 {
-	Fasm::FasmResult* fasmResult = Fasm::assemble(assembly, addressStart);
-	HackUtils::CompileResult compileResult = HackUtils::constructCompileResult(fasmResult);
+	CompileResult compileResult;
 
-	delete(fasmResult);
+	CodeInfo ci(ArchInfo::kTypeX86);
+	CodeHolder code;
+	code.init(ci);
+
+	// Attach X86Assembler `code`.
+	X86Assembler a(&code);
+
+	// Create AsmParser that will emit to X86Assembler.
+	AsmParser p(&a);
+
+	// Parse some assembly.
+	Error err = p.parse(
+		"push eax\n"
+		"mov eax, ebx\n"
+		"pop eax\n"
+	);
+
+	// Error handling (use asmjit::ErrorHandler for more robust error handling).
+	if (err)
+	{
+		printf("ERROR: %08x (%s)\n", err, DebugUtils::errorAsString(err));
+		//return 1;
+	}
+
+	// If we are done, you must detach the Assembler from CodeHolder or sync
+	// it, so its internal state and position is synced with CodeHolder.
+	code.sync();
+
+	// Now you can print the code, which is stored in the first section (.text).
+	CodeBuffer& buffer = code.getSectionEntry(0)->getBuffer();
+	//dumpCode(buffer.getData(), buffer.getLength());
+
+	//Fasm::FasmResult* fasmResult = Fasm::assemble(assembly, addressStart);
+	//HackUtils::CompileResult compileResult = HackUtils::constructCompileResult(fasmResult);
+
+	//delete(fasmResult);
 	return compileResult;
 }
 
@@ -13,6 +47,16 @@ std::string HackUtils::disassemble(void* bytes, int length)
 {
 	static ud_t ud_obj;
 	static bool initialized = false;
+
+	if (bytes == nullptr)
+	{
+		return "nullptr";
+	}
+
+	if (length <= 0)
+	{
+		return "";
+	}
 
 	// Only initialize the disassembler once
 	if (!initialized)
@@ -22,7 +66,7 @@ std::string HackUtils::disassemble(void* bytes, int length)
 		ud_set_syntax(&ud_obj, UD_SYN_INTEL);
 	}
 
-	ud_set_input_buffer(&ud_obj, (byte*)bytes, length);
+	ud_set_input_buffer(&ud_obj, (unsigned char*)bytes, length);
 
 	std::string instructions = "";
 
@@ -40,7 +84,7 @@ std::string HackUtils::hexAddressOf(void* address, bool zeroPad, bool prefix)
 	std::stringstream stream;
 
 	// Convert to hex
-	stream << std::hex << (int)(address);
+	stream << std::hex << (unsigned int)((unsigned long)(address));
 	std::string hexAddress = stream.str();
 
 	// Convert to upper
@@ -171,7 +215,7 @@ std::string HackUtils::valueStringOf(void* dataPointer, HackUtils::DataType data
 	switch (dataType)
 	{
 	case HackUtils::DataType::Byte:
-		return std::to_string((*(byte*)dataPointer));
+		return std::to_string((*(unsigned char*)dataPointer));
 	case HackUtils::DataType::SByte:
 		return std::to_string((*(signed char*)dataPointer));
 	case HackUtils::DataType::Int16:
@@ -210,7 +254,7 @@ std::string HackUtils::arrayOfByteStringOf(void* dataPointer, int length, int ma
 		std::stringstream stream;
 
 		// Convert to hex
-		stream << std::hex << (int)(((byte*)dataPointer)[index]);
+		stream << std::hex << (int)(((unsigned char*)dataPointer)[index]);
 		std::string hexByte = stream.str();
 
 		// Convert to upper
@@ -229,6 +273,7 @@ std::string HackUtils::arrayOfByteStringOf(void* dataPointer, int length, int ma
 	return result;
 }
 
+/*
 HackUtils::CompileResult HackUtils::constructCompileResult(Fasm::FasmResult* fasmResult)
 {
 	// Note the 2 here is due to the first two lines of FASM specifying 32/64 bit and the origin point
@@ -386,7 +431,7 @@ HackUtils::CompileResult HackUtils::constructCompileResult(Fasm::FasmResult* fas
 	case Fasm::FasmResultCode::Ok:
 	default:
 		compileResult.byteCount = fasmResult->OutputLength;
-		compileResult.compiledBytes = new byte[fasmResult->OutputLength];
+		compileResult.compiledBytes = new unsigned char[fasmResult->OutputLength];
 		memcpy(compileResult.compiledBytes, fasmResult->OutputData, fasmResult->OutputLength);
 		compileResult.hasError = false;
 		break;
@@ -395,3 +440,4 @@ HackUtils::CompileResult HackUtils::constructCompileResult(Fasm::FasmResult* fas
 
 	return compileResult;
 }
+*/

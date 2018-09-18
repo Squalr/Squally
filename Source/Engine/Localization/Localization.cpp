@@ -41,7 +41,7 @@ std::string Localization::resolveString(std::string resourceKey)
 
 	if (localization->localizationMap->HasMember(resourceKey.c_str()))
 	{
-		auto node = (*localization->localizationMap)[resourceKey.c_str()].GetObjectW();
+		auto node = (*localization->localizationMap)[resourceKey.c_str()].GetObject();
 		if (node.HasMember(languageCode.c_str()))
 		{
 			return node[languageCode.c_str()].GetString();

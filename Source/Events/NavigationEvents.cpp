@@ -11,56 +11,70 @@ const std::string NavigationEvents::gameNavigateFightEvent = "game_navigate_figh
 
 void NavigationEvents::navigateBack(int count)
 {
+	NavigateBackEventArgs args = NavigateBackEventArgs(count);
+
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::gameNavigateBackEvent,
-		&NavigateBackEventArgs(count)
+		&args
 	);
 }
 
 void NavigationEvents::navigate(GameScreen gameScreen)
 {
+	NavigateEventArgs args = NavigateEventArgs(gameScreen);
+
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::gameNavigateNewEvent,
-		&NavigateEventArgs(gameScreen)
+		&args
 	);
 }
 
 void NavigationEvents::navigateConfirm(std::string confirmMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback)
 {
+	NavigateConfirmArgs args = NavigateConfirmArgs(confirmMessage, confirmCallback, cancelCallback);
+
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::gameNavigateConfirmEvent,
-		&NavigateConfirmArgs(confirmMessage, confirmCallback, cancelCallback)
+		&args
 	);
 }
 
 void NavigationEvents::loadCutscene(Cutscene* cutscene)
 {
+	NavigateLoadCutsceneArgs args = NavigateLoadCutsceneArgs(cutscene);
+
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::gameNavigateLoadCutsceneEvent,
-		&NavigateLoadCutsceneArgs(cutscene)
+		&args
 	);
 }
 
 void NavigationEvents::loadMap(std::string levelFile)
 {
+	NavigateLoadLevelArgs args = NavigateLoadLevelArgs(levelFile);
+
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::gameNavigateLoadLevelEvent,
-		&NavigateLoadLevelArgs(levelFile)
+		&args
 	);
 }
 
 void NavigationEvents::enterLevel(SerializableMap* levelMap)
 {
+	NavigateEnterLevelArgs args = NavigateEnterLevelArgs(levelMap);
+
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::gameNavigateEnterLevelEvent,
-		&NavigateEnterLevelArgs(levelMap)
+		&args
 	);
 }
 
 void NavigationEvents::loadFight(Squally* squally, PlatformerEnemy* enemy)
 {
+	NavigateFightArgs args = NavigateFightArgs(squally, enemy);
+
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::gameNavigateFightEvent,
-		&NavigateFightArgs(squally, enemy)
+		&args
 	);
 }

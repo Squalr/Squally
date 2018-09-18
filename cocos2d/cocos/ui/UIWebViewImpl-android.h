@@ -37,7 +37,7 @@ namespace cocos2d {
     class Renderer;
     class Mat4;
 
-    namespace experimental {
+    namespace cocos_experimental {
         namespace ui{
             class WebView;
         }
@@ -45,7 +45,7 @@ namespace cocos2d {
 }
 
 namespace cocos2d {
-    namespace experimental {
+    namespace cocos_experimental {
         namespace ui{
 
             class WebViewImpl {
@@ -104,7 +104,7 @@ namespace cocos2d {
             };
 
         } // namespace ui
-    } // namespace experimental
+    } // namespace cocos_experimental
 } //cocos2d
 
 #endif // __ANDROID__

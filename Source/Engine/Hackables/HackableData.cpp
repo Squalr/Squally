@@ -47,7 +47,10 @@ void HackableData::registerCode(void* startAddress, void* endAddress, std::strin
 		return;
 	}
 
-	HackableCode* hackableCode = HackableCode::create(functionName, startAddress, (unsigned int)endAddress - (unsigned int)startAddress, iconResource);
+	unsigned long size = ((unsigned long)endAddress - (unsigned long)startAddress);
+	unsigned int intSize = (unsigned int)size;
+
+	HackableCode* hackableCode = HackableCode::create(functionName, startAddress, intSize, iconResource);
 	hackableCode->retain();
 	this->codeList->push_back(hackableCode);
 	this->codeTable->insert(startAddress);

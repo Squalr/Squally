@@ -1,4 +1,6 @@
 #pragma once
+#include <math.h>
+
 #include "cocos2d.h"
 
 #include "Engine/Hackables/HackableObject.h"

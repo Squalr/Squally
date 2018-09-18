@@ -24,7 +24,12 @@ Fasm::FasmResult* Fasm::assemble(string assembly, void* baseAddress)
 	unsigned char* resultBuffer = (unsigned char*)calloc(bufferSize, sizeof(unsigned char));
 
 	// Assemble the mnemonics
-	FasmResultCode ret = (FasmResultCode)fasm_Assemble(_strdup(assembly.c_str()), resultBuffer, bufferSize, 100, nullptr);
+	#ifdef _WIN32
+		FasmResultCode ret = (FasmResultCode)fasm_Assemble(_strdup(assembly.c_str()), resultBuffer, bufferSize, 100, nullptr);
+	#else
+		FasmResultCode ret = (FasmResultCode)fasm_Assemble(strdup(assembly.c_str()), resultBuffer, bufferSize, 100, nullptr);
+	#endif
+	
 	FasmResult* result = static_cast<FasmResult*>((void*)resultBuffer);
 
 	return result;

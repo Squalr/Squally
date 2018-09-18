@@ -2,10 +2,13 @@
 #include <bitset>
 
 #include "cocos2d.h"
-#include "Fasm.h"
+
+#include "asmtk.h"
 #include "udis86.h"
 
 using namespace cocos2d;
+using namespace asmjit;
+using namespace asmtk;
 
 class HackUtils
 {
@@ -50,6 +53,6 @@ public:
 	static std::string arrayOfByteStringOf(void* dataPointer, int length, int maxLength);
 
 private:
-	static CompileResult constructCompileResult(Fasm::FasmResult* fasmResult);
+	//static CompileResult constructCompileResult(Fasm::FasmResult* fasmResult);
 };
 

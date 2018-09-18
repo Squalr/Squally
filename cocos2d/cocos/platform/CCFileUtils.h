@@ -31,7 +31,10 @@ THE SOFTWARE.
 #include <unordered_map>
 #include <type_traits>
 #include <fstream>
-#include <filesystem>
+
+#ifdef _WIN32
+    #include <filesystem>
+#endif
 
 #include "cereal/cereal.hpp"
 #include "cereal/access.hpp"

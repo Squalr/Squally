@@ -26,8 +26,8 @@ private:
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event);
 
-	std::unordered_map<EventKeyboard::KeyCode, bool>* pressedKeysPrevious;
-	std::unordered_map<EventKeyboard::KeyCode, bool>* pressedKeys;
+	std::unordered_map<int, bool>* pressedKeysPrevious;
+	std::unordered_map<int, bool>* pressedKeys;
 
 	static InputManager * inputManagerInstance;
 };

@@ -60,23 +60,14 @@ void Wind::update(float dt)
 	Vec2 speed = Vec2::ZERO;
 	Vec2 currentSpeed = this->windSpeed;
 
-	__asm
-	{
-		push ebx;
-		mov ebx, currentSpeed.y
-	}
+	ASM(push ebx);
+	ASM(mov ebx, currentSpeed.y);
 
-	HACKABLE_CODE_BEGIN(assemblyAddressStart, windSpeedYStart)
-	__asm
-	{
-		mov speed.y, ebx
-	}
-	HACKABLE_CODE_END(assemblyAddressEnd, windSpeedYEnd)
+	HACKABLE_CODE_BEGIN(assemblyAddressStart, windSpeedYStart);
+	ASM(mov speed.y, ebx)
+	HACKABLE_CODE_END(assemblyAddressEnd, windSpeedYEnd);
 
-	__asm
-	{
-		pop ebx;
-	}
+	ASM(pop ebx);
 
 	if (speed.x == 0.0f && speed.y == 0.0f)
 	{

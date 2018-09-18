@@ -14,6 +14,17 @@
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": true
+        },
+        {
+            "name": "(Mac) Launch",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/TODO/Squally.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true
         }
     ]
 }

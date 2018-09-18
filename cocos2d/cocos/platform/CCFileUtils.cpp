@@ -1500,8 +1500,9 @@ std::vector<std::string> FileUtils::listFiles(const std::string& dirPath) const
     return files;
 }
 
-void FileUtils::listFilesRecursively(const std::string& dirPath, std::vector<std::string> *files) const
+std::vector<std::string> FileUtils::listFilesRecursively(const std::string& dirPath) const
 {
+    std::vector<std::string> files;
     std::string fullpath = fullPathForFilename(dirPath);
     if (isDirectoryExist(fullpath))
     {
@@ -1526,12 +1527,12 @@ void FileUtils::listFilesRecursively(const std::string& dirPath, std::vector<std
                     if (file.is_dir)
                     {
                         filepath.append("/");
-                        files->push_back(filepath);
-                        listFilesRecursively(filepath, files);
+                        files.push_back(filepath);
+                        listFilesRecursively(filepath);
                     }
                     else
                     {
-                        files->push_back(filepath);
+                        files.push_back(filepath);
                     }
                 }
 
@@ -1544,6 +1545,8 @@ void FileUtils::listFilesRecursively(const std::string& dirPath, std::vector<std
         }
         tinydir_close(&dir);
     }
+    
+    return files;
 }
 
 #endif

@@ -15,7 +15,7 @@ void IsometricEntityDeserializer::onDeserializationRequest(ObjectDeserialization
 	if (args->typeName == IsometricEntityDeserializer::KeyTypeIsometricEntity)
 	{
 		ValueMap properties = args->properties;
-		string name = properties.at(SerializableObject::KeyName).asString();
+		std::string name = properties.at(SerializableObject::KeyName).asString();
 		SerializableObject* newEntity = nullptr;
 
 		if (name == IsometricSqually::KeySquallyProperty)
