@@ -23,8 +23,8 @@ InputManager* InputManager::getInstance()
 
 InputManager::InputManager()
 {
-	this->pressedKeys = new std::unordered_map<EventKeyboard::KeyCode, bool>();
-	this->pressedKeysPrevious = new std::unordered_map<EventKeyboard::KeyCode, bool>();
+	this->pressedKeys = new std::unordered_map<int, bool>();
+	this->pressedKeysPrevious = new std::unordered_map<int, bool>();
 }
 
 InputManager::~InputManager()
@@ -43,9 +43,9 @@ void InputManager::resume()
 
 bool InputManager::isKeyJustPressed(EventKeyboard::KeyCode keyCode)
 {
-	if (this->pressedKeys->count(keyCode) > 0)
+	if (this->pressedKeys->count((int)keyCode) > 0)
 	{
-		return pressedKeys->at(keyCode);
+		return pressedKeys->at((int)keyCode);
 	}
 
 	return false;
@@ -53,9 +53,9 @@ bool InputManager::isKeyJustPressed(EventKeyboard::KeyCode keyCode)
 
 bool InputManager::isPressed(EventKeyboard::KeyCode keyCode)
 {
-	if (this->pressedKeys->count(keyCode) > 0)
+	if (this->pressedKeys->count((int)keyCode) > 0)
 	{
-		return pressedKeys->at(keyCode);
+		return pressedKeys->at((int)keyCode);
 	}
 
 	return false;
@@ -63,9 +63,9 @@ bool InputManager::isPressed(EventKeyboard::KeyCode keyCode)
 
 bool InputManager::isReleased(EventKeyboard::KeyCode keyCode)
 {
-	if (this->pressedKeys->count(keyCode) > 0)
+	if (this->pressedKeys->count((int)keyCode) > 0)
 	{
-		return !pressedKeys->at(keyCode);
+		return !pressedKeys->at((int)keyCode);
 	}
 
 	return false;
@@ -85,10 +85,10 @@ void InputManager::initializeListeners()
 
 void InputManager::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	this->pressedKeys->emplace(keyCode, true);
+	this->pressedKeys->emplace((int)keyCode, true);
 }
 
 void InputManager::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	this->pressedKeys->emplace(keyCode, false);
+	this->pressedKeys->emplace((int)keyCode, false);
 }

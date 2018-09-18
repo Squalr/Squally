@@ -22,7 +22,7 @@ std::string HackUtils::disassemble(void* bytes, int length)
 		ud_set_syntax(&ud_obj, UD_SYN_INTEL);
 	}
 
-	ud_set_input_buffer(&ud_obj, (byte*)bytes, length);
+	ud_set_input_buffer(&ud_obj, (unsigned char*)bytes, length);
 
 	std::string instructions = "";
 
@@ -40,7 +40,7 @@ std::string HackUtils::hexAddressOf(void* address, bool zeroPad, bool prefix)
 	std::stringstream stream;
 
 	// Convert to hex
-	stream << std::hex << (int)(address);
+	stream << std::hex << (unsigned int)((unsigned long)(address));
 	std::string hexAddress = stream.str();
 
 	// Convert to upper
@@ -171,7 +171,7 @@ std::string HackUtils::valueStringOf(void* dataPointer, HackUtils::DataType data
 	switch (dataType)
 	{
 	case HackUtils::DataType::Byte:
-		return std::to_string((*(byte*)dataPointer));
+		return std::to_string((*(unsigned char*)dataPointer));
 	case HackUtils::DataType::SByte:
 		return std::to_string((*(signed char*)dataPointer));
 	case HackUtils::DataType::Int16:
@@ -210,7 +210,7 @@ std::string HackUtils::arrayOfByteStringOf(void* dataPointer, int length, int ma
 		std::stringstream stream;
 
 		// Convert to hex
-		stream << std::hex << (int)(((byte*)dataPointer)[index]);
+		stream << std::hex << (int)(((unsigned char*)dataPointer)[index]);
 		std::string hexByte = stream.str();
 
 		// Convert to upper
@@ -386,7 +386,7 @@ HackUtils::CompileResult HackUtils::constructCompileResult(Fasm::FasmResult* fas
 	case Fasm::FasmResultCode::Ok:
 	default:
 		compileResult.byteCount = fasmResult->OutputLength;
-		compileResult.compiledBytes = new byte[fasmResult->OutputLength];
+		compileResult.compiledBytes = new unsigned char[fasmResult->OutputLength];
 		memcpy(compileResult.compiledBytes, fasmResult->OutputData, fasmResult->OutputLength);
 		compileResult.hasError = false;
 		break;

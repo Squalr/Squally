@@ -19,7 +19,8 @@
         "stack": "cpp",
         "unordered_map": "cpp",
         "unordered_set": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "memory": "cpp"
     },
     "C_Cpp.configurationWarnings": "Disabled"
 }
