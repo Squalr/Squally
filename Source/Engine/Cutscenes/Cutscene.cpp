@@ -11,6 +11,7 @@ Cutscene* Cutscene::create(std::function<void()> cutsceneCompleteCallback)
 
 Cutscene::Cutscene(std::function<void()> cutsceneCompleteCallback)
 {
+	this->activeClip = nullptr;
 	this->cutsceneClips = new std::deque<CutsceneClip*>();
 	this->onCutsceneCompleteCallback = cutsceneCompleteCallback;
 }
@@ -56,16 +57,22 @@ void Cutscene::playCutscenes()
 
 void Cutscene::playNextCutsceneClip()
 {
+	if (this->activeClip != nullptr)
+	{
+		this->removeChild(this->activeClip);
+	}
+
 	if (this->cutsceneClips->size() <= 0)
 	{
+		this->activeClip = nullptr;
+		this->endCutscene();
 		return;
 	}
 
-	CutsceneClip* next = this->cutsceneClips->front();
-
+	this->activeClip = this->cutsceneClips->front();
 	this->cutsceneClips->pop_front();
-	this->removeAllChildren();
-	this->addChild(next);
+
+	this->addChild(this->activeClip);
 }
 
 void Cutscene::endCutscene()
