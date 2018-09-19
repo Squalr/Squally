@@ -60,7 +60,6 @@ private:
 	Hud* hud;
 	DeveloperHud* developerHud;
 	HackerModeHud* hackerModeHud;
-	Mouse* mouse;
 
 	GameCamera* camera;
 

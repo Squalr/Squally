@@ -28,6 +28,7 @@ protected:
 private:
 	void playNextCutsceneClip();
 
+	CutsceneClip* activeClip;
 	std::deque<CutsceneClip*>* cutsceneClips;
 	std::function<void()> onCutsceneCompleteCallback;
 };
