@@ -93,10 +93,9 @@ void IsometricMap::initializeListeners()
 void IsometricMap::loadMap(SerializableMap* serializableMap)
 {
 	this->map = serializableMap;
-
 	this->mapNode->removeAllChildren();
-	this->map->removeFromParent();
-	this->mapNode->addChild(this->map);
+
+	GameUtils::changeParent(this->map, this->mapNode, false);
 
 	this->developerHud->loadMap(serializableMap);
 
