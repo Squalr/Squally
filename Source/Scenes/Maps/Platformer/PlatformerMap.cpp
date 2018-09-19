@@ -31,7 +31,6 @@ PlatformerMap::PlatformerMap()
 	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
 	this->camera = GameCamera::create();
 	this->mapNode = Node::create();
-	this->mouse = Mouse::create();
 	this->mouseLayer = Node::create();
 
 	this->camera->setScrollOffset(Vec2(64.0f, 32.0f));
@@ -57,8 +56,8 @@ PlatformerMap::PlatformerMap()
 	this->addChild(this->hud);
 	this->addChild(this->developerHud);
 	this->addChild(this->hackerModeHud);
+	this->mouseLayer->addChild(Mouse::create());
 	this->addChild(this->mouseLayer);
-	this->mouseLayer->addChild(this->mouse);
 	this->addChild(this->camera);
 }
 
@@ -68,7 +67,7 @@ PlatformerMap::~PlatformerMap()
 
 void PlatformerMap::onEnter()
 {
-	FadeScene::onEnter();
+	IMap::onEnter();
 
 	this->scheduleUpdate();
 }
@@ -95,10 +94,9 @@ void PlatformerMap::initializeListeners()
 void PlatformerMap::loadMap(SerializableMap* serializableMap)
 {
 	this->map = serializableMap;
-
 	this->mapNode->removeAllChildren();
-	this->map->removeFromParent();
-	this->mapNode->addChild(this->map);
+
+	GameUtils::changeParent(this->map, this->mapNode, false);
 
 	this->developerHud->loadMap(serializableMap);
 
@@ -184,7 +182,7 @@ void PlatformerMap::toggleHackerMode()
 		this->mapNode->setVisible(true);
 		this->map->setVisible(true);
 		this->hud->setVisible(false);
-		this->mouse->setVisible(false);
+		this->mouseLayer->setVisible(false);
 
 		this->hackerModeBackground->setVisible(true);
 		this->hackerModeRain->setVisible(true);
@@ -201,7 +199,7 @@ void PlatformerMap::toggleHackerMode()
 		this->mapNode->setVisible(true);
 		this->map->setVisible(true);
 		this->hud->setVisible(true);
-		this->mouse->setVisible(true);
+		this->mouseLayer->setVisible(true);
 
 		this->hackerModeBackground->setVisible(false);
 		this->hackerModeRain->setVisible(false);

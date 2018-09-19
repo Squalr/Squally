@@ -125,7 +125,11 @@ void Deck::doInsertAnimation(Card* card, bool faceUp, float insertDelay)
 
 void Deck::clear()
 {
-	this->removeAllChildren();
+	for (auto it = this->deckCards->begin(); it != this->deckCards->end(); it++)
+	{
+		this->removeChild(*it);
+	}
+
 	this->deckCards->clear();
 }
 
