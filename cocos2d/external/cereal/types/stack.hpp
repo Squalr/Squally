@@ -30,11 +30,11 @@
 #ifndef CEREAL_TYPES_STACK_HPP_
 #define CEREAL_TYPES_STACK_HPP_
 
-#include <cereal/cereal.hpp>
+#include "cereal/cereal.hpp"
 #include <stack>
 
 // The default container for stack is deque, so let's include that too
-#include <cereal/types/deque.hpp>
+#include "cereal/types/deque.hpp"
 
 namespace cereal
 {
@@ -58,17 +58,17 @@ namespace cereal
 
   //! Saving for std::stack
   template <class Archive, class T, class C> inline
-  void save( Archive & ar, std::stack<T, C> const & stack )
+  void CEREAL_SAVE_FUNCTION_NAME( Archive & ar, std::stack<T, C> const & stack )
   {
-    ar( _CEREAL_NVP("container", stack_detail::container( stack )) );
+    ar( CEREAL_NVP_("container", stack_detail::container( stack )) );
   }
 
   //! Loading for std::stack
   template <class Archive, class T, class C> inline
-  void load( Archive & ar, std::stack<T, C> & stack )
+  void CEREAL_LOAD_FUNCTION_NAME( Archive & ar, std::stack<T, C> & stack )
   {
     C container;
-    ar( _CEREAL_NVP("container", container) );
+    ar( CEREAL_NVP_("container", container) );
     stack = std::stack<T, C>( std::move( container ) );
   }
 } // namespace cereal

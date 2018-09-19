@@ -250,6 +250,22 @@ else()
     cocos_find_package(asmjit asmjit REQUIRED)
 endif()
 
+ # Cereal
+if(USE_EXTERNAL_PREBUILT)
+    set(cereal_prefix CEREAL)
+    set(CEREAL_INCLUDE_DIRS ${COCOS2DX_ROOT_PATH}/external/cereal)
+    include_directories(${CEREAL_INCLUDE_DIRS})
+    if(USE_COCOS_PREBUILT)
+        cocos_find_prebuilt_lib_by_name(cereal CEREAL_LIBRARIES)
+    else()
+        add_subdirectory(${COCOS2DX_ROOT_PATH}/external/cereal ${ENGINE_BINARY_PATH}/external/cereal)
+        set(CEREAL_LIBRARIES cereal)
+    endif()
+    message(STATUS "cereal include dirs: ${CEREAL_INCLUDE_DIRS}")
+else()
+    cocos_find_package(cereal cereal REQUIRED)
+endif()
+
  # Udis86
  if(USE_EXTERNAL_PREBUILT)
      set(udis86_prefix UDIS86)
