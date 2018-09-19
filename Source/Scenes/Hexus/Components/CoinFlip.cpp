@@ -72,12 +72,10 @@ void CoinFlip::doCoinFlip(GameState* gameState)
 {
 	if (RandomHelper::random_real(0.0f, 1.0f) > 0.5f)
 	{
-		gameState->bannerMessage = "YOU GO FIRST";
 		gameState->turn = GameState::Turn::Player;
 	}
 	else
 	{
-		gameState->bannerMessage = "ENEMY GOES FIRST";
 		gameState->turn = GameState::Turn::Enemy;
 	}
 
