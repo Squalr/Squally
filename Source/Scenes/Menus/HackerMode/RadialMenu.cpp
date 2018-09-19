@@ -58,7 +58,7 @@ void RadialMenu::onHackableEdit(EventCustom* eventArgs)
 	Vec2 rootLocation = args->sourceLocation - Director::getInstance()->getVisibleSize() / 2.0f;
 	rootNode->setPosition(rootLocation);
 
-	Node* returnRadialNode = this->createRadialNode(Resources::Menus_HackerModeMenu_Icons_Cross, -rootLocation, RadialMenu::dataColor, CC_CALLBACK_1(RadialMenu::onClose, this), 0);
+	Node* returnRadialNode = this->createRadialNode(Resources::Menus_Icons_Cross, -rootLocation, RadialMenu::dataColor, CC_CALLBACK_1(RadialMenu::onClose, this), 0);
 	
 	rootNode->addChild(returnRadialNode);
 

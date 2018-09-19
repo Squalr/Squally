@@ -58,7 +58,7 @@ MinigamesMenu::MinigamesMenu()
 
 	this->hexusButton->setTextOffset(labelOffset);
 
-	Sprite* hexusIcon = Sprite::create(Resources::Menus_HackerModeMenu_Icons_Banner);
+	Sprite* hexusIcon = Sprite::create(Resources::Menus_Icons_Banner);
 
 	hexusIcon->setAnchorPoint(Vec2(0.0f, 0.5f));
 	hexusIcon->setPosition(Vec2(-this->hexusButton->getContentSize().width / 2.0f + 78.0f, 0.0f));
@@ -91,7 +91,7 @@ MinigamesMenu::MinigamesMenu()
 
 	this->hexusPuzzlesButton->setTextOffset(labelOffset);
 
-	Sprite* hexusPuzzlesIcon = Sprite::create(Resources::Menus_HackerModeMenu_Icons_Gauntlet);
+	Sprite* hexusPuzzlesIcon = Sprite::create(Resources::Menus_Icons_Gauntlet);
 
 	hexusPuzzlesIcon->setAnchorPoint(Vec2(0.0f, 0.5f));
 	hexusPuzzlesIcon->setPosition(Vec2(-this->hexusPuzzlesButton->getContentSize().width / 2.0f + 78.0f, 0.0f));

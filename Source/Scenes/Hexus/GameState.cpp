@@ -17,6 +17,7 @@ GameState::GameState()
 	difficulty(Difficulty::Stupid),
 	playerLosses(0),
 	enemyLosses(0),
+	cardReplaceCount(0),
 	round(0),
 	playerPass(false),
 	enemyPass(false),
