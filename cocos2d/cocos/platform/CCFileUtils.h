@@ -522,7 +522,7 @@ public:
 	*  @return ValueMap of the file contents.
 	*  @note This method is used internally.
 	*/
-	virtual ValueMap deserializeValueMapFromFile(const std::string& filename);
+	ValueMap deserializeValueMapFromFile(const std::string& filename);
 
 
     /** Converts the contents of a file to a ValueMap.
@@ -606,7 +606,7 @@ public:
 	*@param fullPath The full path to the file you want to save a string
 	*@return bool
 	*/
-	virtual bool serializeValueMapToFile(const ValueMap& dict, const std::string& fullPath);
+	bool serializeValueMapToFile(const ValueMap& dict, const std::string& fullPath);
 
     /**
     * Write a ValueMap into a file, done async off the main cocos thread.
