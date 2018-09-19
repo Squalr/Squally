@@ -164,6 +164,7 @@ set(all_prebuilt_libs
     spidermonkey
 	spriterengine
 	asmjit
+	cereal
 	udis86
 	rapidjson
     )
