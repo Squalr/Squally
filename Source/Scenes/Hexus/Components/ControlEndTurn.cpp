@@ -51,7 +51,7 @@ void ControlEndTurn::endTurn(GameState* gameState)
 		endTurnDelay = Config::enemyEndTurnDelay;
 		gameState->turn = GameState::Turn::Enemy;
 		CallFunc* changeState = CallFunc::create([gameState] {
-			GameState::updateState(gameState, GameState::StateType::ControlNeutral);
+			GameState::updateState(gameState, GameState::StateType::TurnBanner);
 		});
 
 		this->runAction(Sequence::create(
@@ -67,7 +67,7 @@ void ControlEndTurn::endTurn(GameState* gameState)
 	if (gameState->enemyPass) {
 		gameState->turn = GameState::Turn::Player;
 		CallFunc* changeState = CallFunc::create([gameState] {
-			GameState::updateState(gameState, GameState::StateType::ControlNeutral);
+			GameState::updateState(gameState, GameState::StateType::TurnBanner);
 		});
 
 		this->runAction(Sequence::create(
@@ -92,7 +92,7 @@ void ControlEndTurn::endTurn(GameState* gameState)
 	}
 
 	CallFunc* changeState = CallFunc::create([gameState] {
-		GameState::updateState(gameState, GameState::StateType::ControlNeutral);
+		GameState::updateState(gameState, GameState::StateType::TurnBanner);
 	});
 
 	this->runAction(Sequence::create(

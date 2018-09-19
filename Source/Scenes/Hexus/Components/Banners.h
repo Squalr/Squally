@@ -26,4 +26,8 @@ private:
 
 	LayerColor* statusBanner;
 	Label* statusLabel;
+	Sprite* playerBanner1;
+	Sprite* playerBanner2;
+	Sprite* enemyBanner1;
+	Sprite* enemyBanner2;
 };
