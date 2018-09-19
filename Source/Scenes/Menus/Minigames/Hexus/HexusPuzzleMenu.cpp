@@ -14,7 +14,7 @@ HexusPuzzlesMenu * HexusPuzzlesMenu::create()
 
 HexusPuzzlesMenu::HexusPuzzlesMenu()
 {
-	this->hexusOpponentItems = new std::vector<HexusOpponentItem*>();
+	this->hexusOpponentItems = new std::vector<HexusPuzzleItem*>();
 
 	this->currentPage = 0;
 
@@ -44,7 +44,7 @@ HexusPuzzlesMenu::HexusPuzzlesMenu()
 	this->closeButton->setClickCallback(CC_CALLBACK_1(HexusPuzzlesMenu::onCloseClick, this));
 	this->closeButton->setClickSound(Resources::Sounds_ClickBack1);
 
-	for (std::vector<HexusOpponentItem*>::iterator it = this->hexusOpponentItems->begin(); it != this->hexusOpponentItems->end(); ++it)
+	for (std::vector<HexusPuzzleItem*>::iterator it = this->hexusOpponentItems->begin(); it != this->hexusOpponentItems->end(); ++it)
 	{
 		this->addChild(*it);
 	}
@@ -69,7 +69,7 @@ void HexusPuzzlesMenu::onEnter()
 	GameUtils::fadeInObject(this->description, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 
-	for (std::vector<HexusOpponentItem*>::iterator it = this->hexusOpponentItems->begin(); it != this->hexusOpponentItems->end(); ++it)
+	for (std::vector<HexusPuzzleItem*>::iterator it = this->hexusOpponentItems->begin(); it != this->hexusOpponentItems->end(); ++it)
 	{
 		GameUtils::fadeInObject(*it, delay, duration);
 	}
@@ -94,7 +94,7 @@ void HexusPuzzlesMenu::initializePositions()
 	this->descriptionBox->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 196.0f));
 	this->description->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 196.0f));
 
-	for (std::vector<HexusOpponentItem*>::iterator it = this->hexusOpponentItems->begin(); it != this->hexusOpponentItems->end(); ++it)
+	for (std::vector<HexusPuzzleItem*>::iterator it = this->hexusOpponentItems->begin(); it != this->hexusOpponentItems->end(); ++it)
 	{
 		(*it)->initializePositions();
 	}
@@ -116,70 +116,70 @@ void HexusPuzzlesMenu::loadLevels()
 	auto callback = CC_CALLBACK_1(HexusPuzzlesMenu::onMouseOver, this);
 	int index = 0;
 
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
+	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Exact Value Scan I",
 		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
+	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Exact Value Scan II",
 		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
+	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Unknown Value Scan",
 		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
+	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Data Types - Float",
 		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
+	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Data Types - Double",
 		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
+	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Godmode",
 		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
+	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Position I",
 		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
+	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Position II",
 		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
+	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Blink Godmode I",
 		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
+	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Blink Godmode II",
 		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
@@ -187,7 +187,7 @@ void HexusPuzzlesMenu::loadLevels()
 	));
 }
 
-void HexusPuzzlesMenu::onMouseOver(HexusOpponentItem* tutorialItem)
+void HexusPuzzlesMenu::onMouseOver(HexusPuzzleItem* tutorialItem)
 {
 	if (this->description->getString() != tutorialItem->tutorialDescription)
 	{

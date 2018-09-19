@@ -8,9 +8,7 @@
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
-
-#include "HexusPuzzlesMenu.h"
-#include "HexusOpponentItem.h"
+#include "Scenes/Menus/Minigames/Hexus/HexusPuzzleItem.h"
 
 using namespace cocos2d;
 
@@ -29,7 +27,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onCloseClick(MenuSprite* menuSprite);
-	void onMouseOver(HexusOpponentItem* tutorialItem);
+	void onMouseOver(HexusPuzzleItem* tutorialItem);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
 	int currentPage;
@@ -43,7 +41,7 @@ private:
 	ParticleSystem* nether;
 	ParticleSystem* swirl;
 
-	std::vector<HexusOpponentItem*>* hexusOpponentItems;
+	std::vector<HexusPuzzleItem*>* hexusOpponentItems;
 
 	static const Color3B TitleColor;
 	static const std::string StringKeyHexusPuzzles;
