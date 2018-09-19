@@ -60,6 +60,7 @@ public:
 	Difficulty difficulty;
 	int playerLosses;
 	int enemyLosses;
+	int cardReplaceCount;
 	int round;
 	Card* stagedSacrifice;
 	CardRow* stagedSacrificeCardRow;
