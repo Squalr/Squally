@@ -25,11 +25,7 @@ private:
 	void initializeCardReplace(GameState* gameState);
 	void initializeCallbacks(GameState* gameState);
 	void replaceCard(Card* card);
-	void updateBanner();
 
-	int replaceCount;
 	std::set<Card*>* replacedCards;
-	LayerColor* bannerBackground;
-	Label* bannerLabel;
 	GameState* activeGameState;
 };

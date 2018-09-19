@@ -61,6 +61,8 @@ void Hexus::onEnter()
 {
 	FadeScene::onEnter();
 
+	SoundManager::playMusicResource(Resources::Music_LastMarch);
+
 	GameState::updateState(this->gameState, GameState::StateType::DrawInitialCards);
 }
 
