@@ -217,6 +217,10 @@ void PlatformerEntityDeserializer::onDeserializationRequest(ObjectDeserializatio
 		//////////////////
 		// CASTLE
 		//////////////////
+		else if (name == BossJack::KeyEnemyBossJack)
+		{
+			newEntity = BossJack::deserialize(&properties);
+		}
 		else if (name == BossWitch::KeyEnemyBossWitch)
 		{
 			newEntity = BossWitch::deserialize(&properties);
@@ -225,10 +229,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(ObjectDeserializatio
 		{
 			newEntity = Executioner::deserialize(&properties);
 		}
-		else if (name == Ghost::KeyEnemyGhost)
-		{
-			newEntity = Ghost::deserialize(&properties);
-		}
 		else if (name == Guard::KeyEnemyGuard)
 		{
 			newEntity = Guard::deserialize(&properties);
@@ -236,10 +236,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(ObjectDeserializatio
 		else if (name == Harpy::KeyEnemyHarpy)
 		{
 			newEntity = Harpy::deserialize(&properties);
-		}
-		else if (name == Jack::KeyEnemyJack)
-		{
-			newEntity = Jack::deserialize(&properties);
 		}
 		else if (name == Reaper::KeyEnemyReaper)
 		{

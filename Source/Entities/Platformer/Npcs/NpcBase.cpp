@@ -24,7 +24,7 @@ void NpcBase::update(float dt)
 
 void NpcBase::onInteractButtonClick(MenuSprite* menuSprite)
 {
-	HexusEvents::startGame(HexusEvents::HexusGameEventArgs(this->deck, this->deck));
+	//// HexusEvents::startGame(HexusEvents::HexusGameEventArgs(this->deck, this->deck));
 }
 
 void NpcBase::initializeCardData()
