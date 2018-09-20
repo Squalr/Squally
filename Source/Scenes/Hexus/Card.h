@@ -6,7 +6,7 @@
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Resources.h"
-#include "Scenes/Hexus/CardData.h"
+#include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/Config.h"
 
 using namespace cocos2d;
