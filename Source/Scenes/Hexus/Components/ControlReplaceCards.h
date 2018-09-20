@@ -25,6 +25,8 @@ private:
 	void initializeCardReplace(GameState* gameState);
 	void initializeCallbacks(GameState* gameState);
 	void replaceCard(Card* card);
+	void removeCardsOfType(Card* cardToRemove);
+	CallFunc* getNextStateTransition();
 
 	std::set<Card*>* replacedCards;
 	GameState* activeGameState;
