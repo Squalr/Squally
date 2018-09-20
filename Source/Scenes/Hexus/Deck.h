@@ -17,12 +17,14 @@ public:
 	void copyTo(Deck* otherDeck);
 	int getCardCount();
 
+	Card* removeCard(Card* card);
 	Card* drawCard();
 	bool hasCards();
 	void insertCardTop(Card* card, bool faceUp, float insertDelay);
 	void insertCardBottom(Card* card, bool faceUp, float insertDelay);
 	void insertCardRandom(Card* card, bool faceUp, float insertDelay);
 	void clear();
+	std::vector<Card*>* deckCards;
 
 private:
 	Deck();
@@ -35,6 +37,5 @@ private:
 
 	Sprite* pad;
 	Card::CardStyle style;
-	std::vector<Card*>* deckCards;
 };
 

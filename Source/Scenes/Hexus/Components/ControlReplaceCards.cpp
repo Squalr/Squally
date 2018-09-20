@@ -84,15 +84,42 @@ void ControlReplaceCards::initializeCallbacks(GameState* gameState)
 	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(ControlReplaceCards::replaceCard, this));
 }
 
-void ControlReplaceCards::removeCardsOfType(Card* cardToRemove) 
+void ControlReplaceCards::replaceCard(Card* card)
 {
-	for (auto it = this->activeGameState->playerHand->rowCards->begin(); it != this->activeGameState->playerHand->rowCards->end();)
+	this->activeGameState->cardReplaceCount--;
+	this->replacedCards->insert(card);
+	this->activeGameState->playerHand->removeCard(card);
+	this->removeCardsOfTypeFromDeck(card, this->activeGameState->playerDeck); // We want to banish all cards of this type from being redrawn
+	
+	// Run The animation
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	card->runAction(MoveTo::create(0.5f, Vec2(card->getPositionX(), -visibleSize.height/ 2.0f - 128.0f)));
+
+	// Get Our Replacement Card
+	Card* replacement = this->activeGameState->playerDeck->drawCard();
+	GameUtils::changeParent(replacement, this, true);
+	replacement->reveal();
+
+	// Update the state and either re-enter this state or exit to coinflip
+	CallFunc* stateTransition = this->getNextStateTransition();
+	CardRow * hand = this->activeGameState->playerHand;
+	this->runAction(Sequence::create(
+		CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, replacement, Config::insertDelay)),
+		DelayTime::create(Config::insertDelay),
+		stateTransition,
+		nullptr
+	));
+}
+
+void ControlReplaceCards::removeCardsOfTypeFromDeck(Card* cardToRemove, Deck* deck) 
+{
+	for (auto it = deck->deckCards->begin(); it != deck->deckCards->end();)
 	{
 		Card* card = *it;
 		if (card->cardData->cardName == cardToRemove->cardData->cardName) 
 		{
-			this->replacedCards->insert(card);
-			this->activeGameState->playerHand->removeCard(card);
+			deck->removeCard(card);
+			this->replacedCards->insert(card); // We put the card into the replacedCards to be shuffled back into the deck at the end of mulligan
 		} else {
 			it++;
 		}
@@ -120,29 +147,4 @@ CallFunc* ControlReplaceCards::getNextStateTransition()
 	}
 
 	return stateTransition;
-}
-
-void ControlReplaceCards::replaceCard(Card* card)
-{
-	this->activeGameState->cardReplaceCount--;
-	this->removeCardsOfType(card); // We want to banish all cards of this type from being redrawn
-	
-	// Run The animation
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	card->runAction(MoveTo::create(0.5f, Vec2(card->getPositionX(), -visibleSize.height/ 2.0f - 128.0f)));
-
-	// Get Our Replacement Card
-	Card* replacement = this->activeGameState->playerDeck->drawCard();
-	GameUtils::changeParent(replacement, this, true);
-	replacement->reveal();
-
-	// Update the state and either re-enter this state or exit to coinflip
-	CallFunc* stateTransition = this->getNextStateTransition();
-	CardRow * hand = this->activeGameState->playerHand;
-	this->runAction(Sequence::create(
-		CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, replacement, Config::insertDelay)),
-		DelayTime::create(Config::insertDelay),
-		stateTransition,
-		nullptr
-	));
 }

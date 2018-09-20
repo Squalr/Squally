@@ -144,3 +144,12 @@ void Deck::setCardOrder()
 		this->addChild(card);
 	}
 }
+
+Card* Deck::removeCard(Card* card)
+{
+	this->deckCards->erase(std::remove(this->deckCards->begin(), this->deckCards->end(), card), this->deckCards->end());
+	this->setCardOrder();
+
+	// Note: We let the caller remove the child because it allows for control over positioning
+	return card;
+}
