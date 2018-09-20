@@ -15,7 +15,7 @@ Knight::Knight(ValueMap* initProperties) : NpcBase::NpcBase(initProperties,
 	Resources::Entities_Platformer_Npcs_EgyptianMummy_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeNpc,
 	Size(96.0f, 128.0f),
-	0.25f, 
+	0.25f,
 	Vec2(0.0f, -72.0f))
 {
 	this->actualJumpLaunchVelocity = 640.0f;

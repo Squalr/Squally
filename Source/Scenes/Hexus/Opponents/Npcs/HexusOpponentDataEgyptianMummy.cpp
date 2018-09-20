@@ -1,23 +1,23 @@
-#include "HexusOpponentDataSanta.h"
+#include "HexusOpponentDataEgyptianMummy.h"
 
-const std::string HexusOpponentDataSanta::StringKeyOpponentName = "Squally_Npc_Names_Santa";
-HexusOpponentDataSanta* HexusOpponentDataSanta::instance = nullptr;
+const std::string HexusOpponentDataEgyptianMummy::StringKeyOpponentName = "Squally_Npc_Names_Egyptian_Mummy";
+HexusOpponentDataEgyptianMummy* HexusOpponentDataEgyptianMummy::instance = nullptr;
 
-HexusOpponentDataSanta* HexusOpponentDataSanta::getInstance()
+HexusOpponentDataEgyptianMummy* HexusOpponentDataEgyptianMummy::getInstance()
 {
-	if (HexusOpponentDataSanta::instance == nullptr)
+	if (HexusOpponentDataEgyptianMummy::instance == nullptr)
 	{
-		HexusOpponentDataSanta::instance = new HexusOpponentDataSanta();
+		HexusOpponentDataEgyptianMummy::instance = new HexusOpponentDataEgyptianMummy();
 	}
 
-	return HexusOpponentDataSanta::instance;
+	return HexusOpponentDataEgyptianMummy::instance;
 }
 
-HexusOpponentDataSanta::HexusOpponentDataSanta() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Snow_BossSanta_Animations,
-	1.0f,
-	Vec2(0.0f, -48.0f),
-	HexusOpponentDataSanta::StringKeyOpponentName, Card::CardStyle::Water,
+HexusOpponentDataEgyptianMummy::HexusOpponentDataEgyptianMummy() : HexusOpponentData(
+	Resources::Entities_Platformer_Npcs_EgyptianMummy_Animations,
+	0.4f,
+	Vec2(0.0f, -96.0f),
+	HexusOpponentDataEgyptianMummy::StringKeyOpponentName, Card::CardStyle::Water,
 	{
 		CardList::getInstance()->cardListByName->at(CardList::Binary0),
 		CardList::getInstance()->cardListByName->at(CardList::Binary1),
@@ -87,6 +87,6 @@ HexusOpponentDataSanta::HexusOpponentDataSanta() : HexusOpponentData(
 {
 }
 
-HexusOpponentDataSanta::~HexusOpponentDataSanta()
+HexusOpponentDataEgyptianMummy::~HexusOpponentDataEgyptianMummy()
 {
 }

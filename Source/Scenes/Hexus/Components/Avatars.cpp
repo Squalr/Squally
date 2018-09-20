@@ -36,12 +36,12 @@ Avatars::Avatars()
 
 	DrawNode* stencilLeft = DrawNode::create();
 	DrawNode* stencilRight = DrawNode::create();
-	stencilLeft->drawSolidCircle(Vec2(0.0f, 0.0f), 184.0f / 2.0f, 0.0f, 48.0f, Color4F::BLACK);
-	stencilRight->drawSolidCircle(Vec2(0.0f, 0.0f), 184.0f / 2.0f, 0.0f, 48.0f, Color4F::BLACK);
+	stencilLeft->drawSolidCircle(Vec2(0.0f, 0.0f), 184.0f / 2.0f, 0.0f, 48.0f, Color4F::GREEN);
+	stencilRight->drawSolidCircle(Vec2(0.0f, 0.0f), 184.0f / 2.0f, 0.0f, 48.0f, Color4F::GREEN);
 
 	// Enable to debug clipping:
-	this->addChild(stencilLeft);
-	this->addChild(stencilRight);
+	// this->addChild(stencilLeft);
+	// this->addChild(stencilRight);
 
 	this->clipPlayer = ClippingNode::create(stencilLeft);
 	this->clipEnemy = ClippingNode::create(stencilRight);

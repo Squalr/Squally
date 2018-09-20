@@ -1,23 +1,23 @@
-#include "HexusOpponentDataSanta.h"
+#include "HexusOpponentDataIceGolem.h"
 
-const std::string HexusOpponentDataSanta::StringKeyOpponentName = "Squally_Npc_Names_Santa";
-HexusOpponentDataSanta* HexusOpponentDataSanta::instance = nullptr;
+const std::string HexusOpponentDataIceGolem::StringKeyOpponentName = "Squally_Npc_Names_Ice_Golem";
+HexusOpponentDataIceGolem* HexusOpponentDataIceGolem::instance = nullptr;
 
-HexusOpponentDataSanta* HexusOpponentDataSanta::getInstance()
+HexusOpponentDataIceGolem* HexusOpponentDataIceGolem::getInstance()
 {
-	if (HexusOpponentDataSanta::instance == nullptr)
+	if (HexusOpponentDataIceGolem::instance == nullptr)
 	{
-		HexusOpponentDataSanta::instance = new HexusOpponentDataSanta();
+		HexusOpponentDataIceGolem::instance = new HexusOpponentDataIceGolem();
 	}
 
-	return HexusOpponentDataSanta::instance;
+	return HexusOpponentDataIceGolem::instance;
 }
 
-HexusOpponentDataSanta::HexusOpponentDataSanta() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Snow_BossSanta_Animations,
+HexusOpponentDataIceGolem::HexusOpponentDataIceGolem() : HexusOpponentData(
+	Resources::Entities_Platformer_Environment_Snow_BossIceGolem_Animations,
 	1.0f,
 	Vec2(0.0f, -48.0f),
-	HexusOpponentDataSanta::StringKeyOpponentName, Card::CardStyle::Water,
+	HexusOpponentDataIceGolem::StringKeyOpponentName, Card::CardStyle::Water,
 	{
 		CardList::getInstance()->cardListByName->at(CardList::Binary0),
 		CardList::getInstance()->cardListByName->at(CardList::Binary1),
@@ -87,6 +87,6 @@ HexusOpponentDataSanta::HexusOpponentDataSanta() : HexusOpponentData(
 {
 }
 
-HexusOpponentDataSanta::~HexusOpponentDataSanta()
+HexusOpponentDataIceGolem::~HexusOpponentDataIceGolem()
 {
 }

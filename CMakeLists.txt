@@ -126,12 +126,11 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/PlatformerEnemy.cpp
 	Source/Entities/Platformer/PlatformerEntity.cpp
 	Source/Entities/Platformer/PlatformerEntityDeserializer.cpp
+	Source/Entities/Platformer/Enemies/Castle/BossJack.cpp
 	Source/Entities/Platformer/Enemies/Castle/BossWitch.cpp
 	Source/Entities/Platformer/Enemies/Castle/Executioner.cpp
-	Source/Entities/Platformer/Enemies/Castle/Ghost.cpp
 	Source/Entities/Platformer/Enemies/Castle/Guard.cpp
 	Source/Entities/Platformer/Enemies/Castle/Harpy.cpp
-	Source/Entities/Platformer/Enemies/Castle/Jack.cpp
 	Source/Entities/Platformer/Enemies/Castle/Reaper.cpp
 	Source/Entities/Platformer/Enemies/Castle/SkeletonMage.cpp
 	Source/Entities/Platformer/Enemies/Castle/VampireLord.cpp
@@ -361,7 +360,19 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.cpp
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.cpp
 	Source/Scenes/Hexus/Opponents/HexusOpponentData.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataDemonKing.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataEgyptianGoddess.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataEvilEye.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataIceGolem.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataJack.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataKrampus.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataOrcKing.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataRhinoman.cpp
 	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataSanta.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataSkeletonKing.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataWitch.cpp
+	Source/Scenes/Hexus/Opponents/Kickstarter/HexusOpponentDataKnight.cpp
+	Source/Scenes/Hexus/Opponents/Npcs/HexusOpponentDataEgyptianMummy.cpp
 	Source/Scenes/Maps/Isometric/IsometricMap.cpp
 	Source/Scenes/Maps/Platformer/PlatformerMap.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundBase.cpp
@@ -474,12 +485,11 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/PlatformerEntities.h
 	Source/Entities/Platformer/PlatformerEntity.h
 	Source/Entities/Platformer/PlatformerEntityDeserializer.h
+	Source/Entities/Platformer/Enemies/Castle/BossJack.h
 	Source/Entities/Platformer/Enemies/Castle/BossWitch.h
 	Source/Entities/Platformer/Enemies/Castle/Executioner.h
-	Source/Entities/Platformer/Enemies/Castle/Ghost.h
 	Source/Entities/Platformer/Enemies/Castle/Guard.h
 	Source/Entities/Platformer/Enemies/Castle/Harpy.h
-	Source/Entities/Platformer/Enemies/Castle/Jack.h
 	Source/Entities/Platformer/Enemies/Castle/Reaper.h
 	Source/Entities/Platformer/Enemies/Castle/SkeletonMage.h
 	Source/Entities/Platformer/Enemies/Castle/VampireLord.h
@@ -714,7 +724,20 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.h
 	Source/Scenes/Hexus/HelpMenus/HelpMenus.h
 	Source/Scenes/Hexus/Opponents/HexusOpponentData.h
+	Source/Scenes/Hexus/Opponents/HexusOpponents.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataDemonKing.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataEgyptianGoddess.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataEvilEye.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataIceGolem.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataJack.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataKrampus.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataOrcKing.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataRhinoman.h
 	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataSanta.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataSkeletonKing.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataWitch.h
+	Source/Scenes/Hexus/Opponents/Kickstarter/HexusOpponentDataKnight.h
+	Source/Scenes/Hexus/Opponents/Npcs/HexusOpponentDataEgyptianMummy.h
 	Source/Scenes/Maps/IMap.h
 	Source/Scenes/Maps/Isometric/IsometricMap.h
 	Source/Scenes/Maps/Platformer/PlatformerMap.h
