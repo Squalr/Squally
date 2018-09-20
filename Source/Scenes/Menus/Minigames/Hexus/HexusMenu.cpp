@@ -102,22 +102,19 @@ void HexusMenu::loadOpponents()
 {
 	auto callback = CC_CALLBACK_1(HexusMenu::onMouseOver, this);
 
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataEgyptianMummy::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataKnight::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataRhinoman::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataEgyptianGoddess::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataOrcKing::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataKrampus::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataJack::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataWitch::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataDemonKing::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataIceGolem::getInstance(), callback));
 	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
-	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
-	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
-	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
-	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
-	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
-	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
-	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
-	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
-	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
-	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
-	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
-	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
-	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
-	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
-	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSkeletonKing::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataEvilEye::getInstance(), callback));
 }
 
 void HexusMenu::onMouseOver(HexusOpponentFrame* hexusOpponentFrame)
