@@ -23,5 +23,5 @@ private:
 	void onTutorialMouseOver(MenuSprite* HexusOpponentItem);
 
 	std::function<void(HexusOpponentItem*)> onMouseOverEvent;
-	Sprite* frame;
+	MenuSprite* frame;
 };

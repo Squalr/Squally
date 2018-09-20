@@ -11,10 +11,12 @@ HexusOpponentItem* HexusOpponentItem::create(std::string description, std::strin
 
 HexusOpponentItem::HexusOpponentItem(std::string description, std::string mapFile, int index, std::function<void(HexusOpponentItem*)> onMouseOver)
 {
-	this->frame = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_EnemyFrame);
+	this->frame = MenuSprite::create(Resources::Menus_MinigamesMenu_Hexus_EnemyFrame, Resources::Menus_MinigamesMenu_Hexus_EnemyFrameGray, Resources::Menus_MinigamesMenu_Hexus_EnemyFrameGray);
 
 	this->setContentSize(this->frame->getContentSize());
 	this->setCascadeOpacityEnabled(true);
+
+	this->frame->setClickCallback(CC_CALLBACK_1(HexusOpponentItem::onTutorialClick, this));
 
 	this->addChild(this->frame);
 }
