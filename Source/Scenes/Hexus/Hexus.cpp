@@ -100,8 +100,10 @@ void Hexus::onGameStart(EventCustom* eventCustom)
 	this->gameState->playerDeck->clear();
 	this->gameState->enemyDeck->clear();
 
-	args->playerDeck->copyTo(this->gameState->playerDeck);
-	args->enemyDeck->copyTo(this->gameState->enemyDeck);
+	args->opponentData->deck->copyTo(this->gameState->enemyDeck);
+
+	// TODO: Load this from somewhere, somehow
+	args->opponentData->deck->copyTo(this->gameState->playerDeck);
 
 	NavigationEvents::navigate(NavigationEvents::GameScreen::Hexus);
 }

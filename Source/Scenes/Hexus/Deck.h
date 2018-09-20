@@ -12,7 +12,7 @@ class Deck : public SmartNode
 {
 public:
 	static Deck * create();
-	static Deck * create(Card::CardStyle cardStyle, std::vector<CardData*>* cards);
+	static Deck * create(Card::CardStyle cardStyle, std::vector<CardData*> cards);
 
 	void copyTo(Deck* otherDeck);
 	int getCardCount();
@@ -26,8 +26,8 @@ public:
 
 private:
 	Deck();
-	Deck(Card::CardStyle cardStyle, std::vector<Card*>* cards);
-	Deck(Card::CardStyle cardStyle, std::vector<CardData*>* cards);
+	Deck(Card::CardStyle cardStyle, std::vector<Card*> cards);
+	Deck(Card::CardStyle cardStyle, std::vector<CardData*> cards);
 	~Deck();
 
 	void setCardOrder();
