@@ -17,14 +17,15 @@
         },
         {
             "name": "(Mac) Launch",
-            "type": "cppvsdbg",
+            "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/TODO/Squally.exe",
+            "program": "${workspaceFolder}/build/bin/Squally.app/Contents/MacOS/Squally",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": true
+            "externalConsole": true,
+            "MIMode": "lldb"
         }
     ]
 }
