@@ -268,13 +268,78 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Cutscenes/Objects/StarLayer.cpp
 	Source/Scenes/Fights/Fight.cpp
 	Source/Scenes/Hexus/Card.cpp
-	Source/Scenes/Hexus/CardData.cpp
 	Source/Scenes/Hexus/CardRow.cpp
 	Source/Scenes/Hexus/CardStorage.cpp
 	Source/Scenes/Hexus/Config.cpp
 	Source/Scenes/Hexus/Deck.cpp
 	Source/Scenes/Hexus/GameState.cpp
 	Source/Scenes/Hexus/Hexus.cpp
+	Source/Scenes/Hexus/CardData/CardData.cpp
+	Source/Scenes/Hexus/CardData/CardList.cpp
+	Source/Scenes/Hexus/CardData/Binary/CardBinary0.cpp
+	Source/Scenes/Hexus/CardData/Binary/CardBinary1.cpp
+	Source/Scenes/Hexus/CardData/Binary/CardBinary10.cpp
+	Source/Scenes/Hexus/CardData/Binary/CardBinary11.cpp
+	Source/Scenes/Hexus/CardData/Binary/CardBinary12.cpp
+	Source/Scenes/Hexus/CardData/Binary/CardBinary13.cpp
+	Source/Scenes/Hexus/CardData/Binary/CardBinary14.cpp
+	Source/Scenes/Hexus/CardData/Binary/CardBinary15.cpp
+	Source/Scenes/Hexus/CardData/Binary/CardBinary2.cpp
+	Source/Scenes/Hexus/CardData/Binary/CardBinary3.cpp
+	Source/Scenes/Hexus/CardData/Binary/CardBinary4.cpp
+	Source/Scenes/Hexus/CardData/Binary/CardBinary5.cpp
+	Source/Scenes/Hexus/CardData/Binary/CardBinary6.cpp
+	Source/Scenes/Hexus/CardData/Binary/CardBinary7.cpp
+	Source/Scenes/Hexus/CardData/Binary/CardBinary8.cpp
+	Source/Scenes/Hexus/CardData/Binary/CardBinary9.cpp
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal0.cpp
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal1.cpp
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal10.cpp
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal11.cpp
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal12.cpp
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal13.cpp
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal14.cpp
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal15.cpp
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal2.cpp
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal3.cpp
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal4.cpp
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal5.cpp
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal6.cpp
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal7.cpp
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal8.cpp
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal9.cpp
+	Source/Scenes/Hexus/CardData/Hex/CardHex0.cpp
+	Source/Scenes/Hexus/CardData/Hex/CardHex1.cpp
+	Source/Scenes/Hexus/CardData/Hex/CardHex10.cpp
+	Source/Scenes/Hexus/CardData/Hex/CardHex11.cpp
+	Source/Scenes/Hexus/CardData/Hex/CardHex12.cpp
+	Source/Scenes/Hexus/CardData/Hex/CardHex13.cpp
+	Source/Scenes/Hexus/CardData/Hex/CardHex14.cpp
+	Source/Scenes/Hexus/CardData/Hex/CardHex15.cpp
+	Source/Scenes/Hexus/CardData/Hex/CardHex2.cpp
+	Source/Scenes/Hexus/CardData/Hex/CardHex3.cpp
+	Source/Scenes/Hexus/CardData/Hex/CardHex4.cpp
+	Source/Scenes/Hexus/CardData/Hex/CardHex5.cpp
+	Source/Scenes/Hexus/CardData/Hex/CardHex6.cpp
+	Source/Scenes/Hexus/CardData/Hex/CardHex7.cpp
+	Source/Scenes/Hexus/CardData/Hex/CardHex8.cpp
+	Source/Scenes/Hexus/CardData/Hex/CardHex9.cpp
+	Source/Scenes/Hexus/CardData/Special/CardAddition.cpp
+	Source/Scenes/Hexus/CardData/Special/CardEnvironmentBinStorm.cpp
+	Source/Scenes/Hexus/CardData/Special/CardEnvironmentClear.cpp
+	Source/Scenes/Hexus/CardData/Special/CardEnvironmentDecStorm.cpp
+	Source/Scenes/Hexus/CardData/Special/CardEnvironmentHexStorm.cpp
+	Source/Scenes/Hexus/CardData/Special/CardFlip1.cpp
+	Source/Scenes/Hexus/CardData/Special/CardFlip2.cpp
+	Source/Scenes/Hexus/CardData/Special/CardFlip3.cpp
+	Source/Scenes/Hexus/CardData/Special/CardFlip4.cpp
+	Source/Scenes/Hexus/CardData/Special/CardInverse.cpp
+	Source/Scenes/Hexus/CardData/Special/CardLogicalAnd.cpp
+	Source/Scenes/Hexus/CardData/Special/CardLogicalOr.cpp
+	Source/Scenes/Hexus/CardData/Special/CardLogicalXor.cpp
+	Source/Scenes/Hexus/CardData/Special/CardShiftLeft.cpp
+	Source/Scenes/Hexus/CardData/Special/CardShiftRight.cpp
+	Source/Scenes/Hexus/CardData/Special/CardSubtraction.cpp
 	Source/Scenes/Hexus/Components/Avatars.cpp
 	Source/Scenes/Hexus/Components/Banners.cpp
 	Source/Scenes/Hexus/Components/CardPreview.cpp
@@ -295,6 +360,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/ScoreTotal.cpp
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.cpp
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.cpp
+	Source/Scenes/Hexus/Opponents/HexusOpponent.cpp
 	Source/Scenes/Maps/Isometric/IsometricMap.cpp
 	Source/Scenes/Maps/Platformer/PlatformerMap.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundBase.cpp
@@ -552,13 +618,78 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Cutscenes/Objects/StarLayer.h
 	Source/Scenes/Fights/Fight.h
 	Source/Scenes/Hexus/Card.h
-	Source/Scenes/Hexus/CardData.h
 	Source/Scenes/Hexus/CardRow.h
 	Source/Scenes/Hexus/CardStorage.h
 	Source/Scenes/Hexus/Config.h
 	Source/Scenes/Hexus/Deck.h
 	Source/Scenes/Hexus/GameState.h
 	Source/Scenes/Hexus/Hexus.h
+	Source/Scenes/Hexus/CardData/CardData.h
+	Source/Scenes/Hexus/CardData/CardList.h
+	Source/Scenes/Hexus/CardData/Binary/CardBinary0.h
+	Source/Scenes/Hexus/CardData/Binary/CardBinary1.h
+	Source/Scenes/Hexus/CardData/Binary/CardBinary10.h
+	Source/Scenes/Hexus/CardData/Binary/CardBinary11.h
+	Source/Scenes/Hexus/CardData/Binary/CardBinary12.h
+	Source/Scenes/Hexus/CardData/Binary/CardBinary13.h
+	Source/Scenes/Hexus/CardData/Binary/CardBinary14.h
+	Source/Scenes/Hexus/CardData/Binary/CardBinary15.h
+	Source/Scenes/Hexus/CardData/Binary/CardBinary2.h
+	Source/Scenes/Hexus/CardData/Binary/CardBinary3.h
+	Source/Scenes/Hexus/CardData/Binary/CardBinary4.h
+	Source/Scenes/Hexus/CardData/Binary/CardBinary5.h
+	Source/Scenes/Hexus/CardData/Binary/CardBinary6.h
+	Source/Scenes/Hexus/CardData/Binary/CardBinary7.h
+	Source/Scenes/Hexus/CardData/Binary/CardBinary8.h
+	Source/Scenes/Hexus/CardData/Binary/CardBinary9.h
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal0.h
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal1.h
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal10.h
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal11.h
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal12.h
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal13.h
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal14.h
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal15.h
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal2.h
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal3.h
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal4.h
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal5.h
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal6.h
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal7.h
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal8.h
+	Source/Scenes/Hexus/CardData/Decimal/CardDecimal9.h
+	Source/Scenes/Hexus/CardData/Hex/CardHex0.h
+	Source/Scenes/Hexus/CardData/Hex/CardHex1.h
+	Source/Scenes/Hexus/CardData/Hex/CardHex10.h
+	Source/Scenes/Hexus/CardData/Hex/CardHex11.h
+	Source/Scenes/Hexus/CardData/Hex/CardHex12.h
+	Source/Scenes/Hexus/CardData/Hex/CardHex13.h
+	Source/Scenes/Hexus/CardData/Hex/CardHex14.h
+	Source/Scenes/Hexus/CardData/Hex/CardHex15.h
+	Source/Scenes/Hexus/CardData/Hex/CardHex2.h
+	Source/Scenes/Hexus/CardData/Hex/CardHex3.h
+	Source/Scenes/Hexus/CardData/Hex/CardHex4.h
+	Source/Scenes/Hexus/CardData/Hex/CardHex5.h
+	Source/Scenes/Hexus/CardData/Hex/CardHex6.h
+	Source/Scenes/Hexus/CardData/Hex/CardHex7.h
+	Source/Scenes/Hexus/CardData/Hex/CardHex8.h
+	Source/Scenes/Hexus/CardData/Hex/CardHex9.h
+	Source/Scenes/Hexus/CardData/Special/CardAddition.h
+	Source/Scenes/Hexus/CardData/Special/CardEnvironmentBinStorm.h
+	Source/Scenes/Hexus/CardData/Special/CardEnvironmentClear.h
+	Source/Scenes/Hexus/CardData/Special/CardEnvironmentDecStorm.h
+	Source/Scenes/Hexus/CardData/Special/CardEnvironmentHexStorm.h
+	Source/Scenes/Hexus/CardData/Special/CardFlip1.h
+	Source/Scenes/Hexus/CardData/Special/CardFlip2.h
+	Source/Scenes/Hexus/CardData/Special/CardFlip3.h
+	Source/Scenes/Hexus/CardData/Special/CardFlip4.h
+	Source/Scenes/Hexus/CardData/Special/CardInverse.h
+	Source/Scenes/Hexus/CardData/Special/CardLogicalAnd.h
+	Source/Scenes/Hexus/CardData/Special/CardLogicalOr.h
+	Source/Scenes/Hexus/CardData/Special/CardLogicalXor.h
+	Source/Scenes/Hexus/CardData/Special/CardShiftLeft.h
+	Source/Scenes/Hexus/CardData/Special/CardShiftRight.h
+	Source/Scenes/Hexus/CardData/Special/CardSubtraction.h
 	Source/Scenes/Hexus/Components/Avatars.h
 	Source/Scenes/Hexus/Components/Banners.h
 	Source/Scenes/Hexus/Components/CardPreview.h
@@ -581,6 +712,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.h
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.h
 	Source/Scenes/Hexus/HelpMenus/HelpMenus.h
+	Source/Scenes/Hexus/Opponents/HexusOpponent.h
 	Source/Scenes/Maps/IMap.h
 	Source/Scenes/Maps/Isometric/IsometricMap.h
 	Source/Scenes/Maps/Platformer/PlatformerMap.h

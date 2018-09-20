@@ -3,6 +3,7 @@
 
 #include "Events/NavigationEvents.h"
 #include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/FloatingSprite.h"
 #include "Engine/UI/Mouse.h"
@@ -24,7 +25,7 @@ protected:
 	~HexusMenu();
 
 private:
-	void loadLevels();
+	void loadOpponents();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
@@ -32,20 +33,11 @@ private:
 	void onMouseOver(HexusOpponentItem* tutorialItem);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
-	int currentPage;
-
-	Sprite* tutorialWindow;
-	Label* titleLabel;
-	Sprite* descriptionBox;
-	Label* description;
-	MenuSprite* closeButton;
+	ScrollPane* scrollPane;
 
 	ParticleSystem* nether;
 	ParticleSystem* swirl;
 
 	std::vector<HexusOpponentItem*>* hexusOpponentItems;
-
-	static const Color3B TitleColor;
-	static const std::string StringKeyMenuTutorials;
 };
 
