@@ -12,6 +12,7 @@
 #include "Scenes/Maps/Platformer/PlatformerMap.h"
 #include "Resources.h"
 #include "Scenes/Fights/Fight.h"
+#include "Scenes/Hexus/Hexus.h"
 #include "Scenes/Menus/Minigames/MinigamesMenu.h"
 #include "Scenes/Menus/Minigames/Hexus/HexusMenu.h"
 #include "Scenes/Menus/Minigames/Hexus/HexusPuzzlesMenu.h"

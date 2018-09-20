@@ -7,12 +7,11 @@
 #include "Entities/Platformer/Npcs/Knight.h"
 
 // Enemies
+#include "Entities/Platformer/Enemies/Castle/BossJack.h"
 #include "Entities/Platformer/Enemies/Castle/BossWitch.h"
 #include "Entities/Platformer/Enemies/Castle/Executioner.h"
-#include "Entities/Platformer/Enemies/Castle/Ghost.h"
 #include "Entities/Platformer/Enemies/Castle/Guard.h"
 #include "Entities/Platformer/Enemies/Castle/Harpy.h"
-#include "Entities/Platformer/Enemies/Castle/Jack.h"
 #include "Entities/Platformer/Enemies/Castle/Reaper.h"
 #include "Entities/Platformer/Enemies/Castle/SkeletonMage.h"
 #include "Entities/Platformer/Enemies/Castle/VampireLord.h"
