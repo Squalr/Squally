@@ -6,7 +6,7 @@
 #include "Events/HexusEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Maps/Platformer/PlatformerMap.h"
-#include "Scenes/Hexus/CardData.h"
+#include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Deck.h"
 
 using namespace cocos2d;

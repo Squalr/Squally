@@ -53,7 +53,6 @@ with open(outputHeader,'w') as h, open(outputClass,'w') as cpp:
 
 	cpp.write(warning);
 	cpp.write("\n");
-	cpp.write("#pragma init_seg(\".CRT$XCU-010\")" + "\n");
 	cpp.write("#include \"Resources.h\"" + "\n");
 	cpp.write("#include <string>" + "\n");
 	cpp.write("\n");
