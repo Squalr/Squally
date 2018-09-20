@@ -1,6 +1,6 @@
 #include "HexusOpponent.h"
 
-HexusOpponent::HexusOpponent(std::string newCardResourceFile, std::string enemyName, std::vector<CardData*> cards)
+HexusOpponent::HexusOpponent(std::string animationResourceFile, std::string enemyName, Card::CardStyle cardStyle, std::vector<CardData*>* cards)
 {
 	this->animationResourceFile = animationResourceFile;
 	this->enemyName = enemyName;
