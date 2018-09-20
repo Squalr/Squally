@@ -1,8 +1,5 @@
 #include "HexusMenu.h"
 
-const Color3B HexusMenu::TitleColor = Color3B(88, 188, 193);
-const std::string HexusMenu::StringKeyMenuTutorials = "Menu_Hexus";
-
 HexusMenu * HexusMenu::create()
 {
 	HexusMenu* instance = new HexusMenu();
@@ -15,40 +12,20 @@ HexusMenu * HexusMenu::create()
 HexusMenu::HexusMenu()
 {
 	this->hexusOpponentItems = new std::vector<HexusOpponentItem*>();
-
-	this->currentPage = 0;
-
-	this->tutorialWindow = Sprite::create(Resources::Menus_TutorialMenu_TutorialSelect);
-	this->titleLabel = Label::create(Localization::resolveString(HexusMenu::StringKeyMenuTutorials), Localization::getMainFont(), 32.0f);
-	this->descriptionBox = Sprite::create(Resources::Menus_TutorialMenu_TutorialItem);
-	this->description = Label::create("", Localization::getMainFont(), 14.0f);
-	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
-
+	this->scrollPane = ScrollPane::create(Size(1536.0f, 960.0f), Color4B(0, 0, 0, 196));
 	this->nether = ParticleSystemQuad::create(Resources::Particles_BlueNether);
 	this->swirl = ParticleSystemQuad::create(Resources::Particles_BlueStarCircle);
 
-	this->titleLabel->setColor(HexusMenu::TitleColor);
-	this->titleLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
-
-	this->addChild(this->nether);
-	this->addChild(this->swirl);
-
-	this->addChild(this->tutorialWindow);
-	this->addChild(this->titleLabel);
-	this->addChild(this->closeButton);
-	this->addChild(this->descriptionBox);
-	this->addChild(this->description);
-
-	this->loadLevels();
-
-	this->closeButton->setClickCallback(CC_CALLBACK_1(HexusMenu::onCloseClick, this));
-	this->closeButton->setClickSound(Resources::Sounds_ClickBack1);
+	this->loadOpponents();
 
 	for (std::vector<HexusOpponentItem*>::iterator it = this->hexusOpponentItems->begin(); it != this->hexusOpponentItems->end(); ++it)
 	{
-		this->addChild(*it);
+		this->scrollPane->addChild(*it);
 	}
 
+	this->addChild(this->nether);
+	this->addChild(this->swirl);
+	this->addChild(this->scrollPane);
 	this->addChild(Mouse::create());
 }
 
@@ -63,16 +40,7 @@ void HexusMenu::onEnter()
 	float delay = 0.25f;
 	float duration = 0.35f;
 
-	GameUtils::fadeInObject(this->tutorialWindow, delay, duration);
-	GameUtils::fadeInObject(this->titleLabel, delay, duration);
-	GameUtils::fadeInObject(this->descriptionBox, delay, duration);
-	GameUtils::fadeInObject(this->description, delay, duration);
-	GameUtils::fadeInObject(this->closeButton, delay, duration);
-
-	for (std::vector<HexusOpponentItem*>::iterator it = this->hexusOpponentItems->begin(); it != this->hexusOpponentItems->end(); ++it)
-	{
-		GameUtils::fadeInObject(*it, delay, duration);
-	}
+	GameUtils::fadeInObject(this->scrollPane, delay, duration);
 
 	// Initialize particles to an intermediate state
 	GameUtils::accelerateParticles(this->swirl, 5.0f);
@@ -87,17 +55,36 @@ void HexusMenu::initializePositions()
 
 	this->nether->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	this->swirl->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+	this->scrollPane->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 
-	this->tutorialWindow->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->titleLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 248.0f));
-	this->closeButton->setPosition(Vec2(visibleSize.width / 2 + 308.0f, visibleSize.height / 2 + 222.0f));
-	this->descriptionBox->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 196.0f));
-	this->description->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 196.0f));
+	Size scrollPaneSize = this->scrollPane->getPaneSize();
+
+	int index = 0;
 
 	for (std::vector<HexusOpponentItem*>::iterator it = this->hexusOpponentItems->begin(); it != this->hexusOpponentItems->end(); ++it)
 	{
-		(*it)->initializePositions();
+		int x = index % 3;
+		int y = index / 3;
+
+		if (x == 0)
+		{
+			(*it)->setPositionX(scrollPaneSize.width / 2.0f - 496.0f);
+		}
+		else if (x == 1)
+		{
+			(*it)->setPositionX(scrollPaneSize.width / 2.0f);
+		}
+		else if (x == 2)
+		{
+			(*it)->setPositionX(scrollPaneSize.width / 2.0f + 496.0f);
+		}
+
+		(*it)->setPositionY(y * 680.0f + 480.0f);
+
+		index++;
 	}
+
+	this->scrollPane->fitSizeToContent();
 }
 
 void HexusMenu::initializeListeners()
@@ -111,7 +98,7 @@ void HexusMenu::initializeListeners()
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 }
 
-void HexusMenu::loadLevels()
+void HexusMenu::loadOpponents()
 {
 	auto callback = CC_CALLBACK_1(HexusMenu::onMouseOver, this);
 	int index = 0;
@@ -189,10 +176,6 @@ void HexusMenu::loadLevels()
 
 void HexusMenu::onMouseOver(HexusOpponentItem* tutorialItem)
 {
-	if (this->description->getString() != tutorialItem->tutorialDescription)
-	{
-		this->description->setString(tutorialItem->tutorialDescription);
-	}
 }
 
 void HexusMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
