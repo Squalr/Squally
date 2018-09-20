@@ -11,14 +11,14 @@ HexusMenu * HexusMenu::create()
 
 HexusMenu::HexusMenu()
 {
-	this->hexusOpponentItems = new std::vector<HexusOpponentItem*>();
+	this->hexusOpponents = new std::vector<HexusOpponentFrame*>();
 	this->scrollPane = ScrollPane::create(Size(1536.0f, 960.0f), Color4B(0, 0, 0, 196));
 	this->nether = ParticleSystemQuad::create(Resources::Particles_BlueNether);
 	this->swirl = ParticleSystemQuad::create(Resources::Particles_BlueStarCircle);
 
 	this->loadOpponents();
 
-	for (std::vector<HexusOpponentItem*>::iterator it = this->hexusOpponentItems->begin(); it != this->hexusOpponentItems->end(); ++it)
+	for (std::vector<HexusOpponentFrame*>::iterator it = this->hexusOpponents->begin(); it != this->hexusOpponents->end(); ++it)
 	{
 		this->scrollPane->addChild(*it);
 	}
@@ -61,7 +61,7 @@ void HexusMenu::initializePositions()
 
 	int index = 0;
 
-	for (std::vector<HexusOpponentItem*>::iterator it = this->hexusOpponentItems->begin(); it != this->hexusOpponentItems->end(); ++it)
+	for (std::vector<HexusOpponentFrame*>::iterator it = this->hexusOpponents->begin(); it != this->hexusOpponents->end(); ++it)
 	{
 		int x = index % 3;
 		int y = index / 3;
@@ -101,80 +101,26 @@ void HexusMenu::initializeListeners()
 void HexusMenu::loadOpponents()
 {
 	auto callback = CC_CALLBACK_1(HexusMenu::onMouseOver, this);
-	int index = 0;
 
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
-		"Exact Value Scan I",
-		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
-		index++,
-		callback
-	));
-
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
-		"Exact Value Scan II",
-		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
-		index++,
-		callback
-	));
-
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
-		"Unknown Value Scan",
-		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
-		index++,
-		callback
-	));
-
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
-		"Data Types - Float",
-		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
-		index++,
-		callback
-	));
-
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
-		"Data Types - Double",
-		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
-		index++,
-		callback
-	));
-
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
-		"Godmode",
-		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
-		index++,
-		callback
-	));
-
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
-		"Position I",
-		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
-		index++,
-		callback
-	));
-
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
-		"Position II",
-		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
-		index++,
-		callback
-	));
-
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
-		"Blink Godmode I",
-		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
-		index++,
-		callback
-	));
-
-	this->hexusOpponentItems->push_back(HexusOpponentItem::create(
-		"Blink Godmode II",
-		Resources::Maps_Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
-		index++,
-		callback
-	));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
+	this->hexusOpponents->push_back(HexusOpponentFrame::create(HexusOpponentDataSanta::getInstance(), callback));
 }
 
-void HexusMenu::onMouseOver(HexusOpponentItem* tutorialItem)
+void HexusMenu::onMouseOver(HexusOpponentFrame* hexusOpponentFrame)
 {
 }
 

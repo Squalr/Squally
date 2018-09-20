@@ -360,7 +360,8 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/ScoreTotal.cpp
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.cpp
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.cpp
-	Source/Scenes/Hexus/Opponents/HexusOpponent.cpp
+	Source/Scenes/Hexus/Opponents/HexusOpponentData.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataSanta.cpp
 	Source/Scenes/Maps/Isometric/IsometricMap.cpp
 	Source/Scenes/Maps/Platformer/PlatformerMap.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundBase.cpp
@@ -385,7 +386,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Menus/LoadingScreen/LoadingScreen.cpp
 	Source/Scenes/Menus/Minigames/MinigamesMenu.cpp
 	Source/Scenes/Menus/Minigames/Hexus/HexusMenu.cpp
-	Source/Scenes/Menus/Minigames/Hexus/HexusOpponentItem.cpp
+	Source/Scenes/Menus/Minigames/Hexus/HexusOpponentFrame.cpp
 	Source/Scenes/Menus/Minigames/Hexus/HexusPuzzleItem.cpp
 	Source/Scenes/Menus/Minigames/Hexus/HexusPuzzleMenu.cpp
 	Source/Scenes/Menus/Options/OptionsMenu.cpp
@@ -712,7 +713,8 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.h
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.h
 	Source/Scenes/Hexus/HelpMenus/HelpMenus.h
-	Source/Scenes/Hexus/Opponents/HexusOpponent.h
+	Source/Scenes/Hexus/Opponents/HexusOpponentData.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataSanta.h
 	Source/Scenes/Maps/IMap.h
 	Source/Scenes/Maps/Isometric/IsometricMap.h
 	Source/Scenes/Maps/Platformer/PlatformerMap.h
@@ -739,7 +741,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Menus/LoadingScreen/LoadingScreen.h
 	Source/Scenes/Menus/Minigames/MinigamesMenu.h
 	Source/Scenes/Menus/Minigames/Hexus/HexusMenu.h
-	Source/Scenes/Menus/Minigames/Hexus/HexusOpponentItem.h
+	Source/Scenes/Menus/Minigames/Hexus/HexusOpponentFrame.h
 	Source/Scenes/Menus/Minigames/Hexus/HexusPuzzleItem.h
 	Source/Scenes/Menus/Minigames/Hexus/HexusPuzzlesMenu.h
 	Source/Scenes/Menus/Options/OptionsMenu.h

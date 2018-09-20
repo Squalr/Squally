@@ -2,13 +2,12 @@
 #include "cocos2d.h"
 
 #include "Resources.h"
-#include "Scenes/Hexus/Hexus.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
 using namespace cocos2d;
 
 // Forward declarations
-class Deck;
-class Hexus;
+class HexusOpponentData;
 
 class HexusEvents
 {
@@ -17,10 +16,9 @@ public:
 
 	struct HexusGameEventArgs
 	{
-		Deck* playerDeck;
-		Deck* enemyDeck;
+		HexusOpponentData* opponentData;
 
-		HexusGameEventArgs(Deck* playerDeck, Deck* enemyDeck) : playerDeck(playerDeck), enemyDeck(enemyDeck)
+		HexusGameEventArgs(HexusOpponentData* opponentData) : opponentData(opponentData)
 		{
 		}
 	};

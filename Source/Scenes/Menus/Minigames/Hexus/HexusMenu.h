@@ -9,9 +9,8 @@
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
-
-#include "HexusMenu.h"
-#include "HexusOpponentItem.h"
+#include "Scenes/Hexus/Opponents/HexusOpponents.h"
+#include "Scenes/Menus/Minigames/Hexus/HexusOpponentFrame.h"
 
 using namespace cocos2d;
 
@@ -30,7 +29,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onCloseClick(MenuSprite* menuSprite);
-	void onMouseOver(HexusOpponentItem* tutorialItem);
+	void onMouseOver(HexusOpponentFrame* tutorialItem);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
 	ScrollPane* scrollPane;
@@ -38,6 +37,6 @@ private:
 	ParticleSystem* nether;
 	ParticleSystem* swirl;
 
-	std::vector<HexusOpponentItem*>* hexusOpponentItems;
+	std::vector<HexusOpponentFrame*>* hexusOpponents;
 };
 

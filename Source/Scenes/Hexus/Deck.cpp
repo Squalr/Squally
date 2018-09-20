@@ -9,7 +9,7 @@ Deck* Deck::create()
 	return instance;
 }
 
-Deck* Deck::create(Card::CardStyle cardStyle, std::vector<CardData*>* cards)
+Deck* Deck::create(Card::CardStyle cardStyle, std::vector<CardData*> cards)
 {
 	Deck* instance = new Deck(cardStyle, cards);
 
@@ -23,7 +23,7 @@ Deck::Deck()
 	this->deckCards = new std::vector<Card*>();
 }
 
-Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*>* cards)
+Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*> cards)
 {
 	this->style = cardStyle;
 	this->deckCards = new std::vector<Card*>();
@@ -33,7 +33,7 @@ Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*>* cards)
 
 	this->addChild(this->pad);
 
-	for (auto it = cards->begin(); it != cards->end(); *it++)
+	for (auto it = cards.begin(); it != cards.end(); *it++)
 	{
 		this->insertCardBottom(Card::create(this->style, *it), false, 0.0f);
 	}
