@@ -107,19 +107,32 @@ void GameState::clearCallbackStates()
 	this->enemyHand->setMouseClickCallback(nullptr);
 	this->enemyHand->setMouseOverCallback(nullptr);
 
-	this->playerBinaryCards->disableRowSelection();
-	this->playerDecimalCards->disableRowSelection();
-	this->playerHexCards->disableRowSelection();
-	this->enemyBinaryCards->disableRowSelection();
-	this->enemyDecimalCards->disableRowSelection();
-	this->enemyHexCards->disableRowSelection();
+	std::vector<CardRow *> rows = this->getAllRows();
+	for (auto it = rows.begin(); it != rows.end(); it++)
+	{
+		CardRow* row = *it;
+		row->disableRowSelection();;
+	}
+}
 
-	this->playerBinaryCards->disableRowCardSelection();
-	this->playerDecimalCards->disableRowCardSelection();
-	this->playerHexCards->disableRowCardSelection();
-	this->enemyBinaryCards->disableRowCardSelection();
-	this->enemyDecimalCards->disableRowCardSelection();
-	this->enemyHexCards->disableRowCardSelection();
+void GameState::endRound() 
+{
+	if (this->playerIsWinning()) {
+		this->enemyLosses++;
+	} else {
+		this->playerLosses++;
+	}
+	this->playerPass = false;
+	this->enemyPass = false;
+
+	std::vector<CardRow *> rows = this->getAllRows();
+	for (auto it = rows.begin(); it != rows.end(); it++)
+	{
+		CardRow* row = *it;
+		row->clear();
+	}
+
+	round++;
 }
 
 std::vector<CardRow*> GameState::getAllRows() 
@@ -151,22 +164,18 @@ std::vector<CardRow*> GameState::getPlayerRows()
 int GameState::getPlayerTotal()
 {
 	int total = 0;
-
 	total += this->playerBinaryCards->getRowAttack();
 	total += this->playerDecimalCards->getRowAttack();
 	total += this->playerHexCards->getRowAttack();
-
 	return total;
 }
 
 int GameState::getEnemyTotal()
 {
 	int total = 0;
-
 	total += this->enemyBinaryCards->getRowAttack();
 	total += this->enemyDecimalCards->getRowAttack();
 	total += this->enemyHexCards->getRowAttack();
-
 	return total;
 }
 
@@ -178,39 +187,27 @@ int GameState::getCardCount()
 int GameState::getPlayerCardCount()
 {
 	int total = 0;
-
 	total += this->playerBinaryCards->getCardCount();
 	total += this->playerDecimalCards->getCardCount();
 	total += this->playerHexCards->getCardCount();
-
 	return total;
 }
 
 int GameState::getEnemyCardCount()
 {
 	int total = 0;
-
 	total += this->enemyBinaryCards->getCardCount();
 	total += this->enemyDecimalCards->getCardCount();
 	total += this->enemyHexCards->getCardCount();
-
 	return total;
 }
 
-void GameState::endRound() 
+bool GameState::enemyIsWinning()
 {
-	if (this->getPlayerTotal() > this->getEnemyTotal()) {
-		this->enemyLosses++;
-	} else {
-		this->playerLosses++;
-	}
-	round++;
-	this->enemyBinaryCards->clear();
-	this->enemyDecimalCards->clear();
-	this->enemyHexCards->clear();
-	this->playerBinaryCards->clear();
-	this->playerDecimalCards->clear();
-	this->playerHexCards->clear();
-	this->playerPass = false;
-	this->enemyPass = false;
+	return this->getEnemyTotal() > this->getPlayerTotal();
+}
+
+bool GameState::playerIsWinning()
+{
+	return this->getPlayerTotal() > this->getEnemyTotal();
 }

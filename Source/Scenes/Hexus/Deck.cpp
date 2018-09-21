@@ -63,28 +63,18 @@ int Deck::getCardCount()
 Card* Deck::drawCard()
 {
 	Card* card = this->deckCards->back();
-
 	this->deckCards->pop_back();
-
-	// Note: We let the caller remove the child because it allows for control over positioning
-
-	return card;
+	return card; // Note: We let the caller remove the child because it allows for control over positioning
 }
 
 bool Deck::hasCards()
 {
-	if (this->deckCards->size() > 0)
-	{
-		return true;
-	}
-
-	return false;
+	return this->deckCards->size() > 0;
 }
 
 void Deck::insertCardTop(Card* card, bool faceUp, float insertDelay)
 {
 	this->deckCards->push_back(card);
-
 	this->doInsertAnimation(card, faceUp, insertDelay);
 }
 
@@ -92,7 +82,6 @@ void Deck::insertCardBottom(Card* card, bool faceUp, float insertDelay)
 {
 	card->hide();
 	this->deckCards->insert(this->deckCards->begin(), card);
-
 	this->doInsertAnimation(card, faceUp, insertDelay);
 }
 
@@ -100,7 +89,6 @@ void Deck::insertCardRandom(Card* card, bool faceUp, float insertDelay)
 {
 	int index = RandomHelper::random_int(0, (int)this->deckCards->size());
 	this->deckCards->insert(this->deckCards->begin() + index, card);
-
 	this->doInsertAnimation(card, faceUp, insertDelay);
 }
 
@@ -149,7 +137,5 @@ Card* Deck::removeCard(Card* card)
 {
 	this->deckCards->erase(std::remove(this->deckCards->begin(), this->deckCards->end(), card), this->deckCards->end());
 	this->setCardOrder();
-
-	// Note: We let the caller remove the child because it allows for control over positioning
-	return card;
+	return card; // Note: We let the caller remove the child because it allows for control over positioning
 }

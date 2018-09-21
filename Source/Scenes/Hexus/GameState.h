@@ -51,6 +51,8 @@ public:
 	static void updateState(GameState* gameState, StateType newState);
 	void clearCallbackStates();
 	void endRound();
+	bool playerIsWinning();
+	bool enemyIsWinning();
 	int getPlayerTotal();
 	int getEnemyTotal();
 	int getCardCount();

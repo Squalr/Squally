@@ -18,16 +18,14 @@ CardRow* CardRow::create(bool isPlayerRow)
 
 CardRow::CardRow(bool isPlayerRow)
 {
+	this->belongsToPlayer = isPlayerRow;
 	this->rowCards = new std::vector<Card*>();
 	this->rowSelectCallback = nullptr;
 	this->rowWidth = Config::rowWidth;
-	this->belongsToPlayer = isPlayerRow;
 
 	this->rowSelectSprite = MenuSprite::create(Resources::Minigames_Hexus_RowSelection, Resources::Minigames_Hexus_RowSelectionHighlight, Resources::Minigames_Hexus_RowSelectionHighlight);
-
 	this->rowSelectSprite->setOpacity(0);
 	this->rowSelectSprite->setVisible(false);
-
 	this->setCardScale(Card::cardScale, 0.0f);
 
 	this->addChild(this->rowSelectSprite);
@@ -41,14 +39,12 @@ CardRow::~CardRow()
 void CardRow::initializeListeners()
 {
 	SmartNode::initializeListeners();
-
 	this->rowSelectSprite->setClickCallback(CC_CALLBACK_1(CardRow::onRowSelectClick, this));
 }
 
 void CardRow::setRowWidth(float newRowWidth, float duration)
 {
 	this->rowWidth = newRowWidth;
-
 	this->setCardPositions(duration);
 }
 
@@ -92,10 +88,7 @@ Card* CardRow::removeCard(Card* card)
 {
 	this->rowCards->erase(std::remove(this->rowCards->begin(), this->rowCards->end(), card), this->rowCards->end());
 	this->setCardPositions(Config::insertDelay);
-
-	// Note: We let the caller remove the child because it allows for control over positioning
-
-	return card;
+	return card; // Note: We let the caller remove the child because it allows for control over positioning
 }
 
 int CardRow::getCardCount()
@@ -110,7 +103,6 @@ int CardRow::getRowAttack()
 	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
 	{
 		Card* card = *it;
-
 		attack += card->getAttack();
 	}
 
@@ -130,10 +122,10 @@ void CardRow::enableRowSelection(std::function<void(CardRow*)> callback)
 		FadeTo::create(0.25f, 255),
 		nullptr));
 
+	// Disable cards because the player is interacting with the whole row
 	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
 	{
 		Card* card = *it;
-
 		card->disableInteraction();
 	}
 }
