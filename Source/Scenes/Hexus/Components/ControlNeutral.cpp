@@ -77,5 +77,11 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 		}
 	}
 
-	GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
+	if (selectionMade) {
+		GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
+	} else {
+		this->activeGameState->enemyPass = true;
+		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+	}
+
 }
