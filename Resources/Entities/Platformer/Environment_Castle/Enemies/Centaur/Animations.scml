@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0">
+        <file id="0" name="HEAD.png" width="116" height="172" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="helmet.png" width="165" height="240" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="TORSO.png" width="124" height="143" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="R ARM 1 CLOTH.png" width="75" height="70" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="R ARM 1.png" width="68" height="98" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="R ARM 2.png" width="84" height="96" pivot_x="0" pivot_y="1"/>
+        <file id="6" name="R HAND.png" width="71" height="62" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="entity_000">
+        <animation id="0" name="NewAnimation" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="1" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="4" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="0" z_index="5"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="TORSO">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-85" y="14"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="R ARM 1 CLOTH">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="-119" y="19"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="R ARM 1">
+                <key id="0" spin="0">
+                    <object folder="0" file="4" x="-126" y="-2"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="R ARM 2">
+                <key id="0" spin="0">
+                    <object folder="0" file="5" x="-143" y="-51"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="R HAND">
+                <key id="0" spin="0">
+                    <object folder="0" file="6" x="-142" y="-122"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="HEAD">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-57.142857" y="105.494505"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
