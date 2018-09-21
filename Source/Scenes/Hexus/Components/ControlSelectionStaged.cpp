@@ -244,24 +244,30 @@ void ControlSelectionStaged::aiPerformAction(GameState* gameState)
 		switch (selectedCard->cardData->cardType)
 		{
 			case CardData::CardType::Binary:
+			{
 				gameState->enemyHand->removeCard(selectedCard);
 				gameState->enemyBinaryCards->insertCard(selectedCard, Config::insertDelay);
 				break;
+			}
 			case CardData::CardType::Decimal:
+			{
 				gameState->enemyHand->removeCard(selectedCard);
 				gameState->enemyDecimalCards->insertCard(selectedCard, Config::insertDelay);
 				break;
+			}
 			case CardData::CardType::Hexidecimal:
+			{
 				gameState->enemyHand->removeCard(selectedCard);
 				gameState->enemyHexCards->insertCard(selectedCard, Config::insertDelay);
 				break;
+			}
 			case CardData::CardType::Special_SHL:
 			case CardData::CardType::Special_SHR:
 			case CardData::CardType::Special_FLIP1:
 			case CardData::CardType::Special_FLIP2:
 			case CardData::CardType::Special_FLIP3:
 			case CardData::CardType::Special_FLIP4:
-			case CardData::CardType::Special_INV:
+			case CardData::CardType::Special_INV: {
 				Card::Operation operation = Card::toOperation(selectedCard->cardData->cardType, 0);
 
 				// Calculate the best row to apply the card to
@@ -286,6 +292,7 @@ void ControlSelectionStaged::aiPerformAction(GameState* gameState)
 
 				gameState->enemyHand->removeCard(selectedCard);
 				gameState->enemyGraveyard->insertCardTop(selectedCard, true, Config::insertDelay);
+			}
 			default:
 				break;
 		}

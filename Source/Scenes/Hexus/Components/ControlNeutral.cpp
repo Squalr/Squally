@@ -89,6 +89,8 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 			selectionMade = true;
 			break;
 		*/
+		default: 
+			break;
 		}
 
 		if (selectionMade)
