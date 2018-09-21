@@ -52,13 +52,15 @@ Card::Card(CardStyle cardStyle, CardData* data)
 		break;
 	}
 
-	this->cardImage = Sprite::create(data->cardResourceFile);
 	Node* cardSelected = Node::create();
 	cardSelected->addChild(Sprite::create(data->cardResourceFile));
 	cardSelected->addChild(Sprite::create(Resources::Minigames_Hexus_CardSelect));
+
 	Node* cardSelected2 = Node::create();
 	cardSelected2->addChild(Sprite::create(data->cardResourceFile));
 	cardSelected2->addChild(Sprite::create(Resources::Minigames_Hexus_CardSelect));
+	
+	this->cardImage = Sprite::create(data->cardResourceFile);
 	this->cardSprite = MenuSprite::create(this->cardImage, cardSelected, cardSelected2);
 	this->cardFocus = Sprite::create(Resources::Minigames_Hexus_CardFocus);
 
