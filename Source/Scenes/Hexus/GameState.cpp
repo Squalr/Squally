@@ -199,6 +199,11 @@ int GameState::getEnemyCardCount()
 
 void GameState::endRound() 
 {
+	if (this->getPlayerTotal() > this->getEnemyTotal()) {
+		this->enemyLosses++;
+	} else {
+		this->playerLosses++;
+	}
 	round++;
 	this->enemyBinaryCards->clear();
 	this->enemyDecimalCards->clear();

@@ -1,6 +1,6 @@
 #include "CardRow.h"
 
-CardRow* CardRow::create(bool isPlayerRow = false)
+CardRow* CardRow::create(bool isPlayerRow)
 {
     CardRow * instance = new (std::nothrow) CardRow(isPlayerRow);
 
@@ -21,7 +21,7 @@ CardRow::CardRow(bool isPlayerRow)
 	this->rowCards = new std::vector<Card*>();
 	this->rowSelectCallback = nullptr;
 	this->rowWidth = Config::rowWidth;
-	this->isPlayerRow = isPlayerRow;
+	this->belongsToPlayer = isPlayerRow;
 
 	this->rowSelectSprite = MenuSprite::create(Resources::Minigames_Hexus_RowSelection, Resources::Minigames_Hexus_RowSelectionHighlight, Resources::Minigames_Hexus_RowSelectionHighlight);
 
@@ -289,15 +289,17 @@ int CardRow::simulateCardEffect(Card* card)
 			case CardData::CardType::Binary:
 			case CardData::CardType::Decimal:
 			case CardData::CardType::Hexidecimal:
+			{
 				diff += this->getRowAttack();
 				break;
+			}
 			case CardData::CardType::Special_SHL:
 			case CardData::CardType::Special_SHR:
 			case CardData::CardType::Special_FLIP1:
 			case CardData::CardType::Special_FLIP2:
 			case CardData::CardType::Special_FLIP3:
 			case CardData::CardType::Special_FLIP4:
-			case CardData::CardType::Special_INV:
+			case CardData::CardType::Special_INV: {
 				Card::Operation operation = Card::toOperation(card->cardData->cardType, 0);
 				for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
 				{
@@ -306,6 +308,7 @@ int CardRow::simulateCardEffect(Card* card)
 					int after = rowCard->simulateOperation(operation);
 					diff += before - after;
 				}
+			}
 			default:
 				break;
 		}

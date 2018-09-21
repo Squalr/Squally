@@ -53,10 +53,10 @@ void ScoreTotal::initializePositions()
 
 void ScoreTotal::onStateChange(GameState* gameState)
 {
+	this->updateTotals(gameState);
 	switch(gameState->stateType) {
 		case GameState::Score: 
 		{
-			this->updateTotals(gameState);
 			gameState->endRound();
 			GameState::updateState(gameState, GameState::StateType::CoinFlip);
 		}
@@ -79,13 +79,11 @@ void ScoreTotal::updateTotals(GameState* gameState)
 
 	if (playerTotalAttack > enemyTotalAttack)
 	{
-		gameState->enemyLosses++;
 		this->playerLeaderEmblem->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
 		this->enemyLeaderEmblem->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
 	}
 	else if (enemyTotalAttack > playerTotalAttack)
 	{
-		gameState->playerLosses++;
 		this->playerLeaderEmblem->runAction(FadeTo::create(Config::skullFadeSpeed, 0));
 		this->enemyLeaderEmblem->runAction(FadeTo::create(Config::skullFadeSpeed, 255));
 	}
