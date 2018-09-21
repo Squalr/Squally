@@ -49,8 +49,12 @@ public:
 	static GameState * create();
 	static void updateState(GameState* gameState, StateType newState);
 	void clearCallbackStates();
+	void endRound();
 	int getPlayerTotal();
 	int getEnemyTotal();
+	int getCardCount();
+	int getEnemyCardCount();
+	int getPlayerCardCount();
 
 	StateType stateType;
 	StateType previousStateType;
