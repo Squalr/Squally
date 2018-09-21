@@ -26,9 +26,11 @@ void ControlNeutral::onStateChange(GameState* gameState)
 		{
 		case GameState::Turn::Player:
 			this->initializeCallbacks(gameState);
+			this->activeGameState->playerHand->enableRowCardInteraction();
 			break;
 		case GameState::Turn::Enemy:
 			this->aiDoSelection(gameState);
+			this->activeGameState->playerHand->disableRowCardInteraction();
 			break;
 		}
 	}
