@@ -1,8 +1,8 @@
 #include "CardRow.h"
 
-CardRow* CardRow::create()
+CardRow* CardRow::create(bool isPlayerRow = false)
 {
-    CardRow * instance = new (std::nothrow) CardRow();
+    CardRow * instance = new (std::nothrow) CardRow(isPlayerRow);
 
     if (instance && instance->init())
     {
@@ -16,11 +16,12 @@ CardRow* CardRow::create()
     return instance;
 }
 
-CardRow::CardRow()
+CardRow::CardRow(bool isPlayerRow)
 {
 	this->rowCards = new std::vector<Card*>();
 	this->rowSelectCallback = nullptr;
 	this->rowWidth = Config::rowWidth;
+	this->isPlayerRow = isPlayerRow;
 
 	this->rowSelectSprite = MenuSprite::create(Resources::Minigames_Hexus_RowSelection, Resources::Minigames_Hexus_RowSelectionHighlight, Resources::Minigames_Hexus_RowSelectionHighlight);
 
@@ -211,6 +212,7 @@ void CardRow::clear()
 	}
 
 	this->rowCards->clear();
+	this->setCardPositions(Config::insertDelay);
 }
 
 void CardRow::setMouseOverCallback(std::function<void(Card*)> callback)
@@ -275,4 +277,48 @@ void CardRow::onRowSelectClick(MenuSprite* menuSprite)
 	{
 		this->rowSelectCallback(this);
 	}
+}
+
+// Given a card, figure out what the effect would be, useful for AI calculations
+int CardRow::simulateCardEffect(Card* card) 
+{
+	int diff = 0;
+
+	switch (card->cardData->cardType)
+		{
+			case CardData::CardType::Binary:
+			case CardData::CardType::Decimal:
+			case CardData::CardType::Hexidecimal:
+				diff += this->getRowAttack();
+				break;
+			case CardData::CardType::Special_SHL:
+			case CardData::CardType::Special_SHR:
+			case CardData::CardType::Special_FLIP1:
+			case CardData::CardType::Special_FLIP2:
+			case CardData::CardType::Special_FLIP3:
+			case CardData::CardType::Special_FLIP4:
+			case CardData::CardType::Special_INV:
+				Card::Operation operation = Card::toOperation(card->cardData->cardType, 0);
+				for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+				{
+					Card* rowCard = *it;
+					int before = rowCard->getAttack();
+					int after = rowCard->simulateOperation(operation);
+					diff += before - after;
+				}
+			default:
+				break;
+		}
+
+	return diff;
+}
+
+bool CardRow::isPlayerRow() 
+{
+	return this->belongsToPlayer;
+}
+
+bool CardRow::isEnemyRow()
+{
+	return !this->belongsToPlayer;
 }

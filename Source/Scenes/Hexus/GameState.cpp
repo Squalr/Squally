@@ -32,11 +32,11 @@ GameState::GameState()
 {
 	this->stagedSacrificeTargets = new std::set<Card*>();
 	this->playerDeck = Deck::create();
-	this->playerHand = CardRow::create();
+	this->playerHand = CardRow::create(true);
 	this->playerGraveyard = Deck::create();
-	this->playerBinaryCards = CardRow::create();
-	this->playerDecimalCards = CardRow::create();
-	this->playerHexCards = CardRow::create();
+	this->playerBinaryCards = CardRow::create(true);
+	this->playerDecimalCards = CardRow::create(true);
+	this->playerHexCards = CardRow::create(true);
 
 	this->enemyDeck = Deck::create();
 	this->enemyHand = CardRow::create();
@@ -120,6 +120,32 @@ void GameState::clearCallbackStates()
 	this->enemyBinaryCards->disableRowCardSelection();
 	this->enemyDecimalCards->disableRowCardSelection();
 	this->enemyHexCards->disableRowCardSelection();
+}
+
+std::vector<CardRow*> GameState::getAllRows() 
+{
+	std::vector<CardRow*> enemyRows = this->getEnemyRows();
+	std::vector<CardRow*> playerRows = this->getPlayerRows();
+	enemyRows.insert(enemyRows.end(), playerRows.begin(), playerRows.end());
+	return enemyRows;
+}
+
+std::vector<CardRow*> GameState::getEnemyRows() 
+{
+	std::vector<CardRow*> cardRows;
+	cardRows.emplace_back(this->playerBinaryCards);
+	cardRows.emplace_back(this->playerDecimalCards);
+	cardRows.emplace_back(this->playerHexCards);
+	return cardRows;
+}
+
+std::vector<CardRow*> GameState::getPlayerRows() 
+{
+	std::vector<CardRow*> cardRows;
+	cardRows.emplace_back(this->playerBinaryCards);
+	cardRows.emplace_back(this->playerDecimalCards);
+	cardRows.emplace_back(this->playerHexCards);
+	return cardRows;
 }
 
 int GameState::getPlayerTotal()

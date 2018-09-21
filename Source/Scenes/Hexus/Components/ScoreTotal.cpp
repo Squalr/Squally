@@ -54,11 +54,14 @@ void ScoreTotal::initializePositions()
 void ScoreTotal::onStateChange(GameState* gameState)
 {
 	switch(gameState->stateType) {
-		case GameState::Score:
+		case GameState::Score: 
+		{
 			this->updateTotals(gameState);
 			gameState->endRound();
 			GameState::updateState(gameState, GameState::StateType::CoinFlip);
+		}
 		default:
+			break;
 	}
 	
 }

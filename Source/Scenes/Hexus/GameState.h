@@ -55,6 +55,9 @@ public:
 	int getCardCount();
 	int getEnemyCardCount();
 	int getPlayerCardCount();
+	std::vector<CardRow*> getAllRows();
+	std::vector<CardRow*> getPlayerRows();
+	std::vector<CardRow*> getEnemyRows();
 
 	StateType stateType;
 	StateType previousStateType;
