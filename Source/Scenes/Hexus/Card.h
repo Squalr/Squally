@@ -61,6 +61,7 @@ public:
 	void enableInteraction();
 	void setMouseOverCallback(std::function<void(Card*)> callback);
 	void setMouseClickCallback(std::function<void(Card*)> callback);
+	int simulateOperation(Operation operation);
 
 	CardData* cardData;
 	Vec2 position;
@@ -82,6 +83,7 @@ private:
 	void updateText();
 	void onMouseOver(MenuSprite* menuSprite);
 	void onMouseClick(MenuSprite* menuSprite);
+	int applyOperation(int attack, Operation operation);
 
 	std::vector<Operation>* operations;
 	Sprite* cardBack;

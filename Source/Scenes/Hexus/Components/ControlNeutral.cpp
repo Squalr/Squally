@@ -69,6 +69,26 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 			this->activeGameState->selectedCard = card;
 			selectionMade = true;
 			break;
+		case CardData::CardType::Special_SHL:
+		case CardData::CardType::Special_SHR:
+		case CardData::CardType::Special_FLIP1:
+		case CardData::CardType::Special_FLIP2:
+		case CardData::CardType::Special_FLIP3:
+		case CardData::CardType::Special_FLIP4:
+		case CardData::CardType::Special_INV:
+			this->activeGameState->selectedCard = card;
+			selectionMade = true;
+			break;
+		/*
+		case CardData::CardType::Special_AND:
+		case CardData::CardType::Special_OR:
+		case CardData::CardType::Special_XOR:
+		case CardData::CardType::Special_ADD:
+		case CardData::CardType::Special_SUB:
+			this->activeGameState->selectedCard = card;
+			selectionMade = true;
+			break;
+		*/
 		}
 
 		if (selectionMade)
