@@ -108,16 +108,16 @@ void CardPreview::previewCard(Card* card)
 
 			switch (card->cardData->cardType) {
 			case CardData::CardType::Special_AND:
-				specialLabel->setString("Sacrifice one of your cards on the field and AND it with all cards in a row of the same type.");
+				specialLabel->setString("Select one of your cards and AND its value with another card, storing the value into the other card.");
 				break;
 			case CardData::CardType::Special_OR:
-				specialLabel->setString("Sacrifice one of your cards on the field and OR it with all cards in a row of the same type.");
+				specialLabel->setString("Select one of your cards and OR its value with another card, storing the value into the other card.");
 				break;
 			case CardData::CardType::Special_XOR:
-				specialLabel->setString("Sacrifice one of your cards on the field and XOR it with all cards in a row of the same type.");
+				specialLabel->setString("Select one of your cards and XOR its value with another card, storing the value into the other card.");
 				break;
 			case CardData::CardType::Special_SHL:
-				specialLabel->setString("Shift the bits left of all cards in a row .");
+				specialLabel->setString("Shift the bits left of all cards in a row.");
 				break;
 			case CardData::CardType::Special_SHR:
 				specialLabel->setString("Shift the bits right of all cards in a row.");
@@ -138,10 +138,10 @@ void CardPreview::previewCard(Card* card)
 				specialLabel->setString("Flip the 4th bit of all cards in a row.");
 				break;
 			case CardData::CardType::Special_ADD:
-				specialLabel->setString("Sacrifice one of your cards on the field and ADD it to two cards of the same type.");
+				specialLabel->setString("Select one of your cards and ADD its value to another card, storing the value into the other card.");
 				break;
 			case CardData::CardType::Special_SUB:
-				specialLabel->setString("Sacrifice one of your cards on the field and SUB it from two cards of the same type.");
+				specialLabel->setString("Select one of your cards and SUB its value from another card, storing the value into the other card.");
 				break;
 			default:
 				break;
