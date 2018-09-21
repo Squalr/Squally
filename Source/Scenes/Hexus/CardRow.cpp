@@ -182,6 +182,27 @@ void CardRow::disableRowCardSelection()
 	}
 }
 
+
+// TODO, SPLIT OFF methods for hand into seperate class, Card Row on the field is very different than card row in hand
+void CardRow::disableRowCardInteraction()
+{
+	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	{
+		Card* card = *it;
+		card->disableInteraction();
+	}
+}
+
+// TODO, SPLIT OFF methods for hand into seperate class, Card Row on the field is very different than card row in hand
+void CardRow::enableRowCardInteraction()
+{
+	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	{
+		Card* card = *it;
+		card->enableInteraction();
+	}
+}
+
 void CardRow::clear()
 {
 	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)

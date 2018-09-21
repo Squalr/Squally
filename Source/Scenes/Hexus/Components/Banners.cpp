@@ -66,6 +66,7 @@ void Banners::updateBanner(GameState* gameState)
 	switch (gameState->stateType)
 	{
 	case GameState::StateType::FirstSideBanner:
+		gameState->playerHand->disableRowCardInteraction();
 		if (gameState->turn == GameState::Turn::Enemy)
 		{
 			gameState->bannerMessage = "OPPONENT GOES FIRST";
@@ -83,6 +84,7 @@ void Banners::updateBanner(GameState* gameState)
 		gameState->bannerMessage = "REMAINING CARD REPLACEMENTS: " + std::to_string(gameState->cardReplaceCount);
 		break;
 	case GameState::StateType::TurnBanner:
+		gameState->playerHand->disableRowCardInteraction();
 		if (gameState->turn == GameState::Turn::Enemy)
 		{
 			gameState->bannerMessage = "OPPONENT'S TURN";

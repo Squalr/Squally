@@ -22,10 +22,12 @@ public:
 	float getCardScale();
 	void enableRowSelection(std::function<void(CardRow*)> callback);
 	void enableRowCardSelection(std::function<void(Card*)> callback);
-	void setMouseOverCallback(std::function<void(Card*)> callback);
-	void setMouseClickCallback(std::function<void(Card*)> callback);
 	void disableRowSelection();
 	void disableRowCardSelection();
+	void setMouseOverCallback(std::function<void(Card*)> callback);
+	void setMouseClickCallback(std::function<void(Card*)> callback);
+	void enableRowCardInteraction();
+	void disableRowCardInteraction();
 	void setRowWidth(float newRowWidth, float duration);
 	void clear();
 
