@@ -58,7 +58,18 @@ void ScoreTotal::onStateChange(GameState* gameState)
 		case GameState::Score: 
 		{
 			gameState->endRound();
-			GameState::updateState(gameState, GameState::StateType::CoinFlip);
+			if (gameState->playerLosses >= 2) 
+			{
+				GameState::updateState(gameState, GameState::StateType::Lose);
+			}
+			else if (gameState->enemyLosses >= 2) 
+			{
+				GameState::updateState(gameState, GameState::StateType::Win);
+			}
+			else 
+			{
+				GameState::updateState(gameState, GameState::StateType::CoinFlip);
+			}
 		}
 		default:
 			break;
