@@ -143,3 +143,43 @@ int GameState::getEnemyTotal()
 
 	return total;
 }
+
+int GameState::getCardCount()
+{
+	return this->getPlayerCardCount() + this->getEnemyCardCount();
+}
+
+int GameState::getPlayerCardCount()
+{
+	int total = 0;
+
+	total += this->playerBinaryCards->getCardCount();
+	total += this->playerDecimalCards->getCardCount();
+	total += this->playerHexCards->getCardCount();
+
+	return total;
+}
+
+int GameState::getEnemyCardCount()
+{
+	int total = 0;
+
+	total += this->enemyBinaryCards->getCardCount();
+	total += this->enemyDecimalCards->getCardCount();
+	total += this->enemyHexCards->getCardCount();
+
+	return total;
+}
+
+void GameState::endRound() 
+{
+	round++;
+	this->enemyBinaryCards->clear();
+	this->enemyDecimalCards->clear();
+	this->enemyHexCards->clear();
+	this->playerBinaryCards->clear();
+	this->playerDecimalCards->clear();
+	this->playerHexCards->clear();
+	this->playerPass = false;
+	this->enemyPass = false;
+}
