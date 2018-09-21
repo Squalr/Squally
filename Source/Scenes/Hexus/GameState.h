@@ -28,7 +28,8 @@ public:
 		ControlCombineStaged,
 		EndTurn,
 		Score,
-		Finish
+		Win,
+		Lose
 	};
 
 	enum Difficulty

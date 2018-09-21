@@ -50,29 +50,6 @@ void PassButton::onStateChange(GameState* gameState)
 		this->passButton->setClickCallback(CC_CALLBACK_1(PassButton::onPassClick, this, gameState));
 		this->passButton->enableInteraction();
 		break;
-	case GameState::StateType::Score:
-		if (this->activeGameState->getPlayerTotal() > this->activeGameState->getEnemyTotal()) {
-			this->activeGameState->enemyLosses += 1;
-			if (this->activeGameState->enemyLosses >= 2) {
-				GameState::updateState(this->activeGameState, GameState::StateType::Finish);
-			}
-			else {
-				GameState::updateState(this->activeGameState, GameState::StateType::EmptyState);
-			}
-		}
-		else {
-			this->activeGameState->playerLosses += 1;
-			GameState::updateState(this->activeGameState, GameState::StateType::EmptyState);
-			if (this->activeGameState->playerLosses >= 2) {
-				GameState::updateState(this->activeGameState, GameState::StateType::Finish);
-			}
-			else {
-				GameState::updateState(this->activeGameState, GameState::StateType::EmptyState);
-			}
-		}
-		this->passButton->disableInteraction();
-		this->passButton->setClickCallback(nullptr);
-		break;
 	default:
 		this->passButton->disableInteraction();
 		this->passButton->setClickCallback(nullptr);
