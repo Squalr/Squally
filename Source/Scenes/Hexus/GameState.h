@@ -28,7 +28,8 @@ public:
 		ControlCombineStaged,
 		EndTurn,
 		Score,
-		Finish
+		Win,
+		Lose
 	};
 
 	enum Difficulty
@@ -49,8 +50,17 @@ public:
 	static GameState * create();
 	static void updateState(GameState* gameState, StateType newState);
 	void clearCallbackStates();
+	void endRound();
+	bool playerIsWinning();
+	bool enemyIsWinning();
 	int getPlayerTotal();
 	int getEnemyTotal();
+	int getCardCount();
+	int getEnemyCardCount();
+	int getPlayerCardCount();
+	std::vector<CardRow*> getAllRows();
+	std::vector<CardRow*> getPlayerRows();
+	std::vector<CardRow*> getEnemyRows();
 
 	StateType stateType;
 	StateType previousStateType;

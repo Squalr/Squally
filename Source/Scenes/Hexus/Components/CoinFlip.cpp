@@ -64,6 +64,7 @@ void CoinFlip::initializePositions()
 void CoinFlip::onStateChange(GameState* gameState)
 {
 	if (gameState->stateType == GameState::StateType::CoinFlip) {
+		gameState->playerHand->disableRowCardInteraction();
 		this->doCoinFlip(gameState);
 	}
 }

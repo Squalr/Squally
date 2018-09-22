@@ -54,6 +54,27 @@ void ScoreTotal::initializePositions()
 void ScoreTotal::onStateChange(GameState* gameState)
 {
 	this->updateTotals(gameState);
+	switch(gameState->stateType) {
+		case GameState::Score: 
+		{
+			gameState->endRound();
+			if (gameState->playerLosses >= 2) 
+			{
+				GameState::updateState(gameState, GameState::StateType::Lose);
+			}
+			else if (gameState->enemyLosses >= 2) 
+			{
+				GameState::updateState(gameState, GameState::StateType::Win);
+			}
+			else 
+			{
+				GameState::updateState(gameState, GameState::StateType::CoinFlip);
+			}
+		}
+		default:
+			break;
+	}
+	
 }
 
 void ScoreTotal::updateTotals(GameState* gameState)
