@@ -14,7 +14,7 @@ HexusOpponentDataWitch* HexusOpponentDataWitch::getInstance()
 }
 
 HexusOpponentDataWitch::HexusOpponentDataWitch() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Castle_BossWitch_Animations,
+	Resources::Entities_Platformer_Environment_Castle_Enemies_BossWitch_Animations,
 	0.9f,
 	Vec2(-32.0f, -32.0f),
 	HexusOpponentDataWitch::StringKeyOpponentName, Card::CardStyle::Shadow,

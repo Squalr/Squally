@@ -14,7 +14,7 @@ HexusOpponentDataSkeletonKing* HexusOpponentDataSkeletonKing::getInstance()
 }
 
 HexusOpponentDataSkeletonKing::HexusOpponentDataSkeletonKing() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Obelisk_BossSkeletonKing_Animations,
+	Resources::Entities_Platformer_Environment_Obelisk_Enemies_BossSkeletonKing_Animations,
 	1.0f,
 	Vec2(-64.0f, -32.0f),
 	HexusOpponentDataSkeletonKing::StringKeyOpponentName, Card::CardStyle::Water,

@@ -14,7 +14,7 @@ HexusOpponentDataSanta* HexusOpponentDataSanta::getInstance()
 }
 
 HexusOpponentDataSanta::HexusOpponentDataSanta() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Snow_BossSanta_Animations,
+	Resources::Entities_Platformer_Environment_Snow_Enemies_BossSanta_Animations,
 	1.0f,
 	Vec2(0.0f, -48.0f),
 	HexusOpponentDataSanta::StringKeyOpponentName, Card::CardStyle::Water,

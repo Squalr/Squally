@@ -14,7 +14,7 @@ HexusOpponentDataOrcKing* HexusOpponentDataOrcKing::getInstance()
 }
 
 HexusOpponentDataOrcKing::HexusOpponentDataOrcKing() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Forest_BossDragonOrcKing_Animations,
+	Resources::Entities_Platformer_Environment_Forest_Enemies_BossDragonOrcKing_Animations,
 	1.0f,
 	Vec2::ZERO,
 	HexusOpponentDataOrcKing::StringKeyOpponentName, Card::CardStyle::Shadow,

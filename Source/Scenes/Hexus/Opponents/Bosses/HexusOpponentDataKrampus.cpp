@@ -14,7 +14,7 @@ HexusOpponentDataKrampus* HexusOpponentDataKrampus::getInstance()
 }
 
 HexusOpponentDataKrampus::HexusOpponentDataKrampus() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Caverns_BossKrampus_Animations,
+	Resources::Entities_Platformer_Environment_Caverns_Enemies_BossKrampus_Animations,
 	1.0f,
 	Vec2(0.0f, -48.0f),
 	HexusOpponentDataKrampus::StringKeyOpponentName, Card::CardStyle::Shadow,

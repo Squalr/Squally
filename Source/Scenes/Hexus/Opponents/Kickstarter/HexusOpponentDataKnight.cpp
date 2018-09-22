@@ -14,7 +14,7 @@ HexusOpponentDataKnight* HexusOpponentDataKnight::getInstance()
 }
 
 HexusOpponentDataKnight::HexusOpponentDataKnight() : HexusOpponentData(
-	Resources::Entities_Platformer_Npcs_Knight_Animations,
+	Resources::Entities_Platformer_Environment_Snow_Npcs_ChristmasWarrior_Animations,
 	0.4f,
 	Vec2(0.0f, -96.0f),
 	HexusOpponentDataKnight::StringKeyOpponentName, Card::CardStyle::Water,

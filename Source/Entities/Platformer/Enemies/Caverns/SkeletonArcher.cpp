@@ -12,7 +12,7 @@ SkeletonArcher* SkeletonArcher::deserialize(ValueMap* initProperties)
 }
 
 SkeletonArcher::SkeletonArcher(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Caverns_SkeletonArcher_Animations,
+	Resources::Entities_Platformer_Environment_Caverns_Enemies_SkeletonArcher_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(128.0f, 216.0f),
 	0.8f,

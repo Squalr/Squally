@@ -14,7 +14,7 @@ HexusOpponentDataEvilEye* HexusOpponentDataEvilEye::getInstance()
 }
 
 HexusOpponentDataEvilEye::HexusOpponentDataEvilEye() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Mech_BossEvilEye_Animations,
+	Resources::Entities_Platformer_Environment_Mech_Enemies_BossEvilEye_Animations,
 	0.6f,
 	Vec2(0.0f, -96.0f),
 	HexusOpponentDataEvilEye::StringKeyOpponentName, Card::CardStyle::Shadow,

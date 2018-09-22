@@ -14,7 +14,7 @@ HexusOpponentDataRhinoman* HexusOpponentDataRhinoman::getInstance()
 }
 
 HexusOpponentDataRhinoman::HexusOpponentDataRhinoman() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Jungle_BossRhinoman_Animations,
+	Resources::Entities_Platformer_Environment_Jungle_Enemies_BossRhinoman_Animations,
 	1.0f,
 	Vec2(-24.0f, -48.0f),
 	HexusOpponentDataRhinoman::StringKeyOpponentName, Card::CardStyle::Shadow,
