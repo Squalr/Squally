@@ -14,7 +14,7 @@ HexusOpponentDataEgyptianGoddess* HexusOpponentDataEgyptianGoddess::getInstance(
 }
 
 HexusOpponentDataEgyptianGoddess::HexusOpponentDataEgyptianGoddess() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Ruins_BossEgyptianGoddess_Animations,
+	Resources::Entities_Platformer_Environment_Ruins_Enemies_BossEgyptianGoddess_Animations,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	HexusOpponentDataEgyptianGoddess::StringKeyOpponentName, Card::CardStyle::Shadow,

@@ -14,7 +14,7 @@ HexusOpponentDataDemonKing* HexusOpponentDataDemonKing::getInstance()
 }
 
 HexusOpponentDataDemonKing::HexusOpponentDataDemonKing() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Platformer_Environment_Volcano_Enemies_BossDemonKing_Animations,
 	0.8f,
 	Vec2(0.0f, -48.0f),
 	HexusOpponentDataDemonKing::StringKeyOpponentName, Card::CardStyle::Water,

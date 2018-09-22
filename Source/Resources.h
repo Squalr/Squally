@@ -5193,9 +5193,9 @@ public:
 	static const std::string Entities_Platformer_Misc_Reindeer_R_EAR;
 	static const std::string Entities_Platformer_Misc_Reindeer_TAIL;
 	static const std::string Entities_Platformer_Misc_Reindeer_TORSO;
-	static const std::string Entities_Platformer_Misc_Reindeer_+_Frames_NECK_PART_1;
-	static const std::string Entities_Platformer_Misc_Reindeer_+_Frames_NECK_1;
-	static const std::string Entities_Platformer_Misc_Reindeer_+_Frames_TORSO_2;
+	static const std::string Entities_Platformer_Misc_Reindeer___Frames_NECK_PART_1;
+	static const std::string Entities_Platformer_Misc_Reindeer___Frames_NECK_1;
+	static const std::string Entities_Platformer_Misc_Reindeer___Frames_TORSO_2;
 	static const std::string Entities_Platformer_Misc_Sheep_B_BACK_LEG;
 	static const std::string Entities_Platformer_Misc_Sheep_B_FRONT_LEG;
 	static const std::string Entities_Platformer_Misc_Sheep_DETAIL_1;
@@ -5251,8 +5251,8 @@ public:
 	static const std::string Entities_Platformer_Misc_Wolf_HEAD;
 	static const std::string Entities_Platformer_Misc_Wolf_TAIL;
 	static const std::string Entities_Platformer_Misc_Wolf_TORSO;
-	static const std::string Entities_Platformer_Misc_Wolf_+FRAMES_HEAD_2;
-	static const std::string Entities_Platformer_Misc_Wolf_+FRAMES_HEAD_3;
+	static const std::string Entities_Platformer_Misc_Wolf__FRAMES_HEAD_2;
+	static const std::string Entities_Platformer_Misc_Wolf__FRAMES_HEAD_3;
 	static const std::string Entities_Platformer_Squally_BODY;
 	static const std::string Entities_Platformer_Squally_CEREBELLUM;
 	static const std::string Entities_Platformer_Squally_EYE_L;
@@ -5988,7 +5988,6 @@ public:
 	static const std::string Entities_Platformer_Environment_Obelisk_Npcs_Knight_4;
 	static const std::string Entities_Platformer_Environment_Obelisk_Npcs_Paladin_10;
 	static const std::string Entities_Platformer_Environment_Ruins_Npcs_Athena_5;
-	static const std::string Entities_Platformer_Environment_Ruins_Npcs_Griffin_GRIFFIN;
 	static const std::string Entities_Platformer_Environment_Ruins_Npcs_Poseidon_2;
 	static const std::string Entities_Platformer_Environment_Snow_Helpers_YetiBaby_1_10;
 	static const std::string Entities_Platformer_Environment_Snow_Npcs_Fisherman_4;

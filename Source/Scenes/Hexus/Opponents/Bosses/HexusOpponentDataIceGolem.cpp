@@ -14,7 +14,7 @@ HexusOpponentDataIceGolem* HexusOpponentDataIceGolem::getInstance()
 }
 
 HexusOpponentDataIceGolem::HexusOpponentDataIceGolem() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Snow_BossIceGolem_Animations,
+	Resources::Entities_Platformer_Environment_Snow_Enemies_BossIceGolem_Animations,
 	1.0f,
 	Vec2(0.0f, -48.0f),
 	HexusOpponentDataIceGolem::StringKeyOpponentName, Card::CardStyle::Water,

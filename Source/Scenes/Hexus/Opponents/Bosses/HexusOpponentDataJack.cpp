@@ -14,7 +14,7 @@ HexusOpponentDataJack* HexusOpponentDataJack::getInstance()
 }
 
 HexusOpponentDataJack::HexusOpponentDataJack() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Castle_BossJack_Animations,
+	Resources::Entities_Platformer_Environment_Castle_Enemies_BossJack_Animations,
 	0.35f,
 	Vec2(0.0f, -96.0f),
 	HexusOpponentDataJack::StringKeyOpponentName, Card::CardStyle::Shadow,

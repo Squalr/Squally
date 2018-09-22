@@ -12,7 +12,7 @@ Cyclops* Cyclops::deserialize(ValueMap* initProperties)
 }
 
 Cyclops::Cyclops(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Forest_Cyclops_Animations,
+	Resources::Entities_Platformer_Environment_Forest_Enemies_Cyclops_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(296.0f, 256.0f),
 	1.0f,

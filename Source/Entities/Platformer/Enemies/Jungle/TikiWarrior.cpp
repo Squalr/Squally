@@ -12,7 +12,7 @@ TikiWarrior* TikiWarrior::deserialize(ValueMap* initProperties)
 }
 
 TikiWarrior::TikiWarrior(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Jungle_TikiWarrior_Animations,
+	Resources::Entities_Platformer_Environment_Jungle_Enemies_TikiWarrior_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(128.0f, 128.0f),
 	1.0f,

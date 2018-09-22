@@ -12,7 +12,7 @@ Knight* Knight::deserialize(ValueMap* initProperties)
 }
 
 Knight::Knight(ValueMap* initProperties) : NpcBase::NpcBase(initProperties,
-	Resources::Entities_Platformer_Npcs_EgyptianMummy_Animations,
+	Resources::Entities_Platformer_Environment_Volcano_Npcs_FireKnight_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeNpc,
 	Size(96.0f, 128.0f),
 	0.25f,
