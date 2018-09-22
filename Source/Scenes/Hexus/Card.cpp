@@ -52,13 +52,15 @@ Card::Card(CardStyle cardStyle, CardData* data)
 		break;
 	}
 
-	this->cardImage = Sprite::create(data->cardResourceFile);
 	Node* cardSelected = Node::create();
 	cardSelected->addChild(Sprite::create(data->cardResourceFile));
 	cardSelected->addChild(Sprite::create(Resources::Minigames_Hexus_CardSelect));
+
 	Node* cardSelected2 = Node::create();
 	cardSelected2->addChild(Sprite::create(data->cardResourceFile));
 	cardSelected2->addChild(Sprite::create(Resources::Minigames_Hexus_CardSelect));
+	
+	this->cardImage = Sprite::create(data->cardResourceFile);
 	this->cardSprite = MenuSprite::create(this->cardImage, cardSelected, cardSelected2);
 	this->cardFocus = Sprite::create(Resources::Minigames_Hexus_CardFocus);
 
@@ -168,14 +170,21 @@ Card::Operation Card::toOperation(CardData::CardType playedCardType, unsigned in
 unsigned int Card::getAttack()
 {
 	unsigned int attack = this->cardData->attack;
-	const unsigned int attackMask = 0b1111;
 
 	for (auto it = this->operations->begin(); it != this->operations->end(); it++)
 	{
 		Operation operation = *it;
+		attack = this->applyOperation(attack, operation);
+	}
 
-		switch (operation.opterationType)
-		{
+	return attack;
+}
+
+int Card::applyOperation(int attack, Operation operation) {
+	const unsigned int attackMask = 0b1111;
+
+	switch (operation.opterationType)
+	{
 		case Operation::OperationType::SHL:
 			attack <<= operation.immediate;
 			break;
@@ -197,11 +206,10 @@ unsigned int Card::getAttack()
 		case Operation::OperationType::SUB:
 			attack = operation.immediate > attack ? 0 : attack - operation.immediate;
 			break;
-		}
-
-		// Ensure only as many as the first 4 bits are set
-		attack &= attackMask;
 	}
+
+	// Ensure only as many as the first 4 bits are set
+	attack &= attackMask;
 
 	return attack;
 }
@@ -325,4 +333,10 @@ void Card::onMouseClick(MenuSprite* menuSprite)
 	{
 		this->mouseClickCallback(this);
 	}
+}
+
+int Card::simulateOperation(Operation operation) 
+{
+	int attack = this->getAttack();
+	return this->applyOperation(attack, operation);
 }

@@ -66,6 +66,7 @@ void Banners::updateBanner(GameState* gameState)
 	switch (gameState->stateType)
 	{
 	case GameState::StateType::FirstSideBanner:
+		gameState->playerHand->disableRowCardInteraction();
 		if (gameState->turn == GameState::Turn::Enemy)
 		{
 			gameState->bannerMessage = "OPPONENT GOES FIRST";
@@ -82,7 +83,14 @@ void Banners::updateBanner(GameState* gameState)
 	case GameState::StateType::ControlReplaceCards:
 		gameState->bannerMessage = "REMAINING CARD REPLACEMENTS: " + std::to_string(gameState->cardReplaceCount);
 		break;
+	case GameState::StateType::Win:
+		gameState->bannerMessage = "Winner!";
+		break;
+	case GameState::StateType::Lose:
+		gameState->bannerMessage = "You Suck!";
+		break;
 	case GameState::StateType::TurnBanner:
+		gameState->playerHand->disableRowCardInteraction();
 		if (gameState->turn == GameState::Turn::Enemy)
 		{
 			gameState->bannerMessage = "OPPONENT'S TURN";
@@ -109,12 +117,16 @@ void Banners::updateBanner(GameState* gameState)
 		case GameState::StateType::FirstSideBanner:
 		case GameState::StateType::TurnBanner:
 		case GameState::StateType::ControlReplaceCards:
+		case GameState::StateType::Win:
+		case GameState::StateType::Lose:
 			// Initial fade in if just entering a banner state
 			switch (gameState->previousStateType)
 			{
 				case GameState::StateType::FirstSideBanner:
 				case GameState::StateType::TurnBanner:
 				case GameState::StateType::ControlReplaceCards:
+				case GameState::StateType::Win:
+				case GameState::StateType::Lose:
 					break;
 				default:
 					this->statusLabel->runAction(Sequence::create(
@@ -128,7 +140,7 @@ void Banners::updateBanner(GameState* gameState)
 						nullptr
 					));
 
-					if (gameState->stateType == GameState::StateType::FirstSideBanner || gameState->stateType == GameState::StateType::TurnBanner)
+					if (gameState->stateType == GameState::StateType::FirstSideBanner || gameState->stateType == GameState::StateType::TurnBanner || gameState->previousStateType == GameState::StateType::Win ||  gameState->previousStateType == GameState::StateType::Lose)
 					{
 						if (gameState->turn == GameState::Turn::Player)
 						{
@@ -175,6 +187,8 @@ void Banners::updateBanner(GameState* gameState)
 				case GameState::StateType::FirstSideBanner:
 				case GameState::StateType::TurnBanner:
 				case GameState::StateType::ControlReplaceCards:
+				case GameState::StateType::Win:
+				case GameState::StateType::Lose:
 					this->statusLabel->runAction(Sequence::create(
 						FadeTo::create(Config::bannerFadeSpeed, 0),
 						nullptr
@@ -184,7 +198,7 @@ void Banners::updateBanner(GameState* gameState)
 						nullptr
 					));
 
-					if (gameState->previousStateType == GameState::StateType::FirstSideBanner || gameState->previousStateType == GameState::StateType::TurnBanner)
+					if (gameState->previousStateType == GameState::StateType::FirstSideBanner || gameState->previousStateType == GameState::StateType::TurnBanner ||  gameState->previousStateType == GameState::StateType::Win ||  gameState->previousStateType == GameState::StateType::Lose)
 					{
 						this->playerBanner1->runAction(Sequence::create(
 							FadeTo::create(Config::bannerFadeSpeed, 0),

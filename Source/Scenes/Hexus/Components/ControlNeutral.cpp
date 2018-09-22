@@ -26,9 +26,11 @@ void ControlNeutral::onStateChange(GameState* gameState)
 		{
 		case GameState::Turn::Player:
 			this->initializeCallbacks(gameState);
+			this->activeGameState->playerHand->enableRowCardInteraction();
 			break;
 		case GameState::Turn::Enemy:
 			this->aiDoSelection(gameState);
+			this->activeGameState->playerHand->disableRowCardInteraction();
 			break;
 		}
 	}
@@ -52,12 +54,22 @@ void ControlNeutral::selectCard(Card* card)
 void ControlNeutral::aiDoSelection(GameState* gameState)
 {
 	bool selectionMade = false;
+	int passIfDiffAbove = 30;
 
 	this->activeGameState->selectedCard = nullptr;
 
+	if (gameState->getPlayerTotal() > gameState->getEnemyTotal() + passIfDiffAbove) {
+
+	}
+
+	if (gameState->playerPass && gameState->enemyIsWinning()) {
+		gameState->enemyPass = true;
+	} 
+	
 	for (auto it = gameState->enemyHand->rowCards->begin(); it != gameState->enemyHand->rowCards->end(); it++)
 	{
 		Card* card = *it;
+		std::vector<CardRow *> rows = gameState->getAllRows();
 
 		switch (card->cardData->cardType)
 		{
@@ -67,6 +79,38 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 			this->activeGameState->selectedCard = card;
 			selectionMade = true;
 			break;
+		case CardData::CardType::Special_SHL:
+		case CardData::CardType::Special_SHR:
+		case CardData::CardType::Special_FLIP1:
+		case CardData::CardType::Special_FLIP2:
+		case CardData::CardType::Special_FLIP3:
+		case CardData::CardType::Special_FLIP4:
+		case CardData::CardType::Special_INV: {
+			// don't play this card if there are no viable moves
+			Card::Operation operation = Card::toOperation(card->cardData->cardType, 0);
+			for (auto it = rows.begin(); it != rows.end(); it++)
+			{
+				CardRow* row = *it;
+				int diff = row->simulateCardEffect(card) * (row->isPlayerRow() ? -1 : 1);
+				if (diff > 1) {
+					this->activeGameState->selectedCard = card;
+					selectionMade = true;
+				}
+			}
+			break;
+		}
+		/*
+		case CardData::CardType::Special_AND:
+		case CardData::CardType::Special_OR:
+		case CardData::CardType::Special_XOR:
+		case CardData::CardType::Special_ADD:
+		case CardData::CardType::Special_SUB:
+			this->activeGameState->selectedCard = card;
+			selectionMade = true;
+			break;
+		*/
+		default: 
+			break;
 		}
 
 		if (selectionMade)
@@ -75,5 +119,11 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 		}
 	}
 
-	GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
+	if (selectionMade) {
+		GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
+	} else {
+		this->activeGameState->enemyPass = true;
+		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+	}
+
 }

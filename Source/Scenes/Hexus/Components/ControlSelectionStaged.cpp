@@ -240,29 +240,65 @@ void ControlSelectionStaged::aiPerformAction(GameState* gameState)
 
 	if (selectedCard != nullptr)
 	{
+		std::vector<CardRow *> rows = gameState->getAllRows();
 		switch (selectedCard->cardData->cardType)
 		{
 			case CardData::CardType::Binary:
+			{
 				gameState->enemyHand->removeCard(selectedCard);
 				gameState->enemyBinaryCards->insertCard(selectedCard, Config::insertDelay);
-				GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
-				return;
+				break;
+			}
 			case CardData::CardType::Decimal:
+			{
 				gameState->enemyHand->removeCard(selectedCard);
 				gameState->enemyDecimalCards->insertCard(selectedCard, Config::insertDelay);
-				GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
-				return;
+				break;
+			}
 			case CardData::CardType::Hexidecimal:
+			{
 				gameState->enemyHand->removeCard(selectedCard);
 				gameState->enemyHexCards->insertCard(selectedCard, Config::insertDelay);
-				GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
-				return;
+				break;
+			}
+			case CardData::CardType::Special_SHL:
+			case CardData::CardType::Special_SHR:
+			case CardData::CardType::Special_FLIP1:
+			case CardData::CardType::Special_FLIP2:
+			case CardData::CardType::Special_FLIP3:
+			case CardData::CardType::Special_FLIP4:
+			case CardData::CardType::Special_INV: {
+				Card::Operation operation = Card::toOperation(selectedCard->cardData->cardType, 0);
+
+				// Calculate the best row to apply the card to
+				CardRow* bestRow;
+				int bestDiff = INT_MIN;
+				for (auto it = rows.begin(); it != rows.end(); it++)
+				{
+					CardRow* row = *it;
+					int diff = row->simulateCardEffect(selectedCard) * (row->isPlayerRow() ? -1 : 1);
+					if (diff >= bestDiff) {
+						bestDiff = diff;
+						bestRow = row;
+					}
+				}
+
+				// Apply the card
+				for (auto it = bestRow->rowCards->begin(); it != bestRow->rowCards->end(); it++)
+				{
+					Card* card = *it;
+					card->addOperation(operation);
+				}
+
+				gameState->enemyHand->removeCard(selectedCard);
+				gameState->enemyGraveyard->insertCardTop(selectedCard, true, Config::insertDelay);
+			}
 			default:
 				break;
 		}
 	}
 
-	GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+	GameState::updateState(gameState, GameState::StateType::EndTurn);
 }
 
 void ControlSelectionStaged::onSelectionCancel(MenuSprite* menuSprite)
