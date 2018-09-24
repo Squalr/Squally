@@ -21,7 +21,6 @@ Card::Card(CardStyle cardStyle, CardData* data)
 {
 	this->mouseOverCallback = nullptr;
 	this->operations = new std::vector<Operation>();
-
 	this->cardData = data;
 
 	switch (cardStyle)
@@ -59,7 +58,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	Node* cardSelected2 = Node::create();
 	cardSelected2->addChild(Sprite::create(data->cardResourceFile));
 	cardSelected2->addChild(Sprite::create(Resources::Minigames_Hexus_CardSelect));
-	
+
 	this->cardImage = Sprite::create(data->cardResourceFile);
 	this->cardSprite = MenuSprite::create(this->cardImage, cardSelected, cardSelected2);
 	this->cardFocus = Sprite::create(Resources::Minigames_Hexus_CardFocus);
