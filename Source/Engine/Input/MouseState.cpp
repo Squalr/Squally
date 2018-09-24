@@ -25,6 +25,11 @@ MouseState::~MouseState()
 {
 }
 
+MouseEvents::MouseEventArgs MouseState::getMouseState()
+{
+	return MouseEvents::MouseEventArgs(MouseState::mousePosition, MouseState::isDragging, MouseState::canClick, MouseState::isLeftClicked);
+}
+
 Vec2 MouseState::getMousePosition()
 {
 	return MouseState::mousePosition;
@@ -72,8 +77,8 @@ void MouseState::onMouseDown(EventMouse* event)
 	MouseState::mousePosition = Vec2(event->getCursorX(), event->getCursorY());
 	MouseState::isLeftClicked = (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT);
 
-	MouseEvents::TriggerMouseDown(this->buildArgs());
-	MouseEvents::TriggerStateChange(this->buildArgs());
+	MouseEvents::TriggerMouseDown(MouseState::getMouseState());
+	MouseEvents::TriggerStateChange(MouseState::getMouseState());
 }
 
 void MouseState::onMouseUp(EventMouse* event)
@@ -81,11 +86,13 @@ void MouseState::onMouseUp(EventMouse* event)
 	MouseState::mousePosition = Vec2(event->getCursorX(), event->getCursorY());
 	MouseState::isLeftClicked = (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT);
 
-	MouseEvents::TriggerMouseUp(this->buildArgs());
+	MouseEvents::TriggerMouseUp(MouseState::getMouseState());
 
 	MouseState::isDragging = false;
+	MouseState::canClick = false;
 
-	MouseEvents::TriggerStateChange(this->buildArgs());
+	MouseEvents::TriggerStateChange(MouseState::getMouseState());
+	MouseEvents::TriggerMouseMove(MouseState::getMouseState());
 }
 
 void MouseState::onMouseMove(EventMouse* event)
@@ -94,37 +101,32 @@ void MouseState::onMouseMove(EventMouse* event)
 	MouseState::isLeftClicked = (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT);
 	MouseState::canClick = false;
 
-	MouseEvents::TriggerMouseMove(this->buildArgs());
-	MouseEvents::TriggerStateChange(this->buildArgs());
+	MouseEvents::TriggerMouseMove(MouseState::getMouseState());
+	MouseEvents::TriggerStateChange(MouseState::getMouseState());
 }
 
 void MouseState::onMouseScroll()
 {
-	MouseEvents::TriggerMouseMove(this->buildArgs());
+	MouseEvents::TriggerMouseMove(MouseState::getMouseState());
 }
 
 void MouseState::onClickableMouseOverEvent(EventCustom* eventCustom)
 {
 	MouseState::canClick = true;
 
-	MouseEvents::TriggerStateChange(this->buildArgs());
+	MouseEvents::TriggerStateChange(MouseState::getMouseState());
 }
 
 void MouseState::onClickableMouseOutEvent(EventCustom* eventCustom)
 {
 	MouseState::canClick = false;
 
-	MouseEvents::TriggerStateChange(this->buildArgs());
+	MouseEvents::TriggerStateChange(MouseState::getMouseState());
 }
 
 void MouseState::onMouseDragEvent(EventCustom* eventCustom)
 {
 	MouseState::isDragging = true;
 
-	MouseEvents::TriggerStateChange(this->buildArgs());
-}
-
-MouseEvents::MouseEventArgs MouseState::buildArgs()
-{
-	return MouseEvents::MouseEventArgs(MouseState::mousePosition, MouseState::isDragging, MouseState::canClick, MouseState::isLeftClicked);
+	MouseEvents::TriggerStateChange(MouseState::getMouseState());
 }

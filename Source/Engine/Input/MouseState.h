@@ -14,6 +14,7 @@ public:
 	static void registerGlobalNode();
 
 	static Vec2 getMousePosition();
+	static MouseEvents::MouseEventArgs getMouseState();
 
 private:
 	MouseState();
@@ -27,7 +28,6 @@ private:
 	void onClickableMouseOverEvent(EventCustom* eventCustom);
 	void onClickableMouseOutEvent(EventCustom* eventCustom);
 	void onMouseDragEvent(EventCustom* eventCustom);
-	MouseEvents::MouseEventArgs buildArgs();
 
 	static Vec2 mousePosition;
 	static bool canClick;
