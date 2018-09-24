@@ -59,11 +59,7 @@ with open(outputHeader,'w') as h, open(outputClass,'w') as cpp:
 
 	for file in files:
 		relativeFilePath = relpath(file, resourcePath).replace("\\", "/")
-<<<<<<< HEAD
-		variableName = relativeFilePath.replace("/", "_").replace(" ", "_").replace("-", "_").replace("(", "_").replace(")", "_").replace("+", "_")
-=======
 		variableName = relativeFilePath.replace("/", "_").replace(" ", "_").replace("+", "_").replace("-", "_").replace("(", "_").replace(")", "_")
->>>>>>> d9482ccb5bc02fa7e43eb49b2debf5595dd57dbc
 		variableNameNoExtension = splitext(variableName)[0]
 		
 		h.write("\tstatic const std::string " + variableNameNoExtension + ";" + "\n");
