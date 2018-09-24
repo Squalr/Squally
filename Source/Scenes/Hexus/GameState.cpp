@@ -195,9 +195,9 @@ std::vector<CardRow*> GameState::getAllRows()
 std::vector<CardRow*> GameState::getEnemyRows() 
 {
 	std::vector<CardRow*> cardRows;
-	cardRows.emplace_back(this->playerBinaryCards);
-	cardRows.emplace_back(this->playerDecimalCards);
-	cardRows.emplace_back(this->playerHexCards);
+	cardRows.emplace_back(this->enemyBinaryCards);
+	cardRows.emplace_back(this->enemyDecimalCards);
+	cardRows.emplace_back(this->enemyHexCards);
 	return cardRows;
 }
 
