@@ -428,6 +428,8 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Obelisk/HexusOpponentMenuObelisk.cpp
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusChapterPreviewRuins.cpp
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusOpponentMenuRuins.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Training/HexusChapterPreviewTraining.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Training/HexusOpponentMenuTraining.cpp
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusChapterPreviewVolcano.cpp
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusOpponentMenuVolcano.cpp
 	Source/Scenes/Menus/Minigames/Hexus/Puzzles/HexusPuzzleItem.cpp
@@ -827,6 +829,8 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Obelisk/HexusOpponentMenuObelisk.h
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusChapterPreviewRuins.h
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusOpponentMenuRuins.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Training/HexusChapterPreviewTraining.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Training/HexusOpponentMenuTraining.h
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusChapterPreviewVolcano.h
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusOpponentMenuVolcano.h
 	Source/Scenes/Menus/Minigames/Hexus/Puzzles/HexusPuzzleItem.h

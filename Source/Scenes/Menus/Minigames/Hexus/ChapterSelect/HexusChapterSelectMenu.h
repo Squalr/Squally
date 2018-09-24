@@ -19,6 +19,7 @@
 #include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Mech/HexusChapterPreviewMech.h"
 #include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Obelisk/HexusChapterPreviewObelisk.h"
 #include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusChapterPreviewRuins.h"
+#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Training/HexusChapterPreviewTraining.h"
 #include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusChapterPreviewVolcano.h"
 
 using namespace cocos2d;
@@ -40,12 +41,11 @@ private:
 	void onMouseOver(HexusChapterPreview* hexusChapterPreview);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
-	ScrollPane* scrollPane;
-
 	ParticleSystem* nether;
 	ParticleSystem* swirl;
 
 	std::vector<HexusChapterPreview*>* chapters;
+	HexusChapterPreviewTraining* hexusChapterPreviewTraining;
 	HexusChapterPreviewJungle* hexusChapterPreviewJungle;
 	HexusChapterPreviewRuins* hexusChapterPreviewRuins;
 	HexusChapterPreviewForest* hexusChapterPreviewForest;

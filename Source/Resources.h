@@ -5552,6 +5552,7 @@ public:
 	static const std::string Menus_MinigamesMenu_Hexus_HexusFrameMech;
 	static const std::string Menus_MinigamesMenu_Hexus_HexusFrameObelisk;
 	static const std::string Menus_MinigamesMenu_Hexus_HexusFrameRuins;
+	static const std::string Menus_MinigamesMenu_Hexus_HexusFrameTraining;
 	static const std::string Menus_MinigamesMenu_Hexus_HexusFrameVolcano;
 	static const std::string Menus_OptionsMenu_CheckboxEmpty;
 	static const std::string Menus_OptionsMenu_CheckboxHover;
