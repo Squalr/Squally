@@ -135,6 +135,55 @@ void GameState::endRound()
 	round++;
 }
 
+std::vector<Card*> GameState::getAllCards() 
+{
+	std::vector<CardRow *> rows = this->getAllRows();
+	std::vector<Card *> cards;
+	for (auto it = rows.begin(); it != rows.end(); it++)
+	{
+		CardRow* row = *it;
+		for (auto it = row->rowCards->begin(); it != row->rowCards->end(); it++)
+		{
+			Card* card = *it;
+			cards.emplace_back(card);
+		}
+	}
+	return cards;
+}
+
+std::vector<Card*> GameState::getEnemyCards() 
+{
+	std::vector<CardRow *> rows = this->getEnemyRows();
+	std::vector<Card *> cards;
+	for (auto it = rows.begin(); it != rows.end(); it++)
+	{
+		CardRow* row = *it;
+		for (auto it = row->rowCards->begin(); it != row->rowCards->end(); it++)
+		{
+			Card* card = *it;
+			cards.emplace_back(card);
+		}
+	}
+	return cards;
+}
+
+std::vector<Card*> GameState::getPlayerCards() 
+{
+	std::vector<CardRow *> rows = this->getPlayerRows();
+	std::vector<Card *> cards;
+	for (auto it = rows.begin(); it != rows.end(); it++)
+	{
+		CardRow* row = *it;
+		for (auto it = row->rowCards->begin(); it != row->rowCards->end(); it++)
+		{
+			Card* card = *it;
+			cards.emplace_back(card);
+		}
+	}
+	return cards;
+}
+
+
 std::vector<CardRow*> GameState::getAllRows() 
 {
 	std::vector<CardRow*> enemyRows = this->getEnemyRows();
