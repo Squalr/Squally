@@ -56,7 +56,7 @@ MenuSprite::~MenuSprite()
 
 void MenuSprite::onEnter()
 {
-	Node::onEnter();
+	SmartNode::onEnter();
 
 	this->isClickInit = false;
 	this->isClicked = false;
@@ -66,13 +66,21 @@ void MenuSprite::onEnter()
 	this->spriteClicked->setVisible(false);
 	this->spriteSelected->setVisible(false);
 
-	this->initializeListeners();
 	this->scheduleUpdate();
+}
+
+void MenuSprite::onEnterTransitionDidFinish()
+{
+	SmartNode::onEnterTransitionDidFinish();
+
+	// Trigger mouse move event to refresh cursor state
+	MouseEvents::MouseEventArgs args = MouseState::getMouseState();
+	this->mouseMove(&args);
 }
 
 void MenuSprite::update(float dt)
 {
-	Node::update(dt);
+	SmartNode::update(dt);
 
 	// Update the hover/click sprites to track the main sprite
 	this->spriteClicked->setPosition(this->sprite->getPosition());
@@ -133,7 +141,7 @@ void MenuSprite::setClickSound(std::string soundResource)
 
 void MenuSprite::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	SmartNode::initializeListeners();
 
 	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MenuSprite::onMouseMove, this));
 	EventListenerCustom* mouseDownListener = EventListenerCustom::create(MouseEvents::MouseDownEvent, CC_CALLBACK_1(MenuSprite::onMouseDown, this));
@@ -175,7 +183,21 @@ void MenuSprite::showSprite(Node* sprite)
 
 void MenuSprite::onMouseMove(EventCustom* event)
 {
-	MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(event->getUserData());
+	this->mouseMove(static_cast<MouseEvents::MouseEventArgs*>(event->getUserData()), event);
+}
+
+void MenuSprite::onMouseDown(EventCustom* event)
+{
+	this->mouseDown(static_cast<MouseEvents::MouseEventArgs*>(event->getUserData()), event);
+}
+
+void MenuSprite::onMouseUp(EventCustom* event)
+{
+	this->mouseUp(static_cast<MouseEvents::MouseEventArgs*>(event->getUserData()), event);
+}
+
+void MenuSprite::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event)
+{
 
 	if (!this->interactionEnabled)
 	{
@@ -235,10 +257,8 @@ void MenuSprite::onMouseMove(EventCustom* event)
 	}
 }
 
-void MenuSprite::onMouseDown(EventCustom* event)
+void MenuSprite::mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* event)
 {
-	MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(event->getUserData());
-
 	if (!this->interactionEnabled)
 	{
 		return;
@@ -270,10 +290,8 @@ void MenuSprite::onMouseDown(EventCustom* event)
 	}
 }
 
-void MenuSprite::onMouseUp(EventCustom* event)
+void MenuSprite::mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* event)
 {
-	MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(event->getUserData());
-
 	if (!this->interactionEnabled)
 	{
 		return;
@@ -296,14 +314,14 @@ void MenuSprite::onMouseUp(EventCustom* event)
 
 				this->showSprite(this->spriteSelected);
 
-				event->stopPropagation();
+				if (event != nullptr)
+				{
+					event->stopPropagation();
+				}
 			}
 		}
-
-		if (args->isLeftClicked)
-		{
-			this->isClickInit = false;
-			this->isClicked = false;
-		}
 	}
+
+	this->isClickInit = false;
+	this->isClicked = false;
 }
