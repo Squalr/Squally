@@ -227,6 +227,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Volcano/LavaGolem.cpp
 	Source/Entities/Platformer/Npcs/Knight.cpp
 	Source/Entities/Platformer/Npcs/NpcBase.cpp
+	Source/Entities/Platformer/Npcs/Castle/CastleGuard.cpp
 	Source/Entities/Platformer/Squally/Hover.cpp
 	Source/Entities/Platformer/Squally/Squally.cpp
 	Source/Events/DialogEvents.cpp
@@ -360,19 +361,20 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.cpp
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.cpp
 	Source/Scenes/Hexus/Opponents/HexusOpponentData.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataDemonKing.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataEgyptianGoddess.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataEvilEye.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataIceGolem.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataJack.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataKrampus.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataOrcKing.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataRhinoman.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataSanta.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataSkeletonKing.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataWitch.cpp
-	Source/Scenes/Hexus/Opponents/Kickstarter/HexusOpponentDataKnight.cpp
-	Source/Scenes/Hexus/Opponents/Npcs/HexusOpponentDataEgyptianMummy.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDemonKing.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentEgyptianGoddess.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentEvilEye.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentIceGolem.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentKrampus.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentOrcKing.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentRhinoman.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentSanta.cpp
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentSkeletonKing.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentCentaur.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentJack.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentWitch.cpp
+	Source/Scenes/Hexus/Opponents/Kickstarter/HexusOpponentKnight.cpp
+	Source/Scenes/Hexus/Opponents/Npcs/HexusOpponentEgyptianMummy.cpp
 	Source/Scenes/Maps/Isometric/IsometricMap.cpp
 	Source/Scenes/Maps/Platformer/PlatformerMap.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundBase.cpp
@@ -396,10 +398,30 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Menus/HackerMode/RadialMenu.cpp
 	Source/Scenes/Menus/LoadingScreen/LoadingScreen.cpp
 	Source/Scenes/Menus/Minigames/MinigamesMenu.cpp
-	Source/Scenes/Menus/Minigames/Hexus/HexusMenu.cpp
-	Source/Scenes/Menus/Minigames/Hexus/HexusOpponentFrame.cpp
-	Source/Scenes/Menus/Minigames/Hexus/HexusPuzzleItem.cpp
-	Source/Scenes/Menus/Minigames/Hexus/HexusPuzzleMenu.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusOpponentMenuBase.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusOpponentPreview.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Castle/HexusOpponentMenuCastle.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Caverns/HexusChapterPreviewCaverns.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Caverns/HexusOpponentMenuCaverns.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Forest/HexusChapterPreviewForest.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Forest/HexusOpponentMenuForest.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/IceCaps/HexusChapterPreviewIceCaps.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/IceCaps/HexusOpponentMenuIceCaps.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Jungle/HexusChapterPreviewJungle.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Jungle/HexusOpponentMenuJungle.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Mech/HexusChapterPreviewMech.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Mech/HexusOpponentMenuMech.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Obelisk/HexusChapterPreviewObelisk.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Obelisk/HexusOpponentMenuObelisk.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusChapterPreviewRuins.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusOpponentMenuRuins.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusChapterPreviewVolcano.cpp
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusOpponentMenuVolcano.cpp
+	Source/Scenes/Menus/Minigames/Hexus/Puzzles/HexusPuzzleItem.cpp
+	Source/Scenes/Menus/Minigames/Hexus/Puzzles/HexusPuzzleMenu.cpp
 	Source/Scenes/Menus/Options/OptionsMenu.cpp
 	Source/Scenes/Menus/Pause/PauseMenu.cpp
 	Source/Scenes/Menus/SaveSelect/SaveSelectMenu.cpp
@@ -586,6 +608,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Volcano/LavaGolem.h
 	Source/Entities/Platformer/Npcs/Knight.h
 	Source/Entities/Platformer/Npcs/NpcBase.h
+	Source/Entities/Platformer/Npcs/Castle/CastleGuard.h
 	Source/Entities/Platformer/Squally/Hover.h
 	Source/Entities/Platformer/Squally/Squally.h
 	Source/Events/DialogEvents.h
@@ -725,19 +748,20 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/HelpMenus/HelpMenus.h
 	Source/Scenes/Hexus/Opponents/HexusOpponentData.h
 	Source/Scenes/Hexus/Opponents/HexusOpponents.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataDemonKing.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataEgyptianGoddess.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataEvilEye.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataIceGolem.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataJack.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataKrampus.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataOrcKing.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataRhinoman.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataSanta.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataSkeletonKing.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDataWitch.h
-	Source/Scenes/Hexus/Opponents/Kickstarter/HexusOpponentDataKnight.h
-	Source/Scenes/Hexus/Opponents/Npcs/HexusOpponentDataEgyptianMummy.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDemonKing.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentEgyptianGoddess.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentEvilEye.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentIceGolem.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentKrampus.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentOrcKing.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentRhinoman.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentSanta.h
+	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentSkeletonKing.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentCentaur.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentJack.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentWitch.h
+	Source/Scenes/Hexus/Opponents/Kickstarter/HexusOpponentKnight.h
+	Source/Scenes/Hexus/Opponents/Npcs/HexusOpponentEgyptianMummy.h
 	Source/Scenes/Maps/IMap.h
 	Source/Scenes/Maps/Isometric/IsometricMap.h
 	Source/Scenes/Maps/Platformer/PlatformerMap.h
@@ -763,10 +787,30 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Menus/HackerMode/RadialMenu.h
 	Source/Scenes/Menus/LoadingScreen/LoadingScreen.h
 	Source/Scenes/Menus/Minigames/MinigamesMenu.h
-	Source/Scenes/Menus/Minigames/Hexus/HexusMenu.h
-	Source/Scenes/Menus/Minigames/Hexus/HexusOpponentFrame.h
-	Source/Scenes/Menus/Minigames/Hexus/HexusPuzzleItem.h
-	Source/Scenes/Menus/Minigames/Hexus/HexusPuzzlesMenu.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusOpponentMenuBase.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusOpponentPreview.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Castle/HexusOpponentMenuCastle.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Caverns/HexusChapterPreviewCaverns.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Caverns/HexusOpponentMenuCaverns.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Forest/HexusChapterPreviewForest.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Forest/HexusOpponentMenuForest.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/IceCaps/HexusChapterPreviewIceCaps.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/IceCaps/HexusOpponentMenuIceCaps.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Jungle/HexusChapterPreviewJungle.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Jungle/HexusOpponentMenuJungle.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Mech/HexusChapterPreviewMech.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Mech/HexusOpponentMenuMech.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Obelisk/HexusChapterPreviewObelisk.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Obelisk/HexusOpponentMenuObelisk.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusChapterPreviewRuins.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusOpponentMenuRuins.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusChapterPreviewVolcano.h
+	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusOpponentMenuVolcano.h
+	Source/Scenes/Menus/Minigames/Hexus/Puzzles/HexusPuzzleItem.h
+	Source/Scenes/Menus/Minigames/Hexus/Puzzles/HexusPuzzlesMenu.h
 	Source/Scenes/Menus/Options/OptionsMenu.h
 	Source/Scenes/Menus/Pause/PauseMenu.h
 	Source/Scenes/Menus/SaveSelect/SaveSelectMenu.h
