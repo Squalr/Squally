@@ -3,13 +3,14 @@
 #include "cocos2d.h"
 
 #include "Engine/Events/MouseEvents.h"
+#include "Engine/SmartNode.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 
-class MenuSprite : public Node
+class MenuSprite : public SmartNode
 {
 public:
 	static MenuSprite * create(std::string spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource);
@@ -31,14 +32,18 @@ protected:
 	~MenuSprite();
 
 private:
-	void initializeListeners();
+	void initializeListeners() override;
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void update(float) override;
 	bool intersects(Vec2 mousePos);
 	void showSprite(Node* sprite);
 	void onMouseMove(EventCustom* event);
 	void onMouseDown(EventCustom* event);
 	void onMouseUp(EventCustom* event);
+	void mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event = nullptr);
+	void mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* event = nullptr);
+	void mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* event = nullptr);
 
 	std::string mouseOverSound;
 	std::string clickSound;
