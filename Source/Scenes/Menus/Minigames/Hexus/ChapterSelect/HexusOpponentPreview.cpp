@@ -34,6 +34,8 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 	this->setCascadeOpacityEnabled(true);
 
 	this->frame->setClickCallback(CC_CALLBACK_1(HexusOpponentPreview::onOpponentClick, this));
+	this->frame->setCascadeOpacityEnabled(true);
+	this->frameClip->setCascadeOpacityEnabled(true);
 
 	this->frameClip->addChild(this->opponentSprite);
 	this->addChild(this->frameClip);
@@ -47,7 +49,7 @@ HexusOpponentPreview::~HexusOpponentPreview()
 void HexusOpponentPreview::initializePositions()
 {
 	SmartNode::initializePositions();
-	
+
 	if (this->hexusOpponentData != nullptr)
 	{
 		this->opponentSprite->setPosition(this->hexusOpponentData->animationOffset);
