@@ -12,7 +12,7 @@ PigDemon* PigDemon::deserialize(ValueMap* initProperties)
 }
 
 PigDemon::PigDemon(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Jungle_PigDemon_Animations,
+	Resources::Entities_Platformer_Environment_Jungle_Enemies_PigDemon_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(256.0f, 240.0f),
 	0.8f,

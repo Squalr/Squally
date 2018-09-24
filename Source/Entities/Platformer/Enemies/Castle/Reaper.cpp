@@ -12,7 +12,7 @@ Reaper* Reaper::deserialize(ValueMap* initProperties)
 }
 
 Reaper::Reaper(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Castle_Reaper_Animations,
+	Resources::Entities_Platformer_Environment_Castle_Enemies_Reaper_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(196.0f, 512.0f),
 	0.8f,

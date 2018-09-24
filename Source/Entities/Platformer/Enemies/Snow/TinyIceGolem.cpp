@@ -12,7 +12,7 @@ TinyIceGolem* TinyIceGolem::deserialize(ValueMap* initProperties)
 }
 
 TinyIceGolem::TinyIceGolem(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Snow_TinyIceGolem_Animations,
+	Resources::Entities_Platformer_Environment_Snow_Enemies_TinyIceGolem_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(980.0f, 1360.0f),
 	0.17f,

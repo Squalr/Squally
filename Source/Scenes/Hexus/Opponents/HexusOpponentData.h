@@ -11,14 +11,17 @@ using namespace cocos2d;
 class HexusOpponentData
 {
 public:
+	Deck* getDeck();
+	
 	std::string animationResourceFile;
 	std::string enemyNameKey;
 	float animationScale;
 	Vec2 animationOffset;
-	Deck* deck;
 
 protected:
 	HexusOpponentData(std::string animationResourceFile, float animationScale, Vec2 animationOffset, std::string enemyNameKey, Card::CardStyle cardStyle, std::vector<CardData*> cards);
 	~HexusOpponentData();
 
+	Card::CardStyle cardStyle;
+	std::vector<CardData*> cards;
 };

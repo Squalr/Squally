@@ -12,7 +12,7 @@ Exterminator* Exterminator::deserialize(ValueMap* initProperties)
 }
 
 Exterminator::Exterminator(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Mech_Exterminator_Animations,
+	Resources::Entities_Platformer_Environment_Mech_Enemies_Exterminator_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(320.0f, 278.0f),
 	1.0f,

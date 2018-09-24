@@ -12,7 +12,7 @@ BatDemon* BatDemon::deserialize(ValueMap* initProperties)
 }
 
 BatDemon::BatDemon(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Obelisk_BatDemon_Animations,
+	Resources::Entities_Platformer_Environment_Obelisk_Enemies_BatDemon_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(726.0f, 1024.0f),
 	0.23f,
