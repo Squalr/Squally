@@ -12,6 +12,7 @@ HexusChapterPreviewVolcano* HexusChapterPreviewVolcano::create()
 HexusChapterPreviewVolcano::HexusChapterPreviewVolcano()
 {
 	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano));
+	this->text->setString("Volcano");
 }
 
 HexusChapterPreviewVolcano::~HexusChapterPreviewVolcano()

@@ -12,6 +12,7 @@ HexusChapterPreviewObelisk* HexusChapterPreviewObelisk::create()
 HexusChapterPreviewObelisk::HexusChapterPreviewObelisk()
 {
 	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk));
+	this->text->setString("The Void");
 }
 
 HexusChapterPreviewObelisk::~HexusChapterPreviewObelisk()
