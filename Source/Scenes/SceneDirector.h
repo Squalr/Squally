@@ -23,6 +23,7 @@
 #include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Mech/HexusOpponentMenuMech.h"
 #include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Obelisk/HexusOpponentMenuObelisk.h"
 #include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusOpponentMenuRuins.h"
+#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Training/HexusOpponentMenuTraining.h"
 #include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusOpponentMenuVolcano.h"
 #include "Scenes/Menus/Minigames/Hexus/Puzzles/HexusPuzzlesMenu.h"
 #include "Scenes/Menus/Confirmation/ConfirmationMenu.h"
@@ -66,6 +67,7 @@ private:
 	HexusOpponentMenuMech* hexusOpponentMenuMech;
 	HexusOpponentMenuObelisk* hexusOpponentMenuObelisk;
 	HexusOpponentMenuRuins* hexusOpponentMenuRuins;
+	HexusOpponentMenuTraining* hexusOpponentMenuTraining;
 	HexusOpponentMenuVolcano* hexusOpponentMenuVolcano;
 	HexusPuzzlesMenu* hexusPuzzlesMenu;
 	TutorialScreen* tutorialScreen;

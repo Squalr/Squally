@@ -5552,6 +5552,7 @@ const std::string Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk = "Menu
 const std::string Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins = "Menus/MinigamesMenu/Hexus/HexusFrameRuins.png";
 const std::string Resources::Menus_MinigamesMenu_Hexus_HexusFrameTraining = "Menus/MinigamesMenu/Hexus/HexusFrameTraining.png";
 const std::string Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano = "Menus/MinigamesMenu/Hexus/HexusFrameVolcano.png";
+const std::string Resources::Menus_MinigamesMenu_Hexus_WoodBackground = "Menus/MinigamesMenu/Hexus/WoodBackground.png";
 const std::string Resources::Menus_OptionsMenu_CheckboxEmpty = "Menus/OptionsMenu/CheckboxEmpty.png";
 const std::string Resources::Menus_OptionsMenu_CheckboxHover = "Menus/OptionsMenu/CheckboxHover.png";
 const std::string Resources::Menus_OptionsMenu_CheckboxSelected = "Menus/OptionsMenu/CheckboxSelected.png";
