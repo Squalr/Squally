@@ -53,23 +53,23 @@ void ControlNeutral::selectCard(Card* card)
 
 void ControlNeutral::aiDoSelection(GameState* gameState)
 {
-	bool selectionMade = false;
-	int passIfDiffAbove = 30;
-
 	this->activeGameState->selectedCard = nullptr;
 
+	int passIfDiffAbove = 30; // Give up if player is too far ahead
 	if (gameState->getPlayerTotal() > gameState->getEnemyTotal() + passIfDiffAbove) {
 		gameState->enemyPass = true;
 		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 		return;
 	}
 
+	// If the player passes and we're ahead we won, so pass
 	if (gameState->playerPass && gameState->enemyIsWinning()) {
 		gameState->enemyPass = true;
 		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 		return;
 	} 
 	
+	// Otherwise 
 	for (auto it = gameState->enemyHand->rowCards->begin(); it != gameState->enemyHand->rowCards->end(); it++)
 	{
 		Card* card = *it;
@@ -81,8 +81,8 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 			case CardData::CardType::Decimal:
 			case CardData::CardType::Hexidecimal: {
 				this->activeGameState->selectedCard = card;
-				selectionMade = true;
-				break;
+				GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
+				return;
 			}
 			case CardData::CardType::Special_SHL:
 			case CardData::CardType::Special_SHR:
@@ -99,36 +99,28 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 					int diff = row->simulateCardEffect(card) * (row->isPlayerRow() ? -1 : 1);
 					if (diff > 1) {
 						this->activeGameState->selectedCard = card;
-						selectionMade = true;
+						GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
+						return;
 					}
 				}
 				break;
 			}
-			/*
 			case CardData::CardType::Special_AND:
 			case CardData::CardType::Special_OR:
 			case CardData::CardType::Special_XOR:
 			case CardData::CardType::Special_ADD:
-			case CardData::CardType::Special_SUB:
+			case CardData::CardType::Special_SUB: 
+			{
 				this->activeGameState->selectedCard = card;
-				selectionMade = true;
-				break;
-			*/
+				GameState::updateState(this->activeGameState, GameState::StateType::ControlCombineStaged);
+				return;
+			}
 			default: 
 				break;
-			}
-
-		if (selectionMade)
-		{
-			break;
 		}
 	}
 
-	if (selectionMade) {
-		GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
-	} else {
-		this->activeGameState->enemyPass = true;
-		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
-	}
-
+	// Unable to find a playable move, so pass
+	this->activeGameState->enemyPass = true;
+	GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 }
