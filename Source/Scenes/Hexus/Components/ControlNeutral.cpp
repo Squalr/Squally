@@ -68,6 +68,14 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 		return;
 	} 
+
+	// If it's not the last round we better save some cards
+	int cardsToSaveForLastRound = 3;
+	if (gameState->enemyLosses < 1 && gameState->enemyDeck->deckCards->size() < cardsToSaveForLastRound) {
+		gameState->enemyPass = true;
+		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+		return;
+	} 
 	
 	// Otherwise 
 	for (auto it = gameState->enemyHand->rowCards->begin(); it != gameState->enemyHand->rowCards->end(); it++)
@@ -111,9 +119,12 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 			case CardData::CardType::Special_ADD:
 			case CardData::CardType::Special_SUB: 
 			{
-				this->activeGameState->selectedCard = card;
-				GameState::updateState(this->activeGameState, GameState::StateType::ControlCombineStaged);
-				return;
+				// don't play this card if there are no viable moves
+				if (gameState->getEnemyCardCount() > 1) {
+					this->activeGameState->selectedCard = card;
+					GameState::updateState(this->activeGameState, GameState::StateType::ControlCombineStaged);
+					return;
+				}
 			}
 			default: 
 				break;
