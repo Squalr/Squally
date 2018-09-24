@@ -122,7 +122,7 @@ void CardRow::enableRowSelection(std::function<void(CardRow*)> callback)
 		FadeTo::create(0.25f, 255),
 		nullptr));
 
-	// Disable cards because the player is interacting with the whole row
+	// Disable card interactions because the player is interacting with the whole row
 	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
 	{
 		Card* card = *it;
@@ -135,7 +135,6 @@ void CardRow::enableRowCardSelection(std::function<void(Card*)> callback)
 	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
 	{
 		Card* card = *it;
-
 		card->setMouseClickCallback(callback);
 		card->focus();
 	}
@@ -148,18 +147,13 @@ void CardRow::disableRowSelection()
 	MenuSprite* sprite = this->rowSelectSprite;
 
 	this->rowSelectSprite->stopAllActions();
-	this->rowSelectSprite->runAction(Sequence::create(
-		FadeTo::create(0.25f, 0),
-		CallFunc::create([sprite]
-	{
+	this->rowSelectSprite->runAction(Sequence::create(FadeTo::create(0.25f, 0), CallFunc::create([sprite]{
 		sprite->setVisible(false);
-	}),
-		nullptr));
+	}), nullptr));
 
 	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
 	{
 		Card* card = *it;
-
 		card->enableInteraction();
 	}
 }
@@ -212,7 +206,6 @@ void CardRow::setMouseOverCallback(std::function<void(Card*)> callback)
 	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
 	{
 		Card* card = *it;
-
 		card->setMouseOverCallback(callback);
 	}
 }
@@ -222,7 +215,6 @@ void CardRow::setMouseClickCallback(std::function<void(Card*)> callback)
 	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
 	{
 		Card* card = *it;
-
 		card->setMouseClickCallback(callback);
 	}
 }
