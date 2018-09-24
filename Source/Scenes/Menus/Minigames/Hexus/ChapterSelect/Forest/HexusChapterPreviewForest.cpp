@@ -12,6 +12,7 @@ HexusChapterPreviewForest* HexusChapterPreviewForest::create()
 HexusChapterPreviewForest::HexusChapterPreviewForest()
 {
 	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest));
+	this->text->setString("Forest");
 }
 
 HexusChapterPreviewForest::~HexusChapterPreviewForest()

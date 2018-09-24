@@ -30,7 +30,6 @@ protected:
 	ScrollPane* scrollPane;
 	std::vector<HexusOpponentPreview*> opponents;
 
-	ParticleSystem* nether;
-	ParticleSystem* swirl;
+	Sprite* background;
 };
 

@@ -12,6 +12,7 @@ HexusChapterPreviewMech* HexusChapterPreviewMech::create()
 HexusChapterPreviewMech::HexusChapterPreviewMech()
 {
 	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech));
+	this->text->setString("Laboratory");
 }
 
 HexusChapterPreviewMech::~HexusChapterPreviewMech()

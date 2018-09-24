@@ -12,6 +12,7 @@ HexusChapterPreviewRuins* HexusChapterPreviewRuins::create()
 HexusChapterPreviewRuins::HexusChapterPreviewRuins()
 {
 	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins));
+	this->text->setString("Ruins");
 }
 
 HexusChapterPreviewRuins::~HexusChapterPreviewRuins()

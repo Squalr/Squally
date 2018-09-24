@@ -3,8 +3,9 @@
 #include "Resources.h"
 
 #include "Engine/SmartNode.h"
-#include "Events/HexusEvents.h"
+#include "Engine/Localization/Localization.h"
 #include "Engine/UI/Controls/MenuSprite.h"
+#include "Events/HexusEvents.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
 using namespace cocos2d;
@@ -27,5 +28,6 @@ protected:
 	
 	ClippingNode* frameClip;
 	MenuSprite* frame;
+	Label* text;
 	std::function<void()> callback;
 };
