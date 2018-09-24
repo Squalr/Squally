@@ -56,12 +56,20 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 	this->activeGameState->selectedCard = nullptr;
 
 	int passIfDiffAbove = 30; // Give up if player is too far ahead
-	if (gameState->getPlayerTotal() > gameState->getEnemyTotal() + passIfDiffAbove) {
+	if (gameState->enemyLosses < 1 && gameState->getPlayerTotal() > gameState->getEnemyTotal() + passIfDiffAbove) {
 		gameState->enemyPass = true;
 		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 		return;
 	}
 
+	// If it's not the last round we better save some cards
+	int cardsToSaveForLastRound = 4;
+	if (gameState->enemyLosses < 1 && gameState->enemyDeck->deckCards->size() <= cardsToSaveForLastRound) {
+		gameState->enemyPass = true;
+		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+		return;
+	} 
+	
 	// If the player passes and we're ahead we won, so pass
 	if (gameState->playerPass && gameState->enemyIsWinning()) {
 		gameState->enemyPass = true;
@@ -69,14 +77,6 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 		return;
 	} 
 
-	// If it's not the last round we better save some cards
-	int cardsToSaveForLastRound = 3;
-	if (gameState->enemyLosses < 1 && gameState->enemyDeck->deckCards->size() < cardsToSaveForLastRound) {
-		gameState->enemyPass = true;
-		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
-		return;
-	} 
-	
 	// Otherwise 
 	for (auto it = gameState->enemyHand->rowCards->begin(); it != gameState->enemyHand->rowCards->end(); it++)
 	{
