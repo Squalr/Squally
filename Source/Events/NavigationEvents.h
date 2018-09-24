@@ -31,6 +31,7 @@ public:
 		SaveSelect,
 		Minigames,
 		Minigames_Hexus,
+		Minigames_Hexus_Chapter_Training,
 		Minigames_Hexus_Chapter_Jungle,
 		Minigames_Hexus_Chapter_Ruins,
 		Minigames_Hexus_Chapter_Forest,

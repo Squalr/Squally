@@ -17,7 +17,7 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 	this->opponentEntity = this->opponentSprite->play("Entity");
 	this->opponentEntity->setCurrentAnimation("Idle");
 
-	this->frame = MenuSprite::create(Resources::Menus_MinigamesMenu_Hexus_EnemyFrame, Resources::Menus_MinigamesMenu_Hexus_EnemyFrameGray, Resources::Menus_MinigamesMenu_Hexus_EnemyFrameGray);
+	this->frame = MenuSprite::create(Resources::Menus_MinigamesMenu_Hexus_EnemyFrame, Resources::Menus_MinigamesMenu_Hexus_EnemyFrameHover, Resources::Menus_MinigamesMenu_Hexus_EnemyFrameClick);
 
 	DrawNode* clipStencil = DrawNode::create();
 	Size frameSize = Size(this->frame->getContentSize().width, this->frame->getContentSize().height);
