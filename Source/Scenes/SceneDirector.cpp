@@ -150,6 +150,9 @@ void SceneDirector::onGameNavigateNew(EventCustom* eventCustom)
 	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Jungle:
 		newScene = this->hexusOpponentMenuJungle;
 		break;
+	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Ruins:
+		newScene = this->hexusOpponentMenuRuins;
+		break;
 	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Forest:
 		newScene = this->hexusOpponentMenuForest;
 		break;

@@ -373,6 +373,16 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentCentaur.cpp
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentJack.cpp
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentWitch.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleBarbarian.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleDwarf.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleFighter.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGeezer.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleHades.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePeasant.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePirate.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePrincess.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleThor.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleViking.cpp
 	Source/Scenes/Hexus/Opponents/Kickstarter/HexusOpponentKnight.cpp
 	Source/Scenes/Hexus/Opponents/Npcs/HexusOpponentEgyptianMummy.cpp
 	Source/Scenes/Maps/Isometric/IsometricMap.cpp
@@ -760,6 +770,16 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentCentaur.h
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentJack.h
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentWitch.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleBarbarian.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleDwarf.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleFighter.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGeezer.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleHades.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePeasant.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePirate.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePrincess.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleThor.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleViking.h
 	Source/Scenes/Hexus/Opponents/Kickstarter/HexusOpponentKnight.h
 	Source/Scenes/Hexus/Opponents/Npcs/HexusOpponentEgyptianMummy.h
 	Source/Scenes/Maps/IMap.h
