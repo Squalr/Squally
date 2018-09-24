@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0">
+        <file id="0" name="15.jpg" width="727" height="485" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="SLIME TORSO.png" width="168" height="108" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="SLIMY.png" width="72" height="54" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="L SLIME EYE.png" width="57" height="56" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="R SLIME EYE.png" width="57" height="56" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="CROWN.png" width="52" height="65" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="entity_000">
+        <animation id="0" name="NewAnimation" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="1" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="SLIME TORSO">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-81.695063" y="58.060288"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="L SLIME EYE">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="14.325229" y="46.199936"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="R SLIME EYE">
+                <key id="0" spin="0">
+                    <object folder="0" file="4" x="-30.188045" y="36.1659"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="CROWN">
+                <key id="0" spin="0">
+                    <object folder="0" file="5" x="-0.889203" y="100.917431"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
