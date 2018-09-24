@@ -12,8 +12,7 @@ HexusChapterSelectMenu * HexusChapterSelectMenu::create()
 HexusChapterSelectMenu::HexusChapterSelectMenu()
 {
 	this->chapters = new std::vector<HexusChapterPreview*>();
-	this->nether = ParticleSystemQuad::create(Resources::Particles_BlueNether);
-	this->swirl = ParticleSystemQuad::create(Resources::Particles_BlueStarCircle);
+	this->background = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_WoodBackground);
 	this->hexusChapterPreviewTraining = HexusChapterPreviewTraining::create();
 	this->hexusChapterPreviewJungle = HexusChapterPreviewJungle::create();
 	this->hexusChapterPreviewRuins = HexusChapterPreviewRuins::create();
@@ -37,8 +36,7 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	this->chapters->push_back(this->hexusChapterPreviewObelisk);
 	this->chapters->push_back(this->hexusChapterPreviewMech);
 
-	this->addChild(this->nether);
-	this->addChild(this->swirl);
+	this->addChild(this->background);
 
 	for (std::vector<HexusChapterPreview*>::iterator it = this->chapters->begin(); it != this->chapters->end(); ++it)
 	{
@@ -63,10 +61,6 @@ void HexusChapterSelectMenu::onEnter()
 	{
 		GameUtils::fadeInObject(*it, delay, duration);
 	}
-
-	// Initialize particles to an intermediate state
-	GameUtils::accelerateParticles(this->swirl, 5.0f);
-	GameUtils::accelerateParticles(this->nether, 1.0f);
 }
 
 void HexusChapterSelectMenu::initializePositions()
@@ -75,8 +69,7 @@ void HexusChapterSelectMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->nether->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->swirl->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+	this->background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 
 	int index = 0;
 
@@ -87,11 +80,11 @@ void HexusChapterSelectMenu::initializePositions()
 
 		if (x == 0)
 		{
-			(*it)->setPositionX(visibleSize.width / 2.0f - 640.0f);
+			(*it)->setPositionX(visibleSize.width / 2.0f - 720.0f);
 		}
 		else if (x == 1)
 		{
-			(*it)->setPositionX(visibleSize.width / 2.0f - 320.0f);
+			(*it)->setPositionX(visibleSize.width / 2.0f - 360.0f);
 		}
 		else if (x == 2)
 		{
@@ -99,11 +92,11 @@ void HexusChapterSelectMenu::initializePositions()
 		}
 		else if (x == 3)
 		{
-			(*it)->setPositionX(visibleSize.width / 2.0f + 320.0f);
+			(*it)->setPositionX(visibleSize.width / 2.0f + 360.0f);
 		}
 		else if (x == 4)
 		{
-			(*it)->setPositionX(visibleSize.width / 2.0f + 640.0f);
+			(*it)->setPositionX(visibleSize.width / 2.0f + 720.0f);
 		}
 
 		if (y == 0)
@@ -126,6 +119,7 @@ void HexusChapterSelectMenu::initializeListeners()
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusChapterSelectMenu::onKeyPressed, this);
+	this->hexusChapterPreviewTraining->setClickCallback([]() { NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Training); } );
 	this->hexusChapterPreviewJungle->setClickCallback([]() { NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Jungle); } );
 	this->hexusChapterPreviewRuins->setClickCallback([]() { NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Ruins); } );
 	this->hexusChapterPreviewForest->setClickCallback([]() { NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Forest); } );

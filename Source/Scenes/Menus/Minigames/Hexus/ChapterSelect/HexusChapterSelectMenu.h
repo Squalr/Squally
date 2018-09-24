@@ -41,8 +41,7 @@ private:
 	void onMouseOver(HexusChapterPreview* hexusChapterPreview);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
-	ParticleSystem* nether;
-	ParticleSystem* swirl;
+	Sprite* background;
 
 	std::vector<HexusChapterPreview*>* chapters;
 	HexusChapterPreviewTraining* hexusChapterPreviewTraining;
