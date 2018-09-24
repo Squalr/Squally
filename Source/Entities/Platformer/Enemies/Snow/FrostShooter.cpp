@@ -12,7 +12,7 @@ FrostShooter* FrostShooter::deserialize(ValueMap* initProperties)
 }
 
 FrostShooter::FrostShooter(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Snow_FrostShooter_Animations,
+	Resources::Entities_Platformer_Environment_Snow_Enemies_FrostShooter_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(212.0f, 296.0f),
 	0.7f,

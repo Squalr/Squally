@@ -12,11 +12,15 @@ HexusOpponentData::HexusOpponentData(
 	this->animationScale = animationScale;
 	this->animationOffset = animationOffset;
 	this->enemyNameKey = enemyNameKey;
-	this->deck = Deck::create(cardStyle, cards);
-	this->deck->retain();
+	this->cardStyle = cardStyle;
+	this->cards = cards;
 }
 
 HexusOpponentData::~HexusOpponentData()
 {
-	this->deck->release();
+}
+
+Deck* HexusOpponentData::getDeck()
+{
+	return Deck::create(this->cardStyle, this->cards);
 }

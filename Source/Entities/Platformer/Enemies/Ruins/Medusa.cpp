@@ -12,7 +12,7 @@ Medusa* Medusa::deserialize(ValueMap* initProperties)
 }
 
 Medusa::Medusa(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Ruins_Medusa_Animations,
+	Resources::Entities_Platformer_Environment_Ruins_Enemies_Medusa_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(224.0f, 304.0f),
 	0.8f,

@@ -26,7 +26,7 @@ Avatars::Avatars()
 	playerAnimation->setScale(0.25f);
 	playerAnimation->setPosition(Vec2(-64.0f, -32.0f));
 
-	AnimationNode* enemyAnimation = AnimationNode::create(Resources::Entities_Platformer_Environment_Snow_BossIceGolem_Animations);
+	AnimationNode* enemyAnimation = AnimationNode::create(Resources::Entities_Platformer_Environment_Snow_Enemies_BossIceGolem_Animations);
 	SpriterEngine::EntityInstance* enemyEntity = enemyAnimation->play("Entity");
 	enemyEntity->setCurrentAnimation("Idle");
 	enemyAnimation->setPosition(Vec2(-24.0f, -212.0f));
