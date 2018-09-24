@@ -12,7 +12,7 @@ BossDemonKing* BossDemonKing::deserialize(ValueMap* initProperties)
 }
 
 BossDemonKing::BossDemonKing(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Volcano_BossDemonKing_Animations,
+	Resources::Entities_Platformer_Environment_Volcano_Enemies_BossDemonKing_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(480.0f, 480.0f),
 	0.7f,

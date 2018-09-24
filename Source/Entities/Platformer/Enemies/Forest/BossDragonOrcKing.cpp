@@ -12,7 +12,7 @@ BossDragonOrcKing* BossDragonOrcKing::deserialize(ValueMap* initProperties)
 }
 
 BossDragonOrcKing::BossDragonOrcKing(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Forest_BossDragonOrcKing_Animations,
+	Resources::Entities_Platformer_Environment_Forest_Enemies_BossDragonOrcKing_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(412.0f, 412.0f),
 	1.0f,

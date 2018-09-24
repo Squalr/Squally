@@ -12,7 +12,7 @@ EntMage* EntMage::deserialize(ValueMap* initProperties)
 }
 
 EntMage::EntMage(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Forest_EntMage_Animations,
+	Resources::Entities_Platformer_Environment_Forest_Enemies_EntMage_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(512.0f, 820.0f),
 	0.3f,

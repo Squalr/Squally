@@ -12,7 +12,7 @@ Robot* Robot::deserialize(ValueMap* initProperties)
 }
 
 Robot::Robot(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Mech_Robot_Animations,
+	Resources::Entities_Platformer_Environment_Mech_Enemies_Robot_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(512.0f, 820.0f),
 	0.3f,

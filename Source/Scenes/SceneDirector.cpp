@@ -19,7 +19,16 @@ SceneDirector::SceneDirector()
 	this->titleScreen = TitleScreen::create();
 	this->saveSelectMenu = SaveSelectMenu::create();
 	this->minigamesMenu = MinigamesMenu::create();
-	this->hexusMenu = HexusMenu::create();
+	this->hexusChapterSelectMenu = HexusChapterSelectMenu::create();
+	this->hexusOpponentMenuJungle = HexusOpponentMenuJungle::create();
+	this->hexusOpponentMenuRuins = HexusOpponentMenuRuins::create();
+	this->hexusOpponentMenuForest = HexusOpponentMenuForest::create();
+	this->hexusOpponentMenuCaverns = HexusOpponentMenuCaverns::create();
+	this->hexusOpponentMenuCastle = HexusOpponentMenuCastle::create();
+	this->hexusOpponentMenuIceCaps = HexusOpponentMenuIceCaps::create();
+	this->hexusOpponentMenuVolcano = HexusOpponentMenuVolcano::create();
+	this->hexusOpponentMenuObelisk = HexusOpponentMenuObelisk::create();
+	this->hexusOpponentMenuMech = HexusOpponentMenuMech::create();
 	this->hexusPuzzlesMenu = HexusPuzzlesMenu::create();
 	this->tutorialScreen = TutorialScreen::create();
 	this->worldMap = WorldMap::create();
@@ -38,7 +47,16 @@ SceneDirector::SceneDirector()
 	this->titleScreen->retain();
 	this->saveSelectMenu->retain();
 	this->minigamesMenu->retain();
-	this->hexusMenu->retain();
+	this->hexusChapterSelectMenu->retain();
+	this->hexusOpponentMenuJungle->retain();
+	this->hexusOpponentMenuRuins->retain();
+	this->hexusOpponentMenuForest->retain();
+	this->hexusOpponentMenuCaverns->retain();
+	this->hexusOpponentMenuCastle->retain();
+	this->hexusOpponentMenuIceCaps->retain();
+	this->hexusOpponentMenuVolcano->retain();
+	this->hexusOpponentMenuObelisk->retain();
+	this->hexusOpponentMenuMech->retain();
 	this->hexusPuzzlesMenu->retain();
 	this->tutorialScreen->retain();
 	this->worldMap->retain();
@@ -127,7 +145,34 @@ void SceneDirector::onGameNavigateNew(EventCustom* eventCustom)
 		newScene = this->minigamesMenu;
 		break;
 	case NavigationEvents::GameScreen::Minigames_Hexus:
-		newScene = this->hexusMenu;
+		newScene = this->hexusChapterSelectMenu;
+		break;
+	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Jungle:
+		newScene = this->hexusOpponentMenuJungle;
+		break;
+	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Ruins:
+		newScene = this->hexusOpponentMenuRuins;
+		break;
+	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Forest:
+		newScene = this->hexusOpponentMenuForest;
+		break;
+	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Caverns:
+		newScene = this->hexusOpponentMenuCaverns;
+		break;
+	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Castle:
+		newScene = this->hexusOpponentMenuCastle;
+		break;
+	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_IceCaps:
+		newScene = this->hexusOpponentMenuIceCaps;
+		break;
+	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Volcano:
+		newScene = this->hexusOpponentMenuVolcano;
+		break;
+	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Obelisk:
+		newScene = this->hexusOpponentMenuObelisk;
+		break;
+	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Mech:
+		newScene = this->hexusOpponentMenuMech;
 		break;
 	case NavigationEvents::GameScreen::Minigames_Hexus_Puzzles:
 		newScene = this->hexusPuzzlesMenu;

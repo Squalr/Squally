@@ -12,7 +12,7 @@ BossKrampus* BossKrampus::deserialize(ValueMap* initProperties)
 }
 
 BossKrampus::BossKrampus(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Caverns_BossKrampus_Animations,
+	Resources::Entities_Platformer_Environment_Caverns_Enemies_BossKrampus_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(396.0f, 412.0f),
 	1.0f,
