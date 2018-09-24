@@ -12,7 +12,7 @@ BossJack* BossJack::deserialize(ValueMap* initProperties)
 }
 
 BossJack::BossJack(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Castle_BossJack_Animations,
+	Resources::Entities_Platformer_Environment_Castle_Enemies_BossJack_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(432.0f, 768.0f),
 	0.25f,

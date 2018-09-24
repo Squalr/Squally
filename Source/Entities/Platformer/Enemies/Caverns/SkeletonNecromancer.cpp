@@ -12,7 +12,7 @@ SkeletonNecromancer* SkeletonNecromancer::deserialize(ValueMap* initProperties)
 }
 
 SkeletonNecromancer::SkeletonNecromancer(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Caverns_SkeletonNecromancer_Animations,
+	Resources::Entities_Platformer_Environment_Caverns_Enemies_SkeletonNecromancer_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(128.0f, 228.0f),
 	0.8f,

@@ -12,7 +12,7 @@ BossSanta* BossSanta::deserialize(ValueMap* initProperties)
 }
 
 BossSanta::BossSanta(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Snow_BossSanta_Animations,
+	Resources::Entities_Platformer_Environment_Snow_Enemies_BossSanta_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(420.0f, 452.0f),
 	0.7f,

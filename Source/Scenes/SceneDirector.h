@@ -14,8 +14,17 @@
 #include "Scenes/Fights/Fight.h"
 #include "Scenes/Hexus/Hexus.h"
 #include "Scenes/Menus/Minigames/MinigamesMenu.h"
-#include "Scenes/Menus/Minigames/Hexus/HexusMenu.h"
-#include "Scenes/Menus/Minigames/Hexus/HexusPuzzlesMenu.h"
+#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.h"
+#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Castle/HexusOpponentMenuCastle.h"
+#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Caverns/HexusOpponentMenuCaverns.h"
+#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Forest/HexusOpponentMenuForest.h"
+#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/IceCaps/HexusOpponentMenuIceCaps.h"
+#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Jungle/HexusOpponentMenuJungle.h"
+#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Mech/HexusOpponentMenuMech.h"
+#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Obelisk/HexusOpponentMenuObelisk.h"
+#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusOpponentMenuRuins.h"
+#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusOpponentMenuVolcano.h"
+#include "Scenes/Menus/Minigames/Hexus/Puzzles/HexusPuzzlesMenu.h"
 #include "Scenes/Menus/Confirmation/ConfirmationMenu.h"
 #include "Scenes/Menus/LoadingScreen/LoadingScreen.h"
 #include "Scenes/Menus/Options/OptionsMenu.h"
@@ -48,7 +57,16 @@ private:
 	TitleScreen* titleScreen;
 	SaveSelectMenu* saveSelectMenu;
 	MinigamesMenu* minigamesMenu;
-	HexusMenu* hexusMenu;
+	HexusChapterSelectMenu* hexusChapterSelectMenu;
+	HexusOpponentMenuCastle* hexusOpponentMenuCastle;
+	HexusOpponentMenuCaverns* hexusOpponentMenuCaverns;
+	HexusOpponentMenuForest* hexusOpponentMenuForest;
+	HexusOpponentMenuIceCaps* hexusOpponentMenuIceCaps;
+	HexusOpponentMenuJungle* hexusOpponentMenuJungle;
+	HexusOpponentMenuMech* hexusOpponentMenuMech;
+	HexusOpponentMenuObelisk* hexusOpponentMenuObelisk;
+	HexusOpponentMenuRuins* hexusOpponentMenuRuins;
+	HexusOpponentMenuVolcano* hexusOpponentMenuVolcano;
 	HexusPuzzlesMenu* hexusPuzzlesMenu;
 	TutorialScreen* tutorialScreen;
 	WorldMap* worldMap;

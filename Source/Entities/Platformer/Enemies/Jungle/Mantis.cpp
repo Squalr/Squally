@@ -12,7 +12,7 @@ Mantis* Mantis::deserialize(ValueMap* initProperties)
 }
 
 Mantis::Mantis(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Jungle_Mantis_Animations,
+	Resources::Entities_Platformer_Environment_Jungle_Enemies_Mantis_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(320.0f, 384.0f),
 	0.75f,

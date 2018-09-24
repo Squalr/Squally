@@ -12,7 +12,7 @@ BossEvilEye* BossEvilEye::deserialize(ValueMap* initProperties)
 }
 
 BossEvilEye::BossEvilEye(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Mech_BossEvilEye_Animations,
+	Resources::Entities_Platformer_Environment_Mech_Enemies_BossEvilEye_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(720.0f, 840.0f),
 	0.6f,
