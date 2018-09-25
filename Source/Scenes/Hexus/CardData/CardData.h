@@ -40,8 +40,5 @@ public:
 	std::string cardName;
 	CardType cardType;
 	unsigned int attack;
-
-private:
-	std::map<int, CardData*> cardListById;
 };
 
