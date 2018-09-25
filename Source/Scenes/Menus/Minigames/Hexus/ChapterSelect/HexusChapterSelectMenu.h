@@ -2,10 +2,8 @@
 #include "cocos2d.h"
 
 #include "Events/NavigationEvents.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Controls/ScrollPane.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/FadeScene.h"
-#include "Engine/UI/FloatingSprite.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
@@ -38,12 +36,12 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onCloseClick(MenuSprite* menuSprite);
+	void onDeckManagementClick(MenuSprite* menuSprite);
 	void onMouseOver(HexusChapterPreview* hexusChapterPreview);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
-	Sprite* background;
-
 	std::vector<HexusChapterPreview*>* chapters;
+	Sprite* background;
 	HexusChapterPreviewTraining* hexusChapterPreviewTraining;
 	HexusChapterPreviewJungle* hexusChapterPreviewJungle;
 	HexusChapterPreviewRuins* hexusChapterPreviewRuins;
@@ -54,5 +52,7 @@ private:
 	HexusChapterPreviewVolcano* hexusChapterPreviewVolcano;
 	HexusChapterPreviewObelisk* hexusChapterPreviewObelisk;
 	HexusChapterPreviewMech* hexusChapterPreviewMech;
+	TextMenuSprite* deckManagementButton;
+	Label* chapterSelectLabel;
 };
 
