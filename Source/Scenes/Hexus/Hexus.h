@@ -7,8 +7,9 @@
 #include "Engine/UI/FadeScene.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Resources.h"
-#include "Scenes/Hexus/Components/Components.h"
+#include "Scenes/Hexus/CardStorage.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/Components/Components.h"
 
 using namespace cocos2d;
 
