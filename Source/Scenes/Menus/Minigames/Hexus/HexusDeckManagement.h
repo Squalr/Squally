@@ -8,6 +8,7 @@
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
+#include "Scenes/Hexus/CardStorage.h"
 
 using namespace cocos2d;
 
@@ -26,9 +27,13 @@ private:
 	void initializeListeners() override;
 	void onCloseClick(MenuSprite* menuSprite);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void loadDeckCards();
+	void loadStorageCards();
 
 	Sprite* background;
 	ScrollPane* storageScrollPane;
 	ScrollPane* deckScrollPane;
+	Label* storageLabel;
+	Label* deckLabel;
 };
 
