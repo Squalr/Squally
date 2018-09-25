@@ -19,6 +19,7 @@ public:
 	Size getContentSize();
 	void fitSizeToContent();
 	void addChild(Node* child) override;
+	void removeAllChildren() override;
 
 private:
 	ScrollPane(Size initPaneSize, Color4B initBackgroundColor);

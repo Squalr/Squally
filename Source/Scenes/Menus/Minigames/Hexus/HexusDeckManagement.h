@@ -30,10 +30,18 @@ private:
 	void loadDeckCards();
 	void loadStorageCards();
 
+	void onDeckCardClick(Card* card);
+	void onStorageCardClick(Card* card);
+	void onDeckCardMouseOver(Card* card);
+	void onStorageCardMouseOver(Card* card);
+
 	Sprite* background;
 	ScrollPane* storageScrollPane;
 	ScrollPane* deckScrollPane;
 	Label* storageLabel;
 	Label* deckLabel;
+
+	std::vector<Card*> deckCards;
+	std::vector<Card*> storageCards;
 };
 
