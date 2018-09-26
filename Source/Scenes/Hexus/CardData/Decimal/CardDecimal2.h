@@ -12,7 +12,4 @@ class CardDecimal2 : public CardData
 public:
 	CardDecimal2();
 	~CardDecimal2();
-
-private:
-	static const std::string StringKeyCardName;
 };

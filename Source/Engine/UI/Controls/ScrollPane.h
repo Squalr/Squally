@@ -19,6 +19,7 @@ public:
 	Size getContentSize();
 	void fitSizeToContent();
 	void addChild(Node* child) override;
+	void removeChild(Node* child, bool cleanup = true) override;
 	void removeAllChildren() override;
 
 private:

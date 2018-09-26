@@ -12,7 +12,4 @@ class CardShiftRight : public CardData
 public:
 	CardShiftRight();
 	~CardShiftRight();
-
-private:
-	static const std::string StringKeyCardName;
 };

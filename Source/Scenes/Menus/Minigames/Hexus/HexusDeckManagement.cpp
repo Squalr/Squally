@@ -46,6 +46,13 @@ void HexusDeckManagement::onEnter()
 	float duration = 0.35f;
 }
 
+void HexusDeckManagement::onExit()
+{
+	this->save(false);
+
+	FadeScene::onExit();
+}
+
 void HexusDeckManagement::initializeListeners()
 {
 	FadeScene::initializeListeners();
@@ -130,7 +137,7 @@ void HexusDeckManagement::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* ev
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
 			event->stopPropagation();
-			NavigationEvents::navigateBack();
+	this->save(true);
 			break;
 		default:
 			break;
@@ -139,12 +146,40 @@ void HexusDeckManagement::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* ev
 
 void HexusDeckManagement::onCloseClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigateBack();
+	this->save(true);
+}
+
+void HexusDeckManagement::save(bool exit)
+{
+	std::vector<CardData*> deckCardData = std::vector<CardData*>();
+	
+	for (auto it = this->deckCards.begin(); it != this->deckCards.end(); it++)
+	{
+		deckCardData.push_back((*it)->cardData);
+	}
+
+	std::vector<CardData*> storageCardData = std::vector<CardData*>();
+	
+	for (auto it = this->storageCards.begin(); it != this->storageCards.end(); it++)
+	{
+		storageCardData.push_back((*it)->cardData);
+	}
+
+	CardStorage::saveDeckCards(deckCardData);
+	CardStorage::saveStorageCards(storageCardData);
+
+	if (exit)
+	{
+		NavigationEvents::navigateBack();
+	}
 }
 
 void HexusDeckManagement::loadStorageCards()
 {
-	this->storageScrollPane->removeAllChildren();
+	for (auto it = storageCards.begin(); it != storageCards.end(); it++)
+	{
+		this->storageScrollPane->removeChild(*it);
+	}
 
 	std::vector<CardData*> savedStorageCards = CardStorage::getStorageCards();
 
@@ -161,7 +196,10 @@ void HexusDeckManagement::loadStorageCards()
 
 void HexusDeckManagement::loadDeckCards()
 {
-	this->deckScrollPane->removeAllChildren();
+	for (auto it = deckCards.begin(); it != deckCards.end(); it++)
+	{
+		this->deckScrollPane->removeChild(*it);
+	}
 
 	std::vector<CardData*> savedDeckCards = CardStorage::getDeckCards();
 

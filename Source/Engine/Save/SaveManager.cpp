@@ -1,7 +1,7 @@
 #include "SaveManager.h"
 
-const std::string SaveManager::globalSaveFileName = "Global.sav";
-const std::string SaveManager::profileSaveFileTemplate = "SaveGame_%d.sav";
+const std::string SaveManager::globalSaveFileName = "Global.sqa";
+const std::string SaveManager::profileSaveFileTemplate = "SaveGame_%d.sqa";
 
 SaveManager* SaveManager::instance = nullptr;
 
@@ -58,7 +58,7 @@ void SaveManager::saveGlobalData(std::string key, cocos2d::Value data)
 
 	instance->globalSaveData.emplace(key, data);
 
-	FileUtils::getInstance()->writeValueMapToFile(instance->globalSaveData, instance->getGlobalSaveFileName());
+	FileUtils::getInstance()->serializeValueMapToFile(instance->globalSaveData, instance->getGlobalSaveFileName());
 }
 
 void SaveManager::saveProfileData(std::string key, cocos2d::Value data)
@@ -67,7 +67,7 @@ void SaveManager::saveProfileData(std::string key, cocos2d::Value data)
 
 	instance->profileSaveData.emplace(key, data);
 
-	FileUtils::getInstance()->writeValueMapToFile(instance->profileSaveData, instance->getActiveProfileSaveFileName());
+	FileUtils::getInstance()->serializeValueMapToFile(instance->profileSaveData, instance->getActiveProfileSaveFileName());
 }
 
 cocos2d::Value SaveManager::getGlobalData(std::string key)
@@ -114,17 +114,14 @@ bool SaveManager::hasProfileData(std::string key)
 
 std::string SaveManager::getGlobalSaveFileName()
 {
-	std::string path = (FileUtils::sharedFileUtils()->getWritablePath() + "/").c_str();
-
-	return path + SaveManager::globalSaveFileName;
+	return FileUtils::sharedFileUtils()->getWritablePath() + SaveManager::globalSaveFileName;
 }
 
 std::string SaveManager::getActiveProfileSaveFileName()
 {
-	std::string path = (FileUtils::sharedFileUtils()->getWritablePath() + "/").c_str();
 	std::string fileName = StrUtils::replaceAll(SaveManager::profileSaveFileTemplate.c_str(), "%d", std::to_string(SaveManager::getActiveSaveProfile()));
 	
-	return path + fileName;
+	return FileUtils::sharedFileUtils()->getWritablePath() + fileName;
 }
 
 SaveManager::ActiveSaveProfile SaveManager::getActiveSaveProfile()

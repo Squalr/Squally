@@ -275,6 +275,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/GameState.cpp
 	Source/Scenes/Hexus/Hexus.cpp
 	Source/Scenes/Hexus/CardData/CardData.cpp
+	Source/Scenes/Hexus/CardData/CardKeys.cpp
 	Source/Scenes/Hexus/CardData/CardList.cpp
 	Source/Scenes/Hexus/CardData/Binary/CardBinary0.cpp
 	Source/Scenes/Hexus/CardData/Binary/CardBinary1.cpp
@@ -672,6 +673,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/GameState.h
 	Source/Scenes/Hexus/Hexus.h
 	Source/Scenes/Hexus/CardData/CardData.h
+	Source/Scenes/Hexus/CardData/CardKeys.h
 	Source/Scenes/Hexus/CardData/CardList.h
 	Source/Scenes/Hexus/CardData/Binary/CardBinary0.h
 	Source/Scenes/Hexus/CardData/Binary/CardBinary1.h

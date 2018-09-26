@@ -12,7 +12,4 @@ class CardEnvironmentHexStorm : public CardData
 public:
 	CardEnvironmentHexStorm();
 	~CardEnvironmentHexStorm();
-
-private:
-	static const std::string StringKeyCardName;
 };

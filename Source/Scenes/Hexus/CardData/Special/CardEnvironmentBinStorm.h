@@ -12,7 +12,4 @@ class CardEnvironmentBinStorm : public CardData
 public:
 	CardEnvironmentBinStorm();
 	~CardEnvironmentBinStorm();
-
-private:
-	static const std::string StringKeyCardName;
 };
