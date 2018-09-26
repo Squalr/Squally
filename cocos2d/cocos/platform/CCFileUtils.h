@@ -39,6 +39,7 @@ THE SOFTWARE.
 #include "cereal/cereal.hpp"
 #include "cereal/access.hpp"
 #include "cereal/archives/binary.hpp"
+#include "cereal/archives/json.hpp"
 #include "platform/CCPlatformMacros.h"
 #include "base/ccTypes.h"
 #include "base/CCValue.h"
@@ -522,7 +523,7 @@ public:
 	*  @return ValueMap of the file contents.
 	*  @note This method is used internally.
 	*/
-	ValueMap deserializeValueMapFromFile(const std::string& filename);
+	ValueMap deserializeValueMapFromFile(const std::string& fullPath);
 
 
     /** Converts the contents of a file to a ValueMap.

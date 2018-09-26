@@ -4,8 +4,8 @@
 #include "Events/NavigationEvents.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/ScrollPane.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/FadeScene.h"
-#include "Engine/UI/FloatingSprite.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
@@ -24,6 +24,7 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onCloseClick(MenuSprite* menuSprite);
+	void onDeckManagementClick(MenuSprite* menuSprite);
 	void onMouseOver(HexusOpponentPreview* opponent);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
@@ -31,5 +32,7 @@ protected:
 	std::vector<HexusOpponentPreview*> opponents;
 
 	Sprite* background;
+	TextMenuSprite* deckManagementButton;
+	Label* opponentSelectLabel;
 };
 

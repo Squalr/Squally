@@ -12,7 +12,4 @@ class CardFlip1 : public CardData
 public:
 	CardFlip1();
 	~CardFlip1();
-
-private:
-	static const std::string StringKeyCardName;
 };

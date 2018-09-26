@@ -101,9 +101,7 @@ void Hexus::onGameStart(EventCustom* eventCustom)
 	this->gameState->enemyDeck->clear();
 
 	args->opponentData->getDeck()->copyTo(this->gameState->enemyDeck);
-
-	// TODO: Load this from somewhere, somehow
-	args->opponentData->getDeck()->copyTo(this->gameState->playerDeck);
+	Deck::create(Card::CardStyle::Earth, CardStorage::getInstance()->getDeckCards())->copyTo(this->gameState->playerDeck);
 
 	NavigationEvents::navigate(NavigationEvents::GameScreen::Hexus);
 }

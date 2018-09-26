@@ -12,7 +12,4 @@ class CardEnvironmentDecStorm : public CardData
 public:
 	CardEnvironmentDecStorm();
 	~CardEnvironmentDecStorm();
-
-private:
-	static const std::string StringKeyCardName;
 };

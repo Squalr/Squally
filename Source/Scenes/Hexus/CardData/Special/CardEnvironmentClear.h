@@ -12,7 +12,4 @@ class CardEnvironmentClear : public CardData
 public:
 	CardEnvironmentClear();
 	~CardEnvironmentClear();
-
-private:
-	static const std::string StringKeyCardName;
 };
