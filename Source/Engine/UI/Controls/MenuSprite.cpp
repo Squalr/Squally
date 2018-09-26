@@ -30,8 +30,8 @@ MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
 	this->mouseOverEvent = nullptr;
 	this->interactionEnabled = true;
 
-	this->clickSound = Resources::Sounds_ButtonClick1;
-	this->mouseOverSound = "";
+	this->clickSound = Resources::Sounds_Menus_AFX_INTERFACESOUND_6_DFMG;
+	this->mouseOverSound = Resources::Sounds_Menus_AFX_INTERFACE_BEEP_2_DFMG;
 
 	this->sprite = nodeNormal;
 	this->spriteSelected = nodeSelected;
@@ -179,6 +179,8 @@ void MenuSprite::showSprite(Node* sprite)
 		// Interaction disabled -- only show the main sprite
 		this->sprite->setVisible(true);
 	}
+
+	this->currentSprite = sprite;
 }
 
 void MenuSprite::onMouseMove(EventCustom* event)
@@ -224,6 +226,15 @@ void MenuSprite::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event
 		if (!args->handled && this->intersects(args->mouseCoords))
 		{
 			MouseEvents::TriggerClickableMouseOverEvent();
+
+			// Play mouse over sound
+			if (this->currentSprite != this->spriteSelected)
+			{
+				if (this->mouseOverSound.length() > 0)
+				{
+					SoundManager::playSoundResource(this->mouseOverSound);
+				}
+			}
 
 			if (!args->isDragging && args->isLeftClicked)
 			{

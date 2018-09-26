@@ -6,7 +6,6 @@
 #include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
-#include "Scenes/Menus/Tutorial/TutorialScreen.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;

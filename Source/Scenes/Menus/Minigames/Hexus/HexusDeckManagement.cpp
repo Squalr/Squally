@@ -15,8 +15,8 @@ HexusDeckManagement::HexusDeckManagement()
 	this->storageCards = std::vector<Card*>();
 
 	this->background = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_WoodBackground);
-	this->storageScrollPane = ScrollPane::create(Size(720.0f, 800.0f), Color4B(0, 0, 0, 196));
-	this->deckScrollPane = ScrollPane::create(Size(720.0f, 800.0f), Color4B(0, 0, 0, 196));
+	this->storageScrollPane = ScrollPane::create(Size(720.0f, 824.0f), Color4B(0, 0, 0, 196));
+	this->deckScrollPane = ScrollPane::create(Size(720.0f, 824.0f), Color4B(0, 0, 0, 196));
 	this->storageSprite = Sprite::create(Resources::Menus_Icons_TreasureChest);
 	this->storageLabel = Label::create("Cards in Storage", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()), Size::ZERO, cocos2d::TextHAlignment::LEFT);
 	this->deckSprite = Sprite::create(Resources::Menus_Icons_Satchel);
@@ -35,6 +35,8 @@ HexusDeckManagement::HexusDeckManagement()
 	this->storageLabel->enableOutline(Color4B::BLACK, 2);
 	this->deckLabel->enableOutline(Color4B::BLACK, 2);
 	this->cardManagementLabel->enableOutline(Color4B::BLACK, 2);
+	this->cardsInDeckLabel->enableOutline(Color4B::BLACK, 2);
+	this->cardsInDeckValueLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->addChild(this->background);
 	this->addChild(this->storageScrollPane);
