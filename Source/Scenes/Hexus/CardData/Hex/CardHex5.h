@@ -12,7 +12,4 @@ class CardHex5 : public CardData
 public:
 	CardHex5();
 	~CardHex5();
-
-private:
-	static const std::string StringKeyCardName;
 };

@@ -1,12 +1,12 @@
 #include "SaveManager.h"
 
-const std::string SaveManager::saveFileName = "SaveGame_%d.sav";
+const std::string SaveManager::globalSaveFileName = "Global.sqa";
+const std::string SaveManager::profileSaveFileTemplate = "SaveGame_%d.sqa";
 
-SaveManager* SaveManager::saveManagerInstance = nullptr;
+SaveManager* SaveManager::instance = nullptr;
 
 SaveManager::SaveManager()
 {
-	SaveManager::setActiveSave(0);
 }
 
 SaveManager::~SaveManager()
@@ -15,33 +15,118 @@ SaveManager::~SaveManager()
 
 SaveManager* SaveManager::getInstance()
 {
-	if (SaveManager::saveManagerInstance == nullptr)
+	if (SaveManager::instance == nullptr)
 	{
-		SaveManager::saveManagerInstance = new SaveManager();
+		SaveManager::instance = new SaveManager();
+		SaveManager::instance->initialize();
 	}
 
-	return SaveManager::saveManagerInstance;
+	return SaveManager::instance;
 }
 
-ValueMap* SaveManager::getValueMap()
+void SaveManager::initialize()
+{
+	SaveManager::setActiveSaveProfile(0);
+
+	if (FileUtils::getInstance()->isFileExist(SaveManager::instance->getGlobalSaveFileName()))
+	{
+		SaveManager::instance->globalSaveData = FileUtils::getInstance()->deserializeValueMapFromFile(SaveManager::instance->getGlobalSaveFileName());
+	}
+	else
+	{
+		SaveManager::instance->globalSaveData = ValueMap();
+	}
+}
+
+void SaveManager::setActiveSaveProfile(ActiveSaveProfile activeSaveProfile)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
-	return &instance->saveData;
+	if (FileUtils::getInstance()->isFileExist(instance->getActiveProfileSaveFileName()))
+	{
+		instance->profileSaveData = FileUtils::getInstance()->deserializeValueMapFromFile(instance->getGlobalSaveFileName());
+	}
+	else
+	{
+		instance->profileSaveData = ValueMap();
+	}
 }
 
-void SaveManager::setActiveSave(int index)
+void SaveManager::saveGlobalData(std::string key, cocos2d::Value data)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
-	std::string resultSaveFileName = StrUtils::replaceAll(SaveManager::saveFileName.c_str(), "%d", std::to_string(index));
-	instance->saveFile = (FileUtils::sharedFileUtils()->getWritablePath() + "\\").c_str() + resultSaveFileName;
-	//instance->saveData = FileUtils::getInstance()->deserializeValueMapFromFile(instance->saveFile);
+	// TODO: Potential (minor) memory leak if replacing a ValueMap with another?
+	instance->globalSaveData[key] = data;
+
+	FileUtils::getInstance()->serializeValueMapToFile(instance->globalSaveData, instance->getGlobalSaveFileName());
 }
 
-void SaveManager::save()
+void SaveManager::saveProfileData(std::string key, cocos2d::Value data)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
-	FileUtils::getInstance()->writeValueMapToFile(instance->saveData, instance->saveFile);
+	// TODO: Potential (minor) memory leak if replacing a ValueMap with another?
+	instance->profileSaveData[key] = data;
+
+	FileUtils::getInstance()->serializeValueMapToFile(instance->profileSaveData, instance->getActiveProfileSaveFileName());
+}
+
+cocos2d::Value SaveManager::getGlobalData(std::string key)
+{
+	SaveManager* instance = SaveManager::getInstance();
+
+	if (!GameUtils::keyExists(&instance->globalSaveData, key))
+	{
+		return cocos2d::Value();
+	}
+	else
+	{
+		return instance->globalSaveData.at(key);
+	}
+}
+
+cocos2d::Value SaveManager::getProfileData(std::string key)
+{
+	SaveManager* instance = SaveManager::getInstance();
+
+	if (!GameUtils::keyExists(&instance->profileSaveData, key))
+	{
+		return cocos2d::Value();
+	}
+	else
+	{
+		return instance->profileSaveData.at(key);
+	}
+}
+
+bool SaveManager::hasGlobalData(std::string key)
+{
+	SaveManager* instance = SaveManager::getInstance();
+
+	return GameUtils::keyExists(&instance->globalSaveData, key);
+}
+
+bool SaveManager::hasProfileData(std::string key)
+{
+	SaveManager* instance = SaveManager::getInstance();
+
+	return GameUtils::keyExists(&instance->profileSaveData, key);
+}
+
+std::string SaveManager::getGlobalSaveFileName()
+{
+	return FileUtils::sharedFileUtils()->getWritablePath() + SaveManager::globalSaveFileName;
+}
+
+std::string SaveManager::getActiveProfileSaveFileName()
+{
+	std::string fileName = StrUtils::replaceAll(SaveManager::profileSaveFileTemplate.c_str(), "%d", std::to_string(SaveManager::getActiveSaveProfile()));
+	
+	return FileUtils::sharedFileUtils()->getWritablePath() + fileName;
+}
+
+SaveManager::ActiveSaveProfile SaveManager::getActiveSaveProfile()
+{
+	return SaveManager::getInstance()->activeSaveProfile;
 }

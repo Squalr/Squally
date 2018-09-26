@@ -409,9 +409,9 @@ bool FileUtils::serializeValueMapToFile(const ValueMap& dict, const std::string&
 	return true;
 }
 
-ValueMap FileUtils::deserializeValueMapFromFile(const std::string& filename)
+ValueMap FileUtils::deserializeValueMapFromFile(const std::string& fullPath)
 {
-	std::ifstream inputStream(filename, std::ios::binary);
+	std::ifstream inputStream(fullPath, std::ios::binary);
 	cereal::BinaryInputArchive iarchive(inputStream);
 	ValueMap valueMap;
 	iarchive(valueMap);

@@ -9,20 +9,31 @@ using namespace cocos2d;
 class SaveManager
 {
 public:
-	// While not the best design, it's much easier to simply expose the save file value map and expect that calling classes insert data appropriately
-	static ValueMap* getValueMap();
+	typedef int ActiveSaveProfile;
 
-	static void setActiveSave(int index);
-	static void save();
+	static void setActiveSaveProfile(ActiveSaveProfile activeSaveProfile);
+	static void saveGlobalData(std::string key, cocos2d::Value data);
+	static void saveProfileData(std::string key, cocos2d::Value data);
+	static cocos2d::Value getGlobalData(std::string key);
+	static cocos2d::Value getProfileData(std::string key);
+	static bool hasGlobalData(std::string key);
+	static bool hasProfileData(std::string key);
+	static ActiveSaveProfile getActiveSaveProfile();
 
-private:
+protected:
 	static SaveManager* getInstance();
 	SaveManager();
 	~SaveManager();
+	void initialize();
 
-	ValueMap saveData;
-	std::string saveFile;
+	std::string getGlobalSaveFileName();
+	std::string getActiveProfileSaveFileName();
 
-	static SaveManager* saveManagerInstance;
-	static const std::string saveFileName;
+	ActiveSaveProfile activeSaveProfile;
+	ValueMap globalSaveData;
+	ValueMap profileSaveData;
+
+	static SaveManager *instance;
+	static const std::string globalSaveFileName;
+	static const std::string profileSaveFileTemplate;
 };

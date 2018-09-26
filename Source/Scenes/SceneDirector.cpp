@@ -20,6 +20,7 @@ SceneDirector::SceneDirector()
 	this->saveSelectMenu = SaveSelectMenu::create();
 	this->minigamesMenu = MinigamesMenu::create();
 	this->hexusChapterSelectMenu = HexusChapterSelectMenu::create();
+	this->hexusDeckManagement = HexusDeckManagement::create();
 	this->hexusOpponentMenuTraining = HexusOpponentMenuTraining::create();
 	this->hexusOpponentMenuJungle = HexusOpponentMenuJungle::create();
 	this->hexusOpponentMenuRuins = HexusOpponentMenuRuins::create();
@@ -49,6 +50,7 @@ SceneDirector::SceneDirector()
 	this->saveSelectMenu->retain();
 	this->minigamesMenu->retain();
 	this->hexusChapterSelectMenu->retain();
+	this->hexusDeckManagement->retain();
 	this->hexusOpponentMenuTraining->retain();
 	this->hexusOpponentMenuJungle->retain();
 	this->hexusOpponentMenuRuins->retain();
@@ -148,6 +150,9 @@ void SceneDirector::onGameNavigateNew(EventCustom* eventCustom)
 		break;
 	case NavigationEvents::GameScreen::Minigames_Hexus:
 		newScene = this->hexusChapterSelectMenu;
+		break;
+	case NavigationEvents::GameScreen::Minigames_Hexus_Deck_Management:
+		newScene = this->hexusDeckManagement;
 		break;
 	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Training:
 		newScene = this->hexusOpponentMenuTraining;

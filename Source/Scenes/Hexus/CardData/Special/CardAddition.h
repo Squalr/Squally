@@ -12,7 +12,4 @@ class CardAddition : public CardData
 public:
 	CardAddition();
 	~CardAddition();
-
-private:
-	static const std::string StringKeyCardName;
 };

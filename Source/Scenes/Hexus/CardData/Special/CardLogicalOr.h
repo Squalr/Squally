@@ -12,7 +12,4 @@ class CardLogicalOr : public CardData
 public:
 	CardLogicalOr();
 	~CardLogicalOr();
-
-private:
-	static const std::string StringKeyCardName;
 };

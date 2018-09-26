@@ -69,6 +69,16 @@ void ScrollPane::addChild(Node* child)
 	this->scrollView->addChild(child);
 }
 
+void ScrollPane::removeChild(Node* child, bool cleanup)
+{
+	this->scrollView->removeChild(child, cleanup);
+}
+
+void ScrollPane::removeAllChildren()
+{
+	this->scrollView->removeAllChildren();
+}
+
 void ScrollPane::fitSizeToContent()
 {
 	float newHeight = 0.0f;

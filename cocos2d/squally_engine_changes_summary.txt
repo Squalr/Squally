@@ -11,7 +11,10 @@ Changes to engine:
 - Implemented recursive file listing (async as well) in CCFileUtils. Some method definitions changed.
 
 - cereal added as an external dependency
+
 - ValueMaps, CCFileUtils updated to support binary serialization of ValueMaps
+
+- ValueMaps serializes strings with an XOR cipher
 
 - In CCCamera, the default far plane was increased to 65535.0f
 

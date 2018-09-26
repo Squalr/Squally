@@ -20,7 +20,7 @@ ConfigManager* ConfigManager::getInstance()
 
 ConfigManager::ConfigManager()
 {
-	this->valueMap = FileUtils::getInstance()->getValueMapFromFile(FileUtils::sharedFileUtils()->getWritablePath() + "\\" + ConfigManager::ConfigFile);
+	this->valueMap = FileUtils::getInstance()->getValueMapFromFile(FileUtils::sharedFileUtils()->getWritablePath() + "/" + ConfigManager::ConfigFile);
 }
 
 ConfigManager::~ConfigManager()
@@ -31,7 +31,7 @@ void ConfigManager::save()
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 
-	FileUtils::getInstance()->writeValueMapToFile(instance->valueMap, FileUtils::sharedFileUtils()->getWritablePath() + "\\" + ConfigManager::ConfigFile);
+	FileUtils::getInstance()->writeValueMapToFile(instance->valueMap, FileUtils::sharedFileUtils()->getWritablePath() + "/" + ConfigManager::ConfigFile);
 }
 
 void ConfigManager::setResolution(ResolutionSetting resolution)
