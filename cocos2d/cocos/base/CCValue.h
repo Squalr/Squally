@@ -71,6 +71,25 @@ public:
     /** Default constructor. */
     Value();
 
+    /*
+     * Used when serializing strings to scramble the string on disk so it is not human readable.
+     * Mathematically this is a self-inverse function, so xorCipher(xorCipher("swag")) returns "swag". 
+     */
+    std::string xorCipher(std::string str) const
+    {
+        // Using multiple different chars to xor the string to make it harder to figure out what is going on
+        char key[7] = {'S', 'q', 'u', 'a', 'l', 'l', 'y'};
+
+        std::string output = str;
+    
+        for (unsigned int index = 0; index < str.size(); index++)
+        {
+            output[index] = str[index] ^ key[index % (sizeof(key) / sizeof(char))];
+        }
+
+        return output;
+    }
+
 	template <class Archive>
 	void save(Archive & ar) const
 	{
@@ -95,16 +114,16 @@ public:
 			ar(_type, _field.boolVal);
 			break;
 		case Type::STRING:
-			ar(_type, *_field.strVal);
+			ar(_type, xorCipher(*(_field.strVal)));
 			break;
 		case Type::VECTOR:
-			ar(_type, *_field.vectorVal);
+			ar(_type, *(_field.vectorVal));
 			break;
 		case Type::MAP:
-			ar(_type, *_field.mapVal);
+			ar(_type, *(_field.mapVal));
 			break;
 		case Type::INT_KEY_MAP:
-			ar(_type, *_field.intKeyMapVal);
+			ar(_type, *(_field.intKeyMapVal));
 			break;
 		case Type::NONE:
 		default:
@@ -138,16 +157,21 @@ public:
 			ar(_field.boolVal);
 			break;
 		case Type::STRING:
-			ar(*_field.strVal);
+            _field.strVal = new std::string();
+			ar(*(_field.strVal));
+            *(_field.strVal) = xorCipher(*(_field.strVal));
 			break;
 		case Type::VECTOR:
-			ar(*_field.vectorVal);
+            _field.vectorVal = new std::vector<Value>();
+			ar(*(_field.vectorVal));
 			break;
 		case Type::MAP:
-			ar(*_field.mapVal);
+            _field.mapVal = new std::map<std::string, Value>();
+			ar(*(_field.mapVal));
 			break;
 		case Type::INT_KEY_MAP:
-			ar(*_field.intKeyMapVal);
+            _field.intKeyMapVal = new std::map<int, Value>();
+			ar(*(_field.intKeyMapVal));
 			break;
 		case Type::NONE:
 		default:

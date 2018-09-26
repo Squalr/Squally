@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 
 #include "Resources.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
 
 using namespace cocos2d;
 

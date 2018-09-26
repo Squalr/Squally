@@ -12,7 +12,4 @@ class CardLogicalXor : public CardData
 public:
 	CardLogicalXor();
 	~CardLogicalXor();
-
-private:
-	static const std::string StringKeyCardName;
 };

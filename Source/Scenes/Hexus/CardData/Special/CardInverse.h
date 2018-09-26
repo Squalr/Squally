@@ -12,7 +12,4 @@ class CardInverse : public CardData
 public:
 	CardInverse();
 	~CardInverse();
-
-private:
-	static const std::string StringKeyCardName;
 };

@@ -12,7 +12,4 @@ class CardSubtraction : public CardData
 public:
 	CardSubtraction();
 	~CardSubtraction();
-
-private:
-	static const std::string StringKeyCardName;
 };

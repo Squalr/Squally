@@ -12,7 +12,4 @@ class CardBinary3 : public CardData
 public:
 	CardBinary3();
 	~CardBinary3();
-
-private:
-	static const std::string StringKeyCardName;
 };

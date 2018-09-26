@@ -23,12 +23,14 @@ protected:
 
 private:
 	void onEnter() override;
+	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onCloseClick(MenuSprite* menuSprite);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void loadDeckCards();
 	void loadStorageCards();
+	void save(bool exit);
 
 	void onDeckCardClick(Card* card);
 	void onStorageCardClick(Card* card);
@@ -44,4 +46,3 @@ private:
 	std::vector<Card*> deckCards;
 	std::vector<Card*> storageCards;
 };
-

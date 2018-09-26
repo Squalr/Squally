@@ -12,7 +12,4 @@ class CardLogicalAnd : public CardData
 public:
 	CardLogicalAnd();
 	~CardLogicalAnd();
-
-private:
-	static const std::string StringKeyCardName;
 };
