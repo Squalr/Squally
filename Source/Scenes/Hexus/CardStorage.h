@@ -17,6 +17,8 @@ public:
 	static std::vector<CardData*> getStorageCards();
 	static std::vector<CardData*> getDeckCards();
 
+	static const int minimumDeckCards;
+
 private:
 	CardStorage();
 	~CardStorage();

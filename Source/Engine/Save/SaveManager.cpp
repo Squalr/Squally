@@ -56,7 +56,8 @@ void SaveManager::saveGlobalData(std::string key, cocos2d::Value data)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
-	instance->globalSaveData.emplace(key, data);
+	// TODO: Potential (minor) memory leak if replacing a ValueMap with another?
+	instance->globalSaveData[key] = data;
 
 	FileUtils::getInstance()->serializeValueMapToFile(instance->globalSaveData, instance->getGlobalSaveFileName());
 }
@@ -65,7 +66,8 @@ void SaveManager::saveProfileData(std::string key, cocos2d::Value data)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
-	instance->profileSaveData.emplace(key, data);
+	// TODO: Potential (minor) memory leak if replacing a ValueMap with another?
+	instance->profileSaveData[key] = data;
 
 	FileUtils::getInstance()->serializeValueMapToFile(instance->profileSaveData, instance->getActiveProfileSaveFileName());
 }

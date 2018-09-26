@@ -5540,6 +5540,7 @@ public:
 	static const std::string Menus_MinigamesMenu_BannerClick;
 	static const std::string Menus_MinigamesMenu_BannerGray;
 	static const std::string Menus_MinigamesMenu_BannerHover;
+	static const std::string Menus_MinigamesMenu_Hexus_AxeLogo;
 	static const std::string Menus_MinigamesMenu_Hexus_EnemyFrame;
 	static const std::string Menus_MinigamesMenu_Hexus_EnemyFrameClick;
 	static const std::string Menus_MinigamesMenu_Hexus_EnemyFrameGray;
@@ -6106,6 +6107,7 @@ public:
 	static const std::string Strings_Dialogue_CutsceneVaporLabs;
 	static const std::string Strings_Dialogue_CutsceneVaporWeb;
 	static const std::string Strings_Dialogue_TutorialExactScanI;
+	static const std::string Strings_Hexus;
 	static const std::string Strings_Menus;
 	static const std::string Maps_Isometric_Overworld;
 	static const std::string Maps_Isometric_Sanctum;
