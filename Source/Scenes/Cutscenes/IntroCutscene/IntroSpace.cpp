@@ -40,11 +40,11 @@ IntroSpace::IntroSpace()
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 	this->mars->setAnchorPoint(Vec2(0.0f, 0.0f));
 	this->earth->setAnchorPoint(Vec2(1.0f, 1.0f));
-	this->weaver1->setScale(0.12);
-	this->weaver2->setScale(0.14);
-	this->weaver3->setScale(0.16);
-	this->weaver4->setScale(0.18);
-	this->weaver5->setScale(0.20);
+	this->weaver1->setScale(0.12f);
+	this->weaver2->setScale(0.14f);
+	this->weaver3->setScale(0.16f);
+	this->weaver4->setScale(0.18f);
+	this->weaver5->setScale(0.20f);
 
 	auto weaverFrames = GameUtils::getAllAnimationFiles(Resources::Cutscenes_IntroSpace_Weaver_0000);
 

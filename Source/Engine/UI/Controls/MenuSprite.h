@@ -48,6 +48,7 @@ private:
 	std::string mouseOverSound;
 	std::string clickSound;
 
+	Node* currentSprite;
 	Node* sprite;
 	Node* spriteClicked;
 	Node* spriteSelected;

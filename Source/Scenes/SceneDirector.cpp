@@ -32,7 +32,6 @@ SceneDirector::SceneDirector()
 	this->hexusOpponentMenuObelisk = HexusOpponentMenuObelisk::create();
 	this->hexusOpponentMenuMech = HexusOpponentMenuMech::create();
 	this->hexusPuzzlesMenu = HexusPuzzlesMenu::create();
-	this->tutorialScreen = TutorialScreen::create();
 	this->worldMap = WorldMap::create();
 	this->loadingScreen = LoadingScreen::create();
 	this->map = nullptr;
@@ -62,7 +61,6 @@ SceneDirector::SceneDirector()
 	this->hexusOpponentMenuObelisk->retain();
 	this->hexusOpponentMenuMech->retain();
 	this->hexusPuzzlesMenu->retain();
-	this->tutorialScreen->retain();
 	this->worldMap->retain();
 	this->loadingScreen->retain();
 	// this->map->retain(); // Initially nullptr -- do not retain
@@ -186,9 +184,6 @@ void SceneDirector::onGameNavigateNew(EventCustom* eventCustom)
 		break;
 	case NavigationEvents::GameScreen::Minigames_Hexus_Puzzles:
 		newScene = this->hexusPuzzlesMenu;
-		break;
-	case NavigationEvents::GameScreen::Tutorial:
-		newScene = this->tutorialScreen;
 		break;
 	case NavigationEvents::GameScreen::StoryMap:
 		newScene = this->worldMap;

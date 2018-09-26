@@ -34,7 +34,6 @@
 #include "Scenes/Menus/SaveSelect/SaveSelectMenu.h"
 #include "Scenes/Menus/WorldMap/WorldMap.h"
 #include "Scenes/Menus/Title/TitleScreen.h"
-#include "Scenes/Menus/Tutorial/TutorialScreen.h"
 
 using namespace cocos2d;
 
@@ -72,7 +71,6 @@ private:
 	HexusOpponentMenuTraining* hexusOpponentMenuTraining;
 	HexusOpponentMenuVolcano* hexusOpponentMenuVolcano;
 	HexusPuzzlesMenu* hexusPuzzlesMenu;
-	TutorialScreen* tutorialScreen;
 	WorldMap* worldMap;
 	LoadingScreen* loadingScreen;
 	IMap* map;

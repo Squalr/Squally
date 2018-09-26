@@ -442,8 +442,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Menus/Title/HackerMode.cpp
 	Source/Scenes/Menus/Title/TitleScreen.cpp
 	Source/Scenes/Menus/Title/TitleScreenBackground.cpp
-	Source/Scenes/Menus/Tutorial/TutorialItem.cpp
-	Source/Scenes/Menus/Tutorial/TutorialScreen.cpp
 	Source/Scenes/Menus/WorldMap/MapNode.cpp
 	Source/Scenes/Menus/WorldMap/WorldMap.cpp
 	Source/Sound/MusicDeserializer.cpp
@@ -845,8 +843,6 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Menus/Title/HackerMode.h
 	Source/Scenes/Menus/Title/TitleScreen.h
 	Source/Scenes/Menus/Title/TitleScreenBackground.h
-	Source/Scenes/Menus/Tutorial/TutorialItem.h
-	Source/Scenes/Menus/Tutorial/TutorialScreen.h
 	Source/Scenes/Menus/WorldMap/MapNode.h
 	Source/Scenes/Menus/WorldMap/WorldMap.h
 	Source/Sound/MusicDeserializer.h
