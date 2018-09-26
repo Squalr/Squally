@@ -3,6 +3,8 @@
 const std::string CardStorage::SaveKeyStorageCards = "SAVE_KEY_STORAGE_CARDS";
 const std::string CardStorage::SaveKeyDeckCards = "SAVE_KEY_DECK_CARDS";
 
+const int CardStorage::minimumDeckCards = 20;
+
 CardStorage* CardStorage::instance = nullptr;
 
 CardStorage* CardStorage::getInstance()
@@ -19,24 +21,29 @@ CardStorage::CardStorage()
 {
 	this->defaultCards = std::vector<CardData*>();
 
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary0));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal0));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal2));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal3));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal3));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal3));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal4));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal4));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal5));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex0));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex2));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex2));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex3));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex3));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex4));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex5));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex4));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Addition));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Addition));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Addition));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Subtraction));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Subtraction));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::ShiftLeft));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::ShiftRight));
 }
 
 CardStorage::~CardStorage()

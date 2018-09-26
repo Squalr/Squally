@@ -30,6 +30,7 @@ private:
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void loadDeckCards();
 	void loadStorageCards();
+	void refreshCardCounts();
 	void save(bool exit);
 
 	void onDeckCardClick(Card* card);
@@ -40,8 +41,15 @@ private:
 	Sprite* background;
 	ScrollPane* storageScrollPane;
 	ScrollPane* deckScrollPane;
+	Sprite* storageSprite;
 	Label* storageLabel;
+	Sprite* deckSprite;
 	Label* deckLabel;
+	Sprite* titleSprite;
+	Label* cardManagementLabel;
+
+	Label* cardsInDeckLabel;
+	Label* cardsInDeckValueLabel;
 
 	std::vector<Card*> deckCards;
 	std::vector<Card*> storageCards;

@@ -15,19 +15,38 @@ HexusDeckManagement::HexusDeckManagement()
 	this->storageCards = std::vector<Card*>();
 
 	this->background = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_WoodBackground);
-	this->storageScrollPane = ScrollPane::create(Size(720.0f, 840.0f), Color4B(0, 0, 0, 196));
-	this->deckScrollPane = ScrollPane::create(Size(720.0f, 840.0f), Color4B(0, 0, 0, 196));
-	this->storageLabel = Label::create("Storage", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
-	this->deckLabel = Label::create("Deck", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->storageScrollPane = ScrollPane::create(Size(720.0f, 800.0f), Color4B(0, 0, 0, 196));
+	this->deckScrollPane = ScrollPane::create(Size(720.0f, 800.0f), Color4B(0, 0, 0, 196));
+	this->storageSprite = Sprite::create(Resources::Menus_Icons_TreasureChest);
+	this->storageLabel = Label::create("Cards in Storage", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()), Size::ZERO, cocos2d::TextHAlignment::LEFT);
+	this->deckSprite = Sprite::create(Resources::Menus_Icons_Satchel);
+	this->deckLabel = Label::create("Cards in Deck", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()), Size::ZERO, cocos2d::TextHAlignment::RIGHT);
+	this->titleSprite = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_AxeLogo);
+	this->cardManagementLabel = Label::create("Card Management", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->cardsInDeckLabel = Label::create("Cards in Deck", Localization::getMainFont(), Localization::getFontSizeH2(Localization::getMainFont()));
+	this->cardsInDeckValueLabel = Label::create("CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH2(Localization::getMainFont()));
 
+	cardsInDeckValueLabel->setTextColor(Color4B::GRAY);
+
+	this->storageSprite->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->storageLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->deckSprite->setAnchorPoint(Vec2(1.0f, 0.5f));
+	this->deckLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 	this->storageLabel->enableOutline(Color4B::BLACK, 2);
 	this->deckLabel->enableOutline(Color4B::BLACK, 2);
+	this->cardManagementLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->addChild(this->background);
 	this->addChild(this->storageScrollPane);
 	this->addChild(this->deckScrollPane);
+	this->addChild(this->storageSprite);
 	this->addChild(this->storageLabel);
+	this->addChild(this->deckSprite);
 	this->addChild(this->deckLabel);
+	this->addChild(this->titleSprite);
+	this->addChild(this->cardManagementLabel);
+	this->addChild(this->cardsInDeckLabel);
+	this->addChild(this->cardsInDeckValueLabel);
 	this->addChild(Mouse::create());
 }
 
@@ -39,6 +58,7 @@ void HexusDeckManagement::onEnter()
 {
 	this->loadStorageCards();
 	this->loadDeckCards();
+	this->refreshCardCounts();
 
 	FadeScene::onEnter();
 
@@ -83,20 +103,26 @@ void HexusDeckManagement::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->storageScrollPane->setPosition(Vec2(visibleSize.width / 2.0f - 416.0f - 96.0f, visibleSize.height / 2.0f - 64.0f));
-	this->deckScrollPane->setPosition(Vec2(visibleSize.width / 2.0f + 416.0f + 96.0f, visibleSize.height / 2.0f - 64.0f));
-	this->storageLabel->setPosition(Vec2(visibleSize.width / 2.0f - 416.0f - 96.0f, visibleSize.height - 96.0f));
-	this->deckLabel->setPosition(Vec2(visibleSize.width / 2.0f + 416.0f + 96.0f, visibleSize.height - 96.0f));
+	this->storageScrollPane->setPosition(Vec2(visibleSize.width / 2.0f - 416.0f - 96.0f, visibleSize.height / 2.0f - 48.0f));
+	this->deckScrollPane->setPosition(Vec2(visibleSize.width / 2.0f + 416.0f + 96.0f, visibleSize.height / 2.0f - 48.0f));
+	this->storageSprite->setPosition(Vec2(visibleSize.width / 2.0f - 880.0f, visibleSize.height - 96.0f));
+	this->storageLabel->setPosition(Vec2(visibleSize.width / 2.0f - 800.0f, visibleSize.height - 96.0f));
+	this->deckSprite->setPosition(Vec2(visibleSize.width / 2.0f + 880.0f, visibleSize.height - 96.0f));
+	this->deckLabel->setPosition(Vec2(visibleSize.width / 2.0f + 800.0f, visibleSize.height - 96.0f));
+	this->titleSprite->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 256.0f));
+	this->cardManagementLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 48.0f));
+	this->cardsInDeckLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->cardsInDeckValueLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 32.0f));
 
 	// Sort cards first
 	sort(this->storageCards.begin(), this->storageCards.end(), [](Card* a, Card* b) -> bool
 	{ 
-		return std::strcmp(a->cardData->cardName.c_str(), b->cardData->cardName.c_str()) < 0;
+		return std::strcmp(a->cardData == nullptr ? "" : a->cardData->cardName.c_str(), b->cardData == nullptr ? "" : b->cardData->cardName.c_str()) < 0;
 	});
 	
 	sort(this->deckCards.begin(), this->deckCards.end(), [](Card* a, Card* b) -> bool
 	{ 
-		return std::strcmp(a->cardData->cardName.c_str(), b->cardData->cardName.c_str()) < 0;
+		return std::strcmp(a->cardData == nullptr ? "" : a->cardData->cardName.c_str(), b->cardData == nullptr ? "" : b->cardData->cardName.c_str()) < 0;
 	});
 
 	// Position cards
@@ -181,6 +207,8 @@ void HexusDeckManagement::loadStorageCards()
 		this->storageScrollPane->removeChild(*it);
 	}
 
+	this->storageCards.clear();
+
 	std::vector<CardData*> savedStorageCards = CardStorage::getStorageCards();
 
 	for (auto it = savedStorageCards.begin(); it != savedStorageCards.end(); it++)
@@ -201,6 +229,8 @@ void HexusDeckManagement::loadDeckCards()
 		this->deckScrollPane->removeChild(*it);
 	}
 
+	this->deckCards.clear();
+
 	std::vector<CardData*> savedDeckCards = CardStorage::getDeckCards();
 
 	for (auto it = savedDeckCards.begin(); it != savedDeckCards.end(); it++)
@@ -214,6 +244,20 @@ void HexusDeckManagement::loadDeckCards()
 	}
 }
 
+void HexusDeckManagement::refreshCardCounts()
+{
+	if ((int)this->deckCards.size() < CardStorage::minimumDeckCards)
+	{
+		this->cardsInDeckValueLabel->setString(std::to_string(this->deckCards.size()) + " / " + std::to_string(CardStorage::minimumDeckCards));
+		this->cardsInDeckValueLabel->setTextColor(Color4B::RED);
+	}
+	else
+	{
+		this->cardsInDeckValueLabel->setString(std::to_string(this->deckCards.size()));
+		this->cardsInDeckValueLabel->setTextColor(Color4B::GRAY);
+	}
+}
+
 void HexusDeckManagement::onDeckCardClick(Card* card)
 {
 	this->deckCards.erase(std::remove(this->deckCards.begin(), this->deckCards.end(), card), this->deckCards.end());
@@ -222,6 +266,7 @@ void HexusDeckManagement::onDeckCardClick(Card* card)
 
 	this->initializeListeners();
 	this->initializePositions();
+	this->refreshCardCounts();
 }
 
 void HexusDeckManagement::onStorageCardClick(Card* card)
@@ -232,6 +277,7 @@ void HexusDeckManagement::onStorageCardClick(Card* card)
 	
 	this->initializeListeners();
 	this->initializePositions();
+	this->refreshCardCounts();
 }
 
 void HexusDeckManagement::onDeckCardMouseOver(Card* card)
