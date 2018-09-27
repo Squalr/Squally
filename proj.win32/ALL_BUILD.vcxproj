@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8CB58E28-331C-3598-9021-CEFF893A09E2}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\deprecated;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\platform;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\extensions;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\gles\include\OGLES;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\glfw3\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\zlib\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\cereal;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\Udis86;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\RapidJson;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\audio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"F:\Program Files\CMake\bin\cmake.exe" "-HF:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally" "-BF:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32" --check-stamp-file "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\CMakeLists.txt;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeDetermineSystem.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystem.cmake.in;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\3.11.2\CMakeSystem.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeDetermineCCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeDetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeDetermineCompilerId.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCompilerIdDetection.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\ADSP-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\ARMCC-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\AppleClang-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Borland-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Bruce-C-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Clang-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Compaq-C-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Cray-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\GHS-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\GNU-C-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\HP-C-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\IAR-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Intel-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\MIPSpro-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\MSVC-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\PGI-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\PathScale-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\SCO-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\SDCC-C-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\SunPro-C-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\TI-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Watcom-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\XL-C-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\zOS-C-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CompilerId\VS-10.vcxproj.in;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeFindBinUtils.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCCompiler.cmake.in;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\3.11.2\CMakeCCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeDetermineCXXCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeDetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-Determine-CXX.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeDetermineCompilerId.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCompilerIdDetection.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\ADSP-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\ARMCC-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\AppleClang-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Borland-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Clang-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Cray-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\GHS-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\IAR-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Intel-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\MIPSpro-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\MSVC-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\PGI-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\PathScale-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\SCO-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\TI-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\Watcom-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CompilerId\VS-10.vcxproj.in;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeFindBinUtils.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCXXCompiler.cmake.in;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\3.11.2\CMakeCXXCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeDetermineRCCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeRCCompiler.cmake.in;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\3.11.2\CMakeRCCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeRCInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeTestRCCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeTestCCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeTestCompilerCommon.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeDetermineCompilerABI.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeParseImplicitLinkInfo.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCCompilerABI.c;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeDetermineCompileFeatures.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCCompiler.cmake.in;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\3.11.2\CMakeCCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeTestCXXCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeTestCompilerCommon.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeDetermineCompilerABI.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeParseImplicitLinkInfo.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCXXCompilerABI.cpp;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeDetermineCompileFeatures.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Internal\FeatureTesting.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\MSVC-CXX-FeatureTests.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\feature_tests.cxx;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCXXCompiler.cmake.in;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\3.11.2\CMakeCXXCompiler.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosBuildSet.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosBuildHelpers.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeParseArguments.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosSelectModule.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosCompileOptions.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosPickLibs.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosBuildModules.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\FindOpenGL.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\FindPackageHandleStandardArgs.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\FindPackageMessage.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\ZERO_CHECK.vcxproj">
+      <Project>{7D7065D0-33A0-3939-96D6-E5DB6CDA7814}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\Squally.vcxproj">
+      <Project>{46DDA4E1-5072-3269-BE3B-13E5CCC9EF3A}</Project>
+      <Name>Squally</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\engine\external\asmjit\asmjit.vcxproj">
+      <Project>{2C75FB38-4A0B-360A-B07A-A676DA4C01DC}</Project>
+      <Name>asmjit</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\engine\external\cereal\cereal.vcxproj">
+      <Project>{1F2776D3-0702-3AA1-9291-F01C4FD6DF0D}</Project>
+      <Name>cereal</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\engine\cocos\core\cocos2d.vcxproj">
+      <Project>{EBD4229B-CE31-3BB7-AFA5-8DD882CDEBF0}</Project>
+      <Name>cocos2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\engine\external\flatbuffers\flatbuffers.vcxproj">
+      <Project>{76131163-D93E-3C58-9299-2373979BB0AB}</Project>
+      <Name>flatbuffers</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\engine\external\RapidJson\rapidjson.vcxproj">
+      <Project>{E9001CF9-FF4A-3CB1-9DF9-DC5E88653C30}</Project>
+      <Name>rapidjson</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\engine\external\recast\recast.vcxproj">
+      <Project>{7D44F69C-8DB9-3031-B0F7-7DA88878706A}</Project>
+      <Name>recast</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\engine\external\SpriterPlusPlus\spriterengine\spriterengine.vcxproj">
+      <Project>{5394A7F7-1AA2-3214-9561-1349166D166D}</Project>
+      <Name>spriterengine</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\engine\external\tinyxml2\tinyxml2.vcxproj">
+      <Project>{E2DFFF48-6C31-38B6-97F1-991304C9A115}</Project>
+      <Name>tinyxml2</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\engine\external\Udis86\udis86.vcxproj">
+      <Project>{56F14854-6D64-3FBF-80C5-7C729E225AD0}</Project>
+      <Name>udis86</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\engine\external\unzip\unzip.vcxproj">
+      <Project>{243B91DC-ABE7-36A5-90A9-86F5B9F34901}</Project>
+      <Name>unzip</Name>
+    </ProjectReference>
+    <ProjectReference Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\engine\external\xxhash\xxhash.vcxproj">
+      <Project>{12AFBC06-AFDF-390B-9FF1-75C322F1DC52}</Project>
+      <Name>xxhash</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

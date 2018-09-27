@@ -1,0 +1,40 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CMakePredefinedTargets", "CMakePredefinedTargets", "{0581103A-11E4-35CE-93D0-EBF850D9B06B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ALL_BUILD", "ALL_BUILD.vcxproj", "{8CB58E28-331C-3598-9021-CEFF893A09E2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7D7065D0-33A0-3939-96D6-E5DB6CDA7814} = {7D7065D0-33A0-3939-96D6-E5DB6CDA7814}
+		{5394A7F7-1AA2-3214-9561-1349166D166D} = {5394A7F7-1AA2-3214-9561-1349166D166D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZERO_CHECK", "..\..\..\\ZERO_CHECK.vcxproj", "{7D7065D0-33A0-3939-96D6-E5DB6CDA7814}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "spriterengine", "spriterengine\spriterengine.vcxproj", "{5394A7F7-1AA2-3214-9561-1349166D166D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7D7065D0-33A0-3939-96D6-E5DB6CDA7814} = {7D7065D0-33A0-3939-96D6-E5DB6CDA7814}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8CB58E28-331C-3598-9021-CEFF893A09E2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7D7065D0-33A0-3939-96D6-E5DB6CDA7814}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7D7065D0-33A0-3939-96D6-E5DB6CDA7814}.Debug|Win32.Build.0 = Debug|Win32
+		{5394A7F7-1AA2-3214-9561-1349166D166D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5394A7F7-1AA2-3214-9561-1349166D166D}.Debug|Win32.Build.0 = Debug|Win32
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8CB58E28-331C-3598-9021-CEFF893A09E2} = {0581103A-11E4-35CE-93D0-EBF850D9B06B}
+		{7D7065D0-33A0-3939-96D6-E5DB6CDA7814} = {0581103A-11E4-35CE-93D0-EBF850D9B06B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F06BEF1-F515-3E54-A6B5-DC76158ED322}
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

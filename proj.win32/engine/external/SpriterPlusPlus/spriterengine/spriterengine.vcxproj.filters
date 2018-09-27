@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\animation\animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\animation\animationinstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\animation\mainlinekey.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\animation\mainlinekeyinstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\charactermap\charactermap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\charactermap\charactermapinstruction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\entity\entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\entity\entityinstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\entity\entityinstancedata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\entity\object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\file\file.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\file\filereference.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\global\settings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\loading\loader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\loading\loadinghelpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\loading\spriterdocumentloader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\model\spritermodel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\angleinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\boneinstanceinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\boneobjectinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\boxinstanceinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\boxobjectinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\entityobjectinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\eventobjectinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\intvariableinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\pointinstanceinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\pointobjectinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\realvariableinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\soundobjectinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\spriteobjectinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\stringvariableinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\stringvariableinforeference.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\taglist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\tagobjectinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\tagobjectinforeference.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\triggerobjectinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\universalobjectinterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\boneref.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\bonerefinstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\entityref.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\entityrefinstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\objectref.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\objectrefinstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\spriteref.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\spriterefinstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\transformprocessor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\SPPfilefactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\SPPobjectfactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\atlasfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\imagefile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\soundfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\soundobjectinforeference.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\spriterfileattributewrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\spriterfiledocumentwrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\spriterfileelementwrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\beziereasingcurve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\cubiceasingcurve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\easingcurveinterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\instanteasingcurve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\lineareasingcurve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\quadraticeasingcurve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\quarticeasingcurve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\quinticeasingcurve.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\timeinfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeline\proxytimelinekey.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeline\soundtimelineinstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeline\tagtimelineinstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeline\timeline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeline\timelineinstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeline\timelinekey.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeline\triggertimelineinstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeline\variabletimelineinstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\variable\variable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\variable\variablecontainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\variable\variableinstancenameandidmap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\animation\animation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\animation\animationinstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\animation\mainlinekey.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\animation\mainlinekeyinstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\charactermap\charactermap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\charactermap\charactermapinstruction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\charactermap\charactermapinterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\entity\entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\entity\entityinstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\entity\entityinstancedata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\entity\object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\file\file.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\file\filereference.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\global\atlas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\global\global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\global\settings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\loading\loader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\loading\loadinghelpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\loading\spriterdocumentloader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\model\spritermodel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\angleinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\boneinstanceinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\boneobjectinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\boxinstanceinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\boxobjectinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\entityobjectinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\eventobjectinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\intvariableinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\pointinstanceinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\pointobjectinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\realvariableinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\soundobjectinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\spriteobjectinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\stringvariableinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\stringvariableinforeference.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\taglist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\tagobjectinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\tagobjectinforeference.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\triggerobjectinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectinfo\universalobjectinterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\boneref.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\bonerefinstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\entityref.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\entityrefinstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\objectref.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\objectrefinstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\spriteref.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\spriterefinstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\objectref\transformprocessor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\SPPfilefactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\SPPobjectfactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\atlasfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\imagefile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\soundfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\soundobjectinforeference.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\spriterfileattributewrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\spriterfiledocumentwrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\override\spriterfileelementwrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\spriterengine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\beziereasingcurve.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\cubiceasingcurve.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\easingcurveinterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\instanteasingcurve.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\lineareasingcurve.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\quadraticeasingcurve.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\quarticeasingcurve.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\quinticeasingcurve.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeinfo\timeinfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeline\proxytimelinekey.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeline\soundtimelineinstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeline\tagtimelineinstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeline\timeline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeline\timelineinstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeline\timelinekey.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeline\triggertimelineinstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\timeline\variabletimelineinstance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\variable\variable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\variable\variablecontainer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\variable\variableinstancenameandidmap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{72440264-0938-3938-8937-E59AF4FEB314}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{DD63CF81-250C-3725-8ADC-3F4E5A8FFBBE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
