@@ -110,7 +110,7 @@ Node::Node()
 , _displayedColor(Color3B::WHITE)
 , _realColor(Color3B::WHITE)
 , _cascadeColorEnabled(false)
-, _cascadeOpacityEnabled(false)
+, _cascadeOpacityEnabled(true)
 , _cameraMask(1)
 #if CC_USE_PHYSICS
 , _physicsBody(nullptr)
