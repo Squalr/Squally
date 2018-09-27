@@ -35,17 +35,18 @@ private:
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onHexusClick(MenuSprite* menuSprite);
 	void onHexusPuzzlesClick(MenuSprite* menuSprite);
+	TextMenuSprite* createComingSoonButton();
 
 	ScrollPane* scrollPane;
 	Node* background;
 	TextMenuSprite* hexusButton;
 	TextMenuSprite* hexusPuzzlesButton;
-	Node* comingSoonButton1;
-	Node* comingSoonButton2;
-	Node* comingSoonButton3;
-	Node* comingSoonButton4;
-	Node* comingSoonButton5;
-	Node* comingSoonButton6;
+	TextMenuSprite* comingSoonButton1;
+	TextMenuSprite* comingSoonButton2;
+	TextMenuSprite* comingSoonButton3;
+	TextMenuSprite* comingSoonButton4;
+	TextMenuSprite* comingSoonButton5;
+	TextMenuSprite* comingSoonButton6;
 
 	static const std::string StringKeyHexus;
 	static const std::string StringKeyHexusPuzzles;

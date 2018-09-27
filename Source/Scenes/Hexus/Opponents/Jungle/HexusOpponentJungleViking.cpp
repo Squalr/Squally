@@ -16,7 +16,7 @@ HexusOpponentJungleViking* HexusOpponentJungleViking::getInstance()
 HexusOpponentJungleViking::HexusOpponentJungleViking() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Jungle_Npcs_Viking_Animations,
 	1.0f,
-	Vec2(0.0f, 0.0f),
+	Vec2(0.0f, -48.0f),
 	HexusOpponentJungleViking::StringKeyOpponentName, Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

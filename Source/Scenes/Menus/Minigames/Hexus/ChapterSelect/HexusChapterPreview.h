@@ -16,6 +16,8 @@ public:
 	static HexusChapterPreview * create();
 
 	void setClickCallback(std::function<void()> callback);
+	void disableInteraction();
+	void enableInteraction();
 
 protected:
 	HexusChapterPreview();
@@ -24,7 +26,6 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onOpponentClick(MenuSprite* HexusChapterPreview);
-	void onOpponentMouseOver(MenuSprite* HexusChapterPreview);
 	
 	ClippingNode* frameClip;
 	MenuSprite* frame;

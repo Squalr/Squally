@@ -33,6 +33,15 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	manageDeckLabelHover->enableOutline(Color4B::BLACK, 2);
 	manageDeckLabelClick->enableOutline(Color4B::BLACK, 2);
 
+	this->hexusChapterPreviewRuins->disableInteraction();
+	this->hexusChapterPreviewForest->disableInteraction();
+	this->hexusChapterPreviewCaverns->disableInteraction();
+	this->hexusChapterPreviewCastle->disableInteraction();
+	this->hexusChapterPreviewIceCaps->disableInteraction();
+	this->hexusChapterPreviewVolcano->disableInteraction();
+	this->hexusChapterPreviewObelisk->disableInteraction();
+	this->hexusChapterPreviewMech->disableInteraction();
+
 	this->deckManagementButton = TextMenuSprite::create(
 		manageDeckLabel,
 		manageDeckLabelHover,

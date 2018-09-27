@@ -16,5 +16,8 @@ public:
 protected:
 	HexusOpponentMenuObelisk();
 	~HexusOpponentMenuObelisk();
+
+private:
+	static const std::string StringKeyProgressSave;
 };
 

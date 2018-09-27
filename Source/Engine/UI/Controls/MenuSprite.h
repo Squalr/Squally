@@ -24,7 +24,7 @@ public:
 	void setMouseDragCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onDrag);
 	void setMouseOverSound(std::string soundResource);
 	void setClickSound(std::string soundResource);
-	void disableInteraction();
+	void disableInteraction(GLubyte newOpacity = 255);
 	void enableInteraction();
 
 protected:
