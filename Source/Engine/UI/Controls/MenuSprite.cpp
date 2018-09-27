@@ -37,11 +37,6 @@ MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
 	this->spriteSelected = nodeSelected;
 	this->spriteClicked = nodeClicked;
 
-	this->setCascadeColorEnabled(true);
-	this->sprite->setCascadeOpacityEnabled(true);
-	this->spriteSelected->setCascadeOpacityEnabled(true);
-	this->spriteClicked->setCascadeOpacityEnabled(true);
-
 	this->offsetCorrection = Vec2::ZERO;
 
 	this->setContentSize(this->sprite->getContentSize());
@@ -62,7 +57,6 @@ void MenuSprite::onEnter()
 	this->isClickInit = false;
 	this->isClicked = false;
 
-	this->setCascadeOpacityEnabled(true);
 	this->sprite->setVisible(true);
 	this->spriteClicked->setVisible(false);
 	this->spriteSelected->setVisible(false);
@@ -210,7 +204,6 @@ void MenuSprite::onMouseUp(EventCustom* event)
 
 void MenuSprite::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event, bool isRefresh)
 {
-
 	if (!this->interactionEnabled)
 	{
 		return;
