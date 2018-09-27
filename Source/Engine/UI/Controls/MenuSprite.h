@@ -39,9 +39,10 @@ private:
 	bool intersects(Vec2 mousePos);
 	void showSprite(Node* sprite);
 	void onMouseMove(EventCustom* event);
+	void onMouseRefresh(EventCustom* event);
 	void onMouseDown(EventCustom* event);
 	void onMouseUp(EventCustom* event);
-	void mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event = nullptr);
+	void mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event = nullptr, bool isRefresh = false);
 	void mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* event = nullptr);
 	void mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* event = nullptr);
 
