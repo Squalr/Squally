@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2C75FB38-4A0B-360A-B07A-A676DA4C01DC}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>asmjit</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\lib\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">asmjit.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">asmjit</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\deprecated;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\platform;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\extensions;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\gles\include\OGLES;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\glfw3\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\zlib\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <DisableSpecificWarnings>4251;4244;4334;4005;4820;4710;4514;4056;4996;4099</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;COCOS2DXWIN32_EXPORTS;_WIN32;CC_USE_NAVMESH=1;CC_USE_JPEG=1;CC_USE_TIFF=1;CC_USE_PNG=1;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;COCOS2DXWIN32_EXPORTS;_WIN32;CC_USE_NAVMESH=1;CC_USE_JPEG=1;CC_USE_TIFF=1;CC_USE_PNG=1;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\deprecated;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\platform;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\extensions;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\gles\include\OGLES;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\glfw3\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\zlib\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\deprecated;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\platform;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\extensions;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\gles\include\OGLES;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\glfw3\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\zlib\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/asmjit/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"F:\Program Files\CMake\bin\cmake.exe" "-HF:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally" "-BF:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32" --check-stamp-file "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/engine/external/asmjit/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/asmjit/CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\CxxProject.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CheckCXXCompilerFlag.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CheckCXXSourceCompiles.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCheckCompilerFlagCommonPatterns.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\engine\external\asmjit\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\asmjit.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\asmjit_apibegin.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\asmjit_apiend.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\asmjit_build.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\arm.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\asmtk.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\asmparser.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\asmparser.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\asmtokenizer.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\asmtokenizer.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\elfdefs.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\globals.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\strtod.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\arch.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\arch.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\assembler.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\assembler.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\codebuilder.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\codebuilder.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\codecompiler.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\codecompiler.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\codeemitter.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\codeemitter.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\codeholder.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\codeholder.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\constpool.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\constpool.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\cpuinfo.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\cpuinfo.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\func.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\func.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\globals.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\globals.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\inst.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\inst.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\logging.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\logging.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\misc_p.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\operand.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\operand.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\osutils.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\osutils.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\regalloc.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\regalloc_p.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\runtime.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\runtime.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\simdtypes.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\string.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\string.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\utils.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\utils.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\vmem.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\vmem.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\zone.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\base\zone.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86assembler.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86assembler.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86builder.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86builder.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86compiler.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86compiler.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86emitter.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86globals.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86internal.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86internal_p.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86inst.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86inst.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86instimpl.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86instimpl_p.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86logging.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86logging_p.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86misc.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86operand.cpp" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86operand_regs.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86operand.h" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86regalloc.cpp" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit\x86\x86regalloc_p.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\ZERO_CHECK.vcxproj">
+      <Project>{7D7065D0-33A0-3939-96D6-E5DB6CDA7814}</Project>
+      <Name>ZERO_CHECK</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

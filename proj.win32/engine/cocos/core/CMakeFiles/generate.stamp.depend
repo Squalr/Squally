@@ -1,0 +1,22 @@
+# CMake generation dependency list for this directory.
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/2d/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/3d/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/platform/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/physics/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/physics3d/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/math/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/navmesh/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/renderer/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/vr/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/base/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/deprecated/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/ui/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/network/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/audio/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/storage/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/editor-support/cocosbuilder/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/editor-support/cocostudio/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/editor-support/spine/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/extensions/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cmake/Modules/CocosUseLibs.cmake
