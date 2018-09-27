@@ -1,7 +1,8 @@
 #include "HexusOpponentMenuBase.h"
 
-HexusOpponentMenuBase::HexusOpponentMenuBase()
+HexusOpponentMenuBase::HexusOpponentMenuBase(std::string progressSaveStringKey)
 {
+	this->progressSaveStringKey = progressSaveStringKey;
 	this->opponents = std::vector<HexusOpponentPreview*>();
 	this->scrollPane = ScrollPane::create(Size(1536.0f, 840.0f), Color4B(0, 0, 0, 196));
 	this->background = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_WoodBackground);
@@ -45,6 +46,13 @@ void HexusOpponentMenuBase::onEnter()
 	float duration = 0.35f;
 
 	GameUtils::fadeInObject(this->scrollPane, delay, duration);
+
+	for (auto it = this->opponents.begin(); it != this->opponents.end(); it++)
+	{
+		(*it)->disableInteraction();
+	}
+
+	this->loadProgress();
 }
 
 void HexusOpponentMenuBase::initializePositions()
@@ -63,7 +71,7 @@ void HexusOpponentMenuBase::initializePositions()
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{
 		int x = index % 3;
-		int y = index / 3;
+		int y = (this->opponents.size() - 1 - index + (3 - this->opponents.size() % 3)) / 3 - (this->opponents.size() % 3 == 0 ? 1 : 0);
 
 		(*it)->setPosition(Vec2(scrollPaneSize.width / 2.0f - 496.0f + 496.0f * x, y * 480.0f + 240.0f));
 
@@ -112,4 +120,34 @@ void HexusOpponentMenuBase::onCloseClick(MenuSprite* menuSprite)
 void HexusOpponentMenuBase::onDeckManagementClick(MenuSprite* menuSprite)
 {
 	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Deck_Management);
+}
+
+void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventArgs args)
+{
+	int progressIndex = 0;
+
+	if (SaveManager::hasGlobalData(this->progressSaveStringKey))
+	{
+		progressIndex = SaveManager::getGlobalData(this->progressSaveStringKey).asInt();
+	}
+}
+
+void HexusOpponentMenuBase::loadProgress()
+{
+	int progressIndex = 0;
+
+	if (SaveManager::hasGlobalData(this->progressSaveStringKey))
+	{
+		progressIndex = SaveManager::getGlobalData(this->progressSaveStringKey).asInt();
+	}
+
+	while (progressIndex >= 0)
+	{
+		if (progressIndex < this->opponents.size())
+		{ 
+			this->opponents[progressIndex]->enableInteraction();
+		}
+
+		progressIndex--;
+	}
 }

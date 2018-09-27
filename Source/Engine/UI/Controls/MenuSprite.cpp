@@ -30,16 +30,12 @@ MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
 	this->mouseOverEvent = nullptr;
 	this->interactionEnabled = true;
 
-	this->clickSound = Resources::Sounds_ButtonClick1;
-	this->mouseOverSound = "";
+	this->clickSound = "";
+	this->mouseOverSound = Resources::Sounds_ButtonRollover1;
 
 	this->sprite = nodeNormal;
 	this->spriteSelected = nodeSelected;
 	this->spriteClicked = nodeClicked;
-
-	this->sprite->setCascadeOpacityEnabled(true);
-	this->spriteSelected->setCascadeOpacityEnabled(true);
-	this->spriteClicked->setCascadeOpacityEnabled(true);
 
 	this->offsetCorrection = Vec2::ZERO;
 
@@ -61,7 +57,6 @@ void MenuSprite::onEnter()
 	this->isClickInit = false;
 	this->isClicked = false;
 
-	this->setCascadeOpacityEnabled(true);
 	this->sprite->setVisible(true);
 	this->spriteClicked->setVisible(false);
 	this->spriteSelected->setVisible(false);
@@ -87,16 +82,18 @@ void MenuSprite::update(float dt)
 	this->spriteSelected->setPosition(this->sprite->getPosition());
 }
 
-void MenuSprite::disableInteraction()
+void MenuSprite::disableInteraction(GLubyte newOpacity)
 {
 	this->interactionEnabled = false;
 	this->showSprite(this->sprite);
+	this->setOpacity(newOpacity);
 }
 
 void MenuSprite::enableInteraction()
 {
 	this->interactionEnabled = true;
 	this->showSprite(this->sprite);
+	this->setOpacity(255);
 }
 
 void MenuSprite::setContentScale(float scale)
@@ -144,10 +141,12 @@ void MenuSprite::initializeListeners()
 	SmartNode::initializeListeners();
 
 	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MenuSprite::onMouseMove, this));
+	EventListenerCustom* mouseRefreshListener = EventListenerCustom::create(MouseEvents::MouseRefreshEvent, CC_CALLBACK_1(MenuSprite::onMouseRefresh, this));
 	EventListenerCustom* mouseDownListener = EventListenerCustom::create(MouseEvents::MouseDownEvent, CC_CALLBACK_1(MenuSprite::onMouseDown, this));
 	EventListenerCustom* mouseUpListener = EventListenerCustom::create(MouseEvents::MouseUpEvent, CC_CALLBACK_1(MenuSprite::onMouseUp, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseMoveListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseRefreshListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseDownListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseUpListener, this);
 }
@@ -179,11 +178,18 @@ void MenuSprite::showSprite(Node* sprite)
 		// Interaction disabled -- only show the main sprite
 		this->sprite->setVisible(true);
 	}
+
+	this->currentSprite = sprite;
 }
 
 void MenuSprite::onMouseMove(EventCustom* event)
 {
 	this->mouseMove(static_cast<MouseEvents::MouseEventArgs*>(event->getUserData()), event);
+}
+
+void MenuSprite::onMouseRefresh(EventCustom* event)
+{
+	this->mouseMove(static_cast<MouseEvents::MouseEventArgs*>(event->getUserData()), event, true);
 }
 
 void MenuSprite::onMouseDown(EventCustom* event)
@@ -196,9 +202,8 @@ void MenuSprite::onMouseUp(EventCustom* event)
 	this->mouseUp(static_cast<MouseEvents::MouseEventArgs*>(event->getUserData()), event);
 }
 
-void MenuSprite::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event)
+void MenuSprite::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event, bool isRefresh)
 {
-
 	if (!this->interactionEnabled)
 	{
 		return;
@@ -224,6 +229,15 @@ void MenuSprite::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event
 		if (!args->handled && this->intersects(args->mouseCoords))
 		{
 			MouseEvents::TriggerClickableMouseOverEvent();
+
+			// Play mouse over sound
+			if (!isRefresh && this->currentSprite != this->spriteSelected)
+			{
+				if (this->mouseOverSound.length() > 0)
+				{
+					SoundManager::playSoundResource(this->mouseOverSound);
+				}
+			}
 
 			if (!args->isDragging && args->isLeftClicked)
 			{

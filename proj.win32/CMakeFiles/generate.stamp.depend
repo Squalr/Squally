@@ -1,0 +1,35 @@
+# CMake generation dependency list for this directory.
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/CMakeLists.txt
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/CMakeFiles/3.11.2/CMakeSystem.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/CMakeSystemSpecificInitialize.cmake
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/CMakeFiles/3.11.2/CMakeCCompiler.cmake
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/CMakeFiles/3.11.2/CMakeCXXCompiler.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/CMakeSystemSpecificInformation.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/CMakeGenericSystem.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/CMakeInitializeConfigs.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/Platform/Windows.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/Platform/WindowsPaths.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/CMakeCInformation.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/CMakeLanguageInformation.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/Platform/Windows-MSVC-C.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/Platform/Windows-MSVC.cmake
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/CMakeFiles/3.11.2/CMakeRCCompiler.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/CMakeRCInformation.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/CMakeCommonLanguageInclude.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/CMakeCXXInformation.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/CMakeLanguageInformation.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/Compiler/MSVC-CXX.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/Platform/Windows-MSVC-CXX.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/Platform/Windows-MSVC.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/CMakeCommonLanguageInclude.cmake
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cmake/Modules/CocosBuildSet.cmake
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cmake/Modules/CocosBuildHelpers.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/CMakeParseArguments.cmake
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cmake/Modules/CocosSelectModule.cmake
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cmake/Modules/CocosCompileOptions.cmake
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cmake/Modules/CocosPickLibs.cmake
+F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cmake/Modules/CocosBuildModules.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/FindOpenGL.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/FindPackageHandleStandardArgs.cmake
+F:/Program Files/CMake/share/cmake-3.11/Modules/FindPackageMessage.cmake

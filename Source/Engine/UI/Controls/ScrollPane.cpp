@@ -23,6 +23,10 @@ ScrollPane::ScrollPane(Size initPaneSize, Color4B initBackgroundColor)
 	this->scrollView->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->scrollView->setDirection(SCROLLVIEW_DIR_VERTICAL);
 	this->scrollView->setSize(Size(initPaneSize.width, initPaneSize.height));
+	this->scrollView->setScrollBarAutoHideEnabled(false);
+	this->scrollView->setScrollBarOpacity(196);
+	this->scrollView->setCascadeOpacityEnabled(true);
+	this->setCascadeOpacityEnabled(true);
 
 	// We override addchild to pass through to the scrollview -- but in this case we want to avoid that
 	SmartNode::addChild(this->background);
@@ -31,6 +35,13 @@ ScrollPane::ScrollPane(Size initPaneSize, Color4B initBackgroundColor)
 
 ScrollPane::~ScrollPane()
 {
+}
+
+void ScrollPane::onEnter()
+{
+	SmartNode::onEnter();
+
+	this->scrollView->scrollToPercentVertical(100.0f, 0.0f, false);
 }
 
 void ScrollPane::initializePositions()
@@ -81,35 +92,26 @@ void ScrollPane::removeAllChildren()
 
 void ScrollPane::fitSizeToContent()
 {
-	float newHeight = 0.0f;
+	Vec2 oldScrollDepth = this->scrollView->getInnerContainerPosition();
+	bool firstLoad = this->scrollView->getScrolledPercentVertical() == 0.0f;
+	float minHeight = this->scrollView->getChildren().size() > 0 ? (this->scrollView->getChildren().front()->getPositionY() - this->scrollView->getChildren().front()->getContentSize().height / 2.0f) : 0.0f;
+	float maxHeight = this->paneSize.height;
 
 	for (auto it = this->scrollView->getChildren().begin(); it != this->scrollView->getChildren().end(); it++)
 	{
-		newHeight = std::max((*it)->getBoundingBox().getMaxY(), newHeight);
+		minHeight = std::min((*it)->getPositionY() - (*it)->getContentSize().height / 2.0f, minHeight);
+		maxHeight = std::max((*it)->getPositionY() + (*it)->getContentSize().height / 2.0f, maxHeight);
 	}
+	
+	this->scrollView->setInnerContainerSize(Size(this->paneSize.width, maxHeight + minHeight));
+	this->scrollView->setInnerContainerPosition(oldScrollDepth);
 
-	float minItem = newHeight;
-
-	for (auto it = this->scrollView->getChildren().begin(); it != this->scrollView->getChildren().end(); it++)
-	{
-		minItem = std::min((*it)->getBoundingBox().getMinY(), minItem);
-	}
-
-	newHeight += minItem;
-
-	for (auto it = this->scrollView->getChildren().begin(); it != this->scrollView->getChildren().end(); it++)
-	{
-		Node* node = *it;
-
-		node->setPosition(Vec2(node->getPositionX(), newHeight - node->getPositionY()));
-	}
-
-	this->scrollView->setInnerContainerSize(Size(this->paneSize.width, newHeight));
+	this->scrollView->scrollToPercentVertical(firstLoad ? 0.0f : this->scrollView->getScrolledPercentVertical(), 0.0f, false);
 }
 
 void ScrollPane::onMouseScroll(EventMouse* event)
 {
-	if (GameUtils::isVisible(this))
+	if (GameUtils::isVisible(this) && GameUtils::intersectsV2(this->background, Vec2(event->getCursorX(), event->getCursorY())))
 	{
 		this->scrollView->scrollChildren(Vec2(0.0f, event->getScrollY() * ScrollPane::scrollSpeed));
 

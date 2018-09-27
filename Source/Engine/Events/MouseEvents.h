@@ -11,6 +11,7 @@ public:
 	struct MouseEventArgs;
 
 	static void TriggerMouseMove(MouseEventArgs args);
+	static void TriggerMouseRefresh(MouseEventArgs args);
 	static void TriggerMouseDown(MouseEventArgs args);
 	static void TriggerMouseUp(MouseEventArgs args);
 	static void TriggerMouseScroll();
@@ -33,6 +34,7 @@ public:
 	};
 
 	static const std::string MouseMoveEvent;
+	static const std::string MouseRefreshEvent;
 	static const std::string MouseDownEvent;
 	static const std::string MouseUpEvent;
 	static const std::string MouseScrollEvent;

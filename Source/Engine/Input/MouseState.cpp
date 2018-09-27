@@ -92,7 +92,7 @@ void MouseState::onMouseUp(EventMouse* event)
 	MouseState::canClick = false;
 
 	MouseEvents::TriggerStateChange(MouseState::getMouseState());
-	MouseEvents::TriggerMouseMove(MouseState::getMouseState());
+	MouseEvents::TriggerMouseRefresh(MouseState::getMouseState());
 }
 
 void MouseState::onMouseMove(EventMouse* event)
@@ -107,7 +107,7 @@ void MouseState::onMouseMove(EventMouse* event)
 
 void MouseState::onMouseScroll()
 {
-	MouseEvents::TriggerMouseMove(MouseState::getMouseState());
+	MouseEvents::TriggerMouseRefresh(MouseState::getMouseState());
 }
 
 void MouseState::onClickableMouseOverEvent(EventCustom* eventCustom)

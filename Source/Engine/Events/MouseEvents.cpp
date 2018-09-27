@@ -1,6 +1,7 @@
 #include "MouseEvents.h"
 
 const std::string MouseEvents::MouseMoveEvent = "EVENT_MOUSE_MOVE";
+const std::string MouseEvents::MouseRefreshEvent = "EVENT_MOUSE_REFRESH";
 const std::string MouseEvents::MouseDownEvent = "EVENT_MOUSE_DOWN";
 const std::string MouseEvents::MouseUpEvent = "EVENT_MOUSE_UP";
 const std::string MouseEvents::MouseScrollEvent = "EVENT_MOUSE_SCROLL";
@@ -13,6 +14,14 @@ void MouseEvents::TriggerMouseMove(MouseEventArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		MouseEvents::MouseMoveEvent,
+		&args
+	);
+}
+
+void MouseEvents::TriggerMouseRefresh(MouseEventArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		MouseEvents::MouseRefreshEvent,
 		&args
 	);
 }
