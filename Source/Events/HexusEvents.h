@@ -14,11 +14,21 @@ class HexusEvents
 public:
 	static const std::string HexusGameStartEvent;
 
+	struct HexusGameResultEventArgs
+	{
+		bool playerWon;
+
+		HexusGameResultEventArgs(bool playerWon) : playerWon(playerWon)
+		{
+		}
+	};
+
 	struct HexusGameEventArgs
 	{
 		HexusOpponentData* opponentData;
+		std::function<void(HexusGameResultEventArgs)> onGameEndCallback;
 
-		HexusGameEventArgs(HexusOpponentData* opponentData) : opponentData(opponentData)
+		HexusGameEventArgs(HexusOpponentData* opponentData, std::function<void(HexusGameResultEventArgs)> onGameEndCallback) : opponentData(opponentData), onGameEndCallback(onGameEndCallback)
 		{
 		}
 	};

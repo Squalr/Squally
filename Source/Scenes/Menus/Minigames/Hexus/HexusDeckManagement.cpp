@@ -15,8 +15,8 @@ HexusDeckManagement::HexusDeckManagement()
 	this->storageCards = std::vector<Card*>();
 
 	this->background = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_WoodBackground);
-	this->storageScrollPane = ScrollPane::create(Size(720.0f, 800.0f), Color4B(0, 0, 0, 196));
-	this->deckScrollPane = ScrollPane::create(Size(720.0f, 800.0f), Color4B(0, 0, 0, 196));
+	this->storageScrollPane = ScrollPane::create(Size(720.0f, 824.0f), Color4B(0, 0, 0, 196));
+	this->deckScrollPane = ScrollPane::create(Size(720.0f, 824.0f), Color4B(0, 0, 0, 196));
 	this->storageSprite = Sprite::create(Resources::Menus_Icons_TreasureChest);
 	this->storageLabel = Label::create("Cards in Storage", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()), Size::ZERO, cocos2d::TextHAlignment::LEFT);
 	this->deckSprite = Sprite::create(Resources::Menus_Icons_Satchel);
@@ -35,6 +35,8 @@ HexusDeckManagement::HexusDeckManagement()
 	this->storageLabel->enableOutline(Color4B::BLACK, 2);
 	this->deckLabel->enableOutline(Color4B::BLACK, 2);
 	this->cardManagementLabel->enableOutline(Color4B::BLACK, 2);
+	this->cardsInDeckLabel->enableOutline(Color4B::BLACK, 2);
+	this->cardsInDeckValueLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->addChild(this->background);
 	this->addChild(this->storageScrollPane);
@@ -132,9 +134,9 @@ void HexusDeckManagement::initializePositions()
 	for (auto it = this->storageCards.begin(); it != this->storageCards.end(); it++)
 	{
 		int x = index % 3;
-		int y = index / 3;
+		int y = (this->storageCards.size() - 1 - index + (3 - this->storageCards.size() % 3)) / 3 - (this->storageCards.size() % 3 == 0 ? 1 : 0);
 
-		(*it)->setPosition(Vec2(storageScrollPaneSize.width / 2.0f + (x - 1) * 240.0f, y * 320.0f + 256.0f));
+		(*it)->setPosition(Vec2(storageScrollPaneSize.width / 2.0f + (x - 1) * 240.0f, y * 480.0f + 256.0f));
 
 		index++;
 	}
@@ -147,9 +149,9 @@ void HexusDeckManagement::initializePositions()
 	for (auto it = this->deckCards.begin(); it != this->deckCards.end(); it++)
 	{
 		int x = index % 3;
-		int y = index / 3;
+		int y = (this->deckCards.size() - 1 - index + (3 - this->deckCards.size() % 3)) / 3 - (this->deckCards.size() % 3 == 0 ? 1 : 0);
 
-		(*it)->setPosition(Vec2(deckScrollPaneSize.width / 2.0f + (x - 1) * 240.0f, y * 320.0f + 256.0f));
+		(*it)->setPosition(Vec2(deckScrollPaneSize.width / 2.0f + (x - 1) * 240.0f, y * 480.0f + 256.0f));
 
 		index++;
 	}
@@ -215,7 +217,7 @@ void HexusDeckManagement::loadStorageCards()
 	{
 		Card* card = Card::create(Card::CardStyle::Earth, *it);
 		card->reveal();
-		card->setScale(0.6f);
+		card->setScale(1.0f);
 
 		this->storageCards.push_back(card);
 		this->storageScrollPane->addChild(card);
@@ -237,7 +239,7 @@ void HexusDeckManagement::loadDeckCards()
 	{
 		Card* card = Card::create(Card::CardStyle::Earth, *it);
 		card->reveal();
-		card->setScale(0.6f);
+		card->setScale(1.0f);
 
 		this->deckCards.push_back(card);
 		this->deckScrollPane->addChild(card);
@@ -263,6 +265,7 @@ void HexusDeckManagement::onDeckCardClick(Card* card)
 	this->deckCards.erase(std::remove(this->deckCards.begin(), this->deckCards.end(), card), this->deckCards.end());
 	this->storageCards.push_back(card);
 	GameUtils::changeParent(card, this->storageScrollPane, false);
+	SoundManager::playSoundResource(Resources::Sounds_Hexus_08_Card);
 
 	this->initializeListeners();
 	this->initializePositions();
@@ -274,6 +277,7 @@ void HexusDeckManagement::onStorageCardClick(Card* card)
 	this->storageCards.erase(std::remove(this->storageCards.begin(), this->storageCards.end(), card), this->storageCards.end());
 	this->deckCards.push_back(card);
 	GameUtils::changeParent(card, this->deckScrollPane, false);
+	SoundManager::playSoundResource(Resources::Sounds_Hexus_08_Card);
 	
 	this->initializeListeners();
 	this->initializePositions();

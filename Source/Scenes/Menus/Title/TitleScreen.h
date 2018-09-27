@@ -15,7 +15,6 @@
 #include "Events/NavigationEvents.h"
 #include "Scenes/Menus/Title/HackerMode.h"
 #include "Scenes/Menus/Title/TitleScreenBackground.h"
-#include "Scenes/Menus/Tutorial/TutorialScreen.h"
 #include "Scenes/Menus/Options/OptionsMenu.h"
 #include "Resources.h"
 
@@ -35,7 +34,6 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 
-	void onMatrixClick(MenuSprite* menuSprite);
 	void onStoryModeClick(MenuSprite* menuSprite);
 	void onArcadeModeClick(MenuSprite* menuSprite);
 	void onOptionsClick(MenuSprite* menuSprite);
@@ -43,7 +41,7 @@ private:
 
 	TitleScreenBackground* background;
 
-	MenuSprite* ether;
+	Sprite* ether;
 	ParticleSystem* etherParticles;
 
 	TextMenuSprite* storyModeButton;

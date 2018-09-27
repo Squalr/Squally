@@ -80,6 +80,8 @@ TextMenuSprite::TextMenuSprite(
 	selectedLabel->setPosition(center);
 	clickedLabel->setPosition(center);
 
+	this->setCascadeOpacityEnabled(true);
+
 	nodeNormal->addChild(normalLabel);
 	nodeSelected->addChild(selectedLabel);
 	nodeClicked->addChild(clickedLabel);

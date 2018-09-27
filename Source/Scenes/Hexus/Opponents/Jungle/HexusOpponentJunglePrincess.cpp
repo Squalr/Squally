@@ -16,7 +16,7 @@ HexusOpponentJunglePrincess* HexusOpponentJunglePrincess::getInstance()
 HexusOpponentJunglePrincess::HexusOpponentJunglePrincess() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Jungle_Npcs_Princess_Animations,
 	1.0f,
-	Vec2(0.0f, 0.0f),
+	Vec2(-48.0f, -80.0f),
 	HexusOpponentJunglePrincess::StringKeyOpponentName, Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

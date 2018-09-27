@@ -16,7 +16,7 @@ HexusOpponentJungleGeezer* HexusOpponentJungleGeezer::getInstance()
 HexusOpponentJungleGeezer::HexusOpponentJungleGeezer() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Jungle_Npcs_Geezer_Animations,
 	1.0f,
-	Vec2(0.0f, 0.0f),
+	Vec2(0.0f, -48.0f),
 	HexusOpponentJungleGeezer::StringKeyOpponentName, Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

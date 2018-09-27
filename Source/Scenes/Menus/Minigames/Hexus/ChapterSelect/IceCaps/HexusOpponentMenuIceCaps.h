@@ -16,5 +16,8 @@ public:
 protected:
 	HexusOpponentMenuIceCaps();
 	~HexusOpponentMenuIceCaps();
+
+private:
+	static const std::string StringKeyProgressSave;
 };
 

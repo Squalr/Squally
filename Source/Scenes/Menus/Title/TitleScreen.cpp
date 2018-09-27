@@ -120,7 +120,7 @@ TitleScreen::TitleScreen()
 		Resources::Menus_TitleScreen_TitleButtonHover,
 		Resources::Menus_TitleScreen_TitleButtonClick);
 
-	this->ether = MenuSprite::create(Resources::Menus_Backgrounds_Ether, Resources::Menus_Backgrounds_EtherSelected, Resources::Menus_Backgrounds_EtherSelected);
+	this->ether = Sprite::create(Resources::Menus_Backgrounds_Ether);
 	this->etherParticles = ParticleGalaxy::create();
 
 	this->addChild(this->background);
@@ -149,7 +149,6 @@ void TitleScreen::onEnter()
 	this->etherParticles->start();
 	GameUtils::accelerateParticles(this->etherParticles, 5.0f);
 
-	this->ether->setClickCallback(CC_CALLBACK_1(TitleScreen::onMatrixClick, this));
 	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));
 	this->arcadeModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onArcadeModeClick, this));
 	this->optionsButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onOptionsClick, this));
@@ -192,11 +191,6 @@ void TitleScreen::initializePositions()
 	this->arcadeModeButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f + 144.0f));
 	this->optionsButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f - 0.0f));
 	this->exitButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f - 256.0f));
-}
-
-void TitleScreen::onMatrixClick(MenuSprite* menuSprite)
-{
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Tutorial);
 }
 
 void TitleScreen::onStoryModeClick(MenuSprite* menuSprite)

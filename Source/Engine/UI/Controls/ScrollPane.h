@@ -5,6 +5,7 @@
 #include "Engine/SmartNode.h"
 #include "Engine/Localization/Localization.h"
 #include "Engine/UI/Controls/MenuLabel.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 
 using namespace cocos2d;
@@ -26,6 +27,7 @@ private:
 	ScrollPane(Size initPaneSize, Color4B initBackgroundColor);
 	~ScrollPane();
 
+	void onEnter() override;
 	void initializeListeners() override;
 	void initializePositions() override;
 	void onMouseScroll(EventMouse* event);

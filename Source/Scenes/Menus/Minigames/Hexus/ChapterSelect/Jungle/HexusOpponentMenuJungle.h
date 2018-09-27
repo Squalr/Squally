@@ -16,5 +16,8 @@ public:
 protected:
 	HexusOpponentMenuJungle();
 	~HexusOpponentMenuJungle();
+
+private:
+	static const std::string StringKeyProgressSave;
 };
 
