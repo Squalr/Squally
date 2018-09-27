@@ -202,14 +202,14 @@ void MinigamesMenu::initializePositions()
 
 	this->scrollPane->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 
-	this->hexusButton->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 0 + 128.0f));
-	this->hexusPuzzlesButton->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 1 + 128.0f));
-	this->comingSoonButton1->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 2 + 128.0f));
-	this->comingSoonButton2->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 3 + 128.0f));
-	this->comingSoonButton3->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 4 + 128.0f));
-	this->comingSoonButton4->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 5 + 128.0f));
-	this->comingSoonButton5->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 6 + 128.0f));
-	this->comingSoonButton6->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 7 + 128.0f));
+	this->hexusButton->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 7 + 128.0f));
+	this->hexusPuzzlesButton->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 6 + 128.0f));
+	this->comingSoonButton1->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 5 + 128.0f));
+	this->comingSoonButton2->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 4 + 128.0f));
+	this->comingSoonButton3->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 3 + 128.0f));
+	this->comingSoonButton4->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 2 + 128.0f));
+	this->comingSoonButton5->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 1 + 128.0f));
+	this->comingSoonButton6->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 0 + 128.0f));
 	this->scrollPane->fitSizeToContent();
 }
 

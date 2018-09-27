@@ -69,8 +69,6 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->cardText->setAlignment(TextHAlignment::LEFT);
 	this->cardText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->cardSprite->setMouseOverSound(Resources::Sounds_Hexus_Card_Game_Movement_Tap_01);
-
 	this->cardImage->setScale(0.9f);
 	this->setScale(Card::cardScale);
 	this->updateText();

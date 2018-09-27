@@ -30,8 +30,8 @@ MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
 	this->mouseOverEvent = nullptr;
 	this->interactionEnabled = true;
 
-	this->clickSound = Resources::Sounds_Menus_AFX_INTERFACESOUND_6_DFMG;
-	this->mouseOverSound = Resources::Sounds_Menus_AFX_INTERFACE_BEEP_2_DFMG;
+	this->clickSound = "";
+	this->mouseOverSound = Resources::Sounds_ButtonRollover1;
 
 	this->sprite = nodeNormal;
 	this->spriteSelected = nodeSelected;
@@ -144,10 +144,12 @@ void MenuSprite::initializeListeners()
 	SmartNode::initializeListeners();
 
 	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MenuSprite::onMouseMove, this));
+	EventListenerCustom* mouseRefreshListener = EventListenerCustom::create(MouseEvents::MouseRefreshEvent, CC_CALLBACK_1(MenuSprite::onMouseRefresh, this));
 	EventListenerCustom* mouseDownListener = EventListenerCustom::create(MouseEvents::MouseDownEvent, CC_CALLBACK_1(MenuSprite::onMouseDown, this));
 	EventListenerCustom* mouseUpListener = EventListenerCustom::create(MouseEvents::MouseUpEvent, CC_CALLBACK_1(MenuSprite::onMouseUp, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseMoveListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseRefreshListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseDownListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseUpListener, this);
 }
@@ -188,6 +190,11 @@ void MenuSprite::onMouseMove(EventCustom* event)
 	this->mouseMove(static_cast<MouseEvents::MouseEventArgs*>(event->getUserData()), event);
 }
 
+void MenuSprite::onMouseRefresh(EventCustom* event)
+{
+	this->mouseMove(static_cast<MouseEvents::MouseEventArgs*>(event->getUserData()), event, true);
+}
+
 void MenuSprite::onMouseDown(EventCustom* event)
 {
 	this->mouseDown(static_cast<MouseEvents::MouseEventArgs*>(event->getUserData()), event);
@@ -198,7 +205,7 @@ void MenuSprite::onMouseUp(EventCustom* event)
 	this->mouseUp(static_cast<MouseEvents::MouseEventArgs*>(event->getUserData()), event);
 }
 
-void MenuSprite::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event)
+void MenuSprite::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event, bool isRefresh)
 {
 
 	if (!this->interactionEnabled)
@@ -228,7 +235,7 @@ void MenuSprite::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event
 			MouseEvents::TriggerClickableMouseOverEvent();
 
 			// Play mouse over sound
-			if (this->currentSprite != this->spriteSelected)
+			if (!isRefresh && this->currentSprite != this->spriteSelected)
 			{
 				if (this->mouseOverSound.length() > 0)
 				{
