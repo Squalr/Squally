@@ -16,7 +16,7 @@ HexusOpponentJungleBarbarian* HexusOpponentJungleBarbarian::getInstance()
 HexusOpponentJungleBarbarian::HexusOpponentJungleBarbarian() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Jungle_Npcs_Barbarian_Animations,
 	1.0f,
-	Vec2(0.0f, 0.0f),
+	Vec2(-48.0f, -64.0f),
 	HexusOpponentJungleBarbarian::StringKeyOpponentName, Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

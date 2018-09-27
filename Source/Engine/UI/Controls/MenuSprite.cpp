@@ -37,6 +37,7 @@ MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
 	this->spriteSelected = nodeSelected;
 	this->spriteClicked = nodeClicked;
 
+	this->setCascadeColorEnabled(true);
 	this->sprite->setCascadeOpacityEnabled(true);
 	this->spriteSelected->setCascadeOpacityEnabled(true);
 	this->spriteClicked->setCascadeOpacityEnabled(true);
@@ -87,16 +88,18 @@ void MenuSprite::update(float dt)
 	this->spriteSelected->setPosition(this->sprite->getPosition());
 }
 
-void MenuSprite::disableInteraction()
+void MenuSprite::disableInteraction(GLubyte newOpacity)
 {
 	this->interactionEnabled = false;
 	this->showSprite(this->sprite);
+	this->setOpacity(newOpacity);
 }
 
 void MenuSprite::enableInteraction()
 {
 	this->interactionEnabled = true;
 	this->showSprite(this->sprite);
+	this->setOpacity(255);
 }
 
 void MenuSprite::setContentScale(float scale)

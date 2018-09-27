@@ -1,5 +1,7 @@
 #include "HexusOpponentMenuCaverns.h"
 
+const std::string HexusOpponentMenuCaverns::StringKeyProgressSave = "SAVE_KEY_HEXUS_CAVERNS_PROGRESS";
+
 HexusOpponentMenuCaverns * HexusOpponentMenuCaverns::create()
 {
 	HexusOpponentMenuCaverns* instance = new HexusOpponentMenuCaverns();
@@ -9,23 +11,24 @@ HexusOpponentMenuCaverns * HexusOpponentMenuCaverns::create()
 	return instance;
 }
 
-HexusOpponentMenuCaverns::HexusOpponentMenuCaverns()
+HexusOpponentMenuCaverns::HexusOpponentMenuCaverns() : HexusOpponentMenuBase(HexusOpponentMenuCaverns::StringKeyProgressSave)
 {
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance()));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance()));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance()));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance()));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance()));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance()));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance()));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance()));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance()));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance()));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance()));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance()));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance()));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance()));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance()));
+	auto callback = CC_CALLBACK_1(HexusOpponentMenuCaverns::onGameEndCallback, this);
+
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback, Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback, Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback, Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback, Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback, Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback, Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback, Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback, Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback, Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback, Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback, Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback, Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback, Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback, Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{

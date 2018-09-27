@@ -16,5 +16,8 @@ public:
 protected:
 	HexusOpponentMenuVolcano();
 	~HexusOpponentMenuVolcano();
+
+private:
+	static const std::string StringKeyProgressSave;
 };
 

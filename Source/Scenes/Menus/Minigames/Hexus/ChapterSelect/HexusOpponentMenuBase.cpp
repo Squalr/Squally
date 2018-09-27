@@ -1,7 +1,8 @@
 #include "HexusOpponentMenuBase.h"
 
-HexusOpponentMenuBase::HexusOpponentMenuBase()
+HexusOpponentMenuBase::HexusOpponentMenuBase(std::string progressSaveStringKey)
 {
+	this->progressSaveStringKey = progressSaveStringKey;
 	this->opponents = std::vector<HexusOpponentPreview*>();
 	this->scrollPane = ScrollPane::create(Size(1536.0f, 840.0f), Color4B(0, 0, 0, 196));
 	this->background = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_WoodBackground);
@@ -45,6 +46,13 @@ void HexusOpponentMenuBase::onEnter()
 	float duration = 0.35f;
 
 	GameUtils::fadeInObject(this->scrollPane, delay, duration);
+
+	for (auto it = this->opponents.begin(); it != this->opponents.end(); it++)
+	{
+		(*it)->disableInteraction();
+	}
+
+	this->loadProgress();
 }
 
 void HexusOpponentMenuBase::initializePositions()
@@ -112,4 +120,34 @@ void HexusOpponentMenuBase::onCloseClick(MenuSprite* menuSprite)
 void HexusOpponentMenuBase::onDeckManagementClick(MenuSprite* menuSprite)
 {
 	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Deck_Management);
+}
+
+void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventArgs args)
+{
+	int progressIndex = 0;
+
+	if (SaveManager::hasGlobalData(this->progressSaveStringKey))
+	{
+		progressIndex = SaveManager::getGlobalData(this->progressSaveStringKey).asInt();
+	}
+}
+
+void HexusOpponentMenuBase::loadProgress()
+{
+	int progressIndex = 0;
+
+	if (SaveManager::hasGlobalData(this->progressSaveStringKey))
+	{
+		progressIndex = SaveManager::getGlobalData(this->progressSaveStringKey).asInt();
+	}
+
+	while (progressIndex >= 0)
+	{
+		if (progressIndex < this->opponents.size())
+		{ 
+			this->opponents[progressIndex]->enableInteraction();
+		}
+
+		progressIndex--;
+	}
 }
