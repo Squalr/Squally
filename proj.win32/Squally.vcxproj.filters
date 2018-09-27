@@ -946,10 +946,31 @@
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleGeezer.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
     </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleGoblinGrunt.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleGoblinSwordsman.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleGoblinWarrior.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleHades.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
     </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleJungleDragon.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleMantis.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleMinotaur.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJunglePeasant.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJunglePigDemon.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJunglePirate.cpp">
@@ -958,7 +979,19 @@
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJunglePrincess.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
     </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJunglePurpleDinosaur.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleRhinoman.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleThor.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleTikiGolem.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleTikiWarrior.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleViking.cpp">
@@ -969,6 +1002,24 @@
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Npcs\HexusOpponentEgyptianMummy.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\Opponents\Npcs</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Tutorial\HexusOpponentTutorialA.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Tutorial\HexusOpponentTutorialB.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Tutorial\HexusOpponentTutorialC.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Tutorial\HexusOpponentTutorialD.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Tutorial\HexusOpponentTutorialE.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Tutorial\HexusOpponentTutorialF.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Tutorial</Filter>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Maps\Isometric\IsometricMap.cpp">
       <Filter>Source Files\Source\Scenes\Maps\Isometric</Filter>
@@ -22218,10 +22269,31 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleGeezer.h">
       <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
     </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleGoblinGrunt.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleGoblinSwordsman.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleGoblinWarrior.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleHades.h">
       <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
     </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleJungleDragon.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleMantis.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleMinotaur.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJunglePeasant.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJunglePigDemon.h">
       <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJunglePirate.h">
@@ -22230,7 +22302,19 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJunglePrincess.h">
       <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
     </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJunglePurpleDinosaur.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleRhinoman.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleThor.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleTikiGolem.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleTikiWarrior.h">
       <Filter>Source Files\Source\Scenes\Hexus\Opponents\Jungle</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Jungle\HexusOpponentJungleViking.h">
@@ -22241,6 +22325,24 @@
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Npcs\HexusOpponentEgyptianMummy.h">
       <Filter>Source Files\Source\Scenes\Hexus\Opponents\Npcs</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Tutorial\HexusOpponentTutorialA.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Tutorial</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Tutorial\HexusOpponentTutorialB.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Tutorial</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Tutorial\HexusOpponentTutorialC.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Tutorial</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Tutorial\HexusOpponentTutorialD.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Tutorial</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Tutorial\HexusOpponentTutorialE.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Tutorial</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Tutorial\HexusOpponentTutorialF.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Opponents\Tutorial</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Maps\IMap.h">
       <Filter>Source Files\Source\Scenes\Maps</Filter>
@@ -23778,6 +23880,9 @@
     </Filter>
     <Filter Include="Source Files\Source\Scenes\Hexus\Opponents\Npcs">
       <UniqueIdentifier>{BFE57C96-AB85-3594-861C-D916596B6350}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source\Scenes\Hexus\Opponents\Tutorial">
+      <UniqueIdentifier>{7D934FB5-60AC-35CC-976F-819435437485}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Source\Scenes\Maps">
       <UniqueIdentifier>{45C74D66-330B-3488-9CFD-9F0E024F5430}</UniqueIdentifier>

@@ -9,14 +9,13 @@
         <file id="5" name="R-LEG.png" width="36" height="47" pivot_x="0" pivot_y="1"/>
         <file id="6" name="BODY.png" width="85" height="65" pivot_x="0" pivot_y="1"/>
         <file id="7" name="BELT.png" width="86" height="19" pivot_x="0" pivot_y="1"/>
-        <file id="8" name="GRIFFIN.jpg" width="725" height="484" pivot_x="0" pivot_y="1"/>
-        <file id="9" name="COVER.png" width="47" height="25" pivot_x="0" pivot_y="1"/>
-        <file id="10" name="L-WING.png" width="74" height="66" pivot_x="0" pivot_y="1"/>
-        <file id="11" name="R-WING.png" width="71" height="65" pivot_x="0" pivot_y="1"/>
-        <file id="12" name="GRIFFIN.png" width="97" height="123" pivot_x="0" pivot_y="1"/>
-        <file id="13" name="SPEAR.png" width="25" height="224" pivot_x="0" pivot_y="1"/>
+        <file id="8" name="COVER.png" width="47" height="25" pivot_x="0" pivot_y="1"/>
+        <file id="9" name="L-WING.png" width="74" height="66" pivot_x="0" pivot_y="1"/>
+        <file id="10" name="R-WING.png" width="71" height="65" pivot_x="0" pivot_y="1"/>
+        <file id="11" name="GRIFFIN.png" width="97" height="123" pivot_x="0" pivot_y="1"/>
+        <file id="12" name="SPEAR.png" width="25" height="224" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Enitty">
+    <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="1000" interval="100">
             <mainline>
                 <key id="0">
@@ -77,27 +76,27 @@
             </timeline>
             <timeline id="8" name="COVER">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="-18.257261" y="-53.112033"/>
+                    <object folder="0" file="8" x="-18.257261" y="-53.112033" angle="0"/>
                 </key>
             </timeline>
             <timeline id="9" name="L-WING">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="-113.230587" y="21.576763"/>
+                    <object folder="0" file="9" x="-113.230587" y="21.576763" angle="0"/>
                 </key>
             </timeline>
             <timeline id="10" name="R-WING">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="-16.59751" y="23.651452"/>
+                    <object folder="0" file="10" x="-16.59751" y="23.651452" angle="0"/>
                 </key>
             </timeline>
             <timeline id="11" name="GRIFFIN_000">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="-47.717842" y="106.639004"/>
+                    <object folder="0" file="11" x="-47.717842" y="106.639004" angle="0"/>
                 </key>
             </timeline>
             <timeline id="12" name="SPEAR">
                 <key id="0" spin="0">
-                    <object folder="0" file="13" x="128.630705" y="119.502075" angle="347.799531"/>
+                    <object folder="0" file="12" x="128.630705" y="119.502075" angle="347.799531"/>
                 </key>
             </timeline>
         </animation>

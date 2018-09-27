@@ -378,14 +378,31 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleDwarf.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleFighter.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGeezer.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinGrunt.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinSwordsman.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinWarrior.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleHades.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleJungleDragon.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleMantis.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleMinotaur.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePeasant.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePigDemon.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePirate.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePrincess.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePurpleDinosaur.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleRhinoman.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleThor.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleTikiGolem.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleTikiWarrior.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleViking.cpp
 	Source/Scenes/Hexus/Opponents/Kickstarter/HexusOpponentKnight.cpp
 	Source/Scenes/Hexus/Opponents/Npcs/HexusOpponentEgyptianMummy.cpp
+	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialA.cpp
+	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialB.cpp
+	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialC.cpp
+	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialD.cpp
+	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialE.cpp
+	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialF.cpp
 	Source/Scenes/Maps/Isometric/IsometricMap.cpp
 	Source/Scenes/Maps/Platformer/PlatformerMap.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundBase.cpp
@@ -777,14 +794,31 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleDwarf.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleFighter.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGeezer.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinGrunt.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinSwordsman.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinWarrior.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleHades.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleJungleDragon.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleMantis.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleMinotaur.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePeasant.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePigDemon.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePirate.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePrincess.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePurpleDinosaur.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleRhinoman.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleThor.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleTikiGolem.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleTikiWarrior.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleViking.h
 	Source/Scenes/Hexus/Opponents/Kickstarter/HexusOpponentKnight.h
 	Source/Scenes/Hexus/Opponents/Npcs/HexusOpponentEgyptianMummy.h
+	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialA.h
+	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialB.h
+	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialC.h
+	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialD.h
+	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialE.h
+	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialF.h
 	Source/Scenes/Maps/IMap.h
 	Source/Scenes/Maps/Isometric/IsometricMap.h
 	Source/Scenes/Maps/Platformer/PlatformerMap.h
