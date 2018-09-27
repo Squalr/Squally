@@ -51,3 +51,5 @@ Changes to engine:
 - Fix to CCGLViewImpl-desktop to allow enter key to insert a newline
 
 - Fix to UIScrollViewBar.cpp opacity bug when auto-hide is disabled
+
+- In CCNode.cpp, cascadeOpacityEnabled was set to true by default -- originally false
