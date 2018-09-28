@@ -15,8 +15,10 @@ HexusOpponentTutorialC* HexusOpponentTutorialC::getInstance()
 
 HexusOpponentTutorialC::HexusOpponentTutorialC() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Caverns_Npcs_Wizard_Animations,
-	1.0f,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
+	0.9f,
 	Vec2(-48.0f, -64.0f),
+	Vec2(0.0f, 0.0f),
 	HexusOpponentTutorialC::StringKeyOpponentName, Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

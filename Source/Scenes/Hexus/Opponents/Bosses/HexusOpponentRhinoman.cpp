@@ -15,8 +15,10 @@ HexusOpponentRhinoman* HexusOpponentRhinoman::getInstance()
 
 HexusOpponentRhinoman::HexusOpponentRhinoman() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Jungle_Enemies_BossRhinoman_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(-24.0f, -48.0f),
+	Vec2(0.0f, 0.0f),
 	HexusOpponentRhinoman::StringKeyOpponentName, Card::CardStyle::Shadow,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

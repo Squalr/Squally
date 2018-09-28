@@ -12,13 +12,13 @@ using namespace cocos2d;
 class HexusOpponentPreview : public SmartNode
 {
 public:
-	static HexusOpponentPreview * create(HexusOpponentData* opponentData, std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback, std::string backgroundResource);
+	static HexusOpponentPreview * create(HexusOpponentData* opponentData, std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback);
 
 	void disableInteraction();
 	void enableInteraction();
 
 protected:
-	HexusOpponentPreview(HexusOpponentData* opponentData, std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback, std::string backgroundResource);
+	HexusOpponentPreview(HexusOpponentData* opponentData, std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback);
 	~HexusOpponentPreview();
 
 private:
