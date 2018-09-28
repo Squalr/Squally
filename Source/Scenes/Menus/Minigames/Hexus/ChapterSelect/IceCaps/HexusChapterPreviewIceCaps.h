@@ -12,6 +12,8 @@ class HexusChapterPreviewIceCaps : public HexusChapterPreview
 public:
 	static HexusChapterPreviewIceCaps * create();
 
+	static const std::string stringKeyChapterName;
+
 protected:
 	HexusChapterPreviewIceCaps();
 	~HexusChapterPreviewIceCaps();

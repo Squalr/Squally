@@ -1,6 +1,6 @@
 #include "HexusOpponentCentaur.h"
 
-const std::string HexusOpponentCentaur::StringKeyOpponentName = "Squally_Npc_Names_Jack";
+const std::string HexusOpponentCentaur::StringKeyOpponentName = "Squally_Npc_Names_Centaur";
 HexusOpponentCentaur* HexusOpponentCentaur::instance = nullptr;
 
 HexusOpponentCentaur* HexusOpponentCentaur::getInstance()
@@ -19,7 +19,8 @@ HexusOpponentCentaur::HexusOpponentCentaur() : HexusOpponentData(
 	1.0f,
 	Vec2(0.0f, -96.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentCentaur::StringKeyOpponentName, Card::CardStyle::Shadow,
+	HexusOpponentCentaur::StringKeyOpponentName,
+	Card::CardStyle::Shadow,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

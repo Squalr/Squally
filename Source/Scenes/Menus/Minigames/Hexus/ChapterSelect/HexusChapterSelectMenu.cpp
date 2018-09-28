@@ -11,7 +11,7 @@ HexusChapterSelectMenu * HexusChapterSelectMenu::create()
 
 HexusChapterSelectMenu::HexusChapterSelectMenu()
 {
-	this->chapters = new std::vector<HexusChapterPreview*>();
+	this->chapters = std::vector<HexusChapterPreview*>();
 	this->background = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_WoodBackground);
 	this->hexusChapterPreviewTraining = HexusChapterPreviewTraining::create();
 	this->hexusChapterPreviewJungle = HexusChapterPreviewJungle::create();
@@ -33,15 +33,6 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	manageDeckLabelHover->enableOutline(Color4B::BLACK, 2);
 	manageDeckLabelClick->enableOutline(Color4B::BLACK, 2);
 
-	this->hexusChapterPreviewRuins->disableInteraction();
-	this->hexusChapterPreviewForest->disableInteraction();
-	this->hexusChapterPreviewCaverns->disableInteraction();
-	this->hexusChapterPreviewCastle->disableInteraction();
-	this->hexusChapterPreviewIceCaps->disableInteraction();
-	this->hexusChapterPreviewVolcano->disableInteraction();
-	this->hexusChapterPreviewObelisk->disableInteraction();
-	this->hexusChapterPreviewMech->disableInteraction();
-
 	this->deckManagementButton = TextMenuSprite::create(
 		manageDeckLabel,
 		manageDeckLabelHover,
@@ -55,20 +46,20 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	this->setCascadeOpacityEnabled(true);
 
 	auto callback = CC_CALLBACK_1(HexusChapterSelectMenu::onMouseOver, this);
-	this->chapters->push_back(this->hexusChapterPreviewTraining);
-	this->chapters->push_back(this->hexusChapterPreviewJungle);
-	this->chapters->push_back(this->hexusChapterPreviewRuins);
-	this->chapters->push_back(this->hexusChapterPreviewForest);
-	this->chapters->push_back(this->hexusChapterPreviewCaverns);
-	this->chapters->push_back(this->hexusChapterPreviewCastle);
-	this->chapters->push_back(this->hexusChapterPreviewIceCaps);
-	this->chapters->push_back(this->hexusChapterPreviewVolcano);
-	this->chapters->push_back(this->hexusChapterPreviewObelisk);
-	this->chapters->push_back(this->hexusChapterPreviewMech);
+	this->chapters.push_back(this->hexusChapterPreviewTraining);
+	this->chapters.push_back(this->hexusChapterPreviewJungle);
+	this->chapters.push_back(this->hexusChapterPreviewRuins);
+	this->chapters.push_back(this->hexusChapterPreviewForest);
+	this->chapters.push_back(this->hexusChapterPreviewCaverns);
+	this->chapters.push_back(this->hexusChapterPreviewCastle);
+	this->chapters.push_back(this->hexusChapterPreviewIceCaps);
+	this->chapters.push_back(this->hexusChapterPreviewVolcano);
+	this->chapters.push_back(this->hexusChapterPreviewObelisk);
+	this->chapters.push_back(this->hexusChapterPreviewMech);
 
 	this->addChild(this->background);
 
-	for (std::vector<HexusChapterPreview*>::iterator it = this->chapters->begin(); it != this->chapters->end(); ++it)
+	for (auto it = this->chapters.begin(); it != this->chapters.end(); ++it)
 	{
 		this->addChild(*it);
 	}
@@ -88,6 +79,29 @@ void HexusChapterSelectMenu::onEnter()
 
 	float delay = 0.25f;
 	float duration = 0.35f;
+
+	// Just assume linear dependencies for now
+	this->dependencies.clear();
+	std::vector<HexusChapterPreview*>::iterator prevIt;
+
+	for (auto it = this->chapters.begin(); it != this->chapters.end(); prevIt = it, it++)
+	{
+		if (*it == this->chapters.front())
+		{
+			this->dependencies.emplace((*it), nullptr);
+		}
+		else
+		{
+			this->dependencies.emplace((*it), (*prevIt));
+		}
+	}
+
+	for (auto it = this->chapters.begin(); it != this->chapters.end(); it++)
+	{
+		(*it)->disableInteraction();
+	}
+
+	this->loadProgress();
 }
 
 void HexusChapterSelectMenu::initializeListeners()
@@ -122,7 +136,7 @@ void HexusChapterSelectMenu::initializePositions()
 
 	int index = 0;
 
-	for (std::vector<HexusChapterPreview*>::iterator it = this->chapters->begin(); it != this->chapters->end(); ++it)
+	for (std::vector<HexusChapterPreview*>::iterator it = this->chapters.begin(); it != this->chapters.end(); ++it)
 	{
 		int x = index % 5;
 		int y = index / 5;
@@ -134,6 +148,33 @@ void HexusChapterSelectMenu::initializePositions()
 
 	this->deckManagementButton->setPosition(Vec2(visibleSize.width / 2.0f + 756.0f, visibleSize.height - 64.0f));
 	this->chapterSelectLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 64.0f));
+}
+
+void HexusChapterSelectMenu::loadProgress()
+{
+	for (auto it = this->dependencies.begin(); it != this->dependencies.end(); it++)
+	{
+		HexusChapterPreview* chapter = (*it).first;
+		HexusChapterPreview* dependsOn = (*it).second;
+
+		if (dependsOn == nullptr)
+		{
+			chapter->enableInteraction();
+			continue;
+		}
+
+		std::string dependencyKey = dependsOn->chapterNameKey;
+
+		bool unlocked = SaveManager::hasGlobalData(dependencyKey) ? SaveManager::getGlobalData(dependencyKey).asBool() : false;
+
+		if (unlocked)
+		{
+			chapter->enableInteraction();
+		}
+	}
+
+	// Prevent going passed the Jungle level (always disable the next level) // TODO: Just for demo :)
+	this->hexusChapterPreviewRuins->disableInteraction();
 }
 
 void HexusChapterSelectMenu::onMouseOver(HexusChapterPreview* HexusChapterPreview)

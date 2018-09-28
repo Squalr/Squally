@@ -3,7 +3,7 @@
 HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* addressStart)
 {
 	CompileResult compileResult;
-
+	/*
 	CodeInfo ci(ArchInfo::kTypeX86);
 	CodeHolder code;
 	code.init(ci);
@@ -38,7 +38,7 @@ HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* address
 
 	//Fasm::FasmResult* fasmResult = Fasm::assemble(assembly, addressStart);
 	//HackUtils::CompileResult compileResult = HackUtils::constructCompileResult(fasmResult);
-
+	*/
 	//delete(fasmResult);
 	return compileResult;
 }

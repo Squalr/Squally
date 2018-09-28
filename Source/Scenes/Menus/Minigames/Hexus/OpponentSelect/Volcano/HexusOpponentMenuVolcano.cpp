@@ -1,20 +1,24 @@
-#include "HexusOpponentMenuForest.h"
+#include "HexusOpponentMenuVolcano.h"
 
-const std::string HexusOpponentMenuForest::StringKeyProgressSave = "SAVE_KEY_HEXUS_FOREST_PROGRESS";
-
-HexusOpponentMenuForest * HexusOpponentMenuForest::create()
+HexusOpponentMenuVolcano * HexusOpponentMenuVolcano::create()
 {
-	HexusOpponentMenuForest* instance = new HexusOpponentMenuForest();
+	HexusOpponentMenuVolcano* instance = new HexusOpponentMenuVolcano();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HexusOpponentMenuForest::HexusOpponentMenuForest() : HexusOpponentMenuBase(HexusOpponentMenuForest::StringKeyProgressSave)
+HexusOpponentMenuVolcano::HexusOpponentMenuVolcano() : HexusOpponentMenuBase(HexusChapterPreviewVolcano::stringKeyChapterName)
 {
-	auto callback = CC_CALLBACK_1(HexusOpponentMenuForest::onGameEndCallback, this);
+	auto callback = CC_CALLBACK_1(HexusOpponentMenuVolcano::onGameEndCallback, this);
 
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
@@ -34,6 +38,6 @@ HexusOpponentMenuForest::HexusOpponentMenuForest() : HexusOpponentMenuBase(Hexus
 	}
 }
 
-HexusOpponentMenuForest::~HexusOpponentMenuForest()
+HexusOpponentMenuVolcano::~HexusOpponentMenuVolcano()
 {
 }

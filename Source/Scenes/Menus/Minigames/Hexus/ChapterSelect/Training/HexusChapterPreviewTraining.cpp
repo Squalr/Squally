@@ -1,5 +1,7 @@
 #include "HexusChapterPreviewTraining.h"
 
+const std::string HexusChapterPreviewTraining::stringKeyChapterName = "HEXUS_CHAPTER_TRAINING";
+
 HexusChapterPreviewTraining* HexusChapterPreviewTraining::create()
 {
 	HexusChapterPreviewTraining* instance = new HexusChapterPreviewTraining();
@@ -9,7 +11,7 @@ HexusChapterPreviewTraining* HexusChapterPreviewTraining::create()
 	return instance;
 }
 
-HexusChapterPreviewTraining::HexusChapterPreviewTraining()
+HexusChapterPreviewTraining::HexusChapterPreviewTraining() : HexusChapterPreview(HexusChapterPreviewTraining::stringKeyChapterName)
 {
 	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameTraining));
 	this->text->setString("Training Grounds");

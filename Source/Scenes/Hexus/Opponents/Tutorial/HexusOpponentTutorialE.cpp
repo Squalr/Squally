@@ -19,7 +19,8 @@ HexusOpponentTutorialE::HexusOpponentTutorialE() : HexusOpponentData(
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentTutorialE::StringKeyOpponentName, Card::CardStyle::Water,
+	HexusOpponentTutorialE::StringKeyOpponentName,
+	Card::CardStyle::Water,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

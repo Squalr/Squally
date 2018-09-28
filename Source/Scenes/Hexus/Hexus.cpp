@@ -11,6 +11,8 @@ Hexus* Hexus::create()
 
 Hexus::Hexus()
 {
+	this->onGameEndCallback = nullptr;
+
 	this->gameBackground = Sprite::create(Resources::Minigames_Hexus_Gameboard);
 	this->gameState = GameState::create();
 	this->avatars = Avatars::create();
@@ -90,6 +92,8 @@ void Hexus::onGameStart(EventCustom* eventCustom)
 {
 	HexusEvents::HexusGameEventArgs* args = (HexusEvents::HexusGameEventArgs*)(eventCustom->getUserData());
 
+	this->opponentData = args->opponentData;
+	this->onGameEndCallback = args->onGameEndCallback;
 	this->avatars->initializeEnemyAvatar(args->opponentData);
 
 	this->gameState->playerLosses = 0;
@@ -119,6 +123,10 @@ void Hexus::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
 			//this->gameState->cancelCurrentAction(true);
+			break;
+		case EventKeyboard::KeyCode::KEY_SPACE:
+			this->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, this->opponentData));
+			NavigationEvents::navigateBack();
 			break;
 		default:
 			break;

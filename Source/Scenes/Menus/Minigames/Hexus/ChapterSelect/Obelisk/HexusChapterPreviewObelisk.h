@@ -12,6 +12,8 @@ class HexusChapterPreviewObelisk : public HexusChapterPreview
 public:
 	static HexusChapterPreviewObelisk * create();
 
+	static const std::string stringKeyChapterName;
+
 protected:
 	HexusChapterPreviewObelisk();
 	~HexusChapterPreviewObelisk();

@@ -1,5 +1,7 @@
 #include "HexusChapterPreviewJungle.h"
 
+const std::string HexusChapterPreviewJungle::stringKeyChapterName = "HEXUS_CHAPTER_JUNGLE";
+
 HexusChapterPreviewJungle* HexusChapterPreviewJungle::create()
 {
 	HexusChapterPreviewJungle* instance = new HexusChapterPreviewJungle();
@@ -9,7 +11,7 @@ HexusChapterPreviewJungle* HexusChapterPreviewJungle::create()
 	return instance;
 }
 
-HexusChapterPreviewJungle::HexusChapterPreviewJungle()
+HexusChapterPreviewJungle::HexusChapterPreviewJungle() : HexusChapterPreview(HexusChapterPreviewJungle::stringKeyChapterName)
 {
 	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle));
 	this->text->setString("Jungle");

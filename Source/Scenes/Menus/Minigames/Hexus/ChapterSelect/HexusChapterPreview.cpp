@@ -1,16 +1,17 @@
 #include "HexusChapterPreview.h"
 
-HexusChapterPreview* HexusChapterPreview::create()
+HexusChapterPreview* HexusChapterPreview::create(std::string chapterNameKey)
 {
-	HexusChapterPreview* instance = new HexusChapterPreview();
+	HexusChapterPreview* instance = new HexusChapterPreview(chapterNameKey);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HexusChapterPreview::HexusChapterPreview()
+HexusChapterPreview::HexusChapterPreview(std::string chapterNameKey)
 {
+	this->chapterNameKey = chapterNameKey;
 	this->callback = nullptr;
 	this->frame = MenuSprite::create(Resources::Menus_MinigamesMenu_Hexus_EnemyFrame, Resources::Menus_MinigamesMenu_Hexus_EnemyFrameHover, Resources::Menus_MinigamesMenu_Hexus_EnemyFrameClick);
 	this->text = Label::create("CHAPTER_PREVIEW", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));

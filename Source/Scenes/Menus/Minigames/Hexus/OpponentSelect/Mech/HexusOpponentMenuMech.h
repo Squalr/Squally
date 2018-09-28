@@ -3,8 +3,9 @@
 
 #include "Resources.h"
 #include "Scenes/Hexus/Opponents/HexusOpponents.h"
-#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusOpponentMenuBase.h"
-#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusOpponentPreview.h"
+#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Mech/HexusChapterPreviewMech.h"
+#include "Scenes/Menus/Minigames/Hexus/OpponentSelect/HexusOpponentMenuBase.h"
+#include "Scenes/Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
 
 using namespace cocos2d;
 
@@ -16,8 +17,5 @@ public:
 protected:
 	HexusOpponentMenuMech();
 	~HexusOpponentMenuMech();
-
-private:
-	static const std::string StringKeyProgressSave;
 };
 

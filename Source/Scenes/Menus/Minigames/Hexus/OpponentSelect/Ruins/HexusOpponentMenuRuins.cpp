@@ -1,21 +1,18 @@
-#include "HexusOpponentMenuVolcano.h"
+#include "HexusOpponentMenuRuins.h"
 
-const std::string HexusOpponentMenuVolcano::StringKeyProgressSave = "SAVE_KEY_HEXUS_VOLCANO_PROGRESS";
-
-HexusOpponentMenuVolcano * HexusOpponentMenuVolcano::create()
+HexusOpponentMenuRuins * HexusOpponentMenuRuins::create()
 {
-	HexusOpponentMenuVolcano* instance = new HexusOpponentMenuVolcano();
+	HexusOpponentMenuRuins* instance = new HexusOpponentMenuRuins();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HexusOpponentMenuVolcano::HexusOpponentMenuVolcano() : HexusOpponentMenuBase(HexusOpponentMenuVolcano::StringKeyProgressSave)
+HexusOpponentMenuRuins::HexusOpponentMenuRuins() : HexusOpponentMenuBase(HexusChapterPreviewRuins::stringKeyChapterName)
 {
-	auto callback = CC_CALLBACK_1(HexusOpponentMenuVolcano::onGameEndCallback, this);
+	auto callback = CC_CALLBACK_1(HexusOpponentMenuRuins::onGameEndCallback, this);
 
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
@@ -40,6 +37,6 @@ HexusOpponentMenuVolcano::HexusOpponentMenuVolcano() : HexusOpponentMenuBase(Hex
 	}
 }
 
-HexusOpponentMenuVolcano::~HexusOpponentMenuVolcano()
+HexusOpponentMenuRuins::~HexusOpponentMenuRuins()
 {
 }

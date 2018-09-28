@@ -1,20 +1,22 @@
-#include "HexusOpponentMenuCaverns.h"
+#include "HexusOpponentMenuCastle.h"
 
-const std::string HexusOpponentMenuCaverns::StringKeyProgressSave = "SAVE_KEY_HEXUS_CAVERNS_PROGRESS";
-
-HexusOpponentMenuCaverns * HexusOpponentMenuCaverns::create()
+HexusOpponentMenuCastle * HexusOpponentMenuCastle::create()
 {
-	HexusOpponentMenuCaverns* instance = new HexusOpponentMenuCaverns();
+	HexusOpponentMenuCastle* instance = new HexusOpponentMenuCastle();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HexusOpponentMenuCaverns::HexusOpponentMenuCaverns() : HexusOpponentMenuBase(HexusOpponentMenuCaverns::StringKeyProgressSave)
+HexusOpponentMenuCastle::HexusOpponentMenuCastle() : HexusOpponentMenuBase(HexusChapterPreviewCastle::stringKeyChapterName)
 {
-	auto callback = CC_CALLBACK_1(HexusOpponentMenuCaverns::onGameEndCallback, this);
+	auto callback = CC_CALLBACK_1(HexusOpponentMenuCastle::onGameEndCallback, this);
 
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
@@ -36,6 +38,6 @@ HexusOpponentMenuCaverns::HexusOpponentMenuCaverns() : HexusOpponentMenuBase(Hex
 	}
 }
 
-HexusOpponentMenuCaverns::~HexusOpponentMenuCaverns()
+HexusOpponentMenuCastle::~HexusOpponentMenuCastle()
 {
 }
