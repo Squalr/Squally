@@ -19,7 +19,7 @@ public:
 	static void flattenNode(Node* node);
 	static Node* changeParent(Node* node, Node* newParent, bool retainPosition);
 	static void accelerateParticles(ParticleSystem* particleSystem, float duration);
-	static void fadeInObject(Node* node, float delay, float duration);
+	static void fadeInObject(Node* node, float delay, float duration, GLubyte opacity = 255);
 	static Rect getSceneBounds(Node* node);
 	static Rect getSceneBoundsV2(Node* node);
 	static bool isVisible(Node* node);

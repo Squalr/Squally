@@ -25,7 +25,7 @@ public:
 	void setMouseOverSound(std::string soundResource);
 	void setClickSound(std::string soundResource);
 	void disableInteraction(GLubyte newOpacity = 255);
-	void enableInteraction();
+	void enableInteraction(GLubyte newOpacity = 255);
 
 protected:
 	MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked);

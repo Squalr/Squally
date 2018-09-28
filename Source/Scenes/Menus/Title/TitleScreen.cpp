@@ -173,7 +173,8 @@ void TitleScreen::onEnter()
 	this->scheduleUpdate();
 
 	// TEMPORARY FOR DEMO:
-	this->storyModeButton->disableInteraction(128);
+	this->storyModeButton->disableInteraction(0);
+	GameUtils::fadeInObject(this->storyModeButton, delay, duration, 128);
 }
 
 void TitleScreen::initializePositions()

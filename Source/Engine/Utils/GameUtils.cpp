@@ -200,9 +200,9 @@ void GameUtils::accelerateParticles(ParticleSystem* particleSystem, float durati
 	}
 }
 
-void GameUtils::fadeInObject(Node* node, float delay, float duration)
+void GameUtils::fadeInObject(Node* node, float delay, float duration, GLubyte opacity)
 {
-	Sequence* sequence = Sequence::create(DelayTime::create(delay), FadeIn::create(duration), nullptr);
+	Sequence* sequence = Sequence::create(DelayTime::create(delay), FadeTo::create(duration, opacity), nullptr);
 
 	node->setCascadeOpacityEnabled(true);
 	node->setOpacity(0);
