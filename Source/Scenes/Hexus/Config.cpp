@@ -10,6 +10,7 @@ const float Config::cardDrawDelay = 0.5f;
 const float Config::revealDelay = 0.25f;
 const float Config::emblemFadeSpeed = 0.25f;
 const float Config::skullFadeSpeed = 0.25f;
+const float Config::replaceEndButtonFadeSpeed = 0.25f;
 
 const float Config::coinFlipStartDelay = 0.5f;
 const float Config::turnAnimationDelay = 6.0f;
