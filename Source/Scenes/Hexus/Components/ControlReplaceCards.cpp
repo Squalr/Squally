@@ -68,15 +68,20 @@ void ControlReplaceCards::onStateChange(GameState* gameState)
 			// State just entered -- perform initialization and re-enter this state to allow other components to have up-to-date info
 			if (gameState->stateType != gameState->previousStateType)
 			{
+				this->doneButton->enableInteraction(0);
+				this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
 				this->initializeCardReplace(gameState);
 				GameState::updateState(gameState, GameState::StateType::ControlReplaceCards);
 				return;
 			}
 
 			this->initializeCallbacks(gameState);
+<<<<<<< HEAD
 
 			this->doneButton->enableInteraction(0);
 			this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
+=======
+>>>>>>> f8ed9c84f801012c2637129a4df3ac6296752725
 			break;
 		default:
 			if (gameState->previousStateType == GameState::StateType::ControlReplaceCards)
