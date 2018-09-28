@@ -27,7 +27,6 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onStateChangeEvent(EventCustom* eventCustom);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onClose(MenuSprite* menuSprite);
 
@@ -46,13 +45,11 @@ private:
 	ControlSelectionStaged* controlSelectionStaged;
 	ControlCombineStaged* controlCombineStaged;
 	ControlReplaceCards* controlReplaceCards;
+	ControlGameEnd* controlGameEnd;
 	DeckCardCountDisplay* deckCardCountDisplay;
 	HandCardCountDisplay* handCardCountDisplay;
 	LossesDisplay* lossesDisplay;
 	PassButton* passButton;
 	RowTotals* rowTotals;
 	ScoreTotal* scoreTotal;
-
-	std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback;
-	HexusOpponentData* opponentData;
 };

@@ -1201,6 +1201,9 @@
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\main.cpp">
       <Filter>Source Files\proj.win32</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlGameEnd.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\.gitattributes">
@@ -22532,6 +22535,9 @@
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\resource.h">
       <Filter>Source Files\proj.win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlGameEnd.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

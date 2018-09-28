@@ -349,6 +349,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/ControlCombineStaged.cpp
 	Source/Scenes/Hexus/Components/ControlDraw.cpp
 	Source/Scenes/Hexus/Components/ControlEndTurn.cpp
+	Source/Scenes/Hexus/Components/ControlGameEnd.cpp
 	Source/Scenes/Hexus/Components/ControlNeutral.cpp
 	Source/Scenes/Hexus/Components/ControlReplaceCards.cpp
 	Source/Scenes/Hexus/Components/ControlSacrificeStaged.cpp
@@ -763,6 +764,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/ControlCombineStaged.h
 	Source/Scenes/Hexus/Components/ControlDraw.h
 	Source/Scenes/Hexus/Components/ControlEndTurn.h
+	Source/Scenes/Hexus/Components/ControlGameEnd.h
 	Source/Scenes/Hexus/Components/ControlNeutral.h
 	Source/Scenes/Hexus/Components/ControlReplaceCards.h
 	Source/Scenes/Hexus/Components/ControlSacrificeStaged.h
