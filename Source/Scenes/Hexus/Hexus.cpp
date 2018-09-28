@@ -83,8 +83,11 @@ void Hexus::initializeListeners()
 	
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
+	EventListenerCustom* stateListener = EventListenerCustom::create(GameState::onStateUpdateEvent, CC_CALLBACK_1(Hexus::onStateChangeEvent, this));
+
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(Hexus::onKeyPressed, this);
 
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(stateListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 }
 
@@ -96,6 +99,8 @@ void Hexus::onGameStart(EventCustom* eventCustom)
 	this->onGameEndCallback = args->onGameEndCallback;
 	this->avatars->initializeEnemyAvatar(args->opponentData);
 
+	this->gameState->previousStateType = GameState::StateType::EmptyState;
+	this->gameState->stateType = GameState::StateType::EmptyState;
 	this->gameState->playerLosses = 0;
 	this->gameState->enemyLosses = 0;
 
@@ -110,6 +115,18 @@ void Hexus::onGameStart(EventCustom* eventCustom)
 	Deck::create(Card::CardStyle::Earth, CardStorage::getInstance()->getDeckCards())->copyTo(this->gameState->playerDeck);
 
 	NavigationEvents::navigate(NavigationEvents::GameScreen::Hexus);
+}
+
+void Hexus::onStateChangeEvent(EventCustom* eventCustom)
+{
+	GameState* gameState = (GameState*)(eventCustom->getUserData());
+
+	if (gameState->stateType == GameState::StateType::GameEnd)
+	{
+		this->onGameEndCallback(HexusEvents::HexusGameResultEventArgs((gameState->playerLosses < 2), this->opponentData));
+		
+		NavigationEvents::navigateBack();
+	}
 }
 
 void Hexus::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
