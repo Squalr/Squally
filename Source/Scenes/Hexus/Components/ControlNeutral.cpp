@@ -64,7 +64,7 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 
 	// If it's not the last round we better save some cards
 	int cardsToSaveForLastRound = 4;
-	if (gameState->enemyLosses < 1 && gameState->enemyDeck->deckCards->size() <= cardsToSaveForLastRound) {
+	if (gameState->enemyLosses < 1 && gameState->enemyHand->rowCards->size() <= cardsToSaveForLastRound) {
 		gameState->enemyPass = true;
 		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 		return;
