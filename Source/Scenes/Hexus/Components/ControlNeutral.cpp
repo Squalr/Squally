@@ -55,6 +55,12 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 {
 	this->activeGameState->selectedCard = nullptr;
 
+	if (gameState->enemyHand->rowCards->size() == 0) {
+		gameState->enemyPass = true;
+		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+		return;
+	}
+
 	int passIfDiffAbove = 30; // Give up if player is too far ahead
 	if (gameState->enemyLosses < 1 && gameState->getPlayerTotal() > gameState->getEnemyTotal() + passIfDiffAbove) {
 		gameState->enemyPass = true;
