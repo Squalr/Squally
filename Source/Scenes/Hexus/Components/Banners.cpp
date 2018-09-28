@@ -59,184 +59,189 @@ void Banners::onStateChange(GameState* gameState)
 	this->updateBanner(gameState);
 }
 
-void Banners::updateBanner(GameState* gameState)
+void Banners::displayPlayerTurnBanner()
 {
-	CallFunc* stateTransition = nullptr;
-
-	switch (gameState->stateType)
-	{
-	case GameState::StateType::FirstSideBanner:
-		gameState->playerHand->disableRowCardInteraction();
-		if (gameState->turn == GameState::Turn::Enemy)
-		{
-			gameState->bannerMessage = "OPPONENT GOES FIRST";
-		}
-		else if (gameState->turn == GameState::Turn::Player)
-		{
-			gameState->bannerMessage = "YOU GO FIRST";
-		}
-		stateTransition = CallFunc::create([gameState]
-		{
-			GameState::updateState(gameState, GameState::StateType::ControlNeutral);
-		});
-		break;
-	case GameState::StateType::ControlReplaceCards:
-		gameState->bannerMessage = "REMAINING CARD REPLACEMENTS: " + std::to_string(gameState->cardReplaceCount);
-		break;
-	case GameState::StateType::Win:
-		gameState->bannerMessage = "VICTORY!";
-
-		stateTransition = CallFunc::create([gameState]
-		{
-			GameState::updateState(gameState, GameState::StateType::GameEnd);
-		});
-		break;
-	case GameState::StateType::Lose:
-		gameState->bannerMessage = "DEFEAT!";
-
-		stateTransition = CallFunc::create([gameState]
-		{
-			GameState::updateState(gameState, GameState::StateType::GameEnd);
-		});
-		break;
-	case GameState::StateType::TurnBanner:
-		gameState->playerHand->disableRowCardInteraction();
-		if (gameState->turn == GameState::Turn::Enemy)
-		{
-			gameState->bannerMessage = "OPPONENT'S TURN";
-		}
-		else if (gameState->turn == GameState::Turn::Player)
-		{
-			gameState->bannerMessage = "YOUR TURN";
-		}
-
-		stateTransition = CallFunc::create([gameState]
-		{
-			GameState::updateState(gameState, GameState::StateType::ControlNeutral);
-		});
-		break;
-	default:
-		stateTransition = CallFunc::create([](){});
-		break;
+	if (this->activeGameState->previousStateType == GameState::CoinFlip) {
+		this->activeGameState->bannerMessage = "YOU GO FIRST";
+	} else {
+		this->activeGameState->bannerMessage = "YOUR TURN";
 	}
 
-	this->statusLabel->setString(gameState->bannerMessage);
+	this->statusLabel->setString(this->activeGameState->bannerMessage);
+	this->statusLabel->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 255),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+	this->statusBanner->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 196),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+
+	this->playerBanner1->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 255),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+	this->playerBanner2->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 255),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+}
+
+void Banners::displayEnemyTurnBanner()
+{
+	if (this->activeGameState->previousStateType == GameState::CoinFlip) {
+		this->activeGameState->bannerMessage = "OPPONENT GOES FIRST";
+	} else {
+		this->activeGameState->bannerMessage = "OPPONENT'S TURN";
+	}
+
+	this->statusLabel->setString(this->activeGameState->bannerMessage);
+	this->statusLabel->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 255),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+	this->statusBanner->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 196),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+
+	this->enemyBanner1->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 255),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+	this->enemyBanner2->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 255),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+}
+
+void Banners::displayWinLoseBanner()
+{
+	if (this->activeGameState->stateType == GameState::Win) {
+		this->activeGameState->bannerMessage = "VICTORY!";
+	} else {
+		this->activeGameState->bannerMessage = "DEFEAT!";
+	}
+
+	this->statusLabel->setString(this->activeGameState->bannerMessage);
+	this->statusLabel->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 255),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+	this->statusBanner->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 196),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+}
+
+void Banners::displayCardReplaceBanner()
+{
+	this->activeGameState->bannerMessage = 
+		"REMAINING CARD REPLACEMENTS: " + std::to_string(this->activeGameState->cardReplaceCount);
+
+	this->statusLabel->setString(this->activeGameState->bannerMessage);
+	this->statusLabel->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 255),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+	this->statusBanner->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 196),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+}
+
+void Banners::hideAllBanners()
+{
+	this->statusLabel->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 0),
+		nullptr
+	));
+	this->statusBanner->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 0),
+		nullptr
+	));
+	this->playerBanner1->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 0),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+	this->playerBanner2->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 0),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+	this->enemyBanner1->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 0),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+	this->enemyBanner2->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 0),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+
+	this->activeGameState->bannerMessage = "";
+}
+
+
+void Banners::updateBanner(GameState* gameState)
+{
+	this->activeGameState = gameState;
+
+	if (gameState->previousStateType != gameState->stateType) {
+		this->hideAllBanners();
+	}
 
 	switch (gameState->stateType)
 	{
 		case GameState::StateType::FirstSideBanner:
-		case GameState::StateType::TurnBanner:
-		case GameState::StateType::ControlReplaceCards:
-		case GameState::StateType::Win:
-		case GameState::StateType::Lose:
-			// Initial fade in if just entering a banner state
-			switch (gameState->previousStateType)
+		case GameState::StateType::TurnBanner: {
+			if (gameState->turn == GameState::Turn::Enemy)
 			{
-				case GameState::StateType::FirstSideBanner:
-				case GameState::StateType::TurnBanner:
-				case GameState::StateType::ControlReplaceCards:
-				case GameState::StateType::Win:
-				case GameState::StateType::Lose:
-					break;
-				default:
-					this->statusLabel->runAction(Sequence::create(
-						FadeTo::create(Config::bannerFadeSpeed, 255),
-						DelayTime::create(Config::bannerDisplayDuration),
-						nullptr
-					));
-					this->statusBanner->runAction(Sequence::create(
-						FadeTo::create(Config::bannerFadeSpeed, 196),
-						DelayTime::create(Config::bannerDisplayDuration),
-						nullptr
-					));
-
-					if (gameState->stateType == GameState::StateType::FirstSideBanner || gameState->stateType == GameState::StateType::TurnBanner || gameState->previousStateType == GameState::StateType::Win ||  gameState->previousStateType == GameState::StateType::Lose)
-					{
-						if (gameState->turn == GameState::Turn::Player)
-						{
-							this->playerBanner1->runAction(Sequence::create(
-								FadeTo::create(Config::bannerFadeSpeed, 255),
-								DelayTime::create(Config::bannerDisplayDuration),
-								nullptr
-							));
-							this->playerBanner2->runAction(Sequence::create(
-								FadeTo::create(Config::bannerFadeSpeed, 255),
-								DelayTime::create(Config::bannerDisplayDuration),
-								nullptr
-							));
-						}
-						else if (gameState->turn == GameState::Turn::Enemy)
-						{
-							this->enemyBanner1->runAction(Sequence::create(
-								FadeTo::create(Config::bannerFadeSpeed, 255),
-								DelayTime::create(Config::bannerDisplayDuration),
-								nullptr
-							));
-							this->enemyBanner2->runAction(Sequence::create(
-								FadeTo::create(Config::bannerFadeSpeed, 255),
-								DelayTime::create(Config::bannerDisplayDuration),
-								nullptr
-							));
-						}
-					}
-
-					break;
+				this->displayEnemyTurnBanner();
+			}
+			else if (gameState->turn == GameState::Turn::Player)
+			{
+				this->displayPlayerTurnBanner();
 			}
 
-			// New state transition
 			this->runAction(Sequence::create(
 				DelayTime::create(Config::bannerDisplayDuration),
-				stateTransition,
+				CallFunc::create([=] {
+					GameState::updateState(this->activeGameState, GameState::StateType::ControlNeutral);
+				}),
 				nullptr
-			));
-		break;
-		default:
-			// Fade banner out on new gamestate
-			switch (gameState->previousStateType)
-			{
-				case GameState::StateType::FirstSideBanner:
-				case GameState::StateType::TurnBanner:
-				case GameState::StateType::ControlReplaceCards:
-				case GameState::StateType::Win:
-				case GameState::StateType::Lose:
-					this->statusLabel->runAction(Sequence::create(
-						FadeTo::create(Config::bannerFadeSpeed, 0),
-						nullptr
-					));
-					this->statusBanner->runAction(Sequence::create(
-						FadeTo::create(Config::bannerFadeSpeed, 0),
-						nullptr
-					));
-
-					if (gameState->previousStateType == GameState::StateType::FirstSideBanner || gameState->previousStateType == GameState::StateType::TurnBanner ||  gameState->previousStateType == GameState::StateType::Win ||  gameState->previousStateType == GameState::StateType::Lose)
-					{
-						this->playerBanner1->runAction(Sequence::create(
-							FadeTo::create(Config::bannerFadeSpeed, 0),
-							DelayTime::create(Config::bannerDisplayDuration),
-							nullptr
-						));
-						this->playerBanner2->runAction(Sequence::create(
-							FadeTo::create(Config::bannerFadeSpeed, 0),
-							DelayTime::create(Config::bannerDisplayDuration),
-							nullptr
-						));
-						this->enemyBanner1->runAction(Sequence::create(
-							FadeTo::create(Config::bannerFadeSpeed, 0),
-							DelayTime::create(Config::bannerDisplayDuration),
-							nullptr
-						));
-						this->enemyBanner2->runAction(Sequence::create(
-							FadeTo::create(Config::bannerFadeSpeed, 0),
-							DelayTime::create(Config::bannerDisplayDuration),
-							nullptr
-						));
-					}
-				break;
-				default:
-					break;
-			}
+			));	
 			break;
-	}
-	
-	gameState->bannerMessage = "";
+		}
+		case GameState::StateType::ControlReplaceCards:
+			this->displayCardReplaceBanner();
+			break;
+		case GameState::StateType::Win:
+		case GameState::StateType::Lose:
+			this->displayWinLoseBanner();
+			this->runAction(Sequence::create(
+				DelayTime::create(Config::bannerDisplayDuration),
+				CallFunc::create([=] {
+					GameState::updateState(this->activeGameState, GameState::StateType::GameEnd);
+				}),
+				nullptr
+			));	
+			break;	
+		default:
+			break;
+		}
 }

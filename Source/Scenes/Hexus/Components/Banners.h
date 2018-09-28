@@ -23,8 +23,14 @@ private:
 
 	void initializePositions() override;
 	void updateBanner(GameState* gameState);
+	void displayPlayerTurnBanner();
+	void displayEnemyTurnBanner();
+	void displayWinLoseBanner();
+	void displayCardReplaceBanner();
+	void hideAllBanners();
 
 	LayerColor* statusBanner;
+	GameState* activeGameState;
 	Label* statusLabel;
 	Sprite* playerBanner1;
 	Sprite* playerBanner2;
