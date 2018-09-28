@@ -133,6 +133,14 @@ void Deck::setCardOrder()
 	}
 }
 
+void Deck::removeCardsWhere(std::function<bool(Card*)> predicate)
+{
+	// Note: If the caller wants the card list, they need to extract it in the predicate
+	auto removed = std::remove_if(this->deckCards->begin(), this->deckCards->end(), predicate);
+	this->deckCards->erase(removed, this->deckCards->end());
+	this->setCardOrder();
+}
+
 Card* Deck::removeCard(Card* card)
 {
 	this->deckCards->erase(std::remove(this->deckCards->begin(), this->deckCards->end(), card), this->deckCards->end());
