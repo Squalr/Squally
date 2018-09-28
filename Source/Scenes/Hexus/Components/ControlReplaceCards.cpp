@@ -121,6 +121,7 @@ void ControlReplaceCards::initializeCardReplace(GameState* gameState)
 	gameState->playerHand->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	gameState->playerHand->setCardScale(0.6f, 0.0f);
 	gameState->playerHand->setRowWidth(Config::previewWidth, 0.25f);
+	gameState->playerHand->enableRowCardInteraction();
 }
 
 void ControlReplaceCards::initializeCallbacks(GameState* gameState)
