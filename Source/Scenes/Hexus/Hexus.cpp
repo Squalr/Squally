@@ -90,6 +90,8 @@ void Hexus::onGameStart(EventCustom* eventCustom)
 {
 	HexusEvents::HexusGameEventArgs* args = (HexusEvents::HexusGameEventArgs*)(eventCustom->getUserData());
 
+	this->avatars->initializeEnemyAvatar(args->opponentData);
+
 	this->gameState->playerLosses = 0;
 	this->gameState->enemyLosses = 0;
 

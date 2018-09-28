@@ -15,8 +15,10 @@ HexusOpponentOrcKing* HexusOpponentOrcKing::getInstance()
 
 HexusOpponentOrcKing::HexusOpponentOrcKing() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Forest_Enemies_BossDragonOrcKing_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
-	Vec2::ZERO,
+	Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	HexusOpponentOrcKing::StringKeyOpponentName, Card::CardStyle::Shadow,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
