@@ -3,6 +3,7 @@
 
 #include "Engine/Utils/StrUtils.h"
 #include "Engine/SmartNode.h"
+#include "Events/HexusEvents.h"
 #include "Resources.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
@@ -29,8 +30,7 @@ public:
 		EndTurn,
 		Score,
 		Win,
-		Lose,
-		GameEnd
+		Lose
 	};
 
 	enum Difficulty
@@ -101,6 +101,9 @@ public:
 	CardRow* enemyBinaryCards;
 	CardRow* enemyDecimalCards;
 	CardRow* enemyHexCards;
+
+	std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback;
+	HexusOpponentData* opponentData;
 
 	static const std::string onStateUpdateEvent;
 private:

@@ -85,19 +85,9 @@ void Banners::updateBanner(GameState* gameState)
 		break;
 	case GameState::StateType::Win:
 		gameState->bannerMessage = "VICTORY!";
-
-		stateTransition = CallFunc::create([gameState]
-		{
-			GameState::updateState(gameState, GameState::StateType::GameEnd);
-		});
 		break;
 	case GameState::StateType::Lose:
 		gameState->bannerMessage = "DEFEAT!";
-
-		stateTransition = CallFunc::create([gameState]
-		{
-			GameState::updateState(gameState, GameState::StateType::GameEnd);
-		});
 		break;
 	case GameState::StateType::TurnBanner:
 		gameState->playerHand->disableRowCardInteraction();

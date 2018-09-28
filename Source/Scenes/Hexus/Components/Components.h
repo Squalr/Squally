@@ -4,6 +4,7 @@
 #include "CoinFlip.h"
 #include "ControlDraw.h"
 #include "ControlEndTurn.h"
+#include "ControlGameEnd.h"
 #include "ControlNeutral.h"
 #include "ControlReplaceCards.h"
 #include "ControlCombineStaged.h"
