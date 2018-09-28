@@ -1,5 +1,7 @@
 #include "HexusChapterPreviewIceCaps.h"
 
+const std::string HexusChapterPreviewIceCaps::stringKeyChapterName = "HEXUS_CHAPTER_ICE_CAPS";
+
 HexusChapterPreviewIceCaps* HexusChapterPreviewIceCaps::create()
 {
 	HexusChapterPreviewIceCaps* instance = new HexusChapterPreviewIceCaps();
@@ -9,7 +11,7 @@ HexusChapterPreviewIceCaps* HexusChapterPreviewIceCaps::create()
 	return instance;
 }
 
-HexusChapterPreviewIceCaps::HexusChapterPreviewIceCaps()
+HexusChapterPreviewIceCaps::HexusChapterPreviewIceCaps() : HexusChapterPreview(HexusChapterPreviewIceCaps::stringKeyChapterName)
 {
 	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps));
 	this->text->setString("Ice Caps");

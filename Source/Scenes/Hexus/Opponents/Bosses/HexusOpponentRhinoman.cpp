@@ -19,7 +19,8 @@ HexusOpponentRhinoman::HexusOpponentRhinoman() : HexusOpponentData(
 	1.0f,
 	Vec2(-24.0f, -48.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentRhinoman::StringKeyOpponentName, Card::CardStyle::Shadow,
+	HexusOpponentRhinoman::StringKeyOpponentName,
+	Card::CardStyle::Shadow,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

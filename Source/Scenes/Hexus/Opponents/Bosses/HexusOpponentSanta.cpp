@@ -19,7 +19,8 @@ HexusOpponentSanta::HexusOpponentSanta() : HexusOpponentData(
 	1.0f,
 	Vec2(0.0f, -48.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentSanta::StringKeyOpponentName, Card::CardStyle::Water,
+	HexusOpponentSanta::StringKeyOpponentName,
+	Card::CardStyle::Water,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

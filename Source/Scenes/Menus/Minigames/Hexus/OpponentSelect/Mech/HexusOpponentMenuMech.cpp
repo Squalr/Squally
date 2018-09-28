@@ -1,21 +1,18 @@
-#include "HexusOpponentMenuObelisk.h"
+#include "HexusOpponentMenuMech.h"
 
-const std::string HexusOpponentMenuObelisk::StringKeyProgressSave = "SAVE_KEY_HEXUS_OBELISK_PROGRESS";
-
-HexusOpponentMenuObelisk * HexusOpponentMenuObelisk::create()
+HexusOpponentMenuMech * HexusOpponentMenuMech::create()
 {
-	HexusOpponentMenuObelisk* instance = new HexusOpponentMenuObelisk();
+	HexusOpponentMenuMech* instance = new HexusOpponentMenuMech();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HexusOpponentMenuObelisk::HexusOpponentMenuObelisk() : HexusOpponentMenuBase(HexusOpponentMenuObelisk::StringKeyProgressSave)
+HexusOpponentMenuMech::HexusOpponentMenuMech() : HexusOpponentMenuBase(HexusChapterPreviewMech::stringKeyChapterName)
 {
-	auto callback = CC_CALLBACK_1(HexusOpponentMenuObelisk::onGameEndCallback, this);
+	auto callback = CC_CALLBACK_1(HexusOpponentMenuMech::onGameEndCallback, this);
 
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
@@ -41,6 +38,6 @@ HexusOpponentMenuObelisk::HexusOpponentMenuObelisk() : HexusOpponentMenuBase(Hex
 	}
 }
 
-HexusOpponentMenuObelisk::~HexusOpponentMenuObelisk()
+HexusOpponentMenuMech::~HexusOpponentMenuMech()
 {
 }

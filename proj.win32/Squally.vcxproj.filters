@@ -1099,71 +1099,71 @@
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\HexusChapterSelectMenu.cpp">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect</Filter>
     </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\HexusOpponentMenuBase.cpp">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect</Filter>
-    </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\HexusOpponentPreview.cpp">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect</Filter>
-    </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Castle\HexusChapterPreviewCastle.cpp">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Castle</Filter>
-    </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Castle\HexusOpponentMenuCastle.cpp">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Castle</Filter>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Caverns\HexusChapterPreviewCaverns.cpp">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Caverns</Filter>
     </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Caverns\HexusOpponentMenuCaverns.cpp">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Caverns</Filter>
-    </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Forest\HexusChapterPreviewForest.cpp">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Forest</Filter>
-    </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Forest\HexusOpponentMenuForest.cpp">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Forest</Filter>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\IceCaps\HexusChapterPreviewIceCaps.cpp">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\IceCaps</Filter>
     </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\IceCaps\HexusOpponentMenuIceCaps.cpp">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\IceCaps</Filter>
-    </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Jungle\HexusChapterPreviewJungle.cpp">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Jungle</Filter>
-    </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Jungle\HexusOpponentMenuJungle.cpp">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Jungle</Filter>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Mech\HexusChapterPreviewMech.cpp">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Mech</Filter>
     </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Mech\HexusOpponentMenuMech.cpp">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Mech</Filter>
-    </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Obelisk\HexusChapterPreviewObelisk.cpp">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Obelisk</Filter>
-    </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Obelisk\HexusOpponentMenuObelisk.cpp">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Obelisk</Filter>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Ruins\HexusChapterPreviewRuins.cpp">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Ruins</Filter>
     </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Ruins\HexusOpponentMenuRuins.cpp">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Ruins</Filter>
-    </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Training\HexusChapterPreviewTraining.cpp">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Training</Filter>
-    </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Training\HexusOpponentMenuTraining.cpp">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Training</Filter>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Volcano\HexusChapterPreviewVolcano.cpp">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Volcano</Filter>
     </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Volcano\HexusOpponentMenuVolcano.cpp">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Volcano</Filter>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\HexusOpponentMenuBase.cpp">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\HexusOpponentPreview.cpp">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Castle\HexusOpponentMenuCastle.cpp">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Caverns\HexusOpponentMenuCaverns.cpp">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Caverns</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Forest\HexusOpponentMenuForest.cpp">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Forest</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\IceCaps\HexusOpponentMenuIceCaps.cpp">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\IceCaps</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Jungle\HexusOpponentMenuJungle.cpp">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Jungle</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Mech\HexusOpponentMenuMech.cpp">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Mech</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Obelisk\HexusOpponentMenuObelisk.cpp">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Obelisk</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Ruins\HexusOpponentMenuRuins.cpp">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Ruins</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Training\HexusOpponentMenuTraining.cpp">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Training</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Volcano\HexusOpponentMenuVolcano.cpp">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Volcano</Filter>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\Puzzles\HexusPuzzleItem.cpp">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\Puzzles</Filter>
@@ -19935,7 +19935,7 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\3.png">
       <Filter>Resources\Minigames\Hexus\Binary</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\4.PNG">
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\4.png">
       <Filter>Resources\Minigames\Hexus\Binary</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\5.png">
@@ -22428,71 +22428,71 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\HexusChapterSelectMenu.h">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\HexusOpponentMenuBase.h">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\HexusOpponentPreview.h">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect</Filter>
-    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Castle\HexusChapterPreviewCastle.h">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Castle</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Castle\HexusOpponentMenuCastle.h">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Castle</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Caverns\HexusChapterPreviewCaverns.h">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Caverns</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Caverns\HexusOpponentMenuCaverns.h">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Caverns</Filter>
-    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Forest\HexusChapterPreviewForest.h">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Forest</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Forest\HexusOpponentMenuForest.h">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Forest</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\IceCaps\HexusChapterPreviewIceCaps.h">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\IceCaps</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\IceCaps\HexusOpponentMenuIceCaps.h">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\IceCaps</Filter>
-    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Jungle\HexusChapterPreviewJungle.h">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Jungle</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Jungle\HexusOpponentMenuJungle.h">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Jungle</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Mech\HexusChapterPreviewMech.h">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Mech</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Mech\HexusOpponentMenuMech.h">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Mech</Filter>
-    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Obelisk\HexusChapterPreviewObelisk.h">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Obelisk</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Obelisk\HexusOpponentMenuObelisk.h">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Obelisk</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Ruins\HexusChapterPreviewRuins.h">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Ruins</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Ruins\HexusOpponentMenuRuins.h">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Ruins</Filter>
-    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Training\HexusChapterPreviewTraining.h">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Training</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Training\HexusOpponentMenuTraining.h">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Training</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Volcano\HexusChapterPreviewVolcano.h">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Volcano</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Volcano\HexusOpponentMenuVolcano.h">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Volcano</Filter>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\HexusOpponentMenuBase.h">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\HexusOpponentPreview.h">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Castle\HexusOpponentMenuCastle.h">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Caverns\HexusOpponentMenuCaverns.h">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Caverns</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Forest\HexusOpponentMenuForest.h">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Forest</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\IceCaps\HexusOpponentMenuIceCaps.h">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\IceCaps</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Jungle\HexusOpponentMenuJungle.h">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Jungle</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Mech\HexusOpponentMenuMech.h">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Mech</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Obelisk\HexusOpponentMenuObelisk.h">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Obelisk</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Ruins\HexusOpponentMenuRuins.h">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Ruins</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Training\HexusOpponentMenuTraining.h">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Training</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Volcano\HexusOpponentMenuVolcano.h">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Volcano</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\Puzzles\HexusPuzzleItem.h">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\Puzzles</Filter>
@@ -23955,6 +23955,39 @@
     </Filter>
     <Filter Include="Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Volcano">
       <UniqueIdentifier>{A94477CE-1F34-381A-A7D9-88EFCEF73ED3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect">
+      <UniqueIdentifier>{7BB13BB7-39F3-31F3-A3EB-FBCE33548997}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Castle">
+      <UniqueIdentifier>{FFF588D0-B4EE-3756-9442-B73580728388}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Caverns">
+      <UniqueIdentifier>{06F88309-3470-3BD0-AFAE-DAD4F51957E3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Forest">
+      <UniqueIdentifier>{14944397-4458-3043-ABF7-8FCD9CCD7F90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\IceCaps">
+      <UniqueIdentifier>{743D6CF0-64A2-36BE-BC1B-895F158C764B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Jungle">
+      <UniqueIdentifier>{1D8C2970-90D2-3E3C-9F5D-58208CF7A2C6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Mech">
+      <UniqueIdentifier>{E51F628C-B057-369B-B50B-2DFC9411D500}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Obelisk">
+      <UniqueIdentifier>{FB001230-0CCC-3A1A-B4FB-D6A8EA5DD60B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Ruins">
+      <UniqueIdentifier>{EEAC33FC-F42C-3975-8853-16C99B311499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Training">
+      <UniqueIdentifier>{256C0D3D-CB9D-386E-9053-B22F50A4AA6C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Volcano">
+      <UniqueIdentifier>{EC678852-1B42-3D12-9070-345F93867BD3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Source\Scenes\Menus\Minigames\Hexus\Puzzles">
       <UniqueIdentifier>{A94B8010-5539-33DD-8D72-891FD56E24AA}</UniqueIdentifier>

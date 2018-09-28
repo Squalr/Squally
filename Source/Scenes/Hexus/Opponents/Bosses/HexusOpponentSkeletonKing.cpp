@@ -19,7 +19,8 @@ HexusOpponentSkeletonKing::HexusOpponentSkeletonKing() : HexusOpponentData(
 	1.0f,
 	Vec2(-64.0f, -32.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentSkeletonKing::StringKeyOpponentName, Card::CardStyle::Water,
+	HexusOpponentSkeletonKing::StringKeyOpponentName,
+	Card::CardStyle::Water,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

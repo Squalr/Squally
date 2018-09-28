@@ -1,5 +1,7 @@
 #include "HexusChapterPreviewForest.h"
 
+const std::string HexusChapterPreviewForest::stringKeyChapterName = "HEXUS_CHAPTER_FOREST";
+
 HexusChapterPreviewForest* HexusChapterPreviewForest::create()
 {
 	HexusChapterPreviewForest* instance = new HexusChapterPreviewForest();
@@ -9,7 +11,7 @@ HexusChapterPreviewForest* HexusChapterPreviewForest::create()
 	return instance;
 }
 
-HexusChapterPreviewForest::HexusChapterPreviewForest()
+HexusChapterPreviewForest::HexusChapterPreviewForest() : HexusChapterPreview(HexusChapterPreviewForest::stringKeyChapterName)
 {
 	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest));
 	this->text->setString("Forest");

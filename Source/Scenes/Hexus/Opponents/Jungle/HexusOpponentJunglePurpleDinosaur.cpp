@@ -19,7 +19,8 @@ HexusOpponentJunglePurpleDinosaur::HexusOpponentJunglePurpleDinosaur() : HexusOp
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentJunglePurpleDinosaur::StringKeyOpponentName, Card::CardStyle::Earth,
+	HexusOpponentJunglePurpleDinosaur::StringKeyOpponentName,
+	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

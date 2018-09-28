@@ -19,7 +19,8 @@ HexusOpponentJungleDwarf::HexusOpponentJungleDwarf() : HexusOpponentData(
 	1.0f,
 	Vec2(-24.0f, -48.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentJungleDwarf::StringKeyOpponentName, Card::CardStyle::Earth,
+	HexusOpponentJungleDwarf::StringKeyOpponentName,
+	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

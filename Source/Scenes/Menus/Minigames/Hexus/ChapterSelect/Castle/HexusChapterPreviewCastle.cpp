@@ -1,5 +1,7 @@
 #include "HexusChapterPreviewCastle.h"
 
+const std::string HexusChapterPreviewCastle::stringKeyChapterName = "HEXUS_CHAPTER_CASTLE";
+
 HexusChapterPreviewCastle* HexusChapterPreviewCastle::create()
 {
 	HexusChapterPreviewCastle* instance = new HexusChapterPreviewCastle();
@@ -9,7 +11,7 @@ HexusChapterPreviewCastle* HexusChapterPreviewCastle::create()
 	return instance;
 }
 
-HexusChapterPreviewCastle::HexusChapterPreviewCastle()
+HexusChapterPreviewCastle::HexusChapterPreviewCastle() : HexusChapterPreview(HexusChapterPreviewCastle::stringKeyChapterName)
 {
 	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle));
 	this->text->setString("Castle");

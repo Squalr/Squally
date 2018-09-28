@@ -19,7 +19,8 @@ HexusOpponentOrcKing::HexusOpponentOrcKing() : HexusOpponentData(
 	1.0f,
 	Vec2(0.0f, 0.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentOrcKing::StringKeyOpponentName, Card::CardStyle::Shadow,
+	HexusOpponentOrcKing::StringKeyOpponentName,
+	Card::CardStyle::Shadow,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

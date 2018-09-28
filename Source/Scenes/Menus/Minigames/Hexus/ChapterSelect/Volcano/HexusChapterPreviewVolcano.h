@@ -12,6 +12,8 @@ class HexusChapterPreviewVolcano : public HexusChapterPreview
 public:
 	static HexusChapterPreviewVolcano * create();
 
+	static const std::string stringKeyChapterName;
+
 protected:
 	HexusChapterPreviewVolcano();
 	~HexusChapterPreviewVolcano();

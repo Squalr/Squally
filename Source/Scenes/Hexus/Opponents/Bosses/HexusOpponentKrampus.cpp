@@ -19,7 +19,8 @@ HexusOpponentKrampus::HexusOpponentKrampus() : HexusOpponentData(
 	1.0f,
 	Vec2(0.0f, -48.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentKrampus::StringKeyOpponentName, Card::CardStyle::Shadow,
+	HexusOpponentKrampus::StringKeyOpponentName,
+	Card::CardStyle::Shadow,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

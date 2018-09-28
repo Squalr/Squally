@@ -51,4 +51,7 @@ private:
 	PassButton* passButton;
 	RowTotals* rowTotals;
 	ScoreTotal* scoreTotal;
+
+	std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback;
+	HexusOpponentData* opponentData;
 };

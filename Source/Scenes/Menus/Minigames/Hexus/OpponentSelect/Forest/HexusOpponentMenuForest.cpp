@@ -1,25 +1,18 @@
-#include "HexusOpponentMenuRuins.h"
+#include "HexusOpponentMenuForest.h"
 
-const std::string HexusOpponentMenuRuins::StringKeyProgressSave = "SAVE_KEY_HEXUS_RUINS_PROGRESS";
-
-HexusOpponentMenuRuins * HexusOpponentMenuRuins::create()
+HexusOpponentMenuForest * HexusOpponentMenuForest::create()
 {
-	HexusOpponentMenuRuins* instance = new HexusOpponentMenuRuins();
+	HexusOpponentMenuForest* instance = new HexusOpponentMenuForest();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HexusOpponentMenuRuins::HexusOpponentMenuRuins() : HexusOpponentMenuBase(HexusOpponentMenuRuins::StringKeyProgressSave)
+HexusOpponentMenuForest::HexusOpponentMenuForest() : HexusOpponentMenuBase(HexusChapterPreviewForest::stringKeyChapterName)
 {
-	auto callback = CC_CALLBACK_1(HexusOpponentMenuRuins::onGameEndCallback, this);
+	auto callback = CC_CALLBACK_1(HexusOpponentMenuForest::onGameEndCallback, this);
 
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
@@ -39,6 +32,6 @@ HexusOpponentMenuRuins::HexusOpponentMenuRuins() : HexusOpponentMenuBase(HexusOp
 	}
 }
 
-HexusOpponentMenuRuins::~HexusOpponentMenuRuins()
+HexusOpponentMenuForest::~HexusOpponentMenuForest()
 {
 }

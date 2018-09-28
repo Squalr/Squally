@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 
 #include "Events/NavigationEvents.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
@@ -35,12 +36,15 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void loadProgress();
 	void onCloseClick(MenuSprite* menuSprite);
 	void onDeckManagementClick(MenuSprite* menuSprite);
 	void onMouseOver(HexusChapterPreview* hexusChapterPreview);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
-	std::vector<HexusChapterPreview*>* chapters;
+	std::vector<HexusChapterPreview*> chapters;
+	std::map<HexusChapterPreview*, HexusChapterPreview*> dependencies;
+
 	Sprite* background;
 	HexusChapterPreviewTraining* hexusChapterPreviewTraining;
 	HexusChapterPreviewJungle* hexusChapterPreviewJungle;

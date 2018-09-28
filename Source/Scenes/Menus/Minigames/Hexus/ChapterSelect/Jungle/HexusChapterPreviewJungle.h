@@ -12,6 +12,8 @@ class HexusChapterPreviewJungle : public HexusChapterPreview
 public:
 	static HexusChapterPreviewJungle * create();
 
+	static const std::string stringKeyChapterName;
+
 protected:
 	HexusChapterPreviewJungle();
 	~HexusChapterPreviewJungle();
