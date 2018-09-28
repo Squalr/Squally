@@ -203,7 +203,10 @@ int Card::applyOperation(int attack, Operation operation) {
 			attack += operation.immediate;
 			break;
 		case Operation::OperationType::SUB:
-			attack = operation.immediate > attack ? 0 : attack - operation.immediate;
+			attack -= operation.immediate;
+			if (attack < 0) {
+				attack = 16 - abs(attack);
+			}
 			break;
 	}
 
