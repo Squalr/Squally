@@ -116,7 +116,10 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 					this->activeGameState->selectedCard = card;
 					this->activeGameState->stagedCombineCardRow = bestRow;
 					GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
+					return;
 				}
+				
+				break;
 			}
 			case CardData::CardType::Special_AND:
 			case CardData::CardType::Special_OR:
@@ -124,12 +127,78 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 			case CardData::CardType::Special_ADD:
 			case CardData::CardType::Special_SUB: 
 			{
-				// don't play this card if there are no viable moves
-				if (gameState->getEnemyCardCount() > 1) {
+				// n^2 card compare to figure out the best strategy
+				// Maybe there is some better way to do this calculation
+
+				std::vector<Card*> cards = gameState->getEnemyCards(); // all valid source cards for the operation must be our own
+				Card* bestSourceCard = nullptr;
+				Card* bestTargetCard = nullptr;
+				int bestDiff = INT_MIN;
+
+				// First simulate buffing your own cards
+				for (auto sourceCardIterator = cards.begin(); sourceCardIterator != cards.end(); sourceCardIterator++)
+				{
+					Card* sourceCard = *sourceCardIterator;
+
+					// First we iterate through only our own cards
+					for (auto targetCardIterator = cards.begin(); targetCardIterator != cards.end(); targetCardIterator++)
+					{
+						if (sourceCardIterator == targetCardIterator) {
+							continue; // we're not allowed to apply a card to itself
+						}
+
+						Card* targetCard = *targetCardIterator;
+						Card::Operation operation = Card::toOperation(
+							gameState->selectedCard->cardData->cardType, 
+							sourceCard->getAttack()
+						);
+
+						int diff = targetCard->simulateOperation(operation);
+						if (diff > bestDiff) {
+							bestDiff = diff;
+							bestSourceCard = sourceCard;
+							bestTargetCard = targetCard;
+						}
+					}
+				}
+
+				// Then simulate attacking the player
+				std::vector<Card*> playerCards = gameState->getPlayerCards();
+				for (auto sourceCardIterator = cards.begin(); sourceCardIterator != cards.end(); sourceCardIterator++)
+				{
+					Card* sourceCard = *sourceCardIterator;
+
+					// This time we iterate through the players cards
+					for (auto targetCardIterator = playerCards.begin(); targetCardIterator != playerCards.end(); targetCardIterator++)
+					{
+						if (sourceCardIterator == targetCardIterator) {
+							continue; // we're not allowed to apply a card to itself
+						}
+
+						Card* targetCard = *targetCardIterator;
+						Card::Operation operation = Card::toOperation(
+							gameState->selectedCard->cardData->cardType, 
+							sourceCard->getAttack()
+						);
+
+						// multiply by negative 1 to flip the diff because we want to hurt the player
+						int diff = targetCard->simulateOperation(operation) * -1;
+						if (diff > bestDiff) {
+							bestDiff = diff;
+							bestSourceCard = sourceCard;
+							bestTargetCard = targetCard;
+						}
+					}
+				}
+
+				if (bestDiff >= 0) {
+					this->activeGameState->stagedCombineSourceCard = bestSourceCard;
+					this->activeGameState->stagedCombineTargetCard = bestTargetCard;
 					this->activeGameState->selectedCard = card;
 					GameState::updateState(this->activeGameState, GameState::StateType::ControlCombineStaged);
 					return;
 				}
+				break;
 			}
 			default: 
 				break;
