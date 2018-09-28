@@ -17,6 +17,7 @@ public:
 	void copyTo(Deck* otherDeck);
 	int getCardCount();
 
+	void removeCardsWhere(std::function<bool(Card*)> predicate);
 	Card* removeCard(Card* card);
 	Card* drawCard();
 	bool hasCards();
