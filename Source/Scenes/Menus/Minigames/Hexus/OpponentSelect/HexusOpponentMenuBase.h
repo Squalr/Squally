@@ -18,7 +18,7 @@ using namespace cocos2d;
 class HexusOpponentMenuBase : public FadeScene
 {
 protected:
-	HexusOpponentMenuBase(std::string progressSaveStringKey);
+	HexusOpponentMenuBase(std::string chapterProgressSaveKey);
 	~HexusOpponentMenuBase();
 
 	void onEnter() override;
@@ -33,10 +33,13 @@ protected:
 
 	ScrollPane* scrollPane;
 	std::vector<HexusOpponentPreview*> opponents;
+	std::map<HexusOpponentPreview*, HexusOpponentPreview*> dependencies;
 
-	std::string progressSaveStringKey;
+	std::string chapterProgressSaveKey;
 	Sprite* background;
 	TextMenuSprite* deckManagementButton;
 	Label* opponentSelectLabel;
+
+	static const std::string winsPrefix;
 };
 

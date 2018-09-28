@@ -3,6 +3,7 @@
 
 #include "Resources.h"
 #include "Scenes/Hexus/Opponents/HexusOpponents.h"
+#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/IceCaps/HexusChapterPreviewIceCaps.h"
 #include "Scenes/Menus/Minigames/Hexus/OpponentSelect/HexusOpponentMenuBase.h"
 #include "Scenes/Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
 
@@ -16,8 +17,5 @@ public:
 protected:
 	HexusOpponentMenuIceCaps();
 	~HexusOpponentMenuIceCaps();
-
-private:
-	static const std::string StringKeyProgressSave;
 };
 

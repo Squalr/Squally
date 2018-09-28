@@ -1,7 +1,5 @@
 #include "HexusOpponentMenuIceCaps.h"
 
-const std::string HexusOpponentMenuIceCaps::StringKeyProgressSave = "SAVE_KEY_HEXUS_ICE_CAPS_PROGRESS";
-
 HexusOpponentMenuIceCaps * HexusOpponentMenuIceCaps::create()
 {
 	HexusOpponentMenuIceCaps* instance = new HexusOpponentMenuIceCaps();
@@ -11,7 +9,7 @@ HexusOpponentMenuIceCaps * HexusOpponentMenuIceCaps::create()
 	return instance;
 }
 
-HexusOpponentMenuIceCaps::HexusOpponentMenuIceCaps() : HexusOpponentMenuBase(HexusOpponentMenuIceCaps::StringKeyProgressSave)
+HexusOpponentMenuIceCaps::HexusOpponentMenuIceCaps() : HexusOpponentMenuBase(HexusChapterPreviewIceCaps::stringKeyChapterName)
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuIceCaps::onGameEndCallback, this);
 

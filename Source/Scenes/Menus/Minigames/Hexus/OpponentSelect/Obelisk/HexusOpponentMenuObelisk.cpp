@@ -1,7 +1,5 @@
 #include "HexusOpponentMenuObelisk.h"
 
-const std::string HexusOpponentMenuObelisk::StringKeyProgressSave = "SAVE_KEY_HEXUS_OBELISK_PROGRESS";
-
 HexusOpponentMenuObelisk * HexusOpponentMenuObelisk::create()
 {
 	HexusOpponentMenuObelisk* instance = new HexusOpponentMenuObelisk();
@@ -11,7 +9,7 @@ HexusOpponentMenuObelisk * HexusOpponentMenuObelisk::create()
 	return instance;
 }
 
-HexusOpponentMenuObelisk::HexusOpponentMenuObelisk() : HexusOpponentMenuBase(HexusOpponentMenuObelisk::StringKeyProgressSave)
+HexusOpponentMenuObelisk::HexusOpponentMenuObelisk() : HexusOpponentMenuBase(HexusChapterPreviewObelisk::stringKeyChapterName)
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuObelisk::onGameEndCallback, this);
 

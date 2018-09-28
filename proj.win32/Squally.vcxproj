@@ -65,8 +65,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PreBuildEvent>
-      <Message>
-      </Message>
+      <Message>												</Message>
       <Command>setlocal
 "F:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/win32-specific/gles/prebuilt/glew32.dll" "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/bin/Squally/Debug"
 if %errorlevel% neq 0 goto :cmEnd
@@ -217,18 +216,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Castle\HexusOpponentMenuCastle.cpp" />
-    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Caverns\HexusOpponentMenuCaverns.cpp" />
-    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Forest\HexusOpponentMenuForest.cpp" />
-    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\HexusOpponentMenuBase.cpp" />
-    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\HexusOpponentPreview.cpp" />
-    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\IceCaps\HexusOpponentMenuIceCaps.cpp" />
-    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Jungle\HexusOpponentMenuJungle.cpp" />
-    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Mech\HexusOpponentMenuMech.cpp" />
-    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Obelisk\HexusOpponentMenuObelisk.cpp" />
-    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Ruins\HexusOpponentMenuRuins.cpp" />
-    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Training\HexusOpponentMenuTraining.cpp" />
-    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Volcano\HexusOpponentMenuVolcano.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Bootstrapper.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\GameWindow.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Resources.cpp" />
@@ -605,6 +592,18 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Ruins\HexusChapterPreviewRuins.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Training\HexusChapterPreviewTraining.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Volcano\HexusChapterPreviewVolcano.cpp" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\HexusOpponentMenuBase.cpp" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\HexusOpponentPreview.cpp" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Castle\HexusOpponentMenuCastle.cpp" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Caverns\HexusOpponentMenuCaverns.cpp" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Forest\HexusOpponentMenuForest.cpp" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\IceCaps\HexusOpponentMenuIceCaps.cpp" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Jungle\HexusOpponentMenuJungle.cpp" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Mech\HexusOpponentMenuMech.cpp" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Obelisk\HexusOpponentMenuObelisk.cpp" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Ruins\HexusOpponentMenuRuins.cpp" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Training\HexusOpponentMenuTraining.cpp" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Volcano\HexusOpponentMenuVolcano.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\Puzzles\HexusPuzzleItem.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\Puzzles\HexusPuzzleMenu.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Options\OptionsMenu.cpp" />
@@ -618,18 +617,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Sound\MusicDeserializer.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\main.cpp" />
     <ResourceCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\game.rc" />
-    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Castle\HexusOpponentMenuCastle.h" />
-    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Caverns\HexusOpponentMenuCaverns.h" />
-    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Forest\HexusOpponentMenuForest.h" />
-    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\HexusOpponentMenuBase.h" />
-    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\HexusOpponentPreview.h" />
-    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\IceCaps\HexusOpponentMenuIceCaps.h" />
-    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Jungle\HexusOpponentMenuJungle.h" />
-    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Mech\HexusOpponentMenuMech.h" />
-    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Obelisk\HexusOpponentMenuObelisk.h" />
-    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Ruins\HexusOpponentMenuRuins.h" />
-    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Training\HexusOpponentMenuTraining.h" />
-    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Volcano\HexusOpponentMenuVolcano.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\.gitattributes" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Backgrounds\.gitattributes" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Backgrounds\Platformer\Background1.png" />
@@ -7715,6 +7702,18 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Ruins\HexusChapterPreviewRuins.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Training\HexusChapterPreviewTraining.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Volcano\HexusChapterPreviewVolcano.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\HexusOpponentMenuBase.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\HexusOpponentPreview.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Castle\HexusOpponentMenuCastle.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Caverns\HexusOpponentMenuCaverns.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Forest\HexusOpponentMenuForest.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\IceCaps\HexusOpponentMenuIceCaps.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Jungle\HexusOpponentMenuJungle.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Mech\HexusOpponentMenuMech.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Obelisk\HexusOpponentMenuObelisk.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Ruins\HexusOpponentMenuRuins.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Training\HexusOpponentMenuTraining.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\OpponentSelect\Volcano\HexusOpponentMenuVolcano.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\Puzzles\HexusPuzzleItem.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\Puzzles\HexusPuzzlesMenu.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Options\OptionsMenu.h" />

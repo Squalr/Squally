@@ -1,8 +1,10 @@
 #include "HexusOpponentMenuBase.h"
 
-HexusOpponentMenuBase::HexusOpponentMenuBase(std::string progressSaveStringKey)
+const std::string HexusOpponentMenuBase::winsPrefix = "WINS_";
+
+HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
 {
-	this->progressSaveStringKey = progressSaveStringKey;
+	this->chapterProgressSaveKey = chapterProgressSaveKey;
 	this->opponents = std::vector<HexusOpponentPreview*>();
 	this->scrollPane = ScrollPane::create(Size(1536.0f, 840.0f), Color4B(0, 0, 0, 196));
 	this->background = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_WoodBackground);
@@ -46,6 +48,22 @@ void HexusOpponentMenuBase::onEnter()
 	float duration = 0.35f;
 
 	GameUtils::fadeInObject(this->scrollPane, delay, duration);
+
+	// Just assume linear dependencies for now
+	this->dependencies.clear();
+	std::vector<HexusOpponentPreview*>::iterator prevIt;
+
+	for (auto it = this->opponents.begin(); it != this->opponents.end(); prevIt = it, it++)
+	{
+		if (*it == this->opponents.front())
+		{
+			this->dependencies.emplace((*it), nullptr);
+		}
+		else
+		{
+			this->dependencies.emplace((*it), (*prevIt));
+		}
+	}
 
 	for (auto it = this->opponents.begin(); it != this->opponents.end(); it++)
 	{
@@ -124,35 +142,40 @@ void HexusOpponentMenuBase::onDeckManagementClick(MenuSprite* menuSprite)
 
 void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventArgs args)
 {
-	static const std::string winsPrefix = "WINS_";
-
 	if (args.playerWon)
 	{
-		std::string key = winsPrefix + args.opponentData->enemyNameKey;
+		std::string key = HexusOpponentMenuBase::winsPrefix + args.opponentData->enemyNameKey;
 		int wins = SaveManager::hasGlobalData(key) ? SaveManager::getGlobalData(key).asInt() + 1 : 1;
+
+		if (args.opponentData == this->opponents.back()->hexusOpponentData)
+		{
+			SaveManager::saveGlobalData(this->chapterProgressSaveKey, cocos2d::Value(true));
+		}
 
 		SaveManager::saveGlobalData(key, cocos2d::Value(wins));
 	}
-
-	this->loadProgress();
 }
 
 void HexusOpponentMenuBase::loadProgress()
 {
-	int progressIndex = 0;
-
-	if (SaveManager::hasGlobalData(this->progressSaveStringKey))
+	for (auto it = this->dependencies.begin(); it != this->dependencies.end(); it++)
 	{
-		progressIndex = SaveManager::getGlobalData(this->progressSaveStringKey).asInt();
-	}
+		HexusOpponentPreview* opponent = (*it).first;
+		HexusOpponentPreview* dependsOn = (*it).second;
 
-	while (progressIndex >= 0)
-	{
-		if (progressIndex < this->opponents.size())
-		{ 
-			this->opponents[progressIndex]->enableInteraction();
+		if (dependsOn == nullptr)
+		{
+			opponent->enableInteraction();
+			continue;
 		}
 
-		progressIndex--;
+		std::string dependencyKey = HexusOpponentMenuBase::winsPrefix + dependsOn->hexusOpponentData->enemyNameKey;
+
+		int wins = SaveManager::hasGlobalData(dependencyKey) ? SaveManager::getGlobalData(dependencyKey).asInt() : 0;
+
+		if (wins > 0)
+		{
+			opponent->enableInteraction();
+		}
 	}
 }

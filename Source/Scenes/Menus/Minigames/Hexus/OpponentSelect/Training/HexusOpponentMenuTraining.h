@@ -3,6 +3,7 @@
 
 #include "Resources.h"
 #include "Scenes/Hexus/Opponents/HexusOpponents.h"
+#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Training/HexusChapterPreviewTraining.h"
 #include "Scenes/Menus/Minigames/Hexus/OpponentSelect/HexusOpponentMenuBase.h"
 #include "Scenes/Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
 
@@ -16,8 +17,5 @@ public:
 protected:
 	HexusOpponentMenuTraining();
 	~HexusOpponentMenuTraining();
-
-private:
-	static const std::string StringKeyProgressSave;
 };
 

@@ -1,7 +1,5 @@
 #include "HexusOpponentMenuMech.h"
 
-const std::string HexusOpponentMenuMech::StringKeyProgressSave = "SAVE_KEY_HEXUS_MECH_PROGRESS";
-
 HexusOpponentMenuMech * HexusOpponentMenuMech::create()
 {
 	HexusOpponentMenuMech* instance = new HexusOpponentMenuMech();
@@ -11,7 +9,7 @@ HexusOpponentMenuMech * HexusOpponentMenuMech::create()
 	return instance;
 }
 
-HexusOpponentMenuMech::HexusOpponentMenuMech() : HexusOpponentMenuBase(HexusOpponentMenuMech::StringKeyProgressSave)
+HexusOpponentMenuMech::HexusOpponentMenuMech() : HexusOpponentMenuBase(HexusChapterPreviewMech::stringKeyChapterName)
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuMech::onGameEndCallback, this);
 

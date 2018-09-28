@@ -1,7 +1,5 @@
 #include "HexusOpponentMenuVolcano.h"
 
-const std::string HexusOpponentMenuVolcano::StringKeyProgressSave = "SAVE_KEY_HEXUS_VOLCANO_PROGRESS";
-
 HexusOpponentMenuVolcano * HexusOpponentMenuVolcano::create()
 {
 	HexusOpponentMenuVolcano* instance = new HexusOpponentMenuVolcano();
@@ -11,7 +9,7 @@ HexusOpponentMenuVolcano * HexusOpponentMenuVolcano::create()
 	return instance;
 }
 
-HexusOpponentMenuVolcano::HexusOpponentMenuVolcano() : HexusOpponentMenuBase(HexusOpponentMenuVolcano::StringKeyProgressSave)
+HexusOpponentMenuVolcano::HexusOpponentMenuVolcano() : HexusOpponentMenuBase(HexusChapterPreviewVolcano::stringKeyChapterName)
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuVolcano::onGameEndCallback, this);
 
