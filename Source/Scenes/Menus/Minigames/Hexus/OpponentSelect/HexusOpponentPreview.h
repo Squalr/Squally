@@ -17,6 +17,8 @@ public:
 	void disableInteraction();
 	void enableInteraction();
 
+	HexusOpponentData* hexusOpponentData;
+
 protected:
 	HexusOpponentPreview(HexusOpponentData* opponentData, std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback);
 	~HexusOpponentPreview();
@@ -26,7 +28,6 @@ private:
 	void onOpponentClick(MenuSprite* HexusOpponentPreview);
 
 	std::function<void(HexusOpponentPreview*)> onMouseOverEvent;
-	HexusOpponentData* hexusOpponentData;
 	std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback;
 
 	AnimationNode* opponentSprite;

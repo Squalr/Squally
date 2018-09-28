@@ -12,6 +12,8 @@ class HexusChapterPreviewForest : public HexusChapterPreview
 public:
 	static HexusChapterPreviewForest * create();
 
+	static const std::string stringKeyChapterName;
+
 protected:
 	HexusChapterPreviewForest();
 	~HexusChapterPreviewForest();

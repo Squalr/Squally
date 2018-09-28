@@ -1,5 +1,7 @@
 #include "HexusChapterPreviewMech.h"
 
+const std::string HexusChapterPreviewMech::stringKeyChapterName = "HEXUS_CHAPTER_MECH";
+
 HexusChapterPreviewMech* HexusChapterPreviewMech::create()
 {
 	HexusChapterPreviewMech* instance = new HexusChapterPreviewMech();
@@ -9,7 +11,7 @@ HexusChapterPreviewMech* HexusChapterPreviewMech::create()
 	return instance;
 }
 
-HexusChapterPreviewMech::HexusChapterPreviewMech()
+HexusChapterPreviewMech::HexusChapterPreviewMech() : HexusChapterPreview(HexusChapterPreviewMech::stringKeyChapterName)
 {
 	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech));
 	this->text->setString("Laboratory");

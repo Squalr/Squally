@@ -12,6 +12,8 @@ class HexusChapterPreviewTraining : public HexusChapterPreview
 public:
 	static HexusChapterPreviewTraining * create();
 
+	static const std::string stringKeyChapterName;
+
 protected:
 	HexusChapterPreviewTraining();
 	~HexusChapterPreviewTraining();

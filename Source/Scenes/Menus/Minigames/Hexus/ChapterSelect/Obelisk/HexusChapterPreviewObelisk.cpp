@@ -1,5 +1,7 @@
 #include "HexusChapterPreviewObelisk.h"
 
+const std::string HexusChapterPreviewObelisk::stringKeyChapterName = "HEXUS_CHAPTER_OBELISK";
+
 HexusChapterPreviewObelisk* HexusChapterPreviewObelisk::create()
 {
 	HexusChapterPreviewObelisk* instance = new HexusChapterPreviewObelisk();
@@ -9,7 +11,7 @@ HexusChapterPreviewObelisk* HexusChapterPreviewObelisk::create()
 	return instance;
 }
 
-HexusChapterPreviewObelisk::HexusChapterPreviewObelisk()
+HexusChapterPreviewObelisk::HexusChapterPreviewObelisk() : HexusChapterPreview(HexusChapterPreviewObelisk::stringKeyChapterName)
 {
 	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk));
 	this->text->setString("The Void");

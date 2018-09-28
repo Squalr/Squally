@@ -17,7 +17,7 @@ HexusOpponentJungleGoblinGrunt::HexusOpponentJungleGoblinGrunt() : HexusOpponent
 	Resources::Entities_Platformer_Environment_Jungle_Enemies_GoblinGrunt_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	0.4f,
-	Vec2(48.0f, -128.0f),
+	Vec2(48.0f, -144.0f),
 	Vec2(0.0f, 0.0f),
 	HexusOpponentJungleGoblinGrunt::StringKeyOpponentName,
 	Card::CardStyle::Earth,

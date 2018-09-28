@@ -13,14 +13,16 @@ using namespace cocos2d;
 class HexusChapterPreview : public SmartNode
 {
 public:
-	static HexusChapterPreview * create();
+	static HexusChapterPreview * create(std::string chapterNameKey);
 
 	void setClickCallback(std::function<void()> callback);
 	void disableInteraction();
 	void enableInteraction();
 
+	std::string chapterNameKey;
+
 protected:
-	HexusChapterPreview();
+	HexusChapterPreview(std::string chapterNameKey);
 	~HexusChapterPreview();
 
 	void initializePositions() override;

@@ -1,7 +1,5 @@
 #include "HexusOpponentMenuForest.h"
 
-const std::string HexusOpponentMenuForest::StringKeyProgressSave = "SAVE_KEY_HEXUS_FOREST_PROGRESS";
-
 HexusOpponentMenuForest * HexusOpponentMenuForest::create()
 {
 	HexusOpponentMenuForest* instance = new HexusOpponentMenuForest();
@@ -11,7 +9,7 @@ HexusOpponentMenuForest * HexusOpponentMenuForest::create()
 	return instance;
 }
 
-HexusOpponentMenuForest::HexusOpponentMenuForest() : HexusOpponentMenuBase(HexusOpponentMenuForest::StringKeyProgressSave)
+HexusOpponentMenuForest::HexusOpponentMenuForest() : HexusOpponentMenuBase(HexusChapterPreviewForest::stringKeyChapterName)
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuForest::onGameEndCallback, this);
 

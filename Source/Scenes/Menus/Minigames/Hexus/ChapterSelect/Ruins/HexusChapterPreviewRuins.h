@@ -12,6 +12,8 @@ class HexusChapterPreviewRuins : public HexusChapterPreview
 public:
 	static HexusChapterPreviewRuins * create();
 
+	static const std::string stringKeyChapterName;
+
 protected:
 	HexusChapterPreviewRuins();
 	~HexusChapterPreviewRuins();
