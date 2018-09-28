@@ -22,7 +22,6 @@ private:
 	~Banners();
 
 	void initializePositions() override;
-	void updateBanner(GameState* gameState);
 	void displayPlayerTurnBanner();
 	void displayEnemyTurnBanner();
 	void displayWinLoseBanner();
