@@ -15,8 +15,10 @@ HexusOpponentEgyptianGoddess* HexusOpponentEgyptianGoddess::getInstance()
 
 HexusOpponentEgyptianGoddess::HexusOpponentEgyptianGoddess() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Ruins_Enemies_BossEgyptianGoddess_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
+	Vec2(0.0f, 0.0f),
 	HexusOpponentEgyptianGoddess::StringKeyOpponentName, Card::CardStyle::Shadow,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

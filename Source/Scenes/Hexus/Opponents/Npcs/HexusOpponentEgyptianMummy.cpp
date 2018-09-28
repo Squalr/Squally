@@ -15,8 +15,10 @@ HexusOpponentEgyptianMummy* HexusOpponentEgyptianMummy::getInstance()
 
 HexusOpponentEgyptianMummy::HexusOpponentEgyptianMummy() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Snow_Npcs_ChristmasWarrior_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	0.4f,
 	Vec2(0.0f, -96.0f),
+	Vec2(0.0f, 0.0f),
 	HexusOpponentEgyptianMummy::StringKeyOpponentName, Card::CardStyle::Water,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

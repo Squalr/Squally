@@ -15,8 +15,10 @@ HexusOpponentWitch* HexusOpponentWitch::getInstance()
 
 HexusOpponentWitch::HexusOpponentWitch() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Castle_Enemies_BossWitch_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	0.9f,
 	Vec2(-32.0f, -32.0f),
+	Vec2(0.0f, 0.0f),
 	HexusOpponentWitch::StringKeyOpponentName, Card::CardStyle::Shadow,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
