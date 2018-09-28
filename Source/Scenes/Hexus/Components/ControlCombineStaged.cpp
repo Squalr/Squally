@@ -82,24 +82,25 @@ void ControlCombineStaged::aiPerformAction(GameState* gameState)
 	// n^2 card compare to figure out the best strategy
 	// Maybe there is some better way to do this calculation
 
-	std::vector<Card*> cards = gameState->getEnemyCards(); // all valid source cards for the operation must be our own
+	std::vector<Card*> enemyCards = gameState->getEnemyCards(); // all valid source cards for the operation must be our own
 	Card* bestSourceCard = nullptr;
 	Card* bestTargetCard = nullptr;
 	int bestDiff = INT_MIN;
 
 	// First simulate buffing your own cards
-	for (auto sourceCardIterator = cards.begin(); sourceCardIterator != cards.end(); sourceCardIterator++)
+	for (auto sourceCardIterator = enemyCards.begin(); sourceCardIterator != enemyCards.end(); sourceCardIterator++)
 	{
 		Card* sourceCard = *sourceCardIterator;
 
 		// First we iterate through only our own cards
-		for (auto targetCardIterator = cards.begin(); targetCardIterator != cards.end(); targetCardIterator++)
+		for (auto targetCardIterator = enemyCards.begin(); targetCardIterator != enemyCards.end(); targetCardIterator++)
 		{
-			if (sourceCardIterator == targetCardIterator) {
+			Card* targetCard = *targetCardIterator;
+
+			if (sourceCard == targetCard) {
 				continue; // we're not allowed to apply a card to itself
 			}
 
-			Card* targetCard = *targetCardIterator;
 			Card::Operation operation = Card::toOperation(
 				gameState->selectedCard->cardData->cardType, 
 				sourceCard->getAttack()
@@ -116,18 +117,19 @@ void ControlCombineStaged::aiPerformAction(GameState* gameState)
 
 	// Then simulate attacking the player
 	std::vector<Card*> playerCards = gameState->getPlayerCards();
-	for (auto sourceCardIterator = cards.begin(); sourceCardIterator != cards.end(); sourceCardIterator++)
+	for (auto sourceCardIterator = enemyCards.begin(); sourceCardIterator != enemyCards.end(); sourceCardIterator++)
 	{
 		Card* sourceCard = *sourceCardIterator;
 
 		// This time we iterate through the players cards
 		for (auto targetCardIterator = playerCards.begin(); targetCardIterator != playerCards.end(); targetCardIterator++)
 		{
-			if (sourceCardIterator == targetCardIterator) {
+			Card* targetCard = *targetCardIterator;
+
+			if (sourceCard == targetCard) {
 				continue; // we're not allowed to apply a card to itself
 			}
 
-			Card* targetCard = *targetCardIterator;
 			Card::Operation operation = Card::toOperation(
 				gameState->selectedCard->cardData->cardType, 
 				sourceCard->getAttack()
