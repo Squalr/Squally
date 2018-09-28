@@ -155,7 +155,7 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 						}
 
 						Card::Operation operation = Card::toOperation(
-							gameState->selectedCard->cardData->cardType, 
+							card->cardData->cardType, 
 							sourceCard->getAttack()
 						);
 
@@ -183,7 +183,7 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 
 						Card* targetCard = *targetCardIterator;
 						Card::Operation operation = Card::toOperation(
-							gameState->selectedCard->cardData->cardType, 
+							card->cardData->cardType, 
 							sourceCard->getAttack()
 						);
 
