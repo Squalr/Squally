@@ -15,8 +15,10 @@ HexusOpponentSkeletonKing* HexusOpponentSkeletonKing::getInstance()
 
 HexusOpponentSkeletonKing::HexusOpponentSkeletonKing() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Obelisk_Enemies_BossSkeletonKing_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(-64.0f, -32.0f),
+	Vec2(0.0f, 0.0f),
 	HexusOpponentSkeletonKing::StringKeyOpponentName, Card::CardStyle::Water,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

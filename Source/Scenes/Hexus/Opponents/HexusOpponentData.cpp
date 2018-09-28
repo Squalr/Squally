@@ -2,15 +2,19 @@
 
 HexusOpponentData::HexusOpponentData(
 	std::string animationResourceFile,
+	std::string backgroundResourceFile,
 	float animationScale,
 	Vec2 animationOffset,
+	Vec2 avatarOffset,
 	std::string enemyNameKey,
 	Card::CardStyle cardStyle,
 	std::vector<CardData*> cards)
 {
 	this->animationResourceFile = animationResourceFile;
+	this->backgroundResourceFile = backgroundResourceFile;
 	this->animationScale = animationScale;
 	this->animationOffset = animationOffset;
+	this->avatarOffset = avatarOffset;
 	this->enemyNameKey = enemyNameKey;
 	this->cardStyle = cardStyle;
 	this->cards = cards;

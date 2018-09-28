@@ -15,8 +15,10 @@ HexusOpponentSanta* HexusOpponentSanta::getInstance()
 
 HexusOpponentSanta::HexusOpponentSanta() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Snow_Enemies_BossSanta_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(0.0f, -48.0f),
+	Vec2(0.0f, 0.0f),
 	HexusOpponentSanta::StringKeyOpponentName, Card::CardStyle::Water,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
