@@ -149,11 +149,11 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 					// First we iterate through only our own cards
 					for (auto targetCardIterator = cards.begin(); targetCardIterator != cards.end(); targetCardIterator++)
 					{
-						if (sourceCardIterator == targetCardIterator) {
+						Card* targetCard = *targetCardIterator;
+						if (sourceCard == targetCard) {
 							continue; // we're not allowed to apply a card to itself
 						}
 
-						Card* targetCard = *targetCardIterator;
 						Card::Operation operation = Card::toOperation(
 							gameState->selectedCard->cardData->cardType, 
 							sourceCard->getAttack()

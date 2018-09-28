@@ -84,10 +84,20 @@ void Banners::updateBanner(GameState* gameState)
 		gameState->bannerMessage = "REMAINING CARD REPLACEMENTS: " + std::to_string(gameState->cardReplaceCount);
 		break;
 	case GameState::StateType::Win:
-		gameState->bannerMessage = "Winner!";
+		gameState->bannerMessage = "VICTORY!";
+
+		stateTransition = CallFunc::create([gameState]
+		{
+			GameState::updateState(gameState, GameState::StateType::GameEnd);
+		});
 		break;
 	case GameState::StateType::Lose:
-		gameState->bannerMessage = "You Suck!";
+		gameState->bannerMessage = "DEFEAT!";
+
+		stateTransition = CallFunc::create([gameState]
+		{
+			GameState::updateState(gameState, GameState::StateType::GameEnd);
+		});
 		break;
 	case GameState::StateType::TurnBanner:
 		gameState->playerHand->disableRowCardInteraction();
