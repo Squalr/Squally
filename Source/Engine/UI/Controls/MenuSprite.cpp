@@ -84,17 +84,16 @@ void MenuSprite::update(float dt)
 
 void MenuSprite::disableInteraction(GLubyte newOpacity)
 {
-	this->stopAllActions();
 	this->interactionEnabled = false;
 	this->showSprite(this->sprite);
 	this->setOpacity(newOpacity);
 }
 
-void MenuSprite::enableInteraction()
+void MenuSprite::enableInteraction(GLubyte newOpacity)
 {
 	this->interactionEnabled = true;
 	this->showSprite(this->sprite);
-	this->setOpacity(255);
+	this->setOpacity(newOpacity);
 }
 
 void MenuSprite::setContentScale(float scale)

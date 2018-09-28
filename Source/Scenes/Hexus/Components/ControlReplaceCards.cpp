@@ -74,8 +74,12 @@ void ControlReplaceCards::onStateChange(GameState* gameState)
 			}
 
 			this->initializeCallbacks(gameState);
-			this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
-			this->doneButton->enableInteraction();
+
+			if (gameState->previousStateType != GameState::StateType::ControlReplaceCards)
+			{
+				this->doneButton->enableInteraction(0);
+				this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
+			}
 			break;
 		default:
 			if (gameState->previousStateType == GameState::StateType::ControlReplaceCards)
@@ -97,9 +101,8 @@ void ControlReplaceCards::onStateChange(GameState* gameState)
 				}
 
 				// Hide Done Button
-
+				this->doneButton->disableInteraction(255);
 				this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 0));
-				this->doneButton->disableInteraction();
 				break;
 			}
 			break;
@@ -158,17 +161,17 @@ void ControlReplaceCards::replaceCard(Card* card)
 
 void ControlReplaceCards::removeCardsOfTypeFromDeck(Card* cardToRemove, Deck* deck) 
 {
-	for (auto it = deck->deckCards->begin(); it != deck->deckCards->end();)
+	deck->removeCardsWhere([=](Card* card)
 	{
-		Card* card = *it;
-		if (card->cardData->cardName == cardToRemove->cardData->cardName) 
+		if (card->cardData->cardName == cardToRemove->cardData->cardName)
 		{
-			deck->removeCard(card);
-			this->replacedCards->insert(card); // We put the card into the replacedCards to be shuffled back into the deck at the end of mulligan
-		} else {
-			it++;
+			// We put the card into the replacedCards to be shuffled back into the deck at the end of mulligan
+			this->replacedCards->insert(card);
+			return true;
 		}
-	}
+
+		return false;
+	});
 }
 
 CallFunc* ControlReplaceCards::getNextStateTransition() 
