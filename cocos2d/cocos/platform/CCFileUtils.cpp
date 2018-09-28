@@ -399,26 +399,6 @@ bool FileUtils::writeValueMapToFile(const ValueMap& dict, const std::string& ful
     return ret;
 }
 
-bool FileUtils::serializeValueMapToFile(const ValueMap& dict, const std::string& fullPath)
-{
-	std::ofstream outputStream(fullPath, std::ios::binary);
-	cereal::BinaryOutputArchive archive(outputStream);
-
-	archive(dict);
-
-	return true;
-}
-
-ValueMap FileUtils::deserializeValueMapFromFile(const std::string& fullPath)
-{
-	std::ifstream inputStream(fullPath, std::ios::binary);
-	cereal::BinaryInputArchive iarchive(inputStream);
-	ValueMap valueMap;
-	iarchive(valueMap);
-
-	return valueMap;
-}
-
 bool FileUtils::writeValueVectorToFile(const ValueVector& vecData, const std::string& fullPath)
 {
     tinyxml2::XMLDocument *doc = new (std::nothrow)tinyxml2::XMLDocument();
@@ -554,6 +534,26 @@ ValueVector FileUtils::getValueVectorFromFile(const std::string& /*filename*/) {
 bool FileUtils::writeToFile(const ValueMap& /*dict*/, const std::string &/*fullPath*/) {return false;}
 
 #endif /* (CC_TARGET_PLATFORM != CC_PLATFORM_IOS) && (CC_TARGET_PLATFORM != CC_PLATFORM_MAC) */
+
+bool FileUtils::serializeValueMapToFile(const ValueMap& dict, const std::string& fullPath)
+{
+	std::ofstream outputStream(fullPath, std::ios::binary);
+	cereal::BinaryOutputArchive archive(outputStream);
+
+	archive(dict);
+
+	return true;
+}
+
+ValueMap FileUtils::deserializeValueMapFromFile(const std::string& fullPath)
+{
+	std::ifstream inputStream(fullPath, std::ios::binary);
+	cereal::BinaryInputArchive iarchive(inputStream);
+	ValueMap valueMap;
+	iarchive(valueMap);
+
+	return valueMap;
+}
 
 // Implement FileUtils
 FileUtils* FileUtils::s_sharedFileUtils = nullptr;
