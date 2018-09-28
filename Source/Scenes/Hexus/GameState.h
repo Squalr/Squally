@@ -29,7 +29,8 @@ public:
 		EndTurn,
 		Score,
 		Win,
-		Lose
+		Lose,
+		GameEnd
 	};
 
 	enum Difficulty
