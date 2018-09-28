@@ -15,8 +15,10 @@ HexusOpponentDemonKing* HexusOpponentDemonKing::getInstance()
 
 HexusOpponentDemonKing::HexusOpponentDemonKing() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Enemies_BossDemonKing_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.8f,
 	Vec2(0.0f, -48.0f),
+	Vec2(0.0f, 0.0f),
 	HexusOpponentDemonKing::StringKeyOpponentName, Card::CardStyle::Water,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

@@ -15,8 +15,10 @@ HexusOpponentIceGolem* HexusOpponentIceGolem::getInstance()
 
 HexusOpponentIceGolem::HexusOpponentIceGolem() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Snow_Enemies_BossIceGolem_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(0.0f, -48.0f),
+	Vec2(0.0f, 0.0f),
 	HexusOpponentIceGolem::StringKeyOpponentName, Card::CardStyle::Water,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

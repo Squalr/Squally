@@ -13,26 +13,16 @@ Avatars::Avatars()
 {
 	this->framePlayer = Sprite::create(Resources::Minigames_Hexus_AvatarFrame);
 	this->frameEnemy = Sprite::create(Resources::Minigames_Hexus_AvatarFrame);
-
 	this->avatarPlayer = Node::create();
 	this->avatarEnemy = Node::create();
-
 	this->avatarPlayer->addChild(Sprite::create(Resources::Backgrounds_Platformer_Jungle_Background));
-	this->avatarEnemy->addChild(Sprite::create(Resources::Backgrounds_Platformer_Day_Sky));
+	this->playerSprite = AnimationNode::create(Resources::Entities_Platformer_Squally_Animations);
 
-	AnimationNode* playerAnimation = AnimationNode::create(Resources::Entities_Platformer_Squally_Animations);
-	SpriterEngine::EntityInstance* playerEntity = playerAnimation->play("Entity");
+	playerSprite->setScale(0.25f);
+	playerSprite->setPosition(Vec2(-64.0f, -32.0f));
+
+	SpriterEngine::EntityInstance* playerEntity = this->playerSprite->play("Entity");
 	playerEntity->setCurrentAnimation("Idle");
-	playerAnimation->setScale(0.25f);
-	playerAnimation->setPosition(Vec2(-64.0f, -32.0f));
-
-	AnimationNode* enemyAnimation = AnimationNode::create(Resources::Entities_Platformer_Environment_Snow_Enemies_BossIceGolem_Animations);
-	SpriterEngine::EntityInstance* enemyEntity = enemyAnimation->play("Entity");
-	enemyEntity->setCurrentAnimation("Idle");
-	enemyAnimation->setPosition(Vec2(-24.0f, -212.0f));
-
-	this->avatarPlayer->addChild(playerAnimation);
-	this->avatarEnemy->addChild(enemyAnimation);
 
 	DrawNode* stencilLeft = DrawNode::create();
 	DrawNode* stencilRight = DrawNode::create();
@@ -48,6 +38,7 @@ Avatars::Avatars()
 
 	this->addChild(this->framePlayer);
 	this->addChild(this->frameEnemy);
+	this->avatarPlayer->addChild(this->playerSprite);
 	this->clipPlayer->addChild(this->avatarPlayer);
 	this->clipEnemy->addChild(this->avatarEnemy);
 	this->addChild(this->clipPlayer);
@@ -68,6 +59,20 @@ void Avatars::initializePositions()
 	this->frameEnemy->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f + Config::frameOffsetY);
 	this->clipPlayer->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f - Config::frameOffsetY);
 	this->clipEnemy->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f + Config::frameOffsetY);
+}
+
+void Avatars::initializeEnemyAvatar(HexusOpponentData* opponentData)
+{
+	this->avatarEnemy->removeAllChildren();
+	this->opponentSprite = AnimationNode::create(opponentData->animationResourceFile);
+	this->avatarEnemy->addChild(Sprite::create(opponentData->backgroundResourceFile));
+	this->avatarEnemy->addChild(this->opponentSprite);
+
+	SpriterEngine::EntityInstance* opponentEntity = this->opponentSprite->play("Entity");
+	opponentEntity->setCurrentAnimation("Idle");
+
+	this->opponentSprite->setScale(opponentData->animationScale);
+	this->opponentSprite->setPosition(opponentData->avatarOffset);
 }
 
 void Avatars::onStateChange(GameState* gameState)
