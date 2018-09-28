@@ -16,10 +16,11 @@ HexusOpponentJungleGoblinSwordsman* HexusOpponentJungleGoblinSwordsman::getInsta
 HexusOpponentJungleGoblinSwordsman::HexusOpponentJungleGoblinSwordsman() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Jungle_Enemies_GoblinSwordsman_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
-	0.3f,
+	0.4f,
 	Vec2(48.0f, -128.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentJungleGoblinSwordsman::StringKeyOpponentName, Card::CardStyle::Earth,
+	HexusOpponentJungleGoblinSwordsman::StringKeyOpponentName,
+	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

@@ -16,10 +16,11 @@ HexusOpponentJungleGoblinWarrior* HexusOpponentJungleGoblinWarrior::getInstance(
 HexusOpponentJungleGoblinWarrior::HexusOpponentJungleGoblinWarrior() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Jungle_Enemies_GoblinWarrior_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
-	0.3f,
+	0.4f,
 	Vec2(48.0f, -128.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentJungleGoblinWarrior::StringKeyOpponentName, Card::CardStyle::Earth,
+	HexusOpponentJungleGoblinWarrior::StringKeyOpponentName,
+	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

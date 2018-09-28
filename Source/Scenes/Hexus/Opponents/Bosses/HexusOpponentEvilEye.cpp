@@ -19,7 +19,8 @@ HexusOpponentEvilEye::HexusOpponentEvilEye() : HexusOpponentData(
 	0.6f,
 	Vec2(0.0f, -96.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentEvilEye::StringKeyOpponentName, Card::CardStyle::Shadow,
+	HexusOpponentEvilEye::StringKeyOpponentName,
+	Card::CardStyle::Shadow,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

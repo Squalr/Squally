@@ -19,7 +19,8 @@ HexusOpponentJungleMinotaur::HexusOpponentJungleMinotaur() : HexusOpponentData(
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentJungleMinotaur::StringKeyOpponentName, Card::CardStyle::Earth,
+	HexusOpponentJungleMinotaur::StringKeyOpponentName,
+	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

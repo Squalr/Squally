@@ -19,7 +19,8 @@ HexusOpponentJungleTikiWarrior::HexusOpponentJungleTikiWarrior() : HexusOpponent
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentJungleTikiWarrior::StringKeyOpponentName, Card::CardStyle::Earth,
+	HexusOpponentJungleTikiWarrior::StringKeyOpponentName,
+	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

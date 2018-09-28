@@ -19,7 +19,8 @@ HexusOpponentJack::HexusOpponentJack() : HexusOpponentData(
 	0.35f,
 	Vec2(0.0f, -96.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentJack::StringKeyOpponentName, Card::CardStyle::Shadow,
+	HexusOpponentJack::StringKeyOpponentName,
+	Card::CardStyle::Shadow,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

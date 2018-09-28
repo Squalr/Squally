@@ -17,8 +17,9 @@ public:
 	struct HexusGameResultEventArgs
 	{
 		bool playerWon;
+		HexusOpponentData* opponentData;
 
-		HexusGameResultEventArgs(bool playerWon) : playerWon(playerWon)
+		HexusGameResultEventArgs(bool playerWon, HexusOpponentData* opponentData) : playerWon(playerWon), opponentData(opponentData)
 		{
 		}
 	};

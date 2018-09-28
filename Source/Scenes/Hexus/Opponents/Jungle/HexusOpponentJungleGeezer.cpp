@@ -19,7 +19,8 @@ HexusOpponentJungleGeezer::HexusOpponentJungleGeezer() : HexusOpponentData(
 	1.0f,
 	Vec2(0.0f, -48.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentJungleGeezer::StringKeyOpponentName, Card::CardStyle::Earth,
+	HexusOpponentJungleGeezer::StringKeyOpponentName,
+	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),
