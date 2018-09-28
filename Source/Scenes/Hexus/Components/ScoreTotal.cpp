@@ -68,7 +68,7 @@ void ScoreTotal::onStateChange(GameState* gameState)
 			}
 			else 
 			{
-				GameState::updateState(gameState, GameState::StateType::CoinFlip);
+				GameState::updateState(gameState, GameState::StateType::ControlReplaceCards);
 			}
 		}
 		default:

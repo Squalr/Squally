@@ -31,7 +31,7 @@ void ControlEndTurn::endTurn(GameState* gameState)
 {
 	float endTurnDelay = Config::endTurnDelay;
 
-	// If both players pass than we end the game
+	// If both players pass than we end the round
 	if (gameState->playerPass && gameState->enemyPass) {
 		CallFunc* changeState = CallFunc::create([gameState] {
 			GameState::updateState(gameState, GameState::StateType::Score);
