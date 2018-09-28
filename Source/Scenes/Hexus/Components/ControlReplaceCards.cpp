@@ -75,11 +75,8 @@ void ControlReplaceCards::onStateChange(GameState* gameState)
 
 			this->initializeCallbacks(gameState);
 
-			if (gameState->previousStateType != GameState::StateType::ControlReplaceCards)
-			{
-				this->doneButton->enableInteraction(0);
-				this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
-			}
+			this->doneButton->enableInteraction(0);
+			this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
 			break;
 		default:
 			if (gameState->previousStateType == GameState::StateType::ControlReplaceCards)
@@ -121,6 +118,7 @@ void ControlReplaceCards::initializeCardReplace(GameState* gameState)
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	GameUtils::changeParent(gameState->playerHand, this, true);
+	gameState->playerHand->enableRowCardInteraction();
 	gameState->playerHand->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	gameState->playerHand->setCardScale(0.6f, 0.0f);
 	gameState->playerHand->setRowWidth(Config::previewWidth, 0.25f);

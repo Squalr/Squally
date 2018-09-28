@@ -99,19 +99,24 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 			case CardData::CardType::Special_FLIP3:
 			case CardData::CardType::Special_FLIP4:
 			case CardData::CardType::Special_INV: {
-				// don't play this card if there are no viable moves
-				Card::Operation operation = Card::toOperation(card->cardData->cardType, 0);
+				// Calculate the best row to apply the card to
+				CardRow* bestRow;
+				int bestDiff = INT_MIN;
 				for (auto it = rows.begin(); it != rows.end(); it++)
 				{
 					CardRow* row = *it;
 					int diff = row->simulateCardEffect(card) * (row->isPlayerRow() ? -1 : 1);
-					if (diff > 1) {
-						this->activeGameState->selectedCard = card;
-						GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
-						return;
+					if (diff >= bestDiff) {
+						bestDiff = diff;
+						bestRow = row;
 					}
 				}
-				break;
+
+				if (bestDiff >= 0) {
+					this->activeGameState->selectedCard = card;
+					this->activeGameState->stagedCombineCardRow = bestRow;
+					GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
+				}
 			}
 			case CardData::CardType::Special_AND:
 			case CardData::CardType::Special_OR:
