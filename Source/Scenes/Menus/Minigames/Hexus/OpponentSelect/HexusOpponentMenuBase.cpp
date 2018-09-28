@@ -124,12 +124,17 @@ void HexusOpponentMenuBase::onDeckManagementClick(MenuSprite* menuSprite)
 
 void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventArgs args)
 {
-	int progressIndex = 0;
+	static const std::string winsPrefix = "WINS_";
 
-	if (SaveManager::hasGlobalData(this->progressSaveStringKey))
+	if (args.playerWon)
 	{
-		progressIndex = SaveManager::getGlobalData(this->progressSaveStringKey).asInt();
+		std::string key = winsPrefix + args.opponentData->enemyNameKey;
+		int wins = SaveManager::hasGlobalData(key) ? SaveManager::getGlobalData(key).asInt() + 1 : 1;
+
+		SaveManager::saveGlobalData(key, cocos2d::Value(wins));
 	}
+
+	this->loadProgress();
 }
 
 void HexusOpponentMenuBase::loadProgress()

@@ -11,7 +11,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 #include "Scenes/Hexus/Opponents/HexusOpponents.h"
-#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusOpponentPreview.h"
+#include "Scenes/Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
 
 using namespace cocos2d;
 

@@ -19,7 +19,8 @@ HexusOpponentWitch::HexusOpponentWitch() : HexusOpponentData(
 	0.9f,
 	Vec2(-32.0f, -32.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentWitch::StringKeyOpponentName, Card::CardStyle::Shadow,
+	HexusOpponentWitch::StringKeyOpponentName,
+	Card::CardStyle::Shadow,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),
