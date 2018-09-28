@@ -56,7 +56,51 @@ void Banners::initializePositions()
 
 void Banners::onStateChange(GameState* gameState)
 {
-	this->updateBanner(gameState);
+	this->activeGameState = gameState;
+
+	if (gameState->previousStateType != gameState->stateType) {
+		this->hideAllBanners();
+	}
+
+	switch (gameState->stateType)
+	{
+		case GameState::StateType::FirstSideBanner:
+		case GameState::StateType::TurnBanner: {
+			if (gameState->turn == GameState::Turn::Enemy)
+			{
+				this->displayEnemyTurnBanner();
+			}
+			else if (gameState->turn == GameState::Turn::Player)
+			{
+				this->displayPlayerTurnBanner();
+			}
+
+			this->runAction(Sequence::create(
+				DelayTime::create(Config::bannerDisplayDuration),
+				CallFunc::create([=] {
+					GameState::updateState(this->activeGameState, GameState::StateType::ControlNeutral);
+				}),
+				nullptr
+			));	
+			break;
+		}
+		case GameState::StateType::ControlReplaceCards:
+			this->displayCardReplaceBanner();
+			break;
+		case GameState::StateType::Win:
+		case GameState::StateType::Lose:
+			this->displayWinLoseBanner();
+			this->runAction(Sequence::create(
+				DelayTime::create(Config::bannerDisplayDuration),
+				CallFunc::create([=] {
+					GameState::updateState(this->activeGameState, GameState::StateType::GameEnd);
+				}),
+				nullptr
+			));	
+			break;	
+		default:
+			break;
+		}
 }
 
 void Banners::displayPlayerTurnBanner()
@@ -194,54 +238,4 @@ void Banners::hideAllBanners()
 	));
 
 	this->activeGameState->bannerMessage = "";
-}
-
-
-void Banners::updateBanner(GameState* gameState)
-{
-	this->activeGameState = gameState;
-
-	if (gameState->previousStateType != gameState->stateType) {
-		this->hideAllBanners();
-	}
-
-	switch (gameState->stateType)
-	{
-		case GameState::StateType::FirstSideBanner:
-		case GameState::StateType::TurnBanner: {
-			if (gameState->turn == GameState::Turn::Enemy)
-			{
-				this->displayEnemyTurnBanner();
-			}
-			else if (gameState->turn == GameState::Turn::Player)
-			{
-				this->displayPlayerTurnBanner();
-			}
-
-			this->runAction(Sequence::create(
-				DelayTime::create(Config::bannerDisplayDuration),
-				CallFunc::create([=] {
-					GameState::updateState(this->activeGameState, GameState::StateType::ControlNeutral);
-				}),
-				nullptr
-			));	
-			break;
-		}
-		case GameState::StateType::ControlReplaceCards:
-			this->displayCardReplaceBanner();
-			break;
-		case GameState::StateType::Win:
-		case GameState::StateType::Lose:
-			this->displayWinLoseBanner();
-			this->runAction(Sequence::create(
-				DelayTime::create(Config::bannerDisplayDuration),
-				CallFunc::create([=] {
-					GameState::updateState(this->activeGameState, GameState::StateType::GameEnd);
-				}),
-				nullptr
-			));	
-			break;	
-		default:
-			break;
-		}
 }
