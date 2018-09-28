@@ -77,6 +77,7 @@ public:
 	int round;
 	Card* stagedSacrifice;
 	CardRow* stagedSacrificeCardRow;
+	CardRow* stagedCombineCardRow;
 	Card* stagedCombineSourceCard;
 	Card* stagedCombineTargetCard;
 	Card* selectedCard;

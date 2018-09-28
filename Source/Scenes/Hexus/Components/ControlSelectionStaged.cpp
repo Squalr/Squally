@@ -269,22 +269,9 @@ void ControlSelectionStaged::aiPerformAction(GameState* gameState)
 			case CardData::CardType::Special_FLIP4:
 			case CardData::CardType::Special_INV: {
 				Card::Operation operation = Card::toOperation(selectedCard->cardData->cardType, 0);
-
-				// Calculate the best row to apply the card to
-				CardRow* bestRow;
-				int bestDiff = INT_MIN;
-				for (auto it = rows.begin(); it != rows.end(); it++)
-				{
-					CardRow* row = *it;
-					int diff = row->simulateCardEffect(selectedCard) * (row->isPlayerRow() ? -1 : 1);
-					if (diff >= bestDiff) {
-						bestDiff = diff;
-						bestRow = row;
-					}
-				}
-
+				
 				// Apply the card
-				for (auto it = bestRow->rowCards->begin(); it != bestRow->rowCards->end(); it++)
+				for (auto it = gameState->stagedCombineCardRow->rowCards->begin(); it != gameState->stagedCombineCardRow->rowCards->end(); it++)
 				{
 					Card* card = *it;
 					card->addOperation(operation);
