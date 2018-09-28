@@ -15,8 +15,10 @@ HexusOpponentKrampus* HexusOpponentKrampus::getInstance()
 
 HexusOpponentKrampus::HexusOpponentKrampus() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Caverns_Enemies_BossKrampus_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(0.0f, -48.0f),
+	Vec2(0.0f, 0.0f),
 	HexusOpponentKrampus::StringKeyOpponentName, Card::CardStyle::Shadow,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

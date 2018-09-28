@@ -15,8 +15,10 @@ HexusOpponentEvilEye* HexusOpponentEvilEye::getInstance()
 
 HexusOpponentEvilEye::HexusOpponentEvilEye() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Mech_Enemies_BossEvilEye_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.6f,
 	Vec2(0.0f, -96.0f),
+	Vec2(0.0f, 0.0f),
 	HexusOpponentEvilEye::StringKeyOpponentName, Card::CardStyle::Shadow,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

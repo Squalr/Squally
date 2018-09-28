@@ -13,14 +13,24 @@ class HexusOpponentData
 {
 public:
 	Deck* getDeck();
-	
+
+	std::string backgroundResourceFile;
 	std::string animationResourceFile;
 	std::string enemyNameKey;
 	float animationScale;
 	Vec2 animationOffset;
+	Vec2 avatarOffset;
 
 protected:
-	HexusOpponentData(std::string animationResourceFile, float animationScale, Vec2 animationOffset, std::string enemyNameKey, Card::CardStyle cardStyle, std::vector<CardData*> cards);
+	HexusOpponentData(
+		std::string animationResourceFile,
+		std::string backgroundResourceFile,
+		float animationScale,
+		Vec2 animationOffset,
+		Vec2 avatarOffset,
+		std::string enemyNameKey,
+		Card::CardStyle cardStyle,
+		std::vector<CardData*> cards);
 	~HexusOpponentData();
 
 	Card::CardStyle cardStyle;

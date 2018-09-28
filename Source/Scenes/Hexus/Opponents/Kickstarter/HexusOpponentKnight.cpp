@@ -15,8 +15,10 @@ HexusOpponentKnight* HexusOpponentKnight::getInstance()
 
 HexusOpponentKnight::HexusOpponentKnight() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Snow_Npcs_ChristmasWarrior_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.4f,
 	Vec2(0.0f, -96.0f),
+	Vec2(0.0f, 0.0f),
 	HexusOpponentKnight::StringKeyOpponentName, Card::CardStyle::Water,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

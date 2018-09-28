@@ -1,15 +1,15 @@
 #include "HexusOpponentPreview.h"
 
-HexusOpponentPreview* HexusOpponentPreview::create(HexusOpponentData* opponentData, std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback, std::string backgroundResource)
+HexusOpponentPreview* HexusOpponentPreview::create(HexusOpponentData* opponentData, std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback)
 {
-	HexusOpponentPreview* instance = new HexusOpponentPreview(opponentData, onGameEndCallback, backgroundResource);
+	HexusOpponentPreview* instance = new HexusOpponentPreview(opponentData, onGameEndCallback);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData, std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback, std::string backgroundResource)
+HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData, std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback)
 {
 	this->hexusOpponentData = opponentData;
 	this->onGameEndCallback = onGameEndCallback;
@@ -38,7 +38,7 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData, std:
 
 	this->frame->setClickCallback(CC_CALLBACK_1(HexusOpponentPreview::onOpponentClick, this));
 
-	this->frameClip->addChild(Sprite::create(backgroundResource));
+	this->frameClip->addChild(Sprite::create(opponentData->backgroundResourceFile));
 	this->frameClip->addChild(this->opponentSprite);
 	this->frameClip->addChild(this->disabledLayer);
 	this->addChild(this->frameClip);
