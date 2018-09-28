@@ -40,10 +40,10 @@ CardStorage::CardStorage()
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex4));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Addition));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Addition));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Subtraction));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Subtraction));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::ShiftLeft));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::ShiftRight));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::ShiftRight));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::ShiftLeft));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::ShiftLeft));
 }
 
 CardStorage::~CardStorage()

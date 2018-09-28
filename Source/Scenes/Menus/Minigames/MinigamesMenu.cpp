@@ -91,8 +91,8 @@ MinigamesMenu::MinigamesMenu()
 
 	this->hexusPuzzlesButton->setTextOffset(labelOffset);
 
-	// TEMP
-	this->hexusPuzzlesButton->disableInteraction(64);
+	// TODO: Temp for demo
+	this->hexusPuzzlesButton->disableInteraction(128);
 
 	Sprite* hexusPuzzlesIcon = Sprite::create(Resources::Menus_Icons_Gauntlet);
 
@@ -135,14 +135,6 @@ void MinigamesMenu::onEnter()
 	const float duration = 0.75f;
 
 	GameUtils::fadeInObject(this->scrollPane, delay, duration);
-	GameUtils::fadeInObject(this->hexusButton, delay, duration);
-	GameUtils::fadeInObject(this->hexusPuzzlesButton, delay, duration);
-	GameUtils::fadeInObject(this->comingSoonButton1, delay, duration);
-	GameUtils::fadeInObject(this->comingSoonButton2, delay, duration);
-	GameUtils::fadeInObject(this->comingSoonButton3, delay, duration);
-	GameUtils::fadeInObject(this->comingSoonButton4, delay, duration);
-	GameUtils::fadeInObject(this->comingSoonButton5, delay, duration);
-	GameUtils::fadeInObject(this->comingSoonButton6, delay, duration);
 
 	this->scheduleUpdate();
 }
