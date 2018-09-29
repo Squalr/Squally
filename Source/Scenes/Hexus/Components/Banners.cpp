@@ -74,7 +74,7 @@ void Banners::onStateChange(GameState* gameState)
 	{
 		case GameState::StateType::RoundStart: {
 			if (this->activeGameState->round == 0) {
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Poof_02);
+				SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
 				GameState::updateState(this->activeGameState, GameState::StateType::DrawInitialCards);
 			} else {
 				this->displayRoundStartBannner();

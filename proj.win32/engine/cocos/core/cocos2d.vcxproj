@@ -5,6 +5,10 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{EBD4229B-CE31-3BB7-AFA5-8DD882CDEBF0}</ProjectGuid>
@@ -20,6 +24,11 @@
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
@@ -30,11 +39,47 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\lib\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\lib\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cocos2d.dir\Debug\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cocos2d.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cocos2d</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cocos2d</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\deprecated;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\platform;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\extensions;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\gles\include\OGLES;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\glfw3\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\zlib\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\cereal;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\Udis86;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\RapidJson;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\ConvertUTF;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\poly2tri;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\poly2tri\common;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\poly2tri\sweep;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\edtaa3func;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\xxtea;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\clipper;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\OggDecoder\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\MP3Decoder\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\OpenalSoft\include\AL;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\sqlite3\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\unzip;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\tinyxml2;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\freetype2\include\win32\freetype2;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\websockets\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\curl\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\xxhash;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\openssl\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\jpeg\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\webp\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\tiff\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\png\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\chipmunk\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\bullet\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\bullet\include\bullet;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\recast;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <DisableSpecificWarnings>4251;4244;4334;4005;4820;4710;4514;4056;4996;4099</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;COCOS2DXWIN32_EXPORTS;_WIN32;CC_USE_NAVMESH=1;CC_USE_JPEG=1;CC_USE_TIFF=1;CC_USE_PNG=1;CC_USE_WEBP=1;CC_USE_PHYSICS=1;CC_ENABLE_CHIPMUNK_INTEGRATION=1;CC_ENABLE_BOX2D_INTEGRATION=0;CC_USE_3D_PHYSICS=1;CC_ENABLE_BULLET_INTEGRATION=1;OPENAL_PLAIN_INCLUDES;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;COCOS2DXWIN32_EXPORTS;_WIN32;CC_USE_NAVMESH=1;CC_USE_JPEG=1;CC_USE_TIFF=1;CC_USE_PNG=1;CC_USE_WEBP=1;CC_USE_PHYSICS=1;CC_ENABLE_CHIPMUNK_INTEGRATION=1;CC_ENABLE_BOX2D_INTEGRATION=0;CC_USE_3D_PHYSICS=1;CC_ENABLE_BULLET_INTEGRATION=1;OPENAL_PLAIN_INCLUDES;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\deprecated;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\platform;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\extensions;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\gles\include\OGLES;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\glfw3\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\zlib\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\cereal;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\Udis86;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\RapidJson;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\ConvertUTF;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\poly2tri;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\poly2tri\common;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\poly2tri\sweep;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\edtaa3func;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\xxtea;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\clipper;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\OggDecoder\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\MP3Decoder\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\OpenalSoft\include\AL;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\sqlite3\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\unzip;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\tinyxml2;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\freetype2\include\win32\freetype2;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\websockets\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\curl\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\xxhash;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\openssl\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\jpeg\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\webp\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\tiff\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\png\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\chipmunk\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\bullet\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\bullet\include\bullet;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\recast;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\deprecated;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\platform;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\extensions;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\gles\include\OGLES;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\glfw3\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\zlib\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\cereal;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\Udis86;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\RapidJson;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\ConvertUTF;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\poly2tri;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\poly2tri\common;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\poly2tri\sweep;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\edtaa3func;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\xxtea;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\clipper;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\OggDecoder\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\MP3Decoder\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\OpenalSoft\include\AL;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\sqlite3\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\unzip;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\tinyxml2;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\freetype2\include\win32\freetype2;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\websockets\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\curl\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\xxhash;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\openssl\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\jpeg\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\webp\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\tiff\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\png\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\chipmunk\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\bullet\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\bullet\include\bullet;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\recast;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <AdditionalIncludeDirectories>F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\deprecated;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\platform;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\extensions;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\gles\include\OGLES;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\glfw3\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\zlib\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\cereal;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\Udis86;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\RapidJson;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\ConvertUTF;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\poly2tri;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\poly2tri\common;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\poly2tri\sweep;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\edtaa3func;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\xxtea;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\..\external\clipper;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\OggDecoder\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\MP3Decoder\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\OpenalSoft\include\AL;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\sqlite3\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\unzip;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\tinyxml2;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\freetype2\include\win32\freetype2;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\websockets\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\curl\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\xxhash;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\openssl\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\jpeg\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\webp\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\tiff\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\png\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\chipmunk\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\bullet\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\bullet\include\bullet;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\recast;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
@@ -69,6 +114,7 @@
   <ItemGroup>
     <CustomBuild Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\CMakeLists.txt">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
 "F:\Program Files\CMake\bin\cmake.exe" "-HF:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally" "-BF:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32" --check-stamp-file "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/engine/cocos/core/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
@@ -78,9 +124,21 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"F:\Program Files\CMake\bin\cmake.exe" "-HF:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally" "-BF:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32" --check-stamp-file "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/engine/cocos/core/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\2d\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\3d\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\platform\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\physics\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\physics3d\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\math\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\navmesh\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\renderer\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\vr\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\base\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\deprecated\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\ui\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\network\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\audio\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\storage\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\cocosbuilder\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\extensions\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosUseLibs.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/cocos/CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\2d\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\3d\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\platform\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\physics\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\physics3d\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\math\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\navmesh\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\renderer\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\vr\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\base\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\deprecated\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\ui\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\network\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\audio\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\storage\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\cocosbuilder\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\cocostudio\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\extensions\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosUseLibs.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\engine\cocos\core\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -208,9 +266,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\ConvertUTF\ConvertUTFWrapper.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\ConvertUTF\ConvertUTF.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\md5\md5.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\poly2tri\common\shapes.cc" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\poly2tri\sweep\advancing_front.cc" />
@@ -325,6 +385,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\base\ccCArray.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\base\ccFPSImages.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\base\ccRandom.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\base\ccTypes.cpp" />
@@ -613,126 +674,165 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\cocostudio\CCSkin.h" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\Animation.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\AnimationState.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\AnimationStateData.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\Array.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\Atlas.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\AtlasAttachmentLoader.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\Attachment.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\AttachmentLoader.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\AttachmentVertices.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\Bone.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\BoneData.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\BoundingBoxAttachment.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\ClippingAttachment.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\Cocos2dAttachmentLoader.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\Color.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\Event.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\EventData.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\IkConstraint.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\IkConstraintData.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\Json.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\MeshAttachment.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\PathAttachment.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\PathConstraint.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\PathConstraintData.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\PointAttachment.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\RegionAttachment.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\Skeleton.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\SkeletonAnimation.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\SkeletonBatch.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\SkeletonBinary.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\SkeletonBounds.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\SkeletonClipping.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\SkeletonData.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\SkeletonJson.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\SkeletonRenderer.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\SkeletonTwoColorBatch.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\Skin.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\Slot.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\SlotData.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\TransformConstraint.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\TransformConstraintData.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\Triangulator.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\VertexAttachment.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\VertexEffect.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\extension.c">
       <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">CompileAsC</CompileAs>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\spine-cocos2dx.cpp" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\editor-support\spine\Animation.h" />
