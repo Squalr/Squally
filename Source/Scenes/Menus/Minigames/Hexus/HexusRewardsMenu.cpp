@@ -14,12 +14,32 @@ HexusRewardsMenu::HexusRewardsMenu()
 	this->background = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_WoodBackground);
 	this->rewardRow = CardRow::create(true);
 	this->selectRewardLabel = Label::create("Select a Reward", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	
+	Label* chooseButtonLabel = Label::create("Choose", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* chooseButtonLabelHover = Label::create("Choose", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* chooseButtonLabelClick = Label::create("Choose", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+
+	chooseButtonLabel->enableOutline(Color4B::BLACK, 2);
+	chooseButtonLabelHover->enableOutline(Color4B::BLACK, 2);
+	chooseButtonLabelClick->enableOutline(Color4B::BLACK, 2);
+
+	this->chooseButton = TextMenuSprite::create(
+		chooseButtonLabel,
+		chooseButtonLabelHover,
+		chooseButtonLabelClick,
+		Resources::Menus_Buttons_GenericButton,
+		Resources::Menus_Buttons_GenericButtonHover,
+		Resources::Menus_Buttons_GenericButtonClick
+	);
+	
+	this->selectedCard = nullptr;
 
 	this->rewardRow->setCardScale(1.0f, 0.0f);
 	this->selectRewardLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->addChild(this->background);
 	this->addChild(this->rewardRow);
+	this->addChild(this->chooseButton);
 	this->addChild(this->selectRewardLabel);
 	this->addChild(Mouse::create());
 }
@@ -34,11 +54,16 @@ void HexusRewardsMenu::onEnter()
 
 	float delay = 0.25f;
 	float duration = 0.35f;
+
+	this->selectedCard = nullptr;
+	this->chooseButton->disableInteraction(128);
 }
 
 void HexusRewardsMenu::initializeListeners()
 {
 	FadeScene::initializeListeners();
+
+	this->chooseButton->setClickCallback(CC_CALLBACK_1(HexusRewardsMenu::onChooseClick, this));
 }
 
 void HexusRewardsMenu::initializePositions()
@@ -50,13 +75,20 @@ void HexusRewardsMenu::initializePositions()
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->rewardRow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->selectRewardLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 320.0f));
+	this->chooseButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 320.0f));
 }
 
 void HexusRewardsMenu::onRewardSelect(Card* card)
 {
-	CardStorage::addStorageCard(card->cardData);
+	for (auto it = this->rewardRow->rowCards->begin(); it != this->rewardRow->rowCards->end(); it++)
+	{
+		(*it)->unfocus();
+	}
 
-	NavigationEvents::navigateBack(2);
+	card->focus();
+	this->selectedCard = card;
+
+	this->chooseButton->enableInteraction();
 }
 
 void HexusRewardsMenu::onRewardsOpen(EventCustom* eventCustom)
@@ -74,4 +106,15 @@ void HexusRewardsMenu::onRewardsOpen(EventCustom* eventCustom)
 	this->rewardRow->setMouseClickCallback(CC_CALLBACK_1(HexusRewardsMenu::onRewardSelect, this));
 
 	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Rewards);
+}
+
+void HexusRewardsMenu::onChooseClick(MenuSprite* menuSprite)
+{
+	if (this->selectedCard != nullptr)
+	{
+		// TODO: Animate selecting / moving to storage
+
+		CardStorage::addStorageCard(this->selectedCard->cardData);
+		NavigationEvents::navigateBack(2);
+	}
 }

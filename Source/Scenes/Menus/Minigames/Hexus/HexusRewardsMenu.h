@@ -3,8 +3,8 @@
 
 #include "Events/HexusEvents.h"
 #include "Events/NavigationEvents.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/ScrollPane.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
@@ -30,8 +30,11 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onRewardSelect(Card* card);
+	void onChooseClick(MenuSprite* menuSprite);
 
 	Sprite* background;
 	CardRow* rewardRow;
+	MenuSprite* chooseButton;
 	Label* selectRewardLabel;
+	Card* selectedCard;
 };
