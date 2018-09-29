@@ -18,7 +18,7 @@ HexusOpponentJungleTikiGolem::HexusOpponentJungleTikiGolem() : HexusOpponentData
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -144.0f),
-	Vec2(0.0f, 0.0f),
+	Vec2(0.0f, -96.0f),
 	HexusOpponentJungleTikiGolem::StringKeyOpponentName,
 	Card::CardStyle::Earth,
 	{

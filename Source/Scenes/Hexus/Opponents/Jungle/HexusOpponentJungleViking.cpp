@@ -18,7 +18,7 @@ HexusOpponentJungleViking::HexusOpponentJungleViking() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(0.0f, -48.0f),
-	Vec2(0.0f, 0.0f),
+	Vec2(-16.0f, -48.0f),
 	HexusOpponentJungleViking::StringKeyOpponentName,
 	Card::CardStyle::Earth,
 	{

@@ -18,7 +18,7 @@ HexusOpponentJungleMantis::HexusOpponentJungleMantis() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	0.8f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
+	Vec2(-32.0f, -32.0f),
 	HexusOpponentJungleMantis::StringKeyOpponentName,
 	Card::CardStyle::Earth,
 	{

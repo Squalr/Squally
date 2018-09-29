@@ -11,9 +11,9 @@ ControlGameEnd* ControlGameEnd::create()
 
 ControlGameEnd::ControlGameEnd()
 {
-	Label* backButtonLabel = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelHover = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelClick = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabel = Label::create("Leave", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabelHover = Label::create("Leave", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabelClick = Label::create("Leave", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
@@ -39,14 +39,12 @@ ControlGameEnd::~ControlGameEnd()
 void ControlGameEnd::initializeListeners()
 {
 	ComponentBase::initializeListeners();
-	this->backButton->setClickCallback(CC_CALLBACK_1(ControlGameEnd::onBackClick, this));
 }
 
 void ControlGameEnd::onBackClick(MenuSprite* menuSprite)
 {
 	this->activeGameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs((this->activeGameState->playerLosses < 2), this->activeGameState->opponentData));
 }
-
 
 void ControlGameEnd::initializePositions()
 {
@@ -61,13 +59,15 @@ void ControlGameEnd::onStateChange(GameState* gameState)
 
 	switch (gameState->stateType)
 	{
-	case GameState::StateType::Lose:
-	case GameState::StateType::Win:
-		this->backButton->enableInteraction(0);
-		this->backButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
-		break;
-	default:
-		this->backButton->disableInteraction(0);
-		break;
+		case GameState::StateType::Lose:
+		case GameState::StateType::Win:
+			this->backButton->enableInteraction(0);
+			this->backButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
+			this->backButton->setClickCallback(CC_CALLBACK_1(ControlGameEnd::onBackClick, this));
+			break;
+		default:
+			this->backButton->disableInteraction(0);
+			this->backButton->setClickCallback(nullptr);
+			break;
 	}
 }

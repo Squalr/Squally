@@ -18,7 +18,7 @@ HexusOpponentTutorialC::HexusOpponentTutorialC() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	0.9f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(0.0f, -24.0f),
+	Vec2(-16.0f, -32.0f),
 	HexusOpponentTutorialC::StringKeyOpponentName,
 	Card::CardStyle::Earth,
 	{
