@@ -43,7 +43,13 @@ void ControlGameEnd::initializeListeners()
 
 void ControlGameEnd::onBackClick(MenuSprite* menuSprite)
 {
-	this->activeGameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(this->activeGameState->stateType == GameState::StateType::Win, this->activeGameState->opponentData));
+	if (this->activeGameState->stateType == GameState::StateType::Win) {
+		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_Validation_03);
+		this->activeGameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, this->activeGameState->opponentData));
+	} else {
+		this->activeGameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(false, this->activeGameState->opponentData));
+	}
+	
 }
 
 void ControlGameEnd::initializePositions()
