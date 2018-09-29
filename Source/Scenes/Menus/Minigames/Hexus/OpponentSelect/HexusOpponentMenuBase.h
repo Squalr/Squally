@@ -25,7 +25,7 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void loadProgress();
-	void onCloseClick(MenuSprite* menuSprite);
+	void onBackClick(MenuSprite* menuSprite);
 	void onDeckManagementClick(MenuSprite* menuSprite);
 	void onMouseOver(HexusOpponentPreview* opponent);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
@@ -39,6 +39,7 @@ protected:
 	Sprite* background;
 	TextMenuSprite* deckManagementButton;
 	Label* opponentSelectLabel;
+	TextMenuSprite* backButton;
 
 	static const std::string winsPrefix;
 };

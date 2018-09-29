@@ -17,13 +17,18 @@ PassButton::PassButton()
 	Label* passLabelHover = Label::create(Localization::resolveString(PassButton::StringKeyHexusPass), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* passLabelClick = Label::create(Localization::resolveString(PassButton::StringKeyHexusPass), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
+	passLabel->enableOutline(Color4B::BLACK, 2);
+	passLabelHover->enableOutline(Color4B::BLACK, 2);
+	passLabelClick->enableOutline(Color4B::BLACK, 2);
+
 	this->passButton = TextMenuSprite::create(
 		passLabel,
 		passLabelHover,
 		passLabelClick,
 		Resources::Minigames_Hexus_Button,
 		Resources::Minigames_Hexus_ButtonHover,
-		Resources::Minigames_Hexus_ButtonClick);
+		Resources::Minigames_Hexus_ButtonClick
+	);
 
 	this->playerPassIndicator = Sprite::create(Resources::Minigames_Hexus_Flags);
 	this->playerPassIndicator->setOpacity(0);

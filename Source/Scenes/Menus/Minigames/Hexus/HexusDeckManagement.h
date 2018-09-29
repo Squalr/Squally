@@ -4,6 +4,7 @@
 #include "Events/NavigationEvents.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/ScrollPane.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
@@ -26,7 +27,7 @@ private:
 	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onCloseClick(MenuSprite* menuSprite);
+	void onBackClick(MenuSprite* menuSprite);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void loadDeckCards();
 	void loadStorageCards();
@@ -47,6 +48,7 @@ private:
 	Label* deckLabel;
 	Sprite* titleSprite;
 	Label* cardManagementLabel;
+	TextMenuSprite* backButton;
 
 	Label* cardsInDeckLabel;
 	Label* cardsInDeckValueLabel;

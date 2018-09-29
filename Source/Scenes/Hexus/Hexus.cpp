@@ -65,7 +65,10 @@ void Hexus::onEnter()
 
 	SoundManager::playMusicResource(Resources::Music_LastMarch);
 
-	GameState::updateState(this->gameState, GameState::StateType::DrawInitialCards);
+	if (this->gameState->stateType == GameState::StateType::EmptyState)
+	{
+		GameState::updateState(this->gameState, GameState::StateType::DrawInitialCards);
+	}
 }
 
 void Hexus::initializePositions()
@@ -101,7 +104,8 @@ void Hexus::onGameStart(EventCustom* eventCustom)
 	this->gameState->stateType = GameState::StateType::EmptyState;
 	this->gameState->playerLosses = 0;
 	this->gameState->enemyLosses = 0;
-	this->gameState->cardReplaceCount = 3;
+	this->gameState->cardReplaceCount = 0;
+	this->gameState->round = 0;
 
 	this->gameState->playerBinaryCards->clear();
 	this->gameState->playerDecimalCards->clear();
@@ -134,7 +138,7 @@ void Hexus::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
-			//this->gameState->cancelCurrentAction(true);
+			// NavigationEvents::navigate(NavigationEvents::GameScreen::Pause);
 			break;
 		case EventKeyboard::KeyCode::KEY_SPACE:
 			this->gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, this->gameState->opponentData));
