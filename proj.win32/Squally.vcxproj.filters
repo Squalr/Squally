@@ -20142,6 +20142,9 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\PlayerBanner.png">
       <Filter>Resources\Minigames\Hexus</Filter>
     </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\RoundBanner.png">
+      <Filter>Resources\Minigames\Hexus</Filter>
+    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\RowSelection.png">
       <Filter>Resources\Minigames\Hexus</Filter>
     </ClInclude>
@@ -21192,6 +21195,9 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Hexus\Card_Game_Achievement_Wind_Reverse_02.mp3">
       <Filter>Resources\Sounds\Hexus</Filter>
     </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Hexus\Card_Game_Movement_Deal_Single_Small_01.mp3">
+      <Filter>Resources\Sounds\Hexus</Filter>
+    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Hexus\Card_Game_Movement_Tap_01.mp3">
       <Filter>Resources\Sounds\Hexus</Filter>
     </ClInclude>
@@ -21210,37 +21216,10 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\MapOpen.mp3">
       <Filter>Resources\Sounds</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\AFX_INTERFACESOUND_6_DFMG.mp3">
-      <Filter>Resources\Sounds\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\AFX_INTERFACE_BEEP_1_DFMG.mp3">
-      <Filter>Resources\Sounds\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\AFX_INTERFACE_BEEP_2_DFMG.mp3">
-      <Filter>Resources\Sounds\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\AFX_SWITCHCLICK_1_DFMG.mp3">
-      <Filter>Resources\Sounds\Menus</Filter>
-    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\BookPageTurn PE1014902.mp3">
       <Filter>Resources\Sounds\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\Inventory_Book_02.mp3">
-      <Filter>Resources\Sounds\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\Inventory_Book_04.mp3">
-      <Filter>Resources\Sounds\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\Inventory_Book_05.mp3">
-      <Filter>Resources\Sounds\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\Inventory_Book_06.mp3">
-      <Filter>Resources\Sounds\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\Inventory_Book_07.mp3">
-      <Filter>Resources\Sounds\Menus</Filter>
-    </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\Inventory_Book_08.mp3">
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\Card_Game_UI_Button_Light_Reverb_02.mp3">
       <Filter>Resources\Sounds\Menus</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Special1.mp3">

@@ -6090,6 +6090,7 @@ public:
 	static const std::string Sounds_Hexus_Card_Game_Achievement_Shimmer_Short_02;
 	static const std::string Sounds_Hexus_Card_Game_Achievement_Twinkle_Dust_01;
 	static const std::string Sounds_Hexus_Card_Game_Achievement_Wind_Reverse_02;
+	static const std::string Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01;
 	static const std::string Sounds_Hexus_Card_Game_Movement_Tap_01;
 	static const std::string Sounds_Hexus_Card_Game_Movement_Tap_05;
 	static const std::string Sounds_Hexus_UI_CCG_card_downgrade;
@@ -6127,17 +6128,9 @@ public:
 	static const std::string Sounds_Hexus_Attacks_Spell_Pentacle_whisper_very_short;
 	static const std::string Sounds_Hexus_Attacks_Spell_Shield_01;
 	static const std::string Sounds_Hexus_Attacks_Spell_Shield_02;
-	static const std::string Sounds_Menus_AFX_INTERFACESOUND_6_DFMG;
-	static const std::string Sounds_Menus_AFX_INTERFACE_BEEP_1_DFMG;
-	static const std::string Sounds_Menus_AFX_INTERFACE_BEEP_2_DFMG;
-	static const std::string Sounds_Menus_AFX_SWITCHCLICK_1_DFMG;
 	static const std::string Sounds_Menus_BookPageTurn_PE1014902;
-	static const std::string Sounds_Menus_Inventory_Book_02;
-	static const std::string Sounds_Menus_Inventory_Book_04;
-	static const std::string Sounds_Menus_Inventory_Book_05;
-	static const std::string Sounds_Menus_Inventory_Book_06;
-	static const std::string Sounds_Menus_Inventory_Book_07;
-	static const std::string Sounds_Menus_Inventory_Book_08;
+	static const std::string Sounds_Menus_Card_Game_UI_Button_Light_Reverb_02;
+	static const std::string Sounds_Menus_Simple_Button;
 	static const std::string Particles_BeamMeUp;
 	static const std::string Particles_BlueNether;
 	static const std::string Particles_BluePlasma;

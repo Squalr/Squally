@@ -150,13 +150,13 @@ void TitleScreen::onEnter()
 	GameUtils::accelerateParticles(this->etherParticles, 5.0f);
 
 	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));
-	this->storyModeButton->setClickSound(Resources::Sounds_ButtonClick3);
+	this->storyModeButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
 	this->arcadeModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onArcadeModeClick, this));
-	this->arcadeModeButton->setClickSound(Resources::Sounds_ButtonClick3);
+	this->arcadeModeButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
 	this->optionsButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onOptionsClick, this));
-	this->optionsButton->setClickSound(Resources::Sounds_ButtonClick3);
+	this->optionsButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
 	this->exitButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onExitClick, this));
-	this->exitButton->setClickSound(Resources::Sounds_ButtonClick3);
+	this->exitButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
 	
 
 
