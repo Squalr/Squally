@@ -76,5 +76,10 @@ public:
 	static const float totalAttackOffsetX;
 	static const float totalAttackOffsetY;
 	static const float leaderEmblemOffsetY;
+	static const float enemyPassIndicatorOffsetX;
+	static const float enemyPassIndicatorOffsetY;
+	static const float playerPassIndicatorOffsetX;
+	static const float playerPassIndicatorOffsetY;
+	static const float passIndicatorFadeSpeed;
 };
 
