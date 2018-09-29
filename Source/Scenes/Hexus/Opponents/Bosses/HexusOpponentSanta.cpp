@@ -22,6 +22,11 @@ HexusOpponentSanta::HexusOpponentSanta() : HexusOpponentData(
 	HexusOpponentSanta::StringKeyOpponentName,
 	Card::CardStyle::Water,
 	{
+		CardList::getInstance()->cardListByName->at(CardKeys::Decimal3),
+		CardList::getInstance()->cardListByName->at(CardKeys::Decimal2),
+		CardList::getInstance()->cardListByName->at(CardKeys::Decimal1),
+	},
+	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary2),

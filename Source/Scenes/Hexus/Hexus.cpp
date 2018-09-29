@@ -101,6 +101,15 @@ void Hexus::onGameStart(EventCustom* eventCustom)
 	this->gameState->stateType = GameState::StateType::EmptyState;
 	this->gameState->playerLosses = 0;
 	this->gameState->enemyLosses = 0;
+	this->gameState->cardReplaceCount = 3;
+
+	this->gameState->playerBinaryCards->clear();
+	this->gameState->playerDecimalCards->clear();
+	this->gameState->playerHexCards->clear();
+
+	this->gameState->enemyBinaryCards->clear();
+	this->gameState->enemyDecimalCards->clear();
+	this->gameState->enemyHexCards->clear();
 
 	this->gameState->playerGraveyard->clear();
 	this->gameState->enemyGraveyard->clear();
@@ -129,7 +138,6 @@ void Hexus::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 			break;
 		case EventKeyboard::KeyCode::KEY_SPACE:
 			this->gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, this->gameState->opponentData));
-			NavigationEvents::navigateBack();
 			break;
 		default:
 			break;

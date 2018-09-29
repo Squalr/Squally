@@ -18,9 +18,14 @@ HexusOpponentTutorialE::HexusOpponentTutorialE() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
+	Vec2(0.0f, -24.0f),
 	HexusOpponentTutorialE::StringKeyOpponentName,
 	Card::CardStyle::Water,
+	{
+		CardList::getInstance()->cardListByName->at(CardKeys::Decimal3),
+		CardList::getInstance()->cardListByName->at(CardKeys::Decimal2),
+		CardList::getInstance()->cardListByName->at(CardKeys::Decimal1),
+	},
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

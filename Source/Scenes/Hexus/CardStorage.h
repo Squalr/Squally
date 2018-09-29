@@ -14,6 +14,7 @@ public:
 
 	static void saveStorageCards(std::vector<CardData*> storageCards);
 	static void saveDeckCards(std::vector<CardData*> deckCards);
+	static void addStorageCard(CardData* cardData);
 	static std::vector<CardData*> getStorageCards();
 	static std::vector<CardData*> getDeckCards();
 

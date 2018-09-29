@@ -218,6 +218,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlGameEnd.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\HexusRewardsMenu.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Bootstrapper.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\GameWindow.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Resources.cpp" />
@@ -620,6 +621,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\main.cpp" />
     <ResourceCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\game.rc" />
     <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlGameEnd.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\HexusRewardsMenu.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\.gitattributes" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Backgrounds\.gitattributes" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Backgrounds\Platformer\Background1.png" />

@@ -13,6 +13,7 @@ class HexusEvents
 {
 public:
 	static const std::string HexusGameStartEvent;
+	static const std::string HexusShowRewardsEvent;
 
 	struct HexusGameResultEventArgs
 	{
@@ -20,6 +21,15 @@ public:
 		HexusOpponentData* opponentData;
 
 		HexusGameResultEventArgs(bool playerWon, HexusOpponentData* opponentData) : playerWon(playerWon), opponentData(opponentData)
+		{
+		}
+	};
+
+	struct HexusRewardArgs
+	{
+		HexusOpponentData* opponentData;
+
+		HexusRewardArgs(HexusOpponentData* opponentData) : opponentData(opponentData)
 		{
 		}
 	};
@@ -34,5 +44,6 @@ public:
 		}
 	};
 
+	static void showRewards(HexusRewardArgs args);
 	static void startGame(HexusGameEventArgs args);
 };

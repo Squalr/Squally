@@ -62,6 +62,15 @@ void CardStorage::saveDeckCards(std::vector<CardData*> deckCards)
 	SaveManager::saveGlobalData(CardStorage::SaveKeyDeckCards, cocos2d::Value(deckCardsValueVector));
 }
 
+void CardStorage::addStorageCard(CardData* cardData)
+{
+	std::vector<CardData*> storageCards = CardStorage::getStorageCards();
+
+	storageCards.push_back(cardData);
+
+	CardStorage::saveStorageCards(storageCards);
+}
+
 std::vector<CardData*> CardStorage::getDeckCards()
 {
 	CardStorage* instance = CardStorage::getInstance();

@@ -8,6 +8,7 @@ HexusOpponentData::HexusOpponentData(
 	Vec2 avatarOffset,
 	std::string enemyNameKey,
 	Card::CardStyle cardStyle,
+	std::vector<CardData*> rewards,
 	std::vector<CardData*> cards)
 {
 	this->animationResourceFile = animationResourceFile;
@@ -17,6 +18,7 @@ HexusOpponentData::HexusOpponentData(
 	this->avatarOffset = avatarOffset;
 	this->enemyNameKey = enemyNameKey;
 	this->cardStyle = cardStyle;
+	this->rewards = rewards;
 	this->cards = cards;
 }
 

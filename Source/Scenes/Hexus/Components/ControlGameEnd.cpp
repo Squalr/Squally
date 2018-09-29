@@ -45,8 +45,6 @@ void ControlGameEnd::initializeListeners()
 void ControlGameEnd::onBackClick(MenuSprite* menuSprite)
 {
 	this->activeGameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs((this->activeGameState->playerLosses < 2), this->activeGameState->opponentData));
-
-	NavigationEvents::navigateBack();
 }
 
 
