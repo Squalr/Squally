@@ -5,6 +5,10 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{46DDA4E1-5072-3269-BE3B-13E5CCC9EF3A}</ProjectGuid>
@@ -20,6 +24,11 @@
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
@@ -30,11 +39,17 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\bin\Squally\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\bin\Squally\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Squally.dir\Debug\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Squally.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Squally</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Squally</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.exe</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -65,7 +80,8 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PreBuildEvent>
-      <Message>												</Message>
+      <Message>
+      </Message>
       <Command>setlocal
 "F:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/win32-specific/gles/prebuilt/glew32.dll" "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/bin/Squally/Debug"
 if %errorlevel% neq 0 goto :cmEnd
@@ -198,9 +214,174 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\deprecated;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\platform;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\extensions;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\gles\include\OGLES;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\glfw3\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\zlib\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\cereal;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\Udis86;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\RapidJson;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\audio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <DisableSpecificWarnings>4251;4244;4334;4005;4820;4710;4514;4056;4996;4099</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;COCOS2DXWIN32_EXPORTS;_WIN32;CC_USE_NAVMESH=1;CC_USE_JPEG=1;CC_USE_TIFF=1;CC_USE_PNG=1;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ProgramDataBaseFileName />
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;COCOS2DXWIN32_EXPORTS;_WIN32;CC_USE_NAVMESH=1;CC_USE_JPEG=1;CC_USE_TIFF=1;CC_USE_PNG=1;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\deprecated;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\platform;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\extensions;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\gles\include\OGLES;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\glfw3\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\zlib\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\cereal;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\Udis86;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\RapidJson;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\audio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\deprecated;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\platform;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\extensions;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\gles\include\OGLES;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\glfw3\include\win32;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\win32-specific\zlib\include;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\SpriterPlusPlus\spriterengine;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\asmjit\src\asmjit;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\cereal;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\Udis86;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\external\RapidJson;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cocos\audio\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/win32-specific/gles/prebuilt/glew32.dll" "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/bin/Squally/Debug"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/win32-specific/OggDecoder/prebuilt/libogg.dll" "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/bin/Squally/Debug"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbis.dll" "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/bin/Squally/Debug"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbisfile.dll" "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/bin/Squally/Debug"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/win32-specific/MP3Decoder/prebuilt/libmpg123.dll" "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/bin/Squally/Debug"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/win32-specific/OpenalSoft/prebuilt/OpenAL32.dll" "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/bin/Squally/Debug"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/sqlite3/libraries/win32/sqlite3.dll" "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/bin/Squally/Debug"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/win32-specific/zlib/prebuilt/zlib1.dll" "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/bin/Squally/Debug"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/websockets/prebuilt/win32/websockets.dll" "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/bin/Squally/Debug"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/curl/prebuilt/win32/libcurl.dll" "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/bin/Squally/Debug"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/openssl/prebuilt/win32/libcrypto-1_1.dll" "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/bin/Squally/Debug"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll" "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/bin/Squally/Debug"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -E copy_directory "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/Resources" "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/bin/Squally/Debug"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\Debug\cocos2d.lib;opengl32.lib;glu32.lib;..\cocos2d\external\win32-specific\gles\prebuilt\glew32.lib;..\cocos2d\external\glfw3\prebuilt\win32\glfw3.lib;..\cocos2d\external\win32-specific\OggDecoder\prebuilt\libogg.lib;..\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbis.lib;..\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbisfile.lib;..\cocos2d\external\win32-specific\MP3Decoder\prebuilt\libmpg123.lib;..\cocos2d\external\win32-specific\OpenalSoft\prebuilt\OpenAL32.lib;..\cocos2d\external\sqlite3\libraries\win32\sqlite3.lib;..\cocos2d\external\win32-specific\zlib\prebuilt\libzlib.lib;lib\Debug\unzip.lib;lib\Debug\tinyxml2.lib;..\cocos2d\external\freetype2\prebuilt\win32\freetype.lib;..\cocos2d\external\websockets\prebuilt\win32\websockets.lib;..\cocos2d\external\curl\prebuilt\win32\libcurl.lib;lib\Debug\flatbuffers.lib;lib\Debug\xxhash.lib;..\cocos2d\external\openssl\prebuilt\win32\libssl.lib;..\cocos2d\external\openssl\prebuilt\win32\libcrypto.lib;..\cocos2d\external\jpeg\prebuilt\win32\libjpeg.lib;..\cocos2d\external\webp\prebuilt\win32\libwebp.lib;..\cocos2d\external\tiff\prebuilt\win32\libtiff.lib;..\cocos2d\external\png\prebuilt\win32\libpng.lib;..\cocos2d\external\chipmunk\prebuilt\win32\debug-lib\libchipmunk.lib;..\cocos2d\external\bullet\prebuilt\win32\debug\libbullet.lib;lib\Debug\recast.lib;lib\Debug\spriterengine.lib;lib\Debug\asmjit.lib;lib\Debug\cereal.lib;lib\Debug\udis86.lib;lib\Debug\rapidjson.lib;ws2_32.lib;winmm.lib;Version.lib;Iphlpapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>msvcrt;libcmt;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/Debug/Squally.lib</ImportLibrary>
+      <ProgramDataBaseFile>No</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <CustomBuild Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\CMakeLists.txt">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
 "F:\Program Files\CMake\bin\cmake.exe" "-HF:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally" "-BF:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32" --check-stamp-file "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/CMakeFiles/generate.stamp"
 if %errorlevel% neq 0 goto :cmEnd
@@ -210,12 +391,26 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"F:\Program Files\CMake\bin\cmake.exe" "-HF:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally" "-BF:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32" --check-stamp-file "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\3.11.2\CMakeSystem.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\3.11.2\CMakeCCompiler.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\3.11.2\CMakeCXXCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\3.11.2\CMakeRCCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeRCInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosBuildSet.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosBuildHelpers.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeParseArguments.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosSelectModule.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosCompileOptions.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosPickLibs.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosBuildModules.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\FindOpenGL.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\FindPackageHandleStandardArgs.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\FindPackageMessage.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\CMakeLists.txt;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\3.11.2\CMakeSystem.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInitialize.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\3.11.2\CMakeCCompiler.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\3.11.2\CMakeCXXCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeSystemSpecificInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeGenericSystem.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeInitializeConfigs.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\WindowsPaths.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-C.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\3.11.2\CMakeRCCompiler.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeRCInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCXXInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeLanguageInformation.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\MSVC-CXX.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Compiler\CMakeCommonCompilerMacros.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC-CXX.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\Platform\Windows-MSVC.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeCommonLanguageInclude.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosBuildSet.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosBuildHelpers.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\CMakeParseArguments.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosSelectModule.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosCompileOptions.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosPickLibs.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\cocos2d\cmake\Modules\CocosBuildModules.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\FindOpenGL.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\FindPackageHandleStandardArgs.cmake;F:\Program Files\CMake\share\cmake-3.11\Modules\FindPackageMessage.cmake;F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlGameEnd.cpp" />
+    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\HexusRewardsMenu.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Bootstrapper.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\GameWindow.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Resources.cpp" />
@@ -502,7 +697,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlCombineStaged.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlDraw.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlEndTurn.cpp" />
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlGameEnd.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlNeutral.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlReplaceCards.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlSacrificeStaged.cpp" />
@@ -581,7 +775,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\LoadingScreen\LoadingScreen.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\MinigamesMenu.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\HexusDeckManagement.cpp" />
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\HexusRewardsMenu.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\HexusChapterPreview.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\HexusChapterSelectMenu.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Castle\HexusChapterPreviewCastle.cpp" />
@@ -619,6 +812,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Sound\MusicDeserializer.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\main.cpp" />
     <ResourceCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\game.rc" />
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlGameEnd.h" />
+    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\HexusRewardsMenu.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\.gitattributes" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Backgrounds\.gitattributes" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Backgrounds\Platformer\Background1.png" />
@@ -6854,7 +7049,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\AvatarFrame.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\.gitattributes" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\0.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\1.png" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\1.PNG" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\10.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\11.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\12.png" />
@@ -6872,9 +7067,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Button.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\ButtonClick.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\ButtonHover.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\ButtonPlank.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\ButtonPlankClick.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\ButtonPlankHover.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\CardBackAir.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\CardBackEarth.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\CardBackFire.png" />
@@ -6896,7 +7088,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\1.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\10.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\11.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\12.png" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\12.PNG" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\13.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\14.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\15.png" />
@@ -6909,7 +7101,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\8.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\9.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\EnemyBanner.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Flags.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Gameboard.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Hex\.gitattributes" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Hex\0.png" />
@@ -6930,7 +7121,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Hex\9.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\LeaderEmblem.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\PlayerBanner.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\RoundBanner.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\RowSelection.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\RowSelectionHighlight.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\ScoreBox.png" />
@@ -6943,7 +7133,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\DecStorm.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Flip1.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Flip2.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Flip3.png" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Flip3.PNG" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Flip4.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\HexStorm.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Inverse.png" />
@@ -6967,13 +7157,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Gemstone.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Greed.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Greed2.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\HealthPotion.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Heart.png" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\HealthPotion.PNG" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Heart.PNG" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Helmet.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\HoneyJar.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\House.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Hut.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\IceFish.png" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\IceFish.PNG" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\IceHut.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Imp.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Insect.png" />
@@ -6991,7 +7181,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Shack1.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Shack2.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Sheep.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Slug.png" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Slug.PNG" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Spider.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\SpiderKing.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Stack.png" />
@@ -7229,7 +7419,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\.gitattributes" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\ButtonClick1.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\ButtonClick2.mp3" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\ButtonClick3.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\ButtonRollover1.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Clean_Interface_Buttons_8.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\ClickBack1.mp3" />
@@ -7281,15 +7470,23 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Hexus\Card_Game_Achievement_Shimmer_Short_02.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Hexus\Card_Game_Achievement_Twinkle_Dust_01.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Hexus\Card_Game_Achievement_Wind_Reverse_02.mp3" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Hexus\Card_Game_Movement_Deal_Single_Small_01.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Hexus\Card_Game_Movement_Tap_01.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Hexus\Card_Game_Movement_Tap_05.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Hexus\UI_CCG_NextPlayer4.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Hexus\UI_CCG_card_downgrade.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Hexus\UI_CCG_card_upgrade.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\MapOpen.mp3" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\AFX_INTERFACESOUND_6_DFMG.mp3" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\AFX_INTERFACE_BEEP_1_DFMG.mp3" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\AFX_INTERFACE_BEEP_2_DFMG.mp3" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\AFX_SWITCHCLICK_1_DFMG.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\BookPageTurn PE1014902.mp3" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\Card_Game_UI_Button_Light_Reverb_02.mp3" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\Inventory_Book_02.mp3" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\Inventory_Book_04.mp3" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\Inventory_Book_05.mp3" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\Inventory_Book_06.mp3" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\Inventory_Book_07.mp3" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\Inventory_Book_08.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Special1.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Special2.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Strings\Dialogue_CutsceneBoardMembers.json" />
@@ -7608,7 +7805,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlCombineStaged.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlDraw.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlEndTurn.h" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlGameEnd.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlNeutral.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlReplaceCards.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlSacrificeStaged.h" />
@@ -7691,7 +7887,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\LoadingScreen\LoadingScreen.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\MinigamesMenu.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\HexusDeckManagement.h" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\HexusRewardsMenu.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\HexusChapterPreview.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\HexusChapterSelectMenu.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Castle\HexusChapterPreviewCastle.h" />
