@@ -64,6 +64,28 @@ void Banners::onStateChange(GameState* gameState)
 
 	switch (gameState->stateType)
 	{
+		case GameState::StateType::RoundStart: {
+			this->displayRoundStartBannner();
+			if (this->activeGameState->round == 0) {
+				this->runAction(Sequence::create(
+					DelayTime::create(Config::bannerDisplayDuration),
+					CallFunc::create([=] {
+						GameState::updateState(this->activeGameState, GameState::StateType::DrawInitialCards);
+					}),
+					nullptr
+				));	
+			} else {
+				this->runAction(Sequence::create(
+					DelayTime::create(Config::bannerDisplayDuration),
+					CallFunc::create([=] {
+						GameState::updateState(this->activeGameState, GameState::StateType::ControlReplaceCards);
+					}),
+					nullptr
+				));	
+			}
+			
+			break;
+		}
 		case GameState::StateType::FirstSideBanner:
 		case GameState::StateType::TurnBanner: {
 
@@ -173,6 +195,24 @@ void Banners::displayWinLoseBanner()
 	this->statusLabel->runAction(Sequence::create(
 		FadeTo::create(Config::bannerFadeSpeed, 255),
 		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+	this->statusBanner->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 196),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+}
+
+void Banners::displayRoundStartBannner()
+{
+	this->activeGameState->bannerMessage = 
+		"ROUND: " + std::to_string(this->activeGameState->round);
+
+	this->statusLabel->setString(this->activeGameState->bannerMessage);
+	this->statusLabel->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 255),
+		DelayTime::create(Config::roundBannerDisplayDuration),
 		nullptr
 	));
 	this->statusBanner->runAction(Sequence::create(

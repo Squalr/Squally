@@ -72,7 +72,7 @@ void ScoreTotal::onStateChange(GameState* gameState)
 				if (gameState->playerHand->getCardCount() == 0) {
 					GameState::updateState(gameState, GameState::StateType::Lose);
 				} else {
-					GameState::updateState(gameState, GameState::StateType::ControlReplaceCards);
+					GameState::updateState(gameState, GameState::StateType::RoundStart);
 				}
 			}
 		}
