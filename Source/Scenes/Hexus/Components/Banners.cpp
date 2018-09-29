@@ -66,11 +66,12 @@ void Banners::onStateChange(GameState* gameState)
 	{
 		case GameState::StateType::FirstSideBanner:
 		case GameState::StateType::TurnBanner: {
-			if (gameState->turn == GameState::Turn::Enemy)
+
+			if (gameState->turn == GameState::Turn::Enemy && ! gameState->enemyPass)
 			{
 				this->displayEnemyTurnBanner();
 			}
-			else if (gameState->turn == GameState::Turn::Player)
+			else if (gameState->turn == GameState::Turn::Player && ! gameState->playerPass)
 			{
 				this->displayPlayerTurnBanner();
 			}
