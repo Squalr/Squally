@@ -90,25 +90,40 @@ void Banners::onStateChange(GameState* gameState)
 			break;
 		}
 		case GameState::StateType::FirstSideBanner:
-		case GameState::StateType::TurnBanner: {
-
-			if (gameState->turn == GameState::Turn::Enemy && ! gameState->enemyPass)
+		case GameState::StateType::TurnBanner:
+		{
+			if (gameState->showPassBanner)
 			{
-				this->displayEnemyTurnBanner();
+				if (gameState->turn == GameState::Turn::Enemy && !gameState->enemyPass)
+				{
+					this->displayEnemyTurnBanner();
+				}
+				else if (gameState->turn == GameState::Turn::Player && !gameState->playerPass)
+				{
+					this->displayPlayerTurnBanner();
+				}
+
+				this->runAction(Sequence::create(
+					DelayTime::create(Config::bannerFadeSpeed),
+					DelayTime::create(Config::bannerDisplayDuration),
+					CallFunc::create([=] {
+						GameState::updateState(this->activeGameState, GameState::StateType::ControlNeutral);
+					}),
+					nullptr
+				));
+
+				gameState->showPassBanner = false;
 			}
-			else if (gameState->turn == GameState::Turn::Player && ! gameState->playerPass)
+			else
 			{
-				this->displayPlayerTurnBanner();
+				this->runAction(Sequence::create(
+					CallFunc::create([=] {
+						GameState::updateState(this->activeGameState, GameState::StateType::ControlNeutral);
+					}),
+					nullptr
+				));
 			}
 
-			this->runAction(Sequence::create(
-				DelayTime::create(Config::bannerFadeSpeed),
-				DelayTime::create(Config::bannerDisplayDuration),
-				CallFunc::create([=] {
-					GameState::updateState(this->activeGameState, GameState::StateType::ControlNeutral);
-				}),
-				nullptr
-			));	
 			break;
 		}
 		case GameState::StateType::ControlReplaceCards:

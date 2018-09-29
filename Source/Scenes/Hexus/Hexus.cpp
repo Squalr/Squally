@@ -141,7 +141,7 @@ void Hexus::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 			// NavigationEvents::navigate(NavigationEvents::GameScreen::Pause);
 			break;
 		case EventKeyboard::KeyCode::KEY_SPACE:
-			this->gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, this->gameState->opponentData));
+			// this->gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, this->gameState->opponentData));
 			break;
 		default:
 			break;
