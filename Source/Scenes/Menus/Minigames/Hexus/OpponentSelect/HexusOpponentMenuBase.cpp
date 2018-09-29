@@ -27,12 +27,30 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
 		Resources::Menus_Buttons_GenericButtonClick
 	);
 
+	Label* backButtonLabel = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabelHover = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabelClick = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+
+	backButtonLabel->enableOutline(Color4B::BLACK, 2);
+	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
+	backButtonLabelClick->enableOutline(Color4B::BLACK, 2);
+
+	this->backButton = TextMenuSprite::create(
+		backButtonLabel,
+		backButtonLabelHover,
+		backButtonLabelClick,
+		Resources::Menus_Buttons_GenericButton,
+		Resources::Menus_Buttons_GenericButtonHover,
+		Resources::Menus_Buttons_GenericButtonClick
+	);
+
 	this->opponentSelectLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->addChild(this->background);
 	this->addChild(this->scrollPane);
 	this->addChild(this->opponentSelectLabel);
 	this->addChild(this->deckManagementButton);
+	this->addChild(this->backButton);
 	this->addChild(Mouse::create());
 }
 
@@ -48,6 +66,7 @@ void HexusOpponentMenuBase::onEnter()
 	float duration = 0.35f;
 
 	GameUtils::fadeInObject(this->scrollPane, delay, duration);
+	GameUtils::fadeInObject(this->backButton, delay, duration);
 
 	// Just assume linear dependencies for now
 	this->dependencies.clear();
@@ -99,6 +118,7 @@ void HexusOpponentMenuBase::initializePositions()
 	this->scrollPane->fitSizeToContent();
 	this->deckManagementButton->setPosition(Vec2(visibleSize.width / 2.0f + 756.0f, visibleSize.height - 64.0f));
 	this->opponentSelectLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 64.0f));
+	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
 }
 
 void HexusOpponentMenuBase::initializeListeners()
@@ -109,6 +129,7 @@ void HexusOpponentMenuBase::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusOpponentMenuBase::onKeyPressed, this);
 	this->deckManagementButton->setClickCallback(CC_CALLBACK_1(HexusOpponentMenuBase::onDeckManagementClick, this));
+	this->backButton->setClickCallback(CC_CALLBACK_1(HexusOpponentMenuBase::onBackClick, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 }
@@ -130,7 +151,7 @@ void HexusOpponentMenuBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* 
 	}
 }
 
-void HexusOpponentMenuBase::onCloseClick(MenuSprite* menuSprite)
+void HexusOpponentMenuBase::onBackClick(MenuSprite* menuSprite)
 {
 	NavigationEvents::navigateBack();
 }

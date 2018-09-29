@@ -24,9 +24,9 @@ ControlReplaceCards::ControlReplaceCards()
 		doneButtonLabel,
 		doneButtonLabelHover,
 		doneButtonLabelClick,
-		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover,
-		Resources::Menus_Buttons_GenericButtonClick
+		Resources::Minigames_Hexus_ButtonPlank,
+		Resources::Minigames_Hexus_ButtonPlankHover,
+		Resources::Minigames_Hexus_ButtonPlankClick
 	);
 	this->doneButton->setOpacity(0);
 	

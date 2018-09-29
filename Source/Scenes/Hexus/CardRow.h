@@ -20,6 +20,7 @@ public:
 	int getRowAttack();
 	bool isPlayerRow();
 	bool isEnemyRow();
+	bool isEmpty();
 	void setCardScale(float scale, float scaleSpeed);
 	float getCardScale();
 	void enableRowSelection(std::function<void(CardRow*)> callback);

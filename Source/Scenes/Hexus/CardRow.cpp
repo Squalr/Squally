@@ -303,7 +303,12 @@ int CardRow::simulateCardEffect(Card* card)
 	return diff;
 }
 
-bool CardRow::isPlayerRow() 
+bool CardRow::isEmpty()
+{
+	return this->rowCards->size() <= 0;
+}
+
+bool CardRow::isPlayerRow()
 {
 	return this->belongsToPlayer;
 }

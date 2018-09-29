@@ -32,6 +32,23 @@ MinigamesMenu::MinigamesMenu()
 	this->background = Node::create();
 	this->scrollPane = ScrollPane::create(Size(1152.0f, 768.0f), Color4B(0, 0, 0, 127));
 
+	Label* backButtonLabel = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabelHover = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabelClick = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+
+	backButtonLabel->enableOutline(Color4B::BLACK, 2);
+	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
+	backButtonLabelClick->enableOutline(Color4B::BLACK, 2);
+
+	this->backButton = TextMenuSprite::create(
+		backButtonLabel,
+		backButtonLabelHover,
+		backButtonLabelClick,
+		Resources::Menus_Buttons_GenericButton,
+		Resources::Menus_Buttons_GenericButtonHover,
+		Resources::Menus_Buttons_GenericButtonClick
+	);
+
 	Label* hexusLabel = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* hexusLabelHover = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* hexusLabelClicked = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
@@ -119,6 +136,7 @@ MinigamesMenu::MinigamesMenu()
 	this->scrollPane->addChild(this->comingSoonButton5);
 	this->scrollPane->addChild(this->comingSoonButton6);
 	this->addChild(this->scrollPane);
+	this->addChild(this->backButton);
 	this->addChild(Mouse::create());
 }
 
@@ -136,6 +154,7 @@ void MinigamesMenu::onEnter()
 	const float duration = 0.75f;
 
 	GameUtils::fadeInObject(this->scrollPane, delay, duration);
+	GameUtils::fadeInObject(this->backButton, delay, duration);
 
 	this->scheduleUpdate();
 }
@@ -149,6 +168,7 @@ void MinigamesMenu::initializeListeners()
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(MinigamesMenu::onKeyPressed, this);
 	this->hexusButton->setClickCallback(CC_CALLBACK_1(MinigamesMenu::onHexusClick, this));
 	this->hexusPuzzlesButton->setClickCallback(CC_CALLBACK_1(MinigamesMenu::onHexusPuzzlesClick, this));
+	this->backButton->setClickCallback(CC_CALLBACK_1(MinigamesMenu::onBackClick, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 }
@@ -171,6 +191,7 @@ void MinigamesMenu::initializePositions()
 	this->comingSoonButton4->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 2 + 128.0f));
 	this->comingSoonButton5->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 1 + 128.0f));
 	this->comingSoonButton6->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 0 + 128.0f));
+	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
 	this->scrollPane->fitSizeToContent();
 }
 
@@ -185,6 +206,11 @@ void MinigamesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		default:
 			break;
 	}
+}
+
+void MinigamesMenu::onBackClick(MenuSprite* menuSprite)
+{
+	NavigationEvents::navigateBack();
 }
 
 void MinigamesMenu::onHexusClick(MenuSprite* menuSprite)
