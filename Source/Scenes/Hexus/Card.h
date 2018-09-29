@@ -36,10 +36,10 @@ public:
 			SUB,
 		};
 
-		OperationType opterationType;
+		OperationType operationType;
 		unsigned int immediate;
 
-		Operation(OperationType opterationType, unsigned int immediate) : opterationType(opterationType), immediate(immediate)
+		Operation(OperationType operationType, unsigned int immediate) : operationType(operationType), immediate(immediate)
 		{
 
 		}
