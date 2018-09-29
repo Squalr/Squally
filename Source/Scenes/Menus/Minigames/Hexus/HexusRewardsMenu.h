@@ -32,6 +32,7 @@ private:
 	void onRewardSelect(Card* card);
 	void onChooseClick(MenuSprite* menuSprite);
 
+	bool backToChapterSelect;
 	Sprite* background;
 	CardRow* rewardRow;
 	MenuSprite* chooseButton;

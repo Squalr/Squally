@@ -148,22 +148,23 @@ void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventA
 		int wins = SaveManager::hasGlobalData(opponentKey) ? SaveManager::getGlobalData(opponentKey).asInt() + 1 : 1;
 
 		SaveManager::saveGlobalData(opponentKey, cocos2d::Value(wins));
+		bool backToChapterSelect = false;
 
 		if (args.opponentData == this->opponents.back()->hexusOpponentData)
 		{
-			if (SaveManager::hasGlobalData(this->chapterProgressSaveKey) && SaveManager::getGlobalData(this->chapterProgressSaveKey).asBool())
-			{
-				return;
-			}
-			else
+			if (!SaveManager::hasGlobalData(this->chapterProgressSaveKey) || !SaveManager::getGlobalData(this->chapterProgressSaveKey).asBool())
 			{
 				// Beat the last opponent -- save that we beat the chapter and navigate back to chapter select
 				SaveManager::saveGlobalData(this->chapterProgressSaveKey, cocos2d::Value(true));
-				NavigationEvents::navigateBack();
+				backToChapterSelect = true;
 			}
 		}
 
-		HexusEvents::showRewards(HexusEvents::HexusRewardArgs(args.opponentData));
+		HexusEvents::showRewards(HexusEvents::HexusRewardArgs(args.opponentData, backToChapterSelect));
+	}
+	else
+	{
+		NavigationEvents::navigateBack();
 	}
 }
 
