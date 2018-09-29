@@ -25,7 +25,14 @@ PassButton::PassButton()
 		Resources::Minigames_Hexus_ButtonHover,
 		Resources::Minigames_Hexus_ButtonClick);
 
+	this->playerPassIndicator = Sprite::create(Resources::Minigames_Hexus_Flags);
+	this->playerPassIndicator->setOpacity(0);
+	this->enemyPassIndicator = Sprite::create(Resources::Minigames_Hexus_Flags);
+	this->enemyPassIndicator->setOpacity(0);
+	
 	this->addChild(this->passButton);
+	this->addChild(this->playerPassIndicator);
+	this->addChild(this->enemyPassIndicator);
 }
 
 PassButton::~PassButton()
@@ -39,11 +46,25 @@ void PassButton::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->passButton->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY);
+	this->playerPassIndicator->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::playerPassIndicatorOffsetX, visibleSize.height / 2.0f + Config::playerPassIndicatorOffsetY);
+	this->enemyPassIndicator->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::enemyPassIndicatorOffsetX, visibleSize.height / 2.0f + Config::enemyPassIndicatorOffsetY);
 }
 
 void PassButton::onStateChange(GameState* gameState)
 {
 	this->activeGameState = gameState;
+
+	if (this->activeGameState->playerPass) {
+		this->playerPassIndicator->runAction(FadeTo::create(Config::passIndicatorFadeSpeed, 255));
+	} else {
+		this->playerPassIndicator->runAction(FadeTo::create(Config::passIndicatorFadeSpeed, 0));
+	}
+
+	if (this->activeGameState->enemyPass) {
+		this->enemyPassIndicator->runAction(FadeTo::create(Config::passIndicatorFadeSpeed, 255));
+	} else {
+		this->enemyPassIndicator->runAction(FadeTo::create(Config::passIndicatorFadeSpeed, 0));
+	}
 
 	switch (gameState->stateType) {
 	case GameState::StateType::ControlNeutral:
