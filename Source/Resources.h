@@ -5715,6 +5715,7 @@ public:
 	static const std::string Minigames_Hexus_Gameboard;
 	static const std::string Minigames_Hexus_LeaderEmblem;
 	static const std::string Minigames_Hexus_PlayerBanner;
+	static const std::string Minigames_Hexus_RoundBanner;
 	static const std::string Minigames_Hexus_RowSelection;
 	static const std::string Minigames_Hexus_RowSelectionHighlight;
 	static const std::string Minigames_Hexus_ScoreBox;

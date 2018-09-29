@@ -17,6 +17,8 @@ Banners::Banners()
 	this->playerBanner2 = Sprite::create(Resources::Minigames_Hexus_PlayerBanner);
 	this->enemyBanner1 = Sprite::create(Resources::Minigames_Hexus_EnemyBanner);
 	this->enemyBanner2 = Sprite::create(Resources::Minigames_Hexus_EnemyBanner);
+	this->roundBanner1 = Sprite::create(Resources::Minigames_Hexus_RoundBanner);
+	this->roundBanner2 = Sprite::create(Resources::Minigames_Hexus_RoundBanner);
 
 	this->statusBanner->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->statusLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
@@ -27,6 +29,8 @@ Banners::Banners()
 	this->playerBanner2->setOpacity(0);
 	this->enemyBanner1->setOpacity(0);
 	this->enemyBanner2->setOpacity(0);
+	this->roundBanner1->setOpacity(0);
+	this->roundBanner2->setOpacity(0);
 
 	this->addChild(this->statusBanner);
 	this->addChild(this->statusLabel);
@@ -34,6 +38,8 @@ Banners::Banners()
 	this->addChild(this->playerBanner2);
 	this->addChild(this->enemyBanner1);
 	this->addChild(this->enemyBanner2);
+	this->addChild(this->roundBanner1);
+	this->addChild(this->roundBanner2);
 }
 
 Banners::~Banners()
@@ -52,6 +58,8 @@ void Banners::initializePositions()
 	this->playerBanner2->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::bannerIconOffset, visibleSize.height / 2.0f + 320.0f);
 	this->enemyBanner1->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter - Config::bannerIconOffset, visibleSize.height / 2.0f + 320.0f);
 	this->enemyBanner2->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::bannerIconOffset, visibleSize.height / 2.0f + 320.0f);
+	this->roundBanner1->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter - Config::bannerIconOffset, visibleSize.height / 2.0f + 320.0f);
+	this->roundBanner2->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::bannerIconOffset, visibleSize.height / 2.0f + 320.0f);
 }
 
 void Banners::onStateChange(GameState* gameState)
@@ -65,17 +73,12 @@ void Banners::onStateChange(GameState* gameState)
 	switch (gameState->stateType)
 	{
 		case GameState::StateType::RoundStart: {
-			this->displayRoundStartBannner();
 			if (this->activeGameState->round == 0) {
-				this->runAction(Sequence::create(
-					DelayTime::create(Config::bannerDisplayDuration),
-					CallFunc::create([=] {
-						GameState::updateState(this->activeGameState, GameState::StateType::DrawInitialCards);
-					}),
-					nullptr
-				));	
+				GameState::updateState(this->activeGameState, GameState::StateType::DrawInitialCards);
 			} else {
+				this->displayRoundStartBannner();
 				this->runAction(Sequence::create(
+					DelayTime::create(Config::bannerFadeSpeed),
 					DelayTime::create(Config::bannerDisplayDuration),
 					CallFunc::create([=] {
 						GameState::updateState(this->activeGameState, GameState::StateType::ControlReplaceCards);
@@ -99,6 +102,7 @@ void Banners::onStateChange(GameState* gameState)
 			}
 
 			this->runAction(Sequence::create(
+				DelayTime::create(Config::bannerFadeSpeed),
 				DelayTime::create(Config::bannerDisplayDuration),
 				CallFunc::create([=] {
 					GameState::updateState(this->activeGameState, GameState::StateType::ControlNeutral);
@@ -206,8 +210,7 @@ void Banners::displayWinLoseBanner()
 
 void Banners::displayRoundStartBannner()
 {
-	this->activeGameState->bannerMessage = 
-		"ROUND: " + std::to_string(this->activeGameState->round);
+	this->activeGameState->bannerMessage = "NEXT ROUND";
 
 	this->statusLabel->setString(this->activeGameState->bannerMessage);
 	this->statusLabel->runAction(Sequence::create(
@@ -217,6 +220,17 @@ void Banners::displayRoundStartBannner()
 	));
 	this->statusBanner->runAction(Sequence::create(
 		FadeTo::create(Config::bannerFadeSpeed, 196),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+
+	this->roundBanner1->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 255),
+		DelayTime::create(Config::bannerDisplayDuration),
+		nullptr
+	));
+	this->roundBanner2->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 255),
 		DelayTime::create(Config::bannerDisplayDuration),
 		nullptr
 	));
@@ -247,6 +261,14 @@ void Banners::hideAllBanners()
 		nullptr
 	));
 	this->statusBanner->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 0),
+		nullptr
+	));
+	this->roundBanner1->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 0),
+		nullptr
+	));
+	this->roundBanner2->runAction(Sequence::create(
 		FadeTo::create(Config::bannerFadeSpeed, 0),
 		nullptr
 	));

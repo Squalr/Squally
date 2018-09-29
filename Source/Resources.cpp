@@ -5713,6 +5713,7 @@ const std::string Resources::Minigames_Hexus_Flags = "Minigames/Hexus/Flags.png"
 const std::string Resources::Minigames_Hexus_Gameboard = "Minigames/Hexus/Gameboard.png";
 const std::string Resources::Minigames_Hexus_LeaderEmblem = "Minigames/Hexus/LeaderEmblem.png";
 const std::string Resources::Minigames_Hexus_PlayerBanner = "Minigames/Hexus/PlayerBanner.png";
+const std::string Resources::Minigames_Hexus_RoundBanner = "Minigames/Hexus/RoundBanner.png";
 const std::string Resources::Minigames_Hexus_RowSelection = "Minigames/Hexus/RowSelection.png";
 const std::string Resources::Minigames_Hexus_RowSelectionHighlight = "Minigames/Hexus/RowSelectionHighlight.png";
 const std::string Resources::Minigames_Hexus_ScoreBox = "Minigames/Hexus/ScoreBox.png";
