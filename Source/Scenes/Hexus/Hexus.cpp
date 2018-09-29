@@ -101,7 +101,7 @@ void Hexus::onGameStart(EventCustom* eventCustom)
 	this->gameState->stateType = GameState::StateType::EmptyState;
 	this->gameState->playerLosses = 0;
 	this->gameState->enemyLosses = 0;
-	this->gameState->cardReplaceCount = 3;
+	this->gameState->round = 0;
 
 	this->gameState->playerBinaryCards->clear();
 	this->gameState->playerDecimalCards->clear();
