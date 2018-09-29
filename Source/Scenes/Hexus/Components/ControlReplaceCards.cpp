@@ -76,9 +76,6 @@ void ControlReplaceCards::onStateChange(GameState* gameState)
 			}
 
 			this->initializeCallbacks(gameState);
-
-			this->doneButton->enableInteraction(0);
-			this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
 			break;
 		default:
 			if (gameState->previousStateType == GameState::StateType::ControlReplaceCards)
