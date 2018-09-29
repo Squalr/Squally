@@ -80,6 +80,11 @@ void Banners::onStateChange(GameState* gameState)
 				this->runAction(Sequence::create(
 					DelayTime::create(Config::bannerFadeSpeed),
 					DelayTime::create(Config::bannerDisplayDuration),
+					// The state after this is also a banner, so it looks weird to not fade out first
+					CallFunc::create([=] {
+						this->hideAllBanners();
+					}),
+					DelayTime::create(Config::bannerFadeSpeed),
 					CallFunc::create([=] {
 						GameState::updateState(this->activeGameState, GameState::StateType::ControlReplaceCards);
 					}),
