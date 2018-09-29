@@ -120,6 +120,7 @@ void ControlSelectionStaged::selectCard(Card* card)
 		this->activeGameState->selectedCard->stopAllActions();
 		this->activeGameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedCard->position));
 		GameState::updateState(this->activeGameState, GameState::StateType::ControlNeutral);
+		this->activeGameState->selectedCard = nullptr;
 		return;
 	}
 
@@ -161,17 +162,8 @@ void ControlSelectionStaged::stageSelectedCombineCard(Card* card)
 		return;
 	}
 
-	switch (this->activeGameState->selectedCard->cardData->cardType)
-	{
-		case CardData::CardType::Binary:
-		default:
-		{
-			this->activeGameState->stagedCombineSourceCard = card;
-
-			GameState::updateState(this->activeGameState, GameState::StateType::ControlCombineStaged);
-			break;
-		}
-	}
+	this->activeGameState->stagedCombineSourceCard = card;
+	GameState::updateState(this->activeGameState, GameState::StateType::ControlCombineStaged);
 }
 
 void ControlSelectionStaged::playSelectedCard(CardRow* cardRow)
@@ -269,7 +261,7 @@ void ControlSelectionStaged::aiPerformAction(GameState* gameState)
 			case CardData::CardType::Special_FLIP4:
 			case CardData::CardType::Special_INV: {
 				Card::Operation operation = Card::toOperation(selectedCard->cardData->cardType, 0);
-				
+
 				// Apply the card
 				for (auto it = gameState->stagedCombineCardRow->rowCards->begin(); it != gameState->stagedCombineCardRow->rowCards->end(); it++)
 				{

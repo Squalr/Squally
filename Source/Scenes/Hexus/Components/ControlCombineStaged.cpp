@@ -96,8 +96,10 @@ void ControlCombineStaged::selectCard(Card* card)
 	// Unstage/deselect card if clicking the active card
 	if (card == this->activeGameState->selectedCard)
 	{
+		this->activeGameState->stagedCombineSourceCard = nullptr;
 		this->activeGameState->selectedCard->stopAllActions();
 		this->activeGameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedCard->position));
+		this->activeGameState->selectedCard = nullptr;
 		GameState::updateState(this->activeGameState, GameState::StateType::ControlNeutral);
 		return;
 	}
