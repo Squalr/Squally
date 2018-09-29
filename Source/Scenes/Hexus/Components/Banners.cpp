@@ -225,7 +225,7 @@ void Banners::displayWinLoseBanner()
 
 void Banners::displayRoundStartBannner()
 {
-	this->activeGameState->bannerMessage = "NEXT ROUND";
+	this->activeGameState->bannerMessage = this->activeGameState->round >= 2 ? "FINAL ROUND" : "NEXT ROUND";
 
 	this->statusLabel->setString(this->activeGameState->bannerMessage);
 	this->statusLabel->runAction(Sequence::create(
