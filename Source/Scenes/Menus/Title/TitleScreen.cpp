@@ -150,9 +150,15 @@ void TitleScreen::onEnter()
 	GameUtils::accelerateParticles(this->etherParticles, 5.0f);
 
 	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));
+	this->storyModeButton->setClickSound(Resources::Sounds_ButtonClick3);
 	this->arcadeModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onArcadeModeClick, this));
+	this->arcadeModeButton->setClickSound(Resources::Sounds_ButtonClick3);
 	this->optionsButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onOptionsClick, this));
+	this->optionsButton->setClickSound(Resources::Sounds_ButtonClick3);
 	this->exitButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onExitClick, this));
+	this->exitButton->setClickSound(Resources::Sounds_ButtonClick3);
+	
+
 
 	// Fade in slower when the game first boots. Once the user is in the game and navigating menus, this gets annoying if it is too slow.
 	static bool firstRun = true;

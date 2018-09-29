@@ -6063,6 +6063,7 @@ public:
 	static const std::string Music_WeWillGetThereTogether;
 	static const std::string Sounds_ButtonClick1;
 	static const std::string Sounds_ButtonClick2;
+	static const std::string Sounds_ButtonClick3;
 	static const std::string Sounds_ButtonRollover1;
 	static const std::string Sounds_Clean_Interface_Buttons_8;
 	static const std::string Sounds_ClickBack1;
