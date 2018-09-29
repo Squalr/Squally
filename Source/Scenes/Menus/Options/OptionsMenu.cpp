@@ -113,10 +113,7 @@ OptionsMenu::OptionsMenu()
 	this->option3840x2160->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
 
 	this->closeButton->setClickCallback(CC_CALLBACK_1(OptionsMenu::onCloseClick, this));
-	this->closeButton->setClickSound(Resources::Sounds_ClickBack1);
-
 	this->returnButton->setClickCallback(CC_CALLBACK_1(OptionsMenu::onCloseClick, this));
-	this->returnButton->setClickSound(Resources::Sounds_ClickBack1);
 
 	this->addChild(this->background);
 	this->addChild(this->optionsWindow);

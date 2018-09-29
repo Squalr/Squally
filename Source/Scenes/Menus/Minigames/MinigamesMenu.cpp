@@ -81,7 +81,7 @@ MinigamesMenu::MinigamesMenu()
 	hexusIcon->setPosition(Vec2(-this->hexusButton->getContentSize().width / 2.0f + 78.0f, 0.0f));
 
 	this->hexusButton->addChild(hexusIcon);
-	this->hexusButton->setClickSound(Resources::Sounds_ButtonClick3);
+	this->hexusButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
 
 	Label* hexusPuzzlesLabel = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexusPuzzles), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* hexusPuzzlesLabelHover = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexusPuzzles), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));

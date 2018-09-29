@@ -179,7 +179,7 @@ void ControlSelectionStaged::playSelectedCard(CardRow* cardRow)
 		{
 			this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
 			this->activeGameState->playerBinaryCards->insertCard(this->activeGameState->selectedCard, Config::insertDelay);
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_09_Card);
+			SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
 			GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 			break;
 		}
@@ -187,7 +187,7 @@ void ControlSelectionStaged::playSelectedCard(CardRow* cardRow)
 		{
 			this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
 			this->activeGameState->playerDecimalCards->insertCard(this->activeGameState->selectedCard, Config::insertDelay);
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_09_Card);
+			SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
 			GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 			break;
 		}
@@ -195,7 +195,7 @@ void ControlSelectionStaged::playSelectedCard(CardRow* cardRow)
 		{
 			this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
 			this->activeGameState->playerHexCards->insertCard(this->activeGameState->selectedCard, Config::insertDelay);
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_09_Card);
+			SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
 			GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 			break;
 		}
@@ -243,21 +243,21 @@ void ControlSelectionStaged::aiPerformAction(GameState* gameState)
 			{
 				gameState->enemyHand->removeCard(selectedCard);
 				gameState->enemyBinaryCards->insertCard(selectedCard, Config::insertDelay);
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_09_Card);
+				SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
 				break;
 			}
 			case CardData::CardType::Decimal:
 			{
 				gameState->enemyHand->removeCard(selectedCard);
 				gameState->enemyDecimalCards->insertCard(selectedCard, Config::insertDelay);
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_09_Card);
+				SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
 				break;
 			}
 			case CardData::CardType::Hexidecimal:
 			{
 				gameState->enemyHand->removeCard(selectedCard);
 				gameState->enemyHexCards->insertCard(selectedCard, Config::insertDelay);
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_09_Card);
+				SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
 				break;
 			}
 			case CardData::CardType::Special_SHL:
