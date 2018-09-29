@@ -859,6 +859,9 @@
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlEndTurn.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
     </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlGameEnd.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlNeutral.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
     </ClCompile>
@@ -1093,6 +1096,9 @@
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\HexusDeckManagement.cpp">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus</Filter>
     </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\HexusRewardsMenu.cpp">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus</Filter>
+    </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\HexusChapterPreview.cpp">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect</Filter>
     </ClCompile>
@@ -1200,12 +1206,6 @@
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\main.cpp">
       <Filter>Source Files\proj.win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlGameEnd.cpp">
-      <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\HexusRewardsMenu.cpp">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -19914,7 +19914,7 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\0.png">
       <Filter>Resources\Minigames\Hexus\Binary</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\1.PNG">
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\1.png">
       <Filter>Resources\Minigames\Hexus\Binary</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\10.png">
@@ -19966,6 +19966,15 @@
       <Filter>Resources\Minigames\Hexus</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\ButtonHover.png">
+      <Filter>Resources\Minigames\Hexus</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\ButtonPlank.png">
+      <Filter>Resources\Minigames\Hexus</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\ButtonPlankClick.png">
+      <Filter>Resources\Minigames\Hexus</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\ButtonPlankHover.png">
       <Filter>Resources\Minigames\Hexus</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\CardBackAir.png">
@@ -20031,7 +20040,7 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\11.png">
       <Filter>Resources\Minigames\Hexus\Decimal</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\12.PNG">
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\12.png">
       <Filter>Resources\Minigames\Hexus\Decimal</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\13.png">
@@ -20068,6 +20077,9 @@
       <Filter>Resources\Minigames\Hexus\Decimal</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\EnemyBanner.png">
+      <Filter>Resources\Minigames\Hexus</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Flags.png">
       <Filter>Resources\Minigames\Hexus</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Gameboard.png">
@@ -20166,7 +20178,7 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Flip2.png">
       <Filter>Resources\Minigames\Hexus\Special</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Flip3.PNG">
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Flip3.png">
       <Filter>Resources\Minigames\Hexus\Special</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Flip4.png">
@@ -20238,10 +20250,10 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Greed2.png">
       <Filter>Resources\Minigames\Hexus\Special\Unused</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\HealthPotion.PNG">
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\HealthPotion.png">
       <Filter>Resources\Minigames\Hexus\Special\Unused</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Heart.PNG">
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Heart.png">
       <Filter>Resources\Minigames\Hexus\Special\Unused</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Helmet.png">
@@ -20256,7 +20268,7 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Hut.png">
       <Filter>Resources\Minigames\Hexus\Special\Unused</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\IceFish.PNG">
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\IceFish.png">
       <Filter>Resources\Minigames\Hexus\Special\Unused</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\IceHut.png">
@@ -20310,7 +20322,7 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Sheep.png">
       <Filter>Resources\Minigames\Hexus\Special\Unused</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Slug.PNG">
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Slug.png">
       <Filter>Resources\Minigames\Hexus\Special\Unused</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Spider.png">
@@ -21022,6 +21034,9 @@
       <Filter>Resources\Sounds</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\ButtonClick2.mp3">
+      <Filter>Resources\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\ButtonClick3.mp3">
       <Filter>Resources\Sounds</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\ButtonRollover1.mp3">
@@ -22182,6 +22197,9 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlEndTurn.h">
       <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
     </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlGameEnd.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlNeutral.h">
       <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
     </ClInclude>
@@ -22428,6 +22446,9 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\HexusDeckManagement.h">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus</Filter>
     </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\HexusRewardsMenu.h">
+      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus</Filter>
+    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\HexusChapterPreview.h">
       <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect</Filter>
     </ClInclude>
@@ -22538,12 +22559,6 @@
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\resource.h">
       <Filter>Source Files\proj.win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlGameEnd.h">
-      <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\HexusRewardsMenu.h">
-      <Filter>Source Files\Source\Scenes\Menus\Minigames\Hexus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

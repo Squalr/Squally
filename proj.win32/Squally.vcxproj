@@ -65,8 +65,7 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <PreBuildEvent>
-      <Message>
-      </Message>
+      <Message>												</Message>
       <Command>setlocal
 "F:\Program Files\CMake\bin\cmake.exe" -E copy_if_different "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/win32-specific/gles/prebuilt/glew32.dll" "F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/proj.win32/bin/Squally/Debug"
 if %errorlevel% neq 0 goto :cmEnd
@@ -217,8 +216,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Source\Scenes\Hexus\Components\ControlGameEnd.cpp" />
-    <ClCompile Include="..\Source\Scenes\Menus\Minigames\Hexus\HexusRewardsMenu.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Bootstrapper.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\GameWindow.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Resources.cpp" />
@@ -505,6 +502,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlCombineStaged.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlDraw.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlEndTurn.cpp" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlGameEnd.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlNeutral.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlReplaceCards.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlSacrificeStaged.cpp" />
@@ -583,6 +581,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\LoadingScreen\LoadingScreen.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\MinigamesMenu.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\HexusDeckManagement.cpp" />
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\HexusRewardsMenu.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\HexusChapterPreview.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\HexusChapterSelectMenu.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Castle\HexusChapterPreviewCastle.cpp" />
@@ -620,8 +619,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Sound\MusicDeserializer.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\main.cpp" />
     <ResourceCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\game.rc" />
-    <ClInclude Include="..\Source\Scenes\Hexus\Components\ControlGameEnd.h" />
-    <ClInclude Include="..\Source\Scenes\Menus\Minigames\Hexus\HexusRewardsMenu.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\.gitattributes" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Backgrounds\.gitattributes" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Backgrounds\Platformer\Background1.png" />
@@ -6857,7 +6854,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\AvatarFrame.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\.gitattributes" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\0.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\1.PNG" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\1.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\10.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\11.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Binary\12.png" />
@@ -6875,6 +6872,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Button.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\ButtonClick.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\ButtonHover.png" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\ButtonPlank.png" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\ButtonPlankClick.png" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\ButtonPlankHover.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\CardBackAir.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\CardBackEarth.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\CardBackFire.png" />
@@ -6896,7 +6896,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\1.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\10.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\11.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\12.PNG" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\12.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\13.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\14.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\15.png" />
@@ -6909,6 +6909,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\8.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Decimal\9.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\EnemyBanner.png" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Flags.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Gameboard.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Hex\.gitattributes" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Hex\0.png" />
@@ -6941,7 +6942,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\DecStorm.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Flip1.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Flip2.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Flip3.PNG" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Flip3.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Flip4.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\HexStorm.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Inverse.png" />
@@ -6965,13 +6966,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Gemstone.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Greed.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Greed2.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\HealthPotion.PNG" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Heart.PNG" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\HealthPotion.png" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Heart.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Helmet.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\HoneyJar.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\House.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Hut.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\IceFish.PNG" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\IceFish.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\IceHut.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Imp.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Insect.png" />
@@ -6989,7 +6990,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Shack1.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Shack2.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Sheep.png" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Slug.PNG" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Slug.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Spider.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\SpiderKing.png" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Minigames\Hexus\Special\Unused\Stack.png" />
@@ -7227,6 +7228,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\.gitattributes" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\ButtonClick1.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\ButtonClick2.mp3" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\ButtonClick3.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\ButtonRollover1.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Clean_Interface_Buttons_8.mp3" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\ClickBack1.mp3" />
@@ -7613,6 +7615,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlCombineStaged.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlDraw.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlEndTurn.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlGameEnd.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlNeutral.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlReplaceCards.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ControlSacrificeStaged.h" />
@@ -7695,6 +7698,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\LoadingScreen\LoadingScreen.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\MinigamesMenu.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\HexusDeckManagement.h" />
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\HexusRewardsMenu.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\HexusChapterPreview.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\HexusChapterSelectMenu.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Menus\Minigames\Hexus\ChapterSelect\Castle\HexusChapterPreviewCastle.h" />

@@ -36,4 +36,6 @@ private:
 	Sprite* playerBanner2;
 	Sprite* enemyBanner1;
 	Sprite* enemyBanner2;
+	Sprite* roundBanner1;
+	Sprite* roundBanner2;
 };

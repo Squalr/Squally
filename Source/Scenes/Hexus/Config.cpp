@@ -27,7 +27,7 @@ const float Config::coinFlipBannerDisplayDelay = 0.5f;
 const float Config::bannerFadeSpeed = 0.15f;
 const float Config::bannerDisplayDuration = 1.0f;
 const float Config::roundBannerDisplayDuration = 2.0f;
-const float Config::bannerIconOffset = 384.0f;
+const float Config::bannerIconOffset = 416.0f;
 
 const float Config::cardSelectSpeed = 0.25f;
 const float Config::cardSelectOffsetY = 24.0f;
