@@ -90,13 +90,6 @@ void Banners::onStateChange(GameState* gameState)
 		case GameState::StateType::Win:
 		case GameState::StateType::Lose:
 			this->displayWinLoseBanner();
-			this->runAction(Sequence::create(
-				DelayTime::create(Config::bannerDisplayDuration),
-				CallFunc::create([=] {
-					GameState::updateState(this->activeGameState, GameState::StateType::GameEnd);
-				}),
-				nullptr
-			));	
 			break;	
 		default:
 			break;
