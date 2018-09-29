@@ -70,6 +70,7 @@ public:
 	StateType stateType;
 	StateType previousStateType;
 	Turn turn;
+	bool showPassBanner;
 	bool playerPass;
 	bool enemyPass;
 	Difficulty difficulty;
