@@ -222,7 +222,7 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 					}
 				}
 
-				if (bestDiff >= 0) {
+				if (bestDiff > 0) {
 					this->activeGameState->stagedCombineSourceCard = bestSourceCard;
 					this->activeGameState->stagedCombineTargetCard = bestTargetCard;
 					this->activeGameState->selectedCard = card;

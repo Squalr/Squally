@@ -43,7 +43,7 @@ void ControlGameEnd::initializeListeners()
 
 void ControlGameEnd::onBackClick(MenuSprite* menuSprite)
 {
-	this->activeGameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs((this->activeGameState->playerLosses < 2), this->activeGameState->opponentData));
+	this->activeGameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(this->activeGameState->stateType == GameState::StateType::Win, this->activeGameState->opponentData));
 }
 
 void ControlGameEnd::initializePositions()

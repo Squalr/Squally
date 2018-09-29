@@ -60,20 +60,21 @@ void ScoreTotal::onStateChange(GameState* gameState)
 			gameState->endRound();
 			if (gameState->playerLosses >= 2) 
 			{
-				GameState::updateState(gameState, GameState::StateType::Lose);
 				SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_card_downgrade);
+				GameState::updateState(gameState, GameState::StateType::Lose);
 			}
 			else if (gameState->enemyLosses >= 2) 
 			{
-				GameState::updateState(gameState, GameState::StateType::Win);
 				SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_card_upgrade);
+				GameState::updateState(gameState, GameState::StateType::Win);
 			}
 			else 
 			{
 				// Player cannot enter the last round with zero cards
 				if (gameState->playerHand->getCardCount() == 0) {
-					GameState::updateState(gameState, GameState::StateType::Lose);
+					gameState->playerLosses++;
 					SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_card_downgrade);
+					GameState::updateState(gameState, GameState::StateType::Lose);
 				} else {
 					GameState::updateState(gameState, GameState::StateType::RoundStart);
 				}
