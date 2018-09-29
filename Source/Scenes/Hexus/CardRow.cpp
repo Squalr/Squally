@@ -241,12 +241,14 @@ void CardRow::setCardPositions(float cardRepositionDelay)
 
 		card->position = Vec2(newX, 0.0f);
 
-		if (cardRepositionDelay > 0.0f) {
+		if (cardRepositionDelay > 0.0f)
+		{
 			card->stopAllActions();
 			card->runAction(EaseSineInOut::create(MoveTo::create(cardRepositionDelay, card->position)));
 			card->runAction(ScaleTo::create(cardRepositionDelay, this->cardScale));
 		}
-		else {
+		else
+		{
 			card->setPosition(card->position);
 			card->setScale(this->cardScale);
 		}
