@@ -18,9 +18,14 @@ HexusOpponentTutorialC::HexusOpponentTutorialC() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	0.9f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
+	Vec2(0.0f, -24.0f),
 	HexusOpponentTutorialC::StringKeyOpponentName,
 	Card::CardStyle::Earth,
+	{
+		CardList::getInstance()->cardListByName->at(CardKeys::Decimal3),
+		CardList::getInstance()->cardListByName->at(CardKeys::Decimal2),
+		CardList::getInstance()->cardListByName->at(CardKeys::Decimal1),
+	},
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),

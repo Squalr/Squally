@@ -20,6 +20,7 @@ public:
 	float animationScale;
 	Vec2 animationOffset;
 	Vec2 avatarOffset;
+	std::vector<CardData*> rewards;
 
 protected:
 	HexusOpponentData(
@@ -30,6 +31,7 @@ protected:
 		Vec2 avatarOffset,
 		std::string enemyNameKey,
 		Card::CardStyle cardStyle,
+		std::vector<CardData*> rewards,
 		std::vector<CardData*> cards);
 	~HexusOpponentData();
 

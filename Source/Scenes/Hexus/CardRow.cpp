@@ -169,7 +169,6 @@ void CardRow::disableRowCardSelection()
 	}
 }
 
-
 // TODO, SPLIT OFF methods for hand into seperate class, Card Row on the field is very different than card row in hand
 void CardRow::disableRowCardInteraction()
 {
@@ -225,28 +224,32 @@ void CardRow::setCardPositions(float cardRepositionDelay)
 	int index = 0;
 
 	float cardWidth = 225.0f * this->cardScale;
-	float spacing = Config::defaultCardSpacing;
+	float spacing = cardWidth + Config::defaultCardSpacing;
 
-	// Start overlapping cards after the row fills
-	if (cardCount > 7)
+	float start = (spacing * (cardCount - 1)) / 2.0f;
+	float end = ((cardCount - 1) * spacing) - (spacing * (cardCount - 1)) / 2.0f;
+
+	// Update the spacing to overlap if too large
+	if (end - start > this->rowWidth)
 	{
-		spacing = (this->rowWidth - cardWidth) / (cardCount - 1);
+		spacing = cardCount == 1 ? 0.0f : ((this->rowWidth - cardWidth) / (cardCount - 1));
 	}
 
 	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
 	{
 		Card* card = *it;
-
 		float newX = (index * spacing) - (spacing * (cardCount - 1)) / 2.0f;
 
 		card->position = Vec2(newX, 0.0f);
 
-		if (cardRepositionDelay > 0.0f) {
+		if (cardRepositionDelay > 0.0f)
+		{
 			card->stopAllActions();
 			card->runAction(EaseSineInOut::create(MoveTo::create(cardRepositionDelay, card->position)));
 			card->runAction(ScaleTo::create(cardRepositionDelay, this->cardScale));
 		}
-		else {
+		else
+		{
 			card->setPosition(card->position);
 			card->setScale(this->cardScale);
 		}

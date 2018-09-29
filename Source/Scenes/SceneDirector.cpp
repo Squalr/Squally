@@ -21,6 +21,7 @@ SceneDirector::SceneDirector()
 	this->minigamesMenu = MinigamesMenu::create();
 	this->hexusChapterSelectMenu = HexusChapterSelectMenu::create();
 	this->hexusDeckManagement = HexusDeckManagement::create();
+	this->hexusRewardsMenu = HexusRewardsMenu::create();
 	this->hexusOpponentMenuTraining = HexusOpponentMenuTraining::create();
 	this->hexusOpponentMenuJungle = HexusOpponentMenuJungle::create();
 	this->hexusOpponentMenuRuins = HexusOpponentMenuRuins::create();
@@ -50,6 +51,7 @@ SceneDirector::SceneDirector()
 	this->minigamesMenu->retain();
 	this->hexusChapterSelectMenu->retain();
 	this->hexusDeckManagement->retain();
+	this->hexusRewardsMenu->retain();
 	this->hexusOpponentMenuTraining->retain();
 	this->hexusOpponentMenuJungle->retain();
 	this->hexusOpponentMenuRuins->retain();
@@ -115,12 +117,18 @@ void SceneDirector::initializeListeners()
 		CC_CALLBACK_1(SceneDirector::onGameNavigateConfirm, this)
 	);
 
-	EventListenerCustom* hexiumGameStartListener = EventListenerCustom::create(
+	EventListenerCustom* hexusGameStartListener = EventListenerCustom::create(
 		HexusEvents::HexusGameStartEvent,
 		CC_CALLBACK_1(Hexus::onGameStart, this->hexus)
 	);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(hexiumGameStartListener, this);
+	EventListenerCustom* hexusShowRewardsListener = EventListenerCustom::create(
+		HexusEvents::HexusShowRewardsEvent,
+		CC_CALLBACK_1(HexusRewardsMenu::onRewardsOpen, this->hexusRewardsMenu)
+	);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(hexusGameStartListener, this);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(hexusShowRewardsListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateNewEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateBackEventListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateCutsceneEventListener, this);
@@ -137,77 +145,80 @@ void SceneDirector::onGameNavigateNew(EventCustom* eventCustom)
 
 	switch (args->gameScreen)
 	{
-	case NavigationEvents::GameScreen::Title:
-		newScene = this->titleScreen;
-		break;
-	case NavigationEvents::GameScreen::SaveSelect:
-		newScene = this->saveSelectMenu;
-		break;
-	case NavigationEvents::GameScreen::Minigames:
-		newScene = this->minigamesMenu;
-		break;
-	case NavigationEvents::GameScreen::Minigames_Hexus:
-		newScene = this->hexusChapterSelectMenu;
-		break;
-	case NavigationEvents::GameScreen::Minigames_Hexus_Deck_Management:
-		newScene = this->hexusDeckManagement;
-		break;
-	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Training:
-		newScene = this->hexusOpponentMenuTraining;
-		break;
-	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Jungle:
-		newScene = this->hexusOpponentMenuJungle;
-		break;
-	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Ruins:
-		newScene = this->hexusOpponentMenuRuins;
-		break;
-	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Forest:
-		newScene = this->hexusOpponentMenuForest;
-		break;
-	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Caverns:
-		newScene = this->hexusOpponentMenuCaverns;
-		break;
-	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Castle:
-		newScene = this->hexusOpponentMenuCastle;
-		break;
-	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_IceCaps:
-		newScene = this->hexusOpponentMenuIceCaps;
-		break;
-	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Volcano:
-		newScene = this->hexusOpponentMenuVolcano;
-		break;
-	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Obelisk:
-		newScene = this->hexusOpponentMenuObelisk;
-		break;
-	case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Mech:
-		newScene = this->hexusOpponentMenuMech;
-		break;
-	case NavigationEvents::GameScreen::Minigames_Hexus_Puzzles:
-		newScene = this->hexusPuzzlesMenu;
-		break;
-	case NavigationEvents::GameScreen::StoryMap:
-		newScene = this->worldMap;
-		break;
-	case NavigationEvents::GameScreen::Pause:
-		newScene = this->pauseMenu;
-		break;
-	case NavigationEvents::GameScreen::Options:
-		newScene = this->optionsMenu;
-		break;
-	case NavigationEvents::GameScreen::Confirm:
-		newScene = this->confirmationMenu;
-		break;
-	case NavigationEvents::GameScreen::Loading:
-		newScene = this->loadingScreen;
-		break;
-	case NavigationEvents::GameScreen::Level:
-		newScene = this->map;
-		break;
-	case NavigationEvents::GameScreen::Hexus:
-		newScene = this->hexus;
-		break;
-	default:
-		return;
+		case NavigationEvents::GameScreen::Title:
+			newScene = this->titleScreen;
+			break;
+		case NavigationEvents::GameScreen::SaveSelect:
+			newScene = this->saveSelectMenu;
+			break;
+		case NavigationEvents::GameScreen::Minigames:
+			newScene = this->minigamesMenu;
+			break;
+		case NavigationEvents::GameScreen::Minigames_Hexus:
+			newScene = this->hexusChapterSelectMenu;
+			break;
+		case NavigationEvents::GameScreen::Minigames_Hexus_Deck_Management:
+			newScene = this->hexusDeckManagement;
+			break;
+		case NavigationEvents::GameScreen::Minigames_Hexus_Rewards:
+			newScene = this->hexusRewardsMenu;
+			break;
+		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Training:
+			newScene = this->hexusOpponentMenuTraining;
+			break;
+		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Jungle:
+			newScene = this->hexusOpponentMenuJungle;
+			break;
+		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Ruins:
+			newScene = this->hexusOpponentMenuRuins;
+			break;
+		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Forest:
+			newScene = this->hexusOpponentMenuForest;
+			break;
+		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Caverns:
+			newScene = this->hexusOpponentMenuCaverns;
+			break;
+		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Castle:
+			newScene = this->hexusOpponentMenuCastle;
+			break;
+		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_IceCaps:
+			newScene = this->hexusOpponentMenuIceCaps;
+			break;
+		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Volcano:
+			newScene = this->hexusOpponentMenuVolcano;
+			break;
+		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Obelisk:
+			newScene = this->hexusOpponentMenuObelisk;
+			break;
+		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Mech:
+			newScene = this->hexusOpponentMenuMech;
+			break;
+		case NavigationEvents::GameScreen::Minigames_Hexus_Puzzles:
+			newScene = this->hexusPuzzlesMenu;
+			break;
+		case NavigationEvents::GameScreen::StoryMap:
+			newScene = this->worldMap;
+			break;
+		case NavigationEvents::GameScreen::Pause:
+			newScene = this->pauseMenu;
+			break;
+		case NavigationEvents::GameScreen::Options:
+			newScene = this->optionsMenu;
+			break;
+		case NavigationEvents::GameScreen::Confirm:
+			newScene = this->confirmationMenu;
+			break;
+		case NavigationEvents::GameScreen::Loading:
+			newScene = this->loadingScreen;
+			break;
+		case NavigationEvents::GameScreen::Level:
+			newScene = this->map;
+			break;
+		case NavigationEvents::GameScreen::Hexus:
+			newScene = this->hexus;
+			break;
+		default:
+			return;
 	}
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
