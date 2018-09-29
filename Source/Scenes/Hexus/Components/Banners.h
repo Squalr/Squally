@@ -26,6 +26,7 @@ private:
 	void displayEnemyTurnBanner();
 	void displayWinLoseBanner();
 	void displayCardReplaceBanner();
+	void displayRoundStartBannner();
 	void hideAllBanners();
 
 	LayerColor* statusBanner;
