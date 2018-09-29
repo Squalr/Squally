@@ -95,6 +95,7 @@ void HexusRewardsMenu::onRewardsOpen(EventCustom* eventCustom)
 {
 	HexusEvents::HexusRewardArgs* args = (HexusEvents::HexusRewardArgs*)(eventCustom->getUserData());
 
+	this->backToChapterSelect = args->backToChapterSelect;
 	this->rewardRow->clear();
 
 	for (auto it = args->opponentData->rewards.begin(); it != args->opponentData->rewards.end(); it++)
@@ -115,6 +116,6 @@ void HexusRewardsMenu::onChooseClick(MenuSprite* menuSprite)
 		// TODO: Animate selecting / moving to storage
 
 		CardStorage::addStorageCard(this->selectedCard->cardData);
-		NavigationEvents::navigateBack(2);
+		NavigationEvents::navigateBack(this->backToChapterSelect ? 3 : 2);
 	}
 }

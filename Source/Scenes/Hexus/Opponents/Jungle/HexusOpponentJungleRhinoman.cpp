@@ -18,7 +18,7 @@ HexusOpponentJungleRhinoman::HexusOpponentJungleRhinoman() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
+	Vec2(32.0f, -96.0f),
 	HexusOpponentJungleRhinoman::StringKeyOpponentName,
 	Card::CardStyle::Earth,
 	{

@@ -28,8 +28,9 @@ public:
 	struct HexusRewardArgs
 	{
 		HexusOpponentData* opponentData;
+		bool backToChapterSelect;
 
-		HexusRewardArgs(HexusOpponentData* opponentData) : opponentData(opponentData)
+		HexusRewardArgs(HexusOpponentData* opponentData, bool backToChapterSelect) : opponentData(opponentData), backToChapterSelect(backToChapterSelect)
 		{
 		}
 	};
