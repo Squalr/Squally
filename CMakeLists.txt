@@ -428,6 +428,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Menus/LoadingScreen/LoadingScreen.cpp
 	Source/Scenes/Menus/Minigames/MinigamesMenu.cpp
 	Source/Scenes/Menus/Minigames/Hexus/HexusDeckManagement.cpp
+	Source/Scenes/Menus/Minigames/Hexus/HexusRewardsMenu.cpp
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.cpp
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.cpp
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.cpp
@@ -847,6 +848,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Menus/LoadingScreen/LoadingScreen.h
 	Source/Scenes/Menus/Minigames/MinigamesMenu.h
 	Source/Scenes/Menus/Minigames/Hexus/HexusDeckManagement.h
+	Source/Scenes/Menus/Minigames/Hexus/HexusRewardsMenu.h
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.h
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.h
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.h
