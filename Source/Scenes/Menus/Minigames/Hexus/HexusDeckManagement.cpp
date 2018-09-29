@@ -26,6 +26,23 @@ HexusDeckManagement::HexusDeckManagement()
 	this->cardsInDeckLabel = Label::create("Cards in Deck", Localization::getMainFont(), Localization::getFontSizeH2(Localization::getMainFont()));
 	this->cardsInDeckValueLabel = Label::create("CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH2(Localization::getMainFont()));
 
+	Label* backButtonLabel = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabelHover = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabelClick = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+
+	backButtonLabel->enableOutline(Color4B::BLACK, 2);
+	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
+	backButtonLabelClick->enableOutline(Color4B::BLACK, 2);
+
+	this->backButton = TextMenuSprite::create(
+		backButtonLabel,
+		backButtonLabelHover,
+		backButtonLabelClick,
+		Resources::Menus_Buttons_GenericButton,
+		Resources::Menus_Buttons_GenericButtonHover,
+		Resources::Menus_Buttons_GenericButtonClick
+	);
+
 	cardsInDeckValueLabel->setTextColor(Color4B::GRAY);
 
 	this->storageSprite->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -49,6 +66,7 @@ HexusDeckManagement::HexusDeckManagement()
 	this->addChild(this->cardManagementLabel);
 	this->addChild(this->cardsInDeckLabel);
 	this->addChild(this->cardsInDeckValueLabel);
+	this->addChild(this->backButton);
 	this->addChild(Mouse::create());
 }
 
@@ -66,6 +84,8 @@ void HexusDeckManagement::onEnter()
 
 	float delay = 0.25f;
 	float duration = 0.35f;
+
+	GameUtils::fadeInObject(this->backButton, delay, duration);
 }
 
 void HexusDeckManagement::onExit()
@@ -96,6 +116,8 @@ void HexusDeckManagement::initializeListeners()
 		(*it)->setMouseClickCallback(CC_CALLBACK_1(HexusDeckManagement::onStorageCardClick, this));
 		(*it)->setMouseOverCallback(CC_CALLBACK_1(HexusDeckManagement::onStorageCardMouseOver, this));
 	}
+
+	this->backButton->setClickCallback(CC_CALLBACK_1(HexusDeckManagement::onBackClick, this));
 }
 
 void HexusDeckManagement::initializePositions()
@@ -115,6 +137,7 @@ void HexusDeckManagement::initializePositions()
 	this->cardManagementLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 48.0f));
 	this->cardsInDeckLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->cardsInDeckValueLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 32.0f));
+	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 448.0f));
 
 	// Sort cards first
 	sort(this->storageCards.begin(), this->storageCards.end(), [](Card* a, Card* b) -> bool
@@ -172,7 +195,7 @@ void HexusDeckManagement::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* ev
 	}
 }
 
-void HexusDeckManagement::onCloseClick(MenuSprite* menuSprite)
+void HexusDeckManagement::onBackClick(MenuSprite* menuSprite)
 {
 	this->save(true);
 }
