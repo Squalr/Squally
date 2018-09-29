@@ -37,7 +37,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void loadProgress();
-	void onCloseClick(MenuSprite* menuSprite);
+	void onBackClick(MenuSprite* menuSprite);
 	void onDeckManagementClick(MenuSprite* menuSprite);
 	void onMouseOver(HexusChapterPreview* hexusChapterPreview);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
@@ -58,5 +58,6 @@ private:
 	HexusChapterPreviewMech* hexusChapterPreviewMech;
 	TextMenuSprite* deckManagementButton;
 	Label* chapterSelectLabel;
+	TextMenuSprite* backButton;
 };
 

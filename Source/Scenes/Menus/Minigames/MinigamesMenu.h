@@ -33,6 +33,7 @@ private:
 	void initializePositions() override;
 
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onBackClick(MenuSprite* menuSprite);
 	void onHexusClick(MenuSprite* menuSprite);
 	void onHexusPuzzlesClick(MenuSprite* menuSprite);
 	TextMenuSprite* createComingSoonButton();
@@ -47,6 +48,7 @@ private:
 	TextMenuSprite* comingSoonButton4;
 	TextMenuSprite* comingSoonButton5;
 	TextMenuSprite* comingSoonButton6;
+	TextMenuSprite* backButton;
 
 	static const std::string StringKeyHexus;
 	static const std::string StringKeyHexusPuzzles;

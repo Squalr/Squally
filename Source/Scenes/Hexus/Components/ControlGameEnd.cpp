@@ -23,9 +23,9 @@ ControlGameEnd::ControlGameEnd()
 		backButtonLabel,
 		backButtonLabelHover,
 		backButtonLabelClick,
-		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover,
-		Resources::Menus_Buttons_GenericButtonClick
+		Resources::Minigames_Hexus_ButtonPlank,
+		Resources::Minigames_Hexus_ButtonPlankHover,
+		Resources::Minigames_Hexus_ButtonPlankClick
 	);
 	this->backButton->setOpacity(0);
 
