@@ -36,7 +36,7 @@ const float Config::handWidth = 992.0f;
 const float Config::rowWidth = 928.0f;
 const float Config::previewWidth = 1280.0f;
 
-const float Config::defaultCardSpacing = 128.0f;
+const float Config::defaultCardSpacing = 16.0f;
 const float Config::rightColumnCenter = 780.0f;
 const float Config::leftColumnCenter = -712.0f;
 const float Config::cardTotalOffsetX = -522.0f;
