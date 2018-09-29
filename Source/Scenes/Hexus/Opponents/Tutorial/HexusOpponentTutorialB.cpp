@@ -18,7 +18,7 @@ HexusOpponentTutorialB::HexusOpponentTutorialB() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(0.0f, -24.0f),
+	Vec2(0.0f, -48.0f),
 	HexusOpponentTutorialB::StringKeyOpponentName,
 	Card::CardStyle::Air,
 	{
