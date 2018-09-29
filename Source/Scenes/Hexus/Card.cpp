@@ -183,7 +183,7 @@ unsigned int Card::getAttack()
 int Card::applyOperation(int attack, Operation operation) {
 	const unsigned int attackMask = 0b1111;
 
-	switch (operation.opterationType)
+	switch (operation.operationType)
 	{
 		case Operation::OperationType::SHL:
 			attack <<= operation.immediate;
