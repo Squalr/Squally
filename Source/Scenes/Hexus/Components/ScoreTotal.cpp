@@ -68,7 +68,12 @@ void ScoreTotal::onStateChange(GameState* gameState)
 			}
 			else 
 			{
-				GameState::updateState(gameState, GameState::StateType::ControlReplaceCards);
+				// Player cannot enter the last round with zero cards
+				if (gameState->playerHand->getCardCount() == 0) {
+					GameState::updateState(gameState, GameState::StateType::Lose);
+				} else {
+					GameState::updateState(gameState, GameState::StateType::ControlReplaceCards);
+				}
 			}
 		}
 		default:

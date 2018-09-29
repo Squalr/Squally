@@ -25,6 +25,11 @@ void ControlNeutral::onStateChange(GameState* gameState)
 		switch (gameState->turn)
 		{
 		case GameState::Turn::Player:
+			if (gameState->playerHand->rowCards->size() == 0) {
+				gameState->playerPass = true;
+				GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+				return;
+			}
 			this->initializeCallbacks(gameState);
 			this->activeGameState->playerHand->enableRowCardInteraction();
 			break;
