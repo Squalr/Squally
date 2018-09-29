@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/Sound/SoundManager.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Resources.h"
 #include "Scenes/Hexus/Components/ComponentBase.h"

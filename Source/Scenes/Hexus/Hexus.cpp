@@ -67,7 +67,7 @@ void Hexus::onEnter()
 
 	if (this->gameState->stateType == GameState::StateType::EmptyState)
 	{
-		GameState::updateState(this->gameState, GameState::StateType::DrawInitialCards);
+		GameState::updateState(this->gameState, GameState::StateType::RoundStart);
 	}
 }
 

@@ -35,6 +35,7 @@ public:
 
 	static const float bannerFadeSpeed;
 	static const float bannerDisplayDuration;
+	static const float roundBannerDisplayDuration;
 	static const float bannerIconOffset;
 
 	static const float enemyHandWidth;

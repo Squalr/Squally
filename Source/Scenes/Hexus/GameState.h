@@ -18,6 +18,7 @@ public:
 	{
 		EmptyState,
 		CoinFlip,
+		RoundStart,
 		FirstSideBanner,
 		TurnBanner,
 		DrawInitialCards,
