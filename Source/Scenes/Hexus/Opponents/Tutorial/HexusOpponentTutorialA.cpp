@@ -22,9 +22,10 @@ HexusOpponentTutorialA::HexusOpponentTutorialA() : HexusOpponentData(
 	HexusOpponentTutorialA::StringKeyOpponentName,
 	Card::CardStyle::Light,
 	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal3),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal2),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal1),
+		CardList::getInstance()->cardListByName->at(CardKeys::Binary2),
+		CardList::getInstance()->cardListByName->at(CardKeys::ShiftRight),
+		CardList::getInstance()->cardListByName->at(CardKeys::Decimal0),
+		CardList::getInstance()->cardListByName->at(CardKeys::Hex0),
 	},
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
@@ -46,8 +47,6 @@ HexusOpponentTutorialA::HexusOpponentTutorialA() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex4),
 		CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 		CardList::getInstance()->cardListByName->at(CardKeys::Addition),
-		CardList::getInstance()->cardListByName->at(CardKeys::Subtraction),
-		CardList::getInstance()->cardListByName->at(CardKeys::Subtraction),
 		CardList::getInstance()->cardListByName->at(CardKeys::ShiftLeft),
 		CardList::getInstance()->cardListByName->at(CardKeys::ShiftRight),
 	})
