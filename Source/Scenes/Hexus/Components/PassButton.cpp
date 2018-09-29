@@ -24,6 +24,7 @@ PassButton::PassButton()
 		Resources::Minigames_Hexus_Button,
 		Resources::Minigames_Hexus_ButtonHover,
 		Resources::Minigames_Hexus_ButtonClick);
+	this->passButton->setClickSound(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
 
 	this->playerPassIndicator = Sprite::create(Resources::Minigames_Hexus_Flags);
 	this->playerPassIndicator->setOpacity(0);

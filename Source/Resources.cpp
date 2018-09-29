@@ -6061,6 +6061,7 @@ const std::string Resources::Music_TrickOrTreat = "Music/TrickOrTreat.mp3";
 const std::string Resources::Music_WeWillGetThereTogether = "Music/WeWillGetThereTogether.mp3";
 const std::string Resources::Sounds_ButtonClick1 = "Sounds/ButtonClick1.mp3";
 const std::string Resources::Sounds_ButtonClick2 = "Sounds/ButtonClick2.mp3";
+const std::string Resources::Sounds_ButtonClick3 = "Sounds/ButtonClick3.mp3";
 const std::string Resources::Sounds_ButtonRollover1 = "Sounds/ButtonRollover1.mp3";
 const std::string Resources::Sounds_Clean_Interface_Buttons_8 = "Sounds/Clean_Interface_Buttons_8.mp3";
 const std::string Resources::Sounds_ClickBack1 = "Sounds/ClickBack1.mp3";

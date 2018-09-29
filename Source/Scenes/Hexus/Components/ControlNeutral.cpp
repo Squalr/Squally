@@ -60,8 +60,14 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 {
 	this->activeGameState->selectedCard = nullptr;
 
+	if (gameState->enemyPass) {
+		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+		return;
+	}
+
 	if (gameState->enemyHand->rowCards->size() == 0) {
 		gameState->enemyPass = true;
+		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
 		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 		return;
 	}
@@ -69,6 +75,7 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 	int passIfDiffAbove = 30; // Give up if player is too far ahead
 	if (gameState->enemyLosses < 1 && gameState->getPlayerTotal() > gameState->getEnemyTotal() + passIfDiffAbove) {
 		gameState->enemyPass = true;
+		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
 		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 		return;
 	}
@@ -77,6 +84,7 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 	int cardsToSaveForLastRound = 4;
 	if (gameState->enemyLosses < 1 && gameState->enemyHand->rowCards->size() <= cardsToSaveForLastRound) {
 		gameState->enemyPass = true;
+		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
 		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 		return;
 	} 
@@ -84,6 +92,7 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 	// If the player passes and we're ahead we won, so pass
 	if (gameState->playerPass && gameState->enemyIsWinning()) {
 		gameState->enemyPass = true;
+		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
 		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 		return;
 	} 

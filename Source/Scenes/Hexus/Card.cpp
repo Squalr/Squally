@@ -61,6 +61,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 
 	this->cardImage = Sprite::create(data->cardResourceFile);
 	this->cardSprite = MenuSprite::create(this->cardImage, cardSelected, cardSelected2);
+	this->cardSprite->setClickSound(Resources::Sounds_Hexus_08_Card);
 	this->cardFocus = Sprite::create(Resources::Minigames_Hexus_CardFocus);
 
 	this->attackFrame = LayerColor::create(Color4B(0, 0, 0, 196));
