@@ -87,6 +87,7 @@ void ControlCombineStaged::aiPerformAction(GameState* gameState)
 	// NOTE, the future we may want destination card to be different than target
 	Card* destinationCard = this->activeGameState->stagedCombineTargetCard;
 	destinationCard->addOperation(operation);
+	SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
 
 	GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 }
@@ -164,6 +165,7 @@ void ControlCombineStaged::stageCombineTarget(Card* card)
 			// NOTE, the future we may want destination card to be different than target
 			Card* destinationCard = this->activeGameState->stagedCombineTargetCard;
 			destinationCard->addOperation(operation);
+			SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
 
 			GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 		}
