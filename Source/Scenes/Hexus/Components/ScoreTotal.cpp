@@ -72,6 +72,7 @@ void ScoreTotal::onStateChange(GameState* gameState)
 			{
 				// Player cannot enter the last round with zero cards
 				if (gameState->playerHand->getCardCount() == 0) {
+					gameState->playerLosses++;
 					SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_card_downgrade);
 					GameState::updateState(gameState, GameState::StateType::Lose);
 				} else {
