@@ -5708,6 +5708,7 @@ public:
 	static const std::string Minigames_Hexus_CardPad;
 	static const std::string Minigames_Hexus_CardSelect;
 	static const std::string Minigames_Hexus_EnemyBanner;
+	static const std::string Minigames_Hexus_Flags;
 	static const std::string Minigames_Hexus_Gameboard;
 	static const std::string Minigames_Hexus_LeaderEmblem;
 	static const std::string Minigames_Hexus_PlayerBanner;
