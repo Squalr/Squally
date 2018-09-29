@@ -26,6 +26,7 @@
 #include "Scenes/Menus/Minigames/Hexus/OpponentSelect/Training/HexusOpponentMenuTraining.h"
 #include "Scenes/Menus/Minigames/Hexus/OpponentSelect/Volcano/HexusOpponentMenuVolcano.h"
 #include "Scenes/Menus/Minigames/Hexus/HexusDeckManagement.h"
+#include "Scenes/Menus/Minigames/Hexus/HexusRewardsMenu.h"
 #include "Scenes/Menus/Minigames/Hexus/Puzzles/HexusPuzzlesMenu.h"
 #include "Scenes/Menus/Confirmation/ConfirmationMenu.h"
 #include "Scenes/Menus/LoadingScreen/LoadingScreen.h"
@@ -60,6 +61,7 @@ private:
 	MinigamesMenu* minigamesMenu;
 	HexusChapterSelectMenu* hexusChapterSelectMenu;
 	HexusDeckManagement* hexusDeckManagement;
+	HexusRewardsMenu* hexusRewardsMenu;
 	HexusOpponentMenuCastle* hexusOpponentMenuCastle;
 	HexusOpponentMenuCaverns* hexusOpponentMenuCaverns;
 	HexusOpponentMenuForest* hexusOpponentMenuForest;

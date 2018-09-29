@@ -147,6 +147,8 @@ void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventA
 		std::string opponentKey = HexusOpponentMenuBase::winsPrefix + args.opponentData->enemyNameKey;
 		int wins = SaveManager::hasGlobalData(opponentKey) ? SaveManager::getGlobalData(opponentKey).asInt() + 1 : 1;
 
+		SaveManager::saveGlobalData(opponentKey, cocos2d::Value(wins));
+
 		if (args.opponentData == this->opponents.back()->hexusOpponentData)
 		{
 			if (SaveManager::hasGlobalData(this->chapterProgressSaveKey) && SaveManager::getGlobalData(this->chapterProgressSaveKey).asBool())
@@ -161,7 +163,7 @@ void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventA
 			}
 		}
 
-		SaveManager::saveGlobalData(opponentKey, cocos2d::Value(wins));
+		HexusEvents::showRewards(HexusEvents::HexusRewardArgs(args.opponentData));
 	}
 }
 
