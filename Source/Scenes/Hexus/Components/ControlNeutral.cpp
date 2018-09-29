@@ -183,7 +183,9 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 							sourceCard->getAttack()
 						);
 
-						int diff = targetCard->simulateOperation(operation);
+						int before = targetCard->getAttack();
+						int after = targetCard->simulateOperation(operation);
+						int diff = (after - before);
 						if (diff > bestDiff) {
 							bestDiff = diff;
 							bestSourceCard = sourceCard;
@@ -213,7 +215,9 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 						);
 
 						// multiply by negative 1 to flip the diff because we want to hurt the player
-						int diff = targetCard->simulateOperation(operation) * -1;
+						int before = targetCard->getAttack();
+						int after = targetCard->simulateOperation(operation);
+						int diff = (after - before) * -1;
 						if (diff > bestDiff) {
 							bestDiff = diff;
 							bestSourceCard = sourceCard;
@@ -222,7 +226,7 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 					}
 				}
 
-				if (bestDiff > 0) {
+				if (bestDiff >= 0) {
 					this->activeGameState->stagedCombineSourceCard = bestSourceCard;
 					this->activeGameState->stagedCombineTargetCard = bestTargetCard;
 					this->activeGameState->selectedCard = card;
