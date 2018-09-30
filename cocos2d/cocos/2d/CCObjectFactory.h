@@ -6,7 +6,7 @@
 #include "CCPointInstanceInfo.h"
 #include "CCBoxInstanceInfo.h"
 #include "CCBoneInstanceInfo.h"
-#include "CCTriggerobjectInfo.h"
+#include "CCTriggerObjectInfo.h"
 
 NS_CC_BEGIN
 

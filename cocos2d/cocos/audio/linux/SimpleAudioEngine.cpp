@@ -29,7 +29,7 @@
 
 using namespace CocosDenshion;
 using namespace cocos2d;
-using namespace cocos2d::experimental;
+using namespace cocos2d::cocos_experimental;
 
 struct SimpleAudioEngineLinux {
     SimpleAudioEngine * engine = nullptr;
