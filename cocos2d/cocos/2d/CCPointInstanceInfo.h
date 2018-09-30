@@ -2,7 +2,7 @@
 #define CCPOINTINSTANCEINFO_H
 
 #include "2d/CCNode.h"
-#include "SpriterPlusPlus/spriterengine/objectinfo/PointInstanceInfo.h"
+#include "SpriterPlusPlus/spriterengine/objectinfo/pointinstanceinfo.h"
 
 NS_CC_BEGIN
 
