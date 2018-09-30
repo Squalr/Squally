@@ -17,7 +17,7 @@ SceneDirector::SceneDirector()
 {
 	this->sceneHistory = new std::stack<Scene*>();
 	this->titleScreen = TitleScreen::create();
-	this->saveSelectMenu = SaveSelectMenu::create();
+	//this->saveSelectMenu = SaveSelectMenu::create();
 	this->minigamesMenu = MinigamesMenu::create();
 	this->hexusChapterSelectMenu = HexusChapterSelectMenu::create();
 	this->hexusDeckManagement = HexusDeckManagement::create();
@@ -33,10 +33,10 @@ SceneDirector::SceneDirector()
 	this->hexusOpponentMenuObelisk = HexusOpponentMenuObelisk::create();
 	this->hexusOpponentMenuMech = HexusOpponentMenuMech::create();
 	this->hexusPuzzlesMenu = HexusPuzzlesMenu::create();
-	this->worldMap = WorldMap::create();
-	this->loadingScreen = LoadingScreen::create();
-	this->map = nullptr;
-	this->fight = Fight::create();
+	//this->worldMap = WorldMap::create();
+	//this->loadingScreen = LoadingScreen::create();
+	//this->map = nullptr;
+	//this->fight = Fight::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->pauseMenu = PauseMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
@@ -47,7 +47,7 @@ SceneDirector::SceneDirector()
 
 	// Prevent disposal of game objects
 	this->titleScreen->retain();
-	this->saveSelectMenu->retain();
+	//this->saveSelectMenu->retain();
 	this->minigamesMenu->retain();
 	this->hexusChapterSelectMenu->retain();
 	this->hexusDeckManagement->retain();
@@ -63,10 +63,10 @@ SceneDirector::SceneDirector()
 	this->hexusOpponentMenuObelisk->retain();
 	this->hexusOpponentMenuMech->retain();
 	this->hexusPuzzlesMenu->retain();
-	this->worldMap->retain();
-	this->loadingScreen->retain();
+	//this->worldMap->retain();
+	//this->loadingScreen->retain();
 	// this->map->retain(); // Initially nullptr -- do not retain
-	this->fight->retain();
+	//this->fight->retain();
 	this->optionsMenu->retain();
 	this->pauseMenu->retain();
 	this->confirmationMenu->retain();
