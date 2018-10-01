@@ -15,7 +15,7 @@ macro(cocos2d_depend_libs)
     elseif(LINUX)
         # need review those libs: X11 Xi Xrandr Xxf86vm Xinerama Xcursor rt m
         list(APPEND PLATFORM_SPECIFIC_LIBS dl X11 Xi Xrandr Xxf86vm Xinerama Xcursor rt m)
-        foreach(_pkg OPENGL GLEW GLFW3 FMOD FONTCONFIG THREADS GTK3 SQLITE3)
+	foreach(_pkg OPENGL GLEW GLFW3 VORBIS MPG123 OPENAL FONTCONFIG THREADS GTK3 SQLITE3)
             list(APPEND PREBUILT_SPECIFIC_LIBS ${_pkg})
         endforeach()
     elseif(ANDROID)

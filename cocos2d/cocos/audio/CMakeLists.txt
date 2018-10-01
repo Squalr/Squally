@@ -118,6 +118,12 @@ elseif(LINUX)
         audio/linux/SimpleAudioEngine.cpp
         audio/linux/AudioEngine-linux.h
         audio/linux/AudioEngine-linux.cpp
+        audio/linux/AudioCache.cpp
+        audio/linux/AudioPlayer.cpp
+        audio/linux/AudioDecoder.cpp
+        audio/linux/AudioDecoderManager.cpp
+        audio/linux/AudioDecoderMp3.cpp
+        audio/linux/AudioDecoderOgg.cpp
         )
 
 elseif(APPLE)
