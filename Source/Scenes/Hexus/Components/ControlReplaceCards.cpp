@@ -131,29 +131,37 @@ void ControlReplaceCards::initializeCallbacks(GameState* gameState)
 
 void ControlReplaceCards::replaceCard(Card* card)
 {
-	this->activeGameState->cardReplaceCount--;
-	this->replacedCards->insert(card);
-	this->activeGameState->playerHand->removeCard(card);
-	this->removeCardsOfTypeFromDeck(card, this->activeGameState->playerDeck); // We want to banish all cards of this type from being redrawn
+	if (this->activeGameState->cardReplaceCount > 0)
+	{
+		this->activeGameState->cardReplaceCount--;
+		this->replacedCards->insert(card);
+		this->activeGameState->playerHand->removeCard(card);
+		this->removeCardsOfTypeFromDeck(card, this->activeGameState->playerDeck); // We want to banish all cards of this type from being redrawn
 	
-	// Run The animation
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	card->runAction(MoveTo::create(0.5f, Vec2(card->getPositionX(), -visibleSize.height/ 2.0f - 128.0f)));
+		// Run The animation
+		Size visibleSize = Director::getInstance()->getVisibleSize();
+		card->runAction(MoveTo::create(0.5f, Vec2(card->getPositionX(), -visibleSize.height/ 2.0f - 128.0f)));
 
-	// Get Our Replacement Card
-	Card* replacement = this->activeGameState->playerDeck->drawCard();
-	GameUtils::changeParent(replacement, this, true);
-	replacement->reveal();
+		// Get Our Replacement Card
+		Card* replacement = this->activeGameState->playerDeck->drawCard();
+		GameUtils::changeParent(replacement, this, true);
+		replacement->reveal();
 
-	// Update the state and either re-enter this state or exit to coinflip
-	CallFunc* stateTransition = this->getNextStateTransition();
-	CardRow * hand = this->activeGameState->playerHand;
-	this->runAction(Sequence::create(
-		CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, replacement, Config::insertDelay)),
-		DelayTime::create(Config::insertDelay),
-		stateTransition,
-		nullptr
-	));
+		// Update the state and either re-enter this state or exit to coinflip
+		CallFunc* stateTransition = this->getNextStateTransition();
+		CardRow * hand = this->activeGameState->playerHand;
+		this->runAction(Sequence::create(
+			CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, replacement, Config::insertDelay)),
+			DelayTime::create(Config::insertDelay),
+			stateTransition,
+			nullptr
+		));
+
+		if (this->activeGameState->cardReplaceCount <= 0)
+		{
+			this->activeGameState->playerHand->disableRowCardInteraction();
+		}
+	}
 }
 
 void ControlReplaceCards::removeCardsOfTypeFromDeck(Card* cardToRemove, Deck* deck) 
