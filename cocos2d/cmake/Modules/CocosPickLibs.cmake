@@ -130,10 +130,6 @@ if(MSVC)
     set(_zlib_dll zlib1)
 endif()
 
-set(_fmod_prefix FMOD)
-set(_fmod_inc fmod.hpp)
-set(_fmod_libs fmod fmod64 fmod fmod64)
-
 set(_luajit_prefix LUAJIT)
 set(_luajit_inc lua.hpp)
 set(_luajit_libs luajit)
@@ -180,7 +176,7 @@ if(MSVC)
 endif()
 
 if(LINUX)
-    list(APPEND all_prebuilt_libs fmod glfw3)
+    list(APPEND all_prebuilt_libs glfw3)
 endif()
 
 if(ANDROID)
