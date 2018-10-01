@@ -21213,6 +21213,9 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Hexus\UI_CCG_card_upgrade.mp3">
       <Filter>Resources\Sounds\Hexus</Filter>
     </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Hexus\UI_Validation_03.mp3">
+      <Filter>Resources\Sounds\Hexus</Filter>
+    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\MapOpen.mp3">
       <Filter>Resources\Sounds</Filter>
     </ClInclude>
@@ -21220,6 +21223,9 @@
       <Filter>Resources\Sounds\Menus</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\Card_Game_UI_Button_Light_Reverb_02.mp3">
+      <Filter>Resources\Sounds\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Menus\Simple_Button.mp3">
       <Filter>Resources\Sounds\Menus</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Sounds\Special1.mp3">
