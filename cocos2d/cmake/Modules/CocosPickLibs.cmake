@@ -102,7 +102,7 @@ set(_sqlite3_libs sqlite3)
 set(_gles_prefix GLEW)
 set(_gles_inc GL/glew.h)
 set(_gles_inc_paths OGLES)
-set(_gles_libs glew32)
+set(_gles_libs glew32 GLEW)
 
 set(_icon_prefix ICONV)
 set(_icon_inc iconv.h)
@@ -110,11 +110,11 @@ set(_icon_libs libiconv)
 
 set(_MP3Decoder_prefix MPG123)
 set(_MP3Decoder_inc mpg123.h)
-set(_MP3Decoder_libs libmpg123)
+set(_MP3Decoder_libs libmpg123 mpg123)
 
 set(_OggDecoder_prefix VORBIS)
 set(_OggDecoder_inc ogg/ogg.h)
-set(_OggDecoder_libs libogg libvorbis libvorbisfile)
+set(_OggDecoder_libs libogg libvorbis libvorbisfile vorbisfile vorbis ogg)
 
 set(_OpenalSoft_prefix OPENAL)
 set(_OpenalSoft_inc al.h)
@@ -176,7 +176,7 @@ if(MSVC)
 endif()
 
 if(LINUX)
-    list(APPEND all_prebuilt_libs glfw3)
+    list(APPEND all_prebuilt_libs glfw3 sqlite3 gles MP3Decoder OggDecoder)
 endif()
 
 if(ANDROID)
