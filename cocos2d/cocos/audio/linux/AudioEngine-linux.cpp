@@ -1,18 +1,19 @@
 /****************************************************************************
+ Copyright (c) 2014-2016 Chukong Technologies Inc.
  Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
- 
+
  http://www.cocos2d-x.org
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in
  all copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -21,341 +22,449 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  ****************************************************************************/
+#define LOG_TAG "AudioEngine-Linux"
 
-/**
- * @author cesarpachon
- */
-#include <cstring>
-#include <cstdint>
+#include "platform/CCPlatformConfig.h"
+
+#if CC_TARGET_PLATFORM == CC_PLATFORM_LINUX
+
 #include "audio/linux/AudioEngine-linux.h"
 
+#ifdef OPENAL_PLAIN_INCLUDES
+#include "alc.h"
+#include "alext.h"
+#else
+#include "AL/alc.h"
+#include "AL/alext.h"
+#endif
+#include "audio/include/AudioEngine.h"
 #include "base/CCDirector.h"
 #include "base/CCScheduler.h"
 #include "platform/CCFileUtils.h"
+#include "audio/linux/AudioDecoderManager.h"
+
+void audioLog(const char * format, ...)
+{
+#ifndef NDEBUG
+    va_list args;
+    va_start(args, format);
+    vprintf(format, args);
+    va_end(args);
+    printf("\n");
+#endif
+}
 
 using namespace cocos2d;
 using namespace cocos2d::cocos_experimental;
 
-AudioEngineImpl * g_AudioEngineImpl = nullptr;
-
-void ERRCHECKWITHEXIT(FMOD_RESULT result)
-{
-    if (result != FMOD_OK) {
-        printf("FMOD error! (%d) %s\n", result, FMOD_ErrorString(result));
-    }
-}
-
-bool ERRCHECK(FMOD_RESULT result)
-{
-    if (result != FMOD_OK) {
-        printf("FMOD error! (%d) %s\n", result, FMOD_ErrorString(result));
-        return true;
-    }
-    return false;
-}
-
-FMOD_RESULT F_CALLBACK channelCallback(FMOD_CHANNELCONTROL *channelcontrol,
-                                       FMOD_CHANNELCONTROL_TYPE controltype,
-                                       FMOD_CHANNELCONTROL_CALLBACK_TYPE callbacktype,
-                                       void *commandData1, void *commandData2)
-{
-    if (controltype == FMOD_CHANNELCONTROL_CHANNEL && callbacktype == FMOD_CHANNELCONTROL_CALLBACK_END) {
-        g_AudioEngineImpl->onSoundFinished((FMOD::Channel *)channelcontrol);
-    }
-    return FMOD_OK;
-}
+static ALCdevice *s_ALDevice = nullptr;
+static ALCcontext *s_ALContext = nullptr;
 
 AudioEngineImpl::AudioEngineImpl()
+: _lazyInitLoop(true)
+, _currentAudioID(0)
+, _scheduler(nullptr)
 {
+
 }
 
 AudioEngineImpl::~AudioEngineImpl()
 {
-    FMOD_RESULT result;
-    result = pSystem->close();
-    ERRCHECKWITHEXIT(result);
-    result = pSystem->release();
-    ERRCHECKWITHEXIT(result);
+    if (_scheduler != nullptr)
+    {
+        _scheduler->unschedule(CC_SCHEDULE_SELECTOR(AudioEngineImpl::update), this);
+    }
+
+    if (s_ALContext) {
+        alDeleteSources(MAX_AUDIOINSTANCES, _alSources);
+
+        _audioCaches.clear();
+
+        alcMakeContextCurrent(nullptr);
+        alcDestroyContext(s_ALContext);
+        s_ALContext = nullptr;
+    }
+
+    if (s_ALDevice) {
+        alcCloseDevice(s_ALDevice);
+        s_ALDevice = nullptr;
+    }
+
+    AudioDecoderManager::destroy();
 }
 
 bool AudioEngineImpl::init()
 {
-    FMOD_RESULT result;
-    /*
-    Create a System object and initialize.
-    */
-    result = FMOD::System_Create(&pSystem);
-    ERRCHECKWITHEXIT(result);
+    bool ret = false;
+    do{
+        s_ALDevice = alcOpenDevice(nullptr);
 
-    result = pSystem->setOutput(FMOD_OUTPUTTYPE_AUTODETECT);
-    ERRCHECKWITHEXIT(result);
+        if (s_ALDevice) {
+            alGetError();
+            s_ALContext = alcCreateContext(s_ALDevice, nullptr);
+            alcMakeContextCurrent(s_ALContext);
 
-    result = pSystem->init(32, FMOD_INIT_NORMAL, 0);
-    ERRCHECKWITHEXIT(result);
+            alGenSources(MAX_AUDIOINSTANCES, _alSources);
+            auto alError = alGetError();
+            if(alError != AL_NO_ERROR)
+            {
+                ALOGE("%s:generating sources failed! error = %x\n", __FUNCTION__, alError);
+                break;
+            }
 
-    mapChannelInfo.clear();
-    mapSound.clear();
+            for (int i = 0; i < MAX_AUDIOINSTANCES; ++i) {
+                _alSourceUsed[_alSources[i]] = false;
+            }
 
-    auto scheduler = cocos2d::Director::getInstance()->getScheduler();
-    scheduler->schedule(schedule_selector(AudioEngineImpl::update), this, 0.05f, false);
+            _scheduler = Director::getInstance()->getScheduler();
+            ret = AudioDecoderManager::init();
+            ALOGI("OpenAL was initialized successfully!");
+        }
+    }while (false);
 
-    g_AudioEngineImpl = this;
-
-    return true;
+    return ret;
 }
 
-int AudioEngineImpl::play2d(const std::string &fileFullPath, bool loop, float volume)
+AudioCache* AudioEngineImpl::preload(const std::string& filePath, std::function<void(bool)> callback)
 {
-    int id = preload(fileFullPath, nullptr);
-    if (id >= 0) {
-        mapChannelInfo[id].loop=loop;
-        mapChannelInfo[id].channel->setPaused(true);
-        mapChannelInfo[id].volume = volume;
-        AudioEngine::_audioIDInfoMap[id].state = AudioEngine::AudioState::PAUSED;
-        resume(id);
+    AudioCache* audioCache = nullptr;
+
+    auto it = _audioCaches.find(filePath);
+    if (it == _audioCaches.end()) {
+        audioCache = &_audioCaches[filePath];
+        audioCache->_fileFullPath = FileUtils::getInstance()->fullPathForFilename(filePath);
+        unsigned int cacheId = audioCache->_id;
+        auto isCacheDestroyed = audioCache->_isDestroyed;
+        AudioEngine::addTask([audioCache, cacheId, isCacheDestroyed](){
+            if (*isCacheDestroyed)
+            {
+                ALOGV("AudioCache (id=%u) was destroyed, no need to launch readDataTask.", cacheId);
+                audioCache->setSkipReadDataTask(true);
+                return;
+            }
+            audioCache->readDataTask(cacheId);
+        });
     }
-    return id;
+    else {
+        audioCache = &it->second;
+    }
+
+    if (audioCache && callback)
+    {
+        audioCache->addLoadCallback(callback);
+    }
+    return audioCache;
 }
 
-void AudioEngineImpl::setVolume(int audioID, float volume)
+int AudioEngineImpl::play2d(const std::string &filePath ,bool loop ,float volume)
 {
-    try {
-        mapChannelInfo[audioID].channel->setVolume(volume);
+    if (s_ALDevice == nullptr) {
+        return AudioEngine::INVALID_AUDIO_ID;
     }
-    catch (const std::out_of_range& oor) {
-        printf("AudioEngineImpl::setVolume: invalid audioID: %d\n", audioID);
+
+    bool sourceFlag = false;
+    ALuint alSource = 0;
+    for (int i = 0; i < MAX_AUDIOINSTANCES; ++i) {
+        alSource = _alSources[i];
+
+        if ( !_alSourceUsed[alSource]) {
+            sourceFlag = true;
+            break;
+        }
+    }
+    if(!sourceFlag){
+        return AudioEngine::INVALID_AUDIO_ID;
+    }
+
+    auto player = new (std::nothrow) AudioPlayer;
+    if (player == nullptr) {
+        return AudioEngine::INVALID_AUDIO_ID;
+    }
+
+    player->_alSource = alSource;
+    player->_loop = loop;
+    player->_volume = volume;
+
+    auto audioCache = preload(filePath, nullptr);
+    if (audioCache == nullptr) {
+        delete player;
+        return AudioEngine::INVALID_AUDIO_ID;
+    }
+
+    player->setCache(audioCache);
+    _threadMutex.lock();
+    _audioPlayers[_currentAudioID] = player;
+    _threadMutex.unlock();
+
+    _alSourceUsed[alSource] = true;
+
+    audioCache->addPlayCallback(std::bind(&AudioEngineImpl::_play2d,this,audioCache,_currentAudioID));
+
+    if (_lazyInitLoop) {
+        _lazyInitLoop = false;
+        _scheduler->schedule(CC_SCHEDULE_SELECTOR(AudioEngineImpl::update), this, 0.05f, false);
+    }
+
+    return _currentAudioID++;
+}
+
+void AudioEngineImpl::_play2d(AudioCache *cache, int audioID)
+{
+    //Note: It may bn in sub thread or main thread :(
+    if (!*cache->_isDestroyed && cache->_state == AudioCache::State::READY)
+    {
+        _threadMutex.lock();
+        auto playerIt = _audioPlayers.find(audioID);
+        if (playerIt != _audioPlayers.end() && playerIt->second->play2d()) {
+            _scheduler->performFunctionInCocosThread([audioID](){
+
+                if (AudioEngine::_audioIDInfoMap.find(audioID) != AudioEngine::_audioIDInfoMap.end()) {
+                    AudioEngine::_audioIDInfoMap[audioID].state = AudioEngine::AudioState::PLAYING;
+                }
+            });
+        }
+        _threadMutex.unlock();
+    }
+    else
+    {
+        ALOGD("AudioEngineImpl::_play2d, cache was destroyed or not ready!");
+        auto iter = _audioPlayers.find(audioID);
+        if (iter != _audioPlayers.end())
+        {
+            iter->second->_removeByAudioEngine = true;
+        }
+    }
+}
+
+void AudioEngineImpl::setVolume(int audioID,float volume)
+{
+    auto player = _audioPlayers[audioID];
+    player->_volume = volume;
+
+    if (player->_ready) {
+        alSourcef(_audioPlayers[audioID]->_alSource, AL_GAIN, volume);
+
+        auto error = alGetError();
+        if (error != AL_NO_ERROR) {
+            ALOGE("%s: audio id = %d, error = %x", __FUNCTION__,audioID,error);
+        }
     }
 }
 
 void AudioEngineImpl::setLoop(int audioID, bool loop)
 {
-    try {
-        mapChannelInfo[audioID].channel->setLoopCount(loop ? -1 : 0);
+    auto player = _audioPlayers[audioID];
+
+    if (player->_ready) {
+        if (player->_streamingSource) {
+            player->setLoop(loop);
+        } else {
+            if (loop) {
+                alSourcei(player->_alSource, AL_LOOPING, AL_TRUE);
+            } else {
+                alSourcei(player->_alSource, AL_LOOPING, AL_FALSE);
+            }
+
+            auto error = alGetError();
+            if (error != AL_NO_ERROR) {
+                ALOGE("%s: audio id = %d, error = %x", __FUNCTION__,audioID,error);
+            }
+        }
     }
-    catch (const std::out_of_range& oor) {
-        printf("AudioEngineImpl::setLoop: invalid audioID: %d\n", audioID);
+    else {
+        player->_loop = loop;
     }
 }
 
 bool AudioEngineImpl::pause(int audioID)
 {
-    try {
-        mapChannelInfo[audioID].channel->setPaused(true);
-        AudioEngine::_audioIDInfoMap[audioID].state = AudioEngine::AudioState::PAUSED;
-        return true;
+    bool ret = true;
+    alSourcePause(_audioPlayers[audioID]->_alSource);
+
+    auto error = alGetError();
+    if (error != AL_NO_ERROR) {
+        ret = false;
+        ALOGE("%s: audio id = %d, error = %x\n", __FUNCTION__,audioID,error);
     }
-    catch (const std::out_of_range& oor) {
-        printf("AudioEngineImpl::pause: invalid audioID: %d\n", audioID);
-        return false;
-    }
+
+    return ret;
 }
 
 bool AudioEngineImpl::resume(int audioID)
 {
-    try {
-        if (!mapChannelInfo[audioID].channel) {
-            FMOD::Channel *channel = nullptr;
-            FMOD::ChannelGroup *channelgroup = nullptr;
-            //starts the sound in pause mode, use the channel to unpause
-            FMOD_RESULT result = pSystem->playSound(mapChannelInfo[audioID].sound, channelgroup, true, &channel);
-            if (ERRCHECK(result)) {
-                return false;
-            }
-            channel->setMode(mapChannelInfo[audioID].loop ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF);
-            channel->setLoopCount(mapChannelInfo[audioID].loop ? -1 : 0);
-            channel->setVolume(mapChannelInfo[audioID].volume);
-            channel->setUserData(reinterpret_cast<void *>(static_cast<std::intptr_t>(mapChannelInfo[audioID].id)));
-            mapChannelInfo[audioID].channel = channel;
-        }
+    bool ret = true;
+    alSourcePlay(_audioPlayers[audioID]->_alSource);
 
-        mapChannelInfo[audioID].channel->setPaused(false);
-        AudioEngine::_audioIDInfoMap[audioID].state = AudioEngine::AudioState::PLAYING;
+    auto error = alGetError();
+    if (error != AL_NO_ERROR) {
+        ret = false;
+        ALOGE("%s: audio id = %d, error = %x\n", __FUNCTION__,audioID,error);
+    }
 
-        return true;
-    }
-    catch (const std::out_of_range& oor) {
-        printf("AudioEngineImpl::resume: invalid audioID: %d\n", audioID);
-        return false;
-    }
+    return ret;
 }
 
-bool AudioEngineImpl::stop(int audioID)
+void AudioEngineImpl::stop(int audioID)
 {
-    try {
-        mapChannelInfo[audioID].channel->stop();
-        mapChannelInfo[audioID].channel = nullptr;
-        return true;
-    }
-    catch (const std::out_of_range& oor) {
-        printf("AudioEngineImpl::stop: invalid audioID: %d\n", audioID);
-        return false;
-    }
+    auto player = _audioPlayers[audioID];
+    player->destroy();
+    //Note: Don't set the flag to false here, it should be set in 'update' function.
+    // Otherwise, the state got from alSourceState may be wrong
+//    _alSourceUsed[player->_alSource] = false;
+
+    // Call 'update' method to cleanup immediately since the schedule may be cancelled without any notification.
+    update(0.0f);
 }
 
 void AudioEngineImpl::stopAll()
 {
-    for (auto& it : mapChannelInfo) {
-        ChannelInfo & audioRef = it.second;
-        audioRef.channel->stop();
-        audioRef.channel = nullptr;
+    for(auto&& player : _audioPlayers)
+    {
+        player.second->destroy();
     }
+    //Note: Don't set the flag to false here, it should be set in 'update' function.
+    // Otherwise, the state got from alSourceState may be wrong
+//    for(int index = 0; index < MAX_AUDIOINSTANCES; ++index)
+//    {
+//        _alSourceUsed[_alSources[index]] = false;
+//    }
+
+    // Call 'update' method to cleanup immediately since the schedule may be cancelled without any notification.
+    update(0.0f);
 }
 
 float AudioEngineImpl::getDuration(int audioID)
 {
-    try {
-        FMOD::Sound * sound = mapChannelInfo[audioID].sound;
-        unsigned int length;
-        FMOD_RESULT result = sound->getLength(&length, FMOD_TIMEUNIT_MS);
-        ERRCHECK(result);
-        float duration = (float)length / 1000.0f;
-        return duration;
-    }
-    catch (const std::out_of_range& oor) {
-        printf("AudioEngineImpl::getDuration: invalid audioID: %d\n", audioID);
+    auto player = _audioPlayers[audioID];
+    if(player->_ready){
+        return player->_audioCache->_duration;
+    } else {
         return AudioEngine::TIME_UNKNOWN;
     }
 }
 
 float AudioEngineImpl::getCurrentTime(int audioID)
 {
-    try {
-        unsigned int position;
-        FMOD_RESULT result = mapChannelInfo[audioID].channel->getPosition(&position, FMOD_TIMEUNIT_MS);
-        ERRCHECK(result);
-        float currenttime = position /1000.0f;
-        return currenttime;
+    float ret = 0.0f;
+    auto player = _audioPlayers[audioID];
+    if(player->_ready){
+        if (player->_streamingSource) {
+            ret = player->getTime();
+        } else {
+            alGetSourcef(player->_alSource, AL_SEC_OFFSET, &ret);
+
+            auto error = alGetError();
+            if (error != AL_NO_ERROR) {
+                ALOGE("%s, audio id:%d,error code:%x", __FUNCTION__,audioID,error);
+            }
+        }
     }
-    catch (const std::out_of_range& oor) {
-        printf("AudioEngineImpl::getCurrentTime: invalid audioID: %d\n", audioID);
-        return AudioEngine::TIME_UNKNOWN;
-    }
+
+    return ret;
 }
 
 bool AudioEngineImpl::setCurrentTime(int audioID, float time)
 {
     bool ret = false;
-    try {
-        unsigned int position = (unsigned int)(time * 1000.0f);
-        FMOD_RESULT result = mapChannelInfo[audioID].channel->setPosition(position, FMOD_TIMEUNIT_MS);
-        ret = !ERRCHECK(result);
-    }
-    catch (const std::out_of_range& oor) {
-        printf("AudioEngineImpl::setCurrentTime: invalid audioID: %d\n", audioID);
-    }
+    auto player = _audioPlayers[audioID];
+
+    do {
+        if (!player->_ready) {
+            break;
+        }
+
+        if (player->_streamingSource) {
+            ret = player->setTime(time);
+            break;
+        }
+        else {
+            if (player->_audioCache->_framesRead != player->_audioCache->_totalFrames &&
+                (time * player->_audioCache->_sampleRate) > player->_audioCache->_framesRead) {
+                ALOGE("%s: audio id = %d", __FUNCTION__,audioID);
+                break;
+            }
+
+            alSourcef(player->_alSource, AL_SEC_OFFSET, time);
+
+            auto error = alGetError();
+            if (error != AL_NO_ERROR) {
+                ALOGE("%s: audio id = %d, error = %x", __FUNCTION__,audioID,error);
+            }
+            ret = true;
+        }
+    } while (0);
+
     return ret;
 }
 
 void AudioEngineImpl::setFinishCallback(int audioID, const std::function<void (int, const std::string &)> &callback)
 {
-    try {
-        FMOD::Channel * channel = mapChannelInfo[audioID].channel;
-        mapChannelInfo[audioID].callback = callback;
-        FMOD_RESULT result = channel->setCallback(channelCallback);
-        ERRCHECK(result);
-    }
-    catch (const std::out_of_range& oor) {
-        printf("AudioEngineImpl::setFinishCallback: invalid audioID: %d\n", audioID);
-    }
-}
-
-void AudioEngineImpl::onSoundFinished(FMOD::Channel * channel)
-{
-    int id = 0;
-    try {
-        void * data;
-        channel->getUserData(&data);
-        id = static_cast<int>(reinterpret_cast<std::intptr_t>(data));
-        if (mapChannelInfo[id].callback) {
-            mapChannelInfo[id].callback(id, mapChannelInfo[id].path);
-        }
-        mapChannelInfo[id].channel = nullptr;
-    }
-    catch (const std::out_of_range& oor) {
-        printf("AudioEngineImpl::onSoundFinished: invalid audioID: %d\n", id);
-    }
-}
-
-void AudioEngineImpl::uncache(const std::string& path)
-{
-    std::string fullPath = FileUtils::getInstance()->fullPathForFilename(path);
-    std::map<std::string, FMOD::Sound *>::const_iterator it = mapSound.find(fullPath);
-    if (it!=mapSound.end()) {
-        FMOD::Sound * sound = it->second;
-        if (sound) {
-            sound->release();
-        }
-        mapSound.erase(it);
-    }
-    if (mapId.find(path) != mapId.end())
-        mapId.erase(path);
-}
-
-void AudioEngineImpl::uncacheAll()
-{
-    for (const auto& it : mapSound) {
-        auto sound = it.second;
-        if (sound) {
-            sound->release();
-        }
-    }
-    mapSound.clear();
-    mapId.clear();
-}
-
-int AudioEngineImpl::preload(const std::string& filePath, std::function<void(bool isSuccess)> callback)
-{
-    FMOD::Sound * sound = findSound(filePath);
-    if (!sound) {
-        std::string fullPath = FileUtils::getInstance()->fullPathForFilename(filePath);
-        FMOD_RESULT result = pSystem->createSound(fullPath.c_str(), FMOD_LOOP_OFF, 0, &sound);
-        if (ERRCHECK(result)) {
-            printf("sound effect in %s could not be preload\n", filePath.c_str());
-            if (callback) {
-                callback(false);
-            }
-            return -1;
-        }
-        mapSound[fullPath] = sound;
-    }
-
-    int id = static_cast<int>(mapChannelInfo.size()) + 1;
-    if (mapId.find(filePath) == mapId.end())
-        mapId.insert({filePath, id});
-    else
-        id = mapId.at(filePath);
-
-    auto& chanelInfo = mapChannelInfo[id];
-    chanelInfo.sound = sound;
-    chanelInfo.id = id;
-    chanelInfo.channel = nullptr;
-    chanelInfo.callback = nullptr;
-    chanelInfo.path = filePath;
-    //we are going to use UserData to store pointer to Channel when playing
-    chanelInfo.sound->setUserData(reinterpret_cast<void *>(static_cast<std::intptr_t>(id)));
-
-    if (callback) {
-        callback(true);
-    }
-    return id;
+    _audioPlayers[audioID]->_finishCallbak = callback;
 }
 
 void AudioEngineImpl::update(float dt)
 {
-    pSystem->update();
+    ALint sourceState;
+    int audioID;
+    AudioPlayer* player;
+    ALuint alSource;
+
+//    ALOGV("AudioPlayer count: %d", (int)_audioPlayers.size());
+
+    for (auto it = _audioPlayers.begin(); it != _audioPlayers.end(); ) {
+        audioID = it->first;
+        player = it->second;
+        alSource = player->_alSource;
+        alGetSourcei(alSource, AL_SOURCE_STATE, &sourceState);
+
+        if (player->_removeByAudioEngine)
+        {
+            AudioEngine::remove(audioID);
+            _threadMutex.lock();
+            it = _audioPlayers.erase(it);
+            _threadMutex.unlock();
+            delete player;
+            _alSourceUsed[alSource] = false;
+        }
+        else if (player->_ready && sourceState == AL_STOPPED) {
+
+            std::string filePath;
+            if (player->_finishCallbak) {
+                auto& audioInfo = AudioEngine::_audioIDInfoMap[audioID];
+                filePath = *audioInfo.filePath;
+            }
+
+            AudioEngine::remove(audioID);
+            
+            _threadMutex.lock();
+            it = _audioPlayers.erase(it);
+            _threadMutex.unlock();
+
+            if (player->_finishCallbak) {
+                player->_finishCallbak(audioID, filePath); //FIXME: callback will delay 50ms
+            }
+            delete player;
+            _alSourceUsed[alSource] = false;
+        }
+        else{
+            ++it;
+        }
+    }
+
+    if(_audioPlayers.empty()){
+        _lazyInitLoop = true;
+        _scheduler->unschedule(CC_SCHEDULE_SELECTOR(AudioEngineImpl::update), this);
+    }
 }
 
-FMOD::Sound * AudioEngineImpl::findSound(const std::string &path)
+void AudioEngineImpl::uncache(const std::string &filePath)
 {
-    std::string fullPath = FileUtils::getInstance()->fullPathForFilename(path);
-    std::map<std::string, FMOD::Sound *>::const_iterator it = mapSound.find(fullPath);
-    return (it != mapSound.end()) ? (it->second) : nullptr;
+    _audioCaches.erase(filePath);
 }
 
-FMOD::Channel * AudioEngineImpl::getChannel(FMOD::Sound *sound)
+void AudioEngineImpl::uncacheAll()
 {
-    void * data;
-    sound->getUserData(&data);
-    int id = static_cast<int>(reinterpret_cast<std::intptr_t>(data));
-    return mapChannelInfo[id].channel;
+    _audioCaches.clear();
 }
+
+#endif
