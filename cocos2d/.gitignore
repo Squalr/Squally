@@ -158,7 +158,7 @@ tests/lua-tests/project/proj.tizen/res/
 .vscode/
 
 # Ignore static libraries
-*.a
+#*.a
 
 # Ignore the CMake build folder, such as ios-build/linux-build
 *-build/
