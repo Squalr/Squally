@@ -14,8 +14,9 @@ public:
 	static StateDrawInitial * create();
 
 protected:
-	void beforeStateEnter(GameState* gameState) override;
+	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
+	void onStateReload(GameState* gameState) override;
 	void onStateExit(GameState* gameState) override;
 
 private:

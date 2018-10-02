@@ -17,9 +17,9 @@ StateDraw::~StateDraw()
 {
 }
 
-void StateDraw::beforeStateEnter(GameState* gameState)
+void StateDraw::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::beforeStateEnter(gameState);
+	StateBase::onBeforeStateEnter(gameState);
 }
 
 void StateDraw::onStateEnter(GameState* gameState)
@@ -80,6 +80,11 @@ void StateDraw::onStateEnter(GameState* gameState)
 		default:
 			break;
 	}
+}
+
+void StateDraw::onStateReload(GameState* gameState)
+{
+	StateBase::onStateReload(gameState);
 }
 
 void StateDraw::onStateExit(GameState* gameState)

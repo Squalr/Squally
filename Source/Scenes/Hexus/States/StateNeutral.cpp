@@ -17,9 +17,9 @@ StateNeutral::~StateNeutral()
 {
 }
 
-void StateNeutral::beforeStateEnter(GameState* gameState)
+void StateNeutral::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::beforeStateEnter(gameState);
+	StateBase::onBeforeStateEnter(gameState);
 }
 
 void StateNeutral::onStateEnter(GameState* gameState)
@@ -51,6 +51,11 @@ void StateNeutral::onStateEnter(GameState* gameState)
 			break;
 		}
 	}
+}
+
+void StateNeutral::onStateReload(GameState* gameState)
+{
+	StateBase::onStateReload(gameState);
 }
 
 void StateNeutral::onStateExit(GameState* gameState)

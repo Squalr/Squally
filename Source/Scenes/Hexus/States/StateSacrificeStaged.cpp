@@ -41,9 +41,9 @@ void StateSacrificeStaged::initializePositions()
 	this->sacrificeStatus->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter - Config::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
 }
 
-void StateSacrificeStaged::beforeStateEnter(GameState* gameState)
+void StateSacrificeStaged::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::beforeStateEnter(gameState);
+	StateBase::onBeforeStateEnter(gameState);
 }
 
 void StateSacrificeStaged::onStateEnter(GameState* gameState)
@@ -62,6 +62,11 @@ void StateSacrificeStaged::onStateEnter(GameState* gameState)
 			this->aiPerformAction(gameState);
 			break;
 	}
+}
+
+void StateSacrificeStaged::onStateReload(GameState* gameState)
+{
+	StateBase::onStateReload(gameState);
 }
 
 void StateSacrificeStaged::onStateExit(GameState* gameState)

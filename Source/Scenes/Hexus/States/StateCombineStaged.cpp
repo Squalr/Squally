@@ -41,9 +41,9 @@ void StateCombineStaged::initializePositions()
 	this->combineStatus->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter - Config::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
 }
 
-void StateCombineStaged::beforeStateEnter(GameState* gameState)
+void StateCombineStaged::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::beforeStateEnter(gameState);
+	StateBase::onBeforeStateEnter(gameState);
 }
 
 void StateCombineStaged::onStateEnter(GameState* gameState)
@@ -62,6 +62,11 @@ void StateCombineStaged::onStateEnter(GameState* gameState)
 			this->aiPerformAction(gameState);
 			break;
 	}
+}
+
+void StateCombineStaged::onStateReload(GameState* gameState)
+{
+	StateBase::onStateReload(gameState);
 }
 
 void StateCombineStaged::onStateExit(GameState* gameState)
