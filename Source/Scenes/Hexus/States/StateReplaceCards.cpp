@@ -1,15 +1,15 @@
-#include "ControlReplaceCards.h"
+#include "StateReplaceCards.h"
 
-ControlReplaceCards* ControlReplaceCards::create()
+StateReplaceCards* StateReplaceCards::create()
 {
-	ControlReplaceCards* instance = new ControlReplaceCards();
+	StateReplaceCards* instance = new StateReplaceCards();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ControlReplaceCards::ControlReplaceCards()
+StateReplaceCards::StateReplaceCards() : StateBase(GameState::StateType::ControlReplaceCards)
 {
 	this->replacedCards = new std::set<Card*>();
 	Label* doneButtonLabel = Label::create("Done", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
@@ -33,83 +33,82 @@ ControlReplaceCards::ControlReplaceCards()
 	this->addChild(this->doneButton);
 }
 
-ControlReplaceCards::~ControlReplaceCards()
+StateReplaceCards::~StateReplaceCards()
 {
 	delete(this->replacedCards);
 }
 
-void ControlReplaceCards::initializeListeners()
+void StateReplaceCards::initializeListeners()
 {
-	ComponentBase::initializeListeners();
-	this->doneButton->setClickCallback(CC_CALLBACK_1(ControlReplaceCards::onEndReplaceCards, this));
+	StateBase::initializeListeners();
+
+	this->doneButton->setClickCallback(CC_CALLBACK_1(StateReplaceCards::onEndReplaceCards, this));
 }
 
-void ControlReplaceCards::onEndReplaceCards(MenuSprite* menuSprite)
+void StateReplaceCards::onEndReplaceCards(MenuSprite* menuSprite)
 {
 	this->activeGameState->cardReplaceCount = 0;
 	GameState::updateState(this->activeGameState, GameState::StateType::CoinFlip);
 }
 
-
-void ControlReplaceCards::initializePositions()
+void StateReplaceCards::initializePositions()
 {
-	ComponentBase::initializePositions();
+	StateBase::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	this->doneButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 200.0f);
 }
 
-void ControlReplaceCards::onStateChange(GameState* gameState)
+void StateReplaceCards::beforeStateEnter(GameState* gameState)
 {
-	this->activeGameState = gameState;
+	StateBase::beforeStateEnter(gameState);
 
-	switch (gameState->stateType)
-	{
-		case GameState::StateType::ControlReplaceCards:
-			// State just entered -- perform initialization and re-enter this state to allow other components to have up-to-date info
-			if (gameState->stateType != gameState->previousStateType)
-			{
-				this->doneButton->enableInteraction(0);
-				this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
-				this->initializeCardReplace(gameState);
-				GameState::updateState(gameState, GameState::StateType::ControlReplaceCards);
-				return;
-			}
-
-			this->initializeCallbacks(gameState);
-			break;
-		default:
-			if (gameState->previousStateType == GameState::StateType::ControlReplaceCards)
-			{
-				// Restore hand to proper position
-				Size visibleSize = Director::getInstance()->getVisibleSize();
-				GameUtils::changeParent(gameState->playerHand, gameState, true);
-				gameState->playerHand->setCardScale(Card::cardScale, 0.25f);
-				gameState->playerHand->setRowWidth(Config::handWidth, 0.25f);
-				gameState->playerHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::handOffsetY)));
-
-				// Insert replaced cards back to deck
-				for (auto it = this->replacedCards->begin(); it != this->replacedCards->end(); it++)
-				{
-					Card* card = *it;
-
-					card->setScale(Card::cardScale);
-					gameState->playerDeck->insertCardRandom(card, false, 0.0f);
-				}
-
-				// Hide Done Button
-				this->doneButton->disableInteraction(255);
-				this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 0));
-				break;
-			}
-			break;
-	}
+	this->doneButton->enableInteraction(0);
+	this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
+	this->initializeCardReplace(gameState);
 }
 
-void ControlReplaceCards::initializeCardReplace(GameState* gameState)
+void StateReplaceCards::onStateEnter(GameState* gameState)
 {
-	if (gameState->round == 0) {
+	StateBase::onStateEnter(gameState);
+
+	this->activeGameState = gameState;
+	this->initializeCallbacks(gameState);
+}
+
+void StateReplaceCards::onStateExit(GameState* gameState)
+{
+	StateBase::onStateExit(gameState);
+
+	// Restore hand to proper position
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	GameUtils::changeParent(gameState->playerHand, gameState, true);
+	gameState->playerHand->setCardScale(Card::cardScale, 0.25f);
+	gameState->playerHand->setRowWidth(Config::handWidth, 0.25f);
+	gameState->playerHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::handOffsetY)));
+
+	// Insert replaced cards back to deck
+	for (auto it = this->replacedCards->begin(); it != this->replacedCards->end(); it++)
+	{
+		Card* card = *it;
+
+		card->setScale(Card::cardScale);
+		gameState->playerDeck->insertCardRandom(card, false, 0.0f);
+	}
+
+	// Hide Done Button
+	this->doneButton->disableInteraction(255);
+	this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 0));
+}
+
+void StateReplaceCards::initializeCardReplace(GameState* gameState)
+{
+	if (gameState->round == 0)
+	{
 		gameState->cardReplaceCount = std::min(3, gameState->playerDeck->getCardCount());
-	} else {
+	}
+	else
+	{
 		gameState->cardReplaceCount = std::min(1, gameState->playerDeck->getCardCount());
 	}
 	
@@ -124,12 +123,12 @@ void ControlReplaceCards::initializeCardReplace(GameState* gameState)
 	gameState->playerHand->enableRowCardInteraction();
 }
 
-void ControlReplaceCards::initializeCallbacks(GameState* gameState)
+void StateReplaceCards::initializeCallbacks(GameState* gameState)
 {
-	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(ControlReplaceCards::replaceCard, this));
+	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(StateReplaceCards::replaceCard, this));
 }
 
-void ControlReplaceCards::replaceCard(Card* card)
+void StateReplaceCards::replaceCard(Card* card)
 {
 	if (this->activeGameState->cardReplaceCount > 0)
 	{
@@ -164,7 +163,7 @@ void ControlReplaceCards::replaceCard(Card* card)
 	}
 }
 
-void ControlReplaceCards::removeCardsOfTypeFromDeck(Card* cardToRemove, Deck* deck) 
+void StateReplaceCards::removeCardsOfTypeFromDeck(Card* cardToRemove, Deck* deck) 
 {
 	deck->removeCardsWhere([=](Card* card)
 	{
@@ -179,7 +178,7 @@ void ControlReplaceCards::removeCardsOfTypeFromDeck(Card* cardToRemove, Deck* de
 	});
 }
 
-CallFunc* ControlReplaceCards::getNextStateTransition() 
+CallFunc* StateReplaceCards::getNextStateTransition() 
 {
 	CallFunc* stateTransition;
 	GameState* gameState = this->activeGameState;

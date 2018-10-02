@@ -10,6 +10,7 @@
 #include "Scenes/Hexus/CardStorage.h"
 #include "Scenes/Hexus/GameState.h"
 #include "Scenes/Hexus/Components/Components.h"
+#include "Scenes/Hexus/States/States.h"
 
 using namespace cocos2d;
 
@@ -38,14 +39,15 @@ private:
 	Banners* banners;
 	CardPreview* cardPreview;
 	CoinFlip* coinFlip;
-	ControlDraw* controlDraw;
-	ControlNeutral* controlNeutral;
-	ControlEndTurn* controlEndTurn;
-	ControlSacrificeStaged* controlSacrificeStaged;
-	ControlSelectionStaged* controlSelectionStaged;
-	ControlCombineStaged* controlCombineStaged;
-	ControlReplaceCards* controlReplaceCards;
-	ControlGameEnd* controlGameEnd;
+	StateDrawInitial* stateDrawInitial;
+	StateDraw* stateDraw;
+	StateNeutral* stateNeutral;
+	StateEndTurn* stateEndTurn;
+	StateSacrificeStaged* stateSacrificeStaged;
+	StateSelectionStaged* stateSelectionStaged;
+	StateCombineStaged* stateCombineStaged;
+	StateReplaceCards* stateReplaceCards;
+	StateGameEnd* stateGameEnd;
 	DeckCardCountDisplay* deckCardCountDisplay;
 	HandCardCountDisplay* handCardCountDisplay;
 	LossesDisplay* lossesDisplay;

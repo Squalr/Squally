@@ -6,21 +6,23 @@
 #include "Engine/Utils/StrUtils.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Resources.h"
-#include "Scenes/Hexus/Components/ComponentBase.h"
+#include "Scenes/Hexus/States/StateBase.h"
 
 using namespace cocos2d;
 
-class ControlSelectionStaged : public ComponentBase
+class StateSelectionStaged : public StateBase
 {
 public:
-	static ControlSelectionStaged * create();
+	static StateSelectionStaged * create();
 
 protected:
-	void onStateChange(GameState* gameState) override;
+	void beforeStateEnter(GameState* gameState) override;
+	void onStateEnter(GameState* gameState) override;
+	void onStateExit(GameState* gameState) override;
 
 private:
-	ControlSelectionStaged();
-	~ControlSelectionStaged();
+	StateSelectionStaged();
+	~StateSelectionStaged();
 
 	void initializePositions() override;
 	void initializeCallbacks(GameState* gameState);

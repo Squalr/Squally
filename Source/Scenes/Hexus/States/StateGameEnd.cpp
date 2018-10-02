@@ -1,15 +1,15 @@
-#include "ControlGameEnd.h"
+#include "StateGameEnd.h"
 
-ControlGameEnd* ControlGameEnd::create()
+StateGameEnd* StateGameEnd::create()
 {
-	ControlGameEnd* instance = new ControlGameEnd();
+	StateGameEnd* instance = new StateGameEnd();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ControlGameEnd::ControlGameEnd()
+StateGameEnd::StateGameEnd() : StateBase(GameState::StateType::GameEnd)
 {
 	Label* backButtonLabel = Label::create("Leave", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 	Label* backButtonLabelHover = Label::create("Leave", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
@@ -32,35 +32,42 @@ ControlGameEnd::ControlGameEnd()
 	this->addChild(this->backButton);
 }
 
-ControlGameEnd::~ControlGameEnd()
+StateGameEnd::~StateGameEnd()
 {
 }
 
-void ControlGameEnd::initializeListeners()
+void StateGameEnd::initializeListeners()
 {
-	ComponentBase::initializeListeners();
+	StateBase::initializeListeners();
 }
 
-void ControlGameEnd::onBackClick(MenuSprite* menuSprite)
+void StateGameEnd::initializePositions()
 {
-	if (this->activeGameState->stateType == GameState::StateType::Win) {
-		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_Validation_03);
-		this->activeGameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, this->activeGameState->opponentData));
-	} else {
-		this->activeGameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(false, this->activeGameState->opponentData));
-	}
-	
-}
-
-void ControlGameEnd::initializePositions()
-{
-	ComponentBase::initializePositions();
+	StateBase::initializePositions();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	this->backButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f);
 }
 
-void ControlGameEnd::onStateChange(GameState* gameState)
+void StateGameEnd::onBackClick(MenuSprite* menuSprite)
 {
+	if (this->activeGameState->stateType == GameState::StateType::Win) {
+		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_Validation_03);
+		this->activeGameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, this->activeGameState->opponentData));
+	}
+	else {
+		this->activeGameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(false, this->activeGameState->opponentData));
+	}
+}
+
+void StateGameEnd::beforeStateEnter(GameState* gameState)
+{
+	StateBase::beforeStateEnter(gameState);
+}
+
+void StateGameEnd::onStateEnter(GameState* gameState)
+{
+	StateBase::onStateEnter(gameState);
+
 	this->activeGameState = gameState;
 
 	switch (gameState->stateType)
@@ -69,11 +76,16 @@ void ControlGameEnd::onStateChange(GameState* gameState)
 		case GameState::StateType::Win:
 			this->backButton->enableInteraction(0);
 			this->backButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
-			this->backButton->setClickCallback(CC_CALLBACK_1(ControlGameEnd::onBackClick, this));
+			this->backButton->setClickCallback(CC_CALLBACK_1(StateGameEnd::onBackClick, this));
 			break;
 		default:
 			this->backButton->disableInteraction(0);
 			this->backButton->setClickCallback(nullptr);
 			break;
 	}
+}
+
+void StateGameEnd::onStateExit(GameState* gameState)
+{
+	StateBase::onStateExit(gameState);
 }

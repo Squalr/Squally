@@ -9,21 +9,23 @@
 #include "Events/NavigationEvents.h"
 #include "Events/HexusEvents.h"
 #include "Resources.h"
-#include "Scenes/Hexus/Components/ComponentBase.h"
+#include "Scenes/Hexus/States/StateBase.h"
 
 using namespace cocos2d;
 
-class ControlGameEnd : public ComponentBase
+class StateGameEnd : public StateBase
 {
 public:
-	static ControlGameEnd * create();
+	static StateGameEnd * create();
 
 protected:
-	void onStateChange(GameState* gameState) override;
+	void beforeStateEnter(GameState* gameState) override;
+	void onStateEnter(GameState* gameState) override;
+	void onStateExit(GameState* gameState) override;
 
 private:
-	ControlGameEnd();
-	~ControlGameEnd();
+	StateGameEnd();
+	~StateGameEnd();
 
 	void initializePositions() override;
 	void initializeListeners() override;

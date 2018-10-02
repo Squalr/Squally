@@ -5,21 +5,23 @@
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Resources.h"
-#include "Scenes/Hexus/Components/ComponentBase.h"
+#include "Scenes/Hexus/States/StateBase.h"
 
 using namespace cocos2d;
 
-class ControlSacrificeStaged : public ComponentBase
+class StateSacrificeStaged : public StateBase
 {
 public:
-	static ControlSacrificeStaged * create();
+	static StateSacrificeStaged * create();
 
 protected:
-	void onStateChange(GameState* gameState) override;
+	void beforeStateEnter(GameState* gameState) override;
+	void onStateEnter(GameState* gameState) override;
+	void onStateExit(GameState* gameState) override;
 
 private:
-	ControlSacrificeStaged();
-	~ControlSacrificeStaged();
+	StateSacrificeStaged();
+	~StateSacrificeStaged();
 
 	void initializePositions() override;
 	void initializeCallbacks(GameState* gameState);

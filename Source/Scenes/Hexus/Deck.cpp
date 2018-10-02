@@ -46,12 +46,15 @@ Deck::~Deck()
 
 void Deck::copyTo(Deck* otherDeck)
 {
-	otherDeck->clear();
-	otherDeck->style = this->style;
-
-	for (auto it = this->deckCards->begin(); it != this->deckCards->end(); *it++)
+	if (otherDeck != nullptr)
 	{
-		otherDeck->insertCardRandom(Card::create(this->style, (*it)->cardData), false, 0.0f);
+		otherDeck->clear();
+		otherDeck->style = this->style;
+
+		for (auto it = this->deckCards->begin(); it != this->deckCards->end(); *it++)
+		{
+			otherDeck->insertCardRandom(Card::create(this->style, (*it)->cardData), false, 0.0f);
+		}
 	}
 }
 
@@ -62,9 +65,16 @@ int Deck::getCardCount()
 
 Card* Deck::drawCard()
 {
+	if (this->deckCards->size() <= 0)
+	{
+		return nullptr;
+	}
+
 	Card* card = this->deckCards->back();
 	this->deckCards->pop_back();
-	return card; // Note: We let the caller remove the child because it allows for control over positioning
+
+	// Note: We let the caller remove the child because it allows for control over positioning
+	return card;
 }
 
 bool Deck::hasCards()
@@ -143,7 +153,14 @@ void Deck::removeCardsWhere(std::function<bool(Card*)> predicate)
 
 Card* Deck::removeCard(Card* card)
 {
+	if (card == nullptr)
+	{
+		return nullptr;
+	}
+
 	this->deckCards->erase(std::remove(this->deckCards->begin(), this->deckCards->end(), card), this->deckCards->end());
 	this->setCardOrder();
-	return card; // Note: We let the caller remove the child because it allows for control over positioning
+
+	// Note: We let the caller remove the child because it allows for control over positioning
+	return card;
 }

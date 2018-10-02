@@ -1,15 +1,15 @@
-#include "ControlCombineStaged.h"
+#include "StateCombineStaged.h"
 
-ControlCombineStaged* ControlCombineStaged::create()
+StateCombineStaged* StateCombineStaged::create()
 {
-	ControlCombineStaged* instance = new ControlCombineStaged();
+	StateCombineStaged* instance = new StateCombineStaged();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ControlCombineStaged::ControlCombineStaged()
+StateCombineStaged::StateCombineStaged() : StateBase(GameState::StateType::ControlCombineStaged)
 {
 	this->combineStatus = Label::create("", Localization::getMainFont(), 28.0f);
 
@@ -28,26 +28,32 @@ ControlCombineStaged::ControlCombineStaged()
 	this->addChild(this->cancelButton);
 }
 
-ControlCombineStaged::~ControlCombineStaged()
+StateCombineStaged::~StateCombineStaged()
 {
 }
 
-void ControlCombineStaged::initializePositions()
+void StateCombineStaged::initializePositions()
 {
-	ComponentBase::initializePositions();
+	StateBase::initializePositions();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->cancelButton->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::statusLabelWidth / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
 	this->combineStatus->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter - Config::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
 }
 
-void ControlCombineStaged::onStateChange(GameState* gameState)
+void StateCombineStaged::beforeStateEnter(GameState* gameState)
 {
+	StateBase::beforeStateEnter(gameState);
+}
+
+void StateCombineStaged::onStateEnter(GameState* gameState)
+{
+	StateBase::onStateEnter(gameState);
+
 	this->activeGameState = gameState;
 
-	if (gameState->stateType == GameState::StateType::ControlCombineStaged) {
-		switch (gameState->turn)
-		{
+	switch (gameState->turn)
+	{
 		case GameState::Turn::Player:
 			this->initializeCallbacks(gameState);
 			this->updateCombineStatus();
@@ -55,26 +61,30 @@ void ControlCombineStaged::onStateChange(GameState* gameState)
 		case GameState::Turn::Enemy:
 			this->aiPerformAction(gameState);
 			break;
-		}
 	}
 }
 
-void ControlCombineStaged::initializeCallbacks(GameState* gameState)
+void StateCombineStaged::onStateExit(GameState* gameState)
 {
-	this->cancelButton->setClickCallback(CC_CALLBACK_1(ControlCombineStaged::onCombineCancel, this));
-
-	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(ControlCombineStaged::selectCard, this));
-	gameState->enemyHand->setMouseClickCallback(CC_CALLBACK_1(ControlCombineStaged::selectCard, this));
-
-	gameState->playerBinaryCards->enableRowCardSelection(CC_CALLBACK_1(ControlCombineStaged::stageCombineTarget, this));
-	gameState->playerDecimalCards->enableRowCardSelection(CC_CALLBACK_1(ControlCombineStaged::stageCombineTarget, this));
-	gameState->playerHexCards->enableRowCardSelection(CC_CALLBACK_1(ControlCombineStaged::stageCombineTarget, this));
-	gameState->enemyBinaryCards->enableRowCardSelection(CC_CALLBACK_1(ControlCombineStaged::stageCombineTarget, this));
-	gameState->enemyDecimalCards->enableRowCardSelection(CC_CALLBACK_1(ControlCombineStaged::stageCombineTarget, this));
-	gameState->enemyHexCards->enableRowCardSelection(CC_CALLBACK_1(ControlCombineStaged::stageCombineTarget, this));
+	StateBase::onStateExit(gameState);
 }
 
-void ControlCombineStaged::aiPerformAction(GameState* gameState)
+void StateCombineStaged::initializeCallbacks(GameState* gameState)
+{
+	this->cancelButton->setClickCallback(CC_CALLBACK_1(StateCombineStaged::onCombineCancel, this));
+
+	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(StateCombineStaged::selectCard, this));
+	gameState->enemyHand->setMouseClickCallback(CC_CALLBACK_1(StateCombineStaged::selectCard, this));
+
+	gameState->playerBinaryCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this));
+	gameState->playerDecimalCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this));
+	gameState->playerHexCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this));
+	gameState->enemyBinaryCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this));
+	gameState->enemyDecimalCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this));
+	gameState->enemyHexCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this));
+}
+
+void StateCombineStaged::aiPerformAction(GameState* gameState)
 {
 	this->activeGameState->enemyHand->removeCard(this->activeGameState->selectedCard);
 	this->activeGameState->enemyGraveyard->insertCardTop(this->activeGameState->selectedCard, true, Config::insertDelay);
@@ -92,7 +102,7 @@ void ControlCombineStaged::aiPerformAction(GameState* gameState)
 	GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 }
 
-void ControlCombineStaged::selectCard(Card* card)
+void StateCombineStaged::selectCard(Card* card)
 {
 	// Unstage/deselect card if clicking the active card
 	if (card == this->activeGameState->selectedCard)
@@ -118,7 +128,7 @@ void ControlCombineStaged::selectCard(Card* card)
 }
 
 
-void ControlCombineStaged::stageCombineTarget(Card* card)
+void StateCombineStaged::stageCombineTarget(Card* card)
 {
 	// If we click a card that is already selected our source, deselect our source
 	if (this->activeGameState->stagedCombineSourceCard == card) {
@@ -173,7 +183,7 @@ void ControlCombineStaged::stageCombineTarget(Card* card)
 	}
 }
 
-void ControlCombineStaged::onCombineCancel(MenuSprite* menuSprite)
+void StateCombineStaged::onCombineCancel(MenuSprite* menuSprite)
 {
 	// Deselect current card (by selecting the selected card)
 	this->selectCard(this->activeGameState->selectedCard);
@@ -181,7 +191,7 @@ void ControlCombineStaged::onCombineCancel(MenuSprite* menuSprite)
 	this->updateCombineStatus();
 }
 
-void ControlCombineStaged::updateCombineStatus()
+void StateCombineStaged::updateCombineStatus()
 {
 	if (this->activeGameState->turn != GameState::Turn::Player)
 	{

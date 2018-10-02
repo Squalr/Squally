@@ -1,0 +1,52 @@
+#include "StateDrawInitial.h"
+
+StateDrawInitial* StateDrawInitial::create()
+{
+	StateDrawInitial* instance = new StateDrawInitial();
+
+	instance->autorelease();
+
+	return instance;
+}
+
+StateDrawInitial::StateDrawInitial() : StateBase(GameState::StateType::DrawInitialCards)
+{
+}
+
+StateDrawInitial::~StateDrawInitial()
+{
+}
+
+void StateDrawInitial::beforeStateEnter(GameState* gameState)
+{
+	StateBase::beforeStateEnter(gameState);
+}
+
+void StateDrawInitial::onStateEnter(GameState* gameState)
+{
+	StateBase::onStateEnter(gameState);
+
+	// Draw starting cards
+	int drawnCount = 0;
+
+	while (gameState->playerDeck->hasCards() && drawnCount < Config::startingCardAmount)
+	{
+		gameState->playerHand->insertCard(gameState->playerDeck->drawCard(), 0.0f);
+		drawnCount++;
+	}
+
+	drawnCount = 0;
+
+	while (gameState->enemyDeck->hasCards() && drawnCount < Config::startingCardAmount)
+	{
+		gameState->enemyHand->insertCard(gameState->enemyDeck->drawCard(), 0.0f);
+		drawnCount++;
+	}
+
+	GameState::updateState(gameState, GameState::StateType::ControlReplaceCards);
+}
+
+void StateDrawInitial::onStateExit(GameState* gameState)
+{
+	StateBase::onStateExit(gameState);
+}

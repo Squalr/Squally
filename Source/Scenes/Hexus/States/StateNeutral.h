@@ -5,21 +5,23 @@
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Resources.h"
-#include "Scenes/Hexus/Components/ComponentBase.h"
+#include "Scenes/Hexus/States/StateBase.h"
 
 using namespace cocos2d;
 
-class ControlNeutral : public ComponentBase
+class StateNeutral : public StateBase
 {
 public:
-	static ControlNeutral * create();
+	static StateNeutral * create();
 
 protected:
-	void onStateChange(GameState* gameState) override;
+	void beforeStateEnter(GameState* gameState) override;
+	void onStateEnter(GameState* gameState) override;
+	void onStateExit(GameState* gameState) override;
 
 private:
-	ControlNeutral();
-	~ControlNeutral();
+	StateNeutral();
+	~StateNeutral();
 
 	void initializeCallbacks(GameState* gameState);
 	void aiDoSelection(GameState* gameState);
