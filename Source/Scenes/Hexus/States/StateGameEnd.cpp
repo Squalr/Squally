@@ -50,7 +50,7 @@ void StateGameEnd::initializePositions()
 
 void StateGameEnd::onBackClick(MenuSprite* menuSprite)
 {
-	if (this->activeGameState->stateType == GameState::StateType::Win) {
+	if (this->activeGameState->stateType == GameState::StateType::GameEnd) {
 		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_Validation_03);
 		this->activeGameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, this->activeGameState->opponentData));
 	}
@@ -72,8 +72,7 @@ void StateGameEnd::onStateEnter(GameState* gameState)
 
 	switch (gameState->stateType)
 	{
-		case GameState::StateType::Lose:
-		case GameState::StateType::Win:
+		case GameState::StateType::GameEnd:
 			this->backButton->enableInteraction(0);
 			this->backButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
 			this->backButton->setClickCallback(CC_CALLBACK_1(StateGameEnd::onBackClick, this));

@@ -28,7 +28,7 @@ void StateDraw::onStateEnter(GameState* gameState)
 
 	CallFunc* stateTransition = CallFunc::create([gameState]
 	{
-		GameState::updateState(gameState, GameState::StateType::ControlNeutral);
+		GameState::updateState(gameState, GameState::StateType::Neutral);
 	});
 
 	switch (gameState->turn)

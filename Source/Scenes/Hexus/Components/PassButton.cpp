@@ -72,15 +72,16 @@ void PassButton::onStateChange(GameState* gameState)
 		this->enemyPassIndicator->runAction(FadeTo::create(Config::passIndicatorFadeSpeed, 0));
 	}
 
-	switch (gameState->stateType) {
-	case GameState::StateType::ControlNeutral:
-		this->passButton->setClickCallback(CC_CALLBACK_1(PassButton::onPassClick, this, gameState));
-		this->passButton->enableInteraction();
-		break;
-	default:
-		this->passButton->disableInteraction();
-		this->passButton->setClickCallback(nullptr);
-		break;
+	switch (gameState->stateType)
+	{
+		case GameState::StateType::Neutral:
+			this->passButton->setClickCallback(CC_CALLBACK_1(PassButton::onPassClick, this, gameState));
+			this->passButton->enableInteraction();
+			break;
+		default:
+			this->passButton->disableInteraction();
+			this->passButton->setClickCallback(nullptr);
+			break;
 	}
 }
 
@@ -88,5 +89,5 @@ void PassButton::onPassClick(MenuSprite* menuSprite, GameState* gameState)
 {
 	gameState->showPassBanner = true;
 	gameState->playerPass = true;
-	GameState::updateState(gameState, GameState::StateType::EndTurn);
+	GameState::updateState(gameState, GameState::StateType::TurnEnd);
 }

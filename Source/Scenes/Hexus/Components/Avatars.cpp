@@ -77,13 +77,6 @@ void Avatars::initializeEnemyAvatar(HexusOpponentData* opponentData)
 
 void Avatars::onStateChange(GameState* gameState)
 {
-	switch (gameState->stateType)
-	{
-		case GameState::StateType::ControlNeutral:
-			break;
-		default:
-			break;
-	}
 }
 
 void Avatars::setAvatars(GameState* gameState)

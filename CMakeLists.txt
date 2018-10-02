@@ -342,9 +342,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/CardData/Special/CardShiftRight.cpp
 	Source/Scenes/Hexus/CardData/Special/CardSubtraction.cpp
 	Source/Scenes/Hexus/Components/Avatars.cpp
-	Source/Scenes/Hexus/Components/Banners.cpp
 	Source/Scenes/Hexus/Components/CardPreview.cpp
-	Source/Scenes/Hexus/Components/CoinFlip.cpp
 	Source/Scenes/Hexus/Components/ComponentBase.cpp
 	Source/Scenes/Hexus/Components/DeckCardCountDisplay.cpp
 	Source/Scenes/Hexus/Components/HandCardCountDisplay.cpp
@@ -352,6 +350,15 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/PassButton.cpp
 	Source/Scenes/Hexus/Components/RowTotals.cpp
 	Source/Scenes/Hexus/Components/ScoreTotal.cpp
+	Source/Scenes/Hexus/Components/Banners/BannerBase.cpp
+	Source/Scenes/Hexus/Components/Banners/CardReplaceBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/DefeatBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/OpponentFirstBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/OpponentTurnBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/PlayerFirstBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/PlayerTurnBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/RoundBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/VictoryBanner.cpp
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.cpp
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.cpp
 	Source/Scenes/Hexus/Opponents/HexusOpponentData.cpp
@@ -396,16 +403,25 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialD.cpp
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialE.cpp
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialF.cpp
+	Source/Scenes/Hexus/States/StateAIDecideCard.cpp
+	Source/Scenes/Hexus/States/StateAIDecidePass.cpp
 	Source/Scenes/Hexus/States/StateBase.cpp
+	Source/Scenes/Hexus/States/StateCoinFlip.cpp
 	Source/Scenes/Hexus/States/StateCombineStaged.cpp
 	Source/Scenes/Hexus/States/StateDraw.cpp
-	Source/Scenes/Hexus/States/StateEndTurn.cpp
+	Source/Scenes/Hexus/States/StateDrawInitial.cpp
 	Source/Scenes/Hexus/States/StateGameEnd.cpp
-	Source/Scenes/Hexus/States/StateInitialDraw.cpp
+	Source/Scenes/Hexus/States/StateGameStart.cpp
 	Source/Scenes/Hexus/States/StateNeutral.cpp
+	Source/Scenes/Hexus/States/StateOpponentTurnStart.cpp
+	Source/Scenes/Hexus/States/StatePass.cpp
+	Source/Scenes/Hexus/States/StatePlayCard.cpp
+	Source/Scenes/Hexus/States/StatePlayCombineCard.cpp
+	Source/Scenes/Hexus/States/StatePlayerTurnStart.cpp
 	Source/Scenes/Hexus/States/StateReplaceCards.cpp
-	Source/Scenes/Hexus/States/StateSacrificeStaged.cpp
+	Source/Scenes/Hexus/States/StateRoundEnd.cpp
 	Source/Scenes/Hexus/States/StateSelectionStaged.cpp
+	Source/Scenes/Hexus/States/StateTurnEnd.cpp
 	Source/Scenes/Maps/Isometric/IsometricMap.cpp
 	Source/Scenes/Maps/Platformer/PlatformerMap.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundBase.cpp
@@ -759,9 +775,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/CardData/Special/CardShiftRight.h
 	Source/Scenes/Hexus/CardData/Special/CardSubtraction.h
 	Source/Scenes/Hexus/Components/Avatars.h
-	Source/Scenes/Hexus/Components/Banners.h
 	Source/Scenes/Hexus/Components/CardPreview.h
-	Source/Scenes/Hexus/Components/CoinFlip.h
 	Source/Scenes/Hexus/Components/ComponentBase.h
 	Source/Scenes/Hexus/Components/Components.h
 	Source/Scenes/Hexus/Components/DeckCardCountDisplay.h
@@ -770,6 +784,15 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/PassButton.h
 	Source/Scenes/Hexus/Components/RowTotals.h
 	Source/Scenes/Hexus/Components/ScoreTotal.h
+	Source/Scenes/Hexus/Components/Banners/BannerBase.h
+	Source/Scenes/Hexus/Components/Banners/CardReplaceBanner.h
+	Source/Scenes/Hexus/Components/Banners/DefeatBanner.h
+	Source/Scenes/Hexus/Components/Banners/OpponentFirstBanner.h
+	Source/Scenes/Hexus/Components/Banners/OpponentTurnBanner.h
+	Source/Scenes/Hexus/Components/Banners/PlayerFirstBanner.h
+	Source/Scenes/Hexus/Components/Banners/PlayerTurnBanner.h
+	Source/Scenes/Hexus/Components/Banners/RoundBanner.h
+	Source/Scenes/Hexus/Components/Banners/VictoryBanner.h
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.h
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.h
 	Source/Scenes/Hexus/HelpMenus/HelpMenus.h
@@ -816,17 +839,26 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialD.h
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialE.h
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialF.h
+	Source/Scenes/Hexus/States/StateAIDecideCard.h
+	Source/Scenes/Hexus/States/StateAIDecidePass.h
 	Source/Scenes/Hexus/States/StateBase.h
+	Source/Scenes/Hexus/States/StateCoinFlip.h
 	Source/Scenes/Hexus/States/StateCombineStaged.h
 	Source/Scenes/Hexus/States/StateDraw.h
-	Source/Scenes/Hexus/States/StateEndTurn.h
+	Source/Scenes/Hexus/States/StateDrawInitial.h
 	Source/Scenes/Hexus/States/StateGameEnd.h
-	Source/Scenes/Hexus/States/StateInitialDraw.h
+	Source/Scenes/Hexus/States/StateGameStart.h
 	Source/Scenes/Hexus/States/StateNeutral.h
+	Source/Scenes/Hexus/States/StateOpponentTurnStart.h
+	Source/Scenes/Hexus/States/StatePass.h
+	Source/Scenes/Hexus/States/StatePlayCard.h
+	Source/Scenes/Hexus/States/StatePlayCombineCard.h
+	Source/Scenes/Hexus/States/StatePlayerTurnStart.h
 	Source/Scenes/Hexus/States/StateReplaceCards.h
+	Source/Scenes/Hexus/States/StateRoundEnd.h
 	Source/Scenes/Hexus/States/States.h
-	Source/Scenes/Hexus/States/StateSacrificeStaged.h
 	Source/Scenes/Hexus/States/StateSelectionStaged.h
+	Source/Scenes/Hexus/States/StateTurnEnd.h
 	Source/Scenes/Maps/IMap.h
 	Source/Scenes/Maps/Isometric/IsometricMap.h
 	Source/Scenes/Maps/Platformer/PlatformerMap.h

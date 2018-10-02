@@ -32,10 +32,13 @@ void CardPreview::initializePositions()
 
 void CardPreview::onStateChange(GameState* gameState)
 {
-	switch (gameState->stateType) {
-	case GameState::StateType::ControlNeutral:
-		this->initializeCallbacks(gameState);
-		break;
+	switch (gameState->stateType)
+	{
+		case GameState::StateType::Neutral:
+			this->initializeCallbacks(gameState);
+			break;
+		default:
+			break;
 	}
 }
 

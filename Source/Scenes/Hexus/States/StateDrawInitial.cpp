@@ -43,7 +43,7 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 		drawnCount++;
 	}
 
-	GameState::updateState(gameState, GameState::StateType::ControlReplaceCards);
+	GameState::updateState(gameState, GameState::StateType::CardReplace);
 }
 
 void StateDrawInitial::onStateReload(GameState* gameState)

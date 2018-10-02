@@ -36,14 +36,20 @@ private:
 
 	// Components
 	Avatars* avatars;
-	Banners* banners;
+	CardReplaceBanner* cardReplaceBanner;
+	OpponentFirstBanner* opponentFirstBanner;
+	OpponentTurnBanner* opponentTurnBanner;
+	PlayerFirstBanner* playerFirstBanner;
+	PlayerTurnBanner* playerTurnBanner;
+	RoundBanner* roundBanner;
+	VictoryBanner* victoryBanner;
+	DefeatBanner* defeatBanner;
 	CardPreview* cardPreview;
 	StateCoinFlip* stateCoinFlip;
 	StateDrawInitial* stateDrawInitial;
 	StateDraw* stateDraw;
 	StateNeutral* stateNeutral;
-	StateEndTurn* stateEndTurn;
-	StateSacrificeStaged* stateSacrificeStaged;
+	StateTurnEnd* stateTurnEnd;
 	StateSelectionStaged* stateSelectionStaged;
 	StateCombineStaged* stateCombineStaged;
 	StateReplaceCards* stateReplaceCards;

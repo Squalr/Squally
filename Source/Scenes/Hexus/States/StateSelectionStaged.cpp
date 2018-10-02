@@ -9,7 +9,7 @@ StateSelectionStaged* StateSelectionStaged::create()
 	return instance;
 }
 
-StateSelectionStaged::StateSelectionStaged() : StateBase(GameState::StateType::ControlSelectionStaged)
+StateSelectionStaged::StateSelectionStaged() : StateBase(GameState::StateType::SelectionStaged)
 {
 	this->selectionLabel = Label::create("", Localization::getMainFont(), 28.0f);
 
@@ -139,7 +139,7 @@ void StateSelectionStaged::selectCard(Card* card)
 	{
 		this->activeGameState->selectedCard->stopAllActions();
 		this->activeGameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedCard->position));
-		GameState::updateState(this->activeGameState, GameState::StateType::ControlNeutral);
+		GameState::updateState(this->activeGameState, GameState::StateType::Neutral);
 		this->activeGameState->selectedCard = nullptr;
 	}
 	else
@@ -153,7 +153,7 @@ void StateSelectionStaged::selectCard(Card* card)
 		this->activeGameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedCard->position + Vec2(0.0f, Config::cardSelectOffsetY)));
 
 		// Transition to the same state (re-initialize things)
-		GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
+		GameState::updateState(this->activeGameState, GameState::StateType::SelectionStaged);
 	}
 }
 
@@ -170,8 +170,6 @@ void StateSelectionStaged::stageSelectedSacrificeCard(Card* card)
 		default:
 			this->activeGameState->stagedSacrifice = card;
 			this->activeGameState->stagedSacrificeCardRow = dynamic_cast<CardRow*>(card->getParent());
-
-			GameState::updateState(this->activeGameState, GameState::StateType::ControlSacrificeStaged);
 			break;
 	}
 }
@@ -184,7 +182,7 @@ void StateSelectionStaged::stageSelectedCombineCard(Card* card)
 	}
 
 	this->activeGameState->stagedCombineSourceCard = card;
-	GameState::updateState(this->activeGameState, GameState::StateType::ControlCombineStaged);
+	GameState::updateState(this->activeGameState, GameState::StateType::CombineStaged);
 }
 
 void StateSelectionStaged::playSelectedCard(CardRow* cardRow)
@@ -201,7 +199,7 @@ void StateSelectionStaged::playSelectedCard(CardRow* cardRow)
 			this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
 			this->activeGameState->playerBinaryCards->insertCard(this->activeGameState->selectedCard, Config::insertDelay);
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
-			GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+			GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
 			break;
 		}
 		case CardData::CardType::Decimal:
@@ -209,7 +207,7 @@ void StateSelectionStaged::playSelectedCard(CardRow* cardRow)
 			this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
 			this->activeGameState->playerDecimalCards->insertCard(this->activeGameState->selectedCard, Config::insertDelay);
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
-			GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+			GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
 			break;
 		}
 		case CardData::CardType::Hexidecimal:
@@ -217,7 +215,7 @@ void StateSelectionStaged::playSelectedCard(CardRow* cardRow)
 			this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
 			this->activeGameState->playerHexCards->insertCard(this->activeGameState->selectedCard, Config::insertDelay);
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
-			GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+			GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
 			break;
 		}
 		case CardData::CardType::Special_SHL:
@@ -241,7 +239,7 @@ void StateSelectionStaged::playSelectedCard(CardRow* cardRow)
 			}
 
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
-			GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+			GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
 			break;
 		}
 		default:
@@ -307,7 +305,7 @@ void StateSelectionStaged::aiPerformAction(GameState* gameState)
 		}
 	}
 
-	GameState::updateState(gameState, GameState::StateType::EndTurn);
+	GameState::updateState(gameState, GameState::StateType::TurnEnd);
 }
 
 void StateSelectionStaged::onSelectionCancel(MenuSprite* menuSprite)
@@ -357,7 +355,7 @@ void StateSelectionStaged::onHelpClick(MenuSprite* menuSprite)
 
 void StateSelectionStaged::updateSelectionStatus()
 {
-	if (this->activeGameState->turn == GameState::Turn::Player && this->activeGameState->selectedCard != nullptr && this->activeGameState->stateType == GameState::StateType::ControlSelectionStaged)
+	if (this->activeGameState->turn == GameState::Turn::Player && this->activeGameState->selectedCard != nullptr && this->activeGameState->stateType == GameState::StateType::SelectionStaged)
 	{
 		switch (this->activeGameState->selectedCard->cardData->cardType)
 		{

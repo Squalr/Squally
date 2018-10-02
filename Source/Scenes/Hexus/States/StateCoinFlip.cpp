@@ -86,7 +86,7 @@ void StateCoinFlip::doCoinFlip(GameState* gameState)
 
 	CallFunc* onStateCoinFlipEnd = CallFunc::create([gameState]
 	{
-		GameState::updateState(gameState, GameState::StateType::FirstSideBanner);
+		GameState::updateState(gameState, GameState::StateType::RoundStart);
 	});
 
 	switch (gameState->turn)

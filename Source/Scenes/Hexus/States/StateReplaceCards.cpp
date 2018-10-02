@@ -9,7 +9,7 @@ StateReplaceCards* StateReplaceCards::create()
 	return instance;
 }
 
-StateReplaceCards::StateReplaceCards() : StateBase(GameState::StateType::ControlReplaceCards)
+StateReplaceCards::StateReplaceCards() : StateBase(GameState::StateType::CardReplace)
 {
 	this->replacedCards = new std::set<Card*>();
 	Label* doneButtonLabel = Label::create("Done", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
@@ -198,7 +198,7 @@ CallFunc* StateReplaceCards::getNextStateTransition()
 	{
 		stateTransition = CallFunc::create([gameState]
 		{
-			GameState::updateState(gameState, GameState::StateType::ControlReplaceCards);
+			GameState::updateState(gameState, GameState::StateType::CardReplace);
 		});
 	}
 

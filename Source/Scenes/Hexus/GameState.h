@@ -17,22 +17,25 @@ public:
 	enum StateType
 	{
 		EmptyState,
-		CoinFlip,
-		RoundStart,
-		FirstSideBanner,
-		TurnBanner,
+		GameStart,
 		DrawInitialCards,
 		Draw,
-		ControlReplaceCards,
-		ControlNeutral,
-		ControlSelectionStaged,
-		ControlSacrificeStaged,
-		ControlCombineStaged,
-		EndTurn,
+		CoinFlip,
+		RoundStart,
+		CardReplace,
+		PlayerTurnStart,
+		OpponentTurnStart,
+		Neutral,
+		SelectionStaged,
+		CombineStaged,
+		PlayCard,
+		PlayCombineCard,
+		Pass,
+		AIDecidePass,
+		AIDecideCard,
+		TurnEnd,
+		RoundEnd,
 		GameEnd,
-		Score,
-		Win,
-		Lose
 	};
 
 	enum Difficulty
