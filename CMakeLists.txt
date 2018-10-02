@@ -346,14 +346,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/CardPreview.cpp
 	Source/Scenes/Hexus/Components/CoinFlip.cpp
 	Source/Scenes/Hexus/Components/ComponentBase.cpp
-	Source/Scenes/Hexus/Components/ControlCombineStaged.cpp
-	Source/Scenes/Hexus/Components/ControlDraw.cpp
-	Source/Scenes/Hexus/Components/ControlEndTurn.cpp
-	Source/Scenes/Hexus/Components/ControlGameEnd.cpp
-	Source/Scenes/Hexus/Components/ControlNeutral.cpp
-	Source/Scenes/Hexus/Components/ControlReplaceCards.cpp
-	Source/Scenes/Hexus/Components/ControlSacrificeStaged.cpp
-	Source/Scenes/Hexus/Components/ControlSelectionStaged.cpp
 	Source/Scenes/Hexus/Components/DeckCardCountDisplay.cpp
 	Source/Scenes/Hexus/Components/HandCardCountDisplay.cpp
 	Source/Scenes/Hexus/Components/LossesDisplay.cpp
@@ -404,6 +396,16 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialD.cpp
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialE.cpp
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialF.cpp
+	Source/Scenes/Hexus/States/StateBase.cpp
+	Source/Scenes/Hexus/States/StateCombineStaged.cpp
+	Source/Scenes/Hexus/States/StateDraw.cpp
+	Source/Scenes/Hexus/States/StateEndTurn.cpp
+	Source/Scenes/Hexus/States/StateGameEnd.cpp
+	Source/Scenes/Hexus/States/StateInitialDraw.cpp
+	Source/Scenes/Hexus/States/StateNeutral.cpp
+	Source/Scenes/Hexus/States/StateReplaceCards.cpp
+	Source/Scenes/Hexus/States/StateSacrificeStaged.cpp
+	Source/Scenes/Hexus/States/StateSelectionStaged.cpp
 	Source/Scenes/Maps/Isometric/IsometricMap.cpp
 	Source/Scenes/Maps/Platformer/PlatformerMap.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundBase.cpp
@@ -762,14 +764,6 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/CoinFlip.h
 	Source/Scenes/Hexus/Components/ComponentBase.h
 	Source/Scenes/Hexus/Components/Components.h
-	Source/Scenes/Hexus/Components/ControlCombineStaged.h
-	Source/Scenes/Hexus/Components/ControlDraw.h
-	Source/Scenes/Hexus/Components/ControlEndTurn.h
-	Source/Scenes/Hexus/Components/ControlGameEnd.h
-	Source/Scenes/Hexus/Components/ControlNeutral.h
-	Source/Scenes/Hexus/Components/ControlReplaceCards.h
-	Source/Scenes/Hexus/Components/ControlSacrificeStaged.h
-	Source/Scenes/Hexus/Components/ControlSelectionStaged.h
 	Source/Scenes/Hexus/Components/DeckCardCountDisplay.h
 	Source/Scenes/Hexus/Components/HandCardCountDisplay.h
 	Source/Scenes/Hexus/Components/LossesDisplay.h
@@ -822,6 +816,17 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialD.h
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialE.h
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialF.h
+	Source/Scenes/Hexus/States/StateBase.h
+	Source/Scenes/Hexus/States/StateCombineStaged.h
+	Source/Scenes/Hexus/States/StateDraw.h
+	Source/Scenes/Hexus/States/StateEndTurn.h
+	Source/Scenes/Hexus/States/StateGameEnd.h
+	Source/Scenes/Hexus/States/StateInitialDraw.h
+	Source/Scenes/Hexus/States/StateNeutral.h
+	Source/Scenes/Hexus/States/StateReplaceCards.h
+	Source/Scenes/Hexus/States/States.h
+	Source/Scenes/Hexus/States/StateSacrificeStaged.h
+	Source/Scenes/Hexus/States/StateSelectionStaged.h
 	Source/Scenes/Maps/IMap.h
 	Source/Scenes/Maps/Isometric/IsometricMap.h
 	Source/Scenes/Maps/Platformer/PlatformerMap.h

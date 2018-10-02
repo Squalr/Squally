@@ -1,33 +1,43 @@
-#include "ControlEndTurn.h"
+#include "StateEndTurn.h"
 
-ControlEndTurn* ControlEndTurn::create()
+StateEndTurn* StateEndTurn::create()
 {
-	ControlEndTurn* instance = new ControlEndTurn();
+	StateEndTurn* instance = new StateEndTurn();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ControlEndTurn::ControlEndTurn()
+StateEndTurn::StateEndTurn() : StateBase(GameState::StateType::EndTurn)
 {
 }
 
-ControlEndTurn::~ControlEndTurn()
+StateEndTurn::~StateEndTurn()
 {
 }
 
-void ControlEndTurn::onStateChange(GameState* gameState)
+void StateEndTurn::beforeStateEnter(GameState* gameState)
 {
+	StateBase::beforeStateEnter(gameState);
+}
+
+void StateEndTurn::onStateEnter(GameState* gameState)
+{
+	StateBase::onStateEnter(gameState);
+
 	this->activeGameState = gameState;
 
-	if (gameState->stateType == GameState::StateType::EndTurn) {
-		gameState->clearCallbackStates();
-		this->endTurn(gameState);
-	}
+	gameState->clearCallbackStates();
+	this->endTurn(gameState);
 }
 
-void ControlEndTurn::endTurn(GameState* gameState)
+void StateEndTurn::onStateExit(GameState* gameState)
+{
+	StateBase::onStateExit(gameState);
+}
+
+void StateEndTurn::endTurn(GameState* gameState)
 {
 	float endTurnDelay = Config::endTurnDelay;
 

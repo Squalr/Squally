@@ -1,6 +1,7 @@
 #include "GameState.h"
 
-const std::string GameState::onStateUpdateEvent = "on_state_update_event";
+const std::string GameState::beforeStateUpdateEvent = "EVENT_HEXUS_BEFORE_UPDATE_STATE";
+const std::string GameState::onStateUpdateEvent = "EVENT_HEXUS_ON_UPDATE_STATE";
 
 GameState* GameState::create()
 {
@@ -74,6 +75,7 @@ void GameState::updateState(GameState* gameState, StateType newState)
 	gameState->previousStateType = gameState->stateType;
 	gameState->stateType = newState;
 	gameState->clearCallbackStates();
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::beforeStateUpdateEvent, gameState);
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::onStateUpdateEvent, gameState);
 }
 

@@ -29,6 +29,7 @@ public:
 		ControlSacrificeStaged,
 		ControlCombineStaged,
 		EndTurn,
+		GameEnd,
 		Score,
 		Win,
 		Lose
@@ -108,6 +109,7 @@ public:
 	std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback;
 	HexusOpponentData* opponentData;
 
+	static const std::string beforeStateUpdateEvent;
 	static const std::string onStateUpdateEvent;
 private:
 	GameState();

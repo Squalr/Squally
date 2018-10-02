@@ -1,40 +1,51 @@
-#include "ControlNeutral.h"
+#include "StateNeutral.h"
 
-ControlNeutral* ControlNeutral::create()
+StateNeutral* StateNeutral::create()
 {
-	ControlNeutral* instance = new ControlNeutral();
+	StateNeutral* instance = new StateNeutral();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ControlNeutral::ControlNeutral()
+StateNeutral::StateNeutral() : StateBase(GameState::StateType::ControlNeutral)
 {
 }
 
-ControlNeutral::~ControlNeutral()
+StateNeutral::~StateNeutral()
 {
 }
 
-void ControlNeutral::onStateChange(GameState* gameState)
+void StateNeutral::beforeStateEnter(GameState* gameState)
 {
+	StateBase::beforeStateEnter(gameState);
+}
+
+void StateNeutral::onStateEnter(GameState* gameState)
+{
+	StateBase::onStateEnter(gameState);
+
 	this->activeGameState = gameState;
 
-	if (gameState->stateType == GameState::StateType::ControlNeutral) {
-		switch (gameState->turn)
-		{
+	switch (gameState->turn)
+	{
 		case GameState::Turn::Player:
-			if (gameState->playerHand->rowCards->size() == 0) {
+		{
+			if (gameState->playerHand->rowCards->size() == 0)
+			{
 				gameState->showPassBanner = true;
 				gameState->playerPass = true;
 				GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
 				return;
 			}
+
 			this->initializeCallbacks(gameState);
 			this->activeGameState->playerHand->enableRowCardInteraction();
 			break;
+		}
 		case GameState::Turn::Enemy:
+		{
 			this->aiDoSelection(gameState);
 			this->activeGameState->playerHand->disableRowCardInteraction();
 			break;
@@ -42,13 +53,18 @@ void ControlNeutral::onStateChange(GameState* gameState)
 	}
 }
 
-void ControlNeutral::initializeCallbacks(GameState* gameState)
+void StateNeutral::onStateExit(GameState* gameState)
 {
-	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(ControlNeutral::selectCard, this));
-	gameState->enemyHand->setMouseClickCallback(CC_CALLBACK_1(ControlNeutral::selectCard, this));
+	StateBase::onStateExit(gameState);
 }
 
-void ControlNeutral::selectCard(Card* card)
+void StateNeutral::initializeCallbacks(GameState* gameState)
+{
+	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(StateNeutral::selectCard, this));
+	gameState->enemyHand->setMouseClickCallback(CC_CALLBACK_1(StateNeutral::selectCard, this));
+}
+
+void StateNeutral::selectCard(Card* card)
 {
 	this->activeGameState->selectedCard = card;
 	this->activeGameState->selectedCard->stopAllActions();
@@ -57,7 +73,7 @@ void ControlNeutral::selectCard(Card* card)
 	GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
 }
 
-void ControlNeutral::aiDoSelection(GameState* gameState)
+void StateNeutral::aiDoSelection(GameState* gameState)
 {
 	this->activeGameState->selectedCard = nullptr;
 
@@ -112,7 +128,8 @@ void ControlNeutral::aiDoSelection(GameState* gameState)
 		{
 			case CardData::CardType::Binary:
 			case CardData::CardType::Decimal:
-			case CardData::CardType::Hexidecimal: {
+			case CardData::CardType::Hexidecimal:
+			{
 				this->activeGameState->selectedCard = card;
 				GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
 				return;
