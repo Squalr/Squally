@@ -59,9 +59,9 @@ void StateGameEnd::onBackClick(MenuSprite* menuSprite)
 	}
 }
 
-void StateGameEnd::beforeStateEnter(GameState* gameState)
+void StateGameEnd::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::beforeStateEnter(gameState);
+	StateBase::onBeforeStateEnter(gameState);
 }
 
 void StateGameEnd::onStateEnter(GameState* gameState)
@@ -83,6 +83,11 @@ void StateGameEnd::onStateEnter(GameState* gameState)
 			this->backButton->setClickCallback(nullptr);
 			break;
 	}
+}
+
+void StateGameEnd::onStateReload(GameState* gameState)
+{
+	StateBase::onStateReload(gameState);
 }
 
 void StateGameEnd::onStateExit(GameState* gameState)

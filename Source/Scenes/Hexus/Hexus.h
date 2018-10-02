@@ -38,7 +38,7 @@ private:
 	Avatars* avatars;
 	Banners* banners;
 	CardPreview* cardPreview;
-	CoinFlip* coinFlip;
+	StateCoinFlip* stateCoinFlip;
 	StateDrawInitial* stateDrawInitial;
 	StateDraw* stateDraw;
 	StateNeutral* stateNeutral;

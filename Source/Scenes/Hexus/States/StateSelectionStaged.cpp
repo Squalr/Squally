@@ -49,9 +49,9 @@ void StateSelectionStaged::initializePositions()
 	this->selectionLabel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter - Config::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
 }
 
-void StateSelectionStaged::beforeStateEnter(GameState* gameState)
+void StateSelectionStaged::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::beforeStateEnter(gameState);
+	StateBase::onBeforeStateEnter(gameState);
 }
 
 void StateSelectionStaged::onStateEnter(GameState* gameState)
@@ -71,6 +71,11 @@ void StateSelectionStaged::onStateEnter(GameState* gameState)
 	}
 
 	this->updateSelectionStatus();
+}
+
+void StateSelectionStaged::onStateReload(GameState* gameState)
+{
+	StateBase::onStateReload(gameState);
 }
 
 void StateSelectionStaged::onStateExit(GameState* gameState)

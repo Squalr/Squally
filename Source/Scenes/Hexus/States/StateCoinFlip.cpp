@@ -1,15 +1,15 @@
-#include "CoinFlip.h"
+#include "StateCoinFlip.h"
 
-CoinFlip* CoinFlip::create()
+StateCoinFlip* StateCoinFlip::create()
 {
-	CoinFlip* instance = new CoinFlip();
+	StateCoinFlip* instance = new StateCoinFlip();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CoinFlip::CoinFlip()
+StateCoinFlip::StateCoinFlip()
 {
 	this->coin = Sprite::create(Resources::Minigames_CoinFlipLion);
 	this->skeletonInAnimation = Animation::create();
@@ -48,11 +48,11 @@ CoinFlip::CoinFlip()
 	this->addChild(this->coin);
 }
 
-CoinFlip::~CoinFlip()
+StateCoinFlip::~StateCoinFlip()
 {
 }
 
-void CoinFlip::initializePositions()
+void StateCoinFlip::initializePositions()
 {
 	ComponentBase::initializePositions();
 
@@ -61,15 +61,16 @@ void CoinFlip::initializePositions()
 	this->coin->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f);
 }
 
-void CoinFlip::onStateChange(GameState* gameState)
+void StateCoinFlip::onStateChange(GameState* gameState)
 {
-	if (gameState->stateType == GameState::StateType::CoinFlip) {
+	if (gameState->stateType == GameState::StateType::CoinFlip)
+	{
 		gameState->playerHand->disableRowCardInteraction();
 		this->doCoinFlip(gameState);
 	}
 }
 
-void CoinFlip::doCoinFlip(GameState* gameState)
+void StateCoinFlip::doCoinFlip(GameState* gameState)
 {
 	if (RandomHelper::random_real(0.0f, 1.0f) > 0.5f)
 	{
@@ -83,53 +84,53 @@ void CoinFlip::doCoinFlip(GameState* gameState)
 	this->coin->setScale(Config::coinFlipStartScale);
 	this->coin->runAction(FadeTo::create(0.25f, 255));
 
-	CallFunc* onCoinFlipEnd = CallFunc::create([gameState]
+	CallFunc* onStateCoinFlipEnd = CallFunc::create([gameState]
 	{
 		GameState::updateState(gameState, GameState::StateType::FirstSideBanner);
 	});
 
 	switch (gameState->turn)
 	{
-	case GameState::Turn::Player:
-	{
-		Sequence* loopSequence = Sequence::create(
-			Animate::create(this->lionInAnimation->clone()),
-			Animate::create(this->lionOutAnimation->clone()),
-			Animate::create(this->neutralAnimation->clone()),
-			Animate::create(this->skeletonInAnimation->clone()),
-			Animate::create(this->skeletonOutAnimation->clone()),
-			Animate::create(this->neutralAnimation->clone()),
-			nullptr);
+		case GameState::Turn::Player:
+		{
+			Sequence* loopSequence = Sequence::create(
+				Animate::create(this->lionInAnimation->clone()),
+				Animate::create(this->lionOutAnimation->clone()),
+				Animate::create(this->neutralAnimation->clone()),
+				Animate::create(this->skeletonInAnimation->clone()),
+				Animate::create(this->skeletonOutAnimation->clone()),
+				Animate::create(this->neutralAnimation->clone()),
+				nullptr);
 
-		this->coin->runAction(Sequence::create(
-			DelayTime::create(Config::coinFlipStartDelay),
-			Repeat::create(loopSequence, Config::coinFlipCount),
-			Animate::create(this->lionInAnimation->clone()),
-			DelayTime::create(Config::coinFlipBannerDisplayDelay),
-			onCoinFlipEnd,
-			nullptr));
-		break;
-	}
-	case GameState::Turn::Enemy:
-	{
-		Sequence* loopSequence = Sequence::create(
-			Animate::create(this->skeletonInAnimation->clone()),
-			Animate::create(this->skeletonOutAnimation->clone()),
-			Animate::create(this->neutralAnimation->clone()),
-			Animate::create(this->lionInAnimation->clone()),
-			Animate::create(this->lionOutAnimation->clone()),
-			Animate::create(this->neutralAnimation->clone()),
-			nullptr);
+			this->coin->runAction(Sequence::create(
+				DelayTime::create(Config::coinFlipStartDelay),
+				Repeat::create(loopSequence, Config::coinFlipCount),
+				Animate::create(this->lionInAnimation->clone()),
+				DelayTime::create(Config::coinFlipBannerDisplayDelay),
+				onStateCoinFlipEnd,
+				nullptr));
+			break;
+		}
+		case GameState::Turn::Enemy:
+		{
+			Sequence* loopSequence = Sequence::create(
+				Animate::create(this->skeletonInAnimation->clone()),
+				Animate::create(this->skeletonOutAnimation->clone()),
+				Animate::create(this->neutralAnimation->clone()),
+				Animate::create(this->lionInAnimation->clone()),
+				Animate::create(this->lionOutAnimation->clone()),
+				Animate::create(this->neutralAnimation->clone()),
+				nullptr);
 
-		this->coin->runAction(Sequence::create(
-			DelayTime::create(Config::coinFlipStartDelay),
-			Repeat::create(loopSequence, Config::coinFlipCount),
-			Animate::create(this->skeletonInAnimation->clone()),
-			DelayTime::create(Config::coinFlipBannerDisplayDelay),
-			onCoinFlipEnd,
-			nullptr));
-		break;
-	}
+			this->coin->runAction(Sequence::create(
+				DelayTime::create(Config::coinFlipStartDelay),
+				Repeat::create(loopSequence, Config::coinFlipCount),
+				Animate::create(this->skeletonInAnimation->clone()),
+				DelayTime::create(Config::coinFlipBannerDisplayDelay),
+				onStateCoinFlipEnd,
+				nullptr));
+			break;
+		}
 	}
 
 	this->coin->runAction(Sequence::create(

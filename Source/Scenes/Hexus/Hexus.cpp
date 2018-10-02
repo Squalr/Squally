@@ -25,7 +25,7 @@ Hexus::Hexus()
 	this->stateSelectionStaged = StateSelectionStaged::create();
 	this->stateReplaceCards = StateReplaceCards::create();
 	this->stateGameEnd = StateGameEnd::create();
-	this->coinFlip = CoinFlip::create();
+	this->stateCoinFlip = StateCoinFlip::create();
 	this->deckCardCountDisplay = DeckCardCountDisplay::create();
 	this->handCardCountDisplay = HandCardCountDisplay::create();
 	this->lossesDisplay = LossesDisplay::create();
@@ -52,7 +52,7 @@ Hexus::Hexus()
 	this->addChild(this->scoreTotal);
 	this->addChild(this->stateReplaceCards);
 	this->addChild(this->stateGameEnd);
-	this->addChild(this->coinFlip);
+	this->addChild(this->stateCoinFlip);
 	this->addChild(this->banners);
 	this->addChild(Mouse::create());
 }

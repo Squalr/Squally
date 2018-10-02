@@ -17,9 +17,9 @@ StateEndTurn::~StateEndTurn()
 {
 }
 
-void StateEndTurn::beforeStateEnter(GameState* gameState)
+void StateEndTurn::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::beforeStateEnter(gameState);
+	StateBase::onBeforeStateEnter(gameState);
 }
 
 void StateEndTurn::onStateEnter(GameState* gameState)
@@ -30,6 +30,11 @@ void StateEndTurn::onStateEnter(GameState* gameState)
 
 	gameState->clearCallbackStates();
 	this->endTurn(gameState);
+}
+
+void StateEndTurn::onStateReload(GameState* gameState)
+{
+	StateBase::onStateReload(gameState);
 }
 
 void StateEndTurn::onStateExit(GameState* gameState)

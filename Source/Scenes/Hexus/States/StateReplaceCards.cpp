@@ -59,18 +59,44 @@ void StateReplaceCards::initializePositions()
 	this->doneButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 200.0f);
 }
 
-void StateReplaceCards::beforeStateEnter(GameState* gameState)
+void StateReplaceCards::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::beforeStateEnter(gameState);
+	StateBase::onBeforeStateEnter(gameState);
 
-	this->doneButton->enableInteraction(0);
-	this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
-	this->initializeCardReplace(gameState);
+	if (gameState->round == 0)
+	{
+		gameState->cardReplaceCount = std::min(3, gameState->playerDeck->getCardCount());
+	}
+	else
+	{
+		gameState->cardReplaceCount = std::min(1, gameState->playerDeck->getCardCount());
+	}
 }
 
 void StateReplaceCards::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
+
+	this->doneButton->enableInteraction(0);
+	this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
+
+	this->replacedCards->clear();
+	gameState->playerHand->enableRowCardInteraction();
+
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	GameUtils::changeParent(gameState->playerHand, this, true);
+	gameState->playerHand->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	gameState->playerHand->setCardScale(0.6f, 0.0f);
+	gameState->playerHand->setRowWidth(Config::previewWidth, 0.25f);
+	gameState->playerHand->enableRowCardInteraction();
+
+	this->activeGameState = gameState;
+	this->initializeCallbacks(gameState);
+}
+
+void StateReplaceCards::onStateReload(GameState* gameState)
+{
+	StateBase::onStateReload(gameState);
 
 	this->activeGameState = gameState;
 	this->initializeCallbacks(gameState);
@@ -99,28 +125,6 @@ void StateReplaceCards::onStateExit(GameState* gameState)
 	// Hide Done Button
 	this->doneButton->disableInteraction(255);
 	this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 0));
-}
-
-void StateReplaceCards::initializeCardReplace(GameState* gameState)
-{
-	if (gameState->round == 0)
-	{
-		gameState->cardReplaceCount = std::min(3, gameState->playerDeck->getCardCount());
-	}
-	else
-	{
-		gameState->cardReplaceCount = std::min(1, gameState->playerDeck->getCardCount());
-	}
-	
-	this->replacedCards->clear();
-	gameState->playerHand->enableRowCardInteraction();
-	
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	GameUtils::changeParent(gameState->playerHand, this, true);
-	gameState->playerHand->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	gameState->playerHand->setCardScale(0.6f, 0.0f);
-	gameState->playerHand->setRowWidth(Config::previewWidth, 0.25f);
-	gameState->playerHand->enableRowCardInteraction();
 }
 
 void StateReplaceCards::initializeCallbacks(GameState* gameState)

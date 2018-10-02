@@ -51,6 +51,7 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;COCOS2DXWIN32_EXPORTS;_WIN32;CC_USE_NAVMESH=1;CC_USE_JPEG=1;CC_USE_TIFF=1;CC_USE_PNG=1;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
+      <Optimization>Disabled</Optimization>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;COCOS2DXWIN32_EXPORTS;_WIN32;CC_USE_NAVMESH=1;CC_USE_JPEG=1;CC_USE_TIFF=1;CC_USE_PNG=1;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -217,6 +218,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Source\Scenes\Hexus\States\StateCoinFlip.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Bootstrapper.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\GameWindow.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Resources.cpp" />
@@ -498,7 +500,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Avatars.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\CardPreview.cpp" />
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\CoinFlip.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ComponentBase.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\DeckCardCountDisplay.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\HandCardCountDisplay.cpp" />
@@ -622,6 +623,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Sound\MusicDeserializer.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\main.cpp" />
     <ResourceCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\game.rc" />
+    <ClInclude Include="..\Source\Scenes\Hexus\States\StateCoinFlip.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\.gitattributes" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Backgrounds\.gitattributes" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\Backgrounds\Platformer\Background1.png" />
@@ -7609,7 +7611,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Avatars.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\CardPreview.h" />
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\CoinFlip.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ComponentBase.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Components.h" />
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\DeckCardCountDisplay.h" />

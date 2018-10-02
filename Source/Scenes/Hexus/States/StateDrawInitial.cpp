@@ -17,9 +17,9 @@ StateDrawInitial::~StateDrawInitial()
 {
 }
 
-void StateDrawInitial::beforeStateEnter(GameState* gameState)
+void StateDrawInitial::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::beforeStateEnter(gameState);
+	StateBase::onBeforeStateEnter(gameState);
 }
 
 void StateDrawInitial::onStateEnter(GameState* gameState)
@@ -44,6 +44,11 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 	}
 
 	GameState::updateState(gameState, GameState::StateType::ControlReplaceCards);
+}
+
+void StateDrawInitial::onStateReload(GameState* gameState)
+{
+	StateBase::onStateReload(gameState);
 }
 
 void StateDrawInitial::onStateExit(GameState* gameState)

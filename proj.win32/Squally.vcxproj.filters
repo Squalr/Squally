@@ -844,9 +844,6 @@
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\CardPreview.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
     </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\CoinFlip.cpp">
-      <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
-    </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ComponentBase.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
     </ClCompile>
@@ -1211,6 +1208,9 @@
       <Filter>Source Files\proj.win32</Filter>
     </ClCompile>
     <ClCompile Include="..\Source\Scenes\Hexus\States\StateDrawInitial.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\States\StateCoinFlip.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClCompile>
   </ItemGroup>
@@ -22176,9 +22176,6 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\CardPreview.h">
       <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\CoinFlip.h">
-      <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
-    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ComponentBase.h">
       <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
     </ClInclude>
@@ -22564,6 +22561,9 @@
       <Filter>Source Files\proj.win32</Filter>
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Hexus\States\StateDrawInitial.h">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\States\StateCoinFlip.h">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClInclude>
   </ItemGroup>

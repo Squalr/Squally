@@ -14,12 +14,13 @@ protected:
 	~StateBase();
 
 	void initializeListeners() override;
-	virtual void beforeStateEnter(GameState* gameState);
+	virtual void onBeforeStateEnter(GameState* gameState);
 	virtual void onStateEnter(GameState* gameState);
+	virtual void onStateReload(GameState* gameState);
 	virtual void onStateExit(GameState* gameState);
 
 private:
-	void beforeStateChangeEvent(EventCustom* eventCustom);
+	void onBeforeStateChangeEvent(EventCustom* eventCustom);
 	void onStateChangeEvent(EventCustom* eventCustom);
 
 	GameState::StateType stateType;

@@ -16,8 +16,9 @@ public:
 	static StateReplaceCards * create();
 
 protected:
-	void beforeStateEnter(GameState* gameState) override;
+	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
+	void onStateReload(GameState* gameState) override;
 	void onStateExit(GameState* gameState) override;
 
 private:
@@ -27,7 +28,6 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onEndReplaceCards(MenuSprite* menuSprite);
-	void initializeCardReplace(GameState* gameState);
 	void initializeCallbacks(GameState* gameState);
 	void replaceCard(Card* card);
 	void removeCardsOfTypeFromDeck(Card* cardToRemove, Deck* deck);

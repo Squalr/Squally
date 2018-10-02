@@ -8,17 +8,17 @@
 
 using namespace cocos2d;
 
-class CoinFlip : public ComponentBase
+class StateCoinFlip : public ComponentBase
 {
 public:
-	static CoinFlip * create();
+	static StateCoinFlip * create();
 
 protected:
 	void onStateChange(GameState* gameState) override;
 
 private:
-	CoinFlip();
-	~CoinFlip();
+	StateCoinFlip();
+	~StateCoinFlip();
 
 	void initializePositions() override;
 	void doCoinFlip(GameState* gameState);

@@ -1,7 +1,6 @@
 #include "Scenes/Hexus/Components/Avatars.h"
 #include "Scenes/Hexus/Components/Banners.h"
 #include "Scenes/Hexus/Components/CardPreview.h"
-#include "Scenes/Hexus/Components/CoinFlip.h"
 #include "Scenes/Hexus/Components/DeckCardCountDisplay.h"
 #include "Scenes/Hexus/Components/HandCardCountDisplay.h"
 #include "Scenes/Hexus/Components/LossesDisplay.h"
