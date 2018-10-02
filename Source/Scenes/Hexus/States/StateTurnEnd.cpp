@@ -1,28 +1,28 @@
-#include "StateEndTurn.h"
+#include "StateTurnEnd.h"
 
-StateEndTurn* StateEndTurn::create()
+StateTurnEnd* StateTurnEnd::create()
 {
-	StateEndTurn* instance = new StateEndTurn();
+	StateTurnEnd* instance = new StateTurnEnd();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-StateEndTurn::StateEndTurn() : StateBase(GameState::StateType::EndTurn)
+StateTurnEnd::StateTurnEnd() : StateBase(GameState::StateType::TurnEnd)
 {
 }
 
-StateEndTurn::~StateEndTurn()
+StateTurnEnd::~StateTurnEnd()
 {
 }
 
-void StateEndTurn::onBeforeStateEnter(GameState* gameState)
+void StateTurnEnd::onBeforeStateEnter(GameState* gameState)
 {
 	StateBase::onBeforeStateEnter(gameState);
 }
 
-void StateEndTurn::onStateEnter(GameState* gameState)
+void StateTurnEnd::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
@@ -32,24 +32,24 @@ void StateEndTurn::onStateEnter(GameState* gameState)
 	this->endTurn(gameState);
 }
 
-void StateEndTurn::onStateReload(GameState* gameState)
+void StateTurnEnd::onStateReload(GameState* gameState)
 {
 	StateBase::onStateReload(gameState);
 }
 
-void StateEndTurn::onStateExit(GameState* gameState)
+void StateTurnEnd::onStateExit(GameState* gameState)
 {
 	StateBase::onStateExit(gameState);
 }
 
-void StateEndTurn::endTurn(GameState* gameState)
+void StateTurnEnd::endTurn(GameState* gameState)
 {
 	float endTurnDelay = Config::endTurnDelay;
 
 	// If both players pass than we end the round
 	if (gameState->playerPass && gameState->enemyPass) {
 		CallFunc* changeState = CallFunc::create([gameState] {
-			GameState::updateState(gameState, GameState::StateType::Score);
+			GameState::updateState(gameState, GameState::StateType::GameEnd);
 		});
 
 		this->runAction(Sequence::create(
@@ -66,7 +66,7 @@ void StateEndTurn::endTurn(GameState* gameState)
 		endTurnDelay = Config::enemyEndTurnDelay;
 		gameState->turn = GameState::Turn::Enemy;
 		CallFunc* changeState = CallFunc::create([gameState] {
-			GameState::updateState(gameState, GameState::StateType::TurnBanner);
+			GameState::updateState(gameState, GameState::StateType::TurnEnd);
 		});
 
 		this->runAction(Sequence::create(
@@ -82,7 +82,7 @@ void StateEndTurn::endTurn(GameState* gameState)
 	if (gameState->enemyPass) {
 		gameState->turn = GameState::Turn::Player;
 		CallFunc* changeState = CallFunc::create([gameState] {
-			GameState::updateState(gameState, GameState::StateType::TurnBanner);
+			GameState::updateState(gameState, GameState::StateType::TurnEnd);
 		});
 
 		this->runAction(Sequence::create(
@@ -107,7 +107,7 @@ void StateEndTurn::endTurn(GameState* gameState)
 	}
 
 	CallFunc* changeState = CallFunc::create([gameState] {
-		GameState::updateState(gameState, GameState::StateType::TurnBanner);
+		GameState::updateState(gameState, GameState::StateType::TurnEnd);
 	});
 
 	this->runAction(Sequence::create(

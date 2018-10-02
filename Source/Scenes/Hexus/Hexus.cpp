@@ -14,13 +14,19 @@ Hexus::Hexus()
 	this->gameBackground = Sprite::create(Resources::Minigames_Hexus_Gameboard);
 	this->gameState = GameState::create();
 	this->avatars = Avatars::create();
-	this->banners = Banners::create();
+	this->cardReplaceBanner = CardReplaceBanner::create();
+	this->opponentFirstBanner = OpponentFirstBanner::create();
+	this->opponentTurnBanner = OpponentTurnBanner::create();
+	this->playerFirstBanner = PlayerFirstBanner::create();
+	this->playerTurnBanner = PlayerTurnBanner::create();
+	this->roundBanner = RoundBanner::create();
+	this->victoryBanner = VictoryBanner::create();
+	this->defeatBanner = DefeatBanner::create();
 	this->cardPreview = CardPreview::create();
 	this->stateDrawInitial = StateDrawInitial::create();
 	this->stateDraw = StateDraw::create();
 	this->stateNeutral = StateNeutral::create();
-	this->stateEndTurn = StateEndTurn::create();
-	this->stateSacrificeStaged = StateSacrificeStaged::create();
+	this->stateTurnEnd = StateTurnEnd::create();
 	this->stateCombineStaged = StateCombineStaged::create();
 	this->stateSelectionStaged = StateSelectionStaged::create();
 	this->stateReplaceCards = StateReplaceCards::create();
@@ -40,9 +46,8 @@ Hexus::Hexus()
 	this->addChild(this->stateDraw);
 	this->addChild(this->stateNeutral);
 	this->addChild(this->stateSelectionStaged);
-	this->addChild(this->stateSacrificeStaged);
 	this->addChild(this->stateCombineStaged);
-	this->addChild(this->stateEndTurn);
+	this->addChild(this->stateTurnEnd);
 	this->addChild(this->cardPreview);
 	this->addChild(this->lossesDisplay);
 	this->addChild(this->passButton);
@@ -53,7 +58,14 @@ Hexus::Hexus()
 	this->addChild(this->stateReplaceCards);
 	this->addChild(this->stateGameEnd);
 	this->addChild(this->stateCoinFlip);
-	this->addChild(this->banners);
+	this->addChild(this->cardReplaceBanner);
+	this->addChild(this->opponentFirstBanner);
+	this->addChild(this->opponentTurnBanner);
+	this->addChild(this->playerFirstBanner);
+	this->addChild(this->playerTurnBanner);
+	this->addChild(this->roundBanner);
+	this->addChild(this->victoryBanner);
+	this->addChild(this->defeatBanner);
 	this->addChild(Mouse::create());
 }
 

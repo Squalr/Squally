@@ -838,9 +838,6 @@
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Avatars.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
     </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners.cpp">
-      <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
-    </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\CardPreview.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
     </ClCompile>
@@ -864,6 +861,33 @@
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ScoreTotal.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\BannerBase.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\CardReplaceBanner.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\DefeatBanner.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\OpponentFirstBanner.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\OpponentTurnBanner.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\PlayerFirstBanner.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\PlayerTurnBanner.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\RoundBanner.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\VictoryBanner.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\HelpMenus\BinaryHelpMenu.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\HelpMenus</Filter>
@@ -997,7 +1021,16 @@
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Tutorial\HexusOpponentTutorialF.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\Opponents\Tutorial</Filter>
     </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateAIDecideCard.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateAIDecidePass.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateBase.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateCoinFlip.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateCombineStaged.cpp">
@@ -1006,22 +1039,43 @@
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateDraw.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateEndTurn.cpp">
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateDrawInitial.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateGameEnd.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateGameStart.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateNeutral.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateOpponentTurnStart.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StatePass.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StatePlayCard.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StatePlayCombineCard.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StatePlayerTurnStart.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateReplaceCards.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateSacrificeStaged.cpp">
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateRoundEnd.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateSelectionStaged.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateTurnEnd.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Maps\Isometric\IsometricMap.cpp">
@@ -1206,12 +1260,6 @@
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\main.cpp">
       <Filter>Source Files\proj.win32</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Hexus\States\StateDrawInitial.cpp">
-      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Source\Scenes\Hexus\States\StateCoinFlip.cpp">
-      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -22170,9 +22218,6 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Avatars.h">
       <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners.h">
-      <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
-    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\CardPreview.h">
       <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
     </ClInclude>
@@ -22199,6 +22244,33 @@
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\ScoreTotal.h">
       <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\BannerBase.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\CardReplaceBanner.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\DefeatBanner.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\OpponentFirstBanner.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\OpponentTurnBanner.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\PlayerFirstBanner.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\PlayerTurnBanner.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\RoundBanner.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Components\Banners\VictoryBanner.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Components\Banners</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\HelpMenus\BinaryHelpMenu.h">
       <Filter>Source Files\Source\Scenes\Hexus\HelpMenus</Filter>
@@ -22338,7 +22410,16 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\Opponents\Tutorial\HexusOpponentTutorialF.h">
       <Filter>Source Files\Source\Scenes\Hexus\Opponents\Tutorial</Filter>
     </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateAIDecideCard.h">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateAIDecidePass.h">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateBase.h">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateCoinFlip.h">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateCombineStaged.h">
@@ -22347,25 +22428,46 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateDraw.h">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateEndTurn.h">
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateDrawInitial.h">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateGameEnd.h">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateGameStart.h">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateNeutral.h">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateOpponentTurnStart.h">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StatePass.h">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StatePlayCard.h">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StatePlayCombineCard.h">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StatePlayerTurnStart.h">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateReplaceCards.h">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClInclude>
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateRoundEnd.h">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\States.h">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateSacrificeStaged.h">
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateSelectionStaged.h">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateSelectionStaged.h">
+    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateTurnEnd.h">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Maps\IMap.h">
@@ -22559,12 +22661,6 @@
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\resource.h">
       <Filter>Source Files\proj.win32</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Hexus\States\StateDrawInitial.h">
-      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Source\Scenes\Hexus\States\StateCoinFlip.h">
-      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -23892,6 +23988,9 @@
     </Filter>
     <Filter Include="Source Files\Source\Scenes\Hexus\Components">
       <UniqueIdentifier>{E4C2385B-7A26-365B-9FE6-67F677B08F3E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source\Scenes\Hexus\Components\Banners">
+      <UniqueIdentifier>{0EE310EB-9A3B-368E-A014-47A8C1B41D4C}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Source\Scenes\Hexus\HelpMenus">
       <UniqueIdentifier>{A0846E7B-B16A-3FC2-B2F0-26BA35DB3EF2}</UniqueIdentifier>

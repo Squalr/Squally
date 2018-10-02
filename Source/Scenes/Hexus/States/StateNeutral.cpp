@@ -9,7 +9,7 @@ StateNeutral* StateNeutral::create()
 	return instance;
 }
 
-StateNeutral::StateNeutral() : StateBase(GameState::StateType::ControlNeutral)
+StateNeutral::StateNeutral() : StateBase(GameState::StateType::Neutral)
 {
 }
 
@@ -36,7 +36,7 @@ void StateNeutral::onStateEnter(GameState* gameState)
 			{
 				gameState->showPassBanner = true;
 				gameState->playerPass = true;
-				GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+				GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
 				return;
 			}
 
@@ -75,7 +75,7 @@ void StateNeutral::selectCard(Card* card)
 	this->activeGameState->selectedCard->stopAllActions();
 	this->activeGameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedCard->position + Vec2(0.0f, Config::cardSelectOffsetY)));
 
-	GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
+	GameState::updateState(this->activeGameState, GameState::StateType::SelectionStaged);
 }
 
 void StateNeutral::aiDoSelection(GameState* gameState)
@@ -83,7 +83,7 @@ void StateNeutral::aiDoSelection(GameState* gameState)
 	this->activeGameState->selectedCard = nullptr;
 
 	if (gameState->enemyPass) {
-		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+		GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
 		return;
 	}
 
@@ -91,7 +91,7 @@ void StateNeutral::aiDoSelection(GameState* gameState)
 		gameState->showPassBanner = true;
 		gameState->enemyPass = true;
 		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
-		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+		GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
 		return;
 	}
 
@@ -100,7 +100,7 @@ void StateNeutral::aiDoSelection(GameState* gameState)
 		gameState->showPassBanner = true;
 		gameState->enemyPass = true;
 		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
-		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+		GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
 		return;
 	}
 
@@ -110,7 +110,7 @@ void StateNeutral::aiDoSelection(GameState* gameState)
 		gameState->showPassBanner = true;
 		gameState->enemyPass = true;
 		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
-		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+		GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
 		return;
 	} 
 	
@@ -119,7 +119,7 @@ void StateNeutral::aiDoSelection(GameState* gameState)
 		gameState->showPassBanner = true;
 		gameState->enemyPass = true;
 		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
-		GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+		GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
 		return;
 	} 
 
@@ -136,7 +136,7 @@ void StateNeutral::aiDoSelection(GameState* gameState)
 			case CardData::CardType::Hexidecimal:
 			{
 				this->activeGameState->selectedCard = card;
-				GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
+				GameState::updateState(this->activeGameState, GameState::StateType::SelectionStaged);
 				return;
 			}
 			case CardData::CardType::Special_SHL:
@@ -167,7 +167,7 @@ void StateNeutral::aiDoSelection(GameState* gameState)
 				{
 					this->activeGameState->selectedCard = card;
 					this->activeGameState->stagedCombineCardRow = bestRow;
-					GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
+					GameState::updateState(this->activeGameState, GameState::StateType::SelectionStaged);
 					return;
 				}
 				
@@ -252,7 +252,7 @@ void StateNeutral::aiDoSelection(GameState* gameState)
 					this->activeGameState->stagedCombineSourceCard = bestSourceCard;
 					this->activeGameState->stagedCombineTargetCard = bestTargetCard;
 					this->activeGameState->selectedCard = card;
-					GameState::updateState(this->activeGameState, GameState::StateType::ControlCombineStaged);
+					GameState::updateState(this->activeGameState, GameState::StateType::CombineStaged);
 					return;
 				}
 				break;
@@ -264,5 +264,5 @@ void StateNeutral::aiDoSelection(GameState* gameState)
 
 	// Unable to find a playable move, so pass
 	this->activeGameState->enemyPass = true;
-	GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+	GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
 }

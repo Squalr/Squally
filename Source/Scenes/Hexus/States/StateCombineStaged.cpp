@@ -9,7 +9,7 @@ StateCombineStaged* StateCombineStaged::create()
 	return instance;
 }
 
-StateCombineStaged::StateCombineStaged() : StateBase(GameState::StateType::ControlCombineStaged)
+StateCombineStaged::StateCombineStaged() : StateBase(GameState::StateType::CombineStaged)
 {
 	this->combineStatus = Label::create("", Localization::getMainFont(), 28.0f);
 
@@ -104,7 +104,7 @@ void StateCombineStaged::aiPerformAction(GameState* gameState)
 	destinationCard->addOperation(operation);
 	SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
 
-	GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+	GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
 }
 
 void StateCombineStaged::selectCard(Card* card)
@@ -116,7 +116,7 @@ void StateCombineStaged::selectCard(Card* card)
 		this->activeGameState->selectedCard->stopAllActions();
 		this->activeGameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedCard->position));
 		this->activeGameState->selectedCard = nullptr;
-		GameState::updateState(this->activeGameState, GameState::StateType::ControlNeutral);
+		GameState::updateState(this->activeGameState, GameState::StateType::Neutral);
 		return;
 	}
 
@@ -129,7 +129,7 @@ void StateCombineStaged::selectCard(Card* card)
 	this->activeGameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedCard->position + Vec2(0.0f, Config::cardSelectOffsetY)));
 
 	// Transition to the selection state (re-initialize things)
-	GameState::updateState(this->activeGameState, GameState::StateType::ControlSelectionStaged);
+	GameState::updateState(this->activeGameState, GameState::StateType::SelectionStaged);
 }
 
 
@@ -182,7 +182,7 @@ void StateCombineStaged::stageCombineTarget(Card* card)
 			destinationCard->addOperation(operation);
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
 
-			GameState::updateState(this->activeGameState, GameState::StateType::EndTurn);
+			GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
 		}
 		break;
 	}
