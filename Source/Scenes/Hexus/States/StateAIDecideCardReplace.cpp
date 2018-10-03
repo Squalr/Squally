@@ -35,7 +35,6 @@ void StateAIDecideCardReplace::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	// Not the best place for this, but give a bit of a delay for the round banner to finish before going to card replace
 	this->runAction(Sequence::create(
 		DelayTime::create(Config::bannerDisplayDuration),
 		CallFunc::create([=]()

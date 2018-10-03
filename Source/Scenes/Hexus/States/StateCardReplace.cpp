@@ -206,6 +206,7 @@ CallFunc* StateCardReplace::getNextStateTransition()
 	}
 	else
 	{
+		// Reload state
 		stateTransition = CallFunc::create([gameState]
 		{
 			GameState::updateState(gameState, GameState::StateType::CardReplace);

@@ -28,11 +28,25 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 
 	if (gameState->playerLosses >= 2 || gameState->enemyLosses >= 2)
 	{
-		GameState::updateState(gameState, GameState::StateType::GameEnd);
+		this->runAction(Sequence::create(
+			DelayTime::create(0.5f),
+			CallFunc::create([=]()
+			{
+				GameState::updateState(gameState, GameState::StateType::GameEnd);
+			}),
+			nullptr
+		));
 	}
 	else
 	{
-		GameState::updateState(gameState, GameState::StateType::RoundStart);
+		this->runAction(Sequence::create(
+			DelayTime::create(0.5f),
+			CallFunc::create([=]()
+			{
+				GameState::updateState(gameState, GameState::StateType::RoundStart);
+			}),
+			nullptr
+		));
 	}
 }
 

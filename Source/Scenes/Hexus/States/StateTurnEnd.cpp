@@ -26,24 +26,8 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	this->activeGameState = gameState;
-
 	gameState->clearCallbackStates();
-	this->endTurn(gameState);
-}
 
-void StateTurnEnd::onStateReload(GameState* gameState)
-{
-	StateBase::onStateReload(gameState);
-}
-
-void StateTurnEnd::onStateExit(GameState* gameState)
-{
-	StateBase::onStateExit(gameState);
-}
-
-void StateTurnEnd::endTurn(GameState* gameState)
-{
 	float endTurnDelay = Config::endTurnDelay;
 
 	// If both players pass than we end the round
@@ -140,4 +124,14 @@ void StateTurnEnd::endTurn(GameState* gameState)
 		default:
 			break;
 	}
+}
+
+void StateTurnEnd::onStateReload(GameState* gameState)
+{
+	StateBase::onStateReload(gameState);
+}
+
+void StateTurnEnd::onStateExit(GameState* gameState)
+{
+	StateBase::onStateExit(gameState);
 }

@@ -9,7 +9,7 @@ StatePass* StatePass::create()
 	return instance;
 }
 
-StatePass::StatePass() : StateBase(GameState::StateType::TurnEnd)
+StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 {
 }
 
@@ -25,6 +25,15 @@ void StatePass::onBeforeStateEnter(GameState* gameState)
 void StatePass::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
+
+	this->runAction(Sequence::create(
+		DelayTime::create(0.5f),
+		CallFunc::create([=]()
+		{
+			GameState::updateState(gameState, GameState::StateType::TurnEnd);
+		}),
+		nullptr
+	));
 }
 
 void StatePass::onStateReload(GameState* gameState)
