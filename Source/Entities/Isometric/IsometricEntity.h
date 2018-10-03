@@ -2,6 +2,7 @@
 #include <math.h>
 
 #include "cocos2d.h"
+#include "cocos-ext.h"
 
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Utils/GameUtils.h"
