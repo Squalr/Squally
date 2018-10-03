@@ -8,10 +8,10 @@
 
 using namespace cocos2d;
 
-class StateEndTurn : public StateBase
+class StateRoundStart : public StateBase
 {
 public:
-	static StateEndTurn * create();
+	static StateRoundStart * create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;
@@ -20,10 +20,6 @@ protected:
 	void onStateExit(GameState* gameState) override;
 
 private:
-	StateEndTurn();
-	~StateEndTurn();
-
-	void endTurn(GameState* gameState);
-
-	GameState* activeGameState;
+	StateRoundStart();
+	~StateRoundStart();
 };

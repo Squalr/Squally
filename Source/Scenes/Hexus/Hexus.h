@@ -36,22 +36,43 @@ private:
 
 	// Components
 	Avatars* avatars;
-	Banners* banners;
 	CardPreview* cardPreview;
+
+	StateAIDecideCard* stateAIDecideCard;
+	StateAIDecideCardReplace* stateAIDecideCardReplace;
+	StateAIDecidePass* stateAIDecidePass;
+	StateCardReplace* stateCardReplace;
 	StateCoinFlip* stateCoinFlip;
-	StateDrawInitial* stateDrawInitial;
-	StateDraw* stateDraw;
-	StateNeutral* stateNeutral;
-	StateEndTurn* stateEndTurn;
-	StateSacrificeStaged* stateSacrificeStaged;
-	StateSelectionStaged* stateSelectionStaged;
 	StateCombineStaged* stateCombineStaged;
-	StateReplaceCards* stateReplaceCards;
+	StateDraw* stateDraw;
+	StateDrawInitial* stateDrawInitial;
 	StateGameEnd* stateGameEnd;
+	StateGameStart* stateGameStart;
+	StateNeutral* stateNeutral;
+	StateOpponentTurnStart* stateOpponentTurnStart;
+	StatePass* statePass;
+	StatePlayCard* statePlayCard;
+	StatePlayCombineCard* statePlayCombineCard;
+	StatePlayerTurnStart* statePlayerTurnStart;
+	StateRoundEnd* stateRoundEnd;
+	StateRoundStart* stateRoundStart;
+	StateSelectionStaged* stateSelectionStaged;
+	StateTurnEnd* stateTurnEnd;
+
+	CardReplaceBanner* cardReplaceBanner;
+	OpponentFirstBanner* opponentFirstBanner;
+	OpponentTurnBanner* opponentTurnBanner;
+	PlayerFirstBanner* playerFirstBanner;
+	PlayerTurnBanner* playerTurnBanner;
+	RoundBanner* roundBanner;
+	VictoryBanner* victoryBanner;
+	DefeatBanner* defeatBanner;
+
 	DeckCardCountDisplay* deckCardCountDisplay;
 	HandCardCountDisplay* handCardCountDisplay;
 	LossesDisplay* lossesDisplay;
 	PassButton* passButton;
 	RowTotals* rowTotals;
 	ScoreTotal* scoreTotal;
+	DebugDisplay* debugDisplay;
 };

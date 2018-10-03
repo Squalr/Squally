@@ -10,10 +10,10 @@
 
 using namespace cocos2d;
 
-class StateReplaceCards : public StateBase
+class StateAIDecideCardReplace : public StateBase
 {
 public:
-	static StateReplaceCards * create();
+	static StateAIDecideCardReplace * create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;
@@ -22,18 +22,6 @@ protected:
 	void onStateExit(GameState* gameState) override;
 
 private:
-	StateReplaceCards();
-	~StateReplaceCards();
-
-	void initializePositions() override;
-	void initializeListeners() override;
-	void onEndReplaceCards(MenuSprite* menuSprite);
-	void initializeCallbacks(GameState* gameState);
-	void replaceCard(Card* card);
-	void removeCardsOfTypeFromDeck(Card* cardToRemove, Deck* deck);
-	CallFunc* getNextStateTransition();
-
-	std::set<Card*>* replacedCards;
-	GameState* activeGameState;
-	TextMenuSprite* doneButton;
+	StateAIDecideCardReplace();
+	~StateAIDecideCardReplace();
 };

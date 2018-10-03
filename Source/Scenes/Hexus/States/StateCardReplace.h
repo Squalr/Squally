@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/Localization/Localization.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Resources.h"
@@ -9,10 +10,10 @@
 
 using namespace cocos2d;
 
-class StateSacrificeStaged : public StateBase
+class StateCardReplace : public StateBase
 {
 public:
-	static StateSacrificeStaged * create();
+	static StateCardReplace * create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;
@@ -21,18 +22,17 @@ protected:
 	void onStateExit(GameState* gameState) override;
 
 private:
-	StateSacrificeStaged();
-	~StateSacrificeStaged();
+	StateCardReplace();
+	~StateCardReplace();
 
 	void initializePositions() override;
+	void initializeListeners() override;
+	void onEndReplaceCards(MenuSprite* menuSprite);
 	void initializeCallbacks(GameState* gameState);
-	void aiPerformAction(GameState* gameState);
-	void selectCard(Card* card);
-	void stageSacrificeTarget(Card* card);
-	void updateSacrificeStatus();
-	void onSacrificeCancel(MenuSprite* menuSprite);
+	void replaceCard(Card* card);
+	void removeCardsOfTypeFromDeck(Card* cardToRemove, Deck* deck);
 
+	std::set<Card*>* replacedCards;
 	GameState* activeGameState;
-	Label* sacrificeStatus;
-	MenuSprite* cancelButton;
+	TextMenuSprite* doneButton;
 };
