@@ -54,36 +54,6 @@ void ScoreTotal::initializePositions()
 void ScoreTotal::onStateChange(GameState* gameState)
 {
 	this->updateTotals(gameState);
-	switch(gameState->stateType) {
-		case GameState::GameEnd: 
-		{
-			gameState->endRound();
-			if (gameState->playerLosses >= 2) 
-			{
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_card_downgrade);
-				////GameState::updateState(gameState, GameState::StateType::Lose);
-			}
-			else if (gameState->enemyLosses >= 2) 
-			{
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_card_upgrade);
-				////GameState::updateState(gameState, GameState::StateType::Win);
-			}
-			else 
-			{
-				// Player cannot enter the last round with zero cards
-				if (gameState->playerHand->getCardCount() == 0) {
-					gameState->playerLosses++;
-					SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_card_downgrade);
-					////GameState::updateState(gameState, GameState::StateType::Lose);
-				} else {
-					GameState::updateState(gameState, GameState::StateType::RoundStart);
-				}
-			}
-		}
-		default:
-			break;
-	}
-	
 }
 
 void ScoreTotal::updateTotals(GameState* gameState)
