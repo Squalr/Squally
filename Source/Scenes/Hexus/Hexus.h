@@ -74,4 +74,5 @@ private:
 	PassButton* passButton;
 	RowTotals* rowTotals;
 	ScoreTotal* scoreTotal;
+	DebugDisplay* debugDisplay;
 };
