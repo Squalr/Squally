@@ -186,7 +186,6 @@ std::vector<Card*> GameState::getPlayerCards()
 	return cards;
 }
 
-
 std::vector<CardRow*> GameState::getAllRows() 
 {
 	std::vector<CardRow*> enemyRows = this->getEnemyRows();

@@ -48,7 +48,18 @@ void StateCardReplace::initializeListeners()
 void StateCardReplace::onEndReplaceCards(MenuSprite* menuSprite)
 {
 	this->activeGameState->cardReplaceCount = 0;
-	GameState::updateState(this->activeGameState, GameState::StateType::CoinFlip);
+
+	switch (this->activeGameState->turn)
+	{
+		case GameState::Turn::Player:
+			GameState::updateState(this->activeGameState, GameState::StateType::PlayerTurnStart);
+			break;
+		case GameState::Turn::Enemy:
+			GameState::updateState(this->activeGameState, GameState::StateType::OpponentTurnStart);
+			break;
+		default:
+			break;
+	}
 }
 
 void StateCardReplace::initializePositions()
@@ -151,7 +162,35 @@ void StateCardReplace::replaceCard(Card* card)
 		replacement->reveal();
 
 		// Update the state and either re-enter this state or exit to coinflip
-		CallFunc* stateTransition = this->getNextStateTransition();
+
+		CallFunc* stateTransition = nullptr;
+
+		if (this->activeGameState->cardReplaceCount <= 0)
+		{
+			stateTransition = CallFunc::create([=]
+			{
+				switch (this->activeGameState->turn)
+				{
+					case GameState::Turn::Player:
+						GameState::updateState(this->activeGameState, GameState::StateType::PlayerTurnStart);
+						break;
+					case GameState::Turn::Enemy:
+						GameState::updateState(this->activeGameState, GameState::StateType::OpponentTurnStart);
+						break;
+					default:
+						break;
+				}
+			});
+		}
+		else
+		{
+			// Reload state
+			stateTransition = CallFunc::create([=]
+			{
+				GameState::updateState(this->activeGameState, GameState::StateType::CardReplace);
+			});
+		}
+
 		CardRow * hand = this->activeGameState->playerHand;
 		this->runAction(Sequence::create(
 			CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, replacement, Config::insertDelay)),
@@ -180,38 +219,4 @@ void StateCardReplace::removeCardsOfTypeFromDeck(Card* cardToRemove, Deck* deck)
 
 		return false;
 	});
-}
-
-CallFunc* StateCardReplace::getNextStateTransition() 
-{
-	CallFunc* stateTransition;
-	GameState* gameState = this->activeGameState;
-	
-	if (this->activeGameState->cardReplaceCount <= 0)
-	{
-		stateTransition = CallFunc::create([gameState]
-		{
-			switch (gameState->turn)
-			{
-				case GameState::Turn::Player:
-					GameState::updateState(gameState, GameState::StateType::PlayerTurnStart);
-					break;
-				case GameState::Turn::Enemy:
-					GameState::updateState(gameState, GameState::StateType::OpponentTurnStart);
-					break;
-				default:
-					break;
-			}
-		});
-	}
-	else
-	{
-		// Reload state
-		stateTransition = CallFunc::create([gameState]
-		{
-			GameState::updateState(gameState, GameState::StateType::CardReplace);
-		});
-	}
-
-	return stateTransition;
 }
