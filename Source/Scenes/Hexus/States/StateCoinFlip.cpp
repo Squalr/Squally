@@ -84,9 +84,19 @@ void StateCoinFlip::onStateEnter(GameState* gameState)
 	this->coin->setScale(Config::coinFlipStartScale);
 	this->coin->runAction(FadeTo::create(0.25f, 255));
 
-	CallFunc* onStateCoinFlipEnd = CallFunc::create([gameState]
+	CallFunc* onStateCoinFlipEnd = CallFunc::create([=]
 	{
-		GameState::updateState(gameState, GameState::StateType::AIDecideCardReplace);
+		switch (gameState->turn)
+		{
+			case GameState::Turn::Player:
+				GameState::updateState(gameState, GameState::StateType::PlayerTurnStart);
+				break;
+			case GameState::Turn::Enemy:
+				GameState::updateState(gameState, GameState::StateType::OpponentTurnStart);
+				break;
+			default:
+				break;
+		}
 	});
 
 	switch (gameState->turn)

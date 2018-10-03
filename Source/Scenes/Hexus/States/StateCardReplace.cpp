@@ -49,17 +49,7 @@ void StateCardReplace::onEndReplaceCards(MenuSprite* menuSprite)
 {
 	this->activeGameState->cardReplaceCount = 0;
 
-	switch (this->activeGameState->turn)
-	{
-		case GameState::Turn::Player:
-			GameState::updateState(this->activeGameState, GameState::StateType::PlayerTurnStart);
-			break;
-		case GameState::Turn::Enemy:
-			GameState::updateState(this->activeGameState, GameState::StateType::OpponentTurnStart);
-			break;
-		default:
-			break;
-	}
+	GameState::updateState(this->activeGameState, GameState::StateType::CoinFlip);
 }
 
 void StateCardReplace::initializePositions()
@@ -169,17 +159,7 @@ void StateCardReplace::replaceCard(Card* card)
 		{
 			stateTransition = CallFunc::create([=]
 			{
-				switch (this->activeGameState->turn)
-				{
-					case GameState::Turn::Player:
-						GameState::updateState(this->activeGameState, GameState::StateType::PlayerTurnStart);
-						break;
-					case GameState::Turn::Enemy:
-						GameState::updateState(this->activeGameState, GameState::StateType::OpponentTurnStart);
-						break;
-					default:
-						break;
-				}
+				GameState::updateState(this->activeGameState, GameState::StateType::CoinFlip);
 			});
 		}
 		else
