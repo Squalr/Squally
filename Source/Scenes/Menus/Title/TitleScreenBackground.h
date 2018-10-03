@@ -1,5 +1,6 @@
 #pragma once
 #include "cocos2d.h"
+#include "cocos-ext.h"
 
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/FloatingSprite.h"
