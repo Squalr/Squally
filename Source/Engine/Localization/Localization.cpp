@@ -61,63 +61,66 @@ std::string Localization::resolveString(std::string resourceKey)
 
 std::string Localization::getLanguageCode()
 {
+	// TEMP!
+	return "en";
+	
 	switch (Application::getInstance()->getCurrentLanguage())
 	{
-	case LanguageType::ARABIC:
-		return "ar";
-	case LanguageType::BULGARIAN:
-		return "bg";
-	case LanguageType::CHINESE_SIMPLIFIED:
-		return "zh-CN";
-	case LanguageType::CHINESE_TRADITIONAL:
-		return "zh-TW";
-	case LanguageType::CZECH:
-		return "cs";
-	case LanguageType::DANISH:
-		return "da";
-	case LanguageType::DUTCH:
-		return "nl";
-	case LanguageType::FINNISH:
-		return "fi";
-	case LanguageType::FRENCH:
-		return "fr";
-	case LanguageType::GERMAN:
-		return "de";
-	case LanguageType::GREEK:
-		return "el";
-	case LanguageType::HUNGARIAN:
-		return "hu";
-	case LanguageType::ITALIAN:
-		return "it";
-	case LanguageType::JAPANESE:
-		return "ja";
-	case LanguageType::KOREAN:
-		return "ko";
-	case LanguageType::NORWEGIAN:
-		return "no";
-	case LanguageType::POLISH:
-		return "pl";
-	case LanguageType::PORTUGUESE:
-		return "pt";
-	case LanguageType::PORTUGUESE_BRAZIL:
-		return "pt-BR";
-	case LanguageType::ROMANIAN:
-		return "ro";
-	case LanguageType::RUSSIAN:
-		return "ru";
-	case LanguageType::SPANISH:
-		return "es";
-	case LanguageType::SWEDISH:
-		return "sv";
-	case LanguageType::THAI:
-		return "th";
-	case LanguageType::TURKISH:
-		return "tr";
-	case LanguageType::UKRAINIAN:
-		return "uk";
-	case LanguageType::ENGLISH:
-	default:
-		return "en";
+		case LanguageType::ARABIC:
+			return "ar";
+		case LanguageType::BULGARIAN:
+			return "bg";
+		case LanguageType::CHINESE_SIMPLIFIED:
+			return "zh-CN";
+		case LanguageType::CHINESE_TRADITIONAL:
+			return "zh-TW";
+		case LanguageType::CZECH:
+			return "cs";
+		case LanguageType::DANISH:
+			return "da";
+		case LanguageType::DUTCH:
+			return "nl";
+		case LanguageType::FINNISH:
+			return "fi";
+		case LanguageType::FRENCH:
+			return "fr";
+		case LanguageType::GERMAN:
+			return "de";
+		case LanguageType::GREEK:
+			return "el";
+		case LanguageType::HUNGARIAN:
+			return "hu";
+		case LanguageType::ITALIAN:
+			return "it";
+		case LanguageType::JAPANESE:
+			return "ja";
+		case LanguageType::KOREAN:
+			return "ko";
+		case LanguageType::NORWEGIAN:
+			return "no";
+		case LanguageType::POLISH:
+			return "pl";
+		case LanguageType::PORTUGUESE:
+			return "pt";
+		case LanguageType::PORTUGUESE_BRAZIL:
+			return "pt-BR";
+		case LanguageType::ROMANIAN:
+			return "ro";
+		case LanguageType::RUSSIAN:
+			return "ru";
+		case LanguageType::SPANISH:
+			return "es";
+		case LanguageType::SWEDISH:
+			return "sv";
+		case LanguageType::THAI:
+			return "th";
+		case LanguageType::TURKISH:
+			return "tr";
+		case LanguageType::UKRAINIAN:
+			return "uk";
+		case LanguageType::ENGLISH:
+		default:
+			return "en";
 	}
 }
 
@@ -125,37 +128,37 @@ std::string Localization::getPixelFont()
 {
 	switch (Application::getInstance()->getCurrentLanguage())
 	{
-	default:
-	case LanguageType::ENGLISH:
-	case LanguageType::CHINESE_SIMPLIFIED:
-	case LanguageType::CHINESE_TRADITIONAL:
-	case LanguageType::JAPANESE:
-	case LanguageType::KOREAN:
-		return Resources::Fonts_Pixel_Zpix;
-	case LanguageType::ARABIC:
-	case LanguageType::BULGARIAN:
-	case LanguageType::CZECH:
-	case LanguageType::DANISH:
-	case LanguageType::DUTCH:
-	case LanguageType::FINNISH:
-	case LanguageType::FRENCH:
-	case LanguageType::GERMAN:
-	case LanguageType::GREEK:
-	case LanguageType::HUNGARIAN:
-	case LanguageType::ITALIAN:
-	case LanguageType::NORWEGIAN:
-	case LanguageType::POLISH:
-	case LanguageType::PORTUGUESE:
-	case LanguageType::PORTUGUESE_BRAZIL:
-	case LanguageType::ROMANIAN:
-	case LanguageType::RUSSIAN:
-	case LanguageType::SPANISH:
-	case LanguageType::SWEDISH:
-	case LanguageType::THAI:
-	case LanguageType::TURKISH:
-	case LanguageType::UKRAINIAN:
-		// TODO
-		return Resources::Fonts_Pixel_Zpix;
+		default:
+		case LanguageType::ENGLISH:
+		case LanguageType::CHINESE_SIMPLIFIED:
+		case LanguageType::CHINESE_TRADITIONAL:
+		case LanguageType::JAPANESE:
+		case LanguageType::KOREAN:
+			return Resources::Fonts_Pixel_Zpix;
+		case LanguageType::ARABIC:
+		case LanguageType::BULGARIAN:
+		case LanguageType::CZECH:
+		case LanguageType::DANISH:
+		case LanguageType::DUTCH:
+		case LanguageType::FINNISH:
+		case LanguageType::FRENCH:
+		case LanguageType::GERMAN:
+		case LanguageType::GREEK:
+		case LanguageType::HUNGARIAN:
+		case LanguageType::ITALIAN:
+		case LanguageType::NORWEGIAN:
+		case LanguageType::POLISH:
+		case LanguageType::PORTUGUESE:
+		case LanguageType::PORTUGUESE_BRAZIL:
+		case LanguageType::ROMANIAN:
+		case LanguageType::RUSSIAN:
+		case LanguageType::SPANISH:
+		case LanguageType::SWEDISH:
+		case LanguageType::THAI:
+		case LanguageType::TURKISH:
+		case LanguageType::UKRAINIAN:
+			// TODO
+			return Resources::Fonts_Pixel_Zpix;
 	}
 }
 
@@ -163,37 +166,37 @@ std::string Localization::getMainFont()
 {
 	switch (Application::getInstance()->getCurrentLanguage())
 	{
-	default:
-	case LanguageType::ENGLISH:
-		return Resources::Fonts_Montserrat_Medium;
-	case LanguageType::CHINESE_SIMPLIFIED:
-	case LanguageType::CHINESE_TRADITIONAL:
-	case LanguageType::JAPANESE:
-	case LanguageType::KOREAN:
-	case LanguageType::ARABIC:
-	case LanguageType::BULGARIAN:
-	case LanguageType::CZECH:
-	case LanguageType::DANISH:
-	case LanguageType::DUTCH:
-	case LanguageType::FINNISH:
-	case LanguageType::FRENCH:
-	case LanguageType::GERMAN:
-	case LanguageType::GREEK:
-	case LanguageType::HUNGARIAN:
-	case LanguageType::ITALIAN:
-	case LanguageType::NORWEGIAN:
-	case LanguageType::POLISH:
-	case LanguageType::PORTUGUESE:
-	case LanguageType::PORTUGUESE_BRAZIL:
-	case LanguageType::ROMANIAN:
-	case LanguageType::RUSSIAN:
-	case LanguageType::SPANISH:
-	case LanguageType::SWEDISH:
-	case LanguageType::THAI:
-	case LanguageType::TURKISH:
-	case LanguageType::UKRAINIAN:
-		// TODO
-		return Resources::Fonts_Montserrat_Medium;
+		default:
+		case LanguageType::ENGLISH:
+			return Resources::Fonts_Montserrat_Medium;
+		case LanguageType::CHINESE_SIMPLIFIED:
+		case LanguageType::CHINESE_TRADITIONAL:
+		case LanguageType::JAPANESE:
+		case LanguageType::KOREAN:
+		case LanguageType::ARABIC:
+		case LanguageType::BULGARIAN:
+		case LanguageType::CZECH:
+		case LanguageType::DANISH:
+		case LanguageType::DUTCH:
+		case LanguageType::FINNISH:
+		case LanguageType::FRENCH:
+		case LanguageType::GERMAN:
+		case LanguageType::GREEK:
+		case LanguageType::HUNGARIAN:
+		case LanguageType::ITALIAN:
+		case LanguageType::NORWEGIAN:
+		case LanguageType::POLISH:
+		case LanguageType::PORTUGUESE:
+		case LanguageType::PORTUGUESE_BRAZIL:
+		case LanguageType::ROMANIAN:
+		case LanguageType::RUSSIAN:
+		case LanguageType::SPANISH:
+		case LanguageType::SWEDISH:
+		case LanguageType::THAI:
+		case LanguageType::TURKISH:
+		case LanguageType::UKRAINIAN:
+			// TODO
+			return Resources::Fonts_Montserrat_Medium;
 	}
 }
 
@@ -201,38 +204,38 @@ std::string Localization::getCodingFont()
 {
 	switch (Application::getInstance()->getCurrentLanguage())
 	{
-	default:
-	case LanguageType::ENGLISH:
-		return Resources::Fonts_UbuntuMono_Bold;
-	case LanguageType::CHINESE_SIMPLIFIED:
-	case LanguageType::CHINESE_TRADITIONAL:
-	case LanguageType::JAPANESE:
-	case LanguageType::KOREAN:
-		return Resources::Fonts_Ubuntu_WenQuanYiMicroHeiMono_02;
-	case LanguageType::ARABIC:
-	case LanguageType::BULGARIAN:
-	case LanguageType::CZECH:
-	case LanguageType::DANISH:
-	case LanguageType::DUTCH:
-	case LanguageType::FINNISH:
-	case LanguageType::FRENCH:
-	case LanguageType::GERMAN:
-	case LanguageType::GREEK:
-	case LanguageType::HUNGARIAN:
-	case LanguageType::ITALIAN:
-	case LanguageType::NORWEGIAN:
-	case LanguageType::POLISH:
-	case LanguageType::PORTUGUESE:
-	case LanguageType::PORTUGUESE_BRAZIL:
-	case LanguageType::ROMANIAN:
-	case LanguageType::RUSSIAN:
-	case LanguageType::SPANISH:
-	case LanguageType::SWEDISH:
-	case LanguageType::THAI:
-	case LanguageType::TURKISH:
-	case LanguageType::UKRAINIAN:
-		// TODO
-		return Resources::Fonts_UbuntuMono_Bold;
+		default:
+		case LanguageType::ENGLISH:
+			return Resources::Fonts_UbuntuMono_Bold;
+		case LanguageType::CHINESE_SIMPLIFIED:
+		case LanguageType::CHINESE_TRADITIONAL:
+		case LanguageType::JAPANESE:
+		case LanguageType::KOREAN:
+			return Resources::Fonts_Ubuntu_WenQuanYiMicroHeiMono_02;
+		case LanguageType::ARABIC:
+		case LanguageType::BULGARIAN:
+		case LanguageType::CZECH:
+		case LanguageType::DANISH:
+		case LanguageType::DUTCH:
+		case LanguageType::FINNISH:
+		case LanguageType::FRENCH:
+		case LanguageType::GERMAN:
+		case LanguageType::GREEK:
+		case LanguageType::HUNGARIAN:
+		case LanguageType::ITALIAN:
+		case LanguageType::NORWEGIAN:
+		case LanguageType::POLISH:
+		case LanguageType::PORTUGUESE:
+		case LanguageType::PORTUGUESE_BRAZIL:
+		case LanguageType::ROMANIAN:
+		case LanguageType::RUSSIAN:
+		case LanguageType::SPANISH:
+		case LanguageType::SWEDISH:
+		case LanguageType::THAI:
+		case LanguageType::TURKISH:
+		case LanguageType::UKRAINIAN:
+			// TODO
+			return Resources::Fonts_UbuntuMono_Bold;
 	}
 }
 

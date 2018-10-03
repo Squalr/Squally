@@ -71,7 +71,7 @@ private:
 	DeckCardCountDisplay* deckCardCountDisplay;
 	HandCardCountDisplay* handCardCountDisplay;
 	LossesDisplay* lossesDisplay;
-	PassButton* passButton;
+	PassIndicators* passIndicators;
 	RowTotals* rowTotals;
 	ScoreTotal* scoreTotal;
 	DebugDisplay* debugDisplay;

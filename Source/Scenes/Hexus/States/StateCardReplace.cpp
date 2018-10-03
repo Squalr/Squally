@@ -86,9 +86,9 @@ void StateCardReplace::onStateEnter(GameState* gameState)
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	GameUtils::changeParent(gameState->playerHand, this, true);
-	gameState->playerHand->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	gameState->playerHand->setCardScale(0.6f, 0.0f);
-	gameState->playerHand->setRowWidth(Config::previewWidth, 0.25f);
+	gameState->playerHand->runAction(MoveTo::create(0.5f, Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f)));
+	gameState->playerHand->setCardScale(0.6f, 0.5f);
+	gameState->playerHand->setRowWidth(Config::previewWidth, 0.5f);
 	gameState->playerHand->enableRowCardInteraction();
 
 	this->activeGameState = gameState;
