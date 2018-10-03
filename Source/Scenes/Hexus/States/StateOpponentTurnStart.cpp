@@ -25,6 +25,8 @@ void StateOpponentTurnStart::onBeforeStateEnter(GameState* gameState)
 void StateOpponentTurnStart::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
+
+	GameState::updateState(gameState, GameState::StateType::AIDecidePass);
 }
 
 void StateOpponentTurnStart::onStateReload(GameState* gameState)

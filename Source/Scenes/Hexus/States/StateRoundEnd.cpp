@@ -25,6 +25,15 @@ void StateRoundEnd::onBeforeStateEnter(GameState* gameState)
 void StateRoundEnd::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
+
+	if (gameState->playerLosses >= 2 || gameState->enemyLosses >= 2)
+	{
+		GameState::updateState(gameState, GameState::StateType::GameEnd);
+	}
+	else
+	{
+		GameState::updateState(gameState, GameState::StateType::RoundStart);
+	}
 }
 
 void StateRoundEnd::onStateReload(GameState* gameState)
