@@ -30,7 +30,7 @@ void StateRoundStart::onStateEnter(GameState* gameState)
 		DelayTime::create(Config::bannerDisplayDuration),
 		CallFunc::create([=]()
 		{
-			GameState::updateState(gameState, GameState::StateType::CoinFlip);
+			GameState::updateState(gameState, GameState::StateType::AIDecideCardReplace);
 		}),
 		nullptr
 	));
