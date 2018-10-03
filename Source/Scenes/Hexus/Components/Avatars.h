@@ -18,6 +18,7 @@ public:
 	void initializeEnemyAvatar(HexusOpponentData* opponentData);
 
 protected:
+	void onBeforeStateChange(GameState* eventCustom) override;
 	void onStateChange(GameState* eventCustom) override;
 
 private:

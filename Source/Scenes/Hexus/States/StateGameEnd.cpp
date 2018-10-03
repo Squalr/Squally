@@ -48,14 +48,18 @@ void StateGameEnd::initializePositions()
 	this->backButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f);
 }
 
-void StateGameEnd::onBackClick(MenuSprite* menuSprite)
+void StateGameEnd::onBackClick(MenuSprite* menuSprite, GameState* gameState)
 {
-	if (this->activeGameState->stateType == GameState::StateType::GameEnd) {
+	GameState::updateState(gameState, GameState::StateType::EmptyState);
+
+	if (gameState->playerIsWinning())
+	{
 		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_Validation_03);
-		this->activeGameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, this->activeGameState->opponentData));
+		gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, gameState->opponentData));
 	}
-	else {
-		this->activeGameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(false, this->activeGameState->opponentData));
+	else
+	{
+		gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(false, gameState->opponentData));
 	}
 }
 
@@ -68,20 +72,9 @@ void StateGameEnd::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	this->activeGameState = gameState;
-
-	switch (gameState->stateType)
-	{
-		case GameState::StateType::GameEnd:
-			this->backButton->enableInteraction(0);
-			this->backButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
-			this->backButton->setClickCallback(CC_CALLBACK_1(StateGameEnd::onBackClick, this));
-			break;
-		default:
-			this->backButton->disableInteraction(0);
-			this->backButton->setClickCallback(nullptr);
-			break;
-	}
+	this->backButton->enableInteraction(0);
+	this->backButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
+	this->backButton->setClickCallback(CC_CALLBACK_1(StateGameEnd::onBackClick, this, gameState));
 }
 
 void StateGameEnd::onStateReload(GameState* gameState)
@@ -92,4 +85,7 @@ void StateGameEnd::onStateReload(GameState* gameState)
 void StateGameEnd::onStateExit(GameState* gameState)
 {
 	StateBase::onStateExit(gameState);
+
+	this->backButton->disableInteraction(0);
+	this->backButton->setClickCallback(nullptr);
 }

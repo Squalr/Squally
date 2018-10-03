@@ -34,6 +34,11 @@ void PlayerTurnBanner::initializePositions()
 	this->playerBanner2->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::bannerIconOffset, visibleSize.height / 2.0f + 320.0f);
 }
 
+void PlayerTurnBanner::onBeforeStateChange(GameState* gameState)
+{
+	ComponentBase::onBeforeStateChange(gameState);
+}
+
 void PlayerTurnBanner::onStateChange(GameState* gameState)
 {
 	BannerBase::onStateChange(gameState);

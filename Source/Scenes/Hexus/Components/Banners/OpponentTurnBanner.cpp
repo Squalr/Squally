@@ -34,6 +34,11 @@ void OpponentTurnBanner::initializePositions()
 	this->enemyBanner2->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::bannerIconOffset, visibleSize.height / 2.0f + 320.0f);
 }
 
+void OpponentTurnBanner::onBeforeStateChange(GameState* gameState)
+{
+	ComponentBase::onBeforeStateChange(gameState);
+}
+
 void OpponentTurnBanner::onStateChange(GameState* gameState)
 {
 	BannerBase::onStateChange(gameState);

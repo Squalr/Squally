@@ -38,8 +38,15 @@ void DebugDisplay::initializePositions()
 	this->stateLabel->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter, visibleSize.height - 32.0f);
 }
 
+void DebugDisplay::onBeforeStateChange(GameState* gameState)
+{
+	ComponentBase::onBeforeStateChange(gameState);
+}
+
 void DebugDisplay::onStateChange(GameState* gameState)
 {
+	ComponentBase::onStateChange(gameState);
+
 	switch (gameState->stateType)
 	{
 		case GameState::StateType::EmptyState:

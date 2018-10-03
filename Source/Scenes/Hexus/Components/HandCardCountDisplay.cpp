@@ -55,6 +55,11 @@ void HandCardCountDisplay::initializePositions()
 	this->enemyHandCardCountText->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::handCountOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f + Config::handCountOffsetY + 32.0f);
 }
 
+void HandCardCountDisplay::onBeforeStateChange(GameState* gameState)
+{
+	ComponentBase::onBeforeStateChange(gameState);
+}
+
 void HandCardCountDisplay::onStateChange(GameState* gameState)
 {
 	this->updateTotals(gameState);

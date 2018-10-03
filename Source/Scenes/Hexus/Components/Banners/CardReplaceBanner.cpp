@@ -24,6 +24,11 @@ void CardReplaceBanner::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
+void CardReplaceBanner::onBeforeStateChange(GameState* gameState)
+{
+	ComponentBase::onBeforeStateChange(gameState);
+}
+
 void CardReplaceBanner::onStateChange(GameState* gameState)
 {
 	BannerBase::onStateChange(gameState);

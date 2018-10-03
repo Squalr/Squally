@@ -32,6 +32,11 @@ void RoundBanner::initializePositions()
 	this->roundBanner2->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::bannerIconOffset, visibleSize.height / 2.0f + 320.0f);
 }
 
+void RoundBanner::onBeforeStateChange(GameState* gameState)
+{
+	ComponentBase::onBeforeStateChange(gameState);
+}
+
 void RoundBanner::onStateChange(GameState* gameState)
 {
 	BannerBase::onStateChange(gameState);

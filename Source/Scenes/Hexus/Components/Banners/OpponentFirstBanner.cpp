@@ -25,6 +25,11 @@ void OpponentFirstBanner::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
+void OpponentFirstBanner::onBeforeStateChange(GameState* gameState)
+{
+	ComponentBase::onBeforeStateChange(gameState);
+}
+
 void OpponentFirstBanner::onStateChange(GameState* gameState)
 {
 	BannerBase::onStateChange(gameState);

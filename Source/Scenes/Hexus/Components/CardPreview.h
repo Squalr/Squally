@@ -15,7 +15,8 @@ public:
 	static CardPreview * create();
 
 protected:
-	void onStateChange(GameState* gameState) override;
+	void onBeforeStateChange(GameState* eventCustom) override;
+	void onStateChange(GameState* eventCustom) override;
 
 private:
 	CardPreview();
@@ -23,6 +24,7 @@ private:
 
 	void initializePositions() override;
 	void initializeCallbacks(GameState* gameState);
+	void clearPreview();
 	void previewCard(Card* card);
 
 	Card* currentPreviewCard;

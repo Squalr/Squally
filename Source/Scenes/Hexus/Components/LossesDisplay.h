@@ -13,6 +13,7 @@ class LossesDisplay : public ComponentBase
 public:
 	static LossesDisplay* create();
 protected:
+	void onBeforeStateChange(GameState* eventCustom) override;
 	void onStateChange(GameState* eventCustom) override;
 
 private:

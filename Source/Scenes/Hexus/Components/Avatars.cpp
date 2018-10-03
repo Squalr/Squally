@@ -75,8 +75,14 @@ void Avatars::initializeEnemyAvatar(HexusOpponentData* opponentData)
 	this->opponentSprite->setPosition(opponentData->avatarOffset);
 }
 
+void Avatars::onBeforeStateChange(GameState* gameState)
+{
+	ComponentBase::onBeforeStateChange(gameState);
+}
+
 void Avatars::onStateChange(GameState* gameState)
 {
+	ComponentBase::onStateChange(gameState);
 }
 
 void Avatars::setAvatars(GameState* gameState)

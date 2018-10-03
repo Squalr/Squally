@@ -42,6 +42,11 @@ void BannerBase::initializePositions()
 	this->statusLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 320.0f);
 }
 
+void BannerBase::onBeforeStateChange(GameState* gameState)
+{
+	ComponentBase::onBeforeStateChange(gameState);
+}
+
 void BannerBase::onStateChange(GameState* gameState)
 {
 	ComponentBase::onStateChange(gameState);
