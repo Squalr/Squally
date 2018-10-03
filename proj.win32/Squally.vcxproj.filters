@@ -1267,6 +1267,9 @@
     <ClCompile Include="..\Source\Scenes\Hexus\States\StateAIDecideCardReplace.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\DebugDisplay.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Resources\.gitattributes">
@@ -22673,6 +22676,9 @@
     </ClInclude>
     <ClInclude Include="..\Source\Scenes\Hexus\States\StateAIDecideCardReplace.h">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\DebugDisplay.h">
+      <Filter>Source Files\Source\Scenes\Hexus\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

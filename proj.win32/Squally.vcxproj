@@ -217,6 +217,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Source\Scenes\Hexus\Components\DebugDisplay.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\States\StateAIDecideCardReplace.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\States\StateCardReplace.cpp" />
     <ClCompile Include="..\Source\Scenes\Hexus\States\StateRoundStart.cpp" />
@@ -640,6 +641,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Sound\MusicDeserializer.cpp" />
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\main.cpp" />
     <ResourceCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\game.rc" />
+    <ClInclude Include="..\Source\Scenes\Hexus\Components\DebugDisplay.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\States\StateAIDecideCardReplace.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\States\StateCardReplace.h" />
     <ClInclude Include="..\Source\Scenes\Hexus\States\StateRoundStart.h" />

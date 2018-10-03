@@ -49,6 +49,7 @@ Hexus::Hexus()
 	this->passButton = PassButton::create();
 	this->rowTotals = RowTotals::create();
 	this->scoreTotal = ScoreTotal::create();
+	this->debugDisplay = DebugDisplay::create();
 
 	this->addChild(this->gameBackground);
 	this->addChild(this->gameState);
@@ -80,6 +81,7 @@ Hexus::Hexus()
 	this->addChild(this->stateRoundStart);
 	this->addChild(this->stateSelectionStaged);
 	this->addChild(this->stateTurnEnd);
+	this->addChild(this->debugDisplay);
 	this->addChild(this->cardReplaceBanner);
 	this->addChild(this->opponentFirstBanner);
 	this->addChild(this->opponentTurnBanner);

@@ -247,7 +247,7 @@ bool GameUtils::isVisible(Node* node)
 {
 	while (node != nullptr)
 	{
-		if (!node->isVisible())
+		if (!node->isVisible() || node->getOpacity() <= 0)
 		{
 			return false;
 		}

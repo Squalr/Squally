@@ -15,14 +15,17 @@ BannerBase::BannerBase()
 
 	this->statusBanner = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, 144.0f);
 	this->statusLabel = Label::create("", Localization::getMainFont(), 48.0f);
+	this->bannerChildrenNode = Node::create();
 
 	this->statusBanner->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->statusLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->statusBanner->setOpacity(0);
 	this->statusLabel->setOpacity(0);
+	this->bannerChildrenNode->setOpacity(0);
 
 	this->addChild(this->statusBanner);
 	this->addChild(this->statusLabel);
+	this->addChild(this->bannerChildrenNode);
 }
 
 BannerBase::~BannerBase()
@@ -64,6 +67,13 @@ void BannerBase::flashBanner()
 		FadeTo::create(Config::bannerFadeSpeed, 0),
 		nullptr
 	));
+
+	this->bannerChildrenNode->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 255),
+		DelayTime::create(Config::bannerDisplayDuration),
+		FadeTo::create(Config::bannerFadeSpeed, 0),
+		nullptr
+	));
 }
 
 void BannerBase::showBanner()
@@ -75,6 +85,11 @@ void BannerBase::showBanner()
 
 	this->statusBanner->runAction(Sequence::create(
 		FadeTo::create(Config::bannerFadeSpeed, 196),
+		nullptr
+	));
+
+	this->bannerChildrenNode->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 255),
 		nullptr
 	));
 }
@@ -90,9 +105,14 @@ void BannerBase::hideBanner()
 		FadeTo::create(Config::bannerFadeSpeed, 0),
 		nullptr
 	));
+
+	this->bannerChildrenNode->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 0),
+		nullptr
+	));
 }
 
 void BannerBase::addBannerChild(Node* child)
 {
-	this->statusBanner->addChild(child);
+	this->bannerChildrenNode->addChild(child);
 }

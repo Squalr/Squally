@@ -26,4 +26,5 @@ protected:
 private:
 	LayerColor* statusBanner;
 	Label* statusLabel;
+	Node* bannerChildrenNode;
 };
