@@ -1,5 +1,6 @@
 #pragma once
 #include "cocos2d.h"
+#include "cocos-ext.h"
 
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
