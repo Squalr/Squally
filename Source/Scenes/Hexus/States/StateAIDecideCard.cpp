@@ -25,6 +25,8 @@ void StateAIDecideCard::onBeforeStateEnter(GameState* gameState)
 void StateAIDecideCard::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
+
+	GameState::updateState(gameState, GameState::StateType::PlayCard);
 }
 
 void StateAIDecideCard::onStateReload(GameState* gameState)

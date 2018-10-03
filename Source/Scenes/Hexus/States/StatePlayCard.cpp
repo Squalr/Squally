@@ -25,6 +25,8 @@ void StatePlayCard::onBeforeStateEnter(GameState* gameState)
 void StatePlayCard::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
+
+	GameState::updateState(gameState, GameState::StateType::TurnEnd);
 }
 
 void StatePlayCard::onStateReload(GameState* gameState)
