@@ -348,7 +348,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/DeckCardCountDisplay.cpp
 	Source/Scenes/Hexus/Components/HandCardCountDisplay.cpp
 	Source/Scenes/Hexus/Components/LossesDisplay.cpp
-	Source/Scenes/Hexus/Components/PassButton.cpp
+	Source/Scenes/Hexus/Components/PassIndicators.cpp
 	Source/Scenes/Hexus/Components/RowTotals.cpp
 	Source/Scenes/Hexus/Components/ScoreTotal.cpp
 	Source/Scenes/Hexus/Components/Banners/BannerBase.cpp
@@ -785,7 +785,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/DeckCardCountDisplay.h
 	Source/Scenes/Hexus/Components/HandCardCountDisplay.h
 	Source/Scenes/Hexus/Components/LossesDisplay.h
-	Source/Scenes/Hexus/Components/PassButton.h
+	Source/Scenes/Hexus/Components/PassIndicators.h
 	Source/Scenes/Hexus/Components/RowTotals.h
 	Source/Scenes/Hexus/Components/ScoreTotal.h
 	Source/Scenes/Hexus/Components/Banners/BannerBase.h

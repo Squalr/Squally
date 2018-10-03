@@ -14,6 +14,7 @@ protected:
 	~StateBase();
 
 	void initializeListeners() override;
+	virtual void onStateChange(GameState* gameState);
 	virtual void onBeforeStateEnter(GameState* gameState);
 	virtual void onStateEnter(GameState* gameState);
 	virtual void onStateReload(GameState* gameState);

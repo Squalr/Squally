@@ -31,7 +31,7 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 	float endTurnDelay = Config::endTurnDelay;
 
 	// If both players pass than we end the round
-	if (gameState->playerPass && gameState->enemyPass)
+	if (gameState->playerPassed && gameState->enemyPassed)
 	{
 		CallFunc* changeState = CallFunc::create([gameState]
 		{
@@ -48,7 +48,7 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 	}
 
 	// If the player passes it is the enemies turn
-	if (gameState->playerPass)
+	if (gameState->playerPassed)
 	{
 		endTurnDelay = Config::enemyEndTurnDelay;
 		gameState->turn = GameState::Turn::Enemy;
@@ -67,7 +67,7 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 	}
 
 	// If the enemy passes it is the players turn
-	if (gameState->enemyPass)
+	if (gameState->enemyPassed)
 	{
 		gameState->turn = GameState::Turn::Player;
 		CallFunc* changeState = CallFunc::create([gameState]

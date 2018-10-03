@@ -8,24 +8,20 @@
 
 using namespace cocos2d;
 
-class PassButton : public ComponentBase
+class PassIndicators : public ComponentBase
 {
 public:
-	static PassButton * create();
+	static PassIndicators * create();
 
 protected:
 	void onStateChange(GameState* gameState) override;
 
 private:
-	PassButton();
-	~PassButton();
+	PassIndicators();
+	~PassIndicators();
 
 	void initializePositions() override;
-	void onPassClick(MenuSprite* menuSprite, GameState* gameState);
 
-	TextMenuSprite* passButton;
-	static const std::string StringKeyHexusPass;
-	GameState* activeGameState;
 	Sprite* playerPassIndicator;
 	Sprite* enemyPassIndicator;
 };

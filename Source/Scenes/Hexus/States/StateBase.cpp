@@ -49,6 +49,12 @@ void StateBase::onStateChangeEvent(EventCustom* eventCustom)
 			this->onStateEnter(gameState);
 		}
 	}
+
+	this->onStateChange(gameState);
+}
+
+void StateBase::onStateChange(GameState* gameState)
+{
 }
 
 void StateBase::onBeforeStateEnter(GameState* gameState)

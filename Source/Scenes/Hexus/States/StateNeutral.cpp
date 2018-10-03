@@ -30,8 +30,6 @@ void StateNeutral::onStateEnter(GameState* gameState)
 
 	if (gameState->playerHand->rowCards->size() == 0)
 	{
-		gameState->showPassBanner = true;
-		gameState->playerPass = true;
 		GameState::updateState(this->activeGameState, GameState::StateType::Pass);
 		return;
 	}

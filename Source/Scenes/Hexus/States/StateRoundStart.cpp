@@ -26,6 +26,9 @@ void StateRoundStart::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
+	gameState->playerPassed = false;
+	gameState->enemyPassed = false;
+
 	this->runAction(Sequence::create(
 		DelayTime::create(Config::bannerDisplayDuration),
 		CallFunc::create([=]()

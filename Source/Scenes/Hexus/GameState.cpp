@@ -20,9 +20,6 @@ GameState::GameState()
 	enemyLosses(0),
 	cardReplaceCount(0),
 	round(0),
-	playerPass(false),
-	enemyPass(false),
-	stagedSacrifice(nullptr),
 	selectedCard(nullptr),
 	cardPreviewCallback(nullptr),
 	updateStateCallback(nullptr),
@@ -31,7 +28,6 @@ GameState::GameState()
 	stagedCombineSourceCard(nullptr),
 	stagedCombineTargetCard(nullptr)
 {
-	this->stagedSacrificeTargets = new std::set<Card*>();
 	this->playerDeck = Deck::create();
 	this->playerHand = CardRow::create(true);
 	this->playerGraveyard = Deck::create();
@@ -67,7 +63,6 @@ GameState::GameState()
 
 GameState::~GameState()
 {
-	delete(this->stagedSacrificeTargets);
 }
 
 void GameState::updateState(GameState* gameState, StateType newState)
@@ -125,8 +120,6 @@ void GameState::endRound()
 	} else {
 		this->playerLosses++;
 	}
-	this->playerPass = false;
-	this->enemyPass = false;
 
 	std::vector<CardRow *> rows = this->getAllRows();
 	for (auto it = rows.begin(); it != rows.end(); it++)

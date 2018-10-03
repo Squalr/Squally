@@ -163,15 +163,6 @@ void StateSelectionStaged::stageSelectedSacrificeCard(Card* card)
 	{
 		return;
 	}
-
-	switch (this->activeGameState->selectedCard->cardData->cardType)
-	{
-		case CardData::CardType::Binary:
-		default:
-			this->activeGameState->stagedSacrifice = card;
-			this->activeGameState->stagedSacrificeCardRow = dynamic_cast<CardRow*>(card->getParent());
-			break;
-	}
 }
 
 void StateSelectionStaged::stageSelectedCombineCard(Card* card)

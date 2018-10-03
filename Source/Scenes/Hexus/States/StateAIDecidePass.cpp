@@ -31,17 +31,8 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 
 	CallFunc* stateTransition = nullptr;
 
-	if (gameState->enemyPass)
+	if (gameState->enemyHand->rowCards->size() == 0)
 	{
-		stateTransition = CallFunc::create([=]()
-		{
-			GameState::updateState(gameState, GameState::StateType::Pass);
-		});
-	}
-	else if (gameState->enemyHand->rowCards->size() == 0)
-	{
-		gameState->showPassBanner = true;
-		gameState->enemyPass = true;
 		stateTransition = CallFunc::create([=]()
 		{
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
@@ -50,8 +41,6 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 	}
 	else if (gameState->enemyLosses < 1 && gameState->getPlayerTotal() > gameState->getEnemyTotal() + passIfDiffAbove)
 	{
-		gameState->showPassBanner = true;
-		gameState->enemyPass = true;
 		stateTransition = CallFunc::create([=]()
 		{
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
@@ -61,8 +50,6 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 	// If it's not the last round we better save some cards
 	else if (gameState->enemyLosses < 1 && gameState->enemyHand->rowCards->size() <= cardsToSaveForLastRound)
 	{
-		gameState->showPassBanner = true;
-		gameState->enemyPass = true;
 		stateTransition = CallFunc::create([=]()
 		{
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
@@ -70,9 +57,8 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 		});
 	}
 	// If the player passes and we're ahead we won, so pass
-	else if (gameState->playerPass && gameState->enemyIsWinning()) {
-		gameState->showPassBanner = true;
-		gameState->enemyPass = true;
+	else if (gameState->playerPassed && gameState->enemyIsWinning())
+	{
 		stateTransition = CallFunc::create([=]()
 		{
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
