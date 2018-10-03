@@ -24,4 +24,5 @@ private:
 	void onStateChangeEvent(EventCustom* eventCustom);
 
 	GameState::StateType stateType;
+	float enterDelay;
 };

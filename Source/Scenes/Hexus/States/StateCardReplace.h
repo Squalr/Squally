@@ -10,10 +10,10 @@
 
 using namespace cocos2d;
 
-class StateReplaceCards : public StateBase
+class StateCardReplace : public StateBase
 {
 public:
-	static StateReplaceCards * create();
+	static StateCardReplace * create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;
@@ -22,8 +22,8 @@ protected:
 	void onStateExit(GameState* gameState) override;
 
 private:
-	StateReplaceCards();
-	~StateReplaceCards();
+	StateCardReplace();
+	~StateCardReplace();
 
 	void initializePositions() override;
 	void initializeListeners() override;

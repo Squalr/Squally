@@ -75,6 +75,7 @@ void GameState::updateState(GameState* gameState, StateType newState)
 	gameState->previousStateType = gameState->stateType;
 	gameState->stateType = newState;
 	gameState->clearCallbackStates();
+
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::beforeStateUpdateEvent, gameState);
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::onStateUpdateEvent, gameState);
 }

@@ -34,8 +34,24 @@ void RoundBanner::initializePositions()
 
 void RoundBanner::onStateChange(GameState* gameState)
 {
+	BannerBase::onStateChange(gameState);
+
 	if (gameState->stateType == GameState::RoundStart)
 	{
-		this->setBannerText(gameState->round >= 2 ? "FINAL ROUND" : "NEXT ROUND");
+		switch (gameState->round)
+		{
+			case 0:
+				this->setBannerText("ROUND START!");
+				break;
+			case 1:
+				this->setBannerText("NEXT ROUND!");
+				break;
+			case 2:
+			default:
+				this->setBannerText("FINAL ROUND!");
+				break;
+
+		}
+		this->flashBanner();
 	}
 }

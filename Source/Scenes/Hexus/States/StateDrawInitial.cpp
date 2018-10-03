@@ -43,7 +43,7 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 		drawnCount++;
 	}
 
-	GameState::updateState(gameState, GameState::StateType::CardReplace);
+	GameState::updateState(gameState, GameState::StateType::RoundStart);
 }
 
 void StateDrawInitial::onStateReload(GameState* gameState)

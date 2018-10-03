@@ -36,8 +36,10 @@ void PlayerTurnBanner::initializePositions()
 
 void PlayerTurnBanner::onStateChange(GameState* gameState)
 {
+	BannerBase::onStateChange(gameState);
+
 	if (gameState->stateType == GameState::PlayerTurnStart)
 	{
-		this->showBanner();
+		this->flashBanner();
 	}
 }

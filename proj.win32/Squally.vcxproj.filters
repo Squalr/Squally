@@ -1066,9 +1066,6 @@
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StatePlayerTurnStart.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClCompile>
-    <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateReplaceCards.cpp">
-      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
-    </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateRoundEnd.cpp">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClCompile>
@@ -1260,6 +1257,15 @@
     </ClCompile>
     <ClCompile Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\main.cpp">
       <Filter>Source Files\proj.win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\States\StateCardReplace.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\States\StateRoundStart.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Scenes\Hexus\States\StateAIDecideCardReplace.cpp">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -22455,9 +22461,6 @@
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StatePlayerTurnStart.h">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClInclude>
-    <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateReplaceCards.h">
-      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
-    </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\Source\Scenes\Hexus\States\StateRoundEnd.h">
       <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClInclude>
@@ -22661,6 +22664,15 @@
     </ClInclude>
     <ClInclude Include="F:\Users\Zachary\Documents\Visual Studio 2017\Projects\Squally\proj.win32\resource.h">
       <Filter>Source Files\proj.win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\States\StateCardReplace.h">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\States\StateRoundStart.h">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Scenes\Hexus\States\StateAIDecideCardReplace.h">
+      <Filter>Source Files\Source\Scenes\Hexus\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

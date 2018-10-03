@@ -33,6 +33,7 @@ public:
 		Pass,
 		AIDecidePass,
 		AIDecideCard,
+		AIDecideCardReplace,
 		TurnEnd,
 		RoundEnd,
 		GameEnd,

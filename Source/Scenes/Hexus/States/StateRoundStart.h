@@ -8,10 +8,10 @@
 
 using namespace cocos2d;
 
-class StateCoinFlip : public StateBase
+class StateRoundStart : public StateBase
 {
 public:
-	static StateCoinFlip * create();
+	static StateRoundStart * create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;
@@ -20,15 +20,6 @@ protected:
 	void onStateExit(GameState* gameState) override;
 
 private:
-	StateCoinFlip();
-	~StateCoinFlip();
-
-	void initializePositions() override;
-
-	Sprite* coin;
-	Animation* skeletonInAnimation;
-	Animation* skeletonOutAnimation;
-	Animation* lionInAnimation;
-	Animation* lionOutAnimation;
-	Animation* neutralAnimation;
+	StateRoundStart();
+	~StateRoundStart();
 };

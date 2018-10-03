@@ -1,15 +1,15 @@
-#include "StateReplaceCards.h"
+#include "StateCardReplace.h"
 
-StateReplaceCards* StateReplaceCards::create()
+StateCardReplace* StateCardReplace::create()
 {
-	StateReplaceCards* instance = new StateReplaceCards();
+	StateCardReplace* instance = new StateCardReplace();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-StateReplaceCards::StateReplaceCards() : StateBase(GameState::StateType::CardReplace)
+StateCardReplace::StateCardReplace() : StateBase(GameState::StateType::CardReplace)
 {
 	this->replacedCards = new std::set<Card*>();
 	Label* doneButtonLabel = Label::create("Done", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
@@ -33,25 +33,25 @@ StateReplaceCards::StateReplaceCards() : StateBase(GameState::StateType::CardRep
 	this->addChild(this->doneButton);
 }
 
-StateReplaceCards::~StateReplaceCards()
+StateCardReplace::~StateCardReplace()
 {
 	delete(this->replacedCards);
 }
 
-void StateReplaceCards::initializeListeners()
+void StateCardReplace::initializeListeners()
 {
 	StateBase::initializeListeners();
 
-	this->doneButton->setClickCallback(CC_CALLBACK_1(StateReplaceCards::onEndReplaceCards, this));
+	this->doneButton->setClickCallback(CC_CALLBACK_1(StateCardReplace::onEndReplaceCards, this));
 }
 
-void StateReplaceCards::onEndReplaceCards(MenuSprite* menuSprite)
+void StateCardReplace::onEndReplaceCards(MenuSprite* menuSprite)
 {
 	this->activeGameState->cardReplaceCount = 0;
 	GameState::updateState(this->activeGameState, GameState::StateType::CoinFlip);
 }
 
-void StateReplaceCards::initializePositions()
+void StateCardReplace::initializePositions()
 {
 	StateBase::initializePositions();
 
@@ -59,7 +59,7 @@ void StateReplaceCards::initializePositions()
 	this->doneButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 200.0f);
 }
 
-void StateReplaceCards::onBeforeStateEnter(GameState* gameState)
+void StateCardReplace::onBeforeStateEnter(GameState* gameState)
 {
 	StateBase::onBeforeStateEnter(gameState);
 
@@ -73,7 +73,7 @@ void StateReplaceCards::onBeforeStateEnter(GameState* gameState)
 	}
 }
 
-void StateReplaceCards::onStateEnter(GameState* gameState)
+void StateCardReplace::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
@@ -94,7 +94,7 @@ void StateReplaceCards::onStateEnter(GameState* gameState)
 	this->initializeCallbacks(gameState);
 }
 
-void StateReplaceCards::onStateReload(GameState* gameState)
+void StateCardReplace::onStateReload(GameState* gameState)
 {
 	StateBase::onStateReload(gameState);
 
@@ -102,7 +102,7 @@ void StateReplaceCards::onStateReload(GameState* gameState)
 	this->initializeCallbacks(gameState);
 }
 
-void StateReplaceCards::onStateExit(GameState* gameState)
+void StateCardReplace::onStateExit(GameState* gameState)
 {
 	StateBase::onStateExit(gameState);
 
@@ -127,12 +127,12 @@ void StateReplaceCards::onStateExit(GameState* gameState)
 	this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 0));
 }
 
-void StateReplaceCards::initializeCallbacks(GameState* gameState)
+void StateCardReplace::initializeCallbacks(GameState* gameState)
 {
-	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(StateReplaceCards::replaceCard, this));
+	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(StateCardReplace::replaceCard, this));
 }
 
-void StateReplaceCards::replaceCard(Card* card)
+void StateCardReplace::replaceCard(Card* card)
 {
 	if (this->activeGameState->cardReplaceCount > 0)
 	{
@@ -167,7 +167,7 @@ void StateReplaceCards::replaceCard(Card* card)
 	}
 }
 
-void StateReplaceCards::removeCardsOfTypeFromDeck(Card* cardToRemove, Deck* deck) 
+void StateCardReplace::removeCardsOfTypeFromDeck(Card* cardToRemove, Deck* deck) 
 {
 	deck->removeCardsWhere([=](Card* card)
 	{
@@ -182,7 +182,7 @@ void StateReplaceCards::removeCardsOfTypeFromDeck(Card* cardToRemove, Deck* deck
 	});
 }
 
-CallFunc* StateReplaceCards::getNextStateTransition() 
+CallFunc* StateCardReplace::getNextStateTransition() 
 {
 	CallFunc* stateTransition;
 	GameState* gameState = this->activeGameState;
@@ -191,7 +191,17 @@ CallFunc* StateReplaceCards::getNextStateTransition()
 	{
 		stateTransition = CallFunc::create([gameState]
 		{
-			GameState::updateState(gameState, GameState::StateType::CoinFlip);
+			switch (gameState->turn)
+			{
+				case GameState::Turn::Player:
+					GameState::updateState(gameState, GameState::StateType::PlayerTurnStart);
+					break;
+				case GameState::Turn::Enemy:
+					GameState::updateState(gameState, GameState::StateType::OpponentTurnStart);
+					break;
+				default:
+					break;
+			}
 		});
 	}
 	else

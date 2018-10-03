@@ -27,8 +27,10 @@ void OpponentFirstBanner::initializePositions()
 
 void OpponentFirstBanner::onStateChange(GameState* gameState)
 {
-	if (gameState->stateType == GameState::GameEnd || gameState->enemyLosses >= 2)
+	BannerBase::onStateChange(gameState);
+
+	if (gameState->previousStateType == GameState::CoinFlip && gameState->round == 0 && gameState->turn == GameState::Turn::Enemy)
 	{
-		this->showBanner();
+		this->flashBanner();
 	}
 }

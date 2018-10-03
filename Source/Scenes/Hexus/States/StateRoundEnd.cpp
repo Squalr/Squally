@@ -9,7 +9,7 @@ StateRoundEnd* StateRoundEnd::create()
 	return instance;
 }
 
-StateRoundEnd::StateRoundEnd() : StateBase(GameState::StateType::TurnEnd)
+StateRoundEnd::StateRoundEnd() : StateBase(GameState::StateType::RoundEnd)
 {
 }
 

@@ -36,7 +36,7 @@ void StateNeutral::onStateEnter(GameState* gameState)
 			{
 				gameState->showPassBanner = true;
 				gameState->playerPass = true;
-				GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
+				GameState::updateState(this->activeGameState, GameState::StateType::Pass);
 				return;
 			}
 
@@ -83,7 +83,7 @@ void StateNeutral::aiDoSelection(GameState* gameState)
 	this->activeGameState->selectedCard = nullptr;
 
 	if (gameState->enemyPass) {
-		GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
+		GameState::updateState(this->activeGameState, GameState::StateType::Pass);
 		return;
 	}
 
@@ -91,7 +91,7 @@ void StateNeutral::aiDoSelection(GameState* gameState)
 		gameState->showPassBanner = true;
 		gameState->enemyPass = true;
 		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
-		GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
+		GameState::updateState(this->activeGameState, GameState::StateType::Pass);
 		return;
 	}
 
@@ -100,7 +100,7 @@ void StateNeutral::aiDoSelection(GameState* gameState)
 		gameState->showPassBanner = true;
 		gameState->enemyPass = true;
 		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
-		GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
+		GameState::updateState(this->activeGameState, GameState::StateType::Pass);
 		return;
 	}
 
@@ -110,7 +110,7 @@ void StateNeutral::aiDoSelection(GameState* gameState)
 		gameState->showPassBanner = true;
 		gameState->enemyPass = true;
 		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
-		GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
+		GameState::updateState(this->activeGameState, GameState::StateType::Pass);
 		return;
 	} 
 	
@@ -119,7 +119,7 @@ void StateNeutral::aiDoSelection(GameState* gameState)
 		gameState->showPassBanner = true;
 		gameState->enemyPass = true;
 		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
-		GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
+		GameState::updateState(this->activeGameState, GameState::StateType::Pass);
 		return;
 	} 
 
@@ -264,5 +264,5 @@ void StateNeutral::aiDoSelection(GameState* gameState)
 
 	// Unable to find a playable move, so pass
 	this->activeGameState->enemyPass = true;
-	GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
+	GameState::updateState(this->activeGameState, GameState::StateType::Pass);
 }

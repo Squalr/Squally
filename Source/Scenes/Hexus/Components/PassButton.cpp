@@ -89,5 +89,5 @@ void PassButton::onPassClick(MenuSprite* menuSprite, GameState* gameState)
 {
 	gameState->showPassBanner = true;
 	gameState->playerPass = true;
-	GameState::updateState(gameState, GameState::StateType::TurnEnd);
+	GameState::updateState(gameState, GameState::StateType::Pass);
 }

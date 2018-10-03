@@ -27,8 +27,14 @@ void VictoryBanner::initializePositions()
 
 void VictoryBanner::onStateChange(GameState* gameState)
 {
+	BannerBase::onStateChange(gameState);
+
 	if (gameState->stateType == GameState::GameEnd || gameState->enemyLosses >= 2)
 	{
 		this->showBanner();
+	}
+	else if (gameState->previousStateType == GameState::GameEnd)
+	{
+		this->hideBanner();
 	}
 }

@@ -18,7 +18,9 @@ protected:
 	void initializePositions() override;
 	void onStateChange(GameState* eventCustom) override;
 	void setBannerText(std::string text);
+	void flashBanner();
 	void showBanner();
+	void hideBanner();
 	void addBannerChild(Node* child);
 
 private:
