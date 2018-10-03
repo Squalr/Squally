@@ -22,8 +22,4 @@ protected:
 private:
 	StateTurnEnd();
 	~StateTurnEnd();
-
-	void endTurn(GameState* gameState);
-
-	GameState* activeGameState;
 };

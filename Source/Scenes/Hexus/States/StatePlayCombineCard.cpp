@@ -26,7 +26,14 @@ void StatePlayCombineCard::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	GameState::updateState(gameState, GameState::StateType::TurnEnd);
+	this->runAction(Sequence::create(
+		DelayTime::create(0.5f),
+		CallFunc::create([=]()
+		{
+			GameState::updateState(gameState, GameState::StateType::TurnEnd);
+		}),
+		nullptr
+	));
 }
 
 void StatePlayCombineCard::onStateReload(GameState* gameState)
