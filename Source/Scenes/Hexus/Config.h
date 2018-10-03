@@ -31,7 +31,6 @@ public:
 	static const float coinFlipRestDuration;
 	static const float coinFlipFadeSpeed;
 	static const int coinFlipCount;
-	static const float coinFlipBannerDisplayDelay;
 
 	static const float bannerFadeSpeed;
 	static const float bannerDisplayDuration;

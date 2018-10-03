@@ -9,7 +9,7 @@ StateCoinFlip* StateCoinFlip::create()
 	return instance;
 }
 
-StateCoinFlip::StateCoinFlip()
+StateCoinFlip::StateCoinFlip() : StateBase(GameState::StateType::CoinFlip)
 {
 	this->coin = Sprite::create(Resources::Minigames_CoinFlipLion);
 	this->skeletonInAnimation = Animation::create();
@@ -54,24 +54,24 @@ StateCoinFlip::~StateCoinFlip()
 
 void StateCoinFlip::initializePositions()
 {
-	ComponentBase::initializePositions();
+	StateBase::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->coin->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f);
 }
 
-void StateCoinFlip::onStateChange(GameState* gameState)
+void StateCoinFlip::onBeforeStateEnter(GameState* gameState)
 {
-	if (gameState->stateType == GameState::StateType::CoinFlip)
-	{
-		gameState->playerHand->disableRowCardInteraction();
-		this->doCoinFlip(gameState);
-	}
+	StateBase::onBeforeStateEnter(gameState);
 }
 
-void StateCoinFlip::doCoinFlip(GameState* gameState)
+void StateCoinFlip::onStateEnter(GameState* gameState)
 {
+	StateBase::onStateEnter(gameState);
+
+	gameState->playerHand->disableRowCardInteraction();
+
 	if (RandomHelper::random_real(0.0f, 1.0f) > 0.5f)
 	{
 		gameState->turn = GameState::Turn::Player;
@@ -86,7 +86,7 @@ void StateCoinFlip::doCoinFlip(GameState* gameState)
 
 	CallFunc* onStateCoinFlipEnd = CallFunc::create([gameState]
 	{
-		GameState::updateState(gameState, GameState::StateType::FirstSideBanner);
+		GameState::updateState(gameState, GameState::StateType::AIDecideCardReplace);
 	});
 
 	switch (gameState->turn)
@@ -106,7 +106,6 @@ void StateCoinFlip::doCoinFlip(GameState* gameState)
 				DelayTime::create(Config::coinFlipStartDelay),
 				Repeat::create(loopSequence, Config::coinFlipCount),
 				Animate::create(this->lionInAnimation->clone()),
-				DelayTime::create(Config::coinFlipBannerDisplayDelay),
 				onStateCoinFlipEnd,
 				nullptr));
 			break;
@@ -126,7 +125,6 @@ void StateCoinFlip::doCoinFlip(GameState* gameState)
 				DelayTime::create(Config::coinFlipStartDelay),
 				Repeat::create(loopSequence, Config::coinFlipCount),
 				Animate::create(this->skeletonInAnimation->clone()),
-				DelayTime::create(Config::coinFlipBannerDisplayDelay),
 				onStateCoinFlipEnd,
 				nullptr));
 			break;
@@ -140,4 +138,14 @@ void StateCoinFlip::doCoinFlip(GameState* gameState)
 		DelayTime::create(Config::coinFlipRestDuration),
 		FadeOut::create(Config::coinFlipFadeSpeed),
 		nullptr));
+}
+
+void StateCoinFlip::onStateReload(GameState* gameState)
+{
+	StateBase::onStateReload(gameState);
+}
+
+void StateCoinFlip::onStateExit(GameState* gameState)
+{
+	StateBase::onStateExit(gameState);
 }
