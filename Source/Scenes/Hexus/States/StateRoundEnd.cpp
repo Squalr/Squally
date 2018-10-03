@@ -46,7 +46,14 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 		}
 		else
 		{
-			GameState::updateState(gameState, GameState::StateType::RoundStart);
+			this->runAction(Sequence::create(
+				DelayTime::create(0.5f),
+				CallFunc::create([=]()
+				{
+					GameState::updateState(gameState, GameState::StateType::RoundStart);
+				}),
+				nullptr
+			));
 		}
 	}
 

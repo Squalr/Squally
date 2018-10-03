@@ -25,6 +25,11 @@ void VictoryBanner::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
+void VictoryBanner::onBeforeStateChange(GameState* gameState)
+{
+	ComponentBase::onBeforeStateChange(gameState);
+}
+
 void VictoryBanner::onStateChange(GameState* gameState)
 {
 	BannerBase::onStateChange(gameState);
@@ -33,7 +38,7 @@ void VictoryBanner::onStateChange(GameState* gameState)
 	{
 		this->showBanner();
 	}
-	else if (gameState->previousStateType == GameState::GameEnd)
+	else
 	{
 		this->hideBanner();
 	}

@@ -54,8 +54,15 @@ void LossesDisplay::initializePositions()
 	this->enemySkullB->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::socketBOffsetX, visibleSize.height / 2.0f + Config::socketOffsetY);
 }
 
+void LossesDisplay::onBeforeStateChange(GameState* gameState)
+{
+	ComponentBase::onBeforeStateChange(gameState);
+}
+
 void LossesDisplay::onStateChange(GameState* gameState)
 {
+	ComponentBase::onStateChange(gameState);
+
 	this->updateDisplayedLosses(gameState);
 }
 

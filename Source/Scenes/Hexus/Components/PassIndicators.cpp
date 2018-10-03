@@ -35,9 +35,26 @@ void PassIndicators::initializePositions()
 	this->enemyPassIndicator->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::enemyPassIndicatorOffsetX, visibleSize.height / 2.0f + Config::enemyPassIndicatorOffsetY);
 }
 
+void PassIndicators::onBeforeStateChange(GameState* gameState)
+{
+	ComponentBase::onBeforeStateChange(gameState);
+
+	switch (gameState->stateType)
+	{
+		case GameState::StateType::RoundEnd:
+		case GameState::StateType::RoundStart:
+			this->playerPassIndicator->runAction(FadeTo::create(Config::passIndicatorFadeSpeed, 0));
+			this->enemyPassIndicator->runAction(FadeTo::create(Config::passIndicatorFadeSpeed, 0));
+			break;
+		default:
+			break;
+	}
+}
 
 void PassIndicators::onStateChange(GameState* gameState)
 {
+	ComponentBase::onStateChange(gameState);
+
 	if (gameState->stateType == GameState::StateType::Pass)
 	{
 		switch (gameState->turn)
@@ -51,11 +68,5 @@ void PassIndicators::onStateChange(GameState* gameState)
 			default:
 				break;
 		}
-	}
-
-	if (gameState->stateType == GameState::StateType::RoundEnd)
-	{
-		this->playerPassIndicator->runAction(FadeTo::create(Config::passIndicatorFadeSpeed, 0));
-		this->enemyPassIndicator->runAction(FadeTo::create(Config::passIndicatorFadeSpeed, 0));
 	}
 }

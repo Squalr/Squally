@@ -48,6 +48,11 @@ void DeckCardCountDisplay::initializePositions()
 	this->enemyDeckCardCountText->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 8.0f, visibleSize.height / 2.0f + Config::deckOffsetY + Config::deckCardCountOffsetY + 32.0f);
 }
 
+void DeckCardCountDisplay::onBeforeStateChange(GameState* gameState)
+{
+	ComponentBase::onBeforeStateChange(gameState);
+}
+
 void DeckCardCountDisplay::onStateChange(GameState* gameState)
 {
 	this->updateTotals(gameState);

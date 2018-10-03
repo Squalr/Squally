@@ -13,6 +13,7 @@ class DebugDisplay : public ComponentBase
 public:
 	static DebugDisplay* create();
 protected:
+	void onBeforeStateChange(GameState* eventCustom) override;
 	void onStateChange(GameState* eventCustom) override;
 
 private:

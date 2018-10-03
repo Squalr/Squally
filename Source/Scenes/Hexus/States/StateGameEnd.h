@@ -30,8 +30,7 @@ private:
 
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onBackClick(MenuSprite* menuSprite);
+	void onBackClick(MenuSprite* menuSprite, GameState* gameState);
 
-	GameState* activeGameState;
 	TextMenuSprite* backButton;
 };

@@ -14,8 +14,10 @@ protected:
 	~ComponentBase();
 
 	void initializeListeners() override;
+	virtual void onBeforeStateChange(GameState* gameState);
 	virtual void onStateChange(GameState* gameState);
 
 private:
+	void onBeforeStateChangeEvent(EventCustom* eventCustom);
 	void onStateChangeEvent(EventCustom* eventCustom);
 };

@@ -14,6 +14,7 @@ public:
 	static PassIndicators * create();
 
 protected:
+	void onBeforeStateChange(GameState* gameState) override;
 	void onStateChange(GameState* gameState) override;
 
 private:

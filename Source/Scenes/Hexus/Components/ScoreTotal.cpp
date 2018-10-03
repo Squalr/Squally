@@ -51,8 +51,15 @@ void ScoreTotal::initializePositions()
 	this->enemyTotal->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f + Config::totalAttackOffsetY);
 }
 
+void ScoreTotal::onBeforeStateChange(GameState* gameState)
+{
+	ComponentBase::onBeforeStateChange(gameState);
+}
+
 void ScoreTotal::onStateChange(GameState* gameState)
 {
+	ComponentBase::onStateChange(gameState);
+
 	this->updateTotals(gameState);
 }
 

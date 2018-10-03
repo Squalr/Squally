@@ -81,6 +81,8 @@ void StateSelectionStaged::onStateReload(GameState* gameState)
 void StateSelectionStaged::onStateExit(GameState* gameState)
 {
 	StateBase::onStateExit(gameState);
+
+	this->clearSelectionStatus();
 }
 
 void StateSelectionStaged::initializeCallbacks(GameState* gameState)
@@ -346,7 +348,7 @@ void StateSelectionStaged::onHelpClick(MenuSprite* menuSprite)
 
 void StateSelectionStaged::updateSelectionStatus()
 {
-	if (this->activeGameState->turn == GameState::Turn::Player && this->activeGameState->selectedCard != nullptr && this->activeGameState->stateType == GameState::StateType::SelectionStaged)
+	if (this->activeGameState->turn == GameState::Turn::Player && this->activeGameState->selectedCard != nullptr)
 	{
 		switch (this->activeGameState->selectedCard->cardData->cardType)
 		{
@@ -378,8 +380,13 @@ void StateSelectionStaged::updateSelectionStatus()
 	}
 	else
 	{
-		this->selectionLabel->runAction(FadeTo::create(0.25f, 0));
-		this->cancelButton->runAction(FadeTo::create(0.25f, 0));
-		this->helpButton->runAction(FadeTo::create(0.25f, 0));
+		this->clearSelectionStatus();
 	}
+}
+
+void StateSelectionStaged::clearSelectionStatus()
+{
+	this->selectionLabel->runAction(FadeTo::create(0.25f, 0));
+	this->cancelButton->runAction(FadeTo::create(0.25f, 0));
+	this->helpButton->runAction(FadeTo::create(0.25f, 0));
 }

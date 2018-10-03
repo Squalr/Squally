@@ -51,8 +51,15 @@ void RowTotals::initializePositions()
 	this->enemyHexCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY + 0.0f);
 }
 
+void RowTotals::onBeforeStateChange(GameState* gameState)
+{
+	ComponentBase::onBeforeStateChange(gameState);
+}
+
 void RowTotals::onStateChange(GameState* gameState)
 {
+	ComponentBase::onStateChange(gameState);
+
 	this->updateTotals(gameState);
 }
 

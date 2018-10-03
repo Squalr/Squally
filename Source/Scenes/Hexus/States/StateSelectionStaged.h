@@ -35,6 +35,7 @@ private:
 	void updateSelectionStatus();
 	void onSelectionCancel(MenuSprite* menuSprite);
 	void onHelpClick(MenuSprite* menuSprite);
+	void clearSelectionStatus();
 
 	GameState* activeGameState;
 	Label* selectionLabel;
