@@ -25,6 +25,8 @@ void StateGameStart::onBeforeStateEnter(GameState* gameState)
 void StateGameStart::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
+
+	GameState::updateState(gameState, GameState::StateType::DrawInitialCards);
 }
 
 void StateGameStart::onStateReload(GameState* gameState)

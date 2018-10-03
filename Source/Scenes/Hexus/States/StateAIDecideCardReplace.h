@@ -1,6 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Localization/Localization.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Resources.h"
@@ -8,10 +10,10 @@
 
 using namespace cocos2d;
 
-class StateCoinFlip : public StateBase
+class StateAIDecideCardReplace : public StateBase
 {
 public:
-	static StateCoinFlip * create();
+	static StateAIDecideCardReplace * create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;
@@ -20,15 +22,6 @@ protected:
 	void onStateExit(GameState* gameState) override;
 
 private:
-	StateCoinFlip();
-	~StateCoinFlip();
-
-	void initializePositions() override;
-
-	Sprite* coin;
-	Animation* skeletonInAnimation;
-	Animation* skeletonOutAnimation;
-	Animation* lionInAnimation;
-	Animation* lionOutAnimation;
-	Animation* neutralAnimation;
+	StateAIDecideCardReplace();
+	~StateAIDecideCardReplace();
 };

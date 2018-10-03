@@ -25,6 +25,8 @@ void StatePlayerTurnStart::onBeforeStateEnter(GameState* gameState)
 void StatePlayerTurnStart::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
+
+	GameState::updateState(gameState, GameState::StateType::Neutral);
 }
 
 void StatePlayerTurnStart::onStateReload(GameState* gameState)

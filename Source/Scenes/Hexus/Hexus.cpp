@@ -23,15 +23,26 @@ Hexus::Hexus()
 	this->victoryBanner = VictoryBanner::create();
 	this->defeatBanner = DefeatBanner::create();
 	this->cardPreview = CardPreview::create();
-	this->stateDrawInitial = StateDrawInitial::create();
-	this->stateDraw = StateDraw::create();
-	this->stateNeutral = StateNeutral::create();
-	this->stateTurnEnd = StateTurnEnd::create();
-	this->stateCombineStaged = StateCombineStaged::create();
-	this->stateSelectionStaged = StateSelectionStaged::create();
-	this->stateReplaceCards = StateReplaceCards::create();
-	this->stateGameEnd = StateGameEnd::create();
+	this->stateAIDecideCard = StateAIDecideCard::create();
+	this->stateAIDecideCardReplace = StateAIDecideCardReplace::create();
+	this->stateAIDecidePass = StateAIDecidePass::create();
+	this->stateCardReplace = StateCardReplace::create();
 	this->stateCoinFlip = StateCoinFlip::create();
+	this->stateCombineStaged = StateCombineStaged::create();
+	this->stateDraw = StateDraw::create();
+	this->stateDrawInitial = StateDrawInitial::create();
+	this->stateGameEnd = StateGameEnd::create();
+	this->stateGameStart = StateGameStart::create();
+	this->stateNeutral = StateNeutral::create();
+	this->stateOpponentTurnStart = StateOpponentTurnStart::create();
+	this->statePass = StatePass::create();
+	this->statePlayCard = StatePlayCard::create();
+	this->statePlayCombineCard = StatePlayCombineCard::create();
+	this->statePlayerTurnStart = StatePlayerTurnStart::create();
+	this->stateRoundEnd = StateRoundEnd::create();
+	this->stateRoundStart = StateRoundStart::create();
+	this->stateSelectionStaged = StateSelectionStaged::create();
+	this->stateTurnEnd = StateTurnEnd::create();
 	this->deckCardCountDisplay = DeckCardCountDisplay::create();
 	this->handCardCountDisplay = HandCardCountDisplay::create();
 	this->lossesDisplay = LossesDisplay::create();
@@ -42,12 +53,6 @@ Hexus::Hexus()
 	this->addChild(this->gameBackground);
 	this->addChild(this->gameState);
 	this->addChild(this->avatars);
-	this->addChild(this->stateDrawInitial);
-	this->addChild(this->stateDraw);
-	this->addChild(this->stateNeutral);
-	this->addChild(this->stateSelectionStaged);
-	this->addChild(this->stateCombineStaged);
-	this->addChild(this->stateTurnEnd);
 	this->addChild(this->cardPreview);
 	this->addChild(this->lossesDisplay);
 	this->addChild(this->passButton);
@@ -55,9 +60,26 @@ Hexus::Hexus()
 	this->addChild(this->handCardCountDisplay);
 	this->addChild(this->rowTotals);
 	this->addChild(this->scoreTotal);
-	this->addChild(this->stateReplaceCards);
-	this->addChild(this->stateGameEnd);
+	this->addChild(this->stateAIDecideCard);
+	this->addChild(this->stateAIDecideCardReplace);
+	this->addChild(this->stateAIDecidePass);
+	this->addChild(this->stateCardReplace);
 	this->addChild(this->stateCoinFlip);
+	this->addChild(this->stateCombineStaged);
+	this->addChild(this->stateDraw);
+	this->addChild(this->stateDrawInitial);
+	this->addChild(this->stateGameEnd);
+	this->addChild(this->stateGameStart);
+	this->addChild(this->stateNeutral);
+	this->addChild(this->stateOpponentTurnStart);
+	this->addChild(this->statePass);
+	this->addChild(this->statePlayCard);
+	this->addChild(this->statePlayCombineCard);
+	this->addChild(this->statePlayerTurnStart);
+	this->addChild(this->stateRoundEnd);
+	this->addChild(this->stateRoundStart);
+	this->addChild(this->stateSelectionStaged);
+	this->addChild(this->stateTurnEnd);
 	this->addChild(this->cardReplaceBanner);
 	this->addChild(this->opponentFirstBanner);
 	this->addChild(this->opponentTurnBanner);
@@ -81,7 +103,7 @@ void Hexus::onEnter()
 
 	if (this->gameState->stateType == GameState::StateType::EmptyState)
 	{
-		GameState::updateState(this->gameState, GameState::StateType::RoundStart);
+		GameState::updateState(this->gameState, GameState::StateType::GameStart);
 	}
 }
 

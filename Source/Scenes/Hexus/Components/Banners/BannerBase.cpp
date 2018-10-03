@@ -11,7 +11,6 @@ BannerBase* BannerBase::create()
 
 BannerBase::BannerBase()
 {
-
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->statusBanner = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, 144.0f);
@@ -42,6 +41,7 @@ void BannerBase::initializePositions()
 
 void BannerBase::onStateChange(GameState* gameState)
 {
+	ComponentBase::onStateChange(gameState);
 }
 
 void BannerBase::setBannerText(std::string text)
@@ -49,7 +49,7 @@ void BannerBase::setBannerText(std::string text)
 	this->statusLabel->setString(text);
 }
 
-void BannerBase::showBanner()
+void BannerBase::flashBanner()
 {
 	this->statusLabel->runAction(Sequence::create(
 		FadeTo::create(Config::bannerFadeSpeed, 255),
@@ -61,6 +61,32 @@ void BannerBase::showBanner()
 	this->statusBanner->runAction(Sequence::create(
 		FadeTo::create(Config::bannerFadeSpeed, 196),
 		DelayTime::create(Config::bannerDisplayDuration),
+		FadeTo::create(Config::bannerFadeSpeed, 0),
+		nullptr
+	));
+}
+
+void BannerBase::showBanner()
+{
+	this->statusLabel->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 255),
+		nullptr
+	));
+
+	this->statusBanner->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 196),
+		nullptr
+	));
+}
+
+void BannerBase::hideBanner()
+{
+	this->statusLabel->runAction(Sequence::create(
+		FadeTo::create(Config::bannerFadeSpeed, 0),
+		nullptr
+	));
+
+	this->statusBanner->runAction(Sequence::create(
 		FadeTo::create(Config::bannerFadeSpeed, 0),
 		nullptr
 	));
