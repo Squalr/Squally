@@ -344,6 +344,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/Avatars.cpp
 	Source/Scenes/Hexus/Components/CardPreview.cpp
 	Source/Scenes/Hexus/Components/ComponentBase.cpp
+	Source/Scenes/Hexus/Components/DebugDisplay.cpp
 	Source/Scenes/Hexus/Components/DeckCardCountDisplay.cpp
 	Source/Scenes/Hexus/Components/HandCardCountDisplay.cpp
 	Source/Scenes/Hexus/Components/LossesDisplay.cpp
@@ -404,8 +405,10 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialE.cpp
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialF.cpp
 	Source/Scenes/Hexus/States/StateAIDecideCard.cpp
+	Source/Scenes/Hexus/States/StateAIDecideCardReplace.cpp
 	Source/Scenes/Hexus/States/StateAIDecidePass.cpp
 	Source/Scenes/Hexus/States/StateBase.cpp
+	Source/Scenes/Hexus/States/StateCardReplace.cpp
 	Source/Scenes/Hexus/States/StateCoinFlip.cpp
 	Source/Scenes/Hexus/States/StateCombineStaged.cpp
 	Source/Scenes/Hexus/States/StateDraw.cpp
@@ -418,8 +421,8 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/States/StatePlayCard.cpp
 	Source/Scenes/Hexus/States/StatePlayCombineCard.cpp
 	Source/Scenes/Hexus/States/StatePlayerTurnStart.cpp
-	Source/Scenes/Hexus/States/StateReplaceCards.cpp
 	Source/Scenes/Hexus/States/StateRoundEnd.cpp
+	Source/Scenes/Hexus/States/StateRoundStart.cpp
 	Source/Scenes/Hexus/States/StateSelectionStaged.cpp
 	Source/Scenes/Hexus/States/StateTurnEnd.cpp
 	Source/Scenes/Maps/Isometric/IsometricMap.cpp
@@ -778,6 +781,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/CardPreview.h
 	Source/Scenes/Hexus/Components/ComponentBase.h
 	Source/Scenes/Hexus/Components/Components.h
+	Source/Scenes/Hexus/Components/DebugDisplay.h
 	Source/Scenes/Hexus/Components/DeckCardCountDisplay.h
 	Source/Scenes/Hexus/Components/HandCardCountDisplay.h
 	Source/Scenes/Hexus/Components/LossesDisplay.h
@@ -840,8 +844,10 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialE.h
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialF.h
 	Source/Scenes/Hexus/States/StateAIDecideCard.h
+	Source/Scenes/Hexus/States/StateAIDecideCardReplace.h
 	Source/Scenes/Hexus/States/StateAIDecidePass.h
 	Source/Scenes/Hexus/States/StateBase.h
+	Source/Scenes/Hexus/States/StateCardReplace.h
 	Source/Scenes/Hexus/States/StateCoinFlip.h
 	Source/Scenes/Hexus/States/StateCombineStaged.h
 	Source/Scenes/Hexus/States/StateDraw.h
@@ -854,8 +860,8 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/States/StatePlayCard.h
 	Source/Scenes/Hexus/States/StatePlayCombineCard.h
 	Source/Scenes/Hexus/States/StatePlayerTurnStart.h
-	Source/Scenes/Hexus/States/StateReplaceCards.h
 	Source/Scenes/Hexus/States/StateRoundEnd.h
+	Source/Scenes/Hexus/States/StateRoundStart.h
 	Source/Scenes/Hexus/States/States.h
 	Source/Scenes/Hexus/States/StateSelectionStaged.h
 	Source/Scenes/Hexus/States/StateTurnEnd.h
