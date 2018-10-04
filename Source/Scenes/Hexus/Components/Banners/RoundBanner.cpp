@@ -43,7 +43,7 @@ void RoundBanner::onStateChange(GameState* gameState)
 
 	if (gameState->stateType == GameState::RoundStart)
 	{
-		switch (gameState->round)
+		switch (gameState->roundNumber)
 		{
 			case 0:
 				this->setBannerText("ROUND START!");

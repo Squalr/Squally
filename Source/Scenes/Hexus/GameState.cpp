@@ -19,7 +19,8 @@ GameState::GameState()
 	playerLosses(0),
 	enemyLosses(0),
 	cardReplaceCount(0),
-	round(0),
+	turnNumber(0),
+	roundNumber(0),
 	selectedCard(nullptr),
 	cardPreviewCallback(nullptr),
 	updateStateCallback(nullptr),
@@ -136,7 +137,7 @@ void GameState::endRound()
 		row->clear();
 	}
 
-	round++;
+	roundNumber++;
 }
 
 std::vector<Card*> GameState::getAllCards() 

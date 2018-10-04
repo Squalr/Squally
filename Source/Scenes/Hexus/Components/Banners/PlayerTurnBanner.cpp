@@ -43,7 +43,7 @@ void PlayerTurnBanner::onStateChange(GameState* gameState)
 {
 	BannerBase::onStateChange(gameState);
 
-	if (gameState->stateType == GameState::PlayerTurnStart && gameState->round > 0)
+	if (gameState->stateType == GameState::PlayerTurnStart && gameState->turnNumber > 0)
 	{
 		this->flashBanner();
 	}

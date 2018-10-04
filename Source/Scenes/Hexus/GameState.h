@@ -81,7 +81,8 @@ public:
 	int playerLosses;
 	int enemyLosses;
 	int cardReplaceCount;
-	int round;
+	int roundNumber;
+	int turnNumber;
 	CardRow* stagedCombineCardRow;
 	Card* stagedCombineSourceCard;
 	Card* stagedCombineTargetCard;
