@@ -29,11 +29,11 @@ public:
 		SelectionStaged,
 		CombineStaged,
 		PlayCard,
-		PlayCombineCard,
 		Pass,
 		AIDecidePass,
 		AIDecideCard,
 		AIDecideCardReplace,
+		AIDecideTarget,
 		TurnEnd,
 		RoundEnd,
 		GameEnd,
@@ -87,6 +87,7 @@ public:
 	Card* stagedCombineSourceCard;
 	Card* stagedCombineTargetCard;
 	Card* selectedCard;
+	CardRow* selectedRow;
 	std::string bannerMessage;
 	std::function<void(Card*)> cardPreviewCallback;
 	std::function<void(bool)> updateStateCallback;

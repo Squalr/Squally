@@ -114,8 +114,15 @@ void CardRow::insertCard(Card* card, float cardInsertDelay)
 
 Card* CardRow::removeCard(Card* card)
 {
+	if (std::find(this->rowCards->begin(), this->rowCards->end(), card) == this->rowCards->end())
+	{
+		// Not found
+		return nullptr;
+	}
+
 	this->rowCards->erase(std::remove(this->rowCards->begin(), this->rowCards->end(), card), this->rowCards->end());
 	this->setCardPositions(Config::insertDelay);
+
 	return card; // Note: We let the caller remove the child because it allows for control over positioning
 }
 

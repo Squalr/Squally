@@ -30,7 +30,7 @@ private:
 	void aiPerformAction(GameState* gameState);
 	void selectCard(Card* card, GameState* gameState);
 	void stageSelectedCombineCard(Card* card, GameState* gameState);
-	void playSelectedCard(CardRow* cardRow, GameState* gameState);
+	void onRowChosen(CardRow* cardRow, GameState* gameState);
 	void updateSelectionStatus(GameState* gameState);
 	void onSelectionCancel(MenuSprite* menuSprite, GameState* gameState);
 	void onHelpClick(MenuSprite* menuSprite, GameState* gameState);
