@@ -26,21 +26,34 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	// Draw starting cards
-	int drawnCount = 0;
+	const float indexDelay = 0.1f;
 
-	while (gameState->playerDeck->hasCards() && drawnCount < Config::startingCardAmount)
+	// Draw starting cards
+	std::vector<Card*> drawnCards = std::vector<Card*>();
+
+	for (int index = 0; index < Config::startingCardAmount; index++)
 	{
-		gameState->playerHand->insertCard(gameState->playerDeck->drawCard(), 0.0f);
-		drawnCount++;
+		if (gameState->playerDeck->hasCards())
+		{
+			Card* card = gameState->playerDeck->drawCard();
+
+			GameUtils::changeParent(card, this, true);
+
+			drawnCards.push_back(card);
+		}
 	}
 
-	drawnCount = 0;
+	this->runAction(Sequence::create(
+		CallFunc::create(CC_CALLBACK_0(CardRow::insertCards, gameState->playerHand, drawnCards, Config::insertDelay, indexDelay)),
+		nullptr
+	));
 
-	while (gameState->enemyDeck->hasCards() && drawnCount < Config::startingCardAmount)
+	for (int index = 0; index < Config::startingCardAmount; index++)
 	{
-		gameState->enemyHand->insertCard(gameState->enemyDeck->drawCard(), 0.0f);
-		drawnCount++;
+		if (gameState->enemyDeck->hasCards())
+		{
+			gameState->enemyHand->insertCard(gameState->enemyDeck->drawCard(), 0.0f);
+		}
 	}
 
 	this->runAction(Sequence::create(
