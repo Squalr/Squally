@@ -1,6 +1,6 @@
 #include "DebugDisplay.h"
 
-const bool DebugDisplay::enabled = false;
+const bool DebugDisplay::enabled = true;
 
 DebugDisplay* DebugDisplay::create()
 {
@@ -88,9 +88,6 @@ void DebugDisplay::onStateChange(GameState* gameState)
 		case GameState::StateType::PlayCard:
 			this->stateLabel->setString("PlayCard");
 			break;
-		case GameState::StateType::PlayCombineCard:
-			this->stateLabel->setString("PlayCombineCard");
-			break;
 		case GameState::StateType::Pass:
 			this->stateLabel->setString("Pass");
 			break;
@@ -102,6 +99,9 @@ void DebugDisplay::onStateChange(GameState* gameState)
 			break;
 		case GameState::StateType::AIDecideCardReplace:
 			this->stateLabel->setString("AIDecideCardReplace");
+			break;
+		case GameState::StateType::AIDecideTarget:
+			this->stateLabel->setString("AIDecideTarget");
 			break;
 		case GameState::StateType::TurnEnd:
 			this->stateLabel->setString("TurnEnd");

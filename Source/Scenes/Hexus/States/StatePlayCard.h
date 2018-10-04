@@ -22,4 +22,6 @@ protected:
 private:
 	StatePlayCard();
 	~StatePlayCard();
+
+	void passFromError(GameState* gameState);
 };

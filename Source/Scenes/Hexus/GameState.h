@@ -76,6 +76,7 @@ public:
 	StateType previousStateType;
 	Turn turn;
 	Difficulty difficulty;
+	bool isRepeatingSameTurn;
 	bool playerPassed;
 	bool enemyPassed;
 	int playerLosses;

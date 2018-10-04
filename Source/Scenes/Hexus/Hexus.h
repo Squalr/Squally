@@ -41,6 +41,7 @@ private:
 	StateAIDecideCard* stateAIDecideCard;
 	StateAIDecideCardReplace* stateAIDecideCardReplace;
 	StateAIDecidePass* stateAIDecidePass;
+	StateAIDecideTarget* stateAIDecideTarget;
 	StateCardReplace* stateCardReplace;
 	StateCoinFlip* stateCoinFlip;
 	StateCombineStaged* stateCombineStaged;
@@ -52,7 +53,6 @@ private:
 	StateOpponentTurnStart* stateOpponentTurnStart;
 	StatePass* statePass;
 	StatePlayCard* statePlayCard;
-	StatePlayCombineCard* statePlayCombineCard;
 	StatePlayerTurnStart* statePlayerTurnStart;
 	StateRoundEnd* stateRoundEnd;
 	StateRoundStart* stateRoundStart;

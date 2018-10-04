@@ -19,6 +19,7 @@ GameState::GameState()
 	playerLosses(0),
 	enemyLosses(0),
 	cardReplaceCount(0),
+	isRepeatingSameTurn(false),
 	turnNumber(0),
 	roundNumber(0),
 	selectedCard(nullptr),

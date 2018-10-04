@@ -30,6 +30,7 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 	gameState->clearInteraction();
 
 	float endTurnDelay = Config::endTurnDelay;
+	gameState->isRepeatingSameTurn = false;
 
 	// If both players pass than we end the round
 	if (gameState->playerPassed && gameState->enemyPassed)
@@ -51,6 +52,11 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 	// If the player passes it is the enemies turn
 	if (gameState->playerPassed)
 	{
+		if (gameState->turn == GameState::Turn::Enemy)
+		{
+			gameState->isRepeatingSameTurn = true;
+		}
+
 		endTurnDelay = Config::enemyEndTurnDelay;
 		gameState->turn = GameState::Turn::Enemy;
 		CallFunc* changeState = CallFunc::create([gameState]
@@ -70,6 +76,11 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 	// If the enemy passes it is the players turn
 	if (gameState->enemyPassed)
 	{
+		if (gameState->turn == GameState::Turn::Player)
+		{
+			gameState->isRepeatingSameTurn = true;
+		}
+
 		gameState->turn = GameState::Turn::Player;
 		CallFunc* changeState = CallFunc::create([gameState]
 		{

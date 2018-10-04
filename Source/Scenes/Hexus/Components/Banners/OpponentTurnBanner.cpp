@@ -43,7 +43,7 @@ void OpponentTurnBanner::onStateChange(GameState* gameState)
 {
 	BannerBase::onStateChange(gameState);
 
-	if (gameState->stateType == GameState::OpponentTurnStart && gameState->turnNumber > 0)
+	if (!gameState->isRepeatingSameTurn && gameState->stateType == GameState::OpponentTurnStart && gameState->turnNumber > 0)
 	{
 		this->flashBanner();
 	}
