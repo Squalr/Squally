@@ -14,6 +14,7 @@ class CardRow : public SmartNode
 public:
 	static CardRow * create(bool isPlayerRow = true);
 
+	void insertCards(std::vector<Card*> cards, float cardInsertDelay, float indexDelay = 0.0f);
 	void insertCard(Card* card, float cardInsertDelay);
 	Card* removeCard(Card* card);
 	int getCardCount();
@@ -42,7 +43,7 @@ private:
 	~CardRow();
 
 	void initializeListeners() override;
-	void setCardPositions(float cardRepositionDelay);
+	void setCardPositions(float cardRepositionDelay, float indexDelay = 0.0f);
 	void onRowSelectClick(MenuSprite* menuSprite);
 
 	float rowWidth;

@@ -72,8 +72,36 @@ float CardRow::getCardScale()
 	return this->cardScale;
 }
 
+void CardRow::insertCards(std::vector<Card*> cards, float cardInsertDelay, float indexDelay)
+{
+	for (auto it = cards.begin(); it != cards.end(); it++)
+	{
+		Card* card = *it;
+
+		if (card == nullptr)
+		{
+			return;
+		}
+
+		GameUtils::changeParent(card, this, true);
+
+		card->setMouseOverCallback(nullptr);
+		card->setMouseClickCallback(nullptr);
+		card->reveal();
+
+		this->rowCards->push_back(card);
+	}
+
+	this->setCardPositions(cardInsertDelay, indexDelay);
+}
+
 void CardRow::insertCard(Card* card, float cardInsertDelay)
 {
+	if (card == nullptr)
+	{
+		return;
+	}
+
 	GameUtils::changeParent(card, this, true);
 
 	card->setMouseOverCallback(nullptr);
@@ -218,7 +246,7 @@ void CardRow::setMouseClickCallback(std::function<void(Card*)> callback)
 	}
 }
 
-void CardRow::setCardPositions(float cardRepositionDelay)
+void CardRow::setCardPositions(float cardRepositionDelay, float indexDelay)
 {
 	int cardCount = this->rowCards->size();
 	int index = 0;
@@ -245,8 +273,16 @@ void CardRow::setCardPositions(float cardRepositionDelay)
 		if (cardRepositionDelay > 0.0f)
 		{
 			card->stopAllActions();
-			card->runAction(EaseSineInOut::create(MoveTo::create(cardRepositionDelay, card->position)));
-			card->runAction(ScaleTo::create(cardRepositionDelay, this->cardScale));
+			card->runAction(Sequence::create(
+					DelayTime::create(index * indexDelay),
+					EaseSineInOut::create(MoveTo::create(cardRepositionDelay, card->position)),
+					nullptr
+			));
+			card->runAction(Sequence::create(
+					DelayTime::create(index * indexDelay),
+					ScaleTo::create(cardRepositionDelay, this->cardScale),
+					nullptr
+			));
 		}
 		else
 		{
