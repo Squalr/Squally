@@ -63,31 +63,6 @@ void StateBase::onBeforeStateEnter(GameState* gameState)
 
 void StateBase::onStateEnter(GameState* gameState)
 {
-	/*
-	gameState->playerBinaryCards->disableRowCardInteraction();
-	gameState->playerBinaryCards->disableRowCardSelection();
-	gameState->playerBinaryCards->disableRowSelection();
-
-	gameState->playerDecimalCards->disableRowCardInteraction();
-	gameState->playerDecimalCards->disableRowCardSelection();
-	gameState->playerDecimalCards->disableRowSelection();
-
-	gameState->playerHexCards->disableRowCardInteraction();
-	gameState->playerHexCards->disableRowCardSelection();
-	gameState->playerHexCards->disableRowSelection();
-
-	gameState->enemyBinaryCards->disableRowCardInteraction();
-	gameState->enemyBinaryCards->disableRowCardSelection();
-	gameState->enemyBinaryCards->disableRowSelection();
-
-	gameState->enemyDecimalCards->disableRowCardInteraction();
-	gameState->enemyDecimalCards->disableRowCardSelection();
-	gameState->enemyDecimalCards->disableRowSelection();
-
-	gameState->enemyHexCards->disableRowCardInteraction();
-	gameState->enemyHexCards->disableRowCardSelection();
-	gameState->enemyHexCards->disableRowSelection();
-	*/
 }
 
 void StateBase::onStateReload(GameState* gameState)

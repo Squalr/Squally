@@ -69,7 +69,7 @@ void GameState::updateState(GameState* gameState, StateType newState)
 {
 	gameState->previousStateType = gameState->stateType;
 	gameState->stateType = newState;
-	gameState->clearCallbackStates();
+	gameState->clearInteraction();
 
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::beforeStateUpdateEvent, gameState);
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::onStateUpdateEvent, gameState);
@@ -98,18 +98,26 @@ void GameState::initializePositions()
 	this->enemyHexCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY);
 }
 
-void GameState::clearCallbackStates()
+void GameState::clearInteraction()
 {
 	this->playerHand->setMouseClickCallback(nullptr);
 	this->playerHand->setMouseOverCallback(nullptr);
 	this->enemyHand->setMouseClickCallback(nullptr);
 	this->enemyHand->setMouseOverCallback(nullptr);
 
-	std::vector<CardRow *> rows = this->getAllRows();
+	this->enemyHand->disableRowSelection();
+	this->enemyHand->disableRowCardSelection();
+	this->enemyHand->disableRowCardInteraction();
+	this->playerHand->disableRowSelection();
+	this->playerHand->disableRowCardSelection();
+	this->playerHand->disableRowCardInteraction();
+
+	std::vector<CardRow*> rows = this->getAllRows();
+
 	for (auto it = rows.begin(); it != rows.end(); it++)
 	{
 		CardRow* row = *it;
-		row->disableRowSelection();;
+		row->disableRowSelection();
 	}
 }
 
@@ -181,10 +189,14 @@ std::vector<Card*> GameState::getPlayerCards()
 
 std::vector<CardRow*> GameState::getAllRows() 
 {
+	std::vector<CardRow*> rows = std::vector<CardRow*>();
 	std::vector<CardRow*> enemyRows = this->getEnemyRows();
 	std::vector<CardRow*> playerRows = this->getPlayerRows();
-	enemyRows.insert(enemyRows.end(), playerRows.begin(), playerRows.end());
-	return enemyRows;
+
+	rows.insert(rows.end(), enemyRows.begin(), enemyRows.end());
+	rows.insert(rows.end(), playerRows.begin(), playerRows.end());
+
+	return rows;
 }
 
 std::vector<CardRow*> GameState::getEnemyRows() 

@@ -99,6 +99,8 @@ void StateCardReplace::onStateReload(GameState* gameState)
 {
 	StateBase::onStateReload(gameState);
 
+	gameState->playerHand->enableRowCardInteraction();
+
 	this->activeGameState = gameState;
 	this->initializeCallbacks(gameState);
 }
