@@ -22,6 +22,7 @@ GameState::GameState()
 	turnNumber(0),
 	roundNumber(0),
 	selectedCard(nullptr),
+	selectedRow(nullptr),
 	cardPreviewCallback(nullptr),
 	updateStateCallback(nullptr),
 	endTurnCallback(nullptr),

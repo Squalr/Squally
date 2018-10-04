@@ -110,13 +110,13 @@ void StateSelectionStaged::initializeSelectablesAndCallbacks(GameState* gameStat
 	switch (gameState->selectedCard->cardData->cardType)
 	{
 		case CardData::CardType::Binary:
-			gameState->playerBinaryCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
+			gameState->playerBinaryCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
 			break;
 		case CardData::CardType::Decimal:
-			gameState->playerDecimalCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
+			gameState->playerDecimalCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
 			break;
 		case CardData::CardType::Hexidecimal:
-			gameState->playerHexCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
+			gameState->playerHexCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
 			break;
 		case CardData::CardType::Special_SHL:
 		case CardData::CardType::Special_SHR:
@@ -125,12 +125,12 @@ void StateSelectionStaged::initializeSelectablesAndCallbacks(GameState* gameStat
 		case CardData::CardType::Special_FLIP3:
 		case CardData::CardType::Special_FLIP4:
 		case CardData::CardType::Special_INV:
-			gameState->playerBinaryCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
-			gameState->playerDecimalCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
-			gameState->playerHexCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
-			gameState->enemyBinaryCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
-			gameState->enemyDecimalCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
-			gameState->enemyHexCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
+			gameState->playerBinaryCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
+			gameState->playerDecimalCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
+			gameState->playerHexCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
+			gameState->enemyBinaryCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
+			gameState->enemyDecimalCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
+			gameState->enemyHexCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
 			break;
 		case CardData::CardType::Special_AND:
 		case CardData::CardType::Special_OR:
@@ -185,125 +185,15 @@ void StateSelectionStaged::stageSelectedCombineCard(Card* card, GameState* gameS
 	GameState::updateState(gameState, GameState::StateType::CombineStaged);
 }
 
-void StateSelectionStaged::playSelectedCard(CardRow* cardRow, GameState* gameState)
+void StateSelectionStaged::onRowChosen(CardRow* cardRow, GameState* gameState)
 {
-	if (gameState->selectedCard == nullptr)
-	{
-		return;
-	}
+	gameState->selectedRow = cardRow;
 
-	switch (gameState->selectedCard->cardData->cardType)
-	{
-		case CardData::CardType::Binary:
-		{
-			gameState->playerHand->removeCard(gameState->selectedCard);
-			gameState->playerBinaryCards->insertCard(gameState->selectedCard, Config::insertDelay);
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
-			GameState::updateState(gameState, GameState::StateType::TurnEnd);
-			break;
-		}
-		case CardData::CardType::Decimal:
-		{
-			gameState->playerHand->removeCard(gameState->selectedCard);
-			gameState->playerDecimalCards->insertCard(gameState->selectedCard, Config::insertDelay);
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
-			GameState::updateState(gameState, GameState::StateType::TurnEnd);
-			break;
-		}
-		case CardData::CardType::Hexidecimal:
-		{
-			gameState->playerHand->removeCard(gameState->selectedCard);
-			gameState->playerHexCards->insertCard(gameState->selectedCard, Config::insertDelay);
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
-			GameState::updateState(gameState, GameState::StateType::TurnEnd);
-			break;
-		}
-		case CardData::CardType::Special_SHL:
-		case CardData::CardType::Special_SHR:
-		case CardData::CardType::Special_FLIP1:
-		case CardData::CardType::Special_FLIP2:
-		case CardData::CardType::Special_FLIP3:
-		case CardData::CardType::Special_FLIP4:
-		case CardData::CardType::Special_INV:
-		{
-			gameState->playerHand->removeCard(gameState->selectedCard);
-			gameState->playerGraveyard->insertCardTop(gameState->selectedCard, true, Config::insertDelay);
-
-			Card::Operation operation = Card::toOperation(gameState->selectedCard->cardData->cardType, 0);
-
-			for (auto it = cardRow->rowCards->begin(); it != cardRow->rowCards->end(); it++)
-			{
-				Card* card = *it;
-
-				card->addOperation(operation);
-			}
-
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
-			GameState::updateState(gameState, GameState::StateType::TurnEnd);
-			break;
-		}
-		default:
-			break;
-	}
-
-	gameState->selectedCard = nullptr;
+	GameState::updateState(gameState, GameState::StateType::PlayCard);
 }
 
 void StateSelectionStaged::aiPerformAction(GameState* gameState)
 {
-	Card* selectedCard = gameState->selectedCard;
-
-	if (selectedCard != nullptr)
-	{
-		std::vector<CardRow *> rows = gameState->getAllRows();
-		switch (selectedCard->cardData->cardType)
-		{
-			case CardData::CardType::Binary:
-			{
-				gameState->enemyHand->removeCard(selectedCard);
-				gameState->enemyBinaryCards->insertCard(selectedCard, Config::insertDelay);
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
-				break;
-			}
-			case CardData::CardType::Decimal:
-			{
-				gameState->enemyHand->removeCard(selectedCard);
-				gameState->enemyDecimalCards->insertCard(selectedCard, Config::insertDelay);
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
-				break;
-			}
-			case CardData::CardType::Hexidecimal:
-			{
-				gameState->enemyHand->removeCard(selectedCard);
-				gameState->enemyHexCards->insertCard(selectedCard, Config::insertDelay);
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
-				break;
-			}
-			case CardData::CardType::Special_SHL:
-			case CardData::CardType::Special_SHR:
-			case CardData::CardType::Special_FLIP1:
-			case CardData::CardType::Special_FLIP2:
-			case CardData::CardType::Special_FLIP3:
-			case CardData::CardType::Special_FLIP4:
-			case CardData::CardType::Special_INV:
-			{
-				Card::Operation operation = Card::toOperation(selectedCard->cardData->cardType, 0);
-
-				// Apply the card
-				for (auto it = gameState->stagedCombineCardRow->rowCards->begin(); it != gameState->stagedCombineCardRow->rowCards->end(); it++)
-				{
-					Card* card = *it;
-					card->addOperation(operation);
-				}
-
-				gameState->enemyHand->removeCard(selectedCard);
-				gameState->enemyGraveyard->insertCardTop(selectedCard, true, Config::insertDelay);
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
-			}
-			default:
-				break;
-		}
-	}
 
 	GameState::updateState(gameState, GameState::StateType::TurnEnd);
 }

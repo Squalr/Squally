@@ -404,6 +404,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialD.cpp
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialE.cpp
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialF.cpp
+	Source/Scenes/Hexus/States/AIDecideTarget.cpp
 	Source/Scenes/Hexus/States/StateAIDecideCard.cpp
 	Source/Scenes/Hexus/States/StateAIDecideCardReplace.cpp
 	Source/Scenes/Hexus/States/StateAIDecidePass.cpp
@@ -419,7 +420,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/States/StateOpponentTurnStart.cpp
 	Source/Scenes/Hexus/States/StatePass.cpp
 	Source/Scenes/Hexus/States/StatePlayCard.cpp
-	Source/Scenes/Hexus/States/StatePlayCombineCard.cpp
 	Source/Scenes/Hexus/States/StatePlayerTurnStart.cpp
 	Source/Scenes/Hexus/States/StateRoundEnd.cpp
 	Source/Scenes/Hexus/States/StateRoundStart.cpp
@@ -843,6 +843,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialD.h
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialE.h
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialF.h
+	Source/Scenes/Hexus/States/AIDecideTarget.h
 	Source/Scenes/Hexus/States/StateAIDecideCard.h
 	Source/Scenes/Hexus/States/StateAIDecideCardReplace.h
 	Source/Scenes/Hexus/States/StateAIDecidePass.h
@@ -858,7 +859,6 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/States/StateOpponentTurnStart.h
 	Source/Scenes/Hexus/States/StatePass.h
 	Source/Scenes/Hexus/States/StatePlayCard.h
-	Source/Scenes/Hexus/States/StatePlayCombineCard.h
 	Source/Scenes/Hexus/States/StatePlayerTurnStart.h
 	Source/Scenes/Hexus/States/StateRoundEnd.h
 	Source/Scenes/Hexus/States/StateRoundStart.h

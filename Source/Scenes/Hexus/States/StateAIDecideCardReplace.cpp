@@ -36,7 +36,7 @@ void StateAIDecideCardReplace::onStateEnter(GameState* gameState)
 	StateBase::onStateEnter(gameState);
 
 	this->runAction(Sequence::create(
-		DelayTime::create(Config::bannerDisplayDuration),
+		DelayTime::create(0.5f),
 		CallFunc::create([=]()
 		{
 			GameState::updateState(gameState, GameState::StateType::CardReplace);

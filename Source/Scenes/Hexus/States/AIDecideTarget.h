@@ -1,17 +1,19 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Localization/Localization.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Engine/Sound/SoundManager.h"
 #include "Resources.h"
 #include "Scenes/Hexus/States/StateBase.h"
 
 using namespace cocos2d;
 
-class StatePlayCombineCard : public StateBase
+class AIDecideTarget : public StateBase
 {
 public:
-	static StatePlayCombineCard * create();
+	static AIDecideTarget * create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;
@@ -20,6 +22,6 @@ protected:
 	void onStateExit(GameState* gameState) override;
 
 private:
-	StatePlayCombineCard();
-	~StatePlayCombineCard();
+	AIDecideTarget();
+	~AIDecideTarget();
 };
