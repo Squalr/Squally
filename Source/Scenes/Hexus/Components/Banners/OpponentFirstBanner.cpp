@@ -34,7 +34,7 @@ void OpponentFirstBanner::onStateChange(GameState* gameState)
 {
 	BannerBase::onStateChange(gameState);
 
-	if (gameState->previousStateType == GameState::CoinFlip && gameState->round == 0 && gameState->turn == GameState::Turn::Enemy)
+	if (gameState->previousStateType == GameState::CoinFlip && gameState->turnNumber == 0 && gameState->roundNumber == 0 && gameState->turn == GameState::Turn::Enemy)
 	{
 		this->flashBanner();
 	}

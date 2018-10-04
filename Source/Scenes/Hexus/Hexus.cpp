@@ -143,7 +143,8 @@ void Hexus::onGameStart(EventCustom* eventCustom)
 	this->gameState->playerLosses = 0;
 	this->gameState->enemyLosses = 0;
 	this->gameState->cardReplaceCount = 0;
-	this->gameState->round = 0;
+	this->gameState->roundNumber = 0;
+	this->gameState->turnNumber = 0;
 
 	this->gameState->playerBinaryCards->clear();
 	this->gameState->playerDecimalCards->clear();
