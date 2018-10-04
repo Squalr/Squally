@@ -31,6 +31,10 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 
 	float endTurnDelay = Config::endTurnDelay;
 	gameState->isRepeatingSameTurn = false;
+	gameState->selectedRow = nullptr;
+	gameState->stagedCombineCardRow = nullptr;
+	gameState->stagedCombineSourceCard = nullptr;
+	gameState->stagedCombineTargetCard = nullptr;
 
 	// If both players pass than we end the round
 	if (gameState->playerPassed && gameState->enemyPassed)

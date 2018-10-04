@@ -59,6 +59,8 @@ void StatePass::onStateChange(GameState* gameState)
 	switch (gameState->stateType)
 	{
 		case GameState::StateType::Neutral:
+		case GameState::StateType::SelectionStaged:
+		case GameState::StateType::CombineStaged:
 			this->passButton->setClickCallback(CC_CALLBACK_1(StatePass::onPassClick, this, gameState));
 			this->passButton->enableInteraction();
 			break;
