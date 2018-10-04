@@ -58,24 +58,37 @@ void StateSelectionStaged::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	this->activeGameState = gameState;
+	gameState->playerHand->enableRowCardInteraction();
 
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
-			this->initializeCallbacks(gameState);
+			this->initializeSelectablesAndCallbacks(gameState);
 			break;
 		case GameState::Turn::Enemy:
 			this->aiPerformAction(gameState);
 			break;
+		default:
+			break;
 	}
 
-	this->updateSelectionStatus();
+	this->updateSelectionStatus(gameState);
 }
 
 void StateSelectionStaged::onStateReload(GameState* gameState)
 {
 	StateBase::onStateReload(gameState);
+
+	switch (gameState->turn)
+	{
+		case GameState::Turn::Player:
+			this->initializeSelectablesAndCallbacks(gameState);
+			break;
+		case GameState::Turn::Enemy:
+			break;
+		default:
+			break;
+	}
 }
 
 void StateSelectionStaged::onStateExit(GameState* gameState)
@@ -85,23 +98,25 @@ void StateSelectionStaged::onStateExit(GameState* gameState)
 	this->clearSelectionStatus();
 }
 
-void StateSelectionStaged::initializeCallbacks(GameState* gameState)
+void StateSelectionStaged::initializeSelectablesAndCallbacks(GameState* gameState)
 {
-	this->cancelButton->setClickCallback(CC_CALLBACK_1(StateSelectionStaged::onSelectionCancel, this));
-	this->helpButton->setClickCallback(CC_CALLBACK_1(StateSelectionStaged::onHelpClick, this));
-	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(StateSelectionStaged::selectCard, this));
-	gameState->enemyHand->setMouseClickCallback(CC_CALLBACK_1(StateSelectionStaged::selectCard, this));
+	this->cancelButton->setClickCallback(CC_CALLBACK_1(StateSelectionStaged::onSelectionCancel, this, gameState));
+	this->helpButton->setClickCallback(CC_CALLBACK_1(StateSelectionStaged::onHelpClick, this, gameState));
+
+	gameState->playerHand->enableRowCardInteraction();
+	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(StateSelectionStaged::selectCard, this, gameState));
+	gameState->enemyHand->setMouseClickCallback(CC_CALLBACK_1(StateSelectionStaged::selectCard, this, gameState));
 
 	switch (gameState->selectedCard->cardData->cardType)
 	{
 		case CardData::CardType::Binary:
-			gameState->playerBinaryCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this));
+			gameState->playerBinaryCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
 			break;
 		case CardData::CardType::Decimal:
-			gameState->playerDecimalCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this));
+			gameState->playerDecimalCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
 			break;
 		case CardData::CardType::Hexidecimal:
-			gameState->playerHexCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this));
+			gameState->playerHexCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
 			break;
 		case CardData::CardType::Special_SHL:
 		case CardData::CardType::Special_SHR:
@@ -110,105 +125,97 @@ void StateSelectionStaged::initializeCallbacks(GameState* gameState)
 		case CardData::CardType::Special_FLIP3:
 		case CardData::CardType::Special_FLIP4:
 		case CardData::CardType::Special_INV:
-			gameState->playerBinaryCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this));
-			gameState->playerDecimalCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this));
-			gameState->playerHexCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this));
-			gameState->enemyBinaryCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this));
-			gameState->enemyDecimalCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this));
-			gameState->enemyHexCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this));
+			gameState->playerBinaryCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
+			gameState->playerDecimalCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
+			gameState->playerHexCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
+			gameState->enemyBinaryCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
+			gameState->enemyDecimalCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
+			gameState->enemyHexCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::playSelectedCard, this, gameState));
 			break;
 		case CardData::CardType::Special_AND:
 		case CardData::CardType::Special_OR:
 		case CardData::CardType::Special_XOR:
 		case CardData::CardType::Special_ADD:
 		case CardData::CardType::Special_SUB:
-			gameState->playerBinaryCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this));
-			gameState->playerDecimalCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this));
-			gameState->playerHexCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this));
+			gameState->playerBinaryCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this, gameState));
+			gameState->playerDecimalCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this, gameState));
+			gameState->playerHexCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this, gameState));
 			break;
 	}
 }
 
-void StateSelectionStaged::selectCard(Card* card)
+void StateSelectionStaged::selectCard(Card* card, GameState* gameState)
 {
-	if (card == nullptr || this->activeGameState->selectedCard == nullptr)
+	if (card == nullptr || gameState->selectedCard == nullptr)
 	{
 		return;
 	}
 
 	// Unstage/deselect card if clicking the active card
-	if (card == this->activeGameState->selectedCard)
+	if (card == gameState->selectedCard)
 	{
-		this->activeGameState->selectedCard->stopAllActions();
-		this->activeGameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedCard->position));
-		GameState::updateState(this->activeGameState, GameState::StateType::Neutral);
-		this->activeGameState->selectedCard = nullptr;
+		gameState->selectedCard->stopAllActions();
+		gameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedCard->position));
+		GameState::updateState(gameState, GameState::StateType::Neutral);
+		gameState->selectedCard = nullptr;
 	}
 	else
 	{
 		// Otherwise this is just a selection/re-staging of a new card
-		this->activeGameState->selectedCard->stopAllActions();
-		this->activeGameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedCard->position));
+		gameState->selectedCard->stopAllActions();
+		gameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedCard->position));
 
-		this->activeGameState->selectedCard = card;
-		this->activeGameState->selectedCard->stopAllActions();
-		this->activeGameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedCard->position + Vec2(0.0f, Config::cardSelectOffsetY)));
+		gameState->selectedCard = card;
+		gameState->selectedCard->stopAllActions();
+		gameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedCard->position + Vec2(0.0f, Config::cardSelectOffsetY)));
 
 		// Transition to the same state (re-initialize things)
-		GameState::updateState(this->activeGameState, GameState::StateType::SelectionStaged);
+		GameState::updateState(gameState, GameState::StateType::SelectionStaged);
 	}
 }
 
-void StateSelectionStaged::stageSelectedSacrificeCard(Card* card)
+void StateSelectionStaged::stageSelectedCombineCard(Card* card, GameState* gameState)
 {
-	if (this->activeGameState->selectedCard == nullptr)
-	{
-		return;
-	}
-}
-
-void StateSelectionStaged::stageSelectedCombineCard(Card* card)
-{
-	if (this->activeGameState->selectedCard == nullptr)
+	if (gameState->selectedCard == nullptr)
 	{
 		return;
 	}
 
-	this->activeGameState->stagedCombineSourceCard = card;
-	GameState::updateState(this->activeGameState, GameState::StateType::CombineStaged);
+	gameState->stagedCombineSourceCard = card;
+	GameState::updateState(gameState, GameState::StateType::CombineStaged);
 }
 
-void StateSelectionStaged::playSelectedCard(CardRow* cardRow)
+void StateSelectionStaged::playSelectedCard(CardRow* cardRow, GameState* gameState)
 {
-	if (this->activeGameState->selectedCard == nullptr)
+	if (gameState->selectedCard == nullptr)
 	{
 		return;
 	}
 
-	switch (this->activeGameState->selectedCard->cardData->cardType)
+	switch (gameState->selectedCard->cardData->cardType)
 	{
 		case CardData::CardType::Binary:
 		{
-			this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
-			this->activeGameState->playerBinaryCards->insertCard(this->activeGameState->selectedCard, Config::insertDelay);
+			gameState->playerHand->removeCard(gameState->selectedCard);
+			gameState->playerBinaryCards->insertCard(gameState->selectedCard, Config::insertDelay);
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
-			GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
+			GameState::updateState(gameState, GameState::StateType::TurnEnd);
 			break;
 		}
 		case CardData::CardType::Decimal:
 		{
-			this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
-			this->activeGameState->playerDecimalCards->insertCard(this->activeGameState->selectedCard, Config::insertDelay);
+			gameState->playerHand->removeCard(gameState->selectedCard);
+			gameState->playerDecimalCards->insertCard(gameState->selectedCard, Config::insertDelay);
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
-			GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
+			GameState::updateState(gameState, GameState::StateType::TurnEnd);
 			break;
 		}
 		case CardData::CardType::Hexidecimal:
 		{
-			this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
-			this->activeGameState->playerHexCards->insertCard(this->activeGameState->selectedCard, Config::insertDelay);
+			gameState->playerHand->removeCard(gameState->selectedCard);
+			gameState->playerHexCards->insertCard(gameState->selectedCard, Config::insertDelay);
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
-			GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
+			GameState::updateState(gameState, GameState::StateType::TurnEnd);
 			break;
 		}
 		case CardData::CardType::Special_SHL:
@@ -219,10 +226,10 @@ void StateSelectionStaged::playSelectedCard(CardRow* cardRow)
 		case CardData::CardType::Special_FLIP4:
 		case CardData::CardType::Special_INV:
 		{
-			this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
-			this->activeGameState->playerGraveyard->insertCardTop(this->activeGameState->selectedCard, true, Config::insertDelay);
+			gameState->playerHand->removeCard(gameState->selectedCard);
+			gameState->playerGraveyard->insertCardTop(gameState->selectedCard, true, Config::insertDelay);
 
-			Card::Operation operation = Card::toOperation(this->activeGameState->selectedCard->cardData->cardType, 0);
+			Card::Operation operation = Card::toOperation(gameState->selectedCard->cardData->cardType, 0);
 
 			for (auto it = cardRow->rowCards->begin(); it != cardRow->rowCards->end(); it++)
 			{
@@ -232,19 +239,19 @@ void StateSelectionStaged::playSelectedCard(CardRow* cardRow)
 			}
 
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
-			GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
+			GameState::updateState(gameState, GameState::StateType::TurnEnd);
 			break;
 		}
 		default:
 			break;
 	}
 
-	this->activeGameState->selectedCard = nullptr;
+	gameState->selectedCard = nullptr;
 }
 
 void StateSelectionStaged::aiPerformAction(GameState* gameState)
 {
-	Card* selectedCard = this->activeGameState->selectedCard;
+	Card* selectedCard = gameState->selectedCard;
 
 	if (selectedCard != nullptr)
 	{
@@ -301,15 +308,15 @@ void StateSelectionStaged::aiPerformAction(GameState* gameState)
 	GameState::updateState(gameState, GameState::StateType::TurnEnd);
 }
 
-void StateSelectionStaged::onSelectionCancel(MenuSprite* menuSprite)
+void StateSelectionStaged::onSelectionCancel(MenuSprite* menuSprite, GameState* gameState)
 {
-	this->selectCard(this->activeGameState->selectedCard);
+	this->selectCard(gameState->selectedCard, gameState);
 }
 
-void StateSelectionStaged::onHelpClick(MenuSprite* menuSprite)
+void StateSelectionStaged::onHelpClick(MenuSprite* menuSprite, GameState* gameState)
 {
 	// TODO: Show help menu for the type
-	switch (this->activeGameState->selectedCard->cardData->cardType)
+	switch (gameState->selectedCard->cardData->cardType)
 	{
 		case CardData::CardType::Binary:
 			break;
@@ -346,11 +353,11 @@ void StateSelectionStaged::onHelpClick(MenuSprite* menuSprite)
 	}
 }
 
-void StateSelectionStaged::updateSelectionStatus()
+void StateSelectionStaged::updateSelectionStatus(GameState* gameState)
 {
-	if (this->activeGameState->turn == GameState::Turn::Player && this->activeGameState->selectedCard != nullptr)
+	if (gameState->turn == GameState::Turn::Player && gameState->selectedCard != nullptr)
 	{
-		switch (this->activeGameState->selectedCard->cardData->cardType)
+		switch (gameState->selectedCard->cardData->cardType)
 		{
 			case CardData::CardType::Special_AND:
 			case CardData::CardType::Special_OR:

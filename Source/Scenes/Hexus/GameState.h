@@ -56,7 +56,7 @@ public:
 
 	static GameState * create();
 	static void updateState(GameState* gameState, StateType newState);
-	void clearCallbackStates();
+	void clearInteraction();
 	void endRound();
 	bool playerIsWinning();
 	bool enemyIsWinning();

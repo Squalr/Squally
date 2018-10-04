@@ -26,7 +26,7 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	gameState->clearCallbackStates();
+	gameState->clearInteraction();
 
 	float endTurnDelay = Config::endTurnDelay;
 
