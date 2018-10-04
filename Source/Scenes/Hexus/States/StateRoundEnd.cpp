@@ -26,59 +26,51 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	gameState->endRound();
+	GameState::StateType nextState = GameState::StateType::RoundStart;
 
 	if (gameState->playerLosses >= 2)
 	{
+		nextState = GameState::StateType::GameEnd;
 		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_card_downgrade);
 	}
 	else if (gameState->enemyLosses >= 2)
 	{
+		nextState = GameState::StateType::GameEnd;
 		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_card_upgrade);
 	}
-	else
+	else if (gameState->playerHand->getCardCount() == 0)
 	{
 		// Player cannot enter the last round with zero cards
-		if (gameState->playerHand->getCardCount() == 0)
-		{
-			gameState->playerLosses++;
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_card_downgrade);
-		}
-		else
-		{
-			this->runAction(Sequence::create(
-				DelayTime::create(0.5f),
-				CallFunc::create([=]()
-				{
-					GameState::updateState(gameState, GameState::StateType::RoundStart);
-				}),
-				nullptr
-			));
-		}
+		gameState->playerLosses++;
+		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_card_downgrade);
 	}
 
-	if (gameState->playerLosses >= 2 || gameState->enemyLosses >= 2)
-	{
-		this->runAction(Sequence::create(
-			DelayTime::create(0.5f),
-			CallFunc::create([=]()
+	const float fadeSpeed = 0.5f;
+
+	this->runAction(Sequence::create(
+		CallFunc::create([=]()
+		{
+			std::vector<CardRow*> rows = gameState->getAllRows();
+
+			for (auto it = rows.begin(); it != rows.end(); it++)
 			{
-				GameState::updateState(gameState, GameState::StateType::GameEnd);
-			}),
-			nullptr
-		));
-	}
-	else
-	{
-		this->runAction(Sequence::create(
-			DelayTime::create(0.5f),
-			CallFunc::create([=]()
-			{
-				GameState::updateState(gameState, GameState::StateType::RoundStart);
-			}),
-			nullptr
-		));
-	}
+				for (auto cardIt = (*it)->rowCards->begin(); cardIt != (*it)->rowCards->end(); cardIt++)
+				{
+					(*cardIt)->runAction(FadeTo::create(fadeSpeed, 0));
+				}
+			}
+		}),
+		DelayTime::create(fadeSpeed),
+		CallFunc::create([=]()
+		{
+			gameState->endRound();
+		}),
+		CallFunc::create([=]()
+		{
+			GameState::updateState(gameState, nextState);
+		}),
+		nullptr
+	));
 }
 
 void StateRoundEnd::onStateReload(GameState* gameState)

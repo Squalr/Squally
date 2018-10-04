@@ -121,6 +121,8 @@ void GameState::clearInteraction()
 	{
 		CardRow* row = *it;
 		row->disableRowSelection();
+		row->disableRowCardSelection();
+		row->disableRowCardInteraction();
 	}
 }
 
@@ -133,6 +135,7 @@ void GameState::endRound()
 	}
 
 	std::vector<CardRow *> rows = this->getAllRows();
+
 	for (auto it = rows.begin(); it != rows.end(); it++)
 	{
 		CardRow* row = *it;
