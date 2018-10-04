@@ -26,6 +26,7 @@ Hexus::Hexus()
 	this->stateAIDecideCard = StateAIDecideCard::create();
 	this->stateAIDecideCardReplace = StateAIDecideCardReplace::create();
 	this->stateAIDecidePass = StateAIDecidePass::create();
+	this->stateAIDecideTarget = StateAIDecideTarget::create();
 	this->stateCardReplace = StateCardReplace::create();
 	this->stateCoinFlip = StateCoinFlip::create();
 	this->stateCombineStaged = StateCombineStaged::create();
@@ -37,7 +38,6 @@ Hexus::Hexus()
 	this->stateOpponentTurnStart = StateOpponentTurnStart::create();
 	this->statePass = StatePass::create();
 	this->statePlayCard = StatePlayCard::create();
-	this->statePlayCombineCard = StatePlayCombineCard::create();
 	this->statePlayerTurnStart = StatePlayerTurnStart::create();
 	this->stateRoundEnd = StateRoundEnd::create();
 	this->stateRoundStart = StateRoundStart::create();
@@ -64,6 +64,7 @@ Hexus::Hexus()
 	this->addChild(this->stateAIDecideCard);
 	this->addChild(this->stateAIDecideCardReplace);
 	this->addChild(this->stateAIDecidePass);
+	this->addChild(this->stateAIDecideTarget);
 	this->addChild(this->stateCardReplace);
 	this->addChild(this->stateCoinFlip);
 	this->addChild(this->stateCombineStaged);
@@ -75,7 +76,6 @@ Hexus::Hexus()
 	this->addChild(this->stateOpponentTurnStart);
 	this->addChild(this->statePass);
 	this->addChild(this->statePlayCard);
-	this->addChild(this->statePlayCombineCard);
 	this->addChild(this->statePlayerTurnStart);
 	this->addChild(this->stateRoundEnd);
 	this->addChild(this->stateRoundStart);

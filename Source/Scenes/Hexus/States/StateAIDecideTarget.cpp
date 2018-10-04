@@ -1,28 +1,28 @@
-#include "AIDecideTarget.h"
+#include "StateAIDecideTarget.h"
 
-AIDecideTarget* AIDecideTarget::create()
+StateAIDecideTarget* StateAIDecideTarget::create()
 {
-	AIDecideTarget* instance = new AIDecideTarget();
+	StateAIDecideTarget* instance = new StateAIDecideTarget();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-AIDecideTarget::AIDecideTarget() : StateBase(GameState::StateType::AIDecideTarget)
+StateAIDecideTarget::StateAIDecideTarget() : StateBase(GameState::StateType::AIDecideTarget)
 {
 }
 
-AIDecideTarget::~AIDecideTarget()
+StateAIDecideTarget::~StateAIDecideTarget()
 {
 }
 
-void AIDecideTarget::onBeforeStateEnter(GameState* gameState)
+void StateAIDecideTarget::onBeforeStateEnter(GameState* gameState)
 {
 	StateBase::onBeforeStateEnter(gameState);
 }
 
-void AIDecideTarget::onStateEnter(GameState* gameState)
+void StateAIDecideTarget::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
@@ -37,6 +37,8 @@ void AIDecideTarget::onStateEnter(GameState* gameState)
 			}),
 			nullptr
 		));
+
+		return;
 	}
 
 	switch (gameState->selectedCard->cardData->cardType)
@@ -85,7 +87,7 @@ void AIDecideTarget::onStateEnter(GameState* gameState)
 			if (bestDiff > 0)
 			{
 				gameState->stagedCombineCardRow = bestRow;
-				return;
+				break;
 			}
 
 			gameState->selectedRow = gameState->stagedCombineCardRow;
@@ -171,11 +173,11 @@ void AIDecideTarget::onStateEnter(GameState* gameState)
 			if (bestDiff >= 0) {
 				gameState->stagedCombineSourceCard = bestSourceCard;
 				gameState->stagedCombineTargetCard = bestTargetCard;
-				return;
+				break;
 			}
+		}
 		default:
 			break;
-		}
 	}
 
 	this->runAction(Sequence::create(
@@ -188,12 +190,12 @@ void AIDecideTarget::onStateEnter(GameState* gameState)
 	));
 }
 
-void AIDecideTarget::onStateReload(GameState* gameState)
+void StateAIDecideTarget::onStateReload(GameState* gameState)
 {
 	StateBase::onStateReload(gameState);
 }
 
-void AIDecideTarget::onStateExit(GameState* gameState)
+void StateAIDecideTarget::onStateExit(GameState* gameState)
 {
 	StateBase::onStateExit(gameState);
 }

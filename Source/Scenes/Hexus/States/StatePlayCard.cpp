@@ -28,6 +28,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 	if (gameState->selectedCard == nullptr)
 	{
+		this->passFromError(gameState);
 		return;
 	}
 
@@ -51,6 +52,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			selfHexRow = gameState->enemyHexCards;
 			break;
 		default:
+			this->passFromError(gameState);
 			return;
 	}
 
@@ -62,13 +64,13 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		{
 			if (gameState->selectedRow == nullptr)
 			{
+				this->passFromError(gameState);
 				return;
 			}
 
 			selfHand->removeCard(gameState->selectedCard);
 			gameState->selectedRow->insertCard(gameState->selectedCard, Config::insertDelay);
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
-			GameState::updateState(gameState, GameState::StateType::TurnEnd);
 			break;
 		}
 		case CardData::CardType::Special_SHL:
@@ -81,6 +83,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		{
 			if (gameState->selectedRow == nullptr)
 			{
+				this->passFromError(gameState);
 				return;
 			}
 
@@ -97,11 +100,37 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			}
 
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
-			GameState::updateState(gameState, GameState::StateType::TurnEnd);
+			break;
+		}
+		case CardData::CardType::Special_AND:
+		case CardData::CardType::Special_OR:
+		case CardData::CardType::Special_XOR:
+		case CardData::CardType::Special_ADD:
+		case CardData::CardType::Special_SUB:
+		{
+			if (gameState->stagedCombineTargetCard == nullptr)
+			{
+				this->passFromError(gameState);
+				return;
+			}
+
+			gameState->enemyHand->removeCard(gameState->selectedCard);
+			gameState->enemyGraveyard->insertCardTop(gameState->selectedCard, true, Config::insertDelay);
+
+			Card::Operation operation = Card::toOperation(
+				gameState->selectedCard->cardData->cardType,
+				gameState->stagedCombineSourceCard->getAttack()
+			);
+
+			// NOTE, the future we may want destination card to be different than target
+			Card* destinationCard = gameState->stagedCombineTargetCard;
+			destinationCard->addOperation(operation);
+			SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
 			break;
 		}
 		default:
-			break;
+			this->passFromError(gameState);
+			return;
 	}
 
 	gameState->selectedCard = nullptr;
@@ -124,4 +153,16 @@ void StatePlayCard::onStateReload(GameState* gameState)
 void StatePlayCard::onStateExit(GameState* gameState)
 {
 	StateBase::onStateExit(gameState);
+}
+
+void StatePlayCard::passFromError(GameState* gameState)
+{
+	this->runAction(Sequence::create(
+		DelayTime::create(0.5f),
+		CallFunc::create([=]()
+		{
+			GameState::updateState(gameState, GameState::StateType::Pass);
+		}),
+		nullptr
+	));
 }

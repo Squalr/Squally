@@ -10,10 +10,10 @@
 
 using namespace cocos2d;
 
-class AIDecideTarget : public StateBase
+class StateAIDecideTarget : public StateBase
 {
 public:
-	static AIDecideTarget * create();
+	static StateAIDecideTarget * create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;
@@ -22,6 +22,6 @@ protected:
 	void onStateExit(GameState* gameState) override;
 
 private:
-	AIDecideTarget();
-	~AIDecideTarget();
+	StateAIDecideTarget();
+	~StateAIDecideTarget();
 };
