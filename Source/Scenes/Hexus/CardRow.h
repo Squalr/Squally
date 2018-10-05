@@ -12,7 +12,7 @@ using namespace cocos2d;
 class CardRow : public SmartNode
 {
 public:
-	static CardRow * create(bool isPlayerRow = true);
+	static CardRow * create(bool isPlayerRow);
 
 	void insertCards(std::vector<Card*> cards, float cardInsertDelay, float indexDelay = 0.0f);
 	void insertCard(Card* card, float cardInsertDelay);

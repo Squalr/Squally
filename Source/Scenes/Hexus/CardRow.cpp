@@ -336,7 +336,7 @@ int CardRow::simulateCardEffect(Card* card)
 					Card* rowCard = *it;
 					int before = rowCard->getAttack();
 					int after = rowCard->simulateOperation(operation);
-					diff += after - before;
+					diff += (after - before);
 				}
 			}
 			default:
