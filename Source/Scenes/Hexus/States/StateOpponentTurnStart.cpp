@@ -27,7 +27,7 @@ void StateOpponentTurnStart::onStateEnter(GameState* gameState)
 	StateBase::onStateEnter(gameState);
 
 	this->runAction(Sequence::create(
-		DelayTime::create(0.5f),
+		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
 			GameState::updateState(gameState, GameState::StateType::AIDecidePass);
