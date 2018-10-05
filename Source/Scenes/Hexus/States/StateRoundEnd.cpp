@@ -28,6 +28,20 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 
 	GameState::StateType nextState = GameState::StateType::RoundStart;
 
+	if (gameState->isRoundTied())
+	{
+		gameState->enemyLosses++;
+		gameState->playerLosses++;
+	}
+	else if (gameState->isPlayerWinningRound())
+	{
+		gameState->enemyLosses++;
+	}
+	else
+	{
+		gameState->playerLosses++;
+	}
+
 	if (gameState->playerLosses >= 2)
 	{
 		nextState = GameState::StateType::GameEnd;
@@ -37,12 +51,6 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 	{
 		nextState = GameState::StateType::GameEnd;
 		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_card_upgrade);
-	}
-	else if (gameState->playerHand->getCardCount() == 0)
-	{
-		// Player cannot enter the last round with zero cards
-		gameState->playerLosses++;
-		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_card_downgrade);
 	}
 
 	const float fadeSpeed = 0.5f;
@@ -63,7 +71,7 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 		DelayTime::create(fadeSpeed),
 		CallFunc::create([=]()
 		{
-			gameState->endRound();
+			gameState->removeFieldCards();
 		}),
 		CallFunc::create([=]()
 		{
