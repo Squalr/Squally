@@ -57,7 +57,7 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 		});
 	}
 	// If the player passes and we're ahead we won, so pass
-	else if (gameState->playerPassed && gameState->enemyIsWinning())
+	else if (gameState->playerPassed && gameState->isEnemyWinningRound())
 	{
 		stateTransition = CallFunc::create([=]()
 		{

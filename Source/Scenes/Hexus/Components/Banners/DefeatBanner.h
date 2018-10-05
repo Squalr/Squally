@@ -23,4 +23,7 @@ private:
 	~DefeatBanner();
 
 	void initializePositions() override;
+
+	Sprite* defeatBanner1;
+	Sprite* defeatBanner2;
 };

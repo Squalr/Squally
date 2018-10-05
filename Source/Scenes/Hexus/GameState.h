@@ -58,8 +58,9 @@ public:
 	static void updateState(GameState* gameState, StateType newState);
 	void clearInteraction();
 	void endRound();
-	bool playerIsWinning();
-	bool enemyIsWinning();
+	bool isRoundTied();
+	bool isPlayerWinningRound();
+	bool isEnemyWinningRound();
 	int getPlayerTotal();
 	int getEnemyTotal();
 	int getCardCount();

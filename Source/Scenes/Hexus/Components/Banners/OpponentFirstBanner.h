@@ -21,4 +21,7 @@ private:
 	~OpponentFirstBanner();
 
 	void initializePositions() override;
+
+	Sprite* enemyBanner1;
+	Sprite* enemyBanner2;
 };
