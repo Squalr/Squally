@@ -128,9 +128,17 @@ void GameState::clearInteraction()
 
 void GameState::endRound() 
 {
-	if (this->playerIsWinning()) {
+	if (this->isRoundTied())
+	{
 		this->enemyLosses++;
-	} else {
+		this->playerLosses++;
+	}
+	else if (this->isPlayerWinningRound())
+	{
+		this->enemyLosses++;
+	}
+	else
+	{
 		this->playerLosses++;
 	}
 
@@ -264,12 +272,17 @@ int GameState::getEnemyCardCount()
 	return total;
 }
 
-bool GameState::enemyIsWinning()
+bool GameState::isRoundTied()
+{
+	return this->getEnemyTotal() == this->getPlayerTotal();
+}
+
+bool GameState::isEnemyWinningRound()
 {
 	return this->getEnemyTotal() > this->getPlayerTotal();
 }
 
-bool GameState::playerIsWinning()
+bool GameState::isPlayerWinningRound()
 {
 	return this->getPlayerTotal() > this->getEnemyTotal();
 }

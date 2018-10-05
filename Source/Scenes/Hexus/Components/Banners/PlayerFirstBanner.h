@@ -21,4 +21,7 @@ private:
 	~PlayerFirstBanner();
 
 	void initializePositions() override;
+
+	Sprite* playerBanner1;
+	Sprite* playerBanner2;
 };

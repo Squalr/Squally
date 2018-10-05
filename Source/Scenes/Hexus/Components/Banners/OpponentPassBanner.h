@@ -7,21 +7,21 @@
 
 using namespace cocos2d;
 
-class VictoryBanner : public BannerBase
+class OpponentPassBanner : public BannerBase
 {
 public:
-	static VictoryBanner * create();
+	static OpponentPassBanner * create();
 
 protected:
 	void onBeforeStateChange(GameState* eventCustom) override;
 	void onStateChange(GameState* eventCustom) override;
 
 private:
-	VictoryBanner();
-	~VictoryBanner();
+	OpponentPassBanner();
+	~OpponentPassBanner();
 
 	void initializePositions() override;
 
-	Sprite* victoryBanner1;
-	Sprite* victoryBanner2;
+	Sprite* opponentPassBanner1;
+	Sprite* opponentPassBanner2;
 };
