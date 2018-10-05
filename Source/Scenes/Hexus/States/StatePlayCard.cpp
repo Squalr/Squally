@@ -36,6 +36,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 	CardRow* selfBinaryRow = nullptr;
 	CardRow* selfDecimalRow = nullptr;
 	CardRow* selfHexRow = nullptr;
+	Deck* selfGraveyard = nullptr;
 
 	switch (gameState->turn)
 	{
@@ -44,12 +45,14 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			selfBinaryRow = gameState->playerBinaryCards;
 			selfDecimalRow = gameState->playerDecimalCards;
 			selfHexRow = gameState->playerHexCards;
+			selfGraveyard = gameState->playerGraveyard;
 			break;
 		case GameState::Turn::Enemy:
 			selfHand = gameState->enemyHand;
 			selfBinaryRow = gameState->enemyBinaryCards;
 			selfDecimalRow = gameState->enemyDecimalCards;
 			selfHexRow = gameState->enemyHexCards;
+			selfGraveyard = gameState->enemyGraveyard;
 			break;
 		default:
 			this->passFromError(gameState);
@@ -88,7 +91,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			}
 
 			selfHand->removeCard(gameState->selectedCard);
-			gameState->playerGraveyard->insertCardTop(gameState->selectedCard, true, Config::insertDelay);
+			selfGraveyard->insertCardTop(gameState->selectedCard, true, Config::insertDelay);
 
 			Card::Operation operation = Card::toOperation(gameState->selectedCard->cardData->cardType, 0);
 
@@ -108,14 +111,14 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_ADD:
 		case CardData::CardType::Special_SUB:
 		{
-			if (gameState->stagedCombineTargetCard == nullptr)
+			if (gameState->stagedCombineSourceCard == nullptr || gameState->stagedCombineTargetCard == nullptr)
 			{
 				this->passFromError(gameState);
 				return;
 			}
 
-			gameState->enemyHand->removeCard(gameState->selectedCard);
-			gameState->enemyGraveyard->insertCardTop(gameState->selectedCard, true, Config::insertDelay);
+			selfHand->removeCard(gameState->selectedCard);
+			selfGraveyard->insertCardTop(gameState->selectedCard, true, Config::insertDelay);
 
 			Card::Operation operation = Card::toOperation(
 				gameState->selectedCard->cardData->cardType,

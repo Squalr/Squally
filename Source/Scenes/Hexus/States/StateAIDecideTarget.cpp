@@ -26,7 +26,7 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	// ERROR
+	// Error condition -- just pass (shouldn't happen)
 	if (gameState->selectedCard == nullptr)
 	{
 		this->runAction(Sequence::create(
@@ -75,7 +75,13 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 			for (auto it = rows.begin(); it != rows.end(); it++)
 			{
 				CardRow* row = *it;
-				int diff = row->isEmpty() ? 0 : (row->simulateCardEffect(gameState->selectedCard) * (row->isPlayerRow() ? -1 : 1));
+
+				if (row->isEmpty())
+				{
+					continue;
+				}
+
+				int diff = row->simulateCardEffect(gameState->selectedCard) * (row->isPlayerRow() ? -1 : 1);
 
 				if (diff >= bestDiff)
 				{
@@ -87,7 +93,6 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 			if (bestDiff > 0)
 			{
 				gameState->stagedCombineCardRow = bestRow;
-				break;
 			}
 
 			gameState->selectedRow = gameState->stagedCombineCardRow;
@@ -128,6 +133,7 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 					int before = targetCard->getAttack();
 					int after = targetCard->simulateOperation(operation);
 					int diff = (after - before);
+
 					if (diff > bestDiff) {
 						bestDiff = diff;
 						bestSourceCard = sourceCard;
@@ -170,11 +176,10 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 				}
 			}
 
-			if (bestDiff >= 0) {
-				gameState->stagedCombineSourceCard = bestSourceCard;
-				gameState->stagedCombineTargetCard = bestTargetCard;
-				break;
-			}
+			gameState->stagedCombineSourceCard = bestSourceCard;
+			gameState->stagedCombineTargetCard = bestTargetCard;
+
+			break;
 		}
 		default:
 			break;

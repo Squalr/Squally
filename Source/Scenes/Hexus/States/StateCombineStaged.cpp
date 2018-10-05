@@ -209,7 +209,7 @@ void StateCombineStaged::updateCombineStatus()
 		this->cancelButton->runAction(FadeTo::create(0.25f, 255));
 	}
 	else if (this->activeGameState->stagedCombineTargetCard == nullptr) {
-		this->combineStatus->setString("Choose the target/destination card for your operation");
+		this->combineStatus->setString("Choose the target card for your operation");
 		this->combineStatus->runAction(FadeTo::create(0.25f, 255));
 		this->cancelButton->runAction(FadeTo::create(0.25f, 255));
 	}

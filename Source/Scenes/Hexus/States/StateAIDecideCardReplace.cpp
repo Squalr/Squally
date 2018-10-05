@@ -35,6 +35,8 @@ void StateAIDecideCardReplace::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
+	// TODO: AI card replace logic here
+
 	this->runAction(Sequence::create(
 		DelayTime::create(0.5f),
 		CallFunc::create([=]()

@@ -39,11 +39,11 @@ GameState::GameState()
 	this->playerHexCards = CardRow::create(true);
 
 	this->enemyDeck = Deck::create();
-	this->enemyHand = CardRow::create();
+	this->enemyHand = CardRow::create(false);
 	this->enemyGraveyard = Deck::create();
-	this->enemyBinaryCards = CardRow::create();
-	this->enemyDecimalCards = CardRow::create();
-	this->enemyHexCards = CardRow::create();
+	this->enemyBinaryCards = CardRow::create(false);
+	this->enemyDecimalCards = CardRow::create(false);
+	this->enemyHexCards = CardRow::create(false);
 
 	this->enemyHand->setVisible(false);
 	this->playerHand->setRowWidth(Config::handWidth, 0.0f);

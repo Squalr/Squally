@@ -22,4 +22,10 @@ protected:
 private:
 	StateAIDecideCard();
 	~StateAIDecideCard();
+
+	int getBaseCardsInHandCount(GameState* gameState);
+	int getPlayerHandCount(GameState* gameState);
+	int getEnemyHandCount(GameState* gameState);
+	int getPlayerCardsOnFieldCount(GameState* gameState);
+	int getEnemyCardsOnFieldCount(GameState* gameState);
 };
