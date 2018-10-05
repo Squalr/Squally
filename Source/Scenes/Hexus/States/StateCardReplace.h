@@ -26,13 +26,10 @@ private:
 	~StateCardReplace();
 
 	void initializePositions() override;
-	void initializeListeners() override;
-	void onEndReplaceCards(MenuSprite* menuSprite);
+	void onEndReplaceCards(MenuSprite* menuSprite, GameState* gameState);
 	void initializeCallbacks(GameState* gameState);
-	void replaceCard(Card* card);
-	void removeCardsOfTypeFromDeck(Card* cardToRemove, Deck* deck);
+	void replaceCard(Card* card, GameState* gameState);
 
-	std::set<Card*>* replacedCards;
-	GameState* activeGameState;
+	std::vector<Card*> removedCards;
 	TextMenuSprite* doneButton;
 };

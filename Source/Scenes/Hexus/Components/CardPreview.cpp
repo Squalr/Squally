@@ -54,12 +54,23 @@ void CardPreview::onStateChange(GameState* gameState)
 
 void CardPreview::initializeCallbacks(GameState* gameState)
 {
+	gameState->playerHand->enableRowCardInteraction();
+	gameState->enemyHand->enableRowCardInteraction();
+
 	gameState->playerHand->setMouseOverCallback(CC_CALLBACK_1(CardPreview::previewCard, this));
 	gameState->enemyHand->setMouseOverCallback(CC_CALLBACK_1(CardPreview::previewCard, this));
+
+	gameState->playerBinaryCards->enableRowCardInteraction();
+	gameState->playerDecimalCards->enableRowCardInteraction();
+	gameState->playerHexCards->enableRowCardInteraction();
 
 	gameState->playerBinaryCards->setMouseOverCallback(CC_CALLBACK_1(CardPreview::previewCard, this));
 	gameState->playerDecimalCards->setMouseOverCallback(CC_CALLBACK_1(CardPreview::previewCard, this));
 	gameState->playerHexCards->setMouseOverCallback(CC_CALLBACK_1(CardPreview::previewCard, this));
+
+	gameState->enemyBinaryCards->enableRowCardInteraction();
+	gameState->enemyDecimalCards->enableRowCardInteraction();
+	gameState->enemyHexCards->enableRowCardInteraction();
 
 	gameState->enemyBinaryCards->setMouseOverCallback(CC_CALLBACK_1(CardPreview::previewCard, this));
 	gameState->enemyDecimalCards->setMouseOverCallback(CC_CALLBACK_1(CardPreview::previewCard, this));

@@ -21,16 +21,16 @@ public:
 	Card* removeCard(Card* card);
 	Card* drawCard();
 	bool hasCards();
+	void shuffle();
 	void insertCardTop(Card* card, bool faceUp, float insertDelay);
 	void insertCardBottom(Card* card, bool faceUp, float insertDelay);
 	void insertCardRandom(Card* card, bool faceUp, float insertDelay);
 	void clear();
-	std::vector<Card*>* deckCards;
+	std::vector<Card*> deckCards;
 
 private:
 	Deck();
-	Deck(Card::CardStyle cardStyle, std::vector<Card*> cards);
-	Deck(Card::CardStyle cardStyle, std::vector<CardData*> cards);
+	Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData);
 	~Deck();
 
 	void setCardOrder();

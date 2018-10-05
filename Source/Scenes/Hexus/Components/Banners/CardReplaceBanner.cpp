@@ -35,8 +35,11 @@ void CardReplaceBanner::onStateChange(GameState* gameState)
 
 	if (gameState->stateType == GameState::CardReplace)
 	{
-		this->setBannerText("REMAINING CARD REPLACEMENTS: " + std::to_string(gameState->cardReplaceCount));
-		this->showBanner();
+		if (gameState->cardReplaceCount > 0)
+		{
+			this->setBannerText("REMAINING CARD REPLACEMENTS: " + std::to_string(gameState->cardReplaceCount));
+			this->showBanner();
+		}
 	}
 	else if (gameState->previousStateType == GameState::CardReplace)
 	{

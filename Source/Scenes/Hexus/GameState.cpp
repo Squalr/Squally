@@ -126,22 +126,8 @@ void GameState::clearInteraction()
 	}
 }
 
-void GameState::endRound() 
+void GameState::removeFieldCards()
 {
-	if (this->isRoundTied())
-	{
-		this->enemyLosses++;
-		this->playerLosses++;
-	}
-	else if (this->isPlayerWinningRound())
-	{
-		this->enemyLosses++;
-	}
-	else
-	{
-		this->playerLosses++;
-	}
-
 	std::vector<CardRow *> rows = this->getAllRows();
 
 	for (auto it = rows.begin(); it != rows.end(); it++)

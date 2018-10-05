@@ -167,7 +167,7 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition)
 
 	if (node->getParent() != nullptr)
 	{
-		if (retainPosition)
+		if (retainPosition && newParent != nullptr)
 		{
 			Vec2 screenPosition = node->getParent()->convertToWorldSpace(node->getPosition());
 			newPosition = newParent->convertToNodeSpace(screenPosition);

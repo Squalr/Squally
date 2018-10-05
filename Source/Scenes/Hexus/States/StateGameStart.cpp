@@ -26,6 +26,9 @@ void StateGameStart::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
+	gameState->playerDeck->shuffle();
+	gameState->enemyDeck->shuffle();
+
 	this->runAction(Sequence::create(
 		DelayTime::create(0.5f),
 		CallFunc::create([=]()

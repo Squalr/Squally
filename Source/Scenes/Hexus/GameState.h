@@ -57,7 +57,7 @@ public:
 	static GameState * create();
 	static void updateState(GameState* gameState, StateType newState);
 	void clearInteraction();
-	void endRound();
+	void removeFieldCards();
 	bool isRoundTied();
 	bool isPlayerWinningRound();
 	bool isEnemyWinningRound();
