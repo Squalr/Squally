@@ -44,6 +44,9 @@ if(NOT USE_COCOS_PREBUILT)
     add_subdirectory(${COCOS2DX_ROOT_PATH}/cocos ${ENGINE_BINARY_PATH}/cocos/core)
 endif()
 
+# add external dependencies
+add_subdirectory(${PROJECT_SOURCE_DIR}/external)
+
 # record sources, headers, resources...
 set(GAME_SOURCE)
 set(GAME_HEADER)
@@ -1536,11 +1539,15 @@ endif()
 set(APP_SRC
     ${GAME_SOURCE}
     ${GAME_HEADER}
-    )
+)
+
 cocos_build_app(${APP_NAME}
-                APP_SRC "${APP_SRC}"
-                DEPEND_COMMON_LIBS "cocos2d"
-                )
+	APP_SRC
+		"${APP_SRC}"
+	DEPEND_COMMON_LIBS
+		breakpad_client
+		cocos2d
+)
 
 if(APPLE)
     set_target_properties(${APP_NAME} PROPERTIES RESOURCE "${APP_UI_RES}")
