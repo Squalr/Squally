@@ -22,17 +22,36 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#include "../Source/GameWindow.h"
+extern "C" {
+    #include <unistd.h>
+}
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
+#include <iostream>
 #include <string>
+
+#include "client/linux/handler/exception_handler.h"
+#include "GameWindow.h"
 
 USING_NS_CC;
 
+namespace
+{
+    bool dumpCallback(const google_breakpad::MinidumpDescriptor& descriptor, void* context, bool succeeded)
+    {
+        std::cerr << "Dump path: " << descriptor.path() << std::endl;
+        return succeeded;
+    }
+}
+
 int main(int argc, char **argv)
 {
+    // crash report directory
+    const std::string& crashDumpPath = std::string("/tmp");
+
+    // setup crash reporting
+    google_breakpad::MinidumpDescriptor descriptor(crashDumpPath);
+    google_breakpad::ExceptionHandler eh(descriptor, NULL, dumpCallback, NULL, true, -1);
+
     // create the application instance
     GameWindow app;
     return Application::getInstance()->run();
