@@ -93,7 +93,7 @@ void StatePass::onStateEnter(GameState* gameState)
 	}
 
 	this->runAction(Sequence::create(
-		DelayTime::create(0.5f),
+		DelayTime::create(Config::bannerDisplayDuration),
 		CallFunc::create([=]()
 		{
 			GameState::updateState(gameState, GameState::StateType::TurnEnd);

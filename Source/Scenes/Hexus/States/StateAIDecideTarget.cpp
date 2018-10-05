@@ -181,7 +181,7 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 	}
 
 	this->runAction(Sequence::create(
-		DelayTime::create(0.5f),
+		DelayTime::create(0.25f),
 		CallFunc::create([=]()
 		{
 			GameState::updateState(gameState, GameState::StateType::PlayCard);
