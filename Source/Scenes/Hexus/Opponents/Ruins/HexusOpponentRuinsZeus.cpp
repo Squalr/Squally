@@ -17,8 +17,8 @@ HexusOpponentRuinsZeus::HexusOpponentRuinsZeus() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Ruins_Npcs_Zeus_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
+	Vec2(-32.0f, -64.0f),
+	Vec2(0.0f, -32.0f),
 	HexusOpponentRuinsZeus::StringKeyOpponentName,
 	Card::CardStyle::Earth,
 	{
