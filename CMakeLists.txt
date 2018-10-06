@@ -400,6 +400,28 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleViking.cpp
 	Source/Scenes/Hexus/Opponents/Kickstarter/HexusOpponentKnight.cpp
 	Source/Scenes/Hexus/Opponents/Npcs/HexusOpponentEgyptianMummy.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAnubisTiny.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAnubisWarrior.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAphrodite.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAres.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAthena.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsEgyptianGoddess.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsGriffin.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsHorus.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsLioness.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsLionMan.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsManticore.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMedusa.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMedusaSmall.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMermaid.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMinotaur.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMummyPharaoh.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsPoseidon.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsSpartan.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsSwordswoman.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsTigerMan.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsTigress.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsZeus.cpp
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialA.cpp
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialB.cpp
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialC.cpp
@@ -841,6 +863,28 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleViking.h
 	Source/Scenes/Hexus/Opponents/Kickstarter/HexusOpponentKnight.h
 	Source/Scenes/Hexus/Opponents/Npcs/HexusOpponentEgyptianMummy.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAnubisTiny.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAnubisWarrior.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAphrodite.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAres.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAthena.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsEgyptianGoddess.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsGriffin.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsHorus.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsLioness.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsLionMan.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsManticore.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMedusa.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMedusaSmall.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMermaid.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMinotaur.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMummyPharaoh.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsPoseidon.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsSpartan.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsSwordswoman.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsTigerMan.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsTigress.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsZeus.h
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialA.h
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialB.h
 	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialC.h

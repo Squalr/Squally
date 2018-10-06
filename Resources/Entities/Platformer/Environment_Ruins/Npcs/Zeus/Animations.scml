@@ -10,10 +10,9 @@
         <file id="6" name="BODY.png" width="82" height="58" pivot_x="0" pivot_y="1"/>
         <file id="7" name="BELT.png" width="87" height="41" pivot_x="0" pivot_y="1"/>
         <file id="8" name="HEAD.png" width="132" height="128" pivot_x="0" pivot_y="1"/>
-        <file id="9" name="6.jpg" width="725" height="484" pivot_x="0" pivot_y="1"/>
-        <file id="10" name="BOLT.png" width="50" height="175" pivot_x="0" pivot_y="1"/>
+        <file id="9" name="BOLT.png" width="50" height="175" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Enitty">
+    <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="1000" interval="100">
             <mainline>
                 <key id="0">
@@ -71,12 +70,12 @@
             </timeline>
             <timeline id="8" name="HEAD">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="-72.336596" y="104.872999"/>
+                    <object folder="0" file="8" x="-72.336596" y="104.872999" angle="0"/>
                 </key>
             </timeline>
             <timeline id="9" name="BOLT">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="-141.933593" y="-94.966876" angle="88.740955" scale_y="1"/>
+                    <object folder="0" file="9" x="-141.933593" y="-94.966876" angle="88.740955"/>
                 </key>
             </timeline>
         </animation>

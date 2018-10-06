@@ -10,11 +10,10 @@
         <file id="6" name="BODY.png" width="87" height="59" pivot_x="0" pivot_y="1"/>
         <file id="7" name="BELT.png" width="86" height="25" pivot_x="0" pivot_y="1"/>
         <file id="8" name="HEAD.png" width="132" height="145" pivot_x="0" pivot_y="1"/>
-        <file id="9" name="10.jpg" width="725" height="484" pivot_x="0" pivot_y="1"/>
-        <file id="10" name="PANTS.png" width="88" height="44" pivot_x="0" pivot_y="1"/>
-        <file id="11" name="STAFF.png" width="27" height="186" pivot_x="0" pivot_y="1"/>
+        <file id="9" name="PANTS.png" width="88" height="44" pivot_x="0" pivot_y="1"/>
+        <file id="10" name="STAFF.png" width="27" height="186" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Enitty">
+    <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="1000" interval="100">
             <mainline>
                 <key id="0">
@@ -78,12 +77,12 @@
             </timeline>
             <timeline id="9" name="PANTS">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="-44.423077" y="-40.817308" angle="0"/>
+                    <object folder="0" file="9" x="-44.423077" y="-40.817308" angle="0"/>
                 </key>
             </timeline>
             <timeline id="10" name="STAFF">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="120.892857" y="85.625" angle="337.496472" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="10" x="120.892857" y="85.625" angle="337.496472"/>
                 </key>
             </timeline>
         </animation>

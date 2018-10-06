@@ -10,14 +10,13 @@
         <file id="6" name="BODY.png" width="82" height="64" pivot_x="0" pivot_y="1"/>
         <file id="7" name="BELT.png" width="88" height="49" pivot_x="0" pivot_y="1"/>
         <file id="8" name="HEAD.png" width="94" height="104" pivot_x="0" pivot_y="1"/>
-        <file id="9" name="3.jpg" width="725" height="484" pivot_x="0" pivot_y="1"/>
-        <file id="10" name="HELMET.png" width="100" height="145" pivot_x="0" pivot_y="1"/>
-        <file id="11" name="R-ARMOR.png" width="34" height="30" pivot_x="0" pivot_y="1"/>
-        <file id="12" name="L-ARMOR.png" width="35" height="36" pivot_x="0" pivot_y="1"/>
-        <file id="13" name="SHIELD.png" width="92" height="94" pivot_x="0" pivot_y="1"/>
-        <file id="14" name="SWORD.png" width="40" height="144" pivot_x="0" pivot_y="1"/>
+        <file id="9" name="HELMET.png" width="100" height="145" pivot_x="0" pivot_y="1"/>
+        <file id="10" name="R-ARMOR.png" width="34" height="30" pivot_x="0" pivot_y="1"/>
+        <file id="11" name="L-ARMOR.png" width="35" height="36" pivot_x="0" pivot_y="1"/>
+        <file id="12" name="SHIELD.png" width="92" height="94" pivot_x="0" pivot_y="1"/>
+        <file id="13" name="SWORD.png" width="40" height="144" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Enitty">
+    <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="1000" interval="100">
             <mainline>
                 <key id="0">
@@ -39,12 +38,12 @@
             </mainline>
             <timeline id="0" name="R-ARM">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="12.563905" y="4.818955" angle="15.976653" scale_x="1"/>
+                    <object folder="0" file="4" x="12.563905" y="4.818955" angle="15.976653"/>
                 </key>
             </timeline>
             <timeline id="1" name="R-HAND">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="31.782627" y="-53.251985" angle="15.976653" scale_x="1"/>
+                    <object folder="0" file="3" x="31.782627" y="-53.251985" angle="15.976653"/>
                 </key>
             </timeline>
             <timeline id="2" name="R-LEG">
@@ -84,27 +83,27 @@
             </timeline>
             <timeline id="9" name="HELMET">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="-52.649072" y="124.547671" angle="0"/>
+                    <object folder="0" file="9" x="-52.649072" y="124.547671" angle="0"/>
                 </key>
             </timeline>
             <timeline id="10" name="R-ARMOR">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="24.136643" y="12.4941" angle="0"/>
+                    <object folder="0" file="10" x="24.136643" y="12.4941" angle="0"/>
                 </key>
             </timeline>
             <timeline id="11" name="L-ARMOR">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="-60.238357" y="9.3691" angle="0"/>
+                    <object folder="0" file="11" x="-60.238357" y="9.3691" angle="0"/>
                 </key>
             </timeline>
             <timeline id="12" name="SHIELD">
                 <key id="0" spin="0">
-                    <object folder="0" file="13" x="-90.558808" y="-9.833444" angle="0"/>
+                    <object folder="0" file="12" x="-90.558808" y="-9.833444" angle="0"/>
                 </key>
             </timeline>
             <timeline id="13" name="SWORD">
                 <key id="0" spin="0">
-                    <object folder="0" file="14" x="162.86585" y="1.467926" angle="288.434949" scale_x="1"/>
+                    <object folder="0" file="13" x="162.86585" y="1.467926" angle="288.434949"/>
                 </key>
             </timeline>
         </animation>

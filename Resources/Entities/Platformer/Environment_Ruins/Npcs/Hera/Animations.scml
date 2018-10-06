@@ -10,11 +10,10 @@
         <file id="6" name="BODY.png" width="88" height="60" pivot_x="0" pivot_y="1"/>
         <file id="7" name="HEAD.png" width="134" height="148" pivot_x="0" pivot_y="1"/>
         <file id="8" name="PANTS.png" width="96" height="49" pivot_x="0" pivot_y="1"/>
-        <file id="9" name="4.jpg" width="725" height="484" pivot_x="0" pivot_y="1"/>
-        <file id="10" name="BELT.png" width="86" height="17" pivot_x="0" pivot_y="1"/>
-        <file id="11" name="STAFF.png" width="49" height="189" pivot_x="0" pivot_y="1"/>
+        <file id="9" name="BELT.png" width="86" height="17" pivot_x="0" pivot_y="1"/>
+        <file id="10" name="STAFF.png" width="49" height="189" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Enitty">
+    <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="1000" interval="100">
             <mainline>
                 <key id="0">
@@ -63,12 +62,12 @@
             </timeline>
             <timeline id="6" name="L-ARM">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-53.821998" y="17.912518" angle="350.563005" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="2" x="-53.821998" y="17.912518" angle="350.563005"/>
                 </key>
             </timeline>
             <timeline id="7" name="L-HAND">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-60.955451" y="-25.005181" angle="350.563005" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="1" x="-60.955451" y="-25.005181" angle="350.563005"/>
                 </key>
             </timeline>
             <timeline id="8" name="PANTS">
@@ -78,12 +77,12 @@
             </timeline>
             <timeline id="9" name="BELT">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="-37.951807" y="-28.915663"/>
+                    <object folder="0" file="9" x="-37.951807" y="-28.915663" angle="0"/>
                 </key>
             </timeline>
             <timeline id="10" name="STAFF">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="169.879518" y="16.86747" angle="289.155612" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="10" x="169.879518" y="16.86747" angle="289.155612"/>
                 </key>
             </timeline>
         </animation>

@@ -13,9 +13,8 @@
         <file id="9" name="BELT.png" width="88" height="20" pivot_x="0" pivot_y="1"/>
         <file id="10" name="STAFF.png" width="53" height="155" pivot_x="0" pivot_y="1"/>
         <file id="11" name="NECKLACE.png" width="65" height="39" pivot_x="0" pivot_y="1"/>
-        <file id="12" name="8.jpg" width="725" height="484" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Enitty">
+    <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="1000" interval="100">
             <mainline>
                 <key id="0">
@@ -90,7 +89,7 @@
             </timeline>
             <timeline id="11" name="NECKLACE">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="-25.654541" y="25.428638"/>
+                    <object folder="0" file="11" x="-25.654541" y="25.428638" angle="0"/>
                 </key>
             </timeline>
         </animation>

@@ -12,19 +12,18 @@
         <file id="8" name="COVER.png" width="81" height="30" pivot_x="0" pivot_y="1"/>
         <file id="9" name="L-WING.png" width="94" height="48" pivot_x="0" pivot_y="1"/>
         <file id="10" name="R-WING.png" width="95" height="47" pivot_x="0" pivot_y="1"/>
-        <file id="11" name="MANTICORE.jpg" width="725" height="484" pivot_x="0" pivot_y="1"/>
-        <file id="12" name="HEAD.png" width="129" height="151" pivot_x="0" pivot_y="1"/>
-        <file id="13" name="SWORD.png" width="38" height="151" pivot_x="0" pivot_y="1"/>
-        <file id="14" name="SHIELD.png" width="87" height="80" pivot_x="0" pivot_y="1"/>
-        <file id="15" name="TAIL-1.png" width="43" height="41" pivot_x="0" pivot_y="1"/>
-        <file id="16" name="TAIL-2.png" width="35" height="29" pivot_x="0" pivot_y="1"/>
-        <file id="17" name="TAIL-7.png" width="28" height="19" pivot_x="0" pivot_y="1"/>
-        <file id="18" name="TAIL-6.png" width="17" height="14" pivot_x="0" pivot_y="1"/>
-        <file id="19" name="TAIL-5.png" width="18" height="19" pivot_x="0" pivot_y="1"/>
-        <file id="20" name="TAIL-4.png" width="19" height="22" pivot_x="0" pivot_y="1"/>
-        <file id="21" name="TAIL-3.png" width="27" height="25" pivot_x="0" pivot_y="1"/>
+        <file id="11" name="HEAD.png" width="129" height="151" pivot_x="0" pivot_y="1"/>
+        <file id="12" name="SWORD.png" width="38" height="151" pivot_x="0" pivot_y="1"/>
+        <file id="13" name="SHIELD.png" width="87" height="80" pivot_x="0" pivot_y="1"/>
+        <file id="14" name="TAIL-1.png" width="43" height="41" pivot_x="0" pivot_y="1"/>
+        <file id="15" name="TAIL-2.png" width="35" height="29" pivot_x="0" pivot_y="1"/>
+        <file id="16" name="TAIL-7.png" width="28" height="19" pivot_x="0" pivot_y="1"/>
+        <file id="17" name="TAIL-6.png" width="17" height="14" pivot_x="0" pivot_y="1"/>
+        <file id="18" name="TAIL-5.png" width="18" height="19" pivot_x="0" pivot_y="1"/>
+        <file id="19" name="TAIL-4.png" width="19" height="22" pivot_x="0" pivot_y="1"/>
+        <file id="20" name="TAIL-3.png" width="27" height="25" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Enitty">
+    <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="1000" interval="100">
             <mainline>
                 <key id="0">
@@ -108,52 +107,52 @@
             </timeline>
             <timeline id="11" name="HEAD">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="-61.232493" y="138.37535" angle="0"/>
+                    <object folder="0" file="11" x="-61.232493" y="138.37535" angle="0"/>
                 </key>
             </timeline>
             <timeline id="12" name="SWORD">
                 <key id="0" spin="0">
-                    <object folder="0" file="13" x="168.179271" y="-18.095238" angle="279.229886"/>
+                    <object folder="0" file="12" x="168.179271" y="-18.095238" angle="279.229886"/>
                 </key>
             </timeline>
             <timeline id="13" name="SHIELD">
                 <key id="0" spin="0">
-                    <object folder="0" file="14" x="-96.558123" y="-3.420869" angle="0"/>
+                    <object folder="0" file="13" x="-96.558123" y="-3.420869" angle="0"/>
                 </key>
             </timeline>
             <timeline id="14" name="TAIL-7">
                 <key id="0" spin="0">
-                    <object folder="0" file="17" x="-91.820729" y="-21.036414" angle="0"/>
+                    <object folder="0" file="16" x="-91.820729" y="-21.036414" angle="0"/>
                 </key>
             </timeline>
             <timeline id="15" name="TAIL-6">
                 <key id="0" spin="0">
-                    <object folder="0" file="18" x="-100.644258" y="-27.507003" angle="0"/>
+                    <object folder="0" file="17" x="-100.644258" y="-27.507003" angle="0"/>
                 </key>
             </timeline>
             <timeline id="16" name="TAIL-5">
                 <key id="0" spin="0">
-                    <object folder="0" file="19" x="-108.291317" y="-33.389356" angle="0"/>
+                    <object folder="0" file="18" x="-108.291317" y="-33.389356" angle="0"/>
                 </key>
             </timeline>
             <timeline id="17" name="TAIL-4">
                 <key id="0" spin="0">
-                    <object folder="0" file="20" x="-106.526611" y="-45.154062" angle="0"/>
+                    <object folder="0" file="19" x="-106.526611" y="-45.154062" angle="0"/>
                 </key>
             </timeline>
             <timeline id="18" name="TAIL-3">
                 <key id="0" spin="0">
-                    <object folder="0" file="21" x="-99.467787" y="-56.330532" angle="0"/>
+                    <object folder="0" file="20" x="-99.467787" y="-56.330532" angle="0"/>
                 </key>
             </timeline>
             <timeline id="19" name="TAIL-2">
                 <key id="0" spin="0">
-                    <object folder="0" file="16" x="-82.408964" y="-56.330532" angle="0"/>
+                    <object folder="0" file="15" x="-82.408964" y="-56.330532" angle="0"/>
                 </key>
             </timeline>
             <timeline id="20" name="TAIL-1">
                 <key id="0" spin="0">
-                    <object folder="0" file="15" x="-64.761905" y="-39.859944" angle="0"/>
+                    <object folder="0" file="14" x="-64.761905" y="-39.859944" angle="0"/>
                 </key>
             </timeline>
         </animation>
