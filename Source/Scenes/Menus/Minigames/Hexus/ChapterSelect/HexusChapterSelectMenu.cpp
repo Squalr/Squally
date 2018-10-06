@@ -193,8 +193,8 @@ void HexusChapterSelectMenu::loadProgress()
 		}
 	}
 
-	// Prevent going passed the Jungle level (always disable the next level) // TODO: Just for demo :)
-	this->hexusChapterPreviewRuins->disableInteraction();
+	// Prevent going passed the Forest level // TODO: Just for demo :)
+	this->hexusChapterPreviewForest->disableInteraction();
 }
 
 void HexusChapterSelectMenu::onMouseOver(HexusChapterPreview* HexusChapterPreview)
