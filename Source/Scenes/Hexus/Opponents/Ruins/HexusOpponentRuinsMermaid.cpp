@@ -18,7 +18,7 @@ HexusOpponentRuinsMermaid::HexusOpponentRuinsMermaid() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-48.0f, -144.0f),
-	Vec2(-16.0f, -48.0f),
+	Vec2(0.0f, -192.0f),
 	HexusOpponentRuinsMermaid::StringKeyOpponentName,
 	Card::CardStyle::Earth,
 	{

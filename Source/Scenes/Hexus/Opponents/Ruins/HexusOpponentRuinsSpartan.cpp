@@ -18,7 +18,7 @@ HexusOpponentRuinsSpartan::HexusOpponentRuinsSpartan() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-48.0f, -48.0f),
-	Vec2(-16.0f, -48.0f),
+	Vec2(-16.0f, -16.0f),
 	HexusOpponentRuinsSpartan::StringKeyOpponentName,
 	Card::CardStyle::Earth,
 	{

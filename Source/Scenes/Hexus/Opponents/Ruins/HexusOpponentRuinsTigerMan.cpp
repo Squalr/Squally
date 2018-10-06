@@ -18,7 +18,7 @@ HexusOpponentRuinsTigerMan::HexusOpponentRuinsTigerMan() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-32.0f, -48.0f),
-	Vec2(-16.0f, -48.0f),
+	Vec2(-16.0f, -72.0f),
 	HexusOpponentRuinsTigerMan::StringKeyOpponentName,
 	Card::CardStyle::Earth,
 	{
