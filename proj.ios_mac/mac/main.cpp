@@ -23,13 +23,52 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-#include "GameWindow.h"
-#include "cocos2d.h"
+#include "client/mac/handler/exception_handler.h"
+#include "client/mac/crash_generation/crash_generation_client.h"
 
-USING_NS_CC;
+#include <memory>
+#include <string>
+
+#include "GameWindow.h"
+
+namespace
+{
+    // wrapper for crash handling logic
+    class CrashHandler
+    {
+        google_breakpad::ExceptionHandler exceptionHandler;
+        google_breakpad::CrashGenerationClient client;
+
+        // called when the game encounters an exception
+        static bool onException(void *context, int exception_type, int exception_code,
+                int exception_subcode, mach_port_t thread_name)
+        {
+            CrashHandler* handler = reinterpret_cast<CrashHandler*>(context);
+            handler->client.RequestDumpForException(exception_type, exception_code,
+                    exception_subcode, thread_name);
+        }
+
+    public:
+        CrashHandler(const std::string& portName)
+            : exceptionHandler(&CrashHandler::onException, this, true),
+            client(portName.c_str())
+        {
+        }
+    };
+}
 
 int main(int argc, char *argv[])
 {
+    // enable crash handling if we were provided a port name
+    std::unique_ptr<CrashHandler> handler;
+    if (argc >= 3
+        && std::string(argv[1]) == "-d"
+        && std::string(argv[2]).size() > 0)
+    {
+        handler.reset(new CrashHandler(argv[2]));
+    }
+
+    // run game
     GameWindow app;
-    return Application::getInstance()->run();
+    return cocos2d::Application::getInstance()->run();
 }

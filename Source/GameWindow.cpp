@@ -1,5 +1,8 @@
 #include "GameWindow.h"
 
+using namespace cocos2d;
+using namespace cocos2d::cocos_experimental;
+
 GameWindow::GameWindow()
 {
 }

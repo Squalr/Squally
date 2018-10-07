@@ -1,5 +1,6 @@
 #include "StrUtils.h"
 
+
 std::string StrUtils::toStringZeroPad(int value, int zeroCount)
 {
 	std::string result = std::to_string(value);
