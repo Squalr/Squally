@@ -5,14 +5,14 @@ Squally
 Checking out
 ------------
 ```
-# I'm explicitly not using recursive clone since cocos2d has some submodules we'd like to leave out for the moment
 git clone git@github.com:zcanann/Squally.git
 cd Squally
 
-# Checkout cocos2d submodule and external submodule
+# checkout submodules (cocos is not recursive because it had other submodules WE DONT want)
+git submodule update --init --recursive external/breakpad
 git submodule update --init cocos2d
 cd cocos2d
-git submodule update --init cocos2d/external
+git submodule update --init external
 cd ..
 ```
 
