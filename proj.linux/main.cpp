@@ -22,37 +22,51 @@
  THE SOFTWARE.
  ****************************************************************************/
 
-extern "C" {
-    #include <unistd.h>
-}
+#include <stdlib.h>
+#include <unistd.h>
 
 #include <iostream>
+#include <memory>
+#include <sstream>
 #include <string>
 
 #include "client/linux/handler/exception_handler.h"
 #include "GameWindow.h"
 
-USING_NS_CC;
-
 namespace
 {
-    bool dumpCallback(const google_breakpad::MinidumpDescriptor& descriptor, void* context, bool succeeded)
+    class CrashHandler
     {
-        std::cerr << "Dump path: " << descriptor.path() << std::endl;
-        return succeeded;
-    }
+        google_breakpad::ExceptionHandler exceptionHandler;
+
+        static bool onException(const google_breakpad::MinidumpDescriptor& descriptor, void* context, bool succeeded)
+        {
+            CrashHandler* handler = reinterpret_cast<CrashHandler*>(context);
+            std::cerr << "[game] produced crash dump: " << succeeded << std::endl;
+            return succeeded;
+        }
+
+    public:
+        CrashHandler(int serverDescriptor)
+            : exceptionHandler(google_breakpad::MinidumpDescriptor(), nullptr, &CrashHandler::onException, nullptr,
+            true, serverDescriptor)
+        {
+        }
+    };
 }
 
 int main(int argc, char **argv)
 {
-    // crash report directory
-    const std::string& crashDumpPath = std::string("/tmp");
+    // enable crash handling if we were provided a server descriptor
+    std::unique_ptr<CrashHandler> handler;
+    if (argc >= 3
+        && std::string(argv[1]) == "-d"
+        && std::string(argv[2]).size() > 0)
+    {
+        handler.reset(new CrashHandler(std::stoi(argv[2])));
+    }
 
-    // setup crash reporting
-    google_breakpad::MinidumpDescriptor descriptor(crashDumpPath);
-    google_breakpad::ExceptionHandler eh(descriptor, NULL, dumpCallback, NULL, true, -1);
-
-    // create the application instance
+    // run game
     GameWindow app;
-    return Application::getInstance()->run();
+    return cocos2d::Application::getInstance()->run();
 }
