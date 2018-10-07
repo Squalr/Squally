@@ -1,11 +1,14 @@
 // mild reimplementation of crash_generation_server.cc that better integrates with Cocoa
 
 #import "LauncherAppDelegate.h"
+#import "AFNetworking/AFNetworking.h"
 
 #include "client/mac/crash_generation/client_info.h"
 #include "client/mac/handler/minidump_generator.h"
 #include "common/mac/MachIPC.h"
 #include "common/mac/scoped_task_suspend-inl.h"
+
+#include "Config.h"
 
 // forward declare some structures so we don't have to include large headers
 namespace google_breakpad
@@ -25,12 +28,19 @@ namespace google_breakpad
     };
 }
 
+// expose private placeholder string
+@interface NSTextView (Placeholder)
+@property(nonatomic) NSAttributedString *placeholderAttributedString;
+@end
+
 @interface LauncherAppDelegate ()
 {
     google_breakpad::ReceivePort* gameExceptionPort;
     dispatch_source_t gameExceptionSource;
     dispatch_source_t gameExitSource;
 }
+@property(strong) AFURLSessionManager* sessionManager;
+@property BOOL gameCrashed;
 @end
 
 @implementation LauncherAppDelegate
@@ -43,6 +53,7 @@ namespace google_breakpad
     self = [super init];
     if (self)
     {
+        self.gameCrashed = NO;
         gameExceptionPort = port;
     }
     return self;
@@ -51,7 +62,7 @@ namespace google_breakpad
 #pragma mark - Crash Report Helpers
 
 // capture crash report from game
-- (NSString*)captureCrashReport
+- (NSURL*)captureCrashReport
 {
     // get message
     google_breakpad::MachReceiveMessage message;
@@ -73,7 +84,7 @@ namespace google_breakpad
     google_breakpad::ClientInfo client(remotePid);
 
     // generate dump
-    NSString* crashReportPath = nil;
+    NSURL* crashReportPath = nil;
     {
         google_breakpad::ScopedTaskSuspend suspend(remoteTask);
         google_breakpad::MinidumpGenerator generator(remoteTask, handlerThread);
@@ -85,15 +96,14 @@ namespace google_breakpad
         }
 
         // generate crash dump path
-        NSString *cachePath = [[NSFileManager defaultManager].temporaryDirectory.path
-                stringByAppendingPathComponent:@"com.squalr.squally"];
-        crashReportPath = [cachePath stringByAppendingPathComponent:[[NSUUID UUID].UUIDString stringByAppendingString:@".dmp"]];
-        [[NSFileManager defaultManager] createDirectoryAtPath:cachePath
-                                  withIntermediateDirectories:YES
-                                                   attributes:nil
-                                                        error:nil];
+        NSURL *cachePath = [[NSFileManager defaultManager].temporaryDirectory URLByAppendingPathComponent:@"com.squalr.squally"];
+        crashReportPath = [cachePath URLByAppendingPathComponent:[[NSUUID UUID].UUIDString stringByAppendingString:@".dmp"]];
+        [[NSFileManager defaultManager] createDirectoryAtURL:cachePath
+                                 withIntermediateDirectories:YES
+                                                  attributes:nil
+                                                       error:nil];
         // write crash dump
-        result = generator.Write([crashReportPath UTF8String]);
+        result = generator.Write([crashReportPath.path UTF8String]);
     }
 
     // acknowledge game, tell it to exit
@@ -108,21 +118,66 @@ namespace google_breakpad
 }
 
 // schedule an upload for a crash report
-- (void)uploadCrashReport:(NSString*)path
+- (void)uploadCrashReport:(NSURL*)path
 {
+    // user entry text field
+    NSTextView* textView = [[NSTextView alloc] initWithFrame:CGRectMake(0, 0, 275, 100)];
+    NSColor *txtColor = [NSColor grayColor];
+    NSDictionary *txtDict = [NSDictionary dictionaryWithObjectsAndKeys:txtColor, NSForegroundColorAttributeName, nil];
+    textView.placeholderAttributedString = [[NSAttributedString alloc]
+            initWithString:@"Please describe what you were doing when Squally crashed?"
+            attributes:txtDict];
+
     // show alert box
-    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:@"Yes"];
     [alert addButtonWithTitle:@"No"];
     [alert setMessageText:@"Squally crashed out of the Vapor Web and his head exploded"];
     [alert setInformativeText:@"Mr Muskrat will be cleaning the walls for weeks, can you send us a bug report so we can keep this from happening again?"];
     [alert setAlertStyle:NSWarningAlertStyle];
+    [alert setAccessoryView:textView];
 
-    // use the result
-    if ([alert runModal] == NSAlertFirstButtonReturn)
+    // if user doesn't want to send report, bail
+    if ([alert runModal] != NSAlertFirstButtonReturn) {
+        [NSApp terminate:self];
+        return;
+    }
+
+    // build send form for crash report
+    void (^formBuilder)(id<AFMultipartFormData>) = ^(id<AFMultipartFormData> formData)
     {
-        NSLog(@"TODO implement upload for: %@", path);
-    } 
+        [formData appendPartWithFileURL:path name:@"minidump" fileName:[path lastPathComponent]
+                mimeType:@"application/octet-stream" error:nil];
+    };
+
+    // build url request
+    NSDictionary* parameters = @{
+        @"app-version" : [NSString stringWithFormat:@"%d.%d.%d", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH],
+        @"platform-version" : [NSProcessInfo processInfo].operatingSystemVersionString,
+        @"platform" : @"macos",
+        @"report" : [textView.textStorage string]
+    };
+
+    NSMutableURLRequest* request = [[AFHTTPRequestSerializer serializer]
+           multipartFormRequestWithMethod:@"POST"
+           URLString:@"https://squallygame.com/api/v1/crashreport"
+           parameters:parameters
+           constructingBodyWithBlock:formBuilder
+           error:nil];
+
+    // completion handler
+    void (^completionHandler)(NSURLResponse* _Nonnull, id _Nullable, NSError* _Nonnull) =
+            ^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error)
+    {
+        if (error) {
+            NSLog(@"crash report upload error: %@", error);
+        }
+        [NSApp terminate:self];
+    };
+
+    // start upload
+    [[self.sessionManager uploadTaskWithStreamedRequest:request progress:nil
+            completionHandler:completionHandler] resume];
 }
 
 #pragma mark - NSApplicationDelegate Implementation
@@ -134,12 +189,17 @@ namespace google_breakpad
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    // called when the game process exits
+    // start afnetworking
+    self.sessionManager = [[AFURLSessionManager alloc] initWithSessionConfiguration:
+            [NSURLSessionConfiguration defaultSessionConfiguration]];
+
+    // exit when game process exits
     gameExitSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_SIGNAL, SIGCHLD, 0, dispatch_get_main_queue());
     dispatch_source_set_event_handler(gameExitSource, ^
     {
-        // in theory we should check whether or not operations are still pending
-        [NSApp terminate:self];
+        if (!self.gameCrashed) {
+            [NSApp terminate:self];
+        }
     });
 
     // capture and upload crash report when we receive a crash event from the game
@@ -147,7 +207,12 @@ namespace google_breakpad
             0, dispatch_get_global_queue(QOS_CLASS_UTILITY, 0));
     dispatch_source_set_event_handler(gameExceptionSource, ^
     {
-        NSString* crashReportPath = [self captureCrashReport];
+        // flag that the game crashed to sigchld doesn't kill the process
+        self.gameCrashed = YES;
+
+        // get the crash report, and upload it
+        NSURL* crashReportPath = [self captureCrashReport];
+        NSLog(@"crash report generated: %@", crashReportPath);
         dispatch_async(dispatch_get_main_queue(), ^{
             [self uploadCrashReport:crashReportPath];
         });
@@ -160,6 +225,7 @@ namespace google_breakpad
 
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
+    NSLog(@"application will terminate.");
 }
 
 @end
