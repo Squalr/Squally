@@ -1,25 +1,25 @@
-#include "HexusOpponentRuinsMedusaSmall.h"
+#include "HexusOpponentForestGoblinShaman.h"
 
-const std::string HexusOpponentRuinsMedusaSmall::StringKeyOpponentName = "Squally_Npc_Names_Ruins_Medusa_Small";
-HexusOpponentRuinsMedusaSmall* HexusOpponentRuinsMedusaSmall::instance = nullptr;
+const std::string HexusOpponentForestGoblinShaman::StringKeyOpponentName = "Squally_Npc_Names_Forest_Goblin_Shaman";
+HexusOpponentForestGoblinShaman* HexusOpponentForestGoblinShaman::instance = nullptr;
 
-HexusOpponentRuinsMedusaSmall* HexusOpponentRuinsMedusaSmall::getInstance()
+HexusOpponentForestGoblinShaman* HexusOpponentForestGoblinShaman::getInstance()
 {
-	if (HexusOpponentRuinsMedusaSmall::instance == nullptr)
+	if (HexusOpponentForestGoblinShaman::instance == nullptr)
 	{
-		HexusOpponentRuinsMedusaSmall::instance = new HexusOpponentRuinsMedusaSmall();
+		HexusOpponentForestGoblinShaman::instance = new HexusOpponentForestGoblinShaman();
 	}
 
-	return HexusOpponentRuinsMedusaSmall::instance;
+	return HexusOpponentForestGoblinShaman::instance;
 }
 
-HexusOpponentRuinsMedusaSmall::HexusOpponentRuinsMedusaSmall() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Ruins_Enemies_MedusaSmall_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
-	0.8f,
-	Vec2(-48.0f, -24.0f),
+HexusOpponentForestGoblinShaman::HexusOpponentForestGoblinShaman() : HexusOpponentData(
+	Resources::Entities_Platformer_Environment_Forest_Enemies_GoblinShaman_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
+	1.0f,
+	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentRuinsMedusaSmall::StringKeyOpponentName,
+	HexusOpponentForestGoblinShaman::StringKeyOpponentName,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),
@@ -55,6 +55,6 @@ HexusOpponentRuinsMedusaSmall::HexusOpponentRuinsMedusaSmall() : HexusOpponentDa
 {
 }
 
-HexusOpponentRuinsMedusaSmall::~HexusOpponentRuinsMedusaSmall()
+HexusOpponentForestGoblinShaman::~HexusOpponentForestGoblinShaman()
 {
 }

@@ -1,25 +1,25 @@
-#include "HexusOpponentRuinsMedusaSmall.h"
+#include "HexusOpponentForestCentaur.h"
 
-const std::string HexusOpponentRuinsMedusaSmall::StringKeyOpponentName = "Squally_Npc_Names_Ruins_Medusa_Small";
-HexusOpponentRuinsMedusaSmall* HexusOpponentRuinsMedusaSmall::instance = nullptr;
+const std::string HexusOpponentForestCentaur::StringKeyOpponentName = "Squally_Npc_Names_Forest_Centaur";
+HexusOpponentForestCentaur* HexusOpponentForestCentaur::instance = nullptr;
 
-HexusOpponentRuinsMedusaSmall* HexusOpponentRuinsMedusaSmall::getInstance()
+HexusOpponentForestCentaur* HexusOpponentForestCentaur::getInstance()
 {
-	if (HexusOpponentRuinsMedusaSmall::instance == nullptr)
+	if (HexusOpponentForestCentaur::instance == nullptr)
 	{
-		HexusOpponentRuinsMedusaSmall::instance = new HexusOpponentRuinsMedusaSmall();
+		HexusOpponentForestCentaur::instance = new HexusOpponentForestCentaur();
 	}
 
-	return HexusOpponentRuinsMedusaSmall::instance;
+	return HexusOpponentForestCentaur::instance;
 }
 
-HexusOpponentRuinsMedusaSmall::HexusOpponentRuinsMedusaSmall() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Ruins_Enemies_MedusaSmall_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
-	0.8f,
-	Vec2(-48.0f, -24.0f),
+HexusOpponentForestCentaur::HexusOpponentForestCentaur() : HexusOpponentData(
+	Resources::Entities_Platformer_Environment_Forest_Npcs_Centaur_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
+	1.0f,
+	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentRuinsMedusaSmall::StringKeyOpponentName,
+	HexusOpponentForestCentaur::StringKeyOpponentName,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),
@@ -55,6 +55,6 @@ HexusOpponentRuinsMedusaSmall::HexusOpponentRuinsMedusaSmall() : HexusOpponentDa
 {
 }
 
-HexusOpponentRuinsMedusaSmall::~HexusOpponentRuinsMedusaSmall()
+HexusOpponentForestCentaur::~HexusOpponentForestCentaur()
 {
 }
