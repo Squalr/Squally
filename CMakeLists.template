@@ -147,6 +147,17 @@ if(APPLE)
                 ${APP_NAME_OUTPUT_DIRECTORY}/${APP_NAME}.app/Contents/MacOS
         )
     endif()
+elseif(LINUX)
+    add_executable(Launcher
+        proj.linux/launcher.cpp
+        # hack until we fix the breakpad utf library vs the cocos one
+        external/breakpad/src/common/convert_UTF.c
+    )
+    target_link_libraries(Launcher breakpad_client pthread)
+    set_target_properties(Launcher PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY
+            ${APP_BIN_DIR}
+    )
 elseif(WINDOWS)
     cocos_copy_target_dll(${APP_NAME} COPY_TO ${APP_BIN_DIR})
 endif()
