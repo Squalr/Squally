@@ -16,7 +16,7 @@ HexusOpponentRuinsMedusaSmall* HexusOpponentRuinsMedusaSmall::getInstance()
 HexusOpponentRuinsMedusaSmall::HexusOpponentRuinsMedusaSmall() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Ruins_Enemies_MedusaSmall_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
-	0.9f,
+	0.8f,
 	Vec2(-48.0f, -24.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentRuinsMedusaSmall::StringKeyOpponentName,

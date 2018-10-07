@@ -1,5 +1,13 @@
 #pragma once
 
+// Tutorial
+#include "Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialA.h"
+#include "Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialB.h"
+#include "Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialC.h"
+#include "Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialD.h"
+#include "Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialE.h"
+#include "Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialF.h"
+
 // Jungle
 #include "Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleBarbarian.h"
 #include "Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleDwarf.h"
@@ -47,26 +55,30 @@
 #include "Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsTigress.h"
 #include "Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsZeus.h"
 
-// Tutorial
-#include "Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialA.h"
-#include "Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialB.h"
-#include "Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialC.h"
-#include "Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialD.h"
-#include "Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialE.h"
-#include "Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialF.h"
+// Forest
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestAppolo.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestArcher.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestAssassin.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestBandit.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestCentaur.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestCyclops.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestDragonOrcKing.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestEnt.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestEntMage.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestGoblinGruntBoar.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestGoblinGuard.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestGoblinShaman.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestGoblinWarriorPig.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestHighwayman.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestOrcGrunt.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestOrcWarrior.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestPolyphemus.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestPrincess.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestRogue.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestThief.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestTroll.h"
+#include "Scenes/Hexus/Opponents/Forest/HexusOpponentForestWerewolf.h"
 
-#include "Scenes/Hexus/Opponents/Bosses/HexusOpponentDemonKing.h"
-#include "Scenes/Hexus/Opponents/Bosses/HexusOpponentEgyptianGoddess.h"
-#include "Scenes/Hexus/Opponents/Bosses/HexusOpponentEvilEye.h"
-#include "Scenes/Hexus/Opponents/Bosses/HexusOpponentIceGolem.h"
-#include "Scenes/Hexus/Opponents/Castle/HexusOpponentJack.h"
-#include "Scenes/Hexus/Opponents/Bosses/HexusOpponentKrampus.h"
-#include "Scenes/Hexus/Opponents/Bosses/HexusOpponentOrcKing.h"
-#include "Scenes/Hexus/Opponents/Bosses/HexusOpponentRhinoman.h"
-#include "Scenes/Hexus/Opponents/Bosses/HexusOpponentSanta.h"
-#include "Scenes/Hexus/Opponents/Bosses/HexusOpponentSkeletonKing.h"
+// Castle
 #include "Scenes/Hexus/Opponents/Castle/HexusOpponentCentaur.h"
 #include "Scenes/Hexus/Opponents/Castle/HexusOpponentWitch.h"
-
-#include "Scenes/Hexus/Opponents/Kickstarter/HexusOpponentKnight.h"
-#include "Scenes/Hexus/Opponents/Npcs/HexusOpponentEgyptianMummy.h"

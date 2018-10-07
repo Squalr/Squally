@@ -365,18 +365,31 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.cpp
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.cpp
 	Source/Scenes/Hexus/Opponents/HexusOpponentData.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDemonKing.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentEgyptianGoddess.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentEvilEye.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentIceGolem.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentKrampus.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentOrcKing.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentRhinoman.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentSanta.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentSkeletonKing.cpp
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentCentaur.cpp
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentJack.cpp
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentWitch.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestAppolo.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestArcher.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestAssassin.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestBandit.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestCentaur.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestCyclops.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestDragonOrcKing.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestEnt.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestEntMage.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestGoblinGruntBoar.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestGoblinGuard.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestGoblinShaman.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestGoblinWarriorPig.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestHighwayman.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestOrcGrunt.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestOrcWarrior.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestPolyphemus.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestPrincess.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestRogue.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestThief.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestTroll.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestWerewolf.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleBarbarian.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleDwarf.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleFighter.cpp
@@ -398,8 +411,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleTikiGolem.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleTikiWarrior.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleViking.cpp
-	Source/Scenes/Hexus/Opponents/Kickstarter/HexusOpponentKnight.cpp
-	Source/Scenes/Hexus/Opponents/Npcs/HexusOpponentEgyptianMummy.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAnubisTiny.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAnubisWarrior.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAphrodite.cpp
@@ -828,18 +839,31 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/HelpMenus/HelpMenus.h
 	Source/Scenes/Hexus/Opponents/HexusOpponentData.h
 	Source/Scenes/Hexus/Opponents/HexusOpponents.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDemonKing.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentEgyptianGoddess.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentEvilEye.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentIceGolem.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentKrampus.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentOrcKing.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentRhinoman.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentSanta.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentSkeletonKing.h
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentCentaur.h
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentJack.h
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentWitch.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestAppolo.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestArcher.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestAssassin.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestBandit.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestCentaur.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestCyclops.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestDragonOrcKing.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestEnt.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestEntMage.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestGoblinGruntBoar.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestGoblinGuard.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestGoblinShaman.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestGoblinWarriorPig.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestHighwayman.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestOrcGrunt.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestOrcWarrior.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestPolyphemus.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestPrincess.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestRogue.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestThief.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestTroll.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestWerewolf.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleBarbarian.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleDwarf.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleFighter.h
@@ -861,8 +885,6 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleTikiGolem.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleTikiWarrior.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleViking.h
-	Source/Scenes/Hexus/Opponents/Kickstarter/HexusOpponentKnight.h
-	Source/Scenes/Hexus/Opponents/Npcs/HexusOpponentEgyptianMummy.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAnubisTiny.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAnubisWarrior.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAphrodite.h
