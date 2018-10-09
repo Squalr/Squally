@@ -42,6 +42,14 @@ bool GameWindow::applicationDidFinishLaunching()
 	// Initialize the game
 	Bootstrapper::initialize();
 
+	#ifdef _WIN32
+		Analytics::sendEvent("GameStart", "Windows");
+	#elif __APPLE__
+		Analytics::sendEvent("GameStart", "OS X");
+	#elif __linux__
+		Analytics::sendEvent("GameStart", "Linux");
+	#endif
+
 	return true;
 }
 

@@ -2910,7 +2910,7 @@ public:
 	static const std::string Entities_Platformer_Environment_Jungle_Npcs_Geezer_GROIN;
 	static const std::string Entities_Platformer_Environment_Jungle_Npcs_Geezer_HAT;
 	static const std::string Entities_Platformer_Environment_Jungle_Npcs_Geezer_HEAD;
-	static const std::string Entities_Platformer_Environment_Jungle_Npcs_Geezer_KNIFE___Copy;
+	static const std::string Entities_Platformer_Environment_Jungle_Npcs_Geezer_KNIFE_2;
 	static const std::string Entities_Platformer_Environment_Jungle_Npcs_Geezer_KNIFE;
 	static const std::string Entities_Platformer_Environment_Jungle_Npcs_Geezer_L_ARM_1;
 	static const std::string Entities_Platformer_Environment_Jungle_Npcs_Geezer_L_ARM_2;
@@ -6348,4 +6348,5 @@ public:
 	static const std::string Entities_Platformer_Misc_TrainingDummy_Animations;
 	static const std::string Entities_Platformer_Misc_Wolf_Animations;
 	static const std::string Entities_Platformer_Squally_Animations;
+	static const std::string Scripts_analytics;
 };
