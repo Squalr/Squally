@@ -3,6 +3,7 @@
 #include "cocos2d.h"
 
 #include "Bootstrapper.h"
+#include "Engine/Analytics/Analytics.h"
 #include "Engine/Config/ConfigManager.h"
 
 using namespace cocos2d;

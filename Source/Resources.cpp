@@ -2908,7 +2908,7 @@ const std::string Resources::Entities_Platformer_Environment_Jungle_Npcs_Geezer_
 const std::string Resources::Entities_Platformer_Environment_Jungle_Npcs_Geezer_GROIN = "Entities/Platformer/Environment_Jungle/Npcs/Geezer/GROIN.png";
 const std::string Resources::Entities_Platformer_Environment_Jungle_Npcs_Geezer_HAT = "Entities/Platformer/Environment_Jungle/Npcs/Geezer/HAT.png";
 const std::string Resources::Entities_Platformer_Environment_Jungle_Npcs_Geezer_HEAD = "Entities/Platformer/Environment_Jungle/Npcs/Geezer/HEAD.png";
-const std::string Resources::Entities_Platformer_Environment_Jungle_Npcs_Geezer_KNIFE___Copy = "Entities/Platformer/Environment_Jungle/Npcs/Geezer/KNIFE - Copy.png";
+const std::string Resources::Entities_Platformer_Environment_Jungle_Npcs_Geezer_KNIFE_2 = "Entities/Platformer/Environment_Jungle/Npcs/Geezer/KNIFE 2.png";
 const std::string Resources::Entities_Platformer_Environment_Jungle_Npcs_Geezer_KNIFE = "Entities/Platformer/Environment_Jungle/Npcs/Geezer/KNIFE.png";
 const std::string Resources::Entities_Platformer_Environment_Jungle_Npcs_Geezer_L_ARM_1 = "Entities/Platformer/Environment_Jungle/Npcs/Geezer/L-ARM-1.png";
 const std::string Resources::Entities_Platformer_Environment_Jungle_Npcs_Geezer_L_ARM_2 = "Entities/Platformer/Environment_Jungle/Npcs/Geezer/L-ARM-2.png";
@@ -6346,3 +6346,4 @@ const std::string Resources::Entities_Platformer_Misc_Spider_2_Animations = "Ent
 const std::string Resources::Entities_Platformer_Misc_TrainingDummy_Animations = "Entities/Platformer/Misc/TrainingDummy/Animations.scml";
 const std::string Resources::Entities_Platformer_Misc_Wolf_Animations = "Entities/Platformer/Misc/Wolf/Animations.scml";
 const std::string Resources::Entities_Platformer_Squally_Animations = "Entities/Platformer/Squally/Animations.scml";
+const std::string Resources::Scripts_analytics = "Scripts/analytics.js";
