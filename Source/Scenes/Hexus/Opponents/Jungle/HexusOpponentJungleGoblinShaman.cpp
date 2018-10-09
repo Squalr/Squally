@@ -1,25 +1,25 @@
-#include "HexusOpponentRuinsMummyPharaoh.h"
+#include "HexusOpponentJungleGoblinShaman.h"
 
-const std::string HexusOpponentRuinsMummyPharaoh::StringKeyOpponentName = "Squally_Npc_Names_Ruins_Mummy_Pharaoh";
-HexusOpponentRuinsMummyPharaoh* HexusOpponentRuinsMummyPharaoh::instance = nullptr;
+const std::string HexusOpponentJungleGoblinShaman::StringKeyOpponentName = "Squally_Npc_Names_Jungle_Goblin_Shaman";
+HexusOpponentJungleGoblinShaman* HexusOpponentJungleGoblinShaman::instance = nullptr;
 
-HexusOpponentRuinsMummyPharaoh* HexusOpponentRuinsMummyPharaoh::getInstance()
+HexusOpponentJungleGoblinShaman* HexusOpponentJungleGoblinShaman::getInstance()
 {
-	if (HexusOpponentRuinsMummyPharaoh::instance == nullptr)
+	if (HexusOpponentJungleGoblinShaman::instance == nullptr)
 	{
-		HexusOpponentRuinsMummyPharaoh::instance = new HexusOpponentRuinsMummyPharaoh();
+		HexusOpponentJungleGoblinShaman::instance = new HexusOpponentJungleGoblinShaman();
 	}
 
-	return HexusOpponentRuinsMummyPharaoh::instance;
+	return HexusOpponentJungleGoblinShaman::instance;
 }
 
-HexusOpponentRuinsMummyPharaoh::HexusOpponentRuinsMummyPharaoh() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Ruins_Enemies_BossMummyPharaoh_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
+HexusOpponentJungleGoblinShaman::HexusOpponentJungleGoblinShaman() : HexusOpponentData(
+	Resources::Entities_Platformer_Environment_Jungle_Enemies_GoblinShaman_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
-	Vec2(-32.0f, -48.0f),
-	Vec2(-32.0f, -72.0f),
-	HexusOpponentRuinsMummyPharaoh::StringKeyOpponentName,
+	Vec2(-48.0f, -64.0f),
+	Vec2(-16.0f, -48.0f),
+	HexusOpponentJungleGoblinShaman::StringKeyOpponentName,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),
@@ -55,6 +55,6 @@ HexusOpponentRuinsMummyPharaoh::HexusOpponentRuinsMummyPharaoh() : HexusOpponent
 {
 }
 
-HexusOpponentRuinsMummyPharaoh::~HexusOpponentRuinsMummyPharaoh()
+HexusOpponentJungleGoblinShaman::~HexusOpponentJungleGoblinShaman()
 {
 }

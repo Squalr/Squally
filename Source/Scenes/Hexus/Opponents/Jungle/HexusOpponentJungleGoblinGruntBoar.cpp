@@ -1,25 +1,25 @@
-#include "HexusOpponentRuinsMummyPharaoh.h"
+#include "HexusOpponentJungleGoblinGruntBoar.h"
 
-const std::string HexusOpponentRuinsMummyPharaoh::StringKeyOpponentName = "Squally_Npc_Names_Ruins_Mummy_Pharaoh";
-HexusOpponentRuinsMummyPharaoh* HexusOpponentRuinsMummyPharaoh::instance = nullptr;
+const std::string HexusOpponentJungleGoblinGruntBoar::StringKeyOpponentName = "Squally_Npc_Names_Jungle_Goblin_Grunt_Boar";
+HexusOpponentJungleGoblinGruntBoar* HexusOpponentJungleGoblinGruntBoar::instance = nullptr;
 
-HexusOpponentRuinsMummyPharaoh* HexusOpponentRuinsMummyPharaoh::getInstance()
+HexusOpponentJungleGoblinGruntBoar* HexusOpponentJungleGoblinGruntBoar::getInstance()
 {
-	if (HexusOpponentRuinsMummyPharaoh::instance == nullptr)
+	if (HexusOpponentJungleGoblinGruntBoar::instance == nullptr)
 	{
-		HexusOpponentRuinsMummyPharaoh::instance = new HexusOpponentRuinsMummyPharaoh();
+		HexusOpponentJungleGoblinGruntBoar::instance = new HexusOpponentJungleGoblinGruntBoar();
 	}
 
-	return HexusOpponentRuinsMummyPharaoh::instance;
+	return HexusOpponentJungleGoblinGruntBoar::instance;
 }
 
-HexusOpponentRuinsMummyPharaoh::HexusOpponentRuinsMummyPharaoh() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Ruins_Enemies_BossMummyPharaoh_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
+HexusOpponentJungleGoblinGruntBoar::HexusOpponentJungleGoblinGruntBoar() : HexusOpponentData(
+	Resources::Entities_Platformer_Environment_Jungle_Enemies_GoblinGruntBoar_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
-	Vec2(-32.0f, -48.0f),
-	Vec2(-32.0f, -72.0f),
-	HexusOpponentRuinsMummyPharaoh::StringKeyOpponentName,
+	Vec2(-48.0f, -64.0f),
+	Vec2(-16.0f, -48.0f),
+	HexusOpponentJungleGoblinGruntBoar::StringKeyOpponentName,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),
@@ -55,6 +55,6 @@ HexusOpponentRuinsMummyPharaoh::HexusOpponentRuinsMummyPharaoh() : HexusOpponent
 {
 }
 
-HexusOpponentRuinsMummyPharaoh::~HexusOpponentRuinsMummyPharaoh()
+HexusOpponentJungleGoblinGruntBoar::~HexusOpponentJungleGoblinGruntBoar()
 {
 }

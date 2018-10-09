@@ -13,25 +13,25 @@ HexusOpponentMenuObelisk::HexusOpponentMenuObelisk() : HexusOpponentMenuBase(Hex
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuObelisk::onGameEndCallback, this);
 
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentForestCentaur::getInstance(), callback));
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{

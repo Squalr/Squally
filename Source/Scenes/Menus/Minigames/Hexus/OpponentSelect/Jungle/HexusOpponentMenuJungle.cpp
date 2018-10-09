@@ -22,10 +22,6 @@ HexusOpponentMenuJungle::HexusOpponentMenuJungle() : HexusOpponentMenuBase(Hexus
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentJungleHades::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentJungleMinotaur::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentJungleThor::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentJungleViking::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentJungleGoblinSwordsman::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentJungleGoblinWarrior::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentJungleMantis::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentJungleTikiGolem::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentJungleRhinoman::getInstance(), callback));
 

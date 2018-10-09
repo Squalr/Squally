@@ -1,25 +1,25 @@
-#include "HexusOpponentRuinsMummyPharaoh.h"
+#include "HexusOpponentRuinsPrincess.h"
 
-const std::string HexusOpponentRuinsMummyPharaoh::StringKeyOpponentName = "Squally_Npc_Names_Ruins_Mummy_Pharaoh";
-HexusOpponentRuinsMummyPharaoh* HexusOpponentRuinsMummyPharaoh::instance = nullptr;
+const std::string HexusOpponentRuinsPrincess::StringKeyOpponentName = "Squally_Npc_Names_Ruins_Princess";
+HexusOpponentRuinsPrincess* HexusOpponentRuinsPrincess::instance = nullptr;
 
-HexusOpponentRuinsMummyPharaoh* HexusOpponentRuinsMummyPharaoh::getInstance()
+HexusOpponentRuinsPrincess* HexusOpponentRuinsPrincess::getInstance()
 {
-	if (HexusOpponentRuinsMummyPharaoh::instance == nullptr)
+	if (HexusOpponentRuinsPrincess::instance == nullptr)
 	{
-		HexusOpponentRuinsMummyPharaoh::instance = new HexusOpponentRuinsMummyPharaoh();
+		HexusOpponentRuinsPrincess::instance = new HexusOpponentRuinsPrincess();
 	}
 
-	return HexusOpponentRuinsMummyPharaoh::instance;
+	return HexusOpponentRuinsPrincess::instance;
 }
 
-HexusOpponentRuinsMummyPharaoh::HexusOpponentRuinsMummyPharaoh() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Ruins_Enemies_BossMummyPharaoh_Animations,
+HexusOpponentRuinsPrincess::HexusOpponentRuinsPrincess() : HexusOpponentData(
+	Resources::Entities_Platformer_Environment_Ruins_Npcs_Princess_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
-	1.0f,
-	Vec2(-32.0f, -48.0f),
-	Vec2(-32.0f, -72.0f),
-	HexusOpponentRuinsMummyPharaoh::StringKeyOpponentName,
+	0.9f,
+	Vec2(-48.0f, -64.0f),
+	Vec2(-16.0f, -48.0f),
+	HexusOpponentRuinsPrincess::StringKeyOpponentName,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),
@@ -55,6 +55,6 @@ HexusOpponentRuinsMummyPharaoh::HexusOpponentRuinsMummyPharaoh() : HexusOpponent
 {
 }
 
-HexusOpponentRuinsMummyPharaoh::~HexusOpponentRuinsMummyPharaoh()
+HexusOpponentRuinsPrincess::~HexusOpponentRuinsPrincess()
 {
 }
