@@ -2,6 +2,12 @@
 
 void EngineBootstrapper::initialize()
 {
-	// Initialize global event listeners
+	// Initialize global objects
+	Analytics::registerGlobalNode();
 	MouseState::registerGlobalNode();
+}
+
+void EngineBootstrapper::shutDown()
+{
+	Analytics::shutDown();
 }

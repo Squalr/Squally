@@ -10,3 +10,8 @@ void Bootstrapper::initialize()
 	// Initialize global event listeners
 	PlatformerCollisionMapping::registerGlobalNode();
 }
+
+void Bootstrapper::shutDown()
+{
+	EngineBootstrapper::shutDown();
+}

@@ -38,13 +38,13 @@ public:
 	static void save();
 
 private:
-	static ConfigManager * getInstance();
+	static ConfigManager* getInstance();
 	ConfigManager();
 	~ConfigManager();
 
 	ValueMap valueMap;
 
-	static ConfigManager * configManagerInstance;
+	static ConfigManager* instance;
 
 	static const std::string ConfigFile;
 	static const std::string ResolutionKey;

@@ -6,16 +6,16 @@ const std::string ConfigManager::FullScreenKey = "fullscreen";
 const std::string ConfigManager::SoundVolumeKey = "sound";
 const std::string ConfigManager::MusicVolumeKey = "music";
 
-ConfigManager* ConfigManager::configManagerInstance = nullptr;
+ConfigManager* ConfigManager::instance = nullptr;
 
 ConfigManager* ConfigManager::getInstance()
 {
-	if (ConfigManager::configManagerInstance == nullptr)
+	if (ConfigManager::instance == nullptr)
 	{
-		ConfigManager::configManagerInstance = new ConfigManager();
+		ConfigManager::instance = new ConfigManager();
 	}
 
-	return ConfigManager::configManagerInstance;
+	return ConfigManager::instance;
 }
 
 ConfigManager::ConfigManager()

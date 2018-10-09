@@ -70,6 +70,8 @@ list(APPEND GAME_SOURCE
 	Source/Engine/GlobalDirector.cpp
 	Source/Engine/SmartNode.cpp
 	Source/Engine/SmartScene.cpp
+	Source/Engine/Analytics/Analytics.cpp
+	Source/Engine/Analytics/TAnalytics.cpp
 	Source/Engine/Camera/GameCamera.cpp
 	Source/Engine/Config/ConfigManager.cpp
 	Source/Engine/Cutscenes/Cutscene.cpp
@@ -130,19 +132,17 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Castle/BossWitch.cpp
 	Source/Entities/Platformer/Enemies/Castle/Executioner.cpp
 	Source/Entities/Platformer/Enemies/Castle/Guard.cpp
-	Source/Entities/Platformer/Enemies/Castle/Harpy.cpp
 	Source/Entities/Platformer/Enemies/Castle/Reaper.cpp
 	Source/Entities/Platformer/Enemies/Castle/SkeletonMage.cpp
 	Source/Entities/Platformer/Enemies/Castle/VampireLord.cpp
 	Source/Entities/Platformer/Enemies/Castle/Vampiress.cpp
-	Source/Entities/Platformer/Enemies/Castle/Zombie.cpp
+	Source/Entities/Platformer/Enemies/Castle/ZombieSpearman.cpp
 	Source/Entities/Platformer/Enemies/Caverns/BlackWidow.cpp
 	Source/Entities/Platformer/Enemies/Caverns/BossKrampus.cpp
 	Source/Entities/Platformer/Enemies/Caverns/EarthElemental.cpp
 	Source/Entities/Platformer/Enemies/Caverns/EarthGolem.cpp
 	Source/Entities/Platformer/Enemies/Caverns/ForestGolem.cpp
 	Source/Entities/Platformer/Enemies/Caverns/Genie.cpp
-	Source/Entities/Platformer/Enemies/Caverns/RockGolem.cpp
 	Source/Entities/Platformer/Enemies/Caverns/Shaman.cpp
 	Source/Entities/Platformer/Enemies/Caverns/SkeletonArcher.cpp
 	Source/Entities/Platformer/Enemies/Caverns/SkeletonNecromancer.cpp
@@ -150,25 +150,16 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Forest/BossDragonOrcKing.cpp
 	Source/Entities/Platformer/Enemies/Forest/Cyclops.cpp
 	Source/Entities/Platformer/Enemies/Forest/Ent.cpp
-	Source/Entities/Platformer/Enemies/Forest/EntMage.cpp
-	Source/Entities/Platformer/Enemies/Forest/GoblinGruntBoar.cpp
-	Source/Entities/Platformer/Enemies/Forest/GoblinGuard.cpp
-	Source/Entities/Platformer/Enemies/Forest/GoblinShaman.cpp
-	Source/Entities/Platformer/Enemies/Forest/GoblinWarriorPig.cpp
 	Source/Entities/Platformer/Enemies/Forest/OrcGrunt.cpp
 	Source/Entities/Platformer/Enemies/Forest/OrcWarrior.cpp
 	Source/Entities/Platformer/Enemies/Forest/Troll.cpp
 	Source/Entities/Platformer/Enemies/Jungle/BossRhinoman.cpp
-	Source/Entities/Platformer/Enemies/Jungle/GoblinGrunt.cpp
-	Source/Entities/Platformer/Enemies/Jungle/GoblinSwordsman.cpp
-	Source/Entities/Platformer/Enemies/Jungle/GoblinWarrior.cpp
-	Source/Entities/Platformer/Enemies/Jungle/JungleDragon.cpp
-	Source/Entities/Platformer/Enemies/Jungle/Mantis.cpp
+	Source/Entities/Platformer/Enemies/Jungle/GoblinGruntBoar.cpp
+	Source/Entities/Platformer/Enemies/Jungle/GoblinShaman.cpp
+	Source/Entities/Platformer/Enemies/Jungle/GoblinWarriorPig.cpp
 	Source/Entities/Platformer/Enemies/Jungle/Minotaur.cpp
 	Source/Entities/Platformer/Enemies/Jungle/PigDemon.cpp
-	Source/Entities/Platformer/Enemies/Jungle/PurpleDinosaur.cpp
 	Source/Entities/Platformer/Enemies/Jungle/TikiGolem.cpp
-	Source/Entities/Platformer/Enemies/Jungle/TikiWarrior.cpp
 	Source/Entities/Platformer/Enemies/Mech/BossEvilEye.cpp
 	Source/Entities/Platformer/Enemies/Mech/Exterminator.cpp
 	Source/Entities/Platformer/Enemies/Mech/MechBoxDrone.cpp
@@ -177,14 +168,12 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Mech/MechGolemDark.cpp
 	Source/Entities/Platformer/Enemies/Mech/MechGuard.cpp
 	Source/Entities/Platformer/Enemies/Mech/MiteBot.cpp
-	Source/Entities/Platformer/Enemies/Mech/Robot.cpp
 	Source/Entities/Platformer/Enemies/Mech/VikingBot.cpp
 	Source/Entities/Platformer/Enemies/Mech/VikingBotSmall.cpp
 	Source/Entities/Platformer/Enemies/Obelisk/Abomination.cpp
-	Source/Entities/Platformer/Enemies/Obelisk/BatDemon.cpp
 	Source/Entities/Platformer/Enemies/Obelisk/BossSkeletonKing.cpp
-	Source/Entities/Platformer/Enemies/Obelisk/DarkDragon.cpp
 	Source/Entities/Platformer/Enemies/Obelisk/DemonArcher.cpp
+	Source/Entities/Platformer/Enemies/Obelisk/Gargoyle.cpp
 	Source/Entities/Platformer/Enemies/Obelisk/SkeletonBaron.cpp
 	Source/Entities/Platformer/Enemies/Obelisk/SkeletonCleaver.cpp
 	Source/Entities/Platformer/Enemies/Obelisk/SkeletonKnight.cpp
@@ -193,11 +182,9 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Obelisk/VoidDemon.cpp
 	Source/Entities/Platformer/Enemies/Ruins/AnubisTiny.cpp
 	Source/Entities/Platformer/Enemies/Ruins/AnubisWarrior.cpp
-	Source/Entities/Platformer/Enemies/Ruins/BossEgyptianGoddess.cpp
 	Source/Entities/Platformer/Enemies/Ruins/Lioness.cpp
 	Source/Entities/Platformer/Enemies/Ruins/LionMan.cpp
 	Source/Entities/Platformer/Enemies/Ruins/Medusa.cpp
-	Source/Entities/Platformer/Enemies/Ruins/MedusaSmall.cpp
 	Source/Entities/Platformer/Enemies/Ruins/Mermaid.cpp
 	Source/Entities/Platformer/Enemies/Ruins/MummyPharaoh.cpp
 	Source/Entities/Platformer/Enemies/Ruins/TigerMan.cpp
@@ -205,11 +192,9 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Snow/BossIceGolem.cpp
 	Source/Entities/Platformer/Enemies/Snow/BossSanta.cpp
 	Source/Entities/Platformer/Enemies/Snow/EvilSnowman.cpp
-	Source/Entities/Platformer/Enemies/Snow/FrostDragon.cpp
 	Source/Entities/Platformer/Enemies/Snow/FrostShooter.cpp
 	Source/Entities/Platformer/Enemies/Snow/GoblinElf.cpp
 	Source/Entities/Platformer/Enemies/Snow/IceGolem.cpp
-	Source/Entities/Platformer/Enemies/Snow/TinyIceGolem.cpp
 	Source/Entities/Platformer/Enemies/Snow/ToySoldierGoblin.cpp
 	Source/Entities/Platformer/Enemies/Snow/WaterElemental.cpp
 	Source/Entities/Platformer/Enemies/Snow/Yeti.cpp
@@ -365,60 +350,59 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.cpp
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.cpp
 	Source/Scenes/Hexus/Opponents/HexusOpponentData.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDemonKing.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentEgyptianGoddess.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentEvilEye.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentIceGolem.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentKrampus.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentOrcKing.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentRhinoman.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentSanta.cpp
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentSkeletonKing.cpp
-	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentCentaur.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentCastleSwordswoman.cpp
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentJack.cpp
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentWitch.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestAppolo.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestArcher.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestAssassin.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestBandit.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestCentaur.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestChiron.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestCyclops.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestDragonOrcKing.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestEnt.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestHighwayman.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestOrcGrunt.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestOrcWarrior.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestPolyphemus.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestPrincess.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestThief.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestTroll.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestViking.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestWerewolf.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleBarbarian.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleDwarf.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleFighter.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGeezer.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinGrunt.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinSwordsman.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinWarrior.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinGruntBoar.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinShaman.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinWarriorPig.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleHades.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleJungleDragon.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleMantis.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleMinotaur.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePeasant.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePigDemon.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePirate.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePrincess.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePurpleDinosaur.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleRhinoman.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleThor.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleTikiGolem.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleTikiWarrior.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleViking.cpp
-	Source/Scenes/Hexus/Opponents/Kickstarter/HexusOpponentKnight.cpp
-	Source/Scenes/Hexus/Opponents/Npcs/HexusOpponentEgyptianMummy.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAnubisTiny.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAnubisWarrior.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAphrodite.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAres.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAthena.cpp
-	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsEgyptianGoddess.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsGriffin.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsHorus.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsLioness.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsLionMan.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsManticore.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMedusa.cpp
-	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMedusaSmall.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMermaid.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMinotaur.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMummyPharaoh.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsPoseidon.cpp
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsPrincess.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsSpartan.cpp
-	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsSwordswoman.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsTigerMan.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsTigress.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsZeus.cpp
@@ -522,6 +506,8 @@ list(APPEND GAME_HEADER
 	Source/Engine/GlobalNode.h
 	Source/Engine/SmartNode.h
 	Source/Engine/SmartScene.h
+	Source/Engine/Analytics/Analytics.h
+	Source/Engine/Analytics/TAnalytics.h
 	Source/Engine/Camera/GameCamera.h
 	Source/Engine/Config/ConfigManager.h
 	Source/Engine/Cutscenes/Cutscene.h
@@ -587,19 +573,17 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Castle/BossWitch.h
 	Source/Entities/Platformer/Enemies/Castle/Executioner.h
 	Source/Entities/Platformer/Enemies/Castle/Guard.h
-	Source/Entities/Platformer/Enemies/Castle/Harpy.h
 	Source/Entities/Platformer/Enemies/Castle/Reaper.h
 	Source/Entities/Platformer/Enemies/Castle/SkeletonMage.h
 	Source/Entities/Platformer/Enemies/Castle/VampireLord.h
 	Source/Entities/Platformer/Enemies/Castle/Vampiress.h
-	Source/Entities/Platformer/Enemies/Castle/Zombie.h
+	Source/Entities/Platformer/Enemies/Castle/ZombieSpearman.h
 	Source/Entities/Platformer/Enemies/Caverns/BlackWidow.h
 	Source/Entities/Platformer/Enemies/Caverns/BossKrampus.h
 	Source/Entities/Platformer/Enemies/Caverns/EarthElemental.h
 	Source/Entities/Platformer/Enemies/Caverns/EarthGolem.h
 	Source/Entities/Platformer/Enemies/Caverns/ForestGolem.h
 	Source/Entities/Platformer/Enemies/Caverns/Genie.h
-	Source/Entities/Platformer/Enemies/Caverns/RockGolem.h
 	Source/Entities/Platformer/Enemies/Caverns/Shaman.h
 	Source/Entities/Platformer/Enemies/Caverns/SkeletonArcher.h
 	Source/Entities/Platformer/Enemies/Caverns/SkeletonNecromancer.h
@@ -607,25 +591,16 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Forest/BossDragonOrcKing.h
 	Source/Entities/Platformer/Enemies/Forest/Cyclops.h
 	Source/Entities/Platformer/Enemies/Forest/Ent.h
-	Source/Entities/Platformer/Enemies/Forest/EntMage.h
-	Source/Entities/Platformer/Enemies/Forest/GoblinGruntBoar.h
-	Source/Entities/Platformer/Enemies/Forest/GoblinGuard.h
-	Source/Entities/Platformer/Enemies/Forest/GoblinShaman.h
-	Source/Entities/Platformer/Enemies/Forest/GoblinWarriorPig.h
 	Source/Entities/Platformer/Enemies/Forest/OrcGrunt.h
 	Source/Entities/Platformer/Enemies/Forest/OrcWarrior.h
 	Source/Entities/Platformer/Enemies/Forest/Troll.h
 	Source/Entities/Platformer/Enemies/Jungle/BossRhinoman.h
-	Source/Entities/Platformer/Enemies/Jungle/GoblinGrunt.h
-	Source/Entities/Platformer/Enemies/Jungle/GoblinSwordsman.h
-	Source/Entities/Platformer/Enemies/Jungle/GoblinWarrior.h
-	Source/Entities/Platformer/Enemies/Jungle/JungleDragon.h
-	Source/Entities/Platformer/Enemies/Jungle/Mantis.h
+	Source/Entities/Platformer/Enemies/Jungle/GoblinGruntBoar.h
+	Source/Entities/Platformer/Enemies/Jungle/GoblinShaman.h
+	Source/Entities/Platformer/Enemies/Jungle/GoblinWarriorPig.h
 	Source/Entities/Platformer/Enemies/Jungle/Minotaur.h
 	Source/Entities/Platformer/Enemies/Jungle/PigDemon.h
-	Source/Entities/Platformer/Enemies/Jungle/PurpleDinosaur.h
 	Source/Entities/Platformer/Enemies/Jungle/TikiGolem.h
-	Source/Entities/Platformer/Enemies/Jungle/TikiWarrior.h
 	Source/Entities/Platformer/Enemies/Mech/BossEvilEye.h
 	Source/Entities/Platformer/Enemies/Mech/Exterminator.h
 	Source/Entities/Platformer/Enemies/Mech/MechBoxDrone.h
@@ -634,14 +609,12 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Mech/MechGolemDark.h
 	Source/Entities/Platformer/Enemies/Mech/MechGuard.h
 	Source/Entities/Platformer/Enemies/Mech/MiteBot.h
-	Source/Entities/Platformer/Enemies/Mech/Robot.h
 	Source/Entities/Platformer/Enemies/Mech/VikingBot.h
 	Source/Entities/Platformer/Enemies/Mech/VikingBotSmall.h
 	Source/Entities/Platformer/Enemies/Obelisk/Abomination.h
-	Source/Entities/Platformer/Enemies/Obelisk/BatDemon.h
 	Source/Entities/Platformer/Enemies/Obelisk/BossSkeletonKing.h
-	Source/Entities/Platformer/Enemies/Obelisk/DarkDragon.h
 	Source/Entities/Platformer/Enemies/Obelisk/DemonArcher.h
+	Source/Entities/Platformer/Enemies/Obelisk/Gargoyle.h
 	Source/Entities/Platformer/Enemies/Obelisk/SkeletonBaron.h
 	Source/Entities/Platformer/Enemies/Obelisk/SkeletonCleaver.h
 	Source/Entities/Platformer/Enemies/Obelisk/SkeletonKnight.h
@@ -650,11 +623,9 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Obelisk/VoidDemon.h
 	Source/Entities/Platformer/Enemies/Ruins/AnubisTiny.h
 	Source/Entities/Platformer/Enemies/Ruins/AnubisWarrior.h
-	Source/Entities/Platformer/Enemies/Ruins/BossEgyptianGoddess.h
 	Source/Entities/Platformer/Enemies/Ruins/Lioness.h
 	Source/Entities/Platformer/Enemies/Ruins/LionMan.h
 	Source/Entities/Platformer/Enemies/Ruins/Medusa.h
-	Source/Entities/Platformer/Enemies/Ruins/MedusaSmall.h
 	Source/Entities/Platformer/Enemies/Ruins/Mermaid.h
 	Source/Entities/Platformer/Enemies/Ruins/MummyPharaoh.h
 	Source/Entities/Platformer/Enemies/Ruins/TigerMan.h
@@ -662,11 +633,9 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Snow/BossIceGolem.h
 	Source/Entities/Platformer/Enemies/Snow/BossSanta.h
 	Source/Entities/Platformer/Enemies/Snow/EvilSnowman.h
-	Source/Entities/Platformer/Enemies/Snow/FrostDragon.h
 	Source/Entities/Platformer/Enemies/Snow/FrostShooter.h
 	Source/Entities/Platformer/Enemies/Snow/GoblinElf.h
 	Source/Entities/Platformer/Enemies/Snow/IceGolem.h
-	Source/Entities/Platformer/Enemies/Snow/TinyIceGolem.h
 	Source/Entities/Platformer/Enemies/Snow/ToySoldierGoblin.h
 	Source/Entities/Platformer/Enemies/Snow/WaterElemental.h
 	Source/Entities/Platformer/Enemies/Snow/Yeti.h
@@ -828,60 +797,59 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/HelpMenus/HelpMenus.h
 	Source/Scenes/Hexus/Opponents/HexusOpponentData.h
 	Source/Scenes/Hexus/Opponents/HexusOpponents.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentDemonKing.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentEgyptianGoddess.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentEvilEye.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentIceGolem.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentKrampus.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentOrcKing.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentRhinoman.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentSanta.h
-	Source/Scenes/Hexus/Opponents/Bosses/HexusOpponentSkeletonKing.h
-	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentCentaur.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentCastleSwordswoman.h
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentJack.h
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentWitch.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestAppolo.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestArcher.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestAssassin.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestBandit.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestCentaur.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestChiron.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestCyclops.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestDragonOrcKing.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestEnt.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestHighwayman.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestOrcGrunt.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestOrcWarrior.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestPolyphemus.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestPrincess.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestThief.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestTroll.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestViking.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestWerewolf.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleBarbarian.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleDwarf.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleFighter.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGeezer.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinGrunt.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinSwordsman.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinWarrior.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinGruntBoar.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinShaman.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinWarriorPig.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleHades.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleJungleDragon.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleMantis.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleMinotaur.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePeasant.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePigDemon.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePirate.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePrincess.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePurpleDinosaur.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleRhinoman.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleThor.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleTikiGolem.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleTikiWarrior.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleViking.h
-	Source/Scenes/Hexus/Opponents/Kickstarter/HexusOpponentKnight.h
-	Source/Scenes/Hexus/Opponents/Npcs/HexusOpponentEgyptianMummy.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAnubisTiny.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAnubisWarrior.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAphrodite.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAres.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAthena.h
-	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsEgyptianGoddess.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsGriffin.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsHorus.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsLioness.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsLionMan.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsManticore.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMedusa.h
-	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMedusaSmall.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMermaid.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMinotaur.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsMummyPharaoh.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsPoseidon.h
+	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsPrincess.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsSpartan.h
-	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsSwordswoman.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsTigerMan.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsTigress.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsZeus.h
