@@ -14,7 +14,7 @@ HexusOpponentRuinsMummyPharaoh* HexusOpponentRuinsMummyPharaoh::getInstance()
 }
 
 HexusOpponentRuinsMummyPharaoh::HexusOpponentRuinsMummyPharaoh() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Ruins_Enemies_MummyPharaoh_Animations,
+	Resources::Entities_Platformer_Environment_Ruins_Enemies_BossMummyPharaoh_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-32.0f, -48.0f),

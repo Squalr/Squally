@@ -13,6 +13,7 @@
         <file id="9" name="HEAD.png" width="144" height="149" pivot_x="0" pivot_y="1"/>
         <file id="10" name="HAT.png" width="175" height="103" pivot_x="0" pivot_y="1"/>
         <file id="11" name="KNIFE.png" width="33" height="107" pivot_x="0" pivot_y="1"/>
+        <file id="12" name="KNIFE 2.png" width="33" height="107" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="1000" interval="100">
@@ -93,9 +94,9 @@
                     <object folder="0" file="11" x="-132.195584" y="-72.829473" angle="83.796552"/>
                 </key>
             </timeline>
-            <timeline id="12" name="KNIFE_000">
+            <timeline id="12" name="KNIFE 2">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="86.496004" y="53.338751" angle="346.464144"/>
+                    <object folder="0" file="12" x="93" y="55" angle="341.916555" scale_x="1" scale_y="1"/>
                 </key>
             </timeline>
         </animation>
