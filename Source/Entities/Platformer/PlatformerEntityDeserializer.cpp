@@ -33,26 +33,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(ObjectDeserializatio
 		{
 			newEntity = BossRhinoman::deserialize(&properties);
 		}
-		else if (name == GoblinGrunt::KeyEnemyGoblinGrunt)
-		{
-			newEntity = GoblinGrunt::deserialize(&properties);
-		}
-		else if (name == GoblinSwordsman::KeyEnemyGoblinSwordsman)
-		{
-			newEntity = GoblinSwordsman::deserialize(&properties);
-		}
-		else if (name == GoblinWarrior::KeyEnemyGoblinWarrior)
-		{
-			newEntity = GoblinWarrior::deserialize(&properties);
-		}
-		else if (name == JungleDragon::KeyEnemyJungleDragon)
-		{
-			newEntity = JungleDragon::deserialize(&properties);
-		}
-		else if (name == Mantis::KeyEnemyMantis)
-		{
-			newEntity = Mantis::deserialize(&properties);
-		}
 		else if (name == Minotaur::KeyEnemyMinotaur)
 		{
 			newEntity = Minotaur::deserialize(&properties);
@@ -61,25 +41,13 @@ void PlatformerEntityDeserializer::onDeserializationRequest(ObjectDeserializatio
 		{
 			newEntity = PigDemon::deserialize(&properties);
 		}
-		else if (name == PurpleDinosaur::KeyEnemyPurpleDinosaur)
-		{
-			newEntity = PurpleDinosaur::deserialize(&properties);
-		}
 		else if (name == TikiGolem::KeyEnemyTikiGolem)
 		{
 			newEntity = TikiGolem::deserialize(&properties);
 		}
-		else if (name == TikiWarrior::KeyEnemyTikiWarrior)
-		{
-			newEntity = TikiWarrior::deserialize(&properties);
-		}
 		//////////////////
 		// RUINS
 		//////////////////
-		else if (name == BossEgyptianGoddess::KeyEnemyBossEgyptianGoddess)
-		{
-			newEntity = BossEgyptianGoddess::deserialize(&properties);
-		}
 		else if (name == AnubisTiny::KeyEnemyAnubisTiny)
 		{
 			newEntity = AnubisTiny::deserialize(&properties);
@@ -99,10 +67,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(ObjectDeserializatio
 		else if (name == Medusa::KeyEnemyMedusa)
 		{
 			newEntity = Medusa::deserialize(&properties);
-		}
-		else if (name == MedusaSmall::KeyEnemyMedusaSmall)
-		{
-			newEntity = MedusaSmall::deserialize(&properties);
 		}
 		else if (name == Mermaid::KeyEnemyMermaid)
 		{
@@ -135,17 +99,9 @@ void PlatformerEntityDeserializer::onDeserializationRequest(ObjectDeserializatio
 		{
 			newEntity = Ent::deserialize(&properties);
 		}
-		else if (name == EntMage::KeyEnemyEntMage)
-		{
-			newEntity = EntMage::deserialize(&properties);
-		}
 		else if (name == GoblinGruntBoar::KeyEnemyGoblinGruntBoar)
 		{
 			newEntity = GoblinGruntBoar::deserialize(&properties);
-		}
-		else if (name == GoblinGuard::KeyEnemyGoblinGuard)
-		{
-			newEntity = GoblinGuard::deserialize(&properties);
 		}
 		else if (name == GoblinShaman::KeyEnemyGoblinShaman)
 		{
@@ -194,10 +150,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(ObjectDeserializatio
 		{
 			newEntity = Genie::deserialize(&properties);
 		}
-		else if (name == RockGolem::KeyEnemyRockGolem)
-		{
-			newEntity = RockGolem::deserialize(&properties);
-		}
 		else if (name == Shaman::KeyEnemyShaman)
 		{
 			newEntity = Shaman::deserialize(&properties);
@@ -233,10 +185,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(ObjectDeserializatio
 		{
 			newEntity = Guard::deserialize(&properties);
 		}
-		else if (name == Harpy::KeyEnemyHarpy)
-		{
-			newEntity = Harpy::deserialize(&properties);
-		}
 		else if (name == Reaper::KeyEnemyReaper)
 		{
 			newEntity = Reaper::deserialize(&properties);
@@ -253,9 +201,9 @@ void PlatformerEntityDeserializer::onDeserializationRequest(ObjectDeserializatio
 		{
 			newEntity = Vampiress::deserialize(&properties);
 		}
-		else if (name == Zombie::KeyEnemyZombie)
+		else if (name == ZombieSpearman::KeyEnemyZombieSpearman)
 		{
-			newEntity = Zombie::deserialize(&properties);
+			newEntity = ZombieSpearman::deserialize(&properties);
 		}
 		//////////////////
 		// SNOW
@@ -272,10 +220,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(ObjectDeserializatio
 		{
 			newEntity = EvilSnowman::deserialize(&properties);
 		}
-		else if (name == FrostDragon::KeyEnemyFrostDragon)
-		{
-			newEntity = FrostDragon::deserialize(&properties);
-		}
 		else if (name == FrostShooter::KeyEnemyFrostShooter)
 		{
 			newEntity = FrostShooter::deserialize(&properties);
@@ -287,10 +231,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(ObjectDeserializatio
 		else if (name == IceGolem::KeyEnemyIceGolem)
 		{
 			newEntity = IceGolem::deserialize(&properties);
-		}
-		else if (name == TinyIceGolem::KeyEnemyTinyIceGolem)
-		{
-			newEntity = TinyIceGolem::deserialize(&properties);
 		}
 		else if (name == ToySoldierGoblin::KeyEnemyToySoldierGoblin)
 		{
@@ -366,14 +306,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(ObjectDeserializatio
 		{
 			newEntity = Abomination::deserialize(&properties);
 		}
-		else if (name == BatDemon::KeyEnemyBatDemon)
-		{
-			newEntity = BatDemon::deserialize(&properties);
-		}
-		else if (name == DarkDragon::KeyEnemyDarkDragon)
-		{
-			newEntity = DarkDragon::deserialize(&properties);
-		}
 		else if (name == DemonArcher::KeyEnemyDemonArcher)
 		{
 			newEntity = DemonArcher::deserialize(&properties);
@@ -436,10 +368,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(ObjectDeserializatio
 		else if (name == MiteBot::KeyEnemyMiteBot)
 		{
 			newEntity = MiteBot::deserialize(&properties);
-		}
-		else if (name == Robot::KeyEnemyRobot)
-		{
-			newEntity = Robot::deserialize(&properties);
 		}
 		else if (name == VikingBot::KeyEnemyVikingBot)
 		{

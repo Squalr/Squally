@@ -1,25 +1,25 @@
-#include "HexusOpponentRuinsMummyPharaoh.h"
+#include "HexusOpponentCastleSwordswoman.h"
 
-const std::string HexusOpponentRuinsMummyPharaoh::StringKeyOpponentName = "Squally_Npc_Names_Ruins_Mummy_Pharaoh";
-HexusOpponentRuinsMummyPharaoh* HexusOpponentRuinsMummyPharaoh::instance = nullptr;
+const std::string HexusOpponentCastleSwordswoman::StringKeyOpponentName = "Squally_Npc_Names_Castle_Swordswoman";
+HexusOpponentCastleSwordswoman* HexusOpponentCastleSwordswoman::instance = nullptr;
 
-HexusOpponentRuinsMummyPharaoh* HexusOpponentRuinsMummyPharaoh::getInstance()
+HexusOpponentCastleSwordswoman* HexusOpponentCastleSwordswoman::getInstance()
 {
-	if (HexusOpponentRuinsMummyPharaoh::instance == nullptr)
+	if (HexusOpponentCastleSwordswoman::instance == nullptr)
 	{
-		HexusOpponentRuinsMummyPharaoh::instance = new HexusOpponentRuinsMummyPharaoh();
+		HexusOpponentCastleSwordswoman::instance = new HexusOpponentCastleSwordswoman();
 	}
 
-	return HexusOpponentRuinsMummyPharaoh::instance;
+	return HexusOpponentCastleSwordswoman::instance;
 }
 
-HexusOpponentRuinsMummyPharaoh::HexusOpponentRuinsMummyPharaoh() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Ruins_Enemies_BossMummyPharaoh_Animations,
+HexusOpponentCastleSwordswoman::HexusOpponentCastleSwordswoman() : HexusOpponentData(
+	Resources::Entities_Platformer_Environment_Castle_Npcs_Swordswoman_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
-	1.0f,
-	Vec2(-32.0f, -48.0f),
-	Vec2(-32.0f, -72.0f),
-	HexusOpponentRuinsMummyPharaoh::StringKeyOpponentName,
+	0.8f,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentCastleSwordswoman::StringKeyOpponentName,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),
@@ -55,6 +55,6 @@ HexusOpponentRuinsMummyPharaoh::HexusOpponentRuinsMummyPharaoh() : HexusOpponent
 {
 }
 
-HexusOpponentRuinsMummyPharaoh::~HexusOpponentRuinsMummyPharaoh()
+HexusOpponentCastleSwordswoman::~HexusOpponentCastleSwordswoman()
 {
 }
