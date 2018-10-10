@@ -30,9 +30,12 @@ static char g_strServicePath[2048] = {'\0'}; // caches clientID and trackingID a
 // utility function, used to replace spaces with pluses for URLs
 static void ReplaceStrChar(char *s, const int len, const char what, const char with)
 {
-	for (int i = 0; i < len; ++i) {
+	for (int i = 0; i < len; ++i)
+	{
 		if (s[i] == what)
+		{
 			s[i] = with;
+		}
 	}
 }
 
@@ -40,7 +43,9 @@ static void ReplaceStrChar(char *s, const int len, const char what, const char w
 static bool ExecuteCurlURL(const char* url, ...)
 {
 	if (!g_pMultiHandle)
+	{
 		return false;
+	}
 
 	va_list argptr;
 	va_start(argptr, url);
@@ -62,8 +67,11 @@ bool TAnalytics_Init(const char* trackingId, const char* uniqueClientId)
 {
 	curl_global_init(CURL_GLOBAL_ALL);
 	g_pMultiHandle = curl_multi_init();
+
 	if (!g_pMultiHandle)
+	{
 		return false;
+	}
 
 	sprintf(g_strServicePath, "http://www.google-analytics.com/collect?v=1&tid=%s&cid=%s", trackingId, uniqueClientId);
 	return true;
@@ -72,7 +80,9 @@ bool TAnalytics_Init(const char* trackingId, const char* uniqueClientId)
 void TAnalytics_Shutdown()
 {
 	if (!g_pMultiHandle)
+	{
 		return;
+	}
 
 	TAnalytics_Update(); // one last update to remove handles from stack if they're ready
 	curl_multi_cleanup(g_pMultiHandle);
@@ -97,7 +107,9 @@ void TAnalytics_Event(const char* category, const char* action)
 void TAnalytics_Update()
 {
 	if (!g_pMultiHandle)
+	{
 		return;
+	}
 
 	int stillRunning = 0;
 	curl_multi_perform(g_pMultiHandle, &stillRunning);
@@ -106,10 +118,14 @@ void TAnalytics_Update()
 	do {
 		int msgsInQueue = 0;
 		pMsg = curl_multi_info_read(g_pMultiHandle, &msgsInQueue);
-		if(pMsg && (pMsg->msg == CURLMSG_DONE)) {
+
+		if(pMsg && (pMsg->msg == CURLMSG_DONE))
+		{
 			long response_code;
 			curl_easy_getinfo(pMsg->easy_handle, CURLINFO_RESPONSE_CODE, &response_code);
-			if (response_code != 200) {
+
+			if (response_code != 200)
+			{
 				const char *urlp;
 				curl_easy_getinfo(pMsg->easy_handle, CURLINFO_EFFECTIVE_URL, &urlp);
 
@@ -117,6 +133,7 @@ void TAnalytics_Update()
 				sprintf(strerr, "[Error] TAnalytics_Update() failed for URL '%s' with error %ld\n", urlp ? urlp : "?", response_code);
 				assert(response_code == 200 && strerr);
 			}
+
 			curl_multi_remove_handle(g_pMultiHandle, pMsg->easy_handle);
 			curl_easy_cleanup(pMsg->easy_handle);
 		}

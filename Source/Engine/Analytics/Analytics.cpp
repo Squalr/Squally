@@ -40,8 +40,7 @@ Analytics* Analytics::getInstance()
 
 Analytics::Analytics()
 {
-	// TODO: USE STEAM CLIENT ID OR HWID
-	TAnalytics_Init(Analytics::trackingCode.c_str(), "1");
+	TAnalytics_Init(Analytics::trackingCode.c_str(), SystemUtils::getUniqueSystemIdentifier().c_str());
 }
 
 Analytics::~Analytics()
