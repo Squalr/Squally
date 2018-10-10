@@ -148,12 +148,16 @@ if(APPLE)
         )
     endif()
 elseif(LINUX)
+	find_package(PkgConfig)
+	pkg_check_modules(GTKMM gtkmm-3.0)
+
     add_executable(Launcher
         proj.linux/launcher.cpp
         # hack until we fix the breakpad utf library vs the cocos one
         external/breakpad/src/common/convert_UTF.c
-    )
-    target_link_libraries(Launcher breakpad_client pthread)
+	)
+	target_include_directories(Launcher PUBLIC ${GTKMM_INCLUDE_DIRS})
+    target_link_libraries(Launcher breakpad_client pthread ${GTKMM_LIBRARIES})
     set_target_properties(Launcher PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY
             ${APP_BIN_DIR}
