@@ -151,9 +151,10 @@ namespace google_breakpad
     };
 
     // build url request
+    NSOperatingSystemVersion version = [NSProcessInfo processInfo].operatingSystemVersion;
     NSDictionary* parameters = @{
         @"app-version" : [NSString stringWithFormat:@"%d.%d.%d", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH],
-        @"platform-version" : [NSProcessInfo processInfo].operatingSystemVersionString,
+        @"platform-version" : [NSString stringWithFormat:@"%ld.%ld.%ld", version.majorVersion, version.minorVersion, version.patchVersion],
         @"platform" : @"macos",
         @"report" : [textView.textStorage string]
     };
@@ -164,10 +165,11 @@ namespace google_breakpad
            parameters:parameters
            constructingBodyWithBlock:formBuilder
            error:nil];
+    
 
     // completion handler
     void (^completionHandler)(NSURLResponse* _Nonnull, id _Nullable, NSError* _Nonnull) =
-            ^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error)
+            ^(NSURLResponse * _Nonnull response, id  _Nullable responseData, NSError * _Nullable error)
     {
         if (error) {
             NSLog(@"crash report upload error: %@", error);
@@ -192,6 +194,7 @@ namespace google_breakpad
     // start afnetworking
     self.sessionManager = [[AFURLSessionManager alloc] initWithSessionConfiguration:
             [NSURLSessionConfiguration defaultSessionConfiguration]];
+    self.sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
 
     // exit when game process exits
     gameExitSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_SIGNAL, SIGCHLD, 0, dispatch_get_main_queue());
