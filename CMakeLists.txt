@@ -129,39 +129,52 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/PlatformerEnemy.cpp
 	Source/Entities/Platformer/PlatformerEntity.cpp
 	Source/Entities/Platformer/PlatformerEntityDeserializer.cpp
-	Source/Entities/Platformer/Enemies/Castle/BossJack.cpp
-	Source/Entities/Platformer/Enemies/Castle/BossWitch.cpp
+	Source/Entities/Platformer/Enemies/Castle/Agnes.cpp
 	Source/Entities/Platformer/Enemies/Castle/Executioner.cpp
 	Source/Entities/Platformer/Enemies/Castle/Guard.cpp
+	Source/Entities/Platformer/Enemies/Castle/Jack.cpp
 	Source/Entities/Platformer/Enemies/Castle/Reaper.cpp
-	Source/Entities/Platformer/Enemies/Castle/SkeletonMage.cpp
+	Source/Entities/Platformer/Enemies/Castle/Scarecrow.cpp
+	Source/Entities/Platformer/Enemies/Castle/Shade.cpp
 	Source/Entities/Platformer/Enemies/Castle/VampireLord.cpp
 	Source/Entities/Platformer/Enemies/Castle/Vampiress.cpp
-	Source/Entities/Platformer/Enemies/Castle/ZombieSpearman.cpp
+	Source/Entities/Platformer/Enemies/Castle/Wraith.cpp
+	Source/Entities/Platformer/Enemies/Castle/Zombie.cpp
+	Source/Entities/Platformer/Enemies/Castle/ZombieErlic.cpp
 	Source/Entities/Platformer/Enemies/Caverns/BlackWidow.cpp
-	Source/Entities/Platformer/Enemies/Caverns/BossKrampus.cpp
 	Source/Entities/Platformer/Enemies/Caverns/EarthElemental.cpp
 	Source/Entities/Platformer/Enemies/Caverns/EarthGolem.cpp
 	Source/Entities/Platformer/Enemies/Caverns/ForestGolem.cpp
 	Source/Entities/Platformer/Enemies/Caverns/Genie.cpp
+	Source/Entities/Platformer/Enemies/Caverns/Krampus.cpp
+	Source/Entities/Platformer/Enemies/Caverns/LightningGolem.cpp
 	Source/Entities/Platformer/Enemies/Caverns/Shaman.cpp
-	Source/Entities/Platformer/Enemies/Caverns/SkeletonArcher.cpp
-	Source/Entities/Platformer/Enemies/Caverns/SkeletonNecromancer.cpp
-	Source/Entities/Platformer/Enemies/Caverns/SkeletonWarrior.cpp
-	Source/Entities/Platformer/Enemies/Forest/BossDragonOrcKing.cpp
+	Source/Entities/Platformer/Enemies/Caverns/SkeletalArcher.cpp
+	Source/Entities/Platformer/Enemies/Caverns/SkeletalNecromancer.cpp
+	Source/Entities/Platformer/Enemies/Caverns/SkeletalWarrior.cpp
+	Source/Entities/Platformer/Enemies/Forest/Centaur.cpp
 	Source/Entities/Platformer/Enemies/Forest/Cyclops.cpp
 	Source/Entities/Platformer/Enemies/Forest/Ent.cpp
+	Source/Entities/Platformer/Enemies/Forest/KingGrogg.cpp
+	Source/Entities/Platformer/Enemies/Forest/Ogre.cpp
+	Source/Entities/Platformer/Enemies/Forest/OrcBomber.cpp
 	Source/Entities/Platformer/Enemies/Forest/OrcGrunt.cpp
+	Source/Entities/Platformer/Enemies/Forest/OrcSwordsman.cpp
 	Source/Entities/Platformer/Enemies/Forest/OrcWarrior.cpp
+	Source/Entities/Platformer/Enemies/Forest/Thug.cpp
 	Source/Entities/Platformer/Enemies/Forest/Troll.cpp
-	Source/Entities/Platformer/Enemies/Jungle/BossRhinoman.cpp
+	Source/Entities/Platformer/Enemies/Jungle/Barbarian.cpp
 	Source/Entities/Platformer/Enemies/Jungle/GoblinGruntBoar.cpp
 	Source/Entities/Platformer/Enemies/Jungle/GoblinShaman.cpp
 	Source/Entities/Platformer/Enemies/Jungle/GoblinWarriorPig.cpp
+	Source/Entities/Platformer/Enemies/Jungle/Gorilla.cpp
 	Source/Entities/Platformer/Enemies/Jungle/Minotaur.cpp
-	Source/Entities/Platformer/Enemies/Jungle/PigDemon.cpp
+	Source/Entities/Platformer/Enemies/Jungle/ReanimatedPig.cpp
+	Source/Entities/Platformer/Enemies/Jungle/Rhinoman.cpp
+	Source/Entities/Platformer/Enemies/Jungle/SkeletalPirate.cpp
 	Source/Entities/Platformer/Enemies/Jungle/TikiGolem.cpp
-	Source/Entities/Platformer/Enemies/Mech/BossEvilEye.cpp
+	Source/Entities/Platformer/Enemies/Jungle/Viking.cpp
+	Source/Entities/Platformer/Enemies/Mech/EvilEye.cpp
 	Source/Entities/Platformer/Enemies/Mech/Exterminator.cpp
 	Source/Entities/Platformer/Enemies/Mech/MechBoxDrone.cpp
 	Source/Entities/Platformer/Enemies/Mech/MechDog.cpp
@@ -172,35 +185,40 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Mech/VikingBot.cpp
 	Source/Entities/Platformer/Enemies/Mech/VikingBotSmall.cpp
 	Source/Entities/Platformer/Enemies/Obelisk/Abomination.cpp
-	Source/Entities/Platformer/Enemies/Obelisk/BossSkeletonKing.cpp
-	Source/Entities/Platformer/Enemies/Obelisk/DemonArcher.cpp
 	Source/Entities/Platformer/Enemies/Obelisk/Gargoyle.cpp
-	Source/Entities/Platformer/Enemies/Obelisk/SkeletonBaron.cpp
-	Source/Entities/Platformer/Enemies/Obelisk/SkeletonCleaver.cpp
-	Source/Entities/Platformer/Enemies/Obelisk/SkeletonKnight.cpp
-	Source/Entities/Platformer/Enemies/Obelisk/SkeletonPriestess.cpp
+	Source/Entities/Platformer/Enemies/Obelisk/KingZul.cpp
+	Source/Entities/Platformer/Enemies/Obelisk/ReanimatedFighter.cpp
+	Source/Entities/Platformer/Enemies/Obelisk/SkeletalBaron.cpp
+	Source/Entities/Platformer/Enemies/Obelisk/SkeletalCleaver.cpp
+	Source/Entities/Platformer/Enemies/Obelisk/SkeletalKnight.cpp
+	Source/Entities/Platformer/Enemies/Obelisk/SkeletalPriestess.cpp
 	Source/Entities/Platformer/Enemies/Obelisk/Undead.cpp
+	Source/Entities/Platformer/Enemies/Obelisk/VoidArcher.cpp
 	Source/Entities/Platformer/Enemies/Obelisk/VoidDemon.cpp
-	Source/Entities/Platformer/Enemies/Ruins/AnubisTiny.cpp
+	Source/Entities/Platformer/Enemies/Ruins/AnubisPup.cpp
 	Source/Entities/Platformer/Enemies/Ruins/AnubisWarrior.cpp
 	Source/Entities/Platformer/Enemies/Ruins/Lioness.cpp
 	Source/Entities/Platformer/Enemies/Ruins/LionMan.cpp
 	Source/Entities/Platformer/Enemies/Ruins/Medusa.cpp
 	Source/Entities/Platformer/Enemies/Ruins/Mermaid.cpp
-	Source/Entities/Platformer/Enemies/Ruins/MummyPharaoh.cpp
+	Source/Entities/Platformer/Enemies/Ruins/MummyPriest.cpp
+	Source/Entities/Platformer/Enemies/Ruins/MummyWarrior.cpp
+	Source/Entities/Platformer/Enemies/Ruins/Osiris.cpp
 	Source/Entities/Platformer/Enemies/Ruins/TigerMan.cpp
 	Source/Entities/Platformer/Enemies/Ruins/Tigress.cpp
-	Source/Entities/Platformer/Enemies/Snow/BossIceGolem.cpp
-	Source/Entities/Platformer/Enemies/Snow/BossSanta.cpp
-	Source/Entities/Platformer/Enemies/Snow/EvilSnowman.cpp
-	Source/Entities/Platformer/Enemies/Snow/FrostShooter.cpp
+	Source/Entities/Platformer/Enemies/Snow/Cyrogen.cpp
+	Source/Entities/Platformer/Enemies/Snow/FrostFiend.cpp
 	Source/Entities/Platformer/Enemies/Snow/GoblinElf.cpp
 	Source/Entities/Platformer/Enemies/Snow/IceGolem.cpp
+	Source/Entities/Platformer/Enemies/Snow/PenguinGrunt.cpp
+	Source/Entities/Platformer/Enemies/Snow/PenguinWarrior.cpp
+	Source/Entities/Platformer/Enemies/Snow/Santa.cpp
+	Source/Entities/Platformer/Enemies/Snow/SnowFiend.cpp
 	Source/Entities/Platformer/Enemies/Snow/ToySoldierGoblin.cpp
 	Source/Entities/Platformer/Enemies/Snow/WaterElemental.cpp
 	Source/Entities/Platformer/Enemies/Snow/Yeti.cpp
 	Source/Entities/Platformer/Enemies/Snow/YetiWarrior.cpp
-	Source/Entities/Platformer/Enemies/Volcano/BossDemonKing.cpp
+	Source/Entities/Platformer/Enemies/Volcano/Asmodeus.cpp
 	Source/Entities/Platformer/Enemies/Volcano/CritterDemon.cpp
 	Source/Entities/Platformer/Enemies/Volcano/DemonDragon.cpp
 	Source/Entities/Platformer/Enemies/Volcano/DemonGhost.cpp
@@ -211,9 +229,105 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Volcano/DemonWarrior.cpp
 	Source/Entities/Platformer/Enemies/Volcano/FireElemental.cpp
 	Source/Entities/Platformer/Enemies/Volcano/LavaGolem.cpp
-	Source/Entities/Platformer/Npcs/Knight.cpp
 	Source/Entities/Platformer/Npcs/NpcBase.cpp
-	Source/Entities/Platformer/Npcs/Castle/CastleGuard.cpp
+	Source/Entities/Platformer/Npcs/Castle/Erlic.cpp
+	Source/Entities/Platformer/Npcs/Castle/Garin.cpp
+	Source/Entities/Platformer/Npcs/Castle/KingRedsong.cpp
+	Source/Entities/Platformer/Npcs/Castle/KingRedsongSlime.cpp
+	Source/Entities/Platformer/Npcs/Castle/Leroy.cpp
+	Source/Entities/Platformer/Npcs/Castle/Mabel.cpp
+	Source/Entities/Platformer/Npcs/Castle/Merlin.cpp
+	Source/Entities/Platformer/Npcs/Castle/PrincessOpal.cpp
+	Source/Entities/Platformer/Npcs/Castle/Raven.cpp
+	Source/Entities/Platformer/Npcs/Castle/Rogas.cpp
+	Source/Entities/Platformer/Npcs/Castle/Thurstan.cpp
+	Source/Entities/Platformer/Npcs/Castle/Tyracius.cpp
+	Source/Entities/Platformer/Npcs/Caverns/Alder.cpp
+	Source/Entities/Platformer/Npcs/Caverns/Brock.cpp
+	Source/Entities/Platformer/Npcs/Caverns/Cypress.cpp
+	Source/Entities/Platformer/Npcs/Caverns/Finch.cpp
+	Source/Entities/Platformer/Npcs/Caverns/Fraya.cpp
+	Source/Entities/Platformer/Npcs/Caverns/Jasper.cpp
+	Source/Entities/Platformer/Npcs/Caverns/Mildred.cpp
+	Source/Entities/Platformer/Npcs/Caverns/Olive.cpp
+	Source/Entities/Platformer/Npcs/Caverns/PrincessDawn.cpp
+	Source/Entities/Platformer/Npcs/Caverns/Sarude.cpp
+	Source/Entities/Platformer/Npcs/Caverns/Shen.cpp
+	Source/Entities/Platformer/Npcs/Forest/Appolo.cpp
+	Source/Entities/Platformer/Npcs/Forest/Chiron.cpp
+	Source/Entities/Platformer/Npcs/Forest/Cooper.cpp
+	Source/Entities/Platformer/Npcs/Forest/Dudly.cpp
+	Source/Entities/Platformer/Npcs/Forest/Lycan.cpp
+	Source/Entities/Platformer/Npcs/Forest/Polyphemus.cpp
+	Source/Entities/Platformer/Npcs/Forest/PrincessMittens.cpp
+	Source/Entities/Platformer/Npcs/Forest/Robin.cpp
+	Source/Entities/Platformer/Npcs/Forest/Rupert.cpp
+	Source/Entities/Platformer/Npcs/Forest/Rusty.cpp
+	Source/Entities/Platformer/Npcs/Forest/Toben.cpp
+	Source/Entities/Platformer/Npcs/Jungle/Blackbeard.cpp
+	Source/Entities/Platformer/Npcs/Jungle/Bodom.cpp
+	Source/Entities/Platformer/Npcs/Jungle/Drak.cpp
+	Source/Entities/Platformer/Npcs/Jungle/Elriel.cpp
+	Source/Entities/Platformer/Npcs/Jungle/Gramps.cpp
+	Source/Entities/Platformer/Npcs/Jungle/Hades.cpp
+	Source/Entities/Platformer/Npcs/Jungle/Minos.cpp
+	Source/Entities/Platformer/Npcs/Jungle/PrincessMatu.cpp
+	Source/Entities/Platformer/Npcs/Jungle/Raka.cpp
+	Source/Entities/Platformer/Npcs/Jungle/Thor.cpp
+	Source/Entities/Platformer/Npcs/Mech/Atreus.cpp
+	Source/Entities/Platformer/Npcs/Mech/Illia.cpp
+	Source/Entities/Platformer/Npcs/Mech/Leon.cpp
+	Source/Entities/Platformer/Npcs/Mech/Mara.cpp
+	Source/Entities/Platformer/Npcs/Mech/Marcel.cpp
+	Source/Entities/Platformer/Npcs/Mech/Piper.cpp
+	Source/Entities/Platformer/Npcs/Mech/QueenElise.cpp
+	Source/Entities/Platformer/Npcs/Mech/Radon.cpp
+	Source/Entities/Platformer/Npcs/Mech/Xenon.cpp
+	Source/Entities/Platformer/Npcs/Mech/Ysara.cpp
+	Source/Entities/Platformer/Npcs/Obelisk/Amelia.cpp
+	Source/Entities/Platformer/Npcs/Obelisk/Azmus.cpp
+	Source/Entities/Platformer/Npcs/Obelisk/Garrick.cpp
+	Source/Entities/Platformer/Npcs/Obelisk/Johann.cpp
+	Source/Entities/Platformer/Npcs/Obelisk/Necron.cpp
+	Source/Entities/Platformer/Npcs/Obelisk/PrincessNebea.cpp
+	Source/Entities/Platformer/Npcs/Obelisk/Roger.cpp
+	Source/Entities/Platformer/Npcs/Obelisk/Thion.cpp
+	Source/Entities/Platformer/Npcs/Obelisk/Ursula.cpp
+	Source/Entities/Platformer/Npcs/Obelisk/Viper.cpp
+	Source/Entities/Platformer/Npcs/Obelisk/Zana.cpp
+	Source/Entities/Platformer/Npcs/Ruins/Aphrodite.cpp
+	Source/Entities/Platformer/Npcs/Ruins/Ares.cpp
+	Source/Entities/Platformer/Npcs/Ruins/Athena.cpp
+	Source/Entities/Platformer/Npcs/Ruins/Cleopatra.cpp
+	Source/Entities/Platformer/Npcs/Ruins/Griffin.cpp
+	Source/Entities/Platformer/Npcs/Ruins/Hera.cpp
+	Source/Entities/Platformer/Npcs/Ruins/Horus.cpp
+	Source/Entities/Platformer/Npcs/Ruins/Manticore.cpp
+	Source/Entities/Platformer/Npcs/Ruins/Poseidon.cpp
+	Source/Entities/Platformer/Npcs/Ruins/Spartan.cpp
+	Source/Entities/Platformer/Npcs/Ruins/Zeus.cpp
+	Source/Entities/Platformer/Npcs/Snow/Aspen.cpp
+	Source/Entities/Platformer/Npcs/Snow/Aster.cpp
+	Source/Entities/Platformer/Npcs/Snow/Cookie.cpp
+	Source/Entities/Platformer/Npcs/Snow/Irmik.cpp
+	Source/Entities/Platformer/Npcs/Snow/Jingles.cpp
+	Source/Entities/Platformer/Npcs/Snow/Juniper.cpp
+	Source/Entities/Platformer/Npcs/Snow/Kringle.cpp
+	Source/Entities/Platformer/Npcs/Snow/Nessie.cpp
+	Source/Entities/Platformer/Npcs/Snow/PrincessPepper.cpp
+	Source/Entities/Platformer/Npcs/Snow/Theldar.cpp
+	Source/Entities/Platformer/Npcs/Snow/Tinsel.cpp
+	Source/Entities/Platformer/Npcs/Volcano/Ash.cpp
+	Source/Entities/Platformer/Npcs/Volcano/Brine.cpp
+	Source/Entities/Platformer/Npcs/Volcano/Celeste.cpp
+	Source/Entities/Platformer/Npcs/Volcano/Cindra.cpp
+	Source/Entities/Platformer/Npcs/Volcano/Igneus.cpp
+	Source/Entities/Platformer/Npcs/Volcano/Lucifer.cpp
+	Source/Entities/Platformer/Npcs/Volcano/Magnus.cpp
+	Source/Entities/Platformer/Npcs/Volcano/Pan.cpp
+	Source/Entities/Platformer/Npcs/Volcano/Ragnis.cpp
+	Source/Entities/Platformer/Npcs/Volcano/Scaldor.cpp
+	Source/Entities/Platformer/Npcs/Volcano/Zelina.cpp
 	Source/Entities/Platformer/Squally/Hover.cpp
 	Source/Entities/Platformer/Squally/Squally.cpp
 	Source/Events/DialogEvents.cpp
@@ -571,39 +685,52 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/PlatformerEntities.h
 	Source/Entities/Platformer/PlatformerEntity.h
 	Source/Entities/Platformer/PlatformerEntityDeserializer.h
-	Source/Entities/Platformer/Enemies/Castle/BossJack.h
-	Source/Entities/Platformer/Enemies/Castle/BossWitch.h
+	Source/Entities/Platformer/Enemies/Castle/Agnes.h
 	Source/Entities/Platformer/Enemies/Castle/Executioner.h
 	Source/Entities/Platformer/Enemies/Castle/Guard.h
+	Source/Entities/Platformer/Enemies/Castle/Jack.h
 	Source/Entities/Platformer/Enemies/Castle/Reaper.h
-	Source/Entities/Platformer/Enemies/Castle/SkeletonMage.h
+	Source/Entities/Platformer/Enemies/Castle/Scarecrow.h
+	Source/Entities/Platformer/Enemies/Castle/Shade.h
 	Source/Entities/Platformer/Enemies/Castle/VampireLord.h
 	Source/Entities/Platformer/Enemies/Castle/Vampiress.h
-	Source/Entities/Platformer/Enemies/Castle/ZombieSpearman.h
+	Source/Entities/Platformer/Enemies/Castle/Wraith.h
+	Source/Entities/Platformer/Enemies/Castle/Zombie.h
+	Source/Entities/Platformer/Enemies/Castle/ZombieErlic.h
 	Source/Entities/Platformer/Enemies/Caverns/BlackWidow.h
-	Source/Entities/Platformer/Enemies/Caverns/BossKrampus.h
 	Source/Entities/Platformer/Enemies/Caverns/EarthElemental.h
 	Source/Entities/Platformer/Enemies/Caverns/EarthGolem.h
 	Source/Entities/Platformer/Enemies/Caverns/ForestGolem.h
 	Source/Entities/Platformer/Enemies/Caverns/Genie.h
+	Source/Entities/Platformer/Enemies/Caverns/Krampus.h
+	Source/Entities/Platformer/Enemies/Caverns/LightningGolem.h
 	Source/Entities/Platformer/Enemies/Caverns/Shaman.h
-	Source/Entities/Platformer/Enemies/Caverns/SkeletonArcher.h
-	Source/Entities/Platformer/Enemies/Caverns/SkeletonNecromancer.h
-	Source/Entities/Platformer/Enemies/Caverns/SkeletonWarrior.h
-	Source/Entities/Platformer/Enemies/Forest/BossDragonOrcKing.h
+	Source/Entities/Platformer/Enemies/Caverns/SkeletalArcher.h
+	Source/Entities/Platformer/Enemies/Caverns/SkeletalNecromancer.h
+	Source/Entities/Platformer/Enemies/Caverns/SkeletalWarrior.h
+	Source/Entities/Platformer/Enemies/Forest/Centaur.h
 	Source/Entities/Platformer/Enemies/Forest/Cyclops.h
 	Source/Entities/Platformer/Enemies/Forest/Ent.h
+	Source/Entities/Platformer/Enemies/Forest/KingGrogg.h
+	Source/Entities/Platformer/Enemies/Forest/Ogre.h
+	Source/Entities/Platformer/Enemies/Forest/OrcBomber.h
 	Source/Entities/Platformer/Enemies/Forest/OrcGrunt.h
+	Source/Entities/Platformer/Enemies/Forest/OrcSwordsman.h
 	Source/Entities/Platformer/Enemies/Forest/OrcWarrior.h
+	Source/Entities/Platformer/Enemies/Forest/Thug.h
 	Source/Entities/Platformer/Enemies/Forest/Troll.h
-	Source/Entities/Platformer/Enemies/Jungle/BossRhinoman.h
+	Source/Entities/Platformer/Enemies/Jungle/Barbarian.h
 	Source/Entities/Platformer/Enemies/Jungle/GoblinGruntBoar.h
 	Source/Entities/Platformer/Enemies/Jungle/GoblinShaman.h
 	Source/Entities/Platformer/Enemies/Jungle/GoblinWarriorPig.h
+	Source/Entities/Platformer/Enemies/Jungle/Gorilla.h
 	Source/Entities/Platformer/Enemies/Jungle/Minotaur.h
-	Source/Entities/Platformer/Enemies/Jungle/PigDemon.h
+	Source/Entities/Platformer/Enemies/Jungle/ReanimatedPig.h
+	Source/Entities/Platformer/Enemies/Jungle/Rhinoman.h
+	Source/Entities/Platformer/Enemies/Jungle/SkeletalPirate.h
 	Source/Entities/Platformer/Enemies/Jungle/TikiGolem.h
-	Source/Entities/Platformer/Enemies/Mech/BossEvilEye.h
+	Source/Entities/Platformer/Enemies/Jungle/Viking.h
+	Source/Entities/Platformer/Enemies/Mech/EvilEye.h
 	Source/Entities/Platformer/Enemies/Mech/Exterminator.h
 	Source/Entities/Platformer/Enemies/Mech/MechBoxDrone.h
 	Source/Entities/Platformer/Enemies/Mech/MechDog.h
@@ -614,35 +741,40 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Mech/VikingBot.h
 	Source/Entities/Platformer/Enemies/Mech/VikingBotSmall.h
 	Source/Entities/Platformer/Enemies/Obelisk/Abomination.h
-	Source/Entities/Platformer/Enemies/Obelisk/BossSkeletonKing.h
-	Source/Entities/Platformer/Enemies/Obelisk/DemonArcher.h
 	Source/Entities/Platformer/Enemies/Obelisk/Gargoyle.h
-	Source/Entities/Platformer/Enemies/Obelisk/SkeletonBaron.h
-	Source/Entities/Platformer/Enemies/Obelisk/SkeletonCleaver.h
-	Source/Entities/Platformer/Enemies/Obelisk/SkeletonKnight.h
-	Source/Entities/Platformer/Enemies/Obelisk/SkeletonPriestess.h
+	Source/Entities/Platformer/Enemies/Obelisk/KingZul.h
+	Source/Entities/Platformer/Enemies/Obelisk/ReanimatedFighter.h
+	Source/Entities/Platformer/Enemies/Obelisk/SkeletalBaron.h
+	Source/Entities/Platformer/Enemies/Obelisk/SkeletalCleaver.h
+	Source/Entities/Platformer/Enemies/Obelisk/SkeletalKnight.h
+	Source/Entities/Platformer/Enemies/Obelisk/SkeletalPriestess.h
 	Source/Entities/Platformer/Enemies/Obelisk/Undead.h
+	Source/Entities/Platformer/Enemies/Obelisk/VoidArcher.h
 	Source/Entities/Platformer/Enemies/Obelisk/VoidDemon.h
-	Source/Entities/Platformer/Enemies/Ruins/AnubisTiny.h
+	Source/Entities/Platformer/Enemies/Ruins/AnubisPup.h
 	Source/Entities/Platformer/Enemies/Ruins/AnubisWarrior.h
 	Source/Entities/Platformer/Enemies/Ruins/Lioness.h
 	Source/Entities/Platformer/Enemies/Ruins/LionMan.h
 	Source/Entities/Platformer/Enemies/Ruins/Medusa.h
 	Source/Entities/Platformer/Enemies/Ruins/Mermaid.h
-	Source/Entities/Platformer/Enemies/Ruins/MummyPharaoh.h
+	Source/Entities/Platformer/Enemies/Ruins/MummyPriest.h
+	Source/Entities/Platformer/Enemies/Ruins/MummyWarrior.h
+	Source/Entities/Platformer/Enemies/Ruins/Osiris.h
 	Source/Entities/Platformer/Enemies/Ruins/TigerMan.h
 	Source/Entities/Platformer/Enemies/Ruins/Tigress.h
-	Source/Entities/Platformer/Enemies/Snow/BossIceGolem.h
-	Source/Entities/Platformer/Enemies/Snow/BossSanta.h
-	Source/Entities/Platformer/Enemies/Snow/EvilSnowman.h
-	Source/Entities/Platformer/Enemies/Snow/FrostShooter.h
+	Source/Entities/Platformer/Enemies/Snow/Cyrogen.h
+	Source/Entities/Platformer/Enemies/Snow/FrostFiend.h
 	Source/Entities/Platformer/Enemies/Snow/GoblinElf.h
 	Source/Entities/Platformer/Enemies/Snow/IceGolem.h
+	Source/Entities/Platformer/Enemies/Snow/PenguinGrunt.h
+	Source/Entities/Platformer/Enemies/Snow/PenguinWarrior.h
+	Source/Entities/Platformer/Enemies/Snow/Santa.h
+	Source/Entities/Platformer/Enemies/Snow/SnowFiend.h
 	Source/Entities/Platformer/Enemies/Snow/ToySoldierGoblin.h
 	Source/Entities/Platformer/Enemies/Snow/WaterElemental.h
 	Source/Entities/Platformer/Enemies/Snow/Yeti.h
 	Source/Entities/Platformer/Enemies/Snow/YetiWarrior.h
-	Source/Entities/Platformer/Enemies/Volcano/BossDemonKing.h
+	Source/Entities/Platformer/Enemies/Volcano/Asmodeus.h
 	Source/Entities/Platformer/Enemies/Volcano/CritterDemon.h
 	Source/Entities/Platformer/Enemies/Volcano/DemonDragon.h
 	Source/Entities/Platformer/Enemies/Volcano/DemonGhost.h
@@ -653,9 +785,105 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Volcano/DemonWarrior.h
 	Source/Entities/Platformer/Enemies/Volcano/FireElemental.h
 	Source/Entities/Platformer/Enemies/Volcano/LavaGolem.h
-	Source/Entities/Platformer/Npcs/Knight.h
 	Source/Entities/Platformer/Npcs/NpcBase.h
-	Source/Entities/Platformer/Npcs/Castle/CastleGuard.h
+	Source/Entities/Platformer/Npcs/Castle/Erlic.h
+	Source/Entities/Platformer/Npcs/Castle/Garin.h
+	Source/Entities/Platformer/Npcs/Castle/KingRedsong.h
+	Source/Entities/Platformer/Npcs/Castle/KingRedsongSlime.h
+	Source/Entities/Platformer/Npcs/Castle/Leroy.h
+	Source/Entities/Platformer/Npcs/Castle/Mabel.h
+	Source/Entities/Platformer/Npcs/Castle/Merlin.h
+	Source/Entities/Platformer/Npcs/Castle/PrincessOpal.h
+	Source/Entities/Platformer/Npcs/Castle/Raven.h
+	Source/Entities/Platformer/Npcs/Castle/Rogas.h
+	Source/Entities/Platformer/Npcs/Castle/Thurstan.h
+	Source/Entities/Platformer/Npcs/Castle/Tyracius.h
+	Source/Entities/Platformer/Npcs/Caverns/Alder.h
+	Source/Entities/Platformer/Npcs/Caverns/Brock.h
+	Source/Entities/Platformer/Npcs/Caverns/Cypress.h
+	Source/Entities/Platformer/Npcs/Caverns/Finch.h
+	Source/Entities/Platformer/Npcs/Caverns/Fraya.h
+	Source/Entities/Platformer/Npcs/Caverns/Jasper.h
+	Source/Entities/Platformer/Npcs/Caverns/Mildred.h
+	Source/Entities/Platformer/Npcs/Caverns/Olive.h
+	Source/Entities/Platformer/Npcs/Caverns/PrincessDawn.h
+	Source/Entities/Platformer/Npcs/Caverns/Sarude.h
+	Source/Entities/Platformer/Npcs/Caverns/Shen.h
+	Source/Entities/Platformer/Npcs/Forest/Appolo.h
+	Source/Entities/Platformer/Npcs/Forest/Chiron.h
+	Source/Entities/Platformer/Npcs/Forest/Cooper.h
+	Source/Entities/Platformer/Npcs/Forest/Dudly.h
+	Source/Entities/Platformer/Npcs/Forest/Lycan.h
+	Source/Entities/Platformer/Npcs/Forest/Polyphemus.h
+	Source/Entities/Platformer/Npcs/Forest/PrincessMittens.h
+	Source/Entities/Platformer/Npcs/Forest/Robin.h
+	Source/Entities/Platformer/Npcs/Forest/Rupert.h
+	Source/Entities/Platformer/Npcs/Forest/Rusty.h
+	Source/Entities/Platformer/Npcs/Forest/Toben.h
+	Source/Entities/Platformer/Npcs/Jungle/Blackbeard.h
+	Source/Entities/Platformer/Npcs/Jungle/Bodom.h
+	Source/Entities/Platformer/Npcs/Jungle/Drak.h
+	Source/Entities/Platformer/Npcs/Jungle/Elriel.h
+	Source/Entities/Platformer/Npcs/Jungle/Gramps.h
+	Source/Entities/Platformer/Npcs/Jungle/Hades.h
+	Source/Entities/Platformer/Npcs/Jungle/Minos.h
+	Source/Entities/Platformer/Npcs/Jungle/PrincessMatu.h
+	Source/Entities/Platformer/Npcs/Jungle/Raka.h
+	Source/Entities/Platformer/Npcs/Jungle/Thor.h
+	Source/Entities/Platformer/Npcs/Mech/Atreus.h
+	Source/Entities/Platformer/Npcs/Mech/Illia.h
+	Source/Entities/Platformer/Npcs/Mech/Leon.h
+	Source/Entities/Platformer/Npcs/Mech/Mara.h
+	Source/Entities/Platformer/Npcs/Mech/Marcel.h
+	Source/Entities/Platformer/Npcs/Mech/Piper.h
+	Source/Entities/Platformer/Npcs/Mech/QueenElise.h
+	Source/Entities/Platformer/Npcs/Mech/Radon.h
+	Source/Entities/Platformer/Npcs/Mech/Xenon.h
+	Source/Entities/Platformer/Npcs/Mech/Ysara.h
+	Source/Entities/Platformer/Npcs/Obelisk/Amelia.h
+	Source/Entities/Platformer/Npcs/Obelisk/Azmus.h
+	Source/Entities/Platformer/Npcs/Obelisk/Garrick.h
+	Source/Entities/Platformer/Npcs/Obelisk/Johann.h
+	Source/Entities/Platformer/Npcs/Obelisk/Necron.h
+	Source/Entities/Platformer/Npcs/Obelisk/PrincessNebea.h
+	Source/Entities/Platformer/Npcs/Obelisk/Roger.h
+	Source/Entities/Platformer/Npcs/Obelisk/Thion.h
+	Source/Entities/Platformer/Npcs/Obelisk/Ursula.h
+	Source/Entities/Platformer/Npcs/Obelisk/Viper.h
+	Source/Entities/Platformer/Npcs/Obelisk/Zana.h
+	Source/Entities/Platformer/Npcs/Ruins/Aphrodite.h
+	Source/Entities/Platformer/Npcs/Ruins/Ares.h
+	Source/Entities/Platformer/Npcs/Ruins/Athena.h
+	Source/Entities/Platformer/Npcs/Ruins/Cleopatra.h
+	Source/Entities/Platformer/Npcs/Ruins/Griffin.h
+	Source/Entities/Platformer/Npcs/Ruins/Hera.h
+	Source/Entities/Platformer/Npcs/Ruins/Horus.h
+	Source/Entities/Platformer/Npcs/Ruins/Manticore.h
+	Source/Entities/Platformer/Npcs/Ruins/Poseidon.h
+	Source/Entities/Platformer/Npcs/Ruins/Spartan.h
+	Source/Entities/Platformer/Npcs/Ruins/Zeus.h
+	Source/Entities/Platformer/Npcs/Snow/Aspen.h
+	Source/Entities/Platformer/Npcs/Snow/Aster.h
+	Source/Entities/Platformer/Npcs/Snow/Cookie.h
+	Source/Entities/Platformer/Npcs/Snow/Irmik.h
+	Source/Entities/Platformer/Npcs/Snow/Jingles.h
+	Source/Entities/Platformer/Npcs/Snow/Juniper.h
+	Source/Entities/Platformer/Npcs/Snow/Kringle.h
+	Source/Entities/Platformer/Npcs/Snow/Nessie.h
+	Source/Entities/Platformer/Npcs/Snow/PrincessPepper.h
+	Source/Entities/Platformer/Npcs/Snow/Theldar.h
+	Source/Entities/Platformer/Npcs/Snow/Tinsel.h
+	Source/Entities/Platformer/Npcs/Volcano/Ash.h
+	Source/Entities/Platformer/Npcs/Volcano/Brine.h
+	Source/Entities/Platformer/Npcs/Volcano/Celeste.h
+	Source/Entities/Platformer/Npcs/Volcano/Cindra.h
+	Source/Entities/Platformer/Npcs/Volcano/Igneus.h
+	Source/Entities/Platformer/Npcs/Volcano/Lucifer.h
+	Source/Entities/Platformer/Npcs/Volcano/Magnus.h
+	Source/Entities/Platformer/Npcs/Volcano/Pan.h
+	Source/Entities/Platformer/Npcs/Volcano/Ragnis.h
+	Source/Entities/Platformer/Npcs/Volcano/Scaldor.h
+	Source/Entities/Platformer/Npcs/Volcano/Zelina.h
 	Source/Entities/Platformer/Squally/Hover.h
 	Source/Entities/Platformer/Squally/Squally.h
 	Source/Events/DialogEvents.h
