@@ -11,7 +11,7 @@ class VikingBotSmall : public PlatformerEnemy
 public:
 	static VikingBotSmall * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyVikingBotSmall;
+	static const std::string MapKeyEnemyVikingBotSmall;
 
 private:
 	VikingBotSmall(ValueMap* initProperties);

@@ -11,7 +11,7 @@ class Ent : public PlatformerEnemy
 public:
 	static Ent * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyEnt;
+	static const std::string MapKeyEnemyEnt;
 
 private:
 	Ent(ValueMap* initProperties);

@@ -11,7 +11,7 @@ class Alder : public NpcBase
 public:
 	static Alder * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyAlder;
+	static const std::string MapKeyNpcAlder;
 
 private:
 	Alder(ValueMap* initProperties);

@@ -1,6 +1,6 @@
 #include "PrincessDawn.h"
 
-const std::string PrincessDawn::KeyEnemyPrincessDawn = "princess_dawn";
+const std::string PrincessDawn::MapKeyNpcPrincessDawn = "princess_dawn";
 
 PrincessDawn* PrincessDawn::deserialize(ValueMap* initProperties)
 {

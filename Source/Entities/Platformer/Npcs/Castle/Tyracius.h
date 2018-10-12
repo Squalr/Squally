@@ -11,7 +11,7 @@ class Tyracius : public NpcBase
 public:
 	static Tyracius * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyTyracius;
+	static const std::string MapKeyNpcTyracius;
 
 private:
 	Tyracius(ValueMap* initProperties);

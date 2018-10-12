@@ -1,6 +1,6 @@
 #include "Shade.h"
 
-const std::string Shade::KeyEnemyShade = "shade";
+const std::string Shade::MapKeyEnemyShade = "shade";
 
 Shade* Shade::deserialize(ValueMap* initProperties)
 {

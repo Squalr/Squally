@@ -1,6 +1,6 @@
 #include "Mabel.h"
 
-const std::string Mabel::KeyEnemyMabel = "mabel";
+const std::string Mabel::MapKeyNpcMabel = "mabel";
 
 Mabel* Mabel::deserialize(ValueMap* initProperties)
 {

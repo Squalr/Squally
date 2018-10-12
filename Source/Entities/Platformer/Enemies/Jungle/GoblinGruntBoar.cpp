@@ -1,6 +1,6 @@
 #include "GoblinGruntBoar.h"
 
-const std::string GoblinGruntBoar::KeyEnemyGoblinGruntBoar = "goblin_grunt_boar";
+const std::string GoblinGruntBoar::MapKeyEnemyGoblinGruntBoar = "goblin_grunt_boar";
 
 GoblinGruntBoar* GoblinGruntBoar::deserialize(ValueMap* initProperties)
 {

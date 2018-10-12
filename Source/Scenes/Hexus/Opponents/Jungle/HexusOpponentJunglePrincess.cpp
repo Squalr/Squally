@@ -20,6 +20,7 @@ HexusOpponentJunglePrincess::HexusOpponentJunglePrincess() : HexusOpponentData(
 	Vec2(-48.0f, -80.0f),
 	Vec2(0.0f, 0.0f),
 	HexusOpponentJunglePrincess::StringKeyOpponentName,
+	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal3),

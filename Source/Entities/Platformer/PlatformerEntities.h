@@ -3,30 +3,30 @@
 
 #include "Entities/Platformer/Squally/Squally.h"
 
-// NPCS
-#include "Entities/Platformer/Npcs/Knight.h"
-
 // Enemies
-#include "Entities/Platformer/Enemies/Castle/BossJack.h"
-#include "Entities/Platformer/Enemies/Castle/BossWitch.h"
+#include "Entities/Platformer/Enemies/Castle/Agnes.h"
 #include "Entities/Platformer/Enemies/Castle/Executioner.h"
 #include "Entities/Platformer/Enemies/Castle/Guard.h"
+#include "Entities/Platformer/Enemies/Castle/Jack.h"
 #include "Entities/Platformer/Enemies/Castle/Reaper.h"
-#include "Entities/Platformer/Enemies/Castle/SkeletonMage.h"
+#include "Entities/Platformer/Enemies/Castle/Scarecrow.h"
+#include "Entities/Platformer/Enemies/Castle/Shade.h"
 #include "Entities/Platformer/Enemies/Castle/VampireLord.h"
 #include "Entities/Platformer/Enemies/Castle/Vampiress.h"
-#include "Entities/Platformer/Enemies/Castle/ZombieSpearman.h"
+#include "Entities/Platformer/Enemies/Castle/Zombie.h"
+#include "Entities/Platformer/Enemies/Castle/ZombieErlic.h"
 
 #include "Entities/Platformer/Enemies/Caverns/BlackWidow.h"
-#include "Entities/Platformer/Enemies/Caverns/BossKrampus.h"
 #include "Entities/Platformer/Enemies/Caverns/EarthElemental.h"
 #include "Entities/Platformer/Enemies/Caverns/EarthGolem.h"
 #include "Entities/Platformer/Enemies/Caverns/ForestGolem.h"
 #include "Entities/Platformer/Enemies/Caverns/Genie.h"
+#include "Entities/Platformer/Enemies/Caverns/Krampus.h"
+#include "Entities/Platformer/Enemies/Caverns/LightningGolem.h"
 #include "Entities/Platformer/Enemies/Caverns/Shaman.h"
-#include "Entities/Platformer/Enemies/Caverns/SkeletonArcher.h"
-#include "Entities/Platformer/Enemies/Caverns/SkeletonNecromancer.h"
-#include "Entities/Platformer/Enemies/Caverns/SkeletonWarrior.h"
+#include "Entities/Platformer/Enemies/Caverns/SkeletalArcher.h"
+#include "Entities/Platformer/Enemies/Caverns/SkeletalNecromancer.h"
+#include "Entities/Platformer/Enemies/Caverns/SkeletalWarrior.h"
 
 #include "Entities/Platformer/Enemies/Forest/BossDragonOrcKing.h"
 #include "Entities/Platformer/Enemies/Forest/Cyclops.h"

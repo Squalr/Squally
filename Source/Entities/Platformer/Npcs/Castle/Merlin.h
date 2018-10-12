@@ -11,7 +11,7 @@ class Merlin : public NpcBase
 public:
 	static Merlin * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyMerlin;
+	static const std::string MapKeyNpcMerlin;
 
 private:
 	Merlin(ValueMap* initProperties);

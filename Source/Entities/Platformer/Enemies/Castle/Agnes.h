@@ -11,7 +11,10 @@ class Agnes : public PlatformerEnemy
 public:
 	static Agnes * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyAgnes;
+	static HexusOpponentData* getHexusOpponentData();
+
+	static const std::string MapKeyEnemyAgnes;
+	static const std::string KeyName;
 
 private:
 	Agnes(ValueMap* initProperties);

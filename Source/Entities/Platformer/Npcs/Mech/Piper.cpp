@@ -1,18 +1,18 @@
-#include "CastleGuard.h"
+#include "Piper.h"
 
-const std::string CastleGuard::KeyEnemyCastleGuard = "CastleGuard";
+const std::string Piper::MapKeyNpcPiper = "piper";
 
-CastleGuard* CastleGuard::deserialize(ValueMap* initProperties)
+Piper* Piper::deserialize(ValueMap* initProperties)
 {
-	CastleGuard* instance = new CastleGuard(initProperties);
+	Piper* instance = new Piper(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CastleGuard::CastleGuard(ValueMap* initProperties) : NpcBase(initProperties,
-	Resources::Entities_Platformer_Environment_Castle_Npcs_Guard_Animations,
+Piper::Piper(ValueMap* initProperties) : NpcBase(initProperties,
+	Resources::Entities_Platformer_Environment_Mech_Npcs_Piper_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,
@@ -20,6 +20,6 @@ CastleGuard::CastleGuard(ValueMap* initProperties) : NpcBase(initProperties,
 {
 }
 
-CastleGuard::~CastleGuard()
+Piper::~Piper()
 {
 }

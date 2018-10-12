@@ -1,6 +1,6 @@
 #include "Mildred.h"
 
-const std::string Mildred::KeyEnemyMildred = "mildred";
+const std::string Mildred::MapKeyNpcMildred = "mildred";
 
 Mildred* Mildred::deserialize(ValueMap* initProperties)
 {

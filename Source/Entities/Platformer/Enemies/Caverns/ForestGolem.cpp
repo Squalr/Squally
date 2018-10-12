@@ -1,6 +1,6 @@
 #include "ForestGolem.h"
 
-const std::string ForestGolem::KeyEnemyForestGolem = "forest_golem";
+const std::string ForestGolem::MapKeyEnemyForestGolem = "forest_golem";
 
 ForestGolem* ForestGolem::deserialize(ValueMap* initProperties)
 {

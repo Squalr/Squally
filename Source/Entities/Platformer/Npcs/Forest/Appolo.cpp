@@ -1,6 +1,6 @@
 #include "Appolo.h"
 
-const std::string Appolo::KeyEnemyAppolo = "appolo";
+const std::string Appolo::MapKeyNpcAppolo = "appolo";
 
 Appolo* Appolo::deserialize(ValueMap* initProperties)
 {

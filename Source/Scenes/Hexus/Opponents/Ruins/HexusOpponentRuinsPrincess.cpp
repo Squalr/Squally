@@ -20,6 +20,7 @@ HexusOpponentRuinsPrincess::HexusOpponentRuinsPrincess() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentRuinsPrincess::StringKeyOpponentName,
+	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),

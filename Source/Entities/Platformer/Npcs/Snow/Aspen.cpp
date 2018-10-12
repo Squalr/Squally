@@ -1,17 +1,17 @@
-#include "CastleGuard.h"
+#include "Aspen.h"
 
-const std::string CastleGuard::KeyEnemyCastleGuard = "CastleGuard";
+const std::string Aspen::MapKeyNpcAspen = "Aspen";
 
-CastleGuard* CastleGuard::deserialize(ValueMap* initProperties)
+Aspen* Aspen::deserialize(ValueMap* initProperties)
 {
-	CastleGuard* instance = new CastleGuard(initProperties);
+	Aspen* instance = new Aspen(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CastleGuard::CastleGuard(ValueMap* initProperties) : NpcBase(initProperties,
+Aspen::Aspen(ValueMap* initProperties) : NpcBase(initProperties,
 	Resources::Entities_Platformer_Environment_Castle_Npcs_Guard_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
@@ -20,6 +20,6 @@ CastleGuard::CastleGuard(ValueMap* initProperties) : NpcBase(initProperties,
 {
 }
 
-CastleGuard::~CastleGuard()
+Aspen::~Aspen()
 {
 }

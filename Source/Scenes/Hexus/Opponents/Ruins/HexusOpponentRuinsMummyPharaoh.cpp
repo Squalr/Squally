@@ -20,6 +20,7 @@ HexusOpponentRuinsMummyPharaoh::HexusOpponentRuinsMummyPharaoh() : HexusOpponent
 	Vec2(-32.0f, -48.0f),
 	Vec2(-32.0f, -72.0f),
 	HexusOpponentRuinsMummyPharaoh::StringKeyOpponentName,
+	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),

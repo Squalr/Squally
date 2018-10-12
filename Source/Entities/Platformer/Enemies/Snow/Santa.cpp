@@ -1,6 +1,6 @@
 #include "Santa.h"
 
-const std::string Santa::KeyEnemySanta = "santa";
+const std::string Santa::MapKeyEnemySanta = "santa";
 
 Santa* Santa::deserialize(ValueMap* initProperties)
 {

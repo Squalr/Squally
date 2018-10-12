@@ -11,7 +11,7 @@ class Mabel : public NpcBase
 public:
 	static Mabel * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyMabel;
+	static const std::string MapKeyNpcMabel;
 
 private:
 	Mabel(ValueMap* initProperties);

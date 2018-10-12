@@ -1,6 +1,6 @@
 #include "Rhinoman.h"
 
-const std::string Rhinoman::KeyEnemyRhinoman = "rhinoman";
+const std::string Rhinoman::MapKeyEnemyRhinoman = "rhinoman";
 
 Rhinoman* Rhinoman::deserialize(ValueMap* initProperties)
 {

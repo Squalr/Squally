@@ -11,7 +11,7 @@ class GoblinGruntBoar : public PlatformerEnemy
 public:
 	static GoblinGruntBoar * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyGoblinGruntBoar;
+	static const std::string MapKeyEnemyGoblinGruntBoar;
 
 private:
 	GoblinGruntBoar(ValueMap* initProperties);

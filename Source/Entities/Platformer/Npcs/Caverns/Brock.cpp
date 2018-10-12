@@ -1,6 +1,6 @@
 #include "Brock.h"
 
-const std::string Brock::KeyEnemyBrock = "brock";
+const std::string Brock::MapKeyNpcBrock = "brock";
 
 Brock* Brock::deserialize(ValueMap* initProperties)
 {

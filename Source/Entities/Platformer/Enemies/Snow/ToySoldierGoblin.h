@@ -11,7 +11,7 @@ class ToySoldierGoblin : public PlatformerEnemy
 public:
 	static ToySoldierGoblin * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyToySoldierGoblin;
+	static const std::string MapKeyEnemyToySoldierGoblin;
 
 private:
 	ToySoldierGoblin(ValueMap* initProperties);

@@ -1,6 +1,6 @@
 #include "SkeletalPirate.h"
 
-const std::string SkeletalPirate::KeyEnemySkeletalPirate = "skeletal_pirate";
+const std::string SkeletalPirate::MapKeyEnemySkeletalPirate = "skeletal_pirate";
 
 SkeletalPirate* SkeletalPirate::deserialize(ValueMap* initProperties)
 {

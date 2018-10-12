@@ -1,18 +1,18 @@
-#include "CastleGuard.h"
+#include "Zeus.h"
 
-const std::string CastleGuard::KeyEnemyCastleGuard = "CastleGuard";
+const std::string Zeus::MapKeyNpcZeus = "zeus";
 
-CastleGuard* CastleGuard::deserialize(ValueMap* initProperties)
+Zeus* Zeus::deserialize(ValueMap* initProperties)
 {
-	CastleGuard* instance = new CastleGuard(initProperties);
+	Zeus* instance = new Zeus(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CastleGuard::CastleGuard(ValueMap* initProperties) : NpcBase(initProperties,
-	Resources::Entities_Platformer_Environment_Castle_Npcs_Guard_Animations,
+Zeus::Zeus(ValueMap* initProperties) : NpcBase(initProperties,
+	Resources::Entities_Platformer_Environment_Ruins_Npcs_Zeus_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,
@@ -20,6 +20,6 @@ CastleGuard::CastleGuard(ValueMap* initProperties) : NpcBase(initProperties,
 {
 }
 
-CastleGuard::~CastleGuard()
+Zeus::~Zeus()
 {
 }

@@ -1,6 +1,6 @@
 #include "EarthGolem.h"
 
-const std::string EarthGolem::KeyEnemyEarthGolem = "earth_golem";
+const std::string EarthGolem::MapKeyEnemyEarthGolem = "earth_golem";
 
 EarthGolem* EarthGolem::deserialize(ValueMap* initProperties)
 {

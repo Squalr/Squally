@@ -1,6 +1,6 @@
 #include "AnubisPup.h"
 
-const std::string AnubisPup::KeyEnemyAnubisPup = "anubis_pup";
+const std::string AnubisPup::MapKeyEnemyAnubisPup = "anubis_pup";
 
 AnubisPup* AnubisPup::deserialize(ValueMap* initProperties)
 {

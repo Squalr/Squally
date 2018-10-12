@@ -1,6 +1,6 @@
 #include "Sarude.h"
 
-const std::string Sarude::KeyEnemySarude = "sarude";
+const std::string Sarude::MapKeyNpcSarude = "sarude";
 
 Sarude* Sarude::deserialize(ValueMap* initProperties)
 {

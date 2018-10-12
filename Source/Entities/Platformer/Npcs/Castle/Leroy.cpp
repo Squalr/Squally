@@ -1,6 +1,6 @@
 #include "Leroy.h"
 
-const std::string Leroy::KeyEnemyLeroy = "leroy";
+const std::string Leroy::MapKeyNpcLeroy = "leroy";
 
 Leroy* Leroy::deserialize(ValueMap* initProperties)
 {

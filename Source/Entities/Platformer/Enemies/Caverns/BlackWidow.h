@@ -11,7 +11,7 @@ class BlackWidow : public PlatformerEnemy
 public:
 	static BlackWidow * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyBlackWidow;
+	static const std::string MapKeyEnemyBlackWidow;
 
 private:
 	BlackWidow(ValueMap* initProperties);

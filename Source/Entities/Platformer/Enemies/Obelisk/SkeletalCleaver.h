@@ -11,7 +11,7 @@ class SkeletalCleaver : public PlatformerEnemy
 public:
 	static SkeletalCleaver * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemySkeletalCleaver;
+	static const std::string MapKeyEnemySkeletalCleaver;
 
 private:
 	SkeletalCleaver(ValueMap* initProperties);

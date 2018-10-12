@@ -1,6 +1,6 @@
 #include "Finch.h"
 
-const std::string Finch::KeyEnemyFinch = "finch";
+const std::string Finch::MapKeyNpcFinch = "finch";
 
 Finch* Finch::deserialize(ValueMap* initProperties)
 {

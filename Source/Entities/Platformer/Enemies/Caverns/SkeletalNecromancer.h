@@ -11,7 +11,7 @@ class SkeletalNecromancer : public PlatformerEnemy
 public:
 	static SkeletalNecromancer * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemySkeletalNecromancer;
+	static const std::string MapKeyEnemySkeletalNecromancer;
 
 private:
 	SkeletalNecromancer(ValueMap* initProperties);

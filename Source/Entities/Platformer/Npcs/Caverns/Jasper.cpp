@@ -1,6 +1,6 @@
 #include "Jasper.h"
 
-const std::string Jasper::KeyEnemyJasper = "jasper";
+const std::string Jasper::MapKeyNpcJasper = "jasper";
 
 Jasper* Jasper::deserialize(ValueMap* initProperties)
 {

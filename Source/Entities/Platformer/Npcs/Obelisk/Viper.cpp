@@ -1,18 +1,18 @@
-#include "CastleGuard.h"
+#include "Viper.h"
 
-const std::string CastleGuard::KeyEnemyCastleGuard = "CastleGuard";
+const std::string Viper::MapKeyNpcViper = "viper";
 
-CastleGuard* CastleGuard::deserialize(ValueMap* initProperties)
+Viper* Viper::deserialize(ValueMap* initProperties)
 {
-	CastleGuard* instance = new CastleGuard(initProperties);
+	Viper* instance = new Viper(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CastleGuard::CastleGuard(ValueMap* initProperties) : NpcBase(initProperties,
-	Resources::Entities_Platformer_Environment_Castle_Npcs_Guard_Animations,
+Viper::Viper(ValueMap* initProperties) : NpcBase(initProperties,
+	Resources::Entities_Platformer_Environment_Obelisk_Npcs_Viper_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,
@@ -20,6 +20,6 @@ CastleGuard::CastleGuard(ValueMap* initProperties) : NpcBase(initProperties,
 {
 }
 
-CastleGuard::~CastleGuard()
+Viper::~Viper()
 {
 }

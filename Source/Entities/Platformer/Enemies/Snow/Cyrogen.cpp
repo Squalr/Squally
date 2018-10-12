@@ -1,6 +1,6 @@
 #include "Cyrogen.h"
 
-const std::string Cyrogen::KeyEnemyCyrogen = "cyrogen";
+const std::string Cyrogen::MapKeyEnemyCyrogen = "cyrogen";
 
 Cyrogen* Cyrogen::deserialize(ValueMap* initProperties)
 {

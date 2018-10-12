@@ -1,6 +1,6 @@
 #include "Raven.h"
 
-const std::string Raven::KeyEnemyRaven = "raven";
+const std::string Raven::MapKeyNpcRaven = "raven";
 
 Raven* Raven::deserialize(ValueMap* initProperties)
 {

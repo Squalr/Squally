@@ -1,6 +1,6 @@
 #include "PrincessOpal.h"
 
-const std::string PrincessOpal::KeyEnemyPrincessOpal = "princess_opal";
+const std::string PrincessOpal::MapKeyNpcPrincessOpal = "princess_opal";
 
 PrincessOpal* PrincessOpal::deserialize(ValueMap* initProperties)
 {

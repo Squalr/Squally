@@ -1,6 +1,6 @@
 #include "MiteBot.h"
 
-const std::string MiteBot::KeyEnemyMiteBot = "mite_bot";
+const std::string MiteBot::MapKeyEnemyMiteBot = "mite_bot";
 
 MiteBot* MiteBot::deserialize(ValueMap* initProperties)
 {

@@ -11,7 +11,7 @@ class Santa : public PlatformerEnemy
 public:
 	static Santa * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemySanta;
+	static const std::string MapKeyEnemySanta;
 
 private:
 	Santa(ValueMap* initProperties);

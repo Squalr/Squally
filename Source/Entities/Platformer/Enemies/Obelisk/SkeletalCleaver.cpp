@@ -1,6 +1,6 @@
 #include "SkeletalCleaver.h"
 
-const std::string SkeletalCleaver::KeyEnemySkeletalCleaver = "skeletal_cleaver";
+const std::string SkeletalCleaver::MapKeyEnemySkeletalCleaver = "skeletal_cleaver";
 
 SkeletalCleaver* SkeletalCleaver::deserialize(ValueMap* initProperties)
 {

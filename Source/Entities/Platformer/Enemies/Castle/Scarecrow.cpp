@@ -1,6 +1,6 @@
 #include "Scarecrow.h"
 
-const std::string Scarecrow::KeyEnemyScarecrow = "scarecrow";
+const std::string Scarecrow::MapKeyEnemyScarecrow = "scarecrow";
 
 Scarecrow* Scarecrow::deserialize(ValueMap* initProperties)
 {

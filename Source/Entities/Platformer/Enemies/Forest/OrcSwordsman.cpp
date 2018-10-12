@@ -1,6 +1,6 @@
 #include "OrcSwordsman.h"
 
-const std::string OrcSwordsman::KeyEnemyOrcSwordsman = "orc_swordsman";
+const std::string OrcSwordsman::MapKeyEnemyOrcSwordsman = "orc_swordsman";
 
 OrcSwordsman* OrcSwordsman::deserialize(ValueMap* initProperties)
 {

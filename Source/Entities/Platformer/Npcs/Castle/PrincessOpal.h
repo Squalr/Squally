@@ -11,7 +11,7 @@ class PrincessOpal : public NpcBase
 public:
 	static PrincessOpal * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyPrincessOpal;
+	static const std::string MapKeyNpcPrincessOpal;
 
 private:
 	PrincessOpal(ValueMap* initProperties);

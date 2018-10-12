@@ -11,7 +11,7 @@ class Thug : public PlatformerEnemy
 public:
 	static Thug * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyThug;
+	static const std::string MapKeyEnemyThug;
 
 private:
 	Thug(ValueMap* initProperties);

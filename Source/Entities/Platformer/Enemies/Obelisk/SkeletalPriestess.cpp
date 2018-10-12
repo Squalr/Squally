@@ -1,6 +1,6 @@
 #include "SkeletalPriestess.h"
 
-const std::string SkeletalPriestess::KeyEnemySkeletalPriestess = "skeletal_priestess";
+const std::string SkeletalPriestess::MapKeyEnemySkeletalPriestess = "skeletal_priestess";
 
 SkeletalPriestess* SkeletalPriestess::deserialize(ValueMap* initProperties)
 {

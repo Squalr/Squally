@@ -11,7 +11,7 @@ class Minotaur : public PlatformerEnemy
 public:
 	static Minotaur * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyMinotaur;
+	static const std::string MapKeyEnemyMinotaur;
 
 private:
 	Minotaur(ValueMap* initProperties);

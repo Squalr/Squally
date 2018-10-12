@@ -1,6 +1,6 @@
 #include "AnubisWarrior.h"
 
-const std::string AnubisWarrior::KeyEnemyAnubisWarrior = "anubis_warrior";
+const std::string AnubisWarrior::MapKeyEnemyAnubisWarrior = "anubis_warrior";
 
 AnubisWarrior* AnubisWarrior::deserialize(ValueMap* initProperties)
 {

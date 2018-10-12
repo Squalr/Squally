@@ -130,6 +130,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/PlatformerEntity.cpp
 	Source/Entities/Platformer/PlatformerEntityDeserializer.cpp
 	Source/Entities/Platformer/Enemies/Castle/Agnes.cpp
+	Source/Entities/Platformer/Enemies/Castle/CastleEnemyDeserializer.cpp
 	Source/Entities/Platformer/Enemies/Castle/Executioner.cpp
 	Source/Entities/Platformer/Enemies/Castle/Guard.cpp
 	Source/Entities/Platformer/Enemies/Castle/Jack.cpp
@@ -142,6 +143,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Castle/Zombie.cpp
 	Source/Entities/Platformer/Enemies/Castle/ZombieErlic.cpp
 	Source/Entities/Platformer/Enemies/Caverns/BlackWidow.cpp
+	Source/Entities/Platformer/Enemies/Caverns/CavernsEnemyDeserializer.cpp
 	Source/Entities/Platformer/Enemies/Caverns/EarthElemental.cpp
 	Source/Entities/Platformer/Enemies/Caverns/EarthGolem.cpp
 	Source/Entities/Platformer/Enemies/Caverns/ForestGolem.cpp
@@ -155,6 +157,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Forest/Centaur.cpp
 	Source/Entities/Platformer/Enemies/Forest/Cyclops.cpp
 	Source/Entities/Platformer/Enemies/Forest/Ent.cpp
+	Source/Entities/Platformer/Enemies/Forest/ForestEnemyDeserializer.cpp
 	Source/Entities/Platformer/Enemies/Forest/KingGrogg.cpp
 	Source/Entities/Platformer/Enemies/Forest/Ogre.cpp
 	Source/Entities/Platformer/Enemies/Forest/OrcBomber.cpp
@@ -168,6 +171,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Jungle/GoblinShaman.cpp
 	Source/Entities/Platformer/Enemies/Jungle/GoblinWarriorPig.cpp
 	Source/Entities/Platformer/Enemies/Jungle/Gorilla.cpp
+	Source/Entities/Platformer/Enemies/Jungle/JungleEnemyDeserializer.cpp
 	Source/Entities/Platformer/Enemies/Jungle/Minotaur.cpp
 	Source/Entities/Platformer/Enemies/Jungle/ReanimatedPig.cpp
 	Source/Entities/Platformer/Enemies/Jungle/Rhinoman.cpp
@@ -178,6 +182,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Mech/Exterminator.cpp
 	Source/Entities/Platformer/Enemies/Mech/MechBoxDrone.cpp
 	Source/Entities/Platformer/Enemies/Mech/MechDog.cpp
+	Source/Entities/Platformer/Enemies/Mech/MechEnemyDeserializer.cpp
 	Source/Entities/Platformer/Enemies/Mech/MechGolem.cpp
 	Source/Entities/Platformer/Enemies/Mech/MechGolemDark.cpp
 	Source/Entities/Platformer/Enemies/Mech/MechGuard.cpp
@@ -187,6 +192,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Obelisk/Abomination.cpp
 	Source/Entities/Platformer/Enemies/Obelisk/Gargoyle.cpp
 	Source/Entities/Platformer/Enemies/Obelisk/KingZul.cpp
+	Source/Entities/Platformer/Enemies/Obelisk/ObeliskEnemyDeserializer.cpp
 	Source/Entities/Platformer/Enemies/Obelisk/ReanimatedFighter.cpp
 	Source/Entities/Platformer/Enemies/Obelisk/SkeletalBaron.cpp
 	Source/Entities/Platformer/Enemies/Obelisk/SkeletalCleaver.cpp
@@ -204,6 +210,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Ruins/MummyPriest.cpp
 	Source/Entities/Platformer/Enemies/Ruins/MummyWarrior.cpp
 	Source/Entities/Platformer/Enemies/Ruins/Osiris.cpp
+	Source/Entities/Platformer/Enemies/Ruins/RuinsEnemyDeserializer.cpp
 	Source/Entities/Platformer/Enemies/Ruins/TigerMan.cpp
 	Source/Entities/Platformer/Enemies/Ruins/Tigress.cpp
 	Source/Entities/Platformer/Enemies/Snow/Cyrogen.cpp
@@ -213,6 +220,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Snow/PenguinGrunt.cpp
 	Source/Entities/Platformer/Enemies/Snow/PenguinWarrior.cpp
 	Source/Entities/Platformer/Enemies/Snow/Santa.cpp
+	Source/Entities/Platformer/Enemies/Snow/SnowEnemyDeserializer.cpp
 	Source/Entities/Platformer/Enemies/Snow/SnowFiend.cpp
 	Source/Entities/Platformer/Enemies/Snow/ToySoldierGoblin.cpp
 	Source/Entities/Platformer/Enemies/Snow/WaterElemental.cpp
@@ -229,7 +237,9 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Volcano/DemonWarrior.cpp
 	Source/Entities/Platformer/Enemies/Volcano/FireElemental.cpp
 	Source/Entities/Platformer/Enemies/Volcano/LavaGolem.cpp
+	Source/Entities/Platformer/Enemies/Volcano/VolcanoEnemyDeserializer.cpp
 	Source/Entities/Platformer/Npcs/NpcBase.cpp
+	Source/Entities/Platformer/Npcs/Castle/CastleNpcDeserializer.cpp
 	Source/Entities/Platformer/Npcs/Castle/Erlic.cpp
 	Source/Entities/Platformer/Npcs/Castle/Garin.cpp
 	Source/Entities/Platformer/Npcs/Castle/KingRedsong.cpp
@@ -244,6 +254,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Npcs/Castle/Tyracius.cpp
 	Source/Entities/Platformer/Npcs/Caverns/Alder.cpp
 	Source/Entities/Platformer/Npcs/Caverns/Brock.cpp
+	Source/Entities/Platformer/Npcs/Caverns/CavernsNpcDeserializer.cpp
 	Source/Entities/Platformer/Npcs/Caverns/Cypress.cpp
 	Source/Entities/Platformer/Npcs/Caverns/Finch.cpp
 	Source/Entities/Platformer/Npcs/Caverns/Fraya.cpp
@@ -257,6 +268,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Npcs/Forest/Chiron.cpp
 	Source/Entities/Platformer/Npcs/Forest/Cooper.cpp
 	Source/Entities/Platformer/Npcs/Forest/Dudly.cpp
+	Source/Entities/Platformer/Npcs/Forest/ForestNpcDeserializer.cpp
 	Source/Entities/Platformer/Npcs/Forest/Lycan.cpp
 	Source/Entities/Platformer/Npcs/Forest/Polyphemus.cpp
 	Source/Entities/Platformer/Npcs/Forest/PrincessMittens.cpp
@@ -270,6 +282,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Npcs/Jungle/Elriel.cpp
 	Source/Entities/Platformer/Npcs/Jungle/Gramps.cpp
 	Source/Entities/Platformer/Npcs/Jungle/Hades.cpp
+	Source/Entities/Platformer/Npcs/Jungle/JungleNpcDeserializer.cpp
 	Source/Entities/Platformer/Npcs/Jungle/Minos.cpp
 	Source/Entities/Platformer/Npcs/Jungle/PrincessMatu.cpp
 	Source/Entities/Platformer/Npcs/Jungle/Raka.cpp
@@ -279,6 +292,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Npcs/Mech/Leon.cpp
 	Source/Entities/Platformer/Npcs/Mech/Mara.cpp
 	Source/Entities/Platformer/Npcs/Mech/Marcel.cpp
+	Source/Entities/Platformer/Npcs/Mech/MechNpcDeserializer.cpp
 	Source/Entities/Platformer/Npcs/Mech/Piper.cpp
 	Source/Entities/Platformer/Npcs/Mech/QueenElise.cpp
 	Source/Entities/Platformer/Npcs/Mech/Radon.cpp
@@ -289,12 +303,14 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Npcs/Obelisk/Garrick.cpp
 	Source/Entities/Platformer/Npcs/Obelisk/Johann.cpp
 	Source/Entities/Platformer/Npcs/Obelisk/Necron.cpp
+	Source/Entities/Platformer/Npcs/Obelisk/ObeliskNpcDeserializer.cpp
 	Source/Entities/Platformer/Npcs/Obelisk/PrincessNebea.cpp
 	Source/Entities/Platformer/Npcs/Obelisk/Roger.cpp
 	Source/Entities/Platformer/Npcs/Obelisk/Thion.cpp
 	Source/Entities/Platformer/Npcs/Obelisk/Ursula.cpp
 	Source/Entities/Platformer/Npcs/Obelisk/Viper.cpp
 	Source/Entities/Platformer/Npcs/Obelisk/Zana.cpp
+	Source/Entities/Platformer/Npcs/Ruins/Ajax.cpp
 	Source/Entities/Platformer/Npcs/Ruins/Aphrodite.cpp
 	Source/Entities/Platformer/Npcs/Ruins/Ares.cpp
 	Source/Entities/Platformer/Npcs/Ruins/Athena.cpp
@@ -304,7 +320,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Npcs/Ruins/Horus.cpp
 	Source/Entities/Platformer/Npcs/Ruins/Manticore.cpp
 	Source/Entities/Platformer/Npcs/Ruins/Poseidon.cpp
-	Source/Entities/Platformer/Npcs/Ruins/Spartan.cpp
+	Source/Entities/Platformer/Npcs/Ruins/RuinsNpcDeserializer.cpp
 	Source/Entities/Platformer/Npcs/Ruins/Zeus.cpp
 	Source/Entities/Platformer/Npcs/Snow/Aspen.cpp
 	Source/Entities/Platformer/Npcs/Snow/Aster.cpp
@@ -315,6 +331,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Npcs/Snow/Kringle.cpp
 	Source/Entities/Platformer/Npcs/Snow/Nessie.cpp
 	Source/Entities/Platformer/Npcs/Snow/PrincessPepper.cpp
+	Source/Entities/Platformer/Npcs/Snow/SnowNpcDeserializer.cpp
 	Source/Entities/Platformer/Npcs/Snow/Theldar.cpp
 	Source/Entities/Platformer/Npcs/Snow/Tinsel.cpp
 	Source/Entities/Platformer/Npcs/Volcano/Ash.cpp
@@ -327,6 +344,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Npcs/Volcano/Pan.cpp
 	Source/Entities/Platformer/Npcs/Volcano/Ragnis.cpp
 	Source/Entities/Platformer/Npcs/Volcano/Scaldor.cpp
+	Source/Entities/Platformer/Npcs/Volcano/VolcanoNpcDeserializer.cpp
 	Source/Entities/Platformer/Npcs/Volcano/Zelina.cpp
 	Source/Entities/Platformer/Squally/Hover.cpp
 	Source/Entities/Platformer/Squally/Squally.cpp
@@ -686,6 +704,8 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/PlatformerEntity.h
 	Source/Entities/Platformer/PlatformerEntityDeserializer.h
 	Source/Entities/Platformer/Enemies/Castle/Agnes.h
+	Source/Entities/Platformer/Enemies/Castle/CastleEnemies.h
+	Source/Entities/Platformer/Enemies/Castle/CastleEnemyDeserializer.h
 	Source/Entities/Platformer/Enemies/Castle/Executioner.h
 	Source/Entities/Platformer/Enemies/Castle/Guard.h
 	Source/Entities/Platformer/Enemies/Castle/Jack.h
@@ -698,6 +718,8 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Castle/Zombie.h
 	Source/Entities/Platformer/Enemies/Castle/ZombieErlic.h
 	Source/Entities/Platformer/Enemies/Caverns/BlackWidow.h
+	Source/Entities/Platformer/Enemies/Caverns/CavernsEnemies.h
+	Source/Entities/Platformer/Enemies/Caverns/CavernsEnemyDeserializer.h
 	Source/Entities/Platformer/Enemies/Caverns/EarthElemental.h
 	Source/Entities/Platformer/Enemies/Caverns/EarthGolem.h
 	Source/Entities/Platformer/Enemies/Caverns/ForestGolem.h
@@ -711,6 +733,8 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Forest/Centaur.h
 	Source/Entities/Platformer/Enemies/Forest/Cyclops.h
 	Source/Entities/Platformer/Enemies/Forest/Ent.h
+	Source/Entities/Platformer/Enemies/Forest/ForestEnemies.h
+	Source/Entities/Platformer/Enemies/Forest/ForestEnemyDeserializer.h
 	Source/Entities/Platformer/Enemies/Forest/KingGrogg.h
 	Source/Entities/Platformer/Enemies/Forest/Ogre.h
 	Source/Entities/Platformer/Enemies/Forest/OrcBomber.h
@@ -724,6 +748,8 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Jungle/GoblinShaman.h
 	Source/Entities/Platformer/Enemies/Jungle/GoblinWarriorPig.h
 	Source/Entities/Platformer/Enemies/Jungle/Gorilla.h
+	Source/Entities/Platformer/Enemies/Jungle/JungleEnemies.h
+	Source/Entities/Platformer/Enemies/Jungle/JungleEnemyDeserializer.h
 	Source/Entities/Platformer/Enemies/Jungle/Minotaur.h
 	Source/Entities/Platformer/Enemies/Jungle/ReanimatedPig.h
 	Source/Entities/Platformer/Enemies/Jungle/Rhinoman.h
@@ -734,6 +760,8 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Mech/Exterminator.h
 	Source/Entities/Platformer/Enemies/Mech/MechBoxDrone.h
 	Source/Entities/Platformer/Enemies/Mech/MechDog.h
+	Source/Entities/Platformer/Enemies/Mech/MechEnemies.h
+	Source/Entities/Platformer/Enemies/Mech/MechEnemyDeserializer.h
 	Source/Entities/Platformer/Enemies/Mech/MechGolem.h
 	Source/Entities/Platformer/Enemies/Mech/MechGolemDark.h
 	Source/Entities/Platformer/Enemies/Mech/MechGuard.h
@@ -743,6 +771,8 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Obelisk/Abomination.h
 	Source/Entities/Platformer/Enemies/Obelisk/Gargoyle.h
 	Source/Entities/Platformer/Enemies/Obelisk/KingZul.h
+	Source/Entities/Platformer/Enemies/Obelisk/ObeliskEnemies.h
+	Source/Entities/Platformer/Enemies/Obelisk/ObeliskEnemyDeserializer.h
 	Source/Entities/Platformer/Enemies/Obelisk/ReanimatedFighter.h
 	Source/Entities/Platformer/Enemies/Obelisk/SkeletalBaron.h
 	Source/Entities/Platformer/Enemies/Obelisk/SkeletalCleaver.h
@@ -760,6 +790,8 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Ruins/MummyPriest.h
 	Source/Entities/Platformer/Enemies/Ruins/MummyWarrior.h
 	Source/Entities/Platformer/Enemies/Ruins/Osiris.h
+	Source/Entities/Platformer/Enemies/Ruins/RuinsEnemies.h
+	Source/Entities/Platformer/Enemies/Ruins/RuinsEnemyDeserializer.h
 	Source/Entities/Platformer/Enemies/Ruins/TigerMan.h
 	Source/Entities/Platformer/Enemies/Ruins/Tigress.h
 	Source/Entities/Platformer/Enemies/Snow/Cyrogen.h
@@ -769,6 +801,8 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Snow/PenguinGrunt.h
 	Source/Entities/Platformer/Enemies/Snow/PenguinWarrior.h
 	Source/Entities/Platformer/Enemies/Snow/Santa.h
+	Source/Entities/Platformer/Enemies/Snow/SnowEnemies.h
+	Source/Entities/Platformer/Enemies/Snow/SnowEnemyDeserializer.h
 	Source/Entities/Platformer/Enemies/Snow/SnowFiend.h
 	Source/Entities/Platformer/Enemies/Snow/ToySoldierGoblin.h
 	Source/Entities/Platformer/Enemies/Snow/WaterElemental.h
@@ -785,7 +819,10 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Volcano/DemonWarrior.h
 	Source/Entities/Platformer/Enemies/Volcano/FireElemental.h
 	Source/Entities/Platformer/Enemies/Volcano/LavaGolem.h
+	Source/Entities/Platformer/Enemies/Volcano/VolcanoEnemies.h
+	Source/Entities/Platformer/Enemies/Volcano/VolcanoEnemyDeserializer.h
 	Source/Entities/Platformer/Npcs/NpcBase.h
+	Source/Entities/Platformer/Npcs/Castle/CastleNpcDeserializer.h
 	Source/Entities/Platformer/Npcs/Castle/Erlic.h
 	Source/Entities/Platformer/Npcs/Castle/Garin.h
 	Source/Entities/Platformer/Npcs/Castle/KingRedsong.h
@@ -800,6 +837,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Castle/Tyracius.h
 	Source/Entities/Platformer/Npcs/Caverns/Alder.h
 	Source/Entities/Platformer/Npcs/Caverns/Brock.h
+	Source/Entities/Platformer/Npcs/Caverns/CavernsNpcDeserializer.h
 	Source/Entities/Platformer/Npcs/Caverns/Cypress.h
 	Source/Entities/Platformer/Npcs/Caverns/Finch.h
 	Source/Entities/Platformer/Npcs/Caverns/Fraya.h
@@ -813,6 +851,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Forest/Chiron.h
 	Source/Entities/Platformer/Npcs/Forest/Cooper.h
 	Source/Entities/Platformer/Npcs/Forest/Dudly.h
+	Source/Entities/Platformer/Npcs/Forest/ForestNpcDeserializer.h
 	Source/Entities/Platformer/Npcs/Forest/Lycan.h
 	Source/Entities/Platformer/Npcs/Forest/Polyphemus.h
 	Source/Entities/Platformer/Npcs/Forest/PrincessMittens.h
@@ -826,6 +865,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Jungle/Elriel.h
 	Source/Entities/Platformer/Npcs/Jungle/Gramps.h
 	Source/Entities/Platformer/Npcs/Jungle/Hades.h
+	Source/Entities/Platformer/Npcs/Jungle/JungleNpcDeserializer.h
 	Source/Entities/Platformer/Npcs/Jungle/Minos.h
 	Source/Entities/Platformer/Npcs/Jungle/PrincessMatu.h
 	Source/Entities/Platformer/Npcs/Jungle/Raka.h
@@ -835,6 +875,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Mech/Leon.h
 	Source/Entities/Platformer/Npcs/Mech/Mara.h
 	Source/Entities/Platformer/Npcs/Mech/Marcel.h
+	Source/Entities/Platformer/Npcs/Mech/MechNpcDeserializer.h
 	Source/Entities/Platformer/Npcs/Mech/Piper.h
 	Source/Entities/Platformer/Npcs/Mech/QueenElise.h
 	Source/Entities/Platformer/Npcs/Mech/Radon.h
@@ -845,12 +886,14 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Obelisk/Garrick.h
 	Source/Entities/Platformer/Npcs/Obelisk/Johann.h
 	Source/Entities/Platformer/Npcs/Obelisk/Necron.h
+	Source/Entities/Platformer/Npcs/Obelisk/ObeliskNpcDeserializer.h
 	Source/Entities/Platformer/Npcs/Obelisk/PrincessNebea.h
 	Source/Entities/Platformer/Npcs/Obelisk/Roger.h
 	Source/Entities/Platformer/Npcs/Obelisk/Thion.h
 	Source/Entities/Platformer/Npcs/Obelisk/Ursula.h
 	Source/Entities/Platformer/Npcs/Obelisk/Viper.h
 	Source/Entities/Platformer/Npcs/Obelisk/Zana.h
+	Source/Entities/Platformer/Npcs/Ruins/Ajax.h
 	Source/Entities/Platformer/Npcs/Ruins/Aphrodite.h
 	Source/Entities/Platformer/Npcs/Ruins/Ares.h
 	Source/Entities/Platformer/Npcs/Ruins/Athena.h
@@ -860,7 +903,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Ruins/Horus.h
 	Source/Entities/Platformer/Npcs/Ruins/Manticore.h
 	Source/Entities/Platformer/Npcs/Ruins/Poseidon.h
-	Source/Entities/Platformer/Npcs/Ruins/Spartan.h
+	Source/Entities/Platformer/Npcs/Ruins/RuinsNpcDeserializer.h
 	Source/Entities/Platformer/Npcs/Ruins/Zeus.h
 	Source/Entities/Platformer/Npcs/Snow/Aspen.h
 	Source/Entities/Platformer/Npcs/Snow/Aster.h
@@ -871,6 +914,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Snow/Kringle.h
 	Source/Entities/Platformer/Npcs/Snow/Nessie.h
 	Source/Entities/Platformer/Npcs/Snow/PrincessPepper.h
+	Source/Entities/Platformer/Npcs/Snow/SnowNpcDeserializer.h
 	Source/Entities/Platformer/Npcs/Snow/Theldar.h
 	Source/Entities/Platformer/Npcs/Snow/Tinsel.h
 	Source/Entities/Platformer/Npcs/Volcano/Ash.h
@@ -883,6 +927,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Volcano/Pan.h
 	Source/Entities/Platformer/Npcs/Volcano/Ragnis.h
 	Source/Entities/Platformer/Npcs/Volcano/Scaldor.h
+	Source/Entities/Platformer/Npcs/Volcano/VolcanoNpcDeserializer.h
 	Source/Entities/Platformer/Npcs/Volcano/Zelina.h
 	Source/Entities/Platformer/Squally/Hover.h
 	Source/Entities/Platformer/Squally/Squally.h

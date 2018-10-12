@@ -11,7 +11,7 @@ class GoblinShaman : public PlatformerEnemy
 public:
 	static GoblinShaman * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyGoblinShaman;
+	static const std::string MapKeyEnemyGoblinShaman;
 
 private:
 	GoblinShaman(ValueMap* initProperties);

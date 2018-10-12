@@ -1,6 +1,6 @@
 #include "Centaur.h"
 
-const std::string Centaur::KeyEnemyCentaur = "centaur";
+const std::string Centaur::MapKeyEnemyCentaur = "centaur";
 
 Centaur* Centaur::deserialize(ValueMap* initProperties)
 {

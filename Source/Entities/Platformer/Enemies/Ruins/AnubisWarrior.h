@@ -11,7 +11,7 @@ class AnubisWarrior : public PlatformerEnemy
 public:
 	static AnubisWarrior * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyAnubisWarrior;
+	static const std::string MapKeyEnemyAnubisWarrior;
 
 private:
 	AnubisWarrior(ValueMap* initProperties);

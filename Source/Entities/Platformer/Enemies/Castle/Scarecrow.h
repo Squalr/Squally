@@ -11,7 +11,7 @@ class Scarecrow : public PlatformerEnemy
 public:
 	static Scarecrow * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyScarecrow;
+	static const std::string MapKeyEnemyScarecrow;
 
 private:
 	Scarecrow(ValueMap* initProperties);

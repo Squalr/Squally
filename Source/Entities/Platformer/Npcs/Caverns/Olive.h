@@ -11,7 +11,7 @@ class Olive : public NpcBase
 public:
 	static Olive * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyOlive;
+	static const std::string MapKeyNpcOlive;
 
 private:
 	Olive(ValueMap* initProperties);

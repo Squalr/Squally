@@ -1,18 +1,18 @@
-#include "CastleGuard.h"
+#include "Cleopatra.h"
 
-const std::string CastleGuard::KeyEnemyCastleGuard = "CastleGuard";
+const std::string Cleopatra::MapKeyNpcCleopatra = "cleopatra";
 
-CastleGuard* CastleGuard::deserialize(ValueMap* initProperties)
+Cleopatra* Cleopatra::deserialize(ValueMap* initProperties)
 {
-	CastleGuard* instance = new CastleGuard(initProperties);
+	Cleopatra* instance = new Cleopatra(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CastleGuard::CastleGuard(ValueMap* initProperties) : NpcBase(initProperties,
-	Resources::Entities_Platformer_Environment_Castle_Npcs_Guard_Animations,
+Cleopatra::Cleopatra(ValueMap* initProperties) : NpcBase(initProperties,
+	Resources::Entities_Platformer_Environment_Ruins_Npcs_Cleopatra_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,
@@ -20,6 +20,6 @@ CastleGuard::CastleGuard(ValueMap* initProperties) : NpcBase(initProperties,
 {
 }
 
-CastleGuard::~CastleGuard()
+Cleopatra::~Cleopatra()
 {
 }

@@ -1,6 +1,6 @@
 #include "KingZul.h"
 
-const std::string KingZul::KeyEnemyKingZul = "king_zul";
+const std::string KingZul::MapKeyEnemyKingZul = "king_zul";
 
 KingZul* KingZul::deserialize(ValueMap* initProperties)
 {

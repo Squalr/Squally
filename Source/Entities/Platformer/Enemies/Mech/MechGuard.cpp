@@ -1,6 +1,6 @@
 #include "MechGuard.h"
 
-const std::string MechGuard::KeyEnemyMechGuard = "mech_guard";
+const std::string MechGuard::MapKeyEnemyMechGuard = "mech_guard";
 
 MechGuard* MechGuard::deserialize(ValueMap* initProperties)
 {

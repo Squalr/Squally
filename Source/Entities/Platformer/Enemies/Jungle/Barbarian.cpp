@@ -1,6 +1,6 @@
 #include "Barbarian.h"
 
-const std::string Barbarian::KeyEnemyBarbarian = "barbarian";
+const std::string Barbarian::MapKeyEnemyBarbarian = "barbarian";
 
 Barbarian* Barbarian::deserialize(ValueMap* initProperties)
 {

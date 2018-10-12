@@ -20,6 +20,7 @@ HexusOpponentJungleMinotaur::HexusOpponentJungleMinotaur() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-48.0f, -64.0f),
 	HexusOpponentJungleMinotaur::StringKeyOpponentName,
+	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Addition),

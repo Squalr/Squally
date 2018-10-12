@@ -11,7 +11,7 @@ class Gorilla : public PlatformerEnemy
 public:
 	static Gorilla * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyGorilla;
+	static const std::string MapKeyEnemyGorilla;
 
 private:
 	Gorilla(ValueMap* initProperties);

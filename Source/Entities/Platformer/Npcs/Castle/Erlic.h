@@ -11,7 +11,7 @@ class Erlic : public NpcBase
 public:
 	static Erlic * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyErlic;
+	static const std::string MapKeyNpcErlic;
 
 private:
 	Erlic(ValueMap* initProperties);

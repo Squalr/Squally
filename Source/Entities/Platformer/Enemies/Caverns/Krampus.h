@@ -11,7 +11,7 @@ class Krampus : public PlatformerEnemy
 public:
 	static Krampus * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyKrampus;
+	static const std::string MapKeyEnemyKrampus;
 
 private:
 	Krampus(ValueMap* initProperties);

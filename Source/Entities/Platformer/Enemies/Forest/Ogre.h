@@ -11,7 +11,7 @@ class Ogre : public PlatformerEnemy
 public:
 	static Ogre * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyOgre;
+	static const std::string MapKeyEnemyOgre;
 
 private:
 	Ogre(ValueMap* initProperties);

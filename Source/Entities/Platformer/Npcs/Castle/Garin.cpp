@@ -1,6 +1,6 @@
 #include "Garin.h"
 
-const std::string Garin::KeyEnemyGarin = "garin";
+const std::string Garin::MapKeyNpcGarin = "garin";
 
 Garin* Garin::deserialize(ValueMap* initProperties)
 {

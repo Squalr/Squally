@@ -11,7 +11,7 @@ class VoidArcher : public PlatformerEnemy
 public:
 	static VoidArcher * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyVoidArcher;
+	static const std::string MapKeyEnemyVoidArcher;
 
 private:
 	VoidArcher(ValueMap* initProperties);

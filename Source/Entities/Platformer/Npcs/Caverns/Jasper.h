@@ -11,7 +11,7 @@ class Jasper : public NpcBase
 public:
 	static Jasper * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyJasper;
+	static const std::string MapKeyNpcJasper;
 
 private:
 	Jasper(ValueMap* initProperties);

@@ -1,6 +1,6 @@
 #include "SkeletalBaron.h"
 
-const std::string SkeletalBaron::KeyEnemySkeletalBaron = "skeletal_baron";
+const std::string SkeletalBaron::MapKeyEnemySkeletalBaron = "skeletal_baron";
 
 SkeletalBaron* SkeletalBaron::deserialize(ValueMap* initProperties)
 {

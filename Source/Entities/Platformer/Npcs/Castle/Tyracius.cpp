@@ -1,6 +1,6 @@
 #include "Tyracius.h"
 
-const std::string Tyracius::KeyEnemyTyracius = "tyracius";
+const std::string Tyracius::MapKeyNpcTyracius = "tyracius";
 
 Tyracius* Tyracius::deserialize(ValueMap* initProperties)
 {

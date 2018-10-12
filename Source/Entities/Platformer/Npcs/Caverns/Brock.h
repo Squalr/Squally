@@ -11,7 +11,7 @@ class Brock : public NpcBase
 public:
 	static Brock * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyBrock;
+	static const std::string MapKeyNpcBrock;
 
 private:
 	Brock(ValueMap* initProperties);

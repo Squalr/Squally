@@ -1,6 +1,6 @@
 #include "TikiGolem.h"
 
-const std::string TikiGolem::KeyEnemyTikiGolem = "tiki_golem";
+const std::string TikiGolem::MapKeyEnemyTikiGolem = "tiki_golem";
 
 TikiGolem* TikiGolem::deserialize(ValueMap* initProperties)
 {

@@ -20,6 +20,7 @@ HexusOpponentForestCentaur::HexusOpponentForestCentaur() : HexusOpponentData(
 	Vec2(0.0f, -96.0f),
 	Vec2(0.0f, 0.0f),
 	HexusOpponentForestCentaur::StringKeyOpponentName,
+	GameState::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal3),

@@ -11,7 +11,7 @@ class Shade : public PlatformerEnemy
 public:
 	static Shade * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyShade;
+	static const std::string MapKeyEnemyShade;
 
 private:
 	Shade(ValueMap* initProperties);

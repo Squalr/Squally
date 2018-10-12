@@ -1,6 +1,6 @@
 #include "Cypress.h"
 
-const std::string Cypress::KeyEnemyCypress = "cypress";
+const std::string Cypress::MapKeyNpcCypress = "cypress";
 
 Cypress* Cypress::deserialize(ValueMap* initProperties)
 {

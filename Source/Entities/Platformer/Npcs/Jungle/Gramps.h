@@ -6,14 +6,14 @@
 
 using namespace cocos2d;
 
-class CastleGuard : public NpcBase
+class Gramps : public NpcBase
 {
 public:
-	static CastleGuard * deserialize(ValueMap* initProperties);
+	static Gramps * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyCastleGuard;
+	static const std::string MapKeyNpcGramps;
 
 private:
-	CastleGuard(ValueMap* initProperties);
-	~CastleGuard();
+	Gramps(ValueMap* initProperties);
+	~Gramps();
 };

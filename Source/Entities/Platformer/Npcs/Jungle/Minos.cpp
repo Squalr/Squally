@@ -1,18 +1,18 @@
-#include "CastleGuard.h"
+#include "Minos.h"
 
-const std::string CastleGuard::KeyEnemyCastleGuard = "CastleGuard";
+const std::string Minos::MapKeyNpcMinos = "minos";
 
-CastleGuard* CastleGuard::deserialize(ValueMap* initProperties)
+Minos* Minos::deserialize(ValueMap* initProperties)
 {
-	CastleGuard* instance = new CastleGuard(initProperties);
+	Minos* instance = new Minos(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CastleGuard::CastleGuard(ValueMap* initProperties) : NpcBase(initProperties,
-	Resources::Entities_Platformer_Environment_Castle_Npcs_Guard_Animations,
+Minos::Minos(ValueMap* initProperties) : NpcBase(initProperties,
+	Resources::Entities_Platformer_Environment_Jungle_Npcs_Minos_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,
@@ -20,6 +20,6 @@ CastleGuard::CastleGuard(ValueMap* initProperties) : NpcBase(initProperties,
 {
 }
 
-CastleGuard::~CastleGuard()
+Minos::~Minos()
 {
 }

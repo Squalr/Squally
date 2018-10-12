@@ -11,7 +11,7 @@ class ReanimatedPig : public PlatformerEnemy
 public:
 	static ReanimatedPig * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyReanimatedPig;
+	static const std::string MapKeyEnemyReanimatedPig;
 
 private:
 	ReanimatedPig(ValueMap* initProperties);

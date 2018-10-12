@@ -11,7 +11,7 @@ class TikiGolem : public PlatformerEnemy
 public:
 	static TikiGolem * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyTikiGolem;
+	static const std::string MapKeyEnemyTikiGolem;
 
 private:
 	TikiGolem(ValueMap* initProperties);

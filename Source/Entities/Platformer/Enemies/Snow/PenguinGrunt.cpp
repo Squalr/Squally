@@ -1,6 +1,6 @@
 #include "PenguinGrunt.h"
 
-const std::string PenguinGrunt::KeyEnemyPenguinGrunt = "penguin_grunt";
+const std::string PenguinGrunt::MapKeyEnemyPenguinGrunt = "penguin_grunt";
 
 PenguinGrunt* PenguinGrunt::deserialize(ValueMap* initProperties)
 {

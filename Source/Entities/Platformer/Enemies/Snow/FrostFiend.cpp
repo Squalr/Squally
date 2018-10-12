@@ -1,6 +1,6 @@
 #include "FrostFiend.h"
 
-const std::string FrostFiend::KeyEnemyFrostFiend = "frost_fiend";
+const std::string FrostFiend::MapKeyEnemyFrostFiend = "frost_fiend";
 
 FrostFiend* FrostFiend::deserialize(ValueMap* initProperties)
 {

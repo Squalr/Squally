@@ -20,6 +20,7 @@ HexusOpponentJungleFighter::HexusOpponentJungleFighter() : HexusOpponentData(
 	Vec2(-48.0f, 0.0f),
 	Vec2(-32.0f, 0.0f),
 	HexusOpponentJungleFighter::StringKeyOpponentName,
+	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary6),

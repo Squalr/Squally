@@ -11,7 +11,7 @@ class Barbarian : public PlatformerEnemy
 public:
 	static Barbarian * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyBarbarian;
+	static const std::string MapKeyEnemyBarbarian;
 
 private:
 	Barbarian(ValueMap* initProperties);

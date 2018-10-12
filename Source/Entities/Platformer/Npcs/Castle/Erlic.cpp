@@ -1,6 +1,6 @@
 #include "Erlic.h"
 
-const std::string Erlic::KeyEnemyErlic = "erlic";
+const std::string Erlic::MapKeyNpcErlic = "erlic";
 
 Erlic* Erlic::deserialize(ValueMap* initProperties)
 {

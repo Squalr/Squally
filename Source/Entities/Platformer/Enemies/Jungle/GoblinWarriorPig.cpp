@@ -1,6 +1,6 @@
 #include "GoblinWarriorPig.h"
 
-const std::string GoblinWarriorPig::KeyEnemyGoblinWarriorPig = "goblin_warrior_pig";
+const std::string GoblinWarriorPig::MapKeyEnemyGoblinWarriorPig = "goblin_warrior_pig";
 
 GoblinWarriorPig* GoblinWarriorPig::deserialize(ValueMap* initProperties)
 {

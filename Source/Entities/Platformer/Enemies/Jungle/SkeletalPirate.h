@@ -11,7 +11,7 @@ class SkeletalPirate : public PlatformerEnemy
 public:
 	static SkeletalPirate * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemySkeletalPirate;
+	static const std::string MapKeyEnemySkeletalPirate;
 
 private:
 	SkeletalPirate(ValueMap* initProperties);

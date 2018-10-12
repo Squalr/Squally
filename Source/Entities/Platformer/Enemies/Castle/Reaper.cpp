@@ -1,6 +1,6 @@
 #include "Reaper.h"
 
-const std::string Reaper::KeyEnemyReaper = "reaper";
+const std::string Reaper::MapKeyEnemyReaper = "reaper";
 
 Reaper* Reaper::deserialize(ValueMap* initProperties)
 {

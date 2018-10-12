@@ -1,6 +1,6 @@
 #include "Vampiress.h"
 
-const std::string Vampiress::KeyEnemyVampiress = "vampiress";
+const std::string Vampiress::MapKeyEnemyVampiress = "vampiress";
 
 Vampiress* Vampiress::deserialize(ValueMap* initProperties)
 {

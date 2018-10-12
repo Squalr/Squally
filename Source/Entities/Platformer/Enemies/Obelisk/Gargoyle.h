@@ -11,7 +11,7 @@ class Gargoyle : public PlatformerEnemy
 public:
 	static Gargoyle * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyGargoyle;
+	static const std::string MapKeyEnemyGargoyle;
 
 private:
 	Gargoyle(ValueMap* initProperties);

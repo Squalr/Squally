@@ -1,6 +1,6 @@
 #include "Asmodeus.h"
 
-const std::string Asmodeus::KeyEnemyAsmodeus = "asmodeus";
+const std::string Asmodeus::MapKeyEnemyAsmodeus = "asmodeus";
 
 Asmodeus* Asmodeus::deserialize(ValueMap* initProperties)
 {

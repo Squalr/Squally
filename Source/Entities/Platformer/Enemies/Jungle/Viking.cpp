@@ -1,6 +1,6 @@
 #include "Viking.h"
 
-const std::string Viking::KeyEnemyViking = "viking";
+const std::string Viking::MapKeyEnemyViking = "viking";
 
 Viking* Viking::deserialize(ValueMap* initProperties)
 {

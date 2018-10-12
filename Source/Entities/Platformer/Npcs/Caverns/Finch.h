@@ -11,7 +11,7 @@ class Finch : public NpcBase
 public:
 	static Finch * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyFinch;
+	static const std::string MapKeyNpcFinch;
 
 private:
 	Finch(ValueMap* initProperties);

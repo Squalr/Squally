@@ -11,7 +11,7 @@ class ReanimatedFighter : public PlatformerEnemy
 public:
 	static ReanimatedFighter * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyReanimatedFighter;
+	static const std::string MapKeyEnemyReanimatedFighter;
 
 private:
 	ReanimatedFighter(ValueMap* initProperties);

@@ -1,6 +1,6 @@
 #include "Alder.h"
 
-const std::string Alder::KeyEnemyAlder = "alder";
+const std::string Alder::MapKeyNpcAlder = "alder";
 
 Alder* Alder::deserialize(ValueMap* initProperties)
 {

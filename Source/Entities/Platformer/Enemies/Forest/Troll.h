@@ -11,7 +11,7 @@ class Troll : public PlatformerEnemy
 public:
 	static Troll * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyTroll;
+	static const std::string MapKeyEnemyTroll;
 
 private:
 	Troll(ValueMap* initProperties);

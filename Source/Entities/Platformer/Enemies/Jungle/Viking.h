@@ -11,7 +11,7 @@ class Viking : public PlatformerEnemy
 public:
 	static Viking * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyViking;
+	static const std::string MapKeyEnemyViking;
 
 private:
 	Viking(ValueMap* initProperties);

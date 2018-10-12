@@ -1,0 +1,13 @@
+#pragma once
+#include "Entities/Platformer/Enemies/Castle/Agnes.h"
+#include "Entities/Platformer/Enemies/Castle/Executioner.h"
+#include "Entities/Platformer/Enemies/Castle/Guard.h"
+#include "Entities/Platformer/Enemies/Castle/Jack.h"
+#include "Entities/Platformer/Enemies/Castle/Reaper.h"
+#include "Entities/Platformer/Enemies/Castle/Scarecrow.h"
+#include "Entities/Platformer/Enemies/Castle/Shade.h"
+#include "Entities/Platformer/Enemies/Castle/VampireLord.h"
+#include "Entities/Platformer/Enemies/Castle/Vampiress.h"
+#include "Entities/Platformer/Enemies/Castle/Wraith.h"
+#include "Entities/Platformer/Enemies/Castle/Zombie.h"
+#include "Entities/Platformer/Enemies/Castle/ZombieErlic.h"
