@@ -1,0 +1,11 @@
+#pragma once
+#include "Entities/Platformer/Npcs/Jungle/Blackbeard.h"
+#include "Entities/Platformer/Npcs/Jungle/Bodom.h"
+#include "Entities/Platformer/Npcs/Jungle/Drak.h"
+#include "Entities/Platformer/Npcs/Jungle/Elriel.h"
+#include "Entities/Platformer/Npcs/Jungle/Gramps.h"
+#include "Entities/Platformer/Npcs/Jungle/Hades.h"
+#include "Entities/Platformer/Npcs/Jungle/Minos.h"
+#include "Entities/Platformer/Npcs/Jungle/PrincessMatu.h"
+#include "Entities/Platformer/Npcs/Jungle/Raka.h"
+#include "Entities/Platformer/Npcs/Jungle/Thor.h"

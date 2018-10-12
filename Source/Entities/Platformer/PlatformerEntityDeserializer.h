@@ -3,7 +3,6 @@
 
 #include "Engine/Maps/IObjectDeserializer.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Entities/Platformer/PlatformerEntities.h"
 #include "Resources.h"
 
 using namespace cocos2d;
@@ -16,7 +15,6 @@ public:
 
 	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
 
+private:
 	static const std::string KeyTypeEntity;
-
-
 };

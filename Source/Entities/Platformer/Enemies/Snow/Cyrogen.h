@@ -6,14 +6,14 @@
 
 using namespace cocos2d;
 
-class BossIceGolem : public PlatformerEnemy
+class Cyrogen : public PlatformerEnemy
 {
 public:
-	static BossIceGolem * deserialize(ValueMap* initProperties);
+	static Cyrogen * deserialize(ValueMap* initProperties);
 
-	static const std::string MapKeyEnemyBossIceGolem;
+	static const std::string MapKeyEnemyCyrogen;
 
 private:
-	BossIceGolem(ValueMap* initProperties);
-	~BossIceGolem();
+	Cyrogen(ValueMap* initProperties);
+	~Cyrogen();
 };

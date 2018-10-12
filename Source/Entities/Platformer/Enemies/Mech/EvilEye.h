@@ -6,14 +6,14 @@
 
 using namespace cocos2d;
 
-class BossEvilEye : public PlatformerEnemy
+class EvilEye : public PlatformerEnemy
 {
 public:
-	static BossEvilEye * deserialize(ValueMap* initProperties);
+	static EvilEye * deserialize(ValueMap* initProperties);
 
-	static const std::string MapKeyEnemyBossEvilEye;
+	static const std::string MapKeyEnemyEvilEye;
 
 private:
-	BossEvilEye(ValueMap* initProperties);
-	~BossEvilEye();
+	EvilEye(ValueMap* initProperties);
+	~EvilEye();
 };

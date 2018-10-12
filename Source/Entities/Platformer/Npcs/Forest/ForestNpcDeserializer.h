@@ -2,21 +2,16 @@
 #include "cocos2d.h"
 
 #include "Engine/Maps/IObjectDeserializer.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Entities/Platformer/PlatformerEntities.h"
-#include "Resources.h"
+#include "Entities/Platformer/Npcs/Forest/ForestNpcs.h"
+#include "Entities/Platformer/PlatformerEntityDeserializer.h"
 
 using namespace cocos2d;
 
-class PlatformerEntityDeserializer : public IObjectDeserializer
+class ForestNpcDeserializer : public PlatformerEntityDeserializer
 {
 public:
-	PlatformerEntityDeserializer();
-	~PlatformerEntityDeserializer();
+	ForestNpcDeserializer();
+	~ForestNpcDeserializer();
 
 	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
-
-	static const std::string KeyTypeEntity;
-
-
 };

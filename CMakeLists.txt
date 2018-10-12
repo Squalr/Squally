@@ -483,27 +483,75 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.cpp
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.cpp
 	Source/Scenes/Hexus/Opponents/HexusOpponentData.cpp
-	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentCastleSwordswoman.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentAgnes.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentErlic.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentExecutioner.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentGarin.cpp
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentJack.cpp
-	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentWitch.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestAppolo.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestArcher.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestAssassin.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestBandit.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestCentaur.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestChiron.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestCyclops.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestDragonOrcKing.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestEnt.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestHighwayman.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestOrcGrunt.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestOrcWarrior.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestPolyphemus.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestPrincess.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestThief.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestTroll.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestViking.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestWerewolf.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentKingRedsong.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentKingRedsongSlime.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentLeroy.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentMabel.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentMerlin.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentPrincessOpal.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentRaven.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentReaper.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentRogas.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentScarecrow.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentShade.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentThurstan.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentTyracius.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentVampireLord.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentVampiress.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentWraith.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentZombie.cpp
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentZombieErlic.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentAlder.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentBrock.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentCypress.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentEarthElemental.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentEarthGolem.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentFinch.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentForestGolem.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentFraya.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentGenie.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentJasper.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentKrampus.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentLightningGolem.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentMildred.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentOlive.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentPrincessDawn.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentSarude.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentShaman.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentShen.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentSkeletalArcher.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentSkeletalNecromancer.cpp
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentSkeletalWarrior.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentAppolo.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentArcher.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentAssassin.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentBandit.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentCentaur.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentChiron.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentCooper.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentCyclops.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentDudly.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentEnt.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentKingGrogg.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentLycan.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentOgre.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentOrcBomber.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentOrcGrunt.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentOrcSwordsman.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentOrcWarrior.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentPolyphemus.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentPrincessMittens.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentRobin.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentRupert.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentRusty.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentThug.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentToben.cpp
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentTroll.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleBarbarian.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleDwarf.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleFighter.cpp
@@ -700,7 +748,6 @@ list(APPEND GAME_HEADER
 	Source/Entities/Isometric/Squally/IsometricSqually.h
 	Source/Entities/Platformer/PlatformerCollisionMapping.h
 	Source/Entities/Platformer/PlatformerEnemy.h
-	Source/Entities/Platformer/PlatformerEntities.h
 	Source/Entities/Platformer/PlatformerEntity.h
 	Source/Entities/Platformer/PlatformerEntityDeserializer.h
 	Source/Entities/Platformer/Enemies/Castle/Agnes.h
@@ -823,6 +870,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Volcano/VolcanoEnemyDeserializer.h
 	Source/Entities/Platformer/Npcs/NpcBase.h
 	Source/Entities/Platformer/Npcs/Castle/CastleNpcDeserializer.h
+	Source/Entities/Platformer/Npcs/Castle/CastleNpcs.h
 	Source/Entities/Platformer/Npcs/Castle/Erlic.h
 	Source/Entities/Platformer/Npcs/Castle/Garin.h
 	Source/Entities/Platformer/Npcs/Castle/KingRedsong.h
@@ -838,6 +886,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Caverns/Alder.h
 	Source/Entities/Platformer/Npcs/Caverns/Brock.h
 	Source/Entities/Platformer/Npcs/Caverns/CavernsNpcDeserializer.h
+	Source/Entities/Platformer/Npcs/Caverns/CavernsNpcs.h
 	Source/Entities/Platformer/Npcs/Caverns/Cypress.h
 	Source/Entities/Platformer/Npcs/Caverns/Finch.h
 	Source/Entities/Platformer/Npcs/Caverns/Fraya.h
@@ -852,6 +901,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Forest/Cooper.h
 	Source/Entities/Platformer/Npcs/Forest/Dudly.h
 	Source/Entities/Platformer/Npcs/Forest/ForestNpcDeserializer.h
+	Source/Entities/Platformer/Npcs/Forest/ForestNpcs.h
 	Source/Entities/Platformer/Npcs/Forest/Lycan.h
 	Source/Entities/Platformer/Npcs/Forest/Polyphemus.h
 	Source/Entities/Platformer/Npcs/Forest/PrincessMittens.h
@@ -866,6 +916,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Jungle/Gramps.h
 	Source/Entities/Platformer/Npcs/Jungle/Hades.h
 	Source/Entities/Platformer/Npcs/Jungle/JungleNpcDeserializer.h
+	Source/Entities/Platformer/Npcs/Jungle/JungleNpcs.h
 	Source/Entities/Platformer/Npcs/Jungle/Minos.h
 	Source/Entities/Platformer/Npcs/Jungle/PrincessMatu.h
 	Source/Entities/Platformer/Npcs/Jungle/Raka.h
@@ -876,6 +927,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Mech/Mara.h
 	Source/Entities/Platformer/Npcs/Mech/Marcel.h
 	Source/Entities/Platformer/Npcs/Mech/MechNpcDeserializer.h
+	Source/Entities/Platformer/Npcs/Mech/MechNpcs.h
 	Source/Entities/Platformer/Npcs/Mech/Piper.h
 	Source/Entities/Platformer/Npcs/Mech/QueenElise.h
 	Source/Entities/Platformer/Npcs/Mech/Radon.h
@@ -887,6 +939,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Obelisk/Johann.h
 	Source/Entities/Platformer/Npcs/Obelisk/Necron.h
 	Source/Entities/Platformer/Npcs/Obelisk/ObeliskNpcDeserializer.h
+	Source/Entities/Platformer/Npcs/Obelisk/ObeliskNpcs.h
 	Source/Entities/Platformer/Npcs/Obelisk/PrincessNebea.h
 	Source/Entities/Platformer/Npcs/Obelisk/Roger.h
 	Source/Entities/Platformer/Npcs/Obelisk/Thion.h
@@ -904,6 +957,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Ruins/Manticore.h
 	Source/Entities/Platformer/Npcs/Ruins/Poseidon.h
 	Source/Entities/Platformer/Npcs/Ruins/RuinsNpcDeserializer.h
+	Source/Entities/Platformer/Npcs/Ruins/RuinsNpcs.h
 	Source/Entities/Platformer/Npcs/Ruins/Zeus.h
 	Source/Entities/Platformer/Npcs/Snow/Aspen.h
 	Source/Entities/Platformer/Npcs/Snow/Aster.h
@@ -915,6 +969,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Snow/Nessie.h
 	Source/Entities/Platformer/Npcs/Snow/PrincessPepper.h
 	Source/Entities/Platformer/Npcs/Snow/SnowNpcDeserializer.h
+	Source/Entities/Platformer/Npcs/Snow/SnowNpcs.h
 	Source/Entities/Platformer/Npcs/Snow/Theldar.h
 	Source/Entities/Platformer/Npcs/Snow/Tinsel.h
 	Source/Entities/Platformer/Npcs/Volcano/Ash.h
@@ -928,6 +983,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Volcano/Ragnis.h
 	Source/Entities/Platformer/Npcs/Volcano/Scaldor.h
 	Source/Entities/Platformer/Npcs/Volcano/VolcanoNpcDeserializer.h
+	Source/Entities/Platformer/Npcs/Volcano/VolcanoNpcs.h
 	Source/Entities/Platformer/Npcs/Volcano/Zelina.h
 	Source/Entities/Platformer/Squally/Hover.h
 	Source/Entities/Platformer/Squally/Squally.h
@@ -1072,27 +1128,75 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/HelpMenus/HelpMenus.h
 	Source/Scenes/Hexus/Opponents/HexusOpponentData.h
 	Source/Scenes/Hexus/Opponents/HexusOpponents.h
-	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentCastleSwordswoman.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentAgnes.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentErlic.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentExecutioner.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentGarin.h
 	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentJack.h
-	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentWitch.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestAppolo.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestArcher.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestAssassin.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestBandit.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestCentaur.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestChiron.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestCyclops.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestDragonOrcKing.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestEnt.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestHighwayman.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestOrcGrunt.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestOrcWarrior.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestPolyphemus.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestPrincess.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestThief.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestTroll.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestViking.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentForestWerewolf.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentKingRedsong.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentKingRedsongSlime.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentLeroy.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentMabel.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentMerlin.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentPrincessOpal.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentRaven.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentReaper.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentRogas.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentScarecrow.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentShade.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentThurstan.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentTyracius.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentVampireLord.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentVampiress.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentWraith.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentZombie.h
+	Source/Scenes/Hexus/Opponents/Castle/HexusOpponentZombieErlic.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentAlder.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentBrock.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentCypress.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentEarthElemental.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentEarthGolem.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentFinch.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentForestGolem.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentFraya.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentGenie.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentJasper.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentKrampus.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentLightningGolem.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentMildred.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentOlive.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentPrincessDawn.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentSarude.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentShaman.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentShen.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentSkeletalArcher.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentSkeletalNecromancer.h
+	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentSkeletalWarrior.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentAppolo.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentArcher.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentAssassin.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentBandit.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentCentaur.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentChiron.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentCooper.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentCyclops.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentDudly.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentEnt.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentKingGrogg.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentLycan.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentOgre.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentOrcBomber.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentOrcGrunt.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentOrcSwordsman.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentOrcWarrior.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentPolyphemus.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentPrincessMittens.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentRobin.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentRupert.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentRusty.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentThug.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentToben.h
+	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentTroll.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleBarbarian.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleDwarf.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleFighter.h

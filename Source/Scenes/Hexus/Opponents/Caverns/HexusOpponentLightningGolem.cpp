@@ -1,25 +1,25 @@
-#include "HexusOpponentWitch.h"
+#include "HexusOpponentLightningGolem.h"
 
-const std::string HexusOpponentWitch::StringKeyOpponentName = "Squally_Npc_Names_Witch";
-HexusOpponentWitch* HexusOpponentWitch::instance = nullptr;
+const std::string HexusOpponentLightningGolem::StringKeyOpponentName = "Squally_Npc_Names_Lightning_Golem";
+HexusOpponentLightningGolem* HexusOpponentLightningGolem::instance = nullptr;
 
-HexusOpponentWitch* HexusOpponentWitch::getInstance()
+HexusOpponentLightningGolem* HexusOpponentLightningGolem::getInstance()
 {
-	if (HexusOpponentWitch::instance == nullptr)
+	if (HexusOpponentLightningGolem::instance == nullptr)
 	{
-		HexusOpponentWitch::instance = new HexusOpponentWitch();
+		HexusOpponentLightningGolem::instance = new HexusOpponentLightningGolem();
 	}
 
-	return HexusOpponentWitch::instance;
+	return HexusOpponentLightningGolem::instance;
 }
 
-HexusOpponentWitch::HexusOpponentWitch() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Castle_Enemies_BossWitch_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
-	0.9f,
+HexusOpponentLightningGolem::HexusOpponentLightningGolem() : HexusOpponentData(
+	Resources::Entities_Platformer_Environment_Caverns_Enemies_LightningGolem_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
+	1.0f,
 	Vec2(-32.0f, -32.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentWitch::StringKeyOpponentName,
+	HexusOpponentLightningGolem::StringKeyOpponentName,
 	GameState::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{
@@ -96,6 +96,6 @@ HexusOpponentWitch::HexusOpponentWitch() : HexusOpponentData(
 {
 }
 
-HexusOpponentWitch::~HexusOpponentWitch()
+HexusOpponentLightningGolem::~HexusOpponentLightningGolem()
 {
 }

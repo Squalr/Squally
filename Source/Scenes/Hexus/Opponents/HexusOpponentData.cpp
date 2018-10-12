@@ -7,6 +7,7 @@ HexusOpponentData::HexusOpponentData(
 	Vec2 animationOffset,
 	Vec2 avatarOffset,
 	std::string enemyNameKey,
+	GameState::Difficulty difficulty,
 	Card::CardStyle cardStyle,
 	std::vector<CardData*> rewards,
 	std::vector<CardData*> cards)
