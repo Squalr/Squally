@@ -1,18 +1,18 @@
-#include "BossEvilEye.h"
+#include "EvilEye.h"
 
-const std::string BossEvilEye::MapKeyEnemyBossEvilEye = "boss_evil_eye";
+const std::string EvilEye::MapKeyEnemyEvilEye = "evil_eye";
 
-BossEvilEye* BossEvilEye::deserialize(ValueMap* initProperties)
+EvilEye* EvilEye::deserialize(ValueMap* initProperties)
 {
-	BossEvilEye* instance = new BossEvilEye(initProperties);
+	EvilEye* instance = new EvilEye(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BossEvilEye::BossEvilEye(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Mech_Enemies_BossEvilEye_Animations,
+EvilEye::EvilEye(ValueMap* initProperties) : PlatformerEnemy(initProperties,
+	Resources::Entities_Platformer_Environment_Mech_Enemies_EvilEye_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(720.0f, 840.0f),
 	0.6f,
@@ -20,6 +20,6 @@ BossEvilEye::BossEvilEye(ValueMap* initProperties) : PlatformerEnemy(initPropert
 {
 }
 
-BossEvilEye::~BossEvilEye()
+EvilEye::~EvilEye()
 {
 }

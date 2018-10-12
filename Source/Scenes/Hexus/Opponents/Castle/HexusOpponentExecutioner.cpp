@@ -1,25 +1,25 @@
-#include "HexusOpponentCastleSwordswoman.h"
+#include "HexusOpponentExecutioner.h"
 
-const std::string HexusOpponentCastleSwordswoman::StringKeyOpponentName = "Squally_Npc_Names_Castle_Swordswoman";
-HexusOpponentCastleSwordswoman* HexusOpponentCastleSwordswoman::instance = nullptr;
+const std::string HexusOpponentExecutioner::StringKeyOpponentName = "Squally_Npc_Names_Executioner";
+HexusOpponentExecutioner* HexusOpponentExecutioner::instance = nullptr;
 
-HexusOpponentCastleSwordswoman* HexusOpponentCastleSwordswoman::getInstance()
+HexusOpponentExecutioner* HexusOpponentExecutioner::getInstance()
 {
-	if (HexusOpponentCastleSwordswoman::instance == nullptr)
+	if (HexusOpponentExecutioner::instance == nullptr)
 	{
-		HexusOpponentCastleSwordswoman::instance = new HexusOpponentCastleSwordswoman();
+		HexusOpponentExecutioner::instance = new HexusOpponentExecutioner();
 	}
 
-	return HexusOpponentCastleSwordswoman::instance;
+	return HexusOpponentExecutioner::instance;
 }
 
-HexusOpponentCastleSwordswoman::HexusOpponentCastleSwordswoman() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Castle_Npcs_Swordswoman_Animations,
+HexusOpponentExecutioner::HexusOpponentExecutioner() : HexusOpponentData(
+	Resources::Entities_Platformer_Environment_Castle_Enemies_Executioner_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
-	0.8f,
-	Vec2(-48.0f, -48.0f),
-	Vec2(-16.0f, -32.0f),
-	HexusOpponentCastleSwordswoman::StringKeyOpponentName,
+	1.0f,
+	Vec2(-32.0f, -32.0f),
+	Vec2(0.0f, 0.0f),
+	HexusOpponentExecutioner::StringKeyOpponentName,
 	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
@@ -56,6 +56,6 @@ HexusOpponentCastleSwordswoman::HexusOpponentCastleSwordswoman() : HexusOpponent
 {
 }
 
-HexusOpponentCastleSwordswoman::~HexusOpponentCastleSwordswoman()
+HexusOpponentExecutioner::~HexusOpponentExecutioner()
 {
 }

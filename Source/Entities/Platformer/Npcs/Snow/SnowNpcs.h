@@ -1,0 +1,12 @@
+#pragma once
+#include "Entities/Platformer/Npcs/Snow/Aspen.h"
+#include "Entities/Platformer/Npcs/Snow/Aster.h"
+#include "Entities/Platformer/Npcs/Snow/Cookie.h"
+#include "Entities/Platformer/Npcs/Snow/Irmik.h"
+#include "Entities/Platformer/Npcs/Snow/Jingles.h"
+#include "Entities/Platformer/Npcs/Snow/Juniper.h"
+#include "Entities/Platformer/Npcs/Snow/Kringle.h"
+#include "Entities/Platformer/Npcs/Snow/Nessie.h"
+#include "Entities/Platformer/Npcs/Snow/PrincessPepper.h"
+#include "Entities/Platformer/Npcs/Snow/Theldar.h"
+#include "Entities/Platformer/Npcs/Snow/Tinsel.h"

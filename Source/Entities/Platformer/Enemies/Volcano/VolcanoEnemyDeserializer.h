@@ -2,21 +2,16 @@
 #include "cocos2d.h"
 
 #include "Engine/Maps/IObjectDeserializer.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Entities/Platformer/PlatformerEntities.h"
-#include "Resources.h"
+#include "Entities/Platformer/Enemies/Volcano/VolcanoEnemies.h"
+#include "Entities/Platformer/PlatformerEntityDeserializer.h"
 
 using namespace cocos2d;
 
-class PlatformerEntityDeserializer : public IObjectDeserializer
+class VolcanoEnemyDeserializer : public PlatformerEntityDeserializer
 {
 public:
-	PlatformerEntityDeserializer();
-	~PlatformerEntityDeserializer();
+	VolcanoEnemyDeserializer();
+	~VolcanoEnemyDeserializer();
 
 	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
-
-	static const std::string KeyTypeEntity;
-
-
 };

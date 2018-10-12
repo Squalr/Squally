@@ -1,0 +1,12 @@
+#pragma once
+#include "Entities/Platformer/Npcs/Obelisk/Amelia.h"
+#include "Entities/Platformer/Npcs/Obelisk/Azmus.h"
+#include "Entities/Platformer/Npcs/Obelisk/Garrick.h"
+#include "Entities/Platformer/Npcs/Obelisk/Johann.h"
+#include "Entities/Platformer/Npcs/Obelisk/Necron.h"
+#include "Entities/Platformer/Npcs/Obelisk/PrincessNebea.h"
+#include "Entities/Platformer/Npcs/Obelisk/Roger.h"
+#include "Entities/Platformer/Npcs/Obelisk/Thion.h"
+#include "Entities/Platformer/Npcs/Obelisk/Ursula.h"
+#include "Entities/Platformer/Npcs/Obelisk/Viper.h"
+#include "Entities/Platformer/Npcs/Obelisk/Zana.h"

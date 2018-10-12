@@ -1,0 +1,12 @@
+#pragma once
+#include "Entities/Platformer/Npcs/Caverns/Alder.h"
+#include "Entities/Platformer/Npcs/Caverns/Brock.h"
+#include "Entities/Platformer/Npcs/Caverns/Cypress.h"
+#include "Entities/Platformer/Npcs/Caverns/Finch.h"
+#include "Entities/Platformer/Npcs/Caverns/Fraya.h"
+#include "Entities/Platformer/Npcs/Caverns/Jasper.h"
+#include "Entities/Platformer/Npcs/Caverns/Mildred.h"
+#include "Entities/Platformer/Npcs/Caverns/Olive.h"
+#include "Entities/Platformer/Npcs/Caverns/PrincessDawn.h"
+#include "Entities/Platformer/Npcs/Caverns/Sarude.h"
+#include "Entities/Platformer/Npcs/Caverns/Shen.h"
