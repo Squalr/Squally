@@ -11,7 +11,7 @@ class Guard : public PlatformerEnemy
 public:
 	static Guard * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyGuard;
+	static const std::string MapKeyEnemyGuard;
 
 private:
 	Guard(ValueMap* initProperties);

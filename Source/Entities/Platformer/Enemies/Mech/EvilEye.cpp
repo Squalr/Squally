@@ -1,6 +1,6 @@
 #include "BossEvilEye.h"
 
-const std::string BossEvilEye::KeyEnemyBossEvilEye = "boss_evil_eye";
+const std::string BossEvilEye::MapKeyEnemyBossEvilEye = "boss_evil_eye";
 
 BossEvilEye* BossEvilEye::deserialize(ValueMap* initProperties)
 {

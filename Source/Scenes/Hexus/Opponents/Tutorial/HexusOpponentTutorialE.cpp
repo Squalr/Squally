@@ -20,6 +20,7 @@ HexusOpponentTutorialE::HexusOpponentTutorialE() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(0.0f, -24.0f),
 	HexusOpponentTutorialE::StringKeyOpponentName,
+	GameState::Difficulty::Stupid,
 	Card::CardStyle::Water,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex5),

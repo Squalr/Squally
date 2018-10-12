@@ -11,7 +11,7 @@ class BossEvilEye : public PlatformerEnemy
 public:
 	static BossEvilEye * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyBossEvilEye;
+	static const std::string MapKeyEnemyBossEvilEye;
 
 private:
 	BossEvilEye(ValueMap* initProperties);

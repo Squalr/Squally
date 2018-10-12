@@ -11,7 +11,7 @@ class Wraith : public PlatformerEnemy
 public:
 	static Wraith * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyWraith;
+	static const std::string MapKeyEnemyWraith;
 
 private:
 	Wraith(ValueMap* initProperties);

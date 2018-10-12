@@ -1,6 +1,6 @@
 #include "DemonGrunt.h"
 
-const std::string DemonGrunt::KeyEnemyDemonGrunt = "demon_grunt";
+const std::string DemonGrunt::MapKeyEnemyDemonGrunt = "demon_grunt";
 
 DemonGrunt* DemonGrunt::deserialize(ValueMap* initProperties)
 {

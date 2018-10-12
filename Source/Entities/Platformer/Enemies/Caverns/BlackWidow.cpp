@@ -1,6 +1,6 @@
 #include "BlackWidow.h"
 
-const std::string BlackWidow::KeyEnemyBlackWidow = "black_widow";
+const std::string BlackWidow::MapKeyEnemyBlackWidow = "black_widow";
 
 BlackWidow* BlackWidow::deserialize(ValueMap* initProperties)
 {

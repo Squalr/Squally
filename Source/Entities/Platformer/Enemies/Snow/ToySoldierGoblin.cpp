@@ -1,6 +1,6 @@
 #include "ToySoldierGoblin.h"
 
-const std::string ToySoldierGoblin::KeyEnemyToySoldierGoblin = "toy_soldier_goblin";
+const std::string ToySoldierGoblin::MapKeyEnemyToySoldierGoblin = "toy_soldier_goblin";
 
 ToySoldierGoblin* ToySoldierGoblin::deserialize(ValueMap* initProperties)
 {

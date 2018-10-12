@@ -1,6 +1,6 @@
 #include "SkeletalWarrior.h"
 
-const std::string SkeletalWarrior::KeyEnemySkeletalWarrior = "skeletal_warrior";
+const std::string SkeletalWarrior::MapKeyEnemySkeletalWarrior = "skeletal_warrior";
 
 SkeletalWarrior* SkeletalWarrior::deserialize(ValueMap* initProperties)
 {

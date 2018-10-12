@@ -1,6 +1,6 @@
 #include "Ogre.h"
 
-const std::string Ogre::KeyEnemyOgre = "ogre";
+const std::string Ogre::MapKeyEnemyOgre = "ogre";
 
 Ogre* Ogre::deserialize(ValueMap* initProperties)
 {

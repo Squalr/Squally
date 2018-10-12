@@ -1,6 +1,6 @@
 #include "Ent.h"
 
-const std::string Ent::KeyEnemyEnt = "ent";
+const std::string Ent::MapKeyEnemyEnt = "ent";
 
 Ent* Ent::deserialize(ValueMap* initProperties)
 {

@@ -1,6 +1,6 @@
 #include "VoidArcher.h"
 
-const std::string VoidArcher::KeyEnemyVoidArcher = "void_archer";
+const std::string VoidArcher::MapKeyEnemyVoidArcher = "void_archer";
 
 VoidArcher* VoidArcher::deserialize(ValueMap* initProperties)
 {

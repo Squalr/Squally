@@ -1,6 +1,6 @@
 #include "ReanimatedPig.h"
 
-const std::string ReanimatedPig::KeyEnemyReanimatedPig = "reanimated_pig";
+const std::string ReanimatedPig::MapKeyEnemyReanimatedPig = "reanimated_pig";
 
 ReanimatedPig* ReanimatedPig::deserialize(ValueMap* initProperties)
 {

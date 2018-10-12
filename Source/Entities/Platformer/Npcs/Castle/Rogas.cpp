@@ -1,6 +1,6 @@
 #include "Rogas.h"
 
-const std::string Rogas::KeyEnemyRogas = "rogas";
+const std::string Rogas::MapKeyNpcRogas = "rogas";
 
 Rogas* Rogas::deserialize(ValueMap* initProperties)
 {

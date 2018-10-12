@@ -1,6 +1,6 @@
 #include "Merlin.h"
 
-const std::string Merlin::KeyEnemyMerlin = "merlin";
+const std::string Merlin::MapKeyNpcMerlin = "merlin";
 
 Merlin* Merlin::deserialize(ValueMap* initProperties)
 {

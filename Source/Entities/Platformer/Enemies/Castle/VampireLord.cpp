@@ -1,6 +1,6 @@
 #include "VampireLord.h"
 
-const std::string VampireLord::KeyEnemyVampireLord = "vampire_lord";
+const std::string VampireLord::MapKeyEnemyVampireLord = "vampire_lord";
 
 VampireLord* VampireLord::deserialize(ValueMap* initProperties)
 {

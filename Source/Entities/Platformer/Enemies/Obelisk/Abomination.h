@@ -11,7 +11,7 @@ class Abomination : public PlatformerEnemy
 public:
 	static Abomination * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyAbomination;
+	static const std::string MapKeyEnemyAbomination;
 
 private:
 	Abomination(ValueMap* initProperties);

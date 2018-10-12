@@ -11,7 +11,7 @@ class GoblinElf : public PlatformerEnemy
 public:
 	static GoblinElf * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyGoblinElf;
+	static const std::string MapKeyEnemyGoblinElf;
 
 private:
 	GoblinElf(ValueMap* initProperties);

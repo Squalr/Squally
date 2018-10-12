@@ -1,6 +1,6 @@
 #include "OrcGrunt.h"
 
-const std::string OrcGrunt::KeyEnemyOrcGrunt = "orc_grunt";
+const std::string OrcGrunt::MapKeyEnemyOrcGrunt = "orc_grunt";
 
 OrcGrunt* OrcGrunt::deserialize(ValueMap* initProperties)
 {

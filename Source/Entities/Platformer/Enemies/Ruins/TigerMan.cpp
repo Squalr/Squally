@@ -1,6 +1,6 @@
 #include "TigerMan.h"
 
-const std::string TigerMan::KeyEnemyTigerMan = "tiger_man";
+const std::string TigerMan::MapKeyEnemyTigerMan = "tiger_man";
 
 TigerMan* TigerMan::deserialize(ValueMap* initProperties)
 {

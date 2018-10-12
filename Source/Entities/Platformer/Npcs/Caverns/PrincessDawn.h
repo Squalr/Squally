@@ -11,7 +11,7 @@ class PrincessDawn : public NpcBase
 public:
 	static PrincessDawn * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyPrincessDawn;
+	static const std::string MapKeyNpcPrincessDawn;
 
 private:
 	PrincessDawn(ValueMap* initProperties);

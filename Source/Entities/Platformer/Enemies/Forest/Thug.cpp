@@ -1,6 +1,6 @@
 #include "Thug.h"
 
-const std::string Thug::KeyEnemyThug = "thug";
+const std::string Thug::MapKeyEnemyThug = "thug";
 
 Thug* Thug::deserialize(ValueMap* initProperties)
 {

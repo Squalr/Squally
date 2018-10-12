@@ -11,7 +11,7 @@ class Mildred : public NpcBase
 public:
 	static Mildred * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyMildred;
+	static const std::string MapKeyNpcMildred;
 
 private:
 	Mildred(ValueMap* initProperties);

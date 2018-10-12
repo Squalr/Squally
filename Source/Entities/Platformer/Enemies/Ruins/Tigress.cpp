@@ -1,6 +1,6 @@
 #include "Tigress.h"
 
-const std::string Tigress::KeyEnemyTigress = "tigress";
+const std::string Tigress::MapKeyEnemyTigress = "tigress";
 
 Tigress* Tigress::deserialize(ValueMap* initProperties)
 {

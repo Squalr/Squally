@@ -1,6 +1,6 @@
 #include "Shen.h"
 
-const std::string Shen::KeyEnemyShen = "shen";
+const std::string Shen::MapKeyNpcShen = "shen";
 
 Shen* Shen::deserialize(ValueMap* initProperties)
 {

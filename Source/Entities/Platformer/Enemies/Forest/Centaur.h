@@ -11,7 +11,7 @@ class Centaur : public PlatformerEnemy
 public:
 	static Centaur * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyCentaur;
+	static const std::string MapKeyEnemyCentaur;
 
 private:
 	Centaur(ValueMap* initProperties);

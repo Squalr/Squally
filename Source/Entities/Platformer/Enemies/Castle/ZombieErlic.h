@@ -11,7 +11,7 @@ class ZombieErlic : public PlatformerEnemy
 public:
 	static ZombieErlic * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyZombieErlic;
+	static const std::string MapKeyEnemyZombieErlic;
 
 private:
 	ZombieErlic(ValueMap* initProperties);

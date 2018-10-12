@@ -1,6 +1,6 @@
 #include "KingRedsongSlime.h"
 
-const std::string KingRedsongSlime::KeyEnemyKingRedsongSlime = "king_redsong_slime";
+const std::string KingRedsongSlime::MapKeyNpcKingRedsongSlime = "king_redsong_slime";
 
 KingRedsongSlime* KingRedsongSlime::deserialize(ValueMap* initProperties)
 {

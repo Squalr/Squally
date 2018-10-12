@@ -11,7 +11,7 @@ class Fraya : public NpcBase
 public:
 	static Fraya * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyFraya;
+	static const std::string MapKeyNpcFraya;
 
 private:
 	Fraya(ValueMap* initProperties);

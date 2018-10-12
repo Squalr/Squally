@@ -1,6 +1,6 @@
 #include "KingGrogg.h"
 
-const std::string KingGrogg::KeyEnemyKingGrogg = "king_grogg";
+const std::string KingGrogg::MapKeyEnemyKingGrogg = "king_grogg";
 
 KingGrogg* KingGrogg::deserialize(ValueMap* initProperties)
 {

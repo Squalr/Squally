@@ -1,6 +1,6 @@
 #include "CritterDemon.h"
 
-const std::string CritterDemon::KeyEnemyCritterDemon = "critter_demon";
+const std::string CritterDemon::MapKeyEnemyCritterDemon = "critter_demon";
 
 CritterDemon* CritterDemon::deserialize(ValueMap* initProperties)
 {

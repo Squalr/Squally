@@ -1,6 +1,6 @@
 #include "MechDog.h"
 
-const std::string MechDog::KeyEnemyMechDog = "mech_dog";
+const std::string MechDog::MapKeyEnemyMechDog = "mech_dog";
 
 MechDog* MechDog::deserialize(ValueMap* initProperties)
 {

@@ -11,7 +11,7 @@ class LightningGolem : public PlatformerEnemy
 public:
 	static LightningGolem * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyLightningGolem;
+	static const std::string MapKeyEnemyLightningGolem;
 
 private:
 	LightningGolem(ValueMap* initProperties);

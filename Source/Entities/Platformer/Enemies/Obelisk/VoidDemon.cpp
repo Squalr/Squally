@@ -1,6 +1,6 @@
 #include "VoidDemon.h"
 
-const std::string VoidDemon::KeyEnemyVoidDemon = "void_demon";
+const std::string VoidDemon::MapKeyEnemyVoidDemon = "void_demon";
 
 VoidDemon* VoidDemon::deserialize(ValueMap* initProperties)
 {

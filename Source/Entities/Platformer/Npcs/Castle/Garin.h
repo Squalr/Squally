@@ -11,7 +11,7 @@ class Garin : public NpcBase
 public:
 	static Garin * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyGarin;
+	static const std::string MapKeyNpcGarin;
 
 private:
 	Garin(ValueMap* initProperties);

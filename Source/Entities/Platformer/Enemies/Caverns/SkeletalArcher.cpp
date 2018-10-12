@@ -1,6 +1,6 @@
 #include "SkeletalArcher.h"
 
-const std::string SkeletalArcher::KeyEnemySkeletalArcher = "skeletal_archer";
+const std::string SkeletalArcher::MapKeyEnemySkeletalArcher = "skeletal_archer";
 
 SkeletalArcher* SkeletalArcher::deserialize(ValueMap* initProperties)
 {

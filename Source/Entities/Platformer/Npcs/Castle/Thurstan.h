@@ -11,7 +11,7 @@ class Thurstan : public NpcBase
 public:
 	static Thurstan * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyThurstan;
+	static const std::string MapKeyNpcThurstan;
 
 private:
 	Thurstan(ValueMap* initProperties);

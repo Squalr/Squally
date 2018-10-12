@@ -1,6 +1,6 @@
 #include "Jack.h"
 
-const std::string Jack::KeyEnemyJack = "jack";
+const std::string Jack::MapKeyEnemyJack = "jack";
 
 Jack* Jack::deserialize(ValueMap* initProperties)
 {

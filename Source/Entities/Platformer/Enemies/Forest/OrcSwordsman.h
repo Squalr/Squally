@@ -11,7 +11,7 @@ class OrcSwordsman : public PlatformerEnemy
 public:
 	static OrcSwordsman * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyOrcSwordsman;
+	static const std::string MapKeyEnemyOrcSwordsman;
 
 private:
 	OrcSwordsman(ValueMap* initProperties);

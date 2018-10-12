@@ -1,6 +1,6 @@
 #include "ReanimatedFighter.h"
 
-const std::string ReanimatedFighter::KeyEnemyReanimatedFighter = "reanimated_fighter";
+const std::string ReanimatedFighter::MapKeyEnemyReanimatedFighter = "reanimated_fighter";
 
 ReanimatedFighter* ReanimatedFighter::deserialize(ValueMap* initProperties)
 {

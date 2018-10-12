@@ -1,6 +1,6 @@
 #include "Fraya.h"
 
-const std::string Fraya::KeyEnemyFraya = "fraya";
+const std::string Fraya::MapKeyNpcFraya = "fraya";
 
 Fraya* Fraya::deserialize(ValueMap* initProperties)
 {

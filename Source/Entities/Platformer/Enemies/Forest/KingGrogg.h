@@ -11,7 +11,7 @@ class KingGrogg : public PlatformerEnemy
 public:
 	static KingGrogg * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyKingGrogg;
+	static const std::string MapKeyEnemyKingGrogg;
 
 private:
 	KingGrogg(ValueMap* initProperties);

@@ -11,7 +11,7 @@ class WaterElemental : public PlatformerEnemy
 public:
 	static WaterElemental * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyWaterElemental;
+	static const std::string MapKeyEnemyWaterElemental;
 
 private:
 	WaterElemental(ValueMap* initProperties);

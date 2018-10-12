@@ -20,6 +20,7 @@ HexusOpponentRuinsMermaid::HexusOpponentRuinsMermaid() : HexusOpponentData(
 	Vec2(-48.0f, -144.0f),
 	Vec2(0.0f, -192.0f),
 	HexusOpponentRuinsMermaid::StringKeyOpponentName,
+	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),

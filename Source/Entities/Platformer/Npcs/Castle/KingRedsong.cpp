@@ -1,6 +1,6 @@
 #include "KingRedsong.h"
 
-const std::string KingRedsong::KeyEnemyKingRedsong = "king_redsong";
+const std::string KingRedsong::MapKeyNpcKingRedsong = "king_redsong";
 
 KingRedsong* KingRedsong::deserialize(ValueMap* initProperties)
 {

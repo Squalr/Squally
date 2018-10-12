@@ -1,6 +1,6 @@
 #include "OrcBomber.h"
 
-const std::string OrcBomber::KeyEnemyOrcBomber = "orc_bomber";
+const std::string OrcBomber::MapKeyEnemyOrcBomber = "orc_bomber";
 
 OrcBomber* OrcBomber::deserialize(ValueMap* initProperties)
 {

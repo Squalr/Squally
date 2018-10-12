@@ -1,6 +1,6 @@
 #include "MechGolemDark.h"
 
-const std::string MechGolemDark::KeyEnemyMechGolemDark = "mech_golem_dark";
+const std::string MechGolemDark::MapKeyEnemyMechGolemDark = "mech_golem_dark";
 
 MechGolemDark* MechGolemDark::deserialize(ValueMap* initProperties)
 {

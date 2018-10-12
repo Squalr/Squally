@@ -11,7 +11,7 @@ class Jack : public PlatformerEnemy
 public:
 	static Jack * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyJack;
+	static const std::string MapKeyEnemyJack;
 
 private:
 	Jack(ValueMap* initProperties);

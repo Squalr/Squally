@@ -11,7 +11,7 @@ class LavaGolem : public PlatformerEnemy
 public:
 	static LavaGolem * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyLavaGolem;
+	static const std::string MapKeyEnemyLavaGolem;
 
 private:
 	LavaGolem(ValueMap* initProperties);

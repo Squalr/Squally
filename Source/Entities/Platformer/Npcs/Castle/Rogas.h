@@ -11,7 +11,7 @@ class Rogas : public NpcBase
 public:
 	static Rogas * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyRogas;
+	static const std::string MapKeyNpcRogas;
 
 private:
 	Rogas(ValueMap* initProperties);

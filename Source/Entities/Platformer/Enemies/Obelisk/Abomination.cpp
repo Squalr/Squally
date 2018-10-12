@@ -1,6 +1,6 @@
 #include "Abomination.h"
 
-const std::string Abomination::KeyEnemyAbomination = "abomination";
+const std::string Abomination::MapKeyEnemyAbomination = "abomination";
 
 Abomination* Abomination::deserialize(ValueMap* initProperties)
 {

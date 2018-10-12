@@ -11,7 +11,7 @@ class FrostFiend : public PlatformerEnemy
 public:
 	static FrostFiend * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyFrostFiend;
+	static const std::string MapKeyEnemyFrostFiend;
 
 private:
 	FrostFiend(ValueMap* initProperties);

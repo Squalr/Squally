@@ -1,6 +1,6 @@
 #include "Cyclops.h"
 
-const std::string Cyclops::KeyEnemyCyclops = "cyclops";
+const std::string Cyclops::MapKeyEnemyCyclops = "cyclops";
 
 Cyclops* Cyclops::deserialize(ValueMap* initProperties)
 {

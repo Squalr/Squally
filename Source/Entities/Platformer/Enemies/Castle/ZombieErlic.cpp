@@ -1,6 +1,6 @@
 #include "ZombieErlic.h"
 
-const std::string ZombieErlic::KeyEnemyZombieErlic = "zombie_erlic";
+const std::string ZombieErlic::MapKeyEnemyZombieErlic = "zombie_erlic";
 
 ZombieErlic* ZombieErlic::deserialize(ValueMap* initProperties)
 {

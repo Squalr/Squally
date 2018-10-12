@@ -1,6 +1,6 @@
 #include "Olive.h"
 
-const std::string Olive::KeyEnemyOlive = "olive";
+const std::string Olive::MapKeyNpcOlive = "olive";
 
 Olive* Olive::deserialize(ValueMap* initProperties)
 {

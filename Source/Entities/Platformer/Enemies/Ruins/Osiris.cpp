@@ -1,6 +1,6 @@
 #include "Osiris.h"
 
-const std::string Osiris::KeyEnemyOsiris = "osiris";
+const std::string Osiris::MapKeyEnemyOsiris = "osiris";
 
 Osiris* Osiris::deserialize(ValueMap* initProperties)
 {

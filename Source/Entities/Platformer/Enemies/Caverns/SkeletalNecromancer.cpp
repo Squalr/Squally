@@ -1,6 +1,6 @@
 #include "SkeletalNecromancer.h"
 
-const std::string SkeletalNecromancer::KeyEnemySkeletalNecromancer = "skeletal_necromancer";
+const std::string SkeletalNecromancer::MapKeyEnemySkeletalNecromancer = "skeletal_necromancer";
 
 SkeletalNecromancer* SkeletalNecromancer::deserialize(ValueMap* initProperties)
 {

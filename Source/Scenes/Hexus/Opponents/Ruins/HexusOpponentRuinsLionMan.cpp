@@ -20,6 +20,7 @@ HexusOpponentRuinsLionMan::HexusOpponentRuinsLionMan() : HexusOpponentData(
 	Vec2(-24.0f, -24.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentRuinsLionMan::StringKeyOpponentName,
+	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),

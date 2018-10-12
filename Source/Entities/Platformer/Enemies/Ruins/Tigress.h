@@ -11,7 +11,7 @@ class Tigress : public PlatformerEnemy
 public:
 	static Tigress * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyTigress;
+	static const std::string MapKeyEnemyTigress;
 
 private:
 	Tigress(ValueMap* initProperties);

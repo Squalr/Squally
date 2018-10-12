@@ -1,6 +1,6 @@
 #include "PenguinWarrior.h"
 
-const std::string PenguinWarrior::KeyEnemyPenguinWarrior = "penguin_warrior";
+const std::string PenguinWarrior::MapKeyEnemyPenguinWarrior = "penguin_warrior";
 
 PenguinWarrior* PenguinWarrior::deserialize(ValueMap* initProperties)
 {

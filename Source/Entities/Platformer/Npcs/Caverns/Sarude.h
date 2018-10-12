@@ -11,7 +11,7 @@ class Sarude : public NpcBase
 public:
 	static Sarude * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemySarude;
+	static const std::string MapKeyNpcSarude;
 
 private:
 	Sarude(ValueMap* initProperties);

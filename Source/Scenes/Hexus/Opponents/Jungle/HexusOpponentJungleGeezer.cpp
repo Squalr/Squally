@@ -20,6 +20,7 @@ HexusOpponentJungleGeezer::HexusOpponentJungleGeezer() : HexusOpponentData(
 	Vec2(0.0f, -48.0f),
 	Vec2(0.0f, -48.0f),
 	HexusOpponentJungleGeezer::StringKeyOpponentName,
+	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary5),

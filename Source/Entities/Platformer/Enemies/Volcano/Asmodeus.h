@@ -11,7 +11,7 @@ class Asmodeus : public PlatformerEnemy
 public:
 	static Asmodeus * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyAsmodeus;
+	static const std::string MapKeyEnemyAsmodeus;
 
 private:
 	Asmodeus(ValueMap* initProperties);

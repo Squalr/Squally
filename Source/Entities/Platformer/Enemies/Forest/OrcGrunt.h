@@ -11,7 +11,7 @@ class OrcGrunt : public PlatformerEnemy
 public:
 	static OrcGrunt * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyOrcGrunt;
+	static const std::string MapKeyEnemyOrcGrunt;
 
 private:
 	OrcGrunt(ValueMap* initProperties);

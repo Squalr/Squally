@@ -11,7 +11,7 @@ class Osiris : public PlatformerEnemy
 public:
 	static Osiris * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyOsiris;
+	static const std::string MapKeyEnemyOsiris;
 
 private:
 	Osiris(ValueMap* initProperties);

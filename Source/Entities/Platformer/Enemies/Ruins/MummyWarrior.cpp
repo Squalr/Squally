@@ -1,6 +1,6 @@
 #include "MummyWarrior.h"
 
-const std::string MummyWarrior::KeyEnemyMummyWarrior = "mummy_warrior";
+const std::string MummyWarrior::MapKeyEnemyMummyWarrior = "mummy_warrior";
 
 MummyWarrior* MummyWarrior::deserialize(ValueMap* initProperties)
 {

@@ -11,7 +11,7 @@ class PenguinGrunt : public PlatformerEnemy
 public:
 	static PenguinGrunt * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyPenguinGrunt;
+	static const std::string MapKeyEnemyPenguinGrunt;
 
 private:
 	PenguinGrunt(ValueMap* initProperties);

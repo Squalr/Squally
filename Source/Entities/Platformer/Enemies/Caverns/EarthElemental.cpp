@@ -1,6 +1,6 @@
 #include "EarthElemental.h"
 
-const std::string EarthElemental::KeyEnemyEarthElemental = "earth_elemental";
+const std::string EarthElemental::MapKeyEnemyEarthElemental = "earth_elemental";
 
 EarthElemental* EarthElemental::deserialize(ValueMap* initProperties)
 {

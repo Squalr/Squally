@@ -1,6 +1,6 @@
 #include "Thurstan.h"
 
-const std::string Thurstan::KeyEnemyThurstan = "thurstan";
+const std::string Thurstan::MapKeyNpcThurstan = "thurstan";
 
 Thurstan* Thurstan::deserialize(ValueMap* initProperties)
 {

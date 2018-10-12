@@ -11,7 +11,7 @@ class Leroy : public NpcBase
 public:
 	static Leroy * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyLeroy;
+	static const std::string MapKeyNpcLeroy;
 
 private:
 	Leroy(ValueMap* initProperties);

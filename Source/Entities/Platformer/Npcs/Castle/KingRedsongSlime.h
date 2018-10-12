@@ -11,7 +11,7 @@ class KingRedsongSlime : public NpcBase
 public:
 	static KingRedsongSlime * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyKingRedsongSlime;
+	static const std::string MapKeyNpcKingRedsongSlime;
 
 private:
 	KingRedsongSlime(ValueMap* initProperties);

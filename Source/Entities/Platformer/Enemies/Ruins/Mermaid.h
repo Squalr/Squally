@@ -11,7 +11,7 @@ class Mermaid : public PlatformerEnemy
 public:
 	static Mermaid * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyMermaid;
+	static const std::string MapKeyEnemyMermaid;
 
 private:
 	Mermaid(ValueMap* initProperties);

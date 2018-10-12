@@ -1,6 +1,6 @@
 #include "Krampus.h"
 
-const std::string Krampus::KeyEnemyKrampus = "krampus";
+const std::string Krampus::MapKeyEnemyKrampus = "krampus";
 
 Krampus* Krampus::deserialize(ValueMap* initProperties)
 {

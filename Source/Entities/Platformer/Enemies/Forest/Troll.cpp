@@ -1,6 +1,6 @@
 #include "Troll.h"
 
-const std::string Troll::KeyEnemyTroll = "troll";
+const std::string Troll::MapKeyEnemyTroll = "troll";
 
 Troll* Troll::deserialize(ValueMap* initProperties)
 {

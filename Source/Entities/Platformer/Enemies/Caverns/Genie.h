@@ -11,7 +11,7 @@ class Genie : public PlatformerEnemy
 public:
 	static Genie * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyGenie;
+	static const std::string MapKeyEnemyGenie;
 
 private:
 	Genie(ValueMap* initProperties);

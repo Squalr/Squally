@@ -11,7 +11,7 @@ class KingZul : public PlatformerEnemy
 public:
 	static KingZul * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyKingZul;
+	static const std::string MapKeyEnemyKingZul;
 
 private:
 	KingZul(ValueMap* initProperties);

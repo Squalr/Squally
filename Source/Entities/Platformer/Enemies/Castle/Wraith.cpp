@@ -1,6 +1,6 @@
 #include "Wraith.h"
 
-const std::string Wraith::KeyEnemyWraith = "wraith";
+const std::string Wraith::MapKeyEnemyWraith = "wraith";
 
 Wraith* Wraith::deserialize(ValueMap* initProperties)
 {

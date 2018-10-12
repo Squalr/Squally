@@ -6,6 +6,7 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/Deck.h"
+#include "Scenes/Hexus/GameState.h"
 
 using namespace cocos2d;
 
@@ -31,6 +32,7 @@ protected:
 		Vec2 avatarOffset,
 		std::string enemyNameKey,
 		Card::CardStyle cardStyle,
+		GameState::Difficulty difficulty,
 		std::vector<CardData*> rewards,
 		std::vector<CardData*> cards);
 	~HexusOpponentData();

@@ -1,6 +1,6 @@
 #include "LightningGolem.h"
 
-const std::string LightningGolem::KeyEnemyLightningGolem = "lightning_golem";
+const std::string LightningGolem::MapKeyEnemyLightningGolem = "lightning_golem";
 
 LightningGolem* LightningGolem::deserialize(ValueMap* initProperties)
 {

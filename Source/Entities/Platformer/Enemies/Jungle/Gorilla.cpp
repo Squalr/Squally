@@ -1,6 +1,6 @@
 #include "Gorilla.h"
 
-const std::string Gorilla::KeyEnemyGorilla = "gorilla";
+const std::string Gorilla::MapKeyEnemyGorilla = "gorilla";
 
 Gorilla* Gorilla::deserialize(ValueMap* initProperties)
 {

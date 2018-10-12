@@ -1,6 +1,6 @@
 #include "Genie.h"
 
-const std::string Genie::KeyEnemyGenie = "genie";
+const std::string Genie::MapKeyEnemyGenie = "genie";
 
 Genie* Genie::deserialize(ValueMap* initProperties)
 {

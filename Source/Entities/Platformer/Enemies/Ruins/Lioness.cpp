@@ -1,6 +1,6 @@
 #include "Lioness.h"
 
-const std::string Lioness::KeyEnemyLioness = "lioness";
+const std::string Lioness::MapKeyEnemyLioness = "lioness";
 
 Lioness* Lioness::deserialize(ValueMap* initProperties)
 {

@@ -11,7 +11,7 @@ class Raven : public NpcBase
 public:
 	static Raven * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyRaven;
+	static const std::string MapKeyNpcRaven;
 
 private:
 	Raven(ValueMap* initProperties);

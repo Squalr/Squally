@@ -11,7 +11,7 @@ class Cypress : public NpcBase
 public:
 	static Cypress * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyCypress;
+	static const std::string MapKeyNpcCypress;
 
 private:
 	Cypress(ValueMap* initProperties);

@@ -11,7 +11,7 @@ class MummyPriest : public PlatformerEnemy
 public:
 	static MummyPriest * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyMummyPriest;
+	static const std::string MapKeyEnemyMummyPriest;
 
 private:
 	MummyPriest(ValueMap* initProperties);

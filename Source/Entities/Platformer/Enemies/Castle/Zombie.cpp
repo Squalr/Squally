@@ -1,6 +1,6 @@
 #include "Zombie.h"
 
-const std::string Zombie::KeyEnemyZombie = "zombie";
+const std::string Zombie::MapKeyEnemyZombie = "zombie";
 
 Zombie* Zombie::deserialize(ValueMap* initProperties)
 {
