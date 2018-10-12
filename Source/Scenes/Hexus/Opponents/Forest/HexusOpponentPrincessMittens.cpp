@@ -1,25 +1,25 @@
-#include "HexusOpponentForestPrincess.h"
+#include "HexusOpponentPrincessMittens.h"
 
-const std::string HexusOpponentForestPrincess::StringKeyOpponentName = "Squally_Npc_Names_Forest_Princess";
-HexusOpponentForestPrincess* HexusOpponentForestPrincess::instance = nullptr;
+const std::string HexusOpponentPrincessMittens::StringKeyOpponentName = "Squally_Npc_Names_Princess_Mittens";
+HexusOpponentPrincessMittens* HexusOpponentPrincessMittens::instance = nullptr;
 
-HexusOpponentForestPrincess* HexusOpponentForestPrincess::getInstance()
+HexusOpponentPrincessMittens* HexusOpponentPrincessMittens::getInstance()
 {
-	if (HexusOpponentForestPrincess::instance == nullptr)
+	if (HexusOpponentPrincessMittens::instance == nullptr)
 	{
-		HexusOpponentForestPrincess::instance = new HexusOpponentForestPrincess();
+		HexusOpponentPrincessMittens::instance = new HexusOpponentPrincessMittens();
 	}
 
-	return HexusOpponentForestPrincess::instance;
+	return HexusOpponentPrincessMittens::instance;
 }
 
-HexusOpponentForestPrincess::HexusOpponentForestPrincess() : HexusOpponentData(
+HexusOpponentPrincessMittens::HexusOpponentPrincessMittens() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Forest_Npcs_Princess_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentForestPrincess::StringKeyOpponentName,
+	HexusOpponentPrincessMittens::StringKeyOpponentName,
 	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
@@ -56,6 +56,6 @@ HexusOpponentForestPrincess::HexusOpponentForestPrincess() : HexusOpponentData(
 {
 }
 
-HexusOpponentForestPrincess::~HexusOpponentForestPrincess()
+HexusOpponentPrincessMittens::~HexusOpponentPrincessMittens()
 {
 }

@@ -1,25 +1,25 @@
-#include "HexusOpponentForestOrcWarrior.h"
+#include "HexusOpponentOrcWarrior.h"
 
-const std::string HexusOpponentForestOrcWarrior::StringKeyOpponentName = "Squally_Npc_Names_Forest_Orc_Warrior";
-HexusOpponentForestOrcWarrior* HexusOpponentForestOrcWarrior::instance = nullptr;
+const std::string HexusOpponentOrcWarrior::StringKeyOpponentName = "Squally_Npc_Names_Forest_Orc_Warrior";
+HexusOpponentOrcWarrior* HexusOpponentOrcWarrior::instance = nullptr;
 
-HexusOpponentForestOrcWarrior* HexusOpponentForestOrcWarrior::getInstance()
+HexusOpponentOrcWarrior* HexusOpponentOrcWarrior::getInstance()
 {
-	if (HexusOpponentForestOrcWarrior::instance == nullptr)
+	if (HexusOpponentOrcWarrior::instance == nullptr)
 	{
-		HexusOpponentForestOrcWarrior::instance = new HexusOpponentForestOrcWarrior();
+		HexusOpponentOrcWarrior::instance = new HexusOpponentOrcWarrior();
 	}
 
-	return HexusOpponentForestOrcWarrior::instance;
+	return HexusOpponentOrcWarrior::instance;
 }
 
-HexusOpponentForestOrcWarrior::HexusOpponentForestOrcWarrior() : HexusOpponentData(
+HexusOpponentOrcWarrior::HexusOpponentOrcWarrior() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Forest_Enemies_OrcWarrior_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentForestOrcWarrior::StringKeyOpponentName,
+	HexusOpponentOrcWarrior::StringKeyOpponentName,
 	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
@@ -56,6 +56,6 @@ HexusOpponentForestOrcWarrior::HexusOpponentForestOrcWarrior() : HexusOpponentDa
 {
 }
 
-HexusOpponentForestOrcWarrior::~HexusOpponentForestOrcWarrior()
+HexusOpponentOrcWarrior::~HexusOpponentOrcWarrior()
 {
 }

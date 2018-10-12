@@ -1,25 +1,25 @@
-#include "HexusOpponentForestWerewolf.h"
+#include "HexusOpponentOrcSwordsman.h"
 
-const std::string HexusOpponentForestWerewolf::StringKeyOpponentName = "Squally_Npc_Names_Forest_Werewolf";
-HexusOpponentForestWerewolf* HexusOpponentForestWerewolf::instance = nullptr;
+const std::string HexusOpponentOrcSwordsman::StringKeyOpponentName = "Squally_Npc_Names_Forest_Orc_Swordsman";
+HexusOpponentOrcSwordsman* HexusOpponentOrcSwordsman::instance = nullptr;
 
-HexusOpponentForestWerewolf* HexusOpponentForestWerewolf::getInstance()
+HexusOpponentOrcSwordsman* HexusOpponentOrcSwordsman::getInstance()
 {
-	if (HexusOpponentForestWerewolf::instance == nullptr)
+	if (HexusOpponentOrcSwordsman::instance == nullptr)
 	{
-		HexusOpponentForestWerewolf::instance = new HexusOpponentForestWerewolf();
+		HexusOpponentOrcSwordsman::instance = new HexusOpponentOrcSwordsman();
 	}
 
-	return HexusOpponentForestWerewolf::instance;
+	return HexusOpponentOrcSwordsman::instance;
 }
 
-HexusOpponentForestWerewolf::HexusOpponentForestWerewolf() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Forest_Npcs_Werewolf_Animations,
+HexusOpponentOrcSwordsman::HexusOpponentOrcSwordsman() : HexusOpponentData(
+	Resources::Entities_Platformer_Environment_Forest_Enemies_OrcSwordsman_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentForestWerewolf::StringKeyOpponentName,
+	HexusOpponentOrcSwordsman::StringKeyOpponentName,
 	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
@@ -56,6 +56,6 @@ HexusOpponentForestWerewolf::HexusOpponentForestWerewolf() : HexusOpponentData(
 {
 }
 
-HexusOpponentForestWerewolf::~HexusOpponentForestWerewolf()
+HexusOpponentOrcSwordsman::~HexusOpponentOrcSwordsman()
 {
 }

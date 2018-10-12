@@ -6,15 +6,15 @@
 
 using namespace cocos2d;
 
-class HexusOpponentForestEnt : public HexusOpponentData
+class HexusOpponentEnt : public HexusOpponentData
 {
 public:
-	static HexusOpponentForestEnt* getInstance();
+	static HexusOpponentEnt* getInstance();
 
 private:
-	HexusOpponentForestEnt();
-	~HexusOpponentForestEnt();
+	HexusOpponentEnt();
+	~HexusOpponentEnt();
 
 	static const std::string StringKeyOpponentName;
-	static HexusOpponentForestEnt* instance;
+	static HexusOpponentEnt* instance;
 };

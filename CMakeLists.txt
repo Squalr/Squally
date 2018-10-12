@@ -528,9 +528,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentSkeletalNecromancer.cpp
 	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentSkeletalWarrior.cpp
 	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentAppolo.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentArcher.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentAssassin.cpp
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentBandit.cpp
 	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentCentaur.cpp
 	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentChiron.cpp
 	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentCooper.cpp
@@ -552,21 +549,28 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentThug.cpp
 	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentToben.cpp
 	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentTroll.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleBarbarian.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleDwarf.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleFighter.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGeezer.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinGruntBoar.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinShaman.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinWarriorPig.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleHades.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleMinotaur.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePigDemon.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePirate.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePrincess.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleRhinoman.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentBarbarian.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentBlackbeard.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentBodom.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentDrak.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentElriel.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentGoblinGruntBoar.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentGoblinShaman.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentGoblinWarriorPig.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentGorilla.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentGramps.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentHades.cpp
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleThor.cpp
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleTikiGolem.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentMinos.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentMinotaur.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentPrincessMatu.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentRaka.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentReanimatedPig.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentRhinoman.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentSkeletalPirate.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentThor.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentTikiGolem.cpp
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentViking.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAnubisTiny.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAnubisWarrior.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAphrodite.cpp
@@ -1173,9 +1177,6 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentSkeletalNecromancer.h
 	Source/Scenes/Hexus/Opponents/Caverns/HexusOpponentSkeletalWarrior.h
 	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentAppolo.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentArcher.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentAssassin.h
-	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentBandit.h
 	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentCentaur.h
 	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentChiron.h
 	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentCooper.h
@@ -1197,21 +1198,28 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentThug.h
 	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentToben.h
 	Source/Scenes/Hexus/Opponents/Forest/HexusOpponentTroll.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleBarbarian.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleDwarf.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleFighter.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGeezer.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinGruntBoar.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinShaman.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleGoblinWarriorPig.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleHades.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleMinotaur.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePigDemon.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePirate.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJunglePrincess.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleRhinoman.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentBarbarian.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentBlackbeard.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentBodom.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentDrak.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentElriel.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentGoblinGruntBoar.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentGoblinShaman.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentGoblinWarriorPig.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentGorilla.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentGramps.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentHades.h
 	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleThor.h
-	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentJungleTikiGolem.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentMinos.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentMinotaur.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentPrincessMatu.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentRaka.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentReanimatedPig.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentRhinoman.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentSkeletalPirate.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentThor.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentTikiGolem.h
+	Source/Scenes/Hexus/Opponents/Jungle/HexusOpponentViking.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAnubisTiny.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAnubisWarrior.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentRuinsAphrodite.h

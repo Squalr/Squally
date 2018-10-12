@@ -1,25 +1,25 @@
-#include "HexusOpponentForestOrcGrunt.h"
+#include "HexusOpponentOrcGrunt.h"
 
-const std::string HexusOpponentForestOrcGrunt::StringKeyOpponentName = "Squally_Npc_Names_Forest_Orc_Grunt";
-HexusOpponentForestOrcGrunt* HexusOpponentForestOrcGrunt::instance = nullptr;
+const std::string HexusOpponentOrcGrunt::StringKeyOpponentName = "Squally_Npc_Names_Orc_Grunt";
+HexusOpponentOrcGrunt* HexusOpponentOrcGrunt::instance = nullptr;
 
-HexusOpponentForestOrcGrunt* HexusOpponentForestOrcGrunt::getInstance()
+HexusOpponentOrcGrunt* HexusOpponentOrcGrunt::getInstance()
 {
-	if (HexusOpponentForestOrcGrunt::instance == nullptr)
+	if (HexusOpponentOrcGrunt::instance == nullptr)
 	{
-		HexusOpponentForestOrcGrunt::instance = new HexusOpponentForestOrcGrunt();
+		HexusOpponentOrcGrunt::instance = new HexusOpponentOrcGrunt();
 	}
 
-	return HexusOpponentForestOrcGrunt::instance;
+	return HexusOpponentOrcGrunt::instance;
 }
 
-HexusOpponentForestOrcGrunt::HexusOpponentForestOrcGrunt() : HexusOpponentData(
+HexusOpponentOrcGrunt::HexusOpponentOrcGrunt() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Forest_Enemies_OrcGrunt_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentForestOrcGrunt::StringKeyOpponentName,
+	HexusOpponentOrcGrunt::StringKeyOpponentName,
 	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
@@ -56,6 +56,6 @@ HexusOpponentForestOrcGrunt::HexusOpponentForestOrcGrunt() : HexusOpponentData(
 {
 }
 
-HexusOpponentForestOrcGrunt::~HexusOpponentForestOrcGrunt()
+HexusOpponentOrcGrunt::~HexusOpponentOrcGrunt()
 {
 }

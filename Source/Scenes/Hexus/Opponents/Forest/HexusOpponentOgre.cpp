@@ -1,25 +1,25 @@
-#include "HexusOpponentForestTroll.h"
+#include "HexusOpponentOgre.h"
 
-const std::string HexusOpponentForestTroll::StringKeyOpponentName = "Squally_Npc_Names_Forest_Troll";
-HexusOpponentForestTroll* HexusOpponentForestTroll::instance = nullptr;
+const std::string HexusOpponentOgre::StringKeyOpponentName = "Squally_Npc_Names_Ogre";
+HexusOpponentOgre* HexusOpponentOgre::instance = nullptr;
 
-HexusOpponentForestTroll* HexusOpponentForestTroll::getInstance()
+HexusOpponentOgre* HexusOpponentOgre::getInstance()
 {
-	if (HexusOpponentForestTroll::instance == nullptr)
+	if (HexusOpponentOgre::instance == nullptr)
 	{
-		HexusOpponentForestTroll::instance = new HexusOpponentForestTroll();
+		HexusOpponentOgre::instance = new HexusOpponentOgre();
 	}
 
-	return HexusOpponentForestTroll::instance;
+	return HexusOpponentOgre::instance;
 }
 
-HexusOpponentForestTroll::HexusOpponentForestTroll() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Forest_Enemies_Troll_Animations,
+HexusOpponentOgre::HexusOpponentOgre() : HexusOpponentData(
+	Resources::Entities_Platformer_Environment_Forest_Enemies_Ogre_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentForestTroll::StringKeyOpponentName,
+	HexusOpponentOgre::StringKeyOpponentName,
 	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
@@ -56,6 +56,6 @@ HexusOpponentForestTroll::HexusOpponentForestTroll() : HexusOpponentData(
 {
 }
 
-HexusOpponentForestTroll::~HexusOpponentForestTroll()
+HexusOpponentOgre::~HexusOpponentOgre()
 {
 }

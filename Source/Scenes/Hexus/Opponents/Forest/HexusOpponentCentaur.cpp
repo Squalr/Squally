@@ -1,25 +1,25 @@
-#include "HexusOpponentForestCentaur.h"
+#include "HexusOpponentCentaur.h"
 
-const std::string HexusOpponentForestCentaur::StringKeyOpponentName = "Squally_Npc_Names_Forest_Centaur";
-HexusOpponentForestCentaur* HexusOpponentForestCentaur::instance = nullptr;
+const std::string HexusOpponentCentaur::StringKeyOpponentName = "Squally_Npc_Names_Centaur";
+HexusOpponentCentaur* HexusOpponentCentaur::instance = nullptr;
 
-HexusOpponentForestCentaur* HexusOpponentForestCentaur::getInstance()
+HexusOpponentCentaur* HexusOpponentCentaur::getInstance()
 {
-	if (HexusOpponentForestCentaur::instance == nullptr)
+	if (HexusOpponentCentaur::instance == nullptr)
 	{
-		HexusOpponentForestCentaur::instance = new HexusOpponentForestCentaur();
+		HexusOpponentCentaur::instance = new HexusOpponentCentaur();
 	}
 
-	return HexusOpponentForestCentaur::instance;
+	return HexusOpponentCentaur::instance;
 }
 
-HexusOpponentForestCentaur::HexusOpponentForestCentaur() : HexusOpponentData(
+HexusOpponentCentaur::HexusOpponentCentaur() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Forest_Enemies_Centaur_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(0.0f, -96.0f),
 	Vec2(0.0f, 0.0f),
-	HexusOpponentForestCentaur::StringKeyOpponentName,
+	HexusOpponentCentaur::StringKeyOpponentName,
 	GameState::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{
@@ -96,6 +96,6 @@ HexusOpponentForestCentaur::HexusOpponentForestCentaur() : HexusOpponentData(
 {
 }
 
-HexusOpponentForestCentaur::~HexusOpponentForestCentaur()
+HexusOpponentCentaur::~HexusOpponentCentaur()
 {
 }

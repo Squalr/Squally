@@ -1,25 +1,25 @@
-#include "HexusOpponentForestHighwayman.h"
+#include "HexusOpponentToben.h"
 
-const std::string HexusOpponentForestHighwayman::StringKeyOpponentName = "Squally_Npc_Names_Forest_Highwayman";
-HexusOpponentForestHighwayman* HexusOpponentForestHighwayman::instance = nullptr;
+const std::string HexusOpponentToben::StringKeyOpponentName = "Squally_Npc_Names_Toben";
+HexusOpponentToben* HexusOpponentToben::instance = nullptr;
 
-HexusOpponentForestHighwayman* HexusOpponentForestHighwayman::getInstance()
+HexusOpponentToben* HexusOpponentToben::getInstance()
 {
-	if (HexusOpponentForestHighwayman::instance == nullptr)
+	if (HexusOpponentToben::instance == nullptr)
 	{
-		HexusOpponentForestHighwayman::instance = new HexusOpponentForestHighwayman();
+		HexusOpponentToben::instance = new HexusOpponentToben();
 	}
 
-	return HexusOpponentForestHighwayman::instance;
+	return HexusOpponentToben::instance;
 }
 
-HexusOpponentForestHighwayman::HexusOpponentForestHighwayman() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Forest_Npcs_Highwayman_Animations,
+HexusOpponentToben::HexusOpponentToben() : HexusOpponentData(
+	Resources::Entities_Platformer_Environment_Forest_Npcs_Toben_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentForestHighwayman::StringKeyOpponentName,
+	HexusOpponentToben::StringKeyOpponentName,
 	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
@@ -56,6 +56,6 @@ HexusOpponentForestHighwayman::HexusOpponentForestHighwayman() : HexusOpponentDa
 {
 }
 
-HexusOpponentForestHighwayman::~HexusOpponentForestHighwayman()
+HexusOpponentToben::~HexusOpponentToben()
 {
 }

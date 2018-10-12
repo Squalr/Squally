@@ -1,25 +1,25 @@
-#include "HexusOpponentForestThief.h"
+#include "HexusOpponentThug.h"
 
-const std::string HexusOpponentForestThief::StringKeyOpponentName = "Squally_Npc_Names_Forest_Thief";
-HexusOpponentForestThief* HexusOpponentForestThief::instance = nullptr;
+const std::string HexusOpponentThug::StringKeyOpponentName = "Squally_Npc_Names_Thug";
+HexusOpponentThug* HexusOpponentThug::instance = nullptr;
 
-HexusOpponentForestThief* HexusOpponentForestThief::getInstance()
+HexusOpponentThug* HexusOpponentThug::getInstance()
 {
-	if (HexusOpponentForestThief::instance == nullptr)
+	if (HexusOpponentThug::instance == nullptr)
 	{
-		HexusOpponentForestThief::instance = new HexusOpponentForestThief();
+		HexusOpponentThug::instance = new HexusOpponentThug();
 	}
 
-	return HexusOpponentForestThief::instance;
+	return HexusOpponentThug::instance;
 }
 
-HexusOpponentForestThief::HexusOpponentForestThief() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Forest_Npcs_Thief_Animations,
+HexusOpponentThug::HexusOpponentThug() : HexusOpponentData(
+	Resources::Entities_Platformer_Environment_Forest_Enemies_Thug_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentForestThief::StringKeyOpponentName,
+	HexusOpponentThug::StringKeyOpponentName,
 	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
@@ -56,6 +56,6 @@ HexusOpponentForestThief::HexusOpponentForestThief() : HexusOpponentData(
 {
 }
 
-HexusOpponentForestThief::~HexusOpponentForestThief()
+HexusOpponentThug::~HexusOpponentThug()
 {
 }

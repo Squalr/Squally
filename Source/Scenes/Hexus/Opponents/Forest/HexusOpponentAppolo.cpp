@@ -1,25 +1,25 @@
-#include "HexusOpponentForestAppolo.h"
+#include "HexusOpponentAppolo.h"
 
-const std::string HexusOpponentForestAppolo::StringKeyOpponentName = "Squally_Npc_Names_Forest_Appolo";
-HexusOpponentForestAppolo* HexusOpponentForestAppolo::instance = nullptr;
+const std::string HexusOpponentAppolo::StringKeyOpponentName = "Squally_Npc_Names_Appolo";
+HexusOpponentAppolo* HexusOpponentAppolo::instance = nullptr;
 
-HexusOpponentForestAppolo* HexusOpponentForestAppolo::getInstance()
+HexusOpponentAppolo* HexusOpponentAppolo::getInstance()
 {
-	if (HexusOpponentForestAppolo::instance == nullptr)
+	if (HexusOpponentAppolo::instance == nullptr)
 	{
-		HexusOpponentForestAppolo::instance = new HexusOpponentForestAppolo();
+		HexusOpponentAppolo::instance = new HexusOpponentAppolo();
 	}
 
-	return HexusOpponentForestAppolo::instance;
+	return HexusOpponentAppolo::instance;
 }
 
-HexusOpponentForestAppolo::HexusOpponentForestAppolo() : HexusOpponentData(
+HexusOpponentAppolo::HexusOpponentAppolo() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Forest_Npcs_Appolo_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentForestAppolo::StringKeyOpponentName,
+	HexusOpponentAppolo::StringKeyOpponentName,
 	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
@@ -56,6 +56,6 @@ HexusOpponentForestAppolo::HexusOpponentForestAppolo() : HexusOpponentData(
 {
 }
 
-HexusOpponentForestAppolo::~HexusOpponentForestAppolo()
+HexusOpponentAppolo::~HexusOpponentAppolo()
 {
 }
