@@ -1,25 +1,25 @@
-#include "HexusOpponentForestDragonOrcKing.h"
+#include "HexusOpponentKingGrogg.h"
 
-const std::string HexusOpponentForestDragonOrcKing::StringKeyOpponentName = "Squally_Npc_Names_Forest_Dragon_Orc_King";
-HexusOpponentForestDragonOrcKing* HexusOpponentForestDragonOrcKing::instance = nullptr;
+const std::string HexusOpponentKingGrogg::StringKeyOpponentName = "Squally_Npc_Names_King_Grogg";
+HexusOpponentKingGrogg* HexusOpponentKingGrogg::instance = nullptr;
 
-HexusOpponentForestDragonOrcKing* HexusOpponentForestDragonOrcKing::getInstance()
+HexusOpponentKingGrogg* HexusOpponentKingGrogg::getInstance()
 {
-	if (HexusOpponentForestDragonOrcKing::instance == nullptr)
+	if (HexusOpponentKingGrogg::instance == nullptr)
 	{
-		HexusOpponentForestDragonOrcKing::instance = new HexusOpponentForestDragonOrcKing();
+		HexusOpponentKingGrogg::instance = new HexusOpponentKingGrogg();
 	}
 
-	return HexusOpponentForestDragonOrcKing::instance;
+	return HexusOpponentKingGrogg::instance;
 }
 
-HexusOpponentForestDragonOrcKing::HexusOpponentForestDragonOrcKing() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Forest_Enemies_BossDragonOrcKing_Animations,
+HexusOpponentKingGrogg::HexusOpponentKingGrogg() : HexusOpponentData(
+	Resources::Entities_Platformer_Environment_Forest_Enemies_KingGrogg_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentForestDragonOrcKing::StringKeyOpponentName,
+	HexusOpponentKingGrogg::StringKeyOpponentName,
 	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
@@ -56,6 +56,6 @@ HexusOpponentForestDragonOrcKing::HexusOpponentForestDragonOrcKing() : HexusOppo
 {
 }
 
-HexusOpponentForestDragonOrcKing::~HexusOpponentForestDragonOrcKing()
+HexusOpponentKingGrogg::~HexusOpponentKingGrogg()
 {
 }

@@ -6,15 +6,15 @@
 
 using namespace cocos2d;
 
-class HexusOpponentEarthGolem : public HexusOpponentData
+class HexusOpponentFinch : public HexusOpponentData
 {
 public:
-	static HexusOpponentEarthGolem* getInstance();
+	static HexusOpponentFinch* getInstance();
 
 private:
-	HexusOpponentEarthGolem();
-	~HexusOpponentEarthGolem();
+	HexusOpponentFinch();
+	~HexusOpponentFinch();
 
 	static const std::string StringKeyOpponentName;
-	static HexusOpponentEarthGolem* instance;
+	static HexusOpponentFinch* instance;
 };

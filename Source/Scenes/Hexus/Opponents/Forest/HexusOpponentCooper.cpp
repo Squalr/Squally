@@ -1,25 +1,25 @@
-#include "HexusOpponentForestChiron.h"
+#include "HexusOpponentCooper.h"
 
-const std::string HexusOpponentForestChiron::StringKeyOpponentName = "Squally_Npc_Names_Forest_Chiron";
-HexusOpponentForestChiron* HexusOpponentForestChiron::instance = nullptr;
+const std::string HexusOpponentCooper::StringKeyOpponentName = "Squally_Npc_Names_Cooper";
+HexusOpponentCooper* HexusOpponentCooper::instance = nullptr;
 
-HexusOpponentForestChiron* HexusOpponentForestChiron::getInstance()
+HexusOpponentCooper* HexusOpponentCooper::getInstance()
 {
-	if (HexusOpponentForestChiron::instance == nullptr)
+	if (HexusOpponentCooper::instance == nullptr)
 	{
-		HexusOpponentForestChiron::instance = new HexusOpponentForestChiron();
+		HexusOpponentCooper::instance = new HexusOpponentCooper();
 	}
 
-	return HexusOpponentForestChiron::instance;
+	return HexusOpponentCooper::instance;
 }
 
-HexusOpponentForestChiron::HexusOpponentForestChiron() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Forest_Npcs_Centaur_Animations,
+HexusOpponentCooper::HexusOpponentCooper() : HexusOpponentData(
+	Resources::Entities_Platformer_Environment_Forest_Npcs_Cooper_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentForestChiron::StringKeyOpponentName,
+	HexusOpponentCooper::StringKeyOpponentName,
 	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
@@ -56,6 +56,6 @@ HexusOpponentForestChiron::HexusOpponentForestChiron() : HexusOpponentData(
 {
 }
 
-HexusOpponentForestChiron::~HexusOpponentForestChiron()
+HexusOpponentCooper::~HexusOpponentCooper()
 {
 }

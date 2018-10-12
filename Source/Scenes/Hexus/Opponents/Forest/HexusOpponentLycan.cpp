@@ -1,25 +1,25 @@
-#include "HexusOpponentForestEnt.h"
+#include "HexusOpponentLycan.h"
 
-const std::string HexusOpponentForestEnt::StringKeyOpponentName = "Squally_Npc_Names_Forest_Ent";
-HexusOpponentForestEnt* HexusOpponentForestEnt::instance = nullptr;
+const std::string HexusOpponentLycan::StringKeyOpponentName = "Squally_Npc_Names_Lycan";
+HexusOpponentLycan* HexusOpponentLycan::instance = nullptr;
 
-HexusOpponentForestEnt* HexusOpponentForestEnt::getInstance()
+HexusOpponentLycan* HexusOpponentLycan::getInstance()
 {
-	if (HexusOpponentForestEnt::instance == nullptr)
+	if (HexusOpponentLycan::instance == nullptr)
 	{
-		HexusOpponentForestEnt::instance = new HexusOpponentForestEnt();
+		HexusOpponentLycan::instance = new HexusOpponentLycan();
 	}
 
-	return HexusOpponentForestEnt::instance;
+	return HexusOpponentLycan::instance;
 }
 
-HexusOpponentForestEnt::HexusOpponentForestEnt() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Forest_Enemies_Ent_Animations,
+HexusOpponentLycan::HexusOpponentLycan() : HexusOpponentData(
+	Resources::Entities_Platformer_Environment_Forest_Npcs_Lycan_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	0.3f,
 	Vec2(24.0f, -128.0f),
 	Vec2(24.0f, -128.0f),
-	HexusOpponentForestEnt::StringKeyOpponentName,
+	HexusOpponentLycan::StringKeyOpponentName,
 	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
@@ -56,6 +56,6 @@ HexusOpponentForestEnt::HexusOpponentForestEnt() : HexusOpponentData(
 {
 }
 
-HexusOpponentForestEnt::~HexusOpponentForestEnt()
+HexusOpponentLycan::~HexusOpponentLycan()
 {
 }

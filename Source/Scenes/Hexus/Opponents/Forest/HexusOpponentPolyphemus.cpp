@@ -1,25 +1,25 @@
-#include "HexusOpponentForestPolyphemus.h"
+#include "HexusOpponentPolyphemus.h"
 
-const std::string HexusOpponentForestPolyphemus::StringKeyOpponentName = "Squally_Npc_Names_Forest_Polyphemus";
-HexusOpponentForestPolyphemus* HexusOpponentForestPolyphemus::instance = nullptr;
+const std::string HexusOpponentPolyphemus::StringKeyOpponentName = "Squally_Npc_Names_Polyphemus";
+HexusOpponentPolyphemus* HexusOpponentPolyphemus::instance = nullptr;
 
-HexusOpponentForestPolyphemus* HexusOpponentForestPolyphemus::getInstance()
+HexusOpponentPolyphemus* HexusOpponentPolyphemus::getInstance()
 {
-	if (HexusOpponentForestPolyphemus::instance == nullptr)
+	if (HexusOpponentPolyphemus::instance == nullptr)
 	{
-		HexusOpponentForestPolyphemus::instance = new HexusOpponentForestPolyphemus();
+		HexusOpponentPolyphemus::instance = new HexusOpponentPolyphemus();
 	}
 
-	return HexusOpponentForestPolyphemus::instance;
+	return HexusOpponentPolyphemus::instance;
 }
 
-HexusOpponentForestPolyphemus::HexusOpponentForestPolyphemus() : HexusOpponentData(
+HexusOpponentPolyphemus::HexusOpponentPolyphemus() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Forest_Npcs_Polyphemus_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentForestPolyphemus::StringKeyOpponentName,
+	HexusOpponentPolyphemus::StringKeyOpponentName,
 	GameState::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
@@ -56,6 +56,6 @@ HexusOpponentForestPolyphemus::HexusOpponentForestPolyphemus() : HexusOpponentDa
 {
 }
 
-HexusOpponentForestPolyphemus::~HexusOpponentForestPolyphemus()
+HexusOpponentPolyphemus::~HexusOpponentPolyphemus()
 {
 }
