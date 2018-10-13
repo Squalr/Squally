@@ -11,13 +11,12 @@
         <file id="7" name="BELT.png" width="88" height="19" pivot_x="0" pivot_y="1"/>
         <file id="8" name="HEAD.png" width="118" height="152" pivot_x="0" pivot_y="1"/>
         <file id="9" name="COVER.png" width="81" height="24" pivot_x="0" pivot_y="1"/>
-        <file id="10" name="SATYR.jpg" width="725" height="484" pivot_x="0" pivot_y="1"/>
-        <file id="11" name="BAG-BELT.png" width="27" height="24" pivot_x="0" pivot_y="1"/>
-        <file id="12" name="SLING-4.png" width="40" height="71" pivot_x="0" pivot_y="1"/>
-        <file id="13" name="STONE-(SLING).png" width="17" height="14" pivot_x="0" pivot_y="1"/>
-        <file id="14" name="SLING-1.png" width="20" height="22" pivot_x="0" pivot_y="1"/>
+        <file id="10" name="BAG-BELT.png" width="27" height="24" pivot_x="0" pivot_y="1"/>
+        <file id="11" name="SLING-4.png" width="40" height="71" pivot_x="0" pivot_y="1"/>
+        <file id="12" name="STONE-(SLING).png" width="17" height="14" pivot_x="0" pivot_y="1"/>
+        <file id="13" name="SLING-1.png" width="20" height="22" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Enitty">
+    <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="1000" interval="100">
             <mainline>
                 <key id="0">
@@ -39,12 +38,12 @@
             </mainline>
             <timeline id="0" name="R-ARM">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="7.713001" y="-13.440603" angle="30.714574" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="4" x="7.713001" y="-13.440603" angle="30.714574"/>
                 </key>
             </timeline>
             <timeline id="1" name="R-HAND">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="43.694555" y="-62.426839" angle="30.714574" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="3" x="43.694555" y="-62.426839" angle="30.714574"/>
                 </key>
             </timeline>
             <timeline id="2" name="R-LEG">
@@ -89,22 +88,22 @@
             </timeline>
             <timeline id="10" name="BAG-BELT">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="-43.303571" y="-41.517857"/>
+                    <object folder="0" file="10" x="-43.303571" y="-41.517857" angle="0"/>
                 </key>
             </timeline>
             <timeline id="11" name="SLING-4">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="92.857143" y="-19.642857" angle="304.605676" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="11" x="92.857143" y="-19.642857" angle="304.605676"/>
                 </key>
             </timeline>
             <timeline id="12" name="STONE-(SLING)">
                 <key id="0" spin="0">
-                    <object folder="0" file="13" x="-43.303571" y="-70.982143"/>
+                    <object folder="0" file="12" x="-43.303571" y="-70.982143" angle="0"/>
                 </key>
             </timeline>
             <timeline id="13" name="SLING-1">
                 <key id="0" spin="0">
-                    <object folder="0" file="14" x="87.053571" y="-32.589286"/>
+                    <object folder="0" file="13" x="87.053571" y="-32.589286" angle="0"/>
                 </key>
             </timeline>
         </animation>

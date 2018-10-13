@@ -10,12 +10,11 @@
         <file id="6" name="BODY.png" width="85" height="59" pivot_x="0" pivot_y="1"/>
         <file id="7" name="BELT.png" width="85" height="23" pivot_x="0" pivot_y="1"/>
         <file id="8" name="COVER.png" width="80" height="29" pivot_x="0" pivot_y="1"/>
-        <file id="9" name="MINOTAUR.jpg" width="725" height="484" pivot_x="0" pivot_y="1"/>
-        <file id="10" name="TAIL.png" width="39" height="44" pivot_x="0" pivot_y="1"/>
-        <file id="11" name="HEAD.png" width="119" height="153" pivot_x="0" pivot_y="1"/>
-        <file id="12" name="AXE.png" width="78" height="127" pivot_x="0" pivot_y="1"/>
+        <file id="9" name="TAIL.png" width="39" height="44" pivot_x="0" pivot_y="1"/>
+        <file id="10" name="HEAD.png" width="119" height="153" pivot_x="0" pivot_y="1"/>
+        <file id="11" name="AXE.png" width="78" height="127" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Enitty">
+    <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="1000" interval="100">
             <mainline>
                 <key id="0">
@@ -35,12 +34,12 @@
             </mainline>
             <timeline id="0" name="R-ARM">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="11.380639" y="-5.732514" angle="13.724261" scale_x="1"/>
+                    <object folder="0" file="4" x="11.380639" y="-5.732514" angle="13.724261"/>
                 </key>
             </timeline>
             <timeline id="1" name="R-HAND">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="36.350367" y="-61.827556" angle="13.724261" scale_x="1"/>
+                    <object folder="0" file="3" x="36.350367" y="-61.827556" angle="13.724261"/>
                 </key>
             </timeline>
             <timeline id="2" name="R-LEG">
@@ -80,17 +79,17 @@
             </timeline>
             <timeline id="9" name="TAIL">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="-64.412229" y="-46.781898" angle="0"/>
+                    <object folder="0" file="9" x="-64.412229" y="-46.781898" angle="0"/>
                 </key>
             </timeline>
             <timeline id="10" name="HEAD">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="-55.784778" y="122.23771" angle="0"/>
+                    <object folder="0" file="10" x="-55.784778" y="122.23771" angle="0"/>
                 </key>
             </timeline>
             <timeline id="11" name="AXE">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="132.450516" y="-9.526996" angle="284.281096" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="11" x="132.450516" y="-9.526996" angle="284.281096"/>
                 </key>
             </timeline>
         </animation>

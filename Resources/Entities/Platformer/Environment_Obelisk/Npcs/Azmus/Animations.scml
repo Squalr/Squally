@@ -13,10 +13,9 @@
         <file id="9" name="COVER.png" width="81" height="30" pivot_x="0" pivot_y="1"/>
         <file id="10" name="L-WING.png" width="64" height="48" pivot_x="0" pivot_y="1"/>
         <file id="11" name="R-WING.png" width="62" height="54" pivot_x="0" pivot_y="1"/>
-        <file id="12" name="GARGOLYE.jpg" width="725" height="484" pivot_x="0" pivot_y="1"/>
-        <file id="13" name="SWORD.png" width="46" height="166" pivot_x="0" pivot_y="1"/>
+        <file id="12" name="SWORD.png" width="46" height="166" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Enitty">
+    <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="1000" interval="100">
             <mainline>
                 <key id="0">
@@ -97,7 +96,7 @@
             </timeline>
             <timeline id="12" name="SWORD">
                 <key id="0" spin="0">
-                    <object folder="0" file="13" x="170.539419" y="7.883817" angle="291.370622" scale_y="1"/>
+                    <object folder="0" file="12" x="170.539419" y="7.883817" angle="291.370622"/>
                 </key>
             </timeline>
         </animation>

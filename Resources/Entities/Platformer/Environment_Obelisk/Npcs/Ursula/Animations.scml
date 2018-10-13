@@ -11,13 +11,12 @@
         <file id="7" name="BELT.png" width="86" height="21" pivot_x="0" pivot_y="1"/>
         <file id="8" name="TAIL.png" width="33" height="45" pivot_x="0" pivot_y="1"/>
         <file id="9" name="HEAD.png" width="119" height="141" pivot_x="0" pivot_y="1"/>
-        <file id="10" name="SUCCUBUS.jpg" width="725" height="484" pivot_x="0" pivot_y="1"/>
-        <file id="11" name="L-WING.png" width="93" height="72" pivot_x="0" pivot_y="1"/>
-        <file id="12" name="R-WING.png" width="88" height="76" pivot_x="0" pivot_y="1"/>
-        <file id="13" name="SKIRT.png" width="83" height="23" pivot_x="0" pivot_y="1"/>
-        <file id="14" name="STAFF.png" width="36" height="179" pivot_x="0" pivot_y="1"/>
+        <file id="10" name="L-WING.png" width="93" height="72" pivot_x="0" pivot_y="1"/>
+        <file id="11" name="R-WING.png" width="88" height="76" pivot_x="0" pivot_y="1"/>
+        <file id="12" name="SKIRT.png" width="83" height="23" pivot_x="0" pivot_y="1"/>
+        <file id="13" name="STAFF.png" width="36" height="179" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Enitty">
+    <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="1000" interval="100">
             <mainline>
                 <key id="0">
@@ -39,12 +38,12 @@
             </mainline>
             <timeline id="0" name="R-ARM">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="15.806648" y="-29.382615" angle="81.383308" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="4" x="15.806648" y="-29.382615" angle="81.383308"/>
                 </key>
             </timeline>
             <timeline id="1" name="R-HAND">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="77.182526" y="-27.609858" angle="81.383308" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="3" x="77.182526" y="-27.609858" angle="81.383308"/>
                 </key>
             </timeline>
             <timeline id="2" name="R-LEG">
@@ -89,22 +88,22 @@
             </timeline>
             <timeline id="10" name="L-WING">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="-121.455227" y="39.324906" angle="0"/>
+                    <object folder="0" file="10" x="-121.455227" y="39.324906" angle="0"/>
                 </key>
             </timeline>
             <timeline id="11" name="R-WING">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="-89.479919" y="58.789927" angle="0"/>
+                    <object folder="0" file="11" x="-89.479919" y="58.789927" angle="0"/>
                 </key>
             </timeline>
             <timeline id="12" name="SKIRT">
                 <key id="0" spin="0">
-                    <object folder="0" file="13" x="-41.990207" y="-45.448756" angle="0"/>
+                    <object folder="0" file="12" x="-41.990207" y="-45.448756" angle="0"/>
                 </key>
             </timeline>
             <timeline id="13" name="STAFF">
                 <key id="0" spin="0">
-                    <object folder="0" file="14" x="77.727889" y="78.995827" angle="357.69253" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="13" x="77.727889" y="78.995827" angle="357.69253"/>
                 </key>
             </timeline>
         </animation>
