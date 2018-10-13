@@ -16,9 +16,9 @@ HexusOpponentDudly* HexusOpponentDudly::getInstance()
 HexusOpponentDudly::HexusOpponentDudly() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Forest_Npcs_Dudly_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
-	0.3f,
-	Vec2(24.0f, -128.0f),
-	Vec2(24.0f, -128.0f),
+	1.0f,
+	Vec2(-32.0f, -32.0f),
+	Vec2(-32.0f, -32.0f),
 	HexusOpponentDudly::StringKeyOpponentName,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,

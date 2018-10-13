@@ -16,8 +16,8 @@ HexusOpponentFireElemental* HexusOpponentFireElemental::getInstance()
 HexusOpponentFireElemental::HexusOpponentFireElemental() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Enemies_FireElemental_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
-	1.0f,
-	Vec2(-48.0f, -64.0f),
+	0.3f,
+	Vec2(-24.0f, -144.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentFireElemental::StringKeyOpponentName,
 	HexusOpponentData::Difficulty::Stupid,

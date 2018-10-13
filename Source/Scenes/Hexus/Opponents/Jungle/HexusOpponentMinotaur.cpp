@@ -17,7 +17,7 @@ HexusOpponentMinotaur::HexusOpponentMinotaur() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Jungle_Enemies_Minotaur_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
-	Vec2(-48.0f, 0.0f),
+	Vec2(-48.0f, -64.0f),
 	Vec2(-32.0f, 0.0f),
 	HexusOpponentMinotaur::StringKeyOpponentName,
 	HexusOpponentData::Difficulty::Stupid,

@@ -16,8 +16,8 @@ HexusOpponentWaterElemental* HexusOpponentWaterElemental::getInstance()
 HexusOpponentWaterElemental::HexusOpponentWaterElemental() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Snow_Enemies_WaterElemental_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
-	1.0f,
-	Vec2(-48.0f, -64.0f),
+	0.3f,
+	Vec2(-24.0f, -144.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentWaterElemental::StringKeyOpponentName,
 	HexusOpponentData::Difficulty::Stupid,

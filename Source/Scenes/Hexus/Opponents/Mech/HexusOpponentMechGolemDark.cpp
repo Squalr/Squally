@@ -16,8 +16,8 @@ HexusOpponentMechGolemDark* HexusOpponentMechGolemDark::getInstance()
 HexusOpponentMechGolemDark::HexusOpponentMechGolemDark() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Mech_Enemies_MechGolemDark_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
-	1.0f,
-	Vec2(-48.0f, -64.0f),
+	0.5f,
+	Vec2(-48.0f, -144.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentMechGolemDark::StringKeyOpponentName,
 	HexusOpponentData::Difficulty::Stupid,
