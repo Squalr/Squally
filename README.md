@@ -5,15 +5,11 @@ Squally
 Checking out
 ------------
 ```
-git clone git@github.com:zcanann/Squally.git
+git clone --recurse-submodules git@github.com:zcanann/Squally.git
 cd Squally
 
-# checkout submodules (cocos is not recursive because it had other submodules WE DONT want)
-git submodule update --init --recursive external/breakpad
-git submodule update --init cocos2d
-cd cocos2d
-git submodule update --init external
-cd ..
+# to update later
+git submodule update --init --recursive .
 ```
 
 Compiling
