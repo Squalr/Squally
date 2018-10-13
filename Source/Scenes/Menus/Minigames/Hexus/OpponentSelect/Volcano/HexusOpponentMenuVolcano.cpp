@@ -30,9 +30,6 @@ HexusOpponentMenuVolcano::HexusOpponentMenuVolcano() : HexusOpponentMenuBase(Hex
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentLavaGolem::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentLucifer::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentMagnus::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentLavaGolem::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentLucifer::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentMagnus::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentPan::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRagnis::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentScaldor::getInstance(), callback));

@@ -17,7 +17,7 @@ HexusOpponentCypress::HexusOpponentCypress() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Caverns_Npcs_Cypress_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
-	Vec2(-32.0f, -32.0f),
+	Vec2(-32.0f, -64.0f),
 	Vec2(0.0f, 0.0f),
 	HexusOpponentCypress::StringKeyOpponentName,
 	HexusOpponentData::Difficulty::Stupid,

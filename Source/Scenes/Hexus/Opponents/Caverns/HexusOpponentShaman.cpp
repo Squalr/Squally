@@ -14,9 +14,9 @@ HexusOpponentShaman* HexusOpponentShaman::getInstance()
 }
 
 HexusOpponentShaman::HexusOpponentShaman() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Castle_Enemies_Agnes_Animations,
+	Resources::Entities_Platformer_Environment_Caverns_Enemies_Shaman_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
-	1.0f,
+	0.7f,
 	Vec2(-32.0f, -32.0f),
 	Vec2(0.0f, 0.0f),
 	HexusOpponentShaman::StringKeyOpponentName,

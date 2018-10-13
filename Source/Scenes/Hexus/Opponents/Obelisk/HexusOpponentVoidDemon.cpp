@@ -16,8 +16,8 @@ HexusOpponentVoidDemon* HexusOpponentVoidDemon::getInstance()
 HexusOpponentVoidDemon::HexusOpponentVoidDemon() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Obelisk_Enemies_VoidDemon_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
-	1.0f,
-	Vec2(-48.0f, -64.0f),
+	0.7f,
+	Vec2(-48.0f, -24.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentVoidDemon::StringKeyOpponentName,
 	HexusOpponentData::Difficulty::Stupid,

@@ -14,9 +14,9 @@ HexusOpponentKrampus* HexusOpponentKrampus::getInstance()
 }
 
 HexusOpponentKrampus::HexusOpponentKrampus() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Castle_Enemies_Agnes_Animations,
+	Resources::Entities_Platformer_Environment_Caverns_Enemies_Krampus_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
-	1.0f,
+	0.85f,
 	Vec2(-32.0f, -32.0f),
 	Vec2(0.0f, 0.0f),
 	HexusOpponentKrampus::StringKeyOpponentName,

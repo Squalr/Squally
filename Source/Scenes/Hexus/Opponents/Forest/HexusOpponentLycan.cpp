@@ -16,9 +16,9 @@ HexusOpponentLycan* HexusOpponentLycan::getInstance()
 HexusOpponentLycan::HexusOpponentLycan() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Forest_Npcs_Lycan_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
-	0.3f,
-	Vec2(24.0f, -128.0f),
-	Vec2(24.0f, -128.0f),
+	1.0f,
+	Vec2(-24.0f, -64.0f),
+	Vec2(-24.0f, -64.0f),
 	HexusOpponentLycan::StringKeyOpponentName,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,

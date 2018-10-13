@@ -16,7 +16,7 @@ HexusOpponentLeon* HexusOpponentLeon::getInstance()
 HexusOpponentLeon::HexusOpponentLeon() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Mech_Npcs_Leon_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
-	1.0f,
+	0.85f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentLeon::StringKeyOpponentName,

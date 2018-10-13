@@ -16,7 +16,7 @@ HexusOpponentSkeletalPirate* HexusOpponentSkeletalPirate::getInstance()
 HexusOpponentSkeletalPirate::HexusOpponentSkeletalPirate() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Jungle_Enemies_SkeletalPirate_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
-	1.0f,
+	0.85f,
 	Vec2(-48.0f, -80.0f),
 	Vec2(0.0f, 0.0f),
 	HexusOpponentSkeletalPirate::StringKeyOpponentName,

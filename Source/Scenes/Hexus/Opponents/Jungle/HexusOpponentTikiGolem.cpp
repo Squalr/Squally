@@ -17,7 +17,7 @@ HexusOpponentTikiGolem::HexusOpponentTikiGolem() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Jungle_Enemies_TikiGolem_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
-	Vec2(-48.0f, -144.0f),
+	Vec2(-48.0f, -160.0f),
 	Vec2(-16.0f, -112.0f),
 	HexusOpponentTikiGolem::StringKeyOpponentName,
 	HexusOpponentData::Difficulty::Stupid,

@@ -16,8 +16,8 @@ HexusOpponentExecutioner* HexusOpponentExecutioner::getInstance()
 HexusOpponentExecutioner::HexusOpponentExecutioner() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Castle_Enemies_Executioner_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
-	1.0f,
-	Vec2(-32.0f, -32.0f),
+	0.3f,
+	Vec2(-32.0f, -144.0f),
 	Vec2(0.0f, 0.0f),
 	HexusOpponentExecutioner::StringKeyOpponentName,
 	HexusOpponentData::Difficulty::Stupid,

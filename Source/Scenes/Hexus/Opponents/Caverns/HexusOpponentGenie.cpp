@@ -16,8 +16,8 @@ HexusOpponentGenie* HexusOpponentGenie::getInstance()
 HexusOpponentGenie::HexusOpponentGenie() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Caverns_Enemies_Genie_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
-	1.0f,
-	Vec2(-32.0f, -32.0f),
+	0.3f,
+	Vec2(-32.0f, -112.0f),
 	Vec2(0.0f, 0.0f),
 	HexusOpponentGenie::StringKeyOpponentName,
 	HexusOpponentData::Difficulty::Stupid,

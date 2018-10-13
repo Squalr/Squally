@@ -14,10 +14,10 @@ HexusOpponentOlive* HexusOpponentOlive::getInstance()
 }
 
 HexusOpponentOlive::HexusOpponentOlive() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Caverns_Enemies_EarthGolem_Animations,
+	Resources::Entities_Platformer_Environment_Caverns_Npcs_Olive_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
-	Vec2(-32.0f, -32.0f),
+	Vec2(-32.0f, -64.0f),
 	Vec2(0.0f, 0.0f),
 	HexusOpponentOlive::StringKeyOpponentName,
 	HexusOpponentData::Difficulty::Stupid,

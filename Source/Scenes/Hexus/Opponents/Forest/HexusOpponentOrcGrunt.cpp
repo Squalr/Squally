@@ -17,7 +17,7 @@ HexusOpponentOrcGrunt::HexusOpponentOrcGrunt() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Forest_Enemies_OrcGrunt_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
-	Vec2(-48.0f, -64.0f),
+	Vec2(-48.0f, -48.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentOrcGrunt::StringKeyOpponentName,
 	HexusOpponentData::Difficulty::Stupid,
