@@ -34,6 +34,10 @@ void RuinsNpcDeserializer::onDeserializationRequest(ObjectDeserializationRequest
 	{
 		newEntity = Cleopatra::deserialize(&properties);
 	}
+	else if (name == Geryon::MapKeyNpcGeryon)
+	{
+		newEntity = Geryon::deserialize(&properties);
+	}
 	else if (name == Griffin::MapKeyNpcGriffin)
 	{
 		newEntity = Griffin::deserialize(&properties);
@@ -45,10 +49,6 @@ void RuinsNpcDeserializer::onDeserializationRequest(ObjectDeserializationRequest
 	else if (name == Horus::MapKeyNpcHorus)
 	{
 		newEntity = Horus::deserialize(&properties);
-	}
-	else if (name == Manticore::MapKeyNpcManticore)
-	{
-		newEntity = Manticore::deserialize(&properties);
 	}
 	else if (name == Poseidon::MapKeyNpcPoseidon)
 	{
