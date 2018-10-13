@@ -1,6 +1,6 @@
 #include "Undead.h"
 
-const std::string Undead::KeyEnemyUndead = "undead";
+const std::string Undead::MapKeyEnemyUndead = "undead";
 
 Undead* Undead::deserialize(ValueMap* initProperties)
 {

@@ -11,7 +11,7 @@ class Undead : public PlatformerEnemy
 public:
 	static Undead * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyUndead;
+	static const std::string MapKeyEnemyUndead;
 
 private:
 	Undead(ValueMap* initProperties);

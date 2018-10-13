@@ -11,7 +11,7 @@ class ForestGolem : public PlatformerEnemy
 public:
 	static ForestGolem * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyForestGolem;
+	static const std::string MapKeyEnemyForestGolem;
 
 private:
 	ForestGolem(ValueMap* initProperties);

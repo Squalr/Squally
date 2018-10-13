@@ -1,6 +1,6 @@
 #include "Medusa.h"
 
-const std::string Medusa::KeyEnemyMedusa = "medusa";
+const std::string Medusa::MapKeyEnemyMedusa = "medusa";
 
 Medusa* Medusa::deserialize(ValueMap* initProperties)
 {

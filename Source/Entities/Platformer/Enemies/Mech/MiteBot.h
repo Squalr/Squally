@@ -11,7 +11,7 @@ class MiteBot : public PlatformerEnemy
 public:
 	static MiteBot * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyMiteBot;
+	static const std::string MapKeyEnemyMiteBot;
 
 private:
 	MiteBot(ValueMap* initProperties);

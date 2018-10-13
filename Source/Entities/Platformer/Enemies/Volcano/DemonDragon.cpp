@@ -1,6 +1,6 @@
 #include "DemonDragon.h"
 
-const std::string DemonDragon::KeyEnemyDemonDragon = "demon_dragon";
+const std::string DemonDragon::MapKeyEnemyDemonDragon = "demon_dragon";
 
 DemonDragon* DemonDragon::deserialize(ValueMap* initProperties)
 {

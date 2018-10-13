@@ -11,7 +11,7 @@ class Exterminator : public PlatformerEnemy
 public:
 	static Exterminator * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyExterminator;
+	static const std::string MapKeyEnemyExterminator;
 
 private:
 	Exterminator(ValueMap* initProperties);

@@ -1,0 +1,12 @@
+#pragma once
+#include "Entities/Platformer/Npcs/Forest/Appolo.h"
+#include "Entities/Platformer/Npcs/Forest/Chiron.h"
+#include "Entities/Platformer/Npcs/Forest/Cooper.h"
+#include "Entities/Platformer/Npcs/Forest/Dudly.h"
+#include "Entities/Platformer/Npcs/Forest/Lycan.h"
+#include "Entities/Platformer/Npcs/Forest/Polyphemus.h"
+#include "Entities/Platformer/Npcs/Forest/PrincessMittens.h"
+#include "Entities/Platformer/Npcs/Forest/Robin.h"
+#include "Entities/Platformer/Npcs/Forest/Rupert.h"
+#include "Entities/Platformer/Npcs/Forest/Rusty.h"
+#include "Entities/Platformer/Npcs/Forest/Toben.h"

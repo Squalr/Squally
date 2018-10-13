@@ -14,12 +14,13 @@ HexusOpponentTutorialD* HexusOpponentTutorialD::getInstance()
 }
 
 HexusOpponentTutorialD::HexusOpponentTutorialD() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Obelisk_Npcs_Knightess_Animations,
+	Resources::Entities_Platformer_Environment_Obelisk_Npcs_Zana_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentTutorialD::StringKeyOpponentName,
+	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex4),

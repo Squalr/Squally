@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 
 #include "Resources.h"
-#include "Scenes/Hexus/Opponents/HexusOpponents.h"
+#include "Scenes/Hexus/Opponents/Caverns/CavernsHexusOpponents.h"
 #include "Scenes/Menus/Minigames/Hexus/ChapterSelect/Caverns/HexusChapterPreviewCaverns.h"
 #include "Scenes/Menus/Minigames/Hexus/OpponentSelect/HexusOpponentMenuBase.h"
 #include "Scenes/Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"

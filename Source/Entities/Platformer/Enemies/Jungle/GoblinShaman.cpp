@@ -1,6 +1,6 @@
 #include "GoblinShaman.h"
 
-const std::string GoblinShaman::KeyEnemyGoblinShaman = "goblin_shaman";
+const std::string GoblinShaman::MapKeyEnemyGoblinShaman = "goblin_shaman";
 
 GoblinShaman* GoblinShaman::deserialize(ValueMap* initProperties)
 {

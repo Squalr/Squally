@@ -1,0 +1,12 @@
+#pragma once
+#include "Entities/Platformer/Enemies/Obelisk/Abomination.h"
+#include "Entities/Platformer/Enemies/Obelisk/Gargoyle.h"
+#include "Entities/Platformer/Enemies/Obelisk/KingZul.h"
+#include "Entities/Platformer/Enemies/Obelisk/ReanimatedFighter.h"
+#include "Entities/Platformer/Enemies/Obelisk/SkeletalBaron.h"
+#include "Entities/Platformer/Enemies/Obelisk/SkeletalCleaver.h"
+#include "Entities/Platformer/Enemies/Obelisk/SkeletalKnight.h"
+#include "Entities/Platformer/Enemies/Obelisk/SkeletalPriestess.h"
+#include "Entities/Platformer/Enemies/Obelisk/Undead.h"
+#include "Entities/Platformer/Enemies/Obelisk/VoidArcher.h"
+#include "Entities/Platformer/Enemies/Obelisk/VoidDemon.h"

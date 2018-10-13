@@ -15,7 +15,7 @@ GameState* GameState::create()
 GameState::GameState()
 	: stateType(StateType::EmptyState),
 	turn(Turn::Player),
-	difficulty(Difficulty::Stupid),
+	difficulty(HexusOpponentData::Difficulty::Stupid),
 	playerLosses(0),
 	enemyLosses(0),
 	cardReplaceCount(0),

@@ -14,12 +14,13 @@ HexusOpponentTutorialB* HexusOpponentTutorialB::getInstance()
 }
 
 HexusOpponentTutorialB::HexusOpponentTutorialB() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Obelisk_Npcs_Princess_Animations,
+	Resources::Entities_Platformer_Environment_Obelisk_Npcs_PrincessNebea_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(0.0f, -48.0f),
 	HexusOpponentTutorialB::StringKeyOpponentName,
+	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Air,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

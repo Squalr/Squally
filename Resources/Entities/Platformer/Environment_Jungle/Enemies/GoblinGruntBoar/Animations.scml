@@ -68,7 +68,7 @@
             </timeline>
             <timeline id="4" name="R LEG 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-28.89089" y="-4.015325" angle="0"/>
+                    <object folder="0" file="5" x="-30.324582" y="-7.241131" angle="16.513421"/>
                 </key>
             </timeline>
             <timeline id="5" name="R HAND">

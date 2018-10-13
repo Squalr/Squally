@@ -11,7 +11,7 @@ class DemonWarrior : public PlatformerEnemy
 public:
 	static DemonWarrior * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyDemonWarrior;
+	static const std::string MapKeyEnemyDemonWarrior;
 
 private:
 	DemonWarrior(ValueMap* initProperties);

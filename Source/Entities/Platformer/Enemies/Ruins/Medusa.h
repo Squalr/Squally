@@ -11,7 +11,7 @@ class Medusa : public PlatformerEnemy
 public:
 	static Medusa * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyMedusa;
+	static const std::string MapKeyEnemyMedusa;
 
 private:
 	Medusa(ValueMap* initProperties);

@@ -1,6 +1,6 @@
 #include "Minotaur.h"
 
-const std::string Minotaur::KeyEnemyMinotaur = "minotaur";
+const std::string Minotaur::MapKeyEnemyMinotaur = "minotaur";
 
 Minotaur* Minotaur::deserialize(ValueMap* initProperties)
 {

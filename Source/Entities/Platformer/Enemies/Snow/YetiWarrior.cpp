@@ -1,6 +1,6 @@
 #include "YetiWarrior.h"
 
-const std::string YetiWarrior::KeyEnemyYetiWarrior = "yeti_warrior";
+const std::string YetiWarrior::MapKeyEnemyYetiWarrior = "yeti_warrior";
 
 YetiWarrior* YetiWarrior::deserialize(ValueMap* initProperties)
 {

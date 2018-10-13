@@ -1,6 +1,6 @@
 #include "LionMan.h"
 
-const std::string LionMan::KeyEnemyLionMan = "lion_man";
+const std::string LionMan::MapKeyEnemyLionMan = "lion_man";
 
 LionMan* LionMan::deserialize(ValueMap* initProperties)
 {

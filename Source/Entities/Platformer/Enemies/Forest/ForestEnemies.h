@@ -1,0 +1,12 @@
+#pragma once
+#include "Entities/Platformer/Enemies/Forest/Centaur.h"
+#include "Entities/Platformer/Enemies/Forest/Cyclops.h"
+#include "Entities/Platformer/Enemies/Forest/Ent.h"
+#include "Entities/Platformer/Enemies/Forest/KingGrogg.h"
+#include "Entities/Platformer/Enemies/Forest/Ogre.h"
+#include "Entities/Platformer/Enemies/Forest/OrcBomber.h"
+#include "Entities/Platformer/Enemies/Forest/OrcGrunt.h"
+#include "Entities/Platformer/Enemies/Forest/OrcSwordsman.h"
+#include "Entities/Platformer/Enemies/Forest/OrcWarrior.h"
+#include "Entities/Platformer/Enemies/Forest/Thug.h"
+#include "Entities/Platformer/Enemies/Forest/Troll.h"

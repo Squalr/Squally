@@ -1,0 +1,20 @@
+#pragma once
+#include "cocos2d.h"
+
+#include "Resources.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
+using namespace cocos2d;
+
+class HexusOpponentThurstan : public HexusOpponentData
+{
+public:
+	static HexusOpponentThurstan* getInstance();
+
+private:
+	HexusOpponentThurstan();
+	~HexusOpponentThurstan();
+
+	static const std::string StringKeyOpponentName;
+	static HexusOpponentThurstan* instance;
+};

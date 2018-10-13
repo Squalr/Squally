@@ -1,6 +1,6 @@
 #include "Mermaid.h"
 
-const std::string Mermaid::KeyEnemyMermaid = "mermaid";
+const std::string Mermaid::MapKeyEnemyMermaid = "mermaid";
 
 Mermaid* Mermaid::deserialize(ValueMap* initProperties)
 {

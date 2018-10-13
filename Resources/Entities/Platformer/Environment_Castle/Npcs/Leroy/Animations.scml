@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0">
+        <file id="0" name="SLIMY.png" width="72" height="54" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="EVIL EYE.png" width="33" height="35" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="EYE.png" width="32" height="31" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="Entity">
+        <animation id="0" name="Idle" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="SLIMY">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-35" y="30"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="EYE">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-4" y="27"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

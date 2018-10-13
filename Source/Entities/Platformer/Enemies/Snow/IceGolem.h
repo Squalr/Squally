@@ -11,7 +11,7 @@ class IceGolem : public PlatformerEnemy
 public:
 	static IceGolem * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyIceGolem;
+	static const std::string MapKeyEnemyIceGolem;
 
 private:
 	IceGolem(ValueMap* initProperties);

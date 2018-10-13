@@ -11,7 +11,7 @@ class MechBoxDrone : public PlatformerEnemy
 public:
 	static MechBoxDrone * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyMechBoxDrone;
+	static const std::string MapKeyEnemyMechBoxDrone;
 
 private:
 	MechBoxDrone(ValueMap* initProperties);

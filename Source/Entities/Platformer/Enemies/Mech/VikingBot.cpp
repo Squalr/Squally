@@ -1,6 +1,6 @@
 #include "VikingBot.h"
 
-const std::string VikingBot::KeyEnemyVikingBot = "viking_bot";
+const std::string VikingBot::MapKeyEnemyVikingBot = "viking_bot";
 
 VikingBot* VikingBot::deserialize(ValueMap* initProperties)
 {

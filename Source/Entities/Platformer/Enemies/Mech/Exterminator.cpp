@@ -1,6 +1,6 @@
 #include "Exterminator.h"
 
-const std::string Exterminator::KeyEnemyExterminator = "exterminator";
+const std::string Exterminator::MapKeyEnemyExterminator = "exterminator";
 
 Exterminator* Exterminator::deserialize(ValueMap* initProperties)
 {

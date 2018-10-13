@@ -14,12 +14,13 @@ HexusOpponentTutorialE* HexusOpponentTutorialE::getInstance()
 }
 
 HexusOpponentTutorialE::HexusOpponentTutorialE() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Snow_Npcs_Hunter_Animations,
+	Resources::Entities_Platformer_Environment_Snow_Npcs_Irmik_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(0.0f, -24.0f),
 	HexusOpponentTutorialE::StringKeyOpponentName,
+	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Water,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex5),

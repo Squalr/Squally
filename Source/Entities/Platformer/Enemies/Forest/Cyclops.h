@@ -11,7 +11,7 @@ class Cyclops : public PlatformerEnemy
 public:
 	static Cyclops * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyCyclops;
+	static const std::string MapKeyEnemyCyclops;
 
 private:
 	Cyclops(ValueMap* initProperties);

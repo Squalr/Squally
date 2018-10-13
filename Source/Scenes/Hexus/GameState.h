@@ -8,6 +8,7 @@
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
 using namespace cocos2d;
 
@@ -39,15 +40,6 @@ public:
 		GameEnd,
 	};
 
-	enum Difficulty
-	{
-		Stupid,
-		Easy,
-		Medium,
-		Hard,
-		Expert,
-	};
-
 	enum Turn
 	{
 		Player,
@@ -76,7 +68,7 @@ public:
 	StateType stateType;
 	StateType previousStateType;
 	Turn turn;
-	Difficulty difficulty;
+	HexusOpponentData::Difficulty difficulty;
 	bool isRepeatingSameTurn;
 	bool playerPassed;
 	bool enemyPassed;
