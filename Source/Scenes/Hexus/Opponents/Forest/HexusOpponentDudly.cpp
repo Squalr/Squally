@@ -20,7 +20,7 @@ HexusOpponentDudly::HexusOpponentDudly() : HexusOpponentData(
 	Vec2(24.0f, -128.0f),
 	Vec2(24.0f, -128.0f),
 	HexusOpponentDudly::StringKeyOpponentName,
-	GameState::Difficulty::Stupid,
+	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),

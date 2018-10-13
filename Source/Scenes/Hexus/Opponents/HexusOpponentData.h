@@ -6,7 +6,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/Deck.h"
-#include "Scenes/Hexus/GameState.h"
 
 using namespace cocos2d;
 
@@ -14,6 +13,15 @@ class HexusOpponentData
 {
 public:
 	Deck* getDeck();
+
+	enum Difficulty
+	{
+		Stupid,
+		Easy,
+		Medium,
+		Hard,
+		Expert,
+	};
 
 	std::string backgroundResourceFile;
 	std::string animationResourceFile;
@@ -31,7 +39,7 @@ protected:
 		Vec2 animationOffset,
 		Vec2 avatarOffset,
 		std::string enemyNameKey,
-		GameState::Difficulty difficulty,
+		HexusOpponentData::Difficulty difficulty,
 		Card::CardStyle cardStyle,
 		std::vector<CardData*> rewards,
 		std::vector<CardData*> cards);

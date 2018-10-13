@@ -14,13 +14,13 @@ HexusOpponentHera* HexusOpponentHera::getInstance()
 }
 
 HexusOpponentHera::HexusOpponentHera() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Ruins_Npcs_Spartan_Animations,
+	Resources::Entities_Platformer_Environment_Ruins_Npcs_Hera_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-48.0f, -48.0f),
 	Vec2(-16.0f, -16.0f),
 	HexusOpponentHera::StringKeyOpponentName,
-	GameState::Difficulty::Stupid,
+	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),

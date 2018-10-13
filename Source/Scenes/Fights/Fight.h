@@ -5,8 +5,9 @@
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Entities/Platformer/PlatformerEntities.h"
 #include "Resources.h"
+#include "Entities/Platformer/PlatformerEnemy.h"
+#include "Entities/Platformer/Squally/Squally.h"
 
 using namespace cocos2d;
 

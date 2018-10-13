@@ -20,7 +20,7 @@ HexusOpponentRhinoman::HexusOpponentRhinoman() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(32.0f, -96.0f),
 	HexusOpponentRhinoman::StringKeyOpponentName,
-	GameState::Difficulty::Stupid,
+	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary10),

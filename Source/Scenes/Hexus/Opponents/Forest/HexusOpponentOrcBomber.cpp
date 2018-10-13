@@ -20,7 +20,7 @@ HexusOpponentOrcBomber::HexusOpponentOrcBomber() : HexusOpponentData(
 	Vec2(0.0f, -48.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentOrcBomber::StringKeyOpponentName,
-	GameState::Difficulty::Stupid,
+	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal7),

@@ -14,13 +14,13 @@ HexusOpponentBarbarian* HexusOpponentBarbarian::getInstance()
 }
 
 HexusOpponentBarbarian::HexusOpponentBarbarian() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Jungle_Npcs_Barbarian_Animations,
+	Resources::Entities_Platformer_Environment_Jungle_Enemies_Barbarian_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentBarbarian::StringKeyOpponentName,
-	GameState::Difficulty::Stupid,
+	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),
