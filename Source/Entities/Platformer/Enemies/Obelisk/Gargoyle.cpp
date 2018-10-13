@@ -1,6 +1,6 @@
 #include "Gargoyle.h"
 
-const std::string Gargoyle::KeyEnemyGargoyle = "gargoyle";
+const std::string Gargoyle::MapKeyEnemyGargoyle = "gargoyle";
 
 Gargoyle* Gargoyle::deserialize(ValueMap* initProperties)
 {

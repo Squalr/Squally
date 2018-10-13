@@ -11,7 +11,7 @@ class VoidDemon : public PlatformerEnemy
 public:
 	static VoidDemon * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyVoidDemon;
+	static const std::string MapKeyEnemyVoidDemon;
 
 private:
 	VoidDemon(ValueMap* initProperties);

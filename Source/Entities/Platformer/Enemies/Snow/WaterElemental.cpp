@@ -1,6 +1,6 @@
 #include "WaterElemental.h"
 
-const std::string WaterElemental::KeyEnemyWaterElemental = "water_elemental";
+const std::string WaterElemental::MapKeyEnemyWaterElemental = "water_elemental";
 
 WaterElemental* WaterElemental::deserialize(ValueMap* initProperties)
 {

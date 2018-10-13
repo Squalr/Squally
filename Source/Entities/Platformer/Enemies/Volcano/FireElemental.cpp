@@ -1,6 +1,6 @@
 #include "FireElemental.h"
 
-const std::string FireElemental::KeyEnemyFireElemental = "fire_elemental";
+const std::string FireElemental::MapKeyEnemyFireElemental = "fire_elemental";
 
 FireElemental* FireElemental::deserialize(ValueMap* initProperties)
 {

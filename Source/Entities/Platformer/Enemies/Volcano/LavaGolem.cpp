@@ -1,6 +1,6 @@
 #include "LavaGolem.h"
 
-const std::string LavaGolem::KeyEnemyLavaGolem = "lava_golem";
+const std::string LavaGolem::MapKeyEnemyLavaGolem = "lava_golem";
 
 LavaGolem* LavaGolem::deserialize(ValueMap* initProperties)
 {

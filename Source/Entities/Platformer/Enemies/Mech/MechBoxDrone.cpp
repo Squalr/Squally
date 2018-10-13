@@ -1,6 +1,6 @@
 #include "MechBoxDrone.h"
 
-const std::string MechBoxDrone::KeyEnemyMechBoxDrone = "mech_box_drone";
+const std::string MechBoxDrone::MapKeyEnemyMechBoxDrone = "mech_box_drone";
 
 MechBoxDrone* MechBoxDrone::deserialize(ValueMap* initProperties)
 {

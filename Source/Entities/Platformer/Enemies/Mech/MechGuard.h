@@ -11,7 +11,7 @@ class MechGuard : public PlatformerEnemy
 public:
 	static MechGuard * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyMechGuard;
+	static const std::string MapKeyEnemyMechGuard;
 
 private:
 	MechGuard(ValueMap* initProperties);

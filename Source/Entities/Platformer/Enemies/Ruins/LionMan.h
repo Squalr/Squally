@@ -11,7 +11,7 @@ class LionMan : public PlatformerEnemy
 public:
 	static LionMan * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyLionMan;
+	static const std::string MapKeyEnemyLionMan;
 
 private:
 	LionMan(ValueMap* initProperties);

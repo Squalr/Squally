@@ -11,7 +11,7 @@ class MechDog : public PlatformerEnemy
 public:
 	static MechDog * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyMechDog;
+	static const std::string MapKeyEnemyMechDog;
 
 private:
 	MechDog(ValueMap* initProperties);

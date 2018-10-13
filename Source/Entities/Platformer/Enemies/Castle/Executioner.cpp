@@ -1,6 +1,6 @@
 #include "Executioner.h"
 
-const std::string Executioner::KeyEnemyExecutioner = "executioner";
+const std::string Executioner::MapKeyEnemyExecutioner = "executioner";
 
 Executioner* Executioner::deserialize(ValueMap* initProperties)
 {

@@ -1,6 +1,6 @@
 #include "Yeti.h"
 
-const std::string Yeti::KeyEnemyYeti = "yeti";
+const std::string Yeti::MapKeyEnemyYeti = "yeti";
 
 Yeti* Yeti::deserialize(ValueMap* initProperties)
 {

@@ -14,12 +14,13 @@ HexusOpponentTutorialC* HexusOpponentTutorialC::getInstance()
 }
 
 HexusOpponentTutorialC::HexusOpponentTutorialC() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Caverns_Npcs_Wizard_Animations,
+	Resources::Entities_Platformer_Environment_Caverns_Npcs_Alder_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	0.9f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -32.0f),
 	HexusOpponentTutorialC::StringKeyOpponentName,
+	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),

@@ -11,7 +11,7 @@ class Vampiress : public PlatformerEnemy
 public:
 	static Vampiress * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyVampiress;
+	static const std::string MapKeyEnemyVampiress;
 
 private:
 	Vampiress(ValueMap* initProperties);

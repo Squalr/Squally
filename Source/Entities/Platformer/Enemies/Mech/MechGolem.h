@@ -11,7 +11,7 @@ class MechGolem : public PlatformerEnemy
 public:
 	static MechGolem * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyMechGolem;
+	static const std::string MapKeyEnemyMechGolem;
 
 private:
 	MechGolem(ValueMap* initProperties);

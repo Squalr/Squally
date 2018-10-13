@@ -11,7 +11,7 @@ class YetiWarrior : public PlatformerEnemy
 public:
 	static YetiWarrior * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyYetiWarrior;
+	static const std::string MapKeyEnemyYetiWarrior;
 
 private:
 	YetiWarrior(ValueMap* initProperties);

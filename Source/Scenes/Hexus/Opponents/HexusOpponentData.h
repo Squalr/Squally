@@ -14,6 +14,15 @@ class HexusOpponentData
 public:
 	Deck* getDeck();
 
+	enum Difficulty
+	{
+		Stupid,
+		Easy,
+		Medium,
+		Hard,
+		Expert,
+	};
+
 	std::string backgroundResourceFile;
 	std::string animationResourceFile;
 	std::string enemyNameKey;
@@ -30,6 +39,7 @@ protected:
 		Vec2 animationOffset,
 		Vec2 avatarOffset,
 		std::string enemyNameKey,
+		HexusOpponentData::Difficulty difficulty,
 		Card::CardStyle cardStyle,
 		std::vector<CardData*> rewards,
 		std::vector<CardData*> cards);

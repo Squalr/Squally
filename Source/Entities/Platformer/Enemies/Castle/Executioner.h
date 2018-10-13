@@ -11,7 +11,7 @@ class Executioner : public PlatformerEnemy
 public:
 	static Executioner * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyExecutioner;
+	static const std::string MapKeyEnemyExecutioner;
 
 private:
 	Executioner(ValueMap* initProperties);

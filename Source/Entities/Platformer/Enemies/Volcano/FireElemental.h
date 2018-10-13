@@ -11,7 +11,7 @@ class FireElemental : public PlatformerEnemy
 public:
 	static FireElemental * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyFireElemental;
+	static const std::string MapKeyEnemyFireElemental;
 
 private:
 	FireElemental(ValueMap* initProperties);

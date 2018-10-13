@@ -11,7 +11,7 @@ class TigerMan : public PlatformerEnemy
 public:
 	static TigerMan * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyTigerMan;
+	static const std::string MapKeyEnemyTigerMan;
 
 private:
 	TigerMan(ValueMap* initProperties);

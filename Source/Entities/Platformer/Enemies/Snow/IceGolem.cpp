@@ -1,6 +1,6 @@
 #include "IceGolem.h"
 
-const std::string IceGolem::KeyEnemyIceGolem = "ice_golem";
+const std::string IceGolem::MapKeyEnemyIceGolem = "ice_golem";
 
 IceGolem* IceGolem::deserialize(ValueMap* initProperties)
 {

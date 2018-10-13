@@ -1,6 +1,6 @@
 #include "Guard.h"
 
-const std::string Guard::KeyEnemyGuard = "guard";
+const std::string Guard::MapKeyEnemyGuard = "guard";
 
 Guard* Guard::deserialize(ValueMap* initProperties)
 {

@@ -13,26 +13,28 @@ HexusOpponentMenuRuins::HexusOpponentMenuRuins() : HexusOpponentMenuBase(HexusCh
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuRuins::onGameEndCallback, this);
 
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsAnubisTiny::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsAphrodite::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsAres::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsGriffin::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsAthena::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsSpartan::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsTigress::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsTigerMan::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsLioness::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsLionMan::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsHorus::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsManticore::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsMermaid::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsMedusa::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsMinotaur::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsPoseidon::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsZeus::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsAnubisWarrior::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsMummyPharaoh::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentRuinsPrincess::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentAjax::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentAnubisPup::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentAnubisWarrior::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentAphrodite::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentAres::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentAthena::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentCleopatra::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentGeryon::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentGriffin::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentHera::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentHorus::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentLioness::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentLionMan::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentMedusa::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentMermaid::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentMummyPriest::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentMummyWarrior::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentOsiris::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentPoseidon::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentTigerMan::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentTigress::getInstance(), callback));
+	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentZeus::getInstance(), callback));
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{

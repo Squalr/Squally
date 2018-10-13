@@ -11,7 +11,7 @@ class CritterDemon : public PlatformerEnemy
 public:
 	static CritterDemon * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyCritterDemon;
+	static const std::string MapKeyEnemyCritterDemon;
 
 private:
 	CritterDemon(ValueMap* initProperties);

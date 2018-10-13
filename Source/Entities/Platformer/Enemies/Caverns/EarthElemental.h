@@ -11,7 +11,7 @@ class EarthElemental : public PlatformerEnemy
 public:
 	static EarthElemental * deserialize(ValueMap* initProperties);
 
-	static const std::string KeyEnemyEarthElemental;
+	static const std::string MapKeyEnemyEarthElemental;
 
 private:
 	EarthElemental(ValueMap* initProperties);
