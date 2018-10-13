@@ -1,6 +1,6 @@
 #include "HexusOpponentElriel.h"
 
-const std::string HexusOpponentElriel::StringKeyOpponentName = "Squally_Npc_Names_Jungle_Pirate";
+const std::string HexusOpponentElriel::StringKeyOpponentName = "Squally_Npc_Names_Elriel";
 HexusOpponentElriel* HexusOpponentElriel::instance = nullptr;
 
 HexusOpponentElriel* HexusOpponentElriel::getInstance()

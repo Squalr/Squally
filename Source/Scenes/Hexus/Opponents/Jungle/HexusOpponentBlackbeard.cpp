@@ -1,6 +1,6 @@
 #include "HexusOpponentBlackbeard.h"
 
-const std::string HexusOpponentBlackbeard::StringKeyOpponentName = "Squally_Npc_Names_Jungle_Blackbeard";
+const std::string HexusOpponentBlackbeard::StringKeyOpponentName = "Squally_Npc_Names_Blackbeard";
 HexusOpponentBlackbeard* HexusOpponentBlackbeard::instance = nullptr;
 
 HexusOpponentBlackbeard* HexusOpponentBlackbeard::getInstance()
