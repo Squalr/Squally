@@ -15,6 +15,6 @@ public:
 
 	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
 
-private:
+protected:
 	static const std::string KeyTypeEntity;
 };

@@ -20,7 +20,7 @@ HexusOpponentOsiris::HexusOpponentOsiris() : HexusOpponentData(
 	Vec2(-32.0f, -48.0f),
 	Vec2(-32.0f, -72.0f),
 	HexusOpponentOsiris::StringKeyOpponentName,
-	GameState::Difficulty::Stupid,
+	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),

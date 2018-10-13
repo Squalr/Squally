@@ -20,7 +20,7 @@ HexusOpponentCentaur::HexusOpponentCentaur() : HexusOpponentData(
 	Vec2(0.0f, -96.0f),
 	Vec2(0.0f, 0.0f),
 	HexusOpponentCentaur::StringKeyOpponentName,
-	GameState::Difficulty::Stupid,
+	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal3),

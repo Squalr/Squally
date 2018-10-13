@@ -20,7 +20,7 @@ HexusOpponentSkeletalPirate::HexusOpponentSkeletalPirate() : HexusOpponentData(
 	Vec2(-48.0f, -80.0f),
 	Vec2(0.0f, 0.0f),
 	HexusOpponentSkeletalPirate::StringKeyOpponentName,
-	GameState::Difficulty::Stupid,
+	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal3),

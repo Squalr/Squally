@@ -20,7 +20,7 @@ HexusOpponentMinotaur::HexusOpponentMinotaur() : HexusOpponentData(
 	Vec2(-48.0f, 0.0f),
 	Vec2(-32.0f, 0.0f),
 	HexusOpponentMinotaur::StringKeyOpponentName,
-	GameState::Difficulty::Stupid,
+	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary6),

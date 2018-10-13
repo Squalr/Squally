@@ -20,7 +20,7 @@ HexusOpponentPrincessOpal::HexusOpponentPrincessOpal() : HexusOpponentData(
 	Vec2(-32.0f, -32.0f),
 	Vec2(0.0f, 0.0f),
 	HexusOpponentPrincessOpal::StringKeyOpponentName,
-	GameState::Difficulty::Stupid,
+	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal3),

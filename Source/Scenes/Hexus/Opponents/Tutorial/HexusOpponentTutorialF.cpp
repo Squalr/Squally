@@ -20,7 +20,7 @@ HexusOpponentTutorialF::HexusOpponentTutorialF() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(0.0f, -24.0f),
 	HexusOpponentTutorialF::StringKeyOpponentName,
-	GameState::Difficulty::Stupid,
+	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Light,
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary2),
