@@ -15,6 +15,6 @@ private:
 	HexusOpponentGoblinGruntBoar();
 	~HexusOpponentGoblinGruntBoar();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentGoblinGruntBoar* instance;
 };

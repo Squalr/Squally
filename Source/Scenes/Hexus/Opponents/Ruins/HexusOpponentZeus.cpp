@@ -1,6 +1,6 @@
 #include "HexusOpponentZeus.h"
 
-const std::string HexusOpponentZeus::StringKeyOpponentName = "Squally_Npc_Names_Zeus";
+const std::string HexusOpponentZeus::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ZEUS";
 HexusOpponentZeus* HexusOpponentZeus::instance = nullptr;
 
 HexusOpponentZeus* HexusOpponentZeus::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentZeus::HexusOpponentZeus() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, -32.0f),
-	HexusOpponentZeus::StringKeyOpponentName,
+	Vec2(0.0f, -24.0f),
+	HexusOpponentZeus::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

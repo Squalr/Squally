@@ -1,6 +1,6 @@
 #include "HexusOpponentReaper.h"
 
-const std::string HexusOpponentReaper::StringKeyOpponentName = "Squally_Npc_Names_Reaper";
+const std::string HexusOpponentReaper::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_REAPER";
 HexusOpponentReaper* HexusOpponentReaper::instance = nullptr;
 
 HexusOpponentReaper* HexusOpponentReaper::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentReaper::HexusOpponentReaper() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Castle_Enemies_Reaper_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
-	Vec2(0.0f, -180.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentReaper::StringKeyOpponentName,
+	Vec2(0.0f, -224.0f),
+	Vec2(-16.0f, -256.0f),
+	HexusOpponentReaper::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

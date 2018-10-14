@@ -1,6 +1,6 @@
 #include "HexusOpponentIgneus.h"
 
-const std::string HexusOpponentIgneus::StringKeyOpponentName = "Squally_Npc_Names_Igneus";
+const std::string HexusOpponentIgneus::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_IGNEUS";
 HexusOpponentIgneus* HexusOpponentIgneus::instance = nullptr;
 
 HexusOpponentIgneus* HexusOpponentIgneus::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentIgneus* HexusOpponentIgneus::getInstance()
 
 HexusOpponentIgneus::HexusOpponentIgneus() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Npcs_Igneus_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentIgneus::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentIgneus::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

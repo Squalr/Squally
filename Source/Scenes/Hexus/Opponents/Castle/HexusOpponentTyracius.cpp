@@ -1,6 +1,6 @@
 #include "HexusOpponentTyracius.h"
 
-const std::string HexusOpponentTyracius::StringKeyOpponentName = "Squally_Npc_Names_Tyracius";
+const std::string HexusOpponentTyracius::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TYRACIUS";
 HexusOpponentTyracius* HexusOpponentTyracius::instance = nullptr;
 
 HexusOpponentTyracius* HexusOpponentTyracius::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentTyracius::HexusOpponentTyracius() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	0.85f,
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentTyracius::StringKeyOpponentName,
+	Vec2(-32.0f, -48.0f),
+	HexusOpponentTyracius::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

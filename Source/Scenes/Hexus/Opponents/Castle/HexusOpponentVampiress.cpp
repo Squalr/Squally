@@ -1,6 +1,6 @@
 #include "HexusOpponentVampiress.h"
 
-const std::string HexusOpponentVampiress::StringKeyOpponentName = "Squally_Npc_Names_Vampiress";
+const std::string HexusOpponentVampiress::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VAMPIRESS";
 HexusOpponentVampiress* HexusOpponentVampiress::instance = nullptr;
 
 HexusOpponentVampiress* HexusOpponentVampiress::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentVampiress::HexusOpponentVampiress() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -32.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentVampiress::StringKeyOpponentName,
+	Vec2(-16.0f, -40.0f),
+	HexusOpponentVampiress::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

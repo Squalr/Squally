@@ -1,6 +1,6 @@
 #include "HexusOpponentEnt.h"
 
-const std::string HexusOpponentEnt::StringKeyOpponentName = "Squally_Npc_Names_Ent";
+const std::string HexusOpponentEnt::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ENT";
 HexusOpponentEnt* HexusOpponentEnt::instance = nullptr;
 
 HexusOpponentEnt* HexusOpponentEnt::getInstance()
@@ -16,10 +16,10 @@ HexusOpponentEnt* HexusOpponentEnt::getInstance()
 HexusOpponentEnt::HexusOpponentEnt() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Forest_Enemies_Ent_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
-	1.0f,
-	Vec2(-32.0f, -32.0f),
-	Vec2(-32.0f, -32.0f),
-	HexusOpponentEnt::StringKeyOpponentName,
+	0.85f,
+	Vec2(-144.0f, -128.0f),
+	Vec2(-156.0f, -212.0f),
+	HexusOpponentEnt::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

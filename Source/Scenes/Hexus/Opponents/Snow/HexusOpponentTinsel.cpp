@@ -1,6 +1,6 @@
 #include "HexusOpponentTinsel.h"
 
-const std::string HexusOpponentTinsel::StringKeyOpponentName = "Squally_Npc_Names_Tinsel";
+const std::string HexusOpponentTinsel::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TINSEL";
 HexusOpponentTinsel* HexusOpponentTinsel::instance = nullptr;
 
 HexusOpponentTinsel* HexusOpponentTinsel::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentTinsel::HexusOpponentTinsel() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentTinsel::StringKeyOpponentName,
+	Vec2(-16.0f, -24.0f),
+	HexusOpponentTinsel::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

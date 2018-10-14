@@ -15,6 +15,6 @@ private:
 	HexusOpponentPolyphemus();
 	~HexusOpponentPolyphemus();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentPolyphemus* instance;
 };

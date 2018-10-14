@@ -1,6 +1,6 @@
 #include "HexusOpponentOrcGrunt.h"
 
-const std::string HexusOpponentOrcGrunt::StringKeyOpponentName = "Squally_Npc_Names_Orc_Grunt";
+const std::string HexusOpponentOrcGrunt::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ORC_GRUNT";
 HexusOpponentOrcGrunt* HexusOpponentOrcGrunt::instance = nullptr;
 
 HexusOpponentOrcGrunt* HexusOpponentOrcGrunt::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentOrcGrunt::HexusOpponentOrcGrunt() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -48.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentOrcGrunt::StringKeyOpponentName,
+	Vec2(-64.0f, -48.0f),
+	HexusOpponentOrcGrunt::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

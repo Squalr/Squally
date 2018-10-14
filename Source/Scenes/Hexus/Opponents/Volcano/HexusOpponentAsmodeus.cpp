@@ -1,6 +1,6 @@
 #include "HexusOpponentAsmodeus.h"
 
-const std::string HexusOpponentAsmodeus::StringKeyOpponentName = "Squally_Npc_Names_Asmodeus";
+const std::string HexusOpponentAsmodeus::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ASMODEUS";
 HexusOpponentAsmodeus* HexusOpponentAsmodeus::instance = nullptr;
 
 HexusOpponentAsmodeus* HexusOpponentAsmodeus::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentAsmodeus* HexusOpponentAsmodeus::getInstance()
 
 HexusOpponentAsmodeus::HexusOpponentAsmodeus() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Enemies_Asmodeus_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.85f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentAsmodeus::StringKeyOpponentName,
+	Vec2(-48.0f, -24.0f),
+	Vec2(-32.0f, -48.0f),
+	HexusOpponentAsmodeus::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

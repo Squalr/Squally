@@ -1,6 +1,6 @@
 #include "HexusOpponentForestGolem.h"
 
-const std::string HexusOpponentForestGolem::StringKeyOpponentName = "Squally_Npc_Names_Forest_Golem";
+const std::string HexusOpponentForestGolem::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FOREST_GOLEM";
 HexusOpponentForestGolem* HexusOpponentForestGolem::instance = nullptr;
 
 HexusOpponentForestGolem* HexusOpponentForestGolem::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentForestGolem::HexusOpponentForestGolem() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -96.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentForestGolem::StringKeyOpponentName,
+	Vec2(-48.0f, -16.0f),
+	HexusOpponentForestGolem::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

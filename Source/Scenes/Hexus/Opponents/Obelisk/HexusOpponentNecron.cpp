@@ -1,6 +1,6 @@
 #include "HexusOpponentNecron.h"
 
-const std::string HexusOpponentNecron::StringKeyOpponentName = "Squally_Npc_Names_Necron";
+const std::string HexusOpponentNecron::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_NECRON";
 HexusOpponentNecron* HexusOpponentNecron::instance = nullptr;
 
 HexusOpponentNecron* HexusOpponentNecron::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentNecron::HexusOpponentNecron() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Obelisk_Npcs_Necron_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentNecron::StringKeyOpponentName,
+	Vec2(-48.0f, -72.0f),
+	Vec2(-16.0f, -40.0f),
+	HexusOpponentNecron::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

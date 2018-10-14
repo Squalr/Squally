@@ -1,6 +1,6 @@
 #include "HexusOpponentBlackbeard.h"
 
-const std::string HexusOpponentBlackbeard::StringKeyOpponentName = "Squally_Npc_Names_Blackbeard";
+const std::string HexusOpponentBlackbeard::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BLACKBEARD";
 HexusOpponentBlackbeard* HexusOpponentBlackbeard::instance = nullptr;
 
 HexusOpponentBlackbeard* HexusOpponentBlackbeard::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentBlackbeard::HexusOpponentBlackbeard() : HexusOpponentData(
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -64.0f),
-	HexusOpponentBlackbeard::StringKeyOpponentName,
+	HexusOpponentBlackbeard::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

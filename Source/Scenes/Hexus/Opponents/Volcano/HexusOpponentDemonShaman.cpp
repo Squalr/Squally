@@ -1,6 +1,6 @@
 #include "HexusOpponentDemonShaman.h"
 
-const std::string HexusOpponentDemonShaman::StringKeyOpponentName = "Squally_Npc_Names_Demon_Shaman";
+const std::string HexusOpponentDemonShaman::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DEMON_SHAMAN";
 HexusOpponentDemonShaman* HexusOpponentDemonShaman::instance = nullptr;
 
 HexusOpponentDemonShaman* HexusOpponentDemonShaman::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentDemonShaman* HexusOpponentDemonShaman::getInstance()
 
 HexusOpponentDemonShaman::HexusOpponentDemonShaman() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Enemies_DemonShaman_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.85f,
-	Vec2(-48.0f, -64.0f),
+	Vec2(-48.0f, -48.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentDemonShaman::StringKeyOpponentName,
+	HexusOpponentDemonShaman::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

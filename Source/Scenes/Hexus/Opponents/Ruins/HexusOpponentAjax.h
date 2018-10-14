@@ -15,6 +15,6 @@ private:
 	HexusOpponentAjax();
 	~HexusOpponentAjax();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentAjax* instance;
 };

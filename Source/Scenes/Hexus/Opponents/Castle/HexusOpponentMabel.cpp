@@ -1,6 +1,6 @@
 #include "HexusOpponentMabel.h"
 
-const std::string HexusOpponentMabel::StringKeyOpponentName = "Squally_Npc_Names_Mabel";
+const std::string HexusOpponentMabel::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MABEL";
 HexusOpponentMabel* HexusOpponentMabel::instance = nullptr;
 
 HexusOpponentMabel* HexusOpponentMabel::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentMabel::HexusOpponentMabel() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	0.85f,
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentMabel::StringKeyOpponentName,
+	Vec2(-32.0f, -40.0f),
+	HexusOpponentMabel::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

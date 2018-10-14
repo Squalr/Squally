@@ -1,6 +1,6 @@
 #include "HexusOpponentPrincessNebea.h"
 
-const std::string HexusOpponentPrincessNebea::StringKeyOpponentName = "Squally_Npc_Names_Abomination";
+const std::string HexusOpponentPrincessNebea::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PRINCESS_NEBEA";
 HexusOpponentPrincessNebea* HexusOpponentPrincessNebea::instance = nullptr;
 
 HexusOpponentPrincessNebea* HexusOpponentPrincessNebea::getInstance()
@@ -14,12 +14,12 @@ HexusOpponentPrincessNebea* HexusOpponentPrincessNebea::getInstance()
 }
 
 HexusOpponentPrincessNebea::HexusOpponentPrincessNebea() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Ruins_Npcs_Athena_Animations,
+	Resources::Entities_Platformer_Environment_Obelisk_Npcs_PrincessNebea_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentPrincessNebea::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentPrincessNebea::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

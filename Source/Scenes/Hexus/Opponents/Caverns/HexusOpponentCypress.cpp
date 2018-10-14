@@ -1,6 +1,6 @@
 #include "HexusOpponentCypress.h"
 
-const std::string HexusOpponentCypress::StringKeyOpponentName = "Squally_Npc_Names_Cypress";
+const std::string HexusOpponentCypress::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CYPRESS";
 HexusOpponentCypress* HexusOpponentCypress::instance = nullptr;
 
 HexusOpponentCypress* HexusOpponentCypress::getInstance()
@@ -16,10 +16,10 @@ HexusOpponentCypress* HexusOpponentCypress::getInstance()
 HexusOpponentCypress::HexusOpponentCypress() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Caverns_Npcs_Cypress_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
-	1.0f,
+	0.9f,
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentCypress::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentCypress::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

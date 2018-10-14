@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Utils/MathUtils.h"
 #include "Resources.h"
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardData/CardList.h"
@@ -44,6 +45,8 @@ protected:
 		std::vector<CardData*> rewards,
 		std::vector<CardData*> cards);
 	~HexusOpponentData();
+
+	static std::vector<CardData*> generateDeck(int deckSize, int minAttack, int maxAttack, float binaryRatio, float decimalRatio, std::vector<CardData*> guaranteedCards);
 
 	Card::CardStyle cardStyle;
 	std::vector<CardData*> cards;

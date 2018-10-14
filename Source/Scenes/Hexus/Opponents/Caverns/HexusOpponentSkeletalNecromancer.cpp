@@ -1,6 +1,6 @@
 #include "HexusOpponentSkeletalNecromancer.h"
 
-const std::string HexusOpponentSkeletalNecromancer::StringKeyOpponentName = "Squally_Npc_Names_Skeletal_Necromancer";
+const std::string HexusOpponentSkeletalNecromancer::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_NECROMANCER";
 HexusOpponentSkeletalNecromancer* HexusOpponentSkeletalNecromancer::instance = nullptr;
 
 HexusOpponentSkeletalNecromancer* HexusOpponentSkeletalNecromancer::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentSkeletalNecromancer::HexusOpponentSkeletalNecromancer() : HexusOppo
 	Resources::Entities_Platformer_Environment_Caverns_Enemies_SkeletalNecromancer_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
-	Vec2(-32.0f, -32.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentSkeletalNecromancer::StringKeyOpponentName,
+	Vec2(-32.0f, -48.0f),
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentSkeletalNecromancer::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

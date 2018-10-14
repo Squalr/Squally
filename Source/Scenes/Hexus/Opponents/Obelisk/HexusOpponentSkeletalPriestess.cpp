@@ -1,6 +1,6 @@
 #include "HexusOpponentSkeletalPriestess.h"
 
-const std::string HexusOpponentSkeletalPriestess::StringKeyOpponentName = "Squally_Npc_Names_Skeletal_Priestess";
+const std::string HexusOpponentSkeletalPriestess::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_PRIESTESS";
 HexusOpponentSkeletalPriestess* HexusOpponentSkeletalPriestess::instance = nullptr;
 
 HexusOpponentSkeletalPriestess* HexusOpponentSkeletalPriestess::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentSkeletalPriestess::HexusOpponentSkeletalPriestess() : HexusOpponent
 	0.85f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentSkeletalPriestess::StringKeyOpponentName,
+	HexusOpponentSkeletalPriestess::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentWraith.h"
 
-const std::string HexusOpponentWraith::StringKeyOpponentName = "Squally_Npc_Names_Wraith";
+const std::string HexusOpponentWraith::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_WRAITH";
 HexusOpponentWraith* HexusOpponentWraith::instance = nullptr;
 
 HexusOpponentWraith* HexusOpponentWraith::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentWraith::HexusOpponentWraith() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	0.7f,
 	Vec2(-32.0f, -32.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentWraith::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentWraith::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

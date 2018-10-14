@@ -1,6 +1,6 @@
 #include "HexusOpponentSanta.h"
 
-const std::string HexusOpponentSanta::StringKeyOpponentName = "Squally_Npc_Names_Santa";
+const std::string HexusOpponentSanta::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SANTA";
 HexusOpponentSanta* HexusOpponentSanta::instance = nullptr;
 
 HexusOpponentSanta* HexusOpponentSanta::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentSanta::HexusOpponentSanta() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Snow_Enemies_Santa_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentSanta::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-48.0f, -48.0f),
+	HexusOpponentSanta::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

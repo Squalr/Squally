@@ -1,6 +1,6 @@
 #include "HexusOpponentCookie.h"
 
-const std::string HexusOpponentCookie::StringKeyOpponentName = "Squally_Npc_Names_Cookie";
+const std::string HexusOpponentCookie::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_COOKIE";
 HexusOpponentCookie* HexusOpponentCookie::instance = nullptr;
 
 HexusOpponentCookie* HexusOpponentCookie::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentCookie::HexusOpponentCookie() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentCookie::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentCookie::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

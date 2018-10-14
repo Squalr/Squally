@@ -1,6 +1,6 @@
 #include "HexusOpponentSkeletalWarrior.h"
 
-const std::string HexusOpponentSkeletalWarrior::StringKeyOpponentName = "Squally_Npc_Names_Skeletal_Warrior";
+const std::string HexusOpponentSkeletalWarrior::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_WARRIOR";
 HexusOpponentSkeletalWarrior* HexusOpponentSkeletalWarrior::instance = nullptr;
 
 HexusOpponentSkeletalWarrior* HexusOpponentSkeletalWarrior::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentSkeletalWarrior::HexusOpponentSkeletalWarrior() : HexusOpponentData
 	Resources::Entities_Platformer_Environment_Caverns_Enemies_SkeletalWarrior_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
+	Vec2(-32.0f, -48.0f),
 	Vec2(-32.0f, -32.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentSkeletalWarrior::StringKeyOpponentName,
+	HexusOpponentSkeletalWarrior::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

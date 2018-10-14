@@ -1,6 +1,6 @@
 #include "HexusOpponentSkeletalArcher.h"
 
-const std::string HexusOpponentSkeletalArcher::StringKeyOpponentName = "Squally_Npc_Names_Skeletal_Archer";
+const std::string HexusOpponentSkeletalArcher::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_ARCHER";
 HexusOpponentSkeletalArcher* HexusOpponentSkeletalArcher::instance = nullptr;
 
 HexusOpponentSkeletalArcher* HexusOpponentSkeletalArcher::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentSkeletalArcher::HexusOpponentSkeletalArcher() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Caverns_Enemies_SkeletalArcher_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
+	Vec2(-32.0f, -48.0f),
 	Vec2(-32.0f, -32.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentSkeletalArcher::StringKeyOpponentName,
+	HexusOpponentSkeletalArcher::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

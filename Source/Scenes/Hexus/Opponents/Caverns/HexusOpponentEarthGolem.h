@@ -15,6 +15,6 @@ private:
 	HexusOpponentEarthGolem();
 	~HexusOpponentEarthGolem();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentEarthGolem* instance;
 };

@@ -1,6 +1,6 @@
 #include "HexusOpponentAbomination.h"
 
-const std::string HexusOpponentAbomination::StringKeyOpponentName = "Squally_Npc_Names_Abomination";
+const std::string HexusOpponentAbomination::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ABOMINATION";
 HexusOpponentAbomination* HexusOpponentAbomination::instance = nullptr;
 
 HexusOpponentAbomination* HexusOpponentAbomination::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentAbomination::HexusOpponentAbomination() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.7f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentAbomination::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	HexusOpponentAbomination::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

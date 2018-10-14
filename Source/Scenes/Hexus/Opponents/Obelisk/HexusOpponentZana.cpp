@@ -1,6 +1,6 @@
 #include "HexusOpponentZana.h"
 
-const std::string HexusOpponentZana::StringKeyOpponentName = "Squally_Npc_Names_Zana";
+const std::string HexusOpponentZana::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ZANA";
 HexusOpponentZana* HexusOpponentZana::instance = nullptr;
 
 HexusOpponentZana* HexusOpponentZana::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentZana::HexusOpponentZana() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentZana::StringKeyOpponentName,
+	Vec2(-16.0f, -40.0f),
+	HexusOpponentZana::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

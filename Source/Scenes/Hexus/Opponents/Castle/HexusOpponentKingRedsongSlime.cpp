@@ -1,6 +1,6 @@
 #include "HexusOpponentKingRedsongSlime.h"
 
-const std::string HexusOpponentKingRedsongSlime::StringKeyOpponentName = "Squally_Npc_Names_King_Redsong_Slime";
+const std::string HexusOpponentKingRedsongSlime::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KING_REDSONG_SLIME";
 HexusOpponentKingRedsongSlime* HexusOpponentKingRedsongSlime::instance = nullptr;
 
 HexusOpponentKingRedsongSlime* HexusOpponentKingRedsongSlime::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentKingRedsongSlime::HexusOpponentKingRedsongSlime() : HexusOpponentDa
 	Resources::Entities_Platformer_Environment_Castle_Npcs_KingRedsongSlime_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
+	Vec2(-48.0f, -96.0f),
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentKingRedsongSlime::StringKeyOpponentName,
+	HexusOpponentKingRedsongSlime::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

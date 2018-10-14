@@ -1,6 +1,6 @@
 #include "HexusOpponentIceGolem.h"
 
-const std::string HexusOpponentIceGolem::StringKeyOpponentName = "Squally_Npc_Names_Ice_Golem";
+const std::string HexusOpponentIceGolem::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ICE_GOLEM";
 HexusOpponentIceGolem* HexusOpponentIceGolem::instance = nullptr;
 
 HexusOpponentIceGolem* HexusOpponentIceGolem::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentIceGolem::HexusOpponentIceGolem() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Snow_Enemies_IceGolem_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentIceGolem::StringKeyOpponentName,
+	Vec2(-48.0f, -80.0f),
+	Vec2(-48.0f, -80.0f),
+	HexusOpponentIceGolem::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

@@ -5,6 +5,7 @@
 #include "Scenes/Hexus/Opponents/Snow/HexusOpponentCookie.h"
 #include "Scenes/Hexus/Opponents/Snow/HexusOpponentCryogen.h"
 #include "Scenes/Hexus/Opponents/Snow/HexusOpponentFrostFiend.h"
+#include "Scenes/Hexus/Opponents/Snow/HexusOpponentGoblinElf.h"
 #include "Scenes/Hexus/Opponents/Snow/HexusOpponentIceGolem.h"
 #include "Scenes/Hexus/Opponents/Snow/HexusOpponentIrmik.h"
 #include "Scenes/Hexus/Opponents/Snow/HexusOpponentJingles.h"

@@ -1,6 +1,6 @@
 #include "HexusOpponentTigress.h"
 
-const std::string HexusOpponentTigress::StringKeyOpponentName = "Squally_Npc_Names_Tigress";
+const std::string HexusOpponentTigress::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TIGRESS";
 HexusOpponentTigress* HexusOpponentTigress::instance = nullptr;
 
 HexusOpponentTigress* HexusOpponentTigress::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentTigress::HexusOpponentTigress() : HexusOpponentData(
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentTigress::StringKeyOpponentName,
+	HexusOpponentTigress::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

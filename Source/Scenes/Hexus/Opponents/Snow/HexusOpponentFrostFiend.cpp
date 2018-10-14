@@ -1,6 +1,6 @@
 #include "HexusOpponentFrostFiend.h"
 
-const std::string HexusOpponentFrostFiend::StringKeyOpponentName = "Squally_Npc_Names_FrostFiend";
+const std::string HexusOpponentFrostFiend::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FROST_FIEND";
 HexusOpponentFrostFiend* HexusOpponentFrostFiend::instance = nullptr;
 
 HexusOpponentFrostFiend* HexusOpponentFrostFiend::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentFrostFiend::HexusOpponentFrostFiend() : HexusOpponentData(
 	0.85f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentFrostFiend::StringKeyOpponentName,
+	HexusOpponentFrostFiend::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

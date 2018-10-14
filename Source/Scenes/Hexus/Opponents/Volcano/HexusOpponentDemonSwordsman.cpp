@@ -1,6 +1,6 @@
 #include "HexusOpponentDemonSwordsman.h"
 
-const std::string HexusOpponentDemonSwordsman::StringKeyOpponentName = "Squally_Npc_Names_Demon_Swordsman";
+const std::string HexusOpponentDemonSwordsman::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DEMON_SWORDSMAN";
 HexusOpponentDemonSwordsman* HexusOpponentDemonSwordsman::instance = nullptr;
 
 HexusOpponentDemonSwordsman* HexusOpponentDemonSwordsman::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentDemonSwordsman* HexusOpponentDemonSwordsman::getInstance()
 
 HexusOpponentDemonSwordsman::HexusOpponentDemonSwordsman() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Enemies_DemonSwordsman_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.85f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentDemonSwordsman::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-24.0f, -48.0f),
+	HexusOpponentDemonSwordsman::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

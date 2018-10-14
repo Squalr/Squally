@@ -15,6 +15,6 @@ private:
 	HexusOpponentMermaid();
 	~HexusOpponentMermaid();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentMermaid* instance;
 };

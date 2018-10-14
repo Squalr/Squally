@@ -1,6 +1,6 @@
 #include "HexusOpponentJuniper.h"
 
-const std::string HexusOpponentJuniper::StringKeyOpponentName = "Squally_Npc_Names_Juniper";
+const std::string HexusOpponentJuniper::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_JUNIPER";
 HexusOpponentJuniper* HexusOpponentJuniper::instance = nullptr;
 
 HexusOpponentJuniper* HexusOpponentJuniper::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentJuniper::HexusOpponentJuniper() : HexusOpponentData(
 	0.85f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentJuniper::StringKeyOpponentName,
+	HexusOpponentJuniper::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

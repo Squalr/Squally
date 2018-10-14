@@ -1,6 +1,6 @@
 #include "HexusOpponentMerlin.h"
 
-const std::string HexusOpponentMerlin::StringKeyOpponentName = "Squally_Npc_Names_Merlin";
+const std::string HexusOpponentMerlin::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MERLIN";
 HexusOpponentMerlin* HexusOpponentMerlin::instance = nullptr;
 
 HexusOpponentMerlin* HexusOpponentMerlin::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentMerlin::HexusOpponentMerlin() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Castle_Npcs_Merlin_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
+	Vec2(-48.0f, -80.0f),
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentMerlin::StringKeyOpponentName,
+	HexusOpponentMerlin::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

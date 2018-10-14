@@ -1,6 +1,6 @@
 #include "HexusOpponentTikiGolem.h"
 
-const std::string HexusOpponentTikiGolem::StringKeyOpponentName = "Squally_Npc_Names_Tiki_Golem";
+const std::string HexusOpponentTikiGolem::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TIKI_GOLEM";
 HexusOpponentTikiGolem* HexusOpponentTikiGolem::instance = nullptr;
 
 HexusOpponentTikiGolem* HexusOpponentTikiGolem::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentTikiGolem::HexusOpponentTikiGolem() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -160.0f),
-	Vec2(-16.0f, -112.0f),
-	HexusOpponentTikiGolem::StringKeyOpponentName,
+	Vec2(-16.0f, -128.0f),
+	HexusOpponentTikiGolem::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

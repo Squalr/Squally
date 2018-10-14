@@ -1,6 +1,6 @@
 #include "HexusOpponentOlive.h"
 
-const std::string HexusOpponentOlive::StringKeyOpponentName = "Squally_Npc_Names_Olive";
+const std::string HexusOpponentOlive::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_OLIVE";
 HexusOpponentOlive* HexusOpponentOlive::instance = nullptr;
 
 HexusOpponentOlive* HexusOpponentOlive::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentOlive::HexusOpponentOlive() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentOlive::StringKeyOpponentName,
+	Vec2(-16.0f, -48.0f),
+	HexusOpponentOlive::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

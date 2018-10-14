@@ -1,6 +1,6 @@
 #include "HexusOpponentVoidArcher.h"
 
-const std::string HexusOpponentVoidArcher::StringKeyOpponentName = "Squally_Npc_Names_Void_Archer";
+const std::string HexusOpponentVoidArcher::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VOID_ARCHER";
 HexusOpponentVoidArcher* HexusOpponentVoidArcher::instance = nullptr;
 
 HexusOpponentVoidArcher* HexusOpponentVoidArcher::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentVoidArcher::HexusOpponentVoidArcher() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Obelisk_Enemies_VoidArcher_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.85f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentVoidArcher::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-16.0f, -40.0f),
+	HexusOpponentVoidArcher::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentScaldor.h"
 
-const std::string HexusOpponentScaldor::StringKeyOpponentName = "Squally_Npc_Names_Scaldor";
+const std::string HexusOpponentScaldor::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SCALDOR";
 HexusOpponentScaldor* HexusOpponentScaldor::instance = nullptr;
 
 HexusOpponentScaldor* HexusOpponentScaldor::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentScaldor* HexusOpponentScaldor::getInstance()
 
 HexusOpponentScaldor::HexusOpponentScaldor() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Npcs_Scaldor_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentScaldor::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-16.0f, -24.0f),
+	HexusOpponentScaldor::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

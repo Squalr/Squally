@@ -15,6 +15,6 @@ private:
 	HexusOpponentGramps();
 	~HexusOpponentGramps();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentGramps* instance;
 };

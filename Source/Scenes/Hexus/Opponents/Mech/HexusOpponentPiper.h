@@ -15,6 +15,6 @@ private:
 	HexusOpponentPiper();
 	~HexusOpponentPiper();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentPiper* instance;
 };

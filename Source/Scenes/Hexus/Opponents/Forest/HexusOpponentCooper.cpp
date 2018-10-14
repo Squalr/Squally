@@ -1,6 +1,6 @@
 #include "HexusOpponentCooper.h"
 
-const std::string HexusOpponentCooper::StringKeyOpponentName = "Squally_Npc_Names_Cooper";
+const std::string HexusOpponentCooper::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_COOPER";
 HexusOpponentCooper* HexusOpponentCooper::instance = nullptr;
 
 HexusOpponentCooper* HexusOpponentCooper::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentCooper::HexusOpponentCooper() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Forest_Npcs_Cooper_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentCooper::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-16.0f, -24.0f),
+	HexusOpponentCooper::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

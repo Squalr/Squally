@@ -1,6 +1,6 @@
 #include "HexusOpponentOrcBomber.h"
 
-const std::string HexusOpponentOrcBomber::StringKeyOpponentName = "Squally_Npc_Names_Orc_Bomber";
+const std::string HexusOpponentOrcBomber::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ORC_BOMBER";
 HexusOpponentOrcBomber* HexusOpponentOrcBomber::instance = nullptr;
 
 HexusOpponentOrcBomber* HexusOpponentOrcBomber::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentOrcBomber::HexusOpponentOrcBomber() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Forest_Enemies_OrcBomber_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
-	Vec2(0.0f, -64.0f),
+	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentOrcBomber::StringKeyOpponentName,
+	HexusOpponentOrcBomber::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

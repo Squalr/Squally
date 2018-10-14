@@ -1,6 +1,6 @@
 #include "HexusOpponentCyclops.h"
 
-const std::string HexusOpponentCyclops::StringKeyOpponentName = "Squally_Npc_Names_Cyclops";
+const std::string HexusOpponentCyclops::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CYCLOPS";
 HexusOpponentCyclops* HexusOpponentCyclops::instance = nullptr;
 
 HexusOpponentCyclops* HexusOpponentCyclops::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentCyclops::HexusOpponentCyclops() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentCyclops::StringKeyOpponentName,
+	Vec2(-40.0f, -48.0f),
+	HexusOpponentCyclops::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

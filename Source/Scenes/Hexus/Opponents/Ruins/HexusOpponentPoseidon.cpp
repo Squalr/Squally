@@ -1,6 +1,6 @@
 #include "HexusOpponentPoseidon.h"
 
-const std::string HexusOpponentPoseidon::StringKeyOpponentName = "Squally_Npc_Names_Poseidon";
+const std::string HexusOpponentPoseidon::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_POSEIDON";
 HexusOpponentPoseidon* HexusOpponentPoseidon::instance = nullptr;
 
 HexusOpponentPoseidon* HexusOpponentPoseidon::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentPoseidon::HexusOpponentPoseidon() : HexusOpponentData(
 	1.0f,
 	Vec2(-48.0f, -48.0f),
 	Vec2(-16.0f, -32.0f),
-	HexusOpponentPoseidon::StringKeyOpponentName,
+	HexusOpponentPoseidon::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

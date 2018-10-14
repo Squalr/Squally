@@ -15,6 +15,6 @@ private:
 	HexusOpponentZana();
 	~HexusOpponentZana();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentZana* instance;
 };

@@ -1,6 +1,6 @@
 #include "HexusOpponentKrampus.h"
 
-const std::string HexusOpponentKrampus::StringKeyOpponentName = "Squally_Npc_Names_Krampus";
+const std::string HexusOpponentKrampus::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KRAMPUS";
 HexusOpponentKrampus* HexusOpponentKrampus::instance = nullptr;
 
 HexusOpponentKrampus* HexusOpponentKrampus::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentKrampus::HexusOpponentKrampus() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	0.85f,
 	Vec2(-32.0f, -32.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentKrampus::StringKeyOpponentName,
+	Vec2(-64.0f, -48.0f),
+	HexusOpponentKrampus::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

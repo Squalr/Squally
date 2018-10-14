@@ -15,6 +15,6 @@ private:
 	HexusOpponentGorilla();
 	~HexusOpponentGorilla();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentGorilla* instance;
 };

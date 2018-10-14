@@ -15,6 +15,6 @@ private:
 	HexusOpponentNecron();
 	~HexusOpponentNecron();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentNecron* instance;
 };

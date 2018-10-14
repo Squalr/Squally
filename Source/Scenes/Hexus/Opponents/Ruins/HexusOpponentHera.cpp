@@ -1,6 +1,6 @@
 #include "HexusOpponentHera.h"
 
-const std::string HexusOpponentHera::StringKeyOpponentName = "Squally_Npc_Names_Hera";
+const std::string HexusOpponentHera::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_HERA";
 HexusOpponentHera* HexusOpponentHera::instance = nullptr;
 
 HexusOpponentHera* HexusOpponentHera::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentHera::HexusOpponentHera() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -16.0f),
-	HexusOpponentHera::StringKeyOpponentName,
+	Vec2(-16.0f, -48.0f),
+	HexusOpponentHera::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

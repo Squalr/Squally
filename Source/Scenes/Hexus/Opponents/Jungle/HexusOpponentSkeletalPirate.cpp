@@ -1,6 +1,6 @@
 #include "HexusOpponentSkeletalPirate.h"
 
-const std::string HexusOpponentSkeletalPirate::StringKeyOpponentName = "Squally_Npc_Names_Skeletal_Pirate";
+const std::string HexusOpponentSkeletalPirate::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_PIRATE";
 HexusOpponentSkeletalPirate* HexusOpponentSkeletalPirate::instance = nullptr;
 
 HexusOpponentSkeletalPirate* HexusOpponentSkeletalPirate::getInstance()
@@ -16,10 +16,10 @@ HexusOpponentSkeletalPirate* HexusOpponentSkeletalPirate::getInstance()
 HexusOpponentSkeletalPirate::HexusOpponentSkeletalPirate() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Jungle_Enemies_SkeletalPirate_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
-	0.85f,
+	0.8f,
 	Vec2(-48.0f, -80.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentSkeletalPirate::StringKeyOpponentName,
+	Vec2(-16.0f, -64.0f),
+	HexusOpponentSkeletalPirate::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

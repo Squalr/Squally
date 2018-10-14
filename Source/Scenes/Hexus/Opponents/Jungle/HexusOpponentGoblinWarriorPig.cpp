@@ -1,6 +1,6 @@
 #include "HexusOpponentGoblinWarriorPig.h"
 
-const std::string HexusOpponentGoblinWarriorPig::StringKeyOpponentName = "Squally_Npc_Names_Goblin_Warrior_Pig";
+const std::string HexusOpponentGoblinWarriorPig::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GOBLIN_WARRIOR_PIG";
 HexusOpponentGoblinWarriorPig* HexusOpponentGoblinWarriorPig::instance = nullptr;
 
 HexusOpponentGoblinWarriorPig* HexusOpponentGoblinWarriorPig::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentGoblinWarriorPig::HexusOpponentGoblinWarriorPig() : HexusOpponentDa
 	1.0f,
 	Vec2(-48.0f, -32.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentGoblinWarriorPig::StringKeyOpponentName,
+	HexusOpponentGoblinWarriorPig::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

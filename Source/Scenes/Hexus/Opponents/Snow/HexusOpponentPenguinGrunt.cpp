@@ -1,6 +1,6 @@
 #include "HexusOpponentPenguinGrunt.h"
 
-const std::string HexusOpponentPenguinGrunt::StringKeyOpponentName = "Squally_Npc_Names_Penguin_Grunt";
+const std::string HexusOpponentPenguinGrunt::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PENGUIN_GRUNT";
 HexusOpponentPenguinGrunt* HexusOpponentPenguinGrunt::instance = nullptr;
 
 HexusOpponentPenguinGrunt* HexusOpponentPenguinGrunt::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentPenguinGrunt::HexusOpponentPenguinGrunt() : HexusOpponentData(
 	0.85f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentPenguinGrunt::StringKeyOpponentName,
+	HexusOpponentPenguinGrunt::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

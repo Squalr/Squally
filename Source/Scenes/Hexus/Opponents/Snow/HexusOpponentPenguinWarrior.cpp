@@ -1,6 +1,6 @@
 #include "HexusOpponentPenguinWarrior.h"
 
-const std::string HexusOpponentPenguinWarrior::StringKeyOpponentName = "Squally_Npc_Names_Penguin_Warrior";
+const std::string HexusOpponentPenguinWarrior::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PENGUIN_WARRIOR";
 HexusOpponentPenguinWarrior* HexusOpponentPenguinWarrior::instance = nullptr;
 
 HexusOpponentPenguinWarrior* HexusOpponentPenguinWarrior::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentPenguinWarrior::HexusOpponentPenguinWarrior() : HexusOpponentData(
 	0.85f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentPenguinWarrior::StringKeyOpponentName,
+	HexusOpponentPenguinWarrior::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

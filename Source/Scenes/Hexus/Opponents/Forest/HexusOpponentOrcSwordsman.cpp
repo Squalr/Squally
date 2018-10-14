@@ -1,6 +1,6 @@
 #include "HexusOpponentOrcSwordsman.h"
 
-const std::string HexusOpponentOrcSwordsman::StringKeyOpponentName = "Squally_Npc_Names_Orc_Swordsman";
+const std::string HexusOpponentOrcSwordsman::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ORC_SWORDSMAN";
 HexusOpponentOrcSwordsman* HexusOpponentOrcSwordsman::instance = nullptr;
 
 HexusOpponentOrcSwordsman* HexusOpponentOrcSwordsman::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentOrcSwordsman::HexusOpponentOrcSwordsman() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Forest_Enemies_OrcSwordsman_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentOrcSwordsman::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-32.0f, -40.0f),
+	HexusOpponentOrcSwordsman::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

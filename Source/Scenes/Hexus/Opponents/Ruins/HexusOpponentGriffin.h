@@ -15,6 +15,6 @@ private:
 	HexusOpponentGriffin();
 	~HexusOpponentGriffin();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentGriffin* instance;
 };

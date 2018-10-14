@@ -1,6 +1,6 @@
 #include "HexusOpponentShaman.h"
 
-const std::string HexusOpponentShaman::StringKeyOpponentName = "Squally_Npc_Names_Shaman";
+const std::string HexusOpponentShaman::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SHAMAN";
 HexusOpponentShaman* HexusOpponentShaman::instance = nullptr;
 
 HexusOpponentShaman* HexusOpponentShaman::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentShaman::HexusOpponentShaman() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	0.7f,
 	Vec2(-32.0f, -32.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentShaman::StringKeyOpponentName,
+	Vec2(-16.0f, -16.0f),
+	HexusOpponentShaman::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

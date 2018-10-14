@@ -15,6 +15,6 @@ private:
 	HexusOpponentTinsel();
 	~HexusOpponentTinsel();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentTinsel* instance;
 };

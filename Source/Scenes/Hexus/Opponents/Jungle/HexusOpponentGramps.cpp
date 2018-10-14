@@ -1,6 +1,6 @@
 #include "HexusOpponentGramps.h"
 
-const std::string HexusOpponentGramps::StringKeyOpponentName = "Squally_Npc_Names_Gramps";
+const std::string HexusOpponentGramps::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GRAMPS";
 HexusOpponentGramps* HexusOpponentGramps::instance = nullptr;
 
 HexusOpponentGramps* HexusOpponentGramps::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentGramps::HexusOpponentGramps() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	0.85f,
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, -48.0f),
-	HexusOpponentGramps::StringKeyOpponentName,
+	Vec2(-16.0f, -48.0f),
+	HexusOpponentGramps::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

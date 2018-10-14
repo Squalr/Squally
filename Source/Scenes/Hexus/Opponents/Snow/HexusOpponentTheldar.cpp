@@ -1,6 +1,6 @@
 #include "HexusOpponentTheldar.h"
 
-const std::string HexusOpponentTheldar::StringKeyOpponentName = "Squally_Npc_Names_Theldar";
+const std::string HexusOpponentTheldar::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THELDAR";
 HexusOpponentTheldar* HexusOpponentTheldar::instance = nullptr;
 
 HexusOpponentTheldar* HexusOpponentTheldar::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentTheldar::HexusOpponentTheldar() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentTheldar::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentTheldar::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

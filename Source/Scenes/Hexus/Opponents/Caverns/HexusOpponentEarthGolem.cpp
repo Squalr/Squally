@@ -1,6 +1,6 @@
 #include "HexusOpponentEarthGolem.h"
 
-const std::string HexusOpponentEarthGolem::StringKeyOpponentName = "Squally_Npc_Names_Earth_Golem";
+const std::string HexusOpponentEarthGolem::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_EARTH_GOLEM";
 HexusOpponentEarthGolem* HexusOpponentEarthGolem::instance = nullptr;
 
 HexusOpponentEarthGolem* HexusOpponentEarthGolem::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentEarthGolem::HexusOpponentEarthGolem() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentEarthGolem::StringKeyOpponentName,
+	Vec2(-48.0f, -96.0f),
+	HexusOpponentEarthGolem::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

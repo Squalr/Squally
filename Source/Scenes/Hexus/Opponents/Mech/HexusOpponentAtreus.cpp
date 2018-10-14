@@ -1,6 +1,6 @@
 #include "HexusOpponentAtreus.h"
 
-const std::string HexusOpponentAtreus::StringKeyOpponentName = "Squally_Npc_Names_Atreus";
+const std::string HexusOpponentAtreus::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ATREUS";
 HexusOpponentAtreus* HexusOpponentAtreus::instance = nullptr;
 
 HexusOpponentAtreus* HexusOpponentAtreus::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentAtreus::HexusOpponentAtreus() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	0.85f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentAtreus::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentAtreus::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

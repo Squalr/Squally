@@ -15,6 +15,6 @@ private:
 	HexusOpponentCryogen();
 	~HexusOpponentCryogen();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentCryogen* instance;
 };

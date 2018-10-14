@@ -1,6 +1,6 @@
 #include "HexusOpponentThion.h"
 
-const std::string HexusOpponentThion::StringKeyOpponentName = "Squally_Npc_Names_Thion";
+const std::string HexusOpponentThion::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THION";
 HexusOpponentThion* HexusOpponentThion::instance = nullptr;
 
 HexusOpponentThion* HexusOpponentThion::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentThion::HexusOpponentThion() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentThion::StringKeyOpponentName,
+	Vec2(-16.0f, -24.0f),
+	HexusOpponentThion::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

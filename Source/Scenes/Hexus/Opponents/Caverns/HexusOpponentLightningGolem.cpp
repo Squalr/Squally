@@ -1,6 +1,6 @@
 #include "HexusOpponentLightningGolem.h"
 
-const std::string HexusOpponentLightningGolem::StringKeyOpponentName = "Squally_Npc_Names_Lightning_Golem";
+const std::string HexusOpponentLightningGolem::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LIGHTNING_GOLEM";
 HexusOpponentLightningGolem* HexusOpponentLightningGolem::instance = nullptr;
 
 HexusOpponentLightningGolem* HexusOpponentLightningGolem::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentLightningGolem::HexusOpponentLightningGolem() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -128.0f),
-	Vec2(0.0f, -128.0f),
-	HexusOpponentLightningGolem::StringKeyOpponentName,
+	Vec2(-16.0f, -180.0f),
+	HexusOpponentLightningGolem::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

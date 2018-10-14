@@ -1,6 +1,6 @@
 #include "HexusOpponentExterminator.h"
 
-const std::string HexusOpponentExterminator::StringKeyOpponentName = "Squally_Npc_Names_Exterminator";
+const std::string HexusOpponentExterminator::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_EXTERMINATOR";
 HexusOpponentExterminator* HexusOpponentExterminator::instance = nullptr;
 
 HexusOpponentExterminator* HexusOpponentExterminator::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentExterminator::HexusOpponentExterminator() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentExterminator::StringKeyOpponentName,
+	Vec2(-48.0f, -64.0f),
+	HexusOpponentExterminator::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

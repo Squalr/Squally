@@ -1,6 +1,6 @@
 #include "HexusOpponentMinotaur.h"
 
-const std::string HexusOpponentMinotaur::StringKeyOpponentName = "Squally_Npc_Names_Minotaur";
+const std::string HexusOpponentMinotaur::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MINOTAUR";
 HexusOpponentMinotaur* HexusOpponentMinotaur::instance = nullptr;
 
 HexusOpponentMinotaur* HexusOpponentMinotaur::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentMinotaur::HexusOpponentMinotaur() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-32.0f, 0.0f),
-	HexusOpponentMinotaur::StringKeyOpponentName,
+	Vec2(-64.0f, -80.0f),
+	HexusOpponentMinotaur::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentAlder.h"
 
-const std::string HexusOpponentAlder::StringKeyOpponentName = "Squally_Npc_Names_Alder";
+const std::string HexusOpponentAlder::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ALDER";
 HexusOpponentAlder* HexusOpponentAlder::instance = nullptr;
 
 HexusOpponentAlder* HexusOpponentAlder::getInstance()
@@ -16,10 +16,10 @@ HexusOpponentAlder* HexusOpponentAlder::getInstance()
 HexusOpponentAlder::HexusOpponentAlder() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Caverns_Npcs_Alder_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
-	1.0f,
-	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentAlder::StringKeyOpponentName,
+	0.85f,
+	Vec2(-48.0f, -64.0f),
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentAlder::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentGarrick.h"
 
-const std::string HexusOpponentGarrick::StringKeyOpponentName = "Squally_Npc_Names_Garrick";
+const std::string HexusOpponentGarrick::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GARRICK";
 HexusOpponentGarrick* HexusOpponentGarrick::instance = nullptr;
 
 HexusOpponentGarrick* HexusOpponentGarrick::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentGarrick::HexusOpponentGarrick() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Obelisk_Npcs_Garrick_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.85f,
-	Vec2(-48.0f, -64.0f),
+	Vec2(-48.0f, -80.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentGarrick::StringKeyOpponentName,
+	HexusOpponentGarrick::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

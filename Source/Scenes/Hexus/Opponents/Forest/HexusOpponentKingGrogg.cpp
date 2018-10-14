@@ -1,6 +1,6 @@
 #include "HexusOpponentKingGrogg.h"
 
-const std::string HexusOpponentKingGrogg::StringKeyOpponentName = "Squally_Npc_Names_King_Grogg";
+const std::string HexusOpponentKingGrogg::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KING_GROGG";
 HexusOpponentKingGrogg* HexusOpponentKingGrogg::instance = nullptr;
 
 HexusOpponentKingGrogg* HexusOpponentKingGrogg::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentKingGrogg::HexusOpponentKingGrogg() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentKingGrogg::StringKeyOpponentName,
+	Vec2(-32.0f, -112.0f),
+	HexusOpponentKingGrogg::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

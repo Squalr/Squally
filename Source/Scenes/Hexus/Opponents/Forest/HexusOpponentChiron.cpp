@@ -1,6 +1,6 @@
 #include "HexusOpponentChiron.h"
 
-const std::string HexusOpponentChiron::StringKeyOpponentName = "Squally_Npc_Names_Chiron";
+const std::string HexusOpponentChiron::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CHIRON";
 HexusOpponentChiron* HexusOpponentChiron::instance = nullptr;
 
 HexusOpponentChiron* HexusOpponentChiron::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentChiron::HexusOpponentChiron() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentChiron::StringKeyOpponentName,
+	Vec2(-40.0f, -24.0f),
+	HexusOpponentChiron::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentAzmus.h"
 
-const std::string HexusOpponentAzmus::StringKeyOpponentName = "Squally_Npc_Names_Azmus";
+const std::string HexusOpponentAzmus::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_AZMUS";
 HexusOpponentAzmus* HexusOpponentAzmus::instance = nullptr;
 
 HexusOpponentAzmus* HexusOpponentAzmus::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentAzmus::HexusOpponentAzmus() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentAzmus::StringKeyOpponentName,
+	Vec2(-16.0f, -40.0f),
+	HexusOpponentAzmus::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

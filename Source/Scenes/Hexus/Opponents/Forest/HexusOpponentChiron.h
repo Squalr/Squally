@@ -15,6 +15,6 @@ private:
 	HexusOpponentChiron();
 	~HexusOpponentChiron();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentChiron* instance;
 };

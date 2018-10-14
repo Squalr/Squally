@@ -1,6 +1,6 @@
 #include "HexusOpponentUrsula.h"
 
-const std::string HexusOpponentUrsula::StringKeyOpponentName = "Squally_Npc_Names_Ursula";
+const std::string HexusOpponentUrsula::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_URSULA";
 HexusOpponentUrsula* HexusOpponentUrsula::instance = nullptr;
 
 HexusOpponentUrsula* HexusOpponentUrsula::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentUrsula::HexusOpponentUrsula() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentUrsula::StringKeyOpponentName,
+	Vec2(-16.0f, -40.0f),
+	HexusOpponentUrsula::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

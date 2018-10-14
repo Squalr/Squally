@@ -1,6 +1,6 @@
 #include "HexusOpponentCleopatra.h"
 
-const std::string HexusOpponentCleopatra::StringKeyOpponentName = "Squally_Npc_Names_Cleopatra";
+const std::string HexusOpponentCleopatra::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CLEOPATRA";
 HexusOpponentCleopatra* HexusOpponentCleopatra::instance = nullptr;
 
 HexusOpponentCleopatra* HexusOpponentCleopatra::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentCleopatra::HexusOpponentCleopatra() : HexusOpponentData(
 	0.9f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentCleopatra::StringKeyOpponentName,
+	HexusOpponentCleopatra::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

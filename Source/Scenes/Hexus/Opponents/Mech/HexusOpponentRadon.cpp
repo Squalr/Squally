@@ -1,6 +1,6 @@
 #include "HexusOpponentRadon.h"
 
-const std::string HexusOpponentRadon::StringKeyOpponentName = "Squally_Npc_Names_Radon";
+const std::string HexusOpponentRadon::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RADON";
 HexusOpponentRadon* HexusOpponentRadon::instance = nullptr;
 
 HexusOpponentRadon* HexusOpponentRadon::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentRadon::HexusOpponentRadon() : HexusOpponentData(
 	0.85f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentRadon::StringKeyOpponentName,
+	HexusOpponentRadon::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

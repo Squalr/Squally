@@ -1,6 +1,6 @@
 #include "HexusOpponentAnubisPup.h"
 
-const std::string HexusOpponentAnubisPup::StringKeyOpponentName = "Squally_Npc_Names_Anubis_Pup";
+const std::string HexusOpponentAnubisPup::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ANUBIS_PUP";
 HexusOpponentAnubisPup* HexusOpponentAnubisPup::instance = nullptr;
 
 HexusOpponentAnubisPup* HexusOpponentAnubisPup::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentAnubisPup::HexusOpponentAnubisPup() : HexusOpponentData(
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentAnubisPup::StringKeyOpponentName,
+	HexusOpponentAnubisPup::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

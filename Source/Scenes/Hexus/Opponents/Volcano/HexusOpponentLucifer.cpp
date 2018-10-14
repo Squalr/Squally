@@ -1,6 +1,6 @@
 #include "HexusOpponentLucifer.h"
 
-const std::string HexusOpponentLucifer::StringKeyOpponentName = "Squally_Npc_Names_Lucifer";
+const std::string HexusOpponentLucifer::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LUCIFER";
 HexusOpponentLucifer* HexusOpponentLucifer::instance = nullptr;
 
 HexusOpponentLucifer* HexusOpponentLucifer::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentLucifer* HexusOpponentLucifer::getInstance()
 
 HexusOpponentLucifer::HexusOpponentLucifer() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Npcs_Lucifer_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentLucifer::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentLucifer::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

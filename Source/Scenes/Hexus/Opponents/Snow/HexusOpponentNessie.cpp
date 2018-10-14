@@ -1,6 +1,6 @@
 #include "HexusOpponentNessie.h"
 
-const std::string HexusOpponentNessie::StringKeyOpponentName = "Squally_Npc_Names_Nessie";
+const std::string HexusOpponentNessie::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_NESSIE";
 HexusOpponentNessie* HexusOpponentNessie::instance = nullptr;
 
 HexusOpponentNessie* HexusOpponentNessie::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentNessie::HexusOpponentNessie() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentNessie::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentNessie::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

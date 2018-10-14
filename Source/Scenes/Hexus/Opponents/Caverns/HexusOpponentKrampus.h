@@ -15,6 +15,6 @@ private:
 	HexusOpponentKrampus();
 	~HexusOpponentKrampus();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentKrampus* instance;
 };

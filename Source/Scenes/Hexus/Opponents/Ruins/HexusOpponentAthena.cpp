@@ -1,6 +1,6 @@
 #include "HexusOpponentAthena.h"
 
-const std::string HexusOpponentAthena::StringKeyOpponentName = "Squally_Npc_Names_Athena";
+const std::string HexusOpponentAthena::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ATHENA";
 HexusOpponentAthena* HexusOpponentAthena::instance = nullptr;
 
 HexusOpponentAthena* HexusOpponentAthena::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentAthena::HexusOpponentAthena() : HexusOpponentData(
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentAthena::StringKeyOpponentName,
+	HexusOpponentAthena::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

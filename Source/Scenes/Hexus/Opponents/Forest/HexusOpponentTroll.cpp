@@ -1,6 +1,6 @@
 #include "HexusOpponentTroll.h"
 
-const std::string HexusOpponentTroll::StringKeyOpponentName = "Squally_Npc_Names_Troll";
+const std::string HexusOpponentTroll::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TROLL";
 HexusOpponentTroll* HexusOpponentTroll::instance = nullptr;
 
 HexusOpponentTroll* HexusOpponentTroll::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentTroll::HexusOpponentTroll() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentTroll::StringKeyOpponentName,
+	Vec2(-40.0f, -48.0f),
+	HexusOpponentTroll::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

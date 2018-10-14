@@ -1,6 +1,6 @@
 #include "HexusOpponentRaven.h"
 
-const std::string HexusOpponentRaven::StringKeyOpponentName = "Squally_Npc_Names_Raven";
+const std::string HexusOpponentRaven::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RAVEN";
 HexusOpponentRaven* HexusOpponentRaven::instance = nullptr;
 
 HexusOpponentRaven* HexusOpponentRaven::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentRaven::HexusOpponentRaven() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Castle_Npcs_Raven_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	0.85f,
-	Vec2(-32.0f, -32.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentRaven::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-24.0f, -32.0f),
+	HexusOpponentRaven::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

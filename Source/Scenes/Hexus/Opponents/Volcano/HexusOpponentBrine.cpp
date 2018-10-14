@@ -1,6 +1,6 @@
 #include "HexusOpponentBrine.h"
 
-const std::string HexusOpponentBrine::StringKeyOpponentName = "Squally_Npc_Names_Brine";
+const std::string HexusOpponentBrine::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BRINE";
 HexusOpponentBrine* HexusOpponentBrine::instance = nullptr;
 
 HexusOpponentBrine* HexusOpponentBrine::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentBrine* HexusOpponentBrine::getInstance()
 
 HexusOpponentBrine::HexusOpponentBrine() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Npcs_Brine_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentBrine::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentBrine::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

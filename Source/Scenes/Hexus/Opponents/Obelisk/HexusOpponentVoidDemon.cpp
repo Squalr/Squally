@@ -1,6 +1,6 @@
 #include "HexusOpponentVoidDemon.h"
 
-const std::string HexusOpponentVoidDemon::StringKeyOpponentName = "Squally_Npc_Names_Void_Demon";
+const std::string HexusOpponentVoidDemon::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VOID_DEMON";
 HexusOpponentVoidDemon* HexusOpponentVoidDemon::instance = nullptr;
 
 HexusOpponentVoidDemon* HexusOpponentVoidDemon::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentVoidDemon::HexusOpponentVoidDemon() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.7f,
 	Vec2(-48.0f, -24.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentVoidDemon::StringKeyOpponentName,
+	Vec2(-48.0f, -8.0f),
+	HexusOpponentVoidDemon::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

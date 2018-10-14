@@ -1,6 +1,6 @@
 #include "HexusOpponentDrak.h"
 
-const std::string HexusOpponentDrak::StringKeyOpponentName = "Squally_Npc_Names_Drak";
+const std::string HexusOpponentDrak::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DRAK";
 HexusOpponentDrak* HexusOpponentDrak::instance = nullptr;
 
 HexusOpponentDrak* HexusOpponentDrak::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentDrak::HexusOpponentDrak() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -64.0f),
-	HexusOpponentDrak::StringKeyOpponentName,
+	Vec2(-16.0f, -48.0f),
+	HexusOpponentDrak::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

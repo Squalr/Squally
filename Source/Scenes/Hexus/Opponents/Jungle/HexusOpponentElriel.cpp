@@ -1,6 +1,6 @@
 #include "HexusOpponentElriel.h"
 
-const std::string HexusOpponentElriel::StringKeyOpponentName = "Squally_Npc_Names_Elriel";
+const std::string HexusOpponentElriel::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ELRIEL";
 HexusOpponentElriel* HexusOpponentElriel::instance = nullptr;
 
 HexusOpponentElriel* HexusOpponentElriel::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentElriel::HexusOpponentElriel() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -64.0f),
-	HexusOpponentElriel::StringKeyOpponentName,
+	Vec2(-16.0f, -48.0f),
+	HexusOpponentElriel::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

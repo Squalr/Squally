@@ -1,6 +1,6 @@
 #include "HexusOpponentOrcWarrior.h"
 
-const std::string HexusOpponentOrcWarrior::StringKeyOpponentName = "Squally_Npc_Names_Orc_Warrior";
+const std::string HexusOpponentOrcWarrior::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ORC_WARRIOR";
 HexusOpponentOrcWarrior* HexusOpponentOrcWarrior::instance = nullptr;
 
 HexusOpponentOrcWarrior* HexusOpponentOrcWarrior::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentOrcWarrior::HexusOpponentOrcWarrior() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -48.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentOrcWarrior::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	HexusOpponentOrcWarrior::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

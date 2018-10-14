@@ -1,6 +1,6 @@
 #include "HexusOpponentYeti.h"
 
-const std::string HexusOpponentYeti::StringKeyOpponentName = "Squally_Npc_Names_Yeti";
+const std::string HexusOpponentYeti::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_YETI";
 HexusOpponentYeti* HexusOpponentYeti::instance = nullptr;
 
 HexusOpponentYeti* HexusOpponentYeti::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentYeti::HexusOpponentYeti() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Snow_Enemies_Yeti_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.5f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentYeti::StringKeyOpponentName,
+	Vec2(-48.0f, -144.0f),
+	Vec2(-16.0f, -144.0f),
+	HexusOpponentYeti::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentViper.h"
 
-const std::string HexusOpponentViper::StringKeyOpponentName = "Squally_Npc_Names_Viper";
+const std::string HexusOpponentViper::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VIPER";
 HexusOpponentViper* HexusOpponentViper::instance = nullptr;
 
 HexusOpponentViper* HexusOpponentViper::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentViper::HexusOpponentViper() : HexusOpponentData(
 	0.85f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentViper::StringKeyOpponentName,
+	HexusOpponentViper::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

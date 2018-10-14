@@ -1,6 +1,6 @@
 #include "HexusOpponentUndead.h"
 
-const std::string HexusOpponentUndead::StringKeyOpponentName = "Squally_Npc_Names_Undead";
+const std::string HexusOpponentUndead::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_UNDEAD";
 HexusOpponentUndead* HexusOpponentUndead::instance = nullptr;
 
 HexusOpponentUndead* HexusOpponentUndead::getInstance()
@@ -14,12 +14,12 @@ HexusOpponentUndead* HexusOpponentUndead::getInstance()
 }
 
 HexusOpponentUndead::HexusOpponentUndead() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Ruins_Npcs_Athena_Animations,
+	Resources::Entities_Platformer_Environment_Obelisk_Enemies_Undead_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
-	1.0f,
+	0.9f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentUndead::StringKeyOpponentName,
+	Vec2(-16.0f, -40.0f),
+	HexusOpponentUndead::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentMara.h"
 
-const std::string HexusOpponentMara::StringKeyOpponentName = "Squally_Npc_Names_Mara";
+const std::string HexusOpponentMara::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MARA";
 HexusOpponentMara* HexusOpponentMara::instance = nullptr;
 
 HexusOpponentMara* HexusOpponentMara::getInstance()
@@ -16,10 +16,10 @@ HexusOpponentMara* HexusOpponentMara::getInstance()
 HexusOpponentMara::HexusOpponentMara() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Mech_Npcs_Mara_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
-	0.85f,
+	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentMara::StringKeyOpponentName,
+	HexusOpponentMara::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

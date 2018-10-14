@@ -1,6 +1,6 @@
 #include "HexusOpponentBrock.h"
 
-const std::string HexusOpponentBrock::StringKeyOpponentName = "Squally_Npc_Names_Brock";
+const std::string HexusOpponentBrock::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BROCK";
 HexusOpponentBrock* HexusOpponentBrock::instance = nullptr;
 
 HexusOpponentBrock* HexusOpponentBrock::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentBrock::HexusOpponentBrock() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentBrock::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentBrock::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

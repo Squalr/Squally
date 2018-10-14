@@ -1,6 +1,6 @@
 #include "HexusOpponentThug.h"
 
-const std::string HexusOpponentThug::StringKeyOpponentName = "Squally_Npc_Names_Thug";
+const std::string HexusOpponentThug::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THUG";
 HexusOpponentThug* HexusOpponentThug::instance = nullptr;
 
 HexusOpponentThug* HexusOpponentThug::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentThug::HexusOpponentThug() : HexusOpponentData(
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentThug::StringKeyOpponentName,
+	HexusOpponentThug::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

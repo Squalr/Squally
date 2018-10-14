@@ -1,6 +1,6 @@
 #include "HexusOpponentSnowFiend.h"
 
-const std::string HexusOpponentSnowFiend::StringKeyOpponentName = "Squally_Npc_Names_Snow_Fiend";
+const std::string HexusOpponentSnowFiend::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SNOW_FIEND";
 HexusOpponentSnowFiend* HexusOpponentSnowFiend::instance = nullptr;
 
 HexusOpponentSnowFiend* HexusOpponentSnowFiend::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentSnowFiend::HexusOpponentSnowFiend() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Snow_Enemies_SnowFiend_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
+	Vec2(-48.0f, -48.0f),
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentSnowFiend::StringKeyOpponentName,
+	HexusOpponentSnowFiend::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

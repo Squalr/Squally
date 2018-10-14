@@ -1,6 +1,6 @@
 #include "HexusOpponentMinos.h"
 
-const std::string HexusOpponentMinos::StringKeyOpponentName = "Squally_Npc_Names_Minos";
+const std::string HexusOpponentMinos::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MINOS";
 HexusOpponentMinos* HexusOpponentMinos::instance = nullptr;
 
 HexusOpponentMinos* HexusOpponentMinos::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentMinos::HexusOpponentMinos() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -64.0f),
-	HexusOpponentMinos::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentMinos::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentScarecrow.h"
 
-const std::string HexusOpponentScarecrow::StringKeyOpponentName = "Squally_Npc_Names_Scarecrow";
+const std::string HexusOpponentScarecrow::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SCARECROW";
 HexusOpponentScarecrow* HexusOpponentScarecrow::instance = nullptr;
 
 HexusOpponentScarecrow* HexusOpponentScarecrow::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentScarecrow::HexusOpponentScarecrow() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -96.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentScarecrow::StringKeyOpponentName,
+	Vec2(-16.0f, -128.0f),
+	HexusOpponentScarecrow::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

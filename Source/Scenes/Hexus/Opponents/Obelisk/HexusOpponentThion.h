@@ -15,6 +15,6 @@ private:
 	HexusOpponentThion();
 	~HexusOpponentThion();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentThion* instance;
 };
