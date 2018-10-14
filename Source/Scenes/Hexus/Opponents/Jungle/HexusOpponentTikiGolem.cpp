@@ -27,29 +27,16 @@ HexusOpponentTikiGolem::HexusOpponentTikiGolem() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex10),
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal9),
 	},
-	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary4),
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary5),
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary6),
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary7),
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary8),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal5),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal6),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal7),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal8),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex4),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex5),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex6),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex7),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex8),
-		CardList::getInstance()->cardListByName->at(CardKeys::Subtraction),
-		CardList::getInstance()->cardListByName->at(CardKeys::Flip3),
-		CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
-		CardList::getInstance()->cardListByName->at(CardKeys::Addition),
-		CardList::getInstance()->cardListByName->at(CardKeys::ShiftLeft),
-		CardList::getInstance()->cardListByName->at(CardKeys::ShiftRight),
-	})
+	HexusOpponentData::generateDeck(25, 0, 5, 0.33f, 0.33f,
+		{
+			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
+			CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
+			CardList::getInstance()->cardListByName->at(CardKeys::LogicalOr),
+			CardList::getInstance()->cardListByName->at(CardKeys::LogicalXor),
+			CardList::getInstance()->cardListByName->at(CardKeys::ShiftLeft),
+			CardList::getInstance()->cardListByName->at(CardKeys::ShiftRight),
+		})
+	)
 {
 }
 
