@@ -15,6 +15,6 @@ private:
 	HexusOpponentGoblinWarriorPig();
 	~HexusOpponentGoblinWarriorPig();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentGoblinWarriorPig* instance;
 };

@@ -1,6 +1,6 @@
 #include "HexusOpponentIrmik.h"
 
-const std::string HexusOpponentIrmik::StringKeyOpponentName = "Squally_Npc_Names_Irmik";
+const std::string HexusOpponentIrmik::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_IRMIK";
 HexusOpponentIrmik* HexusOpponentIrmik::instance = nullptr;
 
 HexusOpponentIrmik* HexusOpponentIrmik::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentIrmik::HexusOpponentIrmik() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Snow_Npcs_Irmik_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentIrmik::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-16.0f, -24.0f),
+	HexusOpponentIrmik::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

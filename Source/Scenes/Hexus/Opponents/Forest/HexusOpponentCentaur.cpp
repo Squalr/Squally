@@ -1,6 +1,6 @@
 #include "HexusOpponentCentaur.h"
 
-const std::string HexusOpponentCentaur::StringKeyOpponentName = "Squally_Npc_Names_Centaur";
+const std::string HexusOpponentCentaur::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CENTAUR";
 HexusOpponentCentaur* HexusOpponentCentaur::instance = nullptr;
 
 HexusOpponentCentaur* HexusOpponentCentaur::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentCentaur::HexusOpponentCentaur() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(0.0f, -96.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentCentaur::StringKeyOpponentName,
+	Vec2(-64.0f, -96.0f),
+	HexusOpponentCentaur::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

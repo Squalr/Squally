@@ -1,6 +1,6 @@
 #include "HexusOpponentAspen.h"
 
-const std::string HexusOpponentAspen::StringKeyOpponentName = "Squally_Npc_Names_Aspen";
+const std::string HexusOpponentAspen::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ASPEN";
 HexusOpponentAspen* HexusOpponentAspen::instance = nullptr;
 
 HexusOpponentAspen* HexusOpponentAspen::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentAspen::HexusOpponentAspen() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentAspen::StringKeyOpponentName,
+	Vec2(-24.0f, -32.0f),
+	HexusOpponentAspen::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentGriffin.h"
 
-const std::string HexusOpponentGriffin::StringKeyOpponentName = "Squally_Npc_Names_Griffin";
+const std::string HexusOpponentGriffin::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GRIFFIN";
 HexusOpponentGriffin* HexusOpponentGriffin::instance = nullptr;
 
 HexusOpponentGriffin* HexusOpponentGriffin::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentGriffin::HexusOpponentGriffin() : HexusOpponentData(
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentGriffin::StringKeyOpponentName,
+	HexusOpponentGriffin::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

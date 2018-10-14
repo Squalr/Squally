@@ -1,6 +1,6 @@
 #include "HexusOpponentLavaGolem.h"
 
-const std::string HexusOpponentLavaGolem::StringKeyOpponentName = "Squally_Npc_Names_Lava_Golem";
+const std::string HexusOpponentLavaGolem::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LAVA_GOLEM";
 HexusOpponentLavaGolem* HexusOpponentLavaGolem::instance = nullptr;
 
 HexusOpponentLavaGolem* HexusOpponentLavaGolem::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentLavaGolem* HexusOpponentLavaGolem::getInstance()
 
 HexusOpponentLavaGolem::HexusOpponentLavaGolem() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Enemies_LavaGolem_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentLavaGolem::StringKeyOpponentName,
+	Vec2(-32.0f, -80.0f),
+	HexusOpponentLavaGolem::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

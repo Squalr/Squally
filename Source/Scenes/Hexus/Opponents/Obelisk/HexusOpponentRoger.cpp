@@ -1,6 +1,6 @@
 #include "HexusOpponentRoger.h"
 
-const std::string HexusOpponentRoger::StringKeyOpponentName = "Squally_Npc_Names_Roger";
+const std::string HexusOpponentRoger::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ROGER";
 HexusOpponentRoger* HexusOpponentRoger::instance = nullptr;
 
 HexusOpponentRoger* HexusOpponentRoger::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentRoger::HexusOpponentRoger() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentRoger::StringKeyOpponentName,
+	Vec2(-16.0f, -40.0f),
+	HexusOpponentRoger::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

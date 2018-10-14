@@ -1,6 +1,6 @@
 #include "HexusOpponentGoblinGruntBoar.h"
 
-const std::string HexusOpponentGoblinGruntBoar::StringKeyOpponentName = "Squally_Npc_Names_Goblin_Grunt_Boar";
+const std::string HexusOpponentGoblinGruntBoar::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GOBLIN_GRUNT_BOAR";
 HexusOpponentGoblinGruntBoar* HexusOpponentGoblinGruntBoar::instance = nullptr;
 
 HexusOpponentGoblinGruntBoar* HexusOpponentGoblinGruntBoar::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentGoblinGruntBoar::HexusOpponentGoblinGruntBoar() : HexusOpponentData
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -32.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentGoblinGruntBoar::StringKeyOpponentName,
+	Vec2(-16.0f, -56.0f),
+	HexusOpponentGoblinGruntBoar::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentPan.h"
 
-const std::string HexusOpponentPan::StringKeyOpponentName = "Squally_Npc_Names_Pan";
+const std::string HexusOpponentPan::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PAN";
 HexusOpponentPan* HexusOpponentPan::instance = nullptr;
 
 HexusOpponentPan* HexusOpponentPan::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentPan* HexusOpponentPan::getInstance()
 
 HexusOpponentPan::HexusOpponentPan() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Npcs_Pan_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentPan::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentPan::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

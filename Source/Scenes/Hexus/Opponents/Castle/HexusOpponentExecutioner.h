@@ -15,6 +15,6 @@ private:
 	HexusOpponentExecutioner();
 	~HexusOpponentExecutioner();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentExecutioner* instance;
 };

@@ -1,6 +1,6 @@
 #include "HexusOpponentZombieErlic.h"
 
-const std::string HexusOpponentZombieErlic::StringKeyOpponentName = "Squally_Npc_Names_Zombie_Erlic";
+const std::string HexusOpponentZombieErlic::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ZOMBIE_ERLIC";
 HexusOpponentZombieErlic* HexusOpponentZombieErlic::instance = nullptr;
 
 HexusOpponentZombieErlic* HexusOpponentZombieErlic::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentZombieErlic::HexusOpponentZombieErlic() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentZombieErlic::StringKeyOpponentName,
+	Vec2(-16.0f, -40.0f),
+	HexusOpponentZombieErlic::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

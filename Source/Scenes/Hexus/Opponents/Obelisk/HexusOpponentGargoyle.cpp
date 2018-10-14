@@ -1,6 +1,6 @@
 #include "HexusOpponentGargoyle.h"
 
-const std::string HexusOpponentGargoyle::StringKeyOpponentName = "Squally_Npc_Names_Gargoyle";
+const std::string HexusOpponentGargoyle::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GARGOYLE";
 HexusOpponentGargoyle* HexusOpponentGargoyle::instance = nullptr;
 
 HexusOpponentGargoyle* HexusOpponentGargoyle::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentGargoyle::HexusOpponentGargoyle() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentGargoyle::StringKeyOpponentName,
+	Vec2(-32.0f, -80.0f),
+	HexusOpponentGargoyle::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentDudly.h"
 
-const std::string HexusOpponentDudly::StringKeyOpponentName = "Squally_Npc_Names_Dudly";
+const std::string HexusOpponentDudly::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DUDLY";
 HexusOpponentDudly* HexusOpponentDudly::instance = nullptr;
 
 HexusOpponentDudly* HexusOpponentDudly::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentDudly::HexusOpponentDudly() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Forest_Npcs_Dudly_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
-	Vec2(-32.0f, -32.0f),
-	Vec2(-32.0f, -32.0f),
-	HexusOpponentDudly::StringKeyOpponentName,
+	Vec2(-32.0f, -72.0f),
+	Vec2(-16.0f, -48.0f),
+	HexusOpponentDudly::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

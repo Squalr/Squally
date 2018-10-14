@@ -1,6 +1,6 @@
 #include "HexusOpponentMechGolemDark.h"
 
-const std::string HexusOpponentMechGolemDark::StringKeyOpponentName = "Squally_Npc_Names_Mech_Golem_Dark";
+const std::string HexusOpponentMechGolemDark::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MECH_GOLEM_DARK";
 HexusOpponentMechGolemDark* HexusOpponentMechGolemDark::instance = nullptr;
 
 HexusOpponentMechGolemDark* HexusOpponentMechGolemDark::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentMechGolemDark::HexusOpponentMechGolemDark() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	0.5f,
 	Vec2(-48.0f, -144.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentMechGolemDark::StringKeyOpponentName,
+	Vec2(-48.0f, -144.0f),
+	HexusOpponentMechGolemDark::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

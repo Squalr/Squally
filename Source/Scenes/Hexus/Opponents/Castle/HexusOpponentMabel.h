@@ -15,6 +15,6 @@ private:
 	HexusOpponentMabel();
 	~HexusOpponentMabel();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentMabel* instance;
 };

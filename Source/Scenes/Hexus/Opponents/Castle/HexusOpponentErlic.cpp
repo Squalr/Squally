@@ -1,6 +1,6 @@
 #include "HexusOpponentErlic.h"
 
-const std::string HexusOpponentErlic::StringKeyOpponentName = "Squally_Npc_Names_Erlic";
+const std::string HexusOpponentErlic::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ERLIC";
 HexusOpponentErlic* HexusOpponentErlic::instance = nullptr;
 
 HexusOpponentErlic* HexusOpponentErlic::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentErlic::HexusOpponentErlic() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentErlic::StringKeyOpponentName,
+	Vec2(-16.0f, -40.0f),
+	HexusOpponentErlic::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

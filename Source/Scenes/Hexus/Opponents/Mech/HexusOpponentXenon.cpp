@@ -1,6 +1,6 @@
 #include "HexusOpponentXenon.h"
 
-const std::string HexusOpponentXenon::StringKeyOpponentName = "Squally_Npc_Names_Xenon";
+const std::string HexusOpponentXenon::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_XENON";
 HexusOpponentXenon* HexusOpponentXenon::instance = nullptr;
 
 HexusOpponentXenon* HexusOpponentXenon::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentXenon::HexusOpponentXenon() : HexusOpponentData(
 	0.85f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentXenon::StringKeyOpponentName,
+	HexusOpponentXenon::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

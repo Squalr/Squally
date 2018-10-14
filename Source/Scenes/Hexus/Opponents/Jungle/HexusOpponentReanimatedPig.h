@@ -15,6 +15,6 @@ private:
 	HexusOpponentReanimatedPig();
 	~HexusOpponentReanimatedPig();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentReanimatedPig* instance;
 };

@@ -15,6 +15,6 @@ private:
 	HexusOpponentOrcGrunt();
 	~HexusOpponentOrcGrunt();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentOrcGrunt* instance;
 };

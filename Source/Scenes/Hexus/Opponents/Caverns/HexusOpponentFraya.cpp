@@ -1,6 +1,6 @@
 #include "HexusOpponentFraya.h"
 
-const std::string HexusOpponentFraya::StringKeyOpponentName = "Squally_Npc_Names_Fraya";
+const std::string HexusOpponentFraya::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FRAYA";
 HexusOpponentFraya* HexusOpponentFraya::instance = nullptr;
 
 HexusOpponentFraya* HexusOpponentFraya::getInstance()
@@ -16,10 +16,10 @@ HexusOpponentFraya* HexusOpponentFraya::getInstance()
 HexusOpponentFraya::HexusOpponentFraya() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Caverns_Npcs_Fraya_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
-	1.0f,
-	Vec2(-32.0f, -32.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentFraya::StringKeyOpponentName,
+	0.85f,
+	Vec2(-32.0f, -40.0f),
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentFraya::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

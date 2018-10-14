@@ -1,6 +1,6 @@
 #include "HexusOpponentPrincessPepper.h"
 
-const std::string HexusOpponentPrincessPepper::StringKeyOpponentName = "Squally_Npc_Names_Princess_Pepper";
+const std::string HexusOpponentPrincessPepper::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PRINCESS_PEPPER";
 HexusOpponentPrincessPepper* HexusOpponentPrincessPepper::instance = nullptr;
 
 HexusOpponentPrincessPepper* HexusOpponentPrincessPepper::getInstance()
@@ -16,10 +16,10 @@ HexusOpponentPrincessPepper* HexusOpponentPrincessPepper::getInstance()
 HexusOpponentPrincessPepper::HexusOpponentPrincessPepper() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Snow_Npcs_PrincessPepper_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
-	1.0f,
+	0.85f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentPrincessPepper::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentPrincessPepper::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

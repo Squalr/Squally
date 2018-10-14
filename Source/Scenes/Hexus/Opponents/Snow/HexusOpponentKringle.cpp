@@ -1,6 +1,6 @@
 #include "HexusOpponentKringle.h"
 
-const std::string HexusOpponentKringle::StringKeyOpponentName = "Squally_Npc_Names_Kringle";
+const std::string HexusOpponentKringle::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KRINGLE";
 HexusOpponentKringle* HexusOpponentKringle::instance = nullptr;
 
 HexusOpponentKringle* HexusOpponentKringle::getInstance()
@@ -14,12 +14,12 @@ HexusOpponentKringle* HexusOpponentKringle::getInstance()
 }
 
 HexusOpponentKringle::HexusOpponentKringle() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Obelisk_Npcs_Necron_Animations,
+	Resources::Entities_Platformer_Environment_Snow_Npcs_Kringle_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
-	1.0f,
+	0.85f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentKringle::StringKeyOpponentName,
+	HexusOpponentKringle::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

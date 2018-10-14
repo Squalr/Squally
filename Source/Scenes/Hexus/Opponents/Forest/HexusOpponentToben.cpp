@@ -1,6 +1,6 @@
 #include "HexusOpponentToben.h"
 
-const std::string HexusOpponentToben::StringKeyOpponentName = "Squally_Npc_Names_Toben";
+const std::string HexusOpponentToben::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TOBEN";
 HexusOpponentToben* HexusOpponentToben::instance = nullptr;
 
 HexusOpponentToben* HexusOpponentToben::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentToben::HexusOpponentToben() : HexusOpponentData(
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentToben::StringKeyOpponentName,
+	HexusOpponentToben::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

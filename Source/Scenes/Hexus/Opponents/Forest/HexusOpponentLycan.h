@@ -15,6 +15,6 @@ private:
 	HexusOpponentLycan();
 	~HexusOpponentLycan();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentLycan* instance;
 };

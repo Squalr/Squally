@@ -1,6 +1,6 @@
 #include "HexusOpponentGarin.h"
 
-const std::string HexusOpponentGarin::StringKeyOpponentName = "Squally_Npc_Names_Garin";
+const std::string HexusOpponentGarin::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GARIN";
 HexusOpponentGarin* HexusOpponentGarin::instance = nullptr;
 
 HexusOpponentGarin* HexusOpponentGarin::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentGarin::HexusOpponentGarin() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	0.85f,
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentGarin::StringKeyOpponentName,
+	Vec2(-32.0f, -48.0f),
+	HexusOpponentGarin::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

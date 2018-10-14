@@ -1,6 +1,6 @@
 #include "HexusOpponentRobin.h"
 
-const std::string HexusOpponentRobin::StringKeyOpponentName = "Squally_Npc_Names_Robin";
+const std::string HexusOpponentRobin::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ROBIN";
 HexusOpponentRobin* HexusOpponentRobin::instance = nullptr;
 
 HexusOpponentRobin* HexusOpponentRobin::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentRobin::HexusOpponentRobin() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentRobin::StringKeyOpponentName,
+	Vec2(-16.0f, -24.0f),
+	HexusOpponentRobin::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

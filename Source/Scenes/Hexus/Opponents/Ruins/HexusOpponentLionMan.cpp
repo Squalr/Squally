@@ -1,6 +1,6 @@
 #include "HexusOpponentLionMan.h"
 
-const std::string HexusOpponentLionMan::StringKeyOpponentName = "Squally_Npc_Names_LionMan";
+const std::string HexusOpponentLionMan::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LION_MAN";
 HexusOpponentLionMan* HexusOpponentLionMan::instance = nullptr;
 
 HexusOpponentLionMan* HexusOpponentLionMan::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentLionMan::HexusOpponentLionMan() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-24.0f, -24.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentLionMan::StringKeyOpponentName,
+	Vec2(-16.0f, -64.0f),
+	HexusOpponentLionMan::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

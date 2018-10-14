@@ -1,6 +1,6 @@
 #include "HexusOpponentPiper.h"
 
-const std::string HexusOpponentPiper::StringKeyOpponentName = "Squally_Npc_Names_Piper";
+const std::string HexusOpponentPiper::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PIPER";
 HexusOpponentPiper* HexusOpponentPiper::instance = nullptr;
 
 HexusOpponentPiper* HexusOpponentPiper::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentPiper::HexusOpponentPiper() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentPiper::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentPiper::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

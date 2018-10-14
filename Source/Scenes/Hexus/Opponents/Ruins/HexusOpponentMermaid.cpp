@@ -1,6 +1,6 @@
 #include "HexusOpponentMermaid.h"
 
-const std::string HexusOpponentMermaid::StringKeyOpponentName = "Squally_Npc_Names_Mermaid";
+const std::string HexusOpponentMermaid::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MERMAID";
 HexusOpponentMermaid* HexusOpponentMermaid::instance = nullptr;
 
 HexusOpponentMermaid* HexusOpponentMermaid::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentMermaid::HexusOpponentMermaid() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	0.85f,
 	Vec2(-48.0f, -144.0f),
-	Vec2(0.0f, -192.0f),
-	HexusOpponentMermaid::StringKeyOpponentName,
+	Vec2(0.0f, -160.0f),
+	HexusOpponentMermaid::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

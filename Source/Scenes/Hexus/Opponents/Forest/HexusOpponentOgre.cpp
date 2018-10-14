@@ -1,6 +1,6 @@
 #include "HexusOpponentOgre.h"
 
-const std::string HexusOpponentOgre::StringKeyOpponentName = "Squally_Npc_Names_Ogre";
+const std::string HexusOpponentOgre::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_OGRE";
 HexusOpponentOgre* HexusOpponentOgre::instance = nullptr;
 
 HexusOpponentOgre* HexusOpponentOgre::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentOgre::HexusOpponentOgre() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentOgre::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	HexusOpponentOgre::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

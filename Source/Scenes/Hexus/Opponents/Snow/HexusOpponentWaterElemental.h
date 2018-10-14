@@ -15,6 +15,6 @@ private:
 	HexusOpponentWaterElemental();
 	~HexusOpponentWaterElemental();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentWaterElemental* instance;
 };

@@ -15,6 +15,6 @@ private:
 	HexusOpponentReanimatedFighter();
 	~HexusOpponentReanimatedFighter();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentReanimatedFighter* instance;
 };

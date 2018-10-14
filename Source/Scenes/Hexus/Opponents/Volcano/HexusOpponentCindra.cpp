@@ -1,6 +1,6 @@
 #include "HexusOpponentCindra.h"
 
-const std::string HexusOpponentCindra::StringKeyOpponentName = "Squally_Npc_Names_Cindra";
+const std::string HexusOpponentCindra::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CINDRA";
 HexusOpponentCindra* HexusOpponentCindra::instance = nullptr;
 
 HexusOpponentCindra* HexusOpponentCindra::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentCindra* HexusOpponentCindra::getInstance()
 
 HexusOpponentCindra::HexusOpponentCindra() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Npcs_Cindra_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.85f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentCindra::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentCindra::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

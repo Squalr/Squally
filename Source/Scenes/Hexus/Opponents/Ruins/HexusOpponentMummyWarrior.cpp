@@ -1,6 +1,6 @@
 #include "HexusOpponentMummyWarrior.h"
 
-const std::string HexusOpponentMummyWarrior::StringKeyOpponentName = "Squally_Npc_Names_Mummy_Warrior";
+const std::string HexusOpponentMummyWarrior::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MUMMY_WARRIOR";
 HexusOpponentMummyWarrior* HexusOpponentMummyWarrior::instance = nullptr;
 
 HexusOpponentMummyWarrior* HexusOpponentMummyWarrior::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentMummyWarrior::HexusOpponentMummyWarrior() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Ruins_Enemies_MummyWarrior_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	0.85f,
-	Vec2(-32.0f, -48.0f),
-	Vec2(-32.0f, -72.0f),
-	HexusOpponentMummyWarrior::StringKeyOpponentName,
+	Vec2(-32.0f, -64.0f),
+	Vec2(-16.0f, -48.0f),
+	HexusOpponentMummyWarrior::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

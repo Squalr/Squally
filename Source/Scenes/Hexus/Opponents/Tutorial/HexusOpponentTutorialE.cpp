@@ -1,6 +1,6 @@
 #include "HexusOpponentTutorialE.h"
 
-const std::string HexusOpponentTutorialE::StringKeyOpponentName = "Squally_Npc_Names_Tutorial_E";
+const std::string HexusOpponentTutorialE::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TUTORIAL_E";
 HexusOpponentTutorialE* HexusOpponentTutorialE::instance = nullptr;
 
 HexusOpponentTutorialE* HexusOpponentTutorialE::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentTutorialE::HexusOpponentTutorialE() : HexusOpponentData(
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(0.0f, -24.0f),
-	HexusOpponentTutorialE::StringKeyOpponentName,
+	HexusOpponentTutorialE::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Water,
 	{
@@ -28,32 +28,15 @@ HexusOpponentTutorialE::HexusOpponentTutorialE() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::Flip2),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary2),
 	},
-	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary3),
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary3),
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary3),
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary4),
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary4),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal0),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal1),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal3),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal3),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex0),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex2),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex2),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex3),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex3),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex4),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex5),
+	HexusOpponentData::generateDeck(25, 0, 5, 0.33f, 0.33f,
+		{
 		CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 		CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
 		CardList::getInstance()->cardListByName->at(CardKeys::LogicalOr),
 		CardList::getInstance()->cardListByName->at(CardKeys::ShiftLeft),
 		CardList::getInstance()->cardListByName->at(CardKeys::ShiftRight),
-	})
+		})
+	)
 {
 }
 

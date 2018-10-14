@@ -1,6 +1,6 @@
 #include "HexusOpponentAjax.h"
 
-const std::string HexusOpponentAjax::StringKeyOpponentName = "Squally_Npc_Names_Ajax";
+const std::string HexusOpponentAjax::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_AJAX";
 HexusOpponentAjax* HexusOpponentAjax::instance = nullptr;
 
 HexusOpponentAjax* HexusOpponentAjax::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentAjax::HexusOpponentAjax() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-48.0f, -64.0f),
-	HexusOpponentAjax::StringKeyOpponentName,
+	Vec2(-16.0f, -40.0f),
+	HexusOpponentAjax::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

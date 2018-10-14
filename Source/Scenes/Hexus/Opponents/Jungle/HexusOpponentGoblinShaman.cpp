@@ -1,6 +1,6 @@
 #include "HexusOpponentGoblinShaman.h"
 
-const std::string HexusOpponentGoblinShaman::StringKeyOpponentName = "Squally_Npc_Names_Goblin_Shaman";
+const std::string HexusOpponentGoblinShaman::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GOBLIN_SHAMAN";
 HexusOpponentGoblinShaman* HexusOpponentGoblinShaman::instance = nullptr;
 
 HexusOpponentGoblinShaman* HexusOpponentGoblinShaman::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentGoblinShaman::HexusOpponentGoblinShaman() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentGoblinShaman::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentGoblinShaman::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

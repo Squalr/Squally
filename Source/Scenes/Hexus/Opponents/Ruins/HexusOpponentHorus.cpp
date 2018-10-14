@@ -1,6 +1,6 @@
 #include "HexusOpponentHorus.h"
 
-const std::string HexusOpponentHorus::StringKeyOpponentName = "Squally_Npc_Names_Horus";
+const std::string HexusOpponentHorus::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_HORUS";
 HexusOpponentHorus* HexusOpponentHorus::instance = nullptr;
 
 HexusOpponentHorus* HexusOpponentHorus::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentHorus::HexusOpponentHorus() : HexusOpponentData(
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -64.0f),
-	HexusOpponentHorus::StringKeyOpponentName,
+	HexusOpponentHorus::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

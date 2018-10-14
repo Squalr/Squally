@@ -1,6 +1,6 @@
 #include "HexusOpponentLeroy.h"
 
-const std::string HexusOpponentLeroy::StringKeyOpponentName = "Squally_Npc_Names_Leroy";
+const std::string HexusOpponentLeroy::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LEROY";
 HexusOpponentLeroy* HexusOpponentLeroy::instance = nullptr;
 
 HexusOpponentLeroy* HexusOpponentLeroy::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentLeroy::HexusOpponentLeroy() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Castle_Npcs_Leroy_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
-	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentLeroy::StringKeyOpponentName,
+	Vec2(-64.0f, -112.0f),
+	Vec2(-16.0f, -96.0f),
+	HexusOpponentLeroy::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentQueenElise.h"
 
-const std::string HexusOpponentQueenElise::StringKeyOpponentName = "Squally_Npc_Names_Queen_Elise";
+const std::string HexusOpponentQueenElise::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_QUEEN_ELISE";
 HexusOpponentQueenElise* HexusOpponentQueenElise::instance = nullptr;
 
 HexusOpponentQueenElise* HexusOpponentQueenElise::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentQueenElise::HexusOpponentQueenElise() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	0.85f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentQueenElise::StringKeyOpponentName,
+	Vec2(-16.0f, -40.0f),
+	HexusOpponentQueenElise::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

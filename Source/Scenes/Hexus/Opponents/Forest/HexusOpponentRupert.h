@@ -15,6 +15,6 @@ private:
 	HexusOpponentRupert();
 	~HexusOpponentRupert();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentRupert* instance;
 };

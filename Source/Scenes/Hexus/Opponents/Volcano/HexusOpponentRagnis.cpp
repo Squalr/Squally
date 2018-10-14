@@ -1,6 +1,6 @@
 #include "HexusOpponentRagnis.h"
 
-const std::string HexusOpponentRagnis::StringKeyOpponentName = "Squally_Npc_Names_Ragnis";
+const std::string HexusOpponentRagnis::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RAGNIS";
 HexusOpponentRagnis* HexusOpponentRagnis::instance = nullptr;
 
 HexusOpponentRagnis* HexusOpponentRagnis::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentRagnis* HexusOpponentRagnis::getInstance()
 
 HexusOpponentRagnis::HexusOpponentRagnis() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Npcs_Ragnis_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.85f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentRagnis::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentRagnis::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

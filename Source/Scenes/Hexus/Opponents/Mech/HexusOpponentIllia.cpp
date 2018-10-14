@@ -1,6 +1,6 @@
 #include "HexusOpponentIllia.h"
 
-const std::string HexusOpponentIllia::StringKeyOpponentName = "Squally_Npc_Names_Illia";
+const std::string HexusOpponentIllia::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ILLIA";
 HexusOpponentIllia* HexusOpponentIllia::instance = nullptr;
 
 HexusOpponentIllia* HexusOpponentIllia::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentIllia::HexusOpponentIllia() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	0.85f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentIllia::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentIllia::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

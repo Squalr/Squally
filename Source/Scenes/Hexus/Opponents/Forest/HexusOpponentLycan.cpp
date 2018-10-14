@@ -1,6 +1,6 @@
 #include "HexusOpponentLycan.h"
 
-const std::string HexusOpponentLycan::StringKeyOpponentName = "Squally_Npc_Names_Lycan";
+const std::string HexusOpponentLycan::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LYCAN";
 HexusOpponentLycan* HexusOpponentLycan::instance = nullptr;
 
 HexusOpponentLycan* HexusOpponentLycan::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentLycan::HexusOpponentLycan() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Forest_Npcs_Lycan_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
-	Vec2(-24.0f, -64.0f),
-	Vec2(-24.0f, -64.0f),
-	HexusOpponentLycan::StringKeyOpponentName,
+	Vec2(-48.0f, -64.0f),
+	Vec2(-16.0f, -48.0f),
+	HexusOpponentLycan::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

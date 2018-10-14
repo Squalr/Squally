@@ -1,6 +1,6 @@
 #include "HexusOpponentGorilla.h"
 
-const std::string HexusOpponentGorilla::StringKeyOpponentName = "Squally_Npc_Names_Gorilla";
+const std::string HexusOpponentGorilla::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GORILLA";
 HexusOpponentGorilla* HexusOpponentGorilla::instance = nullptr;
 
 HexusOpponentGorilla* HexusOpponentGorilla::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentGorilla::HexusOpponentGorilla() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -48.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentGorilla::StringKeyOpponentName,
+	Vec2(-80.0f, -32.0f),
+	HexusOpponentGorilla::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

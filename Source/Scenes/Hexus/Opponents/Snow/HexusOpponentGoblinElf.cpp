@@ -1,6 +1,6 @@
 #include "HexusOpponentGoblinElf.h"
 
-const std::string HexusOpponentGoblinElf::StringKeyOpponentName = "Squally_Npc_Names_Goblin_Elf";
+const std::string HexusOpponentGoblinElf::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GOBLIN_ELF";
 HexusOpponentGoblinElf* HexusOpponentGoblinElf::instance = nullptr;
 
 HexusOpponentGoblinElf* HexusOpponentGoblinElf::getInstance()
@@ -16,10 +16,10 @@ HexusOpponentGoblinElf* HexusOpponentGoblinElf::getInstance()
 HexusOpponentGoblinElf::HexusOpponentGoblinElf() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Snow_Enemies_GoblinElf_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
-	1.0f,
+	0.75f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentGoblinElf::StringKeyOpponentName,
+	Vec2(-16.0f, -40.0f),
+	HexusOpponentGoblinElf::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

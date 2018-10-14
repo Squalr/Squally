@@ -1,6 +1,6 @@
 #include "HexusOpponentSkeletalBaron.h"
 
-const std::string HexusOpponentSkeletalBaron::StringKeyOpponentName = "Squally_Npc_Names_Skeletal_Baron";
+const std::string HexusOpponentSkeletalBaron::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_BARON";
 HexusOpponentSkeletalBaron* HexusOpponentSkeletalBaron::instance = nullptr;
 
 HexusOpponentSkeletalBaron* HexusOpponentSkeletalBaron::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentSkeletalBaron::HexusOpponentSkeletalBaron() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.85f,
 	Vec2(48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentSkeletalBaron::StringKeyOpponentName,
+	Vec2(64.0f, -64.0f),
+	HexusOpponentSkeletalBaron::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

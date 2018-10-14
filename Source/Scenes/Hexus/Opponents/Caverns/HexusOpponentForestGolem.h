@@ -15,6 +15,6 @@ private:
 	HexusOpponentForestGolem();
 	~HexusOpponentForestGolem();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentForestGolem* instance;
 };

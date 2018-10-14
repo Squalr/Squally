@@ -1,6 +1,6 @@
 #include "HexusOpponentViking.h"
 
-const std::string HexusOpponentViking::StringKeyOpponentName = "Squally_Npc_Names_Viking";
+const std::string HexusOpponentViking::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VIKING";
 HexusOpponentViking* HexusOpponentViking::instance = nullptr;
 
 HexusOpponentViking* HexusOpponentViking::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentViking::HexusOpponentViking() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -48.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentViking::StringKeyOpponentName,
+	Vec2(-16.0f, -64.0f),
+	HexusOpponentViking::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

@@ -15,6 +15,6 @@ private:
 	HexusOpponentMara();
 	~HexusOpponentMara();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentMara* instance;
 };

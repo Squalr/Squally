@@ -1,6 +1,6 @@
 #include "HexusOpponentReanimatedPig.h"
 
-const std::string HexusOpponentReanimatedPig::StringKeyOpponentName = "Squally_Npc_Names_Reanimated_Pig";
+const std::string HexusOpponentReanimatedPig::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_REANIMATED_PIG";
 HexusOpponentReanimatedPig* HexusOpponentReanimatedPig::instance = nullptr;
 
 HexusOpponentReanimatedPig* HexusOpponentReanimatedPig::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentReanimatedPig::HexusOpponentReanimatedPig() : HexusOpponentData(
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentReanimatedPig::StringKeyOpponentName,
+	HexusOpponentReanimatedPig::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

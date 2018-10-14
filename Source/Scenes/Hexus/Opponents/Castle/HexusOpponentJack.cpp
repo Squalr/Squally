@@ -1,6 +1,6 @@
 #include "HexusOpponentJack.h"
 
-const std::string HexusOpponentJack::StringKeyOpponentName = "Squally_Npc_Names_Jack";
+const std::string HexusOpponentJack::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_JACK";
 HexusOpponentJack* HexusOpponentJack::instance = nullptr;
 
 HexusOpponentJack* HexusOpponentJack::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentJack::HexusOpponentJack() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentJack::StringKeyOpponentName,
+	Vec2(-32.0f, -64.0f),
+	HexusOpponentJack::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

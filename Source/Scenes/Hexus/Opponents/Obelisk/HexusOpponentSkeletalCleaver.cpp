@@ -1,6 +1,6 @@
 #include "HexusOpponentSkeletalCleaver.h"
 
-const std::string HexusOpponentSkeletalCleaver::StringKeyOpponentName = "Squally_Npc_Names_Skeletal_Cleaver";
+const std::string HexusOpponentSkeletalCleaver::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_CLEAVER";
 HexusOpponentSkeletalCleaver* HexusOpponentSkeletalCleaver::instance = nullptr;
 
 HexusOpponentSkeletalCleaver* HexusOpponentSkeletalCleaver::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentSkeletalCleaver::HexusOpponentSkeletalCleaver() : HexusOpponentData
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.85f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentSkeletalCleaver::StringKeyOpponentName,
+	Vec2(-16.0f, -40.0f),
+	HexusOpponentSkeletalCleaver::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

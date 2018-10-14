@@ -15,6 +15,6 @@ private:
 	HexusOpponentReaper();
 	~HexusOpponentReaper();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentReaper* instance;
 };

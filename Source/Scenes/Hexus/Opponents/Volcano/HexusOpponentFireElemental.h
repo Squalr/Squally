@@ -15,6 +15,6 @@ private:
 	HexusOpponentFireElemental();
 	~HexusOpponentFireElemental();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentFireElemental* instance;
 };

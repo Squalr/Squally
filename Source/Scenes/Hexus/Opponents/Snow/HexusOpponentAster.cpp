@@ -1,6 +1,6 @@
 #include "HexusOpponentAster.h"
 
-const std::string HexusOpponentAster::StringKeyOpponentName = "Squally_Npc_Names_Aster";
+const std::string HexusOpponentAster::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ASTER";
 HexusOpponentAster* HexusOpponentAster::instance = nullptr;
 
 HexusOpponentAster* HexusOpponentAster::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentAster::HexusOpponentAster() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentAster::StringKeyOpponentName,
+	Vec2(-16.0f, -40.0f),
+	HexusOpponentAster::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

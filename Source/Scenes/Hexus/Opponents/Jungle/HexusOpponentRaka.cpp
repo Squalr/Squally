@@ -1,6 +1,6 @@
 #include "HexusOpponentRaka.h"
 
-const std::string HexusOpponentRaka::StringKeyOpponentName = "Squally_Npc_Names_Raka";
+const std::string HexusOpponentRaka::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RAKA";
 HexusOpponentRaka* HexusOpponentRaka::instance = nullptr;
 
 HexusOpponentRaka* HexusOpponentRaka::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentRaka::HexusOpponentRaka() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -64.0f),
-	HexusOpponentRaka::StringKeyOpponentName,
+	Vec2(-16.0f, -48.0f),
+	HexusOpponentRaka::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

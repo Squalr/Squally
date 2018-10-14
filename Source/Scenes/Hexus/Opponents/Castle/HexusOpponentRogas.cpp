@@ -1,6 +1,6 @@
 #include "HexusOpponentRogas.h"
 
-const std::string HexusOpponentRogas::StringKeyOpponentName = "Squally_Npc_Names_Rogas";
+const std::string HexusOpponentRogas::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ROGAS";
 HexusOpponentRogas* HexusOpponentRogas::instance = nullptr;
 
 HexusOpponentRogas* HexusOpponentRogas::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentRogas::HexusOpponentRogas() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	0.85f,
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentRogas::StringKeyOpponentName,
+	Vec2(-16.0f, -48.0f),
+	HexusOpponentRogas::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

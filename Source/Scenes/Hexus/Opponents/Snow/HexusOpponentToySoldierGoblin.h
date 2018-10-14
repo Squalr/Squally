@@ -15,6 +15,6 @@ private:
 	HexusOpponentToySoldierGoblin();
 	~HexusOpponentToySoldierGoblin();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentToySoldierGoblin* instance;
 };

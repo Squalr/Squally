@@ -1,6 +1,6 @@
 #include "HexusOpponentGenie.h"
 
-const std::string HexusOpponentGenie::StringKeyOpponentName = "Squally_Npc_Names_Genie";
+const std::string HexusOpponentGenie::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GENIE";
 HexusOpponentGenie* HexusOpponentGenie::instance = nullptr;
 
 HexusOpponentGenie* HexusOpponentGenie::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentGenie::HexusOpponentGenie() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Caverns_Enemies_Genie_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	0.3f,
-	Vec2(-32.0f, -112.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentGenie::StringKeyOpponentName,
+	Vec2(-32.0f, -160.0f),
+	Vec2(-16.0f, -192.0f),
+	HexusOpponentGenie::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentAmelia.h"
 
-const std::string HexusOpponentAmelia::StringKeyOpponentName = "Squally_Npc_Names_Amelia";
+const std::string HexusOpponentAmelia::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_AMELIA";
 HexusOpponentAmelia* HexusOpponentAmelia::instance = nullptr;
 
 HexusOpponentAmelia* HexusOpponentAmelia::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentAmelia::HexusOpponentAmelia() : HexusOpponentData(
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentAmelia::StringKeyOpponentName,
+	HexusOpponentAmelia::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentOsiris.h"
 
-const std::string HexusOpponentOsiris::StringKeyOpponentName = "Squally_Npc_Names_Mummy_Osiris";
+const std::string HexusOpponentOsiris::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MUMMY_OSIRIS";
 HexusOpponentOsiris* HexusOpponentOsiris::instance = nullptr;
 
 HexusOpponentOsiris* HexusOpponentOsiris::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentOsiris::HexusOpponentOsiris() : HexusOpponentData(
 	1.0f,
 	Vec2(-32.0f, -48.0f),
 	Vec2(-32.0f, -72.0f),
-	HexusOpponentOsiris::StringKeyOpponentName,
+	HexusOpponentOsiris::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

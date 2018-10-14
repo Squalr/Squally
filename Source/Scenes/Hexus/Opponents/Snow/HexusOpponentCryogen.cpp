@@ -1,6 +1,6 @@
 #include "HexusOpponentCryogen.h"
 
-const std::string HexusOpponentCryogen::StringKeyOpponentName = "Squally_Npc_Names_Cryogen";
+const std::string HexusOpponentCryogen::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CRYOGEN";
 HexusOpponentCryogen* HexusOpponentCryogen::instance = nullptr;
 
 HexusOpponentCryogen* HexusOpponentCryogen::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentCryogen::HexusOpponentCryogen() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Snow_Enemies_Cryogen_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentCryogen::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-64.0f, -48.0f),
+	HexusOpponentCryogen::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

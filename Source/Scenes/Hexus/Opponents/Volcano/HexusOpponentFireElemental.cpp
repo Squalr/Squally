@@ -1,6 +1,6 @@
 #include "HexusOpponentFireElemental.h"
 
-const std::string HexusOpponentFireElemental::StringKeyOpponentName = "Squally_Npc_Names_Fire_Elemental";
+const std::string HexusOpponentFireElemental::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FIRE_ELEMENTAL";
 HexusOpponentFireElemental* HexusOpponentFireElemental::instance = nullptr;
 
 HexusOpponentFireElemental* HexusOpponentFireElemental::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentFireElemental* HexusOpponentFireElemental::getInstance()
 
 HexusOpponentFireElemental::HexusOpponentFireElemental() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Enemies_FireElemental_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
-	0.3f,
-	Vec2(-24.0f, -144.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentFireElemental::StringKeyOpponentName,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
+	1.0f,
+	Vec2(-32.0f, -48.0f),
+	Vec2(-32.0f, -72.0f),
+	HexusOpponentFireElemental::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

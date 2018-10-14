@@ -1,6 +1,6 @@
 #include "HexusOpponentZombie.h"
 
-const std::string HexusOpponentZombie::StringKeyOpponentName = "Squally_Npc_Names_Zombie";
+const std::string HexusOpponentZombie::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ZOMBIE";
 HexusOpponentZombie* HexusOpponentZombie::instance = nullptr;
 
 HexusOpponentZombie* HexusOpponentZombie::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentZombie::HexusOpponentZombie() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -32.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentZombie::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentZombie::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

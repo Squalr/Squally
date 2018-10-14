@@ -1,6 +1,6 @@
 #include "HexusOpponentWaterElemental.h"
 
-const std::string HexusOpponentWaterElemental::StringKeyOpponentName = "Squally_Npc_Names_Water_Elemental";
+const std::string HexusOpponentWaterElemental::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_WATER_ELEMENTAL";
 HexusOpponentWaterElemental* HexusOpponentWaterElemental::instance = nullptr;
 
 HexusOpponentWaterElemental* HexusOpponentWaterElemental::getInstance()
@@ -16,10 +16,10 @@ HexusOpponentWaterElemental* HexusOpponentWaterElemental::getInstance()
 HexusOpponentWaterElemental::HexusOpponentWaterElemental() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Snow_Enemies_WaterElemental_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
-	0.3f,
-	Vec2(-24.0f, -144.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentWaterElemental::StringKeyOpponentName,
+	1.0f,
+	Vec2(-32.0f, -48.0f),
+	Vec2(-32.0f, -72.0f),
+	HexusOpponentWaterElemental::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

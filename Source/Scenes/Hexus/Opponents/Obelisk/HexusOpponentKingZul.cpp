@@ -1,6 +1,6 @@
 #include "HexusOpponentKingZul.h"
 
-const std::string HexusOpponentKingZul::StringKeyOpponentName = "Squally_Npc_Names_King_Zul";
+const std::string HexusOpponentKingZul::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KING_ZUL";
 HexusOpponentKingZul* HexusOpponentKingZul::instance = nullptr;
 
 HexusOpponentKingZul* HexusOpponentKingZul::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentKingZul::HexusOpponentKingZul() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentKingZul::StringKeyOpponentName,
+	Vec2(-16.0f, -64.0f),
+	HexusOpponentKingZul::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

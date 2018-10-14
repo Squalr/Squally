@@ -1,6 +1,6 @@
 #include "HexusOpponentExecutioner.h"
 
-const std::string HexusOpponentExecutioner::StringKeyOpponentName = "Squally_Npc_Names_Executioner";
+const std::string HexusOpponentExecutioner::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_EXECUTIONER";
 HexusOpponentExecutioner* HexusOpponentExecutioner::instance = nullptr;
 
 HexusOpponentExecutioner* HexusOpponentExecutioner::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentExecutioner* HexusOpponentExecutioner::getInstance()
 
 HexusOpponentExecutioner::HexusOpponentExecutioner() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Castle_Enemies_Executioner_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	0.3f,
-	Vec2(-32.0f, -144.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentExecutioner::StringKeyOpponentName,
+	Vec2(-32.0f, -160.0f),
+	Vec2(-32.0f, -160.0f),
+	HexusOpponentExecutioner::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

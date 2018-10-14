@@ -15,6 +15,6 @@ private:
 	HexusOpponentCyclops();
 	~HexusOpponentCyclops();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentCyclops* instance;
 };

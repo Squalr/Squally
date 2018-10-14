@@ -1,6 +1,6 @@
 #include "HexusOpponentDemonGrunt.h"
 
-const std::string HexusOpponentDemonGrunt::StringKeyOpponentName = "Squally_Npc_Names_Demon_Grunt";
+const std::string HexusOpponentDemonGrunt::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DEMON_GRUNT";
 HexusOpponentDemonGrunt* HexusOpponentDemonGrunt::instance = nullptr;
 
 HexusOpponentDemonGrunt* HexusOpponentDemonGrunt::getInstance()
@@ -14,12 +14,12 @@ HexusOpponentDemonGrunt* HexusOpponentDemonGrunt::getInstance()
 }
 
 HexusOpponentDemonGrunt::HexusOpponentDemonGrunt() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Obelisk_Npcs_Necron_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	Resources::Entities_Platformer_Environment_Volcano_Enemies_DemonGrunt_Animations,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.85f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentDemonGrunt::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-32.0f, -64.0f),
+	HexusOpponentDemonGrunt::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

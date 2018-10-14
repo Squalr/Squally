@@ -1,6 +1,6 @@
 #include "HexusOpponentCeleste.h"
 
-const std::string HexusOpponentCeleste::StringKeyOpponentName = "Squally_Npc_Names_Celeste";
+const std::string HexusOpponentCeleste::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CELESTE";
 HexusOpponentCeleste* HexusOpponentCeleste::instance = nullptr;
 
 HexusOpponentCeleste* HexusOpponentCeleste::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentCeleste* HexusOpponentCeleste::getInstance()
 
 HexusOpponentCeleste::HexusOpponentCeleste() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Npcs_Celeste_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.85f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentCeleste::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentCeleste::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

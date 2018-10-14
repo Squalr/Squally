@@ -1,6 +1,6 @@
 #include "HexusOpponentAsh.h"
 
-const std::string HexusOpponentAsh::StringKeyOpponentName = "Squally_Npc_Names_Ash";
+const std::string HexusOpponentAsh::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ASH";
 HexusOpponentAsh* HexusOpponentAsh::instance = nullptr;
 
 HexusOpponentAsh* HexusOpponentAsh::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentAsh* HexusOpponentAsh::getInstance()
 
 HexusOpponentAsh::HexusOpponentAsh() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Npcs_Ash_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentAsh::StringKeyOpponentName,
+	HexusOpponentAsh::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

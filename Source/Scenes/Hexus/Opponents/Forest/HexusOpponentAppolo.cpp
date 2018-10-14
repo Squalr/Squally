@@ -1,6 +1,6 @@
 #include "HexusOpponentAppolo.h"
 
-const std::string HexusOpponentAppolo::StringKeyOpponentName = "Squally_Npc_Names_Appolo";
+const std::string HexusOpponentAppolo::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_APPOLO";
 HexusOpponentAppolo* HexusOpponentAppolo::instance = nullptr;
 
 HexusOpponentAppolo* HexusOpponentAppolo::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentAppolo::HexusOpponentAppolo() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentAppolo::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentAppolo::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

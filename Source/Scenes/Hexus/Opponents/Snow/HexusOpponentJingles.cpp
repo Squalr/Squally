@@ -1,6 +1,6 @@
 #include "HexusOpponentJingles.h"
 
-const std::string HexusOpponentJingles::StringKeyOpponentName = "Squally_Npc_Names_Jingles";
+const std::string HexusOpponentJingles::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_JINGLES";
 HexusOpponentJingles* HexusOpponentJingles::instance = nullptr;
 
 HexusOpponentJingles* HexusOpponentJingles::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentJingles::HexusOpponentJingles() : HexusOpponentData(
 	0.85f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentJingles::StringKeyOpponentName,
+	HexusOpponentJingles::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

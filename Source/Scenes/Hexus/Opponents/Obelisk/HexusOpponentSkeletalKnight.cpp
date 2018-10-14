@@ -1,6 +1,6 @@
 #include "HexusOpponentSkeletalKnight.h"
 
-const std::string HexusOpponentSkeletalKnight::StringKeyOpponentName = "Squally_Npc_Names_Skeletal_Knight";
+const std::string HexusOpponentSkeletalKnight::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_KNIGHT";
 HexusOpponentSkeletalKnight* HexusOpponentSkeletalKnight::instance = nullptr;
 
 HexusOpponentSkeletalKnight* HexusOpponentSkeletalKnight::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentSkeletalKnight::HexusOpponentSkeletalKnight() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.85f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentSkeletalKnight::StringKeyOpponentName,
+	Vec2(-32.0f, -32.0f),
+	HexusOpponentSkeletalKnight::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentGeryon.h"
 
-const std::string HexusOpponentGeryon::StringKeyOpponentName = "Squally_Npc_Names_Geryon";
+const std::string HexusOpponentGeryon::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GERYON";
 HexusOpponentGeryon* HexusOpponentGeryon::instance = nullptr;
 
 HexusOpponentGeryon* HexusOpponentGeryon::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentGeryon::HexusOpponentGeryon() : HexusOpponentData(
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentGeryon::StringKeyOpponentName,
+	HexusOpponentGeryon::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentRoboGolem.h"
 
-const std::string HexusOpponentRoboGolem::StringKeyOpponentName = "Squally_Npc_Names_Robo_Golem";
+const std::string HexusOpponentRoboGolem::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ROBO_GOLEM";
 HexusOpponentRoboGolem* HexusOpponentRoboGolem::instance = nullptr;
 
 HexusOpponentRoboGolem* HexusOpponentRoboGolem::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentRoboGolem::HexusOpponentRoboGolem() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	0.7f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentRoboGolem::StringKeyOpponentName,
+	Vec2(-32.0f, -128.0f),
+	HexusOpponentRoboGolem::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

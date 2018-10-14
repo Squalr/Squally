@@ -1,6 +1,6 @@
 #include "HexusOpponentYsara.h"
 
-const std::string HexusOpponentYsara::StringKeyOpponentName = "Squally_Npc_Names_Ysara";
+const std::string HexusOpponentYsara::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_YSARA";
 HexusOpponentYsara* HexusOpponentYsara::instance = nullptr;
 
 HexusOpponentYsara* HexusOpponentYsara::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentYsara::HexusOpponentYsara() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Mech_Npcs_Ysara_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	0.85f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentYsara::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-16.0f, -16.0f),
+	HexusOpponentYsara::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

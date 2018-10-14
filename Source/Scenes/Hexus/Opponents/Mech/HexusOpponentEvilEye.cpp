@@ -1,6 +1,6 @@
 #include "HexusOpponentEvilEye.h"
 
-const std::string HexusOpponentEvilEye::StringKeyOpponentName = "Squally_Npc_Names_Evil_Eye";
+const std::string HexusOpponentEvilEye::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_EVIL_EYE";
 HexusOpponentEvilEye* HexusOpponentEvilEye::instance = nullptr;
 
 HexusOpponentEvilEye* HexusOpponentEvilEye::getInstance()
@@ -16,10 +16,10 @@ HexusOpponentEvilEye* HexusOpponentEvilEye::getInstance()
 HexusOpponentEvilEye::HexusOpponentEvilEye() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Mech_Enemies_EvilEye_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
-	0.6f,
-	Vec2(-48.0f, -144.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentEvilEye::StringKeyOpponentName,
+	0.7f,
+	Vec2(-48.0f, -112.0f),
+	Vec2(-16.0f, -144.0f),
+	HexusOpponentEvilEye::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

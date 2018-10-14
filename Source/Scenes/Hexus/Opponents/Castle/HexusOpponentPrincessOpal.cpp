@@ -1,6 +1,6 @@
 #include "HexusOpponentPrincessOpal.h"
 
-const std::string HexusOpponentPrincessOpal::StringKeyOpponentName = "Squally_Npc_Names_Princess_Opal";
+const std::string HexusOpponentPrincessOpal::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PRINCESS_OPAL";
 HexusOpponentPrincessOpal* HexusOpponentPrincessOpal::instance = nullptr;
 
 HexusOpponentPrincessOpal* HexusOpponentPrincessOpal::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentPrincessOpal::HexusOpponentPrincessOpal() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Castle_Npcs_PrincessOpal_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
-	Vec2(-32.0f, -32.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentPrincessOpal::StringKeyOpponentName,
+	Vec2(-32.0f, -48.0f),
+	Vec2(-16.0f, -40.0f),
+	HexusOpponentPrincessOpal::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

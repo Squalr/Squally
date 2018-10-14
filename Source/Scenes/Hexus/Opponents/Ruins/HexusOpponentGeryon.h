@@ -15,6 +15,6 @@ private:
 	HexusOpponentGeryon();
 	~HexusOpponentGeryon();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentGeryon* instance;
 };

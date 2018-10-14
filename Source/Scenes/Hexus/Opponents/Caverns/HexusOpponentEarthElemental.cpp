@@ -1,6 +1,6 @@
 #include "HexusOpponentEarthElemental.h"
 
-const std::string HexusOpponentEarthElemental::StringKeyOpponentName = "Squally_Npc_Names_Earth_Elemental";
+const std::string HexusOpponentEarthElemental::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_EARTH_ELEMENTAL";
 HexusOpponentEarthElemental* HexusOpponentEarthElemental::instance = nullptr;
 
 HexusOpponentEarthElemental* HexusOpponentEarthElemental::getInstance()
@@ -16,10 +16,10 @@ HexusOpponentEarthElemental* HexusOpponentEarthElemental::getInstance()
 HexusOpponentEarthElemental::HexusOpponentEarthElemental() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Caverns_Enemies_EarthElemental_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
-	0.3f,
-	Vec2(0.0f, -112.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentEarthElemental::StringKeyOpponentName,
+	1.0f,
+	Vec2(-32.0f, -48.0f),
+	Vec2(-32.0f, -72.0f),
+	HexusOpponentEarthElemental::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

@@ -15,6 +15,6 @@ private:
 	HexusOpponentSkeletalPriestess();
 	~HexusOpponentSkeletalPriestess();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentSkeletalPriestess* instance;
 };

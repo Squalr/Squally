@@ -1,6 +1,6 @@
 #include "HexusOpponentShade.h"
 
-const std::string HexusOpponentShade::StringKeyOpponentName = "Squally_Npc_Names_Shade";
+const std::string HexusOpponentShade::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SHADE";
 HexusOpponentShade* HexusOpponentShade::instance = nullptr;
 
 HexusOpponentShade* HexusOpponentShade::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentShade::HexusOpponentShade() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -96.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentShade::StringKeyOpponentName,
+	Vec2(-16.0f, -128.0f),
+	HexusOpponentShade::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

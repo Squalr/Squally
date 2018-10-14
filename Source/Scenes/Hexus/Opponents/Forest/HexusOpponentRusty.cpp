@@ -1,6 +1,6 @@
 #include "HexusOpponentRusty.h"
 
-const std::string HexusOpponentRusty::StringKeyOpponentName = "Squally_Npc_Names_Rusty";
+const std::string HexusOpponentRusty::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RUSTY";
 HexusOpponentRusty* HexusOpponentRusty::instance = nullptr;
 
 HexusOpponentRusty* HexusOpponentRusty::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentRusty::HexusOpponentRusty() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentRusty::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentRusty::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

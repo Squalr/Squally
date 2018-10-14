@@ -15,6 +15,6 @@ private:
 	HexusOpponentVoidArcher();
 	~HexusOpponentVoidArcher();
 
-	static const std::string StringKeyOpponentName;
+	static const std::string OpponentSaveKey;
 	static HexusOpponentVoidArcher* instance;
 };

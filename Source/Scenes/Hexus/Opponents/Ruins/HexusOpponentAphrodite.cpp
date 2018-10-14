@@ -1,6 +1,6 @@
 #include "HexusOpponentAphrodite.h"
 
-const std::string HexusOpponentAphrodite::StringKeyOpponentName = "Squally_Npc_Names_Aphrodite";
+const std::string HexusOpponentAphrodite::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_APHRODITE";
 HexusOpponentAphrodite* HexusOpponentAphrodite::instance = nullptr;
 
 HexusOpponentAphrodite* HexusOpponentAphrodite::getInstance()
@@ -19,7 +19,7 @@ HexusOpponentAphrodite::HexusOpponentAphrodite() : HexusOpponentData(
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentAphrodite::StringKeyOpponentName,
+	HexusOpponentAphrodite::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

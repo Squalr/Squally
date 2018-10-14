@@ -1,6 +1,6 @@
 #include "HexusOpponentMagnus.h"
 
-const std::string HexusOpponentMagnus::StringKeyOpponentName = "Squally_Npc_Names_Magnus";
+const std::string HexusOpponentMagnus::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MAGNUS";
 HexusOpponentMagnus* HexusOpponentMagnus::instance = nullptr;
 
 HexusOpponentMagnus* HexusOpponentMagnus::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentMagnus* HexusOpponentMagnus::getInstance()
 
 HexusOpponentMagnus::HexusOpponentMagnus() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Npcs_Magnus_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.85f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentMagnus::StringKeyOpponentName,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-16.0f, -24.0f),
+	HexusOpponentMagnus::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

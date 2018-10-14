@@ -1,6 +1,6 @@
 #include "HexusOpponentToySoldierGoblin.h"
 
-const std::string HexusOpponentToySoldierGoblin::StringKeyOpponentName = "Squally_Npc_Names_Toy_Soldier_Goblin";
+const std::string HexusOpponentToySoldierGoblin::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TOY_SOLDIER_GOBLIN";
 HexusOpponentToySoldierGoblin* HexusOpponentToySoldierGoblin::instance = nullptr;
 
 HexusOpponentToySoldierGoblin* HexusOpponentToySoldierGoblin::getInstance()
@@ -16,10 +16,10 @@ HexusOpponentToySoldierGoblin* HexusOpponentToySoldierGoblin::getInstance()
 HexusOpponentToySoldierGoblin::HexusOpponentToySoldierGoblin() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Snow_Enemies_ToySoldierGoblin_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
-	1.0f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentToySoldierGoblin::StringKeyOpponentName,
+	0.85f,
+	Vec2(-48.0f, -48.0f),
+	Vec2(-16.0f, -16.0f),
+	HexusOpponentToySoldierGoblin::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

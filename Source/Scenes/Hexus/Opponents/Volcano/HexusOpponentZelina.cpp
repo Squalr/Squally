@@ -1,6 +1,6 @@
 #include "HexusOpponentZelina.h"
 
-const std::string HexusOpponentZelina::StringKeyOpponentName = "Squally_Npc_Names_Zelina";
+const std::string HexusOpponentZelina::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ZELINA";
 HexusOpponentZelina* HexusOpponentZelina::instance = nullptr;
 
 HexusOpponentZelina* HexusOpponentZelina::getInstance()
@@ -15,11 +15,11 @@ HexusOpponentZelina* HexusOpponentZelina::getInstance()
 
 HexusOpponentZelina::HexusOpponentZelina() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Volcano_Npcs_Zelina_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
-	Vec2(-48.0f, -64.0f),
+	Vec2(-48.0f, -72.0f),
 	Vec2(-16.0f, -48.0f),
-	HexusOpponentZelina::StringKeyOpponentName,
+	HexusOpponentZelina::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

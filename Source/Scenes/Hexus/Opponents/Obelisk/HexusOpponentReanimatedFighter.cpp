@@ -1,6 +1,6 @@
 #include "HexusOpponentReanimatedFighter.h"
 
-const std::string HexusOpponentReanimatedFighter::StringKeyOpponentName = "Squally_Npc_Names_ReanimatedFighter";
+const std::string HexusOpponentReanimatedFighter::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_REANIMATED_FIGHTER";
 HexusOpponentReanimatedFighter* HexusOpponentReanimatedFighter::instance = nullptr;
 
 HexusOpponentReanimatedFighter* HexusOpponentReanimatedFighter::getInstance()
@@ -17,9 +17,9 @@ HexusOpponentReanimatedFighter::HexusOpponentReanimatedFighter() : HexusOpponent
 	Resources::Entities_Platformer_Environment_Obelisk_Enemies_ReanimatedFighter_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
-	Vec2(-48.0f, -64.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentReanimatedFighter::StringKeyOpponentName,
+	Vec2(-48.0f, -32.0f),
+	Vec2(-48.0f, -32.0f),
+	HexusOpponentReanimatedFighter::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

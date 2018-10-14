@@ -1,6 +1,6 @@
 #include "HexusOpponentRhinoman.h"
 
-const std::string HexusOpponentRhinoman::StringKeyOpponentName = "Squally_Npc_Names_Rhinoman";
+const std::string HexusOpponentRhinoman::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RHINOMAN";
 HexusOpponentRhinoman* HexusOpponentRhinoman::instance = nullptr;
 
 HexusOpponentRhinoman* HexusOpponentRhinoman::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentRhinoman::HexusOpponentRhinoman() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
-	Vec2(32.0f, -96.0f),
-	HexusOpponentRhinoman::StringKeyOpponentName,
+	Vec2(0.0f, -180.0f),
+	HexusOpponentRhinoman::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

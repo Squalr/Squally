@@ -1,6 +1,6 @@
 #include "HexusOpponentPrincessMittens.h"
 
-const std::string HexusOpponentPrincessMittens::StringKeyOpponentName = "Squally_Npc_Names_Princess_Mittens";
+const std::string HexusOpponentPrincessMittens::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PRINCESS_MITTENS";
 HexusOpponentPrincessMittens* HexusOpponentPrincessMittens::instance = nullptr;
 
 HexusOpponentPrincessMittens* HexusOpponentPrincessMittens::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentPrincessMittens::HexusOpponentPrincessMittens() : HexusOpponentData
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -80.0f),
-	Vec2(-16.0f, -48.0f),
-	HexusOpponentPrincessMittens::StringKeyOpponentName,
+	Vec2(-16.0f, -64.0f),
+	HexusOpponentPrincessMittens::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
 	{

@@ -1,6 +1,6 @@
 #include "HexusOpponentMildred.h"
 
-const std::string HexusOpponentMildred::StringKeyOpponentName = "Squally_Npc_Names_Mildred";
+const std::string HexusOpponentMildred::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MILDRED";
 HexusOpponentMildred* HexusOpponentMildred::instance = nullptr;
 
 HexusOpponentMildred* HexusOpponentMildred::getInstance()
@@ -16,10 +16,10 @@ HexusOpponentMildred* HexusOpponentMildred::getInstance()
 HexusOpponentMildred::HexusOpponentMildred() : HexusOpponentData(
 	Resources::Entities_Platformer_Environment_Caverns_Npcs_Mildred_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
-	0.85f,
+	0.8f,
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentMildred::StringKeyOpponentName,
+	Vec2(-16.0f, -32.0f),
+	HexusOpponentMildred::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

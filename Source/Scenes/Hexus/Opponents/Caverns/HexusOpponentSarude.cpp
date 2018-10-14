@@ -1,6 +1,6 @@
 #include "HexusOpponentSarude.h"
 
-const std::string HexusOpponentSarude::StringKeyOpponentName = "Squally_Npc_Names_Sarude";
+const std::string HexusOpponentSarude::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SARUDE";
 HexusOpponentSarude* HexusOpponentSarude::instance = nullptr;
 
 HexusOpponentSarude* HexusOpponentSarude::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentSarude::HexusOpponentSarude() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentSarude::StringKeyOpponentName,
+	Vec2(-24.0f, -32.0f),
+	HexusOpponentSarude::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{

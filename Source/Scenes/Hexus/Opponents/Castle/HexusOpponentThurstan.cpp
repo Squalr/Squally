@@ -1,6 +1,6 @@
 #include "HexusOpponentThurstan.h"
 
-const std::string HexusOpponentThurstan::StringKeyOpponentName = "Squally_Npc_Names_Thurstan";
+const std::string HexusOpponentThurstan::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THURSTAN";
 HexusOpponentThurstan* HexusOpponentThurstan::instance = nullptr;
 
 HexusOpponentThurstan* HexusOpponentThurstan::getInstance()
@@ -18,8 +18,8 @@ HexusOpponentThurstan::HexusOpponentThurstan() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
-	Vec2(0.0f, 0.0f),
-	HexusOpponentThurstan::StringKeyOpponentName,
+	Vec2(-32.0f, -48.0f),
+	HexusOpponentThurstan::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
 	{
