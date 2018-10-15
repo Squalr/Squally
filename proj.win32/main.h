@@ -30,6 +30,7 @@
 // Windows Header Files:
 #include <windows.h>
 #include <tchar.h>
+#include <shellapi.h>
 
 // C RunTime Header Files
 #include "platform/CCStdC.h"

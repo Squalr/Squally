@@ -29,6 +29,28 @@
             "intelliSenseMode": "clang-x64",
             "configurationProvider": "vector-of-bool.cmake-tools",
             "compileCommands": "${workspaceFolder}/build/compile_commands.json"
+        },
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/System/Library/Frameworks",
+                "/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64",
+            "configurationProvider": "vector-of-bool.cmake-tools",
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "${workspaceFolder}/**"
+                ]
+            }
         }
     ],
     "version": 4
