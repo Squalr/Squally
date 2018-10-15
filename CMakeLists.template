@@ -148,21 +148,35 @@ if(APPLE)
         )
     endif()
 elseif(LINUX)
-	find_package(PkgConfig)
-	pkg_check_modules(GTKMM gtkmm-3.0)
+    find_package(PkgConfig)
+    pkg_check_modules(GTKMM gtkmm-3.0)
 
     add_executable(Launcher
         proj.linux/Launcher.cpp
         # hack until we fix the breakpad utf library vs the cocos one
         external/breakpad/src/common/convert_UTF.c
-	)
-	target_include_directories(Launcher PUBLIC ${GTKMM_INCLUDE_DIRS} ${CMAKE_BINARY_DIR})
+    )
+    target_include_directories(Launcher PUBLIC ${GTKMM_INCLUDE_DIRS} ${CMAKE_BINARY_DIR})
     target_link_libraries(Launcher breakpad_client pthread ${GTKMM_LIBRARIES})
     set_target_properties(Launcher PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY
             ${APP_BIN_DIR}
     )
 elseif(WINDOWS)
+    add_executable(Launcher WIN32
+        proj.win32/Launcher.cpp
+        # hack until we fix the breakpad utf library vs the cocos one
+        external/breakpad/src/common/convert_UTF.c
+        proj.win32/game.rc
+    )
+    target_compile_features(Launcher PUBLIC cxx_std_11)
+    target_include_directories(Launcher PUBLIC ${CMAKE_BINARY_DIR})
+    target_link_libraries(Launcher breakpad_client)
+    set_target_properties(Launcher PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY
+            ${APP_BIN_DIR}
+    )
+
     cocos_copy_target_dll(${APP_NAME} COPY_TO ${APP_BIN_DIR})
 endif()
 

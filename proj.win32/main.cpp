@@ -26,7 +26,30 @@
 #include "GameWindow.h"
 #include "cocos2d.h"
 
-USING_NS_CC;
+#include "client/windows/handler/exception_handler.h"
+
+namespace
+{
+    class CrashHandler
+    {
+        google_breakpad::ExceptionHandler handler;
+
+        static bool onException(const wchar_t* dump_path, const wchar_t* minidump_id, void* context,
+                EXCEPTION_POINTERS* exinfo, MDRawAssertionInfo* assertion, bool succeeded)
+        {
+            CrashHandler* handler = reinterpret_cast<CrashHandler*>(context);
+            OutputDebugStringW(dump_path);
+            return succeeded;
+        }
+
+    public:
+        CrashHandler(const std::wstring& pipeName)
+            : handler(L"", nullptr, &CrashHandler::onException, this,
+                google_breakpad::ExceptionHandler::HANDLER_ALL, MiniDumpNormal, pipeName.c_str(), nullptr)
+        {
+        }
+    };
+}
 
 int WINAPI _tWinMain(HINSTANCE hInstance,
                        HINSTANCE hPrevInstance,
@@ -34,9 +57,25 @@ int WINAPI _tWinMain(HINSTANCE hInstance,
                        int       nCmdShow)
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
-    UNREFERENCED_PARAMETER(lpCmdLine);
 
-    // create the application instance
+    // enable crash handling if we were provided a server descriptor
+    int wargc = 0;
+    LPWSTR* wargv = nullptr;
+    std::unique_ptr<CrashHandler> handler;
+    if ((wargv = CommandLineToArgvW(lpCmdLine, &wargc)))
+    {
+        for (int i = 0; i < wargc; i++)
+        {
+            std::wstring arg(wargv[i]);
+            if (!arg.compare(0, 3, L"/p:") && arg.size() > 3)
+            {
+                handler.reset(new CrashHandler(arg.substr(3)));
+                break;
+            }
+        }
+    }
+
+    // run game
     GameWindow app;
-    return Application::getInstance()->run();
+    return cocos2d::Application::getInstance()->run();
 }
