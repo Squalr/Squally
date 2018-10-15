@@ -6,15 +6,12 @@
 #include "Engine/Analytics/Analytics.h"
 #include "Engine/Config/ConfigManager.h"
 
-using namespace cocos2d;
-using namespace cocos_experimental;
-
 /**
 @brief The cocos2d Application.
 
 Private inheritance here hides part of interface from Director.
 */
-class  GameWindow : private Application
+class  GameWindow : private cocos2d::Application
 {
 public:
 	GameWindow();
