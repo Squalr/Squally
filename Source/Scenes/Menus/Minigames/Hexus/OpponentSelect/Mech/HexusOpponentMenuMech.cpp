@@ -18,7 +18,6 @@ HexusOpponentMenuMech::HexusOpponentMenuMech() : HexusOpponentMenuBase(HexusChap
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentMarcel::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentIllia::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentLeon::getInstance(), callback));
-	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentMechGolemDark::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentYsara::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentAtreus::getInstance(), callback));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentExterminator::getInstance(), callback));

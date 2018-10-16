@@ -7,7 +7,6 @@
 #include "Scenes/Hexus/Opponents/Mech/HexusOpponentLeon.h"
 #include "Scenes/Hexus/Opponents/Mech/HexusOpponentMara.h"
 #include "Scenes/Hexus/Opponents/Mech/HexusOpponentMarcel.h"
-#include "Scenes/Hexus/Opponents/Mech/HexusOpponentMechGolemDark.h"
 #include "Scenes/Hexus/Opponents/Mech/HexusOpponentPiper.h"
 #include "Scenes/Hexus/Opponents/Mech/HexusOpponentQueenElise.h"
 #include "Scenes/Hexus/Opponents/Mech/HexusOpponentRadon.h"

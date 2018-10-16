@@ -18,7 +18,7 @@ HexusOpponentEvilEye::HexusOpponentEvilEye() : HexusOpponentData(
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	0.7f,
 	Vec2(-48.0f, -112.0f),
-	Vec2(-16.0f, -144.0f),
+	Vec2(-16.0f, -180.0f),
 	HexusOpponentEvilEye::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,

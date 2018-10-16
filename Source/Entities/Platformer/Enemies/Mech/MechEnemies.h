@@ -4,7 +4,6 @@
 #include "Entities/Platformer/Enemies/Mech/MechBoxDrone.h"
 #include "Entities/Platformer/Enemies/Mech/MechDog.h"
 #include "Entities/Platformer/Enemies/Mech/MechGolem.h"
-#include "Entities/Platformer/Enemies/Mech/MechGolemDark.h"
 #include "Entities/Platformer/Enemies/Mech/MechGuard.h"
 #include "Entities/Platformer/Enemies/Mech/MiteBot.h"
 #include "Entities/Platformer/Enemies/Mech/VikingBot.h"
