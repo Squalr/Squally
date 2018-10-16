@@ -27,7 +27,7 @@ HexusOpponentJasper::HexusOpponentJasper() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal2),
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal1),
 	},
-	HexusOpponentData::generateDeck(25, 0, 8, 0.33f, 0.33f,
+	HexusOpponentData::generateDeck(25, 0.5f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 			CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),

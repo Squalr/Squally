@@ -28,8 +28,11 @@ HexusOpponentBlackbeard::HexusOpponentBlackbeard() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex4),
 		CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 	},
-	HexusOpponentData::generateDeck(25, 0, 4, 0.33f, 0.33f,
+	HexusOpponentData::generateDeck(25, 0.1f,
 		{
+			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
+			CardList::getInstance()->cardListByName->at(CardKeys::Hex0),
+			CardList::getInstance()->cardListByName->at(CardKeys::Decimal0),
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 			CardList::getInstance()->cardListByName->at(CardKeys::ShiftLeft),

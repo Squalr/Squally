@@ -116,6 +116,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/HUD/DeveloperHud.cpp
 	Source/Engine/UI/HUD/HackerModeHud.cpp
 	Source/Engine/UI/HUD/Hud.cpp
+	Source/Engine/Utils/AlgoUtils.cpp
 	Source/Engine/Utils/GameUtils.cpp
 	Source/Engine/Utils/HackUtils.cpp
 	Source/Engine/Utils/MathUtils.cpp
@@ -821,6 +822,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/HUD/DeveloperHud.h
 	Source/Engine/UI/HUD/HackerModeHud.h
 	Source/Engine/UI/HUD/Hud.h
+	Source/Engine/Utils/AlgoUtils.h
 	Source/Engine/Utils/GameUtils.h
 	Source/Engine/Utils/HackUtils.h
 	Source/Engine/Utils/MathUtils.h
