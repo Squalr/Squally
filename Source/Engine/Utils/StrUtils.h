@@ -1,11 +1,8 @@
 #pragma once
+#include <locale>
+#include <sstream>
 #include <string>
-#include <locale>         
-#include <sstream> 
-
-#include "cocos2d.h"
-
-using namespace cocos2d;
+#include <vector>
 
 class StrUtils
 {

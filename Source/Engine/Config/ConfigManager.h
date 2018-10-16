@@ -1,10 +1,8 @@
 #pragma once
-#include "cocos2d.h"
-#include "Resources.h"
+#include "cocos/math/CCGeometry.h"
 
 #include "Engine/Utils/GameUtils.h"
-
-using namespace cocos2d;
+#include "Resources.h"
 
 class ConfigManager
 {
@@ -29,7 +27,7 @@ public:
 	static void setSoundVolume(float volume);
 	static void setMusicVolume(float volume);
 
-	static Size getResolutionSize();
+	static cocos2d::Size getResolutionSize();
 	static ResolutionSetting getResolution();
 	static bool getIsFullScreen();
 	static float getSoundVolume();

@@ -1,5 +1,11 @@
 #include "StrUtils.h"
 
+#ifndef WIN32
+extern "C" {
+    #include <strings.h>
+}
+#endif
+
 std::string StrUtils::toStringZeroPad(int value, int zeroCount)
 {
 	std::string result = std::to_string(value);
