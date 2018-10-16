@@ -27,7 +27,7 @@ HexusOpponentOrcSwordsman::HexusOpponentOrcSwordsman() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex4),
 	},
-	HexusOpponentData::generateDeck(25, 0.45f,
+	HexusOpponentData::generateDeck(25, 0.325f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 			CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),

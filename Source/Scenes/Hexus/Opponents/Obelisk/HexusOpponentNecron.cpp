@@ -27,7 +27,7 @@ HexusOpponentNecron::HexusOpponentNecron() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex4),
 	},
-	HexusOpponentData::generateDeck(25, 0.8f,
+	HexusOpponentData::generateDeck(25, 0.84f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 			CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),

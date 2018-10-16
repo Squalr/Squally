@@ -28,7 +28,7 @@ HexusOpponentTutorialB::HexusOpponentTutorialB() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal1),
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex1),
 	},
-	HexusOpponentData::generateDeck(25, 0.07f,
+	HexusOpponentData::generateDeck(25, 0.075f,
 		{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex0),

@@ -27,7 +27,7 @@ HexusOpponentViking::HexusOpponentViking() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
 		CardList::getInstance()->cardListByName->at(CardKeys::LogicalOr),
 	},
-	HexusOpponentData::generateDeck(25, 0.1f,
+	HexusOpponentData::generateDeck(25, 0.185f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 			CardList::getInstance()->cardListByName->at(CardKeys::Hex0),

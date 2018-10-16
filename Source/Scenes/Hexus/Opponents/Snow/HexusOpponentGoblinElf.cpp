@@ -27,7 +27,7 @@ HexusOpponentGoblinElf::HexusOpponentGoblinElf() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex4),
 	},
-	HexusOpponentData::generateDeck(25, 0.75f,
+	HexusOpponentData::generateDeck(25, 0.63f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 			CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),

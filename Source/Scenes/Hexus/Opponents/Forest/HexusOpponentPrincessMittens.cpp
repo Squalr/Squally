@@ -27,7 +27,7 @@ HexusOpponentPrincessMittens::HexusOpponentPrincessMittens() : HexusOpponentData
 		CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex4),
 	},
-	HexusOpponentData::generateDeck(25, 0.45f,
+	HexusOpponentData::generateDeck(25, 0.39f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 			CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),

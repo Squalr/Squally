@@ -27,7 +27,7 @@ HexusOpponentOrcBomber::HexusOpponentOrcBomber() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex7),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary7),
 	},
-	HexusOpponentData::generateDeck(25, 0.45f,
+	HexusOpponentData::generateDeck(25, 0.345f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 			CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),

@@ -27,7 +27,7 @@ HexusOpponentThurstan::HexusOpponentThurstan() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal2),
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal1),
 	},
-	HexusOpponentData::generateDeck(25, 0.6f,
+	HexusOpponentData::generateDeck(25, 0.52f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 			CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),

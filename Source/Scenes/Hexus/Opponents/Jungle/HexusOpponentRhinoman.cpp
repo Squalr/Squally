@@ -27,7 +27,7 @@ HexusOpponentRhinoman::HexusOpponentRhinoman() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex9),
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal10),
 	},
-	HexusOpponentData::generateDeck(25, 0.1f,
+	HexusOpponentData::generateDeck(25, 0.22f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 			CardList::getInstance()->cardListByName->at(CardKeys::Hex0),

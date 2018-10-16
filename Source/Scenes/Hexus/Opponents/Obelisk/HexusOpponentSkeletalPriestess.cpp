@@ -27,7 +27,7 @@ HexusOpponentSkeletalPriestess::HexusOpponentSkeletalPriestess() : HexusOpponent
 		CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex4),
 	},
-	HexusOpponentData::generateDeck(25, 0.8f,
+	HexusOpponentData::generateDeck(25, 0.885f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 			CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),

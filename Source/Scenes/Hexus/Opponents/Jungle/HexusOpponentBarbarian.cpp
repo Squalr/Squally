@@ -27,7 +27,7 @@ HexusOpponentBarbarian::HexusOpponentBarbarian() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex4),
 	},
-	HexusOpponentData::generateDeck(25, 0.1f,
+	HexusOpponentData::generateDeck(25, 0.175f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 			CardList::getInstance()->cardListByName->at(CardKeys::Hex0),

@@ -28,7 +28,7 @@ HexusOpponentGramps::HexusOpponentGramps() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::Flip2),
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal5),
 	},
-	HexusOpponentData::generateDeck(25, 0.1f,
+	HexusOpponentData::generateDeck(25, 0.14f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 			CardList::getInstance()->cardListByName->at(CardKeys::Hex0),

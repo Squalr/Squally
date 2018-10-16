@@ -28,7 +28,7 @@ HexusOpponentBodom::HexusOpponentBodom() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex4),
 		CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 	},
-	HexusOpponentData::generateDeck(25, 0.1f,
+	HexusOpponentData::generateDeck(25, 0.11f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 			CardList::getInstance()->cardListByName->at(CardKeys::Hex0),
