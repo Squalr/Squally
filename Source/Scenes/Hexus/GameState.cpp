@@ -74,6 +74,20 @@ void GameState::updateState(GameState* gameState, StateType newState)
 	gameState->stateType = newState;
 	gameState->clearInteraction();
 
+	switch (newState)
+	{
+		case StateType::GameStart:
+			gameState->gameStartTime = std::chrono::high_resolution_clock::now();
+			break;
+		case StateType::GameEnd:
+			gameState->gameEndTime = std::chrono::high_resolution_clock::now();
+			std::chrono::duration<double> elapsed = gameState->gameEndTime - gameState->gameStartTime;
+			gameState->gameDurationInSeconds = (int)(elapsed.count());
+			break;
+		default:
+			break;
+	}
+
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::beforeStateUpdateEvent, gameState);
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::onStateUpdateEvent, gameState);
 }

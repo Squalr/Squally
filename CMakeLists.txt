@@ -74,6 +74,7 @@ list(APPEND GAME_SOURCE
     Source/Bootstrapper.cpp
 	Source/GameWindow.cpp
 	Source/Resources.cpp
+	Source/Analytics/AnalyticsCategories.cpp
 	Source/Engine/EngineBootstrapper.cpp
 	Source/Engine/GlobalDirector.cpp
 	Source/Engine/SmartNode.cpp
@@ -776,6 +777,7 @@ list(APPEND GAME_HEADER
     Source/Bootstrapper.h
 	Source/GameWindow.h
 	Source/Resources.h
+	Source/Analytics/AnalyticsCategories.h
 	Source/Engine/EngineBootstrapper.h
 	Source/Engine/GlobalDirector.h
 	Source/Engine/GlobalNode.h

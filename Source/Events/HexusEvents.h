@@ -19,8 +19,9 @@ public:
 	{
 		bool playerWon;
 		HexusOpponentData* opponentData;
+		int gameDurationInSeconds;
 
-		HexusGameResultEventArgs(bool playerWon, HexusOpponentData* opponentData) : playerWon(playerWon), opponentData(opponentData)
+		HexusGameResultEventArgs(bool playerWon, HexusOpponentData* opponentData, int gameDurationInSeconds) : playerWon(playerWon), opponentData(opponentData), gameDurationInSeconds(gameDurationInSeconds)
 		{
 		}
 	};

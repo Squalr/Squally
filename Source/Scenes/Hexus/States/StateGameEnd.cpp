@@ -55,11 +55,11 @@ void StateGameEnd::onBackClick(MenuSprite* menuSprite, GameState* gameState)
 	if (gameState->playerLosses < 2 && gameState->enemyLosses >= 2)
 	{
 		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_Validation_03);
-		gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, gameState->opponentData));
+		gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, gameState->opponentData, gameState->gameDurationInSeconds));
 	}
 	else
 	{
-		gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(false, gameState->opponentData));
+		gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(false, gameState->opponentData, gameState->gameDurationInSeconds));
 	}
 }
 
