@@ -194,7 +194,6 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Mech/MechDog.cpp
 	Source/Entities/Platformer/Enemies/Mech/MechEnemyDeserializer.cpp
 	Source/Entities/Platformer/Enemies/Mech/MechGolem.cpp
-	Source/Entities/Platformer/Enemies/Mech/MechGolemDark.cpp
 	Source/Entities/Platformer/Enemies/Mech/MechGuard.cpp
 	Source/Entities/Platformer/Enemies/Mech/MiteBot.cpp
 	Source/Entities/Platformer/Enemies/Mech/VikingBot.cpp
@@ -587,7 +586,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Opponents/Mech/HexusOpponentLeon.cpp
 	Source/Scenes/Hexus/Opponents/Mech/HexusOpponentMara.cpp
 	Source/Scenes/Hexus/Opponents/Mech/HexusOpponentMarcel.cpp
-	Source/Scenes/Hexus/Opponents/Mech/HexusOpponentMechGolemDark.cpp
 	Source/Scenes/Hexus/Opponents/Mech/HexusOpponentPiper.cpp
 	Source/Scenes/Hexus/Opponents/Mech/HexusOpponentQueenElise.cpp
 	Source/Scenes/Hexus/Opponents/Mech/HexusOpponentRadon.cpp
@@ -907,7 +905,6 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Mech/MechEnemies.h
 	Source/Entities/Platformer/Enemies/Mech/MechEnemyDeserializer.h
 	Source/Entities/Platformer/Enemies/Mech/MechGolem.h
-	Source/Entities/Platformer/Enemies/Mech/MechGolemDark.h
 	Source/Entities/Platformer/Enemies/Mech/MechGuard.h
 	Source/Entities/Platformer/Enemies/Mech/MiteBot.h
 	Source/Entities/Platformer/Enemies/Mech/VikingBot.h
@@ -1322,7 +1319,6 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Opponents/Mech/HexusOpponentLeon.h
 	Source/Scenes/Hexus/Opponents/Mech/HexusOpponentMara.h
 	Source/Scenes/Hexus/Opponents/Mech/HexusOpponentMarcel.h
-	Source/Scenes/Hexus/Opponents/Mech/HexusOpponentMechGolemDark.h
 	Source/Scenes/Hexus/Opponents/Mech/HexusOpponentPiper.h
 	Source/Scenes/Hexus/Opponents/Mech/HexusOpponentQueenElise.h
 	Source/Scenes/Hexus/Opponents/Mech/HexusOpponentRadon.h
