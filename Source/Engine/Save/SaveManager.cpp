@@ -72,6 +72,20 @@ void SaveManager::saveProfileData(std::string key, cocos2d::Value data)
 	FileUtils::getInstance()->serializeValueMapToFile(instance->profileSaveData, instance->getActiveProfileSaveFileName());
 }
 
+cocos2d::Value SaveManager::getGlobalDataOrDefault(std::string key, cocos2d::Value default)
+{
+	SaveManager* instance = SaveManager::getInstance();
+
+	if (!GameUtils::keyExists(&instance->globalSaveData, key))
+	{
+		return default;
+	}
+	else
+	{
+		return instance->globalSaveData.at(key);
+	}
+}
+
 cocos2d::Value SaveManager::getGlobalData(std::string key)
 {
 	SaveManager* instance = SaveManager::getInstance();
@@ -83,6 +97,20 @@ cocos2d::Value SaveManager::getGlobalData(std::string key)
 	else
 	{
 		return instance->globalSaveData.at(key);
+	}
+}
+
+cocos2d::Value SaveManager::getProfileDataOrDefault(std::string key, cocos2d::Value default)
+{
+	SaveManager* instance = SaveManager::getInstance();
+
+	if (!GameUtils::keyExists(&instance->profileSaveData, key))
+	{
+		return default;
+	}
+	else
+	{
+		return instance->profileSaveData.at(key);
 	}
 }
 

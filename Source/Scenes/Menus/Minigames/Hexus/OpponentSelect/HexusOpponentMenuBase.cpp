@@ -1,6 +1,7 @@
 #include "HexusOpponentMenuBase.h"
 
 const std::string HexusOpponentMenuBase::winsPrefix = "WINS_";
+const std::string HexusOpponentMenuBase::lossesPrefix = "LOSSES_";
 
 HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
 {
@@ -163,12 +164,33 @@ void HexusOpponentMenuBase::onDeckManagementClick(MenuSprite* menuSprite)
 
 void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventArgs args)
 {
+	std::string winsKey = HexusOpponentMenuBase::winsPrefix + args.opponentData->enemyNameKey;
+	std::string lossesKey = HexusOpponentMenuBase::lossesPrefix + args.opponentData->enemyNameKey;
+
+	// Analytics for first time playing opponent (neither WIN or LOSS key present in save file)
+	if (!SaveManager::hasGlobalData(winsKey) && !SaveManager::hasGlobalData(lossesKey))
+	{
+		Analytics::sendEvent(AnalyticsCategories::Hexus, "first_game_result", args.opponentData->enemyNameKey, args.playerWon ? 1 : 0);
+	}
+
+	Analytics::sendEvent(AnalyticsCategories::Hexus, "game_duration", args.opponentData->enemyNameKey, args.gameDurationInSeconds);
+
 	if (args.playerWon)
 	{
-		std::string opponentKey = HexusOpponentMenuBase::winsPrefix + args.opponentData->enemyNameKey;
-		int wins = SaveManager::hasGlobalData(opponentKey) ? SaveManager::getGlobalData(opponentKey).asInt() + 1 : 1;
+		int wins = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
+		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt();
 
-		SaveManager::saveGlobalData(opponentKey, cocos2d::Value(wins));
+		SaveManager::saveGlobalData(winsKey, cocos2d::Value(wins));
+
+		// Analytics for first win
+		if (wins == 1)
+		{
+			Analytics::sendEvent(AnalyticsCategories::Hexus, "attempts_for_first_win", args.opponentData->enemyNameKey, losses + wins);
+		}
+
+		// Analytics for winning in general
+		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_wins", args.opponentData->enemyNameKey, wins);
+
 		bool backToChapterSelect = false;
 
 		if (args.opponentData == this->opponents.back()->hexusOpponentData)
@@ -185,6 +207,13 @@ void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventA
 	}
 	else
 	{
+		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
+
+		SaveManager::saveGlobalData(lossesKey, cocos2d::Value(losses));
+
+		// Analytics for winning in general
+		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", args.opponentData->enemyNameKey, losses);
+
 		NavigationEvents::navigateBack();
 	}
 }

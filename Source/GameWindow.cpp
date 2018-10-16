@@ -1,7 +1,6 @@
 #include "GameWindow.h"
 
-using namespace cocos2d;
-using namespace cocos2d::cocos_experimental;
+const std::string GameWindow::GameWindowTitle = "Squally";
 
 GameWindow::GameWindow()
 {
@@ -30,12 +29,12 @@ bool GameWindow::applicationDidFinishLaunching()
 
 	if (ConfigManager::getIsFullScreen())
 	{
-		glView = GLViewImpl::createWithFullScreen(this->GameWindowTitle);
+		glView = GLViewImpl::createWithFullScreen(GameWindow::GameWindowTitle);
 		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
 	}
 	else
 	{
-		glView = GLViewImpl::createWithRect(this->GameWindowTitle, Rect(0, 0, resolutionSize.width, resolutionSize.height));
+		glView = GLViewImpl::createWithRect(GameWindow::GameWindowTitle, Rect(0, 0, resolutionSize.width, resolutionSize.height));
 		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
 	}
 
@@ -46,11 +45,11 @@ bool GameWindow::applicationDidFinishLaunching()
 	Bootstrapper::initialize();
 
 	#ifdef _WIN32
-		Analytics::sendEvent("GameStart", "Windows");
+		Analytics::sendEvent(AnalyticsCategories::GameStart, "Windows");
 	#elif __APPLE__
-		Analytics::sendEvent("GameStart", "OS X");
+		Analytics::sendEvent(AnalyticsCategories::GameStart, "OS X");
 	#elif __linux__
-		Analytics::sendEvent("GameStart", "Linux");
+		Analytics::sendEvent(AnalyticsCategories::GameStart, "Linux");
 	#endif
 
 	return true;

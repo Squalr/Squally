@@ -1,7 +1,9 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Analytics/AnalyticsCategories.h"
 #include "Events/NavigationEvents.h"
+#include "Engine/Analytics/Analytics.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/ScrollPane.h"
@@ -41,5 +43,6 @@ protected:
 	TextMenuSprite* backButton;
 
 	static const std::string winsPrefix;
+	static const std::string lossesPrefix;
 };
 

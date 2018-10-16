@@ -2,9 +2,13 @@
 #include "audio/include/AudioEngine.h"
 #include "cocos2d.h"
 
+#include "Analytics/AnalyticsCategories.h"
 #include "Bootstrapper.h"
 #include "Engine/Analytics/Analytics.h"
 #include "Engine/Config/ConfigManager.h"
+
+using namespace cocos2d;
+using namespace cocos2d::cocos_experimental;
 
 /**
 @brief The cocos2d Application.
@@ -39,5 +43,5 @@ public:
 	virtual void applicationWillEnterForeground();
 
 private:
-	std::string GameWindowTitle = "Squally";
+	static const std::string GameWindowTitle;
 };

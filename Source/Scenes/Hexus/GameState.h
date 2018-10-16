@@ -1,4 +1,5 @@
 #pragma once
+#include <chrono>
 #include "cocos2d.h"
 
 #include "Engine/Utils/StrUtils.h"
@@ -77,6 +78,7 @@ public:
 	int cardReplaceCount;
 	int roundNumber;
 	int turnNumber;
+	int gameDurationInSeconds;
 	CardRow* stagedCombineCardRow;
 	Card* stagedCombineSourceCard;
 	Card* stagedCombineTargetCard;
@@ -112,4 +114,7 @@ private:
 	~GameState();
 
 	void initializePositions() override;
+
+	std::chrono::time_point<std::chrono::high_resolution_clock> gameStartTime;
+	std::chrono::time_point<std::chrono::high_resolution_clock> gameEndTime;
 };
