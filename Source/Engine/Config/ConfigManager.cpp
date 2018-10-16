@@ -1,5 +1,7 @@
 #include "ConfigManager.h"
 
+using namespace cocos2d;
+
 const std::string ConfigManager::ConfigFile = "config.txt";
 const std::string ConfigManager::ResolutionKey = "resolution";
 const std::string ConfigManager::FullScreenKey = "fullscreen";

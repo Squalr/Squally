@@ -105,7 +105,7 @@
 	#include <netinet/ip.h>
 	#include <netinet/ip_icmp.h>
 
-	#ifdef DARWIN
+	#ifdef __APPLE__
 	#include <net/if_dl.h>
 	#include <ifaddrs.h>
 	#include <net/if_types.h>
@@ -146,7 +146,7 @@
 		mac1 = 0;
 		mac2 = 0;
 
-	#ifdef DARWIN
+	#ifdef __APPLE__
 
 		struct ifaddrs* ifaphead;
 		if (getifaddrs(&ifaphead) != 0)
@@ -254,7 +254,7 @@
 		return hash;
 	}
 
-	#ifdef DARWIN
+	#ifdef __APPLE__
 	#include <mach-o/arch.h>
 	unsigned short getCpuHash()
 	{
