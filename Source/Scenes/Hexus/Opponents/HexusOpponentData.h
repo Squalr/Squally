@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Resources.h"
 #include "Scenes/Hexus/CardData/CardData.h"
@@ -46,8 +47,14 @@ protected:
 		std::vector<CardData*> cards);
 	~HexusOpponentData();
 
-	static std::vector<CardData*> generateDeck(int deckSize, int minAttack, int maxAttack, float binaryRatio, float decimalRatio, std::vector<CardData*> guaranteedCards);
+	static std::vector<CardData*> generateDeck(int deckSize, float deckStrength, std::vector<CardData*> guaranteedCards);
 
 	Card::CardStyle cardStyle;
 	std::vector<CardData*> cards;
+
+private:
+	static int getBestPossibleDeckAttack(int deckSize);
+	static CardData* getBinaryCardForAttack(int attack);
+	static CardData* getDecimalCardForAttack(int attack);
+	static CardData* getHexCardForAttack(int attack);
 };

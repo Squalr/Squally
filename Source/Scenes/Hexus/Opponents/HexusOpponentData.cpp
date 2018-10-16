@@ -32,19 +32,13 @@ Deck* HexusOpponentData::getDeck()
 	return Deck::create(this->cardStyle, this->cards);
 }
 
-std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, int minAttack, int maxAttack, float binaryRatio, float decimalRatio, std::vector<CardData*> guaranteedCards)
+std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckStrength, std::vector<CardData*> guaranteedCards)
 {
-	maxAttack = MathUtils::clamp(maxAttack, 0, 15);
-	minAttack = MathUtils::clamp(minAttack, maxAttack, 15);
-	binaryRatio = MathUtils::clamp(binaryRatio, 0.0f, 1.0f);
-	decimalRatio = MathUtils::clamp(decimalRatio, 0.0f, 1.0f);
-	float hexRatio = MathUtils::clamp(binaryRatio, 0.0f, 1.0f + (binaryRatio + decimalRatio));
-	float total = binaryRatio + decimalRatio + hexRatio;
+	deckSize = MathUtils::clamp(deckSize, 20, 60);
+	deckStrength = MathUtils::clamp(deckStrength, 0.0f, 1.0f);
 
-	if (total == 0.0f)
-	{
-		return guaranteedCards;
-	}
+	// Formula: Best possible generated card attack = (DeckStrength + 10%) * 15
+	int maxGeneratedDeckCardAttack = MathUtils::clamp((int)((deckStrength + 0.1f) * 15), 0, 15);
 
 	std::vector<CardData*> deck = std::vector<CardData*>();
 
@@ -54,207 +48,218 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, int minAtta
 		deckSize--;
 	}
 
-	int binaryCardCount = (binaryRatio / total) * deckSize;
-	int decimalCardCount = (decimalRatio / total) * deckSize;
-	int hexCardCount = (hexRatio / total) * deckSize;
+	// Adjust deck strength via a "quadratic easeOut" function -- solves issues of not being able to properly fill the deck
+	// ie) If the best deck for a size 21 deck is 300, and deckStrength is 10%, we would expect a deck of 30 strength, but this is impossible with 21 cards.
+	// My assumption is that this will be OK -- it makes lower % decks a bit stronger, and higher % decks a bit weaker, however I think that
+	// these imbalances can be made up with intelligently distributed special cards
+	float adjustedDeckStrength = MathUtils::clamp(deckStrength * (2.0f - deckStrength), 0.0f, 1.0f);
 
-	int nextAttack = maxAttack;
+	// Calculate the total attack this deck should have
+	int generatedDeckAttack = HexusOpponentData::getBestPossibleDeckAttack(deckSize) * adjustedDeckStrength;
 
-	while (binaryCardCount > 0)
+	std::vector<int> possibleCards = std::vector<int>();
+
+	for (int attack = maxGeneratedDeckCardAttack; attack > 0; attack--)
 	{
-		if (nextAttack < minAttack)
+		for (int cardType = 0; cardType < 3; cardType++)
 		{
-			nextAttack = maxAttack;
+			for (int repeatCard = 0; repeatCard < 3; repeatCard++)
+			{
+				possibleCards.push_back(attack);
+			}
 		}
-
-		switch (nextAttack)
-		{
-			case 0:
-			default:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary0));
-				break;
-			case 1:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary1));
-				break;
-			case 2:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary2));
-				break;
-			case 3:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary3));
-				break;
-			case 4:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary4));
-				break;
-			case 5:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary5));
-				break;
-			case 6:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary6));
-				break;
-			case 7:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary7));
-				break;
-			case 8:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary8));
-				break;
-			case 9:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary9));
-				break;
-			case 10:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary10));
-				break;
-			case 11:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary11));
-				break;
-			case 12:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary12));
-				break;
-			case 13:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary13));
-				break;
-			case 14:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary14));
-				break;
-			case 15:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary15));
-				break;
-		}
-
-		nextAttack--;
-		binaryCardCount--;
 	}
 
-	nextAttack = maxAttack;
+	// TODO: Possible cards should take into account guaranteed cards -- not a huge deal but currently this can result in more than 3 cards of the same type
 
-	while (decimalCardCount > 0)
+	std::vector<int> deckCards = AlgoUtils::subsetSum(possibleCards, generatedDeckAttack, deckSize);
+	std::map<int, int> addedCards = std::map<int, int>();
+
+	for (auto it = deckCards.begin(); it != deckCards.end(); it++)
 	{
-		if (nextAttack < minAttack)
+		if (addedCards.find(*it) != addedCards.end())
 		{
-			nextAttack = maxAttack;
+			deck.push_back(HexusOpponentData::getBinaryCardForAttack(*it));
+			addedCards.emplace(*it, 1);
 		}
-
-		switch (nextAttack)
+		else
 		{
-			case 0:
-			default:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal0));
-				break;
-			case 1:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal1));
-				break;
-			case 2:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal2));
-				break;
-			case 3:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal3));
-				break;
-			case 4:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal4));
-				break;
-			case 5:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal5));
-				break;
-			case 6:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal6));
-				break;
-			case 7:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal7));
-				break;
-			case 8:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal8));
-				break;
-			case 9:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal9));
-				break;
-			case 10:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal10));
-				break;
-			case 11:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal11));
-				break;
-			case 12:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal12));
-				break;
-			case 13:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal13));
-				break;
-			case 14:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal14));
-				break;
-			case 15:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal15));
-				break;
+			addedCards.emplace(*it, addedCards[*it] + 1);
+
+			// Alternate between adding bin/hex/dec for cards of the same attack to keep decks diverse
+			switch (addedCards[*it] % 3)
+			{
+				// Binary is 1st priority
+				default:
+				case 0:
+					deck.push_back(HexusOpponentData::getBinaryCardForAttack(*it));
+					break;
+				// Prioritize hex next
+				case 1:
+					deck.push_back(HexusOpponentData::getHexCardForAttack(*it));
+					break;
+				// Finally decimal
+				case 2:
+					deck.push_back(HexusOpponentData::getDecimalCardForAttack(*it));
+					break;
+			}
 		}
-
-		nextAttack--;
-		decimalCardCount--;
-	}
-
-	nextAttack = maxAttack;
-
-	while (hexCardCount > 0)
-	{
-		if (nextAttack < 0)
-		{
-			nextAttack = maxAttack;
-		}
-
-		switch (nextAttack)
-		{
-			case 0:
-			default:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex0));
-				break;
-			case 1:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex1));
-				break;
-			case 2:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex2));
-				break;
-			case 3:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex3));
-				break;
-			case 4:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex4));
-				break;
-			case 5:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex5));
-				break;
-			case 6:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex6));
-				break;
-			case 7:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex7));
-				break;
-			case 8:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex8));
-				break;
-			case 9:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex9));
-				break;
-			case 10:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex10));
-				break;
-			case 11:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex11));
-				break;
-			case 12:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex12));
-				break;
-			case 13:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex13));
-				break;
-			case 14:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex14));
-				break;
-			case 15:
-				deck.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex15));
-				break;
-		}
-
-		nextAttack--;
-		hexCardCount--;
 	}
 
 	return deck;
+}
+
+int HexusOpponentData::getBestPossibleDeckAttack(int deckSize)
+{
+	int bestDeckAttack = 0;
+	int repeatedCardCount = 0;
+
+	// For all attack values
+	for (int nextAttack = 15; nextAttack > 0; nextAttack--)
+	{
+		// For all types (bin/dec/hex)
+		for (int cardTypeIndex = 0; cardTypeIndex < 3; cardTypeIndex++)
+		{
+			// For the maximum amount of duplicated cards (3)
+			for (int repeatedCount = 0; repeatedCount < 3; repeatedCount++)
+			{
+				bestDeckAttack += nextAttack;
+				deckSize--;
+
+				if (deckSize == 0)
+				{
+					return bestDeckAttack;
+				}
+			}
+		}
+	}
+
+	return bestDeckAttack;
+}
+
+
+CardData* HexusOpponentData::getBinaryCardForAttack(int attack)
+{
+	attack = MathUtils::clamp(attack, 0, 15);
+
+	switch (attack)
+	{
+		case 0:
+		default:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Binary0);
+		case 1:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Binary1);
+		case 2:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Binary2);
+		case 3:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Binary3);
+		case 4:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Binary4);
+		case 5:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Binary5);
+		case 6:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Binary6);
+		case 7:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Binary7);
+		case 8:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Binary8);
+		case 9:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Binary9);
+		case 10:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Binary10);
+		case 11:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Binary11);
+		case 12:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Binary12);
+		case 13:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Binary13);
+		case 14:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Binary14);
+		case 15:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Binary15);
+	}
+}
+
+CardData* HexusOpponentData::getDecimalCardForAttack(int attack)
+{
+	attack = MathUtils::clamp(attack, 0, 15);
+
+	switch (attack)
+	{
+		case 0:
+		default:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal0);
+		case 1:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal1);
+		case 2:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal2);
+		case 3:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal3);
+		case 4:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal4);
+		case 5:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal5);
+		case 6:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal6);
+		case 7:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal7);
+		case 8:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal8);
+		case 9:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal9);
+		case 10:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal10);
+		case 11:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal11);
+		case 12:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal12);
+		case 13:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal13);
+		case 14:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal14);
+		case 15:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal15);
+	}
+}
+
+CardData* HexusOpponentData::getHexCardForAttack(int attack)
+{
+	attack = MathUtils::clamp(attack, 0, 15);
+
+	switch (attack)
+	{
+		case 0:
+		default:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Hex0);
+		case 1:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Hex1);
+		case 2:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Hex2);
+		case 3:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Hex3);
+		case 4:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Hex4);
+		case 5:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Hex5);
+		case 6:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Hex6);
+		case 7:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Hex7);
+		case 8:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Hex8);
+		case 9:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Hex9);
+		case 10:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Hex10);
+		case 11:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Hex11);
+		case 12:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Hex12);
+		case 13:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Hex13);
+		case 14:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Hex14);
+		case 15:
+			return CardList::getInstance()->cardListByName->at(CardKeys::Hex15);
+	}
 }

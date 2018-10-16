@@ -27,7 +27,7 @@ HexusOpponentMara::HexusOpponentMara() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex4),
 	},
-	HexusOpponentData::generateDeck(25, 0, 14, 0.33f, 0.33f,
+	HexusOpponentData::generateDeck(25, 0.93f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 			CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
