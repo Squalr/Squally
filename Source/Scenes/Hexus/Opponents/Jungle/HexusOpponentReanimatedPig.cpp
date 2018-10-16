@@ -27,7 +27,7 @@ HexusOpponentReanimatedPig::HexusOpponentReanimatedPig() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex6),
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal6),
 	},
-	HexusOpponentData::generateDeck(25, 0.1f,
+	HexusOpponentData::generateDeck(25, 0.145f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 			CardList::getInstance()->cardListByName->at(CardKeys::Hex0),

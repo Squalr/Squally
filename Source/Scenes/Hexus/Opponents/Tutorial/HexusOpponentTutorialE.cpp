@@ -28,7 +28,7 @@ HexusOpponentTutorialE::HexusOpponentTutorialE() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::Flip2),
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary2),
 	},
-	HexusOpponentData::generateDeck(25, 0.07f,
+	HexusOpponentData::generateDeck(25, 0.095f,
 		{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex0),

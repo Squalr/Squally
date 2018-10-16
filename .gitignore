@@ -64,6 +64,7 @@ dlldata.c
 _Chutzpah*
 
 # Visual C++ cache files
+enc_temp_folder/*
 ipch/
 *.aps
 *.ncb

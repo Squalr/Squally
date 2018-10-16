@@ -27,7 +27,7 @@ HexusOpponentTikiGolem::HexusOpponentTikiGolem() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex10),
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal9),
 	},
-	HexusOpponentData::generateDeck(25, 0.1f,
+	HexusOpponentData::generateDeck(25, 0.19f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 			CardList::getInstance()->cardListByName->at(CardKeys::Hex0),
