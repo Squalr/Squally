@@ -77,32 +77,32 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 
 	for (auto it = deckCards.begin(); it != deckCards.end(); it++)
 	{
-		if (addedCards.find(*it) != addedCards.end())
+		if (addedCards.find(*it) == addedCards.end())
 		{
-			deck.push_back(HexusOpponentData::getBinaryCardForAttack(*it));
-			addedCards.emplace(*it, 1);
+			// Start zero-indexed counter
+			addedCards.emplace(*it, 0);
 		}
 		else
 		{
-			addedCards.emplace(*it, addedCards[*it] + 1);
+			addedCards[*it] = addedCards[*it] + 1;
+		}
 
-			// Alternate between adding bin/hex/dec for cards of the same attack to keep decks diverse
-			switch (addedCards[*it] % 3)
-			{
-				// Binary is 1st priority
-				default:
-				case 0:
-					deck.push_back(HexusOpponentData::getBinaryCardForAttack(*it));
-					break;
+		// Alternate between adding bin/hex/dec for cards of the same attack to keep decks diverse
+		switch (addedCards[*it] % 3)
+		{
+			// Binary is 1st priority
+			default:
+			case 0:
+				deck.push_back(HexusOpponentData::getBinaryCardForAttack(*it));
+				break;
 				// Prioritize hex next
-				case 1:
-					deck.push_back(HexusOpponentData::getHexCardForAttack(*it));
-					break;
+			case 1:
+				deck.push_back(HexusOpponentData::getHexCardForAttack(*it));
+				break;
 				// Finally decimal
-				case 2:
-					deck.push_back(HexusOpponentData::getDecimalCardForAttack(*it));
-					break;
-			}
+			case 2:
+				deck.push_back(HexusOpponentData::getDecimalCardForAttack(*it));
+				break;
 		}
 	}
 

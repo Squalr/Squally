@@ -24,4 +24,8 @@ protected:
 private:
 	StateAIDecideCardReplace();
 	~StateAIDecideCardReplace();
+
+	void replaceCard(Card* card, GameState* gameState);
+
+	std::vector<Card*> removedCards;
 };
