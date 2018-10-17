@@ -34,10 +34,6 @@ void MechEnemyDeserializer::onDeserializationRequest(ObjectDeserializationReques
 	{
 		newEntity = MechGolem::deserialize(&properties);
 	}
-	else if (name == MechGolemDark::MapKeyEnemyMechGolemDark)
-	{
-		newEntity = MechGolemDark::deserialize(&properties);
-	}
 	else if (name == MechGuard::MapKeyEnemyMechGuard)
 	{
 		newEntity = MechGuard::deserialize(&properties);
