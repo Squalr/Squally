@@ -1,6 +1,6 @@
 #include "DebugDisplay.h"
 
-const bool DebugDisplay::enabled = true;
+const bool DebugDisplay::enabled = false;
 
 DebugDisplay* DebugDisplay::create()
 {
