@@ -23,21 +23,20 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->operations = new std::vector<Operation>();
 	this->cardData = data;
 
-	this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCover);
-
 	switch (data->cardType)
 	{
 		case CardData::CardType::Binary:
-			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCover);
+			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCoverBin);
 			break;
 		case CardData::CardType::Decimal:
-			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCover);
+			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCoverDec);
 			break;
 		case CardData::CardType::Hexidecimal:
-			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCover);
+			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCoverHex);
 			break;
 		default:
-			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCover);
+			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCoverSpecial);
+			break;
 	}
 
 	switch (cardStyle)
@@ -70,7 +69,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->cardSelect = MenuSprite::create(cardUnselected, cardSelected, cardSelected2);
 	this->cardSelect->setClickSound(Resources::Sounds_Menus_Card_Game_UI_Button_Light_Reverb_02);
 	this->cardSprite = Sprite::create(data->cardResourceFile);
-	this->cardFocus = Sprite::create(Resources::Minigames_Hexus_CardFocus);
+	this->cardFocus = Sprite::create(Resources::Minigames_Hexus_CardSelect);
 
 	this->cardText = Label::create("", Localization::getCodingFont(), 64.0f);
 	this->cardText->setAlignment(TextHAlignment::CENTER);
@@ -102,7 +101,7 @@ void Card::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->cardText->setPosition(Vec2(0.0f, -86.0f));
+	this->cardText->setPosition(Vec2(0.0f, -88.0f));
 }
 
 void Card::initializeListeners()
