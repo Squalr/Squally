@@ -141,6 +141,8 @@ void StateSelectionStaged::initializeSelectablesAndCallbacks(GameState* gameStat
 			gameState->playerDecimalCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this, gameState));
 			gameState->playerHexCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this, gameState));
 			break;
+		default:
+			break;
 	}
 }
 
@@ -194,7 +196,6 @@ void StateSelectionStaged::onRowChosen(CardRow* cardRow, GameState* gameState)
 
 void StateSelectionStaged::aiPerformAction(GameState* gameState)
 {
-
 	GameState::updateState(gameState, GameState::StateType::TurnEnd);
 }
 
@@ -274,8 +275,8 @@ void StateSelectionStaged::updateSelectionStatus(GameState* gameState)
 		this->selectionLabel->runAction(FadeTo::create(0.25f, 255));
 		this->cancelButton->runAction(FadeTo::create(0.25f, 255));
 		this->cancelButton->enableInteraction();
-		this->helpButton->runAction(FadeTo::create(0.25f, 255));
-		this->helpButton->enableInteraction();
+		// this->helpButton->runAction(FadeTo::create(0.25f, 255));
+		// this->helpButton->enableInteraction();
 	}
 	else
 	{

@@ -50,16 +50,18 @@ void StateCombineStaged::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	this->activeGameState = gameState;
+	gameState = gameState;
 
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
 			this->initializeCallbacks(gameState);
-			this->updateCombineStatus();
+			this->updateCombineStatus(gameState);
 			break;
 		case GameState::Turn::Enemy:
 			this->aiPerformAction(gameState);
+			break;
+		default:
 			break;
 	}
 }
@@ -72,148 +74,163 @@ void StateCombineStaged::onStateReload(GameState* gameState)
 void StateCombineStaged::onStateExit(GameState* gameState)
 {
 	StateBase::onStateExit(gameState);
+
+	gameState->stagedCombineSourceCard = nullptr;
+	this->updateCombineStatus(gameState);
 }
 
 void StateCombineStaged::initializeCallbacks(GameState* gameState)
 {
-	this->cancelButton->setClickCallback(CC_CALLBACK_1(StateCombineStaged::onCombineCancel, this));
+	this->cancelButton->setClickCallback(CC_CALLBACK_1(StateCombineStaged::onCombineCancel, this, gameState));
 
-	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(StateCombineStaged::selectCard, this));
-	gameState->enemyHand->setMouseClickCallback(CC_CALLBACK_1(StateCombineStaged::selectCard, this));
+	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(StateCombineStaged::selectCard, this, gameState));
+	gameState->enemyHand->setMouseClickCallback(CC_CALLBACK_1(StateCombineStaged::selectCard, this, gameState));
 
-	gameState->playerBinaryCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this));
-	gameState->playerDecimalCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this));
-	gameState->playerHexCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this));
-	gameState->enemyBinaryCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this));
-	gameState->enemyDecimalCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this));
-	gameState->enemyHexCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this));
+	gameState->playerBinaryCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this, gameState));
+	gameState->playerDecimalCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this, gameState));
+	gameState->playerHexCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this, gameState));
+	gameState->enemyBinaryCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this, gameState));
+	gameState->enemyDecimalCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this, gameState));
+	gameState->enemyHexCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this, gameState));
 }
 
 void StateCombineStaged::aiPerformAction(GameState* gameState)
 {
-	this->activeGameState->enemyHand->removeCard(this->activeGameState->selectedCard);
-	this->activeGameState->enemyGraveyard->insertCardTop(this->activeGameState->selectedCard, true, Config::insertDelay);
+	gameState->enemyHand->removeCard(gameState->selectedCard);
+	gameState->enemyGraveyard->insertCardTop(gameState->selectedCard, true, Config::insertDelay);
 
 	Card::Operation operation = Card::toOperation(
-		this->activeGameState->selectedCard->cardData->cardType, 
-		this->activeGameState->stagedCombineSourceCard->getAttack()
+		gameState->selectedCard->cardData->cardType, 
+		gameState->stagedCombineSourceCard->getAttack()
 	);
 
 	// NOTE, the future we may want destination card to be different than target
-	Card* destinationCard = this->activeGameState->stagedCombineTargetCard;
+	Card* destinationCard = gameState->stagedCombineTargetCard;
 	destinationCard->addOperation(operation);
 	SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
 
-	GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
+	GameState::updateState(gameState, GameState::StateType::TurnEnd);
 }
 
-void StateCombineStaged::selectCard(Card* card)
+void StateCombineStaged::selectCard(Card* card, GameState* gameState)
 {
-	// Unstage/deselect card if clicking the active card
-	if (card == this->activeGameState->selectedCard)
+	if (card == nullptr || gameState->selectedCard == nullptr)
 	{
-		this->activeGameState->stagedCombineSourceCard = nullptr;
-		this->activeGameState->selectedCard->stopAllActions();
-		this->activeGameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedCard->position));
-		this->activeGameState->selectedCard = nullptr;
-		GameState::updateState(this->activeGameState, GameState::StateType::Neutral);
+		return;
+	}
+
+	// Unstage/deselect card if clicking the active card
+	if (card == gameState->selectedCard)
+	{
+		gameState->stagedCombineSourceCard = nullptr;
+		gameState->selectedCard->stopAllActions();
+		gameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedCard->position));
+		gameState->selectedCard = nullptr;
+
+		GameState::updateState(gameState, GameState::StateType::Neutral);
 		return;
 	}
 
 	// Otherwise this is just a selection/re-staging of a new card
-	this->activeGameState->selectedCard->stopAllActions();
-	this->activeGameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedCard->position));
+	gameState->selectedCard->stopAllActions();
+	gameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedCard->position));
 
-	this->activeGameState->selectedCard = card;
-	this->activeGameState->selectedCard->stopAllActions();
-	this->activeGameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedCard->position + Vec2(0.0f, Config::cardSelectOffsetY)));
+	gameState->selectedCard = card;
+	gameState->selectedCard->stopAllActions();
+	gameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedCard->position + Vec2(0.0f, Config::cardSelectOffsetY)));
 
 	// Transition to the selection state (re-initialize things)
-	GameState::updateState(this->activeGameState, GameState::StateType::SelectionStaged);
+	GameState::updateState(gameState, GameState::StateType::SelectionStaged);
 }
 
 
-void StateCombineStaged::stageCombineTarget(Card* card)
+void StateCombineStaged::stageCombineTarget(Card* card, GameState* gameState)
 {
 	// If we click a card that is already selected our source, deselect our source
-	if (this->activeGameState->stagedCombineSourceCard == card) {
+	if (gameState->stagedCombineSourceCard == card) {
 		card->unfocus();
-		this->activeGameState->stagedCombineSourceCard = nullptr;
-		this->updateCombineStatus();
+		gameState->stagedCombineSourceCard = nullptr;
+		this->updateCombineStatus(gameState);
 		return;
 	}
 
 	// If we click a card that is already selected our destination, deselect our destination
-	if (this->activeGameState->stagedCombineTargetCard == card) {
+	if (gameState->stagedCombineTargetCard == card) {
 		card->unfocus();
-		this->activeGameState->stagedCombineTargetCard = nullptr;
-		this->updateCombineStatus();
+		gameState->stagedCombineTargetCard = nullptr;
+		this->updateCombineStatus(gameState);
 		return;
 	}
 
 	// we assign the source card first, then the destination/target
-	if (this->activeGameState->stagedCombineSourceCard == nullptr) {
+	if (gameState->stagedCombineSourceCard == nullptr) {
 		card->focus();
-		this->activeGameState->stagedCombineSourceCard = card;
-		this->updateCombineStatus();
+		gameState->stagedCombineSourceCard = card;
+		this->updateCombineStatus(gameState);
 	}
 	else {
 		card->focus();
-		this->activeGameState->stagedCombineTargetCard = card;
-		this->updateCombineStatus();
+		gameState->stagedCombineTargetCard = card;
+		this->updateCombineStatus(gameState);
 	}
 
-	switch (this->activeGameState->selectedCard->cardData->cardType) {
-	case CardData::CardType::Special_AND:
-	case CardData::CardType::Special_OR:
-	case CardData::CardType::Special_XOR:
-	case CardData::CardType::Special_ADD:
-	case CardData::CardType::Special_SUB:
-		if (this->activeGameState->stagedCombineSourceCard != nullptr && this->activeGameState->stagedCombineTargetCard != nullptr)
-		{
-			this->activeGameState->stagedCombineSourceCard->unfocus();
-			this->activeGameState->playerHand->removeCard(this->activeGameState->selectedCard);
-			this->activeGameState->playerGraveyard->insertCardTop(this->activeGameState->selectedCard, true, Config::insertDelay);
+	switch (gameState->selectedCard->cardData->cardType) {
+		case CardData::CardType::Special_AND:
+		case CardData::CardType::Special_OR:
+		case CardData::CardType::Special_XOR:
+		case CardData::CardType::Special_ADD:
+		case CardData::CardType::Special_SUB:
+			if (gameState->stagedCombineSourceCard != nullptr && gameState->stagedCombineTargetCard != nullptr)
+			{
+				gameState->stagedCombineSourceCard->unfocus();
+				this->updateCombineStatus(gameState);
+				gameState->playerHand->removeCard(gameState->selectedCard);
+				gameState->playerGraveyard->insertCardTop(gameState->selectedCard, true, Config::insertDelay);
 
-			Card::Operation operation = Card::toOperation(this->activeGameState->selectedCard->cardData->cardType, this->activeGameState->stagedCombineSourceCard->getAttack());
+				Card::Operation operation = Card::toOperation(gameState->selectedCard->cardData->cardType, gameState->stagedCombineSourceCard->getAttack());
 
-			// NOTE, the future we may want destination card to be different than target
-			Card* destinationCard = this->activeGameState->stagedCombineTargetCard;
-			destinationCard->addOperation(operation);
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
+				// NOTE, the future we may want destination card to be different than target
+				Card* destinationCard = gameState->stagedCombineTargetCard;
+				destinationCard->addOperation(operation);
+				SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
 
-			GameState::updateState(this->activeGameState, GameState::StateType::TurnEnd);
-		}
-		break;
+				GameState::updateState(gameState, GameState::StateType::TurnEnd);
+			}
+			break;
+		default:
+			break;
 	}
 }
 
-void StateCombineStaged::onCombineCancel(MenuSprite* menuSprite)
+void StateCombineStaged::onCombineCancel(MenuSprite* menuSprite, GameState* gameState)
 {
 	// Deselect current card (by selecting the selected card)
-	this->selectCard(this->activeGameState->selectedCard);
+	this->selectCard(gameState->selectedCard, gameState);
 
-	this->updateCombineStatus();
+	this->updateCombineStatus(gameState);
 }
 
-void StateCombineStaged::updateCombineStatus()
+void StateCombineStaged::updateCombineStatus(GameState* gameState)
 {
-	if (this->activeGameState->turn != GameState::Turn::Player)
+	if (gameState->turn != GameState::Turn::Player)
 	{
 		return;
 	}
-	
-	if (this->activeGameState->stagedCombineSourceCard == nullptr) {
+
+	if (gameState->stateType == GameState::StateType::CombineStaged && gameState->stagedCombineSourceCard == nullptr)
+	{
 		this->combineStatus->setString("Choose the source card for your operation");
 		this->combineStatus->runAction(FadeTo::create(0.25f, 255));
 		this->cancelButton->runAction(FadeTo::create(0.25f, 255));
 	}
-	else if (this->activeGameState->stagedCombineTargetCard == nullptr) {
+	else if (gameState->stateType == GameState::StateType::CombineStaged && gameState->stagedCombineTargetCard == nullptr)
+	{
 		this->combineStatus->setString("Choose the target card for your operation");
 		this->combineStatus->runAction(FadeTo::create(0.25f, 255));
 		this->cancelButton->runAction(FadeTo::create(0.25f, 255));
 	}
-	else {
+	else
+	{
 		this->combineStatus->runAction(FadeTo::create(0.25f, 0));
 		this->cancelButton->runAction(FadeTo::create(0.25f, 0));
 	}

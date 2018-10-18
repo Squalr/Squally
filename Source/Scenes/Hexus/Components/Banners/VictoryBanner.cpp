@@ -43,7 +43,7 @@ void VictoryBanner::onStateChange(GameState* gameState)
 {
 	BannerBase::onStateChange(gameState);
 
-	if (gameState->stateType == GameState::GameEnd && gameState->enemyLosses >= 2)
+	if (gameState->stateType == GameState::GameEnd && gameState->enemyLosses >= 2 && gameState->playerLosses < 2)
 	{
 		this->showBanner();
 	}

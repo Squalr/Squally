@@ -28,12 +28,11 @@ private:
 	void initializePositions() override;
 	void initializeCallbacks(GameState* gameState);
 	void aiPerformAction(GameState* gameState);
-	void selectCard(Card* card);
-	void stageCombineTarget(Card* card);
-	void updateCombineStatus();
-	void onCombineCancel(MenuSprite* menuSprite);
+	void selectCard(Card* card, GameState* gameState);
+	void stageCombineTarget(Card* card, GameState* gameState);
+	void updateCombineStatus(GameState* gameState);
+	void onCombineCancel(MenuSprite* menuSprite, GameState* gameState);
 
-	GameState* activeGameState;
 	Label* combineStatus;
 	MenuSprite* cancelButton;
 };
