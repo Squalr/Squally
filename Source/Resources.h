@@ -5686,7 +5686,6 @@ public:
 	static const std::string Minigames_Hexus_CardBackLight;
 	static const std::string Minigames_Hexus_CardBackShadow;
 	static const std::string Minigames_Hexus_CardBackWater;
-	static const std::string Minigames_Hexus_CardFocus;
 	static const std::string Minigames_Hexus_CardFrontCoverBin;
 	static const std::string Minigames_Hexus_CardFrontCoverDec;
 	static const std::string Minigames_Hexus_CardFrontCoverHex;
@@ -5776,6 +5775,7 @@ public:
 	static const std::string Minigames_Hexus_Special_Unused_Artifact;
 	static const std::string Minigames_Hexus_Special_Unused_Barracks;
 	static const std::string Minigames_Hexus_Special_Unused_Beer;
+	static const std::string Minigames_Hexus_Special_Unused_Beetle;
 	static const std::string Minigames_Hexus_Special_Unused_Bird;
 	static const std::string Minigames_Hexus_Special_Unused_Boar;
 	static const std::string Minigames_Hexus_Special_Unused_Bunker;
@@ -5786,6 +5786,7 @@ public:
 	static const std::string Minigames_Hexus_Special_Unused_gold_mine;
 	static const std::string Minigames_Hexus_Special_Unused_Greed;
 	static const std::string Minigames_Hexus_Special_Unused_Greed2;
+	static const std::string Minigames_Hexus_Special_Unused_Gween;
 	static const std::string Minigames_Hexus_Special_Unused_HealthPotion;
 	static const std::string Minigames_Hexus_Special_Unused_Heart;
 	static const std::string Minigames_Hexus_Special_Unused_Helmet;
@@ -5804,15 +5805,13 @@ public:
 	static const std::string Minigames_Hexus_Special_Unused_Naga;
 	static const std::string Minigames_Hexus_Special_Unused_OldTower;
 	static const std::string Minigames_Hexus_Special_Unused_Peek;
-	static const std::string Minigames_Hexus_Special_Unused_Rog;
 	static const std::string Minigames_Hexus_Special_Unused_Ruins;
 	static const std::string Minigames_Hexus_Special_Unused_SentryPost;
 	static const std::string Minigames_Hexus_Special_Unused_Shack1;
 	static const std::string Minigames_Hexus_Special_Unused_Shack2;
 	static const std::string Minigames_Hexus_Special_Unused_Sheep;
 	static const std::string Minigames_Hexus_Special_Unused_Slug;
-	static const std::string Minigames_Hexus_Special_Unused_Spider;
-	static const std::string Minigames_Hexus_Special_Unused_SpiderKing;
+	static const std::string Minigames_Hexus_Special_Unused_Snail;
 	static const std::string Minigames_Hexus_Special_Unused_Stack;
 	static const std::string Minigames_Hexus_Special_Unused_Stoneskin;
 	static const std::string Minigames_Hexus_Special_Unused_Sword;
