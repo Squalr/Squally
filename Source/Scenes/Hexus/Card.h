@@ -88,10 +88,9 @@ private:
 	std::vector<Operation>* operations;
 	Sprite* cardBack;
 	Sprite* cardFront;
-	Sprite* cardImage;
-	MenuSprite* cardSprite;
+	Sprite* cardSprite;
+	MenuSprite* cardSelect;
 	Sprite* cardFocus;
-	LayerColor* attackFrame;
 	Label* cardText;
 	std::function<void(Card*)> mouseOverCallback;
 	std::function<void(Card*)> mouseClickCallback;

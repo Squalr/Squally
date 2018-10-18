@@ -24,6 +24,13 @@ RowTotals::RowTotals()
 	this->playerHexCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
 	this->playerHexCardTotal->enableOutline(Color4B::BLACK, 3);
 
+	this->enemyBinaryCardTotal->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->enemyDecimalCardTotal->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->enemyHexCardTotal->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->playerBinaryCardTotal->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->playerDecimalCardTotal->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->playerHexCardTotal->setAnchorPoint(Vec2(0.5f, 0.5f));
+
 	this->addChild(this->enemyBinaryCardTotal);
 	this->addChild(this->enemyDecimalCardTotal);
 	this->addChild(this->enemyHexCardTotal);
