@@ -23,62 +23,68 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->operations = new std::vector<Operation>();
 	this->cardData = data;
 
-	switch (cardStyle)
+	this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCover);
+
+	switch (data->cardType)
 	{
-	case CardStyle::Earth:
-		this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackEarth);
-		this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontEarth);
-		break;
-	case CardStyle::Water:
-		this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackWater);
-		this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontWater);
-		break;
-	case CardStyle::Air:
-		this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackAir);
-		this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontAir);
-		break;
-	case CardStyle::Fire:
-		this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackFire);
-		this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontFire);
-		break;
-	case CardStyle::Light:
-		this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackLight);
-		this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontLight);
-		break;
-	case CardStyle::Shadow:
-		this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackShadow);
-		this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontShadow);
-		break;
+		case CardData::CardType::Binary:
+			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCover);
+			break;
+		case CardData::CardType::Decimal:
+			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCover);
+			break;
+		case CardData::CardType::Hexidecimal:
+			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCover);
+			break;
+		default:
+			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCover);
 	}
 
-	Node* cardSelected = Node::create();
-	cardSelected->addChild(Sprite::create(data->cardResourceFile));
-	cardSelected->addChild(Sprite::create(Resources::Minigames_Hexus_CardSelect));
+	switch (cardStyle)
+	{
+		default:
+		case CardStyle::Earth:
+			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackEarth);
+			break;
+		case CardStyle::Water:
+			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackWater);
+			break;
+		case CardStyle::Air:
+			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackAir);
+			break;
+		case CardStyle::Fire:
+			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackFire);
+			break;
+		case CardStyle::Light:
+			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackLight);
+			break;
+		case CardStyle::Shadow:
+			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackShadow);
+			break;
+	}
 
-	Node* cardSelected2 = Node::create();
-	cardSelected2->addChild(Sprite::create(data->cardResourceFile));
-	cardSelected2->addChild(Sprite::create(Resources::Minigames_Hexus_CardSelect));
+	Node* cardUnselected = Sprite::create(Resources::Minigames_Hexus_CardUnselected);
+	Node* cardSelected = Sprite::create(Resources::Minigames_Hexus_CardSelect);
+	Node* cardSelected2 = Sprite::create(Resources::Minigames_Hexus_CardSelect);
 
-	this->cardImage = Sprite::create(data->cardResourceFile);
-	this->cardSprite = MenuSprite::create(this->cardImage, cardSelected, cardSelected2);
-	this->cardSprite->setClickSound(Resources::Sounds_Menus_Card_Game_UI_Button_Light_Reverb_02);
+	this->cardSelect = MenuSprite::create(cardUnselected, cardSelected, cardSelected2);
+	this->cardSelect->setClickSound(Resources::Sounds_Menus_Card_Game_UI_Button_Light_Reverb_02);
+	this->cardSprite = Sprite::create(data->cardResourceFile);
 	this->cardFocus = Sprite::create(Resources::Minigames_Hexus_CardFocus);
 
-	this->attackFrame = LayerColor::create(Color4B(0, 0, 0, 196));
-	this->attackFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->cardText = Label::create("", Localization::getCodingFont(), 64.0f);
-	this->cardText->setAlignment(TextHAlignment::LEFT);
-	this->cardText->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->cardText->setAlignment(TextHAlignment::CENTER);
+	this->cardText->setAnchorPoint(Vec2(0.5f, 1.0f));
+	this->cardText->enableOutline(Color4B::BLACK, 8);
 
-	this->cardImage->setScale(0.9f);
 	this->setScale(Card::cardScale);
 	this->updateText();
 
 	this->addChild(this->cardBack);
-	this->addChild(this->cardFront);
 	this->addChild(this->cardSprite);
+	this->addChild(this->cardFront);
 	this->addChild(this->cardFocus);
-	this->addChild(this->attackFrame);
+	this->addChild(this->cardSelect);
 	this->addChild(this->cardText);
 
 	this->hide();
@@ -95,18 +101,16 @@ void Card::initializePositions()
 	SmartNode::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Size cardSize = this->cardImage->getContentSize() * Card::cardScale;
 
-	this->cardText->setPosition(Vec2(-cardSize.width / 2.0f - 48.0f, cardSize.height / 2.0f + 96.0f));
-	this->attackFrame->setPosition(Vec2(-cardSize.width / 2.0f - 64.0f, cardSize.height / 2.0f + 32.0f));
+	this->cardText->setPosition(Vec2(0.0f, -86.0f));
 }
 
 void Card::initializeListeners()
 {
 	SmartNode::initializeListeners();
 
-	this->cardSprite->setMouseOverCallback(CC_CALLBACK_1(Card::onMouseOver, this));
-	this->cardSprite->setClickCallback(CC_CALLBACK_1(Card::onMouseClick, this));
+	this->cardSelect->setMouseOverCallback(CC_CALLBACK_1(Card::onMouseOver, this));
+	this->cardSelect->setClickCallback(CC_CALLBACK_1(Card::onMouseClick, this));
 }
 
 void Card::addOperation(Operation operation)
@@ -117,53 +121,54 @@ void Card::addOperation(Operation operation)
 
 void Card::disableInteraction()
 {
-	this->cardSprite->disableInteraction();
+	this->cardSelect->disableInteraction();
 }
 
 void Card::enableInteraction()
 {
-	this->cardSprite->enableInteraction();
+	this->cardSelect->enableInteraction();
 }
 
 void Card::setScale(float scale)
 {
 	SmartNode::setScale(scale);
-	this->cardSprite->setContentScale(scale);
+	this->cardSelect->setContentScale(scale);
 
 	// Seriously I do not understand why this is needed. Cocos2d-x is pretty shitty when it comes to dealing with scale.
 	const Vec2 cardOffsetCorrection = Vec2(28.0f, 36.0f);
-	this->cardSprite->setOffsetCorrection(cardOffsetCorrection);
+	this->cardSelect->setOffsetCorrection(cardOffsetCorrection);
 }
 
 Card::Operation Card::toOperation(CardData::CardType playedCardType, unsigned int immediate)
 {
-	switch (playedCardType) {
-	case CardData::CardType::Special_SHL:
-		return Operation(Operation::OperationType::SHL, 1);
-	case CardData::CardType::Special_SHR:
-		return Operation(Operation::OperationType::SHR, 1);
-	case CardData::CardType::Special_FLIP1:
-		return Operation(Operation::OperationType::XOR, 0b0001);
-	case CardData::CardType::Special_FLIP2:
-		return Operation(Operation::OperationType::XOR, 0b0010);
-	case CardData::CardType::Special_FLIP3:
-		return Operation(Operation::OperationType::XOR, 0b0100);
-	case CardData::CardType::Special_FLIP4:
-		return Operation(Operation::OperationType::XOR, 0b1000);
-	case CardData::CardType::Special_AND:
-		return Operation(Operation::OperationType::AND, immediate);
-	case CardData::CardType::Special_OR:
-		return Operation(Operation::OperationType::OR, immediate);
-	case CardData::CardType::Special_XOR:
-		return Operation(Operation::OperationType::XOR, immediate);
-	case CardData::CardType::Special_ADD:
-		return Operation(Operation::OperationType::ADD, immediate);
-	case CardData::CardType::Special_SUB:
-		return Operation(Operation::OperationType::SUB, immediate);
-	case CardData::CardType::Special_INV:
-		return Operation(Operation::OperationType::XOR, 0b1111);
-	default:
-		return Operation(Operation::OperationType::AND, 0b000);
+	switch (playedCardType)
+	{
+		case CardData::CardType::Special_SHL:
+			return Operation(Operation::OperationType::SHL, 1);
+		case CardData::CardType::Special_SHR:
+			return Operation(Operation::OperationType::SHR, 1);
+		case CardData::CardType::Special_FLIP1:
+			return Operation(Operation::OperationType::XOR, 0b0001);
+		case CardData::CardType::Special_FLIP2:
+			return Operation(Operation::OperationType::XOR, 0b0010);
+		case CardData::CardType::Special_FLIP3:
+			return Operation(Operation::OperationType::XOR, 0b0100);
+		case CardData::CardType::Special_FLIP4:
+			return Operation(Operation::OperationType::XOR, 0b1000);
+		case CardData::CardType::Special_AND:
+			return Operation(Operation::OperationType::AND, immediate);
+		case CardData::CardType::Special_OR:
+			return Operation(Operation::OperationType::OR, immediate);
+		case CardData::CardType::Special_XOR:
+			return Operation(Operation::OperationType::XOR, immediate);
+		case CardData::CardType::Special_ADD:
+			return Operation(Operation::OperationType::ADD, immediate);
+		case CardData::CardType::Special_SUB:
+			return Operation(Operation::OperationType::SUB, immediate);
+		case CardData::CardType::Special_INV:
+			return Operation(Operation::OperationType::XOR, 0b1111);
+		default:
+			return Operation(Operation::OperationType::AND, 0b000);
 	}
 }
 
@@ -219,11 +224,10 @@ int Card::applyOperation(int attack, Operation operation) {
 
 void Card::reveal()
 {
-	this->cardBack->setVisible(false);
+	this->cardBack->setVisible(true);
 	this->cardFront->setVisible(true);
 	this->cardSprite->setVisible(true);
 	this->cardText->setVisible(true);
-	this->attackFrame->setOpacity(196);
 }
 
 void Card::hide()
@@ -232,7 +236,6 @@ void Card::hide()
 	this->cardFront->setVisible(false);
 	this->cardSprite->setVisible(false);
 	this->cardText->setVisible(false);
-	this->attackFrame->setOpacity(0);
 }
 
 void Card::focus()
@@ -272,32 +275,34 @@ void Card::updateText()
 
 	switch (this->cardData->cardType)
 	{
-	case CardData::CardType::Binary:
-		this->cardText->setString(HackUtils::toBinary4(this->getAttack()));
-		this->cardText->setTextColor(Card::binaryColor);
-		break;
-	case CardData::CardType::Decimal:
-		this->cardText->setString(std::to_string(this->getAttack()));
-		this->cardText->setTextColor(Card::decimalColor);
-		break;
-	case CardData::CardType::Hexidecimal:
-		this->cardText->setString(HackUtils::toHex(this->getAttack()));
-		this->cardText->setTextColor(Card::hexColor);
-		break;
-	case CardData::CardType::Special_AND:
-	case CardData::CardType::Special_OR:
-	case CardData::CardType::Special_XOR:
-	case CardData::CardType::Special_SHL:
-	case CardData::CardType::Special_SHR:
-	case CardData::CardType::Special_INV:
-	case CardData::CardType::Special_FLIP1:
-	case CardData::CardType::Special_FLIP2:
-	case CardData::CardType::Special_FLIP3:
-	case CardData::CardType::Special_FLIP4:
-	case CardData::CardType::Special_ADD:
-	case CardData::CardType::Special_SUB:
-		this->cardText->setString(this->cardData->getCardTypeString());
-		this->cardText->setTextColor(Card::specialColor);
+		case CardData::CardType::Binary:
+			this->cardText->setString(HackUtils::toBinary4(this->getAttack()));
+			this->cardText->setTextColor(Card::binaryColor);
+			break;
+		case CardData::CardType::Decimal:
+			this->cardText->setString(std::to_string(this->getAttack()));
+			this->cardText->setTextColor(Card::decimalColor);
+			break;
+		case CardData::CardType::Hexidecimal:
+			this->cardText->setString(HackUtils::toHex(this->getAttack()));
+			this->cardText->setTextColor(Card::hexColor);
+			break;
+		case CardData::CardType::Special_AND:
+		case CardData::CardType::Special_OR:
+		case CardData::CardType::Special_XOR:
+		case CardData::CardType::Special_SHL:
+		case CardData::CardType::Special_SHR:
+		case CardData::CardType::Special_INV:
+		case CardData::CardType::Special_FLIP1:
+		case CardData::CardType::Special_FLIP2:
+		case CardData::CardType::Special_FLIP3:
+		case CardData::CardType::Special_FLIP4:
+		case CardData::CardType::Special_ADD:
+		case CardData::CardType::Special_SUB:
+			this->cardText->setString(this->cardData->getCardTypeString());
+			this->cardText->setTextColor(Card::specialColor);
+		default:
+			break;
 	}
 
 	if (actualAttack > this->cardData->attack)
@@ -308,8 +313,6 @@ void Card::updateText()
 	{
 		this->cardText->setTextColor(Card::debuffColor);
 	}
-
-	this->attackFrame->setContentSize(Size(32.0f + this->cardText->getString().length() * 32.0f, 64.0f));
 }
 
 void Card::setMouseOverCallback(std::function<void(Card*)> callback)
@@ -341,5 +344,6 @@ void Card::onMouseClick(MenuSprite* menuSprite)
 int Card::simulateOperation(Operation operation) 
 {
 	int attack = this->getAttack();
+
 	return this->applyOperation(attack, operation);
 }
