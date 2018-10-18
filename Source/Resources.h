@@ -5687,7 +5687,7 @@ public:
 	static const std::string Minigames_Hexus_CardBackShadow;
 	static const std::string Minigames_Hexus_CardBackWater;
 	static const std::string Minigames_Hexus_CardFocus;
-	static const std::string Minigames_Hexus_CardFrontCover;
+	static const std::string Minigames_Hexus_CardFrontCoverBin;
 	static const std::string Minigames_Hexus_CardFrontCoverDec;
 	static const std::string Minigames_Hexus_CardFrontCoverHex;
 	static const std::string Minigames_Hexus_CardFrontCoverSpecial;
@@ -5769,6 +5769,7 @@ public:
 	static const std::string Minigames_Hexus_Special_LogicalAnd;
 	static const std::string Minigames_Hexus_Special_LogicalOr;
 	static const std::string Minigames_Hexus_Special_LogicalXor;
+	static const std::string Minigames_Hexus_Special_Mov;
 	static const std::string Minigames_Hexus_Special_ShiftLeft;
 	static const std::string Minigames_Hexus_Special_ShiftRight;
 	static const std::string Minigames_Hexus_Special_Subtraction;
@@ -5779,7 +5780,6 @@ public:
 	static const std::string Minigames_Hexus_Special_Unused_Boar;
 	static const std::string Minigames_Hexus_Special_Unused_Bunker;
 	static const std::string Minigames_Hexus_Special_Unused_Chapel;
-	static const std::string Minigames_Hexus_Special_Unused_Egg;
 	static const std::string Minigames_Hexus_Special_Unused_Fish;
 	static const std::string Minigames_Hexus_Special_Unused_Frog;
 	static const std::string Minigames_Hexus_Special_Unused_Gemstone;
