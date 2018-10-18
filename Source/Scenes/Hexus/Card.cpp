@@ -74,7 +74,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->cardText = Label::create("", Localization::getCodingFont(), 64.0f);
 	this->cardText->setAlignment(TextHAlignment::CENTER);
 	this->cardText->setAnchorPoint(Vec2(0.5f, 1.0f));
-	this->cardText->enableOutline(Color4B::BLACK, 8);
+	this->cardText->enableOutline(Color4B::BLACK, 6);
 
 	this->setScale(Card::cardScale);
 	this->updateText();
