@@ -187,7 +187,7 @@ void HexusChapterSelectMenu::loadProgress()
 
 		bool unlocked = SaveManager::hasGlobalData(dependencyKey) ? SaveManager::getGlobalData(dependencyKey).asBool() : false;
 
-		if (true || unlocked)
+		if (unlocked)
 		{
 			chapter->enableInteraction();
 		}
