@@ -1,5 +1,10 @@
 [[prereqs]]
 name = "vcredist-2010-x86"
+platform = "windows"
+
+[[prereqs]]
+name = "vcredist-2010-x64"
+platform = "osx"
 
 [[actions]]
 name = "play"
@@ -15,4 +20,3 @@ platform = "osx"
 name = "play"
 path = "LAUNCHER"
 platform = "linux"
-

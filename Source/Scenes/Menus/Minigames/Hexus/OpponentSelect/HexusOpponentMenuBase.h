@@ -28,6 +28,7 @@ protected:
 	void loadProgress();
 	void onBackClick(MenuSprite* menuSprite);
 	void onDeckManagementClick(MenuSprite* menuSprite);
+	void onShopClick(MenuSprite* menuSprite);
 	void onMouseOver(HexusOpponentPreview* opponent);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onGameEndCallback(HexusEvents::HexusGameResultEventArgs args);
@@ -39,6 +40,7 @@ protected:
 	std::string chapterProgressSaveKey;
 	Sprite* background;
 	TextMenuSprite* deckManagementButton;
+	TextMenuSprite* shopButton;
 	Label* opponentSelectLabel;
 	TextMenuSprite* backButton;
 
