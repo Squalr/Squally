@@ -6,6 +6,7 @@
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Special/Shopkeeper.h"
 #include "Events/HexusEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Resources.h"
@@ -15,27 +16,21 @@
 
 using namespace cocos2d;
 
-class HexusRewardsMenu : public FadeScene
+class HexusShopMenu : public FadeScene
 {
 public:
-	static HexusRewardsMenu * create();
+	static HexusShopMenu * create();
 
-	void onRewardsOpen(EventCustom* eventCustom);
 protected:
-	HexusRewardsMenu();
-	~HexusRewardsMenu();
+	HexusShopMenu();
+	~HexusShopMenu();
 
 private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onRewardSelect(Card* card);
-	void onChooseClick(MenuSprite* menuSprite);
 
-	bool backToChapterSelect;
-	Sprite* background;
-	CardRow* rewardRow;
-	MenuSprite* chooseButton;
-	Label* selectRewardLabel;
-	Card* selectedCard;
+	Sprite* storeBack;
+	Shopkeeper* shopKeeper;
+	Sprite* storeFront;
 };

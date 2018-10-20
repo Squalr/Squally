@@ -14,7 +14,7 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
 	Label* manageDeckLabel = Label::create("Manage Cards", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 	Label* manageDeckLabelHover = Label::create("Manage Cards", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 	Label* manageDeckLabelClick = Label::create("Manage Cards", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	
+
 	manageDeckLabel->enableOutline(Color4B::BLACK, 2);
 	manageDeckLabelHover->enableOutline(Color4B::BLACK, 2);
 	manageDeckLabelClick->enableOutline(Color4B::BLACK, 2);
@@ -23,6 +23,23 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
 		manageDeckLabel,
 		manageDeckLabelHover,
 		manageDeckLabelClick,
+		Resources::Menus_Buttons_GenericButton,
+		Resources::Menus_Buttons_GenericButtonHover,
+		Resources::Menus_Buttons_GenericButtonClick
+	);
+
+	Label* shopLabel = Label::create("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* shopLabelHover = Label::create("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* shopLabelClick = Label::create("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+
+	shopLabel->enableOutline(Color4B::BLACK, 2);
+	shopLabelHover->enableOutline(Color4B::BLACK, 2);
+	shopLabelClick->enableOutline(Color4B::BLACK, 2);
+
+	this->shopButton = TextMenuSprite::create(
+		shopLabel,
+		shopLabelHover,
+		shopLabelClick,
 		Resources::Menus_Buttons_GenericButton,
 		Resources::Menus_Buttons_GenericButtonHover,
 		Resources::Menus_Buttons_GenericButtonClick
@@ -51,6 +68,7 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
 	this->addChild(this->scrollPane);
 	this->addChild(this->opponentSelectLabel);
 	this->addChild(this->deckManagementButton);
+	this->addChild(this->shopButton);
 	this->addChild(this->backButton);
 	this->addChild(Mouse::create());
 }
@@ -118,6 +136,7 @@ void HexusOpponentMenuBase::initializePositions()
 
 	this->scrollPane->fitSizeToContent();
 	this->deckManagementButton->setPosition(Vec2(visibleSize.width / 2.0f + 756.0f, visibleSize.height - 64.0f));
+	this->shopButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 64.0f));
 	this->opponentSelectLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 64.0f));
 	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
 }
@@ -130,6 +149,7 @@ void HexusOpponentMenuBase::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusOpponentMenuBase::onKeyPressed, this);
 	this->deckManagementButton->setClickCallback(CC_CALLBACK_1(HexusOpponentMenuBase::onDeckManagementClick, this));
+	this->shopButton->setClickCallback(CC_CALLBACK_1(HexusOpponentMenuBase::onShopClick, this));
 	this->backButton->setClickCallback(CC_CALLBACK_1(HexusOpponentMenuBase::onBackClick, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
@@ -160,6 +180,11 @@ void HexusOpponentMenuBase::onBackClick(MenuSprite* menuSprite)
 void HexusOpponentMenuBase::onDeckManagementClick(MenuSprite* menuSprite)
 {
 	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Deck_Management);
+}
+
+void HexusOpponentMenuBase::onShopClick(MenuSprite* menuSprite)
+{
+	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Shop);
 }
 
 void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventArgs args)
