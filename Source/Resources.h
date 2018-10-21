@@ -5549,6 +5549,8 @@ public:
 	static const std::string Menus_MinigamesMenu_Hexus_HexusFrameTraining;
 	static const std::string Menus_MinigamesMenu_Hexus_HexusFrameVolcano;
 	static const std::string Menus_MinigamesMenu_Hexus_WoodBackground;
+	static const std::string Menus_Objects_Cheese;
+	static const std::string Menus_Objects_CheeseLarge;
 	static const std::string Menus_OptionsMenu_CheckboxEmpty;
 	static const std::string Menus_OptionsMenu_CheckboxHover;
 	static const std::string Menus_OptionsMenu_CheckboxSelected;
@@ -5572,6 +5574,9 @@ public:
 	static const std::string Menus_PauseMenu_PauseMenu;
 	static const std::string Menus_StoreMenu_Store;
 	static const std::string Menus_StoreMenu_StoreBack;
+	static const std::string Menus_StoreMenu_StoreBoard;
+	static const std::string Menus_StoreMenu_StoreOption;
+	static const std::string Menus_StoreMenu_StoreOptionSelected;
 	static const std::string Menus_StoreMenu_LootBoxes_CastleChestClosed;
 	static const std::string Menus_StoreMenu_LootBoxes_CastleChestCover;
 	static const std::string Menus_StoreMenu_LootBoxes_CastleChestOpen;
