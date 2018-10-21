@@ -33,4 +33,14 @@ private:
 	Sprite* storeBack;
 	Shopkeeper* shopKeeper;
 	Sprite* storeFront;
+	Sprite* storeMenu;
+	MenuSprite* jungleLootBoxButton;
+	MenuSprite* ruinsLootBoxButton;
+	MenuSprite* forestLootBoxButton;
+	MenuSprite* cavernsLootBoxButton;
+	MenuSprite* castleLootBoxButton;
+	MenuSprite* iceLootBoxButton;
+	MenuSprite* volcanoLootBoxButton;
+	MenuSprite* obeliskLootBoxButton;
+	MenuSprite* vaporLootBoxButton;
 };

@@ -136,7 +136,7 @@ void HexusOpponentMenuBase::initializePositions()
 
 	this->scrollPane->fitSizeToContent();
 	this->deckManagementButton->setPosition(Vec2(visibleSize.width / 2.0f + 756.0f, visibleSize.height - 64.0f));
-	this->shopButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 64.0f));
+	this->shopButton->setPosition(Vec2(visibleSize.width / 2.0f + 756.0f - 256.0f, visibleSize.height - 64.0f));
 	this->opponentSelectLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 64.0f));
 	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
 }
