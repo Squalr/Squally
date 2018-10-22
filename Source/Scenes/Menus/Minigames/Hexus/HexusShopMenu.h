@@ -29,18 +29,20 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	MenuSprite* constructLootBoxButton(std::string lootBoxIcon, int price);
+	void onLootBoxClick(MenuSprite* sprite, int price);
+	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
 	Sprite* storeBack;
 	Shopkeeper* shopKeeper;
 	Sprite* storeFront;
 	Sprite* storeMenu;
-	MenuSprite* jungleLootBoxButton;
-	MenuSprite* ruinsLootBoxButton;
-	MenuSprite* forestLootBoxButton;
-	MenuSprite* cavernsLootBoxButton;
-	MenuSprite* castleLootBoxButton;
-	MenuSprite* iceLootBoxButton;
-	MenuSprite* volcanoLootBoxButton;
-	MenuSprite* obeliskLootBoxButton;
-	MenuSprite* vaporLootBoxButton;
+	MenuSprite* lootBoxButton;
+	MenuSprite* binaryButton;
+	MenuSprite* decimalButton;
+	MenuSprite* hexButton;
+	Label* storeLabel;
+	std::vector<MenuSprite*> lootBoxes;
+
+	static const float lootBoxScale;
 };
