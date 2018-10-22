@@ -2,6 +2,7 @@
 
 const std::string CardStorage::SaveKeyStorageCards = "SAVE_KEY_STORAGE_CARDS";
 const std::string CardStorage::SaveKeyDeckCards = "SAVE_KEY_DECK_CARDS";
+const std::string CardStorage::SaveKeyGold = "SAVE_KEY_GOLD";
 
 const int CardStorage::minimumDeckCards = 20;
 
@@ -48,6 +49,17 @@ CardStorage::CardStorage()
 
 CardStorage::~CardStorage()
 {
+}
+
+void CardStorage::saveGold(int value)
+{
+	SaveManager::saveGlobalData(CardStorage::SaveKeyDeckCards, cocos2d::Value(value));
+}
+
+
+int CardStorage::getGold()
+{
+	return SaveManager::getGlobalDataOrDefault(CardStorage::SaveKeyDeckCards, cocos2d::Value(0)).asInt();
 }
 
 void CardStorage::saveDeckCards(std::vector<CardData*> deckCards)

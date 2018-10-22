@@ -1,5 +1,7 @@
 #include "HexusShopMenu.h"
 
+const float HexusShopMenu::lootBoxScale = 0.5f;
+
 HexusShopMenu * HexusShopMenu::create()
 {
 	HexusShopMenu* instance = new HexusShopMenu();
@@ -11,52 +13,33 @@ HexusShopMenu * HexusShopMenu::create()
 
 HexusShopMenu::HexusShopMenu()
 {
+	this->lootBoxes = std::vector<MenuSprite*>();
 	this->storeBack = Sprite::create(Resources::Menus_StoreMenu_StoreBack);
 	this->shopKeeper = Shopkeeper::create();
 	this->storeFront = Sprite::create(Resources::Menus_StoreMenu_Store);
 	this->storeMenu = Sprite::create(Resources::Menus_StoreMenu_StoreBoard);
+	this->storeLabel = Label::create("Store", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->storeLabel->enableOutline(Color4B::BLACK, 4);
 
-	this->jungleLootBoxButton = MenuSprite::create(Resources::Menus_StoreMenu_StoreOption, Resources::Menus_StoreMenu_StoreOptionSelected, Resources::Menus_StoreMenu_StoreOptionSelected);
-	this->ruinsLootBoxButton = MenuSprite::create(Resources::Menus_StoreMenu_StoreOption, Resources::Menus_StoreMenu_StoreOptionSelected, Resources::Menus_StoreMenu_StoreOptionSelected);
-	this->forestLootBoxButton = MenuSprite::create(Resources::Menus_StoreMenu_StoreOption, Resources::Menus_StoreMenu_StoreOptionSelected, Resources::Menus_StoreMenu_StoreOptionSelected);
-	this->cavernsLootBoxButton = MenuSprite::create(Resources::Menus_StoreMenu_StoreOption, Resources::Menus_StoreMenu_StoreOptionSelected, Resources::Menus_StoreMenu_StoreOptionSelected);
-	this->castleLootBoxButton = MenuSprite::create(Resources::Menus_StoreMenu_StoreOption, Resources::Menus_StoreMenu_StoreOptionSelected, Resources::Menus_StoreMenu_StoreOptionSelected);
-	this->iceLootBoxButton = MenuSprite::create(Resources::Menus_StoreMenu_StoreOption, Resources::Menus_StoreMenu_StoreOptionSelected, Resources::Menus_StoreMenu_StoreOptionSelected);
-	this->volcanoLootBoxButton = MenuSprite::create(Resources::Menus_StoreMenu_StoreOption, Resources::Menus_StoreMenu_StoreOptionSelected, Resources::Menus_StoreMenu_StoreOptionSelected);
-	this->obeliskLootBoxButton = MenuSprite::create(Resources::Menus_StoreMenu_StoreOption, Resources::Menus_StoreMenu_StoreOptionSelected, Resources::Menus_StoreMenu_StoreOptionSelected);
-	this->vaporLootBoxButton = MenuSprite::create(Resources::Menus_StoreMenu_StoreOption, Resources::Menus_StoreMenu_StoreOptionSelected, Resources::Menus_StoreMenu_StoreOptionSelected);
+	this->lootBoxButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected, Resources::Menus_StoreMenu_TabButtonSelected);
+	this->binaryButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected, Resources::Menus_StoreMenu_TabButtonSelected);
+	this->decimalButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected, Resources::Menus_StoreMenu_TabButtonSelected);
+	this->hexButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected, Resources::Menus_StoreMenu_TabButtonSelected);
 
-	Sprite* jungleLootBoxSprite = Sprite::create(Resources::Menus_StoreMenu_LootBoxes_JungleChestClosed);
-	Sprite* ruinsLootBoxSprite = Sprite::create(Resources::Menus_StoreMenu_LootBoxes_RuinsChestClosed);
-	Sprite* forestLootBoxSprite = Sprite::create(Resources::Menus_StoreMenu_LootBoxes_ForestChestClosed);
-	Sprite* cavernsLootBoxSprite = Sprite::create(Resources::Menus_StoreMenu_LootBoxes_CavernsChestClosed);
-	Sprite* castleLootBoxSprite = Sprite::create(Resources::Menus_StoreMenu_LootBoxes_CastleChestClosed);
-	Sprite* iceLootBoxSprite = Sprite::create(Resources::Menus_StoreMenu_LootBoxes_IceChestClosed);
-	Sprite* volcanoLootBoxSprite = Sprite::create(Resources::Menus_StoreMenu_LootBoxes_VolcanoChestClosed);
-	Sprite* obeliskLootBoxSprite = Sprite::create(Resources::Menus_StoreMenu_LootBoxes_ObeliskChestClosed);
-	Sprite* vaporLootBoxSprite = Sprite::create(Resources::Menus_StoreMenu_LootBoxes_VaporChestClosed);
+	this->lootBoxButton->addChild(Sprite::create(Resources::Menus_StoreMenu_IconLootBox));
+	this->binaryButton->addChild(Sprite::create(Resources::Menus_StoreMenu_IconBin));
+	this->decimalButton->addChild(Sprite::create(Resources::Menus_StoreMenu_IconDec));
+	this->hexButton->addChild(Sprite::create(Resources::Menus_StoreMenu_IconHex));
 
-	const float lootBoxScale = 0.33f;
-
-	jungleLootBoxSprite->setScale(lootBoxScale);
-	ruinsLootBoxSprite->setScale(lootBoxScale);
-	forestLootBoxSprite->setScale(lootBoxScale);
-	cavernsLootBoxSprite->setScale(lootBoxScale);
-	castleLootBoxSprite->setScale(lootBoxScale);
-	iceLootBoxSprite->setScale(lootBoxScale);
-	volcanoLootBoxSprite->setScale(lootBoxScale);
-	obeliskLootBoxSprite->setScale(lootBoxScale);
-	vaporLootBoxSprite->setScale(lootBoxScale);
-
-	this->jungleLootBoxButton->addChild(jungleLootBoxSprite);
-	this->ruinsLootBoxButton->addChild(ruinsLootBoxSprite);
-	this->forestLootBoxButton->addChild(forestLootBoxSprite);
-	this->cavernsLootBoxButton->addChild(cavernsLootBoxSprite);
-	this->castleLootBoxButton->addChild(castleLootBoxSprite);
-	this->iceLootBoxButton->addChild(iceLootBoxSprite);
-	this->volcanoLootBoxButton->addChild(volcanoLootBoxSprite);
-	this->obeliskLootBoxButton->addChild(obeliskLootBoxSprite);
-	this->vaporLootBoxButton->addChild(vaporLootBoxSprite);
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_JungleChestClosed, 5));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_RuinsChestClosed, 10));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_ForestChestClosed, 25));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_CavernsChestClosed, 50));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_CastleChestClosed, 100));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_IceChestClosed, 250));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_VolcanoChestClosed, 500));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_ObeliskChestClosed, 1000));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_VaporChestClosed, 1500));
 
 	this->storeBack->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->storeFront->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -65,16 +48,17 @@ HexusShopMenu::HexusShopMenu()
 	this->addChild(this->shopKeeper);
 	this->addChild(this->storeFront);
 	this->addChild(this->storeMenu);
-	this->addChild(this->jungleLootBoxButton);
-	this->addChild(this->ruinsLootBoxButton);
-	this->addChild(this->forestLootBoxButton);
-	this->addChild(this->cavernsLootBoxButton);
-	this->addChild(this->cavernsLootBoxButton);
-	this->addChild(this->castleLootBoxButton);
-	this->addChild(this->iceLootBoxButton);
-	this->addChild(this->volcanoLootBoxButton);
-	this->addChild(this->obeliskLootBoxButton);
-	this->addChild(this->vaporLootBoxButton);
+	this->addChild(this->lootBoxButton);
+	this->addChild(this->binaryButton);
+	this->addChild(this->decimalButton);
+	this->addChild(this->hexButton);
+	this->addChild(this->storeLabel);
+
+	for (auto it = this->lootBoxes.begin(); it != this->lootBoxes.end(); it++)
+	{
+		this->addChild(*it);
+	}
+
 	this->addChild(Mouse::create());
 }
 
@@ -93,6 +77,12 @@ void HexusShopMenu::onEnter()
 void HexusShopMenu::initializeListeners()
 {
 	FadeScene::initializeListeners();
+
+	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusShopMenu::onKeyPressed, this);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 }
 
 void HexusShopMenu::initializePositions()
@@ -101,18 +91,103 @@ void HexusShopMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->storeBack->setPosition(Vec2(0.0f, visibleSize.height / 2.0f + 144.0f));
-	this->shopKeeper->setPosition(Vec2(visibleSize.width / 2.0f - 680.0f, visibleSize.height / 2.0f));
-	this->storeFront->setPosition(Vec2(0.0f, visibleSize.height / 2.0f - 176.0f));
-	this->storeMenu->setPosition(Vec2(visibleSize.width / 2.0f + 320.0f, visibleSize.height / 2.0f));
+	const float storeOffsetY = -128.0f;
+	const Vec2 storeMenuOffset = Vec2(320.0f, 0.0f);
 
-	this->jungleLootBoxButton->setPosition(Vec2(visibleSize.width / 2.0f + 320.0f - 288.0f, visibleSize.height / 2.0f + 224.0f));
-	this->ruinsLootBoxButton->setPosition(Vec2(visibleSize.width / 2.0f + 320.0f, visibleSize.height / 2.0f + 224.0f));
-	this->forestLootBoxButton->setPosition(Vec2(visibleSize.width / 2.0f + 320.0f + 288.0f, visibleSize.height / 2.0f + 224.0f));
-	this->cavernsLootBoxButton->setPosition(Vec2(visibleSize.width / 2.0f + 320.0f - 288.0f, visibleSize.height / 2.0f));
-	this->castleLootBoxButton->setPosition(Vec2(visibleSize.width / 2.0f + 320.0f, visibleSize.height / 2.0f));
-	this->iceLootBoxButton->setPosition(Vec2(visibleSize.width / 2.0f + 320.0f + 288.0f, visibleSize.height / 2.0f));
-	this->volcanoLootBoxButton->setPosition(Vec2(visibleSize.width / 2.0f + 320.0f - 288.0f, visibleSize.height / 2.0f - 224.0f));
-	this->obeliskLootBoxButton->setPosition(Vec2(visibleSize.width / 2.0f + 320.0f, visibleSize.height / 2.0f - 224.0f));
-	this->vaporLootBoxButton->setPosition(Vec2(visibleSize.width / 2.0f + 320.0f + 288.0f, visibleSize.height / 2.0f - 224.0f));
+	this->storeBack->setPosition(Vec2(0.0f, visibleSize.height / 2.0f + storeOffsetY + 144.0f));
+	this->shopKeeper->setPosition(Vec2(visibleSize.width / 2.0f - 680.0f, visibleSize.height / 2.0f + storeOffsetY));
+	this->storeFront->setPosition(Vec2(0.0f, visibleSize.height / 2.0f + storeOffsetY - 176.0f));
+	this->storeMenu->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x, visibleSize.height / 2.0f));
+	this->lootBoxButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x - 640.0f, visibleSize.height / 2.0f + 256.0f));
+	this->binaryButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x - 640.0f, visibleSize.height / 2.0f + 128.0f));
+	this->decimalButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x - 640.0f, visibleSize.height / 2.0f + 0.0f));
+	this->hexButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x - 640.0f, visibleSize.height / 2.0f - 128.0f));
+	this->storeLabel->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x, visibleSize.height / 2.0f));
+
+	const Size chestGridSize = Size(288.0f, 240.0f);
+	int index = 0;
+
+	for (auto it = this->lootBoxes.begin(); it != this->lootBoxes.end(); it++)
+	{
+		int x = index % 3 - 1;
+		int y = index / 3 - 1;
+
+		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + x * chestGridSize.width, visibleSize.height / 2.0f + storeMenuOffset.y - 32.0f - y * chestGridSize.height));
+
+		index++;
+	}
+}
+
+MenuSprite* HexusShopMenu::constructLootBoxButton(std::string lootBoxIcon, int price)
+{
+	MenuSprite* frame = MenuSprite::create(Resources::Menus_StoreMenu_StoreOption, Resources::Menus_StoreMenu_StoreOptionSelected, Resources::Menus_StoreMenu_StoreOptionSelected);
+	Sprite* sprite = Sprite::create(lootBoxIcon);
+	Label* priceLabel = Label::create(std::to_string(price), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Sprite* goldIcon = Sprite::create(Resources::Menus_Objects_GOLD_1);
+
+	sprite->setScale(HexusShopMenu::lootBoxScale);
+	sprite->setPosition(Vec2(0.0f, 16.0f));
+
+	frame->setClickCallback(CC_CALLBACK_1(HexusShopMenu::onLootBoxClick, this, price));
+	goldIcon->setScale(0.75f);
+	goldIcon->setPosition(Vec2(-32.0f, -72.0f));
+	priceLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	priceLabel->setPosition(Vec2(16.0f, -72.0f));
+	priceLabel->enableOutline(Color4B::BLACK, 4);
+
+	frame->addChild(sprite);
+	frame->addChild(goldIcon);
+	frame->addChild(priceLabel);
+
+	return frame;
+}
+
+void HexusShopMenu::onLootBoxClick(MenuSprite* sprite, int price)
+{
+	int gold = CardStorage::getGold();
+
+	if (gold < price)
+	{
+		return;
+	}
+
+	gold -= price;
+
+	CardStorage::saveGold(gold);
+
+	sprite->runAction(Sequence::create(
+		CallFunc::create([=]()
+		{
+			for (auto it = this->lootBoxes.begin(); it != this->lootBoxes.end(); it++)
+			{
+				(*it)->disableInteraction();
+			}
+		}),
+		ScaleTo::create(0.5f, 1.0f),
+		ScaleTo::create(0.5f, HexusShopMenu::lootBoxScale),
+		CallFunc::create([=]()
+		{
+			for (auto it = this->lootBoxes.begin(); it != this->lootBoxes.end(); it++)
+			{
+				if (price <= gold)
+				{
+					(*it)->enableInteraction();
+				}
+			}
+		}),
+		nullptr
+	));
+}
+
+void HexusShopMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+{
+	switch (keyCode)
+	{
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
+			event->stopPropagation();
+			NavigationEvents::navigateBack();
+			break;
+		default:
+			break;
+	}
 }
