@@ -53,13 +53,13 @@ CardStorage::~CardStorage()
 
 void CardStorage::saveGold(int value)
 {
-	SaveManager::saveGlobalData(CardStorage::SaveKeyDeckCards, cocos2d::Value(value));
+	SaveManager::saveGlobalData(CardStorage::SaveKeyGold, cocos2d::Value(value));
 }
 
 
 int CardStorage::getGold()
 {
-	return SaveManager::getGlobalDataOrDefault(CardStorage::SaveKeyDeckCards, cocos2d::Value(0)).asInt();
+	return SaveManager::getGlobalDataOrDefault(CardStorage::SaveKeyGold, cocos2d::Value(0)).asInt();
 }
 
 void CardStorage::saveDeckCards(std::vector<CardData*> deckCards)
