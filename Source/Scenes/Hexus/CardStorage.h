@@ -19,6 +19,7 @@ public:
 	static int getGold();
 	static std::vector<CardData*> getStorageCards();
 	static std::vector<CardData*> getDeckCards();
+	static int getOwnedCardCount(CardData* cardData);
 
 	static const int minimumDeckCards;
 

@@ -76,6 +76,11 @@ void CardStorage::saveDeckCards(std::vector<CardData*> deckCards)
 
 void CardStorage::addStorageCard(CardData* cardData)
 {
+	if (CardStorage::getOwnedCardCount(cardData) >= 3)
+	{
+		return;
+	}
+
 	std::vector<CardData*> storageCards = CardStorage::getStorageCards();
 
 	storageCards.push_back(cardData);
@@ -149,4 +154,30 @@ std::vector<CardData*> CardStorage::getStorageCards()
 	}
 
 	return storageCards;
+}
+
+int CardStorage::getOwnedCardCount(CardData* cardData)
+{
+	int count = 0;
+
+	std::vector<CardData*> deck = CardStorage::getDeckCards();
+	std::vector<CardData*> storage = CardStorage::getStorageCards();
+
+	for (auto it = deck.begin(); it != deck.end(); it++)
+	{
+		if ((*it)->cardName == cardData->cardName)
+		{
+			count++;
+		}
+	}
+
+	for (auto it = storage.begin(); it != storage.end(); it++)
+	{
+		if ((*it)->cardName == cardData->cardName)
+		{
+			count++;
+		}
+	}
+
+	return count;
 }
