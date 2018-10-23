@@ -30,19 +30,38 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	MenuSprite* constructLootBoxButton(std::string lootBoxIcon, int price);
+	Card* constructCard(CardData* cardData, int price);
+	void onLootBoxTabClick();
+	void onBinaryTabClick();
+	void onDecimalTabClick();
+	void onHexTabClick();
+	void onSpecialTabClick();
+	void resetMenus();
 	void onLootBoxClick(MenuSprite* sprite, int price);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
 	Sprite* storeBack;
 	Shopkeeper* shopKeeper;
 	Sprite* storeFront;
+	Node* storeNode;
 	Sprite* storeMenu;
+	Node* lootboxesNode;
+	ScrollPane* binaryCardsScrollPane;
+	ScrollPane* decimalCardsScrollPane;
+	ScrollPane* hexCardsScrollPane;
+	ScrollPane* specialCardsScrollPane;
 	MenuSprite* lootBoxButton;
 	MenuSprite* binaryButton;
 	MenuSprite* decimalButton;
 	MenuSprite* hexButton;
+	MenuSprite* specialButton;
 	Label* storeLabel;
+
 	std::vector<MenuSprite*> lootBoxes;
+	std::map<int, Card*> binaryCards;
+	std::map<int, Card*> decimalCards;
+	std::map<int, Card*> hexCards;
+	std::vector<Card*> specialCards;
 
 	static const float lootBoxScale;
 };
