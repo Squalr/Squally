@@ -36,10 +36,11 @@ private:
 	void onDecimalTabClick();
 	void onHexTabClick();
 	void onSpecialTabClick();
+	void updateCardLimitText(Label* label, CardData* cardData);
 	void updateGoldText();
 	void hideMenus();
 	void onLootBoxClick(MenuSprite* sprite, int price);
-	void onCardClick(MenuSprite* sprite, CardData* cardData, int price);
+	void onCardClick(MenuSprite* sprite, CardData* cardData, int price, Label* cardLimitLabel);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
 	ParticleSystem* dustParticles;

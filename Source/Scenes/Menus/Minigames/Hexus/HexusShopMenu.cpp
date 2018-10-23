@@ -442,6 +442,14 @@ MenuSprite* HexusShopMenu::constructCard(CardData* cardData)
 		}
 	}
 
+	Label* cardLimitLabel = Label::create("", Localization::getMainFont(), Localization::getFontSizeH2(Localization::getMainFont()));
+
+	cardLimitLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	cardLimitLabel->enableOutline(Color4B::BLACK, 4);
+	cardLimitLabel->setPosition(Vec2(-80.0f, 128.0f));
+
+	this->updateCardLimitText(cardLimitLabel, cardData);
+
 	Label* priceLabel = Label::create(std::to_string(price), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Sprite* goldIcon = Sprite::create(Resources::Menus_Objects_GOLD_1);
 
@@ -484,20 +492,26 @@ MenuSprite* HexusShopMenu::constructCard(CardData* cardData)
 	card->setPosition(Vec2(0.0f, 16.0f));
 	card->setScale(0.8f);
 
-	cardContainer->setClickCallback(CC_CALLBACK_1(HexusShopMenu::onCardClick, this, cardData, price));
+	cardContainer->setClickCallback(CC_CALLBACK_1(HexusShopMenu::onCardClick, this, cardData, price, cardLimitLabel));
 
 	cardContainer->addChild(card);
 	cardContainer->addChild(goldIcon);
 	cardContainer->addChild(priceLabel);
+	cardContainer->addChild(cardLimitLabel);
 
 	return cardContainer;
 }
 
-void HexusShopMenu::onCardClick(MenuSprite* sprite, CardData* cardData, int price)
+void HexusShopMenu::updateCardLimitText(Label* label, CardData* cardData)
+{
+	label->setString(std::to_string(CardStorage::getOwnedCardCount(cardData)) + " / " + std::to_string(3));
+}
+
+void HexusShopMenu::onCardClick(MenuSprite* sprite, CardData* cardData, int price, Label* cardLimitLabel)
 {
 	int gold = CardStorage::getGold();
 
-	if (gold < price)
+	if (gold < price || CardStorage::getOwnedCardCount(cardData) >= 3)
 	{
 		SoundManager::playSoundResource(Resources::Sounds_AFX_INTERFACE_ERROR_1_DFMG);
 		return;
@@ -510,6 +524,8 @@ void HexusShopMenu::onCardClick(MenuSprite* sprite, CardData* cardData, int pric
 	this->updateGoldText();
 
 	CardStorage::addStorageCard(cardData);
+
+	this->updateCardLimitText(cardLimitLabel, cardData);
 }
 
 void HexusShopMenu::onLootBoxClick(MenuSprite* sprite, int price)
