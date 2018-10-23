@@ -90,7 +90,7 @@ void ScrollPane::removeAllChildren()
 	this->scrollView->removeAllChildren();
 }
 
-void ScrollPane::fitSizeToContent()
+void ScrollPane::fitSizeToContent(Rect padding)
 {
 	Vec2 oldScrollDepth = this->scrollView->getInnerContainerPosition();
 	bool firstLoad = this->scrollView->getScrolledPercentVertical() == 0.0f;
@@ -99,11 +99,12 @@ void ScrollPane::fitSizeToContent()
 
 	for (auto it = this->scrollView->getChildren().begin(); it != this->scrollView->getChildren().end(); it++)
 	{
+		(*it)->setPosition((*it)->getPosition() + padding.origin);
 		minHeight = std::min((*it)->getPositionY() - (*it)->getContentSize().height / 2.0f, minHeight);
 		maxHeight = std::max((*it)->getPositionY() + (*it)->getContentSize().height / 2.0f, maxHeight);
 	}
 	
-	this->scrollView->setInnerContainerSize(Size(this->paneSize.width, maxHeight + minHeight));
+	this->scrollView->setInnerContainerSize(Size(this->paneSize.width + padding.origin.y + padding.size.width, maxHeight + minHeight + padding.origin.x + padding.size.height));
 	this->scrollView->setInnerContainerPosition(oldScrollDepth);
 
 	this->scrollView->scrollToPercentVertical(firstLoad ? 0.0f : this->scrollView->getScrolledPercentVertical(), 0.0f, false);

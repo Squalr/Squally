@@ -18,7 +18,7 @@ public:
 
 	Size getPaneSize();
 	Size getContentSize();
-	void fitSizeToContent();
+	void fitSizeToContent(Rect padding = Rect::ZERO);
 	void addChild(Node* child) override;
 	void removeChild(Node* child, bool cleanup = true) override;
 	void removeAllChildren() override;

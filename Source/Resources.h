@@ -5634,13 +5634,14 @@ public:
 	static const std::string Menus_OptionsMenu_ToggleButtonOnClick;
 	static const std::string Menus_OptionsMenu_ToggleButtonOnHover;
 	static const std::string Menus_PauseMenu_PauseMenu;
-	static const std::string Menus_StoreMenu_CardButtonpng;
+	static const std::string Menus_StoreMenu_CardPanel;
+	static const std::string Menus_StoreMenu_CardPanelSelected;
+	static const std::string Menus_StoreMenu_GoldPanel;
 	static const std::string Menus_StoreMenu_IconBin;
 	static const std::string Menus_StoreMenu_IconDec;
 	static const std::string Menus_StoreMenu_IconHex;
 	static const std::string Menus_StoreMenu_IconLootBox;
 	static const std::string Menus_StoreMenu_IconSpecial;
-	static const std::string Menus_StoreMenu_LootBoxButtonpng;
 	static const std::string Menus_StoreMenu_Store;
 	static const std::string Menus_StoreMenu_StoreBack;
 	static const std::string Menus_StoreMenu_StoreBoard;
@@ -6135,6 +6136,7 @@ public:
 	static const std::string Music_LastMarchFull;
 	static const std::string Music_TrickOrTreat;
 	static const std::string Music_WeWillGetThereTogether;
+	static const std::string Sounds_AFX_INTERFACE_ERROR_1_DFMG;
 	static const std::string Sounds_ButtonClick1;
 	static const std::string Sounds_ButtonClick2;
 	static const std::string Sounds_ButtonClick3;
@@ -6142,6 +6144,7 @@ public:
 	static const std::string Sounds_Clean_Interface_Buttons_8;
 	static const std::string Sounds_ClickBack1;
 	static const std::string Sounds_ClickBack2;
+	static const std::string Sounds_Item_Purchase__1_;
 	static const std::string Sounds_MapOpen;
 	static const std::string Sounds_Special1;
 	static const std::string Sounds_Special2;
@@ -6210,6 +6213,7 @@ public:
 	static const std::string Particles_BlueSwirlLarge;
 	static const std::string Particles_ColorfulStars;
 	static const std::string Particles_Confetti;
+	static const std::string Particles_Dust;
 	static const std::string Particles_Electric;
 	static const std::string Particles_Fireflies;
 	static const std::string Particles_Fireflies2;
