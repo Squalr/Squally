@@ -27,8 +27,8 @@ HexusShopMenu::HexusShopMenu()
 
 	this->goldLabel->enableOutline(Color4B::BLACK, 3);
 	this->goldLabel->setPosition(Vec2(-32.0f, 0.0f));
-	this->goldLabel->setAlignment(TextHAlignment::CENTER);
-	this->goldLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->goldLabel->setAlignment(TextHAlignment::LEFT);
+	this->goldLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	this->storeBack = Sprite::create(Resources::Menus_StoreMenu_StoreBack);
 	this->shopKeeper = Shopkeeper::create();
