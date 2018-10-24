@@ -29,7 +29,7 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	MenuSprite* constructLootBoxButton(std::string lootBoxIcon, int price);
+	MenuSprite* constructLootBoxButton(std::string lootBoxAnimations, int price, std::map<CardData*, float> cardChoices);
 	MenuSprite* constructCard(CardData* cardData);
 	void onLootBoxTabClick();
 	void onBinaryTabClick();
@@ -39,9 +39,20 @@ private:
 	void updateCardLimitText(Label* label, CardData* cardData);
 	void updateGoldText();
 	void hideMenus();
-	void onLootBoxClick(MenuSprite* sprite, int price);
+	void onLootBoxClick(MenuSprite* sprite, int price, std::map<CardData*, float> cardChoices, AnimationNode* animationNode, SpriterEngine::EntityInstance* entity);
 	void onCardClick(MenuSprite* sprite, CardData* cardData, int price, Label* cardLimitLabel);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onLootBoxReturnButtonClick(int price, std::vector<Card*> chosenCards);
+	static CardData* chooseRandomCard(std::map<CardData*, float> cardChoices);
+	static std::map<CardData*, float> getCardsTier1();
+	static std::map<CardData*, float> getCardsTier2();
+	static std::map<CardData*, float> getCardsTier3();
+	static std::map<CardData*, float> getCardsTier4();
+	static std::map<CardData*, float> getCardsTier5();
+	static std::map<CardData*, float> getCardsTier6();
+	static std::map<CardData*, float> getCardsTier7();
+	static std::map<CardData*, float> getCardsTier8();
+	static std::map<CardData*, float> getCardsTier9();
 
 	ParticleSystem* dustParticles;
 	Sprite* storeBack;
@@ -63,6 +74,9 @@ private:
 	MenuSprite* hexButton;
 	MenuSprite* specialButton;
 	Label* storeLabel;
+	LayerColor* lootBoxRewardBackground;
+	MenuSprite* lootBoxReturnButton;
+	Node* chosenCardsNode;
 
 	std::vector<MenuSprite*> lootBoxes;
 	std::map<int, Node*> binaryCards;
