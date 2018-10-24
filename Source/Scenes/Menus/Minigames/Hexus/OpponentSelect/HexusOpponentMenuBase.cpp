@@ -181,7 +181,7 @@ void HexusOpponentMenuBase::onDeckManagementClick(MenuSprite* menuSprite)
 
 void HexusOpponentMenuBase::onShopClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Shop);
+	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Store);
 }
 
 void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventArgs args)

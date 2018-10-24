@@ -16,14 +16,14 @@
 
 using namespace cocos2d;
 
-class HexusShopMenu : public FadeScene
+class HexusStoreMenu : public FadeScene
 {
 public:
-	static HexusShopMenu * create();
+	static HexusStoreMenu * create();
 
 protected:
-	HexusShopMenu();
-	~HexusShopMenu();
+	HexusStoreMenu();
+	~HexusStoreMenu();
 
 private:
 	void onEnter() override;
@@ -41,6 +41,7 @@ private:
 	void hideMenus();
 	void onLootBoxClick(MenuSprite* sprite, int price, std::map<CardData*, float> cardChoices, AnimationNode* animationNode, SpriterEngine::EntityInstance* entity);
 	void onCardClick(MenuSprite* sprite, CardData* cardData, int price, Label* cardLimitLabel);
+	void onBackClick(MenuSprite* menuSprite);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onLootBoxReturnButtonClick(int price, std::vector<Card*> chosenCards);
 	static CardData* chooseRandomCard(std::map<CardData*, float> cardChoices);
@@ -74,6 +75,7 @@ private:
 	MenuSprite* hexButton;
 	MenuSprite* specialButton;
 	Label* storeLabel;
+	TextMenuSprite* backButton;
 	LayerColor* lootBoxRewardBackground;
 	MenuSprite* lootBoxReturnButton;
 	Node* chosenCardsNode;

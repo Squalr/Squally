@@ -246,5 +246,5 @@ void HexusChapterSelectMenu::onDeckManagementClick(MenuSprite* menuSprite)
 
 void HexusChapterSelectMenu::onShopClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Shop);
+	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Store);
 }
