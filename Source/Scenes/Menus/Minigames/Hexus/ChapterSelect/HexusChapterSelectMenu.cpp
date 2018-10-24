@@ -23,7 +23,7 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	this->hexusChapterPreviewVolcano = HexusChapterPreviewVolcano::create();
 	this->hexusChapterPreviewObelisk = HexusChapterPreviewObelisk::create();
 	this->hexusChapterPreviewMech = HexusChapterPreviewMech::create();
-	this->chapterSelectLabel = Label::create("Chapter Select", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->chapterSelectLabel = Label::create("Select a Chapter", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 
 	Label* backButtonLabel = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 	Label* backButtonLabelHover = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
@@ -59,6 +59,23 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 		Resources::Menus_Buttons_GenericButtonClick
 	);
 
+	Label* shopLabel = Label::create("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* shopLabelHover = Label::create("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* shopLabelClick = Label::create("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+
+	shopLabel->enableOutline(Color4B::BLACK, 2);
+	shopLabelHover->enableOutline(Color4B::BLACK, 2);
+	shopLabelClick->enableOutline(Color4B::BLACK, 2);
+
+	this->shopButton = TextMenuSprite::create(
+		shopLabel,
+		shopLabelHover,
+		shopLabelClick,
+		Resources::Menus_Buttons_GenericButton,
+		Resources::Menus_Buttons_GenericButtonHover,
+		Resources::Menus_Buttons_GenericButtonClick
+	);
+
 	this->chapterSelectLabel->enableOutline(Color4B::BLACK, 2);
 	this->setCascadeOpacityEnabled(true);
 
@@ -82,6 +99,7 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	}
 
 	this->addChild(this->deckManagementButton);
+	this->addChild(this->shopButton);
 	this->addChild(this->chapterSelectLabel);
 	this->addChild(this->backButton);
 	this->addChild(Mouse::create());
@@ -140,6 +158,7 @@ void HexusChapterSelectMenu::initializeListeners()
 	this->hexusChapterPreviewObelisk->setClickCallback([]() { NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Obelisk); } );
 	this->hexusChapterPreviewMech->setClickCallback([]() { NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Mech); } );
 	this->deckManagementButton->setClickCallback(CC_CALLBACK_1(HexusChapterSelectMenu::onDeckManagementClick, this));
+	this->shopButton->setClickCallback(CC_CALLBACK_1(HexusChapterSelectMenu::onShopClick, this));
 	this->backButton->setClickCallback(CC_CALLBACK_1(HexusChapterSelectMenu::onBackClick, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
@@ -166,6 +185,7 @@ void HexusChapterSelectMenu::initializePositions()
 	}
 
 	this->deckManagementButton->setPosition(Vec2(visibleSize.width / 2.0f + 756.0f, visibleSize.height - 64.0f));
+	this->shopButton->setPosition(Vec2(visibleSize.width / 2.0f + 756.0f - 256.0f, visibleSize.height - 64.0f));
 	this->chapterSelectLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 64.0f));
 	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
 }
@@ -222,4 +242,9 @@ void HexusChapterSelectMenu::onBackClick(MenuSprite* menuSprite)
 void HexusChapterSelectMenu::onDeckManagementClick(MenuSprite* menuSprite)
 {
 	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Deck_Management);
+}
+
+void HexusChapterSelectMenu::onShopClick(MenuSprite* menuSprite)
+{
+	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Shop);
 }

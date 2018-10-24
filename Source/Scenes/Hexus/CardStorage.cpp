@@ -2,6 +2,7 @@
 
 const std::string CardStorage::SaveKeyStorageCards = "SAVE_KEY_STORAGE_CARDS";
 const std::string CardStorage::SaveKeyDeckCards = "SAVE_KEY_DECK_CARDS";
+const std::string CardStorage::SaveKeyGold = "SAVE_KEY_GOLD";
 
 const int CardStorage::minimumDeckCards = 20;
 
@@ -50,6 +51,17 @@ CardStorage::~CardStorage()
 {
 }
 
+void CardStorage::saveGold(int value)
+{
+	SaveManager::saveGlobalData(CardStorage::SaveKeyGold, cocos2d::Value(value));
+}
+
+
+int CardStorage::getGold()
+{
+	return SaveManager::getGlobalDataOrDefault(CardStorage::SaveKeyGold, cocos2d::Value(200)).asInt();
+}
+
 void CardStorage::saveDeckCards(std::vector<CardData*> deckCards)
 {
 	ValueVector deckCardsValueVector = ValueVector();
@@ -64,6 +76,11 @@ void CardStorage::saveDeckCards(std::vector<CardData*> deckCards)
 
 void CardStorage::addStorageCard(CardData* cardData)
 {
+	if (CardStorage::getOwnedCardCount(cardData) >= 3)
+	{
+		return;
+	}
+
 	std::vector<CardData*> storageCards = CardStorage::getStorageCards();
 
 	storageCards.push_back(cardData);
@@ -137,4 +154,30 @@ std::vector<CardData*> CardStorage::getStorageCards()
 	}
 
 	return storageCards;
+}
+
+int CardStorage::getOwnedCardCount(CardData* cardData)
+{
+	int count = 0;
+
+	std::vector<CardData*> deck = CardStorage::getDeckCards();
+	std::vector<CardData*> storage = CardStorage::getStorageCards();
+
+	for (auto it = deck.begin(); it != deck.end(); it++)
+	{
+		if ((*it)->cardName == cardData->cardName)
+		{
+			count++;
+		}
+	}
+
+	for (auto it = storage.begin(); it != storage.end(); it++)
+	{
+		if ((*it)->cardName == cardData->cardName)
+		{
+			count++;
+		}
+	}
+
+	return count;
 }
