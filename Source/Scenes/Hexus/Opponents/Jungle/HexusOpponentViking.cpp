@@ -22,11 +22,7 @@ HexusOpponentViking::HexusOpponentViking() : HexusOpponentData(
 	HexusOpponentViking::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
-	{
-		CardList::getInstance()->cardListByName->at(CardKeys::LogicalXor),
-		CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
-		CardList::getInstance()->cardListByName->at(CardKeys::LogicalOr),
-	},
+	HexusOpponentData::generateReward(0.185f),
 	HexusOpponentData::generateDeck(25, 0.185f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

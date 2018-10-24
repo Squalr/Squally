@@ -22,11 +22,7 @@ HexusOpponentOrcBomber::HexusOpponentOrcBomber() : HexusOpponentData(
 	HexusOpponentOrcBomber::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
-	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal7),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex7),
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary7),
-	},
+	HexusOpponentData::generateReward(0.345f),
 	HexusOpponentData::generateDeck(25, 0.345f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),

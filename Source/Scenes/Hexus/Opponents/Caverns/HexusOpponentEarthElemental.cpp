@@ -22,11 +22,7 @@ HexusOpponentEarthElemental::HexusOpponentEarthElemental() : HexusOpponentData(
 	HexusOpponentEarthElemental::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
-	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal3),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal2),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal1),
-	},
+	HexusOpponentData::generateReward(0.435f),
 	HexusOpponentData::generateDeck(25, 0.435f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),

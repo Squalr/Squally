@@ -22,11 +22,7 @@ HexusOpponentJohann::HexusOpponentJohann() : HexusOpponentData(
 	HexusOpponentJohann::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
-	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),
-		CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex4),
-	},
+	HexusOpponentData::generateReward(0.85f),
 	HexusOpponentData::generateDeck(25, 0.85f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),

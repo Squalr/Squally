@@ -22,11 +22,7 @@ HexusOpponentReanimatedPig::HexusOpponentReanimatedPig() : HexusOpponentData(
 	HexusOpponentReanimatedPig::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
-	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary6),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex6),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal6),
-	},
+	HexusOpponentData::generateReward(0.145f),
 	HexusOpponentData::generateDeck(25, 0.145f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

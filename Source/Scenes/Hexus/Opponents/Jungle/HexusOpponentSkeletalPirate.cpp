@@ -22,11 +22,7 @@ HexusOpponentSkeletalPirate::HexusOpponentSkeletalPirate() : HexusOpponentData(
 	HexusOpponentSkeletalPirate::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
-	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal3),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal2),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal1),
-	},
+	HexusOpponentData::generateReward(0.17f),
 	HexusOpponentData::generateDeck(25, 0.17f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

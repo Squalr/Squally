@@ -22,12 +22,7 @@ HexusOpponentTutorialC::HexusOpponentTutorialC() : HexusOpponentData(
 	HexusOpponentTutorialC::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
-	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),
-		CardList::getInstance()->cardListByName->at(CardKeys::Flip1),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex1),
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),
-	},
+	HexusOpponentData::generateReward(0.085f),
 	HexusOpponentData::generateDeck(25, 0.085f,
 		{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

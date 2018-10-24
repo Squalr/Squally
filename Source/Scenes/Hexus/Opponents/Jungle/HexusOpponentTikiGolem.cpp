@@ -22,11 +22,7 @@ HexusOpponentTikiGolem::HexusOpponentTikiGolem() : HexusOpponentData(
 	HexusOpponentTikiGolem::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
-	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary9),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex10),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal9),
-	},
+	HexusOpponentData::generateReward(0.19f),
 	HexusOpponentData::generateDeck(25, 0.19f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

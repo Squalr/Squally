@@ -13,6 +13,7 @@ public:
 	static CardStorage * getInstance();
 
 	static void saveGold(int value);
+	static void addGold(int value);
 	static void saveStorageCards(std::vector<CardData*> storageCards);
 	static void saveDeckCards(std::vector<CardData*> deckCards);
 	static void addStorageCard(CardData* cardData);

@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Resources.h"
@@ -31,7 +32,10 @@ public:
 	float animationScale;
 	Vec2 animationOffset;
 	Vec2 avatarOffset;
-	std::vector<CardData*> rewards;
+	int reward;
+
+	static const std::string winsPrefix;
+	static const std::string lossesPrefix;
 
 protected:
 	HexusOpponentData(
@@ -43,10 +47,11 @@ protected:
 		std::string enemyNameKey,
 		HexusOpponentData::Difficulty difficulty,
 		Card::CardStyle cardStyle,
-		std::vector<CardData*> rewards,
+		int reward,
 		std::vector<CardData*> cards);
 	~HexusOpponentData();
 
+	static int generateReward(float deckStrength);
 	static std::vector<CardData*> generateDeck(int deckSize, float deckStrength, std::vector<CardData*> guaranteedCards);
 
 	Card::CardStyle cardStyle;
