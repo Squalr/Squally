@@ -59,7 +59,7 @@ void CardStorage::saveGold(int value)
 
 int CardStorage::getGold()
 {
-	return SaveManager::getGlobalDataOrDefault(CardStorage::SaveKeyGold, cocos2d::Value(0)).asInt();
+	return SaveManager::getGlobalDataOrDefault(CardStorage::SaveKeyGold, cocos2d::Value(200)).asInt();
 }
 
 void CardStorage::saveDeckCards(std::vector<CardData*> deckCards)

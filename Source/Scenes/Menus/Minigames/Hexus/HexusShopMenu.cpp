@@ -41,6 +41,32 @@ HexusShopMenu::HexusShopMenu()
 	this->storeLabel->setAlignment(TextHAlignment::CENTER);
 	this->storeLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
 
+	this->lootBoxRewardBackground = LayerColor::create(Color4B::BLACK);
+	this->lootBoxRewardBackground->setOpacity(0);
+
+	this->chosenCardsNode = Node::create();
+	Label* lootBoxReturnLabel = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeH2(Localization::getMainFont()));
+	Label* lootBoxReturnLabelSelected = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeH2(Localization::getMainFont()));
+	Label* lootBoxReturnLabelClick = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeH2(Localization::getMainFont()));
+
+	lootBoxReturnLabel->enableOutline(Color4B::BLACK, 2);
+	lootBoxReturnLabelSelected->enableOutline(Color4B::BLACK, 2);
+	lootBoxReturnLabelClick->enableOutline(Color4B::BLACK, 2);
+
+	lootBoxReturnLabelSelected->setColor(Color3B::YELLOW);
+	lootBoxReturnLabelClick->setColor(Color3B::YELLOW);
+
+	this->lootBoxReturnButton = TextMenuSprite::create(
+		lootBoxReturnLabel,
+		lootBoxReturnLabelSelected,
+		lootBoxReturnLabelClick,
+		Resources::Minigames_Hexus_ButtonPlank,
+		Resources::Minigames_Hexus_ButtonPlankHover,
+		Resources::Minigames_Hexus_ButtonPlankClick
+	);
+
+	this->lootBoxReturnButton->disableInteraction(0);
+
 	this->lootBoxButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected, Resources::Menus_StoreMenu_TabButtonSelected);
 	this->binaryButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected, Resources::Menus_StoreMenu_TabButtonSelected);
 	this->decimalButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected, Resources::Menus_StoreMenu_TabButtonSelected);
@@ -104,15 +130,15 @@ HexusShopMenu::HexusShopMenu()
 	this->hexButton->addChild(hexLabel);
 	this->specialButton->addChild(specialLabel);
 
-	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_JungleChestClosed, 5));
-	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_RuinsChestClosed, 10));
-	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_ForestChestClosed, 25));
-	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_CavernsChestClosed, 50));
-	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_CastleChestClosed, 100));
-	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_IceChestClosed, 250));
-	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_VolcanoChestClosed, 500));
-	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_ObeliskChestClosed, 1000));
-	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_VaporChestClosed, 1500));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_Jungle_Animations, 5, HexusShopMenu::getCardsTier1()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_Ruins_Animations, 10, HexusShopMenu::getCardsTier2()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_Forest_Animations, 25, HexusShopMenu::getCardsTier3()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_Caverns_Animations, 50, HexusShopMenu::getCardsTier4()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_Castle_Animations, 100, HexusShopMenu::getCardsTier5()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_Ice_Animations, 250, HexusShopMenu::getCardsTier6()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_Volcano_Animations, 500, HexusShopMenu::getCardsTier7()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_Obelisk_Animations, 1000, HexusShopMenu::getCardsTier8()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(Resources::Menus_StoreMenu_LootBoxes_Vapor_Animations, 1500, HexusShopMenu::getCardsTier9()));
 
 	for (auto it = CardList::getInstance()->cardListByName->begin(); it != CardList::getInstance()->cardListByName->end(); it++)
 	{
@@ -158,6 +184,9 @@ HexusShopMenu::HexusShopMenu()
 	this->storeNode->addChild(this->decimalButton);
 	this->storeNode->addChild(this->specialButton);
 	this->addChild(this->storeLabel);
+	this->addChild(this->lootBoxRewardBackground);
+	this->addChild(this->chosenCardsNode);
+	this->addChild(this->lootBoxReturnButton);
 
 	for (auto it = this->lootBoxes.begin(); it != this->lootBoxes.end(); it++)
 	{
@@ -253,6 +282,7 @@ void HexusShopMenu::initializePositions()
 	this->hexButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x - 640.0f, visibleSize.height / 2.0f + 256.0f - 144.0f * 3));
 	this->specialButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x - 640.0f, visibleSize.height / 2.0f + 256.0f - 144.0f * 4));
 	this->storeLabel->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x, visibleSize.height / 2.0f + 448.0f));
+	this->lootBoxReturnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 
 	const Size chestGridSize = Size(288.0f, 240.0f);
 	int index = 0;
@@ -323,24 +353,28 @@ void HexusShopMenu::initializePositions()
 	specialCardsScrollPane->fitSizeToContent(Rect(0.0f, 64.0f, 0.0f, 0.0f));
 }
 
-MenuSprite* HexusShopMenu::constructLootBoxButton(std::string lootBoxIcon, int price)
+MenuSprite* HexusShopMenu::constructLootBoxButton(std::string lootBoxAnimations, int price, std::map<CardData*, float> cardChoices)
 {
+	AnimationNode* animationNode = AnimationNode::create(lootBoxAnimations);
+
+	SpriterEngine::EntityInstance* entity = animationNode->play("Entity");
+	entity->setCurrentAnimation("Idle");
+
 	MenuSprite* frame = MenuSprite::create(Resources::Menus_StoreMenu_StoreOption, Resources::Menus_StoreMenu_StoreOptionSelected, Resources::Menus_StoreMenu_StoreOptionSelected);
-	Sprite* sprite = Sprite::create(lootBoxIcon);
 	Label* priceLabel = Label::create(std::to_string(price), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Sprite* goldIcon = Sprite::create(Resources::Menus_Objects_GOLD_1);
 
-	sprite->setScale(HexusShopMenu::lootBoxScale);
-	sprite->setPosition(Vec2(0.0f, 16.0f));
+	animationNode->setScale(HexusShopMenu::lootBoxScale);
+	animationNode->setPosition(Vec2(0.0f, 16.0f));
 
-	frame->setClickCallback(CC_CALLBACK_1(HexusShopMenu::onLootBoxClick, this, price));
+	frame->setClickCallback(CC_CALLBACK_1(HexusShopMenu::onLootBoxClick, this, price, cardChoices, animationNode, entity));
 	goldIcon->setScale(0.75f);
 	goldIcon->setPosition(Vec2(-32.0f, -72.0f));
 	priceLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	priceLabel->setPosition(Vec2(16.0f, -72.0f));
 	priceLabel->enableOutline(Color4B::BLACK, 4);
 
-	frame->addChild(sprite);
+	frame->addChild(animationNode);
 	frame->addChild(goldIcon);
 	frame->addChild(priceLabel);
 
@@ -504,7 +538,18 @@ MenuSprite* HexusShopMenu::constructCard(CardData* cardData)
 
 void HexusShopMenu::updateCardLimitText(Label* label, CardData* cardData)
 {
-	label->setString(std::to_string(CardStorage::getOwnedCardCount(cardData)) + " / " + std::to_string(3));
+	int ownedCount = CardStorage::getOwnedCardCount(cardData);
+
+	label->setString(std::to_string(ownedCount) + " / " + std::to_string(3));
+
+	if (ownedCount >= 3)
+	{
+		label->setTextColor(Color4B::GREEN);
+	}
+	else
+	{
+		label->setTextColor(Color4B::WHITE);
+	}
 }
 
 void HexusShopMenu::onCardClick(MenuSprite* sprite, CardData* cardData, int price, Label* cardLimitLabel)
@@ -528,7 +573,7 @@ void HexusShopMenu::onCardClick(MenuSprite* sprite, CardData* cardData, int pric
 	this->updateCardLimitText(cardLimitLabel, cardData);
 }
 
-void HexusShopMenu::onLootBoxClick(MenuSprite* sprite, int price)
+void HexusShopMenu::onLootBoxClick(MenuSprite* sprite, int price, std::map<CardData*, float> cardChoices, AnimationNode* animationNode, SpriterEngine::EntityInstance* entity)
 {
 	int gold = CardStorage::getGold();
 
@@ -544,16 +589,99 @@ void HexusShopMenu::onLootBoxClick(MenuSprite* sprite, int price)
 	CardStorage::saveGold(gold);
 	this->updateGoldText();
 
-	sprite->runAction(Sequence::create(
+	std::vector<Card*> chosenCards = std::vector<Card*>
+	{
+		Card::create(Card::CardStyle::Earth, HexusShopMenu::chooseRandomCard(cardChoices)),
+		Card::create(Card::CardStyle::Earth, HexusShopMenu::chooseRandomCard(cardChoices)),
+		Card::create(Card::CardStyle::Earth, HexusShopMenu::chooseRandomCard(cardChoices)),
+	};
+
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	int index = 0;
+
+	for (auto it = chosenCards.begin(); it != chosenCards.end(); it++)
+	{
+		float radians = (index * 360.0f / chosenCards.size() + 90.0f) * std::_Pi / 180.0f;
+
+		(*it)->setScale(1.0f);
+		(*it)->reveal();
+		(*it)->disableInteraction();
+		(*it)->setOpacity(0);
+		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + std::cos(radians) * 320.0f, visibleSize.height / 2.0f + std::sin(radians) * 320.0f));
+
+		this->addChild((*it));
+		index++;
+	}
+
+	animationNode->runAction(Sequence::create(
 		CallFunc::create([=]()
 		{
+			this->lootBoxReturnButton->setClickCallback(nullptr);
+
 			for (auto it = this->lootBoxes.begin(); it != this->lootBoxes.end(); it++)
 			{
 				(*it)->disableInteraction();
 			}
+
+			entity->setCurrentTime(0.0f);
+			entity->setCurrentAnimation("Open", 0.25f);
 		}),
-		ScaleTo::create(0.5f, 1.0f),
-		ScaleTo::create(0.5f, HexusShopMenu::lootBoxScale),
+		DelayTime::create(1.5f),
+		CallFunc::create([=]()
+		{
+			this->lootBoxRewardBackground->runAction(FadeTo::create(0.5f, 196));
+
+			for (auto it = chosenCards.begin(); it != chosenCards.end(); it++)
+			{
+				(*it)->runAction(FadeIn::create(0.5f));
+			}
+
+			this->lootBoxReturnButton->runAction(Sequence::create(
+				FadeIn::create(0.5f),
+				CallFunc::create([=]()
+				{
+					this->lootBoxReturnButton->setClickCallback(CC_CALLBACK_0(HexusShopMenu::onLootBoxReturnButtonClick, this, price, chosenCards));
+					this->lootBoxReturnButton->enableInteraction();
+				}),
+				nullptr
+			));
+
+			entity->setCurrentTime(0.0f);
+			entity->setCurrentAnimation("Idle", 0.25f);
+		}),
+		nullptr
+	));
+}
+
+void HexusShopMenu::onLootBoxReturnButtonClick(int price, std::vector<Card*> chosenCards)
+{
+	int gold = CardStorage::getGold();
+
+	this->runAction(Sequence::create(
+		CallFunc::create([=]()
+		{
+			this->lootBoxRewardBackground->runAction(FadeTo::create(0.5f, 0));
+
+			this->lootBoxReturnButton->disableInteraction(255);
+			this->lootBoxReturnButton->runAction(FadeOut::create(0.5f));
+
+			for (auto it = chosenCards.begin(); it != chosenCards.end(); it++)
+			{
+				Card* card = *it;
+
+				card->runAction(Sequence::create(
+					FadeOut::create(0.5f),
+					DelayTime::create(0.25f),
+					CallFunc::create([=]()
+					{
+						this->chosenCardsNode->removeChild(card);
+					}),
+					nullptr
+				));
+			}
+		}),
+		DelayTime::create(1.5f),
 		CallFunc::create([=]()
 		{
 			for (auto it = this->lootBoxes.begin(); it != this->lootBoxes.end(); it++)
@@ -636,3 +764,174 @@ void HexusShopMenu::updateGoldText()
 {
 	this->goldLabel->setString(std::to_string(CardStorage::getGold()));
 }
+
+CardData* HexusShopMenu::chooseRandomCard(std::map<CardData*, float> cardChoices)
+{
+	float totalChance = 0.0f;
+
+	for (auto it = cardChoices.begin(); it != cardChoices.end(); it++)
+	{
+		totalChance += (*it).second;
+	}
+
+	float selection = RandomHelper::random_real(0.0f, totalChance);
+	float sum = 0.0f;
+
+	for (auto it = cardChoices.begin(); it != cardChoices.end(); it++)
+	{
+		if (sum <= (*it).second)
+		{
+			return (*it).first;
+		}
+
+		sum += (*it).second;
+	}
+
+	// Just some non-null default (should not be possible)
+	return CardList::getInstance()->cardListByName->at(CardKeys::Binary0);
+}
+
+std::map<CardData*, float> HexusShopMenu::getCardsTier1()
+{
+	return std::map<CardData*, float>
+	{
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal0), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal1), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal2), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex0), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex1), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex2), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary0), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary1), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary2), 1.0f },
+	};
+}
+
+std::map<CardData*, float> HexusShopMenu::getCardsTier2()
+{
+	return std::map<CardData*, float>
+	{
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal2), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal3), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal4), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex2), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex3), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex4), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary2), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary3), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary4), 1.0f },
+	};
+}
+
+std::map<CardData*, float> HexusShopMenu::getCardsTier3()
+{
+	return std::map<CardData*, float>
+	{
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal4), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal5), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal6), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex4), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex5), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex6), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary4), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary5), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary6), 1.0f },
+	};
+}
+
+std::map<CardData*, float> HexusShopMenu::getCardsTier4()
+{
+	return std::map<CardData*, float>
+	{
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal5), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal6), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal7), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex5), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex6), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex7), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary5), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary6), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary7), 1.0f },
+	};
+}
+
+std::map<CardData*, float> HexusShopMenu::getCardsTier5()
+{
+	return std::map<CardData*, float>
+	{
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal7), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal8), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal9), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex7), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex8), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex9), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary7), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary8), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary9), 1.0f },
+	};
+}
+
+std::map<CardData*, float> HexusShopMenu::getCardsTier6()
+{
+	return std::map<CardData*, float>
+	{
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal9), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal10), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal11), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex9), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex10), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex11), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary9), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary10), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary11), 1.0f },
+	};
+}
+
+std::map<CardData*, float> HexusShopMenu::getCardsTier7()
+{
+	return std::map<CardData*, float>
+	{
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal10), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal11), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal12), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex10), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex11), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex12), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary10), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary11), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary12), 1.0f },
+	};
+}
+
+std::map<CardData*, float> HexusShopMenu::getCardsTier8()
+{
+	return std::map<CardData*, float>
+	{
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal12), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal13), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal14), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex12), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex13), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex14), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary12), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary13), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary14), 1.0f },
+	};
+}
+
+std::map<CardData*, float> HexusShopMenu::getCardsTier9()
+{
+	return std::map<CardData*, float>
+	{
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal13), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal14), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal15), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex13), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex14), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex15), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary13), 0.75f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary14), 1.0f },
+		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary15), 1.0f },
+	};
+}
+
