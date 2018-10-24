@@ -45,16 +45,13 @@ HexusShopMenu::HexusShopMenu()
 	this->lootBoxRewardBackground->setOpacity(0);
 
 	this->chosenCardsNode = Node::create();
-	Label* lootBoxReturnLabel = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeH2(Localization::getMainFont()));
-	Label* lootBoxReturnLabelSelected = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeH2(Localization::getMainFont()));
-	Label* lootBoxReturnLabelClick = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeH2(Localization::getMainFont()));
+	Label* lootBoxReturnLabel = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* lootBoxReturnLabelSelected = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* lootBoxReturnLabelClick = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	lootBoxReturnLabel->enableOutline(Color4B::BLACK, 2);
 	lootBoxReturnLabelSelected->enableOutline(Color4B::BLACK, 2);
 	lootBoxReturnLabelClick->enableOutline(Color4B::BLACK, 2);
-
-	lootBoxReturnLabelSelected->setColor(Color3B::YELLOW);
-	lootBoxReturnLabelClick->setColor(Color3B::YELLOW);
 
 	this->lootBoxReturnButton = TextMenuSprite::create(
 		lootBoxReturnLabel,
@@ -610,8 +607,11 @@ void HexusShopMenu::onLootBoxClick(MenuSprite* sprite, int price, std::map<CardD
 		(*it)->setOpacity(0);
 		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + std::cos(radians) * 320.0f, visibleSize.height / 2.0f + std::sin(radians) * 320.0f));
 
-		this->addChild((*it));
+		this->chosenCardsNode->addChild((*it));
 		index++;
+
+		// Save the card
+		CardStorage::addStorageCard((*it)->cardData);
 	}
 
 	animationNode->runAction(Sequence::create(
@@ -623,6 +623,12 @@ void HexusShopMenu::onLootBoxClick(MenuSprite* sprite, int price, std::map<CardD
 			{
 				(*it)->disableInteraction();
 			}
+
+			this->lootBoxButton->disableInteraction();
+			this->binaryButton->disableInteraction();
+			this->decimalButton->disableInteraction();
+			this->hexButton->disableInteraction();
+			this->specialButton->disableInteraction();
 
 			entity->setCurrentTime(0.0f);
 			entity->setCurrentAnimation("Open", 0.25f);
@@ -661,17 +667,17 @@ void HexusShopMenu::onLootBoxReturnButtonClick(int price, std::vector<Card*> cho
 	this->runAction(Sequence::create(
 		CallFunc::create([=]()
 		{
-			this->lootBoxRewardBackground->runAction(FadeTo::create(0.5f, 0));
+			this->lootBoxRewardBackground->runAction(FadeTo::create(0.25f, 0));
 
 			this->lootBoxReturnButton->disableInteraction(255);
-			this->lootBoxReturnButton->runAction(FadeOut::create(0.5f));
+			this->lootBoxReturnButton->runAction(FadeOut::create(0.25f));
 
 			for (auto it = chosenCards.begin(); it != chosenCards.end(); it++)
 			{
 				Card* card = *it;
 
 				card->runAction(Sequence::create(
-					FadeOut::create(0.5f),
+					FadeOut::create(0.25f),
 					DelayTime::create(0.25f),
 					CallFunc::create([=]()
 					{
@@ -681,7 +687,7 @@ void HexusShopMenu::onLootBoxReturnButtonClick(int price, std::vector<Card*> cho
 				));
 			}
 		}),
-		DelayTime::create(1.5f),
+		DelayTime::create(0.25f),
 		CallFunc::create([=]()
 		{
 			for (auto it = this->lootBoxes.begin(); it != this->lootBoxes.end(); it++)
@@ -691,6 +697,12 @@ void HexusShopMenu::onLootBoxReturnButtonClick(int price, std::vector<Card*> cho
 					(*it)->enableInteraction();
 				}
 			}
+
+			this->lootBoxButton->enableInteraction();
+			this->binaryButton->enableInteraction();
+			this->decimalButton->enableInteraction();
+			this->hexButton->enableInteraction();
+			this->specialButton->enableInteraction();
 		}),
 		nullptr
 	));
@@ -779,12 +791,12 @@ CardData* HexusShopMenu::chooseRandomCard(std::map<CardData*, float> cardChoices
 
 	for (auto it = cardChoices.begin(); it != cardChoices.end(); it++)
 	{
-		if (sum <= (*it).second)
+		sum += (*it).second;
+
+		if (selection <= sum)
 		{
 			return (*it).first;
 		}
-
-		sum += (*it).second;
 	}
 
 	// Just some non-null default (should not be possible)
