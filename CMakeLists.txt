@@ -734,7 +734,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Menus/Minigames/MinigamesMenu.cpp
 	Source/Scenes/Menus/Minigames/Hexus/HexusDeckManagement.cpp
 	Source/Scenes/Menus/Minigames/Hexus/HexusRewardsMenu.cpp
-	Source/Scenes/Menus/Minigames/Hexus/HexusShopMenu.cpp
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.cpp
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.cpp
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.cpp
@@ -761,6 +760,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Menus/Minigames/Hexus/OpponentSelect/Volcano/HexusOpponentMenuVolcano.cpp
 	Source/Scenes/Menus/Minigames/Hexus/Puzzles/HexusPuzzleItem.cpp
 	Source/Scenes/Menus/Minigames/Hexus/Puzzles/HexusPuzzleMenu.cpp
+	Source/Scenes/Menus/Minigames/Hexus/Store/HexusStoreMenu.cpp
 	Source/Scenes/Menus/Options/OptionsMenu.cpp
 	Source/Scenes/Menus/Pause/PauseMenu.cpp
 	Source/Scenes/Menus/SaveSelect/SaveSelectMenu.cpp
@@ -1478,7 +1478,6 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Menus/Minigames/MinigamesMenu.h
 	Source/Scenes/Menus/Minigames/Hexus/HexusDeckManagement.h
 	Source/Scenes/Menus/Minigames/Hexus/HexusRewardsMenu.h
-	Source/Scenes/Menus/Minigames/Hexus/HexusShopMenu.h
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.h
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.h
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.h
@@ -1505,6 +1504,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Menus/Minigames/Hexus/OpponentSelect/Volcano/HexusOpponentMenuVolcano.h
 	Source/Scenes/Menus/Minigames/Hexus/Puzzles/HexusPuzzleItem.h
 	Source/Scenes/Menus/Minigames/Hexus/Puzzles/HexusPuzzlesMenu.h
+	Source/Scenes/Menus/Minigames/Hexus/Store/HexusStoreMenu.h
 	Source/Scenes/Menus/Options/OptionsMenu.h
 	Source/Scenes/Menus/Pause/PauseMenu.h
 	Source/Scenes/Menus/SaveSelect/SaveSelectMenu.h

@@ -32,7 +32,7 @@ public:
 		Minigames,
 		Minigames_Hexus,
 		Minigames_Hexus_Rewards,
-		Minigames_Hexus_Shop,
+		Minigames_Hexus_Store,
 		Minigames_Hexus_Deck_Management,
 		Minigames_Hexus_Chapter_Training,
 		Minigames_Hexus_Chapter_Jungle,
