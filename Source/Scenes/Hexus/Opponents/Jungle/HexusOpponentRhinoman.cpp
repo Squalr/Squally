@@ -22,11 +22,7 @@ HexusOpponentRhinoman::HexusOpponentRhinoman() : HexusOpponentData(
 	HexusOpponentRhinoman::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
-	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary10),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex9),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal10),
-	},
+	HexusOpponentData::generateReward(0.22f),
 	HexusOpponentData::generateDeck(25, 0.22f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

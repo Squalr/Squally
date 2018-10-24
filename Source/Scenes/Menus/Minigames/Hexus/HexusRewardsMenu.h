@@ -21,6 +21,7 @@ public:
 	static HexusRewardsMenu * create();
 
 	void onRewardsOpen(EventCustom* eventCustom);
+
 protected:
 	HexusRewardsMenu();
 	~HexusRewardsMenu();
@@ -29,13 +30,12 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onRewardSelect(Card* card);
-	void onChooseClick(MenuSprite* menuSprite);
+	void onReturnClick(MenuSprite* menuSprite, bool backToChapterSelect);
 
-	bool backToChapterSelect;
 	Sprite* background;
-	CardRow* rewardRow;
-	MenuSprite* chooseButton;
-	Label* selectRewardLabel;
-	Card* selectedCard;
+	Sprite* goldSprite;
+	Label* goldLabel;
+	MenuSprite* returnButton;
+
+	static const std::string KeyScheduleHexusGoldTick;
 };

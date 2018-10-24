@@ -1,8 +1,5 @@
 #include "HexusOpponentMenuBase.h"
 
-const std::string HexusOpponentMenuBase::winsPrefix = "WINS_";
-const std::string HexusOpponentMenuBase::lossesPrefix = "LOSSES_";
-
 HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
 {
 	this->chapterProgressSaveKey = chapterProgressSaveKey;
@@ -189,8 +186,8 @@ void HexusOpponentMenuBase::onShopClick(MenuSprite* menuSprite)
 
 void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventArgs args)
 {
-	std::string winsKey = HexusOpponentMenuBase::winsPrefix + args.opponentData->enemyNameKey;
-	std::string lossesKey = HexusOpponentMenuBase::lossesPrefix + args.opponentData->enemyNameKey;
+	std::string winsKey = HexusOpponentData::winsPrefix + args.opponentData->enemyNameKey;
+	std::string lossesKey = HexusOpponentData::lossesPrefix + args.opponentData->enemyNameKey;
 
 	// Analytics for first time playing opponent (neither WIN or LOSS key present in save file)
 	if (!SaveManager::hasGlobalData(winsKey) && !SaveManager::hasGlobalData(lossesKey))
@@ -256,7 +253,7 @@ void HexusOpponentMenuBase::loadProgress()
 			continue;
 		}
 
-		std::string dependencyKey = HexusOpponentMenuBase::winsPrefix + dependsOn->hexusOpponentData->enemyNameKey;
+		std::string dependencyKey = HexusOpponentData::winsPrefix + dependsOn->hexusOpponentData->enemyNameKey;
 
 		int wins = SaveManager::hasGlobalData(dependencyKey) ? SaveManager::getGlobalData(dependencyKey).asInt() : 0;
 

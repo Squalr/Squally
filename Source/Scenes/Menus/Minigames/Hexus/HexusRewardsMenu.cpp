@@ -1,5 +1,7 @@
 #include "HexusRewardsMenu.h"
 
+const std::string HexusRewardsMenu::KeyScheduleHexusGoldTick = "KEY_SCHEDULE_HEXUS_GOLD_TICK";
+
 HexusRewardsMenu * HexusRewardsMenu::create()
 {
 	HexusRewardsMenu* instance = new HexusRewardsMenu();
@@ -12,35 +14,32 @@ HexusRewardsMenu * HexusRewardsMenu::create()
 HexusRewardsMenu::HexusRewardsMenu()
 {
 	this->background = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_WoodBackground);
-	this->rewardRow = CardRow::create(true);
-	this->selectRewardLabel = Label::create("Select a Reward", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->goldSprite = Sprite::create(Resources::Menus_Objects_GOLD_2);
+	this->goldLabel = Label::create("", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+
+	this->goldLabel->enableOutline(Color4B::BLACK, 3);
 	
-	Label* chooseButtonLabel = Label::create("Choose", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* chooseButtonLabelHover = Label::create("Choose", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* chooseButtonLabelClick = Label::create("Choose", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* returnButtonLabel = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* returnButtonLabelHover = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* returnButtonLabelClick = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
-	chooseButtonLabel->enableOutline(Color4B::BLACK, 2);
-	chooseButtonLabelHover->enableOutline(Color4B::BLACK, 2);
-	chooseButtonLabelClick->enableOutline(Color4B::BLACK, 2);
+	returnButtonLabel->enableOutline(Color4B::BLACK, 2);
+	returnButtonLabelHover->enableOutline(Color4B::BLACK, 2);
+	returnButtonLabelClick->enableOutline(Color4B::BLACK, 2);
 
-	this->chooseButton = TextMenuSprite::create(
-		chooseButtonLabel,
-		chooseButtonLabelHover,
-		chooseButtonLabelClick,
+	this->returnButton = TextMenuSprite::create(
+		returnButtonLabel,
+		returnButtonLabelHover,
+		returnButtonLabelClick,
 		Resources::Minigames_Hexus_ButtonPlank,
 		Resources::Minigames_Hexus_ButtonPlankHover,
 		Resources::Minigames_Hexus_ButtonPlankClick
 	);
 	
-	this->selectedCard = nullptr;
-
-	this->rewardRow->setCardScale(1.0f, 0.0f);
-	this->selectRewardLabel->enableOutline(Color4B::BLACK, 2);
-
 	this->addChild(this->background);
-	this->addChild(this->rewardRow);
-	this->addChild(this->chooseButton);
-	this->addChild(this->selectRewardLabel);
+	this->addChild(this->goldSprite);
+	this->addChild(this->goldLabel);
+	this->addChild(this->returnButton);
 	this->addChild(Mouse::create());
 }
 
@@ -54,16 +53,11 @@ void HexusRewardsMenu::onEnter()
 
 	float delay = 0.25f;
 	float duration = 0.35f;
-
-	this->selectedCard = nullptr;
-	this->chooseButton->disableInteraction(128);
 }
 
 void HexusRewardsMenu::initializeListeners()
 {
 	FadeScene::initializeListeners();
-
-	this->chooseButton->setClickCallback(CC_CALLBACK_1(HexusRewardsMenu::onChooseClick, this));
 }
 
 void HexusRewardsMenu::initializePositions()
@@ -73,49 +67,43 @@ void HexusRewardsMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->rewardRow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->selectRewardLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 320.0f));
-	this->chooseButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 320.0f));
-}
-
-void HexusRewardsMenu::onRewardSelect(Card* card)
-{
-	for (auto it = this->rewardRow->rowCards->begin(); it != this->rewardRow->rowCards->end(); it++)
-	{
-		(*it)->unfocus();
-	}
-
-	card->focus();
-	this->selectedCard = card;
-
-	this->chooseButton->enableInteraction();
+	this->goldSprite->setPosition(Vec2(visibleSize.width / 2.0f - 48.0f, visibleSize.height / 2.0f));
+	this->goldLabel->setPosition(Vec2(visibleSize.width / 2.0f + 48.0f, visibleSize.height / 2.0f));
+	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 128.0f));
 }
 
 void HexusRewardsMenu::onRewardsOpen(EventCustom* eventCustom)
 {
 	HexusEvents::HexusRewardArgs* args = (HexusEvents::HexusRewardArgs*)(eventCustom->getUserData());
 
-	this->backToChapterSelect = args->backToChapterSelect;
-	this->rewardRow->clear();
+	this->returnButton->setClickCallback(CC_CALLBACK_1(HexusRewardsMenu::onReturnClick, this, args->backToChapterSelect));
 
-	for (auto it = args->opponentData->rewards.begin(); it != args->opponentData->rewards.end(); it++)
+	int reward = args->opponentData->reward;
+
+	CardStorage::addGold(reward);
+
+	const int ticks = 15;
+	const float interval = 0.05f;
+	const float delay = 0.0f;
+
+	static int currentTick = 0;
+
+	currentTick = 0;
+
+	this->goldLabel->schedule([=](float dt)
 	{
-		Card* rewardOption = Card::create(Card::CardStyle::Earth, (*it));
-		this->rewardRow->insertCard(rewardOption, 0.0f);
-	}
+		float progress = MathUtils::clamp(((float)currentTick / (float)ticks), 0.0f, 1.0f);
 
-	this->rewardRow->setMouseClickCallback(CC_CALLBACK_1(HexusRewardsMenu::onRewardSelect, this));
+		this->goldLabel->setString("+" + std::to_string((int)(reward * progress)));
+
+		currentTick++;
+
+	}, interval, ticks, delay, HexusRewardsMenu::KeyScheduleHexusGoldTick);
 
 	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Rewards);
 }
 
-void HexusRewardsMenu::onChooseClick(MenuSprite* menuSprite)
+void HexusRewardsMenu::onReturnClick(MenuSprite* menuSprite, bool backToChapterSelect)
 {
-	if (this->selectedCard != nullptr)
-	{
-		// TODO: Animate selecting / moving to storage
-
-		CardStorage::addStorageCard(this->selectedCard->cardData);
-		NavigationEvents::navigateBack(this->backToChapterSelect ? 3 : 2);
-	}
+	NavigationEvents::navigateBack(backToChapterSelect ? 3 : 2);
 }

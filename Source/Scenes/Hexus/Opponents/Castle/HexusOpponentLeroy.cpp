@@ -22,11 +22,7 @@ HexusOpponentLeroy::HexusOpponentLeroy() : HexusOpponentData(
 	HexusOpponentLeroy::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
-	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal3),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal2),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal1),
-	},
+	HexusOpponentData::generateReward(0.51f),
 	HexusOpponentData::generateDeck(25, 0.51f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),

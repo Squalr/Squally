@@ -1,5 +1,8 @@
 #include "HexusOpponentData.h"
 
+const std::string HexusOpponentData::winsPrefix = "WINS_";
+const std::string HexusOpponentData::lossesPrefix = "LOSSES_";
+
 HexusOpponentData::HexusOpponentData(
 	std::string animationResourceFile,
 	std::string backgroundResourceFile,
@@ -9,7 +12,7 @@ HexusOpponentData::HexusOpponentData(
 	std::string enemyNameKey,
 	HexusOpponentData::Difficulty difficulty,
 	Card::CardStyle cardStyle,
-	std::vector<CardData*> rewards,
+	int reward,
 	std::vector<CardData*> cards)
 {
 	this->animationResourceFile = animationResourceFile;
@@ -19,7 +22,7 @@ HexusOpponentData::HexusOpponentData(
 	this->avatarOffset = avatarOffset;
 	this->enemyNameKey = enemyNameKey;
 	this->cardStyle = cardStyle;
-	this->rewards = rewards;
+	this->reward = reward;
 	this->cards = cards;
 }
 
@@ -30,6 +33,14 @@ HexusOpponentData::~HexusOpponentData()
 Deck* HexusOpponentData::getDeck()
 {
 	return Deck::create(this->cardStyle, this->cards);
+}
+
+int HexusOpponentData::generateReward(float deckStrength)
+{
+	float strengthPercent = deckStrength * 100.0f;
+	int adjusted = (strengthPercent * strengthPercent) / 10 + 15;
+
+	return adjusted;
 }
 
 std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckStrength, std::vector<CardData*> guaranteedCards)

@@ -43,8 +43,5 @@ protected:
 	TextMenuSprite* shopButton;
 	Label* opponentSelectLabel;
 	TextMenuSprite* backButton;
-
-	static const std::string winsPrefix;
-	static const std::string lossesPrefix;
 };
 

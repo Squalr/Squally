@@ -56,6 +56,10 @@ void CardStorage::saveGold(int value)
 	SaveManager::saveGlobalData(CardStorage::SaveKeyGold, cocos2d::Value(value));
 }
 
+void CardStorage::addGold(int value)
+{
+	SaveManager::saveGlobalData(CardStorage::SaveKeyGold, cocos2d::Value(CardStorage::getGold() + value));
+}
 
 int CardStorage::getGold()
 {
