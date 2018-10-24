@@ -358,6 +358,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Npcs/Volcano/Zelina.cpp
 	Source/Entities/Platformer/Squally/Hover.cpp
 	Source/Entities/Platformer/Squally/Squally.cpp
+	Source/Entities/Special/Shopkeeper.cpp
 	Source/Events/DialogEvents.cpp
 	Source/Events/HackableEvents.cpp
 	Source/Events/HexusEvents.cpp
@@ -733,6 +734,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Menus/Minigames/MinigamesMenu.cpp
 	Source/Scenes/Menus/Minigames/Hexus/HexusDeckManagement.cpp
 	Source/Scenes/Menus/Minigames/Hexus/HexusRewardsMenu.cpp
+	Source/Scenes/Menus/Minigames/Hexus/HexusShopMenu.cpp
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.cpp
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.cpp
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.cpp
@@ -1082,6 +1084,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Volcano/Zelina.h
 	Source/Entities/Platformer/Squally/Hover.h
 	Source/Entities/Platformer/Squally/Squally.h
+	Source/Entities/Special/Shopkeeper.h
 	Source/Events/DialogEvents.h
 	Source/Events/HackableEvents.h
 	Source/Events/HexusEvents.h
@@ -1475,6 +1478,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Menus/Minigames/MinigamesMenu.h
 	Source/Scenes/Menus/Minigames/Hexus/HexusDeckManagement.h
 	Source/Scenes/Menus/Minigames/Hexus/HexusRewardsMenu.h
+	Source/Scenes/Menus/Minigames/Hexus/HexusShopMenu.h
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.h
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.h
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.h
