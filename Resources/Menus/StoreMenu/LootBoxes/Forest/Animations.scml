@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
     <folder id="0">
-        <file id="0" name="ChestClosed.png" width="261" height="258" pivot_x="0.5" pivot_y="0.5"/>
-        <file id="1" name="ChestOpened.png" width="327" height="327" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="ChestClosed.png" width="258" height="259" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="1" name="ChestOpened.png" width="312" height="298" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="177.876" h="10"/>
@@ -95,7 +95,7 @@
             </timeline>
             <timeline id="2" name="ChestOpened">
                 <key id="0" time="1200" spin="0">
-                    <object folder="0" file="1" x="262.791602" y="126.820567" angle="270"/>
+                    <object folder="0" file="1" x="244.209184" y="121.058662" angle="270"/>
                 </key>
             </timeline>
         </animation>
