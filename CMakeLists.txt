@@ -1561,6 +1561,8 @@ cocos_build_app(${APP_NAME}
         cocos2d
 )
 
+string(REPLACE "$<CONFIG>" "${CMAKE_BUILD_TYPE}" CMAKE_RUNTIME_OUTPUT_DIRECTORY ${APP_BIN_DIR})
+
 if(APPLE)
     set_target_properties(${APP_NAME} PROPERTIES RESOURCE "${APP_UI_RES}")
     if(MACOSX)
@@ -1615,15 +1617,15 @@ elseif(WINDOWS)
             ${APP_BIN_DIR}
     )
 	
-    cocos_copy_target_dll(${APP_NAME} COPY_TO ${APP_BIN_DIR})
+	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cocos2d/external/steam/redistributable_bin/steam_api.dll ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/steam_api.dll COPYONLY)
+	configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cocos2d/external/steam/redistributable_bin/win64/steam_api64.dll ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/steam_api64.dll COPYONLY)
 	
-	file(GENERATE OUTPUT ${APP_BIN_DIR}/steam_api.dll INPUT ${CMAKE_CURRENT_SOURCE_DIR}/cocos2d/external/steam/redistributable_bin/steam_api.dll)
-	file(GENERATE OUTPUT ${APP_BIN_DIR}/steam_api64.dll INPUT ${CMAKE_CURRENT_SOURCE_DIR}/cocos2d/external/steam/redistributable_bin/win64/steam_api64.dll)
+    cocos_copy_target_dll(${APP_NAME} COPY_TO ${APP_BIN_DIR})
 endif()
 
 if(LINUX OR WINDOWS)
     cocos_copy_target_res(${APP_NAME} COPY_TO ${APP_RES_DIR} FOLDERS ${GAME_RES_FOLDER})
 endif()
 
-file(GENERATE OUTPUT ${APP_BIN_DIR}/.itch.toml INPUT ${CMAKE_CURRENT_SOURCE_DIR}/.itch.toml)
-file(GENERATE OUTPUT ${APP_BIN_DIR}/steam_appid.txt INPUT ${CMAKE_CURRENT_SOURCE_DIR}/steam_appid.txt)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.itch.toml ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/.itch.toml COPYONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/steam_appid.txt ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/steam_appid.txt COPYONLY)

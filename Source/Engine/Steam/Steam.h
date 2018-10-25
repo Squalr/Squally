@@ -4,7 +4,8 @@
 class Steam
 {
 public:
-	static bool isSteamApiAvailable();
+	static bool isSteamEnabled();
+	static bool isCloudSaveAvailable();
 
 	static const int SteamAppId;
 

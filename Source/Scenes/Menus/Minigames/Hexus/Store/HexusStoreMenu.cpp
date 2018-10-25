@@ -231,7 +231,6 @@ HexusStoreMenu::HexusStoreMenu()
 	this->addChild(Mouse::create());
 
 	this->onLootBoxTabClick();
-	this->updateGoldText();
 }
 
 HexusStoreMenu::~HexusStoreMenu()
@@ -248,6 +247,8 @@ void HexusStoreMenu::onEnter()
 	GameUtils::fadeInObject(this->backButton, delay, duration);
 
 	GameUtils::accelerateParticles(this->dustParticles, 5.0f);
+
+	this->updateGoldText();
 }
 
 void HexusStoreMenu::initializeListeners()

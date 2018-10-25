@@ -22,7 +22,20 @@ Steam::~Steam()
 {
 }
 
-bool Steam::isSteamApiAvailable()
+bool Steam::isSteamEnabled()
 {
+	// TODO: Make this compiler flag dependent or something
+	return true;
+}
+
+bool Steam::isCloudSaveAvailable()
+{
+	ISteamRemoteStorage* steamRemoteStorage = SteamRemoteStorage();
+
+	if (!Steam::isSteamEnabled() || !steamRemoteStorage->IsCloudEnabledForAccount() || !steamRemoteStorage->IsCloudEnabledForApp())
+	{
+		return false;
+	}
+
 	return true;
 }

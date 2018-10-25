@@ -22,7 +22,7 @@ void GameWindow::initGLContextAttrs()
 
 bool GameWindow::applicationDidFinishLaunching()
 {
-	if (Steam::isSteamApiAvailable())
+	if (Steam::isSteamEnabled())
 	{
 		if (SteamAPI_RestartAppIfNecessary(Steam::SteamAppId))
 		{
