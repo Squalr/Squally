@@ -108,6 +108,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Shaders/PostProcess.cpp
 	Source/Engine/Shaders/ShaderUtils.cpp
 	Source/Engine/Sound/SoundManager.cpp
+	Source/Engine/Steam/Steam.cpp
 	Source/Engine/UI/FadeScene.cpp
 	Source/Engine/UI/FloatingSprite.cpp
 	Source/Engine/UI/InfiniteParallaxNode.cpp
@@ -815,6 +816,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Shaders/PostProcess.h
 	Source/Engine/Shaders/ShaderUtils.h
 	Source/Engine/Sound/SoundManager.h
+	Source/Engine/Steam/Steam.h
 	Source/Engine/UI/FadeScene.h
 	Source/Engine/UI/FloatingSprite.h
 	Source/Engine/UI/InfiniteParallaxNode.h
@@ -1612,10 +1614,16 @@ elseif(WINDOWS)
         RUNTIME_OUTPUT_DIRECTORY
             ${APP_BIN_DIR}
     )
-
+	
     cocos_copy_target_dll(${APP_NAME} COPY_TO ${APP_BIN_DIR})
+	
+	file(GENERATE OUTPUT ${APP_BIN_DIR}/steam_api.dll INPUT ${CMAKE_CURRENT_SOURCE_DIR}/cocos2d/external/steam/redistributable_bin/steam_api.dll)
+	file(GENERATE OUTPUT ${APP_BIN_DIR}/steam_api64.dll INPUT ${CMAKE_CURRENT_SOURCE_DIR}/cocos2d/external/steam/redistributable_bin/win64/steam_api64.dll)
 endif()
 
 if(LINUX OR WINDOWS)
     cocos_copy_target_res(${APP_NAME} COPY_TO ${APP_RES_DIR} FOLDERS ${GAME_RES_FOLDER})
 endif()
+
+file(GENERATE OUTPUT ${APP_BIN_DIR}/.itch.toml INPUT ${CMAKE_CURRENT_SOURCE_DIR}/.itch.toml)
+file(GENERATE OUTPUT ${APP_BIN_DIR}/steam_appid.txt INPUT ${CMAKE_CURRENT_SOURCE_DIR}/steam_appid.txt)

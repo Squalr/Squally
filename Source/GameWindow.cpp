@@ -22,6 +22,19 @@ void GameWindow::initGLContextAttrs()
 
 bool GameWindow::applicationDidFinishLaunching()
 {
+	if (Steam::isSteamApiAvailable())
+	{
+		if (SteamAPI_RestartAppIfNecessary(Steam::SteamAppId))
+		{
+			return false;
+		}
+
+		if (!SteamAPI_Init())
+		{
+			return false;
+		}
+	}
+
 	Director* director = Director::getInstance();
 	GLViewImpl* glView;
 

@@ -177,10 +177,16 @@ elseif(WINDOWS)
         RUNTIME_OUTPUT_DIRECTORY
             ${APP_BIN_DIR}
     )
-
+	
     cocos_copy_target_dll(${APP_NAME} COPY_TO ${APP_BIN_DIR})
+	
+	file(GENERATE OUTPUT ${APP_BIN_DIR}/steam_api.dll INPUT ${CMAKE_CURRENT_SOURCE_DIR}/cocos2d/external/steam/redistributable_bin/steam_api.dll)
+	file(GENERATE OUTPUT ${APP_BIN_DIR}/steam_api64.dll INPUT ${CMAKE_CURRENT_SOURCE_DIR}/cocos2d/external/steam/redistributable_bin/win64/steam_api64.dll)
 endif()
 
 if(LINUX OR WINDOWS)
     cocos_copy_target_res(${APP_NAME} COPY_TO ${APP_RES_DIR} FOLDERS ${GAME_RES_FOLDER})
 endif()
+
+file(GENERATE OUTPUT ${APP_BIN_DIR}/.itch.toml INPUT ${CMAKE_CURRENT_SOURCE_DIR}/.itch.toml)
+file(GENERATE OUTPUT ${APP_BIN_DIR}/steam_appid.txt INPUT ${CMAKE_CURRENT_SOURCE_DIR}/steam_appid.txt)
