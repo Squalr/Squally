@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Steam/Steam.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 
@@ -22,14 +23,19 @@ public:
 	static bool hasProfileData(std::string key);
 	static ActiveSaveProfile getActiveSaveProfile();
 
-protected:
+private:
 	static SaveManager* getInstance();
 	SaveManager();
 	~SaveManager();
 	void initialize();
 
-	std::string getGlobalSaveFileName();
-	std::string getActiveProfileSaveFileName();
+	static void doSave(ValueMap valueMap, std::string localSavePath, std::string cloudSavePath);
+	static ValueMap loadSaveFile(std::string localSavePath, std::string cloudSavePath);
+
+	std::string getLocalGlobalSaveFilePath();
+	std::string getLocalActiveProfileSaveFilePath();
+	std::string getCloudGlobalSaveFilePath();
+	std::string getCloudActiveProfileSaveFilePath();
 
 	ActiveSaveProfile activeSaveProfile;
 	ValueMap globalSaveData;
