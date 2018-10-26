@@ -624,7 +624,7 @@ void HexusStoreMenu::onLootBoxClick(MenuSprite* sprite, int price, std::map<Card
 
 	for (auto it = chosenCards.begin(); it != chosenCards.end(); it++)
 	{
-		float radians = (index * 360.0f / chosenCards.size() + 90.0f) * std::_Pi / 180.0f;
+		float radians = (index * 360.0f / chosenCards.size() + 90.0f) * M_PI / 180.0f;
 
 		(*it)->setScale(1.0f);
 		(*it)->reveal();
