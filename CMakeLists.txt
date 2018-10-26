@@ -1605,9 +1605,9 @@ elseif(LINUX)
             ${APP_BIN_DIR}
     )
 	
-	if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+	if(CMAKE_SIZEOF_VOID_P EQUAL 4)
 		configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cocos2d/external/steam/redistributable_bin/linux32/libsteam_api.so ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/libsteam_api.so COPYONLY)
-	elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
+	elseif(CMAKE_SIZEOF_VOID_P EQUAL 8)
 		configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cocos2d/external/steam/redistributable_bin/linux64/libsteam_api.so ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/libsteam_api.so COPYONLY)
 	endif()
 	
