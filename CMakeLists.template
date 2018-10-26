@@ -149,6 +149,8 @@ if(APPLE)
             RUNTIME_OUTPUT_DIRECTORY
                 ${APP_NAME_OUTPUT_DIRECTORY}/${APP_NAME}.app/Contents/MacOS
         )
+		
+		configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cocos2d/external/steam/redistributable_bin/osx32/libsteam_api.dylib ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/libsteam_api.dylib COPYONLY)
     endif()
 elseif(LINUX)
     find_package(PkgConfig)
@@ -165,6 +167,13 @@ elseif(LINUX)
         RUNTIME_OUTPUT_DIRECTORY
             ${APP_BIN_DIR}
     )
+	
+	if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+		configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cocos2d/external/steam/redistributable_bin/linux32/libsteam_api.so ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/libsteam_api.so COPYONLY)
+	elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
+		configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cocos2d/external/steam/redistributable_bin/linux64/libsteam_api.so ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/libsteam_api.so COPYONLY)
+	endif()
+	
 elseif(WINDOWS)
     add_executable(Launcher WIN32
         proj.win32/Launcher.cpp
