@@ -127,6 +127,8 @@ cocos_build_app(${APP_NAME}
 string(REPLACE "$<CONFIG>" "${CMAKE_BUILD_TYPE}" CMAKE_RUNTIME_OUTPUT_DIRECTORY ${APP_BIN_DIR})
 
 if(APPLE)
+	SET (${CMAKE_RUNTIME_OUTPUT_DIRECTORY} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${APP_NAME}.app/Contents/MacOS)
+	
     set_target_properties(${APP_NAME} PROPERTIES RESOURCE "${APP_UI_RES}")
     if(MACOSX)
         set_target_properties(${APP_NAME} PROPERTIES
