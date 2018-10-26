@@ -157,7 +157,7 @@ ValueMap SaveManager::loadSaveFile(std::string localSavePath, std::string cloudS
 		if (steamRemoteStorage->FileExists(file))
 		{
 			int fileSize = steamRemoteStorage->GetFileSize(file);
-			std::unique_ptr<const char> result(new const char[fileSize]);
+			std::unique_ptr<char> result(new char[fileSize]);
 			int bytesRead = steamRemoteStorage->FileRead(file, (void*)result.get(), fileSize);
 
 			if (bytesRead == fileSize)
