@@ -11,8 +11,11 @@ HexusDeckManagement * HexusDeckManagement::create()
 
 HexusDeckManagement::HexusDeckManagement()
 {
-	this->deckCards = std::vector<Card*>();
-	this->storageCards = std::vector<Card*>();
+	this->displayDeckCards = std::map<CardData*, MenuCard*>();
+	this->displayStorageCards = std::map<CardData*, MenuCard*>();
+	this->countLabels = std::map<MenuCard*, Label*>();
+	this->deckCards = std::map<CardData*, int>();
+	this->storageCards = std::map<CardData*, int>();
 
 	this->background = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_WoodBackground);
 	this->storageScrollPane = ScrollPane::create(Size(720.0f, 824.0f), Color4B(0, 0, 0, 196));
@@ -76,9 +79,6 @@ HexusDeckManagement::~HexusDeckManagement()
 
 void HexusDeckManagement::onEnter()
 {
-	this->loadStorageCards();
-	this->loadDeckCards();
-	this->refreshCardCounts();
 
 	FadeScene::onEnter();
 
@@ -86,6 +86,8 @@ void HexusDeckManagement::onEnter()
 	float duration = 0.35f;
 
 	GameUtils::fadeInObject(this->backButton, delay, duration);
+
+	this->rebuildCardLists();
 }
 
 void HexusDeckManagement::onExit()
@@ -105,16 +107,16 @@ void HexusDeckManagement::initializeListeners()
 	
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 	
-	for (auto it = this->deckCards.begin(); it != this->deckCards.end(); it++)
+	for (auto it = this->displayDeckCards.begin(); it != this->displayDeckCards.end(); it++)
 	{
-		(*it)->setMouseClickCallback(CC_CALLBACK_1(HexusDeckManagement::onDeckCardClick, this));
-		(*it)->setMouseOverCallback(CC_CALLBACK_1(HexusDeckManagement::onDeckCardMouseOver, this));
+		(*it).second->setMouseClickCallback(CC_CALLBACK_1(HexusDeckManagement::onDeckCardClick, this));
+		(*it).second->setMouseOverCallback(CC_CALLBACK_1(HexusDeckManagement::onDeckCardMouseOver, this));
 	}
 	
-	for (auto it = this->storageCards.begin(); it != this->storageCards.end(); it++)
+	for (auto it = this->displayStorageCards.begin(); it != this->displayStorageCards.end(); it++)
 	{
-		(*it)->setMouseClickCallback(CC_CALLBACK_1(HexusDeckManagement::onStorageCardClick, this));
-		(*it)->setMouseOverCallback(CC_CALLBACK_1(HexusDeckManagement::onStorageCardMouseOver, this));
+		(*it).second->setMouseClickCallback(CC_CALLBACK_1(HexusDeckManagement::onStorageCardClick, this));
+		(*it).second->setMouseOverCallback(CC_CALLBACK_1(HexusDeckManagement::onStorageCardMouseOver, this));
 	}
 
 	this->backButton->setClickCallback(CC_CALLBACK_1(HexusDeckManagement::onBackClick, this));
@@ -139,44 +141,70 @@ void HexusDeckManagement::initializePositions()
 	this->cardsInDeckValueLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 32.0f));
 	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 448.0f));
 
+	/*
 	// Sort cards first
-	sort(this->storageCards.begin(), this->storageCards.end(), [](Card* a, Card* b) -> bool
+	std::sort(this->displayStorageCards.begin(), this->displayStorageCards.end(), [](Card* a, Card* b) -> bool
 	{ 
 		return std::strcmp(a->cardData == nullptr ? "" : a->cardData->cardName.c_str(), b->cardData == nullptr ? "" : b->cardData->cardName.c_str()) < 0;
 	});
 	
-	sort(this->deckCards.begin(), this->deckCards.end(), [](Card* a, Card* b) -> bool
+	std::sort(this->displayDeckCards.begin(), this->displayDeckCards.end(), [](Card* a, Card* b) -> bool
 	{ 
 		return std::strcmp(a->cardData == nullptr ? "" : a->cardData->cardName.c_str(), b->cardData == nullptr ? "" : b->cardData->cardName.c_str()) < 0;
 	});
+	*/
 
 	// Position cards
+	const Size cardGridSize = Size(176.0f, 256.0f);
+	const int cardsPerRow = 4;
 	Size storageScrollPaneSize = this->deckScrollPane->getContentSize();
-	int index = 0;
+	int storageIndex = 0;
 
-	for (auto it = this->storageCards.begin(); it != this->storageCards.end(); it++)
+	// Position storage cards
+	for (auto it = this->displayStorageCards.begin(); it != this->displayStorageCards.end(); it++)
 	{
-		int x = index % 3;
-		int y = (this->storageCards.size() - 1 - index + (3 - this->storageCards.size() % 3)) / 3 - (this->storageCards.size() % 3 == 0 ? 1 : 0);
+		CardData* cardData = (*it).first;
+		MenuCard* card = (*it).second;
 
-		(*it)->setPosition(Vec2(storageScrollPaneSize.width / 2.0f + (x - 1) * 240.0f, y * 480.0f + 256.0f));
+		if (this->storageCards.find(cardData) != this->storageCards.end())
+		{
+			int count = this->storageCards[cardData];
+			int x = storageIndex % cardsPerRow;
+			int y = (this->storageCards.size() - 1 - storageIndex + (cardsPerRow - this->storageCards.size() % cardsPerRow)) / cardsPerRow - (this->storageCards.size() % cardsPerRow == 0 ? 1 : 0);
 
-		index++;
+			card->setPosition(Vec2(storageScrollPaneSize.width / 2.0f - 1.5f * cardGridSize.width + x * cardGridSize.width, y * cardGridSize.height + 256.0f));
+			
+			if (count > 0)
+			{
+				storageIndex++;
+			}
+		}
 	}
 
 	this->storageScrollPane->fitSizeToContent();
 
 	Size deckScrollPaneSize = this->deckScrollPane->getContentSize();
-	index = 0;
+	int deckIndex = 0;
 
-	for (auto it = this->deckCards.begin(); it != this->deckCards.end(); it++)
+	// Position deck cards
+	for (auto it = this->displayDeckCards.begin(); it != this->displayDeckCards.end(); it++)
 	{
-		int x = index % 3;
-		int y = (this->deckCards.size() - 1 - index + (3 - this->deckCards.size() % 3)) / 3 - (this->deckCards.size() % 3 == 0 ? 1 : 0);
+		CardData* cardData = (*it).first;
+		MenuCard* card = (*it).second;
 
-		(*it)->setPosition(Vec2(deckScrollPaneSize.width / 2.0f + (x - 1) * 240.0f, y * 480.0f + 256.0f));
+		if (this->deckCards.find(cardData) != this->deckCards.end())
+		{
+			int count = this->deckCards[cardData];
+			int x = deckIndex % cardsPerRow;
+			int y = (this->deckCards.size() - 1 - deckIndex + (cardsPerRow - this->deckCards.size() % cardsPerRow)) / cardsPerRow - (this->deckCards.size() % cardsPerRow == 0 ? 1 : 0);
 
-		index++;
+			card->setPosition(Vec2(storageScrollPaneSize.width / 2.0f - 1.5f * cardGridSize.width + x * cardGridSize.width, y * cardGridSize.height + 256.0f));
+
+			if (count > 0)
+			{
+				deckIndex++;
+			}
+		}
 	}
 
 	this->deckScrollPane->fitSizeToContent();
@@ -188,7 +216,7 @@ void HexusDeckManagement::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* ev
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
 			event->stopPropagation();
-	this->save(true);
+			this->save(true);
 			break;
 		default:
 			break;
@@ -202,22 +230,8 @@ void HexusDeckManagement::onBackClick(MenuSprite* menuSprite)
 
 void HexusDeckManagement::save(bool exit)
 {
-	std::vector<CardData*> deckCardData = std::vector<CardData*>();
-	
-	for (auto it = this->deckCards.begin(); it != this->deckCards.end(); it++)
-	{
-		deckCardData.push_back((*it)->cardData);
-	}
-
-	std::vector<CardData*> storageCardData = std::vector<CardData*>();
-	
-	for (auto it = this->storageCards.begin(); it != this->storageCards.end(); it++)
-	{
-		storageCardData.push_back((*it)->cardData);
-	}
-
-	CardStorage::saveDeckCards(deckCardData);
-	CardStorage::saveStorageCards(storageCardData);
+	CardStorage::saveDeckCardsByCount(this->deckCards);
+	CardStorage::saveStorageCardsByCount(this->storageCards);
 
 	if (exit)
 	{
@@ -225,94 +239,196 @@ void HexusDeckManagement::save(bool exit)
 	}
 }
 
-void HexusDeckManagement::loadStorageCards()
+void HexusDeckManagement::rebuildCardLists()
 {
-	for (auto it = storageCards.begin(); it != storageCards.end(); it++)
+	// Rebuild deck/storage
+	this->rebuildDeckCards();
+	this->rebuildStorageCards();
+
+	// Update total counts
+	int totalStorageCards = 0;
+	int totalDeckCards = 0;
+
+	for (auto it = this->storageCards.begin(); it != this->storageCards.end(); it++)
 	{
-		this->storageScrollPane->removeChild(*it);
+		totalStorageCards += (*it).second;
 	}
 
-	this->storageCards.clear();
-
-	std::vector<CardData*> savedStorageCards = CardStorage::getStorageCards();
-
-	for (auto it = savedStorageCards.begin(); it != savedStorageCards.end(); it++)
+	for (auto it = this->deckCards.begin(); it != this->deckCards.end(); it++)
 	{
-		Card* card = Card::create(Card::CardStyle::Earth, *it);
-		card->reveal();
-		card->setScale(1.0f);
-
-		this->storageCards.push_back(card);
-		this->storageScrollPane->addChild(card);
-	}
-}
-
-void HexusDeckManagement::loadDeckCards()
-{
-	for (auto it = deckCards.begin(); it != deckCards.end(); it++)
-	{
-		this->deckScrollPane->removeChild(*it);
+		totalDeckCards += (*it).second;
 	}
 
-	this->deckCards.clear();
-
-	std::vector<CardData*> savedDeckCards = CardStorage::getDeckCards();
-
-	for (auto it = savedDeckCards.begin(); it != savedDeckCards.end(); it++)
+	if (totalDeckCards < CardStorage::minimumDeckCards)
 	{
-		Card* card = Card::create(Card::CardStyle::Earth, *it);
-		card->reveal();
-		card->setScale(1.0f);
-
-		this->deckCards.push_back(card);
-		this->deckScrollPane->addChild(card);
-	}
-}
-
-void HexusDeckManagement::refreshCardCounts()
-{
-	if ((int)this->deckCards.size() < CardStorage::minimumDeckCards)
-	{
-		this->cardsInDeckValueLabel->setString(std::to_string(this->deckCards.size()) + " / " + std::to_string(CardStorage::minimumDeckCards));
+		this->cardsInDeckValueLabel->setString(std::to_string(totalDeckCards) + " / " + std::to_string(CardStorage::minimumDeckCards));
 		this->cardsInDeckValueLabel->setTextColor(Color4B::RED);
 	}
 	else
 	{
-		this->cardsInDeckValueLabel->setString(std::to_string(this->deckCards.size()));
+		this->cardsInDeckValueLabel->setString(std::to_string(totalDeckCards));
 		this->cardsInDeckValueLabel->setTextColor(Color4B::GRAY);
+	}
+
+	// Position all the cards
+	this->initializeListeners();
+	this->initializePositions();
+}
+
+void HexusDeckManagement::rebuildStorageCards()
+{
+	this->storageCards = CardStorage::getStorageCardsByCount();
+
+	// Create all cards for storage. Every card gets created with count = 0, and those that are 0 get hidden
+	for (auto it = CardList::getInstance()->cardListByName->begin(); it != CardList::getInstance()->cardListByName->end(); it++)
+	{
+		CardData* cardData = (*it).second;
+
+		// These only need to be instantiated once
+		if (this->displayStorageCards.find(cardData) == this->displayStorageCards.end())
+		{
+			MenuCard* card = this->createCard(cardData, 0);
+
+			displayStorageCards.emplace(cardData, card);
+
+			this->storageScrollPane->addChild(card);
+		}
+	}
+
+	// Update the display counts for all storage cards
+	for (auto it = this->displayStorageCards.begin(); it != this->displayStorageCards.end(); it++)
+	{
+		CardData* cardData = (*it).first;
+		MenuCard* card = (*it).second;
+		int count = 0;
+
+		if (this->storageCards.find(cardData) != this->storageCards.end())
+		{
+			count = this->storageCards[cardData];
+
+			this->updateCardCount(this->displayStorageCards[cardData], count);
+		}
+
+		// Toggle visibility of the cards
+		if (count <= 0)
+		{
+			card->setVisible(false);
+		}
+		else
+		{
+			card->setVisible(true);
+		}
+	}
+}
+
+void HexusDeckManagement::rebuildDeckCards()
+{
+	this->deckCards = CardStorage::getDeckCardsByCount();
+
+	// Create all cards for deck. Every card gets created with count = 0, and those that are 0 get hidden
+	for (auto it = CardList::getInstance()->cardListByName->begin(); it != CardList::getInstance()->cardListByName->end(); it++)
+	{
+		CardData* cardData = (*it).second;
+
+		// These only need to be instantiated once
+		if (this->displayDeckCards.find(cardData) == this->displayDeckCards.end())
+		{
+			MenuCard* card = this->createCard(cardData, 0);
+
+			displayDeckCards.emplace(cardData, card);
+
+			this->deckScrollPane->addChild(card);
+		}
+	}
+
+	// Update the display counts for all deck cards
+	for (auto it = this->displayDeckCards.begin(); it != this->displayDeckCards.end(); it++)
+	{
+		CardData* cardData = (*it).first;
+		MenuCard* card = (*it).second;
+		int count = 0;
+
+		if (this->deckCards.find(cardData) != this->deckCards.end())
+		{
+			count = this->deckCards[cardData];
+
+			this->updateCardCount(this->displayDeckCards[cardData], count);
+		}
+
+		// Toggle visibility of the cards
+		if (count <= 0)
+		{
+			card->setVisible(false);
+		}
+		else
+		{
+			card->setVisible(true);
+		}
+	}
+}
+
+MenuCard* HexusDeckManagement::createCard(CardData* cardData, int count)
+{
+	MenuCard* card = MenuCard::create(Card::CardStyle::Earth, cardData);
+	Label* label = Label::create("PLACEHOLDER_CARD_COUNT", Localization::getCodingFont(), 64.0f);
+
+	label->enableOutline(Color4B::BLACK, 4);
+	label->setAnchorPoint(Vec2(0.0f, 0.5f));
+	label->setPosition(Vec2(-96.0f, 128.0f));
+
+	card->addDisplayItem(label);
+
+	card->setScale(0.6f);
+	card->reveal();
+
+	this->countLabels.emplace(card, label);
+	this->updateCardCount(card, count);
+
+	return card;
+}
+
+void HexusDeckManagement::updateCardCount(MenuCard* card, int count)
+{
+	if (this->countLabels.find(card) != this->countLabels.end())
+	{
+		this->countLabels[card]->setString("x" + std::to_string(count));
 	}
 }
 
 void HexusDeckManagement::onDeckCardClick(Card* card)
 {
-	this->deckCards.erase(std::remove(this->deckCards.begin(), this->deckCards.end(), card), this->deckCards.end());
-	this->storageCards.push_back(card);
-	GameUtils::changeParent(card, this->storageScrollPane, false);
+	// Remove from deck
+	this->deckCards[card->cardData] = MathUtils::clamp(this->deckCards[card->cardData] - 1, 0, 3);
+
+	// Add to storage
+	this->storageCards[card->cardData] = MathUtils::clamp(this->storageCards[card->cardData] + 1, 0, 3);
+
+	this->save(false);
+
 	SoundManager::playSoundResource(Resources::Sounds_Hexus_08_Card);
 
-	this->initializeListeners();
-	this->initializePositions();
-	this->refreshCardCounts();
+	this->rebuildCardLists();
 }
 
 void HexusDeckManagement::onStorageCardClick(Card* card)
 {
-	this->storageCards.erase(std::remove(this->storageCards.begin(), this->storageCards.end(), card), this->storageCards.end());
-	this->deckCards.push_back(card);
-	GameUtils::changeParent(card, this->deckScrollPane, false);
+	// Remove from storage
+	this->storageCards[card->cardData] = MathUtils::clamp(this->storageCards[card->cardData] - 1, 0, 3);
+
+	// Add to deck
+	this->deckCards[card->cardData] = MathUtils::clamp(this->deckCards[card->cardData] + 1, 0, 3);
+
+	this->save(false);
+
 	SoundManager::playSoundResource(Resources::Sounds_Hexus_08_Card);
 	
-	this->initializeListeners();
-	this->initializePositions();
-	this->refreshCardCounts();
+	this->rebuildCardLists();
 }
 
 void HexusDeckManagement::onDeckCardMouseOver(Card* card)
 {
-	
 }
 
 void HexusDeckManagement::onStorageCardMouseOver(Card* card)
 {
-
 }
