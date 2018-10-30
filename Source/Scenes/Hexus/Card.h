@@ -74,12 +74,14 @@ public:
 	static const Color4B debuffColor;
 	static const Color4B buffColor;
 
-private:
+protected:
 	Card(CardStyle cardStyle, CardData* data);
 	~Card();
 
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
 	void updateText();
 	void onMouseOver(MenuSprite* menuSprite);
 	void onMouseClick(MenuSprite* menuSprite);

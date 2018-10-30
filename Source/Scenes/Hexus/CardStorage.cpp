@@ -78,6 +78,21 @@ void CardStorage::saveDeckCards(std::vector<CardData*> deckCards)
 	SaveManager::saveGlobalData(CardStorage::SaveKeyDeckCards, cocos2d::Value(deckCardsValueVector));
 }
 
+void CardStorage::saveDeckCardsByCount(std::map<CardData*, int> deckCards)
+{
+	ValueVector deckCardsValueVector = ValueVector();
+
+	for (auto it = deckCards.begin(); it != deckCards.end(); it++)
+	{
+		for (int index = 0; index < (*it).second; index++)
+		{
+			deckCardsValueVector.push_back(Value((*it).first->cardName));
+		}
+	}
+
+	SaveManager::saveGlobalData(CardStorage::SaveKeyDeckCards, cocos2d::Value(deckCardsValueVector));
+}
+
 void CardStorage::addStorageCard(CardData* cardData)
 {
 	if (CardStorage::getOwnedCardCount(cardData) >= 3)
@@ -122,6 +137,28 @@ std::vector<CardData*> CardStorage::getDeckCards()
 	return deckCards;
 }
 
+std::map<CardData*, int> CardStorage::getDeckCardsByCount()
+{
+	std::vector<CardData*> savedDeckCards = CardStorage::getDeckCards();
+	std::map<CardData*, int> deckCards = std::map<CardData*, int>();
+
+	for (auto it = savedDeckCards.begin(); it != savedDeckCards.end(); it++)
+	{
+		if (deckCards.find(*it) == deckCards.end())
+		{
+			// First occurrence, insert 1
+			deckCards.emplace(*it, 1);
+		}
+		else
+		{
+			// If found, increment 1
+			deckCards[*it] = deckCards[*it] + 1;
+		}
+	}
+
+	return deckCards;
+}
+
 void CardStorage::saveStorageCards(std::vector<CardData*> storageCards)
 {
 	ValueVector storageCardsValueVector = ValueVector();
@@ -129,6 +166,21 @@ void CardStorage::saveStorageCards(std::vector<CardData*> storageCards)
 	for (auto it = storageCards.begin(); it != storageCards.end(); it++)
 	{
 		storageCardsValueVector.push_back(Value((*it)->cardName));
+	}
+
+	SaveManager::saveGlobalData(CardStorage::SaveKeyStorageCards, cocos2d::Value(storageCardsValueVector));
+}
+
+void CardStorage::saveStorageCardsByCount(std::map<CardData*, int> storageCards)
+{
+	ValueVector storageCardsValueVector = ValueVector();
+
+	for (auto it = storageCards.begin(); it != storageCards.end(); it++)
+	{
+		for (int index = 0; index < (*it).second; index++)
+		{
+			storageCardsValueVector.push_back(Value((*it).first->cardName));
+		}
 	}
 
 	SaveManager::saveGlobalData(CardStorage::SaveKeyStorageCards, cocos2d::Value(storageCardsValueVector));
@@ -154,6 +206,28 @@ std::vector<CardData*> CardStorage::getStorageCards()
 
 				storageCards.push_back(nextCard);
 			}
+		}
+	}
+
+	return storageCards;
+}
+
+std::map<CardData*, int> CardStorage::getStorageCardsByCount()
+{
+	std::vector<CardData*> savedStorageCards = CardStorage::getStorageCards();
+	std::map<CardData*, int> storageCards = std::map<CardData*, int>();
+
+	for (auto it = savedStorageCards.begin(); it != savedStorageCards.end(); it++)
+	{
+		if (storageCards.find(*it) == storageCards.end())
+		{
+			// First occurrence, insert 1
+			storageCards.emplace(*it, 1);
+		}
+		else
+		{
+			// If not found, increment 1
+			storageCards[*it] = storageCards[*it] + 1;
 		}
 	}
 
