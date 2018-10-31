@@ -14,6 +14,7 @@
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/CardStorage.h"
+#include "Scenes/Menus/Minigames/Hexus/MenuCard.h"
 
 using namespace cocos2d;
 
@@ -30,18 +31,19 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	MenuSprite* constructLootBoxButton(std::string lootBoxAnimations, int price, std::map<CardData*, float> cardChoices);
-	MenuSprite* constructCard(CardData* cardData);
+	std::tuple<MenuSprite*, int> constructLootBoxButton(std::string lootBoxAnimations, int price, std::map<CardData*, float> cardChoices);
+	std::tuple<MenuSprite*, MenuCard*, int> constructCard(CardData* cardData);
 	void onLootBoxTabClick();
 	void onBinaryTabClick();
 	void onDecimalTabClick();
 	void onHexTabClick();
 	void onSpecialTabClick();
+	void updateAllCardLimits();
 	void updateCardLimitText(Label* label, CardData* cardData);
 	void updateGoldText();
 	void hideMenus();
 	void onLootBoxClick(MenuSprite* sprite, int price, std::map<CardData*, float> cardChoices, AnimationNode* animationNode, SpriterEngine::EntityInstance* entity);
-	void onCardClick(MenuSprite* sprite, CardData* cardData, int price, Label* cardLimitLabel);
+	void onCardClick(MenuSprite* card, CardData* cardData, int price, Label* label);
 	void onBackClick(MenuSprite* menuSprite);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onLootBoxReturnButtonClick(int price, std::vector<Card*> chosenCards);
@@ -80,11 +82,12 @@ private:
 	MenuSprite* lootBoxReturnButton;
 	Node* chosenCardsNode;
 
-	std::vector<MenuSprite*> lootBoxes;
-	std::map<int, Node*> binaryCards;
-	std::map<int, Node*> decimalCards;
-	std::map<int, Node*> hexCards;
-	std::vector<Node*> specialCards;
+	std::vector<std::tuple<MenuSprite*, int>> lootBoxes;
+	std::vector<std::tuple<MenuSprite*, MenuCard*, int>> binaryCards;
+	std::vector<std::tuple<MenuSprite*, MenuCard*, int>> decimalCards;
+	std::vector<std::tuple<MenuSprite*, MenuCard*, int>> hexCards;
+	std::vector<std::tuple<MenuSprite*, MenuCard*, int>> specialCards;
+	std::map<MenuCard*, Label*> limitLabels;
 
 	static const float lootBoxScale;
 };
