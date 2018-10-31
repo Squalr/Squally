@@ -124,6 +124,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/Controls/ScrollPane.cpp
 	Source/Engine/UI/Controls/TextMenuSprite.cpp
 	Source/Engine/UI/Controls/TextWindow.cpp
+	Source/Engine/UI/Controls/ToggleGroup.cpp
 	Source/Engine/UI/HUD/DeveloperHud.cpp
 	Source/Engine/UI/HUD/HackerModeHud.cpp
 	Source/Engine/UI/HUD/Hud.cpp
@@ -735,6 +736,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Menus/Minigames/MinigamesMenu.cpp
 	Source/Scenes/Menus/Minigames/Hexus/HexusDeckManagement.cpp
 	Source/Scenes/Menus/Minigames/Hexus/HexusRewardsMenu.cpp
+	Source/Scenes/Menus/Minigames/Hexus/MenuCard.cpp
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.cpp
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.cpp
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.cpp
@@ -832,6 +834,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/Controls/ScrollPane.h
 	Source/Engine/UI/Controls/TextMenuSprite.h
 	Source/Engine/UI/Controls/TextWindow.h
+	Source/Engine/UI/Controls/ToggleGroup.h
 	Source/Engine/UI/HUD/DeveloperHud.h
 	Source/Engine/UI/HUD/HackerModeHud.h
 	Source/Engine/UI/HUD/Hud.h
@@ -1480,6 +1483,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Menus/Minigames/MinigamesMenu.h
 	Source/Scenes/Menus/Minigames/Hexus/HexusDeckManagement.h
 	Source/Scenes/Menus/Minigames/Hexus/HexusRewardsMenu.h
+	Source/Scenes/Menus/Minigames/Hexus/MenuCard.h
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.h
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.h
 	Source/Scenes/Menus/Minigames/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.h
