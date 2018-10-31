@@ -2,9 +2,11 @@
 #include "cocos2d.h"
 
 #include "Events/NavigationEvents.h"
+#include "Engine/UI/Controls/CCheckbox.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Engine/UI/Controls/ToggleGroup.h"
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
@@ -24,15 +26,24 @@ protected:
 	~HexusDeckManagement();
 
 private:
+	enum CardFilterFlags
+	{
+		Special = 1 << 0,
+		Binary = 1 << 1,
+		Decimal = 1 << 2,
+		Hex = 1 << 3,
+		All = Special | Binary | Decimal | Hex
+	};
+
 	void onEnter() override;
 	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onBackClick(MenuSprite* menuSprite);
+	void onToggleSelect(CCheckbox* activeToggle);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void rebuildCardLists();
-	void rebuildDeckCards();
-	void rebuildStorageCards();
+	void rebuildCardList(std::map<CardData*, int> cards, std::map<CardData*, MenuCard*> displayCards);
 	void save(bool exit);
 	MenuCard* createCard(CardData* cardData, int count);
 	void updateCardCount(MenuCard* card, int count);
@@ -50,11 +61,26 @@ private:
 	Sprite* deckSprite;
 	Label* deckLabel;
 	Sprite* titleSprite;
-	Label* cardManagementLabel;
 	TextMenuSprite* backButton;
+	CCheckbox* allButton;
+	CCheckbox* specialButton;
+	CCheckbox* binaryButton;
+	CCheckbox* decimalButton;
+	CCheckbox* hexButton;
+	ToggleGroup* filters;
 
-	Label* cardsInDeckLabel;
-	Label* cardsInDeckValueLabel;
+	Label* totalCardsInDeckLabel;
+	Label* totalCardsInDeckValueLabel;
+	Label* binaryCardsInDeckLabel;
+	Label* binaryCardsInDeckValueLabel;
+	Label* decimalCardsInDeckLabel;
+	Label* decimalCardsInDeckValueLabel;
+	Label* hexCardsInDeckLabel;
+	Label* hexCardsInDeckValueLabel;
+	Label* specialCardsInDeckLabel;
+	Label* specialCardsInDeckValueLabel;
+
+	CardFilterFlags activeFilter;
 
 	std::map<CardData*, MenuCard*> displayDeckCards;
 	std::map<CardData*, MenuCard*> displayStorageCards;

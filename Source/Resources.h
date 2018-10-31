@@ -5409,6 +5409,10 @@ public:
 	static const std::string Menus_Buttons_VerticalMenuButton;
 	static const std::string Menus_Buttons_VerticalMenuButtonClick;
 	static const std::string Menus_Buttons_VerticalMenuButtonHover;
+	static const std::string Menus_Buttons_WoodSquareButton;
+	static const std::string Menus_Buttons_WoodSquareButtonSelected;
+	static const std::string Menus_Buttons_WoodSquareButtonSmall;
+	static const std::string Menus_Buttons_WoodSquareButtonSmallSelected;
 	static const std::string Menus_ConfirmMenu_ConfirmMenuWindow;
 	static const std::string Menus_DeveloperMenu_VisibleCheckBoxChecked;
 	static const std::string Menus_DeveloperMenu_VisibleCheckBoxEmpty;
@@ -5548,6 +5552,11 @@ public:
 	static const std::string Menus_MinigamesMenu_Hexus_HexusFrameRuins;
 	static const std::string Menus_MinigamesMenu_Hexus_HexusFrameTraining;
 	static const std::string Menus_MinigamesMenu_Hexus_HexusFrameVolcano;
+	static const std::string Menus_MinigamesMenu_Hexus_IconAll;
+	static const std::string Menus_MinigamesMenu_Hexus_IconBinary;
+	static const std::string Menus_MinigamesMenu_Hexus_IconDecimal;
+	static const std::string Menus_MinigamesMenu_Hexus_IconHex;
+	static const std::string Menus_MinigamesMenu_Hexus_IconSpecial;
 	static const std::string Menus_MinigamesMenu_Hexus_WoodBackground;
 	static const std::string Menus_Objects_ALCHEMY;
 	static const std::string Menus_Objects_AMULET;
