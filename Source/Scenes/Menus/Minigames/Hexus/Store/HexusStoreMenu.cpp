@@ -36,10 +36,6 @@ HexusStoreMenu::HexusStoreMenu()
 	this->storeNode = Node::create();
 	this->lootboxesNode = Node::create();
 	this->storeMenu = Sprite::create(Resources::Menus_StoreMenu_StoreBoard);
-	this->storeLabel = Label::create("HEXUS STORE", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
-	this->storeLabel->enableOutline(Color4B::BLACK, 3);
-	this->storeLabel->setAlignment(TextHAlignment::CENTER);
-	this->storeLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
 
 	Label* backButtonLabel = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 	Label* backButtonLabelHover = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
@@ -197,7 +193,6 @@ HexusStoreMenu::HexusStoreMenu()
 	this->storeNode->addChild(this->hexButton);
 	this->storeNode->addChild(this->decimalButton);
 	this->storeNode->addChild(this->specialButton);
-	this->addChild(this->storeLabel);
 	this->addChild(this->backButton);
 	this->addChild(this->lootBoxRewardBackground);
 	this->addChild(this->chosenCardsNode);
@@ -279,17 +274,17 @@ void HexusStoreMenu::initializePositions()
 	const float storeOffsetY = -128.0f;
 	const Vec2 storeMenuOffset = Vec2(352.0f, 0.0f);
 	const Vec2 storeContentOffset = Vec2(0.0f, -64.0f);
-	const Vec2 goldPanelOffset = Vec2(448.0f, 464.0f);
+	const Vec2 goldPanelOffset = Vec2(412.0f, 464.0f);
 
 	this->dustParticles->setPosition(Vec2(visibleSize.width, visibleSize.height / 2));
 	this->storeBack->setPosition(Vec2(0.0f, visibleSize.height / 2.0f + storeOffsetY + 144.0f));
 	this->shopKeeper->setPosition(Vec2(visibleSize.width / 2.0f - 680.0f, visibleSize.height / 2.0f + storeOffsetY));
 	this->storeFront->setPosition(Vec2(0.0f, visibleSize.height / 2.0f + storeOffsetY - 176.0f));
-	this->storeMenu->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x, visibleSize.height / 2.0f + storeMenuOffset.y));
+	this->storeMenu->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x, visibleSize.height / 2.0f + storeMenuOffset.y - 48.0f));
 
 	this->goldPanel->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + goldPanelOffset.x, visibleSize.height / 2.0f + storeMenuOffset.y + goldPanelOffset.y));
-	this->goldIcon->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + goldPanelOffset.x - 48.0f, visibleSize.height / 2.0f + storeMenuOffset.y + goldPanelOffset.y));
-	this->goldLabel->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + goldPanelOffset.x + 24.0f, visibleSize.height / 2.0f + storeMenuOffset.y + goldPanelOffset.y));
+	this->goldIcon->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + goldPanelOffset.x - 80.0f, visibleSize.height / 2.0f + storeMenuOffset.y + goldPanelOffset.y));
+	this->goldLabel->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + goldPanelOffset.x - 8.0f, visibleSize.height / 2.0f + storeMenuOffset.y + goldPanelOffset.y));
 
 	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
 
@@ -303,7 +298,6 @@ void HexusStoreMenu::initializePositions()
 	this->decimalButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x - 640.0f, visibleSize.height / 2.0f + 256.0f - 144.0f * 2));
 	this->hexButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x - 640.0f, visibleSize.height / 2.0f + 256.0f - 144.0f * 3));
 	this->specialButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x - 640.0f, visibleSize.height / 2.0f + 256.0f - 144.0f * 4));
-	this->storeLabel->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x, visibleSize.height / 2.0f + 448.0f));
 	this->lootBoxReturnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 
 	const Size chestGridSize = Size(288.0f, 240.0f);

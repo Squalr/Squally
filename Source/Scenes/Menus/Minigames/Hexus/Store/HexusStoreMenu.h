@@ -75,7 +75,6 @@ private:
 	MenuSprite* decimalButton;
 	MenuSprite* hexButton;
 	MenuSprite* specialButton;
-	Label* storeLabel;
 	TextMenuSprite* backButton;
 	LayerColor* lootBoxRewardBackground;
 	MenuSprite* lootBoxReturnButton;
