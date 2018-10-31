@@ -40,27 +40,27 @@ HexusDeckManagement::HexusDeckManagement()
 	this->specialCardsInDeckValueLabel = Label::create("PLACEHOLDER_SPECIAL_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	MenuSprite* allButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* allButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* allButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
 	allButtonUnselected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconAll));
 	allButtonSelected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconAll));
 
 	MenuSprite* specialButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* specialButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* specialButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
 	specialButtonUnselected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconSpecial));
 	specialButtonSelected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconSpecial));
 
 	MenuSprite* binaryButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* binaryButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* binaryButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
 	binaryButtonUnselected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconBinary));
 	binaryButtonSelected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconBinary));
 
 	MenuSprite* decimalButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* decimalButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* decimalButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
 	decimalButtonUnselected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconDecimal));
 	decimalButtonSelected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconDecimal));
 
 	MenuSprite* hexButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* hexButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* hexButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
 	hexButtonUnselected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconHex));
 	hexButtonSelected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconHex));
 
@@ -145,13 +145,13 @@ HexusDeckManagement::HexusDeckManagement()
 	this->specialCardsInDeckValueLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->addChild(this->background);
+	this->addChild(this->titleSprite);
 	this->addChild(this->storageScrollPane);
 	this->addChild(this->deckScrollPane);
 	this->addChild(this->storageSprite);
 	this->addChild(this->storageLabel);
 	this->addChild(this->deckSprite);
 	this->addChild(this->deckLabel);
-	this->addChild(this->titleSprite);
 	this->addChild(this->totalCardsInDeckLabel);
 	this->addChild(this->totalCardsInDeckValueLabel);
 	this->addChild(this->binaryCardsInDeckLabel);
@@ -222,8 +222,8 @@ void HexusDeckManagement::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	const float totalsOffset = 320.0f;
-	const float totalsSpacing = 32.0f;
+	const float totalsOffset = 448.0f;
+	const float totalsSpacing = 72.0f;
 	const float totalsValueOffset = 32.0f;
 
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
@@ -233,7 +233,7 @@ void HexusDeckManagement::initializePositions()
 	this->storageLabel->setPosition(Vec2(visibleSize.width / 2.0f - (144.0f + 80.0f), visibleSize.height - 96.0f));
 	this->deckSprite->setPosition(Vec2(visibleSize.width / 2.0f + 144.0f, visibleSize.height - 96.0f));
 	this->deckLabel->setPosition(Vec2(visibleSize.width / 2.0f + (144.0f + 80.0f), visibleSize.height - 96.0f));
-	this->titleSprite->setPosition(Vec2(visibleSize.width / 2.0f + 756.0f, visibleSize.height / 2.0f + 320.0f));
+	this->titleSprite->setPosition(Vec2(visibleSize.width / 2.0f + 804.0f, visibleSize.height / 2.0f + 336.0f));
 
 	this->totalCardsInDeckLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + totalsOffset - totalsSpacing * 0));
 	this->totalCardsInDeckValueLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + totalsOffset - totalsSpacing * 0 - totalsValueOffset));
@@ -253,20 +253,7 @@ void HexusDeckManagement::initializePositions()
 	this->decimalButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 32.0f - 112.0f * 3));
 	this->hexButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 32.0f - 112.0f * 4));
 
-	/*
-	// Sort cards first
-	std::sort(this->displayStorageCards.begin(), this->displayStorageCards.end(), [](Card* a, Card* b) -> bool
-	{ 
-		return std::strcmp(a->cardData == nullptr ? "" : a->cardData->cardName.c_str(), b->cardData == nullptr ? "" : b->cardData->cardName.c_str()) < 0;
-	});
-	
-	std::sort(this->displayDeckCards.begin(), this->displayDeckCards.end(), [](Card* a, Card* b) -> bool
-	{ 
-		return std::strcmp(a->cardData == nullptr ? "" : a->cardData->cardName.c_str(), b->cardData == nullptr ? "" : b->cardData->cardName.c_str()) < 0;
-	});
-	*/
-
-	auto positionCards = [=](ScrollPane* scrollPane, std::map<CardData*, int> cards, std::map<CardData*, MenuCard*> displayCards)
+	auto positionCards = [=](ScrollPane* scrollPane, std::map<CardData*, MenuCard*> displayCards)
 	{
 		// Position cards
 		const Size cardGridSize = Size(176.0f, 256.0f);
@@ -286,15 +273,15 @@ void HexusDeckManagement::initializePositions()
 			}
 		}
 
-		for (auto it = displayCards.begin(); it != displayCards.end(); it++)
+		for (auto it = CardList::getInstance()->sortedCardList->begin(); it != CardList::getInstance()->sortedCardList->end(); it++)
 		{
-			CardData* cardData = (*it).first;
-			MenuCard* card = (*it).second;
+			CardData* cardData = *it;
+			MenuCard* card = displayCards[*it];
 
 			int x = index % cardsPerRow;
 			int y = (visibleCardCount - 1 - index + (cardsPerRow - visibleCardCount % cardsPerRow)) / cardsPerRow - (visibleCardCount % cardsPerRow == 0 ? 1 : 0);
 
-			card->setPosition(Vec2(paneSize.width / 2.0f + marginSize.width - (x - cardsPerRow / 2 + 1) * cardGridSize.width, y * cardGridSize.height + 128.0f));
+			card->setPosition(Vec2(paneSize.width / 2.0f + marginSize.width - (((cardsPerRow - 1) - x) - cardsPerRow / 2 + 1) * cardGridSize.width, y * cardGridSize.height + 128.0f));
 
 			if (card->isVisible())
 			{
@@ -305,8 +292,8 @@ void HexusDeckManagement::initializePositions()
 		scrollPane->fitSizeToContent(Rect(0.0f, 64.0f, 0.0f, 0.0f));
 	};
 
-	positionCards(this->storageScrollPane, this->storageCards, this->displayStorageCards);
-	positionCards(this->deckScrollPane, this->deckCards, this->displayDeckCards);
+	positionCards(this->storageScrollPane, this->displayStorageCards);
+	positionCards(this->deckScrollPane, this->displayDeckCards);
 }
 
 void HexusDeckManagement::onToggleSelect(CCheckbox* activeToggle)
@@ -472,16 +459,16 @@ void HexusDeckManagement::rebuildCardLists()
 		switch (cardData->cardType)
 		{
 			case CardData::CardType::Binary:
-				totalDeckBinaryCards++;
+				totalDeckBinaryCards += count;
 				break;
 			case CardData::CardType::Decimal:
-				totalDeckDecimalCards++;
+				totalDeckDecimalCards += count;
 				break;
 			case CardData::CardType::Hexidecimal:
-				totalDeckHexCards++;
+				totalDeckHexCards += count;
 				break;
 			default:
-				totalDeckSpecialCards++;
+				totalDeckSpecialCards += count;
 				break;
 		}
 	}
@@ -532,6 +519,20 @@ void HexusDeckManagement::updateCardCount(MenuCard* card, int count)
 	if (this->countLabels.find(card) != this->countLabels.end())
 	{
 		this->countLabels[card]->setString("x" + std::to_string(count));
+
+		switch (count)
+		{
+			case 1:
+			default:
+				this->countLabels[card]->setTextColor(Color4B(192, 165, 108, 255));
+				break;
+			case 2:
+				this->countLabels[card]->setTextColor(Color4B(214, 184, 121, 255));
+				break;
+			case 3:
+				this->countLabels[card]->setTextColor(Color4B(238, 205, 135, 255));
+				break;
+		}
 	}
 }
 

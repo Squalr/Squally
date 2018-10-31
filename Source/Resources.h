@@ -5413,6 +5413,7 @@ public:
 	static const std::string Menus_Buttons_WoodSquareButtonSelected;
 	static const std::string Menus_Buttons_WoodSquareButtonSmall;
 	static const std::string Menus_Buttons_WoodSquareButtonSmallSelected;
+	static const std::string Menus_Buttons_WoodSquareButtonSmallToggled;
 	static const std::string Menus_ConfirmMenu_ConfirmMenuWindow;
 	static const std::string Menus_DeveloperMenu_VisibleCheckBoxChecked;
 	static const std::string Menus_DeveloperMenu_VisibleCheckBoxEmpty;
