@@ -15,6 +15,7 @@ CardList* CardList::getInstance()
 CardList::CardList()
 {
 	this->cardListByName = new std::map<std::string, CardData*>();
+	this->sortedCardList = new std::vector<CardData*>();
 
 	this->cardListByName->emplace(CardKeys::Binary0, new CardBinary0());
 	this->cardListByName->emplace(CardKeys::Binary1, new CardBinary1());
@@ -80,6 +81,34 @@ CardList::CardList()
 	this->cardListByName->emplace(CardKeys::ShiftLeft, new CardShiftLeft());
 	this->cardListByName->emplace(CardKeys::ShiftRight, new CardShiftRight());
 	this->cardListByName->emplace(CardKeys::Subtraction, new CardSubtraction());
+
+	for (auto it = this->cardListByName->begin(); it != this->cardListByName->end(); it++)
+	{
+		this->sortedCardList->push_back((*it).second);
+	}
+
+	// Sort cards
+	std::sort(this->sortedCardList->begin(), this->sortedCardList->end(), [](CardData* a, CardData* b) -> bool
+	{
+		// Non-matching types, just sort these by card type
+		if (a->cardType != b->cardType)
+		{
+			return a->cardType < b->cardType;
+		}
+
+		switch (a->cardType)
+		{
+			case CardData::CardType::Binary:
+			case CardData::CardType::Decimal:
+			case CardData::CardType::Hexidecimal:
+				// Sort by attack
+				return a->attack < b->attack;
+				break;
+			default:
+				// Sort by card type
+				return a->cardType < b->cardType;
+		}
+	});
 }
 
 CardList::~CardList()
@@ -90,4 +119,5 @@ CardList::~CardList()
 	}
 
 	delete(this->cardListByName);
+	delete(this->sortedCardList);
 }

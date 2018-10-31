@@ -5411,6 +5411,7 @@ const std::string Resources::Menus_Buttons_WoodSquareButton = "Menus/Buttons/Woo
 const std::string Resources::Menus_Buttons_WoodSquareButtonSelected = "Menus/Buttons/WoodSquareButtonSelected.png";
 const std::string Resources::Menus_Buttons_WoodSquareButtonSmall = "Menus/Buttons/WoodSquareButtonSmall.png";
 const std::string Resources::Menus_Buttons_WoodSquareButtonSmallSelected = "Menus/Buttons/WoodSquareButtonSmallSelected.png";
+const std::string Resources::Menus_Buttons_WoodSquareButtonSmallToggled = "Menus/Buttons/WoodSquareButtonSmallToggled.png";
 const std::string Resources::Menus_ConfirmMenu_ConfirmMenuWindow = "Menus/ConfirmMenu/ConfirmMenuWindow.png";
 const std::string Resources::Menus_DeveloperMenu_VisibleCheckBoxChecked = "Menus/DeveloperMenu/VisibleCheckBoxChecked.png";
 const std::string Resources::Menus_DeveloperMenu_VisibleCheckBoxEmpty = "Menus/DeveloperMenu/VisibleCheckBoxEmpty.png";
