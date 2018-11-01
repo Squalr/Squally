@@ -29,6 +29,9 @@ MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
 	this->mouseDragEvent = nullptr;
 	this->mouseOverEvent = nullptr;
 	this->interactionEnabled = true;
+	this->isClickInit = false;
+	this->isClicked = false;
+	this->isMousedOver = false;
 
 	this->clickSound = "";
 	this->mouseOverSound = Resources::Sounds_ButtonRollover1;
@@ -124,6 +127,11 @@ void MenuSprite::setMouseDragCallback(std::function<void(MenuSprite*, MouseEvent
 void MenuSprite::setMouseOverCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onMouseOver)
 {
 	this->mouseOverEvent = onMouseOver;
+}
+
+void MenuSprite::setMouseOutCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onMouseOut)
+{
+	this->mouseOutEvent = onMouseOut;
 }
 
 void MenuSprite::setMouseOverSound(std::string soundResource)
@@ -230,6 +238,8 @@ void MenuSprite::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event
 		{
 			MouseEvents::TriggerClickableMouseOverEvent();
 
+			this->isMousedOver = true;
+
 			// Play mouse over sound
 			if (!isRefresh && this->currentSprite != this->spriteSelected)
 			{
@@ -266,6 +276,14 @@ void MenuSprite::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event
 		}
 		else
 		{
+			// Mouse out event
+			if (this->isMousedOver && this->mouseOutEvent != nullptr)
+			{
+				this->mouseOutEvent(this, args);
+			}
+
+			this->isMousedOver = false;
+
 			this->showSprite(this->sprite);
 		}
 	}

@@ -32,7 +32,7 @@ void StateOpponentTurnStart::onStateEnter(GameState* gameState)
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
-			GameState::updateState(gameState, GameState::StateType::Draw);
+			GameState::updateState(gameState, GameState::StateType::AIDecidePass);
 		}),
 		nullptr
 	));

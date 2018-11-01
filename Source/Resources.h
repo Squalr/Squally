@@ -5820,6 +5820,8 @@ public:
 	static const std::string Minigames_Hexus_RowSelection;
 	static const std::string Minigames_Hexus_RowSelectionHighlight;
 	static const std::string Minigames_Hexus_ScoreBox;
+	static const std::string Minigames_Hexus_ShieldButton;
+	static const std::string Minigames_Hexus_ShieldButtonSelected;
 	static const std::string Minigames_Hexus_Skull;
 	static const std::string Minigames_Hexus_Socket;
 	static const std::string Minigames_Hexus_Binary_0;
@@ -6202,6 +6204,7 @@ public:
 	static const std::string Sounds_Menus_BookPageTurn_PE1014902;
 	static const std::string Sounds_Menus_Card_Game_UI_Button_Light_Reverb_02;
 	static const std::string Sounds_Menus_Simple_Button;
+	static const std::string Particles_Aura;
 	static const std::string Particles_BeamMeUp;
 	static const std::string Particles_BlueNether;
 	static const std::string Particles_BluePlasma;

@@ -485,10 +485,12 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/Banners/BannerBase.cpp
 	Source/Scenes/Hexus/Components/Banners/CardReplaceBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/DefeatBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/EnemyLastStandBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/OpponentFirstBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/OpponentPassBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/OpponentTurnBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/PlayerFirstBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/PlayerLastStandBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/PlayerPassBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/PlayerTurnBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/RoundBanner.cpp
@@ -702,6 +704,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/States/StateDrawInitial.cpp
 	Source/Scenes/Hexus/States/StateGameEnd.cpp
 	Source/Scenes/Hexus/States/StateGameStart.cpp
+	Source/Scenes/Hexus/States/StateLastStand.cpp
 	Source/Scenes/Hexus/States/StateNeutral.cpp
 	Source/Scenes/Hexus/States/StateOpponentTurnStart.cpp
 	Source/Scenes/Hexus/States/StatePass.cpp
@@ -1218,10 +1221,12 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/Banners/BannerBase.h
 	Source/Scenes/Hexus/Components/Banners/CardReplaceBanner.h
 	Source/Scenes/Hexus/Components/Banners/DefeatBanner.h
+	Source/Scenes/Hexus/Components/Banners/EnemyLastStandBanner.h
 	Source/Scenes/Hexus/Components/Banners/OpponentFirstBanner.h
 	Source/Scenes/Hexus/Components/Banners/OpponentPassBanner.h
 	Source/Scenes/Hexus/Components/Banners/OpponentTurnBanner.h
 	Source/Scenes/Hexus/Components/Banners/PlayerFirstBanner.h
+	Source/Scenes/Hexus/Components/Banners/PlayerLastStandBanner.h
 	Source/Scenes/Hexus/Components/Banners/PlayerPassBanner.h
 	Source/Scenes/Hexus/Components/Banners/PlayerTurnBanner.h
 	Source/Scenes/Hexus/Components/Banners/RoundBanner.h
@@ -1446,6 +1451,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/States/StateDrawInitial.h
 	Source/Scenes/Hexus/States/StateGameEnd.h
 	Source/Scenes/Hexus/States/StateGameStart.h
+	Source/Scenes/Hexus/States/StateLastStand.h
 	Source/Scenes/Hexus/States/StateNeutral.h
 	Source/Scenes/Hexus/States/StateOpponentTurnStart.h
 	Source/Scenes/Hexus/States/StatePass.h

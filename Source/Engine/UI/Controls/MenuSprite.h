@@ -20,6 +20,7 @@ public:
 	void setOffsetCorrection(Vec2 newOffsetCorrection);
 	void setClickCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onMouseClick);
 	void setMouseOverCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onMouseClick);
+	void setMouseOutCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onMouseOut);
 	void setMouseDownCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onMouseDown);
 	void setMouseDragCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onDrag);
 	void setMouseOverSound(std::string soundResource);
@@ -58,10 +59,12 @@ private:
 	bool interactionEnabled;
 	bool isClickInit;
 	bool isClicked;
+	bool isMousedOver;
 
 	std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> mouseClickEvent;
 	std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> mouseDownEvent;
 	std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> mouseDragEvent;
 	std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> mouseOverEvent;
+	std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> mouseOutEvent;
 };
 

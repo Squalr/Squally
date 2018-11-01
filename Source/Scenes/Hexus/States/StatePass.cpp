@@ -31,6 +31,8 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	);
 	this->passButton->setClickSound(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
 
+	passButton->setOpacity(0);
+
 	this->addChild(this->passButton);
 }
 
@@ -56,15 +58,27 @@ void StatePass::onStateChange(GameState* gameState)
 {
 	StateBase::onStateChange(gameState);
 
+	// Keep hidden if enemy has not triggered a last stand
+	if (!gameState->enemyLastStanded)
+	{
+		this->passButton->runAction(FadeTo::create(0.25f, 0));
+		this->passButton->disableInteraction();
+		this->passButton->setClickCallback(nullptr);
+
+		return;
+	}
+
 	switch (gameState->stateType)
 	{
 		case GameState::StateType::Neutral:
 		case GameState::StateType::SelectionStaged:
 		case GameState::StateType::CombineStaged:
+			this->passButton->runAction(FadeTo::create(0.25f, 255));
 			this->passButton->setClickCallback(CC_CALLBACK_1(StatePass::onPassClick, this, gameState));
 			this->passButton->enableInteraction();
 			break;
 		default:
+			this->passButton->runAction(FadeTo::create(0.25f, 0));
 			this->passButton->disableInteraction();
 			this->passButton->setClickCallback(nullptr);
 			break;
