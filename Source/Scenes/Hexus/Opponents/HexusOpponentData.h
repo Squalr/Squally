@@ -16,6 +16,7 @@ class HexusOpponentData
 {
 public:
 	Deck* getDeck();
+	CardData* getStrongestCard();
 
 	enum Difficulty
 	{

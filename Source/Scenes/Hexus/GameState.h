@@ -81,7 +81,8 @@ public:
 	int cardReplaceCount;
 	int roundNumber;
 	int turnNumber;
-	int remainingCards;
+	int penaltyCardsPlayed;
+	int playableCardsThisTurn;
 	int gameDurationInSeconds;
 	CardRow* stagedCombineCardRow;
 	Card* stagedCombineSourceCard;

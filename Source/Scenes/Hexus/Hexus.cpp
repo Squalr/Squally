@@ -16,9 +16,11 @@ Hexus::Hexus()
 	this->avatars = Avatars::create();
 	this->cardReplaceBanner = CardReplaceBanner::create();
 	this->opponentFirstBanner = OpponentFirstBanner::create();
+	this->opponentLastStandBanner = OpponentLastStandBanner::create();
 	this->opponentPassBanner = OpponentPassBanner::create();
 	this->opponentTurnBanner = OpponentTurnBanner::create();
 	this->playerFirstBanner = PlayerFirstBanner::create();
+	this->playerLastStandBanner = PlayerLastStandBanner::create();
 	this->playerPassBanner = PlayerPassBanner::create();
 	this->playerTurnBanner = PlayerTurnBanner::create();
 	this->roundBanner = RoundBanner::create();
@@ -88,9 +90,11 @@ Hexus::Hexus()
 	this->addChild(this->debugDisplay);
 	this->addChild(this->cardReplaceBanner);
 	this->addChild(this->opponentFirstBanner);
+	this->addChild(this->opponentLastStandBanner);
 	this->addChild(this->opponentPassBanner);
 	this->addChild(this->opponentTurnBanner);
 	this->addChild(this->playerFirstBanner);
+	this->addChild(this->playerLastStandBanner);
 	this->addChild(this->playerPassBanner);
 	this->addChild(this->playerTurnBanner);
 	this->addChild(this->roundBanner);

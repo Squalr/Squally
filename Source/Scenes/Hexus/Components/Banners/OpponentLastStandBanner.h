@@ -7,18 +7,18 @@
 
 using namespace cocos2d;
 
-class EnemyLastStandBanner : public BannerBase
+class OpponentLastStandBanner : public BannerBase
 {
 public:
-	static EnemyLastStandBanner * create();
+	static OpponentLastStandBanner * create();
 
 protected:
 	void onBeforeStateChange(GameState* eventCustom) override;
 	void onStateChange(GameState* eventCustom) override;
 
 private:
-	EnemyLastStandBanner();
-	~EnemyLastStandBanner();
+	OpponentLastStandBanner();
+	~OpponentLastStandBanner();
 
 	void initializePositions() override;
 

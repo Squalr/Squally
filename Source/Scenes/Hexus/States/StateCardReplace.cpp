@@ -58,11 +58,11 @@ void StateCardReplace::onBeforeStateEnter(GameState* gameState)
 
 	if (gameState->roundNumber == 0)
 	{
-		gameState->cardReplaceCount = std::min(2, gameState->playerDeck->getCardCount());
+		gameState->cardReplaceCount = std::min(Config::initialCardReplacements, gameState->playerDeck->getCardCount());
 	}
 	else
 	{
-		gameState->cardReplaceCount = std::min(1, gameState->playerDeck->getCardCount());
+		gameState->cardReplaceCount = std::min(Config::midgameCardReplacements, gameState->playerDeck->getCardCount());
 	}
 }
 

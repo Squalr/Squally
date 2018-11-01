@@ -26,43 +26,37 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	const int passIfDiffAbove = 30; // Give up if player is too far ahead
-	const int cardsToSaveForLastRound = 4;
-
+	CardData* strongestCardInDeck = gameState->opponentData->getStrongestCard();
+	int strongestAttack = (float)(strongestCardInDeck == nullptr ? 1 : strongestCardInDeck->attack);
+	int passIfDiffAbove = (int)(strongestAttack * 2.5f);
 	CallFunc* stateTransition = nullptr;
+
+	GameState::StateType nextState = gameState->playerLastStanded ? GameState::StateType::Pass : GameState::StateType::LastStand;
 
 	if (gameState->enemyHand->rowCards->size() == 0)
 	{
 		stateTransition = CallFunc::create([=]()
 		{
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
-			GameState::updateState(gameState, GameState::StateType::Pass);
+			GameState::updateState(gameState, nextState);
 		});
 	}
+	// If the player passes and we're ahead we won, so pass
+	else if (gameState->playerLastStanded && gameState->isEnemyWinningRound())
+	{
+		stateTransition = CallFunc::create([=]()
+		{
+			SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
+			GameState::updateState(gameState, nextState);
+		});
+	}
+	// Pass or last stand if ahead, but not if the opponent can lose the game from this round
 	else if (gameState->enemyLosses < 1 && gameState->getPlayerTotal() > gameState->getEnemyTotal() + passIfDiffAbove)
 	{
 		stateTransition = CallFunc::create([=]()
 		{
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
-			GameState::updateState(gameState, GameState::StateType::Pass);
-		});
-	}
-	// If it's not the last round we better save some cards
-	else if (gameState->enemyLosses < 1 && gameState->enemyHand->rowCards->size() <= cardsToSaveForLastRound)
-	{
-		stateTransition = CallFunc::create([=]()
-		{
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
-			GameState::updateState(gameState, GameState::StateType::Pass);
-		});
-	}
-	// If the player passes and we're ahead we won, so pass
-	else if (gameState->playerPassed && gameState->isEnemyWinningRound())
-	{
-		stateTransition = CallFunc::create([=]()
-		{
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
-			GameState::updateState(gameState, GameState::StateType::Pass);
+			GameState::updateState(gameState, nextState);
 		});
 	}
 	else

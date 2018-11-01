@@ -62,9 +62,11 @@ private:
 
 	CardReplaceBanner* cardReplaceBanner;
 	OpponentFirstBanner* opponentFirstBanner;
+	OpponentLastStandBanner* opponentLastStandBanner;
 	OpponentPassBanner* opponentPassBanner;
 	OpponentTurnBanner* opponentTurnBanner;
 	PlayerFirstBanner* playerFirstBanner;
+	PlayerLastStandBanner* playerLastStandBanner;
 	PlayerPassBanner* playerPassBanner;
 	PlayerTurnBanner* playerTurnBanner;
 	RoundBanner* roundBanner;

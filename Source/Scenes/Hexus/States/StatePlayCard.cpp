@@ -136,11 +136,16 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			return;
 	}
 
-	gameState->remainingCards--;
+	if (gameState->playerLastStanded || gameState->enemyLastStanded)
+	{
+		gameState->penaltyCardsPlayed++;
+	}
+
+	gameState->playableCardsThisTurn--;
 	gameState->selectedCard = nullptr;
 	CallFunc* stateTransition = nullptr;
 
-	if (gameState->remainingCards <= 0)
+	if (gameState->playableCardsThisTurn <= 0)
 	{
 		stateTransition = CallFunc::create([=]()
 		{
