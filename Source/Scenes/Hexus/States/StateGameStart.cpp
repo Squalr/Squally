@@ -33,7 +33,7 @@ void StateGameStart::onStateEnter(GameState* gameState)
 		DelayTime::create(0.5f),
 		CallFunc::create([=]()
 		{
-			GameState::updateState(gameState, GameState::StateType::DrawInitialCards);
+			GameState::updateState(gameState, GameState::StateType::RoundStart);
 		}),
 		nullptr
 	));

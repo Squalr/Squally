@@ -231,7 +231,7 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 	// Could not find a card to play (disadvantageous to do so)
 	if (gameState->selectedCard == nullptr)
 	{
-		GameState::updateState(gameState, GameState::StateType::Pass);
+		GameState::updateState(gameState, GameState::StateType::TurnEnd);
 		return;
 	}
 

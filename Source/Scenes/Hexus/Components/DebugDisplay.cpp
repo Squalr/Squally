@@ -91,9 +91,6 @@ void DebugDisplay::onStateChange(GameState* gameState)
 		case GameState::StateType::Pass:
 			this->stateLabel->setString("Pass");
 			break;
-		case GameState::StateType::AIDecidePass:
-			this->stateLabel->setString("AIDecidePass");
-			break;
 		case GameState::StateType::AIDecideCard:
 			this->stateLabel->setString("AIDecideCard");
 			break;

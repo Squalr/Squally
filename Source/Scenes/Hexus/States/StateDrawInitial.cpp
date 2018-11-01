@@ -27,6 +27,28 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 	StateBase::onStateEnter(gameState);
 
 	const float indexDelay = 0.1f;
+	
+	// Discard any remaining player cards
+	for (auto it = gameState->playerHand->rowCards->begin(); it != gameState->playerHand->rowCards->end(); it++)
+	{
+		Card* card = gameState->playerHand->removeCard(*it);
+
+		if (card != nullptr)
+		{
+			gameState->playerGraveyard->insertCardTop(card, true, Config::insertDelay);
+		}
+	}
+
+	// Discard any remaining enemy cards
+	for (auto it = gameState->enemyHand->rowCards->begin(); it != gameState->enemyHand->rowCards->end(); it++)
+	{
+		Card* card = gameState->enemyHand->removeCard(*it);
+
+		if (card != nullptr)
+		{
+			gameState->enemyGraveyard->insertCardTop(card, true, Config::insertDelay);
+		}
+	}
 
 	// Draw starting cards
 	std::vector<Card*> drawnCards = std::vector<Card*>();
@@ -60,7 +82,7 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 		DelayTime::create(0.5f),
 		CallFunc::create([=]()
 		{
-			GameState::updateState(gameState, GameState::StateType::RoundStart);
+			GameState::updateState(gameState, GameState::StateType::AIDecideCardReplace);
 		}),
 		nullptr
 	));

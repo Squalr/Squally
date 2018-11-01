@@ -51,8 +51,8 @@ private:
 	StateGameStart* stateGameStart;
 	StateNeutral* stateNeutral;
 	StateOpponentTurnStart* stateOpponentTurnStart;
-	StatePass* statePass;
 	StatePlayCard* statePlayCard;
+	StatePass* statePass;
 	StatePlayerTurnStart* statePlayerTurnStart;
 	StateRoundEnd* stateRoundEnd;
 	StateRoundStart* stateRoundStart;

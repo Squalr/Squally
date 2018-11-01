@@ -136,14 +136,58 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			return;
 	}
 
+	gameState->remainingCards--;
 	gameState->selectedCard = nullptr;
+	CallFunc* stateTransition = nullptr;
+
+	if (gameState->remainingCards <= 0)
+	{
+		stateTransition = CallFunc::create([=]()
+		{
+			GameState::updateState(gameState, GameState::StateType::TurnEnd);
+		});
+	}
+	else
+	{
+		if (gameState->turn == GameState::Turn::Player)
+		{
+			if (gameState->playerHand->getCardCount() <= 0)
+			{
+				stateTransition = CallFunc::create([=]()
+				{
+					GameState::updateState(gameState, GameState::StateType::Pass);
+				});
+			}
+			else
+			{
+				stateTransition = CallFunc::create([=]()
+				{
+					GameState::updateState(gameState, GameState::StateType::Neutral);
+				});
+			}
+		}
+		else
+		{
+			if (gameState->enemyHand->getCardCount() <= 0)
+			{
+				stateTransition = CallFunc::create([=]()
+				{
+					GameState::updateState(gameState, GameState::StateType::Pass);
+				});
+			}
+			else
+			{
+				stateTransition = CallFunc::create([=]()
+				{
+					GameState::updateState(gameState, GameState::StateType::AIDecideCard);
+				});
+			}
+		}
+	}
 
 	this->runAction(Sequence::create(
 		DelayTime::create(0.5f),
-		CallFunc::create([=]()
-		{
-			GameState::updateState(gameState, GameState::StateType::TurnEnd);
-		}),
+		stateTransition,
 		nullptr
 	));
 }
