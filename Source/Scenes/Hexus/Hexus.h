@@ -53,6 +53,7 @@ private:
 	StateOpponentTurnStart* stateOpponentTurnStart;
 	StatePlayCard* statePlayCard;
 	StatePass* statePass;
+	StateLastStand* stateLastStand;
 	StatePlayerTurnStart* statePlayerTurnStart;
 	StateRoundEnd* stateRoundEnd;
 	StateRoundStart* stateRoundStart;

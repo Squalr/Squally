@@ -39,6 +39,7 @@ Hexus::Hexus()
 	this->stateNeutral = StateNeutral::create();
 	this->stateOpponentTurnStart = StateOpponentTurnStart::create();
 	this->statePass = StatePass::create();
+	this->stateLastStand = StateLastStand::create();
 	this->statePlayCard = StatePlayCard::create();
 	this->statePlayerTurnStart = StatePlayerTurnStart::create();
 	this->stateRoundEnd = StateRoundEnd::create();
@@ -77,6 +78,7 @@ Hexus::Hexus()
 	this->addChild(this->stateNeutral);
 	this->addChild(this->stateOpponentTurnStart);
 	this->addChild(this->statePass);
+	this->addChild(this->stateLastStand);
 	this->addChild(this->statePlayCard);
 	this->addChild(this->statePlayerTurnStart);
 	this->addChild(this->stateRoundEnd);

@@ -32,7 +32,7 @@ void StatePlayerTurnStart::onStateEnter(GameState* gameState)
 		DelayTime::create(0.5f),
 		CallFunc::create([=]()
 		{
-			GameState::updateState(gameState, GameState::StateType::Draw);
+			GameState::updateState(gameState, GameState::StateType::Neutral);
 		}),
 		nullptr
 	));

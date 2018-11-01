@@ -1,7 +1,7 @@
 #include "Config.h"
 
 const int Config::startingCardAmount = 5;
-const int Config::playableCardsPerTurn = 2;
+const int Config::playableCardsPerTurn = 1;
 const float Config::endTurnDelay = 0.25f;
 const float Config::betweenTurnDelay = 0.25f;
 const float Config::enemyDrawDelay = 0.25f;

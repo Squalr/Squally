@@ -8,6 +8,7 @@
 #include "Scenes/Hexus/States/StateDraw.h"
 #include "Scenes/Hexus/States/StateDrawInitial.h"
 #include "Scenes/Hexus/States/StateGameStart.h"
+#include "Scenes/Hexus/States/StateLastStand.h"
 #include "Scenes/Hexus/States/StateTurnEnd.h"
 #include "Scenes/Hexus/States/StateGameEnd.h"
 #include "Scenes/Hexus/States/StateNeutral.h"

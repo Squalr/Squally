@@ -31,6 +31,7 @@ public:
 		SelectionStaged,
 		CombineStaged,
 		Pass,
+		LastStand,
 		PlayCard,
 		AIDecideCard,
 		AIDecideCardReplace,
@@ -73,6 +74,8 @@ public:
 	bool isRepeatingSameTurn;
 	bool playerPassed;
 	bool enemyPassed;
+	bool playerLastStanded;
+	bool enemyLastStanded;
 	int playerLosses;
 	int enemyLosses;
 	int cardReplaceCount;

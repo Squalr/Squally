@@ -24,7 +24,7 @@ void StateAIDecideCardReplace::onBeforeStateEnter(GameState* gameState)
 
 	if (gameState->roundNumber == 0)
 	{
-		gameState->cardReplaceCount = std::min(3, gameState->enemyDeck->getCardCount());
+		gameState->cardReplaceCount = std::min(2, gameState->enemyDeck->getCardCount());
 	}
 	else
 	{

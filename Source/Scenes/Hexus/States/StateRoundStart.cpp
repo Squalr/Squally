@@ -29,6 +29,8 @@ void StateRoundStart::onStateEnter(GameState* gameState)
 	gameState->turnNumber = 0;
 	gameState->playerPassed = false;
 	gameState->enemyPassed = false;
+	gameState->playerLastStanded = false;
+	gameState->enemyLastStanded = false;
 
 	this->runAction(Sequence::create(
 		DelayTime::create(Config::bannerDisplayDuration),
