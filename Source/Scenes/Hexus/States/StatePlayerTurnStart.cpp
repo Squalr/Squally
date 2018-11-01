@@ -26,11 +26,13 @@ void StatePlayerTurnStart::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
+	gameState->remainingCards = Config::playableCardsPerTurn;
+
 	this->runAction(Sequence::create(
 		DelayTime::create(0.5f),
 		CallFunc::create([=]()
 		{
-			GameState::updateState(gameState, GameState::StateType::Neutral);
+			GameState::updateState(gameState, GameState::StateType::Draw);
 		}),
 		nullptr
 	));

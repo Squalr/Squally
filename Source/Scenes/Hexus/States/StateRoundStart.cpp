@@ -34,7 +34,7 @@ void StateRoundStart::onStateEnter(GameState* gameState)
 		DelayTime::create(Config::bannerDisplayDuration),
 		CallFunc::create([=]()
 		{
-			GameState::updateState(gameState, GameState::StateType::AIDecideCardReplace);
+			GameState::updateState(gameState, GameState::StateType::DrawInitialCards);
 		}),
 		nullptr
 	));

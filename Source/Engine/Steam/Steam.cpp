@@ -25,7 +25,7 @@ Steam::~Steam()
 bool Steam::isSteamEnabled()
 {
 	// TODO: Make this compiler flag dependent or something
-	return true;
+	return false;
 }
 
 bool Steam::isCloudSaveAvailable()

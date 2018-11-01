@@ -30,11 +30,11 @@ public:
 		Neutral,
 		SelectionStaged,
 		CombineStaged,
-		PlayCard,
 		Pass,
-		AIDecidePass,
+		PlayCard,
 		AIDecideCard,
 		AIDecideCardReplace,
+		AIDecidePass,
 		AIDecideTarget,
 		TurnEnd,
 		RoundEnd,
@@ -78,6 +78,7 @@ public:
 	int cardReplaceCount;
 	int roundNumber;
 	int turnNumber;
+	int remainingCards;
 	int gameDurationInSeconds;
 	CardRow* stagedCombineCardRow;
 	Card* stagedCombineSourceCard;

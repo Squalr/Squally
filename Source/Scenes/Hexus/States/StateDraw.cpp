@@ -26,11 +26,6 @@ void StateDraw::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	CallFunc* stateTransition = CallFunc::create([gameState]
-	{
-		GameState::updateState(gameState, GameState::StateType::Neutral);
-	});
-
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Enemy:
@@ -43,7 +38,10 @@ void StateDraw::onStateEnter(GameState* gameState)
 
 			this->runAction(Sequence::create(
 				DelayTime::create(Config::enemyDrawDelay),
-				stateTransition,
+				CallFunc::create([gameState]
+				{
+					GameState::updateState(gameState, GameState::StateType::AIDecideCard);
+				}),
 				nullptr
 			));
 			break;
@@ -53,7 +51,10 @@ void StateDraw::onStateEnter(GameState* gameState)
 			if (!gameState->playerDeck->hasCards())
 			{
 				this->runAction(Sequence::create(
-					stateTransition,
+					CallFunc::create([gameState]
+					{
+						GameState::updateState(gameState, GameState::StateType::Neutral);
+					}),
 					nullptr
 				));
 
@@ -71,7 +72,10 @@ void StateDraw::onStateEnter(GameState* gameState)
 				DelayTime::create(Config::revealDelay),
 				CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, card, Config::insertDelay)),
 				DelayTime::create(Config::insertDelay),
-				stateTransition,
+				CallFunc::create([gameState]
+				{
+					GameState::updateState(gameState, GameState::StateType::Neutral);
+				}),
 				nullptr
 			));
 

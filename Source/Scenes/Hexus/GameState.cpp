@@ -21,6 +21,7 @@ GameState::GameState()
 	cardReplaceCount(0),
 	isRepeatingSameTurn(false),
 	turnNumber(0),
+	remainingCards(0),
 	roundNumber(0),
 	selectedCard(nullptr),
 	selectedRow(nullptr),
