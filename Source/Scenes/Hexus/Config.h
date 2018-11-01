@@ -10,6 +10,8 @@ class Config
 public:
 
 	static const int startingCardAmount;
+	static const int initialCardReplacements;
+	static const int midgameCardReplacements;
 	static const int playableCardsPerTurn;
 	static const float endTurnDelay;
 	static const float betweenTurnDelay;

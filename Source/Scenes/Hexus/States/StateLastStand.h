@@ -30,11 +30,16 @@ private:
 	void onLastStandClick(MenuSprite* menuSprite, GameState* gameState);
 	void onLastStandMouseOver(MenuSprite* menuSprite);
 	void onLastStandMouseOut(MenuSprite* menuSprite);
+	void enableLastStandButton(GameState* gameState);
+	void disableLastStandButton();
 
 	MenuSprite* lastStandButton;
 	LayerColor* lastStandPanel;
 	Label* lastStandLabel;
-	ParticleSystem* lastStandParticles;
+	ParticleSystemQuad* lastStandParticles;
+
+	Sprite* enemyLastStandSprite;
+	ParticleSystemQuad* enemyLastStandParticles;
 
 	static const std::string StringKeyHexusLastStand;
 };

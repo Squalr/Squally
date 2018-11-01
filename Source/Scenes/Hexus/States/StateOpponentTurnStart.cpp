@@ -26,7 +26,7 @@ void StateOpponentTurnStart::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	gameState->remainingCards = Config::playableCardsPerTurn;
+	gameState->playableCardsThisTurn = Config::playableCardsPerTurn;
 
 	this->runAction(Sequence::create(
 		DelayTime::create(0.75f),

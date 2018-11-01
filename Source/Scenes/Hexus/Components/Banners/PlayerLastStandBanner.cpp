@@ -14,7 +14,7 @@ PlayerLastStandBanner::PlayerLastStandBanner()
 	this->playerPassBanner1 = Sprite::create(Resources::Minigames_Hexus_PlayerBanner);
 	this->playerPassBanner2 = Sprite::create(Resources::Minigames_Hexus_PlayerBanner);
 
-	this->setBannerText("YOU PASSED");
+	this->setBannerText("LAST STAND");
 
 	this->addBannerChild(this->playerPassBanner1);
 	this->addBannerChild(this->playerPassBanner2);

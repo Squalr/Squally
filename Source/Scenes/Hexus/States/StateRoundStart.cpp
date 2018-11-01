@@ -27,6 +27,7 @@ void StateRoundStart::onStateEnter(GameState* gameState)
 	StateBase::onStateEnter(gameState);
 
 	gameState->turnNumber = 0;
+	gameState->penaltyCardsPlayed = 0;
 	gameState->playerPassed = false;
 	gameState->enemyPassed = false;
 	gameState->playerLastStanded = false;

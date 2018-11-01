@@ -36,8 +36,8 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 	gameState->stagedCombineSourceCard = nullptr;
 	gameState->stagedCombineTargetCard = nullptr;
 
-	// If both players pass than we end the round
-	if (gameState->playerPassed && gameState->enemyPassed)
+	// If both players activated last stand / passed than we end the round
+	if ((gameState->playerLastStanded || gameState->playerPassed) && (gameState->enemyLastStanded || gameState->enemyPassed))
 	{
 		CallFunc* changeState = CallFunc::create([gameState]
 		{
@@ -53,8 +53,8 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 		return;
 	}
 
-	// If the player passes it is the enemies turn
-	if (gameState->playerPassed)
+	// If the player activated last stand it is the enemies turn
+	if (gameState->playerLastStanded)
 	{
 		if (gameState->turn == GameState::Turn::Enemy)
 		{
@@ -77,8 +77,8 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 		return;
 	}
 
-	// If the enemy passes it is the players turn
-	if (gameState->enemyPassed)
+	// If the enemy activated last stand it is the players turn
+	if (gameState->enemyLastStanded)
 	{
 		if (gameState->turn == GameState::Turn::Player)
 		{
@@ -100,7 +100,7 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 		return;
 	}
 
-	// If no one has passed we alternate turns
+	// If no one has activated last stand we alternate turns
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Enemy:

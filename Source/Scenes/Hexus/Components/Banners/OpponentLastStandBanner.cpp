@@ -1,30 +1,30 @@
-#include "EnemyLastStandBanner.h"
+#include "OpponentLastStandBanner.h"
 
-EnemyLastStandBanner* EnemyLastStandBanner::create()
+OpponentLastStandBanner* OpponentLastStandBanner::create()
 {
-	EnemyLastStandBanner* instance = new EnemyLastStandBanner();
+	OpponentLastStandBanner* instance = new OpponentLastStandBanner();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EnemyLastStandBanner::EnemyLastStandBanner()
+OpponentLastStandBanner::OpponentLastStandBanner()
 {
 	this->playerPassBanner1 = Sprite::create(Resources::Minigames_Hexus_EnemyBanner);
 	this->playerPassBanner2 = Sprite::create(Resources::Minigames_Hexus_EnemyBanner);
 
-	this->setBannerText("YOU PASSED");
+	this->setBannerText("LAST STAND");
 
 	this->addBannerChild(this->playerPassBanner1);
 	this->addBannerChild(this->playerPassBanner2);
 }
 
-EnemyLastStandBanner::~EnemyLastStandBanner()
+OpponentLastStandBanner::~OpponentLastStandBanner()
 {
 }
 
-void EnemyLastStandBanner::initializePositions()
+void OpponentLastStandBanner::initializePositions()
 {
 	BannerBase::initializePositions();
 
@@ -34,12 +34,12 @@ void EnemyLastStandBanner::initializePositions()
 	this->playerPassBanner2->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::bannerIconOffset, visibleSize.height / 2.0f + 320.0f);
 }
 
-void EnemyLastStandBanner::onBeforeStateChange(GameState* gameState)
+void OpponentLastStandBanner::onBeforeStateChange(GameState* gameState)
 {
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void EnemyLastStandBanner::onStateChange(GameState* gameState)
+void OpponentLastStandBanner::onStateChange(GameState* gameState)
 {
 	BannerBase::onStateChange(gameState);
 

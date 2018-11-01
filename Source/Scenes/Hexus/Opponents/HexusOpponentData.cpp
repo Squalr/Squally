@@ -35,6 +35,21 @@ Deck* HexusOpponentData::getDeck()
 	return Deck::create(this->cardStyle, this->cards);
 }
 
+CardData* HexusOpponentData::getStrongestCard()
+{
+	CardData* best = nullptr;
+
+	for (auto it = this->cards.begin(); it != this->cards.end(); it++)
+	{
+		if (best == nullptr || (*it)->attack > best->attack)
+		{
+			best = *it;
+		}
+	}
+
+	return best;
+}
+
 int HexusOpponentData::generateReward(float deckStrength)
 {
 	float strengthPercent = deckStrength * 100.0f;
