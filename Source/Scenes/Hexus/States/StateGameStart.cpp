@@ -20,6 +20,20 @@ StateGameStart::~StateGameStart()
 void StateGameStart::onBeforeStateEnter(GameState* gameState)
 {
 	StateBase::onBeforeStateEnter(gameState);
+
+	// Clear all state variables before game start
+	gameState->playerLosses = 0;
+	gameState->enemyLosses = 0;
+	gameState->cardReplaceCount = 0;
+	gameState->roundNumber = 0;
+	gameState->turnNumber = 0;
+	gameState->playerPassed = false;
+	gameState->enemyPassed = false;
+	gameState->playerLastStanded = false;
+	gameState->enemyLastStanded = false;
+	gameState->lastStandBonus = 0;
+	gameState->playableCardsThisTurn = 0;
+	gameState->penaltyCardsPlayed = 0;
 }
 
 void StateGameStart::onStateEnter(GameState* gameState)

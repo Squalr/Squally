@@ -25,6 +25,7 @@ GameState::GameState()
 	playerLastStanded(false),
 	enemyLastStanded(false),
 	turnNumber(0),
+	lastStandBonus(0),
 	penaltyCardsPlayed(0),
 	playableCardsThisTurn(0),
 	roundNumber(0),
@@ -233,28 +234,44 @@ std::vector<CardRow*> GameState::getEnemyRows()
 
 std::vector<CardRow*> GameState::getPlayerRows() 
 {
-	std::vector<CardRow*> cardRows;
+	std::vector<CardRow*> cardRows = std::vector<CardRow*>();
+
 	cardRows.emplace_back(this->playerBinaryCards);
 	cardRows.emplace_back(this->playerDecimalCards);
 	cardRows.emplace_back(this->playerHexCards);
+
 	return cardRows;
 }
 
 int GameState::getPlayerTotal()
 {
 	int total = 0;
+
 	total += this->playerBinaryCards->getRowAttack();
 	total += this->playerDecimalCards->getRowAttack();
 	total += this->playerHexCards->getRowAttack();
+
+	if (this->playerLastStanded)
+	{
+		total += lastStandBonus;
+	}
+
 	return total;
 }
 
 int GameState::getEnemyTotal()
 {
 	int total = 0;
+
 	total += this->enemyBinaryCards->getRowAttack();
 	total += this->enemyDecimalCards->getRowAttack();
 	total += this->enemyHexCards->getRowAttack();
+
+	if (this->enemyLastStanded)
+	{
+		total += lastStandBonus;
+	}
+
 	return total;
 }
 
@@ -266,18 +283,22 @@ int GameState::getCardCount()
 int GameState::getPlayerCardCount()
 {
 	int total = 0;
+
 	total += this->playerBinaryCards->getCardCount();
 	total += this->playerDecimalCards->getCardCount();
 	total += this->playerHexCards->getCardCount();
+
 	return total;
 }
 
 int GameState::getEnemyCardCount()
 {
 	int total = 0;
+
 	total += this->enemyBinaryCards->getCardCount();
 	total += this->enemyDecimalCards->getCardCount();
 	total += this->enemyHexCards->getCardCount();
+
 	return total;
 }
 

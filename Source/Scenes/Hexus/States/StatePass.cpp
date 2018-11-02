@@ -78,7 +78,6 @@ void StatePass::onStateChange(GameState* gameState)
 			this->passButton->enableInteraction();
 			break;
 		default:
-			this->passButton->runAction(FadeTo::create(0.25f, 0));
 			this->passButton->disableInteraction();
 			this->passButton->setClickCallback(nullptr);
 			break;

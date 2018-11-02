@@ -30,8 +30,9 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 
 	// Draw starting cards
 	std::vector<Card*> drawnCards = std::vector<Card*>();
+	int playerPenalty = gameState->enemyLastStanded ? gameState->penaltyCardsPlayed : 0;
 
-	while (gameState->playerHand->getCardCount() + drawnCards.size() < Config::startingCardAmount)
+	while (gameState->playerHand->getCardCount() + drawnCards.size() < Config::startingCardAmount - playerPenalty)
 	{
 		if (!gameState->playerDeck->hasCards())
 		{
@@ -50,7 +51,9 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 		nullptr
 	));
 
-	while (gameState->enemyHand->getCardCount() < Config::startingCardAmount)
+	int enemyPenalty = gameState->playerLastStanded ? gameState->penaltyCardsPlayed : 0;
+
+	while (gameState->enemyHand->getCardCount() < Config::startingCardAmount - enemyPenalty)
 	{
 		if (!gameState->enemyDeck->hasCards())
 		{
@@ -60,8 +63,13 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 		gameState->enemyHand->insertCard(gameState->enemyDeck->drawCard(), 0.0f);
 	}
 
+	// Reset last stand state
+	gameState->penaltyCardsPlayed = 0;
+	gameState->playerLastStanded = false;
+	gameState->enemyLastStanded = false;
+
 	this->runAction(Sequence::create(
-		DelayTime::create(0.5f),
+		DelayTime::create(1.0f),
 		CallFunc::create([=]()
 		{
 			GameState::updateState(gameState, GameState::StateType::AIDecideCardReplace);
