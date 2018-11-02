@@ -35,7 +35,7 @@ void PenaltyDiscardBanner::onStateChange(GameState* gameState)
 
 	if (gameState->stateType == GameState::PenaltyDiscard)
 	{
-		if (gameState->penaltyCardsPlayed > 0)
+		if (gameState->enemyLastStanded && gameState->penaltyCardsPlayed > 0)
 		{
 			this->setBannerText("REMAINING DISCARDS: " + std::to_string(gameState->penaltyCardsPlayed));
 			this->showBanner();

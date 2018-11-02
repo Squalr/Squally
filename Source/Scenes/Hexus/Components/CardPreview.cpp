@@ -141,7 +141,7 @@ void CardPreview::previewCard(Card* card)
 				specialLabel->setAnchorPoint(Vec2(0.0f, 0.0f));
 				specialLabel->setTextColor(Card::specialColor);
 				specialLabel->enableOutline(Color4B::BLACK, 2);
-				specialLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, -96.0f));
+				specialLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, -128.0f));
 				specialLabel->setDimensions(previewSprite->getContentSize().width - 16.0f, 0.0f);
 
 				switch (card->cardData->cardType) {
