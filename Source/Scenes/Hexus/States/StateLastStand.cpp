@@ -27,10 +27,25 @@ StateLastStand::StateLastStand() : StateBase(GameState::StateType::LastStand)
 		Localization::getFontSizeP(Localization::getMainFont())
 	);
 
+	this->lastStandBonusLabel = Label::create(
+		"",
+		Localization::getMainFont(),
+		Localization::getFontSizeH1(Localization::getMainFont())
+	);
+
+	this->enemyLastStandBonusLabel = Label::create(
+		"",
+		Localization::getMainFont(),
+		Localization::getFontSizeH1(Localization::getMainFont())
+	);
+
 	this->lastStandParticles = ParticleSystemQuad::create(Resources::Particles_Aura);
 
 	this->enemyLastStandSprite = Sprite::create(Resources::Minigames_Hexus_ShieldButton);
 	this->enemyLastStandParticles = ParticleSystemQuad::create(Resources::Particles_Aura);
+
+	lastStandBonusLabel->enableOutline(Color4B::BLACK, 2);
+	enemyLastStandBonusLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->lastStandParticles->setVisible(false);
 	this->lastStandPanel->setOpacity(0);
@@ -40,6 +55,8 @@ StateLastStand::StateLastStand() : StateBase(GameState::StateType::LastStand)
 
 	this->lastStandButton->setClickSound(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
 
+	this->lastStandButton->addChild(this->lastStandBonusLabel);
+	this->enemyLastStandSprite->addChild(this->enemyLastStandBonusLabel);
 	this->addChild(this->lastStandParticles);
 	this->addChild(this->lastStandButton);
 	this->addChild(this->lastStandPanel);
@@ -75,6 +92,7 @@ void StateLastStand::initializePositions()
 
 	this->enemyLastStandSprite->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f - Config::passButtonOffsetY);
 	this->enemyLastStandParticles->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f - Config::passButtonOffsetY);
+	this->enemyLastStandBonusLabel->setPosition(this->enemyLastStandSprite->getContentSize() / 2.0f);
 }
 
 void StateLastStand::onLastStandClick(MenuSprite* menuSprite, GameState* gameState)
@@ -98,22 +116,17 @@ void StateLastStand::onStateChange(GameState* gameState)
 {
 	StateBase::onStateChange(gameState);
 
-	// Last stand not available if enemy has already used it
-	if (gameState->enemyLastStanded)
-	{
-		this->lastStandParticles->setVisible(false);
-		this->lastStandButton->runAction(FadeTo::create(0.25f, 0));
-		this->disableLastStandButton();
-		return;
-	}
-
 	switch (gameState->stateType)
 	{
 		case GameState::StateType::RoundStart:
+		case GameState::StateType::RoundEnd:
 		{
-			// Show on round start (do not enable though)
+			// Show (do not enable though)
 			this->lastStandParticles->setVisible(false);
 			this->lastStandButton->runAction(FadeTo::create(0.25f, 255));
+
+			this->lastStandBonusLabel->setString("");
+			this->enemyLastStandBonusLabel->setString("");
 
 			// Hide enemys last stand icon
 			this->enemyLastStandSprite->setVisible(false);
@@ -124,11 +137,29 @@ void StateLastStand::onStateChange(GameState* gameState)
 		case GameState::StateType::SelectionStaged:
 		case GameState::StateType::CombineStaged:
 		{
+			// Last stand not available if enemy has already used it
+			if (gameState->enemyLastStanded)
+			{
+				this->lastStandParticles->setVisible(false);
+				this->lastStandButton->runAction(FadeTo::create(0.25f, 0));
+				this->disableLastStandButton();
+				return;
+			}
+
 			this->enableLastStandButton(gameState);
 			break;
 		}
 		default:
 		{
+			// Last stand not available if enemy has already used it
+			if (gameState->enemyLastStanded)
+			{
+				this->lastStandParticles->setVisible(false);
+				this->lastStandButton->runAction(FadeTo::create(0.25f, 0));
+				this->disableLastStandButton();
+				return;
+			}
+
 			this->disableLastStandButton();
 			break;
 		}
@@ -147,13 +178,19 @@ void StateLastStand::onStateEnter(GameState* gameState)
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
+			gameState->lastStandBonus = std::max(0, gameState->getEnemyTotal() - gameState->getPlayerTotal());
 			gameState->playerLastStanded = true;
+
+			this->lastStandBonusLabel->setString("+" + std::to_string(gameState->lastStandBonus));
 
 			// Start particle effect on activation
 			this->lastStandParticles->setVisible(true);
 			break;
 		case GameState::Turn::Enemy:
+			gameState->lastStandBonus = std::max(0, gameState->getPlayerTotal() - gameState->getEnemyTotal());
 			gameState->enemyLastStanded = true;
+
+			this->enemyLastStandBonusLabel->setString("+" + std::to_string(gameState->lastStandBonus));
 
 			this->enemyLastStandSprite->setVisible(true);
 			this->enemyLastStandParticles->setVisible(true);

@@ -27,7 +27,6 @@ private:
 
 	void initializePositions() override;
 	void initializeSelectablesAndCallbacks(GameState* gameState);
-	void aiPerformAction(GameState* gameState);
 	void selectCard(Card* card, GameState* gameState);
 	void stageSelectedCombineCard(Card* card, GameState* gameState);
 	void onRowChosen(CardRow* cardRow, GameState* gameState);

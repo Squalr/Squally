@@ -184,7 +184,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			{
 				stateTransition = CallFunc::create([=]()
 				{
-					GameState::updateState(gameState, GameState::StateType::AIDecideCard);
+					GameState::updateState(gameState, GameState::StateType::AIDecidePass);
 				});
 			}
 		}
@@ -205,6 +205,9 @@ void StatePlayCard::onStateReload(GameState* gameState)
 void StatePlayCard::onStateExit(GameState* gameState)
 {
 	StateBase::onStateExit(gameState);
+
+	gameState->stagedCombineSourceCard = nullptr;
+	gameState->stagedCombineTargetCard = nullptr;
 }
 
 void StatePlayCard::passFromError(GameState* gameState)

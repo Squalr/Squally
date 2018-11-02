@@ -36,9 +36,11 @@ private:
 	MenuSprite* lastStandButton;
 	LayerColor* lastStandPanel;
 	Label* lastStandLabel;
+	Label* lastStandBonusLabel;
 	ParticleSystemQuad* lastStandParticles;
 
 	Sprite* enemyLastStandSprite;
+	Label* enemyLastStandBonusLabel;
 	ParticleSystemQuad* enemyLastStandParticles;
 
 	static const std::string StringKeyHexusLastStand;

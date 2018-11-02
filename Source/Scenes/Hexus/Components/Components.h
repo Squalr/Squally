@@ -17,5 +17,7 @@
 #include "Scenes/Hexus/Components/HandCardCountDisplay.h"
 #include "Scenes/Hexus/Components/LossesDisplay.h"
 #include "Scenes/Hexus/Components/PassIndicators.h"
+#include "Scenes/Hexus/Components/PenaltyCardDisplay.h"
+#include "Scenes/Hexus/Components/RemainingCardDisplay.h"
 #include "Scenes/Hexus/Components/RowTotals.h"
 #include "Scenes/Hexus/Components/ScoreTotal.h"

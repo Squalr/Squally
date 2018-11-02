@@ -50,6 +50,8 @@ Hexus::Hexus()
 	this->stateTurnEnd = StateTurnEnd::create();
 	this->deckCardCountDisplay = DeckCardCountDisplay::create();
 	this->handCardCountDisplay = HandCardCountDisplay::create();
+	this->penaltyCardDisplay = PenaltyCardDisplay::create();
+	this->remainingCardDisplay = RemainingCardDisplay::create();
 	this->lossesDisplay = LossesDisplay::create();
 	this->passIndicators = PassIndicators::create();
 	this->rowTotals = RowTotals::create();
@@ -64,6 +66,8 @@ Hexus::Hexus()
 	this->addChild(this->passIndicators);
 	this->addChild(this->deckCardCountDisplay);
 	this->addChild(this->handCardCountDisplay);
+	this->addChild(this->remainingCardDisplay);
+	this->addChild(this->penaltyCardDisplay);
 	this->addChild(this->rowTotals);
 	this->addChild(this->scoreTotal);
 	this->addChild(this->stateAIDecideCard);
@@ -150,11 +154,6 @@ void Hexus::onGameStart(EventCustom* eventCustom)
 
 	this->gameState->previousStateType = GameState::StateType::EmptyState;
 	this->gameState->stateType = GameState::StateType::EmptyState;
-	this->gameState->playerLosses = 0;
-	this->gameState->enemyLosses = 0;
-	this->gameState->cardReplaceCount = 0;
-	this->gameState->roundNumber = 0;
-	this->gameState->turnNumber = 0;
 
 	this->gameState->playerBinaryCards->clear();
 	this->gameState->playerDecimalCards->clear();

@@ -31,11 +31,13 @@ public:
 		SelectionStaged,
 		CombineStaged,
 		Pass,
+		PenaltyDiscard,
 		LastStand,
 		PlayCard,
 		AIDecideCard,
 		AIDecideCardReplace,
 		AIDecidePass,
+		AIDecidePenaltyDiscard,
 		AIDecideTarget,
 		TurnEnd,
 		RoundEnd,
@@ -81,6 +83,7 @@ public:
 	int cardReplaceCount;
 	int roundNumber;
 	int turnNumber;
+	int lastStandBonus;
 	int penaltyCardsPlayed;
 	int playableCardsThisTurn;
 	int gameDurationInSeconds;

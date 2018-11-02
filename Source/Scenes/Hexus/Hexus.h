@@ -75,6 +75,8 @@ private:
 
 	DeckCardCountDisplay* deckCardCountDisplay;
 	HandCardCountDisplay* handCardCountDisplay;
+	PenaltyCardDisplay* penaltyCardDisplay;
+	RemainingCardDisplay* remainingCardDisplay;
 	LossesDisplay* lossesDisplay;
 	PassIndicators* passIndicators;
 	RowTotals* rowTotals;

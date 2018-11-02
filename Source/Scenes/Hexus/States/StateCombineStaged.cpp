@@ -55,12 +55,11 @@ void StateCombineStaged::onStateEnter(GameState* gameState)
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
+		{
 			this->initializeCallbacks(gameState);
 			this->updateCombineStatus(gameState);
 			break;
-		case GameState::Turn::Enemy:
-			this->aiPerformAction(gameState);
-			break;
+		}
 		default:
 			break;
 	}
@@ -75,7 +74,6 @@ void StateCombineStaged::onStateExit(GameState* gameState)
 {
 	StateBase::onStateExit(gameState);
 
-	gameState->stagedCombineSourceCard = nullptr;
 	this->updateCombineStatus(gameState);
 }
 
@@ -92,24 +90,6 @@ void StateCombineStaged::initializeCallbacks(GameState* gameState)
 	gameState->enemyBinaryCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this, gameState));
 	gameState->enemyDecimalCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this, gameState));
 	gameState->enemyHexCards->enableRowCardSelection(CC_CALLBACK_1(StateCombineStaged::stageCombineTarget, this, gameState));
-}
-
-void StateCombineStaged::aiPerformAction(GameState* gameState)
-{
-	gameState->enemyHand->removeCard(gameState->selectedCard);
-	gameState->enemyGraveyard->insertCardTop(gameState->selectedCard, true, Config::insertDelay);
-
-	Card::Operation operation = Card::toOperation(
-		gameState->selectedCard->cardData->cardType, 
-		gameState->stagedCombineSourceCard->getAttack()
-	);
-
-	// NOTE, the future we may want destination card to be different than target
-	Card* destinationCard = gameState->stagedCombineTargetCard;
-	destinationCard->addOperation(operation);
-	SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
-
-	GameState::updateState(gameState, GameState::StateType::TurnEnd);
 }
 
 void StateCombineStaged::selectCard(Card* card, GameState* gameState)
@@ -147,7 +127,8 @@ void StateCombineStaged::selectCard(Card* card, GameState* gameState)
 void StateCombineStaged::stageCombineTarget(Card* card, GameState* gameState)
 {
 	// If we click a card that is already selected our source, deselect our source
-	if (gameState->stagedCombineSourceCard == card) {
+	if (gameState->stagedCombineSourceCard == card)
+	{
 		card->unfocus();
 		gameState->stagedCombineSourceCard = nullptr;
 		this->updateCombineStatus(gameState);
@@ -155,7 +136,8 @@ void StateCombineStaged::stageCombineTarget(Card* card, GameState* gameState)
 	}
 
 	// If we click a card that is already selected our destination, deselect our destination
-	if (gameState->stagedCombineTargetCard == card) {
+	if (gameState->stagedCombineTargetCard == card)
+	{
 		card->unfocus();
 		gameState->stagedCombineTargetCard = nullptr;
 		this->updateCombineStatus(gameState);
@@ -163,40 +145,36 @@ void StateCombineStaged::stageCombineTarget(Card* card, GameState* gameState)
 	}
 
 	// we assign the source card first, then the destination/target
-	if (gameState->stagedCombineSourceCard == nullptr) {
+	if (gameState->stagedCombineSourceCard == nullptr)
+	{
 		card->focus();
 		gameState->stagedCombineSourceCard = card;
 		this->updateCombineStatus(gameState);
 	}
-	else {
+	else
+	{
 		card->focus();
 		gameState->stagedCombineTargetCard = card;
 		this->updateCombineStatus(gameState);
 	}
 
-	switch (gameState->selectedCard->cardData->cardType) {
+	switch (gameState->selectedCard->cardData->cardType)
+	{
 		case CardData::CardType::Special_AND:
 		case CardData::CardType::Special_OR:
 		case CardData::CardType::Special_XOR:
 		case CardData::CardType::Special_ADD:
 		case CardData::CardType::Special_SUB:
+		{
 			if (gameState->stagedCombineSourceCard != nullptr && gameState->stagedCombineTargetCard != nullptr)
 			{
 				gameState->stagedCombineSourceCard->unfocus();
 				this->updateCombineStatus(gameState);
-				gameState->playerHand->removeCard(gameState->selectedCard);
-				gameState->playerGraveyard->insertCardTop(gameState->selectedCard, true, Config::insertDelay);
 
-				Card::Operation operation = Card::toOperation(gameState->selectedCard->cardData->cardType, gameState->stagedCombineSourceCard->getAttack());
-
-				// NOTE, the future we may want destination card to be different than target
-				Card* destinationCard = gameState->stagedCombineTargetCard;
-				destinationCard->addOperation(operation);
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
-
-				GameState::updateState(gameState, GameState::StateType::TurnEnd);
+				GameState::updateState(gameState, GameState::StateType::PlayCard);
 			}
 			break;
+		}
 		default:
 			break;
 	}

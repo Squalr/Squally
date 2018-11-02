@@ -65,9 +65,6 @@ void StateSelectionStaged::onStateEnter(GameState* gameState)
 		case GameState::Turn::Player:
 			this->initializeSelectablesAndCallbacks(gameState);
 			break;
-		case GameState::Turn::Enemy:
-			this->aiPerformAction(gameState);
-			break;
 		default:
 			break;
 	}
@@ -192,11 +189,6 @@ void StateSelectionStaged::onRowChosen(CardRow* cardRow, GameState* gameState)
 	gameState->selectedRow = cardRow;
 
 	GameState::updateState(gameState, GameState::StateType::PlayCard);
-}
-
-void StateSelectionStaged::aiPerformAction(GameState* gameState)
-{
-	GameState::updateState(gameState, GameState::StateType::TurnEnd);
 }
 
 void StateSelectionStaged::onSelectionCancel(MenuSprite* menuSprite, GameState* gameState)

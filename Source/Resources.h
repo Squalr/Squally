@@ -5814,8 +5814,10 @@ public:
 	static const std::string Minigames_Hexus_Flags;
 	static const std::string Minigames_Hexus_Gameboard;
 	static const std::string Minigames_Hexus_LeaderEmblem;
+	static const std::string Minigames_Hexus_PenaltyCardsIcon;
 	static const std::string Minigames_Hexus_PlayerBanner;
 	static const std::string Minigames_Hexus_PlayerPassBanner;
+	static const std::string Minigames_Hexus_RemainingCardsIcon;
 	static const std::string Minigames_Hexus_RoundBanner;
 	static const std::string Minigames_Hexus_RowSelection;
 	static const std::string Minigames_Hexus_RowSelectionHighlight;
@@ -6206,6 +6208,7 @@ public:
 	static const std::string Sounds_Menus_Simple_Button;
 	static const std::string Particles_Aura;
 	static const std::string Particles_BeamMeUp;
+	static const std::string Particles_BlueAura;
 	static const std::string Particles_BlueNether;
 	static const std::string Particles_BluePlasma;
 	static const std::string Particles_BlueStarCircle;
@@ -6221,6 +6224,7 @@ public:
 	static const std::string Particles_Heal;
 	static const std::string Particles_Hover;
 	static const std::string Particles_MindBlast;
+	static const std::string Particles_PurpleAura;
 	static const std::string Particles_Rain;
 	static const std::string Particles_Rain2;
 	static const std::string Particles_Spark;
