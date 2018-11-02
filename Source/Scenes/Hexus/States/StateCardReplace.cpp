@@ -200,7 +200,7 @@ void StateCardReplace::replaceCard(Card* cardToReplace, GameState* gameState)
 		GameUtils::changeParent(replacement, this, true);
 		replacement->reveal();
 
-		// Update the state and either re-enter this state or exit to coinflip
+		// Either exit this state, or re-enter if not finished
 		if (gameState->cardReplaceCount <= 0)
 		{
 			gameState->playerHand->disableRowCardInteraction();

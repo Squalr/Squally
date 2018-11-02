@@ -10,10 +10,10 @@
 
 using namespace cocos2d;
 
-class StateCardReplace : public StateBase
+class StatePenaltyDiscard : public StateBase
 {
 public:
-	static StateCardReplace * create();
+	static StatePenaltyDiscard * create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;
@@ -22,14 +22,13 @@ protected:
 	void onStateExit(GameState* gameState) override;
 
 private:
-	StateCardReplace();
-	~StateCardReplace();
+	StatePenaltyDiscard();
+	~StatePenaltyDiscard();
 
 	void initializePositions() override;
-	void onEndReplaceCards(MenuSprite* menuSprite, GameState* gameState);
 	void initializeCallbacks(GameState* gameState);
-	void replaceCard(Card* cardToReplace, GameState* gameState);
+	void discardCard(Card* cardToDiscard, GameState* gameState);
 
-	std::vector<Card*> removedCards;
-	TextMenuSprite* doneButton;
+	Sprite* penaltyIcon;
+	ParticleSystemQuad* penaltyIconParticles;
 };

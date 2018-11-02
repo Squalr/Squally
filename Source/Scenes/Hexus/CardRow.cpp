@@ -19,7 +19,7 @@ CardRow* CardRow::create(bool isPlayerRow)
 CardRow::CardRow(bool isPlayerRow)
 {
 	this->belongsToPlayer = isPlayerRow;
-	this->rowCards = new std::vector<Card*>();
+	this->rowCards = std::vector<Card*>();
 	this->rowSelectCallback = nullptr;
 	this->rowWidth = Config::rowWidth;
 
@@ -33,7 +33,6 @@ CardRow::CardRow(bool isPlayerRow)
 
 CardRow::~CardRow()
 {
-	delete(this->rowCards);
 }
 
 void CardRow::initializeListeners()
@@ -52,7 +51,7 @@ void CardRow::setCardScale(float scale, float scaleSpeed)
 {
 	this->cardScale = scale;
 
-	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 	{
 		Card* card = *it;
 
@@ -89,7 +88,7 @@ void CardRow::insertCards(std::vector<Card*> cards, float cardInsertDelay, float
 		card->setMouseClickCallback(nullptr);
 		card->reveal();
 
-		this->rowCards->push_back(card);
+		this->rowCards.push_back(card);
 	}
 
 	this->setCardPositions(cardInsertDelay, indexDelay);
@@ -108,19 +107,19 @@ void CardRow::insertCard(Card* card, float cardInsertDelay)
 	card->setMouseClickCallback(nullptr);
 	card->reveal();
 
-	this->rowCards->push_back(card);
+	this->rowCards.push_back(card);
 	this->setCardPositions(cardInsertDelay);
 }
 
 Card* CardRow::removeCard(Card* card)
 {
-	if (std::find(this->rowCards->begin(), this->rowCards->end(), card) == this->rowCards->end())
+	if (std::find(this->rowCards.begin(), this->rowCards.end(), card) == this->rowCards.end())
 	{
 		// Not found
 		return nullptr;
 	}
 
-	this->rowCards->erase(std::remove(this->rowCards->begin(), this->rowCards->end(), card), this->rowCards->end());
+	this->rowCards.erase(std::remove(this->rowCards.begin(), this->rowCards.end(), card), this->rowCards.end());
 	this->setCardPositions(Config::insertDelay);
 
 	return card; // Note: We let the caller remove the child because it allows for control over positioning
@@ -128,14 +127,14 @@ Card* CardRow::removeCard(Card* card)
 
 int CardRow::getCardCount()
 {
-	return this->rowCards->size();
+	return this->rowCards.size();
 }
 
 int CardRow::getRowAttack()
 {
 	int attack = 0;
 
-	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 	{
 		Card* card = *it;
 		attack += card->getAttack();
@@ -158,7 +157,7 @@ void CardRow::enableRowSelection(std::function<void(CardRow*)> callback)
 		nullptr));
 
 	// Disable card interactions because the player is interacting with the whole row
-	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 	{
 		Card* card = *it;
 		card->disableInteraction();
@@ -167,7 +166,7 @@ void CardRow::enableRowSelection(std::function<void(CardRow*)> callback)
 
 void CardRow::enableRowCardSelection(std::function<void(Card*)> callback)
 {
-	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 	{
 		Card* card = *it;
 		card->setMouseClickCallback(callback);
@@ -186,7 +185,7 @@ void CardRow::disableRowSelection()
 		sprite->setVisible(false);
 	}), nullptr));
 
-	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 	{
 		Card* card = *it;
 		card->enableInteraction();
@@ -195,7 +194,7 @@ void CardRow::disableRowSelection()
 
 void CardRow::disableRowCardSelection()
 {
-	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 	{
 		Card* card = *it;
 
@@ -207,7 +206,7 @@ void CardRow::disableRowCardSelection()
 // TODO, SPLIT OFF methods for hand into seperate class, Card Row on the field is very different than card row in hand
 void CardRow::disableRowCardInteraction()
 {
-	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 	{
 		Card* card = *it;
 		card->disableInteraction();
@@ -217,7 +216,7 @@ void CardRow::disableRowCardInteraction()
 // TODO, SPLIT OFF methods for hand into seperate class, Card Row on the field is very different than card row in hand
 void CardRow::enableRowCardInteraction()
 {
-	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 	{
 		Card* card = *it;
 		card->enableInteraction();
@@ -226,18 +225,18 @@ void CardRow::enableRowCardInteraction()
 
 void CardRow::clear()
 {
-	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 	{
 		this->removeChild(*it);
 	}
 
-	this->rowCards->clear();
+	this->rowCards.clear();
 	this->setCardPositions(Config::insertDelay);
 }
 
 void CardRow::setMouseOverCallback(std::function<void(Card*)> callback)
 {
-	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 	{
 		Card* card = *it;
 		card->setMouseOverCallback(callback);
@@ -246,7 +245,7 @@ void CardRow::setMouseOverCallback(std::function<void(Card*)> callback)
 
 void CardRow::setMouseClickCallback(std::function<void(Card*)> callback)
 {
-	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 	{
 		Card* card = *it;
 		card->setMouseClickCallback(callback);
@@ -255,7 +254,7 @@ void CardRow::setMouseClickCallback(std::function<void(Card*)> callback)
 
 void CardRow::setCardPositions(float cardRepositionDelay, float indexDelay)
 {
-	int cardCount = this->rowCards->size();
+	int cardCount = this->rowCards.size();
 	int index = 0;
 
 	float cardWidth = 225.0f * this->cardScale;
@@ -270,7 +269,7 @@ void CardRow::setCardPositions(float cardRepositionDelay, float indexDelay)
 		spacing = cardCount == 1 ? 0.0f : ((this->rowWidth - cardWidth) / (cardCount - 1));
 	}
 
-	for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 	{
 		Card* card = *it;
 		float newX = (index * spacing) - (spacing * (cardCount - 1)) / 2.0f;
@@ -331,7 +330,7 @@ int CardRow::simulateCardEffect(Card* card)
 			case CardData::CardType::Special_FLIP4:
 			case CardData::CardType::Special_INV: {
 				Card::Operation operation = Card::toOperation(card->cardData->cardType, 0);
-				for (auto it = this->rowCards->begin(); it != this->rowCards->end(); it++)
+				for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 				{
 					Card* rowCard = *it;
 					int before = rowCard->getAttack();
@@ -348,7 +347,7 @@ int CardRow::simulateCardEffect(Card* card)
 
 bool CardRow::isEmpty()
 {
-	return this->rowCards->size() <= 0;
+	return this->rowCards.size() <= 0;
 }
 
 bool CardRow::isPlayerRow()

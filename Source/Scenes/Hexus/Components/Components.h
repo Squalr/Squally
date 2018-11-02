@@ -5,6 +5,7 @@
 #include "Scenes/Hexus/Components/Banners/OpponentLastStandBanner.h"
 #include "Scenes/Hexus/Components/Banners/OpponentPassBanner.h"
 #include "Scenes/Hexus/Components/Banners/OpponentTurnBanner.h"
+#include "Scenes/Hexus/Components/Banners/PenaltyDiscardBanner.h"
 #include "Scenes/Hexus/Components/Banners/PlayerFirstBanner.h"
 #include "Scenes/Hexus/Components/Banners/PlayerLastStandBanner.h"
 #include "Scenes/Hexus/Components/Banners/PlayerPassBanner.h"

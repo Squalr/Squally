@@ -170,7 +170,7 @@ std::vector<Card*> GameState::getAllCards()
 	for (auto it = rows.begin(); it != rows.end(); it++)
 	{
 		CardRow* row = *it;
-		for (auto it = row->rowCards->begin(); it != row->rowCards->end(); it++)
+		for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
 		{
 			Card* card = *it;
 			cards.emplace_back(card);
@@ -186,7 +186,7 @@ std::vector<Card*> GameState::getEnemyCards()
 	for (auto it = rows.begin(); it != rows.end(); it++)
 	{
 		CardRow* row = *it;
-		for (auto it = row->rowCards->begin(); it != row->rowCards->end(); it++)
+		for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
 		{
 			Card* card = *it;
 			cards.emplace_back(card);
@@ -202,7 +202,7 @@ std::vector<Card*> GameState::getPlayerCards()
 	for (auto it = rows.begin(); it != rows.end(); it++)
 	{
 		CardRow* row = *it;
-		for (auto it = row->rowCards->begin(); it != row->rowCards->end(); it++)
+		for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
 		{
 			Card* card = *it;
 			cards.emplace_back(card);

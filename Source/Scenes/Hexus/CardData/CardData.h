@@ -35,6 +35,8 @@ public:
 	~CardData();
 
 	std::string getCardTypeString();
+	bool isAttackCard();
+	bool isSpecialCard();
 
 	std::string cardResourceFile;
 	std::string cardName;

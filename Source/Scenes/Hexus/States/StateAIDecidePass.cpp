@@ -33,7 +33,7 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 
 	GameState::StateType nextState = gameState->playerLastStanded ? GameState::StateType::Pass : GameState::StateType::LastStand;
 
-	if (gameState->enemyHand->rowCards->size() == 0)
+	if (gameState->enemyHand->rowCards.size() == 0)
 	{
 		stateTransition = CallFunc::create([=]()
 		{

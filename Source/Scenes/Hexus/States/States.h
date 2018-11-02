@@ -1,4 +1,5 @@
 #include "Scenes/Hexus/States/StateAIDecidePass.h"
+#include "Scenes/Hexus/States/StateAIDecidePenaltyDiscard.h"
 #include "Scenes/Hexus/States/StateAIDecideCard.h"
 #include "Scenes/Hexus/States/StateAIDecideCardReplace.h"
 #include "Scenes/Hexus/States/StateAIDecideTarget.h"
@@ -14,6 +15,7 @@
 #include "Scenes/Hexus/States/StateNeutral.h"
 #include "Scenes/Hexus/States/StateOpponentTurnStart.h"
 #include "Scenes/Hexus/States/StatePass.h"
+#include "Scenes/Hexus/States/StatePenaltyDiscard.h"
 #include "Scenes/Hexus/States/StatePlayCard.h"
 #include "Scenes/Hexus/States/StatePlayerTurnStart.h"
 #include "Scenes/Hexus/States/StateRoundEnd.h"

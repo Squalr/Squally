@@ -36,7 +36,7 @@ public:
 	void setRowWidth(float newRowWidth, float duration);
 	void clear();
 
-	std::vector<Card*>* rowCards;
+	std::vector<Card*> rowCards;
 
 private:
 	CardRow(bool isPlayerRow);
