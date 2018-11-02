@@ -26,7 +26,7 @@ void StateAIDecidePenaltyDiscard::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	while (gameState->penaltyCardsPlayed > 0 && gameState->enemyHand->getCardCount() > 0)
+	while (gameState->playerLastStanded && gameState->penaltyCardsPlayed > 0 && gameState->enemyHand->getCardCount() > 0)
 	{
 		Card* weakestCard = gameState->enemyHand->rowCards[0];
 
@@ -52,6 +52,8 @@ void StateAIDecidePenaltyDiscard::onStateEnter(GameState* gameState)
 
 		gameState->enemyHand->removeCard(weakestCard);
 		gameState->enemyDeck->insertCardTop(weakestCard, true, Config::cardDrawDelay);
+
+		gameState->penaltyCardsPlayed--;
 	}
 
 	this->runAction(Sequence::create(

@@ -31,8 +31,8 @@ void StatePenaltyDiscard::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->penaltyIconParticles->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 320.0f));
-	this->penaltyIcon->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 320.0f));
+	this->penaltyIconParticles->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 256.0f));
+	this->penaltyIcon->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 256.0f));
 }
 
 void StatePenaltyDiscard::onBeforeStateEnter(GameState* gameState)
