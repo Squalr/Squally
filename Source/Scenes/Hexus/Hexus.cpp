@@ -19,6 +19,7 @@ Hexus::Hexus()
 	this->opponentLastStandBanner = OpponentLastStandBanner::create();
 	this->opponentPassBanner = OpponentPassBanner::create();
 	this->opponentTurnBanner = OpponentTurnBanner::create();
+	this->penaltyDiscardBanner = PenaltyDiscardBanner::create();
 	this->playerFirstBanner = PlayerFirstBanner::create();
 	this->playerLastStandBanner = PlayerLastStandBanner::create();
 	this->playerPassBanner = PlayerPassBanner::create();
@@ -30,6 +31,7 @@ Hexus::Hexus()
 	this->stateAIDecideCard = StateAIDecideCard::create();
 	this->stateAIDecideCardReplace = StateAIDecideCardReplace::create();
 	this->stateAIDecidePass = StateAIDecidePass::create();
+	this->stateAIDecidePenaltyDiscard = StateAIDecidePenaltyDiscard::create();
 	this->stateAIDecideTarget = StateAIDecideTarget::create();
 	this->stateCardReplace = StateCardReplace::create();
 	this->stateCoinFlip = StateCoinFlip::create();
@@ -41,6 +43,7 @@ Hexus::Hexus()
 	this->stateNeutral = StateNeutral::create();
 	this->stateOpponentTurnStart = StateOpponentTurnStart::create();
 	this->statePass = StatePass::create();
+	this->statePenaltyDiscard = StatePenaltyDiscard::create();
 	this->stateLastStand = StateLastStand::create();
 	this->statePlayCard = StatePlayCard::create();
 	this->statePlayerTurnStart = StatePlayerTurnStart::create();
@@ -73,6 +76,7 @@ Hexus::Hexus()
 	this->addChild(this->stateAIDecideCard);
 	this->addChild(this->stateAIDecideCardReplace);
 	this->addChild(this->stateAIDecidePass);
+	this->addChild(this->stateAIDecidePenaltyDiscard);
 	this->addChild(this->stateAIDecideTarget);
 	this->addChild(this->stateCardReplace);
 	this->addChild(this->stateCoinFlip);
@@ -84,6 +88,7 @@ Hexus::Hexus()
 	this->addChild(this->stateNeutral);
 	this->addChild(this->stateOpponentTurnStart);
 	this->addChild(this->statePass);
+	this->addChild(this->statePenaltyDiscard);
 	this->addChild(this->stateLastStand);
 	this->addChild(this->statePlayCard);
 	this->addChild(this->statePlayerTurnStart);
@@ -97,6 +102,7 @@ Hexus::Hexus()
 	this->addChild(this->opponentLastStandBanner);
 	this->addChild(this->opponentPassBanner);
 	this->addChild(this->opponentTurnBanner);
+	this->addChild(this->penaltyDiscardBanner);
 	this->addChild(this->playerFirstBanner);
 	this->addChild(this->playerLastStandBanner);
 	this->addChild(this->playerPassBanner);

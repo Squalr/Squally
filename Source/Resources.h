@@ -5815,6 +5815,7 @@ public:
 	static const std::string Minigames_Hexus_Gameboard;
 	static const std::string Minigames_Hexus_LeaderEmblem;
 	static const std::string Minigames_Hexus_PenaltyCardsIcon;
+	static const std::string Minigames_Hexus_PenaltyCardsIconLarge;
 	static const std::string Minigames_Hexus_PlayerBanner;
 	static const std::string Minigames_Hexus_PlayerPassBanner;
 	static const std::string Minigames_Hexus_RemainingCardsIcon;
@@ -6225,6 +6226,7 @@ public:
 	static const std::string Particles_Hover;
 	static const std::string Particles_MindBlast;
 	static const std::string Particles_PurpleAura;
+	static const std::string Particles_PurpleAuraLarge;
 	static const std::string Particles_Rain;
 	static const std::string Particles_Rain2;
 	static const std::string Particles_Spark;

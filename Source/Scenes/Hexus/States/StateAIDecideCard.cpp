@@ -28,7 +28,7 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 
 	gameState->selectedCard = nullptr;
 
-	for (auto it = gameState->enemyHand->rowCards->begin(); it != gameState->enemyHand->rowCards->end(); it++)
+	for (auto it = gameState->enemyHand->rowCards.begin(); it != gameState->enemyHand->rowCards.end(); it++)
 	{
 		Card* card = *it;
 
@@ -119,7 +119,7 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 
 					for (auto it = enemyRows.begin(); it != enemyRows.end(); it++)
 					{
-						for (auto cardIt = (*it)->rowCards->begin(); cardIt != (*it)->rowCards->end(); cardIt++)
+						for (auto cardIt = (*it)->rowCards.begin(); cardIt != (*it)->rowCards.end(); cardIt++)
 						{
 							int attack = (*cardIt)->getAttack();
 
@@ -257,10 +257,9 @@ void StateAIDecideCard::onStateExit(GameState* gameState)
 
 int StateAIDecideCard::getBaseCardsInHandCount(GameState* gameState)
 {
-	std::vector<Card*>* handCards = gameState->enemyHand->rowCards;
 	int baseCardCount = 0;
 
-	for (auto it = handCards->begin(); it != handCards->end(); it++)
+	for (auto it = gameState->enemyHand->rowCards.begin(); it != gameState->enemyHand->rowCards.end(); it++)
 	{
 		Card* card = *it;
 
@@ -281,12 +280,12 @@ int StateAIDecideCard::getBaseCardsInHandCount(GameState* gameState)
 
 int StateAIDecideCard::getPlayerHandCount(GameState* gameState)
 {
-	return gameState->playerHand->rowCards->size();
+	return gameState->playerHand->rowCards.size();
 }
 
 int StateAIDecideCard::getEnemyHandCount(GameState* gameState)
 {
-	return gameState->enemyHand->rowCards->size();
+	return gameState->enemyHand->rowCards.size();
 }
 
 int StateAIDecideCard::getPlayerCardsOnFieldCount(GameState* gameState)
@@ -296,7 +295,7 @@ int StateAIDecideCard::getPlayerCardsOnFieldCount(GameState* gameState)
 
 	for (auto it = playerRows.begin(); it != playerRows.end(); it++)
 	{
-		cardCount += (*it)->rowCards->size();
+		cardCount += (*it)->rowCards.size();
 	}
 
 	return cardCount;
@@ -309,7 +308,7 @@ int StateAIDecideCard::getEnemyCardsOnFieldCount(GameState* gameState)
 
 	for (auto it = enemyRows.begin(); it != enemyRows.end(); it++)
 	{
-		cardCount += (*it)->rowCards->size();
+		cardCount += (*it)->rowCards.size();
 	}
 
 	return cardCount;
@@ -322,7 +321,7 @@ unsigned int StateAIDecideCard::getStrongestEnemyCardOnField(GameState* gameStat
 
 	for (auto it = enemyRows.begin(); it != enemyRows.end(); it++)
 	{
-		for (auto cardIt = (*it)->rowCards->begin(); cardIt != (*it)->rowCards->end(); cardIt++)
+		for (auto cardIt = (*it)->rowCards.begin(); cardIt != (*it)->rowCards.end(); cardIt++)
 		{
 			strongest = std::max(strongest, (*cardIt)->getAttack());
 		}
@@ -338,7 +337,7 @@ unsigned int StateAIDecideCard::getWeakestEnemyCardOnField(GameState* gameState)
 
 	for (auto it = enemyRows.begin(); it != enemyRows.end(); it++)
 	{
-		for (auto cardIt = (*it)->rowCards->begin(); cardIt != (*it)->rowCards->end(); cardIt++)
+		for (auto cardIt = (*it)->rowCards.begin(); cardIt != (*it)->rowCards.end(); cardIt++)
 		{
 			weakest = std::min(weakest, (*cardIt)->getAttack());
 		}
@@ -354,7 +353,7 @@ unsigned int StateAIDecideCard::getStrongestPlayerCardOnField(GameState* gameSta
 
 	for (auto it = playerRows.begin(); it != playerRows.end(); it++)
 	{
-		for (auto cardIt = (*it)->rowCards->begin(); cardIt != (*it)->rowCards->end(); cardIt++)
+		for (auto cardIt = (*it)->rowCards.begin(); cardIt != (*it)->rowCards.end(); cardIt++)
 		{
 			strongest = std::max(strongest, (*cardIt)->getAttack());
 		}
@@ -370,7 +369,7 @@ unsigned int StateAIDecideCard::getWeakestPlayerCardOnField(GameState* gameState
 
 	for (auto it = playerRows.begin(); it != playerRows.end(); it++)
 	{
-		for (auto cardIt = (*it)->rowCards->begin(); cardIt != (*it)->rowCards->end(); cardIt++)
+		for (auto cardIt = (*it)->rowCards.begin(); cardIt != (*it)->rowCards.end(); cardIt++)
 		{
 			weakest = std::min(weakest, (*cardIt)->getAttack());
 		}

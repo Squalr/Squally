@@ -95,7 +95,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			Card::Operation operation = Card::toOperation(gameState->selectedCard->cardData->cardType, 0);
 
-			for (auto it = gameState->selectedRow->rowCards->begin(); it != gameState->selectedRow->rowCards->end(); it++)
+			for (auto it = gameState->selectedRow->rowCards.begin(); it != gameState->selectedRow->rowCards.end(); it++)
 			{
 				Card* card = *it;
 

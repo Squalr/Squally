@@ -63,16 +63,11 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 		gameState->enemyHand->insertCard(gameState->enemyDeck->drawCard(), 0.0f);
 	}
 
-	// Reset last stand state
-	gameState->penaltyCardsPlayed = 0;
-	gameState->playerLastStanded = false;
-	gameState->enemyLastStanded = false;
-
 	this->runAction(Sequence::create(
 		DelayTime::create(1.0f),
 		CallFunc::create([=]()
 		{
-			GameState::updateState(gameState, GameState::StateType::AIDecideCardReplace);
+			GameState::updateState(gameState, GameState::StateType::AIDecidePenaltyDiscard);
 		}),
 		nullptr
 	));

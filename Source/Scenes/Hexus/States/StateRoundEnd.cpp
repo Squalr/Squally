@@ -62,7 +62,7 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 
 			for (auto it = rows.begin(); it != rows.end(); it++)
 			{
-				for (auto cardIt = (*it)->rowCards->begin(); cardIt != (*it)->rowCards->end(); cardIt++)
+				for (auto cardIt = (*it)->rowCards.begin(); cardIt != (*it)->rowCards.end(); cardIt++)
 				{
 					(*cardIt)->runAction(FadeTo::create(fadeSpeed, 0));
 				}
