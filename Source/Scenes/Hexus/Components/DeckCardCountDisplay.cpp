@@ -12,16 +12,17 @@ DeckCardCountDisplay* DeckCardCountDisplay::create()
 DeckCardCountDisplay::DeckCardCountDisplay()
 {
 	this->playerDeckCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
+	this->playerDeckCardCountText = Label::create("", Localization::getCodingFont(), 32.0f);
+	this->enemyDeckCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
+	this->enemyDeckCardCountText = Label::create("", Localization::getCodingFont(), 32.0f);
+
 	this->playerDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->playerDeckCardCountFrame->setContentSize(Size(48.0f, 32.0f));
-	this->playerDeckCardCountText = Label::create("", Localization::getCodingFont(), 32.0f);
 	this->playerDeckCardCountText->setAlignment(TextHAlignment::LEFT);
 	this->playerDeckCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->enemyDeckCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->enemyDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->enemyDeckCardCountFrame->setContentSize(Size(48.0f, 32.0f));
-	this->enemyDeckCardCountText = Label::create("", Localization::getCodingFont(), 32.0f);
 	this->enemyDeckCardCountText->setAlignment(TextHAlignment::LEFT);
 	this->enemyDeckCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
 

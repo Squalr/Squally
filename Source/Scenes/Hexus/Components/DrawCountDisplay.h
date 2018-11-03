@@ -24,9 +24,16 @@ private:
 	~DrawCountDisplay();
 
 	void initializePositions() override;
+	void onDrawCountDisplayMouseOver();
+	void onDrawCountDisplayMouseOut();
+	void enableDrawCountDisplayInteraction();
+	void disableDrawCountDisplayInteraction();
 
-	Sprite* drawCountSprite;
+	MenuSprite* drawCountSprite;
 	Label* drawCountLabel;
+
+	LayerColor* deckDrawCountMouseOverPanel;
+	Label* deckDrawCountCardMouseOverLabel;
 
 	Sprite* enemyDrawCountSprite;
 	Label* enemyDrawCountLabel;

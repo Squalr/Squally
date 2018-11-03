@@ -19,7 +19,7 @@ BannerBase::BannerBase()
 
 	this->statusBanner->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->statusLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
-	this->statusLabel->enableOutline(Color4B::BLACK, 2);
+	this->statusLabel->enableOutline(Color4B::BLACK, 4);
 	this->statusBanner->setOpacity(0);
 	this->statusLabel->setOpacity(0);
 	this->bannerChildrenNode->setOpacity(0);
