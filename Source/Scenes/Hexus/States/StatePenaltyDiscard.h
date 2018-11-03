@@ -28,7 +28,4 @@ private:
 	void initializePositions() override;
 	void initializeCallbacks(GameState* gameState);
 	void discardCard(Card* cardToDiscard, GameState* gameState);
-
-	Sprite* penaltyIcon;
-	ParticleSystemQuad* penaltyIconParticles;
 };

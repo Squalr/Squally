@@ -30,6 +30,11 @@ void StateRoundStart::onStateEnter(GameState* gameState)
 	gameState->playerPassed = false;
 	gameState->enemyPassed = false;
 
+	// Clear last stand state
+	gameState->penaltyCardsPlayed = 0;
+	gameState->playerLastStanded = false;
+	gameState->enemyLastStanded = false;
+
 	this->runAction(Sequence::create(
 		DelayTime::create(Config::bannerDisplayDuration),
 		CallFunc::create([=]()

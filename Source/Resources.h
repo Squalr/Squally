@@ -5801,6 +5801,8 @@ public:
 	static const std::string Minigames_Hexus_CardBackLight;
 	static const std::string Minigames_Hexus_CardBackShadow;
 	static const std::string Minigames_Hexus_CardBackWater;
+	static const std::string Minigames_Hexus_CardDrawIcon;
+	static const std::string Minigames_Hexus_CardDrawIconSmall;
 	static const std::string Minigames_Hexus_CardFrontCoverBin;
 	static const std::string Minigames_Hexus_CardFrontCoverDec;
 	static const std::string Minigames_Hexus_CardFrontCoverHex;
@@ -6210,6 +6212,7 @@ public:
 	static const std::string Particles_Aura;
 	static const std::string Particles_BeamMeUp;
 	static const std::string Particles_BlueAura;
+	static const std::string Particles_BlueAuraLarge;
 	static const std::string Particles_BlueNether;
 	static const std::string Particles_BluePlasma;
 	static const std::string Particles_BlueStarCircle;

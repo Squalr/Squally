@@ -20,13 +20,14 @@ StateTurnEnd::~StateTurnEnd()
 void StateTurnEnd::onBeforeStateEnter(GameState* gameState)
 {
 	StateBase::onBeforeStateEnter(gameState);
+
+	gameState->turnNumber++;
 }
 
 void StateTurnEnd::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	gameState->turnNumber++;
 	gameState->clearInteraction();
 
 	float endTurnDelay = Config::endTurnDelay;

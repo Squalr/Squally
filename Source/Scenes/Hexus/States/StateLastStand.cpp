@@ -100,13 +100,13 @@ void StateLastStand::onLastStandClick(MenuSprite* menuSprite, GameState* gameSta
 	GameState::updateState(gameState, GameState::StateType::LastStand);
 }
 
-void StateLastStand::onLastStandMouseOver(MenuSprite* menuSprite)
+void StateLastStand::onLastStandMouseOver()
 {
 	this->lastStandPanel->setOpacity(196);
 	this->lastStandLabel->setOpacity(255);
 }
 
-void StateLastStand::onLastStandMouseOut(MenuSprite* menuSprite)
+void StateLastStand::onLastStandMouseOut()
 {
 	this->lastStandPanel->setOpacity(0);
 	this->lastStandLabel->setOpacity(0);
@@ -175,22 +175,29 @@ void StateLastStand::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
+	// Sanity check -- Prevent last stand if already done
+	if (gameState->playerLastStanded || gameState->enemyLastStanded)
+	{
+		gameState->updateState(gameState, GameState::StateType::Pass);
+		return;
+	}
+
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
-			gameState->lastStandBonus = std::max(0, gameState->getEnemyTotal() - gameState->getPlayerTotal());
+			gameState->lastStandBonus = 0; // std::max(0, gameState->getEnemyTotal() - gameState->getPlayerTotal());
 			gameState->playerLastStanded = true;
 
-			this->lastStandBonusLabel->setString("+" + std::to_string(gameState->lastStandBonus));
+			//this->lastStandBonusLabel->setString("+" + std::to_string(gameState->lastStandBonus));
 
 			// Start particle effect on activation
 			this->lastStandParticles->setVisible(true);
 			break;
 		case GameState::Turn::Enemy:
-			gameState->lastStandBonus = std::max(0, gameState->getPlayerTotal() - gameState->getEnemyTotal());
+			gameState->lastStandBonus = 0; // std::max(0, gameState->getPlayerTotal() - gameState->getEnemyTotal());
 			gameState->enemyLastStanded = true;
 
-			this->enemyLastStandBonusLabel->setString("+" + std::to_string(gameState->lastStandBonus));
+			//this->enemyLastStandBonusLabel->setString("+" + std::to_string(gameState->lastStandBonus));
 
 			this->enemyLastStandSprite->setVisible(true);
 			this->enemyLastStandParticles->setVisible(true);
@@ -223,8 +230,8 @@ void StateLastStand::enableLastStandButton(GameState* gameState)
 {
 	this->lastStandParticles->setVisible(false);
 	this->lastStandButton->setClickCallback(CC_CALLBACK_1(StateLastStand::onLastStandClick, this, gameState));
-	this->lastStandButton->setMouseOverCallback(CC_CALLBACK_1(StateLastStand::onLastStandMouseOver, this));
-	this->lastStandButton->setMouseOutCallback(CC_CALLBACK_1(StateLastStand::onLastStandMouseOut, this));
+	this->lastStandButton->setMouseOverCallback(CC_CALLBACK_0(StateLastStand::onLastStandMouseOver, this));
+	this->lastStandButton->setMouseOutCallback(CC_CALLBACK_0(StateLastStand::onLastStandMouseOut, this));
 	this->lastStandButton->enableInteraction();
 }
 
@@ -234,6 +241,5 @@ void StateLastStand::disableLastStandButton()
 	this->lastStandButton->setClickCallback(nullptr);
 	this->lastStandButton->setMouseOverCallback(nullptr);
 	this->lastStandButton->setMouseOutCallback(nullptr);
-	this->lastStandPanel->setOpacity(0);
-	this->lastStandLabel->setOpacity(0);
+	this->onLastStandMouseOut();
 }

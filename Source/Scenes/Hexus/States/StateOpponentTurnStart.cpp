@@ -20,6 +20,8 @@ StateOpponentTurnStart::~StateOpponentTurnStart()
 void StateOpponentTurnStart::onBeforeStateEnter(GameState* gameState)
 {
 	StateBase::onBeforeStateEnter(gameState);
+
+	gameState->enemyCardsDrawnNextRound += Config::cardBonusPerTurn;
 }
 
 void StateOpponentTurnStart::onStateEnter(GameState* gameState)

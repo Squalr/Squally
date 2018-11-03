@@ -58,6 +58,13 @@ void StatePass::onStateChange(GameState* gameState)
 {
 	StateBase::onStateChange(gameState);
 
+	// Sanity check -- Prevent passing if we haven't activated last stand yet
+	if (!gameState->playerLastStanded && !gameState->enemyLastStanded)
+	{
+		gameState->updateState(gameState, GameState::StateType::LastStand);
+		return;
+	}
+
 	// Keep hidden if enemy has not triggered a last stand
 	if (!gameState->enemyLastStanded)
 	{

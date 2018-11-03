@@ -54,6 +54,7 @@ Hexus::Hexus()
 	this->deckCardCountDisplay = DeckCardCountDisplay::create();
 	this->handCardCountDisplay = HandCardCountDisplay::create();
 	this->penaltyCardDisplay = PenaltyCardDisplay::create();
+	this->drawCountDisplay = DrawCountDisplay::create();
 	this->remainingCardDisplay = RemainingCardDisplay::create();
 	this->lossesDisplay = LossesDisplay::create();
 	this->passIndicators = PassIndicators::create();
@@ -70,6 +71,7 @@ Hexus::Hexus()
 	this->addChild(this->deckCardCountDisplay);
 	this->addChild(this->handCardCountDisplay);
 	this->addChild(this->remainingCardDisplay);
+	this->addChild(this->drawCountDisplay);
 	this->addChild(this->penaltyCardDisplay);
 	this->addChild(this->rowTotals);
 	this->addChild(this->scoreTotal);

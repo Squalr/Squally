@@ -70,6 +70,9 @@ void PenaltyCardDisplay::onStateChange(GameState* gameState)
 {
 	ComponentBase::onStateChange(gameState);
 
+	// Disabled
+	return;
+
 	this->penaltyCardLabel->setString(std::to_string(gameState->penaltyCardsPlayed));
 	this->enemyPenaltyCardLabel->setString(std::to_string(gameState->penaltyCardsPlayed));
 
