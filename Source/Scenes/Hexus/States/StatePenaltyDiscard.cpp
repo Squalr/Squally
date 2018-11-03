@@ -11,14 +11,6 @@ StatePenaltyDiscard* StatePenaltyDiscard::create()
 
 StatePenaltyDiscard::StatePenaltyDiscard() : StateBase(GameState::StateType::PenaltyDiscard)
 {
-	this->penaltyIcon = Sprite::create(Resources::Minigames_Hexus_PenaltyCardsIconLarge);
-	this->penaltyIconParticles = ParticleSystemQuad::create(Resources::Particles_PurpleAuraLarge);
-
-	this->penaltyIcon->setOpacity(0);
-	this->penaltyIconParticles->setVisible(false);
-
-	this->addChild(this->penaltyIconParticles);
-	this->addChild(this->penaltyIcon);
 }
 
 StatePenaltyDiscard::~StatePenaltyDiscard()
@@ -30,9 +22,6 @@ void StatePenaltyDiscard::initializePositions()
 	StateBase::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	this->penaltyIconParticles->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 256.0f));
-	this->penaltyIcon->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 256.0f));
 }
 
 void StatePenaltyDiscard::onBeforeStateEnter(GameState* gameState)
@@ -46,10 +35,6 @@ void StatePenaltyDiscard::onStateEnter(GameState* gameState)
 
 	if (gameState->enemyLastStanded && gameState->penaltyCardsPlayed > 0 && gameState->playerHand->getCardCount() > 0)
 	{
-		this->penaltyIconParticles->start();
-		this->penaltyIconParticles->setVisible(true);
-		this->penaltyIcon->runAction(FadeTo::create(0.25f, 255));
-
 		gameState->playerHand->enableRowCardInteraction();
 
 		Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -102,10 +87,6 @@ void StatePenaltyDiscard::onStateReload(GameState* gameState)
 void StatePenaltyDiscard::onStateExit(GameState* gameState)
 {
 	StateBase::onStateExit(gameState);
-
-	this->penaltyIconParticles->stop();
-	this->penaltyIconParticles->setVisible(false);
-	this->penaltyIcon->runAction(FadeTo::create(0.25f, 0));
 
 	// Restore hand to proper position
 	Size visibleSize = Director::getInstance()->getVisibleSize();

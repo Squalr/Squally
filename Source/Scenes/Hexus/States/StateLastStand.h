@@ -28,8 +28,8 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void onLastStandClick(MenuSprite* menuSprite, GameState* gameState);
-	void onLastStandMouseOver(MenuSprite* menuSprite);
-	void onLastStandMouseOut(MenuSprite* menuSprite);
+	void onLastStandMouseOver();
+	void onLastStandMouseOut();
 	void enableLastStandButton(GameState* gameState);
 	void disableLastStandButton();
 

@@ -19,13 +19,14 @@ BannerBase::BannerBase()
 
 	this->statusBanner->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->statusLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->statusLabel->enableOutline(Color4B::BLACK, 2);
 	this->statusBanner->setOpacity(0);
 	this->statusLabel->setOpacity(0);
 	this->bannerChildrenNode->setOpacity(0);
 
 	this->addChild(this->statusBanner);
-	this->addChild(this->statusLabel);
 	this->addChild(this->bannerChildrenNode);
+	this->addChild(this->statusLabel);
 }
 
 BannerBase::~BannerBase()

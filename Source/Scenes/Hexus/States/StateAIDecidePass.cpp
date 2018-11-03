@@ -50,8 +50,17 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 			GameState::updateState(gameState, nextState);
 		});
 	}
-	// Pass or last stand if ahead, but not if the opponent can lose the game from this round
+	// Pass or last stand if the player is significantly ahead, but not if the opponent can lose the game from this round
 	else if (gameState->enemyLosses < 1 && gameState->getPlayerTotal() > gameState->getEnemyTotal() + passIfDiffAbove)
+	{
+		stateTransition = CallFunc::create([=]()
+		{
+			SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
+			GameState::updateState(gameState, nextState);
+		});
+	}
+	// Pass or last stand if the opponent is significantly ahead, but not if the opponent can lose the game from this round
+	else if (gameState->enemyLosses < 1 && gameState->getEnemyTotal() > gameState->getPlayerTotal() + passIfDiffAbove)
 	{
 		stateTransition = CallFunc::create([=]()
 		{

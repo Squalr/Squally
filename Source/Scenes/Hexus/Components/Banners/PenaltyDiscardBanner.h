@@ -23,4 +23,7 @@ private:
 	~PenaltyDiscardBanner();
 
 	void initializePositions() override;
+
+	Sprite* penaltyIcon;
+	ParticleSystemQuad* penaltyIconParticles;
 };

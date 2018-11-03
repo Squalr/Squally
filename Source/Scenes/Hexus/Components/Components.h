@@ -15,6 +15,7 @@
 #include "Scenes/Hexus/Components/CardPreview.h"
 #include "Scenes/Hexus/Components/DebugDisplay.h"
 #include "Scenes/Hexus/Components/DeckCardCountDisplay.h"
+#include "Scenes/Hexus/Components/DrawCountDisplay.h"
 #include "Scenes/Hexus/Components/HandCardCountDisplay.h"
 #include "Scenes/Hexus/Components/LossesDisplay.h"
 #include "Scenes/Hexus/Components/PassIndicators.h"

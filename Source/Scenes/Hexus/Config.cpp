@@ -4,6 +4,7 @@ const int Config::initialCardReplacements = 3;
 const int Config::midgameCardReplacements = 1;
 const int Config::startingCardAmount = 8;
 const int Config::playableCardsPerTurn = 2;
+const int Config::cardBonusPerTurn = 1;
 const float Config::endTurnDelay = 0.25f;
 const float Config::betweenTurnDelay = 0.25f;
 const float Config::enemyDrawDelay = 0.25f;

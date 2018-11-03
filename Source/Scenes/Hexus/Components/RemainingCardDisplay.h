@@ -24,9 +24,16 @@ private:
 	~RemainingCardDisplay();
 
 	void initializePositions() override;
+	void onRemaningCardDisplayMouseOver();
+	void onRemaningCardDisplayMouseOut();
+	void enableCardDisplayInteraction();
+	void disableCardDisplayInteraction();
 
-	Sprite* remainingCardSprite;
+	MenuSprite* remainingCardSprite;
 	Label* remainingCardLabel;
+
+	LayerColor* remainingCardMouseOverPanel;
+	Label* remainingCardMouseOverLabel;
 
 	Sprite* enemyRemainingCardSprite;
 	Label* enemyRemainingCardLabel;

@@ -83,6 +83,8 @@ public:
 	int cardReplaceCount;
 	int roundNumber;
 	int turnNumber;
+	int playerCardsDrawnNextRound;
+	int enemyCardsDrawnNextRound;
 	int lastStandBonus;
 	int penaltyCardsPlayed;
 	int playableCardsThisTurn;

@@ -13,6 +13,7 @@ public:
 	static const int initialCardReplacements;
 	static const int midgameCardReplacements;
 	static const int playableCardsPerTurn;
+	static const int cardBonusPerTurn;
 	static const float endTurnDelay;
 	static const float betweenTurnDelay;
 	static const float enemyDrawDelay;

@@ -11,10 +11,21 @@ RemainingCardDisplay* RemainingCardDisplay::create()
 
 RemainingCardDisplay::RemainingCardDisplay()
 {
-	this->remainingCardSprite = Sprite::create(Resources::Minigames_Hexus_RemainingCardsIcon);
+	this->remainingCardSprite = MenuSprite::create(Resources::Minigames_Hexus_RemainingCardsIcon, Resources::Minigames_Hexus_RemainingCardsIcon, Resources::Minigames_Hexus_RemainingCardsIcon);
 	this->remainingCardLabel = Label::create("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 	this->enemyRemainingCardSprite = Sprite::create(Resources::Minigames_Hexus_RemainingCardsIcon);
 	this->enemyRemainingCardLabel = Label::create("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+
+	this->remainingCardMouseOverPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
+	this->remainingCardMouseOverLabel = Label::create(
+		Localization::resolveString("The number of cards that can be played this turn"),
+		Localization::getMainFont(),
+		Localization::getFontSizeP(Localization::getMainFont())
+	);
+
+	this->remainingCardMouseOverPanel->setOpacity(0);
+	this->remainingCardMouseOverLabel->enableOutline(Color4B::BLACK, 4);
+	this->remainingCardMouseOverLabel->setOpacity(0);
 
 	this->remainingCardLabel->enableOutline(Color4B::BLACK, 4);
 	this->remainingCardSprite->setOpacity(0);
@@ -37,10 +48,43 @@ void RemainingCardDisplay::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->remainingCardSprite->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f - Config::deckOffsetY + 144.0f);
+	const float spriteOffsetY = -144.0f;
+
+	this->remainingCardSprite->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY);
 	this->remainingCardLabel->setPosition(Vec2(this->remainingCardSprite->getContentSize().width / 2.0f + 16.0f, 16.0f));
-	this->enemyRemainingCardSprite->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f + Config::deckOffsetY - 144.0f);
+	this->enemyRemainingCardSprite->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f + Config::deckOffsetY - spriteOffsetY);
 	this->enemyRemainingCardLabel->setPosition(Vec2(this->enemyRemainingCardSprite->getContentSize().width / 2.0f + 16.0f, 16.0f));
+
+	this->remainingCardMouseOverPanel->setPosition(
+		visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX - this->remainingCardMouseOverPanel->getContentSize().width / 2.0f,
+		visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY - this->remainingCardMouseOverPanel->getContentSize().height / 2.0 + 64.0f
+	);
+	this->remainingCardMouseOverLabel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f - Config::deckOffsetY - spriteOffsetY + 64.0f);
+}
+
+void RemainingCardDisplay::onRemaningCardDisplayMouseOver()
+{
+	this->remainingCardMouseOverPanel->setOpacity(196);
+	this->remainingCardMouseOverLabel->setOpacity(255);
+}
+
+void RemainingCardDisplay::onRemaningCardDisplayMouseOut()
+{
+	this->remainingCardMouseOverPanel->setOpacity(0);
+	this->remainingCardMouseOverLabel->setOpacity(0);
+}
+
+void RemainingCardDisplay::enableCardDisplayInteraction()
+{
+	this->remainingCardSprite->setMouseOverCallback(CC_CALLBACK_0(RemainingCardDisplay::onRemaningCardDisplayMouseOver, this));
+	this->remainingCardSprite->setMouseOutCallback(CC_CALLBACK_0(RemainingCardDisplay::onRemaningCardDisplayMouseOut, this));
+}
+
+void RemainingCardDisplay::disableCardDisplayInteraction()
+{
+	this->remainingCardSprite->setMouseOverCallback(nullptr);
+	this->remainingCardSprite->setMouseOutCallback(nullptr);
+	this->onRemaningCardDisplayMouseOut();
 }
 
 void RemainingCardDisplay::onBeforeStateChange(GameState* gameState)
@@ -52,32 +96,48 @@ void RemainingCardDisplay::onStateChange(GameState* gameState)
 {
 	ComponentBase::onStateChange(gameState);
 
-	this->remainingCardLabel->setString(std::to_string(gameState->playableCardsThisTurn));
-	this->enemyRemainingCardLabel->setString(std::to_string(gameState->playableCardsThisTurn));
+	if (gameState->enemyLastStanded || gameState->playerLastStanded)
+	{
+		const char* infinitySymbol = "\x22\x1E";
+
+		this->remainingCardLabel->setString(infinitySymbol);
+		this->enemyRemainingCardLabel->setString(infinitySymbol);
+	}
+	else
+	{
+		this->remainingCardLabel->setString(std::to_string(gameState->playableCardsThisTurn));
+		this->enemyRemainingCardLabel->setString(std::to_string(gameState->playableCardsThisTurn));
+	}
+
+	switch (gameState->turn)
+	{
+		case GameState::Turn::Player:
+			this->enemyRemainingCardLabel->setString(std::to_string(0));
+			break;
+		case GameState::Turn::Enemy:
+			this->remainingCardLabel->setString(std::to_string(0));
+			break;
+		default:
+			break;
+	}
 
 	switch (gameState->stateType)
 	{
 		case GameState::PlayerTurnStart:
 		{
-			if (!gameState->enemyLastStanded)
-			{
-				this->remainingCardSprite->runAction(FadeTo::create(0.25f, 255));
-			}
+			this->remainingCardSprite->runAction(FadeTo::create(0.25f, 255));
 
 			break;
 		}
 		case GameState::OpponentTurnStart:
 		{
-			if (!gameState->playerLastStanded)
-			{
-				this->enemyRemainingCardSprite->runAction(FadeTo::create(0.25f, 255));
-			}
+			this->enemyRemainingCardSprite->runAction(FadeTo::create(0.25f, 255));
 
 			break;
 		}
 		case GameState::TurnEnd:
 		{
-			this->remainingCardSprite->runAction(FadeTo::create(0.25f, 0));
+			//this->remainingCardSprite->runAction(FadeTo::create(0.25f, 0));
 			this->enemyRemainingCardSprite->runAction(FadeTo::create(0.25f, 0));
 			break;
 		}

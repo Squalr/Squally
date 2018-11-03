@@ -80,6 +80,7 @@ private:
 	HandCardCountDisplay* handCardCountDisplay;
 	PenaltyCardDisplay* penaltyCardDisplay;
 	RemainingCardDisplay* remainingCardDisplay;
+	DrawCountDisplay* drawCountDisplay;
 	LossesDisplay* lossesDisplay;
 	PassIndicators* passIndicators;
 	RowTotals* rowTotals;

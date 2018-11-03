@@ -31,8 +31,9 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 	// Draw starting cards
 	std::vector<Card*> drawnCards = std::vector<Card*>();
 	int playerPenalty = gameState->enemyLastStanded ? gameState->penaltyCardsPlayed : 0;
+	int playerDrawCount = gameState->roundNumber == 0 ? Config::startingCardAmount : gameState->playerCardsDrawnNextRound; ////(gameState->turnNumber / 2 * Config::playableCardsPerTurn - playerPenalty);
 
-	while (gameState->playerHand->getCardCount() + drawnCards.size() < Config::startingCardAmount - playerPenalty)
+	for (int index = 0; index < playerDrawCount; index++)
 	{
 		if (!gameState->playerDeck->hasCards())
 		{
@@ -52,8 +53,9 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 	));
 
 	int enemyPenalty = gameState->playerLastStanded ? gameState->penaltyCardsPlayed : 0;
+	int enemyDrawCount = gameState->roundNumber == 0 ? Config::startingCardAmount : gameState->enemyCardsDrawnNextRound; ////(gameState->turnNumber / 2 * Config::playableCardsPerTurn - enemyPenalty);
 
-	while (gameState->enemyHand->getCardCount() < Config::startingCardAmount - enemyPenalty)
+	for (int index = 0; index < enemyDrawCount; index++)
 	{
 		if (!gameState->enemyDeck->hasCards())
 		{
@@ -63,11 +65,14 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 		gameState->enemyHand->insertCard(gameState->enemyDeck->drawCard(), 0.0f);
 	}
 
+	gameState->playerCardsDrawnNextRound = 0;
+	gameState->enemyCardsDrawnNextRound = 0,
+
 	this->runAction(Sequence::create(
 		DelayTime::create(1.0f),
 		CallFunc::create([=]()
 		{
-			GameState::updateState(gameState, GameState::StateType::AIDecidePenaltyDiscard);
+			GameState::updateState(gameState, GameState::StateType::AIDecideCardReplace);
 		}),
 		nullptr
 	));

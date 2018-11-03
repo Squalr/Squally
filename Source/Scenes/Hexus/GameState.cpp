@@ -28,6 +28,8 @@ GameState::GameState()
 	lastStandBonus(0),
 	penaltyCardsPlayed(0),
 	playableCardsThisTurn(0),
+	playerCardsDrawnNextRound(0),
+	enemyCardsDrawnNextRound(0),
 	roundNumber(0),
 	selectedCard(nullptr),
 	selectedRow(nullptr),
