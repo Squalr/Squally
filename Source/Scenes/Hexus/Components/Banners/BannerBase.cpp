@@ -48,9 +48,9 @@ void BannerBase::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void BannerBase::onStateChange(GameState* gameState)
+void BannerBase::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onStateChange(gameState);
+	ComponentBase::onAnyStateChange(gameState);
 }
 
 void BannerBase::setBannerText(std::string text)

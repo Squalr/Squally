@@ -39,9 +39,9 @@ void OpponentPassBanner::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void OpponentPassBanner::onStateChange(GameState* gameState)
+void OpponentPassBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onStateChange(gameState);
+	BannerBase::onAnyStateChange(gameState);
 
 	if (gameState->stateType == GameState::Pass && gameState->turn == GameState::Turn::Enemy)
 	{

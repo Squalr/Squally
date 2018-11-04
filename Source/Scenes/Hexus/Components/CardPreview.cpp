@@ -35,9 +35,9 @@ void CardPreview::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void CardPreview::onStateChange(GameState* gameState)
+void CardPreview::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onStateChange(gameState);
+	ComponentBase::onAnyStateChange(gameState);
 
 	switch (gameState->stateType)
 	{

@@ -80,9 +80,9 @@ void Avatars::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void Avatars::onStateChange(GameState* gameState)
+void Avatars::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onStateChange(gameState);
+	ComponentBase::onAnyStateChange(gameState);
 }
 
 void Avatars::setAvatars(GameState* gameState)

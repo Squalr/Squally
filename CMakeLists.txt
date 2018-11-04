@@ -481,7 +481,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/HandCardCountDisplay.cpp
 	Source/Scenes/Hexus/Components/LossesDisplay.cpp
 	Source/Scenes/Hexus/Components/PassIndicators.cpp
-	Source/Scenes/Hexus/Components/PenaltyCardDisplay.cpp
 	Source/Scenes/Hexus/Components/RemainingCardDisplay.cpp
 	Source/Scenes/Hexus/Components/RowTotals.cpp
 	Source/Scenes/Hexus/Components/ScoreTotal.cpp
@@ -492,7 +491,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/Banners/OpponentLastStandBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/OpponentPassBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/OpponentTurnBanner.cpp
-	Source/Scenes/Hexus/Components/Banners/PenaltyDiscardBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/PlayerFirstBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/PlayerLastStandBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/PlayerPassBanner.cpp
@@ -699,7 +697,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/States/StateAIDecideCard.cpp
 	Source/Scenes/Hexus/States/StateAIDecideCardReplace.cpp
 	Source/Scenes/Hexus/States/StateAIDecidePass.cpp
-	Source/Scenes/Hexus/States/StateAIDecidePenaltyDiscard.cpp
 	Source/Scenes/Hexus/States/StateAIDecideTarget.cpp
 	Source/Scenes/Hexus/States/StateBase.cpp
 	Source/Scenes/Hexus/States/StateCardReplace.cpp
@@ -709,11 +706,9 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/States/StateDrawInitial.cpp
 	Source/Scenes/Hexus/States/StateGameEnd.cpp
 	Source/Scenes/Hexus/States/StateGameStart.cpp
-	Source/Scenes/Hexus/States/StateLastStand.cpp
 	Source/Scenes/Hexus/States/StateNeutral.cpp
 	Source/Scenes/Hexus/States/StateOpponentTurnStart.cpp
 	Source/Scenes/Hexus/States/StatePass.cpp
-	Source/Scenes/Hexus/States/StatePenaltyDiscard.cpp
 	Source/Scenes/Hexus/States/StatePlayCard.cpp
 	Source/Scenes/Hexus/States/StatePlayerTurnStart.cpp
 	Source/Scenes/Hexus/States/StateRoundEnd.cpp
@@ -1223,7 +1218,6 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/HandCardCountDisplay.h
 	Source/Scenes/Hexus/Components/LossesDisplay.h
 	Source/Scenes/Hexus/Components/PassIndicators.h
-	Source/Scenes/Hexus/Components/PenaltyCardDisplay.h
 	Source/Scenes/Hexus/Components/RemainingCardDisplay.h
 	Source/Scenes/Hexus/Components/RowTotals.h
 	Source/Scenes/Hexus/Components/ScoreTotal.h
@@ -1234,7 +1228,6 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/Banners/OpponentLastStandBanner.h
 	Source/Scenes/Hexus/Components/Banners/OpponentPassBanner.h
 	Source/Scenes/Hexus/Components/Banners/OpponentTurnBanner.h
-	Source/Scenes/Hexus/Components/Banners/PenaltyDiscardBanner.h
 	Source/Scenes/Hexus/Components/Banners/PlayerFirstBanner.h
 	Source/Scenes/Hexus/Components/Banners/PlayerLastStandBanner.h
 	Source/Scenes/Hexus/Components/Banners/PlayerPassBanner.h
@@ -1452,7 +1445,6 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/States/StateAIDecideCard.h
 	Source/Scenes/Hexus/States/StateAIDecideCardReplace.h
 	Source/Scenes/Hexus/States/StateAIDecidePass.h
-	Source/Scenes/Hexus/States/StateAIDecidePenaltyDiscard.h
 	Source/Scenes/Hexus/States/StateAIDecideTarget.h
 	Source/Scenes/Hexus/States/StateBase.h
 	Source/Scenes/Hexus/States/StateCardReplace.h
@@ -1462,11 +1454,9 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/States/StateDrawInitial.h
 	Source/Scenes/Hexus/States/StateGameEnd.h
 	Source/Scenes/Hexus/States/StateGameStart.h
-	Source/Scenes/Hexus/States/StateLastStand.h
 	Source/Scenes/Hexus/States/StateNeutral.h
 	Source/Scenes/Hexus/States/StateOpponentTurnStart.h
 	Source/Scenes/Hexus/States/StatePass.h
-	Source/Scenes/Hexus/States/StatePenaltyDiscard.h
 	Source/Scenes/Hexus/States/StatePlayCard.h
 	Source/Scenes/Hexus/States/StatePlayerTurnStart.h
 	Source/Scenes/Hexus/States/StateRoundEnd.h

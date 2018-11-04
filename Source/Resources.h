@@ -5801,7 +5801,6 @@ public:
 	static const std::string Minigames_Hexus_CardBackLight;
 	static const std::string Minigames_Hexus_CardBackShadow;
 	static const std::string Minigames_Hexus_CardBackWater;
-	static const std::string Minigames_Hexus_CardDrawIcon;
 	static const std::string Minigames_Hexus_CardDrawIconSmall;
 	static const std::string Minigames_Hexus_CardFrontCoverBin;
 	static const std::string Minigames_Hexus_CardFrontCoverDec;
@@ -5809,15 +5808,16 @@ public:
 	static const std::string Minigames_Hexus_CardFrontCoverSpecial;
 	static const std::string Minigames_Hexus_CardIcons;
 	static const std::string Minigames_Hexus_CardPad;
+	static const std::string Minigames_Hexus_CardReplaceIcon;
+	static const std::string Minigames_Hexus_CardReplaceIconLarge;
 	static const std::string Minigames_Hexus_CardSelect;
 	static const std::string Minigames_Hexus_CardUnselected;
 	static const std::string Minigames_Hexus_EnemyBanner;
 	static const std::string Minigames_Hexus_EnemyPassBanner;
 	static const std::string Minigames_Hexus_Flags;
+	static const std::string Minigames_Hexus_FlagsSelected;
 	static const std::string Minigames_Hexus_Gameboard;
 	static const std::string Minigames_Hexus_LeaderEmblem;
-	static const std::string Minigames_Hexus_PenaltyCardsIcon;
-	static const std::string Minigames_Hexus_PenaltyCardsIconLarge;
 	static const std::string Minigames_Hexus_PlayerBanner;
 	static const std::string Minigames_Hexus_PlayerPassBanner;
 	static const std::string Minigames_Hexus_RemainingCardsIcon;
@@ -5829,6 +5829,8 @@ public:
 	static const std::string Minigames_Hexus_ShieldButtonSelected;
 	static const std::string Minigames_Hexus_Skull;
 	static const std::string Minigames_Hexus_Socket;
+	static const std::string Minigames_Hexus_Victory;
+	static const std::string Minigames_Hexus_VictorySelected;
 	static const std::string Minigames_Hexus_Binary_0;
 	static const std::string Minigames_Hexus_Binary_1;
 	static const std::string Minigames_Hexus_Binary_10;

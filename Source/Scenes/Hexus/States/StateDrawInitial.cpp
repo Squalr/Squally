@@ -30,8 +30,7 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 
 	// Draw starting cards
 	std::vector<Card*> drawnCards = std::vector<Card*>();
-	int playerPenalty = gameState->enemyLastStanded ? gameState->penaltyCardsPlayed : 0;
-	int playerDrawCount = gameState->roundNumber == 0 ? Config::startingCardAmount : gameState->playerCardsDrawnNextRound; ////(gameState->turnNumber / 2 * Config::playableCardsPerTurn - playerPenalty);
+	int playerDrawCount = gameState->roundNumber == 0 ? Config::startingCardAmount : gameState->playerCardsDrawnNextRound;
 
 	for (int index = 0; index < playerDrawCount; index++)
 	{
@@ -52,8 +51,7 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 		nullptr
 	));
 
-	int enemyPenalty = gameState->playerLastStanded ? gameState->penaltyCardsPlayed : 0;
-	int enemyDrawCount = gameState->roundNumber == 0 ? Config::startingCardAmount : gameState->enemyCardsDrawnNextRound; ////(gameState->turnNumber / 2 * Config::playableCardsPerTurn - enemyPenalty);
+	int enemyDrawCount = gameState->roundNumber == 0 ? Config::startingCardAmount : gameState->enemyCardsDrawnNextRound;
 
 	for (int index = 0; index < enemyDrawCount; index++)
 	{

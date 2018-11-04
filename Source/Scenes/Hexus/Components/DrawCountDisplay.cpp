@@ -99,9 +99,9 @@ void DrawCountDisplay::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void DrawCountDisplay::onStateChange(GameState* gameState)
+void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onStateChange(gameState);
+	ComponentBase::onAnyStateChange(gameState);
 
 	// Hide on last round -- there will be no next turn, thus draw count is irrelevent
 	if (gameState->playerLosses >= 1 && gameState->enemyLosses >= 1)
@@ -137,7 +137,7 @@ void DrawCountDisplay::onStateChange(GameState* gameState)
 	{
 		case GameState::PlayerTurnStart:
 		{
-			if (!gameState->enemyLastStanded)
+			if (!gameState->enemyPassed)
 			{
 				this->drawCountSprite->runAction(FadeTo::create(0.25f, 255));
 			}
@@ -146,7 +146,7 @@ void DrawCountDisplay::onStateChange(GameState* gameState)
 		}
 		case GameState::OpponentTurnStart:
 		{
-			if (!gameState->playerLastStanded)
+			if (!gameState->playerPassed)
 			{
 				this->enemyDrawCountSprite->runAction(FadeTo::create(0.25f, 255));
 			}

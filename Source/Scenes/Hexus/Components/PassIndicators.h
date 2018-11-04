@@ -15,7 +15,7 @@ public:
 
 protected:
 	void onBeforeStateChange(GameState* gameState) override;
-	void onStateChange(GameState* gameState) override;
+	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	PassIndicators();

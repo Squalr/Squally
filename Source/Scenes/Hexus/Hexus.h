@@ -41,7 +41,6 @@ private:
 	StateAIDecideCard* stateAIDecideCard;
 	StateAIDecideCardReplace* stateAIDecideCardReplace;
 	StateAIDecidePass* stateAIDecidePass;
-	StateAIDecidePenaltyDiscard* stateAIDecidePenaltyDiscard;
 	StateAIDecideTarget* stateAIDecideTarget;
 	StateCardReplace* stateCardReplace;
 	StateCoinFlip* stateCoinFlip;
@@ -54,8 +53,6 @@ private:
 	StateOpponentTurnStart* stateOpponentTurnStart;
 	StatePlayCard* statePlayCard;
 	StatePass* statePass;
-	StatePenaltyDiscard* statePenaltyDiscard;
-	StateLastStand* stateLastStand;
 	StatePlayerTurnStart* statePlayerTurnStart;
 	StateRoundEnd* stateRoundEnd;
 	StateRoundStart* stateRoundStart;
@@ -67,7 +64,6 @@ private:
 	OpponentLastStandBanner* opponentLastStandBanner;
 	OpponentPassBanner* opponentPassBanner;
 	OpponentTurnBanner* opponentTurnBanner;
-	PenaltyDiscardBanner* penaltyDiscardBanner;
 	PlayerFirstBanner* playerFirstBanner;
 	PlayerLastStandBanner* playerLastStandBanner;
 	PlayerPassBanner* playerPassBanner;
@@ -78,7 +74,6 @@ private:
 
 	DeckCardCountDisplay* deckCardCountDisplay;
 	HandCardCountDisplay* handCardCountDisplay;
-	PenaltyCardDisplay* penaltyCardDisplay;
 	RemainingCardDisplay* remainingCardDisplay;
 	DrawCountDisplay* drawCountDisplay;
 	LossesDisplay* lossesDisplay;

@@ -31,13 +31,10 @@ public:
 		SelectionStaged,
 		CombineStaged,
 		Pass,
-		PenaltyDiscard,
-		LastStand,
 		PlayCard,
 		AIDecideCard,
 		AIDecideCardReplace,
 		AIDecidePass,
-		AIDecidePenaltyDiscard,
 		AIDecideTarget,
 		TurnEnd,
 		RoundEnd,
@@ -76,8 +73,6 @@ public:
 	bool isRepeatingSameTurn;
 	bool playerPassed;
 	bool enemyPassed;
-	bool playerLastStanded;
-	bool enemyLastStanded;
 	int playerLosses;
 	int enemyLosses;
 	int cardReplaceCount;
@@ -85,8 +80,6 @@ public:
 	int turnNumber;
 	int playerCardsDrawnNextRound;
 	int enemyCardsDrawnNextRound;
-	int lastStandBonus;
-	int penaltyCardsPlayed;
 	int playableCardsThisTurn;
 	int gameDurationInSeconds;
 	CardRow* stagedCombineCardRow;

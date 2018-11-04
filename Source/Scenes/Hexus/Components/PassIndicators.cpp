@@ -51,9 +51,9 @@ void PassIndicators::onBeforeStateChange(GameState* gameState)
 	}
 }
 
-void PassIndicators::onStateChange(GameState* gameState)
+void PassIndicators::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onStateChange(gameState);
+	ComponentBase::onAnyStateChange(gameState);
 
 	if (gameState->stateType == GameState::StateType::Pass)
 	{

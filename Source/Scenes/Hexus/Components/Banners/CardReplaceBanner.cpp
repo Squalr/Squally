@@ -11,7 +11,7 @@ CardReplaceBanner* CardReplaceBanner::create()
 
 CardReplaceBanner::CardReplaceBanner()
 {
-	this->penaltyIcon = Sprite::create(Resources::Minigames_Hexus_PenaltyCardsIconLarge);
+	this->penaltyIcon = Sprite::create(Resources::Minigames_Hexus_CardReplaceIconLarge);
 	this->penaltyIconParticles = ParticleSystemQuad::create(Resources::Particles_PurpleAuraLarge);
 
 	this->penaltyIconParticles->setVisible(false);
@@ -39,9 +39,9 @@ void CardReplaceBanner::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void CardReplaceBanner::onStateChange(GameState* gameState)
+void CardReplaceBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onStateChange(gameState);
+	BannerBase::onAnyStateChange(gameState);
 
 	if (gameState->stateType == GameState::CardReplace)
 	{
