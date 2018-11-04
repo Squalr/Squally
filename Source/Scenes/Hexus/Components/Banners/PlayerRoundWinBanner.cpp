@@ -1,30 +1,30 @@
-#include "PlayerLastStandBanner.h"
+#include "PlayerRoundWinBanner.h"
 
-PlayerLastStandBanner* PlayerLastStandBanner::create()
+PlayerRoundWinBanner* PlayerRoundWinBanner::create()
 {
-	PlayerLastStandBanner* instance = new PlayerLastStandBanner();
+	PlayerRoundWinBanner* instance = new PlayerRoundWinBanner();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PlayerLastStandBanner::PlayerLastStandBanner()
+PlayerRoundWinBanner::PlayerRoundWinBanner()
 {
 	this->playerPassBanner1 = Sprite::create(Resources::Minigames_Hexus_PlayerBanner);
 	this->playerPassBanner2 = Sprite::create(Resources::Minigames_Hexus_PlayerBanner);
 
-	this->setBannerText("LAST STAND");
+	this->setBannerText("YOU WIN THE ROUND");
 
 	this->addBannerChild(this->playerPassBanner1);
 	this->addBannerChild(this->playerPassBanner2);
 }
 
-PlayerLastStandBanner::~PlayerLastStandBanner()
+PlayerRoundWinBanner::~PlayerRoundWinBanner()
 {
 }
 
-void PlayerLastStandBanner::initializePositions()
+void PlayerRoundWinBanner::initializePositions()
 {
 	BannerBase::initializePositions();
 
@@ -34,17 +34,17 @@ void PlayerLastStandBanner::initializePositions()
 	this->playerPassBanner2->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::bannerIconOffset, visibleSize.height / 2.0f + 320.0f);
 }
 
-void PlayerLastStandBanner::onBeforeStateChange(GameState* gameState)
+void PlayerRoundWinBanner::onBeforeStateChange(GameState* gameState)
 {
 	ComponentBase::onBeforeStateChange(gameState);
-}
 
-void PlayerLastStandBanner::onAnyStateChange(GameState* gameState)
-{
-	BannerBase::onAnyStateChange(gameState);
-
-	if (gameState->stateType == GameState::Pass && gameState->turn == GameState::Turn::Player && gameState->isPlayerLastStandCondition())
+	if (gameState->stateType == GameState::RoundEnd && gameState->isPlayerWinningRound())
 	{
 		this->flashBanner();
 	}
+}
+
+void PlayerRoundWinBanner::onAnyStateChange(GameState* gameState)
+{
+	BannerBase::onAnyStateChange(gameState);
 }

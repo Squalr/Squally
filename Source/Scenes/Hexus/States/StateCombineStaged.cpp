@@ -11,7 +11,7 @@ StateCombineStaged* StateCombineStaged::create()
 
 StateCombineStaged::StateCombineStaged() : StateBase(GameState::StateType::CombineStaged)
 {
-	this->combineStatus = Label::create("", Localization::getMainFont(), 28.0f);
+	this->combineStatus = Label::create("", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	this->combineStatus->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->combineStatus->setTextColor(Color4B::WHITE);

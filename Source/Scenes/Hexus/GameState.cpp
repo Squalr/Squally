@@ -304,3 +304,33 @@ bool GameState::isPlayerWinningRound()
 {
 	return this->getPlayerTotal() > this->getEnemyTotal();
 }
+
+bool GameState::isPlayerLastStandCondition()
+{
+	return (this->isPlayerWinningRound() && !this->enemyPassed);
+}
+
+bool GameState::isPlayerClaimVictoryCondition()
+{
+	return (this->isPlayerWinningRound() && this->enemyPassed);
+}
+
+bool GameState::isPlayerPassCondition()
+{
+	return (!this->isPlayerLastStandCondition() && !this->isPlayerClaimVictoryCondition());
+}
+
+bool GameState::isEnemyLastStandCondition()
+{
+	return (this->isEnemyWinningRound() && !this->playerPassed);
+}
+
+bool GameState::isEnemyClaimVictoryCondition()
+{
+	return (this->isEnemyWinningRound() && this->playerPassed);
+}
+
+bool GameState::isEnemyPassCondition()
+{
+	return (!this->isEnemyLastStandCondition() && !this->isEnemyClaimVictoryCondition());
+}

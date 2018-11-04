@@ -59,6 +59,12 @@ public:
 	int getCardCount();
 	int getEnemyCardCount();
 	int getPlayerCardCount();
+	bool isPlayerLastStandCondition();
+	bool isPlayerClaimVictoryCondition();
+	bool isPlayerPassCondition();
+	bool isEnemyLastStandCondition();
+	bool isEnemyClaimVictoryCondition();
+	bool isEnemyPassCondition();
 	std::vector<CardRow*> getAllRows();
 	std::vector<CardRow*> getPlayerRows();
 	std::vector<CardRow*> getEnemyRows();

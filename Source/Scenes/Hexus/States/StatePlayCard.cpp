@@ -140,22 +140,22 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 	gameState->selectedCard = nullptr;
 	CallFunc* stateTransition = nullptr;
 
-	if (gameState->playableCardsThisTurn <= 0)
+	if (gameState->turn == GameState::Turn::Player)
 	{
-		stateTransition = CallFunc::create([=]()
+		if (gameState->playerHand->getCardCount() <= 0)
 		{
-			GameState::updateState(gameState, GameState::StateType::TurnEnd);
-		});
-	}
-	else
-	{
-		if (gameState->turn == GameState::Turn::Player)
+			stateTransition = CallFunc::create([=]()
+			{
+				GameState::updateState(gameState, GameState::StateType::Pass);
+			});
+		}
+		else
 		{
-			if (gameState->playerHand->getCardCount() <= 0)
+			if (gameState->playableCardsThisTurn <= 0)
 			{
 				stateTransition = CallFunc::create([=]()
 				{
-					GameState::updateState(gameState, GameState::StateType::Pass);
+					GameState::updateState(gameState, GameState::StateType::TurnEnd);
 				});
 			}
 			else
@@ -166,13 +166,23 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				});
 			}
 		}
+	}
+	else
+	{
+		if (gameState->enemyHand->getCardCount() <= 0)
+		{
+			stateTransition = CallFunc::create([=]()
+			{
+				GameState::updateState(gameState, GameState::StateType::Pass);
+			});
+		}
 		else
 		{
-			if (gameState->enemyHand->getCardCount() <= 0)
+			if (gameState->playableCardsThisTurn <= 0)
 			{
 				stateTransition = CallFunc::create([=]()
 				{
-					GameState::updateState(gameState, GameState::StateType::Pass);
+					GameState::updateState(gameState, GameState::StateType::TurnEnd);
 				});
 			}
 			else

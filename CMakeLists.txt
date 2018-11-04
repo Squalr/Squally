@@ -489,12 +489,15 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/Banners/OpponentFirstBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/OpponentLastStandBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/OpponentPassBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/OpponentRoundWinBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/OpponentTurnBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/PlayerFirstBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/PlayerLastStandBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/PlayerPassBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/PlayerRoundWinBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/PlayerTurnBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/RoundBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/RoundTieBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/VictoryBanner.cpp
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.cpp
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.cpp
@@ -1225,12 +1228,15 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/Banners/OpponentFirstBanner.h
 	Source/Scenes/Hexus/Components/Banners/OpponentLastStandBanner.h
 	Source/Scenes/Hexus/Components/Banners/OpponentPassBanner.h
+	Source/Scenes/Hexus/Components/Banners/OpponentRoundWinBanner.h
 	Source/Scenes/Hexus/Components/Banners/OpponentTurnBanner.h
 	Source/Scenes/Hexus/Components/Banners/PlayerFirstBanner.h
 	Source/Scenes/Hexus/Components/Banners/PlayerLastStandBanner.h
 	Source/Scenes/Hexus/Components/Banners/PlayerPassBanner.h
+	Source/Scenes/Hexus/Components/Banners/PlayerRoundWinBanner.h
 	Source/Scenes/Hexus/Components/Banners/PlayerTurnBanner.h
 	Source/Scenes/Hexus/Components/Banners/RoundBanner.h
+	Source/Scenes/Hexus/Components/Banners/RoundTieBanner.h
 	Source/Scenes/Hexus/Components/Banners/VictoryBanner.h
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.h
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.h

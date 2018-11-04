@@ -43,7 +43,7 @@ void OpponentPassBanner::onAnyStateChange(GameState* gameState)
 {
 	BannerBase::onAnyStateChange(gameState);
 
-	if (gameState->stateType == GameState::Pass && gameState->turn == GameState::Turn::Enemy)
+	if (gameState->stateType == GameState::Pass && gameState->turn == GameState::Turn::Enemy && gameState->isEnemyPassCondition())
 	{
 		this->flashBanner();
 	}
