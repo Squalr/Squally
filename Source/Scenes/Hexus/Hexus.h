@@ -77,7 +77,6 @@ private:
 	RemainingCardDisplay* remainingCardDisplay;
 	DrawCountDisplay* drawCountDisplay;
 	LossesDisplay* lossesDisplay;
-	PassIndicators* passIndicators;
 	RowTotals* rowTotals;
 	ScoreTotal* scoreTotal;
 	DebugDisplay* debugDisplay;
