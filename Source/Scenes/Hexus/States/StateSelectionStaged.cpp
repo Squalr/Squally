@@ -11,7 +11,7 @@ StateSelectionStaged* StateSelectionStaged::create()
 
 StateSelectionStaged::StateSelectionStaged() : StateBase(GameState::StateType::SelectionStaged)
 {
-	this->selectionLabel = Label::create("", Localization::getMainFont(), 28.0f);
+	this->selectionLabel = Label::create("", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	this->selectionLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->selectionLabel->setTextColor(Color4B::WHITE);

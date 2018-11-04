@@ -1,30 +1,30 @@
-#include "OpponentLastStandBanner.h"
+#include "OpponentRoundWinBanner.h"
 
-OpponentLastStandBanner* OpponentLastStandBanner::create()
+OpponentRoundWinBanner* OpponentRoundWinBanner::create()
 {
-	OpponentLastStandBanner* instance = new OpponentLastStandBanner();
+	OpponentRoundWinBanner* instance = new OpponentRoundWinBanner();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-OpponentLastStandBanner::OpponentLastStandBanner()
+OpponentRoundWinBanner::OpponentRoundWinBanner()
 {
 	this->playerPassBanner1 = Sprite::create(Resources::Minigames_Hexus_EnemyBanner);
 	this->playerPassBanner2 = Sprite::create(Resources::Minigames_Hexus_EnemyBanner);
 
-	this->setBannerText("LAST STAND");
+	this->setBannerText("OPPONENT WINS THE ROUND");
 
 	this->addBannerChild(this->playerPassBanner1);
 	this->addBannerChild(this->playerPassBanner2);
 }
 
-OpponentLastStandBanner::~OpponentLastStandBanner()
+OpponentRoundWinBanner::~OpponentRoundWinBanner()
 {
 }
 
-void OpponentLastStandBanner::initializePositions()
+void OpponentRoundWinBanner::initializePositions()
 {
 	BannerBase::initializePositions();
 
@@ -34,17 +34,17 @@ void OpponentLastStandBanner::initializePositions()
 	this->playerPassBanner2->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::bannerIconOffset, visibleSize.height / 2.0f + 320.0f);
 }
 
-void OpponentLastStandBanner::onBeforeStateChange(GameState* gameState)
+void OpponentRoundWinBanner::onBeforeStateChange(GameState* gameState)
 {
 	ComponentBase::onBeforeStateChange(gameState);
-}
 
-void OpponentLastStandBanner::onAnyStateChange(GameState* gameState)
-{
-	BannerBase::onAnyStateChange(gameState);
-
-	if (gameState->stateType == GameState::Pass && gameState->turn == GameState::Turn::Enemy && gameState->isEnemyLastStandCondition())
+	if (gameState->stateType == GameState::RoundEnd && gameState->isEnemyWinningRound())
 	{
 		this->flashBanner();
 	}
+}
+
+void OpponentRoundWinBanner::onAnyStateChange(GameState* gameState)
+{
+	BannerBase::onAnyStateChange(gameState);
 }

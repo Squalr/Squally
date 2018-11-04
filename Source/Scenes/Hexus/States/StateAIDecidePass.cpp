@@ -28,7 +28,7 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 
 	CardData* strongestCardInDeck = gameState->opponentData->getStrongestCard();
 	int strongestAttack = (float)(strongestCardInDeck == nullptr ? 1 : strongestCardInDeck->attack);
-	int passIfDiffAbove = (int)(strongestAttack * 2.5f);
+	int passIfDiffAboveOrEqual = (int)(strongestAttack * 2.5f);
 	CallFunc* stateTransition = nullptr;
 
 	if (gameState->enemyHand->rowCards.size() == 0)
@@ -49,7 +49,7 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 		});
 	}
 	// Pass or last stand if the player is significantly ahead, but not if the opponent can lose the game from this round
-	else if (gameState->enemyLosses < 1 && gameState->getPlayerTotal() > gameState->getEnemyTotal() + passIfDiffAbove)
+	else if (gameState->enemyLosses < 1 && (gameState->getPlayerTotal() >= gameState->getEnemyTotal() + passIfDiffAboveOrEqual))
 	{
 		stateTransition = CallFunc::create([=]()
 		{
@@ -58,7 +58,7 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 		});
 	}
 	// Pass or last stand if the opponent is significantly ahead, but not if the opponent can lose the game from this round
-	else if (gameState->enemyLosses < 1 && gameState->getEnemyTotal() > gameState->getPlayerTotal() + passIfDiffAbove)
+	else if (gameState->enemyLosses < 1 && (gameState->getEnemyTotal() >= gameState->getPlayerTotal() + passIfDiffAboveOrEqual))
 	{
 		stateTransition = CallFunc::create([=]()
 		{

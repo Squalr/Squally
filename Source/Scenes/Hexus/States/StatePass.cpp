@@ -15,7 +15,8 @@ StatePass* StatePass::create()
 
 StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 {
-	this->activatedSprite = nullptr;
+	this->playerActivatedSprite = nullptr;
+	this->opponentActivatedSprite = nullptr;
 
 	// Pass
 	this->passButton = MenuSprite::create(Resources::Minigames_Hexus_Flags, Resources::Minigames_Hexus_FlagsSelected, Resources::Minigames_Hexus_FlagsSelected);
@@ -148,8 +149,6 @@ void StatePass::initializePositions()
 
 void StatePass::onPassClick(MenuSprite* menuSprite, GameState* gameState)
 {
-	this->activatedSprite = menuSprite;
-
 	GameState::updateState(gameState, GameState::StateType::Pass);
 }
 
@@ -276,13 +275,13 @@ void StatePass::onAnyStateChange(GameState* gameState)
 	MenuSprite* displayedPlayerButton = nullptr;
 
 	// Check what button should be displayed for the player
-	if (this->activatedSprite == this->lastStandButton || (!gameState->playerPassed && !gameState->enemyPassed && gameState->getPlayerTotal() >=  gameState->getEnemyTotal()))
+	if (this->playerActivatedSprite == this->lastStandButton || gameState->isPlayerLastStandCondition())
 	{
 		this->showLastStandButton();
 
 		displayedPlayerButton = this->lastStandButton;
 	}
-	else if (this->activatedSprite == this->claimVictoryButton || (gameState->enemyPassed && gameState->getPlayerTotal() > gameState->getEnemyTotal()))
+	else if (this->playerActivatedSprite == this->claimVictoryButton || gameState->isPlayerClaimVictoryCondition())
 	{
 		this->showClaimVictoryButton();
 
@@ -296,15 +295,15 @@ void StatePass::onAnyStateChange(GameState* gameState)
 	}
 
 	// Show particles if one of the buttons is activated
-	if (this->activatedSprite == this->passButton)
+	if (this->playerActivatedSprite == this->passButton)
 	{
 		this->passParticles->setVisible(true);
 	}
-	else if (this->activatedSprite == this->lastStandButton)
+	else if (this->playerActivatedSprite == this->lastStandButton)
 	{
 		this->lastStandParticles->setVisible(true);
 	}
-	else if (this->activatedSprite == this->claimVictoryButton)
+	else if (this->playerActivatedSprite == this->claimVictoryButton)
 	{
 		this->claimVictoryParticles->setVisible(true);
 	}
@@ -315,7 +314,8 @@ void StatePass::onAnyStateChange(GameState* gameState)
 		case GameState::StateType::RoundEnd:
 		{
 			// Clear active button
-			this->activatedSprite = nullptr;
+			this->playerActivatedSprite = nullptr;
+			this->opponentActivatedSprite = nullptr;
 			break;
 		}
 		case GameState::StateType::Neutral:
@@ -347,6 +347,46 @@ void StatePass::onAnyStateChange(GameState* gameState)
 void StatePass::onBeforeStateEnter(GameState* gameState)
 {
 	StateBase::onBeforeStateEnter(gameState);
+
+	switch (gameState->turn)
+	{
+		case GameState::Turn::Player:
+		{
+			if (gameState->isPlayerLastStandCondition())
+			{
+				this->playerActivatedSprite = this->lastStandButton;
+			}
+			else if (gameState->isEnemyClaimVictoryCondition())
+			{
+				this->playerActivatedSprite = this->claimVictoryButton;
+			}
+			else
+			{
+				this->playerActivatedSprite = this->passButton;
+			}
+
+			break;
+		}
+		case GameState::Turn::Enemy:
+		{
+			if (gameState->isEnemyLastStandCondition())
+			{
+				this->opponentActivatedSprite = this->lastStandButton;
+			}
+			else if (gameState->isEnemyClaimVictoryCondition())
+			{
+				this->opponentActivatedSprite = this->claimVictoryButton;
+			}
+			else
+			{
+				this->opponentActivatedSprite = this->passButton;
+			}
+
+			break;
+		}
+		default:
+			break;
+	}
 }
 
 void StatePass::onStateEnter(GameState* gameState)

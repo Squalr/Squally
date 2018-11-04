@@ -63,12 +63,15 @@ private:
 	OpponentFirstBanner* opponentFirstBanner;
 	OpponentLastStandBanner* opponentLastStandBanner;
 	OpponentPassBanner* opponentPassBanner;
+	OpponentRoundWinBanner* opponentRoundWinBanner;
 	OpponentTurnBanner* opponentTurnBanner;
 	PlayerFirstBanner* playerFirstBanner;
 	PlayerLastStandBanner* playerLastStandBanner;
 	PlayerPassBanner* playerPassBanner;
+	PlayerRoundWinBanner* playerRoundWinBanner;
 	PlayerTurnBanner* playerTurnBanner;
 	RoundBanner* roundBanner;
+	RoundTieBanner* roundTieBanner;
 	VictoryBanner* victoryBanner;
 	DefeatBanner* defeatBanner;
 

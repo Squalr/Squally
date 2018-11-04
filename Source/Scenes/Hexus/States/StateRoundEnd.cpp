@@ -68,7 +68,7 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 				}
 			}
 		}),
-		DelayTime::create(fadeSpeed),
+		DelayTime::create(Config::bannerDisplayDuration),
 		CallFunc::create([=]()
 		{
 			gameState->removeFieldCards();

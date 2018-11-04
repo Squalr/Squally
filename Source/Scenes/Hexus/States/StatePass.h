@@ -70,7 +70,8 @@ private:
 	Sprite* enemyClaimVictorySprite;
 	ParticleSystemQuad* enemyClaimVictoryParticles;
 
-	MenuSprite* activatedSprite;
+	MenuSprite* playerActivatedSprite;
+	MenuSprite* opponentActivatedSprite;
 
 	static const std::string StringKeyHexusPass;
 	static const std::string StringKeyHexusLastStand;
