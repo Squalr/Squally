@@ -26,9 +26,9 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->enemyPassSprite = Sprite::create(Resources::Minigames_Hexus_ShieldButton);
 	this->enemyPassParticles = ParticleSystemQuad::create(Resources::Particles_BlueAura);
 
-	this->lastStandParticles->setVisible(false);
-	this->lastStandPanel->setOpacity(0);
-	this->lastStandLabel->setOpacity(0);
+	this->passParticles->setVisible(false);
+	this->passPanel->setOpacity(0);
+	this->passLabel->setOpacity(0);
 	this->enemyPassSprite->setVisible(false);
 	this->enemyPassParticles->setVisible(false);
 
