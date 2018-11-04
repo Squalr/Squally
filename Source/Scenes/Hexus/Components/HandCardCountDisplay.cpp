@@ -60,7 +60,7 @@ void HandCardCountDisplay::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void HandCardCountDisplay::onStateChange(GameState* gameState)
+void HandCardCountDisplay::onAnyStateChange(GameState* gameState)
 {
 	this->updateTotals(gameState);
 }

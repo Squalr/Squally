@@ -39,11 +39,11 @@ void PlayerLastStandBanner::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void PlayerLastStandBanner::onStateChange(GameState* gameState)
+void PlayerLastStandBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onStateChange(gameState);
+	BannerBase::onAnyStateChange(gameState);
 
-	if (gameState->stateType == GameState::LastStand && gameState->turn == GameState::Turn::Player)
+	if (gameState->stateType == GameState::Pass && gameState->turn == GameState::Turn::Player)
 	{
 		this->flashBanner();
 	}

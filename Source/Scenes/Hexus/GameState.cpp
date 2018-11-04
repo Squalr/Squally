@@ -22,11 +22,7 @@ GameState::GameState()
 	isRepeatingSameTurn(false),
 	playerPassed(false),
 	enemyPassed(false),
-	playerLastStanded(false),
-	enemyLastStanded(false),
 	turnNumber(0),
-	lastStandBonus(0),
-	penaltyCardsPlayed(0),
 	playableCardsThisTurn(0),
 	playerCardsDrawnNextRound(0),
 	enemyCardsDrawnNextRound(0),
@@ -253,11 +249,6 @@ int GameState::getPlayerTotal()
 	total += this->playerDecimalCards->getRowAttack();
 	total += this->playerHexCards->getRowAttack();
 
-	if (this->playerLastStanded)
-	{
-		total += lastStandBonus;
-	}
-
 	return total;
 }
 
@@ -268,11 +259,6 @@ int GameState::getEnemyTotal()
 	total += this->enemyBinaryCards->getRowAttack();
 	total += this->enemyDecimalCards->getRowAttack();
 	total += this->enemyHexCards->getRowAttack();
-
-	if (this->enemyLastStanded)
-	{
-		total += lastStandBonus;
-	}
 
 	return total;
 }

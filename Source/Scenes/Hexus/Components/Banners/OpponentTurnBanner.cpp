@@ -39,9 +39,9 @@ void OpponentTurnBanner::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void OpponentTurnBanner::onStateChange(GameState* gameState)
+void OpponentTurnBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onStateChange(gameState);
+	BannerBase::onAnyStateChange(gameState);
 
 	if (!gameState->isRepeatingSameTurn && gameState->stateType == GameState::OpponentTurnStart && gameState->turnNumber > 0)
 	{

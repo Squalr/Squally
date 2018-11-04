@@ -54,7 +54,7 @@ void DeckCardCountDisplay::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void DeckCardCountDisplay::onStateChange(GameState* gameState)
+void DeckCardCountDisplay::onAnyStateChange(GameState* gameState)
 {
 	this->updateTotals(gameState);
 }

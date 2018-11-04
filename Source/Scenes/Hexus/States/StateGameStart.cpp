@@ -29,11 +29,7 @@ void StateGameStart::onBeforeStateEnter(GameState* gameState)
 	gameState->turnNumber = 0;
 	gameState->playerPassed = false;
 	gameState->enemyPassed = false;
-	gameState->playerLastStanded = false;
-	gameState->enemyLastStanded = false;
-	gameState->lastStandBonus = 0;
 	gameState->playableCardsThisTurn = 0;
-	gameState->penaltyCardsPlayed = 0;
 }
 
 void StateGameStart::onStateEnter(GameState* gameState)

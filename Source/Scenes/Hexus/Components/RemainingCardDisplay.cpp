@@ -94,11 +94,11 @@ void RemainingCardDisplay::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void RemainingCardDisplay::onStateChange(GameState* gameState)
+void RemainingCardDisplay::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onStateChange(gameState);
+	ComponentBase::onAnyStateChange(gameState);
 
-	if (gameState->enemyLastStanded || gameState->playerLastStanded)
+	if (gameState->enemyPassed || gameState->playerPassed)
 	{
 		const char* infinitySymbol = "\u221E";
 

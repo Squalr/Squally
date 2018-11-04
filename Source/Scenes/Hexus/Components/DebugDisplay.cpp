@@ -43,9 +43,9 @@ void DebugDisplay::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void DebugDisplay::onStateChange(GameState* gameState)
+void DebugDisplay::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onStateChange(gameState);
+	ComponentBase::onAnyStateChange(gameState);
 
 	switch (gameState->stateType)
 	{

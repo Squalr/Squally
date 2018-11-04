@@ -26,13 +26,13 @@ void ComponentBase::onBeforeStateChangeEvent(EventCustom* eventCustom)
 
 void ComponentBase::onStateChangeEvent(EventCustom* eventCustom)
 {
-	this->onStateChange((GameState*)(eventCustom->getUserData()));
+	this->onAnyStateChange((GameState*)(eventCustom->getUserData()));
 }
 
 void ComponentBase::onBeforeStateChange(GameState* gameState)
 {
 }
 
-void ComponentBase::onStateChange(GameState* gameState)
+void ComponentBase::onAnyStateChange(GameState* gameState)
 {
 }

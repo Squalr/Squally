@@ -39,9 +39,9 @@ void VictoryBanner::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void VictoryBanner::onStateChange(GameState* gameState)
+void VictoryBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onStateChange(gameState);
+	BannerBase::onAnyStateChange(gameState);
 
 	if (gameState->stateType == GameState::GameEnd && gameState->enemyLosses >= 2 && gameState->playerLosses < 2)
 	{
