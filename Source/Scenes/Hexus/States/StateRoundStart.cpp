@@ -30,11 +30,13 @@ void StateRoundStart::onStateEnter(GameState* gameState)
 	gameState->playerPassed = false;
 	gameState->enemyPassed = false;
 
+	SoundManager::playSoundResource(Resources::Sounds_Hexus_Medieval_War_Horn);
+
 	this->runAction(Sequence::create(
 		DelayTime::create(Config::bannerDisplayDuration),
 		CallFunc::create([=]()
 		{
-			GameState::updateState(gameState, GameState::StateType::AIDecideCardReplace);
+			GameState::updateState(gameState, GameState::StateType::DrawInitialCards);
 		}),
 		nullptr
 	));

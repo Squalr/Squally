@@ -63,9 +63,9 @@ void RowTotals::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void RowTotals::onStateChange(GameState* gameState)
+void RowTotals::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onStateChange(gameState);
+	ComponentBase::onAnyStateChange(gameState);
 
 	this->updateTotals(gameState);
 }

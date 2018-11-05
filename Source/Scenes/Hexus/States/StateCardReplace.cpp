@@ -58,11 +58,11 @@ void StateCardReplace::onBeforeStateEnter(GameState* gameState)
 
 	if (gameState->roundNumber == 0)
 	{
-		gameState->cardReplaceCount = std::min(3, gameState->playerDeck->getCardCount());
+		gameState->cardReplaceCount = std::min(Config::initialCardReplacements, gameState->playerDeck->getCardCount());
 	}
 	else
 	{
-		gameState->cardReplaceCount = std::min(1, gameState->playerDeck->getCardCount());
+		gameState->cardReplaceCount = std::min(Config::midgameCardReplacements, gameState->playerDeck->getCardCount());
 	}
 }
 
@@ -200,7 +200,7 @@ void StateCardReplace::replaceCard(Card* cardToReplace, GameState* gameState)
 		GameUtils::changeParent(replacement, this, true);
 		replacement->reveal();
 
-		// Update the state and either re-enter this state or exit to coinflip
+		// Either exit this state, or re-enter if not finished
 		if (gameState->cardReplaceCount <= 0)
 		{
 			gameState->playerHand->disableRowCardInteraction();

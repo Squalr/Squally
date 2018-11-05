@@ -28,7 +28,7 @@ private:
 	void initializePositions() override;
 	void onEndReplaceCards(MenuSprite* menuSprite, GameState* gameState);
 	void initializeCallbacks(GameState* gameState);
-	void replaceCard(Card* card, GameState* gameState);
+	void replaceCard(Card* cardToReplace, GameState* gameState);
 
 	std::vector<Card*> removedCards;
 	TextMenuSprite* doneButton;

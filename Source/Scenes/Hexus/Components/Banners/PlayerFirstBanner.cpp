@@ -39,9 +39,9 @@ void PlayerFirstBanner::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void PlayerFirstBanner::onStateChange(GameState* gameState)
+void PlayerFirstBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onStateChange(gameState);
+	BannerBase::onAnyStateChange(gameState);
 
 	if (gameState->previousStateType == GameState::CoinFlip && gameState->turnNumber == 0 && gameState->turn == GameState::Turn::Player)
 	{

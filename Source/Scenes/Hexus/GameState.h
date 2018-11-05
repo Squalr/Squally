@@ -30,11 +30,11 @@ public:
 		Neutral,
 		SelectionStaged,
 		CombineStaged,
-		PlayCard,
 		Pass,
-		AIDecidePass,
+		PlayCard,
 		AIDecideCard,
 		AIDecideCardReplace,
+		AIDecidePass,
 		AIDecideTarget,
 		TurnEnd,
 		RoundEnd,
@@ -59,6 +59,12 @@ public:
 	int getCardCount();
 	int getEnemyCardCount();
 	int getPlayerCardCount();
+	bool isPlayerLastStandCondition();
+	bool isPlayerClaimVictoryCondition();
+	bool isPlayerPassCondition();
+	bool isEnemyLastStandCondition();
+	bool isEnemyClaimVictoryCondition();
+	bool isEnemyPassCondition();
 	std::vector<CardRow*> getAllRows();
 	std::vector<CardRow*> getPlayerRows();
 	std::vector<CardRow*> getEnemyRows();
@@ -78,6 +84,9 @@ public:
 	int cardReplaceCount;
 	int roundNumber;
 	int turnNumber;
+	int playerCardsDrawnNextRound;
+	int enemyCardsDrawnNextRound;
+	int playableCardsThisTurn;
 	int gameDurationInSeconds;
 	CardRow* stagedCombineCardRow;
 	Card* stagedCombineSourceCard;

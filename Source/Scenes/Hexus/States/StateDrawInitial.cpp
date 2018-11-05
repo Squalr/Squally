@@ -30,17 +30,20 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 
 	// Draw starting cards
 	std::vector<Card*> drawnCards = std::vector<Card*>();
+	int playerDrawCount = gameState->roundNumber == 0 ? Config::startingCardAmount : gameState->playerCardsDrawnNextRound;
 
-	for (int index = 0; index < Config::startingCardAmount; index++)
+	for (int index = 0; index < playerDrawCount; index++)
 	{
-		if (gameState->playerDeck->hasCards())
+		if (!gameState->playerDeck->hasCards())
 		{
-			Card* card = gameState->playerDeck->drawCard();
-
-			GameUtils::changeParent(card, this, true);
-
-			drawnCards.push_back(card);
+			break;
 		}
+
+		Card* card = gameState->playerDeck->drawCard();
+
+		GameUtils::changeParent(card, this, true);
+
+		drawnCards.push_back(card);
 	}
 
 	this->runAction(Sequence::create(
@@ -48,19 +51,26 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 		nullptr
 	));
 
-	for (int index = 0; index < Config::startingCardAmount; index++)
+	int enemyDrawCount = gameState->roundNumber == 0 ? Config::startingCardAmount : gameState->enemyCardsDrawnNextRound;
+
+	for (int index = 0; index < enemyDrawCount; index++)
 	{
-		if (gameState->enemyDeck->hasCards())
+		if (!gameState->enemyDeck->hasCards())
 		{
-			gameState->enemyHand->insertCard(gameState->enemyDeck->drawCard(), 0.0f);
+			break;
 		}
+
+		gameState->enemyHand->insertCard(gameState->enemyDeck->drawCard(), 0.0f);
 	}
 
+	gameState->playerCardsDrawnNextRound = 0;
+	gameState->enemyCardsDrawnNextRound = 0,
+
 	this->runAction(Sequence::create(
-		DelayTime::create(0.5f),
+		DelayTime::create(1.0f),
 		CallFunc::create([=]()
 		{
-			GameState::updateState(gameState, GameState::StateType::RoundStart);
+			GameState::updateState(gameState, GameState::StateType::AIDecideCardReplace);
 		}),
 		nullptr
 	));

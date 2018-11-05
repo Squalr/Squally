@@ -28,7 +28,7 @@ void StateNeutral::onStateEnter(GameState* gameState)
 
 	this->activeGameState = gameState;
 
-	if (gameState->playerHand->rowCards->size() == 0)
+	if (gameState->playerHand->rowCards.size() == 0)
 	{
 		GameState::updateState(this->activeGameState, GameState::StateType::Pass);
 		return;

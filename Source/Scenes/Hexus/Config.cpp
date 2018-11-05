@@ -1,6 +1,10 @@
 #include "Config.h"
 
+const int Config::initialCardReplacements = 3;
+const int Config::midgameCardReplacements = 1;
 const int Config::startingCardAmount = 8;
+const int Config::playableCardsPerTurn = 2;
+const int Config::cardBonusPerTurn = 1;
 const float Config::endTurnDelay = 0.25f;
 const float Config::betweenTurnDelay = 0.25f;
 const float Config::enemyDrawDelay = 0.25f;
@@ -56,7 +60,7 @@ const float Config::decimalRowOffsetY = 234.0f;
 const float Config::hexRowOffsetY = 390.0f;
 const float Config::previewOffsetY = 128.0f;
 const float Config::statusLabelWidth = 256.0f;
-const float Config::statusLabelOffsetY = -224.0f;
+const float Config::statusLabelOffsetY = -128.0f;
 const float Config::graveyardOffsetX = -64.0f;
 const float Config::graveyardOffsetY = Config::deckOffsetY;
 const float Config::passButtonOffsetX = 138.0f;

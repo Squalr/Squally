@@ -16,12 +16,17 @@ Hexus::Hexus()
 	this->avatars = Avatars::create();
 	this->cardReplaceBanner = CardReplaceBanner::create();
 	this->opponentFirstBanner = OpponentFirstBanner::create();
+	this->opponentLastStandBanner = OpponentLastStandBanner::create();
 	this->opponentPassBanner = OpponentPassBanner::create();
+	this->opponentRoundWinBanner = OpponentRoundWinBanner::create();
 	this->opponentTurnBanner = OpponentTurnBanner::create();
 	this->playerFirstBanner = PlayerFirstBanner::create();
+	this->playerLastStandBanner = PlayerLastStandBanner::create();
 	this->playerPassBanner = PlayerPassBanner::create();
+	this->playerRoundWinBanner = PlayerRoundWinBanner::create();
 	this->playerTurnBanner = PlayerTurnBanner::create();
 	this->roundBanner = RoundBanner::create();
+	this->roundTieBanner = RoundTieBanner::create();
 	this->victoryBanner = VictoryBanner::create();
 	this->defeatBanner = DefeatBanner::create();
 	this->cardPreview = CardPreview::create();
@@ -47,8 +52,9 @@ Hexus::Hexus()
 	this->stateTurnEnd = StateTurnEnd::create();
 	this->deckCardCountDisplay = DeckCardCountDisplay::create();
 	this->handCardCountDisplay = HandCardCountDisplay::create();
+	this->drawCountDisplay = DrawCountDisplay::create();
+	this->remainingCardDisplay = RemainingCardDisplay::create();
 	this->lossesDisplay = LossesDisplay::create();
-	this->passIndicators = PassIndicators::create();
 	this->rowTotals = RowTotals::create();
 	this->scoreTotal = ScoreTotal::create();
 	this->debugDisplay = DebugDisplay::create();
@@ -58,9 +64,10 @@ Hexus::Hexus()
 	this->addChild(this->avatars);
 	this->addChild(this->cardPreview);
 	this->addChild(this->lossesDisplay);
-	this->addChild(this->passIndicators);
 	this->addChild(this->deckCardCountDisplay);
 	this->addChild(this->handCardCountDisplay);
+	this->addChild(this->remainingCardDisplay);
+	this->addChild(this->drawCountDisplay);
 	this->addChild(this->rowTotals);
 	this->addChild(this->scoreTotal);
 	this->addChild(this->stateAIDecideCard);
@@ -86,12 +93,17 @@ Hexus::Hexus()
 	this->addChild(this->debugDisplay);
 	this->addChild(this->cardReplaceBanner);
 	this->addChild(this->opponentFirstBanner);
+	this->addChild(this->opponentLastStandBanner);
 	this->addChild(this->opponentPassBanner);
+	this->addChild(this->opponentRoundWinBanner);
 	this->addChild(this->opponentTurnBanner);
 	this->addChild(this->playerFirstBanner);
+	this->addChild(this->playerLastStandBanner);
 	this->addChild(this->playerPassBanner);
+	this->addChild(this->playerRoundWinBanner);
 	this->addChild(this->playerTurnBanner);
 	this->addChild(this->roundBanner);
+	this->addChild(this->roundTieBanner);
 	this->addChild(this->victoryBanner);
 	this->addChild(this->defeatBanner);
 	this->addChild(Mouse::create());
@@ -144,11 +156,6 @@ void Hexus::onGameStart(EventCustom* eventCustom)
 
 	this->gameState->previousStateType = GameState::StateType::EmptyState;
 	this->gameState->stateType = GameState::StateType::EmptyState;
-	this->gameState->playerLosses = 0;
-	this->gameState->enemyLosses = 0;
-	this->gameState->cardReplaceCount = 0;
-	this->gameState->roundNumber = 0;
-	this->gameState->turnNumber = 0;
 
 	this->gameState->playerBinaryCards->clear();
 	this->gameState->playerDecimalCards->clear();

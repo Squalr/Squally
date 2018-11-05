@@ -24,11 +24,11 @@ void StateAIDecideCardReplace::onBeforeStateEnter(GameState* gameState)
 
 	if (gameState->roundNumber == 0)
 	{
-		gameState->cardReplaceCount = std::min(3, gameState->enemyDeck->getCardCount());
+		gameState->cardReplaceCount = std::min(Config::initialCardReplacements, gameState->enemyDeck->getCardCount());
 	}
 	else
 	{
-		gameState->cardReplaceCount = std::min(1, gameState->enemyDeck->getCardCount());
+		gameState->cardReplaceCount = std::min(Config::midgameCardReplacements, gameState->enemyDeck->getCardCount());
 	}
 }
 

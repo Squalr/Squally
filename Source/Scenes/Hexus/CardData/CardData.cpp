@@ -50,3 +50,21 @@ std::string CardData::getCardTypeString()
 			return "";
 	}
 }
+
+bool CardData::isAttackCard()
+{
+	switch (this->cardType)
+	{
+		case CardData::CardType::Binary:
+		case CardData::CardType::Decimal:
+		case CardData::CardType::Hexidecimal:
+			return true;
+		default:
+			return false;
+	}
+}
+
+bool CardData::isSpecialCard()
+{
+	return !this->isAttackCard();
+}
