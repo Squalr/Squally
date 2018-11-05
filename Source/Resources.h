@@ -6172,6 +6172,8 @@ public:
 	static const std::string Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01;
 	static const std::string Sounds_Hexus_Card_Game_Movement_Tap_01;
 	static const std::string Sounds_Hexus_Card_Game_Movement_Tap_05;
+	static const std::string Sounds_Hexus_LastStand;
+	static const std::string Sounds_Hexus_Medieval_War_Horn;
 	static const std::string Sounds_Hexus_UI_CCG_card_downgrade;
 	static const std::string Sounds_Hexus_UI_CCG_card_upgrade;
 	static const std::string Sounds_Hexus_UI_CCG_NextPlayer4;

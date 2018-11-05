@@ -26,7 +26,7 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	// Error condition -- just pass (shouldn't happen)
+	// Unable to find a card to play (ie it would be disadvantageous to play any card for the opponent)
 	if (gameState->selectedCard == nullptr)
 	{
 		this->runAction(Sequence::create(

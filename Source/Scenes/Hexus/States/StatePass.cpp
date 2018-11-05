@@ -33,8 +33,6 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->enemyPassSprite->setVisible(false);
 	this->enemyPassParticles->setVisible(false);
 
-	this->passButton->setClickSound(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
-
 	// Last stand
 	this->lastStandButton = MenuSprite::create(Resources::Minigames_Hexus_ShieldButton, Resources::Minigames_Hexus_ShieldButtonSelected,Resources::Minigames_Hexus_ShieldButtonSelected);
 	this->lastStandPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
@@ -50,8 +48,6 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->enemyLastStandSprite->setVisible(false);
 	this->enemyLastStandParticles->setVisible(false);
 
-	this->lastStandButton->setClickSound(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
-
 	// Claim victory
 	this->claimVictoryButton = MenuSprite::create(Resources::Minigames_Hexus_Victory, Resources::Minigames_Hexus_VictorySelected, Resources::Minigames_Hexus_VictorySelected);
 	this->claimVictoryPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
@@ -66,8 +62,6 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->claimVictoryLabel->setOpacity(0);
 	this->enemyClaimVictorySprite->setVisible(false);
 	this->enemyClaimVictoryParticles->setVisible(false);
-
-	this->claimVictoryButton->setClickSound(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
 
 	this->addChild(this->passParticles);
 	this->addChild(this->passButton);
@@ -396,6 +390,20 @@ void StatePass::onStateEnter(GameState* gameState)
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
+			// Note: We play these on state enter rather than on button click, because button click is not the only way to enter this state
+			if (gameState->isPlayerLastStandCondition())
+			{
+				SoundManager::playSoundResource(Resources::Sounds_Hexus_LastStand);
+			}
+			else if (gameState->isPlayerClaimVictoryCondition())
+			{
+				SoundManager::playSoundResource(Resources::Sounds_Hexus_Medieval_War_Horn);
+			}
+			else
+			{
+				SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
+			}
+
 			gameState->playerPassed = true;
 			break;
 		case GameState::Turn::Enemy:
