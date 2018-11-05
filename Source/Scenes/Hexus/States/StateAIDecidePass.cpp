@@ -35,7 +35,6 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 	{
 		stateTransition = CallFunc::create([=]()
 		{
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
 			GameState::updateState(gameState, GameState::StateType::Pass);
 		});
 	}
@@ -44,7 +43,6 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 	{
 		stateTransition = CallFunc::create([=]()
 		{
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
 			GameState::updateState(gameState, GameState::StateType::Pass);
 		});
 	}
@@ -53,7 +51,6 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 	{
 		stateTransition = CallFunc::create([=]()
 		{
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
 			GameState::updateState(gameState, GameState::StateType::Pass);
 		});
 	}
@@ -62,7 +59,6 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 	{
 		stateTransition = CallFunc::create([=]()
 		{
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
 			GameState::updateState(gameState, GameState::StateType::Pass);
 		});
 	}
