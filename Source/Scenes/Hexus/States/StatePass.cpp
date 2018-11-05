@@ -397,7 +397,7 @@ void StatePass::onStateEnter(GameState* gameState)
 			}
 			else if (gameState->isPlayerClaimVictoryCondition())
 			{
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_Medieval_War_Horn);
+				SoundManager::playSoundResource(Resources::Sounds_Hexus_ClaimVictory);
 			}
 			else
 			{
