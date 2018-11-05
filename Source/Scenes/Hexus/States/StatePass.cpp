@@ -24,13 +24,13 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->passLabel = Label::create(Localization::resolveString(StatePass::StringKeyHexusPass), Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	this->passParticles = ParticleSystemQuad::create(Resources::Particles_BlueAura);
-	this->enemyPassSprite = Sprite::create(Resources::Minigames_Hexus_ShieldButton);
+	this->enemyPassSprite = Sprite::create(Resources::Minigames_Hexus_Flags);
 	this->enemyPassParticles = ParticleSystemQuad::create(Resources::Particles_BlueAura);
 
 	this->passParticles->setVisible(false);
 	this->passPanel->setOpacity(0);
 	this->passLabel->setOpacity(0);
-	this->enemyPassSprite->setVisible(false);
+	this->enemyPassSprite->setOpacity(0);
 	this->enemyPassParticles->setVisible(false);
 
 	// Last stand
@@ -45,7 +45,7 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->lastStandParticles->setVisible(false);
 	this->lastStandPanel->setOpacity(0);
 	this->lastStandLabel->setOpacity(0);
-	this->enemyLastStandSprite->setVisible(false);
+	this->enemyLastStandSprite->setOpacity(0);
 	this->enemyLastStandParticles->setVisible(false);
 
 	// Claim victory
@@ -54,13 +54,13 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->claimVictoryLabel = Label::create(Localization::resolveString(StatePass::StringKeyHexusClaimVictory), Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	this->claimVictoryParticles = ParticleSystemQuad::create(Resources::Particles_Aura);
-	this->enemyClaimVictorySprite = Sprite::create(Resources::Minigames_Hexus_ShieldButton);
+	this->enemyClaimVictorySprite = Sprite::create(Resources::Minigames_Hexus_Victory);
 	this->enemyClaimVictoryParticles = ParticleSystemQuad::create(Resources::Particles_Aura);
 
 	this->claimVictoryParticles->setVisible(false);
 	this->claimVictoryPanel->setOpacity(0);
 	this->claimVictoryLabel->setOpacity(0);
-	this->enemyClaimVictorySprite->setVisible(false);
+	this->enemyClaimVictorySprite->setOpacity(0);
 	this->enemyClaimVictoryParticles->setVisible(false);
 
 	this->addChild(this->passParticles);
@@ -302,6 +302,22 @@ void StatePass::onAnyStateChange(GameState* gameState)
 		this->claimVictoryParticles->setVisible(true);
 	}
 
+	if (opponentActivatedSprite == this->passButton)
+	{
+		this->enemyPassParticles->setVisible(true);
+		this->enemyPassSprite->runAction(FadeTo::create(0.25f, 255));
+	}
+	else if (opponentActivatedSprite == this->lastStandButton)
+	{
+		this->enemyLastStandParticles->setVisible(true);
+		this->enemyLastStandSprite->runAction(FadeTo::create(0.25f, 255));
+	}
+	else if (opponentActivatedSprite == this->claimVictoryButton)
+	{
+		this->enemyClaimVictoryParticles->setVisible(true);
+		this->enemyClaimVictorySprite->runAction(FadeTo::create(0.25f, 255));
+	}
+
 	switch (gameState->stateType)
 	{
 		case GameState::StateType::RoundStart:
@@ -407,6 +423,19 @@ void StatePass::onStateEnter(GameState* gameState)
 			gameState->playerPassed = true;
 			break;
 		case GameState::Turn::Enemy:
+			if (gameState->isEnemyLastStandCondition())
+			{
+				SoundManager::playSoundResource(Resources::Sounds_Hexus_LastStand);
+			}
+			else if (gameState->isEnemyClaimVictoryCondition())
+			{
+				SoundManager::playSoundResource(Resources::Sounds_Hexus_ClaimVictory);
+			}
+			else
+			{
+				SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
+			}
+
 			gameState->enemyPassed = true;
 			break;
 		default:
