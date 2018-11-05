@@ -6170,6 +6170,8 @@ const std::string Resources::Sounds_Hexus_Card_Game_Achievement_Wind_Reverse_02 
 const std::string Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01 = "Sounds/Hexus/Card_Game_Movement_Deal_Single_Small_01.mp3";
 const std::string Resources::Sounds_Hexus_Card_Game_Movement_Tap_01 = "Sounds/Hexus/Card_Game_Movement_Tap_01.mp3";
 const std::string Resources::Sounds_Hexus_Card_Game_Movement_Tap_05 = "Sounds/Hexus/Card_Game_Movement_Tap_05.mp3";
+const std::string Resources::Sounds_Hexus_LastStand = "Sounds/Hexus/LastStand.mp3";
+const std::string Resources::Sounds_Hexus_Medieval_War_Horn = "Sounds/Hexus/Medieval War Horn.mp3";
 const std::string Resources::Sounds_Hexus_UI_CCG_card_downgrade = "Sounds/Hexus/UI_CCG_card_downgrade.mp3";
 const std::string Resources::Sounds_Hexus_UI_CCG_card_upgrade = "Sounds/Hexus/UI_CCG_card_upgrade.mp3";
 const std::string Resources::Sounds_Hexus_UI_CCG_NextPlayer4 = "Sounds/Hexus/UI_CCG_NextPlayer4.mp3";
