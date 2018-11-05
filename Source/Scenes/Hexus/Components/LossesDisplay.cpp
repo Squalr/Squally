@@ -59,9 +59,9 @@ void LossesDisplay::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void LossesDisplay::onStateChange(GameState* gameState)
+void LossesDisplay::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onStateChange(gameState);
+	ComponentBase::onAnyStateChange(gameState);
 
 	this->updateDisplayedLosses(gameState);
 }

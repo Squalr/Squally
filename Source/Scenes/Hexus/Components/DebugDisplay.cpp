@@ -43,9 +43,9 @@ void DebugDisplay::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void DebugDisplay::onStateChange(GameState* gameState)
+void DebugDisplay::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onStateChange(gameState);
+	ComponentBase::onAnyStateChange(gameState);
 
 	switch (gameState->stateType)
 	{
@@ -90,9 +90,6 @@ void DebugDisplay::onStateChange(GameState* gameState)
 			break;
 		case GameState::StateType::Pass:
 			this->stateLabel->setString("Pass");
-			break;
-		case GameState::StateType::AIDecidePass:
-			this->stateLabel->setString("AIDecidePass");
 			break;
 		case GameState::StateType::AIDecideCard:
 			this->stateLabel->setString("AIDecideCard");

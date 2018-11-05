@@ -51,8 +51,8 @@ private:
 	StateGameStart* stateGameStart;
 	StateNeutral* stateNeutral;
 	StateOpponentTurnStart* stateOpponentTurnStart;
-	StatePass* statePass;
 	StatePlayCard* statePlayCard;
+	StatePass* statePass;
 	StatePlayerTurnStart* statePlayerTurnStart;
 	StateRoundEnd* stateRoundEnd;
 	StateRoundStart* stateRoundStart;
@@ -61,19 +61,25 @@ private:
 
 	CardReplaceBanner* cardReplaceBanner;
 	OpponentFirstBanner* opponentFirstBanner;
+	OpponentLastStandBanner* opponentLastStandBanner;
 	OpponentPassBanner* opponentPassBanner;
+	OpponentRoundWinBanner* opponentRoundWinBanner;
 	OpponentTurnBanner* opponentTurnBanner;
 	PlayerFirstBanner* playerFirstBanner;
+	PlayerLastStandBanner* playerLastStandBanner;
 	PlayerPassBanner* playerPassBanner;
+	PlayerRoundWinBanner* playerRoundWinBanner;
 	PlayerTurnBanner* playerTurnBanner;
 	RoundBanner* roundBanner;
+	RoundTieBanner* roundTieBanner;
 	VictoryBanner* victoryBanner;
 	DefeatBanner* defeatBanner;
 
 	DeckCardCountDisplay* deckCardCountDisplay;
 	HandCardCountDisplay* handCardCountDisplay;
+	RemainingCardDisplay* remainingCardDisplay;
+	DrawCountDisplay* drawCountDisplay;
 	LossesDisplay* lossesDisplay;
-	PassIndicators* passIndicators;
 	RowTotals* rowTotals;
 	ScoreTotal* scoreTotal;
 	DebugDisplay* debugDisplay;

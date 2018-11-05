@@ -20,6 +20,16 @@ StateGameStart::~StateGameStart()
 void StateGameStart::onBeforeStateEnter(GameState* gameState)
 {
 	StateBase::onBeforeStateEnter(gameState);
+
+	// Clear all state variables before game start
+	gameState->playerLosses = 0;
+	gameState->enemyLosses = 0;
+	gameState->cardReplaceCount = 0;
+	gameState->roundNumber = 0;
+	gameState->turnNumber = 0;
+	gameState->playerPassed = false;
+	gameState->enemyPassed = false;
+	gameState->playableCardsThisTurn = 0;
 }
 
 void StateGameStart::onStateEnter(GameState* gameState)
@@ -33,7 +43,7 @@ void StateGameStart::onStateEnter(GameState* gameState)
 		DelayTime::create(0.5f),
 		CallFunc::create([=]()
 		{
-			GameState::updateState(gameState, GameState::StateType::DrawInitialCards);
+			GameState::updateState(gameState, GameState::StateType::RoundStart);
 		}),
 		nullptr
 	));

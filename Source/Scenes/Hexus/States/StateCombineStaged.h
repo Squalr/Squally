@@ -27,7 +27,6 @@ private:
 
 	void initializePositions() override;
 	void initializeCallbacks(GameState* gameState);
-	void aiPerformAction(GameState* gameState);
 	void selectCard(Card* card, GameState* gameState);
 	void stageCombineTarget(Card* card, GameState* gameState);
 	void updateCombineStatus(GameState* gameState);

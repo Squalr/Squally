@@ -39,9 +39,9 @@ void OpponentFirstBanner::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void OpponentFirstBanner::onStateChange(GameState* gameState)
+void OpponentFirstBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onStateChange(gameState);
+	BannerBase::onAnyStateChange(gameState);
 
 	if (gameState->previousStateType == GameState::CoinFlip && gameState->turnNumber == 0 && gameState->turn == GameState::Turn::Enemy)
 	{

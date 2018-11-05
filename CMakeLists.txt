@@ -477,21 +477,27 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/ComponentBase.cpp
 	Source/Scenes/Hexus/Components/DebugDisplay.cpp
 	Source/Scenes/Hexus/Components/DeckCardCountDisplay.cpp
+	Source/Scenes/Hexus/Components/DrawCountDisplay.cpp
 	Source/Scenes/Hexus/Components/HandCardCountDisplay.cpp
 	Source/Scenes/Hexus/Components/LossesDisplay.cpp
-	Source/Scenes/Hexus/Components/PassIndicators.cpp
+	Source/Scenes/Hexus/Components/RemainingCardDisplay.cpp
 	Source/Scenes/Hexus/Components/RowTotals.cpp
 	Source/Scenes/Hexus/Components/ScoreTotal.cpp
 	Source/Scenes/Hexus/Components/Banners/BannerBase.cpp
 	Source/Scenes/Hexus/Components/Banners/CardReplaceBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/DefeatBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/OpponentFirstBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/OpponentLastStandBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/OpponentPassBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/OpponentRoundWinBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/OpponentTurnBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/PlayerFirstBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/PlayerLastStandBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/PlayerPassBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/PlayerRoundWinBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/PlayerTurnBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/RoundBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/RoundTieBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/VictoryBanner.cpp
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.cpp
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.cpp
@@ -1210,21 +1216,27 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/Components.h
 	Source/Scenes/Hexus/Components/DebugDisplay.h
 	Source/Scenes/Hexus/Components/DeckCardCountDisplay.h
+	Source/Scenes/Hexus/Components/DrawCountDisplay.h
 	Source/Scenes/Hexus/Components/HandCardCountDisplay.h
 	Source/Scenes/Hexus/Components/LossesDisplay.h
-	Source/Scenes/Hexus/Components/PassIndicators.h
+	Source/Scenes/Hexus/Components/RemainingCardDisplay.h
 	Source/Scenes/Hexus/Components/RowTotals.h
 	Source/Scenes/Hexus/Components/ScoreTotal.h
 	Source/Scenes/Hexus/Components/Banners/BannerBase.h
 	Source/Scenes/Hexus/Components/Banners/CardReplaceBanner.h
 	Source/Scenes/Hexus/Components/Banners/DefeatBanner.h
 	Source/Scenes/Hexus/Components/Banners/OpponentFirstBanner.h
+	Source/Scenes/Hexus/Components/Banners/OpponentLastStandBanner.h
 	Source/Scenes/Hexus/Components/Banners/OpponentPassBanner.h
+	Source/Scenes/Hexus/Components/Banners/OpponentRoundWinBanner.h
 	Source/Scenes/Hexus/Components/Banners/OpponentTurnBanner.h
 	Source/Scenes/Hexus/Components/Banners/PlayerFirstBanner.h
+	Source/Scenes/Hexus/Components/Banners/PlayerLastStandBanner.h
 	Source/Scenes/Hexus/Components/Banners/PlayerPassBanner.h
+	Source/Scenes/Hexus/Components/Banners/PlayerRoundWinBanner.h
 	Source/Scenes/Hexus/Components/Banners/PlayerTurnBanner.h
 	Source/Scenes/Hexus/Components/Banners/RoundBanner.h
+	Source/Scenes/Hexus/Components/Banners/RoundTieBanner.h
 	Source/Scenes/Hexus/Components/Banners/VictoryBanner.h
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.h
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.h

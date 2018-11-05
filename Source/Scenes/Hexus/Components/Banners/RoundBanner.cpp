@@ -37,9 +37,9 @@ void RoundBanner::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void RoundBanner::onStateChange(GameState* gameState)
+void RoundBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onStateChange(gameState);
+	BannerBase::onAnyStateChange(gameState);
 
 	if (gameState->stateType == GameState::RoundStart)
 	{

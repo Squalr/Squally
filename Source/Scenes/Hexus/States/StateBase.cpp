@@ -50,10 +50,10 @@ void StateBase::onStateChangeEvent(EventCustom* eventCustom)
 		}
 	}
 
-	this->onStateChange(gameState);
+	this->onAnyStateChange(gameState);
 }
 
-void StateBase::onStateChange(GameState* gameState)
+void StateBase::onAnyStateChange(GameState* gameState)
 {
 }
 

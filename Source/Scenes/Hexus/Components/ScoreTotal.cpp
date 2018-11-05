@@ -56,9 +56,9 @@ void ScoreTotal::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void ScoreTotal::onStateChange(GameState* gameState)
+void ScoreTotal::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onStateChange(gameState);
+	ComponentBase::onAnyStateChange(gameState);
 
 	this->updateTotals(gameState);
 }

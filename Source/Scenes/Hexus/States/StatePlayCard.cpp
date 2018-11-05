@@ -95,7 +95,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			Card::Operation operation = Card::toOperation(gameState->selectedCard->cardData->cardType, 0);
 
-			for (auto it = gameState->selectedRow->rowCards->begin(); it != gameState->selectedRow->rowCards->end(); it++)
+			for (auto it = gameState->selectedRow->rowCards.begin(); it != gameState->selectedRow->rowCards.end(); it++)
 			{
 				Card* card = *it;
 
@@ -136,14 +136,68 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			return;
 	}
 
+	gameState->playableCardsThisTurn--;
 	gameState->selectedCard = nullptr;
+	CallFunc* stateTransition = nullptr;
+
+	if (gameState->turn == GameState::Turn::Player)
+	{
+		if (gameState->playerHand->getCardCount() <= 0)
+		{
+			stateTransition = CallFunc::create([=]()
+			{
+				GameState::updateState(gameState, GameState::StateType::Pass);
+			});
+		}
+		else
+		{
+			if (gameState->playableCardsThisTurn <= 0)
+			{
+				stateTransition = CallFunc::create([=]()
+				{
+					GameState::updateState(gameState, GameState::StateType::TurnEnd);
+				});
+			}
+			else
+			{
+				stateTransition = CallFunc::create([=]()
+				{
+					GameState::updateState(gameState, GameState::StateType::Neutral);
+				});
+			}
+		}
+	}
+	else
+	{
+		if (gameState->enemyHand->getCardCount() <= 0)
+		{
+			stateTransition = CallFunc::create([=]()
+			{
+				GameState::updateState(gameState, GameState::StateType::Pass);
+			});
+		}
+		else
+		{
+			if (gameState->playableCardsThisTurn <= 0)
+			{
+				stateTransition = CallFunc::create([=]()
+				{
+					GameState::updateState(gameState, GameState::StateType::TurnEnd);
+				});
+			}
+			else
+			{
+				stateTransition = CallFunc::create([=]()
+				{
+					GameState::updateState(gameState, GameState::StateType::AIDecidePass);
+				});
+			}
+		}
+	}
 
 	this->runAction(Sequence::create(
 		DelayTime::create(0.5f),
-		CallFunc::create([=]()
-		{
-			GameState::updateState(gameState, GameState::StateType::TurnEnd);
-		}),
+		stateTransition,
 		nullptr
 	));
 }
@@ -156,6 +210,9 @@ void StatePlayCard::onStateReload(GameState* gameState)
 void StatePlayCard::onStateExit(GameState* gameState)
 {
 	StateBase::onStateExit(gameState);
+
+	gameState->stagedCombineSourceCard = nullptr;
+	gameState->stagedCombineTargetCard = nullptr;
 }
 
 void StatePlayCard::passFromError(GameState* gameState)

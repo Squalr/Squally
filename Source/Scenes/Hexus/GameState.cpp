@@ -20,7 +20,12 @@ GameState::GameState()
 	enemyLosses(0),
 	cardReplaceCount(0),
 	isRepeatingSameTurn(false),
+	playerPassed(false),
+	enemyPassed(false),
 	turnNumber(0),
+	playableCardsThisTurn(0),
+	playerCardsDrawnNextRound(0),
+	enemyCardsDrawnNextRound(0),
 	roundNumber(0),
 	selectedCard(nullptr),
 	selectedRow(nullptr),
@@ -163,7 +168,7 @@ std::vector<Card*> GameState::getAllCards()
 	for (auto it = rows.begin(); it != rows.end(); it++)
 	{
 		CardRow* row = *it;
-		for (auto it = row->rowCards->begin(); it != row->rowCards->end(); it++)
+		for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
 		{
 			Card* card = *it;
 			cards.emplace_back(card);
@@ -179,7 +184,7 @@ std::vector<Card*> GameState::getEnemyCards()
 	for (auto it = rows.begin(); it != rows.end(); it++)
 	{
 		CardRow* row = *it;
-		for (auto it = row->rowCards->begin(); it != row->rowCards->end(); it++)
+		for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
 		{
 			Card* card = *it;
 			cards.emplace_back(card);
@@ -195,7 +200,7 @@ std::vector<Card*> GameState::getPlayerCards()
 	for (auto it = rows.begin(); it != rows.end(); it++)
 	{
 		CardRow* row = *it;
-		for (auto it = row->rowCards->begin(); it != row->rowCards->end(); it++)
+		for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
 		{
 			Card* card = *it;
 			cards.emplace_back(card);
@@ -227,28 +232,34 @@ std::vector<CardRow*> GameState::getEnemyRows()
 
 std::vector<CardRow*> GameState::getPlayerRows() 
 {
-	std::vector<CardRow*> cardRows;
+	std::vector<CardRow*> cardRows = std::vector<CardRow*>();
+
 	cardRows.emplace_back(this->playerBinaryCards);
 	cardRows.emplace_back(this->playerDecimalCards);
 	cardRows.emplace_back(this->playerHexCards);
+
 	return cardRows;
 }
 
 int GameState::getPlayerTotal()
 {
 	int total = 0;
+
 	total += this->playerBinaryCards->getRowAttack();
 	total += this->playerDecimalCards->getRowAttack();
 	total += this->playerHexCards->getRowAttack();
+
 	return total;
 }
 
 int GameState::getEnemyTotal()
 {
 	int total = 0;
+
 	total += this->enemyBinaryCards->getRowAttack();
 	total += this->enemyDecimalCards->getRowAttack();
 	total += this->enemyHexCards->getRowAttack();
+
 	return total;
 }
 
@@ -260,18 +271,22 @@ int GameState::getCardCount()
 int GameState::getPlayerCardCount()
 {
 	int total = 0;
+
 	total += this->playerBinaryCards->getCardCount();
 	total += this->playerDecimalCards->getCardCount();
 	total += this->playerHexCards->getCardCount();
+
 	return total;
 }
 
 int GameState::getEnemyCardCount()
 {
 	int total = 0;
+
 	total += this->enemyBinaryCards->getCardCount();
 	total += this->enemyDecimalCards->getCardCount();
 	total += this->enemyHexCards->getCardCount();
+
 	return total;
 }
 
@@ -288,4 +303,34 @@ bool GameState::isEnemyWinningRound()
 bool GameState::isPlayerWinningRound()
 {
 	return this->getPlayerTotal() > this->getEnemyTotal();
+}
+
+bool GameState::isPlayerLastStandCondition()
+{
+	return (this->isPlayerWinningRound() && !this->enemyPassed);
+}
+
+bool GameState::isPlayerClaimVictoryCondition()
+{
+	return (this->isPlayerWinningRound() && this->enemyPassed);
+}
+
+bool GameState::isPlayerPassCondition()
+{
+	return (!this->isPlayerLastStandCondition() && !this->isPlayerClaimVictoryCondition());
+}
+
+bool GameState::isEnemyLastStandCondition()
+{
+	return (this->isEnemyWinningRound() && !this->playerPassed);
+}
+
+bool GameState::isEnemyClaimVictoryCondition()
+{
+	return (this->isEnemyWinningRound() && this->playerPassed);
+}
+
+bool GameState::isEnemyPassCondition()
+{
+	return (!this->isEnemyLastStandCondition() && !this->isEnemyClaimVictoryCondition());
 }

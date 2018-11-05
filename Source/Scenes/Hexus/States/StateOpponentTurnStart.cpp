@@ -20,11 +20,15 @@ StateOpponentTurnStart::~StateOpponentTurnStart()
 void StateOpponentTurnStart::onBeforeStateEnter(GameState* gameState)
 {
 	StateBase::onBeforeStateEnter(gameState);
+
+	gameState->enemyCardsDrawnNextRound += Config::cardBonusPerTurn;
 }
 
 void StateOpponentTurnStart::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
+
+	gameState->playableCardsThisTurn = Config::playableCardsPerTurn;
 
 	this->runAction(Sequence::create(
 		DelayTime::create(0.75f),

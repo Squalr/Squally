@@ -35,9 +35,9 @@ void CardPreview::onBeforeStateChange(GameState* gameState)
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void CardPreview::onStateChange(GameState* gameState)
+void CardPreview::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onStateChange(gameState);
+	ComponentBase::onAnyStateChange(gameState);
 
 	switch (gameState->stateType)
 	{
@@ -106,9 +106,9 @@ void CardPreview::previewCard(Card* card)
 			{
 				int attack = card->getAttack();
 
-				Label* binaryLabel = Label::create("BIN: " + HackUtils::toBinary4(attack), Localization::getCodingFont(), 32.0f);
-				Label* decimalLabel = Label::create("DEC: " + std::to_string(attack), Localization::getCodingFont(), 32.0f);
-				Label* hexLabel = Label::create("HEX: " + HackUtils::toHex(attack), Localization::getCodingFont(), 32.0f);
+				Label* binaryLabel = Label::create("BIN: " + HackUtils::toBinary4(attack), Localization::getCodingFont(), Localization::getFontSizeH2(Localization::getCodingFont()));
+				Label* decimalLabel = Label::create("DEC: " + std::to_string(attack), Localization::getCodingFont(), Localization::getFontSizeH2(Localization::getCodingFont()));
+				Label* hexLabel = Label::create("HEX: " + HackUtils::toHex(attack), Localization::getCodingFont(), Localization::getFontSizeH2(Localization::getCodingFont()));
 
 				binaryLabel->setAnchorPoint(Vec2::ZERO);
 				decimalLabel->setAnchorPoint(Vec2::ZERO);
@@ -122,24 +122,27 @@ void CardPreview::previewCard(Card* card)
 				decimalLabel->enableOutline(Color4B::BLACK, 3);
 				hexLabel->enableOutline(Color4B::BLACK, 3);
 
-				binaryLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, -212.0f));
-				decimalLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, -212.0f - 40.0f));
-				hexLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, -212.0f - 80.0f));
+				const float yOffset = -72.0f;
+
+				binaryLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, yOffset));
+				decimalLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, yOffset - 40.0f));
+				hexLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, yOffset - 80.0f));
 
 				this->previewPanel->addChild(binaryLabel);
 				this->previewPanel->addChild(decimalLabel);
 				this->previewPanel->addChild(hexLabel);
+
+				break;
 			}
-			break;
 			default:
 			{
-				Label * specialLabel = Label::create("", Localization::getCodingFont(), 28);
+				Label * specialLabel = Label::create("", Localization::getCodingFont(), Localization::getFontSizeP(Localization::getCodingFont()));
 
-				specialLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
+				specialLabel->setAnchorPoint(Vec2(0.0f, 0.0f));
 				specialLabel->setTextColor(Card::specialColor);
 				specialLabel->enableOutline(Color4B::BLACK, 2);
-				specialLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f - 32.0f, -172.0f));
-				specialLabel->setDimensions(previewSprite->getContentSize().width + 64.0f, 0.0f);
+				specialLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, -160.0f));
+				specialLabel->setDimensions(previewSprite->getContentSize().width - 16.0f, 0.0f);
 
 				switch (card->cardData->cardType) {
 				case CardData::CardType::Special_AND:
