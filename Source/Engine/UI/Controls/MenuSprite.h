@@ -13,8 +13,8 @@ using namespace cocos2d;
 class MenuSprite : public SmartNode
 {
 public:
-	static MenuSprite * create(std::string spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource);
-	static MenuSprite * create(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked);
+	static MenuSprite * create(std::string spriteNormal, std::string spriteSelectedResource);
+	static MenuSprite * create(Node* nodeNormal, Node* nodeSelected);
 
 	void setContentScale(float scale);
 	void setOffsetCorrection(Vec2 newOffsetCorrection);
@@ -29,8 +29,11 @@ public:
 	void enableInteraction(GLubyte newOpacity = 255);
 
 protected:
-	MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked);
+	MenuSprite(Node* nodeNormal, Node* nodeSelected);
 	~MenuSprite();
+
+	Node* sprite;
+	Node* spriteSelected;
 
 private:
 	void initializeListeners() override;
@@ -51,9 +54,6 @@ private:
 	std::string clickSound;
 
 	Node* currentSprite;
-	Node* sprite;
-	Node* spriteClicked;
-	Node* spriteSelected;
 	Vec2 offsetCorrection;
 
 	bool interactionEnabled;

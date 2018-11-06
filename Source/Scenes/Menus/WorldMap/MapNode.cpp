@@ -14,7 +14,7 @@ MapNode::MapNode(std::string resource, std::string resourceSelected, std::string
 	this->nodeMapName = mapName;
 	this->nodeMapFile = mapFile;
 
-	this->mapSprite = MenuSprite::create(resource, resourceSelected, resourceSelected);
+	this->mapSprite = MenuSprite::create(resource, resourceSelected);
 	this->mapSpriteLocked = Sprite::create(resourceLocked);
 
 	this->mapSpriteLocked->setVisible(false);

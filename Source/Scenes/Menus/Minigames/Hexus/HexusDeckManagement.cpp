@@ -39,28 +39,28 @@ HexusDeckManagement::HexusDeckManagement()
 	this->specialCardsInDeckLabel = Label::create("Special Cards", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	this->specialCardsInDeckValueLabel = Label::create("PLACEHOLDER_SPECIAL_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
-	MenuSprite* allButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* allButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* allButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* allButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled);
 	allButtonUnselected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconAll));
 	allButtonSelected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconAll));
 
-	MenuSprite* specialButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* specialButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* specialButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* specialButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled);
 	specialButtonUnselected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconSpecial));
 	specialButtonSelected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconSpecial));
 
-	MenuSprite* binaryButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* binaryButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* binaryButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* binaryButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled);
 	binaryButtonUnselected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconBinary));
 	binaryButtonSelected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconBinary));
 
-	MenuSprite* decimalButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* decimalButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* decimalButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* decimalButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled);
 	decimalButtonUnselected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconDecimal));
 	decimalButtonSelected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconDecimal));
 
-	MenuSprite* hexButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* hexButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* hexButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* hexButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled);
 	hexButtonUnselected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconHex));
 	hexButtonSelected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconHex));
 
@@ -88,10 +88,8 @@ HexusDeckManagement::HexusDeckManagement()
 	this->backButton = TextMenuSprite::create(
 		backButtonLabel,
 		backButtonLabelHover,
-		backButtonLabelClick,
 		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover,
-		Resources::Menus_Buttons_GenericButtonClick
+		Resources::Menus_Buttons_GenericButtonHover
 	);
 
 	// Create all cards for deck. Every card gets created with count = 0, and those that are 0 get hidden

@@ -62,11 +62,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 			break;
 	}
 
-	Node* cardUnselected = Sprite::create(Resources::Minigames_Hexus_CardUnselected);
-	Node* cardSelected = Sprite::create(Resources::Minigames_Hexus_CardSelect);
-	Node* cardSelected2 = Sprite::create(Resources::Minigames_Hexus_CardSelect);
-
-	this->cardSelect = MenuSprite::create(cardUnselected, cardSelected, cardSelected2);
+	this->cardSelect = MenuSprite::create(Resources::Minigames_Hexus_CardUnselected, Resources::Minigames_Hexus_CardSelect);
 	this->cardSelect->setClickSound(Resources::Sounds_Menus_Card_Game_UI_Button_Light_Reverb_02);
 	this->cardSprite = Sprite::create(data->cardResourceFile);
 	this->cardFocus = Sprite::create(Resources::Minigames_Hexus_CardSelect);

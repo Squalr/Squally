@@ -30,10 +30,8 @@ HexusRewardsMenu::HexusRewardsMenu()
 	this->returnButton = TextMenuSprite::create(
 		returnButtonLabel,
 		returnButtonLabelHover,
-		returnButtonLabelClick,
 		Resources::Minigames_Hexus_ButtonPlank,
-		Resources::Minigames_Hexus_ButtonPlankHover,
-		Resources::Minigames_Hexus_ButtonPlankClick
+		Resources::Minigames_Hexus_ButtonPlankHover
 	);
 	
 	this->addChild(this->background);

@@ -118,6 +118,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/Controls/CRadioButton.cpp
 	Source/Engine/UI/Controls/CSlider.cpp
 	Source/Engine/UI/Controls/EditableTextWindow.cpp
+	Source/Engine/UI/Controls/IconMenuSprite.cpp
 	Source/Engine/UI/Controls/MenuLabel.cpp
 	Source/Engine/UI/Controls/MenuSprite.cpp
 	Source/Engine/UI/Controls/MouseOverPanel.cpp
@@ -834,6 +835,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/Controls/CRadioButton.h
 	Source/Engine/UI/Controls/CSlider.h
 	Source/Engine/UI/Controls/EditableTextWindow.h
+	Source/Engine/UI/Controls/IconMenuSprite.h
 	Source/Engine/UI/Controls/MenuLabel.h
 	Source/Engine/UI/Controls/MenuSprite.h
 	Source/Engine/UI/Controls/MouseOverPanel.h

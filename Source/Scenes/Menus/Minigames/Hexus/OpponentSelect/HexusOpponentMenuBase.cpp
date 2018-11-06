@@ -19,10 +19,8 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
 	this->deckManagementButton = TextMenuSprite::create(
 		manageDeckLabel,
 		manageDeckLabelHover,
-		manageDeckLabelClick,
 		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover,
-		Resources::Menus_Buttons_GenericButtonClick
+		Resources::Menus_Buttons_GenericButtonHover
 	);
 
 	Label* shopLabel = Label::create("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
@@ -36,10 +34,8 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
 	this->shopButton = TextMenuSprite::create(
 		shopLabel,
 		shopLabelHover,
-		shopLabelClick,
 		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover,
-		Resources::Menus_Buttons_GenericButtonClick
+		Resources::Menus_Buttons_GenericButtonHover
 	);
 
 	Label* backButtonLabel = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
@@ -53,10 +49,8 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
 	this->backButton = TextMenuSprite::create(
 		backButtonLabel,
 		backButtonLabelHover,
-		backButtonLabelClick,
 		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover,
-		Resources::Menus_Buttons_GenericButtonClick
+		Resources::Menus_Buttons_GenericButtonHover
 	);
 
 	this->opponentSelectLabel->enableOutline(Color4B::BLACK, 2);
