@@ -6203,6 +6203,7 @@ const std::string Resources::Particles_Sparks = "Particles/Sparks.plist";
 const std::string Resources::Particles_Static = "Particles/Static.plist";
 const std::string Resources::Particles_WarpGate = "Particles/WarpGate.plist";
 const std::string Resources::Particles_WarpPoint = "Particles/WarpPoint.plist";
+const std::string Resources::Particles_WhiteAura = "Particles/WhiteAura.plist";
 const std::string Resources::Particles_Wind = "Particles/Wind.plist";
 const std::string Resources::Strings_Dialogue_CutsceneBoardMembers = "Strings/Dialogue_CutsceneBoardMembers.json";
 const std::string Resources::Strings_Dialogue_CutsceneHomeAssistantRobot = "Strings/Dialogue_CutsceneHomeAssistantRobot.json";

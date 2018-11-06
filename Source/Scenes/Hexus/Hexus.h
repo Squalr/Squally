@@ -74,6 +74,7 @@ private:
 	RoundTieBanner* roundTieBanner;
 	VictoryBanner* victoryBanner;
 	DefeatBanner* defeatBanner;
+	DrawBanner* drawBanner;
 
 	DeckCardCountDisplay* deckCardCountDisplay;
 	HandCardCountDisplay* handCardCountDisplay;

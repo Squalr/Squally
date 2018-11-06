@@ -487,6 +487,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/Banners/BannerBase.cpp
 	Source/Scenes/Hexus/Components/Banners/CardReplaceBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/DefeatBanner.cpp
+	Source/Scenes/Hexus/Components/Banners/DrawBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/OpponentFirstBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/OpponentLastStandBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/OpponentPassBanner.cpp
@@ -1227,6 +1228,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/Banners/BannerBase.h
 	Source/Scenes/Hexus/Components/Banners/CardReplaceBanner.h
 	Source/Scenes/Hexus/Components/Banners/DefeatBanner.h
+	Source/Scenes/Hexus/Components/Banners/DrawBanner.h
 	Source/Scenes/Hexus/Components/Banners/OpponentFirstBanner.h
 	Source/Scenes/Hexus/Components/Banners/OpponentLastStandBanner.h
 	Source/Scenes/Hexus/Components/Banners/OpponentPassBanner.h

@@ -24,9 +24,9 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->passPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->passLabel = Label::create(Localization::resolveString(StatePass::StringKeyHexusPass), Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
-	this->passParticles = ParticleSystemQuad::create(Resources::Particles_BlueAura);
+	this->passParticles = ParticleSystemQuad::create(Resources::Particles_WhiteAura);
 	this->enemyPassSprite = Sprite::create(Resources::Minigames_Hexus_Flags);
-	this->enemyPassParticles = ParticleSystemQuad::create(Resources::Particles_BlueAura);
+	this->enemyPassParticles = ParticleSystemQuad::create(Resources::Particles_WhiteAura);
 
 	// Last stand
 	this->lastStandSprite = Sprite::create(Resources::Minigames_Hexus_ShieldButton);

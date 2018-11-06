@@ -49,14 +49,19 @@ void StateGameEnd::onBackClick(MenuSprite* menuSprite, GameState* gameState)
 {
 	GameState::updateState(gameState, GameState::StateType::EmptyState);
 
-	if (gameState->playerLosses < 2 && gameState->enemyLosses >= 2)
+	if (gameState->playerLosses >= 2 && gameState->enemyLosses >= 2)
 	{
 		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_Validation_03);
-		gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, gameState->opponentData, gameState->gameDurationInSeconds));
+		gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(HexusEvents::HexusGameResult::Draw, gameState->opponentData, gameState->gameDurationInSeconds));
+	}
+	else if (gameState->playerLosses < 2 && gameState->enemyLosses >= 2)
+	{
+		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_Validation_03);
+		gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(HexusEvents::HexusGameResult::PlayerWon, gameState->opponentData, gameState->gameDurationInSeconds));
 	}
 	else
 	{
-		gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(false, gameState->opponentData, gameState->gameDurationInSeconds));
+		gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(HexusEvents::HexusGameResult::EnemyWon, gameState->opponentData, gameState->gameDurationInSeconds));
 	}
 }
 
