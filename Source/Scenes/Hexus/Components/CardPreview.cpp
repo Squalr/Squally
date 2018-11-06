@@ -42,13 +42,44 @@ void CardPreview::onAnyStateChange(GameState* gameState)
 	switch (gameState->stateType)
 	{
 		case GameState::StateType::Neutral:
-		case GameState::StateType::SelectionStaged:
-		case GameState::StateType::CombineStaged:
+		{
 			this->initializeCallbacks(gameState);
 			break;
+		}
+		case GameState::StateType::SelectionStaged:
+		case GameState::StateType::CombineStaged:
+		{
+			if (gameState->selectedCard == nullptr)
+			{
+				this->initializeCallbacks(gameState);
+				break;
+			}
+
+			switch (gameState->selectedCard->cardData->cardType)
+			{
+				case CardData::CardType::Binary:
+				case CardData::CardType::Decimal:
+				case CardData::CardType::Hexidecimal:
+				case CardData::CardType::Special_SHL:
+				case CardData::CardType::Special_SHR:
+				{
+					// Do not enable intraction for rows when these card types are staged
+					break;
+				}
+				default:
+				{
+					this->initializeCallbacks(gameState);
+					break;
+				}
+			}
+
+			break;
+		}
 		default:
+		{
 			this->clearPreview();
 			break;
+		}
 	}
 }
 
