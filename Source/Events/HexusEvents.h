@@ -15,23 +15,31 @@ public:
 	static const std::string HexusGameStartEvent;
 	static const std::string HexusShowRewardsEvent;
 
+	enum HexusGameResult
+	{
+		PlayerWon,
+		EnemyWon,
+		Draw
+	};
+
 	struct HexusGameResultEventArgs
 	{
-		bool playerWon;
+		HexusGameResult gameResult;
 		HexusOpponentData* opponentData;
 		int gameDurationInSeconds;
 
-		HexusGameResultEventArgs(bool playerWon, HexusOpponentData* opponentData, int gameDurationInSeconds) : playerWon(playerWon), opponentData(opponentData), gameDurationInSeconds(gameDurationInSeconds)
+		HexusGameResultEventArgs(HexusGameResult gameResult, HexusOpponentData* opponentData, int gameDurationInSeconds) : gameResult(gameResult), opponentData(opponentData), gameDurationInSeconds(gameDurationInSeconds)
 		{
 		}
 	};
 
 	struct HexusRewardArgs
 	{
+		HexusGameResult gameResult;
 		HexusOpponentData* opponentData;
 		bool backToChapterSelect;
 
-		HexusRewardArgs(HexusOpponentData* opponentData, bool backToChapterSelect) : opponentData(opponentData), backToChapterSelect(backToChapterSelect)
+		HexusRewardArgs(HexusGameResult gameResult, HexusOpponentData* opponentData, bool backToChapterSelect) : gameResult(gameResult), opponentData(opponentData), backToChapterSelect(backToChapterSelect)
 		{
 		}
 	};

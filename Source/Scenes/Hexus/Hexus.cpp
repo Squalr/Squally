@@ -29,6 +29,7 @@ Hexus::Hexus()
 	this->roundTieBanner = RoundTieBanner::create();
 	this->victoryBanner = VictoryBanner::create();
 	this->defeatBanner = DefeatBanner::create();
+	this->drawBanner = DrawBanner::create();
 	this->cardPreview = CardPreview::create();
 	this->stateAIDecideCard = StateAIDecideCard::create();
 	this->stateAIDecideCardReplace = StateAIDecideCardReplace::create();
@@ -106,6 +107,7 @@ Hexus::Hexus()
 	this->addChild(this->roundTieBanner);
 	this->addChild(this->victoryBanner);
 	this->addChild(this->defeatBanner);
+	this->addChild(this->drawBanner);
 	this->addChild(Mouse::create());
 }
 

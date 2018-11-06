@@ -6205,6 +6205,7 @@ public:
 	static const std::string Particles_Static;
 	static const std::string Particles_WarpGate;
 	static const std::string Particles_WarpPoint;
+	static const std::string Particles_WhiteAura;
 	static const std::string Particles_Wind;
 	static const std::string Strings_Dialogue_CutsceneBoardMembers;
 	static const std::string Strings_Dialogue_CutsceneHomeAssistantRobot;

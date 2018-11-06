@@ -186,12 +186,12 @@ void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventA
 	// Analytics for first time playing opponent (neither WIN or LOSS key present in save file)
 	if (!SaveManager::hasGlobalData(winsKey) && !SaveManager::hasGlobalData(lossesKey))
 	{
-		Analytics::sendEvent(AnalyticsCategories::Hexus, "first_game_result", args.opponentData->enemyNameKey, args.playerWon ? 1 : 0);
+		Analytics::sendEvent(AnalyticsCategories::Hexus, "first_game_result", args.opponentData->enemyNameKey, args.gameResult == HexusEvents::PlayerWon ? 1 : 0);
 	}
 
 	Analytics::sendEvent(AnalyticsCategories::Hexus, "game_duration", args.opponentData->enemyNameKey, args.gameDurationInSeconds);
 
-	if (args.playerWon)
+	if (args.gameResult == HexusEvents::PlayerWon)
 	{
 		int wins = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
 		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt();
@@ -219,7 +219,18 @@ void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventA
 			}
 		}
 
-		HexusEvents::showRewards(HexusEvents::HexusRewardArgs(args.opponentData, backToChapterSelect));
+		HexusEvents::showRewards(HexusEvents::HexusRewardArgs(args.gameResult, args.opponentData, backToChapterSelect));
+	}
+	else if (args.gameResult == HexusEvents::Draw)
+	{
+		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
+
+		SaveManager::saveGlobalData(lossesKey, cocos2d::Value(losses));
+
+		// Analytics for losing
+		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", args.opponentData->enemyNameKey, losses);
+
+		HexusEvents::showRewards(HexusEvents::HexusRewardArgs(args.gameResult, args.opponentData, false));
 	}
 	else
 	{
@@ -227,7 +238,7 @@ void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventA
 
 		SaveManager::saveGlobalData(lossesKey, cocos2d::Value(losses));
 
-		// Analytics for winning in general
+		// Analytics for losing
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", args.opponentData->enemyNameKey, losses);
 
 		NavigationEvents::navigateBack();

@@ -1,30 +1,30 @@
-#include "DefeatBanner.h"
+#include "DrawBanner.h"
 
-DefeatBanner* DefeatBanner::create()
+DrawBanner* DrawBanner::create()
 {
-	DefeatBanner* instance = new DefeatBanner();
+	DrawBanner* instance = new DrawBanner();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DefeatBanner::DefeatBanner()
+DrawBanner::DrawBanner()
 {
-	this->defeatBanner1 = Sprite::create(Resources::Minigames_Hexus_EnemyBanner);
-	this->defeatBanner2 = Sprite::create(Resources::Minigames_Hexus_EnemyBanner);
+	this->defeatBanner1 = Sprite::create(Resources::Minigames_Hexus_RoundBanner);
+	this->defeatBanner2 = Sprite::create(Resources::Minigames_Hexus_RoundBanner);
 
-	this->setBannerText("DEFEAT!");
+	this->setBannerText("DRAW!");
 
 	this->addBannerChild(this->defeatBanner1);
 	this->addBannerChild(this->defeatBanner2);
 }
 
-DefeatBanner::~DefeatBanner()
+DrawBanner::~DrawBanner()
 {
 }
 
-void DefeatBanner::initializePositions()
+void DrawBanner::initializePositions()
 {
 	BannerBase::initializePositions();
 
@@ -34,16 +34,16 @@ void DefeatBanner::initializePositions()
 	this->defeatBanner2->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::bannerIconOffset, visibleSize.height / 2.0f + 320.0f);
 }
 
-void DefeatBanner::onBeforeStateChange(GameState* gameState)
+void DrawBanner::onBeforeStateChange(GameState* gameState)
 {
 	ComponentBase::onBeforeStateChange(gameState);
 }
 
-void DefeatBanner::onAnyStateChange(GameState* gameState)
+void DrawBanner::onAnyStateChange(GameState* gameState)
 {
 	BannerBase::onAnyStateChange(gameState);
 
-	if (gameState->stateType == GameState::GameEnd && gameState->enemyLosses < 2 && gameState->playerLosses >= 2)
+	if (gameState->stateType == GameState::GameEnd && gameState->enemyLosses == 2 && gameState->playerLosses == 2)
 	{
 		this->showBanner();
 	}

@@ -15,6 +15,7 @@ HexusRewardsMenu::HexusRewardsMenu()
 {
 	this->background = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_WoodBackground);
 	this->goldSprite = Sprite::create(Resources::Menus_Objects_GOLD_2);
+	this->goldSpriteLesser = Sprite::create(Resources::Menus_Objects_GOLD_1);
 	this->goldLabel = Label::create("", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 
 	this->goldLabel->enableOutline(Color4B::BLACK, 3);
@@ -36,6 +37,7 @@ HexusRewardsMenu::HexusRewardsMenu()
 	
 	this->addChild(this->background);
 	this->addChild(this->goldSprite);
+	this->addChild(this->goldSpriteLesser);
 	this->addChild(this->goldLabel);
 	this->addChild(this->returnButton);
 	this->addChild(Mouse::create());
@@ -66,6 +68,7 @@ void HexusRewardsMenu::initializePositions()
 
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->goldSprite->setPosition(Vec2(visibleSize.width / 2.0f - 48.0f, visibleSize.height / 2.0f));
+	this->goldSpriteLesser->setPosition(Vec2(visibleSize.width / 2.0f - 48.0f, visibleSize.height / 2.0f));
 	this->goldLabel->setPosition(Vec2(visibleSize.width / 2.0f + 48.0f, visibleSize.height / 2.0f));
 	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 128.0f));
 }
@@ -77,6 +80,20 @@ void HexusRewardsMenu::onRewardsOpen(EventCustom* eventCustom)
 	this->returnButton->setClickCallback(CC_CALLBACK_1(HexusRewardsMenu::onReturnClick, this, args->backToChapterSelect));
 
 	int reward = args->opponentData->reward;
+
+	// Cut the reward in half on a draw
+	if (args->gameResult == HexusEvents::HexusGameResult::Draw)
+	{
+		reward /= 2;
+
+		this->goldSpriteLesser->setVisible(true);
+		this->goldSprite->setVisible(false);
+	}
+	else
+	{
+		this->goldSpriteLesser->setVisible(false);
+		this->goldSprite->setVisible(true);
+	}
 
 	CardStorage::addGold(reward);
 

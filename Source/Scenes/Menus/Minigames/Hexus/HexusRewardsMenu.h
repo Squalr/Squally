@@ -34,6 +34,7 @@ private:
 
 	Sprite* background;
 	Sprite* goldSprite;
+	Sprite* goldSpriteLesser;
 	Label* goldLabel;
 	MenuSprite* returnButton;
 
