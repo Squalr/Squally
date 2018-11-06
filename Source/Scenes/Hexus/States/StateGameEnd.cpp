@@ -13,20 +13,17 @@ StateGameEnd::StateGameEnd() : StateBase(GameState::StateType::GameEnd)
 {
 	Label* backButtonLabel = Label::create("Leave", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 	Label* backButtonLabelHover = Label::create("Leave", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelClick = Label::create("Leave", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
-	backButtonLabelClick->enableOutline(Color4B::BLACK, 2);
 
 	this->backButton = TextMenuSprite::create(
 		backButtonLabel,
 		backButtonLabelHover,
-		backButtonLabelClick,
 		Resources::Minigames_Hexus_ButtonPlank,
-		Resources::Minigames_Hexus_ButtonPlankHover,
-		Resources::Minigames_Hexus_ButtonPlankClick
+		Resources::Minigames_Hexus_ButtonPlankHover
 	);
+
 	this->backButton->setOpacity(0);
 
 	this->addChild(this->backButton);

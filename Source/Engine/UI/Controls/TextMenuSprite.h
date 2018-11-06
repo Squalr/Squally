@@ -12,24 +12,18 @@ public:
 	static TextMenuSprite * create(
 		Label* normalLabel,
 		Label* selectedLabel,
-		Label* clickedLabel,
 		std::string spriteNormal,
-		std::string spriteSelectedResource,
-		std::string spriteClickedResource);
+		std::string spriteSelectedResource);
 	static TextMenuSprite * create(
 		Label* normalLabel,
 		Label* selectedLabel,
-		Label* clickedLabel, 
 		Node* spriteNormal,
-		std::string spriteSelectedResource,
-		std::string spriteClickedResource);
+		std::string spriteSelectedResource);
 	static TextMenuSprite * create(
 		Label* normalLabel,
-		Label* selectedLabel,
-		Label* clickedLabel, 
+		Label* selectedLabel, 
 		Node* nodeNormal,
-		Node* nodeSelected, 
-		Node* nodeClicked);
+		Node* nodeSelected);
 
 	void setTextOffset(Vec2 offset);
 
@@ -37,16 +31,12 @@ protected:
 	TextMenuSprite(
 		Label* normalLabel,
 		Label* selectedLabel,
-		Label* clickedLabel, 
 		Node* nodeNormal,
-		Node* nodeSelected,
-		Node* nodeClicked);
+		Node* nodeSelected);
 	~TextMenuSprite();
 
 	Label* normalContentLabel;
 	Label* selectedContentLabel;
-	Label* clickedContentLabel;
 	Node* normalContent;
 	Node* selectedContent;
-	Node* clickedContent;
 };

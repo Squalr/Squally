@@ -43,10 +43,8 @@ MinigamesMenu::MinigamesMenu()
 	this->backButton = TextMenuSprite::create(
 		backButtonLabel,
 		backButtonLabelHover,
-		backButtonLabelClick,
 		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover,
-		Resources::Menus_Buttons_GenericButtonClick
+		Resources::Menus_Buttons_GenericButtonHover
 	);
 
 	Label* hexusLabel = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
@@ -68,10 +66,8 @@ MinigamesMenu::MinigamesMenu()
 	this->hexusButton = TextMenuSprite::create(
 		hexusLabel,
 		hexusLabelHover,
-		hexusLabelClicked,
 		Resources::Menus_MinigamesMenu_Banner,
-		Resources::Menus_MinigamesMenu_BannerHover,
-		Resources::Menus_MinigamesMenu_BannerClick);
+		Resources::Menus_MinigamesMenu_BannerHover);
 
 	this->hexusButton->setTextOffset(labelOffset);
 
@@ -102,10 +98,8 @@ MinigamesMenu::MinigamesMenu()
 	this->hexusPuzzlesButton = TextMenuSprite::create(
 		hexusPuzzlesLabel,
 		hexusPuzzlesLabelHover,
-		hexusPuzzlesLabelClicked,
 		Resources::Menus_MinigamesMenu_Banner,
-		Resources::Menus_MinigamesMenu_BannerHover,
-		Resources::Menus_MinigamesMenu_BannerClick);
+		Resources::Menus_MinigamesMenu_BannerHover);
 
 	this->hexusPuzzlesButton->setTextOffset(labelOffset);
 
@@ -236,7 +230,6 @@ TextMenuSprite* MinigamesMenu::createComingSoonButton()
 
 	Label* comingSoonLabel = Label::create(Localization::resolveString(MinigamesMenu::StringKeyComingSoon), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* comingSoonLabelHover = Label::create(Localization::resolveString(MinigamesMenu::StringKeyComingSoon), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* comingSoonLabelClicked = Label::create(Localization::resolveString(MinigamesMenu::StringKeyComingSoon), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	comingSoonLabel->setColor(textColor);
 	comingSoonLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -246,17 +239,11 @@ TextMenuSprite* MinigamesMenu::createComingSoonButton()
 	comingSoonLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	comingSoonLabelHover->enableGlow(glowColor);
 
-	comingSoonLabelClicked->setColor(highlightColor);
-	comingSoonLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
-	comingSoonLabelClicked->enableGlow(glowColor);
-
 	TextMenuSprite* comingSoonButton = TextMenuSprite::create(
 		comingSoonLabel,
 		comingSoonLabelHover,
-		comingSoonLabelClicked,
 		Resources::Menus_MinigamesMenu_Banner,
-		Resources::Menus_MinigamesMenu_BannerHover,
-		Resources::Menus_MinigamesMenu_BannerClick);
+		Resources::Menus_MinigamesMenu_BannerHover);
 
 	comingSoonButton->setTextOffset(labelOffset);
 

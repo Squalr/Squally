@@ -27,14 +27,12 @@ HexusPuzzleItem::HexusPuzzleItem(std::string description, std::string mapFile, i
 	{
 		this->startButton = MenuSprite::create(
 			Resources::Menus_TutorialMenu_TutorialEntryComplete,
-			Resources::Menus_TutorialMenu_TutorialEntryCompleteSelected,
 			Resources::Menus_TutorialMenu_TutorialEntryCompleteSelected);
 	}
 	else
 	{
 		this->startButton = MenuSprite::create(
 			Resources::Menus_TutorialMenu_TutorialEntry,
-			Resources::Menus_TutorialMenu_TutorialEntrySelected,
 			Resources::Menus_TutorialMenu_TutorialEntrySelected);
 	}
 

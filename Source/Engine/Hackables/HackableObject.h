@@ -16,9 +16,9 @@ public:
 	void onHackableClick(MenuSprite* menuSprite);
 
 	Size size;
-	std::vector<HackableData*>* dataList;
+	std::vector<HackableData*> dataList;
 
-	MenuSprite * hackButton;
+	MenuSprite* hackButton;
 
 protected:
 	HackableObject(ValueMap* initProperties);

@@ -3,35 +3,29 @@
 TextMenuSprite* TextMenuSprite::create(
 	Label* normalLabel,
 	Label* selectedLabel,
-	Label* clickedLabel, 
 	std::string spriteNormal,
-	std::string spriteSelectedResource,
-	std::string spriteClickedResource)
+	std::string spriteSelectedResource)
 {
 	return TextMenuSprite::create(
 		normalLabel,
 		selectedLabel,
-		clickedLabel, 
 		Sprite::create(spriteNormal),
-		Sprite::create(spriteSelectedResource),
-		Sprite::create(spriteClickedResource));
+		Sprite::create(spriteSelectedResource)
+	);
 }
 
 TextMenuSprite* TextMenuSprite::create(
 	Label* normalLabel,
 	Label* selectedLabel,
-	Label* clickedLabel,
 	Node* spriteNormal,
-	std::string spriteSelectedResource,
-	std::string spriteClickedResource)
+	std::string spriteSelectedResource)
 {
 	TextMenuSprite* instance = new TextMenuSprite(
 		normalLabel,
 		selectedLabel,
-		clickedLabel,
 		spriteNormal, 
-		Sprite::create(spriteSelectedResource), 
-		Sprite::create(spriteClickedResource));
+		Sprite::create(spriteSelectedResource)
+	);
 
 	instance->autorelease();
 
@@ -41,18 +35,14 @@ TextMenuSprite* TextMenuSprite::create(
 TextMenuSprite* TextMenuSprite::create(
 	Label* normalLabel,
 	Label* selectedLabel,
-	Label* clickedLabel, 
 	Node* nodeNormal, 
-	Node* nodeSelected, 
-	Node* nodeClicked)
+	Node* nodeSelected)
 {
 	TextMenuSprite* instance = new TextMenuSprite(
 		normalLabel,
 		selectedLabel,
-		clickedLabel,
 		nodeNormal,
-		nodeSelected,
-		nodeClicked);
+		nodeSelected);
 
 	instance->autorelease();
 
@@ -62,29 +52,23 @@ TextMenuSprite* TextMenuSprite::create(
 TextMenuSprite::TextMenuSprite(
 	Label* normalLabel,
 	Label* selectedLabel,
-	Label* clickedLabel,
 	Node* nodeNormal,
-	Node* nodeSelected,
-	Node* nodeClicked) : MenuSprite(nodeNormal, nodeSelected, nodeClicked)
+	Node* nodeSelected) : MenuSprite(nodeNormal, nodeSelected)
 {
 	this->normalContentLabel = normalLabel;
 	this->selectedContentLabel = selectedLabel;
-	this->clickedContentLabel = clickedLabel;
 	this->normalContent = nodeNormal;
 	this->selectedContent = nodeSelected;
-	this->clickedContent = nodeClicked;
 
 	Vec2 center = this->getContentSize() / 2.0f;
 
 	normalLabel->setPosition(center);
 	selectedLabel->setPosition(center);
-	clickedLabel->setPosition(center);
 
 	this->setCascadeOpacityEnabled(true);
 
 	nodeNormal->addChild(normalLabel);
 	nodeSelected->addChild(selectedLabel);
-	nodeClicked->addChild(clickedLabel);
 }
 
 TextMenuSprite::~TextMenuSprite()
@@ -97,5 +81,4 @@ void TextMenuSprite::setTextOffset(Vec2 offset)
 
 	this->normalContentLabel->setPosition(center + offset);
 	this->selectedContentLabel->setPosition(center + offset);
-	this->clickedContentLabel->setPosition(center + offset);
 }

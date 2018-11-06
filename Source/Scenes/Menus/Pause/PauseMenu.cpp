@@ -20,7 +20,7 @@ PauseMenu::PauseMenu()
 {
 	this->background = Node::create();
 	this->pauseWindow = Sprite::create(Resources::Menus_PauseMenu_PauseMenu);
-	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
+	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover);
 	this->titleLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyMenuPause), Localization::getMainFont(), 32.0f);
 
 	int fontSize = 24;
@@ -34,15 +34,12 @@ PauseMenu::PauseMenu()
 
 	Label* resumeLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyResume), Localization::getMainFont(), fontSize);
 	Label* resumeLabelHover = Label::create(Localization::resolveString(PauseMenu::StringKeyResume), Localization::getMainFont(), fontSize);
-	Label* resumeLabelClicked = Label::create(Localization::resolveString(PauseMenu::StringKeyResume), Localization::getMainFont(), fontSize);
 
 	Label* optionsLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyOptions), Localization::getMainFont(), fontSize);
 	Label* optionsLabelHover = Label::create(Localization::resolveString(PauseMenu::StringKeyOptions), Localization::getMainFont(), fontSize);
-	Label* optionsLabelClicked = Label::create(Localization::resolveString(PauseMenu::StringKeyOptions), Localization::getMainFont(), fontSize);
 
 	Label* exitLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyExit), Localization::getMainFont(), fontSize);
 	Label* exitLabelHover = Label::create(Localization::resolveString(PauseMenu::StringKeyExit), Localization::getMainFont(), fontSize);
-	Label* exitLabelClicked = Label::create(Localization::resolveString(PauseMenu::StringKeyExit), Localization::getMainFont(), fontSize);
 
 	resumeLabel->setColor(textColor);
 	resumeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -64,39 +61,23 @@ PauseMenu::PauseMenu()
 	exitLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	exitLabelHover->enableGlow(glowColor);
 
-	resumeLabelClicked->setColor(highlightColor);
-	resumeLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
-	resumeLabelClicked->enableGlow(glowColor);
-	optionsLabelClicked->setColor(highlightColor);
-	optionsLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
-	optionsLabelClicked->enableGlow(glowColor);
-	exitLabelClicked->setColor(highlightColor);
-	exitLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
-	exitLabelClicked->enableGlow(glowColor);
-
 	this->resumeButton = TextMenuSprite::create(
 		resumeLabel,
 		resumeLabelHover,
-		resumeLabelClicked,
 		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover,
-		Resources::Menus_Buttons_GenericButtonClick);
+		Resources::Menus_Buttons_GenericButtonHover);
 
 	this->optionsButton = TextMenuSprite::create(
 		optionsLabel,
 		optionsLabelHover,
-		optionsLabelClicked,
 		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover,
-		Resources::Menus_Buttons_GenericButtonClick);
+		Resources::Menus_Buttons_GenericButtonHover);
 
 	this->exitButton = TextMenuSprite::create(
 		exitLabel,
 		exitLabelHover,
-		exitLabelClicked,
 		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover,
-		Resources::Menus_Buttons_GenericButtonClick);
+		Resources::Menus_Buttons_GenericButtonHover);
 
 	this->titleLabel->setColor(PauseMenu::TitleColor);
 	this->titleLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);

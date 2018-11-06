@@ -22,7 +22,7 @@ HexusPuzzlesMenu::HexusPuzzlesMenu()
 	this->titleLabel = Label::create(Localization::resolveString(HexusPuzzlesMenu::StringKeyHexusPuzzles), Localization::getMainFont(), 32.0f);
 	this->descriptionBox = Sprite::create(Resources::Menus_TutorialMenu_TutorialItem);
 	this->description = Label::create("", Localization::getMainFont(), 14.0f);
-	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
+	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover);
 
 	this->nether = ParticleSystemQuad::create(Resources::Particles_BlueNether);
 	this->swirl = ParticleSystemQuad::create(Resources::Particles_BlueStarCircle);

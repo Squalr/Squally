@@ -34,7 +34,6 @@ SaveSelectMenu::SaveSelectMenu()
 
 	Label* saveGame1Label = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* saveGame1LabelHover = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* saveGame1LabelClicked = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	saveGame1Label->setColor(textColor);
 	saveGame1Label->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -44,17 +43,11 @@ SaveSelectMenu::SaveSelectMenu()
 	saveGame1LabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	saveGame1LabelHover->enableGlow(glowColor);
 
-	saveGame1LabelClicked->setColor(highlightColor);
-	saveGame1LabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
-	saveGame1LabelClicked->enableGlow(glowColor);
-
 	this->saveGame1 = TextMenuSprite::create(
 		saveGame1Label,
 		saveGame1LabelHover,
-		saveGame1LabelClicked,
 		Resources::Menus_MinigamesMenu_Banner,
-		Resources::Menus_MinigamesMenu_BannerHover,
-		Resources::Menus_MinigamesMenu_BannerClick);
+		Resources::Menus_MinigamesMenu_BannerHover);
 
 	this->saveGame1->setTextOffset(labelOffset);
 
@@ -67,7 +60,6 @@ SaveSelectMenu::SaveSelectMenu()
 
 	Label* saveGame2Label = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* saveGame2LabelHover = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* saveGame2LabelClicked = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	saveGame2Label->setColor(textColor);
 	saveGame2Label->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -77,17 +69,11 @@ SaveSelectMenu::SaveSelectMenu()
 	saveGame2LabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	saveGame2LabelHover->enableGlow(glowColor);
 
-	saveGame2LabelClicked->setColor(highlightColor);
-	saveGame2LabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
-	saveGame2LabelClicked->enableGlow(glowColor);
-
 	this->saveGame2 = TextMenuSprite::create(
 		saveGame2Label,
 		saveGame2LabelHover,
-		saveGame2LabelClicked,
 		Resources::Menus_MinigamesMenu_Banner,
-		Resources::Menus_MinigamesMenu_BannerHover,
-		Resources::Menus_MinigamesMenu_BannerClick);
+		Resources::Menus_MinigamesMenu_BannerHover);
 
 	this->saveGame2->setTextOffset(labelOffset);
 
@@ -100,7 +86,6 @@ SaveSelectMenu::SaveSelectMenu()
 
 	Label* saveGame3Label = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* saveGame3LabelHover = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* saveGame3LabelClicked = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	saveGame3Label->setColor(textColor);
 	saveGame3Label->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -110,17 +95,11 @@ SaveSelectMenu::SaveSelectMenu()
 	saveGame3LabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	saveGame3LabelHover->enableGlow(glowColor);
 
-	saveGame3LabelClicked->setColor(highlightColor);
-	saveGame3LabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
-	saveGame3LabelClicked->enableGlow(glowColor);
-
 	this->saveGame3 = TextMenuSprite::create(
 		saveGame3Label,
 		saveGame3LabelHover,
-		saveGame3LabelClicked,
 		Resources::Menus_MinigamesMenu_Banner,
-		Resources::Menus_MinigamesMenu_BannerHover,
-		Resources::Menus_MinigamesMenu_BannerClick);
+		Resources::Menus_MinigamesMenu_BannerHover);
 
 	this->saveGame3->setTextOffset(labelOffset);
 

@@ -49,10 +49,8 @@ HexusStoreMenu::HexusStoreMenu()
 	this->backButton = TextMenuSprite::create(
 		backButtonLabel,
 		backButtonLabelHover,
-		backButtonLabelClick,
 		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover,
-		Resources::Menus_Buttons_GenericButtonClick
+		Resources::Menus_Buttons_GenericButtonHover
 	);
 
 	this->lootBoxRewardBackground = LayerColor::create(Color4B::BLACK);
@@ -70,19 +68,17 @@ HexusStoreMenu::HexusStoreMenu()
 	this->lootBoxReturnButton = TextMenuSprite::create(
 		lootBoxReturnLabel,
 		lootBoxReturnLabelSelected,
-		lootBoxReturnLabelClick,
 		Resources::Minigames_Hexus_ButtonPlank,
-		Resources::Minigames_Hexus_ButtonPlankHover,
-		Resources::Minigames_Hexus_ButtonPlankClick
+		Resources::Minigames_Hexus_ButtonPlankHover
 	);
 
 	this->lootBoxReturnButton->disableInteraction(0);
 
-	this->lootBoxButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected, Resources::Menus_StoreMenu_TabButtonSelected);
-	this->binaryButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected, Resources::Menus_StoreMenu_TabButtonSelected);
-	this->decimalButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected, Resources::Menus_StoreMenu_TabButtonSelected);
-	this->hexButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected, Resources::Menus_StoreMenu_TabButtonSelected);
-	this->specialButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected, Resources::Menus_StoreMenu_TabButtonSelected);
+	this->lootBoxButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected);
+	this->binaryButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected);
+	this->decimalButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected);
+	this->hexButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected);
+	this->specialButton = MenuSprite::create(Resources::Menus_StoreMenu_TabButton, Resources::Menus_StoreMenu_TabButtonSelected);
 
 	const Size scrollPaneSize = Size(840.0f, 720.0f);
 
@@ -398,7 +394,7 @@ std::tuple<MenuSprite*, int> HexusStoreMenu::constructLootBoxButton(std::string 
 	SpriterEngine::EntityInstance* entity = animationNode->play("Entity");
 	entity->setCurrentAnimation("Idle");
 
-	MenuSprite* frame = MenuSprite::create(Resources::Menus_StoreMenu_StoreOption, Resources::Menus_StoreMenu_StoreOptionSelected, Resources::Menus_StoreMenu_StoreOptionSelected);
+	MenuSprite* frame = MenuSprite::create(Resources::Menus_StoreMenu_StoreOption, Resources::Menus_StoreMenu_StoreOptionSelected);
 	Label* priceLabel = Label::create(std::to_string(price), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Sprite* goldIcon = Sprite::create(Resources::Menus_Objects_GOLD_1);
 
@@ -421,7 +417,7 @@ std::tuple<MenuSprite*, int> HexusStoreMenu::constructLootBoxButton(std::string 
 
 std::tuple<MenuSprite*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* cardData)
 {
-	MenuSprite* cardContainer =  MenuSprite::create(Resources::Menus_StoreMenu_CardPanel, Resources::Menus_StoreMenu_CardPanelSelected, Resources::Menus_StoreMenu_CardPanelSelected);;
+	MenuSprite* cardContainer =  MenuSprite::create(Resources::Menus_StoreMenu_CardPanel, Resources::Menus_StoreMenu_CardPanelSelected);
 	MenuCard* menuCard = MenuCard::create(Card::CardStyle::Earth, cardData);
 	int price = 0;
 

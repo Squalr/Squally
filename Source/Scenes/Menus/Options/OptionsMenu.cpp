@@ -20,7 +20,7 @@ OptionsMenu::OptionsMenu()
 	this->background = Node::create();
 	this->optionsWindow = Sprite::create(Resources::Menus_OptionsMenu_OptionsMenu);
 	this->fullScreenLabel = Label::create(Localization::resolveString(OptionsMenu::StringKeyFullScreen), Localization::getMainFont(), 24.0f);
-	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover, Resources::Menus_Buttons_CloseButtonClick);
+	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover);
 	this->titleLabel = Label::create(Localization::resolveString(OptionsMenu::StringKeyMenuOptions), Localization::getMainFont(), 32.0f);
 
 	this->titleLabel->setColor(OptionsMenu::TitleColor);
@@ -35,8 +35,8 @@ OptionsMenu::OptionsMenu()
 	this->musicSlider = CSlider::create(SoundManager::getMusicVolume());
 	this->soundSlider = CSlider::create(SoundManager::getSoundVolume());
 
-	MenuSprite* uncheckedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_ToggleButtonOff, Resources::Menus_OptionsMenu_ToggleButtonOffHover, Resources::Menus_OptionsMenu_ToggleButtonOffClick);
-	MenuSprite* checkedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_ToggleButtonOn, Resources::Menus_OptionsMenu_ToggleButtonOffHover, Resources::Menus_OptionsMenu_ToggleButtonOffClick);
+	MenuSprite* uncheckedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_ToggleButtonOff, Resources::Menus_OptionsMenu_ToggleButtonOffHover);
+	MenuSprite* checkedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_ToggleButtonOn, Resources::Menus_OptionsMenu_ToggleButtonOffHover);
 	this->fullScreenButton = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_2(OptionsMenu::onFullScreenChanged, this));
 
 	this->label1080x768 = Label::create("1080x768", Localization::getMainFont(), 14);
@@ -74,7 +74,6 @@ OptionsMenu::OptionsMenu()
 
 	Label* returnLabel = Label::create(Localization::resolveString(OptionsMenu::StringKeyReturn), Localization::getMainFont(), fontSize);
 	Label* returnLabelHover = Label::create(Localization::resolveString(OptionsMenu::StringKeyReturn), Localization::getMainFont(), fontSize);
-	Label* returnLabelClicked = Label::create(Localization::resolveString(OptionsMenu::StringKeyReturn), Localization::getMainFont(), fontSize);
 
 	returnLabel->setColor(textColor);
 	returnLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -84,17 +83,11 @@ OptionsMenu::OptionsMenu()
 	returnLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	returnLabelHover->enableGlow(glowColor);
 
-	returnLabelClicked->setColor(highlightColor);
-	returnLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
-	returnLabelClicked->enableGlow(glowColor);
-
 	this->returnButton = TextMenuSprite::create(
 		returnLabel,
 		returnLabelHover,
-		returnLabelClicked,
 		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover,
-		Resources::Menus_Buttons_GenericButtonClick);
+		Resources::Menus_Buttons_GenericButtonHover);
 
 	this->musicSlider->setProgressUpdateCallback(CC_CALLBACK_1(OptionsMenu::onMusicVolumeUpdate, this));
 	this->soundSlider->setProgressUpdateCallback(CC_CALLBACK_1(OptionsMenu::onSoundVolumeUpdate, this));

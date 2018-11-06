@@ -11,7 +11,7 @@ RemainingCardDisplay* RemainingCardDisplay::create()
 
 RemainingCardDisplay::RemainingCardDisplay()
 {
-	this->remainingCardSprite = MenuSprite::create(Resources::Minigames_Hexus_RemainingCardsIcon, Resources::Minigames_Hexus_RemainingCardsIcon, Resources::Minigames_Hexus_RemainingCardsIcon);
+	this->remainingCardSprite = MenuSprite::create(Resources::Minigames_Hexus_RemainingCardsIcon, Resources::Minigames_Hexus_RemainingCardsIcon);
 	this->remainingCardLabel = Label::create("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 	this->enemyRemainingCardSprite = Sprite::create(Resources::Minigames_Hexus_RemainingCardsIcon);
 	this->enemyRemainingCardLabel = Label::create("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
@@ -100,7 +100,9 @@ void RemainingCardDisplay::onAnyStateChange(GameState* gameState)
 
 	if (gameState->enemyPassed || gameState->playerPassed)
 	{
-		const char* infinitySymbol = "\u221E";
+		wchar_t const * utf16_string = L"\u221E";
+		std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>, wchar_t> convert;
+		std::string infinitySymbol = convert.to_bytes(utf16_string);
 
 		this->remainingCardLabel->setString(infinitySymbol);
 		this->enemyRemainingCardLabel->setString(infinitySymbol);

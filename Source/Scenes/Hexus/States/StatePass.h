@@ -3,7 +3,7 @@
 
 #include "Engine/Localization/Localization.h"
 #include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Engine/UI/Controls/IconMenuSprite.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Resources.h"
 #include "Scenes/Hexus/States/StateBase.h"
@@ -29,6 +29,7 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void onPassClick(MenuSprite* menuSprite, GameState* gameState);
+	void hideOpponenentPassSprites();
 	void hideAndDisableAllButtons();
 	void enablePassButtonInteraction(GameState* gameState);
 	void enableLastStandButtonInteraction(GameState* gameState);
@@ -44,7 +45,8 @@ private:
 	void onClaimVictoryMouseOut();
 
 	// Last stand
-	MenuSprite* lastStandButton;
+	Sprite* lastStandSprite;
+	IconMenuSprite* lastStandButton;
 	LayerColor* lastStandPanel;
 	Label* lastStandLabel;
 	ParticleSystemQuad* lastStandParticles;
@@ -53,7 +55,8 @@ private:
 	ParticleSystemQuad* enemyLastStandParticles;
 
 	// Surrender
-	MenuSprite* passButton;
+	Sprite* passSprite;
+	IconMenuSprite* passButton;
 	LayerColor* passPanel;
 	Label* passLabel;
 	ParticleSystemQuad* passParticles;
@@ -62,7 +65,8 @@ private:
 	ParticleSystemQuad* enemyPassParticles;
 
 	// Claim victory
-	MenuSprite* claimVictoryButton;
+	Sprite* claimVictorySprite;
+	IconMenuSprite* claimVictoryButton;
 	LayerColor* claimVictoryPanel;
 	Label* claimVictoryLabel;
 	ParticleSystemQuad* claimVictoryParticles;
@@ -70,8 +74,8 @@ private:
 	Sprite* enemyClaimVictorySprite;
 	ParticleSystemQuad* enemyClaimVictoryParticles;
 
-	MenuSprite* playerActivatedSprite;
-	MenuSprite* opponentActivatedSprite;
+	IconMenuSprite* currentVisiblePlayerButton;
+	bool playerChoiceLocked;
 
 	static const std::string StringKeyHexusPass;
 	static const std::string StringKeyHexusLastStand;

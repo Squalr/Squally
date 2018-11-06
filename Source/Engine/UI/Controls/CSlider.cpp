@@ -14,9 +14,9 @@ CSlider::CSlider(float progress)
 	this->progressUpdateEvent = nullptr;
 
 	this->frame = Sprite::create(Resources::Menus_OptionsMenu_SliderFrame);
-	this->progressBar = MenuSprite::create(Resources::Menus_OptionsMenu_SliderFill, Resources::Menus_OptionsMenu_SliderFill, Resources::Menus_OptionsMenu_SliderFill);
+	this->progressBar = MenuSprite::create(Resources::Menus_OptionsMenu_SliderFill, Resources::Menus_OptionsMenu_SliderFill);
 	this->progressClip = ClippingRectangleNode::create(Rect(0, -32, this->progressBar->getContentSize().width, 64));
-	this->slide = MenuSprite::create(Resources::Menus_OptionsMenu_Slide, Resources::Menus_OptionsMenu_Slide, Resources::Menus_OptionsMenu_Slide);
+	this->slide = MenuSprite::create(Resources::Menus_OptionsMenu_Slide, Resources::Menus_OptionsMenu_Slide);
 
 	this->setCascadeOpacityEnabled(true);
 	this->progressClip->setCascadeOpacityEnabled(true);

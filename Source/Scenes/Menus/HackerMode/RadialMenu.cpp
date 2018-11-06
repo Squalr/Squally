@@ -51,7 +51,7 @@ void RadialMenu::onHackableEdit(EventCustom* eventArgs)
 
 	this->radialMenuItems->removeAllChildren();
 
-	float dataAngleStep = (3.14159f * 2.0f) / (float)this->activeHackableObject->dataList->size();
+	float dataAngleStep = (3.14159f * 2.0f) / (float)this->activeHackableObject->dataList.size();
 	float currentDataAngle = 0.0f;
 
 	Node* rootNode = Node::create();
@@ -62,7 +62,7 @@ void RadialMenu::onHackableEdit(EventCustom* eventArgs)
 	
 	rootNode->addChild(returnRadialNode);
 
-	for (auto it = this->activeHackableObject->dataList->begin(); it != this->activeHackableObject->dataList->end(); it++)
+	for (auto it = this->activeHackableObject->dataList.begin(); it != this->activeHackableObject->dataList.end(); it++)
 	{
 		HackableData* hackableData = *it;
 
@@ -168,7 +168,7 @@ Node* RadialMenu::createRadialNode(std::string iconResource, Vec2 nodePosition, 
 	Sprite* radialNodeIcon = Sprite::create(iconResource);
 	Node* clickableNode = Node::create();
 	clickableNode->setContentSize(Size(RadialMenu::iconRadius * 2.0f, RadialMenu::iconRadius * 2.0f));
-	MenuSprite* radialNodeClickableSprite = MenuSprite::create(clickableNode, Node::create(), Node::create());
+	MenuSprite* radialNodeClickableSprite = MenuSprite::create(clickableNode, Node::create());
 
 	line->drawLine(Vec2::ZERO, -nodePosition, color);
 	radialNode->drawCircle(Vec2::ZERO, RadialMenu::iconRadius, 0.0f, 64, false, color);

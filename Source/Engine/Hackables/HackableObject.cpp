@@ -2,8 +2,8 @@
 
 HackableObject::HackableObject(ValueMap* initProperties) : SerializableObject(initProperties)
 {
-	this->dataList = new std::vector<HackableData*>();
-	this->hackButton = MenuSprite::create(Resources::Menus_Buttons_CogV2Button, Resources::Menus_Buttons_CogV2ButtonHover, Resources::Menus_Buttons_CogV2ButtonClick);
+	this->dataList = std::vector<HackableData*>();
+	this->hackButton = MenuSprite::create(Resources::Menus_Buttons_CogV2Button, Resources::Menus_Buttons_CogV2ButtonHover);
 	
 	this->hackButton->setVisible(false);
 
@@ -12,7 +12,6 @@ HackableObject::HackableObject(ValueMap* initProperties) : SerializableObject(in
 
 HackableObject::~HackableObject()
 {
-	delete(this->dataList);
 }
 
 void HackableObject::onEnterTransitionDidFinish()
@@ -47,7 +46,7 @@ void HackableObject::onHackableClick(MenuSprite* menuSprite)
 void HackableObject::registerData(HackableData* hackableData)
 {
 	hackableData->retain();
-	this->dataList->push_back(hackableData);
+	this->dataList.push_back(hackableData);
 
 	this->hackButton->setVisible(true);
 }

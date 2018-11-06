@@ -35,19 +35,15 @@ TitleScreen::TitleScreen()
 
 	Label* storyModeLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* storyModeLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* storyModeLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	Label* arcadeModeLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyMinigames), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* arcadeModeLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyMinigames), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* arcadeModeLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyMinigames), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	Label* optionsLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* optionsLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* optionsLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	Label* exitLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* exitLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* exitLabelClicked = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	storyModeLabel->setColor(textColor);
 	storyModeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -75,50 +71,29 @@ TitleScreen::TitleScreen()
 	exitLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	exitLabelHover->enableGlow(glowColor);
 
-	storyModeLabelClicked->setColor(highlightColor);
-	storyModeLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
-	storyModeLabelClicked->enableGlow(glowColor);
-	arcadeModeLabelClicked->setColor(highlightColor);
-	arcadeModeLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
-	arcadeModeLabelClicked->enableGlow(glowColor);
-	optionsLabelClicked->setColor(highlightColor);
-	optionsLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
-	optionsLabelClicked->enableGlow(glowColor);
-	exitLabelClicked->setColor(highlightColor);
-	exitLabelClicked->enableShadow(shadowColor, shadowSize, shadowBlur);
-	exitLabelClicked->enableGlow(glowColor);
-
 	this->storyModeButton = TextMenuSprite::create(
 		storyModeLabel,
 		storyModeLabelHover,
-		storyModeLabelClicked,
 		Resources::Menus_TitleScreen_TitleButton,
-		Resources::Menus_TitleScreen_TitleButtonHover,
-		Resources::Menus_TitleScreen_TitleButtonClick);
+		Resources::Menus_TitleScreen_TitleButtonHover);
 
 	this->arcadeModeButton = TextMenuSprite::create(
 		arcadeModeLabel,
 		arcadeModeLabelHover,
-		arcadeModeLabelClicked,
 		Resources::Menus_TitleScreen_TitleButton,
-		Resources::Menus_TitleScreen_TitleButtonHover,
-		Resources::Menus_TitleScreen_TitleButtonClick);
+		Resources::Menus_TitleScreen_TitleButtonHover);
 
 	this->optionsButton = TextMenuSprite::create(
 		optionsLabel,
 		optionsLabelHover,
-		optionsLabelClicked,
 		Resources::Menus_TitleScreen_TitleButton,
-		Resources::Menus_TitleScreen_TitleButtonHover,
-		Resources::Menus_TitleScreen_TitleButtonClick);
+		Resources::Menus_TitleScreen_TitleButtonHover);
 
 	this->exitButton = TextMenuSprite::create(
 		exitLabel,
 		exitLabelHover,
-		exitLabelClicked,
 		Resources::Menus_TitleScreen_TitleButton,
-		Resources::Menus_TitleScreen_TitleButtonHover,
-		Resources::Menus_TitleScreen_TitleButtonClick);
+		Resources::Menus_TitleScreen_TitleButtonHover);
 
 	this->ether = Sprite::create(Resources::Menus_Backgrounds_Ether);
 	this->etherParticles = ParticleGalaxy::create();

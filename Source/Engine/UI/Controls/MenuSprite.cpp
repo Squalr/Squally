@@ -8,21 +8,21 @@ This is the worst written class in this entire codebase. If you need to change s
 One day I'll figure out how to refactor this sphagetti garbage fire of state variables.
 */
 
-MenuSprite* MenuSprite::create(std::string spriteNormal, std::string spriteSelectedResource, std::string spriteClickedResource)
+MenuSprite* MenuSprite::create(std::string spriteNormal, std::string spriteSelectedResource)
 {
-	return MenuSprite::create(Sprite::create(spriteNormal), Sprite::create(spriteSelectedResource), Sprite::create(spriteClickedResource));
+	return MenuSprite::create(Sprite::create(spriteNormal), Sprite::create(spriteSelectedResource));
 }
 
-MenuSprite* MenuSprite::create(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
+MenuSprite* MenuSprite::create(Node* nodeNormal, Node* nodeSelected)
 {
-	MenuSprite* instance = new MenuSprite(nodeNormal, nodeSelected, nodeClicked);
+	MenuSprite* instance = new MenuSprite(nodeNormal, nodeSelected);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
+MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected)
 {
 	this->mouseClickEvent = nullptr;
 	this->mouseDownEvent = nullptr;
@@ -38,14 +38,12 @@ MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected, Node* nodeClicked)
 
 	this->sprite = nodeNormal;
 	this->spriteSelected = nodeSelected;
-	this->spriteClicked = nodeClicked;
 
 	this->offsetCorrection = Vec2::ZERO;
 
 	this->setContentSize(this->sprite->getContentSize());
 
 	this->addChild(this->sprite);
-	this->addChild(this->spriteClicked);
 	this->addChild(this->spriteSelected);
 }
 
@@ -61,7 +59,6 @@ void MenuSprite::onEnter()
 	this->isClicked = false;
 
 	this->sprite->setVisible(true);
-	this->spriteClicked->setVisible(false);
 	this->spriteSelected->setVisible(false);
 
 	this->scheduleUpdate();
@@ -80,8 +77,7 @@ void MenuSprite::update(float dt)
 {
 	SmartNode::update(dt);
 
-	// Update the hover/click sprites to track the main sprite
-	this->spriteClicked->setPosition(this->sprite->getPosition());
+	// Update the selected sprite to track the main sprite
 	this->spriteSelected->setPosition(this->sprite->getPosition());
 }
 
@@ -173,7 +169,6 @@ void MenuSprite::showSprite(Node* sprite)
 {
 	// Hide everything
 	this->sprite->setVisible(false);
-	this->spriteClicked->setVisible(false);
 	this->spriteSelected->setVisible(false);
 
 	if (this->interactionEnabled)
@@ -251,8 +246,6 @@ void MenuSprite::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event
 
 			if (!args->isDragging && args->isLeftClicked)
 			{
-				this->showSprite(this->spriteClicked);
-
 				// Mouse down callback
 				if (this->mouseDownEvent != nullptr)
 				{

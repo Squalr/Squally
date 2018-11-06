@@ -13,20 +13,16 @@ StateCardReplace::StateCardReplace() : StateBase(GameState::StateType::CardRepla
 {
 	Label* doneButtonLabel = Label::create("Done", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 	Label* doneButtonLabelHover = Label::create("Done", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* doneButtonLabelClick = Label::create("Done", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 	
 	this->removedCards = std::vector<Card*>();
 	doneButtonLabel->enableOutline(Color4B::BLACK, 2);
 	doneButtonLabelHover->enableOutline(Color4B::BLACK, 2);
-	doneButtonLabelClick->enableOutline(Color4B::BLACK, 2);
 
 	this->doneButton = TextMenuSprite::create(
 		doneButtonLabel,
 		doneButtonLabelHover,
-		doneButtonLabelClick,
 		Resources::Minigames_Hexus_ButtonPlank,
-		Resources::Minigames_Hexus_ButtonPlankHover,
-		Resources::Minigames_Hexus_ButtonPlankClick
+		Resources::Minigames_Hexus_ButtonPlankHover
 	);
 	this->doneButton->setOpacity(0);
 	
