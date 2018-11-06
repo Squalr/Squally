@@ -25,6 +25,8 @@ void StateGameStart::onBeforeStateEnter(GameState* gameState)
 	gameState->playerLosses = 0;
 	gameState->enemyLosses = 0;
 	gameState->cardReplaceCount = 0;
+	gameState->playerCardsDrawnNextRound = 0;
+	gameState->enemyCardsDrawnNextRound = 0;
 	gameState->roundNumber = 0;
 	gameState->turnNumber = 0;
 	gameState->playerPassed = false;
