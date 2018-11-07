@@ -195,6 +195,8 @@ void StagingHelperText::onHelpClick(MenuSprite* menuSprite, GameState* gameState
 			break;
 		case CardData::CardType::Hexidecimal:
 			break;
+		case CardData::CardType::Special_MOV:
+			break;
 		case CardData::CardType::Special_AND:
 			break;
 		case CardData::CardType::Special_OR:

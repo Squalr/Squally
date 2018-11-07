@@ -98,6 +98,7 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 			gameState->selectedRow = gameState->stagedCombineCardRow;
 			break;
 		}
+		case CardData::CardType::Special_MOV:
 		case CardData::CardType::Special_AND:
 		case CardData::CardType::Special_OR:
 		case CardData::CardType::Special_XOR:

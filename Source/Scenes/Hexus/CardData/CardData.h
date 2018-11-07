@@ -13,6 +13,7 @@ public:
 		Binary,
 		Decimal,
 		Hexidecimal,
+		Special_MOV,
 		Special_AND,
 		Special_OR,
 		Special_XOR,

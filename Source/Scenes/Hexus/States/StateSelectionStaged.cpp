@@ -73,14 +73,20 @@ void StateSelectionStaged::initializeSelectablesAndCallbacks(GameState* gameStat
 	switch (gameState->selectedCard->cardData->cardType)
 	{
 		case CardData::CardType::Binary:
+		{
 			gameState->playerBinaryCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
 			break;
+		}
 		case CardData::CardType::Decimal:
+		{
 			gameState->playerDecimalCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
 			break;
+		}
 		case CardData::CardType::Hexidecimal:
+		{
 			gameState->playerHexCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
 			break;
+		}
 		case CardData::CardType::Special_SHL:
 		case CardData::CardType::Special_SHR:
 		case CardData::CardType::Special_FLIP1:
@@ -88,6 +94,7 @@ void StateSelectionStaged::initializeSelectablesAndCallbacks(GameState* gameStat
 		case CardData::CardType::Special_FLIP3:
 		case CardData::CardType::Special_FLIP4:
 		case CardData::CardType::Special_INV:
+		{
 			gameState->playerBinaryCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
 			gameState->playerDecimalCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
 			gameState->playerHexCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
@@ -95,15 +102,19 @@ void StateSelectionStaged::initializeSelectablesAndCallbacks(GameState* gameStat
 			gameState->enemyDecimalCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
 			gameState->enemyHexCards->enableRowSelection(CC_CALLBACK_1(StateSelectionStaged::onRowChosen, this, gameState));
 			break;
+		}
+		case CardData::CardType::Special_MOV:
 		case CardData::CardType::Special_AND:
 		case CardData::CardType::Special_OR:
 		case CardData::CardType::Special_XOR:
 		case CardData::CardType::Special_ADD:
 		case CardData::CardType::Special_SUB:
+		{
 			gameState->playerBinaryCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this, gameState));
 			gameState->playerDecimalCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this, gameState));
 			gameState->playerHexCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this, gameState));
 			break;
+		}
 		default:
 			break;
 	}

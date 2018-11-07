@@ -29,6 +29,7 @@ public:
 		{
 			SHL,
 			SHR,
+			MOV,
 			AND,
 			OR,
 			XOR,

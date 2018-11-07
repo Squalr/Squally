@@ -470,6 +470,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/CardData/Special/CardLogicalAnd.cpp
 	Source/Scenes/Hexus/CardData/Special/CardLogicalOr.cpp
 	Source/Scenes/Hexus/CardData/Special/CardLogicalXor.cpp
+	Source/Scenes/Hexus/CardData/Special/CardMov.cpp
 	Source/Scenes/Hexus/CardData/Special/CardShiftLeft.cpp
 	Source/Scenes/Hexus/CardData/Special/CardShiftRight.cpp
 	Source/Scenes/Hexus/CardData/Special/CardSubtraction.cpp
@@ -1211,6 +1212,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/CardData/Special/CardLogicalAnd.h
 	Source/Scenes/Hexus/CardData/Special/CardLogicalOr.h
 	Source/Scenes/Hexus/CardData/Special/CardLogicalXor.h
+	Source/Scenes/Hexus/CardData/Special/CardMov.h
 	Source/Scenes/Hexus/CardData/Special/CardShiftLeft.h
 	Source/Scenes/Hexus/CardData/Special/CardShiftRight.h
 	Source/Scenes/Hexus/CardData/Special/CardSubtraction.h
