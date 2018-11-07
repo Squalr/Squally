@@ -64,6 +64,7 @@
 #include "Scenes/Hexus/CardData/Special/CardLogicalAnd.h"
 #include "Scenes/Hexus/CardData/Special/CardLogicalOr.h"
 #include "Scenes/Hexus/CardData/Special/CardLogicalXor.h"
+#include "Scenes/Hexus/CardData/Special/CardMov.h"
 #include "Scenes/Hexus/CardData/Special/CardShiftLeft.h"
 #include "Scenes/Hexus/CardData/Special/CardShiftRight.h"
 #include "Scenes/Hexus/CardData/Special/CardSubtraction.h"

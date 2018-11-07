@@ -150,6 +150,8 @@ Card::Operation Card::toOperation(CardData::CardType playedCardType, unsigned in
 			return Operation(Operation::OperationType::XOR, 0b0100);
 		case CardData::CardType::Special_FLIP4:
 			return Operation(Operation::OperationType::XOR, 0b1000);
+		case CardData::CardType::Special_MOV:
+			return Operation(Operation::OperationType::MOV, immediate);
 		case CardData::CardType::Special_AND:
 			return Operation(Operation::OperationType::AND, immediate);
 		case CardData::CardType::Special_OR:
@@ -186,28 +188,52 @@ int Card::applyOperation(int attack, Operation operation) {
 	switch (operation.operationType)
 	{
 		case Operation::OperationType::SHL:
+		{
 			attack <<= operation.immediate;
 			break;
+		}
 		case Operation::OperationType::SHR:
+		{
 			attack >>= operation.immediate;
 			break;
+		}
+		case Operation::OperationType::MOV:
+		{
+			attack = operation.immediate;
+			break;
+		}
 		case Operation::OperationType::AND:
+		{
 			attack &= operation.immediate;
 			break;
+		}
 		case Operation::OperationType::OR:
+		{
 			attack |= operation.immediate;
 			break;
+		}
 		case Operation::OperationType::XOR:
+		{
 			attack ^= operation.immediate;
 			break;
+		}
 		case Operation::OperationType::ADD:
+		{
 			attack += operation.immediate;
 			break;
+		}
 		case Operation::OperationType::SUB:
+		{
 			attack -= operation.immediate;
-			if (attack < 0) {
+
+			if (attack < 0)
+			{
 				attack = 16 - abs(attack);
 			}
+
+			break;
+		}
+		default:
 			break;
 	}
 
@@ -282,6 +308,7 @@ void Card::updateText()
 			this->cardText->setString(HackUtils::toHex(this->getAttack()));
 			this->cardText->setTextColor(Card::hexColor);
 			break;
+		case CardData::CardType::Special_MOV:
 		case CardData::CardType::Special_AND:
 		case CardData::CardType::Special_OR:
 		case CardData::CardType::Special_XOR:

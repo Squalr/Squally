@@ -22,6 +22,8 @@ std::string CardData::getCardTypeString()
 			return "DEC";
 		case CardData::CardType::Hexidecimal:
 			return "HEX";
+		case CardData::CardType::Special_MOV:
+			return "MOV";
 		case CardData::CardType::Special_AND:
 			return "AND";
 		case CardData::CardType::Special_OR:
@@ -47,7 +49,7 @@ std::string CardData::getCardTypeString()
 		case CardData::CardType::Special_SUB:
 			return "SUB";
 		default:
-			return "";
+			return "ERR";
 	}
 }
 

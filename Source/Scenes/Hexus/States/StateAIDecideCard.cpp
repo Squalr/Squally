@@ -81,6 +81,7 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 				break;
 			}
 			case CardData::CardType::Special_OR:
+			{
 				// Ideally for OR the enemy would have 2 cards on the field
 				if (this->getEnemyCardsOnFieldCount(gameState) < 2)
 				{
@@ -96,7 +97,9 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 
 				gameState->selectedCard = card;
 				break;
+			}
 			case CardData::CardType::Special_ADD:
+			{
 				// No source cards available
 				if (this->getEnemyCardsOnFieldCount(gameState) <= 0)
 				{
@@ -140,7 +143,63 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 
 				// Nothing reasonable found
 				break;
+			}
+			case CardData::CardType::Special_MOV:
+			{
+				// Ideally for MOV there would be at least two cards on the field
+				if ((this->getEnemyCardsOnFieldCount(gameState) +this->getPlayerCardsOnFieldCount(gameState)) >= 2)
+				{
+					break;
+				}
+
+				// Sad case: Freak scenario where all cards on the field have the same exact attack, rendering MOV useless
+				if (this->getStrongestEnemyCardOnField(gameState) == this->getStrongestPlayerCardOnField(gameState) &&
+					this->getStrongestEnemyCardOnField(gameState) == this->getWeakestEnemyCardOnField(gameState) &&
+					this->getStrongestPlayerCardOnField(gameState) == this->getWeakestPlayerCardOnField(gameState))
+				{
+					break;
+				}
+
+				// Happy case 1: There exists some combo to make a weaker enemy card
+				if (this->getEnemyCardsOnFieldCount(gameState) >= 1)
+				{
+					std::vector<CardRow*> enemyRows = gameState->getEnemyRows();
+					int weakestPlayerCard = this->getWeakestPlayerCardOnField(gameState);
+					bool solutionFound = false;
+
+					for (auto it = enemyRows.begin(); it != enemyRows.end(); it++)
+					{
+						for (auto cardIt = (*it)->rowCards.begin(); cardIt != (*it)->rowCards.end(); cardIt++)
+						{
+							int attack = (*cardIt)->getAttack();
+
+							if (attack > weakestPlayerCard)
+							{
+								solutionFound = true;
+								break;
+							}
+						}
+					}
+
+					if (solutionFound)
+					{
+						gameState->selectedCard = card;
+
+						break;
+					}
+				}
+
+				// Happy case 2: There exists some combo to make a stronger player card
+				if (this->getEnemyCardsOnFieldCount(gameState) >= 2 && this->getWeakestPlayerCardOnField(gameState) != this->getStrongestPlayerCardOnField(gameState))
+				{
+					gameState->selectedCard = card;
+					break;
+				}
+
+				break;
+			}
 			case CardData::CardType::Special_AND:
+			{
 				// Ideally for AND the enemy would have 1 card and the player would have at least 1 card
 				if (this->getEnemyCardsOnFieldCount(gameState) < 1 || this->getPlayerCardsOnFieldCount(gameState) < 1)
 				{
@@ -157,7 +216,9 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 
 				gameState->selectedCard = card;
 				break;
+			}
 			case CardData::CardType::Special_XOR:
+			{
 				// No source cards available
 				if (this->getEnemyCardsOnFieldCount(gameState) <= 0)
 				{
@@ -174,6 +235,7 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 
 				gameState->selectedCard = card;
 				break;
+			}
 			case CardData::CardType::Special_SUB:
 			{
 				// No source cards available
@@ -219,7 +281,9 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 				break;
 			}
 			default:
+			{
 				break;
+			}
 		}
 
 		if (gameState->selectedCard != nullptr)

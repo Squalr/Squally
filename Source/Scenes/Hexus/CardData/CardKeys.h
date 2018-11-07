@@ -64,6 +64,7 @@ public:
 	static const std::string Flip3;
 	static const std::string Flip4;
 	static const std::string Inverse;
+	static const std::string Mov;
 	static const std::string LogicalAnd;
 	static const std::string LogicalOr;
 	static const std::string LogicalXor;

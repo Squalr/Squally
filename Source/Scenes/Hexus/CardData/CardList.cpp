@@ -78,6 +78,7 @@ CardList::CardList()
 	this->cardListByName->emplace(CardKeys::LogicalAnd, new CardLogicalAnd());
 	this->cardListByName->emplace(CardKeys::LogicalOr, new CardLogicalOr());
 	this->cardListByName->emplace(CardKeys::LogicalXor, new CardLogicalXor());
+	this->cardListByName->emplace(CardKeys::Mov, new CardMov());
 	this->cardListByName->emplace(CardKeys::ShiftLeft, new CardShiftLeft());
 	this->cardListByName->emplace(CardKeys::ShiftRight, new CardShiftRight());
 	this->cardListByName->emplace(CardKeys::Subtraction, new CardSubtraction());

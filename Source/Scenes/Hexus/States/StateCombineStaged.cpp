@@ -132,6 +132,7 @@ void StateCombineStaged::stageCombineTarget(Card* card, GameState* gameState)
 
 	switch (gameState->selectedCard->cardData->cardType)
 	{
+		case CardData::CardType::Special_MOV:
 		case CardData::CardType::Special_AND:
 		case CardData::CardType::Special_OR:
 		case CardData::CardType::Special_XOR:

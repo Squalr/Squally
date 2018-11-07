@@ -58,6 +58,7 @@ const std::string CardKeys::Flip2 = "Hexus_Card_Flip_2";
 const std::string CardKeys::Flip3 = "Hexus_Card_Flip_3";
 const std::string CardKeys::Flip4 = "Hexus_Card_Flip_4";
 const std::string CardKeys::Inverse = "Hexus_Card_Inverse";
+const std::string CardKeys::Mov = "Hexus_Card_Mov";
 const std::string CardKeys::LogicalAnd = "Hexus_Card_Logical_And";
 const std::string CardKeys::LogicalOr = "Hexus_Card_Logical_Or";
 const std::string CardKeys::LogicalXor = "Hexus_Card_Logical_Xor";

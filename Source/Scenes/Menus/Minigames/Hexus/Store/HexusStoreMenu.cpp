@@ -440,17 +440,37 @@ std::tuple<MenuSprite*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* 
 		}
 		case CardData::CardType::Special_FLIP4:
 		{
-			price = 2000;
+			price = 1800;
 			break;
 		}
 		case CardData::CardType::Special_ADD:
 		{
-			price = 1000;
+			price = 335;
+			break;
+		}
+		case CardData::CardType::Special_SUB:
+		{
+			price = 335;
+			break;
+		}
+		case CardData::CardType::Special_MOV:
+		{
+			price = 280;
 			break;
 		}
 		case CardData::CardType::Special_AND:
 		{
-			price = 2500;
+			price = 640;
+			break;
+		}
+		case CardData::CardType::Special_OR:
+		{
+			price = 640;
+			break;
+		}
+		case CardData::CardType::Special_XOR:
+		{
+			price = 640;
 			break;
 		}
 		case CardData::CardType::Special_ENV_BIN_STORM:
@@ -478,11 +498,6 @@ std::tuple<MenuSprite*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* 
 			price = 2500;
 			break;
 		}
-		case CardData::CardType::Special_OR:
-		{
-			price = 2500;
-			break;
-		}
 		case CardData::CardType::Special_SHL:
 		{
 			price = 750;
@@ -491,16 +506,6 @@ std::tuple<MenuSprite*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* 
 		case CardData::CardType::Special_SHR:
 		{
 			price = 250;
-			break;
-		}
-		case CardData::CardType::Special_SUB:
-		{
-			price = 500;
-			break;
-		}
-		case CardData::CardType::Special_XOR:
-		{
-			price = 2500;
 			break;
 		}
 		default:
