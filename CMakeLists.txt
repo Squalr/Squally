@@ -484,6 +484,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/RemainingCardDisplay.cpp
 	Source/Scenes/Hexus/Components/RowTotals.cpp
 	Source/Scenes/Hexus/Components/ScoreTotal.cpp
+	Source/Scenes/Hexus/Components/StagingHelperText.cpp
 	Source/Scenes/Hexus/Components/Banners/BannerBase.cpp
 	Source/Scenes/Hexus/Components/Banners/CardReplaceBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/DefeatBanner.cpp
@@ -1225,6 +1226,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/RemainingCardDisplay.h
 	Source/Scenes/Hexus/Components/RowTotals.h
 	Source/Scenes/Hexus/Components/ScoreTotal.h
+	Source/Scenes/Hexus/Components/StagingHelperText.h
 	Source/Scenes/Hexus/Components/Banners/BannerBase.h
 	Source/Scenes/Hexus/Components/Banners/CardReplaceBanner.h
 	Source/Scenes/Hexus/Components/Banners/DefeatBanner.h

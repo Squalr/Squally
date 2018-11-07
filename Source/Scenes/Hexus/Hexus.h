@@ -37,6 +37,7 @@ private:
 	// Components
 	Avatars* avatars;
 	CardPreview* cardPreview;
+	StagingHelperText* stagingHelperText;
 
 	StateAIDecideCard* stateAIDecideCard;
 	StateAIDecideCardReplace* stateAIDecideCardReplace;

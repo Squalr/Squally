@@ -30,12 +30,4 @@ private:
 	void selectCard(Card* card, GameState* gameState);
 	void stageSelectedCombineCard(Card* card, GameState* gameState);
 	void onRowChosen(CardRow* cardRow, GameState* gameState);
-	void updateSelectionStatus(GameState* gameState);
-	void onSelectionCancel(MenuSprite* menuSprite, GameState* gameState);
-	void onHelpClick(MenuSprite* menuSprite, GameState* gameState);
-	void clearSelectionStatus();
-
-	Label* selectionLabel;
-	MenuSprite* cancelButton;
-	MenuSprite* helpButton;
 };

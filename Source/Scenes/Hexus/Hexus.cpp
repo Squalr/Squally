@@ -31,6 +31,7 @@ Hexus::Hexus()
 	this->defeatBanner = DefeatBanner::create();
 	this->drawBanner = DrawBanner::create();
 	this->cardPreview = CardPreview::create();
+	this->stagingHelperText = StagingHelperText::create();
 	this->stateAIDecideCard = StateAIDecideCard::create();
 	this->stateAIDecideCardReplace = StateAIDecideCardReplace::create();
 	this->stateAIDecidePass = StateAIDecidePass::create();
@@ -64,6 +65,7 @@ Hexus::Hexus()
 	this->addChild(this->gameState);
 	this->addChild(this->avatars);
 	this->addChild(this->cardPreview);
+	this->addChild(this->stagingHelperText);
 	this->addChild(this->lossesDisplay);
 	this->addChild(this->deckCardCountDisplay);
 	this->addChild(this->handCardCountDisplay);

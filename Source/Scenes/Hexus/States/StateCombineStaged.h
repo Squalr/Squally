@@ -29,9 +29,4 @@ private:
 	void initializeCallbacks(GameState* gameState);
 	void selectCard(Card* card, GameState* gameState);
 	void stageCombineTarget(Card* card, GameState* gameState);
-	void updateCombineStatus(GameState* gameState);
-	void onCombineCancel(MenuSprite* menuSprite, GameState* gameState);
-
-	Label* combineStatus;
-	MenuSprite* cancelButton;
 };
