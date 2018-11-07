@@ -24,3 +24,4 @@
 #include "Scenes/Hexus/Components/RemainingCardDisplay.h"
 #include "Scenes/Hexus/Components/RowTotals.h"
 #include "Scenes/Hexus/Components/ScoreTotal.h"
+#include "Scenes/Hexus/Components/StagingHelperText.h"
