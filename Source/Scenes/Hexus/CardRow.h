@@ -24,6 +24,8 @@ public:
 	bool isEmpty();
 	void setCardScale(float scale, float scaleSpeed);
 	float getCardScale();
+	void runEffect(CardEffects::CardEffect effect, std::vector<Card*> ignoreList = std::vector<Card*>());
+	void clearEffects();
 	void enableRowSelection(std::function<void(CardRow*)> callback);
 	void enableRowCardSelection(std::function<void(Card*)> callback);
 	void disableRowSelection();

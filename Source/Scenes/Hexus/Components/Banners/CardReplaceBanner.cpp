@@ -12,7 +12,7 @@ CardReplaceBanner* CardReplaceBanner::create()
 CardReplaceBanner::CardReplaceBanner()
 {
 	this->penaltyIcon = Sprite::create(Resources::Minigames_Hexus_CardReplaceIconLarge);
-	this->penaltyIconParticles = ParticleSystemQuad::create(Resources::Particles_PurpleAuraLarge);
+	this->penaltyIconParticles = ParticleSystemQuad::create(Resources::Particles_Hexus_PurpleAuraLarge);
 
 	this->penaltyIconParticles->setVisible(false);
 

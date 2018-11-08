@@ -24,9 +24,9 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->passPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->passLabel = Label::create(Localization::resolveString(StatePass::StringKeyHexusPass), Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
-	this->passParticles = ParticleSystemQuad::create(Resources::Particles_WhiteAura);
+	this->passParticles = ParticleSystemQuad::create(Resources::Particles_Hexus_WhiteAura);
 	this->enemyPassSprite = Sprite::create(Resources::Minigames_Hexus_Flags);
-	this->enemyPassParticles = ParticleSystemQuad::create(Resources::Particles_WhiteAura);
+	this->enemyPassParticles = ParticleSystemQuad::create(Resources::Particles_Hexus_WhiteAura);
 
 	// Last stand
 	this->lastStandSprite = Sprite::create(Resources::Minigames_Hexus_ShieldButton);
@@ -34,9 +34,9 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->lastStandPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->lastStandLabel = Label::create(Localization::resolveString(StatePass::StringKeyHexusLastStand), Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
-	this->lastStandParticles = ParticleSystemQuad::create(Resources::Particles_Aura);
+	this->lastStandParticles = ParticleSystemQuad::create(Resources::Particles_Hexus_Aura);
 	this->enemyLastStandSprite = Sprite::create(Resources::Minigames_Hexus_ShieldButton);
-	this->enemyLastStandParticles = ParticleSystemQuad::create(Resources::Particles_Aura);
+	this->enemyLastStandParticles = ParticleSystemQuad::create(Resources::Particles_Hexus_Aura);
 
 	// Claim victory
 	this->claimVictorySprite = Sprite::create(Resources::Minigames_Hexus_Victory);
@@ -44,9 +44,9 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->claimVictoryPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->claimVictoryLabel = Label::create(Localization::resolveString(StatePass::StringKeyHexusClaimVictory), Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
-	this->claimVictoryParticles = ParticleSystemQuad::create(Resources::Particles_Aura);
+	this->claimVictoryParticles = ParticleSystemQuad::create(Resources::Particles_Hexus_Aura);
 	this->enemyClaimVictorySprite = Sprite::create(Resources::Minigames_Hexus_Victory);
-	this->enemyClaimVictoryParticles = ParticleSystemQuad::create(Resources::Particles_Aura);
+	this->enemyClaimVictoryParticles = ParticleSystemQuad::create(Resources::Particles_Hexus_Aura);
 
 	this->passParticles->setVisible(false);
 	// Default this button to visible

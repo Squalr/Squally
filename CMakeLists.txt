@@ -400,6 +400,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Cutscenes/Objects/StarLayer.cpp
 	Source/Scenes/Fights/Fight.cpp
 	Source/Scenes/Hexus/Card.cpp
+	Source/Scenes/Hexus/CardEffects.cpp
 	Source/Scenes/Hexus/CardRow.cpp
 	Source/Scenes/Hexus/CardStorage.cpp
 	Source/Scenes/Hexus/Config.cpp
@@ -1142,6 +1143,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Cutscenes/Objects/StarLayer.h
 	Source/Scenes/Fights/Fight.h
 	Source/Scenes/Hexus/Card.h
+	Source/Scenes/Hexus/CardEffects.h
 	Source/Scenes/Hexus/CardRow.h
 	Source/Scenes/Hexus/CardStorage.h
 	Source/Scenes/Hexus/Config.h
