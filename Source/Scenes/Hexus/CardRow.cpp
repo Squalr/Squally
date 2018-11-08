@@ -136,11 +136,40 @@ int CardRow::getRowAttack()
 
 	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 	{
-		Card* card = *it;
-		attack += card->getAttack();
+		attack += (*it)->getAttack();
 	}
 
 	return attack;
+}
+
+void CardRow::runEffect(CardEffects::CardEffect effect, std::vector<Card*> ignoreList)
+{
+	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	{
+		bool ignoreCard = false;
+
+		for (auto ignoreIt = ignoreList.begin(); ignoreIt != ignoreList.end(); ignoreIt++)
+		{
+			if (*ignoreIt == *it)
+			{
+				ignoreCard = true;
+				break;
+			}
+		}
+
+		if (!ignoreCard)
+		{
+			(*it)->cardEffects->runEffect(effect);
+		}
+	}
+}
+
+void CardRow::clearEffects()
+{
+	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	{
+		(*it)->cardEffects->clearEffects();
+	}
 }
 
 void CardRow::enableRowSelection(std::function<void(CardRow*)> callback)

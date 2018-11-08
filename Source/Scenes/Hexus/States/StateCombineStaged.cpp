@@ -31,12 +31,38 @@ void StateCombineStaged::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	gameState = gameState;
-
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
 		{
+			switch (gameState->selectedCard->cardData->cardType)
+			{
+				case CardData::CardType::Special_MOV:
+				case CardData::CardType::Special_AND:
+				case CardData::CardType::Special_OR:
+				case CardData::CardType::Special_XOR:
+				case CardData::CardType::Special_ADD:
+				case CardData::CardType::Special_SUB:
+				{
+					std::vector<Card*> ignoreList = std::vector<Card*>
+					{
+						gameState->selectedCard,
+						gameState->stagedCombineSourceCard,
+					};
+
+					gameState->enemyBinaryCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
+					gameState->enemyDecimalCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
+					gameState->enemyHexCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
+					gameState->playerBinaryCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
+					gameState->playerDecimalCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
+					gameState->playerHexCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
+
+					break;
+				}
+				default:
+					break;
+			}
+
 			this->initializeCallbacks(gameState);
 			break;
 		}
@@ -53,6 +79,15 @@ void StateCombineStaged::onStateReload(GameState* gameState)
 void StateCombineStaged::onStateExit(GameState* gameState)
 {
 	StateBase::onStateExit(gameState);
+
+	gameState->playerHand->clearEffects();
+	gameState->enemyHand->clearEffects();
+	gameState->playerBinaryCards->clearEffects();
+	gameState->playerDecimalCards->clearEffects();
+	gameState->playerHexCards->clearEffects();
+	gameState->enemyBinaryCards->clearEffects();
+	gameState->enemyDecimalCards->clearEffects();
+	gameState->enemyHexCards->clearEffects();
 }
 
 void StateCombineStaged::initializeCallbacks(GameState* gameState)

@@ -66,6 +66,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->cardSelect->setClickSound(Resources::Sounds_Menus_Card_Game_UI_Button_Light_Reverb_02);
 	this->cardSprite = Sprite::create(data->cardResourceFile);
 	this->cardFocus = Sprite::create(Resources::Minigames_Hexus_CardSelect);
+	this->cardEffects = CardEffects::create();
 
 	this->cardText = Label::create("", Localization::getCodingFont(), 64.0f);
 	this->cardText->setAlignment(TextHAlignment::CENTER);
@@ -80,6 +81,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->addChild(this->cardFront);
 	this->addChild(this->cardFocus);
 	this->addChild(this->cardSelect);
+	this->addChild(this->cardEffects);
 	this->addChild(this->cardText);
 
 	this->hide();
@@ -89,6 +91,11 @@ Card::Card(CardStyle cardStyle, CardData* data)
 Card::~Card()
 {
 	delete(this->operations);
+}
+
+void Card::onEnter()
+{
+	SmartNode::onEnter();
 }
 
 void Card::initializePositions()

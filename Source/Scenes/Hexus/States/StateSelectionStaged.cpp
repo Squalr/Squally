@@ -62,6 +62,15 @@ void StateSelectionStaged::onStateReload(GameState* gameState)
 void StateSelectionStaged::onStateExit(GameState* gameState)
 {
 	StateBase::onStateExit(gameState);
+
+	gameState->playerHand->clearEffects();
+	gameState->enemyHand->clearEffects();
+	gameState->playerBinaryCards->clearEffects();
+	gameState->playerDecimalCards->clearEffects();
+	gameState->playerHexCards->clearEffects();
+	gameState->enemyBinaryCards->clearEffects();
+	gameState->enemyDecimalCards->clearEffects();
+	gameState->enemyHexCards->clearEffects();
 }
 
 void StateSelectionStaged::initializeSelectablesAndCallbacks(GameState* gameState)
@@ -110,6 +119,16 @@ void StateSelectionStaged::initializeSelectablesAndCallbacks(GameState* gameStat
 		case CardData::CardType::Special_ADD:
 		case CardData::CardType::Special_SUB:
 		{
+			std::vector<Card*> ignoreList = std::vector<Card*>
+			{
+				gameState->selectedCard,
+				gameState->stagedCombineSourceCard,
+			};
+
+			gameState->playerBinaryCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
+			gameState->playerDecimalCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
+			gameState->playerHexCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
+
 			gameState->playerBinaryCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this, gameState));
 			gameState->playerDecimalCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this, gameState));
 			gameState->playerHexCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this, gameState));

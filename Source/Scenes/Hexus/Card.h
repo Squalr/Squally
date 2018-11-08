@@ -7,6 +7,7 @@
 #include "Engine/Utils/HackUtils.h"
 #include "Resources.h"
 #include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardEffects.h"
 #include "Scenes/Hexus/Config.h"
 
 using namespace cocos2d;
@@ -65,6 +66,7 @@ public:
 	int simulateOperation(Operation operation);
 
 	CardData* cardData;
+	CardEffects* cardEffects;
 	Vec2 position;
 
 	static const float cardScale;
@@ -79,6 +81,7 @@ protected:
 	Card(CardStyle cardStyle, CardData* data);
 	~Card();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
