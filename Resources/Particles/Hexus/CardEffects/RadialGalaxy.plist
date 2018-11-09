@@ -15,7 +15,7 @@
 	<key>configName</key>
 	<string>Untitled 1</string>
 	<key>duration</key>
-	<real>0.75</real>
+	<real>0.5</real>
 	<key>emitterType</key>
 	<real>0.0</real>
 	<key>finishColorAlpha</key>
@@ -53,7 +53,7 @@
 	<key>minRadiusVariance</key>
 	<real>0.0</real>
 	<key>particleLifespan</key>
-	<real>2.0394999999999999</real>
+	<real>0.5</real>
 	<key>particleLifespanVariance</key>
 	<real>0.0</real>
 	<key>positionType</key>

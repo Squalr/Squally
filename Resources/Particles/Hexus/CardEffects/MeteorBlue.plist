@@ -39,9 +39,9 @@
 	<key>finishParticleSizeVariance</key>
 	<real>8</real>
 	<key>gravityx</key>
-	<real>-512</real>
+	<real>-960</real>
 	<key>gravityy</key>
-	<real>-320</real>
+	<real>720</real>
 	<key>maxParticles</key>
 	<real>128</real>
 	<key>maxRadius</key>
@@ -99,7 +99,7 @@
 	<key>startColorVarianceRed</key>
 	<real>0.0</real>
 	<key>startParticleSize</key>
-	<real>64</real>
+	<real>144</real>
 	<key>startParticleSizeVariance</key>
 	<real>8</real>
 	<key>tangentialAccelVariance</key>
