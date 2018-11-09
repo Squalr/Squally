@@ -119,7 +119,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				}
 				case CardData::CardType::Special_FLIP1:
 				{
-					gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialAura);
+					gameState->selectedRow->runEffect(CardEffects::CardEffect::TargetPulse);
 					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
 					break;
 				}

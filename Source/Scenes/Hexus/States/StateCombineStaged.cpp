@@ -50,13 +50,12 @@ void StateCombineStaged::onStateEnter(GameState* gameState)
 						gameState->stagedCombineSourceCard,
 					};
 
-					gameState->selectedCard->cardEffects->runEffect(CardEffects::CardEffect::TargetPulse);
-					gameState->enemyBinaryCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
-					gameState->enemyDecimalCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
-					gameState->enemyHexCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
-					gameState->playerBinaryCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
-					gameState->playerDecimalCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
-					gameState->playerHexCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
+					gameState->enemyBinaryCards->runEffect(CardEffects::CardEffect::FocusRing, ignoreList);
+					gameState->enemyDecimalCards->runEffect(CardEffects::CardEffect::FocusRing, ignoreList);
+					gameState->enemyHexCards->runEffect(CardEffects::CardEffect::FocusRing, ignoreList);
+					gameState->playerBinaryCards->runEffect(CardEffects::CardEffect::FocusRing, ignoreList);
+					gameState->playerDecimalCards->runEffect(CardEffects::CardEffect::FocusRing, ignoreList);
+					gameState->playerHexCards->runEffect(CardEffects::CardEffect::FocusRing, ignoreList);
 
 					break;
 				}

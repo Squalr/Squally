@@ -159,6 +159,12 @@ void CardEffects::runEffect(CardEffect effect)
 			this->getRadialGalaxy()->start();
 			break;
 		}
+		case CardEffect::RadialStorm:
+		{
+			this->getRadialStorm()->resumeEmissions();
+			this->getRadialStorm()->start();
+			break;
+		}
 		case CardEffect::SelectionPulse:
 		{
 			this->getSelectionPulse()->runAction(RepeatForever::create(Sequence::create(
@@ -199,15 +205,8 @@ void CardEffects::runEffect(CardEffect effect)
 		}
 		case CardEffect::TargetPulse:
 		{
-			this->getTargetPulse()->runAction(RepeatForever::create(Sequence::create(
-				CallFunc::create([=]()
-				{
-					this->getTargetPulse()->resumeEmissions();
-					this->getTargetPulse()->start();
-				}),
-				DelayTime::create(1.5f),
-				nullptr
-			)));
+			this->getTargetPulse()->resumeEmissions();
+			this->getTargetPulse()->start();
 
 			break;
 		}
