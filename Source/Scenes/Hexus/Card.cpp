@@ -241,7 +241,9 @@ int Card::applyOperation(int attack, Operation operation) {
 			break;
 		}
 		default:
+		{
 			break;
+		}
 	}
 
 	// Ensure only as many as the first 4 bits are set

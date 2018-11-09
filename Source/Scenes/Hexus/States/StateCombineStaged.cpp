@@ -50,6 +50,7 @@ void StateCombineStaged::onStateEnter(GameState* gameState)
 						gameState->stagedCombineSourceCard,
 					};
 
+					gameState->selectedCard->cardEffects->runEffect(CardEffects::CardEffect::TargetPulse);
 					gameState->enemyBinaryCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
 					gameState->enemyDecimalCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
 					gameState->enemyHexCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);

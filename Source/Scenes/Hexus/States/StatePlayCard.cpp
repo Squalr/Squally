@@ -102,7 +102,57 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				card->addOperation(operation);
 			}
 
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
+			// Decide which effect and sounds to play
+			switch (gameState->selectedCard->cardData->cardType)
+			{
+				case CardData::CardType::Special_SHL:
+				{
+					gameState->selectedRow->runEffect(CardEffects::CardEffect::MeteorPurple);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
+					break;
+				}
+				case CardData::CardType::Special_SHR:
+				{
+					gameState->selectedRow->runEffect(CardEffects::CardEffect::MeteorBlue);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
+					break;
+				}
+				case CardData::CardType::Special_FLIP1:
+				{
+					gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialAura);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
+					break;
+				}
+				case CardData::CardType::Special_FLIP2:
+				{
+					gameState->selectedRow->runEffect(CardEffects::CardEffect::FrostCirlce);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
+					break;
+				}
+				case CardData::CardType::Special_FLIP3:
+				{
+					gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialGalaxy);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
+					break;
+				}
+				case CardData::CardType::Special_FLIP4:
+				{
+					gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialFire);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
+					break;
+				}
+				case CardData::CardType::Special_INV:
+				{
+					gameState->selectedRow->runEffect(CardEffects::CardEffect::Bite);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
+					break;
+				}
+				default:
+				{
+					break;
+				}
+			}
+
 			break;
 		}
 		case CardData::CardType::Special_MOV:
@@ -126,10 +176,53 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				gameState->stagedCombineSourceCard->getAttack()
 			);
 
-			// NOTE, the future we may want destination card to be different than target
-			Card* destinationCard = gameState->stagedCombineTargetCard;
-			destinationCard->addOperation(operation);
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
+			gameState->stagedCombineTargetCard->addOperation(operation);
+
+			// Decide which effect and sounds to play
+			switch (gameState->selectedCard->cardData->cardType)
+			{
+				case CardData::CardType::Special_MOV:
+				{
+					gameState->stagedCombineTargetCard->cardEffects->runEffect(CardEffects::CardEffect::DustPoof);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
+					break;
+				}
+				case CardData::CardType::Special_AND:
+				{
+					gameState->stagedCombineTargetCard->cardEffects->runEffect(CardEffects::CardEffect::FireBlast);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
+					break;
+				}
+				case CardData::CardType::Special_OR:
+				{
+					gameState->stagedCombineTargetCard->cardEffects->runEffect(CardEffects::CardEffect::Lightning);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
+					break;
+				}
+				case CardData::CardType::Special_XOR:
+				{
+					gameState->stagedCombineTargetCard->cardEffects->runEffect(CardEffects::CardEffect::RadialStorm);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
+					break;
+				}
+				case CardData::CardType::Special_ADD:
+				{
+					gameState->stagedCombineTargetCard->cardEffects->runEffect(CardEffects::CardEffect::MagicBurst);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
+					break;
+				}
+				case CardData::CardType::Special_SUB:
+				{
+					gameState->stagedCombineTargetCard->cardEffects->runEffect(CardEffects::CardEffect::StarHit);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
+					break;
+				}
+				default:
+				{
+					break;
+				}
+			}
+
 			break;
 		}
 		default:
