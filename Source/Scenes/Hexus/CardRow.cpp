@@ -185,11 +185,12 @@ void CardRow::enableRowSelection(std::function<void(CardRow*)> callback)
 		FadeTo::create(0.25f, 255),
 		nullptr));
 
-	// Disable card interactions because the player is interacting with the whole row
+	// Keep interaction so that mouseover is still possible, but set the callback to be the same as the row callback
 	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 	{
 		Card* card = *it;
-		card->disableInteraction();
+		card->enableInteraction();
+		card->setMouseClickCallback([=](Card* card) { callback(this); });
 	}
 }
 
@@ -343,33 +344,36 @@ int CardRow::simulateCardEffect(Card* card)
 	int diff = 0;
 
 	switch (card->cardData->cardType)
+	{
+		case CardData::CardType::Binary:
+		case CardData::CardType::Decimal:
+		case CardData::CardType::Hexidecimal:
 		{
-			case CardData::CardType::Binary:
-			case CardData::CardType::Decimal:
-			case CardData::CardType::Hexidecimal:
-			{
-				diff += this->getRowAttack();
-				break;
-			}
-			case CardData::CardType::Special_SHL:
-			case CardData::CardType::Special_SHR:
-			case CardData::CardType::Special_FLIP1:
-			case CardData::CardType::Special_FLIP2:
-			case CardData::CardType::Special_FLIP3:
-			case CardData::CardType::Special_FLIP4:
-			case CardData::CardType::Special_INV: {
-				Card::Operation operation = Card::toOperation(card->cardData->cardType, 0);
-				for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
-				{
-					Card* rowCard = *it;
-					int before = rowCard->getAttack();
-					int after = rowCard->simulateOperation(operation);
-					diff += (after - before);
-				}
-			}
-			default:
-				break;
+			diff += this->getRowAttack();
+			break;
 		}
+		case CardData::CardType::Special_SHL:
+		case CardData::CardType::Special_SHR:
+		case CardData::CardType::Special_FLIP1:
+		case CardData::CardType::Special_FLIP2:
+		case CardData::CardType::Special_FLIP3:
+		case CardData::CardType::Special_FLIP4:
+		case CardData::CardType::Special_INV:
+		{
+			Card::Operation operation = Card::toOperation(card->cardData->cardType, 0);
+
+			for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+			{
+				Card* rowCard = *it;
+				int before = rowCard->getAttack();
+				int after = rowCard->simulateOperation(operation);
+
+				diff += (after - before);
+			}
+		}
+		default:
+			break;
+	}
 
 	return diff;
 }

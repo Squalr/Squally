@@ -11,6 +11,7 @@ RemainingCardDisplay* RemainingCardDisplay::create()
 
 RemainingCardDisplay::RemainingCardDisplay()
 {
+	this->particles = ParticleSystemQuad::create(Resources::Particles_Hexus_BlueAura);
 	this->remainingCardSprite = MenuSprite::create(Resources::Minigames_Hexus_RemainingCardsIcon, Resources::Minigames_Hexus_RemainingCardsIcon);
 	this->remainingCardLabel = Label::create("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 	this->enemyRemainingCardSprite = Sprite::create(Resources::Minigames_Hexus_RemainingCardsIcon);
@@ -27,12 +28,14 @@ RemainingCardDisplay::RemainingCardDisplay()
 	this->remainingCardMouseOverLabel->setOpacity(0);
 	this->remainingCardMouseOverLabel->setDimensions(320.0f - 16.0f, 0.0f);
 
+	this->particles->setVisible(false);
 	this->remainingCardLabel->enableOutline(Color4B::BLACK, 4);
 	this->remainingCardSprite->setOpacity(0);
 	this->enemyRemainingCardLabel->enableOutline(Color4B::BLACK, 4);
 	this->enemyRemainingCardSprite->setOpacity(0);
 
 	this->remainingCardSprite->addChild(this->remainingCardLabel);
+	this->addChild(this->particles);
 	this->addChild(this->remainingCardSprite);
 	this->enemyRemainingCardSprite->addChild(this->enemyRemainingCardLabel);
 	this->addChild(this->enemyRemainingCardSprite);
@@ -52,6 +55,7 @@ void RemainingCardDisplay::initializePositions()
 
 	const float spriteOffsetY = 144.0f;
 
+	this->particles->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY);
 	this->remainingCardSprite->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY);
 	this->remainingCardLabel->setPosition(Vec2(16.0f, -this->remainingCardSprite->getContentSize().height / 2.0f + 16.0f));
 	this->enemyRemainingCardSprite->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f + Config::deckOffsetY - spriteOffsetY);
@@ -78,12 +82,14 @@ void RemainingCardDisplay::onRemaningCardDisplayMouseOut()
 
 void RemainingCardDisplay::enableCardDisplayInteraction()
 {
+	this->particles->setVisible(true);
 	this->remainingCardSprite->setMouseOverCallback(CC_CALLBACK_0(RemainingCardDisplay::onRemaningCardDisplayMouseOver, this));
 	this->remainingCardSprite->setMouseOutCallback(CC_CALLBACK_0(RemainingCardDisplay::onRemaningCardDisplayMouseOut, this));
 }
 
 void RemainingCardDisplay::disableCardDisplayInteraction()
 {
+	this->particles->setVisible(false);
 	this->remainingCardSprite->setMouseOverCallback(nullptr);
 	this->remainingCardSprite->setMouseOutCallback(nullptr);
 	this->onRemaningCardDisplayMouseOut();

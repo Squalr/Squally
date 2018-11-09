@@ -29,6 +29,8 @@ private:
 	void enableCardDisplayInteraction();
 	void disableCardDisplayInteraction();
 
+	ParticleSystemQuad* particles;
+
 	MenuSprite* remainingCardSprite;
 	Label* remainingCardLabel;
 
