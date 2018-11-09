@@ -22,7 +22,7 @@ HexusOpponentViper::HexusOpponentViper() : HexusOpponentData(
 	HexusOpponentViper::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
-	HexusOpponentData::generateReward(0.8f),
+	HexusOpponentData::generateReward(0.88f),
 	HexusOpponentData::generateDeck(25, 0.8f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
