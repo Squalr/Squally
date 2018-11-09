@@ -1,6 +1,6 @@
 #include "HexusChapterPreviewCaverns.h"
 
-const std::string HexusChapterPreviewCaverns::stringKeyChapterName = "HEXUS_CHAPTER_CASTLE";
+const std::string HexusChapterPreviewCaverns::stringKeyChapterName = "HEXUS_CHAPTER_CAVERNS";
 
 HexusChapterPreviewCaverns* HexusChapterPreviewCaverns::create()
 {
