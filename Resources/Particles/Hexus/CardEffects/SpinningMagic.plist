@@ -15,7 +15,7 @@
 	<key>configName</key>
 	<string>Untitled 1</string>
 	<key>duration</key>
-	<real>-1</real>
+	<real>0.5</real>
 	<key>emitterType</key>
 	<real>0.0</real>
 	<key>finishColorAlpha</key>
@@ -61,7 +61,7 @@
 	<key>radialAccelVariance</key>
 	<real>65.789999999999992</real>
 	<key>radialAcceleration</key>
-	<real>-671.04999999999995</real>
+	<real>-180</real>
 	<key>rotatePerSecond</key>
 	<real>100</real>
 	<key>rotatePerSecondVariance</key>
@@ -79,9 +79,9 @@
 	<key>sourcePositionVariancey</key>
 	<real>7</real>
 	<key>sourcePositionx</key>
-	<real>160</real>
+	<real>0.0</real>
 	<key>sourcePositiony</key>
-	<real>240</real>
+	<real>0.0</real>
 	<key>speed</key>
 	<real>0.0</real>
 	<key>speedVariance</key>
