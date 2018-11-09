@@ -1,6 +1,6 @@
 #include "HexusOpponentDemonRogue.h"
 
-const std::string HexusOpponentDemonRogue::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DEMON_GRUNT";
+const std::string HexusOpponentDemonRogue::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DEMON_ROGUE";
 HexusOpponentDemonRogue* HexusOpponentDemonRogue::instance = nullptr;
 
 HexusOpponentDemonRogue* HexusOpponentDemonRogue::getInstance()
