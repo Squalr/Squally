@@ -44,4 +44,5 @@ private:
 	static SaveManager *instance;
 	static const std::string globalSaveFileName;
 	static const std::string profileSaveFileTemplate;
+	static const std::string SaveKeyIncrement;
 };

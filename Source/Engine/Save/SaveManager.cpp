@@ -2,6 +2,7 @@
 
 const std::string SaveManager::globalSaveFileName = "Global.sqa";
 const std::string SaveManager::profileSaveFileTemplate = "SaveGame_%d.sqa";
+const std::string SaveManager::SaveKeyIncrement = "SAVE_KEY_INCREMENT";
 
 SaveManager* SaveManager::instance = nullptr;
 
@@ -127,6 +128,16 @@ SaveManager::ActiveSaveProfile SaveManager::getActiveSaveProfile()
 
 void SaveManager::doSave(ValueMap valueMap, std::string localSavePath, std::string cloudSavePath)
 {
+	// Increment save counter
+	if (GameUtils::keyExists(&valueMap, SaveManager::SaveKeyIncrement))
+	{
+		valueMap[SaveManager::SaveKeyIncrement] = cocos2d::Value((unsigned int)(valueMap[SaveManager::SaveKeyIncrement].asUnsignedInt() + (unsigned int)1));
+	}
+	else
+	{
+		valueMap[SaveManager::SaveKeyIncrement] = cocos2d::Value((unsigned int)1);
+	}
+
 	// Save to cloud if available
 	if (Steam::isCloudSaveAvailable())
 	{
@@ -148,6 +159,10 @@ void SaveManager::doSave(ValueMap valueMap, std::string localSavePath, std::stri
 
 ValueMap SaveManager::loadSaveFile(std::string localSavePath, std::string cloudSavePath)
 {
+	bool cloudReadSuccess = false;
+	ValueMap cloudValueMap = ValueMap();
+	ValueMap localValueMap = ValueMap();
+
 	// Load from cloud if it's available
 	if (Steam::isCloudSaveAvailable())
 	{
@@ -162,9 +177,8 @@ ValueMap SaveManager::loadSaveFile(std::string localSavePath, std::string cloudS
 
 			if (bytesRead == fileSize)
 			{
-				ValueMap deserializedValueMap = FileUtils::getInstance()->deserializeValueMapFromData(result.get(), fileSize);
-
-				return deserializedValueMap;
+				cloudValueMap = FileUtils::getInstance()->deserializeValueMapFromData(result.get(), fileSize);
+				cloudReadSuccess = true;
 			}
 		}
 	}
@@ -172,11 +186,38 @@ ValueMap SaveManager::loadSaveFile(std::string localSavePath, std::string cloudS
 	// Access local storage if steam is not available, the file does not exist in the cloud, or the cloud read failed
 	if (FileUtils::getInstance()->isFileExist(localSavePath))
 	{
-		return FileUtils::getInstance()->deserializeValueMapFromFile(localSavePath);
+		localValueMap = FileUtils::getInstance()->deserializeValueMapFromFile(localSavePath);
 	}
 
-	// Nothing found, return an empty valuemap
-	return ValueMap();
+	if (!cloudReadSuccess)
+	{
+		return localValueMap;
+	}
+
+	// Choose local or cloud depending on which has the higher save key increment
+	if (GameUtils::keyExists(&cloudValueMap, SaveManager::SaveKeyIncrement) && GameUtils::keyExists(&localValueMap, SaveManager::SaveKeyIncrement))
+	{
+		unsigned int cloudIncrement = cloudValueMap.at(SaveManager::SaveKeyIncrement).asUnsignedInt();
+		unsigned int localIncrement = localValueMap.at(SaveManager::SaveKeyIncrement).asUnsignedInt();
+
+		// Prefer local over cloud, as this is easier for debugging, testing, and users who want to cheat
+		if (localIncrement >= cloudIncrement)
+		{
+			return localValueMap;
+		}
+		else
+		{
+			return cloudValueMap;
+		}
+	}
+
+	// Increment counts not found -- just use a heuristic based on the number of save key entries
+	if (localValueMap.size() >= cloudValueMap.size())
+	{
+		return localValueMap;
+	}
+
+	return cloudValueMap;
 }
 
 bool SaveManager::hasGlobalData(std::string key)
