@@ -27,7 +27,7 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 	StateBase::onStateEnter(gameState);
 
 	// Unable to find a card to play (ie it would be disadvantageous to play any card for the opponent)
-	if (gameState->selectedCard == nullptr)
+	if (gameState->selectedHandCard == nullptr)
 	{
 		this->runAction(Sequence::create(
 			DelayTime::create(0.5f),
@@ -41,7 +41,7 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 		return;
 	}
 
-	switch (gameState->selectedCard->cardData->cardType)
+	switch (gameState->selectedHandCard->cardData->cardType)
 	{
 		case CardData::CardType::Binary:
 		{
@@ -64,7 +64,6 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_FLIP2:
 		case CardData::CardType::Special_FLIP3:
 		case CardData::CardType::Special_FLIP4:
-		case CardData::CardType::Special_INV:
 		{
 			// Calculate the best row to apply the card to
 			CardRow* bestRow = nullptr;
@@ -81,7 +80,7 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 					continue;
 				}
 
-				int diff = row->simulateCardEffect(gameState->selectedCard) * (row->isPlayerRow() ? -1 : 1);
+				int diff = row->simulateCardEffect(gameState->selectedHandCard) * (row->isPlayerRow() ? -1 : 1);
 
 				if (diff >= bestDiff)
 				{
@@ -105,85 +104,90 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_ADD:
 		case CardData::CardType::Special_SUB:
 		{
-			// n^2 card compare to figure out the best strategy
-			// Maybe there is some better way to do this calculation
-
-			std::vector<Card*> cards = gameState->getEnemyCards(); // all valid source cards for the operation must be our own
-			Card* bestSourceCard = nullptr;
-			Card* bestTargetCard = nullptr;
+			std::vector<Card*> enemyCards = gameState->getEnemyCards();
+			std::vector<CardRow*> cardRows = gameState->getAllRows();
 			int bestDiff = std::numeric_limits<int>::min();
 
-			// First simulate buffing your own cards
-			for (auto sourceCardIterator = cards.begin(); sourceCardIterator != cards.end(); sourceCardIterator++)
+			// Simulate running the card on all rows
+			for (auto it = cardRows.begin(); it != cardRows.end(); it++)
 			{
-				Card* sourceCard = *sourceCardIterator;
+				CardRow* targetRow = *it;
 
-				// First we iterate through only our own cards
-				for (auto targetCardIterator = cards.begin(); targetCardIterator != cards.end(); targetCardIterator++)
+				for (auto sourceCardIterator = enemyCards.begin(); sourceCardIterator != enemyCards.end(); sourceCardIterator++)
 				{
-					Card* targetCard = *targetCardIterator;
-					if (sourceCard == targetCard) {
-						continue; // we're not allowed to apply a card to itself
-					}
+					Card* sourceCard = *sourceCardIterator;
 
-					Card::Operation operation = Card::toOperation(
-						gameState->selectedCard->cardData->cardType,
-						sourceCard->getAttack()
-					);
+					for (auto targetCardIterator = targetRow->rowCards.begin(); targetCardIterator != targetRow->rowCards.end(); targetCardIterator++)
+					{
+						Card* destinationCard = *targetCardIterator;
 
-					int before = targetCard->getAttack();
-					int after = targetCard->simulateOperation(operation);
-					int diff = (after - before);
+						if (sourceCard == destinationCard)
+						{
+							// We're not allowed to apply a card to itself
+							continue;
+						}
 
-					if (diff > bestDiff) {
-						bestDiff = diff;
-						bestSourceCard = sourceCard;
-						bestTargetCard = targetCard;
+						Card::Operation operation = Card::toOperation(
+							gameState->selectedHandCard->cardData->cardType,
+							sourceCard->getAttack()
+						);
+
+						int before = destinationCard->getAttack();
+						int after = destinationCard->simulateOperation(operation);
+						int diff = (after - before) * (targetRow->isPlayerRow() ? -1 : 1);
+
+						if (diff > bestDiff)
+						{
+							bestDiff = diff;
+
+							// Save the best so far
+							gameState->selectedSourceCard = sourceCard;
+							gameState->selectedDestinationCard = destinationCard;
+						}
 					}
 				}
 			}
 
-			// Then simulate attacking the player
-			std::vector<Card*> playerCards = gameState->getPlayerCards();
-			for (auto sourceCardIterator = cards.begin(); sourceCardIterator != cards.end(); sourceCardIterator++)
+			break;
+		}
+		case CardData::CardType::Special_INV:
+		{
+			std::vector<CardRow*> cardRows = gameState->getAllRows();
+			int bestDiff = std::numeric_limits<int>::min();
+
+			for (auto it = cardRows.begin(); it != cardRows.end(); it++)
 			{
-				Card* sourceCard = *sourceCardIterator;
+				CardRow* targetRow = *it;
 
-				// This time we iterate through the players cards
-				for (auto targetCardIterator = playerCards.begin(); targetCardIterator != playerCards.end(); targetCardIterator++)
+				for (auto targetCardIterator = targetRow->rowCards.begin(); targetCardIterator != targetRow->rowCards.end(); targetCardIterator++)
 				{
-					Card* targetCard = *targetCardIterator;
-
-					if (sourceCard == targetCard) {
-						continue; // we're not allowed to apply a card to itself
-					}
+					Card* destinationCard = *targetCardIterator;
 
 					Card::Operation operation = Card::toOperation(
-						gameState->selectedCard->cardData->cardType,
-						sourceCard->getAttack()
+						gameState->selectedHandCard->cardData->cardType,
+						destinationCard->getAttack()
 					);
 
-					// multiply by negative 1 to flip the diff because we want to hurt the player
-					int before = targetCard->getAttack();
-					int after = targetCard->simulateOperation(operation);
-					int diff = (after - before) * -1;
+					int before = destinationCard->getAttack();
+					int after = destinationCard->simulateOperation(operation);
+					int diff = (after - before) * (targetRow->isPlayerRow() ? -1 : 1);
 
 					if (diff > bestDiff)
 					{
 						bestDiff = diff;
-						bestSourceCard = sourceCard;
-						bestTargetCard = targetCard;
+
+						// Save the best so far
+						gameState->selectedDestinationCard = destinationCard;
 					}
 				}
 			}
 
-			gameState->stagedCombineSourceCard = bestSourceCard;
-			gameState->stagedCombineTargetCard = bestTargetCard;
-
 			break;
 		}
 		default:
+		{
 			break;
+		}
 	}
 
 	this->runAction(Sequence::create(

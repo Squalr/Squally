@@ -28,6 +28,8 @@ private:
 	int getEnemyHandCount(GameState* gameState);
 	int getPlayerCardsOnFieldCount(GameState* gameState);
 	int getEnemyCardsOnFieldCount(GameState* gameState);
+	int getCardsStrongerThanAttackCount(CardRow* row, int attack);
+	int getCardsWeakerThanAttackCount(CardRow* row, int attack);
 	unsigned int getStrongestEnemyCardOnField(GameState* gameState);
 	unsigned int getWeakestEnemyCardOnField(GameState* gameState);
 	unsigned int getStrongestPlayerCardOnField(GameState* gameState);

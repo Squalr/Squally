@@ -89,9 +89,9 @@ public:
 	int playableCardsThisTurn;
 	int gameDurationInSeconds;
 	CardRow* stagedCombineCardRow;
-	Card* stagedCombineSourceCard;
-	Card* stagedCombineTargetCard;
-	Card* selectedCard;
+	Card* selectedSourceCard;
+	Card* selectedDestinationCard;
+	Card* selectedHandCard;
 	CardRow* selectedRow;
 	std::string bannerMessage;
 	std::function<void(Card*)> cardPreviewCallback;

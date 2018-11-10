@@ -91,11 +91,11 @@ void StagingHelperText::onAnyStateChange(GameState* gameState)
 
 void StagingHelperText::onSelectionCancel(MenuSprite* menuSprite, GameState* gameState)
 {
-	if (gameState->selectedCard != nullptr)
+	if (gameState->selectedHandCard != nullptr)
 	{
-		gameState->selectedCard->stopAllActions();
-		gameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedCard->position));
-		gameState->selectedCard = nullptr;
+		gameState->selectedHandCard->stopAllActions();
+		gameState->selectedHandCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedHandCard->position));
+		gameState->selectedHandCard = nullptr;
 	}
 
 	GameState::updateState(gameState, GameState::StateType::Neutral);
@@ -103,13 +103,13 @@ void StagingHelperText::onSelectionCancel(MenuSprite* menuSprite, GameState* gam
 
 void StagingHelperText::updateCombineStatus(GameState* gameState)
 {
-	if (gameState->turn == GameState::Turn::Player && gameState->stateType == GameState::StateType::CombineStaged && gameState->stagedCombineSourceCard == nullptr)
+	if (gameState->turn == GameState::Turn::Player && gameState->stateType == GameState::StateType::CombineStaged && gameState->selectedSourceCard == nullptr)
 	{
 		this->selectionLabel->setString("Choose the source card for your operation");
 		this->selectionLabel->runAction(FadeTo::create(0.25f, 255));
 		this->cancelButton->runAction(FadeTo::create(0.25f, 255));
 	}
-	else if (gameState->turn == GameState::Turn::Player && gameState->stateType == GameState::StateType::CombineStaged && gameState->stagedCombineTargetCard == nullptr)
+	else if (gameState->turn == GameState::Turn::Player && gameState->stateType == GameState::StateType::CombineStaged && gameState->selectedDestinationCard == nullptr)
 	{
 		this->selectionLabel->setString("Choose the target card for your operation");
 		this->selectionLabel->runAction(FadeTo::create(0.25f, 255));
@@ -119,15 +119,16 @@ void StagingHelperText::updateCombineStatus(GameState* gameState)
 
 void StagingHelperText::updateSelectionStatus(GameState* gameState)
 {
-	if (gameState->turn == GameState::Turn::Player && gameState->selectedCard != nullptr)
+	if (gameState->turn == GameState::Turn::Player && gameState->selectedHandCard != nullptr)
 	{
-		switch (gameState->selectedCard->cardData->cardType)
+		switch (gameState->selectedHandCard->cardData->cardType)
 		{
 			case CardData::CardType::Special_AND:
 			case CardData::CardType::Special_OR:
 			case CardData::CardType::Special_XOR:
 			case CardData::CardType::Special_ADD:
 			case CardData::CardType::Special_SUB:
+			case CardData::CardType::Special_INV:
 				this->selectionLabel->setString("Choose a source card for the operation");
 				break;
 			case CardData::CardType::Binary:
@@ -139,7 +140,6 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 			case CardData::CardType::Special_FLIP2:
 			case CardData::CardType::Special_FLIP3:
 			case CardData::CardType::Special_FLIP4:
-			case CardData::CardType::Special_INV:
 			default:
 				this->selectionLabel->setString("Choose a row to play the card");
 				break;
@@ -167,18 +167,18 @@ void StagingHelperText::clearSelectionStatus()
 
 void StagingHelperText::onCombineCancel(MenuSprite* menuSprite, GameState* gameState)
 {
-	if (gameState->stagedCombineSourceCard != nullptr)
+	if (gameState->selectedSourceCard != nullptr)
 	{
-		gameState->stagedCombineSourceCard->stopAllActions();
-		gameState->stagedCombineSourceCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->stagedCombineSourceCard->position));
-		gameState->stagedCombineSourceCard = nullptr;
+		gameState->selectedSourceCard->stopAllActions();
+		gameState->selectedSourceCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedSourceCard->position));
+		gameState->selectedSourceCard = nullptr;
 	}
 
-	if (gameState->selectedCard != nullptr)
+	if (gameState->selectedHandCard != nullptr)
 	{
-		gameState->selectedCard->stopAllActions();
-		gameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedCard->position));
-		gameState->selectedCard = nullptr;
+		gameState->selectedHandCard->stopAllActions();
+		gameState->selectedHandCard->runAction(MoveTo::create(Config::cardSelectSpeed, gameState->selectedHandCard->position));
+		gameState->selectedHandCard = nullptr;
 	}
 
 	GameState::updateState(gameState, GameState::StateType::Neutral);
@@ -187,7 +187,7 @@ void StagingHelperText::onCombineCancel(MenuSprite* menuSprite, GameState* gameS
 void StagingHelperText::onHelpClick(MenuSprite* menuSprite, GameState* gameState)
 {
 	// TODO: Show help menu for the type
-	switch (gameState->selectedCard->cardData->cardType)
+	switch (gameState->selectedHandCard->cardData->cardType)
 	{
 		case CardData::CardType::Binary:
 			break;

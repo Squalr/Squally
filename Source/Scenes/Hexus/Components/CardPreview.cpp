@@ -49,13 +49,13 @@ void CardPreview::onAnyStateChange(GameState* gameState)
 		case GameState::StateType::SelectionStaged:
 		case GameState::StateType::CombineStaged:
 		{
-			if (gameState->selectedCard == nullptr)
+			if (gameState->selectedHandCard == nullptr)
 			{
 				this->initializeCallbacks(gameState);
 				break;
 			}
 
-			switch (gameState->selectedCard->cardData->cardType)
+			switch (gameState->selectedHandCard->cardData->cardType)
 			{
 				case CardData::CardType::Binary:
 				case CardData::CardType::Decimal:
@@ -196,7 +196,7 @@ void CardPreview::previewCard(Card* card)
 						specialLabel->setString("Shift the bits right of all cards in a row.");
 						break;
 					case CardData::CardType::Special_INV:
-						specialLabel->setString("Invert all bits in a row.");
+						specialLabel->setString("Invert the bits of the target card.");
 						break;
 					case CardData::CardType::Special_FLIP1:
 						specialLabel->setString("Flip the 1st bit of all cards in a row.");
