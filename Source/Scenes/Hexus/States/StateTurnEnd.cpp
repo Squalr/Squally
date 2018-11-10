@@ -34,8 +34,8 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 	gameState->isRepeatingSameTurn = false;
 	gameState->selectedRow = nullptr;
 	gameState->stagedCombineCardRow = nullptr;
-	gameState->stagedCombineSourceCard = nullptr;
-	gameState->stagedCombineTargetCard = nullptr;
+	gameState->selectedSourceCard = nullptr;
+	gameState->selectedDestinationCard = nullptr;
 
 	// If both players passed than we end the round
 	if (gameState->playerPassed && gameState->enemyPassed)

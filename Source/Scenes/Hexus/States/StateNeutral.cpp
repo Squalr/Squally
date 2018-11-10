@@ -61,9 +61,9 @@ void StateNeutral::selectCard(Card* card)
 		return;
 	}
 
-	this->activeGameState->selectedCard = card;
-	this->activeGameState->selectedCard->stopAllActions();
-	this->activeGameState->selectedCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedCard->position + Vec2(0.0f, Config::cardSelectOffsetY)));
+	this->activeGameState->selectedHandCard = card;
+	this->activeGameState->selectedHandCard->stopAllActions();
+	this->activeGameState->selectedHandCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedHandCard->position + Vec2(0.0f, Config::cardSelectOffsetY)));
 
 	GameState::updateState(this->activeGameState, GameState::StateType::SelectionStaged);
 }

@@ -27,14 +27,14 @@ GameState::GameState()
 	playerCardsDrawnNextRound(0),
 	enemyCardsDrawnNextRound(0),
 	roundNumber(0),
-	selectedCard(nullptr),
+	selectedHandCard(nullptr),
 	selectedRow(nullptr),
 	cardPreviewCallback(nullptr),
 	updateStateCallback(nullptr),
 	endTurnCallback(nullptr),
 	requestAiCallback(nullptr),
-	stagedCombineSourceCard(nullptr),
-	stagedCombineTargetCard(nullptr)
+	selectedSourceCard(nullptr),
+	selectedDestinationCard(nullptr)
 {
 	this->playerDeck = Deck::create();
 	this->playerHand = CardRow::create(true);
@@ -81,17 +81,20 @@ void GameState::updateState(GameState* gameState, StateType newState)
 
 	switch (newState)
 	{
-		case StateType::GameStart: {
+		case StateType::GameStart:
+		{
 			gameState->gameStartTime = std::chrono::high_resolution_clock::now();
 			break;
 		}
-		case StateType::GameEnd: {
+		case StateType::GameEnd:
+		{
 			gameState->gameEndTime = std::chrono::high_resolution_clock::now();
 			std::chrono::duration<double> elapsed = gameState->gameEndTime - gameState->gameStartTime;
 			gameState->gameDurationInSeconds = (int)(elapsed.count());
 			break;
 		}
-		default: {
+		default:
+		{
 			break;
 		}
 	}
@@ -142,6 +145,7 @@ void GameState::clearInteraction()
 	for (auto it = rows.begin(); it != rows.end(); it++)
 	{
 		CardRow* row = *it;
+
 		row->disableRowSelection();
 		row->disableRowCardSelection();
 		row->disableRowCardInteraction();
@@ -163,49 +167,58 @@ void GameState::removeFieldCards()
 
 std::vector<Card*> GameState::getAllCards() 
 {
-	std::vector<CardRow *> rows = this->getAllRows();
-	std::vector<Card *> cards;
+	std::vector<CardRow*> rows = this->getAllRows();
+	std::vector<Card*> cards;
+
 	for (auto it = rows.begin(); it != rows.end(); it++)
 	{
 		CardRow* row = *it;
+
 		for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
 		{
 			Card* card = *it;
 			cards.emplace_back(card);
 		}
 	}
+
 	return cards;
 }
 
 std::vector<Card*> GameState::getEnemyCards() 
 {
-	std::vector<CardRow *> rows = this->getEnemyRows();
-	std::vector<Card *> cards;
+	std::vector<CardRow*> rows = this->getEnemyRows();
+	std::vector<Card*> cards;
+
 	for (auto it = rows.begin(); it != rows.end(); it++)
 	{
 		CardRow* row = *it;
+
 		for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
 		{
 			Card* card = *it;
 			cards.emplace_back(card);
 		}
 	}
+
 	return cards;
 }
 
 std::vector<Card*> GameState::getPlayerCards() 
 {
-	std::vector<CardRow *> rows = this->getPlayerRows();
-	std::vector<Card *> cards;
+	std::vector<CardRow*> rows = this->getPlayerRows();
+	std::vector<Card*> cards;
+
 	for (auto it = rows.begin(); it != rows.end(); it++)
 	{
 		CardRow* row = *it;
+
 		for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
 		{
 			Card* card = *it;
 			cards.emplace_back(card);
 		}
 	}
+
 	return cards;
 }
 
@@ -224,9 +237,11 @@ std::vector<CardRow*> GameState::getAllRows()
 std::vector<CardRow*> GameState::getEnemyRows() 
 {
 	std::vector<CardRow*> cardRows;
+
 	cardRows.emplace_back(this->enemyBinaryCards);
 	cardRows.emplace_back(this->enemyDecimalCards);
 	cardRows.emplace_back(this->enemyHexCards);
+
 	return cardRows;
 }
 

@@ -29,5 +29,6 @@ private:
 	void initializeSelectablesAndCallbacks(GameState* gameState);
 	void selectCard(Card* card, GameState* gameState);
 	void stageSelectedCombineCard(Card* card, GameState* gameState);
+	void immediatelyPlayCard(Card* card, GameState* gameState);
 	void onRowChosen(CardRow* cardRow, GameState* gameState);
 };

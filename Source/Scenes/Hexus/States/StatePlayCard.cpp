@@ -26,7 +26,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	if (gameState->selectedCard == nullptr)
+	if (gameState->selectedHandCard == nullptr)
 	{
 		this->passFromError(gameState);
 		return;
@@ -59,7 +59,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			return;
 	}
 
-	switch (gameState->selectedCard->cardData->cardType)
+	switch (gameState->selectedHandCard->cardData->cardType)
 	{
 		case CardData::CardType::Binary:
 		case CardData::CardType::Decimal:
@@ -71,8 +71,8 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				return;
 			}
 
-			selfHand->removeCard(gameState->selectedCard);
-			gameState->selectedRow->insertCard(gameState->selectedCard, Config::insertDelay);
+			selfHand->removeCard(gameState->selectedHandCard);
+			gameState->selectedRow->insertCard(gameState->selectedHandCard, Config::insertDelay);
 			SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
 			break;
 		}
@@ -82,7 +82,6 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_FLIP2:
 		case CardData::CardType::Special_FLIP3:
 		case CardData::CardType::Special_FLIP4:
-		case CardData::CardType::Special_INV:
 		{
 			if (gameState->selectedRow == nullptr)
 			{
@@ -90,10 +89,10 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				return;
 			}
 
-			selfHand->removeCard(gameState->selectedCard);
-			selfGraveyard->insertCardTop(gameState->selectedCard, true, Config::insertDelay);
+			selfHand->removeCard(gameState->selectedHandCard);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
 
-			Card::Operation operation = Card::toOperation(gameState->selectedCard->cardData->cardType, 0);
+			Card::Operation operation = Card::toOperation(gameState->selectedHandCard->cardData->cardType, 0);
 
 			for (auto it = gameState->selectedRow->rowCards.begin(); it != gameState->selectedRow->rowCards.end(); it++)
 			{
@@ -103,7 +102,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			}
 
 			// Decide which effect and sounds to play
-			switch (gameState->selectedCard->cardData->cardType)
+			switch (gameState->selectedHandCard->cardData->cardType)
 			{
 				case CardData::CardType::Special_SHL:
 				{
@@ -141,12 +140,6 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
 					break;
 				}
-				case CardData::CardType::Special_INV:
-				{
-					gameState->selectedRow->runEffect(CardEffects::CardEffect::Bite);
-					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
-					break;
-				}
 				default:
 				{
 					break;
@@ -162,58 +155,58 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_ADD:
 		case CardData::CardType::Special_SUB:
 		{
-			if (gameState->stagedCombineSourceCard == nullptr || gameState->stagedCombineTargetCard == nullptr)
+			if (gameState->selectedSourceCard == nullptr || gameState->selectedDestinationCard == nullptr)
 			{
 				this->passFromError(gameState);
 				return;
 			}
 
-			selfHand->removeCard(gameState->selectedCard);
-			selfGraveyard->insertCardTop(gameState->selectedCard, true, Config::insertDelay);
+			selfHand->removeCard(gameState->selectedHandCard);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
 
 			Card::Operation operation = Card::toOperation(
-				gameState->selectedCard->cardData->cardType,
-				gameState->stagedCombineSourceCard->getAttack()
+				gameState->selectedHandCard->cardData->cardType,
+				gameState->selectedSourceCard->getAttack()
 			);
 
-			gameState->stagedCombineTargetCard->addOperation(operation);
+			gameState->selectedDestinationCard->addOperation(operation);
 
 			// Decide which effect and sounds to play
-			switch (gameState->selectedCard->cardData->cardType)
+			switch (gameState->selectedHandCard->cardData->cardType)
 			{
 				case CardData::CardType::Special_MOV:
 				{
-					gameState->stagedCombineTargetCard->cardEffects->runEffect(CardEffects::CardEffect::DustPoof);
+					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::DustPoof);
 					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
 					break;
 				}
 				case CardData::CardType::Special_AND:
 				{
-					gameState->stagedCombineTargetCard->cardEffects->runEffect(CardEffects::CardEffect::FireBlast);
+					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::FireBlast);
 					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
 					break;
 				}
 				case CardData::CardType::Special_OR:
 				{
-					gameState->stagedCombineTargetCard->cardEffects->runEffect(CardEffects::CardEffect::Lightning);
+					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::Lightning);
 					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
 					break;
 				}
 				case CardData::CardType::Special_XOR:
 				{
-					gameState->stagedCombineTargetCard->cardEffects->runEffect(CardEffects::CardEffect::RadialStorm);
+					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::RadialStorm);
 					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
 					break;
 				}
 				case CardData::CardType::Special_ADD:
 				{
-					gameState->stagedCombineTargetCard->cardEffects->runEffect(CardEffects::CardEffect::MagicBurst);
+					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::MagicBurst);
 					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
 					break;
 				}
 				case CardData::CardType::Special_SUB:
 				{
-					gameState->stagedCombineTargetCard->cardEffects->runEffect(CardEffects::CardEffect::StarHit);
+					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::StarHit);
 					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
 					break;
 				}
@@ -225,13 +218,38 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			break;
 		}
+		case CardData::CardType::Special_INV:
+		{
+			if (gameState->selectedDestinationCard == nullptr)
+			{
+				this->passFromError(gameState);
+				return;
+			}
+
+			selfHand->removeCard(gameState->selectedHandCard);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+
+			Card::Operation operation = Card::toOperation(
+				gameState->selectedHandCard->cardData->cardType,
+				gameState->selectedDestinationCard->getAttack()
+			);
+
+			gameState->selectedDestinationCard->addOperation(operation);
+
+			gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::Bite);
+			SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
+
+			break;
+		}
 		default:
+		{
 			this->passFromError(gameState);
 			return;
+		}
 	}
 
 	gameState->playableCardsThisTurn--;
-	gameState->selectedCard = nullptr;
+	gameState->selectedHandCard = nullptr;
 	CallFunc* stateTransition = nullptr;
 
 	if (gameState->turn == GameState::Turn::Player)
@@ -305,8 +323,8 @@ void StatePlayCard::onStateExit(GameState* gameState)
 {
 	StateBase::onStateExit(gameState);
 
-	gameState->stagedCombineSourceCard = nullptr;
-	gameState->stagedCombineTargetCard = nullptr;
+	gameState->selectedSourceCard = nullptr;
+	gameState->selectedDestinationCard = nullptr;
 }
 
 void StatePlayCard::passFromError(GameState* gameState)

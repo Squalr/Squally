@@ -26,7 +26,7 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	gameState->selectedCard = nullptr;
+	gameState->selectedHandCard = nullptr;
 
 	for (auto it = gameState->enemyHand->rowCards.begin(); it != gameState->enemyHand->rowCards.end(); it++)
 	{
@@ -38,46 +38,65 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 			case CardData::CardType::Decimal:
 			case CardData::CardType::Hexidecimal:
 			{
-				gameState->selectedCard = card;
-				break;
-			}
-			case CardData::CardType::Special_SHR:
-			{
-				// Not useful if no player cards on field
-				if (this->getPlayerCardsOnFieldCount(gameState) <= 0)
-				{
-					break;
-				}
-
-				gameState->selectedCard = card;
-				break;
-			}
-			case CardData::CardType::Special_SHL:
-			{
-				// (Generally) Not useful if no enemy cards on field
-				if (this->getEnemyCardsOnFieldCount(gameState) <= 0)
-				{
-					break;
-				}
-
-				// TODO: Capture overflow cases that might make this card useful against the player
-
-				gameState->selectedCard = card;
+				gameState->selectedHandCard = card;
 				break;
 			}
 			case CardData::CardType::Special_FLIP1:
 			case CardData::CardType::Special_FLIP2:
 			case CardData::CardType::Special_FLIP3:
 			case CardData::CardType::Special_FLIP4:
+			case CardData::CardType::Special_SHR:
+			case CardData::CardType::Special_SHL:
+			{
+				std::vector<CardRow*> cardRows = gameState->getEnemyRows();
+				std::vector<CardRow*> playerCardRows = gameState->getPlayerRows();
+
+				// Happy case 1: There is a way to shift our own cards that is beneficial
+				for (auto it = cardRows.begin(); it != cardRows.end(); it++)
+				{
+					CardRow* row = *it;
+
+					int diff = row->simulateCardEffect(card) * (row->isPlayerRow() ? -1 : 1);
+
+					if (diff > 0)
+					{
+						gameState->selectedHandCard = card;
+						break;
+					}
+				}
+
+				// Happy case 2: There is a way to shift the players cards that deals damage
+				for (auto it = playerCardRows.begin(); it != playerCardRows.end(); it++)
+				{
+					CardRow* row = *it;
+
+					int diff = row->simulateCardEffect(card) * (row->isPlayerRow() ? -1 : 1);
+
+					if (diff < 0)
+					{
+						gameState->selectedHandCard = card;
+						break;
+					}
+				}
+
+				break;
+			}
 			case CardData::CardType::Special_INV:
 			{
-				// Not useful if no cards on field
-				if (this->getEnemyCardsOnFieldCount(gameState) <= 0 && this->getPlayerCardsOnFieldCount(gameState) <= 0)
+				// Happy case 1: An enemy card exists that would benefit from the inversion
+				if (this->getEnemyCardsOnFieldCount(gameState) >= 0 && this->getWeakestEnemyCardOnField(gameState) <= 7)
 				{
+					gameState->selectedHandCard = card;
 					break;
 				}
 
-				gameState->selectedCard = card;
+				// Happy case 2: An player card exists that would decrease from the inversion
+				if (this->getPlayerCardsOnFieldCount(gameState) >= 0 && this->getWeakestPlayerCardOnField(gameState) > 7)
+				{
+					gameState->selectedHandCard = card;
+					break;
+				}
+
 				break;
 			}
 			case CardData::CardType::Special_OR:
@@ -95,7 +114,7 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 					break;
 				}
 
-				gameState->selectedCard = card;
+				gameState->selectedHandCard = card;
 				break;
 			}
 			case CardData::CardType::Special_ADD:
@@ -109,7 +128,7 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 				// Happy case 1: There exists at least one combo to make the player overflow
 				if (this->getStrongestEnemyCardOnField(gameState) + this->getStrongestPlayerCardOnField(gameState) > 15)
 				{
-					gameState->selectedCard = card;
+					gameState->selectedHandCard = card;
 					break;
 				}
 
@@ -136,7 +155,7 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 
 					if (lowest + otherLowest <= 15)
 					{
-						gameState->selectedCard = card;
+						gameState->selectedHandCard = card;
 						break;
 					}
 				}
@@ -183,7 +202,7 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 
 					if (solutionFound)
 					{
-						gameState->selectedCard = card;
+						gameState->selectedHandCard = card;
 
 						break;
 					}
@@ -192,7 +211,7 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 				// Happy case 2: There exists some combo to make a stronger player card
 				if (this->getEnemyCardsOnFieldCount(gameState) >= 2 && this->getWeakestPlayerCardOnField(gameState) != this->getStrongestPlayerCardOnField(gameState))
 				{
-					gameState->selectedCard = card;
+					gameState->selectedHandCard = card;
 					break;
 				}
 
@@ -214,7 +233,7 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 					break;
 				}
 
-				gameState->selectedCard = card;
+				gameState->selectedHandCard = card;
 				break;
 			}
 			case CardData::CardType::Special_XOR:
@@ -233,7 +252,7 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 
 				// TODO: Determine in advance if the XOR will be useful. Some calculation required.
 
-				gameState->selectedCard = card;
+				gameState->selectedHandCard = card;
 				break;
 			}
 			case CardData::CardType::Special_SUB:
@@ -260,7 +279,7 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 				// TODO: Prove that this ends up with a better card -- technically it might not
 				if (this->getWeakestEnemyCardOnField(gameState) - this->getStrongestEnemyCardOnField(gameState) < 0)
 				{
-					gameState->selectedCard = card;
+					gameState->selectedHandCard = card;
 					break;
 				}
 
@@ -272,12 +291,12 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 					// The result is within the attack bounds -- subtraction succeeded without overflow
 					if (result >= 0 && result < 15)
 					{
-						gameState->selectedCard = card;
+						gameState->selectedHandCard = card;
 						break;
 					}
 				}
 
-				gameState->selectedCard = card;
+				gameState->selectedHandCard = card;
 				break;
 			}
 			default:
@@ -286,7 +305,7 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 			}
 		}
 
-		if (gameState->selectedCard != nullptr)
+		if (gameState->selectedHandCard != nullptr)
 		{
 			break;
 		}
@@ -366,6 +385,36 @@ int StateAIDecideCard::getEnemyCardsOnFieldCount(GameState* gameState)
 	for (auto it = enemyRows.begin(); it != enemyRows.end(); it++)
 	{
 		cardCount += (*it)->rowCards.size();
+	}
+
+	return cardCount;
+}
+
+int StateAIDecideCard::getCardsStrongerThanAttackCount(CardRow* row, int attack)
+{
+	int cardCount = 0;
+
+	for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
+	{
+		if ((*it)->getAttack() > attack)
+		{
+			cardCount++;
+		}
+	}
+
+	return cardCount;
+}
+
+int StateAIDecideCard::getCardsWeakerThanAttackCount(CardRow* row, int attack)
+{
+	int cardCount = 0;
+
+	for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
+	{
+		if ((*it)->getAttack() < attack)
+		{
+			cardCount++;
+		}
 	}
 
 	return cardCount;
