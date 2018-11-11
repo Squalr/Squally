@@ -60,6 +60,9 @@ Hexus::Hexus()
 	this->rowTotals = RowTotals::create();
 	this->scoreTotal = ScoreTotal::create();
 	this->debugDisplay = DebugDisplay::create();
+	this->pauseMenu = PauseMenu::create();
+
+	this->pauseMenu->setVisible(false);
 
 	this->addChild(this->gameBackground);
 	this->addChild(this->gameState);
@@ -110,6 +113,7 @@ Hexus::Hexus()
 	this->addChild(this->victoryBanner);
 	this->addChild(this->defeatBanner);
 	this->addChild(this->drawBanner);
+	this->addChild(this->pauseMenu);
 	this->addChild(Mouse::create());
 }
 
@@ -192,8 +196,9 @@ void Hexus::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
-			// NavigationEvents::navigate(NavigationEvents::GameScreen::Pause);
-			// event->stopPropagation();
+			event->stopPropagation();
+			this->pauseMenu->setVisible(true);
+			GameUtils::focus(this->pauseMenu);
 			break;
 		case EventKeyboard::KeyCode::KEY_SPACE:
 			// this->gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, this->gameState->opponentData, 0));
