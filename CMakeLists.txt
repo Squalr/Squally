@@ -78,6 +78,7 @@ list(APPEND GAME_SOURCE
 	Source/Analytics/AnalyticsCategories.cpp
 	Source/Engine/EngineBootstrapper.cpp
 	Source/Engine/GlobalDirector.cpp
+	Source/Engine/GlobalNode.cpp
 	Source/Engine/SmartNode.cpp
 	Source/Engine/SmartScene.cpp
 	Source/Engine/Analytics/Analytics.cpp
