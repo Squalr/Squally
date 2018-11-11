@@ -6,6 +6,7 @@
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/FadeScene.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Menus/Pause/PauseMenu.h"
 #include "Resources.h"
 #include "Scenes/Hexus/CardStorage.h"
 #include "Scenes/Hexus/GameState.h"
@@ -85,4 +86,6 @@ private:
 	RowTotals* rowTotals;
 	ScoreTotal* scoreTotal;
 	DebugDisplay* debugDisplay;
+
+	PauseMenu* pauseMenu;
 };

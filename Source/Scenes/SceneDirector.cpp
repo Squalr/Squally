@@ -17,8 +17,8 @@ SceneDirector::SceneDirector()
 {
 	this->sceneHistory = new std::stack<Scene*>();
 	this->titleScreen = TitleScreen::create();
-	this->saveSelectMenu = SaveSelectMenu::create();
-	this->minigamesMenu = MinigamesMenu::create();
+	this->saveSelectMenu = TakeOverMenu::create(SaveSelectMenu::create());
+	this->minigamesMenu = TakeOverMenu::create(MinigamesMenu::create());
 	this->hexusChapterSelectMenu = HexusChapterSelectMenu::create();
 	this->hexusDeckManagement = HexusDeckManagement::create();
 	this->hexusRewardsMenu = HexusRewardsMenu::create();
@@ -35,12 +35,14 @@ SceneDirector::SceneDirector()
 	this->hexusOpponentMenuMech = HexusOpponentMenuMech::create();
 	this->hexusPuzzlesMenu = HexusPuzzlesMenu::create();
 	this->worldMap = WorldMap::create();
-	this->loadingScreen = LoadingScreen::create();
+	this->innerLoadingScreen = LoadingScreen::create();
+	this->loadingScreen = TakeOverMenu::create(this->innerLoadingScreen);
 	this->map = nullptr;
 	this->fight = Fight::create();
-	this->optionsMenu = OptionsMenu::create();
-	this->pauseMenu = PauseMenu::create();
-	this->confirmationMenu = ConfirmationMenu::create();
+	this->optionsMenu = TakeOverMenu::create(OptionsMenu::create());
+	this->pauseMenu = TakeOverMenu::create(PauseMenu::create());
+	this->innerConfirmationMenu = ConfirmationMenu::create();
+	this->confirmationMenu = TakeOverMenu::create(this->innerConfirmationMenu);
 	this->hexus = Hexus::create();
 
 	// Start title screen first (TODO: Eventually splash screen? Do we want one?)
@@ -148,82 +150,134 @@ void SceneDirector::onGameNavigateNew(EventCustom* eventCustom)
 	switch (args->gameScreen)
 	{
 		case NavigationEvents::GameScreen::Title:
+		{
 			newScene = this->titleScreen;
 			break;
+		}
 		case NavigationEvents::GameScreen::SaveSelect:
+		{
 			newScene = this->saveSelectMenu;
 			break;
+		}
 		case NavigationEvents::GameScreen::Minigames:
+		{
 			newScene = this->minigamesMenu;
 			break;
+		}
 		case NavigationEvents::GameScreen::Minigames_Hexus:
+		{
 			newScene = this->hexusChapterSelectMenu;
 			break;
+		}
 		case NavigationEvents::GameScreen::Minigames_Hexus_Deck_Management:
+		{
 			newScene = this->hexusDeckManagement;
 			break;
+		}
 		case NavigationEvents::GameScreen::Minigames_Hexus_Rewards:
+		{
 			newScene = this->hexusRewardsMenu;
 			break;
+		}
 		case NavigationEvents::GameScreen::Minigames_Hexus_Store:
+		{
 			newScene = this->hexusStoreMenu;
 			break;
+		}
 		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Training:
+		{
 			newScene = this->hexusOpponentMenuTraining;
 			break;
+		}
 		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Jungle:
+		{
 			newScene = this->hexusOpponentMenuJungle;
 			break;
+		}
 		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Ruins:
+		{
 			newScene = this->hexusOpponentMenuRuins;
 			break;
+		}
 		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Forest:
+		{
 			newScene = this->hexusOpponentMenuForest;
 			break;
+		}
 		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Caverns:
+		{
 			newScene = this->hexusOpponentMenuCaverns;
 			break;
+		}
 		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Castle:
+		{
 			newScene = this->hexusOpponentMenuCastle;
 			break;
+		}
 		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_IceCaps:
+		{
 			newScene = this->hexusOpponentMenuIceCaps;
 			break;
+		}
 		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Volcano:
+		{
 			newScene = this->hexusOpponentMenuVolcano;
 			break;
+		}
 		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Obelisk:
+		{
 			newScene = this->hexusOpponentMenuObelisk;
 			break;
+		}
 		case NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Mech:
+		{
 			newScene = this->hexusOpponentMenuMech;
 			break;
+		}
 		case NavigationEvents::GameScreen::Minigames_Hexus_Puzzles:
+		{
 			newScene = this->hexusPuzzlesMenu;
 			break;
+		}
 		case NavigationEvents::GameScreen::StoryMap:
+		{
 			newScene = this->worldMap;
 			break;
+		}
 		case NavigationEvents::GameScreen::Pause:
+		{
 			newScene = this->pauseMenu;
 			break;
+		}
 		case NavigationEvents::GameScreen::Options:
+		{
 			newScene = this->optionsMenu;
 			break;
+		}
 		case NavigationEvents::GameScreen::Confirm:
+		{
 			newScene = this->confirmationMenu;
 			break;
+		}
 		case NavigationEvents::GameScreen::Loading:
+		{
 			newScene = this->loadingScreen;
 			break;
+		}
 		case NavigationEvents::GameScreen::Level:
+		{
 			newScene = this->map;
 			break;
+		}
 		case NavigationEvents::GameScreen::Hexus:
+		{
 			newScene = this->hexus;
 			break;
+		}
 		default:
+		{
 			return;
+		}
 	}
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
@@ -255,7 +309,7 @@ void SceneDirector::onGameNavigateConfirm(EventCustom* eventCustom)
 	NavigationEvents::NavigateConfirmArgs* args = (NavigationEvents::NavigateConfirmArgs*)(eventCustom->getUserData());
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
-	this->confirmationMenu->initialize(args->message, args->confirmCallback, args->cancelCallback);
+	this->innerConfirmationMenu->initialize(args->message, args->confirmCallback, args->cancelCallback);
 	GlobalDirector::getInstance()->loadScene(this->confirmationMenu);
 }
 
@@ -276,7 +330,7 @@ void SceneDirector::onGameNavigateLoadLevel(EventCustom* eventCustom)
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
 	GlobalDirector::getInstance()->loadScene(this->loadingScreen);
-	this->loadingScreen->loadLevel(args->levelFile, [](SerializableMap* levelMap){ NavigationEvents::enterLevel(levelMap); });
+	this->innerLoadingScreen->loadLevel(args->levelFile, [](SerializableMap* levelMap){ NavigationEvents::enterLevel(levelMap); });
 }
 
 void SceneDirector::onGameNavigateEnterLevel(EventCustom* eventCustom)
@@ -291,13 +345,16 @@ void SceneDirector::onGameNavigateEnterLevel(EventCustom* eventCustom)
 		this->map->release();
 	}
 
-	if (args->levelMap->isPlatformer()) {
+	if (args->levelMap->isPlatformer())
+	{
 		this->map = PlatformerMap::create();
 	} 
-	else if (args->levelMap->isIsometric()) {
+	else if (args->levelMap->isIsometric())
+	{
 		this->map = IsometricMap::create();
 	}
-	else {
+	else
+	{
 		throw std::runtime_error("Invalid Map Type Loaded");
 	}
 

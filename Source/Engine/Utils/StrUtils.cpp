@@ -23,9 +23,9 @@ std::string StrUtils::quote(std::string value)
 	return "\"" + value + "\"";
 }
 
-std::vector<std::string>* StrUtils::tokenize(std::string str, std::string delimiters)
+std::vector<std::string> StrUtils::tokenize(std::string str, std::string delimiters)
 {
-	std::vector<std::string>* tokens = new std::vector<std::string>();
+	std::vector<std::string> tokens = std::vector<std::string>();
 
 	// Skip delimiters at beginning
 	std::string::size_type lastPos = str.find_first_not_of(delimiters, 0);
@@ -36,13 +36,13 @@ std::vector<std::string>* StrUtils::tokenize(std::string str, std::string delimi
 	// Insert leading delimiter token
 	if (pos != std::string::npos && lastPos != std::string::npos && lastPos > 0)
 	{
-		tokens->push_back(str.substr(lastPos, pos - lastPos));
+		tokens.push_back(str.substr(lastPos, pos - lastPos));
 	}
 
 	while (pos != std::string::npos || pos != lastPos)
 	{
 		// Found a standard token, add it to the vector
-		tokens->push_back(str.substr(lastPos, pos - lastPos));
+		tokens.push_back(str.substr(lastPos, pos - lastPos));
 
 		// Skip delimiters
 		lastPos = str.find_first_not_of(delimiters, pos);
@@ -50,7 +50,7 @@ std::vector<std::string>* StrUtils::tokenize(std::string str, std::string delimi
 		// Insert delimiter token
 		if (lastPos != std::string::npos && pos != std::string::npos)
 		{
-			tokens->push_back(str.substr(pos, lastPos - pos));
+			tokens.push_back(str.substr(pos, lastPos - pos));
 		}
 
 		// Find next non-delimiter
@@ -74,15 +74,15 @@ std::vector<std::string>* StrUtils::tokenize(std::string str, std::string delimi
 			pos += 1;
 		}
 
-		tokens->push_back(str.substr(pos, str.size() - pos));
+		tokens.push_back(str.substr(pos, str.size() - pos));
 	}
 
 	return tokens;
 }
 
-std::vector<std::string>* StrUtils::splitOn(std::string str, std::string delimiters)
+std::vector<std::string> StrUtils::splitOn(std::string str, std::string delimiters)
 {
-	std::vector<std::string>* tokens = new std::vector<std::string>();
+	std::vector<std::string> tokens = std::vector<std::string>();
 
 	size_t start = 0U;
 	size_t end = str.find_first_of(delimiters);
@@ -94,11 +94,11 @@ std::vector<std::string>* StrUtils::splitOn(std::string str, std::string delimit
 		if (length > 0)
 		{
 			std::string next = str.substr(start, end - start);
-			tokens->push_back(next);
+			tokens.push_back(next);
 		}
 
 		std::string delim = str.substr(end, 1);
-		tokens->push_back(delim);
+		tokens.push_back(delim);
 
 		start = end + 1;
 		end = str.find_first_of(delimiters, start);
@@ -108,7 +108,7 @@ std::vector<std::string>* StrUtils::splitOn(std::string str, std::string delimit
 
 	if (next != "")
 	{
-		tokens->push_back(next);
+		tokens.push_back(next);
 	}
 
 	return tokens;

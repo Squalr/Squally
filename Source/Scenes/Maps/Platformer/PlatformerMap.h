@@ -14,11 +14,11 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NavigationEvents.h"
+#include "Menus/Dialog/DialogMenu.h"
+#include "Menus/Pause/PauseMenu.h"
 #include "Resources.h"
 #include "Scenes/Maps/IMap.h"
 #include "Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixRain.h"
-#include "Scenes/Menus/Dialog/DialogMenu.h"
-#include "Scenes/Menus/Pause/PauseMenu.h"
 
 using namespace cocos2d;
 
