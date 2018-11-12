@@ -23,6 +23,8 @@ class OptionsMenu : public SmartNode
 public:
 	static OptionsMenu * create();
 
+	void setBackClickCallback(std::function<void()> backClickCallback);
+
 protected:
 	OptionsMenu();
 	~OptionsMenu();
@@ -39,6 +41,9 @@ private:
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void showResolutionOptions();
 	void hideResolutionOptions();
+	void onExit();
+
+	std::function<void()> backClickCallback;
 
 	Node* background;
 	Sprite* optionsWindow;

@@ -22,6 +22,9 @@ PauseMenu::PauseMenu()
 	this->pauseWindow = Sprite::create(Resources::Menus_PauseMenu_PauseMenu);
 	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover);
 	this->titleLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyMenuPause), Localization::getMainFont(), 32.0f);
+	this->resumeClickCallback = nullptr;
+	this->optionsClickCallback = nullptr;
+	this->exitClickCallback = nullptr;
 
 	int fontSize = 24;
 	Size shadowSize = Size(-2.0f, -2.0f);
@@ -144,6 +147,21 @@ void PauseMenu::initializeListeners()
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 }
 
+void PauseMenu::setResumeCallback(std::function<void()> resumeClickCallback)
+{
+	this->resumeClickCallback = resumeClickCallback;
+}
+
+void PauseMenu::setOptionsCallback(std::function<void()> optionsClickCallback)
+{
+	this->optionsClickCallback = optionsClickCallback;
+}
+
+void PauseMenu::setExitCallback(std::function<void()> exitClickCallback)
+{
+	this->exitClickCallback = exitClickCallback;
+}
+
 void PauseMenu::onExitConfirm()
 {
 	NavigationEvents::navigate(NavigationEvents::Title);
@@ -171,20 +189,32 @@ void PauseMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 void PauseMenu::onCloseClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigateBack();
+	if (this->resumeClickCallback != nullptr)
+	{
+		this->resumeClickCallback();
+	}
 }
 
 void PauseMenu::onResumeClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigateBack();
+	if (this->resumeClickCallback != nullptr)
+	{
+		this->resumeClickCallback();
+	}
 }
 
 void PauseMenu::onOptionsClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Options);
+	if (this->optionsClickCallback != nullptr)
+	{
+		this->optionsClickCallback();
+	}
 }
 
 void PauseMenu::onExitClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigateConfirm(Localization::resolveString(PauseMenu::StringKeyExitPrompt), CC_CALLBACK_0(PauseMenu::onExitConfirm, this), nullptr);
+	if (this->exitClickCallback != nullptr)
+	{
+		this->exitClickCallback();
+	}
 }

@@ -39,7 +39,8 @@ SceneDirector::SceneDirector()
 	this->loadingScreen = TakeOverMenu::create(this->innerLoadingScreen);
 	this->map = nullptr;
 	this->fight = Fight::create();
-	this->optionsMenu = TakeOverMenu::create(OptionsMenu::create());
+	this->innerOptionsMenu = OptionsMenu::create();
+	this->optionsMenu = TakeOverMenu::create(this->innerOptionsMenu);
 	this->pauseMenu = TakeOverMenu::create(PauseMenu::create());
 	this->innerConfirmationMenu = ConfirmationMenu::create();
 	this->confirmationMenu = TakeOverMenu::create(this->innerConfirmationMenu);
@@ -85,6 +86,8 @@ SceneDirector::~SceneDirector()
 void SceneDirector::initializeListeners()
 {
 	GlobalNode::initializeListeners();
+
+	this->innerOptionsMenu->setBackClickCallback([]() { NavigationEvents::navigateBack(); });
 
 	EventListenerCustom* navigateNewEventListener = EventListenerCustom::create(
 		NavigationEvents::gameNavigateNewEvent,

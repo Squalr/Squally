@@ -81,6 +81,7 @@ private:
 	TakeOverMenu* loadingScreen;
 	IMap* map;
 	Fight* fight;
+	OptionsMenu* innerOptionsMenu;
 	TakeOverMenu* optionsMenu;
 	TakeOverMenu* pauseMenu;
 	ConfirmationMenu* innerConfirmationMenu;

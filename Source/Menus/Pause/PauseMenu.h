@@ -7,9 +7,7 @@
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
-#include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/MenuBackground.h"
-#include "Menus/Options/OptionsMenu.h"
 #include "Resources.h"
 
 using namespace cocos2d;
@@ -18,6 +16,10 @@ class PauseMenu : public SmartNode
 {
 public:
 	static PauseMenu * create();
+
+	void setResumeCallback(std::function<void()> resumeClickCallback);
+	void setOptionsCallback(std::function<void()> optionsClickCallback);
+	void setExitCallback(std::function<void()> exitClickCallback);
 
 protected:
 	PauseMenu();
@@ -41,6 +43,10 @@ private:
 	TextMenuSprite* resumeButton;
 	TextMenuSprite* optionsButton;
 	TextMenuSprite* exitButton;
+
+	std::function<void()> resumeClickCallback;
+	std::function<void()> optionsClickCallback;
+	std::function<void()> exitClickCallback;
 
 	static const Color3B TitleColor;
 	static const std::string StringKeyMenuPause;

@@ -64,20 +64,21 @@ MenuBackground::~MenuBackground()
 
 void MenuBackground::initializePositions()
 {
+	SmartNode::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	this->background->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
-	this->backgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 320.0f));
-	this->webs->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 32.0f));
-	this->midgroundTrees->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+	this->backgroundTrees->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 320.0f));
+	this->webs->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 32.0f));
+	this->midgroundTrees->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 
-	this->fog->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 120.0f));
-	this->foregroundFog->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2 - 256.0f));
-	this->foregroundVines->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 196.0f));
-	this->foregroundGrassBottom->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + 72.0f));
-	this->foregroundGrassTop->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - 32.0f));
-	this->foregroundLight->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height - foregroundLight->getContentSize().height / 2));
-	this->windParticles->setPosition(Vec2(origin.x + visibleSize.width, origin.y + visibleSize.height / 2));
-	this->fireflyParticles->setPosition(Vec2(origin.x + visibleSize.width / 2, origin.y + visibleSize.height / 2));
+	this->fog->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 120.0f));
+	this->foregroundFog->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 256.0f));
+	this->foregroundVines->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - 196.0f));
+	this->foregroundGrassBottom->setPosition(Vec2(visibleSize.width / 2, 72.0f));
+	this->foregroundGrassTop->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - 32.0f));
+	this->foregroundLight->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - foregroundLight->getContentSize().height / 2));
+	this->windParticles->setPosition(Vec2(visibleSize.width, visibleSize.height / 2));
+	this->fireflyParticles->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 }
