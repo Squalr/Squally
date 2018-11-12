@@ -67,11 +67,6 @@ Hexus::Hexus()
 	this->confirmationMenu = ConfirmationMenu::create();
 	this->menuBackDrop = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
 
-	this->menuBackDrop->setOpacity(0);
-	this->pauseMenu->setVisible(false);
-	this->optionsMenu->setVisible(false);
-	this->confirmationMenu->setVisible(false);
-
 	this->addChild(this->gameBackground);
 	this->addChild(this->gameState);
 	this->addChild(this->avatars);
@@ -137,6 +132,11 @@ void Hexus::onEnter()
 	FadeScene::onEnter();
 
 	SoundManager::playMusicResource(Resources::Music_LastMarch);
+
+	this->menuBackDrop->setOpacity(0);
+	this->pauseMenu->setVisible(false);
+	this->optionsMenu->setVisible(false);
+	this->confirmationMenu->setVisible(false); 
 
 	if (this->gameState->stateType == GameState::StateType::EmptyState)
 	{
