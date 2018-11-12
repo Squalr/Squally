@@ -18,10 +18,16 @@ void SmartNode::onEnter()
 
 void SmartNode::initializePositions()
 {
-
 }
 
 void SmartNode::initializeListeners()
 {
 	this->getEventDispatcher()->removeEventListenersForTarget(this);
+}
+
+void SmartNode::resume()
+{
+	Node::resume();
+
+	this->initializeListeners();
 }

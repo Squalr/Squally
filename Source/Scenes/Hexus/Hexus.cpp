@@ -11,6 +11,8 @@ Hexus* Hexus::create()
 
 Hexus::Hexus()
 {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
 	this->gameBackground = Sprite::create(Resources::Minigames_Hexus_Gameboard);
 	this->gameState = GameState::create();
 	this->avatars = Avatars::create();
@@ -60,6 +62,10 @@ Hexus::Hexus()
 	this->rowTotals = RowTotals::create();
 	this->scoreTotal = ScoreTotal::create();
 	this->debugDisplay = DebugDisplay::create();
+	this->pauseMenu = PauseMenu::create();
+	this->optionsMenu = OptionsMenu::create();
+	this->confirmationMenu = ConfirmationMenu::create();
+	this->menuBackDrop = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
 
 	this->addChild(this->gameBackground);
 	this->addChild(this->gameState);
@@ -110,6 +116,10 @@ Hexus::Hexus()
 	this->addChild(this->victoryBanner);
 	this->addChild(this->defeatBanner);
 	this->addChild(this->drawBanner);
+	this->addChild(this->menuBackDrop);
+	this->addChild(this->pauseMenu);
+	this->addChild(this->optionsMenu);
+	this->addChild(this->confirmationMenu);
 	this->addChild(Mouse::create());
 }
 
@@ -122,6 +132,11 @@ void Hexus::onEnter()
 	FadeScene::onEnter();
 
 	SoundManager::playMusicResource(Resources::Music_LastMarch);
+
+	this->menuBackDrop->setOpacity(0);
+	this->pauseMenu->setVisible(false);
+	this->optionsMenu->setVisible(false);
+	this->confirmationMenu->setVisible(false); 
 
 	if (this->gameState->stateType == GameState::StateType::EmptyState)
 	{
@@ -145,6 +160,11 @@ void Hexus::initializeListeners()
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(Hexus::onKeyPressed, this);
+
+	this->optionsMenu->setBackClickCallback(CC_CALLBACK_0(Hexus::onOptionsExit, this));
+	this->pauseMenu->setResumeCallback(CC_CALLBACK_0(Hexus::onResumeClick, this));
+	this->pauseMenu->setOptionsCallback(CC_CALLBACK_0(Hexus::onOptionsClick, this));
+	this->pauseMenu->setExitCallback(CC_CALLBACK_0(Hexus::onExitClick, this));
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
 }
@@ -192,18 +212,53 @@ void Hexus::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
-			// NavigationEvents::navigate(NavigationEvents::GameScreen::Pause);
-			// event->stopPropagation();
+		{
+			event->stopPropagation();
+			this->openPauseMenu();
 			break;
+		}
 		case EventKeyboard::KeyCode::KEY_SPACE:
+		{
 			// this->gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, this->gameState->opponentData, 0));
 			break;
+		}
 		default:
+		{
 			break;
+		}
 	}
 }
 
-void Hexus::onClose(MenuSprite* menuSprite)
+void Hexus::onOptionsExit()
 {
-	NavigationEvents::navigateBack();
+	this->optionsMenu->setVisible(false);
+	this->openPauseMenu();
+}
+
+void Hexus::openPauseMenu()
+{
+	this->menuBackDrop->setOpacity(196);
+	this->pauseMenu->setVisible(true);
+	GameUtils::focus(this->pauseMenu);
+}
+
+void Hexus::onResumeClick()
+{
+	this->menuBackDrop->setOpacity(0);
+	this->pauseMenu->setVisible(false);
+	GameUtils::focus(this);
+}
+
+void Hexus::onOptionsClick()
+{
+	this->pauseMenu->setVisible(false);
+	this->optionsMenu->setVisible(true);
+	GameUtils::focus(this->optionsMenu);
+}
+
+void Hexus::onExitClick()
+{
+	this->menuBackDrop->setOpacity(0);
+	this->pauseMenu->setVisible(false);
+	NavigationEvents::navigate(NavigationEvents::GameScreen::Title);
 }

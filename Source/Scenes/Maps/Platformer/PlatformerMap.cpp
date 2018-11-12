@@ -138,19 +138,27 @@ void PlatformerMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
+		{
 			NavigationEvents::navigate(NavigationEvents::GameScreen::Pause);
 			event->stopPropagation();
 			break;
+		}
 		case EventKeyboard::KeyCode::KEY_GRAVE:
+		{
 			this->toggleDeveloperMode();
 			event->stopPropagation();
 			break;
+		}
 		case EventKeyboard::KeyCode::KEY_TAB:
+		{
 			this->toggleHackerMode();
 			event->stopPropagation();
 			break;
+		}
 		default:
+		{
 			break;
+		}
 	}
 }
 

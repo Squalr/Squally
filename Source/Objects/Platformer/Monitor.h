@@ -5,8 +5,7 @@
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/FloatingSprite.h"
-#include "Scenes/Menus/Dialog/DialogMenu.h"
-
+#include "Menus/Dialog/DialogMenu.h"
 
 using namespace cocos2d;
 

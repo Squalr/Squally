@@ -84,14 +84,8 @@ void GameUtils::pause(Node *node)
 	}
 }
 
-// A better resume function that resumes recursively
 void GameUtils::resume(Node *node)
 {
-	if (node == nullptr)
-	{
-		return;
-	}
-
 	// If the node is a scene node, resume physics
 	if (dynamic_cast<const Scene*>(node) != nullptr)
 	{

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-class Analytics : GlobalNode
+class Analytics : public GlobalNode
 {
 public:
 	static void registerGlobalNode();

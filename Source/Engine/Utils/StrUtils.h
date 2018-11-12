@@ -7,8 +7,8 @@
 class StrUtils
 {
 public:
-	static std::vector<std::string>* tokenize(std::string str, std::string delimiters);
-	static std::vector<std::string>* splitOn(std::string str, std::string delimiter);
+	static std::vector<std::string> tokenize(std::string str, std::string delimiters);
+	static std::vector<std::string> splitOn(std::string str, std::string delimiter);
 	static std::string toStringZeroPad(int value, int zeroCount);
 	static std::string quote(std::string value);
 	static bool isInteger(std::string str);
@@ -18,4 +18,3 @@ public:
 	static bool endsWith(std::string str, std::string suffix, bool ignoreCase);
 	static std::string replaceAll(std::string str, const std::string& from, const std::string& to);
 };
-

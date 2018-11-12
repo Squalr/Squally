@@ -10,32 +10,33 @@
 #include "Scenes/Maps/IMap.h"
 #include "Scenes/Maps/Isometric/IsometricMap.h"
 #include "Scenes/Maps/Platformer/PlatformerMap.h"
+#include "Menus/Confirmation/ConfirmationMenu.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/Castle/HexusOpponentMenuCastle.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/Caverns/HexusOpponentMenuCaverns.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/Forest/HexusOpponentMenuForest.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/IceCaps/HexusOpponentMenuIceCaps.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/Jungle/HexusOpponentMenuJungle.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/Mech/HexusOpponentMenuMech.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/Obelisk/HexusOpponentMenuObelisk.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/Ruins/HexusOpponentMenuRuins.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/Training/HexusOpponentMenuTraining.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/Volcano/HexusOpponentMenuVolcano.h"
+#include "Menus/Minigames/Hexus/HexusDeckManagement.h"
+#include "Menus/Minigames/Hexus/HexusRewardsMenu.h"
+#include "Menus/Minigames/Hexus/Puzzles/HexusPuzzlesMenu.h"
+#include "Menus/Minigames/Hexus/Store/HexusStoreMenu.h"
+#include "Menus/Minigames/MinigamesMenu.h"
+#include "Menus/LoadingScreen/LoadingScreen.h"
+#include "Menus/Options/OptionsMenu.h"
+#include "Menus/Pause/PauseMenu.h"
+#include "Menus/SaveSelect/SaveSelectMenu.h"
+#include "Menus/TakeOverMenu.h"
+#include "Menus/Title/TitleScreen.h"
+#include "Menus/WorldMap/WorldMap.h"
 #include "Resources.h"
 #include "Scenes/Fights/Fight.h"
 #include "Scenes/Hexus/Hexus.h"
-#include "Scenes/Menus/Minigames/MinigamesMenu.h"
-#include "Scenes/Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.h"
-#include "Scenes/Menus/Minigames/Hexus/OpponentSelect/Castle/HexusOpponentMenuCastle.h"
-#include "Scenes/Menus/Minigames/Hexus/OpponentSelect/Caverns/HexusOpponentMenuCaverns.h"
-#include "Scenes/Menus/Minigames/Hexus/OpponentSelect/Forest/HexusOpponentMenuForest.h"
-#include "Scenes/Menus/Minigames/Hexus/OpponentSelect/IceCaps/HexusOpponentMenuIceCaps.h"
-#include "Scenes/Menus/Minigames/Hexus/OpponentSelect/Jungle/HexusOpponentMenuJungle.h"
-#include "Scenes/Menus/Minigames/Hexus/OpponentSelect/Mech/HexusOpponentMenuMech.h"
-#include "Scenes/Menus/Minigames/Hexus/OpponentSelect/Obelisk/HexusOpponentMenuObelisk.h"
-#include "Scenes/Menus/Minigames/Hexus/OpponentSelect/Ruins/HexusOpponentMenuRuins.h"
-#include "Scenes/Menus/Minigames/Hexus/OpponentSelect/Training/HexusOpponentMenuTraining.h"
-#include "Scenes/Menus/Minigames/Hexus/OpponentSelect/Volcano/HexusOpponentMenuVolcano.h"
-#include "Scenes/Menus/Minigames/Hexus/HexusDeckManagement.h"
-#include "Scenes/Menus/Minigames/Hexus/HexusRewardsMenu.h"
-#include "Scenes/Menus/Minigames/Hexus/Puzzles/HexusPuzzlesMenu.h"
-#include "Scenes/Menus/Minigames/Hexus/Store/HexusStoreMenu.h"
-#include "Scenes/Menus/Confirmation/ConfirmationMenu.h"
-#include "Scenes/Menus/LoadingScreen/LoadingScreen.h"
-#include "Scenes/Menus/Options/OptionsMenu.h"
-#include "Scenes/Menus/Pause/PauseMenu.h"
-#include "Scenes/Menus/SaveSelect/SaveSelectMenu.h"
-#include "Scenes/Menus/WorldMap/WorldMap.h"
-#include "Scenes/Menus/Title/TitleScreen.h"
 
 using namespace cocos2d;
 
@@ -58,8 +59,8 @@ private:
 	void onGameNavigateFight(EventCustom* eventCustom);
 
 	TitleScreen* titleScreen;
-	SaveSelectMenu* saveSelectMenu;
-	MinigamesMenu* minigamesMenu;
+	TakeOverMenu* saveSelectMenu;
+	TakeOverMenu* minigamesMenu;
 	HexusChapterSelectMenu* hexusChapterSelectMenu;
 	HexusDeckManagement* hexusDeckManagement;
 	HexusRewardsMenu* hexusRewardsMenu;
@@ -76,12 +77,15 @@ private:
 	HexusOpponentMenuVolcano* hexusOpponentMenuVolcano;
 	HexusPuzzlesMenu* hexusPuzzlesMenu;
 	WorldMap* worldMap;
-	LoadingScreen* loadingScreen;
+	LoadingScreen* innerLoadingScreen;
+	TakeOverMenu* loadingScreen;
 	IMap* map;
 	Fight* fight;
-	OptionsMenu* optionsMenu;
-	PauseMenu* pauseMenu;
-	ConfirmationMenu* confirmationMenu;
+	OptionsMenu* innerOptionsMenu;
+	TakeOverMenu* optionsMenu;
+	TakeOverMenu* pauseMenu;
+	ConfirmationMenu* innerConfirmationMenu;
+	TakeOverMenu* confirmationMenu;
 	Hexus* hexus;
 	Cutscene* cutscene;
 
