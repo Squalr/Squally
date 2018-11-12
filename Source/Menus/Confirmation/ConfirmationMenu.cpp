@@ -68,7 +68,6 @@ void ConfirmationMenu::initializeListeners()
 
 	this->cancelButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onCancelClick, this));
 	this->confirmButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onConfirmClick, this));
-
 	this->closeButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onCloseClick, this));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
@@ -80,21 +79,27 @@ void ConfirmationMenu::initializeListeners()
 
 void ConfirmationMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
+	if (!this->isVisible())
+	{
+		return;
+	}
+
 	switch (keyCode)
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
-
+		{
 			if (this->onCancelCallback != nullptr)
 			{
 				this->onCancelCallback();
 			}
 
 			event->stopPropagation();
-
-			NavigationEvents::navigateBack();
 			break;
+		}
 		default:
+		{
 			break;
+		}
 	}
 }
 
@@ -105,8 +110,6 @@ void ConfirmationMenu::onCloseClick(MenuSprite* menuSprite)
 	{
 		this->onCancelCallback();
 	}
-
-	NavigationEvents::navigateBack();
 }
 
 void ConfirmationMenu::onCancelClick(MenuSprite* menuSprite)
@@ -115,8 +118,6 @@ void ConfirmationMenu::onCancelClick(MenuSprite* menuSprite)
 	{
 		this->onCancelCallback();
 	}
-
-	NavigationEvents::navigateBack();
 }
 
 void ConfirmationMenu::onConfirmClick(MenuSprite* menuSprite)
@@ -124,8 +125,5 @@ void ConfirmationMenu::onConfirmClick(MenuSprite* menuSprite)
 	if (this->onConfirmCallback != nullptr)
 	{
 		this->onConfirmCallback();
-		return;
 	}
-
-	NavigationEvents::navigateBack();
 }

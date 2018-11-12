@@ -6,6 +6,8 @@
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/FadeScene.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Menus/Confirmation/ConfirmationMenu.h"
+#include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Resources.h"
 #include "Scenes/Hexus/CardStorage.h"
@@ -30,7 +32,11 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	void onClose(MenuSprite* menuSprite);
+	void onOptionsExit();
+	void openPauseMenu();
+	void onResumeClick();
+	void onOptionsClick();
+	void onExitClick();
 
 	GameState* gameState;
 	Sprite* gameBackground;
@@ -87,5 +93,8 @@ private:
 	ScoreTotal* scoreTotal;
 	DebugDisplay* debugDisplay;
 
+	LayerColor* menuBackDrop;
 	PauseMenu* pauseMenu;
+	OptionsMenu* optionsMenu;
+	ConfirmationMenu* confirmationMenu;
 };

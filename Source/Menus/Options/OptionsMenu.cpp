@@ -17,6 +17,8 @@ OptionsMenu * OptionsMenu::create()
 
 OptionsMenu::OptionsMenu()
 {
+	this->backClickCallback = nullptr;
+
 	this->background = Node::create();
 	this->optionsWindow = Sprite::create(Resources::Menus_OptionsMenu_OptionsMenu);
 	this->fullScreenLabel = Label::create(Localization::resolveString(OptionsMenu::StringKeyFullScreen), Localization::getMainFont(), 24.0f);
@@ -148,40 +150,62 @@ OptionsMenu::OptionsMenu()
 
 	switch (ConfigManager::getResolution())
 	{
-	case ConfigManager::ResolutionSetting::R1080x768:
-		this->option1080x768->check();
-		break;
-	case ConfigManager::ResolutionSetting::R1152x864:
-		this->option1152x864->check();
-		break;
-	case ConfigManager::ResolutionSetting::R1280x720:
-		this->option1280x720->check();
-		break;
-	case ConfigManager::ResolutionSetting::R1280x960:
-		this->option1280x960->check();
-		break;
-	case ConfigManager::ResolutionSetting::R1280x1024:
-		this->option1280x1024->check();
-		break;
-	case ConfigManager::ResolutionSetting::R1440x900:
-		this->option1440x900->check();
-		break;
-	case ConfigManager::ResolutionSetting::R1600x900:
-		this->option1600x900->check();
-		break;
-	case ConfigManager::ResolutionSetting::R1600x1024:
-		this->option1600x1024->check();
-		break;
-	case ConfigManager::ResolutionSetting::R1920x1080:
-		this->option1920x1080->check();
-		break;
-	case ConfigManager::ResolutionSetting::R2560x1440:
-		this->option2560x1440->check();
-		break;
-	case ConfigManager::ResolutionSetting::R3840x2160:
-	default:
-		this->option3840x2160->check();
-		break;
+		case ConfigManager::ResolutionSetting::R1080x768:
+		{
+			this->option1080x768->check();
+			break;
+		}
+		case ConfigManager::ResolutionSetting::R1152x864:
+		{
+			this->option1152x864->check();
+			break;
+		}
+		case ConfigManager::ResolutionSetting::R1280x720:
+		{
+			this->option1280x720->check();
+			break;
+		}
+		case ConfigManager::ResolutionSetting::R1280x960:
+		{
+			this->option1280x960->check();
+			break;
+		}
+		case ConfigManager::ResolutionSetting::R1280x1024:
+		{
+			this->option1280x1024->check();
+			break;
+		}
+		case ConfigManager::ResolutionSetting::R1440x900:
+		{
+			this->option1440x900->check();
+			break;
+		}
+		case ConfigManager::ResolutionSetting::R1600x900:
+		{
+			this->option1600x900->check();
+			break;
+		}
+		case ConfigManager::ResolutionSetting::R1600x1024:
+		{
+			this->option1600x1024->check();
+			break;
+		}
+		case ConfigManager::ResolutionSetting::R1920x1080:
+		{
+			this->option1920x1080->check();
+			break;
+		}
+		case ConfigManager::ResolutionSetting::R2560x1440:
+		{
+			this->option2560x1440->check();
+			break;
+		}
+		case ConfigManager::ResolutionSetting::R3840x2160:
+		default:
+		{
+			this->option3840x2160->check();
+			break;
+		}
 	}
 
 	if (ConfigManager::getIsFullScreen())
@@ -304,6 +328,11 @@ void OptionsMenu::initializePositions()
 	this->soundSlider->initializePositions();
 }
 
+void OptionsMenu::setBackClickCallback(std::function<void()> backClickCallback)
+{
+	this->backClickCallback = backClickCallback;
+}
+
 bool OptionsMenu::onFullScreenChanged(CCheckbox* checkbox, bool isFullScreen)
 {
 	ConfigManager::setIsFullScreen(isFullScreen);
@@ -382,22 +411,39 @@ void OptionsMenu::onMusicVolumeUpdate(float musicVolume)
 
 void OptionsMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
+	if (!this->isVisible())
+	{
+		return;
+	}
+
 	switch (keyCode)
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
-			ConfigManager::save();
+		{
 			event->stopPropagation();
-			NavigationEvents::navigateBack();
+			this->onExit();
 			break;
+		}
 		default:
+		{
 			break;
+		}
 	}
 }
 
 void OptionsMenu::onCloseClick(MenuSprite* menuSprite)
 {
+	this->onExit();
+}
+
+void OptionsMenu::onExit()
+{
 	ConfigManager::save();
-	NavigationEvents::navigateBack();
+
+	if (this->backClickCallback != nullptr)
+	{
+		this->backClickCallback();
+	}
 }
 
 void OptionsMenu::showResolutionOptions()
