@@ -65,12 +65,14 @@ void DeveloperHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	{
 		switch (keyCode)
 		{
-		case EventKeyboard::KeyCode::KEY_TAB:
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-			GameUtils::focus(this->getParent());
-			event->stopPropagation();
+			case EventKeyboard::KeyCode::KEY_TAB:
+			case EventKeyboard::KeyCode::KEY_ESCAPE:
+			{
+				GameUtils::focus(this->getParent());
+				event->stopPropagation();
 
-			break;
+				break;
+			}
 		}
 	}
 }

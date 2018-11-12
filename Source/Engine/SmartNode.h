@@ -11,9 +11,10 @@ public:
 	SmartNode();
 	~SmartNode();
 
+	virtual void resume() override;
+
 protected:
 	virtual void onEnter() override;
 	virtual void initializePositions();
 	virtual void initializeListeners();
 };
-
