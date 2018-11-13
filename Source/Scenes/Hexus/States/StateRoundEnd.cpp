@@ -45,12 +45,12 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 	if (gameState->playerLosses >= 2)
 	{
 		nextState = GameState::StateType::GameEnd;
-		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_card_downgrade);
+		SoundManager::playSoundResource(Resources::Sounds_Hexus_Defeat);
 	}
 	else if (gameState->enemyLosses >= 2)
 	{
 		nextState = GameState::StateType::GameEnd;
-		SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_card_upgrade);
+		SoundManager::playSoundResource(Resources::Sounds_Hexus_Victory);
 	}
 
 	const float fadeSpeed = 0.5f;

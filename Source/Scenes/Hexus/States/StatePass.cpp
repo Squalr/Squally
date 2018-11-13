@@ -409,7 +409,7 @@ void StatePass::onStateEnter(GameState* gameState)
 				this->passParticles->setVisible(true);
 				this->passSprite->runAction(FadeTo::create(0.25f, 255));
 
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
+				SoundManager::playSoundResource(Resources::Sounds_Hexus_Pass);
 			}
 
 			gameState->playerPassed = true;
@@ -435,7 +435,7 @@ void StatePass::onStateEnter(GameState* gameState)
 				this->enemyPassParticles->setVisible(true);
 				this->enemyPassSprite->runAction(FadeTo::create(0.25f, 255));
 
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_UI_CCG_NextPlayer4);
+				SoundManager::playSoundResource(Resources::Sounds_Hexus_Pass);
 			}
 
 			gameState->enemyPassed = true;
