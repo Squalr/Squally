@@ -144,10 +144,16 @@ void StateSelectionStaged::initializeSelectablesAndCallbacks(GameState* gameStat
 			gameState->playerBinaryCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
 			gameState->playerDecimalCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
 			gameState->playerHexCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
+			gameState->enemyBinaryCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
+			gameState->enemyDecimalCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
+			gameState->enemyHexCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
 
 			gameState->playerBinaryCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::immediatelyPlayCard, this, gameState));
 			gameState->playerDecimalCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::immediatelyPlayCard, this, gameState));
 			gameState->playerHexCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::immediatelyPlayCard, this, gameState));
+			gameState->enemyBinaryCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::immediatelyPlayCard, this, gameState));
+			gameState->enemyDecimalCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::immediatelyPlayCard, this, gameState));
+			gameState->enemyHexCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::immediatelyPlayCard, this, gameState));
 			break;
 		}
 		default:
