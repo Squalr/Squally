@@ -132,8 +132,12 @@ void RowTotals::onAnyStateChange(GameState* gameState)
 	switch (gameState->stateType)
 	{
 		case GameState::StateType::GameStart:
+		case GameState::StateType::GameEnd:
 		case GameState::StateType::RoundStart:
 		case GameState::StateType::RoundEnd:
+		case GameState::StateType::TurnEnd:
+		case GameState::StateType::OpponentTurnStart:
+		case GameState::StateType::PlayerTurnStart:
 		{
 			this->readNewTotals(gameState, false);
 			break;
