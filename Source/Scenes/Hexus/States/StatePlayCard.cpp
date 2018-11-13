@@ -73,7 +73,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			selfHand->removeCard(gameState->selectedHandCard);
 			gameState->selectedRow->insertCard(gameState->selectedHandCard, Config::insertDelay);
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_Card_Game_Movement_Deal_Single_Small_01);
+			SoundManager::playSoundResource(Resources::Sounds_Hexus_CardMovement);
 			break;
 		}
 		case CardData::CardType::Special_SHL:
@@ -107,37 +107,37 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				case CardData::CardType::Special_SHL:
 				{
 					gameState->selectedRow->runEffect(CardEffects::CardEffect::MeteorPurple);
-					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_GlitterSpell);
 					break;
 				}
 				case CardData::CardType::Special_SHR:
 				{
 					gameState->selectedRow->runEffect(CardEffects::CardEffect::MeteorBlue);
-					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Downgrade);
 					break;
 				}
 				case CardData::CardType::Special_FLIP1:
 				{
 					gameState->selectedRow->runEffect(CardEffects::CardEffect::TargetPulse);
-					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_MagicSlash);
 					break;
 				}
 				case CardData::CardType::Special_FLIP2:
 				{
 					gameState->selectedRow->runEffect(CardEffects::CardEffect::FrostCirlce);
-					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Freeze);
 					break;
 				}
 				case CardData::CardType::Special_FLIP3:
 				{
 					gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialGalaxy);
-					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_WindReverse);
 					break;
 				}
 				case CardData::CardType::Special_FLIP4:
 				{
 					gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialFire);
-					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_BurningStrong);
 					break;
 				}
 				default:
@@ -177,37 +177,37 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				case CardData::CardType::Special_MOV:
 				{
 					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::DustPoof);
-					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Shimmer);
 					break;
 				}
 				case CardData::CardType::Special_AND:
 				{
 					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::FireBlast);
-					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Burning);
 					break;
 				}
 				case CardData::CardType::Special_OR:
 				{
 					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::Lightning);
-					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Energy);
 					break;
 				}
 				case CardData::CardType::Special_XOR:
 				{
 					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::RadialStorm);
-					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_GenericSpell);
 					break;
 				}
 				case CardData::CardType::Special_ADD:
 				{
 					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::MagicBurst);
-					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_ChimeShimmer);
 					break;
 				}
 				case CardData::CardType::Special_SUB:
 				{
 					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::StarHit);
-					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_05_Acid_Spell);
+					SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_AcidHit);
 					break;
 				}
 				default:
@@ -237,7 +237,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			gameState->selectedDestinationCard->addOperation(operation);
 
 			gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::Bite);
-			SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_Card_Game_Abilities_Air_Glitter_01);
+			SoundManager::playSoundResource(Resources::Sounds_Hexus_Attacks_DemonWhisper);
 
 			break;
 		}

@@ -544,7 +544,7 @@ void HexusDeckManagement::onDeckCardClick(Card* card)
 
 	this->save(false);
 
-	SoundManager::playSoundResource(Resources::Sounds_Hexus_08_Card);
+	SoundManager::playSoundResource(Resources::Sounds_Hexus_CardMovementStrong);
 
 	this->rebuildCardLists();
 }
@@ -559,7 +559,7 @@ void HexusDeckManagement::onStorageCardClick(Card* card)
 
 	this->save(false);
 
-	SoundManager::playSoundResource(Resources::Sounds_Hexus_08_Card);
+	SoundManager::playSoundResource(Resources::Sounds_Hexus_CardMovementStrong);
 	
 	this->rebuildCardLists();
 }
