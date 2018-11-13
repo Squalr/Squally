@@ -199,7 +199,7 @@ void RowTotals::readNewTotals(GameState* gameState, bool displayDeltas)
 	{
 		if (displayDeltas)
 		{
-			int delta = newPlayerBinaryTotal - (this->cachedEnemyHexTotal ^ RowTotals::cacheCipher);
+			int delta = newPlayerBinaryTotal - (this->cachedPlayerBinaryTotal ^ RowTotals::cacheCipher);
 
 			this->runDeltaAnimation(this->playerBinaryCardDeltaLabel, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::binaryRowOffsetY, delta);
 		}
@@ -246,10 +246,10 @@ void RowTotals::runDeltaAnimation(Label* label, float startPositionY, int delta)
 {
 	const float floatOffsetY = 32.0f;
 
-	label->setPositionY(startPositionY - floatOffsetY / 2.0f);
+	label->setPositionY(startPositionY - floatOffsetY / 4.0f);
 	label->setOpacity(255);
 	label->setString((delta < 0 ? "-" : "+") + std::to_string(std::abs(delta)));
 	label->setTextColor(delta < 0 ? Color4B::RED : Color4B::YELLOW);
-	label->runAction(MoveTo::create(1.0f, Vec2(label->getPositionX(), startPositionY + floatOffsetY / 2.0f)));
+	label->runAction(MoveTo::create(1.0f, Vec2(label->getPositionX(), startPositionY + (floatOffsetY * 3.0f) / 4.0f)));
 	label->runAction(FadeTo::create(1.0f, 0));
 }
