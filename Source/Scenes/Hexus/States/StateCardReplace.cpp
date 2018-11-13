@@ -102,9 +102,9 @@ void StateCardReplace::onStateReload(GameState* gameState)
 
 	if (gameState->cardReplaceCount > 0)
 	{
+		this->doneButton->enableInteraction();
 		gameState->playerHand->enableRowCardInteraction();
 
-		gameState = gameState;
 		this->initializeCallbacks(gameState);
 	}
 	else
@@ -149,6 +149,8 @@ void StateCardReplace::replaceCard(Card* cardToReplace, GameState* gameState)
 {
 	if (gameState->cardReplaceCount > 0)
 	{
+		this->doneButton->disableInteraction();
+
 		cardToReplace->disableInteraction();
 
 		gameState->cardReplaceCount--;
