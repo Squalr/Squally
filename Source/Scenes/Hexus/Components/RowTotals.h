@@ -23,7 +23,9 @@ private:
 	~RowTotals();
 
 	void initializePositions() override;
+	void readNewTotals(GameState* gameState, bool displayDeltas);
 	void updateTotals(GameState* gameState);
+	void runDeltaAnimation(Label* label, float startPositionY, int delta);
 
 	Label* enemyBinaryCardTotal;
 	Label* enemyDecimalCardTotal;
@@ -31,4 +33,20 @@ private:
 	Label* playerBinaryCardTotal;
 	Label* playerDecimalCardTotal;
 	Label* playerHexCardTotal;
+
+	Label* enemyBinaryCardDeltaLabel;
+	Label* enemyDecimalCardDeltaLabel;
+	Label* enemyHexCardDeltaLabel;
+	Label* playerBinaryCardDeltaLabel;
+	Label* playerDecimalCardDeltaLabel;
+	Label* playerHexCardDeltaLabel;
+
+	int cachedEnemyBinaryTotal;
+	int cachedEnemyDecimalTotal;
+	int cachedEnemyHexTotal;
+	int cachedPlayerBinaryTotal;
+	int cachedPlayerDecimalTotal;
+	int cachedPlayerHexTotal;
+
+	static const int cacheCipher;
 };
