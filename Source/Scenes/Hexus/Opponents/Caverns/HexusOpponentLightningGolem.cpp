@@ -22,8 +22,8 @@ HexusOpponentLightningGolem::HexusOpponentLightningGolem() : HexusOpponentData(
 	HexusOpponentLightningGolem::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
-	HexusOpponentData::generateReward(0.495f),
-	HexusOpponentData::generateDeck(25, 0.495f,
+	HexusOpponentData::generateReward(0.5f),
+	HexusOpponentData::generateDeck(25, 0.5f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 			CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),

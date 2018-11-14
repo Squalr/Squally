@@ -22,8 +22,8 @@ HexusOpponentPrincessDawn::HexusOpponentPrincessDawn() : HexusOpponentData(
 	HexusOpponentPrincessDawn::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
-	HexusOpponentData::generateReward(0.485f),
-	HexusOpponentData::generateDeck(25, 0.485f,
+	HexusOpponentData::generateReward(0.49f),
+	HexusOpponentData::generateDeck(25, 0.49f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 			CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),

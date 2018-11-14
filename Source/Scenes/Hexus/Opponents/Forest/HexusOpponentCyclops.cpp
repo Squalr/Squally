@@ -22,8 +22,8 @@ HexusOpponentCyclops::HexusOpponentCyclops() : HexusOpponentData(
 	HexusOpponentCyclops::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
-	HexusOpponentData::generateReward(0.365f),
-	HexusOpponentData::generateDeck(25, 0.365f,
+	HexusOpponentData::generateReward(0.395f),
+	HexusOpponentData::generateDeck(25, 0.395f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 			CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
