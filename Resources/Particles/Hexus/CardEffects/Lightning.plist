@@ -15,7 +15,7 @@
 	<key>configName</key>
 	<string>Lightning</string>
 	<key>duration</key>
-	<real>0.25</real>
+	<real>1.5</real>
 	<key>emitterType</key>
 	<real>0.0</real>
 	<key>finishColorAlpha</key>
