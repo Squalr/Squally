@@ -22,8 +22,8 @@ HexusOpponentIgneus::HexusOpponentIgneus() : HexusOpponentData(
 	HexusOpponentIgneus::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Earth,
-	HexusOpponentData::generateReward(0.77f),
-	HexusOpponentData::generateDeck(25, 0.77f,
+	HexusOpponentData::generateReward(0.75f),
+	HexusOpponentData::generateDeck(25, 0.75f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 			CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),

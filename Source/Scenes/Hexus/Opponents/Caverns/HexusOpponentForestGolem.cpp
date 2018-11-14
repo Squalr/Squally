@@ -22,8 +22,8 @@ HexusOpponentForestGolem::HexusOpponentForestGolem() : HexusOpponentData(
 	HexusOpponentForestGolem::OpponentSaveKey,
 	HexusOpponentData::Difficulty::Stupid,
 	Card::CardStyle::Shadow,
-	HexusOpponentData::generateReward(0.425f),
-	HexusOpponentData::generateDeck(25, 0.425f,
+	HexusOpponentData::generateReward(0.415f),
+	HexusOpponentData::generateDeck(25, 0.415f,
 		{
 			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 			CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
