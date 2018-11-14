@@ -23,6 +23,7 @@ private:
 	RemainingCardDisplay();
 	~RemainingCardDisplay();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void onRemaningCardDisplayMouseOver();
 	void onRemaningCardDisplayMouseOut();

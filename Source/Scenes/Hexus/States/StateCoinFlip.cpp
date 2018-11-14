@@ -43,13 +43,18 @@ StateCoinFlip::StateCoinFlip() : StateBase(GameState::StateType::CoinFlip)
 	this->skeletonOutAnimation->setDelayPerUnit(Config::coinFlipSpeed);
 	this->neutralAnimation->setDelayPerUnit(Config::coinFlipSpeed);
 
-	this->coin->setOpacity(0);
-
 	this->addChild(this->coin);
 }
 
 StateCoinFlip::~StateCoinFlip()
 {
+}
+
+void StateCoinFlip::onEnter()
+{
+	StateBase::onEnter();
+
+	this->coin->setOpacity(0);
 }
 
 void StateCoinFlip::initializePositions()

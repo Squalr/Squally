@@ -17,16 +17,11 @@ StagingHelperText::StagingHelperText()
 	this->selectionLabel->setTextColor(Color4B::WHITE);
 	this->selectionLabel->enableOutline(Color4B::BLACK, 2);
 	this->selectionLabel->setDimensions(Config::statusLabelWidth - 48.0f, 0.0f);
-	this->selectionLabel->setOpacity(0);
 
 	this->cancelButton = MenuSprite::create(Resources::Menus_Buttons_CancelV2Button, Resources::Menus_Buttons_CancelV2ButtonHover);
-	this->cancelButton->setCascadeOpacityEnabled(true);
-	this->cancelButton->setOpacity(0.0f);
 	this->cancelButton->setAnchorPoint(Vec2(0.0f, 1.0f));
 
 	this->helpButton = MenuSprite::create(Resources::Menus_Buttons_GraphV2Button, Resources::Menus_Buttons_GraphV2ButtonHover);
-	this->helpButton->setCascadeOpacityEnabled(true);
-	this->helpButton->setOpacity(0.0f);
 	this->helpButton->setAnchorPoint(Vec2(0.0f, 1.0f));
 
 	this->addChild(this->selectionLabel);
@@ -38,6 +33,15 @@ StagingHelperText::~StagingHelperText()
 {
 }
 
+void StagingHelperText::onEnter()
+{
+	ComponentBase::onEnter();
+
+	this->selectionLabel->setOpacity(0);
+	this->cancelButton->setOpacity(0.0f);
+	this->helpButton->setOpacity(0.0f);
+}
+
 void StagingHelperText::initializePositions()
 {
 	ComponentBase::initializePositions();
@@ -47,13 +51,6 @@ void StagingHelperText::initializePositions()
 	this->cancelButton->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
 	this->helpButton->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::statusLabelWidth / 2.0f + this->cancelButton->getContentSize().width / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
 	this->selectionLabel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter - Config::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
-}
-
-void StagingHelperText::onEnter()
-{
-	ComponentBase::onEnter();
-
-	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 void StagingHelperText::onBeforeStateChange(GameState* gameState)

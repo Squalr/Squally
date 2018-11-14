@@ -20,7 +20,7 @@ Card* Card::create(CardStyle cardStyle, CardData* data)
 Card::Card(CardStyle cardStyle, CardData* data)
 {
 	this->mouseOverCallback = nullptr;
-	this->operations = new std::vector<Operation>();
+	this->operations = std::vector<Operation>();
 	this->cardData = data;
 
 	switch (data->cardType)
@@ -73,7 +73,6 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->cardText->setAnchorPoint(Vec2(0.5f, 1.0f));
 	this->cardText->enableOutline(Color4B::BLACK, 6);
 
-	this->setScale(Card::cardScale);
 	this->updateText();
 
 	this->addChild(this->cardBack);
@@ -90,12 +89,13 @@ Card::Card(CardStyle cardStyle, CardData* data)
 
 Card::~Card()
 {
-	delete(this->operations);
 }
 
 void Card::onEnter()
 {
 	SmartNode::onEnter();
+
+	this->setScale(Card::cardScale);
 }
 
 void Card::initializePositions()
@@ -117,7 +117,7 @@ void Card::initializeListeners()
 
 void Card::addOperation(Operation operation)
 {
-	this->operations->push_back(operation);
+	this->operations.push_back(operation);
 	this->updateText();
 }
 
@@ -146,33 +146,61 @@ Card::Operation Card::toOperation(CardData::CardType playedCardType, unsigned in
 	switch (playedCardType)
 	{
 		case CardData::CardType::Special_SHL:
+		{
 			return Operation(Operation::OperationType::SHL, 1);
+		}
 		case CardData::CardType::Special_SHR:
+		{
 			return Operation(Operation::OperationType::SHR, 1);
+		}
 		case CardData::CardType::Special_FLIP1:
+		{
 			return Operation(Operation::OperationType::XOR, 0b0001);
+		}
 		case CardData::CardType::Special_FLIP2:
+		{
 			return Operation(Operation::OperationType::XOR, 0b0010);
+		}
 		case CardData::CardType::Special_FLIP3:
+		{
 			return Operation(Operation::OperationType::XOR, 0b0100);
+		}
 		case CardData::CardType::Special_FLIP4:
+		{
 			return Operation(Operation::OperationType::XOR, 0b1000);
+		}
 		case CardData::CardType::Special_MOV:
+		{
 			return Operation(Operation::OperationType::MOV, immediate);
+		}
 		case CardData::CardType::Special_AND:
+		{
 			return Operation(Operation::OperationType::AND, immediate);
+		}
 		case CardData::CardType::Special_OR:
+		{
 			return Operation(Operation::OperationType::OR, immediate);
+		}
 		case CardData::CardType::Special_XOR:
+		{
 			return Operation(Operation::OperationType::XOR, immediate);
+		}
 		case CardData::CardType::Special_ADD:
+		{
 			return Operation(Operation::OperationType::ADD, immediate);
+		}
 		case CardData::CardType::Special_SUB:
+		{
 			return Operation(Operation::OperationType::SUB, immediate);
+		}
 		case CardData::CardType::Special_INV:
+		{
 			return Operation(Operation::OperationType::XOR, 0b1111);
+		}
 		default:
+		{
 			return Operation(Operation::OperationType::AND, 0b000);
+		}
 	}
 }
 
@@ -180,7 +208,7 @@ unsigned int Card::getAttack()
 {
 	unsigned int attack = this->cardData->attack;
 
-	for (auto it = this->operations->begin(); it != this->operations->end(); it++)
+	for (auto it = this->operations.begin(); it != this->operations.end(); it++)
 	{
 		Operation operation = *it;
 		attack = this->applyOperation(attack, operation);

@@ -22,6 +22,7 @@ private:
 	CardPreview();
 	~CardPreview();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void initializeCallbacks(GameState* gameState);
 	void clearPreview();

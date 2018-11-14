@@ -21,6 +21,13 @@ CardPreview::~CardPreview()
 {
 }
 
+void CardPreview::onEnter()
+{
+	ComponentBase::onEnter();
+
+	this->clearPreview();
+}
+
 void CardPreview::initializePositions()
 {
 	ComponentBase::initializePositions();

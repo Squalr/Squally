@@ -23,6 +23,7 @@ private:
 	ScoreTotal();
 	~ScoreTotal();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void updateTotals(GameState* gameState);
 

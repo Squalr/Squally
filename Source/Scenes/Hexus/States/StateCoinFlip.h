@@ -23,6 +23,7 @@ private:
 	StateCoinFlip();
 	~StateCoinFlip();
 
+	void onEnter() override;
 	void initializePositions() override;
 
 	Sprite* coin;

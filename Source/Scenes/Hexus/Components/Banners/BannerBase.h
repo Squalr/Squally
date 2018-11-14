@@ -15,6 +15,7 @@ protected:
 	BannerBase();
 	~BannerBase();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void onBeforeStateChange(GameState* eventCustom) override;
 	void onAnyStateChange(GameState* eventCustom) override;

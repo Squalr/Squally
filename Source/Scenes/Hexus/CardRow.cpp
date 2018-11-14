@@ -24,9 +24,6 @@ CardRow::CardRow(bool isPlayerRow)
 	this->rowWidth = Config::rowWidth;
 
 	this->rowSelectSprite = MenuSprite::create(Resources::Minigames_Hexus_RowSelection, Resources::Minigames_Hexus_RowSelectionHighlight);
-	this->rowSelectSprite->setOpacity(0);
-	this->rowSelectSprite->setVisible(false);
-	this->setCardScale(Card::cardScale, 0.0f);
 
 	this->addChild(this->rowSelectSprite);
 }
@@ -35,9 +32,19 @@ CardRow::~CardRow()
 {
 }
 
+void CardRow::onEnter()
+{
+	SmartNode::onEnter();
+
+	this->rowSelectSprite->setOpacity(0);
+	this->rowSelectSprite->setVisible(false);
+	this->setCardScale(Card::cardScale, 0.0f);
+}
+
 void CardRow::initializeListeners()
 {
 	SmartNode::initializeListeners();
+
 	this->rowSelectSprite->setClickCallback(CC_CALLBACK_1(CardRow::onRowSelectClick, this));
 }
 
@@ -55,11 +62,13 @@ void CardRow::setCardScale(float scale, float scaleSpeed)
 	{
 		Card* card = *it;
 
-		if (scaleSpeed > 0.0f) {
+		if (scaleSpeed > 0.0f)
+		{
 			card->stopAllActions();
 			card->runAction(ScaleTo::create(scaleSpeed , this->cardScale));
 		}
-		else {
+		else
+		{
 			card->setPosition(card->position);
 			card->setScale(this->cardScale);
 		}
@@ -284,19 +293,19 @@ void CardRow::setMouseClickCallback(std::function<void(Card*)> callback)
 
 void CardRow::setCardPositions(float cardRepositionDelay, float indexDelay)
 {
+	const float cardWidth = 225.0f;
+
 	int cardCount = this->rowCards.size();
 	int index = 0;
 
-	float cardWidth = 225.0f * this->cardScale;
-	float spacing = cardWidth + Config::defaultCardSpacing;
-
-	float start = (spacing * (cardCount - 1)) / 2.0f;
-	float end = ((cardCount - 1) * spacing) - (spacing * (cardCount - 1)) / 2.0f;
+	float scaledCardWidth = 225.0f * this->cardScale;
+	float spacing = scaledCardWidth + Config::defaultCardSpacing;
+	float length = spacing * cardCount;
 
 	// Update the spacing to overlap if too large
-	if (end - start > this->rowWidth)
+	if (length > this->rowWidth)
 	{
-		spacing = cardCount == 1 ? 0.0f : ((this->rowWidth - cardWidth) / (cardCount - 1));
+		spacing = cardCount == 0 ? 0.0f : (this->rowWidth / cardCount);
 	}
 
 	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
@@ -304,6 +313,7 @@ void CardRow::setCardPositions(float cardRepositionDelay, float indexDelay)
 		Card* card = *it;
 		float newX = (index * spacing) - (spacing * (cardCount - 1)) / 2.0f;
 
+		card->setZOrder(index);
 		card->position = Vec2(newX, 0.0f);
 
 		if (cardRepositionDelay > 0.0f)
@@ -372,7 +382,9 @@ int CardRow::simulateCardEffect(Card* card)
 			}
 		}
 		default:
+		{
 			break;
+		}
 	}
 
 	return diff;

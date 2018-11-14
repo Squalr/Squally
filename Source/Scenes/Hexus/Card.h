@@ -91,7 +91,7 @@ private:
 	void onMouseClick(MenuSprite* menuSprite);
 	int applyOperation(int attack, Operation operation);
 
-	std::vector<Operation>* operations;
+	std::vector<Operation> operations;
 	Sprite* cardBack;
 	Sprite* cardFront;
 	Sprite* cardSprite;

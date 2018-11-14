@@ -25,6 +25,7 @@ private:
 	StateCardReplace();
 	~StateCardReplace();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void onEndReplaceCards(MenuSprite* menuSprite, GameState* gameState);
 	void initializeCallbacks(GameState* gameState);

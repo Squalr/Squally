@@ -44,6 +44,7 @@ private:
 	CardRow(bool isPlayerRow);
 	~CardRow();
 
+	void onEnter() override;
 	void initializeListeners() override;
 	void setCardPositions(float cardRepositionDelay, float indexDelay = 0.0f);
 	void onRowSelectClick(MenuSprite* menuSprite);

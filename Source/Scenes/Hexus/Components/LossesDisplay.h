@@ -20,6 +20,7 @@ private:
 	LossesDisplay();
 	~LossesDisplay();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void updateDisplayedLosses(GameState* gameState);
 
