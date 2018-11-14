@@ -41,22 +41,28 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
+		{
 			selfHand = gameState->playerHand;
 			selfBinaryRow = gameState->playerBinaryCards;
 			selfDecimalRow = gameState->playerDecimalCards;
 			selfHexRow = gameState->playerHexCards;
 			selfGraveyard = gameState->playerGraveyard;
 			break;
+		}
 		case GameState::Turn::Enemy:
+		{
 			selfHand = gameState->enemyHand;
 			selfBinaryRow = gameState->enemyBinaryCards;
 			selfDecimalRow = gameState->enemyDecimalCards;
 			selfHexRow = gameState->enemyHexCards;
 			selfGraveyard = gameState->enemyGraveyard;
 			break;
+		}
 		default:
+		{
 			this->passFromError(gameState);
 			return;
+		}
 	}
 
 	switch (gameState->selectedHandCard->cardData->cardType)
@@ -248,7 +254,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		}
 	}
 
-	gameState->playableCardsThisTurn--;
+	gameState->playableCardsThisTurn = std::max(0, gameState->playableCardsThisTurn - 1);
 	gameState->selectedHandCard = nullptr;
 	CallFunc* stateTransition = nullptr;
 
@@ -263,7 +269,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		}
 		else
 		{
-			if (gameState->playableCardsThisTurn <= 0)
+			if (!gameState->playerPassed && !gameState->enemyPassed && gameState->playableCardsThisTurn <= 0)
 			{
 				stateTransition = CallFunc::create([=]()
 				{
@@ -290,7 +296,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		}
 		else
 		{
-			if (gameState->playableCardsThisTurn <= 0)
+			if (!gameState->playerPassed && !gameState->enemyPassed && gameState->playableCardsThisTurn <= 0)
 			{
 				stateTransition = CallFunc::create([=]()
 				{

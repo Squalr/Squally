@@ -26,40 +26,60 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	switch (data->cardType)
 	{
 		case CardData::CardType::Binary:
+		{
 			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCoverBin);
 			break;
+		}
 		case CardData::CardType::Decimal:
+		{
 			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCoverDec);
 			break;
+		}
 		case CardData::CardType::Hexidecimal:
+		{
 			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCoverHex);
 			break;
+		}
 		default:
+		{
 			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCoverSpecial);
 			break;
+		}
 	}
 
 	switch (cardStyle)
 	{
-		default:
-		case CardStyle::Earth:
-			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackEarth);
-			break;
 		case CardStyle::Water:
+		{
 			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackWater);
 			break;
+		}
 		case CardStyle::Air:
+		{
 			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackAir);
 			break;
+		}
 		case CardStyle::Fire:
+		{
 			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackFire);
 			break;
+		}
 		case CardStyle::Light:
+		{
 			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackLight);
 			break;
+		}
 		case CardStyle::Shadow:
+		{
 			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackShadow);
 			break;
+		}
+		case CardStyle::Earth:
+		default:
+		{
+			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackEarth);
+			break;
+		}
 	}
 
 	this->cardSelect = MenuSprite::create(Resources::Minigames_Hexus_CardUnselected, Resources::Minigames_Hexus_CardSelect);
