@@ -24,7 +24,6 @@ StateCardReplace::StateCardReplace() : StateBase(GameState::StateType::CardRepla
 		Resources::Minigames_Hexus_ButtonPlank,
 		Resources::Minigames_Hexus_ButtonPlankHover
 	);
-	this->doneButton->setOpacity(0);
 	
 	this->addChild(this->doneButton);
 }
@@ -33,11 +32,11 @@ StateCardReplace::~StateCardReplace()
 {
 }
 
-void StateCardReplace::onEndReplaceCards(MenuSprite* menuSprite, GameState* gameState)
+void StateCardReplace::onEnter()
 {
-	gameState->cardReplaceCount = 0;
+	StateBase::onEnter();
 
-	GameState::updateState(gameState, GameState::StateType::CoinFlip);
+	this->doneButton->setOpacity(0);
 }
 
 void StateCardReplace::initializePositions()
@@ -46,6 +45,13 @@ void StateCardReplace::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	this->doneButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 200.0f);
+}
+
+void StateCardReplace::onEndReplaceCards(MenuSprite* menuSprite, GameState* gameState)
+{
+	gameState->cardReplaceCount = 0;
+
+	GameState::updateState(gameState, GameState::StateType::CoinFlip);
 }
 
 void StateCardReplace::onBeforeStateEnter(GameState* gameState)

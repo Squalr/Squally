@@ -33,6 +33,13 @@ StateGameEnd::~StateGameEnd()
 {
 }
 
+void StateGameEnd::onEnter()
+{
+	StateBase::onEnter();
+
+	this->backButton->setOpacity(0);
+}
+
 void StateGameEnd::initializeListeners()
 {
 	StateBase::initializeListeners();

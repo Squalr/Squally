@@ -70,13 +70,6 @@ RowTotals::RowTotals()
 	this->playerDecimalCardDeltaLabel->setTextColor(Color4B::YELLOW);
 	this->playerHexCardDeltaLabel->setTextColor(Color4B::YELLOW);
 
-	this->enemyBinaryCardDeltaLabel->setOpacity(0);
-	this->enemyDecimalCardDeltaLabel->setOpacity(0);
-	this->enemyHexCardDeltaLabel->setOpacity(0);
-	this->playerBinaryCardDeltaLabel->setOpacity(0);
-	this->playerDecimalCardDeltaLabel->setOpacity(0);
-	this->playerHexCardDeltaLabel->setOpacity(0);
-
 	this->addChild(this->enemyBinaryCardTotal);
 	this->addChild(this->enemyDecimalCardTotal);
 	this->addChild(this->enemyHexCardTotal);
@@ -93,6 +86,18 @@ RowTotals::RowTotals()
 
 RowTotals::~RowTotals()
 {
+}
+
+void RowTotals::onEnter()
+{
+	ComponentBase::onEnter();
+
+	this->enemyBinaryCardDeltaLabel->setOpacity(0);
+	this->enemyDecimalCardDeltaLabel->setOpacity(0);
+	this->enemyHexCardDeltaLabel->setOpacity(0);
+	this->playerBinaryCardDeltaLabel->setOpacity(0);
+	this->playerDecimalCardDeltaLabel->setOpacity(0);
+	this->playerHexCardDeltaLabel->setOpacity(0);
 }
 
 void RowTotals::initializePositions()

@@ -22,8 +22,8 @@ private:
 	StagingHelperText();
 	~StagingHelperText();
 
-	void initializePositions() override;
 	void onEnter() override;
+	void initializePositions() override;
 	void updateSelectionStatus(GameState* gameState);
 	void onHelpClick(MenuSprite* menuSprite, GameState* gameState);
 	void updateCombineStatus(GameState* gameState);

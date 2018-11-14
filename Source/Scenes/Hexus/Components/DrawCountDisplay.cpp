@@ -26,14 +26,10 @@ DrawCountDisplay::DrawCountDisplay()
 		Localization::getFontSizeP(Localization::getMainFont())
 	);
 
-	this->deckDrawCountMouseOverPanel->setOpacity(0);
-	this->deckDrawCountCardMouseOverLabel->setOpacity(0);
 	this->deckDrawCountCardMouseOverLabel->setDimensions(320.0f - 16.0f, 0.0f);
 
 	this->drawCountLabel->enableOutline(Color4B::BLACK, 4);
-	//this->drawCountSprite->setOpacity(0);
 	this->enemyDrawCountLabel->enableOutline(Color4B::BLACK, 4);
-	this->enemyDrawCountSprite->setOpacity(0);
 
 	this->drawCountSprite->addChild(this->drawCountLabel);
 	this->addChild(this->drawCountSprite);
@@ -45,6 +41,15 @@ DrawCountDisplay::DrawCountDisplay()
 
 DrawCountDisplay::~DrawCountDisplay()
 {
+}
+
+void DrawCountDisplay::onEnter()
+{
+	ComponentBase::onEnter();
+
+	this->deckDrawCountMouseOverPanel->setOpacity(0);
+	this->deckDrawCountCardMouseOverLabel->setOpacity(0);
+	this->enemyDrawCountSprite->setOpacity(0);
 }
 
 void DrawCountDisplay::initializePositions()

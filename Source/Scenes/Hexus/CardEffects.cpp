@@ -43,6 +43,8 @@ CardEffects::~CardEffects()
 void CardEffects::onEnter()
 {
 	SmartNode::onEnter();
+
+	this->clearEffects();
 }
 
 void CardEffects::initializePositions()

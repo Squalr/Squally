@@ -22,6 +22,7 @@ private:
 	RowTotals();
 	~RowTotals();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void readNewTotals(GameState* gameState, bool displayDeltas);
 	void updateTotals(GameState* gameState);

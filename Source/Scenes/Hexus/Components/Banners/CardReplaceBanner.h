@@ -25,5 +25,6 @@ private:
 	CardReplaceBanner();
 	~CardReplaceBanner();
 
+	void onEnter() override;
 	void initializePositions() override;
 };

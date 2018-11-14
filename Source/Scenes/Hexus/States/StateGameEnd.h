@@ -28,6 +28,7 @@ private:
 	StateGameEnd();
 	~StateGameEnd();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onBackClick(MenuSprite* menuSprite, GameState* gameState);

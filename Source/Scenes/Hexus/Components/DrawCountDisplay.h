@@ -23,6 +23,7 @@ private:
 	DrawCountDisplay();
 	~DrawCountDisplay();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void onDrawCountDisplayMouseOver();
 	void onDrawCountDisplayMouseOut();

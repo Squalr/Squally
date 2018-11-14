@@ -24,15 +24,10 @@ RemainingCardDisplay::RemainingCardDisplay()
 		Localization::getFontSizeP(Localization::getMainFont())
 	);
 
-	this->remainingCardMouseOverPanel->setOpacity(0);
-	this->remainingCardMouseOverLabel->setOpacity(0);
 	this->remainingCardMouseOverLabel->setDimensions(320.0f - 16.0f, 0.0f);
 
-	this->particles->setVisible(false);
 	this->remainingCardLabel->enableOutline(Color4B::BLACK, 4);
-	this->remainingCardSprite->setOpacity(0);
 	this->enemyRemainingCardLabel->enableOutline(Color4B::BLACK, 4);
-	this->enemyRemainingCardSprite->setOpacity(0);
 
 	this->remainingCardSprite->addChild(this->remainingCardLabel);
 	this->addChild(this->particles);
@@ -45,6 +40,17 @@ RemainingCardDisplay::RemainingCardDisplay()
 
 RemainingCardDisplay::~RemainingCardDisplay()
 {
+}
+
+void RemainingCardDisplay::onEnter()
+{
+	ComponentBase::onEnter();
+
+	this->remainingCardMouseOverPanel->setOpacity(0);
+	this->remainingCardMouseOverLabel->setOpacity(0);
+	this->particles->setVisible(false);
+	this->remainingCardSprite->setOpacity(0);
+	this->enemyRemainingCardSprite->setOpacity(0);
 }
 
 void RemainingCardDisplay::initializePositions()

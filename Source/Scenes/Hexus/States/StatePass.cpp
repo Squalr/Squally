@@ -48,31 +48,6 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->enemyClaimVictorySprite = Sprite::create(Resources::Minigames_Hexus_Victory);
 	this->enemyClaimVictoryParticles = ParticleSystemQuad::create(Resources::Particles_Hexus_Aura);
 
-	this->passParticles->setVisible(false);
-	// Default this button to visible
-	this->passButton->setOpacity(255);
-	this->passSprite->setOpacity(0);
-	this->passPanel->setOpacity(0);
-	this->passLabel->setOpacity(0);
-	this->enemyPassSprite->setOpacity(0);
-	this->enemyPassParticles->setVisible(false);
-
-	this->lastStandParticles->setVisible(false);
-	this->lastStandButton->setOpacity(0);
-	this->lastStandSprite->setOpacity(0);
-	this->lastStandPanel->setOpacity(0);
-	this->lastStandLabel->setOpacity(0);
-	this->enemyLastStandSprite->setOpacity(0);
-	this->enemyLastStandParticles->setVisible(false);
-
-	this->claimVictoryParticles->setVisible(false);
-	this->claimVictoryButton->setOpacity(0);
-	this->claimVictorySprite->setOpacity(0);
-	this->claimVictoryPanel->setOpacity(0);
-	this->claimVictoryLabel->setOpacity(0);
-	this->enemyClaimVictorySprite->setOpacity(0);
-	this->enemyClaimVictoryParticles->setVisible(false);
-
 	this->addChild(this->passParticles);
 	this->addChild(this->passSprite);
 	this->addChild(this->passButton);
@@ -105,6 +80,31 @@ StatePass::~StatePass()
 void StatePass::onEnter()
 {
 	StateBase::onEnter();
+
+	this->passParticles->setVisible(false);
+	// Default this button to visible
+	this->passButton->setOpacity(255);
+	this->passSprite->setOpacity(0);
+	this->passPanel->setOpacity(0);
+	this->passLabel->setOpacity(0);
+	this->enemyPassSprite->setOpacity(0);
+	this->enemyPassParticles->setVisible(false);
+
+	this->lastStandParticles->setVisible(false);
+	this->lastStandButton->setOpacity(0);
+	this->lastStandSprite->setOpacity(0);
+	this->lastStandPanel->setOpacity(0);
+	this->lastStandLabel->setOpacity(0);
+	this->enemyLastStandSprite->setOpacity(0);
+	this->enemyLastStandParticles->setVisible(false);
+
+	this->claimVictoryParticles->setVisible(false);
+	this->claimVictoryButton->setOpacity(0);
+	this->claimVictorySprite->setOpacity(0);
+	this->claimVictoryPanel->setOpacity(0);
+	this->claimVictoryLabel->setOpacity(0);
+	this->enemyClaimVictorySprite->setOpacity(0);
+	this->enemyClaimVictoryParticles->setVisible(false);
 
 	this->passParticles->start();
 	this->lastStandParticles->start();

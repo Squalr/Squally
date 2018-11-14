@@ -14,14 +14,19 @@ CardReplaceBanner::CardReplaceBanner()
 	this->penaltyIcon = Sprite::create(Resources::Minigames_Hexus_CardReplaceIconLarge);
 	this->penaltyIconParticles = ParticleSystemQuad::create(Resources::Particles_Hexus_PurpleAuraLarge);
 
-	this->penaltyIconParticles->setVisible(false);
-
 	this->addBannerChild(this->penaltyIconParticles);
 	this->addBannerChild(this->penaltyIcon);
 }
 
 CardReplaceBanner::~CardReplaceBanner()
 {
+}
+
+void CardReplaceBanner::onEnter()
+{
+	BannerBase::onEnter();
+
+	this->penaltyIconParticles->setVisible(false);
 }
 
 void CardReplaceBanner::initializePositions()
