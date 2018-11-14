@@ -15,9 +15,6 @@ StatePass* StatePass::create()
 
 StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 {
-	this->currentVisiblePlayerButton = nullptr;
-	this->playerChoiceLocked = false;
-
 	// Pass
 	this->passSprite = Sprite::create(Resources::Minigames_Hexus_Flags);
 	this->passButton = IconMenuSprite::create(Resources::Minigames_Hexus_Flags, Resources::Minigames_Hexus_FlagsSelected, Resources::Menus_Buttons_WoodSquareButton, Resources::Menus_Buttons_WoodSquareButtonSelected);
@@ -80,6 +77,9 @@ StatePass::~StatePass()
 void StatePass::onEnter()
 {
 	StateBase::onEnter();
+
+	this->currentVisiblePlayerButton = nullptr;
+	this->playerChoiceLocked = false;
 
 	this->passParticles->setVisible(false);
 	// Default this button to visible
