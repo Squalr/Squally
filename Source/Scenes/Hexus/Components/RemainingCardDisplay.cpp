@@ -128,13 +128,19 @@ void RemainingCardDisplay::onAnyStateChange(GameState* gameState)
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
+		{
 			this->enemyRemainingCardLabel->setString(std::to_string(0));
 			break;
+		}
 		case GameState::Turn::Enemy:
+		{
 			this->remainingCardLabel->setString(std::to_string(0));
 			break;
+		}
 		default:
+		{
 			break;
+		}
 	}
 
 	switch (gameState->stateType)
@@ -160,13 +166,11 @@ void RemainingCardDisplay::onAnyStateChange(GameState* gameState)
 		case GameState::PlayerTurnStart:
 		{
 			this->remainingCardSprite->runAction(FadeTo::create(0.25f, 255));
-
 			break;
 		}
 		case GameState::OpponentTurnStart:
 		{
 			this->enemyRemainingCardSprite->runAction(FadeTo::create(0.25f, 255));
-
 			break;
 		}
 		case GameState::TurnEnd:
