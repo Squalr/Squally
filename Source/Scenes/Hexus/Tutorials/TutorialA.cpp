@@ -41,13 +41,19 @@ TutorialA::TutorialA() : StateOverride(
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal11),
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex13),
 	},
-	std::vector<CardData*> { },
-	std::vector<CardData*> { },
+	std::vector<CardData*>
+	{
+	},
+	std::vector<CardData*>
+	{
+	},
 	std::vector<CardData*>
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal7),
 	},
-	std::vector<CardData*> { },
+	std::vector<CardData*>
+	{
+	},
 	std::vector<CardData*>
 	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),

@@ -298,6 +298,46 @@ void StatePass::onAnyStateChange(GameState* gameState)
 {
 	StateBase::onAnyStateChange(gameState);
 
+	if (gameState->playerPassed)
+	{
+		this->hideAndDisableAllButtons();
+
+		if (gameState->isPlayerLastStandCondition())
+		{
+			this->lastStandParticles->setVisible(true);
+			this->lastStandSprite->runAction(FadeTo::create(0.25f, 255));
+		}
+		else if (gameState->isPlayerClaimVictoryCondition())
+		{
+			this->claimVictoryParticles->setVisible(true);
+			this->claimVictorySprite->runAction(FadeTo::create(0.25f, 255));
+		}
+		else
+		{
+			this->passParticles->setVisible(true);
+			this->passSprite->runAction(FadeTo::create(0.25f, 255));
+		}
+	}
+
+	if (gameState->enemyPassed)
+	{
+		if (gameState->isEnemyLastStandCondition())
+		{
+			this->enemyLastStandParticles->setVisible(true);
+			this->enemyLastStandSprite->runAction(FadeTo::create(0.25f, 255));
+		}
+		else if (gameState->isEnemyClaimVictoryCondition())
+		{
+			this->enemyClaimVictoryParticles->setVisible(true);
+			this->enemyClaimVictorySprite->runAction(FadeTo::create(0.25f, 255));
+		}
+		else
+		{
+			this->enemyPassParticles->setVisible(true);
+			this->enemyPassSprite->runAction(FadeTo::create(0.25f, 255));
+		}
+	}
+
 	switch (gameState->stateType)
 	{
 		case GameState::StateType::RoundEnd:
@@ -386,29 +426,19 @@ void StatePass::onStateEnter(GameState* gameState)
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
-			this->hideAndDisableAllButtons();
 			this->playerChoiceLocked = true;
 
 			// Note: We play these on state enter rather than on button click, because button click is not the only way to enter this state
 			if (gameState->isPlayerLastStandCondition())
 			{
-				this->lastStandParticles->setVisible(true);
-				this->lastStandSprite->runAction(FadeTo::create(0.25f, 255));
-
 				SoundManager::playSoundResource(Resources::Sounds_Hexus_LastStand);
 			}
 			else if (gameState->isPlayerClaimVictoryCondition())
 			{
-				this->claimVictoryParticles->setVisible(true);
-				this->claimVictorySprite->runAction(FadeTo::create(0.25f, 255));
-
 				SoundManager::playSoundResource(Resources::Sounds_Hexus_ClaimVictory);
 			}
 			else
 			{
-				this->passParticles->setVisible(true);
-				this->passSprite->runAction(FadeTo::create(0.25f, 255));
-
 				SoundManager::playSoundResource(Resources::Sounds_Hexus_Pass);
 			}
 
@@ -418,23 +448,14 @@ void StatePass::onStateEnter(GameState* gameState)
 		{
 			if (gameState->isEnemyLastStandCondition())
 			{
-				this->enemyLastStandParticles->setVisible(true);
-				this->enemyLastStandSprite->runAction(FadeTo::create(0.25f, 255));
-
 				SoundManager::playSoundResource(Resources::Sounds_Hexus_LastStand);
 			}
 			else if (gameState->isEnemyClaimVictoryCondition())
 			{
-				this->enemyClaimVictoryParticles->setVisible(true);
-				this->enemyClaimVictorySprite->runAction(FadeTo::create(0.25f, 255));
-
 				SoundManager::playSoundResource(Resources::Sounds_Hexus_ClaimVictory);
 			}
 			else
 			{
-				this->enemyPassParticles->setVisible(true);
-				this->enemyPassSprite->runAction(FadeTo::create(0.25f, 255));
-
 				SoundManager::playSoundResource(Resources::Sounds_Hexus_Pass);
 			}
 
