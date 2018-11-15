@@ -110,10 +110,12 @@ void StateLoadInitialState::loadStateOverrides(GameState* gameState, StateOverri
 
 	if (stateOverride->playersTurn)
 	{
+		gameState->turn = GameState::Turn::Player;
 		gameState->updateState(gameState, GameState::StateType::PlayerTurnStart);
 	}
 	else
 	{
+		gameState->turn = GameState::Turn::Enemy;
 		gameState->updateState(gameState, GameState::StateType::OpponentTurnStart);
 	}
 }
