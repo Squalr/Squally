@@ -9,6 +9,7 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/Deck.h"
+#include "Scenes/Hexus/StateOverride.h"
 
 using namespace cocos2d;
 
@@ -33,6 +34,7 @@ public:
 	Vec2 avatarOffset;
 	int reward;
 	Strategy strategy;
+	StateOverride* stateOverride;
 
 	static const std::string winsPrefix;
 	static const std::string lossesPrefix;
@@ -48,7 +50,8 @@ protected:
 		HexusOpponentData::Strategy strategy,
 		Card::CardStyle cardStyle,
 		int reward,
-		std::vector<CardData*> cards);
+		std::vector<CardData*> cards,
+		StateOverride* stateOverride = nullptr);
 	~HexusOpponentData();
 
 	static int generateReward(float deckStrength);
