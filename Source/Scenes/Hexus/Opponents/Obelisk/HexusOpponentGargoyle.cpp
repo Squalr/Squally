@@ -20,7 +20,7 @@ HexusOpponentGargoyle::HexusOpponentGargoyle() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-32.0f, -80.0f),
 	HexusOpponentGargoyle::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.895f),
 	HexusOpponentData::generateDeck(25, 0.895f,

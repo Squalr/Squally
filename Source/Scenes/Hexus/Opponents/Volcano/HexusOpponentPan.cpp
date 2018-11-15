@@ -20,7 +20,7 @@ HexusOpponentPan::HexusOpponentPan() : HexusOpponentData(
 	Vec2(-48.0f, -48.0f),
 	Vec2(-16.0f, -32.0f),
 	HexusOpponentPan::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.78f),
 	HexusOpponentData::generateDeck(25, 0.78f,

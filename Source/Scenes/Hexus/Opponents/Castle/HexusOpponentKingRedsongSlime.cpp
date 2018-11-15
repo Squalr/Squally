@@ -20,7 +20,7 @@ HexusOpponentKingRedsongSlime::HexusOpponentKingRedsongSlime() : HexusOpponentDa
 	Vec2(-48.0f, -96.0f),
 	Vec2(-32.0f, -64.0f),
 	HexusOpponentKingRedsongSlime::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.53f),
 	HexusOpponentData::generateDeck(25, 0.53f,

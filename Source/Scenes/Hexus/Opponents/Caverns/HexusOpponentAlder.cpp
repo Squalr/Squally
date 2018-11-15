@@ -20,7 +20,7 @@ HexusOpponentAlder::HexusOpponentAlder() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -32.0f),
 	HexusOpponentAlder::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.43f),
 	HexusOpponentData::generateDeck(25, 0.43f,

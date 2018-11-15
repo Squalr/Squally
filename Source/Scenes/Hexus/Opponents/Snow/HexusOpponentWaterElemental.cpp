@@ -20,7 +20,7 @@ HexusOpponentWaterElemental::HexusOpponentWaterElemental() : HexusOpponentData(
 	Vec2(-32.0f, -48.0f),
 	Vec2(-32.0f, -72.0f),
 	HexusOpponentWaterElemental::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.68f),
 	HexusOpponentData::generateDeck(25, 0.68f,

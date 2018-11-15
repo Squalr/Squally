@@ -20,7 +20,7 @@ HexusOpponentTutorialF::HexusOpponentTutorialF() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(0.0f, -24.0f),
 	HexusOpponentTutorialF::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Light,
 	HexusOpponentData::generateReward(0.1f),
 	HexusOpponentData::generateDeck(25, 0.1f,

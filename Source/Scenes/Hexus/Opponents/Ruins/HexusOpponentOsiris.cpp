@@ -20,7 +20,7 @@ HexusOpponentOsiris::HexusOpponentOsiris() : HexusOpponentData(
 	Vec2(-32.0f, -48.0f),
 	Vec2(-32.0f, -72.0f),
 	HexusOpponentOsiris::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.32f),
 	HexusOpponentData::generateDeck(25, 0.32f,

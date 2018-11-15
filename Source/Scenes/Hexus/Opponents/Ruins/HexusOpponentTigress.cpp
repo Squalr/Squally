@@ -20,7 +20,7 @@ HexusOpponentTigress::HexusOpponentTigress() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentTigress::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.235f),
 	HexusOpponentData::generateDeck(25, 0.235f,

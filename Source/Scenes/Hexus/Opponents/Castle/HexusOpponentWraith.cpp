@@ -20,7 +20,7 @@ HexusOpponentWraith::HexusOpponentWraith() : HexusOpponentData(
 	Vec2(-32.0f, -32.0f),
 	Vec2(-16.0f, -32.0f),
 	HexusOpponentWraith::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.505f),
 	HexusOpponentData::generateDeck(25, 0.505f,

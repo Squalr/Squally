@@ -20,7 +20,7 @@ HexusOpponentReanimatedFighter::HexusOpponentReanimatedFighter() : HexusOpponent
 	Vec2(-48.0f, -32.0f),
 	Vec2(-48.0f, -32.0f),
 	HexusOpponentReanimatedFighter::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.845f),
 	HexusOpponentData::generateDeck(25, 0.845f,

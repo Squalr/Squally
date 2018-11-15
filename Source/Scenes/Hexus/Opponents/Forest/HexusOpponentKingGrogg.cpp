@@ -20,7 +20,7 @@ HexusOpponentKingGrogg::HexusOpponentKingGrogg() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-32.0f, -112.0f),
 	HexusOpponentKingGrogg::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.42f),
 	HexusOpponentData::generateDeck(25, 0.42f,

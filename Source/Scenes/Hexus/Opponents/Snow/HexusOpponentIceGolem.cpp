@@ -20,7 +20,7 @@ HexusOpponentIceGolem::HexusOpponentIceGolem() : HexusOpponentData(
 	Vec2(-48.0f, -80.0f),
 	Vec2(-48.0f, -80.0f),
 	HexusOpponentIceGolem::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.66f),
 	HexusOpponentData::generateDeck(25, 0.66f,

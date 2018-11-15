@@ -20,7 +20,7 @@ HexusOpponentMinotaur::HexusOpponentMinotaur() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-64.0f, -80.0f),
 	HexusOpponentMinotaur::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.16f),
 	HexusOpponentData::generateDeck(25, 0.16f,

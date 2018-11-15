@@ -20,7 +20,7 @@ HexusOpponentGoblinWarriorPig::HexusOpponentGoblinWarriorPig() : HexusOpponentDa
 	Vec2(-48.0f, -32.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentGoblinWarriorPig::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.105f),
 	HexusOpponentData::generateDeck(25, 0.105f,

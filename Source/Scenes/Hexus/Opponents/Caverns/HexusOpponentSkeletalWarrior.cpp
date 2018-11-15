@@ -20,7 +20,7 @@ HexusOpponentSkeletalWarrior::HexusOpponentSkeletalWarrior() : HexusOpponentData
 	Vec2(-32.0f, -48.0f),
 	Vec2(-32.0f, -32.0f),
 	HexusOpponentSkeletalWarrior::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.455f),
 	HexusOpponentData::generateDeck(25, 0.455f,

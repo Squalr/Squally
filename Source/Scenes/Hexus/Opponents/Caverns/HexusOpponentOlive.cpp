@@ -20,7 +20,7 @@ HexusOpponentOlive::HexusOpponentOlive() : HexusOpponentData(
 	Vec2(-32.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentOlive::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.45f),
 	HexusOpponentData::generateDeck(25, 0.45f,

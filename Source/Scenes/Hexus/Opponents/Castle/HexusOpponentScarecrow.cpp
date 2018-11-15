@@ -20,7 +20,7 @@ HexusOpponentScarecrow::HexusOpponentScarecrow() : HexusOpponentData(
 	Vec2(-32.0f, -96.0f),
 	Vec2(-16.0f, -128.0f),
 	HexusOpponentScarecrow::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.585f),
 	HexusOpponentData::generateDeck(25, 0.585f,

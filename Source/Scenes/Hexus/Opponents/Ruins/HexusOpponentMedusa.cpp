@@ -20,7 +20,7 @@ HexusOpponentMedusa::HexusOpponentMedusa() : HexusOpponentData(
 	Vec2(-48.0f, -24.0f),
 	Vec2(-32.0f, -48.0f),
 	HexusOpponentMedusa::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.28f),
 	HexusOpponentData::generateDeck(25, 0.28f,

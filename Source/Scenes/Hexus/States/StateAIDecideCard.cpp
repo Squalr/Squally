@@ -28,285 +28,22 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 
 	gameState->selectedHandCard = nullptr;
 
-	for (auto it = gameState->enemyHand->rowCards.begin(); it != gameState->enemyHand->rowCards.end(); it++)
+	switch (gameState->opponentData->strategy)
 	{
-		Card* card = *it;
-
-		switch (card->cardData->cardType)
+		case HexusOpponentData::Strategy::StrongestCardsFirst:
 		{
-			case CardData::CardType::Binary:
-			case CardData::CardType::Decimal:
-			case CardData::CardType::Hexidecimal:
-			{
-				gameState->selectedHandCard = card;
-				break;
-			}
-			case CardData::CardType::Special_FLIP1:
-			case CardData::CardType::Special_FLIP2:
-			case CardData::CardType::Special_FLIP3:
-			case CardData::CardType::Special_FLIP4:
-			case CardData::CardType::Special_SHR:
-			case CardData::CardType::Special_SHL:
-			{
-				std::vector<CardRow*> cardRows = gameState->getEnemyRows();
-				std::vector<CardRow*> playerCardRows = gameState->getPlayerRows();
-
-				// Happy case 1: There is a way to shift our own cards that is beneficial
-				for (auto it = cardRows.begin(); it != cardRows.end(); it++)
-				{
-					CardRow* row = *it;
-
-					int diff = row->simulateCardEffect(card) * (row->isPlayerRow() ? -1 : 1);
-
-					if (diff > 0)
-					{
-						gameState->selectedHandCard = card;
-						break;
-					}
-				}
-
-				// Happy case 2: There is a way to shift the players cards that deals damage
-				for (auto it = playerCardRows.begin(); it != playerCardRows.end(); it++)
-				{
-					CardRow* row = *it;
-
-					int diff = row->simulateCardEffect(card) * (row->isPlayerRow() ? -1 : 1);
-
-					if (diff < 0)
-					{
-						gameState->selectedHandCard = card;
-						break;
-					}
-				}
-
-				break;
-			}
-			case CardData::CardType::Special_INV:
-			{
-				// Happy case 1: An enemy card exists that would benefit from the inversion
-				if (this->getEnemyCardsOnFieldCount(gameState) >= 0 && this->getWeakestEnemyCardOnField(gameState) <= 7)
-				{
-					gameState->selectedHandCard = card;
-					break;
-				}
-
-				// Happy case 2: An player card exists that would decrease from the inversion
-				if (this->getPlayerCardsOnFieldCount(gameState) >= 0 && this->getWeakestPlayerCardOnField(gameState) > 7)
-				{
-					gameState->selectedHandCard = card;
-					break;
-				}
-
-				break;
-			}
-			case CardData::CardType::Special_OR:
-			{
-				// Ideally for OR the enemy would have 2 cards on the field
-				if (this->getEnemyCardsOnFieldCount(gameState) < 2)
-				{
-					break;
-				}
-
-				// If the enemies weakest card == strongest, that means all enemy cards on the field have the same attack (thus OR is useless)
-				// Also covers the case that the enemy only has cards with 0 attack
-				if (this->getWeakestEnemyCardOnField(gameState) == this->getStrongestEnemyCardOnField(gameState))
-				{
-					break;
-				}
-
-				gameState->selectedHandCard = card;
-				break;
-			}
-			case CardData::CardType::Special_ADD:
-			{
-				// No source cards available
-				if (this->getEnemyCardsOnFieldCount(gameState) <= 0)
-				{
-					break;
-				}
-
-				// Happy case 1: There exists at least one combo to make the player overflow
-				if (this->getStrongestEnemyCardOnField(gameState) + this->getStrongestPlayerCardOnField(gameState) > 15)
-				{
-					gameState->selectedHandCard = card;
-					break;
-				}
-
-				// Happy case 2: There exists some combo to make a stronger enemy card
-				if (this->getEnemyCardsOnFieldCount(gameState) >= 2)
-				{
-					std::vector<CardRow*> enemyRows = gameState->getEnemyRows();
-					int lowest = 0;
-					int otherLowest = 0;
-
-					for (auto it = enemyRows.begin(); it != enemyRows.end(); it++)
-					{
-						for (auto cardIt = (*it)->rowCards.begin(); cardIt != (*it)->rowCards.end(); cardIt++)
-						{
-							int attack = (*cardIt)->getAttack();
-
-							if (attack < lowest || attack < otherLowest)
-							{
-								lowest = std::min(lowest, otherLowest);
-								otherLowest = attack;
-							}
-						}
-					}
-
-					if (lowest + otherLowest <= 15)
-					{
-						gameState->selectedHandCard = card;
-						break;
-					}
-				}
-
-				// Nothing reasonable found
-				break;
-			}
-			case CardData::CardType::Special_MOV:
-			{
-				// Ideally for MOV there would be at least two cards on the field
-				if ((this->getEnemyCardsOnFieldCount(gameState) +this->getPlayerCardsOnFieldCount(gameState)) >= 2)
-				{
-					break;
-				}
-
-				// Sad case: Freak scenario where all cards on the field have the same exact attack, rendering MOV useless
-				if (this->getStrongestEnemyCardOnField(gameState) == this->getStrongestPlayerCardOnField(gameState) &&
-					this->getStrongestEnemyCardOnField(gameState) == this->getWeakestEnemyCardOnField(gameState) &&
-					this->getStrongestPlayerCardOnField(gameState) == this->getWeakestPlayerCardOnField(gameState))
-				{
-					break;
-				}
-
-				// Happy case 1: There exists some combo to make a weaker enemy card
-				if (this->getEnemyCardsOnFieldCount(gameState) >= 1)
-				{
-					std::vector<CardRow*> enemyRows = gameState->getEnemyRows();
-					int weakestPlayerCard = this->getWeakestPlayerCardOnField(gameState);
-					bool solutionFound = false;
-
-					for (auto it = enemyRows.begin(); it != enemyRows.end(); it++)
-					{
-						for (auto cardIt = (*it)->rowCards.begin(); cardIt != (*it)->rowCards.end(); cardIt++)
-						{
-							int attack = (*cardIt)->getAttack();
-
-							if (attack > weakestPlayerCard)
-							{
-								solutionFound = true;
-								break;
-							}
-						}
-					}
-
-					if (solutionFound)
-					{
-						gameState->selectedHandCard = card;
-
-						break;
-					}
-				}
-
-				// Happy case 2: There exists some combo to make a stronger player card
-				if (this->getEnemyCardsOnFieldCount(gameState) >= 2 && this->getWeakestPlayerCardOnField(gameState) != this->getStrongestPlayerCardOnField(gameState))
-				{
-					gameState->selectedHandCard = card;
-					break;
-				}
-
-				break;
-			}
-			case CardData::CardType::Special_AND:
-			{
-				// Ideally for AND the enemy would have 1 card and the player would have at least 1 card
-				if (this->getEnemyCardsOnFieldCount(gameState) < 1 || this->getPlayerCardsOnFieldCount(gameState) < 1)
-				{
-					break;
-				}
-
-				// Sad case: Freak scenario where all cards on the field have the same exact attack, rendering AND useless
-				if (this->getStrongestEnemyCardOnField(gameState) == this->getStrongestPlayerCardOnField(gameState) &&
-					this->getStrongestEnemyCardOnField(gameState) == this->getWeakestEnemyCardOnField(gameState) &&
-					this->getStrongestPlayerCardOnField(gameState) == this->getWeakestPlayerCardOnField(gameState))
-				{
-					break;
-				}
-
-				gameState->selectedHandCard = card;
-				break;
-			}
-			case CardData::CardType::Special_XOR:
-			{
-				// No source cards available
-				if (this->getEnemyCardsOnFieldCount(gameState) <= 0)
-				{
-					break;
-				}
-
-				// No targets available
-				if (this->getEnemyCardsOnFieldCount(gameState) + this->getPlayerCardsOnFieldCount(gameState) <= 1)
-				{
-					break;
-				}
-
-				// TODO: Determine in advance if the XOR will be useful. Some calculation required.
-
-				gameState->selectedHandCard = card;
-				break;
-			}
-			case CardData::CardType::Special_SUB:
-			{
-				// No source cards available
-				if (this->getEnemyCardsOnFieldCount(gameState) <= 0)
-				{
-					break;
-				}
-
-				// No targets available
-				if (this->getEnemyCardsOnFieldCount(gameState) + this->getPlayerCardsOnFieldCount(gameState) <= 1)
-				{
-					break;
-				}
-
-				// Sad case 1: The strongest enemy card is 0
-				if (this->getStrongestEnemyCardOnField(gameState) == 0)
-				{
-					break;
-				}
-
-				// Happy case 1: There exists at least one combo to make the enemy underflow
-				// TODO: Prove that this ends up with a better card -- technically it might not
-				if (this->getWeakestEnemyCardOnField(gameState) - this->getStrongestEnemyCardOnField(gameState) < 0)
-				{
-					gameState->selectedHandCard = card;
-					break;
-				}
-
-				// Happy case 2: There exists some combo to make a weaker player card
-				if (this->getPlayerCardsOnFieldCount(gameState) >= 1)
-				{
-					int result = this->getStrongestPlayerCardOnField(gameState) - this->getWeakestEnemyCardOnField(gameState);
-
-					// The result is within the attack bounds -- subtraction succeeded without overflow
-					if (result >= 0 && result < 15)
-					{
-						gameState->selectedHandCard = card;
-						break;
-					}
-				}
-
-				gameState->selectedHandCard = card;
-				break;
-			}
-			default:
-			{
-				break;
-			}
+			this->decideCardStrongestFirst(gameState);
+			break;
 		}
-
-		if (gameState->selectedHandCard != nullptr)
+		case HexusOpponentData::Strategy::WeakestCardsFirst:
 		{
+			this->decideCardWeakestFirst(gameState);
+			break;
+		}
+		case HexusOpponentData::Strategy::Random:
+		default:
+		{
+			this->decideCardRandom(gameState);
 			break;
 		}
 	}
@@ -331,9 +68,9 @@ void StateAIDecideCard::onStateExit(GameState* gameState)
 	StateBase::onStateExit(gameState);
 }
 
-int StateAIDecideCard::getBaseCardsInHandCount(GameState* gameState)
+void StateAIDecideCard::decideCardRandom(GameState* gameState)
 {
-	int baseCardCount = 0;
+	gameState->enemyHand->shuffle();
 
 	for (auto it = gameState->enemyHand->rowCards.begin(); it != gameState->enemyHand->rowCards.end(); it++)
 	{
@@ -344,142 +81,279 @@ int StateAIDecideCard::getBaseCardsInHandCount(GameState* gameState)
 			case CardData::CardType::Binary:
 			case CardData::CardType::Decimal:
 			case CardData::CardType::Hexidecimal:
-				baseCardCount++;
+			{
+				gameState->selectedHandCard = card;
+
 				break;
+			}
+			case CardData::CardType::Special_SHL:
+			case CardData::CardType::Special_SHR:
+			case CardData::CardType::Special_FLIP1:
+			case CardData::CardType::Special_FLIP2:
+			case CardData::CardType::Special_FLIP3:
+			case CardData::CardType::Special_FLIP4:
+			{
+				std::tuple<CardRow*, int> bestPlay = HexusAIHelper::getBestRow(card, gameState);;
+
+				if (std::get<1>(bestPlay) > 0)
+				{
+					gameState->cachedBestRowPlay = bestPlay;
+					gameState->selectedHandCard = card;
+
+					return;
+				}
+
+				break;
+			}
+			case CardData::CardType::Special_MOV:
+			case CardData::CardType::Special_AND:
+			case CardData::CardType::Special_OR:
+			case CardData::CardType::Special_XOR:
+			case CardData::CardType::Special_ADD:
+			case CardData::CardType::Special_SUB:
+			{
+				std::tuple<Card*, Card*, int> bestPlay = HexusAIHelper::getBestSourceAndTarget(card, gameState);
+
+				if (std::get<2>(bestPlay) > 0)
+				{
+					gameState->cachedBestSourceTargetPlay = bestPlay;
+					gameState->selectedHandCard = card;
+
+					return;
+				}
+
+				break;
+			}
+			case CardData::CardType::Special_INV:
+			{
+				 std::tuple<Card*, int> bestPlay = HexusAIHelper::getBestTarget(card, gameState);
+
+				if (std::get<1>(bestPlay) > 0)
+				{
+					gameState->cachedBestTargetPlay = bestPlay;
+					gameState->selectedHandCard = card;
+
+					return;
+				}
+
+				break;
+			}
 			default:
+			{
 				break;
+			}
 		}
 	}
-
-	return baseCardCount;
 }
 
-int StateAIDecideCard::getPlayerHandCount(GameState* gameState)
+void StateAIDecideCard::decideCardStrongestFirst(GameState* gameState)
 {
-	return gameState->playerHand->rowCards.size();
-}
+	std::function<void()> chooseBestCallback = nullptr;
+	int currentBestDiff = 0;
 
-int StateAIDecideCard::getEnemyHandCount(GameState* gameState)
-{
-	return gameState->enemyHand->rowCards.size();
-}
-
-int StateAIDecideCard::getPlayerCardsOnFieldCount(GameState* gameState)
-{
-	std::vector<CardRow*> playerRows = gameState->getPlayerRows();
-	int cardCount = 0;
-
-	for (auto it = playerRows.begin(); it != playerRows.end(); it++)
+	for (auto it = gameState->enemyHand->rowCards.begin(); it != gameState->enemyHand->rowCards.end(); it++)
 	{
-		cardCount += (*it)->rowCards.size();
-	}
+		Card* card = *it;
 
-	return cardCount;
-}
-
-int StateAIDecideCard::getEnemyCardsOnFieldCount(GameState* gameState)
-{
-	std::vector<CardRow*> enemyRows = gameState->getEnemyRows();
-	int cardCount = 0;
-
-	for (auto it = enemyRows.begin(); it != enemyRows.end(); it++)
-	{
-		cardCount += (*it)->rowCards.size();
-	}
-
-	return cardCount;
-}
-
-int StateAIDecideCard::getCardsStrongerThanAttackCount(CardRow* row, int attack)
-{
-	int cardCount = 0;
-
-	for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
-	{
-		if ((*it)->getAttack() > attack)
+		switch (card->cardData->cardType)
 		{
-			cardCount++;
+			case CardData::CardType::Binary:
+			case CardData::CardType::Decimal:
+			case CardData::CardType::Hexidecimal:
+			{
+				int diff = card->getAttack();
+
+				if (diff < currentBestDiff)
+				{
+					chooseBestCallback = [gameState, card]()
+					{
+						gameState->selectedHandCard = card;
+					};
+
+					currentBestDiff = diff;
+				}
+
+				break;
+			}
+			case CardData::CardType::Special_SHL:
+			case CardData::CardType::Special_SHR:
+			case CardData::CardType::Special_FLIP1:
+			case CardData::CardType::Special_FLIP2:
+			case CardData::CardType::Special_FLIP3:
+			case CardData::CardType::Special_FLIP4:
+			{
+				std::tuple<CardRow*, int> bestPlay = HexusAIHelper::getBestRow(card, gameState);
+				int diff = std::get<1>(bestPlay);
+
+				if (diff > currentBestDiff)
+				{
+					chooseBestCallback = [gameState, card, bestPlay]()
+					{
+						gameState->cachedBestRowPlay = bestPlay;
+						gameState->selectedHandCard = card;
+					};
+
+					currentBestDiff = diff;
+				}
+
+				break;
+			}
+			case CardData::CardType::Special_MOV:
+			case CardData::CardType::Special_AND:
+			case CardData::CardType::Special_OR:
+			case CardData::CardType::Special_XOR:
+			case CardData::CardType::Special_ADD:
+			case CardData::CardType::Special_SUB:
+			{
+				std::tuple<Card*, Card*, int> bestPlay = HexusAIHelper::getBestSourceAndTarget(card, gameState);
+				int diff = std::get<2>(bestPlay);
+
+				if (diff > currentBestDiff)
+				{
+					chooseBestCallback = [gameState, card, bestPlay]()
+					{
+						gameState->cachedBestSourceTargetPlay = bestPlay;
+						gameState->selectedHandCard = card;
+					};
+
+					currentBestDiff = diff;
+				}
+
+				break;
+			}
+			case CardData::CardType::Special_INV:
+			{
+				std::tuple<Card*, int> bestPlay = HexusAIHelper::getBestTarget(card, gameState);
+				int diff = std::get<1>(bestPlay);
+
+				if (diff > currentBestDiff)
+				{
+					chooseBestCallback = [gameState, card, bestPlay]()
+					{
+						gameState->cachedBestTargetPlay = bestPlay;
+						gameState->selectedHandCard = card;
+					};
+
+					currentBestDiff = diff;
+				}
+
+				break;
+			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 
-	return cardCount;
+	if (currentBestDiff > 0 && chooseBestCallback != nullptr)
+	{
+		chooseBestCallback();
+	}
 }
 
-int StateAIDecideCard::getCardsWeakerThanAttackCount(CardRow* row, int attack)
+void StateAIDecideCard::decideCardWeakestFirst(GameState* gameState)
 {
-	int cardCount = 0;
+	std::function<void()> chooseBestCallback = nullptr;
+	int currentBestDiff = std::numeric_limits<int>::max();
 
-	for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
+	for (auto it = gameState->enemyHand->rowCards.begin(); it != gameState->enemyHand->rowCards.end(); it++)
 	{
-		if ((*it)->getAttack() < attack)
+		Card* card = *it;
+
+		switch (card->cardData->cardType)
 		{
-			cardCount++;
+			case CardData::CardType::Binary:
+			case CardData::CardType::Decimal:
+			case CardData::CardType::Hexidecimal:
+			{
+				int diff = card->getAttack();
+
+				if (diff < currentBestDiff && diff > 0)
+				{
+					chooseBestCallback = [gameState, card]()
+					{
+						gameState->selectedHandCard = card;
+					};
+
+					currentBestDiff = diff;
+				}
+
+				break;
+			}
+			case CardData::CardType::Special_SHL:
+			case CardData::CardType::Special_SHR:
+			case CardData::CardType::Special_FLIP1:
+			case CardData::CardType::Special_FLIP2:
+			case CardData::CardType::Special_FLIP3:
+			case CardData::CardType::Special_FLIP4:
+			{
+				std::tuple<CardRow*, int> bestPlay = HexusAIHelper::getBestRow(card, gameState);
+				int diff = std::get<1>(bestPlay);
+
+				if (diff > currentBestDiff && diff > 0)
+				{
+					chooseBestCallback = [gameState, card, bestPlay]()
+					{
+						gameState->cachedBestRowPlay = bestPlay;
+						gameState->selectedHandCard = card;
+					};
+
+					currentBestDiff = diff;
+				}
+
+				break;
+			}
+			case CardData::CardType::Special_MOV:
+			case CardData::CardType::Special_AND:
+			case CardData::CardType::Special_OR:
+			case CardData::CardType::Special_XOR:
+			case CardData::CardType::Special_ADD:
+			case CardData::CardType::Special_SUB:
+			{
+				std::tuple<Card*, Card*, int> bestPlay = HexusAIHelper::getBestSourceAndTarget(card, gameState);
+				int diff = std::get<2>(bestPlay);
+
+				if (diff > currentBestDiff && diff > 0)
+				{
+					chooseBestCallback = [gameState, card, bestPlay]()
+					{
+						gameState->cachedBestSourceTargetPlay = bestPlay;
+						gameState->selectedHandCard = card;
+					};
+
+					currentBestDiff = diff;
+				}
+
+				break;
+			}
+			case CardData::CardType::Special_INV:
+			{
+				std::tuple<Card*, int> bestPlay = HexusAIHelper::getBestTarget(card, gameState);
+				int diff = std::get<1>(bestPlay);
+
+				if (diff > currentBestDiff && diff > 0)
+				{
+					chooseBestCallback = [gameState, card, bestPlay]()
+					{
+						gameState->cachedBestTargetPlay = bestPlay;
+						gameState->selectedHandCard = card;
+					};
+
+					currentBestDiff = diff;
+				}
+
+				break;
+			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 
-	return cardCount;
-}
-
-unsigned int StateAIDecideCard::getStrongestEnemyCardOnField(GameState* gameState)
-{
-	std::vector<CardRow*> enemyRows = gameState->getEnemyRows();
-	unsigned int strongest = 0;
-
-	for (auto it = enemyRows.begin(); it != enemyRows.end(); it++)
+	if (currentBestDiff > 0 && chooseBestCallback != nullptr)
 	{
-		for (auto cardIt = (*it)->rowCards.begin(); cardIt != (*it)->rowCards.end(); cardIt++)
-		{
-			strongest = std::max(strongest, (*cardIt)->getAttack());
-		}
+		chooseBestCallback();
 	}
-
-	return strongest;
-}
-
-unsigned int StateAIDecideCard::getWeakestEnemyCardOnField(GameState* gameState)
-{
-	std::vector<CardRow*> enemyRows = gameState->getEnemyRows();
-	unsigned int weakest = 0;
-
-	for (auto it = enemyRows.begin(); it != enemyRows.end(); it++)
-	{
-		for (auto cardIt = (*it)->rowCards.begin(); cardIt != (*it)->rowCards.end(); cardIt++)
-		{
-			weakest = std::min(weakest, (*cardIt)->getAttack());
-		}
-	}
-
-	return weakest;
-}
-
-unsigned int StateAIDecideCard::getStrongestPlayerCardOnField(GameState* gameState)
-{
-	std::vector<CardRow*> playerRows = gameState->getPlayerRows();
-	unsigned int strongest = 0;
-
-	for (auto it = playerRows.begin(); it != playerRows.end(); it++)
-	{
-		for (auto cardIt = (*it)->rowCards.begin(); cardIt != (*it)->rowCards.end(); cardIt++)
-		{
-			strongest = std::max(strongest, (*cardIt)->getAttack());
-		}
-	}
-
-	return strongest;
-}
-
-unsigned int StateAIDecideCard::getWeakestPlayerCardOnField(GameState* gameState)
-{
-	std::vector<CardRow*> playerRows = gameState->getPlayerRows();
-	unsigned int weakest = 0;
-
-	for (auto it = playerRows.begin(); it != playerRows.end(); it++)
-	{
-		for (auto cardIt = (*it)->rowCards.begin(); cardIt != (*it)->rowCards.end(); cardIt++)
-		{
-			weakest = std::min(weakest, (*cardIt)->getAttack());
-		}
-	}
-
-	return weakest;
 }

@@ -20,7 +20,7 @@ HexusOpponentRobin::HexusOpponentRobin() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -24.0f),
 	HexusOpponentRobin::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.36f),
 	HexusOpponentData::generateDeck(25, 0.36f,

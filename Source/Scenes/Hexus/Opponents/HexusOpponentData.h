@@ -18,13 +18,11 @@ public:
 	Deck* getDeck();
 	CardData* getStrongestCard();
 
-	enum Difficulty
+	enum Strategy
 	{
-		Stupid,
-		Easy,
-		Medium,
-		Hard,
-		Expert,
+		Random,
+		StrongestCardsFirst,
+		WeakestCardsFirst,
 	};
 
 	std::string backgroundResourceFile;
@@ -34,6 +32,7 @@ public:
 	Vec2 animationOffset;
 	Vec2 avatarOffset;
 	int reward;
+	Strategy strategy;
 
 	static const std::string winsPrefix;
 	static const std::string lossesPrefix;
@@ -46,7 +45,7 @@ protected:
 		Vec2 animationOffset,
 		Vec2 avatarOffset,
 		std::string enemyNameKey,
-		HexusOpponentData::Difficulty difficulty,
+		HexusOpponentData::Strategy strategy,
 		Card::CardStyle cardStyle,
 		int reward,
 		std::vector<CardData*> cards);

@@ -20,7 +20,7 @@ HexusOpponentToySoldierGoblin::HexusOpponentToySoldierGoblin() : HexusOpponentDa
 	Vec2(-48.0f, -48.0f),
 	Vec2(-16.0f, -16.0f),
 	HexusOpponentToySoldierGoblin::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.6f),
 	HexusOpponentData::generateDeck(25, 0.6f,

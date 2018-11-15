@@ -20,7 +20,7 @@ HexusOpponentShade::HexusOpponentShade() : HexusOpponentData(
 	Vec2(-32.0f, -96.0f),
 	Vec2(-16.0f, -128.0f),
 	HexusOpponentShade::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.595f),
 	HexusOpponentData::generateDeck(25, 0.595f,

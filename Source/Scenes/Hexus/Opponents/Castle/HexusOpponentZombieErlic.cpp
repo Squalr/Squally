@@ -20,7 +20,7 @@ HexusOpponentZombieErlic::HexusOpponentZombieErlic() : HexusOpponentData(
 	Vec2(-32.0f, -64.0f),
 	Vec2(-16.0f, -40.0f),
 	HexusOpponentZombieErlic::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.575f),
 	HexusOpponentData::generateDeck(25, 0.575f,

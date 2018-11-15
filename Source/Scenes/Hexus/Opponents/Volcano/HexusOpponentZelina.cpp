@@ -20,7 +20,7 @@ HexusOpponentZelina::HexusOpponentZelina() : HexusOpponentData(
 	Vec2(-48.0f, -72.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentZelina::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.71f),
 	HexusOpponentData::generateDeck(25, 0.71f,

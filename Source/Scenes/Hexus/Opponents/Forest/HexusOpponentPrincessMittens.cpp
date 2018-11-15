@@ -20,7 +20,7 @@ HexusOpponentPrincessMittens::HexusOpponentPrincessMittens() : HexusOpponentData
 	Vec2(-48.0f, -80.0f),
 	Vec2(-16.0f, -64.0f),
 	HexusOpponentPrincessMittens::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.39f),
 	HexusOpponentData::generateDeck(25, 0.39f,

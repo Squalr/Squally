@@ -20,7 +20,7 @@ HexusOpponentBrock::HexusOpponentBrock() : HexusOpponentData(
 	Vec2(-32.0f, -64.0f),
 	Vec2(-16.0f, -32.0f),
 	HexusOpponentBrock::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.4f),
 	HexusOpponentData::generateDeck(25, 0.4f,

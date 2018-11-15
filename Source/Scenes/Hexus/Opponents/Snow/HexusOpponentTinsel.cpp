@@ -20,7 +20,7 @@ HexusOpponentTinsel::HexusOpponentTinsel() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -24.0f),
 	HexusOpponentTinsel::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.685f),
 	HexusOpponentData::generateDeck(25, 0.685f,

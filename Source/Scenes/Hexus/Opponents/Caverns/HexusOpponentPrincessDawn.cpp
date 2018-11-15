@@ -20,7 +20,7 @@ HexusOpponentPrincessDawn::HexusOpponentPrincessDawn() : HexusOpponentData(
 	Vec2(-32.0f, -48.0f),
 	Vec2(-16.0f, -32.0f),
 	HexusOpponentPrincessDawn::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.49f),
 	HexusOpponentData::generateDeck(25, 0.49f,

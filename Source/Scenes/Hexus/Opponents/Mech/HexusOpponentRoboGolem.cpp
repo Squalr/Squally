@@ -20,7 +20,7 @@ HexusOpponentRoboGolem::HexusOpponentRoboGolem() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-32.0f, -128.0f),
 	HexusOpponentRoboGolem::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.975f),
 	HexusOpponentData::generateDeck(25, 0.975f,

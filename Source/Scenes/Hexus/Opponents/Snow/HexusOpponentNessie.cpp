@@ -20,7 +20,7 @@ HexusOpponentNessie::HexusOpponentNessie() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -32.0f),
 	HexusOpponentNessie::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.605f),
 	HexusOpponentData::generateDeck(25, 0.605f,

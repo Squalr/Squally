@@ -20,7 +20,7 @@ HexusOpponentMermaid::HexusOpponentMermaid() : HexusOpponentData(
 	Vec2(-48.0f, -144.0f),
 	Vec2(0.0f, -160.0f),
 	HexusOpponentMermaid::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.27f),
 	HexusOpponentData::generateDeck(25, 0.27f,

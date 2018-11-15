@@ -20,7 +20,7 @@ HexusOpponentForestGolem::HexusOpponentForestGolem() : HexusOpponentData(
 	Vec2(-32.0f, -96.0f),
 	Vec2(-48.0f, -16.0f),
 	HexusOpponentForestGolem::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.415f),
 	HexusOpponentData::generateDeck(25, 0.415f,

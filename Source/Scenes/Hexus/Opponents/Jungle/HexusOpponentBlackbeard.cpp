@@ -20,7 +20,7 @@ HexusOpponentBlackbeard::HexusOpponentBlackbeard() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -64.0f),
 	HexusOpponentBlackbeard::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.1f),
 	HexusOpponentData::generateDeck(25, 0.1f,

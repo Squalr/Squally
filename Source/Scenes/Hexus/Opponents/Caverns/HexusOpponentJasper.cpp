@@ -20,7 +20,7 @@ HexusOpponentJasper::HexusOpponentJasper() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -32.0f),
 	HexusOpponentJasper::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.46f),
 	HexusOpponentData::generateDeck(25, 0.46f,

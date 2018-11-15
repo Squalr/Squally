@@ -20,7 +20,7 @@ HexusOpponentLeroy::HexusOpponentLeroy() : HexusOpponentData(
 	Vec2(-64.0f, -112.0f),
 	Vec2(-16.0f, -96.0f),
 	HexusOpponentLeroy::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.51f),
 	HexusOpponentData::generateDeck(25, 0.51f,
