@@ -56,6 +56,7 @@ private:
 	StateDraw* stateDraw;
 	StateDrawInitial* stateDrawInitial;
 	StateGameEnd* stateGameEnd;
+	StateLoadInitialState* stateLoadInitialState;
 	StateGameStart* stateGameStart;
 	StateNeutral* stateNeutral;
 	StateOpponentTurnStart* stateOpponentTurnStart;

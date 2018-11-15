@@ -13,7 +13,8 @@ HexusOpponentData::HexusOpponentData(
 	HexusOpponentData::Strategy strategy,
 	Card::CardStyle cardStyle,
 	int reward,
-	std::vector<CardData*> cards)
+	std::vector<CardData*> cards,
+	StateOverride* stateOverride)
 {
 	this->animationResourceFile = animationResourceFile;
 	this->backgroundResourceFile = backgroundResourceFile;
@@ -25,10 +26,20 @@ HexusOpponentData::HexusOpponentData(
 	this->cardStyle = cardStyle;
 	this->reward = reward;
 	this->cards = cards;
+	this->stateOverride = stateOverride;
+
+	if (this->stateOverride != nullptr)
+	{
+		this->stateOverride->retain();
+	}
 }
 
 HexusOpponentData::~HexusOpponentData()
 {
+	if (this->stateOverride != nullptr)
+	{
+		this->stateOverride->release();
+	}
 }
 
 Deck* HexusOpponentData::getDeck()

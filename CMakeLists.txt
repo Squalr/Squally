@@ -454,6 +454,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Deck.cpp
 	Source/Scenes/Hexus/GameState.cpp
 	Source/Scenes/Hexus/Hexus.cpp
+	Source/Scenes/Hexus/StateOverride.cpp
 	Source/Scenes/Hexus/CardData/CardData.cpp
 	Source/Scenes/Hexus/CardData/CardKeys.cpp
 	Source/Scenes/Hexus/CardData/CardList.cpp
@@ -748,6 +749,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentRagnis.cpp
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentScaldor.cpp
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentZelina.cpp
+	Source/Scenes/Hexus/Puzzles/PuzzleA.cpp
 	Source/Scenes/Hexus/States/HexusAIHelper.cpp
 	Source/Scenes/Hexus/States/StateAIDecideCard.cpp
 	Source/Scenes/Hexus/States/StateAIDecideCardReplace.cpp
@@ -761,6 +763,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/States/StateDrawInitial.cpp
 	Source/Scenes/Hexus/States/StateGameEnd.cpp
 	Source/Scenes/Hexus/States/StateGameStart.cpp
+	Source/Scenes/Hexus/States/StateLoadInitialState.cpp
 	Source/Scenes/Hexus/States/StateNeutral.cpp
 	Source/Scenes/Hexus/States/StateOpponentTurnStart.cpp
 	Source/Scenes/Hexus/States/StatePass.cpp
@@ -770,6 +773,9 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/States/StateRoundStart.cpp
 	Source/Scenes/Hexus/States/StateSelectionStaged.cpp
 	Source/Scenes/Hexus/States/StateTurnEnd.cpp
+	Source/Scenes/Hexus/Tutorials/TutorialA.cpp
+	Source/Scenes/Hexus/Tutorials/TutorialB.cpp
+	Source/Scenes/Hexus/Tutorials/TutorialC.cpp
 	Source/Scenes/Maps/Isometric/IsometricMap.cpp
 	Source/Scenes/Maps/Platformer/PlatformerMap.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundBase.cpp
@@ -1199,6 +1205,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Deck.h
 	Source/Scenes/Hexus/GameState.h
 	Source/Scenes/Hexus/Hexus.h
+	Source/Scenes/Hexus/StateOverride.h
 	Source/Scenes/Hexus/CardData/CardData.h
 	Source/Scenes/Hexus/CardData/CardKeys.h
 	Source/Scenes/Hexus/CardData/CardList.h
@@ -1505,6 +1512,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentScaldor.h
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentZelina.h
 	Source/Scenes/Hexus/Opponents/Volcano/VolcanoHexusOpponents.h
+	Source/Scenes/Hexus/Puzzles/PuzzleA.h
 	Source/Scenes/Hexus/States/HexusAIHelper.h
 	Source/Scenes/Hexus/States/StateAIDecideCard.h
 	Source/Scenes/Hexus/States/StateAIDecideCardReplace.h
@@ -1518,6 +1526,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/States/StateDrawInitial.h
 	Source/Scenes/Hexus/States/StateGameEnd.h
 	Source/Scenes/Hexus/States/StateGameStart.h
+	Source/Scenes/Hexus/States/StateLoadInitialState.h
 	Source/Scenes/Hexus/States/StateNeutral.h
 	Source/Scenes/Hexus/States/StateOpponentTurnStart.h
 	Source/Scenes/Hexus/States/StatePass.h
@@ -1528,6 +1537,9 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/States/States.h
 	Source/Scenes/Hexus/States/StateSelectionStaged.h
 	Source/Scenes/Hexus/States/StateTurnEnd.h
+	Source/Scenes/Hexus/Tutorials/TutorialA.h
+	Source/Scenes/Hexus/Tutorials/TutorialB.h
+	Source/Scenes/Hexus/Tutorials/TutorialC.h
 	Source/Scenes/Maps/IMap.h
 	Source/Scenes/Maps/Isometric/IsometricMap.h
 	Source/Scenes/Maps/Platformer/PlatformerMap.h
