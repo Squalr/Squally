@@ -140,14 +140,7 @@ void Hexus::onEnter()
 	this->optionsMenu->setVisible(false);
 	this->confirmationMenu->setVisible(false); 
 
-	if (this->gameState->opponentData->stateOverride != nullptr)
-	{
-		GameState::updateState(this->gameState, GameState::StateType::LoadInitialState);
-	}
-	else if (this->gameState->stateType == GameState::StateType::EmptyState)
-	{
-		GameState::updateState(this->gameState, GameState::StateType::GameStart);
-	}
+	GameState::updateState(this->gameState, GameState::StateType::GameStart);
 }
 
 void Hexus::initializePositions()
