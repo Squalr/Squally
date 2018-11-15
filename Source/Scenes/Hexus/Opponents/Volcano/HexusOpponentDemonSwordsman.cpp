@@ -20,7 +20,7 @@ HexusOpponentDemonSwordsman::HexusOpponentDemonSwordsman() : HexusOpponentData(
 	Vec2(-48.0f, -48.0f),
 	Vec2(-24.0f, -48.0f),
 	HexusOpponentDemonSwordsman::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.745f),
 	HexusOpponentData::generateDeck(25, 0.745f,

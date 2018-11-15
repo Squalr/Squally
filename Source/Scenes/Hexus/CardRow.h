@@ -36,6 +36,7 @@ public:
 	void disableRowCardInteraction();
 	int simulateCardEffect(Card *card);
 	void setRowWidth(float newRowWidth, float duration);
+	void shuffle();
 	void clear();
 
 	std::vector<Card*> rowCards;

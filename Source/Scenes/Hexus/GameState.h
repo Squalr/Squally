@@ -75,7 +75,7 @@ public:
 	StateType stateType;
 	StateType previousStateType;
 	Turn turn;
-	HexusOpponentData::Difficulty difficulty;
+	HexusOpponentData::Strategy difficulty;
 	bool isRepeatingSameTurn;
 	bool playerPassed;
 	bool enemyPassed;
@@ -88,7 +88,6 @@ public:
 	int enemyCardsDrawnNextRound;
 	int playableCardsThisTurn;
 	int gameDurationInSeconds;
-	CardRow* stagedCombineCardRow;
 	Card* selectedSourceCard;
 	Card* selectedDestinationCard;
 	Card* selectedHandCard;
@@ -98,6 +97,10 @@ public:
 	std::function<void(bool)> updateStateCallback;
 	std::function<void()> endTurnCallback;
 	std::function<void(GameState*)> requestAiCallback;
+
+	std::tuple<CardRow*, int> cachedBestRowPlay;
+	std::tuple<Card*, Card*, int> cachedBestSourceTargetPlay;
+	std::tuple<Card*, int> cachedBestTargetPlay;
 
 	Deck* playerDeck;
 	CardRow* playerHand;

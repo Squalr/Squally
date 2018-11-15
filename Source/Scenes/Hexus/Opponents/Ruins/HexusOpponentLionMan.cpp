@@ -20,7 +20,7 @@ HexusOpponentLionMan::HexusOpponentLionMan() : HexusOpponentData(
 	Vec2(-24.0f, -24.0f),
 	Vec2(-16.0f, -64.0f),
 	HexusOpponentLionMan::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.225f),
 	HexusOpponentData::generateDeck(25, 0.225f,

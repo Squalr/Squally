@@ -20,7 +20,7 @@ HexusOpponentMerlin::HexusOpponentMerlin() : HexusOpponentData(
 	Vec2(-48.0f, -80.0f),
 	Vec2(-32.0f, -64.0f),
 	HexusOpponentMerlin::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.57f),
 	HexusOpponentData::generateDeck(25, 0.57f,

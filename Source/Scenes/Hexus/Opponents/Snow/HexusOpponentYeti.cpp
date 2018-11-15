@@ -20,7 +20,7 @@ HexusOpponentYeti::HexusOpponentYeti() : HexusOpponentData(
 	Vec2(-48.0f, -72.0f),
 	Vec2(-32.0f, -56.0f),
 	HexusOpponentYeti::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.61f),
 	HexusOpponentData::generateDeck(25, 0.61f,

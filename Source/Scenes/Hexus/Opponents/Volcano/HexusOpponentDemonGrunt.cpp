@@ -20,7 +20,7 @@ HexusOpponentDemonGrunt::HexusOpponentDemonGrunt() : HexusOpponentData(
 	Vec2(-48.0f, -48.0f),
 	Vec2(-32.0f, -64.0f),
 	HexusOpponentDemonGrunt::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.765f),
 	HexusOpponentData::generateDeck(25, 0.765f,

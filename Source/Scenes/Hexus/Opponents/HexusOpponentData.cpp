@@ -10,7 +10,7 @@ HexusOpponentData::HexusOpponentData(
 	Vec2 animationOffset,
 	Vec2 avatarOffset,
 	std::string enemyNameKey,
-	HexusOpponentData::Difficulty difficulty,
+	HexusOpponentData::Strategy strategy,
 	Card::CardStyle cardStyle,
 	int reward,
 	std::vector<CardData*> cards)
@@ -21,6 +21,7 @@ HexusOpponentData::HexusOpponentData(
 	this->animationOffset = animationOffset;
 	this->avatarOffset = avatarOffset;
 	this->enemyNameKey = enemyNameKey;
+	this->strategy = strategy;
 	this->cardStyle = cardStyle;
 	this->reward = reward;
 	this->cards = cards;

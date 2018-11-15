@@ -20,7 +20,7 @@ HexusOpponentEvilEye::HexusOpponentEvilEye() : HexusOpponentData(
 	Vec2(-48.0f, -112.0f),
 	Vec2(-16.0f, -180.0f),
 	HexusOpponentEvilEye::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(1.0f),
 	HexusOpponentData::generateDeck(25, 1.0f,

@@ -20,7 +20,7 @@ HexusOpponentAthena::HexusOpponentAthena() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentAthena::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.23f),
 	HexusOpponentData::generateDeck(25, 0.23f,

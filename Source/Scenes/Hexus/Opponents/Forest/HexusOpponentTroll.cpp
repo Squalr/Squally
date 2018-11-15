@@ -20,7 +20,7 @@ HexusOpponentTroll::HexusOpponentTroll() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-40.0f, -48.0f),
 	HexusOpponentTroll::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.385f),
 	HexusOpponentData::generateDeck(25, 0.385f,

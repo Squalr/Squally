@@ -4,6 +4,7 @@
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Resources.h"
+#include "Scenes/Hexus/States/HexusAIHelper.h"
 #include "Scenes/Hexus/States/StateBase.h"
 
 using namespace cocos2d;
@@ -23,15 +24,7 @@ private:
 	StateAIDecideCard();
 	~StateAIDecideCard();
 
-	int getBaseCardsInHandCount(GameState* gameState);
-	int getPlayerHandCount(GameState* gameState);
-	int getEnemyHandCount(GameState* gameState);
-	int getPlayerCardsOnFieldCount(GameState* gameState);
-	int getEnemyCardsOnFieldCount(GameState* gameState);
-	int getCardsStrongerThanAttackCount(CardRow* row, int attack);
-	int getCardsWeakerThanAttackCount(CardRow* row, int attack);
-	unsigned int getStrongestEnemyCardOnField(GameState* gameState);
-	unsigned int getWeakestEnemyCardOnField(GameState* gameState);
-	unsigned int getStrongestPlayerCardOnField(GameState* gameState);
-	unsigned int getWeakestPlayerCardOnField(GameState* gameState);
+	void decideCardRandom(GameState* gameState);
+	void decideCardStrongestFirst(GameState* gameState);
+	void decideCardWeakestFirst(GameState* gameState);
 };

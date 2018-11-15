@@ -20,7 +20,7 @@ HexusOpponentSanta::HexusOpponentSanta() : HexusOpponentData(
 	Vec2(-48.0f, -48.0f),
 	Vec2(-48.0f, -48.0f),
 	HexusOpponentSanta::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.715f),
 	HexusOpponentData::generateDeck(25, 0.715f,

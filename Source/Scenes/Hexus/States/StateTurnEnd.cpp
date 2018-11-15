@@ -33,7 +33,6 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 	float endTurnDelay = Config::endTurnDelay;
 	gameState->isRepeatingSameTurn = false;
 	gameState->selectedRow = nullptr;
-	gameState->stagedCombineCardRow = nullptr;
 	gameState->selectedSourceCard = nullptr;
 	gameState->selectedDestinationCard = nullptr;
 

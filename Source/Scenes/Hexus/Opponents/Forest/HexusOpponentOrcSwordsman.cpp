@@ -20,7 +20,7 @@ HexusOpponentOrcSwordsman::HexusOpponentOrcSwordsman() : HexusOpponentData(
 	Vec2(-48.0f, -48.0f),
 	Vec2(-32.0f, -40.0f),
 	HexusOpponentOrcSwordsman::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.325f),
 	HexusOpponentData::generateDeck(25, 0.325f,

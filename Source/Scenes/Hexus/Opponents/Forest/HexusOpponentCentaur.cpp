@@ -20,7 +20,7 @@ HexusOpponentCentaur::HexusOpponentCentaur() : HexusOpponentData(
 	Vec2(0.0f, -96.0f),
 	Vec2(-64.0f, -96.0f),
 	HexusOpponentCentaur::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.355f),
 	HexusOpponentData::generateDeck(25, 0.355f,

@@ -20,7 +20,7 @@ HexusOpponentOrcWarrior::HexusOpponentOrcWarrior() : HexusOpponentData(
 	Vec2(-48.0f, -48.0f),
 	Vec2(-48.0f, -48.0f),
 	HexusOpponentOrcWarrior::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.335f),
 	HexusOpponentData::generateDeck(25, 0.335f,

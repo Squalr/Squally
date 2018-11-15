@@ -20,7 +20,7 @@ HexusOpponentCryogen::HexusOpponentCryogen() : HexusOpponentData(
 	Vec2(-48.0f, -48.0f),
 	Vec2(-64.0f, -48.0f),
 	HexusOpponentCryogen::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.72f),
 	HexusOpponentData::generateDeck(25, 0.72f,

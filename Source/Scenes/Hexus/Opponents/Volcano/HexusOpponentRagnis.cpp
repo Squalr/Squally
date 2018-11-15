@@ -20,7 +20,7 @@ HexusOpponentRagnis::HexusOpponentRagnis() : HexusOpponentData(
 	Vec2(-48.0f, -48.0f),
 	Vec2(-16.0f, -32.0f),
 	HexusOpponentRagnis::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.79f),
 	HexusOpponentData::generateDeck(25, 0.79f,

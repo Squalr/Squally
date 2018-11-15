@@ -20,7 +20,7 @@ HexusOpponentZeus::HexusOpponentZeus() : HexusOpponentData(
 	Vec2(-32.0f, -64.0f),
 	Vec2(0.0f, -24.0f),
 	HexusOpponentZeus::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.275f),
 	HexusOpponentData::generateDeck(25, 0.275f,

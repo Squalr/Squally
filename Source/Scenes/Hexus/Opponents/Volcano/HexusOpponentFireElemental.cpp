@@ -20,7 +20,7 @@ HexusOpponentFireElemental::HexusOpponentFireElemental() : HexusOpponentData(
 	Vec2(-32.0f, -48.0f),
 	Vec2(-32.0f, -72.0f),
 	HexusOpponentFireElemental::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.785f),
 	HexusOpponentData::generateDeck(25, 0.785f,

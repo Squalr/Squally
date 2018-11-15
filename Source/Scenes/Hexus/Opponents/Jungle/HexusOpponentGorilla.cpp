@@ -20,7 +20,7 @@ HexusOpponentGorilla::HexusOpponentGorilla() : HexusOpponentData(
 	Vec2(-48.0f, -48.0f),
 	Vec2(-80.0f, -32.0f),
 	HexusOpponentGorilla::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.135f),
 	HexusOpponentData::generateDeck(25, 0.135f,

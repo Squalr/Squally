@@ -20,7 +20,7 @@ HexusOpponentKrampus::HexusOpponentKrampus() : HexusOpponentData(
 	Vec2(-32.0f, -32.0f),
 	Vec2(-64.0f, -48.0f),
 	HexusOpponentKrampus::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.52f),
 	HexusOpponentData::generateDeck(25, 0.52f,

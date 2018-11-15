@@ -20,7 +20,7 @@ HexusOpponentCindra::HexusOpponentCindra() : HexusOpponentData(
 	Vec2(-48.0f, -48.0f),
 	Vec2(-16.0f, -32.0f),
 	HexusOpponentCindra::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.74f),
 	HexusOpponentData::generateDeck(25, 0.74f,

@@ -20,7 +20,7 @@ HexusOpponentLightningGolem::HexusOpponentLightningGolem() : HexusOpponentData(
 	Vec2(-32.0f, -128.0f),
 	Vec2(-16.0f, -180.0f),
 	HexusOpponentLightningGolem::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.5f),
 	HexusOpponentData::generateDeck(25, 0.5f,

@@ -20,7 +20,7 @@ HexusOpponentVampiress::HexusOpponentVampiress() : HexusOpponentData(
 	Vec2(-32.0f, -32.0f),
 	Vec2(-16.0f, -40.0f),
 	HexusOpponentVampiress::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Shadow,
 	HexusOpponentData::generateReward(0.565f),
 	HexusOpponentData::generateDeck(25, 0.565f,

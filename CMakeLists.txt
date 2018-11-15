@@ -748,6 +748,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentRagnis.cpp
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentScaldor.cpp
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentZelina.cpp
+	Source/Scenes/Hexus/States/HexusAIHelper.cpp
 	Source/Scenes/Hexus/States/StateAIDecideCard.cpp
 	Source/Scenes/Hexus/States/StateAIDecideCardReplace.cpp
 	Source/Scenes/Hexus/States/StateAIDecidePass.cpp
@@ -1504,6 +1505,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentScaldor.h
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentZelina.h
 	Source/Scenes/Hexus/Opponents/Volcano/VolcanoHexusOpponents.h
+	Source/Scenes/Hexus/States/HexusAIHelper.h
 	Source/Scenes/Hexus/States/StateAIDecideCard.h
 	Source/Scenes/Hexus/States/StateAIDecideCardReplace.h
 	Source/Scenes/Hexus/States/StateAIDecidePass.h

@@ -20,7 +20,7 @@ HexusOpponentAnubisWarrior::HexusOpponentAnubisWarrior() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-32.0f, -64.0f),
 	HexusOpponentAnubisWarrior::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.29f),
 	HexusOpponentData::generateDeck(25, 0.29f,

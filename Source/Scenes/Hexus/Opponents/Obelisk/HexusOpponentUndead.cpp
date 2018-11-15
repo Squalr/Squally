@@ -20,7 +20,7 @@ HexusOpponentUndead::HexusOpponentUndead() : HexusOpponentData(
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -40.0f),
 	HexusOpponentUndead::OpponentSaveKey,
-	HexusOpponentData::Difficulty::Stupid,
+	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.835f),
 	HexusOpponentData::generateDeck(25, 0.835f,
