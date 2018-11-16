@@ -133,6 +133,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Utils/AlgoUtils.cpp
 	Source/Engine/Utils/GameUtils.cpp
 	Source/Engine/Utils/HackUtils.cpp
+	Source/Engine/Utils/LogUtils.cpp
 	Source/Engine/Utils/MathUtils.cpp
 	Source/Engine/Utils/StrUtils.cpp
 	Source/Engine/Utils/SystemUtils.cpp
@@ -865,6 +866,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Utils/AlgoUtils.h
 	Source/Engine/Utils/GameUtils.h
 	Source/Engine/Utils/HackUtils.h
+	Source/Engine/Utils/LogUtils.h
 	Source/Engine/Utils/MathUtils.h
 	Source/Engine/Utils/StrUtils.h
 	Source/Engine/Utils/SystemUtils.h
@@ -1641,8 +1643,6 @@ if(APPLE)
 		configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cocos2d/external/steam/redistributable_bin/osx32/libsteam_api.dylib ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/libsteam_api.dylib COPYONLY)
     endif()
 elseif(LINUX)
-	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath='$ORIGIN'")
-	
     find_package(PkgConfig)
     pkg_check_modules(GTKMM gtkmm-3.0)
 
