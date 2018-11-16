@@ -18,5 +18,4 @@ public:
 private:
 	TutorialA();
 	~TutorialA();
-
 };

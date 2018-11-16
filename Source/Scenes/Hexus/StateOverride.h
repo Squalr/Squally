@@ -31,6 +31,7 @@ public:
 	std::vector<CardData*> enemyHexCards;
 
 protected:
+	StateOverride();
 	StateOverride(
 		int playerLosses,
 		int enemyLosses,

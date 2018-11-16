@@ -1,15 +1,15 @@
-#include "TutorialA.h"
+#include "TutorialD.h"
 
-TutorialA* TutorialA::create()
+TutorialD* TutorialD::create()
 {
-	TutorialA* instance = new TutorialA();
+	TutorialD* instance = new TutorialD();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TutorialA::TutorialA() : StateOverride(
+TutorialD::TutorialD() : StateOverride(
 	// Player losses
 	1,
 	// Enemy losses
@@ -19,7 +19,7 @@ TutorialA::TutorialA() : StateOverride(
 	// Player passed
 	false,
 	// Enemy passed
-	true,
+	false,
 	// Player deck
 	std::vector<CardData*>
 	{
@@ -45,22 +45,25 @@ TutorialA::TutorialA() : StateOverride(
 	// Player hand
 	std::vector<CardData*>
 	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary12),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal11),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex13),
+		CardList::getInstance()->cardListByName->at(CardKeys::ShiftRight),
 	},
 	// Enemy hand
 	std::vector<CardData*>
 	{
+		CardList::getInstance()->cardListByName->at(CardKeys::Hex8),
 	},
 	// Player binary cards
 	std::vector<CardData*>
 	{
+		CardList::getInstance()->cardListByName->at(CardKeys::Binary1),
 	},
 	// Player decimal cards
 	std::vector<CardData*>
 	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal7),
+		CardList::getInstance()->cardListByName->at(CardKeys::Hex14),
+		CardList::getInstance()->cardListByName->at(CardKeys::Hex11),
+		CardList::getInstance()->cardListByName->at(CardKeys::Hex10),
+		CardList::getInstance()->cardListByName->at(CardKeys::Hex12),
 	},
 	// Player hex cards
 	std::vector<CardData*>
@@ -69,26 +72,23 @@ TutorialA::TutorialA() : StateOverride(
 	// Enemy binary cards
 	std::vector<CardData*>
 	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary8),
+		CardList::getInstance()->cardListByName->at(CardKeys::Binary12),
+		CardList::getInstance()->cardListByName->at(CardKeys::Binary10),
+		CardList::getInstance()->cardListByName->at(CardKeys::Binary11),
+		CardList::getInstance()->cardListByName->at(CardKeys::Binary9),
+		CardList::getInstance()->cardListByName->at(CardKeys::Binary13),
 	},
 	// Enemy decimal cards
 	std::vector<CardData*>
 	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal11),
 	},
 	// Enemy hex cards
 	std::vector<CardData*>
 	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex13),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex3),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex1),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex1),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex1),
 	})
 {
 }
 
-TutorialA::~TutorialA()
+TutorialD::~TutorialD()
 {
 }

@@ -18,5 +18,4 @@ public:
 private:
 	TutorialC();
 	~TutorialC();
-
 };

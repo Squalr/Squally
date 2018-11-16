@@ -1,15 +1,15 @@
-#include "TutorialA.h"
+#include "TutorialE.h"
 
-TutorialA* TutorialA::create()
+TutorialE* TutorialE::create()
 {
-	TutorialA* instance = new TutorialA();
+	TutorialE* instance = new TutorialE();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TutorialA::TutorialA() : StateOverride(
+TutorialE::TutorialE() : StateOverride(
 	// Player losses
 	1,
 	// Enemy losses
@@ -45,9 +45,8 @@ TutorialA::TutorialA() : StateOverride(
 	// Player hand
 	std::vector<CardData*>
 	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary12),
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal11),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex13),
+		CardList::getInstance()->cardListByName->at(CardKeys::Decimal7),
+		CardList::getInstance()->cardListByName->at(CardKeys::ShiftLeft),
 	},
 	// Enemy hand
 	std::vector<CardData*>
@@ -60,7 +59,10 @@ TutorialA::TutorialA() : StateOverride(
 	// Player decimal cards
 	std::vector<CardData*>
 	{
+		CardList::getInstance()->cardListByName->at(CardKeys::Decimal6),
+		CardList::getInstance()->cardListByName->at(CardKeys::Decimal5),
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal7),
+		CardList::getInstance()->cardListByName->at(CardKeys::Decimal4),
 	},
 	// Player hex cards
 	std::vector<CardData*>
@@ -69,26 +71,22 @@ TutorialA::TutorialA() : StateOverride(
 	// Enemy binary cards
 	std::vector<CardData*>
 	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
-		CardList::getInstance()->cardListByName->at(CardKeys::Binary8),
 	},
 	// Enemy decimal cards
 	std::vector<CardData*>
 	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Decimal11),
 	},
 	// Enemy hex cards
 	std::vector<CardData*>
 	{
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex13),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex3),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex1),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex1),
-		CardList::getInstance()->cardListByName->at(CardKeys::Hex1),
+		CardList::getInstance()->cardListByName->at(CardKeys::Hex12),
+		CardList::getInstance()->cardListByName->at(CardKeys::Hex14),
+		CardList::getInstance()->cardListByName->at(CardKeys::Hex15),
+		CardList::getInstance()->cardListByName->at(CardKeys::Hex14),
 	})
 {
 }
 
-TutorialA::~TutorialA()
+TutorialE::~TutorialE()
 {
 }

@@ -10,12 +10,12 @@
 
 using namespace cocos2d;
 
-class TutorialB : public StateOverride
+class TutorialD : public StateOverride
 {
 public:
-	static TutorialB* create();
+	static TutorialD* create();
 
 private:
-	TutorialB();
-	~TutorialB();
+	TutorialD();
+	~TutorialD();
 };
