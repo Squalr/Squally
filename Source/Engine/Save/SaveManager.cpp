@@ -145,16 +145,28 @@ void SaveManager::doSave(ValueMap valueMap, std::string localSavePath, std::stri
 		const char* file = cloudSavePath.c_str();
 
 		std::stringstream result;
-
-		if (FileUtils::getInstance()->serializeValueMapToStream(valueMap, result))
+		
+		try
 		{
-			std::string resultData = result.str();
-			bool writeSuccess = steamRemoteStorage->FileWrite(file, resultData.c_str(), resultData.size());
+			if (FileUtils::getInstance()->serializeValueMapToStream(valueMap, result))
+			{
+				std::string resultData = result.str();
+				bool writeSuccess = steamRemoteStorage->FileWrite(file, resultData.c_str(), resultData.size());
+			}
+		}
+		catch (...)
+		{
 		}
 	}
 
 	// Always write locally as well
-	FileUtils::getInstance()->serializeValueMapToFile(valueMap, localSavePath);
+	try
+	{
+		FileUtils::getInstance()->serializeValueMapToFile(valueMap, localSavePath);
+	}
+	catch (...)
+	{
+	}
 }
 
 ValueMap SaveManager::loadSaveFile(std::string localSavePath, std::string cloudSavePath)
@@ -177,16 +189,28 @@ ValueMap SaveManager::loadSaveFile(std::string localSavePath, std::string cloudS
 
 			if (bytesRead == fileSize)
 			{
-				cloudValueMap = FileUtils::getInstance()->deserializeValueMapFromData(result.get(), fileSize);
-				cloudReadSuccess = true;
+				try
+				{
+					cloudValueMap = FileUtils::getInstance()->deserializeValueMapFromData(result.get(), fileSize);
+					cloudReadSuccess = true;
+				}
+				catch (...)
+				{
+				}
 			}
 		}
 	}
 
 	// Access local storage if steam is not available, the file does not exist in the cloud, or the cloud read failed
-	if (FileUtils::getInstance()->isFileExist(localSavePath))
+	try
 	{
-		localValueMap = FileUtils::getInstance()->deserializeValueMapFromFile(localSavePath);
+		if (FileUtils::getInstance()->isFileExist(localSavePath))
+		{
+			localValueMap = FileUtils::getInstance()->deserializeValueMapFromFile(localSavePath);
+		}
+	}
+	catch (...)
+	{
 	}
 
 	if (!cloudReadSuccess)

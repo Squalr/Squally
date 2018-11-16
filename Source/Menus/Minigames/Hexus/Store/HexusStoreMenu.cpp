@@ -154,17 +154,25 @@ HexusStoreMenu::HexusStoreMenu()
 		switch (cardData->cardType)
 		{
 			case CardData::Binary:
+			{
 				this->binaryCards.push_back(this->constructCard(cardData));
 				break;
+			}
 			case CardData::Decimal:
+			{
 				this->decimalCards.push_back(this->constructCard(cardData));
 				break;
+			}
 			case CardData::Hexidecimal:
+			{
 				this->hexCards.push_back(this->constructCard(cardData));
 				break;
+			}
 			default:
+			{
 				this->specialCards.push_back(this->constructCard(cardData));
 				break;
+			}
 		}
 	}
 
@@ -533,30 +541,6 @@ std::tuple<MenuSprite*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* 
 	priceLabel->enableOutline(Color4B::BLACK, 4);
 
 	cardContainer->addChild(menuCard);
-
-	switch (cardData->cardType)
-	{
-		case CardData::CardType::Binary:
-		{
-			this->binaryCardsScrollPane->addChild(cardContainer);
-			break;
-		}
-		case CardData::CardType::Decimal:
-		{
-			this->decimalCardsScrollPane->addChild(cardContainer);
-			break;
-		}
-		case CardData::CardType::Hexidecimal:
-		{
-			this->hexCardsScrollPane->addChild(cardContainer);
-			break;
-		}
-		default:
-		{
-			this->specialCardsScrollPane->addChild(cardContainer);
-			break;
-		}
-	}
 
 	menuCard->reveal();
 	menuCard->disableInteraction();
