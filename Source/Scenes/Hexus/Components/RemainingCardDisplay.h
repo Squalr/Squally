@@ -1,4 +1,5 @@
 #pragma once
+#include <codecvt>
 #include "cocos2d.h"
 
 #include "Engine/Localization/Localization.h"
