@@ -3,6 +3,7 @@
 
 #include "Resources.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Hexus/Tutorials/TutorialE.h"
 
 using namespace cocos2d;
 

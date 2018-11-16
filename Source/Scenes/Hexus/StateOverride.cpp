@@ -1,5 +1,9 @@
 #include "StateOverride.h"
 
+StateOverride::StateOverride()
+{
+}
+
 StateOverride::StateOverride(
 	int playerLosses,
 	int enemyLosses,

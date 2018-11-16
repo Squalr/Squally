@@ -776,6 +776,9 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Tutorials/TutorialA.cpp
 	Source/Scenes/Hexus/Tutorials/TutorialB.cpp
 	Source/Scenes/Hexus/Tutorials/TutorialC.cpp
+	Source/Scenes/Hexus/Tutorials/TutorialD.cpp
+	Source/Scenes/Hexus/Tutorials/TutorialE.cpp
+	Source/Scenes/Hexus/Tutorials/TutorialF.cpp
 	Source/Scenes/Maps/Isometric/IsometricMap.cpp
 	Source/Scenes/Maps/Platformer/PlatformerMap.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundBase.cpp
@@ -1540,6 +1543,9 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Tutorials/TutorialA.h
 	Source/Scenes/Hexus/Tutorials/TutorialB.h
 	Source/Scenes/Hexus/Tutorials/TutorialC.h
+	Source/Scenes/Hexus/Tutorials/TutorialD.h
+	Source/Scenes/Hexus/Tutorials/TutorialE.h
+	Source/Scenes/Hexus/Tutorials/TutorialF.h
 	Source/Scenes/Maps/IMap.h
 	Source/Scenes/Maps/Isometric/IsometricMap.h
 	Source/Scenes/Maps/Platformer/PlatformerMap.h

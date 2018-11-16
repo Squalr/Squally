@@ -80,6 +80,7 @@ void StatePass::onEnter()
 
 	this->currentVisiblePlayerButton = nullptr;
 	this->playerChoiceLocked = false;
+	this->enemyChoiceLocked = false;
 
 	this->passParticles->setVisible(false);
 	// Default this button to visible
@@ -298,8 +299,9 @@ void StatePass::onAnyStateChange(GameState* gameState)
 {
 	StateBase::onAnyStateChange(gameState);
 
-	if (gameState->playerPassed)
+	if (gameState->playerPassed && !this->playerChoiceLocked)
 	{
+		this->playerChoiceLocked = true;
 		this->hideAndDisableAllButtons();
 
 		if (gameState->isPlayerLastStandCondition())
@@ -319,8 +321,10 @@ void StatePass::onAnyStateChange(GameState* gameState)
 		}
 	}
 
-	if (gameState->enemyPassed)
+	if (gameState->enemyPassed && !this->enemyChoiceLocked)
 	{
+		this->enemyChoiceLocked = true;
+
 		if (gameState->isEnemyLastStandCondition())
 		{
 			this->enemyLastStandParticles->setVisible(true);
@@ -344,6 +348,7 @@ void StatePass::onAnyStateChange(GameState* gameState)
 		{
 			this->currentVisiblePlayerButton = nullptr;
 			this->playerChoiceLocked = false;
+			this->enemyChoiceLocked = false;
 
 			this->hideAndDisableAllButtons();
 			this->hideOpponenentPassSprites();
@@ -426,8 +431,6 @@ void StatePass::onStateEnter(GameState* gameState)
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
-			this->playerChoiceLocked = true;
-
 			// Note: We play these on state enter rather than on button click, because button click is not the only way to enter this state
 			if (gameState->isPlayerLastStandCondition())
 			{

@@ -24,7 +24,7 @@ HexusOpponentTutorialD::HexusOpponentTutorialD() : HexusOpponentData(
 	Card::CardStyle::Earth,
 	HexusOpponentData::generateReward(0.09f),
 	HexusOpponentData::generateDeck(25, 0.09f,
-		{
+	{
 		CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Hex0),
 		CardList::getInstance()->cardListByName->at(CardKeys::Decimal0),
@@ -32,7 +32,8 @@ HexusOpponentTutorialD::HexusOpponentTutorialD() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 		CardList::getInstance()->cardListByName->at(CardKeys::ShiftLeft),
 		CardList::getInstance()->cardListByName->at(CardKeys::ShiftRight),
-		})
+	}),
+	TutorialD::create()
 	)
 {
 }
