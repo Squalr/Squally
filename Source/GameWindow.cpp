@@ -22,6 +22,8 @@ void GameWindow::initGLContextAttrs()
 
 bool GameWindow::applicationDidFinishLaunching()
 {
+	LogUtils::redirectStandardOutputToFile();
+
 	if (Steam::isSteamEnabled())
 	{
 		if (SteamAPI_RestartAppIfNecessary(Steam::SteamAppId))
@@ -33,6 +35,8 @@ bool GameWindow::applicationDidFinishLaunching()
 		{
 			return false;
 		}
+
+		std::cout << "Steam initialized" << std::endl;
 	}
 
 	Director* director = Director::getInstance();

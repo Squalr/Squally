@@ -155,8 +155,6 @@ if(APPLE)
 		configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cocos2d/external/steam/redistributable_bin/osx32/libsteam_api.dylib ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/libsteam_api.dylib COPYONLY)
     endif()
 elseif(LINUX)
-	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath='$ORIGIN'")
-	
     find_package(PkgConfig)
     pkg_check_modules(GTKMM gtkmm-3.0)
 

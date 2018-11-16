@@ -7,6 +7,7 @@
 #include "Engine/Analytics/Analytics.h"
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/Steam/Steam.h"
+#include "Engine/Utils/LogUtils.h"
 
 using namespace cocos2d;
 using namespace cocos2d::cocos_experimental;
