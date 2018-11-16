@@ -38,17 +38,24 @@ void StateGameStart::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	gameState->playerDeck->shuffle();
-	gameState->enemyDeck->shuffle();
+	if (gameState->opponentData->stateOverride != nullptr)
+	{
+		GameState::updateState(gameState, GameState::StateType::LoadInitialState);
+	}
+	else if (gameState->stateType == GameState::StateType::EmptyState)
+	{
+		gameState->playerDeck->shuffle();
+		gameState->enemyDeck->shuffle();
 
-	this->runAction(Sequence::create(
-		DelayTime::create(0.5f),
-		CallFunc::create([=]()
-		{
-			GameState::updateState(gameState, GameState::StateType::RoundStart);
-		}),
-		nullptr
-	));
+		this->runAction(Sequence::create(
+			DelayTime::create(0.5f),
+			CallFunc::create([=]()
+			{
+				GameState::updateState(gameState, GameState::StateType::RoundStart);
+			}),
+			nullptr
+		));
+	}
 }
 
 void StateGameStart::onStateReload(GameState* gameState)

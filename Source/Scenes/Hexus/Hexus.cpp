@@ -45,6 +45,7 @@ Hexus::Hexus()
 	this->stateDrawInitial = StateDrawInitial::create();
 	this->stateGameEnd = StateGameEnd::create();
 	this->stateGameStart = StateGameStart::create();
+	this->stateLoadInitialState = StateLoadInitialState::create();
 	this->stateNeutral = StateNeutral::create();
 	this->stateOpponentTurnStart = StateOpponentTurnStart::create();
 	this->statePass = StatePass::create();
@@ -90,6 +91,7 @@ Hexus::Hexus()
 	this->addChild(this->stateDrawInitial);
 	this->addChild(this->stateGameEnd);
 	this->addChild(this->stateGameStart);
+	this->addChild(this->stateLoadInitialState);
 	this->addChild(this->stateNeutral);
 	this->addChild(this->stateOpponentTurnStart);
 	this->addChild(this->statePass);
@@ -138,10 +140,7 @@ void Hexus::onEnter()
 	this->optionsMenu->setVisible(false);
 	this->confirmationMenu->setVisible(false); 
 
-	if (this->gameState->stateType == GameState::StateType::EmptyState)
-	{
-		GameState::updateState(this->gameState, GameState::StateType::GameStart);
-	}
+	GameState::updateState(this->gameState, GameState::StateType::GameStart);
 }
 
 void Hexus::initializePositions()

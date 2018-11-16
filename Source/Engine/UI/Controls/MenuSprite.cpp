@@ -236,7 +236,7 @@ void MenuSprite::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event
 			this->isMousedOver = true;
 
 			// Play mouse over sound
-			if (!isRefresh && this->currentSprite != this->spriteSelected)
+			if (!args->isDragging && !isRefresh && this->currentSprite != this->spriteSelected)
 			{
 				if (this->mouseOverSound.length() > 0)
 				{

@@ -76,6 +76,7 @@ private:
 
 	IconMenuSprite* currentVisiblePlayerButton;
 	bool playerChoiceLocked;
+	bool enemyChoiceLocked;
 
 	static const std::string StringKeyHexusPass;
 	static const std::string StringKeyHexusLastStand;

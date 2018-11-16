@@ -129,9 +129,9 @@ void TAnalytics_Update()
 				const char *urlp;
 				curl_easy_getinfo(pMsg->easy_handle, CURLINFO_EFFECTIVE_URL, &urlp);
 
-				char strerr[2048];
-				sprintf(strerr, "[Error] TAnalytics_Update() failed for URL '%s' with error %ld\n", urlp ? urlp : "?", response_code);
-				assert(response_code == 200 && strerr);
+				// char strerr[2048];
+				// sprintf(strerr, "[Error] TAnalytics_Update() failed for URL '%s' with error %ld\n", urlp ? urlp : "?", response_code);
+				// assert(response_code == 200 && strerr);
 			}
 
 			curl_multi_remove_handle(g_pMultiHandle, pMsg->easy_handle);
