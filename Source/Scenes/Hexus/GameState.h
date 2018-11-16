@@ -10,6 +10,7 @@
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Hexus/StateOverride.h"
 
 using namespace cocos2d;
 
@@ -19,6 +20,7 @@ public:
 	enum StateType
 	{
 		EmptyState,
+		LoadInitialState,
 		GameStart,
 		DrawInitialCards,
 		Draw,
@@ -70,7 +72,7 @@ public:
 	std::vector<CardRow*> getEnemyRows();
 	std::vector<Card*> getAllCards(); 
 	std::vector<Card*> getEnemyCards(); 
-	std::vector<Card*> getPlayerCards(); 
+	std::vector<Card*> getPlayerCards();
 
 	StateType stateType;
 	StateType previousStateType;
