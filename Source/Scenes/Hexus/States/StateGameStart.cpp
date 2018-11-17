@@ -42,7 +42,7 @@ void StateGameStart::onStateEnter(GameState* gameState)
 	{
 		GameState::updateState(gameState, GameState::StateType::LoadInitialState);
 	}
-	else if (gameState->stateType == GameState::StateType::EmptyState)
+	else
 	{
 		gameState->playerDeck->shuffle();
 		gameState->enemyDeck->shuffle();
