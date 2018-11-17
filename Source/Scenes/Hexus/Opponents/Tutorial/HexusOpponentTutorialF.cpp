@@ -32,8 +32,8 @@ HexusOpponentTutorialF::HexusOpponentTutorialF() : HexusOpponentData(
 		CardList::getInstance()->cardListByName->at(CardKeys::Addition),
 		CardList::getInstance()->cardListByName->at(CardKeys::ShiftLeft),
 		CardList::getInstance()->cardListByName->at(CardKeys::ShiftRight),
-	}),
-	TutorialF::create()
+	})//,
+	//TutorialF::create()
 	)
 {
 }
