@@ -55,6 +55,7 @@ Hexus::Hexus()
 	this->stateRoundStart = StateRoundStart::create();
 	this->stateSelectionStaged = StateSelectionStaged::create();
 	this->stateTurnEnd = StateTurnEnd::create();
+	this->stateTutorial = StateTutorial::create();
 	this->deckCardCountDisplay = DeckCardCountDisplay::create();
 	this->handCardCountDisplay = HandCardCountDisplay::create();
 	this->drawCountDisplay = DrawCountDisplay::create();
@@ -63,6 +64,7 @@ Hexus::Hexus()
 	this->rowTotals = RowTotals::create();
 	this->scoreTotal = ScoreTotal::create();
 	this->debugDisplay = DebugDisplay::create();
+	this->tutorialAHelper = TutorialAHelper::create();
 	this->pauseMenu = PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
@@ -101,7 +103,9 @@ Hexus::Hexus()
 	this->addChild(this->stateRoundStart);
 	this->addChild(this->stateSelectionStaged);
 	this->addChild(this->stateTurnEnd);
+	this->addChild(this->stateTutorial);
 	this->addChild(this->debugDisplay);
+	this->addChild(this->tutorialAHelper);
 	this->addChild(this->cardReplaceBanner);
 	this->addChild(this->opponentFirstBanner);
 	this->addChild(this->opponentLastStandBanner);

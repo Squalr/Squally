@@ -3,7 +3,7 @@
 
 #include "Resources.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
-#include "Scenes/Hexus/Tutorials/TutorialA.h"
+#include "Scenes/Hexus/StateOverride.h"
 
 using namespace cocos2d;
 

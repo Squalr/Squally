@@ -1,5 +1,6 @@
 #include "GameState.h"
 
+const std::string GameState::requestStateUpdateEvent = "EVENT_HEXUS_REQUEST_UPDATE_STATE";
 const std::string GameState::beforeStateUpdateEvent = "EVENT_HEXUS_BEFORE_UPDATE_STATE";
 const std::string GameState::onStateUpdateEvent = "EVENT_HEXUS_ON_UPDATE_STATE";
 
@@ -16,6 +17,7 @@ GameState::GameState()
 	: stateType(StateType::EmptyState),
 	turn(Turn::Player),
 	difficulty(HexusOpponentData::Strategy::Random),
+	tutorialMode(StateOverride::TutorialMode::NoTutorial),
 	playerLosses(0),
 	enemyLosses(0),
 	cardReplaceCount(0),
@@ -99,6 +101,7 @@ void GameState::updateState(GameState* gameState, StateType newState)
 		}
 	}
 
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::requestStateUpdateEvent, gameState);
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::beforeStateUpdateEvent, gameState);
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::onStateUpdateEvent, gameState);
 }

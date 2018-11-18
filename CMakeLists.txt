@@ -119,6 +119,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/Controls/CRadioButton.cpp
 	Source/Engine/UI/Controls/CSlider.cpp
 	Source/Engine/UI/Controls/EditableTextWindow.cpp
+	Source/Engine/UI/Controls/FocusTakeOver.cpp
 	Source/Engine/UI/Controls/IconMenuSprite.cpp
 	Source/Engine/UI/Controls/MenuLabel.cpp
 	Source/Engine/UI/Controls/MenuSprite.cpp
@@ -536,6 +537,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/RowTotals.cpp
 	Source/Scenes/Hexus/Components/ScoreTotal.cpp
 	Source/Scenes/Hexus/Components/StagingHelperText.cpp
+	Source/Scenes/Hexus/Components/TutorialAHelper.cpp
 	Source/Scenes/Hexus/Components/Banners/BannerBase.cpp
 	Source/Scenes/Hexus/Components/Banners/CardReplaceBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/DefeatBanner.cpp
@@ -678,6 +680,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Opponents/Obelisk/HexusOpponentVoidArcher.cpp
 	Source/Scenes/Hexus/Opponents/Obelisk/HexusOpponentVoidDemon.cpp
 	Source/Scenes/Hexus/Opponents/Obelisk/HexusOpponentZana.cpp
+	Source/Scenes/Hexus/Opponents/Puzzles/PuzzleA.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentAjax.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentAnubisPup.cpp
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentAnubisWarrior.cpp
@@ -723,12 +726,12 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Opponents/Snow/HexusOpponentWaterElemental.cpp
 	Source/Scenes/Hexus/Opponents/Snow/HexusOpponentYeti.cpp
 	Source/Scenes/Hexus/Opponents/Snow/HexusOpponentYetiWarrior.cpp
-	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialA.cpp
-	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialB.cpp
-	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialC.cpp
-	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialD.cpp
-	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialE.cpp
-	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialF.cpp
+	Source/Scenes/Hexus/Opponents/Tutorials/HexusOpponentTutorialA.cpp
+	Source/Scenes/Hexus/Opponents/Tutorials/HexusOpponentTutorialB.cpp
+	Source/Scenes/Hexus/Opponents/Tutorials/HexusOpponentTutorialC.cpp
+	Source/Scenes/Hexus/Opponents/Tutorials/HexusOpponentTutorialD.cpp
+	Source/Scenes/Hexus/Opponents/Tutorials/HexusOpponentTutorialE.cpp
+	Source/Scenes/Hexus/Opponents/Tutorials/HexusOpponentTutorialF.cpp
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentAsh.cpp
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentAsmodeus.cpp
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentBrine.cpp
@@ -750,7 +753,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentRagnis.cpp
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentScaldor.cpp
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentZelina.cpp
-	Source/Scenes/Hexus/Puzzles/PuzzleA.cpp
 	Source/Scenes/Hexus/States/HexusAIHelper.cpp
 	Source/Scenes/Hexus/States/StateAIDecideCard.cpp
 	Source/Scenes/Hexus/States/StateAIDecideCardReplace.cpp
@@ -774,12 +776,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/States/StateRoundStart.cpp
 	Source/Scenes/Hexus/States/StateSelectionStaged.cpp
 	Source/Scenes/Hexus/States/StateTurnEnd.cpp
-	Source/Scenes/Hexus/Tutorials/TutorialA.cpp
-	Source/Scenes/Hexus/Tutorials/TutorialB.cpp
-	Source/Scenes/Hexus/Tutorials/TutorialC.cpp
-	Source/Scenes/Hexus/Tutorials/TutorialD.cpp
-	Source/Scenes/Hexus/Tutorials/TutorialE.cpp
-	Source/Scenes/Hexus/Tutorials/TutorialF.cpp
+	Source/Scenes/Hexus/States/StateTutorial.cpp
 	Source/Scenes/Maps/Isometric/IsometricMap.cpp
 	Source/Scenes/Maps/Platformer/PlatformerMap.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundBase.cpp
@@ -852,6 +849,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/Controls/CRadioButton.h
 	Source/Engine/UI/Controls/CSlider.h
 	Source/Engine/UI/Controls/EditableTextWindow.h
+	Source/Engine/UI/Controls/FocusTakeOver.h
 	Source/Engine/UI/Controls/IconMenuSprite.h
 	Source/Engine/UI/Controls/MenuLabel.h
 	Source/Engine/UI/Controls/MenuSprite.h
@@ -1292,6 +1290,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/RowTotals.h
 	Source/Scenes/Hexus/Components/ScoreTotal.h
 	Source/Scenes/Hexus/Components/StagingHelperText.h
+	Source/Scenes/Hexus/Components/TutorialAHelper.h
 	Source/Scenes/Hexus/Components/Banners/BannerBase.h
 	Source/Scenes/Hexus/Components/Banners/CardReplaceBanner.h
 	Source/Scenes/Hexus/Components/Banners/DefeatBanner.h
@@ -1441,6 +1440,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Opponents/Obelisk/HexusOpponentVoidDemon.h
 	Source/Scenes/Hexus/Opponents/Obelisk/HexusOpponentZana.h
 	Source/Scenes/Hexus/Opponents/Obelisk/ObeliskHexusOpponents.h
+	Source/Scenes/Hexus/Opponents/Puzzles/PuzzleA.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentAjax.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentAnubisPup.h
 	Source/Scenes/Hexus/Opponents/Ruins/HexusOpponentAnubisWarrior.h
@@ -1488,13 +1488,13 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Opponents/Snow/HexusOpponentYeti.h
 	Source/Scenes/Hexus/Opponents/Snow/HexusOpponentYetiWarrior.h
 	Source/Scenes/Hexus/Opponents/Snow/SnowHexusOpponents.h
-	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialA.h
-	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialB.h
-	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialC.h
-	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialD.h
-	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialE.h
-	Source/Scenes/Hexus/Opponents/Tutorial/HexusOpponentTutorialF.h
-	Source/Scenes/Hexus/Opponents/Tutorial/TutorialHexusOpponents.h
+	Source/Scenes/Hexus/Opponents/Tutorials/HexusOpponentTutorialA.h
+	Source/Scenes/Hexus/Opponents/Tutorials/HexusOpponentTutorialB.h
+	Source/Scenes/Hexus/Opponents/Tutorials/HexusOpponentTutorialC.h
+	Source/Scenes/Hexus/Opponents/Tutorials/HexusOpponentTutorialD.h
+	Source/Scenes/Hexus/Opponents/Tutorials/HexusOpponentTutorialE.h
+	Source/Scenes/Hexus/Opponents/Tutorials/HexusOpponentTutorialF.h
+	Source/Scenes/Hexus/Opponents/Tutorials/TutorialHexusOpponents.h
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentAsh.h
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentAsmodeus.h
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentBrine.h
@@ -1517,7 +1517,6 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentScaldor.h
 	Source/Scenes/Hexus/Opponents/Volcano/HexusOpponentZelina.h
 	Source/Scenes/Hexus/Opponents/Volcano/VolcanoHexusOpponents.h
-	Source/Scenes/Hexus/Puzzles/PuzzleA.h
 	Source/Scenes/Hexus/States/HexusAIHelper.h
 	Source/Scenes/Hexus/States/StateAIDecideCard.h
 	Source/Scenes/Hexus/States/StateAIDecideCardReplace.h
@@ -1542,12 +1541,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/States/States.h
 	Source/Scenes/Hexus/States/StateSelectionStaged.h
 	Source/Scenes/Hexus/States/StateTurnEnd.h
-	Source/Scenes/Hexus/Tutorials/TutorialA.h
-	Source/Scenes/Hexus/Tutorials/TutorialB.h
-	Source/Scenes/Hexus/Tutorials/TutorialC.h
-	Source/Scenes/Hexus/Tutorials/TutorialD.h
-	Source/Scenes/Hexus/Tutorials/TutorialE.h
-	Source/Scenes/Hexus/Tutorials/TutorialF.h
+	Source/Scenes/Hexus/States/StateTutorial.h
 	Source/Scenes/Maps/IMap.h
 	Source/Scenes/Maps/Isometric/IsometricMap.h
 	Source/Scenes/Maps/Platformer/PlatformerMap.h

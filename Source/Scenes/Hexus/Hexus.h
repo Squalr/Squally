@@ -67,6 +67,7 @@ private:
 	StateRoundStart* stateRoundStart;
 	StateSelectionStaged* stateSelectionStaged;
 	StateTurnEnd* stateTurnEnd;
+	StateTutorial* stateTutorial;
 
 	CardReplaceBanner* cardReplaceBanner;
 	OpponentFirstBanner* opponentFirstBanner;
@@ -93,6 +94,8 @@ private:
 	RowTotals* rowTotals;
 	ScoreTotal* scoreTotal;
 	DebugDisplay* debugDisplay;
+
+	TutorialAHelper* tutorialAHelper;
 
 	LayerColor* menuBackDrop;
 	PauseMenu* pauseMenu;
