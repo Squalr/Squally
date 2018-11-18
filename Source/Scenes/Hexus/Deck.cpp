@@ -94,6 +94,8 @@ void Deck::insertCardTop(Card* card, bool faceUp, float insertDelay)
 		return;
 	}
 
+	card->disableInteraction();
+
 	GameUtils::changeParent(card, this, true);
 
 	this->deckCards.push_back(card);
@@ -108,6 +110,8 @@ void Deck::insertCardBottom(Card* card, bool faceUp, float insertDelay)
 		return;
 	}
 
+	card->disableInteraction();
+
 	GameUtils::changeParent(card, this, true);
 
 	this->deckCards.insert(this->deckCards.begin(), card);
@@ -121,6 +125,8 @@ void Deck::insertCardRandom(Card* card, bool faceUp, float insertDelay)
 	{
 		return;
 	}
+
+	card->disableInteraction();
 
 	GameUtils::changeParent(card, this, true);
 
