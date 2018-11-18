@@ -71,7 +71,21 @@ void TutorialAHelper::runTutorial(GameState* gameState)
 		CallFunc::create([=]()
 		{
 			std::vector<Node*> focusTargets = std::vector<Node*>();
-			focusTargets.push_back(gameState->playerDeck);
+			focusTargets.push_back(gameState->lossesDisplayPointer);
+			this->focusTakeOver->focus(focusTargets);
+		}),
+		DelayTime::create(2.0f),
+		CallFunc::create([=]()
+		{
+			std::vector<Node*> focusTargets = std::vector<Node*>();
+			focusTargets.push_back(gameState->rowTotalsPointer);
+			this->focusTakeOver->focus(focusTargets);
+		}),
+		DelayTime::create(2.0f),
+		CallFunc::create([=]()
+		{
+			std::vector<Node*> focusTargets = std::vector<Node*>();
+			focusTargets.push_back(gameState->scoreTotalPointer);
 			this->focusTakeOver->focus(focusTargets);
 		}),
 		DelayTime::create(2.0f),
@@ -80,6 +94,12 @@ void TutorialAHelper::runTutorial(GameState* gameState)
 			std::vector<Node*> focusTargets = std::vector<Node*>();
 			focusTargets.push_back(gameState->playerHand);
 			this->focusTakeOver->focus(focusTargets);
+		}),
+		DelayTime::create(2.0f),
+		CallFunc::create([=]()
+		{
+			this->focusTakeOver->unfocus();
+			gameState->updateState(gameState, GameState::StateType::Neutral);
 		}),
 		nullptr
 	));
