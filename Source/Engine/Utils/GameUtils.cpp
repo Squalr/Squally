@@ -159,10 +159,11 @@ void GameUtils::flattenNode(Node* parent)
 	}
 }
 
-Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition)
+Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, int index)
 {
 	Vec2 newPosition = Vec2::ZERO;
 
+	// Remove child from current parent
 	if (node->getParent() != nullptr)
 	{
 		if (retainPosition && newParent != nullptr)
@@ -175,9 +176,14 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition)
 		node->removeFromParent();
 	}
 
-	if (newParent != nullptr)
+	// Add or insert the child
+	if (newParent != nullptr && index != -1)
 	{
-		newParent->addChild(node);
+		newParent->addChildInsert(node, index, false);
+	}
+	else if (newParent != nullptr)
+	{
+		newParent->addChild(node, false);
 	}
 
 	node->setPosition(newPosition);

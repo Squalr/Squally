@@ -70,6 +70,15 @@ Hexus::Hexus()
 	this->confirmationMenu = ConfirmationMenu::create();
 	this->menuBackDrop = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
 
+	// Set up node pointers to be focused in tutorials -- a little hacky but avoids a cyclic dependency / refactor
+	this->gameState->lossesDisplayPointer = this->lossesDisplay;
+	this->gameState->rowTotalsPointer = this->rowTotals;
+	this->gameState->scoreTotalPointer = this->scoreTotal;
+	this->gameState->deckCardCountDisplayPointer = this->deckCardCountDisplay;
+	this->gameState->handCardCountDisplayPointer = this->handCardCountDisplay;
+	this->gameState->remainingCardDisplayPointer = this->remainingCardDisplay;
+	this->gameState->drawCountDisplayPointer = this->drawCountDisplay;
+
 	this->addChild(this->gameBackground);
 	this->addChild(this->gameState);
 	this->addChild(this->avatars);

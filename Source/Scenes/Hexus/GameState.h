@@ -122,6 +122,15 @@ public:
 	std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback;
 	HexusOpponentData* opponentData;
 
+	// Tutorial node pointers
+	Node* lossesDisplayPointer;
+	Node* rowTotalsPointer;
+	Node* scoreTotalPointer;
+	Node* deckCardCountDisplayPointer;
+	Node* handCardCountDisplayPointer;
+	Node* remainingCardDisplayPointer;
+	Node* drawCountDisplayPointer;
+
 	static const std::string requestStateUpdateEvent;
 	static const std::string beforeStateUpdateEvent;
 	static const std::string onStateUpdateEvent;

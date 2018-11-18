@@ -36,9 +36,16 @@ void FocusTakeOver::focus(std::vector<Node*> nodes)
 	for (auto it = nodes.begin(); it != nodes.end(); it++)
 	{
 		Node* parent = (*it)->getParent();
-		int zIndex = (*it)->getZOrder();
+		cocos2d::Vector<Node*> children = parent->getChildren();
+		int childIndex = 0;
+		auto search = std::find(children.begin(), children.end(), *it);
 
-		this->hijackedNodes[*it] = std::tuple<Node*, int>(parent, zIndex);
+		if (search != children.end())
+		{
+			childIndex = std::distance(children.begin(), search);
+		}
+
+		this->hijackedNodes[*it] = std::tuple<Node*, int>(parent, childIndex);
 
 		GameUtils::changeParent(*it, this, true);
 	}
@@ -52,10 +59,9 @@ void FocusTakeOver::unfocus(bool fadeOut)
 	{
 		Node* node = (*it).first;
 		Node* parent = std::get<0>((*it).second);
-		int zIndex = std::get<1>((*it).second);
+		int childIndex = std::get<1>((*it).second);
 
-		GameUtils::changeParent(node, parent, true);
-		node->setZOrder(zIndex);
+		GameUtils::changeParent(node, parent, true, childIndex);
 	}
 
 	this->hijackedNodes.clear();
