@@ -83,6 +83,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/SmartScene.cpp
 	Source/Engine/Analytics/Analytics.cpp
 	Source/Engine/Analytics/TAnalytics.cpp
+	Source/Engine/Animations/SmartAnimationNode.cpp
 	Source/Engine/Camera/GameCamera.cpp
 	Source/Engine/Config/ConfigManager.cpp
 	Source/Engine/Cutscenes/Cutscene.cpp
@@ -120,6 +121,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/Controls/CSlider.cpp
 	Source/Engine/UI/Controls/EditableTextWindow.cpp
 	Source/Engine/UI/Controls/FocusTakeOver.cpp
+	Source/Engine/UI/Controls/HelpArrow.cpp
 	Source/Engine/UI/Controls/IconMenuSprite.cpp
 	Source/Engine/UI/Controls/MenuLabel.cpp
 	Source/Engine/UI/Controls/MenuSprite.cpp
@@ -537,7 +539,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/RowTotals.cpp
 	Source/Scenes/Hexus/Components/ScoreTotal.cpp
 	Source/Scenes/Hexus/Components/StagingHelperText.cpp
-	Source/Scenes/Hexus/Components/TutorialAHelper.cpp
+	Source/Scenes/Hexus/Components/TutorialASequence.cpp
 	Source/Scenes/Hexus/Components/Banners/BannerBase.cpp
 	Source/Scenes/Hexus/Components/Banners/CardReplaceBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/DefeatBanner.cpp
@@ -810,6 +812,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/SmartScene.h
 	Source/Engine/Analytics/Analytics.h
 	Source/Engine/Analytics/TAnalytics.h
+	Source/Engine/Animations/SmartAnimationNode.h
 	Source/Engine/Camera/GameCamera.h
 	Source/Engine/Config/ConfigManager.h
 	Source/Engine/Cutscenes/Cutscene.h
@@ -850,6 +853,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/Controls/CSlider.h
 	Source/Engine/UI/Controls/EditableTextWindow.h
 	Source/Engine/UI/Controls/FocusTakeOver.h
+	Source/Engine/UI/Controls/HelpArrow.h
 	Source/Engine/UI/Controls/IconMenuSprite.h
 	Source/Engine/UI/Controls/MenuLabel.h
 	Source/Engine/UI/Controls/MenuSprite.h
@@ -1290,7 +1294,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/RowTotals.h
 	Source/Scenes/Hexus/Components/ScoreTotal.h
 	Source/Scenes/Hexus/Components/StagingHelperText.h
-	Source/Scenes/Hexus/Components/TutorialAHelper.h
+	Source/Scenes/Hexus/Components/TutorialASequence.h
 	Source/Scenes/Hexus/Components/Banners/BannerBase.h
 	Source/Scenes/Hexus/Components/Banners/CardReplaceBanner.h
 	Source/Scenes/Hexus/Components/Banners/DefeatBanner.h

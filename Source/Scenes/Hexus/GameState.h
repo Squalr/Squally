@@ -124,7 +124,12 @@ public:
 
 	// Tutorial node pointers
 	Node* lossesDisplayPointer;
-	Node* rowTotalsPointer;
+	Node* playerBinaryRowTotalPointer;
+	Node* playerDecimalRowTotalPointer;
+	Node* playerHexRowTotalPointer;
+	Node* enemyBinaryRowTotalPointer;
+	Node* enemyDecimalRowTotalPointer;
+	Node* enemyHexRowTotalPointer;
 	Node* scoreTotalPointer;
 	Node* deckCardCountDisplayPointer;
 	Node* handCardCountDisplayPointer;
