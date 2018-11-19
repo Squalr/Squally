@@ -36,6 +36,7 @@ void FocusTakeOver::focus(std::vector<Node*> nodes)
 	for (auto it = nodes.begin(); it != nodes.end(); it++)
 	{
 		Node* parent = (*it)->getParent();
+		
 		cocos2d::Vector<Node*> children = parent->getChildren();
 		int childIndex = 0;
 		auto search = std::find(children.begin(), children.end(), *it);
