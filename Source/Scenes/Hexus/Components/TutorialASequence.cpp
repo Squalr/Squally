@@ -163,6 +163,9 @@ void TutorialASequence::onEnter()
 	this->scoreTotalsNextButton->disableInteraction(0);
 	this->lossDisplayNextButton->disableInteraction(0);
 	this->rowTotalsNextButton->disableInteraction(0);
+	this->binaryCardsNextButton->disableInteraction(0);
+	this->decimalCardsNextButton->disableInteraction(0);
+	this->hexCardsNextButton->disableInteraction(0);
 	this->handCardsNextButton->disableInteraction(0);
 }
 
@@ -182,6 +185,7 @@ void TutorialASequence::initializePositions()
 	
 	this->scoreTotalsNextButton->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f - 32.0f);
 	this->lossDisplayNextButton->setPosition(visibleSize.width / 2.0f - 420.0f, visibleSize.height / 2.0f - 32.0f);
+	this->rowTotalsNextButton->setPosition(visibleSize.width / 2.0f - 420.0f, visibleSize.height / 2.0f - 32.0f);
 	this->binaryCardsNextButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 32.0f);
 	this->decimalCardsNextButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 32.0f);
 	this->hexCardsNextButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 32.0f);
@@ -353,20 +357,68 @@ void TutorialASequence::runTutorialRowTotals(GameState* gameState)
 			focusTargets.push_back(gameState->playerHexCards);
 			focusTargets.push_back(gameState->playerHexRowTotalPointer);
 			this->focusTakeOver->focus(focusTargets);
-
+			this->helpArrowRowTotals->setPositionY(gameState->playerHexRowTotalPointer->getPositionY());
+		}),
+		DelayTime::create(2.0f),
+		CallFunc::create([=]()
+		{
 			this->rowTotalsNextButton->enableInteraction(0);
 			this->rowTotalsNextButton->runAction(FadeTo::create(0.25f, 255));
-			this->helpArrowRowTotals->setPositionY(gameState->playerHexRowTotalPointer->getPositionY());
+			this->helpArrowRowTotals->hidePointer();
 		}),
 		nullptr
 	));
 }
 
-void TutorialASequence::runTutorialHexCards(GameState* gameState)
+void TutorialASequence::runTutorialBinaryCards(GameState* gameState)
 {
 	this->rowTotalsNextButton->disableInteraction();
 	this->rowTotalsNextButton->runAction(FadeTo::create(0.25f, 0));
 	this->rowTotalsTutorialLabel->runAction(FadeTo::create(0.25f, 0));
+	this->binaryCardsNextButton->enableInteraction(0);
+	this->binaryCardsNextButton->runAction(FadeTo::create(0.25f, 255));
+	this->binaryCardsTutorialLabel->runAction(FadeTo::create(0.25f, 255));
+
+	std::vector<Node*> focusTargets = std::vector<Node*>();
+	focusTargets.push_back(gameState->enemyBinaryCards);
+	focusTargets.push_back(gameState->playerBinaryCards);
+	for (auto it = gameState->playerHand->rowCards.begin(); it != gameState->playerHand->rowCards.end(); it++)
+	{
+		if ((*it)->cardData->cardType == CardData::CardType::Binary)
+		{
+			focusTargets.push_back((*it));
+		}
+	}
+	this->focusTakeOver->focus(focusTargets);
+}
+
+void TutorialASequence::runTutorialDecimalCards(GameState* gameState)
+{
+	this->binaryCardsNextButton->disableInteraction();
+	this->binaryCardsNextButton->runAction(FadeTo::create(0.25f, 0));
+	this->binaryCardsTutorialLabel->runAction(FadeTo::create(0.25f, 0));
+	this->decimalCardsNextButton->enableInteraction(0);
+	this->decimalCardsNextButton->runAction(FadeTo::create(0.25f, 255));
+	this->decimalCardsTutorialLabel->runAction(FadeTo::create(0.25f, 255));
+
+	std::vector<Node*> focusTargets = std::vector<Node*>();
+	focusTargets.push_back(gameState->enemyDecimalCards);
+	focusTargets.push_back(gameState->playerDecimalCards);
+	for (auto it = gameState->playerHand->rowCards.begin(); it != gameState->playerHand->rowCards.end(); it++)
+	{
+		if ((*it)->cardData->cardType == CardData::CardType::Decimal)
+		{
+			focusTargets.push_back((*it));
+		}
+	}
+	this->focusTakeOver->focus(focusTargets);
+}
+
+void TutorialASequence::runTutorialHexCards(GameState* gameState)
+{
+	this->decimalCardsNextButton->disableInteraction();
+	this->decimalCardsNextButton->runAction(FadeTo::create(0.25f, 0));
+	this->binaryCardsTutorialLabel->runAction(FadeTo::create(0.25f, 0));
 	this->helpArrowRowTotals->hidePointer();
 	this->hexCardsNextButton->enableInteraction(0);
 	this->hexCardsNextButton->runAction(FadeTo::create(0.25f, 255));
@@ -385,55 +437,11 @@ void TutorialASequence::runTutorialHexCards(GameState* gameState)
 	this->focusTakeOver->focus(focusTargets);
 }
 
-void TutorialASequence::runTutorialDecimalCards(GameState* gameState)
-{
-	this->hexCardsNextButton->disableInteraction();
-	this->hexCardsNextButton->runAction(FadeTo::create(0.25f, 0));
-	this->hexCardsTutorialLabel->runAction(FadeTo::create(0.25f, 0));
-	this->decimalCardsNextButton->enableInteraction(0);
-	this->decimalCardsNextButton->runAction(FadeTo::create(0.25f, 255));
-	this->decimalCardsTutorialLabel->runAction(FadeTo::create(0.25f, 255));
-
-	std::vector<Node*> focusTargets = std::vector<Node*>();
-	focusTargets.push_back(gameState->enemyDecimalCards);
-	focusTargets.push_back(gameState->playerDecimalCards);
-	for (auto it = gameState->playerHand->rowCards.begin(); it != gameState->playerHand->rowCards.end(); it++)
-	{
-		if ((*it)->cardData->cardType == CardData::CardType::Decimal)
-		{
-			focusTargets.push_back((*it));
-		}
-	}
-	this->focusTakeOver->focus(focusTargets);
-}
-
-void TutorialASequence::runTutorialBinaryCards(GameState* gameState)
-{
-	this->hexCardsNextButton->disableInteraction();
-	this->hexCardsNextButton->runAction(FadeTo::create(0.25f, 0));
-	this->hexCardsTutorialLabel->runAction(FadeTo::create(0.25f, 0));
-	this->binaryCardsNextButton->enableInteraction(0);
-	this->binaryCardsNextButton->runAction(FadeTo::create(0.25f, 255));
-	this->binaryCardsTutorialLabel->runAction(FadeTo::create(0.25f, 255));
-
-	std::vector<Node*> focusTargets = std::vector<Node*>();
-	focusTargets.push_back(gameState->enemyBinaryCards);
-	focusTargets.push_back(gameState->playerBinaryCards);
-	for (auto it = gameState->playerHand->rowCards.begin(); it != gameState->playerHand->rowCards.end(); it++)
-	{
-		if ((*it)->cardData->cardType == CardData::CardType::Binary)
-		{
-			focusTargets.push_back((*it));
-		}
-	}
-	this->focusTakeOver->focus(focusTargets);
-}
-
 void TutorialASequence::runTutorialHandCards(GameState* gameState)
 {
-	this->binaryCardsNextButton->disableInteraction();
-	this->binaryCardsNextButton->runAction(FadeTo::create(0.25f, 0));
-	this->binaryCardsTutorialLabel->runAction(FadeTo::create(0.25f, 0));
+	this->hexCardsNextButton->disableInteraction();
+	this->hexCardsNextButton->runAction(FadeTo::create(0.25f, 0));
+	this->hexCardsTutorialLabel->runAction(FadeTo::create(0.25f, 0));
 	this->handCardsNextButton->enableInteraction(0);
 	this->handCardsNextButton->runAction(FadeTo::create(0.25f, 255));
 	this->handCardsTutorialLabel->runAction(FadeTo::create(0.25f, 255));
