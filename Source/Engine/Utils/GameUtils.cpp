@@ -162,13 +162,14 @@ void GameUtils::flattenNode(Node* parent)
 Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, int index)
 {
 	Vec2 newPosition = Vec2::ZERO;
+	Node* previousParent = node->getParent();
 
 	// Remove child from current parent
-	if (node->getParent() != nullptr)
+	if (previousParent != nullptr)
 	{
 		if (retainPosition && newParent != nullptr)
 		{
-			Vec2 screenPosition = node->getParent()->convertToWorldSpace(node->getPosition());
+			Vec2 screenPosition = previousParent->convertToWorldSpace(node->getPosition());
 			newPosition = newParent->convertToNodeSpace(screenPosition);
 		}
 
@@ -179,11 +180,11 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	// Add or insert the child
 	if (newParent != nullptr && index != -1)
 	{
-		newParent->addChildInsert(node, index, false);
+		newParent->addChildInsert(node, index);
 	}
 	else if (newParent != nullptr)
 	{
-		newParent->addChild(node, false);
+		newParent->addChild(node);
 	}
 
 	node->setPosition(newPosition);
@@ -257,7 +258,7 @@ bool GameUtils::isVisible(Node* node)
 		}
 
 		node = node->getParent();
-	};
+	}
 
 	return true;
 }

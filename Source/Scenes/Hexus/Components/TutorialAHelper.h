@@ -28,4 +28,8 @@ private:
 	void runTutorial(GameState* gameState);
 
 	FocusTakeOver* focusTakeOver;
+	Label* scoreTotalsTutorialLabel;
+	Label* lossDisplayTutorialLabel;
+	Label* rowTotalsTutorialLabel;
+	Label* handCardsTutorialLabel;
 };
