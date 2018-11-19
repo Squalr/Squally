@@ -95,7 +95,7 @@ private:
 	ScoreTotal* scoreTotal;
 	DebugDisplay* debugDisplay;
 
-	TutorialAHelper* tutorialAHelper;
+	TutorialASequence* tutorialASequence;
 
 	LayerColor* menuBackDrop;
 	PauseMenu* pauseMenu;

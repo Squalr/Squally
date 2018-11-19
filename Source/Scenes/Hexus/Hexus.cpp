@@ -64,7 +64,7 @@ Hexus::Hexus()
 	this->rowTotals = RowTotals::create();
 	this->scoreTotal = ScoreTotal::create();
 	this->debugDisplay = DebugDisplay::create();
-	this->tutorialAHelper = TutorialAHelper::create();
+	this->tutorialASequence = TutorialASequence::create();
 	this->pauseMenu = PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
@@ -72,7 +72,12 @@ Hexus::Hexus()
 
 	// Set up node pointers to be focused in tutorials -- a little hacky but avoids a cyclic dependency / refactor
 	this->gameState->lossesDisplayPointer = this->lossesDisplay;
-	this->gameState->rowTotalsPointer = this->rowTotals;
+	this->gameState->playerBinaryRowTotalPointer = this->rowTotals->playerBinaryTotalSocket;
+	this->gameState->playerDecimalRowTotalPointer = this->rowTotals->playerDecimalTotalSocket;
+	this->gameState->playerHexRowTotalPointer = this->rowTotals->playerHexTotalSocket;
+	this->gameState->enemyBinaryRowTotalPointer = this->rowTotals->enemyBinaryTotalSocket;
+	this->gameState->enemyDecimalRowTotalPointer = this->rowTotals->enemyDecimalTotalSocket;
+	this->gameState->enemyHexRowTotalPointer = this->rowTotals->enemyHexTotalSocket;
 	this->gameState->scoreTotalPointer = this->scoreTotal;
 	this->gameState->deckCardCountDisplayPointer = this->deckCardCountDisplay;
 	this->gameState->handCardCountDisplayPointer = this->handCardCountDisplay;
@@ -114,7 +119,7 @@ Hexus::Hexus()
 	this->addChild(this->stateTurnEnd);
 	this->addChild(this->stateTutorial);
 	this->addChild(this->debugDisplay);
-	this->addChild(this->tutorialAHelper);
+	this->addChild(this->tutorialASequence);
 	this->addChild(this->cardReplaceBanner);
 	this->addChild(this->opponentFirstBanner);
 	this->addChild(this->opponentLastStandBanner);

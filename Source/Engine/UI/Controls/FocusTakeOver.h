@@ -1,17 +1,17 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/SmartNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 
-class FocusTakeOver : public Node
+class FocusTakeOver : public SmartNode
 {
 public:
 	static FocusTakeOver * create();
 
-	void showPointer(Vec2 coords, float rotation);
 	void focus(std::vector<Node*> nodes);
 	void unfocus(bool fadeOut = true);
 

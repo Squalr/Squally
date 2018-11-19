@@ -14,6 +14,14 @@ class RowTotals : public ComponentBase
 public:
 	static RowTotals * create();
 
+	// Public so that tutorials can focus these
+	Sprite* enemyBinaryTotalSocket;
+	Sprite* enemyDecimalTotalSocket;
+	Sprite* enemyHexTotalSocket;
+	Sprite* playerBinaryTotalSocket;
+	Sprite* playerDecimalTotalSocket;
+	Sprite* playerHexTotalSocket;
+
 protected:
 	void onBeforeStateChange(GameState* eventCustom) override;
 	void onAnyStateChange(GameState* eventCustom) override;

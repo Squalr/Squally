@@ -25,10 +25,6 @@ FocusTakeOver::~FocusTakeOver()
 {
 }
 
-void FocusTakeOver::showPointer(Vec2 coords, float rotation)
-{
-}
-
 void FocusTakeOver::focus(std::vector<Node*> nodes)
 {
 	this->unfocus(false);

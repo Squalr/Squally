@@ -25,4 +25,4 @@
 #include "Scenes/Hexus/Components/RowTotals.h"
 #include "Scenes/Hexus/Components/ScoreTotal.h"
 #include "Scenes/Hexus/Components/StagingHelperText.h"
-#include "Scenes/Hexus/Components/TutorialAHelper.h"
+#include "Scenes/Hexus/Components/TutorialASequence.h"

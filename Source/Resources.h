@@ -5752,6 +5752,7 @@ public:
 	static const std::string Minigames_CoinFlipSkeletonIn2;
 	static const std::string Minigames_CoinFlipSkeletonOut1;
 	static const std::string Minigames_CoinFlipSkeletonOut2;
+	static const std::string Minigames_HelperArrow;
 	static const std::string Minigames_Hexus_AvatarFrame;
 	static const std::string Minigames_Hexus_Button;
 	static const std::string Minigames_Hexus_ButtonHover;
@@ -5786,6 +5787,9 @@ public:
 	static const std::string Minigames_Hexus_RoundBanner;
 	static const std::string Minigames_Hexus_RowSelection;
 	static const std::string Minigames_Hexus_RowSelectionHighlight;
+	static const std::string Minigames_Hexus_RowTotalSocketBin;
+	static const std::string Minigames_Hexus_RowTotalSocketDec;
+	static const std::string Minigames_Hexus_RowTotalSocketHex;
 	static const std::string Minigames_Hexus_ScoreBox;
 	static const std::string Minigames_Hexus_ShieldButton;
 	static const std::string Minigames_Hexus_ShieldButtonSelected;
@@ -6131,12 +6135,14 @@ public:
 	static const std::string Sounds_Hexus_Attacks_AirBurstSpell;
 	static const std::string Sounds_Hexus_Attacks_AirSpell;
 	static const std::string Sounds_Hexus_Attacks_ArcaneSpell;
+	static const std::string Sounds_Hexus_Attacks_Burning;
 	static const std::string Sounds_Hexus_Attacks_BurningStrong;
 	static const std::string Sounds_Hexus_Attacks_Chime;
 	static const std::string Sounds_Hexus_Attacks_ChimeShimmer;
 	static const std::string Sounds_Hexus_Attacks_Crackle;
 	static const std::string Sounds_Hexus_Attacks_DemonWhisper;
 	static const std::string Sounds_Hexus_Attacks_Downgrade;
+	static const std::string Sounds_Hexus_Attacks_Energy;
 	static const std::string Sounds_Hexus_Attacks_Freeze;
 	static const std::string Sounds_Hexus_Attacks_GenericSpell;
 	static const std::string Sounds_Hexus_Attacks_GenericSpell2;
@@ -6152,8 +6158,6 @@ public:
 	static const std::string Sounds_Menus_BookPageTurn_PE1014902;
 	static const std::string Sounds_Menus_Card_Game_UI_Button_Light_Reverb_02;
 	static const std::string Sounds_Menus_Simple_Button;
-	static const std::string Sounds_Hexus_Attacks_Burning;
-	static const std::string Sounds_Hexus_Attacks_Energy;
 	static const std::string Particles_BeamMeUp;
 	static const std::string Particles_BlueNether;
 	static const std::string Particles_BluePlasma;
@@ -6476,4 +6480,5 @@ public:
 	static const std::string Menus_StoreMenu_LootBoxes_Ruins_Animations;
 	static const std::string Menus_StoreMenu_LootBoxes_Vapor_Animations;
 	static const std::string Menus_StoreMenu_LootBoxes_Volcano_Animations;
+	static const std::string Minigames_HelperArrowAnimations;
 };
