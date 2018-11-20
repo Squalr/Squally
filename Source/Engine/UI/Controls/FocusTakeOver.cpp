@@ -16,13 +16,25 @@ FocusTakeOver::FocusTakeOver()
 	this->hijackedNodes = std::map<Node*, std::tuple<Node*, int>>();
 	this->focusBackground = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
 
-	this->focusBackground->setOpacity(0);
-
 	this->addChild(this->focusBackground);
 }
 
 FocusTakeOver::~FocusTakeOver()
 {
+}
+
+void FocusTakeOver::onEnter()
+{
+	SmartNode::onEnter();
+
+	this->focusBackground->setOpacity(0);
+}
+
+void FocusTakeOver::onExitTransitionDidStart()
+{
+	SmartNode::onExitTransitionDidStart();
+
+	this->unfocus();
 }
 
 void FocusTakeOver::focus(std::vector<Node*> nodes)
