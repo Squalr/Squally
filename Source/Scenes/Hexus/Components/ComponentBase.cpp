@@ -12,11 +12,18 @@ void ComponentBase::initializeListeners()
 {
 	SmartNode::initializeListeners();
 
+	EventListenerCustom* requestStateChangeListener = EventListenerCustom::create(GameState::requestStateUpdateEvent, CC_CALLBACK_1(ComponentBase::onRequestStateChangeEvent, this));
 	EventListenerCustom* beforeStateChangeListener = EventListenerCustom::create(GameState::beforeStateUpdateEvent, CC_CALLBACK_1(ComponentBase::onBeforeStateChangeEvent, this));
 	EventListenerCustom* stateChangeListener = EventListenerCustom::create(GameState::onStateUpdateEvent, CC_CALLBACK_1(ComponentBase::onStateChangeEvent, this));
 
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(requestStateChangeListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(beforeStateChangeListener, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(stateChangeListener, this);
+}
+
+void ComponentBase::onRequestStateChangeEvent(EventCustom* eventCustom)
+{
+	this->onAnyRequestStateChange((GameState*)(eventCustom->getUserData()));
 }
 
 void ComponentBase::onBeforeStateChangeEvent(EventCustom* eventCustom)
@@ -30,6 +37,10 @@ void ComponentBase::onStateChangeEvent(EventCustom* eventCustom)
 }
 
 void ComponentBase::onBeforeStateChange(GameState* gameState)
+{
+}
+
+void ComponentBase::onAnyRequestStateChange(GameState* gameState)
 {
 }
 

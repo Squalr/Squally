@@ -7,33 +7,34 @@
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Resources.h"
-#include "Scenes/Hexus/Components/ComponentBase.h"
+#include "Scenes/Hexus/Components/Tutorials/TutorialBase.h"
 
 using namespace cocos2d;
 
-class TutorialASequence : public ComponentBase
+class TutorialAIntroSequence : public TutorialBase
 {
 public:
-	static TutorialASequence * create();
+	static TutorialAIntroSequence * create();
 
 protected:
 	void onBeforeStateChange(GameState* eventCustom) override;
 	void onAnyStateChange(GameState* eventCustom) override;
 
 private:
-	TutorialASequence();
-	~TutorialASequence();
+	TutorialAIntroSequence();
+	~TutorialAIntroSequence();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void initializeCallbacks(GameState* gameState);
+	bool tryHijackState(GameState* gameState) override;
 
 	void runTutorialScoreTotal(GameState* gameState);
 	void runTutorialLossDisplay(GameState* gameState);
-	void runTutorialHexCards(GameState* gameState);
-	void runTutorialDecimalCards(GameState* gameState);
 	void runTutorialBinaryCards(GameState* gameState);
+	void runTutorialDecimalCards(GameState* gameState);
+	void runTutorialHexCards(GameState* gameState);
 	void runTutorialRowTotals(GameState* gameState);
 	void runTutorialHandCards(GameState* gameState);
 	void concludeTutorial(GameState* gameState);

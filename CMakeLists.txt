@@ -539,7 +539,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/RowTotals.cpp
 	Source/Scenes/Hexus/Components/ScoreTotal.cpp
 	Source/Scenes/Hexus/Components/StagingHelperText.cpp
-	Source/Scenes/Hexus/Components/TutorialASequence.cpp
 	Source/Scenes/Hexus/Components/Banners/BannerBase.cpp
 	Source/Scenes/Hexus/Components/Banners/CardReplaceBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/DefeatBanner.cpp
@@ -557,6 +556,10 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/Banners/RoundBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/RoundTieBanner.cpp
 	Source/Scenes/Hexus/Components/Banners/VictoryBanner.cpp
+	Source/Scenes/Hexus/Components/Tutorials/TutorialAIntroSequence.cpp
+	Source/Scenes/Hexus/Components/Tutorials/TutorialAVictory.cpp
+	Source/Scenes/Hexus/Components/Tutorials/TutorialAWinningRound.cpp
+	Source/Scenes/Hexus/Components/Tutorials/TutorialBase.cpp
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.cpp
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.cpp
 	Source/Scenes/Hexus/Opponents/HexusOpponentData.cpp
@@ -1294,7 +1297,6 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/RowTotals.h
 	Source/Scenes/Hexus/Components/ScoreTotal.h
 	Source/Scenes/Hexus/Components/StagingHelperText.h
-	Source/Scenes/Hexus/Components/TutorialASequence.h
 	Source/Scenes/Hexus/Components/Banners/BannerBase.h
 	Source/Scenes/Hexus/Components/Banners/CardReplaceBanner.h
 	Source/Scenes/Hexus/Components/Banners/DefeatBanner.h
@@ -1312,6 +1314,10 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/Banners/RoundBanner.h
 	Source/Scenes/Hexus/Components/Banners/RoundTieBanner.h
 	Source/Scenes/Hexus/Components/Banners/VictoryBanner.h
+	Source/Scenes/Hexus/Components/Tutorials/TutorialAIntroSequence.h
+	Source/Scenes/Hexus/Components/Tutorials/TutorialAVictory.h
+	Source/Scenes/Hexus/Components/Tutorials/TutorialAWinningRound.h
+	Source/Scenes/Hexus/Components/Tutorials/TutorialBase.h
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.h
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.h
 	Source/Scenes/Hexus/HelpMenus/HelpMenus.h

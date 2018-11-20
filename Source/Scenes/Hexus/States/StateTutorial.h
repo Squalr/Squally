@@ -25,6 +25,4 @@ protected:
 private:
 	StateTutorial();
 	~StateTutorial();
-
-	bool showTutorial;
 };
