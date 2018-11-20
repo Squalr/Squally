@@ -55,6 +55,7 @@ Hexus::Hexus()
 	this->stateRoundStart = StateRoundStart::create();
 	this->stateSelectionStaged = StateSelectionStaged::create();
 	this->stateTurnEnd = StateTurnEnd::create();
+	this->stateTutorial = StateTutorial::create();
 	this->deckCardCountDisplay = DeckCardCountDisplay::create();
 	this->handCardCountDisplay = HandCardCountDisplay::create();
 	this->drawCountDisplay = DrawCountDisplay::create();
@@ -63,10 +64,35 @@ Hexus::Hexus()
 	this->rowTotals = RowTotals::create();
 	this->scoreTotal = ScoreTotal::create();
 	this->debugDisplay = DebugDisplay::create();
+	this->tutorialAIntroSequence = TutorialAIntroSequence::create();
+	this->tutorialAVictory = TutorialAVictory::create();
+	this->tutorialAWinningRound = TutorialAWinningRound::create();
+	this->tutorialBIntroSequence = TutorialBIntroSequence::create();
+	this->tutorialCIntroSequence = TutorialCIntroSequence::create();
+	this->tutorialDIntroSequence = TutorialDIntroSequence::create();
+	this->tutorialEIntroSequence = TutorialEIntroSequence::create();
+	this->tutorialFIntroSequence = TutorialFIntroSequence::create();
 	this->pauseMenu = PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
 	this->menuBackDrop = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
+
+	// Set up node pointers to be focused in tutorials -- a little hacky but avoids a cyclic dependency / refactor
+	this->gameState->lossesDisplayPointer = this->lossesDisplay;
+	this->gameState->playerBinaryRowTotalPointer = this->rowTotals->playerBinaryTotalSocket;
+	this->gameState->playerDecimalRowTotalPointer = this->rowTotals->playerDecimalTotalSocket;
+	this->gameState->playerHexRowTotalPointer = this->rowTotals->playerHexTotalSocket;
+	this->gameState->enemyBinaryRowTotalPointer = this->rowTotals->enemyBinaryTotalSocket;
+	this->gameState->enemyDecimalRowTotalPointer = this->rowTotals->enemyDecimalTotalSocket;
+	this->gameState->enemyHexRowTotalPointer = this->rowTotals->enemyHexTotalSocket;
+	this->gameState->scoreTotalPointer = this->scoreTotal;
+	this->gameState->deckCardCountDisplayPointer = this->deckCardCountDisplay;
+	this->gameState->handCardCountDisplayPointer = this->handCardCountDisplay;
+	this->gameState->remainingCardDisplayPointer = this->remainingCardDisplay;
+	this->gameState->drawCountDisplayPointer = this->drawCountDisplay;
+	this->gameState->passButtonPointer = this->statePass->passButton;
+	this->gameState->lastStandButtonPointer = this->statePass->lastStandButton;
+	this->gameState->claimVictoryButtonPointer = this->statePass->claimVictoryButton;
 
 	this->addChild(this->gameBackground);
 	this->addChild(this->gameState);
@@ -101,7 +127,16 @@ Hexus::Hexus()
 	this->addChild(this->stateRoundStart);
 	this->addChild(this->stateSelectionStaged);
 	this->addChild(this->stateTurnEnd);
+	this->addChild(this->stateTutorial);
 	this->addChild(this->debugDisplay);
+	this->addChild(this->tutorialAIntroSequence);
+	this->addChild(this->tutorialAVictory);
+	this->addChild(this->tutorialAWinningRound);
+	this->addChild(this->tutorialBIntroSequence);
+	this->addChild(this->tutorialCIntroSequence);
+	this->addChild(this->tutorialDIntroSequence);
+	this->addChild(this->tutorialEIntroSequence);
+	this->addChild(this->tutorialFIntroSequence);
 	this->addChild(this->cardReplaceBanner);
 	this->addChild(this->opponentFirstBanner);
 	this->addChild(this->opponentLastStandBanner);

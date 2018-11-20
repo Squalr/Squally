@@ -19,3 +19,4 @@
 #include "Scenes/Hexus/States/StateRoundEnd.h"
 #include "Scenes/Hexus/States/StateRoundStart.h"
 #include "Scenes/Hexus/States/StateSelectionStaged.h"
+#include "Scenes/Hexus/States/StateTutorial.h"

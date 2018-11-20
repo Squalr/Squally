@@ -32,6 +32,7 @@ void StateGameStart::onBeforeStateEnter(GameState* gameState)
 	gameState->playerPassed = false;
 	gameState->enemyPassed = false;
 	gameState->playableCardsThisTurn = 0;
+	gameState->tutorialMode = StateOverride::TutorialMode::NoTutorial;
 }
 
 void StateGameStart::onStateEnter(GameState* gameState)

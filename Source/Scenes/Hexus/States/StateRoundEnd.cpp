@@ -42,15 +42,9 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 		gameState->playerLosses++;
 	}
 
-	if (gameState->playerLosses >= 2)
+	if (gameState->playerLosses >= 2 || gameState->enemyLosses >= 2)
 	{
 		nextState = GameState::StateType::GameEnd;
-		SoundManager::playSoundResource(Resources::Sounds_Hexus_Defeat);
-	}
-	else if (gameState->enemyLosses >= 2)
-	{
-		nextState = GameState::StateType::GameEnd;
-		SoundManager::playSoundResource(Resources::Sounds_Hexus_Victory);
 	}
 
 	const float fadeSpeed = 0.5f;
