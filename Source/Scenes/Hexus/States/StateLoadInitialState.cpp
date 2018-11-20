@@ -56,6 +56,8 @@ void StateLoadInitialState::loadStateOverrides(GameState* gameState, StateOverri
 	gameState->playerLosses = stateOverride->playerLosses;
 	gameState->enemyLosses = stateOverride->enemyLosses;
 
+	gameState->tutorialMode = stateOverride->tutorialMode;
+
 	// Load player cards
 	for (auto it = stateOverride->playerHand.begin(); it != stateOverride->playerHand.end(); it++)
 	{

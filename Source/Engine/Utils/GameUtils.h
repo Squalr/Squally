@@ -19,7 +19,7 @@ public:
 	static bool isFocused(cocos2d::Node *node);
 	static void focus(cocos2d::Node *node);
 	static void flattenNode(cocos2d::Node* node);
-	static cocos2d::Node* changeParent(cocos2d::Node* node, cocos2d::Node* newParent, bool retainPosition);
+	static cocos2d::Node* changeParent(cocos2d::Node* node, cocos2d::Node* newParent, bool retainPosition, int index = -1);
 	static void accelerateParticles(ParticleSystem* particleSystem, float duration);
 	static void fadeInObject(cocos2d::Node* node, float delay, float duration, GLubyte opacity = 255);
 	static cocos2d::Rect getSceneBounds(cocos2d::Node* node);

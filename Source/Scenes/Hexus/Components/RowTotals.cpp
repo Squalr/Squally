@@ -21,6 +21,13 @@ RowTotals::RowTotals()
 	this->cachedPlayerDecimalTotal = 0;
 	this->cachedPlayerHexTotal = 0;
 
+	this->enemyBinaryTotalSocket = Sprite::create(Resources::Minigames_Hexus_RowTotalSocketBin);
+	this->enemyDecimalTotalSocket = Sprite::create(Resources::Minigames_Hexus_RowTotalSocketDec);
+	this->enemyHexTotalSocket = Sprite::create(Resources::Minigames_Hexus_RowTotalSocketHex);
+	this->playerBinaryTotalSocket = Sprite::create(Resources::Minigames_Hexus_RowTotalSocketBin);
+	this->playerDecimalTotalSocket = Sprite::create(Resources::Minigames_Hexus_RowTotalSocketDec);
+	this->playerHexTotalSocket = Sprite::create(Resources::Minigames_Hexus_RowTotalSocketHex);
+
 	this->enemyBinaryCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
 	this->enemyDecimalCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
 	this->enemyHexCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
@@ -70,12 +77,20 @@ RowTotals::RowTotals()
 	this->playerDecimalCardDeltaLabel->setTextColor(Color4B::YELLOW);
 	this->playerHexCardDeltaLabel->setTextColor(Color4B::YELLOW);
 
-	this->addChild(this->enemyBinaryCardTotal);
-	this->addChild(this->enemyDecimalCardTotal);
-	this->addChild(this->enemyHexCardTotal);
-	this->addChild(this->playerBinaryCardTotal);
-	this->addChild(this->playerDecimalCardTotal);
-	this->addChild(this->playerHexCardTotal);
+	this->addChild(this->enemyBinaryTotalSocket);
+	this->addChild(this->enemyDecimalTotalSocket);
+	this->addChild(this->enemyHexTotalSocket);
+	this->addChild(this->playerBinaryTotalSocket);
+	this->addChild(this->playerDecimalTotalSocket);
+	this->addChild(this->playerHexTotalSocket);
+
+	this->enemyBinaryTotalSocket->addChild(this->enemyBinaryCardTotal);
+	this->enemyDecimalTotalSocket->addChild(this->enemyDecimalCardTotal);
+	this->enemyHexTotalSocket->addChild(this->enemyHexCardTotal);
+	this->playerBinaryTotalSocket->addChild(this->playerBinaryCardTotal);
+	this->playerDecimalTotalSocket->addChild(this->playerDecimalCardTotal);
+	this->playerHexTotalSocket->addChild(this->playerHexCardTotal);
+
 	this->addChild(this->enemyBinaryCardDeltaLabel);
 	this->addChild(this->enemyDecimalCardDeltaLabel);
 	this->addChild(this->enemyHexCardDeltaLabel);
@@ -106,13 +121,21 @@ void RowTotals::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->playerBinaryCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::binaryRowOffsetY);
-	this->playerDecimalCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::decimalRowOffsetY);
-	this->playerHexCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::hexRowOffsetY);
+	this->enemyBinaryTotalSocket->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::binaryRowOffsetY);
+	this->enemyDecimalTotalSocket->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::decimalRowOffsetY);
+	this->enemyHexTotalSocket->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY);
 
-	this->enemyBinaryCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::binaryRowOffsetY);
-	this->enemyDecimalCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::decimalRowOffsetY);
-	this->enemyHexCardTotal->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY);
+	this->playerBinaryTotalSocket->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::binaryRowOffsetY);
+	this->playerDecimalTotalSocket->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::decimalRowOffsetY);
+	this->playerHexTotalSocket->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter + Config::cardTotalOffsetX, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::hexRowOffsetY);
+
+	this->enemyBinaryCardTotal->setPosition(this->enemyBinaryTotalSocket->getContentSize() / 2.0f);
+	this->enemyDecimalCardTotal->setPosition(this->enemyDecimalTotalSocket->getContentSize() / 2.0f);
+	this->enemyHexCardTotal->setPosition(this->enemyHexTotalSocket->getContentSize() / 2.0f);
+
+	this->playerBinaryCardTotal->setPosition(this->playerBinaryTotalSocket->getContentSize() / 2.0f);
+	this->playerDecimalCardTotal->setPosition(this->playerDecimalTotalSocket->getContentSize() / 2.0f);
+	this->playerHexCardTotal->setPosition(this->playerHexTotalSocket->getContentSize() / 2.0f);
 
 	const float offsetX = 32.0f;
 
@@ -143,6 +166,7 @@ void RowTotals::onAnyStateChange(GameState* gameState)
 		case GameState::StateType::TurnEnd:
 		case GameState::StateType::OpponentTurnStart:
 		case GameState::StateType::PlayerTurnStart:
+		case GameState::StateType::Tutorial:
 		{
 			this->readNewTotals(gameState, false);
 			break;

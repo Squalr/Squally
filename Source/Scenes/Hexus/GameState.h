@@ -10,7 +10,6 @@
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
-#include "Scenes/Hexus/StateOverride.h"
 
 using namespace cocos2d;
 
@@ -41,6 +40,7 @@ public:
 		TurnEnd,
 		RoundEnd,
 		GameEnd,
+		Tutorial,
 	};
 
 	enum Turn
@@ -78,6 +78,7 @@ public:
 	StateType previousStateType;
 	Turn turn;
 	HexusOpponentData::Strategy difficulty;
+	StateOverride::TutorialMode tutorialMode;
 	bool isRepeatingSameTurn;
 	bool playerPassed;
 	bool enemyPassed;
@@ -121,6 +122,24 @@ public:
 	std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback;
 	HexusOpponentData* opponentData;
 
+	// Tutorial node pointers
+	Node* lossesDisplayPointer;
+	Node* playerBinaryRowTotalPointer;
+	Node* playerDecimalRowTotalPointer;
+	Node* playerHexRowTotalPointer;
+	Node* enemyBinaryRowTotalPointer;
+	Node* enemyDecimalRowTotalPointer;
+	Node* enemyHexRowTotalPointer;
+	Node* scoreTotalPointer;
+	Node* deckCardCountDisplayPointer;
+	Node* handCardCountDisplayPointer;
+	Node* remainingCardDisplayPointer;
+	Node* drawCountDisplayPointer;
+	Node* passButtonPointer;
+	Node* lastStandButtonPointer;
+	Node* claimVictoryButtonPointer;
+
+	static const std::string requestStateUpdateEvent;
 	static const std::string beforeStateUpdateEvent;
 	static const std::string onStateUpdateEvent;
 private:

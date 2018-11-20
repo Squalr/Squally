@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0">
+        <file id="0" name="HelperArrow.png" width="110" height="149" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="Entity">
+        <animation id="0" name="Idle" length="1200" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="600">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="HelperArrow">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-55.341246" y="71.145659" angle="0"/>
+                </key>
+                <key id="1" time="600" spin="0">
+                    <object folder="0" file="0" x="-50.551979" y="67.076856" angle="0" scale_x="0.919361" scale_y="0.943168"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

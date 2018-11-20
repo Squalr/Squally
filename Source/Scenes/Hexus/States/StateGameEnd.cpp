@@ -81,6 +81,15 @@ void StateGameEnd::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
+	if (gameState->playerLosses >= 2)
+	{
+		SoundManager::playSoundResource(Resources::Sounds_Hexus_Defeat);
+	}
+	else if (gameState->enemyLosses >= 2)
+	{
+		SoundManager::playSoundResource(Resources::Sounds_Hexus_Victory);
+	}
+
 	this->backButton->enableInteraction(0);
 	this->backButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
 	this->backButton->setClickCallback(CC_CALLBACK_1(StateGameEnd::onBackClick, this, gameState));
