@@ -9,10 +9,10 @@ TutorialAVictory* TutorialAVictory::create()
 	return instance;
 }
 
-TutorialAVictory::TutorialAVictory()
+TutorialAVictory::TutorialAVictory() : TutorialBase(GameState::StateType::GameEnd)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->lossDisplayTutorialLabel = Label::create("Nice! Your opponent has lost 2 lives, so you win the match!",
+	this->lossDisplayTutorialLabel = Label::create("Your opponent has lost 2 lives, so you win the match!",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(420.0f, 0.0f)
@@ -68,7 +68,7 @@ void TutorialAVictory::initializeListeners()
 
 bool TutorialAVictory::tryHijackState(GameState* gameState)
 {
-	if (gameState->tutorialMode == StateOverride::TutorialMode::TutorialA && gameState->stateType == GameState::StateType::GameEnd)
+	if (gameState->tutorialMode == StateOverride::TutorialMode::TutorialA)
 	{
 		this->initializeCallbacks(gameState);
 		this->runTutorialLossDisplay(gameState);
@@ -116,5 +116,6 @@ void TutorialAVictory::concludeTutorial(GameState* gameState)
 	this->lossDisplayTutorialLabel->runAction(FadeTo::create(0.25f, 0));
 	this->helpArrowLossDisplay->hidePointer();
 	this->focusTakeOver->unfocus();
-	gameState->updateState(gameState, GameState::StateType::RoundEnd);
+
+	this->unHijackState(gameState);
 }

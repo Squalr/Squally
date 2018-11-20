@@ -9,10 +9,10 @@ TutorialAIntroSequence* TutorialAIntroSequence::create()
 	return instance;
 }
 
-TutorialAIntroSequence::TutorialAIntroSequence()
+TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->scoreTotalsTutorialLabel = Label::create("The objective is simple. Whoever has the higher score wins the round.",
+	this->scoreTotalsTutorialLabel = Label::create("The objective is simple. Whoever has the higher score at the end of a round wins the round.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(420.0f, 0.0f)
@@ -217,7 +217,7 @@ void TutorialAIntroSequence::initializeListeners()
 
 bool TutorialAIntroSequence::tryHijackState(GameState* gameState)
 {
-	if (gameState->tutorialMode == StateOverride::TutorialMode::TutorialA && gameState->stateType == GameState::StateType::Neutral)
+	if (gameState->tutorialMode == StateOverride::TutorialMode::TutorialA)
 	{
 		this->initializeCallbacks(gameState);
 		this->runTutorialScoreTotal(gameState);
@@ -463,5 +463,6 @@ void TutorialAIntroSequence::concludeTutorial(GameState* gameState)
 	this->handCardsTutorialLabel->runAction(FadeTo::create(0.25f, 0));
 	this->helpArrowHandCards->hidePointer();
 	this->focusTakeOver->unfocus();
-	gameState->updateState(gameState, GameState::StateType::Neutral);
+
+	this->unHijackState(gameState);
 }

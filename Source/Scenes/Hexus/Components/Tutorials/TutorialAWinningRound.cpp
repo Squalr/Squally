@@ -9,7 +9,7 @@ TutorialAWinningRound* TutorialAWinningRound::create()
 	return instance;
 }
 
-TutorialAWinningRound::TutorialAWinningRound()
+TutorialAWinningRound::TutorialAWinningRound() : TutorialBase(GameState::StateType::TurnEnd)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->scoreTotalsTutorialLabel = Label::create("Nice! Now your score is higher than your opponents!",
@@ -68,7 +68,7 @@ void TutorialAWinningRound::initializeListeners()
 
 bool TutorialAWinningRound::tryHijackState(GameState* gameState)
 {
-	if (gameState->tutorialMode == StateOverride::TutorialMode::TutorialA && gameState->stateType == GameState::StateType::TurnEnd && gameState->getPlayerTotal() > gameState->getEnemyTotal())
+	if (gameState->tutorialMode == StateOverride::TutorialMode::TutorialA && gameState->getPlayerTotal() > gameState->getEnemyTotal())
 	{
 		this->initializeCallbacks(gameState);
 		this->runTutorialScoreTotal(gameState);
@@ -116,5 +116,6 @@ void TutorialAWinningRound::concludeTutorial(GameState* gameState)
 	this->scoreTotalsTutorialLabel->runAction(FadeTo::create(0.25f, 0));
 	this->helpArrowScoreTotals->hidePointer();
 	this->focusTakeOver->unfocus();
-	gameState->updateState(gameState, GameState::StateType::TurnEnd);
+
+	this->unHijackState(gameState);
 }
