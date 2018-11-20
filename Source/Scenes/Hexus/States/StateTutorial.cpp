@@ -1,5 +1,7 @@
 #include "StateTutorial.h"
 
+// None of the logic really lives here for tutorials -- see the individual tutorial components
+
 StateTutorial* StateTutorial::create()
 {
 	StateTutorial* instance = new StateTutorial();
@@ -20,43 +22,11 @@ StateTutorial::~StateTutorial()
 void StateTutorial::onAnyStateChange(GameState* gameState)
 {
 	StateBase::onAnyStateChange(gameState);
-
-	switch (gameState->stateType)
-	{
-		case GameState::StateType::GameStart:
-		{
-			this->showTutorial = true;
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void StateTutorial::onAnyRequestStateChange(GameState* gameState)
 {
 	StateBase::onAnyRequestStateChange(gameState);
-	
-	// Hijack the neutral state and replace it with a tutorial state
-	if (this->showTutorial && gameState->previousStateType != GameState::StateType::Tutorial && gameState->stateType == GameState::StateType::Neutral)
-	{
-		this->showTutorial = false;
-
-		switch (gameState->tutorialMode)
-		{
-			case StateOverride::NoTutorial:
-			{
-				break;
-			}
-			default:
-			{
-				gameState->stateType = GameState::StateType::Tutorial;
-				break;
-			}
-		}
-	}
 }
 
 void StateTutorial::onBeforeStateEnter(GameState* gameState)

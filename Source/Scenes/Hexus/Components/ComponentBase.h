@@ -15,9 +15,11 @@ protected:
 
 	void initializeListeners() override;
 	virtual void onBeforeStateChange(GameState* gameState);
+	virtual void onAnyRequestStateChange(GameState* gameState);
 	virtual void onAnyStateChange(GameState* gameState);
 
 private:
+	void onRequestStateChangeEvent(EventCustom* eventCustom);
 	void onBeforeStateChangeEvent(EventCustom* eventCustom);
 	void onStateChangeEvent(EventCustom* eventCustom);
 };

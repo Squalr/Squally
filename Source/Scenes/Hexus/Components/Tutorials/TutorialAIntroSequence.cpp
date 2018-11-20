@@ -1,15 +1,15 @@
-#include "TutorialASequence.h"
+#include "TutorialAIntroSequence.h"
 
-TutorialASequence* TutorialASequence::create()
+TutorialAIntroSequence* TutorialAIntroSequence::create()
 {
-	TutorialASequence* instance = new TutorialASequence();
+	TutorialAIntroSequence* instance = new TutorialAIntroSequence();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TutorialASequence::TutorialASequence()
+TutorialAIntroSequence::TutorialAIntroSequence()
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->scoreTotalsTutorialLabel = Label::create("The objective is simple. Whoever has the higher score wins the round.",
@@ -17,7 +17,7 @@ TutorialASequence::TutorialASequence()
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(420.0f, 0.0f)
 	);
-	this->lossDisplayTutorialLabel = Label::create("Each player starts the game with 2 lives. The player with the lowest score at the end of a round will lose a life.",
+	this->lossDisplayTutorialLabel = Label::create("Each player starts the game with 2 lives. The player with the lowest score at the end of a round will lose a life.\n\nIn this game, both players have lost 1 life.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(420.0f, 0.0f)
@@ -25,27 +25,32 @@ TutorialASequence::TutorialASequence()
 	this->rowTotalsTutorialLabel = Label::create("Increase your score by playing cards onto rows.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
-		Size(420.0f, 0.0f)
+		Size(640.0f, 0.0f),
+		cocos2d::TextHAlignment::CENTER
 	);
 	this->binaryCardsTutorialLabel = Label::create("Blue cards are binary cards.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
-		Size(420.0f, 0.0f)
+		Size(640.0f, 0.0f),
+		cocos2d::TextHAlignment::CENTER
 	);
 	this->decimalCardsTutorialLabel = Label::create("White cards are decimal cards.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
-		Size(420.0f, 0.0f)
+		Size(640.0f, 0.0f),
+		cocos2d::TextHAlignment::CENTER
 	);
 	this->hexCardsTutorialLabel = Label::create("Green cards are hexadecimal cards.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
-		Size(420.0f, 0.0f)
+		Size(640.0f, 0.0f),
+		cocos2d::TextHAlignment::CENTER
 	);
-	this->handCardsTutorialLabel = Label::create("Give it a shot! Play these cards.",
+	this->handCardsTutorialLabel = Label::create("Give it a shot! Play your cards into their corresponding rows.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
-		Size(420.0f, 0.0f)
+		Size(640.0f, 0.0f),
+		cocos2d::TextHAlignment::CENTER
 	);
 	this->helpArrowScoreTotals = HelpArrow::create();
 	this->helpArrowLossDisplay = HelpArrow::create();
@@ -108,6 +113,14 @@ TutorialASequence::TutorialASequence()
 
 	this->handCardsNextButton = TextMenuSprite::create(handCardsNextLabel, handCardsNextLabelSelected, Sprite::create(Resources::Minigames_Hexus_ButtonPlank), Sprite::create(Resources::Minigames_Hexus_ButtonPlankHover));
 
+	this->scoreTotalsTutorialLabel->enableOutline(Color4B::BLACK, 2);
+	this->lossDisplayTutorialLabel->enableOutline(Color4B::BLACK, 2);
+	this->rowTotalsTutorialLabel->enableOutline(Color4B::BLACK, 2);
+	this->binaryCardsTutorialLabel->enableOutline(Color4B::BLACK, 2);
+	this->decimalCardsTutorialLabel->enableOutline(Color4B::BLACK, 2);
+	this->hexCardsTutorialLabel->enableOutline(Color4B::BLACK, 2);
+	this->handCardsTutorialLabel->enableOutline(Color4B::BLACK, 2);
+
 	this->scoreTotalsTutorialLabel->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->lossDisplayTutorialLabel->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->rowTotalsTutorialLabel->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -144,13 +157,13 @@ TutorialASequence::TutorialASequence()
 	this->addChild(this->helpArrowHandCards);
 }
 
-TutorialASequence::~TutorialASequence()
+TutorialAIntroSequence::~TutorialAIntroSequence()
 {
 }
 
-void TutorialASequence::onEnter()
+void TutorialAIntroSequence::onEnter()
 {
-	ComponentBase::onEnter();
+	TutorialBase::onEnter();
 
 	this->scoreTotalsTutorialLabel->setOpacity(0);
 	this->lossDisplayTutorialLabel->setOpacity(0);
@@ -169,23 +182,23 @@ void TutorialASequence::onEnter()
 	this->handCardsNextButton->disableInteraction(0);
 }
 
-void TutorialASequence::initializePositions()
+void TutorialAIntroSequence::initializePositions()
 {
-	ComponentBase::initializePositions();
+	TutorialBase::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->scoreTotalsTutorialLabel->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f + 32.0f);
 	this->lossDisplayTutorialLabel->setPosition(visibleSize.width / 2.0f - 420.0f, visibleSize.height / 2.0f + 32.0f);
+	this->rowTotalsTutorialLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 32.0f);
 	this->binaryCardsTutorialLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 32.0f);
 	this->decimalCardsTutorialLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 32.0f);
 	this->hexCardsTutorialLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 32.0f);
-	this->rowTotalsTutorialLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 32.0f);
 	this->handCardsTutorialLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 80.0f);
 	
 	this->scoreTotalsNextButton->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f - 32.0f);
 	this->lossDisplayNextButton->setPosition(visibleSize.width / 2.0f - 420.0f, visibleSize.height / 2.0f - 32.0f);
-	this->rowTotalsNextButton->setPosition(visibleSize.width / 2.0f - 420.0f, visibleSize.height / 2.0f - 32.0f);
+	this->rowTotalsNextButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 32.0f);
 	this->binaryCardsNextButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 32.0f);
 	this->decimalCardsNextButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 32.0f);
 	this->hexCardsNextButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 32.0f);
@@ -197,46 +210,35 @@ void TutorialASequence::initializePositions()
 	this->helpArrowHandCards->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 288.0f));
 }
 
-void TutorialASequence::initializeListeners()
+void TutorialAIntroSequence::initializeListeners()
 {
-	ComponentBase::initializeListeners();
+	TutorialBase::initializeListeners();
 }
 
-void TutorialASequence::onBeforeStateChange(GameState* gameState)
+bool TutorialAIntroSequence::tryHijackState(GameState* gameState)
 {
-	ComponentBase::onBeforeStateChange(gameState);
-}
-
-void TutorialASequence::onAnyStateChange(GameState* gameState)
-{
-	ComponentBase::onAnyStateChange(gameState);
-
-	switch (gameState->stateType)
+	if (gameState->tutorialMode == StateOverride::TutorialMode::TutorialA && gameState->stateType == GameState::StateType::Neutral)
 	{
-		case GameState::StateType::Tutorial:
-		{
-			switch (gameState->tutorialMode)
-			{
-				case StateOverride::TutorialMode::TutorialA:
-				{
-					this->initializeCallbacks(gameState);
-					this->runTutorialScoreTotal(gameState);
-					break;
-				}
-				default:
-				{
-					break;
-				}
-			}
-		}
-		default:
-		{
-			break;
-		}
+		this->initializeCallbacks(gameState);
+		this->runTutorialScoreTotal(gameState);
+
+		return true;
 	}
+
+	return false;
 }
 
-void TutorialASequence::initializeCallbacks(GameState* gameState)
+void TutorialAIntroSequence::onBeforeStateChange(GameState* gameState)
+{
+	TutorialBase::onBeforeStateChange(gameState);
+}
+
+void TutorialAIntroSequence::onAnyStateChange(GameState* gameState)
+{
+	TutorialBase::onAnyStateChange(gameState);
+}
+
+void TutorialAIntroSequence::initializeCallbacks(GameState* gameState)
 {
 	this->scoreTotalsNextButton->setClickCallback([=](MenuSprite* menuSprite, MouseEvents::MouseEventArgs* args)
 	{
@@ -268,7 +270,7 @@ void TutorialASequence::initializeCallbacks(GameState* gameState)
 	});
 }
 
-void TutorialASequence::runTutorialScoreTotal(GameState* gameState)
+void TutorialAIntroSequence::runTutorialScoreTotal(GameState* gameState)
 {
 	this->scoreTotalsNextButton->enableInteraction(0);
 	this->scoreTotalsNextButton->runAction(FadeTo::create(0.25f, 255));
@@ -280,7 +282,7 @@ void TutorialASequence::runTutorialScoreTotal(GameState* gameState)
 	this->focusTakeOver->focus(focusTargets);
 }
 
-void TutorialASequence::runTutorialLossDisplay(GameState* gameState)
+void TutorialAIntroSequence::runTutorialLossDisplay(GameState* gameState)
 {
 	this->scoreTotalsNextButton->disableInteraction();
 	this->scoreTotalsNextButton->runAction(FadeTo::create(0.25f, 0));
@@ -296,7 +298,7 @@ void TutorialASequence::runTutorialLossDisplay(GameState* gameState)
 	this->focusTakeOver->focus(focusTargets);
 }
 
-void TutorialASequence::runTutorialRowTotals(GameState* gameState)
+void TutorialAIntroSequence::runTutorialRowTotals(GameState* gameState)
 {
 	this->lossDisplayNextButton->disableInteraction();
 	this->lossDisplayNextButton->runAction(FadeTo::create(0.25f, 0));
@@ -314,8 +316,8 @@ void TutorialASequence::runTutorialRowTotals(GameState* gameState)
 			this->focusTakeOver->focus(focusTargets);
 			this->helpArrowRowTotals->setPositionY(gameState->enemyHexRowTotalPointer->getPositionY());
 		}),
-		DelayTime::create(2.0f),
-			CallFunc::create([=]()
+		DelayTime::create(2.5f),
+		CallFunc::create([=]()
 		{
 			std::vector<Node*> focusTargets = std::vector<Node*>();
 			focusTargets.push_back(gameState->enemyDecimalCards);
@@ -323,7 +325,7 @@ void TutorialASequence::runTutorialRowTotals(GameState* gameState)
 			this->focusTakeOver->focus(focusTargets);
 			this->helpArrowRowTotals->setPositionY(gameState->enemyDecimalRowTotalPointer->getPositionY());
 		}),
-		DelayTime::create(2.0f),
+		DelayTime::create(1.5f),
 		CallFunc::create([=]()
 		{
 			std::vector<Node*> focusTargets = std::vector<Node*>();
@@ -332,8 +334,8 @@ void TutorialASequence::runTutorialRowTotals(GameState* gameState)
 			this->focusTakeOver->focus(focusTargets);
 			this->helpArrowRowTotals->setPositionY(gameState->enemyBinaryRowTotalPointer->getPositionY());
 		}),
-		DelayTime::create(2.0f),
-		CallFunc::create([=]()
+		DelayTime::create(1.5f),
+		/*CallFunc::create([=]()
 		{
 			std::vector<Node*> focusTargets = std::vector<Node*>();
 			focusTargets.push_back(gameState->playerBinaryCards);
@@ -341,7 +343,7 @@ void TutorialASequence::runTutorialRowTotals(GameState* gameState)
 			this->focusTakeOver->focus(focusTargets);
 			this->helpArrowRowTotals->setPositionY(gameState->playerBinaryRowTotalPointer->getPositionY());
 		}),
-		DelayTime::create(2.0f),
+		DelayTime::create(1.5f),*/
 		CallFunc::create([=]()
 		{
 			std::vector<Node*> focusTargets = std::vector<Node*>();
@@ -350,8 +352,8 @@ void TutorialASequence::runTutorialRowTotals(GameState* gameState)
 			this->focusTakeOver->focus(focusTargets);
 			this->helpArrowRowTotals->setPositionY(gameState->playerDecimalRowTotalPointer->getPositionY());
 		}),
-		DelayTime::create(2.0f),
-		CallFunc::create([=]()
+		DelayTime::create(1.5f),
+		/*CallFunc::create([=]()
 		{
 			std::vector<Node*> focusTargets = std::vector<Node*>();
 			focusTargets.push_back(gameState->playerHexCards);
@@ -359,9 +361,11 @@ void TutorialASequence::runTutorialRowTotals(GameState* gameState)
 			this->focusTakeOver->focus(focusTargets);
 			this->helpArrowRowTotals->setPositionY(gameState->playerHexRowTotalPointer->getPositionY());
 		}),
-		DelayTime::create(2.0f),
+		DelayTime::create(1.5f),*/
 		CallFunc::create([=]()
 		{
+			std::vector<Node*> focusTargets = std::vector<Node*>();
+			this->focusTakeOver->focus(focusTargets);
 			this->rowTotalsNextButton->enableInteraction(0);
 			this->rowTotalsNextButton->runAction(FadeTo::create(0.25f, 255));
 			this->helpArrowRowTotals->hidePointer();
@@ -370,7 +374,7 @@ void TutorialASequence::runTutorialRowTotals(GameState* gameState)
 	));
 }
 
-void TutorialASequence::runTutorialBinaryCards(GameState* gameState)
+void TutorialAIntroSequence::runTutorialBinaryCards(GameState* gameState)
 {
 	this->rowTotalsNextButton->disableInteraction();
 	this->rowTotalsNextButton->runAction(FadeTo::create(0.25f, 0));
@@ -392,7 +396,7 @@ void TutorialASequence::runTutorialBinaryCards(GameState* gameState)
 	this->focusTakeOver->focus(focusTargets);
 }
 
-void TutorialASequence::runTutorialDecimalCards(GameState* gameState)
+void TutorialAIntroSequence::runTutorialDecimalCards(GameState* gameState)
 {
 	this->binaryCardsNextButton->disableInteraction();
 	this->binaryCardsNextButton->runAction(FadeTo::create(0.25f, 0));
@@ -414,11 +418,11 @@ void TutorialASequence::runTutorialDecimalCards(GameState* gameState)
 	this->focusTakeOver->focus(focusTargets);
 }
 
-void TutorialASequence::runTutorialHexCards(GameState* gameState)
+void TutorialAIntroSequence::runTutorialHexCards(GameState* gameState)
 {
 	this->decimalCardsNextButton->disableInteraction();
 	this->decimalCardsNextButton->runAction(FadeTo::create(0.25f, 0));
-	this->binaryCardsTutorialLabel->runAction(FadeTo::create(0.25f, 0));
+	this->decimalCardsTutorialLabel->runAction(FadeTo::create(0.25f, 0));
 	this->helpArrowRowTotals->hidePointer();
 	this->hexCardsNextButton->enableInteraction(0);
 	this->hexCardsNextButton->runAction(FadeTo::create(0.25f, 255));
@@ -437,7 +441,7 @@ void TutorialASequence::runTutorialHexCards(GameState* gameState)
 	this->focusTakeOver->focus(focusTargets);
 }
 
-void TutorialASequence::runTutorialHandCards(GameState* gameState)
+void TutorialAIntroSequence::runTutorialHandCards(GameState* gameState)
 {
 	this->hexCardsNextButton->disableInteraction();
 	this->hexCardsNextButton->runAction(FadeTo::create(0.25f, 0));
@@ -452,7 +456,7 @@ void TutorialASequence::runTutorialHandCards(GameState* gameState)
 	this->focusTakeOver->focus(focusTargets);
 }
 
-void TutorialASequence::concludeTutorial(GameState* gameState)
+void TutorialAIntroSequence::concludeTutorial(GameState* gameState)
 {
 	this->handCardsNextButton->disableInteraction();
 	this->handCardsNextButton->runAction(FadeTo::create(0.25f, 0));
