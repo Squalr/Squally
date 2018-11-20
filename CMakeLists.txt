@@ -560,6 +560,8 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/Tutorials/TutorialAVictory.cpp
 	Source/Scenes/Hexus/Components/Tutorials/TutorialAWinningRound.cpp
 	Source/Scenes/Hexus/Components/Tutorials/TutorialBase.cpp
+	Source/Scenes/Hexus/Components/Tutorials/TutorialBIntroSequence.cpp
+	Source/Scenes/Hexus/Components/Tutorials/TutorialCIntroSequence.cpp
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.cpp
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.cpp
 	Source/Scenes/Hexus/Opponents/HexusOpponentData.cpp
@@ -1318,6 +1320,8 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/Tutorials/TutorialAVictory.h
 	Source/Scenes/Hexus/Components/Tutorials/TutorialAWinningRound.h
 	Source/Scenes/Hexus/Components/Tutorials/TutorialBase.h
+	Source/Scenes/Hexus/Components/Tutorials/TutorialBIntroSequence.h
+	Source/Scenes/Hexus/Components/Tutorials/TutorialCIntroSequence.h
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.h
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.h
 	Source/Scenes/Hexus/HelpMenus/HelpMenus.h

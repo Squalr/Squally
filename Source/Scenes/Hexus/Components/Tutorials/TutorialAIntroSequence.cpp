@@ -9,7 +9,7 @@ TutorialAIntroSequence* TutorialAIntroSequence::create()
 	return instance;
 }
 
-TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(GameState::StateType::Neutral)
+TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::TutorialA, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->scoreTotalsTutorialLabel = Label::create("The objective is simple. Whoever has the higher score at the end of a round wins the round.",
@@ -217,15 +217,10 @@ void TutorialAIntroSequence::initializeListeners()
 
 bool TutorialAIntroSequence::tryHijackState(GameState* gameState)
 {
-	if (gameState->tutorialMode == StateOverride::TutorialMode::TutorialA)
-	{
-		this->initializeCallbacks(gameState);
-		this->runTutorialScoreTotal(gameState);
+	this->initializeCallbacks(gameState);
+	this->runTutorialScoreTotal(gameState);
 
-		return true;
-	}
-
-	return false;
+	return true;
 }
 
 void TutorialAIntroSequence::onBeforeStateChange(GameState* gameState)

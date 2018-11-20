@@ -1,7 +1,8 @@
 #include "TutorialBase.h"
 
-TutorialBase::TutorialBase(GameState::StateType stateToHijack) : ComponentBase()
+TutorialBase::TutorialBase(StateOverride::TutorialMode tutorialMode, GameState::StateType stateToHijack) : ComponentBase()
 {
+	this->tutorialMode = tutorialMode;
 	this->stateToHijack = stateToHijack;
 }
 
@@ -22,7 +23,7 @@ void TutorialBase::onAnyRequestStateChange(GameState* gameState)
 
 	GameState::StateType previousState = gameState->previousStateType;
 
-	if (!this->tutorialShown && gameState->stateType == this->stateToHijack && this->tryHijackState(gameState))
+	if (!this->tutorialShown && gameState->tutorialMode == this->tutorialMode && gameState->stateType == this->stateToHijack && this->tryHijackState(gameState))
 	{
 		this->tutorialShown = true;
 		this->cachedPreviousState = previousState;

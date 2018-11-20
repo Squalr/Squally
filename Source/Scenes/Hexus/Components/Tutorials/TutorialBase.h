@@ -12,7 +12,7 @@ using namespace cocos2d;
 class TutorialBase : public ComponentBase
 {
 protected:
-	TutorialBase(GameState::StateType stateToHijack);
+	TutorialBase(StateOverride::TutorialMode tutorialMode, GameState::StateType stateToHijack);
 	~TutorialBase();
 
 	void onEnter() override;
@@ -22,5 +22,6 @@ protected:
 
 	bool tutorialShown;
 	GameState::StateType cachedPreviousState;
+	StateOverride::TutorialMode tutorialMode;
 	GameState::StateType stateToHijack;
 };

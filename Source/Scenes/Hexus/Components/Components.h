@@ -28,3 +28,5 @@
 #include "Scenes/Hexus/Components/Tutorials/TutorialAIntroSequence.h"
 #include "Scenes/Hexus/Components/Tutorials/TutorialAVictory.h"
 #include "Scenes/Hexus/Components/Tutorials/TutorialAWinningRound.h"
+#include "Scenes/Hexus/Components/Tutorials/TutorialBIntroSequence.h"
+#include "Scenes/Hexus/Components/Tutorials/TutorialCIntroSequence.h"
