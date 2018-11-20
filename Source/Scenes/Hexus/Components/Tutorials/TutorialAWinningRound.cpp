@@ -9,7 +9,7 @@ TutorialAWinningRound* TutorialAWinningRound::create()
 	return instance;
 }
 
-TutorialAWinningRound::TutorialAWinningRound() : TutorialBase(GameState::StateType::TurnEnd)
+TutorialAWinningRound::TutorialAWinningRound() : TutorialBase(StateOverride::TutorialA, GameState::StateType::TurnEnd)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->scoreTotalsTutorialLabel = Label::create("Nice! Now your score is higher than your opponents!",

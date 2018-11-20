@@ -67,6 +67,8 @@ Hexus::Hexus()
 	this->tutorialAIntroSequence = TutorialAIntroSequence::create();
 	this->tutorialAVictory = TutorialAVictory::create();
 	this->tutorialAWinningRound = TutorialAWinningRound::create();
+	this->tutorialBIntroSequence = TutorialBIntroSequence::create();
+	this->tutorialCIntroSequence = TutorialCIntroSequence::create();
 	this->pauseMenu = PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
@@ -85,6 +87,9 @@ Hexus::Hexus()
 	this->gameState->handCardCountDisplayPointer = this->handCardCountDisplay;
 	this->gameState->remainingCardDisplayPointer = this->remainingCardDisplay;
 	this->gameState->drawCountDisplayPointer = this->drawCountDisplay;
+	this->gameState->passButtonPointer = this->statePass->passButton;
+	this->gameState->lastStandButtonPointer = this->statePass->lastStandButton;
+	this->gameState->claimVictoryButtonPointer = this->statePass->claimVictoryButton;
 
 	this->addChild(this->gameBackground);
 	this->addChild(this->gameState);
@@ -124,6 +129,8 @@ Hexus::Hexus()
 	this->addChild(this->tutorialAIntroSequence);
 	this->addChild(this->tutorialAVictory);
 	this->addChild(this->tutorialAWinningRound);
+	this->addChild(this->tutorialBIntroSequence);
+	this->addChild(this->tutorialCIntroSequence);
 	this->addChild(this->cardReplaceBanner);
 	this->addChild(this->opponentFirstBanner);
 	this->addChild(this->opponentLastStandBanner);

@@ -135,6 +135,9 @@ public:
 	Node* handCardCountDisplayPointer;
 	Node* remainingCardDisplayPointer;
 	Node* drawCountDisplayPointer;
+	Node* passButtonPointer;
+	Node* lastStandButtonPointer;
+	Node* claimVictoryButtonPointer;
 
 	static const std::string requestStateUpdateEvent;
 	static const std::string beforeStateUpdateEvent;
