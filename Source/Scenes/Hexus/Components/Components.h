@@ -30,3 +30,6 @@
 #include "Scenes/Hexus/Components/Tutorials/TutorialAWinningRound.h"
 #include "Scenes/Hexus/Components/Tutorials/TutorialBIntroSequence.h"
 #include "Scenes/Hexus/Components/Tutorials/TutorialCIntroSequence.h"
+#include "Scenes/Hexus/Components/Tutorials/TutorialDIntroSequence.h"
+#include "Scenes/Hexus/Components/Tutorials/TutorialEIntroSequence.h"
+#include "Scenes/Hexus/Components/Tutorials/TutorialFIntroSequence.h"

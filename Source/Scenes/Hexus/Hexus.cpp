@@ -69,6 +69,9 @@ Hexus::Hexus()
 	this->tutorialAWinningRound = TutorialAWinningRound::create();
 	this->tutorialBIntroSequence = TutorialBIntroSequence::create();
 	this->tutorialCIntroSequence = TutorialCIntroSequence::create();
+	this->tutorialDIntroSequence = TutorialDIntroSequence::create();
+	this->tutorialEIntroSequence = TutorialEIntroSequence::create();
+	this->tutorialFIntroSequence = TutorialFIntroSequence::create();
 	this->pauseMenu = PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
@@ -131,6 +134,9 @@ Hexus::Hexus()
 	this->addChild(this->tutorialAWinningRound);
 	this->addChild(this->tutorialBIntroSequence);
 	this->addChild(this->tutorialCIntroSequence);
+	this->addChild(this->tutorialDIntroSequence);
+	this->addChild(this->tutorialEIntroSequence);
+	this->addChild(this->tutorialFIntroSequence);
 	this->addChild(this->cardReplaceBanner);
 	this->addChild(this->opponentFirstBanner);
 	this->addChild(this->opponentLastStandBanner);

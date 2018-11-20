@@ -562,6 +562,9 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/Components/Tutorials/TutorialBase.cpp
 	Source/Scenes/Hexus/Components/Tutorials/TutorialBIntroSequence.cpp
 	Source/Scenes/Hexus/Components/Tutorials/TutorialCIntroSequence.cpp
+	Source/Scenes/Hexus/Components/Tutorials/TutorialDIntroSequence.cpp
+	Source/Scenes/Hexus/Components/Tutorials/TutorialEIntroSequence.cpp
+	Source/Scenes/Hexus/Components/Tutorials/TutorialFIntroSequence.cpp
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.cpp
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.cpp
 	Source/Scenes/Hexus/Opponents/HexusOpponentData.cpp
@@ -1322,6 +1325,9 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/Components/Tutorials/TutorialBase.h
 	Source/Scenes/Hexus/Components/Tutorials/TutorialBIntroSequence.h
 	Source/Scenes/Hexus/Components/Tutorials/TutorialCIntroSequence.h
+	Source/Scenes/Hexus/Components/Tutorials/TutorialDIntroSequence.h
+	Source/Scenes/Hexus/Components/Tutorials/TutorialEIntroSequence.h
+	Source/Scenes/Hexus/Components/Tutorials/TutorialFIntroSequence.h
 	Source/Scenes/Hexus/HelpMenus/BinaryHelpMenu.h
 	Source/Scenes/Hexus/HelpMenus/HelpMenuBase.h
 	Source/Scenes/Hexus/HelpMenus/HelpMenus.h

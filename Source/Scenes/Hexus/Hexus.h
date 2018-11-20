@@ -100,6 +100,9 @@ private:
 	TutorialAWinningRound* tutorialAWinningRound;
 	TutorialBIntroSequence* tutorialBIntroSequence;
 	TutorialCIntroSequence* tutorialCIntroSequence;
+	TutorialDIntroSequence* tutorialDIntroSequence;
+	TutorialEIntroSequence* tutorialEIntroSequence;
+	TutorialFIntroSequence* tutorialFIntroSequence;
 
 	LayerColor* menuBackDrop;
 	PauseMenu* pauseMenu;
