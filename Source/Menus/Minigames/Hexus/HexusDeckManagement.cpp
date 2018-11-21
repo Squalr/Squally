@@ -76,7 +76,7 @@ HexusDeckManagement::HexusDeckManagement()
 	this->filters->addToggle(this->decimalButton);
 	this->filters->addToggle(this->hexButton);
 	
-		this->activeFilter = CardFilterFlags::All;
+	this->activeFilter = CardFilterFlags::All;
 	Label* backButtonLabel = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 	Label* backButtonLabelHover = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 	Label* backButtonLabelClick = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
