@@ -160,7 +160,7 @@ void MinigamesMenu::initializeListeners()
 	this->hexusPuzzlesButton->setClickCallback(CC_CALLBACK_1(MinigamesMenu::onHexusPuzzlesClick, this));
 	this->backButton->setClickCallback(CC_CALLBACK_1(MinigamesMenu::onBackClick, this));
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+	this->addEventListener(keyboardListener);
 }
 
 void MinigamesMenu::initializePositions()

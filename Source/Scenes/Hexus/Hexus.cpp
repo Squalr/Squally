@@ -200,7 +200,7 @@ void Hexus::initializeListeners()
 	this->pauseMenu->setOptionsCallback(CC_CALLBACK_0(Hexus::onOptionsClick, this));
 	this->pauseMenu->setExitCallback(CC_CALLBACK_0(Hexus::onExitClick, this));
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+	this->addEventListener(keyboardListener);
 }
 
 void Hexus::onGameStart(EventCustom* eventCustom)

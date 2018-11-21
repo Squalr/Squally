@@ -271,7 +271,7 @@ void OptionsMenu::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(OptionsMenu::onKeyPressed, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+	this->addEventListener(keyboardListener);
 }
 
 void OptionsMenu::initializePositions()
@@ -323,9 +323,6 @@ void OptionsMenu::initializePositions()
 	this->option3840x2160->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 2, visibleSize.height / 2 + baseY - offsetY * 2));
 
 	this->returnButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - offsetY * 5));
-
-	this->musicSlider->initializePositions();
-	this->soundSlider->initializePositions();
 }
 
 void OptionsMenu::setBackClickCallback(std::function<void()> backClickCallback)
@@ -345,8 +342,6 @@ bool OptionsMenu::onFullScreenChanged(CCheckbox* checkbox, bool isFullScreen)
 	{
 		this->showResolutionOptions();
 	}
-
-	this->initializePositions();
 
 	return isFullScreen;
 }

@@ -80,7 +80,7 @@ void InputManager::initializeListeners()
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(InputManager::onKeyPressed, this);
 	keyboardListener->onKeyReleased = CC_CALLBACK_2(InputManager::onKeyReleased, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+	this->addEventListener(keyboardListener);
 }
 
 void InputManager::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)

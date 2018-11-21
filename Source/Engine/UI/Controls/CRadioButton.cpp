@@ -25,8 +25,6 @@ CRadioButton::CRadioButton(int groupIdentifier)
 
 	this->addChild(this->unchecked);
 	this->addChild(this->checked);
-
-	this->initializeListeners();
 }
 
 CRadioButton::~CRadioButton()
@@ -35,11 +33,11 @@ CRadioButton::~CRadioButton()
 
 void CRadioButton::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	SmartNode::initializeListeners();
 
 	EventListenerCustom* customListener = EventListenerCustom::create(this->RadioButtonCheckEvent, CC_CALLBACK_1(CRadioButton::onGroupCheck, this));
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(customListener, this);
+	this->addEventListener(customListener);
 }
 
 void CRadioButton::setCheckCallback(std::function<void(CRadioButton*)> callback)

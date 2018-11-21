@@ -30,8 +30,6 @@ CSlider::CSlider(float progress)
 	this->addChild(this->frame);
 	this->addChild(this->progressClip);
 	this->addChild(this->slide);
-
-	this->initializePositions();
 }
 
 CSlider::~CSlider()
@@ -40,6 +38,8 @@ CSlider::~CSlider()
 
 void CSlider::initializePositions()
 {
+	SmartNode::initializePositions();
+
 	this->progressBar->setPosition(Vec2(this->progressBar->getContentSize().width / 2.0f, 0.0f));
 	this->progressClip->setPosition(Vec2(-this->progressBar->getContentSize().width / 2.0f, 0.0f));
 	this->slide->setPosition(Vec2(this->progress * this->frame->getContentSize().width - this->frame->getContentSize().width / 2, 0));

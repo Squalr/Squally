@@ -17,9 +17,9 @@ void StateBase::initializeListeners()
 	EventListenerCustom* beforeStateUpdateListener = EventListenerCustom::create(GameState::beforeStateUpdateEvent, CC_CALLBACK_1(StateBase::onBeforeStateChangeEvent, this));
 	EventListenerCustom* onStateUpdateListener = EventListenerCustom::create(GameState::onStateUpdateEvent, CC_CALLBACK_1(StateBase::onStateChangeEvent, this));
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(requestStateUpdateListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(beforeStateUpdateListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(onStateUpdateListener, this);
+	this->addEventListener(requestStateUpdateListener);
+	this->addEventListener(beforeStateUpdateListener);
+	this->addEventListener(onStateUpdateListener);
 }
 
 void StateBase::onRequestStateChangeEvent(EventCustom* eventCustom)

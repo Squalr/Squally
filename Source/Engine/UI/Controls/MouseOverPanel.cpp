@@ -31,8 +31,6 @@ MouseOverPanel::MouseOverPanel(Node* visibleContent, Node* mouseOverContent, Nod
 	this->panelBackgroundFrame->setVisible(false);
 	this->panelBackground->setVisible(false);
 	this->panelContent->setVisible(false);
-
-	this->initializeListeners();
 }
 
 MouseOverPanel::~MouseOverPanel()
@@ -41,11 +39,11 @@ MouseOverPanel::~MouseOverPanel()
 
 void MouseOverPanel::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	SmartNode::initializeListeners();
 
 	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MouseOverPanel::onMouseMove, this));
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseMoveListener, this);
+	this->addEventListener(mouseMoveListener);
 }
 
 void MouseOverPanel::onMouseMove(EventCustom* event)

@@ -143,7 +143,7 @@ void HexusOpponentMenuBase::initializeListeners()
 	this->shopButton->setClickCallback(CC_CALLBACK_1(HexusOpponentMenuBase::onShopClick, this));
 	this->backButton->setClickCallback(CC_CALLBACK_1(HexusOpponentMenuBase::onBackClick, this));
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+	this->addEventListener(keyboardListener);
 }
 
 void HexusOpponentMenuBase::onMouseOver(HexusOpponentPreview* opponent)

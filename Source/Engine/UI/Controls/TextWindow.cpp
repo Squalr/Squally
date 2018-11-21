@@ -16,7 +16,7 @@ TextWindow* TextWindow::create(std::string windowTitle, Size initWindowSize, flo
 
 TextWindow::TextWindow(std::string windowTitle, Size initWindowSize, float initFontSize, Color3B initFontColor)
 {
-	this->displayTextElements = new std::vector<RichElement*>();
+	this->displayTextElements = std::vector<RichElement*>();
 
 	this->marginSize = 0;
 	this->fontSize = initFontSize;
@@ -46,16 +46,39 @@ TextWindow::TextWindow(std::string windowTitle, Size initWindowSize, float initF
 	this->addChild(this->titleBar);
 	this->addChild(this->windowTitle);
 	this->addChild(this->scrollView);
-
-	this->initializePositions();
-	this->initializeListeners();
-	this->scheduleUpdate();
 }
 
 TextWindow::~TextWindow()
 {
-	delete(this->displayTextElements);
 }
+
+void TextWindow::onEnter()
+{
+	SmartNode::onEnter();
+
+	this->scheduleUpdate();
+}
+
+void TextWindow::initializePositions()
+{
+	SmartNode::initializePositions();
+
+	this->scrollView->setSize(windowSize);
+	this->scrollView->setInnerContainerSize(Size(windowSize.width, windowSize.height * 2));
+	this->displayedText->setSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f, windowSize.height - TextWindow::padding.height * 2.0f));
+
+	this->scrollView->setPosition(Vec2(0.0f, 0.0f));
+	this->background->setPosition(-this->windowSize.width / 2.0f, -this->windowSize.height / 2.0f);
+	this->displayedText->setPosition(Vec2(this->marginSize + TextWindow::padding.width, this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
+	this->titleBar->setPosition(-this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - TextWindow::titleBarHeight / 2.0f + this->fontSize);
+	this->windowTitle->setPosition(0.0f, this->windowSize.height / 2 + this->fontSize);
+}
+
+void TextWindow::initializeListeners()
+{
+	SmartNode::initializeListeners();
+}
+
 void TextWindow::setWindowColor(Color4B newWindowColor)
 {
 	this->windowColor = newWindowColor;
@@ -81,7 +104,7 @@ void TextWindow::insertText(std::string text, Color3B color)
 {
 	RichElement* element = RichElementText::create(0, color, 0xFF, text, Localization::getCodingFont(), this->fontSize);
 
-	this->displayTextElements->push_back(element);
+	this->displayTextElements.push_back(element);
 	this->displayedText->pushBackElement(element);
 }
 
@@ -95,7 +118,7 @@ void TextWindow::insertNewline()
 {
 	RichElement* element = RichElementNewLine::create(0, this->fontColor, 0xFF);
 
-	this->displayTextElements->push_back(element);
+	this->displayTextElements.push_back(element);
 	this->displayedText->pushBackElement(element);
 
 	this->displayedText->formatText();
@@ -103,31 +126,13 @@ void TextWindow::insertNewline()
 
 void TextWindow::clearText()
 {
-	for (auto iterator = this->displayTextElements->begin(); iterator != this->displayTextElements->end(); iterator++)
+	for (auto iterator = this->displayTextElements.begin(); iterator != this->displayTextElements.end(); iterator++)
 	{
 		this->displayedText->removeElement(*iterator);
 	}
 
-	this->displayTextElements->clear();
+	this->displayTextElements.clear();
 	this->displayedText->formatText();
-}
-
-void TextWindow::initializePositions()
-{
-	this->scrollView->setSize(windowSize);
-	this->scrollView->setInnerContainerSize(Size(windowSize.width, windowSize.height * 2));
-	this->displayedText->setSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f, windowSize.height - TextWindow::padding.height * 2.0f));
-
-	this->scrollView->setPosition(Vec2(0.0f, 0.0f));
-	this->background->setPosition(-this->windowSize.width / 2.0f, -this->windowSize.height / 2.0f);
-	this->displayedText->setPosition(Vec2(this->marginSize + TextWindow::padding.width, this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
-	this->titleBar->setPosition(-this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - TextWindow::titleBarHeight / 2.0f + this->fontSize);
-	this->windowTitle->setPosition(0.0f, this->windowSize.height / 2 + this->fontSize);
-}
-
-void TextWindow::initializeListeners()
-{
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void TextWindow::update(float dt)

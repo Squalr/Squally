@@ -25,7 +25,6 @@ void PlatformerCollisionMapping::registerGlobalNode()
 	}
 }
 
-
 PlatformerCollisionMapping::PlatformerCollisionMapping()
 {
 }
@@ -42,7 +41,7 @@ void PlatformerCollisionMapping::initializeListeners()
 		CollisionObject::RequestCollisionMappingEvent,
 		CC_CALLBACK_1(PlatformerCollisionMapping::onMapRequest, this));
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mapRequestEventListener, this);
+	this->addEventListener(mapRequestEventListener);
 }
 
 void PlatformerCollisionMapping::onMapRequest(EventCustom* eventCustom)

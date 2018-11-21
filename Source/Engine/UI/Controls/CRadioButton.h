@@ -1,13 +1,13 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Resources.h"
-
+#include "Engine/SmartNode.h"
 #include "MenuSprite.h"
+#include "Resources.h"
 
 using namespace cocos2d;
 
-class CRadioButton : public Node
+class CRadioButton : public SmartNode
 {
 public:
 	static CRadioButton * create(int groupIdentifier);
@@ -22,10 +22,10 @@ private:
 	CRadioButton(int groupIdentifier);
 	~CRadioButton();
 
+	void initializeListeners() override;
 	void onGroupCheck(EventCustom* event);
 	void onUncheckClick(MenuSprite* menuSprite);
 	void onCheckClick(MenuSprite* menuSprite);
-	void initializeListeners();
 
 	MenuSprite * unchecked;
 	MenuSprite * checked;

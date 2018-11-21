@@ -33,10 +33,7 @@ void DeveloperHud::loadMap(SerializableMap* serializableMapInit)
 
 void DeveloperHud::onEnter()
 {
-	Node::onEnter();
-
-	this->initializeListeners();
-	this->initializePositions();
+	Hud::onEnter();
 }
 
 void DeveloperHud::initializePositions()
@@ -48,7 +45,7 @@ void DeveloperHud::initializePositions()
 
 void DeveloperHud::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	Hud::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -56,7 +53,7 @@ void DeveloperHud::initializeListeners()
 
 	this->saveButton->setClickCallback(CC_CALLBACK_1(DeveloperHud::onSaveClick, this));
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+	this->addEventListener(keyboardListener);
 }
 
 void DeveloperHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)

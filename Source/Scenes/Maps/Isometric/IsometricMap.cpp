@@ -79,15 +79,15 @@ void IsometricMap::initializePositions()
 void IsometricMap::initializeListeners()
 {
 	IMap::initializeListeners();
-	
+
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(IsometricMap::onKeyPressed, this);
 	mouseListener->onMouseScroll = CC_CALLBACK_1(IsometricMap::onMouseWheelScroll, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+	this->addEventListener(mouseListener);
+	this->addEventListener(keyboardListener);
 }
 
 void IsometricMap::loadMap(SerializableMap* serializableMap)
@@ -110,12 +110,12 @@ void IsometricMap::resume(void)
 		this->toggleHackerMode();
 	}
 
-	Node::resume();
+	IMap::resume();
 }
 
 void IsometricMap::update(float dt)
 {
-	FadeScene::update(dt);
+	IMap::update(dt);
 }
 
 void IsometricMap::onMouseWheelScroll(EventMouse* event)
@@ -137,19 +137,27 @@ void IsometricMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	switch (keyCode)
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
+		{
 			NavigationEvents::navigate(NavigationEvents::GameScreen::Pause);
 			event->stopPropagation();
 			break;
+		}
 		case EventKeyboard::KeyCode::KEY_GRAVE:
+		{
 			this->toggleDeveloperMode();
 			event->stopPropagation();
 			break;
+		}
 		case EventKeyboard::KeyCode::KEY_TAB:
+		{
 			this->toggleHackerMode();
 			event->stopPropagation();
 			break;
+		}
 		default:
+		{
 			break;
+		}
 	}
 }
 

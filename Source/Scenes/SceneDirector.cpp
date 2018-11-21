@@ -134,15 +134,15 @@ void SceneDirector::initializeListeners()
 		CC_CALLBACK_1(HexusRewardsMenu::onRewardsOpen, this->hexusRewardsMenu)
 	);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(hexusGameStartListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(hexusShowRewardsListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateNewEventListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateBackEventListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateCutsceneEventListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateNewLevelEventListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateEnterLevelEventListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateFightEventListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(navigateConfirmEventListener, this);
+	this->addEventListener(hexusGameStartListener);
+	this->addEventListener(hexusShowRewardsListener);
+	this->addEventListener(navigateNewEventListener);
+	this->addEventListener(navigateBackEventListener);
+	this->addEventListener(navigateCutsceneEventListener);
+	this->addEventListener(navigateNewLevelEventListener);
+	this->addEventListener(navigateEnterLevelEventListener);
+	this->addEventListener(navigateFightEventListener);
+	this->addEventListener(navigateConfirmEventListener);
 }
 
 void SceneDirector::onGameNavigateNew(EventCustom* eventCustom)

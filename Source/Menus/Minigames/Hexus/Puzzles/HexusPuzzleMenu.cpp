@@ -108,7 +108,7 @@ void HexusPuzzlesMenu::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusPuzzlesMenu::onKeyPressed, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+	this->addEventListener(keyboardListener);
 }
 
 void HexusPuzzlesMenu::loadLevels()

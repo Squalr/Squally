@@ -144,7 +144,7 @@ void PauseMenu::initializeListeners()
 	this->closeButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onCloseClick, this));
 	this->closeButton->setClickSound(Resources::Sounds_ClickBack1);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+	this->addEventListener(keyboardListener);
 }
 
 void PauseMenu::setResumeCallback(std::function<void()> resumeClickCallback)

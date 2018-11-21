@@ -3,13 +3,14 @@
 #include "cocos2d.h"
 
 #include "Engine/Localization/Localization.h"
+#include "Engine/SmartNode.h"
 #include "Engine/UI/Controls/MenuLabel.h"
 #include "Resources.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
-class TextWindow : public Node
+class TextWindow : public SmartNode
 {
 public:
 	static TextWindow * create(std::string windowTitle, Size initWindowSize, float initFontSize, Color3B initFontColor);
@@ -24,7 +25,11 @@ protected:
 	TextWindow(std::string windowTitle, Size initWindowSize, float initFontSize, Color3B initFontColor);
 	~TextWindow();
 
-	virtual void initializePositions();
+	void onEnter() override;
+	void initializePositions() override;
+	void initializeListeners() override;
+	void update(float) override;
+
 	void setWindowColor(Color4B newWindowColor);
 	void setTitleBarColor(Color4B newTitleBarColor);
 
@@ -34,16 +39,12 @@ protected:
 	static const Size padding;
 
 private:
-
-	void initializeListeners();
-	void update(float) override;
-
 	Node* background;
 	Node* titleBar;
 	MenuLabel* windowTitle;
 	RichText* displayedText;
 
-	std::vector<RichElement*>* displayTextElements;
+	std::vector<RichElement*> displayTextElements;
 
 	float fontSize;
 	Color4B titleBarColor;

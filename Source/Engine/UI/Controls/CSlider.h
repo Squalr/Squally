@@ -1,23 +1,24 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Resources.h"
-
+#include "Engine/SmartNode.h"
 #include "MenuSprite.h"
+#include "Resources.h"
 
 using namespace cocos2d;
 
-class CSlider : public Node
+class CSlider : public SmartNode
 {
 public:
 	static CSlider * create(float progress);
 
 	void setProgressUpdateCallback(std::function<void(float progress)> callback);
-	void initializePositions();
 
 protected:
 	CSlider(float progress);
 	~CSlider();
+
+	void initializePositions() override;
 
 private:
 	void onDrag(MenuSprite* sprite, MouseEvents::MouseEventArgs* args);

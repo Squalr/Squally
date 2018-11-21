@@ -3,11 +3,12 @@
 
 #include "cocos2d.h"
 
+#include "Engine/SmartNode.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
 
-class SerializableObject : public Node
+class SerializableObject : public SmartNode
 {
 public:
 	void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, Size mapUnitSize, Size mapTileSize);

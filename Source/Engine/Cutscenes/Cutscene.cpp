@@ -12,18 +12,16 @@ Cutscene* Cutscene::create(std::function<void()> cutsceneCompleteCallback)
 Cutscene::Cutscene(std::function<void()> cutsceneCompleteCallback)
 {
 	this->activeClip = nullptr;
-	this->cutsceneClips = new std::deque<CutsceneClip*>();
+	this->cutsceneClips = std::deque<CutsceneClip*>();
 	this->onCutsceneCompleteCallback = cutsceneCompleteCallback;
 }
 
 Cutscene::~Cutscene()
 {
-	for (auto it = this->cutsceneClips->begin(); it != this->cutsceneClips->end(); it++)
+	for (auto it = this->cutsceneClips.begin(); it != this->cutsceneClips.end(); it++)
 	{
 		(*it)->release();
 	}
-
-	delete(this->cutsceneClips);
 }
 
 void Cutscene::initializeListeners()
@@ -34,19 +32,23 @@ void Cutscene::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(Cutscene::onKeyPressed, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+	this->addEventListener(keyboardListener);
 }
 
 void Cutscene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	switch (keyCode)
 	{
-	case EventKeyboard::KeyCode::KEY_ESCAPE:
-		event->stopPropagation();
-		this->endCutscene();
-		break;
-	default:
-		break;
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
+		{
+			event->stopPropagation();
+			this->endCutscene();
+			break;
+		}
+		default:
+		{
+			break;
+		}
 	}
 }
 
@@ -62,15 +64,15 @@ void Cutscene::playNextCutsceneClip()
 		this->removeChild(this->activeClip);
 	}
 
-	if (this->cutsceneClips->size() <= 0)
+	if (this->cutsceneClips.size() <= 0)
 	{
 		this->activeClip = nullptr;
 		this->endCutscene();
 		return;
 	}
 
-	this->activeClip = this->cutsceneClips->front();
-	this->cutsceneClips->pop_front();
+	this->activeClip = this->cutsceneClips.front();
+	this->cutsceneClips.pop_front();
 
 	this->addChild(this->activeClip);
 }
@@ -92,5 +94,5 @@ void Cutscene::enqueueCutsceneClip(CutsceneClip* cutscene)
 {
 	cutscene->setCutsceneClipCompleteCallback(CC_CALLBACK_0(Cutscene::cutsceneClipCompleteCallback, this));
 	cutscene->retain();
-	this->cutsceneClips->push_back(cutscene);
+	this->cutsceneClips.push_back(cutscene);
 }

@@ -61,13 +61,13 @@ void MenuLabel::setText(std::string text)
 
 void MenuLabel::onEnter()
 {
-	Node::onEnter();
-
-	this->initializeListeners();
+	SmartNode::onEnter();
 }
 
 void MenuLabel::initializeListeners()
 {
+	SmartNode::initializeListeners();
+
 	this->getEventDispatcher()->removeEventListenersForTarget(this);
 
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
@@ -75,7 +75,7 @@ void MenuLabel::initializeListeners()
 	mouseListener->onMouseMove = CC_CALLBACK_1(MenuLabel::onMouseMove, this);
 	mouseListener->onMouseDown = CC_CALLBACK_1(MenuLabel::onMouseDown, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
+	this->addEventListener(mouseListener);
 }
 
 void MenuLabel::onMouseMove(EventMouse* event)
