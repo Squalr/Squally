@@ -93,6 +93,8 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->cardText->setAnchorPoint(Vec2(0.5f, 1.0f));
 	this->cardText->enableOutline(Color4B::BLACK, 6);
 
+	this->setScale(Card::cardScale);
+
 	this->updateText();
 
 	this->addChild(this->cardBack);
@@ -114,8 +116,6 @@ Card::~Card()
 void Card::onEnter()
 {
 	SmartNode::onEnter();
-
-	this->setScale(Card::cardScale);
 }
 
 void Card::initializePositions()
