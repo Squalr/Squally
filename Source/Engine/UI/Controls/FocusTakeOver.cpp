@@ -30,10 +30,21 @@ void FocusTakeOver::onEnter()
 	this->focusBackground->setOpacity(0);
 }
 
-void FocusTakeOver::onExitTransitionDidStart()
+void FocusTakeOver::initializeListeners()
 {
-	SmartNode::onExitTransitionDidStart();
+	SmartNode::initializeListeners();
 
+	EventListenerCustom* beforeSceneChangeListener = EventListenerCustom::create(
+		SceneEvents::BeforeSceneChangeEvent,
+		CC_CALLBACK_0(FocusTakeOver::beforeSceneChange, this)
+	);
+
+	this->addEventListenerIgnorePause(beforeSceneChangeListener);
+}
+
+void FocusTakeOver::beforeSceneChange()
+{
+	// Important to restore any hijacked nodes before scene changes
 	this->unfocus();
 }
 

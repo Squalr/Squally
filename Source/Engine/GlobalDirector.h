@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalNode.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -19,7 +20,7 @@ protected:
 	~GlobalDirector();
 
 	Scene* activeScene;
-	std::vector<GlobalNode*>* globalNodes;
+	std::vector<GlobalNode*> globalNodes;
 
 	static GlobalDirector* instance;
 };

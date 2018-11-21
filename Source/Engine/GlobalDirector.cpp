@@ -14,17 +14,18 @@ GlobalDirector* GlobalDirector::getInstance()
 
 GlobalDirector::GlobalDirector()
 {
-	this->globalNodes = new std::vector<GlobalNode*>();
+	this->globalNodes = std::vector<GlobalNode*>();
 	this->activeScene = nullptr;
 }
 
 GlobalDirector::~GlobalDirector()
 {
-	delete(this->globalNodes);
 }
 
 void GlobalDirector::loadScene(Scene* scene)
 {
+	SceneEvents::TriggerBeforeSceneChange();
+
 	// Although this is counter-intuitive, add the Global Director as a child to whichever scene is active.
 	// This will allows for the Global Director's nodes to listen for events
 	if (activeScene != nullptr)
@@ -53,6 +54,6 @@ void GlobalDirector::registerGlobalNode(GlobalNode* node)
 	if (node != nullptr)
 	{
 		this->addChild(node);
-		this->globalNodes->push_back(node);
+		this->globalNodes.push_back(node);
 	}
 }

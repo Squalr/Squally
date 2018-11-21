@@ -20,7 +20,8 @@ private:
 	~FocusTakeOver();
 
 	void onEnter() override;
-	void onExitTransitionDidStart() override;
+	void initializeListeners() override;
+	void beforeSceneChange();
 
 	LayerColor* focusBackground;
 	std::map<Node*, std::tuple<Node*, int>> hijackedNodes;
