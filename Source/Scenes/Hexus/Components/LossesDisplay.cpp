@@ -20,11 +20,6 @@ LossesDisplay::LossesDisplay()
 	this->enemySkullA = Sprite::create(Resources::Minigames_Hexus_Skull);
 	this->enemySkullB = Sprite::create(Resources::Minigames_Hexus_Skull);
 
-	this->playerSkullA->setOpacity(0);
-	this->playerSkullB->setOpacity(0);
-	this->enemySkullA->setOpacity(0);
-	this->enemySkullB->setOpacity(0);
-
 	this->addChild(this->playerSocketA);
 	this->addChild(this->playerSocketB);
 	this->addChild(this->playerSkullA);
@@ -42,6 +37,11 @@ LossesDisplay::~LossesDisplay()
 void LossesDisplay::onEnter()
 {
 	ComponentBase::onEnter();
+
+	this->playerSkullA->setOpacity(0);
+	this->playerSkullB->setOpacity(0);
+	this->enemySkullA->setOpacity(0);
+	this->enemySkullB->setOpacity(0);
 }
 
 void LossesDisplay::initializePositions()

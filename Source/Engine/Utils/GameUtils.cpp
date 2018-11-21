@@ -180,11 +180,11 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	// Add or insert the child
 	if (newParent != nullptr && index != -1)
 	{
-		newParent->addChildInsert(node, index);
+		newParent->addChildInsert(node, index, true);
 	}
 	else if (newParent != nullptr)
 	{
-		newParent->addChild(node);
+		newParent->addChildAsReentry(node);
 	}
 
 	node->setPosition(newPosition);

@@ -16,6 +16,14 @@ void SmartNode::onEnter()
 	this->initializeListeners();
 }
 
+void SmartNode::onReenter()
+{
+	Node::onReenter();
+
+	this->initializePositions();
+	this->initializeListeners();
+}
+
 void SmartNode::initializePositions()
 {
 }

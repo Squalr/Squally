@@ -95,7 +95,6 @@ Hexus::Hexus()
 	this->gameState->claimVictoryButtonPointer = this->statePass->claimVictoryButton;
 
 	this->addChild(this->gameBackground);
-	this->addChild(this->gameState);
 	this->addChild(this->avatars);
 	this->addChild(this->cardPreview);
 	this->addChild(this->stagingHelperText);
@@ -106,6 +105,7 @@ Hexus::Hexus()
 	this->addChild(this->drawCountDisplay);
 	this->addChild(this->rowTotals);
 	this->addChild(this->scoreTotal);
+	this->addChild(this->gameState);
 	this->addChild(this->stateAIDecideCard);
 	this->addChild(this->stateAIDecideCardReplace);
 	this->addChild(this->stateAIDecidePass);

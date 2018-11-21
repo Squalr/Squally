@@ -21,9 +21,6 @@ ScoreTotal::ScoreTotal()
 	this->enemyTotal->enableOutline(Color4B::BLACK, 3);
 	this->enemyLeaderEmblem = Sprite::create(Resources::Minigames_Hexus_LeaderEmblem);
 
-	this->playerLeaderEmblem->setOpacity(0);
-	this->enemyLeaderEmblem->setOpacity(0);
-
 	this->addChild(this->playerTotalFrame);
 	this->addChild(this->playerLeaderEmblem);
 	this->addChild(this->playerTotal);
@@ -40,6 +37,9 @@ ScoreTotal::~ScoreTotal()
 void ScoreTotal::onEnter()
 {
 	ComponentBase::onEnter();
+
+	this->playerLeaderEmblem->setOpacity(0);
+	this->enemyLeaderEmblem->setOpacity(0);
 }
 
 void ScoreTotal::initializePositions()

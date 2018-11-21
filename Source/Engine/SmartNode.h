@@ -15,6 +15,7 @@ public:
 
 protected:
 	virtual void onEnter() override;
+	virtual void onReenter() override; // Called on parent change
 	virtual void initializePositions();
 	virtual void initializeListeners();
 	virtual void removeAllListeners();

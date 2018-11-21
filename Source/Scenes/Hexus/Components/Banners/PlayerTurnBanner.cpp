@@ -43,7 +43,8 @@ void PlayerTurnBanner::onAnyStateChange(GameState* gameState)
 {
 	BannerBase::onAnyStateChange(gameState);
 
-	if (!gameState->isRepeatingSameTurn && gameState->stateType == GameState::PlayerTurnStart && gameState->turnNumber > 0)
+	// Only show after the first turn -- first turn is reserved for PlayerFirstBanner
+	if (!gameState->isRepeatingSameTurn && gameState->stateType == GameState::PlayerTurnStart && (gameState->roundNumber >= 1 || gameState->turnNumber >= 1))
 	{
 		this->flashBanner();
 	}
