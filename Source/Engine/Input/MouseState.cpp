@@ -65,11 +65,11 @@ void MouseState::initializeListeners()
 	mouseListener->onMouseDown = CC_CALLBACK_1(MouseState::onMouseDown, this);
 	mouseListener->onMouseUp = CC_CALLBACK_1(MouseState::onMouseUp, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(clickableMouseOverListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(clickableMouseOutListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseDragListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseScrollListener, this);
+	this->addEventListener(mouseListener);
+	this->addEventListener(clickableMouseOverListener);
+	this->addEventListener(clickableMouseOutListener);
+	this->addEventListener(mouseDragListener);
+	this->addEventListener(mouseScrollListener);
 }
 
 void MouseState::onMouseDown(EventMouse* event)

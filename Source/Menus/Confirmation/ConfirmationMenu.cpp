@@ -74,7 +74,7 @@ void ConfirmationMenu::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(ConfirmationMenu::onKeyPressed, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+	this->addEventListener(keyboardListener);
 }
 
 void ConfirmationMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)

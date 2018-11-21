@@ -119,10 +119,11 @@ void RadialMenu::initializeListeners()
 
 	EventListenerCustom* hackableEditListener = EventListenerCustom::create(HackableEvents::HackableObjectEditEvent, CC_CALLBACK_1(RadialMenu::onHackableEdit, this));
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(RadialMenu::onKeyPressed, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(hackableEditListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+	this->addEventListener(hackableEditListener);
+	this->addEventListener(keyboardListener);
 }
 
 void RadialMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)

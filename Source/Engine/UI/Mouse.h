@@ -18,8 +18,8 @@ protected:
 	~Mouse();
 
 private:
-	void initializeListeners() override;
 	void onEnter() override;
+	void initializeListeners() override;
 	void pause() override;
 	void resume() override;
 	void onMouseStateUpdateEvent(EventCustom* eventCustom);

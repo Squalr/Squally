@@ -1,12 +1,13 @@
 #pragma once
 #include "cocos2d.h"
-#include "Resources.h"
 
+#include "Engine/SmartNode.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Resources.h"
 
 using namespace cocos2d;
 
-class MenuLabel : public Node
+class MenuLabel : public SmartNode
 {
 public:
 	static MenuLabel * create(std::string labelText, std::string fontResource, float fontSize);

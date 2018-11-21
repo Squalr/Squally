@@ -24,8 +24,6 @@ CProgressBar::CProgressBar()
 
 	this->addChild(this->frame);
 	this->addChild(this->progressClip);
-
-	this->initializePositions();
 }
 
 CProgressBar::~CProgressBar()
@@ -34,6 +32,8 @@ CProgressBar::~CProgressBar()
 
 void CProgressBar::initializePositions()
 {
+	SmartNode::initializePositions();
+
 	this->progressClip->setPosition(Vec2(-this->progressBar->getContentSize().width / 2, 0));
 }
 

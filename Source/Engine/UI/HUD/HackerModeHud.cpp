@@ -29,20 +29,18 @@ HackerModeHud::~HackerModeHud()
 void HackerModeHud::onEnter()
 {
 	Hud::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
 }
 
 void HackerModeHud::initializePositions()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	Hud::initializePositions();
 
+	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 void HackerModeHud::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	Hud::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 	EventListenerCustom* hackableRegisterListener = EventListenerCustom::create(
@@ -52,8 +50,8 @@ void HackerModeHud::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HackerModeHud::onKeyPressed, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(hackableRegisterListener, this);
+	this->addEventListener(keyboardListener);
+	this->addEventListener(hackableRegisterListener);
 }
 
 void HackerModeHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)

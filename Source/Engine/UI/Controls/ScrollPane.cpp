@@ -62,7 +62,7 @@ void ScrollPane::initializeListeners()
 	mouseScrollListener->onMouseMove = CC_CALLBACK_1(ScrollPane::onScrollViewMouseMove, this);
 
 	this->scrollView->addEventListenerScrollView(mouseMoveListener, nullptr);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseScrollListener, this);
+	this->addEventListener(mouseScrollListener);
 }
 
 Size ScrollPane::getPaneSize()

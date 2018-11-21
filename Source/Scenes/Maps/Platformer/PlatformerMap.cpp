@@ -87,8 +87,8 @@ void PlatformerMap::initializeListeners()
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(PlatformerMap::onKeyPressed, this);
 	mouseListener->onMouseScroll = CC_CALLBACK_1(PlatformerMap::onMouseWheelScroll, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+	this->addEventListener(mouseListener);
+	this->addEventListener(keyboardListener);
 }
 
 void PlatformerMap::loadMap(SerializableMap* serializableMap)
@@ -111,12 +111,12 @@ void PlatformerMap::resume(void)
 		this->toggleHackerMode();
 	}
 
-	Node::resume();
+	IMap::resume();
 }
 
 void PlatformerMap::update(float dt)
 {
-	FadeScene::update(dt);
+	IMap::update(dt);
 }
 
 void PlatformerMap::onMouseWheelScroll(EventMouse* event)

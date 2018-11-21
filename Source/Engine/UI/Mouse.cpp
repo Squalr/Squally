@@ -51,7 +51,7 @@ void Mouse::initializeListeners()
 		CC_CALLBACK_1(Mouse::onMouseStateUpdateEvent, this)
 	);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseStateUpdateListener, this);
+	this->addEventListener(mouseStateUpdateListener);
 }
 
 void Mouse::pause()

@@ -72,11 +72,10 @@ protected:
 	virtual bool contactEnd(CollisionData data);
 
 	void onEnter() override;
+	void initializeListeners() override;
 	void update(float dt) override;
 
 private:
-	void initializeEventListeners();
-
 	bool onContactBegin(PhysicsContact& contact);
 	bool onContactUpdate(PhysicsContact& contact);
 	bool onContactEnd(PhysicsContact& contact);

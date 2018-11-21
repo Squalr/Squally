@@ -191,26 +191,36 @@ void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2
 
 				switch (it->second.getType())
 				{
-				case Value::Type::STRING:
-					propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
-					break;
-				case Value::Type::INTEGER:
-					propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "int");
-					propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
-					break;
-				case Value::Type::FLOAT:
-				case Value::Type::DOUBLE:
-					propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "float");
-					propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
-					break;
-				case Value::Type::BOOLEAN:
-					propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "bool");
-					propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
-					break;
-				case Value::Type::VECTOR:
-				case Value::Type::MAP:
-				default:
-					break;
+					case Value::Type::STRING:
+					{
+						propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
+						break;
+					}
+					case Value::Type::INTEGER:
+					{
+						propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "int");
+						propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
+						break;
+					}
+					case Value::Type::FLOAT:
+					case Value::Type::DOUBLE:
+					{
+						propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "float");
+						propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
+						break;
+					}
+					case Value::Type::BOOLEAN:
+					{
+						propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "bool");
+						propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
+						break;
+					}
+					case Value::Type::VECTOR:
+					case Value::Type::MAP:
+					default:
+					{
+						break;
+					}
 				}
 
 				propertiesElement->LinkEndChild(propertyElement);

@@ -22,7 +22,7 @@ WorldMap * WorldMap::create()
 
 WorldMap::WorldMap()
 {
-	this->mapNodes = new std::vector<MapNode*>();
+	this->mapNodes = std::vector<MapNode*>();
 	this->background = Sprite::create(Resources::Menus_WorldMap_WorldMap);
 	this->foreground = Sprite::create(Resources::Menus_WorldMap_WorldMapFront);
 	this->fogA = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
@@ -116,15 +116,15 @@ WorldMap::WorldMap()
 	this->fogC->setOpacity(127);
 	this->fogC->setCascadeOpacityEnabled(true);
 
-	this->mapNodes->push_back(this->jungle);
-	this->mapNodes->push_back(this->waterRuins);
-	this->mapNodes->push_back(this->forest);
-	this->mapNodes->push_back(this->caverns);
-	this->mapNodes->push_back(this->castle);
-	this->mapNodes->push_back(this->iceCaps);
-	this->mapNodes->push_back(this->obelisk);
-	this->mapNodes->push_back(this->volcano);
-	this->mapNodes->push_back(this->mecha);
+	this->mapNodes.push_back(this->jungle);
+	this->mapNodes.push_back(this->waterRuins);
+	this->mapNodes.push_back(this->forest);
+	this->mapNodes.push_back(this->caverns);
+	this->mapNodes.push_back(this->castle);
+	this->mapNodes.push_back(this->iceCaps);
+	this->mapNodes.push_back(this->obelisk);
+	this->mapNodes.push_back(this->volcano);
+	this->mapNodes.push_back(this->mecha);
 
 	this->addChild(this->background);
 	this->addChild(this->jungle);
@@ -147,7 +147,6 @@ WorldMap::WorldMap()
 
 WorldMap::~WorldMap()
 {
-	delete(this->mapNodes);
 }
 
 void WorldMap::onEnter()
@@ -197,8 +196,8 @@ void WorldMap::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(WorldMap::onKeyPressed, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+	this->addEventListener(mouseListener);
+	this->addEventListener(keyboardListener);
 }
 
 void WorldMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -236,7 +235,7 @@ void WorldMap::onMouseMove(EventCustom* event)
 {
 	MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(event->getUserData());
 
-	for (auto it = this->mapNodes->begin(); it != this->mapNodes->end(); it++)
+	for (auto it = this->mapNodes.begin(); it != this->mapNodes.end(); it++)
 	{
 		MapNode* node = *it;
 

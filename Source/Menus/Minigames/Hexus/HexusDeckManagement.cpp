@@ -171,7 +171,6 @@ HexusDeckManagement::~HexusDeckManagement()
 
 void HexusDeckManagement::onEnter()
 {
-
 	FadeScene::onEnter();
 
 	float delay = 0.25f;
@@ -197,8 +196,6 @@ void HexusDeckManagement::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusDeckManagement::onKeyPressed, this);
 	
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
-	
 	for (auto it = this->displayDeckCards.begin(); it != this->displayDeckCards.end(); it++)
 	{
 		(*it).second->setMouseClickCallback(CC_CALLBACK_1(HexusDeckManagement::onDeckCardClick, this));
@@ -212,6 +209,7 @@ void HexusDeckManagement::initializeListeners()
 	}
 
 	this->backButton->setClickCallback(CC_CALLBACK_1(HexusDeckManagement::onBackClick, this));
+	this->addEventListener(keyboardListener);
 }
 
 void HexusDeckManagement::initializePositions()
@@ -325,11 +323,15 @@ void HexusDeckManagement::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* ev
 	switch (keyCode)
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
+		{
 			event->stopPropagation();
 			this->save(true);
 			break;
+		}
 		default:
+		{
 			break;
+		}
 	}
 }
 
@@ -457,17 +459,25 @@ void HexusDeckManagement::rebuildCardLists()
 		switch (cardData->cardType)
 		{
 			case CardData::CardType::Binary:
+			{
 				totalDeckBinaryCards += count;
 				break;
+			}
 			case CardData::CardType::Decimal:
+			{
 				totalDeckDecimalCards += count;
 				break;
+			}
 			case CardData::CardType::Hexidecimal:
+			{
 				totalDeckHexCards += count;
 				break;
+			}
 			default:
+			{
 				totalDeckSpecialCards += count;
 				break;
+			}
 		}
 	}
 
@@ -522,14 +532,20 @@ void HexusDeckManagement::updateCardCount(MenuCard* card, int count)
 		{
 			case 1:
 			default:
+			{
 				this->countLabels[card]->setTextColor(Color4B(192, 165, 108, 255));
 				break;
+			}
 			case 2:
+			{
 				this->countLabels[card]->setTextColor(Color4B(214, 184, 121, 255));
 				break;
+			}
 			case 3:
+			{
 				this->countLabels[card]->setTextColor(Color4B(238, 205, 135, 255));
 				break;
+			}
 		}
 	}
 }

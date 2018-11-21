@@ -48,7 +48,8 @@ void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 	}
 
 	listener->setIgnorePause(true);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+
+	this->addEventListener(listener);
 }
 
 void SmartNode::resume()

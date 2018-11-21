@@ -73,6 +73,21 @@ void MenuSprite::onEnterTransitionDidFinish()
 	this->mouseMove(&args);
 }
 
+void MenuSprite::initializeListeners()
+{
+	SmartNode::initializeListeners();
+
+	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MenuSprite::onMouseMove, this));
+	EventListenerCustom* mouseRefreshListener = EventListenerCustom::create(MouseEvents::MouseRefreshEvent, CC_CALLBACK_1(MenuSprite::onMouseRefresh, this));
+	EventListenerCustom* mouseDownListener = EventListenerCustom::create(MouseEvents::MouseDownEvent, CC_CALLBACK_1(MenuSprite::onMouseDown, this));
+	EventListenerCustom* mouseUpListener = EventListenerCustom::create(MouseEvents::MouseUpEvent, CC_CALLBACK_1(MenuSprite::onMouseUp, this));
+
+	this->addEventListener(mouseMoveListener);
+	this->addEventListener(mouseRefreshListener);
+	this->addEventListener(mouseDownListener);
+	this->addEventListener(mouseUpListener);
+}
+
 void MenuSprite::update(float dt)
 {
 	SmartNode::update(dt);
@@ -138,21 +153,6 @@ void MenuSprite::setMouseOverSound(std::string soundResource)
 void MenuSprite::setClickSound(std::string soundResource)
 {
 	this->clickSound = soundResource;
-}
-
-void MenuSprite::initializeListeners()
-{
-	SmartNode::initializeListeners();
-
-	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MenuSprite::onMouseMove, this));
-	EventListenerCustom* mouseRefreshListener = EventListenerCustom::create(MouseEvents::MouseRefreshEvent, CC_CALLBACK_1(MenuSprite::onMouseRefresh, this));
-	EventListenerCustom* mouseDownListener = EventListenerCustom::create(MouseEvents::MouseDownEvent, CC_CALLBACK_1(MenuSprite::onMouseDown, this));
-	EventListenerCustom* mouseUpListener = EventListenerCustom::create(MouseEvents::MouseUpEvent, CC_CALLBACK_1(MenuSprite::onMouseUp, this));
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseMoveListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseRefreshListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseDownListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(mouseUpListener, this);
 }
 
 bool MenuSprite::intersects(Vec2 mousePos)

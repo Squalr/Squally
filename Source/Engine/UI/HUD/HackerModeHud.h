@@ -21,11 +21,10 @@ private:
 	~HackerModeHud();
 
 	void onEnter() override;
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
+	void initializeListeners() override;
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onRadialMenuClose();
-
 	void registerHackableObject(EventCustom* args);
 
 	Node* hackableButtonLayer;

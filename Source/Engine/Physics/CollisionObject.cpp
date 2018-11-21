@@ -33,6 +33,27 @@ CollisionObject::~CollisionObject()
 {
 }
 
+void CollisionObject::onEnter()
+{
+	HackableObject::onEnter();
+
+	this->scheduleUpdate();
+}
+
+void CollisionObject::initializeListeners()
+{
+	HackableObject::initializeListeners();
+
+	EventListenerPhysicsContact* contactListener = EventListenerPhysicsContact::create();
+
+	contactListener->onContactBegin = CC_CALLBACK_1(CollisionObject::onContactBegin, this);
+	contactListener->onContactPreSolve = CC_CALLBACK_1(CollisionObject::onContactUpdate, this);
+	contactListener->onContactPostSolve = CC_CALLBACK_1(CollisionObject::onContactUpdate, this);
+	contactListener->onContactSeparate = CC_CALLBACK_1(CollisionObject::onContactEnd, this);
+
+	this->addEventListener(contactListener);
+}
+
 void CollisionObject::setCollisionGroups(CategoryGroup categoryGroup, std::vector<CategoryGroup>* collidesWith)
 {
 	if (this->physicsBody != nullptr)
@@ -51,14 +72,6 @@ void CollisionObject::setCollisionGroups(CategoryGroup categoryGroup, std::vecto
 		this->physicsBody->setCollisionBitmask(collidesWithBitmask);
 		this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
 	}
-}
-
-void CollisionObject::onEnter()
-{
-	SerializableObject::onEnter();
-
-	this->initializeEventListeners();
-	this->scheduleUpdate();
 }
 
 void CollisionObject::update(float dt)
@@ -133,18 +146,6 @@ bool CollisionObject::contactUpdate(CollisionData data)
 bool CollisionObject::contactEnd(CollisionData data)
 {
 	return true;
-}
-
-void CollisionObject::initializeEventListeners()
-{
-	EventListenerPhysicsContact * contactListener = EventListenerPhysicsContact::create();
-
-	contactListener->onContactBegin = CC_CALLBACK_1(CollisionObject::onContactBegin, this);
-	contactListener->onContactPreSolve = CC_CALLBACK_1(CollisionObject::onContactUpdate, this);
-	contactListener->onContactPostSolve = CC_CALLBACK_1(CollisionObject::onContactUpdate, this);
-	contactListener->onContactSeparate = CC_CALLBACK_1(CollisionObject::onContactEnd, this);
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(contactListener, this);
 }
 
 bool CollisionObject::onContactBegin(PhysicsContact &contact)

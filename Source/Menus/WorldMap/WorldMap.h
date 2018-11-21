@@ -31,7 +31,7 @@ private:
 	void onMouseMove(EventCustom* args);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
-	std::vector<MapNode*>* mapNodes;
+	std::vector<MapNode*> mapNodes;
 	MapNode* jungle;
 	MapNode* waterRuins;
 	MapNode* forest;

@@ -16,9 +16,9 @@ void ComponentBase::initializeListeners()
 	EventListenerCustom* beforeStateChangeListener = EventListenerCustom::create(GameState::beforeStateUpdateEvent, CC_CALLBACK_1(ComponentBase::onBeforeStateChangeEvent, this));
 	EventListenerCustom* stateChangeListener = EventListenerCustom::create(GameState::onStateUpdateEvent, CC_CALLBACK_1(ComponentBase::onStateChangeEvent, this));
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(requestStateChangeListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(beforeStateChangeListener, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(stateChangeListener, this);
+	this->addEventListener(requestStateChangeListener);
+	this->addEventListener(beforeStateChangeListener);
+	this->addEventListener(stateChangeListener);
 }
 
 void ComponentBase::onRequestStateChangeEvent(EventCustom* eventCustom)

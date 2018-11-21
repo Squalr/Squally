@@ -280,7 +280,7 @@ void HexusStoreMenu::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusStoreMenu::onKeyPressed, this);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(keyboardListener, this);
+	this->addEventListener(keyboardListener);
 
 	this->lootBoxButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onLootBoxTabClick, this));
 	this->binaryButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onBinaryTabClick, this));
