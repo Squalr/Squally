@@ -43,7 +43,13 @@ void PlayerFirstBanner::onAnyStateChange(GameState* gameState)
 {
 	BannerBase::onAnyStateChange(gameState);
 
-	if (gameState->previousStateType == GameState::CoinFlip && gameState->turnNumber == 0 && gameState->turn == GameState::Turn::Player)
+	// First mover banner does not apply to games with initial states
+	if (gameState->opponentData->stateOverride != nullptr)
+	{
+		return;
+	}
+
+	if (!gameState->isRepeatingSameTurn && gameState->stateType == GameState::PlayerTurnStart && gameState->roundNumber == 0 && gameState->turnNumber == 0)
 	{
 		this->flashBanner();
 	}

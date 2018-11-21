@@ -75,7 +75,43 @@ void StateCoinFlip::onStateEnter(GameState* gameState)
 {
 	StateBase::onStateEnter(gameState);
 
-	gameState->playerHand->disableRowCardInteraction();
+	// No coin flip after the first round
+	if (gameState->roundNumber >= 1)
+	{
+		// Alternate turn instead
+		gameState->turn = (gameState->turn == GameState::Turn::Player) ? GameState::Turn::Enemy : GameState::Turn::Player;
+		
+		switch (gameState->turn)
+		{
+			case GameState::Turn::Enemy:
+			{
+				this->runAction(Sequence::create(
+					DelayTime::create(0.25f),
+					CallFunc::create([=]()
+					{
+						GameState::updateState(gameState, GameState::StateType::OpponentTurnStart);
+					}),
+					nullptr
+				));
+				break;
+			}
+			default:
+			case GameState::Turn::Player:
+			{
+				this->runAction(Sequence::create(
+					DelayTime::create(0.25f),
+					CallFunc::create([=]()
+					{
+						GameState::updateState(gameState, GameState::StateType::PlayerTurnStart);
+					}),
+					nullptr
+				));
+				break;
+			}
+		}
+
+		return;
+	}
 
 	if (RandomHelper::random_real(0.0f, 1.0f) > 0.5f)
 	{
@@ -93,14 +129,17 @@ void StateCoinFlip::onStateEnter(GameState* gameState)
 	{
 		switch (gameState->turn)
 		{
-			case GameState::Turn::Player:
-				GameState::updateState(gameState, GameState::StateType::PlayerTurnStart);
-				break;
 			case GameState::Turn::Enemy:
+			{
 				GameState::updateState(gameState, GameState::StateType::OpponentTurnStart);
 				break;
+			}
 			default:
+			case GameState::Turn::Player:
+			{
+				GameState::updateState(gameState, GameState::StateType::PlayerTurnStart);
 				break;
+			}
 		}
 	});
 
@@ -152,7 +191,8 @@ void StateCoinFlip::onStateEnter(GameState* gameState)
 		EaseSineOut::create(ScaleTo::create(Config::coinFlipDownDuration, Config::coinFlipStartScale)),
 		DelayTime::create(Config::coinFlipRestDuration),
 		FadeOut::create(Config::coinFlipFadeSpeed),
-		nullptr));
+		nullptr
+	));
 }
 
 void StateCoinFlip::onStateReload(GameState* gameState)
