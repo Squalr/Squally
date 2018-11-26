@@ -14,7 +14,7 @@ HexusOpponentFraya* HexusOpponentFraya::getInstance()
 }
 
 HexusOpponentFraya::HexusOpponentFraya() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Caverns_Npcs_Fraya_Animations,
+	EntityResources::Platformer_Environment_Caverns_Npcs_Fraya_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	0.85f,
 	Vec2(-32.0f, -40.0f),

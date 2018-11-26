@@ -14,7 +14,7 @@ HexusOpponentTutorialC* HexusOpponentTutorialC::getInstance()
 }
 
 HexusOpponentTutorialC::HexusOpponentTutorialC() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Caverns_Npcs_Alder_Animations,
+	EntityResources::Platformer_Environment_Caverns_Npcs_Alder_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	0.85f,
 	Vec2(-48.0f, -64.0f),

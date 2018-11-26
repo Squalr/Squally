@@ -12,7 +12,7 @@ Minos* Minos::deserialize(ValueMap* initProperties)
 }
 
 Minos::Minos(ValueMap* initProperties) : NpcBase(initProperties,
-	Resources::Entities_Platformer_Environment_Jungle_Npcs_Minos_Animations,
+	EntityResources::Platformer_Environment_Jungle_Npcs_Minos_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,

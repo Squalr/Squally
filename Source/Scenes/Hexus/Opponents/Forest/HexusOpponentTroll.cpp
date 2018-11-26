@@ -14,7 +14,7 @@ HexusOpponentTroll* HexusOpponentTroll::getInstance()
 }
 
 HexusOpponentTroll::HexusOpponentTroll() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Forest_Enemies_Troll_Animations,
+	EntityResources::Platformer_Environment_Forest_Enemies_Troll_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

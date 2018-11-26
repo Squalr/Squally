@@ -3,7 +3,6 @@
 
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 

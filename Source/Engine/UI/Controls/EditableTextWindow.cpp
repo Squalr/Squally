@@ -62,7 +62,6 @@ std::string  EditableTextWindow::getText()
 	return this->editableText->getString();
 }
 
-
 void EditableTextWindow::setText(std::string text)
 {
 	this->editableText->setString(text);

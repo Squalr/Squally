@@ -12,7 +12,7 @@ Gorilla* Gorilla::deserialize(ValueMap* initProperties)
 }
 
 Gorilla::Gorilla(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Jungle_Enemies_Gorilla_Animations,
+	EntityResources::Platformer_Environment_Jungle_Enemies_Gorilla_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(278.0f, 288.0f),
 	1.0f,

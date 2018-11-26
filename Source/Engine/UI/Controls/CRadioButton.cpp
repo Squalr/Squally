@@ -14,8 +14,8 @@ CRadioButton::CRadioButton(int groupIdentifier)
 	this->onCheckCallback = nullptr;
 	this->groupId = groupIdentifier;
 
-	this->checked = MenuSprite::create(Resources::Menus_OptionsMenu_RadioButtonSelected, Resources::Menus_OptionsMenu_RadioButtonSelectedHover);
-	this->unchecked = MenuSprite::create(Resources::Menus_OptionsMenu_RadioButtonEmpty, Resources::Menus_OptionsMenu_RadioButtonHover);
+	this->checked = MenuSprite::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover);
+	this->unchecked = MenuSprite::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover);
 
 	this->checked->setClickCallback(CC_CALLBACK_1(CRadioButton::onUncheckClick, this));
 	this->unchecked->setClickCallback(CC_CALLBACK_1(CRadioButton::onCheckClick, this));

@@ -14,7 +14,7 @@ HexusOpponentZelina* HexusOpponentZelina::getInstance()
 }
 
 HexusOpponentZelina::HexusOpponentZelina() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Volcano_Npcs_Zelina_Animations,
+	EntityResources::Platformer_Environment_Volcano_Npcs_Zelina_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(-48.0f, -72.0f),

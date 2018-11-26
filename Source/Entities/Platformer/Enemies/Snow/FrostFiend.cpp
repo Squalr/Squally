@@ -12,7 +12,7 @@ FrostFiend* FrostFiend::deserialize(ValueMap* initProperties)
 }
 
 FrostFiend::FrostFiend(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Snow_Enemies_FrostFiend_Animations,
+	EntityResources::Platformer_Environment_Snow_Enemies_FrostFiend_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(212.0f, 296.0f),
 	0.7f,

@@ -14,7 +14,7 @@ HexusOpponentOgre* HexusOpponentOgre::getInstance()
 }
 
 HexusOpponentOgre::HexusOpponentOgre() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Forest_Enemies_Ogre_Animations,
+	EntityResources::Platformer_Environment_Forest_Enemies_Ogre_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

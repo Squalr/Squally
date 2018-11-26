@@ -12,7 +12,6 @@ void CollisionObject::requestCollisionMapping(CollisionMapRequestArgs args)
 	);
 }
 
-
 CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, CategoryName initCategoryName, bool isDynamic, bool canRotate) : HackableObject(initProperties)
 {
 	this->physicsBody = initPhysicsBody;

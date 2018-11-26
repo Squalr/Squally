@@ -11,7 +11,6 @@
 #include "Events/HexusEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/Minigames/Hexus/MenuCard.h"
-#include "Resources.h"
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/CardStorage.h"

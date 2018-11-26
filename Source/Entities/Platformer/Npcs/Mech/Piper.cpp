@@ -12,7 +12,7 @@ Piper* Piper::deserialize(ValueMap* initProperties)
 }
 
 Piper::Piper(ValueMap* initProperties) : NpcBase(initProperties,
-	Resources::Entities_Platformer_Environment_Mech_Npcs_Piper_Animations,
+	EntityResources::Platformer_Environment_Mech_Npcs_Piper_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,

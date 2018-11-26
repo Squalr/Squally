@@ -14,7 +14,7 @@ HexusOpponentAmelia* HexusOpponentAmelia::getInstance()
 }
 
 HexusOpponentAmelia::HexusOpponentAmelia() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Obelisk_Npcs_Amelia_Animations,
+	EntityResources::Platformer_Environment_Obelisk_Npcs_Amelia_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

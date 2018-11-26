@@ -14,7 +14,7 @@ HexusOpponentDudly* HexusOpponentDudly::getInstance()
 }
 
 HexusOpponentDudly::HexusOpponentDudly() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Forest_Npcs_Dudly_Animations,
+	EntityResources::Platformer_Environment_Forest_Npcs_Dudly_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-32.0f, -72.0f),

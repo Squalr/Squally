@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/Save/SaveManager.h"
-#include "Resources.h"
+
 #include "Scenes/Hexus/CardData/CardList.h"
 
 using namespace cocos2d;

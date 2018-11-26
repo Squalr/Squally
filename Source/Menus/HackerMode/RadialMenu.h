@@ -8,9 +8,8 @@
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Shaders/PostProcess.h"
 #include "Events/HackableEvents.h"
-#include "Resources.h"
-
-#include "CodeEditor.h"
+#include "Menus/HackerMode/CodeEditor.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 

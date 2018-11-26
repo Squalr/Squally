@@ -12,7 +12,7 @@ Zelina* Zelina::deserialize(ValueMap* initProperties)
 }
 
 Zelina::Zelina(ValueMap* initProperties) : NpcBase(initProperties,
-	Resources::Entities_Platformer_Environment_Volcano_Npcs_Zelina_Animations,
+	EntityResources::Platformer_Environment_Volcano_Npcs_Zelina_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,

@@ -12,7 +12,7 @@ Xenon* Xenon::deserialize(ValueMap* initProperties)
 }
 
 Xenon::Xenon(ValueMap* initProperties) : NpcBase(initProperties,
-	Resources::Entities_Platformer_Environment_Mech_Npcs_Xenon_Animations,
+	EntityResources::Platformer_Environment_Mech_Npcs_Xenon_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,

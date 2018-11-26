@@ -8,6 +8,7 @@
 #include "Engine/Maps/ILayerDeserializer.h"
 #include "Engine/Maps/SerializableLayer.h"
 #include "Engine/Maps/SerializableTileLayer.h"
+#include "Resources/MapResources.h"
 
 using namespace cocos2d;
 

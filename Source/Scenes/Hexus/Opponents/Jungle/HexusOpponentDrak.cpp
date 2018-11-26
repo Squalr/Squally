@@ -14,7 +14,7 @@ HexusOpponentDrak* HexusOpponentDrak::getInstance()
 }
 
 HexusOpponentDrak::HexusOpponentDrak() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Jungle_Npcs_Drak_Animations,
+	EntityResources::Platformer_Environment_Jungle_Npcs_Drak_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

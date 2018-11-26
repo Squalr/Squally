@@ -16,7 +16,6 @@
 #include "Menus/Title/HackerMode.h"
 #include "Menus/Title/TitleScreenBackground.h"
 #include "Menus/Options/OptionsMenu.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;

@@ -15,7 +15,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Cutscenes/IntroCutscene/IntroCutscene.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;

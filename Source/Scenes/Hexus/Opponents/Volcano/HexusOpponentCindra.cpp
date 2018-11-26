@@ -14,7 +14,7 @@ HexusOpponentCindra* HexusOpponentCindra::getInstance()
 }
 
 HexusOpponentCindra::HexusOpponentCindra() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Volcano_Npcs_Cindra_Animations,
+	EntityResources::Platformer_Environment_Volcano_Npcs_Cindra_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.85f,
 	Vec2(-48.0f, -48.0f),

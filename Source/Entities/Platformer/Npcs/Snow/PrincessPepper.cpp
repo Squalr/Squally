@@ -12,7 +12,7 @@ PrincessPepper* PrincessPepper::deserialize(ValueMap* initProperties)
 }
 
 PrincessPepper::PrincessPepper(ValueMap* initProperties) : NpcBase(initProperties,
-	Resources::Entities_Platformer_Environment_Snow_Npcs_PrincessPepper_Animations,
+	EntityResources::Platformer_Environment_Snow_Npcs_PrincessPepper_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,

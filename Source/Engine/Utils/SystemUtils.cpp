@@ -126,7 +126,6 @@
 		return u.nodename;
 	}
 
-
 	//---------------------------------get MAC addresses ------------------------------------unsigned short-unsigned short----------
 	// we just need this for purposes of unique machine id. So any one or two mac's is fine.
 	unsigned short hashMacAddress(unsigned char *mac)

@@ -18,7 +18,7 @@
 #include "Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusChapterPreviewRuins.h"
 #include "Menus/Minigames/Hexus/ChapterSelect/Training/HexusChapterPreviewTraining.h"
 #include "Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusChapterPreviewVolcano.h"
-#include "Resources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 

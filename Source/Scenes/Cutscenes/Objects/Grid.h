@@ -3,7 +3,6 @@
 
 #include "Engine/Utils/GameUtils.h"
 #include "GridObject.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 

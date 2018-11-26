@@ -14,7 +14,7 @@ HexusOpponentTigerMan* HexusOpponentTigerMan::getInstance()
 }
 
 HexusOpponentTigerMan::HexusOpponentTigerMan() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Ruins_Enemies_TigerMan_Animations,
+	EntityResources::Platformer_Environment_Ruins_Enemies_TigerMan_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-32.0f, -48.0f),

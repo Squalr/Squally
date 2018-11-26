@@ -8,7 +8,6 @@
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
-#include "Resources.h"
 
 #include "MapNode.h"
 

@@ -12,7 +12,7 @@ DemonShaman* DemonShaman::deserialize(ValueMap* initProperties)
 }
 
 DemonShaman::DemonShaman(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Volcano_Enemies_DemonShaman_Animations,
+	EntityResources::Platformer_Environment_Volcano_Enemies_DemonShaman_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(212.0f, 280.0f),
 	0.65f,

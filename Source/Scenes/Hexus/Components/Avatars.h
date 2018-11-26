@@ -4,7 +4,7 @@
 
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Resources.h"
+
 #include "Scenes/Hexus/Components/ComponentBase.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 

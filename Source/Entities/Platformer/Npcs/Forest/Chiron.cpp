@@ -12,7 +12,7 @@ Chiron* Chiron::deserialize(ValueMap* initProperties)
 }
 
 Chiron::Chiron(ValueMap* initProperties) : NpcBase(initProperties,
-	Resources::Entities_Platformer_Environment_Forest_Npcs_Chiron_Animations,
+	EntityResources::Platformer_Environment_Forest_Npcs_Chiron_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,

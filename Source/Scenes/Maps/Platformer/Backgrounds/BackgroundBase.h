@@ -2,7 +2,6 @@
 #include "cocos2d.h"
 
 #include "Engine/Maps/SerializableLayer.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 

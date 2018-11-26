@@ -8,7 +8,7 @@
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
 #include "Menus/MenuBackground.h"
-#include "Resources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 

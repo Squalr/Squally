@@ -14,7 +14,7 @@ HexusOpponentTutorialF* HexusOpponentTutorialF::getInstance()
 }
 
 HexusOpponentTutorialF::HexusOpponentTutorialF() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Ruins_Npcs_Griffin_Animations,
+	EntityResources::Platformer_Environment_Ruins_Npcs_Griffin_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

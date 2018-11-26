@@ -6,7 +6,7 @@
 #include "Engine/UI/Controls/HelpArrow.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Resources.h"
+
 #include "Scenes/Hexus/Components/Tutorials/TutorialBase.h"
 
 using namespace cocos2d;

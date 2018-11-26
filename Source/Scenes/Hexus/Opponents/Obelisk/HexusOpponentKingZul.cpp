@@ -14,7 +14,7 @@ HexusOpponentKingZul* HexusOpponentKingZul::getInstance()
 }
 
 HexusOpponentKingZul::HexusOpponentKingZul() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Obelisk_Enemies_KingZul_Animations,
+	EntityResources::Platformer_Environment_Obelisk_Enemies_KingZul_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

@@ -14,7 +14,7 @@ HexusOpponentKingRedsong* HexusOpponentKingRedsong::getInstance()
 }
 
 HexusOpponentKingRedsong::HexusOpponentKingRedsong() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Castle_Npcs_KingRedsong_Animations,
+	EntityResources::Platformer_Environment_Castle_Npcs_KingRedsong_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -64.0f),

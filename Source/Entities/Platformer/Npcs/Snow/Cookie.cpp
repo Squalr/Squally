@@ -12,7 +12,7 @@ Cookie* Cookie::deserialize(ValueMap* initProperties)
 }
 
 Cookie::Cookie(ValueMap* initProperties) : NpcBase(initProperties,
-	Resources::Entities_Platformer_Environment_Snow_Npcs_Cookie_Animations,
+	EntityResources::Platformer_Environment_Snow_Npcs_Cookie_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,

@@ -1,7 +1,6 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Resources.h"
 #include "Events/NavigationEvents.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Scenes/Maps/Isometric/IsometricMap.h"

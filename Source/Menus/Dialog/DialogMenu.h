@@ -10,7 +10,7 @@
 #include "Engine/UI/Controls/MenuLabel.h"
 #include "Engine/UI/FloatingSprite.h"
 #include "Events/DialogEvents.h"
-#include "Resources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 using namespace rapidjson;

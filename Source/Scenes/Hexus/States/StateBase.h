@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/SmartNode.h"
-#include "Resources.h"
+
 #include "Scenes/Hexus/GameState.h"
 
 using namespace cocos2d;

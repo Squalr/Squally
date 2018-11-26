@@ -12,7 +12,7 @@ MechGuard* MechGuard::deserialize(ValueMap* initProperties)
 }
 
 MechGuard::MechGuard(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Mech_Enemies_MechGuard_Animations,
+	EntityResources::Platformer_Environment_Mech_Enemies_MechGuard_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 596.0f),
 	0.3f,

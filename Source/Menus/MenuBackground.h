@@ -6,7 +6,8 @@
 #include "Engine/UI/FloatingSprite.h"
 #include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/UI/Mouse.h"
-#include "Resources.h"
+#include "Resources/ParticleResources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 

@@ -20,3 +20,5 @@ const std::string MapResources::Platformer_Mech_Mech = "Platformer/Mech/Mech.tmx
 const std::string MapResources::Platformer_Obelisk_Obelisk = "Platformer/Obelisk/Obelisk.tmx";
 const std::string MapResources::Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1 = "Platformer/Tutorials/TutorialExactValueScan1/TutorialExactValueScan1.tmx";
 const std::string MapResources::Platformer_Volcano_Volcano = "Platformer/Volcano/Volcano.tmx";
+const std::string MapResources::TileMap = "TileMap.png";
+const std::string MapResources::TileMapIsometric = "TileMapIsometric.png";

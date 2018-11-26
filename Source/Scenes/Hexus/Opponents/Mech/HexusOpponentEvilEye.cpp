@@ -14,7 +14,7 @@ HexusOpponentEvilEye* HexusOpponentEvilEye::getInstance()
 }
 
 HexusOpponentEvilEye::HexusOpponentEvilEye() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Mech_Enemies_EvilEye_Animations,
+	EntityResources::Platformer_Environment_Mech_Enemies_EvilEye_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	0.7f,
 	Vec2(-48.0f, -112.0f),

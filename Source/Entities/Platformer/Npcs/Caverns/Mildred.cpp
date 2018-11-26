@@ -12,7 +12,7 @@ Mildred* Mildred::deserialize(ValueMap* initProperties)
 }
 
 Mildred::Mildred(ValueMap* initProperties) : NpcBase(initProperties,
-	Resources::Entities_Platformer_Environment_Caverns_Npcs_Mildred_Animations,
+	EntityResources::Platformer_Environment_Caverns_Npcs_Mildred_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,

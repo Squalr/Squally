@@ -14,7 +14,7 @@ HexusOpponentVampireLord* HexusOpponentVampireLord::getInstance()
 }
 
 HexusOpponentVampireLord::HexusOpponentVampireLord() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Castle_Enemies_VampireLord_Animations,
+	EntityResources::Platformer_Environment_Castle_Enemies_VampireLord_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -32.0f),

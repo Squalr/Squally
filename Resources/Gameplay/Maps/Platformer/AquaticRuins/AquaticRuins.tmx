@@ -2,7 +2,7 @@
 <map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="124" height="196" tilewidth="128" tileheight="128" nextobjectid="366">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
-  <image source="../../../Tiles/TileMap.png" width="5760" height="3200"/>
+  <image source="../../TileMap.png" width="5760" height="3200"/>
  </tileset>
  <objectgroup name="music">
   <properties>

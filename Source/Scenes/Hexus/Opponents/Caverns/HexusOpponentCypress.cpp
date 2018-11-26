@@ -14,7 +14,7 @@ HexusOpponentCypress* HexusOpponentCypress::getInstance()
 }
 
 HexusOpponentCypress::HexusOpponentCypress() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Caverns_Npcs_Cypress_Animations,
+	EntityResources::Platformer_Environment_Caverns_Npcs_Cypress_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	0.9f,
 	Vec2(-32.0f, -64.0f),

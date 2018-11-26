@@ -3,7 +3,6 @@
 
 #include "Engine/SmartNode.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Resources.h"
 #include "Scenes/Hexus/Card.h"
 
 using namespace cocos2d;
@@ -11,8 +10,8 @@ using namespace cocos2d;
 class Deck : public SmartNode
 {
 public:
-	static Deck * create();
-	static Deck * create(Card::CardStyle cardStyle, std::vector<CardData*> cards);
+	static Deck* create();
+	static Deck* create(Card::CardStyle cardStyle, std::vector<CardData*> cards);
 
 	void copyTo(Deck* otherDeck);
 	int getCardCount();
@@ -39,4 +38,3 @@ private:
 	Sprite* pad;
 	Card::CardStyle style;
 };
-

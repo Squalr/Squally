@@ -38,7 +38,7 @@
 #include "Objects/Isometric/IsometricObjectDeserializer.h"
 #include "Objects/Platformer/PlatformerDecorDeserializer.h"
 #include "Objects/Platformer/PlatformerObjectDeserializer.h"
-#include "Resources.h"
+#include "Resources/UIResources.h"
 #include "Scenes/Maps/Platformer/Backgrounds/BackgroundDeserializer.h"
 #include "Scenes/Maps/Platformer/Weather/WeatherDeserializer.h"
 #include "Sound/MusicDeserializer.h"

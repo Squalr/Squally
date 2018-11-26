@@ -103,7 +103,6 @@ void ConfirmationMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event
 	}
 }
 
-
 void ConfirmationMenu::onCloseClick(MenuSprite* menuSprite)
 {
 	if (this->onCancelCallback != nullptr)

@@ -14,7 +14,7 @@ HexusOpponentAtreus* HexusOpponentAtreus::getInstance()
 }
 
 HexusOpponentAtreus::HexusOpponentAtreus() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Mech_Npcs_Atreus_Animations,
+	EntityResources::Platformer_Environment_Mech_Npcs_Atreus_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	0.85f,
 	Vec2(-48.0f, -64.0f),

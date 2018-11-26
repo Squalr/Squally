@@ -11,8 +11,8 @@ CProgressBar* CProgressBar::create()
 
 CProgressBar::CProgressBar()
 {
-	this->frame = Sprite::create(Resources::Menus_LoadingMenu_LoadingFrame);
-	this->progressBar = Sprite::create(Resources::Menus_LoadingMenu_LoadingFrameFill);
+	this->frame = Sprite::create(UIResources::Menus_LoadingMenu_LoadingFrame);
+	this->progressBar = Sprite::create(UIResources::Menus_LoadingMenu_LoadingFrameFill);
 	this->progressClip = ClippingRectangleNode::create(Rect(0, -32, this->progressBar->getContentSize().width, 64));
 	
 	this->setCascadeOpacityEnabled(true);

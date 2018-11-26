@@ -5,7 +5,7 @@
 #include "Engine/Utils/StrUtils.h"
 #include "Engine/SmartNode.h"
 #include "Events/HexusEvents.h"
-#include "Resources.h"
+
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
