@@ -21,14 +21,14 @@ IsometricMap::IsometricMap()
 
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, -768.0f));
 
-	this->hackerModeBackground = Sprite::create(Resources::Backgrounds_Platformer_MatrixRain_HackerModeBackground);
+	this->hackerModeBackground = Sprite::create(BackgroundResources::Platformer_MatrixRain_HackerModeBackground);
 	this->hackerModeRain = MatrixRain::create();
-	this->hackerModePostProcessGlow = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_GrayBlur);
+	this->hackerModePostProcessGlow = PostProcess::create(ShaderResources::Vertex_Generic, ShaderResources::Fragment_GrayBlur);
 	this->hud = Hud::create();
 	this->developerHud = DeveloperHud::create();
 	this->hackerModeHud = HackerModeHud::create(CC_CALLBACK_0(IsometricMap::toggleHackerMode, this));
-	this->gamePostProcessInversion = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_Inverse);
-	this->gamePostProcessNightVision = PostProcess::create(Resources::Shaders_Vertex_Generic, Resources::Shaders_Fragment_NightVision);
+	this->gamePostProcessInversion = PostProcess::create(ShaderResources::Vertex_Generic, ShaderResources::Fragment_Inverse);
+	this->gamePostProcessNightVision = PostProcess::create(ShaderResources::Vertex_Generic, ShaderResources::Fragment_NightVision);
 	this->camera = GameCamera::create();
 	this->mapNode = Node::create();
 	this->mouse = Mouse::create();

@@ -13,7 +13,7 @@ Fireflies* Fireflies::create(ValueMap* properties, std::string name)
 
 Fireflies::Fireflies(ValueMap* properties, std::string name) : SerializableLayer(properties, name, nullptr)
 {
-	this->fireflies = ParticleSystemQuad::create(Resources::Particles_Fireflies2);
+	this->fireflies = ParticleSystemQuad::create(ParticleResources::Fireflies2);
 	this->fireflies->setPositionType(ParticleSystem::PositionType::GROUPED);
 
 	this->fireflies->start();

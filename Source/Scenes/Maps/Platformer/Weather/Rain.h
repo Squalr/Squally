@@ -3,6 +3,7 @@
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Maps/SerializableLayer.h"
+#include "Resources/ParticleResources.h"
 
 using namespace cocos2d;
 

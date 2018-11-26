@@ -7,6 +7,8 @@
 class FontResources
 {
 public:
+	static const std::string AlienText;
+	static const std::string BooleanText;
 	static const std::string Marker_Felt;
 	static const std::string Montserrat_Medium;
 	static const std::string Pixel_Zpix;

@@ -19,12 +19,8 @@ public:
 	static const std::string Platformer_MonitorSelected;
 	static const std::string Platformer_OceanMine;
 	static const std::string Platformer_OceanMineLarge;
-	static const std::string Platformer_OuthouseClosed;
 	static const std::string Platformer_OutHouseOpen;
-	static const std::string Platformer_SpikeBall;
-	static const std::string Platformer_WarpGateClosed;
-	static const std::string Platformer_WarpGateClosedLights;
-	static const std::string Platformer_WarpGateOpen;
+	static const std::string Platformer_OuthouseClosed;
 	static const std::string Platformer_Plushies_BATTY;
 	static const std::string Platformer_Plushies_BEAVERLY;
 	static const std::string Platformer_Plushies_BEEY;
@@ -88,6 +84,10 @@ public:
 	static const std::string Platformer_Spells_circle03;
 	static const std::string Platformer_Spells_circle04;
 	static const std::string Platformer_Spells_circle05;
+	static const std::string Platformer_SpikeBall;
+	static const std::string Platformer_WarpGateClosed;
+	static const std::string Platformer_WarpGateClosedLights;
+	static const std::string Platformer_WarpGateOpen;
 	static const std::string Platformer_Weapons_1_ARROW_1;
 	static const std::string Platformer_Weapons_1_ARROW_2;
 	static const std::string Platformer_Weapons_1_ARROW_3;
