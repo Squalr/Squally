@@ -104,6 +104,10 @@ def main():
 	# FontResources
 	createResourceFile("FontResources", (
 		'.ttf',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
 	), "Resources/UI/Fonts")
 
 	# StringResources
@@ -115,15 +119,18 @@ def createResourceFile(outputFileBase, extensions, searchPath = "Resources"):
 	pathRoot = "Source/Resources/"
 	outputHeader = outputFileBase + ".h"
 	outputClass = outputFileBase + ".cpp"
-	resourcePath = abspath(join(join(realpath(__file__), ".."), searchPath))
+	resourcePath = abspath(join(join(realpath(__file__), ".."), "Resources"))
+	searchPath = abspath(join(join(realpath(__file__), ".."), searchPath))
 	files = []
 
 	for extension in extensions:
-		for root, dirnames, filenames in os.walk(resourcePath):
+		for root, dirnames, filenames in os.walk(searchPath):
 			for filename in filenames:
 				if filename.lower().endswith(extension):
 					files.append(join(root, filename))
 					continue
+
+	files.sort()
 			
 	with open(pathRoot + outputHeader,'w+') as h, open(pathRoot + outputClass,'w+') as cpp:
 
@@ -146,12 +153,13 @@ def createResourceFile(outputFileBase, extensions, searchPath = "Resources"):
 		cpp.write("\n");
 
 		for file in files:
-			relativeFilePath = relpath(file, resourcePath).replace("\\", "/")
-			variableName = relativeFilePath.replace("/", "_").replace(" ", "_").replace("+", "_").replace("-", "_").replace("(", "_").replace(")", "_")
+			resourceRelativeFilePath = relpath(file, resourcePath).replace("\\", "/")
+			searchRelativeFilePath = relpath(file, searchPath).replace("\\", "/")
+			variableName = searchRelativeFilePath.replace("/", "_").replace(" ", "_").replace("+", "_").replace("-", "_").replace("(", "_").replace(")", "_")
 			variableNameNoExtension = splitext(variableName)[0]
 		
 			h.write("\tstatic const std::string " + variableNameNoExtension + ";" + "\n");
-			cpp.write("const std::string " + outputFileBase + "::" + variableNameNoExtension + " = \"" + relativeFilePath + "\";" + "\n")
+			cpp.write("const std::string " + outputFileBase + "::" + variableNameNoExtension + " = \"" + resourceRelativeFilePath + "\";" + "\n")
 
 		h.write("};" + "\n")
 

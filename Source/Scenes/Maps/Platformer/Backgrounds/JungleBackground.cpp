@@ -13,11 +13,11 @@ JungleBackground* JungleBackground::create(ValueMap* properties, std::string nam
 
 JungleBackground::JungleBackground(ValueMap* properties, std::string name) : BackgroundBase(properties, name)
 {
-	this->background = Sprite::create(Resources::Backgrounds_Platformer_Jungle_Background);
-	this->layer6 = InfiniteParallaxNode::create(Resources::Backgrounds_Platformer_Jungle_Layer_6);
-	this->layer5 = InfiniteParallaxNode::create(Resources::Backgrounds_Platformer_Jungle_Layer_5);
-	this->layer4 = InfiniteParallaxNode::create(Resources::Backgrounds_Platformer_Jungle_Layer_4);
-	this->layer2 = InfiniteParallaxNode::create(Resources::Backgrounds_Platformer_Jungle_Layer_2);
+	this->background = Sprite::create(BackgroundResources::Platformer_Jungle_Background);
+	this->layer6 = InfiniteParallaxNode::create(BackgroundResources::Platformer_Jungle_Layer_6);
+	this->layer5 = InfiniteParallaxNode::create(BackgroundResources::Platformer_Jungle_Layer_5);
+	this->layer4 = InfiniteParallaxNode::create(BackgroundResources::Platformer_Jungle_Layer_4);
+	this->layer2 = InfiniteParallaxNode::create(BackgroundResources::Platformer_Jungle_Layer_2);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
