@@ -3,7 +3,6 @@
 
 #include "Engine/Steam/Steam.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 

@@ -6,7 +6,6 @@
 #include "Engine/SmartNode.h"
 #include "Engine/UI/Controls/MenuLabel.h"
 #include "Events/DialogEvents.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 

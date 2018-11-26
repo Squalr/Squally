@@ -241,7 +241,7 @@ ParticleSystemQuad* CardEffects::getBite()
 {
 	if (this->bite == nullptr)
 	{
-		this->bite = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_Bite);
+		this->bite = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_Bite);
 
 		this->bite->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->bite->pauseEmissions();
@@ -256,7 +256,7 @@ ParticleSystemQuad* CardEffects::getDustPoof()
 {
 	if (this->dustPoof == nullptr)
 	{
-		this->dustPoof = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_DustPoof);
+		this->dustPoof = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_DustPoof);
 
 		this->dustPoof->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->dustPoof->pauseEmissions();
@@ -271,7 +271,7 @@ ParticleSystemQuad* CardEffects::getDustStorm()
 {
 	if (this->dustStorm == nullptr)
 	{
-		this->dustStorm = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_DustStorm);
+		this->dustStorm = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_DustStorm);
 
 		this->dustStorm->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->dustStorm->pauseEmissions();
@@ -286,7 +286,7 @@ ParticleSystemQuad* CardEffects::getFireBlast()
 {
 	if (this->fireBlast == nullptr)
 	{
-		this->fireBlast = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_FireBlast);
+		this->fireBlast = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_FireBlast);
 
 		this->fireBlast->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->fireBlast->pauseEmissions();
@@ -301,7 +301,7 @@ ParticleSystemQuad* CardEffects::getFlow()
 {
 	if (this->flow == nullptr)
 	{
-		this->flow = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_Flow);
+		this->flow = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_Flow);
 
 		this->flow->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->flow->pauseEmissions();
@@ -316,7 +316,7 @@ ParticleSystemQuad* CardEffects::getFocusRing()
 {
 	if (this->focusRing == nullptr)
 	{
-		this->focusRing = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_FocusRing);
+		this->focusRing = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_FocusRing);
 
 		this->focusRing->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->focusRing->pauseEmissions();
@@ -334,7 +334,7 @@ ParticleSystemQuad* CardEffects::getFrostCircle()
 {
 	if (this->frostCircle == nullptr)
 	{
-		this->frostCircle = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_FrostCircle);
+		this->frostCircle = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_FrostCircle);
 
 		this->frostCircle->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->frostCircle->pauseEmissions();
@@ -349,7 +349,7 @@ ParticleSystemQuad* CardEffects::getGush()
 {
 	if (this->gush == nullptr)
 	{
-		this->gush = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_Gush);
+		this->gush = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_Gush);
 
 		this->gush->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->gush->pauseEmissions();
@@ -364,7 +364,7 @@ ParticleSystemQuad* CardEffects::getLightning()
 {
 	if (this->lightning == nullptr)
 	{
-		this->lightning = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_Lightning);
+		this->lightning = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_Lightning);
 
 		this->lightning->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->lightning->pauseEmissions();
@@ -379,7 +379,7 @@ ParticleSystemQuad* CardEffects::getMagicBurst()
 {
 	if (this->magicBurst == nullptr)
 	{
-		this->magicBurst = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_MagicBurst);
+		this->magicBurst = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_MagicBurst);
 
 		this->magicBurst->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->magicBurst->pauseEmissions();
@@ -394,7 +394,7 @@ ParticleSystemQuad* CardEffects::getMeteorAlt()
 {
 	if (this->meteorAlt == nullptr)
 	{
-		this->meteorAlt = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_MeteorAlt);
+		this->meteorAlt = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_MeteorAlt);
 
 		this->meteorAlt->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->meteorAlt->pauseEmissions();
@@ -409,7 +409,7 @@ ParticleSystemQuad* CardEffects::getMeteorBlue()
 {
 	if (this->meteorBlue == nullptr)
 	{
-		this->meteorBlue = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_MeteorBlue);
+		this->meteorBlue = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_MeteorBlue);
 
 		this->meteorBlue->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->meteorBlue->pauseEmissions();
@@ -424,7 +424,7 @@ ParticleSystemQuad* CardEffects::getMeteorPurple()
 {
 	if (this->meteorPurple == nullptr)
 	{
-		this->meteorPurple = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_MeteorPurple);
+		this->meteorPurple = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_MeteorPurple);
 
 		this->meteorPurple->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->meteorPurple->pauseEmissions();
@@ -439,7 +439,7 @@ ParticleSystemQuad* CardEffects::getRadialAura()
 {
 	if (this->radialAura == nullptr)
 	{
-		this->radialAura = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_RadialAura);
+		this->radialAura = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_RadialAura);
 
 		this->radialAura->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->radialAura->pauseEmissions();
@@ -454,7 +454,7 @@ ParticleSystemQuad* CardEffects::getRadialFire()
 {
 	if (this->radialFire == nullptr)
 	{
-		this->radialFire = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_RadialFire);
+		this->radialFire = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_RadialFire);
 
 		this->radialFire->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->radialFire->pauseEmissions();
@@ -469,7 +469,7 @@ ParticleSystemQuad* CardEffects::getRadialGalaxy()
 {
 	if (this->radialGalaxy == nullptr)
 	{
-		this->radialGalaxy = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_RadialGalaxy);
+		this->radialGalaxy = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_RadialGalaxy);
 
 		this->radialGalaxy->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->radialGalaxy->pauseEmissions();
@@ -484,7 +484,7 @@ ParticleSystemQuad* CardEffects::getRadialStorm()
 {
 	if (this->radialStorm == nullptr)
 	{
-		this->radialStorm = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_RadialStorm);
+		this->radialStorm = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_RadialStorm);
 
 		this->radialStorm->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->radialStorm->pauseEmissions();
@@ -499,7 +499,7 @@ ParticleSystemQuad* CardEffects::getSelectionPulse()
 {
 	if (this->selectionPulse == nullptr)
 	{
-		this->selectionPulse = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_SelectionPulse);
+		this->selectionPulse = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_SelectionPulse);
 
 		this->selectionPulse->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->selectionPulse->pauseEmissions();
@@ -514,7 +514,7 @@ ParticleSystemQuad* CardEffects::getSpinningMagic()
 {
 	if (this->spinningMagic == nullptr)
 	{
-		this->spinningMagic = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_SpinningMagic);
+		this->spinningMagic = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_SpinningMagic);
 
 		this->spinningMagic->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->spinningMagic->pauseEmissions();
@@ -529,7 +529,7 @@ ParticleSystemQuad* CardEffects::getSplash()
 {
 	if (this->splash == nullptr)
 	{
-		this->splash = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_Splash);
+		this->splash = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_Splash);
 
 		this->splash->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->splash->pauseEmissions();
@@ -544,7 +544,7 @@ ParticleSystemQuad* CardEffects::getStarBurst()
 {
 	if (this->starBurst == nullptr)
 	{
-		this->starBurst = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_StarBurst);
+		this->starBurst = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_StarBurst);
 
 		this->starBurst->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->starBurst->pauseEmissions();
@@ -559,7 +559,7 @@ ParticleSystemQuad* CardEffects::getStarHit()
 {
 	if (this->starHit == nullptr)
 	{
-		this->starHit = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_StarHit);
+		this->starHit = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_StarHit);
 
 		this->starHit->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->starHit->pauseEmissions();
@@ -574,7 +574,7 @@ ParticleSystemQuad* CardEffects::getTargetPulse()
 {
 	if (this->targetPulse == nullptr)
 	{
-		this->targetPulse = ParticleSystemQuad::create(Resources::Particles_Hexus_CardEffects_TargetPulse);
+		this->targetPulse = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_TargetPulse);
 
 		this->targetPulse->setPositionType(ParticleSystem::PositionType::GROUPED);
 		this->targetPulse->pauseEmissions();

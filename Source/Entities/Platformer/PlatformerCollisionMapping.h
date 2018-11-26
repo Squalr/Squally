@@ -4,7 +4,6 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/GlobalNode.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 

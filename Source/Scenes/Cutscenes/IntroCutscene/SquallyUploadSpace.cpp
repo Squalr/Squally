@@ -16,10 +16,10 @@ SquallyUploadSpace::SquallyUploadSpace()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->starLayer = StarLayer::create(Size(visibleSize.width * 2.0f, visibleSize.height));
-	this->mars = Sprite::create(Resources::Cutscenes_IntroSpace_Mars);
+	this->mars = Sprite::create(CutsceneResources::IntroSpace_Mars);
 	this->beam = Node::create();
-	this->satellite = Sprite::create(Resources::Cutscenes_SquallyUploadSpace_Satellite);
-	this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneSquallyUploadSpace, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	this->satellite = Sprite::create(CutsceneResources::SquallyUploadSpace_Satellite);
+	this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneSquallyUploadSpace, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
 	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);

@@ -1,5 +1,5 @@
 ###################################################################################
-# This script will generate the Resources.cpp and Resources.h files.              #
+# This script will generate all Resources.cpp and Resources.h files.              #
 # Run this script every time files are added to the Squally/Resources/ directory. #
 ###################################################################################
 
@@ -8,61 +8,151 @@ from os import path
 from os.path import isfile, join, splitext, abspath, realpath, basename, relpath
 import os
 
-outputHeader = "Source/Resources.h"
-outputClass = "Source/Resources.cpp"
+def main():
+	# BackgroundResources
+	createResourceFile("BackgroundResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/Gameplay/Backgrounds")
 
-extensions = (
-	'.png',
-	'.jpg',
-	'.bmp',
-	'.tif', 
-	'.ttf',
-	'.frag',
-	'.vert', 
-	'.mp3', 
-	'.wav', 
-	'.plist',
-	'.json',
-	'.tmx',
-	'.scml'
-)
+	# DecorResources
+	createResourceFile("DecorResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/Gameplay/Decor")
 
-resourcePath = abspath(join(join(realpath(__file__), ".."), "Resources"))
-files = []
+	# EntityResources
+	createResourceFile("EntityResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/Gameplay/Entities")
 
-for extension in extensions:
-	for root, dirnames, filenames in os.walk(resourcePath):
-		for filename in filenames:
-			if filename.lower().endswith(extension):
-				files.append(join(root, filename))
-				continue
+	# HexusResources
+	createResourceFile("HexusResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/Gameplay/Hexus")
+
+	# ObjectResources
+	createResourceFile("ObjectResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/Gameplay/Objects")
+
+	# CutsceneResources
+	createResourceFile("CutsceneResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/Cutscenes")
+
+	# UIResources
+	createResourceFile("UIResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/UI")
+	
+	# ShaderResources
+	createResourceFile("ShaderResources", (
+		'.frag',
+		'.vert',
+	), "Resources/Shaders")
+
+	# MusicResources
+	createResourceFile("MusicResources", (
+		'.mp3',
+		'.wav',
+	), "Resources/Music")
+
+	# SoundResources
+	createResourceFile("SoundResources", (
+		'.mp3',
+		'.wav',
+	), "Resources/Sounds")
+
+	# MapResources
+	createResourceFile("MapResources", (
+		'.tmx',
+	), "Resources/Gameplay/Maps")
+
+	# ParticleResources
+	createResourceFile("ParticleResources", (
+		'.plist',
+	), "Resources/Particles")
+
+	# FontResources
+	createResourceFile("FontResources", (
+		'.ttf',
+	), "Resources/UI/Fonts")
+
+	# StringResources
+	createResourceFile("StringResources", (
+		'.json',
+	), "Resources/Strings")
+
+def createResourceFile(outputFileBase, extensions, searchPath = "Resources"):
+	pathRoot = "Source/Resources/"
+	outputHeader = outputFileBase + ".h"
+	outputClass = outputFileBase + ".cpp"
+	resourcePath = abspath(join(join(realpath(__file__), ".."), searchPath))
+	files = []
+
+	for extension in extensions:
+		for root, dirnames, filenames in os.walk(resourcePath):
+			for filename in filenames:
+				if filename.lower().endswith(extension):
+					files.append(join(root, filename))
+					continue
 			
-with open(outputHeader,'w') as h, open(outputClass,'w') as cpp:
+	with open(pathRoot + outputHeader,'w+') as h, open(pathRoot + outputClass,'w+') as cpp:
 
-	warning = ( "////////////////////////////////////////////////////////////////////////////////////////////" + "\n" +
-		"// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateResources.py TO GENERATE THIS FILE //" + "\n" +
-		"////////////////////////////////////////////////////////////////////////////////////////////" + "\n")
+		warning = ( "////////////////////////////////////////////////////////////////////////////////////////////" + "\n" +
+			"// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateResources.py TO GENERATE THIS FILE //" + "\n" +
+			"////////////////////////////////////////////////////////////////////////////////////////////" + "\n")
 
-	h.write(warning)
-	h.write("#pragma once" + "\n");
-	h.write("#include <string>" + "\n");
-	h.write("\n");
-	h.write("class Resources" + "\n");
-	h.write("{" + "\n");
-	h.write("public:" + "\n");
+		h.write(warning)
+		h.write("#pragma once" + "\n");
+		h.write("#include <string>" + "\n");
+		h.write("\n");
+		h.write("class " + outputFileBase + "\n");
+		h.write("{" + "\n");
+		h.write("public:" + "\n");
 
-	cpp.write(warning);
-	cpp.write("\n");
-	cpp.write("#include \"Resources.h\"" + "\n");
-	cpp.write("#include <string>" + "\n");
-	cpp.write("\n");
+		cpp.write(warning);
+		cpp.write("\n");
+		cpp.write("#include \"" + outputHeader + "\"" + "\n");
+		cpp.write("#include <string>" + "\n");
+		cpp.write("\n");
 
-	for file in files:
-		relativeFilePath = relpath(file, resourcePath).replace("\\", "/")
-		variableName = relativeFilePath.replace("/", "_").replace(" ", "_").replace("+", "_").replace("-", "_").replace("(", "_").replace(")", "_")
-		variableNameNoExtension = splitext(variableName)[0]
+		for file in files:
+			relativeFilePath = relpath(file, resourcePath).replace("\\", "/")
+			variableName = relativeFilePath.replace("/", "_").replace(" ", "_").replace("+", "_").replace("-", "_").replace("(", "_").replace(")", "_")
+			variableNameNoExtension = splitext(variableName)[0]
 		
-		h.write("\tstatic const std::string " + variableNameNoExtension + ";" + "\n");
-		cpp.write("const std::string Resources::" + variableNameNoExtension + " = \"" + relativeFilePath + "\";" + "\n")
+			h.write("\tstatic const std::string " + variableNameNoExtension + ";" + "\n");
+			cpp.write("const std::string " + outputFileBase + "::" + variableNameNoExtension + " = \"" + relativeFilePath + "\";" + "\n")
 
-	h.write("};" + "\n")
+		h.write("};" + "\n")
+
+if __name__ == '__main__':
+    main()

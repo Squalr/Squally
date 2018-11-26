@@ -20,15 +20,15 @@ NeonCity::NeonCity(NeonCityScene neonCityScene)
 	this->sky = LayerGradient::create(Color4B::ORANGE, Color4B(70, 0, 131, 255), Vec2(0.0f, 1.0f));
 	this->darkFilter = LayerColor::create(Color4B::BLACK);
 	this->starLayer = StarLayer::create(visibleSize);
-	this->cityBackground = InfiniteParallaxNode::create(Resources::Cutscenes_NeonCity_CityBackground);
-	this->cityMidground = InfiniteParallaxNode::create(Resources::Cutscenes_NeonCity_CityMidground);
-	this->vaporCorp = Sprite::create(Resources::Cutscenes_NeonCity_VaporCorp);
+	this->cityBackground = InfiniteParallaxNode::create(CutsceneResources::NeonCity_CityBackground);
+	this->cityMidground = InfiniteParallaxNode::create(CutsceneResources::NeonCity_CityMidground);
+	this->vaporCorp = Sprite::create(CutsceneResources::NeonCity_VaporCorp);
 	this->dialoguePlate = LayerColor::create(Color4B(16, 0, 16, 255), visibleSize.width, 256.0f);
 	this->junker1 = FlyingCar::create(FlyingCar::CarType::Junker, Vec2(196.0f, 0.0f), this->dialoguePlate->getContentSize().height);
 	this->viper1 = FlyingCar::create(FlyingCar::CarType::Viper, Vec2(-256.0f, 0.0f), this->dialoguePlate->getContentSize().height);
 	this->viper2 = FlyingCar::create(FlyingCar::CarType::Viper, Vec2(-256.0f, 0.0f), this->dialoguePlate->getContentSize().height);
 	this->propeller1 = FlyingCar::create(FlyingCar::CarType::Propeller, Vec2(172.0f, 0.0f), this->dialoguePlate->getContentSize().height);
-	this->cityForeground = InfiniteParallaxNode::create(Resources::Cutscenes_NeonCity_CityForeground);
+	this->cityForeground = InfiniteParallaxNode::create(CutsceneResources::NeonCity_CityForeground);
 
 	// Make this larger than the screen to maximize the initial orange light initially
 	this->sky->setContentSize(Size(visibleSize.width, visibleSize.height * 2.0f));
@@ -54,13 +54,13 @@ NeonCity::NeonCity(NeonCityScene neonCityScene)
 	switch (this->activeScene)
 	{
 	case NeonCityScene::Intro:
-		this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneNeonCity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+		this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneNeonCity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 		break;
 	case NeonCityScene::Return:
-		this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneNeonCityReturn, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+		this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneNeonCityReturn, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 		break;
 	case NeonCityScene::Singularity:
-		this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneNeonCitySingularity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+		this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneNeonCitySingularity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 		break;
 	}
 

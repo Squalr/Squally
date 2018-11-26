@@ -123,18 +123,7 @@ void TitleScreen::onEnter()
 	this->initializePositions();
 	this->etherParticles->start();
 	GameUtils::accelerateParticles(this->etherParticles, 5.0f);
-
-	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));
-	this->storyModeButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
-	this->arcadeModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onArcadeModeClick, this));
-	this->arcadeModeButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
-	this->optionsButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onOptionsClick, this));
-	this->optionsButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
-	this->exitButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onExitClick, this));
-	this->exitButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
 	
-
-
 	// Fade in slower when the game first boots. Once the user is in the game and navigating menus, this gets annoying if it is too slow.
 	static bool firstRun = true;
 	const float delay = firstRun ? 0.5f : 0.15f;
@@ -153,8 +142,6 @@ void TitleScreen::onEnter()
 
 	this->scheduleUpdate();
 
-	// TEMPORARY FOR DEMO:
-	this->storyModeButton->disableInteraction(0);
 	GameUtils::fadeInObject(this->storyModeButton, delay, duration, 128);
 }
 
@@ -174,6 +161,20 @@ void TitleScreen::initializePositions()
 	this->arcadeModeButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f + 144.0f));
 	this->optionsButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f - 0.0f));
 	this->exitButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f - 256.0f));
+}
+
+void TitleScreen::initializeListeners()
+{
+	FadeScene::initializeListeners();
+
+	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));
+	this->storyModeButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
+	this->arcadeModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onArcadeModeClick, this));
+	this->arcadeModeButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
+	this->optionsButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onOptionsClick, this));
+	this->optionsButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
+	this->exitButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onExitClick, this));
+	this->exitButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
 }
 
 void TitleScreen::onStoryModeClick(MenuSprite* menuSprite)

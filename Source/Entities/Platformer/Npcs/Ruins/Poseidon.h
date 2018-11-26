@@ -2,14 +2,14 @@
 #include "cocos2d.h"
 
 #include "Entities/Platformer/Npcs/NpcBase.h"
-#include "Resources.h"
+#include "Resources/EntityResources.h"
 
 using namespace cocos2d;
 
 class Poseidon : public NpcBase
 {
 public:
-	static Poseidon * deserialize(ValueMap* initProperties);
+	static Poseidon* deserialize(ValueMap* initProperties);
 
 	static const std::string MapKeyNpcPoseidon;
 

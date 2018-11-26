@@ -5,7 +5,6 @@
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
 #include "Menus/HackerMode/RadialMenu.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 

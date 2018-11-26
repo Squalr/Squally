@@ -3,7 +3,6 @@
 
 #include "Engine/SmartNode.h"
 #include "MenuSprite.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 

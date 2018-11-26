@@ -20,8 +20,8 @@ IntroSpace::IntroSpace()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->starLayer = StarLayer::create(Size(visibleSize.width * 2.0f, visibleSize.height));
-	this->earth = Sprite::create(Resources::Cutscenes_IntroSpace_Earth);
-	this->mars = Sprite::create(Resources::Cutscenes_IntroSpace_Mars);
+	this->earth = Sprite::create(CutsceneResources::IntroSpace_Earth);
+	this->mars = Sprite::create(CutsceneResources::IntroSpace_Mars);
 	this->weavers = Node::create();
 	this->weaver1 = Sprite::create();
 	this->weaver2 = Sprite::create();
@@ -34,7 +34,7 @@ IntroSpace::IntroSpace()
 	this->weaver4Anim = Animation::create();
 	this->weaver5Anim = Animation::create();
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, IntroSpace::dialogueHeight);
-	this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneIntroSpace, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneIntroSpace, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
@@ -46,7 +46,7 @@ IntroSpace::IntroSpace()
 	this->weaver4->setScale(0.18f);
 	this->weaver5->setScale(0.20f);
 
-	auto weaverFrames = GameUtils::getAllAnimationFiles(Resources::Cutscenes_IntroSpace_Weaver_0000);
+	auto weaverFrames = GameUtils::getAllAnimationFiles(CutsceneResources::IntroSpace_Weaver_0000);
 
 	for (auto it = weaverFrames.begin(); it != weaverFrames.end(); it++)
 	{

@@ -8,7 +8,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerCollisionMapping.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 
