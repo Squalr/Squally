@@ -5,7 +5,6 @@
 #include "Engine/Maps/SerializableMap.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 

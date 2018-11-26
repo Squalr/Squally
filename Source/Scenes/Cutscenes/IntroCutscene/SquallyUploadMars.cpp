@@ -16,13 +16,13 @@ SquallyUploadMars::SquallyUploadMars()
 	this->dialogueCount = 0;
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->background = Sprite::create(Resources::Cutscenes_SquallyUploadMars_Scene);
-	this->squally = Sprite::create(Resources::Cutscenes_SquallyUploadMars_SquallyPixel);
+	this->background = Sprite::create(CutsceneResources::SquallyUploadMars_Scene);
+	this->squally = Sprite::create(CutsceneResources::SquallyUploadMars_SquallyPixel);
 
 	this->squally->setOpacity(0);
 	this->background->setOpacity(0);
 
-	this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneSquallyUploadMars, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneSquallyUploadMars, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
 	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);

@@ -2,14 +2,14 @@
 #include "cocos2d.h"
 
 #include "Entities/Platformer/Npcs/NpcBase.h"
-#include "Resources.h"
+#include "Resources/EntityResources.h"
 
 using namespace cocos2d;
 
 class Aphrodite : public NpcBase
 {
 public:
-	static Aphrodite * deserialize(ValueMap* initProperties);
+	static Aphrodite* deserialize(ValueMap* initProperties);
 
 	static const std::string MapKeyNpcAphrodite;
 

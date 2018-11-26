@@ -4,7 +4,6 @@
 #include <iostream>
 #include "cocos2d.h"
 
-#include "Resources.h"
 #include "Engine/Maps/IObjectDeserializer.h"
 #include "Engine/Maps/ILayerDeserializer.h"
 #include "Engine/Maps/SerializableLayer.h"

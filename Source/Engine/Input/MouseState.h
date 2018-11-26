@@ -4,7 +4,6 @@
 #include "Engine/Events/MouseEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/GlobalNode.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 

@@ -5,7 +5,8 @@
 #include "Engine/Dialogue/Dialogue.h"
 #include "Engine/Localization/Localization.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Resources.h"
+#include "Resources/CutsceneResources.h"
+#include "Resources/StringResources.h"
 #include "Scenes/Cutscenes/Objects/Grid.h"
 #include "Scenes/Cutscenes/Objects/GridObject.h"
 

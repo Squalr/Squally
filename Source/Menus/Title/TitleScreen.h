@@ -33,6 +33,7 @@ protected:
 private:
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 
 	void onStoryModeClick(MenuSprite* menuSprite);
 	void onArcadeModeClick(MenuSprite* menuSprite);

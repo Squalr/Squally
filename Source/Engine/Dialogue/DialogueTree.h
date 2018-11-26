@@ -8,7 +8,6 @@
 
 #include "Engine/Localization/Localization.h"
 #include "Events/DialogEvents.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 using namespace rapidjson;
