@@ -14,7 +14,7 @@ HexusOpponentAbomination* HexusOpponentAbomination::getInstance()
 }
 
 HexusOpponentAbomination::HexusOpponentAbomination() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Obelisk_Enemies_Abomination_Animations,
+	EntityResources::Platformer_Environment_Obelisk_Enemies_Abomination_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.7f,
 	Vec2(-48.0f, -64.0f),

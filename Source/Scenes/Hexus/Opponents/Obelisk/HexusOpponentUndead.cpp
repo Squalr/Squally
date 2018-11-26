@@ -14,7 +14,7 @@ HexusOpponentUndead* HexusOpponentUndead::getInstance()
 }
 
 HexusOpponentUndead::HexusOpponentUndead() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Obelisk_Enemies_Undead_Animations,
+	EntityResources::Platformer_Environment_Obelisk_Enemies_Undead_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.9f,
 	Vec2(-48.0f, -64.0f),

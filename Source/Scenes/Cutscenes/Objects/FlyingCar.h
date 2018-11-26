@@ -3,7 +3,7 @@
 
 #include "Engine/Utils/GameUtils.h"
 #include "Explosion.h"
-#include "Resources.h"
+
 #include "Smoke.h"
 
 using namespace cocos2d;

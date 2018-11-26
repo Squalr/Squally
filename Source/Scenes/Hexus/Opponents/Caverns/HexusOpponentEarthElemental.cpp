@@ -14,7 +14,7 @@ HexusOpponentEarthElemental* HexusOpponentEarthElemental::getInstance()
 }
 
 HexusOpponentEarthElemental::HexusOpponentEarthElemental() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Caverns_Enemies_EarthElemental_Animations,
+	EntityResources::Platformer_Environment_Caverns_Enemies_EarthElemental_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -48.0f),

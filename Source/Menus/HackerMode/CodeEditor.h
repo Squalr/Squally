@@ -14,7 +14,7 @@
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/Controls/TextWindow.h"
 #include "Engine/Shaders/PostProcess.h"
-#include "Resources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;

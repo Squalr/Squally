@@ -22,4 +22,6 @@ public:
 	static const std::string Platformer_Obelisk_Obelisk;
 	static const std::string Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1;
 	static const std::string Platformer_Volcano_Volcano;
+	static const std::string TileMap;
+	static const std::string TileMapIsometric;
 };

@@ -12,7 +12,7 @@ Asmodeus* Asmodeus::deserialize(ValueMap* initProperties)
 }
 
 Asmodeus::Asmodeus(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Volcano_Enemies_Asmodeus_Animations,
+	EntityResources::Platformer_Environment_Volcano_Enemies_Asmodeus_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(480.0f, 480.0f),
 	0.7f,

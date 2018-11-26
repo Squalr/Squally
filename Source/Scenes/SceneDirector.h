@@ -34,7 +34,7 @@
 #include "Menus/TakeOverMenu.h"
 #include "Menus/Title/TitleScreen.h"
 #include "Menus/WorldMap/WorldMap.h"
-#include "Resources.h"
+
 #include "Scenes/Fights/Fight.h"
 #include "Scenes/Hexus/Hexus.h"
 

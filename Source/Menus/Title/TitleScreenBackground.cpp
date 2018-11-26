@@ -30,7 +30,7 @@ TitleScreenBackground::TitleScreenBackground()
 	this->slimeNode = Node::create();
 	this->slime = Sprite::create(Resources::Menus_TitleScreen_Slime_Slime_0000);
 	this->squallyNode = Node::create();
-	this->squally = AnimationNode::create(Resources::Entities_Platformer_Squally_Animations);
+	this->squally = AnimationNode::create(EntityResources::Platformer_Squally_Animations);
 
 	this->squally->setScale(0.5f);
 

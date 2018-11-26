@@ -12,7 +12,7 @@ ForestGolem* ForestGolem::deserialize(ValueMap* initProperties)
 }
 
 ForestGolem::ForestGolem(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Caverns_Enemies_ForestGolem_Animations,
+	EntityResources::Platformer_Environment_Caverns_Enemies_ForestGolem_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(768.0f, 840.0f),
 	0.30f,

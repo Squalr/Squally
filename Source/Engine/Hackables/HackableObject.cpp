@@ -3,7 +3,7 @@
 HackableObject::HackableObject(ValueMap* initProperties) : SerializableObject(initProperties)
 {
 	this->dataList = std::vector<HackableData*>();
-	this->hackButton = MenuSprite::create(Resources::Menus_Buttons_CogV2Button, Resources::Menus_Buttons_CogV2ButtonHover);
+	this->hackButton = MenuSprite::create(UIResources::Menus_Buttons_CogV2Button, UIResources::Menus_Buttons_CogV2ButtonHover);
 	
 	this->hackButton->setVisible(false);
 

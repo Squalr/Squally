@@ -12,7 +12,7 @@ SkeletalWarrior* SkeletalWarrior::deserialize(ValueMap* initProperties)
 }
 
 SkeletalWarrior::SkeletalWarrior(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Caverns_Enemies_SkeletalWarrior_Animations,
+	EntityResources::Platformer_Environment_Caverns_Enemies_SkeletalWarrior_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(128.0f, 216.0f),
 	0.8f,

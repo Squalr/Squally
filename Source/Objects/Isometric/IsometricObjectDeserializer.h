@@ -4,7 +4,6 @@
 #include "Engine/Maps/IObjectDeserializer.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Isometric/IsometricObjects.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 

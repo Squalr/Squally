@@ -35,7 +35,6 @@ Dialogue::~Dialogue()
 	delete(this->dialogueRoot);
 }
 
-
 void Dialogue::setDialogueShownCallback(std::function<void()> callback)
 {
 	this->dialogueShownCallback = callback;

@@ -1,7 +1,6 @@
 #pragma once
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "Resources.h"
 
 #include "Engine/SmartNode.h"
 #include "Events/HexusEvents.h"

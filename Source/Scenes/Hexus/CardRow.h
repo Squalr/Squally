@@ -3,7 +3,7 @@
 
 #include "Engine/SmartNode.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Resources.h"
+
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/Config.h"
 

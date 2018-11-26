@@ -16,7 +16,7 @@
 #include "Events/NavigationEvents.h"
 #include "Menus/Dialog/DialogMenu.h"
 #include "Menus/Pause/PauseMenu.h"
-#include "Resources.h"
+
 #include "Scenes/Maps/IMap.h"
 #include "Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixRain.h"
 

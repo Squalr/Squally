@@ -17,5 +17,4 @@ public:
 
 	static const std::string KeyTypeIsometricEntity;
 
-
 };

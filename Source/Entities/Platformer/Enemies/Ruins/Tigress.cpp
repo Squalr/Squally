@@ -12,7 +12,7 @@ Tigress* Tigress::deserialize(ValueMap* initProperties)
 }
 
 Tigress::Tigress(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Ruins_Enemies_Tigress_Animations,
+	EntityResources::Platformer_Environment_Ruins_Enemies_Tigress_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(128.0f, 256.0f),
 	0.8f,

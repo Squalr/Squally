@@ -12,7 +12,7 @@ DemonDragon* DemonDragon::deserialize(ValueMap* initProperties)
 }
 
 DemonDragon::DemonDragon(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Volcano_Enemies_DemonDragon_Animations,
+	EntityResources::Platformer_Environment_Volcano_Enemies_DemonDragon_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(340.0f, 360.0f),
 	0.85f,

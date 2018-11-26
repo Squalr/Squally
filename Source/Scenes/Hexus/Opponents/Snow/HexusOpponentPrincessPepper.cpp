@@ -14,7 +14,7 @@ HexusOpponentPrincessPepper* HexusOpponentPrincessPepper::getInstance()
 }
 
 HexusOpponentPrincessPepper::HexusOpponentPrincessPepper() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Snow_Npcs_PrincessPepper_Animations,
+	EntityResources::Platformer_Environment_Snow_Npcs_PrincessPepper_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
 	Vec2(-48.0f, -64.0f),

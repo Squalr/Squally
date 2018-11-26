@@ -14,7 +14,7 @@ HexusOpponentRoger* HexusOpponentRoger::getInstance()
 }
 
 HexusOpponentRoger::HexusOpponentRoger() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Obelisk_Npcs_Roger_Animations,
+	EntityResources::Platformer_Environment_Obelisk_Npcs_Roger_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

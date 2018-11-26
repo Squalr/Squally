@@ -2,7 +2,6 @@
 #include "cocos2d.h"
 
 #include "Engine/SmartNode.h"
-#include "Resources.h"
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"

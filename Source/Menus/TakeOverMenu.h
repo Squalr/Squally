@@ -7,7 +7,6 @@
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/UI/Mouse.h"
-#include "Resources.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/MenuBackground.h"
 #include "Menus/Options/OptionsMenu.h"

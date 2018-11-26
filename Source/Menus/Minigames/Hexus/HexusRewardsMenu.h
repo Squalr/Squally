@@ -8,7 +8,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/HexusEvents.h"
 #include "Events/NavigationEvents.h"
-#include "Resources.h"
+#include "Resources/UIResources.h"
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/CardStorage.h"

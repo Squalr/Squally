@@ -175,7 +175,6 @@ int HexusOpponentData::getBestPossibleDeckAttack(int deckSize)
 	return bestDeckAttack;
 }
 
-
 CardData* HexusOpponentData::getBinaryCardForAttack(int attack)
 {
 	attack = MathUtils::clamp(attack, 0, 15);

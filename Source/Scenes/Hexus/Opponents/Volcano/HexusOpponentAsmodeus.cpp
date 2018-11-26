@@ -14,7 +14,7 @@ HexusOpponentAsmodeus* HexusOpponentAsmodeus::getInstance()
 }
 
 HexusOpponentAsmodeus::HexusOpponentAsmodeus() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Volcano_Enemies_Asmodeus_Animations,
+	EntityResources::Platformer_Environment_Volcano_Enemies_Asmodeus_Animations,
 	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.85f,
 	Vec2(-48.0f, -24.0f),

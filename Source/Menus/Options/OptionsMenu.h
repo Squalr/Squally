@@ -14,7 +14,6 @@
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/Mouse.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 

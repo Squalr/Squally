@@ -93,6 +93,7 @@ def main():
 	# MapResources
 	createResourceFile("MapResources", (
 		'.tmx',
+		'.png',
 	), "Resources/Gameplay/Maps")
 
 	# ParticleResources
