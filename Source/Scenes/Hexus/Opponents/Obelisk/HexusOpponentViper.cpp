@@ -15,7 +15,7 @@ HexusOpponentViper* HexusOpponentViper::getInstance()
 
 HexusOpponentViper::HexusOpponentViper() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Obelisk_Npcs_Viper_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.85f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),

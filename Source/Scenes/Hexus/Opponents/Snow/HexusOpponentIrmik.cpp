@@ -15,7 +15,7 @@ HexusOpponentIrmik* HexusOpponentIrmik::getInstance()
 
 HexusOpponentIrmik::HexusOpponentIrmik() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Snow_Npcs_Irmik_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
 	Vec2(-48.0f, -48.0f),
 	Vec2(-16.0f, -24.0f),

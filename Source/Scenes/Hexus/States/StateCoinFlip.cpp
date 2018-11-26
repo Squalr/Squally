@@ -11,30 +11,30 @@ StateCoinFlip* StateCoinFlip::create()
 
 StateCoinFlip::StateCoinFlip() : StateBase(GameState::StateType::CoinFlip)
 {
-	this->coin = Sprite::create(Resources::Minigames_CoinFlipLion);
+	this->coin = Sprite::create(HexusResources::CoinFlipLion);
 	this->skeletonInAnimation = Animation::create();
 	this->skeletonOutAnimation = Animation::create();
 	this->lionInAnimation = Animation::create();
 	this->lionOutAnimation = Animation::create();
 	this->neutralAnimation = Animation::create();
 
-	this->skeletonInAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipSkeletonIn1);
-	this->skeletonInAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipSkeletonIn2);
-	this->skeletonInAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipSkeleton);
-	this->skeletonOutAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipSkeletonOut1);
-	this->skeletonOutAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipSkeletonOut2);
+	this->skeletonInAnimation->addSpriteFrameWithFileName(HexusResources::CoinFlipSkeletonIn1);
+	this->skeletonInAnimation->addSpriteFrameWithFileName(HexusResources::CoinFlipSkeletonIn2);
+	this->skeletonInAnimation->addSpriteFrameWithFileName(HexusResources::CoinFlipSkeleton);
+	this->skeletonOutAnimation->addSpriteFrameWithFileName(HexusResources::CoinFlipSkeletonOut1);
+	this->skeletonOutAnimation->addSpriteFrameWithFileName(HexusResources::CoinFlipSkeletonOut2);
 	this->skeletonInAnimation->retain();
 	this->skeletonOutAnimation->retain();
 
-	this->lionInAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipLionIn1);
-	this->lionInAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipLionIn2);
-	this->lionInAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipLion);
-	this->lionOutAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipLionOut1);
-	this->lionOutAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipLionOut2);
+	this->lionInAnimation->addSpriteFrameWithFileName(HexusResources::CoinFlipLionIn1);
+	this->lionInAnimation->addSpriteFrameWithFileName(HexusResources::CoinFlipLionIn2);
+	this->lionInAnimation->addSpriteFrameWithFileName(HexusResources::CoinFlipLion);
+	this->lionOutAnimation->addSpriteFrameWithFileName(HexusResources::CoinFlipLionOut1);
+	this->lionOutAnimation->addSpriteFrameWithFileName(HexusResources::CoinFlipLionOut2);
 	this->lionInAnimation->retain();
 	this->lionOutAnimation->retain();
 
-	this->neutralAnimation->addSpriteFrameWithFileName(Resources::Minigames_CoinFlipNeutral);
+	this->neutralAnimation->addSpriteFrameWithFileName(HexusResources::CoinFlipNeutral);
 	this->neutralAnimation->retain();
 
 	this->lionInAnimation->setDelayPerUnit(Config::coinFlipSpeed);

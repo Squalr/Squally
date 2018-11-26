@@ -13,7 +13,7 @@ HexusChapterPreviewIceCaps* HexusChapterPreviewIceCaps::create()
 
 HexusChapterPreviewIceCaps::HexusChapterPreviewIceCaps() : HexusChapterPreview(HexusChapterPreviewIceCaps::stringKeyChapterName)
 {
-	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps));
+	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps));
 	this->text->setString("Ice Caps");
 }
 

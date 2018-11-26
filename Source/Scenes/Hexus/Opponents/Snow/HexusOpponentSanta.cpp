@@ -15,7 +15,7 @@ HexusOpponentSanta* HexusOpponentSanta::getInstance()
 
 HexusOpponentSanta::HexusOpponentSanta() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Snow_Enemies_Santa_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
 	Vec2(-48.0f, -48.0f),
 	Vec2(-48.0f, -48.0f),

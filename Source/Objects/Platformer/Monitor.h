@@ -6,6 +6,8 @@
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/FloatingSprite.h"
 #include "Menus/Dialog/DialogMenu.h"
+#include "Resources/ObjectResources.h"
+#include "Resources/ParticleResources.h"
 
 using namespace cocos2d;
 

@@ -13,7 +13,7 @@ HexusChapterPreviewVolcano* HexusChapterPreviewVolcano::create()
 
 HexusChapterPreviewVolcano::HexusChapterPreviewVolcano() : HexusChapterPreview(HexusChapterPreviewVolcano::stringKeyChapterName)
 {
-	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano));
+	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano));
 	this->text->setString("Volcano");
 }
 

@@ -11,8 +11,8 @@ DrawBanner* DrawBanner::create()
 
 DrawBanner::DrawBanner()
 {
-	this->defeatBanner1 = Sprite::create(Resources::Minigames_Hexus_RoundBanner);
-	this->defeatBanner2 = Sprite::create(Resources::Minigames_Hexus_RoundBanner);
+	this->defeatBanner1 = Sprite::create(HexusResources::RoundBanner);
+	this->defeatBanner2 = Sprite::create(HexusResources::RoundBanner);
 
 	this->setBannerText("DRAW!");
 

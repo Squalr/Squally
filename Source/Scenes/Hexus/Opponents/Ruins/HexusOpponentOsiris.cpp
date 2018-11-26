@@ -15,7 +15,7 @@ HexusOpponentOsiris* HexusOpponentOsiris::getInstance()
 
 HexusOpponentOsiris::HexusOpponentOsiris() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Ruins_Enemies_Osiris_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-32.0f, -48.0f),
 	Vec2(-32.0f, -72.0f),

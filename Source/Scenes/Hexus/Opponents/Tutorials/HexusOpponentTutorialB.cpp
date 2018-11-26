@@ -15,7 +15,7 @@ HexusOpponentTutorialB* HexusOpponentTutorialB::getInstance()
 
 HexusOpponentTutorialB::HexusOpponentTutorialB() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Obelisk_Npcs_PrincessNebea_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(0.0f, -48.0f),

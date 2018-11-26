@@ -15,7 +15,7 @@ HexusOpponentScarecrow* HexusOpponentScarecrow::getInstance()
 
 HexusOpponentScarecrow::HexusOpponentScarecrow() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Castle_Enemies_Scarecrow_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -96.0f),
 	Vec2(-16.0f, -128.0f),

@@ -19,14 +19,14 @@ HexusDeckManagement::HexusDeckManagement()
 	this->deckCards = std::map<CardData*, int>();
 	this->storageCards = std::map<CardData*, int>();
 
-	this->background = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_WoodBackground);
+	this->background = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_WoodBackground);
 	this->storageScrollPane = ScrollPane::create(Size(720.0f, 820.0f), Color4B(0, 0, 0, 196));
 	this->deckScrollPane = ScrollPane::create(Size(720.0f, 820.0f), Color4B(0, 0, 0, 196));
-	this->storageSprite = Sprite::create(Resources::Menus_Icons_TreasureChest);
+	this->storageSprite = Sprite::create(UIResources::Menus_Icons_TreasureChest);
 	this->storageLabel = Label::create("Cards in Storage", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()), Size::ZERO, cocos2d::TextHAlignment::LEFT);
-	this->deckSprite = Sprite::create(Resources::Menus_Icons_Satchel);
+	this->deckSprite = Sprite::create(UIResources::Menus_Icons_Satchel);
 	this->deckLabel = Label::create("Cards in Deck", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()), Size::ZERO, cocos2d::TextHAlignment::RIGHT);
-	this->titleSprite = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_AxeLogo);
+	this->titleSprite = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_AxeLogo);
 
 	this->totalCardsInDeckLabel = Label::create("Cards in Deck", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	this->totalCardsInDeckValueLabel = Label::create("PLACEHOLDER_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
@@ -39,30 +39,30 @@ HexusDeckManagement::HexusDeckManagement()
 	this->specialCardsInDeckLabel = Label::create("Special Cards", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	this->specialCardsInDeckValueLabel = Label::create("PLACEHOLDER_SPECIAL_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
-	MenuSprite* allButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* allButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled);
-	allButtonUnselected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconAll));
-	allButtonSelected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconAll));
+	MenuSprite* allButtonUnselected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* allButtonSelected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
+	allButtonUnselected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconAll));
+	allButtonSelected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconAll));
 
-	MenuSprite* specialButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* specialButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled);
-	specialButtonUnselected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconSpecial));
-	specialButtonSelected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconSpecial));
+	MenuSprite* specialButtonUnselected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* specialButtonSelected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
+	specialButtonUnselected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconSpecial));
+	specialButtonSelected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconSpecial));
 
-	MenuSprite* binaryButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* binaryButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled);
-	binaryButtonUnselected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconBinary));
-	binaryButtonSelected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconBinary));
+	MenuSprite* binaryButtonUnselected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* binaryButtonSelected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
+	binaryButtonUnselected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconBinary));
+	binaryButtonSelected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconBinary));
 
-	MenuSprite* decimalButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* decimalButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled);
-	decimalButtonUnselected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconDecimal));
-	decimalButtonSelected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconDecimal));
+	MenuSprite* decimalButtonUnselected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* decimalButtonSelected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
+	decimalButtonUnselected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconDecimal));
+	decimalButtonSelected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconDecimal));
 
-	MenuSprite* hexButtonUnselected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmall, Resources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* hexButtonSelected = MenuSprite::create(Resources::Menus_Buttons_WoodSquareButtonSmallToggled, Resources::Menus_Buttons_WoodSquareButtonSmallToggled);
-	hexButtonUnselected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconHex));
-	hexButtonSelected->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_IconHex));
+	MenuSprite* hexButtonUnselected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	MenuSprite* hexButtonSelected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
+	hexButtonUnselected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconHex));
+	hexButtonSelected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconHex));
 
 	this->allButton = CCheckbox::create(allButtonUnselected, allButtonSelected, true, nullptr);
 	this->specialButton = CCheckbox::create(specialButtonUnselected, specialButtonSelected, false, nullptr);
@@ -88,8 +88,8 @@ HexusDeckManagement::HexusDeckManagement()
 	this->backButton = TextMenuSprite::create(
 		backButtonLabel,
 		backButtonLabelHover,
-		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover
+		UIResources::Menus_Buttons_GenericButton,
+		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
 	// Create all cards for deck. Every card gets created with count = 0, and those that are 0 get hidden
@@ -560,7 +560,7 @@ void HexusDeckManagement::onDeckCardClick(Card* card)
 
 	this->save(false);
 
-	SoundManager::playSoundResource(Resources::Sounds_Hexus_CardMovementStrong);
+	SoundManager::playSoundResource(SoundResources::Hexus_CardMovementStrong);
 
 	this->rebuildCardLists();
 }
@@ -575,7 +575,7 @@ void HexusDeckManagement::onStorageCardClick(Card* card)
 
 	this->save(false);
 
-	SoundManager::playSoundResource(Resources::Sounds_Hexus_CardMovementStrong);
+	SoundManager::playSoundResource(SoundResources::Hexus_CardMovementStrong);
 	
 	this->rebuildCardLists();
 }

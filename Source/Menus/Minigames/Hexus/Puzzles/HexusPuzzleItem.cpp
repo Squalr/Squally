@@ -17,23 +17,23 @@ HexusPuzzleItem::HexusPuzzleItem(std::string description, std::string mapFile, i
 	this->levelIndex = index;
 	this->page = index / HexusPuzzleItem::MaxEntriesPerPage;
 
-	this->frame = Sprite::create(Resources::Menus_TutorialMenu_TutorialEntry);
+	this->frame = Sprite::create(UIResources::Menus_TutorialMenu_TutorialEntry);
 	this->indexLabel = Label::create(std::to_string(index + 1), Localization::getMainFont(), 28.0f);
 
-	// TODO: Load save data (steam cloud)
+	// TODO: Load save data
 	this->isLevelComplete = true;
 
 	if (this->isLevelComplete)
 	{
 		this->startButton = MenuSprite::create(
-			Resources::Menus_TutorialMenu_TutorialEntryComplete,
-			Resources::Menus_TutorialMenu_TutorialEntryCompleteSelected);
+			UIResources::Menus_TutorialMenu_TutorialEntryComplete,
+			UIResources::Menus_TutorialMenu_TutorialEntryCompleteSelected);
 	}
 	else
 	{
 		this->startButton = MenuSprite::create(
-			Resources::Menus_TutorialMenu_TutorialEntry,
-			Resources::Menus_TutorialMenu_TutorialEntrySelected);
+			UIResources::Menus_TutorialMenu_TutorialEntry,
+			UIResources::Menus_TutorialMenu_TutorialEntrySelected);
 	}
 
 	this->startButton->setClickCallback(CC_CALLBACK_1(HexusPuzzleItem::onTutorialClick, this));

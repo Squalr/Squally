@@ -15,7 +15,7 @@ HexusOpponentOrcGrunt* HexusOpponentOrcGrunt::getInstance()
 
 HexusOpponentOrcGrunt::HexusOpponentOrcGrunt() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Forest_Enemies_OrcGrunt_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -48.0f),
 	Vec2(-64.0f, -48.0f),

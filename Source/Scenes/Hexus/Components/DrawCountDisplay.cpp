@@ -11,9 +11,9 @@ DrawCountDisplay* DrawCountDisplay::create()
 
 DrawCountDisplay::DrawCountDisplay()
 {
-	this->drawCountSprite = MenuSprite::create(Resources::Minigames_Hexus_CardDrawIconSmall, Resources::Minigames_Hexus_CardDrawIconSmall);
+	this->drawCountSprite = MenuSprite::create(HexusResources::CardDrawIconSmall, HexusResources::CardDrawIconSmall);
 	this->drawCountLabel = Label::create("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
-	this->enemyDrawCountSprite = Sprite::create(Resources::Minigames_Hexus_CardDrawIconSmall);
+	this->enemyDrawCountSprite = Sprite::create(HexusResources::CardDrawIconSmall);
 	this->enemyDrawCountLabel = Label::create("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 
 	LayerColor* deckDrawCountMouseOverPanel;

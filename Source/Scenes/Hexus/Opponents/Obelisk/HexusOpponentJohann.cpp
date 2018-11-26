@@ -15,7 +15,7 @@ HexusOpponentJohann* HexusOpponentJohann::getInstance()
 
 HexusOpponentJohann::HexusOpponentJohann() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Obelisk_Npcs_Johann_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),

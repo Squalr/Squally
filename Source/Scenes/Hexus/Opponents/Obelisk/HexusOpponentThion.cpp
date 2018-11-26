@@ -15,7 +15,7 @@ HexusOpponentThion* HexusOpponentThion::getInstance()
 
 HexusOpponentThion::HexusOpponentThion() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Obelisk_Npcs_Thion_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -24.0f),

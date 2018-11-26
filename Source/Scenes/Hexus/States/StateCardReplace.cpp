@@ -21,8 +21,8 @@ StateCardReplace::StateCardReplace() : StateBase(GameState::StateType::CardRepla
 	this->doneButton = TextMenuSprite::create(
 		doneButtonLabel,
 		doneButtonLabelHover,
-		Resources::Minigames_Hexus_ButtonPlank,
-		Resources::Minigames_Hexus_ButtonPlankHover
+		UIResources::Menus_Buttons_WoodButton,
+		UIResources::Menus_Buttons_WoodButtonSelected
 	);
 	
 	this->addChild(this->doneButton);

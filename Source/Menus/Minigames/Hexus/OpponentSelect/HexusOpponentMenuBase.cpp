@@ -5,7 +5,7 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
 	this->chapterProgressSaveKey = chapterProgressSaveKey;
 	this->opponents = std::vector<HexusOpponentPreview*>();
 	this->scrollPane = ScrollPane::create(Size(1536.0f, 840.0f), Color4B(0, 0, 0, 196));
-	this->background = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_WoodBackground);
+	this->background = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_WoodBackground);
 	this->opponentSelectLabel = Label::create("Select Opponent", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 
 	Label* manageDeckLabel = Label::create("Manage Cards", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
@@ -19,8 +19,8 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
 	this->deckManagementButton = TextMenuSprite::create(
 		manageDeckLabel,
 		manageDeckLabelHover,
-		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover
+		UIResources::Menus_Buttons_GenericButton,
+		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
 	Label* shopLabel = Label::create("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
@@ -34,8 +34,8 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
 	this->shopButton = TextMenuSprite::create(
 		shopLabel,
 		shopLabelHover,
-		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover
+		UIResources::Menus_Buttons_GenericButton,
+		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
 	Label* backButtonLabel = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
@@ -49,8 +49,8 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
 	this->backButton = TextMenuSprite::create(
 		backButtonLabel,
 		backButtonLabelHover,
-		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover
+		UIResources::Menus_Buttons_GenericButton,
+		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
 	this->opponentSelectLabel->enableOutline(Color4B::BLACK, 2);

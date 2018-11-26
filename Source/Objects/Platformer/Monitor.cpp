@@ -15,11 +15,11 @@ Monitor::Monitor(ValueMap* initProperties) : HackableObject(initProperties)
 	this->monitorDialog = DialogMenu::loadDialogFromFile(dialogFile);
 	this->monitorDialog->retain();
 
-	this->monitorSpriteFloating = FloatingSprite::create(Resources::Objects_Platformer_Monitor, Vec2(2.0f, 24.0f), Vec2(7.0f, 7.0f));
-	this->monitorSprite = MenuSprite::create(this->monitorSpriteFloating, Sprite::create(Resources::Objects_Platformer_MonitorSelected));
-	this->monitorParticles = ParticleSystemQuad::create(Resources::Particles_Spark);
-	this->monitorParticlesBack = ParticleSystemQuad::create(Resources::Particles_Spark);
-	this->monitorSparkles = ParticleSystemQuad::create(Resources::Particles_Sparkles);
+	this->monitorSpriteFloating = FloatingSprite::create(ObjectResources::Platformer_Monitor, Vec2(2.0f, 24.0f), Vec2(7.0f, 7.0f));
+	this->monitorSprite = MenuSprite::create(this->monitorSpriteFloating, Sprite::create(ObjectResources::Platformer_MonitorSelected));
+	this->monitorParticles = ParticleSystemQuad::create(ParticleResources::Spark);
+	this->monitorParticlesBack = ParticleSystemQuad::create(ParticleResources::Spark);
+	this->monitorSparkles = ParticleSystemQuad::create(ParticleResources::Sparkles);
 
 	this->monitorParticles->setPositionType(ParticleSystem::PositionType::GROUPED);
 	this->monitorParticlesBack->setPositionType(ParticleSystem::PositionType::GROUPED);

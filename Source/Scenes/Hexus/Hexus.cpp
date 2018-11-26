@@ -13,7 +13,7 @@ Hexus::Hexus()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->gameBackground = Sprite::create(Resources::Minigames_Hexus_Gameboard);
+	this->gameBackground = Sprite::create(HexusResources::Gameboard);
 	this->gameState = GameState::create();
 	this->avatars = Avatars::create();
 	this->cardReplaceBanner = CardReplaceBanner::create();
@@ -168,7 +168,7 @@ void Hexus::onEnter()
 {
 	FadeScene::onEnter();
 
-	SoundManager::playMusicResource(Resources::Music_LastMarch);
+	SoundManager::playMusicResource(MusicResources::LastMarch);
 
 	this->menuBackDrop->setOpacity(0);
 	this->pauseMenu->setVisible(false);

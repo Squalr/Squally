@@ -11,7 +11,7 @@ HelpArrow* HelpArrow::create()
 
 HelpArrow::HelpArrow()
 {
-	this->arrow = SmartAnimationNode::create(Resources::Minigames_HelperArrowAnimations);
+	this->arrow = SmartAnimationNode::create(UIResources::HelperArrowAnimations);
 
 	this->arrow->playAnimation();
 

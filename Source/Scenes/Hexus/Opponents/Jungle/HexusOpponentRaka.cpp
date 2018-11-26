@@ -15,7 +15,7 @@ HexusOpponentRaka* HexusOpponentRaka::getInstance()
 
 HexusOpponentRaka::HexusOpponentRaka() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Jungle_Npcs_Raka_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),

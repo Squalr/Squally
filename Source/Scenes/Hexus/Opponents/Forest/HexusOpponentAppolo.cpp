@@ -15,7 +15,7 @@ HexusOpponentAppolo* HexusOpponentAppolo::getInstance()
 
 HexusOpponentAppolo::HexusOpponentAppolo() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Forest_Npcs_Appolo_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -32.0f),

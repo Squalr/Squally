@@ -15,7 +15,7 @@ HexusOpponentKingRedsongSlime* HexusOpponentKingRedsongSlime::getInstance()
 
 HexusOpponentKingRedsongSlime::HexusOpponentKingRedsongSlime() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Castle_Npcs_KingRedsongSlime_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-48.0f, -96.0f),
 	Vec2(-32.0f, -64.0f),

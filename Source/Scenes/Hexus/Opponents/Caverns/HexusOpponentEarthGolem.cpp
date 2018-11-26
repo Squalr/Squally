@@ -15,7 +15,7 @@ HexusOpponentEarthGolem* HexusOpponentEarthGolem::getInstance()
 
 HexusOpponentEarthGolem::HexusOpponentEarthGolem() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Caverns_Enemies_EarthGolem_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
 	Vec2(-48.0f, -96.0f),

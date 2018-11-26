@@ -15,7 +15,7 @@ HexusOpponentIceGolem* HexusOpponentIceGolem::getInstance()
 
 HexusOpponentIceGolem::HexusOpponentIceGolem() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Snow_Enemies_IceGolem_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
 	Vec2(-48.0f, -80.0f),
 	Vec2(-48.0f, -80.0f),

@@ -6,6 +6,7 @@
 #include "Engine/SmartNode.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 

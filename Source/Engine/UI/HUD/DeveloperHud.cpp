@@ -14,7 +14,7 @@ DeveloperHud* DeveloperHud::create()
 DeveloperHud::DeveloperHud()
 {
 	this->layerSelectionBackground = LayerColor::create(menuColor, 320.0f, 1280.0f);
-	this->saveButton = MenuSprite::create(Resources::Menus_Buttons_DownloadV2Button, Resources::Menus_Buttons_DownloadV2ButtonHover);
+	this->saveButton = MenuSprite::create(UIResources::Menus_Buttons_DownloadV2Button, UIResources::Menus_Buttons_DownloadV2ButtonHover);
 
 	this->layerSelectionBackground->setAnchorPoint(Vec2(0.0f, 1.0f));
 
