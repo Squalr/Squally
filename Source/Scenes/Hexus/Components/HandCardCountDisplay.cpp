@@ -11,7 +11,7 @@ HandCardCountDisplay* HandCardCountDisplay::create()
 
 HandCardCountDisplay::HandCardCountDisplay()
 {
-	this->playerHandCardIcon = Sprite::create(Resources::Minigames_Hexus_CardIcons);
+	this->playerHandCardIcon = Sprite::create(HexusResources::CardIcons);
 	this->playerHandCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->playerHandCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->playerHandCardCountFrame->setContentSize(Size(80.0f, 32.0f));
@@ -19,7 +19,7 @@ HandCardCountDisplay::HandCardCountDisplay()
 	this->playerHandCardCountText->setAlignment(TextHAlignment::LEFT);
 	this->playerHandCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->enemyHandCardIcon = Sprite::create(Resources::Minigames_Hexus_CardIcons);
+	this->enemyHandCardIcon = Sprite::create(HexusResources::CardIcons);
 	this->enemyHandCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->enemyHandCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->enemyHandCardCountFrame->setContentSize(Size(80.0f, 32.0f));

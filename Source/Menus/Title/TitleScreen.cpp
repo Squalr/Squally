@@ -21,8 +21,8 @@ TitleScreen * TitleScreen::create()
 
 TitleScreen::TitleScreen()
 {
-	this->titleBar = Sprite::create(Resources::Menus_TitleScreen_TitleBar);
-	this->title = Sprite::create(Resources::Menus_TitleScreen_Title);
+	this->titleBar = Sprite::create(UIResources::Menus_TitleScreen_TitleBar);
+	this->title = Sprite::create(UIResources::Menus_TitleScreen_Title);
 	this->background = TitleScreenBackground::create();
 	
 	Size shadowSize = Size(-2.0f, -2.0f);
@@ -74,29 +74,34 @@ TitleScreen::TitleScreen()
 	this->storyModeButton = TextMenuSprite::create(
 		storyModeLabel,
 		storyModeLabelHover,
-		Resources::Menus_TitleScreen_TitleButton,
-		Resources::Menus_TitleScreen_TitleButtonHover);
+		UIResources::Menus_TitleScreen_TitleButton,
+		UIResources::Menus_TitleScreen_TitleButtonHover);
 
 	this->arcadeModeButton = TextMenuSprite::create(
 		arcadeModeLabel,
 		arcadeModeLabelHover,
-		Resources::Menus_TitleScreen_TitleButton,
-		Resources::Menus_TitleScreen_TitleButtonHover);
+		UIResources::Menus_TitleScreen_TitleButton,
+		UIResources::Menus_TitleScreen_TitleButtonHover);
 
 	this->optionsButton = TextMenuSprite::create(
 		optionsLabel,
 		optionsLabelHover,
-		Resources::Menus_TitleScreen_TitleButton,
-		Resources::Menus_TitleScreen_TitleButtonHover);
+		UIResources::Menus_TitleScreen_TitleButton,
+		UIResources::Menus_TitleScreen_TitleButtonHover);
 
 	this->exitButton = TextMenuSprite::create(
 		exitLabel,
 		exitLabelHover,
-		Resources::Menus_TitleScreen_TitleButton,
-		Resources::Menus_TitleScreen_TitleButtonHover);
+		UIResources::Menus_TitleScreen_TitleButton,
+		UIResources::Menus_TitleScreen_TitleButtonHover);
 
-	this->ether = Sprite::create(Resources::Menus_Backgrounds_Ether);
+	this->ether = Sprite::create(UIResources::Menus_Backgrounds_Ether);
 	this->etherParticles = ParticleGalaxy::create();
+
+	this->storyModeButton->setClickSound(SoundResources::Menus_Simple_Button);
+	this->arcadeModeButton->setClickSound(SoundResources::Menus_Simple_Button);
+	this->optionsButton->setClickSound(SoundResources::Menus_Simple_Button);
+	this->exitButton->setClickSound(SoundResources::Menus_Simple_Button);
 
 	this->addChild(this->background);
 	this->addChild(this->ether);
@@ -118,7 +123,7 @@ void TitleScreen::onEnter()
 {
 	FadeScene::onEnter();
 
-	SoundManager::playMusicResource(Resources::Music_WeWillGetThereTogether);
+	SoundManager::playMusicResource(MusicResources::WeWillGetThereTogether);
 
 	this->initializePositions();
 	this->etherParticles->start();
@@ -168,13 +173,9 @@ void TitleScreen::initializeListeners()
 	FadeScene::initializeListeners();
 
 	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));
-	this->storyModeButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
 	this->arcadeModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onArcadeModeClick, this));
-	this->arcadeModeButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
 	this->optionsButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onOptionsClick, this));
-	this->optionsButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
 	this->exitButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onExitClick, this));
-	this->exitButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
 }
 
 void TitleScreen::onStoryModeClick(MenuSprite* menuSprite)

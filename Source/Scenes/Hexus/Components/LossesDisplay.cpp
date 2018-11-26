@@ -11,14 +11,14 @@ LossesDisplay* LossesDisplay::create()
 
 LossesDisplay::LossesDisplay()
 {
-	this->playerSocketA = Sprite::create(Resources::Minigames_Hexus_Socket);
-	this->playerSocketB = Sprite::create(Resources::Minigames_Hexus_Socket);
-	this->playerSkullA = Sprite::create(Resources::Minigames_Hexus_Skull);
-	this->playerSkullB = Sprite::create(Resources::Minigames_Hexus_Skull);
-	this->enemySocketA = Sprite::create(Resources::Minigames_Hexus_Socket);
-	this->enemySocketB = Sprite::create(Resources::Minigames_Hexus_Socket);
-	this->enemySkullA = Sprite::create(Resources::Minigames_Hexus_Skull);
-	this->enemySkullB = Sprite::create(Resources::Minigames_Hexus_Skull);
+	this->playerSocketA = Sprite::create(HexusResources::Socket);
+	this->playerSocketB = Sprite::create(HexusResources::Socket);
+	this->playerSkullA = Sprite::create(HexusResources::Skull);
+	this->playerSkullB = Sprite::create(HexusResources::Skull);
+	this->enemySocketA = Sprite::create(HexusResources::Socket);
+	this->enemySocketB = Sprite::create(HexusResources::Socket);
+	this->enemySkullA = Sprite::create(HexusResources::Skull);
+	this->enemySkullB = Sprite::create(HexusResources::Skull);
 
 	this->addChild(this->playerSocketA);
 	this->addChild(this->playerSocketB);

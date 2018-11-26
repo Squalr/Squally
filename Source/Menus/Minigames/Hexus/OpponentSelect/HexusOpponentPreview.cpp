@@ -19,8 +19,8 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData, std:
 	this->opponentEntity->setCurrentAnimation("Idle");
 	this->disabledLayer = LayerColor::create(Color4B(0, 0, 0, 0), 512, 512);
 
-	this->frame = MenuSprite::create(Resources::Menus_MinigamesMenu_Hexus_EnemyFrame, Resources::Menus_MinigamesMenu_Hexus_EnemyFrameHover);
-	this->frame->setClickSound(Resources::Sounds_Menus_Simple_Button);
+	this->frame = MenuSprite::create(UIResources::Menus_MinigamesMenu_Hexus_EnemyFrame, UIResources::Menus_MinigamesMenu_Hexus_EnemyFrameHover);
+	this->frame->setClickSound(SoundResources::Menus_Simple_Button);
 
 	DrawNode* clipStencil = DrawNode::create();
 	Size frameSize = Size(this->frame->getContentSize().width, this->frame->getContentSize().height);

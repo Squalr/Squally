@@ -15,7 +15,7 @@ HexusOpponentJack* HexusOpponentJack::getInstance()
 
 HexusOpponentJack::HexusOpponentJack() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Castle_Enemies_Jack_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
 	Vec2(-32.0f, -64.0f),

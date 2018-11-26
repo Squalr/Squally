@@ -9,7 +9,7 @@
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
-
+#include "Resources/MusicResources.h"
 #include "Scenes/Hexus/CardStorage.h"
 #include "Scenes/Hexus/GameState.h"
 #include "Scenes/Hexus/Components/Components.h"

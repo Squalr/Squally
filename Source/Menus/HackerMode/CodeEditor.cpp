@@ -67,7 +67,7 @@ CodeEditor::CodeEditor()
 	this->compileDelay = CodeEditor::compileDelayMaxSeconds;
 	this->activeHackableCode = nullptr;
 
-	this->codeEditorBackground = Sprite::create(Resources::Menus_HackerModeMenu_EmptyFullScreenMenu);
+	this->codeEditorBackground = Sprite::create(UIResources::Menus_HackerModeMenu_EmptyFullScreenMenu);
 	this->codeEditorTitle = MenuLabel::create(Localization::resolveString(CodeEditor::StringKeyTitle), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
 
 	this->statusWindow = TextWindow::create(Localization::resolveString(CodeEditor::StringKeyStatus), CodeEditor::statusSize, Localization::getFontSizeH3(Localization::getCodingFont()), CodeEditor::defaultColor);
@@ -105,17 +105,17 @@ CodeEditor::CodeEditor()
 	this->acceptButton = TextMenuSprite::create(
 		acceptLabel,
 		acceptLabelHover,
-		Resources::Menus_Buttons_GenericHackButton,
-		Resources::Menus_Buttons_GenericHackButtonHover);
+		UIResources::Menus_Buttons_GenericHackButton,
+		UIResources::Menus_Buttons_GenericHackButtonHover);
 
 	this->cancelButton = TextMenuSprite::create(
 		cancelLabel,
 		cancelLabelHover,
-		Resources::Menus_Buttons_GenericHackButton,
-		Resources::Menus_Buttons_GenericHackButtonHover);
+		UIResources::Menus_Buttons_GenericHackButton,
+		UIResources::Menus_Buttons_GenericHackButtonHover);
 
 	this->acceptButtonGrayed = Node::create();
-	this->acceptButtonGrayed->addChild(Sprite::create(Resources::Menus_Buttons_GenericHackButtonGray));
+	this->acceptButtonGrayed->addChild(Sprite::create(UIResources::Menus_Buttons_GenericHackButtonGray));
 	Label* acceptGray = Label::create(Localization::resolveString(CodeEditor::StringKeyAccept), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
 	acceptGray->setTextColor(Color4B::GRAY);
 	this->acceptButtonGrayed->addChild(acceptGray);

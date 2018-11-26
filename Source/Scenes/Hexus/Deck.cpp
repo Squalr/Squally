@@ -27,7 +27,7 @@ Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData)
 {
 	this->style = cardStyle;
 	this->deckCards = std::vector<Card*>();
-	this->pad = Sprite::create(Resources::Minigames_Hexus_CardPad);
+	this->pad = Sprite::create(HexusResources::CardPad);
 
 	this->pad->setScale(Card::cardScale);
 

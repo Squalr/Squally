@@ -74,11 +74,11 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 	// this->addChild(stencilLeft);
 	// this->addChild(stencilRight);
 
-	this->dialogMenu = Sprite::create(Resources::Menus_DialogueMenu_DialogueBox);
+	this->dialogMenu = Sprite::create(UIResources::Menus_DialogueMenu_DialogueBox);
 	this->spriteLeftClip = ClippingNode::create(stencilLeft);
 	this->spriteRightClip = ClippingNode::create(stencilRight);
-	this->frameLeft = Sprite::create(Resources::Menus_DialogueMenu_DialogueFrameLeft);
-	this->frameRight = Sprite::create(Resources::Menus_DialogueMenu_DialogueFrameRight);
+	this->frameLeft = Sprite::create(UIResources::Menus_DialogueMenu_DialogueFrameLeft);
+	this->frameRight = Sprite::create(UIResources::Menus_DialogueMenu_DialogueFrameRight);
 
 	switch (speaker)
 	{
@@ -259,11 +259,11 @@ Node* DialogMenu::getPortraitNode(Portrait portrait, bool isRight)
 		case Portrait::Player:
 		{
 			Node * node = Node::create();
-			Sprite* background = Sprite::create(Resources::Menus_DialogueMenu_JungleBackground);
-			FloatingSprite * sprite = FloatingSprite::create(Resources::Cutscenes_SquallyUploadMars_SquallyPixel, Vec2(2.0f, -24.0f), Vec2(6.25f, 6.25f));
+			Sprite* background = Sprite::create(UIResources::Menus_DialogueMenu_JungleBackground);
+			FloatingSprite * sprite = FloatingSprite::create(CutsceneResources::SquallyUploadMars_SquallyPixel, Vec2(2.0f, -24.0f), Vec2(6.25f, 6.25f));
 			sprite->setFlippedX(isRight);
 
-			ParticleSystem* starParticles = ParticleSystemQuad::create(Resources::Particles_ColorfulStars);
+			ParticleSystem* starParticles = ParticleSystemQuad::create(ParticleResources::ColorfulStars);
 
 			node->addChild(background);
 			node->addChild(starParticles);
@@ -274,13 +274,13 @@ Node* DialogMenu::getPortraitNode(Portrait portrait, bool isRight)
 		case Portrait::AI:
 		{
 			Node * node = Node::create();
-			Sprite* background = Sprite::create(Resources::Menus_DialogueMenu_ShipBackground);
-			FloatingSprite * sprite = FloatingSprite::create(Resources::Menus_DialogueMenu_AI, Vec2(2.0f, -24.0f), Vec2(6.25f, 6.25f));
+			Sprite* background = Sprite::create(UIResources::Menus_DialogueMenu_ShipBackground);
+			FloatingSprite * sprite = FloatingSprite::create(UIResources::Menus_DialogueMenu_AI, Vec2(2.0f, -24.0f), Vec2(6.25f, 6.25f));
 			sprite->setFlippedX(isRight);
 
-			ParticleSystem* staticParticles = ParticleSystemQuad::create(Resources::Particles_Static);
-			ParticleSystem* sparkParticles = ParticleSystemQuad::create(Resources::Particles_Spark);
-			ParticleSystem* sparkParticlesBack = ParticleSystemQuad::create(Resources::Particles_Spark);
+			ParticleSystem* staticParticles = ParticleSystemQuad::create(ParticleResources::Static);
+			ParticleSystem* sparkParticles = ParticleSystemQuad::create(ParticleResources::Spark);
+			ParticleSystem* sparkParticlesBack = ParticleSystemQuad::create(ParticleResources::Spark);
 
 			CallFunc* triggerParticles = CallFunc::create([sprite, sparkParticles]()
 			{

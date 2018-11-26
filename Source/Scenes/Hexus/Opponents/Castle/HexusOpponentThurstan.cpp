@@ -15,7 +15,7 @@ HexusOpponentThurstan* HexusOpponentThurstan::getInstance()
 
 HexusOpponentThurstan::HexusOpponentThurstan() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Castle_Npcs_Thurstan_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
 	Vec2(-32.0f, -48.0f),

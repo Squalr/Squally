@@ -15,7 +15,7 @@ HexusOpponentGoblinWarriorPig* HexusOpponentGoblinWarriorPig::getInstance()
 
 HexusOpponentGoblinWarriorPig::HexusOpponentGoblinWarriorPig() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Jungle_Enemies_GoblinWarriorPig_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -32.0f),
 	Vec2(-16.0f, -48.0f),

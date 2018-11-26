@@ -19,8 +19,8 @@ PauseMenu * PauseMenu::create()
 PauseMenu::PauseMenu()
 {
 	this->background = Node::create();
-	this->pauseWindow = Sprite::create(Resources::Menus_PauseMenu_PauseMenu);
-	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover);
+	this->pauseWindow = Sprite::create(UIResources::Menus_PauseMenu_PauseMenu);
+	this->closeButton = MenuSprite::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
 	this->titleLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyMenuPause), Localization::getMainFont(), 32.0f);
 	this->resumeClickCallback = nullptr;
 	this->optionsClickCallback = nullptr;
@@ -67,20 +67,20 @@ PauseMenu::PauseMenu()
 	this->resumeButton = TextMenuSprite::create(
 		resumeLabel,
 		resumeLabelHover,
-		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover);
+		UIResources::Menus_Buttons_GenericButton,
+		UIResources::Menus_Buttons_GenericButtonHover);
 
 	this->optionsButton = TextMenuSprite::create(
 		optionsLabel,
 		optionsLabelHover,
-		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover);
+		UIResources::Menus_Buttons_GenericButton,
+		UIResources::Menus_Buttons_GenericButtonHover);
 
 	this->exitButton = TextMenuSprite::create(
 		exitLabel,
 		exitLabelHover,
-		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover);
+		UIResources::Menus_Buttons_GenericButton,
+		UIResources::Menus_Buttons_GenericButtonHover);
 
 	this->titleLabel->setColor(PauseMenu::TitleColor);
 	this->titleLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
@@ -142,7 +142,7 @@ void PauseMenu::initializeListeners()
 	this->exitButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onExitClick, this));
 
 	this->closeButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onCloseClick, this));
-	this->closeButton->setClickSound(Resources::Sounds_ClickBack1);
+	this->closeButton->setClickSound(SoundResources::ClickBack1);
 
 	this->addEventListener(keyboardListener);
 }

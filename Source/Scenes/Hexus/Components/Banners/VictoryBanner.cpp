@@ -11,8 +11,8 @@ VictoryBanner* VictoryBanner::create()
 
 VictoryBanner::VictoryBanner()
 {
-	this->victoryBanner1 = Sprite::create(Resources::Minigames_Hexus_PlayerBanner);
-	this->victoryBanner2 = Sprite::create(Resources::Minigames_Hexus_PlayerBanner);
+	this->victoryBanner1 = Sprite::create(HexusResources::PlayerBanner);
+	this->victoryBanner2 = Sprite::create(HexusResources::PlayerBanner);
 
 	this->setBannerText("VICTORY!");
 

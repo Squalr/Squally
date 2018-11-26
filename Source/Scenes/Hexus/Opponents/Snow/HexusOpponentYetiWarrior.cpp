@@ -15,7 +15,7 @@ HexusOpponentYetiWarrior* HexusOpponentYetiWarrior::getInstance()
 
 HexusOpponentYetiWarrior::HexusOpponentYetiWarrior() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Snow_Enemies_YetiWarrior_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.5f,
 	Vec2(-48.0f, -72.0f),
 	Vec2(-24.0f, -64.0f),

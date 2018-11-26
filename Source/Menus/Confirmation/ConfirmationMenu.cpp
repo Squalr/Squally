@@ -14,12 +14,12 @@ ConfirmationMenu::ConfirmationMenu()
 	this->onConfirmCallback = nullptr;
 	this->onCancelCallback = nullptr;
 
-	this->pauseWindow = Sprite::create(Resources::Menus_ConfirmMenu_ConfirmMenuWindow);
-	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover);
-	this->cancelButton = MenuSprite::create(Resources::Menus_Buttons_CancelButton, Resources::Menus_Buttons_CancelButtonHover);
-	this->confirmButton = MenuSprite::create(Resources::Menus_Buttons_AcceptButton, Resources::Menus_Buttons_AcceptButtonHover);
+	this->pauseWindow = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenuWindow);
+	this->closeButton = MenuSprite::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
+	this->cancelButton = MenuSprite::create(UIResources::Menus_Buttons_CancelButton, UIResources::Menus_Buttons_CancelButtonHover);
+	this->confirmButton = MenuSprite::create(UIResources::Menus_Buttons_AcceptButton, UIResources::Menus_Buttons_AcceptButtonHover);
 	this->confirmationLabel = Label::create("", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	this->closeButton->setClickSound(Resources::Sounds_ClickBack1);
+	this->closeButton->setClickSound(SoundResources::ClickBack1);
 
 	this->addChild(this->pauseWindow);
 	this->addChild(this->closeButton);

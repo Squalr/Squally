@@ -11,11 +11,11 @@ Avatars* Avatars::create()
 
 Avatars::Avatars()
 {
-	this->framePlayer = Sprite::create(Resources::Minigames_Hexus_AvatarFrame);
-	this->frameEnemy = Sprite::create(Resources::Minigames_Hexus_AvatarFrame);
+	this->framePlayer = Sprite::create(HexusResources::AvatarFrame);
+	this->frameEnemy = Sprite::create(HexusResources::AvatarFrame);
 	this->avatarPlayer = Node::create();
 	this->avatarEnemy = Node::create();
-	this->avatarPlayer->addChild(Sprite::create(Resources::Backgrounds_Platformer_Jungle_Background));
+	this->avatarPlayer->addChild(Sprite::create(BackgroundResources::Platformer_Jungle_Background));
 	this->playerSprite = AnimationNode::create(EntityResources::Platformer_Squally_Animations);
 
 	playerSprite->setScale(0.25f);

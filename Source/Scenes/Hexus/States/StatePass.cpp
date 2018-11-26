@@ -16,34 +16,34 @@ StatePass* StatePass::create()
 StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 {
 	// Pass
-	this->passSprite = Sprite::create(Resources::Minigames_Hexus_Flags);
-	this->passButton = IconMenuSprite::create(Resources::Minigames_Hexus_Flags, Resources::Minigames_Hexus_FlagsSelected, Resources::Menus_Buttons_WoodSquareButton, Resources::Menus_Buttons_WoodSquareButtonSelected);
+	this->passSprite = Sprite::create(HexusResources::Flags);
+	this->passButton = IconMenuSprite::create(HexusResources::Flags, HexusResources::FlagsSelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
 	this->passPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->passLabel = Label::create(Localization::resolveString(StatePass::StringKeyHexusPass), Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
-	this->passParticles = ParticleSystemQuad::create(Resources::Particles_Hexus_WhiteAura);
-	this->enemyPassSprite = Sprite::create(Resources::Minigames_Hexus_Flags);
-	this->enemyPassParticles = ParticleSystemQuad::create(Resources::Particles_Hexus_WhiteAura);
+	this->passParticles = ParticleSystemQuad::create(ParticleResources::Hexus_WhiteAura);
+	this->enemyPassSprite = Sprite::create(HexusResources::Flags);
+	this->enemyPassParticles = ParticleSystemQuad::create(ParticleResources::Hexus_WhiteAura);
 
 	// Last stand
-	this->lastStandSprite = Sprite::create(Resources::Minigames_Hexus_ShieldButton);
-	this->lastStandButton = IconMenuSprite::create(Resources::Minigames_Hexus_ShieldButton, Resources::Minigames_Hexus_ShieldButtonSelected, Resources::Menus_Buttons_WoodSquareButton, Resources::Menus_Buttons_WoodSquareButtonSelected);
+	this->lastStandSprite = Sprite::create(HexusResources::ShieldButton);
+	this->lastStandButton = IconMenuSprite::create(HexusResources::ShieldButton, HexusResources::ShieldButtonSelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
 	this->lastStandPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->lastStandLabel = Label::create(Localization::resolveString(StatePass::StringKeyHexusLastStand), Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
-	this->lastStandParticles = ParticleSystemQuad::create(Resources::Particles_Hexus_Aura);
-	this->enemyLastStandSprite = Sprite::create(Resources::Minigames_Hexus_ShieldButton);
-	this->enemyLastStandParticles = ParticleSystemQuad::create(Resources::Particles_Hexus_Aura);
+	this->lastStandParticles = ParticleSystemQuad::create(ParticleResources::Hexus_Aura);
+	this->enemyLastStandSprite = Sprite::create(HexusResources::ShieldButton);
+	this->enemyLastStandParticles = ParticleSystemQuad::create(ParticleResources::Hexus_Aura);
 
 	// Claim victory
-	this->claimVictorySprite = Sprite::create(Resources::Minigames_Hexus_Victory);
-	this->claimVictoryButton = IconMenuSprite::create(Resources::Minigames_Hexus_Victory, Resources::Minigames_Hexus_VictorySelected, Resources::Menus_Buttons_WoodSquareButton, Resources::Menus_Buttons_WoodSquareButtonSelected);
+	this->claimVictorySprite = Sprite::create(HexusResources::Victory);
+	this->claimVictoryButton = IconMenuSprite::create(HexusResources::Victory, HexusResources::VictorySelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
 	this->claimVictoryPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->claimVictoryLabel = Label::create(Localization::resolveString(StatePass::StringKeyHexusClaimVictory), Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
-	this->claimVictoryParticles = ParticleSystemQuad::create(Resources::Particles_Hexus_Aura);
-	this->enemyClaimVictorySprite = Sprite::create(Resources::Minigames_Hexus_Victory);
-	this->enemyClaimVictoryParticles = ParticleSystemQuad::create(Resources::Particles_Hexus_Aura);
+	this->claimVictoryParticles = ParticleSystemQuad::create(ParticleResources::Hexus_Aura);
+	this->enemyClaimVictorySprite = Sprite::create(HexusResources::Victory);
+	this->enemyClaimVictoryParticles = ParticleSystemQuad::create(ParticleResources::Hexus_Aura);
 
 	this->addChild(this->passParticles);
 	this->addChild(this->passSprite);
@@ -434,15 +434,15 @@ void StatePass::onStateEnter(GameState* gameState)
 			// Note: We play these on state enter rather than on button click, because button click is not the only way to enter this state
 			if (gameState->isPlayerLastStandCondition())
 			{
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_LastStand);
+				SoundManager::playSoundResource(SoundResources::Hexus_LastStand);
 			}
 			else if (gameState->isPlayerClaimVictoryCondition())
 			{
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_ClaimVictory);
+				SoundManager::playSoundResource(SoundResources::Hexus_ClaimVictory);
 			}
 			else
 			{
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_Pass);
+				SoundManager::playSoundResource(SoundResources::Hexus_Pass);
 			}
 
 			gameState->playerPassed = true;
@@ -451,15 +451,15 @@ void StatePass::onStateEnter(GameState* gameState)
 		{
 			if (gameState->isEnemyLastStandCondition())
 			{
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_LastStand);
+				SoundManager::playSoundResource(SoundResources::Hexus_LastStand);
 			}
 			else if (gameState->isEnemyClaimVictoryCondition())
 			{
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_ClaimVictory);
+				SoundManager::playSoundResource(SoundResources::Hexus_ClaimVictory);
 			}
 			else
 			{
-				SoundManager::playSoundResource(Resources::Sounds_Hexus_Pass);
+				SoundManager::playSoundResource(SoundResources::Hexus_Pass);
 			}
 
 			gameState->enemyPassed = true;

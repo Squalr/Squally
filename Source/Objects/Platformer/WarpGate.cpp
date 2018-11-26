@@ -13,14 +13,14 @@ WarpGate::WarpGate(ValueMap* initProperties) : HackableObject(initProperties)
 {
 	this->isOpen = false;
 
-	this->gateOpen = Sprite::create(Resources::Objects_Platformer_WarpGateOpen);
-	this->gateClosed = Sprite::create(Resources::Objects_Platformer_WarpGateClosed);
-	this->gateClosedLights = Sprite::create(Resources::Objects_Platformer_WarpGateClosedLights);
+	this->gateOpen = Sprite::create(ObjectResources::Platformer_WarpGateOpen);
+	this->gateClosed = Sprite::create(ObjectResources::Platformer_WarpGateClosed);
+	this->gateClosedLights = Sprite::create(ObjectResources::Platformer_WarpGateClosedLights);
 	this->gateClosedLightsNode = Node::create();
-	this->gateParticles = ParticleSystemQuad::create(Resources::Particles_WarpGate);
+	this->gateParticles = ParticleSystemQuad::create(ParticleResources::WarpGate);
 
-	this->sparkParticles = ParticleSystemQuad::create(Resources::Particles_Spark);
-	this->sparkParticlesBack = ParticleSystemQuad::create(Resources::Particles_Spark);
+	this->sparkParticles = ParticleSystemQuad::create(ParticleResources::Spark);
+	this->sparkParticlesBack = ParticleSystemQuad::create(ParticleResources::Spark);
 
 	this->sparkParticles->setPositionType(ParticleSystem::PositionType::GROUPED);
 	this->sparkParticlesBack->setPositionType(ParticleSystem::PositionType::GROUPED);

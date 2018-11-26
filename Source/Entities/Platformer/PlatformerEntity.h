@@ -6,6 +6,8 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerCollisionMapping.h"
+#include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
 using namespace cocos2d;

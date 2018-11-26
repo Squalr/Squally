@@ -4,6 +4,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/SmartNode.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 

@@ -8,6 +8,8 @@
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Minigames/Hexus/Puzzles/HexusPuzzleItem.h"
+#include "Resources/ParticleResources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 

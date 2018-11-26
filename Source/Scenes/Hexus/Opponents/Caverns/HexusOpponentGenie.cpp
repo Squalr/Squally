@@ -15,7 +15,7 @@ HexusOpponentGenie* HexusOpponentGenie::getInstance()
 
 HexusOpponentGenie::HexusOpponentGenie() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Caverns_Enemies_Genie_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	0.3f,
 	Vec2(-32.0f, -160.0f),
 	Vec2(-16.0f, -192.0f),

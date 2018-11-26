@@ -15,7 +15,7 @@ HexusOpponentDemonShaman* HexusOpponentDemonShaman::getInstance()
 
 HexusOpponentDemonShaman::HexusOpponentDemonShaman() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Volcano_Enemies_DemonShaman_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.85f,
 	Vec2(-48.0f, -48.0f),
 	Vec2(-16.0f, -48.0f),

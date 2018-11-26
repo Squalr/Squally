@@ -26,7 +26,7 @@ TutorialFIntroSequence::TutorialFIntroSequence() : TutorialBase(StateOverride::T
 	handCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	handCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	this->handCardsNextButton = TextMenuSprite::create(handCardsNextLabel, handCardsNextLabelSelected, Sprite::create(Resources::Minigames_Hexus_ButtonPlank), Sprite::create(Resources::Minigames_Hexus_ButtonPlankHover));
+	this->handCardsNextButton = TextMenuSprite::create(handCardsNextLabel, handCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	this->handCardsTutorialLabel->enableOutline(Color4B::BLACK, 2);
 	this->handCardsTutorialLabel->setAnchorPoint(Vec2(0.5f, 0.0f));

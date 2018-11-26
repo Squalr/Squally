@@ -11,8 +11,8 @@ OpponentRoundWinBanner* OpponentRoundWinBanner::create()
 
 OpponentRoundWinBanner::OpponentRoundWinBanner()
 {
-	this->playerPassBanner1 = Sprite::create(Resources::Minigames_Hexus_EnemyBanner);
-	this->playerPassBanner2 = Sprite::create(Resources::Minigames_Hexus_EnemyBanner);
+	this->playerPassBanner1 = Sprite::create(HexusResources::EnemyBanner);
+	this->playerPassBanner2 = Sprite::create(HexusResources::EnemyBanner);
 
 	this->setBannerText("OPPONENT WINS THE ROUND");
 

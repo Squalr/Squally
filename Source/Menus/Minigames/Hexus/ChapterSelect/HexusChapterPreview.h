@@ -5,6 +5,8 @@
 #include "Engine/Localization/Localization.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Events/HexusEvents.h"
+#include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
 using namespace cocos2d;

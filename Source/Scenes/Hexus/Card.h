@@ -5,6 +5,7 @@
 #include "Engine/SmartNode.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/HackUtils.h"
+#include "Resources/HexusResources.h"
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardEffects.h"
 #include "Scenes/Hexus/Config.h"

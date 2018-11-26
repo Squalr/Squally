@@ -6,7 +6,7 @@
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/Utils/StrUtils.h"
-
+#include "Resources/ParticleResources.h"
 #include "Scenes/Hexus/Components/ComponentBase.h"
 
 using namespace cocos2d;

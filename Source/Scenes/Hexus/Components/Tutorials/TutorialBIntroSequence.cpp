@@ -39,7 +39,7 @@ TutorialBIntroSequence::TutorialBIntroSequence() : TutorialBase(StateOverride::T
 	scoreTotalsNextLabel->enableOutline(Color4B::BLACK, 2);
 	scoreTotalsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	this->scoreTotalsNextButton = TextMenuSprite::create(scoreTotalsNextLabel, scoreTotalsNextLabelSelected, Sprite::create(Resources::Minigames_Hexus_ButtonPlank), Sprite::create(Resources::Minigames_Hexus_ButtonPlankHover));
+	this->scoreTotalsNextButton = TextMenuSprite::create(scoreTotalsNextLabel, scoreTotalsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	Label* handCardsNextLabel = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* handCardsNextLabelSelected = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
@@ -47,7 +47,7 @@ TutorialBIntroSequence::TutorialBIntroSequence() : TutorialBase(StateOverride::T
 	handCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	handCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	this->handCardsNextButton = TextMenuSprite::create(handCardsNextLabel, handCardsNextLabelSelected, Sprite::create(Resources::Minigames_Hexus_ButtonPlank), Sprite::create(Resources::Minigames_Hexus_ButtonPlankHover));
+	this->handCardsNextButton = TextMenuSprite::create(handCardsNextLabel, handCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	Label* lastStandNextLabel = Label::create("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* lastStandNextLabelSelected = Label::create("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
@@ -55,7 +55,7 @@ TutorialBIntroSequence::TutorialBIntroSequence() : TutorialBase(StateOverride::T
 	lastStandNextLabel->enableOutline(Color4B::BLACK, 2);
 	lastStandNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	this->lastStandNextButton = TextMenuSprite::create(lastStandNextLabel, lastStandNextLabelSelected, Sprite::create(Resources::Minigames_Hexus_ButtonPlank), Sprite::create(Resources::Minigames_Hexus_ButtonPlankHover));
+	this->lastStandNextButton = TextMenuSprite::create(lastStandNextLabel, lastStandNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	this->scoreTotalsTutorialLabel->enableOutline(Color4B::BLACK, 2);
 	this->handCardsTutorialLabel->enableOutline(Color4B::BLACK, 2);

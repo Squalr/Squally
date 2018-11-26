@@ -23,7 +23,7 @@ CardRow::CardRow(bool isPlayerRow)
 	this->rowSelectCallback = nullptr;
 	this->rowWidth = Config::rowWidth;
 
-	this->rowSelectSprite = MenuSprite::create(Resources::Minigames_Hexus_RowSelection, Resources::Minigames_Hexus_RowSelectionHighlight);
+	this->rowSelectSprite = MenuSprite::create(HexusResources::RowSelection, HexusResources::RowSelectionHighlight);
 
 	this->addChild(this->rowSelectSprite);
 }

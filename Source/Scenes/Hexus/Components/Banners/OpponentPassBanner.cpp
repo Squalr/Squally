@@ -11,8 +11,8 @@ OpponentPassBanner* OpponentPassBanner::create()
 
 OpponentPassBanner::OpponentPassBanner()
 {
-	this->opponentPassBanner1 = Sprite::create(Resources::Minigames_Hexus_EnemyPassBanner);
-	this->opponentPassBanner2 = Sprite::create(Resources::Minigames_Hexus_EnemyPassBanner);
+	this->opponentPassBanner1 = Sprite::create(HexusResources::EnemyPassBanner);
+	this->opponentPassBanner2 = Sprite::create(HexusResources::EnemyPassBanner);
 
 	this->setBannerText("OPPONENT PASSED");
 

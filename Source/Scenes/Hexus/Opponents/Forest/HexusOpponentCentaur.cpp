@@ -15,7 +15,7 @@ HexusOpponentCentaur* HexusOpponentCentaur::getInstance()
 
 HexusOpponentCentaur::HexusOpponentCentaur() : HexusOpponentData(
 	EntityResources::Platformer_Environment_Forest_Enemies_Centaur_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(0.0f, -96.0f),
 	Vec2(-64.0f, -96.0f),
