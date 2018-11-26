@@ -14,7 +14,6 @@
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 

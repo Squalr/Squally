@@ -12,7 +12,7 @@ MechBoxDrone* MechBoxDrone::deserialize(ValueMap* initProperties)
 }
 
 MechBoxDrone::MechBoxDrone(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Mech_Enemies_MechBoxDrone_Animations,
+	EntityResources::Platformer_Environment_Mech_Enemies_MechBoxDrone_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(224.0f, 278.0f),
 	0.7f,

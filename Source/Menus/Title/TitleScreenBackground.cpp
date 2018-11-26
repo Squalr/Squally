@@ -14,23 +14,23 @@ TitleScreenBackground::TitleScreenBackground()
 	this->eyes1Anim = Animation::create();
 	this->eyes2Anim = Animation::create();
 
-	this->background = Sprite::create(Resources::Menus_Backgrounds_ForestBackground);
-	this->fog = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
-	this->foregroundFog = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
-	this->backgroundTrees = FloatingSprite::create(Resources::Menus_Backgrounds_LightTrees, Vec2(-48.0f, 8.0f), Vec2(7.0f, 5.0f));
-	this->backgroundVines = FloatingSprite::create(Resources::Menus_Backgrounds_FarVines, Vec2(64.0f, -8.0f), Vec2(7.0f, 5.0f));
-	this->midgroundTrees = FloatingSprite::create(Resources::Menus_Backgrounds_MidgroundTrees, Vec2(8.0f, -8.0f), Vec2(7.0f, 5.0f));
-	this->tree = Sprite::create(Resources::Menus_Backgrounds_Tree);
+	this->background = Sprite::create(UIResources::Menus_Backgrounds_ForestBackground);
+	this->fog = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
+	this->foregroundFog = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
+	this->backgroundTrees = FloatingSprite::create(UIResources::Menus_Backgrounds_LightTrees, Vec2(-48.0f, 8.0f), Vec2(7.0f, 5.0f));
+	this->backgroundVines = FloatingSprite::create(UIResources::Menus_Backgrounds_FarVines, Vec2(64.0f, -8.0f), Vec2(7.0f, 5.0f));
+	this->midgroundTrees = FloatingSprite::create(UIResources::Menus_Backgrounds_MidgroundTrees, Vec2(8.0f, -8.0f), Vec2(7.0f, 5.0f));
+	this->tree = Sprite::create(UIResources::Menus_Backgrounds_Tree);
 	this->eyes1 = Sprite::create();
 	this->eyes2 = Sprite::create();
-	this->foregroundVines = FloatingSprite::create(Resources::Menus_Backgrounds_Vines, Vec2(-24.0f, 0.0f), Vec2(7.0f, 5.0f));
-	this->foregroundGrassBottom = FloatingSprite::create(Resources::Menus_Backgrounds_BottomSoil, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
-	this->foregroundGrassTop = FloatingSprite::create(Resources::Menus_Backgrounds_TopLeaves, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
-	this->foregroundLight = Sprite::create(Resources::Menus_Backgrounds_Light);
+	this->foregroundVines = FloatingSprite::create(UIResources::Menus_Backgrounds_Vines, Vec2(-24.0f, 0.0f), Vec2(7.0f, 5.0f));
+	this->foregroundGrassBottom = FloatingSprite::create(UIResources::Menus_Backgrounds_BottomSoil, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
+	this->foregroundGrassTop = FloatingSprite::create(UIResources::Menus_Backgrounds_TopLeaves, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
+	this->foregroundLight = Sprite::create(UIResources::Menus_Backgrounds_Light);
 	this->slimeNode = Node::create();
-	this->slime = Sprite::create(Resources::Menus_TitleScreen_Slime_Slime_0000);
+	this->slime = Sprite::create(UIResources::Menus_TitleScreen_Slime_Slime_0000);
 	this->squallyNode = Node::create();
-	this->squally = AnimationNode::create(Resources::Entities_Platformer_Squally_Animations);
+	this->squally = AnimationNode::create(EntityResources::Platformer_Squally_Animations);
 
 	this->squally->setScale(0.5f);
 
@@ -39,10 +39,10 @@ TitleScreenBackground::TitleScreenBackground()
 
 	this->createSlimeAnimation();
 
-	this->windParticles = ParticleSystemQuad::create(Resources::Particles_Wind);
-	this->fireflyParticles = ParticleSystemQuad::create(Resources::Particles_Fireflies2);
+	this->windParticles = ParticleSystemQuad::create(ParticleResources::Wind);
+	this->fireflyParticles = ParticleSystemQuad::create(ParticleResources::Fireflies2);
 
-	auto eyesAFrames = GameUtils::getAllAnimationFiles(Resources::Menus_Backgrounds_EyesA_0000);
+	auto eyesAFrames = GameUtils::getAllAnimationFiles(UIResources::Menus_Backgrounds_EyesA_0000);
 
 	for (auto it = eyesAFrames.begin(); it != eyesAFrames.end(); it++)
 	{
@@ -51,7 +51,7 @@ TitleScreenBackground::TitleScreenBackground()
 
 	this->eyes1Anim->retain();
 
-	auto eyesBFrames = GameUtils::getAllAnimationFiles(Resources::Menus_Backgrounds_EyesB_0000);
+	auto eyesBFrames = GameUtils::getAllAnimationFiles(UIResources::Menus_Backgrounds_EyesB_0000);
 
 	for (auto it = eyesBFrames.begin(); it != eyesBFrames.end(); it++)
 	{
@@ -212,7 +212,7 @@ void TitleScreenBackground::createSlimeAnimation()
 	this->slimeAnimation = Animation::create();
 	this->slimeAnimation->setDelayPerUnit(0.035f);
 
-	auto slimeFrames = GameUtils::getAllAnimationFiles(Resources::Menus_TitleScreen_Slime_Slime_0000);
+	auto slimeFrames = GameUtils::getAllAnimationFiles(UIResources::Menus_TitleScreen_Slime_Slime_0000);
 
 	for (auto it = slimeFrames.begin(); it != slimeFrames.end(); it++)
 	{

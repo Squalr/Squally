@@ -1,6 +1,5 @@
 #pragma once
 #include "cocos2d.h"
-#include "Resources.h"
 
 #include "Scenes/Hexus/Card.h"
 

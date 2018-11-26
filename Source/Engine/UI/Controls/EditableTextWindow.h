@@ -3,8 +3,7 @@
 #include "ui/CocosGUI.h"
 
 #include "Engine/Localization/Localization.h"
-#include "Resources.h"
-#include "TextWindow.h"
+#include "Engine/UI/Controls/TextWindow.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;

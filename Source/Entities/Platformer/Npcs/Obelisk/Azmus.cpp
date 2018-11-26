@@ -12,7 +12,7 @@ Azmus* Azmus::deserialize(ValueMap* initProperties)
 }
 
 Azmus::Azmus(ValueMap* initProperties) : NpcBase(initProperties,
-	Resources::Entities_Platformer_Environment_Obelisk_Npcs_Azmus_Animations,
+	EntityResources::Platformer_Environment_Obelisk_Npcs_Azmus_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,

@@ -11,8 +11,8 @@ RoundBanner* RoundBanner::create()
 
 RoundBanner::RoundBanner()
 {
-	this->roundBanner1 = Sprite::create(Resources::Minigames_Hexus_RoundBanner);
-	this->roundBanner2 = Sprite::create(Resources::Minigames_Hexus_RoundBanner);
+	this->roundBanner1 = Sprite::create(HexusResources::RoundBanner);
+	this->roundBanner2 = Sprite::create(HexusResources::RoundBanner);
 
 	this->addBannerChild(this->roundBanner1);
 	this->addBannerChild(this->roundBanner2);

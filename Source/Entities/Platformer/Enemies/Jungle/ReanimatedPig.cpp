@@ -12,7 +12,7 @@ ReanimatedPig* ReanimatedPig::deserialize(ValueMap* initProperties)
 }
 
 ReanimatedPig::ReanimatedPig(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Jungle_Enemies_ReanimatedPig_Animations,
+	EntityResources::Platformer_Environment_Jungle_Enemies_ReanimatedPig_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(256.0f, 240.0f),
 	0.8f,

@@ -22,7 +22,7 @@ MatrixLetter* MatrixLetter::create()
 
 MatrixLetter::MatrixLetter()
 {
-	this->initWithFile(Resources::Fonts_AlienText);
+	this->initWithFile(FontResources::AlienText);
 
 	this->randomizeLetter();
 

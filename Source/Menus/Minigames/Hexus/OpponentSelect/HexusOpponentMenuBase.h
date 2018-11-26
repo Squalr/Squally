@@ -12,7 +12,6 @@
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 

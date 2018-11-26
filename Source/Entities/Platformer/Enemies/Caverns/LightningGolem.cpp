@@ -12,7 +12,7 @@ LightningGolem* LightningGolem::deserialize(ValueMap* initProperties)
 }
 
 LightningGolem::LightningGolem(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Caverns_Enemies_LightningGolem_Animations,
+	EntityResources::Platformer_Environment_Caverns_Enemies_LightningGolem_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(768.0f, 840.0f),
 	0.30f,

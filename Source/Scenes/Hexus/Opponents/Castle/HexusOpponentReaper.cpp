@@ -14,8 +14,8 @@ HexusOpponentReaper* HexusOpponentReaper::getInstance()
 }
 
 HexusOpponentReaper::HexusOpponentReaper() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Castle_Enemies_Reaper_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+	EntityResources::Platformer_Environment_Castle_Enemies_Reaper_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(0.0f, -224.0f),
 	Vec2(-16.0f, -256.0f),

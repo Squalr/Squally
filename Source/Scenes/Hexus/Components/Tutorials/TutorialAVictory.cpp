@@ -25,7 +25,7 @@ TutorialAVictory::TutorialAVictory() : TutorialBase(StateOverride::TutorialA, Ga
 	lossesDisplayNextLabel->enableOutline(Color4B::BLACK, 2);
 	lossesDisplayNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	this->lossDisplayNextButton = TextMenuSprite::create(lossesDisplayNextLabel, lossesDisplayNextLabelSelected, Sprite::create(Resources::Minigames_Hexus_ButtonPlank), Sprite::create(Resources::Minigames_Hexus_ButtonPlankHover));
+	this->lossDisplayNextButton = TextMenuSprite::create(lossesDisplayNextLabel, lossesDisplayNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	this->lossDisplayTutorialLabel->enableOutline(Color4B::BLACK, 2);
 	this->lossDisplayTutorialLabel->setAnchorPoint(Vec2(0.5f, 0.0f));

@@ -31,5 +31,5 @@ void IntroCutscene::onEnter()
 {
 	Cutscene::onEnter();
 
-	SoundManager::playMusicResource(Resources::Music_HeartBeat);
+	SoundManager::playMusicResource(MusicResources::HeartBeat);
 }

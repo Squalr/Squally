@@ -3,7 +3,7 @@
 
 #include "Engine/Cutscenes/Cutscene.h"
 #include "Engine/Sound/SoundManager.h"
-#include "Resources.h"
+#include "Resources/MusicResources.h"
 #include "Scenes/Cutscenes/IntroCutscene/BoardMembers.h"
 #include "Scenes/Cutscenes/IntroCutscene/HomeAssistantRobot.h"
 #include "Scenes/Cutscenes/IntroCutscene/NeonCity.h"

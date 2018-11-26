@@ -14,8 +14,8 @@ HexusOpponentSnowFiend* HexusOpponentSnowFiend::getInstance()
 }
 
 HexusOpponentSnowFiend::HexusOpponentSnowFiend() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Snow_Enemies_SnowFiend_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
+	EntityResources::Platformer_Environment_Snow_Enemies_SnowFiend_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
 	Vec2(-48.0f, -48.0f),
 	Vec2(-48.0f, -64.0f),

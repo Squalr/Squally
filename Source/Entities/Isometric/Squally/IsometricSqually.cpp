@@ -19,7 +19,7 @@ IsometricSqually* IsometricSqually::getInstance()
 }
 
 IsometricSqually::IsometricSqually(ValueMap* initProperties) : IsometricEntity::IsometricEntity(initProperties,
-	Resources::Entities_Isometric_Squally_Animations,
+	EntityResources::Isometric_Squally_Animations,
 	1.0f,
 	Vec2(-128.0f, 0.0f))
 {

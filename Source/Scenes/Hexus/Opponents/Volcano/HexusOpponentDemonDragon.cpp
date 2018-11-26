@@ -14,8 +14,8 @@ HexusOpponentDemonDragon* HexusOpponentDemonDragon::getInstance()
 }
 
 HexusOpponentDemonDragon::HexusOpponentDemonDragon() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Volcano_Enemies_DemonDragon_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
+	EntityResources::Platformer_Environment_Volcano_Enemies_DemonDragon_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-96.0f, -56.0f),

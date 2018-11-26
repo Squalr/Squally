@@ -20,9 +20,9 @@ OptionsMenu::OptionsMenu()
 	this->backClickCallback = nullptr;
 
 	this->background = Node::create();
-	this->optionsWindow = Sprite::create(Resources::Menus_OptionsMenu_OptionsMenu);
+	this->optionsWindow = Sprite::create(UIResources::Menus_OptionsMenu_OptionsMenu);
 	this->fullScreenLabel = Label::create(Localization::resolveString(OptionsMenu::StringKeyFullScreen), Localization::getMainFont(), 24.0f);
-	this->closeButton = MenuSprite::create(Resources::Menus_Buttons_CloseButton, Resources::Menus_Buttons_CloseButtonHover);
+	this->closeButton = MenuSprite::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
 	this->titleLabel = Label::create(Localization::resolveString(OptionsMenu::StringKeyMenuOptions), Localization::getMainFont(), 32.0f);
 
 	this->titleLabel->setColor(OptionsMenu::TitleColor);
@@ -31,14 +31,14 @@ OptionsMenu::OptionsMenu()
 	this->fullScreenLabel->setAlignment(TextHAlignment::LEFT);
 	this->fullScreenLabel->enableOutline(Color4B::BLACK, 2.0f);
 
-	this->musicIcon = Sprite::create(Resources::Menus_OptionsMenu_MusicIcon);
-	this->soundIcon = Sprite::create(Resources::Menus_OptionsMenu_SoundIcon);
+	this->musicIcon = Sprite::create(UIResources::Menus_OptionsMenu_MusicIcon);
+	this->soundIcon = Sprite::create(UIResources::Menus_OptionsMenu_SoundIcon);
 
 	this->musicSlider = CSlider::create(SoundManager::getMusicVolume());
 	this->soundSlider = CSlider::create(SoundManager::getSoundVolume());
 
-	MenuSprite* uncheckedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_ToggleButtonOff, Resources::Menus_OptionsMenu_ToggleButtonOffHover);
-	MenuSprite* checkedMenuSprite = MenuSprite::create(Resources::Menus_OptionsMenu_ToggleButtonOn, Resources::Menus_OptionsMenu_ToggleButtonOffHover);
+	MenuSprite* uncheckedMenuSprite = MenuSprite::create(UIResources::Menus_OptionsMenu_ToggleButtonOff, UIResources::Menus_OptionsMenu_ToggleButtonOffHover);
+	MenuSprite* checkedMenuSprite = MenuSprite::create(UIResources::Menus_OptionsMenu_ToggleButtonOn, UIResources::Menus_OptionsMenu_ToggleButtonOffHover);
 	this->fullScreenButton = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_2(OptionsMenu::onFullScreenChanged, this));
 
 	this->label1080x768 = Label::create("1080x768", Localization::getMainFont(), 14);
@@ -88,8 +88,8 @@ OptionsMenu::OptionsMenu()
 	this->returnButton = TextMenuSprite::create(
 		returnLabel,
 		returnLabelHover,
-		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover);
+		UIResources::Menus_Buttons_GenericButton,
+		UIResources::Menus_Buttons_GenericButtonHover);
 
 	this->musicSlider->setProgressUpdateCallback(CC_CALLBACK_1(OptionsMenu::onMusicVolumeUpdate, this));
 	this->soundSlider->setProgressUpdateCallback(CC_CALLBACK_1(OptionsMenu::onSoundVolumeUpdate, this));

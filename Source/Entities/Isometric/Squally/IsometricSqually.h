@@ -1,11 +1,9 @@
 #pragma once
-#include <mutex>
 #include "cocos2d.h"
 
 #include "Engine/Input/InputManager.h"
 #include "Entities/Isometric/IsometricEntity.h"
 #include "Events/NavigationEvents.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 

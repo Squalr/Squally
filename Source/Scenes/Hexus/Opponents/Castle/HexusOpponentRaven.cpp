@@ -14,8 +14,8 @@ HexusOpponentRaven* HexusOpponentRaven::getInstance()
 }
 
 HexusOpponentRaven::HexusOpponentRaven() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Castle_Npcs_Raven_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+	EntityResources::Platformer_Environment_Castle_Npcs_Raven_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	0.85f,
 	Vec2(-48.0f, -48.0f),
 	Vec2(-24.0f, -32.0f),

@@ -4,7 +4,8 @@
 #include "Engine/Cutscenes/CutsceneClip.h"
 #include "Engine/Dialogue/Dialogue.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Resources.h"
+#include "Resources/CutsceneResources.h"
+#include "Resources/StringResources.h"
 #include "Scenes/Cutscenes/Objects/StarLayer.h"
 
 using namespace cocos2d;

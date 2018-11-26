@@ -14,8 +14,8 @@ HexusOpponentErlic* HexusOpponentErlic::getInstance()
 }
 
 HexusOpponentErlic::HexusOpponentErlic() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Castle_Npcs_Elric_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+	EntityResources::Platformer_Environment_Castle_Npcs_Elric_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
 	Vec2(-16.0f, -40.0f),

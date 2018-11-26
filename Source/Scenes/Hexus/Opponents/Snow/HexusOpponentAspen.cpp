@@ -14,8 +14,8 @@ HexusOpponentAspen* HexusOpponentAspen::getInstance()
 }
 
 HexusOpponentAspen::HexusOpponentAspen() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Snow_Npcs_Aspen_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
+	EntityResources::Platformer_Environment_Snow_Npcs_Aspen_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-24.0f, -32.0f),

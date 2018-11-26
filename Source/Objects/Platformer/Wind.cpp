@@ -28,7 +28,7 @@ Wind::Wind(ValueMap* initProperties) : HackableObject(initProperties)
 
 	this->size = Size(width, height);
 	this->windSpeed = Vec2(speedX, speedY);
-	this->windParticles = ParticleSystemQuad::create(Resources::Particles_Gust);
+	this->windParticles = ParticleSystemQuad::create(ParticleResources::Gust);
 	this->windParticles->setPositionType(ParticleSystem::PositionType::GROUPED);
 
 	this->addChild(this->windParticles);
@@ -43,7 +43,7 @@ Wind::~Wind()
 
 void Wind::registerHackables()
 {
-	this->windDataSpeedY = HackableData::create("Y Position", &this->windSpeed.y, &typeid(this->windSpeed.y), Resources::Menus_Icons_AlchemyPot);
+	this->windDataSpeedY = HackableData::create("Y Position", &this->windSpeed.y, &typeid(this->windSpeed.y), UIResources::Menus_Icons_AlchemyPot);
 	this->registerData(this->windDataSpeedY);
 }
 
@@ -85,5 +85,5 @@ void Wind::update(float dt)
 	this->windParticles->setAngle(angle);
 	this->windParticles->setPosVar(Vec2(speed.y == 0.0f ? 0.0f : this->size.width, speed.x == 0.0f ? 0.0f : this->size.height));
 
-	this->windDataSpeedY->registerCode(assemblyAddressStart, assemblyAddressEnd, "Wind X Speed", Resources::Menus_Icons_Tornado);
+	this->windDataSpeedY->registerCode(assemblyAddressStart, assemblyAddressEnd, "Wind X Speed", UIResources::Menus_Icons_Tornado);
 }

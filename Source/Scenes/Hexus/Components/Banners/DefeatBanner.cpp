@@ -11,8 +11,8 @@ DefeatBanner* DefeatBanner::create()
 
 DefeatBanner::DefeatBanner()
 {
-	this->defeatBanner1 = Sprite::create(Resources::Minigames_Hexus_EnemyBanner);
-	this->defeatBanner2 = Sprite::create(Resources::Minigames_Hexus_EnemyBanner);
+	this->defeatBanner1 = Sprite::create(HexusResources::EnemyBanner);
+	this->defeatBanner2 = Sprite::create(HexusResources::EnemyBanner);
 
 	this->setBannerText("DEFEAT!");
 

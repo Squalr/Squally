@@ -14,8 +14,8 @@ HexusOpponentTutorialE* HexusOpponentTutorialE::getInstance()
 }
 
 HexusOpponentTutorialE::HexusOpponentTutorialE() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Snow_Npcs_Irmik_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
+	EntityResources::Platformer_Environment_Snow_Npcs_Irmik_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(0.0f, -24.0f),

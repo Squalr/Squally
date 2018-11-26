@@ -14,8 +14,8 @@ HexusOpponentMerlin* HexusOpponentMerlin::getInstance()
 }
 
 HexusOpponentMerlin::HexusOpponentMerlin() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Castle_Npcs_Merlin_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+	EntityResources::Platformer_Environment_Castle_Npcs_Merlin_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-48.0f, -80.0f),
 	Vec2(-32.0f, -64.0f),

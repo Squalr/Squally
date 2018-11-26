@@ -11,8 +11,8 @@ RoundTieBanner* RoundTieBanner::create()
 
 RoundTieBanner::RoundTieBanner()
 {
-	this->playerPassBanner1 = Sprite::create(Resources::Minigames_Hexus_RoundBanner);
-	this->playerPassBanner2 = Sprite::create(Resources::Minigames_Hexus_RoundBanner);
+	this->playerPassBanner1 = Sprite::create(HexusResources::RoundBanner);
+	this->playerPassBanner2 = Sprite::create(HexusResources::RoundBanner);
 
 	this->setBannerText("ROUND TIED");
 

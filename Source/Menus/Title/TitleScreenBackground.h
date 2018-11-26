@@ -7,7 +7,9 @@
 #include "Engine/UI/FloatingSprite.h"
 #include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Resources.h"
+#include "Resources/EntityResources.h"
+#include "Resources/ParticleResources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;

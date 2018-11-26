@@ -23,11 +23,11 @@ WorldMap * WorldMap::create()
 WorldMap::WorldMap()
 {
 	this->mapNodes = std::vector<MapNode*>();
-	this->background = Sprite::create(Resources::Menus_WorldMap_WorldMap);
-	this->foreground = Sprite::create(Resources::Menus_WorldMap_WorldMapFront);
-	this->fogA = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
-	this->fogB = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
-	this->fogC = InfiniteParallaxNode::create(Resources::Menus_Backgrounds_Fog);
+	this->background = Sprite::create(UIResources::Menus_WorldMap_WorldMap);
+	this->foreground = Sprite::create(UIResources::Menus_WorldMap_WorldMapFront);
+	this->fogA = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
+	this->fogB = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
+	this->fogC = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
 	this->titleLabel = Label::create(Localization::resolveString(WorldMap::StringKeySelectLevel), Localization::getMainFont(), this->titleFontSize);
 	this->infoLabel = Label::create("", Localization::getMainFont(), this->infoFontSize);
 
@@ -35,75 +35,75 @@ WorldMap::WorldMap()
 	this->infoLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->jungle = MapNode::create(
-		Resources::Menus_WorldMap_Jungle,
-		Resources::Menus_WorldMap_JungleSelected,
-		Resources::Menus_WorldMap_JungleLocked,
+		UIResources::Menus_WorldMap_Jungle,
+		UIResources::Menus_WorldMap_JungleSelected,
+		UIResources::Menus_WorldMap_JungleLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameJungle),
-		Resources::Maps_Platformer_Jungle_Jungle
+		MapResources::Platformer_Jungle_Jungle
 	);
 
 	this->waterRuins = MapNode::create(
-		Resources::Menus_WorldMap_WaterRuins,
-		Resources::Menus_WorldMap_WaterRuinsSelected,
-		Resources::Menus_WorldMap_WaterRuinsLocked,
+		UIResources::Menus_WorldMap_WaterRuins,
+		UIResources::Menus_WorldMap_WaterRuinsSelected,
+		UIResources::Menus_WorldMap_WaterRuinsLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameAquaticRuins),
-		Resources::Maps_Platformer_AquaticRuins_AquaticRuins
+		MapResources::Platformer_AquaticRuins_AquaticRuins
 	);
 
 	this->forest = MapNode::create(
-		Resources::Menus_WorldMap_Forest,
-		Resources::Menus_WorldMap_ForestSelected,
-		Resources::Menus_WorldMap_ForestLocked,
+		UIResources::Menus_WorldMap_Forest,
+		UIResources::Menus_WorldMap_ForestSelected,
+		UIResources::Menus_WorldMap_ForestLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameForest),
-		Resources::Maps_Platformer_Forest_Forest
+		MapResources::Platformer_Forest_Forest
 	);
 
 	this->caverns = MapNode::create(
-		Resources::Menus_WorldMap_Mountain,
-		Resources::Menus_WorldMap_MountainSelected,
-		Resources::Menus_WorldMap_MountainLocked,
+		UIResources::Menus_WorldMap_Mountain,
+		UIResources::Menus_WorldMap_MountainSelected,
+		UIResources::Menus_WorldMap_MountainLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameCaverns),
-		Resources::Maps_Platformer_Caverns_Caverns
+		MapResources::Platformer_Caverns_Caverns
 	);
 
 	this->castle = MapNode::create(
-		Resources::Menus_WorldMap_Castle,
-		Resources::Menus_WorldMap_CastleSelected,
-		Resources::Menus_WorldMap_CastleLocked,
+		UIResources::Menus_WorldMap_Castle,
+		UIResources::Menus_WorldMap_CastleSelected,
+		UIResources::Menus_WorldMap_CastleLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameCastle),
-		Resources::Maps_Platformer_Castle_Castle
+		MapResources::Platformer_Castle_Castle
 	);
 
 	this->iceCaps = MapNode::create(
-		Resources::Menus_WorldMap_IceMountain,
-		Resources::Menus_WorldMap_IceMountainSelected,
-		Resources::Menus_WorldMap_IceMountainLocked,
+		UIResources::Menus_WorldMap_IceMountain,
+		UIResources::Menus_WorldMap_IceMountainSelected,
+		UIResources::Menus_WorldMap_IceMountainLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameIceCaps),
-		Resources::Maps_Platformer_IceCaps_IceCaps
+		MapResources::Platformer_IceCaps_IceCaps
 	);
 
 	this->obelisk = MapNode::create(
-		Resources::Menus_WorldMap_Obelisk,
-		Resources::Menus_WorldMap_ObeliskSelected,
-		Resources::Menus_WorldMap_ObeliskLocked,
+		UIResources::Menus_WorldMap_Obelisk,
+		UIResources::Menus_WorldMap_ObeliskSelected,
+		UIResources::Menus_WorldMap_ObeliskLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameObelisk),
-		Resources::Maps_Platformer_Obelisk_Obelisk
+		MapResources::Platformer_Obelisk_Obelisk
 	);
 
 	this->volcano = MapNode::create(
-		Resources::Menus_WorldMap_Volcano,
-		Resources::Menus_WorldMap_VolcanoSelected,
-		Resources::Menus_WorldMap_VolcanoLocked,
+		UIResources::Menus_WorldMap_Volcano,
+		UIResources::Menus_WorldMap_VolcanoSelected,
+		UIResources::Menus_WorldMap_VolcanoLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameVolcano),
-		Resources::Maps_Platformer_Volcano_Volcano
+		MapResources::Platformer_Volcano_Volcano
 	);
 
 	this->mecha = MapNode::create(
-		Resources::Menus_WorldMap_Mech,
-		Resources::Menus_WorldMap_MechSelected,
-		Resources::Menus_WorldMap_MechLocked,
+		UIResources::Menus_WorldMap_Mech,
+		UIResources::Menus_WorldMap_MechSelected,
+		UIResources::Menus_WorldMap_MechLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameMech),
-		Resources::Maps_Platformer_Mech_Mech
+		MapResources::Platformer_Mech_Mech
 	);
 
 	this->fogA->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-40.0f, 0))));

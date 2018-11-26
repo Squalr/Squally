@@ -14,8 +14,8 @@ HexusOpponentMabel* HexusOpponentMabel::getInstance()
 }
 
 HexusOpponentMabel::HexusOpponentMabel() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Castle_Npcs_Mabel_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+	EntityResources::Platformer_Environment_Castle_Npcs_Mabel_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	0.85f,
 	Vec2(-32.0f, -64.0f),
 	Vec2(-32.0f, -40.0f),

@@ -11,8 +11,8 @@ PlayerPassBanner* PlayerPassBanner::create()
 
 PlayerPassBanner::PlayerPassBanner()
 {
-	this->playerPassBanner1 = Sprite::create(Resources::Minigames_Hexus_PlayerPassBanner);
-	this->playerPassBanner2 = Sprite::create(Resources::Minigames_Hexus_PlayerPassBanner);
+	this->playerPassBanner1 = Sprite::create(HexusResources::PlayerPassBanner);
+	this->playerPassBanner2 = Sprite::create(HexusResources::PlayerPassBanner);
 
 	this->setBannerText("YOU PASSED");
 

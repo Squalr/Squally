@@ -12,7 +12,7 @@ Shade* Shade::deserialize(ValueMap* initProperties)
 }
 
 Shade::Shade(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Castle_Enemies_Shade_Animations,
+	EntityResources::Platformer_Environment_Castle_Enemies_Shade_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(196.0f, 512.0f),
 	0.8f,

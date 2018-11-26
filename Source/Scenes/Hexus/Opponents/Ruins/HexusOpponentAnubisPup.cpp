@@ -14,8 +14,8 @@ HexusOpponentAnubisPup* HexusOpponentAnubisPup::getInstance()
 }
 
 HexusOpponentAnubisPup::HexusOpponentAnubisPup() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Ruins_Enemies_AnubisPup_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
+	EntityResources::Platformer_Environment_Ruins_Enemies_AnubisPup_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),

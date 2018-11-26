@@ -18,17 +18,17 @@ VaporLabs::VaporLabs()
 	this->contentLayer = Node::create();
 	this->sky = LayerGradient::create(Color4B(70, 0, 131, 255), Color4B(64, 0, 64, 255), Vec2(0.0f, 1.0f));
 	this->starLayer = StarLayer::create(Size(480.0f, 256.0f));
-	this->cityView = Sprite::create(Resources::Cutscenes_VaporLabs_CityView);
-	this->background = Sprite::create(Resources::Cutscenes_VaporLabs_Lab);
-	this->console = Sprite::create(Resources::Cutscenes_VaporLabs_Controls);
-	this->monitor = Sprite::create(Resources::Cutscenes_VaporLabs_Monitor);
-	this->scientist = Sprite::create(Resources::Cutscenes_VaporLabs_Scientist);
+	this->cityView = Sprite::create(CutsceneResources::VaporLabs_CityView);
+	this->background = Sprite::create(CutsceneResources::VaporLabs_Lab);
+	this->console = Sprite::create(CutsceneResources::VaporLabs_Controls);
+	this->monitor = Sprite::create(CutsceneResources::VaporLabs_Monitor);
+	this->scientist = Sprite::create(CutsceneResources::VaporLabs_Scientist);
 	this->siren = LayerColor::create(Color4B(255, 0, 0, 0));
 
 	this->sky->setContentSize(Size(480.0f, 256.0f));
 
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
-	this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneVaporLabs, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneVaporLabs, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));

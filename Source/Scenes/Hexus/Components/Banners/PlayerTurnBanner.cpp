@@ -11,8 +11,8 @@ PlayerTurnBanner* PlayerTurnBanner::create()
 
 PlayerTurnBanner::PlayerTurnBanner()
 {
-	this->playerBanner1 = Sprite::create(Resources::Minigames_Hexus_PlayerBanner);
-	this->playerBanner2 = Sprite::create(Resources::Minigames_Hexus_PlayerBanner);
+	this->playerBanner1 = Sprite::create(HexusResources::PlayerBanner);
+	this->playerBanner2 = Sprite::create(HexusResources::PlayerBanner);
 
 	this->setBannerText("YOUR TURN");
 

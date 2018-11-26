@@ -8,7 +8,7 @@
 #include "Engine/Utils/StrUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Events/HexusEvents.h"
-#include "Resources.h"
+
 #include "Scenes/Hexus/States/StateBase.h"
 
 using namespace cocos2d;

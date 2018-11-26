@@ -14,8 +14,8 @@ HexusOpponentKingGrogg* HexusOpponentKingGrogg::getInstance()
 }
 
 HexusOpponentKingGrogg::HexusOpponentKingGrogg() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Forest_Enemies_KingGrogg_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
+	EntityResources::Platformer_Environment_Forest_Enemies_KingGrogg_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-32.0f, -112.0f),

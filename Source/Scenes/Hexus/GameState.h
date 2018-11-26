@@ -5,10 +5,12 @@
 #include "Engine/Utils/StrUtils.h"
 #include "Engine/SmartNode.h"
 #include "Events/HexusEvents.h"
-#include "Resources.h"
+
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
+#include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
 using namespace cocos2d;

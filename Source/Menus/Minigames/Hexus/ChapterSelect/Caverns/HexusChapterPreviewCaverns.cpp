@@ -13,7 +13,7 @@ HexusChapterPreviewCaverns* HexusChapterPreviewCaverns::create()
 
 HexusChapterPreviewCaverns::HexusChapterPreviewCaverns() : HexusChapterPreview(HexusChapterPreviewCaverns::stringKeyChapterName)
 {
-	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
+	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
 	this->text->setString("Caverns");
 }
 

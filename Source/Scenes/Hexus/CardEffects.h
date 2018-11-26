@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/SmartNode.h"
-#include "Resources.h"
+#include "Resources/ParticleResources.h"
 #include "Scenes/Hexus/Config.h"
 
 using namespace cocos2d;

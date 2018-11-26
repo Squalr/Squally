@@ -17,18 +17,18 @@ RobotDoctor::RobotDoctor(RobotDoctorScene robotDoctorScene)
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->background = Sprite::create(Resources::Cutscenes_RobotDoctor_Background);
-	this->bed = Sprite::create(Resources::Cutscenes_RobotDoctor_Bed);
+	this->background = Sprite::create(CutsceneResources::RobotDoctor_Background);
+	this->bed = Sprite::create(CutsceneResources::RobotDoctor_Bed);
 
 	switch (this->activeScene)
 	{
 	case RobotDoctorScene::Intro:
-		this->robot = Sprite::create(Resources::Cutscenes_RobotDoctor_Doctor);
-		this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneRobotDoctor, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+		this->robot = Sprite::create(CutsceneResources::RobotDoctor_Doctor);
+		this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneRobotDoctor, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 		break;
 	case RobotDoctorScene::Singularity:
-		this->robot = Sprite::create(Resources::Cutscenes_RobotDoctor_DoctorEvil);
-		this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneRobotDoctorSingularity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+		this->robot = Sprite::create(CutsceneResources::RobotDoctor_DoctorEvil);
+		this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneRobotDoctorSingularity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 		break;
 	}
 

@@ -14,8 +14,8 @@ HexusOpponentBrine* HexusOpponentBrine::getInstance()
 }
 
 HexusOpponentBrine::HexusOpponentBrine() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Volcano_Npcs_Brine_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
+	EntityResources::Platformer_Environment_Volcano_Npcs_Brine_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -32.0f),

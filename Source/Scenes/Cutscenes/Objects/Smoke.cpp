@@ -14,14 +14,14 @@ Smoke* Smoke::create(Node* followTarget)
 Smoke::Smoke(Node* followTarget)
 {
 	this->follow = followTarget;
-	this->smokeSprite = Sprite::create(Resources::Cutscenes_NeonCity_FlyingCars_Smoke_0000);
+	this->smokeSprite = Sprite::create(CutsceneResources::NeonCity_FlyingCars_Smoke_0000);
 
 	this->setPosition(this->follow->getPosition());
 
 	this->smokeAnimation = Animation::create();
 	this->smokeAnimation->retain();
 
-	auto shipFrames = GameUtils::getAllAnimationFiles(Resources::Cutscenes_NeonCity_FlyingCars_Smoke_0000);
+	auto shipFrames = GameUtils::getAllAnimationFiles(CutsceneResources::NeonCity_FlyingCars_Smoke_0000);
 
 	for (auto it = shipFrames.begin(); it != shipFrames.end(); it++)
 	{

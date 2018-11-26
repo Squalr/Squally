@@ -2,9 +2,9 @@
 #include "cocos2d.h"
 
 #include "Engine/Utils/GameUtils.h"
-#include "Explosion.h"
-#include "Resources.h"
-#include "Smoke.h"
+#include "Scenes/Cutscenes/Objects/Explosion.h"
+#include "Scenes/Cutscenes/Objects/Smoke.h"
+#include "Resources/CutsceneResources.h"
 
 using namespace cocos2d;
 

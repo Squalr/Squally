@@ -1,7 +1,6 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Resources.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/Binary/CardBinary0.h"
 #include "Scenes/Hexus/CardData/Binary/CardBinary1.h"

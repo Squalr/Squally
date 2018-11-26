@@ -27,22 +27,22 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	{
 		case CardData::CardType::Binary:
 		{
-			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCoverBin);
+			this->cardFront = Sprite::create(HexusResources::CardFrontCoverBin);
 			break;
 		}
 		case CardData::CardType::Decimal:
 		{
-			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCoverDec);
+			this->cardFront = Sprite::create(HexusResources::CardFrontCoverDec);
 			break;
 		}
 		case CardData::CardType::Hexidecimal:
 		{
-			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCoverHex);
+			this->cardFront = Sprite::create(HexusResources::CardFrontCoverHex);
 			break;
 		}
 		default:
 		{
-			this->cardFront = Sprite::create(Resources::Minigames_Hexus_CardFrontCoverSpecial);
+			this->cardFront = Sprite::create(HexusResources::CardFrontCoverSpecial);
 			break;
 		}
 	}
@@ -51,41 +51,41 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	{
 		case CardStyle::Water:
 		{
-			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackWater);
+			this->cardBack = Sprite::create(HexusResources::CardBackWater);
 			break;
 		}
 		case CardStyle::Air:
 		{
-			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackAir);
+			this->cardBack = Sprite::create(HexusResources::CardBackAir);
 			break;
 		}
 		case CardStyle::Fire:
 		{
-			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackFire);
+			this->cardBack = Sprite::create(HexusResources::CardBackFire);
 			break;
 		}
 		case CardStyle::Light:
 		{
-			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackLight);
+			this->cardBack = Sprite::create(HexusResources::CardBackLight);
 			break;
 		}
 		case CardStyle::Shadow:
 		{
-			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackShadow);
+			this->cardBack = Sprite::create(HexusResources::CardBackShadow);
 			break;
 		}
 		case CardStyle::Earth:
 		default:
 		{
-			this->cardBack = Sprite::create(Resources::Minigames_Hexus_CardBackEarth);
+			this->cardBack = Sprite::create(HexusResources::CardBackEarth);
 			break;
 		}
 	}
 
-	this->cardSelect = MenuSprite::create(Resources::Minigames_Hexus_CardUnselected, Resources::Minigames_Hexus_CardSelect);
-	this->cardSelect->setClickSound(Resources::Sounds_Menus_Card_Game_UI_Button_Light_Reverb_02);
+	this->cardSelect = MenuSprite::create(HexusResources::CardUnselected, HexusResources::CardSelect);
+	this->cardSelect->setClickSound(SoundResources::Menus_Card_Game_UI_Button_Light_Reverb_02);
 	this->cardSprite = Sprite::create(data->cardResourceFile);
-	this->cardFocus = Sprite::create(Resources::Minigames_Hexus_CardSelect);
+	this->cardFocus = Sprite::create(HexusResources::CardSelect);
 	this->cardEffects = CardEffects::create();
 
 	this->cardText = Label::create("", Localization::getCodingFont(), 64.0f);

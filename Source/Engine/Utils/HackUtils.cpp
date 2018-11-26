@@ -281,7 +281,6 @@ HackUtils::CompileResult HackUtils::constructCompileResult(Fasm::FasmResult* fas
 
 	CompileResult compileResult;
 
-
 	if (fasmResult->ErrorLine != nullptr)
 	{
 		compileResult.errorData.lineNumber = fasmResult->ErrorLine->LineNumber - lineOffset;
@@ -436,7 +435,6 @@ HackUtils::CompileResult HackUtils::constructCompileResult(Fasm::FasmResult* fas
 		compileResult.hasError = false;
 		break;
 	}
-
 
 	return compileResult;
 }
