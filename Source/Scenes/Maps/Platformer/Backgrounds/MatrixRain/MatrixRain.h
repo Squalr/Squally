@@ -2,7 +2,6 @@
 #include "cocos2d.h"
 
 #include "Engine/UI/HUD/Hud.h"
-#include "Resources.h"
 
 #include "MatrixStrand.h"
 

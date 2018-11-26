@@ -12,7 +12,7 @@ Shiftman* Shiftman::deserialize(ValueMap* initProperties)
 }
 
 Shiftman::Shiftman(ValueMap* initProperties) : IsometricEntity::IsometricEntity(initProperties,
-	Resources::Entities_Isometric_Shiftman_Animations,
+	EntityResources::Isometric_Shiftman_Animations,
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

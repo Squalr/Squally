@@ -13,9 +13,9 @@ HexusRewardsMenu * HexusRewardsMenu::create()
 
 HexusRewardsMenu::HexusRewardsMenu()
 {
-	this->background = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_WoodBackground);
-	this->goldSprite = Sprite::create(Resources::Menus_Objects_GOLD_2);
-	this->goldSpriteLesser = Sprite::create(Resources::Menus_Objects_GOLD_1);
+	this->background = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_WoodBackground);
+	this->goldSprite = Sprite::create(UIResources::Menus_Objects_GOLD_2);
+	this->goldSpriteLesser = Sprite::create(UIResources::Menus_Objects_GOLD_1);
 	this->goldLabel = Label::create("", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 
 	this->goldLabel->enableOutline(Color4B::BLACK, 3);
@@ -31,8 +31,8 @@ HexusRewardsMenu::HexusRewardsMenu()
 	this->returnButton = TextMenuSprite::create(
 		returnButtonLabel,
 		returnButtonLabelHover,
-		Resources::Minigames_Hexus_ButtonPlank,
-		Resources::Minigames_Hexus_ButtonPlankHover
+		UIResources::Menus_Buttons_WoodButton,
+		UIResources::Menus_Buttons_WoodButtonSelected
 	);
 	
 	this->addChild(this->background);

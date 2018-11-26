@@ -13,9 +13,9 @@ SnowBackground* SnowBackground::create(ValueMap* properties, std::string name)
 
 SnowBackground::SnowBackground(ValueMap* properties, std::string name) : BackgroundBase(properties, name)
 {
-	this->background = Sprite::create(Resources::Backgrounds_Platformer_Snow_snowmountains_bg);
-	this->layer6 = InfiniteParallaxNode::create(Resources::Backgrounds_Platformer_Snow_snowmountains_fg);
-	this->layer5 = InfiniteParallaxNode::create(Resources::Backgrounds_Platformer_Snow_snowmountains_acc);
+	this->background = Sprite::create(BackgroundResources::Platformer_Snow_snowmountains_bg);
+	this->layer6 = InfiniteParallaxNode::create(BackgroundResources::Platformer_Snow_snowmountains_fg);
+	this->layer5 = InfiniteParallaxNode::create(BackgroundResources::Platformer_Snow_snowmountains_acc);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();

@@ -2,14 +2,14 @@
 #include "cocos2d.h"
 
 #include "Entities/Platformer/PlatformerEnemy.h"
-#include "Resources.h"
+#include "Resources/EntityResources.h"
 
 using namespace cocos2d;
 
 class Asmodeus : public PlatformerEnemy
 {
 public:
-	static Asmodeus * deserialize(ValueMap* initProperties);
+	static Asmodeus* deserialize(ValueMap* initProperties);
 
 	static const std::string MapKeyEnemyAsmodeus;
 

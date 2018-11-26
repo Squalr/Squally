@@ -3,7 +3,6 @@
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/HexusEvents.h"
-#include "Resources.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 
 using namespace cocos2d;

@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/Utils/GameUtils.h"
-#include "Resources.h"
+#include "Resources/CutsceneResources.h"
 
 using namespace cocos2d;
 

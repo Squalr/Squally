@@ -4,7 +4,7 @@
 #include "Engine/Localization/Localization.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Resources.h"
+#include "Resources/ParticleResources.h"
 #include "Scenes/Hexus/Components/Banners/BannerBase.h"
 
 using namespace cocos2d;

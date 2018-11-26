@@ -12,7 +12,7 @@ VikingBotSmall* VikingBotSmall::deserialize(ValueMap* initProperties)
 }
 
 VikingBotSmall::VikingBotSmall(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Mech_Enemies_VikingBotSmall_Animations,
+	EntityResources::Platformer_Environment_Mech_Enemies_VikingBotSmall_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(768.0f, 768.0f),
 	0.25f,

@@ -44,12 +44,12 @@ SaveSelectMenu::SaveSelectMenu()
 	this->saveGame1 = TextMenuSprite::create(
 		saveGame1Label,
 		saveGame1LabelHover,
-		Resources::Menus_MinigamesMenu_Banner,
-		Resources::Menus_MinigamesMenu_BannerHover);
+		UIResources::Menus_MinigamesMenu_Banner,
+		UIResources::Menus_MinigamesMenu_BannerHover);
 
 	this->saveGame1->setTextOffset(labelOffset);
 
-	Sprite* saveGame1Icon = Sprite::create(Resources::Menus_Icons_BookSpellsArcane);
+	Sprite* saveGame1Icon = Sprite::create(UIResources::Menus_Icons_BookSpellsArcane);
 
 	saveGame1Icon->setAnchorPoint(Vec2(0.0f, 0.5f));
 	saveGame1Icon->setPosition(Vec2(-this->saveGame1->getContentSize().width / 2.0f + 78.0f, 0.0f));
@@ -70,12 +70,12 @@ SaveSelectMenu::SaveSelectMenu()
 	this->saveGame2 = TextMenuSprite::create(
 		saveGame2Label,
 		saveGame2LabelHover,
-		Resources::Menus_MinigamesMenu_Banner,
-		Resources::Menus_MinigamesMenu_BannerHover);
+		UIResources::Menus_MinigamesMenu_Banner,
+		UIResources::Menus_MinigamesMenu_BannerHover);
 
 	this->saveGame2->setTextOffset(labelOffset);
 
-	Sprite* saveGame2Icon = Sprite::create(Resources::Menus_Icons_Health);
+	Sprite* saveGame2Icon = Sprite::create(UIResources::Menus_Icons_Health);
 
 	saveGame2Icon->setAnchorPoint(Vec2(0.0f, 0.5f));
 	saveGame2Icon->setPosition(Vec2(-this->saveGame2->getContentSize().width / 2.0f + 78.0f, 0.0f));
@@ -96,12 +96,12 @@ SaveSelectMenu::SaveSelectMenu()
 	this->saveGame3 = TextMenuSprite::create(
 		saveGame3Label,
 		saveGame3LabelHover,
-		Resources::Menus_MinigamesMenu_Banner,
-		Resources::Menus_MinigamesMenu_BannerHover);
+		UIResources::Menus_MinigamesMenu_Banner,
+		UIResources::Menus_MinigamesMenu_BannerHover);
 
 	this->saveGame3->setTextOffset(labelOffset);
 
-	Sprite* saveGame3Icon = Sprite::create(Resources::Menus_Icons_Health);
+	Sprite* saveGame3Icon = Sprite::create(UIResources::Menus_Icons_Health);
 
 	saveGame3Icon->setAnchorPoint(Vec2(0.0f, 0.5f));
 	saveGame3Icon->setPosition(Vec2(-this->saveGame3->getContentSize().width / 2.0f + 78.0f, 0.0f));

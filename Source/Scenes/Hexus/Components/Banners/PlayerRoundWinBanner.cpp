@@ -11,8 +11,8 @@ PlayerRoundWinBanner* PlayerRoundWinBanner::create()
 
 PlayerRoundWinBanner::PlayerRoundWinBanner()
 {
-	this->playerPassBanner1 = Sprite::create(Resources::Minigames_Hexus_PlayerBanner);
-	this->playerPassBanner2 = Sprite::create(Resources::Minigames_Hexus_PlayerBanner);
+	this->playerPassBanner1 = Sprite::create(HexusResources::PlayerBanner);
+	this->playerPassBanner2 = Sprite::create(HexusResources::PlayerBanner);
 
 	this->setBannerText("YOU WIN THE ROUND");
 

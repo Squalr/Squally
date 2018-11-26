@@ -6,15 +6,14 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Hover.h"
 #include "Events/NavigationEvents.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 
 class Squally : public PlatformerEntity
 {
 public:
-	static Squally * deserialize(ValueMap* initProperties);
-	static Squally * getInstance();
+	static Squally* deserialize(ValueMap* initProperties);
+	static Squally* getInstance();
 
 	Size getSize() override;
 

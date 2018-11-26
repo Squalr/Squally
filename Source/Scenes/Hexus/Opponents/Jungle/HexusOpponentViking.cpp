@@ -14,8 +14,8 @@ HexusOpponentViking* HexusOpponentViking::getInstance()
 }
 
 HexusOpponentViking::HexusOpponentViking() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Jungle_Enemies_Viking_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
+	EntityResources::Platformer_Environment_Jungle_Enemies_Viking_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -48.0f),
 	Vec2(-16.0f, -64.0f),

@@ -1,11 +1,12 @@
 #pragma once
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "Resources.h"
 
 #include "Engine/SmartNode.h"
 #include "Events/HexusEvents.h"
 #include "Engine/UI/Controls/MenuSprite.h"
+#include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
 using namespace cocos2d;

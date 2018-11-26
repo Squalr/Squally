@@ -5,8 +5,6 @@
 
 #include "Engine/SmartNode.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Resources.h"
-
 
 using namespace cocos2d;
 

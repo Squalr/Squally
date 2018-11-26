@@ -14,8 +14,8 @@ HexusOpponentSkeletalArcher* HexusOpponentSkeletalArcher::getInstance()
 }
 
 HexusOpponentSkeletalArcher::HexusOpponentSkeletalArcher() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Caverns_Enemies_SkeletalArcher_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
+	EntityResources::Platformer_Environment_Caverns_Enemies_SkeletalArcher_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -48.0f),
 	Vec2(-32.0f, -32.0f),

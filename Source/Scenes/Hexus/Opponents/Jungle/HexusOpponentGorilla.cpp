@@ -14,8 +14,8 @@ HexusOpponentGorilla* HexusOpponentGorilla::getInstance()
 }
 
 HexusOpponentGorilla::HexusOpponentGorilla() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Jungle_Enemies_Gorilla_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
+	EntityResources::Platformer_Environment_Jungle_Enemies_Gorilla_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -48.0f),
 	Vec2(-80.0f, -32.0f),

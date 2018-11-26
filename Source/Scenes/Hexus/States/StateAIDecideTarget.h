@@ -5,7 +5,7 @@
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Engine/Sound/SoundManager.h"
-#include "Resources.h"
+
 #include "Scenes/Hexus/States/HexusAIHelper.h"
 #include "Scenes/Hexus/States/StateBase.h"
 

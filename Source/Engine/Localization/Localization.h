@@ -7,7 +7,8 @@
 #include "stringbuffer.h"
 #include "writer.h"
 
-#include "Resources.h"
+#include "Resources/FontResources.h"
+#include "Resources/StringResources.h"
 
 using namespace cocos2d;
 using namespace rapidjson;

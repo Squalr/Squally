@@ -17,19 +17,19 @@ HomeAssistantRobot::HomeAssistantRobot(HomeAssistantRobotScene homeAssistantRobo
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->background = Sprite::create(Resources::Cutscenes_HomeAssistant_Kitchen);
-	this->brokenPlate = Sprite::create(Resources::Cutscenes_HomeAssistant_BrokenPlate);
+	this->background = Sprite::create(CutsceneResources::HomeAssistant_Kitchen);
+	this->brokenPlate = Sprite::create(CutsceneResources::HomeAssistant_BrokenPlate);
 
 	switch (this->activeScene)
 	{
 	case HomeAssistantRobotScene::Intro:
-		this->robot = Sprite::create(Resources::Cutscenes_HomeAssistant_Robot);
-		this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneHomeAssistantRobot, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+		this->robot = Sprite::create(CutsceneResources::HomeAssistant_Robot);
+		this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneHomeAssistantRobot, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 		this->brokenPlate->setVisible(false);
 		break;
 	case HomeAssistantRobotScene::Singularity:
-		this->robot = Sprite::create(Resources::Cutscenes_HomeAssistant_RobotEvil);
-		this->dialogue = Dialogue::create(Resources::Strings_Dialogue_CutsceneHomeAssistantRobotSingularity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+		this->robot = Sprite::create(CutsceneResources::HomeAssistant_RobotEvil);
+		this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneHomeAssistantRobotSingularity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 		break;
 	}
 

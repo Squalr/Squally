@@ -14,8 +14,8 @@ HexusOpponentXenon* HexusOpponentXenon::getInstance()
 }
 
 HexusOpponentXenon::HexusOpponentXenon() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Mech_Npcs_Xenon_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
+	EntityResources::Platformer_Environment_Mech_Npcs_Xenon_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	0.85f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -48.0f),

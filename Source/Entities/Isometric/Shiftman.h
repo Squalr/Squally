@@ -2,7 +2,7 @@
 #include "cocos2d.h"
 
 #include "Entities/Isometric/IsometricEntity.h"
-#include "Resources.h"
+#include "Resources/EntityResources.h"
 
 using namespace cocos2d;
 

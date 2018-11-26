@@ -2,8 +2,8 @@
 #include "cocos2d.h"
 
 #include "Engine/SmartNode.h"
-#include "MenuSprite.h"
-#include "Resources.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 

@@ -1,7 +1,6 @@
 #pragma once
 #include "cocos2d.h"
 
-
 #include "Engine/Localization/Localization.h"
 #include "Engine/SmartNode.h"
 #include "Engine/UI/Controls/MenuSprite.h"
@@ -9,7 +8,7 @@
 #include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/UI/Mouse.h"
 #include "Events/NavigationEvents.h"
-#include "Resources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 

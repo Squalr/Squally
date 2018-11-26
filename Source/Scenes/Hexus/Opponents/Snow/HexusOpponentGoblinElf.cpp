@@ -14,8 +14,8 @@ HexusOpponentGoblinElf* HexusOpponentGoblinElf::getInstance()
 }
 
 HexusOpponentGoblinElf::HexusOpponentGoblinElf() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Snow_Enemies_GoblinElf_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
+	EntityResources::Platformer_Environment_Snow_Enemies_GoblinElf_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.75f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -40.0f),

@@ -13,7 +13,7 @@ HexusChapterPreviewJungle* HexusChapterPreviewJungle::create()
 
 HexusChapterPreviewJungle::HexusChapterPreviewJungle() : HexusChapterPreview(HexusChapterPreviewJungle::stringKeyChapterName)
 {
-	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameJungle));
+	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle));
 	this->text->setString("Jungle");
 }
 

@@ -13,7 +13,7 @@ HexusChapterPreviewTraining* HexusChapterPreviewTraining::create()
 
 HexusChapterPreviewTraining::HexusChapterPreviewTraining() : HexusChapterPreview(HexusChapterPreviewTraining::stringKeyChapterName)
 {
-	this->frameClip->addChild(Sprite::create(Resources::Menus_MinigamesMenu_Hexus_HexusFrameTraining));
+	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameTraining));
 	this->text->setString("Training Grounds");
 }
 

@@ -14,7 +14,7 @@ Localization* Localization::getInstance()
 
 Localization::Localization()
 {
-	std::string localizedStringsJson = FileUtils::getInstance()->getStringFromFile(Resources::Strings_Menus.c_str());
+	std::string localizedStringsJson = FileUtils::getInstance()->getStringFromFile(StringResources::Menus.c_str());
 
 	this->localizationMap = new Document();
 	this->localizationMap->Parse<0>(localizedStringsJson.c_str());
@@ -134,7 +134,7 @@ std::string Localization::getPixelFont()
 		case LanguageType::CHINESE_TRADITIONAL:
 		case LanguageType::JAPANESE:
 		case LanguageType::KOREAN:
-			return Resources::Fonts_Pixel_Zpix;
+			return FontResources::Pixel_Zpix;
 		case LanguageType::ARABIC:
 		case LanguageType::BULGARIAN:
 		case LanguageType::CZECH:
@@ -158,7 +158,7 @@ std::string Localization::getPixelFont()
 		case LanguageType::TURKISH:
 		case LanguageType::UKRAINIAN:
 			// TODO
-			return Resources::Fonts_Pixel_Zpix;
+			return FontResources::Pixel_Zpix;
 	}
 }
 
@@ -168,7 +168,7 @@ std::string Localization::getMainFont()
 	{
 		default:
 		case LanguageType::ENGLISH:
-			return Resources::Fonts_Montserrat_Medium;
+			return FontResources::Montserrat_Medium;
 		case LanguageType::CHINESE_SIMPLIFIED:
 		case LanguageType::CHINESE_TRADITIONAL:
 		case LanguageType::JAPANESE:
@@ -196,7 +196,7 @@ std::string Localization::getMainFont()
 		case LanguageType::TURKISH:
 		case LanguageType::UKRAINIAN:
 			// TODO
-			return Resources::Fonts_Montserrat_Medium;
+			return FontResources::Montserrat_Medium;
 	}
 }
 
@@ -206,12 +206,12 @@ std::string Localization::getCodingFont()
 	{
 		default:
 		case LanguageType::ENGLISH:
-			return Resources::Fonts_UbuntuMono_Bold;
+			return FontResources::UbuntuMono_Bold;
 		case LanguageType::CHINESE_SIMPLIFIED:
 		case LanguageType::CHINESE_TRADITIONAL:
 		case LanguageType::JAPANESE:
 		case LanguageType::KOREAN:
-			return Resources::Fonts_Ubuntu_WenQuanYiMicroHeiMono_02;
+			return FontResources::Ubuntu_WenQuanYiMicroHeiMono_02;
 		case LanguageType::ARABIC:
 		case LanguageType::BULGARIAN:
 		case LanguageType::CZECH:
@@ -235,7 +235,7 @@ std::string Localization::getCodingFont()
 		case LanguageType::TURKISH:
 		case LanguageType::UKRAINIAN:
 			// TODO
-			return Resources::Fonts_UbuntuMono_Bold;
+			return FontResources::UbuntuMono_Bold;
 	}
 }
 

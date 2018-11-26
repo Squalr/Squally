@@ -2,8 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/Utils/GameUtils.h"
-#include "GridObject.h"
-#include "Resources.h"
+#include "Scenes/Cutscenes/Objects/GridObject.h"
 
 using namespace cocos2d;
 

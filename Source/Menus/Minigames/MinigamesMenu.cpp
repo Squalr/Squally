@@ -42,8 +42,8 @@ MinigamesMenu::MinigamesMenu()
 	this->backButton = TextMenuSprite::create(
 		backButtonLabel,
 		backButtonLabelHover,
-		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover
+		UIResources::Menus_Buttons_GenericButton,
+		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
 	Label* hexusLabel = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
@@ -65,18 +65,18 @@ MinigamesMenu::MinigamesMenu()
 	this->hexusButton = TextMenuSprite::create(
 		hexusLabel,
 		hexusLabelHover,
-		Resources::Menus_MinigamesMenu_Banner,
-		Resources::Menus_MinigamesMenu_BannerHover);
+		UIResources::Menus_MinigamesMenu_Banner,
+		UIResources::Menus_MinigamesMenu_BannerHover);
 
 	this->hexusButton->setTextOffset(labelOffset);
 
-	Sprite* hexusIcon = Sprite::create(Resources::Menus_Icons_Banner);
+	Sprite* hexusIcon = Sprite::create(UIResources::Menus_Icons_Banner);
 
 	hexusIcon->setAnchorPoint(Vec2(0.0f, 0.5f));
 	hexusIcon->setPosition(Vec2(-this->hexusButton->getContentSize().width / 2.0f + 78.0f, 0.0f));
 
 	this->hexusButton->addChild(hexusIcon);
-	this->hexusButton->setClickSound(Resources::Sounds_Menus_Simple_Button);
+	this->hexusButton->setClickSound(SoundResources::Menus_Simple_Button);
 
 	Label* hexusPuzzlesLabel = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexusPuzzles), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* hexusPuzzlesLabelHover = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexusPuzzles), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
@@ -97,15 +97,15 @@ MinigamesMenu::MinigamesMenu()
 	this->hexusPuzzlesButton = TextMenuSprite::create(
 		hexusPuzzlesLabel,
 		hexusPuzzlesLabelHover,
-		Resources::Menus_MinigamesMenu_Banner,
-		Resources::Menus_MinigamesMenu_BannerHover);
+		UIResources::Menus_MinigamesMenu_Banner,
+		UIResources::Menus_MinigamesMenu_BannerHover);
 
 	this->hexusPuzzlesButton->setTextOffset(labelOffset);
 
 	// TODO: Temp for demo
 	this->hexusPuzzlesButton->disableInteraction(128);
 
-	Sprite* hexusPuzzlesIcon = Sprite::create(Resources::Menus_Icons_Gauntlet);
+	Sprite* hexusPuzzlesIcon = Sprite::create(UIResources::Menus_Icons_Gauntlet);
 
 	hexusPuzzlesIcon->setAnchorPoint(Vec2(0.0f, 0.5f));
 	hexusPuzzlesIcon->setPosition(Vec2(-this->hexusPuzzlesButton->getContentSize().width / 2.0f + 78.0f, 0.0f));
@@ -241,12 +241,12 @@ TextMenuSprite* MinigamesMenu::createComingSoonButton()
 	TextMenuSprite* comingSoonButton = TextMenuSprite::create(
 		comingSoonLabel,
 		comingSoonLabelHover,
-		Resources::Menus_MinigamesMenu_Banner,
-		Resources::Menus_MinigamesMenu_BannerHover);
+		UIResources::Menus_MinigamesMenu_Banner,
+		UIResources::Menus_MinigamesMenu_BannerHover);
 
 	comingSoonButton->setTextOffset(labelOffset);
 
-	Sprite* lockIcon = Sprite::create(Resources::Menus_Icons_Lock);
+	Sprite* lockIcon = Sprite::create(UIResources::Menus_Icons_Lock);
 
 	comingSoonButton->addChild(lockIcon);
 	comingSoonButton->disableInteraction(128);

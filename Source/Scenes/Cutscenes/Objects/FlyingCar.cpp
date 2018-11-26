@@ -24,9 +24,9 @@ FlyingCar::FlyingCar(CarType carType, Vec2 speed, float groundHeight)
 	{
 		case CarType::Junker:
 		{
-			this->carSprite = Sprite::create(Resources::Cutscenes_NeonCity_FlyingCars_Junker_0000);
+			this->carSprite = Sprite::create(CutsceneResources::NeonCity_FlyingCars_Junker_0000);
 			Animation* animation = Animation::create();
-			auto shipFrames = GameUtils::getAllAnimationFiles(Resources::Cutscenes_NeonCity_FlyingCars_Junker_0000);
+			auto shipFrames = GameUtils::getAllAnimationFiles(CutsceneResources::NeonCity_FlyingCars_Junker_0000);
 
 			for (auto it = shipFrames.begin(); it != shipFrames.end(); it++)
 			{
@@ -41,9 +41,9 @@ FlyingCar::FlyingCar(CarType carType, Vec2 speed, float groundHeight)
 		}
 		case CarType::Viper:
 		{
-			this->carSprite = Sprite::create(Resources::Cutscenes_NeonCity_FlyingCars_Viper_0000);
+			this->carSprite = Sprite::create(CutsceneResources::NeonCity_FlyingCars_Viper_0000);
 			Animation* animation = Animation::create();
-			auto shipFrames = GameUtils::getAllAnimationFiles(Resources::Cutscenes_NeonCity_FlyingCars_Viper_0000);
+			auto shipFrames = GameUtils::getAllAnimationFiles(CutsceneResources::NeonCity_FlyingCars_Viper_0000);
 
 			for (auto it = shipFrames.begin(); it != shipFrames.end(); it++)
 			{
@@ -58,9 +58,9 @@ FlyingCar::FlyingCar(CarType carType, Vec2 speed, float groundHeight)
 		}
 		case CarType::Propeller:
 		{
-			this->carSprite = Sprite::create(Resources::Cutscenes_NeonCity_FlyingCars_Propeller_0000);
+			this->carSprite = Sprite::create(CutsceneResources::NeonCity_FlyingCars_Propeller_0000);
 			Animation* animation = Animation::create();
-			auto shipFrames = GameUtils::getAllAnimationFiles(Resources::Cutscenes_NeonCity_FlyingCars_Propeller_0000);
+			auto shipFrames = GameUtils::getAllAnimationFiles(CutsceneResources::NeonCity_FlyingCars_Propeller_0000);
 
 			for (auto it = shipFrames.begin(); it != shipFrames.end(); it++)
 			{

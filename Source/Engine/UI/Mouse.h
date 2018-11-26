@@ -4,7 +4,7 @@
 #include "Engine/SmartNode.h"
 #include "Engine/Events/MouseEvents.h"
 #include "Engine/Input/MouseState.h"
-#include "Resources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 

@@ -12,7 +12,7 @@ Thug* Thug::deserialize(ValueMap* initProperties)
 }
 
 Thug::Thug(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Forest_Enemies_Thug_Animations,
+	EntityResources::Platformer_Environment_Forest_Enemies_Thug_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(256.0f, 248.0f),
 	1.0f,

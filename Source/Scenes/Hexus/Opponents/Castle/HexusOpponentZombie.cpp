@@ -14,8 +14,8 @@ HexusOpponentZombie* HexusOpponentZombie::getInstance()
 }
 
 HexusOpponentZombie::HexusOpponentZombie() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Castle_Enemies_Zombie_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+	EntityResources::Platformer_Environment_Castle_Enemies_Zombie_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -32.0f),
 	Vec2(-16.0f, -32.0f),

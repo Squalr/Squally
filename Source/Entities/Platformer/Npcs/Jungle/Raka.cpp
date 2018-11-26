@@ -12,7 +12,7 @@ Raka* Raka::deserialize(ValueMap* initProperties)
 }
 
 Raka::Raka(ValueMap* initProperties) : NpcBase(initProperties,
-	Resources::Entities_Platformer_Environment_Jungle_Npcs_Raka_Animations,
+	EntityResources::Platformer_Environment_Jungle_Npcs_Raka_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,

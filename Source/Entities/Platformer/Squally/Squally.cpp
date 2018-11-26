@@ -22,7 +22,7 @@ Squally* Squally::getInstance()
 }
 
 Squally::Squally(ValueMap* initProperties) : PlatformerEntity::PlatformerEntity(initProperties,
-	Resources::Entities_Platformer_Squally_Animations,
+	EntityResources::Platformer_Squally_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypePlayer,
 	Size(720.0f, 1600.0f), 
 	Squally::squallyScale,

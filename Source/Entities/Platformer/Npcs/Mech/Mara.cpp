@@ -12,7 +12,7 @@ Mara* Mara::deserialize(ValueMap* initProperties)
 }
 
 Mara::Mara(ValueMap* initProperties) : NpcBase(initProperties,
-	Resources::Entities_Platformer_Environment_Mech_Npcs_Mara_Animations,
+	EntityResources::Platformer_Environment_Mech_Npcs_Mara_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,

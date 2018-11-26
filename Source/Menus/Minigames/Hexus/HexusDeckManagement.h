@@ -11,7 +11,7 @@
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Minigames/Hexus/MenuCard.h"
-#include "Resources.h"
+#include "Resources/UIResources.h"
 #include "Scenes/Hexus/CardStorage.h"
 
 using namespace cocos2d;

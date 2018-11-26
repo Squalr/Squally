@@ -125,7 +125,8 @@ bool SerializableMap::serialize()
 	mapElement->SetAttribute("tilewidth", std::to_string((int)this->getMapTileSize().width).c_str());
 	mapElement->SetAttribute("tileheight", std::to_string((int)this->getMapTileSize().height).c_str());
 
-	Sprite* tileMap = Sprite::create(Resources::Tiles_TileMap);
+	// TODO: This is not isometric friendly
+	Sprite* tileMap = Sprite::create(MapResources::TileMap);
 
 	tinyxml2::XMLElement* tileSetElement = documentRoot->NewElement("tileset");
 	tileSetElement->SetAttribute("firstgid", "1");
@@ -141,7 +142,7 @@ bool SerializableMap::serialize()
 	tileSetElement->LinkEndChild(gridElement);
 
 	tinyxml2::XMLElement* imageElement = documentRoot->NewElement("image");
-	imageElement->SetAttribute("source", ("../" + StrUtils::replaceAll(Resources::Tiles_TileMap, "\\", "/")).c_str());
+	imageElement->SetAttribute("source", ("../" + StrUtils::replaceAll(MapResources::TileMap, "\\", "/")).c_str());
 	imageElement->SetAttribute("width", std::to_string((int)tileMap->getContentSize().width).c_str());
 	imageElement->SetAttribute("height", std::to_string((int)tileMap->getContentSize().height).c_str());
 	tileSetElement->LinkEndChild(imageElement);

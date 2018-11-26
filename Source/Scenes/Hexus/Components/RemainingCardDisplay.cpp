@@ -11,10 +11,10 @@ RemainingCardDisplay* RemainingCardDisplay::create()
 
 RemainingCardDisplay::RemainingCardDisplay()
 {
-	this->particles = ParticleSystemQuad::create(Resources::Particles_Hexus_BlueAura);
-	this->remainingCardSprite = MenuSprite::create(Resources::Minigames_Hexus_RemainingCardsIcon, Resources::Minigames_Hexus_RemainingCardsIcon);
+	this->particles = ParticleSystemQuad::create(ParticleResources::Hexus_BlueAura);
+	this->remainingCardSprite = MenuSprite::create(HexusResources::RemainingCardsIcon, HexusResources::RemainingCardsIcon);
 	this->remainingCardLabel = Label::create("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
-	this->enemyRemainingCardSprite = Sprite::create(Resources::Minigames_Hexus_RemainingCardsIcon);
+	this->enemyRemainingCardSprite = Sprite::create(HexusResources::RemainingCardsIcon);
 	this->enemyRemainingCardLabel = Label::create("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 
 	this->remainingCardMouseOverPanel = LayerColor::create(Color4B::BLACK, 320.0f, 96.0f);

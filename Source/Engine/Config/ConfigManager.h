@@ -2,7 +2,6 @@
 #include "cocos/math/CCGeometry.h"
 
 #include "Engine/Utils/GameUtils.h"
-#include "Resources.h"
 
 class ConfigManager
 {

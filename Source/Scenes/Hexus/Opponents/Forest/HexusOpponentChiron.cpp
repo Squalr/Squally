@@ -14,8 +14,8 @@ HexusOpponentChiron* HexusOpponentChiron::getInstance()
 }
 
 HexusOpponentChiron::HexusOpponentChiron() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Forest_Npcs_Chiron_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
+	EntityResources::Platformer_Environment_Forest_Npcs_Chiron_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-40.0f, -24.0f),

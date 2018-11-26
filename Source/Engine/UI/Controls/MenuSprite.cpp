@@ -34,7 +34,7 @@ MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected)
 	this->isMousedOver = false;
 
 	this->clickSound = "";
-	this->mouseOverSound = Resources::Sounds_ButtonRollover1;
+	this->mouseOverSound = SoundResources::ButtonRollover1;
 
 	this->sprite = nodeNormal;
 	this->spriteSelected = nodeSelected;

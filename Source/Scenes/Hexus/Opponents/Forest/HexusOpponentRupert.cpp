@@ -14,8 +14,8 @@ HexusOpponentRupert* HexusOpponentRupert::getInstance()
 }
 
 HexusOpponentRupert::HexusOpponentRupert() : HexusOpponentData(
-	Resources::Entities_Platformer_Environment_Forest_Npcs_Rupert_Animations,
-	Resources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
+	EntityResources::Platformer_Environment_Forest_Npcs_Rupert_Animations,
+	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -72.0f),
 	Vec2(-16.0f, -40.0f),

@@ -1,7 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Resources.h"
+#include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
 

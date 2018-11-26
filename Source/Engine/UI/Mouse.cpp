@@ -11,10 +11,10 @@ Mouse* Mouse::create()
 
 Mouse::Mouse()
 {
-	this->mouseSpriteIdle = Sprite::create(Resources::Menus_MouseIdle);
-	this->mouseSpritePoint = Sprite::create(Resources::Menus_MousePoint);
-	this->mouseSpritePointPressed = Sprite::create(Resources::Menus_MousePointPressed);
-	this->mouseSpriteDrag = Sprite::create(Resources::Menus_MouseDrag);
+	this->mouseSpriteIdle = Sprite::create(UIResources::Menus_MouseIdle);
+	this->mouseSpritePoint = Sprite::create(UIResources::Menus_MousePoint);
+	this->mouseSpritePointPressed = Sprite::create(UIResources::Menus_MousePointPressed);
+	this->mouseSpriteDrag = Sprite::create(UIResources::Menus_MouseDrag);
 
 	// Anchor point is the top left for the mouse -- this is where the click happens
 	this->mouseSpriteIdle->setAnchorPoint(Vec2(0.0f, 1.0f));

@@ -3,7 +3,6 @@
 #include "cocos-ext.h"
 
 #include "Engine/SmartNode.h"
-#include "Resources.h"
 
 using namespace cocos2d;
 

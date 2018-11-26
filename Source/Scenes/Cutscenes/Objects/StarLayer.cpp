@@ -76,25 +76,25 @@ void StarLayer::createStars()
 			default:
 			case StarSmall:
 			{
-				nextSprite = Sprite::create(Resources::Cutscenes_General_Stars_StarSmall);
+				nextSprite = Sprite::create(CutsceneResources::General_Stars_StarSmall);
 				break;
 			}
 			case StarMedium:
 			{
-				nextSprite = Sprite::create(Resources::Cutscenes_General_Stars_StarMedium);
+				nextSprite = Sprite::create(CutsceneResources::General_Stars_StarMedium);
 				break;
 			}
 			case StarLarge:
 			{
-				nextSprite = Sprite::create(Resources::Cutscenes_General_Stars_StarLarge);
+				nextSprite = Sprite::create(CutsceneResources::General_Stars_StarLarge);
 				break;
 			}
 			case StarShineSmall:
 			{
-				nextSprite = Sprite::create(Resources::Cutscenes_General_Stars_StarShineSmall_0000);
+				nextSprite = Sprite::create(CutsceneResources::General_Stars_StarShineSmall_0000);
 
 				Animation* animation = Animation::create();
-				auto starFrames = GameUtils::getAllAnimationFiles(Resources::Cutscenes_General_Stars_StarShineSmall_0000);
+				auto starFrames = GameUtils::getAllAnimationFiles(CutsceneResources::General_Stars_StarShineSmall_0000);
 				bool reverse = RandomHelper::random_int(0, 1) < 1;
 
 				for (auto it = starFrames.begin(); it != starFrames.end(); it++)
@@ -108,10 +108,10 @@ void StarLayer::createStars()
 			}
 			case StarShineSmallHallow:
 			{
-				nextSprite = Sprite::create(Resources::Cutscenes_General_Stars_StarShineSmallHallow_0000);
+				nextSprite = Sprite::create(CutsceneResources::General_Stars_StarShineSmallHallow_0000);
 
 				Animation* animation = Animation::create();
-				auto starFrames = GameUtils::getAllAnimationFiles(Resources::Cutscenes_General_Stars_StarShineSmallHallow_0000);
+				auto starFrames = GameUtils::getAllAnimationFiles(CutsceneResources::General_Stars_StarShineSmallHallow_0000);
 				bool reverse = RandomHelper::random_int(0, 1) < 1;
 
 				for (auto it = starFrames.begin(); it != starFrames.end(); it++)
@@ -125,10 +125,10 @@ void StarLayer::createStars()
 			}
 			case StarShineLarge:
 			{
-				nextSprite = Sprite::create(Resources::Cutscenes_General_Stars_StarShineLarge_0000);
+				nextSprite = Sprite::create(CutsceneResources::General_Stars_StarShineLarge_0000);
 
 				Animation* animation = Animation::create();
-				auto starFrames = GameUtils::getAllAnimationFiles(Resources::Cutscenes_General_Stars_StarShineLarge_0000);
+				auto starFrames = GameUtils::getAllAnimationFiles(CutsceneResources::General_Stars_StarShineLarge_0000);
 				bool reverse = RandomHelper::random_int(0, 1) < 1;
 
 				for (auto it = starFrames.begin(); it != starFrames.end(); it++)
@@ -142,10 +142,10 @@ void StarLayer::createStars()
 			}
 			case StarShineExtraLarge:
 			{
-				nextSprite = Sprite::create(Resources::Cutscenes_General_Stars_StarShineExtraLarge_0000);
+				nextSprite = Sprite::create(CutsceneResources::General_Stars_StarShineExtraLarge_0000);
 
 				Animation* animation = Animation::create();
-				auto starFrames = GameUtils::getAllAnimationFiles(Resources::Cutscenes_General_Stars_StarShineExtraLarge_0000);
+				auto starFrames = GameUtils::getAllAnimationFiles(CutsceneResources::General_Stars_StarShineExtraLarge_0000);
 				bool reverse = RandomHelper::random_int(0, 1) < 1;
 
 				for (auto it = starFrames.begin(); it != starFrames.end(); it++)

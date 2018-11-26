@@ -20,8 +20,8 @@ StateGameEnd::StateGameEnd() : StateBase(GameState::StateType::GameEnd)
 	this->backButton = TextMenuSprite::create(
 		backButtonLabel,
 		backButtonLabelHover,
-		Resources::Minigames_Hexus_ButtonPlank,
-		Resources::Minigames_Hexus_ButtonPlankHover
+		UIResources::Menus_Buttons_WoodButton,
+		UIResources::Menus_Buttons_WoodButtonSelected
 	);
 
 	this->backButton->setOpacity(0);
@@ -58,12 +58,12 @@ void StateGameEnd::onBackClick(MenuSprite* menuSprite, GameState* gameState)
 
 	if (gameState->playerLosses >= 2 && gameState->enemyLosses >= 2)
 	{
-		SoundManager::playSoundResource(Resources::Sounds_Hexus_Reward);
+		SoundManager::playSoundResource(SoundResources::Hexus_Reward);
 		gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(HexusEvents::HexusGameResult::Draw, gameState->opponentData, gameState->gameDurationInSeconds));
 	}
 	else if (gameState->playerLosses < 2 && gameState->enemyLosses >= 2)
 	{
-		SoundManager::playSoundResource(Resources::Sounds_Hexus_Reward);
+		SoundManager::playSoundResource(SoundResources::Hexus_Reward);
 		gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(HexusEvents::HexusGameResult::PlayerWon, gameState->opponentData, gameState->gameDurationInSeconds));
 	}
 	else
@@ -83,11 +83,11 @@ void StateGameEnd::onStateEnter(GameState* gameState)
 
 	if (gameState->playerLosses >= 2)
 	{
-		SoundManager::playSoundResource(Resources::Sounds_Hexus_Defeat);
+		SoundManager::playSoundResource(SoundResources::Hexus_Defeat);
 	}
 	else if (gameState->enemyLosses >= 2)
 	{
-		SoundManager::playSoundResource(Resources::Sounds_Hexus_Victory);
+		SoundManager::playSoundResource(SoundResources::Hexus_Victory);
 	}
 
 	this->backButton->enableInteraction(0);

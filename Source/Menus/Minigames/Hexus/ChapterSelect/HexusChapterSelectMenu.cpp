@@ -12,7 +12,7 @@ HexusChapterSelectMenu * HexusChapterSelectMenu::create()
 HexusChapterSelectMenu::HexusChapterSelectMenu()
 {
 	this->chapters = std::vector<HexusChapterPreview*>();
-	this->background = Sprite::create(Resources::Menus_MinigamesMenu_Hexus_WoodBackground);
+	this->background = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_WoodBackground);
 	this->hexusChapterPreviewTraining = HexusChapterPreviewTraining::create();
 	this->hexusChapterPreviewJungle = HexusChapterPreviewJungle::create();
 	this->hexusChapterPreviewRuins = HexusChapterPreviewRuins::create();
@@ -34,8 +34,8 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	this->backButton = TextMenuSprite::create(
 		backButtonLabel,
 		backButtonLabelHover,
-		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover
+		UIResources::Menus_Buttons_GenericButton,
+		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
 	Label* manageDeckLabel = Label::create("Manage Cards", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
@@ -47,8 +47,8 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	this->deckManagementButton = TextMenuSprite::create(
 		manageDeckLabel,
 		manageDeckLabelHover,
-		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover
+		UIResources::Menus_Buttons_GenericButton,
+		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
 	Label* shopLabel = Label::create("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
@@ -60,8 +60,8 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	this->shopButton = TextMenuSprite::create(
 		shopLabel,
 		shopLabelHover,
-		Resources::Menus_Buttons_GenericButton,
-		Resources::Menus_Buttons_GenericButtonHover
+		UIResources::Menus_Buttons_GenericButton,
+		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
 	this->chapterSelectLabel->enableOutline(Color4B::BLACK, 2);

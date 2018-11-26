@@ -13,11 +13,11 @@ ObeliskBackground* ObeliskBackground::create(ValueMap* properties, std::string n
 
 ObeliskBackground::ObeliskBackground(ValueMap* properties, std::string name) : BackgroundBase(properties, name)
 {
-	this->background = Sprite::create(Resources::Backgrounds_Platformer_Obelisk_sky);
-	this->background2 = InfiniteParallaxNode::create(Resources::Backgrounds_Platformer_Obelisk_background_plan_2);
-	this->background3 = InfiniteParallaxNode::create(Resources::Backgrounds_Platformer_Obelisk_background_plan_1);
-	this->midground1 = InfiniteParallaxNode::create(Resources::Backgrounds_Platformer_Obelisk_middleground_1);
-	this->midground2 = InfiniteParallaxNode::create(Resources::Backgrounds_Platformer_Obelisk_middleground_3);
+	this->background = Sprite::create(BackgroundResources::Platformer_Obelisk_sky);
+	this->background2 = InfiniteParallaxNode::create(BackgroundResources::Platformer_Obelisk_background_plan_2);
+	this->background3 = InfiniteParallaxNode::create(BackgroundResources::Platformer_Obelisk_background_plan_1);
+	this->midground1 = InfiniteParallaxNode::create(BackgroundResources::Platformer_Obelisk_middleground_1);
+	this->midground2 = InfiniteParallaxNode::create(BackgroundResources::Platformer_Obelisk_middleground_3);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();

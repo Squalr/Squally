@@ -12,7 +12,7 @@ SkeletalPriestess* SkeletalPriestess::deserialize(ValueMap* initProperties)
 }
 
 SkeletalPriestess::SkeletalPriestess(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	Resources::Entities_Platformer_Environment_Obelisk_Enemies_SkeletalPriestess_Animations,
+	EntityResources::Platformer_Environment_Obelisk_Enemies_SkeletalPriestess_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(196.0f, 312.0f),
 	0.8f,

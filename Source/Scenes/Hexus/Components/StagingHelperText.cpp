@@ -18,10 +18,10 @@ StagingHelperText::StagingHelperText()
 	this->selectionLabel->enableOutline(Color4B::BLACK, 2);
 	this->selectionLabel->setDimensions(Config::statusLabelWidth - 48.0f, 0.0f);
 
-	this->cancelButton = MenuSprite::create(Resources::Menus_Buttons_CancelV2Button, Resources::Menus_Buttons_CancelV2ButtonHover);
+	this->cancelButton = MenuSprite::create(UIResources::Menus_Buttons_CancelV2Button, UIResources::Menus_Buttons_CancelV2ButtonHover);
 	this->cancelButton->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->helpButton = MenuSprite::create(Resources::Menus_Buttons_GraphV2Button, Resources::Menus_Buttons_GraphV2ButtonHover);
+	this->helpButton = MenuSprite::create(UIResources::Menus_Buttons_GraphV2Button, UIResources::Menus_Buttons_GraphV2ButtonHover);
 	this->helpButton->setAnchorPoint(Vec2(0.0f, 1.0f));
 
 	this->addChild(this->selectionLabel);

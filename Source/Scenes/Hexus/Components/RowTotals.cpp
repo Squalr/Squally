@@ -21,12 +21,12 @@ RowTotals::RowTotals()
 	this->cachedPlayerDecimalTotal = 0;
 	this->cachedPlayerHexTotal = 0;
 
-	this->enemyBinaryTotalSocket = Sprite::create(Resources::Minigames_Hexus_RowTotalSocketBin);
-	this->enemyDecimalTotalSocket = Sprite::create(Resources::Minigames_Hexus_RowTotalSocketDec);
-	this->enemyHexTotalSocket = Sprite::create(Resources::Minigames_Hexus_RowTotalSocketHex);
-	this->playerBinaryTotalSocket = Sprite::create(Resources::Minigames_Hexus_RowTotalSocketBin);
-	this->playerDecimalTotalSocket = Sprite::create(Resources::Minigames_Hexus_RowTotalSocketDec);
-	this->playerHexTotalSocket = Sprite::create(Resources::Minigames_Hexus_RowTotalSocketHex);
+	this->enemyBinaryTotalSocket = Sprite::create(HexusResources::RowTotalSocketBin);
+	this->enemyDecimalTotalSocket = Sprite::create(HexusResources::RowTotalSocketDec);
+	this->enemyHexTotalSocket = Sprite::create(HexusResources::RowTotalSocketHex);
+	this->playerBinaryTotalSocket = Sprite::create(HexusResources::RowTotalSocketBin);
+	this->playerDecimalTotalSocket = Sprite::create(HexusResources::RowTotalSocketDec);
+	this->playerHexTotalSocket = Sprite::create(HexusResources::RowTotalSocketHex);
 
 	this->enemyBinaryCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
 	this->enemyDecimalCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
