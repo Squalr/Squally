@@ -18,8 +18,6 @@ public:
 
 	static void TriggerRequestLayerDeserialize(LayerDeserializationRequestArgs args);
 	static void TriggerRequestObjectDeserialize(ObjectDeserializationRequestArgs args);
-	static void TriggerLayerDeserialize(LayerDeserializationArgs args);
-	static void TriggerObjectDeserialize(ObjectDeserializationArgs args);
 
 	struct LayerDeserializationArgs
 	{
@@ -55,12 +53,14 @@ public:
 	{
 		TMXObjectGroup* objectGroup;
 		DeserializationMapMeta mapMeta;
+		std::function<void(LayerDeserializationArgs)> onDeserializeCallback;
 		bool handled = false;
 
 		LayerDeserializationRequestArgs(
 			TMXObjectGroup* objectGroup,
-			DeserializationMapMeta mapMeta) :
-			objectGroup(objectGroup), mapMeta(mapMeta)
+			DeserializationMapMeta mapMeta,
+			std::function<void(LayerDeserializationArgs)> onDeserializeCallback):
+			objectGroup(objectGroup), mapMeta(mapMeta), onDeserializeCallback(onDeserializeCallback)
 		{
 		}
 	};
@@ -69,15 +69,18 @@ public:
 	{
 		std::string typeName;
 		ValueMap properties;
+		std::function<void(ObjectDeserializationArgs)> onDeserializeCallback;
 		bool handled = false;
 
-		ObjectDeserializationRequestArgs(std::string typeName, ValueMap properties) : typeName(typeName), properties(properties)
+		ObjectDeserializationRequestArgs(
+			std::string typeName, 
+			ValueMap properties,
+			std::function<void(ObjectDeserializationArgs)> onDeserializeCallback):
+			typeName(typeName), properties(properties), onDeserializeCallback(onDeserializeCallback)
 		{
 		}
 	};
 
 	static const std::string RequestLayerDeserializeEvent;
 	static const std::string RequestObjectDeserializeEvent;
-	static const std::string LayerDeserializeEvent;
-	static const std::string ObjectDeserializeEvent;
 };

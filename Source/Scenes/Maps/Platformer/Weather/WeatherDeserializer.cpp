@@ -52,19 +52,20 @@ void WeatherDeserializer::onDeserializationRequest(DeserializationEvents::LayerD
 		CCLOG("No weather property on weather layer");
 		return;
 	}
+
 	std::string weather = properties.at(WeatherDeserializer::KeyWeather).asString();
 
 	if (weather == Fireflies::KeyWeatherFireflies)
 	{
-		DeserializationEvents::TriggerLayerDeserialize(DeserializationEvents::LayerDeserializationArgs(Fireflies::create(&properties, name), args->objectGroup->layerIndex));
+		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(Fireflies::create(&properties, name), args->objectGroup->layerIndex));
 	}
 	else if (weather == Rain::KeyWeatherRain)
 	{
-		DeserializationEvents::TriggerLayerDeserialize(DeserializationEvents::LayerDeserializationArgs(Rain::create(&properties, name), args->objectGroup->layerIndex));
+		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(Rain::create(&properties, name), args->objectGroup->layerIndex));
 	}
 	else if (weather == Snow::KeyWeatherSnow)
 	{
-		DeserializationEvents::TriggerLayerDeserialize(DeserializationEvents::LayerDeserializationArgs(Snow::create(&properties, name), args->objectGroup->layerIndex));
+		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(Snow::create(&properties, name), args->objectGroup->layerIndex));
 	}
 	else
 	{

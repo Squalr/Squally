@@ -59,6 +59,6 @@ void IsometricEntityDeserializer::onDeserializationRequest(DeserializationEvents
 		}
 
 		// Fire an event indicating successful deserialization
-		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newEntity));
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

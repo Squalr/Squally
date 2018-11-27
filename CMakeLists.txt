@@ -150,6 +150,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/PlatformerEnemy.cpp
 	Source/Entities/Platformer/PlatformerEntity.cpp
 	Source/Entities/Platformer/PlatformerEntityDeserializer.cpp
+	Source/Entities/Platformer/SquallyDeserializer.cpp
 	Source/Entities/Platformer/Enemies/Castle/Agnes.cpp
 	Source/Entities/Platformer/Enemies/Castle/CastleEnemyDeserializer.cpp
 	Source/Entities/Platformer/Enemies/Castle/Executioner.cpp
@@ -905,6 +906,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/PlatformerEnemy.h
 	Source/Entities/Platformer/PlatformerEntity.h
 	Source/Entities/Platformer/PlatformerEntityDeserializer.h
+	Source/Entities/Platformer/SquallyDeserializer.h
 	Source/Entities/Platformer/Enemies/Castle/Agnes.h
 	Source/Entities/Platformer/Enemies/Castle/CastleEnemies.h
 	Source/Entities/Platformer/Enemies/Castle/CastleEnemyDeserializer.h

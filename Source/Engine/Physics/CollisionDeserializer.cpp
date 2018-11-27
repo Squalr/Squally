@@ -81,6 +81,6 @@ void CollisionDeserializer::onDeserializationRequest(DeserializationEvents::Obje
 		CollisionObject* collisionObject = new CollisionObject(properties, physicsBody, categoryName, false, false);
 
 		// Fire an event indicating successful deserialization
-		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(collisionObject));
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(collisionObject));
 	}
 }

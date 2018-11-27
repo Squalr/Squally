@@ -19,7 +19,7 @@ public:
 
 	static int health;
 
-	static const std::string KeySquallyProperty;
+	static const std::string MapKeySqually;
 
 protected:
 	bool contactBegin(CollisionData data) override;
