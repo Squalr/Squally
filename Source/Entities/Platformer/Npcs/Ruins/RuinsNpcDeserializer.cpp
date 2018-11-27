@@ -8,6 +8,8 @@ void RuinsNpcDeserializer::registerGlobalNode()
 	{
 		RuinsNpcDeserializer::instance = new RuinsNpcDeserializer();
 
+		instance->autorelease();
+
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->registerGlobalNode(RuinsNpcDeserializer::instance);
 	}
@@ -23,8 +25,10 @@ RuinsNpcDeserializer::~RuinsNpcDeserializer()
 
 void RuinsNpcDeserializer::initializeListeners()
 {
+	GlobalNode::initializeListeners();
+
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::ObjectDeserializeEvent,
+		DeserializationEvents::RequestObjectDeserializeEvent,
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
 	);
 

@@ -8,6 +8,8 @@ void ObeliskEnemyDeserializer::registerGlobalNode()
 	{
 		ObeliskEnemyDeserializer::instance = new ObeliskEnemyDeserializer();
 
+		instance->autorelease();
+
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->registerGlobalNode(ObeliskEnemyDeserializer::instance);
 	}
@@ -23,8 +25,10 @@ ObeliskEnemyDeserializer::~ObeliskEnemyDeserializer()
 
 void ObeliskEnemyDeserializer::initializeListeners()
 {
+	GlobalNode::initializeListeners();
+
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::ObjectDeserializeEvent,
+		DeserializationEvents::RequestObjectDeserializeEvent,
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
 	);
 

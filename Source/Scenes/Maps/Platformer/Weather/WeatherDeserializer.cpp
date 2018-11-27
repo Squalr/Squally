@@ -9,6 +9,8 @@ void WeatherDeserializer::registerGlobalNode()
 	{
 		WeatherDeserializer::instance = new WeatherDeserializer();
 
+		instance->autorelease();
+
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->registerGlobalNode(WeatherDeserializer::instance);
 	}
@@ -16,8 +18,10 @@ void WeatherDeserializer::registerGlobalNode()
 
 void WeatherDeserializer::initializeListeners()
 {
+	GlobalNode::initializeListeners();
+
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::ObjectDeserializeEvent,
+		DeserializationEvents::RequestLayerDeserializeEvent,
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::LayerDeserializationRequestArgs*)args->getUserData()); }
 	);
 

@@ -8,6 +8,8 @@ void LayerDeserializer::registerGlobalNode()
 	{
 		LayerDeserializer::instance = new LayerDeserializer();
 
+		instance->autorelease();
+
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->registerGlobalNode(LayerDeserializer::instance);
 	}
@@ -24,18 +26,32 @@ LayerDeserializer::~LayerDeserializer()
 void LayerDeserializer::initializeListeners()
 {
 	GlobalNode::initializeListeners();
+
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::RequestLayerDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::LayerDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
 }
 
 void LayerDeserializer::onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args)
 {
+	static std::vector<SerializableObject*> deserializedObjects = std::vector<SerializableObject*>();
 	std::string name = args->objectGroup->getGroupName();
 	ValueVector objects = args->objectGroup->getObjects();
 	ValueMap properties = args->objectGroup->getProperties();
-	std::vector<SerializableObject*>* deserializedObjects = new std::vector<SerializableObject*>();
 
-	auto onDeserializeCallback = [deserializedObjects](SerializableObject* object) {
-		deserializedObjects->push_back(object);
-	};
+	deserializedObjects.clear();
+
+	// Add an event listener to the scene to receive deserialized layers as they are parsed by their deserializers
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->addCustomEventListener(
+		DeserializationEvents::ObjectDeserializeEvent,
+		[=](EventCustom* event)
+		{
+			DeserializationEvents::ObjectDeserializationArgs* args = (DeserializationEvents::ObjectDeserializationArgs*)event->getUserData();
+			deserializedObjects.push_back(args->serializableObject);
+		});
 
 	// Fire deserialization events for objects
 	for (int index = 0; index < objects.size(); index++)
@@ -95,6 +111,9 @@ void LayerDeserializer::onDeserializationRequest(DeserializationEvents::LayerDes
 			));
 		}
 	}
+
+	// Stop listening for object deserialization events
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->removeCustomEventListeners(DeserializationEvents::ObjectDeserializeEvent);
 
 	SerializableLayer* instance = SerializableLayer::create(&properties, name, deserializedObjects);
 }

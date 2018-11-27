@@ -9,6 +9,8 @@ void MusicDeserializer::registerGlobalNode()
 	{
 		MusicDeserializer::instance = new MusicDeserializer();
 
+		instance->autorelease();
+
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->registerGlobalNode(MusicDeserializer::instance);
 	}
@@ -16,8 +18,10 @@ void MusicDeserializer::registerGlobalNode()
 
 void MusicDeserializer::initializeListeners()
 {
+	GlobalNode::initializeListeners();
+
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::ObjectDeserializeEvent,
+		DeserializationEvents::RequestLayerDeserializeEvent,
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::LayerDeserializationRequestArgs*)args->getUserData()); }
 	);
 

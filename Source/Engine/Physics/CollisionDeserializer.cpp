@@ -8,6 +8,8 @@ void CollisionDeserializer::registerGlobalNode()
 	{
 		CollisionDeserializer::instance = new CollisionDeserializer();
 
+		instance->autorelease();
+
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->registerGlobalNode(CollisionDeserializer::instance);
 	}
@@ -23,8 +25,10 @@ CollisionDeserializer::~CollisionDeserializer()
 
 void CollisionDeserializer::initializeListeners()
 {
+	GlobalNode::initializeListeners();
+
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::ObjectDeserializeEvent,
+		DeserializationEvents::RequestObjectDeserializeEvent,
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
 	);
 

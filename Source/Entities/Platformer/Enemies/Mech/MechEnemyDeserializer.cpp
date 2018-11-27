@@ -8,6 +8,8 @@ void MechEnemyDeserializer::registerGlobalNode()
 	{
 		MechEnemyDeserializer::instance = new MechEnemyDeserializer();
 
+		instance->autorelease();
+
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->registerGlobalNode(MechEnemyDeserializer::instance);
 	}
@@ -23,8 +25,10 @@ MechEnemyDeserializer::~MechEnemyDeserializer()
 
 void MechEnemyDeserializer::initializeListeners()
 {
+	GlobalNode::initializeListeners();
+
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::ObjectDeserializeEvent,
+		DeserializationEvents::RequestObjectDeserializeEvent,
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
 	);
 

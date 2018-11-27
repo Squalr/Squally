@@ -8,6 +8,8 @@ void VolcanoNpcDeserializer::registerGlobalNode()
 	{
 		VolcanoNpcDeserializer::instance = new VolcanoNpcDeserializer();
 
+		instance->autorelease();
+
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->registerGlobalNode(VolcanoNpcDeserializer::instance);
 	}
@@ -23,8 +25,10 @@ VolcanoNpcDeserializer::~VolcanoNpcDeserializer()
 
 void VolcanoNpcDeserializer::initializeListeners()
 {
+	GlobalNode::initializeListeners();
+
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::ObjectDeserializeEvent,
+		DeserializationEvents::RequestObjectDeserializeEvent,
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
 	);
 
