@@ -1,6 +1,18 @@
 #include "PlatformerDecorDeserializer.h"
 
+PlatformerDecorDeserializer* PlatformerDecorDeserializer::instance = nullptr;
 const std::string PlatformerDecorDeserializer::KeyTypeDecor = "decor";
+
+void PlatformerDecorDeserializer::registerGlobalNode()
+{
+	if (PlatformerDecorDeserializer::instance == nullptr)
+	{
+		PlatformerDecorDeserializer::instance = new PlatformerDecorDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(PlatformerDecorDeserializer::instance);
+	}
+}
 
 void PlatformerDecorDeserializer::initializeListeners()
 {
@@ -118,6 +130,6 @@ void PlatformerDecorDeserializer::onDeserializationRequest(DeserializationEvents
 			newObject->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
 		}
 
-		args->callback(newObject);
+		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newObject));
 	}
 }

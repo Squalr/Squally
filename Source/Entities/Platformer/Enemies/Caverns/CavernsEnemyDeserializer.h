@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Maps/IObjectDeserializer.h"
+#include "Engine/Events/DeserializationEvents.h"
 #include "Entities/Platformer/Enemies/Caverns/CavernsEnemies.h"
 #include "Entities/Platformer/PlatformerEntityDeserializer.h"
 
@@ -17,7 +17,7 @@ private:
 	~CavernsEnemyDeserializer();
 
 	void initializeListeners() override;
-	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args) override;
+	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);
 
 	static CavernsEnemyDeserializer* instance;
 };

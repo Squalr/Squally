@@ -1,5 +1,18 @@
 #include "ForestNpcDeserializer.h"
 
+ForestNpcDeserializer* ForestNpcDeserializer::instance = nullptr;
+
+void ForestNpcDeserializer::registerGlobalNode()
+{
+	if (ForestNpcDeserializer::instance == nullptr)
+	{
+		ForestNpcDeserializer::instance = new ForestNpcDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(ForestNpcDeserializer::instance);
+	}
+}
+
 ForestNpcDeserializer::ForestNpcDeserializer()
 {
 }
@@ -72,6 +85,6 @@ void ForestNpcDeserializer::onDeserializationRequest(DeserializationEvents::Obje
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

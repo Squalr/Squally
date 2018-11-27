@@ -89,7 +89,7 @@ void LayerDeserializer::onDeserializationRequest(DeserializationEvents::LayerDes
 			typeName = object.at(SerializableObject::KeyType).asString();
 
 			// Fire event requesting the deserialization of this object
-			DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationRequestArgs(
+			DeserializationEvents::TriggerRequestObjectDeserialize(DeserializationEvents::ObjectDeserializationRequestArgs(
 				typeName,
 				object
 			));

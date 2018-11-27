@@ -1,5 +1,18 @@
 #include "MechNpcDeserializer.h"
 
+MechNpcDeserializer* MechNpcDeserializer::instance = nullptr;
+
+void MechNpcDeserializer::registerGlobalNode()
+{
+	if (MechNpcDeserializer::instance == nullptr)
+	{
+		MechNpcDeserializer::instance = new MechNpcDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(MechNpcDeserializer::instance);
+	}
+}
+
 MechNpcDeserializer::MechNpcDeserializer()
 {
 }
@@ -68,6 +81,6 @@ void MechNpcDeserializer::onDeserializationRequest(DeserializationEvents::Object
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

@@ -1,5 +1,18 @@
 #include "JungleEnemyDeserializer.h"
 
+JungleEnemyDeserializer* JungleEnemyDeserializer::instance = nullptr;
+
+void JungleEnemyDeserializer::registerGlobalNode()
+{
+	if (JungleEnemyDeserializer::instance == nullptr)
+	{
+		JungleEnemyDeserializer::instance = new JungleEnemyDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(JungleEnemyDeserializer::instance);
+	}
+}
+
 JungleEnemyDeserializer::JungleEnemyDeserializer()
 {
 }
@@ -72,6 +85,6 @@ void JungleEnemyDeserializer::onDeserializationRequest(DeserializationEvents::Ob
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

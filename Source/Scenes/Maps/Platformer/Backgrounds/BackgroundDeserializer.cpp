@@ -1,12 +1,24 @@
 #include "BackgroundDeserializer.h"
 
+BackgroundDeserializer* BackgroundDeserializer::instance = nullptr;
 const std::string BackgroundDeserializer::KeyBackground = "background";
+
+void BackgroundDeserializer::registerGlobalNode()
+{
+	if (BackgroundDeserializer::instance == nullptr)
+	{
+		BackgroundDeserializer::instance = new BackgroundDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(BackgroundDeserializer::instance);
+	}
+}
 
 void BackgroundDeserializer::initializeListeners()
 {
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		DeserializationEvents::ObjectDeserializeEvent,
-		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::LayerDeserializationRequestArgs*)args->getUserData()); }
 	);
 
 	this->addEventListener(deserializationRequestListener);
@@ -41,23 +53,23 @@ void BackgroundDeserializer::onDeserializationRequest(DeserializationEvents::Lay
 
 	if (background == JungleBackground::KeyBackgroundJungle)
 	{
-		args->callback(JungleBackground::create(&properties, name), args->objectGroup->layerIndex);
+		DeserializationEvents::TriggerLayerDeserialize(DeserializationEvents::LayerDeserializationArgs(JungleBackground::create(&properties, name), args->objectGroup->layerIndex));
 	}
 	else if (background == MountainBackground::KeyBackgroundMountains)
 	{
-		args->callback(MountainBackground::create(&properties, name), args->objectGroup->layerIndex);
+		DeserializationEvents::TriggerLayerDeserialize(DeserializationEvents::LayerDeserializationArgs(MountainBackground::create(&properties, name), args->objectGroup->layerIndex));
 	}
 	else if (background == ObeliskBackground::KeyBackgroundObelisk)
 	{
-		args->callback(ObeliskBackground::create(&properties, name), args->objectGroup->layerIndex);
+		DeserializationEvents::TriggerLayerDeserialize(DeserializationEvents::LayerDeserializationArgs(ObeliskBackground::create(&properties, name), args->objectGroup->layerIndex));
 	}
 	else if (background == OceanBackground::KeyBackgroundOcean)
 	{
-		args->callback(OceanBackground::create(&properties, name), args->objectGroup->layerIndex);
+		DeserializationEvents::TriggerLayerDeserialize(DeserializationEvents::LayerDeserializationArgs(OceanBackground::create(&properties, name), args->objectGroup->layerIndex));
 	}
 	else if (background == SnowBackground::KeyBackgroundSnow)
 	{
-		args->callback(SnowBackground::create(&properties, name), args->objectGroup->layerIndex);
+		DeserializationEvents::TriggerLayerDeserialize(DeserializationEvents::LayerDeserializationArgs(SnowBackground::create(&properties, name), args->objectGroup->layerIndex));
 	}
 	else
 	{

@@ -1,5 +1,18 @@
 #include "SnowEnemyDeserializer.h"
 
+SnowEnemyDeserializer* SnowEnemyDeserializer::instance = nullptr;
+
+void SnowEnemyDeserializer::registerGlobalNode()
+{
+	if (SnowEnemyDeserializer::instance == nullptr)
+	{
+		SnowEnemyDeserializer::instance = new SnowEnemyDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(SnowEnemyDeserializer::instance);
+	}
+}
+
 SnowEnemyDeserializer::SnowEnemyDeserializer()
 {
 }
@@ -76,6 +89,6 @@ void SnowEnemyDeserializer::onDeserializationRequest(DeserializationEvents::Obje
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

@@ -3,6 +3,17 @@
 IsometricEntityDeserializer* IsometricEntityDeserializer::instance = nullptr;
 const std::string IsometricEntityDeserializer::KeyTypeIsometricEntity = "iso_entity";
 
+void IsometricEntityDeserializer::registerGlobalNode()
+{
+	if (IsometricEntityDeserializer::instance == nullptr)
+	{
+		IsometricEntityDeserializer::instance = new IsometricEntityDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(IsometricEntityDeserializer::instance);
+	}
+}
+
 IsometricEntityDeserializer::IsometricEntityDeserializer()
 {
 }
@@ -44,6 +55,6 @@ void IsometricEntityDeserializer::onDeserializationRequest(DeserializationEvents
 		}
 
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

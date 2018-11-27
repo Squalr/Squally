@@ -852,8 +852,6 @@ list(APPEND GAME_HEADER
 	Source/Engine/Input/InputManager.h
 	Source/Engine/Input/MouseState.h
 	Source/Engine/Localization/Localization.h
-	Source/Engine/Maps/ILayerDeserializer.h
-	Source/Engine/Maps/IObjectDeserializer.h
 	Source/Engine/Maps/LayerDeserializer.h
 	Source/Engine/Maps/MapLoader.h
 	Source/Engine/Maps/ObjectifiedTile.h
