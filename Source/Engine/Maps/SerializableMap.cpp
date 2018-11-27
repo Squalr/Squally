@@ -30,14 +30,12 @@ SerializableMap::~SerializableMap()
 SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 {
 	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(mapFileName);
-	static std::map<int, SerializableLayer*> deserializedLayerMap = std::map<int, SerializableLayer*>();
+	std::map<int, SerializableLayer*> deserializedLayerMap = std::map<int, SerializableLayer*>();
 	std::vector<cocos_experimental::TMXLayer*> tileLayers = std::vector<cocos_experimental::TMXLayer*>();
 	std::vector<SerializableLayer*> deserializedLayers = std::vector<SerializableLayer*>();
 
-	deserializedLayerMap.clear();
-
 	// Callback to receive deserialized layers as they are parsed by their deserializers
-	auto onDeserializeCallback = [=](DeserializationEvents::LayerDeserializationArgs args)
+	auto onDeserializeCallback = [&](DeserializationEvents::LayerDeserializationArgs args)
 	{
 		deserializedLayerMap.emplace(args.layerIndex, args.serializableLayer);
 	};
@@ -77,7 +75,7 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 	{
 		deserializedLayers.push_back(it->second);
 	}
-
+	
 	SerializableMap* instance = new SerializableMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation());
 
 	instance->autorelease();

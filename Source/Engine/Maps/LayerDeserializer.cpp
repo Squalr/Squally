@@ -110,5 +110,5 @@ void LayerDeserializer::onDeserializationRequest(DeserializationEvents::LayerDes
 		}
 	}
 
-	SerializableLayer* instance = SerializableLayer::create(&properties, name, deserializedObjects);
+	args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(SerializableLayer::create(&properties, name, deserializedObjects), args->objectGroup->layerIndex));
 }
