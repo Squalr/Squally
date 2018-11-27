@@ -9,4 +9,5 @@ class GlobalNode : public SmartNode
 {
 public:
 	virtual void pause() override;
+	virtual void addEventListener(EventListener* listener) override;
 };

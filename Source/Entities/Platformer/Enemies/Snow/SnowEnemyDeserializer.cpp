@@ -8,6 +8,8 @@ void SnowEnemyDeserializer::registerGlobalNode()
 	{
 		SnowEnemyDeserializer::instance = new SnowEnemyDeserializer();
 
+		instance->autorelease();
+
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->registerGlobalNode(SnowEnemyDeserializer::instance);
 	}
@@ -23,8 +25,10 @@ SnowEnemyDeserializer::~SnowEnemyDeserializer()
 
 void SnowEnemyDeserializer::initializeListeners()
 {
+	GlobalNode::initializeListeners();
+
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::ObjectDeserializeEvent,
+		DeserializationEvents::RequestObjectDeserializeEvent,
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
 	);
 

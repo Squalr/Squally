@@ -9,6 +9,8 @@ void IsometricObjectDeserializer::registerGlobalNode()
 	{
 		IsometricObjectDeserializer::instance = new IsometricObjectDeserializer();
 
+		instance->autorelease();
+
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->registerGlobalNode(IsometricObjectDeserializer::instance);
 	}
@@ -16,8 +18,10 @@ void IsometricObjectDeserializer::registerGlobalNode()
 
 void IsometricObjectDeserializer::initializeListeners()
 {
+	GlobalNode::initializeListeners();
+
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::ObjectDeserializeEvent,
+		DeserializationEvents::RequestObjectDeserializeEvent,
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
 	);
 

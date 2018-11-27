@@ -8,6 +8,8 @@ void CastleNpcDeserializer::registerGlobalNode()
 	{
 		CastleNpcDeserializer::instance = new CastleNpcDeserializer();
 
+		instance->autorelease();
+
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->registerGlobalNode(CastleNpcDeserializer::instance);
 	}
@@ -23,8 +25,10 @@ CastleNpcDeserializer::~CastleNpcDeserializer()
 
 void CastleNpcDeserializer::initializeListeners()
 {
+	GlobalNode::initializeListeners();
+
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::ObjectDeserializeEvent,
+		DeserializationEvents::RequestObjectDeserializeEvent,
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
 	);
 

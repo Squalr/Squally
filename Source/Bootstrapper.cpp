@@ -40,6 +40,8 @@ void Bootstrapper::initialize()
 	// Environment deserializers
 	BackgroundDeserializer::registerGlobalNode();
 	WeatherDeserializer::registerGlobalNode();
+
+	MusicDeserializer::registerGlobalNode();
 }
 
 void Bootstrapper::shutDown()

@@ -8,6 +8,8 @@ void JungleEnemyDeserializer::registerGlobalNode()
 	{
 		JungleEnemyDeserializer::instance = new JungleEnemyDeserializer();
 
+		instance->autorelease();
+
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->registerGlobalNode(JungleEnemyDeserializer::instance);
 	}
@@ -23,8 +25,10 @@ JungleEnemyDeserializer::~JungleEnemyDeserializer()
 
 void JungleEnemyDeserializer::initializeListeners()
 {
+	GlobalNode::initializeListeners();
+
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::ObjectDeserializeEvent,
+		DeserializationEvents::RequestObjectDeserializeEvent,
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
 	);
 

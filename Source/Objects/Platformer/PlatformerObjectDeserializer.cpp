@@ -9,6 +9,8 @@ void PlatformerObjectDeserializer::registerGlobalNode()
 	{
 		PlatformerObjectDeserializer::instance = new PlatformerObjectDeserializer();
 
+		instance->autorelease();
+
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->registerGlobalNode(PlatformerObjectDeserializer::instance);
 	}
@@ -16,8 +18,10 @@ void PlatformerObjectDeserializer::registerGlobalNode()
 
 void PlatformerObjectDeserializer::initializeListeners()
 {
+	GlobalNode::initializeListeners();
+
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::ObjectDeserializeEvent,
+		DeserializationEvents::RequestObjectDeserializeEvent,
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
 	);
 
