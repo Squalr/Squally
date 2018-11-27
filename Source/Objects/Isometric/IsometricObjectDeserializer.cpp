@@ -1,6 +1,18 @@
 #include "IsometricObjectDeserializer.h"
 
+IsometricObjectDeserializer* IsometricObjectDeserializer::instance = nullptr;
 const std::string IsometricObjectDeserializer::KeyTypeIsometricObject = "iso_object";
+
+void IsometricObjectDeserializer::registerGlobalNode()
+{
+	if (IsometricObjectDeserializer::instance == nullptr)
+	{
+		IsometricObjectDeserializer::instance = new IsometricObjectDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(IsometricObjectDeserializer::instance);
+	}
+}
 
 void IsometricObjectDeserializer::initializeListeners()
 {
@@ -30,6 +42,6 @@ void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents
 			return;
 		}
 
-		args->callback(newObject);
+		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newObject));
 	}
 }

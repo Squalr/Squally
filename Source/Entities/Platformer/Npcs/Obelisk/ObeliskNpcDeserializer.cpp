@@ -1,5 +1,18 @@
 #include "ObeliskNpcDeserializer.h"
 
+ObeliskNpcDeserializer* ObeliskNpcDeserializer::instance = nullptr;
+
+void ObeliskNpcDeserializer::registerGlobalNode()
+{
+	if (ObeliskNpcDeserializer::instance == nullptr)
+	{
+		ObeliskNpcDeserializer::instance = new ObeliskNpcDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(ObeliskNpcDeserializer::instance);
+	}
+}
+
 ObeliskNpcDeserializer::ObeliskNpcDeserializer()
 {
 }
@@ -72,6 +85,6 @@ void ObeliskNpcDeserializer::onDeserializationRequest(DeserializationEvents::Obj
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

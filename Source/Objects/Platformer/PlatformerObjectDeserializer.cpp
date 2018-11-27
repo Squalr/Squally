@@ -1,6 +1,18 @@
 #include "PlatformerObjectDeserializer.h"
 
+PlatformerObjectDeserializer* PlatformerObjectDeserializer::instance = nullptr;
 const std::string PlatformerObjectDeserializer::KeyTypeObject = "object";
+
+void PlatformerObjectDeserializer::registerGlobalNode()
+{
+	if (PlatformerObjectDeserializer::instance == nullptr)
+	{
+		PlatformerObjectDeserializer::instance = new PlatformerObjectDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(PlatformerObjectDeserializer::instance);
+	}
+}
 
 void PlatformerObjectDeserializer::initializeListeners()
 {
@@ -20,6 +32,7 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		std::string name = properties.at(SerializableObject::KeyName).asString();
 		SerializableObject* newObject = nullptr;
 
+		// TODO: Move these constants into their classes
 		if (name == "warp-gate")
 		{
 			newObject = WarpGate::create(&properties);
@@ -46,6 +59,6 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 			return;
 		}
 
-		args->callback(newObject);
+		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newObject));
 	}
 }

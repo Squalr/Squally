@@ -1,5 +1,18 @@
 #include "RuinsNpcDeserializer.h"
 
+RuinsNpcDeserializer* RuinsNpcDeserializer::instance = nullptr;
+
+void RuinsNpcDeserializer::registerGlobalNode()
+{
+	if (RuinsNpcDeserializer::instance == nullptr)
+	{
+		RuinsNpcDeserializer::instance = new RuinsNpcDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(RuinsNpcDeserializer::instance);
+	}
+}
+
 RuinsNpcDeserializer::RuinsNpcDeserializer()
 {
 }
@@ -72,6 +85,6 @@ void RuinsNpcDeserializer::onDeserializationRequest(DeserializationEvents::Objec
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

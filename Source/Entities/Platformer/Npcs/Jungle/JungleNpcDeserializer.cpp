@@ -1,5 +1,18 @@
 #include "JungleNpcDeserializer.h"
 
+JungleNpcDeserializer* JungleNpcDeserializer::instance = nullptr;
+
+void JungleNpcDeserializer::registerGlobalNode()
+{
+	if (JungleNpcDeserializer::instance == nullptr)
+	{
+		JungleNpcDeserializer::instance = new JungleNpcDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(JungleNpcDeserializer::instance);
+	}
+}
+
 JungleNpcDeserializer::JungleNpcDeserializer()
 {
 }
@@ -68,6 +81,6 @@ void JungleNpcDeserializer::onDeserializationRequest(DeserializationEvents::Obje
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

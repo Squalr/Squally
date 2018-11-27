@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Maps/IObjectDeserializer.h"
+#include "Engine/Events/DeserializationEvents.h"
 #include "Entities/Platformer/Enemies/Obelisk/ObeliskEnemies.h"
 #include "Entities/Platformer/PlatformerEntityDeserializer.h"
 
@@ -17,7 +17,7 @@ private:
 	~ObeliskEnemyDeserializer();
 
 	void initializeListeners() override;
-	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args) override;
+	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);
 
 	static ObeliskEnemyDeserializer* instance;
 };

@@ -1,5 +1,18 @@
 #include "CastleEnemyDeserializer.h"
 
+CastleEnemyDeserializer* CastleEnemyDeserializer::instance = nullptr;
+
+void CastleEnemyDeserializer::registerGlobalNode()
+{
+	if (CastleEnemyDeserializer::instance == nullptr)
+	{
+		CastleEnemyDeserializer::instance = new CastleEnemyDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(CastleEnemyDeserializer::instance);
+	}
+}
+
 CastleEnemyDeserializer::CastleEnemyDeserializer()
 {
 }
@@ -82,7 +95,7 @@ void CastleEnemyDeserializer::onDeserializationRequest(DeserializationEvents::Ob
 		if (newEntity != nullptr)
 		{
 			// Fire an event indicating successful deserialization
-			args->callback(newEntity);
+			DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 		}
 	}
 }

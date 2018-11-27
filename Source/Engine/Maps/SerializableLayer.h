@@ -2,9 +2,7 @@
 #include <tinyxml2/tinyxml2.h>
 #include "cocos2d.h"
 
-#include "Engine/Maps/IObjectDeserializer.h"
 #include "Engine/Maps/SerializableObject.h"
-#include "Engine/Utils/StrUtils.h"
 
 using namespace cocos2d;
 

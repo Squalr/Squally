@@ -6,8 +6,6 @@
 
 #include "Engine/Events/DeserializationEvents.h"
 #include "Engine/SmartNode.h"
-#include "Engine/Maps/IObjectDeserializer.h"
-#include "Engine/Maps/ILayerDeserializer.h"
 #include "Engine/Maps/SerializableLayer.h"
 #include "Engine/Maps/SerializableTileLayer.h"
 #include "Resources/MapResources.h"

@@ -6,6 +6,7 @@ void EngineBootstrapper::initialize()
 	Analytics::registerGlobalNode();
 	MouseState::registerGlobalNode();
 	LayerDeserializer::registerGlobalNode();
+	CollisionDeserializer::registerGlobalNode();
 }
 
 void EngineBootstrapper::shutDown()

@@ -1,5 +1,18 @@
 #include "MechEnemyDeserializer.h"
 
+MechEnemyDeserializer* MechEnemyDeserializer::instance = nullptr;
+
+void MechEnemyDeserializer::registerGlobalNode()
+{
+	if (MechEnemyDeserializer::instance == nullptr)
+	{
+		MechEnemyDeserializer::instance = new MechEnemyDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(MechEnemyDeserializer::instance);
+	}
+}
+
 MechEnemyDeserializer::MechEnemyDeserializer()
 {
 }
@@ -64,6 +77,6 @@ void MechEnemyDeserializer::onDeserializationRequest(DeserializationEvents::Obje
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

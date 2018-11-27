@@ -1,5 +1,18 @@
 #include "VolcanoEnemyDeserializer.h"
 
+VolcanoEnemyDeserializer* VolcanoEnemyDeserializer::instance = nullptr;
+
+void VolcanoEnemyDeserializer::registerGlobalNode()
+{
+	if (VolcanoEnemyDeserializer::instance == nullptr)
+	{
+		VolcanoEnemyDeserializer::instance = new VolcanoEnemyDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(VolcanoEnemyDeserializer::instance);
+	}
+}
+
 VolcanoEnemyDeserializer::VolcanoEnemyDeserializer()
 {
 }
@@ -72,6 +85,6 @@ void VolcanoEnemyDeserializer::onDeserializationRequest(DeserializationEvents::O
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

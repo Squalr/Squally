@@ -30,21 +30,26 @@ SerializableMap::~SerializableMap()
 SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 {
 	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(mapFileName);
-	std::map<int, SerializableLayer*> deserializedLayerMap = std::map<int, SerializableLayer*>();
+	static std::map<int, SerializableLayer*> deserializedLayerMap = std::map<int, SerializableLayer*>();
+	std::vector<cocos_experimental::TMXLayer*> tileLayers = std::vector<cocos_experimental::TMXLayer*>();
 	std::vector<SerializableLayer*> deserializedLayers = std::vector<SerializableLayer*>();
 
-	auto onDeserializeCallback = [&](SerializableLayer* layer, int layerIndex) {
-		deserializedLayerMap.emplace(layerIndex, layer);
-	};
+	deserializedLayerMap.clear();
 
-	// Deserialize all layers
+	// Add an event listener to the scene to receive deserialized layers as they are parsed by their deserializers
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->addCustomEventListener(
+		DeserializationEvents::LayerDeserializeEvent,
+		[=](EventCustom* event)
+		{
+			DeserializationEvents::LayerDeserializationArgs* args = (DeserializationEvents::LayerDeserializationArgs*)event->getUserData();
+			deserializedLayerMap.emplace(args->layerIndex, args->serializableLayer);
+		});
+
+	// Fire event requesting the deserialization of this layer -- the appropriate deserializer class should handle it
 	for (auto it = mapRaw->getObjectGroups().begin(); it != mapRaw->getObjectGroups().end(); it++)
 	{
-		TMXObjectGroup* objectGroup = *it;
-
-		// Fire event requesting the deserialization of this layer
-		DeserializationEvents::TriggerLayerDeserialize(DeserializationEvents::LayerDeserializationRequestArgs(
-			objectGroup,
+		DeserializationEvents::TriggerRequestLayerDeserialize(DeserializationEvents::LayerDeserializationRequestArgs(
+			*it,
 			DeserializationEvents::DeserializationMapMeta(
 				Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height),
 				mapRaw->getMapOrientation() == MapOrientation::Isometric
@@ -52,7 +57,8 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 		));
 	}
 
-	std::vector<cocos_experimental::TMXLayer*> tileLayers = std::vector<cocos_experimental::TMXLayer*>();
+	// Stop listening for layer deserialization events
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->removeCustomEventListeners(DeserializationEvents::LayerDeserializeEvent);
 
 	// Pull out tile layers
 	for (auto it = mapRaw->getChildren().begin(); it != mapRaw->getChildren().end(); it++)

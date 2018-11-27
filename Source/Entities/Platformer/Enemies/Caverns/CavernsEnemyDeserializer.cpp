@@ -1,5 +1,18 @@
 #include "CavernsEnemyDeserializer.h"
 
+CavernsEnemyDeserializer* CavernsEnemyDeserializer::instance = nullptr;
+
+void CavernsEnemyDeserializer::registerGlobalNode()
+{
+	if (CavernsEnemyDeserializer::instance == nullptr)
+	{
+		CavernsEnemyDeserializer::instance = new CavernsEnemyDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(CavernsEnemyDeserializer::instance);
+	}
+}
+
 CavernsEnemyDeserializer::CavernsEnemyDeserializer()
 {
 }
@@ -72,6 +85,6 @@ void CavernsEnemyDeserializer::onDeserializationRequest(DeserializationEvents::O
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

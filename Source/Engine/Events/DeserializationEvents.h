@@ -1,26 +1,41 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Maps/SerializableLayer.h"
+#include "Engine/Maps/SerializableObject.h"
+
 using namespace cocos2d;
 
 class DeserializationEvents
 {
 public:
 	// Forward declarations
-	struct ObjectDeserializationRequestArgs;
+	struct LayerDeserializationArgs;
+	struct ObjectDeserializationArgs;
 	struct DeserializationMapMeta;
 	struct LayerDeserializationRequestArgs;
+	struct ObjectDeserializationRequestArgs;
 
-	static void TriggerLayerDeserialize(LayerDeserializationRequestArgs args);
-	static void TriggerObjectDeserialize(ObjectDeserializationRequestArgs args);
+	static void TriggerRequestLayerDeserialize(LayerDeserializationRequestArgs args);
+	static void TriggerRequestObjectDeserialize(ObjectDeserializationRequestArgs args);
+	static void TriggerLayerDeserialize(LayerDeserializationArgs args);
+	static void TriggerObjectDeserialize(ObjectDeserializationArgs args);
 
-	struct ObjectDeserializationRequestArgs
+	struct LayerDeserializationArgs
 	{
-		std::string typeName;
-		ValueMap properties;
-		bool handled = false;
+		SerializableLayer* serializableLayer;
+		int layerIndex;
 
-		ObjectDeserializationRequestArgs(std::string typeName, ValueMap properties) : typeName(typeName), properties(properties)
+		LayerDeserializationArgs(SerializableLayer* serializableLayer, int layerIndex) : serializableLayer(serializableLayer), layerIndex(layerIndex)
+		{
+		}
+	};
+
+	struct ObjectDeserializationArgs
+	{
+		SerializableObject* serializableObject;
+
+		ObjectDeserializationArgs(SerializableObject* serializableObject) : serializableObject(serializableObject)
 		{
 		}
 	};
@@ -50,6 +65,19 @@ public:
 		}
 	};
 
+	struct ObjectDeserializationRequestArgs
+	{
+		std::string typeName;
+		ValueMap properties;
+		bool handled = false;
+
+		ObjectDeserializationRequestArgs(std::string typeName, ValueMap properties) : typeName(typeName), properties(properties)
+		{
+		}
+	};
+
+	static const std::string RequestLayerDeserializeEvent;
+	static const std::string RequestObjectDeserializeEvent;
 	static const std::string LayerDeserializeEvent;
 	static const std::string ObjectDeserializeEvent;
 };
