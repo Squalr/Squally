@@ -2,7 +2,17 @@
 
 const std::string PlatformerDecorDeserializer::KeyTypeDecor = "decor";
 
-void PlatformerDecorDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void PlatformerDecorDeserializer::initializeListeners()
+{
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::ObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void PlatformerDecorDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	if (args->typeName == PlatformerDecorDeserializer::KeyTypeDecor)
 	{

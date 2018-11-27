@@ -10,8 +10,14 @@ using namespace cocos2d;
 class CastleEnemyDeserializer : public PlatformerEntityDeserializer
 {
 public:
+	static void registerGlobalNode();
+
+private:
 	CastleEnemyDeserializer();
 	~CastleEnemyDeserializer();
 
-	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
+	void initializeListeners() override;
+	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args) override;
+
+	static CastleEnemyDeserializer* instance;
 };

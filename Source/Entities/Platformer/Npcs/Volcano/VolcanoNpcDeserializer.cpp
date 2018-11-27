@@ -8,7 +8,17 @@ VolcanoNpcDeserializer::~VolcanoNpcDeserializer()
 {
 }
 
-void VolcanoNpcDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void VolcanoNpcDeserializer::initializeListeners()
+{
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::ObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void VolcanoNpcDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
 	std::string name = properties.at(SerializableObject::KeyName).asString();

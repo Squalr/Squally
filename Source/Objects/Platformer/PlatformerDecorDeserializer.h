@@ -11,7 +11,12 @@ using namespace cocos2d;
 class PlatformerDecorDeserializer : public IObjectDeserializer
 {
 public:
-	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
+	static void registerGlobalNode();
 
+private:
+	void initializeListeners() override;
+	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args) override;
+
+	static PlatformerDecorDeserializer* instance;
 	static const std::string KeyTypeDecor;
 };

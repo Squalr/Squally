@@ -11,7 +11,12 @@ using namespace cocos2d;
 class IsometricDecorDeserializer : public IObjectDeserializer
 {
 public:
-	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
+	static void registerGlobalNode();
 
+private:
+	void initializeListeners() override;
+	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args) override;
+
+	static IsometricDecorDeserializer* instance;
 	static const std::string KeyTypeDecor;
 };

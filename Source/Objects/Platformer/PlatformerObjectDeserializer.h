@@ -10,7 +10,12 @@ using namespace cocos2d;
 class PlatformerObjectDeserializer : public IObjectDeserializer
 {
 public:
-	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
+	static void registerGlobalNode();
 
+private:
+	void initializeListeners() override;
+	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args) override;
+
+	static PlatformerObjectDeserializer* instance;
 	static const std::string KeyTypeObject;
 };

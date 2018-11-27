@@ -1,5 +1,6 @@
 #include "IsometricEntityDeserializer.h"
 
+IsometricEntityDeserializer* IsometricEntityDeserializer::instance = nullptr;
 const std::string IsometricEntityDeserializer::KeyTypeIsometricEntity = "iso_entity";
 
 IsometricEntityDeserializer::IsometricEntityDeserializer()
@@ -10,7 +11,17 @@ IsometricEntityDeserializer::~IsometricEntityDeserializer()
 {
 }
 
-void IsometricEntityDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void IsometricEntityDeserializer::initializeListeners()
+{
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::ObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void IsometricEntityDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	if (args->typeName == IsometricEntityDeserializer::KeyTypeIsometricEntity)
 	{

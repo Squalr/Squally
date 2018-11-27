@@ -2,7 +2,17 @@
 
 const std::string IsometricObjectDeserializer::KeyTypeIsometricObject = "iso_object";
 
-void IsometricObjectDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void IsometricObjectDeserializer::initializeListeners()
+{
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::ObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	if (args->typeName == IsometricObjectDeserializer::KeyTypeIsometricObject)
 	{

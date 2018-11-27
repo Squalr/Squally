@@ -6,6 +6,7 @@ using namespace cocos2d;
 class MouseEvents
 {
 public:
+	// Forward declarations
 	struct MouseEventArgs;
 
 	static void TriggerMouseMove(MouseEventArgs args);

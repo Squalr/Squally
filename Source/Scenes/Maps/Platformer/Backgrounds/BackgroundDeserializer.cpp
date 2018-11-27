@@ -2,7 +2,17 @@
 
 const std::string BackgroundDeserializer::KeyBackground = "background";
 
-void BackgroundDeserializer::onDeserializationRequest(LayerDeserializationRequestArgs* args)
+void BackgroundDeserializer::initializeListeners()
+{
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::ObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void BackgroundDeserializer::onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args)
 {
 	std::string name = args->objectGroup->getGroupName();
 	ValueMap properties = args->objectGroup->getProperties();
