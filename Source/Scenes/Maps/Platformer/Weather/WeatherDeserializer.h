@@ -1,17 +1,23 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Maps/ILayerDeserializer.h"
+#include "Engine/Events/DeserializationEvents.h"
+#include "Engine/GlobalNode.h"
 #include "Scenes/Maps/Platformer/Weather/Fireflies.h"
 #include "Scenes/Maps/Platformer/Weather/Rain.h"
 #include "Scenes/Maps/Platformer/Weather/Snow.h"
 
 using namespace cocos2d;
 
-class WeatherDeserializer : public ILayerDeserializer
+class WeatherDeserializer : public GlobalNode
 {
 public:
-	void onDeserializationRequest(LayerDeserializationRequestArgs* args) override;
+	static void registerGlobalNode();
+
+private:
+	void initializeListeners() override;
+	void onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args);
 
 	static const std::string KeyWeather;
+	static WeatherDeserializer* instance;
 };

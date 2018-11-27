@@ -12,6 +12,8 @@ void MouseState::registerGlobalNode()
 	{
 		MouseState::instance = new MouseState();
 
+		instance->autorelease();
+
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->registerGlobalNode(MouseState::instance);
 	}

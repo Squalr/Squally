@@ -1,8 +1,34 @@
 #include "PlatformerObjectDeserializer.h"
 
+PlatformerObjectDeserializer* PlatformerObjectDeserializer::instance = nullptr;
 const std::string PlatformerObjectDeserializer::KeyTypeObject = "object";
 
-void PlatformerObjectDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void PlatformerObjectDeserializer::registerGlobalNode()
+{
+	if (PlatformerObjectDeserializer::instance == nullptr)
+	{
+		PlatformerObjectDeserializer::instance = new PlatformerObjectDeserializer();
+
+		instance->autorelease();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(PlatformerObjectDeserializer::instance);
+	}
+}
+
+void PlatformerObjectDeserializer::initializeListeners()
+{
+	GlobalNode::initializeListeners();
+
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::RequestObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	if (args->typeName == PlatformerObjectDeserializer::KeyTypeObject)
 	{
@@ -10,6 +36,7 @@ void PlatformerObjectDeserializer::onDeserializationRequest(ObjectDeserializatio
 		std::string name = properties.at(SerializableObject::KeyName).asString();
 		SerializableObject* newObject = nullptr;
 
+		// TODO: Move these constants into their classes
 		if (name == "warp-gate")
 		{
 			newObject = WarpGate::create(&properties);
@@ -36,6 +63,6 @@ void PlatformerObjectDeserializer::onDeserializationRequest(ObjectDeserializatio
 			return;
 		}
 
-		args->callback(newObject);
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newObject));
 	}
 }

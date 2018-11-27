@@ -89,6 +89,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Cutscenes/CutsceneClip.cpp
 	Source/Engine/Dialogue/Dialogue.cpp
 	Source/Engine/Dialogue/DialogueTree.cpp
+	Source/Engine/Events/DeserializationEvents.cpp
 	Source/Engine/Events/MouseEvents.cpp
 	Source/Engine/Events/SceneEvents.cpp
 	Source/Engine/Hackables/HackableAttribute.cpp
@@ -98,7 +99,8 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Input/InputManager.cpp
 	Source/Engine/Input/MouseState.cpp
 	Source/Engine/Localization/Localization.cpp
-	Source/Engine/Maps/DefaultLayerDeserializer.cpp
+	Source/Engine/Maps/LayerDeserializer.cpp
+	Source/Engine/Maps/MapLoader.cpp
 	Source/Engine/Maps/ObjectifiedTile.cpp
 	Source/Engine/Maps/SerializableLayer.cpp
 	Source/Engine/Maps/SerializableMap.cpp
@@ -148,6 +150,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/PlatformerEnemy.cpp
 	Source/Entities/Platformer/PlatformerEntity.cpp
 	Source/Entities/Platformer/PlatformerEntityDeserializer.cpp
+	Source/Entities/Platformer/SquallyDeserializer.cpp
 	Source/Entities/Platformer/Enemies/Castle/Agnes.cpp
 	Source/Entities/Platformer/Enemies/Castle/CastleEnemyDeserializer.cpp
 	Source/Entities/Platformer/Enemies/Castle/Executioner.cpp
@@ -840,6 +843,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Cutscenes/CutsceneClip.h
 	Source/Engine/Dialogue/Dialogue.h
 	Source/Engine/Dialogue/DialogueTree.h
+	Source/Engine/Events/DeserializationEvents.h
 	Source/Engine/Events/MouseEvents.h
 	Source/Engine/Events/SceneEvents.h
 	Source/Engine/Hackables/HackableAttribute.h
@@ -849,9 +853,8 @@ list(APPEND GAME_HEADER
 	Source/Engine/Input/InputManager.h
 	Source/Engine/Input/MouseState.h
 	Source/Engine/Localization/Localization.h
-	Source/Engine/Maps/DefaultLayerDeserializer.h
-	Source/Engine/Maps/ILayerDeserializer.h
-	Source/Engine/Maps/IObjectDeserializer.h
+	Source/Engine/Maps/LayerDeserializer.h
+	Source/Engine/Maps/MapLoader.h
 	Source/Engine/Maps/ObjectifiedTile.h
 	Source/Engine/Maps/SerializableLayer.h
 	Source/Engine/Maps/SerializableMap.h
@@ -903,6 +906,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/PlatformerEnemy.h
 	Source/Entities/Platformer/PlatformerEntity.h
 	Source/Entities/Platformer/PlatformerEntityDeserializer.h
+	Source/Entities/Platformer/SquallyDeserializer.h
 	Source/Entities/Platformer/Enemies/Castle/Agnes.h
 	Source/Entities/Platformer/Enemies/Castle/CastleEnemies.h
 	Source/Entities/Platformer/Enemies/Castle/CastleEnemyDeserializer.h

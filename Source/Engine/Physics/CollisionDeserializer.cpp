@@ -1,5 +1,20 @@
 #include "CollisionDeserializer.h"
 
+CollisionDeserializer* CollisionDeserializer::instance = nullptr;
+
+void CollisionDeserializer::registerGlobalNode()
+{
+	if (CollisionDeserializer::instance == nullptr)
+	{
+		CollisionDeserializer::instance = new CollisionDeserializer();
+
+		instance->autorelease();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(CollisionDeserializer::instance);
+	}
+}
+
 CollisionDeserializer::CollisionDeserializer()
 {
 }
@@ -8,7 +23,19 @@ CollisionDeserializer::~CollisionDeserializer()
 {
 }
 
-void CollisionDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void CollisionDeserializer::initializeListeners()
+{
+	GlobalNode::initializeListeners();
+
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::RequestObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void CollisionDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	if (args->typeName == CollisionObject::KeyTypeCollision)
 	{
@@ -54,6 +81,6 @@ void CollisionDeserializer::onDeserializationRequest(ObjectDeserializationReques
 		CollisionObject* collisionObject = new CollisionObject(properties, physicsBody, categoryName, false, false);
 
 		// Fire an event indicating successful deserialization
-		args->callback(collisionObject);
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(collisionObject));
 	}
 }

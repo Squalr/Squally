@@ -19,6 +19,6 @@ protected:
 	virtual void initializePositions();
 	virtual void initializeListeners();
 	virtual void removeAllListeners();
-	void addEventListener(EventListener* listener);
+	virtual void addEventListener(EventListener* listener);
 	void addEventListenerIgnorePause(EventListener* listener);
 };

@@ -1,8 +1,34 @@
 #include "IsometricDecorDeserializer.h"
 
+IsometricDecorDeserializer* IsometricDecorDeserializer::instance = nullptr;
 const std::string IsometricDecorDeserializer::KeyTypeDecor = "iso_decor";
 
-void IsometricDecorDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void IsometricDecorDeserializer::registerGlobalNode()
+{
+	if (IsometricDecorDeserializer::instance == nullptr)
+	{
+		IsometricDecorDeserializer::instance = new IsometricDecorDeserializer();
+
+		instance->autorelease();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(IsometricDecorDeserializer::instance);
+	}
+}
+
+void IsometricDecorDeserializer::initializeListeners()
+{
+	GlobalNode::initializeListeners();
+
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::RequestObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void IsometricDecorDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	if (args->typeName == IsometricDecorDeserializer::KeyTypeDecor)
 	{
@@ -64,6 +90,6 @@ void IsometricDecorDeserializer::onDeserializationRequest(ObjectDeserializationR
 			newObject->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
 		}
 
-		args->callback(newObject);
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newObject));
 	}
 }

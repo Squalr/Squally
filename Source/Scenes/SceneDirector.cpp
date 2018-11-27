@@ -8,6 +8,8 @@ void SceneDirector::registerGlobalNode()
 	{
 		SceneDirector::instance = new SceneDirector();
 
+		instance->autorelease();
+
 		// Register this class globally so that it can always listen for events
 		GlobalDirector::getInstance()->registerGlobalNode(SceneDirector::instance);
 	}

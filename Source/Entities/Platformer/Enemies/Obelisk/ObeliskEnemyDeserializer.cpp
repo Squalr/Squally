@@ -1,5 +1,20 @@
 #include "ObeliskEnemyDeserializer.h"
 
+ObeliskEnemyDeserializer* ObeliskEnemyDeserializer::instance = nullptr;
+
+void ObeliskEnemyDeserializer::registerGlobalNode()
+{
+	if (ObeliskEnemyDeserializer::instance == nullptr)
+	{
+		ObeliskEnemyDeserializer::instance = new ObeliskEnemyDeserializer();
+
+		instance->autorelease();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(ObeliskEnemyDeserializer::instance);
+	}
+}
+
 ObeliskEnemyDeserializer::ObeliskEnemyDeserializer()
 {
 }
@@ -8,7 +23,19 @@ ObeliskEnemyDeserializer::~ObeliskEnemyDeserializer()
 {
 }
 
-void ObeliskEnemyDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void ObeliskEnemyDeserializer::initializeListeners()
+{
+	GlobalNode::initializeListeners();
+
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::RequestObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void ObeliskEnemyDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
 	std::string name = properties.at(SerializableObject::KeyName).asString();
@@ -62,6 +89,6 @@ void ObeliskEnemyDeserializer::onDeserializationRequest(ObjectDeserializationReq
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

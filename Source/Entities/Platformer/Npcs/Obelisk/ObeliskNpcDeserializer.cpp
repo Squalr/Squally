@@ -1,5 +1,20 @@
 #include "ObeliskNpcDeserializer.h"
 
+ObeliskNpcDeserializer* ObeliskNpcDeserializer::instance = nullptr;
+
+void ObeliskNpcDeserializer::registerGlobalNode()
+{
+	if (ObeliskNpcDeserializer::instance == nullptr)
+	{
+		ObeliskNpcDeserializer::instance = new ObeliskNpcDeserializer();
+
+		instance->autorelease();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(ObeliskNpcDeserializer::instance);
+	}
+}
+
 ObeliskNpcDeserializer::ObeliskNpcDeserializer()
 {
 }
@@ -8,7 +23,19 @@ ObeliskNpcDeserializer::~ObeliskNpcDeserializer()
 {
 }
 
-void ObeliskNpcDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void ObeliskNpcDeserializer::initializeListeners()
+{
+	GlobalNode::initializeListeners();
+
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::RequestObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void ObeliskNpcDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
 	std::string name = properties.at(SerializableObject::KeyName).asString();
@@ -62,6 +89,6 @@ void ObeliskNpcDeserializer::onDeserializationRequest(ObjectDeserializationReque
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

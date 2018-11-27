@@ -1,5 +1,20 @@
 #include "RuinsNpcDeserializer.h"
 
+RuinsNpcDeserializer* RuinsNpcDeserializer::instance = nullptr;
+
+void RuinsNpcDeserializer::registerGlobalNode()
+{
+	if (RuinsNpcDeserializer::instance == nullptr)
+	{
+		RuinsNpcDeserializer::instance = new RuinsNpcDeserializer();
+
+		instance->autorelease();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(RuinsNpcDeserializer::instance);
+	}
+}
+
 RuinsNpcDeserializer::RuinsNpcDeserializer()
 {
 }
@@ -8,7 +23,19 @@ RuinsNpcDeserializer::~RuinsNpcDeserializer()
 {
 }
 
-void RuinsNpcDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void RuinsNpcDeserializer::initializeListeners()
+{
+	GlobalNode::initializeListeners();
+
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::RequestObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void RuinsNpcDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
 	std::string name = properties.at(SerializableObject::KeyName).asString();
@@ -62,6 +89,6 @@ void RuinsNpcDeserializer::onDeserializationRequest(ObjectDeserializationRequest
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

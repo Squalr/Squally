@@ -1,5 +1,20 @@
 #include "CavernsEnemyDeserializer.h"
 
+CavernsEnemyDeserializer* CavernsEnemyDeserializer::instance = nullptr;
+
+void CavernsEnemyDeserializer::registerGlobalNode()
+{
+	if (CavernsEnemyDeserializer::instance == nullptr)
+	{
+		CavernsEnemyDeserializer::instance = new CavernsEnemyDeserializer();
+
+		instance->autorelease();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(CavernsEnemyDeserializer::instance);
+	}
+}
+
 CavernsEnemyDeserializer::CavernsEnemyDeserializer()
 {
 }
@@ -8,7 +23,19 @@ CavernsEnemyDeserializer::~CavernsEnemyDeserializer()
 {
 }
 
-void CavernsEnemyDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void CavernsEnemyDeserializer::initializeListeners()
+{
+	GlobalNode::initializeListeners();
+
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::RequestObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void CavernsEnemyDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
 	std::string name = properties.at(SerializableObject::KeyName).asString();
@@ -62,6 +89,6 @@ void CavernsEnemyDeserializer::onDeserializationRequest(ObjectDeserializationReq
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

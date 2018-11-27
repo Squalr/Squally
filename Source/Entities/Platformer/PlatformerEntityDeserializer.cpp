@@ -9,7 +9,3 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer()
 PlatformerEntityDeserializer::~PlatformerEntityDeserializer()
 {
 }
-
-void PlatformerEntityDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
-{
-}

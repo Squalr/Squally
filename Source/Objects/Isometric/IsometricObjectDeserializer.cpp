@@ -1,8 +1,34 @@
 #include "IsometricObjectDeserializer.h"
 
+IsometricObjectDeserializer* IsometricObjectDeserializer::instance = nullptr;
 const std::string IsometricObjectDeserializer::KeyTypeIsometricObject = "iso_object";
 
-void IsometricObjectDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void IsometricObjectDeserializer::registerGlobalNode()
+{
+	if (IsometricObjectDeserializer::instance == nullptr)
+	{
+		IsometricObjectDeserializer::instance = new IsometricObjectDeserializer();
+
+		instance->autorelease();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(IsometricObjectDeserializer::instance);
+	}
+}
+
+void IsometricObjectDeserializer::initializeListeners()
+{
+	GlobalNode::initializeListeners();
+
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::RequestObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	if (args->typeName == IsometricObjectDeserializer::KeyTypeIsometricObject)
 	{
@@ -20,6 +46,6 @@ void IsometricObjectDeserializer::onDeserializationRequest(ObjectDeserialization
 			return;
 		}
 
-		args->callback(newObject);
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newObject));
 	}
 }
