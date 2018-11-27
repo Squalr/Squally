@@ -1,5 +1,20 @@
 #include "ForestEnemyDeserializer.h"
 
+ForestEnemyDeserializer* ForestEnemyDeserializer::instance = nullptr;
+
+void ForestEnemyDeserializer::registerGlobalNode()
+{
+	if (ForestEnemyDeserializer::instance == nullptr)
+	{
+		ForestEnemyDeserializer::instance = new ForestEnemyDeserializer();
+
+		instance->autorelease();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(ForestEnemyDeserializer::instance);
+	}
+}
+
 ForestEnemyDeserializer::ForestEnemyDeserializer()
 {
 }
@@ -8,7 +23,19 @@ ForestEnemyDeserializer::~ForestEnemyDeserializer()
 {
 }
 
-void ForestEnemyDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void ForestEnemyDeserializer::initializeListeners()
+{
+	GlobalNode::initializeListeners();
+
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::RequestObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void ForestEnemyDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
 	std::string name = properties.at(SerializableObject::KeyName).asString();
@@ -62,6 +89,6 @@ void ForestEnemyDeserializer::onDeserializationRequest(ObjectDeserializationRequ
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

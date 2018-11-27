@@ -1,5 +1,20 @@
 #include "JungleNpcDeserializer.h"
 
+JungleNpcDeserializer* JungleNpcDeserializer::instance = nullptr;
+
+void JungleNpcDeserializer::registerGlobalNode()
+{
+	if (JungleNpcDeserializer::instance == nullptr)
+	{
+		JungleNpcDeserializer::instance = new JungleNpcDeserializer();
+
+		instance->autorelease();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(JungleNpcDeserializer::instance);
+	}
+}
+
 JungleNpcDeserializer::JungleNpcDeserializer()
 {
 }
@@ -8,7 +23,19 @@ JungleNpcDeserializer::~JungleNpcDeserializer()
 {
 }
 
-void JungleNpcDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void JungleNpcDeserializer::initializeListeners()
+{
+	GlobalNode::initializeListeners();
+
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::RequestObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void JungleNpcDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
 	std::string name = properties.at(SerializableObject::KeyName).asString();
@@ -58,6 +85,6 @@ void JungleNpcDeserializer::onDeserializationRequest(ObjectDeserializationReques
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

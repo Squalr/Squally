@@ -1,5 +1,20 @@
 #include "CastleEnemyDeserializer.h"
 
+CastleEnemyDeserializer* CastleEnemyDeserializer::instance = nullptr;
+
+void CastleEnemyDeserializer::registerGlobalNode()
+{
+	if (CastleEnemyDeserializer::instance == nullptr)
+	{
+		CastleEnemyDeserializer::instance = new CastleEnemyDeserializer();
+
+		instance->autorelease();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(CastleEnemyDeserializer::instance);
+	}
+}
+
 CastleEnemyDeserializer::CastleEnemyDeserializer()
 {
 }
@@ -8,7 +23,19 @@ CastleEnemyDeserializer::~CastleEnemyDeserializer()
 {
 }
 
-void CastleEnemyDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void CastleEnemyDeserializer::initializeListeners()
+{
+	GlobalNode::initializeListeners();
+
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::RequestObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void CastleEnemyDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	if (args->typeName == PlatformerEntityDeserializer::KeyTypeEntity)
 	{
@@ -72,7 +99,7 @@ void CastleEnemyDeserializer::onDeserializationRequest(ObjectDeserializationRequ
 		if (newEntity != nullptr)
 		{
 			// Fire an event indicating successful deserialization
-			args->callback(newEntity);
+			args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 		}
 	}
 }

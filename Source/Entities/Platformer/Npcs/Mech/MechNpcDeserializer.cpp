@@ -1,5 +1,20 @@
 #include "MechNpcDeserializer.h"
 
+MechNpcDeserializer* MechNpcDeserializer::instance = nullptr;
+
+void MechNpcDeserializer::registerGlobalNode()
+{
+	if (MechNpcDeserializer::instance == nullptr)
+	{
+		MechNpcDeserializer::instance = new MechNpcDeserializer();
+
+		instance->autorelease();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(MechNpcDeserializer::instance);
+	}
+}
+
 MechNpcDeserializer::MechNpcDeserializer()
 {
 }
@@ -8,7 +23,19 @@ MechNpcDeserializer::~MechNpcDeserializer()
 {
 }
 
-void MechNpcDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void MechNpcDeserializer::initializeListeners()
+{
+	GlobalNode::initializeListeners();
+
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::RequestObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void MechNpcDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
 	std::string name = properties.at(SerializableObject::KeyName).asString();
@@ -58,6 +85,6 @@ void MechNpcDeserializer::onDeserializationRequest(ObjectDeserializationRequestA
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

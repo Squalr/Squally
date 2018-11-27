@@ -1,24 +1,23 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/GlobalNode.h"
 #include "Engine/Events/DeserializationEvents.h"
-#include "Entities/Isometric/IsometricEntities.h"
+#include "Entities/Platformer/PlatformerEntityDeserializer.h"
+#include "Entities/Platformer/Squally/Squally.h"
 
 using namespace cocos2d;
 
-class IsometricEntityDeserializer : public GlobalNode
+class SquallyDeserializer : public PlatformerEntityDeserializer
 {
 public:
 	static void registerGlobalNode();
 
 private:
-	IsometricEntityDeserializer();
-	~IsometricEntityDeserializer();
+	SquallyDeserializer();
+	~SquallyDeserializer();
 
 	void initializeListeners() override;
 	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);
 
-	static IsometricEntityDeserializer* instance;
-	static const std::string KeyTypeIsometricEntity;
+	static SquallyDeserializer* instance;
 };

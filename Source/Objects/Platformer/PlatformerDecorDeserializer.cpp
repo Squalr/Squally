@@ -1,8 +1,34 @@
 #include "PlatformerDecorDeserializer.h"
 
+PlatformerDecorDeserializer* PlatformerDecorDeserializer::instance = nullptr;
 const std::string PlatformerDecorDeserializer::KeyTypeDecor = "decor";
 
-void PlatformerDecorDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void PlatformerDecorDeserializer::registerGlobalNode()
+{
+	if (PlatformerDecorDeserializer::instance == nullptr)
+	{
+		PlatformerDecorDeserializer::instance = new PlatformerDecorDeserializer();
+
+		instance->autorelease();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(PlatformerDecorDeserializer::instance);
+	}
+}
+
+void PlatformerDecorDeserializer::initializeListeners()
+{
+	GlobalNode::initializeListeners();
+
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::RequestObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void PlatformerDecorDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	if (args->typeName == PlatformerDecorDeserializer::KeyTypeDecor)
 	{
@@ -108,6 +134,6 @@ void PlatformerDecorDeserializer::onDeserializationRequest(ObjectDeserialization
 			newObject->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
 		}
 
-		args->callback(newObject);
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newObject));
 	}
 }

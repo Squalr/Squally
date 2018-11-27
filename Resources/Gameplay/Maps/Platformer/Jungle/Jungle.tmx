@@ -549,77 +549,77 @@
  <objectgroup name="entities">
   <object id="72" name="squally" type="entity" x="109.85" y="6298.64" width="128" height="128"/>
   <object id="180" name="knight" type="entity" x="342.06" y="758.73" width="200" height="288"/>
-  <object id="222" name="boss_rhinoman" type="entity" x="6169.82" y="6688" width="196" height="196">
+  <object id="222" name="rhinoman" type="entity" x="6169.82" y="6688" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="224" name="goblin_grunt" type="entity" x="1054" y="6704" width="196" height="196">
+  <object id="224" name="barbarian" type="entity" x="1054" y="6704" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="225" name="goblin_swordsman" type="entity" x="1562" y="6696" width="196" height="196">
+  <object id="225" name="goblin_grunt_boar" type="entity" x="1562" y="6696" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="226" name="jungle_dragon" type="entity" x="5154" y="6696" width="196" height="196">
+  <object id="226" name="tiki_golem" type="entity" x="5154" y="6696" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="227" name="goblin_warrior" type="entity" x="2070" y="6696" width="196" height="196">
+  <object id="227" name="goblin_shaman" type="entity" x="2070" y="6696" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="228" name="mantis" type="entity" x="3626" y="6664" width="196" height="196">
+  <object id="228" name="minotaur" type="entity" x="3626" y="6664" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="229" name="minotaur" type="entity" x="3098" y="6696" width="196" height="196">
+  <object id="229" name="gorilla" type="entity" x="3098" y="6696" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="230" name="pig_demon" type="entity" x="4126" y="6672" width="196" height="196">
+  <object id="230" name="reanimated_pig" type="entity" x="4126" y="6672" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="231" name="purple_dinosaur" type="entity" x="4642" y="6672" width="196" height="196">
+  <object id="231" name="skeletal_pirate" type="entity" x="4642" y="6672" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="232" name="tiki_golem" type="entity" x="5662" y="6688" width="196" height="196">
+  <object id="232" name="viking" type="entity" x="5662" y="6688" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>
     <property name="map" value="jungle"/>
    </properties>
   </object>
-  <object id="233" name="tiki_warrior" type="entity" x="2579.7" y="6680" width="196" height="196">
+  <object id="233" name="goblin_warrior_pig" type="entity" x="2579.7" y="6680" width="196" height="196">
    <properties>
     <property name="ally1" value="harpy"/>
     <property name="ally2" value="harpy"/>

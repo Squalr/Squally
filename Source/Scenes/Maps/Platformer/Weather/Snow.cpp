@@ -11,7 +11,7 @@ Snow* Snow::create(ValueMap* properties, std::string name)
 	return instance;
 }
 
-Snow::Snow(ValueMap* properties, std::string name) : SerializableLayer(properties, name, nullptr)
+Snow::Snow(ValueMap* properties, std::string name) : SerializableLayer(properties, name)
 {
 	this->snow = ParticleSystemQuad::create(ParticleResources::Rain);
 	this->snow->setPositionType(ParticleSystem::PositionType::GROUPED);

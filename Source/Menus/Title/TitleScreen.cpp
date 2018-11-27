@@ -146,8 +146,6 @@ void TitleScreen::onEnter()
 	GameUtils::fadeInObject(this->exitButton, delay, duration);
 
 	this->scheduleUpdate();
-
-	GameUtils::fadeInObject(this->storyModeButton, delay, duration, 128);
 }
 
 void TitleScreen::initializePositions()

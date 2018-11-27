@@ -4,18 +4,18 @@
 #include <iostream>
 #include "cocos2d.h"
 
-#include "Engine/Maps/IObjectDeserializer.h"
-#include "Engine/Maps/ILayerDeserializer.h"
+#include "Engine/Events/DeserializationEvents.h"
+#include "Engine/SmartNode.h"
 #include "Engine/Maps/SerializableLayer.h"
 #include "Engine/Maps/SerializableTileLayer.h"
 #include "Resources/MapResources.h"
 
 using namespace cocos2d;
 
-class SerializableMap : public Node
+class SerializableMap : public SmartNode
 {
 public:
-	static SerializableMap* deserialize(std::string mapFileName, std::vector<ILayerDeserializer*>* layerDeserializers, std::vector<IObjectDeserializer*>* objectDeserializers);
+	static SerializableMap* deserialize(std::string mapFileName);
 	bool serialize();
 
 	void appendLayer(SerializableLayer* layer);
@@ -34,25 +34,30 @@ public:
 
 	static const std::string KeyTypeCollision;
 
-protected:
-	SerializableMap(std::string mapFileName, std::vector<SerializableLayer*>* layers, Size unitSize, Size tileSize, int orientation);
+private:
+	enum MapOrientation;
+
+	SerializableMap(std::string mapFileName, std::vector<SerializableLayer*> layers, Size unitSize, Size tileSize, MapOrientation orientation);
 	~SerializableMap();
 
-private:
 	void onEnter() override;
 	void update(float dt) override;
 	void isometricZSort(Node* node);
 	void isometricMapPreparation();
 
-	std::vector<SerializableTileLayer*>* collisionLayers;
-	std::vector<SerializableTileLayer*>* tileLayers;
-	std::vector<SerializableLayer*>* serializableLayers;
+	std::vector<SerializableTileLayer*> collisionLayers;
+	std::vector<SerializableTileLayer*> tileLayers;
+	std::vector<SerializableLayer*> serializableLayers;
 
 	std::string levelMapFileName;
-	int orientation;
+	MapOrientation orientation;
 	Size mapUnitSize;
 	Size mapTileSize;
 
-	static const int PLATFORMER_MAP_TYPE;
-	static const int ISOMETRIC_MAP_TYPE;
+	// Orientation constant defined by the TMX file standard
+	enum MapOrientation
+	{
+		Platformer = 0,
+		Isometric = 2,
+	};
 };

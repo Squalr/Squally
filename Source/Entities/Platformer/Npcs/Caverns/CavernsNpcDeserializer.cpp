@@ -1,5 +1,20 @@
 #include "CavernsNpcDeserializer.h"
 
+CavernsNpcDeserializer* CavernsNpcDeserializer::instance = nullptr;
+
+void CavernsNpcDeserializer::registerGlobalNode()
+{
+	if (CavernsNpcDeserializer::instance == nullptr)
+	{
+		CavernsNpcDeserializer::instance = new CavernsNpcDeserializer();
+
+		instance->autorelease();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(CavernsNpcDeserializer::instance);
+	}
+}
+
 CavernsNpcDeserializer::CavernsNpcDeserializer()
 {
 }
@@ -8,7 +23,19 @@ CavernsNpcDeserializer::~CavernsNpcDeserializer()
 {
 }
 
-void CavernsNpcDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void CavernsNpcDeserializer::initializeListeners()
+{
+	GlobalNode::initializeListeners();
+
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::RequestObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void CavernsNpcDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
 	std::string name = properties.at(SerializableObject::KeyName).asString();
@@ -62,6 +89,6 @@ void CavernsNpcDeserializer::onDeserializationRequest(ObjectDeserializationReque
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		args->callback(newEntity);
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }
