@@ -1,25 +1,15 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/Events/DeserializationEvents.h"
+#include "Engine/GlobalNode.h"
 #include "Engine/Maps/SerializableObject.h"
 #include "Engine/Utils/StrUtils.h"
 
 using namespace cocos2d;
 
-class IObjectDeserializer 
+class IObjectDeserializer : public GlobalNode
 {
 public:
-	struct ObjectDeserializationRequestArgs
-	{
-		std::string typeName;
-		ValueMap properties;
-		std::function<void(SerializableObject*)> callback;
-		bool handled = false;
-
-		ObjectDeserializationRequestArgs(std::string typeName, ValueMap properties, std::function<void(SerializableObject*)> callback) : typeName(typeName), properties(properties), callback(callback)
-		{
-		}
-	};
-
-	virtual void onDeserializationRequest(ObjectDeserializationRequestArgs* args) = 0;
+	virtual void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args) = 0;
 };

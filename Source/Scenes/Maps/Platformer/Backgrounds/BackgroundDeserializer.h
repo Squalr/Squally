@@ -13,7 +13,11 @@ using namespace cocos2d;
 class BackgroundDeserializer : public ILayerDeserializer
 {
 public:
-	void onDeserializationRequest(LayerDeserializationRequestArgs* args) override;
+	static void registerGlobalNode();
+
+private:
+	void initializeListeners() override;
+	void onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args) override;
 
 	static const std::string KeyBackground;
 };

@@ -2,25 +2,22 @@
 
 const std::string SerializableMap::KeyTypeCollision = "collision";
 
-const int SerializableMap::PLATFORMER_MAP_TYPE = 0;
-const int SerializableMap::ISOMETRIC_MAP_TYPE = 2;
-
-SerializableMap::SerializableMap(std::string mapFileName, std::vector<SerializableLayer*>* layers, Size unitSize, Size tileSize, int orientation)
+SerializableMap::SerializableMap(std::string mapFileName, std::vector<SerializableLayer*> layers, Size unitSize, Size tileSize, MapOrientation orientation)
 {
-	this->collisionLayers = new std::vector<SerializableTileLayer*>();
-	this->tileLayers = new std::vector<SerializableTileLayer*>();
+	this->collisionLayers = std::vector<SerializableTileLayer*>();
+	this->tileLayers = std::vector<SerializableTileLayer*>();
 	this->levelMapFileName = mapFileName;
 	this->serializableLayers = layers;
 	this->mapUnitSize = unitSize;
 	this->mapTileSize = tileSize;
 	this->orientation = orientation;
 
-	for (auto it = layers->begin(); it != layers->end(); it++)
+	for (auto it = layers.begin(); it != layers.end(); it++)
 	{
 		this->addChild(*it);
 	}
 
-	if (this->orientation == SerializableMap::ISOMETRIC_MAP_TYPE)
+	if (this->orientation == MapOrientation::Isometric)
 	{
 		this->isometricMapPreparation();
 	}
@@ -28,44 +25,31 @@ SerializableMap::SerializableMap(std::string mapFileName, std::vector<Serializab
 
 SerializableMap::~SerializableMap()
 {
-	delete(this->collisionLayers);
-	delete(this->tileLayers);
-	delete(this->serializableLayers);
 }
 
-SerializableMap* SerializableMap::deserialize(std::string mapFileName, std::vector<ILayerDeserializer*>* layerDeserializers, std::vector<IObjectDeserializer*>* objectDeserializers)
+SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 {
 	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(mapFileName);
 	std::map<int, SerializableLayer*> deserializedLayerMap = std::map<int, SerializableLayer*>();
-	std::vector<SerializableLayer*>* deserializedLayers = new std::vector<SerializableLayer*>();
+	std::vector<SerializableLayer*> deserializedLayers = std::vector<SerializableLayer*>();
 
 	auto onDeserializeCallback = [&](SerializableLayer* layer, int layerIndex) {
 		deserializedLayerMap.emplace(layerIndex, layer);
 	};
 
-	// Deserialize layers
+	// Deserialize all layers
 	for (auto it = mapRaw->getObjectGroups().begin(); it != mapRaw->getObjectGroups().end(); it++)
 	{
 		TMXObjectGroup* objectGroup = *it;
 
-		// Ask all deserializers to try to deserialize object
-		ILayerDeserializer::LayerDeserializationRequestArgs args = ILayerDeserializer::LayerDeserializationRequestArgs(
+		// Fire event requesting the deserialization of this layer
+		DeserializationEvents::TriggerLayerDeserialize(DeserializationEvents::LayerDeserializationRequestArgs(
 			objectGroup,
-			objectDeserializers,
-			ILayerDeserializer::DeserializationMapMeta(
+			DeserializationEvents::DeserializationMapMeta(
 				Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height),
-				mapRaw->getMapOrientation() == SerializableMap::ISOMETRIC_MAP_TYPE),
-			onDeserializeCallback);
-
-		for (auto it = layerDeserializers->begin(); it != layerDeserializers->end(); it++)
-		{
-			(*it)->onDeserializationRequest(&args);
-
-			if (args.handled)
-			{
-				break;
-			}
-		}
+				mapRaw->getMapOrientation() == MapOrientation::Isometric
+			)
+		));
 	}
 
 	std::vector<cocos_experimental::TMXLayer*> tileLayers = std::vector<cocos_experimental::TMXLayer*>();
@@ -90,10 +74,10 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName, std::vect
 	// Convert from map to ordered vector
 	for (auto it = deserializedLayerMap.begin(); it != deserializedLayerMap.end(); it++)
 	{
-		deserializedLayers->push_back(it->second);
+		deserializedLayers.push_back(it->second);
 	}
 
-	SerializableMap* instance = new SerializableMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), mapRaw->getMapOrientation());
+	SerializableMap* instance = new SerializableMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation());
 
 	instance->autorelease();
 
@@ -150,7 +134,7 @@ bool SerializableMap::serialize()
 	mapElement->LinkEndChild(tileSetElement);
 
 	// Serialize all layers
-	for (auto it = this->serializableLayers->begin(); it != this->serializableLayers->end(); it++)
+	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
 	{
 		(*it)->serialize(documentRoot, mapElement, this->getMapUnitSize(), this->getMapTileSize());
 	}
@@ -170,7 +154,7 @@ std::string SerializableMap::getMapFileName()
 
 void SerializableMap::hackerModeEnable()
 {
-	for (auto it = this->serializableLayers->begin(); it != this->serializableLayers->end(); it++)
+	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
 	{
 		if (!(*it)->isHackerModeIgnored())
 		{
@@ -181,7 +165,7 @@ void SerializableMap::hackerModeEnable()
 
 void SerializableMap::hackerModeDisable()
 {
-	for (auto it = this->serializableLayers->begin(); it != this->serializableLayers->end(); it++)
+	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
 	{
 		(*it)->setVisible(true);
 	}
@@ -207,16 +191,16 @@ Size SerializableMap::getMapTileSize()
 
 bool SerializableMap::isIsometric()
 {
-	return this->orientation == ISOMETRIC_MAP_TYPE;
+	return this->orientation == MapOrientation::Isometric;
 }
 bool SerializableMap::isPlatformer()
 {
-	return this->orientation == PLATFORMER_MAP_TYPE;
+	return this->orientation == MapOrientation::Platformer;
 }
 
 void SerializableMap::appendLayer(SerializableLayer* layer)
 {
-	this->serializableLayers->push_back(layer);
+	this->serializableLayers.push_back(layer);
 	this->addChild(layer);
 }
 
@@ -236,7 +220,7 @@ void SerializableMap::update(float dt)
 
 void SerializableMap::setCollisionLayersVisible(bool isVisible)
 {
-	for (auto it = this->collisionLayers->begin(); it != this->collisionLayers->end(); it++)
+	for (auto it = this->collisionLayers.begin(); it != this->collisionLayers.end(); it++)
 	{
 		(*it)->setVisible(isVisible);
 	}
@@ -244,7 +228,7 @@ void SerializableMap::setCollisionLayersVisible(bool isVisible)
 
 void SerializableMap::isometricZSort(Node* node)
 {
-	if (this->orientation != SerializableMap::ISOMETRIC_MAP_TYPE || node == nullptr)
+	if (this->orientation != MapOrientation::Isometric || node == nullptr)
 	{
 		return;
 	}
@@ -273,7 +257,7 @@ void SerializableMap::isometricZSort(Node* node)
 
 void SerializableMap::isometricMapPreparation()
 {
-	if (this->orientation != SerializableMap::ISOMETRIC_MAP_TYPE)
+	if (this->orientation != MapOrientation::Isometric)
 	{
 		return;
 	}
@@ -297,12 +281,12 @@ void SerializableMap::isometricMapPreparation()
 			if (tileLayer->getType() == SerializableMap::KeyTypeCollision)
 			{
 				// Pull out collision layer
-				this->collisionLayers->push_back(tileLayer);
+				this->collisionLayers.push_back(tileLayer);
 			}
 			else
 			{
 				// Pull out standard tile layer
-				this->tileLayers->push_back(tileLayer);
+				this->tileLayers.push_back(tileLayer);
 			}
 		}
 		// Object layers

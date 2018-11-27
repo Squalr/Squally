@@ -8,7 +8,17 @@ SnowEnemyDeserializer::~SnowEnemyDeserializer()
 {
 }
 
-void SnowEnemyDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void SnowEnemyDeserializer::initializeListeners()
+{
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::ObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void SnowEnemyDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
 	std::string name = properties.at(SerializableObject::KeyName).asString();

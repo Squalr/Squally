@@ -11,6 +11,10 @@ using namespace cocos2d;
 class WeatherDeserializer : public ILayerDeserializer
 {
 public:
+	static void registerGlobalNode();
+
+private:
+	void initializeListeners() override;
 	void onDeserializationRequest(LayerDeserializationRequestArgs* args) override;
 
 	static const std::string KeyWeather;

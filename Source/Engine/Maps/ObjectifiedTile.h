@@ -5,6 +5,7 @@
 
 using namespace cocos2d;
 
+// A special class for represeting a tile as an object to allow for dynamic z-sorting in isometric maps
 class ObjectifiedTile : public HackableObject
 {
 public:

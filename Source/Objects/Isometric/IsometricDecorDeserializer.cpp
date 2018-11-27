@@ -2,7 +2,17 @@
 
 const std::string IsometricDecorDeserializer::KeyTypeDecor = "iso_decor";
 
-void IsometricDecorDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void IsometricDecorDeserializer::initializeListeners()
+{
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::ObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void IsometricDecorDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	if (args->typeName == IsometricDecorDeserializer::KeyTypeDecor)
 	{

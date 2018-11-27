@@ -2,7 +2,17 @@
 
 const std::string PlatformerObjectDeserializer::KeyTypeObject = "object";
 
-void PlatformerObjectDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void PlatformerObjectDeserializer::initializeListeners()
+{
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::ObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	if (args->typeName == PlatformerObjectDeserializer::KeyTypeObject)
 	{

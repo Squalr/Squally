@@ -8,7 +8,17 @@ ObeliskNpcDeserializer::~ObeliskNpcDeserializer()
 {
 }
 
-void ObeliskNpcDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void ObeliskNpcDeserializer::initializeListeners()
+{
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::ObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void ObeliskNpcDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
 	std::string name = properties.at(SerializableObject::KeyName).asString();

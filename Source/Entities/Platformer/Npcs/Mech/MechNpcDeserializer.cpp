@@ -8,7 +8,17 @@ MechNpcDeserializer::~MechNpcDeserializer()
 {
 }
 
-void MechNpcDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void MechNpcDeserializer::initializeListeners()
+{
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::ObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void MechNpcDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
 	std::string name = properties.at(SerializableObject::KeyName).asString();

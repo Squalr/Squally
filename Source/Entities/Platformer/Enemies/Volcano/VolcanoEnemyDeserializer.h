@@ -10,8 +10,14 @@ using namespace cocos2d;
 class VolcanoEnemyDeserializer : public PlatformerEntityDeserializer
 {
 public:
+	static void registerGlobalNode();
+
+private:
 	VolcanoEnemyDeserializer();
 	~VolcanoEnemyDeserializer();
 
-	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
+	void initializeListeners() override;
+	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args) override;
+
+	static VolcanoEnemyDeserializer* instance;
 };

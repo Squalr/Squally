@@ -8,7 +8,17 @@ CastleNpcDeserializer::~CastleNpcDeserializer()
 {
 }
 
-void CastleNpcDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void CastleNpcDeserializer::initializeListeners()
+{
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::ObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void CastleNpcDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
 	std::string name = properties.at(SerializableObject::KeyName).asString();

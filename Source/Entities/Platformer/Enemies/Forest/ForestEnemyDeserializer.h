@@ -10,8 +10,14 @@ using namespace cocos2d;
 class ForestEnemyDeserializer : public PlatformerEntityDeserializer
 {
 public:
+	static void registerGlobalNode();
+
+private:
 	ForestEnemyDeserializer();
 	~ForestEnemyDeserializer();
 
-	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
+	void initializeListeners() override;
+	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args) override;
+
+	static ForestEnemyDeserializer* instance;
 };

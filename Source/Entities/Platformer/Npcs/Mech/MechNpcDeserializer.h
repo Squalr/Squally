@@ -10,8 +10,14 @@ using namespace cocos2d;
 class MechNpcDeserializer : public PlatformerEntityDeserializer
 {
 public:
+	static void registerGlobalNode();
+
+private:
 	MechNpcDeserializer();
 	~MechNpcDeserializer();
 
-	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
+	void initializeListeners() override;
+	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args) override;
+
+	static MechNpcDeserializer* instance;
 };

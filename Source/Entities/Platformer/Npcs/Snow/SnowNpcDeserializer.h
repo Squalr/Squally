@@ -10,8 +10,14 @@ using namespace cocos2d;
 class SnowNpcDeserializer : public PlatformerEntityDeserializer
 {
 public:
+	static void registerGlobalNode();
+
+private:
 	SnowNpcDeserializer();
 	~SnowNpcDeserializer();
 
-	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
+	void initializeListeners() override;
+	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args) override;
+
+	static SnowNpcDeserializer* instance;
 };

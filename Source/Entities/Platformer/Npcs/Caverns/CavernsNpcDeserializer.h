@@ -10,8 +10,14 @@ using namespace cocos2d;
 class CavernsNpcDeserializer : public PlatformerEntityDeserializer
 {
 public:
+	static void registerGlobalNode();
+
+private:
 	CavernsNpcDeserializer();
 	~CavernsNpcDeserializer();
 
-	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
+	void initializeListeners() override;
+	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args) override;
+
+	static CavernsNpcDeserializer* instance;
 };

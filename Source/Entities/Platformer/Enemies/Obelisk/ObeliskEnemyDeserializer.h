@@ -10,8 +10,14 @@ using namespace cocos2d;
 class ObeliskEnemyDeserializer : public PlatformerEntityDeserializer
 {
 public:
+	static void registerGlobalNode();
+
+private:
 	ObeliskEnemyDeserializer();
 	~ObeliskEnemyDeserializer();
 
-	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
+	void initializeListeners() override;
+	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args) override;
+
+	static ObeliskEnemyDeserializer* instance;
 };

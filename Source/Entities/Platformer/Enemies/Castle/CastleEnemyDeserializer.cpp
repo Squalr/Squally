@@ -8,7 +8,17 @@ CastleEnemyDeserializer::~CastleEnemyDeserializer()
 {
 }
 
-void CastleEnemyDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void CastleEnemyDeserializer::initializeListeners()
+{
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::ObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void CastleEnemyDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	if (args->typeName == PlatformerEntityDeserializer::KeyTypeEntity)
 	{

@@ -1,6 +1,32 @@
-#include "DefaultLayerDeserializer.h"
+#include "LayerDeserializer.h"
 
-void DefaultLayerDeserializer::onDeserializationRequest(LayerDeserializationRequestArgs* args)
+LayerDeserializer* LayerDeserializer::instance = nullptr;
+
+void LayerDeserializer::registerGlobalNode()
+{
+	if (LayerDeserializer::instance == nullptr)
+	{
+		LayerDeserializer::instance = new LayerDeserializer();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(LayerDeserializer::instance);
+	}
+}
+
+LayerDeserializer::LayerDeserializer()
+{
+}
+
+LayerDeserializer::~LayerDeserializer()
+{
+}
+
+void LayerDeserializer::initializeListeners()
+{
+	GlobalNode::initializeListeners();
+}
+
+void LayerDeserializer::onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args)
 {
 	std::string name = args->objectGroup->getGroupName();
 	ValueVector objects = args->objectGroup->getObjects();
@@ -62,22 +88,13 @@ void DefaultLayerDeserializer::onDeserializationRequest(LayerDeserializationRequ
 
 			typeName = object.at(SerializableObject::KeyType).asString();
 
-			// Ask all deserializers to try to deserialize object
-			IObjectDeserializer::ObjectDeserializationRequestArgs objectDeserializeArgs = IObjectDeserializer::ObjectDeserializationRequestArgs(typeName, object, onDeserializeCallback);
-
-			for (auto it = args->objectDeserializers->begin(); it != args->objectDeserializers->end(); it++)
-			{
-				(*it)->onDeserializationRequest(&objectDeserializeArgs);
-
-				if (objectDeserializeArgs.handled)
-				{
-					break;
-				}
-			}
+			// Fire event requesting the deserialization of this object
+			DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationRequestArgs(
+				typeName,
+				object
+			));
 		}
 	}
 
 	SerializableLayer* instance = SerializableLayer::create(&properties, name, deserializedObjects);
-
-	args->callback(instance, args->objectGroup->layerIndex);
 }

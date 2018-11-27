@@ -1,40 +1,6 @@
 #include "LoadingScreen.h"
 
-std::vector<ILayerDeserializer*> LoadingScreen::layerDeserializers = {
-	new BackgroundDeserializer(),
-	new MusicDeserializer(),
-	new WeatherDeserializer(),
-	new DefaultLayerDeserializer(),
-};
-
-std::vector<IObjectDeserializer*> LoadingScreen::objectDeserializers = {
-	new IsometricEntityDeserializer(),
-	new CastleEnemyDeserializer(),
-	new CavernsEnemyDeserializer(),
-	new ForestEnemyDeserializer(),
-	new JungleEnemyDeserializer(),
-	new MechEnemyDeserializer(),
-	new ObeliskEnemyDeserializer(),
-	new RuinsEnemyDeserializer(),
-	new SnowEnemyDeserializer(),
-	new VolcanoEnemyDeserializer(),
-	new CastleNpcDeserializer(),
-	new CavernsNpcDeserializer(),
-	new ForestNpcDeserializer(),
-	new JungleNpcDeserializer(),
-	new MechNpcDeserializer(),
-	new ObeliskNpcDeserializer(),
-	new RuinsNpcDeserializer(),
-	new SnowNpcDeserializer(),
-	new VolcanoNpcDeserializer(),
-	new CollisionDeserializer(),
-	new PlatformerDecorDeserializer(),
-	new PlatformerObjectDeserializer(),
-	new IsometricDecorDeserializer(),
-	new IsometricObjectDeserializer(),
-};
-
-LoadingScreen * LoadingScreen::create()
+LoadingScreen* LoadingScreen::create()
 {
 	LoadingScreen* instance = new LoadingScreen();
 
@@ -78,13 +44,7 @@ void LoadingScreen::loadLevel(std::string levelFile, const std::function<void(Se
 	this->currentLevelFile = levelFile;
 	this->onLoadCallback = newOnLoadCallback;
 
-	/*
-	std::future<SerializableMap *> fut = std::async([levelFile]() {
-		return SerializableMap::deserialize(levelFile, &LoadingScreen::layerDeserializers, &LoadingScreen::objectDeserializers);
-	});
-	*/
-
-	this->map = SerializableMap::deserialize(levelFile, &LoadingScreen::layerDeserializers, &LoadingScreen::objectDeserializers);
+	this->map = SerializableMap::deserialize(levelFile);
 	this->map->retain();
 
 	// Asyncronously get all files under the game, and load them

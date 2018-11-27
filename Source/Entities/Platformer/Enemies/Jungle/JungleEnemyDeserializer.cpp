@@ -8,7 +8,17 @@ JungleEnemyDeserializer::~JungleEnemyDeserializer()
 {
 }
 
-void JungleEnemyDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void JungleEnemyDeserializer::initializeListeners()
+{
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::ObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void JungleEnemyDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
 	std::string name = properties.at(SerializableObject::KeyName).asString();

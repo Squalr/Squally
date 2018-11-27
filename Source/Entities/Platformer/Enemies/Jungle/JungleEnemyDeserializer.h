@@ -10,8 +10,14 @@ using namespace cocos2d;
 class JungleEnemyDeserializer : public PlatformerEntityDeserializer
 {
 public:
+	static void registerGlobalNode();
+
+private:
 	JungleEnemyDeserializer();
 	~JungleEnemyDeserializer();
 
-	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
+	void initializeListeners() override;
+	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args) override;
+
+	static JungleEnemyDeserializer* instance;
 };

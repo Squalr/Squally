@@ -10,8 +10,14 @@ using namespace cocos2d;
 class RuinsNpcDeserializer : public PlatformerEntityDeserializer
 {
 public:
+	static void registerGlobalNode();
+
+private:
 	RuinsNpcDeserializer();
 	~RuinsNpcDeserializer();
 
-	void onDeserializationRequest(ObjectDeserializationRequestArgs* args) override;
+	void initializeListeners() override;
+	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args) override;
+
+	static RuinsNpcDeserializer* instance;
 };

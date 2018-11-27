@@ -8,7 +8,17 @@ RuinsEnemyDeserializer::~RuinsEnemyDeserializer()
 {
 }
 
-void RuinsEnemyDeserializer::onDeserializationRequest(ObjectDeserializationRequestArgs* args)
+void RuinsEnemyDeserializer::initializeListeners()
+{
+	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
+		DeserializationEvents::ObjectDeserializeEvent,
+		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+	);
+
+	this->addEventListener(deserializationRequestListener);
+}
+
+void RuinsEnemyDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
 	std::string name = properties.at(SerializableObject::KeyName).asString();
