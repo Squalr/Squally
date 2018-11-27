@@ -57,23 +57,23 @@ void BackgroundDeserializer::onDeserializationRequest(DeserializationEvents::Lay
 
 	if (background == JungleBackground::KeyBackgroundJungle)
 	{
-		DeserializationEvents::TriggerLayerDeserialize(DeserializationEvents::LayerDeserializationArgs(JungleBackground::create(&properties, name), args->objectGroup->layerIndex));
+		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(JungleBackground::create(&properties, name), args->objectGroup->layerIndex));
 	}
 	else if (background == MountainBackground::KeyBackgroundMountains)
 	{
-		DeserializationEvents::TriggerLayerDeserialize(DeserializationEvents::LayerDeserializationArgs(MountainBackground::create(&properties, name), args->objectGroup->layerIndex));
+		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(MountainBackground::create(&properties, name), args->objectGroup->layerIndex));
 	}
 	else if (background == ObeliskBackground::KeyBackgroundObelisk)
 	{
-		DeserializationEvents::TriggerLayerDeserialize(DeserializationEvents::LayerDeserializationArgs(ObeliskBackground::create(&properties, name), args->objectGroup->layerIndex));
+		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(ObeliskBackground::create(&properties, name), args->objectGroup->layerIndex));
 	}
 	else if (background == OceanBackground::KeyBackgroundOcean)
 	{
-		DeserializationEvents::TriggerLayerDeserialize(DeserializationEvents::LayerDeserializationArgs(OceanBackground::create(&properties, name), args->objectGroup->layerIndex));
+		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(OceanBackground::create(&properties, name), args->objectGroup->layerIndex));
 	}
 	else if (background == SnowBackground::KeyBackgroundSnow)
 	{
-		DeserializationEvents::TriggerLayerDeserialize(DeserializationEvents::LayerDeserializationArgs(SnowBackground::create(&properties, name), args->objectGroup->layerIndex));
+		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(SnowBackground::create(&properties, name), args->objectGroup->layerIndex));
 	}
 	else
 	{

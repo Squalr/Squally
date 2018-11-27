@@ -134,6 +134,6 @@ void PlatformerDecorDeserializer::onDeserializationRequest(DeserializationEvents
 			newObject->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
 		}
 
-		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newObject));
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newObject));
 	}
 }

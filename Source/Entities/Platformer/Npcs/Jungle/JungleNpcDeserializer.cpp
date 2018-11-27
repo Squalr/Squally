@@ -85,6 +85,6 @@ void JungleNpcDeserializer::onDeserializationRequest(DeserializationEvents::Obje
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newEntity));
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

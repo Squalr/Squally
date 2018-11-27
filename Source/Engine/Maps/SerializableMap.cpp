@@ -36,14 +36,11 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 
 	deserializedLayerMap.clear();
 
-	// Add an event listener to the scene to receive deserialized layers as they are parsed by their deserializers
-	Director::getInstance()->getRunningScene()->getEventDispatcher()->addCustomEventListener(
-		DeserializationEvents::LayerDeserializeEvent,
-		[=](EventCustom* event)
-		{
-			DeserializationEvents::LayerDeserializationArgs* args = (DeserializationEvents::LayerDeserializationArgs*)event->getUserData();
-			deserializedLayerMap.emplace(args->layerIndex, args->serializableLayer);
-		});
+	// Callback to receive deserialized layers as they are parsed by their deserializers
+	auto onDeserializeCallback = [=](DeserializationEvents::LayerDeserializationArgs args)
+	{
+		deserializedLayerMap.emplace(args.layerIndex, args.serializableLayer);
+	};
 
 	// Fire event requesting the deserialization of this layer -- the appropriate deserializer class should handle it
 	for (auto it = mapRaw->getObjectGroups().begin(); it != mapRaw->getObjectGroups().end(); it++)
@@ -53,12 +50,10 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 			DeserializationEvents::DeserializationMapMeta(
 				Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height),
 				mapRaw->getMapOrientation() == MapOrientation::Isometric
-			)
+			),
+			onDeserializeCallback
 		));
 	}
-
-	// Stop listening for layer deserialization events
-	Director::getInstance()->getRunningScene()->getEventDispatcher()->removeCustomEventListeners(DeserializationEvents::LayerDeserializeEvent);
 
 	// Pull out tile layers
 	for (auto it = mapRaw->getChildren().begin(); it != mapRaw->getChildren().end(); it++)

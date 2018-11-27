@@ -8,6 +8,7 @@ void Bootstrapper::initialize()
 	PlatformerCollisionMapping::registerGlobalNode();
 
 	// Entity deserializers
+	SquallyDeserializer::registerGlobalNode();
 	IsometricEntityDeserializer::registerGlobalNode();
 	CastleEnemyDeserializer::registerGlobalNode();
 	CavernsEnemyDeserializer::registerGlobalNode();

@@ -4,7 +4,7 @@ Squally* Squally::squallyInstance = nullptr;
 int Squally::health;
 const float Squally::squallyScale = 0.13f;
 
-const std::string Squally::KeySquallyProperty = "squally";
+const std::string Squally::MapKeySqually = "squally";
 
 Squally* Squally::deserialize(ValueMap* initProperties)
 {

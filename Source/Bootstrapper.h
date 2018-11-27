@@ -23,6 +23,7 @@
 #include "Entities/Platformer/Npcs/Snow/SnowNpcDeserializer.h"
 #include "Entities/Platformer/Npcs/Volcano/VolcanoNpcDeserializer.h"
 #include "Entities/Platformer/PlatformerCollisionMapping.h"
+#include "Entities/Platformer/SquallyDeserializer.h"
 #include "Objects/Isometric/IsometricDecorDeserializer.h"
 #include "Objects/Isometric/IsometricObjectDeserializer.h"
 #include "Objects/Platformer/PlatformerDecorDeserializer.h"

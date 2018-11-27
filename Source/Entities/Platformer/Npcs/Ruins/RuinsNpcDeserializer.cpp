@@ -89,6 +89,6 @@ void RuinsNpcDeserializer::onDeserializationRequest(DeserializationEvents::Objec
 	if (newEntity != nullptr)
 	{
 		// Fire an event indicating successful deserialization
-		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newEntity));
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 	}
 }

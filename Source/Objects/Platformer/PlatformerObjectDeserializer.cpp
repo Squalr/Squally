@@ -63,6 +63,6 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 			return;
 		}
 
-		DeserializationEvents::TriggerObjectDeserialize(DeserializationEvents::ObjectDeserializationArgs(newObject));
+		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newObject));
 	}
 }
