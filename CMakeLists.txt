@@ -426,7 +426,6 @@ list(APPEND GAME_SOURCE
 	Source/Objects/Isometric/IsometricObjectDeserializer.cpp
 	Source/Objects/Platformer/Chest.cpp
 	Source/Objects/Platformer/Monitor.cpp
-	Source/Objects/Platformer/ParallaxObject.cpp
 	Source/Objects/Platformer/PlatformerDecorDeserializer.cpp
 	Source/Objects/Platformer/PlatformerDecorObject.cpp
 	Source/Objects/Platformer/PlatformerObjectDeserializer.cpp
@@ -1201,7 +1200,6 @@ list(APPEND GAME_HEADER
 	Source/Objects/Isometric/IsometricObjects.h
 	Source/Objects/Platformer/Chest.h
 	Source/Objects/Platformer/Monitor.h
-	Source/Objects/Platformer/ParallaxObject.h
 	Source/Objects/Platformer/PlatformerDecorDeserializer.h
 	Source/Objects/Platformer/PlatformerDecorObject.h
 	Source/Objects/Platformer/PlatformerObjectDeserializer.h

@@ -14,7 +14,9 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NavigationEvents.h"
+#include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Dialog/DialogMenu.h"
+#include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Resources/BackgroundResources.h"
 #include "Resources/ShaderResources.h"
@@ -48,6 +50,11 @@ private:
 	virtual void resume(void) override;
 	void update(float) override;
 	void onEnter() override;
+	void onOptionsExit();
+	void openPauseMenu();
+	void onResumeClick();
+	void onOptionsClick();
+	void onExitClick();
 
 	Node* mapNode;
 	SerializableMap* map;
@@ -61,6 +68,11 @@ private:
 	Hud* hud;
 	DeveloperHud* developerHud;
 	HackerModeHud* hackerModeHud;
+
+	LayerColor* menuBackDrop;
+	PauseMenu* pauseMenu;
+	OptionsMenu* optionsMenu;
+	ConfirmationMenu* confirmationMenu;
 
 	GameCamera* camera;
 

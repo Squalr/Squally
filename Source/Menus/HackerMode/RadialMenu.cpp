@@ -128,7 +128,7 @@ void RadialMenu::initializeListeners()
 
 void RadialMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!this->isVisible())
+	if (!GameUtils::isFocused(this))
 	{
 		return;
 	}

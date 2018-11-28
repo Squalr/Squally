@@ -56,12 +56,16 @@ void HackerModeHud::initializeListeners()
 
 void HackerModeHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (GameUtils::isFocused(this))
+	if (!GameUtils::isFocused(this))
 	{
-		switch (keyCode)
-		{
+		return;
+	}
+
+	switch (keyCode)
+	{
 		case EventKeyboard::KeyCode::KEY_TAB:
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
+		{
 			if (this->callback != nullptr)
 			{
 				this->callback();
@@ -70,7 +74,9 @@ void HackerModeHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 			event->stopPropagation();
 
 			break;
+		}
 		default:
+		{
 			break;
 		}
 	}

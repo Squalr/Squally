@@ -15,12 +15,12 @@ public:
 	void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, Size mapUnitSize, Size mapTileSize) override;
 	std::string getType();
 
-	static const std::string KeyPropertyWidth;
-	static const std::string KeyPropertyHeight;
-	static const std::string KeyPropertyType;
-	static const std::string KeyPropertyObjectify;
-	static const std::string KeyPropertyEncoding;
-	static const std::string KeyPropertyEncodingValue;
+	static const std::string MapKeyPropertyWidth;
+	static const std::string MapKeyPropertyHeight;
+	static const std::string MapKeyPropertyType;
+	static const std::string MapKeyPropertyObjectify;
+	static const std::string MapKeyPropertyEncoding;
+	static const std::string MapKeyPropertyEncodingValue;
 
 protected:
 	SerializableTileLayer(cocos_experimental::TMXLayer* initTileLayer);

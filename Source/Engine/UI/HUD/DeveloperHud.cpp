@@ -58,18 +58,20 @@ void DeveloperHud::initializeListeners()
 
 void DeveloperHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (GameUtils::isFocused(this))
+	if (!GameUtils::isFocused(this))
 	{
-		switch (keyCode)
-		{
-			case EventKeyboard::KeyCode::KEY_TAB:
-			case EventKeyboard::KeyCode::KEY_ESCAPE:
-			{
-				GameUtils::focus(this->getParent());
-				event->stopPropagation();
+		return;
+	}
 
-				break;
-			}
+	switch (keyCode)
+	{
+		case EventKeyboard::KeyCode::KEY_TAB:
+		case EventKeyboard::KeyCode::KEY_ESCAPE:
+		{
+			GameUtils::focus(this->getParent());
+			event->stopPropagation();
+
+			break;
 		}
 	}
 }

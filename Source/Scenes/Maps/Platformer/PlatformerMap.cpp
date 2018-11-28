@@ -14,6 +14,8 @@ PlatformerMap* PlatformerMap::create()
 
 PlatformerMap::PlatformerMap()
 {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
 	if (!IMap::initWithPhysics())
 	{
 		throw std::uncaught_exception();
@@ -32,6 +34,10 @@ PlatformerMap::PlatformerMap()
 	this->camera = GameCamera::create();
 	this->mapNode = Node::create();
 	this->mouseLayer = Node::create();
+	this->pauseMenu = PauseMenu::create();
+	this->optionsMenu = OptionsMenu::create();
+	this->confirmationMenu = ConfirmationMenu::create();
+	this->menuBackDrop = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
 
 	this->camera->setScrollOffset(Vec2(64.0f, 32.0f));
 	this->camera->setFollowSpeed(Vec2(0.075f, 0.075f));
@@ -56,6 +62,10 @@ PlatformerMap::PlatformerMap()
 	this->addChild(this->hud);
 	this->addChild(this->developerHud);
 	this->addChild(this->hackerModeHud);
+	this->addChild(this->menuBackDrop);
+	this->addChild(this->pauseMenu);
+	this->addChild(this->optionsMenu);
+	this->addChild(this->confirmationMenu);
 	this->mouseLayer->addChild(Mouse::create());
 	this->addChild(this->mouseLayer);
 	this->addChild(this->camera);
@@ -68,6 +78,11 @@ PlatformerMap::~PlatformerMap()
 void PlatformerMap::onEnter()
 {
 	IMap::onEnter();
+
+	this->menuBackDrop->setOpacity(0);
+	this->pauseMenu->setVisible(false);
+	this->optionsMenu->setVisible(false);
+	this->confirmationMenu->setVisible(false);
 
 	this->scheduleUpdate();
 }
@@ -86,6 +101,11 @@ void PlatformerMap::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(PlatformerMap::onKeyPressed, this);
 	mouseListener->onMouseScroll = CC_CALLBACK_1(PlatformerMap::onMouseWheelScroll, this);
+
+	this->optionsMenu->setBackClickCallback(CC_CALLBACK_0(PlatformerMap::onOptionsExit, this));
+	this->pauseMenu->setResumeCallback(CC_CALLBACK_0(PlatformerMap::onResumeClick, this));
+	this->pauseMenu->setOptionsCallback(CC_CALLBACK_0(PlatformerMap::onOptionsClick, this));
+	this->pauseMenu->setExitCallback(CC_CALLBACK_0(PlatformerMap::onExitClick, this));
 
 	this->addEventListener(mouseListener);
 	this->addEventListener(keyboardListener);
@@ -130,7 +150,7 @@ void PlatformerMap::onMouseWheelScroll(EventMouse* event)
 
 void PlatformerMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!this->isRunning() || !this->isVisible())
+	if (!GameUtils::isFocused(this))
 	{
 		return;
 	}
@@ -139,7 +159,7 @@ void PlatformerMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
 		{
-			NavigationEvents::navigate(NavigationEvents::GameScreen::Pause);
+			this->openPauseMenu();
 			event->stopPropagation();
 			break;
 		}
@@ -234,4 +254,38 @@ void PlatformerMap::draw(Renderer *renderer, const Mat4 &transform, uint32_t fla
 		// Prevent double render
 		this->mapNode->setVisible(false);*/
 	}
+}
+
+void PlatformerMap::onOptionsExit()
+{
+	this->optionsMenu->setVisible(false);
+	this->openPauseMenu();
+}
+
+void PlatformerMap::openPauseMenu()
+{
+	this->menuBackDrop->setOpacity(196);
+	this->pauseMenu->setVisible(true);
+	GameUtils::focus(this->pauseMenu);
+}
+
+void PlatformerMap::onResumeClick()
+{
+	this->menuBackDrop->setOpacity(0);
+	this->pauseMenu->setVisible(false);
+	GameUtils::focus(this);
+}
+
+void PlatformerMap::onOptionsClick()
+{
+	this->pauseMenu->setVisible(false);
+	this->optionsMenu->setVisible(true);
+	GameUtils::focus(this->optionsMenu);
+}
+
+void PlatformerMap::onExitClick()
+{
+	this->menuBackDrop->setOpacity(0);
+	this->pauseMenu->setVisible(false);
+	NavigationEvents::navigate(NavigationEvents::GameScreen::Title);
 }

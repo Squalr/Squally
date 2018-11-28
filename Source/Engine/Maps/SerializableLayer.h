@@ -15,9 +15,10 @@ public:
 	bool isHackerModeIgnored();
 
 	static const std::string KeyType;
-	static const std::string KeyPropertyName;
-	static const std::string KeyPropertyValue;
-	static const std::string KeyPropertyIgnoreHackermode;
+	static const std::string MapKeyPropertyName;
+	static const std::string MapKeyPropertyValue;
+	static const std::string MapKeyPropertyIgnoreHackermode;
+	static const std::string MapKeyPropertyDepth;
 
 protected:
 	SerializableLayer(ValueMap* initProperties, std::string name);

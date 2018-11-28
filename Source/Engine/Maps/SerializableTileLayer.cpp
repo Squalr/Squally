@@ -1,11 +1,11 @@
 #include "SerializableTileLayer.h"
 
-const std::string SerializableTileLayer::KeyPropertyWidth = "width";
-const std::string SerializableTileLayer::KeyPropertyHeight = "height";
-const std::string SerializableTileLayer::KeyPropertyType = "type";
-const std::string SerializableTileLayer::KeyPropertyObjectify = "objectify";
-const std::string SerializableTileLayer::KeyPropertyEncoding = "encoding";
-const std::string SerializableTileLayer::KeyPropertyEncodingValue = "csv";
+const std::string SerializableTileLayer::MapKeyPropertyWidth = "width";
+const std::string SerializableTileLayer::MapKeyPropertyHeight = "height";
+const std::string SerializableTileLayer::MapKeyPropertyType = "type";
+const std::string SerializableTileLayer::MapKeyPropertyObjectify = "objectify";
+const std::string SerializableTileLayer::MapKeyPropertyEncoding = "encoding";
+const std::string SerializableTileLayer::MapKeyPropertyEncodingValue = "csv";
 
 SerializableTileLayer* SerializableTileLayer::deserialize(cocos_experimental::TMXLayer* initTileLayer)
 {
@@ -24,12 +24,12 @@ SerializableTileLayer::SerializableTileLayer(cocos_experimental::TMXLayer* initT
 	if (this->tileLayer != nullptr)
 	{
 		// Layer name is not intrinsically in properties -- manually add it
-		(*this->properties)[SerializableTileLayer::KeyPropertyName] = Value(this->tileLayer->getLayerName());
+		(*this->properties)[SerializableTileLayer::MapKeyPropertyName] = Value(this->tileLayer->getLayerName());
 
 		// Check for the objectify flag. This basically converts all tiles in the layer into individual sprites. Cocos2d-x is garbage and does not allow
 		// for dynamic Z sorting on a tile layer, because the tiles are sprite batch rendered instead of as individual sprites.
 		// Objectifying comes at a severe performance penalty, so we have to be very careful which layers this gets done on -- ideally only for things like walls and small mountains and things
-		if (GameUtils::keyExists(this->properties, SerializableTileLayer::KeyPropertyObjectify) && this->properties->at(SerializableTileLayer::KeyPropertyObjectify).asBool())
+		if (GameUtils::keyExists(this->properties, SerializableTileLayer::MapKeyPropertyObjectify) && this->properties->at(SerializableTileLayer::MapKeyPropertyObjectify).asBool())
 		{
 			for (int x = 0; x < this->tileLayer->getLayerSize().width; x++)
 			{
@@ -63,12 +63,12 @@ SerializableTileLayer::~SerializableTileLayer()
 void SerializableTileLayer::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, Size mapUnitSize, Size mapTileSize)
 {
 	tinyxml2::XMLElement* layerElement = documentRoot->NewElement("layer");
-	layerElement->SetAttribute(SerializableTileLayer::KeyPropertyName.c_str(), this->properties->at(SerializableTileLayer::KeyPropertyName).asString().c_str());
-	layerElement->SetAttribute(SerializableTileLayer::KeyPropertyWidth.c_str(), Value(mapUnitSize.width).asString().c_str());
-	layerElement->SetAttribute(SerializableTileLayer::KeyPropertyHeight.c_str(), Value(mapUnitSize.height).asString().c_str());
+	layerElement->SetAttribute(SerializableTileLayer::MapKeyPropertyName.c_str(), this->properties->at(SerializableTileLayer::MapKeyPropertyName).asString().c_str());
+	layerElement->SetAttribute(SerializableTileLayer::MapKeyPropertyWidth.c_str(), Value(mapUnitSize.width).asString().c_str());
+	layerElement->SetAttribute(SerializableTileLayer::MapKeyPropertyHeight.c_str(), Value(mapUnitSize.height).asString().c_str());
 
 	tinyxml2::XMLElement* dataElement = documentRoot->NewElement("data");
-	dataElement->SetAttribute(SerializableTileLayer::KeyPropertyEncoding.c_str(), SerializableTileLayer::KeyPropertyEncodingValue.c_str());
+	dataElement->SetAttribute(SerializableTileLayer::MapKeyPropertyEncoding.c_str(), SerializableTileLayer::MapKeyPropertyEncodingValue.c_str());
 
 	if (this->tileLayer != nullptr)
 	{
@@ -80,6 +80,7 @@ void SerializableTileLayer::serialize(tinyxml2::XMLDocument* documentRoot, tinyx
 			{
 				csvContent += std::to_string(this->tileLayer->getTileGIDAt(Vec2(x, y))) + ",";
 			}
+
 			csvContent += "\n";
 		}
 
@@ -95,9 +96,9 @@ void SerializableTileLayer::serialize(tinyxml2::XMLDocument* documentRoot, tinyx
 
 std::string SerializableTileLayer::getType()
 {
-	if (GameUtils::keyExists(this->properties, SerializableTileLayer::KeyPropertyType))
+	if (GameUtils::keyExists(this->properties, SerializableTileLayer::MapKeyPropertyType))
 	{
-		return this->properties->at(SerializableTileLayer::KeyPropertyType).asString();
+		return this->properties->at(SerializableTileLayer::MapKeyPropertyType).asString();
 	}
 
 	return "";

@@ -79,7 +79,7 @@ void ConfirmationMenu::initializeListeners()
 
 void ConfirmationMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!this->isVisible())
+	if (!GameUtils::isFocused(this))
 	{
 		return;
 	}

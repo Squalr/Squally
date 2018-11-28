@@ -406,7 +406,7 @@ void OptionsMenu::onMusicVolumeUpdate(float musicVolume)
 
 void OptionsMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!this->isVisible())
+	if (!GameUtils::isFocused(this))
 	{
 		return;
 	}
