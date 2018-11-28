@@ -13,14 +13,14 @@ MatrixRain* MatrixRain::create()
 
 MatrixRain::MatrixRain()
 {
-	this->strands = new std::vector<MatrixStrand*>();
+	this->strands = std::vector<MatrixStrand*>();
 
 	// Initialize strands
 	for (int index = 0; index < MatrixRain::strandCount; index++)
 	{
 		MatrixStrand* strand = MatrixStrand::create(index);
 
-		this->strands->push_back(strand);
+		this->strands.push_back(strand);
 		this->addChild(strand);
 	}
 
@@ -29,7 +29,6 @@ MatrixRain::MatrixRain()
 
 MatrixRain::~MatrixRain()
 {
-	delete(this->strands);
 }
 
 void MatrixRain::pause()

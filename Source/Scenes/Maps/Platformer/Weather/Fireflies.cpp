@@ -1,6 +1,6 @@
 #include "Fireflies.h"
 
-const std::string Fireflies::KeyWeatherFireflies = "fireflies";
+const std::string Fireflies::MapKeyWeatherLayerFireflies = "fireflies";
 
 Fireflies* Fireflies::create(ValueMap* properties, std::string name)
 {

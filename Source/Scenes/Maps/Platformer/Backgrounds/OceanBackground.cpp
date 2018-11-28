@@ -1,6 +1,6 @@
 #include "OceanBackground.h"
 
-const std::string OceanBackground::KeyBackgroundOcean = "ocean";
+const std::string OceanBackground::MapKeyBackgroundLayerOcean = "ocean";
 
 OceanBackground* OceanBackground::create(ValueMap* properties, std::string name)
 {
@@ -16,7 +16,6 @@ OceanBackground::OceanBackground(ValueMap* properties, std::string name) : Backg
 	this->background = Sprite::create(BackgroundResources::Platformer_Beach);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 
@@ -31,5 +30,5 @@ OceanBackground::~OceanBackground()
 
 void OceanBackground::update(float dt)
 {
-	SerializableLayer::update(dt);
+	BackgroundBase::update(dt);
 }

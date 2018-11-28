@@ -11,9 +11,9 @@ using namespace cocos2d;
 class SnowBackground : public BackgroundBase
 {
 public:
-	static SnowBackground * create(ValueMap* properties, std::string name);
+	static SnowBackground* create(ValueMap* properties, std::string name);
 
-	static const std::string KeyBackgroundSnow;
+	static const std::string MapKeyBackgroundLayerSnow;
 
 private:
 	SnowBackground(ValueMap* properties, std::string name);
@@ -21,8 +21,8 @@ private:
 
 	void update(float) override;
 
-	Sprite * background;
-	InfiniteParallaxNode * layer6;
-	InfiniteParallaxNode * layer5;
+	Sprite* background;
+	InfiniteParallaxNode* layer6;
+	InfiniteParallaxNode* layer5;
 };
 

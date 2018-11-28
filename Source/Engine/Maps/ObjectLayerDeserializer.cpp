@@ -1,29 +1,30 @@
-#include "LayerDeserializer.h"
+#include "ObjectLayerDeserializer.h"
 
-LayerDeserializer* LayerDeserializer::instance = nullptr;
+const std::string ObjectLayerDeserializer::MapKeyObjectLayer = "objects";
+ObjectLayerDeserializer* ObjectLayerDeserializer::instance = nullptr;
 
-void LayerDeserializer::registerGlobalNode()
+void ObjectLayerDeserializer::registerGlobalNode()
 {
-	if (LayerDeserializer::instance == nullptr)
+	if (ObjectLayerDeserializer::instance == nullptr)
 	{
-		LayerDeserializer::instance = new LayerDeserializer();
+		ObjectLayerDeserializer::instance = new ObjectLayerDeserializer();
 
 		instance->autorelease();
 
 		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(LayerDeserializer::instance);
+		GlobalDirector::getInstance()->registerGlobalNode(ObjectLayerDeserializer::instance);
 	}
 }
 
-LayerDeserializer::LayerDeserializer()
+ObjectLayerDeserializer::ObjectLayerDeserializer()
 {
 }
 
-LayerDeserializer::~LayerDeserializer()
+ObjectLayerDeserializer::~ObjectLayerDeserializer()
 {
 }
 
-void LayerDeserializer::initializeListeners()
+void ObjectLayerDeserializer::initializeListeners()
 {
 	GlobalNode::initializeListeners();
 
@@ -35,17 +36,28 @@ void LayerDeserializer::initializeListeners()
 	this->addEventListener(deserializationRequestListener);
 }
 
-void LayerDeserializer::onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args)
+void ObjectLayerDeserializer::onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args)
 {
-	static std::vector<SerializableObject*> deserializedObjects = std::vector<SerializableObject*>();
-	std::string name = args->objectGroup->getGroupName();
-	ValueVector objects = args->objectGroup->getObjects();
 	ValueMap properties = args->objectGroup->getProperties();
 
-	deserializedObjects.clear();
+	if (!GameUtils::keyExists(&properties, SerializableLayer::KeyType))
+	{
+		return;
+	}
+
+	std::string type = properties.at(SerializableLayer::KeyType).asString();
+
+	if (type != ObjectLayerDeserializer::MapKeyObjectLayer)
+	{
+		return;
+	}
+
+	std::vector<SerializableObject*> deserializedObjects = std::vector<SerializableObject*>();
+	std::string name = args->objectGroup->getGroupName();
+	ValueVector objects = args->objectGroup->getObjects();
 
 	// Callback to receive deserialized layers as they are parsed by their deserializers
-	auto onDeserializeCallback = [=](DeserializationEvents::ObjectDeserializationArgs args)
+	auto onDeserializeCallback = [&](DeserializationEvents::ObjectDeserializationArgs args)
 	{
 		deserializedObjects.push_back(args.serializableObject);
 	};

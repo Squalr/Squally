@@ -11,9 +11,9 @@ using namespace cocos2d;
 class JungleBackground : public BackgroundBase
 {
 public:
-	static JungleBackground * create(ValueMap* properties, std::string name);
+	static JungleBackground* create(ValueMap* properties, std::string name);
 
-	static const std::string KeyBackgroundJungle;
+	static const std::string MapKeyBackgroundLayerJungle;
 
 private:
 	JungleBackground(ValueMap* properties, std::string name);
@@ -21,10 +21,10 @@ private:
 
 	void update(float) override;
 
-	Sprite * background;
-	InfiniteParallaxNode * layer6;
-	InfiniteParallaxNode * layer5;
-	InfiniteParallaxNode * layer4;
-	InfiniteParallaxNode * layer2;
+	Sprite* background;
+	InfiniteParallaxNode* layer6;
+	InfiniteParallaxNode* layer5;
+	InfiniteParallaxNode* layer4;
+	InfiniteParallaxNode* layer2;
 };
 

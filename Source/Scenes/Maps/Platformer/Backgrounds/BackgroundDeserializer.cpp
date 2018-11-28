@@ -1,7 +1,7 @@
 #include "BackgroundDeserializer.h"
 
 BackgroundDeserializer* BackgroundDeserializer::instance = nullptr;
-const std::string BackgroundDeserializer::KeyBackground = "background";
+const std::string BackgroundDeserializer::MapKeyBackgroundLayer = "background";
 
 void BackgroundDeserializer::registerGlobalNode()
 {
@@ -40,38 +40,38 @@ void BackgroundDeserializer::onDeserializationRequest(DeserializationEvents::Lay
 
 	std::string type = properties.at(SerializableLayer::KeyType).asString();
 
-	if (type != BackgroundDeserializer::KeyBackground)
+	if (type != BackgroundDeserializer::MapKeyBackgroundLayer)
 	{
 		return;
 	}
 
 	args->handled = true;
 
-	if (!GameUtils::keyExists(&properties, BackgroundDeserializer::KeyBackground))
+	if (!GameUtils::keyExists(&properties, BackgroundDeserializer::MapKeyBackgroundLayer))
 	{
 		CCLOG("No background property on background layer");
 		return;
 	}
 
-	std::string background = properties.at(BackgroundDeserializer::KeyBackground).asString();
+	std::string background = properties.at(BackgroundDeserializer::MapKeyBackgroundLayer).asString();
 
-	if (background == JungleBackground::KeyBackgroundJungle)
+	if (background == JungleBackground::MapKeyBackgroundLayerJungle)
 	{
 		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(JungleBackground::create(&properties, name), args->objectGroup->layerIndex));
 	}
-	else if (background == MountainBackground::KeyBackgroundMountains)
+	else if (background == MountainBackground::MapKeyBackgroundLayerMountains)
 	{
 		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(MountainBackground::create(&properties, name), args->objectGroup->layerIndex));
 	}
-	else if (background == ObeliskBackground::KeyBackgroundObelisk)
+	else if (background == ObeliskBackground::MapKeyBackgroundLayerObelisk)
 	{
 		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(ObeliskBackground::create(&properties, name), args->objectGroup->layerIndex));
 	}
-	else if (background == OceanBackground::KeyBackgroundOcean)
+	else if (background == OceanBackground::MapKeyBackgroundLayerOcean)
 	{
 		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(OceanBackground::create(&properties, name), args->objectGroup->layerIndex));
 	}
-	else if (background == SnowBackground::KeyBackgroundSnow)
+	else if (background == SnowBackground::MapKeyBackgroundLayerSnow)
 	{
 		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(SnowBackground::create(&properties, name), args->objectGroup->layerIndex));
 	}

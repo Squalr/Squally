@@ -27,7 +27,9 @@ for root, dirnames, filenames in os.walk(sourcePath):
 		if filename.lower().endswith("h"):
 			hFiles.append(pathStr)
 			continue
-				
+
+cppFiles.sort()
+hFiles.sort()
 template = open(inputTemplate, 'r').read()
 
 with open(outputFile, 'w') as cmakeFile:

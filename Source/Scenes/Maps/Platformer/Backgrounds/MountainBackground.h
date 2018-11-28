@@ -11,9 +11,9 @@ using namespace cocos2d;
 class MountainBackground : public BackgroundBase
 {
 public:
-	static MountainBackground * create(ValueMap* properties, std::string name);
+	static MountainBackground* create(ValueMap* properties, std::string name);
 
-	static const std::string KeyBackgroundMountains;
+	static const std::string MapKeyBackgroundLayerMountains;
 
 private:
 	MountainBackground(ValueMap* properties, std::string name);
@@ -21,12 +21,12 @@ private:
 
 	void update(float) override;
 
-	Sprite * background;
-	InfiniteParallaxNode * clouds;
-	ParallaxNode * mountains;
-	ParallaxNode * mountains2;
-	ParallaxNode * trees1;
-	ParallaxNode * trees2;
-	ParallaxNode * trees3;
+	Sprite* background;
+	InfiniteParallaxNode* clouds;
+	ParallaxNode* mountains;
+	ParallaxNode* mountains2;
+	ParallaxNode* trees1;
+	ParallaxNode* trees2;
+	ParallaxNode* trees3;
 };
 

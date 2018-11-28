@@ -1,7 +1,7 @@
 #include "WeatherDeserializer.h"
 
 WeatherDeserializer* WeatherDeserializer::instance = nullptr;
-const std::string WeatherDeserializer::KeyWeather = "weather";
+const std::string WeatherDeserializer::MapKeyWeatherLayer = "weather";
 
 void WeatherDeserializer::registerGlobalNode()
 {
@@ -40,30 +40,30 @@ void WeatherDeserializer::onDeserializationRequest(DeserializationEvents::LayerD
 
 	std::string type = properties.at(SerializableLayer::KeyType).asString();
 
-	if (type != WeatherDeserializer::KeyWeather)
+	if (type != WeatherDeserializer::MapKeyWeatherLayer)
 	{
 		return;
 	}
 
 	args->handled = true;
 
-	if (!GameUtils::keyExists(&properties, WeatherDeserializer::KeyWeather))
+	if (!GameUtils::keyExists(&properties, WeatherDeserializer::MapKeyWeatherLayer))
 	{
 		CCLOG("No weather property on weather layer");
 		return;
 	}
 
-	std::string weather = properties.at(WeatherDeserializer::KeyWeather).asString();
+	std::string weather = properties.at(WeatherDeserializer::MapKeyWeatherLayer).asString();
 
-	if (weather == Fireflies::KeyWeatherFireflies)
+	if (weather == Fireflies::MapKeyWeatherLayerFireflies)
 	{
 		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(Fireflies::create(&properties, name), args->objectGroup->layerIndex));
 	}
-	else if (weather == Rain::KeyWeatherRain)
+	else if (weather == Rain::MapKeyWeatherLayerRain)
 	{
 		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(Rain::create(&properties, name), args->objectGroup->layerIndex));
 	}
-	else if (weather == Snow::KeyWeatherSnow)
+	else if (weather == Snow::MapKeyWeatherLayerSnow)
 	{
 		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(Snow::create(&properties, name), args->objectGroup->layerIndex));
 	}

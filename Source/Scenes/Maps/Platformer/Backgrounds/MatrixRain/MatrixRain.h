@@ -19,7 +19,7 @@ private:
 	virtual void pause(void) override;
 	void setPositions();
 
-	std::vector<MatrixStrand*> * strands;
+	std::vector<MatrixStrand*> strands;
 
 	static const int strandCount;
 };

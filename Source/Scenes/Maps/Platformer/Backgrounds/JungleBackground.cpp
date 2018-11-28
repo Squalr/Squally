@@ -1,6 +1,6 @@
 #include "JungleBackground.h"
 
-const std::string JungleBackground::KeyBackgroundJungle = "jungle";
+const std::string JungleBackground::MapKeyBackgroundLayerJungle = "jungle";
 
 JungleBackground* JungleBackground::create(ValueMap* properties, std::string name)
 {
@@ -43,9 +43,8 @@ JungleBackground::~JungleBackground()
 
 void JungleBackground::update(float dt)
 {
-	SerializableLayer::update(dt);
+	BackgroundBase::update(dt);
 
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	float widthOffset = Director::getInstance()->getVisibleSize().width / 2;
