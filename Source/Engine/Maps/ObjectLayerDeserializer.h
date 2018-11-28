@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-class LayerDeserializer : public GlobalNode
+class ObjectLayerDeserializer : public GlobalNode
 {
 public:
 	static void registerGlobalNode();
@@ -15,10 +15,11 @@ public:
 	void onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args);
 
 private:
-	LayerDeserializer();
-	~LayerDeserializer();
+	ObjectLayerDeserializer();
+	~ObjectLayerDeserializer();
 
 	void initializeListeners() override;
 
-	static LayerDeserializer* instance;
+	static ObjectLayerDeserializer* instance;
+	static const std::string MapKeyObjectLayer;
 };

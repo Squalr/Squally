@@ -11,9 +11,9 @@ using namespace cocos2d;
 class OceanBackground : public BackgroundBase
 {
 public:
-	static OceanBackground * create(ValueMap* properties, std::string name);
+	static OceanBackground* create(ValueMap* properties, std::string name);
 
-	static const std::string KeyBackgroundOcean;
+	static const std::string MapKeyBackgroundLayerOcean;
 
 private:
 	OceanBackground(ValueMap* properties, std::string name);
@@ -21,6 +21,6 @@ private:
 
 	void update(float) override;
 
-	Sprite * background;
+	Sprite* background;
 };
 

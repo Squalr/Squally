@@ -1,6 +1,6 @@
 #include "SnowBackground.h"
 
-const std::string SnowBackground::KeyBackgroundSnow = "snow";
+const std::string SnowBackground::MapKeyBackgroundLayerSnow = "snow";
 
 SnowBackground* SnowBackground::create(ValueMap* properties, std::string name)
 {
@@ -18,7 +18,6 @@ SnowBackground::SnowBackground(ValueMap* properties, std::string name) : Backgro
 	this->layer5 = InfiniteParallaxNode::create(BackgroundResources::Platformer_Snow_snowmountains_acc);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	this->layer6->setPosition(Vec2(this->layer6->getContentSize().width / 2, visibleSize.height / 2));
@@ -40,7 +39,7 @@ SnowBackground::~SnowBackground()
 
 void SnowBackground::update(float dt)
 {
-	SerializableLayer::update(dt);
+	BackgroundBase::update(dt);
 
 	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 

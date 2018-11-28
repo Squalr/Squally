@@ -18,6 +18,6 @@ private:
 	void initializeListeners() override;
 	void onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args);
 
-	static const std::string KeyWeather;
+	static const std::string MapKeyWeatherLayer;
 	static WeatherDeserializer* instance;
 };

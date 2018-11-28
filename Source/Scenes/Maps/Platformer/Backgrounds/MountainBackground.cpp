@@ -1,6 +1,6 @@
 #include "MountainBackground.h"
 
-const std::string MountainBackground::KeyBackgroundMountains = "mountains";
+const std::string MountainBackground::MapKeyBackgroundLayerMountains = "mountains";
 
 MountainBackground* MountainBackground::create(ValueMap* properties, std::string name)
 {
@@ -63,7 +63,7 @@ MountainBackground::~MountainBackground()
 
 void MountainBackground::update(float dt)
 {
-	SerializableLayer::update(dt);
+	BackgroundBase::update(dt);
 
 	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 

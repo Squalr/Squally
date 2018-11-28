@@ -1,6 +1,6 @@
 #include "ObeliskBackground.h"
 
-const std::string ObeliskBackground::KeyBackgroundObelisk = "obelisk";
+const std::string ObeliskBackground::MapKeyBackgroundLayerObelisk = "obelisk";
 
 ObeliskBackground* ObeliskBackground::create(ValueMap* properties, std::string name)
 {
@@ -20,7 +20,6 @@ ObeliskBackground::ObeliskBackground(ValueMap* properties, std::string name) : B
 	this->midground2 = InfiniteParallaxNode::create(BackgroundResources::Platformer_Obelisk_middleground_3);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	this->background2->setPosition(Vec2(this->background2->getContentSize().width / 2, visibleSize.height / 2));
@@ -43,7 +42,7 @@ ObeliskBackground::~ObeliskBackground()
 
 void ObeliskBackground::update(float dt)
 {
-	SerializableLayer::update(dt);
+	BackgroundBase::update(dt);
 
 	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 

@@ -1,6 +1,6 @@
 #include "Rain.h"
 
-const std::string Rain::KeyWeatherRain = "rain";
+const std::string Rain::MapKeyWeatherLayerRain = "rain";
 
 Rain* Rain::create(ValueMap* properties, std::string name)
 {

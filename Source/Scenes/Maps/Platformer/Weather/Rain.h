@@ -10,9 +10,9 @@ using namespace cocos2d;
 class Rain : public SerializableLayer
 {
 public:
-	static Rain * create(ValueMap* properties, std::string name);
+	static Rain* create(ValueMap* properties, std::string name);
 
-	static const std::string KeyWeatherRain;
+	static const std::string MapKeyWeatherLayerRain;
 
 private:
 	Rain(ValueMap* properties, std::string name);
@@ -21,5 +21,5 @@ private:
 	void onEnter() override;
 	void update(float) override;
 
-	ParticleSystem * rain;
+	ParticleSystem* rain;
 };

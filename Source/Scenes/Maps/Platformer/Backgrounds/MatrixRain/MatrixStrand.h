@@ -25,7 +25,7 @@ private:
 	void randomizePosition();
 	void setLetterCount();
 
-	std::vector<MatrixLetter*>* letters;
+	std::vector<MatrixLetter*> letters;
 
 	Action* updateAction;
 	float spawnSpeed;

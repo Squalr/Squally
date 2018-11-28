@@ -18,7 +18,7 @@
  </objectgroup>
  <objectgroup name="parallax_background">
   <properties>
-   <property name="Test" value="test"/>
+   <property name="type" value="objects"/>
   </properties>
   <object id="134" name="Forest/Ruins4" type="decor" x="1154.91" y="119.88" width="320" height="640" rotation="0.01">
    <properties>
@@ -233,6 +233,9 @@
 </data>
  </layer>
  <objectgroup name="decor_background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
   <object id="139" name="Forest/Thorns10" type="decor" x="1846.24" y="1254.36" width="391.74" height="363.85"/>
   <object id="140" name="Forest/Thorns8" type="decor" x="1873.83" y="1666.34" width="358.53" height="338.63"/>
  </objectgroup>
@@ -437,6 +440,9 @@
 </data>
  </layer>
  <objectgroup name="decor_midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
   <object id="123" name="Forest/GrassPlane6" type="decor" x="147.38" y="1115.33" width="432" height="90.55"/>
   <object id="168" name="Forest/Ruins1" type="decor" x="4291.63" y="820.78" width="512" height="512"/>
   <object id="189" name="Ice/Bush1" type="decor" x="9032" y="856" width="72" height="72"/>
@@ -454,6 +460,9 @@
   <object id="219" name="Temple/Urn2" type="decor" x="1518.06" y="3067.64" width="133.58" height="137.46"/>
  </objectgroup>
  <objectgroup name="collision_collision">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
   <object id="39" name="solid" type="collision" x="2186.82" y="1326.61" width="3048.67" height="1253"/>
   <object id="41" name="solid" type="collision" x="2765.04" y="1172.39">
    <polygon points="0,0 486.02,219.1 0,222.58"/>
@@ -529,6 +538,9 @@
   <object id="363" name="solid" type="collision" x="1736.84" y="22890.5" width="974.32" height="218.97"/>
  </objectgroup>
  <objectgroup name="objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
   <object id="182" name="warp-gate-exact-scan-1" type="object" x="3521.21" y="782.85" width="648.36" height="601.82">
    <properties>
     <property name="dialog" value="DialogTutorialExactScanI"/>
@@ -547,6 +559,9 @@
   </object>
  </objectgroup>
  <objectgroup name="entities">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
   <object id="72" name="squally" type="entity" x="109.85" y="6298.64" width="128" height="128"/>
   <object id="180" name="knight" type="entity" x="342.06" y="758.73" width="200" height="288"/>
   <object id="222" name="rhinoman" type="entity" x="6169.82" y="6688" width="196" height="196">
@@ -1456,7 +1471,11 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="decor_foreground"/>
+ <objectgroup name="decor_foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
  <objectgroup name="rain">
   <properties>
    <property name="type" value="weather"/>

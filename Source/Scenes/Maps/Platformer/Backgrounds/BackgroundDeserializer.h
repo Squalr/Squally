@@ -20,6 +20,6 @@ private:
 	void initializeListeners() override;
 	void onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args);
 
-	static const std::string KeyBackground;
+	static const std::string MapKeyBackgroundLayer;
 	static BackgroundDeserializer* instance;
 };
