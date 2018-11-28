@@ -14,6 +14,8 @@ public:
 	static const std::string BGForest_Bush2;
 	static const std::string BGForest_ForegroundBush1;
 	static const std::string BGForest_ForegroundBush2;
+	static const std::string BGForest_ForegroundTree1;
+	static const std::string BGForest_ForegroundTree2;
 	static const std::string BGForest_Grass;
 	static const std::string BGForest_Hill1;
 	static const std::string BGForest_Hill2;
@@ -24,8 +26,6 @@ public:
 	static const std::string BGForest_Tree1;
 	static const std::string BGForest_Tree2;
 	static const std::string BGForest_Tree3;
-	static const std::string BGForest_foreground_tree_1;
-	static const std::string BGForest_foreground_tree_2;
 	static const std::string Caverns_Bush1;
 	static const std::string Caverns_Bush2;
 	static const std::string Caverns_Cactus1;
