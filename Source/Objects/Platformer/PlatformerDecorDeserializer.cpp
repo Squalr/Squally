@@ -36,7 +36,7 @@ void PlatformerDecorDeserializer::onDeserializationRequest(DeserializationEvents
 		std::string name = properties.at(SerializableObject::KeyName).asString();
 
 		// For decor, simply grab the resource of the same name of the object type
-		Sprite* sprite = Sprite::create("Decor/Platformer/" + name + ".png");
+		Sprite* sprite = Sprite::create("GamePlay/Decor/Platformer/" + name + ".png");
 
 		if (sprite == nullptr)
 		{
@@ -48,35 +48,9 @@ void PlatformerDecorDeserializer::onDeserializationRequest(DeserializationEvents
 		float height = properties.at(SerializableObject::KeyHeight).asFloat();
 		float x = properties.at(SerializableObject::KeyXPosition).asFloat();
 		float y = properties.at(SerializableObject::KeyYPosition).asFloat();
-		SerializableObject* newObject = nullptr;
-		
-		if (GameUtils::keyExists(&properties, "isParallax"))
-		{
-			bool isParallax = properties.at("isParallax").asBool();
+		SerializableObject* newObject = PlatformerDecorObject::create(&properties);
 
-			if (isParallax)
-			{
-				Vec2 parallaxSpeed = Vec2::ZERO;
-
-				if (GameUtils::keyExists(&properties, "parallax-speed-x"))
-				{
-					parallaxSpeed.x = properties.at("parallax-speed-x").asFloat();
-				}
-
-				if (GameUtils::keyExists(&properties, "parallax-speed-y"))
-				{
-					parallaxSpeed.y = properties.at("parallax-speed-y").asFloat();
-				}
-
-				newObject = ParallaxObject::create(&properties, sprite, parallaxSpeed);
-			}
-		}
-		
-		if (newObject == nullptr)
-		{
-			newObject = PlatformerDecorObject::create(&properties);
-			newObject->addChild(sprite);
-		}
+		newObject->addChild(sprite);
 
 		// Scale decor based on rectangle size (only using height for simplicity)
 		newObject->setScale(height / sprite->getContentSize().height);

@@ -129,7 +129,7 @@ void IsometricMap::onMouseWheelScroll(EventMouse* event)
 
 void IsometricMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!this->isRunning() || !this->isVisible())
+	if (!GameUtils::isFocused(this))
 	{
 		return;
 	}

@@ -238,7 +238,7 @@ void Hexus::onGameStart(EventCustom* eventCustom)
 
 void Hexus::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!this->isRunning() || !this->isVisible())
+	if (!GameUtils::isFocused(this))
 	{
 		return;
 	}

@@ -197,14 +197,23 @@ void HexusPuzzlesMenu::onMouseOver(HexusPuzzleItem* tutorialItem)
 
 void HexusPuzzlesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
+	if (!GameUtils::isFocused(this))
+	{
+		return;
+	}
+
 	switch (keyCode)
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
+		{
 			event->stopPropagation();
 			NavigationEvents::navigateBack();
 			break;
+		}
 		default:
+		{
 			break;
+		}
 	}
 }
 
