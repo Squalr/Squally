@@ -12,7 +12,7 @@ Bodom* Bodom::deserialize(ValueMap* initProperties)
 }
 
 Bodom::Bodom(ValueMap* initProperties) : NpcBase(initProperties,
-	EntityResources::Platformer_Environment_Jungle_Npcs_Bodom_Animations,
+	EntityResources::Environment_Jungle_Npcs_Bodom_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,

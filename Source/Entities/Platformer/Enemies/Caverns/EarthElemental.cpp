@@ -12,7 +12,7 @@ EarthElemental* EarthElemental::deserialize(ValueMap* initProperties)
 }
 
 EarthElemental::EarthElemental(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Caverns_Enemies_EarthElemental_Animations,
+	EntityResources::Environment_Caverns_Enemies_EarthElemental_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(820.0f, 1480.0f),
 	0.20f,

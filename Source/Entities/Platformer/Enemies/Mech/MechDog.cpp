@@ -12,7 +12,7 @@ MechDog* MechDog::deserialize(ValueMap* initProperties)
 }
 
 MechDog::MechDog(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Mech_Enemies_MechDog_Animations,
+	EntityResources::Environment_Mech_Enemies_MechDog_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(540.0f, 340.0f),
 	0.7f,

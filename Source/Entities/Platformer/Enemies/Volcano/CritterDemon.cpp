@@ -12,7 +12,7 @@ CritterDemon* CritterDemon::deserialize(ValueMap* initProperties)
 }
 
 CritterDemon::CritterDemon(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Volcano_Enemies_CritterDemon_Animations,
+	EntityResources::Environment_Volcano_Enemies_CritterDemon_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(188.0f, 160.0f),
 	0.7f,

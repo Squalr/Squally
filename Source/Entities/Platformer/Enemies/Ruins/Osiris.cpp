@@ -12,7 +12,7 @@ Osiris* Osiris::deserialize(ValueMap* initProperties)
 }
 
 Osiris::Osiris(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Ruins_Enemies_Osiris_Animations,
+	EntityResources::Environment_Ruins_Enemies_Osiris_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(324.0f, 316.0f),
 	1.0f,

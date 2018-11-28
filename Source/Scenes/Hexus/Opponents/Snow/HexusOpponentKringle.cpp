@@ -14,7 +14,7 @@ HexusOpponentKringle* HexusOpponentKringle::getInstance()
 }
 
 HexusOpponentKringle::HexusOpponentKringle() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Snow_Npcs_Kringle_Animations,
+	EntityResources::Environment_Snow_Npcs_Kringle_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
 	Vec2(-48.0f, -64.0f),

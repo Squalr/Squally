@@ -12,7 +12,7 @@ DemonWarrior* DemonWarrior::deserialize(ValueMap* initProperties)
 }
 
 DemonWarrior::DemonWarrior(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Volcano_Enemies_DemonWarrior_Animations,
+	EntityResources::Environment_Volcano_Enemies_DemonWarrior_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(320.0f, 372.0f),
 	0.7f,

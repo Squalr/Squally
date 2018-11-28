@@ -12,7 +12,7 @@ Yeti* Yeti::deserialize(ValueMap* initProperties)
 }
 
 Yeti::Yeti(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Snow_Enemies_Yeti_Animations,
+	EntityResources::Environment_Snow_Enemies_Yeti_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(380.0f, 572.0f),
 	0.4f,

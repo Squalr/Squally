@@ -14,7 +14,7 @@ HexusOpponentPenguinWarrior* HexusOpponentPenguinWarrior::getInstance()
 }
 
 HexusOpponentPenguinWarrior::HexusOpponentPenguinWarrior() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Snow_Enemies_PenguinWarrior_Animations,
+	EntityResources::Environment_Snow_Enemies_PenguinWarrior_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
 	Vec2(-48.0f, -64.0f),

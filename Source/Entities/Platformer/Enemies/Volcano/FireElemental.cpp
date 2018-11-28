@@ -12,7 +12,7 @@ FireElemental* FireElemental::deserialize(ValueMap* initProperties)
 }
 
 FireElemental::FireElemental(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Volcano_Enemies_FireElemental_Animations,
+	EntityResources::Environment_Volcano_Enemies_FireElemental_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(820.0f, 1480.0f),
 	0.20f,

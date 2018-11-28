@@ -14,7 +14,7 @@ HexusOpponentRoboGolem* HexusOpponentRoboGolem::getInstance()
 }
 
 HexusOpponentRoboGolem::HexusOpponentRoboGolem() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Mech_Enemies_RoboGolem_Animations,
+	EntityResources::Environment_Mech_Enemies_RoboGolem_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	0.7f,
 	Vec2(-48.0f, -64.0f),

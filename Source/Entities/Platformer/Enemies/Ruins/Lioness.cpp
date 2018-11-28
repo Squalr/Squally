@@ -12,7 +12,7 @@ Lioness* Lioness::deserialize(ValueMap* initProperties)
 }
 
 Lioness::Lioness(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Ruins_Enemies_Lioness_Animations,
+	EntityResources::Environment_Ruins_Enemies_Lioness_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(128.0f, 278.0f),
 	0.8f,

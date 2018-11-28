@@ -11,7 +11,7 @@ HexusArcade* HexusArcade::create(ValueMap* initProperties)
 
 HexusArcade::HexusArcade(ValueMap* initProperties) : HackableObject(initProperties)
 {
-	this->arcadeMachine = Sprite::create(ObjectResources::Isometric_HexusArcade);
+	// this->arcadeMachine = Sprite::create(ObjectResources::Isometric_HexusArcade);
 
 	this->addChild(this->arcadeMachine);
 }

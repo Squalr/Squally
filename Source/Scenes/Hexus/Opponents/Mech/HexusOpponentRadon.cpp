@@ -14,7 +14,7 @@ HexusOpponentRadon* HexusOpponentRadon::getInstance()
 }
 
 HexusOpponentRadon::HexusOpponentRadon() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Mech_Npcs_Radon_Animations,
+	EntityResources::Environment_Mech_Npcs_Radon_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	0.85f,
 	Vec2(-48.0f, -64.0f),

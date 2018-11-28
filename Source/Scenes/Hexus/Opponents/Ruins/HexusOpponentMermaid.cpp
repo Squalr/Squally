@@ -14,7 +14,7 @@ HexusOpponentMermaid* HexusOpponentMermaid::getInstance()
 }
 
 HexusOpponentMermaid::HexusOpponentMermaid() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Ruins_Enemies_Mermaid_Animations,
+	EntityResources::Environment_Ruins_Enemies_Mermaid_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-48.0f, -144.0f),

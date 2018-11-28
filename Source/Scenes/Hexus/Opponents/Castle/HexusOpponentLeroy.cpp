@@ -14,7 +14,7 @@ HexusOpponentLeroy* HexusOpponentLeroy::getInstance()
 }
 
 HexusOpponentLeroy::HexusOpponentLeroy() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Castle_Npcs_Leroy_Animations,
+	EntityResources::Environment_Castle_Npcs_Leroy_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-64.0f, -112.0f),

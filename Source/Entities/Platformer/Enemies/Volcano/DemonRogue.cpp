@@ -12,7 +12,7 @@ DemonRogue* DemonRogue::deserialize(ValueMap* initProperties)
 }
 
 DemonRogue::DemonRogue(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Volcano_Enemies_DemonRogue_Animations,
+	EntityResources::Environment_Volcano_Enemies_DemonRogue_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(212.0f, 268.0f),
 	0.65f,

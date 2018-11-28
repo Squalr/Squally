@@ -118,70 +118,70 @@ void HexusPuzzlesMenu::loadLevels()
 
 	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Exact Value Scan I",
-		MapResources::Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Exact Value Scan II",
-		MapResources::Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Unknown Value Scan",
-		MapResources::Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Data Types - Float",
-		MapResources::Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Data Types - Double",
-		MapResources::Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Godmode",
-		MapResources::Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Position I",
-		MapResources::Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Position II",
-		MapResources::Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Blink Godmode I",
-		MapResources::Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
 	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
 		"Blink Godmode II",
-		MapResources::Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
+		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));

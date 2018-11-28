@@ -11,7 +11,7 @@ Shopkeeper* Shopkeeper::create()
 
 Shopkeeper::Shopkeeper()
 {
-	this->animationNode = AnimationNode::create(EntityResources::Platformer_Misc_Shopkeeper_Animations);
+	this->animationNode = AnimationNode::create(EntityResources::Misc_Shopkeeper_Animations);
 
 	SpriterEngine::EntityInstance* entity = this->animationNode->play("Entity");
 	entity->setCurrentAnimation("Idle");

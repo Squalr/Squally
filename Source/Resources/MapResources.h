@@ -7,21 +7,16 @@
 class MapResources
 {
 public:
-	static const std::string Isometric_Overworld;
-	static const std::string Isometric_Sanctum;
-	static const std::string Isometric_SquallyHome;
-	static const std::string Isometric_TheDarkWeb;
-	static const std::string Isometric_TheInternet;
-	static const std::string Platformer_AquaticRuins_AquaticRuins;
-	static const std::string Platformer_Castle_Castle;
-	static const std::string Platformer_Caverns_Caverns;
-	static const std::string Platformer_Forest_Forest;
-	static const std::string Platformer_IceCaps_IceCaps;
-	static const std::string Platformer_Jungle_Jungle;
-	static const std::string Platformer_Mech_Mech;
-	static const std::string Platformer_Obelisk_Obelisk;
-	static const std::string Platformer_Tutorials_TutorialExactValueScan1_TutorialExactValueScan1;
-	static const std::string Platformer_Volcano_Volcano;
+	static const std::string AquaticRuins_AquaticRuins;
+	static const std::string Castle_Castle;
+	static const std::string Caverns_Caverns;
+	static const std::string Forest_Forest;
+	static const std::string IceCaps_IceCaps;
+	static const std::string Jungle_Jungle;
+	static const std::string Jungle_TestingGrounds;
+	static const std::string Mech_Mech;
+	static const std::string Obelisk_Obelisk;
 	static const std::string TileMap;
-	static const std::string TileMapIsometric;
+	static const std::string Tutorials_TutorialExactValueScan1_TutorialExactValueScan1;
+	static const std::string Volcano_Volcano;
 };

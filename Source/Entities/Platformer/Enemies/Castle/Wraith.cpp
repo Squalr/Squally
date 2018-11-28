@@ -12,7 +12,7 @@ Wraith* Wraith::deserialize(ValueMap* initProperties)
 }
 
 Wraith::Wraith(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Castle_Enemies_Wraith_Animations,
+	EntityResources::Environment_Castle_Enemies_Wraith_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(142.0f, 400.0f),
 	0.5f,

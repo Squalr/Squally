@@ -14,7 +14,7 @@ HexusOpponentPrincessNebea* HexusOpponentPrincessNebea::getInstance()
 }
 
 HexusOpponentPrincessNebea::HexusOpponentPrincessNebea() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Obelisk_Npcs_PrincessNebea_Animations,
+	EntityResources::Environment_Obelisk_Npcs_PrincessNebea_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

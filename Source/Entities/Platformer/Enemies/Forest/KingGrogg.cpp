@@ -12,7 +12,7 @@ KingGrogg* KingGrogg::deserialize(ValueMap* initProperties)
 }
 
 KingGrogg::KingGrogg(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Forest_Enemies_KingGrogg_Animations,
+	EntityResources::Environment_Forest_Enemies_KingGrogg_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(412.0f, 412.0f),
 	1.0f,

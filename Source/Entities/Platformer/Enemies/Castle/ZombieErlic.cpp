@@ -12,7 +12,7 @@ ZombieErlic* ZombieErlic::deserialize(ValueMap* initProperties)
 }
 
 ZombieErlic::ZombieErlic(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Castle_Enemies_ZombieErlic_Animations,
+	EntityResources::Environment_Castle_Enemies_ZombieErlic_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(114.0f, 208.0f),
 	0.9f,

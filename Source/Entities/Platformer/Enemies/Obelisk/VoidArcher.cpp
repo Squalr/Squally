@@ -12,7 +12,7 @@ VoidArcher* VoidArcher::deserialize(ValueMap* initProperties)
 }
 
 VoidArcher::VoidArcher(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Obelisk_Enemies_VoidArcher_Animations,
+	EntityResources::Environment_Obelisk_Enemies_VoidArcher_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(196.0f, 348.0f),
 	0.65f,

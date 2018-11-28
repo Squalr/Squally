@@ -803,16 +803,11 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/States/StateTurnEnd.cpp
 	Source/Scenes/Hexus/States/StateTutorial.cpp
 	Source/Scenes/Maps/Isometric/IsometricMap.cpp
-	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundBase.cpp
+	Source/Scenes/Maps/Platformer/Backgrounds/Background.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundDeserializer.cpp
-	Source/Scenes/Maps/Platformer/Backgrounds/JungleBackground.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixLetter.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixRain.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixStrand.cpp
-	Source/Scenes/Maps/Platformer/Backgrounds/MountainBackground.cpp
-	Source/Scenes/Maps/Platformer/Backgrounds/ObeliskBackground.cpp
-	Source/Scenes/Maps/Platformer/Backgrounds/OceanBackground.cpp
-	Source/Scenes/Maps/Platformer/Backgrounds/SnowBackground.cpp
 	Source/Scenes/Maps/Platformer/PlatformerMap.cpp
 	Source/Scenes/Maps/Platformer/Weather/Fireflies.cpp
 	Source/Scenes/Maps/Platformer/Weather/Rain.cpp
@@ -1593,17 +1588,11 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/States/States.h
 	Source/Scenes/Maps/IMap.h
 	Source/Scenes/Maps/Isometric/IsometricMap.h
-	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundBase.h
+	Source/Scenes/Maps/Platformer/Backgrounds/Background.h
 	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundDeserializer.h
-	Source/Scenes/Maps/Platformer/Backgrounds/Backgrounds.h
-	Source/Scenes/Maps/Platformer/Backgrounds/JungleBackground.h
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixLetter.h
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixRain.h
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixStrand.h
-	Source/Scenes/Maps/Platformer/Backgrounds/MountainBackground.h
-	Source/Scenes/Maps/Platformer/Backgrounds/ObeliskBackground.h
-	Source/Scenes/Maps/Platformer/Backgrounds/OceanBackground.h
-	Source/Scenes/Maps/Platformer/Backgrounds/SnowBackground.h
 	Source/Scenes/Maps/Platformer/PlatformerMap.h
 	Source/Scenes/Maps/Platformer/Weather/Fireflies.h
 	Source/Scenes/Maps/Platformer/Weather/Rain.h

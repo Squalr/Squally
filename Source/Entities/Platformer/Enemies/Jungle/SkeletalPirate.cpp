@@ -12,7 +12,7 @@ SkeletalPirate* SkeletalPirate::deserialize(ValueMap* initProperties)
 }
 
 SkeletalPirate::SkeletalPirate(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Jungle_Enemies_SkeletalPirate_Animations,
+	EntityResources::Environment_Jungle_Enemies_SkeletalPirate_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(284.0f, 256.0f),
 	1.0f,

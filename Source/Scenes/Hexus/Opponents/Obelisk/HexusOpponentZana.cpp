@@ -14,7 +14,7 @@ HexusOpponentZana* HexusOpponentZana::getInstance()
 }
 
 HexusOpponentZana::HexusOpponentZana() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Obelisk_Npcs_Zana_Animations,
+	EntityResources::Environment_Obelisk_Npcs_Zana_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

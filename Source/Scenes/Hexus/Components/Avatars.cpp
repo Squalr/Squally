@@ -15,8 +15,8 @@ Avatars::Avatars()
 	this->frameEnemy = Sprite::create(HexusResources::AvatarFrame);
 	this->avatarPlayer = Node::create();
 	this->avatarEnemy = Node::create();
-	this->avatarPlayer->addChild(Sprite::create(BackgroundResources::Platformer_Jungle_Background));
-	this->playerSprite = AnimationNode::create(EntityResources::Platformer_Squally_Animations);
+	//// this->avatarPlayer->addChild(Sprite::create(BackgroundResources::Jungle_Background));
+	this->playerSprite = AnimationNode::create(EntityResources::Squally_Animations);
 
 	playerSprite->setScale(0.25f);
 	playerSprite->setPosition(Vec2(-64.0f, -32.0f));

@@ -12,7 +12,7 @@ PenguinGrunt* PenguinGrunt::deserialize(ValueMap* initProperties)
 }
 
 PenguinGrunt::PenguinGrunt(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Snow_Enemies_PenguinGrunt_Animations,
+	EntityResources::Environment_Snow_Enemies_PenguinGrunt_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(212.0f, 296.0f),
 	0.7f,

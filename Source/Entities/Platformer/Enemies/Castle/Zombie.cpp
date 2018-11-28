@@ -12,7 +12,7 @@ Zombie* Zombie::deserialize(ValueMap* initProperties)
 }
 
 Zombie::Zombie(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Castle_Enemies_Zombie_Animations,
+	EntityResources::Environment_Castle_Enemies_Zombie_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(114.0f, 208.0f),
 	0.9f,

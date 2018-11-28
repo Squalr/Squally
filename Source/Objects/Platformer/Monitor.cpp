@@ -15,8 +15,8 @@ Monitor::Monitor(ValueMap* initProperties) : HackableObject(initProperties)
 	this->monitorDialog = DialogMenu::loadDialogFromFile(dialogFile);
 	this->monitorDialog->retain();
 
-	this->monitorSpriteFloating = FloatingSprite::create(ObjectResources::Platformer_Monitor, Vec2(2.0f, 24.0f), Vec2(7.0f, 7.0f));
-	this->monitorSprite = MenuSprite::create(this->monitorSpriteFloating, Sprite::create(ObjectResources::Platformer_MonitorSelected));
+	this->monitorSpriteFloating = FloatingSprite::create(ObjectResources::Monitor, Vec2(2.0f, 24.0f), Vec2(7.0f, 7.0f));
+	this->monitorSprite = MenuSprite::create(this->monitorSpriteFloating, Sprite::create(ObjectResources::MonitorSelected));
 	this->monitorParticles = ParticleSystemQuad::create(ParticleResources::Spark);
 	this->monitorParticlesBack = ParticleSystemQuad::create(ParticleResources::Spark);
 	this->monitorSparkles = ParticleSystemQuad::create(ParticleResources::Sparkles);

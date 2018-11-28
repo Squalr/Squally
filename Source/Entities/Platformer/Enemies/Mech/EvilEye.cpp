@@ -12,7 +12,7 @@ EvilEye* EvilEye::deserialize(ValueMap* initProperties)
 }
 
 EvilEye::EvilEye(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Mech_Enemies_EvilEye_Animations,
+	EntityResources::Environment_Mech_Enemies_EvilEye_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(720.0f, 840.0f),
 	0.6f,

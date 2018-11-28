@@ -14,7 +14,7 @@ HexusOpponentRobin* HexusOpponentRobin::getInstance()
 }
 
 HexusOpponentRobin::HexusOpponentRobin() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Forest_Npcs_Robin_Animations,
+	EntityResources::Environment_Forest_Npcs_Robin_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

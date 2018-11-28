@@ -14,7 +14,7 @@ HexusOpponentToySoldierGoblin* HexusOpponentToySoldierGoblin::getInstance()
 }
 
 HexusOpponentToySoldierGoblin::HexusOpponentToySoldierGoblin() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Snow_Enemies_ToySoldierGoblin_Animations,
+	EntityResources::Environment_Snow_Enemies_ToySoldierGoblin_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
 	Vec2(-48.0f, -48.0f),

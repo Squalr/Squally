@@ -12,7 +12,7 @@ Shaman* Shaman::deserialize(ValueMap* initProperties)
 }
 
 Shaman::Shaman(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Caverns_Enemies_Shaman_Animations,
+	EntityResources::Environment_Caverns_Enemies_Shaman_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(256.0f, 288.0f),
 	0.75f,

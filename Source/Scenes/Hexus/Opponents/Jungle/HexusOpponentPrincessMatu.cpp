@@ -14,7 +14,7 @@ HexusOpponentPrincessMatu* HexusOpponentPrincessMatu::getInstance()
 }
 
 HexusOpponentPrincessMatu::HexusOpponentPrincessMatu() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Jungle_Npcs_PrincessMatu_Animations,
+	EntityResources::Environment_Jungle_Npcs_PrincessMatu_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
