@@ -14,7 +14,7 @@ HexusOpponentGeryon* HexusOpponentGeryon::getInstance()
 }
 
 HexusOpponentGeryon::HexusOpponentGeryon() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Ruins_Npcs_Geryon_Animations,
+	EntityResources::Environment_Ruins_Npcs_Geryon_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

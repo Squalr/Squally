@@ -12,7 +12,7 @@ WaterElemental* WaterElemental::deserialize(ValueMap* initProperties)
 }
 
 WaterElemental::WaterElemental(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Snow_Enemies_WaterElemental_Animations,
+	EntityResources::Environment_Snow_Enemies_WaterElemental_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(820.0f, 1480.0f),
 	0.20f,

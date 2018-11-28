@@ -12,7 +12,7 @@ OrcSwordsman* OrcSwordsman::deserialize(ValueMap* initProperties)
 }
 
 OrcSwordsman::OrcSwordsman(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Forest_Enemies_OrcSwordsman_Animations,
+	EntityResources::Environment_Forest_Enemies_OrcSwordsman_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(256.0f, 228.0f),
 	1.0f,

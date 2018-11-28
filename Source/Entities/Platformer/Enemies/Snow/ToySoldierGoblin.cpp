@@ -12,7 +12,7 @@ ToySoldierGoblin* ToySoldierGoblin::deserialize(ValueMap* initProperties)
 }
 
 ToySoldierGoblin::ToySoldierGoblin(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Snow_Enemies_ToySoldierGoblin_Animations,
+	EntityResources::Environment_Snow_Enemies_ToySoldierGoblin_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(112.0f, 288.0f),
 	0.8f,

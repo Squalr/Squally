@@ -3,11 +3,7 @@
 
 #include "Engine/Events/DeserializationEvents.h"
 #include "Engine/GlobalNode.h"
-#include "Scenes/Maps/Platformer/Backgrounds/JungleBackground.h"
-#include "Scenes/Maps/Platformer/Backgrounds/MountainBackground.h"
-#include "Scenes/Maps/Platformer/Backgrounds/ObeliskBackground.h"
-#include "Scenes/Maps/Platformer/Backgrounds/OceanBackground.h"
-#include "Scenes/Maps/Platformer/Backgrounds/SnowBackground.h"
+#include "Scenes/Maps/Platformer/Backgrounds/Background.h"
 
 using namespace cocos2d;
 

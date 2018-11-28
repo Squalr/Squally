@@ -12,7 +12,7 @@ Ogre* Ogre::deserialize(ValueMap* initProperties)
 }
 
 Ogre::Ogre(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Forest_Enemies_Ogre_Animations,
+	EntityResources::Environment_Forest_Enemies_Ogre_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(256.0f, 248.0f),
 	1.0f,

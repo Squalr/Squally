@@ -14,7 +14,7 @@ HexusOpponentLioness* HexusOpponentLioness::getInstance()
 }
 
 HexusOpponentLioness::HexusOpponentLioness() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Ruins_Enemies_Lioness_Animations,
+	EntityResources::Environment_Ruins_Enemies_Lioness_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	0.9f,
 	Vec2(-48.0f, -64.0f),

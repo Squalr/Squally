@@ -14,7 +14,7 @@ HexusOpponentHorus* HexusOpponentHorus::getInstance()
 }
 
 HexusOpponentHorus::HexusOpponentHorus() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Ruins_Npcs_Horus_Animations,
+	EntityResources::Environment_Ruins_Npcs_Horus_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

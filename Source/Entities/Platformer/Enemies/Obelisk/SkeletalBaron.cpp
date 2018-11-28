@@ -12,7 +12,7 @@ SkeletalBaron* SkeletalBaron::deserialize(ValueMap* initProperties)
 }
 
 SkeletalBaron::SkeletalBaron(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Obelisk_Enemies_SkeletalBaron_Animations,
+	EntityResources::Environment_Obelisk_Enemies_SkeletalBaron_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 368.0f),
 	0.8f,

@@ -12,7 +12,7 @@ Viking* Viking::deserialize(ValueMap* initProperties)
 }
 
 Viking::Viking(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Jungle_Enemies_Viking_Animations,
+	EntityResources::Environment_Jungle_Enemies_Viking_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(284.0f, 256.0f),
 	1.0f,

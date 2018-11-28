@@ -12,7 +12,7 @@ Santa* Santa::deserialize(ValueMap* initProperties)
 }
 
 Santa::Santa(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Snow_Enemies_Santa_Animations,
+	EntityResources::Environment_Snow_Enemies_Santa_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(420.0f, 452.0f),
 	0.7f,

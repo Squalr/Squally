@@ -23,7 +23,7 @@ PlatformerMap::PlatformerMap()
 
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, -768.0f));
 
-	this->hackerModeBackground = Sprite::create(BackgroundResources::Platformer_MatrixRain_HackerModeBackground);
+	this->hackerModeBackground = Sprite::create(BackgroundResources::MatrixRain_HackerModeBackground);
 	this->hackerModeRain = MatrixRain::create();
 	this->hackerModePostProcessGlow = PostProcess::create(ShaderResources::Vertex_Generic, ShaderResources::Fragment_GrayBlur);
 	this->hud = Hud::create();
@@ -242,6 +242,8 @@ void PlatformerMap::toggleHackerMode()
 
 void PlatformerMap::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
 {
+	IMap::draw(renderer, transform, flags);
+
 	if (PlatformerMap::hackerMode)
 	{
 		// Zac : well, using the camera correctly fucked my shaders -- these apparently render at the origin rather than the camera position

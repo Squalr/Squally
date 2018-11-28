@@ -12,7 +12,7 @@ Hades* Hades::deserialize(ValueMap* initProperties)
 }
 
 Hades::Hades(ValueMap* initProperties) : NpcBase(initProperties,
-	EntityResources::Platformer_Environment_Jungle_Npcs_Hades_Animations,
+	EntityResources::Environment_Jungle_Npcs_Hades_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,

@@ -12,7 +12,7 @@ MummyPriest* MummyPriest::deserialize(ValueMap* initProperties)
 }
 
 MummyPriest::MummyPriest(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Ruins_Enemies_MummyPriest_Animations,
+	EntityResources::Environment_Ruins_Enemies_MummyPriest_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(128.0f, 256.0f),
 	0.8f,

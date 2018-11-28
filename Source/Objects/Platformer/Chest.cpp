@@ -15,9 +15,9 @@ Chest::Chest(Node* contentNode) : Node()
 	this->chestOpen = Node::create();
 	this->chestClosed = Node::create();
 
-	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::Platformer_ChestBaseFront);
-	Sprite* chestOpenLidSprite = Sprite::create(ObjectResources::Platformer_ChestLid);
-	Sprite* chestClosedSprite = Sprite::create(ObjectResources::Platformer_ChestClosed);
+	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::ChestBaseFront);
+	Sprite* chestOpenLidSprite = Sprite::create(ObjectResources::ChestLid);
+	Sprite* chestClosedSprite = Sprite::create(ObjectResources::ChestClosed);
 
 	this->chestOpen->addChild(chestOpenLidSprite);
 	this->chestOpen->addChild(this->content);

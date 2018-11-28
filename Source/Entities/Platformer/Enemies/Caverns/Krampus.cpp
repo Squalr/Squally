@@ -12,7 +12,7 @@ Krampus* Krampus::deserialize(ValueMap* initProperties)
 }
 
 Krampus::Krampus(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Caverns_Enemies_Krampus_Animations,
+	EntityResources::Environment_Caverns_Enemies_Krampus_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(396.0f, 412.0f),
 	1.0f,

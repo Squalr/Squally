@@ -39,7 +39,7 @@ WorldMap::WorldMap()
 		UIResources::Menus_WorldMap_JungleSelected,
 		UIResources::Menus_WorldMap_JungleLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameJungle),
-		MapResources::Platformer_Jungle_Jungle
+		MapResources::Jungle_Jungle
 	);
 
 	this->waterRuins = MapNode::create(
@@ -47,7 +47,7 @@ WorldMap::WorldMap()
 		UIResources::Menus_WorldMap_WaterRuinsSelected,
 		UIResources::Menus_WorldMap_WaterRuinsLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameAquaticRuins),
-		MapResources::Platformer_AquaticRuins_AquaticRuins
+		MapResources::AquaticRuins_AquaticRuins
 	);
 
 	this->forest = MapNode::create(
@@ -55,7 +55,7 @@ WorldMap::WorldMap()
 		UIResources::Menus_WorldMap_ForestSelected,
 		UIResources::Menus_WorldMap_ForestLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameForest),
-		MapResources::Platformer_Forest_Forest
+		MapResources::Forest_Forest
 	);
 
 	this->caverns = MapNode::create(
@@ -63,7 +63,7 @@ WorldMap::WorldMap()
 		UIResources::Menus_WorldMap_MountainSelected,
 		UIResources::Menus_WorldMap_MountainLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameCaverns),
-		MapResources::Platformer_Caverns_Caverns
+		MapResources::Caverns_Caverns
 	);
 
 	this->castle = MapNode::create(
@@ -71,7 +71,7 @@ WorldMap::WorldMap()
 		UIResources::Menus_WorldMap_CastleSelected,
 		UIResources::Menus_WorldMap_CastleLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameCastle),
-		MapResources::Platformer_Castle_Castle
+		MapResources::Castle_Castle
 	);
 
 	this->iceCaps = MapNode::create(
@@ -79,7 +79,7 @@ WorldMap::WorldMap()
 		UIResources::Menus_WorldMap_IceMountainSelected,
 		UIResources::Menus_WorldMap_IceMountainLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameIceCaps),
-		MapResources::Platformer_IceCaps_IceCaps
+		MapResources::IceCaps_IceCaps
 	);
 
 	this->obelisk = MapNode::create(
@@ -87,7 +87,7 @@ WorldMap::WorldMap()
 		UIResources::Menus_WorldMap_ObeliskSelected,
 		UIResources::Menus_WorldMap_ObeliskLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameObelisk),
-		MapResources::Platformer_Obelisk_Obelisk
+		MapResources::Obelisk_Obelisk
 	);
 
 	this->volcano = MapNode::create(
@@ -95,7 +95,7 @@ WorldMap::WorldMap()
 		UIResources::Menus_WorldMap_VolcanoSelected,
 		UIResources::Menus_WorldMap_VolcanoLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameVolcano),
-		MapResources::Platformer_Volcano_Volcano
+		MapResources::Volcano_Volcano
 	);
 
 	this->mecha = MapNode::create(
@@ -103,7 +103,7 @@ WorldMap::WorldMap()
 		UIResources::Menus_WorldMap_MechSelected,
 		UIResources::Menus_WorldMap_MechLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameMech),
-		MapResources::Platformer_Mech_Mech
+		MapResources::Mech_Mech
 	);
 
 	this->fogA->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-40.0f, 0))));

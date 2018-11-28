@@ -14,7 +14,7 @@ HexusOpponentMinotaur* HexusOpponentMinotaur::getInstance()
 }
 
 HexusOpponentMinotaur::HexusOpponentMinotaur() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Jungle_Enemies_Minotaur_Animations,
+	EntityResources::Environment_Jungle_Enemies_Minotaur_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

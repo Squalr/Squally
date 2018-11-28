@@ -14,7 +14,7 @@ HexusOpponentGoblinGruntBoar* HexusOpponentGoblinGruntBoar::getInstance()
 }
 
 HexusOpponentGoblinGruntBoar::HexusOpponentGoblinGruntBoar() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Jungle_Enemies_GoblinGruntBoar_Animations,
+	EntityResources::Environment_Jungle_Enemies_GoblinGruntBoar_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -32.0f),

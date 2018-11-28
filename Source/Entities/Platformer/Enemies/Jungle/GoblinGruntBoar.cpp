@@ -12,7 +12,7 @@ GoblinGruntBoar* GoblinGruntBoar::deserialize(ValueMap* initProperties)
 }
 
 GoblinGruntBoar::GoblinGruntBoar(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Jungle_Enemies_GoblinGruntBoar_Animations,
+	EntityResources::Environment_Jungle_Enemies_GoblinGruntBoar_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(128.0f, 296.0f),
 	0.8f,

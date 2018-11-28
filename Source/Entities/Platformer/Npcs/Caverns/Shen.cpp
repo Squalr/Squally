@@ -12,7 +12,7 @@ Shen* Shen::deserialize(ValueMap* initProperties)
 }
 
 Shen::Shen(ValueMap* initProperties) : NpcBase(initProperties,
-	EntityResources::Platformer_Environment_Caverns_Npcs_Shen_Animations,
+	EntityResources::Environment_Caverns_Npcs_Shen_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(472.0f, 780.0f),
 	0.3f,

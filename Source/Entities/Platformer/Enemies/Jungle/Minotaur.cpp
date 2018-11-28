@@ -12,7 +12,7 @@ Minotaur* Minotaur::deserialize(ValueMap* initProperties)
 }
 
 Minotaur::Minotaur(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Jungle_Enemies_Minotaur_Animations,
+	EntityResources::Environment_Jungle_Enemies_Minotaur_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(278.0f, 288.0f),
 	1.0f,

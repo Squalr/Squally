@@ -14,7 +14,7 @@ HexusOpponentLightningGolem* HexusOpponentLightningGolem::getInstance()
 }
 
 HexusOpponentLightningGolem::HexusOpponentLightningGolem() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Caverns_Enemies_LightningGolem_Animations,
+	EntityResources::Environment_Caverns_Enemies_LightningGolem_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -128.0f),

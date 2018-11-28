@@ -14,7 +14,7 @@ HexusOpponentScaldor* HexusOpponentScaldor::getInstance()
 }
 
 HexusOpponentScaldor::HexusOpponentScaldor() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Volcano_Npcs_Scaldor_Animations,
+	EntityResources::Environment_Volcano_Npcs_Scaldor_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(-48.0f, -48.0f),

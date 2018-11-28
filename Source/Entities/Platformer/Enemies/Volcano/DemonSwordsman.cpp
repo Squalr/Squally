@@ -12,7 +12,7 @@ DemonSwordsman* DemonSwordsman::deserialize(ValueMap* initProperties)
 }
 
 DemonSwordsman::DemonSwordsman(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Volcano_Enemies_DemonSwordsman_Animations,
+	EntityResources::Environment_Volcano_Enemies_DemonSwordsman_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(212.0f, 268.0f),
 	0.65f,

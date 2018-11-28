@@ -14,7 +14,7 @@ HexusOpponentEnt* HexusOpponentEnt::getInstance()
 }
 
 HexusOpponentEnt::HexusOpponentEnt() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Forest_Enemies_Ent_Animations,
+	EntityResources::Environment_Forest_Enemies_Ent_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	0.85f,
 	Vec2(-144.0f, -128.0f),

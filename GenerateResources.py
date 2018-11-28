@@ -16,7 +16,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/Gameplay/Backgrounds")
+	), "Resources/Gameplay/Platformer/Backgrounds")
 
 	# DecorResources
 	createResourceFile("DecorResources", (
@@ -25,7 +25,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/Gameplay/Decor")
+	), "Resources/Gameplay/Platformer/Decor")
 
 	# EntityResources
 	createResourceFile("EntityResources", (
@@ -34,7 +34,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/Gameplay/Entities")
+	), "Resources/Gameplay/Platformer/Entities")
 
 	# HexusResources
 	createResourceFile("HexusResources", (
@@ -52,7 +52,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/Gameplay/Objects")
+	), "Resources/Gameplay/Platformer/Objects")
 
 	# CutsceneResources
 	createResourceFile("CutsceneResources", (
@@ -94,7 +94,7 @@ def main():
 	createResourceFile("MapResources", (
 		'.tmx',
 		'.png',
-	), "Resources/Gameplay/Maps")
+	), "Resources/Gameplay/Platformer/Maps")
 
 	# ParticleResources
 	createResourceFile("ParticleResources", (

@@ -55,29 +55,14 @@ void BackgroundDeserializer::onDeserializationRequest(DeserializationEvents::Lay
 
 	std::string background = properties.at(BackgroundDeserializer::MapKeyBackgroundLayer).asString();
 
-	if (background == JungleBackground::MapKeyBackgroundLayerJungle)
+	// For decor, simply grab the resource of the same name of the object type
+	Sprite* sprite = Sprite::create("GamePlay/Platformer/Backgrounds/" + background + ".png");
+
+	if (sprite == nullptr)
 	{
-		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(JungleBackground::create(&properties, name), args->objectGroup->layerIndex));
-	}
-	else if (background == MountainBackground::MapKeyBackgroundLayerMountains)
-	{
-		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(MountainBackground::create(&properties, name), args->objectGroup->layerIndex));
-	}
-	else if (background == ObeliskBackground::MapKeyBackgroundLayerObelisk)
-	{
-		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(ObeliskBackground::create(&properties, name), args->objectGroup->layerIndex));
-	}
-	else if (background == OceanBackground::MapKeyBackgroundLayerOcean)
-	{
-		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(OceanBackground::create(&properties, name), args->objectGroup->layerIndex));
-	}
-	else if (background == SnowBackground::MapKeyBackgroundLayerSnow)
-	{
-		args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(SnowBackground::create(&properties, name), args->objectGroup->layerIndex));
-	}
-	else
-	{
-		CCLOG("Invalid background property on background layer");
+		CCLOG("Non-existant background");
 		return;
 	}
+
+	args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(Background::create(&properties, name, sprite), args->objectGroup->layerIndex));
 }

@@ -14,7 +14,7 @@ HexusOpponentZeus* HexusOpponentZeus::getInstance()
 }
 
 HexusOpponentZeus::HexusOpponentZeus() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Ruins_Npcs_Zeus_Animations,
+	EntityResources::Environment_Ruins_Npcs_Zeus_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-32.0f, -64.0f),

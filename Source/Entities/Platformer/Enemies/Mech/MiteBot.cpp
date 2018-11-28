@@ -12,7 +12,7 @@ MiteBot* MiteBot::deserialize(ValueMap* initProperties)
 }
 
 MiteBot::MiteBot(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Mech_Enemies_MiteBot_Animations,
+	EntityResources::Environment_Mech_Enemies_MiteBot_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(420.0f, 296.0f),
 	0.4f,

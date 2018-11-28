@@ -14,7 +14,7 @@ HexusOpponentNessie* HexusOpponentNessie::getInstance()
 }
 
 HexusOpponentNessie::HexusOpponentNessie() : HexusOpponentData(
-	EntityResources::Platformer_Environment_Snow_Npcs_Nessie_Animations,
+	EntityResources::Environment_Snow_Npcs_Nessie_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

@@ -12,7 +12,7 @@ Genie* Genie::deserialize(ValueMap* initProperties)
 }
 
 Genie::Genie(ValueMap* initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Platformer_Environment_Caverns_Enemies_Genie_Animations,
+	EntityResources::Environment_Caverns_Enemies_Genie_Animations,
 	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
 	Size(512.0f, 1126.0f),
 	0.20f,
