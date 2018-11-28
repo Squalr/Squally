@@ -34,7 +34,7 @@ SerializableLayer::SerializableLayer(ValueMap* initProperties, std::string name,
 
 	if (GameUtils::keyExists(this->properties, SerializableLayer::MapKeyPropertyDepth))
 	{
-		this->setPositionZ(-this->properties->at(SerializableLayer::MapKeyPropertyDepth).asFloat());
+		this->setPositionZ(this->properties->at(SerializableLayer::MapKeyPropertyDepth).asFloat());
 	}
 
 	for (auto it = objects.begin(); it != objects.end(); it++)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" nextobjectid="370">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" nextobjectid="401">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -12,16 +12,67 @@
  </objectgroup>
  <objectgroup name="background">
   <properties>
-   <property name="background" value="Bliss"/>
+   <property name="background" value="SkyMisty"/>
    <property name="type" value="background"/>
   </properties>
  </objectgroup>
- <objectgroup name="decor_1024">
+ <objectgroup name="decor -4096">
   <properties>
-   <property name="depth" type="float" value="1024"/>
+   <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="134" name="Forest/Ruins4" type="decor" x="3202.91" y="1527.88" width="320" height="640">
+  <object id="376" name="BGForest/MistyMountain1" type="decor" x="4394.91" y="1055.88" width="2237" height="989"/>
+  <object id="377" name="BGForest/MistyMountain2" type="decor" x="6856" y="1136" width="1246" height="769"/>
+ </objectgroup>
+ <objectgroup name="background mist">
+  <properties>
+   <property name="background" value="Mist"/>
+   <property name="type" value="background"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="decor -3072">
+  <properties>
+   <property name="depth" type="float" value="-3072"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="396" name="BGForest/Mountain1" type="decor" x="3145.5" y="1353.5" width="2237" height="989"/>
+ </objectgroup>
+ <objectgroup name="decor -2048">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="379" name="BGForest/Mountain2" type="decor" x="5409.5" y="1361.5" width="2237" height="989"/>
+ </objectgroup>
+ <objectgroup name="decor -1536">
+  <properties>
+   <property name="depth" type="float" value="-1536"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="398" name="BGForest/BackgroundHill2" type="decor" x="3894.5" y="1765" width="1985" height="758"/>
+ </objectgroup>
+ <objectgroup name="decor -1024">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="388" name="BGForest/BackgroundHill1" type="decor" x="2912.5" y="2265.5" width="1985" height="758"/>
+  <object id="389" name="BGForest/BackgroundHill3" type="decor" x="4838.5" y="1933" width="1985" height="758"/>
+ </objectgroup>
+ <objectgroup name="decor -768">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="393" name="BGForest/Hill1" type="decor" x="3217.44" y="2020.76" width="1985" height="758"/>
+  <object id="394" name="BGForest/Hill2" type="decor" x="5150.77" y="2048.03" width="1985" height="758"/>
+ </objectgroup>
+ <objectgroup name="decor -512">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="386" name="Forest/Ruins4" type="decor" x="3328" y="1544" width="320" height="640">
    <properties>
     <property name="float-time-x" type="float" value="8"/>
     <property name="float-time-y" type="float" value="8"/>
@@ -30,9 +81,9 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="decor_256">
+ <objectgroup name="decor -256">
   <properties>
-   <property name="depth" type="float" value="256"/>
+   <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="369" name="Forest/Ruins5" type="decor" x="3736" y="1600" width="512" height="1048">
@@ -178,6 +229,7 @@
   </object>
   <object id="176" name="solid" type="collision" x="2069.14" y="2599.12" width="718.32" height="1378.97"/>
   <object id="177" name="solid" type="collision" x="2745.83" y="2603.52" width="518.15" height="105.94"/>
+  <object id="395" name="solid" type="collision" x="4760.51" y="2658.35" width="266.852" height="86.3333"/>
  </objectgroup>
  <objectgroup name="objects">
   <properties>
@@ -269,5 +321,13 @@
    <property name="type" value="weather"/>
    <property name="weather" value="rain"/>
   </properties>
+ </objectgroup>
+ <objectgroup name="decor +512">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="374" name="ForestBG/ForegroundTree1" type="decor" x="1296" y="1344" width="1080" height="2992"/>
+  <object id="375" name="ForestBG/ForegroundTree2" type="decor" x="1812" y="1696" width="1080" height="2992"/>
  </objectgroup>
 </map>
