@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" nextobjectid="416">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" nextobjectid="417">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -36,7 +36,6 @@
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="379" name="Forest/Background/Mountain1" type="decor" x="5073.5" y="1377.5" width="2237" height="989"/>
  </objectgroup>
  <objectgroup name="background mist">
   <properties>
@@ -98,23 +97,6 @@
   <object id="415" name="grass" type="terrain" x="1632" y="2716">
    <polyline points="0,0 120,-52 268,-72 364,-84 508,-84 616,-96 836,-116 972,-112 1076,-104 1300,-84 1364,-100 1424,-112 1524,-124 1720,-108 1944,-104 2044,-124 2360,-140 2500,-104 2780,-76 2936,-92 3048,-104 3208,-120 3288,-100 3488,-24 3612,48 3664,80 3684,88 3804,88 3876,100 3960,96 4056,96 4144,116 4296,84 4380,80 4468,84 4568,88 4744,104 4804,104 4892,96 4988,84 5112,68 5160,40 5192,8 5268,-56 5396,-112 5512,-156 5620,-220 5664,-240 5728,-248 5780,-248 5832,-220 5864,-156 5872,-104 5900,8 5908,40 5924,84 5912,128 5880,176 5860,204 5848,260 5856,384 5864,440 5884,604 5872,772 5852,876 5676,1084 5640,1164 5628,1232 64,1248 28,1208 -40,1100 -28,944 -8,844 -76,676 -132,580 -152,476 -140,432 -84,340 -152,152 -144,64 -96,24"/>
   </object>
- </objectgroup>
- <objectgroup name="collision">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="39" name="solid" type="collision" x="4234.82" y="2734.61" width="3048.67" height="1253"/>
-  <object id="41" name="solid" type="collision" x="4837.54" y="2595.89">
-   <polygon points="0,0 461.52,203.842 0,207.08"/>
-  </object>
-  <object id="49" name="solid" type="collision" x="4238.82" y="2594.61" width="598.67" height="917.33"/>
-  <object id="51" name="solid" type="collision" x="3919.28" y="2628.73" width="345.42" height="99.88"/>
-  <object id="70" name="solid" type="collision" x="3220.14" y="2598.51" width="733.71" height="1405.15"/>
-  <object id="165" name="solid" type="collision" x="7291.45" y="2486">
-   <polygon points="0,0 1.87,271.65 -538.13,274"/>
-  </object>
-  <object id="176" name="solid" type="collision" x="2057.14" y="2607.12" width="718.32" height="1378.97"/>
-  <object id="177" name="solid" type="collision" x="2745.83" y="2603.52" width="518.15" height="105.94"/>
  </objectgroup>
  <objectgroup name="objects">
   <properties>

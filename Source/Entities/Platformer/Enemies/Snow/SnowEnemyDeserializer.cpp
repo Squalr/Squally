@@ -38,7 +38,7 @@ void SnowEnemyDeserializer::initializeListeners()
 void SnowEnemyDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
-	std::string name = properties.at(SerializableObject::KeyName).asString();
+	std::string name = properties.at(SerializableObject::MapKeyName).asString();
 	SerializableObject* newEntity = nullptr;
 
 	if (name == Cyrogen::MapKeyEnemyCyrogen)

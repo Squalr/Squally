@@ -891,6 +891,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Utils/GameUtils.h
 	Source/Engine/Utils/HackUtils.h
 	Source/Engine/Utils/LogUtils.h
+	Source/Engine/Utils/MPE_fastpoly2tri.h
 	Source/Engine/Utils/MathUtils.h
 	Source/Engine/Utils/StrUtils.h
 	Source/Engine/Utils/SystemUtils.h

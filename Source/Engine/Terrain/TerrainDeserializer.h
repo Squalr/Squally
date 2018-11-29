@@ -3,7 +3,9 @@
 
 #include "Engine/Events/DeserializationEvents.h"
 #include "Engine/GlobalNode.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Terrain/TerrainObject.h"
+#include "Engine/Utils/MPE_fastpoly2tri.h"
 
 using namespace cocos2d;
 

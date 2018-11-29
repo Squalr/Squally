@@ -33,7 +33,7 @@ void IsometricDecorDeserializer::onDeserializationRequest(DeserializationEvents:
 	if (args->typeName == IsometricDecorDeserializer::KeyTypeDecor)
 	{
 		ValueMap properties = args->properties;
-		std::string name = properties.at(SerializableObject::KeyName).asString();
+		std::string name = properties.at(SerializableObject::MapKeyName).asString();
 
 		// For decor, simply grab the resource of the same name of the object type
 		Sprite* sprite = Sprite::create("Gameplay/Isometric/Decor" + name + ".png");
