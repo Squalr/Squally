@@ -92,7 +92,6 @@ PauseMenu::PauseMenu()
 	this->addChild(this->resumeButton);
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
-
 	this->addChild(Mouse::create());
 }
 
@@ -173,8 +172,6 @@ void PauseMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	{
 		return;
 	}
-
-	this->addChild(Mouse::create());
 
 	switch (keyCode)
 	{

@@ -112,6 +112,8 @@ list(APPEND GAME_SOURCE
 	Source/Engine/SmartScene.cpp
 	Source/Engine/Sound/SoundManager.cpp
 	Source/Engine/Steam/Steam.cpp
+	Source/Engine/Terrain/TerrainDeserializer.cpp
+	Source/Engine/Terrain/TerrainObject.cpp
 	Source/Engine/UI/Controls/CCheckbox.cpp
 	Source/Engine/UI/Controls/CProgressBar.cpp
 	Source/Engine/UI/Controls/CRadioButton.cpp
@@ -861,6 +863,8 @@ list(APPEND GAME_HEADER
 	Source/Engine/SmartScene.h
 	Source/Engine/Sound/SoundManager.h
 	Source/Engine/Steam/Steam.h
+	Source/Engine/Terrain/TerrainDeserializer.h
+	Source/Engine/Terrain/TerrainObject.h
 	Source/Engine/UI/Controls/CCheckbox.h
 	Source/Engine/UI/Controls/CProgressBar.h
 	Source/Engine/UI/Controls/CRadioButton.h

@@ -82,7 +82,7 @@ private:
 	CollisionData constructCollisionData(PhysicsContact& contact);
 
 	CategoryName categoryName;
-	PhysicsBody * physicsBody;
+	PhysicsBody* physicsBody;
 
 	bool physicsEnabled;
 };
