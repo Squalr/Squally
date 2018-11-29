@@ -2,7 +2,6 @@
 #include "cocos2d.h"
 
 #include "Engine/Camera/GameCamera.h"
-#include "Engine/Input/InputManager.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Shaders/PostProcess.h"
 #include "Engine/UI/FadeScene.h"

@@ -1,8 +1,7 @@
 #pragma once
-#include <mutex>
 #include "cocos2d.h"
 
-#include "Engine/Input/InputManager.h"
+#include "Engine/Input/Input.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Hover.h"
 #include "Events/NavigationEvents.h"
@@ -43,7 +42,6 @@ private:
 	bool isFlipped;
 	bool canJump;
 
-	InputManager* inputManager;
 	Hover* hover;
 
 	static const float squallyScale;

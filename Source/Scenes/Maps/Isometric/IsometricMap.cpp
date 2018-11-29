@@ -45,7 +45,6 @@ IsometricMap::IsometricMap()
 	this->gamePostProcessNightVision->setVisible(false);
 	this->developerHud->setVisible(false);
 
-	this->addChild(InputManager::claimInstance());
 	this->addChild(this->hackerModeBackground);
 	this->addChild(this->hackerModeRain);
 	this->addChild(this->hackerModePostProcessGlow);

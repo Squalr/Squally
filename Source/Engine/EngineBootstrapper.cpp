@@ -4,6 +4,7 @@ void EngineBootstrapper::initialize()
 {
 	// Initialize global objects
 	Analytics::registerGlobalNode();
+	Input::registerGlobalNode();
 	MouseState::registerGlobalNode();
 	ObjectLayerDeserializer::registerGlobalNode();
 	CollisionDeserializer::registerGlobalNode();

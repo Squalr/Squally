@@ -1,7 +1,6 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Input/InputManager.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 

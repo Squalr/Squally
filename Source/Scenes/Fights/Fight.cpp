@@ -39,8 +39,6 @@ void Fight::initializeListeners()
 
 void Fight::loadFight(Squally* squally, PlatformerEnemy* enemy)
 {
-	this->addChild(InputManager::claimInstance());
-
 	// this->addChild(this->background);
 	// this->addChild(this->objectLayer);
 	// this->addChild(this->entityLayer);
