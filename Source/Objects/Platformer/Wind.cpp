@@ -11,8 +11,8 @@ Wind* Wind::create(ValueMap* initProperties)
 
 Wind::Wind(ValueMap* initProperties) : HackableObject(initProperties)
 {
-	float width = this->properties->at(SerializableObject::KeyWidth).asFloat();
-	float height = this->properties->at(SerializableObject::KeyHeight).asFloat();
+	float width = this->properties->at(SerializableObject::MapKeyWidth).asFloat();
+	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
 	float speedX = 0.0f;
 	float speedY = 0.0f;
 

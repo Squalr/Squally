@@ -1,6 +1,6 @@
 #include "TerrainObject.h"
 
-std::string TerrainObject::KeyTypeTerrain = "terrain";
+std::string TerrainObject::MapKeyTypeTerrain = "terrain";
 
 const std::string TerrainObject::RequestTerrainMappingEvent = "request_terrain_mapping";
 
@@ -68,7 +68,7 @@ void TerrainObject::setTerrainGroups(CategoryGroup categoryGroup, std::vector<Ca
 		}
 
 		this->physicsBody->setCategoryBitmask(categoryGroup);
-		this->physicsBody->setTerrainBitmask(collidesWithBitmask);
+		this->physicsBody->setCollisionBitmask(collidesWithBitmask);
 		this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
 	}
 }

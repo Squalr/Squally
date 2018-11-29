@@ -38,7 +38,7 @@ void ObeliskNpcDeserializer::initializeListeners()
 void ObeliskNpcDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
-	std::string name = properties.at(SerializableObject::KeyName).asString();
+	std::string name = properties.at(SerializableObject::MapKeyName).asString();
 	SerializableObject* newEntity = nullptr;
 
 	if (name == Amelia::MapKeyNpcAmelia)

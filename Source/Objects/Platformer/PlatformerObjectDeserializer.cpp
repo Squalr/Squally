@@ -33,7 +33,7 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 	if (args->typeName == PlatformerObjectDeserializer::KeyTypeObject)
 	{
 		ValueMap properties = args->properties;
-		std::string name = properties.at(SerializableObject::KeyName).asString();
+		std::string name = properties.at(SerializableObject::MapKeyName).asString();
 		SerializableObject* newObject = nullptr;
 
 		// TODO: Move these constants into their classes

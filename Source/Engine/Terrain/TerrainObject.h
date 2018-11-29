@@ -38,7 +38,7 @@ public:
 
 	virtual void setPhysicsEnabled(bool enabled);
 
-	static std::string KeyTypeTerrain;
+	static std::string MapKeyTypeTerrain;
 
 protected:
 	enum TerrainDirection

@@ -37,21 +37,21 @@ void CollisionDeserializer::initializeListeners()
 
 void CollisionDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
 {
-	if (args->typeName == CollisionObject::KeyTypeCollision)
+	if (args->typeName == CollisionObject::MapKeyTypeCollision)
 	{
 		ValueMap* properties = new ValueMap(args->properties);
 		ValueVector* polygonPoints = nullptr;
-		CategoryName categoryName = properties->at(SerializableObject::KeyName).asString();
+		CategoryName categoryName = properties->at(SerializableObject::MapKeyName).asString();
 		bool isPolygon = false;
-		float width = properties->at(SerializableObject::KeyWidth).asFloat();
-		float height = properties->at(SerializableObject::KeyHeight).asFloat();
-		float x = properties->at(SerializableObject::KeyXPosition).asFloat() + width / 2.0f;
-		float y = properties->at(SerializableObject::KeyYPosition).asFloat() + height / 2.0f;
+		float width = properties->at(SerializableObject::MapKeyWidth).asFloat();
+		float height = properties->at(SerializableObject::MapKeyHeight).asFloat();
+		float x = properties->at(SerializableObject::MapKeyXPosition).asFloat() + width / 2.0f;
+		float y = properties->at(SerializableObject::MapKeyYPosition).asFloat() + height / 2.0f;
 
-		if (GameUtils::keyExists(properties, SerializableObject::KeyPoints))
+		if (GameUtils::keyExists(properties, SerializableObject::MapKeyPoints))
 		{
 			isPolygon = true;
-			polygonPoints = &(properties->at(SerializableObject::KeyPoints).asValueVector());
+			polygonPoints = &(properties->at(SerializableObject::MapKeyPoints).asValueVector());
 		}
 
 		PhysicsBody* physicsBody = nullptr;
@@ -65,8 +65,8 @@ void CollisionDeserializer::onDeserializationRequest(DeserializationEvents::Obje
 			{
 				auto point = it->asValueMap();
 
-				float deltaX = point.at(SerializableObject::KeyXPosition).asFloat();
-				float deltaY = point.at(SerializableObject::KeyYPosition).asFloat();
+				float deltaX = point.at(SerializableObject::MapKeyXPosition).asFloat();
+				float deltaY = point.at(SerializableObject::MapKeyYPosition).asFloat();
 
 				// Negate the Y since we're operating in a different coordinate system
 				points[index++] = Vec2(deltaX, -deltaY);

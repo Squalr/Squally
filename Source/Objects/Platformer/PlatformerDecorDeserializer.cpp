@@ -33,7 +33,7 @@ void PlatformerDecorDeserializer::onDeserializationRequest(DeserializationEvents
 	if (args->typeName == PlatformerDecorDeserializer::KeyTypeDecor)
 	{
 		ValueMap properties = args->properties;
-		std::string name = properties.at(SerializableObject::KeyName).asString();
+		std::string name = properties.at(SerializableObject::MapKeyName).asString();
 
 		// For decor, simply grab the resource of the same name of the object type
 		Sprite* sprite = Sprite::create("Platformer/Decor/" + name + ".png");
@@ -44,10 +44,10 @@ void PlatformerDecorDeserializer::onDeserializationRequest(DeserializationEvents
 			return;
 		}
 
-		float width = properties.at(SerializableObject::KeyWidth).asFloat();
-		float height = properties.at(SerializableObject::KeyHeight).asFloat();
-		float x = properties.at(SerializableObject::KeyXPosition).asFloat();
-		float y = properties.at(SerializableObject::KeyYPosition).asFloat();
+		float width = properties.at(SerializableObject::MapKeyWidth).asFloat();
+		float height = properties.at(SerializableObject::MapKeyHeight).asFloat();
+		float x = properties.at(SerializableObject::MapKeyXPosition).asFloat();
+		float y = properties.at(SerializableObject::MapKeyYPosition).asFloat();
 		SerializableObject* newObject = PlatformerDecorObject::create(&properties);
 
 		newObject->addChild(sprite);
@@ -59,9 +59,9 @@ void PlatformerDecorDeserializer::onDeserializationRequest(DeserializationEvents
 		sprite->setAnchorPoint(Vec2(0.0f, 1.0f));
 		newObject->setPosition(Vec2(x, y + height));
 
-		if (GameUtils::keyExists(&properties, SerializableObject::KeyRotation))
+		if (GameUtils::keyExists(&properties, SerializableObject::MapKeyRotation))
 		{
-			float rotation = properties.at(SerializableObject::KeyRotation).asFloat();
+			float rotation = properties.at(SerializableObject::MapKeyRotation).asFloat();
 			newObject->setRotation(rotation);
 		}
 

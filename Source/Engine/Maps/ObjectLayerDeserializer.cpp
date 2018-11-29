@@ -71,47 +71,47 @@ void ObjectLayerDeserializer::onDeserializationRequest(DeserializationEvents::La
 			std::string typeName = "";
 
 			// Append additional map metadata properties to object at load time to assist in deserialization
-			object[SerializableObject::KeyMetaIsIsometric] = args->mapMeta.isIsometric;
-			object[SerializableObject::KeyMetaMapWidth] = args->mapMeta.mapSize.width;
-			object[SerializableObject::KeyMetaMapHeight] = args->mapMeta.mapSize.height;
+			object[SerializableObject::MapKeyMetaIsIsometric] = args->mapMeta.isIsometric;
+			object[SerializableObject::MapKeyMetaMapWidth] = args->mapMeta.mapSize.width;
+			object[SerializableObject::MapKeyMetaMapHeight] = args->mapMeta.mapSize.height;
 
-			if (!GameUtils::keyExists(&object, SerializableObject::KeyType))
+			if (!GameUtils::keyExists(&object, SerializableObject::MapKeyType))
 			{
 				CCLOG("Missing type on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(&object, SerializableObject::KeyName))
+			if (!GameUtils::keyExists(&object, SerializableObject::MapKeyName))
 			{
 				CCLOG("Missing name on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(&object, SerializableObject::KeyWidth))
+			if (!GameUtils::keyExists(&object, SerializableObject::MapKeyWidth))
 			{
 				CCLOG("Missing width on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(&object, SerializableObject::KeyHeight))
+			if (!GameUtils::keyExists(&object, SerializableObject::MapKeyHeight))
 			{
 				CCLOG("Missing height on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(&object, SerializableObject::KeyXPosition))
+			if (!GameUtils::keyExists(&object, SerializableObject::MapKeyXPosition))
 			{
 				CCLOG("Missing x position on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(&object, SerializableObject::KeyYPosition))
+			if (!GameUtils::keyExists(&object, SerializableObject::MapKeyYPosition))
 			{
 				CCLOG("Missing y position on object");
 				continue;
 			}
 
-			typeName = object.at(SerializableObject::KeyType).asString();
+			typeName = object.at(SerializableObject::MapKeyType).asString();
 
 			// Fire event requesting the deserialization of this object
 			DeserializationEvents::TriggerRequestObjectDeserialize(DeserializationEvents::ObjectDeserializationRequestArgs(
