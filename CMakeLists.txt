@@ -93,7 +93,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Hackables/HackableCode.cpp
 	Source/Engine/Hackables/HackableData.cpp
 	Source/Engine/Hackables/HackableObject.cpp
-	Source/Engine/Input/InputManager.cpp
+	Source/Engine/Input/Input.cpp
 	Source/Engine/Input/MouseState.cpp
 	Source/Engine/Localization/Localization.cpp
 	Source/Engine/Maps/MapLoader.cpp
@@ -841,7 +841,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Hackables/HackableCode.h
 	Source/Engine/Hackables/HackableData.h
 	Source/Engine/Hackables/HackableObject.h
-	Source/Engine/Input/InputManager.h
+	Source/Engine/Input/Input.h
 	Source/Engine/Input/MouseState.h
 	Source/Engine/Localization/Localization.h
 	Source/Engine/Maps/MapLoader.h

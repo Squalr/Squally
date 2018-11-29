@@ -1,7 +1,6 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Input/InputManager.h"
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"

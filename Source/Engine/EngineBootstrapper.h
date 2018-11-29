@@ -2,6 +2,7 @@
 #include "cocos2d.h"
 
 #include "Engine/Analytics/Analytics.h"
+#include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
 #include "Engine/Maps/ObjectLayerDeserializer.h"
 #include "Engine/Physics/CollisionDeserializer.h"

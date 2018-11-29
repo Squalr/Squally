@@ -1,7 +1,6 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Input/InputManager.h"
 #include "Entities/Isometric/IsometricEntity.h"
 #include "Events/NavigationEvents.h"
 
@@ -25,8 +24,6 @@ private:
 	void registerHackables();
 	void onEnter() override;
 	void update(float) override;
-
-	InputManager* inputManager;
 
 	static IsometricSqually* squallyInstance;
 };

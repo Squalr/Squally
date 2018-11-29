@@ -68,7 +68,8 @@ void CollisionDeserializer::onDeserializationRequest(DeserializationEvents::Obje
 				float deltaX = point.at(SerializableObject::KeyXPosition).asFloat();
 				float deltaY = point.at(SerializableObject::KeyYPosition).asFloat();
 
-				points[index++] = Vec2(x + deltaX, y - deltaY);
+				// Negate the Y since we're operating in a different coordinate system
+				points[index++] = Vec2(deltaX, -deltaY);
 			}
 
 			physicsBody = PhysicsBody::createPolygon(points, polygonPoints->size(), PhysicsMaterial(0.0f, 0.0f, 0.0f));
