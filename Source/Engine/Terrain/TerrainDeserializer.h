@@ -3,21 +3,21 @@
 
 #include "Engine/Events/DeserializationEvents.h"
 #include "Engine/GlobalNode.h"
-#include "Engine/Physics/CollisionObject.h"
+#include "Engine/Terrain/TerrainObject.h"
 
 using namespace cocos2d;
 
-class CollisionDeserializer : public GlobalNode
+class TerrainDeserializer : public GlobalNode
 {
 public:
 	static void registerGlobalNode();
 
 private:
-	CollisionDeserializer();
-	~CollisionDeserializer();
+	TerrainDeserializer();
+	~TerrainDeserializer();
 
 	void initializeListeners() override;
 	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);
 
-	static CollisionDeserializer* instance;
+	static TerrainDeserializer* instance;
 };
