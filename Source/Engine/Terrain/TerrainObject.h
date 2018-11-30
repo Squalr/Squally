@@ -42,6 +42,7 @@ private:
 	void buildCollisionEdge();
 	void buildInfill(Color4B infillColor);
 	void buildTextures();
+	void debugCollisionPoints(Vec2 origin);
 	Vec2 getOutwardNormal(std::tuple<Vec2, Vec2> segment);
 	float getSegmentAngle(std::tuple<Vec2, Vec2> segment);
 	bool isPointInShard(ShardedTriangle triangle, Vec2 point);
