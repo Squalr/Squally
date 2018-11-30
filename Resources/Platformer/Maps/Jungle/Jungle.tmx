@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" nextobjectid="422">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" nextobjectid="423">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -91,6 +91,9 @@
   <object id="418" name="solid" type="terrain" x="2072" y="2637">
    <polyline points="0,0 480,-40 656,-48 896,-16 1160,16 1616,104 1944,120 2344,112 2584,88 2712,88 2920,104 3064,152 3944,176 4408,88 4800,40 5128,24 5496,40 5776,56 5744,944 5232,936 -24,936 -16,392"/>
   </object>
+  <object id="422" name="solid" type="terrain" x="5064" y="1624">
+   <polyline points="0,0 -348,-84 -652,-8 -928,-120 -1292,-60 -1276,304 4,292 -4,128"/>
+  </object>
  </objectgroup>
  <objectgroup name="decor midground">
   <properties>
@@ -101,7 +104,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="185" name="plushie_monkey" type="object" x="3403.15" y="2487.76" width="196" height="196" rotation="10">
+  <object id="185" name="plushie_monkey" type="object" x="3397.15" y="2524.43" width="196" height="196" rotation="10">
    <properties>
     <property name="dialog" value="DialogTutorialExactScanI"/>
    </properties>
