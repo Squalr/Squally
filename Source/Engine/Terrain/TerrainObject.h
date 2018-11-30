@@ -24,21 +24,42 @@ private:
 	TerrainObject(ValueMap* initProperties);
 	~TerrainObject();
 
+	struct ShardedTriangle
+	{
+		Vec2 coords[3];
+
+		ShardedTriangle(Vec2 coordA, Vec2 coordB, Vec2 coordC)
+		{
+			coords[0] = coordA;
+			coords[1] = coordB;
+			coords[2] = coordC;
+		}
+	};
+
 	void onEnter() override;
 	void initializeListeners() override;
-	void buildCollisionBounds();
+	void shardPolygon();
+	void buildCollisionEdge();
+	void buildCollisionShards();
 	void buildInfill(Color4B infillColor);
-	void buildTops();
-	void buildLeftWall();
-	void buildRightWall();
-	void buildBottoms();
+	void buildTextures();
+	Vec2 getOutwardNormal(std::tuple<Vec2, Vec2> segment);
+	float getSegmentAngle(std::tuple<Vec2, Vec2> segment);
 
 	std::vector<Vec2> points;
 	std::vector<std::tuple<Vec2, Vec2>> segments;
-	CollisionObject* collisionNode;
+	std::vector<ShardedTriangle> triangles;
+
+	CollisionObject* edgeCollisionObject;
+	std::vector<CollisionObject*> shardedCollisionObjects;
+	Node* edgeCollisionNode;
+	Node* shardedCollisionNode;
 	Node* infillNode;
 	Node* topsNode;
 	Node* leftWallNode;
 	Node* rightWallNode;
 	Node* bottomsNode;
+	Node* debugNode;
+
+	static const bool EnableTerrainDebugging;
 };

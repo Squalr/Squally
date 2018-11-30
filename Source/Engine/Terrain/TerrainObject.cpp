@@ -1,6 +1,7 @@
 #include "TerrainObject.h"
 
 std::string TerrainObject::MapKeyTypeTerrain = "terrain";
+const bool TerrainObject::EnableTerrainDebugging = true;
 
 TerrainObject* TerrainObject::deserialize(ValueMap* initProperties)
 {
@@ -42,13 +43,26 @@ TerrainObject::TerrainObject(ValueMap* initProperties) : HackableObject(initProp
 {
 	this->points = std::vector<Vec2>();
 	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
-	
-	this->collisionNode = nullptr;
-	this->infillNode = nullptr;
-	this->topsNode = nullptr;
-	this->leftWallNode = nullptr;
-	this->rightWallNode = nullptr;
-	this->bottomsNode = nullptr;
+	this->triangles = std::vector<ShardedTriangle>();
+	this->shardedCollisionObjects = std::vector<CollisionObject*>();
+
+	this->edgeCollisionNode = Node::create();
+	this->shardedCollisionNode = Node::create();
+	this->infillNode = Node::create();
+	this->topsNode = Node::create();
+	this->leftWallNode = Node::create();
+	this->rightWallNode = Node::create();
+	this->bottomsNode = Node::create();
+	this->debugNode = Node::create();
+
+	this->addChild(this->edgeCollisionNode);
+	this->addChild(this->shardedCollisionNode);
+	this->addChild(this->infillNode);
+	this->addChild(this->topsNode);
+	this->addChild(this->leftWallNode);
+	this->addChild(this->rightWallNode);
+	this->addChild(this->bottomsNode);
+	this->addChild(this->debugNode);
 }
 
 TerrainObject::~TerrainObject()
@@ -75,7 +89,7 @@ void TerrainObject::setPoints(std::vector<Vec2> points)
 	{
 		if (previous != nullptr)
 		{
-			this->segments.push_back(std::tuple<Vec2, Vec2>(*it, *previous));
+			this->segments.push_back(std::tuple<Vec2, Vec2>(*previous, *it));
 		}
 
 		previous = &(*it);
@@ -84,54 +98,27 @@ void TerrainObject::setPoints(std::vector<Vec2> points)
 	// Loop to start
 	if (this->points.size() >= 2)
 	{
-		this->segments.push_back(std::tuple<Vec2, Vec2>(this->points[0], this->points.back()));
+		this->segments.push_back(std::tuple<Vec2, Vec2>(this->points.back(), this->points[0]));
 	}
 }
 
 void TerrainObject::rebuildTerrain()
 {
-	this->removeAllChildren();
+	this->debugNode->removeAllChildren();
 
-	this->buildCollisionBounds();
-	this->buildInfill(Color4B::BLACK);
-	this->buildBottoms();
-	this->buildLeftWall();
-	this->buildRightWall();
-	this->buildTops();
+	this->shardPolygon();
+	this->buildCollisionEdge();
+	this->buildCollisionShards();
+	this->buildInfill(Color4B(11, 30, 39, 255));
+	this->buildTextures();
 }
 
-void TerrainObject::buildCollisionBounds()
+void TerrainObject::shardPolygon()
 {
-	if (this->collisionNode != nullptr)
-	{
-		this->removeChild(this->collisionNode);
-	}
+	this->triangles.clear();
 
-	ValueMap collisionProperties = ValueMap(*this->properties);
-
-	// Clear x/y position -- this is already handled by this TerrainObject, and would otherwise result in incorrectly placed collision
-	collisionProperties[SerializableObject::MapKeyXPosition] = 0.0f;
-	collisionProperties[SerializableObject::MapKeyYPosition] = 0.0f;
-
-	// Create collision object
-	CategoryName categoryName = collisionProperties.at(SerializableObject::MapKeyName).asString();
-	PhysicsBody* physicsBody = PhysicsBody::createEdgePolygon(this->points.data(), this->points.size(), PhysicsMaterial(0.0f, 0.0f, 0.0f));
-	this->collisionNode = new CollisionObject(&collisionProperties, physicsBody, categoryName, false, false);
-
-	this->addChild(this->collisionNode);
-}
-
-void TerrainObject::buildInfill(Color4B infillColor)
-{
-	if (this->infillNode != nullptr)
-	{
-		this->removeChild(this->infillNode);
-	}
-
-	this->infillNode = Node::create();
-
-	// Building the infill requires breaking up the shape into a series of triangles, and creating a solid color of that triangle
-	// This is done because cocos2d-x drawnodes do not support concave shapes
+	// It turns out that in order to check if a point is inside the terrain, or to generate a solid infill color, we must shard
+	// The polygon into many triangles. cocos2d-x does not support either of those on polygons, so we have to get creative
 
 	uint32_t MaxPointCount = this->points.size();
 	size_t MemoryRequired = MPE_PolyMemoryRequired(MaxPointCount);
@@ -171,113 +158,192 @@ void TerrainObject::buildInfill(Color4B infillColor)
 		Vec2 trianglePointB = Vec2(triangle->Points[1]->X, triangle->Points[1]->Y);
 		Vec2 trianglePointC = Vec2(triangle->Points[2]->X, triangle->Points[2]->Y);
 
-		infillTriangle->drawTriangle(trianglePointA, trianglePointB, trianglePointC, Color4F(infillColor));
-		this->infillNode->addChild(infillTriangle);
+		this->triangles.push_back(ShardedTriangle(trianglePointA, trianglePointB, trianglePointC));
 	}
-
-	this->addChild(this->infillNode);
 }
 
-void TerrainObject::buildTops()
+void TerrainObject::buildCollisionEdge()
 {
-	if (this->topsNode != nullptr)
+	this->edgeCollisionNode->removeAllChildren();
+
+	ValueMap collisionProperties = ValueMap(*this->properties);
+
+	// Clear x/y position -- this is already handled by this TerrainObject, and would otherwise result in incorrectly placed collision
+	collisionProperties[SerializableObject::MapKeyXPosition] = 0.0f;
+	collisionProperties[SerializableObject::MapKeyYPosition] = 0.0f;
+
+	// Create collision object
+	CategoryName categoryName = collisionProperties.at(SerializableObject::MapKeyName).asString();
+	PhysicsBody* physicsBody = PhysicsBody::createEdgePolygon(this->points.data(), this->points.size(), PhysicsMaterial(0.0f, 0.0f, 0.0f));
+	this->edgeCollisionObject = new CollisionObject(&collisionProperties, physicsBody, categoryName, false, false);
+
+	this->edgeCollisionNode->addChild(this->edgeCollisionObject);
+}
+
+void TerrainObject::buildCollisionShards()
+{
+	this->shardedCollisionObjects.clear();
+	this->shardedCollisionNode->removeAllChildren();
+
+	ValueMap collisionProperties = ValueMap(*this->properties);
+
+	// Clear x/y position -- this is already handled by this TerrainObject, and would otherwise result in incorrectly placed collision
+	collisionProperties[SerializableObject::MapKeyXPosition] = 0.0f;
+	collisionProperties[SerializableObject::MapKeyYPosition] = 0.0f;
+
+	for (auto it = this->triangles.begin(); it != triangles.end(); it++)
 	{
-		this->removeChild(this->topsNode);
+		ShardedTriangle triangle = *it;
+
+		// Create collision object
+		CategoryName categoryName = collisionProperties.at(SerializableObject::MapKeyName).asString();
+		PhysicsBody* physicsBody = PhysicsBody::createPolygon(triangle.coords, 3, PhysicsMaterial(0.0f, 0.0f, 0.0f));
+		CollisionObject* collisionShard = new CollisionObject(&collisionProperties, physicsBody, categoryName, false, false);
+
+		this->shardedCollisionObjects.push_back(collisionShard);
+		this->shardedCollisionNode->addChild(collisionShard);
 	}
+}
 
-	this->topsNode = Node::create();
+void TerrainObject::buildInfill(Color4B infillColor)
+{
+	this->infillNode->removeAllChildren();
 
-	// Distance used to check which direction is "inside" the terrain
-	const float INNER_NORMAL_COLLISION_TEST_DISTANCE = 8.0f;
+	for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
+	{
+		ShardedTriangle triangle = *it;
+		DrawNode* infillTriangle = DrawNode::create();
 
+		infillTriangle->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(infillColor));
+		this->infillNode->addChild(infillTriangle);
+	}
+}
+
+void TerrainObject::buildTextures()
+{
+	this->topsNode->removeAllChildren();
+	this->leftWallNode->removeAllChildren();
+	this->rightWallNode->removeAllChildren();
+	this->bottomsNode->removeAllChildren();
+
+	const float cornerAngleDelta = M_PI / 3.0f;
 	float seamlessSegmentX = 0.0f;
 
 	for (auto it = this->segments.begin(); it != this->segments.end(); it++)
 	{
+		auto itClone = it;
+
 		std::tuple<Vec2, Vec2> segment = *it;
+		std::tuple<Vec2, Vec2>* nextSegment = (++itClone) == this->segments.end() ? nullptr : &(*itClone);
 		Vec2 source = std::get<0>(segment);
 		Vec2 dest = std::get<1>(segment);
 		Vec2 delta = dest - source;
-		Vec2 normal = delta.getNormalized();
-		Vec2 candidateInnerNormal = source.getMidpoint(dest) + INNER_NORMAL_COLLISION_TEST_DISTANCE * Vec2(normal.x, -normal.y);
-		bool isCandidateInnerNormalOutside = true;
-		auto shapes = this->collisionNode->getPhysicsBody()->getShapes();
-
-		// There are two possible normals -- check if the one we picked is the surface normal (if not, we pick the other normal)
-		for (auto it = shapes.begin(); it != shapes.end(); it++)
-		{
-			if ((*it)->containsPoint(candidateInnerNormal))
-			{
-				isCandidateInnerNormalOutside = false;
-				break;
-			}
-		}
-
-		Vec2 outerNormal = isCandidateInnerNormalOutside ? Vec2(normal.x, -normal.y) : Vec2(-normal.x, normal.y);
-		float angle = delta.x == 0.0f ? 0.0f : std::atan2(outerNormal.y, outerNormal.x) - M_PI;
-		float angleDegrees = angle * 180.0f / M_PI;
-
-		Sprite* top = Sprite::create(TerrainResources::Castle);
-		Texture2D::TexParams params = Texture2D::TexParams();
-		Size textureSize = top->getContentSize();
 		float currentSegmentLength = source.distance(dest);
+		float angle = this->getSegmentAngle(segment);
+		float nextAngle = nextSegment == nullptr ? angle : this->getSegmentAngle(*nextSegment);
+		float angleDeltaRad = nextAngle - angle;
 
-		// Set parameters to repeat the texture
+		// Create parameters to repeat the texture
+		Texture2D::TexParams params = Texture2D::TexParams();
 		params.minFilter = GL_LINEAR;
 		params.magFilter = GL_LINEAR;
 		params.wrapS = GL_REPEAT;
 
-		top->setAnchorPoint(Vec2(0.5f, 1.0f));
+		Sprite* top = Sprite::create(TerrainResources::Castle);
+		Size textureSize = top->getContentSize();
+		
+		// Calculate overdraw to create seamless rectangle connection
+		if (angleDeltaRad != 0.0f && std::abs(angleDeltaRad) < cornerAngleDelta)
+		{
+			float overDraw = std::abs(2.0f * ((textureSize.height * std::sin(angleDeltaRad)) / std::cos(angleDeltaRad)));
+
+			// currentSegmentLength += overDraw;
+		}
+
+		top->setAnchorPoint(Vec2(0.5f, 0.5f));
 		top->getTexture()->setTexParameters(params);
 
 		// Start the texture from where the previous texture left off for seamless integration
 		top->setTextureRect(Rect(seamlessSegmentX, 0, currentSegmentLength, textureSize.height));
 
-		// Center the sprite between the two nodes, but offset it vertically so that the collision is part way through the sprite
-		top->setPosition(source.getMidpoint(dest) + Vec2(0.0f, textureSize.height / 2.0f));
-		top->setRotation(angleDegrees);
+		top->setPosition(source.getMidpoint(dest));
+		top->setRotation(angle * 180.0f / M_PI);
 
 		// Advance the seamless segment distance (with wrap around on overflow)
 		seamlessSegmentX = std::remainderf(seamlessSegmentX + currentSegmentLength, textureSize.width);
 
 		this->topsNode->addChild(top);
 	}
-
-	this->addChild(this->topsNode);
 }
 
-void TerrainObject::buildLeftWall()
+Vec2 TerrainObject::getOutwardNormal(std::tuple<Vec2, Vec2> segment)
 {
-	if (this->leftWallNode != nullptr)
+	// Distance used to check which direction is "inside" the terrain
+	const float INNER_NORMAL_COLLISION_TEST_DISTANCE = 32.0f;
+
+	Vec2 source = std::get<0>(segment);
+	Vec2 dest = std::get<1>(segment);
+	Vec2 delta = dest - source;
+	Vec2 normal = delta.getNormalized();
+	Vec2 midPoint = source.getMidpoint(dest);
+	Vec2 offset = INNER_NORMAL_COLLISION_TEST_DISTANCE * Vec2(-normal.y, normal.x);
+	Vec2 candidateOutwardNormal = midPoint + offset;
+	bool isCandidateOutwardNormalOutside = true;
+
+	// There are two possible normals -- check if the one we picked is the surface normal (if not, we pick the other normal)
+	for (auto it = this->shardedCollisionObjects.begin(); it != this->shardedCollisionObjects.end(); it++)
 	{
-		this->removeChild(this->leftWallNode);
+		auto shapes = (*it)->getPhysicsBody()->getShapes();
+
+		for (auto shapeIt = shapes.begin(); shapeIt != shapes.end(); shapeIt++)
+		{
+			if ((*shapeIt)->containsPoint(candidateOutwardNormal))
+			{
+				isCandidateOutwardNormalOutside = false;
+				break;
+			}
+		}
+
+		if (!isCandidateOutwardNormalOutside)
+		{
+			break;
+		}
 	}
 
-	this->leftWallNode = Node::create();
+	Vec2 outwardNormal = isCandidateOutwardNormalOutside ? Vec2(-normal.y, normal.x) : Vec2(normal.y, -normal.x);
 
-	this->addChild(this->leftWallNode);
+	if (TerrainObject::EnableTerrainDebugging)
+	{
+		Vec2 outwardNormalPoint = midPoint + INNER_NORMAL_COLLISION_TEST_DISTANCE * outwardNormal;
+
+		DrawNode* sourcePointDebug = DrawNode::create();
+		DrawNode* midPointDebug = DrawNode::create();
+		DrawNode* candidateNormalDebug = DrawNode::create();
+		DrawNode* normalDebug = DrawNode::create();
+
+		sourcePointDebug->drawDot(source, 4.0f, Color4F::BLUE);
+		normalDebug->drawLine(midPoint, outwardNormalPoint, Color4F::YELLOW);
+		candidateNormalDebug->drawDot(candidateOutwardNormal, 4.0f, Color4F::GRAY);
+		candidateNormalDebug->drawLine(midPoint, candidateOutwardNormal, Color4F::GRAY);
+		normalDebug->drawDot(outwardNormalPoint, 4.0f, Color4F::YELLOW);
+		midPointDebug->drawDot(midPoint, 8.0f, Color4F::MAGENTA);
+
+		this->debugNode->addChild(sourcePointDebug);
+		this->debugNode->addChild(normalDebug);
+		this->debugNode->addChild(midPointDebug);
+	}
+
+	return outwardNormal;
 }
 
-void TerrainObject::buildRightWall()
+float TerrainObject::getSegmentAngle(std::tuple<Vec2, Vec2> segment)
 {
-	if (this->rightWallNode != nullptr)
-	{
-		this->removeChild(this->rightWallNode);
-	}
+	Vec2 outwardNormal = this->getOutwardNormal(segment);
+	float angle = std::atan2(outwardNormal.y, outwardNormal.x);
 
-	this->rightWallNode = Node::create();
+	// Because we used the outward normal to find the angle, correct the angle by 90 degrees
+	angle -= M_PI / 2.0f;
 
-	this->addChild(this->rightWallNode);
-}
-
-void TerrainObject::buildBottoms()
-{
-	if (this->bottomsNode != nullptr)
-	{
-		this->removeChild(this->bottomsNode);
-	}
-
-	this->bottomsNode = Node::create();
-
-	this->addChild(this->bottomsNode);
+	// Not really sure why, but this needs to be negated
+	return -angle;
 }
