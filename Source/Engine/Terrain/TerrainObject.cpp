@@ -44,10 +44,8 @@ TerrainObject::TerrainObject(ValueMap* initProperties) : HackableObject(initProp
 	this->points = std::vector<Vec2>();
 	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
 	this->triangles = std::vector<ShardedTriangle>();
-	this->shardedCollisionObjects = std::vector<CollisionObject*>();
 
 	this->edgeCollisionNode = Node::create();
-	this->shardedCollisionNode = Node::create();
 	this->infillNode = Node::create();
 	this->topsNode = Node::create();
 	this->leftWallNode = Node::create();
@@ -56,7 +54,6 @@ TerrainObject::TerrainObject(ValueMap* initProperties) : HackableObject(initProp
 	this->debugNode = Node::create();
 
 	this->addChild(this->edgeCollisionNode);
-	this->addChild(this->shardedCollisionNode);
 	this->addChild(this->infillNode);
 	this->addChild(this->topsNode);
 	this->addChild(this->leftWallNode);
@@ -108,7 +105,6 @@ void TerrainObject::rebuildTerrain()
 
 	this->shardPolygon();
 	this->buildCollisionEdge();
-	this->buildCollisionShards();
 	this->buildInfill(Color4B(11, 30, 39, 255));
 	this->buildTextures();
 }
@@ -180,31 +176,6 @@ void TerrainObject::buildCollisionEdge()
 	this->edgeCollisionNode->addChild(this->edgeCollisionObject);
 }
 
-void TerrainObject::buildCollisionShards()
-{
-	this->shardedCollisionObjects.clear();
-	this->shardedCollisionNode->removeAllChildren();
-
-	ValueMap collisionProperties = ValueMap(*this->properties);
-
-	// Clear x/y position -- this is already handled by this TerrainObject, and would otherwise result in incorrectly placed collision
-	collisionProperties[SerializableObject::MapKeyXPosition] = 0.0f;
-	collisionProperties[SerializableObject::MapKeyYPosition] = 0.0f;
-
-	for (auto it = this->triangles.begin(); it != triangles.end(); it++)
-	{
-		ShardedTriangle triangle = *it;
-
-		// Create collision object
-		CategoryName categoryName = collisionProperties.at(SerializableObject::MapKeyName).asString();
-		PhysicsBody* physicsBody = PhysicsBody::createPolygon(triangle.coords, 3, PhysicsMaterial(0.0f, 0.0f, 0.0f));
-		CollisionObject* collisionShard = new CollisionObject(&collisionProperties, physicsBody, categoryName, false, false);
-
-		this->shardedCollisionObjects.push_back(collisionShard);
-		this->shardedCollisionNode->addChild(collisionShard);
-	}
-}
-
 void TerrainObject::buildInfill(Color4B infillColor)
 {
 	this->infillNode->removeAllChildren();
@@ -214,7 +185,15 @@ void TerrainObject::buildInfill(Color4B infillColor)
 		ShardedTriangle triangle = *it;
 		DrawNode* infillTriangle = DrawNode::create();
 
-		infillTriangle->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(infillColor));
+		if (TerrainObject::EnableTerrainDebugging)
+		{
+			infillTriangle->drawPolygon(triangle.coords, 3, Color4F(infillColor), 2.0f, Color4F::RED);
+		}
+		else
+		{
+			infillTriangle->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(infillColor));
+		}
+
 		this->infillNode->addChild(infillTriangle);
 	}
 }
@@ -279,41 +258,34 @@ void TerrainObject::buildTextures()
 Vec2 TerrainObject::getOutwardNormal(std::tuple<Vec2, Vec2> segment)
 {
 	// Distance used to check which direction is "inside" the terrain
-	const float INNER_NORMAL_COLLISION_TEST_DISTANCE = 32.0f;
+	const float INNER_NORMAL_COLLISION_TEST_DISTANCE = 128.0f;
 
 	Vec2 source = std::get<0>(segment);
 	Vec2 dest = std::get<1>(segment);
 	Vec2 delta = dest - source;
-	Vec2 normal = delta.getNormalized();
 	Vec2 midPoint = source.getMidpoint(dest);
-	Vec2 offset = INNER_NORMAL_COLLISION_TEST_DISTANCE * Vec2(-normal.y, normal.x);
-	Vec2 candidateOutwardNormal = midPoint + offset;
-	bool isCandidateOutwardNormalOutside = true;
+	Vec2 candidateNormal = Vec2(-delta.getNormalized().y, delta.getNormalized().x);
+	Vec2 candidateTestingPoint = midPoint + INNER_NORMAL_COLLISION_TEST_DISTANCE * candidateNormal;
+	bool isCandidateOutwardFacing = true;
 
-	// There are two possible normals -- check if the one we picked is the surface normal (if not, we pick the other normal)
-	for (auto it = this->shardedCollisionObjects.begin(); it != this->shardedCollisionObjects.end(); it++)
+	// There are two possible normals -- check if the one we picked is the surface normal
+	for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
 	{
-		auto shapes = (*it)->getPhysicsBody()->getShapes();
+		ShardedTriangle triangle = *it;
 
-		for (auto shapeIt = shapes.begin(); shapeIt != shapes.end(); shapeIt++)
+		if (this->isPointInShard(triangle, candidateNormal))
 		{
-			if ((*shapeIt)->containsPoint(candidateOutwardNormal))
-			{
-				isCandidateOutwardNormalOutside = false;
-				break;
-			}
-		}
-
-		if (!isCandidateOutwardNormalOutside)
-		{
+			isCandidateOutwardFacing = false;
 			break;
 		}
 	}
 
-	Vec2 outwardNormal = isCandidateOutwardNormalOutside ? Vec2(-normal.y, normal.x) : Vec2(normal.y, -normal.x);
+	// Pick the candidate normal if it is pointing outside, otherwise reverse it
+	Vec2 outwardNormal = isCandidateOutwardFacing ? candidateNormal : (candidateNormal * -1.0f);
 
 	if (TerrainObject::EnableTerrainDebugging)
 	{
+		Vec2 originalCandidateSmall = midPoint + INNER_NORMAL_COLLISION_TEST_DISTANCE / 2.0f * candidateNormal;
 		Vec2 outwardNormalPoint = midPoint + INNER_NORMAL_COLLISION_TEST_DISTANCE * outwardNormal;
 
 		DrawNode* sourcePointDebug = DrawNode::create();
@@ -323,12 +295,13 @@ Vec2 TerrainObject::getOutwardNormal(std::tuple<Vec2, Vec2> segment)
 
 		sourcePointDebug->drawDot(source, 4.0f, Color4F::BLUE);
 		normalDebug->drawLine(midPoint, outwardNormalPoint, Color4F::YELLOW);
-		candidateNormalDebug->drawDot(candidateOutwardNormal, 4.0f, Color4F::GRAY);
-		candidateNormalDebug->drawLine(midPoint, candidateOutwardNormal, Color4F::GRAY);
 		normalDebug->drawDot(outwardNormalPoint, 4.0f, Color4F::YELLOW);
+		candidateNormalDebug->drawLine(midPoint, originalCandidateSmall, Color4F::ORANGE);
+		candidateNormalDebug->drawDot(originalCandidateSmall, 4.0f, Color4F::ORANGE);
 		midPointDebug->drawDot(midPoint, 8.0f, Color4F::MAGENTA);
 
 		this->debugNode->addChild(sourcePointDebug);
+		this->debugNode->addChild(candidateNormalDebug);
 		this->debugNode->addChild(normalDebug);
 		this->debugNode->addChild(midPointDebug);
 	}
@@ -346,4 +319,20 @@ float TerrainObject::getSegmentAngle(std::tuple<Vec2, Vec2> segment)
 
 	// Not really sure why, but this needs to be negated
 	return -angle;
+}
+
+bool TerrainObject::isPointInShard(ShardedTriangle triangle, Vec2 point)
+{
+	auto sign = [](Vec2 p1, Vec2 p2, Vec2 p3)
+	{
+		return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
+	};
+
+	float d1 = sign(point, triangle.coords[0], triangle.coords[1]);
+	float d2 = sign(point, triangle.coords[1], triangle.coords[2]);
+	float d3 = sign(point, triangle.coords[2], triangle.coords[0]);
+	bool has_neg = (d1 < 0) || (d2 < 0) || (d3 < 0);
+	bool has_pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
+
+	return !(has_neg && has_pos);
 }
