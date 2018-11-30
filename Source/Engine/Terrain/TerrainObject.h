@@ -40,20 +40,18 @@ private:
 	void initializeListeners() override;
 	void shardPolygon();
 	void buildCollisionEdge();
-	void buildCollisionShards();
 	void buildInfill(Color4B infillColor);
 	void buildTextures();
 	Vec2 getOutwardNormal(std::tuple<Vec2, Vec2> segment);
 	float getSegmentAngle(std::tuple<Vec2, Vec2> segment);
+	bool isPointInShard(ShardedTriangle triangle, Vec2 point);
 
 	std::vector<Vec2> points;
 	std::vector<std::tuple<Vec2, Vec2>> segments;
 	std::vector<ShardedTriangle> triangles;
 
 	CollisionObject* edgeCollisionObject;
-	std::vector<CollisionObject*> shardedCollisionObjects;
 	Node* edgeCollisionNode;
-	Node* shardedCollisionNode;
 	Node* infillNode;
 	Node* topsNode;
 	Node* leftWallNode;
