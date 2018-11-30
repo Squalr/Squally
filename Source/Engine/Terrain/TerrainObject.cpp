@@ -107,8 +107,6 @@ void TerrainObject::buildCollisionBounds()
 		this->removeChild(this->collisionNode);
 	}
 
-	this->collisionNode = Node::create();
-
 	ValueMap collisionProperties = ValueMap(*this->properties);
 
 	// Clear x/y position -- this is already handled by this TerrainObject, and would otherwise result in incorrectly placed collision
@@ -118,9 +116,8 @@ void TerrainObject::buildCollisionBounds()
 	// Create collision object
 	CategoryName categoryName = collisionProperties.at(SerializableObject::MapKeyName).asString();
 	PhysicsBody* physicsBody = PhysicsBody::createEdgePolygon(this->points.data(), this->points.size(), PhysicsMaterial(0.0f, 0.0f, 0.0f));
-	CollisionObject* collisionObject = new CollisionObject(&collisionProperties, physicsBody, categoryName, false, false);
+	this->collisionNode = new CollisionObject(&collisionProperties, physicsBody, categoryName, false, false);
 
-	this->collisionNode->addChild(collisionObject);
 	this->addChild(this->collisionNode);
 }
 
@@ -190,31 +187,58 @@ void TerrainObject::buildTops()
 
 	this->topsNode = Node::create();
 
+	// Distance used to check which direction is "inside" the terrain
+	const float INNER_NORMAL_COLLISION_TEST_DISTANCE = 8.0f;
+
+	float seamlessSegmentX = 0.0f;
+
 	for (auto it = this->segments.begin(); it != this->segments.end(); it++)
 	{
 		std::tuple<Vec2, Vec2> segment = *it;
 		Vec2 source = std::get<0>(segment);
 		Vec2 dest = std::get<1>(segment);
-		Vec2 delta = source - dest;
-		float angle = delta.x == 0.0f ? 0.0f : std::atan2(delta.y, delta.x);
+		Vec2 delta = dest - source;
+		Vec2 normal = delta.getNormalized();
+		Vec2 candidateInnerNormal = source.getMidpoint(dest) + INNER_NORMAL_COLLISION_TEST_DISTANCE * Vec2(normal.x, -normal.y);
+		bool isCandidateInnerNormalOutside = true;
+		auto shapes = this->collisionNode->getPhysicsBody()->getShapes();
+
+		// There are two possible normals -- check if the one we picked is the surface normal (if not, we pick the other normal)
+		for (auto it = shapes.begin(); it != shapes.end(); it++)
+		{
+			if ((*it)->containsPoint(candidateInnerNormal))
+			{
+				isCandidateInnerNormalOutside = false;
+				break;
+			}
+		}
+
+		Vec2 outerNormal = isCandidateInnerNormalOutside ? Vec2(normal.x, -normal.y) : Vec2(-normal.x, normal.y);
+		float angle = delta.x == 0.0f ? 0.0f : std::atan2(outerNormal.y, outerNormal.x) - M_PI;
 		float angleDegrees = angle * 180.0f / M_PI;
-		Vec2 normal = Vec2(delta.x * std::cos(angle) - delta.y * std::sin(angle), delta.x * std::sin(angle) - delta.y * std::cos(angle));
 
 		Sprite* top = Sprite::create(TerrainResources::Castle);
 		Texture2D::TexParams params = Texture2D::TexParams();
+		Size textureSize = top->getContentSize();
+		float currentSegmentLength = source.distance(dest);
 
-		top->setAnchorPoint(Vec2(0.5f, 0.5f));
-
+		// Set parameters to repeat the texture
 		params.minFilter = GL_LINEAR;
 		params.magFilter = GL_LINEAR;
 		params.wrapS = GL_REPEAT;
-		// params.wrapT = GL_REPEAT;
 
+		top->setAnchorPoint(Vec2(0.5f, 1.0f));
 		top->getTexture()->setTexParameters(params);
-		top->setTextureRect(Rect(0, 0, source.distance(dest), top->getContentSize().height));
 
-		top->setPosition(source.getMidpoint(dest));
+		// Start the texture from where the previous texture left off for seamless integration
+		top->setTextureRect(Rect(seamlessSegmentX, 0, currentSegmentLength, textureSize.height));
+
+		// Center the sprite between the two nodes, but offset it vertically so that the collision is part way through the sprite
+		top->setPosition(source.getMidpoint(dest) + Vec2(0.0f, textureSize.height / 2.0f));
 		top->setRotation(angleDegrees);
+
+		// Advance the seamless segment distance (with wrap around on overflow)
+		seamlessSegmentX = std::remainderf(seamlessSegmentX + currentSegmentLength, textureSize.width);
 
 		this->topsNode->addChild(top);
 	}

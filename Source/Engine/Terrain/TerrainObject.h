@@ -35,7 +35,7 @@ private:
 
 	std::vector<Vec2> points;
 	std::vector<std::tuple<Vec2, Vec2>> segments;
-	Node* collisionNode;
+	CollisionObject* collisionNode;
 	Node* infillNode;
 	Node* topsNode;
 	Node* leftWallNode;
