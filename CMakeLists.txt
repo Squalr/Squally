@@ -449,6 +449,7 @@ list(APPEND GAME_SOURCE
 	Source/Resources/ShaderResources.cpp
 	Source/Resources/SoundResources.cpp
 	Source/Resources/StringResources.cpp
+	Source/Resources/TerrainResources.cpp
 	Source/Resources/UIResources.cpp
 	Source/Scenes/Cutscenes/IntroCutscene/BoardMembers.cpp
 	Source/Scenes/Cutscenes/IntroCutscene/HomeAssistantRobot.cpp
@@ -1223,6 +1224,7 @@ list(APPEND GAME_HEADER
 	Source/Resources/ShaderResources.h
 	Source/Resources/SoundResources.h
 	Source/Resources/StringResources.h
+	Source/Resources/TerrainResources.h
 	Source/Resources/UIResources.h
 	Source/Scenes/Cutscenes/IntroCutscene/BoardMembers.h
 	Source/Scenes/Cutscenes/IntroCutscene/HomeAssistantRobot.h
