@@ -6,6 +6,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MPE_fastpoly2tri.h"
+#include "Resources/TerrainResources.h"
 
 using namespace cocos2d;
 
@@ -27,8 +28,17 @@ private:
 	void initializeListeners() override;
 	void buildCollisionBounds();
 	void buildInfill(Color4B infillColor);
+	void buildTops();
+	void buildLeftWall();
+	void buildRightWall();
+	void buildBottoms();
 
 	std::vector<Vec2> points;
+	std::vector<std::tuple<Vec2, Vec2>> segments;
 	Node* collisionNode;
 	Node* infillNode;
+	Node* topsNode;
+	Node* leftWallNode;
+	Node* rightWallNode;
+	Node* bottomsNode;
 };

@@ -40,8 +40,15 @@ TerrainObject* TerrainObject::deserialize(ValueMap* initProperties)
 
 TerrainObject::TerrainObject(ValueMap* initProperties) : HackableObject(initProperties)
 {
+	this->points = std::vector<Vec2>();
+	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
+	
 	this->collisionNode = nullptr;
 	this->infillNode = nullptr;
+	this->topsNode = nullptr;
+	this->leftWallNode = nullptr;
+	this->rightWallNode = nullptr;
+	this->bottomsNode = nullptr;
 }
 
 TerrainObject::~TerrainObject()
@@ -61,16 +68,36 @@ void TerrainObject::initializeListeners()
 void TerrainObject::setPoints(std::vector<Vec2> points)
 {
 	this->points = points;
+
+	Vec2* previous = nullptr;
+
+	for (auto it = this->points.begin(); it != this->points.end(); it++)
+	{
+		if (previous != nullptr)
+		{
+			this->segments.push_back(std::tuple<Vec2, Vec2>(*it, *previous));
+		}
+
+		previous = &(*it);
+	}
+
+	// Loop to start
+	if (this->points.size() >= 2)
+	{
+		this->segments.push_back(std::tuple<Vec2, Vec2>(this->points[0], this->points.back()));
+	}
 }
 
 void TerrainObject::rebuildTerrain()
 {
 	this->removeAllChildren();
 
-	const Color4B brown = Color4B(32, 8, 8, 255);
-
 	this->buildCollisionBounds();
-	this->buildInfill(brown);
+	this->buildInfill(Color4B::BLACK);
+	this->buildBottoms();
+	this->buildLeftWall();
+	this->buildRightWall();
+	this->buildTops();
 }
 
 void TerrainObject::buildCollisionBounds()
@@ -152,4 +179,81 @@ void TerrainObject::buildInfill(Color4B infillColor)
 	}
 
 	this->addChild(this->infillNode);
+}
+
+void TerrainObject::buildTops()
+{
+	if (this->topsNode != nullptr)
+	{
+		this->removeChild(this->topsNode);
+	}
+
+	this->topsNode = Node::create();
+
+	for (auto it = this->segments.begin(); it != this->segments.end(); it++)
+	{
+		std::tuple<Vec2, Vec2> segment = *it;
+		Vec2 source = std::get<0>(segment);
+		Vec2 dest = std::get<1>(segment);
+		Vec2 delta = source - dest;
+		float angle = delta.x == 0.0f ? 0.0f : std::atan2(delta.y, delta.x);
+		float angleDegrees = angle * 180.0f / M_PI;
+		Vec2 normal = Vec2(delta.x * std::cos(angle) - delta.y * std::sin(angle), delta.x * std::sin(angle) - delta.y * std::cos(angle));
+
+		Sprite* top = Sprite::create(TerrainResources::Castle);
+		Texture2D::TexParams params = Texture2D::TexParams();
+
+		top->setAnchorPoint(Vec2(0.5f, 0.5f));
+
+		params.minFilter = GL_LINEAR;
+		params.magFilter = GL_LINEAR;
+		params.wrapS = GL_REPEAT;
+		// params.wrapT = GL_REPEAT;
+
+		top->getTexture()->setTexParameters(params);
+		top->setTextureRect(Rect(0, 0, source.distance(dest), top->getContentSize().height));
+
+		top->setPosition(source.getMidpoint(dest));
+		top->setRotation(angleDegrees);
+
+		this->topsNode->addChild(top);
+	}
+
+	this->addChild(this->topsNode);
+}
+
+void TerrainObject::buildLeftWall()
+{
+	if (this->leftWallNode != nullptr)
+	{
+		this->removeChild(this->leftWallNode);
+	}
+
+	this->leftWallNode = Node::create();
+
+	this->addChild(this->leftWallNode);
+}
+
+void TerrainObject::buildRightWall()
+{
+	if (this->rightWallNode != nullptr)
+	{
+		this->removeChild(this->rightWallNode);
+	}
+
+	this->rightWallNode = Node::create();
+
+	this->addChild(this->rightWallNode);
+}
+
+void TerrainObject::buildBottoms()
+{
+	if (this->bottomsNode != nullptr)
+	{
+		this->removeChild(this->bottomsNode);
+	}
+
+	this->bottomsNode = Node::create();
+
+	this->addChild(this->bottomsNode);
 }
