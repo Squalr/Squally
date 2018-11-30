@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" nextobjectid="417">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" nextobjectid="419">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -36,6 +36,7 @@
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="417" name="Forest/Background/Mountain1" type="decor" x="5329.5" y="1401.5" width="2237" height="989"/>
  </objectgroup>
  <objectgroup name="background mist">
   <properties>
@@ -78,25 +79,23 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup name="Terrain Tests">
-  <properties>
-   <property name="type" value="terrain"/>
-  </properties>
- </objectgroup>
  <objectgroup name="decor background">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup name="terrain"/>
+ <objectgroup name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="418" name="solid" type="terrain" x="2072" y="2637">
+   <polyline points="0,0 480,-40 656,-48 896,-16 1160,16 1616,104 1944,120 2344,112 2584,88 2712,88 2920,104 3064,152 3944,176 4408,88 4800,40 5128,24 5496,40 5776,56 5744,944 5232,936 -24,936 -16,392"/>
+  </object>
+ </objectgroup>
  <objectgroup name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="123" name="Forest/GrassPlane6" type="decor" x="2195.38" y="2523.33" width="432" height="90.55"/>
-  <object id="415" name="grass" type="terrain" x="1632" y="2716">
-   <polyline points="0,0 120,-52 268,-72 364,-84 508,-84 616,-96 836,-116 972,-112 1076,-104 1300,-84 1364,-100 1424,-112 1524,-124 1720,-108 1944,-104 2044,-124 2360,-140 2500,-104 2780,-76 2936,-92 3048,-104 3208,-120 3288,-100 3488,-24 3612,48 3664,80 3684,88 3804,88 3876,100 3960,96 4056,96 4144,116 4296,84 4380,80 4468,84 4568,88 4744,104 4804,104 4892,96 4988,84 5112,68 5160,40 5192,8 5268,-56 5396,-112 5512,-156 5620,-220 5664,-240 5728,-248 5780,-248 5832,-220 5864,-156 5872,-104 5900,8 5908,40 5924,84 5912,128 5880,176 5860,204 5848,260 5856,384 5864,440 5884,604 5872,772 5852,876 5676,1084 5640,1164 5628,1232 64,1248 28,1208 -40,1100 -28,944 -8,844 -76,676 -132,580 -152,476 -140,432 -84,340 -152,152 -144,64 -96,24"/>
-  </object>
  </objectgroup>
  <objectgroup name="objects">
   <properties>
@@ -137,7 +136,7 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="2092" y="2136" width="270" height="748"/>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="2112" y="2356" width="270" height="748"/>
   <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="4230" y="2312" width="270" height="748"/>
   <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="2770" y="2232" width="242" height="738"/>
   <object id="408" name="Forest/Foreground/ForegroundTree2" type="decor" x="5282" y="2448" width="270" height="748"/>
@@ -150,6 +149,6 @@
   </properties>
   <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="1948" y="2268" width="242" height="738"/>
   <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="3462" y="2216" width="242" height="738"/>
-  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="2370" y="2368" width="242" height="738"/>
+  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="2402" y="2380" width="242" height="738"/>
  </objectgroup>
 </map>

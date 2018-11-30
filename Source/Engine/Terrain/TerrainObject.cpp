@@ -2,30 +2,46 @@
 
 std::string TerrainObject::MapKeyTypeTerrain = "terrain";
 
-const std::string TerrainObject::RequestTerrainMappingEvent = "request_terrain_mapping";
-
-void TerrainObject::requestTerrainMapping(TerrainMapRequestArgs args)
+TerrainObject* TerrainObject::deserialize(ValueMap* initProperties)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		TerrainObject::RequestTerrainMappingEvent,
-		&args
-	);
-}
+	TerrainObject* instance = new TerrainObject(initProperties);
 
-TerrainObject::TerrainObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, CategoryName initCategoryName, bool isDynamic, bool canRotate) : HackableObject(initProperties)
-{
-	this->physicsBody = initPhysicsBody;
-	this->categoryName = initCategoryName;
+	instance->autorelease();
 
-	if (this->physicsBody != nullptr)
+	ValueMap* properties = new ValueMap(*initProperties);
+
+	if (!GameUtils::keyExists(properties, SerializableObject::MapKeyPolyLinePoints))
 	{
-		this->physicsBody->setRotationEnable(canRotate);
-		this->physicsBody->setDynamic(isDynamic);
-		this->setPhysicsBody(initPhysicsBody);
+		LogUtils::logError("Missing polyline on terrain");
+
+		return instance;
 	}
 
-	// Fire event, allowing for the game to map what this collision object collides with
-	TerrainObject::requestTerrainMapping(TerrainObject::TerrainMapRequestArgs(this->categoryName, this));
+	ValueVector* polygonPointsRaw = &(properties->at(SerializableObject::MapKeyPolyLinePoints).asValueVector());
+	std::vector<Vec2> polygonPoints;
+
+	for (auto it = polygonPointsRaw->begin(); it != polygonPointsRaw->end(); ++it)
+	{
+		auto point = it->asValueMap();
+
+		float deltaX = point.at(SerializableObject::MapKeyXPosition).asFloat();
+		float deltaY = point.at(SerializableObject::MapKeyYPosition).asFloat();
+
+		// Negate the Y since we're operating in a different coordinate system
+		polygonPoints.push_back(Vec2(deltaX, -deltaY));
+	}
+
+	// Build the terrain from the parsed points
+	instance->setPoints(polygonPoints);
+	instance->rebuildTerrain();
+
+	return instance;
+}
+
+TerrainObject::TerrainObject(ValueMap* initProperties) : HackableObject(initProperties)
+{
+	this->collisionNode = nullptr;
+	this->infillNode = nullptr;
 }
 
 TerrainObject::~TerrainObject()
@@ -35,235 +51,105 @@ TerrainObject::~TerrainObject()
 void TerrainObject::onEnter()
 {
 	HackableObject::onEnter();
-
-	this->scheduleUpdate();
 }
 
 void TerrainObject::initializeListeners()
 {
 	HackableObject::initializeListeners();
-
-	EventListenerPhysicsContact* contactListener = EventListenerPhysicsContact::create();
-
-	contactListener->onContactBegin = CC_CALLBACK_1(TerrainObject::onContactBegin, this);
-	contactListener->onContactPreSolve = CC_CALLBACK_1(TerrainObject::onContactUpdate, this);
-	contactListener->onContactPostSolve = CC_CALLBACK_1(TerrainObject::onContactUpdate, this);
-	contactListener->onContactSeparate = CC_CALLBACK_1(TerrainObject::onContactEnd, this);
-
-	this->addEventListener(contactListener);
 }
 
-void TerrainObject::setTerrainGroups(CategoryGroup categoryGroup, std::vector<CategoryGroup>* collidesWith)
+void TerrainObject::setPoints(std::vector<Vec2> points)
 {
-	if (this->physicsBody != nullptr)
+	this->points = points;
+}
+
+void TerrainObject::rebuildTerrain()
+{
+	this->removeAllChildren();
+
+	const Color4B brown = Color4B(32, 8, 8, 255);
+
+	this->buildCollisionBounds();
+	this->buildInfill(brown);
+}
+
+void TerrainObject::buildCollisionBounds()
+{
+	if (this->collisionNode != nullptr)
 	{
-		int collidesWithBitmask = 0;
-
-		if (collidesWith != nullptr)
-		{
-			for (auto it = collidesWith->begin(); it != collidesWith->end(); it++)
-			{
-				collidesWithBitmask |= *it;
-			}
-		}
-
-		this->physicsBody->setCategoryBitmask(categoryGroup);
-		this->physicsBody->setCollisionBitmask(collidesWithBitmask);
-		this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
-	}
-}
-
-void TerrainObject::update(float dt)
-{
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 pos = this->getPosition();
-	const float STOP_PHYSICS_OFFSET = 1024.0f;
-
-	if (this->physicsBody != nullptr && this->physicsBody->isDynamic())
-	{
-		Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
-
-		if (pos.x > cameraPosition.x + visibleSize.width + STOP_PHYSICS_OFFSET ||
-			pos.x < cameraPosition.x - STOP_PHYSICS_OFFSET ||
-			pos.y > cameraPosition.y + visibleSize.height + STOP_PHYSICS_OFFSET ||
-			pos.y < cameraPosition.y - STOP_PHYSICS_OFFSET)
-		{
-			// Bypass setter to force disable physics for this object
-			this->physicsBody->setEnabled(false);
-		}
-		else
-		{
-			// Use setter such that if physics was disabled for a reason other than being off-screen, we do not overwrite that
-			this->setPhysicsEnabled(this->physicsEnabled);
-		}
-	}
-}
-
-void TerrainObject::setPhysicsEnabled(bool enabled)
-{
-	this->physicsEnabled = enabled;
-
-	if (this->physicsBody != nullptr)
-	{
-		this->physicsBody->setEnabled(enabled);
-	}
-}
-
-Vec2 TerrainObject::getVelocity()
-{
-	return this->physicsBody == nullptr ? Vec2::ZERO : this->physicsBody->getVelocity();
-}
-
-void TerrainObject::setVelocity(Vec2 velocity)
-{
-	if (this->physicsBody != nullptr)
-	{
-		this->physicsBody->setVelocity(velocity);
-	}
-}
-
-CategoryName TerrainObject::getCategoryName()
-{
-	return this->categoryName;
-}
-
-CategoryGroup TerrainObject::getCategoryGroup()
-{
-	return this->physicsBody == nullptr ? 0 : this->physicsBody->getCategoryBitmask();
-}
-
-bool TerrainObject::contactBegin(TerrainData data)
-{
-	return true;
-}
-
-bool TerrainObject::contactUpdate(TerrainData data)
-{
-	return true;
-}
-
-bool TerrainObject::contactEnd(TerrainData data)
-{
-	return true;
-}
-
-bool TerrainObject::onContactBegin(PhysicsContact &contact)
-{
-	TerrainData data = this->constructTerrainData(contact);
-
-	if (data.other == nullptr)
-	{
-		return true;
+		this->removeChild(this->collisionNode);
 	}
 
-	return this->contactBegin(data);
+	this->collisionNode = Node::create();
+
+	ValueMap collisionProperties = ValueMap(*this->properties);
+
+	// Clear x/y position -- this is already handled by this TerrainObject, and would otherwise result in incorrectly placed collision
+	collisionProperties[SerializableObject::MapKeyXPosition] = 0.0f;
+	collisionProperties[SerializableObject::MapKeyYPosition] = 0.0f;
+
+	// Create collision object
+	CategoryName categoryName = collisionProperties.at(SerializableObject::MapKeyName).asString();
+	PhysicsBody* physicsBody = PhysicsBody::createEdgePolygon(this->points.data(), this->points.size(), PhysicsMaterial(0.0f, 0.0f, 0.0f));
+	CollisionObject* collisionObject = new CollisionObject(&collisionProperties, physicsBody, categoryName, false, false);
+
+	this->collisionNode->addChild(collisionObject);
+	this->addChild(this->collisionNode);
 }
 
-bool TerrainObject::onContactUpdate(PhysicsContact &contact)
+void TerrainObject::buildInfill(Color4B infillColor)
 {
-	TerrainData data = this->constructTerrainData(contact);
-
-	if (data.other == nullptr)
+	if (this->infillNode != nullptr)
 	{
-		return true;
+		this->removeChild(this->infillNode);
 	}
 
-	return this->contactUpdate(data);
-}
+	this->infillNode = Node::create();
 
-bool TerrainObject::onContactEnd(PhysicsContact &contact)
-{
-	TerrainData data = this->constructTerrainData(contact);
+	// Building the infill requires breaking up the shape into a series of triangles, and creating a solid color of that triangle
+	// This is done because cocos2d-x drawnodes do not support concave shapes
 
-	if (data.other == nullptr)
+	uint32_t MaxPointCount = this->points.size();
+	size_t MemoryRequired = MPE_PolyMemoryRequired(MaxPointCount);
+	void* memory = calloc(MemoryRequired, 1);
+	MPEPolyContext polyContext;
+
+	if (!MPE_PolyInitContext(&polyContext, memory, MaxPointCount))
 	{
-		return true;
+		LogUtils::logError("Error initializing terrain. Possible error condition: duplicate point cordinates, bounds checking assert failures");
+
+		return;
 	}
 
-	return this->contactEnd(data);
-}
-
-TerrainObject::TerrainData TerrainObject::constructTerrainData(PhysicsContact& contact)
-{
-	TerrainObject::TerrainData collisionData = TerrainObject::TerrainData(nullptr, Vec2::ZERO, TerrainObject::TerrainDirection::None, nullptr, 0);
-	PhysicsShape* other = nullptr;
-
-	if (contact.getShapeA()->getBody() != this->physicsBody && contact.getShapeB()->getBody() != this->physicsBody)
+	for (auto it = this->points.begin(); it != this->points.end(); ++it)
 	{
-		return collisionData;
+		Vec2 point = *it;
+
+		// Create a version of this point for our Constrained Delauney Triangulation (CDT) library
+		MPEPolyPoint* Point = MPE_PolyPushPoint(&polyContext);
+		Point->X = point.x;
+		Point->Y = point.y;
 	}
 
-	if (contact.getShapeA()->getBody() == this->physicsBody)
-	{
-		other = contact.getShapeB();
-	}
-	else
-	{
-		other = contact.getShapeA();
-	}
+	// Add the polyline for the edge. This will consume all points added so far.
+	MPE_PolyAddEdge(&polyContext);
 
-	if (other == nullptr)
-	{
-		return collisionData;
-	}
+	// Triangulate the shape
+	MPE_PolyTriangulate(&polyContext);
 
-	collisionData.other = (TerrainObject*)other->getBody()->getNode();
-	collisionData.normal = contact.getContactData()->normal;
-	collisionData.pointCount = contact.getContactData()->count;
-	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
-
-	// Convert collision coordinates to level coordinates
-	for (int index = 0; index < collisionData.pointCount; index++)
+	// Parse out the triangle and create the in-fill color from that
+	for (uxx triangleIndex = 0; triangleIndex < polyContext.TriangleCount; ++triangleIndex)
 	{
-		collisionData.points[index] = Vec2(contact.getContactData()->points[index].x + cameraPosition.x, contact.getContactData()->points[index].y + cameraPosition.y);
+		MPEPolyTriangle* triangle = polyContext.Triangles[triangleIndex];
+		DrawNode* infillTriangle = DrawNode::create();
+
+		Vec2 trianglePointA = Vec2(triangle->Points[0]->X, triangle->Points[0]->Y);
+		Vec2 trianglePointB = Vec2(triangle->Points[1]->X, triangle->Points[1]->Y);
+		Vec2 trianglePointC = Vec2(triangle->Points[2]->X, triangle->Points[2]->Y);
+
+		infillTriangle->drawTriangle(trianglePointA, trianglePointB, trianglePointC, Color4F(infillColor));
+		this->infillNode->addChild(infillTriangle);
 	}
 
-	// Determines how large the
-	const float sensitivity = 16.0f;
-
-	// Determine direction of collision
-	if (collisionData.pointCount == 2)
-	{
-		// Horizontal collision
-		if (collisionData.points[0].x == collisionData.points[1].x)
-		{
-			if (abs(collisionData.points[0].y - collisionData.points[1].y) > sensitivity)
-			{
-				if (this->getPositionX() < collisionData.other->getPositionX())
-				{
-					collisionData.direction = TerrainDirection::Right;
-				}
-				else
-				{
-					collisionData.direction = TerrainDirection::Left;
-				}
-			}
-			else if (this->getPositionY() >= std::max(collisionData.points[0].y, collisionData.points[1].y))
-			{
-				if (this->getPositionX() < collisionData.other->getPositionX())
-				{
-					collisionData.direction = TerrainDirection::StepRight;
-				}
-				else
-				{
-					collisionData.direction = TerrainDirection::StepLeft;
-				}
-			}
-		}
-		// Vertical collision
-		else if (collisionData.points[0].y == collisionData.points[1].y &&
-			abs(collisionData.points[0].x - collisionData.points[1].x) > sensitivity)
-		{
-			if (this->getPositionY() < collisionData.other->getPositionY())
-			{
-				collisionData.direction = TerrainDirection::Up;
-			}
-			else
-			{
-				collisionData.direction = TerrainDirection::Down;
-			}
-		}
-	}
-
-	return collisionData;
+	this->addChild(this->infillNode);
 }

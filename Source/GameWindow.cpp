@@ -36,7 +36,7 @@ bool GameWindow::applicationDidFinishLaunching()
 			return false;
 		}
 
-		std::cout << "Steam initialized" << std::endl;
+		LogUtils::log("Steam initialized");
 	}
 
 	Director* director = Director::getInstance();
