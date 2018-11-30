@@ -258,51 +258,47 @@ void TerrainObject::buildTextures()
 Vec2 TerrainObject::getOutwardNormal(std::tuple<Vec2, Vec2> segment)
 {
 	// Distance used to check which direction is "inside" the terrain
-	const float INNER_NORMAL_COLLISION_TEST_DISTANCE = 128.0f;
+	const float INNER_NORMAL_COLLISION_TEST_DISTANCE = 48.0f;
 
 	Vec2 source = std::get<0>(segment);
 	Vec2 dest = std::get<1>(segment);
 	Vec2 delta = dest - source;
 	Vec2 midPoint = source.getMidpoint(dest);
-	Vec2 candidateNormal = Vec2(-delta.getNormalized().y, delta.getNormalized().x);
-	Vec2 candidateTestingPoint = midPoint + INNER_NORMAL_COLLISION_TEST_DISTANCE * candidateNormal;
-	bool isCandidateOutwardFacing = true;
+	Vec2 outwardNormal = Vec2(-delta.getNormalized().y, delta.getNormalized().x);
+	Vec2 candidateTestingPoint = midPoint + INNER_NORMAL_COLLISION_TEST_DISTANCE * outwardNormal;
 
 	// There are two possible normals -- check if the one we picked is the surface normal
 	for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
 	{
 		ShardedTriangle triangle = *it;
 
-		if (this->isPointInShard(triangle, candidateNormal))
+		if (this->isPointInShard(triangle, candidateTestingPoint))
 		{
-			isCandidateOutwardFacing = false;
+			// We chose an inward normal instead of an outward normal -- fix it
+			outwardNormal *= -1.0f;
 			break;
 		}
 	}
 
-	// Pick the candidate normal if it is pointing outside, otherwise reverse it
-	Vec2 outwardNormal = isCandidateOutwardFacing ? candidateNormal : (candidateNormal * -1.0f);
-
 	if (TerrainObject::EnableTerrainDebugging)
 	{
-		Vec2 originalCandidateSmall = midPoint + INNER_NORMAL_COLLISION_TEST_DISTANCE / 2.0f * candidateNormal;
 		Vec2 outwardNormalPoint = midPoint + INNER_NORMAL_COLLISION_TEST_DISTANCE * outwardNormal;
 
 		DrawNode* sourcePointDebug = DrawNode::create();
 		DrawNode* midPointDebug = DrawNode::create();
-		DrawNode* candidateNormalDebug = DrawNode::create();
+		DrawNode* candidateNormalDebug = DrawNode::create(1.0f);
 		DrawNode* normalDebug = DrawNode::create();
 
 		sourcePointDebug->drawDot(source, 4.0f, Color4F::BLUE);
 		normalDebug->drawLine(midPoint, outwardNormalPoint, Color4F::YELLOW);
 		normalDebug->drawDot(outwardNormalPoint, 4.0f, Color4F::YELLOW);
-		candidateNormalDebug->drawLine(midPoint, originalCandidateSmall, Color4F::ORANGE);
-		candidateNormalDebug->drawDot(originalCandidateSmall, 4.0f, Color4F::ORANGE);
+		candidateNormalDebug->drawLine(midPoint, candidateTestingPoint, Color4F::GREEN);
+		candidateNormalDebug->drawDot(candidateTestingPoint, 3.0f, Color4F::GREEN);
 		midPointDebug->drawDot(midPoint, 8.0f, Color4F::MAGENTA);
 
 		this->debugNode->addChild(sourcePointDebug);
-		this->debugNode->addChild(candidateNormalDebug);
 		this->debugNode->addChild(normalDebug);
+		this->debugNode->addChild(candidateNormalDebug);
 		this->debugNode->addChild(midPointDebug);
 	}
 
@@ -323,16 +319,54 @@ float TerrainObject::getSegmentAngle(std::tuple<Vec2, Vec2> segment)
 
 bool TerrainObject::isPointInShard(ShardedTriangle triangle, Vec2 point)
 {
-	auto sign = [](Vec2 p1, Vec2 p2, Vec2 p3)
+	int as_x = point.x - triangle.coords[0].x;
+	int as_y = point.y - triangle.coords[0].y;
+	bool s_ab = (triangle.coords[1].x - triangle.coords[0].x) * as_y - (triangle.coords[1].y - triangle.coords[0].y) * as_x > 0;
+
+	if ((triangle.coords[2].x - triangle.coords[0].x) * as_y - (triangle.coords[2].y - triangle.coords[0].y) * as_x > 0 == s_ab || 
+		(triangle.coords[2].x - triangle.coords[1].x) * (point.y - triangle.coords[1].y) - (triangle.coords[2].y - triangle.coords[1].y) * (point.x - triangle.coords[1].x) > 0 != s_ab)
 	{
-		return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
-	};
+		return false;
+	}
 
-	float d1 = sign(point, triangle.coords[0], triangle.coords[1]);
-	float d2 = sign(point, triangle.coords[1], triangle.coords[2]);
-	float d3 = sign(point, triangle.coords[2], triangle.coords[0]);
-	bool has_neg = (d1 < 0) || (d2 < 0) || (d3 < 0);
-	bool has_pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
+	return true;
+}
 
-	return !(has_neg && has_pos);
+void TerrainObject::debugCollisionPoints(Vec2 origin)
+{
+	if (TerrainObject::EnableTerrainDebugging)
+	{
+		const int NUMBER_OF_POINTS = 256;
+
+		DrawNode* points = DrawNode::create();
+
+		for (int index = 0; index < NUMBER_OF_POINTS; index++)
+		{
+			Vec2 point = origin + Vec2(RandomHelper::random_real(-256.0f, 256.0f), RandomHelper::random_real(-256.0f, 256.0f));
+
+			bool isPointInAnyShard = false;
+
+			for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
+			{
+				ShardedTriangle triangle = *it;
+
+				if (this->isPointInShard(triangle, point))
+				{
+					isPointInAnyShard = true;
+					break;
+				}
+			}
+
+			if (isPointInAnyShard)
+			{
+				points->drawPoint(Vec2(point.x, point.y), 3.0f, Color4F::ORANGE);
+			}
+			else
+			{
+				points->drawPoint(Vec2(point.x, point.y), 3.0f, Color4F::RED);
+			}
+		}
+
+		this->debugNode->addChild(points);
+	}
 }
