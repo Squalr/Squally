@@ -54,6 +54,14 @@ def main():
 		'.tif',
 	), "Resources/Platformer/Objects")
 
+	# TerrainResources
+	createResourceFile("TerrainResources", (
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/Platformer/Terrain")
+
 	# CutsceneResources
 	createResourceFile("CutsceneResources", (
 		'.scml',

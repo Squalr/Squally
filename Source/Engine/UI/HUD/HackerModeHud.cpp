@@ -94,6 +94,7 @@ void HackerModeHud::registerHackableObject(EventCustom* args)
 
 	if (hackableObject != nullptr)
 	{
-		GameUtils::changeParent(hackableObject->hackButton, this->hackableButtonLayer, true);
+		// Zac: Disabled, this was causing stupid crashes
+		// GameUtils::changeParent(hackableObject->hackButton, this->hackableButtonLayer, true);
 	}
 }

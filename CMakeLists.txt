@@ -112,6 +112,8 @@ list(APPEND GAME_SOURCE
 	Source/Engine/SmartScene.cpp
 	Source/Engine/Sound/SoundManager.cpp
 	Source/Engine/Steam/Steam.cpp
+	Source/Engine/Terrain/TerrainDeserializer.cpp
+	Source/Engine/Terrain/TerrainObject.cpp
 	Source/Engine/UI/Controls/CCheckbox.cpp
 	Source/Engine/UI/Controls/CProgressBar.cpp
 	Source/Engine/UI/Controls/CRadioButton.cpp
@@ -447,6 +449,7 @@ list(APPEND GAME_SOURCE
 	Source/Resources/ShaderResources.cpp
 	Source/Resources/SoundResources.cpp
 	Source/Resources/StringResources.cpp
+	Source/Resources/TerrainResources.cpp
 	Source/Resources/UIResources.cpp
 	Source/Scenes/Cutscenes/IntroCutscene/BoardMembers.cpp
 	Source/Scenes/Cutscenes/IntroCutscene/HomeAssistantRobot.cpp
@@ -861,6 +864,8 @@ list(APPEND GAME_HEADER
 	Source/Engine/SmartScene.h
 	Source/Engine/Sound/SoundManager.h
 	Source/Engine/Steam/Steam.h
+	Source/Engine/Terrain/TerrainDeserializer.h
+	Source/Engine/Terrain/TerrainObject.h
 	Source/Engine/UI/Controls/CCheckbox.h
 	Source/Engine/UI/Controls/CProgressBar.h
 	Source/Engine/UI/Controls/CRadioButton.h
@@ -887,6 +892,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Utils/GameUtils.h
 	Source/Engine/Utils/HackUtils.h
 	Source/Engine/Utils/LogUtils.h
+	Source/Engine/Utils/MPE_fastpoly2tri.h
 	Source/Engine/Utils/MathUtils.h
 	Source/Engine/Utils/StrUtils.h
 	Source/Engine/Utils/SystemUtils.h
@@ -1218,6 +1224,7 @@ list(APPEND GAME_HEADER
 	Source/Resources/ShaderResources.h
 	Source/Resources/SoundResources.h
 	Source/Resources/StringResources.h
+	Source/Resources/TerrainResources.h
 	Source/Resources/UIResources.h
 	Source/Scenes/Cutscenes/IntroCutscene/BoardMembers.h
 	Source/Scenes/Cutscenes/IntroCutscene/HomeAssistantRobot.h

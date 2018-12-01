@@ -1,6 +1,6 @@
 #include "CollisionObject.h"
 
-std::string CollisionObject::KeyTypeCollision = "collision";
+std::string CollisionObject::MapKeyTypeCollision = "collision";
 
 const std::string CollisionObject::RequestCollisionMappingEvent = "request_collision_mapping";
 
@@ -77,16 +77,16 @@ void CollisionObject::update(float dt)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 pos = this->getPosition();
-	const float STOP_PHYSICS_OFFSET = 1024.0f;
+	Size STOP_PHYSICS_OFFSET = visibleSize / 2.0f;
 
 	if (this->physicsBody != nullptr && this->physicsBody->isDynamic())
 	{
 		Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 
-		if (pos.x > cameraPosition.x + visibleSize.width + STOP_PHYSICS_OFFSET ||
-			pos.x < cameraPosition.x - STOP_PHYSICS_OFFSET ||
-			pos.y > cameraPosition.y + visibleSize.height + STOP_PHYSICS_OFFSET ||
-			pos.y < cameraPosition.y - STOP_PHYSICS_OFFSET)
+		if (pos.x > cameraPosition.x + visibleSize.width + STOP_PHYSICS_OFFSET.width ||
+			pos.x < cameraPosition.x - STOP_PHYSICS_OFFSET.width ||
+			pos.y > cameraPosition.y + visibleSize.height + STOP_PHYSICS_OFFSET.height ||
+			pos.y < cameraPosition.y - STOP_PHYSICS_OFFSET.height)
 		{
 			// Bypass setter to force disable physics for this object
 			this->physicsBody->setEnabled(false);

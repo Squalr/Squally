@@ -1,36 +1,37 @@
 #include "SerializableObject.h"
 
-const std::string SerializableObject::KeyId = "id";
-const std::string SerializableObject::KeyType = "type";
-const std::string SerializableObject::KeyName = "name";
-const std::string SerializableObject::KeyWidth = "width";
-const std::string SerializableObject::KeyHeight = "height";
-const std::string SerializableObject::KeyXPosition = "x";
-const std::string SerializableObject::KeyYPosition = "y";
-const std::string SerializableObject::KeyRotation = "rotation";
-const std::string SerializableObject::KeyPoints = "points";
+const std::string SerializableObject::MapKeyId = "id";
+const std::string SerializableObject::MapKeyType = "type";
+const std::string SerializableObject::MapKeyName = "name";
+const std::string SerializableObject::MapKeyWidth = "width";
+const std::string SerializableObject::MapKeyHeight = "height";
+const std::string SerializableObject::MapKeyXPosition = "x";
+const std::string SerializableObject::MapKeyYPosition = "y";
+const std::string SerializableObject::MapKeyRotation = "rotation";
+const std::string SerializableObject::MapKeyPoints = "points";
+const std::string SerializableObject::MapKeyPolyLinePoints = "polylinePoints";
 
-const std::string SerializableObject::KeyGid = "gid";
+const std::string SerializableObject::MapKeyGid = "gid";
 
-const std::string SerializableObject::KeyMetaIsIsometric = "meta_is_isometric";
-const std::string SerializableObject::KeyMetaMapHeight = "meta_map_height";
-const std::string SerializableObject::KeyMetaMapWidth = "meta_map_width";
+const std::string SerializableObject::MapKeyMetaIsIsometric = "meta_is_isometric";
+const std::string SerializableObject::MapKeyMetaMapHeight = "meta_map_height";
+const std::string SerializableObject::MapKeyMetaMapWidth = "meta_map_width";
 
 const std::vector<std::string> SerializableObject::AttributeKeys =
 {
-	SerializableObject::KeyId,
-	SerializableObject::KeyName,
-	SerializableObject::KeyType,
-	SerializableObject::KeyXPosition,
-	SerializableObject::KeyYPosition,
-	SerializableObject::KeyWidth,
-	SerializableObject::KeyHeight,
-	SerializableObject::KeyRotation,
+	SerializableObject::MapKeyId,
+	SerializableObject::MapKeyName,
+	SerializableObject::MapKeyType,
+	SerializableObject::MapKeyXPosition,
+	SerializableObject::MapKeyYPosition,
+	SerializableObject::MapKeyWidth,
+	SerializableObject::MapKeyHeight,
+	SerializableObject::MapKeyRotation,
 };
 
-const std::string SerializableObject::KeyPropertyName = "name";
-const std::string SerializableObject::KeyPropertyType = "type";
-const std::string SerializableObject::KeyPropertyValue = "value";
+const std::string SerializableObject::MapKeyPropertyName = "name";
+const std::string SerializableObject::MapKeyPropertyType = "type";
+const std::string SerializableObject::MapKeyPropertyValue = "value";
 
 SerializableObject::SerializableObject(ValueMap* initProperties)
 {
@@ -39,7 +40,7 @@ SerializableObject::SerializableObject(ValueMap* initProperties)
 	if (this->properties != nullptr)
 	{
 		// Map the coordinates of Tiled space to Cocos space for isometric games:
-		if (GameUtils::keyExists(this->properties, SerializableObject::KeyMetaIsIsometric) && this->properties->at(SerializableObject::KeyMetaIsIsometric).asBool())
+		if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyMetaIsIsometric) && this->properties->at(SerializableObject::MapKeyMetaIsIsometric).asBool())
 		{
 			this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
@@ -48,35 +49,35 @@ SerializableObject::SerializableObject(ValueMap* initProperties)
 			Size objectSize = Size::ZERO;
 
 			// Set map origin
-			if (GameUtils::keyExists(this->properties, SerializableObject::KeyMetaMapWidth))
+			if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyMetaMapWidth))
 			{
-				mapSize.width = (this->properties->at(SerializableObject::KeyMetaMapWidth).asFloat());
+				mapSize.width = (this->properties->at(SerializableObject::MapKeyMetaMapWidth).asFloat());
 			}
 
-			if (GameUtils::keyExists(this->properties, SerializableObject::KeyMetaMapHeight))
+			if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyMetaMapHeight))
 			{
-				mapSize.height = (this->properties->at(SerializableObject::KeyMetaMapHeight).asFloat());
+				mapSize.height = (this->properties->at(SerializableObject::MapKeyMetaMapHeight).asFloat());
 			}
 
 			// Update object position relative to this origin
-			if (GameUtils::keyExists(this->properties, SerializableObject::KeyXPosition))
+			if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyXPosition))
 			{
-				position.x = this->properties->at(SerializableObject::KeyXPosition).asFloat();
+				position.x = this->properties->at(SerializableObject::MapKeyXPosition).asFloat();
 			}
 
-			if (GameUtils::keyExists(this->properties, SerializableObject::KeyWidth))
+			if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyWidth))
 			{
-				objectSize.width = this->properties->at(SerializableObject::KeyWidth).asFloat();
+				objectSize.width = this->properties->at(SerializableObject::MapKeyWidth).asFloat();
 			}
 
-			if (GameUtils::keyExists(this->properties, SerializableObject::KeyYPosition))
+			if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyYPosition))
 			{
-				position.y =  this->properties->at(SerializableObject::KeyYPosition).asFloat();
+				position.y =  this->properties->at(SerializableObject::MapKeyYPosition).asFloat();
 			}
 
-			if (GameUtils::keyExists(this->properties, SerializableObject::KeyHeight))
+			if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyHeight))
 			{
-				objectSize.height = this->properties->at(SerializableObject::KeyHeight).asFloat();
+				objectSize.height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
 			}
 
 			// Isometric position to screen position conversion magic
@@ -90,24 +91,24 @@ SerializableObject::SerializableObject(ValueMap* initProperties)
 		// Map the coordinates of Tiled space to Cocos space for 2d games:
 		else
 		{
-			if (GameUtils::keyExists(this->properties, SerializableObject::KeyXPosition))
+			if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyXPosition))
 			{
-				this->setPositionX(this->properties->at(SerializableObject::KeyXPosition).asFloat());
+				this->setPositionX(this->properties->at(SerializableObject::MapKeyXPosition).asFloat());
 			}
 
-			if (GameUtils::keyExists(this->properties, SerializableObject::KeyWidth))
+			if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyWidth))
 			{
-				this->setPositionX(this->getPositionX() + this->properties->at(SerializableObject::KeyWidth).asFloat() / 2.0f);
+				this->setPositionX(this->getPositionX() + this->properties->at(SerializableObject::MapKeyWidth).asFloat() / 2.0f);
 			}
 
-			if (GameUtils::keyExists(this->properties, SerializableObject::KeyYPosition))
+			if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyYPosition))
 			{
-				this->setPositionY(this->properties->at(SerializableObject::KeyYPosition).asFloat());
+				this->setPositionY(this->properties->at(SerializableObject::MapKeyYPosition).asFloat());
 			}
 
-			if (GameUtils::keyExists(this->properties, SerializableObject::KeyHeight))
+			if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyHeight))
 			{
-				this->setPositionY(this->getPositionY() + this->properties->at(SerializableObject::KeyHeight).asFloat() / 2.0f);
+				this->setPositionY(this->getPositionY() + this->properties->at(SerializableObject::MapKeyHeight).asFloat() / 2.0f);
 			}
 		}
 	}
@@ -131,10 +132,10 @@ void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2
 		if (GameUtils::keyExists(this->properties, *it))
 		{
 			// Special case for Y Position, which is stored in different coordinates and needs adjusting
-			if (*it == SerializableObject::KeyYPosition)
+			if (*it == SerializableObject::MapKeyYPosition)
 			{
 				float y = this->properties->at(*it).asFloat();
-				float height = this->properties->at(SerializableObject::KeyHeight).asFloat();
+				float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
 				float newY = mapUnitSize.height * mapTileSize.height - y - height;
 				Value reEncodedValue = Value(newY);
 
@@ -143,9 +144,9 @@ void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2
 			else
 			{
 				// Width/Height/Rotation are not encoded if zero
-				if (*it == SerializableObject::KeyWidth && this->properties->at(*it).asFloat() == 0.0f ||
-					*it == SerializableObject::KeyHeight && this->properties->at(*it).asFloat() == 0.0f ||
-					*it == SerializableObject::KeyRotation && this->properties->at(*it).asFloat() == 0.0f)
+				if (*it == SerializableObject::MapKeyWidth && this->properties->at(*it).asFloat() == 0.0f ||
+					*it == SerializableObject::MapKeyHeight && this->properties->at(*it).asFloat() == 0.0f ||
+					*it == SerializableObject::MapKeyRotation && this->properties->at(*it).asFloat() == 0.0f)
 				{
 					continue;
 				}
@@ -155,9 +156,9 @@ void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2
 		}
 	}
 
-	if (GameUtils::keyExists(this->properties, SerializableObject::KeyPoints))
+	if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyPoints))
 	{
-		ValueVector points = this->properties->at(SerializableObject::KeyPoints).asValueVector();
+		ValueVector points = this->properties->at(SerializableObject::MapKeyPoints).asValueVector();
 
 		if (points.size() > 0)
 		{
@@ -168,10 +169,10 @@ void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2
 			{
 				ValueMap coordinates = it->asValueMap();
 
-				pointPairs += coordinates.at(SerializableObject::KeyXPosition).asString() + "," + coordinates.at(SerializableObject::KeyYPosition).asString() + " ";
+				pointPairs += coordinates.at(SerializableObject::MapKeyXPosition).asString() + "," + coordinates.at(SerializableObject::MapKeyYPosition).asString() + " ";
 			}
 
-			polygonElement->SetAttribute(SerializableObject::KeyPoints.c_str(), pointPairs.substr(0, pointPairs.size() - 1).c_str());
+			polygonElement->SetAttribute(SerializableObject::MapKeyPoints.c_str(), pointPairs.substr(0, pointPairs.size() - 1).c_str());
 			objectElement->LinkEndChild(polygonElement);
 		}
 	}
@@ -187,32 +188,32 @@ void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2
 			{
 				tinyxml2::XMLElement* propertyElement = documentRoot->NewElement("property");
 
-				propertyElement->SetAttribute(SerializableObject::KeyName.c_str(), it->first.c_str());
+				propertyElement->SetAttribute(SerializableObject::MapKeyName.c_str(), it->first.c_str());
 
 				switch (it->second.getType())
 				{
 					case Value::Type::STRING:
 					{
-						propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
+						propertyElement->SetAttribute(SerializableObject::MapKeyPropertyValue.c_str(), it->second.asString().c_str());
 						break;
 					}
 					case Value::Type::INTEGER:
 					{
-						propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "int");
-						propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
+						propertyElement->SetAttribute(SerializableObject::MapKeyPropertyType.c_str(), "int");
+						propertyElement->SetAttribute(SerializableObject::MapKeyPropertyValue.c_str(), it->second.asString().c_str());
 						break;
 					}
 					case Value::Type::FLOAT:
 					case Value::Type::DOUBLE:
 					{
-						propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "float");
-						propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
+						propertyElement->SetAttribute(SerializableObject::MapKeyPropertyType.c_str(), "float");
+						propertyElement->SetAttribute(SerializableObject::MapKeyPropertyValue.c_str(), it->second.asString().c_str());
 						break;
 					}
 					case Value::Type::BOOLEAN:
 					{
-						propertyElement->SetAttribute(SerializableObject::KeyPropertyType.c_str(), "bool");
-						propertyElement->SetAttribute(SerializableObject::KeyPropertyValue.c_str(), it->second.asString().c_str());
+						propertyElement->SetAttribute(SerializableObject::MapKeyPropertyType.c_str(), "bool");
+						propertyElement->SetAttribute(SerializableObject::MapKeyPropertyValue.c_str(), it->second.asString().c_str());
 						break;
 					}
 					case Value::Type::VECTOR:
@@ -264,7 +265,7 @@ bool SerializableObject::containsProperties()
 
 bool SerializableObject::isAttributeOrHiddenProperty(std::string propertyName)
 {
-	if (propertyName == SerializableObject::KeyGid || propertyName == SerializableObject::KeyPoints)
+	if (propertyName == SerializableObject::MapKeyGid || propertyName == SerializableObject::MapKeyPoints)
 	{
 		return true;
 	}
