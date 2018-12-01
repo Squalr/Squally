@@ -7,8 +7,8 @@
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Localization/Localization.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/LogUtils.h"
-#include "Engine/Utils/MPE_fastpoly2tri.h"
 #include "Resources/TerrainResources.h"
 
 using namespace cocos2d;
@@ -27,33 +27,23 @@ private:
 	TerrainObject(ValueMap* initProperties);
 	~TerrainObject();
 
-	struct ShardedTriangle
-	{
-		Vec2 coords[3];
-
-		ShardedTriangle(Vec2 coordA, Vec2 coordB, Vec2 coordC)
-		{
-			coords[0] = coordA;
-			coords[1] = coordB;
-			coords[2] = coordC;
-		}
-	};
-
 	void onEnter() override;
 	void initializeListeners() override;
-	void shardPolygon();
+	void buildInnerGeometry();
 	void buildCollisionEdge();
 	void buildInnerTextures();
 	void buildInfill(Color4B infillColor);
 	void buildSurfaceTextures();
-	void debugCollisionPoints(Vec2 origin);
 	Vec2 getOutwardNormal(std::tuple<Vec2, Vec2> segment);
 	float getSegmentAngle(std::tuple<Vec2, Vec2> segment);
-	bool isPointInShard(ShardedTriangle triangle, Vec2 point);
 
 	std::vector<Vec2> points;
 	std::vector<std::tuple<Vec2, Vec2>> segments;
-	std::vector<ShardedTriangle> triangles;
+	std::vector<AlgoUtils::Triangle> triangles;
+
+	std::vector<Vec2> innerPoints;
+	std::vector<std::tuple<Vec2, Vec2>> innerSegments;
+	std::vector<AlgoUtils::Triangle> innerTriangles;
 
 	CollisionObject* edgeCollisionObject;
 	Node* edgeCollisionNode;
@@ -66,4 +56,5 @@ private:
 	Node* debugNode;
 
 	static const bool EnableTerrainDebugging;
+	static const float InnerGeometryDistance;
 };

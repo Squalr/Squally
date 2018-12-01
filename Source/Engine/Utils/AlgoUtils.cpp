@@ -91,3 +91,92 @@ std::vector<int> AlgoUtils::subsetSum(const std::vector<int>& numbers, int sum, 
 
 	return result;
 }
+
+
+std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(std::vector<Vec2> polygonPoints)
+{
+	std::vector<Triangle> triangles = std::vector<Triangle>();
+
+	uint32_t MaxPointCount = polygonPoints.size();
+	size_t MemoryRequired = MPE_PolyMemoryRequired(MaxPointCount);
+	void* memory = calloc(MemoryRequired, 1);
+	MPEPolyContext polyContext;
+
+	if (!MPE_PolyInitContext(&polyContext, memory, MaxPointCount))
+	{
+		LogUtils::logError("Error trianglefying polygon. Possible error condition: duplicate point cordinates, bounds checking assert failures");
+
+		return triangles;
+	}
+
+	for (auto it = polygonPoints.begin(); it != polygonPoints.end(); ++it)
+	{
+		Vec2 point = *it;
+
+		// Create a version of this point for our Constrained Delauney Triangulation (CDT) library
+		MPEPolyPoint* Point = MPE_PolyPushPoint(&polyContext);
+		Point->X = point.x;
+		Point->Y = point.y;
+	}
+
+	// Add the polyline for the edge. This will consume all points added so far.
+	MPE_PolyAddEdge(&polyContext);
+
+	// Triangulate the shape
+	MPE_PolyTriangulate(&polyContext);
+
+	// Parse out the triangle and create the in-fill color from that
+	for (uxx triangleIndex = 0; triangleIndex < polyContext.TriangleCount; ++triangleIndex)
+	{
+		MPEPolyTriangle* triangle = polyContext.Triangles[triangleIndex];
+		DrawNode* infillTriangle = DrawNode::create();
+
+		Vec2 trianglePointA = Vec2(triangle->Points[0]->X, triangle->Points[0]->Y);
+		Vec2 trianglePointB = Vec2(triangle->Points[1]->X, triangle->Points[1]->Y);
+		Vec2 trianglePointC = Vec2(triangle->Points[2]->X, triangle->Points[2]->Y);
+
+		triangles.push_back(Triangle(trianglePointA, trianglePointB, trianglePointC));
+	}
+
+	return triangles;
+}
+
+bool AlgoUtils::isPointInTriangle(AlgoUtils::Triangle triangle, Vec2 point)
+{
+	int as_x = point.x - triangle.coords[0].x;
+	int as_y = point.y - triangle.coords[0].y;
+	bool s_ab = (triangle.coords[1].x - triangle.coords[0].x) * as_y - (triangle.coords[1].y - triangle.coords[0].y) * as_x > 0;
+
+	if ((triangle.coords[2].x - triangle.coords[0].x) * as_y - (triangle.coords[2].y - triangle.coords[0].y) * as_x > 0 == s_ab ||
+		(triangle.coords[2].x - triangle.coords[1].x) * (point.y - triangle.coords[1].y) - (triangle.coords[2].y - triangle.coords[1].y) * (point.x - triangle.coords[1].x) > 0 != s_ab)
+	{
+		return false;
+	}
+
+	return true;
+}
+
+std::vector<std::tuple<Vec2, Vec2>> AlgoUtils::buildSegmentsFromPoints(std::vector<Vec2> points)
+{
+	std::vector<std::tuple<Vec2, Vec2>> segments = std::vector<std::tuple<Vec2, Vec2>>();
+
+	Vec2* previous = nullptr;
+
+	for (auto it = points.begin(); it != points.end(); it++)
+	{
+		if (previous != nullptr)
+		{
+			segments.push_back(std::tuple<Vec2, Vec2>(*previous, *it));
+		}
+
+		previous = &(*it);
+	}
+
+	// Loop to start
+	if (points.size() >= 2)
+	{
+		segments.push_back(std::tuple<Vec2, Vec2>(points.back(), points[0]));
+	}
+
+	return segments;
+}

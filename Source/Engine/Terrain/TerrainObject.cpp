@@ -2,6 +2,7 @@
 
 std::string TerrainObject::MapKeyTypeTerrain = "terrain";
 const bool TerrainObject::EnableTerrainDebugging = true;
+const float TerrainObject::InnerGeometryDistance = 128.0f;
 
 TerrainObject* TerrainObject::deserialize(ValueMap* initProperties)
 {
@@ -43,7 +44,10 @@ TerrainObject::TerrainObject(ValueMap* initProperties) : HackableObject(initProp
 {
 	this->points = std::vector<Vec2>();
 	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
-	this->triangles = std::vector<ShardedTriangle>();
+	this->triangles = std::vector<AlgoUtils::Triangle>();
+	this->innerPoints = std::vector<Vec2>();
+	this->innerSegments = std::vector<std::tuple<Vec2, Vec2>>();
+	this->innerTriangles = std::vector<AlgoUtils::Triangle>();
 
 	this->edgeCollisionNode = Node::create();
 	this->innerTexturesNode = Node::create();
@@ -81,102 +85,44 @@ void TerrainObject::initializeListeners()
 void TerrainObject::setPoints(std::vector<Vec2> points)
 {
 	this->points = points;
-
-	Vec2* previous = nullptr;
-
-	for (auto it = this->points.begin(); it != this->points.end(); it++)
-	{
-		if (previous != nullptr)
-		{
-			this->segments.push_back(std::tuple<Vec2, Vec2>(*previous, *it));
-		}
-
-		previous = &(*it);
-	}
-
-	// Loop to start
-	if (this->points.size() >= 2)
-	{
-		this->segments.push_back(std::tuple<Vec2, Vec2>(this->points.back(), this->points[0]));
-	}
-
-	float sum = 0.0f;
-
-	for (auto it = this->segments.begin(); it != this->segments.end(); it++)
-	{
-		std::tuple<Vec2, Vec2> segment = *it;
-		Vec2 source = std::get<0>(segment);
-		Vec2 dest = std::get<1>(segment);
-
-		sum += (dest.x - source.y) * (dest.y - source.y);
-	}
-
-	// If counter clockwise (sum > 0.0f), reverse the point/segment order
-	if (sum > 0.0f)
-	{
-		std::reverse(this->points.begin(), this->points.end());
-		std::reverse(this->segments.begin(), this->segments.end());
-	}
+	this->segments = AlgoUtils::buildSegmentsFromPoints(this->points);
+	this->triangles = AlgoUtils::trianglefyPolygon(this->points);
 }
 
 void TerrainObject::rebuildTerrain()
 {
 	this->debugNode->removeAllChildren();
 
-	this->shardPolygon();
+	this->buildInnerGeometry();
 	this->buildCollisionEdge();
 	this->buildInnerTextures();
 	this->buildInfill(Color4B(11, 30, 39, 255));
 	this->buildSurfaceTextures();
 }
 
-void TerrainObject::shardPolygon()
+void TerrainObject::buildInnerGeometry()
 {
-	this->triangles.clear();
+	this->innerPoints.clear();
+	this->innerSegments.clear();
+	this->innerTriangles.clear();
 
-	// It turns out that in order to check if a point is inside the terrain, or to generate a solid infill color, we must shard
-	// The polygon into many triangles. cocos2d-x does not support either of those on polygons, so we have to get creative
-
-	uint32_t MaxPointCount = this->points.size();
-	size_t MemoryRequired = MPE_PolyMemoryRequired(MaxPointCount);
-	void* memory = calloc(MemoryRequired, 1);
-	MPEPolyContext polyContext;
-
-	if (!MPE_PolyInitContext(&polyContext, memory, MaxPointCount))
+	for (auto it = this->segments.begin(); it != this->segments.end(); it++)
 	{
-		LogUtils::logError("Error initializing terrain. Possible error condition: duplicate point cordinates, bounds checking assert failures");
+		auto itClone = it;
 
-		return;
+		std::tuple<Vec2, Vec2> segment = *it;
+		std::tuple<Vec2, Vec2> nextSegment = (++itClone) == this->segments.end() ? this->segments[0] : (*itClone);
+
+		Vec2 normalA = this->getOutwardNormal(segment);
+		Vec2 normalB = this->getOutwardNormal(nextSegment);
+		Vec2 delta = ((normalA + normalB) / 2.0f).getNormalized() * TerrainObject::InnerGeometryDistance;
+		Vec2 innerPoint = std::get<1>(segment) - delta;
+
+		this->innerPoints.push_back(innerPoint);
 	}
 
-	for (auto it = this->points.begin(); it != this->points.end(); ++it)
-	{
-		Vec2 point = *it;
-
-		// Create a version of this point for our Constrained Delauney Triangulation (CDT) library
-		MPEPolyPoint* Point = MPE_PolyPushPoint(&polyContext);
-		Point->X = point.x;
-		Point->Y = point.y;
-	}
-
-	// Add the polyline for the edge. This will consume all points added so far.
-	MPE_PolyAddEdge(&polyContext);
-
-	// Triangulate the shape
-	MPE_PolyTriangulate(&polyContext);
-
-	// Parse out the triangle and create the in-fill color from that
-	for (uxx triangleIndex = 0; triangleIndex < polyContext.TriangleCount; ++triangleIndex)
-	{
-		MPEPolyTriangle* triangle = polyContext.Triangles[triangleIndex];
-		DrawNode* infillTriangle = DrawNode::create();
-
-		Vec2 trianglePointA = Vec2(triangle->Points[0]->X, triangle->Points[0]->Y);
-		Vec2 trianglePointB = Vec2(triangle->Points[1]->X, triangle->Points[1]->Y);
-		Vec2 trianglePointC = Vec2(triangle->Points[2]->X, triangle->Points[2]->Y);
-
-		this->triangles.push_back(ShardedTriangle(trianglePointA, trianglePointB, trianglePointC));
-	}
+	this->innerSegments = AlgoUtils::buildSegmentsFromPoints(this->innerPoints);
+	this->innerTriangles = AlgoUtils::trianglefyPolygon(this->innerPoints);
 }
 
 void TerrainObject::buildCollisionEdge()
@@ -205,7 +151,7 @@ void TerrainObject::buildInnerTextures()
 
 	for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
 	{
-		ShardedTriangle triangle = *it;
+		AlgoUtils::Triangle triangle = *it;
 
 		stencil->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F::GREEN);
 	}
@@ -248,9 +194,9 @@ void TerrainObject::buildInfill(Color4B infillColor)
 
 	DrawNode* infill = DrawNode::create();
 
-	for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
+	for (auto it = this->innerTriangles.begin(); it != this->innerTriangles.end(); it++)
 	{
-		ShardedTriangle triangle = *it;
+		AlgoUtils::Triangle triangle = *it;
 
 		if (TerrainObject::EnableTerrainDebugging)
 		{
@@ -261,9 +207,6 @@ void TerrainObject::buildInfill(Color4B infillColor)
 			infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(infillColor));
 		}
 	}
-
-	// Magic trick to not cover up the texture entirely
-	infill->setScale(0.75f);
 
 	this->infillNode->addChild(infill);
 }
@@ -378,9 +321,9 @@ Vec2 TerrainObject::getOutwardNormal(std::tuple<Vec2, Vec2> segment)
 	// There are two possible normals -- check if the one we picked is the surface normal
 	for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
 	{
-		ShardedTriangle triangle = *it;
+		AlgoUtils::Triangle triangle = *it;
 
-		if (this->isPointInShard(triangle, candidateTestingPoint))
+		if (AlgoUtils::isPointInTriangle(triangle, candidateTestingPoint))
 		{
 			// We chose an inward normal instead of an outward normal -- fix it
 			outwardNormal *= -1.0f;
@@ -429,60 +372,5 @@ float TerrainObject::getSegmentAngle(std::tuple<Vec2, Vec2> segment)
 		angle += 2.0f * M_PI;
 	}
 
-	// Not really sure why, but this needs to be negated
 	return angle;
-}
-
-bool TerrainObject::isPointInShard(ShardedTriangle triangle, Vec2 point)
-{
-	int as_x = point.x - triangle.coords[0].x;
-	int as_y = point.y - triangle.coords[0].y;
-	bool s_ab = (triangle.coords[1].x - triangle.coords[0].x) * as_y - (triangle.coords[1].y - triangle.coords[0].y) * as_x > 0;
-
-	if ((triangle.coords[2].x - triangle.coords[0].x) * as_y - (triangle.coords[2].y - triangle.coords[0].y) * as_x > 0 == s_ab || 
-		(triangle.coords[2].x - triangle.coords[1].x) * (point.y - triangle.coords[1].y) - (triangle.coords[2].y - triangle.coords[1].y) * (point.x - triangle.coords[1].x) > 0 != s_ab)
-	{
-		return false;
-	}
-
-	return true;
-}
-
-void TerrainObject::debugCollisionPoints(Vec2 origin)
-{
-	if (TerrainObject::EnableTerrainDebugging)
-	{
-		const int NUMBER_OF_POINTS = 256;
-
-		DrawNode* points = DrawNode::create();
-
-		for (int index = 0; index < NUMBER_OF_POINTS; index++)
-		{
-			Vec2 point = origin + Vec2(RandomHelper::random_real(-256.0f, 256.0f), RandomHelper::random_real(-256.0f, 256.0f));
-
-			bool isPointInAnyShard = false;
-
-			for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
-			{
-				ShardedTriangle triangle = *it;
-
-				if (this->isPointInShard(triangle, point))
-				{
-					isPointInAnyShard = true;
-					break;
-				}
-			}
-
-			if (isPointInAnyShard)
-			{
-				points->drawPoint(Vec2(point.x, point.y), 3.0f, Color4F::ORANGE);
-			}
-			else
-			{
-				points->drawPoint(Vec2(point.x, point.y), 3.0f, Color4F::RED);
-			}
-		}
-
-		this->debugNode->addChild(points);
-	}
 }
