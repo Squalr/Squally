@@ -38,7 +38,7 @@ public:
 
 	virtual void setPhysicsEnabled(bool enabled);
 
-	static std::string KeyTypeCollision;
+	static std::string MapKeyTypeCollision;
 
 protected:
 	enum CollisionDirection
@@ -82,7 +82,7 @@ private:
 	CollisionData constructCollisionData(PhysicsContact& contact);
 
 	CategoryName categoryName;
-	PhysicsBody * physicsBody;
+	PhysicsBody* physicsBody;
 
 	bool physicsEnabled;
 };

@@ -33,7 +33,7 @@ void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents
 	if (args->typeName == IsometricObjectDeserializer::KeyTypeIsometricObject)
 	{
 		ValueMap properties = args->properties;
-		std::string name = properties.at(SerializableObject::KeyName).asString();
+		std::string name = properties.at(SerializableObject::MapKeyName).asString();
 		SerializableObject* newObject = nullptr;
 
 		if (name == "hexus")

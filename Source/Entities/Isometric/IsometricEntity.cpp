@@ -18,8 +18,8 @@ IsometricEntity::IsometricEntity(ValueMap* initProperties, std::string scmlResou
 	// Update width to be serialized
 	if (this->properties != nullptr)
 	{
-		(*this->properties)[IsometricEntity::KeyWidth] = size.width * scale;
-		(*this->properties)[IsometricEntity::KeyHeight] = size.height * scale;
+		(*this->properties)[IsometricEntity::MapKeyWidth] = size.width * scale;
+		(*this->properties)[IsometricEntity::MapKeyHeight] = size.height * scale;
 	}
 
 	this->addChild(this->animationNode);

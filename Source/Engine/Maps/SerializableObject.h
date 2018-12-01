@@ -13,29 +13,28 @@ class SerializableObject : public SmartNode
 public:
 	void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, Size mapUnitSize, Size mapTileSize);
 
-	static const std::string KeyId;
-	static const std::string KeyName;
-	static const std::string KeyPoints;
-	static const std::string KeyRotation;
-	static const std::string KeyType;
-	static const std::string KeyWidth;
-	static const std::string KeyHeight;
-	static const std::string KeyXPosition;
-	static const std::string KeyYPosition;
+	static const std::string MapKeyId;
+	static const std::string MapKeyName;
+	static const std::string MapKeyPoints;
+	static const std::string MapKeyPolyLinePoints;
+	static const std::string MapKeyRotation;
+	static const std::string MapKeyType;
+	static const std::string MapKeyWidth;
+	static const std::string MapKeyHeight;
+	static const std::string MapKeyXPosition;
+	static const std::string MapKeyYPosition;
 
-	static const std::string KeyCollisionPointsProperty;
+	static const std::string MapKeyGid;
 
-	static const std::string KeyGid;
-
-	static const std::string KeyMetaIsIsometric;
-	static const std::string KeyMetaMapHeight;
-	static const std::string KeyMetaMapWidth;
+	static const std::string MapKeyMetaIsIsometric;
+	static const std::string MapKeyMetaMapHeight;
+	static const std::string MapKeyMetaMapWidth;
 
 	static const std::vector<std::string> AttributeKeys;
 
-	static const std::string KeyPropertyName;
-	static const std::string KeyPropertyType;
-	static const std::string KeyPropertyValue;
+	static const std::string MapKeyPropertyName;
+	static const std::string MapKeyPropertyType;
+	static const std::string MapKeyPropertyValue;
 
 protected:
 	SerializableObject(ValueMap* initProperties);

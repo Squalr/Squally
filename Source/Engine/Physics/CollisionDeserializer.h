@@ -20,5 +20,4 @@ private:
 	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);
 
 	static CollisionDeserializer* instance;
-	static const std::string KeyTypeIsometricEntity;
 };
