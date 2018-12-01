@@ -46,6 +46,7 @@ TerrainObject::TerrainObject(ValueMap* initProperties) : HackableObject(initProp
 	this->triangles = std::vector<ShardedTriangle>();
 
 	this->edgeCollisionNode = Node::create();
+	this->innerTexturesNode = Node::create();
 	this->infillNode = Node::create();
 	this->topsNode = Node::create();
 	this->leftWallNode = Node::create();
@@ -54,6 +55,7 @@ TerrainObject::TerrainObject(ValueMap* initProperties) : HackableObject(initProp
 	this->debugNode = Node::create();
 
 	this->addChild(this->edgeCollisionNode);
+	this->addChild(this->innerTexturesNode);
 	this->addChild(this->infillNode);
 	this->addChild(this->topsNode);
 	this->addChild(this->leftWallNode);
@@ -97,6 +99,24 @@ void TerrainObject::setPoints(std::vector<Vec2> points)
 	{
 		this->segments.push_back(std::tuple<Vec2, Vec2>(this->points.back(), this->points[0]));
 	}
+
+	float sum = 0.0f;
+
+	for (auto it = this->segments.begin(); it != this->segments.end(); it++)
+	{
+		std::tuple<Vec2, Vec2> segment = *it;
+		Vec2 source = std::get<0>(segment);
+		Vec2 dest = std::get<1>(segment);
+
+		sum += (dest.x - source.y) * (dest.y - source.y);
+	}
+
+	// If counter clockwise (sum > 0.0f), reverse the point/segment order
+	if (sum > 0.0f)
+	{
+		std::reverse(this->points.begin(), this->points.end());
+		std::reverse(this->segments.begin(), this->segments.end());
+	}
 }
 
 void TerrainObject::rebuildTerrain()
@@ -105,8 +125,9 @@ void TerrainObject::rebuildTerrain()
 
 	this->shardPolygon();
 	this->buildCollisionEdge();
+	this->buildInnerTextures();
 	this->buildInfill(Color4B(11, 30, 39, 255));
-	this->buildTextures();
+	this->buildSurfaceTextures();
 }
 
 void TerrainObject::shardPolygon()
@@ -176,29 +197,78 @@ void TerrainObject::buildCollisionEdge()
 	this->edgeCollisionNode->addChild(this->edgeCollisionObject);
 }
 
-void TerrainObject::buildInfill(Color4B infillColor)
+void TerrainObject::buildInnerTextures()
 {
-	this->infillNode->removeAllChildren();
+	this->innerTexturesNode->removeAllChildren();
+
+	DrawNode* stencil = DrawNode::create();
 
 	for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
 	{
 		ShardedTriangle triangle = *it;
-		DrawNode* infillTriangle = DrawNode::create();
+
+		stencil->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F::GREEN);
+	}
+
+	ClippingNode* clip = ClippingNode::create(stencil);
+
+	Rect drawRect = Rect::ZERO;
+
+	for (auto it = this->points.begin(); it != this->points.end(); it++)
+	{
+		Vec2 point = *it;
+
+		drawRect.origin.x = std::min(drawRect.origin.x, point.x);
+		drawRect.origin.y = std::min(drawRect.origin.y, point.y);
+		drawRect.size.width = std::max(drawRect.size.width, point.x);
+		drawRect.size.height = std::max(drawRect.size.height, point.y);
+	}
+
+	// Create parameters to repeat the texture
+	Texture2D::TexParams params = Texture2D::TexParams();
+	params.minFilter = GL_LINEAR;
+	params.magFilter = GL_LINEAR;
+	params.wrapS = GL_REPEAT;
+	params.wrapT = GL_REPEAT;
+
+	Sprite* texture = Sprite::create(TerrainResources::CastleTexture);
+
+	texture->setAnchorPoint(Vec2(0.0f, 0.0f));
+	texture->getTexture()->setTexParameters(params);
+	texture->setPosition(drawRect.origin);
+	texture->setTextureRect(Rect(0.0f, 0.0f, drawRect.size.width - drawRect.origin.x, drawRect.size.height - drawRect.origin.y));
+	clip->addChild(texture);
+
+	this->innerTexturesNode->addChild(clip);
+}
+
+void TerrainObject::buildInfill(Color4B infillColor)
+{
+	this->infillNode->removeAllChildren();
+
+	DrawNode* infill = DrawNode::create();
+
+	for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
+	{
+		ShardedTriangle triangle = *it;
 
 		if (TerrainObject::EnableTerrainDebugging)
 		{
-			infillTriangle->drawPolygon(triangle.coords, 3, Color4F(infillColor), 2.0f, Color4F::RED);
+			infill->drawPolygon(triangle.coords, 3, Color4F(infillColor), 2.0f, Color4F::RED);
 		}
 		else
 		{
-			infillTriangle->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(infillColor));
+			infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(infillColor));
 		}
-
-		this->infillNode->addChild(infillTriangle);
 	}
+
+	// Magic trick to not cover up the texture entirely
+	infill->setScale(0.75f);
+
+	this->infillNode->addChild(infill);
 }
 
-void TerrainObject::buildTextures()
+void TerrainObject::buildSurfaceTextures()
 {
 	this->topsNode->removeAllChildren();
 	this->leftWallNode->removeAllChildren();
@@ -207,6 +277,7 @@ void TerrainObject::buildTextures()
 
 	const float cornerAngleDelta = M_PI / 3.0f;
 	float seamlessSegmentX = 0.0f;
+	std::tuple<Vec2, Vec2>* previousSegment = nullptr;
 
 	for (auto it = this->segments.begin(); it != this->segments.end(); it++)
 	{
@@ -217,10 +288,13 @@ void TerrainObject::buildTextures()
 		Vec2 source = std::get<0>(segment);
 		Vec2 dest = std::get<1>(segment);
 		Vec2 delta = dest - source;
+		Vec2 midPoint = source.getMidpoint(dest);
 		float currentSegmentLength = source.distance(dest);
 		float angle = this->getSegmentAngle(segment);
+
 		float nextAngle = nextSegment == nullptr ? angle : this->getSegmentAngle(*nextSegment);
-		float angleDeltaRad = nextAngle - angle;
+		float bisectingAngle = (nextAngle + angle) / 2.0f;
+		float angleDelta = nextAngle - angle;
 
 		// Create parameters to repeat the texture
 		Texture2D::TexParams params = Texture2D::TexParams();
@@ -228,30 +302,64 @@ void TerrainObject::buildTextures()
 		params.magFilter = GL_LINEAR;
 		params.wrapS = GL_REPEAT;
 
-		Sprite* top = Sprite::create(TerrainResources::Castle);
-		Size textureSize = top->getContentSize();
-		
-		// Calculate overdraw to create seamless rectangle connection
-		if (angleDeltaRad != 0.0f && std::abs(angleDeltaRad) < cornerAngleDelta)
+		if (TerrainObject::EnableTerrainDebugging)
 		{
-			float overDraw = std::abs(2.0f * ((textureSize.height * std::sin(angleDeltaRad)) / std::cos(angleDeltaRad)));
+			std::stringstream angleStream;
+			angleStream << std::fixed << std::setprecision(2) << (angle * 180.0f / M_PI);
+			std::string angleString = angleStream.str();
 
-			// currentSegmentLength += overDraw;
+			std::stringstream bisectingAngleStream;
+			bisectingAngleStream << std::fixed << std::setprecision(2) << (bisectingAngle * 180.0f / M_PI);
+			std::string bisectingAngleString = bisectingAngleStream.str();
+
+			Label* angleDebug = Label::create(angleString, Localization::getCodingFont(), Localization::getFontSizeP(Localization::getCodingFont()));
+			Label* bisectingAngleDebug = Label::create(bisectingAngleString, Localization::getCodingFont(), Localization::getFontSizeP(Localization::getCodingFont()));
+
+			angleDebug->setTextColor(Color4B::YELLOW);
+			bisectingAngleDebug->setTextColor(Color4B::MAGENTA);
+
+			angleDebug->setPosition(midPoint + Vec2(0.0f, 24.0f));
+			bisectingAngleDebug->setPosition(dest + Vec2(0.0f, 24.0f));
+
+			this->debugNode->addChild(angleDebug);
+			this->debugNode->addChild(bisectingAngleDebug);
 		}
 
-		top->setAnchorPoint(Vec2(0.5f, 0.5f));
-		top->getTexture()->setTexParameters(params);
+		if (angle > M_PI * 3.0f / 4.0f && angle < M_PI * 5.0f / 4.0f)
+		{
+			Sprite* top = Sprite::create(TerrainResources::Castle);
+			Size textureSize = top->getContentSize();
+		
+			// Calculate overdraw to create seamless rectangle connection
+			if (std::abs(angleDelta) < cornerAngleDelta)
+			{
+				// Guess that geometry class paid off
+				float hypotenuse = textureSize.height;
+				float sinTheta = std::sin(bisectingAngle);
+				float overDraw = std::ceil(std::abs(sinTheta * hypotenuse));
 
-		// Start the texture from where the previous texture left off for seamless integration
-		top->setTextureRect(Rect(seamlessSegmentX, 0, currentSegmentLength, textureSize.height));
+				currentSegmentLength += overDraw;
+			}
 
-		top->setPosition(source.getMidpoint(dest));
-		top->setRotation(angle * 180.0f / M_PI);
+			// Prevent off-by-1 rendering errors where texture pixels are barely separated
+			currentSegmentLength = std::ceil(currentSegmentLength);
 
-		// Advance the seamless segment distance (with wrap around on overflow)
-		seamlessSegmentX = std::remainderf(seamlessSegmentX + currentSegmentLength, textureSize.width);
+			top->setAnchorPoint(Vec2(0.5f, 1.0f));
+			top->getTexture()->setTexParameters(params);
 
-		this->topsNode->addChild(top);
+			// Start the texture from where the previous texture left off for seamless integration
+			top->setTextureRect(Rect(seamlessSegmentX, 0, currentSegmentLength, textureSize.height));
+
+			top->setPosition(source.getMidpoint(dest) + Vec2(0.0f, textureSize.height / 2.0f));
+			top->setRotation(180.0f - angle * 180.0f / M_PI);
+
+			// Advance the seamless segment distance (with wrap around on overflow)
+			seamlessSegmentX = std::remainderf(seamlessSegmentX + currentSegmentLength, textureSize.width);
+
+			this->topsNode->addChild(top);
+		}
+
+		previousSegment = &segment;
 	}
 }
 
@@ -311,10 +419,18 @@ float TerrainObject::getSegmentAngle(std::tuple<Vec2, Vec2> segment)
 	float angle = std::atan2(outwardNormal.y, outwardNormal.x);
 
 	// Because we used the outward normal to find the angle, correct the angle by 90 degrees
-	angle -= M_PI / 2.0f;
+	angle += M_PI / 2.0f;
+
+	// Make it positive for my sanity
+	angle = std::fmod(angle, 2.0f * M_PI);
+
+	if (angle < 0)
+	{
+		angle += 2.0f * M_PI;
+	}
 
 	// Not really sure why, but this needs to be negated
-	return -angle;
+	return angle;
 }
 
 bool TerrainObject::isPointInShard(ShardedTriangle triangle, Vec2 point)

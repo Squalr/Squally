@@ -1,8 +1,11 @@
 #pragma once
+#include <iomanip>
+#include <sstream>
 #include "cocos2d.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Hackables/HackableObject.h"
+#include "Engine/Localization/Localization.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MPE_fastpoly2tri.h"
@@ -40,8 +43,9 @@ private:
 	void initializeListeners() override;
 	void shardPolygon();
 	void buildCollisionEdge();
+	void buildInnerTextures();
 	void buildInfill(Color4B infillColor);
-	void buildTextures();
+	void buildSurfaceTextures();
 	void debugCollisionPoints(Vec2 origin);
 	Vec2 getOutwardNormal(std::tuple<Vec2, Vec2> segment);
 	float getSegmentAngle(std::tuple<Vec2, Vec2> segment);
@@ -53,6 +57,7 @@ private:
 
 	CollisionObject* edgeCollisionObject;
 	Node* edgeCollisionNode;
+	Node* innerTexturesNode;
 	Node* infillNode;
 	Node* topsNode;
 	Node* leftWallNode;
