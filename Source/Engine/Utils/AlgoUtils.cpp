@@ -180,3 +180,20 @@ std::vector<std::tuple<Vec2, Vec2>> AlgoUtils::buildSegmentsFromPoints(std::vect
 
 	return segments;
 }
+
+Rect AlgoUtils::getPolygonRect(std::vector<Vec2> points)
+{
+	Rect drawRect = Rect::ZERO;
+
+	for (auto it = points.begin(); it != points.end(); it++)
+	{
+		Vec2 point = *it;
+
+		drawRect.origin.x = std::min(drawRect.origin.x, point.x);
+		drawRect.origin.y = std::min(drawRect.origin.y, point.y);
+		drawRect.size.width = std::max(drawRect.size.width, point.x);
+		drawRect.size.height = std::max(drawRect.size.height, point.y);
+	}
+
+	return drawRect;
+}

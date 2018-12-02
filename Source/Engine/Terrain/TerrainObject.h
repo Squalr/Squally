@@ -9,6 +9,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/LogUtils.h"
+#include "Resources/ShaderResources.h"
 #include "Resources/TerrainResources.h"
 
 using namespace cocos2d;
@@ -34,8 +35,8 @@ private:
 	void buildInnerTextures();
 	void buildInfill(Color4B infillColor);
 	void buildSurfaceTextures();
-	Vec2 getOutwardNormal(std::tuple<Vec2, Vec2> segment);
-	float getSegmentAngle(std::tuple<Vec2, Vec2> segment);
+	Vec2 getOutwardNormal(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles);
+	float getSegmentAngle(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles);
 
 	std::vector<Vec2> points;
 	std::vector<std::tuple<Vec2, Vec2>> segments;

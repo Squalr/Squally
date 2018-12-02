@@ -11,23 +11,24 @@ using namespace cocos2d;
 class PostProcess : public cocos2d::Layer
 {
 public:
-	// Redefine this, not all compilers can find the std:: impl
+	// Redefine this, not all compilers can find the std:: implementation
 	template<typename T, typename... Args>
-	std::unique_ptr<T> make_unique(Args&&... args) {
+	std::unique_ptr<T> make_unique(Args&&... args)
+	{
 		return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
 	}
 
 	struct Impl
 	{
-	public:
-		Impl(PostProcess* parent);
-		~Impl();
-		GLProgram * glProgram;
-		RenderTexture* renderTexture;
-		Sprite* sprite;
+		public:
+			Impl(PostProcess* parent);
+			~Impl();
+			GLProgram * glProgram;
+			RenderTexture* renderTexture;
+			Sprite* sprite;
 
-	private:
-		PostProcess * mParent;
+		private:
+			PostProcess * mParent;
 	};
 
 	virtual bool init(const std::string& vertexShaderFile, const std::string& fragmentShaderFile);

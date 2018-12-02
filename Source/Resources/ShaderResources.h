@@ -7,6 +7,7 @@
 class ShaderResources
 {
 public:
+	static const std::string Fragment_Blur;
 	static const std::string Fragment_ColorTransition;
 	static const std::string Fragment_CrossHatch;
 	static const std::string Fragment_Freichen;
@@ -17,6 +18,7 @@ public:
 	static const std::string Fragment_NightVision;
 	static const std::string Fragment_PassThrough;
 	static const std::string Fragment_Sobel;
+	static const std::string Vertex_Blur;
 	static const std::string Vertex_CrossHatch;
 	static const std::string Vertex_Generic;
 	static const std::string Vertex_Gray;
