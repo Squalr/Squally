@@ -15,6 +15,7 @@ public:
 	static std::vector<Triangle> trianglefyPolygon(std::vector<Vec2> polygonPoints);
 	static bool isPointInTriangle(AlgoUtils::Triangle triangle, Vec2 point);
 	static std::vector<std::tuple<Vec2, Vec2>> buildSegmentsFromPoints(std::vector<Vec2> points);
+	static Rect AlgoUtils::getPolygonRect(std::vector<Vec2> points);
 
 	struct Triangle
 	{

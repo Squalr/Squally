@@ -5,6 +5,7 @@
 #include "ShaderResources.h"
 #include <string>
 
+const std::string ShaderResources::Fragment_Blur = "Shaders/Fragment/Blur.frag";
 const std::string ShaderResources::Fragment_ColorTransition = "Shaders/Fragment/ColorTransition.frag";
 const std::string ShaderResources::Fragment_CrossHatch = "Shaders/Fragment/CrossHatch.frag";
 const std::string ShaderResources::Fragment_Freichen = "Shaders/Fragment/Freichen.frag";
@@ -15,6 +16,7 @@ const std::string ShaderResources::Fragment_Inverse = "Shaders/Fragment/Inverse.
 const std::string ShaderResources::Fragment_NightVision = "Shaders/Fragment/NightVision.frag";
 const std::string ShaderResources::Fragment_PassThrough = "Shaders/Fragment/PassThrough.frag";
 const std::string ShaderResources::Fragment_Sobel = "Shaders/Fragment/Sobel.frag";
+const std::string ShaderResources::Vertex_Blur = "Shaders/Vertex/Blur.vert";
 const std::string ShaderResources::Vertex_CrossHatch = "Shaders/Vertex/CrossHatch.vert";
 const std::string ShaderResources::Vertex_Generic = "Shaders/Vertex/Generic.vert";
 const std::string ShaderResources::Vertex_Gray = "Shaders/Vertex/Gray.vert";

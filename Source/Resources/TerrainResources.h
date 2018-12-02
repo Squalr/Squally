@@ -11,4 +11,6 @@ public:
 	static const std::string CastleTexture;
 	static const std::string CastleTopLeft;
 	static const std::string CastleTopRight;
+	static const std::string CornerBlur;
+	static const std::string EdgeBlur;
 };
