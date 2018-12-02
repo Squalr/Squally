@@ -30,26 +30,21 @@ private:
 
 	void onEnter() override;
 	void initializeListeners() override;
-	void buildInnerGeometry();
 	void buildCollisionEdge();
 	void buildInnerTextures();
 	void buildInfill(Color4B infillColor);
+	void buildSurfaceShadow();
 	void buildSurfaceTextures();
-	Vec2 getOutwardNormal(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles);
-	float getSegmentAngle(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles);
 
 	std::vector<Vec2> points;
 	std::vector<std::tuple<Vec2, Vec2>> segments;
 	std::vector<AlgoUtils::Triangle> triangles;
 
-	std::vector<Vec2> innerPoints;
-	std::vector<std::tuple<Vec2, Vec2>> innerSegments;
-	std::vector<AlgoUtils::Triangle> innerTriangles;
-
 	CollisionObject* edgeCollisionObject;
 	Node* edgeCollisionNode;
-	Node* innerTexturesNode;
+	Node* infillTexturesNode;
 	Node* infillNode;
+	Node* shadowsNode;
 	Node* topsNode;
 	Node* leftWallNode;
 	Node* rightWallNode;
@@ -57,5 +52,6 @@ private:
 	Node* debugNode;
 
 	static const bool EnableTerrainDebugging;
-	static const float InnerGeometryDistance;
+	static const float ShadowDistance;
+	static const float InfillDistance;
 };

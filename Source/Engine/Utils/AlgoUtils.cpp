@@ -197,3 +197,94 @@ Rect AlgoUtils::getPolygonRect(std::vector<Vec2> points)
 
 	return drawRect;
 }
+
+std::vector<Vec2> AlgoUtils::insetPolygon(std::vector<Triangle> triangles, std::vector<std::tuple<Vec2, Vec2>> segments, float insetDistance)
+{
+	std::vector<Vec2> insetPolygonPoints = std::vector<Vec2>();
+
+	for (auto it = segments.begin(); it != segments.end(); it++)
+	{
+		auto itClone = it;
+
+		std::tuple<Vec2, Vec2> segment = *it;
+		std::tuple<Vec2, Vec2> nextSegment = (++itClone) == segments.end() ? segments[0] : (*itClone);
+
+		Vec2 normalA = AlgoUtils::getOutwardNormal(segment, triangles);
+		Vec2 normalB = AlgoUtils::getOutwardNormal(nextSegment, triangles);
+		Vec2 delta = ((normalA + normalB) / 2.0f).getNormalized() * insetDistance;
+		Vec2 infillPoint = std::get<1>(segment) - delta;
+
+		insetPolygonPoints.push_back(infillPoint);
+	}
+
+	return insetPolygonPoints;
+}
+
+float AlgoUtils::getSegmentAngle(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles, Node* debugDrawNode)
+{
+	Vec2 outwardNormal = AlgoUtils::getOutwardNormal(segment, triangles, debugDrawNode);
+	float angle = std::atan2(outwardNormal.y, outwardNormal.x);
+
+	// Because we used the outward normal to find the angle, correct the angle by 90 degrees
+	angle += M_PI / 2.0f;
+
+	// Make it positive for my sanity
+	angle = std::fmod(angle, 2.0f * M_PI);
+
+	if (angle < 0)
+	{
+		angle += 2.0f * M_PI;
+	}
+
+	return angle;
+}
+
+Vec2 AlgoUtils::getOutwardNormal(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles, Node* debugDrawNode)
+{
+	// Distance used to check which direction is "inside" the terrain
+	const float INNER_NORMAL_COLLISION_TEST_DISTANCE = 48.0f;
+
+	Vec2 source = std::get<0>(segment);
+	Vec2 dest = std::get<1>(segment);
+	Vec2 delta = dest - source;
+	Vec2 midPoint = source.getMidpoint(dest);
+	Vec2 outwardNormal = Vec2(-delta.getNormalized().y, delta.getNormalized().x);
+	Vec2 candidateTestingPoint = midPoint + INNER_NORMAL_COLLISION_TEST_DISTANCE * outwardNormal;
+
+	// There are two possible normals -- check if the one we picked is the surface normal
+	for (auto it = triangles.begin(); it != triangles.end(); it++)
+	{
+		AlgoUtils::Triangle triangle = *it;
+
+		if (AlgoUtils::isPointInTriangle(triangle, candidateTestingPoint))
+		{
+			// We chose an inward normal instead of an outward normal -- fix it
+			outwardNormal *= -1.0f;
+			break;
+		}
+	}
+
+	if (debugDrawNode != nullptr)
+	{
+		Vec2 outwardNormalPoint = midPoint + INNER_NORMAL_COLLISION_TEST_DISTANCE * outwardNormal;
+
+		DrawNode* sourcePointDebug = DrawNode::create();
+		DrawNode* midPointDebug = DrawNode::create();
+		DrawNode* candidateNormalDebug = DrawNode::create(1.0f);
+		DrawNode* normalDebug = DrawNode::create();
+
+		sourcePointDebug->drawDot(source, 4.0f, Color4F::BLUE);
+		normalDebug->drawLine(midPoint, outwardNormalPoint, Color4F::YELLOW);
+		normalDebug->drawDot(outwardNormalPoint, 4.0f, Color4F::YELLOW);
+		candidateNormalDebug->drawLine(midPoint, candidateTestingPoint, Color4F::GREEN);
+		candidateNormalDebug->drawDot(candidateTestingPoint, 3.0f, Color4F::GREEN);
+		midPointDebug->drawDot(midPoint, 8.0f, Color4F::MAGENTA);
+
+		debugDrawNode->addChild(sourcePointDebug);
+		debugDrawNode->addChild(normalDebug);
+		debugDrawNode->addChild(candidateNormalDebug);
+		debugDrawNode->addChild(midPointDebug);
+	}
+
+	return outwardNormal;
+}

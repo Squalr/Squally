@@ -2,7 +2,8 @@
 
 std::string TerrainObject::MapKeyTypeTerrain = "terrain";
 const bool TerrainObject::EnableTerrainDebugging = true;
-const float TerrainObject::InnerGeometryDistance = 128.0f;
+const float TerrainObject::ShadowDistance = 32.0f;
+const float TerrainObject::InfillDistance = 128.0f;
 
 TerrainObject* TerrainObject::deserialize(ValueMap* initProperties)
 {
@@ -45,13 +46,11 @@ TerrainObject::TerrainObject(ValueMap* initProperties) : HackableObject(initProp
 	this->points = std::vector<Vec2>();
 	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
 	this->triangles = std::vector<AlgoUtils::Triangle>();
-	this->innerPoints = std::vector<Vec2>();
-	this->innerSegments = std::vector<std::tuple<Vec2, Vec2>>();
-	this->innerTriangles = std::vector<AlgoUtils::Triangle>();
 
 	this->edgeCollisionNode = Node::create();
-	this->innerTexturesNode = Node::create();
+	this->infillTexturesNode = Node::create();
 	this->infillNode = Node::create();
+	this->shadowsNode = Node::create();
 	this->topsNode = Node::create();
 	this->leftWallNode = Node::create();
 	this->rightWallNode = Node::create();
@@ -59,8 +58,9 @@ TerrainObject::TerrainObject(ValueMap* initProperties) : HackableObject(initProp
 	this->debugNode = Node::create();
 
 	this->addChild(this->edgeCollisionNode);
-	this->addChild(this->innerTexturesNode);
+	this->addChild(this->infillTexturesNode);
 	this->addChild(this->infillNode);
+	this->addChild(this->shadowsNode);
 	this->addChild(this->topsNode);
 	this->addChild(this->leftWallNode);
 	this->addChild(this->rightWallNode);
@@ -93,36 +93,11 @@ void TerrainObject::rebuildTerrain()
 {
 	this->debugNode->removeAllChildren();
 
-	this->buildInnerGeometry();
 	this->buildCollisionEdge();
 	this->buildInnerTextures();
 	this->buildInfill(Color4B(11, 30, 39, 255));
+	this->buildSurfaceShadow();
 	this->buildSurfaceTextures();
-}
-
-void TerrainObject::buildInnerGeometry()
-{
-	this->innerPoints.clear();
-	this->innerSegments.clear();
-	this->innerTriangles.clear();
-
-	for (auto it = this->segments.begin(); it != this->segments.end(); it++)
-	{
-		auto itClone = it;
-
-		std::tuple<Vec2, Vec2> segment = *it;
-		std::tuple<Vec2, Vec2> nextSegment = (++itClone) == this->segments.end() ? this->segments[0] : (*itClone);
-
-		Vec2 normalA = this->getOutwardNormal(segment, this->triangles);
-		Vec2 normalB = this->getOutwardNormal(nextSegment, this->triangles);
-		Vec2 delta = ((normalA + normalB) / 2.0f).getNormalized() * TerrainObject::InnerGeometryDistance;
-		Vec2 innerPoint = std::get<1>(segment) - delta;
-
-		this->innerPoints.push_back(innerPoint);
-	}
-
-	this->innerSegments = AlgoUtils::buildSegmentsFromPoints(this->innerPoints);
-	this->innerTriangles = AlgoUtils::trianglefyPolygon(this->innerPoints);
 }
 
 void TerrainObject::buildCollisionEdge()
@@ -145,7 +120,7 @@ void TerrainObject::buildCollisionEdge()
 
 void TerrainObject::buildInnerTextures()
 {
-	this->innerTexturesNode->removeAllChildren();
+	this->infillTexturesNode->removeAllChildren();
 
 	DrawNode* stencil = DrawNode::create();
 
@@ -174,12 +149,15 @@ void TerrainObject::buildInnerTextures()
 	texture->setTextureRect(Rect(0.0f, 0.0f, drawRect.size.width - drawRect.origin.x, drawRect.size.height - drawRect.origin.y));
 	clip->addChild(texture);
 
-	this->innerTexturesNode->addChild(clip);
+	this->infillTexturesNode->addChild(clip);
 }
 
 void TerrainObject::buildInfill(Color4B infillColor)
 {
 	this->infillNode->removeAllChildren();
+
+	std::vector<Vec2> infillPoints = AlgoUtils::insetPolygon(this->triangles, this->segments, TerrainObject::InfillDistance);
+	std::vector<AlgoUtils::Triangle> infillTriangles = AlgoUtils::trianglefyPolygon(infillPoints);
 
 	DrawNode* infill = DrawNode::create();
 
@@ -191,8 +169,8 @@ void TerrainObject::buildInfill(Color4B infillColor)
 		infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(Color3B(infillColor), 0.000001f));
 	}
 
-	// Loop over all inner triangles and create the solid infill color
-	for (auto it = this->innerTriangles.begin(); it != this->innerTriangles.end(); it++)
+	// Loop over all infill triangles and create the solid infill color
+	for (auto it = infillTriangles.begin(); it != infillTriangles.end(); it++)
 	{
 		AlgoUtils::Triangle triangle = *it;
 
@@ -207,7 +185,7 @@ void TerrainObject::buildInfill(Color4B infillColor)
 		}
 	}
 
-	// Render the infill to a texture
+	// Render the infill to a texture (Note: using the rect from the outer points, not the infill points, due to the earlier padding)
 	Rect infillRect = AlgoUtils::getPolygonRect(this->points);
 	Size infillSize = Size(infillRect.size.width - infillRect.origin.x, infillRect.size.height - infillRect.origin.y);
 	RenderTexture* renderedInfill = RenderTexture::create(infillSize.width, infillSize.height);
@@ -226,7 +204,7 @@ void TerrainObject::buildInfill(Color4B infillColor)
 	this->infillNode->addChild(rasterizedInfill);
 
 	GLProgram* blur = GLProgram::createWithFilenames(ShaderResources::Vertex_Blur, ShaderResources::Fragment_Blur);
-	GLProgramState* state = GLProgramState::create(blur); // TODO: getOrCreate after testing
+	GLProgramState* state = GLProgramState::getOrCreateWithGLProgram(blur);
 
 	state->setUniformVec2("resolution", Vec2(infillSize.width, infillSize.height));
 	state->setUniformFloat("blurRadius", 128.0f);
@@ -235,6 +213,48 @@ void TerrainObject::buildInfill(Color4B infillColor)
 	rasterizedInfill->setGLProgram(blur);
 	rasterizedInfill->setGLProgramState(state);
 	blur->use();
+}
+
+void TerrainObject::buildSurfaceShadow()
+{
+	this->shadowsNode->removeAllChildren();
+
+	std::vector<Vec2> shadowPoints = AlgoUtils::insetPolygon(this->triangles, this->segments, TerrainObject::ShadowDistance);
+
+	DrawNode* shadowLine = DrawNode::create(8.0);
+
+	shadowLine->drawPoly(shadowPoints.data(), shadowPoints.size(), true, Color4F::BLACK);
+
+	// Render the infill to a texture (Note: using the rect from the outer points, not the infill points, due to the earlier padding)
+	Rect infillRect = AlgoUtils::getPolygonRect(this->points);
+	Size infillSize = Size(infillRect.size.width - infillRect.origin.x, infillRect.size.height - infillRect.origin.y);
+	RenderTexture* renderedShadowLine = RenderTexture::create(infillSize.width, infillSize.height);
+
+	shadowLine->setPosition(-infillRect.origin);
+	renderedShadowLine->begin();
+	shadowLine->visit();
+	renderedShadowLine->end();
+
+	// Rasterize the texture to a sprite (required for shader to work properly)
+	Sprite* rasterizedShadow = renderedShadowLine->getSprite();
+
+	rasterizedShadow->setAnchorPoint(Vec2::ZERO);
+	rasterizedShadow->setPosition(infillRect.origin);
+
+	this->infillNode->addChild(rasterizedShadow);
+
+	GLProgram* blur = GLProgram::createWithFilenames(ShaderResources::Vertex_Blur, ShaderResources::Fragment_Blur);
+	GLProgramState* state = GLProgramState::getOrCreateWithGLProgram(blur);
+
+	state->setUniformVec2("resolution", Vec2(infillSize.width, infillSize.height));
+	state->setUniformFloat("blurRadius", 32.0f);
+	state->setUniformFloat("sampleNum", 8.0f);
+
+	rasterizedShadow->setGLProgram(blur);
+	rasterizedShadow->setGLProgramState(state);
+	blur->use();
+
+	this->shadowsNode->addChild(rasterizedShadow);
 }
 
 void TerrainObject::buildSurfaceTextures()
@@ -259,9 +279,8 @@ void TerrainObject::buildSurfaceTextures()
 		Vec2 delta = dest - source;
 		Vec2 midPoint = source.getMidpoint(dest);
 		float currentSegmentLength = source.distance(dest);
-		float angle = this->getSegmentAngle(segment, this->triangles);
-
-		float nextAngle = this->getSegmentAngle(nextSegment, this->triangles);
+		float angle = AlgoUtils::getSegmentAngle(segment, this->triangles, TerrainObject::EnableTerrainDebugging ? this->debugNode : nullptr);
+		float nextAngle = AlgoUtils::getSegmentAngle(nextSegment, this->triangles);
 		float bisectingAngle = (nextAngle + angle) / 2.0f;
 		float angleDelta = nextAngle - angle;
 
@@ -330,73 +349,4 @@ void TerrainObject::buildSurfaceTextures()
 
 		previousSegment = &segment;
 	}
-}
-
-Vec2 TerrainObject::getOutwardNormal(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles)
-{
-	// Distance used to check which direction is "inside" the terrain
-	const float INNER_NORMAL_COLLISION_TEST_DISTANCE = 48.0f;
-
-	Vec2 source = std::get<0>(segment);
-	Vec2 dest = std::get<1>(segment);
-	Vec2 delta = dest - source;
-	Vec2 midPoint = source.getMidpoint(dest);
-	Vec2 outwardNormal = Vec2(-delta.getNormalized().y, delta.getNormalized().x);
-	Vec2 candidateTestingPoint = midPoint + INNER_NORMAL_COLLISION_TEST_DISTANCE * outwardNormal;
-
-	// There are two possible normals -- check if the one we picked is the surface normal
-	for (auto it = triangles.begin(); it != triangles.end(); it++)
-	{
-		AlgoUtils::Triangle triangle = *it;
-
-		if (AlgoUtils::isPointInTriangle(triangle, candidateTestingPoint))
-		{
-			// We chose an inward normal instead of an outward normal -- fix it
-			outwardNormal *= -1.0f;
-			break;
-		}
-	}
-
-	if (TerrainObject::EnableTerrainDebugging)
-	{
-		Vec2 outwardNormalPoint = midPoint + INNER_NORMAL_COLLISION_TEST_DISTANCE * outwardNormal;
-
-		DrawNode* sourcePointDebug = DrawNode::create();
-		DrawNode* midPointDebug = DrawNode::create();
-		DrawNode* candidateNormalDebug = DrawNode::create(1.0f);
-		DrawNode* normalDebug = DrawNode::create();
-
-		sourcePointDebug->drawDot(source, 4.0f, Color4F::BLUE);
-		normalDebug->drawLine(midPoint, outwardNormalPoint, Color4F::YELLOW);
-		normalDebug->drawDot(outwardNormalPoint, 4.0f, Color4F::YELLOW);
-		candidateNormalDebug->drawLine(midPoint, candidateTestingPoint, Color4F::GREEN);
-		candidateNormalDebug->drawDot(candidateTestingPoint, 3.0f, Color4F::GREEN);
-		midPointDebug->drawDot(midPoint, 8.0f, Color4F::MAGENTA);
-
-		this->debugNode->addChild(sourcePointDebug);
-		this->debugNode->addChild(normalDebug);
-		this->debugNode->addChild(candidateNormalDebug);
-		this->debugNode->addChild(midPointDebug);
-	}
-
-	return outwardNormal;
-}
-
-float TerrainObject::getSegmentAngle(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles)
-{
-	Vec2 outwardNormal = this->getOutwardNormal(segment, triangles);
-	float angle = std::atan2(outwardNormal.y, outwardNormal.x);
-
-	// Because we used the outward normal to find the angle, correct the angle by 90 degrees
-	angle += M_PI / 2.0f;
-
-	// Make it positive for my sanity
-	angle = std::fmod(angle, 2.0f * M_PI);
-
-	if (angle < 0)
-	{
-		angle += 2.0f * M_PI;
-	}
-
-	return angle;
 }
