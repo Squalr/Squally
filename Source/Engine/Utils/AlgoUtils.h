@@ -18,6 +18,7 @@ public:
 	static Rect AlgoUtils::getPolygonRect(std::vector<Vec2> points);
 	static std::vector<Vec2> insetPolygon(std::vector<Triangle> triangles, std::vector<std::tuple<Vec2, Vec2>> segments, float insetDistance);
 	static float getSegmentAngle(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles, Node* debugDrawNode = nullptr);
+	static float getSegmentNormalAngle(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles, Node* debugDrawNode = nullptr);
 	static Vec2 getOutwardNormal(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles, Node* debugDrawNode = nullptr);
 
 	struct Triangle

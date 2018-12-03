@@ -4,6 +4,8 @@ std::string TerrainObject::MapKeyTypeTerrain = "terrain";
 const bool TerrainObject::EnableTerrainDebugging = true;
 const float TerrainObject::ShadowDistance = 32.0f;
 const float TerrainObject::InfillDistance = 128.0f;
+const float TerrainObject::FloorThreshold = M_PI / 3.0f;
+const float TerrainObject::RoofThreshold = 4 * M_PI / 3.0f;
 
 TerrainObject* TerrainObject::deserialize(ValueMap* initProperties)
 {
@@ -166,7 +168,7 @@ void TerrainObject::buildInfill(Color4B infillColor)
 	{
 		AlgoUtils::Triangle triangle = *it;
 
-		infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(Color3B(infillColor), 0.000001f));
+		infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(Color3B(infillColor), 0.0f));
 	}
 
 	// Loop over all infill triangles and create the solid infill color
@@ -205,11 +207,27 @@ void TerrainObject::buildSurfaceShadow()
 	this->shadowsNode->removeAllChildren();
 
 	std::vector<Vec2> shadowPoints = AlgoUtils::insetPolygon(this->triangles, this->segments, TerrainObject::ShadowDistance);
+	std::vector<AlgoUtils::Triangle> shadowTriangles = AlgoUtils::trianglefyPolygon(shadowPoints);
+	std::vector<std::tuple<Vec2, Vec2>> shadowSegments = AlgoUtils::buildSegmentsFromPoints(shadowPoints);
 
 	DrawNode* shadowLine = DrawNode::create(12.0);
 
-	// TODO: Only shade the top lines
-	shadowLine->drawPoly(shadowPoints.data(), shadowPoints.size(), true, Color4F::BLACK);
+	// Draw shadow lines below the floors
+	for (auto it = shadowSegments.begin(); it != shadowSegments.end(); it++)
+	{
+		std::tuple<Vec2, Vec2> segment = *it;
+		Vec2 source = std::get<0>(segment);
+		Vec2 dest = std::get<1>(segment);
+		Vec2 delta = dest - source;
+		Vec2 midPoint = source.getMidpoint(dest);
+		float currentSegmentLength = source.distance(dest);
+		float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, shadowTriangles);
+
+		if (normalAngle >= TerrainObject::FloorThreshold && normalAngle <= M_PI - TerrainObject::FloorThreshold)
+		{
+			shadowLine->drawLine(source, dest, Color4F::BLACK);
+		}
+	}
 
 	// Render the infill to a texture (Note: using outer points for padding)
 	Rect shadowRect = AlgoUtils::getPolygonRect(this->points);
@@ -233,7 +251,6 @@ void TerrainObject::buildSurfaceTextures()
 	this->rightWallNode->removeAllChildren();
 	this->bottomsNode->removeAllChildren();
 
-	const float cornerAngleDelta = M_PI / 3.0f;
 	float seamlessSegmentX = 0.0f;
 	std::tuple<Vec2, Vec2>* previousSegment = nullptr;
 
@@ -249,6 +266,7 @@ void TerrainObject::buildSurfaceTextures()
 		Vec2 midPoint = source.getMidpoint(dest);
 		float currentSegmentLength = source.distance(dest);
 		float angle = AlgoUtils::getSegmentAngle(segment, this->triangles, TerrainObject::EnableTerrainDebugging ? this->debugNode : nullptr);
+		float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, this->triangles);
 		float nextAngle = AlgoUtils::getSegmentAngle(nextSegment, this->triangles);
 		float bisectingAngle = (nextAngle + angle) / 2.0f;
 		float angleDelta = nextAngle - angle;
@@ -282,13 +300,13 @@ void TerrainObject::buildSurfaceTextures()
 			this->debugNode->addChild(bisectingAngleDebug);
 		}
 
-		if (angle > M_PI * 3.0f / 4.0f && angle < M_PI * 5.0f / 4.0f)
+		if (normalAngle >= TerrainObject::FloorThreshold && normalAngle <= M_PI - TerrainObject::FloorThreshold)
 		{
 			Sprite* top = Sprite::create(TerrainResources::Castle);
 			Size textureSize = top->getContentSize();
 		
 			// Calculate overdraw to create seamless rectangle connection
-			if (std::abs(angleDelta) < cornerAngleDelta)
+			if (std::abs(angleDelta) < TerrainObject::FloorThreshold)
 			{
 				// Guess that geometry class paid off
 				float hypotenuse = textureSize.height;
