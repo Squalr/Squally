@@ -4,8 +4,8 @@ std::string TerrainObject::MapKeyTypeTerrain = "terrain";
 const bool TerrainObject::EnableTerrainDebugging = true;
 const float TerrainObject::ShadowDistance = 32.0f;
 const float TerrainObject::InfillDistance = 128.0f;
-const float TerrainObject::FloorThreshold = M_PI / 3.0f;
-const float TerrainObject::RoofThreshold = 4 * M_PI / 3.0f;
+const float TerrainObject::TopThreshold = M_PI / 6.0f;
+const float TerrainObject::BottomThreshold = 7 * M_PI / 6.0f;
 
 TerrainObject* TerrainObject::deserialize(ValueMap* initProperties)
 {
@@ -53,20 +53,20 @@ TerrainObject::TerrainObject(ValueMap* initProperties) : HackableObject(initProp
 	this->infillTexturesNode = Node::create();
 	this->infillNode = Node::create();
 	this->shadowsNode = Node::create();
-	this->topsNode = Node::create();
 	this->leftWallNode = Node::create();
 	this->rightWallNode = Node::create();
 	this->bottomsNode = Node::create();
+	this->topsNode = Node::create();
 	this->debugNode = Node::create();
 
 	this->addChild(this->edgeCollisionNode);
 	this->addChild(this->infillTexturesNode);
 	this->addChild(this->infillNode);
 	this->addChild(this->shadowsNode);
-	this->addChild(this->topsNode);
 	this->addChild(this->leftWallNode);
 	this->addChild(this->rightWallNode);
 	this->addChild(this->bottomsNode);
+	this->addChild(this->topsNode);
 	this->addChild(this->debugNode);
 }
 
@@ -223,7 +223,7 @@ void TerrainObject::buildSurfaceShadow()
 		float currentSegmentLength = source.distance(dest);
 		float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, shadowTriangles);
 
-		if (normalAngle >= TerrainObject::FloorThreshold && normalAngle <= M_PI - TerrainObject::FloorThreshold)
+		if (normalAngle >= TerrainObject::TopThreshold && normalAngle <= M_PI - TerrainObject::TopThreshold)
 		{
 			shadowLine->drawLine(source, dest, Color4F::BLACK);
 		}
@@ -300,13 +300,13 @@ void TerrainObject::buildSurfaceTextures()
 			this->debugNode->addChild(bisectingAngleDebug);
 		}
 
-		if (normalAngle >= TerrainObject::FloorThreshold && normalAngle <= M_PI - TerrainObject::FloorThreshold)
+		if (normalAngle >= TerrainObject::TopThreshold && normalAngle <= M_PI - TerrainObject::TopThreshold)
 		{
 			Sprite* top = Sprite::create(TerrainResources::Castle);
 			Size textureSize = top->getContentSize();
 		
 			// Calculate overdraw to create seamless rectangle connection
-			if (std::abs(angleDelta) < TerrainObject::FloorThreshold)
+			if (std::abs(angleDelta) < TerrainObject::TopThreshold)
 			{
 				// Guess that geometry class paid off
 				float hypotenuse = textureSize.height;
@@ -332,6 +332,39 @@ void TerrainObject::buildSurfaceTextures()
 			seamlessSegmentX = std::remainderf(seamlessSegmentX + currentSegmentLength, textureSize.width);
 
 			this->topsNode->addChild(top);
+		}
+		else //if (normalAngle >= TerrainObject::BottomThreshold && normalAngle <= 2 * M_PI - (TerrainObject::BottomThreshold - M_PI))
+		{
+			Sprite* bottom = Sprite::create(TerrainResources::CastleBottom);
+			Size textureSize = bottom->getContentSize();
+
+			// Calculate overdraw to create seamless rectangle connection
+			if (std::abs(angleDelta) < TerrainObject::TopThreshold)
+			{
+				// Guess that geometry class paid off
+				float hypotenuse = textureSize.height;
+				float sinTheta = std::sin(bisectingAngle);
+				float overDraw = std::ceil(std::abs(sinTheta * hypotenuse));
+
+				currentSegmentLength += overDraw;
+			}
+
+			// Prevent off-by-1 rendering errors where texture pixels are barely separated
+			currentSegmentLength = std::ceil(currentSegmentLength);
+
+			bottom->setAnchorPoint(Vec2(0.5f, 0.0f));
+			bottom->getTexture()->setTexParameters(params);
+
+			// Start the texture from where the previous texture left off for seamless integration
+			bottom->setTextureRect(Rect(seamlessSegmentX, 0, currentSegmentLength, textureSize.height));
+
+			bottom->setPosition(source.getMidpoint(dest) + Vec2(0.0f, -textureSize.height / 2.0f));
+			bottom->setRotation(360.0f - angle * 180.0f / M_PI);
+
+			// Advance the seamless segment distance (with wrap around on overflow)
+			seamlessSegmentX = std::remainderf(seamlessSegmentX + currentSegmentLength, textureSize.width);
+
+			this->bottomsNode->addChild(bottom);
 		}
 
 		previousSegment = &segment;

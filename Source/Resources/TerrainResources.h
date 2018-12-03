@@ -8,6 +8,9 @@ class TerrainResources
 {
 public:
 	static const std::string Castle;
+	static const std::string CastleBottom;
+	static const std::string CastleBottomLeft;
+	static const std::string CastleBottomRight;
 	static const std::string CastleTexture;
 	static const std::string CastleTopLeft;
 	static const std::string CastleTopRight;
