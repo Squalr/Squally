@@ -195,14 +195,12 @@ void TerrainObject::buildInfill(Color4B infillColor)
 	infill->visit();
 	renderedInfill->end();
 
-	// Rasterize the texture to a sprite (required for shader to work properly)
-	Sprite* rasterizedInfill = renderedInfill->getSprite();
+	// Rasterize the texture to a sprite
+	Sprite* renderSprite = renderedInfill->getSprite();
 
-	rasterizedInfill->setAnchorPoint(Vec2::ZERO);
-	rasterizedInfill->setPosition(infillRect.origin);
+	renderSprite->setAnchorPoint(Vec2::ZERO);
 
-	this->infillNode->addChild(rasterizedInfill);
-
+	// Apply shader to the sprite
 	GLProgram* blur = GLProgram::createWithFilenames(ShaderResources::Vertex_Blur, ShaderResources::Fragment_Blur);
 	GLProgramState* state = GLProgramState::getOrCreateWithGLProgram(blur);
 
@@ -210,9 +208,23 @@ void TerrainObject::buildInfill(Color4B infillColor)
 	state->setUniformFloat("blurRadius", 128.0f);
 	state->setUniformFloat("sampleNum", 24.0f);
 
-	rasterizedInfill->setGLProgram(blur);
-	rasterizedInfill->setGLProgramState(state);
+	renderSprite->setGLProgram(blur);
+	renderSprite->setGLProgramState(state);
 	blur->use();
+
+	// Re-render the sprite with the shader
+	RenderTexture* shaderRenderedInfill = RenderTexture::create(infillSize.width, infillSize.height);
+	shaderRenderedInfill->begin();
+	renderSprite->visit();
+	shaderRenderedInfill->end();
+
+	// Rasterize the texture to a final sprite, such that the shader will never have to be called again
+	Sprite* rasterizedInfill = shaderRenderedInfill->getSprite();
+
+	rasterizedInfill->setAnchorPoint(Vec2::ZERO);
+	rasterizedInfill->setPosition(infillRect.origin);
+
+	this->infillNode->addChild(rasterizedInfill);
 }
 
 void TerrainObject::buildSurfaceShadow()
@@ -226,33 +238,43 @@ void TerrainObject::buildSurfaceShadow()
 	shadowLine->drawPoly(shadowPoints.data(), shadowPoints.size(), true, Color4F::BLACK);
 
 	// Render the infill to a texture (Note: using the rect from the outer points, not the infill points, due to the earlier padding)
-	Rect infillRect = AlgoUtils::getPolygonRect(this->points);
-	Size infillSize = Size(infillRect.size.width - infillRect.origin.x, infillRect.size.height - infillRect.origin.y);
-	RenderTexture* renderedShadowLine = RenderTexture::create(infillSize.width, infillSize.height);
+	Rect shadowRect = AlgoUtils::getPolygonRect(this->points);
+	Size shadowSize = Size(shadowRect.size.width - shadowRect.origin.x, shadowRect.size.height - shadowRect.origin.y);
+	RenderTexture* renderedShadowLine = RenderTexture::create(shadowSize.width, shadowSize.height);
 
-	shadowLine->setPosition(-infillRect.origin);
+	shadowLine->setPosition(-shadowRect.origin);
 	renderedShadowLine->begin();
 	shadowLine->visit();
 	renderedShadowLine->end();
 
-	// Rasterize the texture to a sprite (required for shader to work properly)
-	Sprite* rasterizedShadow = renderedShadowLine->getSprite();
+	// Rasterize the texture to a sprite
+	Sprite* renderSprite = renderedShadowLine->getSprite();
 
-	rasterizedShadow->setAnchorPoint(Vec2::ZERO);
-	rasterizedShadow->setPosition(infillRect.origin);
+	renderSprite->setAnchorPoint(Vec2::ZERO);
 
-	this->infillNode->addChild(rasterizedShadow);
-
+	// Apply shader to the sprite
 	GLProgram* blur = GLProgram::createWithFilenames(ShaderResources::Vertex_Blur, ShaderResources::Fragment_Blur);
 	GLProgramState* state = GLProgramState::getOrCreateWithGLProgram(blur);
 
-	state->setUniformVec2("resolution", Vec2(infillSize.width, infillSize.height));
+	state->setUniformVec2("resolution", Vec2(shadowSize.width, shadowSize.height));
 	state->setUniformFloat("blurRadius", 32.0f);
 	state->setUniformFloat("sampleNum", 8.0f);
 
-	rasterizedShadow->setGLProgram(blur);
-	rasterizedShadow->setGLProgramState(state);
+	renderSprite->setGLProgram(blur);
+	renderSprite->setGLProgramState(state);
 	blur->use();
+
+	// Re-render the sprite with the shader
+	RenderTexture* shaderRenderedShadowLine = RenderTexture::create(shadowSize.width, shadowSize.height);
+	shaderRenderedShadowLine->begin();
+	renderSprite->visit();
+	shaderRenderedShadowLine->end();
+
+	// Rasterize the texture to a final sprite, such that the shader will never have to be called again
+	Sprite* rasterizedShadow = shaderRenderedShadowLine->getSprite();
+
+	rasterizedShadow->setAnchorPoint(Vec2::ZERO);
+	rasterizedShadow->setPosition(shadowRect.origin);
 
 	this->shadowsNode->addChild(rasterizedShadow);
 }
