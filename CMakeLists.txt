@@ -141,6 +141,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Utils/HackUtils.cpp
 	Source/Engine/Utils/LogUtils.cpp
 	Source/Engine/Utils/MathUtils.cpp
+	Source/Engine/Utils/RenderUtils.cpp
 	Source/Engine/Utils/StrUtils.cpp
 	Source/Engine/Utils/SystemUtils.cpp
 	Source/Entities/Isometric/IsometricEntity.cpp
@@ -894,6 +895,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Utils/LogUtils.h
 	Source/Engine/Utils/MPE_fastpoly2tri.h
 	Source/Engine/Utils/MathUtils.h
+	Source/Engine/Utils/RenderUtils.h
 	Source/Engine/Utils/StrUtils.h
 	Source/Engine/Utils/SystemUtils.h
 	Source/Entities/Isometric/IsometricEntities.h
