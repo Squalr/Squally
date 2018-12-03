@@ -195,6 +195,9 @@ Rect AlgoUtils::getPolygonRect(std::vector<Vec2> points)
 		drawRect.size.height = std::max(drawRect.size.height, point.y);
 	}
 
+	drawRect.size.width += -drawRect.origin.x;
+	drawRect.size.height += -drawRect.origin.y;
+
 	return drawRect;
 }
 

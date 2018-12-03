@@ -9,6 +9,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/LogUtils.h"
+#include "Engine/Utils/RenderUtils.h"
 #include "Resources/ShaderResources.h"
 #include "Resources/TerrainResources.h"
 
