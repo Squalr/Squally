@@ -55,4 +55,6 @@ private:
 	static const bool EnableTerrainDebugging;
 	static const float ShadowDistance;
 	static const float InfillDistance;
+	static const float FloorThreshold;
+	static const float RoofThreshold;
 };

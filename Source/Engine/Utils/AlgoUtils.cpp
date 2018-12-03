@@ -225,8 +225,7 @@ std::vector<Vec2> AlgoUtils::insetPolygon(std::vector<Triangle> triangles, std::
 
 float AlgoUtils::getSegmentAngle(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles, Node* debugDrawNode)
 {
-	Vec2 outwardNormal = AlgoUtils::getOutwardNormal(segment, triangles, debugDrawNode);
-	float angle = std::atan2(outwardNormal.y, outwardNormal.x);
+	float angle = AlgoUtils::getSegmentNormalAngle(segment, triangles, debugDrawNode);
 
 	// Because we used the outward normal to find the angle, correct the angle by 90 degrees
 	angle += M_PI / 2.0f;
@@ -242,9 +241,25 @@ float AlgoUtils::getSegmentAngle(std::tuple<Vec2, Vec2> segment, std::vector<Alg
 	return angle;
 }
 
+float AlgoUtils::getSegmentNormalAngle(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles, Node* debugDrawNode)
+{
+	Vec2 outwardNormal = AlgoUtils::getOutwardNormal(segment, triangles, debugDrawNode);
+	float angle = std::atan2(outwardNormal.y, outwardNormal.x);
+
+	// Make it positive for my sanity
+	angle = std::fmod(angle, 2.0f * M_PI);
+
+	if (angle < 0)
+	{
+		angle += 2.0f * M_PI;
+	}
+
+	return angle;
+}
+
 Vec2 AlgoUtils::getOutwardNormal(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles, Node* debugDrawNode)
 {
-	// Distance used to check which direction is "inside" the terrain
+	// Distance used to check which direction is "inside" the polygon
 	const float INNER_NORMAL_COLLISION_TEST_DISTANCE = 48.0f;
 
 	Vec2 source = std::get<0>(segment);
