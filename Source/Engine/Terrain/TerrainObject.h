@@ -46,15 +46,15 @@ private:
 	Node* infillTexturesNode;
 	Node* infillNode;
 	Node* shadowsNode;
-	Node* topsNode;
 	Node* leftWallNode;
 	Node* rightWallNode;
 	Node* bottomsNode;
+	Node* topsNode;
 	Node* debugNode;
 
 	static const bool EnableTerrainDebugging;
 	static const float ShadowDistance;
 	static const float InfillDistance;
-	static const float FloorThreshold;
-	static const float RoofThreshold;
+	static const float TopThreshold;
+	static const float BottomThreshold;
 };
