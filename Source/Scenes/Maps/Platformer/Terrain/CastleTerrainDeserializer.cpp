@@ -1,0 +1,37 @@
+#include "CastleTerrainDeserializer.h"
+
+const std::string CastleTerrainDeserializer::MapKeyTerrainTypeCastle = "castle";
+CastleTerrainDeserializer* CastleTerrainDeserializer::instance = nullptr;
+
+void CastleTerrainDeserializer::registerGlobalNode()
+{
+	if (CastleTerrainDeserializer::instance == nullptr)
+	{
+		CastleTerrainDeserializer::instance = new CastleTerrainDeserializer();
+
+		instance->autorelease();
+
+		// Register this class globally so that it can always listen for events
+		GlobalDirector::getInstance()->registerGlobalNode(CastleTerrainDeserializer::instance);
+	}
+}
+
+CastleTerrainDeserializer::CastleTerrainDeserializer() : TerrainDeserializer(
+	TerrainObject::TerrainData(
+		CastleTerrainDeserializer::MapKeyTerrainTypeCastle,
+		TerrainResources::CastleTexture,
+		TerrainResources::Castle,
+		TerrainResources::CastleTopLeft,
+		TerrainResources::CastleTopRight,
+		TerrainResources::CastleBottom,
+		TerrainResources::CastleBottomLeft,
+		TerrainResources::CastleBottomRight,
+		TerrainResources::CastleLeft,
+		TerrainResources::CastleRight,
+		Color4B(11, 30, 39, 255)))
+{
+}
+
+CastleTerrainDeserializer::~CastleTerrainDeserializer()
+{
+}

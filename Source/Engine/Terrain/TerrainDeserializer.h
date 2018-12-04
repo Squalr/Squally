@@ -11,14 +11,17 @@ using namespace cocos2d;
 class TerrainDeserializer : public GlobalNode
 {
 public:
-	static void registerGlobalNode();
+	static std::string MapKeyTerrainType;
 
-private:
-	TerrainDeserializer();
+protected:
+	TerrainDeserializer(TerrainObject::TerrainData terrainData);
 	~TerrainDeserializer();
 
+private:
 	void initializeListeners() override;
 	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);
+
+	TerrainObject::TerrainData terrainData;
 
 	static TerrainDeserializer* instance;
 };

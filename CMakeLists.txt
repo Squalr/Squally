@@ -813,6 +813,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixRain.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixStrand.cpp
 	Source/Scenes/Maps/Platformer/PlatformerMap.cpp
+	Source/Scenes/Maps/Platformer/Terrain/CastleTerrainDeserializer.cpp
 	Source/Scenes/Maps/Platformer/Weather/Fireflies.cpp
 	Source/Scenes/Maps/Platformer/Weather/Rain.cpp
 	Source/Scenes/Maps/Platformer/Weather/Snow.cpp
@@ -1603,6 +1604,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixRain.h
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixStrand.h
 	Source/Scenes/Maps/Platformer/PlatformerMap.h
+	Source/Scenes/Maps/Platformer/Terrain/CastleTerrainDeserializer.h
 	Source/Scenes/Maps/Platformer/Weather/Fireflies.h
 	Source/Scenes/Maps/Platformer/Weather/Rain.h
 	Source/Scenes/Maps/Platformer/Weather/Snow.h

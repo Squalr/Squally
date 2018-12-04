@@ -1,5 +1,6 @@
 #include "TerrainObject.h"
 
+std::string TerrainObject::MapKeyTypeTexture = "texture";
 std::string TerrainObject::MapKeyTypeTerrain = "terrain";
 const bool TerrainObject::EnableTerrainDebugging = true;
 const float TerrainObject::ShadowDistance = 32.0f;
@@ -7,9 +8,9 @@ const float TerrainObject::InfillDistance = 128.0f;
 const float TerrainObject::TopThreshold = M_PI / 6.0f;
 const float TerrainObject::BottomThreshold = 7 * M_PI / 6.0f;
 
-TerrainObject* TerrainObject::deserialize(ValueMap* initProperties)
+TerrainObject* TerrainObject::deserialize(ValueMap* initProperties, TerrainData terrainData)
 {
-	TerrainObject* instance = new TerrainObject(initProperties);
+	TerrainObject* instance = new TerrainObject(initProperties, terrainData);
 
 	instance->autorelease();
 
@@ -43,13 +44,14 @@ TerrainObject* TerrainObject::deserialize(ValueMap* initProperties)
 	return instance;
 }
 
-TerrainObject::TerrainObject(ValueMap* initProperties) : HackableObject(initProperties)
+TerrainObject::TerrainObject(ValueMap* initProperties, TerrainData terrainData) : HackableObject(initProperties)
 {
+	this->terrainData = terrainData;
 	this->points = std::vector<Vec2>();
 	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
 	this->triangles = std::vector<AlgoUtils::Triangle>();
 
-	this->edgeCollisionNode = Node::create();
+	this->collisionNode = Node::create();
 	this->infillTexturesNode = Node::create();
 	this->infillNode = Node::create();
 	this->shadowsNode = Node::create();
@@ -59,7 +61,7 @@ TerrainObject::TerrainObject(ValueMap* initProperties) : HackableObject(initProp
 	this->topsNode = Node::create();
 	this->debugNode = Node::create();
 
-	this->addChild(this->edgeCollisionNode);
+	this->addChild(this->collisionNode);
 	this->addChild(this->infillTexturesNode);
 	this->addChild(this->infillNode);
 	this->addChild(this->shadowsNode);
@@ -95,16 +97,16 @@ void TerrainObject::rebuildTerrain()
 {
 	this->debugNode->removeAllChildren();
 
-	this->buildCollisionEdge();
+	this->buildCollision();
 	this->buildInnerTextures();
 	this->buildInfill(Color4B(11, 30, 39, 255));
 	this->buildSurfaceShadow();
 	this->buildSurfaceTextures();
 }
 
-void TerrainObject::buildCollisionEdge()
+void TerrainObject::buildCollision()
 {
-	this->edgeCollisionNode->removeAllChildren();
+	this->collisionNode->removeAllChildren();
 
 	ValueMap collisionProperties = ValueMap(*this->properties);
 
@@ -112,12 +114,16 @@ void TerrainObject::buildCollisionEdge()
 	collisionProperties[SerializableObject::MapKeyXPosition] = 0.0f;
 	collisionProperties[SerializableObject::MapKeyYPosition] = 0.0f;
 
-	// Create collision object
 	CategoryName categoryName = collisionProperties.at(SerializableObject::MapKeyName).asString();
-	PhysicsBody* physicsBody = PhysicsBody::createEdgePolygon(this->points.data(), this->points.size(), PhysicsMaterial(0.0f, 0.0f, 0.0f));
-	this->edgeCollisionObject = new CollisionObject(&collisionProperties, physicsBody, categoryName, false, false);
 
-	this->edgeCollisionNode->addChild(this->edgeCollisionObject);
+	// Create terrain collision as a series of triangles -- the other option is 1 giant EdgePolgyon, but this lacks internal collision
+	for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
+	{
+		PhysicsBody* physicsBody = PhysicsBody::createPolygon((*it).coords, 3, PhysicsMaterial(0.0f, 0.0f, 0.0f));
+		CollisionObject* collisionObject = new CollisionObject(&collisionProperties, physicsBody, categoryName, false, false);
+
+		this->collisionNode->addChild(collisionObject);
+	}
 }
 
 void TerrainObject::buildInnerTextures()
@@ -142,7 +148,7 @@ void TerrainObject::buildInnerTextures()
 	params.wrapS = GL_REPEAT;
 	params.wrapT = GL_REPEAT;
 
-	Sprite* texture = Sprite::create(TerrainResources::CastleTexture);
+	Sprite* texture = Sprite::create(this->terrainData.textureResource);
 	Rect drawRect = AlgoUtils::getPolygonRect(this->points);
 
 	texture->setAnchorPoint(Vec2(0.0f, 0.0f));
@@ -302,7 +308,7 @@ void TerrainObject::buildSurfaceTextures()
 
 		if (normalAngle >= TerrainObject::TopThreshold && normalAngle <= M_PI - TerrainObject::TopThreshold)
 		{
-			Sprite* top = Sprite::create(TerrainResources::Castle);
+			Sprite* top = Sprite::create(this->terrainData.topResource);
 			Size textureSize = top->getContentSize();
 		
 			// Calculate overdraw to create seamless rectangle connection
@@ -335,7 +341,7 @@ void TerrainObject::buildSurfaceTextures()
 		}
 		else //if (normalAngle >= TerrainObject::BottomThreshold && normalAngle <= 2 * M_PI - (TerrainObject::BottomThreshold - M_PI))
 		{
-			Sprite* bottom = Sprite::create(TerrainResources::CastleBottom);
+			Sprite* bottom = Sprite::create(this->terrainData.bottomResource);
 			Size textureSize = bottom->getContentSize();
 
 			// Calculate overdraw to create seamless rectangle connection
