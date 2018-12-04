@@ -2,21 +2,9 @@
 
 TerrainDeserializer* TerrainDeserializer::instance = nullptr;
 
-void TerrainDeserializer::registerGlobalNode()
+TerrainDeserializer::TerrainDeserializer(TerrainObject::TerrainData terrainData)
 {
-	if (TerrainDeserializer::instance == nullptr)
-	{
-		TerrainDeserializer::instance = new TerrainDeserializer();
-
-		instance->autorelease();
-
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(TerrainDeserializer::instance);
-	}
-}
-
-TerrainDeserializer::TerrainDeserializer()
-{
+	this->terrainData = terrainData;
 }
 
 TerrainDeserializer::~TerrainDeserializer()
@@ -39,9 +27,15 @@ void TerrainDeserializer::onDeserializationRequest(DeserializationEvents::Object
 {
 	if (args->typeName == TerrainObject::MapKeyTypeTerrain)
 	{
-		TerrainObject* terrainObject = TerrainObject::deserialize(&args->properties);
+		if (GameUtils::keyExists(&args->properties, TerrainObject::MapKeyTypeTexture))
+		{
+			if (args->properties[TerrainObject::MapKeyTypeTexture].asString() == this->terrainData.textureMapKeyValue)
+			{
+				TerrainObject* terrainObject = TerrainObject::deserialize(&args->properties, this->terrainData);
 
-		// Fire an event indicating successful deserialization
-		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(terrainObject));
+				// Fire an event indicating successful deserialization
+				args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(terrainObject));
+			}
+		}
 	}
 }

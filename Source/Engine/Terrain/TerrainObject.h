@@ -11,38 +11,84 @@
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/RenderUtils.h"
 #include "Resources/ShaderResources.h"
-#include "Resources/TerrainResources.h"
 
 using namespace cocos2d;
 
 class TerrainObject : public HackableObject
 {
 public:
-	static TerrainObject* deserialize(ValueMap* initProperties);
+	struct TerrainData
+	{
+		std::string textureMapKeyValue;
+		std::string textureResource;
+		std::string topResource;
+		std::string topCornerLeftResource;
+		std::string topCornerRightResource;
+		std::string bottomResource;
+		std::string bottomCornerLeftResource;
+		std::string bottomCornerRightResource;
+		std::string leftResource;
+		std::string rightResource;
+		Color4B infillColor;
+
+		TerrainData(
+			std::string textureMapKeyValue,
+			std::string textureResource,
+			std::string topResource,
+			std::string topCornerLeftResource,
+			std::string topCornerRightResource,
+			std::string bottomResource,
+			std::string bottomCornerLeftResource,
+			std::string bottomCornerRightResource,
+			std::string leftResource,
+			std::string rightResource,
+			Color4B infillColor) :
+			textureMapKeyValue(textureMapKeyValue),
+			textureResource(textureResource),
+			topResource(topResource),
+			topCornerLeftResource(topCornerLeftResource),
+			topCornerRightResource(topCornerRightResource),
+			bottomResource(bottomResource),
+			bottomCornerLeftResource(bottomCornerLeftResource),
+			bottomCornerRightResource(bottomCornerRightResource),
+			leftResource(leftResource),
+			rightResource(rightResource),
+			infillColor(infillColor)
+		{
+		}
+
+		TerrainData()
+		{
+		}
+	};
+
+	static TerrainObject* deserialize(ValueMap* initProperties, TerrainData terrainData);
 
 	void setPoints(std::vector<Vec2> points);
 	void rebuildTerrain();
 
+	static std::string MapKeyTypeTexture;
 	static std::string MapKeyTypeTerrain;
 
 private:
-	TerrainObject(ValueMap* initProperties);
+	TerrainObject(ValueMap* initProperties, TerrainData terrainData);
 	~TerrainObject();
 
 	void onEnter() override;
 	void initializeListeners() override;
-	void buildCollisionEdge();
+	void buildCollision();
 	void buildInnerTextures();
 	void buildInfill(Color4B infillColor);
 	void buildSurfaceShadow();
 	void buildSurfaceTextures();
 
+	TerrainData terrainData;
+
 	std::vector<Vec2> points;
 	std::vector<std::tuple<Vec2, Vec2>> segments;
 	std::vector<AlgoUtils::Triangle> triangles;
 
-	CollisionObject* edgeCollisionObject;
-	Node* edgeCollisionNode;
+	Node* collisionNode;
 	Node* infillTexturesNode;
 	Node* infillNode;
 	Node* shadowsNode;

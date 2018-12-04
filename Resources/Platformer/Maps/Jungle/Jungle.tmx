@@ -89,12 +89,21 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="418" name="solid" type="terrain" x="2072" y="2637">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
    <polyline points="-432,304 480,-40 936,80 1264,32 1596,152 1976,396 2136,116 2344,112 2584,88 2712,88 2920,104 3064,152 3944,176 4408,88 4800,40 5128,24 5496,40 5776,56 5744,944 5232,936 -424,1032 -428,632"/>
   </object>
   <object id="422" name="solid" type="terrain" x="5064" y="1624">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
    <polyline points="0,0 -348,-84 -652,-8 -928,-120 -1292,-60 -1276,304 4,292 -4,128"/>
   </object>
   <object id="423" name="solid" type="terrain" x="2728" y="1800">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
    <polyline points="0,0 -360,148 -780,16 -932,-528 -812,-1040 -332,-1176 88,-1168 372,-996 352,-672 -240,-704 -360,-520 -256,-248 256,-252 228,-84"/>
   </object>
   <object id="424" x="4188" y="360">

@@ -42,6 +42,8 @@ void Bootstrapper::initialize()
 	BackgroundDeserializer::registerGlobalNode();
 	WeatherDeserializer::registerGlobalNode();
 
+	CastleTerrainDeserializer::registerGlobalNode();
+
 	MusicDeserializer::registerGlobalNode();
 }
 

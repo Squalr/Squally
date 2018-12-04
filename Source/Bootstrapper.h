@@ -29,6 +29,7 @@
 #include "Objects/Platformer/PlatformerDecorDeserializer.h"
 #include "Objects/Platformer/PlatformerObjectDeserializer.h"
 #include "Scenes/Maps/Platformer/Backgrounds/BackgroundDeserializer.h"
+#include "Scenes/Maps/Platformer/Terrain/CastleTerrainDeserializer.h"
 #include "Scenes/Maps/Platformer/Weather/WeatherDeserializer.h"
 #include "Scenes/SceneDirector.h"
 #include "Sound/MusicDeserializer.h"

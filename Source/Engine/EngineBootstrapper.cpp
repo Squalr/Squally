@@ -8,7 +8,6 @@ void EngineBootstrapper::initialize()
 	MouseState::registerGlobalNode();
 	ObjectLayerDeserializer::registerGlobalNode();
 	CollisionDeserializer::registerGlobalNode();
-	TerrainDeserializer::registerGlobalNode();
 }
 
 void EngineBootstrapper::shutDown()
