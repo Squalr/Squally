@@ -58,7 +58,9 @@ TerrainObject::TerrainObject(ValueMap* initProperties, TerrainData terrainData) 
 	this->leftWallNode = Node::create();
 	this->rightWallNode = Node::create();
 	this->bottomsNode = Node::create();
+	this->bottomCornersNode = Node::create();
 	this->topsNode = Node::create();
+	this->topCornersNode = Node::create();
 	this->debugNode = Node::create();
 
 	this->addChild(this->collisionNode);
@@ -68,7 +70,9 @@ TerrainObject::TerrainObject(ValueMap* initProperties, TerrainData terrainData) 
 	this->addChild(this->leftWallNode);
 	this->addChild(this->rightWallNode);
 	this->addChild(this->bottomsNode);
+	this->addChild(this->bottomCornersNode);
 	this->addChild(this->topsNode);
+	this->addChild(this->topCornersNode);
 	this->addChild(this->debugNode);
 }
 
@@ -216,7 +220,7 @@ void TerrainObject::buildSurfaceShadow()
 	std::vector<AlgoUtils::Triangle> shadowTriangles = AlgoUtils::trianglefyPolygon(shadowPoints);
 	std::vector<std::tuple<Vec2, Vec2>> shadowSegments = AlgoUtils::buildSegmentsFromPoints(shadowPoints);
 
-	DrawNode* shadowLine = DrawNode::create(12.0);
+	DrawNode* shadowLine = DrawNode::create(12.0f);
 
 	// Draw shadow lines below the floors
 	for (auto it = shadowSegments.begin(); it != shadowSegments.end(); it++)
@@ -252,10 +256,12 @@ void TerrainObject::buildSurfaceShadow()
 
 void TerrainObject::buildSurfaceTextures()
 {
-	this->topsNode->removeAllChildren();
 	this->leftWallNode->removeAllChildren();
 	this->rightWallNode->removeAllChildren();
 	this->bottomsNode->removeAllChildren();
+	this->bottomCornersNode->removeAllChildren();
+	this->topsNode->removeAllChildren();
+	this->topCornersNode->removeAllChildren();
 
 	float seamlessSegmentX = 0.0f;
 	std::tuple<Vec2, Vec2>* previousSegment = nullptr;
@@ -274,14 +280,9 @@ void TerrainObject::buildSurfaceTextures()
 		float angle = AlgoUtils::getSegmentAngle(segment, this->triangles, TerrainObject::EnableTerrainDebugging ? this->debugNode : nullptr);
 		float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, this->triangles);
 		float nextAngle = AlgoUtils::getSegmentAngle(nextSegment, this->triangles);
+		float nextSegmentNormalAngle = AlgoUtils::getSegmentNormalAngle(nextSegment, this->triangles);
 		float bisectingAngle = (nextAngle + angle) / 2.0f;
 		float angleDelta = nextAngle - angle;
-
-		// Create parameters to repeat the texture
-		Texture2D::TexParams params = Texture2D::TexParams();
-		params.minFilter = GL_LINEAR;
-		params.magFilter = GL_LINEAR;
-		params.wrapS = GL_REPEAT;
 
 		if (TerrainObject::EnableTerrainDebugging)
 		{
@@ -306,73 +307,169 @@ void TerrainObject::buildSurfaceTextures()
 			this->debugNode->addChild(bisectingAngleDebug);
 		}
 
-		if (normalAngle >= TerrainObject::TopThreshold && normalAngle <= M_PI - TerrainObject::TopThreshold)
+		auto buildSegment = [&](Node* parent, Sprite* sprite, Vec2 anchor, Vec2 offset, float initialAngle, bool isTextureHorizontal)
+		{
+			Size textureSize = sprite->getContentSize();
+
+			// Create parameters to repeat the texture
+			Texture2D::TexParams params = Texture2D::TexParams();
+			params.minFilter = GL_LINEAR;
+			params.magFilter = GL_LINEAR;
+
+			if (isTextureHorizontal)
+			{
+				params.wrapS = GL_REPEAT;
+			}
+			else
+			{
+				params.wrapT = GL_REPEAT;
+			}
+
+			// Calculate overdraw to create seamless rectangle connection
+			// float hypotenuse = textureSize.height;
+			// float sinTheta = std::sin(bisectingAngle);
+			// float overDraw = std::ceil(std::abs(sinTheta * hypotenuse));
+
+			// currentSegmentLength += overDraw;
+
+			// Prevent off-by-1 rendering errors where texture pixels are barely separated
+			currentSegmentLength = std::ceil(currentSegmentLength);
+
+			sprite->setAnchorPoint(anchor);
+			sprite->getTexture()->setTexParameters(params);
+
+			// Start the texture from where the previous texture left off for seamless integration
+			if (isTextureHorizontal)
+			{
+				sprite->setTextureRect(Rect(seamlessSegmentX, 0.0f, currentSegmentLength, textureSize.height));
+			}
+			else
+			{
+				sprite->setTextureRect(Rect(0.0f, seamlessSegmentX, textureSize.width, currentSegmentLength));
+			}
+
+			sprite->setPosition(source.getMidpoint(dest) + offset);
+			sprite->setRotation(initialAngle - angle * 180.0f / M_PI);
+
+			// Advance the seamless segment distance (with wrap around on overflow)
+			seamlessSegmentX = std::remainderf(seamlessSegmentX + currentSegmentLength, isTextureHorizontal ? textureSize.width : textureSize.height);
+
+			parent->addChild(sprite);
+		};
+
+		if (this->isTopAngle(normalAngle))
 		{
 			Sprite* top = Sprite::create(this->terrainData.topResource);
-			Size textureSize = top->getContentSize();
-		
-			// Calculate overdraw to create seamless rectangle connection
-			if (std::abs(angleDelta) < TerrainObject::TopThreshold)
-			{
-				// Guess that geometry class paid off
-				float hypotenuse = textureSize.height;
-				float sinTheta = std::sin(bisectingAngle);
-				float overDraw = std::ceil(std::abs(sinTheta * hypotenuse));
 
-				currentSegmentLength += overDraw;
-			}
-
-			// Prevent off-by-1 rendering errors where texture pixels are barely separated
-			currentSegmentLength = std::ceil(currentSegmentLength);
-
-			top->setAnchorPoint(Vec2(0.5f, 1.0f));
-			top->getTexture()->setTexParameters(params);
-
-			// Start the texture from where the previous texture left off for seamless integration
-			top->setTextureRect(Rect(seamlessSegmentX, 0, currentSegmentLength, textureSize.height));
-
-			top->setPosition(source.getMidpoint(dest) + Vec2(0.0f, textureSize.height / 2.0f));
-			top->setRotation(180.0f - angle * 180.0f / M_PI);
-
-			// Advance the seamless segment distance (with wrap around on overflow)
-			seamlessSegmentX = std::remainderf(seamlessSegmentX + currentSegmentLength, textureSize.width);
-
-			this->topsNode->addChild(top);
+			buildSegment(this->topsNode, top, Vec2(0.5f, 1.0f), Vec2(0.0f, top->getContentSize().height / 2.0f), 180.0f, true);
 		}
-		else //if (normalAngle >= TerrainObject::BottomThreshold && normalAngle <= 2 * M_PI - (TerrainObject::BottomThreshold - M_PI))
+		else if (this->isBottomAngle(normalAngle))
 		{
 			Sprite* bottom = Sprite::create(this->terrainData.bottomResource);
-			Size textureSize = bottom->getContentSize();
 
-			// Calculate overdraw to create seamless rectangle connection
-			if (std::abs(angleDelta) < TerrainObject::TopThreshold)
+			buildSegment(this->bottomsNode, bottom, Vec2(0.5f, 0.0f), Vec2(0.0f, -bottom->getContentSize().height / 2.0f), 360.0f, true);
+		}
+		else if (this->isLeftAngle(normalAngle))
+		{
+			Sprite* left = Sprite::create(this->terrainData.leftResource);
+
+			buildSegment(this->leftWallNode, left, Vec2(0.0f, 0.5f), Vec2(0.0f, 0.0f), 270.0f, false);
+		}
+		else
+		{
+			Sprite* right = Sprite::create(this->terrainData.rightResource);
+
+			buildSegment(this->rightWallNode, right, Vec2(1.0f, 0.5f), Vec2(0.0f, 0.0f), 90.0f, false);
+		}
+
+		// Figure out what the transition is between this segment and the next
+		bool floorToWall = this->isTopAngle(normalAngle) && !this->isTopAngle(nextSegmentNormalAngle);
+		bool wallToFloor = !this->isTopAngle(normalAngle) && this->isTopAngle(nextSegmentNormalAngle);
+		bool roofToWall = this->isBottomAngle(normalAngle) && !this->isBottomAngle(nextSegmentNormalAngle);
+		bool wallToRoof = !this->isBottomAngle(normalAngle) && this->isBottomAngle(nextSegmentNormalAngle);
+
+		// Handle case when going from floor to walls
+		if (floorToWall || wallToFloor)
+		{
+			Vec2 nextSource = std::get<0>(nextSegment);
+			Vec2 nextDest = std::get<1>(nextSegment);
+
+			if ((floorToWall && nextSource.x <= source.x) || (wallToFloor && nextDest.x >= dest.x))
 			{
-				// Guess that geometry class paid off
-				float hypotenuse = textureSize.height;
-				float sinTheta = std::sin(bisectingAngle);
-				float overDraw = std::ceil(std::abs(sinTheta * hypotenuse));
+				Sprite* topLeft = Sprite::create(this->terrainData.topCornerLeftResource);
+				Size textureSize = topLeft->getContentSize();
 
-				currentSegmentLength += overDraw;
+				
+				topLeft->setAnchorPoint(Vec2(1.0f, 1.0f));
+				topLeft->setPosition(dest + Vec2(0.0f, topLeft->getContentSize().height / 2.0f));
+				topLeft->setRotation(180.0f - (floorToWall ? angle : nextAngle) * 180.0f / M_PI);
+
+				this->topCornersNode->addChild(topLeft);
 			}
+			else
+			{
+				Sprite* topRight = Sprite::create(this->terrainData.topCornerRightResource);
+				Size textureSize = topRight->getContentSize();
 
-			// Prevent off-by-1 rendering errors where texture pixels are barely separated
-			currentSegmentLength = std::ceil(currentSegmentLength);
+				// X slightly offset for some overlap
+				topRight->setAnchorPoint(Vec2(0.0f, 0.0f));
+				topRight->setPosition(dest + Vec2(0.0f, topRight->getContentSize().height / 2.0f));
+				topRight->setRotation(180.0f - (floorToWall ? angle : nextAngle) * 180.0f / M_PI);
 
-			bottom->setAnchorPoint(Vec2(0.5f, 0.0f));
-			bottom->getTexture()->setTexParameters(params);
+				this->topCornersNode->addChild(topRight);
+			}
+		}
+		// Handle case when going from roof to walls
+		else if (roofToWall || wallToRoof)
+		{
+			Vec2 nextSource = std::get<0>(nextSegment);
+			Vec2 nextDest = std::get<1>(nextSegment);
 
-			// Start the texture from where the previous texture left off for seamless integration
-			bottom->setTextureRect(Rect(seamlessSegmentX, 0, currentSegmentLength, textureSize.height));
+			if ((roofToWall && nextSource.x <= source.x) || (wallToRoof && nextDest.x >= dest.x))
+			{
+				Sprite* bottomLeft = Sprite::create(this->terrainData.bottomCornerLeftResource);
+				Size textureSize = bottomLeft->getContentSize();
 
-			bottom->setPosition(source.getMidpoint(dest) + Vec2(0.0f, -textureSize.height / 2.0f));
-			bottom->setRotation(360.0f - angle * 180.0f / M_PI);
+				bottomLeft->setAnchorPoint(Vec2(0.0f, 0.0f));
+				bottomLeft->setPosition(dest + Vec2(0.0f, -bottomLeft->getContentSize().height / 2.0f));
+				bottomLeft->setRotation(360.0f - (roofToWall ? angle : nextAngle) * 180.0f / M_PI);
 
-			// Advance the seamless segment distance (with wrap around on overflow)
-			seamlessSegmentX = std::remainderf(seamlessSegmentX + currentSegmentLength, textureSize.width);
+				this->bottomCornersNode->addChild(bottomLeft);
+			}
+			else
+			{
+				Sprite* bottomRight = Sprite::create(this->terrainData.bottomCornerRightResource);
+				Size textureSize = bottomRight->getContentSize();
 
-			this->bottomsNode->addChild(bottom);
+				bottomRight->setAnchorPoint(Vec2(1.0f, 0.0f));
+				bottomRight->setPosition(dest + Vec2(0.0f, -bottomRight->getContentSize().height / 2.0f));
+				bottomRight->setRotation(360.0f - (roofToWall ? angle : nextAngle) * 180.0f / M_PI);
+
+				this->bottomCornersNode->addChild(bottomRight);
+			}
 		}
 
 		previousSegment = &segment;
 	}
 }
+
+bool TerrainObject::isTopAngle(float normalAngle)
+{
+	return normalAngle >= TerrainObject::TopThreshold && normalAngle <= M_PI - TerrainObject::TopThreshold;
+}
+
+bool TerrainObject::isBottomAngle(float normalAngle)
+{
+	return normalAngle >= TerrainObject::BottomThreshold && normalAngle <= 2.0f * M_PI - (TerrainObject::BottomThreshold - M_PI);
+}
+
+bool TerrainObject::isLeftAngle(float normalAngle)
+{
+	return (!this->isTopAngle(normalAngle) && !this->isBottomAngle(normalAngle) && normalAngle <= TerrainObject::BottomThreshold);
+}
+
+bool TerrainObject::isRightAngle(float normalAngle)
+{
+	return (!this->isTopAngle(normalAngle) && !this->isBottomAngle(normalAngle) && !this->isLeftAngle(normalAngle));
+}
+
