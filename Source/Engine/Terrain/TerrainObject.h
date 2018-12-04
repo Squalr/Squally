@@ -81,6 +81,10 @@ private:
 	void buildInfill(Color4B infillColor);
 	void buildSurfaceShadow();
 	void buildSurfaceTextures();
+	bool isTopAngle(float normalAngle);
+	bool isBottomAngle(float normalAngle);
+	bool isLeftAngle(float normalAngle);
+	bool isRightAngle(float normalAngle);
 
 	TerrainData terrainData;
 
@@ -95,7 +99,9 @@ private:
 	Node* leftWallNode;
 	Node* rightWallNode;
 	Node* bottomsNode;
+	Node* bottomCornersNode;
 	Node* topsNode;
+	Node* topCornersNode;
 	Node* debugNode;
 
 	static const bool EnableTerrainDebugging;
