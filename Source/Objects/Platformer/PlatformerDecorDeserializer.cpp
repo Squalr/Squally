@@ -48,12 +48,64 @@ void PlatformerDecorDeserializer::onDeserializationRequest(DeserializationEvents
 		float height = properties.at(SerializableObject::MapKeyHeight).asFloat();
 		float x = properties.at(SerializableObject::MapKeyXPosition).asFloat();
 		float y = properties.at(SerializableObject::MapKeyYPosition).asFloat();
+		bool repeatX = false;
+		bool repeatY = false;
 		SerializableObject* newObject = PlatformerDecorObject::create(&properties);
 
-		newObject->addChild(sprite);
+		if (GameUtils::keyExists(&properties, SerializableObject::MapKeyRepeatX))
+		{
+			repeatX = properties.at(SerializableObject::MapKeyRepeatX).asBool();
+		}
 
-		// Scale decor based on rectangle size (only using height for simplicity)
-		newObject->setScale(height / sprite->getContentSize().height);
+		if (GameUtils::keyExists(&properties, SerializableObject::MapKeyRepeatY))
+		{
+			repeatY = properties.at(SerializableObject::MapKeyRepeatY).asBool();
+		}
+
+		if (repeatX || repeatY)
+		{
+			Texture2D::TexParams params = Texture2D::TexParams();
+			params.minFilter = GL_LINEAR;
+			params.magFilter = GL_LINEAR;
+
+			if (repeatX)
+			{
+				params.wrapS = GL_REPEAT;
+			}
+			
+			if (repeatY)
+			{
+				params.wrapT = GL_REPEAT;
+			}
+
+			if (repeatX && !repeatY)
+			{
+				sprite->setTextureRect(Rect(0.0f, 0.0f, width, sprite->getContentSize().height));
+
+				// X is repeating -- set the scale based on the height
+				newObject->setScale(height / sprite->getContentSize().height);
+			}
+			if (repeatY && !repeatX)
+			{
+				sprite->setTextureRect(Rect(0.0f, 0.0f, sprite->getContentSize().width, height));
+
+				// Y is repeating -- set the scale based on the width
+				newObject->setScale(width / sprite->getContentSize().width);
+			}
+			else if (repeatX && repeatY)
+			{
+				sprite->setTextureRect(Rect(0.0f, 0.0f, width, height));
+			}
+
+			sprite->getTexture()->setTexParameters(params);
+		}
+		else
+		{
+			// Default -- set the scale of the decor based on the height
+			newObject->setScale(height / sprite->getContentSize().height);
+		}
+
+		newObject->addChild(sprite);
 
 		// TMX tile maps rotate around a different anchor point than cocos2d-x by default, so we have to account for this
 		sprite->setAnchorPoint(Vec2(0.0f, 1.0f));
