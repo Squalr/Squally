@@ -13,13 +13,13 @@ public:
 
 	static std::vector<int> subsetSum(const std::vector<int>& numbers, int sum, int requiredLength);
 	static std::vector<Triangle> trianglefyPolygon(std::vector<Vec2> polygonPoints);
-	static bool isPointInTriangle(AlgoUtils::Triangle triangle, Vec2 point);
+	static bool isPointInTriangle(Triangle triangle, Vec2 point);
 	static std::vector<std::tuple<Vec2, Vec2>> buildSegmentsFromPoints(std::vector<Vec2> points);
-	static Rect AlgoUtils::getPolygonRect(std::vector<Vec2> points);
+	static Rect getPolygonRect(std::vector<Vec2> points);
 	static std::vector<Vec2> insetPolygon(std::vector<Triangle> triangles, std::vector<std::tuple<Vec2, Vec2>> segments, float insetDistance);
-	static float getSegmentAngle(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles, Node* debugDrawNode = nullptr);
-	static float getSegmentNormalAngle(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles, Node* debugDrawNode = nullptr);
-	static Vec2 getOutwardNormal(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles, Node* debugDrawNode = nullptr);
+	static float getSegmentAngle(std::tuple<Vec2, Vec2> segment, std::vector<Triangle> triangles, Node* debugDrawNode = nullptr);
+	static float getSegmentNormalAngle(std::tuple<Vec2, Vec2> segment, std::vector<Triangle> triangles, Node* debugDrawNode = nullptr);
+	static Vec2 getOutwardNormal(std::tuple<Vec2, Vec2> segment, std::vector<Triangle> triangles, Node* debugDrawNode = nullptr);
 
 	struct Triangle
 	{
