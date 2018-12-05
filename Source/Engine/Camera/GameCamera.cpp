@@ -45,10 +45,10 @@ void GameCamera::update(float dt)
 		Vec2 targetPosition = this->targetStack->top()->getPosition();
 		Size visibleSize = Director::getInstance()->getVisibleSize();
 
-		// Handle camera scrolling from player traveling past scroll distance
+		// Handle camera scrolling from target traveling past scroll distance
 		if (this->cameraPosition.x < targetPosition.x - this->cameraScrollOffset.x)
 		{
-			float idealPositionX = targetPosition.x - this->cameraScrollOffset.x;
+			float idealPositionX = targetPosition.x - this->cameraScrollOffset.x + this->trackOffset.x;
 
 			if (followSpeed.x <= 0.0f)
 			{
@@ -62,7 +62,7 @@ void GameCamera::update(float dt)
 		}
 		else if (this->cameraPosition.x > targetPosition.x + this->cameraScrollOffset.x)
 		{
-			float idealPositionX = targetPosition.x + this->cameraScrollOffset.x;
+			float idealPositionX = targetPosition.x + this->cameraScrollOffset.x + this->trackOffset.x;
 
 			if (followSpeed.x <= 0.0f)
 			{
@@ -77,7 +77,7 @@ void GameCamera::update(float dt)
 
 		if (this->cameraPosition.y < targetPosition.y - this->cameraScrollOffset.y)
 		{
-			float idealPositionY = targetPosition.y - this->cameraScrollOffset.y;
+			float idealPositionY = targetPosition.y - this->cameraScrollOffset.y + this->trackOffset.y;
 
 			if (followSpeed.y <= 0.0f)
 			{
@@ -91,7 +91,7 @@ void GameCamera::update(float dt)
 		}
 		else if (this->cameraPosition.y > targetPosition.y + this->cameraScrollOffset.y)
 		{
-			float idealPositionY = targetPosition.y + this->cameraScrollOffset.y;
+			float idealPositionY = targetPosition.y + this->cameraScrollOffset.y + this->trackOffset.y;
 
 			if (followSpeed.y <= 0.0f)
 			{
@@ -128,9 +128,15 @@ Vec2 GameCamera::getCameraPosition()
 	return Camera::getDefaultCamera()->getPosition();
 }
 
-void GameCamera::setCameraPosition(Vec2 position)
+void GameCamera::setCameraPosition(Vec2 position, bool addTrackOffset)
 {
 	this->cameraPosition = position;
+
+	if (addTrackOffset)
+	{
+		this->cameraPosition += this->trackOffset;
+	}
+	
 	Camera::getDefaultCamera()->setPosition(this->cameraPosition);
 }
 
@@ -154,6 +160,16 @@ void GameCamera::setScrollOffset(Vec2 offset)
 	this->cameraScrollOffset = offset;
 }
 
+Vec2 GameCamera::getTrackOffset()
+{
+	return this->trackOffset;
+}
+
+void GameCamera::setTrackOffset(Vec2 trackOffset)
+{
+	this->trackOffset = trackOffset;
+}
+
 Vec2 GameCamera::getFollowSpeed()
 {
 	return this->followSpeed;
@@ -167,14 +183,16 @@ void GameCamera::setFollowSpeed(Vec2 speed)
 	this->followSpeed = speed;
 }
 
-void GameCamera::setTarget(Node* newTarget)
+void GameCamera::setTarget(Node* newTarget, Vec2 trackOffset)
 {
 	this->clearTargets();
+
+	this->setTrackOffset(trackOffset);
 
 	if (newTarget != nullptr)
 	{
 		this->pushTarget(newTarget);
-		this->setCameraPosition(newTarget->getPosition());
+		this->setCameraPosition(newTarget->getPosition(), true);
 	}
 }
 
