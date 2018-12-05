@@ -14,11 +14,9 @@ PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlRes
 	this->actualMaxFallSpeed = 600.0f;
 	this->moveAcceleration = 14000.0f;
 
-	this->animationNode = AnimationNode::create(scmlResource);
+	this->animationNode = SmartAnimationNode::create(scmlResource);
 	this->animationNode->setScale(scale);
-
-	SpriterEngine::EntityInstance* entity = this->animationNode->play("Entity");
-	entity->setCurrentAnimation("Idle");
+	this->animationNode->playAnimation("Idle");
 
 	this->isOnGround = false;
 
@@ -74,6 +72,8 @@ void PlatformerEntity::update(float dt)
 		{
 			velocity.y = this->movement.y * this->actualJumpLaunchVelocity;
 			this->isOnGround = false;
+
+			this->animationNode->playAnimation("Jump");
 		}
 	}
 

@@ -10,6 +10,7 @@ const std::string MapResources::Castle_Castle = "Platformer/Maps/Castle/Castle.t
 const std::string MapResources::Caverns_Caverns = "Platformer/Maps/Caverns/Caverns.tmx";
 const std::string MapResources::Forest_Forest = "Platformer/Maps/Forest/Forest.tmx";
 const std::string MapResources::IceCaps_IceCaps = "Platformer/Maps/IceCaps/IceCaps.tmx";
+const std::string MapResources::Jungle_Battlegrounds = "Platformer/Maps/Jungle/Battlegrounds.tmx";
 const std::string MapResources::Jungle_Jungle = "Platformer/Maps/Jungle/Jungle.tmx";
 const std::string MapResources::Jungle_TestingGrounds = "Platformer/Maps/Jungle/TestingGrounds.tmx";
 const std::string MapResources::Mech_Mech = "Platformer/Maps/Mech/Mech.tmx";

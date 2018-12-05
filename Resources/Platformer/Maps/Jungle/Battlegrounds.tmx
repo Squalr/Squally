@@ -168,7 +168,7 @@
    <properties>
     <property name="texture" value="castle"/>
    </properties>
-   <polyline points="0,0 -56,596 -20,908 -60,1288 -28,1880 -60,2192 184,2284 740,2224 940,2148 952,-4 432,-92 36,-20"/>
+   <polyline points="0,0 -56,596 -20,908 -60,1288 -4,1876 -60,2192 184,2284 740,2224 940,2148 952,-4 432,-92 36,-20"/>
   </object>
  </objectgroup>
  <objectgroup name="decor midground">
@@ -191,7 +191,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="180" name="knight" type="entity" x="2390.06" y="2166.73" width="200" height="288"/>
-  <object id="366" name="squally" type="entity" x="4655.15" y="2496.24" width="78.7879" height="88"/>
+  <object id="366" name="squally" type="entity" x="2163.15" y="2288.24" width="78.7879" height="88"/>
  </objectgroup>
  <objectgroup name="fireflies">
   <properties>

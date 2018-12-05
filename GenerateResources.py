@@ -150,9 +150,10 @@ def createResourceFile(outputFileBase, extensions, searchPath = "Resources"):
 		h.write("#pragma once" + "\n");
 		h.write("#include <string>" + "\n");
 		h.write("\n");
-		h.write("class " + outputFileBase + "\n");
+		#h.write("class " + outputFileBase + "\n");
+		h.write("namespace " + outputFileBase + "\n");
 		h.write("{" + "\n");
-		h.write("public:" + "\n");
+		# h.write("public:" + "\n");
 
 		cpp.write(warning);
 		cpp.write("\n");
@@ -166,7 +167,7 @@ def createResourceFile(outputFileBase, extensions, searchPath = "Resources"):
 			variableName = searchRelativeFilePath.replace("/", "_").replace(" ", "_").replace("+", "_").replace("-", "_").replace("(", "_").replace(")", "_")
 			variableNameNoExtension = splitext(variableName)[0]
 		
-			h.write("\tstatic const std::string " + variableNameNoExtension + ";" + "\n");
+			h.write("\textern const std::string " + variableNameNoExtension + ";" + "\n");
 			cpp.write("const std::string " + outputFileBase + "::" + variableNameNoExtension + " = \"" + resourceRelativeFilePath + "\";" + "\n")
 
 		h.write("};" + "\n")
