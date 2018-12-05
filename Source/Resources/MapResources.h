@@ -4,19 +4,19 @@
 #pragma once
 #include <string>
 
-class MapResources
+namespace MapResources
 {
-public:
-	static const std::string AquaticRuins_AquaticRuins;
-	static const std::string Castle_Castle;
-	static const std::string Caverns_Caverns;
-	static const std::string Forest_Forest;
-	static const std::string IceCaps_IceCaps;
-	static const std::string Jungle_Jungle;
-	static const std::string Jungle_TestingGrounds;
-	static const std::string Mech_Mech;
-	static const std::string Obelisk_Obelisk;
-	static const std::string TileMap;
-	static const std::string Tutorials_TutorialExactValueScan1_TutorialExactValueScan1;
-	static const std::string Volcano_Volcano;
+	extern const std::string AquaticRuins_AquaticRuins;
+	extern const std::string Castle_Castle;
+	extern const std::string Caverns_Caverns;
+	extern const std::string Forest_Forest;
+	extern const std::string IceCaps_IceCaps;
+	extern const std::string Jungle_Battlegrounds;
+	extern const std::string Jungle_Jungle;
+	extern const std::string Jungle_TestingGrounds;
+	extern const std::string Mech_Mech;
+	extern const std::string Obelisk_Obelisk;
+	extern const std::string TileMap;
+	extern const std::string Tutorials_TutorialExactValueScan1_TutorialExactValueScan1;
+	extern const std::string Volcano_Volcano;
 };

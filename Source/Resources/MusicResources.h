@@ -4,14 +4,13 @@
 #pragma once
 #include <string>
 
-class MusicResources
+namespace MusicResources
 {
-public:
-	static const std::string Artrium;
-	static const std::string BurdenOfTime;
-	static const std::string HeartBeat;
-	static const std::string LastMarch;
-	static const std::string LastMarchFull;
-	static const std::string TrickOrTreat;
-	static const std::string WeWillGetThereTogether;
+	extern const std::string Artrium;
+	extern const std::string BurdenOfTime;
+	extern const std::string HeartBeat;
+	extern const std::string LastMarch;
+	extern const std::string LastMarchFull;
+	extern const std::string TrickOrTreat;
+	extern const std::string WeWillGetThereTogether;
 };

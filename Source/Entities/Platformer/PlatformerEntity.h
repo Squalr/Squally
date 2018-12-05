@@ -3,6 +3,7 @@
 #include "cocos-ext.h"
 
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerCollisionMapping.h"
@@ -34,7 +35,7 @@ protected:
 	bool contactUpdate(CollisionData data) override;
 	bool contactEnd(CollisionData data) override;
 
-	AnimationNode* animationNode;
+	SmartAnimationNode* animationNode;
 	Vec2 movement;
 
 	bool isOnGround;

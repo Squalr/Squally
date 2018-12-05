@@ -148,6 +148,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Isometric/IsometricEntityDeserializer.cpp
 	Source/Entities/Isometric/Shiftman.cpp
 	Source/Entities/Isometric/Squally/IsometricSqually.cpp
+	Source/Entities/Platformer/Effects/JumpEffect.cpp
 	Source/Entities/Platformer/Enemies/Castle/Agnes.cpp
 	Source/Entities/Platformer/Enemies/Castle/CastleEnemyDeserializer.cpp
 	Source/Entities/Platformer/Enemies/Castle/Executioner.cpp
@@ -904,6 +905,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Isometric/IsometricEntityDeserializer.h
 	Source/Entities/Isometric/Shiftman.h
 	Source/Entities/Isometric/Squally/IsometricSqually.h
+	Source/Entities/Platformer/Effects/JumpEffect.h
 	Source/Entities/Platformer/Enemies/Castle/Agnes.h
 	Source/Entities/Platformer/Enemies/Castle/CastleEnemies.h
 	Source/Entities/Platformer/Enemies/Castle/CastleEnemyDeserializer.h

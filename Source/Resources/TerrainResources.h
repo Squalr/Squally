@@ -4,16 +4,15 @@
 #pragma once
 #include <string>
 
-class TerrainResources
+namespace TerrainResources
 {
-public:
-	static const std::string Castle;
-	static const std::string CastleBottom;
-	static const std::string CastleBottomLeft;
-	static const std::string CastleBottomRight;
-	static const std::string CastleLeft;
-	static const std::string CastleRight;
-	static const std::string CastleTexture;
-	static const std::string CastleTopLeft;
-	static const std::string CastleTopRight;
+	extern const std::string Castle;
+	extern const std::string CastleBottom;
+	extern const std::string CastleBottomLeft;
+	extern const std::string CastleBottomRight;
+	extern const std::string CastleLeft;
+	extern const std::string CastleRight;
+	extern const std::string CastleTexture;
+	extern const std::string CastleTopLeft;
+	extern const std::string CastleTopRight;
 };
