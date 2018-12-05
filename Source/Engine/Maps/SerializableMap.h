@@ -14,6 +14,13 @@ using namespace cocos2d;
 
 class SerializableMap : public SmartNode
 {
+	// Orientation constant defined by the TMX file standard
+	enum MapOrientation
+	{
+		Platformer = 0,
+		Isometric = 2,
+	};
+
 public:
 	static SerializableMap* deserialize(std::string mapFileName);
 	bool serialize();
@@ -35,8 +42,6 @@ public:
 	static const std::string KeyTypeCollision;
 
 private:
-	enum MapOrientation;
-
 	SerializableMap(std::string mapFileName, std::vector<SerializableLayer*> layers, Size unitSize, Size tileSize, MapOrientation orientation);
 	~SerializableMap();
 
@@ -53,11 +58,4 @@ private:
 	MapOrientation orientation;
 	Size mapUnitSize;
 	Size mapTileSize;
-
-	// Orientation constant defined by the TMX file standard
-	enum MapOrientation
-	{
-		Platformer = 0,
-		Isometric = 2,
-	};
 };
