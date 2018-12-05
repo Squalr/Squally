@@ -17,15 +17,17 @@ public:
 	float getCameraDistance();
 	void setCameraDistance(float distance);
 	Vec2 getCameraPosition();
-	void setCameraPosition(Vec2 position);
+	void setCameraPosition(Vec2 position, bool addTrackOffset = false);
 	Vec2 getScrollOffset();
 	void setScrollOffset(Vec2 offset);
 	Rect getBounds();
 	void setBounds(Rect bounds);
+	Vec2 getTrackOffset();
+	void setTrackOffset(Vec2 position);
 	Vec2 getFollowSpeed();
 	void setFollowSpeed(Vec2 speed);
 
-	void setTarget(Node* newTarget);
+	void setTarget(Node* newTarget, Vec2 trackOffset = Vec2::ZERO);
 	void pushTarget(Node* newTarget);
 	void popTarget();
 	void clearTargets();
@@ -41,6 +43,7 @@ private:
 	Vec2 cameraPosition;
 	Rect cameraBounds;
 	Vec2 cameraScrollOffset;
+	Vec2 trackOffset;
 	Vec2 followSpeed;
 
 	static GameCamera* cameraInstance;
