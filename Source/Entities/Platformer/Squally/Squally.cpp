@@ -120,100 +120,136 @@ bool Squally::hoverContactUpdate(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
-	case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
-		if (abs(data.normal.y) >= PlatformerEntity::normalJumpThreshold)
+		case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
 		{
-			this->isOnGround = true;
-		}
-		return true;
-	case PlatformerCollisionMapping::CategoryGroupType::G_Player:
-		return true;
-	}
+			if (abs(data.normal.y) >= PlatformerEntity::normalJumpThreshold)
+			{
+				this->isOnGround = true;
+			}
 
-	return true;
+			return true;
+		}
+		case PlatformerCollisionMapping::CategoryGroupType::G_Player:
+		{
+			return true;
+		}
+		default:
+		{
+			return true;
+		}
+	}
 }
 
 bool Squally::hoverContactEnd(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
-	case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
-		this->isOnGround = false;
-		return true;
-	case PlatformerCollisionMapping::CategoryGroupType::G_Player:
-		return true;
+		case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
+		{
+			this->isOnGround = false;
+			return true;
+		}
+		case PlatformerCollisionMapping::CategoryGroupType::G_Player:
+		{
+			return true;
+		}
+		default:
+		{
+			return true;
+		}
 	}
-
-	return true;
 }
 
 bool Squally::contactBegin(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
-	case PlatformerCollisionMapping::CategoryGroupType::G_Enemy:
-	case PlatformerCollisionMapping::CategoryGroupType::G_EnemyFlying:
-		PlatformerEnemy * enemy = dynamic_cast<PlatformerEnemy*>(data.other);
-
-		if (enemy != nullptr)
+		case PlatformerCollisionMapping::CategoryGroupType::G_Enemy:
+		case PlatformerCollisionMapping::CategoryGroupType::G_EnemyFlying:
 		{
-			NavigationEvents::loadFight(this, enemy);
+			PlatformerEnemy * enemy = dynamic_cast<PlatformerEnemy*>(data.other);
+
+			if (enemy != nullptr)
+			{
+				NavigationEvents::loadFight(this, enemy);
+			}
+
+			return false;
 		}
-
-		return false;
+		default:
+		{
+			return true;
+		}
 	}
-
-	return true;
 }
 
 bool Squally::contactUpdate(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
-	case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
-		switch (data.direction)
+		case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
 		{
-		case CollisionDirection::Down:
-			this->isOnGround = true;
-			break;
-		}
-		return true;
-	case PlatformerCollisionMapping::CategoryGroupType::G_Force:
-		return true;
-	case PlatformerCollisionMapping::CategoryGroupType::G_Enemy:
-	case PlatformerCollisionMapping::CategoryGroupType::G_EnemyFlying:
-		// TODO: Damage
-		return false;
-	case PlatformerCollisionMapping::CategoryGroupType::G_SolidNpc:
-	case PlatformerCollisionMapping::CategoryGroupType::G_SolidFlyingNpc:
-		return false;
-	default:
-		break;
-	}
+			switch (data.direction)
+			{
+				case CollisionDirection::Down:
+				{
+					this->isOnGround = true;
+					break;
+				}
+			}
 
-	return true;
+			return true;
+		}
+		case PlatformerCollisionMapping::CategoryGroupType::G_Force:
+		{
+			return true;
+		}
+		case PlatformerCollisionMapping::CategoryGroupType::G_Enemy:
+		case PlatformerCollisionMapping::CategoryGroupType::G_EnemyFlying:
+		{
+			// TODO: Damage
+			return false;
+		}
+		case PlatformerCollisionMapping::CategoryGroupType::G_SolidNpc:
+		case PlatformerCollisionMapping::CategoryGroupType::G_SolidFlyingNpc:
+		{
+			return false;
+		}
+		default:
+		{
+			return true;
+		}
+	}
 }
 
 bool Squally::contactEnd(CollisionData data)
 {
 	switch (data.other->getCategoryGroup())
 	{
-	case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
-		this->isOnGround = false;
-		return true;
-	case PlatformerCollisionMapping::CategoryGroupType::G_Force:
-		return true;
-	case PlatformerCollisionMapping::CategoryGroupType::G_Enemy:
-	case PlatformerCollisionMapping::CategoryGroupType::G_EnemyFlying:
-		return false;
-	case PlatformerCollisionMapping::CategoryGroupType::G_SolidNpc:
-	case PlatformerCollisionMapping::CategoryGroupType::G_SolidFlyingNpc:
-		return false;
-	default:
-		break;
+		case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
+		{
+			this->isOnGround = false;
+			return true;
+		}
+		case PlatformerCollisionMapping::CategoryGroupType::G_Force:
+		{
+			return true;
+		}
+		case PlatformerCollisionMapping::CategoryGroupType::G_Enemy:
+		case PlatformerCollisionMapping::CategoryGroupType::G_EnemyFlying:
+		{
+			return false;
+		}
+		case PlatformerCollisionMapping::CategoryGroupType::G_SolidNpc:
+		case PlatformerCollisionMapping::CategoryGroupType::G_SolidFlyingNpc:
+		{
+			return false;
+		}
+		default:
+		{
+			return true;
+		}
 	}
-
-	return true;
 }
 
 Size Squally::getSize()

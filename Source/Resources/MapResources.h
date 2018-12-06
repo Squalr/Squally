@@ -9,11 +9,10 @@ namespace MapResources
 	extern const std::string AquaticRuins_AquaticRuins;
 	extern const std::string Castle_Castle;
 	extern const std::string Caverns_Caverns;
+	extern const std::string Forest_Battlegrounds;
 	extern const std::string Forest_Forest;
 	extern const std::string IceCaps_IceCaps;
-	extern const std::string Jungle_Battlegrounds;
 	extern const std::string Jungle_Jungle;
-	extern const std::string Jungle_TestingGrounds;
 	extern const std::string Mech_Mech;
 	extern const std::string Obelisk_Obelisk;
 	extern const std::string TileMap;
