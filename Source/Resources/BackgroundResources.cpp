@@ -7,6 +7,7 @@
 
 const std::string BackgroundResources::Bliss = "Platformer/Backgrounds/Bliss.png";
 const std::string BackgroundResources::Dawn = "Platformer/Backgrounds/Dawn.png";
+const std::string BackgroundResources::Laboratory = "Platformer/Backgrounds/Laboratory.png";
 const std::string BackgroundResources::MatrixRain_Cloud = "Platformer/Backgrounds/MatrixRain/Cloud.bmp";
 const std::string BackgroundResources::MatrixRain_FontChar0 = "Platformer/Backgrounds/MatrixRain/FontChar0.png";
 const std::string BackgroundResources::MatrixRain_GreenFontsAlpha = "Platformer/Backgrounds/MatrixRain/GreenFontsAlpha.png";

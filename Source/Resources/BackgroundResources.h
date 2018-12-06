@@ -8,6 +8,7 @@ namespace BackgroundResources
 {
 	extern const std::string Bliss;
 	extern const std::string Dawn;
+	extern const std::string Laboratory;
 	extern const std::string MatrixRain_Cloud;
 	extern const std::string MatrixRain_FontChar0;
 	extern const std::string MatrixRain_GreenFontsAlpha;
