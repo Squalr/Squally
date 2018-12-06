@@ -178,6 +178,7 @@
  </objectgroup>
  <objectgroup name="objects">
   <properties>
+   <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="185" name="plushie_monkey" type="object" x="3397.15" y="2524.43" width="196" height="196" rotation="10">
@@ -188,6 +189,7 @@
  </objectgroup>
  <objectgroup name="entities">
   <properties>
+   <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="180" name="knight" type="entity" x="2390.06" y="2166.73" width="200" height="288"/>

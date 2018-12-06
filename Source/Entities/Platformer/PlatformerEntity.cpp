@@ -11,7 +11,7 @@ PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlRes
 {
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
-	this->actualMaxFallSpeed = 600.0f;
+	this->actualMaxFallSpeed = 1280.0f;
 	this->moveAcceleration = 14000.0f;
 
 	this->animationNode = SmartAnimationNode::create(scmlResource);

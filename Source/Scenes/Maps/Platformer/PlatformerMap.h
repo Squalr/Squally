@@ -3,7 +3,6 @@
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Maps/SerializableMap.h"
-#include "Engine/Shaders/PostProcess.h"
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/UI/HUD/DeveloperHud.h"
@@ -45,7 +44,6 @@ private:
 	void toggleDeveloperMode();
 	void onMouseWheelScroll(EventMouse* event);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	void draw(Renderer *renderer, const Mat4 &transform, uint32_t flags) override;
 	virtual void resume(void) override;
 	void update(float) override;
 	void onEnter() override;
@@ -59,9 +57,6 @@ private:
 	SerializableMap* map;
 	Sprite* hackerModeBackground;
 	MatrixRain * hackerModeRain;
-	PostProcess* hackerModePostProcessGlow;
-	PostProcess* gamePostProcessInversion;
-	PostProcess* gamePostProcessNightVision;
 
 	Node* mouseLayer;
 	Hud* hud;
