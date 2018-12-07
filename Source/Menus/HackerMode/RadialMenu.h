@@ -3,8 +3,8 @@
 
 #include "Engine/Events/MouseEvents.h"
 #include "Engine/Hackables/HackableObject.h"
-#include "Engine/SmartNode.h"
 #include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Shaders/PostProcess.h"
 #include "Events/HackableEvents.h"
@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-class RadialMenu : public SmartNode
+class RadialMenu : public Hud
 {
 public:
 	static RadialMenu * create(std::function<void()> onCloseCallback);

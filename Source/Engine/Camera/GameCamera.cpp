@@ -2,24 +2,24 @@
 
 GameCamera* GameCamera::cameraInstance = nullptr;
 
-GameCamera* GameCamera::create()
+void GameCamera::registerGlobalNode()
 {
-	GameCamera* instance = new GameCamera();
-
-	GameCamera::cameraInstance = instance;
-	instance->autorelease();
-
-	return instance;
+	GlobalDirector::getInstance()->registerGlobalNode(GameCamera::getInstance());
 }
 
 GameCamera* GameCamera::getInstance()
 {
+	if (GameCamera::cameraInstance == nullptr)
+	{
+		GameCamera::cameraInstance = new GameCamera();
+	}
+
 	return GameCamera::cameraInstance;
 }
 
 GameCamera::GameCamera()
 {
-	this->targetStack = new std::stack<Node*>();
+	this->targetStack = std::stack<Node*>();
 	this->cameraScrollOffset = Vec2::ZERO;
 	this->cameraBounds = Rect::ZERO;
 
@@ -28,7 +28,6 @@ GameCamera::GameCamera()
 
 GameCamera::~GameCamera()
 {
-	delete(this->targetStack);
 }
 
 void GameCamera::onEnter()
@@ -40,9 +39,9 @@ void GameCamera::onEnter()
 
 void GameCamera::update(float dt)
 {
-	if (this->targetStack->size() > 0)
+	if (this->targetStack.size() > 0)
 	{
-		Vec2 targetPosition = this->targetStack->top()->getPosition();
+		Vec2 targetPosition = this->targetStack.top()->getPosition();
 		Size visibleSize = Director::getInstance()->getVisibleSize();
 
 		// Handle camera scrolling from target traveling past scroll distance
@@ -198,18 +197,18 @@ void GameCamera::setTarget(Node* newTarget, Vec2 trackOffset)
 
 void GameCamera::pushTarget(Node* newTarget)
 {
-	this->targetStack->push(newTarget);
+	this->targetStack.push(newTarget);
 }
 
 void GameCamera::popTarget()
 {
-	this->targetStack->pop();
+	this->targetStack.pop();
 }
 
 void GameCamera::clearTargets()
 {
-	while(!this->targetStack->empty())
+	while(!this->targetStack.empty())
 	{
-		this->targetStack->pop();
+		this->targetStack.pop();
 	}
 }

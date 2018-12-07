@@ -6,7 +6,7 @@ const std::string NavigationEvents::gameNavigateConfirmEvent = "game_navigate_co
 const std::string NavigationEvents::gameNavigateLoadCutsceneEvent = "game_navigate_load_cutscene_event";
 const std::string NavigationEvents::gameNavigateLoadLevelEvent = "game_navigate_load_level_event";
 const std::string NavigationEvents::gameNavigateEnterLevelEvent = "game_navigate_enter_level_event";
-const std::string NavigationEvents::gameNavigateFightEvent = "game_navigate_fight_event";
+const std::string NavigationEvents::gameNavigateEnterCombatEvent = "game_navigate_enter_combat_event";
 
 void NavigationEvents::navigateBack(int count)
 {
@@ -68,12 +68,12 @@ void NavigationEvents::enterLevel(SerializableMap* levelMap)
 	);
 }
 
-void NavigationEvents::loadFight(Squally* squally, PlatformerEnemy* enemy)
+void NavigationEvents::enterCombat(std::string levelFile, Squally* squally, PlatformerEnemy* enemy)
 {
-	NavigateFightArgs args = NavigateFightArgs(squally, enemy);
+	NavigateFightArgs args = NavigateFightArgs(levelFile, squally, enemy);
 
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::gameNavigateFightEvent,
+		NavigationEvents::gameNavigateEnterCombatEvent,
 		&args
 	);
 }

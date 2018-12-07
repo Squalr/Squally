@@ -9,6 +9,11 @@ using namespace cocos2d;
 // Base class for enemies
 class PlatformerEnemy : public PlatformerEntity
 {
+public:
+	std::string getBattleMapResource();
+
+	static const std::string MapKeyBattleMap;
+
 protected:
 	PlatformerEnemy(ValueMap* initProperties,
 		std::string scmlResource,
@@ -18,4 +23,6 @@ protected:
 		Vec2 collisionOffset = Vec2(0.0f, 0.0f));
 
 	~PlatformerEnemy();
+
+	std::string battleMapResource;
 };

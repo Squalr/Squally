@@ -28,16 +28,14 @@ PlatformerMap::PlatformerMap()
 	this->hud = Hud::create();
 	this->developerHud = DeveloperHud::create();
 	this->hackerModeHud = HackerModeHud::create(CC_CALLBACK_0(PlatformerMap::toggleHackerMode, this));
-	this->camera = GameCamera::create();
 	this->mapNode = Node::create();
 	this->mouseLayer = Node::create();
 	this->pauseMenu = PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
-	this->menuBackDrop = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
+	this->menuBackDrop = Hud::create();
 
-	this->camera->setScrollOffset(Vec2(64.0f, 32.0f));
-	this->camera->setFollowSpeed(Vec2(0.075f, 0.075f));
+	this->menuBackDrop->addChild(LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height));
 
 	this->hackerModeBackground->setAnchorPoint(Vec2(0.0f, 0.0f));
 
@@ -58,7 +56,6 @@ PlatformerMap::PlatformerMap()
 	this->addChild(this->confirmationMenu);
 	this->mouseLayer->addChild(Mouse::create());
 	this->addChild(this->mouseLayer);
-	this->addChild(this->camera);
 }
 
 PlatformerMap::~PlatformerMap()
@@ -73,6 +70,9 @@ void PlatformerMap::onEnter()
 	this->pauseMenu->setVisible(false);
 	this->optionsMenu->setVisible(false);
 	this->confirmationMenu->setVisible(false);
+
+	GameCamera::getInstance()->setScrollOffset(Vec2(64.0f, 32.0f));
+	GameCamera::getInstance()->setFollowSpeed(Vec2(0.075f, 0.075f));
 
 	this->scheduleUpdate();
 }
@@ -110,8 +110,8 @@ void PlatformerMap::loadMap(SerializableMap* serializableMap)
 
 	this->developerHud->loadMap(serializableMap);
 
-	this->camera->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
-	this->camera->setTarget(Squally::getInstance(), Vec2(0.0f, 128.0f));
+	GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
+	GameCamera::getInstance()->setTarget(Squally::getInstance(), Vec2(0.0f, 128.0f));
 }
 
 void PlatformerMap::resume(void)
@@ -134,7 +134,7 @@ void PlatformerMap::onMouseWheelScroll(EventMouse* event)
 	if (this->developerMode)
 	{
 		float delta = event->getScrollY() * 64.0f;
-		this->camera->setCameraDistance(this->camera->getCameraDistance() + delta);
+		GameCamera::getInstance()->setCameraDistance(GameCamera::getInstance()->getCameraDistance() + delta);
 	}
 }
 

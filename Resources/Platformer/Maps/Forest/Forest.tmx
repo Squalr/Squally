@@ -192,7 +192,11 @@
   </properties>
   <object id="180" name="knight" type="entity" x="2390.06" y="2166.73" width="200" height="288"/>
   <object id="366" name="squally" type="entity" x="4655.15" y="2496.24" width="78.7879" height="88"/>
-  <object id="438" name="ogre" type="entity" x="5496.61" y="2556" width="78.7879" height="88"/>
+  <object id="438" name="ogre" type="entity" x="5513.94" y="2542.67" width="78.7879" height="88">
+   <properties>
+    <property name="battle_map" value="Forest/Battlegrounds"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="fireflies">
   <properties>

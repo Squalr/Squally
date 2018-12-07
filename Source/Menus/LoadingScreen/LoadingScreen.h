@@ -9,8 +9,8 @@
 #include "Events/NavigationEvents.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Physics/CollisionDeserializer.h"
-#include "Engine/SmartNode.h"
 #include "Engine/UI/Controls/CProgressBar.h"
+#include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Resources/UIResources.h"
 #include "Sound/MusicDeserializer.h"
@@ -18,10 +18,10 @@
 using namespace cocos2d;
 using namespace cocos_experimental;
 
-class LoadingScreen : public SmartNode
+class LoadingScreen : public Hud
 {
 public:
-	static LoadingScreen * create();
+	static LoadingScreen* create();
 
 	void loadLevel(std::string levelFile, const std::function<void(SerializableMap*)> newOnLoadCallback);
 

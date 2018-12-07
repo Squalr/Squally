@@ -4,7 +4,6 @@
 
 #include "Engine/Localization/Localization.h"
 #include "Engine/Hackables/HackableObject.h"
-#include "Engine/SmartNode.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Engine/UI/Controls/EditableTextWindow.h"
@@ -13,13 +12,14 @@
 #include "Engine/UI/Controls/MouseOverPanel.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/Controls/TextWindow.h"
+#include "Engine/UI/HUD/Hud.h"
 #include "Engine/Shaders/PostProcess.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
-class CodeEditor : public SmartNode
+class CodeEditor : public Hud
 {
 public:
 	static CodeEditor * create();

@@ -469,7 +469,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Cutscenes/Objects/GridObject.cpp
 	Source/Scenes/Cutscenes/Objects/Smoke.cpp
 	Source/Scenes/Cutscenes/Objects/StarLayer.cpp
-	Source/Scenes/Fights/Fight.cpp
 	Source/Scenes/Hexus/Card.cpp
 	Source/Scenes/Hexus/CardData/Binary/CardBinary0.cpp
 	Source/Scenes/Hexus/CardData/Binary/CardBinary1.cpp
@@ -813,6 +812,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixLetter.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixRain.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixStrand.cpp
+	Source/Scenes/Maps/Platformer/CombatMap.cpp
 	Source/Scenes/Maps/Platformer/PlatformerMap.cpp
 	Source/Scenes/Maps/Platformer/Terrain/CastleTerrainDeserializer.cpp
 	Source/Scenes/Maps/Platformer/Weather/Fireflies.cpp
@@ -1247,7 +1247,6 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Cutscenes/Objects/GridObject.h
 	Source/Scenes/Cutscenes/Objects/Smoke.h
 	Source/Scenes/Cutscenes/Objects/StarLayer.h
-	Source/Scenes/Fights/Fight.h
 	Source/Scenes/Hexus/Card.h
 	Source/Scenes/Hexus/CardData/Binary/CardBinary0.h
 	Source/Scenes/Hexus/CardData/Binary/CardBinary1.h
@@ -1605,6 +1604,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixLetter.h
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixRain.h
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixStrand.h
+	Source/Scenes/Maps/Platformer/CombatMap.h
 	Source/Scenes/Maps/Platformer/PlatformerMap.h
 	Source/Scenes/Maps/Platformer/Terrain/CastleTerrainDeserializer.h
 	Source/Scenes/Maps/Platformer/Weather/Fireflies.h

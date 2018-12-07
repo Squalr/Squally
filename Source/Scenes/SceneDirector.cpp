@@ -40,7 +40,7 @@ SceneDirector::SceneDirector()
 	this->innerLoadingScreen = LoadingScreen::create();
 	this->loadingScreen = TakeOverMenu::create(this->innerLoadingScreen);
 	this->map = nullptr;
-	this->fight = Fight::create();
+	this->combatMap = CombatMap::create();
 	this->innerOptionsMenu = OptionsMenu::create();
 	this->optionsMenu = TakeOverMenu::create(this->innerOptionsMenu);
 	this->pauseMenu = TakeOverMenu::create(PauseMenu::create());
@@ -73,7 +73,7 @@ SceneDirector::SceneDirector()
 	this->worldMap->retain();
 	this->loadingScreen->retain();
 	// this->map->retain(); // Initially nullptr -- do not retain
-	this->fight->retain();
+	this->combatMap->retain();
 	this->optionsMenu->retain();
 	this->pauseMenu->retain();
 	this->confirmationMenu->retain();
@@ -117,8 +117,8 @@ void SceneDirector::initializeListeners()
 	);
 
 	EventListenerCustom* navigateFightEventListener = EventListenerCustom::create(
-		NavigationEvents::gameNavigateFightEvent,
-		CC_CALLBACK_1(SceneDirector::onGameNavigateFight, this)
+		NavigationEvents::gameNavigateEnterCombatEvent,
+		CC_CALLBACK_1(SceneDirector::onGameNavigateEnterCombat, this)
 	);
 
 	EventListenerCustom* navigateConfirmEventListener = EventListenerCustom::create(
@@ -368,11 +368,11 @@ void SceneDirector::onGameNavigateEnterLevel(EventCustom* eventCustom)
 	GlobalDirector::getInstance()->loadScene(this->map);
 }
 
-void SceneDirector::onGameNavigateFight(EventCustom* eventCustom)
+void SceneDirector::onGameNavigateEnterCombat(EventCustom* eventCustom)
 {
 	NavigationEvents::NavigateFightArgs* args = (NavigationEvents::NavigateFightArgs*)(eventCustom->getUserData());
 
 	this->sceneHistory->push(Director::getInstance()->getRunningScene());
-	this->fight->loadFight(args->squally, args->enemy);
-	GlobalDirector::getInstance()->loadScene(this->fight);
+	this->combatMap->loadMap(SerializableMap::deserialize(args->levelFile));
+	GlobalDirector::getInstance()->loadScene(this->combatMap);
 }

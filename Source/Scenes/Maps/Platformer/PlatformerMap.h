@@ -63,12 +63,10 @@ private:
 	DeveloperHud* developerHud;
 	HackerModeHud* hackerModeHud;
 
-	LayerColor* menuBackDrop;
+	Hud* menuBackDrop;
 	PauseMenu* pauseMenu;
 	OptionsMenu* optionsMenu;
 	ConfirmationMenu* confirmationMenu;
-
-	GameCamera* camera;
 
 	static bool hackerMode;
 	static bool developerMode;

@@ -120,7 +120,7 @@ SaveSelectMenu::~SaveSelectMenu()
 
 void SaveSelectMenu::onEnter()
 {
-	SmartNode::onEnter();
+	Hud::onEnter();
 
 	const float delay = 0.5f;
 	const float duration = 0.75f;
@@ -134,7 +134,7 @@ void SaveSelectMenu::onEnter()
 
 void SaveSelectMenu::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	Hud::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -148,7 +148,7 @@ void SaveSelectMenu::initializeListeners()
 
 void SaveSelectMenu::initializePositions()
 {
-	SmartNode::initializePositions();
+	Hud::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

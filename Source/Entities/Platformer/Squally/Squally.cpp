@@ -167,11 +167,11 @@ bool Squally::contactBegin(CollisionData data)
 		case PlatformerCollisionMapping::CategoryGroupType::G_Enemy:
 		case PlatformerCollisionMapping::CategoryGroupType::G_EnemyFlying:
 		{
-			PlatformerEnemy * enemy = dynamic_cast<PlatformerEnemy*>(data.other);
+			PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(data.other);
 
 			if (enemy != nullptr)
 			{
-				NavigationEvents::loadFight(this, enemy);
+				NavigationEvents::enterCombat(enemy->getBattleMapResource(), this, enemy);
 			}
 
 			return false;

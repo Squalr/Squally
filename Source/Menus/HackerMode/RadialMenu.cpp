@@ -106,7 +106,7 @@ void RadialMenu::onHackableAttributeClick(MenuSprite* menuSprite)
 
 void RadialMenu::initializePositions()
 {
-	SmartNode::initializePositions();
+	Hud::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -115,7 +115,7 @@ void RadialMenu::initializePositions()
 
 void RadialMenu::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	Hud::initializeListeners();
 
 	EventListenerCustom* hackableEditListener = EventListenerCustom::create(HackableEvents::HackableObjectEditEvent, CC_CALLBACK_1(RadialMenu::onHackableEdit, this));
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
