@@ -163,7 +163,7 @@ void PauseMenu::setExitCallback(std::function<void()> exitClickCallback)
 
 void PauseMenu::onExitConfirm()
 {
-	NavigationEvents::navigate(NavigationEvents::Title);
+	NavigationEvents::navigateTitle();
 }
 
 void PauseMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)

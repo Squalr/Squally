@@ -135,16 +135,16 @@ void HexusChapterSelectMenu::initializeListeners()
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusChapterSelectMenu::onKeyPressed, this);
-	this->hexusChapterPreviewTraining->setClickCallback([]() { NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Training); } );
-	this->hexusChapterPreviewJungle->setClickCallback([]() { NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Jungle); } );
-	this->hexusChapterPreviewRuins->setClickCallback([]() { NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Ruins); } );
-	this->hexusChapterPreviewForest->setClickCallback([]() { NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Forest); } );
-	this->hexusChapterPreviewCaverns->setClickCallback([]() { NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Caverns); } );
-	this->hexusChapterPreviewCastle->setClickCallback([]() { NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Castle); } );
-	this->hexusChapterPreviewIceCaps->setClickCallback([]() { NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Chapter_IceCaps); } );
-	this->hexusChapterPreviewVolcano->setClickCallback([]() { NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Volcano); } );
-	this->hexusChapterPreviewObelisk->setClickCallback([]() { NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Obelisk); } );
-	this->hexusChapterPreviewMech->setClickCallback([]() { NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Chapter_Mech); } );
+	this->hexusChapterPreviewTraining->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Training)); } );
+	this->hexusChapterPreviewJungle->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Jungle)); } );
+	this->hexusChapterPreviewRuins->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Ruins)); } );
+	this->hexusChapterPreviewForest->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Forest)); } );
+	this->hexusChapterPreviewCaverns->setClickCallback([]() {NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Caverns)); } );
+	this->hexusChapterPreviewCastle->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle)); } );
+	this->hexusChapterPreviewIceCaps->setClickCallback([]() {NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::IceCaps)); } );
+	this->hexusChapterPreviewVolcano->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Volcano)); } );
+	this->hexusChapterPreviewObelisk->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Void)); } );
+	this->hexusChapterPreviewMech->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Mech)); } );
 	this->deckManagementButton->setClickCallback(CC_CALLBACK_1(HexusChapterSelectMenu::onDeckManagementClick, this));
 	this->shopButton->setClickCallback(CC_CALLBACK_1(HexusChapterSelectMenu::onShopClick, this));
 	this->backButton->setClickCallback(CC_CALLBACK_1(HexusChapterSelectMenu::onBackClick, this));
@@ -238,10 +238,10 @@ void HexusChapterSelectMenu::onBackClick(MenuSprite* menuSprite)
 
 void HexusChapterSelectMenu::onDeckManagementClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Deck_Management);
+	NavigationEvents::navigateHexusDeckManagement();
 }
 
 void HexusChapterSelectMenu::onShopClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Store);
+	NavigationEvents::navigateHexusShop();
 }

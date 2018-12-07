@@ -61,7 +61,7 @@ IsometricMap::~IsometricMap()
 
 void IsometricMap::onEnter()
 {
-	FadeScene::onEnter();
+	IMap::onEnter();
 
 	GameCamera::getInstance()->setScrollOffset(Vec2(64.0f, 32.0f));
 	GameCamera::getInstance()->setFollowSpeed(Vec2(0.075f, 0.075f));
@@ -136,7 +136,6 @@ void IsometricMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
 		{
-			NavigationEvents::navigate(NavigationEvents::GameScreen::Pause);
 			event->stopPropagation();
 			break;
 		}

@@ -213,12 +213,12 @@ void MinigamesMenu::onBackClick(MenuSprite* menuSprite)
 
 void MinigamesMenu::onHexusClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus);
+	NavigationEvents::navigateHexus();
 }
 
 void MinigamesMenu::onHexusPuzzlesClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Puzzles);
+	NavigationEvents::navigateHexusPuzzles();
 }
 
 TextMenuSprite* MinigamesMenu::createComingSoonButton()

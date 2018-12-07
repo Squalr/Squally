@@ -14,6 +14,7 @@ public:
 	static GlobalDirector* getInstance();
 
 	static void loadScene(Scene* scene);
+	static void navigateBack(int backCount = 1);
 	static void registerGlobalNode(GlobalNode* node);
 	static void registerGlobalScene(GlobalScene* node);
 
@@ -22,6 +23,7 @@ protected:
 	~GlobalDirector();
 
 	Scene* activeScene;
+	std::stack<Scene*> sceneHistory;
 	std::vector<GlobalNode*> globalNodes;
 	std::vector<GlobalScene*> globalScenes;
 

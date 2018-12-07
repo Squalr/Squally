@@ -65,5 +65,5 @@ void MapNode::initializeListeners()
 
 void MapNode::onNodeClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::loadMap(this->nodeMapFile);
+	NavigationEvents::navigateLoadingScreen(NavigationEvents::NavigateLoadingScreenArgs(this->nodeMapFile));
 }

@@ -5,7 +5,6 @@ void Bootstrapper::initialize()
 	EngineBootstrapper::initialize();
 
 	// Register scenes
-	SceneDirector::registerGlobalNode();
 	TitleScreen::registerGlobalScene();
 	WorldMap::registerGlobalScene();
 

@@ -115,7 +115,7 @@ void HexusRewardsMenu::onRewardsOpen(EventCustom* eventCustom)
 
 	}, interval, ticks, delay, HexusRewardsMenu::KeyScheduleHexusGoldTick);
 
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Rewards);
+	NavigationEvents::navigateHexusRewards();
 }
 
 void HexusRewardsMenu::onReturnClick(MenuSprite* menuSprite, bool backToChapterSelect)

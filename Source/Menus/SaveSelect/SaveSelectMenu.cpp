@@ -181,15 +181,15 @@ void SaveSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 void SaveSelectMenu::onSaveGame1Click(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::StoryMap);
+	NavigationEvents::navigateWorldMap();
 }
 
 void SaveSelectMenu::onSaveGame2Click(MenuSprite* menuSprite)
 {
-	NavigationEvents::loadCutscene(IntroCutscene::create([=]() { NavigationEvents::navigate(NavigationEvents::GameScreen::StoryMap); }));
+	NavigationEvents::navigateCutscene(NavigationEvents::NavigateCutsceneArgs(IntroCutscene::create([=]() { NavigationEvents::navigateWorldMap(); })));
 }
 
 void SaveSelectMenu::onSaveGame3Click(MenuSprite* menuSprite)
 {
-	NavigationEvents::loadCutscene(IntroCutscene::create([=]() { NavigationEvents::navigate(NavigationEvents::GameScreen::StoryMap); }));
+	NavigationEvents::navigateCutscene(NavigationEvents::NavigateCutsceneArgs(IntroCutscene::create([=]() { NavigationEvents::navigateWorldMap(); })));
 }
