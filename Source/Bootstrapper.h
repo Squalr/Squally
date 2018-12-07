@@ -24,6 +24,8 @@
 #include "Entities/Platformer/Npcs/Volcano/VolcanoNpcDeserializer.h"
 #include "Entities/Platformer/PlatformerCollisionMapping.h"
 #include "Entities/Platformer/SquallyDeserializer.h"
+#include "Menus/Title/TitleScreen.h"
+#include "Menus/WorldMap/WorldMap.h"
 #include "Objects/Isometric/IsometricDecorDeserializer.h"
 #include "Objects/Isometric/IsometricObjectDeserializer.h"
 #include "Objects/Platformer/PlatformerDecorDeserializer.h"

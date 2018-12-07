@@ -2,11 +2,12 @@
 #include "cocos2d.h"
 
 #include "Engine/Cutscenes/CutsceneClip.h"
-#include "Engine/UI/FadeScene.h"
+#include "Engine/SmartScene.h"
 #include "Engine/Utils/GameUtils.h"
+
 using namespace cocos2d;
 
-class Cutscene : public FadeScene
+class Cutscene : public SmartScene
 {
 public:
 	static Cutscene* create(std::function<void()> cutsceneCompleteCallback);

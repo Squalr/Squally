@@ -1,12 +1,12 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/UI/FadeScene.h"
+#include "Engine/SmartScene.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
 
-class CutsceneClip : public FadeScene
+class CutsceneClip : public SmartScene
 {
 public:
 	void setCutsceneClipCompleteCallback(std::function<void()> callback);

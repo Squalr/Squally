@@ -26,17 +26,17 @@ TakeOverMenu::~TakeOverMenu()
 
 void TakeOverMenu::onEnter()
 {
-	FadeScene::onEnter();
+	SmartScene::onEnter();
 
 	this->background->addChild(MenuBackground::claimInstance());
 }
 
 void TakeOverMenu::initializePositions()
 {
-	FadeScene::initializePositions();
+	SmartScene::initializePositions();
 }
 
 void TakeOverMenu::initializeListeners()
 {
-	FadeScene::initializeListeners();
+	SmartScene::initializeListeners();
 }

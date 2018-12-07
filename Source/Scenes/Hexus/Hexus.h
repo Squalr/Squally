@@ -3,8 +3,8 @@
 
 #include "Events/NavigationEvents.h"
 #include "Events/HexusEvents.h"
+#include "Engine/SmartScene.h"
 #include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/FadeScene.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Options/OptionsMenu.h"
@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-class Hexus : public FadeScene
+class Hexus : public SmartScene
 {
 public:
 	static Hexus * create();

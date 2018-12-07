@@ -4,8 +4,10 @@ void Bootstrapper::initialize()
 {
 	EngineBootstrapper::initialize();
 
+	// Register scenes
 	SceneDirector::registerGlobalNode();
-	PlatformerCollisionMapping::registerGlobalNode();
+	TitleScreen::registerGlobalScene();
+	WorldMap::registerGlobalScene();
 
 	// Entity deserializers
 	SquallyDeserializer::registerGlobalNode();
@@ -43,8 +45,8 @@ void Bootstrapper::initialize()
 	WeatherDeserializer::registerGlobalNode();
 
 	CastleTerrainDeserializer::registerGlobalNode();
-
 	MusicDeserializer::registerGlobalNode();
+	PlatformerCollisionMapping::registerGlobalNode();
 }
 
 void Bootstrapper::shutDown()

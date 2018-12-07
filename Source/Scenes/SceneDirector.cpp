@@ -17,7 +17,7 @@ void SceneDirector::registerGlobalNode()
 
 SceneDirector::SceneDirector()
 {
-	this->sceneHistory = new std::stack<Scene*>();
+	this->sceneHistory = std::stack<Scene*>();
 	this->titleScreen = TitleScreen::create();
 	this->saveSelectMenu = TakeOverMenu::create(SaveSelectMenu::create());
 	this->minigamesMenu = TakeOverMenu::create(MinigamesMenu::create());
@@ -82,7 +82,6 @@ SceneDirector::SceneDirector()
 
 SceneDirector::~SceneDirector()
 {
-	delete(this->sceneHistory);
 }
 
 void SceneDirector::initializeListeners()
@@ -285,7 +284,7 @@ void SceneDirector::onGameNavigateNew(EventCustom* eventCustom)
 		}
 	}
 
-	this->sceneHistory->push(Director::getInstance()->getRunningScene());
+	this->sceneHistory.push(Director::getInstance()->getRunningScene());
 	GlobalDirector::getInstance()->loadScene(newScene);
 }
 
@@ -297,13 +296,13 @@ void SceneDirector::onGameNavigateBack(EventCustom* eventCustom)
 
 	for (int index = 0; index < args->backCount; index++)
 	{
-		if (this->sceneHistory->size() <= 0)
+		if (this->sceneHistory.size() <= 0)
 		{
 			break;
 		}
 
-		scene = this->sceneHistory->top();
-		this->sceneHistory->pop();
+		scene = this->sceneHistory.top();
+		this->sceneHistory.pop();
 	}
 
 	GlobalDirector::getInstance()->loadScene(scene);
@@ -313,7 +312,7 @@ void SceneDirector::onGameNavigateConfirm(EventCustom* eventCustom)
 {
 	NavigationEvents::NavigateConfirmArgs* args = (NavigationEvents::NavigateConfirmArgs*)(eventCustom->getUserData());
 
-	this->sceneHistory->push(Director::getInstance()->getRunningScene());
+	this->sceneHistory.push(Director::getInstance()->getRunningScene());
 	this->innerConfirmationMenu->initialize(args->message, args->confirmCallback, args->cancelCallback);
 	GlobalDirector::getInstance()->loadScene(this->confirmationMenu);
 }
@@ -333,7 +332,7 @@ void SceneDirector::onGameNavigateLoadLevel(EventCustom* eventCustom)
 {
 	NavigationEvents::NavigateLoadLevelArgs* args = (NavigationEvents::NavigateLoadLevelArgs*)(eventCustom->getUserData());
 
-	this->sceneHistory->push(Director::getInstance()->getRunningScene());
+	this->sceneHistory.push(Director::getInstance()->getRunningScene());
 	GlobalDirector::getInstance()->loadScene(this->loadingScreen);
 	this->innerLoadingScreen->loadLevel(args->levelFile, [](SerializableMap* levelMap){ NavigationEvents::enterLevel(levelMap); });
 }
@@ -342,7 +341,7 @@ void SceneDirector::onGameNavigateEnterLevel(EventCustom* eventCustom)
 {
 	NavigationEvents::NavigateEnterLevelArgs* args = (NavigationEvents::NavigateEnterLevelArgs*)(eventCustom->getUserData());
 
-	this->sceneHistory->push(Director::getInstance()->getRunningScene());
+	this->sceneHistory.push(Director::getInstance()->getRunningScene());
 
 	// Destroy the current level object explicitly and re-create it
 	if (this->map != nullptr)
@@ -372,7 +371,7 @@ void SceneDirector::onGameNavigateEnterCombat(EventCustom* eventCustom)
 {
 	NavigationEvents::NavigateFightArgs* args = (NavigationEvents::NavigateFightArgs*)(eventCustom->getUserData());
 
-	this->sceneHistory->push(Director::getInstance()->getRunningScene());
+	this->sceneHistory.push(Director::getInstance()->getRunningScene());
 	this->combatMap->loadMap(SerializableMap::deserialize(args->levelFile));
 	GlobalDirector::getInstance()->loadScene(this->combatMap);
 }

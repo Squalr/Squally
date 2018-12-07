@@ -2,12 +2,12 @@
 #include "cocos2d.h"
 
 #include "Events/NavigationEvents.h"
+#include "Engine/SmartScene.h"
 #include "Engine/UI/Controls/CCheckbox.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/Controls/ToggleGroup.h"
-#include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Minigames/Hexus/MenuCard.h"
@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-class HexusDeckManagement : public FadeScene
+class HexusDeckManagement : public SmartScene
 {
 public:
 	static HexusDeckManagement * create();

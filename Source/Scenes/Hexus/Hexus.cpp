@@ -166,7 +166,7 @@ Hexus::~Hexus()
 
 void Hexus::onEnter()
 {
-	FadeScene::onEnter();
+	SmartScene::onEnter();
 
 	SoundManager::playMusicResource(MusicResources::LastMarch);
 
@@ -180,7 +180,7 @@ void Hexus::onEnter()
 
 void Hexus::initializePositions()
 {
-	FadeScene::initializePositions();
+	SmartScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -189,7 +189,7 @@ void Hexus::initializePositions()
 
 void Hexus::initializeListeners()
 {
-	FadeScene::initializeListeners();
+	SmartScene::initializeListeners();
 	
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 

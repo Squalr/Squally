@@ -5,17 +5,17 @@
 #include "Events/NavigationEvents.h"
 #include "Engine/Analytics/Analytics.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/SmartScene.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
 
 using namespace cocos2d;
 
-class HexusOpponentMenuBase : public FadeScene
+class HexusOpponentMenuBase : public SmartScene
 {
 protected:
 	HexusOpponentMenuBase(std::string chapterProgressSaveKey);

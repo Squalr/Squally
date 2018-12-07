@@ -171,7 +171,7 @@ HexusDeckManagement::~HexusDeckManagement()
 
 void HexusDeckManagement::onEnter()
 {
-	FadeScene::onEnter();
+	SmartScene::onEnter();
 
 	float delay = 0.25f;
 	float duration = 0.35f;
@@ -185,12 +185,12 @@ void HexusDeckManagement::onExit()
 {
 	this->save(false);
 
-	FadeScene::onExit();
+	SmartScene::onExit();
 }
 
 void HexusDeckManagement::initializeListeners()
 {
-	FadeScene::initializeListeners();
+	SmartScene::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -214,7 +214,7 @@ void HexusDeckManagement::initializeListeners()
 
 void HexusDeckManagement::initializePositions()
 {
-	FadeScene::initializePositions();
+	SmartScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

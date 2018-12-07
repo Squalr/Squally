@@ -11,14 +11,23 @@ public:
 	SmartScene();
 	~SmartScene();
 
+	void setFadeSpeed(float newFadeSpeed);
+	float getFadeSpeed();
 	virtual void resume() override;
 
 protected:
+	virtual void pause() override;
 	virtual void onEnter() override;
 	virtual void initializePositions();
 	virtual void initializeListeners();
 	virtual void removeAllListeners();
 	void addEventListener(EventListener* listener);
 	void addEventListenerIgnorePause(EventListener* listener);
+
+	LayerColor* layerColor;
+	FiniteTimeAction* fadeAction;
+	float fadeSpeed;
+
+	static const float defaultFadeSpeed;
 };
 

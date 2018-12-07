@@ -99,7 +99,7 @@ HexusChapterSelectMenu::~HexusChapterSelectMenu()
 
 void HexusChapterSelectMenu::onEnter()
 {
-	FadeScene::onEnter();
+	SmartScene::onEnter();
 
 	float delay = 0.25f;
 	float duration = 0.35f;
@@ -130,7 +130,7 @@ void HexusChapterSelectMenu::onEnter()
 
 void HexusChapterSelectMenu::initializeListeners()
 {
-	FadeScene::initializeListeners();
+	SmartScene::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -154,7 +154,7 @@ void HexusChapterSelectMenu::initializeListeners()
 
 void HexusChapterSelectMenu::initializePositions()
 {
-	FadeScene::initializePositions();
+	SmartScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
