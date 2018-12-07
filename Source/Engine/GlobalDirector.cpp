@@ -31,6 +31,7 @@ void GlobalDirector::loadScene(Scene* scene)
 	// This will allows for the Global Director's nodes to listen for events
 	if (GlobalDirector::getInstance()->activeScene != nullptr)
 	{
+		GlobalDirector::getInstance()->sceneHistory.push(GlobalDirector::getInstance()->activeScene);
 		GlobalDirector::getInstance()->getParent()->removeChild(GlobalDirector::getInstance());
 	}
 
@@ -48,6 +49,24 @@ void GlobalDirector::loadScene(Scene* scene)
 
 	GlobalDirector::getInstance()->activeScene = scene;
 	GameUtils::resume(scene);
+}
+
+void GlobalDirector::navigateBack(int backCount)
+{
+	Scene* scene = GlobalDirector::getInstance()->activeScene;
+
+	for (int index = 0; index < backCount; index++)
+	{
+		if (GlobalDirector::getInstance()->sceneHistory.size() <= 0)
+		{
+			break;
+		}
+
+		scene = GlobalDirector::getInstance()->sceneHistory.top();
+		GlobalDirector::getInstance()->sceneHistory.pop();
+	}
+
+	GlobalDirector::getInstance()->loadScene(scene);
 }
 
 void GlobalDirector::registerGlobalNode(GlobalNode* node)

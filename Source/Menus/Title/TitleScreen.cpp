@@ -188,17 +188,17 @@ void TitleScreen::initializeListeners()
 
 void TitleScreen::onStoryModeClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::SaveSelect);
+	NavigationEvents::navigateSaveSelect();
 }
 
 void TitleScreen::onArcadeModeClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames);
+	NavigationEvents::navigateMinigames();
 }
 
 void TitleScreen::onOptionsClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Options);
+	NavigationEvents::navigateOptions();
 }
 
 void TitleScreen::onExitClick(MenuSprite* menuSprite)

@@ -819,7 +819,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Maps/Platformer/Weather/Rain.cpp
 	Source/Scenes/Maps/Platformer/Weather/Snow.cpp
 	Source/Scenes/Maps/Platformer/Weather/WeatherDeserializer.cpp
-	Source/Scenes/SceneDirector.cpp
 	Source/Sound/MusicDeserializer.cpp
 )
 
@@ -1611,7 +1610,6 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Maps/Platformer/Weather/Rain.h
 	Source/Scenes/Maps/Platformer/Weather/Snow.h
 	Source/Scenes/Maps/Platformer/Weather/WeatherDeserializer.h
-	Source/Scenes/SceneDirector.h
 	Source/Sound/MusicDeserializer.h
 )
 

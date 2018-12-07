@@ -233,7 +233,7 @@ void Hexus::onGameStart(EventCustom* eventCustom)
 	args->opponentData->getDeck()->copyTo(this->gameState->enemyDeck);
 	Deck::create(Card::CardStyle::Earth, CardStorage::getInstance()->getDeckCards())->copyTo(this->gameState->playerDeck);
 
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Hexus);
+	NavigationEvents::navigateHexus();
 }
 
 void Hexus::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -294,5 +294,5 @@ void Hexus::onExitClick()
 {
 	this->menuBackDrop->setOpacity(0);
 	this->pauseMenu->setVisible(false);
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Title);
+	NavigationEvents::navigateTitle();
 }

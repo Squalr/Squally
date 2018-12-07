@@ -253,5 +253,5 @@ void PlatformerMap::onExitClick()
 {
 	this->menuBackDrop->setOpacity(0);
 	this->pauseMenu->setVisible(false);
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Title);
+	NavigationEvents::navigateTitle();
 }
