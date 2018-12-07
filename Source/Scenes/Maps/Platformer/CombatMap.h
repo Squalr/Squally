@@ -4,30 +4,28 @@
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
-
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Maps/IMap.h"
 
 using namespace cocos2d;
 
-class Fight : public FadeScene
+class CombatMap : public IMap
 {
 public:
-	static Fight* create();
+	static CombatMap* create();
 
-	void loadFight(Squally* squally, PlatformerEnemy* enemy);
+	void loadMap(SerializableMap* serializableMap) override;
 
 protected:
-	Fight();
-	~Fight();
+	CombatMap();
+	~CombatMap();
 
 private:
 	void onEnter() override;
-	void update(float) override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	Layer * background;
-	Layer * entityLayer;
-	Layer * objectLayer;
+	Node* mapNode;
+	SerializableMap* map;
 };

@@ -148,7 +148,7 @@ CodeEditor::~CodeEditor()
 
 void CodeEditor::initializePositions()
 {
-	SmartNode::initializePositions();
+	Hud::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -165,7 +165,7 @@ void CodeEditor::initializePositions()
 
 void CodeEditor::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	Hud::initializeListeners();
 
 	this->acceptButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onAccept, this));
 	this->cancelButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onCancel, this));

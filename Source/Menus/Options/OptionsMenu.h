@@ -4,7 +4,6 @@
 
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/Localization/Localization.h"
-#include "Engine/SmartNode.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Events/NavigationEvents.h"
 #include "Engine/UI/Controls/CCheckbox.h"
@@ -13,11 +12,12 @@
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
 
 using namespace cocos2d;
 
-class OptionsMenu : public SmartNode
+class OptionsMenu : public Hud
 {
 public:
 	static OptionsMenu * create();

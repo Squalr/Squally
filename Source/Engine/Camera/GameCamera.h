@@ -3,15 +3,16 @@
 
 #include "cocos2d.h"
 
-#include "Engine/SmartNode.h"
+#include "Engine/GlobalDirector.h"
+#include "Engine/GlobalNode.h"
 #include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 
-class GameCamera : public SmartNode
+class GameCamera : public GlobalNode
 {
 public:
-	static GameCamera* create();
+	static void registerGlobalNode();
 	static GameCamera* getInstance();
 
 	float getCameraDistance();
@@ -38,7 +39,7 @@ private:
 	void onEnter() override;
 	void update(float dt) override;
 
-	std::stack<Node*>* targetStack;
+	std::stack<Node*> targetStack;
 	float defaultDistance;
 	Vec2 cameraPosition;
 	Rect cameraBounds;

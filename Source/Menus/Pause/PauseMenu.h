@@ -2,17 +2,17 @@
 #include "cocos2d.h"
 
 #include "Events/NavigationEvents.h"
-#include "Engine/SmartNode.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/FadeScene.h"
+#include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
 #include "Menus/MenuBackground.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-class PauseMenu : public SmartNode
+class PauseMenu : public Hud
 {
 public:
 	static PauseMenu * create();

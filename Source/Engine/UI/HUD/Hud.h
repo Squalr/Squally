@@ -2,8 +2,6 @@
 #include "cocos2d.h"
 
 #include "Engine/SmartNode.h"
-#include "Engine/Hackables/HackableObject.h"
-#include "Engine/UI/Mouse.h"
 
 using namespace cocos2d;
 

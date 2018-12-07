@@ -7,9 +7,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/HexusEvents.h"
 #include "Events/NavigationEvents.h"
-#include "Scenes/Maps/IMap.h"
-#include "Scenes/Maps/Isometric/IsometricMap.h"
-#include "Scenes/Maps/Platformer/PlatformerMap.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.h"
 #include "Menus/Minigames/Hexus/OpponentSelect/Castle/HexusOpponentMenuCastle.h"
@@ -34,8 +31,10 @@
 #include "Menus/TakeOverMenu.h"
 #include "Menus/Title/TitleScreen.h"
 #include "Menus/WorldMap/WorldMap.h"
-
-#include "Scenes/Fights/Fight.h"
+#include "Scenes/Maps/IMap.h"
+#include "Scenes/Maps/Isometric/IsometricMap.h"
+#include "Scenes/Maps/Platformer/CombatMap.h"
+#include "Scenes/Maps/Platformer/PlatformerMap.h"
 #include "Scenes/Hexus/Hexus.h"
 
 using namespace cocos2d;
@@ -56,7 +55,7 @@ private:
 	void onGameNavigateLoadCutscene(EventCustom* eventCustom);
 	void onGameNavigateLoadLevel(EventCustom* eventCustom);
 	void onGameNavigateEnterLevel(EventCustom* eventCustom);
-	void onGameNavigateFight(EventCustom* eventCustom);
+	void onGameNavigateEnterCombat(EventCustom* eventCustom);
 
 	TitleScreen* titleScreen;
 	TakeOverMenu* saveSelectMenu;
@@ -80,7 +79,7 @@ private:
 	LoadingScreen* innerLoadingScreen;
 	TakeOverMenu* loadingScreen;
 	IMap* map;
-	Fight* fight;
+	IMap* combatMap;
 	OptionsMenu* innerOptionsMenu;
 	TakeOverMenu* optionsMenu;
 	TakeOverMenu* pauseMenu;

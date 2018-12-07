@@ -25,12 +25,12 @@ LoadingScreen::~LoadingScreen()
 
 void LoadingScreen::onEnter()
 {
-	SmartNode::onEnter();
+	Hud::onEnter();
 }
 
 void LoadingScreen::initializePositions()
 {
-	SmartNode::initializePositions();
+	Hud::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

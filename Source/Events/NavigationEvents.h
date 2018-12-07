@@ -22,7 +22,7 @@ public:
 	static const std::string gameNavigateLoadCutsceneEvent;
 	static const std::string gameNavigateLoadLevelEvent;
 	static const std::string gameNavigateEnterLevelEvent;
-	static const std::string gameNavigateFightEvent;
+	static const std::string gameNavigateEnterCombatEvent;
 
 	enum GameScreen {
 		Title,
@@ -93,10 +93,11 @@ public:
 
 	struct NavigateFightArgs
 	{
+		std::string levelFile;
 		Squally* squally;
 		PlatformerEnemy* enemy;
 
-		NavigateFightArgs(Squally* squally, PlatformerEnemy* enemy) : squally(squally), enemy(enemy) { }
+		NavigateFightArgs(std::string levelFile, Squally* squally, PlatformerEnemy* enemy) : levelFile(levelFile), squally(squally), enemy(enemy) { }
 	};
 
 	struct NavigateConfirmArgs
@@ -115,5 +116,5 @@ public:
 	static void loadCutscene(Cutscene* cutscene);
 	static void loadMap(std::string levelFile);
 	static void enterLevel(SerializableMap* levelMap);
-	static void loadFight(Squally* squally, PlatformerEnemy* enemy);
+	static void enterCombat(std::string levelFile, Squally* squally, PlatformerEnemy* enemy);
 };

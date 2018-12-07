@@ -31,7 +31,7 @@ std::string HackerMode::getHackerModeAddressHex()
 
 void HackerMode::update(float dt)
 {
-	Node::update(dt);
+	SmartNode::update(dt);
 
 	if (HackerMode::hackerMode != 0)
 	{

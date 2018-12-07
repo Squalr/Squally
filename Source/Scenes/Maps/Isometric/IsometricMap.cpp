@@ -29,13 +29,9 @@ IsometricMap::IsometricMap()
 	this->hackerModeHud = HackerModeHud::create(CC_CALLBACK_0(IsometricMap::toggleHackerMode, this));
 	this->gamePostProcessInversion = PostProcess::create(ShaderResources::Vertex_Generic, ShaderResources::Fragment_Inverse);
 	this->gamePostProcessNightVision = PostProcess::create(ShaderResources::Vertex_Generic, ShaderResources::Fragment_NightVision);
-	this->camera = GameCamera::create();
 	this->mapNode = Node::create();
 	this->mouse = Mouse::create();
 	this->mouseLayer = Hud::create();
-
-	this->camera->setScrollOffset(Vec2(64.0f, 32.0f));
-	this->camera->setFollowSpeed(Vec2(0.075f, 0.075f));
 
 	this->hackerModeBackground->setVisible(false);
 	this->hackerModeRain->setVisible(false);
@@ -66,6 +62,9 @@ IsometricMap::~IsometricMap()
 void IsometricMap::onEnter()
 {
 	FadeScene::onEnter();
+
+	GameCamera::getInstance()->setScrollOffset(Vec2(64.0f, 32.0f));
+	GameCamera::getInstance()->setFollowSpeed(Vec2(0.075f, 0.075f));
 
 	this->scheduleUpdate();
 }

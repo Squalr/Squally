@@ -101,7 +101,7 @@ PauseMenu::~PauseMenu()
 
 void PauseMenu::onEnter()
 {
-	SmartNode::onEnter();
+	Hud::onEnter();
 
 	float delay = 0.1f;
 	float duration = 0.25f;
@@ -116,7 +116,7 @@ void PauseMenu::onEnter()
 
 void PauseMenu::initializePositions()
 {
-	SmartNode::initializePositions();
+	Hud::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -130,7 +130,7 @@ void PauseMenu::initializePositions()
 
 void PauseMenu::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	Hud::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
