@@ -3,7 +3,6 @@
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Maps/SerializableMap.h"
-#include "Engine/UI/FadeScene.h"
 #include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/UI/HUD/DeveloperHud.h"
 #include "Engine/UI/HUD/HackerModeHud.h"

@@ -1,6 +1,6 @@
 #include "ConfirmationMenu.h"
 
-ConfirmationMenu * ConfirmationMenu::create()
+ConfirmationMenu* ConfirmationMenu::create()
 {
 	ConfirmationMenu* instance = new ConfirmationMenu();
 

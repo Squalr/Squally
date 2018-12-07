@@ -1,5 +1,7 @@
 #include "TitleScreen.h"
 
+TitleScreen* TitleScreen::instance = nullptr;
+
 const std::string TitleScreen::StringKeyStoryMode = "Menu_Story_Mode";
 const std::string TitleScreen::StringKeyMinigames = "Menu_Minigames";
 const std::string TitleScreen::StringKeyOptions = "Menu_Options";
@@ -10,13 +12,21 @@ const float TitleScreen::menuFontSize = 48.0f;
 const float TitleScreen::menuOffset = 128.0f;
 const float TitleScreen::spacing = -96.0f;
 
-TitleScreen * TitleScreen::create()
+void TitleScreen::registerGlobalScene()
 {
-	TitleScreen* instance = new TitleScreen();
+	if (TitleScreen::instance == nullptr)
+	{
+		TitleScreen::instance = new TitleScreen();
 
-	instance->autorelease();
+		instance->autorelease();
 
-	return instance;
+		instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateTitle, [](EventCustom* args)
+		{
+			GlobalDirector::loadScene(TitleScreen::instance);
+		}));
+	}
+
+	GlobalDirector::registerGlobalScene(TitleScreen::instance);
 }
 
 TitleScreen::TitleScreen()
@@ -121,7 +131,7 @@ TitleScreen::~TitleScreen()
 
 void TitleScreen::onEnter()
 {
-	FadeScene::onEnter();
+	GlobalScene::onEnter();
 
 	SoundManager::playMusicResource(MusicResources::WeWillGetThereTogether);
 
@@ -150,7 +160,7 @@ void TitleScreen::onEnter()
 
 void TitleScreen::initializePositions()
 {
-	FadeScene::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -168,7 +178,7 @@ void TitleScreen::initializePositions()
 
 void TitleScreen::initializeListeners()
 {
-	FadeScene::initializeListeners();
+	GlobalScene::initializeListeners();
 
 	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));
 	this->arcadeModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onArcadeModeClick, this));

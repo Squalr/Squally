@@ -6,12 +6,11 @@
 #include "ui/CocosGUI.h"
 
 #include "Engine/Localization/Localization.h"
+#include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/FadeScene.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
-#include "Engine/Sound/SoundManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Cutscenes/IntroCutscene/IntroCutscene.h"

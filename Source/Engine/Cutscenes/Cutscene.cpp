@@ -26,7 +26,7 @@ Cutscene::~Cutscene()
 
 void Cutscene::initializeListeners()
 {
-	FadeScene::initializeListeners();
+	SmartScene::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 

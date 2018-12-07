@@ -89,6 +89,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Events/SceneEvents.cpp
 	Source/Engine/GlobalDirector.cpp
 	Source/Engine/GlobalNode.cpp
+	Source/Engine/GlobalScene.cpp
 	Source/Engine/Hackables/HackableAttribute.cpp
 	Source/Engine/Hackables/HackableCode.cpp
 	Source/Engine/Hackables/HackableData.cpp
@@ -129,7 +130,6 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/Controls/TextMenuSprite.cpp
 	Source/Engine/UI/Controls/TextWindow.cpp
 	Source/Engine/UI/Controls/ToggleGroup.cpp
-	Source/Engine/UI/FadeScene.cpp
 	Source/Engine/UI/FloatingSprite.cpp
 	Source/Engine/UI/HUD/DeveloperHud.cpp
 	Source/Engine/UI/HUD/HackerModeHud.cpp
@@ -843,6 +843,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Events/SceneEvents.h
 	Source/Engine/GlobalDirector.h
 	Source/Engine/GlobalNode.h
+	Source/Engine/GlobalScene.h
 	Source/Engine/Hackables/HackableAttribute.h
 	Source/Engine/Hackables/HackableCode.h
 	Source/Engine/Hackables/HackableData.h
@@ -884,7 +885,6 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/Controls/TextMenuSprite.h
 	Source/Engine/UI/Controls/TextWindow.h
 	Source/Engine/UI/Controls/ToggleGroup.h
-	Source/Engine/UI/FadeScene.h
 	Source/Engine/UI/FloatingSprite.h
 	Source/Engine/UI/HUD/DeveloperHud.h
 	Source/Engine/UI/HUD/HackerModeHud.h

@@ -15,6 +15,7 @@ GlobalDirector* GlobalDirector::getInstance()
 GlobalDirector::GlobalDirector()
 {
 	this->globalNodes = std::vector<GlobalNode*>();
+	this->globalScenes = std::vector<GlobalScene*>();
 	this->activeScene = nullptr;
 }
 
@@ -28,24 +29,24 @@ void GlobalDirector::loadScene(Scene* scene)
 
 	// Although this is counter-intuitive, add the Global Director as a child to whichever scene is active.
 	// This will allows for the Global Director's nodes to listen for events
-	if (activeScene != nullptr)
+	if (GlobalDirector::getInstance()->activeScene != nullptr)
 	{
-		this->getParent()->removeChild(this);
+		GlobalDirector::getInstance()->getParent()->removeChild(GlobalDirector::getInstance());
 	}
 
-	scene->addChild(this);
+	scene->addChild(GlobalDirector::getInstance());
 
-	if (this->activeScene == nullptr)
+	if (GlobalDirector::getInstance()->activeScene == nullptr)
 	{
 		Director::getInstance()->runWithScene(scene);
 	}
 	else
 	{
-		GameUtils::pause(this->activeScene);
+		GameUtils::pause(GlobalDirector::getInstance()->activeScene);
 		Director::getInstance()->replaceScene(scene);
 	}
 
-	this->activeScene = scene;
+	GlobalDirector::getInstance()->activeScene = scene;
 	GameUtils::resume(scene);
 }
 
@@ -53,7 +54,17 @@ void GlobalDirector::registerGlobalNode(GlobalNode* node)
 {
 	if (node != nullptr)
 	{
-		this->addChild(node);
-		this->globalNodes.push_back(node);
+		GlobalDirector::getInstance()->addChild(node);
+		GlobalDirector::getInstance()->globalNodes.push_back(node);
+	}
+}
+
+void GlobalDirector::registerGlobalScene(GlobalScene* scene)
+{
+	if (scene != nullptr)
+	{
+		scene->retain();
+
+		GlobalDirector::getInstance()->globalScenes.push_back(scene);
 	}
 }

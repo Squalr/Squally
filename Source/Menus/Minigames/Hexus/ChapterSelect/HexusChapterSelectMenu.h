@@ -3,8 +3,8 @@
 
 #include "Events/NavigationEvents.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/SmartScene.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.h"
@@ -22,7 +22,7 @@
 
 using namespace cocos2d;
 
-class HexusChapterSelectMenu : public FadeScene
+class HexusChapterSelectMenu : public SmartScene
 {
 public:
 	static HexusChapterSelectMenu * create();

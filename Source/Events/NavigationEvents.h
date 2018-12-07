@@ -16,58 +16,14 @@ class SerializableMap;
 class NavigationEvents
 {
 public:
-	static const std::string gameNavigateNewEvent;
-	static const std::string gameNavigateBackEvent;
-	static const std::string gameNavigateConfirmEvent;
-	static const std::string gameNavigateLoadCutsceneEvent;
-	static const std::string gameNavigateLoadLevelEvent;
-	static const std::string gameNavigateEnterLevelEvent;
-	static const std::string gameNavigateEnterCombatEvent;
-
-	enum GameScreen {
-		Title,
-		StoryMap,
-		SaveSelect,
-		Minigames,
-		Minigames_Hexus,
-		Minigames_Hexus_Rewards,
-		Minigames_Hexus_Store,
-		Minigames_Hexus_Deck_Management,
-		Minigames_Hexus_Chapter_Training,
-		Minigames_Hexus_Chapter_Jungle,
-		Minigames_Hexus_Chapter_Ruins,
-		Minigames_Hexus_Chapter_Forest,
-		Minigames_Hexus_Chapter_Caverns,
-		Minigames_Hexus_Chapter_Castle,
-		Minigames_Hexus_Chapter_IceCaps,
-		Minigames_Hexus_Chapter_Volcano,
-		Minigames_Hexus_Chapter_Obelisk,
-		Minigames_Hexus_Chapter_Mech,
-		Minigames_Hexus_Puzzles,
-		Tutorial,
-		Pause,
-		Options,
-		Confirm,
-		Loading,
-		Level,
-		LevelEditor,
-		Fight,
-		Hexus,
-		Cutscene_IntroSequence,
-	};
+	static const std::string EventNavigateTitle;
+	static const std::string EventNavigateWorldMap;
 
 	struct NavigateBackEventArgs
 	{
 		int backCount;
 
 		NavigateBackEventArgs(int backCount) : backCount(backCount) { };
-	};
-
-	struct NavigateEventArgs
-	{
-		GameScreen gameScreen;
-
-		NavigateEventArgs(GameScreen gameScreen) : gameScreen(gameScreen) { }
 	};
 
 	struct NavigateLoadCutsceneArgs
@@ -110,6 +66,7 @@ public:
 			message(message), confirmCallback(confirmCallback), cancelCallback(cancelCallback) { }
 	};
 
+	/*
 	static void navigateBack(int count = 1);
 	static void navigate(GameScreen gameScreen);
 	static void navigateConfirm(std::string confirmMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
@@ -117,4 +74,5 @@ public:
 	static void loadMap(std::string levelFile);
 	static void enterLevel(SerializableMap* levelMap);
 	static void enterCombat(std::string levelFile, Squally* squally, PlatformerEnemy* enemy);
+	*/
 };

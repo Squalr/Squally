@@ -1,13 +1,9 @@
 #include "NavigationEvents.h"
 
-const std::string NavigationEvents::gameNavigateNewEvent = "game_navigate_new_event";
-const std::string NavigationEvents::gameNavigateBackEvent = "game_navigate_back_event";
-const std::string NavigationEvents::gameNavigateConfirmEvent = "game_navigate_confirm_event";
-const std::string NavigationEvents::gameNavigateLoadCutsceneEvent = "game_navigate_load_cutscene_event";
-const std::string NavigationEvents::gameNavigateLoadLevelEvent = "game_navigate_load_level_event";
-const std::string NavigationEvents::gameNavigateEnterLevelEvent = "game_navigate_enter_level_event";
-const std::string NavigationEvents::gameNavigateEnterCombatEvent = "game_navigate_enter_combat_event";
+const std::string NavigationEvents::EventNavigateTitle = "EVENT_NAVIGATE_TITLE";
+const std::string NavigationEvents::EventNavigateWorldMap = "EVENT_NAVIGATE_WORLD_MAP";
 
+/*
 void NavigationEvents::navigateBack(int count)
 {
 	NavigateBackEventArgs args = NavigateBackEventArgs(count);
@@ -40,12 +36,7 @@ void NavigationEvents::navigateConfirm(std::string confirmMessage, std::function
 
 void NavigationEvents::loadCutscene(Cutscene* cutscene)
 {
-	NavigateLoadCutsceneArgs args = NavigateLoadCutsceneArgs(cutscene);
-
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::gameNavigateLoadCutsceneEvent,
-		&args
-	);
+	GlobalDirector::getInstance()->loadScene(cutscene);
 }
 
 void NavigationEvents::loadMap(std::string levelFile)
@@ -77,3 +68,4 @@ void NavigationEvents::enterCombat(std::string levelFile, Squally* squally, Plat
 		&args
 	);
 }
+*/

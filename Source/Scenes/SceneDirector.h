@@ -88,7 +88,7 @@ private:
 	Hexus* hexus;
 	Cutscene* cutscene;
 
-	std::stack<Scene*>* sceneHistory;
+	std::stack<Scene*> sceneHistory;
 
 	static SceneDirector* instance;
 };

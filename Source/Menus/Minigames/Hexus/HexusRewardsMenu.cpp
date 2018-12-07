@@ -49,7 +49,7 @@ HexusRewardsMenu::~HexusRewardsMenu()
 
 void HexusRewardsMenu::onEnter()
 {
-	FadeScene::onEnter();
+	SmartScene::onEnter();
 
 	float delay = 0.25f;
 	float duration = 0.35f;
@@ -57,12 +57,12 @@ void HexusRewardsMenu::onEnter()
 
 void HexusRewardsMenu::initializeListeners()
 {
-	FadeScene::initializeListeners();
+	SmartScene::initializeListeners();
 }
 
 void HexusRewardsMenu::initializePositions()
 {
-	FadeScene::initializePositions();
+	SmartScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
