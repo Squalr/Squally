@@ -65,5 +65,8 @@ void MapNode::initializeListeners()
 
 void MapNode::onNodeClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigateLoadingScreen(NavigationEvents::NavigateLoadingScreenArgs(this->nodeMapFile));
+	NavigationEvents::navigateLoadingScreen(NavigationEvents::NavigateLoadingScreenArgs(this->nodeMapFile, [](SerializableMap* map)
+	{
+		NavigationEvents::navigateMap(NavigationEvents::NavigateMapArgs(map));
+	}));
 }

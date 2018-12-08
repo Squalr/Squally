@@ -32,14 +32,16 @@ void NavigationEvents::navigateTitle()
 void NavigationEvents::navigateLoadingScreen(NavigateLoadingScreenArgs args)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::EventNavigateLoadingScreen
+		NavigationEvents::EventNavigateLoadingScreen,
+		&args
 	);
 }
 
 void NavigationEvents::navigateMap(NavigateMapArgs args)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::EventNavigateMap
+		NavigationEvents::EventNavigateMap,
+		&args
 	);
 }
 
@@ -124,7 +126,8 @@ void NavigationEvents::navigateHexusOpponentSelect(NavigateHexusOpponentSelectAr
 void NavigationEvents::navigateCombat(NavigateCombatArgs args)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::EventNavigateCombat
+		NavigationEvents::EventNavigateCombat,
+		&args
 	);
 }
 

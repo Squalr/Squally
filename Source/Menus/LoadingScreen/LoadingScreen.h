@@ -22,7 +22,7 @@ class LoadingScreen : public GlobalScene
 public:
 	static void registerGlobalScene();
 
-	void loadLevel(std::string levelFile, const std::function<void(SerializableMap*)> newOnLoadCallback);
+	void loadLevel(std::string levelFile, std::function<void(SerializableMap*)> onLoadCallback);
 
 protected:
 	LoadingScreen();
