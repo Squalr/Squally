@@ -138,7 +138,7 @@ MinigamesMenu::~MinigamesMenu()
 
 void MinigamesMenu::onEnter()
 {
-	Hud::onEnter();
+	GlobalScene::onEnter();
 
 	const float delay = 0.5f;
 	const float duration = 0.75f;
@@ -151,7 +151,7 @@ void MinigamesMenu::onEnter()
 
 void MinigamesMenu::initializeListeners()
 {
-	Hud::initializeListeners();
+	GlobalScene::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -165,7 +165,7 @@ void MinigamesMenu::initializeListeners()
 
 void MinigamesMenu::initializePositions()
 {
-	Hud::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Size paneSize = this->scrollPane->getPaneSize();

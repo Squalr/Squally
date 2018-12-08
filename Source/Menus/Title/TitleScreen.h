@@ -26,6 +26,7 @@ using namespace cocos_experimental;
 class TitleScreen : public GlobalScene
 {
 public:
+	static TitleScreen* getInstance();
 	static void registerGlobalScene();
 
 protected:

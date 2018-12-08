@@ -12,21 +12,22 @@ const float TitleScreen::menuFontSize = 48.0f;
 const float TitleScreen::menuOffset = 128.0f;
 const float TitleScreen::spacing = -96.0f;
 
-void TitleScreen::registerGlobalScene()
+TitleScreen* TitleScreen::getInstance()
 {
 	if (TitleScreen::instance == nullptr)
 	{
 		TitleScreen::instance = new TitleScreen();
 
-		instance->autorelease();
-
-		instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateTitle, [](EventCustom* args)
-		{
-			GlobalDirector::loadScene(TitleScreen::instance);
-		}));
+		TitleScreen::instance->autorelease();
+		TitleScreen::instance->initializeListeners();
 	}
 
-	GlobalDirector::registerGlobalScene(TitleScreen::instance);
+	return TitleScreen::instance;
+}
+
+void TitleScreen::registerGlobalScene()
+{
+	GlobalDirector::registerGlobalScene(TitleScreen::getInstance());
 }
 
 TitleScreen::TitleScreen()
@@ -179,6 +180,11 @@ void TitleScreen::initializePositions()
 void TitleScreen::initializeListeners()
 {
 	GlobalScene::initializeListeners();
+
+	TitleScreen::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateTitle, [](EventCustom* args)
+	{
+		GlobalDirector::loadScene(TitleScreen::instance);
+	}));
 
 	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));
 	this->arcadeModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onArcadeModeClick, this));

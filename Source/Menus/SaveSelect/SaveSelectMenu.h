@@ -5,24 +5,24 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
+#include "Engine/GlobalScene.h"
 #include "Engine/Localization/Localization.h"
 #include "Engine/Sound/SoundManager.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
+#include "Menus/MenuBackground.h"
 #include "Scenes/Cutscenes/IntroCutscene/IntroCutscene.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
 using namespace cocos_experimental;
 
-class SaveSelectMenu : public Hud
+class SaveSelectMenu : public GlobalScene
 {
 public:
-	static SaveSelectMenu * create();
+	static void registerGlobalScene();
 
 protected:
 	SaveSelectMenu();
@@ -38,9 +38,12 @@ private:
 	void onSaveGame2Click(MenuSprite* menuSprite);
 	void onSaveGame3Click(MenuSprite* menuSprite);
 
+	Node* backgroundNode;
 	TextMenuSprite* saveGame1;
 	TextMenuSprite* saveGame2;
 	TextMenuSprite* saveGame3;
+
+	static SaveSelectMenu* instance;
 
 	static const std::string StringKeyNewGame;
 	static const std::string StringKeyContinueGame;
