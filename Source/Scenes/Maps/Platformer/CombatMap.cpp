@@ -1,12 +1,17 @@
 #include "CombatMap.h"
 
-CombatMap* CombatMap::create()
+CombatMap* CombatMap::instance = nullptr;
+
+void CombatMap::registerGlobalScene()
 {
-	CombatMap* instance = new CombatMap();
+	if (CombatMap::instance == nullptr)
+	{
+		CombatMap::instance = new CombatMap();
+		CombatMap::instance->autorelease();
+		CombatMap::instance->initializeListeners();
+	}
 
-	instance->autorelease();
-
-	return instance;
+	GlobalDirector::registerGlobalScene(CombatMap::instance);
 }
 
 CombatMap::CombatMap()
@@ -46,6 +51,11 @@ void CombatMap::initializePositions()
 void CombatMap::initializeListeners()
 {
 	IMap::initializeListeners();
+
+	CombatMap::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCombat, [](EventCustom* args)
+	{
+		GlobalDirector::loadScene(CombatMap::instance);
+	}));
 }
 
 void CombatMap::loadMap(SerializableMap* serializableMap)

@@ -1,7 +1,8 @@
 #include "HexusOpponentMenuBase.h"
 
-HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
+HexusOpponentMenuBase::HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter chapter, std::string chapterProgressSaveKey)
 {
+	this->chapter = chapter;
 	this->chapterProgressSaveKey = chapterProgressSaveKey;
 	this->opponents = std::vector<HexusOpponentPreview*>();
 	this->scrollPane = ScrollPane::create(Size(1536.0f, 840.0f), Color4B(0, 0, 0, 196));
@@ -70,10 +71,10 @@ HexusOpponentMenuBase::~HexusOpponentMenuBase()
 
 void HexusOpponentMenuBase::onEnter()
 {
-	SmartScene::onEnter();
+	GlobalScene::onEnter();
 
-	float delay = 0.25f;
-	float duration = 0.35f;
+	const float delay = 0.25f;
+	const float duration = 0.35f;
 
 	GameUtils::fadeInObject(this->scrollPane, delay, duration);
 	GameUtils::fadeInObject(this->backButton, delay, duration);
@@ -104,7 +105,7 @@ void HexusOpponentMenuBase::onEnter()
 
 void HexusOpponentMenuBase::initializePositions()
 {
-	SmartScene::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -134,7 +135,17 @@ void HexusOpponentMenuBase::initializePositions()
 
 void HexusOpponentMenuBase::initializeListeners()
 {
-	SmartScene::initializeListeners();
+	GlobalScene::initializeListeners();
+
+	this->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusOpponentSelect, [=](EventCustom* args)
+	{
+		NavigationEvents::NavigateHexusOpponentSelectArgs* navArgs = (NavigationEvents::NavigateHexusOpponentSelectArgs*)args->getUserData();
+
+		if (navArgs->chapter == this->chapter)
+		{
+			GlobalDirector::loadScene(this);
+		}
+	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 

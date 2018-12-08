@@ -1,12 +1,18 @@
 #include "HexusDeckManagement.h"
 
-HexusDeckManagement * HexusDeckManagement::create()
+HexusDeckManagement* HexusDeckManagement::instance;
+
+void HexusDeckManagement::registerGlobalScene()
 {
-	HexusDeckManagement* instance = new HexusDeckManagement();
+	if (HexusDeckManagement::instance == nullptr)
+	{
+		HexusDeckManagement::instance = new HexusDeckManagement();
 
-	instance->autorelease();
+		HexusDeckManagement::instance->autorelease();
+		HexusDeckManagement::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusDeckManagement::instance);
 }
 
 HexusDeckManagement::HexusDeckManagement()
@@ -171,7 +177,7 @@ HexusDeckManagement::~HexusDeckManagement()
 
 void HexusDeckManagement::onEnter()
 {
-	SmartScene::onEnter();
+	GlobalScene::onEnter();
 
 	float delay = 0.25f;
 	float duration = 0.35f;
@@ -185,12 +191,17 @@ void HexusDeckManagement::onExit()
 {
 	this->save(false);
 
-	SmartScene::onExit();
+	GlobalScene::onExit();
 }
 
 void HexusDeckManagement::initializeListeners()
 {
-	SmartScene::initializeListeners();
+	GlobalScene::initializeListeners();
+
+	HexusDeckManagement::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusDeckManagement, [](EventCustom* args)
+	{
+		GlobalDirector::loadScene(HexusDeckManagement::instance);
+	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -214,7 +225,7 @@ void HexusDeckManagement::initializeListeners()
 
 void HexusDeckManagement::initializePositions()
 {
-	SmartScene::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

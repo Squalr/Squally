@@ -2,7 +2,7 @@
 #include <math.h>
 #include "cocos2d.h"
 
-#include "Engine/SmartScene.h"
+#include "Engine/GlobalScene.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/Mouse.h"
@@ -19,10 +19,10 @@
 
 using namespace cocos2d;
 
-class HexusStoreMenu : public SmartScene
+class HexusStoreMenu : public GlobalScene
 {
 public:
-	static HexusStoreMenu * create();
+	static void registerGlobalScene();
 
 protected:
 	HexusStoreMenu();
@@ -90,5 +90,6 @@ private:
 	std::vector<std::tuple<MenuSprite*, MenuCard*, int>> specialCards;
 	std::map<MenuCard*, Label*> limitLabels;
 
+	static HexusStoreMenu* instance;
 	static const float lootBoxScale;
 };

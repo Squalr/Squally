@@ -1,12 +1,18 @@
 #include "HexusChapterSelectMenu.h"
 
-HexusChapterSelectMenu * HexusChapterSelectMenu::create()
+HexusChapterSelectMenu* HexusChapterSelectMenu::instance = nullptr;
+
+void HexusChapterSelectMenu::registerGlobalScene()
 {
-	HexusChapterSelectMenu* instance = new HexusChapterSelectMenu();
+	if (HexusChapterSelectMenu::instance == nullptr)
+	{
+		HexusChapterSelectMenu::instance = new HexusChapterSelectMenu();
 
-	instance->autorelease();
+		HexusChapterSelectMenu::instance->autorelease();
+		HexusChapterSelectMenu::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusChapterSelectMenu::instance);
 }
 
 HexusChapterSelectMenu::HexusChapterSelectMenu()
@@ -99,7 +105,7 @@ HexusChapterSelectMenu::~HexusChapterSelectMenu()
 
 void HexusChapterSelectMenu::onEnter()
 {
-	SmartScene::onEnter();
+	GlobalScene::onEnter();
 
 	float delay = 0.25f;
 	float duration = 0.35f;
@@ -130,7 +136,12 @@ void HexusChapterSelectMenu::onEnter()
 
 void HexusChapterSelectMenu::initializeListeners()
 {
-	SmartScene::initializeListeners();
+	GlobalScene::initializeListeners();
+
+	HexusChapterSelectMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusChapterSelect, [](EventCustom* args)
+	{
+		GlobalDirector::loadScene(HexusChapterSelectMenu::instance);
+	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -154,7 +165,7 @@ void HexusChapterSelectMenu::initializeListeners()
 
 void HexusChapterSelectMenu::initializePositions()
 {
-	SmartScene::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

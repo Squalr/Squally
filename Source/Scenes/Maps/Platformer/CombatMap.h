@@ -12,7 +12,7 @@ using namespace cocos2d;
 class CombatMap : public IMap
 {
 public:
-	static CombatMap* create();
+	static void registerGlobalScene();
 
 	void loadMap(SerializableMap* serializableMap) override;
 
@@ -27,4 +27,6 @@ private:
 
 	Node* mapNode;
 	SerializableMap* map;
+
+	static CombatMap* instance;
 };

@@ -1,8 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/GlobalScene.h"
 #include "Events/NavigationEvents.h"
-#include "Engine/SmartScene.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/FloatingSprite.h"
 #include "Engine/UI/Mouse.h"
@@ -13,10 +13,10 @@
 
 using namespace cocos2d;
 
-class HexusPuzzlesMenu : public SmartScene
+class HexusPuzzlesMenu : public GlobalScene
 {
 public:
-	static HexusPuzzlesMenu * create();
+	static void registerGlobalScene();
 
 protected:
 	HexusPuzzlesMenu();
@@ -42,8 +42,9 @@ private:
 	ParticleSystem* nether;
 	ParticleSystem* swirl;
 
-	std::vector<HexusPuzzleItem*>* hexusOpponentItems;
+	std::vector<HexusPuzzleItem*> hexusOpponentItems;
 
+	static HexusPuzzlesMenu* instance;
 	static const Color3B TitleColor;
 	static const std::string StringKeyHexusPuzzles;
 };

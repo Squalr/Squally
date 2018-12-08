@@ -12,10 +12,13 @@ using namespace cocos2d;
 class HexusOpponentMenuCaverns : public HexusOpponentMenuBase
 {
 public:
-	static HexusOpponentMenuCaverns * create();
+	static void registerGlobalScene();
 
 protected:
 	HexusOpponentMenuCaverns();
 	~HexusOpponentMenuCaverns();
+
+private:
+	static HexusOpponentMenuCaverns* instance;
 };
 

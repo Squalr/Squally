@@ -1,9 +1,9 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/GlobalScene.h"
 #include "Events/NavigationEvents.h"
 #include "Engine/Save/SaveManager.h"
-#include "Engine/SmartScene.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
@@ -22,10 +22,10 @@
 
 using namespace cocos2d;
 
-class HexusChapterSelectMenu : public SmartScene
+class HexusChapterSelectMenu : public GlobalScene
 {
 public:
-	static HexusChapterSelectMenu * create();
+	static void registerGlobalScene();
 
 protected:
 	HexusChapterSelectMenu();
@@ -60,5 +60,7 @@ private:
 	TextMenuSprite* shopButton;
 	Label* chapterSelectLabel;
 	TextMenuSprite* backButton;
+
+	static HexusChapterSelectMenu* instance;
 };
 

@@ -19,7 +19,7 @@ using namespace cocos2d;
 class MinigamesMenu : public GlobalScene
 {
 public:
-	static MinigamesMenu * create();
+	static void registerGlobalScene();
 
 protected:
 	MinigamesMenu();
@@ -46,6 +46,8 @@ private:
 	TextMenuSprite* comingSoonButton5;
 	TextMenuSprite* comingSoonButton6;
 	TextMenuSprite* backButton;
+
+	static MinigamesMenu* instance;
 
 	static const std::string StringKeyHexus;
 	static const std::string StringKeyHexusPuzzles;

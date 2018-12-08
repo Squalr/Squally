@@ -1,15 +1,21 @@
 #include "HexusOpponentMenuObelisk.h"
 
-HexusOpponentMenuObelisk * HexusOpponentMenuObelisk::create()
+HexusOpponentMenuObelisk* HexusOpponentMenuObelisk::instance = nullptr;
+
+void HexusOpponentMenuObelisk::registerGlobalScene()
 {
-	HexusOpponentMenuObelisk* instance = new HexusOpponentMenuObelisk();
+	if (HexusOpponentMenuObelisk::instance == nullptr)
+	{
+		HexusOpponentMenuObelisk::instance = new HexusOpponentMenuObelisk();
 
-	instance->autorelease();
+		HexusOpponentMenuObelisk::instance->autorelease();
+		HexusOpponentMenuObelisk::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusOpponentMenuObelisk::instance);
 }
 
-HexusOpponentMenuObelisk::HexusOpponentMenuObelisk() : HexusOpponentMenuBase(HexusChapterPreviewObelisk::stringKeyChapterName)
+HexusOpponentMenuObelisk::HexusOpponentMenuObelisk() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Void, HexusChapterPreviewObelisk::stringKeyChapterName)
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuObelisk::onGameEndCallback, this);
 

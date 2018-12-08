@@ -1,15 +1,21 @@
 #include "HexusOpponentMenuCastle.h"
 
-HexusOpponentMenuCastle * HexusOpponentMenuCastle::create()
+HexusOpponentMenuCastle* HexusOpponentMenuCastle::instance = nullptr;
+
+void HexusOpponentMenuCastle::registerGlobalScene()
 {
-	HexusOpponentMenuCastle* instance = new HexusOpponentMenuCastle();
+	if (HexusOpponentMenuCastle::instance == nullptr)
+	{
+		HexusOpponentMenuCastle::instance = new HexusOpponentMenuCastle();
 
-	instance->autorelease();
+		HexusOpponentMenuCastle::instance->autorelease();
+		HexusOpponentMenuCastle::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusOpponentMenuCastle::instance);
 }
 
-HexusOpponentMenuCastle::HexusOpponentMenuCastle() : HexusOpponentMenuBase(HexusChapterPreviewCastle::stringKeyChapterName)
+HexusOpponentMenuCastle::HexusOpponentMenuCastle() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::stringKeyChapterName)
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuCastle::onGameEndCallback, this);
 
