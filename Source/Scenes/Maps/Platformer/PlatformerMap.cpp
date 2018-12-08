@@ -92,7 +92,13 @@ void PlatformerMap::initializeListeners()
 
 	PlatformerMap::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateMap, [](EventCustom* args)
 	{
-		GlobalDirector::loadScene(PlatformerMap::instance);
+		NavigationEvents::NavigateMapArgs* mapArgs = static_cast<NavigationEvents::NavigateMapArgs*>(args->getUserData());
+
+		if (mapArgs != nullptr)
+		{
+			GlobalDirector::loadScene(PlatformerMap::instance);
+			PlatformerMap::instance->loadMap(mapArgs->levelMap);
+		}
 	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();

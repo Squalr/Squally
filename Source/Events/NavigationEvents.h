@@ -20,8 +20,9 @@ public:
 	struct NavigateLoadingScreenArgs
 	{
 		std::string levelFile;
+		std::function<void(SerializableMap*)> onLoadCallback;
 
-		NavigateLoadingScreenArgs(std::string levelFile) : levelFile(levelFile) { }
+		NavigateLoadingScreenArgs(std::string levelFile, std::function<void(SerializableMap*)> onLoadCallback) : levelFile(levelFile), onLoadCallback(onLoadCallback) { }
 	};
 
 	struct NavigateMapArgs
