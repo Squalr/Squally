@@ -17,16 +17,6 @@ class SerializableMap;
 class NavigationEvents
 {
 public:
-	struct NavigateConfirmArgs
-	{
-		std::string message;
-		std::function<void()> confirmCallback;
-		std::function<void()> cancelCallback;
-
-		NavigateConfirmArgs(std::string message, std::function<void()> confirmCallback, std::function<void()> cancelCallback) :
-			message(message), confirmCallback(confirmCallback), cancelCallback(cancelCallback) { }
-	};
-
 	struct NavigateLoadingScreenArgs
 	{
 		std::string levelFile;

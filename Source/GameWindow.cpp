@@ -69,6 +69,9 @@ bool GameWindow::applicationDidFinishLaunching()
 		Analytics::sendEvent(AnalyticsCategories::GameStart, "Linux");
 	#endif
 
+	// load into the title screen first
+	GlobalDirector::loadScene(TitleScreen::getInstance());
+
 	return true;
 }
 

@@ -19,12 +19,8 @@ void WorldMap::registerGlobalScene()
 	{
 		WorldMap::instance = new WorldMap();
 
-		instance->autorelease();
-
-		instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateTitle, [](EventCustom* args)
-		{
-			GlobalDirector::loadScene(WorldMap::instance);
-		}));
+		WorldMap::instance->autorelease();
+		WorldMap::instance->initializeListeners();
 	}
 
 	GlobalDirector::registerGlobalScene(WorldMap::instance);
@@ -200,6 +196,11 @@ void WorldMap::initializePositions()
 void WorldMap::initializeListeners()
 {
 	GlobalScene::initializeListeners();
+
+	instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateWorldMap, [](EventCustom* args)
+	{
+		GlobalDirector::loadScene(WorldMap::instance);
+	}));
 
 	EventListenerCustom* mouseListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(WorldMap::onMouseMove, this));
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();

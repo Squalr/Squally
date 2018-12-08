@@ -6,7 +6,9 @@ void Bootstrapper::initialize()
 
 	// Register scenes
 	TitleScreen::registerGlobalScene();
+	OptionsScene::registerGlobalScene();
 	WorldMap::registerGlobalScene();
+	SaveSelectMenu::registerGlobalScene();
 
 	// Entity deserializers
 	SquallyDeserializer::registerGlobalNode();

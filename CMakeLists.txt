@@ -416,9 +416,9 @@ list(APPEND GAME_SOURCE
 	Source/Menus/Minigames/Hexus/Store/HexusStoreMenu.cpp
 	Source/Menus/Minigames/MinigamesMenu.cpp
 	Source/Menus/Options/OptionsMenu.cpp
+	Source/Menus/Options/OptionsScene.cpp
 	Source/Menus/Pause/PauseMenu.cpp
 	Source/Menus/SaveSelect/SaveSelectMenu.cpp
-	Source/Menus/TakeOverMenu.cpp
 	Source/Menus/Title/HackerMode.cpp
 	Source/Menus/Title/TitleScreen.cpp
 	Source/Menus/Title/TitleScreenBackground.cpp
@@ -1190,9 +1190,9 @@ list(APPEND GAME_HEADER
 	Source/Menus/Minigames/Hexus/Store/HexusStoreMenu.h
 	Source/Menus/Minigames/MinigamesMenu.h
 	Source/Menus/Options/OptionsMenu.h
+	Source/Menus/Options/OptionsScene.h
 	Source/Menus/Pause/PauseMenu.h
 	Source/Menus/SaveSelect/SaveSelectMenu.h
-	Source/Menus/TakeOverMenu.h
 	Source/Menus/Title/HackerMode.h
 	Source/Menus/Title/TitleScreen.h
 	Source/Menus/Title/TitleScreenBackground.h
