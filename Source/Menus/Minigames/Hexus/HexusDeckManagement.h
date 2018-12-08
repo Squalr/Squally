@@ -1,8 +1,8 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/GlobalScene.h"
 #include "Events/NavigationEvents.h"
-#include "Engine/SmartScene.h"
 #include "Engine/UI/Controls/CCheckbox.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/ScrollPane.h"
@@ -16,10 +16,10 @@
 
 using namespace cocos2d;
 
-class HexusDeckManagement : public SmartScene
+class HexusDeckManagement : public GlobalScene
 {
 public:
-	static HexusDeckManagement * create();
+	static void registerGlobalScene();
 
 protected:
 	HexusDeckManagement();
@@ -88,4 +88,6 @@ private:
 
 	std::map<CardData*, int> deckCards;
 	std::map<CardData*, int> storageCards;
+	
+	static HexusDeckManagement* instance;
 };

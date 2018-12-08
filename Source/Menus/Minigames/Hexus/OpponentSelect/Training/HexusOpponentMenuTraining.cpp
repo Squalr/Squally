@@ -1,15 +1,21 @@
 #include "HexusOpponentMenuTraining.h"
 
-HexusOpponentMenuTraining * HexusOpponentMenuTraining::create()
+HexusOpponentMenuTraining* HexusOpponentMenuTraining::instance = nullptr;
+
+void HexusOpponentMenuTraining::registerGlobalScene()
 {
-	HexusOpponentMenuTraining* instance = new HexusOpponentMenuTraining();
+	if (HexusOpponentMenuTraining::instance == nullptr)
+	{
+		HexusOpponentMenuTraining::instance = new HexusOpponentMenuTraining();
 
-	instance->autorelease();
+		HexusOpponentMenuTraining::instance->autorelease();
+		HexusOpponentMenuTraining::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusOpponentMenuTraining::instance);
 }
 
-HexusOpponentMenuTraining::HexusOpponentMenuTraining() : HexusOpponentMenuBase(HexusChapterPreviewTraining::stringKeyChapterName)
+HexusOpponentMenuTraining::HexusOpponentMenuTraining() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Training, HexusChapterPreviewTraining::stringKeyChapterName)
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuTraining::onGameEndCallback, this);
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/SmartScene.h"
+#include "Engine/GlobalScene.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/Mouse.h"
@@ -15,10 +15,10 @@
 
 using namespace cocos2d;
 
-class HexusRewardsMenu : public SmartScene
+class HexusRewardsMenu : public GlobalScene
 {
 public:
-	static HexusRewardsMenu * create();
+	static void registerGlobalScene();
 
 	void onRewardsOpen(EventCustom* eventCustom);
 
@@ -38,5 +38,6 @@ private:
 	Label* goldLabel;
 	MenuSprite* returnButton;
 
+	static HexusRewardsMenu* instance;
 	static const std::string KeyScheduleHexusGoldTick;
 };

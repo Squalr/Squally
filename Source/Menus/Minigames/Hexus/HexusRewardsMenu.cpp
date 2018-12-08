@@ -2,13 +2,19 @@
 
 const std::string HexusRewardsMenu::KeyScheduleHexusGoldTick = "KEY_SCHEDULE_HEXUS_GOLD_TICK";
 
-HexusRewardsMenu * HexusRewardsMenu::create()
+HexusRewardsMenu* HexusRewardsMenu::instance;
+
+void HexusRewardsMenu::registerGlobalScene()
 {
-	HexusRewardsMenu* instance = new HexusRewardsMenu();
+	if (HexusRewardsMenu::instance == nullptr)
+	{
+		HexusRewardsMenu::instance = new HexusRewardsMenu();
 
-	instance->autorelease();
+		HexusRewardsMenu::instance->autorelease();
+		HexusRewardsMenu::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusRewardsMenu::instance);
 }
 
 HexusRewardsMenu::HexusRewardsMenu()
@@ -49,7 +55,7 @@ HexusRewardsMenu::~HexusRewardsMenu()
 
 void HexusRewardsMenu::onEnter()
 {
-	SmartScene::onEnter();
+	GlobalScene::onEnter();
 
 	float delay = 0.25f;
 	float duration = 0.35f;
@@ -57,12 +63,17 @@ void HexusRewardsMenu::onEnter()
 
 void HexusRewardsMenu::initializeListeners()
 {
-	SmartScene::initializeListeners();
+	GlobalScene::initializeListeners();
+
+	HexusRewardsMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusRewards, [](EventCustom* args)
+	{
+		GlobalDirector::loadScene(HexusRewardsMenu::instance);
+	}));
 }
 
 void HexusRewardsMenu::initializePositions()
 {
-	SmartScene::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

@@ -1,15 +1,21 @@
 #include "HexusOpponentMenuForest.h"
 
-HexusOpponentMenuForest * HexusOpponentMenuForest::create()
+HexusOpponentMenuForest* HexusOpponentMenuForest::instance = nullptr;
+
+void HexusOpponentMenuForest::registerGlobalScene()
 {
-	HexusOpponentMenuForest* instance = new HexusOpponentMenuForest();
+	if (HexusOpponentMenuForest::instance == nullptr)
+	{
+		HexusOpponentMenuForest::instance = new HexusOpponentMenuForest();
 
-	instance->autorelease();
+		HexusOpponentMenuForest::instance->autorelease();
+		HexusOpponentMenuForest::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusOpponentMenuForest::instance);
 }
 
-HexusOpponentMenuForest::HexusOpponentMenuForest() : HexusOpponentMenuBase(HexusChapterPreviewForest::stringKeyChapterName)
+HexusOpponentMenuForest::HexusOpponentMenuForest() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Forest, HexusChapterPreviewForest::stringKeyChapterName)
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuForest::onGameEndCallback, this);
 

@@ -46,7 +46,7 @@ void OptionsScene::initializeListeners()
 {
 	GlobalScene::initializeListeners();
 
-	instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateOptions, [](EventCustom* args)
+	OptionsScene::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateOptions, [](EventCustom* args)
 	{
 		GlobalDirector::loadScene(OptionsScene::instance);
 	}));

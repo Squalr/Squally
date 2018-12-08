@@ -1,15 +1,21 @@
 #include "HexusOpponentMenuRuins.h"
 
-HexusOpponentMenuRuins * HexusOpponentMenuRuins::create()
+HexusOpponentMenuRuins* HexusOpponentMenuRuins::instance = nullptr;
+
+void HexusOpponentMenuRuins::registerGlobalScene()
 {
-	HexusOpponentMenuRuins* instance = new HexusOpponentMenuRuins();
+	if (HexusOpponentMenuRuins::instance == nullptr)
+	{
+		HexusOpponentMenuRuins::instance = new HexusOpponentMenuRuins();
 
-	instance->autorelease();
+		HexusOpponentMenuRuins::instance->autorelease();
+		HexusOpponentMenuRuins::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusOpponentMenuRuins::instance);
 }
 
-HexusOpponentMenuRuins::HexusOpponentMenuRuins() : HexusOpponentMenuBase(HexusChapterPreviewRuins::stringKeyChapterName)
+HexusOpponentMenuRuins::HexusOpponentMenuRuins() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Ruins, HexusChapterPreviewRuins::stringKeyChapterName)
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuRuins::onGameEndCallback, this);
 

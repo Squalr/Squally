@@ -1,15 +1,21 @@
 #include "HexusOpponentMenuIceCaps.h"
 
-HexusOpponentMenuIceCaps * HexusOpponentMenuIceCaps::create()
+HexusOpponentMenuIceCaps* HexusOpponentMenuIceCaps::instance = nullptr;
+
+void HexusOpponentMenuIceCaps::registerGlobalScene()
 {
-	HexusOpponentMenuIceCaps* instance = new HexusOpponentMenuIceCaps();
+	if (HexusOpponentMenuIceCaps::instance == nullptr)
+	{
+		HexusOpponentMenuIceCaps::instance = new HexusOpponentMenuIceCaps();
 
-	instance->autorelease();
+		HexusOpponentMenuIceCaps::instance->autorelease();
+		HexusOpponentMenuIceCaps::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusOpponentMenuIceCaps::instance);
 }
 
-HexusOpponentMenuIceCaps::HexusOpponentMenuIceCaps() : HexusOpponentMenuBase(HexusChapterPreviewIceCaps::stringKeyChapterName)
+HexusOpponentMenuIceCaps::HexusOpponentMenuIceCaps() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::IceCaps, HexusChapterPreviewIceCaps::stringKeyChapterName)
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuIceCaps::onGameEndCallback, this);
 

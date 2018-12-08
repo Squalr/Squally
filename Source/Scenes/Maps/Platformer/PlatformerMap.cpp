@@ -1,15 +1,19 @@
 #include "PlatformerMap.h"
 
+PlatformerMap* PlatformerMap::instance = nullptr;
 bool PlatformerMap::hackerMode = false;
 bool PlatformerMap::developerMode = false;
 
-PlatformerMap* PlatformerMap::create()
+void PlatformerMap::registerGlobalScene()
 {
-	PlatformerMap* instance = new PlatformerMap();
+	if (PlatformerMap::instance == nullptr)
+	{
+		PlatformerMap::instance = new PlatformerMap();
+		PlatformerMap::instance->autorelease();
+		PlatformerMap::instance->initializeListeners();
+	}
 
-	instance->autorelease();
-
-	return instance;
+	GlobalDirector::registerGlobalScene(PlatformerMap::instance);
 }
 
 PlatformerMap::PlatformerMap()
@@ -85,6 +89,11 @@ void PlatformerMap::initializePositions()
 void PlatformerMap::initializeListeners()
 {
 	IMap::initializeListeners();
+
+	PlatformerMap::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateMap, [](EventCustom* args)
+	{
+		GlobalDirector::loadScene(PlatformerMap::instance);
+	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 	EventListenerMouse* mouseListener = EventListenerMouse::create();

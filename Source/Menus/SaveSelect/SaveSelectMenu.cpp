@@ -149,7 +149,7 @@ void SaveSelectMenu::initializeListeners()
 {
 	GlobalScene::initializeListeners();
 
-	instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateSaveSelect, [](EventCustom* args)
+	SaveSelectMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateSaveSelect, [](EventCustom* args)
 	{
 		GlobalDirector::loadScene(SaveSelectMenu::instance);
 	}));

@@ -49,7 +49,7 @@ void LoadingScreen::initializeListeners()
 {
 	GlobalScene::initializeListeners();
 
-	instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateLoadingScreen, [](EventCustom* args)
+	LoadingScreen::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateLoadingScreen, [](EventCustom* args)
 	{
 		GlobalDirector::loadScene(LoadingScreen::instance);
 	}));

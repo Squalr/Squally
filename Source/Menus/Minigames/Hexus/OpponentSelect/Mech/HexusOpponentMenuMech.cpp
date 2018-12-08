@@ -1,15 +1,21 @@
 #include "HexusOpponentMenuMech.h"
 
-HexusOpponentMenuMech * HexusOpponentMenuMech::create()
+HexusOpponentMenuMech* HexusOpponentMenuMech::instance = nullptr;
+
+void HexusOpponentMenuMech::registerGlobalScene()
 {
-	HexusOpponentMenuMech* instance = new HexusOpponentMenuMech();
+	if (HexusOpponentMenuMech::instance == nullptr)
+	{
+		HexusOpponentMenuMech::instance = new HexusOpponentMenuMech();
 
-	instance->autorelease();
+		HexusOpponentMenuMech::instance->autorelease();
+		HexusOpponentMenuMech::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusOpponentMenuMech::instance);
 }
 
-HexusOpponentMenuMech::HexusOpponentMenuMech() : HexusOpponentMenuBase(HexusChapterPreviewMech::stringKeyChapterName)
+HexusOpponentMenuMech::HexusOpponentMenuMech() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Mech, HexusChapterPreviewMech::stringKeyChapterName)
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuMech::onGameEndCallback, this);
 

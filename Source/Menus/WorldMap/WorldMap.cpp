@@ -197,7 +197,7 @@ void WorldMap::initializeListeners()
 {
 	GlobalScene::initializeListeners();
 
-	instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateWorldMap, [](EventCustom* args)
+	WorldMap::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateWorldMap, [](EventCustom* args)
 	{
 		GlobalDirector::loadScene(WorldMap::instance);
 	}));

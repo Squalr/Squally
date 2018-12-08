@@ -1,15 +1,21 @@
 #include "HexusOpponentMenuJungle.h"
 
-HexusOpponentMenuJungle * HexusOpponentMenuJungle::create()
+HexusOpponentMenuJungle* HexusOpponentMenuJungle::instance = nullptr;
+
+void HexusOpponentMenuJungle::registerGlobalScene()
 {
-	HexusOpponentMenuJungle* instance = new HexusOpponentMenuJungle();
+	if (HexusOpponentMenuJungle::instance == nullptr)
+	{
+		HexusOpponentMenuJungle::instance = new HexusOpponentMenuJungle();
 
-	instance->autorelease();
+		HexusOpponentMenuJungle::instance->autorelease();
+		HexusOpponentMenuJungle::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusOpponentMenuJungle::instance);
 }
 
-HexusOpponentMenuJungle::HexusOpponentMenuJungle() : HexusOpponentMenuBase(HexusChapterPreviewJungle::stringKeyChapterName)
+HexusOpponentMenuJungle::HexusOpponentMenuJungle() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Jungle, HexusChapterPreviewJungle::stringKeyChapterName)
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuJungle::onGameEndCallback, this);
 

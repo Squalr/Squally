@@ -1,15 +1,21 @@
 #include "HexusOpponentMenuCaverns.h"
 
-HexusOpponentMenuCaverns * HexusOpponentMenuCaverns::create()
+HexusOpponentMenuCaverns* HexusOpponentMenuCaverns::instance = nullptr;
+
+void HexusOpponentMenuCaverns::registerGlobalScene()
 {
-	HexusOpponentMenuCaverns* instance = new HexusOpponentMenuCaverns();
+	if (HexusOpponentMenuCaverns::instance == nullptr)
+	{
+		HexusOpponentMenuCaverns::instance = new HexusOpponentMenuCaverns();
 
-	instance->autorelease();
+		HexusOpponentMenuCaverns::instance->autorelease();
+		HexusOpponentMenuCaverns::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusOpponentMenuCaverns::instance);
 }
 
-HexusOpponentMenuCaverns::HexusOpponentMenuCaverns() : HexusOpponentMenuBase(HexusChapterPreviewCaverns::stringKeyChapterName)
+HexusOpponentMenuCaverns::HexusOpponentMenuCaverns() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Caverns, HexusChapterPreviewCaverns::stringKeyChapterName)
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuCaverns::onGameEndCallback, this);
 

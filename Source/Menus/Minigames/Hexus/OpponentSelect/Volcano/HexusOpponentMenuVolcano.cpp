@@ -1,15 +1,21 @@
 #include "HexusOpponentMenuVolcano.h"
 
-HexusOpponentMenuVolcano * HexusOpponentMenuVolcano::create()
+HexusOpponentMenuVolcano* HexusOpponentMenuVolcano::instance = nullptr;
+
+void HexusOpponentMenuVolcano::registerGlobalScene()
 {
-	HexusOpponentMenuVolcano* instance = new HexusOpponentMenuVolcano();
+	if (HexusOpponentMenuVolcano::instance == nullptr)
+	{
+		HexusOpponentMenuVolcano::instance = new HexusOpponentMenuVolcano();
 
-	instance->autorelease();
+		HexusOpponentMenuVolcano::instance->autorelease();
+		HexusOpponentMenuVolcano::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusOpponentMenuVolcano::instance);
 }
 
-HexusOpponentMenuVolcano::HexusOpponentMenuVolcano() : HexusOpponentMenuBase(HexusChapterPreviewVolcano::stringKeyChapterName)
+HexusOpponentMenuVolcano::HexusOpponentMenuVolcano() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Volcano, HexusChapterPreviewVolcano::stringKeyChapterName)
 {
 	auto callback = CC_CALLBACK_1(HexusOpponentMenuVolcano::onGameEndCallback, this);
 

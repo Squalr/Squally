@@ -9,13 +9,19 @@ const float MinigamesMenu::menuFontSize = 48.0f;
 const float MinigamesMenu::menuOffset = 128.0f;
 const float MinigamesMenu::spacing = -96.0f;
 
-MinigamesMenu * MinigamesMenu::create()
+MinigamesMenu* MinigamesMenu::instance;
+
+void MinigamesMenu::registerGlobalScene()
 {
-	MinigamesMenu* instance = new MinigamesMenu();
+	if (MinigamesMenu::instance == nullptr)
+	{
+		MinigamesMenu::instance = new MinigamesMenu();
 
-	instance->autorelease();
+		MinigamesMenu::instance->autorelease();
+		MinigamesMenu::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(MinigamesMenu::instance);
 }
 
 MinigamesMenu::MinigamesMenu()
@@ -152,6 +158,11 @@ void MinigamesMenu::onEnter()
 void MinigamesMenu::initializeListeners()
 {
 	GlobalScene::initializeListeners();
+
+	MinigamesMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateMinigames, [](EventCustom* args)
+	{
+		GlobalDirector::loadScene(MinigamesMenu::instance);
+	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 

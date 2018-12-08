@@ -5,8 +5,27 @@ void Bootstrapper::initialize()
 	EngineBootstrapper::initialize();
 
 	// Register scenes
-	TitleScreen::registerGlobalScene();
+	CombatMap::registerGlobalScene();
+	PlatformerMap::registerGlobalScene();
+	LoadingScreen::registerGlobalScene();
+	HexusChapterSelectMenu::registerGlobalScene();
+	HexusOpponentMenuCastle::registerGlobalScene();
+	HexusOpponentMenuCaverns::registerGlobalScene();
+	HexusOpponentMenuForest::registerGlobalScene();
+	HexusOpponentMenuIceCaps::registerGlobalScene();
+	HexusOpponentMenuJungle::registerGlobalScene();
+	HexusOpponentMenuMech::registerGlobalScene();
+	HexusOpponentMenuObelisk::registerGlobalScene();
+	HexusOpponentMenuRuins::registerGlobalScene();
+	HexusOpponentMenuTraining::registerGlobalScene();
+	HexusOpponentMenuVolcano::registerGlobalScene();
+	HexusDeckManagement::registerGlobalScene();
+	HexusRewardsMenu::registerGlobalScene();
+	HexusPuzzlesMenu::registerGlobalScene();
+	HexusStoreMenu::registerGlobalScene();
+	MinigamesMenu::registerGlobalScene();
 	OptionsScene::registerGlobalScene();
+	TitleScreen::registerGlobalScene();
 	WorldMap::registerGlobalScene();
 	SaveSelectMenu::registerGlobalScene();
 
