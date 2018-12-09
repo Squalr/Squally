@@ -13,7 +13,7 @@ class GlobalDirector : public GlobalNode
 public:
 	static GlobalDirector* getInstance();
 
-	static void loadScene(Scene* scene);
+	static void loadScene(Scene* scene, bool saveToHistory = true);
 	static void navigateBack(int backCount = 1);
 	static void registerGlobalNode(GlobalNode* node);
 	static void registerGlobalScene(GlobalScene* node);

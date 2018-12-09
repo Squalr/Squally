@@ -19,7 +19,7 @@ using namespace cocos2d;
 class OptionsMenu : public Hud
 {
 public:
-	static OptionsMenu * create();
+	static OptionsMenu* create();
 
 	void setBackClickCallback(std::function<void()> backClickCallback);
 

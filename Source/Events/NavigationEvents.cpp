@@ -76,7 +76,7 @@ void NavigationEvents::navigateWorldMap()
 void NavigationEvents::navigateHexus(NavigateHexusArgs args)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::EventNavigateWorldMap,
+		NavigationEvents::EventNavigateHexus,
 		&args
 	);
 }

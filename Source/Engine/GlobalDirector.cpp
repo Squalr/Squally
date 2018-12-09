@@ -23,7 +23,7 @@ GlobalDirector::~GlobalDirector()
 {
 }
 
-void GlobalDirector::loadScene(Scene* scene)
+void GlobalDirector::loadScene(Scene* scene, bool saveToHistory)
 {
 	SceneEvents::TriggerBeforeSceneChange();
 
@@ -31,7 +31,11 @@ void GlobalDirector::loadScene(Scene* scene)
 	// This will allows for the Global Director's nodes to listen for events
 	if (GlobalDirector::getInstance()->activeScene != nullptr)
 	{
-		GlobalDirector::getInstance()->sceneHistory.push(GlobalDirector::getInstance()->activeScene);
+		if (saveToHistory)
+		{
+			GlobalDirector::getInstance()->sceneHistory.push(GlobalDirector::getInstance()->activeScene);
+		}
+		
 		GlobalDirector::getInstance()->getParent()->removeChild(GlobalDirector::getInstance());
 	}
 
@@ -66,7 +70,7 @@ void GlobalDirector::navigateBack(int backCount)
 		GlobalDirector::getInstance()->sceneHistory.pop();
 	}
 
-	GlobalDirector::getInstance()->loadScene(scene);
+	GlobalDirector::getInstance()->loadScene(scene, false);
 }
 
 void GlobalDirector::registerGlobalNode(GlobalNode* node)
