@@ -196,7 +196,7 @@ void Hexus::initializeListeners()
 {
 	GlobalScene::initializeListeners();
 
-	Hexus::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCombat, [](EventCustom* args)
+	Hexus::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexus, [](EventCustom* args)
 	{
 		NavigationEvents::NavigateHexusArgs* hexusArgs = static_cast<NavigationEvents::NavigateHexusArgs*>(args->getUserData());
 

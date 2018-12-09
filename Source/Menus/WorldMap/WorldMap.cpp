@@ -213,7 +213,7 @@ void WorldMap::initializeListeners()
 
 void WorldMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!GameUtils::isFocused(this))
+	if (!GameUtils::isVisible(this))
 	{
 		return;
 	}

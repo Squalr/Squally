@@ -50,4 +50,9 @@ void OptionsScene::initializeListeners()
 	{
 		GlobalDirector::loadScene(OptionsScene::instance);
 	}));
+
+	this->menu->setBackClickCallback([]()
+	{
+		NavigationEvents::navigateBack();
+	});
 }

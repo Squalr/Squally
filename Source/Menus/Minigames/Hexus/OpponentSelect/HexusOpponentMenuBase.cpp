@@ -178,7 +178,7 @@ void HexusOpponentMenuBase::onMouseOver(HexusOpponentPreview* opponent)
 
 void HexusOpponentMenuBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!GameUtils::isFocused(this))
+	if (!GameUtils::isVisible(this))
 	{
 		return;
 	}
@@ -186,11 +186,15 @@ void HexusOpponentMenuBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* 
 	switch (keyCode)
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
+		{
 			event->stopPropagation();
 			NavigationEvents::navigateBack();
 			break;
+		}
 		default:
+		{
 			break;
+		}
 	}
 }
 

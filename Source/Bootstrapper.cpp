@@ -8,6 +8,7 @@ void Bootstrapper::initialize()
 	CombatMap::registerGlobalScene();
 	PlatformerMap::registerGlobalScene();
 	LoadingScreen::registerGlobalScene();
+	Hexus::registerGlobalScene();
 	HexusChapterSelectMenu::registerGlobalScene();
 	HexusOpponentMenuCastle::registerGlobalScene();
 	HexusOpponentMenuCaverns::registerGlobalScene();

@@ -111,52 +111,76 @@ Size ConfigManager::getResolutionSize()
 
 	switch (ConfigManager::getResolution())
 	{
-	case R1080x768:
-		size.width = 1080;
-		size.height = 768;
-		break;
-	case R1152x864:
-		size.width = 1152;
-		size.height = 864;
-		break;
-	case R1280x720:
-		size.width = 1280;
-		size.height = 720;
-		break;
-	case R1280x960:
-		size.width = 1280;
-		size.height = 960;
-		break;
-	case R1280x1024:
-		size.width = 1280;
-		size.height = 1024;
-		break;
-	case R1440x900:
-		size.width = 1440;
-		size.height = 900;
-		break;
-	case R1600x900:
-		size.width = 1600;
-		size.height = 900;
-		break;
-	case R1600x1024:
-		size.width = 1600;
-		size.height = 1024;
-		break;
-	case R1920x1080:
-		size.width = 1920;
-		size.height = 1080;
-		break;
-	case R2560x1440:
-		size.width = 2560;
-		size.height = 1440;
-		break;
-	case R3840x2160:
-		size.width = 3840;
-		size.height = 2160;
-		break;
-	default:
-		break;
+		case ResolutionSetting::R1080x768:
+		{
+			size.width = 1080;
+			size.height = 768;
+			break;
+		}
+		case ResolutionSetting::R1152x864:
+		{
+			size.width = 1152;
+			size.height = 864;
+			break;
+		}
+		case ResolutionSetting::R1280x720:
+		{
+			size.width = 1280;
+			size.height = 720;
+			break;
+		}
+		case ResolutionSetting::R1280x960:
+		{
+			size.width = 1280;
+			size.height = 960;
+			break;
+		}
+		case ResolutionSetting::R1280x1024:
+		{
+			size.width = 1280;
+			size.height = 1024;
+			break;
+		}
+		case ResolutionSetting::R1440x900:
+		{
+			size.width = 1440;
+			size.height = 900;
+			break;
+		}
+		case ResolutionSetting::R1600x900:
+		{
+			size.width = 1600;
+			size.height = 900;
+			break;
+		}
+		case ResolutionSetting::R1600x1024:
+		{
+			size.width = 1600;
+			size.height = 1024;
+			break;
+		}
+		case ResolutionSetting::R1920x1080:
+		{
+			size.width = 1920;
+			size.height = 1080;
+			break;
+		}
+		case ResolutionSetting::R2560x1440:
+		{
+			size.width = 2560;
+			size.height = 1440;
+			break;
+		}
+		case ResolutionSetting::R3840x2160:
+		{
+			size.width = 3840;
+			size.height = 2160;
+			break;
+		}
+		default:
+		{
+			break;
+		}
 	}
 
 	return size;
