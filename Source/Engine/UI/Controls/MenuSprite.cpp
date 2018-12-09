@@ -1,5 +1,20 @@
 #include "MenuSprite.h"
 
+#include <typeinfo>
+
+#include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/Input/MouseState.h"
+#include "Engine/Sound/SoundManager.h"
+#include "Engine/Utils/GameUtils.h"
+
+#include "Resources/SoundResources.h"
+
+using namespace cocos2d;
+
 /*
 NOTE TO OTHER DEVELOPERS:
 

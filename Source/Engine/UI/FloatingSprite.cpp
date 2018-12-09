@@ -1,5 +1,10 @@
 #include "FloatingSprite.h"
 
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/renderer/CCTextureCache.h"
+
+using namespace cocos2d;
+
 FloatingSprite* FloatingSprite::create(std::string spriteResourcePath, Vec2 movement, Vec2 time)
 {
 	FloatingSprite* instance = new FloatingSprite(spriteResourcePath, movement, time);

@@ -1,5 +1,9 @@
 #include "StatePlayCard.h"
 
+#include "Engine/Sound/SoundManager.h"
+
+#include "Resources/SoundResources.h"
+
 StatePlayCard* StatePlayCard::create()
 {
 	StatePlayCard* instance = new StatePlayCard();

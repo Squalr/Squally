@@ -1,28 +1,32 @@
 #pragma once
-#include "cocos2d.h"
+#include <functional>
+#include <string>
 
-#include "Engine/Dialogue/DialogueTree.h"
-#include "Engine/Localization/Localization.h"
+#include "cocos/math/CCGeometry.h"
+
 #include "Engine/SmartNode.h"
-#include "Engine/UI/Controls/MenuLabel.h"
-#include "Events/DialogEvents.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Label;
+}
+
+class DialogueTree;
 
 class Dialogue : public SmartNode
 {
 public:
-	static Dialogue * create(std::string filePath, std::string fontResource, Size size);
+	static Dialogue * create(std::string filePath, std::string fontResource, cocos2d::Size size);
 
 	void setDialogueSpeed(float speed);
 	bool showNextDialogue();
 	void setDialogueShownCallback(std::function<void()> callback);
 
-	Label* label;
+	cocos2d::Label* label;
 
 private:
-	Dialogue(DialogueTree* root, std::string fontResource, Size size);
-	~Dialogue();
+	Dialogue(DialogueTree* root, std::string fontResource, cocos2d::Size size);
+	virtual ~Dialogue();
 
 	void updateLabels();
 	void runTypeWriterEffect();

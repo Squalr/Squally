@@ -1,5 +1,14 @@
 #include "CRadioButton.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventDispatcher.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
 CRadioButton* CRadioButton::create(int groupIdentifier)
 {
 	CRadioButton* instance = new CRadioButton(groupIdentifier);

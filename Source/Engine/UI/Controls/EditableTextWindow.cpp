@@ -1,5 +1,15 @@
 ﻿#include "EditableTextWindow.h"
 
+#include "cocos/base/CCEventDispatcher.h"
+#include "cocos/ui/UIRichText.h"
+#include "cocos/ui/UIScrollView.h"
+#include "cocos/ui/UITextField.h"
+
+#include "Engine/Localization/Localization.h"
+
+using namespace cocos2d;
+using namespace cocos2d::ui;
+
 const Color3B EditableTextWindow::lineNumberColor = Color3B::GRAY;
 const std::string EditableTextWindow::StringKeyClickToEdit = "Menu_TextWindow_ClickToEdit";
 

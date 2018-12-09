@@ -1,5 +1,7 @@
 #include "HomeAssistantRobot.h"
 
+#include "Engine/Localization/Localization.h"
+
 const Vec2 HomeAssistantRobot::panOffset = Vec2(-608.0f, 256.0f);
 
 HomeAssistantRobot* HomeAssistantRobot::create(HomeAssistantRobotScene homeAssistantRobotScene)

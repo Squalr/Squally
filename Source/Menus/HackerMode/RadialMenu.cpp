@@ -1,5 +1,11 @@
 #include "RadialMenu.h"
 
+#include "Engine/Hackables/HackableAttribute.h"
+#include "Engine/Hackables/HackableData.h"
+#include "Engine/Hackables/HackableObject.h"
+#include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
+
 const float RadialMenu::radialMenuRadius = 192.0f;
 const float RadialMenu::iconRadius = 36.0f;
 const float RadialMenu::lineWidth = 2.0f;

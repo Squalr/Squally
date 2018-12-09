@@ -1,5 +1,17 @@
 #include "HackerModeHud.h"
 
+#include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCNode.h"
+#include "cocos/base/CCEventCustom.h"
+
+#include "Engine/Hackables/HackableObject.h"
+#include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
+
+#include "Menus/HackerMode/RadialMenu.h"
+
+using namespace cocos2d;
+
 HackerModeHud* HackerModeHud::create(std::function<void()> toggleHackermodeCallback)
 {
 	HackerModeHud* instance = new HackerModeHud(toggleHackermodeCallback);

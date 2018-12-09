@@ -1,5 +1,7 @@
 #include "HexusChapterPreview.h"
 
+#include "Resources/SoundResources.h"
+
 HexusChapterPreview* HexusChapterPreview::create(std::string chapterNameKey)
 {
 	HexusChapterPreview* instance = new HexusChapterPreview(chapterNameKey);

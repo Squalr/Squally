@@ -1,5 +1,7 @@
 #include "StateCardReplace.h"
 
+#include "Resources/UIResources.h"
+
 StateCardReplace* StateCardReplace::create()
 {
 	StateCardReplace* instance = new StateCardReplace();

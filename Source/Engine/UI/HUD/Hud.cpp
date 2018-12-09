@@ -1,5 +1,11 @@
 #include "Hud.h"
 
+#include "cocos/2d/CCCamera.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/renderer/CCRenderer.h"
+
+using namespace cocos2d;
+
 Hud* Hud::create()
 {
 	Hud* instance = new Hud();

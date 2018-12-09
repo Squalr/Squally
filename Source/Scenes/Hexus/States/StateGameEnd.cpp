@@ -1,5 +1,7 @@
 #include "StateGameEnd.h"
 
+#include "Resources/SoundResources.h"
+
 StateGameEnd* StateGameEnd::create()
 {
 	StateGameEnd* instance = new StateGameEnd();

@@ -1,11 +1,6 @@
 #pragma once
-#include "cocos2d.h"
-
 #include "Engine/Events/DeserializationEvents.h"
 #include "Engine/GlobalNode.h"
-#include "Engine/Maps/SerializableObject.h"
-
-using namespace cocos2d;
 
 class ObjectLayerDeserializer : public GlobalNode
 {
@@ -16,7 +11,7 @@ public:
 
 private:
 	ObjectLayerDeserializer();
-	~ObjectLayerDeserializer();
+	virtual ~ObjectLayerDeserializer();
 
 	void initializeListeners() override;
 

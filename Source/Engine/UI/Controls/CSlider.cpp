@@ -1,5 +1,12 @@
 #include "CSlider.h"
 
+#include "cocos2d.h"
+
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
 CSlider* CSlider::create(float progress)
 {
 	CSlider* instance = new CSlider(progress);

@@ -1,5 +1,9 @@
 #include "HackableData.h"
 
+#include "Engine/Hackables/HackableCode.h"
+
+using namespace cocos2d;
+
 HackableData * HackableData::create(std::string name, void* dataAddress, const std::type_info* typeInfo, std::string iconResource)
 {
 
@@ -10,7 +14,9 @@ HackableData * HackableData::create(std::string name, void* dataAddress, const s
 	return hackableData;
 }
 
-HackableData::HackableData(std::string name, void* dataAddress, const std::type_info* typeInfo, std::string iconResource) : HackableAttribute(iconResource)
+HackableData::HackableData(std::string name, void* dataAddress, const std::type_info* typeInfo,
+		std::string iconResource) :
+	HackableAttribute(iconResource)
 {
 	this->variableName = name;
 	this->dataPointer = dataAddress;

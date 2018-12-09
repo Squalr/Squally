@@ -1,5 +1,17 @@
 #include "DeveloperHud.h"
 
+#include "cocos/2d/CCLayer.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+
+#include "Engine/Maps/SerializableMap.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
 const Color4B DeveloperHud::menuColor = Color4B(54.0f, 112.0f, 106.0f, 196.0f);
 
 DeveloperHud* DeveloperHud::create()

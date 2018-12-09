@@ -1,5 +1,12 @@
 #include "SoundManager.h"
 
+#include "cocos/audio/include/AudioEngine.h"
+
+#include "Engine/Config/ConfigManager.h"
+
+using namespace cocos2d;
+using namespace cocos_experimental;
+
 SoundManager* SoundManager::soundManagerInstance = nullptr;
 
 SoundManager* SoundManager::getInstance()

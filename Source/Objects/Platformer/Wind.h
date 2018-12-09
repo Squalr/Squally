@@ -2,8 +2,6 @@
 #include "cocos2d.h"
 
 #include "Engine/Hackables/HackableObject.h"
-#include "Resources/ParticleResources.h"
-#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 

@@ -1,5 +1,7 @@
 #include "IntroSpace.h"
 
+#include "Engine/Localization/Localization.h"
+
 const float IntroSpace::dialogueHeight = 256.0f;
 
 const float IntroSpace::marsDelta = 1280.0f;

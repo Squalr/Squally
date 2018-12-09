@@ -1,5 +1,7 @@
 #include "Steam.h"
 
+#include "steam_api.h"
+
 const int Steam::SteamAppId = 770200;
 
 Steam* Steam::instance = nullptr;

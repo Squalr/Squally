@@ -1,5 +1,16 @@
 #include "SerializableTileLayer.h"
 
+#include "cocos/2d/CCFastTMXLayer.h"
+#include "cocos/2d/CCFastTMXTiledMap.h"
+#include "cocos/base/CCValue.h"
+
+#include <tinyxml2/tinyxml2.h>
+
+#include "Engine/Maps/ObjectifiedTile.h"
+#include "Engine/Utils/GameUtils.h"
+
+using namespace cocos2d;
+
 const std::string SerializableTileLayer::MapKeyPropertyWidth = "width";
 const std::string SerializableTileLayer::MapKeyPropertyHeight = "height";
 const std::string SerializableTileLayer::MapKeyPropertyType = "type";

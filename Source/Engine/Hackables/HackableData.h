@@ -1,10 +1,13 @@
 #pragma once
-#include "cocos2d.h"
+#include <set>
+#include <string>
+#include <typeinfo>
+#include <vector>
 
 #include "Engine/Hackables/HackableAttribute.h"
-#include "Engine/Hackables/HackableCode.h"
+#include "Engine/Utils/HackUtils.h"
 
-using namespace cocos2d;
+class HackableCode;
 
 class HackableData : public HackableAttribute
 {
@@ -22,7 +25,7 @@ public:
 
 private:
 	HackableData(std::string name, void* dataAddress, const std::type_info* typeInfo, std::string iconResource);
-	~HackableData();
+	virtual ~HackableData();
 
 	std::set<void*>* codeTable;
 };

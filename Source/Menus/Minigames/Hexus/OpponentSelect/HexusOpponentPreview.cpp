@@ -1,5 +1,7 @@
 #include "HexusOpponentPreview.h"
 
+#include "Resources/SoundResources.h"
+
 HexusOpponentPreview* HexusOpponentPreview::create(HexusOpponentData* opponentData, std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback)
 {
 	HexusOpponentPreview* instance = new HexusOpponentPreview(opponentData, onGameEndCallback);

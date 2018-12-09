@@ -1,5 +1,7 @@
 #include "PauseMenu.h"
 
+#include "Resources/SoundResources.h"
+
 const Color3B PauseMenu::TitleColor = Color3B(88, 188, 193);
 const std::string PauseMenu::StringKeyMenuPause = "Menu_Pause";
 const std::string PauseMenu::StringKeyResume = "Menu_Pause_Resume";

@@ -1,5 +1,10 @@
 #include "ForestEnemyDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Enemies/Forest/ForestEnemies.h"
+
+using namespace cocos2d;
+
 ForestEnemyDeserializer* ForestEnemyDeserializer::instance = nullptr;
 
 void ForestEnemyDeserializer::registerGlobalNode()

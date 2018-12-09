@@ -1,42 +1,45 @@
 #pragma once
-#include <typeinfo>
-#include "cocos2d.h"
+#include "cocos/math/Vec2.h"
 
 #include "MenuSprite.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Label;
+	class Node;
+}
 
 class TextMenuSprite : public MenuSprite
 {
 public:
 	static TextMenuSprite * create(
-		Label* normalLabel,
-		Label* selectedLabel,
+		cocos2d::Label* normalLabel,
+		cocos2d::Label* selectedLabel,
 		std::string spriteNormal,
 		std::string spriteSelectedResource);
 	static TextMenuSprite * create(
-		Label* normalLabel,
-		Label* selectedLabel,
-		Node* spriteNormal,
+		cocos2d::Label* normalLabel,
+		cocos2d::Label* selectedLabel,
+		cocos2d::Node* spriteNormal,
 		std::string spriteSelectedResource);
 	static TextMenuSprite * create(
-		Label* normalLabel,
-		Label* selectedLabel, 
-		Node* nodeNormal,
-		Node* nodeSelected);
+		cocos2d::Label* normalLabel,
+		cocos2d::Label* selectedLabel, 
+		cocos2d::Node* nodeNormal,
+		cocos2d::Node* nodeSelected);
 
-	void setTextOffset(Vec2 offset);
+	void setTextOffset(cocos2d::Vec2 offset);
 
 protected:
 	TextMenuSprite(
-		Label* normalLabel,
-		Label* selectedLabel,
-		Node* nodeNormal,
-		Node* nodeSelected);
-	~TextMenuSprite();
+		cocos2d::Label* normalLabel,
+		cocos2d::Label* selectedLabel,
+		cocos2d::Node* nodeNormal,
+		cocos2d::Node* nodeSelected);
+	virtual ~TextMenuSprite();
 
-	Label* normalContentLabel;
-	Label* selectedContentLabel;
-	Node* normalContent;
-	Node* selectedContent;
+	cocos2d::Label* normalContentLabel;
+	cocos2d::Label* selectedContentLabel;
+	cocos2d::Node* normalContent;
+	cocos2d::Node* selectedContent;
 };

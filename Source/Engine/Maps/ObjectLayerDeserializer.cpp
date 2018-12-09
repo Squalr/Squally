@@ -1,5 +1,15 @@
 #include "ObjectLayerDeserializer.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/GlobalDirector.h"
+#include "Engine/Maps/SerializableLayer.h"
+#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Utils/GameUtils.h"
+
+using namespace cocos2d;
+
 const std::string ObjectLayerDeserializer::MapKeyObjectLayer = "objects";
 ObjectLayerDeserializer* ObjectLayerDeserializer::instance = nullptr;
 

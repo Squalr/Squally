@@ -1,5 +1,13 @@
 #include "Dialogue.h"
 
+#include "cocos/2d/CCLabel.h"
+
+#include "Engine/Dialogue/DialogueTree.h"
+#include "Engine/Localization/Localization.h"
+#include "Events/DialogEvents.h"
+
+using namespace cocos2d;
+
 const std::string Dialogue::ScheduleKeyTypeWriterEffect = "SCHEDULE_TYPE_WRITER_EFFECT";
 const float Dialogue::DefaultTypeSpeed = 0.04f;
 

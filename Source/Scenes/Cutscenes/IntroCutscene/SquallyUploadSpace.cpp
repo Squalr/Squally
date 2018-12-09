@@ -1,5 +1,7 @@
 #include "SquallyUploadSpace.h"
 
+#include "Engine/Localization/Localization.h"
+
 const Vec2 SquallyUploadSpace::panOffset = Vec2(-608.0f, 256.0f);
 
 SquallyUploadSpace* SquallyUploadSpace::create()
