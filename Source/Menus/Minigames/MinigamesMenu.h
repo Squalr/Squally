@@ -13,6 +13,7 @@
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
+#include "Menus/MenuBackground.h"
 
 using namespace cocos2d;
 
@@ -36,6 +37,7 @@ private:
 	void onHexusPuzzlesClick(MenuSprite* menuSprite);
 	TextMenuSprite* createComingSoonButton();
 
+	Node* backgroundNode;
 	ScrollPane* scrollPane;
 	TextMenuSprite* hexusButton;
 	TextMenuSprite* hexusPuzzlesButton;
@@ -58,4 +60,3 @@ private:
 	static const float menuOffset;
 	static const float spacing;
 };
-

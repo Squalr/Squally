@@ -73,20 +73,18 @@ void HexusOpponentMenuBase::onEnter()
 {
 	GlobalScene::onEnter();
 
-	// TODO: Check if chapter was just beat, if so, save that and navigate backwards
-	/*
-	
+	if (!SaveManager::getGlobalDataOrDefault(this->chapterProgressSaveKey, cocos2d::Value(false)).asBool())
+	{
+		std::string lastOpponentWinsKey = HexusOpponentData::winsPrefix + this->opponents.back()->hexusOpponentData->enemyNameKey;
 
-		if (gameState->opponentData == this->opponents.back()->hexusOpponentData)
+		if (SaveManager::getGlobalDataOrDefault(lastOpponentWinsKey, cocos2d::Value(0)).asInt() > 0)
 		{
-			if (!SaveManager::hasGlobalData(this->chapterProgressSaveKey) || !SaveManager::getGlobalData(this->chapterProgressSaveKey).asBool())
-			{
-				// Beat the last opponent -- save that we beat the chapter and navigate back to chapter select
-				SaveManager::saveGlobalData(this->chapterProgressSaveKey, cocos2d::Value(true));
-				backToChapterSelect = true;
-			}
+			// Beat the last opponent -- save that we beat the chapter and navigate back to chapter select
+			SaveManager::saveGlobalData(this->chapterProgressSaveKey, cocos2d::Value(true));
+			NavigationEvents::navigateBack(1);
+			return;
 		}
-		*/
+	}
 
 	const float delay = 0.25f;
 	const float duration = 0.35f;

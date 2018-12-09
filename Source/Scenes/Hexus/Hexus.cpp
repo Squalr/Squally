@@ -226,6 +226,8 @@ void Hexus::startGame(HexusOpponentData* opponentData)
 	this->gameState->previousStateType = GameState::StateType::EmptyState;
 	this->gameState->stateType = GameState::StateType::EmptyState;
 
+	this->avatars->initializeEnemyAvatar(opponentData);
+
 	this->gameState->playerBinaryCards->clear();
 	this->gameState->playerDecimalCards->clear();
 	this->gameState->playerHexCards->clear();
