@@ -1,11 +1,6 @@
 #pragma once
-#include "cocos2d.h"
-
 #include "Engine/Events/DeserializationEvents.h"
 #include "Engine/GlobalNode.h"
-#include "Engine/Physics/CollisionObject.h"
-
-using namespace cocos2d;
 
 class CollisionDeserializer : public GlobalNode
 {
@@ -14,7 +9,7 @@ public:
 
 private:
 	CollisionDeserializer();
-	~CollisionDeserializer();
+	virtual ~CollisionDeserializer();
 
 	void initializeListeners() override;
 	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);

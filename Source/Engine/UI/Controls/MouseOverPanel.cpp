@@ -1,5 +1,13 @@
 #include "MouseOverPanel.h"
 
+#include "cocos2d.h"
+
+#include "Engine/Events/MouseEvents.h"
+#include "Engine/SmartNode.h"
+#include "Engine/Utils/GameUtils.h"
+
+using namespace cocos2d;
+
 MouseOverPanel * MouseOverPanel::create(Node* visibleContent, Node* mouseOverContent, Node* panelParent, Size size)
 {
 	MouseOverPanel* instance = new MouseOverPanel(visibleContent, mouseOverContent, panelParent, size);

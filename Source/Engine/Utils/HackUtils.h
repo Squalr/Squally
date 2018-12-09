@@ -1,14 +1,6 @@
 #pragma once
-#include <bitset>
-
-#include "cocos2d.h"
-
-//#include "asmtk.h"
-#include "udis86.h"
-
-using namespace cocos2d;
-//using namespace asmjit;
-//using namespace asmtk;
+#include <string>
+#include <typeinfo>
 
 class HackUtils
 {

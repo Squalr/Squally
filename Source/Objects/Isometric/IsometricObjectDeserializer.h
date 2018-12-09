@@ -1,12 +1,7 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Engine/Events/DeserializationEvents.h"
 #include "Engine/GlobalNode.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Objects/Isometric/IsometricObjects.h"
-
-using namespace cocos2d;
 
 class IsometricObjectDeserializer : public GlobalNode
 {

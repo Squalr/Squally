@@ -1,18 +1,18 @@
 #pragma once
-#include "cocos2d.h"
 
-#include "Engine/GlobalDirector.h"
 #include "Engine/GlobalNode.h"
-#include "Engine/Physics/CollisionObject.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class EventCustom;
+}
 
 class PlatformerCollisionMapping : public GlobalNode
 {
 public:
 	static void registerGlobalNode();
 
-	void onMapRequest(EventCustom* eventCustom);
+	void onMapRequest(cocos2d::EventCustom* eventCustom);
 
 	static const std::string KeyCollisionTypeSolid;
 	static const std::string KeyCollisionTypePassThrough;

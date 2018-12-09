@@ -1,5 +1,7 @@
 #include "VaporLabs.h"
 
+#include "Engine/Localization/Localization.h"
+
 const Vec2 VaporLabs::panOffset = Vec2(-512.0f, 24.0f);
 
 VaporLabs* VaporLabs::create()

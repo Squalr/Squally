@@ -1,5 +1,8 @@
 #include "HexusPuzzlesMenu.h"
 
+#include "Resources/SoundResources.h"
+#include "Resources/MapResources.h"
+
 const Color3B HexusPuzzlesMenu::TitleColor = Color3B(88, 188, 193);
 const std::string HexusPuzzlesMenu::StringKeyHexusPuzzles = "Menu_Hexus_Puzzles";
 

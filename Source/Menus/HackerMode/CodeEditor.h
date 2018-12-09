@@ -3,6 +3,7 @@
 #include "ui/CocosGUI.h"
 
 #include "Engine/Localization/Localization.h"
+#include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Utils/StrUtils.h"

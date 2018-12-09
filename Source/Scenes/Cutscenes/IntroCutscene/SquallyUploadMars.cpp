@@ -1,5 +1,7 @@
 #include "SquallyUploadMars.h"
 
+#include "Engine/Localization/Localization.h"
+
 const Vec2 SquallyUploadMars::panOffset = Vec2(-608.0f, 256.0f);
 
 SquallyUploadMars* SquallyUploadMars::create()

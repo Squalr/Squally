@@ -1,5 +1,13 @@
 #include "IsometricDecorDeserializer.h"
 
+#include "Objects/Isometric/IsometricDecorObject.h"
+#include "Objects/Isometric/IsometricObjectDeserializer.h"
+
+#include "Engine/GlobalDirector.h"
+#include "Engine/Utils/GameUtils.h"
+
+using namespace cocos2d;
+
 IsometricDecorDeserializer* IsometricDecorDeserializer::instance = nullptr;
 const std::string IsometricDecorDeserializer::KeyTypeDecor = "iso_decor";
 

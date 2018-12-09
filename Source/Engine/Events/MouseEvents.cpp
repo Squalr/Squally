@@ -1,5 +1,10 @@
 #include "MouseEvents.h"
 
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventDispatcher.h"
+
+using namespace cocos2d;
+
 const std::string MouseEvents::MouseMoveEvent = "EVENT_MOUSE_MOVE";
 const std::string MouseEvents::MouseRefreshEvent = "EVENT_MOUSE_REFRESH";
 const std::string MouseEvents::MouseDownEvent = "EVENT_MOUSE_DOWN";

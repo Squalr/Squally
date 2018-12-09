@@ -1,5 +1,12 @@
 #include "HelpArrow.h"
 
+#include "cocos/2d/CCActionInterval.h"
+
+#include "Engine/Animations/SmartAnimationNode.h"
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
 HelpArrow* HelpArrow::create()
 {
 	HelpArrow* instance = new HelpArrow();

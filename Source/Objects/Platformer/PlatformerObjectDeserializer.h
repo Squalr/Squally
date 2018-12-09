@@ -1,11 +1,7 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Engine/Events/DeserializationEvents.h"
 #include "Engine/GlobalNode.h"
-#include "Objects/Platformer/PlatformerObjects.h"
-
-using namespace cocos2d;
 
 class PlatformerObjectDeserializer : public GlobalNode
 {

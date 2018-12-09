@@ -1,17 +1,15 @@
 #pragma once
-#include "cocos2d.h"
+#include <string>
 
-#include "Engine/Utils/HackUtils.h"
+#include "cocos/2d/CCNode.h"
 
-using namespace cocos2d;
-
-class HackableAttribute : public Node
+class HackableAttribute : public cocos2d::Node
 {
 public:
 	std::string iconResource;
 
 protected:
 	HackableAttribute(std::string iconResource);
-	~HackableAttribute();
+	virtual ~HackableAttribute();
 };
 

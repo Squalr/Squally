@@ -1,5 +1,12 @@
 #include "Wind.h"
 
+#include "Engine/Hackables/HackableCode.h"
+#include "Engine/Hackables/HackableData.h"
+#include "Engine/Utils/GameUtils.h"
+
+#include "Resources/ParticleResources.h"
+#include "Resources/UIResources.h"
+
 Wind* Wind::create(ValueMap* initProperties)
 {
 	Wind* instance = new Wind(initProperties);

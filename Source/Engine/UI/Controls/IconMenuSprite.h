@@ -1,10 +1,15 @@
 #pragma once
-#include <typeinfo>
-#include "cocos2d.h"
+#include <string>
+
+#include "cocos/math/Vec2.h"
 
 #include "MenuSprite.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Node;
+	class Sprite;
+}
 
 class IconMenuSprite : public MenuSprite
 {
@@ -15,26 +20,26 @@ public:
 		std::string spriteNormal,
 		std::string spriteSelectedResource);
 	static IconMenuSprite * create(
-		Sprite* normalSprite,
-		Sprite* selectedSprite,
+		cocos2d::Sprite* normalSprite,
+		cocos2d::Sprite* selectedSprite,
 		std::string spriteNormal,
 		std::string spriteSelectedResource);
 	static IconMenuSprite * create(
-		Sprite* normalSprite,
-		Sprite* selectedSprite,
-		Node* nodeNormal,
-		Node* nodeSelected);
+		cocos2d::Sprite* normalSprite,
+		cocos2d::Sprite* selectedSprite,
+		cocos2d::Node* nodeNormal,
+		cocos2d::Node* nodeSelected);
 
-	void setIconOffset(Vec2 offset);
+	void setIconOffset(cocos2d::Vec2 offset);
 
 protected:
 	IconMenuSprite(
-		Sprite* normalSprite,
-		Sprite* selectedSprite,
-		Node* nodeNormal,
-		Node* nodeSelected);
-	~IconMenuSprite();
+		cocos2d::Sprite* normalSprite,
+		cocos2d::Sprite* selectedSprite,
+		cocos2d::Node* nodeNormal,
+		cocos2d::Node* nodeSelected);
+	virtual ~IconMenuSprite();
 
-	Sprite* normalContentSprite;
-	Sprite* selectedContentSprite;
+	cocos2d::Sprite* normalContentSprite;
+	cocos2d::Sprite* selectedContentSprite;
 };

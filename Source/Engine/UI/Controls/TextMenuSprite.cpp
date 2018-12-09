@@ -1,5 +1,13 @@
 #include "TextMenuSprite.h"
 
+#include <typeinfo>
+
+#include "cocos/2d/CCLabel.h"
+#include "cocos/2d/CCNode.h"
+#include "cocos/2d/CCSprite.h"
+
+using namespace cocos2d;
+
 TextMenuSprite* TextMenuSprite::create(
 	Label* normalLabel,
 	Label* selectedLabel,

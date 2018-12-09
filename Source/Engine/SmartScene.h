@@ -1,15 +1,16 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/2d/CCScene.h"
 
-#include "Engine/Events/SceneEvents.h"
+namespace cocos2d
+{
+	class EventListener;
+}
 
-using namespace cocos2d;
-
-class SmartScene : public Scene
+class SmartScene : public cocos2d::Scene
 {
 public:
 	SmartScene();
-	~SmartScene();
+	virtual ~SmartScene();
 
 	virtual void resume() override;
 
@@ -18,7 +19,7 @@ protected:
 	virtual void initializePositions();
 	virtual void initializeListeners();
 	virtual void removeAllListeners();
-	void addEventListener(EventListener* listener);
-	void addEventListenerIgnorePause(EventListener* listener);
+	void addEventListener(cocos2d::EventListener* listener);
+	void addEventListenerIgnorePause(cocos2d::EventListener* listener);
 };
 

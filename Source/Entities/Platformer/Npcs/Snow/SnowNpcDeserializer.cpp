@@ -1,5 +1,10 @@
 #include "SnowNpcDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Npcs/Snow/SnowNpcs.h"
+
+using namespace cocos2d;
+
 SnowNpcDeserializer* SnowNpcDeserializer::instance = nullptr;
 
 void SnowNpcDeserializer::registerGlobalNode()

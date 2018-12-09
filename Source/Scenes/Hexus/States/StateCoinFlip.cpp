@@ -1,5 +1,7 @@
 #include "StateCoinFlip.h"
 
+#include "Resources/HexusResources.h"
+
 StateCoinFlip* StateCoinFlip::create()
 {
 	StateCoinFlip* instance = new StateCoinFlip();

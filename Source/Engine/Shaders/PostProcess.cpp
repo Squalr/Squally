@@ -1,5 +1,15 @@
 #include "PostProcess.h"
 
+#include "cocos/2d/CCRenderTexture.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/platform/CCPlatformMacros.h"
+#include "cocos/renderer/CCGLProgram.h"
+
+#include "Engine/Camera/GameCamera.h"
+
+using namespace cocos2d;
+
 PostProcess* PostProcess::create(const std::string& vertexShaderFile, const std::string& fragmentShaderFile)
 {
 	PostProcess* postProcess = new  PostProcess();

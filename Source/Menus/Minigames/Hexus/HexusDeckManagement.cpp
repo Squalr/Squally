@@ -1,5 +1,9 @@
 #include "HexusDeckManagement.h"
 
+#include "Engine/Sound/SoundManager.h"
+
+#include "Resources/SoundResources.h"
+
 HexusDeckManagement * HexusDeckManagement::create()
 {
 	HexusDeckManagement* instance = new HexusDeckManagement();

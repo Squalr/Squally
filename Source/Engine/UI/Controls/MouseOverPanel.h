@@ -1,29 +1,34 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/math/CCGeometry.h"
 
-#include "Engine/Events/MouseEvents.h"
 #include "Engine/SmartNode.h"
-#include "Engine/Utils/GameUtils.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class EventCustom;
+	class LayerColor;
+	class Node;
+}
 
 class MouseOverPanel : public SmartNode
 {
 public:
-	static MouseOverPanel * create(Node* visibleContent, Node* mouseOverContent, Node* panelParent, Size size);
+	static MouseOverPanel * create(cocos2d::Node* visibleContent, cocos2d::Node* mouseOverContent,
+			cocos2d::Node* panelParent, cocos2d::Size size);
 
 private:
-	MouseOverPanel(Node* visibleContent, Node* mouseOverContent, Node* panelParent, Size size);
-	~MouseOverPanel();
+	MouseOverPanel(cocos2d::Node* visibleContent,
+			cocos2d::Node* mouseOverContent, cocos2d::Node* panelParent, cocos2d::Size size);
+	virtual ~MouseOverPanel();
 
 	void initializeListeners();
-	void onMouseMove(EventCustom* args);
+	void onMouseMove(cocos2d::EventCustom* args);
 
-	LayerColor* panelBackgroundFrame;
-	LayerColor* panelBackground;
-	Node* content;
-	Node* panelContent;
-	Node* panelParentHost;
+	cocos2d::LayerColor* panelBackgroundFrame;
+	cocos2d::LayerColor* panelBackground;
+	cocos2d::Node* content;
+	cocos2d::Node* panelContent;
+	cocos2d::Node* panelParentHost;
 
 	const int frameWidth = 4;
 };

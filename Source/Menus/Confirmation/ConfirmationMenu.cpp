@@ -1,5 +1,7 @@
 #include "ConfirmationMenu.h"
 
+#include "Resources/SoundResources.h"
+
 ConfirmationMenu * ConfirmationMenu::create()
 {
 	ConfirmationMenu* instance = new ConfirmationMenu();

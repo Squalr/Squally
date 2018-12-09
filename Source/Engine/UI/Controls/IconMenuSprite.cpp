@@ -1,5 +1,10 @@
 #include "IconMenuSprite.h"
 
+#include "cocos/2d/CCNode.h"
+#include "cocos/2d/CCSprite.h"
+
+using namespace cocos2d;
+
 IconMenuSprite* IconMenuSprite::create(
 	std::string normalSprite,
 	std::string selectedSprite,

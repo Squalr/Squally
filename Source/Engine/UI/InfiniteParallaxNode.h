@@ -1,26 +1,35 @@
 #pragma once
-#include "cocos2d.h"
+#include <string>
+#include <vector>
 
-using namespace cocos2d;
+#include "cocos/2d/CCParallaxNode.h"
+#include "cocos/math/Mat4.h"
+#include "cocos/math/Vec2.h"
 
-class InfiniteParallaxNode : public ParallaxNode
+namespace cocos2d
+{
+	class Node;
+	class Renderer;
+}
+
+class InfiniteParallaxNode : public cocos2d::ParallaxNode
 {
 public:
 	static InfiniteParallaxNode* create(std::string spriteResourcePath);
 
 	virtual void setScale(float scale) override;
-	virtual void setAnchorPoint(const Vec2& anchor) override;
+	virtual void setAnchorPoint(const cocos2d::Vec2& anchor) override;
 
 protected:
 	InfiniteParallaxNode(std::string spriteResourcePath);
-	~InfiniteParallaxNode();
+	virtual ~InfiniteParallaxNode();
 
 	void rebuildNodes();
-	void visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags) override;
+	void visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
 
-	std::vector<Node*>* nodes;
+	std::vector<cocos2d::Node*>* nodes;
 	float spriteWidth;
 	float spriteScale;
-	Vec2 spriteAnchor;
+	cocos2d::Vec2 spriteAnchor;
 	std::string resourcePath;
 };

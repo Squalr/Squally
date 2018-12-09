@@ -1,5 +1,16 @@
 #include "MusicDeserializer.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/GlobalDirector.h"
+#include "Engine/Utils/GameUtils.h"
+
+#include "Engine/Maps/SerializableLayer.h"
+#include "Engine/Sound/SoundManager.h"
+
+using namespace cocos2d;
+
 MusicDeserializer* MusicDeserializer::instance = nullptr;
 const std::string MusicDeserializer::KeyMusicProperty = "music";
 

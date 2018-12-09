@@ -1,25 +1,24 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalNode.h"
-#include "Engine/Utils/GameUtils.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Scene;
+}
 
 class GlobalDirector : public GlobalNode
 {
 public:
 	static GlobalDirector* getInstance();
 
-	void loadScene(Scene* scene);
+	void loadScene(cocos2d::Scene* scene);
 	void registerGlobalNode(GlobalNode* node);
 
 protected:
 	GlobalDirector();
-	~GlobalDirector();
+	virtual ~GlobalDirector();
 
-	Scene* activeScene;
+	cocos2d::Scene* activeScene;
 	std::vector<GlobalNode*> globalNodes;
 
 	static GlobalDirector* instance;

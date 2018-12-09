@@ -1,12 +1,7 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/SmartNode.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Resources/UIResources.h"
 
-using namespace cocos2d;
+class SmartAnimationNode;
 
 class HelpArrow : public SmartNode
 {
@@ -18,7 +13,7 @@ public:
 
 private:
 	HelpArrow();
-	~HelpArrow();
+	virtual ~HelpArrow();
 
 	void onEnter() override;
 

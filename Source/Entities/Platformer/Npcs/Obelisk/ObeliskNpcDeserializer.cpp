@@ -1,5 +1,10 @@
 #include "ObeliskNpcDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Npcs/Obelisk/ObeliskNpcs.h"
+
+using namespace cocos2d;
+
 ObeliskNpcDeserializer* ObeliskNpcDeserializer::instance = nullptr;
 
 void ObeliskNpcDeserializer::registerGlobalNode()
