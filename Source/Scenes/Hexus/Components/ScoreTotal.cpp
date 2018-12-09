@@ -12,12 +12,12 @@ ScoreTotal* ScoreTotal::create()
 ScoreTotal::ScoreTotal()
 {
 	this->playerTotalFrame = Sprite::create(HexusResources::ScoreBox);
-	this->playerTotal = Label::create("", Localization::getCodingFont(), 48.0f);
+	this->playerTotal = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
 	this->playerTotal->enableOutline(Color4B::BLACK, 3);
 	this->playerLeaderEmblem = Sprite::create(HexusResources::LeaderEmblem);
 
 	this->enemyTotalFrame = Sprite::create(HexusResources::ScoreBox);
-	this->enemyTotal = Label::create("", Localization::getCodingFont(), 48.0f);
+	this->enemyTotal = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
 	this->enemyTotal->enableOutline(Color4B::BLACK, 3);
 	this->enemyLeaderEmblem = Sprite::create(HexusResources::LeaderEmblem);
 

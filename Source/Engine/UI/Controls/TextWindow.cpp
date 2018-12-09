@@ -77,9 +77,9 @@ void TextWindow::initializePositions()
 {
 	SmartNode::initializePositions();
 
-	this->scrollView->setSize(windowSize);
+	this->scrollView->setContentSize(windowSize);
 	this->scrollView->setInnerContainerSize(Size(windowSize.width, windowSize.height * 2));
-	this->displayedText->setSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f,
+	this->displayedText->setContentSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f,
 			windowSize.height - TextWindow::padding.height * 2.0f));
 
 	this->scrollView->setPosition(Vec2(0.0f, 0.0f));

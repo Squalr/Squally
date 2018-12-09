@@ -19,7 +19,7 @@ PlushieMonkey* PlushieMonkey::create(ValueMap* initProperties)
 PlushieMonkey::PlushieMonkey(ValueMap* initProperties) : Plushie(initProperties)
 {
 	Sprite* coin = Sprite::create(UIResources::Menus_Icons_Coins);
-	Label* gold = Label::create("+200", Localization::getMainFont(), 24.0f);
+	Label* gold = Label::createWithTTF("+200", Localization::getMainFont(), 24.0f);
 	gold->enableOutline(Color4B::BLACK, 2);
 
 	coin->setScale(0.5f);
@@ -29,7 +29,7 @@ PlushieMonkey::PlushieMonkey(ValueMap* initProperties) : Plushie(initProperties)
 	this->sprite->addChild(coin);
 	this->sprite->addChild(gold);
 
-	this->valueLabel = Label::create(std::to_string(PlushieMonkey::lockCountDown), Localization::getMainFont(), 24.0f);
+	this->valueLabel = Label::createWithTTF(std::to_string(PlushieMonkey::lockCountDown), Localization::getMainFont(), 24.0f);
 
 	this->valueLabel->setPosition(-48.0f, 128.0f);
 	this->valueLabel->enableOutline(Color4B::BLACK, 2.0f);

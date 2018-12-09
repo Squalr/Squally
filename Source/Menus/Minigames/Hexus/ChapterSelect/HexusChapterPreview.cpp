@@ -17,7 +17,7 @@ HexusChapterPreview::HexusChapterPreview(std::string chapterNameKey)
 	this->callback = nullptr;
 	this->frame = MenuSprite::create(UIResources::Menus_MinigamesMenu_Hexus_EnemyFrame, UIResources::Menus_MinigamesMenu_Hexus_EnemyFrameHover);
 	this->frame->setClickSound(SoundResources::Menus_Simple_Button);
-	this->text = Label::create("CHAPTER_PREVIEW", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	this->text = Label::createWithTTF("CHAPTER_PREVIEW", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	DrawNode* clipStencil = DrawNode::create();
 	Size frameSize = Size(this->frame->getContentSize().width, this->frame->getContentSize().height);

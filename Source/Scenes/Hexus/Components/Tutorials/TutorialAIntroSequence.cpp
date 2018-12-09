@@ -12,41 +12,41 @@ TutorialAIntroSequence* TutorialAIntroSequence::create()
 TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::TutorialA, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->scoreTotalsTutorialLabel = Label::create("The objective is simple. Whoever has the higher score at the end of a round wins the round.",
+	this->scoreTotalsTutorialLabel = Label::createWithTTF("The objective is simple. Whoever has the higher score at the end of a round wins the round.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(420.0f, 0.0f)
 	);
-	this->lossDisplayTutorialLabel = Label::create("Each player starts the game with 2 lives. The player with the lowest score at the end of a round will lose a life.\n\nIn this game, both players have lost 1 life.",
+	this->lossDisplayTutorialLabel = Label::createWithTTF("Each player starts the game with 2 lives. The player with the lowest score at the end of a round will lose a life.\n\nIn this game, both players have lost 1 life.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(420.0f, 0.0f)
 	);
-	this->rowTotalsTutorialLabel = Label::create("Increase your score by playing cards onto rows.",
+	this->rowTotalsTutorialLabel = Label::createWithTTF("Increase your score by playing cards onto rows.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(640.0f, 0.0f),
 		cocos2d::TextHAlignment::CENTER
 	);
-	this->binaryCardsTutorialLabel = Label::create("Blue cards are binary cards.",
+	this->binaryCardsTutorialLabel = Label::createWithTTF("Blue cards are binary cards.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(640.0f, 0.0f),
 		cocos2d::TextHAlignment::CENTER
 	);
-	this->decimalCardsTutorialLabel = Label::create("White cards are decimal cards.",
+	this->decimalCardsTutorialLabel = Label::createWithTTF("White cards are decimal cards.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(640.0f, 0.0f),
 		cocos2d::TextHAlignment::CENTER
 	);
-	this->hexCardsTutorialLabel = Label::create("Green cards are hexadecimal cards.",
+	this->hexCardsTutorialLabel = Label::createWithTTF("Green cards are hexadecimal cards.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(640.0f, 0.0f),
 		cocos2d::TextHAlignment::CENTER
 	);
-	this->handCardsTutorialLabel = Label::create("Give it a shot! Play your cards into their corresponding rows.",
+	this->handCardsTutorialLabel = Label::createWithTTF("Give it a shot! Play your cards into their corresponding rows.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(640.0f, 0.0f),
@@ -57,56 +57,56 @@ TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::T
 	this->helpArrowRowTotals = HelpArrow::create();
 	this->helpArrowHandCards = HelpArrow::create();
 
-	Label* scoreTotalsNextLabel = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* scoreTotalsNextLabelSelected = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* scoreTotalsNextLabel = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* scoreTotalsNextLabelSelected = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	scoreTotalsNextLabel->enableOutline(Color4B::BLACK, 2);
 	scoreTotalsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->scoreTotalsNextButton = TextMenuSprite::create(scoreTotalsNextLabel, scoreTotalsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
-	Label* lossesDisplayNextLabel = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* lossesDisplayNextLabelSelected = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* lossesDisplayNextLabel = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* lossesDisplayNextLabelSelected = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	lossesDisplayNextLabel->enableOutline(Color4B::BLACK, 2);
 	lossesDisplayNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->lossDisplayNextButton = TextMenuSprite::create(lossesDisplayNextLabel, lossesDisplayNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
-	Label* rowTotalsNextLabel = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* rowTotalsNextLabelSelected = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont())); 
+	Label* rowTotalsNextLabel = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* rowTotalsNextLabelSelected = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont())); 
 
 	rowTotalsNextLabel->enableOutline(Color4B::BLACK, 2);
 	rowTotalsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->rowTotalsNextButton = TextMenuSprite::create(rowTotalsNextLabel, rowTotalsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
-	Label* binaryCardsNextLabel = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* binaryCardsNextLabelSelected = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* binaryCardsNextLabel = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* binaryCardsNextLabelSelected = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	binaryCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	binaryCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->binaryCardsNextButton = TextMenuSprite::create(binaryCardsNextLabel, binaryCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
-	Label* decimalCardsNextLabel = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* decimalCardsNextLabelSelected = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* decimalCardsNextLabel = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* decimalCardsNextLabelSelected = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	decimalCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	decimalCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->decimalCardsNextButton = TextMenuSprite::create(decimalCardsNextLabel, decimalCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
-	Label* hexCardsNextLabel = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* hexCardsNextLabelSelected = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* hexCardsNextLabel = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* hexCardsNextLabelSelected = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	hexCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	hexCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->hexCardsNextButton = TextMenuSprite::create(hexCardsNextLabel, hexCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
-	Label* handCardsNextLabel = Label::create("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* handCardsNextLabelSelected = Label::create("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* handCardsNextLabel = Label::createWithTTF("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* handCardsNextLabelSelected = Label::createWithTTF("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	handCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	handCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);

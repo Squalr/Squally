@@ -27,21 +27,21 @@ HexusDeckManagement::HexusDeckManagement()
 	this->storageScrollPane = ScrollPane::create(Size(720.0f, 820.0f), Color4B(0, 0, 0, 196));
 	this->deckScrollPane = ScrollPane::create(Size(720.0f, 820.0f), Color4B(0, 0, 0, 196));
 	this->storageSprite = Sprite::create(UIResources::Menus_Icons_TreasureChest);
-	this->storageLabel = Label::create("Cards in Storage", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()), Size::ZERO, cocos2d::TextHAlignment::LEFT);
+	this->storageLabel = Label::createWithTTF("Cards in Storage", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()), Size::ZERO, cocos2d::TextHAlignment::LEFT);
 	this->deckSprite = Sprite::create(UIResources::Menus_Icons_Satchel);
-	this->deckLabel = Label::create("Cards in Deck", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()), Size::ZERO, cocos2d::TextHAlignment::RIGHT);
+	this->deckLabel = Label::createWithTTF("Cards in Deck", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()), Size::ZERO, cocos2d::TextHAlignment::RIGHT);
 	this->titleSprite = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_AxeLogo);
 
-	this->totalCardsInDeckLabel = Label::create("Cards in Deck", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->totalCardsInDeckValueLabel = Label::create("PLACEHOLDER_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->binaryCardsInDeckLabel = Label::create("Binary Cards", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->binaryCardsInDeckValueLabel = Label::create("PLACEHOLDER_BINARY_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->decimalCardsInDeckLabel = Label::create("Decimal Cards", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->decimalCardsInDeckValueLabel = Label::create("PLACEHOLDER_DECIMAL_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->hexCardsInDeckLabel = Label::create("Hex Cards", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->hexCardsInDeckValueLabel = Label::create("PLACEHOLDER_HEX_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->specialCardsInDeckLabel = Label::create("Special Cards", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->specialCardsInDeckValueLabel = Label::create("PLACEHOLDER_SPECIAL_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	this->totalCardsInDeckLabel = Label::createWithTTF("Cards in Deck", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	this->totalCardsInDeckValueLabel = Label::createWithTTF("PLACEHOLDER_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	this->binaryCardsInDeckLabel = Label::createWithTTF("Binary Cards", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	this->binaryCardsInDeckValueLabel = Label::createWithTTF("PLACEHOLDER_BINARY_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	this->decimalCardsInDeckLabel = Label::createWithTTF("Decimal Cards", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	this->decimalCardsInDeckValueLabel = Label::createWithTTF("PLACEHOLDER_DECIMAL_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	this->hexCardsInDeckLabel = Label::createWithTTF("Hex Cards", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	this->hexCardsInDeckValueLabel = Label::createWithTTF("PLACEHOLDER_HEX_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	this->specialCardsInDeckLabel = Label::createWithTTF("Special Cards", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	this->specialCardsInDeckValueLabel = Label::createWithTTF("PLACEHOLDER_SPECIAL_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	MenuSprite* allButtonUnselected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
 	MenuSprite* allButtonSelected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
@@ -81,9 +81,9 @@ HexusDeckManagement::HexusDeckManagement()
 	this->filters->addToggle(this->hexButton);
 	
 	this->activeFilter = CardFilterFlags::All;
-	Label* backButtonLabel = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelHover = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelClick = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabel = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabelHover = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabelClick = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
@@ -514,7 +514,7 @@ void HexusDeckManagement::rebuildCardLists()
 MenuCard* HexusDeckManagement::createCard(CardData* cardData, int count)
 {
 	MenuCard* card = MenuCard::create(Card::CardStyle::Earth, cardData);
-	Label* label = Label::create("PLACEHOLDER_CARD_COUNT", Localization::getCodingFont(), 64.0f);
+	Label* label = Label::createWithTTF("PLACEHOLDER_CARD_COUNT", Localization::getCodingFont(), 64.0f);
 
 	label->enableOutline(Color4B::BLACK, 4);
 	label->setAnchorPoint(Vec2(0.0f, 0.5f));

@@ -35,7 +35,7 @@ ScrollPane::ScrollPane(Size initPaneSize, Color4B initBackgroundColor)
 
 	this->scrollView->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->scrollView->setDirection(ScrollView::Direction::VERTICAL);
-	this->scrollView->setSize(Size(initPaneSize.width, initPaneSize.height));
+	this->scrollView->setContentSize(Size(initPaneSize.width, initPaneSize.height));
 	this->scrollView->setScrollBarAutoHideEnabled(false);
 	this->scrollView->setScrollBarOpacity(196);
 	this->scrollView->setCascadeOpacityEnabled(true);
@@ -70,12 +70,14 @@ void ScrollPane::initializeListeners()
 	SmartNode::initializeListeners();
 
 	EventListenerMouse* mouseScrollListener = EventListenerMouse::create();
-	EventListenerMouse* mouseMoveListener = EventListenerMouse::create();
 
 	mouseScrollListener->onMouseScroll = CC_CALLBACK_1(ScrollPane::onMouseScroll, this);
 	mouseScrollListener->onMouseMove = CC_CALLBACK_1(ScrollPane::onScrollViewMouseMove, this);
 
-	this->scrollView->addEventListenerScrollView(mouseMoveListener, nullptr);
+	this->scrollView->addEventListener([] (Ref* target, ScrollView::EventType event) {
+		(void) target;
+		(void) event;
+	});
 	this->addEventListener(mouseScrollListener);
 }
 

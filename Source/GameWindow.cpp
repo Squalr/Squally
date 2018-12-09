@@ -37,7 +37,10 @@ void GameWindow::initGLContextAttrs()
 
 bool GameWindow::applicationDidFinishLaunching()
 {
-	LogUtils::redirectStandardOutputToFile();
+	if (!LogUtils::redirectStandardOutputToFile())
+	{
+		LogUtils::logError("failed to redirect standard output to file.");
+	}
 
 	if (Steam::isSteamEnabled())
 	{
