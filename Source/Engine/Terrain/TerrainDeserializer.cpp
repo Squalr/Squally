@@ -1,5 +1,12 @@
 #include "TerrainDeserializer.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/Utils/GameUtils.h"
+
+using namespace cocos2d;
+
 TerrainDeserializer* TerrainDeserializer::instance = nullptr;
 
 TerrainDeserializer::TerrainDeserializer(TerrainObject::TerrainData terrainData)

@@ -1,5 +1,13 @@
 #include "PlatformerCollisionMapping.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/GlobalDirector.h"
+#include "Engine/Physics/CollisionObject.h"
+
+using namespace cocos2d;
+
 const std::string PlatformerCollisionMapping::KeyCollisionTypeSolid = "solid";
 const std::string PlatformerCollisionMapping::KeyCollisionTypePassThrough = "pass-through";
 const std::string PlatformerCollisionMapping::KeyCollisionTypePlayer = "player";

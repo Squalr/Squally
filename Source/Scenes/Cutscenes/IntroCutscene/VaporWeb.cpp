@@ -1,5 +1,7 @@
 #include "VaporWeb.h"
 
+#include "Engine/Localization/Localization.h"
+
 const float VaporWeb::dialogueHeight = 256.0f;
 
 const int VaporWeb::cellColumns = 5;

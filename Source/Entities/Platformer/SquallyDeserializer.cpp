@@ -1,5 +1,10 @@
 #include "SquallyDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Squally/Squally.h"
+
+using namespace cocos2d;
+
 SquallyDeserializer* SquallyDeserializer::instance = nullptr;
 
 void SquallyDeserializer::registerGlobalNode()

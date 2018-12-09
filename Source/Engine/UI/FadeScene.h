@@ -1,22 +1,24 @@
 #pragma once
-#include "cocos2d.h"
-
 #include "Engine/SmartScene.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class FiniteTimeAction;
+	class LayerColor;
+}
 
 class FadeScene : public SmartScene
 {
 protected:
 	FadeScene();
-	~FadeScene();
+	virtual ~FadeScene();
 
 	void setFadeSpeed(float newFadeSpeed);
 	float getFadeSpeed();
 	void onEnter() override;
 
-	LayerColor* layerColor;
-	FiniteTimeAction* fadeAction;
+	cocos2d::LayerColor* layerColor;
+	cocos2d::FiniteTimeAction* fadeAction;
 
 private:
 	void pause() override;

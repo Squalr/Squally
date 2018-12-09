@@ -1,5 +1,10 @@
 #include "PlatformerObjectDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Objects/Platformer/PlatformerObjects.h"
+
+using namespace cocos2d;
+
 PlatformerObjectDeserializer* PlatformerObjectDeserializer::instance = nullptr;
 const std::string PlatformerObjectDeserializer::KeyTypeObject = "object";
 

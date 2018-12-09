@@ -1,5 +1,11 @@
 #include "Input.h"
 
+#include "cocos/base/CCEventListenerKeyboard.h"
+
+#include "Engine/GlobalDirector.h"
+
+using namespace cocos2d;
+
 Input* Input::instance = nullptr;
 
 void Input::registerGlobalNode()

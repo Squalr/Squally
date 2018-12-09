@@ -1,5 +1,7 @@
 #include "NeonCity.h"
 
+#include "Engine/Localization/Localization.h"
+
 const float NeonCity::vaporCorpOffset = 1280;
 
 NeonCity* NeonCity::create(NeonCityScene neonCityScene)

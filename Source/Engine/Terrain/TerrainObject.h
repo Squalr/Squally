@@ -1,18 +1,10 @@
 #pragma once
-#include <iomanip>
-#include <sstream>
-#include "cocos2d.h"
+#include <string>
 
-#include "Engine/Camera/GameCamera.h"
+#include "cocos/base/ccTypes.h"
+
 #include "Engine/Hackables/HackableObject.h"
-#include "Engine/Localization/Localization.h"
-#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/AlgoUtils.h"
-#include "Engine/Utils/LogUtils.h"
-#include "Engine/Utils/RenderUtils.h"
-#include "Resources/ShaderResources.h"
-
-using namespace cocos2d;
 
 class TerrainObject : public HackableObject
 {
@@ -29,7 +21,7 @@ public:
 		std::string bottomCornerRightResource;
 		std::string leftResource;
 		std::string rightResource;
-		Color4B infillColor;
+		cocos2d::Color4B infillColor;
 
 		TerrainData(
 			std::string textureMapKeyValue,
@@ -42,7 +34,7 @@ public:
 			std::string bottomCornerRightResource,
 			std::string leftResource,
 			std::string rightResource,
-			Color4B infillColor) :
+			cocos2d::Color4B infillColor) :
 			textureMapKeyValue(textureMapKeyValue),
 			textureResource(textureResource),
 			topResource(topResource),
@@ -62,23 +54,23 @@ public:
 		}
 	};
 
-	static TerrainObject* deserialize(ValueMap* initProperties, TerrainData terrainData);
+	static TerrainObject* deserialize(cocos2d::ValueMap* initProperties, TerrainData terrainData);
 
-	void setPoints(std::vector<Vec2> points);
+	void setPoints(std::vector<cocos2d::Vec2> points);
 	void rebuildTerrain();
 
 	static std::string MapKeyTypeTexture;
 	static std::string MapKeyTypeTerrain;
 
 private:
-	TerrainObject(ValueMap* initProperties, TerrainData terrainData);
-	~TerrainObject();
+	TerrainObject(cocos2d::ValueMap* initProperties, TerrainData terrainData);
+	virtual ~TerrainObject();
 
 	void onEnter() override;
 	void initializeListeners() override;
 	void buildCollision();
 	void buildInnerTextures();
-	void buildInfill(Color4B infillColor);
+	void buildInfill(cocos2d::Color4B infillColor);
 	void buildSurfaceShadow();
 	void buildSurfaceTextures();
 	bool isTopAngle(float normalAngle);
@@ -88,21 +80,21 @@ private:
 
 	TerrainData terrainData;
 
-	std::vector<Vec2> points;
-	std::vector<std::tuple<Vec2, Vec2>> segments;
+	std::vector<cocos2d::Vec2> points;
+	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
 	std::vector<AlgoUtils::Triangle> triangles;
 
-	Node* collisionNode;
-	Node* infillTexturesNode;
-	Node* infillNode;
-	Node* shadowsNode;
-	Node* leftWallNode;
-	Node* rightWallNode;
-	Node* bottomsNode;
-	Node* bottomCornersNode;
-	Node* topsNode;
-	Node* topCornersNode;
-	Node* debugNode;
+	cocos2d::Node* collisionNode;
+	cocos2d::Node* infillTexturesNode;
+	cocos2d::Node* infillNode;
+	cocos2d::Node* shadowsNode;
+	cocos2d::Node* leftWallNode;
+	cocos2d::Node* rightWallNode;
+	cocos2d::Node* bottomsNode;
+	cocos2d::Node* bottomCornersNode;
+	cocos2d::Node* topsNode;
+	cocos2d::Node* topCornersNode;
+	cocos2d::Node* debugNode;
 
 	static const bool EnableTerrainDebugging;
 	static const float ShadowDistance;

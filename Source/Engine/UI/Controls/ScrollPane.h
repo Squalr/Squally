@@ -1,43 +1,48 @@
 #pragma once
-#include "cocos2d.h"
-#include "ui/CocosGUI.h"
+#include "cocos/base/ccTypes.h"
 
 #include "Engine/SmartNode.h"
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/MenuLabel.h"
-#include "Engine/Utils/GameUtils.h"
 
-using namespace cocos2d;
-using namespace cocos2d::ui;
+namespace cocos2d
+{
+	class EventMouse;
+	class LayerColor;
+	class Node;
+
+	namespace ui
+	{
+		class ScrollView;
+	}
+}
 
 class ScrollPane : public SmartNode
 {
 public:
-	static ScrollPane * create(Size initPaneSize, Color4B initBackgroundColor);
+	static ScrollPane * create(cocos2d::Size initPaneSize, cocos2d::Color4B initBackgroundColor);
 
-	Size getPaneSize();
-	Size getContentSize();
-	void fitSizeToContent(Rect padding = Rect::ZERO);
-	void addChild(Node* child) override;
-	void removeChild(Node* child, bool cleanup = true) override;
+	cocos2d::Size getPaneSize();
+	cocos2d::Size getContentSize();
+	void fitSizeToContent(cocos2d::Rect padding = cocos2d::Rect::ZERO);
+	void addChild(cocos2d::Node* child) override;
+	void removeChild(cocos2d::Node* child, bool cleanup = true) override;
 	void removeAllChildren() override;
 
 private:
-	ScrollPane(Size initPaneSize, Color4B initBackgroundColor);
-	~ScrollPane();
+	ScrollPane(cocos2d::Size initPaneSize, cocos2d::Color4B initBackgroundColor);
+	virtual ~ScrollPane();
 
 	void onEnter() override;
 	void initializeListeners() override;
 	void initializePositions() override;
-	void onMouseScroll(EventMouse* event);
-	void onScrollViewMouseMove(EventMouse* event);
+	void onMouseScroll(cocos2d::EventMouse* event);
+	void onScrollViewMouseMove(cocos2d::EventMouse* event);
 
-	Size paneSize;
-	Color4B backgroundColor;
-	LayerColor* background;
-	ScrollView* scrollView;
+	cocos2d::Size paneSize;
+	cocos2d::Color4B backgroundColor;
+	cocos2d::LayerColor* background;
+	cocos2d::ui::ScrollView* scrollView;
 	
-	static const Size marginSize;
+	static const cocos2d::Size marginSize;
 	static const float scrollSpeed;
 };
 

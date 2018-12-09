@@ -1,5 +1,20 @@
 #include "Localization.h"
 
+#include "cocos/platform/CCApplication.h"
+#include "cocos/platform/CCFileUtils.h"
+
+#include "allocators.h"
+#include "encodings.h"
+#include "document.h"
+#include "stringbuffer.h"
+#include "writer.h"
+
+#include "Resources/FontResources.h"
+#include "Resources/StringResources.h"
+
+using namespace cocos2d;
+using namespace rapidjson;
+
 Localization* Localization::instance = nullptr;
 
 Localization* Localization::getInstance()

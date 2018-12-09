@@ -1,17 +1,27 @@
 #pragma once
-#include <tinyxml2/tinyxml2.h>
+#include <string>
 
-#include "cocos2d.h"
+#include "cocos/math/CCGeometry.h"
 
 #include "Engine/SmartNode.h"
-#include "Engine/Utils/GameUtils.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Value;
+	typedef std::map<std::string, Value> ValueMap;
+}
+
+namespace tinyxml2
+{
+	class XMLDocument;
+	class XMLElement;
+}
 
 class SerializableObject : public SmartNode
 {
 public:
-	void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, Size mapUnitSize, Size mapTileSize);
+	void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, cocos2d::Size mapUnitSize,
+			cocos2d::Size mapTileSize);
 
 	static const std::string MapKeyId;
 	static const std::string MapKeyName;
@@ -39,10 +49,10 @@ public:
 	static const std::string MapKeyPropertyValue;
 
 protected:
-	SerializableObject(ValueMap* initProperties);
-	~SerializableObject();
+	SerializableObject(cocos2d::ValueMap* initProperties);
+	virtual ~SerializableObject();
 
-	ValueMap* properties;
+	cocos2d::ValueMap* properties;
 
 private:
 	bool isAttributeOrHiddenProperty(std::string propertyName);

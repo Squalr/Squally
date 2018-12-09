@@ -1,10 +1,6 @@
 #pragma once
-#include "cocos2d.h"
 
-#include "Engine/Maps/SerializableMap.h"
 #include "Engine/UI/FadeScene.h"
-
-using namespace cocos2d;
 
 // Forward declarations
 class SerializableMap;

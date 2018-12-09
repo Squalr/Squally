@@ -1,9 +1,12 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/math/Mat4.h"
 
 #include "Engine/SmartNode.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Renderer;
+}
 
 class Hud : public SmartNode
 {
@@ -12,7 +15,7 @@ public:
 
 protected:
 	Hud();
-	~Hud();
+	virtual ~Hud();
 
-	void visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags) override;
+	void visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
 };

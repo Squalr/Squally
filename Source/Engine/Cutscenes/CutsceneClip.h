@@ -1,10 +1,7 @@
 #pragma once
-#include "cocos2d.h"
+#include <functional>
 
 #include "Engine/UI/FadeScene.h"
-#include "Engine/Utils/GameUtils.h"
-
-using namespace cocos2d;
 
 class CutsceneClip : public FadeScene
 {
@@ -13,7 +10,7 @@ public:
 
 protected:
 	CutsceneClip();
-	~CutsceneClip();
+	virtual ~CutsceneClip();
 
 	void endCutsceneClip();
 

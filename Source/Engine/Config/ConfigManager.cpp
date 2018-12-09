@@ -1,5 +1,10 @@
 #include "ConfigManager.h"
 
+#define DONTBREAK
+#include "cocos2d.h"
+
+#include "Engine/Utils/GameUtils.h"
+
 using namespace cocos2d;
 
 const std::string ConfigManager::ConfigFile = "config.txt";

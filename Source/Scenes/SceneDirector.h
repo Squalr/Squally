@@ -1,43 +1,39 @@
 #pragma once
-#include "cocos2d.h"
 
-#include "Engine/GlobalDirector.h"
+#include <stack>
+
 #include "Engine/GlobalNode.h"
-#include "Engine/Maps/SerializableMap.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Events/HexusEvents.h"
-#include "Events/NavigationEvents.h"
-#include "Menus/Confirmation/ConfirmationMenu.h"
-#include "Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.h"
-#include "Menus/Minigames/Hexus/OpponentSelect/Castle/HexusOpponentMenuCastle.h"
-#include "Menus/Minigames/Hexus/OpponentSelect/Caverns/HexusOpponentMenuCaverns.h"
-#include "Menus/Minigames/Hexus/OpponentSelect/Forest/HexusOpponentMenuForest.h"
-#include "Menus/Minigames/Hexus/OpponentSelect/IceCaps/HexusOpponentMenuIceCaps.h"
-#include "Menus/Minigames/Hexus/OpponentSelect/Jungle/HexusOpponentMenuJungle.h"
-#include "Menus/Minigames/Hexus/OpponentSelect/Mech/HexusOpponentMenuMech.h"
-#include "Menus/Minigames/Hexus/OpponentSelect/Obelisk/HexusOpponentMenuObelisk.h"
-#include "Menus/Minigames/Hexus/OpponentSelect/Ruins/HexusOpponentMenuRuins.h"
-#include "Menus/Minigames/Hexus/OpponentSelect/Training/HexusOpponentMenuTraining.h"
-#include "Menus/Minigames/Hexus/OpponentSelect/Volcano/HexusOpponentMenuVolcano.h"
-#include "Menus/Minigames/Hexus/HexusDeckManagement.h"
-#include "Menus/Minigames/Hexus/HexusRewardsMenu.h"
-#include "Menus/Minigames/Hexus/Puzzles/HexusPuzzlesMenu.h"
-#include "Menus/Minigames/Hexus/Store/HexusStoreMenu.h"
-#include "Menus/Minigames/MinigamesMenu.h"
-#include "Menus/LoadingScreen/LoadingScreen.h"
-#include "Menus/Options/OptionsMenu.h"
-#include "Menus/Pause/PauseMenu.h"
-#include "Menus/SaveSelect/SaveSelectMenu.h"
-#include "Menus/TakeOverMenu.h"
-#include "Menus/Title/TitleScreen.h"
-#include "Menus/WorldMap/WorldMap.h"
-#include "Scenes/Maps/IMap.h"
-#include "Scenes/Maps/Isometric/IsometricMap.h"
-#include "Scenes/Maps/Platformer/CombatMap.h"
-#include "Scenes/Maps/Platformer/PlatformerMap.h"
-#include "Scenes/Hexus/Hexus.h"
 
-using namespace cocos2d;
+class TitleScreen;
+class TakeOverMenu;
+class HexusChapterSelectMenu;
+class HexusDeckManagement;
+class HexusRewardsMenu;
+class HexusStoreMenu;
+class HexusOpponentMenuCastle;
+class HexusOpponentMenuCaverns;
+class HexusOpponentMenuForest;
+class HexusOpponentMenuIceCaps;
+class HexusOpponentMenuJungle;
+class HexusOpponentMenuMech;
+class HexusOpponentMenuObelisk;
+class HexusOpponentMenuRuins;
+class HexusOpponentMenuTraining;
+class HexusOpponentMenuVolcano;
+class HexusPuzzlesMenu;
+class WorldMap;
+class LoadingScreen;
+class IMap;
+class OptionsMenu;
+class ConfirmationMenu;
+class Hexus;
+class Cutscene;
+
+namespace cocos2d
+{
+	class Scene;
+	class EventCustom;
+}
 
 class SceneDirector : public GlobalNode
 {
@@ -49,13 +45,13 @@ private:
 	~SceneDirector();
 
 	void initializeListeners() override;
-	void onGameNavigateNew(EventCustom* eventCustom);
-	void onGameNavigateBack(EventCustom* eventCustom);
-	void onGameNavigateConfirm(EventCustom* eventCustom);
-	void onGameNavigateLoadCutscene(EventCustom* eventCustom);
-	void onGameNavigateLoadLevel(EventCustom* eventCustom);
-	void onGameNavigateEnterLevel(EventCustom* eventCustom);
-	void onGameNavigateEnterCombat(EventCustom* eventCustom);
+	void onGameNavigateNew(cocos2d::EventCustom* eventCustom);
+	void onGameNavigateBack(cocos2d::EventCustom* eventCustom);
+	void onGameNavigateConfirm(cocos2d::EventCustom* eventCustom);
+	void onGameNavigateLoadCutscene(cocos2d::EventCustom* eventCustom);
+	void onGameNavigateLoadLevel(cocos2d::EventCustom* eventCustom);
+	void onGameNavigateEnterLevel(cocos2d::EventCustom* eventCustom);
+	void onGameNavigateEnterCombat(cocos2d::EventCustom* eventCustom);
 
 	TitleScreen* titleScreen;
 	TakeOverMenu* saveSelectMenu;
@@ -88,7 +84,7 @@ private:
 	Hexus* hexus;
 	Cutscene* cutscene;
 
-	std::stack<Scene*>* sceneHistory;
+	std::stack<cocos2d::Scene*>* sceneHistory;
 
 	static SceneDirector* instance;
 };

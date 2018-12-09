@@ -1,5 +1,7 @@
 #include "WarpGateExactScanTutorial.h"
 
+#include "Engine/Hackables/HackableCode.h"
+
 int WarpGateExactScanTutorial::warpGatePower = 0;
 int WarpGateExactScanTutorial::warpGatePowerMax = 70100;
 

@@ -1,13 +1,20 @@
 #pragma once
-#include "cocos2d.h"
+#include <string>
 
-#include "Engine/Camera/GameCamera.h"
+#include "cocos/math/Vec2.h"
+
 #include "Engine/Hackables/HackableObject.h"
-
-using namespace cocos2d;
 
 typedef std::string CategoryName;
 typedef int CategoryGroup;
+
+namespace cocos2d
+{
+	class PhysicsBody;
+	class PhysicsContact;
+	class Value;
+	typedef std::map<std::string, Value> ValueMap;
+}
 
 class CollisionObject : public HackableObject
 {
@@ -19,22 +26,24 @@ public:
 		CategoryName categoryName;
 		CollisionObject* collisionObject;
 
-		CollisionMapRequestArgs(CategoryName categoryName, CollisionObject* collisionObject) : categoryName(categoryName), collisionObject(collisionObject)
+		CollisionMapRequestArgs(CategoryName categoryName, CollisionObject* collisionObject) :
+				categoryName(categoryName), collisionObject(collisionObject)
 		{
 		}
 	};
 
 	static void requestCollisionMapping(CollisionMapRequestArgs args);
 
-	CollisionObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, CategoryName initCategoryName, bool isDynamic, bool canRotate);
-	~CollisionObject();
+	CollisionObject(cocos2d::ValueMap* initProperties, cocos2d::PhysicsBody* initPhysicsBody,
+			CategoryName initCategoryName, bool isDynamic, bool canRotate);
+	virtual ~CollisionObject();
 
 	void setCollisionGroups(CategoryGroup categoryGroup, std::vector<CategoryGroup>* collidesWith);
 
 	CategoryName getCategoryName();
 	CategoryGroup getCategoryGroup();
-	Vec2 getVelocity();
-	void setVelocity(Vec2 velocity);
+	cocos2d::Vec2 getVelocity();
+	void setVelocity(cocos2d::Vec2 velocity);
 
 	virtual void setPhysicsEnabled(bool enabled);
 
@@ -55,13 +64,14 @@ protected:
 	struct CollisionData
 	{
 		CollisionObject* other;
-		Vec2 normal;
+		cocos2d::Vec2 normal;
 		CollisionDirection direction;
-		Vec2 points[4];
+		cocos2d::Vec2 points[4];
 		int pointCount;
 
-		CollisionData(CollisionObject* other, Vec2 normal, CollisionDirection direction, const Vec2* points, int pointCount)
-			: other(other), normal(normal), direction(direction), pointCount(pointCount)
+		CollisionData(CollisionObject* other, cocos2d::Vec2 normal, CollisionDirection direction,
+				const cocos2d::Vec2* points, int pointCount) :
+			other(other), normal(normal), direction(direction), pointCount(pointCount)
 		{
 		}
 	};
@@ -75,14 +85,14 @@ protected:
 	void update(float dt) override;
 
 private:
-	bool onContactBegin(PhysicsContact& contact);
-	bool onContactUpdate(PhysicsContact& contact);
-	bool onContactEnd(PhysicsContact& contact);
+	bool onContactBegin(cocos2d::PhysicsContact& contact);
+	bool onContactUpdate(cocos2d::PhysicsContact& contact);
+	bool onContactEnd(cocos2d::PhysicsContact& contact);
 
-	CollisionData constructCollisionData(PhysicsContact& contact);
+	CollisionData constructCollisionData(cocos2d::PhysicsContact& contact);
 
 	CategoryName categoryName;
-	PhysicsBody* physicsBody;
+	cocos2d::PhysicsBody* physicsBody;
 
 	bool physicsEnabled;
 };

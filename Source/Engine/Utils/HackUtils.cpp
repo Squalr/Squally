@@ -1,5 +1,13 @@
 #include "HackUtils.h"
 
+#include <algorithm>
+#include <bitset>
+#include <exception>
+#include <iomanip>
+#include <sstream>
+
+#include "udis86.h"
+
 HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* addressStart)
 {
 	CompileResult compileResult;

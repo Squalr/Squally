@@ -1,5 +1,10 @@
 #include "CavernsNpcDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Npcs/Caverns/CavernsNpcs.h"
+
+using namespace cocos2d;
+
 CavernsNpcDeserializer* CavernsNpcDeserializer::instance = nullptr;
 
 void CavernsNpcDeserializer::registerGlobalNode()

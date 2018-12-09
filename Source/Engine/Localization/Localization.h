@@ -1,17 +1,8 @@
 #pragma once
-#include "cocos2d.h"
+#include <string>
 
-#include "allocators.h"
-#include "encodings.h"
-#include "document.h"
-#include "stringbuffer.h"
-#include "writer.h"
-
-#include "Resources/FontResources.h"
-#include "Resources/StringResources.h"
-
-using namespace cocos2d;
-using namespace rapidjson;
+// rapidjson forwards header
+#include "fwd.h"
 
 class Localization
 {
@@ -35,7 +26,7 @@ private:
 	Localization();
 	~Localization();
 
-	Document* localizationMap;
+	rapidjson::Document* localizationMap;
 
 	static Localization * instance;
 };

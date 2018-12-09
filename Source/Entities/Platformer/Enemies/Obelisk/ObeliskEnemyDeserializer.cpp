@@ -1,5 +1,10 @@
 #include "ObeliskEnemyDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Enemies/Obelisk/ObeliskEnemies.h"
+
+using namespace cocos2d;
+
 ObeliskEnemyDeserializer* ObeliskEnemyDeserializer::instance = nullptr;
 
 void ObeliskEnemyDeserializer::registerGlobalNode()

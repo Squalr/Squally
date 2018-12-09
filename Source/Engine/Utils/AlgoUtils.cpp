@@ -1,5 +1,14 @@
 #include "AlgoUtils.h"
 
+#include <set>
+
+#include "cocos/2d/CCDrawNode.h"
+
+#include "Engine/Utils/LogUtils.h"
+#include "Engine/Utils/MPE_fastpoly2tri.h"
+
+using namespace cocos2d;
+
 std::vector<int> AlgoUtils::subsetSum(const std::vector<int>& numbers, int sum, int requiredLength)
 {
 	static std::vector<int> result = std::vector<int>();
@@ -93,7 +102,7 @@ std::vector<int> AlgoUtils::subsetSum(const std::vector<int>& numbers, int sum, 
 }
 
 
-std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(std::vector<Vec2> polygonPoints)
+std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<Vec2>& polygonPoints)
 {
 	std::vector<Triangle> triangles = std::vector<Triangle>();
 
@@ -141,7 +150,7 @@ std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(std::vector<Vec2> 
 	return triangles;
 }
 
-bool AlgoUtils::isPointInTriangle(AlgoUtils::Triangle triangle, Vec2 point)
+bool AlgoUtils::isPointInTriangle(const AlgoUtils::Triangle& triangle, Vec2 point)
 {
 	int as_x = point.x - triangle.coords[0].x;
 	int as_y = point.y - triangle.coords[0].y;
@@ -156,11 +165,11 @@ bool AlgoUtils::isPointInTriangle(AlgoUtils::Triangle triangle, Vec2 point)
 	return true;
 }
 
-std::vector<std::tuple<Vec2, Vec2>> AlgoUtils::buildSegmentsFromPoints(std::vector<Vec2> points)
+std::vector<std::tuple<Vec2, Vec2>> AlgoUtils::buildSegmentsFromPoints(const std::vector<Vec2>& points)
 {
 	std::vector<std::tuple<Vec2, Vec2>> segments = std::vector<std::tuple<Vec2, Vec2>>();
 
-	Vec2* previous = nullptr;
+	const Vec2* previous = nullptr;
 
 	for (auto it = points.begin(); it != points.end(); it++)
 	{
@@ -181,7 +190,7 @@ std::vector<std::tuple<Vec2, Vec2>> AlgoUtils::buildSegmentsFromPoints(std::vect
 	return segments;
 }
 
-Rect AlgoUtils::getPolygonRect(std::vector<Vec2> points)
+Rect AlgoUtils::getPolygonRect(const std::vector<Vec2>& points)
 {
 	Rect drawRect = Rect::ZERO;
 
@@ -201,7 +210,8 @@ Rect AlgoUtils::getPolygonRect(std::vector<Vec2> points)
 	return drawRect;
 }
 
-std::vector<Vec2> AlgoUtils::insetPolygon(std::vector<Triangle> triangles, std::vector<std::tuple<Vec2, Vec2>> segments, float insetDistance)
+std::vector<Vec2> AlgoUtils::insetPolygon(const std::vector<Triangle>& triangles,
+		const std::vector<std::tuple<Vec2, Vec2>>& segments, float insetDistance)
 {
 	std::vector<Vec2> insetPolygonPoints = std::vector<Vec2>();
 
@@ -223,7 +233,8 @@ std::vector<Vec2> AlgoUtils::insetPolygon(std::vector<Triangle> triangles, std::
 	return insetPolygonPoints;
 }
 
-float AlgoUtils::getSegmentAngle(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles, Node* debugDrawNode)
+float AlgoUtils::getSegmentAngle(std::tuple<Vec2, Vec2> segment, const std::vector<AlgoUtils::Triangle>& triangles,
+		Node* debugDrawNode)
 {
 	float angle = AlgoUtils::getSegmentNormalAngle(segment, triangles, debugDrawNode);
 
@@ -241,7 +252,8 @@ float AlgoUtils::getSegmentAngle(std::tuple<Vec2, Vec2> segment, std::vector<Alg
 	return angle;
 }
 
-float AlgoUtils::getSegmentNormalAngle(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles, Node* debugDrawNode)
+float AlgoUtils::getSegmentNormalAngle(std::tuple<Vec2, Vec2> segment,
+		const std::vector<AlgoUtils::Triangle>& triangles, Node* debugDrawNode)
 {
 	Vec2 outwardNormal = AlgoUtils::getOutwardNormal(segment, triangles, debugDrawNode);
 	float angle = std::atan2(outwardNormal.y, outwardNormal.x);
@@ -257,7 +269,8 @@ float AlgoUtils::getSegmentNormalAngle(std::tuple<Vec2, Vec2> segment, std::vect
 	return angle;
 }
 
-Vec2 AlgoUtils::getOutwardNormal(std::tuple<Vec2, Vec2> segment, std::vector<AlgoUtils::Triangle> triangles, Node* debugDrawNode)
+Vec2 AlgoUtils::getOutwardNormal(std::tuple<Vec2, Vec2> segment, const std::vector<AlgoUtils::Triangle>& triangles,
+		Node* debugDrawNode)
 {
 	// Distance used to check which direction is "inside" the polygon
 	const float INNER_NORMAL_COLLISION_TEST_DISTANCE = 48.0f;

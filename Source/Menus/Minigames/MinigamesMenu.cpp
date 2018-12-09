@@ -1,5 +1,7 @@
 #include "MinigamesMenu.h"
 
+#include "Resources/SoundResources.h"
+
 const std::string MinigamesMenu::StringKeyHexus = "Menu_Hexus";
 const std::string MinigamesMenu::StringKeyHexusPuzzles = "Menu_Hexus_Puzzles";
 const std::string MinigamesMenu::StringKeyComingSoon = "Menu_Coming_Soon";

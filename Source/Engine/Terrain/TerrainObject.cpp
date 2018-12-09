@@ -1,5 +1,26 @@
 #include "TerrainObject.h"
 
+#include <iomanip>
+#include <sstream>
+
+#include "cocos/2d/CCClippingNode.h"
+#include "cocos/2d/CCNode.h"
+#include "cocos/2d/CCLabel.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCValue.h"
+#include "cocos/renderer/CCGLProgram.h"
+
+#include "Engine/Camera/GameCamera.h"
+#include "Engine/Localization/Localization.h"
+#include "Engine/Physics/CollisionObject.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/LogUtils.h"
+#include "Engine/Utils/RenderUtils.h"
+
+#include "Resources/ShaderResources.h"
+
+using namespace cocos2d;
+
 std::string TerrainObject::MapKeyTypeTexture = "texture";
 std::string TerrainObject::MapKeyTypeTerrain = "terrain";
 const bool TerrainObject::EnableTerrainDebugging = true;
