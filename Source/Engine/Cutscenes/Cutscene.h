@@ -4,11 +4,11 @@
 
 #include "cocos/base/CCEventKeyboard.h"
 
-#include "Engine/UI/FadeScene.h"
+#include "Engine/SmartScene.h"
 
 class CutsceneClip;
 
-class Cutscene : public FadeScene
+class Cutscene : public SmartScene
 {
 public:
 	static Cutscene* create(std::function<void()> cutsceneCompleteCallback);

@@ -5,7 +5,7 @@
 class ConfigManager
 {
 public:
-	enum ResolutionSetting
+	enum class ResolutionSetting
 	{
 		R1080x768,
 		R1152x864,

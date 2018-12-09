@@ -2,13 +2,12 @@
 #include <math.h>
 #include "cocos2d.h"
 
+#include "Engine/GlobalScene.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Special/Shopkeeper.h"
-#include "Events/HexusEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/Minigames/Hexus/MenuCard.h"
 #include "Resources/SoundResources.h"
@@ -19,10 +18,10 @@
 
 using namespace cocos2d;
 
-class HexusStoreMenu : public FadeScene
+class HexusStoreMenu : public GlobalScene
 {
 public:
-	static HexusStoreMenu * create();
+	static void registerGlobalScene();
 
 protected:
 	HexusStoreMenu();
@@ -90,5 +89,6 @@ private:
 	std::vector<std::tuple<MenuSprite*, MenuCard*, int>> specialCards;
 	std::map<MenuCard*, Label*> limitLabels;
 
+	static HexusStoreMenu* instance;
 	static const float lootBoxScale;
 };

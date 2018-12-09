@@ -2,8 +2,8 @@
 #include "cocos2d.h"
 
 #include "Engine/Events/MouseEvents.h"
+#include "Engine/GlobalScene.h"
 #include "Engine/Localization/Localization.h"
-#include "Engine/UI/FadeScene.h"
 #include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
@@ -13,10 +13,10 @@
 
 using namespace cocos2d;
 
-class WorldMap : public FadeScene
+class WorldMap : public GlobalScene
 {
 public:
-	static WorldMap * create();
+	static void registerGlobalScene();
 
 protected:
 	WorldMap();
@@ -39,7 +39,7 @@ private:
 	MapNode* iceCaps;
 	MapNode* obelisk;
 	MapNode* volcano;
-	MapNode* mecha;
+	MapNode* mech;
 
 	Sprite* background;
 	Sprite* foreground;
@@ -48,6 +48,8 @@ private:
 	InfiniteParallaxNode* fogC;
 	Label* titleLabel;
 	Label* infoLabel;
+
+	static WorldMap* instance;
 
 	const float titleFontSize = 48.0f;
 	const float infoFontSize = 32.0f;

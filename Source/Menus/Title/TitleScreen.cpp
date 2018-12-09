@@ -1,5 +1,7 @@
 #include "TitleScreen.h"
 
+TitleScreen* TitleScreen::instance = nullptr;
+
 const std::string TitleScreen::StringKeyStoryMode = "Menu_Story_Mode";
 const std::string TitleScreen::StringKeyMinigames = "Menu_Minigames";
 const std::string TitleScreen::StringKeyOptions = "Menu_Options";
@@ -10,13 +12,22 @@ const float TitleScreen::menuFontSize = 48.0f;
 const float TitleScreen::menuOffset = 128.0f;
 const float TitleScreen::spacing = -96.0f;
 
-TitleScreen * TitleScreen::create()
+TitleScreen* TitleScreen::getInstance()
 {
-	TitleScreen* instance = new TitleScreen();
+	if (TitleScreen::instance == nullptr)
+	{
+		TitleScreen::instance = new TitleScreen();
 
-	instance->autorelease();
+		TitleScreen::instance->autorelease();
+		TitleScreen::instance->initializeListeners();
+	}
 
-	return instance;
+	return TitleScreen::instance;
+}
+
+void TitleScreen::registerGlobalScene()
+{
+	GlobalDirector::registerGlobalScene(TitleScreen::getInstance());
 }
 
 TitleScreen::TitleScreen()
@@ -121,7 +132,7 @@ TitleScreen::~TitleScreen()
 
 void TitleScreen::onEnter()
 {
-	FadeScene::onEnter();
+	GlobalScene::onEnter();
 
 	SoundManager::playMusicResource(MusicResources::WeWillGetThereTogether);
 
@@ -150,7 +161,7 @@ void TitleScreen::onEnter()
 
 void TitleScreen::initializePositions()
 {
-	FadeScene::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -168,7 +179,12 @@ void TitleScreen::initializePositions()
 
 void TitleScreen::initializeListeners()
 {
-	FadeScene::initializeListeners();
+	GlobalScene::initializeListeners();
+
+	TitleScreen::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateTitle, [](EventCustom* args)
+	{
+		GlobalDirector::loadScene(TitleScreen::instance);
+	}));
 
 	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));
 	this->arcadeModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onArcadeModeClick, this));
@@ -178,17 +194,17 @@ void TitleScreen::initializeListeners()
 
 void TitleScreen::onStoryModeClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::SaveSelect);
+	NavigationEvents::navigateSaveSelect();
 }
 
 void TitleScreen::onArcadeModeClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames);
+	NavigationEvents::navigateMinigames();
 }
 
 void TitleScreen::onOptionsClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Options);
+	NavigationEvents::navigateOptions();
 }
 
 void TitleScreen::onExitClick(MenuSprite* menuSprite)

@@ -1,11 +1,10 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Events/NavigationEvents.h"
-#include "Events/HexusEvents.h"
+#include "Engine/GlobalScene.h"
 #include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/FadeScene.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Events/NavigationEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
@@ -17,12 +16,10 @@
 
 using namespace cocos2d;
 
-class Hexus : public FadeScene
+class Hexus : public GlobalScene
 {
 public:
-	static Hexus * create();
-
-	void onGameStart(EventCustom* eventCustom);
+	static void registerGlobalScene();
 
 private:
 	Hexus();
@@ -31,6 +28,7 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void startGame(HexusOpponentData* opponentData);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void onOptionsExit();
 	void openPauseMenu();
@@ -108,4 +106,6 @@ private:
 	PauseMenu* pauseMenu;
 	OptionsMenu* optionsMenu;
 	ConfirmationMenu* confirmationMenu;
+
+	static Hexus* instance;
 };

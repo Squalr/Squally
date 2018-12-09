@@ -2,23 +2,23 @@
 #include "cocos2d.h"
 
 #include "Analytics/AnalyticsCategories.h"
-#include "Events/NavigationEvents.h"
 #include "Engine/Analytics/Analytics.h"
+#include "Engine/GlobalScene.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Events/NavigationEvents.h"
 #include "Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
 
 using namespace cocos2d;
 
-class HexusOpponentMenuBase : public FadeScene
+class HexusOpponentMenuBase : public GlobalScene
 {
 protected:
-	HexusOpponentMenuBase(std::string chapterProgressSaveKey);
+	HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter chapter, std::string chapterProgressSaveKey);
 	~HexusOpponentMenuBase();
 
 	void onEnter() override;
@@ -30,7 +30,8 @@ protected:
 	void onShopClick(MenuSprite* menuSprite);
 	void onMouseOver(HexusOpponentPreview* opponent);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	void onGameEndCallback(HexusEvents::HexusGameResultEventArgs args);
+
+	NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter chapter;
 
 	ScrollPane* scrollPane;
 	std::vector<HexusOpponentPreview*> opponents;

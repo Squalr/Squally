@@ -3,21 +3,26 @@
 #include "Resources/SoundResources.h"
 #include "Resources/MapResources.h"
 
+HexusPuzzlesMenu* HexusPuzzlesMenu::instance = nullptr;
 const Color3B HexusPuzzlesMenu::TitleColor = Color3B(88, 188, 193);
 const std::string HexusPuzzlesMenu::StringKeyHexusPuzzles = "Menu_Hexus_Puzzles";
 
-HexusPuzzlesMenu * HexusPuzzlesMenu::create()
+void HexusPuzzlesMenu::registerGlobalScene()
 {
-	HexusPuzzlesMenu* instance = new HexusPuzzlesMenu();
+	if (HexusPuzzlesMenu::instance == nullptr)
+	{
+		HexusPuzzlesMenu::instance = new HexusPuzzlesMenu();
 
-	instance->autorelease();
+		HexusPuzzlesMenu::instance->autorelease();
+		HexusPuzzlesMenu::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusPuzzlesMenu::instance);
 }
 
 HexusPuzzlesMenu::HexusPuzzlesMenu()
 {
-	this->hexusOpponentItems = new std::vector<HexusPuzzleItem*>();
+	this->hexusOpponentItems = std::vector<HexusPuzzleItem*>();
 
 	this->currentPage = 0;
 
@@ -47,7 +52,7 @@ HexusPuzzlesMenu::HexusPuzzlesMenu()
 	this->closeButton->setClickCallback(CC_CALLBACK_1(HexusPuzzlesMenu::onCloseClick, this));
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
 
-	for (std::vector<HexusPuzzleItem*>::iterator it = this->hexusOpponentItems->begin(); it != this->hexusOpponentItems->end(); ++it)
+	for (std::vector<HexusPuzzleItem*>::iterator it = this->hexusOpponentItems.begin(); it != this->hexusOpponentItems.end(); ++it)
 	{
 		this->addChild(*it);
 	}
@@ -61,7 +66,7 @@ HexusPuzzlesMenu::~HexusPuzzlesMenu()
 
 void HexusPuzzlesMenu::onEnter()
 {
-	FadeScene::onEnter();
+	GlobalScene::onEnter();
 
 	float delay = 0.25f;
 	float duration = 0.35f;
@@ -72,7 +77,7 @@ void HexusPuzzlesMenu::onEnter()
 	GameUtils::fadeInObject(this->description, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 
-	for (std::vector<HexusPuzzleItem*>::iterator it = this->hexusOpponentItems->begin(); it != this->hexusOpponentItems->end(); ++it)
+	for (std::vector<HexusPuzzleItem*>::iterator it = this->hexusOpponentItems.begin(); it != this->hexusOpponentItems.end(); ++it)
 	{
 		GameUtils::fadeInObject(*it, delay, duration);
 	}
@@ -84,7 +89,7 @@ void HexusPuzzlesMenu::onEnter()
 
 void HexusPuzzlesMenu::initializePositions()
 {
-	FadeScene::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	
@@ -97,7 +102,7 @@ void HexusPuzzlesMenu::initializePositions()
 	this->descriptionBox->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 196.0f));
 	this->description->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 196.0f));
 
-	for (std::vector<HexusPuzzleItem*>::iterator it = this->hexusOpponentItems->begin(); it != this->hexusOpponentItems->end(); ++it)
+	for (std::vector<HexusPuzzleItem*>::iterator it = this->hexusOpponentItems.begin(); it != this->hexusOpponentItems.end(); ++it)
 	{
 		(*it)->initializePositions();
 	}
@@ -105,7 +110,12 @@ void HexusPuzzlesMenu::initializePositions()
 
 void HexusPuzzlesMenu::initializeListeners()
 {
-	FadeScene::initializeListeners();
+	GlobalScene::initializeListeners();
+
+	HexusPuzzlesMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusPuzzles, [](EventCustom* args)
+	{
+		GlobalDirector::loadScene(HexusPuzzlesMenu::instance);
+	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -119,70 +129,70 @@ void HexusPuzzlesMenu::loadLevels()
 	auto callback = CC_CALLBACK_1(HexusPuzzlesMenu::onMouseOver, this);
 	int index = 0;
 
-	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
 		"Exact Value Scan I",
 		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
 		"Exact Value Scan II",
 		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
 		"Unknown Value Scan",
 		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
 		"Data Types - Float",
 		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
 		"Data Types - Double",
 		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
 		"Godmode",
 		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
 		"Position I",
 		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
 		"Position II",
 		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
 		"Blink Godmode I",
 		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems->push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
 		"Blink Godmode II",
 		MapResources::Tutorials_TutorialExactValueScan1_TutorialExactValueScan1,
 		index++,
@@ -200,7 +210,7 @@ void HexusPuzzlesMenu::onMouseOver(HexusPuzzleItem* tutorialItem)
 
 void HexusPuzzlesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!GameUtils::isFocused(this))
+	if (!GameUtils::isVisible(this))
 	{
 		return;
 	}

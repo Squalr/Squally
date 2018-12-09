@@ -11,10 +11,13 @@ using namespace cocos2d;
 class HexusOpponentMenuIceCaps : public HexusOpponentMenuBase
 {
 public:
-	static HexusOpponentMenuIceCaps * create();
+	static void registerGlobalScene();
 
 protected:
 	HexusOpponentMenuIceCaps();
 	~HexusOpponentMenuIceCaps();
+
+private:
+	static HexusOpponentMenuIceCaps* instance;
 };
 

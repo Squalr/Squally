@@ -3,8 +3,6 @@
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Maps/SerializableMap.h"
-#include "Engine/UI/FadeScene.h"
-#include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/UI/HUD/DeveloperHud.h"
 #include "Engine/UI/HUD/HackerModeHud.h"
 #include "Engine/UI/HUD/Hud.h"
@@ -29,7 +27,7 @@ class SerializableMap;
 class PlatformerMap : public IMap
 {
 public:
-	static PlatformerMap* create();
+	static void registerGlobalScene();
 
 	void loadMap(SerializableMap* serializableMap) override;
 
@@ -67,6 +65,8 @@ private:
 	PauseMenu* pauseMenu;
 	OptionsMenu* optionsMenu;
 	ConfirmationMenu* confirmationMenu;
+
+	static PlatformerMap* instance;
 
 	static bool hackerMode;
 	static bool developerMode;

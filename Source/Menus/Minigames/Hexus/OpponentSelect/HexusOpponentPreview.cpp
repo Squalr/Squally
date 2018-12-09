@@ -2,19 +2,18 @@
 
 #include "Resources/SoundResources.h"
 
-HexusOpponentPreview* HexusOpponentPreview::create(HexusOpponentData* opponentData, std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback)
+HexusOpponentPreview* HexusOpponentPreview::create(HexusOpponentData* opponentData)
 {
-	HexusOpponentPreview* instance = new HexusOpponentPreview(opponentData, onGameEndCallback);
+	HexusOpponentPreview* instance = new HexusOpponentPreview(opponentData);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData, std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback)
+HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 {
 	this->hexusOpponentData = opponentData;
-	this->onGameEndCallback = onGameEndCallback;
 	this->opponentSprite = AnimationNode::create(opponentData->animationResourceFile);
 	this->opponentSprite->setScale(opponentData->animationScale);
 	this->opponentEntity = this->opponentSprite->play("Entity");
@@ -66,7 +65,7 @@ void HexusOpponentPreview::initializePositions()
 
 void HexusOpponentPreview::onOpponentClick(MenuSprite* HexusOpponentPreview)
 {
-	HexusEvents::startGame(HexusEvents::HexusGameEventArgs(this->hexusOpponentData, this->onGameEndCallback));
+	NavigationEvents::navigateHexus(NavigationEvents::NavigateHexusArgs(this->hexusOpponentData));
 }
 
 void HexusOpponentPreview::disableInteraction()

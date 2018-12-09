@@ -1,6 +1,7 @@
 #include "WorldMap.h"
 
 #include "Resources/MapResources.h"
+WorldMap* WorldMap::instance = nullptr;
 
 const std::string WorldMap::StringKeySelectLevel = "Menu_Story_Select_Level";
 const std::string WorldMap::StringKeyLevelNameJungle = "Menu_Story_Level_Name_Jungle";
@@ -13,13 +14,17 @@ const std::string WorldMap::StringKeyLevelNameObelisk = "Menu_Story_Level_Name_O
 const std::string WorldMap::StringKeyLevelNameVolcano = "Menu_Story_Level_Name_Volcano";
 const std::string WorldMap::StringKeyLevelNameMech = "Menu_Story_Level_Name_Mech";
 
-WorldMap * WorldMap::create()
+void WorldMap::registerGlobalScene()
 {
-	WorldMap* instance = new WorldMap();
+	if (WorldMap::instance == nullptr)
+	{
+		WorldMap::instance = new WorldMap();
 
-	instance->autorelease();
+		WorldMap::instance->autorelease();
+		WorldMap::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(WorldMap::instance);
 }
 
 WorldMap::WorldMap()
@@ -100,7 +105,7 @@ WorldMap::WorldMap()
 		MapResources::Volcano_Volcano
 	);
 
-	this->mecha = MapNode::create(
+	this->mech = MapNode::create(
 		UIResources::Menus_WorldMap_Mech,
 		UIResources::Menus_WorldMap_MechSelected,
 		UIResources::Menus_WorldMap_MechLocked,
@@ -126,7 +131,7 @@ WorldMap::WorldMap()
 	this->mapNodes.push_back(this->iceCaps);
 	this->mapNodes.push_back(this->obelisk);
 	this->mapNodes.push_back(this->volcano);
-	this->mapNodes.push_back(this->mecha);
+	this->mapNodes.push_back(this->mech);
 
 	this->addChild(this->background);
 	this->addChild(this->jungle);
@@ -137,7 +142,7 @@ WorldMap::WorldMap()
 	this->addChild(this->iceCaps);
 	this->addChild(this->obelisk);
 	this->addChild(this->volcano);
-	this->addChild(this->mecha);
+	this->addChild(this->mech);
 	this->addChild(this->foreground);
 	this->addChild(this->fogA);
 	this->addChild(this->fogB);
@@ -153,7 +158,7 @@ WorldMap::~WorldMap()
 
 void WorldMap::onEnter()
 {
-	FadeScene::onEnter();
+	GlobalScene::onEnter();
 
 	const float delay = 0.5f;
 	const float duration = 0.75f;
@@ -164,7 +169,7 @@ void WorldMap::onEnter()
 
 void WorldMap::initializePositions()
 {
-	FadeScene::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -179,7 +184,7 @@ void WorldMap::initializePositions()
 	this->iceCaps->setPosition(Vec2(visibleSize.width / 2.0f + 112.0f, visibleSize.height / 2.0f + 496.0f));
 	this->obelisk->setPosition(Vec2(visibleSize.width / 2.0f + 720.0f, visibleSize.height / 2.0f + 420.0f));
 	this->volcano->setPosition(Vec2(visibleSize.width / 2.0f + 196.0f, visibleSize.height / 2.0f + 64.0f));
-	this->mecha->setPosition(Vec2(visibleSize.width / 2.0f + 696.0f, visibleSize.height / 2.0f - 38.0f));
+	this->mech->setPosition(Vec2(visibleSize.width / 2.0f + 696.0f, visibleSize.height / 2.0f - 38.0f));
 	this->foreground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 
 	this->fogA->setPosition(Vec2(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f + 420.0f));
@@ -191,7 +196,12 @@ void WorldMap::initializePositions()
 
 void WorldMap::initializeListeners()
 {
-	FadeScene::initializeListeners();
+	GlobalScene::initializeListeners();
+
+	WorldMap::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateWorldMap, [](EventCustom* args)
+	{
+		GlobalDirector::loadScene(WorldMap::instance);
+	}));
 
 	EventListenerCustom* mouseListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(WorldMap::onMouseMove, this));
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
@@ -204,7 +214,7 @@ void WorldMap::initializeListeners()
 
 void WorldMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!GameUtils::isFocused(this))
+	if (!GameUtils::isVisible(this))
 	{
 		return;
 	}
@@ -234,7 +244,7 @@ void WorldMap::initializedLocked()
 	this->iceCaps->setLocked(false);
 	this->obelisk->setLocked(false);
 	this->volcano->setLocked(false);
-	this->mecha->setLocked(false);
+	this->mech->setLocked(false);
 }
 
 void WorldMap::onMouseMove(EventCustom* event)

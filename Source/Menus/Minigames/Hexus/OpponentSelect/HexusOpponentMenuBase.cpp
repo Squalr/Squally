@@ -1,7 +1,8 @@
 #include "HexusOpponentMenuBase.h"
 
-HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
+HexusOpponentMenuBase::HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter chapter, std::string chapterProgressSaveKey)
 {
+	this->chapter = chapter;
 	this->chapterProgressSaveKey = chapterProgressSaveKey;
 	this->opponents = std::vector<HexusOpponentPreview*>();
 	this->scrollPane = ScrollPane::create(Size(1536.0f, 840.0f), Color4B(0, 0, 0, 196));
@@ -70,10 +71,23 @@ HexusOpponentMenuBase::~HexusOpponentMenuBase()
 
 void HexusOpponentMenuBase::onEnter()
 {
-	FadeScene::onEnter();
+	GlobalScene::onEnter();
 
-	float delay = 0.25f;
-	float duration = 0.35f;
+	if (!SaveManager::getGlobalDataOrDefault(this->chapterProgressSaveKey, cocos2d::Value(false)).asBool())
+	{
+		std::string lastOpponentWinsKey = HexusOpponentData::winsPrefix + this->opponents.back()->hexusOpponentData->enemyNameKey;
+
+		if (SaveManager::getGlobalDataOrDefault(lastOpponentWinsKey, cocos2d::Value(0)).asInt() > 0)
+		{
+			// Beat the last opponent -- save that we beat the chapter and navigate back to chapter select
+			SaveManager::saveGlobalData(this->chapterProgressSaveKey, cocos2d::Value(true));
+			NavigationEvents::navigateBack(1);
+			return;
+		}
+	}
+
+	const float delay = 0.25f;
+	const float duration = 0.35f;
 
 	GameUtils::fadeInObject(this->scrollPane, delay, duration);
 	GameUtils::fadeInObject(this->backButton, delay, duration);
@@ -104,7 +118,7 @@ void HexusOpponentMenuBase::onEnter()
 
 void HexusOpponentMenuBase::initializePositions()
 {
-	FadeScene::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -134,7 +148,17 @@ void HexusOpponentMenuBase::initializePositions()
 
 void HexusOpponentMenuBase::initializeListeners()
 {
-	FadeScene::initializeListeners();
+	GlobalScene::initializeListeners();
+
+	this->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusOpponentSelect, [=](EventCustom* args)
+	{
+		NavigationEvents::NavigateHexusOpponentSelectArgs* navArgs = (NavigationEvents::NavigateHexusOpponentSelectArgs*)args->getUserData();
+
+		if (navArgs->chapter == this->chapter)
+		{
+			GlobalDirector::loadScene(this);
+		}
+	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -152,7 +176,7 @@ void HexusOpponentMenuBase::onMouseOver(HexusOpponentPreview* opponent)
 
 void HexusOpponentMenuBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!GameUtils::isFocused(this))
+	if (!GameUtils::isVisible(this))
 	{
 		return;
 	}
@@ -160,11 +184,15 @@ void HexusOpponentMenuBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* 
 	switch (keyCode)
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
+		{
 			event->stopPropagation();
 			NavigationEvents::navigateBack();
 			break;
+		}
 		default:
+		{
 			break;
+		}
 	}
 }
 
@@ -175,79 +203,12 @@ void HexusOpponentMenuBase::onBackClick(MenuSprite* menuSprite)
 
 void HexusOpponentMenuBase::onDeckManagementClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Deck_Management);
+	NavigationEvents::navigateHexusDeckManagement();
 }
 
 void HexusOpponentMenuBase::onShopClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Store);
-}
-
-void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventArgs args)
-{
-	std::string winsKey = HexusOpponentData::winsPrefix + args.opponentData->enemyNameKey;
-	std::string lossesKey = HexusOpponentData::lossesPrefix + args.opponentData->enemyNameKey;
-
-	// Analytics for first time playing opponent (neither WIN or LOSS key present in save file)
-	if (!SaveManager::hasGlobalData(winsKey) && !SaveManager::hasGlobalData(lossesKey))
-	{
-		Analytics::sendEvent(AnalyticsCategories::Hexus, "first_game_result", args.opponentData->enemyNameKey, args.gameResult == HexusEvents::PlayerWon ? 1 : 0);
-	}
-
-	Analytics::sendEvent(AnalyticsCategories::Hexus, "game_duration", args.opponentData->enemyNameKey, args.gameDurationInSeconds);
-
-	if (args.gameResult == HexusEvents::PlayerWon)
-	{
-		int wins = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
-		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt();
-
-		SaveManager::saveGlobalData(winsKey, cocos2d::Value(wins));
-
-		// Analytics for first win
-		if (wins == 1)
-		{
-			Analytics::sendEvent(AnalyticsCategories::Hexus, "attempts_for_first_win", args.opponentData->enemyNameKey, losses + wins);
-		}
-
-		// Analytics for winning in general
-		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_wins", args.opponentData->enemyNameKey, wins);
-
-		bool backToChapterSelect = false;
-
-		if (args.opponentData == this->opponents.back()->hexusOpponentData)
-		{
-			if (!SaveManager::hasGlobalData(this->chapterProgressSaveKey) || !SaveManager::getGlobalData(this->chapterProgressSaveKey).asBool())
-			{
-				// Beat the last opponent -- save that we beat the chapter and navigate back to chapter select
-				SaveManager::saveGlobalData(this->chapterProgressSaveKey, cocos2d::Value(true));
-				backToChapterSelect = true;
-			}
-		}
-
-		HexusEvents::showRewards(HexusEvents::HexusRewardArgs(args.gameResult, args.opponentData, backToChapterSelect));
-	}
-	else if (args.gameResult == HexusEvents::Draw)
-	{
-		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
-
-		SaveManager::saveGlobalData(lossesKey, cocos2d::Value(losses));
-
-		// Analytics for losing
-		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", args.opponentData->enemyNameKey, losses);
-
-		HexusEvents::showRewards(HexusEvents::HexusRewardArgs(args.gameResult, args.opponentData, false));
-	}
-	else
-	{
-		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
-
-		SaveManager::saveGlobalData(lossesKey, cocos2d::Value(losses));
-
-		// Analytics for losing
-		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", args.opponentData->enemyNameKey, losses);
-
-		NavigationEvents::navigateBack();
-	}
+	NavigationEvents::navigateHexusShop();
 }
 
 void HexusOpponentMenuBase::loadProgress()

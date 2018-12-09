@@ -1,16 +1,21 @@
 #include "HexusDeckManagement.h"
 
 #include "Engine/Sound/SoundManager.h"
-
 #include "Resources/SoundResources.h"
 
-HexusDeckManagement * HexusDeckManagement::create()
+HexusDeckManagement* HexusDeckManagement::instance;
+
+void HexusDeckManagement::registerGlobalScene()
 {
-	HexusDeckManagement* instance = new HexusDeckManagement();
+	if (HexusDeckManagement::instance == nullptr)
+	{
+		HexusDeckManagement::instance = new HexusDeckManagement();
 
-	instance->autorelease();
+		HexusDeckManagement::instance->autorelease();
+		HexusDeckManagement::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusDeckManagement::instance);
 }
 
 HexusDeckManagement::HexusDeckManagement()
@@ -175,7 +180,7 @@ HexusDeckManagement::~HexusDeckManagement()
 
 void HexusDeckManagement::onEnter()
 {
-	FadeScene::onEnter();
+	GlobalScene::onEnter();
 
 	float delay = 0.25f;
 	float duration = 0.35f;
@@ -189,12 +194,17 @@ void HexusDeckManagement::onExit()
 {
 	this->save(false);
 
-	FadeScene::onExit();
+	GlobalScene::onExit();
 }
 
 void HexusDeckManagement::initializeListeners()
 {
-	FadeScene::initializeListeners();
+	GlobalScene::initializeListeners();
+
+	HexusDeckManagement::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusDeckManagement, [](EventCustom* args)
+	{
+		GlobalDirector::loadScene(HexusDeckManagement::instance);
+	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -218,7 +228,7 @@ void HexusDeckManagement::initializeListeners()
 
 void HexusDeckManagement::initializePositions()
 {
-	FadeScene::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -324,7 +334,7 @@ void HexusDeckManagement::onToggleSelect(CCheckbox* activeToggle)
 
 void HexusDeckManagement::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!GameUtils::isFocused(this))
+	if (!GameUtils::isVisible(this))
 	{
 		return;
 	}

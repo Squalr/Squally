@@ -3,10 +3,10 @@
 #include <string>
 #include "cocos2d.h"
 
+#include "Engine/GlobalScene.h"
 #include "Engine/Localization/Localization.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/FadeScene.h"
 #include "Engine/UI/FloatingSprite.h"
 #include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/UI/Mouse.h"
@@ -23,10 +23,11 @@
 using namespace cocos2d;
 using namespace cocos_experimental;
 
-class TitleScreen : public FadeScene
+class TitleScreen : public GlobalScene
 {
 public:
-	static TitleScreen * create();
+	static TitleScreen* getInstance();
+	static void registerGlobalScene();
 
 protected:
 	TitleScreen();
@@ -54,6 +55,8 @@ private:
 	Sprite* titleBar;
 	Sprite* title;
 
+	static TitleScreen* instance;
+
 	static const std::string StringKeyStoryMode;
 	static const std::string StringKeyMinigames;
 	static const std::string StringKeyOptions;
@@ -64,4 +67,3 @@ private:
 	static const float menuOffset;
 	static const float spacing;
 };
-

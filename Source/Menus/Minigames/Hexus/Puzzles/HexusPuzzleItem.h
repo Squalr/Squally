@@ -2,7 +2,6 @@
 #include "cocos2d.h"
 
 #include "Engine/UI/Controls/MenuSprite.h"
-#include "Events/HexusEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Maps/Platformer/PlatformerMap.h"
 #include "Scenes/Hexus/CardData/CardList.h"

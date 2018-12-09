@@ -4,23 +4,23 @@
 
 #include "cocos2d.h"
 
+#include "Engine/GlobalScene.h"
 #include "Engine/Localization/Localization.h"
+#include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
-#include "Engine/Sound/SoundManager.h"
-#include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
+#include "Menus/MenuBackground.h"
 
 using namespace cocos2d;
 
-class MinigamesMenu : public Hud
+class MinigamesMenu : public GlobalScene
 {
 public:
-	static MinigamesMenu * create();
+	static void registerGlobalScene();
 
 protected:
 	MinigamesMenu();
@@ -37,6 +37,7 @@ private:
 	void onHexusPuzzlesClick(MenuSprite* menuSprite);
 	TextMenuSprite* createComingSoonButton();
 
+	Node* backgroundNode;
 	ScrollPane* scrollPane;
 	TextMenuSprite* hexusButton;
 	TextMenuSprite* hexusPuzzlesButton;
@@ -48,6 +49,8 @@ private:
 	TextMenuSprite* comingSoonButton6;
 	TextMenuSprite* backButton;
 
+	static MinigamesMenu* instance;
+
 	static const std::string StringKeyHexus;
 	static const std::string StringKeyHexusPuzzles;
 	static const std::string StringKeyComingSoon;
@@ -57,4 +60,3 @@ private:
 	static const float menuOffset;
 	static const float spacing;
 };
-

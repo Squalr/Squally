@@ -1,14 +1,23 @@
 #include "HexusRewardsMenu.h"
 
+#include "Engine/Sound/SoundManager.h"
+#include "Resources/SoundResources.h"
+
 const std::string HexusRewardsMenu::KeyScheduleHexusGoldTick = "KEY_SCHEDULE_HEXUS_GOLD_TICK";
 
-HexusRewardsMenu * HexusRewardsMenu::create()
+HexusRewardsMenu* HexusRewardsMenu::instance;
+
+void HexusRewardsMenu::registerGlobalScene()
 {
-	HexusRewardsMenu* instance = new HexusRewardsMenu();
+	if (HexusRewardsMenu::instance == nullptr)
+	{
+		HexusRewardsMenu::instance = new HexusRewardsMenu();
 
-	instance->autorelease();
+		HexusRewardsMenu::instance->autorelease();
+		HexusRewardsMenu::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusRewardsMenu::instance);
 }
 
 HexusRewardsMenu::HexusRewardsMenu()
@@ -49,20 +58,35 @@ HexusRewardsMenu::~HexusRewardsMenu()
 
 void HexusRewardsMenu::onEnter()
 {
-	FadeScene::onEnter();
+	GlobalScene::onEnter();
 
 	float delay = 0.25f;
 	float duration = 0.35f;
+
+	SoundManager::playSoundResource(SoundResources::Hexus_Reward);
 }
 
 void HexusRewardsMenu::initializeListeners()
 {
-	FadeScene::initializeListeners();
+	GlobalScene::initializeListeners();
+
+	HexusRewardsMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusRewards, [](EventCustom* args)
+	{
+		NavigationEvents::NavigateHexusRewardArgs* rewardsArgs = static_cast<NavigationEvents::NavigateHexusRewardArgs*>(args->getUserData());
+
+		if (rewardsArgs != nullptr)
+		{
+			GlobalDirector::loadScene(HexusRewardsMenu::instance);
+			HexusRewardsMenu::instance->onRewardsOpen(rewardsArgs->reward, rewardsArgs->isRewardReduced);
+		}
+	}));
+
+	this->returnButton->setClickCallback(CC_CALLBACK_1(HexusRewardsMenu::onReturnClick, this));
 }
 
 void HexusRewardsMenu::initializePositions()
 {
-	FadeScene::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -73,19 +97,10 @@ void HexusRewardsMenu::initializePositions()
 	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 128.0f));
 }
 
-void HexusRewardsMenu::onRewardsOpen(EventCustom* eventCustom)
+void HexusRewardsMenu::onRewardsOpen(int reward, bool isRewardReduced)
 {
-	HexusEvents::HexusRewardArgs* args = (HexusEvents::HexusRewardArgs*)(eventCustom->getUserData());
-
-	this->returnButton->setClickCallback(CC_CALLBACK_1(HexusRewardsMenu::onReturnClick, this, args->backToChapterSelect));
-
-	int reward = args->opponentData->reward;
-
-	// Cut the reward in half on a draw
-	if (args->gameResult == HexusEvents::HexusGameResult::Draw)
+	if (isRewardReduced)
 	{
-		reward /= 2;
-
 		this->goldSpriteLesser->setVisible(true);
 		this->goldSprite->setVisible(false);
 	}
@@ -114,11 +129,9 @@ void HexusRewardsMenu::onRewardsOpen(EventCustom* eventCustom)
 		currentTick++;
 
 	}, interval, ticks, delay, HexusRewardsMenu::KeyScheduleHexusGoldTick);
-
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Rewards);
 }
 
-void HexusRewardsMenu::onReturnClick(MenuSprite* menuSprite, bool backToChapterSelect)
+void HexusRewardsMenu::onReturnClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigateBack(backToChapterSelect ? 3 : 2);
+	NavigationEvents::navigateBack(2);
 }

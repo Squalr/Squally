@@ -11,13 +11,19 @@ const float MinigamesMenu::menuFontSize = 48.0f;
 const float MinigamesMenu::menuOffset = 128.0f;
 const float MinigamesMenu::spacing = -96.0f;
 
-MinigamesMenu * MinigamesMenu::create()
+MinigamesMenu* MinigamesMenu::instance;
+
+void MinigamesMenu::registerGlobalScene()
 {
-	MinigamesMenu* instance = new MinigamesMenu();
+	if (MinigamesMenu::instance == nullptr)
+	{
+		MinigamesMenu::instance = new MinigamesMenu();
 
-	instance->autorelease();
+		MinigamesMenu::instance->autorelease();
+		MinigamesMenu::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(MinigamesMenu::instance);
 }
 
 MinigamesMenu::MinigamesMenu()
@@ -31,6 +37,7 @@ MinigamesMenu::MinigamesMenu()
 	const Color4B glowColor = Color4B::ORANGE;
 	const Vec2 labelOffset = Vec2(48.0f, 0.0f);
 
+	this->backgroundNode = Node::create();
 	this->scrollPane = ScrollPane::create(Size(1152.0f, 768.0f), Color4B(0, 0, 0, 127));
 
 	Label* backButtonLabel = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
@@ -121,6 +128,7 @@ MinigamesMenu::MinigamesMenu()
 	this->comingSoonButton5 = this->createComingSoonButton();
 	this->comingSoonButton6 = this->createComingSoonButton();
 
+	this->addChild(this->backgroundNode);
 	this->scrollPane->addChild(this->hexusButton);
 	this->scrollPane->addChild(this->hexusPuzzlesButton);
 	this->scrollPane->addChild(this->comingSoonButton1);
@@ -140,7 +148,7 @@ MinigamesMenu::~MinigamesMenu()
 
 void MinigamesMenu::onEnter()
 {
-	Hud::onEnter();
+	GlobalScene::onEnter();
 
 	const float delay = 0.5f;
 	const float duration = 0.75f;
@@ -148,12 +156,19 @@ void MinigamesMenu::onEnter()
 	GameUtils::fadeInObject(this->scrollPane, delay, duration);
 	GameUtils::fadeInObject(this->backButton, delay, duration);
 
+	this->backgroundNode->addChild(MenuBackground::claimInstance());
+
 	this->scheduleUpdate();
 }
 
 void MinigamesMenu::initializeListeners()
 {
-	Hud::initializeListeners();
+	GlobalScene::initializeListeners();
+
+	MinigamesMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateMinigames, [](EventCustom* args)
+	{
+		GlobalDirector::loadScene(MinigamesMenu::instance);
+	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -167,7 +182,7 @@ void MinigamesMenu::initializeListeners()
 
 void MinigamesMenu::initializePositions()
 {
-	Hud::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Size paneSize = this->scrollPane->getPaneSize();
@@ -188,7 +203,7 @@ void MinigamesMenu::initializePositions()
 
 void MinigamesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!GameUtils::isFocused(this))
+	if (!GameUtils::isVisible(this))
 	{
 		return;
 	}
@@ -215,12 +230,12 @@ void MinigamesMenu::onBackClick(MenuSprite* menuSprite)
 
 void MinigamesMenu::onHexusClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus);
+	NavigationEvents::navigateHexusChapterSelect();
 }
 
 void MinigamesMenu::onHexusPuzzlesClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Minigames_Hexus_Puzzles);
+	NavigationEvents::navigateHexusPuzzles();
 }
 
 TextMenuSprite* MinigamesMenu::createComingSoonButton()

@@ -4,7 +4,6 @@
 #include "Events/NavigationEvents.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/FadeScene.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
 #include "Menus/MenuBackground.h"

@@ -1,24 +1,28 @@
 #include "LoadingScreen.h"
 
 #include "cocos/audio/include/AudioEngine.h"
-
 #include "Engine/UI/Mouse.h"
+LoadingScreen* LoadingScreen::instance = nullptr;
 
-LoadingScreen* LoadingScreen::create()
+void LoadingScreen::registerGlobalScene()
 {
-	LoadingScreen* instance = new LoadingScreen();
+	if (LoadingScreen::instance == nullptr)
+	{
+		LoadingScreen::instance = new LoadingScreen();
 
-	instance->autorelease();
+		LoadingScreen::instance->autorelease();
+		LoadingScreen::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(LoadingScreen::instance);
 }
 
 LoadingScreen::LoadingScreen()
 {
-	this->background = Node::create();
+	this->backgroundNode = Node::create();
 	this->progressBar = CProgressBar::create();
 
-	this->addChild(this->background);
+	this->addChild(this->backgroundNode);
 	this->addChild(this->progressBar);
 	this->addChild(Mouse::create());
 }
@@ -29,24 +33,42 @@ LoadingScreen::~LoadingScreen()
 
 void LoadingScreen::onEnter()
 {
-	Hud::onEnter();
+	GlobalScene::onEnter();
+
+	this->backgroundNode->addChild(MenuBackground::claimInstance());
 }
 
 void LoadingScreen::initializePositions()
 {
-	Hud::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->progressBar->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 480.0f));
 }
 
-void LoadingScreen::loadLevel(std::string levelFile, const std::function<void(SerializableMap*)> newOnLoadCallback)
+void LoadingScreen::initializeListeners()
+{
+	GlobalScene::initializeListeners();
+
+	LoadingScreen::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateLoadingScreen, [](EventCustom* args)
+	{
+		NavigationEvents::NavigateLoadingScreenArgs* loadArgs = static_cast<NavigationEvents::NavigateLoadingScreenArgs*>(args->getUserData());
+
+		if (loadArgs != nullptr)
+		{
+			GlobalDirector::loadScene(LoadingScreen::instance);
+			LoadingScreen::instance->loadLevel(loadArgs->levelFile, loadArgs->onLoadCallback);
+		}
+	}));
+}
+
+void LoadingScreen::loadLevel(std::string levelFile, std::function<void(SerializableMap*)> onLoadCallback)
 {
 	this->totalFileCount = 0;
 	this->loadedFileCount = 0;
 	this->currentLevelFile = levelFile;
-	this->onLoadCallback = newOnLoadCallback;
+	this->onLoadCallback = onLoadCallback;
 
 	this->map = SerializableMap::deserialize(levelFile);
 	this->map->retain();
