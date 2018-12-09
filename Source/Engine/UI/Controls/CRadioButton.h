@@ -1,11 +1,14 @@
 #pragma once
-#include "cocos2d.h"
+#include <functional>
 
 #include "Engine/SmartNode.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Resources/UIResources.h"
 
-using namespace cocos2d;
+class MenuSprite;
+
+namespace cocos2d
+{
+	class EventCustom;
+}
 
 class CRadioButton : public SmartNode
 {
@@ -20,10 +23,10 @@ public:
 
 private:
 	CRadioButton(int groupIdentifier);
-	~CRadioButton();
+	virtual ~CRadioButton();
 
 	void initializeListeners() override;
-	void onGroupCheck(EventCustom* event);
+	void onGroupCheck(cocos2d::EventCustom* event);
 	void onUncheckClick(MenuSprite* menuSprite);
 	void onCheckClick(MenuSprite* menuSprite);
 

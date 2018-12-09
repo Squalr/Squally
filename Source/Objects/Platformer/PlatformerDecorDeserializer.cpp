@@ -1,5 +1,12 @@
 #include "PlatformerDecorDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Objects/Platformer/PlatformerDecorObject.h"
+#include "Objects/Platformer/PlatformerObjectDeserializer.h"
+
+using namespace cocos2d;
+
 PlatformerDecorDeserializer* PlatformerDecorDeserializer::instance = nullptr;
 const std::string PlatformerDecorDeserializer::KeyTypeDecor = "decor";
 

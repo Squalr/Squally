@@ -1,5 +1,15 @@
 #include "SaveManager.h"
 
+#include "cocos/platform/CCFileUtils.h"
+
+#include "steam_api.h"
+
+#include "Engine/Steam/Steam.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
+
+using namespace cocos2d;
+
 const std::string SaveManager::globalSaveFileName = "Global.sqa";
 const std::string SaveManager::profileSaveFileTemplate = "SaveGame_%d.sqa";
 const std::string SaveManager::SaveKeyIncrement = "SAVE_KEY_INCREMENT";
@@ -260,14 +270,14 @@ bool SaveManager::hasProfileData(std::string key)
 
 std::string SaveManager::getLocalGlobalSaveFilePath()
 {
-	return FileUtils::sharedFileUtils()->getWritablePath() + SaveManager::globalSaveFileName;
+	return FileUtils::getInstance()->getWritablePath() + SaveManager::globalSaveFileName;
 }
 
 std::string SaveManager::getLocalActiveProfileSaveFilePath()
 {
 	std::string fileName = StrUtils::replaceAll(SaveManager::profileSaveFileTemplate.c_str(), "%d", std::to_string(SaveManager::getActiveSaveProfile()));
 	
-	return FileUtils::sharedFileUtils()->getWritablePath() + fileName;
+	return FileUtils::getInstance()->getWritablePath() + fileName;
 }
 
 std::string SaveManager::getCloudGlobalSaveFilePath()

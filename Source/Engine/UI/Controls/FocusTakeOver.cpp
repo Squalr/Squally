@@ -1,5 +1,15 @@
 #include "FocusTakeOver.h"
 
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCNode.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/Utils/GameUtils.h"
+
+using namespace cocos2d;
+
 FocusTakeOver * FocusTakeOver::create()
 {
 	FocusTakeOver* instance = new FocusTakeOver();

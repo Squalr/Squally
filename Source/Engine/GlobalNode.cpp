@@ -1,5 +1,9 @@
 #include "GlobalNode.h"
 
+#include "cocos/base/CCEventListener.h"
+
+using namespace cocos2d;
+
 void GlobalNode::pause()
 {
 	// Do nothing -- global nodes should not get paused

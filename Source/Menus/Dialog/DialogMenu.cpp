@@ -61,7 +61,7 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 	this->spriteLeft = this->getPortraitNode(portraitLeft, false);
 	this->spriteRight = this->getPortraitNode(portraitRight, true);
 
-	this->dialogText = Label::create(text, Localization::getMainFont(), 24);
+	this->dialogText = Label::createWithTTF(text, Localization::getMainFont(), 24);
 	this->dialogText->enableWrap(true);
 	this->dialogText->setDimensions(1024.0f, 224.0f);
 

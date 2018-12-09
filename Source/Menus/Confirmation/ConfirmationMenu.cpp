@@ -1,6 +1,8 @@
 #include "ConfirmationMenu.h"
 
-ConfirmationMenu* ConfirmationMenu::create()
+#include "Resources/SoundResources.h"
+
+ConfirmationMenu * ConfirmationMenu::create()
 {
 	ConfirmationMenu* instance = new ConfirmationMenu();
 
@@ -18,7 +20,7 @@ ConfirmationMenu::ConfirmationMenu()
 	this->closeButton = MenuSprite::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
 	this->cancelButton = MenuSprite::create(UIResources::Menus_Buttons_CancelButton, UIResources::Menus_Buttons_CancelButtonHover);
 	this->confirmButton = MenuSprite::create(UIResources::Menus_Buttons_AcceptButton, UIResources::Menus_Buttons_AcceptButtonHover);
-	this->confirmationLabel = Label::create("", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	this->confirmationLabel = Label::createWithTTF("", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
 
 	this->addChild(this->pauseWindow);

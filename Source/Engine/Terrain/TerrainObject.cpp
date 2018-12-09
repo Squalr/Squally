@@ -1,5 +1,26 @@
 #include "TerrainObject.h"
 
+#include <iomanip>
+#include <sstream>
+
+#include "cocos/2d/CCClippingNode.h"
+#include "cocos/2d/CCNode.h"
+#include "cocos/2d/CCLabel.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCValue.h"
+#include "cocos/renderer/CCGLProgram.h"
+
+#include "Engine/Camera/GameCamera.h"
+#include "Engine/Localization/Localization.h"
+#include "Engine/Physics/CollisionObject.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/LogUtils.h"
+#include "Engine/Utils/RenderUtils.h"
+
+#include "Resources/ShaderResources.h"
+
+using namespace cocos2d;
+
 std::string TerrainObject::MapKeyTypeTexture = "texture";
 std::string TerrainObject::MapKeyTypeTerrain = "terrain";
 const bool TerrainObject::EnableTerrainDebugging = true;
@@ -294,8 +315,8 @@ void TerrainObject::buildSurfaceTextures()
 			bisectingAngleStream << std::fixed << std::setprecision(2) << (bisectingAngle * 180.0f / M_PI);
 			std::string bisectingAngleString = bisectingAngleStream.str();
 
-			Label* angleDebug = Label::create(angleString, Localization::getCodingFont(), Localization::getFontSizeP(Localization::getCodingFont()));
-			Label* bisectingAngleDebug = Label::create(bisectingAngleString, Localization::getCodingFont(), Localization::getFontSizeP(Localization::getCodingFont()));
+			Label* angleDebug = Label::createWithTTF(angleString, Localization::getCodingFont(), Localization::getFontSizeP(Localization::getCodingFont()));
+			Label* bisectingAngleDebug = Label::createWithTTF(bisectingAngleString, Localization::getCodingFont(), Localization::getFontSizeP(Localization::getCodingFont()));
 
 			angleDebug->setTextColor(Color4B::YELLOW);
 			bisectingAngleDebug->setTextColor(Color4B::MAGENTA);

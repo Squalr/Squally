@@ -1,5 +1,7 @@
 #include "HexusOpponentPreview.h"
 
+#include "Resources/SoundResources.h"
+
 HexusOpponentPreview* HexusOpponentPreview::create(HexusOpponentData* opponentData)
 {
 	HexusOpponentPreview* instance = new HexusOpponentPreview(opponentData);

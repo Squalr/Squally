@@ -1,5 +1,13 @@
 #include "Cutscene.h"
 
+#include "cocos/base/CCEventKeyboard.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+
+#include "Engine/Cutscenes/CutsceneClip.h"
+#include "Engine/Utils/GameUtils.h"
+
+using namespace cocos2d;
+
 Cutscene* Cutscene::create(std::function<void()> cutsceneCompleteCallback)
 {
 	Cutscene* instance = new Cutscene(cutsceneCompleteCallback);

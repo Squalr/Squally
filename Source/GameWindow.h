@@ -1,17 +1,7 @@
 #pragma once
-#include "audio/include/AudioEngine.h"
-#include "cocos2d.h"
+#include <string>
 
-#include "Analytics/AnalyticsCategories.h"
-#include "Bootstrapper.h"
-#include "Engine/Analytics/Analytics.h"
-#include "Engine/Config/ConfigManager.h"
-#include "Engine/GlobalDirector.h"
-#include "Engine/Steam/Steam.h"
-#include "Engine/Utils/LogUtils.h"
-
-using namespace cocos2d;
-using namespace cocos2d::cocos_experimental;
+#include "cocos/platform/CCApplication.h"
 
 /**
 @brief The cocos2d Application.

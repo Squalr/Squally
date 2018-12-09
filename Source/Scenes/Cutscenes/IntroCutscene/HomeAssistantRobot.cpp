@@ -1,5 +1,7 @@
 #include "HomeAssistantRobot.h"
 
+#include "Engine/Localization/Localization.h"
+
 const Vec2 HomeAssistantRobot::panOffset = Vec2(-608.0f, 256.0f);
 
 HomeAssistantRobot* HomeAssistantRobot::create(HomeAssistantRobotScene homeAssistantRobotScene)
@@ -34,7 +36,7 @@ HomeAssistantRobot::HomeAssistantRobot(HomeAssistantRobotScene homeAssistantRobo
 	}
 
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
-	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
+	this->escapeLabel = Label::createWithTTF("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 

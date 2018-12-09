@@ -1,32 +1,39 @@
 #pragma once
-#include "cocos2d.h"
+#include <functional>
 
-#include "Engine/Hackables/HackableObject.h"
+#include "cocos/base/CCEventKeyboard.h"
+
 #include "Engine/UI/HUD/Hud.h"
-#include "Engine/UI/Mouse.h"
-#include "Menus/HackerMode/RadialMenu.h"
 
-using namespace cocos2d;
+class RadialMenu;
+
+namespace cocos2d
+{
+	class Layer;
+	class Event;
+	class EventCustom;
+	class Node;
+}
 
 class HackerModeHud : public Hud
 {
 public:
 	static HackerModeHud * create(std::function<void()> toggleHackermodeCallback);
 
-	Layer * hackableObjectsHud;
+	cocos2d::Layer * hackableObjectsHud;
 
 private:
 	HackerModeHud(std::function<void()> toggleHackermodeCallback);
-	~HackerModeHud();
+	virtual ~HackerModeHud();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onRadialMenuClose();
-	void registerHackableObject(EventCustom* args);
+	void registerHackableObject(cocos2d::EventCustom* args);
 
-	Node* hackableButtonLayer;
+	cocos2d::Node* hackableButtonLayer;
 	RadialMenu* radialMenu;
 	std::function<void()> callback;
 };

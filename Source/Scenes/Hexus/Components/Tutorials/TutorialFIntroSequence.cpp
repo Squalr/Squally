@@ -12,7 +12,7 @@ TutorialFIntroSequence* TutorialFIntroSequence::create()
 TutorialFIntroSequence::TutorialFIntroSequence() : TutorialBase(StateOverride::TutorialF, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->handCardsTutorialLabel = Label::create("The 'MOV' card copies the attack from one of your cards to any other card! Use it to weaken your opponent!",
+	this->handCardsTutorialLabel = Label::createWithTTF("The 'MOV' card copies the attack from one of your cards to any other card! Use it to weaken your opponent!",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(640.0f, 0.0f),
@@ -20,8 +20,8 @@ TutorialFIntroSequence::TutorialFIntroSequence() : TutorialBase(StateOverride::T
 	);
 	this->helpArrowHandCards = HelpArrow::create();
 
-	Label* handCardsNextLabel = Label::create("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* handCardsNextLabelSelected = Label::create("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* handCardsNextLabel = Label::createWithTTF("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* handCardsNextLabelSelected = Label::createWithTTF("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	handCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	handCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);

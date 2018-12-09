@@ -1,5 +1,6 @@
 #pragma once
-#include "cocos2d.h"
+#include <map>
+#include <string>
 
 #include "Engine/Hackables/HackableAttribute.h"
 
@@ -53,8 +54,6 @@ ASM_1(label:)
 ASM_1(label:) \
 ASM_2("mov " #address, "offset " #label)
 
-using namespace cocos2d;
-
 class HackableCode : public HackableAttribute
 {
 public:
@@ -73,6 +72,6 @@ public:
 
 private:
 	HackableCode(std::string name, void* codeStart, int codeLength, std::string iconResource);
-	~HackableCode();
+	virtual ~HackableCode();
 };
 

@@ -1,5 +1,11 @@
 #include "Analytics.h"
 
+#include "Engine/Analytics/TAnalytics.h"
+#include "Engine/GlobalDirector.h"
+#include "Engine/Utils/SystemUtils.h"
+
+using namespace cocos2d;
+
 Analytics* Analytics::instance = nullptr;
 const std::string Analytics::trackingCode = "UA-125390935-1";
 

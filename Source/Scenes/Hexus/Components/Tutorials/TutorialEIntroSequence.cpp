@@ -12,7 +12,7 @@ TutorialEIntroSequence* TutorialEIntroSequence::create()
 TutorialEIntroSequence::TutorialEIntroSequence() : TutorialBase(StateOverride::TutorialE, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->handCardsTutorialLabel = Label::create("The 'SHL' card makes all weak cards in a row stronger! Use this to make your cards more powerful! Be careful, the order in which you play your cards matters!",
+	this->handCardsTutorialLabel = Label::createWithTTF("The 'SHL' card makes all weak cards in a row stronger! Use this to make your cards more powerful! Be careful, the order in which you play your cards matters!",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(640.0f, 0.0f),
@@ -20,8 +20,8 @@ TutorialEIntroSequence::TutorialEIntroSequence() : TutorialBase(StateOverride::T
 	);
 	this->helpArrowHandCards = HelpArrow::create();
 
-	Label* handCardsNextLabel = Label::create("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* handCardsNextLabelSelected = Label::create("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* handCardsNextLabel = Label::createWithTTF("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* handCardsNextLabelSelected = Label::createWithTTF("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	handCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	handCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);

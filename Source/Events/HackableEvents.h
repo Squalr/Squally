@@ -1,9 +1,7 @@
 #pragma once
-#include "cocos2d.h"
+#include <string>
 
-#include "Engine/Hackables/HackableObject.h"
-
-using namespace cocos2d;
+#include "cocos/math/Vec2.h"
 
 // Forward declarations
 class HackableObject;
@@ -17,9 +15,10 @@ public:
 	struct HackableObjectEditArgs
 	{
 		HackableObject* hackableObject;
-		Vec2 sourceLocation;
+		cocos2d::Vec2 sourceLocation;
 		 
-		HackableObjectEditArgs(HackableObject* hackableObject, Vec2 sourceLocation) : hackableObject(hackableObject), sourceLocation(sourceLocation)
+		HackableObjectEditArgs(HackableObject* hackableObject, cocos2d::Vec2 sourceLocation) :
+				hackableObject(hackableObject), sourceLocation(sourceLocation)
 		{
 		}
 	};

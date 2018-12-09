@@ -1,5 +1,11 @@
 #include "CastleTerrainDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+
+#include "Resources/TerrainResources.h"
+
+using namespace cocos2d;
+
 const std::string CastleTerrainDeserializer::MapKeyTerrainTypeCastle = "castle";
 CastleTerrainDeserializer* CastleTerrainDeserializer::instance = nullptr;
 

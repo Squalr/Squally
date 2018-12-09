@@ -1,11 +1,13 @@
 #pragma once
-#include "cocos2d.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Node;
+}
 
 class ShaderUtils
 {
 public:
-	static void applyDefaultFragShader(Node *node);
-	static void applyGrayscaleFragShader(Node *node);
+	static void applyDefaultFragShader(cocos2d::Node *node);
+	static void applyGrayscaleFragShader(cocos2d::Node *node);
 };

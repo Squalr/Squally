@@ -1,5 +1,14 @@
 #include "WeatherDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/Utils/GameUtils.h"
+
+#include "Scenes/Maps/Platformer/Weather/Fireflies.h"
+#include "Scenes/Maps/Platformer/Weather/Rain.h"
+#include "Scenes/Maps/Platformer/Weather/Snow.h"
+
+using namespace cocos2d;
+
 WeatherDeserializer* WeatherDeserializer::instance = nullptr;
 const std::string WeatherDeserializer::MapKeyWeatherLayer = "weather";
 

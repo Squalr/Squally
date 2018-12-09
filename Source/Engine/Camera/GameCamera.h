@@ -1,13 +1,14 @@
 #pragma once
-#include <algorithm>
+#include <stack>
 
-#include "cocos2d.h"
+#include "cocos/math/CCGeometry.h"
 
-#include "Engine/GlobalDirector.h"
 #include "Engine/GlobalNode.h"
-#include "Engine/Utils/MathUtils.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Node;
+}
 
 class GameCamera : public GlobalNode
 {
@@ -17,35 +18,35 @@ public:
 
 	float getCameraDistance();
 	void setCameraDistance(float distance);
-	Vec2 getCameraPosition();
-	void setCameraPosition(Vec2 position, bool addTrackOffset = false);
-	Vec2 getScrollOffset();
-	void setScrollOffset(Vec2 offset);
-	Rect getBounds();
-	void setBounds(Rect bounds);
-	Vec2 getTrackOffset();
-	void setTrackOffset(Vec2 position);
-	Vec2 getFollowSpeed();
-	void setFollowSpeed(Vec2 speed);
+	cocos2d::Vec2 getCameraPosition();
+	void setCameraPosition(cocos2d::Vec2 position, bool addTrackOffset = false);
+	cocos2d::Vec2 getScrollOffset();
+	void setScrollOffset(cocos2d::Vec2 offset);
+	cocos2d::Rect getBounds();
+	void setBounds(cocos2d::Rect bounds);
+	cocos2d::Vec2 getTrackOffset();
+	void setTrackOffset(cocos2d::Vec2 position);
+	cocos2d::Vec2 getFollowSpeed();
+	void setFollowSpeed(cocos2d::Vec2 speed);
 
-	void setTarget(Node* newTarget, Vec2 trackOffset = Vec2::ZERO);
-	void pushTarget(Node* newTarget);
+	void setTarget(cocos2d::Node* newTarget, cocos2d::Vec2 trackOffset = cocos2d::Vec2::ZERO);
+	void pushTarget(cocos2d::Node* newTarget);
 	void popTarget();
 	void clearTargets();
 
 private:
 	GameCamera();
-	~GameCamera();
+	virtual ~GameCamera();
 	void onEnter() override;
 	void update(float dt) override;
 
-	std::stack<Node*> targetStack;
+	std::stack<cocos2d::Node*> targetStack;
 	float defaultDistance;
-	Vec2 cameraPosition;
-	Rect cameraBounds;
-	Vec2 cameraScrollOffset;
-	Vec2 trackOffset;
-	Vec2 followSpeed;
+	cocos2d::Vec2 cameraPosition;
+	cocos2d::Rect cameraBounds;
+	cocos2d::Vec2 cameraScrollOffset;
+	cocos2d::Vec2 trackOffset;
+	cocos2d::Vec2 followSpeed;
 
 	static GameCamera* cameraInstance;
 };

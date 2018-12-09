@@ -1,5 +1,10 @@
 #include "CastleNpcDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Npcs/Castle/CastleNpcs.h"
+
+using namespace cocos2d;
+
 CastleNpcDeserializer* CastleNpcDeserializer::instance = nullptr;
 
 void CastleNpcDeserializer::registerGlobalNode()

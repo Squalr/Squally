@@ -1,5 +1,10 @@
 #include "CastleEnemyDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Enemies/Castle/CastleEnemies.h"
+
+using namespace cocos2d;
+
 CastleEnemyDeserializer* CastleEnemyDeserializer::instance = nullptr;
 
 void CastleEnemyDeserializer::registerGlobalNode()

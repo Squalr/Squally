@@ -1,34 +1,35 @@
 #pragma once
-#include "cocos2d.h"
-
 #include "Engine/Events/MouseEvents.h"
-#include "Engine/GlobalDirector.h"
 #include "Engine/GlobalNode.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class EventCustom;
+	class EventMouse;
+}
 
 class MouseState : public GlobalNode
 {
 public:
 	static void registerGlobalNode();
 
-	static Vec2 getMousePosition();
+	static cocos2d::Vec2 getMousePosition();
 	static MouseEvents::MouseEventArgs getMouseState();
 
 private:
 	MouseState();
-	~MouseState();
+	virtual ~MouseState();
 
 	void initializeListeners() override;
-	void onMouseMove(EventMouse* event);
-	void onMouseDown(EventMouse* event);
-	void onMouseUp(EventMouse* event);
+	void onMouseMove(cocos2d::EventMouse* event);
+	void onMouseDown(cocos2d::EventMouse* event);
+	void onMouseUp(cocos2d::EventMouse* event);
 	void onMouseScroll();
-	void onClickableMouseOverEvent(EventCustom* eventCustom);
-	void onClickableMouseOutEvent(EventCustom* eventCustom);
-	void onMouseDragEvent(EventCustom* eventCustom);
+	void onClickableMouseOverEvent(cocos2d::EventCustom* eventCustom);
+	void onClickableMouseOutEvent(cocos2d::EventCustom* eventCustom);
+	void onMouseDragEvent(cocos2d::EventCustom* eventCustom);
 
-	static Vec2 mousePosition;
+	static cocos2d::Vec2 mousePosition;
 	static bool canClick;
 	static bool isDragging;
 	static bool isLeftClicked;

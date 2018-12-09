@@ -1,5 +1,10 @@
 #include "DeserializationEvents.h"
 
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventDispatcher.h"
+
+using namespace cocos2d;
+
 const std::string DeserializationEvents::RequestLayerDeserializeEvent = "EVENT_REQUEST_LAYER_DESERIALIZE";
 const std::string DeserializationEvents::RequestObjectDeserializeEvent = "EVENT_REQUEST_OBJECT_DESERIALIZE";
 

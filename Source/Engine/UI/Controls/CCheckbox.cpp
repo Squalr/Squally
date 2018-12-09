@@ -1,6 +1,13 @@
 #include "CCheckbox.h"
 
-CCheckbox* CCheckbox::create(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState, std::function<bool(CCheckbox*, bool)> callback)
+#include "cocos/base/ccMacros.h"
+
+#include "Engine/UI/Controls/MenuSprite.h"
+
+using namespace cocos2d;
+
+CCheckbox* CCheckbox::create(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState,
+		std::function<bool(CCheckbox*, bool)> callback)
 {
 	CCheckbox* instance = new CCheckbox(uncheckedButton, checkedButton, initialState, callback);
 
@@ -9,7 +16,8 @@ CCheckbox* CCheckbox::create(MenuSprite* uncheckedButton, MenuSprite* checkedBut
 	return instance;
 }
 
-CCheckbox::CCheckbox(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState, std::function<bool(CCheckbox*, bool)> callback)
+CCheckbox::CCheckbox(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState,
+		std::function<bool(CCheckbox*, bool)> callback)
 {
 	this->isToggled = initialState;
 	this->toggleCallback = callback;

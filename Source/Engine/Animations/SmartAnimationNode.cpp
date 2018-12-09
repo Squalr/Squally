@@ -1,5 +1,9 @@
 #include "SmartAnimationNode.h"
 
+#include "SpriterPlusPlus/CCAnimationNode.h"
+
+using namespace cocos2d;
+
 const std::string SmartAnimationNode::DefaultAnimationEntityName = "Entity";
 const std::string SmartAnimationNode::DefaultAnimationName = "Idle";
 

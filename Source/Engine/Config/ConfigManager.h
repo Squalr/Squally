@@ -1,7 +1,6 @@
 #pragma once
+#include "cocos/base/CCValue.h"
 #include "cocos/math/CCGeometry.h"
-
-#include "Engine/Utils/GameUtils.h"
 
 class ConfigManager
 {
@@ -39,7 +38,7 @@ private:
 	ConfigManager();
 	~ConfigManager();
 
-	ValueMap valueMap;
+	cocos2d::ValueMap valueMap;
 
 	static ConfigManager* instance;
 

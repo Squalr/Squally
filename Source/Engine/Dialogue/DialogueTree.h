@@ -1,16 +1,8 @@
 #pragma once
-#include "cocos2d.h"
-#include "allocators.h"
-#include "encodings.h"
+#include <string>
+#include <vector>
+
 #include "document.h"
-#include "stringbuffer.h"
-#include "writer.h"
-
-#include "Engine/Localization/Localization.h"
-#include "Events/DialogEvents.h"
-
-using namespace cocos2d;
-using namespace rapidjson;
 
 class DialogueTree
 {
@@ -33,6 +25,6 @@ private:
 	};
 
 	static DialogueTree * loadDialogueFromJson(std::string json);
-	static std::string resolveDialogue(GenericObject<true, rapidjson::Value::ValueType>* dialogueObject);
-	static std::string resolveDialogue(GenericObject<false, rapidjson::Value::ValueType>* dialogueObject);
+	static std::string resolveDialogue(rapidjson::GenericObject<true, rapidjson::Value::ValueType>* dialogueObject);
+	static std::string resolveDialogue(rapidjson::GenericObject<false, rapidjson::Value::ValueType>* dialogueObject);
 };

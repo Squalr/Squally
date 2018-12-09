@@ -1,5 +1,14 @@
 #include "CollisionDeserializer.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/GlobalDirector.h"
+#include "Engine/Physics/CollisionObject.h"
+#include "Engine/Utils/GameUtils.h"
+
+using namespace cocos2d;
+
 CollisionDeserializer* CollisionDeserializer::instance = nullptr;
 
 void CollisionDeserializer::registerGlobalNode()

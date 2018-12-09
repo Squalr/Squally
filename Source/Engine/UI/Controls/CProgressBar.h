@@ -1,11 +1,11 @@
 #pragma once
-#include "cocos2d.h"
-
 #include "Engine/SmartNode.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Resources/UIResources.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class ClippingRectangleNode;
+	class Sprite;
+}
 
 class CProgressBar : public SmartNode
 {
@@ -16,14 +16,14 @@ public:
 
 protected:
 	CProgressBar();
-	~CProgressBar();
+	virtual ~CProgressBar();
 
 	void initializePositions() override;
 
 private:
-	Sprite* frame;
-	Sprite* progressBar;
-	ClippingRectangleNode* progressClip;
+	cocos2d::Sprite* frame;
+	cocos2d::Sprite* progressBar;
+	cocos2d::ClippingRectangleNode* progressClip;
 
 	float progress;
 };

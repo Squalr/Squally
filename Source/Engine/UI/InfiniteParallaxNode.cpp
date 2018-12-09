@@ -1,5 +1,12 @@
 #include "InfiniteParallaxNode.h"
 
+#include "cocos/2d/CCNode.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/renderer/CCRenderer.h"
+
+using namespace cocos2d;
+
 InfiniteParallaxNode* InfiniteParallaxNode::create(std::string spriteResourcePath)
 {
 	InfiniteParallaxNode* instance = new InfiniteParallaxNode(spriteResourcePath);

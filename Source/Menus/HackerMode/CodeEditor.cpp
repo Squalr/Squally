@@ -1,5 +1,8 @@
 ﻿#include "CodeEditor.h"
 
+#include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
+
 const float CodeEditor::compileDelayMaxSeconds = 0.1f;
 const float CodeEditor::lineNumberMargin = 32.0f;;
 const Size CodeEditor::textSize = Size(512.0f, 640.0f);
@@ -74,11 +77,11 @@ CodeEditor::CodeEditor()
 	this->functionWindow = EditableTextWindow::create(Localization::resolveString(CodeEditor::StringKeyCodeEditor), CodeEditor::functionSize, Localization::getFontSizeH3(Localization::getCodingFont()), CodeEditor::defaultColor);
 	this->secondaryWindow = EditableTextWindow::create(Localization::resolveString(CodeEditor::StringKeyAllocationEditor), CodeEditor::secondarySize, Localization::getFontSizeH3(Localization::getCodingFont()), CodeEditor::defaultColor);
 
-	Label* acceptLabel = Label::create(Localization::resolveString(CodeEditor::StringKeyAccept), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
-	Label* acceptLabelHover = Label::create(Localization::resolveString(CodeEditor::StringKeyAccept), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+	Label* acceptLabel = Label::createWithTTF(Localization::resolveString(CodeEditor::StringKeyAccept), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+	Label* acceptLabelHover = Label::createWithTTF(Localization::resolveString(CodeEditor::StringKeyAccept), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
 
-	Label* cancelLabel = Label::create(Localization::resolveString(CodeEditor::StringKeyCancel), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
-	Label* cancelLabelHover = Label::create(Localization::resolveString(CodeEditor::StringKeyCancel), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+	Label* cancelLabel = Label::createWithTTF(Localization::resolveString(CodeEditor::StringKeyCancel), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+	Label* cancelLabelHover = Label::createWithTTF(Localization::resolveString(CodeEditor::StringKeyCancel), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
 
 	Size shadowSize = Size(-2.0f, -2.0f);
 	int shadowBlur = 2;
@@ -116,7 +119,7 @@ CodeEditor::CodeEditor()
 
 	this->acceptButtonGrayed = Node::create();
 	this->acceptButtonGrayed->addChild(Sprite::create(UIResources::Menus_Buttons_GenericHackButtonGray));
-	Label* acceptGray = Label::create(Localization::resolveString(CodeEditor::StringKeyAccept), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+	Label* acceptGray = Label::createWithTTF(Localization::resolveString(CodeEditor::StringKeyAccept), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
 	acceptGray->setTextColor(Color4B::GRAY);
 	this->acceptButtonGrayed->addChild(acceptGray);
 

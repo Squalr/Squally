@@ -1,5 +1,10 @@
 #include "JumpEffect.h"
 
+#include "Engine/Utils/GameUtils.h"
+#include "Resources/EntityResources.h"
+
+using namespace cocos2d;
+
 JumpEffect* JumpEffect::create()
 {
 	JumpEffect* instance = new JumpEffect();

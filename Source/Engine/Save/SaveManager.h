@@ -1,10 +1,5 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/Steam/Steam.h"
-#include "Engine/Utils/GameUtils.h"
-
-using namespace cocos2d;
+#include "cocos/base/CCValue.h"
 
 class SaveManager
 {
@@ -28,8 +23,8 @@ private:
 	~SaveManager();
 	void initialize();
 
-	static void doSave(ValueMap valueMap, std::string localSavePath, std::string cloudSavePath);
-	static ValueMap loadSaveFile(std::string localSavePath, std::string cloudSavePath);
+	static void doSave(cocos2d::ValueMap valueMap, std::string localSavePath, std::string cloudSavePath);
+	static cocos2d::ValueMap loadSaveFile(std::string localSavePath, std::string cloudSavePath);
 
 	std::string getLocalGlobalSaveFilePath();
 	std::string getLocalActiveProfileSaveFilePath();
@@ -37,8 +32,8 @@ private:
 	std::string getCloudActiveProfileSaveFilePath();
 
 	ActiveSaveProfile activeSaveProfile;
-	ValueMap globalSaveData;
-	ValueMap profileSaveData;
+	cocos2d::ValueMap globalSaveData;
+	cocos2d::ValueMap profileSaveData;
 
 	static SaveManager *instance;
 	static const std::string globalSaveFileName;
