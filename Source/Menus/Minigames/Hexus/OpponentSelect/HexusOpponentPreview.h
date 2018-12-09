@@ -3,8 +3,8 @@
 #include "cocos-ext.h"
 
 #include "Engine/SmartNode.h"
-#include "Events/HexusEvents.h"
 #include "Engine/UI/Controls/MenuSprite.h"
+#include "Events/NavigationEvents.h"
 #include "Resources/EntityResources.h"
 #include "Resources/UIResources.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
@@ -14,7 +14,7 @@ using namespace cocos2d;
 class HexusOpponentPreview : public SmartNode
 {
 public:
-	static HexusOpponentPreview * create(HexusOpponentData* opponentData, std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback);
+	static HexusOpponentPreview * create(HexusOpponentData* opponentData);
 
 	void disableInteraction();
 	void enableInteraction();
@@ -22,7 +22,7 @@ public:
 	HexusOpponentData* hexusOpponentData;
 
 protected:
-	HexusOpponentPreview(HexusOpponentData* opponentData, std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback);
+	HexusOpponentPreview(HexusOpponentData* opponentData);
 	~HexusOpponentPreview();
 
 private:
@@ -30,7 +30,6 @@ private:
 	void onOpponentClick(MenuSprite* HexusOpponentPreview);
 
 	std::function<void(HexusOpponentPreview*)> onMouseOverEvent;
-	std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback;
 
 	AnimationNode* opponentSprite;
 	LayerColor* disabledLayer;

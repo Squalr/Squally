@@ -73,6 +73,21 @@ void HexusOpponentMenuBase::onEnter()
 {
 	GlobalScene::onEnter();
 
+	// TODO: Check if chapter was just beat, if so, save that and navigate backwards
+	/*
+	
+
+		if (gameState->opponentData == this->opponents.back()->hexusOpponentData)
+		{
+			if (!SaveManager::hasGlobalData(this->chapterProgressSaveKey) || !SaveManager::getGlobalData(this->chapterProgressSaveKey).asBool())
+			{
+				// Beat the last opponent -- save that we beat the chapter and navigate back to chapter select
+				SaveManager::saveGlobalData(this->chapterProgressSaveKey, cocos2d::Value(true));
+				backToChapterSelect = true;
+			}
+		}
+		*/
+
 	const float delay = 0.25f;
 	const float duration = 0.35f;
 
@@ -192,73 +207,6 @@ void HexusOpponentMenuBase::onDeckManagementClick(MenuSprite* menuSprite)
 void HexusOpponentMenuBase::onShopClick(MenuSprite* menuSprite)
 {
 	NavigationEvents::navigateHexusShop();
-}
-
-void HexusOpponentMenuBase::onGameEndCallback(HexusEvents::HexusGameResultEventArgs args)
-{
-	std::string winsKey = HexusOpponentData::winsPrefix + args.opponentData->enemyNameKey;
-	std::string lossesKey = HexusOpponentData::lossesPrefix + args.opponentData->enemyNameKey;
-
-	// Analytics for first time playing opponent (neither WIN or LOSS key present in save file)
-	if (!SaveManager::hasGlobalData(winsKey) && !SaveManager::hasGlobalData(lossesKey))
-	{
-		Analytics::sendEvent(AnalyticsCategories::Hexus, "first_game_result", args.opponentData->enemyNameKey, args.gameResult == HexusEvents::PlayerWon ? 1 : 0);
-	}
-
-	Analytics::sendEvent(AnalyticsCategories::Hexus, "game_duration", args.opponentData->enemyNameKey, args.gameDurationInSeconds);
-
-	if (args.gameResult == HexusEvents::PlayerWon)
-	{
-		int wins = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
-		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt();
-
-		SaveManager::saveGlobalData(winsKey, cocos2d::Value(wins));
-
-		// Analytics for first win
-		if (wins == 1)
-		{
-			Analytics::sendEvent(AnalyticsCategories::Hexus, "attempts_for_first_win", args.opponentData->enemyNameKey, losses + wins);
-		}
-
-		// Analytics for winning in general
-		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_wins", args.opponentData->enemyNameKey, wins);
-
-		bool backToChapterSelect = false;
-
-		if (args.opponentData == this->opponents.back()->hexusOpponentData)
-		{
-			if (!SaveManager::hasGlobalData(this->chapterProgressSaveKey) || !SaveManager::getGlobalData(this->chapterProgressSaveKey).asBool())
-			{
-				// Beat the last opponent -- save that we beat the chapter and navigate back to chapter select
-				SaveManager::saveGlobalData(this->chapterProgressSaveKey, cocos2d::Value(true));
-				backToChapterSelect = true;
-			}
-		}
-
-		HexusEvents::showRewards(HexusEvents::HexusRewardArgs(args.gameResult, args.opponentData, backToChapterSelect));
-	}
-	else if (args.gameResult == HexusEvents::Draw)
-	{
-		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
-
-		SaveManager::saveGlobalData(lossesKey, cocos2d::Value(losses));
-
-		// Analytics for losing
-		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", args.opponentData->enemyNameKey, losses);
-
-		HexusEvents::showRewards(HexusEvents::HexusRewardArgs(args.gameResult, args.opponentData, false));
-	}
-	else
-	{
-		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
-
-		SaveManager::saveGlobalData(lossesKey, cocos2d::Value(losses));
-
-		// Analytics for losing
-		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", args.opponentData->enemyNameKey, losses);
-
-		NavigationEvents::navigateBack();
-	}
 }
 
 void HexusOpponentMenuBase::loadProgress()

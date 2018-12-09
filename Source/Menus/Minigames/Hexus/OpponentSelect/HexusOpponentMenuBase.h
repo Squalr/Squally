@@ -30,7 +30,6 @@ protected:
 	void onShopClick(MenuSprite* menuSprite);
 	void onMouseOver(HexusOpponentPreview* opponent);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	void onGameEndCallback(HexusEvents::HexusGameResultEventArgs args);
 
 	NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter chapter;
 

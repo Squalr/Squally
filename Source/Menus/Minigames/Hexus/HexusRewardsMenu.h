@@ -6,7 +6,6 @@
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/HexusEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Resources/UIResources.h"
 #include "Scenes/Hexus/Card.h"
@@ -20,8 +19,6 @@ class HexusRewardsMenu : public GlobalScene
 public:
 	static void registerGlobalScene();
 
-	void onRewardsOpen(EventCustom* eventCustom);
-
 protected:
 	HexusRewardsMenu();
 	~HexusRewardsMenu();
@@ -30,7 +27,8 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onReturnClick(MenuSprite* menuSprite, bool backToChapterSelect);
+	void onRewardsOpen(int reward, bool isRewardReduced);
+	void onReturnClick(MenuSprite* menuSprite);
 
 	Sprite* background;
 	Sprite* goldSprite;

@@ -56,19 +56,63 @@ void StateGameEnd::onBackClick(MenuSprite* menuSprite, GameState* gameState)
 {
 	GameState::updateState(gameState, GameState::StateType::EmptyState);
 
-	if (gameState->playerLosses >= 2 && gameState->enemyLosses >= 2)
+	std::string winsKey = HexusOpponentData::winsPrefix + gameState->opponentData->enemyNameKey;
+	std::string lossesKey = HexusOpponentData::lossesPrefix + gameState->opponentData->enemyNameKey;
+
+	Analytics::sendEvent(AnalyticsCategories::Hexus, "game_duration", gameState->opponentData->enemyNameKey, gameState->gameDurationInSeconds);
+	bool isDraw = gameState->playerLosses >= 2 && gameState->enemyLosses >= 2;
+	bool isWin = gameState->playerLosses < 2 && gameState->enemyLosses >= 2;
+
+	if (isDraw)
 	{
-		SoundManager::playSoundResource(SoundResources::Hexus_Reward);
-		gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(HexusEvents::HexusGameResult::Draw, gameState->opponentData, gameState->gameDurationInSeconds));
+		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
+
+		SaveManager::saveGlobalData(lossesKey, cocos2d::Value(losses));
+
+		// Analytics for losing
+		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyNameKey, losses);
+
+		// Half the reward for a draw
+		NavigationEvents::navigateHexusRewards(NavigationEvents::NavigateHexusRewardArgs(gameState->opponentData->reward / 2, true));
 	}
-	else if (gameState->playerLosses < 2 && gameState->enemyLosses >= 2)
+	else if (isWin)
 	{
-		SoundManager::playSoundResource(SoundResources::Hexus_Reward);
-		gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(HexusEvents::HexusGameResult::PlayerWon, gameState->opponentData, gameState->gameDurationInSeconds));
+		int wins = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
+		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt();
+
+		SaveManager::saveGlobalData(winsKey, cocos2d::Value(wins));
+
+		if (!SaveManager::hasGlobalData(winsKey) && !SaveManager::hasGlobalData(lossesKey))
+		{
+			Analytics::sendEvent(AnalyticsCategories::Hexus, "first_game_result", gameState->opponentData->enemyNameKey, 1);
+		}
+
+		// Analytics for first win
+		if (wins == 1)
+		{
+			Analytics::sendEvent(AnalyticsCategories::Hexus, "attempts_for_first_win", gameState->opponentData->enemyNameKey, losses + wins);
+		}
+
+		// Analytics for winning
+		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_wins", gameState->opponentData->enemyNameKey, wins);
+
+		NavigationEvents::navigateHexusRewards(NavigationEvents::NavigateHexusRewardArgs(gameState->opponentData->reward, false));
 	}
 	else
 	{
-		gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(HexusEvents::HexusGameResult::EnemyWon, gameState->opponentData, gameState->gameDurationInSeconds));
+		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
+
+		SaveManager::saveGlobalData(lossesKey, cocos2d::Value(losses));
+
+		if (!SaveManager::hasGlobalData(winsKey) && !SaveManager::hasGlobalData(lossesKey))
+		{
+			Analytics::sendEvent(AnalyticsCategories::Hexus, "first_game_result", gameState->opponentData->enemyNameKey, 0);
+		}
+
+		// Analytics for losing
+		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyNameKey, losses);
+
+		NavigationEvents::navigateBack();
 	}
 }
 

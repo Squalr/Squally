@@ -8,7 +8,6 @@
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Special/Shopkeeper.h"
-#include "Events/HexusEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/Minigames/Hexus/MenuCard.h"
 #include "Resources/SoundResources.h"
