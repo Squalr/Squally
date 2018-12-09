@@ -35,6 +35,7 @@ MinigamesMenu::MinigamesMenu()
 	const Color4B glowColor = Color4B::ORANGE;
 	const Vec2 labelOffset = Vec2(48.0f, 0.0f);
 
+	this->backgroundNode = Node::create();
 	this->scrollPane = ScrollPane::create(Size(1152.0f, 768.0f), Color4B(0, 0, 0, 127));
 
 	Label* backButtonLabel = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
@@ -125,6 +126,7 @@ MinigamesMenu::MinigamesMenu()
 	this->comingSoonButton5 = this->createComingSoonButton();
 	this->comingSoonButton6 = this->createComingSoonButton();
 
+	this->addChild(this->backgroundNode);
 	this->scrollPane->addChild(this->hexusButton);
 	this->scrollPane->addChild(this->hexusPuzzlesButton);
 	this->scrollPane->addChild(this->comingSoonButton1);
@@ -151,6 +153,8 @@ void MinigamesMenu::onEnter()
 
 	GameUtils::fadeInObject(this->scrollPane, delay, duration);
 	GameUtils::fadeInObject(this->backButton, delay, duration);
+
+	this->backgroundNode->addChild(MenuBackground::claimInstance());
 
 	this->scheduleUpdate();
 }
