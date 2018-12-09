@@ -30,8 +30,8 @@ SaveSelectMenu::SaveSelectMenu()
 	const Color4B glowColor = Color4B::ORANGE;
 	const Vec2 labelOffset = Vec2(48.0f, 0.0f);
 
-	Label* saveGame1Label = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* saveGame1LabelHover = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* saveGame1Label = Label::createWithTTF(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* saveGame1LabelHover = Label::createWithTTF(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	saveGame1Label->setColor(textColor);
 	saveGame1Label->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -56,8 +56,8 @@ SaveSelectMenu::SaveSelectMenu()
 
 	this->saveGame1->addChild(saveGame1Icon);
 
-	Label* saveGame2Label = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* saveGame2LabelHover = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* saveGame2Label = Label::createWithTTF(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* saveGame2LabelHover = Label::createWithTTF(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	saveGame2Label->setColor(textColor);
 	saveGame2Label->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -82,8 +82,8 @@ SaveSelectMenu::SaveSelectMenu()
 
 	this->saveGame2->addChild(saveGame2Icon);
 
-	Label* saveGame3Label = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* saveGame3LabelHover = Label::create(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* saveGame3Label = Label::createWithTTF(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* saveGame3LabelHover = Label::createWithTTF(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	saveGame3Label->setColor(textColor);
 	saveGame3Label->enableShadow(shadowColor, shadowSize, shadowBlur);

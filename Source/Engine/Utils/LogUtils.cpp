@@ -7,10 +7,10 @@
 const std::string LogUtils::logFileName = "SquallyLogs.txt";
 const std::string LogUtils::errorFileName = "SquallyErrors.txt";
 
-void LogUtils::redirectStandardOutputToFile()
+bool LogUtils::redirectStandardOutputToFile()
 {
-	freopen(LogUtils::getLogFilePath().c_str(), "w", stdout);
-	freopen(LogUtils::getErrorFilePath().c_str(), "w", stderr);
+	return (stdout == freopen(LogUtils::getLogFilePath().c_str(), "w", stdout))
+		&& (stderr == freopen(LogUtils::getErrorFilePath().c_str(), "w", stderr));
 }
 
 void LogUtils::log(std::string info)
@@ -25,10 +25,10 @@ void LogUtils::logError(std::string errorInfo)
 
 std::string LogUtils::getLogFilePath()
 {
-	return cocos2d::FileUtils::sharedFileUtils()->getWritablePath() + LogUtils::logFileName;
+	return cocos2d::FileUtils::getInstance()->getWritablePath() + LogUtils::logFileName;
 }
 
 std::string LogUtils::getErrorFilePath()
 {
-	return cocos2d::FileUtils::sharedFileUtils()->getWritablePath() + LogUtils::errorFileName;
+	return cocos2d::FileUtils::getInstance()->getWritablePath() + LogUtils::errorFileName;
 }

@@ -12,18 +12,18 @@ TutorialBIntroSequence* TutorialBIntroSequence::create()
 TutorialBIntroSequence::TutorialBIntroSequence() : TutorialBase(StateOverride::TutorialB, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->scoreTotalsTutorialLabel = Label::create("You already have a large lead over your opponent.",
+	this->scoreTotalsTutorialLabel = Label::createWithTTF("You already have a large lead over your opponent.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(420.0f, 0.0f)
 	);
-	this->handCardsTutorialLabel = Label::create("You'll want to save your cards for the next round.",
+	this->handCardsTutorialLabel = Label::createWithTTF("You'll want to save your cards for the next round.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(640.0f, 0.0f),
 		cocos2d::TextHAlignment::CENTER
 	);
-	this->lastStandTutorialLabel = Label::create("Your best option is to simply defend yourself until the next round!",
+	this->lastStandTutorialLabel = Label::createWithTTF("Your best option is to simply defend yourself until the next round!",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(640.0f, 0.0f),
@@ -33,24 +33,24 @@ TutorialBIntroSequence::TutorialBIntroSequence() : TutorialBase(StateOverride::T
 	this->helpArrowHandCards = HelpArrow::create();
 	this->helpArrowLastStand = HelpArrow::create();
 
-	Label* scoreTotalsNextLabel = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* scoreTotalsNextLabelSelected = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* scoreTotalsNextLabel = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* scoreTotalsNextLabelSelected = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	scoreTotalsNextLabel->enableOutline(Color4B::BLACK, 2);
 	scoreTotalsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->scoreTotalsNextButton = TextMenuSprite::create(scoreTotalsNextLabel, scoreTotalsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
-	Label* handCardsNextLabel = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* handCardsNextLabelSelected = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* handCardsNextLabel = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* handCardsNextLabelSelected = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	handCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	handCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->handCardsNextButton = TextMenuSprite::create(handCardsNextLabel, handCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
-	Label* lastStandNextLabel = Label::create("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* lastStandNextLabelSelected = Label::create("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* lastStandNextLabel = Label::createWithTTF("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* lastStandNextLabelSelected = Label::createWithTTF("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	lastStandNextLabel->enableOutline(Color4B::BLACK, 2);
 	lastStandNextLabelSelected->enableOutline(Color4B::BLACK, 2);

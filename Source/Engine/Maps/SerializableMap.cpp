@@ -162,7 +162,7 @@ bool SerializableMap::serialize()
 
 	documentRoot->LinkEndChild(mapElement);
 
-	return tinyxml2::XML_SUCCESS == documentRoot->SaveFile(FileUtils::sharedFileUtils()->fullPathForFilename(this->levelMapFileName + ".dbg.tmx").c_str());
+	return tinyxml2::XML_SUCCESS == documentRoot->SaveFile(FileUtils::getInstance()->fullPathForFilename(this->levelMapFileName + ".dbg.tmx").c_str());
 }
 
 std::string SerializableMap::getMapFileName()

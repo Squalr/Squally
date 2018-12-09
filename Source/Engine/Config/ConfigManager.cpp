@@ -29,7 +29,8 @@ ConfigManager::ConfigManager()
 {
 	try
 	{
-		this->valueMap = FileUtils::getInstance()->getValueMapFromFile(FileUtils::sharedFileUtils()->getWritablePath() + "/" + ConfigManager::ConfigFile);
+		this->valueMap = FileUtils::getInstance()->getValueMapFromFile(
+				FileUtils::getInstance()->getWritablePath() + "/" + ConfigManager::ConfigFile);
 	}
 	catch (...)
 	{
@@ -47,7 +48,8 @@ void ConfigManager::save()
 
 	try
 	{
-		FileUtils::getInstance()->writeValueMapToFile(instance->valueMap, FileUtils::sharedFileUtils()->getWritablePath() + "/" + ConfigManager::ConfigFile);
+		FileUtils::getInstance()->writeValueMapToFile(instance->valueMap,
+				FileUtils::getInstance()->getWritablePath() + "/" + ConfigManager::ConfigFile);
 	}
 	catch (...)
 	{

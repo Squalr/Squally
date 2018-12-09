@@ -227,7 +227,7 @@ void Grid::update(float dt)
 		(*it)->setScale(std::min(inverseX / (float)Grid::lineRows, 1.5f));
 		(*it)->setPosition(this->coordsToLocation(Vec2(coords.x, coords.y)));
 
-		(*it)->setZOrder(inverseX * visibleSize.width + centerDelta);
+		(*it)->setLocalZOrder(inverseX * visibleSize.width + centerDelta);
 	}
 	
 	// Remove off-screen objects

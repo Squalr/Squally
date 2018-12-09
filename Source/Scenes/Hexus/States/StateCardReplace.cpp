@@ -13,8 +13,8 @@ StateCardReplace* StateCardReplace::create()
 
 StateCardReplace::StateCardReplace() : StateBase(GameState::StateType::CardReplace)
 {
-	Label* doneButtonLabel = Label::create("Done", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* doneButtonLabelHover = Label::create("Done", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* doneButtonLabel = Label::createWithTTF("Done", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* doneButtonLabelHover = Label::createWithTTF("Done", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 	
 	this->removedCards = std::vector<Card*>();
 	doneButtonLabel->enableOutline(Color4B::BLACK, 2);

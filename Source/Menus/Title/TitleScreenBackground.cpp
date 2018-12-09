@@ -46,7 +46,7 @@ TitleScreenBackground::TitleScreenBackground()
 
 	for (auto it = eyesAFrames.begin(); it != eyesAFrames.end(); it++)
 	{
-		this->eyes1Anim->addSpriteFrameWithFileName(*it);
+		this->eyes1Anim->addSpriteFrameWithFile(*it);
 	}
 
 	this->eyes1Anim->retain();
@@ -55,7 +55,7 @@ TitleScreenBackground::TitleScreenBackground()
 
 	for (auto it = eyesBFrames.begin(); it != eyesBFrames.end(); it++)
 	{
-		this->eyes2Anim->addSpriteFrameWithFileName(*it);
+		this->eyes2Anim->addSpriteFrameWithFile(*it);
 	}
 
 	this->eyes2Anim->retain();
@@ -216,6 +216,6 @@ void TitleScreenBackground::createSlimeAnimation()
 
 	for (auto it = slimeFrames.begin(); it != slimeFrames.end(); it++)
 	{
-		this->slimeAnimation->addSpriteFrameWithFileName(*it);
+		this->slimeAnimation->addSpriteFrameWithFile(*it);
 	}
 }

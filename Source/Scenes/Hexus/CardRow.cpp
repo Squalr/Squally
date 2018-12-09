@@ -319,7 +319,7 @@ void CardRow::setCardPositions(float cardRepositionDelay, float indexDelay)
 		Card* card = *it;
 		float newX = (index * spacing) - (spacing * (cardCount - 1)) / 2.0f;
 
-		card->setZOrder(index);
+		card->setLocalZOrder(index);
 		card->position = Vec2(newX, 0.0f);
 
 		if (cardRepositionDelay > 0.0f)
