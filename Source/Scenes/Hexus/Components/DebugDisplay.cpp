@@ -13,7 +13,7 @@ DebugDisplay* DebugDisplay::create()
 
 DebugDisplay::DebugDisplay()
 {
-	this->stateLabel = Label::create("", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->stateLabel = Label::createWithTTF("", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 
 	this->stateLabel->enableOutline(Color4B::BLACK, 2);
 

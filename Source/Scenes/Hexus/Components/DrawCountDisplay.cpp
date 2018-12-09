@@ -12,15 +12,15 @@ DrawCountDisplay* DrawCountDisplay::create()
 DrawCountDisplay::DrawCountDisplay()
 {
 	this->drawCountSprite = MenuSprite::create(HexusResources::CardDrawIconSmall, HexusResources::CardDrawIconSmall);
-	this->drawCountLabel = Label::create("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->drawCountLabel = Label::createWithTTF("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 	this->enemyDrawCountSprite = Sprite::create(HexusResources::CardDrawIconSmall);
-	this->enemyDrawCountLabel = Label::create("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->enemyDrawCountLabel = Label::createWithTTF("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 
 	LayerColor* deckDrawCountMouseOverPanel;
 	Label* deckDrawCountCardMouseOverLabel;
 
 	this->deckDrawCountMouseOverPanel = LayerColor::create(Color4B::BLACK, 320.0f, 96.0f);
-	this->deckDrawCountCardMouseOverLabel = Label::create(
+	this->deckDrawCountCardMouseOverLabel = Label::createWithTTF(
 		Localization::resolveString("The number of cards that will be drawn next round"),
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont())

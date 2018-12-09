@@ -12,15 +12,15 @@ TutorialAVictory* TutorialAVictory::create()
 TutorialAVictory::TutorialAVictory() : TutorialBase(StateOverride::TutorialA, GameState::StateType::GameEnd)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->lossDisplayTutorialLabel = Label::create("Your opponent has lost 2 lives, so you win the match!",
+	this->lossDisplayTutorialLabel = Label::createWithTTF("Your opponent has lost 2 lives, so you win the match!",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(420.0f, 0.0f)
 	);
 	this->helpArrowLossDisplay = HelpArrow::create();
 
-	Label* lossesDisplayNextLabel = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* lossesDisplayNextLabelSelected = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* lossesDisplayNextLabel = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* lossesDisplayNextLabelSelected = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	lossesDisplayNextLabel->enableOutline(Color4B::BLACK, 2);
 	lossesDisplayNextLabelSelected->enableOutline(Color4B::BLACK, 2);

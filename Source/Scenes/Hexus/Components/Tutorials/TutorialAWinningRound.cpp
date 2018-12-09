@@ -12,15 +12,15 @@ TutorialAWinningRound* TutorialAWinningRound::create()
 TutorialAWinningRound::TutorialAWinningRound() : TutorialBase(StateOverride::TutorialA, GameState::StateType::TurnEnd)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->scoreTotalsTutorialLabel = Label::create("Nice! Now your score is higher than your opponents!",
+	this->scoreTotalsTutorialLabel = Label::createWithTTF("Nice! Now your score is higher than your opponents!",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(420.0f, 0.0f)
 	);
 	this->helpArrowScoreTotals = HelpArrow::create();
 
-	Label* scoreTotalsNextLabel = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* scoreTotalsNextLabelSelected = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* scoreTotalsNextLabel = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* scoreTotalsNextLabelSelected = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	scoreTotalsNextLabel->enableOutline(Color4B::BLACK, 2);
 	scoreTotalsNextLabelSelected->enableOutline(Color4B::BLACK, 2);

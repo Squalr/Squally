@@ -25,7 +25,7 @@ Smoke::Smoke(Node* followTarget)
 
 	for (auto it = shipFrames.begin(); it != shipFrames.end(); it++)
 	{
-		this->smokeAnimation->addSpriteFrameWithFileName(*it);
+		this->smokeAnimation->addSpriteFrameWithFile(*it);
 	}
 
 	this->smokeSprite->setOpacity(0);

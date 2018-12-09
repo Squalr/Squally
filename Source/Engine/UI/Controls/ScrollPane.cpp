@@ -70,12 +70,14 @@ void ScrollPane::initializeListeners()
 	SmartNode::initializeListeners();
 
 	EventListenerMouse* mouseScrollListener = EventListenerMouse::create();
-	EventListenerMouse* mouseMoveListener = EventListenerMouse::create();
 
 	mouseScrollListener->onMouseScroll = CC_CALLBACK_1(ScrollPane::onMouseScroll, this);
 	mouseScrollListener->onMouseMove = CC_CALLBACK_1(ScrollPane::onScrollViewMouseMove, this);
 
-	this->scrollView->addEventListenerScrollView(mouseMoveListener, nullptr);
+	this->scrollView->addEventListener([] (Ref* target, ScrollView::EventType event) {
+		(void) target;
+		(void) event;
+	});
 	this->addEventListener(mouseScrollListener);
 }
 

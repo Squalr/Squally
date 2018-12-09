@@ -49,7 +49,7 @@ NeonCity::NeonCity(NeonCityScene neonCityScene)
 	this->vaporCorp->setScale(1.0f);
 	this->cityForeground->setScale(0.35f);
 
-	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
+	this->escapeLabel = Label::createWithTTF("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 
