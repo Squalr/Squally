@@ -24,6 +24,7 @@ GlobalDirector* GlobalDirector::getInstance()
 GlobalDirector::GlobalDirector()
 {
 	this->globalNodes = std::vector<GlobalNode*>();
+	this->globalScenes = std::vector<GlobalScene*>();
 	this->activeScene = nullptr;
 }
 
@@ -31,38 +32,71 @@ GlobalDirector::~GlobalDirector()
 {
 }
 
-void GlobalDirector::loadScene(Scene* scene)
+void GlobalDirector::loadScene(Scene* scene, bool saveToHistory)
 {
 	SceneEvents::TriggerBeforeSceneChange();
 
 	// Although this is counter-intuitive, add the Global Director as a child to whichever scene is active.
 	// This will allows for the Global Director's nodes to listen for events
-	if (activeScene != nullptr)
+	if (GlobalDirector::getInstance()->activeScene != nullptr)
 	{
-		this->getParent()->removeChild(this);
+		if (saveToHistory)
+		{
+			GlobalDirector::getInstance()->sceneHistory.push(GlobalDirector::getInstance()->activeScene);
+		}
+		
+		GlobalDirector::getInstance()->getParent()->removeChild(GlobalDirector::getInstance());
 	}
 
-	scene->addChild(this);
+	scene->addChild(GlobalDirector::getInstance());
 
-	if (this->activeScene == nullptr)
+	if (GlobalDirector::getInstance()->activeScene == nullptr)
 	{
 		Director::getInstance()->runWithScene(scene);
 	}
 	else
 	{
-		GameUtils::pause(this->activeScene);
+		GameUtils::pause(GlobalDirector::getInstance()->activeScene);
 		Director::getInstance()->replaceScene(scene);
 	}
 
-	this->activeScene = scene;
+	GlobalDirector::getInstance()->activeScene = scene;
 	GameUtils::resume(scene);
+}
+
+void GlobalDirector::navigateBack(int backCount)
+{
+	Scene* scene = GlobalDirector::getInstance()->activeScene;
+
+	for (int index = 0; index < backCount; index++)
+	{
+		if (GlobalDirector::getInstance()->sceneHistory.size() <= 0)
+		{
+			break;
+		}
+
+		scene = GlobalDirector::getInstance()->sceneHistory.top();
+		GlobalDirector::getInstance()->sceneHistory.pop();
+	}
+
+	GlobalDirector::getInstance()->loadScene(scene, false);
 }
 
 void GlobalDirector::registerGlobalNode(GlobalNode* node)
 {
 	if (node != nullptr)
 	{
-		this->addChild(node);
-		this->globalNodes.push_back(node);
+		GlobalDirector::getInstance()->addChild(node);
+		GlobalDirector::getInstance()->globalNodes.push_back(node);
+	}
+}
+
+void GlobalDirector::registerGlobalScene(GlobalScene* scene)
+{
+	if (scene != nullptr)
+	{
+		scene->retain();
+
+		GlobalDirector::getInstance()->globalScenes.push_back(scene);
 	}
 }

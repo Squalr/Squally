@@ -1,13 +1,13 @@
 #pragma once
 #include "cocos2d.h"
 
+#include "Engine/GlobalScene.h"
 #include "Events/NavigationEvents.h"
 #include "Engine/UI/Controls/CCheckbox.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/Controls/ToggleGroup.h"
-#include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Minigames/Hexus/MenuCard.h"
@@ -16,10 +16,10 @@
 
 using namespace cocos2d;
 
-class HexusDeckManagement : public FadeScene
+class HexusDeckManagement : public GlobalScene
 {
 public:
-	static HexusDeckManagement * create();
+	static void registerGlobalScene();
 
 protected:
 	HexusDeckManagement();
@@ -88,4 +88,6 @@ private:
 
 	std::map<CardData*, int> deckCards;
 	std::map<CardData*, int> storageCards;
+	
+	static HexusDeckManagement* instance;
 };

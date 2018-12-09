@@ -4,7 +4,6 @@
 
 #include "Engine/Utils/StrUtils.h"
 #include "Engine/SmartNode.h"
-#include "Events/HexusEvents.h"
 
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
@@ -121,7 +120,6 @@ public:
 	CardRow* enemyDecimalCards;
 	CardRow* enemyHexCards;
 
-	std::function<void(HexusEvents::HexusGameResultEventArgs)> onGameEndCallback;
 	HexusOpponentData* opponentData;
 
 	// Tutorial node pointers

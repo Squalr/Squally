@@ -1,9 +1,9 @@
 #pragma once
 #include <functional>
 
-#include "Engine/UI/FadeScene.h"
+#include "Engine/SmartScene.h"
 
-class CutsceneClip : public FadeScene
+class CutsceneClip : public SmartScene
 {
 public:
 	void setCutsceneClipCompleteCallback(std::function<void()> callback);

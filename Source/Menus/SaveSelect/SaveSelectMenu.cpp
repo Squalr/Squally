@@ -1,5 +1,7 @@
 #include "SaveSelectMenu.h"
 
+SaveSelectMenu* SaveSelectMenu::instance;
+
 const std::string SaveSelectMenu::StringKeyNewGame = "Menu_New_Game";
 const std::string SaveSelectMenu::StringKeyContinueGame = "Menu_Continue_Game";
 
@@ -8,13 +10,17 @@ const float SaveSelectMenu::menuFontSize = 48.0f;
 const float SaveSelectMenu::menuOffset = 128.0f;
 const float SaveSelectMenu::spacing = -96.0f;
 
-SaveSelectMenu * SaveSelectMenu::create()
+void SaveSelectMenu::registerGlobalScene()
 {
-	SaveSelectMenu* instance = new SaveSelectMenu();
+	if (SaveSelectMenu::instance == nullptr)
+	{
+		SaveSelectMenu::instance = new SaveSelectMenu();
 
-	instance->autorelease();
+		SaveSelectMenu::instance->autorelease();
+		SaveSelectMenu::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(SaveSelectMenu::instance);
 }
 
 SaveSelectMenu::SaveSelectMenu()
@@ -29,6 +35,10 @@ SaveSelectMenu::SaveSelectMenu()
 	const Color3B highlightColor = Color3B::YELLOW;
 	const Color4B glowColor = Color4B::ORANGE;
 	const Vec2 labelOffset = Vec2(48.0f, 0.0f);
+
+	this->setFadeSpeed(0.0f);
+
+	this->backgroundNode = Node::create();
 
 	Label* saveGame1Label = Label::createWithTTF(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Label* saveGame1LabelHover = Label::createWithTTF(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
@@ -108,6 +118,7 @@ SaveSelectMenu::SaveSelectMenu()
 
 	this->saveGame3->addChild(saveGame3Icon);
 
+	this->addChild(this->backgroundNode);
 	this->addChild(this->saveGame1);
 	this->addChild(this->saveGame2);
 	this->addChild(this->saveGame3);
@@ -120,7 +131,9 @@ SaveSelectMenu::~SaveSelectMenu()
 
 void SaveSelectMenu::onEnter()
 {
-	Hud::onEnter();
+	GlobalScene::onEnter();
+
+	this->backgroundNode->addChild(MenuBackground::claimInstance());
 
 	const float delay = 0.5f;
 	const float duration = 0.75f;
@@ -134,7 +147,12 @@ void SaveSelectMenu::onEnter()
 
 void SaveSelectMenu::initializeListeners()
 {
-	Hud::initializeListeners();
+	GlobalScene::initializeListeners();
+
+	SaveSelectMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateSaveSelect, [](EventCustom* args)
+	{
+		GlobalDirector::loadScene(SaveSelectMenu::instance);
+	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -148,7 +166,7 @@ void SaveSelectMenu::initializeListeners()
 
 void SaveSelectMenu::initializePositions()
 {
-	Hud::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -159,7 +177,7 @@ void SaveSelectMenu::initializePositions()
 
 void SaveSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!GameUtils::isFocused(this))
+	if (!GameUtils::isVisible(this))
 	{
 		return;
 	}
@@ -181,15 +199,15 @@ void SaveSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 void SaveSelectMenu::onSaveGame1Click(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigate(NavigationEvents::GameScreen::StoryMap);
+	NavigationEvents::navigateWorldMap();
 }
 
 void SaveSelectMenu::onSaveGame2Click(MenuSprite* menuSprite)
 {
-	NavigationEvents::loadCutscene(IntroCutscene::create([=]() { NavigationEvents::navigate(NavigationEvents::GameScreen::StoryMap); }));
+	NavigationEvents::navigateCutscene(NavigationEvents::NavigateCutsceneArgs(IntroCutscene::create([=]() { NavigationEvents::navigateWorldMap(); })));
 }
 
 void SaveSelectMenu::onSaveGame3Click(MenuSprite* menuSprite)
 {
-	NavigationEvents::loadCutscene(IntroCutscene::create([=]() { NavigationEvents::navigate(NavigationEvents::GameScreen::StoryMap); }));
+	NavigationEvents::navigateCutscene(NavigationEvents::NavigateCutsceneArgs(IntroCutscene::create([=]() { NavigationEvents::navigateWorldMap(); })));
 }

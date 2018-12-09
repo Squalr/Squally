@@ -167,6 +167,11 @@ void GameUtils::flattenNode(Node* parent)
 
 Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, int index)
 {
+	if (node == nullptr)
+	{
+		return node;
+	}
+
 	Vec2 newPosition = Vec2::ZERO;
 	Node* previousParent = node->getParent();
 

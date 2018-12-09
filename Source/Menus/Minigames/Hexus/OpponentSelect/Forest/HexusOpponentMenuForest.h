@@ -11,10 +11,13 @@ using namespace cocos2d;
 class HexusOpponentMenuForest : public HexusOpponentMenuBase
 {
 public:
-	static HexusOpponentMenuForest * create();
+	static void registerGlobalScene();
 
 protected:
 	HexusOpponentMenuForest();
 	~HexusOpponentMenuForest();
+
+private:
+	static HexusOpponentMenuForest* instance;
 };
 

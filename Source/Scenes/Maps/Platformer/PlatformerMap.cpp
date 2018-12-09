@@ -1,15 +1,19 @@
 #include "PlatformerMap.h"
 
+PlatformerMap* PlatformerMap::instance = nullptr;
 bool PlatformerMap::hackerMode = false;
 bool PlatformerMap::developerMode = false;
 
-PlatformerMap* PlatformerMap::create()
+void PlatformerMap::registerGlobalScene()
 {
-	PlatformerMap* instance = new PlatformerMap();
+	if (PlatformerMap::instance == nullptr)
+	{
+		PlatformerMap::instance = new PlatformerMap();
+		PlatformerMap::instance->autorelease();
+		PlatformerMap::instance->initializeListeners();
+	}
 
-	instance->autorelease();
-
-	return instance;
+	GlobalDirector::registerGlobalScene(PlatformerMap::instance);
 }
 
 PlatformerMap::PlatformerMap()
@@ -23,6 +27,7 @@ PlatformerMap::PlatformerMap()
 
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, -768.0f));
 
+	this->map = nullptr;
 	this->hackerModeBackground = Sprite::create(BackgroundResources::MatrixRain_HackerModeBackground);
 	this->hackerModeRain = MatrixRain::create();
 	this->hud = Hud::create();
@@ -71,9 +76,6 @@ void PlatformerMap::onEnter()
 	this->optionsMenu->setVisible(false);
 	this->confirmationMenu->setVisible(false);
 
-	GameCamera::getInstance()->setScrollOffset(Vec2(64.0f, 32.0f));
-	GameCamera::getInstance()->setFollowSpeed(Vec2(0.075f, 0.075f));
-
 	this->scheduleUpdate();
 }
 
@@ -85,6 +87,17 @@ void PlatformerMap::initializePositions()
 void PlatformerMap::initializeListeners()
 {
 	IMap::initializeListeners();
+
+	PlatformerMap::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateMap, [](EventCustom* args)
+	{
+		NavigationEvents::NavigateMapArgs* mapArgs = static_cast<NavigationEvents::NavigateMapArgs*>(args->getUserData());
+
+		if (mapArgs != nullptr)
+		{
+			PlatformerMap::instance->loadMap(mapArgs->levelMap);
+			GlobalDirector::loadScene(PlatformerMap::instance);
+		}
+	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
@@ -106,12 +119,17 @@ void PlatformerMap::loadMap(SerializableMap* serializableMap)
 	this->map = serializableMap;
 	this->mapNode->removeAllChildren();
 
-	GameUtils::changeParent(this->map, this->mapNode, false);
-
 	this->developerHud->loadMap(serializableMap);
 
-	GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
+	if (this->map != nullptr)
+	{
+		GameUtils::changeParent(this->map, this->mapNode, false);
+		GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
+	}
+
 	GameCamera::getInstance()->setTarget(Squally::getInstance(), Vec2(0.0f, 128.0f));
+	GameCamera::getInstance()->setScrollOffset(Vec2(64.0f, 32.0f));
+	GameCamera::getInstance()->setFollowSpeed(Vec2(0.075f, 0.075f));
 }
 
 void PlatformerMap::resume(void)
@@ -253,5 +271,5 @@ void PlatformerMap::onExitClick()
 {
 	this->menuBackDrop->setOpacity(0);
 	this->pauseMenu->setVisible(false);
-	NavigationEvents::navigate(NavigationEvents::GameScreen::Title);
+	NavigationEvents::navigateTitle();
 }

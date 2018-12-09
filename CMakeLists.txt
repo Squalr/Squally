@@ -89,6 +89,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Events/SceneEvents.cpp
 	Source/Engine/GlobalDirector.cpp
 	Source/Engine/GlobalNode.cpp
+	Source/Engine/GlobalScene.cpp
 	Source/Engine/Hackables/HackableAttribute.cpp
 	Source/Engine/Hackables/HackableCode.cpp
 	Source/Engine/Hackables/HackableData.cpp
@@ -129,7 +130,6 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/Controls/TextMenuSprite.cpp
 	Source/Engine/UI/Controls/TextWindow.cpp
 	Source/Engine/UI/Controls/ToggleGroup.cpp
-	Source/Engine/UI/FadeScene.cpp
 	Source/Engine/UI/FloatingSprite.cpp
 	Source/Engine/UI/HUD/DeveloperHud.cpp
 	Source/Engine/UI/HUD/HackerModeHud.cpp
@@ -375,7 +375,6 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Special/Shopkeeper.cpp
 	Source/Events/DialogEvents.cpp
 	Source/Events/HackableEvents.cpp
-	Source/Events/HexusEvents.cpp
 	Source/Events/NavigationEvents.cpp
 	Source/GameWindow.cpp
 	Source/Menus/Confirmation/ConfirmationMenu.cpp
@@ -416,9 +415,9 @@ list(APPEND GAME_SOURCE
 	Source/Menus/Minigames/Hexus/Store/HexusStoreMenu.cpp
 	Source/Menus/Minigames/MinigamesMenu.cpp
 	Source/Menus/Options/OptionsMenu.cpp
+	Source/Menus/Options/OptionsScene.cpp
 	Source/Menus/Pause/PauseMenu.cpp
 	Source/Menus/SaveSelect/SaveSelectMenu.cpp
-	Source/Menus/TakeOverMenu.cpp
 	Source/Menus/Title/HackerMode.cpp
 	Source/Menus/Title/TitleScreen.cpp
 	Source/Menus/Title/TitleScreenBackground.cpp
@@ -819,7 +818,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Maps/Platformer/Weather/Rain.cpp
 	Source/Scenes/Maps/Platformer/Weather/Snow.cpp
 	Source/Scenes/Maps/Platformer/Weather/WeatherDeserializer.cpp
-	Source/Scenes/SceneDirector.cpp
 	Source/Sound/MusicDeserializer.cpp
 )
 
@@ -843,6 +841,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Events/SceneEvents.h
 	Source/Engine/GlobalDirector.h
 	Source/Engine/GlobalNode.h
+	Source/Engine/GlobalScene.h
 	Source/Engine/Hackables/HackableAttribute.h
 	Source/Engine/Hackables/HackableCode.h
 	Source/Engine/Hackables/HackableData.h
@@ -884,7 +883,6 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/Controls/TextMenuSprite.h
 	Source/Engine/UI/Controls/TextWindow.h
 	Source/Engine/UI/Controls/ToggleGroup.h
-	Source/Engine/UI/FadeScene.h
 	Source/Engine/UI/FloatingSprite.h
 	Source/Engine/UI/HUD/DeveloperHud.h
 	Source/Engine/UI/HUD/HackerModeHud.h
@@ -1150,7 +1148,6 @@ list(APPEND GAME_HEADER
 	Source/Entities/Special/Shopkeeper.h
 	Source/Events/DialogEvents.h
 	Source/Events/HackableEvents.h
-	Source/Events/HexusEvents.h
 	Source/Events/NavigationEvents.h
 	Source/GameWindow.h
 	Source/Menus/Confirmation/ConfirmationMenu.h
@@ -1191,9 +1188,9 @@ list(APPEND GAME_HEADER
 	Source/Menus/Minigames/Hexus/Store/HexusStoreMenu.h
 	Source/Menus/Minigames/MinigamesMenu.h
 	Source/Menus/Options/OptionsMenu.h
+	Source/Menus/Options/OptionsScene.h
 	Source/Menus/Pause/PauseMenu.h
 	Source/Menus/SaveSelect/SaveSelectMenu.h
-	Source/Menus/TakeOverMenu.h
 	Source/Menus/Title/HackerMode.h
 	Source/Menus/Title/TitleScreen.h
 	Source/Menus/Title/TitleScreenBackground.h
@@ -1611,7 +1608,6 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Maps/Platformer/Weather/Rain.h
 	Source/Scenes/Maps/Platformer/Weather/Snow.h
 	Source/Scenes/Maps/Platformer/Weather/WeatherDeserializer.h
-	Source/Scenes/SceneDirector.h
 	Source/Sound/MusicDeserializer.h
 )
 

@@ -10,7 +10,6 @@
 #include "Engine/UI/Controls/CRadioButton.h"
 #include "Engine/UI/Controls/CSlider.h"
 #include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
@@ -20,7 +19,7 @@ using namespace cocos2d;
 class OptionsMenu : public Hud
 {
 public:
-	static OptionsMenu * create();
+	static OptionsMenu* create();
 
 	void setBackClickCallback(std::function<void()> backClickCallback);
 

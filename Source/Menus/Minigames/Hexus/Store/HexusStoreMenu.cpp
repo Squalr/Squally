@@ -1,18 +1,22 @@
 #include "HexusStoreMenu.h"
 
 #include "Engine/Sound/SoundManager.h"
-
 #include "Resources/SoundResources.h"
 
+HexusStoreMenu* HexusStoreMenu::instance;
 const float HexusStoreMenu::lootBoxScale = 0.5f;
 
-HexusStoreMenu * HexusStoreMenu::create()
+void HexusStoreMenu::registerGlobalScene()
 {
-	HexusStoreMenu* instance = new HexusStoreMenu();
+	if (HexusStoreMenu::instance == nullptr)
+	{
+		HexusStoreMenu::instance = new HexusStoreMenu();
 
-	instance->autorelease();
+		HexusStoreMenu::instance->autorelease();
+		HexusStoreMenu::instance->initializeListeners();
+	}
 
-	return instance;
+	GlobalDirector::registerGlobalScene(HexusStoreMenu::instance);
 }
 
 HexusStoreMenu::HexusStoreMenu()
@@ -264,10 +268,10 @@ HexusStoreMenu::~HexusStoreMenu()
 
 void HexusStoreMenu::onEnter()
 {
-	FadeScene::onEnter();
+	GlobalScene::onEnter();
 
-	float delay = 0.25f;
-	float duration = 0.35f;
+	const float delay = 0.25f;
+	const float duration = 0.35f;
 
 	GameUtils::fadeInObject(this->backButton, delay, duration);
 
@@ -278,7 +282,12 @@ void HexusStoreMenu::onEnter()
 
 void HexusStoreMenu::initializeListeners()
 {
-	FadeScene::initializeListeners();
+	GlobalScene::initializeListeners();
+
+	HexusStoreMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusShop, [](EventCustom* args)
+	{
+		GlobalDirector::loadScene(HexusStoreMenu::instance);
+	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -297,7 +306,7 @@ void HexusStoreMenu::initializeListeners()
 
 void HexusStoreMenu::initializePositions()
 {
-	FadeScene::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -763,7 +772,7 @@ void HexusStoreMenu::onBackClick(MenuSprite* menuSprite)
 
 void HexusStoreMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	if (!GameUtils::isFocused(this))
+	if (!GameUtils::isVisible(this))
 	{
 		return;
 	}

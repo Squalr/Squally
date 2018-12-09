@@ -6,24 +6,23 @@
 
 #include "cocos2d.h"
 
-#include "Events/NavigationEvents.h"
+#include "Engine/GlobalScene.h"
 #include "Engine/Maps/SerializableMap.h"
-#include "Engine/Physics/CollisionDeserializer.h"
 #include "Engine/UI/Controls/CProgressBar.h"
-#include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Events/NavigationEvents.h"
+#include "Menus/MenuBackground.h"
 #include "Resources/UIResources.h"
-#include "Sound/MusicDeserializer.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;
 
-class LoadingScreen : public Hud
+class LoadingScreen : public GlobalScene
 {
 public:
-	static LoadingScreen* create();
+	static void registerGlobalScene();
 
-	void loadLevel(std::string levelFile, const std::function<void(SerializableMap*)> newOnLoadCallback);
+	void loadLevel(std::string levelFile, std::function<void(SerializableMap*)> onLoadCallback);
 
 protected:
 	LoadingScreen();
@@ -32,6 +31,7 @@ protected:
 private:
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 	void onFileEnumerationComplete(std::vector<std::string> files);
 	void onTextureAssetLoaded(Texture2D* asset);
 	void onSoundAssetLoaded();
@@ -42,7 +42,7 @@ private:
 	static bool isPreloadableImage(std::string filePath);
 	static bool isPreloadableSound(std::string filePath);
 
-	Node* background;
+	Node* backgroundNode;
 	CProgressBar* progressBar;
 	SerializableMap* map;
 	std::function<void(SerializableMap*)> onLoadCallback;
@@ -50,5 +50,7 @@ private:
 	int totalFileCount;
 	std::atomic_int loadedFileCount;
 	std::string currentLevelFile;
+
+	static LoadingScreen* instance;
 };
 

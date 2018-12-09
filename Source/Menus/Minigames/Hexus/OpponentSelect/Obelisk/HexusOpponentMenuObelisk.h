@@ -11,10 +11,13 @@ using namespace cocos2d;
 class HexusOpponentMenuObelisk : public HexusOpponentMenuBase
 {
 public:
-	static HexusOpponentMenuObelisk * create();
+	static void registerGlobalScene();
 
 protected:
 	HexusOpponentMenuObelisk();
 	~HexusOpponentMenuObelisk();
+
+private:
+	static HexusOpponentMenuObelisk* instance;
 };
 

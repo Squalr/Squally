@@ -171,7 +171,7 @@ bool Squally::contactBegin(CollisionData data)
 
 			if (enemy != nullptr)
 			{
-				NavigationEvents::enterCombat(enemy->getBattleMapResource(), this, enemy);
+				NavigationEvents::navigateCombat(NavigationEvents::NavigateCombatArgs(enemy->getBattleMapResource(), this, enemy));
 			}
 
 			return false;

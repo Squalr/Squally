@@ -1,7 +1,6 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/UI/FadeScene.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
@@ -13,7 +12,7 @@ using namespace cocos2d;
 class CombatMap : public IMap
 {
 public:
-	static CombatMap* create();
+	static void registerGlobalScene();
 
 	void loadMap(SerializableMap* serializableMap) override;
 
@@ -28,4 +27,6 @@ private:
 
 	Node* mapNode;
 	SerializableMap* map;
+
+	static CombatMap* instance;
 };
