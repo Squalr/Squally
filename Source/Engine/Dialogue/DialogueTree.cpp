@@ -8,6 +8,10 @@
 #include "Engine/Localization/Localization.h"
 #include "Events/DialogEvents.h"
 
+// Windows is fucking stupid and has GetObject defined in some GDI macro, this is the workaround
+#pragma push_macro("GetObject")
+#undef GetObject
+
 using namespace cocos2d;
 using namespace rapidjson;
 
@@ -137,3 +141,5 @@ DialogueTree* DialogueTree::getNextDialogue()
 
 	return dialogueTree;
 }
+
+#pragma pop_macro("GetObject")

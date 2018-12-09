@@ -1,5 +1,8 @@
 #include "HexusRewardsMenu.h"
 
+#include "Engine/Sound/SoundManager.h"
+#include "Resources/SoundResources.h"
+
 const std::string HexusRewardsMenu::KeyScheduleHexusGoldTick = "KEY_SCHEDULE_HEXUS_GOLD_TICK";
 
 HexusRewardsMenu* HexusRewardsMenu::instance;

@@ -4,6 +4,8 @@
 namespace cocos2d
 {
 	class EventListener;
+	class LayerColor;
+	class FiniteTimeAction;
 }
 
 class SmartScene : public cocos2d::Scene
@@ -25,8 +27,8 @@ protected:
 	void addEventListener(cocos2d::EventListener* listener);
 	void addEventListenerIgnorePause(cocos2d::EventListener* listener);
 
-	LayerColor* layerColor;
-	FiniteTimeAction* fadeAction;
+	cocos2d::LayerColor* layerColor;
+	cocos2d::FiniteTimeAction* fadeAction;
 	float fadeSpeed;
 
 	static const float defaultFadeSpeed;
