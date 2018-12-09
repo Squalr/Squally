@@ -4,7 +4,7 @@
 class LogUtils
 {
 public:
-	static void redirectStandardOutputToFile();
+	static bool redirectStandardOutputToFile();
 	static void log(std::string info);
 	static void logError(std::string errorInfo);
 
