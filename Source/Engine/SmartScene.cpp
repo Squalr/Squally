@@ -1,7 +1,11 @@
 #include "SmartScene.h"
 
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListener.h"
+
 const float SmartScene::defaultFadeSpeed = 0.75f;
 
 using namespace cocos2d;

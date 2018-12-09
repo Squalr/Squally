@@ -11,6 +11,7 @@
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/Steam/Steam.h"
 #include "Engine/Utils/LogUtils.h"
+#include "Menus/Title/TitleScreen.h"
 
 using namespace cocos2d;
 using namespace cocos2d::cocos_experimental;
