@@ -14,7 +14,7 @@ BannerBase::BannerBase()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->statusBanner = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, 144.0f);
-	this->statusLabel = Label::create("", Localization::getMainFont(), 48.0f);
+	this->statusLabel = Label::createWithTTF("", Localization::getMainFont(), 48.0f);
 	this->bannerChildrenNode = Node::create();
 
 	this->statusBanner->setAnchorPoint(Vec2(0.5f, 0.5f));

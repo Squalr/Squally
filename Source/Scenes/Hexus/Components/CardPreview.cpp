@@ -144,9 +144,9 @@ void CardPreview::previewCard(Card* card)
 			{
 				int attack = card->getAttack();
 
-				Label* binaryLabel = Label::create("BIN: " + HackUtils::toBinary4(attack), Localization::getCodingFont(), Localization::getFontSizeH2(Localization::getCodingFont()));
-				Label* decimalLabel = Label::create("DEC: " + std::to_string(attack), Localization::getCodingFont(), Localization::getFontSizeH2(Localization::getCodingFont()));
-				Label* hexLabel = Label::create("HEX: " + HackUtils::toHex(attack), Localization::getCodingFont(), Localization::getFontSizeH2(Localization::getCodingFont()));
+				Label* binaryLabel = Label::createWithTTF("BIN: " + HackUtils::toBinary4(attack), Localization::getCodingFont(), Localization::getFontSizeH2(Localization::getCodingFont()));
+				Label* decimalLabel = Label::createWithTTF("DEC: " + std::to_string(attack), Localization::getCodingFont(), Localization::getFontSizeH2(Localization::getCodingFont()));
+				Label* hexLabel = Label::createWithTTF("HEX: " + HackUtils::toHex(attack), Localization::getCodingFont(), Localization::getFontSizeH2(Localization::getCodingFont()));
 
 				binaryLabel->setAnchorPoint(Vec2::ZERO);
 				decimalLabel->setAnchorPoint(Vec2::ZERO);
@@ -174,7 +174,7 @@ void CardPreview::previewCard(Card* card)
 			}
 			default:
 			{
-				Label * specialLabel = Label::create("", Localization::getCodingFont(), Localization::getFontSizeP(Localization::getCodingFont()));
+				Label * specialLabel = Label::createWithTTF("", Localization::getCodingFont(), Localization::getFontSizeP(Localization::getCodingFont()));
 
 				specialLabel->setAnchorPoint(Vec2(0.0f, 0.0f));
 				specialLabel->setTextColor(Card::specialColor);

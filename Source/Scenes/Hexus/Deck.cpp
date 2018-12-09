@@ -185,13 +185,13 @@ void Deck::setCardOrder()
 	int zIndex = 0;
 
 	// Pad is always first
-	this->pad->setZOrder(zIndex++);
+	this->pad->setLocalZOrder(zIndex++);
 
 	// Fix the Z order of all cards.
 	// Note: Normally we prefer to keep nodes added in the correct order, but removing/re-adding nodes here can inturrupt animations.
 	for (auto it = this->deckCards.begin(); it != this->deckCards.end(); it++)
 	{
-		(*it)->setZOrder(zIndex++);
+		(*it)->setLocalZOrder(zIndex++);
 	}
 }
 

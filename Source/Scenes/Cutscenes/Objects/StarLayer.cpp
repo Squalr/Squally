@@ -99,7 +99,7 @@ void StarLayer::createStars()
 
 				for (auto it = starFrames.begin(); it != starFrames.end(); it++)
 				{
-					animation->addSpriteFrameWithFileName(*it);
+					animation->addSpriteFrameWithFile(*it);
 				}
 
 				animation->setDelayPerUnit(RandomHelper::random_real(0.4f, 1.0f));
@@ -116,7 +116,7 @@ void StarLayer::createStars()
 
 				for (auto it = starFrames.begin(); it != starFrames.end(); it++)
 				{
-					animation->addSpriteFrameWithFileName(*it);
+					animation->addSpriteFrameWithFile(*it);
 				}
 
 				animation->setDelayPerUnit(RandomHelper::random_real(0.4f, 1.0f));
@@ -133,7 +133,7 @@ void StarLayer::createStars()
 
 				for (auto it = starFrames.begin(); it != starFrames.end(); it++)
 				{
-					animation->addSpriteFrameWithFileName(*it);
+					animation->addSpriteFrameWithFile(*it);
 				}
 
 				animation->setDelayPerUnit(RandomHelper::random_real(0.4f, 1.0f));
@@ -150,7 +150,7 @@ void StarLayer::createStars()
 
 				for (auto it = starFrames.begin(); it != starFrames.end(); it++)
 				{
-					animation->addSpriteFrameWithFileName(*it);
+					animation->addSpriteFrameWithFile(*it);
 				}
 
 				animation->setDelayPerUnit(RandomHelper::random_real(0.4f, 1.0f));

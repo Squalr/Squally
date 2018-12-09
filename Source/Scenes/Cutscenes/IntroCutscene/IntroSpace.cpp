@@ -37,7 +37,7 @@ IntroSpace::IntroSpace()
 	this->weaver5Anim = Animation::create();
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, IntroSpace::dialogueHeight);
 	this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneIntroSpace, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
-	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
+	this->escapeLabel = Label::createWithTTF("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 	this->mars->setAnchorPoint(Vec2(0.0f, 0.0f));
@@ -52,11 +52,11 @@ IntroSpace::IntroSpace()
 
 	for (auto it = weaverFrames.begin(); it != weaverFrames.end(); it++)
 	{
-		this->weaver1Anim->addSpriteFrameWithFileName(*it);
-		this->weaver2Anim->addSpriteFrameWithFileName(*it);
-		this->weaver3Anim->addSpriteFrameWithFileName(*it);
-		this->weaver4Anim->addSpriteFrameWithFileName(*it);
-		this->weaver5Anim->addSpriteFrameWithFileName(*it);
+		this->weaver1Anim->addSpriteFrameWithFile(*it);
+		this->weaver2Anim->addSpriteFrameWithFile(*it);
+		this->weaver3Anim->addSpriteFrameWithFile(*it);
+		this->weaver4Anim->addSpriteFrameWithFile(*it);
+		this->weaver5Anim->addSpriteFrameWithFile(*it);
 	}
 
 	this->addChild(this->starLayer);

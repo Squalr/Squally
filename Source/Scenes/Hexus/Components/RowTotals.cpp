@@ -28,19 +28,19 @@ RowTotals::RowTotals()
 	this->playerDecimalTotalSocket = Sprite::create(HexusResources::RowTotalSocketDec);
 	this->playerHexTotalSocket = Sprite::create(HexusResources::RowTotalSocketHex);
 
-	this->enemyBinaryCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
-	this->enemyDecimalCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
-	this->enemyHexCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
-	this->playerBinaryCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
-	this->playerDecimalCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
-	this->playerHexCardTotal = Label::create("", Localization::getCodingFont(), 48.0f);
+	this->enemyBinaryCardTotal = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
+	this->enemyDecimalCardTotal = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
+	this->enemyHexCardTotal = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
+	this->playerBinaryCardTotal = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
+	this->playerDecimalCardTotal = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
+	this->playerHexCardTotal = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
 
-	this->enemyBinaryCardDeltaLabel = Label::create("", Localization::getCodingFont(), 48.0f);
-	this->enemyDecimalCardDeltaLabel = Label::create("", Localization::getCodingFont(), 48.0f);
-	this->enemyHexCardDeltaLabel = Label::create("", Localization::getCodingFont(), 48.0f);
-	this->playerBinaryCardDeltaLabel = Label::create("", Localization::getCodingFont(), 48.0f);
-	this->playerDecimalCardDeltaLabel = Label::create("", Localization::getCodingFont(), 48.0f);
-	this->playerHexCardDeltaLabel = Label::create("", Localization::getCodingFont(), 48.0f);
+	this->enemyBinaryCardDeltaLabel = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
+	this->enemyDecimalCardDeltaLabel = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
+	this->enemyHexCardDeltaLabel = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
+	this->playerBinaryCardDeltaLabel = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
+	this->playerDecimalCardDeltaLabel = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
+	this->playerHexCardDeltaLabel = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
 
 	this->enemyBinaryCardTotal->enableOutline(Color4B::BLACK, 3);
 	this->enemyDecimalCardTotal->enableOutline(Color4B::BLACK, 3);

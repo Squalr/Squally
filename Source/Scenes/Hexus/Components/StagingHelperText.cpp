@@ -11,7 +11,7 @@ StagingHelperText* StagingHelperText::create()
 
 StagingHelperText::StagingHelperText()
 {
-	this->selectionLabel = Label::create("", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	this->selectionLabel = Label::createWithTTF("", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	this->selectionLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->selectionLabel->setTextColor(Color4B::WHITE);

@@ -16,7 +16,7 @@ WarpGateExactScanTutorial* WarpGateExactScanTutorial::create(ValueMap* initPrope
 
 WarpGateExactScanTutorial::WarpGateExactScanTutorial(ValueMap* initProperties) : WarpGate(initProperties)
 {
-	this->valueLabel = Label::create(std::to_string(WarpGateExactScanTutorial::warpGatePower), Localization::getMainFont(), 24.0f);
+	this->valueLabel = Label::createWithTTF(std::to_string(WarpGateExactScanTutorial::warpGatePower), Localization::getMainFont(), 24.0f);
 
 	this->valueLabel->setPosition(0, 256.0f);
 	this->valueLabel->enableOutline(Color4B::BLACK, 2.0f);

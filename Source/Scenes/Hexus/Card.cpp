@@ -91,7 +91,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->cardFocus = Sprite::create(HexusResources::CardSelect);
 	this->cardEffects = CardEffects::create();
 
-	this->cardText = Label::create("", Localization::getCodingFont(), 64.0f);
+	this->cardText = Label::createWithTTF("", Localization::getCodingFont(), 64.0f);
 	this->cardText->setAlignment(TextHAlignment::CENTER);
 	this->cardText->setAnchorPoint(Vec2(0.5f, 1.0f));
 	this->cardText->enableOutline(Color4B::BLACK, 6);
