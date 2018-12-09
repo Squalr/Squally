@@ -2,7 +2,6 @@
 #include "cocos2d.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Events/HexusEvents.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 
 using namespace cocos2d;
@@ -31,5 +30,5 @@ protected:
 	Deck* deck;
 
 private:
-	MenuSprite * interactButton;
+	MenuSprite* interactButton;
 };

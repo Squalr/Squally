@@ -1,12 +1,17 @@
 #include "Hexus.h"
 
-Hexus* Hexus::create()
+Hexus* Hexus::instance = nullptr;
+
+void Hexus::registerGlobalScene()
 {
-	Hexus* instance = new Hexus();
+	if (Hexus::instance == nullptr)
+	{
+		Hexus::instance = new Hexus();
+		Hexus::instance->autorelease();
+		Hexus::instance->initializeListeners();
+	}
 
-	instance->autorelease();
-
-	return instance;
+	GlobalDirector::registerGlobalScene(Hexus::instance);
 }
 
 Hexus::Hexus()
@@ -166,7 +171,7 @@ Hexus::~Hexus()
 
 void Hexus::onEnter()
 {
-	SmartScene::onEnter();
+	GlobalScene::onEnter();
 
 	SoundManager::playMusicResource(MusicResources::LastMarch);
 
@@ -180,7 +185,7 @@ void Hexus::onEnter()
 
 void Hexus::initializePositions()
 {
-	SmartScene::initializePositions();
+	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -189,7 +194,18 @@ void Hexus::initializePositions()
 
 void Hexus::initializeListeners()
 {
-	SmartScene::initializeListeners();
+	GlobalScene::initializeListeners();
+
+	Hexus::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCombat, [](EventCustom* args)
+	{
+		NavigationEvents::NavigateHexusArgs* hexusArgs = static_cast<NavigationEvents::NavigateHexusArgs*>(args->getUserData());
+
+		if (hexusArgs != nullptr)
+		{
+			Hexus::instance->startGame(hexusArgs->opponentData);
+			GlobalDirector::loadScene(Hexus::instance);
+		}
+	}));
 	
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -203,14 +219,9 @@ void Hexus::initializeListeners()
 	this->addEventListener(keyboardListener);
 }
 
-void Hexus::onGameStart(EventCustom* eventCustom)
+void Hexus::startGame(HexusOpponentData* opponentData)
 {
-	HexusEvents::HexusGameEventArgs* args = (HexusEvents::HexusGameEventArgs*)(eventCustom->getUserData());
-
-	this->avatars->initializeEnemyAvatar(args->opponentData);
-
-	this->gameState->onGameEndCallback = args->onGameEndCallback;
-	this->gameState->opponentData = args->opponentData;
+	this->gameState->opponentData = opponentData;
 
 	this->gameState->previousStateType = GameState::StateType::EmptyState;
 	this->gameState->stateType = GameState::StateType::EmptyState;
@@ -230,10 +241,8 @@ void Hexus::onGameStart(EventCustom* eventCustom)
 	this->gameState->playerDeck->clear();
 	this->gameState->enemyDeck->clear();
 
-	args->opponentData->getDeck()->copyTo(this->gameState->enemyDeck);
+	opponentData->getDeck()->copyTo(this->gameState->enemyDeck);
 	Deck::create(Card::CardStyle::Earth, CardStorage::getInstance()->getDeckCards())->copyTo(this->gameState->playerDeck);
-
-	NavigationEvents::navigateHexus();
 }
 
 void Hexus::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)

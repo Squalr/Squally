@@ -224,7 +224,7 @@ void MinigamesMenu::onBackClick(MenuSprite* menuSprite)
 
 void MinigamesMenu::onHexusClick(MenuSprite* menuSprite)
 {
-	NavigationEvents::navigateHexus();
+	NavigationEvents::navigateHexusChapterSelect();
 }
 
 void MinigamesMenu::onHexusPuzzlesClick(MenuSprite* menuSprite)

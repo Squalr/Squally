@@ -6,6 +6,7 @@
 #include "Engine/Maps/SerializableMap.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
 using namespace cocos2d;
 
@@ -23,6 +24,25 @@ public:
 		std::function<void(SerializableMap*)> onLoadCallback;
 
 		NavigateLoadingScreenArgs(std::string levelFile, std::function<void(SerializableMap*)> onLoadCallback) : levelFile(levelFile), onLoadCallback(onLoadCallback) { }
+	};
+
+	struct NavigateHexusArgs
+	{
+		HexusOpponentData* opponentData;
+
+		NavigateHexusArgs(HexusOpponentData* opponentData) : opponentData(opponentData)
+		{
+		}
+	};
+
+	struct NavigateHexusRewardArgs
+	{
+		int reward;
+		bool isRewardReduced;
+
+		NavigateHexusRewardArgs(int reward, bool isRewardReduced) : reward(reward), isRewardReduced(isRewardReduced)
+		{
+		}
 	};
 
 	struct NavigateMapArgs
@@ -77,9 +97,9 @@ public:
 	static void navigateMinigames();
 	static void navigateOptions();
 	static void navigateWorldMap();
-	static void navigateHexus();
+	static void navigateHexus(NavigateHexusArgs args);
 	static void navigateHexusPuzzles();
-	static void navigateHexusRewards();
+	static void navigateHexusRewards(NavigateHexusRewardArgs args);
 	static void navigateHexusDeckManagement();
 	static void navigateHexusShop();
 	static void navigateHexusChapterSelect();

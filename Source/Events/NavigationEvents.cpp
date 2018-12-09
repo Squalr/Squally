@@ -73,10 +73,11 @@ void NavigationEvents::navigateWorldMap()
 	);
 }
 
-void NavigationEvents::navigateHexus()
+void NavigationEvents::navigateHexus(NavigateHexusArgs args)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::EventNavigateWorldMap
+		NavigationEvents::EventNavigateWorldMap,
+		&args
 	);
 }
 
@@ -87,10 +88,11 @@ void NavigationEvents::navigateHexusPuzzles()
 	);
 }
 
-void NavigationEvents::navigateHexusRewards()
+void NavigationEvents::navigateHexusRewards(NavigateHexusRewardArgs args)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::EventNavigateHexusRewards
+		NavigationEvents::EventNavigateHexusRewards,
+		&args
 	);
 }
 

@@ -375,7 +375,6 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Special/Shopkeeper.cpp
 	Source/Events/DialogEvents.cpp
 	Source/Events/HackableEvents.cpp
-	Source/Events/HexusEvents.cpp
 	Source/Events/NavigationEvents.cpp
 	Source/GameWindow.cpp
 	Source/Menus/Confirmation/ConfirmationMenu.cpp
@@ -1149,7 +1148,6 @@ list(APPEND GAME_HEADER
 	Source/Entities/Special/Shopkeeper.h
 	Source/Events/DialogEvents.h
 	Source/Events/HackableEvents.h
-	Source/Events/HexusEvents.h
 	Source/Events/NavigationEvents.h
 	Source/GameWindow.h
 	Source/Menus/Confirmation/ConfirmationMenu.h
