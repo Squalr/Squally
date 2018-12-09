@@ -1,5 +1,8 @@
 #include "HexusPuzzlesMenu.h"
 
+#include "Resources/SoundResources.h"
+#include "Resources/MapResources.h"
+
 HexusPuzzlesMenu* HexusPuzzlesMenu::instance = nullptr;
 const Color3B HexusPuzzlesMenu::TitleColor = Color3B(88, 188, 193);
 const std::string HexusPuzzlesMenu::StringKeyHexusPuzzles = "Menu_Hexus_Puzzles";
@@ -24,9 +27,9 @@ HexusPuzzlesMenu::HexusPuzzlesMenu()
 	this->currentPage = 0;
 
 	this->tutorialWindow = Sprite::create(UIResources::Menus_TutorialMenu_TutorialSelect);
-	this->titleLabel = Label::create(Localization::resolveString(HexusPuzzlesMenu::StringKeyHexusPuzzles), Localization::getMainFont(), 32.0f);
+	this->titleLabel = Label::createWithTTF(Localization::resolveString(HexusPuzzlesMenu::StringKeyHexusPuzzles), Localization::getMainFont(), 32.0f);
 	this->descriptionBox = Sprite::create(UIResources::Menus_TutorialMenu_TutorialItem);
-	this->description = Label::create("", Localization::getMainFont(), 14.0f);
+	this->description = Label::createWithTTF("", Localization::getMainFont(), 14.0f);
 	this->closeButton = MenuSprite::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
 
 	this->nether = ParticleSystemQuad::create(ParticleResources::BlueNether);

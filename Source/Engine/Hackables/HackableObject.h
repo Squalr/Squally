@@ -1,36 +1,43 @@
 #pragma once
-#include "cocos2d.h"
+#include <map>
+#include <string>
 
-#include "Engine/Camera/GameCamera.h"
-#include "Engine/Hackables/HackableData.h"
+#include "cocos/math/CCGeometry.h"
+
 #include "Engine/Maps/SerializableObject.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Events/HackableEvents.h"
 
-using namespace cocos2d;
+class HackableData;
+class MenuSprite;
+
+namespace cocos2d
+{
+	class Renderer;
+	class Value;
+	typedef std::map<std::string, Value> ValueMap;
+}
 
 class HackableObject : public SerializableObject
 {
 public:
 	void onHackableClick(MenuSprite* menuSprite);
 
-	Size size;
+	cocos2d::Size size;
 	std::vector<HackableData*> dataList;
 
 	MenuSprite* hackButton;
 
 protected:
-	HackableObject(ValueMap* initProperties);
-	~HackableObject();
+	HackableObject(cocos2d::ValueMap* initProperties);
+	virtual ~HackableObject();
 
 	void pause() override;
 	void onEnterTransitionDidFinish() override;
-	virtual Vec2 getButtonOffset();
+	virtual cocos2d::Vec2 getButtonOffset();
 	void registerData(HackableData* hackableData);
 
-	void visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags) override;
+	void visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
 
 private:
-	Vec2 buttonOffset;
+	cocos2d::Vec2 buttonOffset;
 };
 

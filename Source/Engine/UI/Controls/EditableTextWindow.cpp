@@ -1,5 +1,15 @@
 ﻿#include "EditableTextWindow.h"
 
+#include "cocos/base/CCEventDispatcher.h"
+#include "cocos/ui/UIRichText.h"
+#include "cocos/ui/UIScrollView.h"
+#include "cocos/ui/UITextField.h"
+
+#include "Engine/Localization/Localization.h"
+
+using namespace cocos2d;
+using namespace cocos2d::ui;
+
 const Color3B EditableTextWindow::lineNumberColor = Color3B::GRAY;
 const std::string EditableTextWindow::StringKeyClickToEdit = "Menu_TextWindow_ClickToEdit";
 
@@ -74,12 +84,20 @@ void EditableTextWindow::focus()
 
 void EditableTextWindow::initializePositions()
 {
-	this->lineNumbers->setPosition(Vec2(TextWindow::padding.width, this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
-	this->editableText->setPosition(Vec2(this->marginSize + TextWindow::padding.width, this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
+	this->lineNumbers->setPosition(Vec2(TextWindow::padding.width,
+			this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
+	this->editableText->setPosition(Vec2(this->marginSize + TextWindow::padding.width,
+			this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
 
-	this->lineNumbers->setSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f, windowSize.height - TextWindow::padding.height * 2.0f));
-	this->editableText->setContentSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f, windowSize.height - TextWindow::padding.height * 2.0f));
-	this->editableText->setDimensions(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f, windowSize.height - TextWindow::padding.height * 2.0f);
+	this->lineNumbers->setContentSize(Size(
+		windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f,
+		windowSize.height - TextWindow::padding.height * 2.0f));
+	this->editableText->setContentSize(Size(
+		windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f,
+		windowSize.height - TextWindow::padding.height * 2.0f));
+	this->editableText->setDimensions(
+		windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f,
+		windowSize.height - TextWindow::padding.height * 2.0f);
 
 	TextWindow::initializePositions();
 }

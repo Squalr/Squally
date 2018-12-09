@@ -1,5 +1,10 @@
 #include "CavernsEnemyDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Enemies/Caverns/CavernsEnemies.h"
+
+using namespace cocos2d;
+
 CavernsEnemyDeserializer* CavernsEnemyDeserializer::instance = nullptr;
 
 void CavernsEnemyDeserializer::registerGlobalNode()

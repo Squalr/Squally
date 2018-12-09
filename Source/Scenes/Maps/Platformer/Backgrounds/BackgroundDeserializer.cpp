@@ -1,5 +1,12 @@
 #include "BackgroundDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/Utils/GameUtils.h"
+
+#include "Scenes/Maps/Platformer/Backgrounds/Background.h"
+
+using namespace cocos2d;
+
 BackgroundDeserializer* BackgroundDeserializer::instance = nullptr;
 const std::string BackgroundDeserializer::MapKeyBackgroundLayer = "background";
 

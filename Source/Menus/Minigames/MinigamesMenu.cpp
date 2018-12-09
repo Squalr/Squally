@@ -1,5 +1,7 @@
 #include "MinigamesMenu.h"
 
+#include "Resources/SoundResources.h"
+
 const std::string MinigamesMenu::StringKeyHexus = "Menu_Hexus";
 const std::string MinigamesMenu::StringKeyHexusPuzzles = "Menu_Hexus_Puzzles";
 const std::string MinigamesMenu::StringKeyComingSoon = "Menu_Coming_Soon";
@@ -38,9 +40,9 @@ MinigamesMenu::MinigamesMenu()
 	this->backgroundNode = Node::create();
 	this->scrollPane = ScrollPane::create(Size(1152.0f, 768.0f), Color4B(0, 0, 0, 127));
 
-	Label* backButtonLabel = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelHover = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelClick = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabel = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabelHover = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabelClick = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
@@ -53,9 +55,9 @@ MinigamesMenu::MinigamesMenu()
 		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
-	Label* hexusLabel = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* hexusLabelHover = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* hexusLabelClicked = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* hexusLabel = Label::createWithTTF(Localization::resolveString(MinigamesMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* hexusLabelHover = Label::createWithTTF(Localization::resolveString(MinigamesMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* hexusLabelClicked = Label::createWithTTF(Localization::resolveString(MinigamesMenu::StringKeyHexus), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	hexusLabel->setColor(textColor);
 	hexusLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -85,9 +87,9 @@ MinigamesMenu::MinigamesMenu()
 	this->hexusButton->addChild(hexusIcon);
 	this->hexusButton->setClickSound(SoundResources::Menus_Simple_Button);
 
-	Label* hexusPuzzlesLabel = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexusPuzzles), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* hexusPuzzlesLabelHover = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexusPuzzles), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* hexusPuzzlesLabelClicked = Label::create(Localization::resolveString(MinigamesMenu::StringKeyHexusPuzzles), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* hexusPuzzlesLabel = Label::createWithTTF(Localization::resolveString(MinigamesMenu::StringKeyHexusPuzzles), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* hexusPuzzlesLabelHover = Label::createWithTTF(Localization::resolveString(MinigamesMenu::StringKeyHexusPuzzles), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* hexusPuzzlesLabelClicked = Label::createWithTTF(Localization::resolveString(MinigamesMenu::StringKeyHexusPuzzles), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	hexusPuzzlesLabel->setColor(textColor);
 	hexusPuzzlesLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -247,8 +249,8 @@ TextMenuSprite* MinigamesMenu::createComingSoonButton()
 	const Color4B glowColor = Color4B::ORANGE;
 	const Vec2 labelOffset = Vec2(48.0f, 0.0f);
 
-	Label* comingSoonLabel = Label::create(Localization::resolveString(MinigamesMenu::StringKeyComingSoon), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* comingSoonLabelHover = Label::create(Localization::resolveString(MinigamesMenu::StringKeyComingSoon), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* comingSoonLabel = Label::createWithTTF(Localization::resolveString(MinigamesMenu::StringKeyComingSoon), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* comingSoonLabelHover = Label::createWithTTF(Localization::resolveString(MinigamesMenu::StringKeyComingSoon), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	comingSoonLabel->setColor(textColor);
 	comingSoonLabel->enableShadow(shadowColor, shadowSize, shadowBlur);

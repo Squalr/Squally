@@ -1,5 +1,17 @@
 ﻿#include "TextWindow.h"
 
+#include "cocos/2d/CCNode.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/ui/UIRichText.h"
+#include "cocos/ui/UIScrollView.h"
+#include "cocos/ui/UITextField.h"
+
+#include "Engine/Localization/Localization.h"
+#include "Engine/UI/Controls/MenuLabel.h"
+
+using namespace cocos2d;
+using namespace cocos2d::ui;
+
 const Size TextWindow::padding = Size(8.0f, 4.0f);
 const float TextWindow::titleBarHeight = 48.0f;
 const Color4B TextWindow::defaultTitleBarColor = Color4B(59, 92, 97, 192);
@@ -31,11 +43,13 @@ TextWindow::TextWindow(std::string windowTitle, Size initWindowSize, float initF
 	this->titleBar = Node::create();
 	this->windowTitle = MenuLabel::create(windowTitle, Localization::getCodingFont(), this->fontSize);
 
-	this->background->addChild(LayerColor::create(this->windowColor, this->windowSize.width, this->windowSize.height));
-	this->titleBar->addChild(LayerColor::create(this->titleBarColor, this->windowSize.width, TextWindow::titleBarHeight));
+	this->background->addChild(LayerColor::create(this->windowColor, this->windowSize.width,
+			this->windowSize.height));
+	this->titleBar->addChild(LayerColor::create(this->titleBarColor, this->windowSize.width,
+			TextWindow::titleBarHeight));
 
 	this->scrollView->setAnchorPoint(Vec2(0.5f, 0.5f));
-	this->scrollView->setDirection(SCROLLVIEW_DIR_BOTH);
+	this->scrollView->setDirection(ScrollView::Direction::BOTH);
 	this->displayedText->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->displayedText->setWrapMode(RichText::WrapMode::WRAP_PER_CHAR);
 	this->displayedText->ignoreContentAdaptWithSize(false);
@@ -63,14 +77,17 @@ void TextWindow::initializePositions()
 {
 	SmartNode::initializePositions();
 
-	this->scrollView->setSize(windowSize);
+	this->scrollView->setContentSize(windowSize);
 	this->scrollView->setInnerContainerSize(Size(windowSize.width, windowSize.height * 2));
-	this->displayedText->setSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f, windowSize.height - TextWindow::padding.height * 2.0f));
+	this->displayedText->setContentSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f,
+			windowSize.height - TextWindow::padding.height * 2.0f));
 
 	this->scrollView->setPosition(Vec2(0.0f, 0.0f));
 	this->background->setPosition(-this->windowSize.width / 2.0f, -this->windowSize.height / 2.0f);
-	this->displayedText->setPosition(Vec2(this->marginSize + TextWindow::padding.width, this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
-	this->titleBar->setPosition(-this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - TextWindow::titleBarHeight / 2.0f + this->fontSize);
+	this->displayedText->setPosition(Vec2(this->marginSize + TextWindow::padding.width,
+			this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
+	this->titleBar->setPosition(-this->windowSize.width / 2.0f,
+			this->windowSize.height / 2.0f - TextWindow::titleBarHeight / 2.0f + this->fontSize);
 	this->windowTitle->setPosition(0.0f, this->windowSize.height / 2 + this->fontSize);
 }
 
@@ -91,7 +108,8 @@ void TextWindow::setTitleBarColor(Color4B newTitleBarColor)
 {
 	this->titleBarColor = newTitleBarColor;
 	this->titleBar->removeAllChildren();
-	this->titleBar->addChild(LayerColor::create(this->titleBarColor, this->windowSize.width, TextWindow::titleBarHeight));
+	this->titleBar->addChild(LayerColor::create(this->titleBarColor, this->windowSize.width,
+			TextWindow::titleBarHeight));
 	this->initializePositions();
 }
 

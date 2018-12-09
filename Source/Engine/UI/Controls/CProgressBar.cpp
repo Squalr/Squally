@@ -1,5 +1,12 @@
 #include "CProgressBar.h"
 
+#include "cocos/2d/CCClippingRectangleNode.h"
+#include "cocos/2d/CCSprite.h"
+
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
 CProgressBar* CProgressBar::create()
 {
 	CProgressBar* instance = new CProgressBar();

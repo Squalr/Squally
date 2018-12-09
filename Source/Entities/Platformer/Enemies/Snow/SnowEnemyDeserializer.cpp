@@ -1,5 +1,10 @@
 #include "SnowEnemyDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Enemies/Snow/SnowEnemies.h"
+
+using namespace cocos2d;
+
 SnowEnemyDeserializer* SnowEnemyDeserializer::instance = nullptr;
 
 void SnowEnemyDeserializer::registerGlobalNode()

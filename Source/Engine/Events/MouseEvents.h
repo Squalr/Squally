@@ -1,7 +1,5 @@
 #pragma once
-#include "cocos2d.h"
-
-using namespace cocos2d;
+#include "cocos/math/Vec2.h"
 
 class MouseEvents
 {
@@ -21,13 +19,15 @@ public:
 
 	struct MouseEventArgs
 	{
-		Vec2 mouseCoords;
+		cocos2d::Vec2 mouseCoords;
 		bool isDragging;
 		bool canClick;
 		bool isLeftClicked;
 		bool handled;
 
-		MouseEventArgs(Vec2 mouseCoords, bool isDragging, bool canClick, bool isLeftClicked) : mouseCoords(mouseCoords), isDragging(isDragging), canClick(canClick), isLeftClicked(isLeftClicked), handled(false)
+		MouseEventArgs(cocos2d::Vec2 mouseCoords, bool isDragging, bool canClick, bool isLeftClicked) :
+				mouseCoords(mouseCoords), isDragging(isDragging), canClick(canClick), isLeftClicked(isLeftClicked),
+				handled(false)
 		{
 		}
 	};

@@ -1,11 +1,18 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/math/CCGeometry.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class DrawNode;
+	class GLProgram;
+	class GLProgramState;
+	class Sprite;
+}
 
 class RenderUtils
 {
 public:
-	static Sprite* renderDrawNode(DrawNode* drawNode, Vec2 offset, Size renderSize);
-	static Sprite* applyShaderOnce(Sprite* sprite, GLProgram* program, GLProgramState* state);
+	static cocos2d::Sprite* renderDrawNode(cocos2d::DrawNode* drawNode, cocos2d::Vec2 offset, cocos2d::Size renderSize);
+	static cocos2d::Sprite* applyShaderOnce(cocos2d::Sprite* sprite, cocos2d::GLProgram* program,
+			cocos2d::GLProgramState* state);
 };

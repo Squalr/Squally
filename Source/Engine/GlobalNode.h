@@ -1,13 +1,16 @@
 #pragma once
-#include "cocos2d.h"
-
 #include "Engine/SmartNode.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class EventListener;
+}
 
 class GlobalNode : public SmartNode
 {
 public:
+	virtual ~GlobalNode() = default;
+
 	virtual void pause() override;
-	virtual void addEventListener(EventListener* listener) override;
+	virtual void addEventListener(cocos2d::EventListener* listener) override;
 };

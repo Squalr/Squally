@@ -1,5 +1,8 @@
 #include "Card.h"
 
+#include "Resources/HexusResources.h"
+#include "Resources/SoundResources.h"
+
 const float Card::cardScale = 0.4f;
 const Color4B Card::binaryColor = Color4B(35, 150, 255, 255);
 const Color4B Card::decimalColor = Color4B(255, 255, 255, 255);
@@ -88,7 +91,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->cardFocus = Sprite::create(HexusResources::CardSelect);
 	this->cardEffects = CardEffects::create();
 
-	this->cardText = Label::create("", Localization::getCodingFont(), 64.0f);
+	this->cardText = Label::createWithTTF("", Localization::getCodingFont(), 64.0f);
 	this->cardText->setAlignment(TextHAlignment::CENTER);
 	this->cardText->setAnchorPoint(Vec2(0.5f, 1.0f));
 	this->cardText->enableOutline(Color4B::BLACK, 6);

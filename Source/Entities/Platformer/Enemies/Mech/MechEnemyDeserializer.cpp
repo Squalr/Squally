@@ -1,5 +1,10 @@
 #include "MechEnemyDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Enemies/Mech/MechEnemies.h"
+
+using namespace cocos2d;
+
 MechEnemyDeserializer* MechEnemyDeserializer::instance = nullptr;
 
 void MechEnemyDeserializer::registerGlobalNode()

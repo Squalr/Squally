@@ -12,18 +12,18 @@ TutorialCIntroSequence* TutorialCIntroSequence::create()
 TutorialCIntroSequence::TutorialCIntroSequence() : TutorialBase(StateOverride::TutorialC, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->scoreTotalsTutorialLabel = Label::create("Your opponent has a large lead over you!.",
+	this->scoreTotalsTutorialLabel = Label::createWithTTF("Your opponent has a large lead over you!.",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(420.0f, 0.0f)
 	);
-	this->handCardsTutorialLabel = Label::create("Your cards will not be enough to win this round!",
+	this->handCardsTutorialLabel = Label::createWithTTF("Your cards will not be enough to win this round!",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(640.0f, 0.0f),
 		cocos2d::TextHAlignment::CENTER
 	);
-	this->lastStandTutorialLabel = Label::create("Your best option is to surrender this round, and fight back next round!",
+	this->lastStandTutorialLabel = Label::createWithTTF("Your best option is to surrender this round, and fight back next round!",
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont()),
 		Size(640.0f, 0.0f),
@@ -33,24 +33,24 @@ TutorialCIntroSequence::TutorialCIntroSequence() : TutorialBase(StateOverride::T
 	this->helpArrowHandCards = HelpArrow::create();
 	this->helpArrowLastStand = HelpArrow::create();
 
-	Label* scoreTotalsNextLabel = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* scoreTotalsNextLabelSelected = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* scoreTotalsNextLabel = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* scoreTotalsNextLabelSelected = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	scoreTotalsNextLabel->enableOutline(Color4B::BLACK, 2);
 	scoreTotalsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->scoreTotalsNextButton = TextMenuSprite::create(scoreTotalsNextLabel, scoreTotalsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
-	Label* handCardsNextLabel = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* handCardsNextLabelSelected = Label::create("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* handCardsNextLabel = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* handCardsNextLabelSelected = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	handCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	handCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->handCardsNextButton = TextMenuSprite::create(handCardsNextLabel, handCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
-	Label* lastStandNextLabel = Label::create("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* lastStandNextLabelSelected = Label::create("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* lastStandNextLabel = Label::createWithTTF("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* lastStandNextLabelSelected = Label::createWithTTF("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	lastStandNextLabel->enableOutline(Color4B::BLACK, 2);
 	lastStandNextLabelSelected->enableOutline(Color4B::BLACK, 2);

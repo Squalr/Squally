@@ -1,5 +1,14 @@
 #include "MenuLabel.h"
 
+#include "cocos/2d/CCLabel.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/base/CCEventDispatcher.h"
+#include "cocos/base/CCEventListenerMouse.h"
+
+#include "Engine/Utils/GameUtils.h"
+
+using namespace cocos2d;
+
 MenuLabel * MenuLabel::create(std::string labelText, std::string fontResource, float fontSize)
 {
 	MenuLabel* instance = new MenuLabel(labelText, fontResource, fontSize);

@@ -1,5 +1,14 @@
 #include "MouseState.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventMouse.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventListenerMouse.h"
+
+#include "Engine/GlobalDirector.h"
+
+using namespace cocos2d;
+
 MouseState* MouseState::instance = nullptr;
 Vec2 MouseState::mousePosition = Vec2::ZERO;
 bool MouseState::canClick = false;

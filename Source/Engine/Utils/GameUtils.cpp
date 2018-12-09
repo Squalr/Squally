@@ -1,6 +1,12 @@
 #include "GameUtils.h"
 
-#include "cocos2d.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCCamera.h"
+#include "cocos/2d/CCParticleSystem.h"
+#include "cocos/physics/CCPhysicsWorld.h"
+#include "cocos/platform/CCFileUtils.h"
+
+#include "StrUtils.h"
 
 using namespace cocos2d;
 

@@ -1,5 +1,7 @@
 #include "VaporWeb.h"
 
+#include "Engine/Localization/Localization.h"
+
 const float VaporWeb::dialogueHeight = 256.0f;
 
 const int VaporWeb::cellColumns = 5;
@@ -26,7 +28,7 @@ VaporWeb::VaporWeb()
 	this->darkLord = Sprite::create(CutsceneResources::VaporWeb_DarkLord);
 	this->dialoguePlate = LayerColor::create(Color4B(64, 0, 64, 255), visibleSize.width, VaporWeb::dialogueHeight);
 	this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneVaporWeb, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
-	this->escapeLabel = Label::create("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
+	this->escapeLabel = Label::createWithTTF("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	for (int column = 0; column < VaporWeb::cellColumns; column++)
 	{

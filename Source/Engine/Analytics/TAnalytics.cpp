@@ -16,13 +16,12 @@ Mihai Gosa, email:pintea@inthekillhouse.com  twitter: @gosamihai
 #elif __APPLE__
 	#include "curl/include/mac/curl/curl.h"
 #elif __linux__
-	// Same as mac I guess?
-	#include "curl/include/mac/curl/curl.h"
+	#include <curl/curl.h>
 #endif
-#include <stdlib.h>
-#include <stdio.h>
-#include <stdarg.h>
-#include <assert.h>
+#include <cstdlib>
+#include <cstdio>
+#include <cstdarg>
+#include <cassert>
 
 static CURLM* g_pMultiHandle = NULL;
 static char g_strServicePath[2048] = {'\0'}; // caches clientID and trackingID after calling Init() (http://www.google-analytics.com/collect?v=1&tid=%s&cid=%s)

@@ -1,5 +1,14 @@
 #include "GlobalDirector.h"
 
+#include "cocos/2d/CCScene.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Events/SceneEvents.h"
+#include "Engine/GlobalNode.h"
+#include "Engine/Utils/GameUtils.h"
+
+using namespace cocos2d;
+
 GlobalDirector* GlobalDirector::instance = nullptr;
 
 GlobalDirector* GlobalDirector::getInstance()

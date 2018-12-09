@@ -13,12 +13,12 @@ RemainingCardDisplay::RemainingCardDisplay()
 {
 	this->particles = ParticleSystemQuad::create(ParticleResources::Hexus_BlueAura);
 	this->remainingCardSprite = MenuSprite::create(HexusResources::RemainingCardsIcon, HexusResources::RemainingCardsIcon);
-	this->remainingCardLabel = Label::create("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->remainingCardLabel = Label::createWithTTF("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 	this->enemyRemainingCardSprite = Sprite::create(HexusResources::RemainingCardsIcon);
-	this->enemyRemainingCardLabel = Label::create("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->enemyRemainingCardLabel = Label::createWithTTF("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 
 	this->remainingCardMouseOverPanel = LayerColor::create(Color4B::BLACK, 320.0f, 96.0f);
-	this->remainingCardMouseOverLabel = Label::create(
+	this->remainingCardMouseOverLabel = Label::createWithTTF(
 		Localization::resolveString("The number of cards that can be played this turn"),
 		Localization::getMainFont(),
 		Localization::getFontSizeP(Localization::getMainFont())

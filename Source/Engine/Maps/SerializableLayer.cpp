@@ -1,12 +1,20 @@
 #include "SerializableLayer.h"
 
+#include <tinyxml2/tinyxml2.h>
+
+#include "Engine/Utils/GameUtils.h"
+
+using namespace cocos2d;
+
 const std::string SerializableLayer::KeyType = "type";
 const std::string SerializableLayer::MapKeyPropertyName = "name";
 const std::string SerializableLayer::MapKeyPropertyValue = "value";
 const std::string SerializableLayer::MapKeyPropertyDepth = "depth";
 const std::string SerializableLayer::MapKeyPropertyIgnoreHackermode = "ignore_hackermode";
 
-SerializableLayer* SerializableLayer::create(ValueMap* initProperties, std::string name, std::vector<SerializableObject*> objects)
+
+SerializableLayer* SerializableLayer::create(ValueMap* initProperties, std::string name,
+		const std::vector<SerializableObject*>& objects)
 {
 	SerializableLayer* instance = new SerializableLayer(initProperties, name, objects);
 
@@ -14,6 +22,7 @@ SerializableLayer* SerializableLayer::create(ValueMap* initProperties, std::stri
 
 	return instance;
 }
+
 SerializableLayer::SerializableLayer()
 {
 	if (this->properties != nullptr)
@@ -26,7 +35,8 @@ SerializableLayer::SerializableLayer(ValueMap* initProperties, std::string name)
 {
 }
 
-SerializableLayer::SerializableLayer(ValueMap* initProperties, std::string name, std::vector<SerializableObject*> objects)
+SerializableLayer::SerializableLayer(ValueMap* initProperties, std::string name,
+		const std::vector<SerializableObject*>& objects)
 {
 	this->layerName = name;
 	this->serializableObjects = objects;

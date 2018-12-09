@@ -1,14 +1,16 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/base/ccTypes.h"
+#include "cocos/base/CCEventKeyboard.h"
 
-#include "Engine/Maps/SerializableMap.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/HUD/Hud.h"
-#include "Engine/UI/Mouse.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Resources/UIResources.h"
 
-using namespace cocos2d;
+class MenuSprite;
+class SerializableMap;
+
+namespace cocos2d
+{
+	class LayerColor;
+}
 
 class DeveloperHud : public Hud
 {
@@ -19,17 +21,17 @@ public:
 
 private:
 	DeveloperHud();
-	~DeveloperHud();
+	virtual ~DeveloperHud();
 
 	void onEnter() override;
 	void initializePositions();
 	void initializeListeners();
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onSaveClick(MenuSprite* menuSprite);
 
 	SerializableMap* serializableMap;
-	LayerColor* layerSelectionBackground;
+	cocos2d::LayerColor* layerSelectionBackground;
 	MenuSprite* saveButton;
 
-	static const Color4B menuColor;
+	static const cocos2d::Color4B menuColor;
 };

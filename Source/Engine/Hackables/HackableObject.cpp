@@ -1,5 +1,11 @@
 #include "HackableObject.h"
 
+#include "Events/HackableEvents.h"
+#include "Engine/Hackables/HackableData.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+
+using namespace cocos2d;
+
 HackableObject::HackableObject(ValueMap* initProperties) : SerializableObject(initProperties)
 {
 	this->dataList = std::vector<HackableData*>();

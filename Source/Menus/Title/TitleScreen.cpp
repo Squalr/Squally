@@ -44,17 +44,17 @@ TitleScreen::TitleScreen()
 	Color3B highlightColor = Color3B::YELLOW;
 	Color4B glowColor = Color4B::ORANGE;
 
-	Label* storyModeLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* storyModeLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyStoryMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* storyModeLabel = Label::createWithTTF(Localization::resolveString(TitleScreen::StringKeyStoryMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* storyModeLabelHover = Label::createWithTTF(Localization::resolveString(TitleScreen::StringKeyStoryMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
-	Label* arcadeModeLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyMinigames), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* arcadeModeLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyMinigames), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* arcadeModeLabel = Label::createWithTTF(Localization::resolveString(TitleScreen::StringKeyMinigames), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* arcadeModeLabelHover = Label::createWithTTF(Localization::resolveString(TitleScreen::StringKeyMinigames), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
-	Label* optionsLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* optionsLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* optionsLabel = Label::createWithTTF(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* optionsLabelHover = Label::createWithTTF(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
-	Label* exitLabel = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* exitLabelHover = Label::create(Localization::resolveString(TitleScreen::StringKeyExit), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* exitLabel = Label::createWithTTF(Localization::resolveString(TitleScreen::StringKeyExit), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* exitLabelHover = Label::createWithTTF(Localization::resolveString(TitleScreen::StringKeyExit), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 
 	storyModeLabel->setColor(textColor);
 	storyModeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);

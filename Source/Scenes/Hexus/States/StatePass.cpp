@@ -1,5 +1,10 @@
 #include "StatePass.h"
 
+#include "Engine/Sound/SoundManager.h"
+
+#include "Resources/HexusResources.h"
+#include "Resources/SoundResources.h"
+
 const std::string StatePass::StringKeyHexusPass = "Menu_Hexus_Pass";
 const std::string StatePass::StringKeyHexusLastStand = "Menu_Hexus_Last_Stand";
 const std::string StatePass::StringKeyHexusClaimVictory = "Menu_Hexus_Claim_Victory";
@@ -19,7 +24,7 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->passSprite = Sprite::create(HexusResources::Flags);
 	this->passButton = IconMenuSprite::create(HexusResources::Flags, HexusResources::FlagsSelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
 	this->passPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
-	this->passLabel = Label::create(Localization::resolveString(StatePass::StringKeyHexusPass), Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	this->passLabel = Label::createWithTTF(Localization::resolveString(StatePass::StringKeyHexusPass), Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	this->passParticles = ParticleSystemQuad::create(ParticleResources::Hexus_WhiteAura);
 	this->enemyPassSprite = Sprite::create(HexusResources::Flags);
@@ -29,7 +34,7 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->lastStandSprite = Sprite::create(HexusResources::ShieldButton);
 	this->lastStandButton = IconMenuSprite::create(HexusResources::ShieldButton, HexusResources::ShieldButtonSelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
 	this->lastStandPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
-	this->lastStandLabel = Label::create(Localization::resolveString(StatePass::StringKeyHexusLastStand), Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	this->lastStandLabel = Label::createWithTTF(Localization::resolveString(StatePass::StringKeyHexusLastStand), Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	this->lastStandParticles = ParticleSystemQuad::create(ParticleResources::Hexus_Aura);
 	this->enemyLastStandSprite = Sprite::create(HexusResources::ShieldButton);
@@ -39,7 +44,7 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->claimVictorySprite = Sprite::create(HexusResources::Victory);
 	this->claimVictoryButton = IconMenuSprite::create(HexusResources::Victory, HexusResources::VictorySelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
 	this->claimVictoryPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
-	this->claimVictoryLabel = Label::create(Localization::resolveString(StatePass::StringKeyHexusClaimVictory), Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	this->claimVictoryLabel = Label::createWithTTF(Localization::resolveString(StatePass::StringKeyHexusClaimVictory), Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	this->claimVictoryParticles = ParticleSystemQuad::create(ParticleResources::Hexus_Aura);
 	this->enemyClaimVictorySprite = Sprite::create(HexusResources::Victory);

@@ -1,5 +1,13 @@
 #include "SerializableObject.h"
 
+#include "cocos/base/CCValue.h"
+
+#include <tinyxml2/tinyxml2.h>
+
+#include "Engine/Utils/GameUtils.h"
+
+using namespace cocos2d;
+
 const std::string SerializableObject::MapKeyId = "id";
 const std::string SerializableObject::MapKeyType = "type";
 const std::string SerializableObject::MapKeyName = "name";

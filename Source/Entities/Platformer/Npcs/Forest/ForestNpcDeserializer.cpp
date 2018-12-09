@@ -1,5 +1,10 @@
 #include "ForestNpcDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Npcs/Forest/ForestNpcs.h"
+
+using namespace cocos2d;
+
 ForestNpcDeserializer* ForestNpcDeserializer::instance = nullptr;
 
 void ForestNpcDeserializer::registerGlobalNode()

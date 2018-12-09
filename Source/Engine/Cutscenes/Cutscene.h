@@ -1,11 +1,12 @@
 #pragma once
-#include "cocos2d.h"
+#include <deque>
+#include <functional>
 
-#include "Engine/Cutscenes/CutsceneClip.h"
+#include "cocos/base/CCEventKeyboard.h"
+
 #include "Engine/SmartScene.h"
-#include "Engine/Utils/GameUtils.h"
 
-using namespace cocos2d;
+class CutsceneClip;
 
 class Cutscene : public SmartScene
 {
@@ -16,10 +17,10 @@ public:
 
 protected:
 	Cutscene(std::function<void()> cutsceneCompleteCallback);
-	~Cutscene();
+	virtual ~Cutscene();
 
 	void initializeListeners() override;
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void enqueueCutsceneClip(CutsceneClip* cutscene);
 	void cutsceneClipCompleteCallback();
 	void endCutscene();

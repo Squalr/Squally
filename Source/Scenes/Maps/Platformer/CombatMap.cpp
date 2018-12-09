@@ -1,5 +1,6 @@
 #include "CombatMap.h"
 
+#include "Engine/Camera/GameCamera.h"
 CombatMap* CombatMap::instance = nullptr;
 
 void CombatMap::registerGlobalScene()

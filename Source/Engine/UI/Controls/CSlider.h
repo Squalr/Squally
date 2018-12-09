@@ -1,11 +1,16 @@
 #pragma once
-#include "cocos2d.h"
+#include <functional>
 
 #include "Engine/SmartNode.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Resources/UIResources.h"
+#include "Engine/Events/MouseEvents.h"
 
-using namespace cocos2d;
+class MenuSprite;
+
+namespace cocos2d
+{
+	class ClippingRectangleNode;
+	class Sprite;
+}
 
 class CSlider : public SmartNode
 {
@@ -16,7 +21,7 @@ public:
 
 protected:
 	CSlider(float progress);
-	~CSlider();
+	virtual ~CSlider();
 
 	void initializePositions() override;
 
@@ -25,9 +30,9 @@ private:
 	void setProgress(float newProgress);
 
 	MenuSprite* slide;
-	Sprite* frame;
+	cocos2d::Sprite* frame;
 	MenuSprite* progressBar;
-	ClippingRectangleNode* progressClip;
+	cocos2d::ClippingRectangleNode* progressClip;
 
 	float progress;
 

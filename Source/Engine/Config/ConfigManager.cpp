@@ -1,5 +1,10 @@
 #include "ConfigManager.h"
 
+#define DONTBREAK
+#include "cocos2d.h"
+
+#include "Engine/Utils/GameUtils.h"
+
 using namespace cocos2d;
 
 const std::string ConfigManager::ConfigFile = "config.txt";
@@ -24,7 +29,8 @@ ConfigManager::ConfigManager()
 {
 	try
 	{
-		this->valueMap = FileUtils::getInstance()->getValueMapFromFile(FileUtils::sharedFileUtils()->getWritablePath() + "/" + ConfigManager::ConfigFile);
+		this->valueMap = FileUtils::getInstance()->getValueMapFromFile(
+				FileUtils::getInstance()->getWritablePath() + "/" + ConfigManager::ConfigFile);
 	}
 	catch (...)
 	{
@@ -42,7 +48,8 @@ void ConfigManager::save()
 
 	try
 	{
-		FileUtils::getInstance()->writeValueMapToFile(instance->valueMap, FileUtils::sharedFileUtils()->getWritablePath() + "/" + ConfigManager::ConfigFile);
+		FileUtils::getInstance()->writeValueMapToFile(instance->valueMap,
+				FileUtils::getInstance()->getWritablePath() + "/" + ConfigManager::ConfigFile);
 	}
 	catch (...)
 	{

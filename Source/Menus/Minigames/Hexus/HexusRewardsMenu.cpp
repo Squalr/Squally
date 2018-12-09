@@ -22,13 +22,13 @@ HexusRewardsMenu::HexusRewardsMenu()
 	this->background = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_WoodBackground);
 	this->goldSprite = Sprite::create(UIResources::Menus_Objects_GOLD_2);
 	this->goldSpriteLesser = Sprite::create(UIResources::Menus_Objects_GOLD_1);
-	this->goldLabel = Label::create("", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->goldLabel = Label::createWithTTF("", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 
 	this->goldLabel->enableOutline(Color4B::BLACK, 3);
 	
-	Label* returnButtonLabel = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* returnButtonLabelHover = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* returnButtonLabelClick = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* returnButtonLabel = Label::createWithTTF("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* returnButtonLabelHover = Label::createWithTTF("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* returnButtonLabelClick = Label::createWithTTF("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	returnButtonLabel->enableOutline(Color4B::BLACK, 2);
 	returnButtonLabelHover->enableOutline(Color4B::BLACK, 2);

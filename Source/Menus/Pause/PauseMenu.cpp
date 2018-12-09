@@ -1,5 +1,7 @@
 #include "PauseMenu.h"
 
+#include "Resources/SoundResources.h"
+
 const Color3B PauseMenu::TitleColor = Color3B(88, 188, 193);
 const std::string PauseMenu::StringKeyMenuPause = "Menu_Pause";
 const std::string PauseMenu::StringKeyResume = "Menu_Pause_Resume";
@@ -21,7 +23,7 @@ PauseMenu::PauseMenu()
 	this->background = Node::create();
 	this->pauseWindow = Sprite::create(UIResources::Menus_PauseMenu_PauseMenu);
 	this->closeButton = MenuSprite::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
-	this->titleLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyMenuPause), Localization::getMainFont(), 32.0f);
+	this->titleLabel = Label::createWithTTF(Localization::resolveString(PauseMenu::StringKeyMenuPause), Localization::getMainFont(), 32.0f);
 	this->resumeClickCallback = nullptr;
 	this->optionsClickCallback = nullptr;
 	this->exitClickCallback = nullptr;
@@ -35,14 +37,14 @@ PauseMenu::PauseMenu()
 	Color3B highlightColor = Color3B::YELLOW;
 	Color4B glowColor = Color4B::ORANGE;
 
-	Label* resumeLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyResume), Localization::getMainFont(), fontSize);
-	Label* resumeLabelHover = Label::create(Localization::resolveString(PauseMenu::StringKeyResume), Localization::getMainFont(), fontSize);
+	Label* resumeLabel = Label::createWithTTF(Localization::resolveString(PauseMenu::StringKeyResume), Localization::getMainFont(), fontSize);
+	Label* resumeLabelHover = Label::createWithTTF(Localization::resolveString(PauseMenu::StringKeyResume), Localization::getMainFont(), fontSize);
 
-	Label* optionsLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyOptions), Localization::getMainFont(), fontSize);
-	Label* optionsLabelHover = Label::create(Localization::resolveString(PauseMenu::StringKeyOptions), Localization::getMainFont(), fontSize);
+	Label* optionsLabel = Label::createWithTTF(Localization::resolveString(PauseMenu::StringKeyOptions), Localization::getMainFont(), fontSize);
+	Label* optionsLabelHover = Label::createWithTTF(Localization::resolveString(PauseMenu::StringKeyOptions), Localization::getMainFont(), fontSize);
 
-	Label* exitLabel = Label::create(Localization::resolveString(PauseMenu::StringKeyExit), Localization::getMainFont(), fontSize);
-	Label* exitLabelHover = Label::create(Localization::resolveString(PauseMenu::StringKeyExit), Localization::getMainFont(), fontSize);
+	Label* exitLabel = Label::createWithTTF(Localization::resolveString(PauseMenu::StringKeyExit), Localization::getMainFont(), fontSize);
+	Label* exitLabelHover = Label::createWithTTF(Localization::resolveString(PauseMenu::StringKeyExit), Localization::getMainFont(), fontSize);
 
 	resumeLabel->setColor(textColor);
 	resumeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);

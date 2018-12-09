@@ -1,5 +1,13 @@
 #include "Dialogue.h"
 
+#include "cocos/2d/CCLabel.h"
+
+#include "Engine/Dialogue/DialogueTree.h"
+#include "Engine/Localization/Localization.h"
+#include "Events/DialogEvents.h"
+
+using namespace cocos2d;
+
 const std::string Dialogue::ScheduleKeyTypeWriterEffect = "SCHEDULE_TYPE_WRITER_EFFECT";
 const float Dialogue::DefaultTypeSpeed = 0.04f;
 
@@ -19,7 +27,7 @@ Dialogue::Dialogue(DialogueTree* root, std::string fontResource, Size size)
 	this->dialogueRoot = root;
 	this->currentDialogue = this->dialogueRoot;
 	this->dialogueSpeed = Dialogue::DefaultTypeSpeed;
-	this->label = Label::create("", fontResource, Localization::getFontSizeH2(fontResource));
+	this->label = Label::createWithTTF("", fontResource, Localization::getFontSizeH2(fontResource));
 
 	this->label->setHorizontalAlignment(TextHAlignment::LEFT);
 	this->label->setAnchorPoint(Vec2(0.0f, 1.0f));

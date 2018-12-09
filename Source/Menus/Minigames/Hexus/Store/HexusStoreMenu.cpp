@@ -1,5 +1,8 @@
 #include "HexusStoreMenu.h"
 
+#include "Engine/Sound/SoundManager.h"
+#include "Resources/SoundResources.h"
+
 HexusStoreMenu* HexusStoreMenu::instance;
 const float HexusStoreMenu::lootBoxScale = 0.5f;
 
@@ -29,7 +32,7 @@ HexusStoreMenu::HexusStoreMenu()
 
 	this->goldPanel = Sprite::create(UIResources::Menus_StoreMenu_GoldPanel);
 	this->goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_2);
-	this->goldLabel = Label::create("", Localization::getMainFont(), Localization::getFontSizeH2(Localization::getMainFont()));
+	this->goldLabel = Label::createWithTTF("", Localization::getMainFont(), Localization::getFontSizeH2(Localization::getMainFont()));
 
 	this->goldLabel->enableOutline(Color4B::BLACK, 3);
 	this->goldLabel->setPosition(Vec2(-32.0f, 0.0f));
@@ -43,9 +46,9 @@ HexusStoreMenu::HexusStoreMenu()
 	this->lootboxesNode = Node::create();
 	this->storeMenu = Sprite::create(UIResources::Menus_StoreMenu_StoreBoard);
 
-	Label* backButtonLabel = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelHover = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelClick = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabel = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabelHover = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabelClick = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
@@ -62,9 +65,9 @@ HexusStoreMenu::HexusStoreMenu()
 	this->lootBoxRewardBackground->setOpacity(0);
 
 	this->chosenCardsNode = Node::create();
-	Label* lootBoxReturnLabel = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* lootBoxReturnLabelSelected = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* lootBoxReturnLabelClick = Label::create("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* lootBoxReturnLabel = Label::createWithTTF("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* lootBoxReturnLabelSelected = Label::createWithTTF("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* lootBoxReturnLabelClick = Label::createWithTTF("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	lootBoxReturnLabel->enableOutline(Color4B::BLACK, 2);
 	lootBoxReturnLabelSelected->enableOutline(Color4B::BLACK, 2);
@@ -104,10 +107,10 @@ HexusStoreMenu::HexusStoreMenu()
 	hexIcon->setPosition(Vec2(-32.0f, 0.0f));
 	specialIcon->setPosition(Vec2(-32.0f, 0.0f));
 
-	Label* binaryLabel = Label::create("1111", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
-	Label* decimalLabel = Label::create("15", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
-	Label* hexLabel = Label::create("F", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
-	Label* specialLabel = Label::create("OR", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	Label* binaryLabel = Label::createWithTTF("1111", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	Label* decimalLabel = Label::createWithTTF("15", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	Label* hexLabel = Label::createWithTTF("F", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	Label* specialLabel = Label::createWithTTF("OR", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 
 	binaryLabel->enableOutline(Color4B::BLACK, 3);
 	binaryLabel->setPosition(Vec2(-32.0f, 0.0f));
@@ -413,7 +416,7 @@ std::tuple<MenuSprite*, int> HexusStoreMenu::constructLootBoxButton(std::string 
 	entity->setCurrentAnimation("Idle");
 
 	MenuSprite* frame = MenuSprite::create(UIResources::Menus_StoreMenu_StoreOption, UIResources::Menus_StoreMenu_StoreOptionSelected);
-	Label* priceLabel = Label::create(std::to_string(price), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* priceLabel = Label::createWithTTF(std::to_string(price), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Sprite* goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_1);
 
 	animationNode->setScale(HexusStoreMenu::lootBoxScale);
@@ -533,7 +536,7 @@ std::tuple<MenuSprite*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* 
 		}
 	}
 
-	Label* cardLimitLabel = Label::create("", Localization::getMainFont(), 48.0f);
+	Label* cardLimitLabel = Label::createWithTTF("", Localization::getMainFont(), 48.0f);
 
 	cardLimitLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	cardLimitLabel->enableOutline(Color4B::BLACK, 4);
@@ -541,7 +544,7 @@ std::tuple<MenuSprite*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* 
 
 	this->updateCardLimitText(cardLimitLabel, cardData);
 
-	Label* priceLabel = Label::create(std::to_string(price), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	Label* priceLabel = Label::createWithTTF(std::to_string(price), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 	Sprite* goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_1);
 
 	goldIcon->setScale(0.75f);
@@ -792,46 +795,46 @@ void HexusStoreMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 void HexusStoreMenu::onLootBoxTabClick()
 {
 	this->hideMenus();
-	this->lootBoxButton->setZOrder(1);
+	this->lootBoxButton->setLocalZOrder(1);
 	this->lootboxesNode->setVisible(true);
 }
 
 void HexusStoreMenu::onBinaryTabClick()
 {
 	this->hideMenus();
-	this->binaryButton->setZOrder(1);
+	this->binaryButton->setLocalZOrder(1);
 	this->binaryCardsScrollPane->setVisible(true);
 }
 
 void HexusStoreMenu::onDecimalTabClick()
 {
 	this->hideMenus();
-	this->decimalButton->setZOrder(1);
+	this->decimalButton->setLocalZOrder(1);
 	this->decimalCardsScrollPane->setVisible(true);
 }
 
 void HexusStoreMenu::onHexTabClick()
 {
 	this->hideMenus();
-	this->hexButton->setZOrder(1);
+	this->hexButton->setLocalZOrder(1);
 	this->hexCardsScrollPane->setVisible(true);
 }
 
 void HexusStoreMenu::onSpecialTabClick()
 {
 	this->hideMenus();
-	this->specialButton->setZOrder(1);
+	this->specialButton->setLocalZOrder(1);
 	this->specialCardsScrollPane->setVisible(true);
 }
 
 void HexusStoreMenu::hideMenus()
 {
-	this->lootBoxButton->setZOrder(-1);
-	this->storeMenu->setZOrder(0);
-	this->binaryButton->setZOrder(-1);
-	this->decimalButton->setZOrder(-1);
-	this->hexButton->setZOrder(-1);
-	this->specialButton->setZOrder(-1);
+	this->lootBoxButton->setLocalZOrder(-1);
+	this->storeMenu->setLocalZOrder(0);
+	this->binaryButton->setLocalZOrder(-1);
+	this->decimalButton->setLocalZOrder(-1);
+	this->hexButton->setLocalZOrder(-1);
+	this->specialButton->setLocalZOrder(-1);
 
 	this->lootboxesNode->setVisible(false);
 	this->binaryCardsScrollPane->setVisible(false);

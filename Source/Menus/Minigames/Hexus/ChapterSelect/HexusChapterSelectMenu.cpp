@@ -29,10 +29,10 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	this->hexusChapterPreviewVolcano = HexusChapterPreviewVolcano::create();
 	this->hexusChapterPreviewObelisk = HexusChapterPreviewObelisk::create();
 	this->hexusChapterPreviewMech = HexusChapterPreviewMech::create();
-	this->chapterSelectLabel = Label::create("Select a Chapter", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->chapterSelectLabel = Label::createWithTTF("Select a Chapter", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
 
-	Label* backButtonLabel = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelHover = Label::create("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabel = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* backButtonLabelHover = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
@@ -44,8 +44,8 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
-	Label* manageDeckLabel = Label::create("Manage Cards", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* manageDeckLabelHover = Label::create("Manage Cards", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* manageDeckLabel = Label::createWithTTF("Manage Cards", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* manageDeckLabelHover = Label::createWithTTF("Manage Cards", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 	
 	manageDeckLabel->enableOutline(Color4B::BLACK, 2);
 	manageDeckLabelHover->enableOutline(Color4B::BLACK, 2);
@@ -57,8 +57,8 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
-	Label* shopLabel = Label::create("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* shopLabelHover = Label::create("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* shopLabel = Label::createWithTTF("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	Label* shopLabelHover = Label::createWithTTF("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
 
 	shopLabel->enableOutline(Color4B::BLACK, 2);
 	shopLabelHover->enableOutline(Color4B::BLACK, 2);

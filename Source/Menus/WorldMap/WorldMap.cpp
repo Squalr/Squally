@@ -1,5 +1,6 @@
 #include "WorldMap.h"
 
+#include "Resources/MapResources.h"
 WorldMap* WorldMap::instance = nullptr;
 
 const std::string WorldMap::StringKeySelectLevel = "Menu_Story_Select_Level";
@@ -34,8 +35,8 @@ WorldMap::WorldMap()
 	this->fogA = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
 	this->fogB = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
 	this->fogC = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
-	this->titleLabel = Label::create(Localization::resolveString(WorldMap::StringKeySelectLevel), Localization::getMainFont(), this->titleFontSize);
-	this->infoLabel = Label::create("", Localization::getMainFont(), this->infoFontSize);
+	this->titleLabel = Label::createWithTTF(Localization::resolveString(WorldMap::StringKeySelectLevel), Localization::getMainFont(), this->titleFontSize);
+	this->infoLabel = Label::createWithTTF("", Localization::getMainFont(), this->infoFontSize);
 
 	this->titleLabel->enableOutline(Color4B::BLACK, 2);
 	this->infoLabel->enableOutline(Color4B::BLACK, 2);

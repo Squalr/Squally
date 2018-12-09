@@ -30,7 +30,7 @@ FlyingCar::FlyingCar(CarType carType, Vec2 speed, float groundHeight)
 
 			for (auto it = shipFrames.begin(); it != shipFrames.end(); it++)
 			{
-				animation->addSpriteFrameWithFileName(*it);
+				animation->addSpriteFrameWithFile(*it);
 			}
 
 			animation->setDelayPerUnit(0.2f);
@@ -47,7 +47,7 @@ FlyingCar::FlyingCar(CarType carType, Vec2 speed, float groundHeight)
 
 			for (auto it = shipFrames.begin(); it != shipFrames.end(); it++)
 			{
-				animation->addSpriteFrameWithFileName(*it);
+				animation->addSpriteFrameWithFile(*it);
 			}
 
 			animation->setDelayPerUnit(0.2f);
@@ -64,7 +64,7 @@ FlyingCar::FlyingCar(CarType carType, Vec2 speed, float groundHeight)
 
 			for (auto it = shipFrames.begin(); it != shipFrames.end(); it++)
 			{
-				animation->addSpriteFrameWithFileName(*it);
+				animation->addSpriteFrameWithFile(*it);
 			}
 
 			animation->setDelayPerUnit(0.2f);

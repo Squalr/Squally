@@ -1,5 +1,20 @@
 #include "GameWindow.h"
 
+#include "cocos2d.h"
+#include "cocos/audio/include/AudioEngine.h"
+
+#include "steam_api.h"
+
+#include "Analytics/AnalyticsCategories.h"
+#include "Bootstrapper.h"
+#include "Engine/Analytics/Analytics.h"
+#include "Engine/Config/ConfigManager.h"
+#include "Engine/Steam/Steam.h"
+#include "Engine/Utils/LogUtils.h"
+
+using namespace cocos2d;
+using namespace cocos2d::cocos_experimental;
+
 const std::string GameWindow::GameWindowTitle = "Squally";
 
 GameWindow::GameWindow()
@@ -22,7 +37,10 @@ void GameWindow::initGLContextAttrs()
 
 bool GameWindow::applicationDidFinishLaunching()
 {
-	LogUtils::redirectStandardOutputToFile();
+	if (!LogUtils::redirectStandardOutputToFile())
+	{
+		LogUtils::logError("failed to redirect standard output to file.");
+	}
 
 	if (Steam::isSteamEnabled())
 	{
