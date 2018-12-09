@@ -1,11 +1,7 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Engine/Events/DeserializationEvents.h"
 #include "Entities/Platformer/PlatformerEntityDeserializer.h"
-#include "Entities/Platformer/Squally/Squally.h"
-
-using namespace cocos2d;
 
 class SquallyDeserializer : public PlatformerEntityDeserializer
 {

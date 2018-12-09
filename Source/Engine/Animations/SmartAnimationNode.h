@@ -1,10 +1,16 @@
 #pragma once
-#include "cocos2d.h"
-#include "cocos-ext.h"
-
 #include "Engine/SmartNode.h"
 
-using namespace cocos2d;
+// forward declarations
+namespace cocos2d
+{
+	class AnimationNode;
+}
+
+namespace SpriterEngine
+{
+	class EntityInstance;
+}
 
 class SmartAnimationNode : public SmartNode
 {
@@ -22,10 +28,10 @@ public:
 	static const std::string DefaultAnimationName;
 
 protected:
-	AnimationNode* animationNode;
+	cocos2d::AnimationNode* animationNode;
 	SpriterEngine::EntityInstance* entity;
 
 private:
 	SmartAnimationNode(std::string animationResource, std::string entityName);
-	~SmartAnimationNode();
+	virtual ~SmartAnimationNode();
 };

@@ -1,5 +1,15 @@
 #include "SaveManager.h"
 
+#include "cocos/platform/CCFileUtils.h"
+
+#include "steam_api.h"
+
+#include "Engine/Steam/Steam.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
+
+using namespace cocos2d;
+
 const std::string SaveManager::globalSaveFileName = "Global.sqa";
 const std::string SaveManager::profileSaveFileTemplate = "SaveGame_%d.sqa";
 const std::string SaveManager::SaveKeyIncrement = "SAVE_KEY_INCREMENT";

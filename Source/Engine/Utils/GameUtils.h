@@ -1,12 +1,15 @@
 #pragma once
-#include "cocos/math/CCGeometry.h"
+#include <map>
+#include <string>
 
-#include "Engine/UI/Mouse.h"
-#include "StrUtils.h"
+#include "cocos/math/CCGeometry.h"
 
 namespace cocos2d
 {
 	class Node;
+	class ParticleSystem;
+	class Value;
+	typedef std::map<std::string, Value> ValueMap;
 }
 
 class GameUtils
@@ -20,13 +23,13 @@ public:
 	static void focus(cocos2d::Node *node);
 	static void flattenNode(cocos2d::Node* node);
 	static cocos2d::Node* changeParent(cocos2d::Node* node, cocos2d::Node* newParent, bool retainPosition, int index = -1);
-	static void accelerateParticles(ParticleSystem* particleSystem, float duration);
-	static void fadeInObject(cocos2d::Node* node, float delay, float duration, GLubyte opacity = 255);
+	static void accelerateParticles(cocos2d::ParticleSystem* particleSystem, float duration);
+	static void fadeInObject(cocos2d::Node* node, float delay, float duration, uint8_t opacity = 255);
 	static cocos2d::Rect getSceneBounds(cocos2d::Node* node);
 	static cocos2d::Rect getSceneBoundsV2(cocos2d::Node* node);
 	static bool isVisible(cocos2d::Node* node);
-	static bool intersects(cocos2d::Node* node, Vec2 mousePos);
-	static bool intersectsV2(cocos2d::Node* node, Vec2 mousePos);
-	static bool keyExists(ValueMap* valueMap, std::string key);
+	static bool intersects(cocos2d::Node* node, cocos2d::Vec2 mousePos);
+	static bool intersectsV2(cocos2d::Node* node, cocos2d::Vec2 mousePos);
+	static bool keyExists(cocos2d::ValueMap* valueMap, std::string key);
 };
 

@@ -1,11 +1,7 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Engine/Events/DeserializationEvents.h"
-#include "Entities/Platformer/Enemies/Castle/CastleEnemies.h"
 #include "Entities/Platformer/PlatformerEntityDeserializer.h"
-
-using namespace cocos2d;
 
 class CastleEnemyDeserializer : public PlatformerEntityDeserializer
 {
@@ -14,7 +10,7 @@ public:
 
 private:
 	CastleEnemyDeserializer();
-	~CastleEnemyDeserializer();
+	virtual ~CastleEnemyDeserializer();
 
 	void initializeListeners() override;
 	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);

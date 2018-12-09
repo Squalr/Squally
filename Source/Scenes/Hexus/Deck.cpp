@@ -1,5 +1,7 @@
 #include "Deck.h"
 
+#include "Resources/HexusResources.h"
+
 Deck* Deck::create()
 {
 	Deck* instance = new Deck();

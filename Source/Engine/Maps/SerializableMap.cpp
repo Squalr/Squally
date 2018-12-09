@@ -1,8 +1,27 @@
 #include "SerializableMap.h"
 
+#include "cocos/2d/CCFastTMXLayer.h"
+#include "cocos/2d/CCFastTMXTiledMap.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/platform/CCFileUtils.h"
+
+#include <tinyxml2/tinyxml2.h>
+
+#include "Engine/Events/DeserializationEvents.h"
+#include "Engine/Maps/ObjectifiedTile.h"
+#include "Engine/Maps/SerializableLayer.h"
+#include "Engine/Maps/SerializableTileLayer.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
+
+#include "Resources/MapResources.h"
+
 const std::string SerializableMap::KeyTypeCollision = "collision";
 
-SerializableMap::SerializableMap(std::string mapFileName, std::vector<SerializableLayer*> layers, Size unitSize, Size tileSize, MapOrientation orientation)
+using namespace cocos2d;
+
+SerializableMap::SerializableMap(std::string mapFileName, const std::vector<SerializableLayer*>& layers,
+		Size unitSize, Size tileSize, MapOrientation orientation)
 {
 	this->collisionLayers = std::vector<SerializableTileLayer*>();
 	this->tileLayers = std::vector<SerializableTileLayer*>();
@@ -143,7 +162,7 @@ bool SerializableMap::serialize()
 
 	documentRoot->LinkEndChild(mapElement);
 
-	return tinyxml2::XML_SUCCESS == documentRoot->SaveFile(CCFileUtils::sharedFileUtils()->fullPathForFilename(this->levelMapFileName + ".dbg.tmx").c_str());
+	return tinyxml2::XML_SUCCESS == documentRoot->SaveFile(FileUtils::sharedFileUtils()->fullPathForFilename(this->levelMapFileName + ".dbg.tmx").c_str());
 }
 
 std::string SerializableMap::getMapFileName()

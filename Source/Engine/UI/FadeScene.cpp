@@ -1,5 +1,11 @@
 #include "FadeScene.h"
 
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/base/CCDirector.h"
+
+using namespace cocos2d;
+
 const float FadeScene::defaultFadeSpeed = 0.75f;
 
 FadeScene::FadeScene()

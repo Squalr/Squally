@@ -1,5 +1,8 @@
 #include "Card.h"
 
+#include "Resources/HexusResources.h"
+#include "Resources/SoundResources.h"
+
 const float Card::cardScale = 0.4f;
 const Color4B Card::binaryColor = Color4B(35, 150, 255, 255);
 const Color4B Card::decimalColor = Color4B(255, 255, 255, 255);

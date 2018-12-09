@@ -1,5 +1,9 @@
 #include "LoadingScreen.h"
 
+#include "cocos/audio/include/AudioEngine.h"
+
+#include "Engine/UI/Mouse.h"
+
 LoadingScreen* LoadingScreen::create()
 {
 	LoadingScreen* instance = new LoadingScreen();

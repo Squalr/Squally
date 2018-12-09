@@ -1,5 +1,7 @@
 #include "CombatMap.h"
 
+#include "Engine/Camera/GameCamera.h"
+
 CombatMap* CombatMap::create()
 {
 	CombatMap* instance = new CombatMap();

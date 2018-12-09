@@ -1,5 +1,16 @@
 #include "Mouse.h"
 
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/Events/MouseEvents.h"
+#include "Engine/Input/MouseState.h"
+
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
 Mouse* Mouse::create()
 {
 	Mouse* instance = new Mouse();

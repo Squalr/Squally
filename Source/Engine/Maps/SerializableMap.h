@@ -1,16 +1,18 @@
 #pragma once
-#include <tinyxml2/tinyxml2.h>
-#include <fstream>
-#include <iostream>
-#include "cocos2d.h"
+#include <string>
+#include <vector>
 
-#include "Engine/Events/DeserializationEvents.h"
+#include "cocos/math/CCGeometry.h"
+
 #include "Engine/SmartNode.h"
-#include "Engine/Maps/SerializableLayer.h"
-#include "Engine/Maps/SerializableTileLayer.h"
-#include "Resources/MapResources.h"
 
-using namespace cocos2d;
+class SerializableLayer;
+class SerializableTileLayer;
+
+namespace cocos2d
+{
+	class Node;
+}
 
 class SerializableMap : public SmartNode
 {
@@ -28,9 +30,9 @@ public:
 	void appendLayer(SerializableLayer* layer);
 	void setCollisionLayersVisible(bool isVisible);
 
-	Size getMapSize();
-	Size getMapUnitSize();
-	Size getMapTileSize();
+	cocos2d::Size getMapSize();
+	cocos2d::Size getMapUnitSize();
+	cocos2d::Size getMapTileSize();
 
 	bool isIsometric();
 	bool isPlatformer();
@@ -42,12 +44,13 @@ public:
 	static const std::string KeyTypeCollision;
 
 private:
-	SerializableMap(std::string mapFileName, std::vector<SerializableLayer*> layers, Size unitSize, Size tileSize, MapOrientation orientation);
-	~SerializableMap();
+	SerializableMap(std::string mapFileName, const std::vector<SerializableLayer*>& layers, cocos2d::Size unitSize,
+			cocos2d::Size tileSize, MapOrientation orientation);
+	virtual ~SerializableMap();
 
 	void onEnter() override;
 	void update(float dt) override;
-	void isometricZSort(Node* node);
+	void isometricZSort(cocos2d::Node* node);
 	void isometricMapPreparation();
 
 	std::vector<SerializableTileLayer*> collisionLayers;
@@ -56,6 +59,6 @@ private:
 
 	std::string levelMapFileName;
 	MapOrientation orientation;
-	Size mapUnitSize;
-	Size mapTileSize;
+	cocos2d::Size mapUnitSize;
+	cocos2d::Size mapTileSize;
 };

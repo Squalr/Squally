@@ -1,5 +1,7 @@
 #include "WorldMap.h"
 
+#include "Resources/MapResources.h"
+
 const std::string WorldMap::StringKeySelectLevel = "Menu_Story_Select_Level";
 const std::string WorldMap::StringKeyLevelNameJungle = "Menu_Story_Level_Name_Jungle";
 const std::string WorldMap::StringKeyLevelNameAquaticRuins = "Menu_Story_Level_Name_Aquatic_Ruins";

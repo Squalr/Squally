@@ -1,5 +1,10 @@
 #include "VolcanoNpcDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Npcs/Volcano/VolcanoNpcs.h"
+
+using namespace cocos2d;
+
 VolcanoNpcDeserializer* VolcanoNpcDeserializer::instance = nullptr;
 
 void VolcanoNpcDeserializer::registerGlobalNode()

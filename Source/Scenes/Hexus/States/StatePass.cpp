@@ -1,5 +1,10 @@
 #include "StatePass.h"
 
+#include "Engine/Sound/SoundManager.h"
+
+#include "Resources/HexusResources.h"
+#include "Resources/SoundResources.h"
+
 const std::string StatePass::StringKeyHexusPass = "Menu_Hexus_Pass";
 const std::string StatePass::StringKeyHexusLastStand = "Menu_Hexus_Last_Stand";
 const std::string StatePass::StringKeyHexusClaimVictory = "Menu_Hexus_Claim_Victory";

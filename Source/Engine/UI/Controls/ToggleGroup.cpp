@@ -1,5 +1,12 @@
 #include "ToggleGroup.h"
 
+#include "cocos/base/ccMacros.h"
+
+#include "Engine/SmartNode.h"
+#include "Engine/UI/Controls/CCheckbox.h"
+
+using namespace cocos2d;
+
 ToggleGroup* ToggleGroup::create(std::function<void(CCheckbox*)> callback)
 {
 	ToggleGroup* instance = new ToggleGroup(callback);

@@ -1,5 +1,11 @@
 #include "IsometricObjectDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Objects/Isometric/IsometricObjects.h"
+
+using namespace cocos2d;
+
 IsometricObjectDeserializer* IsometricObjectDeserializer::instance = nullptr;
 const std::string IsometricObjectDeserializer::KeyTypeIsometricObject = "iso_object";
 

@@ -1,5 +1,10 @@
 #include "JungleEnemyDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Enemies/Jungle/JungleEnemies.h"
+
+using namespace cocos2d;
+
 JungleEnemyDeserializer* JungleEnemyDeserializer::instance = nullptr;
 
 void JungleEnemyDeserializer::registerGlobalNode()

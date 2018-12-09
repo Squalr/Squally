@@ -2,11 +2,14 @@
 #include <memory>
 #include <string>
 
-#include "cocos2d.h"
+#include "cocos/2d/CCLayer.h"
 
-#include "Engine/Camera/GameCamera.h"
-
-using namespace cocos2d;
+namespace cocos2d
+{
+	class GLProgram;
+	class RenderTexture;
+	class Sprite;
+}
 
 class PostProcess : public cocos2d::Layer
 {
@@ -23,9 +26,9 @@ public:
 		public:
 			Impl(PostProcess* parent);
 			~Impl();
-			GLProgram * glProgram;
-			RenderTexture* renderTexture;
-			Sprite* sprite;
+			cocos2d::GLProgram * glProgram;
+			cocos2d::RenderTexture* renderTexture;
+			cocos2d::Sprite* sprite;
 
 		private:
 			PostProcess * mParent;

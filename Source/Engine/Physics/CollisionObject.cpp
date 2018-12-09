@@ -1,5 +1,17 @@
 #include "CollisionObject.h"
 
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventDispatcher.h"
+#include "cocos/base/CCValue.h"
+#include "cocos/physics/CCPhysicsBody.h"
+#include "cocos/physics/CCPhysicsContact.h"
+
+#include "Engine/GlobalDirector.h"
+#include "Engine/Camera/GameCamera.h"
+#include "Engine/Utils/GameUtils.h"
+
+using namespace cocos2d;
+
 std::string CollisionObject::MapKeyTypeCollision = "collision";
 
 const std::string CollisionObject::RequestCollisionMappingEvent = "request_collision_mapping";

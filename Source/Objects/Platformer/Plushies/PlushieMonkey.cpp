@@ -1,5 +1,10 @@
 #include "PlushieMonkey.h"
 
+#include "Engine/Hackables/HackableCode.h"
+#include "Engine/Hackables/HackableData.h"
+
+#include "Resources/UIResources.h"
+
 int PlushieMonkey::lockCountDown = 234900;
 
 PlushieMonkey* PlushieMonkey::create(ValueMap* initProperties)

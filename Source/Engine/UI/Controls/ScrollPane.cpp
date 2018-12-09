@@ -1,5 +1,17 @@
 ﻿#include "ScrollPane.h"
 
+#include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCNode.h"
+#include "cocos/base/CCEventListenerMouse.h"
+#include "cocos/ui/UIScrollView.h"
+
+#include "Engine/Events/MouseEvents.h"
+#include "Engine/Localization/Localization.h"
+#include "Engine/Utils/GameUtils.h"
+
+using namespace cocos2d;
+using namespace cocos2d::ui;
+
 const Size ScrollPane::marginSize = Size(24.0f, 24.0f);
 const float ScrollPane::scrollSpeed = 64.0f;
 
@@ -17,11 +29,12 @@ ScrollPane::ScrollPane(Size initPaneSize, Color4B initBackgroundColor)
 	this->paneSize = initPaneSize;
 	this->backgroundColor = initBackgroundColor;
 
-	this->background = LayerColor::create(this->backgroundColor, initPaneSize.width + marginSize.width * 2.0f, initPaneSize.height + marginSize.height * 2.0f);
+	this->background = LayerColor::create(this->backgroundColor, initPaneSize.width + marginSize.width * 2.0f,
+			initPaneSize.height + marginSize.height * 2.0f);
 	this->scrollView = ScrollView::create();
 
 	this->scrollView->setAnchorPoint(Vec2(0.5f, 0.5f));
-	this->scrollView->setDirection(SCROLLVIEW_DIR_VERTICAL);
+	this->scrollView->setDirection(ScrollView::Direction::VERTICAL);
 	this->scrollView->setSize(Size(initPaneSize.width, initPaneSize.height));
 	this->scrollView->setScrollBarAutoHideEnabled(false);
 	this->scrollView->setScrollBarOpacity(196);
@@ -48,7 +61,8 @@ void ScrollPane::initializePositions()
 {
 	SmartNode::initializePositions();
 
-	this->background->setPosition(Vec2(-this->paneSize.width / 2.0f - ScrollPane::marginSize.width, -this->paneSize.height / 2.0f - ScrollPane::marginSize.height));
+	this->background->setPosition(Vec2(-this->paneSize.width / 2.0f - ScrollPane::marginSize.width,
+			-this->paneSize.height / 2.0f - ScrollPane::marginSize.height));
 }
 
 void ScrollPane::initializeListeners()
@@ -94,7 +108,9 @@ void ScrollPane::fitSizeToContent(Rect padding)
 {
 	Vec2 oldScrollDepth = this->scrollView->getInnerContainerPosition();
 	bool firstLoad = this->scrollView->getScrolledPercentVertical() == 0.0f;
-	float minHeight = this->scrollView->getChildren().size() > 0 ? (this->scrollView->getChildren().front()->getPositionY() - this->scrollView->getChildren().front()->getContentSize().height / 2.0f) : 0.0f;
+	float minHeight = this->scrollView->getChildren().size() > 0
+			? (this->scrollView->getChildren().front()->getPositionY() -
+			this->scrollView->getChildren().front()->getContentSize().height / 2.0f) : 0.0f;
 	float maxHeight = this->paneSize.height;
 
 	for (auto it = this->scrollView->getChildren().begin(); it != this->scrollView->getChildren().end(); it++)
@@ -104,15 +120,18 @@ void ScrollPane::fitSizeToContent(Rect padding)
 		maxHeight = std::max((*it)->getPositionY() + (*it)->getContentSize().height / 2.0f, maxHeight);
 	}
 	
-	this->scrollView->setInnerContainerSize(Size(this->paneSize.width + padding.origin.y + padding.size.width, maxHeight + minHeight + padding.origin.x + padding.size.height));
+	this->scrollView->setInnerContainerSize(Size(this->paneSize.width + padding.origin.y + padding.size.width,
+			maxHeight + minHeight + padding.origin.x + padding.size.height));
 	this->scrollView->setInnerContainerPosition(oldScrollDepth);
 
-	this->scrollView->scrollToPercentVertical(firstLoad ? 0.0f : this->scrollView->getScrolledPercentVertical(), 0.0f, false);
+	this->scrollView->scrollToPercentVertical(firstLoad ? 0.0f : this->scrollView->getScrolledPercentVertical(), 0.0f,
+			false);
 }
 
 void ScrollPane::onMouseScroll(EventMouse* event)
 {
-	if (GameUtils::isVisible(this) && GameUtils::intersectsV2(this->background, Vec2(event->getCursorX(), event->getCursorY())))
+	if (GameUtils::isVisible(this) && GameUtils::intersectsV2(this->background, Vec2(event->getCursorX(),
+			event->getCursorY())))
 	{
 		this->scrollView->scrollChildren(Vec2(0.0f, event->getScrollY() * ScrollPane::scrollSpeed));
 
@@ -123,7 +142,8 @@ void ScrollPane::onMouseScroll(EventMouse* event)
 
 void ScrollPane::onScrollViewMouseMove(EventMouse* event)
 {
-	if (GameUtils::isVisible(this) && GameUtils::intersectsV2(this->background, Vec2(event->getCursorX(), event->getCursorY())))
+	if (GameUtils::isVisible(this) && GameUtils::intersectsV2(this->background, Vec2(event->getCursorX(),
+			event->getCursorY())))
 	{
 		// Start drag animation
 		if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)

@@ -1,5 +1,16 @@
 #include "DialogueTree.h"
 
+#include "allocators.h"
+#include "encodings.h"
+#include "stringbuffer.h"
+#include "writer.h"
+
+#include "Engine/Localization/Localization.h"
+#include "Events/DialogEvents.h"
+
+using namespace cocos2d;
+using namespace rapidjson;
+
 DialogueTree * DialogueTree::loadDialogueFromFile(std::string filePath)
 {
 	return DialogueTree::loadDialogueFromJson(FileUtils::getInstance()->getStringFromFile(filePath.c_str()));

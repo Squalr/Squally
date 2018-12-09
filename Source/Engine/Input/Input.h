@@ -1,29 +1,32 @@
 #pragma once
-#include "cocos2d.h"
+#include <unordered_map>
+
+#include "cocos/base/CCEventKeyboard.h"
 
 #include "Engine/GlobalNode.h"
-#include "Engine/GlobalDirector.h"
-#include "Engine/Utils/GameUtils.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Event;
+}
 
 class Input : public GlobalNode
 {
 public:
 	static void registerGlobalNode();
 
-	static bool isKeyJustPressed(EventKeyboard::KeyCode keyCode);
-	static bool isPressed(EventKeyboard::KeyCode keyCode);
-	static bool isReleased(EventKeyboard::KeyCode keyCode);
+	static bool isKeyJustPressed(cocos2d::EventKeyboard::KeyCode keyCode);
+	static bool isPressed(cocos2d::EventKeyboard::KeyCode keyCode);
+	static bool isReleased(cocos2d::EventKeyboard::KeyCode keyCode);
 
 private:
 	Input();
-	~Input();
+	virtual ~Input();
 
 	static Input* getInstance();
 	void initializeListeners() override;
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	void onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+	void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
 	std::unordered_map<int, bool> pressedKeysPrevious;
 	std::unordered_map<int, bool> pressedKeys;

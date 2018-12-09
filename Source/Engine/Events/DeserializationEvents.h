@@ -1,10 +1,14 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/base/CCValue.h"
+#include "cocos/math/CCGeometry.h"
 
-#include "Engine/Maps/SerializableLayer.h"
-#include "Engine/Maps/SerializableObject.h"
+class SerializableLayer;
+class SerializableObject;
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class TMXObjectGroup;
+}
 
 class DeserializationEvents
 {
@@ -41,23 +45,23 @@ public:
 	// Additional info used to help layer deserialization
 	struct DeserializationMapMeta
 	{
-		Size mapSize;
+		cocos2d::Size mapSize;
 		bool isIsometric;
 
-		DeserializationMapMeta(Size mapSize, bool isIsometric) : mapSize(mapSize), isIsometric(isIsometric)
+		DeserializationMapMeta(cocos2d::Size mapSize, bool isIsometric) : mapSize(mapSize), isIsometric(isIsometric)
 		{
 		}
 	};
 
 	struct LayerDeserializationRequestArgs
 	{
-		TMXObjectGroup* objectGroup;
+		cocos2d::TMXObjectGroup* objectGroup;
 		DeserializationMapMeta mapMeta;
 		std::function<void(LayerDeserializationArgs)> onDeserializeCallback;
 		bool handled = false;
 
 		LayerDeserializationRequestArgs(
-			TMXObjectGroup* objectGroup,
+			cocos2d::TMXObjectGroup* objectGroup,
 			DeserializationMapMeta mapMeta,
 			std::function<void(LayerDeserializationArgs)> onDeserializeCallback):
 			objectGroup(objectGroup), mapMeta(mapMeta), onDeserializeCallback(onDeserializeCallback)
@@ -68,13 +72,13 @@ public:
 	struct ObjectDeserializationRequestArgs
 	{
 		std::string typeName;
-		ValueMap properties;
+		cocos2d::ValueMap properties;
 		std::function<void(ObjectDeserializationArgs)> onDeserializeCallback;
 		bool handled = false;
 
 		ObjectDeserializationRequestArgs(
 			std::string typeName, 
-			ValueMap properties,
+			cocos2d::ValueMap properties,
 			std::function<void(ObjectDeserializationArgs)> onDeserializeCallback):
 			typeName(typeName), properties(properties), onDeserializeCallback(onDeserializeCallback)
 		{

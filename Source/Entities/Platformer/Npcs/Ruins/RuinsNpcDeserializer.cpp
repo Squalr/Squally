@@ -1,5 +1,10 @@
 #include "RuinsNpcDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Npcs/Ruins/RuinsNpcs.h"
+
+using namespace cocos2d;
+
 RuinsNpcDeserializer* RuinsNpcDeserializer::instance = nullptr;
 
 void RuinsNpcDeserializer::registerGlobalNode()

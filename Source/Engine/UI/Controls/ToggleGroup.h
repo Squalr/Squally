@@ -1,10 +1,10 @@
 #pragma once
-#include "cocos2d.h"
+#include <functional>
+#include <vector>
 
 #include "Engine/SmartNode.h"
-#include "Engine/UI/Controls/CCheckbox.h"
 
-using namespace cocos2d;
+class CCheckbox;
 
 class ToggleGroup : public SmartNode
 {
@@ -15,7 +15,7 @@ public:
 
 private:
 	ToggleGroup(std::function<void(CCheckbox*)> callback);
-	~ToggleGroup();
+	virtual ~ToggleGroup();
 
 	bool onToggleClick(CCheckbox* toggle, bool isToggled);
 

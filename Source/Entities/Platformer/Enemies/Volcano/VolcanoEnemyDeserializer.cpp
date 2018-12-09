@@ -1,5 +1,10 @@
 #include "VolcanoEnemyDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Enemies/Volcano/VolcanoEnemies.h"
+
+using namespace cocos2d;
+
 VolcanoEnemyDeserializer* VolcanoEnemyDeserializer::instance = nullptr;
 
 void VolcanoEnemyDeserializer::registerGlobalNode()

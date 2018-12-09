@@ -1,58 +1,71 @@
 #pragma once
-#include "ui/CocosGUI.h"
-#include "cocos2d.h"
+#include <string>
+#include <vector>
 
-#include "Engine/Localization/Localization.h"
+#include "cocos/base/ccTypes.h"
+
 #include "Engine/SmartNode.h"
-#include "Engine/UI/Controls/MenuLabel.h"
 
-using namespace cocos2d;
-using namespace cocos2d::ui;
+class MenuLabel;
+
+namespace cocos2d
+{
+	class Node;
+
+	namespace ui
+	{
+		class RichElement;
+		class RichText;
+		class ScrollView;
+	}
+}
 
 class TextWindow : public SmartNode
 {
 public:
-	static TextWindow * create(std::string windowTitle, Size initWindowSize, float initFontSize, Color3B initFontColor);
+	static TextWindow * create(std::string windowTitle, cocos2d::Size initWindowSize, float initFontSize,
+			cocos2d::Color3B initFontColor);
 
 	void setTitle(std::string title);
-	void insertText(std::string text, Color3B color);
+	void insertText(std::string text, cocos2d::Color3B color);
 	void setMarginSize(float newMarginSize);
 	virtual void insertNewline();
 	virtual void clearText();
 
 protected:
-	TextWindow(std::string windowTitle, Size initWindowSize, float initFontSize, Color3B initFontColor);
-	~TextWindow();
+	TextWindow(std::string windowTitle, cocos2d::Size initWindowSize, float initFontSize,
+			cocos2d::Color3B initFontColor);
+	virtual ~TextWindow();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float) override;
 
-	void setWindowColor(Color4B newWindowColor);
-	void setTitleBarColor(Color4B newTitleBarColor);
+	void setWindowColor(cocos2d::Color4B newWindowColor);
+	void setTitleBarColor(cocos2d::Color4B newTitleBarColor);
 
-	ScrollView* scrollView;
+	cocos2d::ui::ScrollView* scrollView;
 	float marginSize;
 
-	static const Size padding;
+	static const cocos2d::Size padding;
 
 private:
-	Node* background;
-	Node* titleBar;
+	cocos2d::Node* background;
+	cocos2d::Node* titleBar;
 	MenuLabel* windowTitle;
-	RichText* displayedText;
+	cocos2d::ui::RichText* displayedText;
 
-	std::vector<RichElement*> displayTextElements;
+	std::vector<cocos2d::ui::RichElement*> displayTextElements;
 
 	float fontSize;
-	Color4B titleBarColor;
-	Color4B windowColor;
-	Color3B fontColor;
-	Size windowSize;
+	cocos2d::Color4B titleBarColor;
+	cocos2d::Color4B windowColor;
+	cocos2d::Color3B fontColor;
+	cocos2d::Size windowSize;
 
 	static const float titleBarHeight;
-	static const Color4B defaultTitleBarColor;
-	static const Color4B defaultWindowColor;
+	static const cocos2d::Color4B defaultTitleBarColor;
+	static const cocos2d::Color4B defaultWindowColor;
 };
 

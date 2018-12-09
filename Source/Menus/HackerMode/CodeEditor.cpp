@@ -1,5 +1,8 @@
 ﻿#include "CodeEditor.h"
 
+#include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
+
 const float CodeEditor::compileDelayMaxSeconds = 0.1f;
 const float CodeEditor::lineNumberMargin = 32.0f;;
 const Size CodeEditor::textSize = Size(512.0f, 640.0f);

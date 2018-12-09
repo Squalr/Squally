@@ -1,5 +1,10 @@
 #include "MechNpcDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Npcs/Mech/MechNpcs.h"
+
+using namespace cocos2d;
+
 MechNpcDeserializer* MechNpcDeserializer::instance = nullptr;
 
 void MechNpcDeserializer::registerGlobalNode()

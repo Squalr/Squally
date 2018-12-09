@@ -1,5 +1,7 @@
 #include "HackableCode.h"
 
+#include "Engine/Utils/HackUtils.h"
+
 HackableCode * HackableCode::create(std::string name, void* codeStart, int codeLength, std::string iconResource)
 {
 	HackableCode* hackableCode = new HackableCode(name, codeStart, codeLength, iconResource);

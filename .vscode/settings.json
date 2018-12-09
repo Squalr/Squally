@@ -93,5 +93,12 @@
         "cwctype": "cpp",
         "variant": "cpp"
     },
-    "C_Cpp.configurationWarnings": "Disabled"
+    "C_Cpp.configurationWarnings": "Disabled",
+    "cmake.configureArgs": [
+        "-DBUILD_LUA_LIBS=OFF",
+        "-DBUILD_JS_LIBS=OFF",
+        "-DBUILD_EDITOR_SPINE=OFF",
+        "-DBUILD_EDITOR_COCOSTUDIO=OFF",
+        "-DBUILD_EDITOR_COCOSBUILDER=OFF"
+    ]
 }

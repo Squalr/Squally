@@ -1,18 +1,32 @@
 #pragma once
-#include "cocos2d.h"
+#include <string>
 
-#include "Engine/Maps/ObjectifiedTile.h"
-#include "Engine/Utils/StrUtils.h"
-#include "SerializableLayer.h"
+#include "cocos/math/CCGeometry.h"
 
-using namespace cocos2d;
+#include "Engine/SmartNode.h"
+#include "Engine/Maps/SerializableLayer.h"
+
+namespace cocos2d
+{
+	namespace cocos_experimental
+	{
+		class TMXLayer;
+	}
+}
+
+namespace tinyxml2
+{
+	class XMLDocument;
+	class XMLElement;
+}
 
 class SerializableTileLayer : public SerializableLayer
 {
 public:
-	static SerializableTileLayer * deserialize(cocos_experimental::TMXLayer* initTileLayer);
+	static SerializableTileLayer * deserialize(cocos2d::cocos_experimental::TMXLayer* initTileLayer);
 
-	void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, Size mapUnitSize, Size mapTileSize) override;
+	void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement,
+			cocos2d::Size mapUnitSize, cocos2d::Size mapTileSize) override;
 	std::string getType();
 
 	static const std::string MapKeyPropertyWidth;
@@ -23,9 +37,9 @@ public:
 	static const std::string MapKeyPropertyEncodingValue;
 
 protected:
-	SerializableTileLayer(cocos_experimental::TMXLayer* initTileLayer);
-	~SerializableTileLayer();
+	SerializableTileLayer(cocos2d::cocos_experimental::TMXLayer* initTileLayer);
+	virtual ~SerializableTileLayer();
 
 private:
-	cocos_experimental::TMXLayer* tileLayer;
+	cocos2d::cocos_experimental::TMXLayer* tileLayer;
 };

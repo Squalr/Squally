@@ -1,12 +1,5 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/Analytics/TAnalytics.h"
-#include "Engine/GlobalDirector.h"
 #include "Engine/GlobalNode.h"
-#include "Engine/Utils/SystemUtils.h"
-
-using namespace cocos2d;
 
 class Analytics : public GlobalNode
 {
@@ -20,7 +13,7 @@ public:
 private:
 	static Analytics * getInstance();
 	Analytics();
-	~Analytics();
+	virtual ~Analytics();
 
 	void onEnter() override;
 	void update(float dt) override;

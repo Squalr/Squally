@@ -1,5 +1,14 @@
 #include "GameCamera.h"
 
+#include "cocos/2d/CCCamera.h"
+#include "cocos/2d/CCNode.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/GlobalDirector.h"
+#include "Engine/Utils/MathUtils.h"
+
+using namespace cocos2d;
+
 GameCamera* GameCamera::cameraInstance = nullptr;
 
 void GameCamera::registerGlobalNode()

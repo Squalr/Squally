@@ -1,5 +1,7 @@
 #include "BoardMembers.h"
 
+#include "Engine/Localization/Localization.h"
+
 const Vec2 BoardMembers::panOffset = Vec2(-608.0f, 256.0f);
 
 BoardMembers* BoardMembers::create()

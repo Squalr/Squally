@@ -1,5 +1,12 @@
 #include "RenderUtils.h"
 
+#include "cocos/2d/CCDrawNode.h"
+#include "cocos/2d/CCRenderTexture.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/renderer/CCGLProgram.h"
+
+using namespace cocos2d;
+
 Sprite* RenderUtils::renderDrawNode(DrawNode* drawNode, Vec2 offset, Size renderSize)
 {
 	RenderTexture* renderedDrawNode = RenderTexture::create(renderSize.width, renderSize.height);

@@ -1,5 +1,10 @@
 #include "SmartNode.h"
 
+#include "cocos/base/CCEventDispatcher.h"
+#include "cocos/base/CCEventListener.h"
+
+using namespace cocos2d;
+
 SmartNode::SmartNode()
 {
 }

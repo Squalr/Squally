@@ -1,5 +1,9 @@
 #include "HexusStoreMenu.h"
 
+#include "Engine/Sound/SoundManager.h"
+
+#include "Resources/SoundResources.h"
+
 const float HexusStoreMenu::lootBoxScale = 0.5f;
 
 HexusStoreMenu * HexusStoreMenu::create()

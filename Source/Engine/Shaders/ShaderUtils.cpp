@@ -1,8 +1,15 @@
 #include "ShaderUtils.h"
 
+#include "cocos/2d/CCNode.h"
+#include "cocos/renderer/ccShaders.h"
+#include "cocos/renderer/CCGLProgram.h"
+#include "cocos/renderer/CCGLProgramCache.h"
+
+using namespace cocos2d;
+
 void ShaderUtils::applyDefaultFragShader(Node *node)
 {
-	node->setGLProgram(ShaderCache::getInstance()->getGLProgram(GLProgram::SHADER_NAME_POSITION_TEXTURE_COLOR_NO_MVP));
+	node->setGLProgram(GLProgramCache::getInstance()->getGLProgram(GLProgram::SHADER_NAME_POSITION_TEXTURE_COLOR_NO_MVP));
 	node->getGLProgram()->use();
 }
 

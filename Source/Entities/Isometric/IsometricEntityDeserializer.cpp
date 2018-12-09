@@ -1,5 +1,10 @@
 #include "IsometricEntityDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Isometric/IsometricEntities.h"
+
+using namespace cocos2d;
+
 IsometricEntityDeserializer* IsometricEntityDeserializer::instance = nullptr;
 const std::string IsometricEntityDeserializer::KeyTypeIsometricEntity = "iso_entity";
 

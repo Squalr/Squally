@@ -1,29 +1,40 @@
 #pragma once
-#include "cocos2d.h"
-#include "ui/CocosGUI.h"
+#include <string>
+#include <vector>
 
-#include "Engine/Localization/Localization.h"
+#include "cocos/base/ccTypes.h"
+
 #include "Engine/UI/Controls/TextWindow.h"
 
-using namespace cocos2d;
-using namespace cocos2d::ui;
+namespace cocos2d
+{
+	namespace ui
+	{
+		class UICCTextField;
+		class RichText;
+		class RichElement;
+	}
+}
 
 class EditableTextWindow : public TextWindow
 {
 public:
-	static EditableTextWindow * create(std::string windowTitle, Size initWindowSize, int initFontSize, Color3B initFontColor);
+	static EditableTextWindow * create(std::string windowTitle, cocos2d::Size initWindowSize, int initFontSize,
+			cocos2d::Color3B initFontColor);
 
 	struct token
 	{
 		std::string tokenStr;
-		Color3B color;
+		cocos2d::Color3B color;
 
-		token(std::string tokenStr, Color3B color) : tokenStr(tokenStr), color(color)
+		token(std::string tokenStr, cocos2d::Color3B color) :
+			tokenStr(tokenStr), color(color)
 		{
 		}
 	};
 
-	void setTokenizationCallback(std::function<void(std::string text, std::vector<EditableTextWindow::token>*)> newTokenizationCallback);
+	void setTokenizationCallback(std::function<void(std::string text,
+			std::vector<EditableTextWindow::token>*)> newTokenizationCallback);
 	void setOnEditCallback(std::function<void(std::string text)> newOnEditCallback);
 	std::string getText();
 	void setText(std::string text);
@@ -32,27 +43,28 @@ public:
 	void focus();
 
 private:
-	EditableTextWindow(std::string windowTitle, Size initWindowSize, int initFontSize, Color3B initFontColor);
-	~EditableTextWindow();
+	EditableTextWindow(std::string windowTitle, cocos2d::Size initWindowSize, int initFontSize,
+			cocos2d::Color3B initFontColor);
+	virtual ~EditableTextWindow();
 
 	void update(float) override;
 	void initializePositions() override;
 	void initializeListeners();
 	void constructTokenizedText(std::string currentText);
 
-	UICCTextField* editableText;
-	RichText* lineNumbers;
+	cocos2d::ui::UICCTextField* editableText;
+	cocos2d::ui::RichText* lineNumbers;
 
 	int currentLineNumber;
 	float fontSize;
-	Color3B fontColor;
-	Size windowSize;
+	cocos2d::Color3B fontColor;
+	cocos2d::Size windowSize;
 	std::string previousText;
 
-	std::vector<RichElement*>* lineNumberElements;
+	std::vector<cocos2d::ui::RichElement*>* lineNumberElements;
 	std::function<void(std::string text, std::vector<EditableTextWindow::token>*)> tokenizationCallback;
 	std::function<void(std::string text)> onEditCallback;
 
-	static const Color3B lineNumberColor;
+	static const cocos2d::Color3B lineNumberColor;
 	static const std::string StringKeyClickToEdit;
 };

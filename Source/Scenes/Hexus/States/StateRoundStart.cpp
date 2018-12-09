@@ -1,5 +1,9 @@
 #include "StateRoundStart.h"
 
+#include "Engine/Sound/SoundManager.h"
+
+#include "Resources/SoundResources.h"
+
 StateRoundStart* StateRoundStart::create()
 {
 	StateRoundStart* instance = new StateRoundStart();

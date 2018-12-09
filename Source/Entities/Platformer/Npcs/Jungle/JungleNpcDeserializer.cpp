@@ -1,5 +1,10 @@
 #include "JungleNpcDeserializer.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Entities/Platformer/Npcs/Jungle/JungleNpcs.h"
+
+using namespace cocos2d;
+
 JungleNpcDeserializer* JungleNpcDeserializer::instance = nullptr;
 
 void JungleNpcDeserializer::registerGlobalNode()
