@@ -270,14 +270,14 @@ bool SaveManager::hasProfileData(std::string key)
 
 std::string SaveManager::getLocalGlobalSaveFilePath()
 {
-	return FileUtils::sharedFileUtils()->getWritablePath() + SaveManager::globalSaveFileName;
+	return FileUtils::getInstance()->getWritablePath() + SaveManager::globalSaveFileName;
 }
 
 std::string SaveManager::getLocalActiveProfileSaveFilePath()
 {
 	std::string fileName = StrUtils::replaceAll(SaveManager::profileSaveFileTemplate.c_str(), "%d", std::to_string(SaveManager::getActiveSaveProfile()));
 	
-	return FileUtils::sharedFileUtils()->getWritablePath() + fileName;
+	return FileUtils::getInstance()->getWritablePath() + fileName;
 }
 
 std::string SaveManager::getCloudGlobalSaveFilePath()

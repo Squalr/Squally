@@ -35,7 +35,7 @@ ScrollPane::ScrollPane(Size initPaneSize, Color4B initBackgroundColor)
 
 	this->scrollView->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->scrollView->setDirection(ScrollView::Direction::VERTICAL);
-	this->scrollView->setSize(Size(initPaneSize.width, initPaneSize.height));
+	this->scrollView->setContentSize(Size(initPaneSize.width, initPaneSize.height));
 	this->scrollView->setScrollBarAutoHideEnabled(false);
 	this->scrollView->setScrollBarOpacity(196);
 	this->scrollView->setCascadeOpacityEnabled(true);
