@@ -6,10 +6,10 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Entities/Platformer/PlatformerCollisionMapping.h"
 #include "Resources/EntityResources.h"
 #include "Resources/UIResources.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
 using namespace cocos2d;
 
@@ -22,7 +22,7 @@ protected:
 	PlatformerEntity(
 		ValueMap* initProperties,
 		std::string scmlResource,
-		CategoryName categoryName,
+		PlatformerCollisionType collisionType,
 		Size size = Size(256.0f, 256.0f),
 		float scale = 1.0f,
 		Vec2 collisionOffset = Vec2(0.0f, 0.0f));
@@ -31,9 +31,7 @@ protected:
 	void onEnter() override;
 	void update(float) override;
 
-	bool contactBegin(CollisionData data) override;
-	bool contactUpdate(CollisionData data) override;
-	bool contactEnd(CollisionData data) override;
+	virtual void initializeCollisionEvents();
 
 	SmartAnimationNode* animationNode;
 	Vec2 movement;

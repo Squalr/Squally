@@ -17,7 +17,7 @@ public:
 protected:
 	PlatformerEnemy(ValueMap* initProperties,
 		std::string scmlResource,
-		CategoryName categoryName,
+		PlatformerCollisionType collisionType,
 		Size size = Size(256.0f, 256.0f),
 		float scale = 1.0f,
 		Vec2 collisionOffset = Vec2(0.0f, 0.0f));
