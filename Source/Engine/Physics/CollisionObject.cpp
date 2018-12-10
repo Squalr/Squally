@@ -24,10 +24,10 @@ void CollisionObject::requestCollisionMapping(CollisionMapRequestArgs args)
 	);
 }
 
-CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, CategoryName initCategoryName, bool isDynamic, bool canRotate) : HackableObject(initProperties)
+CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, DeserializedCollisionName deserializedCollisionName, bool isDynamic, bool canRotate) :
+	HackableObject(initProperties)
 {
 	this->physicsBody = initPhysicsBody;
-	this->categoryName = initCategoryName;
 
 	if (this->physicsBody != nullptr)
 	{
@@ -37,7 +37,22 @@ CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhys
 	}
 
 	// Fire event, allowing for the game to map what this collision object collides with
-	CollisionObject::requestCollisionMapping(CollisionObject::CollisionMapRequestArgs(this->categoryName, this));
+	CollisionObject::requestCollisionMapping(CollisionObject::CollisionMapRequestArgs(deserializedCollisionName, this));
+}
+
+CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, CollisionType collisionType, bool isDynamic, bool canRotate) :
+	HackableObject(initProperties)
+{
+	this->physicsBody = initPhysicsBody;
+
+	if (this->physicsBody != nullptr)
+	{
+		this->physicsBody->setRotationEnable(canRotate);
+		this->physicsBody->setDynamic(isDynamic);
+		this->setPhysicsBody(initPhysicsBody);
+	}
+
+	this->setCollisionType(collisionType);
 }
 
 CollisionObject::~CollisionObject()
@@ -65,23 +80,11 @@ void CollisionObject::initializeListeners()
 	this->addEventListener(contactListener);
 }
 
-void CollisionObject::setCollisionGroups(CategoryGroup categoryGroup, std::vector<CategoryGroup>* collidesWith)
+void CollisionObject::setCollisionType(CollisionType collisionType)
 {
 	if (this->physicsBody != nullptr)
 	{
-		int collidesWithBitmask = 0;
-
-		if (collidesWith != nullptr)
-		{
-			for (auto it = collidesWith->begin(); it != collidesWith->end(); it++)
-			{
-				collidesWithBitmask |= *it;
-			}
-		}
-
-		this->physicsBody->setCategoryBitmask(categoryGroup);
-		this->physicsBody->setCollisionBitmask(collidesWithBitmask);
-		this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
+		this->physicsBody->setCategoryBitmask(collisionType);
 	}
 }
 
@@ -134,12 +137,7 @@ void CollisionObject::setVelocity(Vec2 velocity)
 	}
 }
 
-CategoryName CollisionObject::getCategoryName()
-{
-	return this->categoryName;
-}
-
-CategoryGroup CollisionObject::getCategoryGroup()
+CollisionType CollisionObject::getCollisionType()
 {
 	return this->physicsBody == nullptr ? 0 : this->physicsBody->getCategoryBitmask();
 }
@@ -157,6 +155,56 @@ bool CollisionObject::contactUpdate(CollisionData data)
 bool CollisionObject::contactEnd(CollisionData data)
 {
 	return true;
+}
+
+void CollisionObject::whenCollidesWith(CollisionType collisionType, std::function<CollisionResult(CollisionData)> onCollision)
+{
+	if (this->physicsBody != nullptr)
+	{
+		this->physicsBody->setCollisionBitmask(this->physicsBody->getCollisionBitmask() | collisionType);
+		this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
+	}
+}
+
+void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
+{
+	if (this->physicsBody != nullptr)
+	{
+		int bitmask = this->physicsBody->getCollisionBitmask();
+
+		for (auto it = collisionTypes.begin(); it != collisionTypes.end(); it++)
+		{
+			bitmask |= *it;
+		}
+
+		this->physicsBody->setCollisionBitmask(bitmask);
+		this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
+	}
+}
+
+void CollisionObject::whenStopsCollidingWith(CollisionType collisionType, std::function<CollisionResult(CollisionData)> onCollisionEnd)
+{
+	if (this->physicsBody != nullptr)
+	{
+		this->physicsBody->setCollisionBitmask(this->physicsBody->getCollisionBitmask() | collisionType);
+		this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
+	}
+}
+
+void CollisionObject::whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd)
+{
+	if (this->physicsBody != nullptr)
+	{
+		int bitmask = this->physicsBody->getCollisionBitmask();
+
+		for (auto it = collisionTypes.begin(); it != collisionTypes.end(); it++)
+		{
+			bitmask |= *it;
+		}
+
+		this->physicsBody->setCollisionBitmask(bitmask);
+		this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
+	}
 }
 
 bool CollisionObject::onContactBegin(PhysicsContact &contact)

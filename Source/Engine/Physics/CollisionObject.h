@@ -5,8 +5,8 @@
 
 #include "Engine/Hackables/HackableObject.h"
 
-typedef std::string CategoryName;
-typedef int CategoryGroup;
+typedef std::string DeserializedCollisionName;
+typedef int CollisionType;
 
 namespace cocos2d
 {
@@ -23,11 +23,11 @@ public:
 
 	struct CollisionMapRequestArgs
 	{
-		CategoryName categoryName;
+		DeserializedCollisionName deserializedCollisionName;
 		CollisionObject* collisionObject;
 
-		CollisionMapRequestArgs(CategoryName categoryName, CollisionObject* collisionObject) :
-				categoryName(categoryName), collisionObject(collisionObject)
+		CollisionMapRequestArgs(DeserializedCollisionName deserializedCollisionName, CollisionObject* collisionObject) :
+			deserializedCollisionName(deserializedCollisionName), collisionObject(collisionObject)
 		{
 		}
 	};
@@ -35,13 +35,14 @@ public:
 	static void requestCollisionMapping(CollisionMapRequestArgs args);
 
 	CollisionObject(cocos2d::ValueMap* initProperties, cocos2d::PhysicsBody* initPhysicsBody,
-			CategoryName initCategoryName, bool isDynamic, bool canRotate);
+		DeserializedCollisionName deserializedCollisionName, bool isDynamic, bool canRotate);
+	CollisionObject(cocos2d::ValueMap* initProperties, cocos2d::PhysicsBody* initPhysicsBody,
+		CollisionType collisionType, bool isDynamic, bool canRotate);
 	virtual ~CollisionObject();
 
-	void setCollisionGroups(CategoryGroup categoryGroup, std::vector<CategoryGroup>* collidesWith);
+	void setCollisionType(CollisionType collisionType);
 
-	CategoryName getCategoryName();
-	CategoryGroup getCategoryGroup();
+	CollisionType getCollisionType();
 	cocos2d::Vec2 getVelocity();
 	void setVelocity(cocos2d::Vec2 velocity);
 
@@ -50,7 +51,13 @@ public:
 	static std::string MapKeyTypeCollision;
 
 protected:
-	enum CollisionDirection
+	enum class CollisionResult
+	{
+		DoNothing,
+		CollideWithPhysics
+	};
+
+	enum class CollisionDirection
 	{
 		None,
 		Left,
@@ -76,6 +83,10 @@ protected:
 		}
 	};
 
+	void whenCollidesWith(CollisionType collisionType, std::function<CollisionResult(CollisionData)> onCollision);
+	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
+	void whenStopsCollidingWith(CollisionType collisionType, std::function<CollisionResult(CollisionData)> onCollisionEnd);
+	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd);
 	virtual bool contactBegin(CollisionData data);
 	virtual bool contactUpdate(CollisionData data);
 	virtual bool contactEnd(CollisionData data);
@@ -91,7 +102,6 @@ private:
 
 	CollisionData constructCollisionData(cocos2d::PhysicsContact& contact);
 
-	CategoryName categoryName;
 	cocos2d::PhysicsBody* physicsBody;
 
 	bool physicsEnabled;

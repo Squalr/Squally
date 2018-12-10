@@ -365,7 +365,6 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Npcs/Volcano/Scaldor.cpp
 	Source/Entities/Platformer/Npcs/Volcano/VolcanoNpcDeserializer.cpp
 	Source/Entities/Platformer/Npcs/Volcano/Zelina.cpp
-	Source/Entities/Platformer/PlatformerCollisionMapping.cpp
 	Source/Entities/Platformer/PlatformerEnemy.cpp
 	Source/Entities/Platformer/PlatformerEntity.cpp
 	Source/Entities/Platformer/PlatformerEntityDeserializer.cpp
@@ -812,6 +811,8 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixRain.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixStrand.cpp
 	Source/Scenes/Maps/Platformer/CombatMap.cpp
+	Source/Scenes/Maps/Platformer/Physics/PlatformerCollisionMapping.cpp
+	Source/Scenes/Maps/Platformer/Physics/PlatformerCollisionType.cpp
 	Source/Scenes/Maps/Platformer/PlatformerMap.cpp
 	Source/Scenes/Maps/Platformer/Terrain/CastleTerrainDeserializer.cpp
 	Source/Scenes/Maps/Platformer/Weather/Fireflies.cpp
@@ -1138,7 +1139,6 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/Volcano/VolcanoNpcDeserializer.h
 	Source/Entities/Platformer/Npcs/Volcano/VolcanoNpcs.h
 	Source/Entities/Platformer/Npcs/Volcano/Zelina.h
-	Source/Entities/Platformer/PlatformerCollisionMapping.h
 	Source/Entities/Platformer/PlatformerEnemy.h
 	Source/Entities/Platformer/PlatformerEntity.h
 	Source/Entities/Platformer/PlatformerEntityDeserializer.h
@@ -1602,6 +1602,8 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixRain.h
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixStrand.h
 	Source/Scenes/Maps/Platformer/CombatMap.h
+	Source/Scenes/Maps/Platformer/Physics/PlatformerCollisionMapping.h
+	Source/Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h
 	Source/Scenes/Maps/Platformer/PlatformerMap.h
 	Source/Scenes/Maps/Platformer/Terrain/CastleTerrainDeserializer.h
 	Source/Scenes/Maps/Platformer/Weather/Fireflies.h
