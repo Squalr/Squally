@@ -87,9 +87,6 @@ protected:
 	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
 	void whenStopsCollidingWith(CollisionType collisionType, std::function<CollisionResult(CollisionData)> onCollisionEnd);
 	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd);
-	virtual bool contactBegin(CollisionData data);
-	virtual bool contactUpdate(CollisionData data);
-	virtual bool contactEnd(CollisionData data);
 
 	void onEnter() override;
 	void initializeListeners() override;
@@ -102,6 +99,8 @@ private:
 
 	CollisionData constructCollisionData(cocos2d::PhysicsContact& contact);
 
+	std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> collisionEvents;
+	std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> collisionEndEvents;
 	cocos2d::PhysicsBody* physicsBody;
 
 	bool physicsEnabled;
