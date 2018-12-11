@@ -28,6 +28,8 @@ CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhys
 	HackableObject(initProperties)
 {
 	this->physicsBody = initPhysicsBody;
+	this->collisionEvents = std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>();
+	this->collisionEndEvents = std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>();
 
 	if (this->physicsBody != nullptr)
 	{
@@ -142,105 +144,100 @@ CollisionType CollisionObject::getCollisionType()
 	return this->physicsBody == nullptr ? 0 : this->physicsBody->getCategoryBitmask();
 }
 
-bool CollisionObject::contactBegin(CollisionData data)
-{
-	return true;
-}
-
-bool CollisionObject::contactUpdate(CollisionData data)
-{
-	return true;
-}
-
-bool CollisionObject::contactEnd(CollisionData data)
-{
-	return true;
-}
-
 void CollisionObject::whenCollidesWith(CollisionType collisionType, std::function<CollisionResult(CollisionData)> onCollision)
 {
-	if (this->physicsBody != nullptr)
-	{
-		this->physicsBody->setCollisionBitmask(this->physicsBody->getCollisionBitmask() | collisionType);
-		this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
-	}
+	this->whenCollidesWith(std::vector<CollisionType>({ collisionType }), onCollision);
 }
 
 void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
 {
 	if (this->physicsBody != nullptr)
 	{
-		int bitmask = this->physicsBody->getCollisionBitmask();
+		CollisionType bitmask = 0;
 
 		for (auto it = collisionTypes.begin(); it != collisionTypes.end(); it++)
 		{
 			bitmask |= *it;
 		}
 
-		this->physicsBody->setCollisionBitmask(bitmask);
+		if (std::find(this->collisionEvents.begin(), this->collisionEvents.end(), bitmask) != this->collisionEvents.end())
+		{
+			this->collisionEvents[bitmask] = std::vector<std::function<CollisionResult(CollisionData)>>();
+		}
+
+		this->collisionEvents[bitmask].push_back(onCollision);
+
+		this->physicsBody->setCollisionBitmask(this->physicsBody->getCollisionBitmask() | (int)bitmask);
 		this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
 	}
 }
 
 void CollisionObject::whenStopsCollidingWith(CollisionType collisionType, std::function<CollisionResult(CollisionData)> onCollisionEnd)
 {
-	if (this->physicsBody != nullptr)
-	{
-		this->physicsBody->setCollisionBitmask(this->physicsBody->getCollisionBitmask() | collisionType);
-		this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
-	}
+	this->whenStopsCollidingWith(std::vector<CollisionType>({ collisionType }), onCollisionEnd);
 }
 
 void CollisionObject::whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd)
 {
 	if (this->physicsBody != nullptr)
 	{
-		int bitmask = this->physicsBody->getCollisionBitmask();
-
+		CollisionType bitmask = 0;
+		
 		for (auto it = collisionTypes.begin(); it != collisionTypes.end(); it++)
 		{
 			bitmask |= *it;
 		}
 
-		this->physicsBody->setCollisionBitmask(bitmask);
+		if (std::find(this->collisionEndEvents.begin(), this->collisionEndEvents.end(), bitmask) != this->collisionEndEvents.end())
+		{
+			this->collisionEndEvents[bitmask] = std::vector<std::function<CollisionResult(CollisionData)>>();
+		}
+
+		this->collisionEndEvents[bitmask].push_back(onCollisionEnd);
+
+		this->physicsBody->setCollisionBitmask(this->physicsBody->getCollisionBitmask() | (int)bitmask);
 		this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
 	}
 }
 
 bool CollisionObject::onContactBegin(PhysicsContact &contact)
 {
-	CollisionData data = this->constructCollisionData(contact);
-
-	if (data.other == nullptr)
-	{
-		return true;
-	}
-
-	return this->contactBegin(data);
+	// Currently we are not distinguishing between these two
+	return this->onContactUpdate(contact);
 }
 
 bool CollisionObject::onContactUpdate(PhysicsContact &contact)
 {
-	CollisionData data = this->constructCollisionData(contact);
+	CollisionData collisionData = this->constructCollisionData(contact);
+	CollisionResult result = CollisionResult::DoNothing;
 
-	if (data.other == nullptr)
+	for (auto it = this->collisionEvents.begin(); it != this->collisionEvents.end(); it++)
 	{
-		return true;
+		for (auto eventIt = (*it).second.begin(); eventIt != (*it).second.end(); eventIt++)
+		{
+			CollisionResult eventResult = (*eventIt)(collisionData);
+			result = result == CollisionResult::CollideWithPhysics ? CollisionResult::CollideWithPhysics : eventResult;
+		}
 	}
 
-	return this->contactUpdate(data);
+	return result == CollisionResult::CollideWithPhysics ? true : false;
 }
 
 bool CollisionObject::onContactEnd(PhysicsContact &contact)
 {
-	CollisionData data = this->constructCollisionData(contact);
+	CollisionData collisionData = this->constructCollisionData(contact);
+	CollisionResult result = CollisionResult::DoNothing;
 
-	if (data.other == nullptr)
+	for (auto it = this->collisionEndEvents.begin(); it != this->collisionEndEvents.end(); it++)
 	{
-		return true;
+		for (auto eventIt = (*it).second.begin(); eventIt != (*it).second.end(); eventIt++)
+		{
+			CollisionResult eventResult = (*eventIt)(collisionData);
+			result = result == CollisionResult::CollideWithPhysics ? CollisionResult::CollideWithPhysics : eventResult;
+		}
 	}
 
-	return this->contactEnd(data);
+	return result == CollisionResult::CollideWithPhysics ? true : false;
 }
 
 CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsContact& contact)

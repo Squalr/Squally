@@ -18,10 +18,6 @@ Hover::Hover(PlatformerEntity* initParent) : CollisionObject(
 {
 	this->parent = initParent;
 
-	this->contactBeginCallback = nullptr;
-	this->contactUpdateCallback = nullptr;
-	this->contactEndCallback = nullptr;
-
 	Size parentSize = this->parent->getSize();
 
 	this->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -60,49 +56,4 @@ void Hover::update(float dt)
 	// Keep hover node underneath parent
 	this->setPosition(0, -this->parent->getSize().height / 2 + 1.0f);
 	this->setVelocity(this->parent->getVelocity());
-}
-
-void Hover::setContactBeginCallback(std::function<bool(CollisionData)> callback)
-{
-	this->contactBeginCallback = callback;
-}
-
-void Hover::setContactUpdateCallback(std::function<bool(CollisionData)> callback)
-{
-	this->contactUpdateCallback = callback;
-}
-
-void Hover::setContactEndCallback(std::function<bool(CollisionData)> callback)
-{
-	this->contactEndCallback = callback;
-}
-
-bool Hover::contactBegin(CollisionData data)
-{
-	if (this->contactBeginCallback != nullptr)
-	{
-		return this->contactBeginCallback(data);
-	}
-
-	return true;
-}
-
-bool Hover::contactUpdate(CollisionData data)
-{
-	if (this->contactUpdateCallback != nullptr)
-	{
-		return this->contactUpdateCallback(data);
-	}
-
-	return true;
-}
-
-bool Hover::contactEnd(CollisionData data)
-{
-	if (this->contactUpdateCallback != nullptr)
-	{
-		return this->contactEndCallback(data);
-	}
-
-	return true;
 }

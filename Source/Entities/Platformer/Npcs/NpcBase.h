@@ -17,10 +17,6 @@ protected:
 		Vec2 collisionOffset = Vec2(0.0f, 0.0f));
 	~NpcBase();
 
-	bool contactBegin(CollisionData data) override;
-	bool contactUpdate(CollisionData data) override;
-	bool contactEnd(CollisionData data) override;
-
 	void update(float) override;
 
 protected:
