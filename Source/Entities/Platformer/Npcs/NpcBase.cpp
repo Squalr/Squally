@@ -1,7 +1,7 @@
 #include "NpcBase.h"
 
-NpcBase::NpcBase(ValueMap* initProperties, std::string scmlResource, CategoryName categoryName, Size size, float scale, Vec2 collisionOffset)
-	: PlatformerEntity(initProperties, scmlResource, categoryName, size, scale, collisionOffset)
+NpcBase::NpcBase(ValueMap* initProperties, std::string scmlResource, PlatformerCollisionType collisionType, Size size, float scale, Vec2 collisionOffset)
+	: PlatformerEntity(initProperties, scmlResource, collisionType, size, scale, collisionOffset)
 {
 	this->interactButton = MenuSprite::create(UIResources::Menus_Buttons_ChatButton, UIResources::Menus_Buttons_ChatButtonHover);
 	this->interactButton->setClickCallback(CC_CALLBACK_1(NpcBase::onInteractButtonClick, this));

@@ -13,7 +13,7 @@ LavaGolem* LavaGolem::deserialize(ValueMap* initProperties)
 
 LavaGolem::LavaGolem(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Environment_Volcano_Enemies_LavaGolem_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(980.0f, 1200.0f),
 	0.17f,
 	Vec2(0.0f, -600.0f))

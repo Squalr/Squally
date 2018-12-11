@@ -13,7 +13,7 @@ Barbarian* Barbarian::deserialize(ValueMap* initProperties)
 
 Barbarian::Barbarian(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Environment_Jungle_Enemies_Barbarian_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(278.0f, 288.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

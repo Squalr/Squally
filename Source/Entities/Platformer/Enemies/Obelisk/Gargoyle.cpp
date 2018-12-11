@@ -13,7 +13,7 @@ Gargoyle* Gargoyle::deserialize(ValueMap* initProperties)
 
 Gargoyle::Gargoyle(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Environment_Obelisk_Enemies_Gargoyle_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(256.0f, 256.0f),
 	1.0f,
 	Vec2(-32.0f, -24.0f))

@@ -13,7 +13,7 @@ GoblinShaman* GoblinShaman::deserialize(ValueMap* initProperties)
 
 GoblinShaman::GoblinShaman(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Environment_Jungle_Enemies_GoblinShaman_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(96.0f, 204.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))

@@ -812,7 +812,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixStrand.cpp
 	Source/Scenes/Maps/Platformer/CombatMap.cpp
 	Source/Scenes/Maps/Platformer/Physics/PlatformerCollisionMapping.cpp
-	Source/Scenes/Maps/Platformer/Physics/PlatformerCollisionType.cpp
 	Source/Scenes/Maps/Platformer/PlatformerMap.cpp
 	Source/Scenes/Maps/Platformer/Terrain/CastleTerrainDeserializer.cpp
 	Source/Scenes/Maps/Platformer/Weather/Fireflies.cpp

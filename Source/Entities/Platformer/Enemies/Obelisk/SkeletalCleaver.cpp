@@ -13,7 +13,7 @@ SkeletalCleaver* SkeletalCleaver::deserialize(ValueMap* initProperties)
 
 SkeletalCleaver::SkeletalCleaver(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Environment_Obelisk_Enemies_SkeletalCleaver_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(128.0f, 312.0f),
 	0.8f,
 	Vec2(0.0f, 16.0f))

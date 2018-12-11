@@ -13,7 +13,7 @@ GoblinElf* GoblinElf::deserialize(ValueMap* initProperties)
 
 GoblinElf::GoblinElf(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Environment_Snow_Enemies_GoblinElf_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(140.0f, 296.0f),
 	0.6f,
 	Vec2(0.0f, 0.0f))

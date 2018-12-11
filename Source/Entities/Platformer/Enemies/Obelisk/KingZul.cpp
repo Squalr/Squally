@@ -13,7 +13,7 @@ KingZul* KingZul::deserialize(ValueMap* initProperties)
 
 KingZul::KingZul(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Environment_Obelisk_Enemies_KingZul_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(196.0f, 320.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

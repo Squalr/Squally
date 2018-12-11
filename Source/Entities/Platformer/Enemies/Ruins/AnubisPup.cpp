@@ -13,7 +13,7 @@ AnubisPup* AnubisPup::deserialize(ValueMap* initProperties)
 
 AnubisPup::AnubisPup(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Environment_Ruins_Enemies_AnubisPup_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(128.0f, 186.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))

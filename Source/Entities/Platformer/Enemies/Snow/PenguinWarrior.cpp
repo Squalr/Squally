@@ -13,7 +13,7 @@ PenguinWarrior* PenguinWarrior::deserialize(ValueMap* initProperties)
 
 PenguinWarrior::PenguinWarrior(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Environment_Snow_Enemies_PenguinWarrior_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(212.0f, 296.0f),
 	0.7f,
 	Vec2(0.0f, 0.0f))

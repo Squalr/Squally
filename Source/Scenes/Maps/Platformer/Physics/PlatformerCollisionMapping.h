@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Engine/GlobalNode.h"
-#include "Scenes/Maps/Platformer/Physics/PlatformerCollisionTypes.h"
+#include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
 namespace cocos2d
 {

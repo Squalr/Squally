@@ -13,7 +13,7 @@ PrincessNebea* PrincessNebea::deserialize(ValueMap* initProperties)
 
 PrincessNebea::PrincessNebea(ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Environment_Obelisk_Npcs_PrincessNebea_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(472.0f, 780.0f),
 	0.3f,
 	Vec2(-24.0f, -390.0f))
