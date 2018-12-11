@@ -7,7 +7,6 @@
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Entities/Platformer/PlatformerCollisionMapping.h"
 
 using namespace cocos2d;
 

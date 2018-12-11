@@ -23,7 +23,7 @@ Squally* Squally::getInstance()
 
 Squally::Squally(ValueMap* initProperties) : PlatformerEntity::PlatformerEntity(initProperties,
 	EntityResources::Squally_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypePlayer,
+	PlatformerCollisionType::Player,
 	Size(720.0f, 1600.0f), 
 	Squally::squallyScale,
 	Vec2(0.0f, 600.0f))
@@ -50,6 +50,23 @@ Squally::~Squally()
 void Squally::onEnter()
 {
 	PlatformerEntity::onEnter();
+}
+
+void Squally::initializeCollisionEvents()
+{
+	PlatformerEntity::initializeCollisionEvents();
+
+	this->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying }, [=](CollisionData collisionData)
+	{
+		PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other);
+
+		if (enemy != nullptr)
+		{
+			NavigationEvents::navigateCombat(NavigationEvents::NavigateCombatArgs(enemy->getBattleMapResource(), this, enemy));
+		}
+
+		return CollisionResult::DoNothing;
+	});
 }
 
 void Squally::registerHackables()
@@ -109,147 +126,6 @@ void Squally::update(float dt)
 void Squally::setFlippedX(bool newIsFlipped)
 {
 	this->isFlipped = newIsFlipped;
-}
-
-bool Squally::hoverContactBegin(CollisionData data)
-{
-	return true;
-}
-
-bool Squally::hoverContactUpdate(CollisionData data)
-{
-	switch (data.other->getCategoryGroup())
-	{
-		case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
-		{
-			if (abs(data.normal.y) >= PlatformerEntity::normalJumpThreshold)
-			{
-				this->isOnGround = true;
-			}
-
-			return true;
-		}
-		case PlatformerCollisionMapping::CategoryGroupType::G_Player:
-		{
-			return true;
-		}
-		default:
-		{
-			return true;
-		}
-	}
-}
-
-bool Squally::hoverContactEnd(CollisionData data)
-{
-	switch (data.other->getCategoryGroup())
-	{
-		case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
-		{
-			this->isOnGround = false;
-			return true;
-		}
-		case PlatformerCollisionMapping::CategoryGroupType::G_Player:
-		{
-			return true;
-		}
-		default:
-		{
-			return true;
-		}
-	}
-}
-
-bool Squally::contactBegin(CollisionData data)
-{
-	switch (data.other->getCategoryGroup())
-	{
-		case PlatformerCollisionMapping::CategoryGroupType::G_Enemy:
-		case PlatformerCollisionMapping::CategoryGroupType::G_EnemyFlying:
-		{
-			PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(data.other);
-
-			if (enemy != nullptr)
-			{
-				NavigationEvents::navigateCombat(NavigationEvents::NavigateCombatArgs(enemy->getBattleMapResource(), this, enemy));
-			}
-
-			return false;
-		}
-		default:
-		{
-			return true;
-		}
-	}
-}
-
-bool Squally::contactUpdate(CollisionData data)
-{
-	switch (data.other->getCategoryGroup())
-	{
-		case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
-		{
-			switch (data.direction)
-			{
-				case CollisionDirection::Down:
-				{
-					this->isOnGround = true;
-					break;
-				}
-			}
-
-			return true;
-		}
-		case PlatformerCollisionMapping::CategoryGroupType::G_Force:
-		{
-			return true;
-		}
-		case PlatformerCollisionMapping::CategoryGroupType::G_Enemy:
-		case PlatformerCollisionMapping::CategoryGroupType::G_EnemyFlying:
-		{
-			// TODO: Damage
-			return false;
-		}
-		case PlatformerCollisionMapping::CategoryGroupType::G_SolidNpc:
-		case PlatformerCollisionMapping::CategoryGroupType::G_SolidFlyingNpc:
-		{
-			return false;
-		}
-		default:
-		{
-			return true;
-		}
-	}
-}
-
-bool Squally::contactEnd(CollisionData data)
-{
-	switch (data.other->getCategoryGroup())
-	{
-		case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
-		{
-			this->isOnGround = false;
-			return true;
-		}
-		case PlatformerCollisionMapping::CategoryGroupType::G_Force:
-		{
-			return true;
-		}
-		case PlatformerCollisionMapping::CategoryGroupType::G_Enemy:
-		case PlatformerCollisionMapping::CategoryGroupType::G_EnemyFlying:
-		{
-			return false;
-		}
-		case PlatformerCollisionMapping::CategoryGroupType::G_SolidNpc:
-		case PlatformerCollisionMapping::CategoryGroupType::G_SolidFlyingNpc:
-		{
-			return false;
-		}
-		default:
-		{
-			return true;
-		}
-	}
 }
 
 Size Squally::getSize()
