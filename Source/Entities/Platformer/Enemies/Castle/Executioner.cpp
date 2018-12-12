@@ -13,7 +13,7 @@ Executioner* Executioner::deserialize(ValueMap* initProperties)
 
 Executioner::Executioner(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Environment_Castle_Enemies_Executioner_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(472.0f, 820.0f),
 	0.3f,
 	Vec2(-24.0f, -410.0f))

@@ -13,7 +13,7 @@ BlackWidow* BlackWidow::deserialize(ValueMap* initProperties)
 
 BlackWidow::BlackWidow(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Environment_Caverns_Enemies_BlackWidow_Animation,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(1280.0f, 920.0f),
 	0.20f,
 	Vec2(-112.0f, -396.0f))

@@ -139,13 +139,13 @@ void TerrainObject::buildCollision()
 	collisionProperties[SerializableObject::MapKeyXPosition] = 0.0f;
 	collisionProperties[SerializableObject::MapKeyYPosition] = 0.0f;
 
-	CategoryName categoryName = collisionProperties.at(SerializableObject::MapKeyName).asString();
+	std::string deserializedCollisionName = collisionProperties.at(SerializableObject::MapKeyName).asString();
 
 	// Create terrain collision as a series of triangles -- the other option is 1 giant EdgePolgyon, but this lacks internal collision
 	for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
 	{
 		PhysicsBody* physicsBody = PhysicsBody::createPolygon((*it).coords, 3, PhysicsMaterial(0.0f, 0.0f, 0.0f));
-		CollisionObject* collisionObject = new CollisionObject(&collisionProperties, physicsBody, categoryName, false, false);
+		CollisionObject* collisionObject = new CollisionObject(&collisionProperties, physicsBody, deserializedCollisionName, false, false);
 
 		this->collisionNode->addChild(collisionObject);
 	}

@@ -49,33 +49,35 @@ void IsometricEntity::update(float dt)
 
 		switch (octant)
 		{
-		case 0:
-			this->animationNodeEntity->setCurrentAnimation("Idle_E");
-			break;
-		case 1:
-			this->animationNodeEntity->setCurrentAnimation("Idle_NE");
-			break;
-		case 2:
-			this->animationNodeEntity->setCurrentAnimation("Idle_N");
-			break;
-		case 3:
-			this->animationNodeEntity->setCurrentAnimation("Idle_NW");
-			break;
-		case 4:
-			this->animationNodeEntity->setCurrentAnimation("Idle_W");
-			break;
-		case 5:
-			this->animationNodeEntity->setCurrentAnimation("Idle_SW");
-			break;
-		case 6:
-			this->animationNodeEntity->setCurrentAnimation("Idle_S");
-			break;
-		case 7:
-			this->animationNodeEntity->setCurrentAnimation("Idle_SE");
-			break;
-		default:
-			this->animationNodeEntity->setCurrentAnimation("Idle_NW");
-			break;
+			case 0:
+			{
+				this->animationNodeEntity->setCurrentAnimation("Idle_E");
+				break;
+			}
+			case 1:
+				this->animationNodeEntity->setCurrentAnimation("Idle_NE");
+				break;
+			case 2:
+				this->animationNodeEntity->setCurrentAnimation("Idle_N");
+				break;
+			case 3:
+				this->animationNodeEntity->setCurrentAnimation("Idle_NW");
+				break;
+			case 4:
+				this->animationNodeEntity->setCurrentAnimation("Idle_W");
+				break;
+			case 5:
+				this->animationNodeEntity->setCurrentAnimation("Idle_SW");
+				break;
+			case 6:
+				this->animationNodeEntity->setCurrentAnimation("Idle_S");
+				break;
+			case 7:
+				this->animationNodeEntity->setCurrentAnimation("Idle_SE");
+				break;
+			default:
+				this->animationNodeEntity->setCurrentAnimation("Idle_NW");
+				break;
 		}
 
 		this->movement.x *= 2.0f;

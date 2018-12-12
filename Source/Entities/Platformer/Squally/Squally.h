@@ -21,12 +21,7 @@ public:
 	static const std::string MapKeySqually;
 
 protected:
-	bool contactBegin(CollisionData data) override;
-	bool contactUpdate(CollisionData data) override;
-	bool contactEnd(CollisionData data) override;
-	bool hoverContactBegin(CollisionData data);
-	bool hoverContactUpdate(CollisionData data);
-	bool hoverContactEnd(CollisionData data);
+	virtual void initializeCollisionEvents() override;
 
 	Vec2 getButtonOffset() override;
 

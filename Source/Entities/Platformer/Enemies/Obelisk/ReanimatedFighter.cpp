@@ -13,7 +13,7 @@ ReanimatedFighter* ReanimatedFighter::deserialize(ValueMap* initProperties)
 
 ReanimatedFighter::ReanimatedFighter(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Environment_Obelisk_Enemies_ReanimatedFighter_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(256.0f, 248.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

@@ -13,7 +13,7 @@ IceGolem* IceGolem::deserialize(ValueMap* initProperties)
 
 IceGolem::IceGolem(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Environment_Snow_Enemies_IceGolem_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(1680.0f, 996.0f),
 	0.35f,
 	Vec2(0.0f, 0.0f))

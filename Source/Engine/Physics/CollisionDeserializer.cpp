@@ -50,7 +50,7 @@ void CollisionDeserializer::onDeserializationRequest(DeserializationEvents::Obje
 	{
 		ValueMap* properties = new ValueMap(args->properties);
 		ValueVector* polygonPoints = nullptr;
-		CategoryName categoryName = properties->at(SerializableObject::MapKeyName).asString();
+		std::string deserializedCollisionName = properties->at(SerializableObject::MapKeyName).asString();
 		bool isPolygon = false;
 		float width = properties->at(SerializableObject::MapKeyWidth).asFloat();
 		float height = properties->at(SerializableObject::MapKeyHeight).asFloat();
@@ -88,7 +88,7 @@ void CollisionDeserializer::onDeserializationRequest(DeserializationEvents::Obje
 			physicsBody = PhysicsBody::createBox(Size(width, height), PhysicsMaterial(0.0f, 0.0f, 0.0f));
 		}
 
-		CollisionObject* collisionObject = new CollisionObject(properties, physicsBody, categoryName, false, false);
+		CollisionObject* collisionObject = new CollisionObject(properties, physicsBody, deserializedCollisionName, false, false);
 
 		// Fire an event indicating successful deserialization
 		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(collisionObject));

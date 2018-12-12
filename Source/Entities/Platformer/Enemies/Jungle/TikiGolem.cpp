@@ -13,7 +13,7 @@ TikiGolem* TikiGolem::deserialize(ValueMap* initProperties)
 
 TikiGolem::TikiGolem(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Environment_Jungle_Enemies_TikiGolem_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(284.0f, 256.0f),
 	1.0f,
 	Vec2(0.0f, -112.0f))

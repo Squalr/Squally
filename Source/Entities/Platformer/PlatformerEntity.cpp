@@ -1,10 +1,10 @@
 #include "PlatformerEntity.h"
 
-PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlResource, CategoryName categoryName, Size size, float scale, Vec2 collisionOffset) :
+PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlResource, PlatformerCollisionType collisionType, Size size, float scale, Vec2 collisionOffset) :
 	CollisionObject(
 		initProperties,
 		PhysicsBody::createBox(size * scale),
-		categoryName,
+		(CollisionType)(int)collisionType,
 		true,
 		false
 	)
@@ -46,6 +46,8 @@ void PlatformerEntity::onEnter()
 	CollisionObject::onEnter();
 
 	this->scheduleUpdate();
+
+	this->initializeCollisionEvents();
 }
 
 void PlatformerEntity::update(float dt)
@@ -98,55 +100,47 @@ void PlatformerEntity::update(float dt)
 	}
 }
 
+void PlatformerEntity::initializeCollisionEvents()
+{
+	this->whenCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
+	{
+		switch (collisionData.direction)
+		{
+			case CollisionDirection::Down:
+			{
+				this->isOnGround = true;
+				break;
+			}
+			case CollisionDirection::Left:
+			{
+				this->movement.x = 1.0f;
+				break;
+			}
+			case CollisionDirection::Right:
+			{
+				this->movement.x = -1.0f;
+				break;
+			}
+			case CollisionDirection::StepLeft:
+			case CollisionDirection::StepRight:
+			{
+				this->movement.y = 0.5f;
+				break;
+			}
+		}
+
+		return CollisionResult::CollideWithPhysics;
+	});
+
+	this->whenStopsCollidingWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
+	{
+		this->isOnGround = false;
+
+		return CollisionResult::CollideWithPhysics;
+	});
+}
+
 Size PlatformerEntity::getSize()
 {
 	return this->size;
-}
-
-bool PlatformerEntity::contactBegin(CollisionData data)
-{
-	return false;
-}
-
-bool PlatformerEntity::contactUpdate(CollisionData data)
-{
-	switch (data.other->getCategoryGroup())
-	{
-	case PlatformerCollisionMapping::CategoryGroupType::G_SolidNpc:
-	case PlatformerCollisionMapping::CategoryGroupType::G_SolidFlyingNpc:
-	case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
-		switch (data.direction)
-		{
-		case CollisionDirection::Down:
-			this->isOnGround = true;
-			break;
-		case CollisionDirection::Left:
-			this->movement.x = 1.0f;
-			break;
-		case CollisionDirection::Right:
-			this->movement.x = -1.0f;
-			break;
-		case CollisionDirection::StepLeft:
-		case CollisionDirection::StepRight:
-			this->movement.y = 0.5f;
-			break;
-		}
-		return true;
-	}
-
-	return false;
-}
-
-bool PlatformerEntity::contactEnd(CollisionData data)
-{
-	switch (data.other->getCategoryGroup())
-	{
-	case PlatformerCollisionMapping::CategoryGroupType::G_Solid:
-	case PlatformerCollisionMapping::CategoryGroupType::G_SolidNpc:
-	case PlatformerCollisionMapping::CategoryGroupType::G_SolidFlyingNpc:
-		this->isOnGround = false;
-		return true;
-	}
-
-	return false;
 }

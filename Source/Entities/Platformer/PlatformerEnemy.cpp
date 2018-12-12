@@ -2,8 +2,8 @@
 
 const std::string PlatformerEnemy::MapKeyBattleMap = "battle_map";
 
-PlatformerEnemy::PlatformerEnemy(ValueMap* initProperties, std::string scmlResource, CategoryName categoryName, Size size, float scale, Vec2 collisionOffset)
-	: PlatformerEntity(initProperties, scmlResource, categoryName, size, scale, collisionOffset)
+PlatformerEnemy::PlatformerEnemy(ValueMap* initProperties, std::string scmlResource, PlatformerCollisionType collisionType, Size size, float scale, Vec2 collisionOffset)
+	: PlatformerEntity(initProperties, scmlResource, collisionType, size, scale, collisionOffset)
 {
 	this->battleMapResource = "";
 
