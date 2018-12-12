@@ -50,7 +50,7 @@ void CollisionDeserializer::onDeserializationRequest(DeserializationEvents::Obje
 	{
 		ValueMap* properties = new ValueMap(args->properties);
 		ValueVector* polygonPoints = nullptr;
-		DeserializedCollisionName deserializedCollisionName = properties->at(SerializableObject::MapKeyName).asString();
+		std::string deserializedCollisionName = properties->at(SerializableObject::MapKeyName).asString();
 		bool isPolygon = false;
 		float width = properties->at(SerializableObject::MapKeyWidth).asFloat();
 		float height = properties->at(SerializableObject::MapKeyHeight).asFloat();
