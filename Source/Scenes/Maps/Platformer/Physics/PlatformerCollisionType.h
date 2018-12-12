@@ -14,4 +14,5 @@ enum class PlatformerCollisionType
 	SolidFlyingNpcOnly = 1 << 9,
 	Water = 1 << 10,
 	Lava = 1 << 11,
+	GroundDetector = 1 << 12,
 };

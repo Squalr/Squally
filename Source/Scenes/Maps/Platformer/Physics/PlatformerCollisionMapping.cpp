@@ -73,6 +73,7 @@ void PlatformerCollisionMapping::onAllowedCollisionsMapRequest(EventCustom* even
 				(int)PlatformerCollisionType::Enemy,
 				(int)PlatformerCollisionType::EnemyFlying,
 				(int)PlatformerCollisionType::Force,
+				(int)PlatformerCollisionType::GroundDetector,
 			});
 
 			break;
@@ -85,6 +86,7 @@ void PlatformerCollisionMapping::onAllowedCollisionsMapRequest(EventCustom* even
 				(int)PlatformerCollisionType::Enemy,
 				(int)PlatformerCollisionType::EnemyFlying,
 				(int)PlatformerCollisionType::Force,
+				(int)PlatformerCollisionType::GroundDetector,
 			});
 
 			break;
@@ -202,6 +204,15 @@ void PlatformerCollisionMapping::onAllowedCollisionsMapRequest(EventCustom* even
 				(int)PlatformerCollisionType::Enemy,
 				(int)PlatformerCollisionType::EnemyFlying,
 				(int)PlatformerCollisionType::Force,
+				});
+
+			break;
+		}
+		case PlatformerCollisionType::GroundDetector:
+		{
+			args->collisionObject->allowCollisionWith({
+				(int)PlatformerCollisionType::Solid,
+				(int)PlatformerCollisionType::PassThrough,
 			});
 
 			break;

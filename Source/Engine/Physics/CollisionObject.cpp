@@ -14,6 +14,17 @@ using namespace cocos2d;
 
 const std::string CollisionObject::MapKeyTypeCollision = "collision";
 
+CollisionObject* CollisionObject::create(cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate)
+{
+	ValueMap valueMap = ValueMap();
+
+	CollisionObject* instance = new CollisionObject(&valueMap, physicsBody, collisionType, isDynamic, canRotate);
+
+	instance->autorelease();
+
+	return instance;
+}
+
 CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, std::string deserializedCollisionName, bool isDynamic, bool canRotate) :
 	CollisionObject(initProperties, initPhysicsBody, (CollisionType)0, isDynamic, canRotate)
 {
@@ -203,16 +214,15 @@ bool CollisionObject::onContactEnd(PhysicsContact &contact)
 
 bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> eventMap)
 {
-	CollisionObject* other = this->getOtherObject(contact);
+	CollisionData collisionData = this->constructCollisionData(contact);
 	CollisionResult result = CollisionResult::CollideWithPhysics;
 
-	if (other != nullptr)
+	if (collisionData.other != nullptr)
 	{
-		CollisionType collisionType = other->getCollisionType();
+		CollisionType collisionType = collisionData.other->getCollisionType();
 
 		if (eventMap.find(collisionType) != eventMap.end())
 		{
-			CollisionData collisionData = this->constructCollisionData(contact);
 			std::vector<std::function<CollisionResult(CollisionData)>> events = eventMap[collisionType];
 
 			for (auto eventIt = events.begin(); eventIt != events.end(); eventIt++)
@@ -228,7 +238,7 @@ bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::ma
 	return (result == CollisionResult::CollideWithPhysics ? true : false);
 }
 
-CollisionObject* CollisionObject::getOtherObject(cocos2d::PhysicsContact& contact)
+CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsContact& contact)
 {
 	PhysicsShape* other = nullptr;
 
@@ -246,76 +256,5 @@ CollisionObject* CollisionObject::getOtherObject(cocos2d::PhysicsContact& contac
 		other = contact.getShapeA();
 	}
 
-	return dynamic_cast<CollisionObject*>(other->getBody()->getNode());
-}
-
-CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsContact& contact)
-{
-	CollisionObject::CollisionData collisionData = CollisionObject::CollisionData(nullptr, Vec2::ZERO, CollisionObject::CollisionDirection::None, nullptr, 0);
-	
-	collisionData.other = this->getOtherObject(contact);
-
-	if (collisionData.other == nullptr)
-	{
-		return collisionData;
-	}
-
-	collisionData.normal = contact.getContactData()->normal;
-	collisionData.pointCount = contact.getContactData()->count;
-	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
-
-	// Convert collision coordinates to level coordinates
-	for (int index = 0; index < collisionData.pointCount; index++)
-	{
-		collisionData.points[index] = Vec2(contact.getContactData()->points[index].x + cameraPosition.x, contact.getContactData()->points[index].y + cameraPosition.y);
-	}
-
-	// Determines how large the
-	const float sensitivity = 16.0f;
-
-	// Determine direction of collision
-	if (collisionData.pointCount == 2)
-	{
-		// Horizontal collision
-		if (collisionData.points[0].x == collisionData.points[1].x)
-		{
-			if (abs(collisionData.points[0].y - collisionData.points[1].y) > sensitivity)
-			{
-				if (this->getPositionX() < collisionData.other->getPositionX())
-				{
-					collisionData.direction = CollisionDirection::Right;
-				}
-				else
-				{
-					collisionData.direction = CollisionDirection::Left;
-				}
-			}
-			else if (this->getPositionY() >= std::max(collisionData.points[0].y, collisionData.points[1].y))
-			{
-				if (this->getPositionX() < collisionData.other->getPositionX())
-				{
-					collisionData.direction = CollisionDirection::StepRight;
-				}
-				else
-				{
-					collisionData.direction = CollisionDirection::StepLeft;
-				}
-			}
-		}
-		// Vertical collision
-		else if (collisionData.points[0].y == collisionData.points[1].y &&
-			abs(collisionData.points[0].x - collisionData.points[1].x) > sensitivity)
-		{
-			if (this->getPositionY() < collisionData.other->getPositionY())
-			{
-				collisionData.direction = CollisionDirection::Up;
-			}
-			else
-			{
-				collisionData.direction = CollisionDirection::Down;
-			}
-		}
-	}
-
-	return collisionData;
+	return CollisionObject::CollisionData(dynamic_cast<CollisionObject*>(other->getBody()->getNode()));
 }
