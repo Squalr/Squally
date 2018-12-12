@@ -12,19 +12,22 @@
 
 using namespace cocos2d;
 
-std::string CollisionObject::MapKeyTypeCollision = "collision";
+const std::string CollisionObject::MapKeyTypeCollision = "collision";
 
-const std::string CollisionObject::RequestCollisionMappingEvent = "request_collision_mapping";
-
-void CollisionObject::requestCollisionMapping(CollisionMapRequestArgs args)
+CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, std::string deserializedCollisionName, bool isDynamic, bool canRotate) :
+	CollisionObject(initProperties, initPhysicsBody, (CollisionType)0, isDynamic, canRotate)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		CollisionObject::RequestCollisionMappingEvent,
-		&args
-	);
+	// Fire event, allowing for the game to map the deserialized collision string type (ie 'solid') to a unique integer identifier for CollisionType
+	CollisionMappingEvents::requestCollisionMapKeyMapping(CollisionMappingEvents::CollisionMapRequestArgs(deserializedCollisionName, this));
+
+	// Fire event, allowing for the game to map what this collision object collides with
+	if (this->physicsBody != nullptr)
+	{
+		CollisionMappingEvents::requestAllowedCollisionMapping(CollisionMappingEvents::AllowedCollisionsRequestArgs(this->physicsBody->getCollisionBitmask(), this));
+	}
 }
 
-CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, DeserializedCollisionName deserializedCollisionName, bool isDynamic, bool canRotate) :
+CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, CollisionType collisionType, bool isDynamic, bool canRotate) :
 	HackableObject(initProperties)
 {
 	this->physicsBody = initPhysicsBody;
@@ -38,23 +41,10 @@ CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhys
 		this->setPhysicsBody(initPhysicsBody);
 	}
 
-	// Fire event, allowing for the game to map what this collision object collides with
-	CollisionObject::requestCollisionMapping(CollisionObject::CollisionMapRequestArgs(deserializedCollisionName, this));
-}
-
-CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, CollisionType collisionType, bool isDynamic, bool canRotate) :
-	HackableObject(initProperties)
-{
-	this->physicsBody = initPhysicsBody;
-
-	if (this->physicsBody != nullptr)
-	{
-		this->physicsBody->setRotationEnable(canRotate);
-		this->physicsBody->setDynamic(isDynamic);
-		this->setPhysicsBody(initPhysicsBody);
-	}
-
 	this->setCollisionType(collisionType);
+
+	// Fire event, allowing for the game to map what this collision object collides with
+	CollisionMappingEvents::requestAllowedCollisionMapping(CollisionMappingEvents::AllowedCollisionsRequestArgs(collisionType, this));
 }
 
 CollisionObject::~CollisionObject()
@@ -141,62 +131,49 @@ void CollisionObject::setVelocity(Vec2 velocity)
 
 CollisionType CollisionObject::getCollisionType()
 {
-	return this->physicsBody == nullptr ? 0 : this->physicsBody->getCategoryBitmask();
+	return this->physicsBody == nullptr ? (CollisionType)0 : (CollisionType)this->physicsBody->getCategoryBitmask();
 }
 
-void CollisionObject::whenCollidesWith(CollisionType collisionType, std::function<CollisionResult(CollisionData)> onCollision)
+void CollisionObject::allowCollisionWith(std::vector<CollisionType> collisionTypes)
 {
-	this->whenCollidesWith(std::vector<CollisionType>({ collisionType }), onCollision);
+	CollisionType bitmask = 0;
+
+	for (auto it = collisionTypes.begin(); it != collisionTypes.end(); it++)
+	{
+		bitmask |= *it;
+	}
+
+	this->physicsBody->setContactTestBitmask(this->physicsBody->getContactTestBitmask() | (int)bitmask);
+	this->physicsBody->setCollisionBitmask(this->physicsBody->getCollisionBitmask() | (int)bitmask);
 }
 
 void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
 {
-	if (this->physicsBody != nullptr)
+	for (auto it = collisionTypes.begin(); it != collisionTypes.end(); it++)
 	{
-		CollisionType bitmask = 0;
+		CollisionType collisionType = *it;
 
-		for (auto it = collisionTypes.begin(); it != collisionTypes.end(); it++)
+		if (this->collisionEvents.find(collisionType) != this->collisionEvents.end())
 		{
-			bitmask |= *it;
+			this->collisionEvents[collisionType] = std::vector<std::function<CollisionResult(CollisionData)>>();
 		}
 
-		if (std::find(this->collisionEvents.begin(), this->collisionEvents.end(), bitmask) != this->collisionEvents.end())
-		{
-			this->collisionEvents[bitmask] = std::vector<std::function<CollisionResult(CollisionData)>>();
-		}
-
-		this->collisionEvents[bitmask].push_back(onCollision);
-
-		this->physicsBody->setCollisionBitmask(this->physicsBody->getCollisionBitmask() | (int)bitmask);
-		this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
+		this->collisionEvents[collisionType].push_back(onCollision);
 	}
-}
-
-void CollisionObject::whenStopsCollidingWith(CollisionType collisionType, std::function<CollisionResult(CollisionData)> onCollisionEnd)
-{
-	this->whenStopsCollidingWith(std::vector<CollisionType>({ collisionType }), onCollisionEnd);
 }
 
 void CollisionObject::whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd)
 {
-	if (this->physicsBody != nullptr)
+	for (auto it = collisionTypes.begin(); it != collisionTypes.end(); it++)
 	{
-		CollisionType bitmask = 0;
-		
-		for (auto it = collisionTypes.begin(); it != collisionTypes.end(); it++)
+		CollisionType collisionType = *it;
+
+		if (this->collisionEndEvents.find(collisionType) != this->collisionEndEvents.end())
 		{
-			bitmask |= *it;
+			this->collisionEndEvents[collisionType] = std::vector<std::function<CollisionResult(CollisionData)>>();
 		}
 
-		if (std::find(this->collisionEndEvents.begin(), this->collisionEndEvents.end(), bitmask) != this->collisionEndEvents.end())
-		{
-			this->collisionEndEvents[bitmask] = std::vector<std::function<CollisionResult(CollisionData)>>();
-		}
-
-		this->collisionEndEvents[bitmask].push_back(onCollisionEnd);
-
-		this->physicsBody->setCollisionBitmask(this->physicsBody->getCollisionBitmask() | (int)bitmask);
-		this->physicsBody->setContactTestBitmask(0xFFFFFFFF);
+		this->collisionEndEvents[collisionType].push_back(onCollisionEnd);
 	}
 }
 
@@ -208,46 +185,48 @@ bool CollisionObject::onContactBegin(PhysicsContact &contact)
 
 bool CollisionObject::onContactUpdate(PhysicsContact &contact)
 {
-	CollisionData collisionData = this->constructCollisionData(contact);
-	CollisionResult result = CollisionResult::DoNothing;
-
-	for (auto it = this->collisionEvents.begin(); it != this->collisionEvents.end(); it++)
-	{
-		for (auto eventIt = (*it).second.begin(); eventIt != (*it).second.end(); eventIt++)
-		{
-			CollisionResult eventResult = (*eventIt)(collisionData);
-			result = result == CollisionResult::CollideWithPhysics ? CollisionResult::CollideWithPhysics : eventResult;
-		}
-	}
-
-	return result == CollisionResult::CollideWithPhysics ? true : false;
+	return this->runContactEvents(contact, this->collisionEvents);
 }
 
 bool CollisionObject::onContactEnd(PhysicsContact &contact)
 {
-	CollisionData collisionData = this->constructCollisionData(contact);
-	CollisionResult result = CollisionResult::DoNothing;
+	return this->runContactEvents(contact, this->collisionEndEvents);
+}
 
-	for (auto it = this->collisionEndEvents.begin(); it != this->collisionEndEvents.end(); it++)
+bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> eventMap)
+{
+	CollisionObject* other = this->getOtherObject(contact);
+	CollisionResult result = CollisionResult::CollideWithPhysics;
+
+	if (other != nullptr)
 	{
-		for (auto eventIt = (*it).second.begin(); eventIt != (*it).second.end(); eventIt++)
+		CollisionType collisionType = other->getCollisionType();
+
+		if (eventMap.find(collisionType) != eventMap.end())
 		{
-			CollisionResult eventResult = (*eventIt)(collisionData);
-			result = result == CollisionResult::CollideWithPhysics ? CollisionResult::CollideWithPhysics : eventResult;
+			CollisionData collisionData = this->constructCollisionData(contact);
+			std::vector<std::function<CollisionResult(CollisionData)>> events = eventMap[collisionType];
+
+			for (auto eventIt = events.begin(); eventIt != events.end(); eventIt++)
+			{
+				CollisionResult eventResult = (*eventIt)(collisionData);
+
+				// Doing nothing takes precidence
+				result = (result == CollisionResult::DoNothing) ? CollisionResult::DoNothing : eventResult;
+			}
 		}
 	}
 
-	return result == CollisionResult::CollideWithPhysics ? true : false;
+	return (result == CollisionResult::CollideWithPhysics ? true : false);
 }
 
-CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsContact& contact)
+CollisionObject* CollisionObject::getOtherObject(cocos2d::PhysicsContact& contact)
 {
-	CollisionObject::CollisionData collisionData = CollisionObject::CollisionData(nullptr, Vec2::ZERO, CollisionObject::CollisionDirection::None, nullptr, 0);
 	PhysicsShape* other = nullptr;
 
 	if (contact.getShapeA()->getBody() != this->physicsBody && contact.getShapeB()->getBody() != this->physicsBody)
 	{
-		return collisionData;
+		return nullptr;
 	}
 
 	if (contact.getShapeA()->getBody() == this->physicsBody)
@@ -259,12 +238,20 @@ CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsCo
 		other = contact.getShapeA();
 	}
 
-	if (other == nullptr)
+	return dynamic_cast<CollisionObject*>(other->getBody()->getNode());
+}
+
+CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsContact& contact)
+{
+	CollisionObject::CollisionData collisionData = CollisionObject::CollisionData(nullptr, Vec2::ZERO, CollisionObject::CollisionDirection::None, nullptr, 0);
+	
+	collisionData.other = this->getOtherObject(contact);
+
+	if (collisionData.other == nullptr)
 	{
 		return collisionData;
 	}
 
-	collisionData.other = (CollisionObject*)other->getBody()->getNode();
 	collisionData.normal = contact.getContactData()->normal;
 	collisionData.pointCount = contact.getContactData()->count;
 	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();

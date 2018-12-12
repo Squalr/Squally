@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Engine/Events/CollisionMappingEvents.h"
 #include "Engine/GlobalNode.h"
 #include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
@@ -13,19 +14,20 @@ class PlatformerCollisionMapping : public GlobalNode
 public:
 	static void registerGlobalNode();
 
-	void onMapRequest(cocos2d::EventCustom* eventCustom);
+	void onAllowedCollisionsMapRequest(cocos2d::EventCustom* eventCustom);
+	void onMapKeyMappingRequest(cocos2d::EventCustom* eventCustom);
 
-	static const std::string KeyCollisionTypeSolid;
-	static const std::string KeyCollisionTypePassThrough;
-	static const std::string KeyCollisionTypePlayer;
-	static const std::string KeyCollisionTypeNpc;
-	static const std::string KeyCollisionTypeEnemy;
-	static const std::string KeyCollisionTypeEnemyFlying;
-	static const std::string KeyCollisionTypeForce;
-	static const std::string KeyCollisionTypeSolidNpc;
-	static const std::string KeyCollisionTypeSolidNpcFlying;
-	static const std::string KeyCollisionTypeWater;
-	static const std::string KeyCollisionTypeLava;
+	static const std::string MapKeyCollisionTypeSolid;
+	static const std::string MapKeyCollisionTypePassThrough;
+	static const std::string MapKeyCollisionTypePlayer;
+	static const std::string MapKeyCollisionTypeNpc;
+	static const std::string MapKeyCollisionTypeEnemy;
+	static const std::string MapKeyCollisionTypeEnemyFlying;
+	static const std::string MapKeyCollisionTypeForce;
+	static const std::string MapKeyCollisionTypeSolidNpc;
+	static const std::string MapKeyCollisionTypeSolidNpcFlying;
+	static const std::string MapKeyCollisionTypeWater;
+	static const std::string MapKeyCollisionTypeLava;
 
 private:
 	PlatformerCollisionMapping();

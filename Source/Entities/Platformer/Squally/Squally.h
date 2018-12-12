@@ -21,7 +21,7 @@ public:
 	static const std::string MapKeySqually;
 
 protected:
-	void initializeCollisionEvents() override;
+	virtual void initializeCollisionEvents() override;
 
 	Vec2 getButtonOffset() override;
 

@@ -35,8 +35,6 @@ PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlRes
 	}
 
 	this->addChild(this->animationNode);
-
-	this->initializeCollisionEvents();
 }
 
 PlatformerEntity::~PlatformerEntity()
@@ -48,6 +46,8 @@ void PlatformerEntity::onEnter()
 	CollisionObject::onEnter();
 
 	this->scheduleUpdate();
+
+	this->initializeCollisionEvents();
 }
 
 void PlatformerEntity::update(float dt)

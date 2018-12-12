@@ -8,17 +8,17 @@
 
 using namespace cocos2d;
 
-const std::string PlatformerCollisionMapping::KeyCollisionTypeSolid = "solid";
-const std::string PlatformerCollisionMapping::KeyCollisionTypePassThrough = "pass-through";
-const std::string PlatformerCollisionMapping::KeyCollisionTypePlayer = "player";
-const std::string PlatformerCollisionMapping::KeyCollisionTypeNpc = "npc";
-const std::string PlatformerCollisionMapping::KeyCollisionTypeEnemy = "enemy";
-const std::string PlatformerCollisionMapping::KeyCollisionTypeEnemyFlying = "enemy-flying";
-const std::string PlatformerCollisionMapping::KeyCollisionTypeForce = "force";
-const std::string PlatformerCollisionMapping::KeyCollisionTypeSolidNpc = "solid-npc";
-const std::string PlatformerCollisionMapping::KeyCollisionTypeSolidNpcFlying = "solid-npc-flying";
-const std::string PlatformerCollisionMapping::KeyCollisionTypeWater = "water";
-const std::string PlatformerCollisionMapping::KeyCollisionTypeLava = "lava";
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypeSolid = "solid";
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypePassThrough = "pass-through";
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypePlayer = "player";
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypeNpc = "npc";
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypeEnemy = "enemy";
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypeEnemyFlying = "enemy-flying";
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypeForce = "force";
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpc = "solid-npc";
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpcFlying = "solid-npc-flying";
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypeWater = "water";
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypeLava = "lava";
 
 PlatformerCollisionMapping* PlatformerCollisionMapping::instance = nullptr;
 
@@ -47,63 +47,222 @@ void PlatformerCollisionMapping::initializeListeners()
 {
 	GlobalNode::initializeListeners();
 
-	EventListenerCustom* mapRequestEventListener = EventListenerCustom::create(
-		CollisionObject::RequestCollisionMappingEvent,
-		CC_CALLBACK_1(PlatformerCollisionMapping::onMapRequest, this));
+	EventListenerCustom* allowedCollisionsMappingRequestEventListener = EventListenerCustom::create(
+		CollisionMappingEvents::RequestAllowedCollisionMappingEvent,
+		CC_CALLBACK_1(PlatformerCollisionMapping::onAllowedCollisionsMapRequest, this));
 
-	this->addEventListener(mapRequestEventListener);
+	EventListenerCustom* mapKeyMappingRequestEventListener = EventListenerCustom::create(
+		CollisionMappingEvents::RequestCollisionMapKeyMappingEvent,
+		CC_CALLBACK_1(PlatformerCollisionMapping::onMapKeyMappingRequest, this));
+
+	this->addEventListener(allowedCollisionsMappingRequestEventListener);
+	this->addEventListener(mapKeyMappingRequestEventListener);
 }
 
-void PlatformerCollisionMapping::onMapRequest(EventCustom* eventCustom)
+void PlatformerCollisionMapping::onAllowedCollisionsMapRequest(EventCustom* eventCustom)
 {
-	CollisionObject::CollisionMapRequestArgs* args = (CollisionObject::CollisionMapRequestArgs*)(eventCustom->getUserData());
+	CollisionMappingEvents::AllowedCollisionsRequestArgs* args = (CollisionMappingEvents::AllowedCollisionsRequestArgs*)(eventCustom->getUserData());
+
+	switch ((PlatformerCollisionType)args->collisionObject->getCollisionType())
+	{
+		case PlatformerCollisionType::Solid:
+		{
+			args->collisionObject->allowCollisionWith({
+				(int)PlatformerCollisionType::Player,
+				(int)PlatformerCollisionType::FriendlyNpc,
+				(int)PlatformerCollisionType::Enemy,
+				(int)PlatformerCollisionType::EnemyFlying,
+				(int)PlatformerCollisionType::Force,
+			});
+
+			break;
+		}
+		case PlatformerCollisionType::PassThrough:
+		{
+			args->collisionObject->allowCollisionWith({
+				(int)PlatformerCollisionType::Player,
+				(int)PlatformerCollisionType::FriendlyNpc,
+				(int)PlatformerCollisionType::Enemy,
+				(int)PlatformerCollisionType::EnemyFlying,
+				(int)PlatformerCollisionType::Force,
+			});
+
+			break;
+		}
+		case PlatformerCollisionType::Player:
+		{
+			args->collisionObject->allowCollisionWith({
+				(int)PlatformerCollisionType::FriendlyNpc,
+				(int)PlatformerCollisionType::Force,
+				(int)PlatformerCollisionType::Enemy,
+				(int)PlatformerCollisionType::EnemyFlying,
+				(int)PlatformerCollisionType::Solid,
+				(int)PlatformerCollisionType::PassThrough,
+				(int)PlatformerCollisionType::Water,
+				(int)PlatformerCollisionType::Lava,
+			});
+
+			break;
+		}
+		case PlatformerCollisionType::FriendlyNpc:
+		{
+			args->collisionObject->allowCollisionWith({
+				(int)PlatformerCollisionType::Player,
+				(int)PlatformerCollisionType::Force,
+				(int)PlatformerCollisionType::Enemy,
+				(int)PlatformerCollisionType::EnemyFlying,
+				(int)PlatformerCollisionType::Solid,
+				(int)PlatformerCollisionType::PassThrough,
+				(int)PlatformerCollisionType::Water,
+				(int)PlatformerCollisionType::Lava,
+			});
+
+			break;
+		}
+		case PlatformerCollisionType::Enemy:
+		{
+			args->collisionObject->allowCollisionWith({
+				(int)PlatformerCollisionType::Force,
+				(int)PlatformerCollisionType::Player,
+				(int)PlatformerCollisionType::Enemy,
+				(int)PlatformerCollisionType::EnemyFlying,
+				(int)PlatformerCollisionType::Solid,
+				(int)PlatformerCollisionType::PassThrough,
+				(int)PlatformerCollisionType::Water,
+				(int)PlatformerCollisionType::Lava,
+			});
+
+			break;
+		}
+		case PlatformerCollisionType::EnemyFlying:
+		{
+			args->collisionObject->allowCollisionWith({
+				(int)PlatformerCollisionType::Force,
+				(int)PlatformerCollisionType::Player,
+				(int)PlatformerCollisionType::Enemy,
+				(int)PlatformerCollisionType::EnemyFlying,
+				(int)PlatformerCollisionType::Solid,
+				(int)PlatformerCollisionType::PassThrough,
+				(int)PlatformerCollisionType::Water,
+				(int)PlatformerCollisionType::Lava,
+			});
+
+			break;
+		}
+		case PlatformerCollisionType::Force:
+		{
+			args->collisionObject->allowCollisionWith({
+				(int)PlatformerCollisionType::Force,
+				(int)PlatformerCollisionType::Player,
+				(int)PlatformerCollisionType::Enemy,
+				(int)PlatformerCollisionType::EnemyFlying,
+				(int)PlatformerCollisionType::Solid,
+				(int)PlatformerCollisionType::PassThrough,
+				(int)PlatformerCollisionType::Water,
+				(int)PlatformerCollisionType::Lava,
+			});
+
+			break;
+		}
+		case PlatformerCollisionType::SolidNpcOnly:
+		{
+			args->collisionObject->allowCollisionWith({
+				(int)PlatformerCollisionType::FriendlyNpc,
+				(int)PlatformerCollisionType::Enemy,
+				(int)PlatformerCollisionType::EnemyFlying,
+			});
+
+			break;
+		}
+		case PlatformerCollisionType::SolidFlyingNpcOnly:
+		{
+			args->collisionObject->allowCollisionWith({
+				(int)PlatformerCollisionType::EnemyFlying,
+			});
+
+			break;
+		}
+		case PlatformerCollisionType::Water:
+		{
+			args->collisionObject->allowCollisionWith({
+				(int)PlatformerCollisionType::Player,
+				(int)PlatformerCollisionType::FriendlyNpc,
+				(int)PlatformerCollisionType::Enemy,
+				(int)PlatformerCollisionType::EnemyFlying,
+				(int)PlatformerCollisionType::Force,
+			});
+
+			break;
+		}
+		case PlatformerCollisionType::Lava:
+		{
+			args->collisionObject->allowCollisionWith({
+				(int)PlatformerCollisionType::Player,
+				(int)PlatformerCollisionType::FriendlyNpc,
+				(int)PlatformerCollisionType::Enemy,
+				(int)PlatformerCollisionType::EnemyFlying,
+				(int)PlatformerCollisionType::Force,
+			});
+
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
+}
+
+void PlatformerCollisionMapping::onMapKeyMappingRequest(EventCustom* eventCustom)
+{
+	CollisionMappingEvents::CollisionMapRequestArgs* args = (CollisionMappingEvents::CollisionMapRequestArgs*)(eventCustom->getUserData());
 
 	if (args == nullptr || args->collisionObject == nullptr)
 	{
 		return;
 	}
 
-	if (args->deserializedCollisionName == KeyCollisionTypeSolid)
+	if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeSolid)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Solid);
 	}
-	else if (args->deserializedCollisionName == KeyCollisionTypePassThrough)
+	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypePassThrough)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::PassThrough);
 	}
-	else if (args->deserializedCollisionName == KeyCollisionTypePlayer)
+	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypePlayer)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Player);
 	}
-	else if (args->deserializedCollisionName == KeyCollisionTypeNpc)
+	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeNpc)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::FriendlyNpc);
 	}
-	else if (args->deserializedCollisionName == KeyCollisionTypeEnemy)
+	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeEnemy)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Enemy);
 	}
-	else if (args->deserializedCollisionName == KeyCollisionTypeEnemyFlying)
+	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeEnemyFlying)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::EnemyFlying);
 	}
-	else if (args->deserializedCollisionName == KeyCollisionTypeForce)
+	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeForce)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Force);
 	}
-	else if (args->deserializedCollisionName == KeyCollisionTypeSolidNpc)
+	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpc)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::SolidNpcOnly);
 	}
-	else if (args->deserializedCollisionName == KeyCollisionTypeSolidNpcFlying)
+	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpcFlying)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::SolidFlyingNpcOnly);
 	}
-	else if (args->deserializedCollisionName == KeyCollisionTypeWater)
+	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeWater)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Water);
 	}
-	else if (args->deserializedCollisionName == KeyCollisionTypeLava)
+	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeLava)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Lava);
 	}
