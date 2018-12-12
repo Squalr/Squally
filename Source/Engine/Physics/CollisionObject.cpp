@@ -134,6 +134,14 @@ CollisionType CollisionObject::getCollisionType()
 	return this->physicsBody == nullptr ? (CollisionType)0 : (CollisionType)this->physicsBody->getCategoryBitmask();
 }
 
+void CollisionObject::addPhysicsShape(cocos2d::PhysicsShape* shape)
+{
+	if (this->physicsBody != nullptr)
+	{
+		this->physicsBody->addShape(shape);
+	}
+}
+
 void CollisionObject::allowCollisionWith(std::vector<CollisionType> collisionTypes)
 {
 	CollisionType bitmask = 0;

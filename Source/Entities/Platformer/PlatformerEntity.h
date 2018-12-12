@@ -54,5 +54,8 @@ protected:
 	const float maxFallSpeed = 360.0f;
 
 	const float normalJumpThreshold = 0.8f;
+
+private:
+	static Size convertTotalSizeToCapsuleInnerSegmentSize(Size size, float scale);
 };
 

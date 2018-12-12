@@ -3,27 +3,34 @@
 PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlResource, PlatformerCollisionType collisionType, Size size, float scale, Vec2 collisionOffset) :
 	CollisionObject(
 		initProperties,
-		PhysicsBody::createBox(size * scale),
+		PhysicsBody::createBox(PlatformerEntity::convertTotalSizeToCapsuleInnerSegmentSize(size, scale)),
 		(CollisionType)(int)collisionType,
 		true,
 		false
 	)
 {
+	this->size = size;
+
+	float capsuleRadius = (this->size.width / 2.0f) * scale;
+	float halfHeight = (this->size.height / 2.0f) * scale;
+
+	// Add the capsule ends
+	this->addPhysicsShape(PhysicsShapeCircle::create(capsuleRadius, PHYSICSBODY_MATERIAL_DEFAULT, Vec2(0.0f, -halfHeight + capsuleRadius)));
+	this->addPhysicsShape(PhysicsShapeCircle::create(capsuleRadius, PHYSICSBODY_MATERIAL_DEFAULT, Vec2(0.0f, halfHeight - capsuleRadius)));
+
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
 	this->actualMaxFallSpeed = 1280.0f;
 	this->moveAcceleration = 14000.0f;
-
-	this->animationNode = SmartAnimationNode::create(scmlResource);
-	this->animationNode->setScale(scale);
-	this->animationNode->playAnimation("Idle");
 
 	this->isOnGround = false;
 
 	// TODO: Configurable/randomizable start direction (if any)
 	this->movement = Vec2(0.0f, 0.0f);
 
-	this->size = size;
+	this->animationNode = SmartAnimationNode::create(scmlResource);
+	this->animationNode->setScale(scale);
+	this->animationNode->playAnimation("Idle");
 
 	animationNode->setPosition(collisionOffset * scale);
 
@@ -143,4 +150,14 @@ void PlatformerEntity::initializeCollisionEvents()
 Size PlatformerEntity::getSize()
 {
 	return this->size;
+}
+
+Size PlatformerEntity::convertTotalSizeToCapsuleInnerSegmentSize(Size size, float scale)
+{
+	Size newSize = size * scale;
+	float capsuleRadius = newSize.width / 2.0f;
+
+	newSize.height = std::max(newSize.height - capsuleRadius * 2.0f, 0.0f);
+
+	return newSize;
 }
