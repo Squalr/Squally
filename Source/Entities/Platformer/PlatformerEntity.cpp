@@ -1,22 +1,19 @@
 #include "PlatformerEntity.h"
 
+const float PlatformerEntity::groundCollisionDetectorPadding = 8.0f;
+const float PlatformerEntity::groundCollisionDetectorOffset = 24.0f;
+const float PlatformerEntity::capsuleRadius = 8.0f;
+
 PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlResource, PlatformerCollisionType collisionType, Size size, float scale, Vec2 collisionOffset) :
 	CollisionObject(
 		initProperties,
-		PhysicsBody::createBox(PlatformerEntity::convertTotalSizeToCapsuleInnerSegmentSize(size, scale)),
+		PlatformerEntity::createCapsulePolygon(size, scale),
 		(CollisionType)(int)collisionType,
 		true,
 		false
 	)
 {
 	this->size = size;
-
-	float capsuleRadius = (this->size.width / 2.0f) * scale;
-	float halfHeight = (this->size.height / 2.0f) * scale;
-
-	// Add the capsule ends
-	this->addPhysicsShape(PhysicsShapeCircle::create(capsuleRadius, PHYSICSBODY_MATERIAL_DEFAULT, Vec2(0.0f, -halfHeight + capsuleRadius)));
-	this->addPhysicsShape(PhysicsShapeCircle::create(capsuleRadius, PHYSICSBODY_MATERIAL_DEFAULT, Vec2(0.0f, halfHeight - capsuleRadius)));
 
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
@@ -41,6 +38,18 @@ PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlRes
 		(*this->properties)[PlatformerEntity::MapKeyHeight] = size.height * scale;
 	}
 
+	this->groundCollisionDetector = CollisionObject::create(
+		PhysicsBody::createBox(
+			Size(std::max((size * scale).width - PlatformerEntity::groundCollisionDetectorPadding * 2.0f, 8.0f), 8.0f),
+			PHYSICSBODY_MATERIAL_DEFAULT, 
+			Vec2(0.0f, -(size * scale).height / 2.0f - PlatformerEntity::groundCollisionDetectorOffset)
+		),
+		(int)PlatformerCollisionType::GroundDetector,
+		false,
+		false
+	);
+
+	this->addChild(this->groundCollisionDetector);
 	this->addChild(this->animationNode);
 }
 
@@ -55,6 +64,16 @@ void PlatformerEntity::onEnter()
 	this->scheduleUpdate();
 
 	this->initializeCollisionEvents();
+}
+
+void PlatformerEntity::initializePositions()
+{
+	CollisionObject::initializePositions();
+}
+
+void PlatformerEntity::initializeListeners()
+{
+	CollisionObject::initializeListeners();
 }
 
 void PlatformerEntity::update(float dt)
@@ -109,41 +128,18 @@ void PlatformerEntity::update(float dt)
 
 void PlatformerEntity::initializeCollisionEvents()
 {
-	this->whenCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
+	this->groundCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
 	{
-		switch (collisionData.direction)
-		{
-			case CollisionDirection::Down:
-			{
-				this->isOnGround = true;
-				break;
-			}
-			case CollisionDirection::Left:
-			{
-				this->movement.x = 1.0f;
-				break;
-			}
-			case CollisionDirection::Right:
-			{
-				this->movement.x = -1.0f;
-				break;
-			}
-			case CollisionDirection::StepLeft:
-			case CollisionDirection::StepRight:
-			{
-				this->movement.y = 0.5f;
-				break;
-			}
-		}
+		this->isOnGround = true;
 
-		return CollisionResult::CollideWithPhysics;
+		return CollisionResult::DoNothing;
 	});
 
-	this->whenStopsCollidingWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
+	this->groundCollisionDetector->whenStopsCollidingWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
 	{
 		this->isOnGround = false;
 
-		return CollisionResult::CollideWithPhysics;
+		return CollisionResult::DoNothing;
 	});
 }
 
@@ -152,12 +148,27 @@ Size PlatformerEntity::getSize()
 	return this->size;
 }
 
-Size PlatformerEntity::convertTotalSizeToCapsuleInnerSegmentSize(Size size, float scale)
+PhysicsBody* PlatformerEntity::createCapsulePolygon(Size size, float scale)
 {
 	Size newSize = size * scale;
-	float capsuleRadius = newSize.width / 2.0f;
 
-	newSize.height = std::max(newSize.height - capsuleRadius * 2.0f, 0.0f);
+	newSize.height = std::max(0.0f, newSize.height - PlatformerEntity::capsuleRadius * 2.0f);
 
-	return newSize;
+	std::vector<Vec2> points = std::vector<Vec2>();
+
+	// Right side
+	points.push_back(Vec2(newSize.width / 2.0f, newSize.height / 2.0f));
+	points.push_back(Vec2(newSize.width / 2.0f, -newSize.height / 2.0f));
+
+	// Bottom capsule
+	points.push_back(Vec2(0.0f, -newSize.height / 2.0f - PlatformerEntity::capsuleRadius));
+
+	// Left side
+	points.push_back(Vec2(-newSize.width / 2.0f, -newSize.height / 2.0f));
+	points.push_back(Vec2(-newSize.width / 2.0f, newSize.height / 2.0f));
+
+	// Top capsule
+	points.push_back(Vec2(0.0f, newSize.height / 2.0f + PlatformerEntity::capsuleRadius));
+
+	return PhysicsBody::createPolygon(points.data(), points.size());
 }

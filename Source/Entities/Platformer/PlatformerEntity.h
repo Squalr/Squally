@@ -29,6 +29,8 @@ protected:
 	~PlatformerEntity();
 
 	void onEnter() override;
+	void initializePositions() override;
+	void initializeListeners() override;
 	void update(float) override;
 
 	virtual void initializeCollisionEvents();
@@ -56,6 +58,12 @@ protected:
 	const float normalJumpThreshold = 0.8f;
 
 private:
-	static Size convertTotalSizeToCapsuleInnerSegmentSize(Size size, float scale);
+	static PhysicsBody* createCapsulePolygon(Size size, float scale);
+
+	CollisionObject* groundCollisionDetector;
+
+	static const float groundCollisionDetectorPadding;
+	static const float groundCollisionDetectorOffset;
+	static const float capsuleRadius;
 };
 
