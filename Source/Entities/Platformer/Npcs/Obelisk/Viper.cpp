@@ -13,7 +13,7 @@ Viper* Viper::deserialize(ValueMap* initProperties)
 
 Viper::Viper(ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Environment_Obelisk_Npcs_Viper_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(472.0f, 780.0f),
 	0.3f,
 	Vec2(-24.0f, -390.0f))

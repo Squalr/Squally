@@ -13,7 +13,7 @@ Mermaid* Mermaid::deserialize(ValueMap* initProperties)
 
 Mermaid::Mermaid(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Environment_Ruins_Enemies_Mermaid_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(172.0f, 296.0f),
 	0.8f,
 	Vec2(0.0f, -140.0f))

@@ -13,7 +13,7 @@ Rhinoman* Rhinoman::deserialize(ValueMap* initProperties)
 
 Rhinoman::Rhinoman(ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Environment_Jungle_Enemies_Rhinoman_Animations,
-	PlatformerCollisionMapping::KeyCollisionTypeEnemy,
+	PlatformerCollisionType::Enemy,
 	Size(592.0f, 592.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
