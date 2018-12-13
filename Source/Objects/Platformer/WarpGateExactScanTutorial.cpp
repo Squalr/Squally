@@ -2,6 +2,7 @@
 
 #include "Engine/Hackables/HackableCode.h"
 
+const std::string WarpGateExactScanTutorial::MapKeyWarpGateExactScanTutorial = "warp-gate-exact-scan-1";
 int WarpGateExactScanTutorial::warpGatePower = 0;
 int WarpGateExactScanTutorial::warpGatePowerMax = 70100;
 

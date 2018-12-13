@@ -38,7 +38,9 @@ private:
 	GameCamera();
 	virtual ~GameCamera();
 	void onEnter() override;
+	void initializeListeners() override;
 	void update(float dt) override;
+	void beforeSceneChange();
 
 	std::stack<cocos2d::Node*> targetStack;
 	float defaultDistance;

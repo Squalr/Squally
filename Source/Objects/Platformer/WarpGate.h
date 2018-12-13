@@ -15,6 +15,8 @@ public:
 	void open();
 	void close();
 
+	static const std::string MapKeyWarpGate;
+
 protected:
 	WarpGate(ValueMap* initProperties);
 	~WarpGate();

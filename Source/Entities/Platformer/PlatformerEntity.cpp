@@ -3,6 +3,11 @@
 const float PlatformerEntity::groundCollisionDetectorPadding = 8.0f;
 const float PlatformerEntity::groundCollisionDetectorOffset = 24.0f;
 const float PlatformerEntity::capsuleRadius = 8.0f;
+const float PlatformerEntity::groundDragFactor = .58f;
+const float PlatformerEntity::airDragFactor = 0.65f;
+const float PlatformerEntity::maxMoveSpeed = 360.0f;
+const float PlatformerEntity::maxJumpSpeed = 720.0f;
+const float PlatformerEntity::maxFallSpeed = -1280.0f;
 
 PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlResource, PlatformerCollisionType collisionType, Size size, float scale, Vec2 collisionOffset) :
 	CollisionObject(
@@ -106,8 +111,8 @@ void PlatformerEntity::update(float dt)
 	}
 
 	// Prevent fast speeds
-	velocity.x = MathUtils::clamp(velocity.x, -this->maxMoveSpeed, this->maxMoveSpeed);
-	velocity.y = MathUtils::clamp(velocity.y, -this->maxFallSpeed, this->maxFallSpeed);
+	velocity.x = MathUtils::clamp(velocity.x, -PlatformerEntity::maxMoveSpeed, PlatformerEntity::maxMoveSpeed);
+	velocity.y = MathUtils::clamp(velocity.y, PlatformerEntity::maxFallSpeed, PlatformerEntity::maxJumpSpeed);
 
 	// Apply velocity
 	this->setVelocity(velocity);

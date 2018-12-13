@@ -10,6 +10,8 @@ class Wind : public HackableObject
 public:
 	static Wind* create(ValueMap* initProperties);
 
+	static const std::string MapKeyWind;
+
 protected:
 	Wind(ValueMap* initProperties);
 	~Wind();
