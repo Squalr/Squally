@@ -81,9 +81,9 @@ void PlatformerMap::onEnter()
 
 	this->scheduleUpdate();
 
-	GameCamera::getInstance()->setTrackOffset(Vec2(0.0f, 128.0f));
-	GameCamera::getInstance()->pushTarget(Squally::getInstance());
-	//GameCamera::getInstance()->setTarget(Squally::getInstance(), Vec2(0.0f, 128.0f));
+	//GameCamera::getInstance()->setTrackOffset(Vec2(0.0f, 128.0f));
+	//GameCamera::getInstance()->pushTarget(Squally::getInstance());
+	GameCamera::getInstance()->setTarget(Squally::getInstance(), Vec2(0.0f, 128.0f));
 }
 
 void PlatformerMap::initializePositions()

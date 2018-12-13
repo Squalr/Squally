@@ -28,6 +28,7 @@ GameCamera* GameCamera::getInstance()
 
 GameCamera::GameCamera()
 {
+	this->useStoredNextCameraPosition = false;
 	this->targetStack = std::stack<Node*>();
 	this->cameraScrollOffset = Vec2::ZERO;
 	this->cameraBounds = Rect::ZERO;
@@ -65,6 +66,15 @@ void GameCamera::beforeSceneChange()
 
 void GameCamera::update(float dt)
 {
+	// This is a work around from a bug where setting the camera position during the loading of a scene can cause
+	// A stupid crash inside the physics engine in code with no symbols -- this can't be easily diagnosed,
+	// So this is a work around to delay setting the position in the update loop instead, bypassing the crash
+	if (this->useStoredNextCameraPosition)
+	{
+		this->setCameraPositionInternal(this->storedNextCameraPosition);
+		this->useStoredNextCameraPosition = false;
+	}
+
 	if (this->targetStack.size() > 0)
 	{
 		Vec2 targetPosition = this->targetStack.top()->getPosition();
@@ -133,7 +143,7 @@ void GameCamera::update(float dt)
 		this->cameraPosition.x = MathUtils::clamp(this->cameraPosition.x, this->cameraBounds.getMinX() + visibleSize.width / 2.0f, this->cameraBounds.getMaxX() + visibleSize.width / 2.0f);
 		this->cameraPosition.y = MathUtils::clamp(this->cameraPosition.y, this->cameraBounds.getMinY() + visibleSize.height / 2.0f, this->cameraBounds.getMaxY() + visibleSize.height / 2.0f);
 
-		this->setCameraPosition(this->cameraPosition);
+		this->setCameraPositionInternal(this->cameraPosition);
 	}
 }
 
@@ -155,13 +165,24 @@ Vec2 GameCamera::getCameraPosition()
 
 void GameCamera::setCameraPosition(Vec2 position, bool addTrackOffset)
 {
+	this->storedNextCameraPosition = position;
+	this->useStoredNextCameraPosition = true;
+
+	if (addTrackOffset)
+	{
+		this->storedNextCameraPosition += this->trackOffset;
+	}
+}
+
+void GameCamera::setCameraPositionInternal(Vec2 position, bool addTrackOffset)
+{
 	this->cameraPosition = position;
 
 	if (addTrackOffset)
 	{
 		this->cameraPosition += this->trackOffset;
 	}
-	
+
 	Camera::getDefaultCamera()->setPosition(this->cameraPosition);
 }
 
