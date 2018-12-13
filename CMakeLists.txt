@@ -81,11 +81,13 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Config/ConfigManager.cpp
 	Source/Engine/Cutscenes/Cutscene.cpp
 	Source/Engine/Cutscenes/CutsceneClip.cpp
+	Source/Engine/DeveloperMode/DeveloperModeController.cpp
 	Source/Engine/Dialogue/Dialogue.cpp
 	Source/Engine/Dialogue/DialogueTree.cpp
 	Source/Engine/EngineBootstrapper.cpp
 	Source/Engine/Events/CollisionMappingEvents.cpp
 	Source/Engine/Events/DeserializationEvents.cpp
+	Source/Engine/Events/DeveloperModeEvents.cpp
 	Source/Engine/Events/MouseEvents.cpp
 	Source/Engine/Events/SceneEvents.cpp
 	Source/Engine/GlobalDirector.cpp
@@ -108,7 +110,6 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Physics/CollisionDeserializer.cpp
 	Source/Engine/Physics/CollisionObject.cpp
 	Source/Engine/Save/SaveManager.cpp
-	Source/Engine/Shaders/PostProcess.cpp
 	Source/Engine/Shaders/ShaderUtils.cpp
 	Source/Engine/SmartNode.cpp
 	Source/Engine/SmartScene.cpp
@@ -807,6 +808,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/States/StateTurnEnd.cpp
 	Source/Scenes/Hexus/States/StateTutorial.cpp
 	Source/Scenes/Maps/Isometric/IsometricMap.cpp
+	Source/Scenes/Maps/MapBase.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/Background.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundDeserializer.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixLetter.cpp
@@ -835,11 +837,13 @@ list(APPEND GAME_HEADER
 	Source/Engine/Config/ConfigManager.h
 	Source/Engine/Cutscenes/Cutscene.h
 	Source/Engine/Cutscenes/CutsceneClip.h
+	Source/Engine/DeveloperMode/DeveloperModeController.h
 	Source/Engine/Dialogue/Dialogue.h
 	Source/Engine/Dialogue/DialogueTree.h
 	Source/Engine/EngineBootstrapper.h
 	Source/Engine/Events/CollisionMappingEvents.h
 	Source/Engine/Events/DeserializationEvents.h
+	Source/Engine/Events/DeveloperModeEvents.h
 	Source/Engine/Events/MouseEvents.h
 	Source/Engine/Events/SceneEvents.h
 	Source/Engine/GlobalDirector.h
@@ -863,7 +867,6 @@ list(APPEND GAME_HEADER
 	Source/Engine/Physics/CollisionDeserializer.h
 	Source/Engine/Physics/CollisionObject.h
 	Source/Engine/Save/SaveManager.h
-	Source/Engine/Shaders/PostProcess.h
 	Source/Engine/Shaders/ShaderUtils.h
 	Source/Engine/SmartNode.h
 	Source/Engine/SmartScene.h
@@ -1597,8 +1600,8 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/States/StateTurnEnd.h
 	Source/Scenes/Hexus/States/StateTutorial.h
 	Source/Scenes/Hexus/States/States.h
-	Source/Scenes/Maps/IMap.h
 	Source/Scenes/Maps/Isometric/IsometricMap.h
+	Source/Scenes/Maps/MapBase.h
 	Source/Scenes/Maps/Platformer/Backgrounds/Background.h
 	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundDeserializer.h
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixLetter.h

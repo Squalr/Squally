@@ -12,10 +12,8 @@ void Input::registerGlobalNode()
 {
 	if (Input::instance == nullptr)
 	{
-		Input* inputManager = Input::getInstance();
-
 		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(Input::instance);
+		GlobalDirector::getInstance()->registerGlobalNode(Input::getInstance());
 	}
 }
 

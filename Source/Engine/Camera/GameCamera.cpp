@@ -4,6 +4,7 @@
 #include "cocos/2d/CCNode.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Utils/MathUtils.h"
 

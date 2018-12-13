@@ -6,7 +6,6 @@
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/HackUtils.h"
-#include "Engine/Shaders/PostProcess.h"
 #include "Events/HackableEvents.h"
 #include "Menus/HackerMode/CodeEditor.h"
 #include "Resources/UIResources.h"

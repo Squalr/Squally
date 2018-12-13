@@ -21,6 +21,9 @@ public:
 protected:
 	virtual void pause() override;
 	virtual void onEnter() override;
+	virtual void onDeveloperModeEnable();
+	virtual void onDeveloperModeDisable();
+	bool isDeveloperModeEnabled();
 	virtual void initializePositions();
 	virtual void initializeListeners();
 	virtual void removeAllListeners();

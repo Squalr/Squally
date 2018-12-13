@@ -5,6 +5,10 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListener.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/DeveloperMode/DeveloperModeController.h"
+#include "Engine/Events/DeveloperModeEvents.h"
 
 const float SmartScene::defaultFadeSpeed = 0.75f;
 
@@ -55,6 +59,29 @@ void SmartScene::initializePositions()
 void SmartScene::initializeListeners()
 {
 	this->removeAllListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::DeveloperModeModeEnableEvent, [=](EventCustom* args)
+	{
+		this->onDeveloperModeEnable();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::DeveloperModeModeDisableEvent, [=](EventCustom* args)
+	{
+		this->onDeveloperModeDisable();
+	}));
+}
+
+void SmartScene::onDeveloperModeEnable()
+{
+}
+
+void SmartScene::onDeveloperModeDisable()
+{
+}
+
+bool SmartScene::isDeveloperModeEnabled()
+{
+	return DeveloperModeController::getInstance()->isDeveloperModeEnabled();
 }
 
 void SmartScene::removeAllListeners()
@@ -90,7 +117,6 @@ void SmartScene::resume()
 
 	this->initializeListeners();
 }
-
 
 void SmartScene::setFadeSpeed(float newFadeSpeed)
 {
