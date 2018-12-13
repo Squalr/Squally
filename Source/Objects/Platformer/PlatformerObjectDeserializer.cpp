@@ -41,24 +41,27 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		std::string name = properties.at(SerializableObject::MapKeyName).asString();
 		SerializableObject* newObject = nullptr;
 
-		// TODO: Move these constants into their classes
-		if (name == "warp-gate")
+		if (name == CameraFocus::MapKeyCameraFocus)
+		{
+			newObject = CameraFocus::create(&properties);
+		}
+		else if (name == WarpGate::MapKeyWarpGate)
 		{
 			newObject = WarpGate::create(&properties);
 		}
-		else if (name == "warp-gate-exact-scan-1")
+		else if (name == WarpGateExactScanTutorial::MapKeyWarpGateExactScanTutorial)
 		{
 			newObject = WarpGateExactScanTutorial::create(&properties);
 		}
-		else if (name == "plushie_monkey")
+		else if (name == PlushieMonkey::MapKeyPlushieMonkey)
 		{
 			newObject = PlushieMonkey::create(&properties);
 		}
-		else if (name == "monitor")
+		else if (name == Monitor::MapKeyMonitor)
 		{
 			newObject = Monitor::create(&properties);
 		}
-		else if (name == "wind")
+		else if (name == Wind::MapKeyWind)
 		{
 			newObject = Wind::create(&properties);
 		}

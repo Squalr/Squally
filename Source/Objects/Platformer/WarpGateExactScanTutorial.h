@@ -12,6 +12,8 @@ class WarpGateExactScanTutorial : public WarpGate
 public:
 	static WarpGateExactScanTutorial* create(ValueMap* initProperties);
 
+	static const std::string MapKeyWarpGateExactScanTutorial;
+
 private:
 	WarpGateExactScanTutorial(ValueMap* initProperties);
 	~WarpGateExactScanTutorial();

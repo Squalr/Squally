@@ -5,6 +5,7 @@
 
 #include "Resources/UIResources.h"
 
+const std::string PlushieMonkey::MapKeyPlushieMonkey = "plushie_monkey";
 int PlushieMonkey::lockCountDown = 234900;
 
 PlushieMonkey* PlushieMonkey::create(ValueMap* initProperties)

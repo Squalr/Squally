@@ -74,7 +74,6 @@ void CombatMap::loadMap(SerializableMap* serializableMap)
 		GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
 	}
 
-	// GameCamera::getInstance()->setTarget(Squally::getInstance(), Vec2(0.0f, 128.0f));
-	GameCamera::getInstance()->setScrollOffset(Vec2(64.0f, 32.0f));
+	GameCamera::getInstance()->setScrollOffset(Vec2::ZERO);
 	GameCamera::getInstance()->setFollowSpeed(Vec2(0.075f, 0.075f));
 }

@@ -3,9 +3,10 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Utils/GameUtils.h"
-
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
+
+const std::string Wind::MapKeyWind = "wind";
 
 Wind* Wind::create(ValueMap* initProperties)
 {

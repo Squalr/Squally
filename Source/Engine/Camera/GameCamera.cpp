@@ -46,6 +46,23 @@ void GameCamera::onEnter()
 	this->scheduleUpdate();
 }
 
+void GameCamera::initializeListeners()
+{
+	SmartNode::initializeListeners();
+
+	EventListenerCustom* beforeSceneChangeListener = EventListenerCustom::create(
+		SceneEvents::BeforeSceneChangeEvent,
+		CC_CALLBACK_0(GameCamera::beforeSceneChange, this)
+	);
+
+	this->addEventListenerIgnorePause(beforeSceneChangeListener);
+}
+
+void GameCamera::beforeSceneChange()
+{
+	this->clearTargets();
+}
+
 void GameCamera::update(float dt)
 {
 	if (this->targetStack.size() > 0)

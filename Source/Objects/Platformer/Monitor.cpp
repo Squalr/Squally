@@ -1,5 +1,7 @@
 #include "Monitor.h"
 
+const std::string Monitor::MapKeyMonitor = "monitor";
+
 Monitor* Monitor::create(ValueMap* initProperties)
 {
 	Monitor* monitor = new Monitor(initProperties);
@@ -11,7 +13,7 @@ Monitor* Monitor::create(ValueMap* initProperties)
 
 Monitor::Monitor(ValueMap* initProperties) : HackableObject(initProperties)
 {
-	std::string dialogFile = "Dialog\\" + this->properties->at("dialog").asString() + ".json";
+	std::string dialogFile = "Dialog/" + this->properties->at("dialog").asString() + ".json";
 	this->monitorDialog = DialogMenu::loadDialogFromFile(dialogFile);
 	this->monitorDialog->retain();
 

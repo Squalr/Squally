@@ -1,5 +1,7 @@
 #include "WarpGate.h"
 
+const std::string WarpGate::MapKeyWarpGate = "warp-gate";
+
 WarpGate* WarpGate::create(ValueMap* initProperties)
 {
 	WarpGate* instance = new WarpGate(initProperties);

@@ -11,6 +11,8 @@ class PlushieMonkey : public Plushie
 public:
 	static PlushieMonkey* create(ValueMap* initProperties);
 
+	static const std::string MapKeyPlushieMonkey;
+
 protected:
 	PlushieMonkey(ValueMap* initProperties);
 	~PlushieMonkey();

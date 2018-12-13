@@ -76,7 +76,14 @@ void PlatformerMap::onEnter()
 	this->optionsMenu->setVisible(false);
 	this->confirmationMenu->setVisible(false);
 
+	GameCamera::getInstance()->setScrollOffset(Vec2(64.0f, 32.0f));
+	GameCamera::getInstance()->setFollowSpeed(Vec2(0.075f, 0.075f));
+
 	this->scheduleUpdate();
+
+	GameCamera::getInstance()->setTrackOffset(Vec2(0.0f, 128.0f));
+	GameCamera::getInstance()->pushTarget(Squally::getInstance());
+	//GameCamera::getInstance()->setTarget(Squally::getInstance(), Vec2(0.0f, 128.0f));
 }
 
 void PlatformerMap::initializePositions()
@@ -126,10 +133,6 @@ void PlatformerMap::loadMap(SerializableMap* serializableMap)
 		GameUtils::changeParent(this->map, this->mapNode, false);
 		GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
 	}
-
-	GameCamera::getInstance()->setTarget(Squally::getInstance(), Vec2(0.0f, 128.0f));
-	GameCamera::getInstance()->setScrollOffset(Vec2(64.0f, 32.0f));
-	GameCamera::getInstance()->setFollowSpeed(Vec2(0.075f, 0.075f));
 }
 
 void PlatformerMap::resume(void)

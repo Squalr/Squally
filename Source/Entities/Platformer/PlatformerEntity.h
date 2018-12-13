@@ -50,12 +50,11 @@ protected:
 
 	float moveAcceleration;
 
-	const float groundDragFactor = .58f;
-	const float airDragFactor = 0.65f;
-	const float maxMoveSpeed = 360.0f;
-	const float maxFallSpeed = 360.0f;
-
-	const float normalJumpThreshold = 0.8f;
+	static const float groundDragFactor;
+	static const float airDragFactor;
+	static const float maxMoveSpeed;
+	static const float maxJumpSpeed;
+	static const float maxFallSpeed;
 
 private:
 	static PhysicsBody* createCapsulePolygon(Size size, float scale);

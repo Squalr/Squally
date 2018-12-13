@@ -16,16 +16,18 @@ class Monitor : public HackableObject
 public:
 	static Monitor* create(ValueMap* initProperties);
 
+	static const std::string MapKeyMonitor;
+
 protected:
 	Monitor(ValueMap* initProperties);
 	~Monitor();
 
 private:
-	MenuSprite * monitorSprite;
-	FloatingSprite * monitorSpriteFloating;
-	ParticleSystem * monitorParticles;
-	ParticleSystem * monitorParticlesBack;
-	ParticleSystem * monitorSparkles;
+	MenuSprite* monitorSprite;
+	FloatingSprite* monitorSpriteFloating;
+	ParticleSystem* monitorParticles;
+	ParticleSystem* monitorParticlesBack;
+	ParticleSystem* monitorSparkles;
 	DialogMenu* monitorDialog;
 
 	void onMonitorClick(MenuSprite* menuSprite);
