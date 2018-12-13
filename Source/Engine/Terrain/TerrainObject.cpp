@@ -23,7 +23,6 @@ using namespace cocos2d;
 
 std::string TerrainObject::MapKeyTypeTexture = "texture";
 std::string TerrainObject::MapKeyTypeTerrain = "terrain";
-const bool TerrainObject::EnableTerrainDebugging = true;
 const float TerrainObject::ShadowDistance = 32.0f;
 const float TerrainObject::InfillDistance = 128.0f;
 const float TerrainObject::TopThreshold = M_PI / 6.0f;
@@ -84,6 +83,8 @@ TerrainObject::TerrainObject(ValueMap* initProperties, TerrainData terrainData) 
 	this->topCornersNode = Node::create();
 	this->debugNode = Node::create();
 
+	this->debugNode->setVisible(false);
+
 	this->addChild(this->collisionNode);
 	this->addChild(this->infillTexturesNode);
 	this->addChild(this->infillNode);
@@ -104,6 +105,16 @@ TerrainObject::~TerrainObject()
 void TerrainObject::onEnter()
 {
 	HackableObject::onEnter();
+}
+
+void TerrainObject::onDeveloperModeEnable()
+{
+	this->debugNode->setVisible(true);
+}
+
+void TerrainObject::onDeveloperModeDisable()
+{
+	this->debugNode->setVisible(false);
 }
 
 void TerrainObject::initializeListeners()
@@ -207,15 +218,7 @@ void TerrainObject::buildInfill(Color4B infillColor)
 	{
 		AlgoUtils::Triangle triangle = *it;
 
-		if (TerrainObject::EnableTerrainDebugging)
-		{
-			// infill->drawPolygon(triangle.coords, 3, Color4F(infillColor), 2.0f, Color4F::RED);
-			infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(infillColor));
-		}
-		else
-		{
-			infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(infillColor));
-		}
+		infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(infillColor));
 	}
 
 	// Render the infill to a texture (Note: using outer points, not the infill points, due to the earlier padding)
@@ -298,35 +301,32 @@ void TerrainObject::buildSurfaceTextures()
 		Vec2 delta = dest - source;
 		Vec2 midPoint = source.getMidpoint(dest);
 		float currentSegmentLength = source.distance(dest);
-		float angle = AlgoUtils::getSegmentAngle(segment, this->triangles, TerrainObject::EnableTerrainDebugging ? this->debugNode : nullptr);
+		float angle = AlgoUtils::getSegmentAngle(segment, this->triangles, this->debugNode);
 		float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, this->triangles);
 		float nextAngle = AlgoUtils::getSegmentAngle(nextSegment, this->triangles);
 		float nextSegmentNormalAngle = AlgoUtils::getSegmentNormalAngle(nextSegment, this->triangles);
 		float bisectingAngle = (nextAngle + angle) / 2.0f;
 		float angleDelta = nextAngle - angle;
 
-		if (TerrainObject::EnableTerrainDebugging)
-		{
-			std::stringstream angleStream;
-			angleStream << std::fixed << std::setprecision(2) << (angle * 180.0f / M_PI);
-			std::string angleString = angleStream.str();
+		std::stringstream angleStream;
+		angleStream << std::fixed << std::setprecision(2) << (angle * 180.0f / M_PI);
+		std::string angleString = angleStream.str();
 
-			std::stringstream bisectingAngleStream;
-			bisectingAngleStream << std::fixed << std::setprecision(2) << (bisectingAngle * 180.0f / M_PI);
-			std::string bisectingAngleString = bisectingAngleStream.str();
+		std::stringstream bisectingAngleStream;
+		bisectingAngleStream << std::fixed << std::setprecision(2) << (bisectingAngle * 180.0f / M_PI);
+		std::string bisectingAngleString = bisectingAngleStream.str();
 
-			Label* angleDebug = Label::createWithTTF(angleString, Localization::getCodingFont(), Localization::getFontSizeP(Localization::getCodingFont()));
-			Label* bisectingAngleDebug = Label::createWithTTF(bisectingAngleString, Localization::getCodingFont(), Localization::getFontSizeP(Localization::getCodingFont()));
+		Label* angleDebug = Label::createWithTTF(angleString, Localization::getCodingFont(), Localization::getFontSizeP(Localization::getCodingFont()));
+		Label* bisectingAngleDebug = Label::createWithTTF(bisectingAngleString, Localization::getCodingFont(), Localization::getFontSizeP(Localization::getCodingFont()));
 
-			angleDebug->setTextColor(Color4B::YELLOW);
-			bisectingAngleDebug->setTextColor(Color4B::MAGENTA);
+		angleDebug->setTextColor(Color4B::YELLOW);
+		bisectingAngleDebug->setTextColor(Color4B::MAGENTA);
 
-			angleDebug->setPosition(midPoint + Vec2(0.0f, 24.0f));
-			bisectingAngleDebug->setPosition(dest + Vec2(0.0f, 24.0f));
+		angleDebug->setPosition(midPoint + Vec2(0.0f, 24.0f));
+		bisectingAngleDebug->setPosition(dest + Vec2(0.0f, 24.0f));
 
-			this->debugNode->addChild(angleDebug);
-			this->debugNode->addChild(bisectingAngleDebug);
-		}
+		this->debugNode->addChild(angleDebug);
+		this->debugNode->addChild(bisectingAngleDebug);
 
 		auto buildSegment = [&](Node* parent, Sprite* sprite, Vec2 anchor, Vec2 offset, float initialAngle, bool isTextureHorizontal)
 		{

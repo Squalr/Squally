@@ -1,8 +1,6 @@
 #pragma once
 #include "cocos/2d/CCNode.h"
 
-#include "Engine/Events/SceneEvents.h"
-
 namespace cocos2d
 {
 	class EventListener;
@@ -19,6 +17,9 @@ public:
 protected:
 	virtual void onEnter() override;
 	virtual void onReenter() override; // Called on parent change
+	virtual void onDeveloperModeEnable();
+	virtual void onDeveloperModeDisable();
+	bool isDeveloperModeEnabled();
 	virtual void initializePositions();
 	virtual void initializeListeners();
 	virtual void removeAllListeners();

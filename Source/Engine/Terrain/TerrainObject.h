@@ -67,6 +67,8 @@ private:
 	virtual ~TerrainObject();
 
 	void onEnter() override;
+	void onDeveloperModeEnable() override;
+	void onDeveloperModeDisable() override;
 	void initializeListeners() override;
 	void buildCollision();
 	void buildInnerTextures();
@@ -96,7 +98,6 @@ private:
 	cocos2d::Node* topCornersNode;
 	cocos2d::Node* debugNode;
 
-	static const bool EnableTerrainDebugging;
 	static const float ShadowDistance;
 	static const float InfillDistance;
 	static const float TopThreshold;

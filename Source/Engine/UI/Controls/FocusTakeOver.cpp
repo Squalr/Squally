@@ -6,6 +6,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;

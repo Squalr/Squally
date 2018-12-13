@@ -2,6 +2,11 @@
 
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListener.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/DeveloperMode/DeveloperModeController.h"
+#include "Engine/Events/DeveloperModeEvents.h"
+#include "Engine/Events/SceneEvents.h"
 
 using namespace cocos2d;
 
@@ -36,6 +41,29 @@ void SmartNode::initializePositions()
 void SmartNode::initializeListeners()
 {
 	this->removeAllListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::DeveloperModeModeEnableEvent, [=](EventCustom* args)
+	{
+		this->onDeveloperModeEnable();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::DeveloperModeModeDisableEvent, [=](EventCustom* args)
+	{
+		this->onDeveloperModeDisable();
+	}));
+}
+
+void SmartNode::onDeveloperModeEnable()
+{
+}
+
+void SmartNode::onDeveloperModeDisable()
+{
+}
+
+bool SmartNode::isDeveloperModeEnabled()
+{
+	return DeveloperModeController::getInstance()->isDeveloperModeEnabled();
 }
 
 void SmartNode::removeAllListeners()
