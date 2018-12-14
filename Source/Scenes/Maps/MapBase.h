@@ -54,11 +54,7 @@ private:
 	OptionsMenu* optionsMenu;
 	ConfirmationMenu* confirmationMenu;
 
-	Node* backgroundNode;
 	Node* mapNode;
-	Node* foregroundNode;
-	Node* hudNode;
-	Node* menuNode;
 	Node* mouseLayer;
 
 	SerializableMap* map;

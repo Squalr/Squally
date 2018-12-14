@@ -24,6 +24,11 @@ void SmartNode::onEnter()
 
 	this->initializePositions();
 	this->initializeListeners();
+
+	if (this->isDeveloperModeEnabled())
+	{
+		this->onDeveloperModeEnable();
+	}
 }
 
 void SmartNode::onReenter()

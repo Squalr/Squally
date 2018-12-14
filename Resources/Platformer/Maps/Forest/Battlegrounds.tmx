@@ -12,7 +12,7 @@
  </objectgroup>
  <objectgroup name="background">
   <properties>
-   <property name="background" value="Dawn"/>
+   <property name="background" value="SkySunrise"/>
    <property name="type" value="background"/>
   </properties>
  </objectgroup>
@@ -103,13 +103,13 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="440" name="solid" type="terrain" x="2780" y="2480">
+  <object id="440" name="solid" type="terrain" x="3672" y="2420">
    <properties>
     <property name="texture" value="castle"/>
    </properties>
    <polyline points="0,0 548,0 524,212 560,360 528,624 528,960 300,1160 12,960 44,664 28,448 72,268 -8,36"/>
   </object>
-  <object id="450" name="solid" type="terrain" x="6040" y="2420">
+  <object id="450" name="solid" type="terrain" x="5308" y="2244">
    <properties>
     <property name="texture" value="castle"/>
    </properties>
@@ -120,19 +120,19 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="439" name="solid" type="terrain" x="3252" y="2628">
+  <object id="439" name="solid" type="terrain" x="4144" y="2568">
    <properties>
     <property name="texture" value="castle"/>
    </properties>
    <polyline points="0,0 548,0 524,212 560,360 528,624 528,960 300,1160 12,960 44,664 28,448 72,268 -8,36"/>
   </object>
-  <object id="447" name="solid" type="terrain" x="5660" y="2672">
+  <object id="447" name="solid" type="terrain" x="4928" y="2496">
    <properties>
     <property name="texture" value="castle"/>
    </properties>
    <polyline points="0,0 548,0 524,212 560,360 528,624 528,960 300,1160 12,960 44,664 28,448 72,268 -8,36"/>
   </object>
-  <object id="449" name="solid" type="terrain" x="6376" y="2628">
+  <object id="449" name="solid" type="terrain" x="5644" y="2452">
    <properties>
     <property name="texture" value="castle"/>
    </properties>
@@ -143,13 +143,13 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="438" name="solid" type="terrain" x="2992" y="2816">
+  <object id="438" name="solid" type="terrain" x="3884" y="2756">
    <properties>
     <property name="texture" value="castle"/>
    </properties>
    <polyline points="0,0 548,0 524,212 560,360 528,624 528,960 300,1160 12,960 44,664 28,448 72,268 -8,36"/>
   </object>
-  <object id="448" name="solid" type="terrain" x="6076" y="2856">
+  <object id="448" name="solid" type="terrain" x="5344" y="2680">
    <properties>
     <property name="texture" value="castle"/>
    </properties>
@@ -165,19 +165,19 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="455" name="camera-focus" type="object" x="4672.61" y="2420" width="170.788" height="172"/>
+  <object id="455" name="camera-focus" type="object" x="4724.61" y="2320" width="170.788" height="172"/>
  </objectgroup>
  <objectgroup name="entities">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="366" name="spawn" type="object" x="3563.15" y="2504.24" width="78.7879" height="88"/>
-  <object id="445" name="spawn" type="object" x="2993.94" y="2210.67" width="78.7879" height="88"/>
-  <object id="446" name="spawn" type="object" x="3231.27" y="2613.33" width="78.7879" height="88"/>
-  <object id="451" name="spawn" type="object" x="5872.61" y="2432" width="78.7879" height="88"/>
-  <object id="452" name="spawn" type="object" x="6276.61" y="2188" width="78.7879" height="88"/>
-  <object id="453" name="spawn" type="object" x="6628.61" y="2412" width="78.7879" height="88"/>
-  <object id="454" name="spawn" type="object" x="6296.61" y="2660" width="78.7879" height="88"/>
+  <object id="366" name="spawn" type="object" x="4455.15" y="2444.24" width="78.7879" height="88"/>
+  <object id="445" name="spawn" type="object" x="3885.94" y="2150.67" width="78.7879" height="88"/>
+  <object id="446" name="spawn" type="object" x="4123.27" y="2553.33" width="78.7879" height="88"/>
+  <object id="451" name="spawn" type="object" x="5140.61" y="2256" width="78.7879" height="88"/>
+  <object id="452" name="spawn" type="object" x="5544.61" y="2012" width="78.7879" height="88"/>
+  <object id="453" name="spawn" type="object" x="5896.61" y="2236" width="78.7879" height="88"/>
+  <object id="454" name="spawn" type="object" x="5564.61" y="2484" width="78.7879" height="88"/>
  </objectgroup>
  <objectgroup name="fireflies">
   <properties>
@@ -201,14 +201,14 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="2176" y="2860" width="270" height="748"/>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="3380" y="2544" width="270" height="748"/>
  </objectgroup>
  <objectgroup name="decor 512">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="1992" y="2732" width="242" height="738"/>
-  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="2518" y="2860" width="242" height="738"/>
+  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="3196" y="2416" width="242" height="738"/>
+  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="3722" y="2544" width="242" height="738"/>
  </objectgroup>
 </map>
