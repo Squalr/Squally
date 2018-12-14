@@ -45,6 +45,7 @@ void GameCamera::onEnter()
 {
 	SmartNode::onEnter();
 
+	this->setCameraPositionWorkAround();
 	this->scheduleUpdate();
 }
 
@@ -67,14 +68,7 @@ void GameCamera::beforeSceneChange()
 
 void GameCamera::update(float dt)
 {
-	// This is a work around from a bug where setting the camera position during the loading of a scene can cause
-	// A stupid crash inside the physics engine in code with no symbols -- this can't be easily diagnosed,
-	// So this is a work around to delay setting the position in the update loop instead, bypassing the crash
-	if (this->useStoredNextCameraPosition)
-	{
-		this->setCameraPositionInternal(this->storedNextCameraPosition);
-		this->useStoredNextCameraPosition = false;
-	}
+	this->setCameraPositionWorkAround();
 
 	if (this->targetStack.size() > 0)
 	{
@@ -144,7 +138,7 @@ void GameCamera::update(float dt)
 		this->cameraPosition.x = MathUtils::clamp(this->cameraPosition.x, this->cameraBounds.getMinX() + visibleSize.width / 2.0f, this->cameraBounds.getMaxX() + visibleSize.width / 2.0f);
 		this->cameraPosition.y = MathUtils::clamp(this->cameraPosition.y, this->cameraBounds.getMinY() + visibleSize.height / 2.0f, this->cameraBounds.getMaxY() + visibleSize.height / 2.0f);
 
-		this->setCameraPositionInternal(this->cameraPosition);
+		this->setCameraPositionReal(this->cameraPosition);
 	}
 }
 
@@ -166,6 +160,7 @@ Vec2 GameCamera::getCameraPosition()
 
 void GameCamera::setCameraPosition(Vec2 position, bool addTrackOffset)
 {
+	// Don't actually set the position -- store it to use later to work around a cocos bug
 	this->storedNextCameraPosition = position;
 	this->useStoredNextCameraPosition = true;
 
@@ -175,7 +170,19 @@ void GameCamera::setCameraPosition(Vec2 position, bool addTrackOffset)
 	}
 }
 
-void GameCamera::setCameraPositionInternal(Vec2 position, bool addTrackOffset)
+void GameCamera::setCameraPositionWorkAround()
+{
+	// This is a work around from a bug where setting the camera position during the loading of a scene can cause
+	// A stupid crash inside the physics engine in code with no symbols -- this can't be easily diagnosed,
+	// So this is a work around to delay setting the position in the update loop after the scene is loaded instead, bypassing the crash
+	if (this->useStoredNextCameraPosition)
+	{
+		this->setCameraPositionReal(this->storedNextCameraPosition);
+		this->useStoredNextCameraPosition = false;
+	}
+}
+
+void GameCamera::setCameraPositionReal(Vec2 position, bool addTrackOffset)
 {
 	this->cameraPosition = position;
 

@@ -24,12 +24,8 @@ MapBase::MapBase()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->map = nullptr;
-	this->backgroundNode = Node::create();
+	this->map = nullptr;;
 	this->mapNode = Node::create();
-	this->foregroundNode = Node::create();
-	this->hudNode = Node::create();
-	this->menuNode = Node::create();
 	this->mouseLayer = Node::create();
 
 	this->pauseMenu = PauseMenu::create();
@@ -56,19 +52,13 @@ MapBase::MapBase()
 	this->addChild(this->hackerModeBackground);
 	this->addChild(this->hackerModeRain);
 	this->addChild(this->hackerModeHud);
-	this->addChild(this->hud);
-
-	this->backgroundNode->addChild(this->menuBackDrop);
-	this->hudNode->addChild(this->developerHud);
-	this->menuNode->addChild(this->pauseMenu);
-	this->menuNode->addChild(this->optionsMenu);
-	this->menuNode->addChild(this->confirmationMenu);
-
-	this->addChild(this->backgroundNode);
+	this->addChild(this->menuBackDrop);
 	this->addChild(this->mapNode);
-	this->addChild(this->foregroundNode);
-	this->addChild(this->hudNode);
-	this->addChild(this->menuNode);
+	this->addChild(this->hud);
+	this->addChild(this->developerHud);
+	this->addChild(this->pauseMenu);
+	this->addChild(this->optionsMenu);
+	this->addChild(this->confirmationMenu);
 	this->mouseLayer->addChild(Mouse::create());
 	this->addChild(this->mouseLayer);
 }
@@ -101,8 +91,10 @@ void MapBase::initializeListeners()
 {
 	GlobalScene::initializeListeners();
 
+	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
 
+	keyboardListener->onKeyPressed = (CC_CALLBACK_2(MapBase::onKeyPressed, this));
 	mouseListener->onMouseScroll = CC_CALLBACK_1(MapBase::onMouseWheelScroll, this);
 
 	this->optionsMenu->setBackClickCallback(CC_CALLBACK_0(MapBase::onOptionsExit, this));
@@ -110,6 +102,7 @@ void MapBase::initializeListeners()
 	this->pauseMenu->setOptionsCallback(CC_CALLBACK_0(MapBase::onOptionsClick, this));
 	this->pauseMenu->setExitCallback(CC_CALLBACK_0(MapBase::onExitClick, this));
 
+	this->addEventListener(keyboardListener);
 	this->addEventListener(mouseListener);
 }
 
@@ -172,7 +165,12 @@ void MapBase::onDeveloperModeEnable()
 	}
 
 	this->developerHud->setVisible(true);
-	this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+
+	if (this->getPhysicsWorld() != nullptr)
+	{
+		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+	}
+	
 	Director::getInstance()->setDisplayStats(true);
 }
 
@@ -184,7 +182,12 @@ void MapBase::onDeveloperModeDisable()
 	}
 
 	this->developerHud->setVisible(false);
-	this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
+	
+	if (this->getPhysicsWorld() != nullptr)
+	{
+		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
+	}
+
 	Director::getInstance()->setDisplayStats(false);
 }
 

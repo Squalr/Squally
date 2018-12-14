@@ -42,7 +42,8 @@ private:
 	void update(float dt) override;
 	void beforeSceneChange();
 
-	void setCameraPositionInternal(cocos2d::Vec2 position, bool addTrackOffset = false);
+	void setCameraPositionWorkAround();
+	void setCameraPositionReal(cocos2d::Vec2 position, bool addTrackOffset = false);
 
 	std::stack<cocos2d::Node*> targetStack;
 	float defaultDistance;
@@ -52,6 +53,8 @@ private:
 	cocos2d::Vec2 trackOffset;
 	cocos2d::Vec2 followSpeed;
 	cocos2d::Vec2 storedNextCameraPosition;
+
+	// Variables for working around cocos bugs
 	bool useStoredNextCameraPosition;
 
 	static GameCamera* cameraInstance;

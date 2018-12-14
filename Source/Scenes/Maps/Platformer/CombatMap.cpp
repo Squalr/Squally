@@ -18,12 +18,10 @@ void CombatMap::registerGlobalScene()
 
 CombatMap::CombatMap()
 {
-	if (!MapBase::initWithPhysics())
+	if (!MapBase::init())
 	{
 		throw std::uncaught_exception();
 	}
-
-	this->getPhysicsWorld()->setSpeed(0.0f);
 }
 
 CombatMap::~CombatMap()
