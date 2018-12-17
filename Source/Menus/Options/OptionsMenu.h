@@ -39,7 +39,7 @@ private:
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 	void showResolutionOptions();
 	void hideResolutionOptions();
-	void onExit();
+	void onMenuExit();
 
 	std::function<void()> backClickCallback;
 
