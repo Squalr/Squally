@@ -416,7 +416,7 @@ void OptionsMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
 		{
 			event->stopPropagation();
-			this->onExit();
+			this->onMenuExit();
 			break;
 		}
 		default:
@@ -428,10 +428,10 @@ void OptionsMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 void OptionsMenu::onCloseClick(MenuSprite* menuSprite)
 {
-	this->onExit();
+	this->onMenuExit();
 }
 
-void OptionsMenu::onExit()
+void OptionsMenu::onMenuExit()
 {
 	ConfigManager::save();
 
