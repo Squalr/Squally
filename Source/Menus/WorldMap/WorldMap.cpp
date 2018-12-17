@@ -32,10 +32,6 @@ WorldMap::WorldMap()
 	this->mapNodes = std::vector<MapNode*>();
 	this->mouse = Mouse::create();
 	this->background = Sprite::create(UIResources::Menus_WorldMap_WorldMap);
-	this->foreground = Sprite::create(UIResources::Menus_WorldMap_WorldMapFront);
-	this->fogA = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
-	this->fogB = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
-	this->fogC = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
 	this->titleLabel = Label::createWithTTF(Localization::resolveString(WorldMap::StringKeySelectLevel), Localization::getMainFont(), this->titleFontSize);
 	this->infoLabel = Label::createWithTTF("", Localization::getMainFont(), this->infoFontSize);
 
@@ -44,112 +40,60 @@ WorldMap::WorldMap()
 
 	this->hud = Hud::create();
 
-	this->jungle = MapNode::create(
-		UIResources::Menus_WorldMap_Jungle,
-		UIResources::Menus_WorldMap_JungleSelected,
-		UIResources::Menus_WorldMap_JungleLocked,
-		Localization::resolveString(WorldMap::StringKeyLevelNameJungle),
-		MapResources::Jungle_Jungle
-	);
-
-	this->waterRuins = MapNode::create(
-		UIResources::Menus_WorldMap_WaterRuins,
-		UIResources::Menus_WorldMap_WaterRuinsSelected,
-		UIResources::Menus_WorldMap_WaterRuinsLocked,
-		Localization::resolveString(WorldMap::StringKeyLevelNameAquaticRuins),
-		MapResources::AquaticRuins_AquaticRuins
-	);
-
 	this->forest = MapNode::create(
-		UIResources::Menus_WorldMap_Forest,
-		UIResources::Menus_WorldMap_ForestSelected,
-		UIResources::Menus_WorldMap_ForestLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameForest),
 		MapResources::Forest_Forest
 	);
 
+	this->waterRuins = MapNode::create(
+		Localization::resolveString(WorldMap::StringKeyLevelNameAquaticRuins),
+		MapResources::AquaticRuins_AquaticRuins
+	);
+
 	this->caverns = MapNode::create(
-		UIResources::Menus_WorldMap_Mountain,
-		UIResources::Menus_WorldMap_MountainSelected,
-		UIResources::Menus_WorldMap_MountainLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameCaverns),
 		MapResources::Caverns_Caverns
 	);
 
 	this->castle = MapNode::create(
-		UIResources::Menus_WorldMap_Castle,
-		UIResources::Menus_WorldMap_CastleSelected,
-		UIResources::Menus_WorldMap_CastleLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameCastle),
 		MapResources::Castle_Castle
 	);
 
 	this->iceCaps = MapNode::create(
-		UIResources::Menus_WorldMap_IceMountain,
-		UIResources::Menus_WorldMap_IceMountainSelected,
-		UIResources::Menus_WorldMap_IceMountainLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameIceCaps),
 		MapResources::IceCaps_IceCaps
 	);
 
-	this->obelisk = MapNode::create(
-		UIResources::Menus_WorldMap_Obelisk,
-		UIResources::Menus_WorldMap_ObeliskSelected,
-		UIResources::Menus_WorldMap_ObeliskLocked,
-		Localization::resolveString(WorldMap::StringKeyLevelNameObelisk),
-		MapResources::Obelisk_Obelisk
-	);
-
 	this->volcano = MapNode::create(
-		UIResources::Menus_WorldMap_Volcano,
-		UIResources::Menus_WorldMap_VolcanoSelected,
-		UIResources::Menus_WorldMap_VolcanoLocked,
 		Localization::resolveString(WorldMap::StringKeyLevelNameVolcano),
 		MapResources::Volcano_Volcano
 	);
 
-	this->mech = MapNode::create(
-		UIResources::Menus_WorldMap_Mech,
-		UIResources::Menus_WorldMap_MechSelected,
-		UIResources::Menus_WorldMap_MechLocked,
+	this->crypts = MapNode::create(
+		Localization::resolveString(WorldMap::StringKeyLevelNameObelisk),
+		MapResources::Obelisk_Obelisk
+	);
+
+	this->voidStar = MapNode::create(
 		Localization::resolveString(WorldMap::StringKeyLevelNameMech),
 		MapResources::Mech_Mech
 	);
 
 	this->background->setAnchorPoint(Vec2(0.0f, 0.0f));
 
-	/*
-	this->fogA->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-40.0f, 0))));
-	this->fogA->setOpacity(127);
-	this->fogA->setCascadeOpacityEnabled(true);
-	this->fogB->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-32.0f, 0))));
-	this->fogB->setOpacity(127);
-	this->fogB->setCascadeOpacityEnabled(true);
-	this->fogC->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-24.0f, 0))));
-	this->fogC->setOpacity(127);
-	this->fogC->setCascadeOpacityEnabled(true);
-	*/
-
 	this->hud->addChild(this->titleLabel);
 	this->hud->addChild(this->infoLabel);
 	this->hud->addChild(this->mouse);
-
 	this->addChild(this->background);
-	/*
-	this->addChild(this->jungle);
-	this->addChild(this->waterRuins);
 	this->addChild(this->forest);
+	this->addChild(this->waterRuins);
 	this->addChild(this->caverns);
 	this->addChild(this->castle);
 	this->addChild(this->iceCaps);
-	this->addChild(this->obelisk);
 	this->addChild(this->volcano);
-	this->addChild(this->mech);
-	this->addChild(this->foreground);
-	*/
-	//this->addChild(this->fogA);
-	//this->addChild(this->fogB);
-	//this->addChild(this->fogC);
+	this->addChild(this->crypts);
+	this->addChild(this->voidStar);
 	this->addChild(this->hud);
 }
 
@@ -189,21 +133,15 @@ void WorldMap::initializePositions()
 
 	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - this->titleLabel->getContentSize().height / 2.0f - 64.0f));
 	this->infoLabel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - 48.0f - 64.0f - 48.0f));
-	//this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	/*this->jungle->setPosition(Vec2(visibleSize.width / 2.0f + 624.0f, visibleSize.height / 2.0f - 292.0f));
-	this->waterRuins->setPosition(Vec2(visibleSize.width / 2.0f - 104.0f, visibleSize.height / 2.0f - 340.0f));
-	this->forest->setPosition(Vec2(visibleSize.width / 2.0f - 704.0f, visibleSize.height / 2.0f - 308.0f));
-	this->caverns->setPosition(Vec2(visibleSize.width / 2.0f - 668.0f, visibleSize.height / 2.0f + 32.0f));
-	this->castle->setPosition(Vec2(visibleSize.width / 2.0f - 388.0f, visibleSize.height / 2.0f + 344.0f));
-	this->iceCaps->setPosition(Vec2(visibleSize.width / 2.0f + 112.0f, visibleSize.height / 2.0f + 496.0f));
-	this->obelisk->setPosition(Vec2(visibleSize.width / 2.0f + 720.0f, visibleSize.height / 2.0f + 420.0f));
-	this->volcano->setPosition(Vec2(visibleSize.width / 2.0f + 196.0f, visibleSize.height / 2.0f + 64.0f));
-	this->mech->setPosition(Vec2(visibleSize.width / 2.0f + 696.0f, visibleSize.height / 2.0f - 38.0f));
-	this->foreground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));*/
 
-	//this->fogA->setPosition(Vec2(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f + 420.0f));
-	//this->fogB->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	//this->fogC->setPosition(Vec2(visibleSize.width / 2.0f - 420.0f, visibleSize.height / 2.0f - 420.0f));
+	this->forest->setPosition(Vec2(visibleSize.width / 2.0f - 503.0f, visibleSize.height / 2.0f + 698.0f + 224.0f));
+	this->waterRuins->setPosition(Vec2(visibleSize.width / 2.0f - 552.0f, visibleSize.height / 2.0f + 255.0f + 224.0f));
+	this->caverns->setPosition(Vec2(visibleSize.width / 2.0f - 413.0f, visibleSize.height / 2.0f - 143.0f + 224.0f));
+	this->castle->setPosition(Vec2(visibleSize.width / 2.0f + 256.0f, visibleSize.height / 2.0f - 274.0f + 224.0f));
+	this->iceCaps->setPosition(Vec2(visibleSize.width / 2.0f + 1117.0f, visibleSize.height / 2.0f - 390.0f + 224.0f));
+	this->volcano->setPosition(Vec2(visibleSize.width / 2.0f + 1068.0f, visibleSize.height / 2.0f + 455.0f + 224.0f));
+	this->crypts->setPosition(Vec2(visibleSize.width / 2.0f + 340.0f, visibleSize.height / 2.0f + 645.0f + 224.0f));
+	this->voidStar->setPosition(Vec2(visibleSize.width / 2.0f + 760.0f, visibleSize.height / 2.0f + 44.0f + 224.0f));
 
 	this->initializedLocked();
 }

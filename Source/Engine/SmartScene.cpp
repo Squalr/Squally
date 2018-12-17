@@ -9,6 +9,7 @@
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/DeveloperModeEvents.h"
+#include "Engine/UI/HUD/Hud.h"
 
 const float SmartScene::defaultFadeSpeed = 0.75f;
 
@@ -18,9 +19,16 @@ SmartScene::SmartScene()
 {
 	this->fadeAction = nullptr;
 	this->fadeSpeed = SmartScene::defaultFadeSpeed;
+	this->layerColorHud = Hud::create();
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 255));
 
-	this->addChild(this->layerColor);
+	this->layerColor->setContentSize(Director::getInstance()->getVisibleSize());
+	this->layerColorHud->setAnchorPoint(Vec2(0.5f, 0.5f));
+
+	this->layerColorHud->setZOrder(99999);
+
+	this->layerColorHud->addChild(this->layerColor);
+	this->addChild(this->layerColorHud);
 }
 
 SmartScene::~SmartScene()
@@ -34,7 +42,6 @@ void SmartScene::onEnter()
 	// Make fade in visible, fullscreen, and topmost
 	if (this->fadeSpeed > 0.0f)
 	{
-		this->layerColor->setContentSize(Director::getInstance()->getOpenGLView()->getDesignResolutionSize());
 		this->layerColor->setOpacity(255);
 
 		// Fade into the scene
@@ -45,8 +52,6 @@ void SmartScene::onEnter()
 	{
 		this->layerColor->setOpacity(0);
 	}
-
-	this->layerColor->setZOrder(999);
 
 	this->initializePositions();
 	this->initializeListeners();

@@ -11,7 +11,7 @@ using namespace cocos2d;
 class MapNode : public Node
 {
 public:
-	static MapNode * create(std::string resource, std::string resourceSelected, std::string resourceLocked, std::string mapName, std::string mapFile);
+	static MapNode* create(std::string mapName, std::string mapFile);
 
 	void setLocked(bool newLocked);
 	bool isLocked();
@@ -20,7 +20,7 @@ public:
 	std::string nodeMapFile;
 
 protected:
-	MapNode(std::string resource, std::string resourceSelected, std::string resourceLocked, std::string mapName, std::string mapFile);
+	MapNode(std::string mapName, std::string mapFile);
 	~MapNode();
 
 private:
@@ -30,6 +30,5 @@ private:
 
 	bool locked;
 	MenuSprite* mapSprite;
-	Sprite* mapSpriteLocked;
 };
 
