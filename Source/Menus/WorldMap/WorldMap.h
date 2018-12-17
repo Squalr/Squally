@@ -27,7 +27,6 @@ private:
 	void initializedLocked();
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onMouseMove(EventCustom* args);
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
 	std::vector<MapNode*> mapNodes;
@@ -44,8 +43,6 @@ private:
 
 	Hud* hud;
 	Mouse* mouse;
-	Label* titleLabel;
-	Label* infoLabel;
 
 	static WorldMap* instance;
 

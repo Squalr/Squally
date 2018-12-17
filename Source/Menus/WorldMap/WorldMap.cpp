@@ -32,11 +32,6 @@ WorldMap::WorldMap()
 	this->mapNodes = std::vector<MapNode*>();
 	this->mouse = Mouse::create();
 	this->background = Sprite::create(UIResources::Menus_WorldMap_WorldMap);
-	this->titleLabel = Label::createWithTTF(Localization::resolveString(WorldMap::StringKeySelectLevel), Localization::getMainFont(), this->titleFontSize);
-	this->infoLabel = Label::createWithTTF("", Localization::getMainFont(), this->infoFontSize);
-
-	this->titleLabel->enableOutline(Color4B::BLACK, 2);
-	this->infoLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->hud = Hud::create();
 
@@ -82,8 +77,6 @@ WorldMap::WorldMap()
 
 	this->background->setAnchorPoint(Vec2(0.0f, 0.0f));
 
-	this->hud->addChild(this->titleLabel);
-	this->hud->addChild(this->infoLabel);
 	this->hud->addChild(this->mouse);
 	this->addChild(this->background);
 	this->addChild(this->forest);
@@ -108,9 +101,6 @@ void WorldMap::onEnter()
 	const float delay = 0.5f;
 	const float duration = 0.75f;
 
-	GameUtils::fadeInObject(this->titleLabel, delay, duration);
-	GameUtils::fadeInObject(this->infoLabel, delay, duration);
-
 	GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->background->getContentSize().width, this->background->getContentSize().height));
 
 	CameraTrackingData trackingData = CameraTrackingData(this->mouse, Vec2(480.0f, 270.0f));
@@ -130,9 +120,6 @@ void WorldMap::initializePositions()
 	GlobalScene::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - this->titleLabel->getContentSize().height / 2.0f - 64.0f));
-	this->infoLabel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - 48.0f - 64.0f - 48.0f));
 
 	this->forest->setPosition(Vec2(visibleSize.width / 2.0f - 503.0f, visibleSize.height / 2.0f + 698.0f + 224.0f));
 	this->waterRuins->setPosition(Vec2(visibleSize.width / 2.0f - 552.0f, visibleSize.height / 2.0f + 255.0f + 224.0f));
@@ -155,12 +142,10 @@ void WorldMap::initializeListeners()
 		GlobalDirector::loadScene(WorldMap::instance);
 	}));
 
-	EventListenerCustom* mouseListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(WorldMap::onMouseMove, this));
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(WorldMap::onKeyPressed, this);
 
-	this->addEventListener(mouseListener);
 	this->addEventListener(keyboardListener);
 }
 
@@ -198,22 +183,4 @@ void WorldMap::initializedLocked()
 	this->obelisk->setLocked(false);
 	this->volcano->setLocked(false);
 	this->mech->setLocked(false);*/
-}
-
-void WorldMap::onMouseMove(EventCustom* event)
-{
-	MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(event->getUserData());
-
-	for (auto it = this->mapNodes.begin(); it != this->mapNodes.end(); it++)
-	{
-		MapNode* node = *it;
-
-		if (GameUtils::intersects(node, args->mouseCoords) && !node->isLocked())
-		{
-			this->infoLabel->setString(node->nodeMapName);
-			return;
-		}
-	}
-
-	this->infoLabel->setString("");
 }
