@@ -30,6 +30,7 @@ void WorldMap::registerGlobalScene()
 WorldMap::WorldMap()
 {
 	this->mapNodes = std::vector<MapNode*>();
+	this->mouse = Mouse::create();
 	this->background = Sprite::create(UIResources::Menus_WorldMap_WorldMap);
 	this->foreground = Sprite::create(UIResources::Menus_WorldMap_WorldMapFront);
 	this->fogA = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
@@ -40,6 +41,8 @@ WorldMap::WorldMap()
 
 	this->titleLabel->enableOutline(Color4B::BLACK, 2);
 	this->infoLabel->enableOutline(Color4B::BLACK, 2);
+
+	this->hud = Hud::create();
 
 	this->jungle = MapNode::create(
 		UIResources::Menus_WorldMap_Jungle,
@@ -113,6 +116,9 @@ WorldMap::WorldMap()
 		MapResources::Mech_Mech
 	);
 
+	this->background->setAnchorPoint(Vec2(0.0f, 0.0f));
+
+	/*
 	this->fogA->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-40.0f, 0))));
 	this->fogA->setOpacity(127);
 	this->fogA->setCascadeOpacityEnabled(true);
@@ -122,18 +128,14 @@ WorldMap::WorldMap()
 	this->fogC->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-24.0f, 0))));
 	this->fogC->setOpacity(127);
 	this->fogC->setCascadeOpacityEnabled(true);
+	*/
 
-	this->mapNodes.push_back(this->jungle);
-	this->mapNodes.push_back(this->waterRuins);
-	this->mapNodes.push_back(this->forest);
-	this->mapNodes.push_back(this->caverns);
-	this->mapNodes.push_back(this->castle);
-	this->mapNodes.push_back(this->iceCaps);
-	this->mapNodes.push_back(this->obelisk);
-	this->mapNodes.push_back(this->volcano);
-	this->mapNodes.push_back(this->mech);
+	this->hud->addChild(this->titleLabel);
+	this->hud->addChild(this->infoLabel);
+	this->hud->addChild(this->mouse);
 
 	this->addChild(this->background);
+	/*
 	this->addChild(this->jungle);
 	this->addChild(this->waterRuins);
 	this->addChild(this->forest);
@@ -144,12 +146,11 @@ WorldMap::WorldMap()
 	this->addChild(this->volcano);
 	this->addChild(this->mech);
 	this->addChild(this->foreground);
-	this->addChild(this->fogA);
-	this->addChild(this->fogB);
-	this->addChild(this->fogC);
-	this->addChild(this->titleLabel);
-	this->addChild(this->infoLabel);
-	this->addChild(Mouse::create());
+	*/
+	//this->addChild(this->fogA);
+	//this->addChild(this->fogB);
+	//this->addChild(this->fogC);
+	this->addChild(this->hud);
 }
 
 WorldMap::~WorldMap()
@@ -165,6 +166,19 @@ void WorldMap::onEnter()
 
 	GameUtils::fadeInObject(this->titleLabel, delay, duration);
 	GameUtils::fadeInObject(this->infoLabel, delay, duration);
+
+	GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->background->getContentSize().width, this->background->getContentSize().height));
+
+	CameraTrackingData trackingData = CameraTrackingData(this->mouse, Vec2(480.0f, 270.0f));
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	// Because the mouse is a HUD object (and thus unaffected by the camera position), we need a custom function for getting the position to help with camera tracking
+	trackingData.customPositionFunction = [=]()
+	{
+		return this->mouse->getPosition() + GameCamera::getInstance()->getCameraPosition() - visibleSize / 2.0f;
+	};
+
+	GameCamera::getInstance()->setTarget(trackingData);
 }
 
 void WorldMap::initializePositions()
@@ -175,8 +189,8 @@ void WorldMap::initializePositions()
 
 	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - this->titleLabel->getContentSize().height / 2.0f - 64.0f));
 	this->infoLabel->setPosition(Vec2(visibleSize.width / 2.0f - 616.0f, visibleSize.height - 48.0f - 64.0f - 48.0f));
-	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->jungle->setPosition(Vec2(visibleSize.width / 2.0f + 624.0f, visibleSize.height / 2.0f - 292.0f));
+	//this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	/*this->jungle->setPosition(Vec2(visibleSize.width / 2.0f + 624.0f, visibleSize.height / 2.0f - 292.0f));
 	this->waterRuins->setPosition(Vec2(visibleSize.width / 2.0f - 104.0f, visibleSize.height / 2.0f - 340.0f));
 	this->forest->setPosition(Vec2(visibleSize.width / 2.0f - 704.0f, visibleSize.height / 2.0f - 308.0f));
 	this->caverns->setPosition(Vec2(visibleSize.width / 2.0f - 668.0f, visibleSize.height / 2.0f + 32.0f));
@@ -185,11 +199,11 @@ void WorldMap::initializePositions()
 	this->obelisk->setPosition(Vec2(visibleSize.width / 2.0f + 720.0f, visibleSize.height / 2.0f + 420.0f));
 	this->volcano->setPosition(Vec2(visibleSize.width / 2.0f + 196.0f, visibleSize.height / 2.0f + 64.0f));
 	this->mech->setPosition(Vec2(visibleSize.width / 2.0f + 696.0f, visibleSize.height / 2.0f - 38.0f));
-	this->foreground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->foreground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));*/
 
-	this->fogA->setPosition(Vec2(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f + 420.0f));
-	this->fogB->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->fogC->setPosition(Vec2(visibleSize.width / 2.0f - 420.0f, visibleSize.height / 2.0f - 420.0f));
+	//this->fogA->setPosition(Vec2(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f + 420.0f));
+	//this->fogB->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	//this->fogC->setPosition(Vec2(visibleSize.width / 2.0f - 420.0f, visibleSize.height / 2.0f - 420.0f));
 
 	this->initializedLocked();
 }
@@ -236,6 +250,7 @@ void WorldMap::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 void WorldMap::initializedLocked()
 {
+	/*
 	this->jungle->setLocked(false);
 	this->waterRuins->setLocked(false);
 	this->forest->setLocked(false);
@@ -244,7 +259,7 @@ void WorldMap::initializedLocked()
 	this->iceCaps->setLocked(false);
 	this->obelisk->setLocked(false);
 	this->volcano->setLocked(false);
-	this->mech->setLocked(false);
+	this->mech->setLocked(false);*/
 }
 
 void WorldMap::onMouseMove(EventCustom* event)

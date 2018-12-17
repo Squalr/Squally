@@ -27,9 +27,8 @@ void IsometricMap::onEnter()
 {
 	MapBase::onEnter();
 
-	GameCamera::getInstance()->setScrollOffset(Vec2(64.0f, 32.0f));
-	GameCamera::getInstance()->setFollowSpeed(Vec2(0.075f, 0.075f));
-	GameCamera::getInstance()->setTarget(IsometricSqually::getInstance());
+	CameraTrackingData trackingData = CameraTrackingData(IsometricSqually::getInstance(), Vec2(128.0f, 96.0f));
+	GameCamera::getInstance()->setTarget(trackingData);
 
 	this->scheduleUpdate();
 }

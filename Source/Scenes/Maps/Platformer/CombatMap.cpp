@@ -31,9 +31,6 @@ CombatMap::~CombatMap()
 void CombatMap::onEnter()
 {
 	MapBase::onEnter();
-
-	GameCamera::getInstance()->setScrollOffset(Vec2::ZERO);
-	GameCamera::getInstance()->setFollowSpeed(Vec2(0.075f, 0.075f));
 }
 
 void CombatMap::initializePositions()

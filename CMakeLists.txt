@@ -77,6 +77,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Analytics/Analytics.cpp
 	Source/Engine/Analytics/TAnalytics.cpp
 	Source/Engine/Animations/SmartAnimationNode.cpp
+	Source/Engine/Camera/CameraTrackingData.cpp
 	Source/Engine/Camera/GameCamera.cpp
 	Source/Engine/Config/ConfigManager.cpp
 	Source/Engine/Cutscenes/Cutscene.cpp
@@ -833,6 +834,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Analytics/Analytics.h
 	Source/Engine/Analytics/TAnalytics.h
 	Source/Engine/Animations/SmartAnimationNode.h
+	Source/Engine/Camera/CameraTrackingData.h
 	Source/Engine/Camera/GameCamera.h
 	Source/Engine/Config/ConfigManager.h
 	Source/Engine/Cutscenes/Cutscene.h

@@ -6,6 +6,8 @@
 
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
+#include "Engine/Localization/Localization.h"
+#include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
@@ -30,11 +32,23 @@ GameCamera* GameCamera::getInstance()
 GameCamera::GameCamera()
 {
 	this->useStoredNextCameraPosition = false;
-	this->targetStack = std::stack<Node*>();
-	this->cameraScrollOffset = Vec2::ZERO;
-	this->cameraBounds = Rect::ZERO;
-
 	this->defaultDistance = Director::getInstance()->getZEye();
+	this->targetStack = std::stack<CameraTrackingData>();
+	this->cameraBounds = Rect::ZERO;
+	this->hud = Hud::create();
+	this->debugCameraRectangle = DrawNode::create();
+	this->debugCameraLabelX = Label::create("", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	this->debugCameraLabelY = Label::create("", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	this->hud->setZOrder(9999);
+	this->hud->setVisible(false);
+
+	this->debugCameraLabelX->setAnchorPoint(Vec2(1.0f, 0.0f));
+	this->debugCameraLabelY->setAnchorPoint(Vec2(1.0f, 0.0f));
+
+	this->hud->addChild(this->debugCameraRectangle);
+	this->hud->addChild(this->debugCameraLabelX);
+	this->hud->addChild(this->debugCameraLabelY);
+	this->addChild(this->hud);
 }
 
 GameCamera::~GameCamera()
@@ -47,6 +61,32 @@ void GameCamera::onEnter()
 
 	this->setCameraPositionWorkAround();
 	this->scheduleUpdate();
+}
+
+void GameCamera::onDeveloperModeEnable()
+{
+	SmartNode::onDeveloperModeEnable();
+
+	this->updateCameraDebugLabels();
+	this->hud->setVisible(true);
+}
+
+void GameCamera::onDeveloperModeDisable()
+{
+	GameCamera::onDeveloperModeEnable();
+
+	this->hud->setVisible(false);
+}
+
+void GameCamera::initializePositions()
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	SmartNode::initializePositions();
+
+	this->debugCameraRectangle->setPosition(visibleSize / 2.0f);
+	this->debugCameraLabelX->setPosition(Vec2(visibleSize.width - 16.0f, 16.0f + 48.0f));
+	this->debugCameraLabelY->setPosition(Vec2(visibleSize.width - 16.0f, 16.0f));
 }
 
 void GameCamera::initializeListeners()
@@ -72,73 +112,76 @@ void GameCamera::update(float dt)
 
 	if (this->targetStack.size() > 0)
 	{
-		Vec2 targetPosition = this->targetStack.top()->getPosition();
+		CameraTrackingData trackingData = this->targetStack.top();
+
+		Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
+		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? trackingData.target->getPosition() : trackingData.customPositionFunction();
 		Size visibleSize = Director::getInstance()->getVisibleSize();
 
 		// Handle camera scrolling from target traveling past scroll distance
-		if (this->cameraPosition.x < targetPosition.x - this->cameraScrollOffset.x)
+		if (cameraPosition.x < targetPosition.x - trackingData.scrollOffset.x)
 		{
-			float idealPositionX = targetPosition.x - this->cameraScrollOffset.x + this->trackOffset.x;
+			float idealPositionX = targetPosition.x - trackingData.scrollOffset.x + trackingData.trackOffset.x;
 
-			if (followSpeed.x <= 0.0f)
+			if (trackingData.followSpeed.x <= 0.0f)
 			{
-				this->cameraPosition.x = idealPositionX;
+				cameraPosition.x = idealPositionX;
 			}
 			else
 			{
-				float distance = idealPositionX - this->cameraPosition.x;
-				this->cameraPosition.x = this->cameraPosition.x + distance * this->followSpeed.x;
+				float distance = idealPositionX - cameraPosition.x;
+				cameraPosition.x = cameraPosition.x + distance * trackingData.followSpeed.x;
 			}
 		}
-		else if (this->cameraPosition.x > targetPosition.x + this->cameraScrollOffset.x)
+		else if (cameraPosition.x > targetPosition.x + trackingData.scrollOffset.x)
 		{
-			float idealPositionX = targetPosition.x + this->cameraScrollOffset.x + this->trackOffset.x;
+			float idealPositionX = targetPosition.x + trackingData.scrollOffset.x + trackingData.trackOffset.x;
 
-			if (followSpeed.x <= 0.0f)
+			if (trackingData.followSpeed.x <= 0.0f)
 			{
-				this->cameraPosition.x = idealPositionX;
+				cameraPosition.x = idealPositionX;
 			}
 			else
 			{
-				float distance = idealPositionX - this->cameraPosition.x;
-				this->cameraPosition.x = this->cameraPosition.x + distance * this->followSpeed.x;
+				float distance = idealPositionX - cameraPosition.x;
+				cameraPosition.x = cameraPosition.x + distance * trackingData.followSpeed.x;
 			}
 		}
 
-		if (this->cameraPosition.y < targetPosition.y - this->cameraScrollOffset.y)
+		if (cameraPosition.y < targetPosition.y - trackingData.scrollOffset.y)
 		{
-			float idealPositionY = targetPosition.y - this->cameraScrollOffset.y + this->trackOffset.y;
+			float idealPositionY = targetPosition.y - trackingData.scrollOffset.y + trackingData.trackOffset.y;
 
-			if (followSpeed.y <= 0.0f)
+			if (trackingData.followSpeed.y <= 0.0f)
 			{
-				this->cameraPosition.y = idealPositionY;
+				cameraPosition.y = idealPositionY;
 			}
 			else
 			{
-				float distance = idealPositionY - this->cameraPosition.y;
-				this->cameraPosition.y = this->cameraPosition.y + distance * this->followSpeed.y;
+				float distance = idealPositionY - cameraPosition.y;
+				cameraPosition.y = cameraPosition.y + distance * trackingData.followSpeed.y;
 			}
 		}
-		else if (this->cameraPosition.y > targetPosition.y + this->cameraScrollOffset.y)
+		else if (cameraPosition.y > targetPosition.y + trackingData.scrollOffset.y)
 		{
-			float idealPositionY = targetPosition.y + this->cameraScrollOffset.y + this->trackOffset.y;
+			float idealPositionY = targetPosition.y + trackingData.scrollOffset.y + trackingData.trackOffset.y;
 
-			if (followSpeed.y <= 0.0f)
+			if (trackingData.followSpeed.y <= 0.0f)
 			{
-				this->cameraPosition.y = idealPositionY;
+				cameraPosition.y = idealPositionY;
 			}
 			else
 			{
-				float distance = idealPositionY - this->cameraPosition.y;
-				this->cameraPosition.y = this->cameraPosition.y + distance * this->followSpeed.y;
+				float distance = idealPositionY - cameraPosition.y;
+				cameraPosition.y = cameraPosition.y + distance * trackingData.followSpeed.y;
 			}
 		}
 
 		// Prevent camera from leaving level bounds
-		this->cameraPosition.x = MathUtils::clamp(this->cameraPosition.x, this->cameraBounds.getMinX() + visibleSize.width / 2.0f, this->cameraBounds.getMaxX() + visibleSize.width / 2.0f);
-		this->cameraPosition.y = MathUtils::clamp(this->cameraPosition.y, this->cameraBounds.getMinY() + visibleSize.height / 2.0f, this->cameraBounds.getMaxY() + visibleSize.height / 2.0f);
+		cameraPosition.x = MathUtils::clamp(cameraPosition.x, this->cameraBounds.getMinX() + visibleSize.width / 2.0f, this->cameraBounds.getMaxX() - visibleSize.width / 2.0f);
+		cameraPosition.y = MathUtils::clamp(cameraPosition.y, this->cameraBounds.getMinY() + visibleSize.height / 2.0f, this->cameraBounds.getMaxY() - visibleSize.height / 2.0f);
 
-		this->setCameraPositionReal(this->cameraPosition);
+		this->setCameraPositionReal(cameraPosition);
 	}
 }
 
@@ -164,9 +207,9 @@ void GameCamera::setCameraPosition(Vec2 position, bool addTrackOffset)
 	this->storedNextCameraPosition = position;
 	this->useStoredNextCameraPosition = true;
 
-	if (addTrackOffset)
+	if (addTrackOffset && this->targetStack.size() > 0)
 	{
-		this->storedNextCameraPosition += this->trackOffset;
+		this->storedNextCameraPosition += this->targetStack.top().trackOffset;
 	}
 }
 
@@ -184,14 +227,19 @@ void GameCamera::setCameraPositionWorkAround()
 
 void GameCamera::setCameraPositionReal(Vec2 position, bool addTrackOffset)
 {
-	this->cameraPosition = position;
+	Vec2 cameraPosition = position;
 
-	if (addTrackOffset)
+	if (addTrackOffset && this->targetStack.size() > 0)
 	{
-		this->cameraPosition += this->trackOffset;
+		cameraPosition += this->targetStack.top().trackOffset;
 	}
 
-	Camera::getDefaultCamera()->setPosition(this->cameraPosition);
+	if (this->isDeveloperModeEnabled())
+	{
+		this->updateCameraDebugLabels();
+	}
+
+	Camera::getDefaultCamera()->setPosition(cameraPosition);
 }
 
 Rect GameCamera::getBounds()
@@ -204,55 +252,37 @@ void GameCamera::setBounds(Rect bounds)
 	this->cameraBounds = bounds;
 }
 
-Vec2 GameCamera::getScrollOffset()
-{
-	return this->cameraScrollOffset;
-}
-
-void GameCamera::setScrollOffset(Vec2 offset)
-{
-	this->cameraScrollOffset = offset;
-}
-
-Vec2 GameCamera::getTrackOffset()
-{
-	return this->trackOffset;
-}
-
-void GameCamera::setTrackOffset(Vec2 trackOffset)
-{
-	this->trackOffset = trackOffset;
-}
-
-Vec2 GameCamera::getFollowSpeed()
-{
-	return this->followSpeed;
-}
-
-void GameCamera::setFollowSpeed(Vec2 speed)
-{
-	speed.x = MathUtils::clamp(speed.x, 0.0f, 1.0f);
-	speed.y = MathUtils::clamp(speed.y, 0.0f, 1.0f);
-
-	this->followSpeed = speed;
-}
-
-void GameCamera::setTarget(Node* newTarget, Vec2 trackOffset)
+void GameCamera::setTarget(CameraTrackingData trackingData)
 {
 	this->clearTargets();
 
-	this->setTrackOffset(trackOffset);
+	this->pushTarget(trackingData);
 
-	if (newTarget != nullptr)
+	if (trackingData.target != nullptr)
 	{
-		this->pushTarget(newTarget);
-		this->setCameraPosition(newTarget->getPosition(), true);
+		this->setCameraPosition(trackingData.target->getPosition(), true);
 	}
 }
 
-void GameCamera::pushTarget(Node* newTarget)
+void GameCamera::pushTarget(CameraTrackingData trackingData)
 {
-	this->targetStack.push(newTarget);
+	trackingData.followSpeed.x = MathUtils::clamp(trackingData.followSpeed.x, 0.0f, 1.0f);
+	trackingData.followSpeed.y = MathUtils::clamp(trackingData.followSpeed.y, 0.0f, 1.0f);
+
+	this->debugCameraRectangle->removeAllChildren();
+	this->debugCameraRectangle->drawRect(Vec2(-trackingData.scrollOffset.x, -trackingData.scrollOffset.y), Vec2(trackingData.scrollOffset.x, trackingData.scrollOffset.y), Color4F::GRAY);
+
+	this->targetStack.push(trackingData);
+}
+
+CameraTrackingData* GameCamera::getCurrentTrackingData()
+{
+	if (this->targetStack.size() > 0)
+	{
+		return &this->targetStack.top();
+	}
+
+	return nullptr;
 }
 
 void GameCamera::popTarget()
@@ -266,4 +296,12 @@ void GameCamera::clearTargets()
 	{
 		this->targetStack.pop();
 	}
+}
+
+void GameCamera::updateCameraDebugLabels()
+{
+	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
+
+	this->debugCameraLabelX->setString("Camera X: " + std::to_string(cameraPosition.x));
+	this->debugCameraLabelY->setString("Camera Y: " + std::to_string(cameraPosition.y));
 }
