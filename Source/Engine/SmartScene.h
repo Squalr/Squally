@@ -8,6 +8,8 @@ namespace cocos2d
 	class FiniteTimeAction;
 }
 
+class Hud;
+
 class SmartScene : public cocos2d::Scene
 {
 public:
@@ -30,6 +32,7 @@ protected:
 	void addEventListener(cocos2d::EventListener* listener);
 	void addEventListenerIgnorePause(cocos2d::EventListener* listener);
 
+	Hud* layerColorHud;
 	cocos2d::LayerColor* layerColor;
 	cocos2d::FiniteTimeAction* fadeAction;
 	float fadeSpeed;

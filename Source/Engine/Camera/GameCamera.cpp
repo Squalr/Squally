@@ -269,7 +269,7 @@ void GameCamera::pushTarget(CameraTrackingData trackingData)
 	trackingData.followSpeed.x = MathUtils::clamp(trackingData.followSpeed.x, 0.0f, 1.0f);
 	trackingData.followSpeed.y = MathUtils::clamp(trackingData.followSpeed.y, 0.0f, 1.0f);
 
-	this->debugCameraRectangle->removeAllChildren();
+	this->debugCameraRectangle->clear();
 	this->debugCameraRectangle->drawRect(Vec2(-trackingData.scrollOffset.x, -trackingData.scrollOffset.y), Vec2(trackingData.scrollOffset.x, trackingData.scrollOffset.y), Color4F::GRAY);
 
 	this->targetStack.push(trackingData);

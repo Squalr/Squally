@@ -31,21 +31,16 @@ private:
 	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
 
 	std::vector<MapNode*> mapNodes;
-	MapNode* jungle;
-	MapNode* waterRuins;
 	MapNode* forest;
+	MapNode* waterRuins;
 	MapNode* caverns;
 	MapNode* castle;
 	MapNode* iceCaps;
-	MapNode* obelisk;
 	MapNode* volcano;
-	MapNode* mech;
+	MapNode* crypts;
+	MapNode* voidStar;
 
 	Sprite* background;
-	Sprite* foreground;
-	InfiniteParallaxNode* fogA;
-	InfiniteParallaxNode* fogB;
-	InfiniteParallaxNode* fogC;
 
 	Hud* hud;
 	Mouse* mouse;

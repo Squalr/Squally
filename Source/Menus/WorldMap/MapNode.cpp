@@ -1,26 +1,25 @@
 #include "MapNode.h"
 
-MapNode* MapNode::create(std::string resource, std::string resourceSelected, std::string resourceLocked, std::string mapName, std::string mapFile)
+#include "Resources/UIResources.h"
+
+MapNode* MapNode::create(std::string mapName, std::string mapFile)
 {
-	MapNode* instance = new MapNode(resource, resourceSelected, resourceLocked, mapName, mapFile);
+	MapNode* instance = new MapNode(mapName, mapFile);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MapNode::MapNode(std::string resource, std::string resourceSelected, std::string resourceLocked, std::string mapName, std::string mapFile)
+MapNode::MapNode(std::string mapName, std::string mapFile)
 {
 	this->nodeMapName = mapName;
 	this->nodeMapFile = mapFile;
+	this->mapSprite = MenuSprite::create(UIResources::Menus_WorldMap_MarkerCurrent, UIResources::Menus_WorldMap_MarkerCurrentSelected);
 
-	this->mapSprite = MenuSprite::create(resource, resourceSelected);
-	this->mapSpriteLocked = Sprite::create(resourceLocked);
-
-	this->mapSpriteLocked->setVisible(false);
+	this->setAnchorPoint(Vec2(0.0f, 0.0f));
 
 	this->addChild(this->mapSprite);
-	this->addChild(this->mapSpriteLocked);
 
 	this->initializePositions();
 	this->initializeListeners();
@@ -35,12 +34,10 @@ void MapNode::setLocked(bool newLocked)
 	if (newLocked)
 	{
 		this->mapSprite->setVisible(false);
-		this->mapSpriteLocked->setVisible(true);
 	}
 	else
 	{
 		this->mapSprite->setVisible(true);
-		this->mapSpriteLocked->setVisible(false);
 	}
 
 	this->locked = newLocked;
@@ -53,7 +50,7 @@ bool MapNode::isLocked()
 
 void MapNode::initializePositions()
 {
-	this->setContentSize(this->mapSpriteLocked->getContentSize());
+	this->setContentSize(this->mapSprite->getContentSize());
 }
 
 void MapNode::initializeListeners()
