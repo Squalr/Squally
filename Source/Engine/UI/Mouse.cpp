@@ -80,6 +80,11 @@ void Mouse::resume()
 	SmartNode::resume();
 }
 
+const cocos2d::Vec2& Mouse::getPosition() const
+{
+	return this->readMousePosition;
+}
+
 void Mouse::onMouseStateUpdateEvent(EventCustom* eventCustom)
 {
 	MouseEvents::MouseEventArgs* args = (MouseEvents::MouseEventArgs*)(eventCustom->getUserData());
@@ -101,6 +106,7 @@ void Mouse::onMouseStateUpdateEvent(EventCustom* eventCustom)
 		this->setActiveMouseSprite(this->mouseSpriteIdle);
 	}
 
+	this->readMousePosition = MouseState::getMousePosition();
 	this->setSpriteToCursorPosition();
 }
 

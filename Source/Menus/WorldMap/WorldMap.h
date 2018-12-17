@@ -46,6 +46,9 @@ private:
 	InfiniteParallaxNode* fogA;
 	InfiniteParallaxNode* fogB;
 	InfiniteParallaxNode* fogC;
+
+	Hud* hud;
+	Mouse* mouse;
 	Label* titleLabel;
 	Label* infoLabel;
 

@@ -25,5 +25,6 @@ void CameraFocus::onEnter()
 {
 	SerializableObject::onEnter();
 
-	GameCamera::getInstance()->setTarget(this);
+	CameraTrackingData trackingData = CameraTrackingData(this);
+	GameCamera::getInstance()->setTarget(trackingData);
 }
