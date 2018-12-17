@@ -1,0 +1,26 @@
+{
+  "Abomination": {
+    "Path": "Enemies",
+    "Scale": "0.6",
+    "Size": {
+      "Width": 296,
+      "Height": 356
+    },
+    "Offset": {
+      "Width": 0,
+      "Height": 0
+    }
+  },
+  "Test": {
+    "Path": "Enemies",
+    "Scale": "0.6",
+    "Size": {
+      "Width": 296,
+      "Height": 356
+    },
+    "Offset": {
+      "Width": 0,
+      "Height": 0
+    }
+  }
+}
