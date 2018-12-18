@@ -14,7 +14,7 @@ HexusOpponentUrsula* HexusOpponentUrsula::getInstance()
 }
 
 HexusOpponentUrsula::HexusOpponentUrsula() : HexusOpponentData(
-	EntityResources::Npcs_Ursula_Animations,
+	EntityResources::Npcs_LexiconCrypts_Ursula_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

@@ -14,7 +14,7 @@ HexusOpponentFinch* HexusOpponentFinch::getInstance()
 }
 
 HexusOpponentFinch::HexusOpponentFinch() : HexusOpponentData(
-	EntityResources::Npcs_Finch_Animations,
+	EntityResources::Npcs_SeaSharpCaverns_Finch_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	0.9f,
 	Vec2(-32.0f, -64.0f),

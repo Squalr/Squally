@@ -14,7 +14,7 @@ HexusOpponentPenguinGrunt* HexusOpponentPenguinGrunt::getInstance()
 }
 
 HexusOpponentPenguinGrunt::HexusOpponentPenguinGrunt() : HexusOpponentData(
-	EntityResources::Enemies_PenguinGrunt_Animations,
+	EntityResources::Enemies_LambdaPeaks_PenguinGrunt_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
 	Vec2(-48.0f, -64.0f),

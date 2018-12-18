@@ -8,203 +8,203 @@
 // BEGIN: THIS CODE IS GENERATED: //
 ////V////V////V////V////V////V////V/
 
-#include "Entities/Platformer/Enemies/Abomination.h"
-#include "Entities/Platformer/Enemies/Gargoyle.h"
-#include "Entities/Platformer/Enemies/KingZul.h"
-#include "Entities/Platformer/Enemies/ReanimatedFighter.h"
-#include "Entities/Platformer/Enemies/SkeletalBaron.h"
-#include "Entities/Platformer/Enemies/SkeletalCleaver.h"
-#include "Entities/Platformer/Enemies/SkeletalKnight.h"
-#include "Entities/Platformer/Enemies/SkeletalPriestess.h"
-#include "Entities/Platformer/Enemies/Undead.h"
-#include "Entities/Platformer/Enemies/VoidArcher.h"
-#include "Entities/Platformer/Enemies/VoidDemon.h"
-#include "Entities/Platformer/Enemies/Agnes.h"
-#include "Entities/Platformer/Enemies/Executioner.h"
-#include "Entities/Platformer/Enemies/Guard.h"
-#include "Entities/Platformer/Enemies/Jack.h"
-#include "Entities/Platformer/Enemies/Reaper.h"
-#include "Entities/Platformer/Enemies/Scarecrow.h"
-#include "Entities/Platformer/Enemies/Shade.h"
-#include "Entities/Platformer/Enemies/VampireLord.h"
-#include "Entities/Platformer/Enemies/Vampiress.h"
-#include "Entities/Platformer/Enemies/Wraith.h"
-#include "Entities/Platformer/Enemies/Zombie.h"
-#include "Entities/Platformer/Enemies/ZombieElric.h"
-#include "Entities/Platformer/Enemies/BlackWidow.h"
-#include "Entities/Platformer/Enemies/EarthElemental.h"
-#include "Entities/Platformer/Enemies/EarthGolem.h"
-#include "Entities/Platformer/Enemies/ForestGolem.h"
-#include "Entities/Platformer/Enemies/Genie.h"
-#include "Entities/Platformer/Enemies/Krampus.h"
-#include "Entities/Platformer/Enemies/LightningGolem.h"
-#include "Entities/Platformer/Enemies/Shaman.h"
-#include "Entities/Platformer/Enemies/SkeletalArcher.h"
-#include "Entities/Platformer/Enemies/SkeletalNecromancer.h"
-#include "Entities/Platformer/Enemies/SkeletalWarrior.h"
-#include "Entities/Platformer/Enemies/Centaur.h"
-#include "Entities/Platformer/Enemies/Cyclops.h"
-#include "Entities/Platformer/Enemies/Ent.h"
-#include "Entities/Platformer/Enemies/KingGrogg.h"
-#include "Entities/Platformer/Enemies/Ogre.h"
-#include "Entities/Platformer/Enemies/OrcBomber.h"
-#include "Entities/Platformer/Enemies/OrcGrunt.h"
-#include "Entities/Platformer/Enemies/OrcSwordsman.h"
-#include "Entities/Platformer/Enemies/OrcWarrior.h"
-#include "Entities/Platformer/Enemies/Thug.h"
-#include "Entities/Platformer/Enemies/Troll.h"
-#include "Entities/Platformer/Enemies/Barbarian.h"
-#include "Entities/Platformer/Enemies/GoblinGruntBoar.h"
-#include "Entities/Platformer/Enemies/GoblinShaman.h"
-#include "Entities/Platformer/Enemies/GoblinWarriorPig.h"
-#include "Entities/Platformer/Enemies/Gorilla.h"
-#include "Entities/Platformer/Enemies/Minotaur.h"
-#include "Entities/Platformer/Enemies/ReanimatedPig.h"
-#include "Entities/Platformer/Enemies/Rhinoman.h"
-#include "Entities/Platformer/Enemies/SkeletalPirate.h"
-#include "Entities/Platformer/Enemies/TikiGolem.h"
-#include "Entities/Platformer/Enemies/Viking.h"
-#include "Entities/Platformer/Enemies/EvilEye.h"
-#include "Entities/Platformer/Enemies/Exterminator.h"
-#include "Entities/Platformer/Enemies/MechBoxDrone.h"
-#include "Entities/Platformer/Enemies/MechDog.h"
-#include "Entities/Platformer/Enemies/MechGolem.h"
-#include "Entities/Platformer/Enemies/MechGuard.h"
-#include "Entities/Platformer/Enemies/MiteBot.h"
-#include "Entities/Platformer/Enemies/VikingBot.h"
-#include "Entities/Platformer/Enemies/VikingBotSmall.h"
-#include "Entities/Platformer/Enemies/AnubisPup.h"
-#include "Entities/Platformer/Enemies/AnubisWarrior.h"
-#include "Entities/Platformer/Enemies/LionMan.h"
-#include "Entities/Platformer/Enemies/Lioness.h"
-#include "Entities/Platformer/Enemies/Medusa.h"
-#include "Entities/Platformer/Enemies/Mermaid.h"
-#include "Entities/Platformer/Enemies/MummyPriest.h"
-#include "Entities/Platformer/Enemies/MummyWarrior.h"
-#include "Entities/Platformer/Enemies/Osiris.h"
-#include "Entities/Platformer/Enemies/TigerMan.h"
-#include "Entities/Platformer/Enemies/Tigress.h"
-#include "Entities/Platformer/Enemies/Cyrogen.h"
-#include "Entities/Platformer/Enemies/FrostFiend.h"
-#include "Entities/Platformer/Enemies/GoblinElf.h"
-#include "Entities/Platformer/Enemies/IceGolem.h"
-#include "Entities/Platformer/Enemies/PenguinGrunt.h"
-#include "Entities/Platformer/Enemies/PenguinWarrior.h"
-#include "Entities/Platformer/Enemies/Santa.h"
-#include "Entities/Platformer/Enemies/SnowFiend.h"
-#include "Entities/Platformer/Enemies/ToySoldierGoblin.h"
-#include "Entities/Platformer/Enemies/WaterElemental.h"
-#include "Entities/Platformer/Enemies/Yeti.h"
-#include "Entities/Platformer/Enemies/YetiWarrior.h"
-#include "Entities/Platformer/Enemies/Asmodeus.h"
-#include "Entities/Platformer/Enemies/CritterDemon.h"
-#include "Entities/Platformer/Enemies/DemonDragon.h"
-#include "Entities/Platformer/Enemies/DemonGhost.h"
-#include "Entities/Platformer/Enemies/DemonGrunt.h"
-#include "Entities/Platformer/Enemies/DemonRogue.h"
-#include "Entities/Platformer/Enemies/DemonShaman.h"
-#include "Entities/Platformer/Enemies/DemonSwordsman.h"
-#include "Entities/Platformer/Enemies/DemonWarrior.h"
-#include "Entities/Platformer/Enemies/FireElemental.h"
-#include "Entities/Platformer/Enemies/LavaGolem.h"
-#include "Entities/Platformer/Npcs/Elric.h"
-#include "Entities/Platformer/Npcs/Garin.h"
-#include "Entities/Platformer/Npcs/KingRedsong.h"
-#include "Entities/Platformer/Npcs/KingRedsongSlime.h"
-#include "Entities/Platformer/Npcs/Leroy.h"
-#include "Entities/Platformer/Npcs/Mabel.h"
-#include "Entities/Platformer/Npcs/Merlin.h"
-#include "Entities/Platformer/Npcs/PrincessOpal.h"
-#include "Entities/Platformer/Npcs/Raven.h"
-#include "Entities/Platformer/Npcs/Rogas.h"
-#include "Entities/Platformer/Npcs/Thurstan.h"
-#include "Entities/Platformer/Npcs/Tyracius.h"
-#include "Entities/Platformer/Npcs/Alder.h"
-#include "Entities/Platformer/Npcs/Brock.h"
-#include "Entities/Platformer/Npcs/Cypress.h"
-#include "Entities/Platformer/Npcs/Finch.h"
-#include "Entities/Platformer/Npcs/Fraya.h"
-#include "Entities/Platformer/Npcs/Jasper.h"
-#include "Entities/Platformer/Npcs/Mildred.h"
-#include "Entities/Platformer/Npcs/Olive.h"
-#include "Entities/Platformer/Npcs/PrincessDawn.h"
-#include "Entities/Platformer/Npcs/Sarude.h"
-#include "Entities/Platformer/Npcs/Shen.h"
-#include "Entities/Platformer/Npcs/Appolo.h"
-#include "Entities/Platformer/Npcs/Chiron.h"
-#include "Entities/Platformer/Npcs/Cooper.h"
-#include "Entities/Platformer/Npcs/Dudly.h"
-#include "Entities/Platformer/Npcs/Lycan.h"
-#include "Entities/Platformer/Npcs/Polyphemus.h"
-#include "Entities/Platformer/Npcs/PrincessMittens.h"
-#include "Entities/Platformer/Npcs/Robin.h"
-#include "Entities/Platformer/Npcs/Rupert.h"
-#include "Entities/Platformer/Npcs/Rusty.h"
-#include "Entities/Platformer/Npcs/Toben.h"
-#include "Entities/Platformer/Npcs/Blackbeard.h"
-#include "Entities/Platformer/Npcs/Bodom.h"
-#include "Entities/Platformer/Npcs/Drak.h"
-#include "Entities/Platformer/Npcs/Elriel.h"
-#include "Entities/Platformer/Npcs/Gramps.h"
-#include "Entities/Platformer/Npcs/Hades.h"
-#include "Entities/Platformer/Npcs/Minos.h"
-#include "Entities/Platformer/Npcs/PrincessMatu.h"
-#include "Entities/Platformer/Npcs/Raka.h"
-#include "Entities/Platformer/Npcs/Thor.h"
-#include "Entities/Platformer/Npcs/Atreus.h"
-#include "Entities/Platformer/Npcs/Illia.h"
-#include "Entities/Platformer/Npcs/Leon.h"
-#include "Entities/Platformer/Npcs/Mara.h"
-#include "Entities/Platformer/Npcs/Marcel.h"
-#include "Entities/Platformer/Npcs/Piper.h"
-#include "Entities/Platformer/Npcs/QueenElise.h"
-#include "Entities/Platformer/Npcs/Radon.h"
-#include "Entities/Platformer/Npcs/Xenon.h"
-#include "Entities/Platformer/Npcs/Ysara.h"
-#include "Entities/Platformer/Npcs/Amelia.h"
-#include "Entities/Platformer/Npcs/Azmus.h"
-#include "Entities/Platformer/Npcs/Garrick.h"
-#include "Entities/Platformer/Npcs/Johann.h"
-#include "Entities/Platformer/Npcs/Necron.h"
-#include "Entities/Platformer/Npcs/PrincessNebea.h"
-#include "Entities/Platformer/Npcs/Roger.h"
-#include "Entities/Platformer/Npcs/Thion.h"
-#include "Entities/Platformer/Npcs/Ursula.h"
-#include "Entities/Platformer/Npcs/Viper.h"
-#include "Entities/Platformer/Npcs/Zana.h"
-#include "Entities/Platformer/Npcs/Ajax.h"
-#include "Entities/Platformer/Npcs/Aphrodite.h"
-#include "Entities/Platformer/Npcs/Ares.h"
-#include "Entities/Platformer/Npcs/Athena.h"
-#include "Entities/Platformer/Npcs/Cleopatra.h"
-#include "Entities/Platformer/Npcs/Geryon.h"
-#include "Entities/Platformer/Npcs/Griffin.h"
-#include "Entities/Platformer/Npcs/Hera.h"
-#include "Entities/Platformer/Npcs/Horus.h"
-#include "Entities/Platformer/Npcs/Poseidon.h"
-#include "Entities/Platformer/Npcs/Zeus.h"
-#include "Entities/Platformer/Npcs/Aspen.h"
-#include "Entities/Platformer/Npcs/Aster.h"
-#include "Entities/Platformer/Npcs/Cookie.h"
-#include "Entities/Platformer/Npcs/Irmik.h"
-#include "Entities/Platformer/Npcs/Jingles.h"
-#include "Entities/Platformer/Npcs/Juniper.h"
-#include "Entities/Platformer/Npcs/Kringle.h"
-#include "Entities/Platformer/Npcs/Nessie.h"
-#include "Entities/Platformer/Npcs/PrincessPepper.h"
-#include "Entities/Platformer/Npcs/Theldar.h"
-#include "Entities/Platformer/Npcs/Tinsel.h"
-#include "Entities/Platformer/Npcs/Ash.h"
-#include "Entities/Platformer/Npcs/Brine.h"
-#include "Entities/Platformer/Npcs/Celeste.h"
-#include "Entities/Platformer/Npcs/Cindra.h"
-#include "Entities/Platformer/Npcs/Igneus.h"
-#include "Entities/Platformer/Npcs/Lucifer.h"
-#include "Entities/Platformer/Npcs/Magnus.h"
-#include "Entities/Platformer/Npcs/Pan.h"
-#include "Entities/Platformer/Npcs/Ragnis.h"
-#include "Entities/Platformer/Npcs/Scaldor.h"
-#include "Entities/Platformer/Npcs/Zelina.h"
+#include "Entities/Platformer/Enemies/LexiconCrypts/Abomination.h"
+#include "Entities/Platformer/Enemies/LexiconCrypts/Gargoyle.h"
+#include "Entities/Platformer/Enemies/LexiconCrypts/KingZul.h"
+#include "Entities/Platformer/Enemies/LexiconCrypts/ReanimatedFighter.h"
+#include "Entities/Platformer/Enemies/LexiconCrypts/ReanimatedPig.h"
+#include "Entities/Platformer/Enemies/LexiconCrypts/SkeletalBaron.h"
+#include "Entities/Platformer/Enemies/LexiconCrypts/SkeletalCleaver.h"
+#include "Entities/Platformer/Enemies/LexiconCrypts/SkeletalKnight.h"
+#include "Entities/Platformer/Enemies/LexiconCrypts/SkeletalPriestess.h"
+#include "Entities/Platformer/Enemies/LexiconCrypts/Undead.h"
+#include "Entities/Platformer/Enemies/LexiconCrypts/VoidArcher.h"
+#include "Entities/Platformer/Enemies/LexiconCrypts/VoidDemon.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Agnes.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Executioner.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Guard.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Jack.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Reaper.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Scarecrow.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Shade.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/VampireLord.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Vampiress.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Wraith.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Zombie.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/ZombieElric.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/BlackWidow.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthElemental.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthGolem.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/ForestGolem.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/Genie.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/Krampus.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/LightningGolem.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/Shaman.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalArcher.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalNecromancer.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalWarrior.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/TikiGolem.h"
+#include "Entities/Platformer/Enemies/EndianForest/Cyclops.h"
+#include "Entities/Platformer/Enemies/EndianForest/Ent.h"
+#include "Entities/Platformer/Enemies/EndianForest/GoblinGruntBoar.h"
+#include "Entities/Platformer/Enemies/EndianForest/GoblinShaman.h"
+#include "Entities/Platformer/Enemies/EndianForest/GoblinWarriorPig.h"
+#include "Entities/Platformer/Enemies/EndianForest/KingGrogg.h"
+#include "Entities/Platformer/Enemies/EndianForest/Ogre.h"
+#include "Entities/Platformer/Enemies/EndianForest/OrcBomber.h"
+#include "Entities/Platformer/Enemies/EndianForest/OrcGrunt.h"
+#include "Entities/Platformer/Enemies/EndianForest/OrcSwordsman.h"
+#include "Entities/Platformer/Enemies/EndianForest/OrcWarrior.h"
+#include "Entities/Platformer/Enemies/EndianForest/Troll.h"
+#include "Entities/Platformer/Enemies/VoidStar/Gorilla.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/Minotaur.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/Rhinoman.h"
+#include "Entities/Platformer/Enemies/VoidStar/SkeletalPirate.h"
+#include "Entities/Platformer/Enemies/VoidStar/Barbarian.h"
+#include "Entities/Platformer/Enemies/EndianForest/Centaur.h"
+#include "Entities/Platformer/Enemies/VoidStar/Exterminator.h"
+#include "Entities/Platformer/Enemies/VoidStar/EvilEye.h"
+#include "Entities/Platformer/Enemies/VoidStar/MechBoxDrone.h"
+#include "Entities/Platformer/Enemies/VoidStar/MechDog.h"
+#include "Entities/Platformer/Enemies/VoidStar/MechGolem.h"
+#include "Entities/Platformer/Enemies/VoidStar/MechGuard.h"
+#include "Entities/Platformer/Enemies/VoidStar/MiteBot.h"
+#include "Entities/Platformer/Enemies/VoidStar/Thug.h"
+#include "Entities/Platformer/Enemies/VoidStar/Viking.h"
+#include "Entities/Platformer/Enemies/VoidStar/VikingBot.h"
+#include "Entities/Platformer/Enemies/VoidStar/VikingBotSmall.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/AnubisPup.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/AnubisWarrior.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/LionMan.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/Lioness.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/Medusa.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/Mermaid.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/MummyPriest.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/MummyWarrior.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/Osiris.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/TigerMan.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/Tigress.h"
+#include "Entities/Platformer/Enemies/LambdaPeaks/Cyrogen.h"
+#include "Entities/Platformer/Enemies/LambdaPeaks/FrostFiend.h"
+#include "Entities/Platformer/Enemies/LambdaPeaks/GoblinElf.h"
+#include "Entities/Platformer/Enemies/LambdaPeaks/IceGolem.h"
+#include "Entities/Platformer/Enemies/LambdaPeaks/PenguinGrunt.h"
+#include "Entities/Platformer/Enemies/LambdaPeaks/PenguinWarrior.h"
+#include "Entities/Platformer/Enemies/LambdaPeaks/Santa.h"
+#include "Entities/Platformer/Enemies/LambdaPeaks/SnowFiend.h"
+#include "Entities/Platformer/Enemies/LambdaPeaks/ToySoldierGoblin.h"
+#include "Entities/Platformer/Enemies/LambdaPeaks/WaterElemental.h"
+#include "Entities/Platformer/Enemies/LambdaPeaks/Yeti.h"
+#include "Entities/Platformer/Enemies/LambdaPeaks/YetiWarrior.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/Asmodeus.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/CritterDemon.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/DemonDragon.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/DemonGhost.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/DemonGrunt.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/DemonRogue.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/DemonShaman.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/DemonSwordsman.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/DemonWarrior.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/FireElemental.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/LavaGolem.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Garin.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/KingRedsong.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/KingRedsongSlime.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Leroy.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Mabel.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Merlin.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/PrincessOpal.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Raven.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Rogas.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Thurstan.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Tyracius.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Alder.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Brock.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Cypress.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Finch.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Fraya.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Jasper.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Mildred.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Olive.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/PrincessDawn.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Shen.h"
+#include "Entities/Platformer/Npcs/EndianForest/Appolo.h"
+#include "Entities/Platformer/Npcs/EndianForest/Chiron.h"
+#include "Entities/Platformer/Npcs/EndianForest/Cooper.h"
+#include "Entities/Platformer/Npcs/EndianForest/Dudly.h"
+#include "Entities/Platformer/Npcs/EndianForest/Lycan.h"
+#include "Entities/Platformer/Npcs/EndianForest/Polyphemus.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/PrincessMittens.h"
+#include "Entities/Platformer/Npcs/EndianForest/Robin.h"
+#include "Entities/Platformer/Npcs/EndianForest/Rupert.h"
+#include "Entities/Platformer/Npcs/EndianForest/Rusty.h"
+#include "Entities/Platformer/Npcs/EndianForest/Toben.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Blackbeard.h"
+#include "Entities/Platformer/Npcs/LambdaPeaks/Bodom.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Drak.h"
+#include "Entities/Platformer/Npcs/VoidStar/Elriel.h"
+#include "Entities/Platformer/Npcs/EndianForest/Gramps.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Hades.h"
+#include "Entities/Platformer/Npcs/EndianForest/Minos.h"
+#include "Entities/Platformer/Npcs/EndianForest/PrincessMatu.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Raka.h"
+#include "Entities/Platformer/Npcs/VoidStar/Thor.h"
+#include "Entities/Platformer/Npcs/VoidStar/Atreus.h"
+#include "Entities/Platformer/Npcs/VoidStar/Illia.h"
+#include "Entities/Platformer/Npcs/VoidStar/Leon.h"
+#include "Entities/Platformer/Npcs/VoidStar/Mara.h"
+#include "Entities/Platformer/Npcs/VoidStar/Marcel.h"
+#include "Entities/Platformer/Npcs/VoidStar/Piper.h"
+#include "Entities/Platformer/Npcs/VoidStar/QueenElise.h"
+#include "Entities/Platformer/Npcs/VoidStar/Radon.h"
+#include "Entities/Platformer/Npcs/VoidStar/Xenon.h"
+#include "Entities/Platformer/Npcs/VoidStar/Ysara.h"
+#include "Entities/Platformer/Npcs/LexiconCrypts/Amelia.h"
+#include "Entities/Platformer/Npcs/LexiconCrypts/Azmus.h"
+#include "Entities/Platformer/Npcs/LexiconCrypts/Garrick.h"
+#include "Entities/Platformer/Npcs/LexiconCrypts/Johann.h"
+#include "Entities/Platformer/Npcs/LexiconCrypts/Necron.h"
+#include "Entities/Platformer/Npcs/LexiconCrypts/PrincessNebea.h"
+#include "Entities/Platformer/Npcs/LexiconCrypts/Roger.h"
+#include "Entities/Platformer/Npcs/LexiconCrypts/Thion.h"
+#include "Entities/Platformer/Npcs/LexiconCrypts/Ursula.h"
+#include "Entities/Platformer/Npcs/LexiconCrypts/Viper.h"
+#include "Entities/Platformer/Npcs/LexiconCrypts/Zana.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Ajax.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Aphrodite.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Ares.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Athena.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Cleopatra.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Geryon.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Griffin.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Hera.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Horus.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Poseidon.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Zeus.h"
+#include "Entities/Platformer/Npcs/LambdaPeaks/Aspen.h"
+#include "Entities/Platformer/Npcs/LambdaPeaks/Aster.h"
+#include "Entities/Platformer/Npcs/LambdaPeaks/Cookie.h"
+#include "Entities/Platformer/Npcs/LambdaPeaks/Irmik.h"
+#include "Entities/Platformer/Npcs/LambdaPeaks/Jingles.h"
+#include "Entities/Platformer/Npcs/LambdaPeaks/Juniper.h"
+#include "Entities/Platformer/Npcs/LambdaPeaks/Kringle.h"
+#include "Entities/Platformer/Npcs/LambdaPeaks/Nessie.h"
+#include "Entities/Platformer/Npcs/LambdaPeaks/PrincessPepper.h"
+#include "Entities/Platformer/Npcs/LambdaPeaks/Theldar.h"
+#include "Entities/Platformer/Npcs/LambdaPeaks/Tinsel.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Ash.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Brine.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Celeste.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Cindra.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Igneus.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Lucifer.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Magnus.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Pan.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Ragnis.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Scaldor.h"
+#include "Entities/Platformer/Npcs/LexiconCrypts/Zelina.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Elric.h"
 
 ////Y////Y////Y////Y////Y////Y////Y/
 // END: THIS CODE IS GENERATED    //
@@ -279,6 +279,10 @@ void PlatformerEntityDeserializer::onDeserializationRequest(DeserializationEvent
 		if (name == ReanimatedFighter::MapKeyReanimatedFighter)
 		{
 			newEntity = ReanimatedFighter::deserialize(&properties);
+		}
+		if (name == ReanimatedPig::MapKeyReanimatedPig)
+		{
+			newEntity = ReanimatedPig::deserialize(&properties);
 		}
 		if (name == SkeletalBaron::MapKeySkeletalBaron)
 		{
@@ -400,9 +404,9 @@ void PlatformerEntityDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newEntity = SkeletalWarrior::deserialize(&properties);
 		}
-		if (name == Centaur::MapKeyCentaur)
+		if (name == TikiGolem::MapKeyTikiGolem)
 		{
-			newEntity = Centaur::deserialize(&properties);
+			newEntity = TikiGolem::deserialize(&properties);
 		}
 		if (name == Cyclops::MapKeyCyclops)
 		{
@@ -411,6 +415,18 @@ void PlatformerEntityDeserializer::onDeserializationRequest(DeserializationEvent
 		if (name == Ent::MapKeyEnt)
 		{
 			newEntity = Ent::deserialize(&properties);
+		}
+		if (name == GoblinGruntBoar::MapKeyGoblinGruntBoar)
+		{
+			newEntity = GoblinGruntBoar::deserialize(&properties);
+		}
+		if (name == GoblinShaman::MapKeyGoblinShaman)
+		{
+			newEntity = GoblinShaman::deserialize(&properties);
+		}
+		if (name == GoblinWarriorPig::MapKeyGoblinWarriorPig)
+		{
+			newEntity = GoblinWarriorPig::deserialize(&properties);
 		}
 		if (name == KingGrogg::MapKeyKingGrogg)
 		{
@@ -436,29 +452,9 @@ void PlatformerEntityDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newEntity = OrcWarrior::deserialize(&properties);
 		}
-		if (name == Thug::MapKeyThug)
-		{
-			newEntity = Thug::deserialize(&properties);
-		}
 		if (name == Troll::MapKeyTroll)
 		{
 			newEntity = Troll::deserialize(&properties);
-		}
-		if (name == Barbarian::MapKeyBarbarian)
-		{
-			newEntity = Barbarian::deserialize(&properties);
-		}
-		if (name == GoblinGruntBoar::MapKeyGoblinGruntBoar)
-		{
-			newEntity = GoblinGruntBoar::deserialize(&properties);
-		}
-		if (name == GoblinShaman::MapKeyGoblinShaman)
-		{
-			newEntity = GoblinShaman::deserialize(&properties);
-		}
-		if (name == GoblinWarriorPig::MapKeyGoblinWarriorPig)
-		{
-			newEntity = GoblinWarriorPig::deserialize(&properties);
 		}
 		if (name == Gorilla::MapKeyGorilla)
 		{
@@ -468,10 +464,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newEntity = Minotaur::deserialize(&properties);
 		}
-		if (name == ReanimatedPig::MapKeyReanimatedPig)
-		{
-			newEntity = ReanimatedPig::deserialize(&properties);
-		}
 		if (name == Rhinoman::MapKeyRhinoman)
 		{
 			newEntity = Rhinoman::deserialize(&properties);
@@ -480,21 +472,21 @@ void PlatformerEntityDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newEntity = SkeletalPirate::deserialize(&properties);
 		}
-		if (name == TikiGolem::MapKeyTikiGolem)
+		if (name == Barbarian::MapKeyBarbarian)
 		{
-			newEntity = TikiGolem::deserialize(&properties);
+			newEntity = Barbarian::deserialize(&properties);
 		}
-		if (name == Viking::MapKeyViking)
+		if (name == Centaur::MapKeyCentaur)
 		{
-			newEntity = Viking::deserialize(&properties);
-		}
-		if (name == EvilEye::MapKeyEvilEye)
-		{
-			newEntity = EvilEye::deserialize(&properties);
+			newEntity = Centaur::deserialize(&properties);
 		}
 		if (name == Exterminator::MapKeyExterminator)
 		{
 			newEntity = Exterminator::deserialize(&properties);
+		}
+		if (name == EvilEye::MapKeyEvilEye)
+		{
+			newEntity = EvilEye::deserialize(&properties);
 		}
 		if (name == MechBoxDrone::MapKeyMechBoxDrone)
 		{
@@ -515,6 +507,14 @@ void PlatformerEntityDeserializer::onDeserializationRequest(DeserializationEvent
 		if (name == MiteBot::MapKeyMiteBot)
 		{
 			newEntity = MiteBot::deserialize(&properties);
+		}
+		if (name == Thug::MapKeyThug)
+		{
+			newEntity = Thug::deserialize(&properties);
+		}
+		if (name == Viking::MapKeyViking)
+		{
+			newEntity = Viking::deserialize(&properties);
 		}
 		if (name == VikingBot::MapKeyVikingBot)
 		{
@@ -659,10 +659,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(DeserializationEvent
 		if (name == LavaGolem::MapKeyLavaGolem)
 		{
 			newEntity = LavaGolem::deserialize(&properties);
-		}
-		if (name == Elric::MapKeyElric)
-		{
-			newEntity = Elric::deserialize(&properties);
 		}
 		if (name == Garin::MapKeyGarin)
 		{
@@ -1051,6 +1047,10 @@ void PlatformerEntityDeserializer::onDeserializationRequest(DeserializationEvent
 		if (name == Zelina::MapKeyZelina)
 		{
 			newEntity = Zelina::deserialize(&properties);
+		}
+		if (name == Elric::MapKeyElric)
+		{
+			newEntity = Elric::deserialize(&properties);
 		}
 
 		////O////O////O////O////O////O////O/

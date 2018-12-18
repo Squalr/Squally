@@ -14,7 +14,7 @@ HexusOpponentFireElemental* HexusOpponentFireElemental::getInstance()
 }
 
 HexusOpponentFireElemental::HexusOpponentFireElemental() : HexusOpponentData(
-	EntityResources::Enemies_FireElemental_Animations,
+	EntityResources::Enemies_DaemonsHallow_FireElemental_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(-32.0f, -48.0f),

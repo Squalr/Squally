@@ -1,7 +1,7 @@
-###################################################################################
-# This script will generate all Resources.cpp and Resources.h files.              #
-# Run this script every time files are added to the Squally/Resources/ directory. #
-###################################################################################
+####################################################################################
+# This script will (in a hacky way) parse all of the existing entity cpp files and #
+# dump their unique data to a json file in the same directory as this script.      #
+####################################################################################
 
 from os import listdir
 from os import path

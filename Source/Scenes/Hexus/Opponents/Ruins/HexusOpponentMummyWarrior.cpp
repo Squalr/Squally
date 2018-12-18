@@ -14,7 +14,7 @@ HexusOpponentMummyWarrior* HexusOpponentMummyWarrior::getInstance()
 }
 
 HexusOpponentMummyWarrior::HexusOpponentMummyWarrior() : HexusOpponentData(
-	EntityResources::Enemies_MummyWarrior_Animations,
+	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	0.85f,
 	Vec2(-32.0f, -64.0f),

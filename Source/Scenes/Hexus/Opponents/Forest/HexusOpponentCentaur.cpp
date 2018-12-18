@@ -14,7 +14,7 @@ HexusOpponentCentaur* HexusOpponentCentaur::getInstance()
 }
 
 HexusOpponentCentaur::HexusOpponentCentaur() : HexusOpponentData(
-	EntityResources::Enemies_Centaur_Animations,
+	EntityResources::Enemies_EndianForest_Centaur_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(0.0f, -96.0f),

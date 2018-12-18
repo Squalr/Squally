@@ -60,30 +60,31 @@ def parseEntity(entityName, entityData):
 	entityScale = entityData["Scale"]
 	entitySize = entityData["Size"]
 	entityOffset = entityData["Offset"]
+	entityEnvironment = entityData["Environment"]
 	
 	# Construct variables from parsed data
 	if entityType == "Enemy":
-		entityPath = "Enemies"
+		entityPrefix = "Enemies"
 		entityCollisionType = "Enemy"
 		entityBase = "PlatformerEnemy"
 		entityBasePath = "Entities/Platformer/PlatformerEnemy.h"
 	elif entityType == "Player":
-		entityPath = "Squally"
+		entityPrefix = "Squally"
 		entityCollisionType = "Player"
 		entityBase = "PlatformerEntity"
 		entityBasePath = "Entities/Platformer/PlatformerEntity.h"
 	elif entityType == "Helper":
-		entityPath = "Helpers"
+		entityPrefix = "Helpers"
 		entityCollisionType = "FriendlyNpc"
 		entityBase = "PlatformerEntity"
 		entityBasePath = "Entities/Platformer/PlatformerEntity.h"
 	elif entityType == "Npc":
-		entityPath = "Npcs"
+		entityPrefix = "Npcs"
 		entityCollisionType = "FriendlyNpc"
 		entityBase = "NpcBase"
 		entityBasePath = "Entities/Platformer/NpcBase.h"
 	elif entityType == "Misc":
-		entityPath = "Misc"
+		entityPrefix = "Misc"
 		entityCollisionType = "FriendlyNpc"
 		entityBase = "PlatformerEntity"
 		entityBasePath = "Entities/Platformer/PlatformerEntity.h"
@@ -92,20 +93,19 @@ def parseEntity(entityName, entityData):
 		return {}
 	
 	mapKeyName = "-".join(filter(None, re.split("([A-Z][^A-Z]*)", entityName))).lower()
-	pathRoot = "Source/Entities/Platformer/" + entityPath + "/"
-	animationFile = "Resources/Platformer/Entities/" + entityPath + "/" + "entityName"
+	pathRoot = "Source/Entities/Platformer/" + entityPrefix + "/" + entityEnvironment + "/"
+	animationFile = "Resources/Platformer/Entities/" + entityPrefix + "/" + "entityName"
 	outputHeader = entityName + ".h"
 	outputClass = entityName + ".cpp"
 	templateOutputHeader = abspath(join(join(realpath(__file__), ".."), "Data/Entities.h.template"))
 	templateOutputClass = abspath(join(join(realpath(__file__), ".."), "Data/Entities.cpp.template"))
 	
-	# Todo: create file if does not exist, and use r+ instead of w+, and perserve the "NO OVERWRITE" zone
-	
+	os.makedirs(pathRoot, exist_ok=True)
 	with open(pathRoot + outputHeader,'w+') as h, open(pathRoot + outputClass,'w+') as cpp, open(templateOutputHeader,'r') as hTemplate, open(templateOutputClass,'r') as cppTemplate:
 		
 		def parseTemplate(template):
 			templateData = template.read()
-			return templateData.replace("{{EntityName}}", entityName).replace("{{EntityBasePath}}", entityBasePath).replace("{{EntityBase}}", entityBase).replace("{{EntityType}}", entityType).replace("{{EntityPath}}", entityPath).replace("{{EntityCollisionType}}", entityCollisionType).replace("{{MapKeyName}}", mapKeyName).replace("{{EntityScale}}", entityScale).replace("{{EntityWidth}}", entitySize["Width"]).replace("{{EntityHeight}}", entitySize["Height"]).replace("{{EntityOffsetX}}", entityOffset["X"]).replace("{{EntityOffsetY}}", entityOffset["Y"])
+			return templateData.replace("{{EntityName}}", entityName).replace("{{EntityBasePath}}", entityBasePath).replace("{{EntityBase}}", entityBase).replace("{{EntityType}}", entityType).replace("{{EntityEnvironment}}", entityEnvironment).replace("{{EntityPrefix}}", entityPrefix).replace("{{EntityCollisionType}}", entityCollisionType).replace("{{MapKeyName}}", mapKeyName).replace("{{EntityScale}}", entityScale).replace("{{EntityWidth}}", entitySize["Width"]).replace("{{EntityHeight}}", entitySize["Height"]).replace("{{EntityOffsetX}}", entityOffset["X"]).replace("{{EntityOffsetY}}", entityOffset["Y"])
 		
 		h.write(parseTemplate(hTemplate))
 		cpp.write(parseTemplate(cppTemplate))
@@ -113,7 +113,7 @@ def parseEntity(entityName, entityData):
 	return {
 		"EntityName": entityName,
 		"MapKey": entityName + "::" + "MapKey" + entityName,
-		"Include": "#include \"Entities/Platformer/" + entityPath + "/" + outputHeader + "\""
+		"Include": "#include \"Entities/Platformer/" + entityPrefix + "/" + entityEnvironment + "/" + outputHeader + "\""
 	}
 
 def replaceTextBetween(delimeterA, delimterB, contents, innerContent):

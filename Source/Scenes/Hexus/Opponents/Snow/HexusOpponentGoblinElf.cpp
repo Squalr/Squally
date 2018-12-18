@@ -14,7 +14,7 @@ HexusOpponentGoblinElf* HexusOpponentGoblinElf::getInstance()
 }
 
 HexusOpponentGoblinElf::HexusOpponentGoblinElf() : HexusOpponentData(
-	EntityResources::Enemies_GoblinElf_Animations,
+	EntityResources::Enemies_LambdaPeaks_GoblinElf_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.75f,
 	Vec2(-48.0f, -64.0f),

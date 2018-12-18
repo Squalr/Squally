@@ -14,7 +14,7 @@ HexusOpponentEarthGolem* HexusOpponentEarthGolem::getInstance()
 }
 
 HexusOpponentEarthGolem::HexusOpponentEarthGolem() : HexusOpponentData(
-	EntityResources::Enemies_EarthGolem_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -64.0f),

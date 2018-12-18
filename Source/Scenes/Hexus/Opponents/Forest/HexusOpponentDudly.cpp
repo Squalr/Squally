@@ -14,7 +14,7 @@ HexusOpponentDudly* HexusOpponentDudly::getInstance()
 }
 
 HexusOpponentDudly::HexusOpponentDudly() : HexusOpponentData(
-	EntityResources::Npcs_Dudly_Animations,
+	EntityResources::Npcs_EndianForest_Dudly_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-32.0f, -72.0f),

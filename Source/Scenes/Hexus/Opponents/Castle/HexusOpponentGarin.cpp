@@ -14,7 +14,7 @@ HexusOpponentGarin* HexusOpponentGarin::getInstance()
 }
 
 HexusOpponentGarin::HexusOpponentGarin() : HexusOpponentData(
-	EntityResources::Npcs_Garin_Animations,
+	EntityResources::Npcs_CastleValgrind_Garin_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	0.85f,
 	Vec2(-32.0f, -64.0f),

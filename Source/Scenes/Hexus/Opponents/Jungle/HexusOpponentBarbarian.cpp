@@ -14,7 +14,7 @@ HexusOpponentBarbarian* HexusOpponentBarbarian::getInstance()
 }
 
 HexusOpponentBarbarian::HexusOpponentBarbarian() : HexusOpponentData(
-	EntityResources::Enemies_Barbarian_Animations,
+	EntityResources::Enemies_VoidStar_Barbarian_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

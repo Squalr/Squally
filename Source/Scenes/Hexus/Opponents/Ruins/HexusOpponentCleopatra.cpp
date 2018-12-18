@@ -14,7 +14,7 @@ HexusOpponentCleopatra* HexusOpponentCleopatra::getInstance()
 }
 
 HexusOpponentCleopatra::HexusOpponentCleopatra() : HexusOpponentData(
-	EntityResources::Npcs_Cleopatra_Animations,
+	EntityResources::Npcs_UnderflowRuins_Cleopatra_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	0.9f,
 	Vec2(-48.0f, -64.0f),

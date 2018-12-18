@@ -14,7 +14,7 @@ HexusOpponentLucifer* HexusOpponentLucifer::getInstance()
 }
 
 HexusOpponentLucifer::HexusOpponentLucifer() : HexusOpponentData(
-	EntityResources::Npcs_Lucifer_Animations,
+	EntityResources::Npcs_DaemonsHallow_Lucifer_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

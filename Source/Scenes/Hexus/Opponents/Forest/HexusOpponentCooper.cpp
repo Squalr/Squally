@@ -14,7 +14,7 @@ HexusOpponentCooper* HexusOpponentCooper::getInstance()
 }
 
 HexusOpponentCooper::HexusOpponentCooper() : HexusOpponentData(
-	EntityResources::Npcs_Cooper_Animations,
+	EntityResources::Npcs_EndianForest_Cooper_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -48.0f),

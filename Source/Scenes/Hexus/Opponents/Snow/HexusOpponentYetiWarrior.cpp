@@ -14,7 +14,7 @@ HexusOpponentYetiWarrior* HexusOpponentYetiWarrior::getInstance()
 }
 
 HexusOpponentYetiWarrior::HexusOpponentYetiWarrior() : HexusOpponentData(
-	EntityResources::Enemies_YetiWarrior_Animations,
+	EntityResources::Enemies_LambdaPeaks_YetiWarrior_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.5f,
 	Vec2(-48.0f, -72.0f),

@@ -14,7 +14,7 @@ HexusOpponentMedusa* HexusOpponentMedusa::getInstance()
 }
 
 HexusOpponentMedusa::HexusOpponentMedusa() : HexusOpponentData(
-	EntityResources::Enemies_Medusa_Animations,
+	EntityResources::Enemies_UnderflowRuins_Medusa_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-48.0f, -24.0f),

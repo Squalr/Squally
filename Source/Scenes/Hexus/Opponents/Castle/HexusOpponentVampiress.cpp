@@ -14,7 +14,7 @@ HexusOpponentVampiress* HexusOpponentVampiress::getInstance()
 }
 
 HexusOpponentVampiress::HexusOpponentVampiress() : HexusOpponentData(
-	EntityResources::Enemies_Vampiress_Animations,
+	EntityResources::Enemies_CastleValgrind_VampireLord_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -32.0f),

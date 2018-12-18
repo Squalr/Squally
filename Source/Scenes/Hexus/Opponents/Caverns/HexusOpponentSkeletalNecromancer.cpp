@@ -14,7 +14,7 @@ HexusOpponentSkeletalNecromancer* HexusOpponentSkeletalNecromancer::getInstance(
 }
 
 HexusOpponentSkeletalNecromancer::HexusOpponentSkeletalNecromancer() : HexusOpponentData(
-	EntityResources::Enemies_SkeletalNecromancer_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -48.0f),
