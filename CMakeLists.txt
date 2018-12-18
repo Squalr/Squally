@@ -355,7 +355,6 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/PlatformerEntityDeserializer.cpp
 	Source/Entities/Platformer/Squally/Hover.cpp
 	Source/Entities/Platformer/Squally/Squally.cpp
-	Source/Entities/Platformer/SquallyDeserializer.cpp
 	Source/Entities/Special/Shopkeeper.cpp
 	Source/Events/DialogEvents.cpp
 	Source/Events/HackableEvents.cpp
@@ -1097,7 +1096,6 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/PlatformerEntityDeserializer.h
 	Source/Entities/Platformer/Squally/Hover.h
 	Source/Entities/Platformer/Squally/Squally.h
-	Source/Entities/Platformer/SquallyDeserializer.h
 	Source/Entities/Special/Shopkeeper.h
 	Source/Events/DialogEvents.h
 	Source/Events/HackableEvents.h

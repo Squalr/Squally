@@ -3,7 +3,6 @@
 #include "Engine/EngineBootstrapper.h"
 #include "Entities/Isometric/IsometricEntityDeserializer.h"
 #include "Entities/Platformer/PlatformerEntityDeserializer.h"
-#include "Entities/Platformer/SquallyDeserializer.h"
 #include "Menus/LoadingScreen/LoadingScreen.h"
 #include "Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.h"
 #include "Menus/Minigames/Hexus/OpponentSelect/Castle/HexusOpponentMenuCastle.h"
