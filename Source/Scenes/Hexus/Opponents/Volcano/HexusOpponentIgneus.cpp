@@ -14,7 +14,7 @@ HexusOpponentIgneus* HexusOpponentIgneus::getInstance()
 }
 
 HexusOpponentIgneus::HexusOpponentIgneus() : HexusOpponentData(
-	EntityResources::Npcs_Igneus_Animations,
+	EntityResources::Npcs_DaemonsHallow_Igneus_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(-48.0f, -48.0f),

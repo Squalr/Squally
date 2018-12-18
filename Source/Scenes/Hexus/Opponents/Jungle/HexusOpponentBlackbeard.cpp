@@ -14,7 +14,7 @@ HexusOpponentBlackbeard* HexusOpponentBlackbeard::getInstance()
 }
 
 HexusOpponentBlackbeard::HexusOpponentBlackbeard() : HexusOpponentData(
-	EntityResources::Npcs_Blackbeard_Animations,
+	EntityResources::Npcs_CastleValgrind_Blackbeard_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

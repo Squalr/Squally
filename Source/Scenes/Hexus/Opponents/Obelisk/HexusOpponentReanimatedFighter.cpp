@@ -14,7 +14,7 @@ HexusOpponentReanimatedFighter* HexusOpponentReanimatedFighter::getInstance()
 }
 
 HexusOpponentReanimatedFighter::HexusOpponentReanimatedFighter() : HexusOpponentData(
-	EntityResources::Enemies_ReanimatedFighter_Animations,
+	EntityResources::Enemies_LexiconCrypts_ReanimatedFighter_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -32.0f),

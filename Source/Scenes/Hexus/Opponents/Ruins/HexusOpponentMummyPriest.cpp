@@ -14,7 +14,7 @@ HexusOpponentMummyPriest* HexusOpponentMummyPriest::getInstance()
 }
 
 HexusOpponentMummyPriest::HexusOpponentMummyPriest() : HexusOpponentData(
-	EntityResources::Enemies_MummyPriest_Animations,
+	EntityResources::Enemies_UnderflowRuins_MummyPriest_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	0.85f,
 	Vec2(-32.0f, -64.0f),

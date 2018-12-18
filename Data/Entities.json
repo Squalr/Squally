@@ -10,11 +10,11 @@
       "Y": "0.0f"
     },
     "Type": "Enemy",
-    "Environment": ""
+    "Environment": "LexiconCrypts"
   },
   "Gargoyle": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "1.0f",
     "Size": {
       "Width": "256.0f",
@@ -27,7 +27,7 @@
   },
   "KingZul": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "1.0f",
     "Size": {
       "Width": "196.0f",
@@ -40,7 +40,7 @@
   },
   "ReanimatedFighter": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "1.0f",
     "Size": {
       "Width": "256.0f",
@@ -51,9 +51,22 @@
       "Y": "0.0f"
     }
   },
+  "ReanimatedPig": {
+    "Type": "Enemy",
+    "Environment": "LexiconCrypts",
+    "Scale": "0.8f",
+    "Size": {
+      "Width": "256.0f",
+      "Height": "240.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "0.0f"
+    }
+  },
   "SkeletalBaron": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.8f",
     "Size": {
       "Width": "472.0f",
@@ -66,7 +79,7 @@
   },
   "SkeletalCleaver": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.8f",
     "Size": {
       "Width": "128.0f",
@@ -79,7 +92,7 @@
   },
   "SkeletalKnight": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.8f",
     "Size": {
       "Width": "212.0f",
@@ -92,7 +105,7 @@
   },
   "SkeletalPriestess": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.8f",
     "Size": {
       "Width": "196.0f",
@@ -105,7 +118,7 @@
   },
   "Undead": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.8f",
     "Size": {
       "Width": "146.0f",
@@ -118,7 +131,7 @@
   },
   "VoidArcher": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.65f",
     "Size": {
       "Width": "196.0f",
@@ -131,7 +144,7 @@
   },
   "VoidDemon": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.7f",
     "Size": {
       "Width": "338.0f",
@@ -144,7 +157,7 @@
   },
   "Agnes": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.9f",
     "Size": {
       "Width": "360.0f",
@@ -157,7 +170,7 @@
   },
   "Executioner": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -170,7 +183,7 @@
   },
   "Guard": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -183,7 +196,7 @@
   },
   "Jack": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.25f",
     "Size": {
       "Width": "432.0f",
@@ -196,7 +209,7 @@
   },
   "Reaper": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.8f",
     "Size": {
       "Width": "196.0f",
@@ -209,7 +222,7 @@
   },
   "Scarecrow": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.8f",
     "Size": {
       "Width": "196.0f",
@@ -222,7 +235,7 @@
   },
   "Shade": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.8f",
     "Size": {
       "Width": "196.0f",
@@ -235,7 +248,7 @@
   },
   "VampireLord": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "1.0f",
     "Size": {
       "Width": "240.0f",
@@ -248,7 +261,7 @@
   },
   "Vampiress": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.9f",
     "Size": {
       "Width": "96.0f",
@@ -261,7 +274,7 @@
   },
   "Wraith": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.5f",
     "Size": {
       "Width": "142.0f",
@@ -274,7 +287,7 @@
   },
   "Zombie": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.9f",
     "Size": {
       "Width": "114.0f",
@@ -287,7 +300,7 @@
   },
   "ZombieElric": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.9f",
     "Size": {
       "Width": "114.0f",
@@ -300,7 +313,7 @@
   },
   "BlackWidow": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.20f",
     "Size": {
       "Width": "1280.0f",
@@ -313,7 +326,7 @@
   },
   "EarthElemental": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.20f",
     "Size": {
       "Width": "820.0f",
@@ -326,7 +339,7 @@
   },
   "EarthGolem": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "1.0f",
     "Size": {
       "Width": "256.0f",
@@ -339,7 +352,7 @@
   },
   "ForestGolem": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.30f",
     "Size": {
       "Width": "768.0f",
@@ -352,7 +365,7 @@
   },
   "Genie": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.20f",
     "Size": {
       "Width": "512.0f",
@@ -365,7 +378,7 @@
   },
   "Krampus": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "1.0f",
     "Size": {
       "Width": "396.0f",
@@ -378,7 +391,7 @@
   },
   "LightningGolem": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.30f",
     "Size": {
       "Width": "768.0f",
@@ -391,7 +404,7 @@
   },
   "Shaman": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.75f",
     "Size": {
       "Width": "256.0f",
@@ -404,7 +417,7 @@
   },
   "SkeletalArcher": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.8f",
     "Size": {
       "Width": "128.0f",
@@ -417,7 +430,7 @@
   },
   "SkeletalNecromancer": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.8f",
     "Size": {
       "Width": "128.0f",
@@ -430,7 +443,7 @@
   },
   "SkeletalWarrior": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.8f",
     "Size": {
       "Width": "128.0f",
@@ -441,22 +454,22 @@
       "Y": "0.0f"
     }
   },
-  "Centaur": {
+  "TikiGolem": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "1.0f",
     "Size": {
-      "Width": "296.0f",
+      "Width": "284.0f",
       "Height": "256.0f"
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "0.0f"
+      "Y": "-112.0f"
     }
   },
   "Cyclops": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "1.0f",
     "Size": {
       "Width": "296.0f",
@@ -469,7 +482,7 @@
   },
   "Ent": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.3f",
     "Size": {
       "Width": "512.0f",
@@ -480,126 +493,9 @@
       "Y": "-452.0f"
     }
   },
-  "KingGrogg": {
-    "Type": "Enemy",
-    "Environment": "",
-    "Scale": "1.0f",
-    "Size": {
-      "Width": "412.0f",
-      "Height": "412.0f"
-    },
-    "Offset": {
-      "X": "0.0f",
-      "Y": "0.0f"
-    }
-  },
-  "Ogre": {
-    "Type": "Enemy",
-    "Environment": "",
-    "Scale": "1.0f",
-    "Size": {
-      "Width": "256.0f",
-      "Height": "248.0f"
-    },
-    "Offset": {
-      "X": "0.0f",
-      "Y": "0.0f"
-    }
-  },
-  "OrcBomber": {
-    "Type": "Enemy",
-    "Environment": "",
-    "Scale": "1.0f",
-    "Size": {
-      "Width": "256.0f",
-      "Height": "218.0f"
-    },
-    "Offset": {
-      "X": "0.0f",
-      "Y": "0.0f"
-    }
-  },
-  "OrcGrunt": {
-    "Type": "Enemy",
-    "Environment": "",
-    "Scale": "1.0f",
-    "Size": {
-      "Width": "256.0f",
-      "Height": "218.0f"
-    },
-    "Offset": {
-      "X": "0.0f",
-      "Y": "0.0f"
-    }
-  },
-  "OrcSwordsman": {
-    "Type": "Enemy",
-    "Environment": "",
-    "Scale": "1.0f",
-    "Size": {
-      "Width": "256.0f",
-      "Height": "228.0f"
-    },
-    "Offset": {
-      "X": "0.0f",
-      "Y": "0.0f"
-    }
-  },
-  "OrcWarrior": {
-    "Type": "Enemy",
-    "Environment": "",
-    "Scale": "1.0f",
-    "Size": {
-      "Width": "256.0f",
-      "Height": "228.0f"
-    },
-    "Offset": {
-      "X": "0.0f",
-      "Y": "0.0f"
-    }
-  },
-  "Thug": {
-    "Type": "Enemy",
-    "Environment": "",
-    "Scale": "1.0f",
-    "Size": {
-      "Width": "256.0f",
-      "Height": "248.0f"
-    },
-    "Offset": {
-      "X": "0.0f",
-      "Y": "0.0f"
-    }
-  },
-  "Troll": {
-    "Type": "Enemy",
-    "Environment": "",
-    "Scale": "1.0f",
-    "Size": {
-      "Width": "256.0f",
-      "Height": "248.0f"
-    },
-    "Offset": {
-      "X": "0.0f",
-      "Y": "0.0f"
-    }
-  },
-  "Barbarian": {
-    "Type": "Enemy",
-    "Environment": "",
-    "Scale": "1.0f",
-    "Size": {
-      "Width": "278.0f",
-      "Height": "288.0f"
-    },
-    "Offset": {
-      "X": "0.0f",
-      "Y": "0.0f"
-    }
-  },
   "GoblinGruntBoar": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.8f",
     "Size": {
       "Width": "128.0f",
@@ -612,7 +508,7 @@
   },
   "GoblinShaman": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.8f",
     "Size": {
       "Width": "96.0f",
@@ -625,7 +521,7 @@
   },
   "GoblinWarriorPig": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.8f",
     "Size": {
       "Width": "128.0f",
@@ -636,9 +532,100 @@
       "Y": "0.0f"
     }
   },
+  "KingGrogg": {
+    "Type": "Enemy",
+    "Environment": "EndianForest",
+    "Scale": "1.0f",
+    "Size": {
+      "Width": "412.0f",
+      "Height": "412.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "0.0f"
+    }
+  },
+  "Ogre": {
+    "Type": "Enemy",
+    "Environment": "EndianForest",
+    "Scale": "1.0f",
+    "Size": {
+      "Width": "256.0f",
+      "Height": "248.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "0.0f"
+    }
+  },
+  "OrcBomber": {
+    "Type": "Enemy",
+    "Environment": "EndianForest",
+    "Scale": "1.0f",
+    "Size": {
+      "Width": "256.0f",
+      "Height": "218.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "0.0f"
+    }
+  },
+  "OrcGrunt": {
+    "Type": "Enemy",
+    "Environment": "EndianForest",
+    "Scale": "1.0f",
+    "Size": {
+      "Width": "256.0f",
+      "Height": "218.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "0.0f"
+    }
+  },
+  "OrcSwordsman": {
+    "Type": "Enemy",
+    "Environment": "EndianForest",
+    "Scale": "1.0f",
+    "Size": {
+      "Width": "256.0f",
+      "Height": "228.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "0.0f"
+    }
+  },
+  "OrcWarrior": {
+    "Type": "Enemy",
+    "Environment": "EndianForest",
+    "Scale": "1.0f",
+    "Size": {
+      "Width": "256.0f",
+      "Height": "228.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "0.0f"
+    }
+  },
+  "Troll": {
+    "Type": "Enemy",
+    "Environment": "EndianForest",
+    "Scale": "1.0f",
+    "Size": {
+      "Width": "256.0f",
+      "Height": "248.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "0.0f"
+    }
+  },
   "Gorilla": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "1.0f",
     "Size": {
       "Width": "278.0f",
@@ -651,7 +638,7 @@
   },
   "Minotaur": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "1.0f",
     "Size": {
       "Width": "278.0f",
@@ -662,22 +649,9 @@
       "Y": "0.0f"
     }
   },
-  "ReanimatedPig": {
-    "Type": "Enemy",
-    "Environment": "",
-    "Scale": "0.8f",
-    "Size": {
-      "Width": "256.0f",
-      "Height": "240.0f"
-    },
-    "Offset": {
-      "X": "0.0f",
-      "Y": "0.0f"
-    }
-  },
   "Rhinoman": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "1.0f",
     "Size": {
       "Width": "592.0f",
@@ -690,7 +664,7 @@
   },
   "SkeletalPirate": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "1.0f",
     "Size": {
       "Width": "284.0f",
@@ -701,39 +675,26 @@
       "Y": "-112.0f"
     }
   },
-  "TikiGolem": {
+  "Barbarian": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "1.0f",
     "Size": {
-      "Width": "284.0f",
-      "Height": "256.0f"
+      "Width": "278.0f",
+      "Height": "288.0f"
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-112.0f"
+      "Y": "0.0f"
     }
   },
-  "Viking": {
+  "Centaur": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "1.0f",
     "Size": {
-      "Width": "284.0f",
+      "Width": "296.0f",
       "Height": "256.0f"
-    },
-    "Offset": {
-      "X": "0.0f",
-      "Y": "-112.0f"
-    }
-  },
-  "EvilEye": {
-    "Type": "Enemy",
-    "Environment": "",
-    "Scale": "0.6f",
-    "Size": {
-      "Width": "720.0f",
-      "Height": "840.0f"
     },
     "Offset": {
       "X": "0.0f",
@@ -742,7 +703,7 @@
   },
   "Exterminator": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "1.0f",
     "Size": {
       "Width": "320.0f",
@@ -753,9 +714,22 @@
       "Y": "0.0f"
     }
   },
+  "EvilEye": {
+    "Type": "Enemy",
+    "Environment": "VoidStar",
+    "Scale": "0.6f",
+    "Size": {
+      "Width": "720.0f",
+      "Height": "840.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "0.0f"
+    }
+  },
   "MechBoxDrone": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.7f",
     "Size": {
       "Width": "224.0f",
@@ -768,7 +742,7 @@
   },
   "MechDog": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.7f",
     "Size": {
       "Width": "540.0f",
@@ -781,7 +755,7 @@
   },
   "MechGolem": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.7f",
     "Size": {
       "Width": "640.0f",
@@ -794,7 +768,7 @@
   },
   "MechGuard": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -807,7 +781,7 @@
   },
   "MiteBot": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.4f",
     "Size": {
       "Width": "420.0f",
@@ -818,9 +792,35 @@
       "Y": "24.0f"
     }
   },
+  "Thug": {
+    "Type": "Enemy",
+    "Environment": "VoidStar",
+    "Scale": "1.0f",
+    "Size": {
+      "Width": "256.0f",
+      "Height": "248.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "0.0f"
+    }
+  },
+  "Viking": {
+    "Type": "Enemy",
+    "Environment": "VoidStar",
+    "Scale": "1.0f",
+    "Size": {
+      "Width": "284.0f",
+      "Height": "256.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "-112.0f"
+    }
+  },
   "VikingBot": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.5f",
     "Size": {
       "Width": "768.0f",
@@ -833,7 +833,7 @@
   },
   "VikingBotSmall": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.25f",
     "Size": {
       "Width": "768.0f",
@@ -846,7 +846,7 @@
   },
   "AnubisPup": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.8f",
     "Size": {
       "Width": "128.0f",
@@ -859,7 +859,7 @@
   },
   "AnubisWarrior": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "1.0f",
     "Size": {
       "Width": "256.0f",
@@ -872,7 +872,7 @@
   },
   "LionMan": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "1.0f",
     "Size": {
       "Width": "256.0f",
@@ -885,7 +885,7 @@
   },
   "Lioness": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.8f",
     "Size": {
       "Width": "128.0f",
@@ -898,7 +898,7 @@
   },
   "Medusa": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.8f",
     "Size": {
       "Width": "224.0f",
@@ -911,7 +911,7 @@
   },
   "Mermaid": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.8f",
     "Size": {
       "Width": "172.0f",
@@ -924,7 +924,7 @@
   },
   "MummyPriest": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.8f",
     "Size": {
       "Width": "128.0f",
@@ -937,7 +937,7 @@
   },
   "MummyWarrior": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.8f",
     "Size": {
       "Width": "128.0f",
@@ -950,7 +950,7 @@
   },
   "Osiris": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "1.0f",
     "Size": {
       "Width": "324.0f",
@@ -963,7 +963,7 @@
   },
   "TigerMan": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "1.0f",
     "Size": {
       "Width": "256.0f",
@@ -976,7 +976,7 @@
   },
   "Tigress": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.8f",
     "Size": {
       "Width": "128.0f",
@@ -989,7 +989,7 @@
   },
   "Cyrogen": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.7f",
     "Size": {
       "Width": "420.0f",
@@ -1002,7 +1002,7 @@
   },
   "FrostFiend": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.7f",
     "Size": {
       "Width": "212.0f",
@@ -1015,7 +1015,7 @@
   },
   "GoblinElf": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.6f",
     "Size": {
       "Width": "140.0f",
@@ -1028,7 +1028,7 @@
   },
   "IceGolem": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.35f",
     "Size": {
       "Width": "1680.0f",
@@ -1041,7 +1041,7 @@
   },
   "PenguinGrunt": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.7f",
     "Size": {
       "Width": "212.0f",
@@ -1054,7 +1054,7 @@
   },
   "PenguinWarrior": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.7f",
     "Size": {
       "Width": "212.0f",
@@ -1067,7 +1067,7 @@
   },
   "Santa": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.7f",
     "Size": {
       "Width": "420.0f",
@@ -1080,7 +1080,7 @@
   },
   "SnowFiend": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.7f",
     "Size": {
       "Width": "420.0f",
@@ -1093,7 +1093,7 @@
   },
   "ToySoldierGoblin": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.8f",
     "Size": {
       "Width": "112.0f",
@@ -1106,7 +1106,7 @@
   },
   "WaterElemental": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.20f",
     "Size": {
       "Width": "820.0f",
@@ -1119,7 +1119,7 @@
   },
   "Yeti": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.4f",
     "Size": {
       "Width": "380.0f",
@@ -1132,7 +1132,7 @@
   },
   "YetiWarrior": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.4f",
     "Size": {
       "Width": "380.0f",
@@ -1145,7 +1145,7 @@
   },
   "Asmodeus": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.7f",
     "Size": {
       "Width": "480.0f",
@@ -1158,7 +1158,7 @@
   },
   "CritterDemon": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.7f",
     "Size": {
       "Width": "188.0f",
@@ -1171,7 +1171,7 @@
   },
   "DemonDragon": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.85f",
     "Size": {
       "Width": "340.0f",
@@ -1184,7 +1184,7 @@
   },
   "DemonGhost": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.7f",
     "Size": {
       "Width": "256.0f",
@@ -1197,7 +1197,7 @@
   },
   "DemonGrunt": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.7f",
     "Size": {
       "Width": "312.0f",
@@ -1210,7 +1210,7 @@
   },
   "DemonRogue": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.65f",
     "Size": {
       "Width": "212.0f",
@@ -1223,7 +1223,7 @@
   },
   "DemonShaman": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.65f",
     "Size": {
       "Width": "212.0f",
@@ -1236,7 +1236,7 @@
   },
   "DemonSwordsman": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.65f",
     "Size": {
       "Width": "212.0f",
@@ -1249,7 +1249,7 @@
   },
   "DemonWarrior": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.7f",
     "Size": {
       "Width": "320.0f",
@@ -1262,7 +1262,7 @@
   },
   "FireElemental": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.20f",
     "Size": {
       "Width": "820.0f",
@@ -1275,7 +1275,7 @@
   },
   "LavaGolem": {
     "Type": "Enemy",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.17f",
     "Size": {
       "Width": "980.0f",
@@ -1286,22 +1286,9 @@
       "Y": "-600.0f"
     }
   },
-  "Elric": {
-    "Type": "Npc",
-    "Environment": "",
-    "Scale": "0.3f",
-    "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
-    },
-    "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
-    }
-  },
   "Garin": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1314,7 +1301,7 @@
   },
   "KingRedsong": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1327,7 +1314,7 @@
   },
   "KingRedsongSlime": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1340,7 +1327,7 @@
   },
   "Leroy": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1353,7 +1340,7 @@
   },
   "Mabel": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1366,7 +1353,7 @@
   },
   "Merlin": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1379,7 +1366,7 @@
   },
   "PrincessOpal": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1392,7 +1379,7 @@
   },
   "Raven": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1405,7 +1392,7 @@
   },
   "Rogas": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1418,7 +1405,7 @@
   },
   "Thurstan": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1431,7 +1418,7 @@
   },
   "Tyracius": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1444,7 +1431,7 @@
   },
   "Alder": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1457,7 +1444,7 @@
   },
   "Brock": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1470,7 +1457,7 @@
   },
   "Cypress": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1483,7 +1470,7 @@
   },
   "Finch": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1496,7 +1483,7 @@
   },
   "Fraya": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1509,7 +1496,7 @@
   },
   "Jasper": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1522,7 +1509,7 @@
   },
   "Mildred": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1535,7 +1522,7 @@
   },
   "Olive": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1548,7 +1535,7 @@
   },
   "PrincessDawn": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1561,7 +1548,7 @@
   },
   "Sarude": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1574,7 +1561,7 @@
   },
   "Shen": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1587,7 +1574,7 @@
   },
   "Appolo": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1600,7 +1587,7 @@
   },
   "Chiron": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1613,7 +1600,7 @@
   },
   "Cooper": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1626,7 +1613,7 @@
   },
   "Dudly": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1639,7 +1626,7 @@
   },
   "Lycan": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1652,7 +1639,7 @@
   },
   "Polyphemus": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1665,7 +1652,7 @@
   },
   "PrincessMittens": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1678,7 +1665,7 @@
   },
   "Robin": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1691,7 +1678,7 @@
   },
   "Rupert": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1704,7 +1691,7 @@
   },
   "Rusty": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1717,7 +1704,7 @@
   },
   "Toben": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1730,7 +1717,7 @@
   },
   "Blackbeard": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "CastleValgrind",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1743,7 +1730,7 @@
   },
   "Bodom": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1756,7 +1743,7 @@
   },
   "Drak": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1769,7 +1756,7 @@
   },
   "Elriel": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1782,7 +1769,7 @@
   },
   "Gramps": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1795,7 +1782,7 @@
   },
   "Hades": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1808,7 +1795,7 @@
   },
   "Minos": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1821,7 +1808,7 @@
   },
   "PrincessMatu": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "EndianForest",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1834,7 +1821,7 @@
   },
   "Raka": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "SeaSharpCaverns",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1847,7 +1834,7 @@
   },
   "Thor": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1860,7 +1847,7 @@
   },
   "Atreus": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1873,7 +1860,7 @@
   },
   "Illia": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1886,7 +1873,7 @@
   },
   "Leon": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1899,7 +1886,7 @@
   },
   "Mara": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1912,7 +1899,7 @@
   },
   "Marcel": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1925,7 +1912,7 @@
   },
   "Piper": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1938,7 +1925,7 @@
   },
   "QueenElise": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1951,7 +1938,7 @@
   },
   "Radon": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1964,7 +1951,7 @@
   },
   "Xenon": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1977,7 +1964,7 @@
   },
   "Ysara": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "VoidStar",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -1990,7 +1977,7 @@
   },
   "Amelia": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2003,7 +1990,7 @@
   },
   "Azmus": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2016,7 +2003,7 @@
   },
   "Garrick": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2029,7 +2016,7 @@
   },
   "Johann": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2042,7 +2029,7 @@
   },
   "Necron": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2055,7 +2042,7 @@
   },
   "PrincessNebea": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2068,7 +2055,7 @@
   },
   "Roger": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2081,7 +2068,7 @@
   },
   "Thion": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2094,7 +2081,7 @@
   },
   "Ursula": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2107,7 +2094,7 @@
   },
   "Viper": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2120,7 +2107,7 @@
   },
   "Zana": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2133,7 +2120,7 @@
   },
   "Ajax": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2146,7 +2133,7 @@
   },
   "Aphrodite": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2159,7 +2146,7 @@
   },
   "Ares": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2172,7 +2159,7 @@
   },
   "Athena": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2185,7 +2172,7 @@
   },
   "Cleopatra": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2198,7 +2185,7 @@
   },
   "Geryon": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2211,7 +2198,7 @@
   },
   "Griffin": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2224,7 +2211,7 @@
   },
   "Hera": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2237,7 +2224,7 @@
   },
   "Horus": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2250,7 +2237,7 @@
   },
   "Poseidon": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2263,7 +2250,7 @@
   },
   "Zeus": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "UnderflowRuins",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2276,7 +2263,7 @@
   },
   "Aspen": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2289,7 +2276,7 @@
   },
   "Aster": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2302,7 +2289,7 @@
   },
   "Cookie": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2315,7 +2302,7 @@
   },
   "Irmik": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2328,7 +2315,7 @@
   },
   "Jingles": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2341,7 +2328,7 @@
   },
   "Juniper": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2354,7 +2341,7 @@
   },
   "Kringle": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2367,7 +2354,7 @@
   },
   "Nessie": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2380,7 +2367,7 @@
   },
   "PrincessPepper": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2393,7 +2380,7 @@
   },
   "Theldar": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2406,7 +2393,7 @@
   },
   "Tinsel": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LambdaPeaks",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2419,7 +2406,7 @@
   },
   "Ash": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2432,7 +2419,7 @@
   },
   "Brine": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2445,7 +2432,7 @@
   },
   "Celeste": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2458,7 +2445,7 @@
   },
   "Cindra": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2471,7 +2458,7 @@
   },
   "Igneus": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2484,7 +2471,7 @@
   },
   "Lucifer": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2497,7 +2484,7 @@
   },
   "Magnus": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2510,7 +2497,7 @@
   },
   "Pan": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2523,7 +2510,7 @@
   },
   "Ragnis": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2536,7 +2523,7 @@
   },
   "Scaldor": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "DaemonsHallow",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",
@@ -2549,7 +2536,20 @@
   },
   "Zelina": {
     "Type": "Npc",
-    "Environment": "",
+    "Environment": "LexiconCrypts",
+    "Scale": "0.3f",
+    "Size": {
+      "Width": "472.0f",
+      "Height": "780.0f"
+    },
+    "Offset": {
+      "X": "-24.0f",
+      "Y": "-390.0f"
+    }
+  },
+  "Elric": {
+    "Type": "Npc",
+    "Environment": "CastleValgrind",
     "Scale": "0.3f",
     "Size": {
       "Width": "472.0f",

@@ -14,7 +14,7 @@ HexusOpponentDemonRogue* HexusOpponentDemonRogue::getInstance()
 }
 
 HexusOpponentDemonRogue::HexusOpponentDemonRogue() : HexusOpponentData(
-	EntityResources::Enemies_DemonRogue_Animations,
+	EntityResources::Enemies_DaemonsHallow_DemonRogue_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.85f,
 	Vec2(-48.0f, -48.0f),

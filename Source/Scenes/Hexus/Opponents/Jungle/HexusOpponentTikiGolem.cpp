@@ -14,7 +14,7 @@ HexusOpponentTikiGolem* HexusOpponentTikiGolem::getInstance()
 }
 
 HexusOpponentTikiGolem::HexusOpponentTikiGolem() : HexusOpponentData(
-	EntityResources::Enemies_TikiGolem_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -160.0f),

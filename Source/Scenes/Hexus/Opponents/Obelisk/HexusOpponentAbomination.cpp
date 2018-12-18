@@ -14,7 +14,7 @@ HexusOpponentAbomination* HexusOpponentAbomination::getInstance()
 }
 
 HexusOpponentAbomination::HexusOpponentAbomination() : HexusOpponentData(
-	EntityResources::Enemies_Abomination_Animations,
+	EntityResources::Enemies_LexiconCrypts_Abomination_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.7f,
 	Vec2(-48.0f, -64.0f),

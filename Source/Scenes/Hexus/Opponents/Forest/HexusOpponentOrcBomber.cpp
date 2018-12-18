@@ -14,7 +14,7 @@ HexusOpponentOrcBomber* HexusOpponentOrcBomber::getInstance()
 }
 
 HexusOpponentOrcBomber::HexusOpponentOrcBomber() : HexusOpponentData(
-	EntityResources::Enemies_OrcBomber_Animations,
+	EntityResources::Enemies_EndianForest_OrcBomber_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

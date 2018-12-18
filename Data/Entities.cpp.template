@@ -1,6 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 // THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 ////////////////////////////////////////////////////////////////////////////////////////////
+
 #include "{{EntityName}}.h"
 
 #include "Resources/EntityResources.h"
@@ -17,7 +18,7 @@ const std::string {{EntityName}}::MapKey{{EntityName}} = "{{MapKeyName}}";
 }
 
 {{EntityName}}::{{EntityName}}(cocos2d::ValueMap* initProperties) : {{EntityBase}}(initProperties,
-	EntityResources::{{EntityPath}}_{{EntityName}}_Animations,
+	EntityResources::{{EntityPrefix}}_{{EntityEnvironment}}_{{EntityName}}_Animations,
 	PlatformerCollisionType::{{EntityCollisionType}},
 	cocos2d::Size({{EntityWidth}}, {{EntityHeight}}),
 	{{EntityScale}},

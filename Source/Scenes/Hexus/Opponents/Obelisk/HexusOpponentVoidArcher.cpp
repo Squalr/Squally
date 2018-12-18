@@ -14,7 +14,7 @@ HexusOpponentVoidArcher* HexusOpponentVoidArcher::getInstance()
 }
 
 HexusOpponentVoidArcher::HexusOpponentVoidArcher() : HexusOpponentData(
-	EntityResources::Enemies_VoidArcher_Animations,
+	EntityResources::Enemies_LexiconCrypts_VoidArcher_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.85f,
 	Vec2(-48.0f, -48.0f),

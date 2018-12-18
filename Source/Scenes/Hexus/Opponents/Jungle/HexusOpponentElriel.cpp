@@ -14,7 +14,7 @@ HexusOpponentElriel* HexusOpponentElriel::getInstance()
 }
 
 HexusOpponentElriel::HexusOpponentElriel() : HexusOpponentData(
-	EntityResources::Npcs_Elriel_Animations,
+	EntityResources::Npcs_VoidStar_Elriel_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

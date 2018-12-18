@@ -15,7 +15,7 @@ using namespace cocos2d;
 class RadialMenu : public Hud
 {
 public:
-	static RadialMenu * create(std::function<void()> onCloseCallback);
+	static RadialMenu* create(std::function<void()> onCloseCallback);
 
 private:
 	RadialMenu(std::function<void()> onCloseCallback);

@@ -14,7 +14,7 @@ HexusOpponentJingles* HexusOpponentJingles::getInstance()
 }
 
 HexusOpponentJingles::HexusOpponentJingles() : HexusOpponentData(
-	EntityResources::Npcs_Jingles_Animations,
+	EntityResources::Npcs_LambdaPeaks_Jingles_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
 	Vec2(-48.0f, -64.0f),

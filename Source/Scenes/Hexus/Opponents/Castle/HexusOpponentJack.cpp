@@ -14,7 +14,7 @@ HexusOpponentJack* HexusOpponentJack::getInstance()
 }
 
 HexusOpponentJack::HexusOpponentJack() : HexusOpponentData(
-	EntityResources::Enemies_Jack_Animations,
+	EntityResources::Enemies_CastleValgrind_Jack_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -64.0f),

@@ -14,7 +14,7 @@ HexusOpponentSkeletalBaron* HexusOpponentSkeletalBaron::getInstance()
 }
 
 HexusOpponentSkeletalBaron::HexusOpponentSkeletalBaron() : HexusOpponentData(
-	EntityResources::Enemies_SkeletalBaron_Animations,
+	EntityResources::Enemies_LexiconCrypts_SkeletalBaron_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.85f,
 	Vec2(48.0f, -64.0f),

@@ -22,7 +22,7 @@ using namespace cocos2d::ui;
 class CodeEditor : public Hud
 {
 public:
-	static CodeEditor * create();
+	static CodeEditor* create();
 
 	void open(HackableCode* hackableCode);
 

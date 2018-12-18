@@ -14,7 +14,7 @@ HexusOpponentCeleste* HexusOpponentCeleste::getInstance()
 }
 
 HexusOpponentCeleste::HexusOpponentCeleste() : HexusOpponentData(
-	EntityResources::Npcs_Celeste_Animations,
+	EntityResources::Npcs_DaemonsHallow_Celeste_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.85f,
 	Vec2(-48.0f, -64.0f),

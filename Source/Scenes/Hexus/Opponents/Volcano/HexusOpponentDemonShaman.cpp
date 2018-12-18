@@ -14,7 +14,7 @@ HexusOpponentDemonShaman* HexusOpponentDemonShaman::getInstance()
 }
 
 HexusOpponentDemonShaman::HexusOpponentDemonShaman() : HexusOpponentData(
-	EntityResources::Enemies_DemonShaman_Animations,
+	EntityResources::Enemies_DaemonsHallow_DemonShaman_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.85f,
 	Vec2(-48.0f, -48.0f),

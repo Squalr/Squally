@@ -14,7 +14,7 @@ HexusOpponentToben* HexusOpponentToben::getInstance()
 }
 
 HexusOpponentToben::HexusOpponentToben() : HexusOpponentData(
-	EntityResources::Npcs_Toben_Animations,
+	EntityResources::Npcs_EndianForest_Toben_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

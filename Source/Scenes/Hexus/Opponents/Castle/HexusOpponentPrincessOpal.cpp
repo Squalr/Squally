@@ -14,7 +14,7 @@ HexusOpponentPrincessOpal* HexusOpponentPrincessOpal::getInstance()
 }
 
 HexusOpponentPrincessOpal::HexusOpponentPrincessOpal() : HexusOpponentData(
-	EntityResources::Npcs_PrincessOpal_Animations,
+	EntityResources::Npcs_CastleValgrind_PrincessOpal_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -48.0f),
