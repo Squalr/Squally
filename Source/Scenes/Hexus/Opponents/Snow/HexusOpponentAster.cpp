@@ -14,7 +14,7 @@ HexusOpponentAster* HexusOpponentAster::getInstance()
 }
 
 HexusOpponentAster::HexusOpponentAster() : HexusOpponentData(
-	EntityResources::Environment_Snow_Npcs_Aster_Animations,
+	EntityResources::Npcs_Aster_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

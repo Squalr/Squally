@@ -14,7 +14,7 @@ HexusOpponentJasper* HexusOpponentJasper::getInstance()
 }
 
 HexusOpponentJasper::HexusOpponentJasper() : HexusOpponentData(
-	EntityResources::Environment_Caverns_Npcs_Jasper_Animations,
+	EntityResources::Npcs_Jasper_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

@@ -1,5 +1,7 @@
 #include "Squally.h"
 
+#include "Resources/EntityResources.h"
+
 Squally* Squally::squallyInstance = nullptr;
 int Squally::health;
 const float Squally::squallyScale = 0.13f;

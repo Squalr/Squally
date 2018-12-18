@@ -14,7 +14,7 @@ HexusOpponentMarcel* HexusOpponentMarcel::getInstance()
 }
 
 HexusOpponentMarcel::HexusOpponentMarcel() : HexusOpponentData(
-	EntityResources::Environment_Mech_Npcs_Marcel_Animations,
+	EntityResources::Npcs_Marcel_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

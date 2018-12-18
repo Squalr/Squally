@@ -14,7 +14,7 @@ HexusOpponentSkeletalPriestess* HexusOpponentSkeletalPriestess::getInstance()
 }
 
 HexusOpponentSkeletalPriestess::HexusOpponentSkeletalPriestess() : HexusOpponentData(
-	EntityResources::Environment_Obelisk_Enemies_SkeletalPriestess_Animations,
+	EntityResources::Enemies_SkeletalPriestess_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.85f,
 	Vec2(-48.0f, -64.0f),

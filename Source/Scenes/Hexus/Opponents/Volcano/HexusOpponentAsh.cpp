@@ -14,7 +14,7 @@ HexusOpponentAsh* HexusOpponentAsh::getInstance()
 }
 
 HexusOpponentAsh::HexusOpponentAsh() : HexusOpponentData(
-	EntityResources::Environment_Volcano_Npcs_Ash_Animations,
+	EntityResources::Npcs_Ash_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

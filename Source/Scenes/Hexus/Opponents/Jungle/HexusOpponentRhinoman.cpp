@@ -14,7 +14,7 @@ HexusOpponentRhinoman* HexusOpponentRhinoman::getInstance()
 }
 
 HexusOpponentRhinoman::HexusOpponentRhinoman() : HexusOpponentData(
-	EntityResources::Environment_Jungle_Enemies_Rhinoman_Animations,
+	EntityResources::Enemies_Rhinoman_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

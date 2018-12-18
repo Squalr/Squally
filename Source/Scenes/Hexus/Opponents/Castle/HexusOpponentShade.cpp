@@ -14,7 +14,7 @@ HexusOpponentShade* HexusOpponentShade::getInstance()
 }
 
 HexusOpponentShade::HexusOpponentShade() : HexusOpponentData(
-	EntityResources::Environment_Castle_Enemies_Shade_Animations,
+	EntityResources::Enemies_Shade_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	1.0f,
 	Vec2(-32.0f, -96.0f),

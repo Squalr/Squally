@@ -14,7 +14,7 @@ HexusOpponentTyracius* HexusOpponentTyracius::getInstance()
 }
 
 HexusOpponentTyracius::HexusOpponentTyracius() : HexusOpponentData(
-	EntityResources::Environment_Castle_Npcs_Tyracius_Animations,
+	EntityResources::Npcs_Tyracius_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	0.85f,
 	Vec2(-32.0f, -64.0f),

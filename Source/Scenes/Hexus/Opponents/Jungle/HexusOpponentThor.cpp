@@ -14,7 +14,7 @@ HexusOpponentThor* HexusOpponentThor::getInstance()
 }
 
 HexusOpponentThor::HexusOpponentThor() : HexusOpponentData(
-	EntityResources::Environment_Jungle_Npcs_Thor_Animations,
+	EntityResources::Npcs_Thor_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

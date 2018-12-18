@@ -14,7 +14,7 @@ HexusOpponentGoblinShaman* HexusOpponentGoblinShaman::getInstance()
 }
 
 HexusOpponentGoblinShaman::HexusOpponentGoblinShaman() : HexusOpponentData(
-	EntityResources::Environment_Jungle_Enemies_GoblinShaman_Animations,
+	EntityResources::Enemies_GoblinShaman_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

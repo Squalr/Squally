@@ -14,7 +14,7 @@ HexusOpponentTigress* HexusOpponentTigress::getInstance()
 }
 
 HexusOpponentTigress::HexusOpponentTigress() : HexusOpponentData(
-	EntityResources::Environment_Ruins_Enemies_Tigress_Animations,
+	EntityResources::Enemies_Tigress_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
