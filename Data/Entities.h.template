@@ -6,11 +6,6 @@
 
 #include "{{EntityBasePath}}"
 
-namespace cocos2d
-{
-	class ValueMap;
-}
-
 class {{EntityName}} : public {{EntityBase}}
 {
 public:
@@ -20,5 +15,5 @@ public:
 
 private:
 	{{EntityName}}(cocos2d::ValueMap* initProperties);
-	{{EntityName}}();
+	~{{EntityName}}();
 };

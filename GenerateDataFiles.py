@@ -11,15 +11,11 @@ import os
 import re
 
 def main():
-	enemyData = parseEntityFile(abspath(join(join(realpath(__file__), ".."), "Data/Enemies.json")))
-	npcData = parseEntityFile(abspath(join(join(realpath(__file__), ".."), "Data/Npcs.json")))
-	
-	entityData = enemyData + npcData
+	entityData = parseEntityFile(abspath(join(join(realpath(__file__), ".."), "Data/Entities.json")))
 	generateDeserializationCode(entityData)
 
 def generateDeserializationCode(entityData):
 	deserializerClass = abspath(join(join(realpath(__file__), ".."), "Source/Entities/Platformer/PlatformerEntityDeserializer.cpp"))
-	firstElement = True
 	
 	with open(deserializerClass,'r+') as contentReader:
 		includesPrefixDelimiter = "////V////V////V////V////V////V////V/"
@@ -37,11 +33,10 @@ def generateDeserializationCode(entityData):
 		generatedContent = "\n\n"
 		
 		for nextEntity in entityData:
-			generatedContent += "\t\t" + ("" if firstElement else "else ") + "if (name == " + nextEntity["MapKey"] + ")\n"
+			generatedContent += "\t\t" + "if (name == " + nextEntity["MapKey"] + ")\n"
 			generatedContent += "\t\t" + "{\n"
 			generatedContent += "\t\t\t" + "newEntity = " + nextEntity["EntityName"] + "::deserialize(&properties);\n"
 			generatedContent += "\t\t" + "}\n"
-			firstElement = False
 		
 		contents = replaceTextBetween(prefixDelimiter, suffixDelimiter, contents, generatedContent + "\n\t\t")
 		
@@ -86,12 +81,15 @@ def parseEntity(entityName, entityData):
 		entityPath = "Npcs"
 		entityCollisionType = "FriendlyNpc"
 		entityBase = "NpcBase"
-		entityBasePath = "Entities/Platformer/Npcs/NpcBase.h"
+		entityBasePath = "Entities/Platformer/NpcBase.h"
 	elif entityType == "Misc":
 		entityPath = "Misc"
 		entityCollisionType = "FriendlyNpc"
 		entityBase = "PlatformerEntity"
 		entityBasePath = "Entities/Platformer/PlatformerEntity.h"
+	else:
+		print("unknown entity type: " + entityType)
+		return {}
 	
 	mapKeyName = "-".join(filter(None, re.split("([A-Z][^A-Z]*)", entityName))).lower()
 	pathRoot = "Source/Entities/Platformer/" + entityPath + "/"

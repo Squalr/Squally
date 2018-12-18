@@ -3,9 +3,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 #include "{{EntityName}}.h"
 
+#include "Resources/EntityResources.h"
+
 const std::string {{EntityName}}::MapKey{{EntityName}} = "{{MapKeyName}}";
 
-{{EntityName}}* {{EntityName}}::deserialize(ValueMap* initProperties)
+{{EntityName}}* {{EntityName}}::deserialize(cocos2d::ValueMap* initProperties)
 {
 	{{EntityName}}* instance = new {{EntityName}}(initProperties);
 
@@ -14,12 +16,12 @@ const std::string {{EntityName}}::MapKey{{EntityName}} = "{{MapKeyName}}";
 	return instance;
 }
 
-{{EntityName}}::{{EntityName}}(ValueMap* initProperties) : PlatformerEnemy(initProperties,
+{{EntityName}}::{{EntityName}}(cocos2d::ValueMap* initProperties) : {{EntityBase}}(initProperties,
 	EntityResources::{{EntityPath}}_{{EntityName}}_Animations,
 	PlatformerCollisionType::{{EntityCollisionType}},
-	Size({{EntityWidth}}, {{EntityHeight}}),
+	cocos2d::Size({{EntityWidth}}, {{EntityHeight}}),
 	{{EntityScale}},
-	Vec2({{EntityOffsetX}}, {{EntityOffsetY}}))
+	cocos2d::Vec2({{EntityOffsetX}}, {{EntityOffsetY}}))
 {
 }
 

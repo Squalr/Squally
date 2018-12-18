@@ -3,9 +3,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 #include "Abomination.h"
 
+#include "Resources/EntityResources.h"
+
 const std::string Abomination::MapKeyAbomination = "abomination";
 
-Abomination* Abomination::deserialize(ValueMap* initProperties)
+Abomination* Abomination::deserialize(cocos2d::ValueMap* initProperties)
 {
 	Abomination* instance = new Abomination(initProperties);
 
@@ -14,12 +16,12 @@ Abomination* Abomination::deserialize(ValueMap* initProperties)
 	return instance;
 }
 
-Abomination::Abomination(ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Abomination::Abomination(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_Abomination_Animations,
 	PlatformerCollisionType::Enemy,
-	Size(296.0f, 356.0f),
-	0.6,
-	Vec2(0.0f, 0.0f))
+	cocos2d::Size(296.0f, 356.0f),
+	0.6f,
+	cocos2d::Vec2(0.0f, 0.0f))
 {
 }
 

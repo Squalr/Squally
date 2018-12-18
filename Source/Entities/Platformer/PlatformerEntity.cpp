@@ -1,5 +1,8 @@
 #include "PlatformerEntity.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Utils/MathUtils.h"
+
 const float PlatformerEntity::groundCollisionDetectorPadding = 8.0f;
 const float PlatformerEntity::groundCollisionDetectorOffset = 24.0f;
 const float PlatformerEntity::capsuleRadius = 8.0f;
@@ -8,6 +11,8 @@ const float PlatformerEntity::airDragFactor = 0.65f;
 const float PlatformerEntity::maxMoveSpeed = 360.0f;
 const float PlatformerEntity::maxJumpSpeed = 720.0f;
 const float PlatformerEntity::maxFallSpeed = -1280.0f;
+
+using namespace cocos2d;
 
 PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlResource, PlatformerCollisionType collisionType, Size size, float scale, Vec2 collisionOffset) :
 	CollisionObject(
