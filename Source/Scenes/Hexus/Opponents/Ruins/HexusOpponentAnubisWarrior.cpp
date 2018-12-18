@@ -14,7 +14,7 @@ HexusOpponentAnubisWarrior* HexusOpponentAnubisWarrior::getInstance()
 }
 
 HexusOpponentAnubisWarrior::HexusOpponentAnubisWarrior() : HexusOpponentData(
-	EntityResources::Environment_Ruins_Enemies_AnubisWarrior_Animations,
+	EntityResources::Enemies_AnubisWarrior_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

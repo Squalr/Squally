@@ -1,5 +1,7 @@
 #include "HexusPuzzleItem.h"
 
+#include "Resources/UIResources.h"
+
 HexusPuzzleItem* HexusPuzzleItem::create(std::string description, std::string mapFile, int index, std::function<void(HexusPuzzleItem*)> onMouseOver)
 {
 	HexusPuzzleItem* instance = new HexusPuzzleItem(description, mapFile, index, onMouseOver);

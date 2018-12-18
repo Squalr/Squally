@@ -19,7 +19,6 @@ protected:
 
 protected:
 	virtual void onInteractButtonClick(MenuSprite* menuSprite);
-	virtual void initializeCardData();
 
 private:
 	MenuSprite* interactButton;

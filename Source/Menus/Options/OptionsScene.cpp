@@ -1,5 +1,8 @@
 #include "OptionsScene.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Events/NavigationEvents.h"
+
 OptionsScene* OptionsScene::instance;
 
 void OptionsScene::registerGlobalScene()

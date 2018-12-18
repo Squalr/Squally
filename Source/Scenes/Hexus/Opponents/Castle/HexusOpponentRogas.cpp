@@ -14,7 +14,7 @@ HexusOpponentRogas* HexusOpponentRogas::getInstance()
 }
 
 HexusOpponentRogas::HexusOpponentRogas() : HexusOpponentData(
-	EntityResources::Environment_Castle_Npcs_Rogas_Animations,
+	EntityResources::Npcs_Rogas_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	0.85f,
 	Vec2(-32.0f, -64.0f),

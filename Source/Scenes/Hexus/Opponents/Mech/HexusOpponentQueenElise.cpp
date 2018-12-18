@@ -14,7 +14,7 @@ HexusOpponentQueenElise* HexusOpponentQueenElise::getInstance()
 }
 
 HexusOpponentQueenElise::HexusOpponentQueenElise() : HexusOpponentData(
-	EntityResources::Environment_Mech_Npcs_QueenElise_Animations,
+	EntityResources::Npcs_QueenElise_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	0.85f,
 	Vec2(-48.0f, -64.0f),

@@ -14,7 +14,7 @@ HexusOpponentMara* HexusOpponentMara::getInstance()
 }
 
 HexusOpponentMara::HexusOpponentMara() : HexusOpponentData(
-	EntityResources::Environment_Mech_Npcs_Mara_Animations,
+	EntityResources::Npcs_Mara_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

@@ -14,7 +14,7 @@ HexusOpponentSkeletalKnight* HexusOpponentSkeletalKnight::getInstance()
 }
 
 HexusOpponentSkeletalKnight::HexusOpponentSkeletalKnight() : HexusOpponentData(
-	EntityResources::Environment_Obelisk_Enemies_SkeletalKnight_Animations,
+	EntityResources::Enemies_SkeletalKnight_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.85f,
 	Vec2(-48.0f, -64.0f),

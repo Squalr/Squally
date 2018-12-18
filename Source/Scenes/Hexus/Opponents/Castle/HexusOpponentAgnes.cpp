@@ -14,7 +14,7 @@ HexusOpponentAgnes* HexusOpponentAgnes::getInstance()
 }
 
 HexusOpponentAgnes::HexusOpponentAgnes() : HexusOpponentData(
-	EntityResources::Environment_Castle_Enemies_Agnes_Animations,
+	EntityResources::Enemies_Agnes_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	0.9f,
 	Vec2(-32.0f, -16.0f),

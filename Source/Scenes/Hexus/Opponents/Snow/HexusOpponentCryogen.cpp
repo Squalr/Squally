@@ -14,7 +14,7 @@ HexusOpponentCryogen* HexusOpponentCryogen::getInstance()
 }
 
 HexusOpponentCryogen::HexusOpponentCryogen() : HexusOpponentData(
-	EntityResources::Environment_Snow_Enemies_Cryogen_Animations,
+	EntityResources::Enemies_Cyrogen_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
 	Vec2(-48.0f, -48.0f),

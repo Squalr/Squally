@@ -14,7 +14,7 @@ HexusOpponentAphrodite* HexusOpponentAphrodite::getInstance()
 }
 
 HexusOpponentAphrodite::HexusOpponentAphrodite() : HexusOpponentData(
-	EntityResources::Environment_Ruins_Npcs_Aphrodite_Animations,
+	EntityResources::Npcs_Aphrodite_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

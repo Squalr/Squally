@@ -14,7 +14,7 @@ HexusOpponentAzmus* HexusOpponentAzmus::getInstance()
 }
 
 HexusOpponentAzmus::HexusOpponentAzmus() : HexusOpponentData(
-	EntityResources::Environment_Obelisk_Npcs_Azmus_Animations,
+	EntityResources::Npcs_Azmus_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

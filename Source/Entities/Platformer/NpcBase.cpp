@@ -13,8 +13,6 @@ NpcBase::NpcBase(ValueMap* initProperties, std::string scmlResource, PlatformerC
 	this->interactButton->setPosition(Vec2(0.0f, 196.0f));
 
 	this->addChild(this->interactButton);
-
-	this->initializeCardData();
 }
 
 NpcBase::~NpcBase()

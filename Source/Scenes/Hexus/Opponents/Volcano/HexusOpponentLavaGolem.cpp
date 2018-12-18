@@ -14,7 +14,7 @@ HexusOpponentLavaGolem* HexusOpponentLavaGolem::getInstance()
 }
 
 HexusOpponentLavaGolem::HexusOpponentLavaGolem() : HexusOpponentData(
-	EntityResources::Environment_Volcano_Enemies_LavaGolem_Animations,
+	EntityResources::Enemies_LavaGolem_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

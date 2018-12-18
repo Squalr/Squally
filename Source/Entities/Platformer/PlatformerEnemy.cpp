@@ -1,8 +1,16 @@
 #include "PlatformerEnemy.h"
 
+#include "Engine/Utils/GameUtils.h"
+
 const std::string PlatformerEnemy::MapKeyBattleMap = "battle_map";
 
-PlatformerEnemy::PlatformerEnemy(ValueMap* initProperties, std::string scmlResource, PlatformerCollisionType collisionType, Size size, float scale, Vec2 collisionOffset)
+PlatformerEnemy::PlatformerEnemy(
+	cocos2d::ValueMap* initProperties,
+	std::string scmlResource, 
+	PlatformerCollisionType collisionType, 
+	cocos2d::Size size, 
+	float scale,
+	cocos2d::Vec2 collisionOffset)
 	: PlatformerEntity(initProperties, scmlResource, collisionType, size, scale, collisionOffset)
 {
 	this->battleMapResource = "";

@@ -14,7 +14,7 @@ HexusOpponentForestGolem* HexusOpponentForestGolem::getInstance()
 }
 
 HexusOpponentForestGolem::HexusOpponentForestGolem() : HexusOpponentData(
-	EntityResources::Environment_Caverns_Enemies_ForestGolem_Animations,
+	EntityResources::Enemies_ForestGolem_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -96.0f),

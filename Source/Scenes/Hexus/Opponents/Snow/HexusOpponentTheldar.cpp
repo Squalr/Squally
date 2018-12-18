@@ -14,7 +14,7 @@ HexusOpponentTheldar* HexusOpponentTheldar::getInstance()
 }
 
 HexusOpponentTheldar::HexusOpponentTheldar() : HexusOpponentData(
-	EntityResources::Environment_Snow_Npcs_Theldar_Animations,
+	EntityResources::Npcs_Theldar_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
 	Vec2(-48.0f, -64.0f),

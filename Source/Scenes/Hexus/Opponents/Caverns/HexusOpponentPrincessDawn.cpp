@@ -14,7 +14,7 @@ HexusOpponentPrincessDawn* HexusOpponentPrincessDawn::getInstance()
 }
 
 HexusOpponentPrincessDawn::HexusOpponentPrincessDawn() : HexusOpponentData(
-	EntityResources::Environment_Caverns_Npcs_PrincessDawn_Animations,
+	EntityResources::Npcs_PrincessDawn_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -48.0f),

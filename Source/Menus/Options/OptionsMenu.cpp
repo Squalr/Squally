@@ -1,5 +1,25 @@
 #include "OptionsMenu.h"
 
+#include "cocos/2d/CCLabel.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+
+#include "Engine/Config/ConfigManager.h"
+#include "Engine/Localization/Localization.h"
+#include "Engine/Sound/SoundManager.h"
+#include "Engine/UI/Controls/CCheckbox.h"
+#include "Engine/UI/Controls/CRadioButton.h"
+#include "Engine/UI/Controls/CSlider.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
+
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
 const Color3B OptionsMenu::TitleColor = Color3B(88, 188, 193);
 const std::string OptionsMenu::StringKeyMenuOptions = "Menu_Options";
 const std::string OptionsMenu::StringKeyFullScreen = "Menu_Options_Full_Screen";

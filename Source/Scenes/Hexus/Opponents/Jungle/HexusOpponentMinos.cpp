@@ -14,7 +14,7 @@ HexusOpponentMinos* HexusOpponentMinos::getInstance()
 }
 
 HexusOpponentMinos::HexusOpponentMinos() : HexusOpponentData(
-	EntityResources::Environment_Jungle_Npcs_Minos_Animations,
+	EntityResources::Npcs_Minos_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
