@@ -14,7 +14,7 @@ HexusOpponentAres* HexusOpponentAres::getInstance()
 }
 
 HexusOpponentAres::HexusOpponentAres() : HexusOpponentData(
-	EntityResources::Environment_Ruins_Npcs_Ares_Animations,
+	EntityResources::Npcs_UnderflowRuins_Ares_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

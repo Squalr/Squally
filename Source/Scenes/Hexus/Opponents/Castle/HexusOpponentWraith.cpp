@@ -14,7 +14,7 @@ HexusOpponentWraith* HexusOpponentWraith::getInstance()
 }
 
 HexusOpponentWraith::HexusOpponentWraith() : HexusOpponentData(
-	EntityResources::Environment_Castle_Enemies_Wraith_Animations,
+	EntityResources::Enemies_CastleValgrind_Wraith_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	0.7f,
 	Vec2(-32.0f, -32.0f),

@@ -14,7 +14,7 @@ HexusOpponentGramps* HexusOpponentGramps::getInstance()
 }
 
 HexusOpponentGramps::HexusOpponentGramps() : HexusOpponentData(
-	EntityResources::Environment_Jungle_Npcs_Gramps_Animations,
+	EntityResources::Npcs_EndianForest_Gramps_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	0.85f,
 	Vec2(-32.0f, -64.0f),

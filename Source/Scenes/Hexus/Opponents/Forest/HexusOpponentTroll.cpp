@@ -14,7 +14,7 @@ HexusOpponentTroll* HexusOpponentTroll::getInstance()
 }
 
 HexusOpponentTroll::HexusOpponentTroll() : HexusOpponentData(
-	EntityResources::Environment_Forest_Enemies_Troll_Animations,
+	EntityResources::Enemies_EndianForest_Troll_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

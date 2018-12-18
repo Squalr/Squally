@@ -14,7 +14,7 @@ HexusOpponentTigerMan* HexusOpponentTigerMan::getInstance()
 }
 
 HexusOpponentTigerMan::HexusOpponentTigerMan() : HexusOpponentData(
-	EntityResources::Environment_Ruins_Enemies_TigerMan_Animations,
+	EntityResources::Enemies_UnderflowRuins_TigerMan_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-32.0f, -48.0f),

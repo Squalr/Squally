@@ -2,10 +2,15 @@
 #include "cocos2d.h"
 
 #include "Engine/GlobalScene.h"
-#include "Menus/Options/OptionsMenu.h"
-#include "Menus/MenuBackground.h"
 
 using namespace cocos2d;
+
+namespace cocos2d
+{
+	class Node;
+}
+
+class OptionsMenu;
 
 class OptionsScene : public GlobalScene
 {
@@ -21,7 +26,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	Node* backgroundNode;
+	cocos2d::Node* backgroundNode;
 	OptionsMenu* menu;
 
 	static OptionsScene* instance;

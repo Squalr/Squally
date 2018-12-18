@@ -14,7 +14,7 @@ HexusOpponentOlive* HexusOpponentOlive::getInstance()
 }
 
 HexusOpponentOlive::HexusOpponentOlive() : HexusOpponentData(
-	EntityResources::Environment_Caverns_Npcs_Olive_Animations,
+	EntityResources::Npcs_SeaSharpCaverns_Olive_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -64.0f),

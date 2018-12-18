@@ -1,31 +1,24 @@
 #pragma once
-#include "cocos2d.h"
-#include "cocos-ext.h"
+#include "cocos/math/CCGeometry.h"
 
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Engine/Utils/MathUtils.h"
-#include "Resources/EntityResources.h"
-#include "Resources/UIResources.h"
-#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
-using namespace cocos2d;
+class SmartAnimationNode;
 
 class PlatformerEntity : public CollisionObject
 {
 public:
-	virtual Size getSize();
+	virtual cocos2d::Size getSize();
 
 protected:
 	PlatformerEntity(
-		ValueMap* initProperties,
+		cocos2d::ValueMap* initProperties,
 		std::string scmlResource,
 		PlatformerCollisionType collisionType,
-		Size size = Size(256.0f, 256.0f),
+		cocos2d::Size size = cocos2d::Size(256.0f, 256.0f),
 		float scale = 1.0f,
-		Vec2 collisionOffset = Vec2(0.0f, 0.0f));
+		cocos2d::Vec2 collisionOffset = cocos2d::Vec2(0.0f, 0.0f));
 	~PlatformerEntity();
 
 	void onEnter() override;
@@ -36,7 +29,7 @@ protected:
 	virtual void initializeCollisionEvents();
 
 	SmartAnimationNode* animationNode;
-	Vec2 movement;
+	cocos2d::Vec2 movement;
 
 	bool isOnGround;
 
@@ -57,7 +50,7 @@ protected:
 	static const float maxFallSpeed;
 
 private:
-	static PhysicsBody* createCapsulePolygon(Size size, float scale);
+	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale);
 
 	CollisionObject* groundCollisionDetector;
 

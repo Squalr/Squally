@@ -14,7 +14,7 @@ HexusOpponentMildred* HexusOpponentMildred::getInstance()
 }
 
 HexusOpponentMildred::HexusOpponentMildred() : HexusOpponentData(
-	EntityResources::Environment_Caverns_Npcs_Mildred_Animations,
+	EntityResources::Npcs_SeaSharpCaverns_Mildred_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	0.8f,
 	Vec2(-32.0f, -64.0f),

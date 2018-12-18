@@ -1,0 +1,39 @@
+////////////////////////////////////////////////////////////////////////////////////////////
+// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
+////////////////////////////////////////////////////////////////////////////////////////////
+
+#include "{{EntityName}}.h"
+
+#include "Resources/EntityResources.h"
+
+const std::string {{EntityName}}::MapKey{{EntityName}} = "{{MapKeyName}}";
+
+{{EntityName}}* {{EntityName}}::deserialize(cocos2d::ValueMap* initProperties)
+{
+	{{EntityName}}* instance = new {{EntityName}}(initProperties);
+
+	instance->autorelease();
+
+	return instance;
+}
+
+{{EntityName}}::{{EntityName}}(cocos2d::ValueMap* initProperties) : {{EntityBase}}(initProperties,
+	EntityResources::{{EntityPrefix}}_{{EntityEnvironment}}_{{EntityName}}_Animations,
+	PlatformerCollisionType::{{EntityCollisionType}},
+	cocos2d::Size({{EntityWidth}}, {{EntityHeight}}),
+	{{EntityScale}},
+	cocos2d::Vec2({{EntityOffsetX}}, {{EntityOffsetY}}))
+{
+}
+
+{{EntityName}}::~{{EntityName}}()
+{
+}
+
+///////////////////////////////////////////////////
+// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
+////X////X////X////X////X////X////X////X////X////X/
+
+////O////O////O////O////O////O////O////O////O////O/
+// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
+///////////////////////////////////////////////////

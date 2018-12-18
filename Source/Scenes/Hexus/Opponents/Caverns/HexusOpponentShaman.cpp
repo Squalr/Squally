@@ -14,7 +14,7 @@ HexusOpponentShaman* HexusOpponentShaman::getInstance()
 }
 
 HexusOpponentShaman::HexusOpponentShaman() : HexusOpponentData(
-	EntityResources::Environment_Caverns_Enemies_Shaman_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_Shaman_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	0.7f,
 	Vec2(-32.0f, -32.0f),
