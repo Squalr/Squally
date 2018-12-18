@@ -152,6 +152,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Isometric/Shiftman.cpp
 	Source/Entities/Isometric/Squally/IsometricSqually.cpp
 	Source/Entities/Platformer/Effects/JumpEffect.cpp
+	Source/Entities/Platformer/Enemies/Abomination.cpp
 	Source/Entities/Platformer/Enemies/Castle/Agnes.cpp
 	Source/Entities/Platformer/Enemies/Castle/CastleEnemyDeserializer.cpp
 	Source/Entities/Platformer/Enemies/Castle/Executioner.cpp
@@ -260,6 +261,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/Volcano/FireElemental.cpp
 	Source/Entities/Platformer/Enemies/Volcano/LavaGolem.cpp
 	Source/Entities/Platformer/Enemies/Volcano/VolcanoEnemyDeserializer.cpp
+	Source/Entities/Platformer/Helpers/Gecko.cpp
 	Source/Entities/Platformer/Npcs/Castle/CastleNpcDeserializer.cpp
 	Source/Entities/Platformer/Npcs/Castle/Erlic.cpp
 	Source/Entities/Platformer/Npcs/Castle/Garin.cpp
@@ -912,6 +914,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Isometric/Shiftman.h
 	Source/Entities/Isometric/Squally/IsometricSqually.h
 	Source/Entities/Platformer/Effects/JumpEffect.h
+	Source/Entities/Platformer/Enemies/Abomination.h
 	Source/Entities/Platformer/Enemies/Castle/Agnes.h
 	Source/Entities/Platformer/Enemies/Castle/CastleEnemies.h
 	Source/Entities/Platformer/Enemies/Castle/CastleEnemyDeserializer.h
@@ -1029,6 +1032,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/Volcano/LavaGolem.h
 	Source/Entities/Platformer/Enemies/Volcano/VolcanoEnemies.h
 	Source/Entities/Platformer/Enemies/Volcano/VolcanoEnemyDeserializer.h
+	Source/Entities/Platformer/Helpers/Gecko.h
 	Source/Entities/Platformer/Npcs/Castle/CastleNpcDeserializer.h
 	Source/Entities/Platformer/Npcs/Castle/CastleNpcs.h
 	Source/Entities/Platformer/Npcs/Castle/Erlic.h
