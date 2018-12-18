@@ -6,11 +6,6 @@
 
 #include "Entities/Platformer/PlatformerEnemy.h"
 
-namespace cocos2d
-{
-	class ValueMap;
-}
-
 class Abomination : public PlatformerEnemy
 {
 public:
@@ -20,5 +15,5 @@ public:
 
 private:
 	Abomination(cocos2d::ValueMap* initProperties);
-	Abomination();
+	~Abomination();
 };
