@@ -1,0 +1,24 @@
+////////////////////////////////////////////////////////////////////////////////////////////
+// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
+////////////////////////////////////////////////////////////////////////////////////////////
+#pragma once
+#include <string>
+
+#include "{{EntityBasePath}}"
+
+namespace cocos2d
+{
+	class ValueMap;
+}
+
+class {{EntityName}} : public {{EntityBase}}
+{
+public:
+	static {{EntityName}}* deserialize(cocos2d::ValueMap* initProperties);
+
+	static const std::string MapKey{{EntityName}};
+
+private:
+	{{EntityName}}(cocos2d::ValueMap* initProperties);
+	{{EntityName}}();
+};
