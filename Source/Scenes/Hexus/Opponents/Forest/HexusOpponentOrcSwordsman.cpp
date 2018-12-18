@@ -14,7 +14,7 @@ HexusOpponentOrcSwordsman* HexusOpponentOrcSwordsman::getInstance()
 }
 
 HexusOpponentOrcSwordsman::HexusOpponentOrcSwordsman() : HexusOpponentData(
-	EntityResources::Environment_Forest_Enemies_OrcSwordsman_Animations,
+	EntityResources::Enemies_EndianForest_OrcSwordsman_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest,
 	1.0f,
 	Vec2(-48.0f, -48.0f),

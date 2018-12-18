@@ -14,7 +14,7 @@ HexusOpponentTutorialD* HexusOpponentTutorialD::getInstance()
 }
 
 HexusOpponentTutorialD::HexusOpponentTutorialD() : HexusOpponentData(
-	EntityResources::Environment_Obelisk_Npcs_Zana_Animations,
+	EntityResources::Npcs_LexiconCrypts_Zana_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

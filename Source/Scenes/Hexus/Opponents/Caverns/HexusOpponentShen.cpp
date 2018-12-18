@@ -14,7 +14,7 @@ HexusOpponentShen* HexusOpponentShen::getInstance()
 }
 
 HexusOpponentShen::HexusOpponentShen() : HexusOpponentData(
-	EntityResources::Environment_Caverns_Npcs_Shen_Animations,
+	EntityResources::Npcs_SeaSharpCaverns_Shen_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -64.0f),

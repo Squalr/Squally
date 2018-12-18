@@ -14,7 +14,7 @@ HexusOpponentHera* HexusOpponentHera::getInstance()
 }
 
 HexusOpponentHera::HexusOpponentHera() : HexusOpponentData(
-	EntityResources::Environment_Ruins_Npcs_Hera_Animations,
+	EntityResources::Npcs_UnderflowRuins_Hera_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

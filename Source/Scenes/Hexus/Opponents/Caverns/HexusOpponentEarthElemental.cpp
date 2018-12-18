@@ -14,7 +14,7 @@ HexusOpponentEarthElemental* HexusOpponentEarthElemental::getInstance()
 }
 
 HexusOpponentEarthElemental::HexusOpponentEarthElemental() : HexusOpponentData(
-	EntityResources::Environment_Caverns_Enemies_EarthElemental_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_EarthElemental_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
 	1.0f,
 	Vec2(-32.0f, -48.0f),

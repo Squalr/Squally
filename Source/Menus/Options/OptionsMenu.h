@@ -1,20 +1,24 @@
 #pragma once
-#include "cocos2d.h"
-#include "ui/CocosGUI.h"
+#include <string>
+#include <functional>
 
-#include "Engine/Config/ConfigManager.h"
-#include "Engine/Localization/Localization.h"
-#include "Engine/Sound/SoundManager.h"
-#include "Events/NavigationEvents.h"
-#include "Engine/UI/Controls/CCheckbox.h"
-#include "Engine/UI/Controls/CRadioButton.h"
-#include "Engine/UI/Controls/CSlider.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "cocos/base/ccTypes.h"
+#include "cocos/base/CCEventKeyboard.h"
+
 #include "Engine/UI/HUD/Hud.h"
-#include "Engine/UI/Mouse.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Node;
+	class Sprite;
+	class Label;
+}
+
+class CCheckbox;
+class CRadioButton;
+class CSlider;
+class MenuSprite;
+class TextMenuSprite;
 
 class OptionsMenu : public Hud
 {
@@ -36,37 +40,37 @@ private:
 	bool onFullScreenChanged(CCheckbox* checkbox, bool isFullScreen);
 	void onResolutionChanged(CRadioButton* radioButton);
 	void onCloseClick(MenuSprite* menuSprite);
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void showResolutionOptions();
 	void hideResolutionOptions();
 	void onMenuExit();
 
 	std::function<void()> backClickCallback;
 
-	Node* background;
-	Sprite* optionsWindow;
-	Label* titleLabel;
+	cocos2d::Node* background;
+	cocos2d::Sprite* optionsWindow;
+	cocos2d::Label* titleLabel;
 	MenuSprite* closeButton;
 
-	Sprite* musicIcon;
-	Sprite* soundIcon;
+	cocos2d::Sprite* musicIcon;
+	cocos2d::Sprite* soundIcon;
 	CSlider* musicSlider;
 	CSlider* soundSlider;
-	Label* fullScreenLabel;
+	cocos2d::Label* fullScreenLabel;
 	CCheckbox* fullScreenButton;
 	TextMenuSprite* returnButton;
 
-	Label* label1080x768;
-	Label* label1152x864;
-	Label* label1280x720;
-	Label* label1280x960;
-	Label* label1280x1024;
-	Label* label1440x900;
-	Label* label1600x900;
-	Label* label1600x1024;
-	Label* label1920x1080;
-	Label* label2560x1440;
-	Label* label3840x2160;
+	cocos2d::Label* label1080x768;
+	cocos2d::Label* label1152x864;
+	cocos2d::Label* label1280x720;
+	cocos2d::Label* label1280x960;
+	cocos2d::Label* label1280x1024;
+	cocos2d::Label* label1440x900;
+	cocos2d::Label* label1600x900;
+	cocos2d::Label* label1600x1024;
+	cocos2d::Label* label1920x1080;
+	cocos2d::Label* label2560x1440;
+	cocos2d::Label* label3840x2160;
 
 	CRadioButton* option1080x768;
 	CRadioButton* option1152x864;
@@ -80,7 +84,7 @@ private:
 	CRadioButton* option2560x1440;
 	CRadioButton* option3840x2160;
 
-	static const Color3B TitleColor;
+	static const cocos2d::Color3B TitleColor;
 	static const std::string StringKeyMenuOptions;
 	static const std::string StringKeyFullScreen;
 	static const std::string StringKeyReturn;

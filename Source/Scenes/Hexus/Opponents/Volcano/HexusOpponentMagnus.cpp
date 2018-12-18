@@ -14,7 +14,7 @@ HexusOpponentMagnus* HexusOpponentMagnus::getInstance()
 }
 
 HexusOpponentMagnus::HexusOpponentMagnus() : HexusOpponentData(
-	EntityResources::Environment_Volcano_Npcs_Magnus_Animations,
+	EntityResources::Npcs_DaemonsHallow_Magnus_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano,
 	0.85f,
 	Vec2(-48.0f, -48.0f),

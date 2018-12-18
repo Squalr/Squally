@@ -14,7 +14,7 @@ HexusOpponentYsara* HexusOpponentYsara::getInstance()
 }
 
 HexusOpponentYsara::HexusOpponentYsara() : HexusOpponentData(
-	EntityResources::Environment_Mech_Npcs_Ysara_Animations,
+	EntityResources::Npcs_VoidStar_Ysara_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	0.85f,
 	Vec2(-48.0f, -48.0f),

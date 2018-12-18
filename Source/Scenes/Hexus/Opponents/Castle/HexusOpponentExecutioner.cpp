@@ -14,7 +14,7 @@ HexusOpponentExecutioner* HexusOpponentExecutioner::getInstance()
 }
 
 HexusOpponentExecutioner::HexusOpponentExecutioner() : HexusOpponentData(
-	EntityResources::Environment_Castle_Enemies_Executioner_Animations,
+	EntityResources::Enemies_CastleValgrind_Executioner_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
 	0.3f,
 	Vec2(-32.0f, -160.0f),

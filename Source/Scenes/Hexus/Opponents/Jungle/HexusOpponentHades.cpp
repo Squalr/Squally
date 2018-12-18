@@ -14,7 +14,7 @@ HexusOpponentHades* HexusOpponentHades::getInstance()
 }
 
 HexusOpponentHades::HexusOpponentHades() : HexusOpponentData(
-	EntityResources::Environment_Jungle_Npcs_Hades_Animations,
+	EntityResources::Npcs_UnderflowRuins_Hades_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

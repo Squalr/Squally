@@ -14,7 +14,7 @@ HexusOpponentExterminator* HexusOpponentExterminator::getInstance()
 }
 
 HexusOpponentExterminator::HexusOpponentExterminator() : HexusOpponentData(
-	EntityResources::Environment_Mech_Enemies_Exterminator_Animations,
+	EntityResources::Enemies_VoidStar_Exterminator_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameMech,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

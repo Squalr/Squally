@@ -14,7 +14,7 @@ HexusOpponentLionMan* HexusOpponentLionMan::getInstance()
 }
 
 HexusOpponentLionMan::HexusOpponentLionMan() : HexusOpponentData(
-	EntityResources::Environment_Ruins_Enemies_LionMan_Animations,
+	EntityResources::Enemies_UnderflowRuins_LionMan_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
 	1.0f,
 	Vec2(-24.0f, -24.0f),

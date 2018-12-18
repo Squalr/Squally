@@ -1,21 +1,19 @@
 #pragma once
-#include "cocos2d.h"
-#include "allocators.h"
-#include "encodings.h"
-#include "document.h"
-#include "stringbuffer.h"
-#include "writer.h"
+#include <string>
+#include <queue>
+#include <utility>
 
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/MenuLabel.h"
-#include "Engine/UI/FloatingSprite.h"
-#include "Events/DialogEvents.h"
-#include "Resources/CutsceneResources.h"
-#include "Resources/ParticleResources.h"
-#include "Resources/UIResources.h"
+#include "Engine/SmartNode.h"
 
-using namespace cocos2d;
-using namespace rapidjson;
+namespace cocos2d
+{
+	class ClippingNode;
+	class Label;
+	class Node;
+	class Sprite;
+}
+
+class MenuLabel;
 
 class DialogMenu : public SmartNode
 {
@@ -58,15 +56,15 @@ private:
 	~DialogMenu();
 
 	void initializePositions();
-	Node* getPortraitNode(Portrait portrait, bool isRight);
+	cocos2d::Node* getPortraitNode(Portrait portrait, bool isRight);
 	void onChooseDialog(MenuLabel* dialogMenu);
 
-	Sprite* dialogMenu;
-	Node* spriteLeft;
-	Node* spriteRight;
-	Label* dialogText;
-	ClippingNode* spriteLeftClip;
-	ClippingNode* spriteRightClip;
-	Sprite* frameLeft;
-	Sprite* frameRight;
+	cocos2d::Sprite* dialogMenu;
+	cocos2d::Node* spriteLeft;
+	cocos2d::Node* spriteRight;
+	cocos2d::Label* dialogText;
+	cocos2d::ClippingNode* spriteLeftClip;
+	cocos2d::ClippingNode* spriteRightClip;
+	cocos2d::Sprite* frameLeft;
+	cocos2d::Sprite* frameRight;
 };

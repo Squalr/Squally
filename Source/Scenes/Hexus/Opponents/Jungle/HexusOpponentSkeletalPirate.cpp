@@ -14,7 +14,7 @@ HexusOpponentSkeletalPirate* HexusOpponentSkeletalPirate::getInstance()
 }
 
 HexusOpponentSkeletalPirate::HexusOpponentSkeletalPirate() : HexusOpponentData(
-	EntityResources::Environment_Jungle_Enemies_SkeletalPirate_Animations,
+	EntityResources::Enemies_VoidStar_SkeletalPirate_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	0.8f,
 	Vec2(-48.0f, -80.0f),

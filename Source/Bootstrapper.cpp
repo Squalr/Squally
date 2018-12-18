@@ -2,24 +2,7 @@
 
 #include "Engine/EngineBootstrapper.h"
 #include "Entities/Isometric/IsometricEntityDeserializer.h"
-#include "Entities/Platformer/Enemies/Castle/CastleEnemyDeserializer.h"
-#include "Entities/Platformer/Enemies/Caverns/CavernsEnemyDeserializer.h"
-#include "Entities/Platformer/Enemies/Forest/ForestEnemyDeserializer.h"
-#include "Entities/Platformer/Enemies/Jungle/JungleEnemyDeserializer.h"
-#include "Entities/Platformer/Enemies/Mech/MechEnemyDeserializer.h"
-#include "Entities/Platformer/Enemies/Obelisk/ObeliskEnemyDeserializer.h"
-#include "Entities/Platformer/Enemies/Ruins/RuinsEnemyDeserializer.h"
-#include "Entities/Platformer/Enemies/Snow/SnowEnemyDeserializer.h"
-#include "Entities/Platformer/Enemies/Volcano/VolcanoEnemyDeserializer.h"
-#include "Entities/Platformer/Npcs/Castle/CastleNpcDeserializer.h"
-#include "Entities/Platformer/Npcs/Caverns/CavernsNpcDeserializer.h"
-#include "Entities/Platformer/Npcs/Forest/ForestNpcDeserializer.h"
-#include "Entities/Platformer/Npcs/Jungle/JungleNpcDeserializer.h"
-#include "Entities/Platformer/Npcs/Mech/MechNpcDeserializer.h"
-#include "Entities/Platformer/Npcs/Obelisk/ObeliskNpcDeserializer.h"
-#include "Entities/Platformer/Npcs/Ruins/RuinsNpcDeserializer.h"
-#include "Entities/Platformer/Npcs/Snow/SnowNpcDeserializer.h"
-#include "Entities/Platformer/Npcs/Volcano/VolcanoNpcDeserializer.h"
+#include "Entities/Platformer/PlatformerEntityDeserializer.h"
 #include "Entities/Platformer/SquallyDeserializer.h"
 #include "Menus/LoadingScreen/LoadingScreen.h"
 #include "Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.h"
@@ -86,26 +69,7 @@ void Bootstrapper::initialize()
 	SaveSelectMenu::registerGlobalScene();
 
 	// Entity deserializers
-	SquallyDeserializer::registerGlobalNode();
-	IsometricEntityDeserializer::registerGlobalNode();
-	CastleEnemyDeserializer::registerGlobalNode();
-	CavernsEnemyDeserializer::registerGlobalNode();
-	ForestEnemyDeserializer::registerGlobalNode();
-	JungleEnemyDeserializer::registerGlobalNode();
-	MechEnemyDeserializer::registerGlobalNode();
-	ObeliskEnemyDeserializer::registerGlobalNode();
-	RuinsEnemyDeserializer::registerGlobalNode();
-	SnowEnemyDeserializer::registerGlobalNode();
-	VolcanoEnemyDeserializer::registerGlobalNode();
-	CastleNpcDeserializer::registerGlobalNode();
-	CavernsNpcDeserializer::registerGlobalNode();
-	ForestNpcDeserializer::registerGlobalNode();
-	JungleNpcDeserializer::registerGlobalNode();
-	MechNpcDeserializer::registerGlobalNode();
-	RuinsNpcDeserializer::registerGlobalNode();
-	SnowNpcDeserializer::registerGlobalNode();
-	ObeliskNpcDeserializer::registerGlobalNode();
-	VolcanoNpcDeserializer::registerGlobalNode();
+	PlatformerEntityDeserializer::registerGlobalNode();
 	PlatformerCollisionMapping::registerGlobalNode();
 
 	// Decor deserializers

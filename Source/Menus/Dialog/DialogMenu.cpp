@@ -1,4 +1,22 @@
 #include "DialogMenu.h"
+#include "cocos2d.h"
+#include "allocators.h"
+#include "encodings.h"
+#include "document.h"
+#include "stringbuffer.h"
+#include "writer.h"
+
+#include "Engine/Localization/Localization.h"
+#include "Engine/UI/Controls/MenuLabel.h"
+#include "Engine/UI/FloatingSprite.h"
+#include "Events/DialogEvents.h"
+
+#include "Resources/CutsceneResources.h"
+#include "Resources/ParticleResources.h"
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+using namespace rapidjson;
 
 DialogMenu* DialogMenu::loadDialogFromFile(std::string filePath)
 {
