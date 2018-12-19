@@ -14,6 +14,8 @@ using namespace cocos2d;
 
 const std::string CollisionObject::MapKeyTypeCollision = "collision";
 
+#include "Engine/Utils/LogUtils.h"
+
 CollisionObject* CollisionObject::create(cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate)
 {
 	ValueMap valueMap = ValueMap();
@@ -49,6 +51,8 @@ CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhys
 	{
 		this->physicsBody->setRotationEnable(canRotate);
 		this->physicsBody->setDynamic(isDynamic);
+		this->physicsBody->setContactTestBitmask(0);
+		this->physicsBody->setCollisionBitmask(0);
 		this->setPhysicsBody(initPhysicsBody);
 	}
 
@@ -72,15 +76,6 @@ void CollisionObject::onEnter()
 void CollisionObject::initializeListeners()
 {
 	HackableObject::initializeListeners();
-
-	EventListenerPhysicsContact* contactListener = EventListenerPhysicsContact::create();
-
-	contactListener->onContactBegin = CC_CALLBACK_1(CollisionObject::onContactBegin, this);
-	contactListener->onContactPreSolve = CC_CALLBACK_1(CollisionObject::onContactUpdate, this);
-	contactListener->onContactPostSolve = CC_CALLBACK_1(CollisionObject::onContactUpdate, this);
-	contactListener->onContactSeparate = CC_CALLBACK_1(CollisionObject::onContactEnd, this);
-
-	this->addEventListener(contactListener);
 }
 
 void CollisionObject::setCollisionType(CollisionType collisionType)
@@ -198,24 +193,24 @@ void CollisionObject::whenStopsCollidingWith(std::vector<CollisionType> collisio
 
 bool CollisionObject::onContactBegin(PhysicsContact &contact)
 {
-	// Currently we are not distinguishing between these two
+	// Currently we are not distinguishing between begin/update
 	return this->onContactUpdate(contact);
 }
 
 bool CollisionObject::onContactUpdate(PhysicsContact &contact)
 {
-	return this->runContactEvents(contact, this->collisionEvents);
+	return this->runContactEvents(contact, this->collisionEvents, CollisionResult::CollideWithPhysics);
 }
 
 bool CollisionObject::onContactEnd(PhysicsContact &contact)
 {
-	return this->runContactEvents(contact, this->collisionEndEvents);
+	return this->runContactEvents(contact, this->collisionEndEvents, CollisionResult::DoNothing);
 }
 
-bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> eventMap)
+bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> eventMap, CollisionResult defaultResult)
 {
 	CollisionData collisionData = this->constructCollisionData(contact);
-	CollisionResult result = CollisionResult::CollideWithPhysics;
+	CollisionResult result = defaultResult;
 
 	if (collisionData.other != nullptr)
 	{
@@ -229,8 +224,8 @@ bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::ma
 			{
 				CollisionResult eventResult = (*eventIt)(collisionData);
 
-				// Doing nothing takes precidence
-				result = (result == CollisionResult::DoNothing) ? CollisionResult::DoNothing : eventResult;
+				// Anti-default takes precidence
+				result = (eventResult != defaultResult) ? eventResult : result;
 			}
 		}
 	}

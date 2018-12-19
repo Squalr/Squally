@@ -69,7 +69,7 @@
     "Environment": "LexiconCrypts",
     "Scale": "0.8f",
     "Size": {
-      "Width": "472.0f",
+      "Width": "112.0f",
       "Height": "368.0f"
     },
     "Offset": {
@@ -171,27 +171,27 @@
   "Executioner": {
     "Type": "Enemy",
     "Environment": "CastleValgrind",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
+      "Width": "112.0f",
       "Height": "820.0f"
     },
     "Offset": {
-      "X": "-24.0f",
+      "X": "0.0f",
       "Y": "-410.0f"
     }
   },
   "Guard": {
     "Type": "Enemy",
     "Environment": "CastleValgrind",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Jack": {
@@ -483,7 +483,7 @@
   "Ent": {
     "Type": "Enemy",
     "Environment": "EndianForest",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
       "Width": "512.0f",
       "Height": "960.0f"
@@ -769,13 +769,13 @@
   "MechGuard": {
     "Type": "Enemy",
     "Environment": "VoidStar",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
+      "Width": "112.0f",
       "Height": "596.0f"
     },
     "Offset": {
-      "X": "-24.0f",
+      "X": "0.0f",
       "Y": "-298.0f"
     }
   },
@@ -1289,1275 +1289,1275 @@
   "Garin": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "KingRedsong": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "160.0f",
+      "Height": "192.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "KingRedsongSlime": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Leroy": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Mabel": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Merlin": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "PrincessOpal": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Raven": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Rogas": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Thurstan": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "124.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Tyracius": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Alder": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Brock": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Cypress": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Finch": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Fraya": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Jasper": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Mildred": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Olive": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "PrincessDawn": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Sarude": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Shen": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Appolo": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Chiron": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Cooper": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Dudly": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Lycan": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Polyphemus": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "PrincessMittens": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Robin": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Rupert": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Rusty": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Toben": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Blackbeard": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Bodom": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Drak": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Elriel": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Gramps": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Hades": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Minos": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "PrincessMatu": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Raka": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Thor": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Atreus": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Illia": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Leon": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Mara": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Marcel": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Piper": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "QueenElise": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Radon": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Xenon": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Ysara": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Amelia": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Azmus": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Garrick": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Johann": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Necron": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "PrincessNebea": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Roger": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Thion": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Ursula": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Viper": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Zana": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Ajax": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Aphrodite": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Ares": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Athena": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Cleopatra": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Geryon": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Griffin": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Hera": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Horus": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Poseidon": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Zeus": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Aspen": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Aster": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Cookie": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Irmik": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Jingles": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Juniper": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Kringle": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Nessie": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "PrincessPepper": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Theldar": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Tinsel": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Ash": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Brine": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Celeste": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Cindra": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Igneus": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Lucifer": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Magnus": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Pan": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Ragnis": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Scaldor": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Zelina": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   },
   "Elric": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "0.3f",
+    "Scale": "1.0f",
     "Size": {
-      "Width": "472.0f",
-      "Height": "780.0f"
+      "Width": "112.0f",
+      "Height": "160.0f"
     },
     "Offset": {
-      "X": "-24.0f",
-      "Y": "-390.0f"
+      "X": "0.0f",
+      "Y": "0.0f"
     }
   }
 }

@@ -62,10 +62,13 @@ protected:
 	void update(float dt) override;
 
 private:
+	// We need to let the dispatcher call our events directly when it determines that this object was involved in a collision
+	friend class CollisionEventDispatcher;
+
 	bool onContactBegin(cocos2d::PhysicsContact& contact);
 	bool onContactUpdate(cocos2d::PhysicsContact& contact);
 	bool onContactEnd(cocos2d::PhysicsContact& contact);
-	bool runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> eventMap);
+	bool runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> eventMap, CollisionResult defaultResult);
 	CollisionData constructCollisionData(cocos2d::PhysicsContact& contact);
 
 	std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> collisionEvents;

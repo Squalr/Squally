@@ -69,6 +69,11 @@ void Squally::initializeCollisionEvents()
 
 		return CollisionResult::DoNothing;
 	});
+
+	this->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionData collisionData)
+	{
+		return CollisionResult::DoNothing;
+	});
 }
 
 void Squally::registerHackables()

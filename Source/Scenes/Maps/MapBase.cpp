@@ -26,7 +26,7 @@ MapBase::MapBase()
 
 	this->map = nullptr;;
 	this->mapNode = Node::create();
-	this->mouseLayer = Node::create();
+	this->mouseLayer = Hud::create();
 
 	this->pauseMenu = PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();

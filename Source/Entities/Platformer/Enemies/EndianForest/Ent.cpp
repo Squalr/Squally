@@ -21,7 +21,7 @@ Ent::Ent(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_Ent_Animations,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(512.0f, 960.0f),
-	0.3f,
+	1.0f,
 	cocos2d::Vec2(24.0f, -452.0f))
 {
 }
