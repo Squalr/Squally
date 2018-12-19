@@ -18,6 +18,7 @@ protected:
 	void update(float) override;
 
 protected:
+	virtual void initializeCollisionEvents() override;
 	virtual void onInteractButtonClick(MenuSprite* menuSprite);
 
 private:

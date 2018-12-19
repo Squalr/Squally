@@ -20,7 +20,7 @@ SkeletalBaron* SkeletalBaron::deserialize(cocos2d::ValueMap* initProperties)
 SkeletalBaron::SkeletalBaron(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LexiconCrypts_SkeletalBaron_Animations,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(472.0f, 368.0f),
+	cocos2d::Size(112.0f, 368.0f),
 	0.8f,
 	cocos2d::Vec2(0.0f, 0.0f))
 {

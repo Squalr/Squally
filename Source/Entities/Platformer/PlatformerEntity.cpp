@@ -138,6 +138,11 @@ void PlatformerEntity::update(float dt)
 
 void PlatformerEntity::initializeCollisionEvents()
 {
+	this->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
+	{
+		return CollisionResult::CollideWithPhysics;
+	});
+
 	this->groundCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
 	{
 		this->isOnGround = true;

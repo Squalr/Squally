@@ -37,42 +37,42 @@ WorldMap::WorldMap()
 
 	this->forest = MapNode::create(
 		Localization::resolveString(WorldMap::StringKeyLevelNameForest),
-		MapResources::Forest_Forest
+		MapResources::EndianForest_Forest
 	);
 
 	this->waterRuins = MapNode::create(
 		Localization::resolveString(WorldMap::StringKeyLevelNameAquaticRuins),
-		MapResources::AquaticRuins_AquaticRuins
+		MapResources::UnderflowRuins_AquaticRuins
 	);
 
 	this->caverns = MapNode::create(
 		Localization::resolveString(WorldMap::StringKeyLevelNameCaverns),
-		MapResources::Caverns_Caverns
+		MapResources::SeaSharpCaverns_Caverns
 	);
 
 	this->castle = MapNode::create(
 		Localization::resolveString(WorldMap::StringKeyLevelNameCastle),
-		MapResources::Castle_Castle
+		MapResources::CastleValgrind_Castle
 	);
 
 	this->iceCaps = MapNode::create(
 		Localization::resolveString(WorldMap::StringKeyLevelNameIceCaps),
-		MapResources::IceCaps_IceCaps
+		MapResources::LambdaPeaks_IceCaps
 	);
 
 	this->volcano = MapNode::create(
 		Localization::resolveString(WorldMap::StringKeyLevelNameVolcano),
-		MapResources::Volcano_Volcano
+		MapResources::DaemonsHallow_Volcano
 	);
 
 	this->crypts = MapNode::create(
 		Localization::resolveString(WorldMap::StringKeyLevelNameObelisk),
-		MapResources::Obelisk_Obelisk
+		MapResources::LexiconCrypts_Obelisk
 	);
 
 	this->voidStar = MapNode::create(
 		Localization::resolveString(WorldMap::StringKeyLevelNameMech),
-		MapResources::Mech_Mech
+		MapResources::VoidStar_Mech
 	);
 
 	this->background->setAnchorPoint(Vec2(0.0f, 0.0f));

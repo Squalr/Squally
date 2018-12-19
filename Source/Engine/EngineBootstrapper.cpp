@@ -3,6 +3,7 @@
 #include "Engine/Analytics/Analytics.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/DeveloperMode/DeveloperModeController.h"
+#include "Engine/Events/CollisionEventDispatcher.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
 #include "Engine/Maps/ObjectLayerDeserializer.h"
@@ -12,6 +13,7 @@ void EngineBootstrapper::initialize()
 {
 	// Initialize global objects
 	Analytics::registerGlobalNode();
+	CollisionEventDispatcher::registerGlobalNode();
 	DeveloperModeController::registerGlobalNode();
 	GameCamera::registerGlobalNode();
 	Input::registerGlobalNode();

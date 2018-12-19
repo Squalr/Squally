@@ -24,6 +24,16 @@ void NpcBase::update(float dt)
 	PlatformerEntity::update(dt);
 }
 
+void NpcBase::initializeCollisionEvents()
+{
+	PlatformerEntity::initializeCollisionEvents();
+
+	this->whenCollidesWith({ (int)PlatformerCollisionType::Player, }, [=](CollisionData collisionData)
+	{
+		return CollisionResult::DoNothing;
+	});
+}
+
 void NpcBase::onInteractButtonClick(MenuSprite* menuSprite)
 {
 	//// HexusEvents::startGame(HexusEvents::HexusGameEventArgs(this->deck, this->deck));

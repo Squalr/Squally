@@ -86,6 +86,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Dialogue/Dialogue.cpp
 	Source/Engine/Dialogue/DialogueTree.cpp
 	Source/Engine/EngineBootstrapper.cpp
+	Source/Engine/Events/CollisionEventDispatcher.cpp
 	Source/Engine/Events/CollisionMappingEvents.cpp
 	Source/Engine/Events/DeserializationEvents.cpp
 	Source/Engine/Events/DeveloperModeEvents.cpp
@@ -824,6 +825,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Dialogue/Dialogue.h
 	Source/Engine/Dialogue/DialogueTree.h
 	Source/Engine/EngineBootstrapper.h
+	Source/Engine/Events/CollisionEventDispatcher.h
 	Source/Engine/Events/CollisionMappingEvents.h
 	Source/Engine/Events/DeserializationEvents.h
 	Source/Engine/Events/DeveloperModeEvents.h

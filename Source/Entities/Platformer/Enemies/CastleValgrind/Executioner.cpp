@@ -20,9 +20,9 @@ Executioner* Executioner::deserialize(cocos2d::ValueMap* initProperties)
 Executioner::Executioner(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Executioner_Animations,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(472.0f, 820.0f),
-	0.3f,
-	cocos2d::Vec2(-24.0f, -410.0f))
+	cocos2d::Size(112.0f, 820.0f),
+	1.0f,
+	cocos2d::Vec2(0.0f, -410.0f))
 {
 }
 

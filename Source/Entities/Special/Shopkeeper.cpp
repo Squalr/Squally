@@ -1,5 +1,7 @@
 #include "Shopkeeper.h"
 
+#include "Resources/EntityResources.h"
+
 Shopkeeper* Shopkeeper::create()
 {
 	Shopkeeper* instance = new Shopkeeper();
