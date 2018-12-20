@@ -13,6 +13,7 @@
 using namespace cocos2d;
 
 const std::string CollisionObject::MapKeyTypeCollision = "collision";
+std::map<int, int> CollisionObject::InverseCollisionMap = std::map<int, int>();
 
 #include "Engine/Utils/LogUtils.h"
 
@@ -32,12 +33,6 @@ CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhys
 {
 	// Fire event, allowing for the game to map the deserialized collision string type (ie 'solid') to a unique integer identifier for CollisionType
 	CollisionMappingEvents::requestCollisionMapKeyMapping(CollisionMappingEvents::CollisionMapRequestArgs(deserializedCollisionName, this));
-
-	// Fire event, allowing for the game to map what this collision object collides with
-	if (this->physicsBody != nullptr)
-	{
-		CollisionMappingEvents::requestAllowedCollisionMapping(CollisionMappingEvents::AllowedCollisionsRequestArgs(this->physicsBody->getCollisionBitmask(), this));
-	}
 }
 
 CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, CollisionType collisionType, bool isDynamic, bool canRotate) :
@@ -57,9 +52,6 @@ CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhys
 	}
 
 	this->setCollisionType(collisionType);
-
-	// Fire event, allowing for the game to map what this collision object collides with
-	CollisionMappingEvents::requestAllowedCollisionMapping(CollisionMappingEvents::AllowedCollisionsRequestArgs(collisionType, this));
 }
 
 CollisionObject::~CollisionObject()
@@ -71,6 +63,23 @@ void CollisionObject::onEnter()
 	HackableObject::onEnter();
 
 	this->scheduleUpdate();
+}
+
+void CollisionObject::onEnterTransitionDidFinish()
+{
+	HackableObject::onEnterTransitionDidFinish();
+
+	// Part of Box2D requires that both the colliders and collidees have their bitmasks set -- this is how we accomplish that
+	if (this->physicsBody != nullptr)
+	{
+		if (CollisionObject::InverseCollisionMap.find(this->getCollisionType()) != CollisionObject::InverseCollisionMap.end())
+		{
+			int inverseTypes = InverseCollisionMap[this->getCollisionType()];
+
+			this->physicsBody->setContactTestBitmask(this->physicsBody->getContactTestBitmask() | inverseTypes);
+			this->physicsBody->setCollisionBitmask(this->physicsBody->getCollisionBitmask() | inverseTypes);
+		}
+	}
 }
 
 void CollisionObject::initializeListeners()
@@ -148,31 +157,13 @@ void CollisionObject::addPhysicsShape(cocos2d::PhysicsShape* shape)
 	}
 }
 
-void CollisionObject::allowCollisionWith(std::vector<CollisionType> collisionTypes)
-{
-	CollisionType bitmask = 0;
-
-	for (auto it = collisionTypes.begin(); it != collisionTypes.end(); it++)
-	{
-		bitmask |= *it;
-	}
-
-	this->physicsBody->setContactTestBitmask(this->physicsBody->getContactTestBitmask() | (int)bitmask);
-	this->physicsBody->setCollisionBitmask(this->physicsBody->getCollisionBitmask() | (int)bitmask);
-}
-
 void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
 {
 	for (auto it = collisionTypes.begin(); it != collisionTypes.end(); it++)
 	{
 		CollisionType collisionType = *it;
 
-		if (this->collisionEvents.find(collisionType) != this->collisionEvents.end())
-		{
-			this->collisionEvents[collisionType] = std::vector<std::function<CollisionResult(CollisionData)>>();
-		}
-
-		this->collisionEvents[collisionType].push_back(onCollision);
+		this->addCollisionEvent(collisionType, this->collisionEvents, onCollision);
 	}
 }
 
@@ -182,12 +173,32 @@ void CollisionObject::whenStopsCollidingWith(std::vector<CollisionType> collisio
 	{
 		CollisionType collisionType = *it;
 
-		if (this->collisionEndEvents.find(collisionType) != this->collisionEndEvents.end())
-		{
-			this->collisionEndEvents[collisionType] = std::vector<std::function<CollisionResult(CollisionData)>>();
-		}
+		this->addCollisionEvent(collisionType, this->collisionEndEvents, onCollisionEnd);
+	}
+}
 
-		this->collisionEndEvents[collisionType].push_back(onCollisionEnd);
+void CollisionObject::addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>& eventMap, std::function<CollisionResult(CollisionData)> onCollision)
+{
+	if (CollisionObject::InverseCollisionMap.find(collisionType) != CollisionObject::InverseCollisionMap.end())
+	{
+		CollisionObject::InverseCollisionMap[collisionType] = CollisionObject::InverseCollisionMap[collisionType] | this->getCollisionType();
+	}
+	else
+	{
+		CollisionObject::InverseCollisionMap[collisionType] = this->getCollisionType();
+	}
+
+	if (eventMap.find(collisionType) != eventMap.end())
+	{
+		eventMap[collisionType] = std::vector<std::function<CollisionResult(CollisionData)>>();
+	}
+
+	eventMap[collisionType].push_back(onCollision);
+
+	if (this->physicsBody != nullptr)
+	{
+		this->physicsBody->setContactTestBitmask(this->physicsBody->getContactTestBitmask() | (int)collisionType);
+		this->physicsBody->setCollisionBitmask(this->physicsBody->getCollisionBitmask() | (int)collisionType);
 	}
 }
 
@@ -207,7 +218,7 @@ bool CollisionObject::onContactEnd(PhysicsContact &contact)
 	return this->runContactEvents(contact, this->collisionEndEvents, CollisionResult::DoNothing);
 }
 
-bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> eventMap, CollisionResult defaultResult)
+bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>& eventMap, CollisionResult defaultResult)
 {
 	CollisionData collisionData = this->constructCollisionData(contact);
 	CollisionResult result = defaultResult;
