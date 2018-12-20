@@ -1,17 +1,19 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/base/CCEventKeyboard.h"
 
-#include "Engine/Events/MouseEvents.h"
 #include "Engine/GlobalScene.h"
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/InfiniteParallaxNode.h"
-#include "Engine/UI/Mouse.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
 
-#include "MapNode.h"
+namespace cocos2d
+{
+	class Event;
+	class Sprite;
+}
 
-using namespace cocos2d;
+class Hud;
+class Lightning;
+class LightningSphere;
+class MapNode;
+class Mouse;
 
 class WorldMap : public GlobalScene
 {
@@ -27,7 +29,7 @@ private:
 	void initializedLocked();
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
 	std::vector<MapNode*> mapNodes;
 	MapNode* forest;
@@ -39,15 +41,22 @@ private:
 	MapNode* crypts;
 	MapNode* voidStar;
 
-	Sprite* background;
+	cocos2d::Sprite* background;
+	cocos2d::Sprite* voidCrystal;
+	LightningSphere* lightningSphere;
+	Lightning* lightning1;
+	Lightning* lightning2;
+	Lightning* lightning3;
+	Lightning* lightning4;
+	Lightning* lightning5;
+	Lightning* lightning6;
+	Lightning* lightning7;
+	Lightning* lightning8;
+	Lightning* lightning9;
+	Lightning* lightning10;
 
 	Hud* hud;
 	Mouse* mouse;
-
-	static WorldMap* instance;
-
-	const float titleFontSize = 48.0f;
-	const float infoFontSize = 32.0f;
 
 	static const std::string StringKeySelectLevel;
 	static const std::string StringKeyLevelNameJungle;
@@ -59,5 +68,7 @@ private:
 	static const std::string StringKeyLevelNameObelisk;
 	static const std::string StringKeyLevelNameVolcano;
 	static const std::string StringKeyLevelNameMech;
+
+	static WorldMap* instance;
 };
 

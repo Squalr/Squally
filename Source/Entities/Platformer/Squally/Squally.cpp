@@ -4,7 +4,7 @@
 
 Squally* Squally::squallyInstance = nullptr;
 int Squally::health;
-const float Squally::squallyScale = 0.13f;
+const float Squally::squallyScale = 1.0f;
 
 const std::string Squally::MapKeySqually = "squally";
 
@@ -26,9 +26,9 @@ Squally* Squally::getInstance()
 Squally::Squally(ValueMap* initProperties) : PlatformerEntity::PlatformerEntity(initProperties,
 	EntityResources::Squally_Animations,
 	PlatformerCollisionType::Player,
-	Size(720.0f, 1600.0f), 
+	Size(128.0f, 320.0f), 
 	Squally::squallyScale,
-	Vec2(0.0f, 600.0f))
+	Vec2(0.0f, 128.0f))
 {
 	this->actualJumpLaunchVelocity = 1280.0f;
 	this->actualGravityAcceleration = 400.0f;

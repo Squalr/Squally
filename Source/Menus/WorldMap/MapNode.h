@@ -1,14 +1,11 @@
 #pragma once
-#include "cocos2d.h"
 
+#include "Engine/SmartNode.h"
 #include "Events/NavigationEvents.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Scenes/Maps/Isometric/IsometricMap.h"
-#include "Scenes/Maps/Platformer/PlatformerMap.h"
 
-using namespace cocos2d;
+class MenuSprite;
 
-class MapNode : public Node
+class MapNode : public SmartNode
 {
 public:
 	static MapNode* create(std::string mapName, std::string mapFile);

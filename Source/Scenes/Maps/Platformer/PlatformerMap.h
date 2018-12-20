@@ -22,6 +22,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onEnter() override;
+	void update(float dt) override;
 
 	static PlatformerMap* instance;
 };
