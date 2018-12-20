@@ -14,7 +14,6 @@ class PlatformerCollisionMapping : public GlobalNode
 public:
 	static void registerGlobalNode();
 
-	void onAllowedCollisionsMapRequest(cocos2d::EventCustom* eventCustom);
 	void onMapKeyMappingRequest(cocos2d::EventCustom* eventCustom);
 
 	static const std::string MapKeyCollisionTypeSolid;

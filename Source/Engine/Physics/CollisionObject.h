@@ -46,7 +46,6 @@ public:
 	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
 	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd);
 
-	void allowCollisionWith(std::vector<CollisionType> collisionTypes);
 	void setCollisionType(CollisionType collisionType);
 	CollisionType getCollisionType();
 	cocos2d::Vec2 getVelocity();
@@ -58,6 +57,7 @@ public:
 protected:
 
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;
 	void update(float dt) override;
 
@@ -65,15 +65,17 @@ private:
 	// We need to let the dispatcher call our events directly when it determines that this object was involved in a collision
 	friend class CollisionEventDispatcher;
 
+	void addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>& eventMap, std::function<CollisionResult(CollisionData)> onCollision);
 	bool onContactBegin(cocos2d::PhysicsContact& contact);
 	bool onContactUpdate(cocos2d::PhysicsContact& contact);
 	bool onContactEnd(cocos2d::PhysicsContact& contact);
-	bool runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> eventMap, CollisionResult defaultResult);
+	bool runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>& eventMap, CollisionResult defaultResult);
 	CollisionData constructCollisionData(cocos2d::PhysicsContact& contact);
 
 	std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> collisionEvents;
 	std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> collisionEndEvents;
 	cocos2d::PhysicsBody* physicsBody;
 
+	static std::map<int, int> InverseCollisionMap;
 	bool physicsEnabled;
 };

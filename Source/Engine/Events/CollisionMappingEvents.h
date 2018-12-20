@@ -13,7 +13,6 @@ class CollisionMappingEvents
 {
 public:
 	static const std::string RequestCollisionMapKeyMappingEvent;
-	static const std::string RequestAllowedCollisionMappingEvent;
 
 	struct CollisionMapRequestArgs
 	{
@@ -26,17 +25,5 @@ public:
 		}
 	};
 
-	struct AllowedCollisionsRequestArgs
-	{
-		int collisionType;
-		CollisionObject* collisionObject;
-
-		AllowedCollisionsRequestArgs(int collisionType, CollisionObject* collisionObject) :
-			collisionType(collisionType), collisionObject(collisionObject)
-		{
-		}
-	};
-
 	static void requestCollisionMapKeyMapping(CollisionMapRequestArgs args);
-	static void requestAllowedCollisionMapping(AllowedCollisionsRequestArgs args);
 };

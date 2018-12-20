@@ -35,36 +35,42 @@ void CollisionEventDispatcher::initializeListeners()
 
 bool CollisionEventDispatcher::onContactBegin(PhysicsContact &contact)
 {
-	CollisionObject* object = dynamic_cast<CollisionObject*>(contact.getShapeA()->getBody()->getNode());
+	CollisionObject* objectA = dynamic_cast<CollisionObject*>(contact.getShapeA()->getBody()->getNode());
+	CollisionObject* objectB = dynamic_cast<CollisionObject*>(contact.getShapeB()->getBody()->getNode());
 
-	if (object == nullptr)
+	if (objectA == nullptr || objectB == nullptr)
 	{
 		return false;
 	}
 
-	return object->onContactBegin(contact);
+	// We assume a collision unless either object reports otherwise
+	return objectA->onContactBegin(contact) && objectB->onContactBegin(contact);
 }
 
 bool CollisionEventDispatcher::onContactUpdate(PhysicsContact &contact)
 {
-	CollisionObject* object = dynamic_cast<CollisionObject*>(contact.getShapeA()->getBody()->getNode());
+	CollisionObject* objectA = dynamic_cast<CollisionObject*>(contact.getShapeA()->getBody()->getNode());
+	CollisionObject* objectB = dynamic_cast<CollisionObject*>(contact.getShapeB()->getBody()->getNode());
 
-	if (object == nullptr)
+	if (objectA == nullptr || objectB == nullptr)
 	{
 		return false;
 	}
 
-	return object->onContactUpdate(contact);
+	// We assume a collision unless either object reports otherwise
+	return objectA->onContactUpdate(contact) && objectB->onContactUpdate(contact);
 }
 
 bool CollisionEventDispatcher::onContactEnd(PhysicsContact &contact)
 {
-	CollisionObject* object = dynamic_cast<CollisionObject*>(contact.getShapeA()->getBody()->getNode());
+	CollisionObject* objectA = dynamic_cast<CollisionObject*>(contact.getShapeA()->getBody()->getNode());
+	CollisionObject* objectB = dynamic_cast<CollisionObject*>(contact.getShapeB()->getBody()->getNode());
 
-	if (object == nullptr)
+	if (objectA == nullptr || objectB == nullptr)
 	{
 		return false;
 	}
 
-	return object->onContactEnd(contact);
+	// For contact end, the default assumption is no collision, so we trust either of these objects if they report otherwise
+	return objectA->onContactEnd(contact) || objectB->onContactEnd(contact);
 }
