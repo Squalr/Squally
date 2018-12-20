@@ -1,5 +1,17 @@
 #include "Grid.h"
 
+#include "cocos/2d/CCAction.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCCamera.h"
+#include "cocos/2d/CCDrawNode.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Scenes/Cutscenes/Objects/GridObject.h"
+
+using namespace cocos2d;
+
 const float Grid::backPlane = -8192.0f;
 const int Grid::lineRows = 24;
 const int Grid::lineColumns = 49;
@@ -23,9 +35,9 @@ Grid* Grid::create()
 
 Grid::Grid()
 {
-	this->horizontalLines = new std::vector<Node*>();
-	this->verticalLines = new std::vector<Node*>();
-	this->gridObjects = new std::vector<GridObject*>();
+	this->horizontalLines = std::vector<Node*>();
+	this->verticalLines = std::vector<Node*>();
+	this->gridObjects = std::vector<GridObject*>();
 	this->distanceGradient = LayerGradient::create(Color4B(0, 0, 0, 0), Color4B(0, 0, 0, 196), Vec2(0.0f, 1.0f));
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -36,7 +48,7 @@ Grid::Grid()
 		Vec2 destination = Camera::getDefaultCamera()->project(Vec3(visibleSize.width, 0.0f, Grid::backPlane / row));
 
 		// Create horizontal line (with offset and post-projection width corrections)
-		this->horizontalLines->push_back(this->createLine(
+		this->horizontalLines.push_back(this->createLine(
 			Vec2(0.0f, source.y - this->getGridOffset()),
 			Vec2(visibleSize.width, destination.y - this->getGridOffset()),
 			Grid::gridColor
@@ -56,20 +68,20 @@ Grid::Grid()
 		Vec2 source = Vec2((backPlaneWidth / Grid::lineColumns) * adjustedColumn + visibleSize.width / 2.0f, this->getHorizon());
 		Vec2 destination = Vec2((frontPlaneWidth / Grid::lineColumns) * adjustedColumn + visibleSize.width / 2.0f, 0.0f);
 
-		this->verticalLines->push_back(this->createLine(
+		this->verticalLines.push_back(this->createLine(
 			source,
 			destination,
 			abs(adjustedColumn) <= Grid::specialLineColumns / 2 ? Grid::specialGridColor : Grid::gridColor)
 		);
 	}
 
-	for (auto it = this->horizontalLines->begin(); it != this->horizontalLines->end(); it++)
+	for (auto it = this->horizontalLines.begin(); it != this->horizontalLines.end(); it++)
 	{
 		(*it)->setVisible(false);
 		this->addChild(*it);
 	}
 
-	for (auto it = this->verticalLines->begin(); it != this->verticalLines->end(); it++)
+	for (auto it = this->verticalLines.begin(); it != this->verticalLines.end(); it++)
 	{
 		(*it)->setVisible(false);
 		this->addChild(*it);
@@ -80,9 +92,6 @@ Grid::Grid()
 
 Grid::~Grid()
 {
-	delete(this->horizontalLines);
-	delete(this->verticalLines);
-	delete(this->gridObjects);
 }
 
 void Grid::onEnter()
@@ -106,7 +115,7 @@ void Grid::onEnter()
 
 		for (int rowIndex = 0; rowIndex < Grid::lineRows; rowIndex++)
 		{
-			Node* horizontalLine = (*this->horizontalLines)[rowIndex];
+			Node* horizontalLine = this->horizontalLines[rowIndex];
 			cumulativeWaitTimeX += animationSpeedX + animationVelocityX * rowIndex - ((animationAccelerationX * rowIndex * rowIndex) > animationSpeedX ? animationSpeedX : (animationAccelerationX * rowIndex * rowIndex));
 
 			horizontalLine->setOpacity(0);
@@ -121,7 +130,7 @@ void Grid::onEnter()
 		for (int columnIndex = Grid::lineColumns / 2; columnIndex >= 0; columnIndex--)
 		{
 			int inverseIndex = Grid::lineColumns / 2 - columnIndex;
-			Node* verticalLine = (*this->verticalLines)[columnIndex];
+			Node* verticalLine = this->verticalLines[columnIndex];
 			cumulativeWaitTimeY += animationSpeedY + animationVelocityY * inverseIndex - ((animationAccelerationY * inverseIndex * inverseIndex) > animationSpeedY ? animationSpeedY : (animationAccelerationY * inverseIndex * inverseIndex));
 
 			verticalLine->setOpacity(0);
@@ -134,7 +143,7 @@ void Grid::onEnter()
 
 			if (columnIndex != Grid::lineColumns / 2)
 			{
-				Node* verticalLine2 = (*this->verticalLines)[Grid::lineColumns - columnIndex - 1];
+				Node* verticalLine2 = this->verticalLines[Grid::lineColumns - columnIndex - 1];
 
 				verticalLine2->setOpacity(0);
 				verticalLine2->setVisible(true);
@@ -174,7 +183,7 @@ void Grid::initializePositions()
 
 void Grid::addGridObject(GridObject* gridObject)
 {
-	this->gridObjects->push_back(gridObject);
+	this->gridObjects.push_back(gridObject);
 
 	this->addChild(gridObject);
 }
@@ -194,8 +203,8 @@ void Grid::runForeverScroll()
 {
 	for (int lineIndex = 0; lineIndex < Grid::lineRows - 1; lineIndex++)
 	{
-		Node* current = (*this->horizontalLines)[lineIndex];
-		Node* next = (*this->horizontalLines)[lineIndex + 1];
+		Node* current = this->horizontalLines[lineIndex];
+		Node* next = this->horizontalLines[lineIndex + 1];
 		Vec2 originalPosition = current->getPosition();
 		Vec2 nextPosition = next->getPosition();
 
@@ -217,7 +226,7 @@ void Grid::update(float dt)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	for (auto it = this->gridObjects->begin(); it != this->gridObjects->end(); it++)
+	for (auto it = this->gridObjects.begin(); it != this->gridObjects.end(); it++)
 	{
 		Vec2 coords = (*it)->getCoords();
 		float inverseX = ((float)Grid::lineRows - coords.x);
@@ -231,7 +240,7 @@ void Grid::update(float dt)
 	}
 	
 	// Remove off-screen objects
-	auto removed = std::remove_if(this->gridObjects->begin(), this->gridObjects->end(), [=](GridObject* object)
+	auto removed = std::remove_if(this->gridObjects.begin(), this->gridObjects.end(), [=](GridObject* object)
 	{
 		if (object->getScale() <= 0.0f)
 		{
@@ -242,7 +251,7 @@ void Grid::update(float dt)
 		return false;
 	});
 
-	this->gridObjects->erase(removed, this->gridObjects->end());
+	this->gridObjects.erase(removed, this->gridObjects.end());
 }
 
 float Grid::getHorizon()

@@ -29,6 +29,51 @@ Lightning::Lightning()
 {
 	this->animations = SmartAnimationSequenceNode::create(UIResources::EmptyImage);
 
+	static bool runOnce = true;
+
+	if (runOnce)
+	{
+		runOnce = false;
+
+		// Prime the cache with all of the animation sequence files used by lightning
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning1_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning2_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning3_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning4_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning5_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning6_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning7_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning8_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning9_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning10_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning11_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning12_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning13_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning14_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning15_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning16_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning17_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning18_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning19_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning20_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning21_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning22_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning23_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning24_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning25_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning26_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning27_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning28_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning29_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning30_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning31_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning32_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning33_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning34_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning35_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_Lightning36_Lightning_01);
+	}
+
 	this->addChild(this->animations);
 }
 
@@ -40,6 +85,9 @@ void Lightning::onEnter()
 {
 	SmartNode::onEnter();
 
+
+	this->firstRun = true;
+
 	this->playNextAnimation();
 }
 
@@ -49,8 +97,11 @@ void Lightning::playNextAnimation()
 	auto callback = CC_CALLBACK_0(Lightning::playNextAnimation, this);
 
 	int animationIndex = RandomHelper::random_int(1, 36);
+	float delay = this->firstRun ? RandomHelper::random_real(0.1f, 5.0f) : RandomHelper::random_real(1.0f, 5.0f);
 
-	this->runAction(Sequence::create(DelayTime::create(RandomHelper::random_real(1.0f, 5.0f)), CallFunc::create([=]()
+	this->firstRun = false;
+
+	this->runAction(Sequence::create(DelayTime::create(delay), CallFunc::create([=]()
 	{
 		float cameraDistance = GameCamera::getInstance()->getCameraPosition().distance(this->getPosition());
 		float soundIntensity = (GameCamera::getInstance()->getBounds().size.width / 2.0f) / (4 * M_PI * cameraDistance);

@@ -1,8 +1,20 @@
 #include "Smoke.h"
 
+#include "cocos/2d/CCAction.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/ccRandom.h"
+
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Utils/GameUtils.h"
+
+#include "Resources/CutsceneResources.h"
+
+using namespace cocos2d;
+
 const std::string Smoke::ScheduleKeySpawnSmoke = "SCHEDULE_SPAWN_SMOKE";
 
-Smoke* Smoke::create(Node* followTarget)
+Smoke* Smoke::create(SmartNode* followTarget)
 {
 	Smoke* instance = new Smoke(followTarget);
 
@@ -11,27 +23,16 @@ Smoke* Smoke::create(Node* followTarget)
 	return instance;
 }
 
-Smoke::Smoke(Node* followTarget)
+Smoke::Smoke(SmartNode* followTarget)
 {
 	this->follow = followTarget;
-	this->smokeSprite = Sprite::create(CutsceneResources::NeonCity_FlyingCars_Smoke_0000);
+	this->smokeAnimation = SmartAnimationSequenceNode::create(CutsceneResources::NeonCity_FlyingCars_Smoke_0000);
+
+	this->smokeAnimation->setOpacity(0);
 
 	this->setPosition(this->follow->getPosition());
 
-	this->smokeAnimation = Animation::create();
-	this->smokeAnimation->retain();
-
-	auto shipFrames = GameUtils::getAllAnimationFiles(CutsceneResources::NeonCity_FlyingCars_Smoke_0000);
-
-	for (auto it = shipFrames.begin(); it != shipFrames.end(); it++)
-	{
-		this->smokeAnimation->addSpriteFrameWithFile(*it);
-	}
-
-	this->smokeSprite->setOpacity(0);
-	this->smokeAnimation->setDelayPerUnit(0.15f);
-
-	this->addChild(this->smokeSprite);
+	this->addChild(this->smokeAnimation);
 }
 
 Smoke::~Smoke()
@@ -42,16 +43,17 @@ Smoke::~Smoke()
 void Smoke::stopFollow()
 {
 	this->follow = nullptr;
-	this->smokeSprite->stopAllActions();
+	this->smokeAnimation->stopAllActions();
 	this->unschedule(Smoke::ScheduleKeySpawnSmoke);
 }
 
 void Smoke::onEnter()
 {
-	Node::onEnter();
+	SmartNode::onEnter();
 
 	if (this->follow != nullptr)
 	{
+		// Following an object -- keep making smoke forever
 		this->schedule([=](float dt)
 		{
 			if (this->follow == nullptr)
@@ -60,11 +62,30 @@ void Smoke::onEnter()
 			}
 
 			this->setPosition(this->follow->getPosition());
-			this->smokeSprite->runAction(Sequence::create(FadeTo::create(0.0f, 255), DelayTime::create(0.1f), Animate::create(this->smokeAnimation), FadeTo::create(0.0f, 0), nullptr));
+			this->smokeAnimation->runAction(Sequence::create(
+				FadeTo::create(0.0f, 255), 
+				DelayTime::create(0.1f), 
+				CallFunc::create([=]()
+				{
+					this->smokeAnimation->playAnimation(CutsceneResources::NeonCity_FlyingCars_Smoke_0000, 0.15f);
+				}),
+				FadeTo::create(0.0f, 0),
+				nullptr
+			));
 		}, 2.0f, CC_REPEAT_FOREVER, RandomHelper::random_real(0.25f, 2.0f), Smoke::ScheduleKeySpawnSmoke);
 	}
 	else
 	{
-		this->smokeSprite->runAction(Sequence::create(FadeTo::create(0.0f, 255), DelayTime::create(0.1f), Animate::create(this->smokeAnimation), FadeTo::create(0.0f, 0), nullptr));
+		// Not following an object, just spawn the smoke once
+		this->smokeAnimation->runAction(Sequence::create(
+			FadeTo::create(0.0f, 255),
+			DelayTime::create(0.1f),
+			CallFunc::create([=]()
+			{
+				this->smokeAnimation->playAnimation(CutsceneResources::NeonCity_FlyingCars_Smoke_0000, 0.15f);
+			}),
+			FadeTo::create(0.0f, 0),
+			nullptr
+		));
 	}
 }

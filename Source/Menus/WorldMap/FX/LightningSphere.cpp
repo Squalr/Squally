@@ -19,6 +19,23 @@ LightningSphere::LightningSphere()
 {
 	this->animations = SmartAnimationSequenceNode::create(UIResources::EmptyImage);
 
+	static bool runOnce = true;
+
+	if (runOnce)
+	{
+		runOnce = false;
+
+		// Prime the cache with all of the animation sequence files used by lightning sphere
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_LightningSphere1_Lightning_0000);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_LightningSphere2_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_LightningSphere3_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_LightningSphere4_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_LightningSphere5_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_LightningSphere6_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_LightningSphere7_Lightning_01);
+		this->animations->primeCache(UIResources::Menus_WorldMap_Lightning_LightningSphere8_Lightning_01);
+	}
+
 	this->addChild(this->animations);
 }
 

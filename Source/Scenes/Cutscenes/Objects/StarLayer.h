@@ -1,18 +1,15 @@
 #pragma once
 #include "cocos2d.h"
 
-#include "Engine/Utils/GameUtils.h"
-#include "Resources/CutsceneResources.h"
+#include "Engine/SmartNode.h"
 
-using namespace cocos2d;
-
-class StarLayer : public Node
+class StarLayer : public SmartNode
 {
 public:
-	static StarLayer* create(Vec2 size);
+	static StarLayer* create(cocos2d::Vec2 size);
 
 protected:
-	StarLayer(Vec2 size);
+	StarLayer(cocos2d::Vec2 size);
 	~StarLayer();
 
 private:
@@ -29,7 +26,7 @@ private:
 		StarShineExtraLarge,
 	};
 
-	Size layerSize;
+	cocos2d::Size layerSize;
 
 	static std::map<Stars, int> frequencyMap;
 };

@@ -15,7 +15,6 @@ namespace cocos2d
 class GameUtils
 {
 public:
-	static std::vector<std::string> getAllAnimationFiles(std::string firstFrameResource);
 	static void pause(cocos2d::Node *node);
 	static void resume(cocos2d::Node *node);
 	static void resumeAll();

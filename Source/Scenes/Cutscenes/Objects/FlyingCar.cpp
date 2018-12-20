@@ -1,5 +1,18 @@
 #include "FlyingCar.h"
 
+#include "cocos/2d/CCAction.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Scenes/Cutscenes/Objects/Explosion.h"
+#include "Scenes/Cutscenes/Objects/Smoke.h"
+
+#include "Resources/CutsceneResources.h"
+
+using namespace cocos2d;
+
 const std::string FlyingCar::ScheduleKeySputterSmoke = "SCHEDULE_SPUTTER_SMOKE";
 const float FlyingCar::gravity = 192.0f;
 
@@ -24,51 +37,27 @@ FlyingCar::FlyingCar(CarType carType, Vec2 speed, float groundHeight)
 	{
 		case CarType::Junker:
 		{
-			this->carSprite = Sprite::create(CutsceneResources::NeonCity_FlyingCars_Junker_0000);
-			Animation* animation = Animation::create();
-			auto shipFrames = GameUtils::getAllAnimationFiles(CutsceneResources::NeonCity_FlyingCars_Junker_0000);
+			this->carSprite = SmartAnimationSequenceNode::create(CutsceneResources::NeonCity_FlyingCars_Junker_0000);
 
-			for (auto it = shipFrames.begin(); it != shipFrames.end(); it++)
-			{
-				animation->addSpriteFrameWithFile(*it);
-			}
-
-			animation->setDelayPerUnit(0.2f);
-			this->carSprite->runAction(RepeatForever::create(Sequence::create(Animate::create(animation), nullptr)));
+			this->carSprite->playAnimationRepeat(CutsceneResources::NeonCity_FlyingCars_Junker_0000, 0.2f, 0.0f);
 
 			this->smoke = Smoke::create(this->carSprite);
 			break;
 		}
 		case CarType::Viper:
 		{
-			this->carSprite = Sprite::create(CutsceneResources::NeonCity_FlyingCars_Viper_0000);
-			Animation* animation = Animation::create();
-			auto shipFrames = GameUtils::getAllAnimationFiles(CutsceneResources::NeonCity_FlyingCars_Viper_0000);
+			this->carSprite = SmartAnimationSequenceNode::create(CutsceneResources::NeonCity_FlyingCars_Viper_0000);
 
-			for (auto it = shipFrames.begin(); it != shipFrames.end(); it++)
-			{
-				animation->addSpriteFrameWithFile(*it);
-			}
-
-			animation->setDelayPerUnit(0.2f);
-			this->carSprite->runAction(RepeatForever::create(Sequence::create(Animate::create(animation), nullptr)));
+			this->carSprite->playAnimationRepeat(CutsceneResources::NeonCity_FlyingCars_Viper_0000, 0.2f, 0.0f);
 
 			this->smoke = Smoke::create(this->carSprite);
 			break;
 		}
 		case CarType::Propeller:
 		{
-			this->carSprite = Sprite::create(CutsceneResources::NeonCity_FlyingCars_Propeller_0000);
-			Animation* animation = Animation::create();
-			auto shipFrames = GameUtils::getAllAnimationFiles(CutsceneResources::NeonCity_FlyingCars_Propeller_0000);
+			this->carSprite = SmartAnimationSequenceNode::create(CutsceneResources::NeonCity_FlyingCars_Propeller_0000);
 
-			for (auto it = shipFrames.begin(); it != shipFrames.end(); it++)
-			{
-				animation->addSpriteFrameWithFile(*it);
-			}
-
-			animation->setDelayPerUnit(0.2f);
-			this->carSprite->runAction(RepeatForever::create(Sequence::create(Animate::create(animation), nullptr)));
+			this->carSprite->playAnimationRepeat(CutsceneResources::NeonCity_FlyingCars_Propeller_0000, 0.2f, 0.0f);
 			break;
 		}
 	}
@@ -147,15 +136,14 @@ void FlyingCar::explode()
 
 void FlyingCar::onEnter()
 {
-	Node::onEnter();
+	SmartNode::onEnter();
 
 	this->scheduleUpdate();
 }
 
 void FlyingCar::update(float dt)
 {
-
-	Node::update(dt);
+	SmartNode::update(dt);
 
 	if (this->isCrashing)
 	{

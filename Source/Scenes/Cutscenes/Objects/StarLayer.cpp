@@ -1,5 +1,15 @@
 #include "StarLayer.h"
 
+#include "cocos/2d/CCAction.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCLayer.h"
+
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
+
+#include "Resources/CutsceneResources.h"
+
+using namespace cocos2d;
+
 std::map<StarLayer::Stars, int> StarLayer::frequencyMap =
 {
 	{ StarLayer::Stars::StarSmall, 1000 },
@@ -69,94 +79,74 @@ void StarLayer::createStars()
 				}
 			}
 
-			Sprite* nextSprite;
+			Node* nextSprite;
 
 			switch (star)
 			{
-			default:
-			case StarSmall:
-			{
-				nextSprite = Sprite::create(CutsceneResources::General_Stars_StarSmall);
-				break;
-			}
-			case StarMedium:
-			{
-				nextSprite = Sprite::create(CutsceneResources::General_Stars_StarMedium);
-				break;
-			}
-			case StarLarge:
-			{
-				nextSprite = Sprite::create(CutsceneResources::General_Stars_StarLarge);
-				break;
-			}
-			case StarShineSmall:
-			{
-				nextSprite = Sprite::create(CutsceneResources::General_Stars_StarShineSmall_0000);
-
-				Animation* animation = Animation::create();
-				auto starFrames = GameUtils::getAllAnimationFiles(CutsceneResources::General_Stars_StarShineSmall_0000);
-				bool reverse = RandomHelper::random_int(0, 1) < 1;
-
-				for (auto it = starFrames.begin(); it != starFrames.end(); it++)
+				default:
+				case StarSmall:
 				{
-					animation->addSpriteFrameWithFile(*it);
+					nextSprite = Sprite::create(CutsceneResources::General_Stars_StarSmall);
+					break;
 				}
-
-				animation->setDelayPerUnit(RandomHelper::random_real(0.4f, 1.0f));
-				nextSprite->runAction(RepeatForever::create(Sequence::create(reverse ? Animate::create(animation) : Animate::create(animation)->reverse(), nullptr)));
-				break;
-			}
-			case StarShineSmallHallow:
-			{
-				nextSprite = Sprite::create(CutsceneResources::General_Stars_StarShineSmallHallow_0000);
-
-				Animation* animation = Animation::create();
-				auto starFrames = GameUtils::getAllAnimationFiles(CutsceneResources::General_Stars_StarShineSmallHallow_0000);
-				bool reverse = RandomHelper::random_int(0, 1) < 1;
-
-				for (auto it = starFrames.begin(); it != starFrames.end(); it++)
+				case StarMedium:
 				{
-					animation->addSpriteFrameWithFile(*it);
+					nextSprite = Sprite::create(CutsceneResources::General_Stars_StarMedium);
+					break;
 				}
-
-				animation->setDelayPerUnit(RandomHelper::random_real(0.4f, 1.0f));
-				nextSprite->runAction(RepeatForever::create(Sequence::create(reverse ? Animate::create(animation) : Animate::create(animation)->reverse(), nullptr)));
-				break;
-			}
-			case StarShineLarge:
-			{
-				nextSprite = Sprite::create(CutsceneResources::General_Stars_StarShineLarge_0000);
-
-				Animation* animation = Animation::create();
-				auto starFrames = GameUtils::getAllAnimationFiles(CutsceneResources::General_Stars_StarShineLarge_0000);
-				bool reverse = RandomHelper::random_int(0, 1) < 1;
-
-				for (auto it = starFrames.begin(); it != starFrames.end(); it++)
+				case StarLarge:
 				{
-					animation->addSpriteFrameWithFile(*it);
+					nextSprite = Sprite::create(CutsceneResources::General_Stars_StarLarge);
+					break;
 				}
-
-				animation->setDelayPerUnit(RandomHelper::random_real(0.4f, 1.0f));
-				nextSprite->runAction(RepeatForever::create(Sequence::create(reverse ? Animate::create(animation) : Animate::create(animation)->reverse(), nullptr)));
-				break;
-			}
-			case StarShineExtraLarge:
-			{
-				nextSprite = Sprite::create(CutsceneResources::General_Stars_StarShineExtraLarge_0000);
-
-				Animation* animation = Animation::create();
-				auto starFrames = GameUtils::getAllAnimationFiles(CutsceneResources::General_Stars_StarShineExtraLarge_0000);
-				bool reverse = RandomHelper::random_int(0, 1) < 1;
-
-				for (auto it = starFrames.begin(); it != starFrames.end(); it++)
+				case StarShineSmall:
 				{
-					animation->addSpriteFrameWithFile(*it);
-				}
+					SmartAnimationSequenceNode* animation = SmartAnimationSequenceNode::create(CutsceneResources::General_Stars_StarShineSmall_0000);
 
-				animation->setDelayPerUnit(RandomHelper::random_real(0.4f, 1.0f));
-				nextSprite->runAction(RepeatForever::create(Sequence::create(reverse ? Animate::create(animation) : Animate::create(animation)->reverse(), nullptr)));
-				break;
-			}
+					float animationSpeed = RandomHelper::random_real(0.4f, 1.0f);
+					bool reverse = RandomHelper::random_int(0, 1) < 1;
+
+					animation->playAnimationAndReverseRepeat(CutsceneResources::General_Stars_StarShineSmall_0000, animationSpeed, 0.0f, animationSpeed, 0.0f, reverse);
+
+					nextSprite = animation;
+					break;
+				}
+				case StarShineSmallHallow:
+				{
+					SmartAnimationSequenceNode* animation = SmartAnimationSequenceNode::create(CutsceneResources::General_Stars_StarShineSmallHallow_0000);
+
+					float animationSpeed = RandomHelper::random_real(0.4f, 1.0f);
+					bool reverse = RandomHelper::random_int(0, 1) < 1;
+
+					animation->playAnimationAndReverseRepeat(CutsceneResources::General_Stars_StarShineSmallHallow_0000, animationSpeed, 0.0f, animationSpeed, 0.0f, reverse);
+
+					nextSprite = animation;
+					break;
+				}
+				case StarShineLarge:
+				{
+					SmartAnimationSequenceNode* animation = SmartAnimationSequenceNode::create(CutsceneResources::General_Stars_StarShineLarge_0000);
+
+					float animationSpeed = RandomHelper::random_real(0.4f, 1.0f);
+					bool reverse = RandomHelper::random_int(0, 1) < 1;
+
+					animation->playAnimationAndReverseRepeat(CutsceneResources::General_Stars_StarShineLarge_0000, animationSpeed, 0.0f, animationSpeed, 0.0f, reverse);
+
+					nextSprite = animation;
+					break;
+				}
+				case StarShineExtraLarge:
+				{
+					SmartAnimationSequenceNode* animation = SmartAnimationSequenceNode::create(CutsceneResources::General_Stars_StarShineExtraLarge_0000);
+
+					float animationSpeed = RandomHelper::random_real(0.4f, 1.0f);
+					bool reverse = RandomHelper::random_int(0, 1) < 1;
+
+					animation->playAnimationAndReverseRepeat(CutsceneResources::General_Stars_StarShineExtraLarge_0000, animationSpeed, 0.0f, animationSpeed, 0.0f, reverse);
+
+					nextSprite = animation;
+					break;
+				}
 			}
 
 			nextSprite->setScale(2);

@@ -1,5 +1,13 @@
 #include "Explosion.h"
 
+#include "cocos/base/ccTypes.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/2d/CCAction.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCLayer.h"
+
+using namespace cocos2d;
+
 Explosion* Explosion::create()
 {
 	Explosion* instance = new Explosion();
@@ -26,7 +34,7 @@ Explosion::~Explosion()
 
 void Explosion::onEnter()
 {
-	Node::onEnter();
+	SmartNode::onEnter();
 
 	const float flashSpeed = 0.015f;
 

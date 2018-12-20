@@ -1,27 +1,25 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/base/ccTypes.h"
 
-#include "Engine/Utils/GameUtils.h"
+#include "Engine/SmartNode.h"
 
-using namespace cocos2d;
-
-class GridObject : public Node
+class GridObject : public SmartNode
 {
 public:
-	static GridObject* create(Node* inner, Vec2 spawnCoords, bool isObjectStatic);
+	static GridObject* create(cocos2d::Node* inner, cocos2d::Vec2 spawnCoords, bool isObjectStatic);
 
-	void setCoords(Vec2 coords);
-	Vec2 getCoords();
-	Vec2 getSpawnCoords();
+	void setCoords(cocos2d::Vec2 coords);
+	cocos2d::Vec2 getCoords();
+	cocos2d::Vec2 getSpawnCoords();
 
 private:
-	GridObject(Node* inner, Vec2 spawnCoords, bool isObjectStatic);
+	GridObject(cocos2d::Node* inner, cocos2d::Vec2 spawnCoords, bool isObjectStatic);
 	~GridObject();
 
 	void onEnter() override;
 
-	Vec2 initCoords;
-	Vec2 gridCoords;
+	cocos2d::Vec2 initCoords;
+	cocos2d::Vec2 gridCoords;
 
 	bool isStatic;
 };
