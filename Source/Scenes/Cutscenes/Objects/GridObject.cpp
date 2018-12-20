@@ -1,6 +1,8 @@
 #include "GridObject.h"
 
-GridObject* GridObject::create(Node* inner, Vec2 spawnCoords, bool isObjectStatic)
+using namespace cocos2d;
+
+GridObject* GridObject::create(cocos2d::Node* inner, Vec2 spawnCoords, bool isObjectStatic)
 {
 	GridObject* instance = new GridObject(inner, spawnCoords, isObjectStatic);
 
@@ -9,7 +11,7 @@ GridObject* GridObject::create(Node* inner, Vec2 spawnCoords, bool isObjectStati
 	return instance;
 }
 
-GridObject::GridObject(Node* inner, Vec2 spawnCoords, bool isObjectStatic)
+GridObject::GridObject(cocos2d::Node* inner, Vec2 spawnCoords, bool isObjectStatic)
 {
 	this->initCoords = spawnCoords;
 	this->isStatic = isObjectStatic;
@@ -27,7 +29,7 @@ GridObject::~GridObject()
 
 void GridObject::onEnter()
 {
-	Node::onEnter();
+	SmartNode::onEnter();
 }
 
 void GridObject::setCoords(Vec2 coords)

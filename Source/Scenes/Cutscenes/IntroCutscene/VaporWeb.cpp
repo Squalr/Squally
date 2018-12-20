@@ -1,4 +1,5 @@
 #include "VaporWeb.h"
+#include "cocos/2d/CCSprite.h"
 
 #include "Engine/Localization/Localization.h"
 

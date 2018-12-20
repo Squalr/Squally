@@ -1,6 +1,21 @@
 #include "IntroSpace.h"
 
+#include "cocos/2d/CCAction.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCLabel.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCSprite.h"
+
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Dialogue/Dialogue.h"
 #include "Engine/Localization/Localization.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Scenes/Cutscenes/Objects/StarLayer.h"
+
+#include "Resources/CutsceneResources.h"
+#include "Resources/StringResources.h"
+
+using namespace cocos2d;
 
 const float IntroSpace::dialogueHeight = 256.0f;
 
@@ -25,16 +40,11 @@ IntroSpace::IntroSpace()
 	this->earth = Sprite::create(CutsceneResources::IntroSpace_Earth);
 	this->mars = Sprite::create(CutsceneResources::IntroSpace_Mars);
 	this->weavers = Node::create();
-	this->weaver1 = Sprite::create();
-	this->weaver2 = Sprite::create();
-	this->weaver3 = Sprite::create();
-	this->weaver4 = Sprite::create();
-	this->weaver5 = Sprite::create();
-	this->weaver1Anim = Animation::create();
-	this->weaver2Anim = Animation::create();
-	this->weaver3Anim = Animation::create();
-	this->weaver4Anim = Animation::create();
-	this->weaver5Anim = Animation::create();
+	this->weaver1 = SmartAnimationSequenceNode::create(CutsceneResources::IntroSpace_Weaver_0000);
+	this->weaver2 = SmartAnimationSequenceNode::create(CutsceneResources::IntroSpace_Weaver_0000);
+	this->weaver3 = SmartAnimationSequenceNode::create(CutsceneResources::IntroSpace_Weaver_0000);
+	this->weaver4 = SmartAnimationSequenceNode::create(CutsceneResources::IntroSpace_Weaver_0000);
+	this->weaver5 = SmartAnimationSequenceNode::create(CutsceneResources::IntroSpace_Weaver_0000);
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, IntroSpace::dialogueHeight);
 	this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneIntroSpace, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	this->escapeLabel = Label::createWithTTF("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
@@ -47,17 +57,6 @@ IntroSpace::IntroSpace()
 	this->weaver3->setScale(0.16f);
 	this->weaver4->setScale(0.18f);
 	this->weaver5->setScale(0.20f);
-
-	auto weaverFrames = GameUtils::getAllAnimationFiles(CutsceneResources::IntroSpace_Weaver_0000);
-
-	for (auto it = weaverFrames.begin(); it != weaverFrames.end(); it++)
-	{
-		this->weaver1Anim->addSpriteFrameWithFile(*it);
-		this->weaver2Anim->addSpriteFrameWithFile(*it);
-		this->weaver3Anim->addSpriteFrameWithFile(*it);
-		this->weaver4Anim->addSpriteFrameWithFile(*it);
-		this->weaver5Anim->addSpriteFrameWithFile(*it);
-	}
 
 	this->addChild(this->starLayer);
 	this->addChild(this->earth);
@@ -81,17 +80,11 @@ void IntroSpace::onEnter()
 {
 	CutsceneClip::onEnter();
 
-	this->weaver1Anim->setDelayPerUnit(0.2f);
-	this->weaver2Anim->setDelayPerUnit(0.225f);
-	this->weaver3Anim->setDelayPerUnit(0.25f);
-	this->weaver4Anim->setDelayPerUnit(0.275f);
-	this->weaver5Anim->setDelayPerUnit(0.3f);
-
-	this->weaver1->runAction(RepeatForever::create(Sequence::create(Animate::create(this->weaver1Anim), nullptr)));
-	this->weaver2->runAction(RepeatForever::create(Sequence::create(Animate::create(this->weaver2Anim), nullptr)));
-	this->weaver3->runAction(RepeatForever::create(Sequence::create(Animate::create(this->weaver3Anim), nullptr)));
-	this->weaver4->runAction(RepeatForever::create(Sequence::create(Animate::create(this->weaver4Anim), nullptr)));
-	this->weaver5->runAction(RepeatForever::create(Sequence::create(Animate::create(this->weaver5Anim), nullptr)));
+	this->weaver1->playAnimation(CutsceneResources::IntroSpace_Weaver_0000, 0.2f);
+	this->weaver2->playAnimation(CutsceneResources::IntroSpace_Weaver_0000, 0.225f);
+	this->weaver3->playAnimation(CutsceneResources::IntroSpace_Weaver_0000, 0.25f);
+	this->weaver4->playAnimation(CutsceneResources::IntroSpace_Weaver_0000, 0.275f);
+	this->weaver5->playAnimation(CutsceneResources::IntroSpace_Weaver_0000, 0.3f);
 
 	this->runCutscene();
 }

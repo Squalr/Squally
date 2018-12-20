@@ -1,14 +1,12 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/base/ccTypes.h"
 
-#include "Engine/Utils/GameUtils.h"
-#include "Scenes/Cutscenes/Objects/Explosion.h"
-#include "Scenes/Cutscenes/Objects/Smoke.h"
-#include "Resources/CutsceneResources.h"
+#include "Engine/SmartNode.h"
 
-using namespace cocos2d;
+class SmartAnimationSequenceNode;
+class Smoke;
 
-class FlyingCar : public Node
+class FlyingCar : public SmartNode
 {
 public:
 	enum CarType {
@@ -17,24 +15,23 @@ public:
 		Propeller
 	};
 
-	static FlyingCar* create(CarType carType, Vec2 speed, float groundHeight);
+	static FlyingCar* create(CarType carType, cocos2d::Vec2 speed, float groundHeight);
 
 	void crash();
 
 private:
-	FlyingCar(CarType carType, Vec2 speed, float groundHeight);
+	FlyingCar(CarType carType, cocos2d::Vec2 speed, float groundHeight);
 	~FlyingCar();
 
 	void explode();
-
 	void onEnter() override;
 	void update(float dt) override;
 
 	float height;
 	bool isCrashing;
 	Smoke* smoke;
-	Sprite* carSprite;
-	Vec2 flySpeed;
+	SmartAnimationSequenceNode* carSprite;
+	cocos2d::Vec2 flySpeed;
 
 	static const std::string ScheduleKeySputterSmoke;
 	static const float gravity;

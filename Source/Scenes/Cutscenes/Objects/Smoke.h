@@ -1,27 +1,23 @@
 #pragma once
-#include "cocos2d.h"
+#include "Engine/SmartNode.h"
 
-#include "Engine/Utils/GameUtils.h"
-#include "Resources/CutsceneResources.h"
+class SmartAnimationSequenceNode;
 
-using namespace cocos2d;
-
-class Smoke : public Node
+class Smoke : public SmartNode
 {
 public:
-	static Smoke* create(Node* followTarget);
+	static Smoke* create(SmartNode* followTarget);
 
 	void stopFollow();
 
 private:
-	Smoke(Node* followTarget);
+	Smoke(SmartNode* followTarget);
 	~Smoke();
 
 	void onEnter() override;
 
-	Node* follow;
-	Sprite* smokeSprite;
-	Animation* smokeAnimation;
+	SmartNode* follow;
+	SmartAnimationSequenceNode* smokeAnimation;
 
 	static const std::string ScheduleKeySpawnSmoke;
 };

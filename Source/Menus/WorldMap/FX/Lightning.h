@@ -17,5 +17,6 @@ private:
 	void playNextAnimation();
 
 	SmartAnimationSequenceNode* animations;
+	bool firstRun;
 };
 

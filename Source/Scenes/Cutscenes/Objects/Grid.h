@@ -1,18 +1,22 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/base/ccTypes.h"
 
-#include "Engine/Utils/GameUtils.h"
-#include "Scenes/Cutscenes/Objects/GridObject.h"
+#include "Engine/SmartNode.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class LayerGradient;
+}
 
-class Grid : public Node
+class GridObject;
+
+class Grid : public SmartNode
 {
 public:
 	static Grid* create();
 
 	void addGridObject(GridObject* gridObject);
-	Vec2 coordsToLocation(Vec2 coords);
+	cocos2d::Vec2 coordsToLocation(cocos2d::Vec2 coords);
 	float getHorizon();
 
 	static const int lineRows;
@@ -26,20 +30,20 @@ private:
 	void onEnter() override;
 	void update(float dt) override;
 
-	Node* createLine(Vec2 source, Vec2 destination, Color4F color);
+	cocos2d::Node* createLine(cocos2d::Vec2 source, cocos2d::Vec2 destination, cocos2d::Color4F color);
 	void runForeverScroll();
 	float getGridOffset();
 
-	std::vector<Node*>* horizontalLines;
-	std::vector<Node*>* verticalLines;
-	std::vector<GridObject*>* gridObjects;
-	LayerGradient* distanceGradient;
+	std::vector<cocos2d::Node*> horizontalLines;
+	std::vector<cocos2d::Node*> verticalLines;
+	std::vector<GridObject*> gridObjects;
+	cocos2d::LayerGradient* distanceGradient;
 
 	static const float backPlane;
 	static const int specialLineColumns;
 
-	static const Color4F gridColor;
-	static const Color4F specialGridColor;
+	static const cocos2d::Color4F gridColor;
+	static const cocos2d::Color4F specialGridColor;
 
 	static const float scrollSpeed;
 	static const float objectSpeed;

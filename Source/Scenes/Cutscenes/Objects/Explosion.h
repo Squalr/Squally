@@ -1,12 +1,13 @@
 #pragma once
-#include "cocos2d.h"
 
-#include "Engine/Utils/GameUtils.h"
-#include "Resources/CutsceneResources.h"
+#include "Engine/SmartNode.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class LayerColor;
+}
 
-class Explosion : public Node
+class Explosion : public SmartNode
 {
 public:
 	static Explosion* create();
@@ -17,5 +18,5 @@ private:
 
 	void onEnter() override;
 
-	LayerColor* explosion;
+	cocos2d::LayerColor* explosion;
 };

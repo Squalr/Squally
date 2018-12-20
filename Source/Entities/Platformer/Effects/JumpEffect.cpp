@@ -16,7 +16,7 @@ JumpEffect* JumpEffect::create()
 
 JumpEffect::JumpEffect()
 {
-	std::vector<std::string> animationFiles = GameUtils::getAllAnimationFiles(EntityResources::Squally_Jump_Jump_00);
+	// std::vector<std::string> animationFiles = GameUtils::getAllAnimationFiles(EntityResources::Squally_Jump_Jump_00);
 }
 
 JumpEffect::~JumpEffect()

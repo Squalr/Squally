@@ -3,7 +3,6 @@
 
 #include "Engine/Input/Input.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Entities/Platformer/Squally/Hover.h"
 #include "Events/NavigationEvents.h"
 
 using namespace cocos2d;
@@ -37,7 +36,7 @@ private:
 	bool isFlipped;
 	bool canJump;
 
-	Hover* hover;
+	CollisionObject* squallyCollision;
 
 	static const float squallyScale;
 	static Squally* squallyInstance;

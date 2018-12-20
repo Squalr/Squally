@@ -25,24 +25,21 @@ Squally* Squally::getInstance()
 
 Squally::Squally(ValueMap* initProperties) : PlatformerEntity::PlatformerEntity(initProperties,
 	EntityResources::Squally_Animations,
-	PlatformerCollisionType::Player,
+	PlatformerCollisionType::Force,
 	Size(128.0f, 320.0f), 
 	Squally::squallyScale,
-	Vec2(0.0f, 128.0f))
+	Vec2(0.0f, 96.0f))
 {
 	this->actualJumpLaunchVelocity = 1280.0f;
 	this->actualGravityAcceleration = 400.0f;
 	this->actualMaxFallSpeed = 600.0f;
 	this->moveAcceleration = 14000.0f;
 
-	// this->hover = Hover::create(this);
-
-	//this->hover->setContactBeginCallback(CC_CALLBACK_1(Squally::hoverContactBegin, this));
-	//this->hover->setContactUpdateCallback(CC_CALLBACK_1(Squally::hoverContactUpdate, this));
-	//this->hover->setContactEndCallback(CC_CALLBACK_1(Squally::hoverContactEnd, this));
-	//this->addChild(this->hover);
+	this->squallyCollision = CollisionObject::create(PhysicsBody::createCircle(72.0f, PHYSICSBODY_MATERIAL_DEFAULT, Vec2(0.0f, 112.0f)), (int)PlatformerCollisionType::Player, false, false);
 
 	this->registerHackables();
+
+	this->addChild(this->squallyCollision);
 }
 
 Squally::~Squally()
@@ -58,7 +55,7 @@ void Squally::initializeCollisionEvents()
 {
 	PlatformerEntity::initializeCollisionEvents();
 
-	this->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying }, [=](CollisionData collisionData)
+	this->squallyCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying }, [=](CollisionData collisionData)
 	{
 		PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other);
 
@@ -71,6 +68,11 @@ void Squally::initializeCollisionEvents()
 	});
 
 	this->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionData collisionData)
+	{
+		return CollisionResult::DoNothing;
+	});
+
+	this->squallyCollision->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionData collisionData)
 	{
 		return CollisionResult::DoNothing;
 	});
@@ -126,7 +128,7 @@ void Squally::update(float dt)
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_S))
 	{
-		this->hover->setHeight(16.0f);
+		// TODO: Hover height magic (probably just by scaling the main physicsbody)
 	}
 }
 

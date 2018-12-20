@@ -1,14 +1,17 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Engine/Cutscenes/CutsceneClip.h"
-#include "Engine/Dialogue/Dialogue.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Resources/CutsceneResources.h"
-#include "Resources/StringResources.h"
-#include "Scenes/Cutscenes/Objects/StarLayer.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Label;
+	class LayerColor;
+	class Sprite;
+}
+
+class Dialogue;
+class SmartAnimationSequenceNode;
+class StarLayer;
 
 class IntroSpace : public CutsceneClip
 {
@@ -27,23 +30,18 @@ private:
 	void runCutscene();
 
 	StarLayer* starLayer;
-	Sprite* earth;
-	Sprite* mars;
+	cocos2d::Sprite* earth;
+	cocos2d::Sprite* mars;
 	Node* weavers;
-	Sprite* weaver1;
-	Animation* weaver1Anim;
-	Sprite* weaver2;
-	Animation* weaver2Anim;
-	Sprite* weaver3;
-	Animation* weaver3Anim;
-	Sprite* weaver4;
-	Animation* weaver4Anim;
-	Sprite* weaver5;
-	Animation* weaver5Anim;
+	SmartAnimationSequenceNode* weaver1;
+	SmartAnimationSequenceNode* weaver2;
+	SmartAnimationSequenceNode* weaver3;
+	SmartAnimationSequenceNode* weaver4;
+	SmartAnimationSequenceNode* weaver5;
 
-	LayerColor* dialoguePlate;
+	cocos2d::LayerColor* dialoguePlate;
 	Dialogue* dialogue;
-	Label* escapeLabel;
+	cocos2d::Label* escapeLabel;
 
 	static const float dialogueHeight;
 
