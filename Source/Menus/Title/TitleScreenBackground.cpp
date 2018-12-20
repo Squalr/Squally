@@ -1,5 +1,26 @@
 #include "TitleScreenBackground.h"
 
+#include "cocos/2d/CCSprite.h"
+#include "cocos/2d/CCAction.h"
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCParticleSystemQuad.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/UI/FloatingSprite.h"
+#include "Engine/UI/InfiniteParallaxNode.h"
+#include "Engine/Utils/GameUtils.h"
+
+#include "Resources/EntityResources.h"
+#include "Resources/ParticleResources.h"
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
 TitleScreenBackground * TitleScreenBackground::create()
 {
 	TitleScreenBackground* instance = new TitleScreenBackground();
@@ -11,9 +32,6 @@ TitleScreenBackground * TitleScreenBackground::create()
 
 TitleScreenBackground::TitleScreenBackground()
 {
-	this->eyes1Anim = Animation::create();
-	this->eyes2Anim = Animation::create();
-
 	this->background = Sprite::create(UIResources::Menus_Backgrounds_ForestBackground);
 	this->fog = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
 	this->foregroundFog = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
@@ -21,47 +39,23 @@ TitleScreenBackground::TitleScreenBackground()
 	this->backgroundVines = FloatingSprite::create(UIResources::Menus_Backgrounds_FarVines, Vec2(64.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->midgroundTrees = FloatingSprite::create(UIResources::Menus_Backgrounds_MidgroundTrees, Vec2(8.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->tree = Sprite::create(UIResources::Menus_Backgrounds_Tree);
-	this->eyes1 = Sprite::create();
-	this->eyes2 = Sprite::create();
+	this->eyes1 = SmartAnimationSequenceNode::create();
+	this->eyes2 = SmartAnimationSequenceNode::create();
 	this->foregroundVines = FloatingSprite::create(UIResources::Menus_Backgrounds_Vines, Vec2(-24.0f, 0.0f), Vec2(7.0f, 5.0f));
 	this->foregroundGrassBottom = FloatingSprite::create(UIResources::Menus_Backgrounds_BottomSoil, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
 	this->foregroundGrassTop = FloatingSprite::create(UIResources::Menus_Backgrounds_TopLeaves, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
 	this->foregroundLight = Sprite::create(UIResources::Menus_Backgrounds_Light);
-	this->slimeNode = Node::create();
-	this->slime = Sprite::create(UIResources::Menus_TitleScreen_Slime_Slime_0000);
-	this->squallyNode = Node::create();
-	this->squally = AnimationNode::create(EntityResources::Squally_Animations);
+	this->squally = SmartAnimationNode::create(EntityResources::Squally_Animations);
+	this->slime = SmartAnimationSequenceNode::create(UIResources::Menus_TitleScreen_Slime_Slime_0000);
 
-	this->squally->setScale(0.5f);
+	this->squally->setFlippedX(true);
+	this->squally->playAnimation("Title", true);
 
-	this->squallyEntity = this->squally->play("Entity");
-	this->squallyEntity->setCurrentAnimation("Title");
-
-	this->createSlimeAnimation();
+	this->eyes1->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesA_0000, 0.025f, 1.54f, 0.025f, 2.5f);
+	this->eyes2->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesB_0000, 0.025f, 1.25f, 0.025f, 3.25f);
 
 	this->windParticles = ParticleSystemQuad::create(ParticleResources::Wind);
 	this->fireflyParticles = ParticleSystemQuad::create(ParticleResources::Fireflies2);
-
-	auto eyesAFrames = GameUtils::getAllAnimationFiles(UIResources::Menus_Backgrounds_EyesA_0000);
-
-	for (auto it = eyesAFrames.begin(); it != eyesAFrames.end(); it++)
-	{
-		this->eyes1Anim->addSpriteFrameWithFile(*it);
-	}
-
-	this->eyes1Anim->retain();
-
-	auto eyesBFrames = GameUtils::getAllAnimationFiles(UIResources::Menus_Backgrounds_EyesB_0000);
-
-	for (auto it = eyesBFrames.begin(); it != eyesBFrames.end(); it++)
-	{
-		this->eyes2Anim->addSpriteFrameWithFile(*it);
-	}
-
-	this->eyes2Anim->retain();
-
-	this->slimeNode->addChild(this->slime);
-	this->squallyNode->addChild(this->squally);
 
 	this->addChild(this->background);
 	this->addChild(this->backgroundTrees);
@@ -72,8 +66,8 @@ TitleScreenBackground::TitleScreenBackground()
 	this->addChild(this->tree);
 	this->addChild(this->eyes1);
 	this->addChild(this->eyes2);
-	this->addChild(this->slimeNode);
-	this->addChild(this->squallyNode);
+	this->addChild(this->squally);
+	this->addChild(this->slime);
 	this->addChild(this->fireflyParticles);
 	this->addChild(this->windParticles);
 	this->addChild(this->foregroundFog);
@@ -113,32 +107,27 @@ void TitleScreenBackground::onEnter()
 	FiniteTimeAction* bounceDownPostSink = EaseSineInOut::create(MoveTo::create(floatSpeedPostSink, Vec2(base.x, base.y - sinkOffset)));
 	FiniteTimeAction* sinkUp = EaseSineInOut::create(MoveTo::create(sinkSpeed, Vec2(base.x, base.y)));
 
-	// Prepare parameters to pass to lambdas
-	Node* slimeSpriteLocal = this->slime;
-	SpriterEngine::EntityInstance* squallyLocal = this->squallyEntity;
-	Animation* slimeActionNode = this->slimeAnimation;
-	this->slimeAnimation->retain();
-
-	CallFunc* jiggleSlime = CallFunc::create([slimeSpriteLocal, slimeActionNode] {
-		slimeSpriteLocal->runAction(Animate::create(slimeActionNode));
+	CallFunc* jiggleSlime = CallFunc::create([=]
+	{
+		this->slime->playAnimation(UIResources::Menus_TitleScreen_Slime_Slime_0000, 0.035f);
 	});
 
 	jiggleSlime->retain();
 
-	CallFunc* pokeSlime = CallFunc::create([squallyLocal, jiggleSlime] {
-		squallyLocal->setCurrentTime(0.0f);
-		squallyLocal->setCurrentAnimation("TitlePoke", 0.25f);
+	CallFunc* pokeSlime = CallFunc::create([=]
+	{
+		this->squally->playAnimation("TitlePoke");
 		jiggleSlime->execute();
 	});
 
-	CallFunc* returnToIdle = CallFunc::create([squallyLocal] {
-		squallyLocal->setCurrentTime(0.0f);
-		squallyLocal->setCurrentAnimation("Title", 0.25f);
+	CallFunc* returnToIdle = CallFunc::create([=]
+	{
+		this->squally->playAnimation("Title");
 	});
 
 	pokeSlime->retain();
 
-	this->squallyNode->runAction(RepeatForever::create(
+	this->squally->runAction(RepeatForever::create(
 		Sequence::create(
 			bounceDown,
 			bounceUp,
@@ -166,14 +155,8 @@ void TitleScreenBackground::onEnter()
 		))
 	);
 
-	this->squally->setFlippedX(true);
-	this->squallyNode->setScale(0.35f);
 	this->fog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-92.0f, 0))));
 	this->foregroundFog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-196.0f, 0))));
-	this->eyes1Anim->setDelayPerUnit(0.025f);
-	this->eyes2Anim->setDelayPerUnit(0.025f);
-	this->eyes1->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes1Anim)->reverse(), DelayTime::create(1.54f), Animate::create(this->eyes1Anim), DelayTime::create(2.5f), nullptr)));
-	this->eyes2->runAction(RepeatForever::create(Sequence::create(Animate::create(this->eyes2Anim)->reverse(), DelayTime::create(1.25f), Animate::create(this->eyes2Anim), DelayTime::create(3.25f), nullptr)));
 }
 
 void TitleScreenBackground::initializeListeners()
@@ -203,19 +186,6 @@ void TitleScreenBackground::initializePositions()
 	this->foregroundLight->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - foregroundLight->getContentSize().height / 2));
 	this->windParticles->setPosition(Vec2(visibleSize.width, visibleSize.height / 2));
 	this->fireflyParticles->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->slimeNode->setPosition(Vec2(visibleSize.width / 2 + 112.0f, visibleSize.height / 2 - 320.0f));
-	this->squallyNode->setPosition(Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 160.0f));
-}
-
-void TitleScreenBackground::createSlimeAnimation()
-{
-	this->slimeAnimation = Animation::create();
-	this->slimeAnimation->setDelayPerUnit(0.035f);
-
-	auto slimeFrames = GameUtils::getAllAnimationFiles(UIResources::Menus_TitleScreen_Slime_Slime_0000);
-
-	for (auto it = slimeFrames.begin(); it != slimeFrames.end(); it++)
-	{
-		this->slimeAnimation->addSpriteFrameWithFile(*it);
-	}
+	this->slime->setPosition(Vec2(visibleSize.width / 2 + 112.0f, visibleSize.height / 2 - 320.0f));
+	this->squally->setPosition(Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 160.0f));
 }

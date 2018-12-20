@@ -3,6 +3,7 @@
 #include "cocos/audio/include/AudioEngine.h"
 
 #include "Engine/Config/ConfigManager.h"
+#include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;
@@ -44,21 +45,20 @@ void SoundManager::playMusicResource(std::string musicResource)
 	}
 }
 
-void SoundManager::playSoundResource(std::string soundResource)
+void SoundManager::playSoundResource(std::string soundResource, float volumeMultiplier)
 {
-	SoundManager* instance = SoundManager::getInstance();
+	float volume = MathUtils::clamp(volumeMultiplier * SoundManager::getInstance()->getSoundVolume(), 0.0f, SoundManager::getInstance()->getSoundVolume());
 
-	AudioEngine::play2d(soundResource, false, instance->getSoundVolume());
+	AudioEngine::play2d(soundResource, false, volume);
 }
 
 void SoundManager::setMusicVolume(float volume)
 {
-	SoundManager* instance = SoundManager::getInstance();
 	ConfigManager::setMusicVolume(volume);
 
-	if (instance->backgroundMusicId != SoundManager::INVALID_ID)
+	if (SoundManager::getInstance()->backgroundMusicId != SoundManager::INVALID_ID)
 	{
-		AudioEngine::setVolume(instance->backgroundMusicId, volume);
+		AudioEngine::setVolume(SoundManager::getInstance()->backgroundMusicId, volume);
 	}
 }
 

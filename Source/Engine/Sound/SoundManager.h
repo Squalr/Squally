@@ -5,7 +5,7 @@ class SoundManager
 {
 public:
 	static void playMusicResource(std::string musicResource);
-	static void playSoundResource(std::string soundResource);
+	static void playSoundResource(std::string soundResource, float volumeMultiplier = 1.0f);
 
 	static void setMusicVolume(float volume);
 	static void setSoundVolume(float volume);

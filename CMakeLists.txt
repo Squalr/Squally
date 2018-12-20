@@ -77,6 +77,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Analytics/Analytics.cpp
 	Source/Engine/Analytics/TAnalytics.cpp
 	Source/Engine/Animations/SmartAnimationNode.cpp
+	Source/Engine/Animations/SmartAnimationSequenceNode.cpp
 	Source/Engine/Camera/CameraTrackingData.cpp
 	Source/Engine/Camera/GameCamera.cpp
 	Source/Engine/Config/ConfigManager.cpp
@@ -405,6 +406,8 @@ list(APPEND GAME_SOURCE
 	Source/Menus/Title/HackerMode.cpp
 	Source/Menus/Title/TitleScreen.cpp
 	Source/Menus/Title/TitleScreenBackground.cpp
+	Source/Menus/WorldMap/FX/Lightning.cpp
+	Source/Menus/WorldMap/FX/LightningSphere.cpp
 	Source/Menus/WorldMap/MapNode.cpp
 	Source/Menus/WorldMap/WorldMap.cpp
 	Source/Objects/Isometric/HexusArcade.cpp
@@ -816,6 +819,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Analytics/Analytics.h
 	Source/Engine/Analytics/TAnalytics.h
 	Source/Engine/Animations/SmartAnimationNode.h
+	Source/Engine/Animations/SmartAnimationSequenceNode.h
 	Source/Engine/Camera/CameraTrackingData.h
 	Source/Engine/Camera/GameCamera.h
 	Source/Engine/Config/ConfigManager.h
@@ -1147,6 +1151,8 @@ list(APPEND GAME_HEADER
 	Source/Menus/Title/HackerMode.h
 	Source/Menus/Title/TitleScreen.h
 	Source/Menus/Title/TitleScreenBackground.h
+	Source/Menus/WorldMap/FX/Lightning.h
+	Source/Menus/WorldMap/FX/LightningSphere.h
 	Source/Menus/WorldMap/MapNode.h
 	Source/Menus/WorldMap/WorldMap.h
 	Source/Objects/Isometric/HexusArcade.h

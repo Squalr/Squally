@@ -1,6 +1,20 @@
 #include "WorldMap.h"
 
+#include "cocos/base/CCEvent.h"
+
+#include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/MouseEvents.h"
+#include "Engine/Localization/Localization.h"
+#include "Engine/UI/HUD/Hud.h"
+#include "Engine/UI/Mouse.h"
+#include "Events/NavigationEvents.h"
+#include "Menus/WorldMap/FX/Lightning.h"
+#include "Menus/WorldMap/FX/LightningSphere.h"
+#include "Menus/WorldMap/MapNode.h"
+
 #include "Resources/MapResources.h"
+#include "Resources/UIResources.h"
+
 WorldMap* WorldMap::instance = nullptr;
 
 const std::string WorldMap::StringKeySelectLevel = "Menu_Story_Select_Level";
@@ -32,7 +46,6 @@ WorldMap::WorldMap()
 	this->mapNodes = std::vector<MapNode*>();
 	this->mouse = Mouse::create();
 	this->background = Sprite::create(UIResources::Menus_WorldMap_WorldMap);
-
 	this->hud = Hud::create();
 
 	this->forest = MapNode::create(
@@ -75,6 +88,19 @@ WorldMap::WorldMap()
 		MapResources::VoidStar_Mech
 	);
 
+	this->voidCrystal = Sprite::create(UIResources::Menus_WorldMap_VoidCrystal);
+	this->lightningSphere = LightningSphere::create();
+	this->lightning1 = Lightning::create();
+	this->lightning2 = Lightning::create();
+	this->lightning3 = Lightning::create();
+	this->lightning4 = Lightning::create();
+	this->lightning5 = Lightning::create();
+	this->lightning6 = Lightning::create();
+	this->lightning7 = Lightning::create();
+	this->lightning8 = Lightning::create();
+	this->lightning9 = Lightning::create();
+	this->lightning10 = Lightning::create();
+
 	this->background->setAnchorPoint(Vec2(0.0f, 0.0f));
 
 	this->hud->addChild(this->mouse);
@@ -87,6 +113,18 @@ WorldMap::WorldMap()
 	this->addChild(this->volcano);
 	this->addChild(this->crypts);
 	this->addChild(this->voidStar);
+	this->addChild(this->voidCrystal);
+	this->addChild(this->lightningSphere);
+	this->addChild(this->lightning1);
+	this->addChild(this->lightning2);
+	this->addChild(this->lightning3);
+	this->addChild(this->lightning4);
+	this->addChild(this->lightning5);
+	this->addChild(this->lightning6);
+	this->addChild(this->lightning7);
+	this->addChild(this->lightning8);
+	this->addChild(this->lightning9);
+	this->addChild(this->lightning10);
 	this->addChild(this->hud);
 }
 
@@ -121,14 +159,26 @@ void WorldMap::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->forest->setPosition(Vec2(visibleSize.width / 2.0f - 503.0f, visibleSize.height / 2.0f + 698.0f + 224.0f));
-	this->waterRuins->setPosition(Vec2(visibleSize.width / 2.0f - 552.0f, visibleSize.height / 2.0f + 255.0f + 224.0f));
-	this->caverns->setPosition(Vec2(visibleSize.width / 2.0f - 413.0f, visibleSize.height / 2.0f - 143.0f + 224.0f));
-	this->castle->setPosition(Vec2(visibleSize.width / 2.0f + 256.0f, visibleSize.height / 2.0f - 274.0f + 224.0f));
-	this->iceCaps->setPosition(Vec2(visibleSize.width / 2.0f + 1117.0f, visibleSize.height / 2.0f - 390.0f + 224.0f));
-	this->volcano->setPosition(Vec2(visibleSize.width / 2.0f + 1068.0f, visibleSize.height / 2.0f + 455.0f + 224.0f));
-	this->crypts->setPosition(Vec2(visibleSize.width / 2.0f + 340.0f, visibleSize.height / 2.0f + 645.0f + 224.0f));
-	this->voidStar->setPosition(Vec2(visibleSize.width / 2.0f + 760.0f, visibleSize.height / 2.0f + 44.0f + 224.0f));
+	this->forest->setPosition(Vec2(visibleSize.width / 2.0f - 503.0f, visibleSize.height / 2.0f + 922.0f));
+	this->waterRuins->setPosition(Vec2(visibleSize.width / 2.0f - 552.0f, visibleSize.height / 2.0f + 479.0f));
+	this->caverns->setPosition(Vec2(visibleSize.width / 2.0f - 413.0f, visibleSize.height / 2.0f + 81.0f));
+	this->castle->setPosition(Vec2(visibleSize.width / 2.0f + 256.0f, visibleSize.height / 2.0f - 50.0f));
+	this->iceCaps->setPosition(Vec2(visibleSize.width / 2.0f + 1117.0f, visibleSize.height / 2.0f - 166.0f));
+	this->volcano->setPosition(Vec2(visibleSize.width / 2.0f + 1068.0f, visibleSize.height / 2.0f + 679.0f));
+	this->crypts->setPosition(Vec2(visibleSize.width / 2.0f + 340.0f, visibleSize.height / 2.0f + 869.0f));
+	this->voidStar->setPosition(Vec2(visibleSize.width / 2.0f + 760.0f, visibleSize.height / 2.0f + 268.0f));
+	this->voidCrystal->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f, visibleSize.height / 2.0f + 584.0f));
+	this->lightningSphere->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f, visibleSize.height / 2.0f + 584.0f));
+	this->lightning1->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f - 128.0f, visibleSize.height / 2.0f + 584.0f + 32.0f));
+	this->lightning2->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f - 32.0f, visibleSize.height / 2.0f + 584.0f + 128.0f));
+	this->lightning3->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f + 128.0f, visibleSize.height / 2.0f + 584.0f + 32.0f));
+	this->lightning4->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f - 256.0f, visibleSize.height / 2.0f + 584.0f - 64.0f));
+	this->lightning5->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f + 128.0f, visibleSize.height / 2.0f + 584.0f + 72.0f));
+	this->lightning6->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f + 32.0f, visibleSize.height / 2.0f + 584.0f - 128.0f));
+	this->lightning7->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f + 128.0f, visibleSize.height / 2.0f + 584.0f - 128.0f));
+	this->lightning8->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f + 256.0f, visibleSize.height / 2.0f + 584.0f - 64.0f));
+	this->lightning9->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f + 320.0f, visibleSize.height / 2.0f + 584.0f - 256.0f));
+	this->lightning10->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f + 64, visibleSize.height / 2.0f + 584.0f - 196.0f));
 
 	this->initializedLocked();
 }

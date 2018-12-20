@@ -2,6 +2,8 @@
 
 #include "Resources/UIResources.h"
 
+#include "Engine/UI/Controls/MenuSprite.h"
+
 MapNode* MapNode::create(std::string mapName, std::string mapFile)
 {
 	MapNode* instance = new MapNode(mapName, mapFile);

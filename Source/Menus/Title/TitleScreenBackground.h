@@ -1,23 +1,23 @@
 #pragma once
-#include "cocos2d.h"
-#include "cocos-ext.h"
 
 #include "Engine/SmartNode.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/FloatingSprite.h"
-#include "Engine/UI/InfiniteParallaxNode.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Resources/EntityResources.h"
-#include "Resources/ParticleResources.h"
-#include "Resources/UIResources.h"
 
-using namespace cocos2d;
-using namespace cocos_experimental;
+class InfiniteParallaxNode;
+class FloatingSprite;
+class MenuSprite;
+class SmartAnimationNode;
+class SmartAnimationSequenceNode;
+
+namespace cocos2d
+{
+	class Sprite;
+	class ParticleSystem;
+}
 
 class TitleScreenBackground : public SmartNode
 {
 public:
-	static TitleScreenBackground * create();
+	static TitleScreenBackground* create();
 
 private:
 	TitleScreenBackground();
@@ -26,30 +26,23 @@ private:
 	void onEnter() override;
 	void initializeListeners() override;
 	void initializePositions() override;
-	void createSlimeAnimation();
 
-	Node* squallyNode;
-	AnimationNode* squally;
-	SpriterEngine::EntityInstance* squallyEntity;
-	Node* slimeNode;
-	Sprite* slime;
-	Animation* slimeAnimation;
-	Sprite* background;
+	SmartAnimationNode* squally;
+	SmartAnimationSequenceNode* slime;
+	cocos2d::Sprite* background;
 	FloatingSprite* backgroundVines;
 	FloatingSprite* backgroundTrees;
 	FloatingSprite* midgroundTrees;
-	Sprite* tree;
-	Animation* eyes1Anim;
-	Animation* eyes2Anim;
-	Sprite* eyes1;
-	Sprite* eyes2;
+	cocos2d::Sprite* tree;
+	SmartAnimationSequenceNode* eyes1;
+	SmartAnimationSequenceNode* eyes2;
 	FloatingSprite* foregroundVines;
 	InfiniteParallaxNode* fog;
 	InfiniteParallaxNode* foregroundFog;
 	FloatingSprite* foregroundGrassBottom;
 	FloatingSprite* foregroundGrassTop;
-	Sprite* foregroundLight;
+	cocos2d::Sprite* foregroundLight;
 
-	ParticleSystem* windParticles;
-	ParticleSystem* fireflyParticles;
+	cocos2d::ParticleSystem* windParticles;
+	cocos2d::ParticleSystem* fireflyParticles;
 };
