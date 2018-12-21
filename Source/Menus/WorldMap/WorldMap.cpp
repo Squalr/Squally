@@ -1,6 +1,7 @@
 #include "WorldMap.h"
 
 #include "cocos/base/CCEvent.h"
+#include "cocos/2d/CCActionEase.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/MouseEvents.h"
@@ -88,6 +89,7 @@ WorldMap::WorldMap()
 		MapResources::VoidStar_Mech
 	);
 
+	this->voidCrystalNode = Node::create();
 	this->voidCrystal = Sprite::create(UIResources::Menus_WorldMap_VoidCrystal);
 	this->lightningSphere = LightningSphere::create();
 	this->lightning1 = Lightning::create();
@@ -113,8 +115,9 @@ WorldMap::WorldMap()
 	this->addChild(this->volcano);
 	this->addChild(this->crypts);
 	this->addChild(this->voidStar);
-	this->addChild(this->voidCrystal);
-	this->addChild(this->lightningSphere);
+	this->addChild(this->voidCrystalNode);
+	this->voidCrystalNode->addChild(this->voidCrystal);
+	this->voidCrystalNode->addChild(this->lightningSphere);
 	this->addChild(this->lightning1);
 	this->addChild(this->lightning2);
 	this->addChild(this->lightning3);
@@ -141,7 +144,7 @@ void WorldMap::onEnter()
 
 	GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->background->getContentSize().width, this->background->getContentSize().height));
 
-	CameraTrackingData trackingData = CameraTrackingData(this->mouse, Vec2(480.0f, 270.0f));
+	CameraTrackingData trackingData = CameraTrackingData(this->mouse, Vec2(480.0f, 270.0f), CameraTrackingData::CameraScrollType::Ellipse);
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	// Because the mouse is a HUD object (and thus unaffected by the camera position), we need a custom function for getting the position to help with camera tracking
@@ -149,6 +152,14 @@ void WorldMap::onEnter()
 	{
 		return this->mouse->getPosition() + GameCamera::getInstance()->getCameraPosition() - visibleSize / 2.0f;
 	};
+
+	Vec2 startPosition = this->voidCrystalNode->getPosition();
+
+	this->voidCrystalNode->runAction(RepeatForever::create(Sequence::create(
+		EaseSineInOut::create(MoveTo::create(4.0f, startPosition + Vec2(0.0f, -32.0f))),
+		EaseSineInOut::create(MoveTo::create(4.0f, startPosition)),
+		nullptr
+	)));
 
 	GameCamera::getInstance()->setTarget(trackingData);
 }
@@ -167,8 +178,7 @@ void WorldMap::initializePositions()
 	this->volcano->setPosition(Vec2(visibleSize.width / 2.0f + 1068.0f, visibleSize.height / 2.0f + 679.0f));
 	this->crypts->setPosition(Vec2(visibleSize.width / 2.0f + 340.0f, visibleSize.height / 2.0f + 869.0f));
 	this->voidStar->setPosition(Vec2(visibleSize.width / 2.0f + 760.0f, visibleSize.height / 2.0f + 268.0f));
-	this->voidCrystal->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f, visibleSize.height / 2.0f + 584.0f));
-	this->lightningSphere->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f, visibleSize.height / 2.0f + 584.0f));
+	this->voidCrystalNode->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f, visibleSize.height / 2.0f + 584.0f));
 	this->lightning1->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f - 128.0f, visibleSize.height / 2.0f + 584.0f + 32.0f));
 	this->lightning2->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f - 32.0f, visibleSize.height / 2.0f + 584.0f + 128.0f));
 	this->lightning3->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f + 128.0f, visibleSize.height / 2.0f + 584.0f + 32.0f));
