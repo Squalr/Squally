@@ -9,7 +9,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "",
+      "cmakeCommandArgs": "-DBUILD_LUA_LIBS=OFF -DBUILD_JS_LIBS=OFF -DBUILD_EDITOR_SPINE=OFF -DBUILD_EDITOR_COCOSTUDIO=OFF -DBUILD_EDITOR_COCOSBUILDER=OFF",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     },
@@ -22,7 +22,7 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "",
+      "cmakeCommandArgs": "-DBUILD_LUA_LIBS=OFF -DBUILD_JS_LIBS=OFF -DBUILD_EDITOR_SPINE=OFF -DBUILD_EDITOR_COCOSTUDIO=OFF -DBUILD_EDITOR_COCOSBUILDER=OFF",
       "buildCommandArgs": "-v",
       "ctestCommandArgs": ""
     }
