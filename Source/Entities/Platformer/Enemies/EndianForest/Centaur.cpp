@@ -21,7 +21,7 @@ Centaur::Centaur(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProper
 	EntityResources::Enemies_EndianForest_Centaur_Animations,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(296.0f, 256.0f),
-	1.0f,
+	0.9f,
 	cocos2d::Vec2(0.0f, 0.0f))
 {
 }

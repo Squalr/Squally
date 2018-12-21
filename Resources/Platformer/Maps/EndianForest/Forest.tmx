@@ -187,24 +187,15 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="180" name="appolo" type="entity" x="4038.06" y="2422.73" width="200" height="288"/>
   <object id="438" name="ogre" type="entity" x="3721.94" y="2542.67" width="78.7879" height="88">
    <properties>
     <property name="battle_map" value="EndianForest/Battlegrounds"/>
    </properties>
   </object>
-  <object id="439" name="chiron" type="entity" x="4360" y="2368" width="200" height="288"/>
-  <object id="440" name="cooper" type="entity" x="4740" y="2336" width="200" height="288"/>
-  <object id="441" name="dudly" type="entity" x="5104" y="2300" width="200" height="288"/>
-  <object id="442" name="gramps" type="entity" x="5472" y="2292" width="200" height="288"/>
-  <object id="443" name="lycan" type="entity" x="5824" y="2304" width="200" height="288"/>
+  <object id="439" name="chiron" type="entity" x="4214.55" y="2419.52" width="200" height="288"/>
+  <object id="443" name="lycan" type="entity" x="2433.33" y="2410.18" width="200" height="288"/>
   <object id="444" name="minos" type="entity" x="3376" y="2448" width="200" height="288"/>
-  <object id="445" name="polyphemus" type="entity" x="2892" y="1188" width="200" height="288"/>
-  <object id="446" name="princess-matu" type="entity" x="2512" y="1212" width="200" height="288"/>
-  <object id="447" name="robin" type="entity" x="2024" y="2468" width="200" height="288"/>
-  <object id="448" name="rupert" type="entity" x="2356" y="2372" width="200" height="288"/>
-  <object id="449" name="rusty" type="entity" x="1480" y="2272" width="200" height="288"/>
-  <object id="450" name="toben" type="entity" x="2144" y="1172" width="200" height="288"/>
+  <object id="445" name="polyphemus" type="entity" x="2897.94" y="2375.64" width="200" height="288"/>
  </objectgroup>
  <objectgroup name="player_layer">
   <properties>
@@ -236,7 +227,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="320" y="2356" width="270" height="748"/>
-  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="2302" y="2336" width="270" height="748"/>
+  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="2298" y="2336" width="270" height="748"/>
   <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="978" y="2232" width="242" height="738"/>
   <object id="408" name="Forest/Foreground/ForegroundTree2" type="decor" x="3490" y="2448" width="270" height="748"/>
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1326" y="2380" width="242" height="738"/>

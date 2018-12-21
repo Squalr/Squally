@@ -21,7 +21,7 @@ Executioner::Executioner(cocos2d::ValueMap* initProperties) : PlatformerEnemy(in
 	EntityResources::Enemies_CastleValgrind_Executioner_Animations,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(112.0f, 820.0f),
-	1.0f,
+	0.9f,
 	cocos2d::Vec2(0.0f, -410.0f))
 {
 }

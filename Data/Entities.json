@@ -15,7 +15,7 @@
   "Gargoyle": {
     "Type": "Enemy",
     "Environment": "LexiconCrypts",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "256.0f",
       "Height": "256.0f"
@@ -28,7 +28,7 @@
   "KingZul": {
     "Type": "Enemy",
     "Environment": "LexiconCrypts",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "196.0f",
       "Height": "320.0f"
@@ -41,7 +41,7 @@
   "ReanimatedFighter": {
     "Type": "Enemy",
     "Environment": "LexiconCrypts",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "256.0f",
       "Height": "248.0f"
@@ -171,7 +171,7 @@
   "Executioner": {
     "Type": "Enemy",
     "Environment": "CastleValgrind",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "820.0f"
@@ -184,7 +184,7 @@
   "Guard": {
     "Type": "Enemy",
     "Environment": "CastleValgrind",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -249,7 +249,7 @@
   "VampireLord": {
     "Type": "Enemy",
     "Environment": "CastleValgrind",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "240.0f",
       "Height": "312.0f"
@@ -340,7 +340,7 @@
   "EarthGolem": {
     "Type": "Enemy",
     "Environment": "SeaSharpCaverns",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "256.0f",
       "Height": "224.0f"
@@ -379,7 +379,7 @@
   "Krampus": {
     "Type": "Enemy",
     "Environment": "SeaSharpCaverns",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "396.0f",
       "Height": "412.0f"
@@ -457,7 +457,7 @@
   "TikiGolem": {
     "Type": "Enemy",
     "Environment": "SeaSharpCaverns",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "284.0f",
       "Height": "256.0f"
@@ -470,7 +470,7 @@
   "Cyclops": {
     "Type": "Enemy",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "296.0f",
       "Height": "256.0f"
@@ -483,7 +483,7 @@
   "Ent": {
     "Type": "Enemy",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "512.0f",
       "Height": "960.0f"
@@ -535,7 +535,7 @@
   "KingGrogg": {
     "Type": "Enemy",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "412.0f",
       "Height": "412.0f"
@@ -561,7 +561,7 @@
   "OrcBomber": {
     "Type": "Enemy",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "256.0f",
       "Height": "218.0f"
@@ -574,7 +574,7 @@
   "OrcGrunt": {
     "Type": "Enemy",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "256.0f",
       "Height": "218.0f"
@@ -587,7 +587,7 @@
   "OrcSwordsman": {
     "Type": "Enemy",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "256.0f",
       "Height": "228.0f"
@@ -600,7 +600,7 @@
   "OrcWarrior": {
     "Type": "Enemy",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "256.0f",
       "Height": "228.0f"
@@ -613,7 +613,7 @@
   "Troll": {
     "Type": "Enemy",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "256.0f",
       "Height": "248.0f"
@@ -626,7 +626,7 @@
   "Gorilla": {
     "Type": "Enemy",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "278.0f",
       "Height": "288.0f"
@@ -639,7 +639,7 @@
   "Minotaur": {
     "Type": "Enemy",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "278.0f",
       "Height": "288.0f"
@@ -652,7 +652,7 @@
   "Rhinoman": {
     "Type": "Enemy",
     "Environment": "SeaSharpCaverns",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "592.0f",
       "Height": "592.0f"
@@ -665,7 +665,7 @@
   "SkeletalPirate": {
     "Type": "Enemy",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "284.0f",
       "Height": "256.0f"
@@ -678,7 +678,7 @@
   "Barbarian": {
     "Type": "Enemy",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "278.0f",
       "Height": "288.0f"
@@ -691,7 +691,7 @@
   "Centaur": {
     "Type": "Enemy",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "296.0f",
       "Height": "256.0f"
@@ -704,7 +704,7 @@
   "Exterminator": {
     "Type": "Enemy",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "320.0f",
       "Height": "278.0f"
@@ -769,7 +769,7 @@
   "MechGuard": {
     "Type": "Enemy",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "596.0f"
@@ -795,7 +795,7 @@
   "Thug": {
     "Type": "Enemy",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "256.0f",
       "Height": "248.0f"
@@ -808,7 +808,7 @@
   "Viking": {
     "Type": "Enemy",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "284.0f",
       "Height": "256.0f"
@@ -860,7 +860,7 @@
   "AnubisWarrior": {
     "Type": "Enemy",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "256.0f",
       "Height": "292.0f"
@@ -873,7 +873,7 @@
   "LionMan": {
     "Type": "Enemy",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "256.0f",
       "Height": "326.0f"
@@ -951,7 +951,7 @@
   "Osiris": {
     "Type": "Enemy",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "324.0f",
       "Height": "316.0f"
@@ -964,7 +964,7 @@
   "TigerMan": {
     "Type": "Enemy",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "256.0f",
       "Height": "308.0f"
@@ -1289,7 +1289,7 @@
   "Garin": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1302,7 +1302,7 @@
   "KingRedsong": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "160.0f",
       "Height": "192.0f"
@@ -1315,7 +1315,7 @@
   "KingRedsongSlime": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1328,7 +1328,7 @@
   "Leroy": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1341,7 +1341,7 @@
   "Mabel": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1354,7 +1354,7 @@
   "Merlin": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1367,7 +1367,7 @@
   "PrincessOpal": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1380,7 +1380,7 @@
   "Raven": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1393,7 +1393,7 @@
   "Rogas": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1406,7 +1406,7 @@
   "Thurstan": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "124.0f",
       "Height": "160.0f"
@@ -1419,7 +1419,7 @@
   "Tyracius": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1432,7 +1432,7 @@
   "Alder": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1445,7 +1445,7 @@
   "Brock": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1458,7 +1458,7 @@
   "Cypress": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1471,7 +1471,7 @@
   "Finch": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1484,7 +1484,7 @@
   "Fraya": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1497,7 +1497,7 @@
   "Jasper": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1510,7 +1510,7 @@
   "Mildred": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1523,7 +1523,7 @@
   "Olive": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1536,7 +1536,7 @@
   "PrincessDawn": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1549,7 +1549,7 @@
   "Sarude": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1562,7 +1562,7 @@
   "Shen": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1575,7 +1575,7 @@
   "Appolo": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1588,10 +1588,10 @@
   "Chiron": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
-      "Width": "112.0f",
-      "Height": "160.0f"
+      "Width": "160.0f",
+      "Height": "224.0f"
     },
     "Offset": {
       "X": "0.0f",
@@ -1601,7 +1601,7 @@
   "Cooper": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1614,7 +1614,7 @@
   "Dudly": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1627,7 +1627,7 @@
   "Lycan": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": ".9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1640,7 +1640,7 @@
   "Polyphemus": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1653,7 +1653,7 @@
   "PrincessMittens": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1666,7 +1666,7 @@
   "Robin": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1679,7 +1679,7 @@
   "Rupert": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1692,7 +1692,7 @@
   "Rusty": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1705,7 +1705,7 @@
   "Toben": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1718,7 +1718,7 @@
   "Blackbeard": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1731,7 +1731,7 @@
   "Bodom": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1744,7 +1744,7 @@
   "Drak": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1757,7 +1757,7 @@
   "Elriel": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1770,7 +1770,7 @@
   "Gramps": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.7f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1783,7 +1783,7 @@
   "Hades": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1796,7 +1796,7 @@
   "Minos": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1809,7 +1809,7 @@
   "PrincessMatu": {
     "Type": "Npc",
     "Environment": "EndianForest",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1822,7 +1822,7 @@
   "Raka": {
     "Type": "Npc",
     "Environment": "SeaSharpCaverns",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1835,7 +1835,7 @@
   "Thor": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1848,7 +1848,7 @@
   "Atreus": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1861,7 +1861,7 @@
   "Illia": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1874,7 +1874,7 @@
   "Leon": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1887,7 +1887,7 @@
   "Mara": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1900,7 +1900,7 @@
   "Marcel": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1913,7 +1913,7 @@
   "Piper": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1926,7 +1926,7 @@
   "QueenElise": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1939,7 +1939,7 @@
   "Radon": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1952,7 +1952,7 @@
   "Xenon": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1965,7 +1965,7 @@
   "Ysara": {
     "Type": "Npc",
     "Environment": "VoidStar",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1978,7 +1978,7 @@
   "Amelia": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -1991,7 +1991,7 @@
   "Azmus": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2004,7 +2004,7 @@
   "Garrick": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2017,7 +2017,7 @@
   "Johann": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2030,7 +2030,7 @@
   "Necron": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2043,7 +2043,7 @@
   "PrincessNebea": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2056,7 +2056,7 @@
   "Roger": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2069,7 +2069,7 @@
   "Thion": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2082,7 +2082,7 @@
   "Ursula": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2095,7 +2095,7 @@
   "Viper": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2108,7 +2108,7 @@
   "Zana": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2121,7 +2121,7 @@
   "Ajax": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2134,7 +2134,7 @@
   "Aphrodite": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2147,7 +2147,7 @@
   "Ares": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2160,7 +2160,7 @@
   "Athena": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2173,7 +2173,7 @@
   "Cleopatra": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2186,7 +2186,7 @@
   "Geryon": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2199,7 +2199,7 @@
   "Griffin": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2212,7 +2212,7 @@
   "Hera": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2225,7 +2225,7 @@
   "Horus": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2238,7 +2238,7 @@
   "Poseidon": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2251,7 +2251,7 @@
   "Zeus": {
     "Type": "Npc",
     "Environment": "UnderflowRuins",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2264,7 +2264,7 @@
   "Aspen": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2277,7 +2277,7 @@
   "Aster": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2290,7 +2290,7 @@
   "Cookie": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2303,7 +2303,7 @@
   "Irmik": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2316,7 +2316,7 @@
   "Jingles": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2329,7 +2329,7 @@
   "Juniper": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2342,7 +2342,7 @@
   "Kringle": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2355,7 +2355,7 @@
   "Nessie": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2368,7 +2368,7 @@
   "PrincessPepper": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2381,7 +2381,7 @@
   "Theldar": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2394,7 +2394,7 @@
   "Tinsel": {
     "Type": "Npc",
     "Environment": "LambdaPeaks",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2407,7 +2407,7 @@
   "Ash": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2420,7 +2420,7 @@
   "Brine": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2433,7 +2433,7 @@
   "Celeste": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2446,7 +2446,7 @@
   "Cindra": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2459,7 +2459,7 @@
   "Igneus": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2472,7 +2472,7 @@
   "Lucifer": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2485,7 +2485,7 @@
   "Magnus": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2498,7 +2498,7 @@
   "Pan": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2511,7 +2511,7 @@
   "Ragnis": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2524,7 +2524,7 @@
   "Scaldor": {
     "Type": "Npc",
     "Environment": "DaemonsHallow",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2537,7 +2537,7 @@
   "Zelina": {
     "Type": "Npc",
     "Environment": "LexiconCrypts",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"
@@ -2550,7 +2550,7 @@
   "Elric": {
     "Type": "Npc",
     "Environment": "CastleValgrind",
-    "Scale": "1.0f",
+    "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
       "Height": "160.0f"

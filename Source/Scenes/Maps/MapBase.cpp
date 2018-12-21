@@ -52,10 +52,10 @@ MapBase::MapBase()
 	this->addChild(this->hackerModeBackground);
 	this->addChild(this->hackerModeRain);
 	this->addChild(this->hackerModeHud);
-	this->addChild(this->menuBackDrop);
 	this->addChild(this->mapNode);
 	this->addChild(this->hud);
 	this->addChild(this->developerHud);
+	this->addChild(this->menuBackDrop);
 	this->addChild(this->pauseMenu);
 	this->addChild(this->optionsMenu);
 	this->addChild(this->confirmationMenu);

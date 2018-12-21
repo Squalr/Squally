@@ -21,7 +21,7 @@ EarthGolem::EarthGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(init
 	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Animations,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 224.0f),
-	1.0f,
+	0.9f,
 	cocos2d::Vec2(0.0f, 0.0f))
 {
 }

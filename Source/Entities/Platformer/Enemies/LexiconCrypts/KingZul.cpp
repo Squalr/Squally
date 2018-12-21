@@ -21,7 +21,7 @@ KingZul::KingZul(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProper
 	EntityResources::Enemies_LexiconCrypts_KingZul_Animations,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(196.0f, 320.0f),
-	1.0f,
+	0.9f,
 	cocos2d::Vec2(0.0f, 0.0f))
 {
 }

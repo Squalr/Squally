@@ -21,7 +21,7 @@ Gargoyle::Gargoyle(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProp
 	EntityResources::Enemies_LexiconCrypts_Gargoyle_Animations,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 256.0f),
-	1.0f,
+	0.9f,
 	cocos2d::Vec2(-32.0f, -24.0f))
 {
 }
