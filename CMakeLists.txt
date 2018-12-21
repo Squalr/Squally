@@ -421,8 +421,7 @@ list(APPEND GAME_SOURCE
 	Source/Objects/Platformer/PlatformerObjectDeserializer.cpp
 	Source/Objects/Platformer/Plushies/Plushie.cpp
 	Source/Objects/Platformer/Plushies/PlushieMonkey.cpp
-	Source/Objects/Platformer/WarpGate.cpp
-	Source/Objects/Platformer/WarpGateExactScanTutorial.cpp
+	Source/Objects/Platformer/Traps/PendulumBlade.cpp
 	Source/Objects/Platformer/Wind.cpp
 	Source/Resources/BackgroundResources.cpp
 	Source/Resources/CutsceneResources.cpp
@@ -1168,8 +1167,7 @@ list(APPEND GAME_HEADER
 	Source/Objects/Platformer/Plushies/Plushie.h
 	Source/Objects/Platformer/Plushies/PlushieMonkey.h
 	Source/Objects/Platformer/Plushies/Plushies.h
-	Source/Objects/Platformer/WarpGate.h
-	Source/Objects/Platformer/WarpGateExactScanTutorial.h
+	Source/Objects/Platformer/Traps/PendulumBlade.h
 	Source/Objects/Platformer/Wind.h
 	Source/Resources/BackgroundResources.h
 	Source/Resources/CutsceneResources.h

@@ -1,10 +1,18 @@
 #include "Wind.h"
 
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/ccTypes.h"
+#include "cocos/base/CCValue.h"
+#include "cocos/2d/CCParticleSystemQuad.h"
+
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Utils/GameUtils.h"
+
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
+
+using namespace cocos2d;
 
 const std::string Wind::MapKeyWind = "wind";
 

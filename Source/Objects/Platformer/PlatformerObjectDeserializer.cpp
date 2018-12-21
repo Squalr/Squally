@@ -45,13 +45,9 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = CameraFocus::create(&properties);
 		}
-		else if (name == WarpGate::MapKeyWarpGate)
+		else if (name == PendulumBlade::MapKeyPendulumBlade)
 		{
-			newObject = WarpGate::create(&properties);
-		}
-		else if (name == WarpGateExactScanTutorial::MapKeyWarpGateExactScanTutorial)
-		{
-			newObject = WarpGateExactScanTutorial::create(&properties);
+			newObject = PendulumBlade::create(&properties);
 		}
 		else if (name == PlushieMonkey::MapKeyPlushieMonkey)
 		{
