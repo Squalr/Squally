@@ -12,7 +12,6 @@ class Hud;
 namespace cocos2d
 {
 	class Node;
-	class Node;
 }
 
 class CameraTrackingData
@@ -21,10 +20,17 @@ public:
 	static const cocos2d::Vec2 DefaultCameraOffset;
 	static const cocos2d::Vec2 DefaultCameraFollowSpeed;
 
+	enum class CameraScrollType
+	{
+		Rectangle,
+		Ellipse
+	};
+
 	CameraTrackingData();
 	CameraTrackingData(
-		cocos2d::Node* target, 
+		cocos2d::Node* target,
 		cocos2d::Vec2 scrollOffset = CameraTrackingData::DefaultCameraOffset,
+		CameraScrollType scrollType = CameraScrollType::Rectangle,
 		cocos2d::Vec2 followSpeed = CameraTrackingData::DefaultCameraFollowSpeed,
 		cocos2d::Vec2 trackOffset = cocos2d::Vec2::ZERO, 
 		std::function<cocos2d::Vec2()> customPositionFunction = nullptr
@@ -33,6 +39,7 @@ public:
 	cocos2d::Node* target;
 	cocos2d::Vec2 followSpeed;
 	cocos2d::Vec2 scrollOffset;
+	CameraScrollType scrollType;
 	cocos2d::Vec2 trackOffset;
 	std::function<cocos2d::Vec2()> customPositionFunction;
 private:

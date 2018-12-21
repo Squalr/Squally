@@ -9,6 +9,40 @@
 
 using namespace cocos2d;
 
+Vec2 AlgoUtils::pointOnEllipse(Vec2 center, float rx, float ry, Vec2 closestPoint)
+{
+	int maxIterations = 10;
+	float eps = 0.1f / std::max(rx, ry);
+
+	Vec2 p1 = Vec2(closestPoint.x - center.x, closestPoint.y - center.y);
+
+	// Intersection of straight line from origin to p with ellipse
+	// as the first approximation:
+	float phi = std::atan2(rx * p1.y, ry * p1.x);
+
+	// Newton iteration to find solution of
+	// f(theta) := (a^2 - b^2) cos(phi) sin(phi) - x a sin(phi) + y b cos(phi) = 0:
+	for (int i = 0; i < maxIterations; i++)
+	{
+		// function value and derivative at phi:
+		float c = std::cos(phi);
+		float s = std::sin(phi);
+		float f = (rx * rx - ry * ry) * c * s - p1.x * rx * s + p1.y * ry * c;
+		float f1 = (rx * rx - ry * ry) * (c * c - s * s) - p1.x * rx * c - p1.y * ry * s;
+
+		float delta = f / f1;
+
+		phi = phi - delta;
+		
+		if (std::abs(delta) < eps)
+		{
+			break;
+		}
+	}
+
+	return Vec2(center.x + rx * std::cos(phi), center.y + ry * std::sin(phi));
+}
+
 std::vector<int> AlgoUtils::subsetSum(const std::vector<int>& numbers, int sum, int requiredLength)
 {
 	static std::vector<int> result = std::vector<int>();

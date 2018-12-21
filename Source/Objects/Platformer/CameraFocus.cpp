@@ -25,6 +25,6 @@ void CameraFocus::onEnter()
 {
 	SerializableObject::onEnter();
 
-	CameraTrackingData trackingData = CameraTrackingData(this);
+	CameraTrackingData trackingData = CameraTrackingData(this, Vec2(0.0f, 0.0f), CameraTrackingData::CameraScrollType::Rectangle, Vec2::ZERO);
 	GameCamera::getInstance()->setTarget(trackingData);
 }

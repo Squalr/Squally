@@ -42,6 +42,7 @@ private:
 	MapNode* voidStar;
 
 	cocos2d::Sprite* background;
+	cocos2d::Node* voidCrystalNode;
 	cocos2d::Sprite* voidCrystal;
 	LightningSphere* lightningSphere;
 	Lightning* lightning1;

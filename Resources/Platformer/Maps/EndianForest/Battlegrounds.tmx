@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" nextobjectid="456">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" nextobjectid="464">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -21,6 +21,7 @@
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="460" name="Generic/Background/Moon" type="decor" x="4376.7" y="508.939" width="812" height="812"/>
  </objectgroup>
  <objectgroup name="decor -3584">
   <properties>
@@ -33,6 +34,8 @@
    <property name="depth" type="float" value="-3072"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="461" name="Generic/Background/Cloud_01" type="decor" x="4858.82" y="369.364" width="1380" height="1000"/>
+  <object id="462" name="Generic/Background/Cloud_03" type="decor" x="3841" y="813.606" width="780" height="274"/>
  </objectgroup>
  <objectgroup name="decor -2560">
   <properties>
@@ -178,6 +181,12 @@
   <object id="452" name="spawn" type="object" x="5544.61" y="2012" width="78.7879" height="88"/>
   <object id="453" name="spawn" type="object" x="5896.61" y="2236" width="78.7879" height="88"/>
   <object id="454" name="spawn" type="object" x="5564.61" y="2484" width="78.7879" height="88"/>
+  <object id="456" name="ogre" type="entity" x="5478.79" y="2065.09" width="78.7879" height="88">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="457" name="squally" type="entity" x="4396.97" y="2413.58" width="78.7879" height="88"/>
  </objectgroup>
  <objectgroup name="fireflies">
   <properties>
@@ -201,14 +210,15 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="3380" y="2544" width="270" height="748"/>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="5502.97" y="2397.64" width="270" height="748"/>
  </objectgroup>
  <objectgroup name="decor 512">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="3196" y="2416" width="242" height="738"/>
-  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="3722" y="2544" width="242" height="738"/>
+  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="4297.7" y="2352.61" width="242" height="738"/>
+  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="5658.97" y="2375.64" width="242" height="738"/>
+  <object id="463" name="Forest/Foreground/Grass1" type="decor" x="4187.61" y="2487.61" width="1920" height="306"/>
  </objectgroup>
 </map>

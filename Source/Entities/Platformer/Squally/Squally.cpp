@@ -14,7 +14,7 @@ Squally* Squally::deserialize(ValueMap* initProperties)
 
 	Squally::squallyInstance = instance;
 	instance->autorelease();
-
+	
 	return instance;
 }
 
@@ -26,16 +26,16 @@ Squally* Squally::getInstance()
 Squally::Squally(ValueMap* initProperties) : PlatformerEntity::PlatformerEntity(initProperties,
 	EntityResources::Squally_Animations,
 	PlatformerCollisionType::Force,
-	Size(128.0f, 320.0f), 
+	Size(128.0f, 224.0f), 
 	Squally::squallyScale,
-	Vec2(0.0f, 96.0f))
+	Vec2(0.0f, 48.0f))
 {
 	this->actualJumpLaunchVelocity = 1280.0f;
 	this->actualGravityAcceleration = 400.0f;
 	this->actualMaxFallSpeed = 600.0f;
 	this->moveAcceleration = 14000.0f;
 
-	this->squallyCollision = CollisionObject::create(PhysicsBody::createCircle(72.0f, PHYSICSBODY_MATERIAL_DEFAULT, Vec2(0.0f, 112.0f)), (int)PlatformerCollisionType::Player, false, false);
+	this->squallyCollision = CollisionObject::create(PhysicsBody::createCircle(72.0f, PHYSICSBODY_MATERIAL_DEFAULT, Vec2(0.0f, 72.0f)), (int)PlatformerCollisionType::Player, false, false);
 
 	this->registerHackables();
 
