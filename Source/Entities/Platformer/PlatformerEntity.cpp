@@ -1,6 +1,7 @@
 #include "PlatformerEntity.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
 const float PlatformerEntity::groundCollisionDetectorPadding = 8.0f;
@@ -30,8 +31,6 @@ PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlRes
 	this->actualMaxFallSpeed = 1280.0f;
 	this->moveAcceleration = 14000.0f;
 
-	this->isOnGround = false;
-
 	// TODO: Configurable/randomizable start direction (if any)
 	this->movement = Vec2(0.0f, 0.0f);
 
@@ -46,8 +45,19 @@ PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlRes
 	{
 		(*this->properties)[PlatformerEntity::MapKeyWidth] = size.width * scale;
 		(*this->properties)[PlatformerEntity::MapKeyHeight] = size.height * scale;
+
+		if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipX))
+		{
+			this->animationNode->setFlippedX((*this->properties)[PlatformerEntity::MapKeyWidth].asBool());
+		}
+
+		if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipY))
+		{
+			this->animationNode->setFlippedY((*this->properties)[PlatformerEntity::MapKeyWidth].asBool());
+		}
 	}
 
+	this->groundCollisions = std::set<CollisionObject*>();
 	this->groundCollisionDetector = CollisionObject::create(
 		PhysicsBody::createBox(
 			Size(std::max((size * scale).width - PlatformerEntity::groundCollisionDetectorPadding * 2.0f, 8.0f), 8.0f),
@@ -94,7 +104,7 @@ void PlatformerEntity::update(float dt)
 
 	velocity.x += this->movement.x * PlatformerEntity::moveAcceleration * dt;
 
-	if (this->isOnGround)
+	if (this->isOnGround())
 	{
 		velocity.x *= PlatformerEntity::groundDragFactor;
 	}
@@ -104,15 +114,13 @@ void PlatformerEntity::update(float dt)
 	}
 
 	// Gravity
-	if (this->isOnGround)
+	if (this->movement.y > 0.0f && this->isOnGround())
 	{
-		if (this->movement.y > 0.0f)
-		{
-			velocity.y = this->movement.y * this->actualJumpLaunchVelocity;
-			this->isOnGround = false;
+		this->groundCollisions.clear();
 
-			this->animationNode->playAnimation("Jump");
-		}
+		velocity.y = this->movement.y * this->actualJumpLaunchVelocity;
+
+		this->animationNode->playAnimation("Jump");
 	}
 
 	// Prevent fast speeds
@@ -136,6 +144,11 @@ void PlatformerEntity::update(float dt)
 	}
 }
 
+bool PlatformerEntity::isOnGround()
+{
+	return (this->groundCollisions.size() > 0);
+}
+
 void PlatformerEntity::initializeCollisionEvents()
 {
 	this->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
@@ -145,14 +158,17 @@ void PlatformerEntity::initializeCollisionEvents()
 
 	this->groundCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
 	{
-		this->isOnGround = true;
+		this->groundCollisions.insert(collisionData.other);
 
 		return CollisionResult::DoNothing;
 	});
 
 	this->groundCollisionDetector->whenStopsCollidingWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
 	{
-		this->isOnGround = false;
+		if (this->groundCollisions.find(collisionData.other) != this->groundCollisions.end())
+		{
+			this->groundCollisions.erase(collisionData.other);
+		}
 
 		return CollisionResult::DoNothing;
 	});

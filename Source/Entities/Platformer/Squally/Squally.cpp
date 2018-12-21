@@ -4,7 +4,7 @@
 
 Squally* Squally::squallyInstance = nullptr;
 int Squally::health;
-const float Squally::squallyScale = 1.0f;
+const float Squally::squallyScale = 0.85f;
 
 const std::string Squally::MapKeySqually = "squally";
 

@@ -144,7 +144,7 @@ void WorldMap::onEnter()
 
 	GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->background->getContentSize().width, this->background->getContentSize().height));
 
-	CameraTrackingData trackingData = CameraTrackingData(this->mouse, Vec2(480.0f, 270.0f), CameraTrackingData::CameraScrollType::Ellipse);
+	CameraTrackingData trackingData = CameraTrackingData(this->mouse, Vec2(416.0f, 234.0f), CameraTrackingData::CameraScrollType::Ellipse);
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	// Because the mouse is a HUD object (and thus unaffected by the camera position), we need a custom function for getting the position to help with camera tracking
