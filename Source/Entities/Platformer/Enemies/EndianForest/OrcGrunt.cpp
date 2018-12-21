@@ -21,7 +21,7 @@ OrcGrunt::OrcGrunt(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProp
 	EntityResources::Enemies_EndianForest_OrcGrunt_Animations,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 218.0f),
-	1.0f,
+	0.9f,
 	cocos2d::Vec2(0.0f, 0.0f))
 {
 }

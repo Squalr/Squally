@@ -21,7 +21,7 @@ QueenElise::QueenElise(cocos2d::ValueMap* initProperties) : NpcBase(initProperti
 	EntityResources::Npcs_VoidStar_QueenElise_Animations,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
-	1.0f,
+	0.9f,
 	cocos2d::Vec2(0.0f, 0.0f))
 {
 }

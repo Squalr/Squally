@@ -21,7 +21,7 @@ KingRedsong::KingRedsong(cocos2d::ValueMap* initProperties) : NpcBase(initProper
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Animations,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(160.0f, 192.0f),
-	1.0f,
+	0.9f,
 	cocos2d::Vec2(0.0f, 0.0f))
 {
 }

@@ -16,7 +16,6 @@ namespace BackgroundResources
 	extern const std::string MatrixRain_Point;
 	extern const std::string MatrixRain_WhiteFontsAlpha;
 	extern const std::string Mist;
-	extern const std::string Moon;
 	extern const std::string Ocean;
 	extern const std::string PinkFade;
 	extern const std::string SkyBlue;

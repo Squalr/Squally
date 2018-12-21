@@ -1075,4 +1075,5 @@ namespace UIResources
 	extern const std::string Menus_WorldMap_MarkerSwords;
 	extern const std::string Menus_WorldMap_VoidCrystal;
 	extern const std::string Menus_WorldMap_WorldMap;
+	extern const std::string Platformer_ChatBubble;
 };

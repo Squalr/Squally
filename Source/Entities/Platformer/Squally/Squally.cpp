@@ -35,7 +35,7 @@ Squally::Squally(ValueMap* initProperties) : PlatformerEntity::PlatformerEntity(
 	this->actualMaxFallSpeed = 600.0f;
 	this->moveAcceleration = 14000.0f;
 
-	this->squallyCollision = CollisionObject::create(PhysicsBody::createCircle(72.0f, PHYSICSBODY_MATERIAL_DEFAULT, Vec2(0.0f, 72.0f)), (int)PlatformerCollisionType::Player, false, false);
+	this->squallyCollision = CollisionObject::create(PhysicsBody::createCircle(72.0f * Squally::squallyScale, PHYSICSBODY_MATERIAL_DEFAULT, Vec2(0.0f, 72.0f * Squally::squallyScale)), (int)PlatformerCollisionType::Player, false, false);
 
 	this->registerHackables();
 

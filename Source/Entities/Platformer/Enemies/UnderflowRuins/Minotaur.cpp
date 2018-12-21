@@ -21,7 +21,7 @@ Minotaur::Minotaur(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProp
 	EntityResources::Enemies_UnderflowRuins_Minotaur_Animations,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(278.0f, 288.0f),
-	1.0f,
+	0.9f,
 	cocos2d::Vec2(0.0f, 0.0f))
 {
 }

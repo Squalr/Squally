@@ -1074,3 +1074,4 @@ const std::string UIResources::Menus_WorldMap_MarkerCurrentSelected = "UI/Menus/
 const std::string UIResources::Menus_WorldMap_MarkerSwords = "UI/Menus/WorldMap/MarkerSwords.png";
 const std::string UIResources::Menus_WorldMap_VoidCrystal = "UI/Menus/WorldMap/VoidCrystal.png";
 const std::string UIResources::Menus_WorldMap_WorldMap = "UI/Menus/WorldMap/WorldMap.png";
+const std::string UIResources::Platformer_ChatBubble = "UI/Platformer/ChatBubble.png";

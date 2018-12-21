@@ -21,7 +21,7 @@ SkeletalPirate::SkeletalPirate(cocos2d::ValueMap* initProperties) : PlatformerEn
 	EntityResources::Enemies_VoidStar_SkeletalPirate_Animations,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(284.0f, 256.0f),
-	1.0f,
+	0.9f,
 	cocos2d::Vec2(0.0f, -112.0f))
 {
 }

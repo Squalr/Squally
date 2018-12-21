@@ -21,7 +21,7 @@ VampireLord::VampireLord(cocos2d::ValueMap* initProperties) : PlatformerEnemy(in
 	EntityResources::Enemies_CastleValgrind_VampireLord_Animations,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(240.0f, 312.0f),
-	1.0f,
+	0.9f,
 	cocos2d::Vec2(0.0f, 0.0f))
 {
 }

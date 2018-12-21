@@ -398,10 +398,12 @@ namespace DecorResources
 	extern const std::string Generic_Background_Clouds2;
 	extern const std::string Generic_Background_Clouds3;
 	extern const std::string Generic_Background_Clouds4;
+	extern const std::string Generic_Background_Moon;
 	extern const std::string Generic_Background_cloud_1;
 	extern const std::string Generic_Background_cloud_2;
 	extern const std::string Generic_Background_cloud_3;
 	extern const std::string Generic_Background_cloud_4;
+	extern const std::string Generic_Background_sun;
 	extern const std::string Generic_arrow_1;
 	extern const std::string Generic_arrow_2;
 	extern const std::string Generic_arrow1;
@@ -416,7 +418,6 @@ namespace DecorResources
 	extern const std::string Generic_shield;
 	extern const std::string Generic_skull;
 	extern const std::string Generic_spear;
-	extern const std::string Generic_sun;
 	extern const std::string Generic_sword_1;
 	extern const std::string Generic_sword_2;
 	extern const std::string Generic_wheel;

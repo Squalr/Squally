@@ -22,5 +22,6 @@ protected:
 	virtual void onInteractButtonClick(MenuSprite* menuSprite);
 
 private:
+	Sprite* chatBubbleSprite;
 	MenuSprite* interactButton;
 };

@@ -4,8 +4,8 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
-const float PlatformerEntity::groundCollisionDetectorPadding = 8.0f;
-const float PlatformerEntity::groundCollisionDetectorOffset = 24.0f;
+const float PlatformerEntity::groundCollisionDetectorPadding = 12.0f;
+const float PlatformerEntity::groundCollisionDetectorOffset = 2.0f;
 const float PlatformerEntity::capsuleRadius = 8.0f;
 const float PlatformerEntity::groundDragFactor = .58f;
 const float PlatformerEntity::airDragFactor = 0.65f;

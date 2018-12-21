@@ -21,7 +21,7 @@ ReanimatedFighter::ReanimatedFighter(cocos2d::ValueMap* initProperties) : Platfo
 	EntityResources::Enemies_LexiconCrypts_ReanimatedFighter_Animations,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 248.0f),
-	1.0f,
+	0.9f,
 	cocos2d::Vec2(0.0f, 0.0f))
 {
 }

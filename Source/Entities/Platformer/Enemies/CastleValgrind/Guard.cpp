@@ -21,7 +21,7 @@ Guard::Guard(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties
 	EntityResources::Enemies_CastleValgrind_Guard_Animations,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(112.0f, 160.0f),
-	1.0f,
+	0.9f,
 	cocos2d::Vec2(0.0f, 0.0f))
 {
 }

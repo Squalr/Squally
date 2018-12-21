@@ -21,7 +21,7 @@ Rhinoman::Rhinoman(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProp
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Animations,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(592.0f, 592.0f),
-	1.0f,
+	0.9f,
 	cocos2d::Vec2(0.0f, 0.0f))
 {
 }

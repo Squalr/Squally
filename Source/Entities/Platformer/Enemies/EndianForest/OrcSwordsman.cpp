@@ -21,7 +21,7 @@ OrcSwordsman::OrcSwordsman(cocos2d::ValueMap* initProperties) : PlatformerEnemy(
 	EntityResources::Enemies_EndianForest_OrcSwordsman_Animations,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 228.0f),
-	1.0f,
+	0.9f,
 	cocos2d::Vec2(0.0f, 0.0f))
 {
 }
