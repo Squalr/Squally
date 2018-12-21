@@ -358,7 +358,7 @@ void GameCamera::pushTarget(CameraTrackingData trackingData)
 		}
 		case CameraTrackingData::CameraScrollType::Ellipse:
 		{
-			this->debugCameraRectangle->drawEllipse(Vec2::ZERO, trackingData.scrollOffset.x, trackingData.scrollOffset.y, 0.0f, 24, false, Color4F::GRAY);
+			this->debugCameraRectangle->drawEllipse(Vec2::ZERO, trackingData.scrollOffset.x, trackingData.scrollOffset.y, 0.0f, 48, false, Color4F::GRAY);
 			break;
 		}
 	}

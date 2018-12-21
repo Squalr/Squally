@@ -33,6 +33,8 @@ public:
 	static const std::string MapKeyHeight;
 	static const std::string MapKeyXPosition;
 	static const std::string MapKeyYPosition;
+	static const std::string MapKeyFlipX;
+	static const std::string MapKeyFlipY;
 	static const std::string MapKeyRepeatX;
 	static const std::string MapKeyRepeatY;
 

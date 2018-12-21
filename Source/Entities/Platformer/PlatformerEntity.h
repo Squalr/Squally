@@ -1,4 +1,6 @@
 #pragma once
+#include <set>
+
 #include "cocos/math/CCGeometry.h"
 
 #include "Engine/Physics/CollisionObject.h"
@@ -31,7 +33,7 @@ protected:
 	SmartAnimationNode* animationNode;
 	cocos2d::Vec2 movement;
 
-	bool isOnGround;
+	bool isOnGround();
 
 	// CURRENT STATE
 	float actualJumpLaunchVelocity;
@@ -52,6 +54,7 @@ protected:
 private:
 	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale);
 
+	std::set<CollisionObject*> groundCollisions;
 	CollisionObject* groundCollisionDetector;
 
 	static const float groundCollisionDetectorPadding;
