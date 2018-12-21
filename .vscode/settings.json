@@ -94,11 +94,13 @@
         "variant": "cpp"
     },
     "C_Cpp.configurationWarnings": "Disabled",
-    "cmake.configureArgs": [
-        "-DBUILD_LUA_LIBS=OFF",
-        "-DBUILD_JS_LIBS=OFF",
-        "-DBUILD_EDITOR_SPINE=OFF",
-        "-DBUILD_EDITOR_COCOSTUDIO=OFF",
-        "-DBUILD_EDITOR_COCOSBUILDER=OFF"
-    ]
+    "cmake.generator": "Ninja",
+    "cmake.configureSettings": {
+        "CMAKE_MAKE_PROGRAM": "ninja",
+        "BUILD_LUA_LIBS": "OFF",
+        "BUILD_JS_LIBS": "OFF",
+        "BUILD_EDITOR_SPINE": "OFF",
+        "BUILD_EDITOR_COCOSTUDIO": "OFF",
+        "BUILD_EDITOR_COCOSBUILDER": "OFF"
+    }
 }
