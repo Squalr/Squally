@@ -1,29 +1,34 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/math/Vec2.h"
 
 #include "Engine/Hackables/HackableObject.h"
 
-using namespace cocos2d;
+class HackableData;
+
+namespace cocos2d
+{
+	class ParticleSystem;
+}
 
 class Wind : public HackableObject
 {
 public:
-	static Wind* create(ValueMap* initProperties);
+	static Wind* create(cocos2d::ValueMap* initProperties);
 
 	static const std::string MapKeyWind;
 
 protected:
-	Wind(ValueMap* initProperties);
+	Wind(cocos2d::ValueMap* initProperties);
 	~Wind();
 
-	Vec2 getButtonOffset() override;
+	cocos2d::Vec2 getButtonOffset() override;
 
 private:
 	void registerHackables();
 
 	void update(float) override;
 
-	HackableData * windDataSpeedY;
-	ParticleSystem * windParticles;
-	Vec2 windSpeed;
+	HackableData* windDataSpeedY;
+	cocos2d::ParticleSystem* windParticles;
+	cocos2d::Vec2 windSpeed;
 };
