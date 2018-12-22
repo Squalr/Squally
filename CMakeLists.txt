@@ -29,6 +29,7 @@
 #/****************************************************************************
 
 cmake_minimum_required(VERSION 3.1)
+set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_LIST_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake)
 
 set(APP_NAME Squally)
 
@@ -63,14 +64,6 @@ set(GAME_RES_FOLDER
 if(APPLE OR WINDOWS)
     cocos_mark_multi_resources(common_res_files RES_TO "Resources" FOLDERS ${GAME_RES_FOLDER})
 endif()
-
-include_directories(
-	${CMAKE_CURRENT_SOURCE_DIR}/Source/
-	${COCOS2DX_ROOT_PATH}/cocos/audio/include/
-	${CMAKE_CURRENT_SOURCE_DIR}/external/steam/
-	${CMAKE_CURRENT_SOURCE_DIR}/external/Udis86/
-	${CMAKE_CURRENT_SOURCE_DIR}/external/Fasm/
-)
 
 # add cross-platforms source files
 list(APPEND GAME_SOURCE
@@ -1607,17 +1600,30 @@ set(APP_SRC
     ${GAME_HEADER}
 )
 
+find_path(ASMJIT_LIBRARY_PATH asmjit/asmjit.h )
+find_library(ASMJIT_LIBRARY asmjit)
+
+include_directories(
+	${CMAKE_CURRENT_SOURCE_DIR}/Source/
+	${COCOS2DX_ROOT_PATH}/cocos/audio/include/
+	${CMAKE_CURRENT_SOURCE_DIR}/external/steam/
+	${CMAKE_CURRENT_SOURCE_DIR}/external/udis86/
+    ${ASMJIT_LIBRARY_PATH}
+)
+
 cocos_build_app(${APP_NAME}
     APP_SRC
         "${APP_SRC}"
     DEPEND_COMMON_LIBS
         breakpad_client
-		cocos2d
+        cocos2d
 )
+
 
 target_link_libraries(${APP_NAME} steam)
 target_link_libraries(${APP_NAME} udis86)
 target_link_libraries(${APP_NAME} fasm)
+target_link_libraries(${APP_NAME} ${ASMJIT_LIBRARY})
 
 string(REPLACE "$<CONFIG>" "${CMAKE_BUILD_TYPE}" CMAKE_RUNTIME_OUTPUT_DIRECTORY ${APP_BIN_DIR})
 
