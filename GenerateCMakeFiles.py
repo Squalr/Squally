@@ -8,35 +8,56 @@ from os import path
 from os.path import isfile, join, splitext, abspath, relpath, realpath, basename, relpath
 import os
 
-inputTemplate = "CMakeLists.template"
-outputFile = "CMakeLists.txt"
+def main():
+	generateCmakeFile()
+	
+def generateCmakeFile():
+	cmakeFile = "CMakeLists.txt"
+	
+	# Get source/header files
+	currentPath = realpath(__file__)
+	sourcePath = abspath(join(join(currentPath, ".."), "Source"))
+	cppFiles = []
+	hFiles = []
 
-currentPath = realpath(__file__);
-sourcePath = abspath(join(join(currentPath, ".."), "Source"))
-cppFiles = []
-hFiles = []
+	for root, dirnames, filenames in os.walk(sourcePath):
+		for filename in filenames:
+			pathStr = join(relpath(root, currentPath), filename).replace("\\", "/").lstrip(".").lstrip("/")
+			
+			print(pathStr)
+			if filename.lower().endswith("cpp"):
+				cppFiles.append(pathStr)
+				continue
+			if filename.lower().endswith("h"):
+				hFiles.append(pathStr)
+				continue
 
-for root, dirnames, filenames in os.walk(sourcePath):
-	for filename in filenames:
-		pathStr = join(relpath(root, currentPath), filename).replace("\\", "/").lstrip(".").lstrip("/");
+	cppFiles.sort()
+	hFiles.sort()
+
+	# Update source/header files in the CMakeLists
+	with open(cmakeFile,'r+') as contentReader:
+		cppPrefixDelimiter = "####X####X####X####X####X####X####X####X####X####X####"
+		cppSuffixDelimiter = "####O####O####O####O####O####O####O####O####O####O##"
+		hPrefixDelimiter = "####W####W####W####W####W####W####W####W####W####W####"
+		hSuffixDelimiter = "####V####V####V####V####V####V####V####V####V####V##"
+		cppList = "\n\t".join(cppFiles)
+		hList = "\n\t".join(hFiles)
 		
-		print(pathStr)
-		if filename.lower().endswith("cpp"):
-			cppFiles.append(pathStr)
-			continue
-		if filename.lower().endswith("h"):
-			hFiles.append(pathStr)
-			continue
+		contents = contentReader.read()
+		
+		contents = replaceTextBetween(cppPrefixDelimiter, cppSuffixDelimiter, contents, "\n\n\t" + cppList + "\n\n\t")
+		contents = replaceTextBetween(hPrefixDelimiter, hSuffixDelimiter, contents, "\n\n\t" + hList + "\n\n\t")
+		
+		with open(cmakeFile,'w+') as contentWriter:
+			contentWriter.write(contents)
 
-cppFiles.sort()
-hFiles.sort()
-template = open(inputTemplate, 'r').read()
 
-with open(outputFile, 'w') as cmakeFile:
-	cppList = "\n\t".join(cppFiles);
-	hList = "\n\t".join(hFiles);
+def replaceTextBetween(delimeterA, delimterB, contents, innerContent):
+	contentsPrefix = contents.split(delimeterA)[0]
+	contentsSuffix = contents.split(delimterB)[1]
 	
-	template = template.replace("{{ CMAKE_GENRATE_CPP }}", cppList)
-	template = template.replace("{{ CMAKE_GENRATE_H }}", hList)
-	
-	cmakeFile.write(template)
+	return contentsPrefix + delimeterA + innerContent + delimterB + contentsSuffix
+
+if __name__ == '__main__':
+    main()
