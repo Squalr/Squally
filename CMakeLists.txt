@@ -1600,7 +1600,7 @@ set(APP_SRC
     ${GAME_HEADER}
 )
 
-find_path(ASMJIT_LIBRARY_PATH asmjit/asmjit.h )
+find_path(ASMJIT_LIBRARY_PATH asmjit.h PATH_SUFFIXES asmjit)
 find_library(ASMJIT_LIBRARY asmjit)
 
 include_directories(
