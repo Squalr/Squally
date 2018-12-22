@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0">
+        <file id="0" name="Head.png" width="89" height="117" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="HEAD.png" width="89" height="117" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="Entity">
+        <animation id="0" name="Idle" length="600" interval="100" l="-652" t="-1061" r="661" b="90">
+            <gline pos="1" v="1"/>
+            <gline pos="-127"/>
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="HEAD">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-57.575758" y="172.727273"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

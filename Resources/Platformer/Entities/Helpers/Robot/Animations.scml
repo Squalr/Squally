@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r10">
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
     <folder id="0">
         <file id="0" name="Body.png" width="180" height="180" pivot_x="0" pivot_y="1"/>
         <file id="1" name="Head.png" width="320" height="280" pivot_x="0" pivot_y="1"/>
@@ -18,7 +18,7 @@
         <file id="14" name="SlashFX_001.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
         <file id="15" name="SlashFX_003.png" width="128" height="128" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Dumb Robot">
+    <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="52.2822" h="10"/>
         <obj_info name="bone_001" type="bone" w="48.5548" h="10"/>
         <obj_info name="bone_002" type="bone" w="55.9272" h="10"/>

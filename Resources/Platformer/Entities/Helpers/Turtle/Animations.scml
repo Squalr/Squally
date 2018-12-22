@@ -32,7 +32,7 @@
         <file id="28" name="Left Leg - Back.png" width="200" height="240" pivot_x="0" pivot_y="1"/>
         <file id="29" name="Right Leg - Back.png" width="200" height="240" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Cute Turtle">
+    <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="84.7087" h="10"/>
         <obj_info name="bone_001" type="bone" w="50.3355" h="10"/>
         <obj_info name="bone_002" type="bone" w="104.588" h="10"/>
@@ -3905,7 +3905,7 @@
                     <bone x="88.895701" angle="338.171764"/>
                 </key>
                 <key id="1" time="75" spin="-1">
-                    <bone x="88.895701" y="-0" angle="315.135822"/>
+                    <bone x="88.895701" angle="315.135822"/>
                 </key>
                 <key id="2" time="225">
                     <bone x="88.895701" angle="251.391913"/>
@@ -3916,7 +3916,7 @@
                     <bone x="50.958298" angle="346.111703"/>
                 </key>
                 <key id="1" time="75" spin="-1">
-                    <bone x="50.958298" y="-0" angle="357.534599"/>
+                    <bone x="50.958298" angle="357.534599"/>
                 </key>
                 <key id="2" time="225" spin="-1">
                     <bone x="50.958298" angle="356.749724"/>
@@ -3944,7 +3944,7 @@
                     <bone x="84.099667" angle="24.906854"/>
                 </key>
                 <key id="2" time="300">
-                    <bone x="84.099667" y="-0" angle="44.634531"/>
+                    <bone x="84.099667" angle="44.634531"/>
                 </key>
             </timeline>
             <timeline id="19" obj="19" name="bone_015" object_type="bone">
@@ -3955,7 +3955,7 @@
                     <bone x="53.945864" angle="12.547261"/>
                 </key>
                 <key id="2" time="300">
-                    <bone x="53.945864" y="-0" angle="3.684032"/>
+                    <bone x="53.945864" angle="3.684032"/>
                 </key>
             </timeline>
         </animation>
@@ -7792,7 +7792,7 @@
             </timeline>
             <timeline id="8" obj="2" name="bone_002" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="50.335483" y="-0" angle="13.558114"/>
+                    <bone x="50.335483" angle="13.558114"/>
                 </key>
             </timeline>
             <timeline id="9" name="Left Upper Arm">
@@ -7828,7 +7828,7 @@
             </timeline>
             <timeline id="14" obj="5" name="bone_005" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="68.38101" y="-0" angle="1.600291"/>
+                    <bone x="68.38101" angle="1.600291"/>
                 </key>
             </timeline>
             <timeline id="15" name="Shell">
@@ -8970,15 +8970,15 @@
             </timeline>
             <timeline id="13" obj="4" name="bone_004" object_type="bone">
                 <key id="0">
-                    <bone x="77.944456" y="0" angle="42.389353"/>
+                    <bone x="77.944456" angle="42.389353"/>
                 </key>
                 <key id="1" time="75" spin="-1">
-                    <bone x="77.944456" y="0" angle="48.142613"/>
+                    <bone x="77.944456" angle="48.142613"/>
                 </key>
             </timeline>
             <timeline id="14" obj="5" name="bone_005" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="68.38101" y="0" angle="1.642645"/>
+                    <bone x="68.38101" angle="1.642645"/>
                 </key>
             </timeline>
             <timeline id="15" name="Shell">

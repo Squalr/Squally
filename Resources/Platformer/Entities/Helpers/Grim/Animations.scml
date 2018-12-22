@@ -11,7 +11,7 @@
     <folder id="2" name="Weapon">
         <file id="0" name="Weapon02.png" width="394" height="225" pivot_x="0.380711" pivot_y="0.702222"/>
     </folder>
-    <entity id="0" name="Grim">
+    <entity id="0" name="Entity">
         <obj_info name="Body" type="bone" w="78.4615" h="10"/>
         <obj_info name="ArmLeft" type="bone" w="70.9863" h="10"/>
         <obj_info name="Weapon" type="bone" w="104.581" h="10"/>

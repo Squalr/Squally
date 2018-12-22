@@ -35,7 +35,7 @@
         <file id="31" name="Left Hand 03.png" width="160" height="200" pivot_x="0" pivot_y="1"/>
         <file id="32" name="Right Hand 02.png" width="160" height="200" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Cute Gecko">
+    <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="80.7481" h="10"/>
         <obj_info name="bone_001" type="bone" w="58.0808" h="10"/>
         <obj_info name="bone_002" type="bone" w="97.8978" h="10"/>
@@ -8914,7 +8914,7 @@
             </timeline>
             <timeline id="7" obj="1" name="bone_001" object_type="bone">
                 <key id="0">
-                    <bone x="80.748084" y="0" angle="13.88152"/>
+                    <bone x="80.748084" angle="13.88152"/>
                 </key>
                 <key id="1" time="100" spin="-1">
                     <bone x="80.748084" angle="27.736054"/>
@@ -8922,7 +8922,7 @@
             </timeline>
             <timeline id="8" obj="2" name="bone_002" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="58.080808" y="0" angle="8.303119"/>
+                    <bone x="58.080808" angle="8.303119"/>
                 </key>
             </timeline>
             <timeline id="9" name="Right Leg">
@@ -8965,15 +8965,15 @@
             </timeline>
             <timeline id="16" obj="4" name="bone_004" object_type="bone">
                 <key id="0">
-                    <bone x="80.381886" y="-0" angle="11.239737"/>
+                    <bone x="80.381886" angle="11.239737"/>
                 </key>
                 <key id="1" time="75" spin="-1">
-                    <bone x="80.381886" y="-0" angle="21.493771"/>
+                    <bone x="80.381886" angle="21.493771"/>
                 </key>
             </timeline>
             <timeline id="17" obj="5" name="bone_005" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="62.221022" y="-0" angle="4.431509"/>
+                    <bone x="62.221022" angle="4.431509"/>
                 </key>
             </timeline>
             <timeline id="18" name="Tail">

@@ -2,31 +2,31 @@
 // THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "{{EntityName}}.h"
+#include "YetiBaby.h"
 
 #include "Resources/EntityResources.h"
 
-const std::string {{EntityName}}::MapKey{{EntityName}} = "{{MapKeyName}}";
+const std::string YetiBaby::MapKeyYetiBaby = "yeti-baby";
 
-{{EntityName}}* {{EntityName}}::deserialize(cocos2d::ValueMap* initProperties)
+YetiBaby* YetiBaby::deserialize(cocos2d::ValueMap* initProperties)
 {
-	{{EntityName}}* instance = new {{EntityName}}(initProperties);
+	YetiBaby* instance = new YetiBaby(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-{{EntityName}}::{{EntityName}}(cocos2d::ValueMap* initProperties) : {{EntityBase}}(initProperties,
-	EntityResources::{{EntityPrefix}}{{EnvironmentUnderscore}}{{EntityEnvironment}}_{{EntityName}}_Animations,
-	PlatformerCollisionType::{{EntityCollisionType}},
-	cocos2d::Size({{EntityWidth}}, {{EntityHeight}}),
-	{{EntityScale}},
-	cocos2d::Vec2({{EntityOffsetX}}, {{EntityOffsetY}}))
+YetiBaby::YetiBaby(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
+	EntityResources::Helpers_YetiBaby_Animations,
+	PlatformerCollisionType::FriendlyNpc,
+	cocos2d::Size(112.0f, 160.0f),
+	1.0f,
+	cocos2d::Vec2(0.0f, 0.0f))
 {
 }
 
-{{EntityName}}::~{{EntityName}}()
+YetiBaby::~YetiBaby()
 {
 }
 

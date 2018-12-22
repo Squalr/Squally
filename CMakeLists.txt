@@ -253,6 +253,19 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/VoidStar/Viking.cpp
 	Source/Entities/Platformer/Enemies/VoidStar/VikingBot.cpp
 	Source/Entities/Platformer/Enemies/VoidStar/VikingBotSmall.cpp
+	Source/Entities/Platformer/Helpers/Apple.cpp
+	Source/Entities/Platformer/Helpers/Gecko.cpp
+	Source/Entities/Platformer/Helpers/Ghost.cpp
+	Source/Entities/Platformer/Helpers/Goblin.cpp
+	Source/Entities/Platformer/Helpers/Grim.cpp
+	Source/Entities/Platformer/Helpers/Knight.cpp
+	Source/Entities/Platformer/Helpers/Mummy.cpp
+	Source/Entities/Platformer/Helpers/Princess.cpp
+	Source/Entities/Platformer/Helpers/Professor.cpp
+	Source/Entities/Platformer/Helpers/Robot.cpp
+	Source/Entities/Platformer/Helpers/Snowman.cpp
+	Source/Entities/Platformer/Helpers/Turtle.cpp
+	Source/Entities/Platformer/Helpers/YetiBaby.cpp
 	Source/Entities/Platformer/NpcBase.cpp
 	Source/Entities/Platformer/Npcs/CastleValgrind/Blackbeard.cpp
 	Source/Entities/Platformer/Npcs/CastleValgrind/Elric.cpp
@@ -402,7 +415,6 @@ list(APPEND GAME_SOURCE
 	Source/Menus/Options/OptionsScene.cpp
 	Source/Menus/Pause/PauseMenu.cpp
 	Source/Menus/SaveSelect/SaveSelectMenu.cpp
-	Source/Menus/Title/HackerMode.cpp
 	Source/Menus/Title/TitleScreen.cpp
 	Source/Menus/Title/TitleScreenBackground.cpp
 	Source/Menus/WorldMap/FX/Lightning.cpp
@@ -997,6 +1009,19 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/VoidStar/Viking.h
 	Source/Entities/Platformer/Enemies/VoidStar/VikingBot.h
 	Source/Entities/Platformer/Enemies/VoidStar/VikingBotSmall.h
+	Source/Entities/Platformer/Helpers/Apple.h
+	Source/Entities/Platformer/Helpers/Gecko.h
+	Source/Entities/Platformer/Helpers/Ghost.h
+	Source/Entities/Platformer/Helpers/Goblin.h
+	Source/Entities/Platformer/Helpers/Grim.h
+	Source/Entities/Platformer/Helpers/Knight.h
+	Source/Entities/Platformer/Helpers/Mummy.h
+	Source/Entities/Platformer/Helpers/Princess.h
+	Source/Entities/Platformer/Helpers/Professor.h
+	Source/Entities/Platformer/Helpers/Robot.h
+	Source/Entities/Platformer/Helpers/Snowman.h
+	Source/Entities/Platformer/Helpers/Turtle.h
+	Source/Entities/Platformer/Helpers/YetiBaby.h
 	Source/Entities/Platformer/NpcBase.h
 	Source/Entities/Platformer/Npcs/CastleValgrind/Blackbeard.h
 	Source/Entities/Platformer/Npcs/CastleValgrind/Elric.h
@@ -1146,7 +1171,6 @@ list(APPEND GAME_HEADER
 	Source/Menus/Options/OptionsScene.h
 	Source/Menus/Pause/PauseMenu.h
 	Source/Menus/SaveSelect/SaveSelectMenu.h
-	Source/Menus/Title/HackerMode.h
 	Source/Menus/Title/TitleScreen.h
 	Source/Menus/Title/TitleScreenBackground.h
 	Source/Menus/WorldMap/FX/Lightning.h

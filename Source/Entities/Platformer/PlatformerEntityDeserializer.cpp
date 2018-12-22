@@ -205,6 +205,19 @@
 #include "Entities/Platformer/Npcs/DaemonsHallow/Scaldor.h"
 #include "Entities/Platformer/Npcs/LexiconCrypts/Zelina.h"
 #include "Entities/Platformer/Npcs/CastleValgrind/Elric.h"
+#include "Entities/Platformer/Helpers/Apple.h"
+#include "Entities/Platformer/Helpers/Gecko.h"
+#include "Entities/Platformer/Helpers/Ghost.h"
+#include "Entities/Platformer/Helpers/Goblin.h"
+#include "Entities/Platformer/Helpers/Knight.h"
+#include "Entities/Platformer/Helpers/Mummy.h"
+#include "Entities/Platformer/Helpers/Princess.h"
+#include "Entities/Platformer/Helpers/Professor.h"
+#include "Entities/Platformer/Helpers/Grim.h"
+#include "Entities/Platformer/Helpers/Robot.h"
+#include "Entities/Platformer/Helpers/Snowman.h"
+#include "Entities/Platformer/Helpers/Turtle.h"
+#include "Entities/Platformer/Helpers/YetiBaby.h"
 
 ////Y////Y////Y////Y////Y////Y////Y/
 // END: THIS CODE IS GENERATED    //
@@ -1051,6 +1064,58 @@ void PlatformerEntityDeserializer::onDeserializationRequest(DeserializationEvent
 		if (name == Elric::MapKeyElric)
 		{
 			newEntity = Elric::deserialize(&properties);
+		}
+		if (name == Apple::MapKeyApple)
+		{
+			newEntity = Apple::deserialize(&properties);
+		}
+		if (name == Gecko::MapKeyGecko)
+		{
+			newEntity = Gecko::deserialize(&properties);
+		}
+		if (name == Ghost::MapKeyGhost)
+		{
+			newEntity = Ghost::deserialize(&properties);
+		}
+		if (name == Goblin::MapKeyGoblin)
+		{
+			newEntity = Goblin::deserialize(&properties);
+		}
+		if (name == Knight::MapKeyKnight)
+		{
+			newEntity = Knight::deserialize(&properties);
+		}
+		if (name == Mummy::MapKeyMummy)
+		{
+			newEntity = Mummy::deserialize(&properties);
+		}
+		if (name == Princess::MapKeyPrincess)
+		{
+			newEntity = Princess::deserialize(&properties);
+		}
+		if (name == Professor::MapKeyProfessor)
+		{
+			newEntity = Professor::deserialize(&properties);
+		}
+		if (name == Grim::MapKeyGrim)
+		{
+			newEntity = Grim::deserialize(&properties);
+		}
+		if (name == Robot::MapKeyRobot)
+		{
+			newEntity = Robot::deserialize(&properties);
+		}
+		if (name == Snowman::MapKeySnowman)
+		{
+			newEntity = Snowman::deserialize(&properties);
+		}
+		if (name == Turtle::MapKeyTurtle)
+		{
+			newEntity = Turtle::deserialize(&properties);
+		}
+		if (name == YetiBaby::MapKeyYetiBaby)
+		{
+			newEntity = YetiBaby::deserialize(&properties);
 		}
 
 		////O////O////O////O////O////O////O/

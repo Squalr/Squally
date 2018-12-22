@@ -14,7 +14,7 @@
         <file id="10" name="Eyes 03.png" width="128" height="64" pivot_x="0" pivot_y="1"/>
         <file id="11" name="Eyes 02.png" width="128" height="64" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="Snowman 03">
+    <entity id="0" name="Entity">
         <obj_info name="bone_000" type="bone" w="56.5928" h="10"/>
         <obj_info name="bone_001" type="bone" w="63.8553" h="10"/>
         <obj_info name="bone_002" type="bone" w="45.1943" h="10"/>

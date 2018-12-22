@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b10">
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
     <folder id="0">
         <file id="0" name="Head.png" width="651" height="701" pivot_x="0" pivot_y="1"/>
         <file id="1" name="Eyes01.png" width="331" height="201" pivot_x="0" pivot_y="1"/>
@@ -10,12 +10,12 @@
         <file id="6" name="Eyes02.png" width="331" height="201" pivot_x="0" pivot_y="1"/>
         <file id="7" name="Mouth02.png" width="321" height="201" pivot_x="0" pivot_y="1"/>
     </folder>
-    <entity id="0" name="The Ghost ">
+    <entity id="0" name="Entity">
         <obj_info name="bone_003" type="bone" w="126.258" h="10"/>
         <obj_info name="bone_004" type="bone" w="151.959" h="10"/>
         <obj_info name="bone_006" type="bone" w="149.663" h="10"/>
         <obj_info name="bone_008" type="bone" w="340.588" h="10"/>
-        <animation id="0" name="Idle" length="800">
+        <animation id="0" name="Idle" length="800" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="8" key="0"/>
@@ -99,7 +99,7 @@
             </timeline>
             <timeline id="5" name="Left Hand">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="69.535188" y="190.941469" pivot_x="0.473293" pivot_y="0.703894" angle="83.614801" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="5" x="69.535188" y="190.941469" pivot_x="0.473293" pivot_y="0.703894" angle="83.614801"/>
                 </key>
             </timeline>
             <timeline id="6" obj="1" name="bone_004" object_type="bone">
@@ -134,11 +134,11 @@
             </timeline>
             <timeline id="9" name="Sicle">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="81.529513" y="10.53856" pivot_x="0.241422" pivot_y="0.189195" angle="344.294338" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="4" x="81.529513" y="10.53856" pivot_x="0.241422" pivot_y="0.189195" angle="344.294338"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="1" name="Hurt" length="400">
+        <animation id="1" name="Hurt" length="400" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="8" key="0"/>
@@ -210,7 +210,7 @@
             </timeline>
             <timeline id="5" name="Left Hand">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="69.535188" y="190.941469" pivot_x="0.473293" pivot_y="0.703894" angle="83.614801" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="5" x="69.535188" y="190.941469" pivot_x="0.473293" pivot_y="0.703894" angle="83.614801"/>
                 </key>
             </timeline>
             <timeline id="6" obj="1" name="bone_004" object_type="bone">
@@ -245,11 +245,11 @@
             </timeline>
             <timeline id="9" name="Sicle">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="81.529513" y="10.53856" pivot_x="0.241422" pivot_y="0.189195" angle="344.294338" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="4" x="81.529513" y="10.53856" pivot_x="0.241422" pivot_y="0.189195" angle="344.294338"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="2" name="Idle Blinking" length="800">
+        <animation id="2" name="Idle Blinking" length="800" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="8" key="0"/>
@@ -336,7 +336,7 @@
             </timeline>
             <timeline id="5" name="Left Hand">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="69.535188" y="190.941469" pivot_x="0.473293" pivot_y="0.703894" angle="83.614801" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="5" x="69.535188" y="190.941469" pivot_x="0.473293" pivot_y="0.703894" angle="83.614801"/>
                 </key>
             </timeline>
             <timeline id="6" obj="1" name="bone_004" object_type="bone">
@@ -371,11 +371,11 @@
             </timeline>
             <timeline id="9" name="Sicle">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="81.529513" y="10.53856" pivot_x="0.241422" pivot_y="0.189195" angle="344.294338" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="4" x="81.529513" y="10.53856" pivot_x="0.241422" pivot_y="0.189195" angle="344.294338"/>
                 </key>
             </timeline>
         </animation>
-        <animation id="3" name="Slashing" length="500">
+        <animation id="3" name="Slashing" length="500" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="8" key="0"/>
@@ -504,10 +504,10 @@
             </timeline>
             <timeline id="5" name="Left Hand">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="69.535188" y="190.941469" pivot_x="0.473293" pivot_y="0.703894" angle="83.614801" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="5" x="69.535188" y="190.941469" pivot_x="0.473293" pivot_y="0.703894" angle="83.614801"/>
                 </key>
                 <key id="1" time="200" spin="0">
-                    <object folder="0" file="5" x="69.535188" y="190.941469" pivot_x="0.473293" pivot_y="0.703894" angle="83.614801" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="5" x="69.535188" y="190.941469" pivot_x="0.473293" pivot_y="0.703894" angle="83.614801"/>
                 </key>
             </timeline>
             <timeline id="6" obj="1" name="bone_004" object_type="bone">
@@ -566,10 +566,10 @@
             </timeline>
             <timeline id="9" name="Sicle">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="81.529513" y="10.53856" pivot_x="0.241422" pivot_y="0.189195" angle="344.294338" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="4" x="81.529513" y="10.53856" pivot_x="0.241422" pivot_y="0.189195" angle="344.294338"/>
                 </key>
                 <key id="1" time="200" spin="0">
-                    <object folder="0" file="4" x="81.529513" y="10.53856" pivot_x="0.241422" pivot_y="0.189195" angle="344.294338" scale_x="1" scale_y="1"/>
+                    <object folder="0" file="4" x="81.529513" y="10.53856" pivot_x="0.241422" pivot_y="0.189195" angle="344.294338"/>
                 </key>
             </timeline>
         </animation>
