@@ -9,9 +9,39 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DBUILD_LUA_LIBS=OFF -DBUILD_JS_LIBS=OFF -DBUILD_EDITOR_SPINE=OFF -DBUILD_EDITOR_COCOSTUDIO=OFF -DBUILD_EDITOR_COCOSBUILDER=OFF",
+      "cmakeCommandArgs": "",
       "buildCommandArgs": "-v",
-      "ctestCommandArgs": ""
+      "ctestCommandArgs": "",
+      "variables": [
+        {
+          "name": "BUILD_LUA_LIBS",
+          "value": "OFF"
+        },
+        {
+          "name": "BUILD_JS_LIBS",
+          "value": "OFF"
+        },
+        {
+          "name": "BUILD_EDITOR_SPINE",
+          "value": "OFF"
+        },
+        {
+          "name": "BUILD_EDITOR_COCOSTUDIO",
+          "value": "OFF"
+        },
+        {
+          "name": "BUILD_EDITOR_COCOSBUILDER",
+          "value": "OFF"
+        },
+        {
+          "name": "CMAKE_TOOLCHAIN_FILE",
+          "value": "${workspaceRoot}/vcpkg/scripts/buildsystems/vcpkg.cmake"
+        },
+        {
+          "name": "CMAKE_FIND_ROOT_PATH",
+          "value": "${workspaceRoot}/vcpkg/packages"
+        }
+      ]
     },
     {
       "name": "x86-Release",
@@ -22,9 +52,39 @@
       ],
       "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\${name}",
       "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
-      "cmakeCommandArgs": "-DBUILD_LUA_LIBS=OFF -DBUILD_JS_LIBS=OFF -DBUILD_EDITOR_SPINE=OFF -DBUILD_EDITOR_COCOSTUDIO=OFF -DBUILD_EDITOR_COCOSBUILDER=OFF",
+      "cmakeCommandArgs": "",
       "buildCommandArgs": "-v",
-      "ctestCommandArgs": ""
+      "ctestCommandArgs": "",
+      "variables": [
+        {
+          "name": "BUILD_LUA_LIBS",
+          "value": "OFF"
+        },
+        {
+          "name": "BUILD_JS_LIBS",
+          "value": "OFF"
+        },
+        {
+          "name": "BUILD_EDITOR_SPINE",
+          "value": "OFF"
+        },
+        {
+          "name": "BUILD_EDITOR_COCOSTUDIO",
+          "value": "OFF"
+        },
+        {
+          "name": "BUILD_EDITOR_COCOSBUILDER",
+          "value": "OFF"
+        },
+        {
+          "name": "CMAKE_TOOLCHAIN_FILE",
+          "value": "${workspaceRoot}/vcpkg/scripts/buildsystems/vcpkg.cmake"
+        },
+        {
+          "name": "CMAKE_FIND_ROOT_PATH",
+          "value": "${workspaceRoot}/vcpkg/packages"
+        }
+      ]
     }
   ]
 }
