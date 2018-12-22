@@ -20,7 +20,7 @@ DialogueTree * DialogueTree::loadDialogueFromFile(std::string filePath)
 	return DialogueTree::loadDialogueFromJson(FileUtils::getInstance()->getStringFromFile(filePath.c_str()));
 }
 
-DialogueTree * DialogueTree::loadDialogueFromJson(std::string json)
+DialogueTree* DialogueTree::loadDialogueFromJson(std::string json)
 {
 	Document document = Document();
 	document.Parse<0>(json.c_str());
