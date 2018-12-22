@@ -122,7 +122,6 @@ SaveSelectMenu::SaveSelectMenu()
 	this->addChild(this->saveGame1);
 	this->addChild(this->saveGame2);
 	this->addChild(this->saveGame3);
-	this->addChild(Mouse::create());
 }
 
 SaveSelectMenu::~SaveSelectMenu()

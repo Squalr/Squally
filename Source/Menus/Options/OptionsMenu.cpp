@@ -166,7 +166,6 @@ OptionsMenu::OptionsMenu()
 	this->addChild(this->option3840x2160);
 
 	this->addChild(this->returnButton);
-	this->addChild(Mouse::create());
 
 	switch (ConfigManager::getResolution())
 	{

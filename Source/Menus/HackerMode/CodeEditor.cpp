@@ -138,7 +138,6 @@ CodeEditor::CodeEditor()
 	this->addChild(this->cancelButton);
 	this->addChild(this->acceptButton);
 	this->addChild(this->acceptButtonGrayed);
-	this->addChild(Mouse::create());
 
 	this->initializePositions();
 	this->initializeListeners();

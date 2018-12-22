@@ -31,7 +31,6 @@ HackerModeHud::HackerModeHud(std::function<void()> toggleHackermodeCallback)
 
 	this->addChild(this->hackableButtonLayer);
 	this->addChild(this->radialMenu);
-	this->addChild(Mouse::create());
 }
 
 HackerModeHud::~HackerModeHud()

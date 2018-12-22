@@ -57,7 +57,6 @@ private:
 	Lightning* lightning10;
 
 	Hud* hud;
-	Mouse* mouse;
 
 	static const std::string StringKeySelectLevel;
 	static const std::string StringKeyLevelNameJungle;

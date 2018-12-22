@@ -49,7 +49,6 @@ HexusRewardsMenu::HexusRewardsMenu()
 	this->addChild(this->goldSpriteLesser);
 	this->addChild(this->goldLabel);
 	this->addChild(this->returnButton);
-	this->addChild(Mouse::create());
 }
 
 HexusRewardsMenu::~HexusRewardsMenu()

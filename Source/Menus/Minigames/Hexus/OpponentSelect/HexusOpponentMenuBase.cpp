@@ -62,7 +62,6 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(NavigationEvents::NavigateHexusOppo
 	this->addChild(this->deckManagementButton);
 	this->addChild(this->shopButton);
 	this->addChild(this->backButton);
-	this->addChild(Mouse::create());
 }
 
 HexusOpponentMenuBase::~HexusOpponentMenuBase()

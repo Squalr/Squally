@@ -162,7 +162,6 @@ Hexus::Hexus()
 	this->addChild(this->pauseMenu);
 	this->addChild(this->optionsMenu);
 	this->addChild(this->confirmationMenu);
-	this->addChild(Mouse::create());
 }
 
 Hexus::~Hexus()

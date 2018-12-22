@@ -24,7 +24,6 @@ LoadingScreen::LoadingScreen()
 
 	this->addChild(this->backgroundNode);
 	this->addChild(this->progressBar);
-	this->addChild(Mouse::create());
 }
 
 LoadingScreen::~LoadingScreen()

@@ -96,7 +96,6 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	this->addChild(this->shopButton);
 	this->addChild(this->chapterSelectLabel);
 	this->addChild(this->backButton);
-	this->addChild(Mouse::create());
 }
 
 HexusChapterSelectMenu::~HexusChapterSelectMenu()

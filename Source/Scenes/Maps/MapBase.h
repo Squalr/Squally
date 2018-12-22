@@ -55,7 +55,6 @@ private:
 	ConfirmationMenu* confirmationMenu;
 
 	Node* mapNode;
-	Hud* mouseLayer;
 
 	SerializableMap* map;
 
