@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <sstream>
 
+#include "asmjit.h"
 #include "udis86.h"
 
 HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* addressStart)

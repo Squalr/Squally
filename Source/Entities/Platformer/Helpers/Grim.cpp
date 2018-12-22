@@ -2,31 +2,31 @@
 // THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "{{EntityName}}.h"
+#include "Grim.h"
 
 #include "Resources/EntityResources.h"
 
-const std::string {{EntityName}}::MapKey{{EntityName}} = "{{MapKeyName}}";
+const std::string Grim::MapKeyGrim = "grim";
 
-{{EntityName}}* {{EntityName}}::deserialize(cocos2d::ValueMap* initProperties)
+Grim* Grim::deserialize(cocos2d::ValueMap* initProperties)
 {
-	{{EntityName}}* instance = new {{EntityName}}(initProperties);
+	Grim* instance = new Grim(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-{{EntityName}}::{{EntityName}}(cocos2d::ValueMap* initProperties) : {{EntityBase}}(initProperties,
-	EntityResources::{{EntityPrefix}}{{EnvironmentUnderscore}}{{EntityEnvironment}}_{{EntityName}}_Animations,
-	PlatformerCollisionType::{{EntityCollisionType}},
-	cocos2d::Size({{EntityWidth}}, {{EntityHeight}}),
-	{{EntityScale}},
-	cocos2d::Vec2({{EntityOffsetX}}, {{EntityOffsetY}}))
+Grim::Grim(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
+	EntityResources::Helpers_Grim_Animations,
+	PlatformerCollisionType::FriendlyNpc,
+	cocos2d::Size(224.0f, 440.0f),
+	0.3f,
+	cocos2d::Vec2(0.0f, -220.0f))
 {
 }
 
-{{EntityName}}::~{{EntityName}}()
+Grim::~Grim()
 {
 }
 

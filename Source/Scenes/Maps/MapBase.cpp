@@ -35,14 +35,17 @@ MapBase::MapBase()
 	this->developerHud = DeveloperHud::create();
 	this->hud = Hud::create();
 
-	this->hackerModeBackground = Hud::create();
+	this->hackerModeGlow = Hud::create();
 	this->hackerModeRain = MatrixRain::create();
 	this->hackerModeHud = HackerModeHud::create(CC_CALLBACK_0(MapBase::toggleHackerMode, this));
+	
+	Sprite* glow = Sprite::create(BackgroundResources::MatrixRain_HackerModeBackground);
+	glow->setAnchorPoint(Vec2::ZERO);
 
-	this->hackerModeBackground->addChild(Sprite::create(BackgroundResources::MatrixRain_HackerModeBackground));
-	this->hackerModeBackground->setAnchorPoint(Vec2(0.0f, 0.0f));
+	this->hackerModeGlow->addChild(glow);
+	this->hackerModeGlow->setAnchorPoint(Vec2::ZERO);
 
-	this->hackerModeBackground->setVisible(false);
+	this->hackerModeGlow->setVisible(false);
 	this->hackerModeRain->setVisible(false);
 	this->hackerModeHud->setVisible(false);
 
@@ -50,12 +53,12 @@ MapBase::MapBase()
 
 	this->developerHud->setVisible(false);
 
-	this->addChild(this->hackerModeBackground);
 	this->addChild(this->hackerModeRain);
 	this->addChild(this->hackerModeHud);
 	this->addChild(this->mapNode);
 	this->addChild(this->hud);
 	this->addChild(this->developerHud);
+	this->addChild(this->hackerModeGlow);
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->pauseMenu);
 	this->addChild(this->optionsMenu);
@@ -199,7 +202,7 @@ void MapBase::onHackerModeEnable()
 	this->hud->setVisible(false);
 	this->mouseLayer->setVisible(false);
 
-	this->hackerModeBackground->setVisible(true);
+	this->hackerModeGlow->setVisible(true);
 	this->hackerModeRain->setVisible(true);
 	this->hackerModeHud->setVisible(true);
 
@@ -214,7 +217,7 @@ void MapBase::onHackerModeDisable()
 	this->hud->setVisible(true);
 	this->mouseLayer->setVisible(true);
 
-	this->hackerModeBackground->setVisible(false);
+	this->hackerModeGlow->setVisible(false);
 	this->hackerModeRain->setVisible(false);
 	this->hackerModeHud->setVisible(false);
 

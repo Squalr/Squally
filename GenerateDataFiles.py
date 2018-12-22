@@ -93,7 +93,7 @@ def parseEntity(entityName, entityData):
 		return {}
 	
 	mapKeyName = "-".join(filter(None, re.split("([A-Z][^A-Z]*)", entityName))).lower()
-	pathRoot = "Source/Entities/Platformer/" + entityPrefix + "/" + entityEnvironment + "/"
+	pathRoot = ("Source/Entities/Platformer/" + entityPrefix + "/" + entityEnvironment).rstrip("/") + "/"
 	animationFile = "Resources/Platformer/Entities/" + entityPrefix + "/" + "entityName"
 	outputHeader = entityName + ".h"
 	outputClass = entityName + ".cpp"
@@ -105,15 +105,22 @@ def parseEntity(entityName, entityData):
 		
 		def parseTemplate(template):
 			templateData = template.read()
-			return templateData.replace("{{EntityName}}", entityName).replace("{{EntityBasePath}}", entityBasePath).replace("{{EntityBase}}", entityBase).replace("{{EntityType}}", entityType).replace("{{EntityEnvironment}}", entityEnvironment).replace("{{EntityPrefix}}", entityPrefix).replace("{{EntityCollisionType}}", entityCollisionType).replace("{{MapKeyName}}", mapKeyName).replace("{{EntityScale}}", entityScale).replace("{{EntityWidth}}", entitySize["Width"]).replace("{{EntityHeight}}", entitySize["Height"]).replace("{{EntityOffsetX}}", entityOffset["X"]).replace("{{EntityOffsetY}}", entityOffset["Y"])
-		
+			templateData = templateData.replace("{{EntityName}}", entityName).replace("{{EntityBasePath}}", entityBasePath).replace("{{EntityBase}}", entityBase).replace("{{EntityType}}", entityType).replace("{{EntityEnvironment}}", entityEnvironment).replace("{{EntityPrefix}}", entityPrefix).replace("{{EntityCollisionType}}", entityCollisionType).replace("{{MapKeyName}}", mapKeyName).replace("{{EntityScale}}", entityScale).replace("{{EntityWidth}}", entitySize["Width"]).replace("{{EntityHeight}}", entitySize["Height"]).replace("{{EntityOffsetX}}", entityOffset["X"]).replace("{{EntityOffsetY}}", entityOffset["Y"])
+			
+			if entityEnvironment == "":
+				templateData = templateData.replace("{{EnvironmentUnderscore}}", "");
+			else:
+				templateData = templateData.replace("{{EnvironmentUnderscore}}", "_");
+			
+			return templateData
+			
 		h.write(parseTemplate(hTemplate))
 		cpp.write(parseTemplate(cppTemplate))
 	
 	return {
 		"EntityName": entityName,
 		"MapKey": entityName + "::" + "MapKey" + entityName,
-		"Include": "#include \"Entities/Platformer/" + entityPrefix + "/" + entityEnvironment + "/" + outputHeader + "\""
+		"Include": ("#include \"Entities/Platformer/" + entityPrefix + "/" + entityEnvironment).rstrip("/") + "/" + outputHeader + "\""
 	}
 
 def replaceTextBetween(delimeterA, delimterB, contents, innerContent):

@@ -2559,5 +2559,174 @@
       "X": "0.0f",
       "Y": "0.0f"
     }
+  },
+  "Apple": {
+    "Type": "Helper",
+    "Environment": "",
+    "Scale": "0.3f",
+    "Size": {
+      "Width": "224.0f",
+      "Height": "440.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "-220.0f"
+    }
+  },
+  "Gecko": {
+    "Type": "Helper",
+    "Environment": "",
+    "Scale": "0.3f",
+    "Size": {
+      "Width": "224.0f",
+      "Height": "440.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "-220.0f"
+    }
+  },
+  "Ghost": {
+    "Type": "Helper",
+    "Environment": "",
+    "Scale": "0.3f",
+    "Size": {
+      "Width": "224.0f",
+      "Height": "440.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "-220.0f"
+    }
+  },
+  "Goblin": {
+    "Type": "Helper",
+    "Environment": "",
+    "Scale": "0.3f",
+    "Size": {
+      "Width": "224.0f",
+      "Height": "440.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "-220.0f"
+    }
+  },
+  "Knight": {
+    "Type": "Helper",
+    "Environment": "",
+    "Scale": "0.3f",
+    "Size": {
+      "Width": "224.0f",
+      "Height": "440.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "-220.0f"
+    }
+  },
+  "Mummy": {
+    "Type": "Helper",
+    "Environment": "",
+    "Scale": "0.3f",
+    "Size": {
+      "Width": "224.0f",
+      "Height": "440.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "-220.0f"
+    }
+  },
+  "Princess": {
+    "Type": "Helper",
+    "Environment": "",
+    "Scale": "0.3f",
+    "Size": {
+      "Width": "224.0f",
+      "Height": "440.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "-220.0f"
+    }
+  },
+  "Professor": {
+    "Type": "Helper",
+    "Environment": "",
+    "Scale": "0.3f",
+    "Size": {
+      "Width": "224.0f",
+      "Height": "440.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "-220.0f"
+    }
+  },
+  "Grim": {
+    "Type": "Helper",
+    "Environment": "",
+    "Scale": "0.3f",
+    "Size": {
+      "Width": "224.0f",
+      "Height": "440.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "-220.0f"
+    }
+  },
+  "Robot": {
+    "Type": "Helper",
+    "Environment": "",
+    "Scale": "0.3f",
+    "Size": {
+      "Width": "224.0f",
+      "Height": "440.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "-220.0f"
+    }
+  },
+  "Snowman": {
+    "Type": "Helper",
+    "Environment": "",
+    "Scale": "0.3f",
+    "Size": {
+      "Width": "224.0f",
+      "Height": "440.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "-220.0f"
+    }
+  },
+  "Turtle": {
+    "Type": "Helper",
+    "Environment": "",
+    "Scale": "0.3f",
+    "Size": {
+      "Width": "224.0f",
+      "Height": "440.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "-220.0f"
+    }
+  },
+  "YetiBaby": {
+    "Type": "Helper",
+    "Environment": "",
+    "Scale": "1.0f",
+    "Size": {
+      "Width": "112.0f",
+      "Height": "160.0f"
+    },
+    "Offset": {
+      "X": "0.0f",
+      "Y": "0.0f"
+    }
   }
 }

@@ -44,7 +44,7 @@ private:
 	void onOptionsClick();
 	void onExitClick();
 
-	Hud* hackerModeBackground;
+	Hud* hackerModeGlow;
 	MatrixRain* hackerModeRain;
 	HackerModeHud* hackerModeHud;
 	DeveloperHud* developerHud;
