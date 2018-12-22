@@ -4,24 +4,36 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/GlobalDirector.h"
 #include "Engine/Events/MouseEvents.h"
 #include "Engine/Input/MouseState.h"
+#include "Engine/UI/HUD/Hud.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-Mouse* Mouse::create()
-{
-	Mouse* instance = new Mouse();
-	
-	instance->autorelease();
+Mouse* Mouse::instance = nullptr;
 
-	return instance;
+void Mouse::registerGlobalNode()
+{
+	GlobalDirector::registerGlobalNode(Mouse::getInstance());
+}
+
+Mouse* Mouse::getInstance()
+{
+	if (Mouse::instance == nullptr)
+	{
+		Mouse::instance = new Mouse();
+		Mouse::instance->autorelease();
+	}
+
+	return Mouse::instance;
 }
 
 Mouse::Mouse()
 {
+	this->mouseHud = Hud::create();
 	this->mouseSpriteIdle = Sprite::create(UIResources::Menus_MouseIdle);
 	this->mouseSpritePoint = Sprite::create(UIResources::Menus_MousePoint);
 	this->mouseSpritePointPressed = Sprite::create(UIResources::Menus_MousePointPressed);
@@ -35,10 +47,14 @@ Mouse::Mouse()
 
 	this->setActiveMouseSprite(this->mouseSpriteIdle);
 
-	this->addChild(this->mouseSpriteIdle);
-	this->addChild(this->mouseSpritePoint);
-	this->addChild(this->mouseSpritePointPressed);
-	this->addChild(this->mouseSpriteDrag);
+	// Nothing should ever go higher in Z index than the mouse
+	this->mouseHud->setZOrder(std::numeric_limits<int>().max());
+
+	this->addChild(this->mouseHud);
+	this->mouseHud->addChild(this->mouseSpriteIdle);
+	this->mouseHud->addChild(this->mouseSpritePoint);
+	this->mouseHud->addChild(this->mouseSpritePointPressed);
+	this->mouseHud->addChild(this->mouseSpriteDrag);
 }
 
 Mouse::~Mouse()
@@ -63,21 +79,6 @@ void Mouse::initializeListeners()
 	);
 
 	this->addEventListener(mouseStateUpdateListener);
-}
-
-void Mouse::pause()
-{
-	this->setVisible(false);
-
-	SmartNode::pause();
-}
-
-void Mouse::resume()
-{
-	this->setSpriteToCursorPosition();
-	this->setVisible(true);
-
-	SmartNode::resume();
 }
 
 const cocos2d::Vec2& Mouse::getPosition() const

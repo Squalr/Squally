@@ -9,6 +9,7 @@
 #include "Engine/Maps/ObjectLayerDeserializer.h"
 #include "Engine/Maps/Backgrounds/BackgroundDeserializer.h"
 #include "Engine/Physics/CollisionDeserializer.h"
+#include "Engine/UI/Mouse.h"
 
 void EngineBootstrapper::initialize()
 {
@@ -19,6 +20,7 @@ void EngineBootstrapper::initialize()
 	DeveloperModeController::registerGlobalNode();
 	GameCamera::registerGlobalNode();
 	Input::registerGlobalNode();
+	Mouse::registerGlobalNode();
 	MouseState::registerGlobalNode();
 	ObjectLayerDeserializer::registerGlobalNode();
 	CollisionDeserializer::registerGlobalNode();
