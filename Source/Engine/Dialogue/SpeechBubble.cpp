@@ -24,3 +24,8 @@ SpeechBubble::SpeechBubble()
 SpeechBubble::~SpeechBubble()
 {
 }
+
+void SpeechBubble::runDialogue(DialogueTree* dialogueTree)
+{
+
+}

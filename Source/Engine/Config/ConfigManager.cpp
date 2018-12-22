@@ -12,6 +12,7 @@ const std::string ConfigManager::ResolutionKey = "resolution";
 const std::string ConfigManager::FullScreenKey = "fullscreen";
 const std::string ConfigManager::SoundVolumeKey = "sound";
 const std::string ConfigManager::MusicVolumeKey = "music";
+const std::string ConfigManager::LanguageKey = "language";
 
 ConfigManager* ConfigManager::instance = nullptr;
 
@@ -54,6 +55,26 @@ void ConfigManager::save()
 	catch (...)
 	{
 	}
+}
+
+bool ConfigManager::hasLanguageSaved()
+{
+	return GameUtils::keyExists(&ConfigManager::getInstance()->valueMap, ConfigManager::LanguageKey);
+}
+
+std::string ConfigManager::getLanguage()
+{
+	if (GameUtils::keyExists(&ConfigManager::getInstance()->valueMap, ConfigManager::LanguageKey))
+	{
+		return ConfigManager::getInstance()->valueMap[ConfigManager::LanguageKey].asString();
+	}
+
+	return "en";
+}
+
+void ConfigManager::setLanguage(std::string languageCode)
+{
+	ConfigManager::getInstance()->valueMap[ConfigManager::LanguageKey] = Value(languageCode);
 }
 
 void ConfigManager::setResolution(ResolutionSetting resolution)

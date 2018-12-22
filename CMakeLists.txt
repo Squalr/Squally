@@ -88,6 +88,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Events/CollisionMappingEvents.cpp
 	Source/Engine/Events/DeserializationEvents.cpp
 	Source/Engine/Events/DeveloperModeEvents.cpp
+	Source/Engine/Events/LocalizationEvents.cpp
 	Source/Engine/Events/MouseEvents.cpp
 	Source/Engine/Events/SceneEvents.cpp
 	Source/Engine/GlobalDirector.cpp
@@ -100,6 +101,8 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Input/Input.cpp
 	Source/Engine/Input/MouseState.cpp
 	Source/Engine/Localization/Localization.cpp
+	Source/Engine/Localization/LocalizedLabel.cpp
+	Source/Engine/Localization/LocalizedString.cpp
 	Source/Engine/Maps/Backgrounds/Background.cpp
 	Source/Engine/Maps/Backgrounds/BackgroundDeserializer.cpp
 	Source/Engine/Maps/MapLoader.cpp
@@ -842,6 +845,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Events/CollisionMappingEvents.h
 	Source/Engine/Events/DeserializationEvents.h
 	Source/Engine/Events/DeveloperModeEvents.h
+	Source/Engine/Events/LocalizationEvents.h
 	Source/Engine/Events/MouseEvents.h
 	Source/Engine/Events/SceneEvents.h
 	Source/Engine/GlobalDirector.h
@@ -854,6 +858,8 @@ list(APPEND GAME_HEADER
 	Source/Engine/Input/Input.h
 	Source/Engine/Input/MouseState.h
 	Source/Engine/Localization/Localization.h
+	Source/Engine/Localization/LocalizedLabel.h
+	Source/Engine/Localization/LocalizedString.h
 	Source/Engine/Maps/Backgrounds/Background.h
 	Source/Engine/Maps/Backgrounds/BackgroundDeserializer.h
 	Source/Engine/Maps/MapLoader.h

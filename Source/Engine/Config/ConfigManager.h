@@ -31,6 +31,10 @@ public:
 	static float getSoundVolume();
 	static float getMusicVolume();
 
+	static bool hasLanguageSaved();
+	static std::string getLanguage();
+	static void setLanguage(std::string languageCode);
+
 	static void save();
 
 private:
@@ -47,4 +51,5 @@ private:
 	static const std::string FullScreenKey;
 	static const std::string SoundVolumeKey;
 	static const std::string MusicVolumeKey;
+	static const std::string LanguageKey;
 };
