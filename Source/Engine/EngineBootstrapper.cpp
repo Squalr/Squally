@@ -7,12 +7,14 @@
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
 #include "Engine/Maps/ObjectLayerDeserializer.h"
+#include "Engine/Maps/Backgrounds/BackgroundDeserializer.h"
 #include "Engine/Physics/CollisionDeserializer.h"
 
 void EngineBootstrapper::initialize()
 {
 	// Initialize global objects
 	Analytics::registerGlobalNode();
+	BackgroundDeserializer::registerGlobalNode();
 	CollisionEventDispatcher::registerGlobalNode();
 	DeveloperModeController::registerGlobalNode();
 	GameCamera::registerGlobalNode();

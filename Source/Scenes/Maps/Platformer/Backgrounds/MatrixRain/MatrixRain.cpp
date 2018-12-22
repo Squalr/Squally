@@ -1,5 +1,9 @@
 #include "MatrixRain.h"
 
+#include "Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixStrand.h"
+
+using namespace cocos2d;
+
 const int MatrixRain::strandCount = 32;
 
 MatrixRain* MatrixRain::create()

@@ -1,5 +1,14 @@
 #include "Fireflies.h"
 
+#include "cocos/2d/CCParticleSystemQuad.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Camera/GameCamera.h"
+
+#include "Resources/ParticleResources.h"
+
+using namespace cocos2d;
+
 const std::string Fireflies::MapKeyWeatherLayerFireflies = "fireflies";
 
 Fireflies* Fireflies::create(ValueMap* properties, std::string name)
@@ -39,5 +48,5 @@ void Fireflies::update(float dt)
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 
-	this->fireflies->setSourcePosition(cameraPosition + visibleSize / 2);
+	this->fireflies->setSourcePosition(cameraPosition + visibleSize / 2.0f);
 }

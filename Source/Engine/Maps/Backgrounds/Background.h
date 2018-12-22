@@ -14,4 +14,3 @@ private:
 
 	Hud* background;
 };
-

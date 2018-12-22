@@ -7,7 +7,7 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/Dialogue/Dialogue.h"
+#include "Engine/Dialogue/DialogueLabel.h"
 #include "Engine/Localization/Localization.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Cutscenes/Objects/StarLayer.h"
@@ -46,7 +46,7 @@ IntroSpace::IntroSpace()
 	this->weaver4 = SmartAnimationSequenceNode::create(CutsceneResources::IntroSpace_Weaver_0000);
 	this->weaver5 = SmartAnimationSequenceNode::create(CutsceneResources::IntroSpace_Weaver_0000);
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, IntroSpace::dialogueHeight);
-	this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneIntroSpace, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneIntroSpace, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	this->escapeLabel = Label::createWithTTF("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
@@ -128,7 +128,7 @@ void IntroSpace::onDialogueShown()
 			}
 		}),
 		nullptr
-		));
+	));
 }
 
 void IntroSpace::runCutscene()

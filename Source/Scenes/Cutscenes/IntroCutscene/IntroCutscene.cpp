@@ -1,5 +1,19 @@
 #include "IntroCutscene.h"
 
+#include "Engine/Sound/SoundManager.h"
+#include "Scenes/Cutscenes/IntroCutscene/BoardMembers.h"
+#include "Scenes/Cutscenes/IntroCutscene/HomeAssistantRobot.h"
+#include "Scenes/Cutscenes/IntroCutscene/NeonCity.h"
+#include "Scenes/Cutscenes/IntroCutscene/RobotDoctor.h"
+#include "Scenes/Cutscenes/IntroCutscene/SquallyUploadMars.h"
+#include "Scenes/Cutscenes/IntroCutscene/SquallyUploadSpace.h"
+#include "Scenes/Cutscenes/IntroCutscene/VaporLabs.h"
+#include "Scenes/Cutscenes/IntroCutscene/VaporWeb.h"
+
+#include "Resources/MusicResources.h"
+
+using namespace cocos2d;
+
 IntroCutscene* IntroCutscene::create(std::function<void()> cutsceneCompleteCallback)
 {
 	IntroCutscene* instance = new IntroCutscene(cutsceneCompleteCallback);

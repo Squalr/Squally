@@ -1,6 +1,20 @@
 #include "SquallyUploadMars.h"
 
+#include "cocos/2d/CCLabel.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/math/Vec2.h"
+
+#include "Engine/Dialogue/DialogueLabel.h"
 #include "Engine/Localization/Localization.h"
+#include "Scenes/Cutscenes/Objects/StarLayer.h"
+
+#include "Resources/CutsceneResources.h"
+#include "Resources/StringResources.h"
+
+using namespace cocos2d;
 
 const Vec2 SquallyUploadMars::panOffset = Vec2(-608.0f, 256.0f);
 
@@ -24,7 +38,7 @@ SquallyUploadMars::SquallyUploadMars()
 	this->squally->setOpacity(0);
 	this->background->setOpacity(0);
 
-	this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneSquallyUploadMars, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneSquallyUploadMars, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
 	this->escapeLabel = Label::createWithTTF("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);

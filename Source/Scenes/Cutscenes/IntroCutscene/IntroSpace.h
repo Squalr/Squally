@@ -9,7 +9,7 @@ namespace cocos2d
 	class Sprite;
 }
 
-class Dialogue;
+class DialogueLabel;
 class SmartAnimationSequenceNode;
 class StarLayer;
 
@@ -40,7 +40,7 @@ private:
 	SmartAnimationSequenceNode* weaver5;
 
 	cocos2d::LayerColor* dialoguePlate;
-	Dialogue* dialogue;
+	DialogueLabel* dialogue;
 	cocos2d::Label* escapeLabel;
 
 	static const float dialogueHeight;

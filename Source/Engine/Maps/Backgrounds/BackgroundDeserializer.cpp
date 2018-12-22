@@ -3,7 +3,7 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/Utils/GameUtils.h"
 
-#include "Scenes/Maps/Platformer/Backgrounds/Background.h"
+#include "Engine/Maps/Backgrounds/Background.h"
 
 using namespace cocos2d;
 

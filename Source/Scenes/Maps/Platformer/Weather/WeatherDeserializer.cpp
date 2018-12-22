@@ -2,7 +2,6 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Utils/GameUtils.h"
-
 #include "Scenes/Maps/Platformer/Weather/Fireflies.h"
 #include "Scenes/Maps/Platformer/Weather/Rain.h"
 #include "Scenes/Maps/Platformer/Weather/Snow.h"

@@ -1,6 +1,19 @@
 #include "HomeAssistantRobot.h"
 
+#include "cocos/2d/CCLabel.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Dialogue/DialogueLabel.h"
 #include "Engine/Localization/Localization.h"
+
+#include "Resources/CutsceneResources.h"
+#include "Resources/StringResources.h"
+
+using namespace cocos2d;
 
 const Vec2 HomeAssistantRobot::panOffset = Vec2(-608.0f, 256.0f);
 
@@ -24,15 +37,20 @@ HomeAssistantRobot::HomeAssistantRobot(HomeAssistantRobotScene homeAssistantRobo
 
 	switch (this->activeScene)
 	{
-	case HomeAssistantRobotScene::Intro:
-		this->robot = Sprite::create(CutsceneResources::HomeAssistant_Robot);
-		this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneHomeAssistantRobot, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
-		this->brokenPlate->setVisible(false);
-		break;
-	case HomeAssistantRobotScene::Singularity:
-		this->robot = Sprite::create(CutsceneResources::HomeAssistant_RobotEvil);
-		this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneHomeAssistantRobotSingularity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
-		break;
+		default:
+		case HomeAssistantRobotScene::Intro:
+		{
+			this->robot = Sprite::create(CutsceneResources::HomeAssistant_Robot);
+			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneHomeAssistantRobot, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			this->brokenPlate->setVisible(false);
+			break;
+		}
+		case HomeAssistantRobotScene::Singularity:
+		{
+			this->robot = Sprite::create(CutsceneResources::HomeAssistant_RobotEvil);
+			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneHomeAssistantRobotSingularity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			break;
+		}
 	}
 
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
@@ -95,29 +113,34 @@ void HomeAssistantRobot::onDialogueShown()
 {
 	switch (this->activeScene)
 	{
-	case HomeAssistantRobotScene::Intro:
-		this->dialogue->runAction(Sequence::create(
-			DelayTime::create(3.0f),
-			CallFunc::create([=]() {
-				if (!this->dialogue->showNextDialogue())
-				{
-					this->endCutsceneClip();
-				}
-			}),
-			nullptr
-		));
-		break;
-	case HomeAssistantRobotScene::Singularity:
-		this->dialogue->runAction(Sequence::create(
-			DelayTime::create(3.0f),
-			CallFunc::create([=]() {
-				if (!this->dialogue->showNextDialogue())
-				{
-					this->endCutsceneClip();
-				}
-			}),
-			nullptr
-		));
-		break;
+		default:
+		case HomeAssistantRobotScene::Intro:
+		{
+			this->dialogue->runAction(Sequence::create(
+				DelayTime::create(3.0f),
+				CallFunc::create([=]() {
+					if (!this->dialogue->showNextDialogue())
+					{
+						this->endCutsceneClip();
+					}
+				}),
+				nullptr
+			));
+			break;
+		}
+		case HomeAssistantRobotScene::Singularity:
+		{
+			this->dialogue->runAction(Sequence::create(
+				DelayTime::create(3.0f),
+				CallFunc::create([=]() {
+					if (!this->dialogue->showNextDialogue())
+					{
+						this->endCutsceneClip();
+					}
+				}),
+				nullptr
+			));
+			break;
+		}
 	}
 }

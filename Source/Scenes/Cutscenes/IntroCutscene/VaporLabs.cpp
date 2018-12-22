@@ -1,6 +1,14 @@
 #include "VaporLabs.h"
 
+#include "Engine/Dialogue/DialogueLabel.h"
 #include "Engine/Localization/Localization.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Scenes/Cutscenes/Objects/StarLayer.h"
+
+#include "Resources/CutsceneResources.h"
+#include "Resources/StringResources.h"
+
+using namespace cocos2d;
 
 const Vec2 VaporLabs::panOffset = Vec2(-512.0f, 24.0f);
 
@@ -30,7 +38,7 @@ VaporLabs::VaporLabs()
 	this->sky->setContentSize(Size(480.0f, 256.0f));
 
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
-	this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneVaporLabs, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneVaporLabs, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	this->escapeLabel = Label::createWithTTF("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));

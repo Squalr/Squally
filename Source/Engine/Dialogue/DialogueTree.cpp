@@ -30,10 +30,10 @@ DialogueTree * DialogueTree::loadDialogueFromJson(std::string json)
 	if (document.HasMember("Dialogue"))
 	{
 		GenericObject<false, rapidjson::Value::ValueType> dialogueObject = document["Dialogue"].GetObject();
-		dialogueText = DialogueTree::resolveDialogue(&dialogueObject);
+		dialogueText = DialogueTree::resolveDialogue(dialogueObject);
 	}
 
-	std::vector<std::pair<std::string, DialogueTree*>>* children = new std::vector<std::pair<std::string, DialogueTree*>>();
+	std::vector<std::pair<std::string, DialogueTree*>> children = std::vector<std::pair<std::string, DialogueTree*>>();
 
 	if (document.HasMember("Links"))
 	{
@@ -53,7 +53,7 @@ DialogueTree * DialogueTree::loadDialogueFromJson(std::string json)
 				if (field == "Choice")
 				{
 					GenericObject<true, rapidjson::Value::ValueType> choiceObject = member->value.GetObject();
-					choiceText = DialogueTree::resolveDialogue(&choiceObject);
+					choiceText = DialogueTree::resolveDialogue(choiceObject);
 				}
 
 				if (field == "Node")
@@ -71,7 +71,7 @@ DialogueTree * DialogueTree::loadDialogueFromJson(std::string json)
 
 			if (child != nullptr)
 			{
-				children->push_back(std::pair<std::string, DialogueTree*>(choiceText, child));
+				children.push_back(std::pair<std::string, DialogueTree*>(choiceText, child));
 			}
 		}
 	}
@@ -81,7 +81,7 @@ DialogueTree * DialogueTree::loadDialogueFromJson(std::string json)
 	return dialog;
 }
 
-DialogueTree::DialogueTree(std::string text, std::vector<std::pair<std::string, DialogueTree*>>* children)
+DialogueTree::DialogueTree(std::string text, std::vector<std::pair<std::string, DialogueTree*>> children)
 {
 	this->dialogueText = text;
 	this->dialogueChildren = children;
@@ -89,22 +89,17 @@ DialogueTree::DialogueTree(std::string text, std::vector<std::pair<std::string, 
 
 DialogueTree::~DialogueTree()
 {
-	if (this->dialogueChildren != nullptr)
+	for (auto it = this->dialogueChildren.begin(); it != this->dialogueChildren.end(); it++)
 	{
-		for (auto it = this->dialogueChildren->begin(); it != this->dialogueChildren->end(); it++)
-		{
-			delete((*it).second);
-		}
-
-		delete(this->dialogueChildren);
+		delete((*it).second);
 	}
 }
 
-std::string DialogueTree::resolveDialogue(GenericObject<true, rapidjson::Value::ValueType>* dialogueObject)
+std::string DialogueTree::resolveDialogue(GenericObject<true, rapidjson::Value::ValueType>& dialogueObject)
 {
 	std::string languageCode = Localization::getLanguageCode();
 
-	for (auto it = dialogueObject->begin(); it != dialogueObject->end(); it++)
+	for (auto it = dialogueObject.begin(); it != dialogueObject.end(); it++)
 	{
 		if (it->name.GetString() == languageCode)
 		{
@@ -115,11 +110,11 @@ std::string DialogueTree::resolveDialogue(GenericObject<true, rapidjson::Value::
 	return "";
 }
 
-std::string DialogueTree::resolveDialogue(GenericObject<false, rapidjson::Value::ValueType>* dialogueObject)
+std::string DialogueTree::resolveDialogue(GenericObject<false, rapidjson::Value::ValueType>& dialogueObject)
 {
 	std::string languageCode = Localization::getLanguageCode();
 
-	for (auto it = dialogueObject->begin(); it != dialogueObject->end(); it++)
+	for (auto it = dialogueObject.begin(); it != dialogueObject.end(); it++)
 	{
 		if (it->name.GetString() == languageCode)
 		{
@@ -134,9 +129,9 @@ DialogueTree* DialogueTree::getNextDialogue()
 {
 	DialogueTree* dialogueTree = nullptr;
 
-	if (dialogueChildren->size() == 1)
+	if (dialogueChildren.size() == 1)
 	{
-		dialogueTree = (*this->dialogueChildren)[0].second;
+		dialogueTree = this->dialogueChildren[0].second;
 	}
 
 	return dialogueTree;

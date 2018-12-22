@@ -1,6 +1,20 @@
 #include "RobotDoctor.h"
 
+#include "cocos/2d/CCLabel.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/math/Vec2.h"
+
+#include "Engine/Dialogue/DialogueLabel.h"
 #include "Engine/Localization/Localization.h"
+
+#include "Resources/CutsceneResources.h"
+#include "Resources/StringResources.h"
+
+using namespace cocos2d;
 
 const Vec2 RobotDoctor::panOffset = Vec2(-608.0f, 256.0f);
 
@@ -24,14 +38,19 @@ RobotDoctor::RobotDoctor(RobotDoctorScene robotDoctorScene)
 
 	switch (this->activeScene)
 	{
-	case RobotDoctorScene::Intro:
-		this->robot = Sprite::create(CutsceneResources::RobotDoctor_Doctor);
-		this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneRobotDoctor, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
-		break;
-	case RobotDoctorScene::Singularity:
-		this->robot = Sprite::create(CutsceneResources::RobotDoctor_DoctorEvil);
-		this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneRobotDoctorSingularity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
-		break;
+		default:
+		case RobotDoctorScene::Intro:
+		{
+			this->robot = Sprite::create(CutsceneResources::RobotDoctor_Doctor);
+			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneRobotDoctor, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			break;
+		}
+		case RobotDoctorScene::Singularity:
+		{
+			this->robot = Sprite::create(CutsceneResources::RobotDoctor_DoctorEvil);
+			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneRobotDoctorSingularity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			break;
+		}
 	}
 
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
@@ -93,29 +112,34 @@ void RobotDoctor::onDialogueShown()
 {
 	switch (this->activeScene)
 	{
-	case RobotDoctorScene::Intro:
-		this->dialogue->runAction(Sequence::create(
-			DelayTime::create(3.0f),
-			CallFunc::create([=]() {
-				if (!this->dialogue->showNextDialogue())
-				{
-					this->endCutsceneClip();
-				}
-			}),
-			nullptr
-			));
-		break;
-	case RobotDoctorScene::Singularity:
-		this->dialogue->runAction(Sequence::create(
-			DelayTime::create(3.0f),
-			CallFunc::create([=]() {
-				if (!this->dialogue->showNextDialogue())
-				{
-					this->endCutsceneClip();
-				}
-			}),
-			nullptr
-			));
-		break;
+		default:
+		case RobotDoctorScene::Intro:
+		{
+			this->dialogue->runAction(Sequence::create(
+				DelayTime::create(3.0f),
+				CallFunc::create([=]() {
+					if (!this->dialogue->showNextDialogue())
+					{
+						this->endCutsceneClip();
+					}
+				}),
+				nullptr
+				));
+			break;
+		}
+		case RobotDoctorScene::Singularity:
+		{
+			this->dialogue->runAction(Sequence::create(
+				DelayTime::create(3.0f),
+				CallFunc::create([=]() {
+					if (!this->dialogue->showNextDialogue())
+					{
+						this->endCutsceneClip();
+					}
+				}),
+				nullptr
+				));
+			break;
+		}
 	}
 }

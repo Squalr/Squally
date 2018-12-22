@@ -2,15 +2,18 @@
 #include "cocos2d.h"
 
 #include "Engine/Cutscenes/CutsceneClip.h"
-#include "Engine/Dialogue/Dialogue.h"
-#include "Engine/UI/InfiniteParallaxNode.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Resources/CutsceneResources.h"
-#include "Resources/StringResources.h"
-#include "Scenes/Cutscenes/Objects/FlyingCar.h"
-#include "Scenes/Cutscenes/Objects/StarLayer.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Label;
+	class LayerColor;
+	class Sprite;
+}
+
+class DialogueLabel;
+class FlyingCar;
+class InfiniteParallaxNode;
+class StarLayer;
 
 class NeonCity : public CutsceneClip
 {
@@ -37,21 +40,21 @@ private:
 
 	NeonCityScene activeScene;
 
-	LayerGradient* sky;
-	LayerColor* darkFilter;
+	cocos2d::LayerGradient* sky;
+	cocos2d::LayerColor* darkFilter;
 	StarLayer* starLayer;
 	InfiniteParallaxNode* cityBackground;
 	InfiniteParallaxNode* cityMidground;
-	Sprite* vaporCorp;
+	cocos2d::Sprite* vaporCorp;
 	FlyingCar* junker1;
 	FlyingCar* viper1;
 	FlyingCar* viper2;
 	FlyingCar* propeller1;
 	InfiniteParallaxNode* cityForeground;
 
-	LayerColor* dialoguePlate;
-	Dialogue* dialogue;
-	Label* escapeLabel;
+	cocos2d::LayerColor* dialoguePlate;
+	DialogueLabel* dialogue;
+	cocos2d::Label* escapeLabel;
 
 	static const float vaporCorpOffset;
 };

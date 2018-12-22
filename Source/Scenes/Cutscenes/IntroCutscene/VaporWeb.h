@@ -1,16 +1,18 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Engine/Cutscenes/CutsceneClip.h"
-#include "Engine/Dialogue/Dialogue.h"
-#include "Engine/Localization/Localization.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Resources/CutsceneResources.h"
-#include "Resources/StringResources.h"
-#include "Scenes/Cutscenes/Objects/Grid.h"
-#include "Scenes/Cutscenes/Objects/GridObject.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class LayerColor;
+	class Label;
+	class FiniteTimeAction;
+	class Sprite;
+}
+
+class DialogueLabel;
+class Grid;
+class GridObject;
 
 class VaporWeb : public CutsceneClip
 {
@@ -29,23 +31,23 @@ private:
 	void runCutscene();
 	int getCellIndex(int row, int column);
 
-	FiniteTimeAction* createCutsceneGridSetup();
-	FiniteTimeAction* createCutsceneForest();
-	FiniteTimeAction* createCutsceneCaverns();
-	FiniteTimeAction* createCutsceneObelisk();
+	cocos2d::FiniteTimeAction* createCutsceneGridSetup();
+	cocos2d::FiniteTimeAction* createCutsceneForest();
+	cocos2d::FiniteTimeAction* createCutsceneCaverns();
+	cocos2d::FiniteTimeAction* createCutsceneObelisk();
 
-	std::map<int, GridObject*>* cells;
+	std::map<int, GridObject*> cells;
 
-	Sprite* forestBackground;
-	Sprite* cavernsBackground;
-	Sprite* obeliskBackground;
+	cocos2d::Sprite* forestBackground;
+	cocos2d::Sprite* cavernsBackground;
+	cocos2d::Sprite* obeliskBackground;
 
 	Grid* grid;
-	Sprite* darkLord;
+	cocos2d::Sprite* darkLord;
 
-	LayerColor* dialoguePlate;
-	Dialogue* dialogue;
-	Label* escapeLabel;
+	cocos2d::LayerColor* dialoguePlate;
+	DialogueLabel* dialogue;
+	cocos2d::Label* escapeLabel;
 
 	static const float dialogueHeight;
 
