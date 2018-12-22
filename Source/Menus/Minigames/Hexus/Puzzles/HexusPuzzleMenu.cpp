@@ -56,8 +56,6 @@ HexusPuzzlesMenu::HexusPuzzlesMenu()
 	{
 		this->addChild(*it);
 	}
-
-	this->addChild(Mouse::create());
 }
 
 HexusPuzzlesMenu::~HexusPuzzlesMenu()

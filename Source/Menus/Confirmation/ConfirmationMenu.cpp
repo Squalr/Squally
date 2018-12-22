@@ -28,7 +28,6 @@ ConfirmationMenu::ConfirmationMenu()
 	this->addChild(this->cancelButton);
 	this->addChild(this->confirmButton);
 	this->addChild(this->confirmationLabel);
-	this->addChild(Mouse::create());
 }
 
 ConfirmationMenu::~ConfirmationMenu()

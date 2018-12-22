@@ -171,7 +171,6 @@ HexusDeckManagement::HexusDeckManagement()
 	this->addChild(this->specialCardsInDeckValueLabel);
 	this->addChild(this->filters);
 	this->addChild(this->backButton);
-	this->addChild(Mouse::create());
 }
 
 HexusDeckManagement::~HexusDeckManagement()

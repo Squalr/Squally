@@ -45,7 +45,6 @@ void WorldMap::registerGlobalScene()
 WorldMap::WorldMap()
 {
 	this->mapNodes = std::vector<MapNode*>();
-	this->mouse = Mouse::create();
 	this->background = Sprite::create(UIResources::Menus_WorldMap_WorldMap);
 	this->hud = Hud::create();
 
@@ -105,7 +104,6 @@ WorldMap::WorldMap()
 
 	this->background->setAnchorPoint(Vec2(0.0f, 0.0f));
 
-	this->hud->addChild(this->mouse);
 	this->addChild(this->background);
 	this->addChild(this->forest);
 	this->addChild(this->waterRuins);
@@ -144,13 +142,13 @@ void WorldMap::onEnter()
 
 	GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->background->getContentSize().width, this->background->getContentSize().height));
 
-	CameraTrackingData trackingData = CameraTrackingData(this->mouse, Vec2(416.0f, 234.0f), CameraTrackingData::CameraScrollType::Ellipse);
+	CameraTrackingData trackingData = CameraTrackingData(Mouse::getInstance(), Vec2(416.0f, 234.0f), CameraTrackingData::CameraScrollType::Ellipse);
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	// Because the mouse is a HUD object (and thus unaffected by the camera position), we need a custom function for getting the position to help with camera tracking
 	trackingData.customPositionFunction = [=]()
 	{
-		return this->mouse->getPosition() + GameCamera::getInstance()->getCameraPosition() - visibleSize / 2.0f;
+		return Mouse::getInstance()->getPosition() + GameCamera::getInstance()->getCameraPosition() - visibleSize / 2.0f;
 	};
 
 	Vec2 startPosition = this->voidCrystalNode->getPosition();

@@ -123,7 +123,6 @@ TitleScreen::TitleScreen()
 	this->addChild(this->arcadeModeButton);
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
-	this->addChild(Mouse::create());
 }
 
 TitleScreen::~TitleScreen()

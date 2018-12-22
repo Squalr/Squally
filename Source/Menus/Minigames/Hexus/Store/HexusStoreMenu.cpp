@@ -257,8 +257,6 @@ HexusStoreMenu::HexusStoreMenu()
 		this->specialCardsScrollPane->addChild(std::get<0>(*it));
 	}
 
-	this->addChild(Mouse::create());
-
 	this->onLootBoxTabClick();
 }
 
