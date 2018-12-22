@@ -8,3 +8,6 @@
 [submodule "external/AFNetworking"]
 	path = external/AFNetworking
 	url = git@github.com:teknoman117/AFNetworking
+[submodule "vcpkg"]
+	path = vcpkg
+	url = git@github.com:Microsoft/vcpkg.git
