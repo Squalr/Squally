@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/SmartNode.h"
+#include "Engine/GlobalNode.h"
 
 namespace cocos2d
 {
@@ -9,10 +9,13 @@ namespace cocos2d
 	class Vec2;
 }
 
-class Mouse : public SmartNode
+class Hud;
+
+class Mouse : public GlobalNode
 {
 public:
-	static Mouse * create();
+	static void registerGlobalNode();
+	static Mouse* getInstance();
 
 	const cocos2d::Vec2& getPosition() const override;
 
@@ -23,11 +26,11 @@ protected:
 private:
 	void onEnter() override;
 	void initializeListeners() override;
-	void pause() override;
-	void resume() override;
 	void onMouseStateUpdateEvent(cocos2d::EventCustom* eventCustom);
 	void setActiveMouseSprite(cocos2d::Sprite* mouseSprite);
 	void setSpriteToCursorPosition();
+
+	Hud* mouseHud;
 
 	cocos2d::Vec2 readMousePosition;
 	cocos2d::Sprite* activeMouseSprite;
@@ -35,5 +38,7 @@ private:
 	cocos2d::Sprite* mouseSpritePoint;
 	cocos2d::Sprite* mouseSpritePointPressed;
 	cocos2d::Sprite* mouseSpriteDrag;
+
+	static Mouse* instance;
 };
 
