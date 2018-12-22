@@ -49,6 +49,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = PendulumBlade::create(&properties);
 		}
+		else if (name == MechanicalFlail::MapKeyMechanicalFlail)
+		{
+			newObject = MechanicalFlail::create(&properties);
+		}
 		else if (name == PlushieMonkey::MapKeyPlushieMonkey)
 		{
 			newObject = PlushieMonkey::create(&properties);

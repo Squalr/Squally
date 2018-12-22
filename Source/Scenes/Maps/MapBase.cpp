@@ -35,10 +35,11 @@ MapBase::MapBase()
 	this->developerHud = DeveloperHud::create();
 	this->hud = Hud::create();
 
-	this->hackerModeBackground = Sprite::create(BackgroundResources::MatrixRain_HackerModeBackground);
+	this->hackerModeBackground = Hud::create();
 	this->hackerModeRain = MatrixRain::create();
 	this->hackerModeHud = HackerModeHud::create(CC_CALLBACK_0(MapBase::toggleHackerMode, this));
 
+	this->hackerModeBackground->addChild(Sprite::create(BackgroundResources::MatrixRain_HackerModeBackground));
 	this->hackerModeBackground->setAnchorPoint(Vec2(0.0f, 0.0f));
 
 	this->hackerModeBackground->setVisible(false);

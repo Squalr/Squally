@@ -10,16 +10,16 @@ namespace cocos2d
 	class Sprite;
 }
 
-class PendulumBlade : public HackableObject
+class MechanicalFlail : public HackableObject
 {
 public:
-	static PendulumBlade* create(cocos2d::ValueMap* initProperties);
+	static MechanicalFlail* create(cocos2d::ValueMap* initProperties);
 
-	static const std::string MapKeyPendulumBlade;
+	static const std::string MapKeyMechanicalFlail;
 
 protected:
-	PendulumBlade(cocos2d::ValueMap* initProperties);
-	~PendulumBlade();
+	MechanicalFlail(cocos2d::ValueMap* initProperties);
+	~MechanicalFlail();
 
 	cocos2d::Vec2 getButtonOffset() override;
 
@@ -30,9 +30,9 @@ private:
 	void update(float) override;
 	void buildChain();
 
-	cocos2d::Sprite* neck;
-	cocos2d::Node* bladeChain;
-	float chainHeight;
+	cocos2d::Sprite* joint;
+	cocos2d::Node* flailChain;
+	float flailHeight;
 
 	HackableData* pendulumBladeDataSpeedY;
 	cocos2d::Vec2 pendulumBladeSpeed;

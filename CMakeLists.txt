@@ -421,6 +421,7 @@ list(APPEND GAME_SOURCE
 	Source/Objects/Platformer/PlatformerObjectDeserializer.cpp
 	Source/Objects/Platformer/Plushies/Plushie.cpp
 	Source/Objects/Platformer/Plushies/PlushieMonkey.cpp
+	Source/Objects/Platformer/Traps/MechanicalFlail.cpp
 	Source/Objects/Platformer/Traps/PendulumBlade.cpp
 	Source/Objects/Platformer/Wind.cpp
 	Source/Resources/BackgroundResources.cpp
@@ -1167,6 +1168,7 @@ list(APPEND GAME_HEADER
 	Source/Objects/Platformer/Plushies/Plushie.h
 	Source/Objects/Platformer/Plushies/PlushieMonkey.h
 	Source/Objects/Platformer/Plushies/Plushies.h
+	Source/Objects/Platformer/Traps/MechanicalFlail.h
 	Source/Objects/Platformer/Traps/PendulumBlade.h
 	Source/Objects/Platformer/Wind.h
 	Source/Resources/BackgroundResources.h
