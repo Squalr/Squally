@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="469">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="480">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -133,6 +133,7 @@
  </layer>
  <objectgroup name="terrain 2">
   <properties>
+   <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="436" name="solid" type="terrain" x="4300" y="3500">
@@ -144,6 +145,7 @@
  </objectgroup>
  <objectgroup name="terrain">
   <properties>
+   <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="418" name="solid" type="terrain" x="280" y="2637">
@@ -187,14 +189,20 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="466" name="pendulum-blade" type="object" x="4709.09" y="2073.33" width="42.4242" height="551.636"/>
+  <object id="470" name="pendulum-blade" type="object" x="5231.45" y="2068.85" width="42.4242" height="537.636"/>
+  <object id="471" name="pendulum-blade" type="object" x="4434.79" y="2051.52" width="42.4242" height="470.303"/>
+  <object id="472" name="pendulum-blade" type="object" x="4839.45" y="2067.52" width="42.4242" height="318.303"/>
+  <object id="474" name="pendulum-blade" type="object" x="5604.79" y="2068.85" width="42.4242" height="318.303"/>
+  <object id="475" name="mechanical-flail" type="object" x="4638.79" y="2538.85" width="42.4242" height="198.303"/>
+  <object id="476" name="mechanical-flail" type="object" x="4996.79" y="2445.85" width="42.4242" height="264.303"/>
+  <object id="479" name="mechanical-flail" type="object" x="5436.79" y="2502.85" width="42.4242" height="166.303"/>
  </objectgroup>
  <objectgroup name="entities">
   <properties>
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="438" name="ogre" type="entity" x="4175.94" y="2518.67" width="78.7879" height="88">
+  <object id="438" name="ogre" type="entity" x="4037.94" y="2526.67" width="78.7879" height="88">
    <properties>
     <property name="battle_map" value="EndianForest/Battlegrounds"/>
     <property name="flip-x" type="bool" value="true"/>

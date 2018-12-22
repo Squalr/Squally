@@ -486,9 +486,6 @@ namespace DecorResources
 	extern const std::string Snow_stone_1;
 	extern const std::string Snow_tree;
 	extern const std::string Unsorted_base_lever;
-	extern const std::string Unsorted_blade;
-	extern const std::string Unsorted_chain_big;
-	extern const std::string Unsorted_chain_middle;
 	extern const std::string Unsorted_fence_1;
 	extern const std::string Unsorted_fence_2;
 	extern const std::string Unsorted_fence_3;
