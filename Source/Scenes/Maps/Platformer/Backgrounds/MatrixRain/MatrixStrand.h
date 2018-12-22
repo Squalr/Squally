@@ -1,11 +1,15 @@
 #pragma once
-#include "cocos2d.h"
 
-#include "MatrixLetter.h"
+#include "Engine/SmartNode.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Action;
+}
 
-class MatrixStrand : public Node
+class MatrixLetter;
+
+class MatrixStrand : public SmartNode
 {
 public:
 	static MatrixStrand* create(int strandIndex);
@@ -27,7 +31,7 @@ private:
 
 	std::vector<MatrixLetter*> letters;
 
-	Action* updateAction;
+	cocos2d::Action* updateAction;
 	float spawnSpeed;
 	int currentLetterIndex;
 	int letterCount;

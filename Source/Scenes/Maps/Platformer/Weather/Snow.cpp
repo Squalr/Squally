@@ -1,5 +1,14 @@
 #include "Snow.h"
 
+#include "cocos/2d/CCParticleSystemQuad.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Camera/GameCamera.h"
+
+#include "Resources/ParticleResources.h"
+
+using namespace cocos2d;
+
 const std::string Snow::MapKeyWeatherLayerSnow = "snow";
 
 Snow* Snow::create(ValueMap* properties, std::string name)
@@ -39,5 +48,5 @@ void Snow::update(float dt)
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 
-	this->snow->setSourcePosition(Vec2(cameraPosition.x + visibleSize.width / 2, cameraPosition.y + visibleSize.height + 64.0f));
+	this->snow->setSourcePosition(Vec2(cameraPosition.x + visibleSize.width / 2.0f, cameraPosition.y + visibleSize.height + 64.0f));
 }

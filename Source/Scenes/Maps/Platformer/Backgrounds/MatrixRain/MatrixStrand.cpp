@@ -1,5 +1,15 @@
 #include "MatrixStrand.h"
 
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Camera/GameCamera.h"
+#include "Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixLetter.h"
+
+using namespace cocos2d;
+
 const int MatrixStrand::minLetterCount = 24;
 const int MatrixStrand::maxLetterCount = 80;
 const float MatrixStrand::movementSpeed = 128.0f;
@@ -53,7 +63,7 @@ MatrixStrand::~MatrixStrand()
 
 void MatrixStrand::onEnter()
 {
-	Node::onEnter();
+	SmartNode::onEnter();
 
 	this->scheduleUpdate();
 }
@@ -76,7 +86,7 @@ void MatrixStrand::update(float dt)
 	// Kill off-screen strands
 	if (this->getPositionX() < 0 - MatrixLetter::letterSize ||
 		this->getPositionX() > visibleSize.width + MatrixLetter::letterSize ||
-		this->getPositionZ() > Director::getInstance()->getRunningScene()->getDefaultCamera()->getPositionZ() + 64.0f)
+		this->getPositionZ() > GameCamera::getInstance()->getCameraDistance() + 64.0f)
 	{
 		this->killStrand();
 	}

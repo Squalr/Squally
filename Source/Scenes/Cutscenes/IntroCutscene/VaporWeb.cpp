@@ -1,7 +1,21 @@
 #include "VaporWeb.h"
-#include "cocos/2d/CCSprite.h"
 
+#include "cocos/2d/CCLabel.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Dialogue/DialogueLabel.h"
 #include "Engine/Localization/Localization.h"
+#include "Scenes/Cutscenes/Objects/Grid.h"
+#include "Scenes/Cutscenes/Objects/GridObject.h"
+
+#include "Resources/CutsceneResources.h"
+#include "Resources/StringResources.h"
+
+using namespace cocos2d;
 
 const float VaporWeb::dialogueHeight = 256.0f;
 
@@ -19,7 +33,7 @@ VaporWeb* VaporWeb::create()
 
 VaporWeb::VaporWeb()
 {
-	this->cells = new std::map<int, GridObject*>();
+	this->cells = std::map<int, GridObject*>();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->forestBackground = Sprite::create(CutsceneResources::VaporWeb_Forest_Background);
@@ -28,7 +42,7 @@ VaporWeb::VaporWeb()
 	this->grid = Grid::create();
 	this->darkLord = Sprite::create(CutsceneResources::VaporWeb_DarkLord);
 	this->dialoguePlate = LayerColor::create(Color4B(64, 0, 64, 255), visibleSize.width, VaporWeb::dialogueHeight);
-	this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneVaporWeb, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneVaporWeb, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	this->escapeLabel = Label::createWithTTF("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
 
 	for (int column = 0; column < VaporWeb::cellColumns; column++)
@@ -45,7 +59,7 @@ VaporWeb::VaporWeb()
 			GridObject* cell = GridObject::create(Sprite::create(CutsceneResources::VaporWeb_Cell), Vec2(gridRow, gridColumn), true);
 			cell->setOpacity(0);
 
-			this->cells->emplace(this->getCellIndex(row, column), cell);
+			this->cells[this->getCellIndex(row, column)] = cell;
 
 			this->grid->addGridObject(cell);
 		}
@@ -74,7 +88,6 @@ VaporWeb::VaporWeb()
 
 VaporWeb::~VaporWeb()
 {
-	delete(this->cells);
 }
 
 void VaporWeb::onEnter()
@@ -152,7 +165,7 @@ FiniteTimeAction* VaporWeb::createCutsceneGridSetup()
 		{
 			for (int row = 0; row < VaporWeb::cellRows; row++)
 			{
-				GridObject* cell = this->cells->at(this->getCellIndex(row, column));
+				GridObject* cell = this->cells.at(this->getCellIndex(row, column));
 
 				cell->runAction(Sequence::create(
 					DelayTime::create(row * rowDelay),

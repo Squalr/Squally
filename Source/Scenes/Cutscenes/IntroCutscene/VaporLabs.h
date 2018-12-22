@@ -1,14 +1,19 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/math/Vec2.h"
 
 #include "Engine/Cutscenes/CutsceneClip.h"
-#include "Engine/Dialogue/Dialogue.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Resources/CutsceneResources.h"
-#include "Resources/StringResources.h"
-#include "Scenes/Cutscenes/Objects/StarLayer.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Label;
+	class LayerColor;
+	class LayerGradient;
+	class Sprite;
+}
+
+class DialogueLabel;
+class StarLayer;
 
 class VaporLabs : public CutsceneClip
 {
@@ -27,20 +32,20 @@ private:
 	void runCutscene();
 	void onDialogueShown();
 
-	Node* contentLayer;
-	LayerGradient* sky;
+	cocos2d::Node* contentLayer;
+	cocos2d::LayerGradient* sky;
 	StarLayer* starLayer;
-	Sprite* cityView;
-	Sprite* background;
-	Sprite* console;
-	Sprite* monitor;
-	Sprite* scientist;
+	cocos2d::Sprite* cityView;
+	cocos2d::Sprite* background;
+	cocos2d::Sprite* console;
+	cocos2d::Sprite* monitor;
+	cocos2d::Sprite* scientist;
 
-	LayerColor* siren;
+	cocos2d::LayerColor* siren;
 
-	LayerColor* dialoguePlate;
-	Dialogue* dialogue;
-	Label* escapeLabel;
+	cocos2d::LayerColor* dialoguePlate;
+	DialogueLabel* dialogue;
+	cocos2d::Label* escapeLabel;
 
-	static const Vec2 panOffset;
+	static const cocos2d::Vec2 panOffset;
 };

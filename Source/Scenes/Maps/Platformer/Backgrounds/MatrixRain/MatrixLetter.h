@@ -1,11 +1,10 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/ccTypes.h"
 
-#include "Resources/FontResources.h"
+#include "Engine/SmartNode.h"
 
-using namespace cocos2d;
-
-class MatrixLetter : public Sprite
+class MatrixLetter : public cocos2d::Sprite
 {
 public:
 	static MatrixLetter* create();
@@ -22,9 +21,9 @@ private:
 	virtual void pause(void) override;
 	void randomizeLetter();
 
-	static const Color3B letterColor;
-	static const Color3B spawnColor;
-	static const Color4B glowColor;
+	static const cocos2d::Color3B letterColor;
+	static const cocos2d::Color3B spawnColor;
+	static const cocos2d::Color4B glowColor;
 
 	static const float spawnChangeRate;
 	static const float spawnTime;

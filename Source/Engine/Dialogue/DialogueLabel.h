@@ -13,10 +13,10 @@ namespace cocos2d
 
 class DialogueTree;
 
-class Dialogue : public SmartNode
+class DialogueLabel : public SmartNode
 {
 public:
-	static Dialogue * create(std::string filePath, std::string fontResource, cocos2d::Size size);
+	static DialogueLabel* create(std::string filePath, std::string fontResource, cocos2d::Size size);
 
 	void setDialogueSpeed(float speed);
 	bool showNextDialogue();
@@ -25,8 +25,8 @@ public:
 	cocos2d::Label* label;
 
 private:
-	Dialogue(DialogueTree* root, std::string fontResource, cocos2d::Size size);
-	virtual ~Dialogue();
+	DialogueLabel(DialogueTree* root, std::string fontResource, cocos2d::Size size);
+	virtual ~DialogueLabel();
 
 	void updateLabels();
 	void runTypeWriterEffect();

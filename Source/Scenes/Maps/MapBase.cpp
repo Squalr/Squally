@@ -200,7 +200,6 @@ void MapBase::onHackerModeEnable()
 	this->map->hackerModeEnable();
 	this->mapNode->setVisible(true);
 	this->hud->setVisible(false);
-	this->mouseLayer->setVisible(false);
 
 	this->hackerModeGlow->setVisible(true);
 	this->hackerModeRain->setVisible(true);
@@ -211,11 +210,9 @@ void MapBase::onHackerModeEnable()
 
 void MapBase::onHackerModeDisable()
 {
-	this->onHackerModeEnable();
 	this->map->hackerModeDisable();
 	this->mapNode->setVisible(true);
 	this->hud->setVisible(true);
-	this->mouseLayer->setVisible(true);
 
 	this->hackerModeGlow->setVisible(false);
 	this->hackerModeRain->setVisible(false);

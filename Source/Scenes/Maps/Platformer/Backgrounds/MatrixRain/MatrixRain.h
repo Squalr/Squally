@@ -1,11 +1,9 @@
 #pragma once
-#include "cocos2d.h"
+#include <vector>
 
 #include "Engine/UI/HUD/Hud.h"
 
-#include "MatrixStrand.h"
-
-using namespace cocos2d;
+class MatrixStrand;
 
 class MatrixRain : public Hud
 {

@@ -1,25 +1,24 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/Camera/GameCamera.h"
 #include "Engine/Maps/SerializableLayer.h"
-#include "Resources/ParticleResources.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class ParticleSystem;
+}
 
 class Snow : public SerializableLayer
 {
 public:
-	static Snow* create(ValueMap* properties, std::string name);
+	static Snow* create(cocos2d::ValueMap* properties, std::string name);
 
 	static const std::string MapKeyWeatherLayerSnow;
 
 private:
-	Snow(ValueMap* properties, std::string name);
+	Snow(cocos2d::ValueMap* properties, std::string name);
 	~Snow();
 
 	void onEnter() override;
 	void update(float) override;
 
-	ParticleSystem* snow;
+	cocos2d::ParticleSystem* snow;
 };

@@ -1,6 +1,15 @@
 #include "NeonCity.h"
 
+#include "Engine/Dialogue/DialogueLabel.h"
 #include "Engine/Localization/Localization.h"
+#include "Engine/UI/InfiniteParallaxNode.h"
+#include "Scenes/Cutscenes/Objects/FlyingCar.h"
+#include "Scenes/Cutscenes/Objects/StarLayer.h"
+
+#include "Resources/CutsceneResources.h"
+#include "Resources/StringResources.h"
+
+using namespace cocos2d;
 
 const float NeonCity::vaporCorpOffset = 1280;
 
@@ -55,15 +64,21 @@ NeonCity::NeonCity(NeonCityScene neonCityScene)
 
 	switch (this->activeScene)
 	{
-	case NeonCityScene::Intro:
-		this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneNeonCity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
-		break;
-	case NeonCityScene::Return:
-		this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneNeonCityReturn, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
-		break;
-	case NeonCityScene::Singularity:
-		this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneNeonCitySingularity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
-		break;
+		case NeonCityScene::Intro:
+		{
+			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneNeonCity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			break;
+		}
+		case NeonCityScene::Return:
+		{
+			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneNeonCityReturn, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			break;
+		}
+		case NeonCityScene::Singularity:
+		{
+			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneNeonCitySingularity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			break;
+		}
 	}
 
 	this->addChild(this->sky);
@@ -94,38 +109,44 @@ void NeonCity::onEnter()
 
 	switch (this->activeScene)
 	{
-	case NeonCityScene::Intro:
-		break;
-	case NeonCityScene::Return:
-		break;
-	case NeonCityScene::Singularity:
-		this->viper1->crash();
+		case NeonCityScene::Intro:
+		{
+			break;
+		}
+		case NeonCityScene::Return:
+		{
+			break;
+		}
+		case NeonCityScene::Singularity:
+		{
+			this->viper1->crash();
 
-		this->propeller1->runAction(Sequence::create(
-			DelayTime::create(2.5f),
-			CallFunc::create([=]() {
-			this->propeller1->crash();
-			}),
-			nullptr
-		));
-
-		this->junker1->runAction(Sequence::create(
-			DelayTime::create(4.5f),
-			CallFunc::create([=]() {
-			this->junker1->crash();
-		}),
-			nullptr
+			this->propeller1->runAction(Sequence::create(
+				DelayTime::create(2.5f),
+				CallFunc::create([=]() {
+					this->propeller1->crash();
+				}),
+				nullptr
 			));
 
-		this->viper2->runAction(Sequence::create(
-			DelayTime::create(5.5f),
-			CallFunc::create([=]() {
-			this->viper2->crash();
-		}),
-			nullptr
+			this->junker1->runAction(Sequence::create(
+				DelayTime::create(4.5f),
+				CallFunc::create([=]() {
+					this->junker1->crash();
+				}),
+				nullptr
 			));
 
-		break;
+			this->viper2->runAction(Sequence::create(
+				DelayTime::create(5.5f),
+				CallFunc::create([=]() {
+					this->viper2->crash();
+				}),
+				nullptr
+			));
+
+			break;
+		}
 	}
 
 	this->cutscenePan();
@@ -163,42 +184,51 @@ void NeonCity::onDialogueShown()
 {
 	switch (this->activeScene)
 	{
-	case NeonCityScene::Intro:
-		this->dialogue->runAction(Sequence::create(
-			DelayTime::create(2.0f),
-			CallFunc::create([=]() {
-				if (!this->dialogue->showNextDialogue())
-				{
-					this->endCutsceneClip();
-				}
-			}),
-			nullptr
+		case NeonCityScene::Intro:
+		{
+			this->dialogue->runAction(Sequence::create(
+				DelayTime::create(2.0f),
+				CallFunc::create([=]() {
+					if (!this->dialogue->showNextDialogue())
+					{
+						this->endCutsceneClip();
+					}
+				}),
+				nullptr
 			));
-		break;
-	case NeonCityScene::Return:
-		this->dialogue->runAction(Sequence::create(
-			DelayTime::create(3.0f),
-			CallFunc::create([=]() {
-				if (!this->dialogue->showNextDialogue())
-				{
-					this->endCutsceneClip();
-				}
-			}),
-			nullptr
+
+			break;
+		}
+		case NeonCityScene::Return:
+		{
+			this->dialogue->runAction(Sequence::create(
+				DelayTime::create(3.0f),
+				CallFunc::create([=]() {
+					if (!this->dialogue->showNextDialogue())
+					{
+						this->endCutsceneClip();
+					}
+				}),
+				nullptr
 			));
-		break;
-	case NeonCityScene::Singularity:
-		this->dialogue->runAction(Sequence::create(
-			DelayTime::create(8.0f),
-			CallFunc::create([=]() {
-				if (!this->dialogue->showNextDialogue())
-				{
-					this->endCutsceneClip();
-				}
-			}),
-			nullptr
+
+			break;
+		}
+		case NeonCityScene::Singularity:
+		{
+			this->dialogue->runAction(Sequence::create(
+				DelayTime::create(8.0f),
+				CallFunc::create([=]() {
+					if (!this->dialogue->showNextDialogue())
+					{
+						this->endCutsceneClip();
+					}
+				}),
+				nullptr
 			));
-		break;
+
+			break;
+		}
 	}
 }
 
@@ -208,12 +238,16 @@ void NeonCity::cutscenePan()
 
 	switch (this->activeScene)
 	{
-	case NeonCityScene::Intro:
-		break;
-	case NeonCityScene::Return:
-	case NeonCityScene::Singularity:
-		moveDuration = 0.0f;
-		break;
+		case NeonCityScene::Intro:
+		{
+			break;
+		}
+		case NeonCityScene::Return:
+		case NeonCityScene::Singularity:
+		{
+			moveDuration = 0.0f;
+			break;
+		}
 	}
 
 	CallFunc* panCamera = CallFunc::create([=]()

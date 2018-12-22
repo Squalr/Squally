@@ -84,8 +84,9 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Cutscenes/Cutscene.cpp
 	Source/Engine/Cutscenes/CutsceneClip.cpp
 	Source/Engine/DeveloperMode/DeveloperModeController.cpp
-	Source/Engine/Dialogue/Dialogue.cpp
+	Source/Engine/Dialogue/DialogueLabel.cpp
 	Source/Engine/Dialogue/DialogueTree.cpp
+	Source/Engine/Dialogue/SpeechBubble.cpp
 	Source/Engine/EngineBootstrapper.cpp
 	Source/Engine/Events/CollisionEventDispatcher.cpp
 	Source/Engine/Events/CollisionMappingEvents.cpp
@@ -103,6 +104,8 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Input/Input.cpp
 	Source/Engine/Input/MouseState.cpp
 	Source/Engine/Localization/Localization.cpp
+	Source/Engine/Maps/Backgrounds/Background.cpp
+	Source/Engine/Maps/Backgrounds/BackgroundDeserializer.cpp
 	Source/Engine/Maps/MapLoader.cpp
 	Source/Engine/Maps/ObjectLayerDeserializer.cpp
 	Source/Engine/Maps/ObjectifiedTile.cpp
@@ -806,8 +809,6 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Hexus/States/StateTutorial.cpp
 	Source/Scenes/Maps/Isometric/IsometricMap.cpp
 	Source/Scenes/Maps/MapBase.cpp
-	Source/Scenes/Maps/Platformer/Backgrounds/Background.cpp
-	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundDeserializer.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixLetter.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixRain.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixStrand.cpp
@@ -837,8 +838,9 @@ list(APPEND GAME_HEADER
 	Source/Engine/Cutscenes/Cutscene.h
 	Source/Engine/Cutscenes/CutsceneClip.h
 	Source/Engine/DeveloperMode/DeveloperModeController.h
-	Source/Engine/Dialogue/Dialogue.h
+	Source/Engine/Dialogue/DialogueLabel.h
 	Source/Engine/Dialogue/DialogueTree.h
+	Source/Engine/Dialogue/SpeechBubble.h
 	Source/Engine/EngineBootstrapper.h
 	Source/Engine/Events/CollisionEventDispatcher.h
 	Source/Engine/Events/CollisionMappingEvents.h
@@ -856,6 +858,8 @@ list(APPEND GAME_HEADER
 	Source/Engine/Input/Input.h
 	Source/Engine/Input/MouseState.h
 	Source/Engine/Localization/Localization.h
+	Source/Engine/Maps/Backgrounds/Background.h
+	Source/Engine/Maps/Backgrounds/BackgroundDeserializer.h
 	Source/Engine/Maps/MapLoader.h
 	Source/Engine/Maps/ObjectLayerDeserializer.h
 	Source/Engine/Maps/ObjectifiedTile.h
@@ -1578,8 +1582,6 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Hexus/States/States.h
 	Source/Scenes/Maps/Isometric/IsometricMap.h
 	Source/Scenes/Maps/MapBase.h
-	Source/Scenes/Maps/Platformer/Backgrounds/Background.h
-	Source/Scenes/Maps/Platformer/Backgrounds/BackgroundDeserializer.h
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixLetter.h
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixRain.h
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixStrand.h

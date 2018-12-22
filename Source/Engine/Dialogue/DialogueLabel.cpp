@@ -1,4 +1,4 @@
-#include "Dialogue.h"
+#include "DialogueLabel.h"
 
 #include "cocos/2d/CCLabel.h"
 
@@ -8,25 +8,25 @@
 
 using namespace cocos2d;
 
-const std::string Dialogue::ScheduleKeyTypeWriterEffect = "SCHEDULE_TYPE_WRITER_EFFECT";
-const float Dialogue::DefaultTypeSpeed = 0.04f;
+const std::string DialogueLabel::ScheduleKeyTypeWriterEffect = "SCHEDULE_TYPE_WRITER_EFFECT";
+const float DialogueLabel::DefaultTypeSpeed = 0.04f;
 
-Dialogue* Dialogue::create(std::string filePath, std::string fontResource, Size size)
+DialogueLabel* DialogueLabel::create(std::string filePath, std::string fontResource, Size size)
 {
-	Dialogue* instance = new Dialogue(DialogueTree::loadDialogueFromFile(filePath), fontResource, size);
+	DialogueLabel* instance = new DialogueLabel(DialogueTree::loadDialogueFromFile(filePath), fontResource, size);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Dialogue::Dialogue(DialogueTree* root, std::string fontResource, Size size)
+DialogueLabel::DialogueLabel(DialogueTree* root, std::string fontResource, Size size)
 {
 	this->hasStarted = false;
 	this->dialogueShownCallback = nullptr;
 	this->dialogueRoot = root;
 	this->currentDialogue = this->dialogueRoot;
-	this->dialogueSpeed = Dialogue::DefaultTypeSpeed;
+	this->dialogueSpeed = DialogueLabel::DefaultTypeSpeed;
 	this->label = Label::createWithTTF("", fontResource, Localization::getFontSizeH2(fontResource));
 
 	this->label->setHorizontalAlignment(TextHAlignment::LEFT);
@@ -38,22 +38,22 @@ Dialogue::Dialogue(DialogueTree* root, std::string fontResource, Size size)
 	this->addChild(this->label);
 }
 
-Dialogue::~Dialogue()
+DialogueLabel::~DialogueLabel()
 {
 	delete(this->dialogueRoot);
 }
 
-void Dialogue::setDialogueShownCallback(std::function<void()> callback)
+void DialogueLabel::setDialogueShownCallback(std::function<void()> callback)
 {
 	this->dialogueShownCallback = callback;
 }
 
-void Dialogue::setDialogueSpeed(float speed)
+void DialogueLabel::setDialogueSpeed(float speed)
 {
 	this->dialogueSpeed = speed;
 }
 
-bool Dialogue::showNextDialogue()
+bool DialogueLabel::showNextDialogue()
 {
 	if (this->hasStarted)
 	{
@@ -72,7 +72,7 @@ bool Dialogue::showNextDialogue()
 	return false;
 }
 
-void Dialogue::updateLabels()
+void DialogueLabel::updateLabels()
 {
 	if (this->currentDialogue != nullptr)
 	{
@@ -81,9 +81,9 @@ void Dialogue::updateLabels()
 	}
 }
 
-void Dialogue::runTypeWriterEffect()
+void DialogueLabel::runTypeWriterEffect()
 {
-	this->label->unschedule(Dialogue::ScheduleKeyTypeWriterEffect);
+	this->label->unschedule(DialogueLabel::ScheduleKeyTypeWriterEffect);
 
 	static std::map<Label*, int> mapTypeIdx;
 	std::map<Label*, int>::iterator it;
@@ -116,12 +116,12 @@ void Dialogue::runTypeWriterEffect()
 		{
 			this->label->getLetter(it->second)->setOpacity(255);
 		}
-		
+
 		it->second++;
 
 		if (it->second == max)
 		{
-			this->label->unschedule(Dialogue::ScheduleKeyTypeWriterEffect);
+			this->label->unschedule(DialogueLabel::ScheduleKeyTypeWriterEffect);
 			mapTypeIdx.erase(it);
 
 			if (this->dialogueShownCallback != nullptr)
@@ -130,5 +130,5 @@ void Dialogue::runTypeWriterEffect()
 			}
 		}
 
-	}, this->dialogueSpeed, max - 1, 0, Dialogue::ScheduleKeyTypeWriterEffect);
+	}, this->dialogueSpeed, max - 1, 0, DialogueLabel::ScheduleKeyTypeWriterEffect);
 }

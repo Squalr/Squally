@@ -1,5 +1,14 @@
 #include "MatrixLetter.h"
 
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCSprite.h"
+
+#include "Resources/FontResources.h"
+
+using namespace cocos2d;
+
 const Color3B MatrixLetter::letterColor = Color3B(25, 242, 51);
 const Color3B MatrixLetter::spawnColor = Color3B::WHITE;
 const Color4B MatrixLetter::glowColor = Color4B::RED;// Color4B(25, 242, 51, 0xFF);

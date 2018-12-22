@@ -1,14 +1,17 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/math/Vec2.h"
 
 #include "Engine/Cutscenes/CutsceneClip.h"
-#include "Engine/Dialogue/Dialogue.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Resources/CutsceneResources.h"
-#include "Resources/StringResources.h"
-#include "Scenes/Cutscenes/Objects/StarLayer.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Label;
+	class LayerColor;
+	class Sprite;
+}
+
+class DialogueLabel;
+class StarLayer;
 
 class SquallyUploadSpace : public CutsceneClip
 {
@@ -28,12 +31,12 @@ private:
 	void runCutscene();
 
 	StarLayer* starLayer;
-	Sprite* mars;
-	Node* beam;
-	Sprite* satellite;
-	LayerColor* dialoguePlate;
-	Dialogue* dialogue;
-	Label* escapeLabel;
+	cocos2d::Sprite* mars;
+	cocos2d::Node* beam;
+	cocos2d::Sprite* satellite;
+	cocos2d::LayerColor* dialoguePlate;
+	DialogueLabel* dialogue;
+	cocos2d::Label* escapeLabel;
 
-	static const Vec2 panOffset;
+	static const cocos2d::Vec2 panOffset;
 };

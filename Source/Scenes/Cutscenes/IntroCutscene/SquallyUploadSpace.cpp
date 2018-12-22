@@ -1,6 +1,13 @@
 #include "SquallyUploadSpace.h"
 
+#include "Engine/Dialogue/DialogueLabel.h"
 #include "Engine/Localization/Localization.h"
+#include "Scenes/Cutscenes/Objects/StarLayer.h"
+
+#include "Resources/CutsceneResources.h"
+#include "Resources/StringResources.h"
+
+using namespace cocos2d;
 
 const Vec2 SquallyUploadSpace::panOffset = Vec2(-608.0f, 256.0f);
 
@@ -21,7 +28,7 @@ SquallyUploadSpace::SquallyUploadSpace()
 	this->mars = Sprite::create(CutsceneResources::IntroSpace_Mars);
 	this->beam = Node::create();
 	this->satellite = Sprite::create(CutsceneResources::SquallyUploadSpace_Satellite);
-	this->dialogue = Dialogue::create(StringResources::Dialogue_CutsceneSquallyUploadSpace, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneSquallyUploadSpace, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
 	this->escapeLabel = Label::createWithTTF("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);

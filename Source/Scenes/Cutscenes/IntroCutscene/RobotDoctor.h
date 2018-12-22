@@ -1,14 +1,14 @@
 #pragma once
-#include "cocos2d.h"
-
 #include "Engine/Cutscenes/CutsceneClip.h"
-#include "Engine/Dialogue/Dialogue.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Resources/CutsceneResources.h"
-#include "Resources/StringResources.h"
-#include "Scenes/Cutscenes/Objects/StarLayer.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Label;
+	class LayerColor;
+	class Sprite;
+}
+
+class DialogueLabel;
 
 class RobotDoctor : public CutsceneClip
 {
@@ -32,13 +32,13 @@ private:
 
 	RobotDoctorScene activeScene;
 
-	Sprite* background;
-	Sprite* robot;
-	Sprite* bed;
+	cocos2d::Sprite* background;
+	cocos2d::Sprite* robot;
+	cocos2d::Sprite* bed;
 
-	LayerColor* dialoguePlate;
-	Dialogue* dialogue;
-	Label* escapeLabel;
+	cocos2d::LayerColor* dialoguePlate;
+	DialogueLabel* dialogue;
+	cocos2d::Label* escapeLabel;
 
-	static const Vec2 panOffset;
+	static const cocos2d::Vec2 panOffset;
 };

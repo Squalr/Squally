@@ -29,7 +29,6 @@
 #include "Objects/Platformer/PlatformerDecorDeserializer.h"
 #include "Objects/Platformer/PlatformerObjectDeserializer.h"
 #include "Scenes/Hexus/Hexus.h"
-#include "Scenes/Maps/Platformer/Backgrounds/BackgroundDeserializer.h"
 #include "Scenes/Maps/Platformer/CombatMap.h"
 #include "Scenes/Maps/Platformer/Physics/PlatformerCollisionMapping.h"
 #include "Scenes/Maps/Platformer/PlatformerMap.h"
@@ -80,7 +79,6 @@ void Bootstrapper::initialize()
 	PlatformerObjectDeserializer::registerGlobalNode();
 
 	// Environment deserializers
-	BackgroundDeserializer::registerGlobalNode();
 	WeatherDeserializer::registerGlobalNode();
 
 	CastleTerrainDeserializer::registerGlobalNode();
