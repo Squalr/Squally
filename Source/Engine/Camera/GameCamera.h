@@ -53,7 +53,7 @@ private:
 
 	std::stack<CameraTrackingData> targetStack;
 	cocos2d::Rect cameraBounds;
-	GameCamera::CameraTrackingData currentTrackingData;
+	CameraTrackingData currentTrackingData;
 	float defaultDistance;
 
 	// Variables for working around cocos bugs
