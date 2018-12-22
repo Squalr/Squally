@@ -1,5 +1,9 @@
 #include "Background.h"
 
+#include "Engine/UI/HUD/Hud.h"
+
+using namespace cocos2d;
+
 Background* Background::create(ValueMap* initProperties, std::string name, Node* child)
 {
 	Background* instance = new Background(initProperties, name, child);
@@ -11,19 +15,14 @@ Background* Background::create(ValueMap* initProperties, std::string name, Node*
 
 Background::Background(ValueMap* properties, std::string name, Node* child) : SerializableLayer(properties, name)
 {
-	this->addChild(child);
+	this->background = Hud::create();
+
+	child->setAnchorPoint(Vec2::ZERO);
+
+	this->background->addChild(child);
+	this->addChild(this->background);
 }
 
 Background::~Background()
 {
-}
-
-void Background::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
-{
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
-
-	this->setPosition(cameraPosition);
-
-	SerializableLayer::visit(renderer, parentTransform, parentFlags);
 }

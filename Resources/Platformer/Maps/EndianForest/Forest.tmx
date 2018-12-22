@@ -41,7 +41,7 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="426" name="Forest/Background/Forest4" type="decor" x="-464" y="2356" width="40000" height="816">
+  <object id="426" name="Forest/Background/Forest4" type="decor" x="-2128" y="2420" width="40000" height="816">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -52,7 +52,7 @@
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="432" name="Forest/Background/Forest3" type="decor" x="-464" y="2416" width="40000" height="715">
+  <object id="432" name="Forest/Background/Forest3" type="decor" x="-2128" y="2480" width="40000" height="715">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -63,7 +63,7 @@
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="431" name="Forest/Background/Forest2" type="decor" x="-464" y="2448" width="40000" height="941">
+  <object id="431" name="Forest/Background/Forest2" type="decor" x="-2128" y="2512" width="40000" height="941">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -74,7 +74,7 @@
    <property name="depth" type="float" value="-1792"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="433" name="Forest/Background/Forest1" type="decor" x="-464" y="2456" width="40000" height="909">
+  <object id="433" name="Forest/Background/Forest1" type="decor" x="-2128" y="2520" width="40000" height="909">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -103,7 +103,7 @@
    <property name="depth" type="float" value="-1024"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="434" name="Forest/Background/Hills2" type="decor" x="-516" y="3053.5" width="40000" height="537">
+  <object id="434" name="Forest/Background/Hills2" type="decor" x="-2180" y="3117.5" width="40000" height="537">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -190,9 +190,9 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="470" name="pendulum-blade" type="object" x="5231.45" y="2068.85" width="42.4242" height="537.636"/>
-  <object id="471" name="pendulum-blade" type="object" x="4434.79" y="2051.52" width="42.4242" height="470.303"/>
-  <object id="472" name="pendulum-blade" type="object" x="4839.45" y="2067.52" width="42.4242" height="318.303"/>
-  <object id="474" name="pendulum-blade" type="object" x="5604.79" y="2068.85" width="42.4242" height="318.303"/>
+  <object id="471" name="pendulum-blade" type="object" x="4434.79" y="2051.52" width="42.4242" height="420.97"/>
+  <object id="472" name="pendulum-blade" type="object" x="4839.45" y="2067.52" width="42.4242" height="304.97"/>
+  <object id="474" name="pendulum-blade" type="object" x="5604.79" y="2068.85" width="42.4242" height="364.97"/>
   <object id="475" name="mechanical-flail" type="object" x="4638.79" y="2538.85" width="42.4242" height="198.303"/>
   <object id="476" name="mechanical-flail" type="object" x="4996.79" y="2445.85" width="42.4242" height="264.303"/>
   <object id="479" name="mechanical-flail" type="object" x="5436.79" y="2502.85" width="42.4242" height="166.303"/>
