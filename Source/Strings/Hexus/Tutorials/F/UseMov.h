@@ -8,10 +8,10 @@
 
 namespace LocaleStrings
 {
-	class DecimalCards : public LocalizedString
+	class UseMov : public LocalizedString
 	{
 	public:
-		static DecimalCards* create();
+		static UseMov* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		DecimalCards();
-		~DecimalCards();
+		UseMov();
+		~UseMov();
 	};
 }

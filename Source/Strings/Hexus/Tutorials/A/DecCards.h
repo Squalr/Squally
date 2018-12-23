@@ -8,10 +8,10 @@
 
 namespace LocaleStrings
 {
-	class HexCards : public LocalizedString
+	class DecCards : public LocalizedString
 	{
 	public:
-		static HexCards* create();
+		static DecCards* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		HexCards();
-		~HexCards();
+		DecCards();
+		~DecCards();
 	};
 }

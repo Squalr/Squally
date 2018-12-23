@@ -6,6 +6,7 @@
 namespace cocos2d
 {
 	class LayerColor;
+	class Sprite;
 }
 
 class StateAIDecideCard;

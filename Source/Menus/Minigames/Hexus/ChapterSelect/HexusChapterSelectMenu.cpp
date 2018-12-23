@@ -1,7 +1,11 @@
 #include "HexusChapterSelectMenu.h"
 
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/GlobalDirector.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"

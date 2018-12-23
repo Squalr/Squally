@@ -16,7 +16,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hexus/Tutorials/F/Mov.h"
+#include "Strings/Hexus/Tutorials/F/UseMov.h"
 #include "Strings/Menus/GotIt.h"
 #include "Strings/Menus/Next.h"
 
@@ -34,7 +34,7 @@ TutorialFIntroSequence* TutorialFIntroSequence::create()
 TutorialFIntroSequence::TutorialFIntroSequence() : TutorialBase(StateOverride::TutorialMode::TutorialF, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Mov::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::UseMov::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->helpArrowHandCards = HelpArrow::create();
 
 	LocalizedLabel* handCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::GotIt::create());

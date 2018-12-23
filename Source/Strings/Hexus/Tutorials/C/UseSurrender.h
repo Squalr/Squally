@@ -8,10 +8,10 @@
 
 namespace LocaleStrings
 {
-	class Surrender : public LocalizedString
+	class UseSurrender : public LocalizedString
 	{
 	public:
-		static Surrender* create();
+		static UseSurrender* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		Surrender();
-		~Surrender();
+		UseSurrender();
+		~UseSurrender();
 	};
 }

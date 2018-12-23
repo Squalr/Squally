@@ -8,10 +8,10 @@
 
 namespace LocaleStrings
 {
-	class LastStand : public LocalizedString
+	class UseShiftRight : public LocalizedString
 	{
 	public:
-		static LastStand* create();
+		static UseShiftRight* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		LastStand();
-		~LastStand();
+		UseShiftRight();
+		~UseShiftRight();
 	};
 }

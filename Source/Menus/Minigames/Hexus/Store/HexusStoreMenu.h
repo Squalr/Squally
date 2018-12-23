@@ -5,6 +5,13 @@
 
 #include "Engine/GlobalScene.h"
 
+namespace cocos2d
+{
+	class LayerColor;
+	class ParticleSystem;
+	class Sprite;
+}
+
 class Card;
 class CardData;
 class LocalizedLabel;
@@ -37,11 +44,11 @@ private:
 	void onHexTabClick();
 	void onSpecialTabClick();
 	void updateAllCardLimits();
-	void updateCardLimitText(Label* label, CardData* cardData);
+	void updateCardLimitText(LocalizedLabel* label, CardData* cardData);
 	void updateGoldText();
 	void hideMenus();
 	void onLootBoxClick(MenuSprite* sprite, int price, std::map<CardData*, float> cardChoices, SmartAnimationNode* animationNode);
-	void onCardClick(MenuSprite* card, CardData* cardData, int price, Label* label);
+	void onCardClick(MenuSprite* card, CardData* cardData, int price, LocalizedLabel* label);
 	void onBackClick(MenuSprite* menuSprite);
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onLootBoxReturnButtonClick(int price, std::vector<Card*> chosenCards);

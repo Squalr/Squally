@@ -18,7 +18,7 @@
 
 #include "Strings/Hexus/Tutorials/C/NotEnoughToWin.h"
 #include "Strings/Hexus/Tutorials/C/OpponentLead.h"
-#include "Strings/Hexus/Tutorials/C/Surrender.h"
+#include "Strings/Hexus/Tutorials/C/UseSurrender.h"
 #include "Strings/Menus/GotIt.h"
 #include "Strings/Menus/Next.h"
 
@@ -38,7 +38,7 @@ TutorialCIntroSequence::TutorialCIntroSequence() : TutorialBase(StateOverride::T
 	this->focusTakeOver = FocusTakeOver::create();
 	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::OpponentLead::create(), Size(420.0f, 0.0f));
 	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::NotEnoughToWin::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
-	this->lastStandTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Surrender::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->lastStandTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::UseSurrender::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->helpArrowScoreTotals = HelpArrow::create();
 	this->helpArrowHandCards = HelpArrow::create();
 	this->helpArrowLastStand = HelpArrow::create();
