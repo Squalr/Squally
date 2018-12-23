@@ -19,4 +19,6 @@ private:
 
 	std::string localizedString;
 	std::function<void(std::string newString)> onLocaleChange;
+
+	const std::string enString;
 };
