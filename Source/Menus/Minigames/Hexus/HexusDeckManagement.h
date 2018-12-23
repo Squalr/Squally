@@ -1,20 +1,21 @@
 #pragma once
-#include "cocos2d.h"
+#include <map>
+
+#include "cocos/base/CCEventKeyboard.h"
 
 #include "Engine/GlobalScene.h"
-#include "Events/NavigationEvents.h"
-#include "Engine/UI/Controls/CCheckbox.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Controls/ScrollPane.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/Controls/ToggleGroup.h"
-#include "Engine/UI/Mouse.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Menus/Minigames/Hexus/MenuCard.h"
-#include "Resources/UIResources.h"
-#include "Scenes/Hexus/CardStorage.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Sprite;
+}
+
+class Card;
+class CardData;
+class CCheckbox;
+class MenuSprite;
+class ToggleGroup;
+class ScrollPane;
 
 class HexusDeckManagement : public GlobalScene
 {
@@ -41,7 +42,7 @@ private:
 	void initializeListeners() override;
 	void onBackClick(MenuSprite* menuSprite);
 	void onToggleSelect(CCheckbox* activeToggle);
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void rebuildCardLists();
 	void rebuildCardList(std::map<CardData*, int> cards, std::map<CardData*, MenuCard*> displayCards);
 	void save(bool exit);
@@ -53,14 +54,14 @@ private:
 	void onDeckCardMouseOver(Card* card);
 	void onStorageCardMouseOver(Card* card);
 
-	Sprite* background;
+	cocos2d::Sprite* background;
 	ScrollPane* storageScrollPane;
 	ScrollPane* deckScrollPane;
-	Sprite* storageSprite;
-	Label* storageLabel;
-	Sprite* deckSprite;
-	Label* deckLabel;
-	Sprite* titleSprite;
+	cocos2d::Sprite* storageSprite;
+	LocalizedLabel* storageLabel;
+	cocos2d::Sprite* deckSprite;
+	LocalizedLabel* deckLabel;
+	cocos2d::Sprite* titleSprite;
 	TextMenuSprite* backButton;
 	CCheckbox* allButton;
 	CCheckbox* specialButton;
@@ -69,22 +70,22 @@ private:
 	CCheckbox* hexButton;
 	ToggleGroup* filters;
 
-	Label* totalCardsInDeckLabel;
-	Label* totalCardsInDeckValueLabel;
-	Label* binaryCardsInDeckLabel;
-	Label* binaryCardsInDeckValueLabel;
-	Label* decimalCardsInDeckLabel;
-	Label* decimalCardsInDeckValueLabel;
-	Label* hexCardsInDeckLabel;
-	Label* hexCardsInDeckValueLabel;
-	Label* specialCardsInDeckLabel;
-	Label* specialCardsInDeckValueLabel;
+	LocalizedLabel* totalCardsInDeckLabel;
+	LocalizedLabel* totalCardsInDeckValueLabel;
+	LocalizedLabel* binaryCardsInDeckLabel;
+	LocalizedLabel* binaryCardsInDeckValueLabel;
+	LocalizedLabel* decimalCardsInDeckLabel;
+	LocalizedLabel* decimalCardsInDeckValueLabel;
+	LocalizedLabel* hexCardsInDeckLabel;
+	LocalizedLabel* hexCardsInDeckValueLabel;
+	LocalizedLabel* specialCardsInDeckLabel;
+	LocalizedLabel* specialCardsInDeckValueLabel;
 
 	CardFilterFlags activeFilter;
 
 	std::map<CardData*, MenuCard*> displayDeckCards;
 	std::map<CardData*, MenuCard*> displayStorageCards;
-	std::map<MenuCard*, Label*> countLabels;
+	std::map<MenuCard*, LocalizedLabel*> countLabels;
 
 	std::map<CardData*, int> deckCards;
 	std::map<CardData*, int> storageCards;

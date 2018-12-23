@@ -1,17 +1,11 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
 
 #include "Scenes/Hexus/States/StateBase.h"
-
-using namespace cocos2d;
 
 class StateTurnEnd : public StateBase
 {
 public:
-	static StateTurnEnd * create();
+	static StateTurnEnd* create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;

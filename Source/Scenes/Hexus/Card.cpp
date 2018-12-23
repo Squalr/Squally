@@ -1,5 +1,10 @@
 #include "Card.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/base/CCDirector.h"
+
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/HackUtils.h"

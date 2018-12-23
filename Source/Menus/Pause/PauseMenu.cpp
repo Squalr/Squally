@@ -5,6 +5,7 @@
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/MenuBackground.h"
 

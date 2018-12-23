@@ -1,5 +1,4 @@
 #pragma once
-#include "cocos/base/CCEvent.h"
 #include "cocos/base/CCEventKeyboard.h"
 
 #include "Engine/GlobalScene.h"
@@ -32,4 +31,3 @@ private:
 
 	static SaveSelectMenu* instance;
 };
-

@@ -1,5 +1,12 @@
 #include "StateOpponentTurnStart.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
+#include "Scenes/Hexus/Config.h"
+
+using namespace cocos2d;
+
 StateOpponentTurnStart* StateOpponentTurnStart::create()
 {
 	StateOpponentTurnStart* instance = new StateOpponentTurnStart();

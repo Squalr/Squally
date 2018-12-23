@@ -1,10 +1,12 @@
 #include "HexusRewardsMenu.h"
 
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Resources/UIResources.h"
 #include "Scenes/Hexus/Card.h"
@@ -12,6 +14,10 @@
 #include "Scenes/Hexus/CardStorage.h"
 
 #include "Resources/SoundResources.h"
+
+#include "Strings/Menus/Return.h"
+
+using namespace cocos2d;
 
 const std::string HexusRewardsMenu::KeyScheduleHexusGoldTick = "KEY_SCHEDULE_HEXUS_GOLD_TICK";
 
@@ -35,17 +41,15 @@ HexusRewardsMenu::HexusRewardsMenu()
 	this->background = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_WoodBackground);
 	this->goldSprite = Sprite::create(UIResources::Menus_Objects_GOLD_2);
 	this->goldSpriteLesser = Sprite::create(UIResources::Menus_Objects_GOLD_1);
-	this->goldLabel = Label::createWithTTF("", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1);
 
 	this->goldLabel->enableOutline(Color4B::BLACK, 3);
 	
-	Label* returnButtonLabel = Label::createWithTTF("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* returnButtonLabelHover = Label::createWithTTF("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* returnButtonLabelClick = Label::createWithTTF("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	LocalizedLabel* returnButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::Return::create());
+	LocalizedLabel* returnButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::Return::create());
 
 	returnButtonLabel->enableOutline(Color4B::BLACK, 2);
 	returnButtonLabelHover->enableOutline(Color4B::BLACK, 2);
-	returnButtonLabelClick->enableOutline(Color4B::BLACK, 2);
 
 	this->returnButton = TextMenuSprite::create(
 		returnButtonLabel,

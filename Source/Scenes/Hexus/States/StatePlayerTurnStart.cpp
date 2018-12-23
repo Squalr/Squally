@@ -1,5 +1,12 @@
 #include "StatePlayerTurnStart.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
+#include "Scenes/Hexus/Config.h"
+
+using namespace cocos2d;
+
 StatePlayerTurnStart* StatePlayerTurnStart::create()
 {
 	StatePlayerTurnStart* instance = new StatePlayerTurnStart();

@@ -1,9 +1,13 @@
 #pragma once
 #include <functional>
 
-#include "cocos/base/CCEvent.h"
 #include "cocos/base/CCEventKeyboard.h"
 #include "cocos/base/ccTypes.h"
+
+namespace cocos2d
+{
+	class Sprite;
+}
 
 class LocalizedLabel;
 class MenuSprite;

@@ -1,6 +1,21 @@
 #include "StateGameEnd.h"
 
+#include "Analytics/AnalyticsCategories.h"
+#include "Engine/Analytics/Analytics.h"
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/SoundManager.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Events/NavigationEvents.h"
+#include "Scenes/Hexus/Config.h"
+
 #include "Resources/SoundResources.h"
+#include "Resources/UIResources.h"
+
+#include "Strings/Menus/Leave.h"
+
+using namespace cocos2d;
 
 StateGameEnd* StateGameEnd::create()
 {
@@ -13,8 +28,8 @@ StateGameEnd* StateGameEnd::create()
 
 StateGameEnd::StateGameEnd() : StateBase(GameState::StateType::GameEnd)
 {
-	Label* backButtonLabel = Label::createWithTTF("Leave", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelHover = Label::createWithTTF("Leave", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	LocalizedLabel* backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Leave::create());
+	LocalizedLabel* backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Leave::create());
 
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);

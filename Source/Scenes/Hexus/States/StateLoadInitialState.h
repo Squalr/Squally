@@ -1,14 +1,13 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Scenes/Hexus/States/StateBase.h"
 
-using namespace cocos2d;
+class StateOverride;
 
 class StateLoadInitialState : public StateBase
 {
 public:
-	static StateLoadInitialState * create();
+	static StateLoadInitialState* create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;

@@ -1,7 +1,25 @@
 #include "HexusDeckManagement.h"
 
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
+#include "Engine/UI/Controls/CCheckbox.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/UI/Controls/ScrollPane.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Engine/UI/Controls/ToggleGroup.h"
+#include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
+#include "Events/NavigationEvents.h"
+#include "Menus/Minigames/Hexus/MenuCard.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/CardStorage.h"
+
 #include "Resources/SoundResources.h"
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
 
 HexusDeckManagement* HexusDeckManagement::instance;
 
@@ -282,7 +300,7 @@ void HexusDeckManagement::initializePositions()
 			}
 		}
 
-		for (auto it = CardList::getInstance()->sortedCardList->begin(); it != CardList::getInstance()->sortedCardList->end(); it++)
+		for (auto it = CardList::getInstance()->sortedCardList.begin(); it != CardList::getInstance()->sortedCardList.end(); it++)
 		{
 			CardData* cardData = *it;
 			MenuCard* card = displayCards[*it];

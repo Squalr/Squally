@@ -1,5 +1,15 @@
 #include "StateDraw.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
+#include "Engine/Utils/GameUtils.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/Deck.h"
+
+using namespace cocos2d;
+
 StateDraw* StateDraw::create()
 {
 	StateDraw* instance = new StateDraw();
@@ -61,8 +71,8 @@ void StateDraw::onStateEnter(GameState* gameState)
 				return;
 			}
 
-			Card * card = gameState->playerDeck->drawCard();
-			CardRow * hand = gameState->playerHand;
+			Card* card = gameState->playerDeck->drawCard();
+			CardRow* hand = gameState->playerHand;
 
 			GameUtils::changeParent(card, this, true);
 
@@ -82,7 +92,9 @@ void StateDraw::onStateEnter(GameState* gameState)
 			break;
 		}
 		default:
+		{
 			break;
+		}
 	}
 }
 

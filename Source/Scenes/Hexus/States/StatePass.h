@@ -15,7 +15,7 @@ class MenuSprite;
 class StatePass : public StateBase
 {
 public:
-	static StatePass * create();
+	static StatePass* create();
 
 protected:
 	void onAnyStateChange(GameState* gameState) override;
