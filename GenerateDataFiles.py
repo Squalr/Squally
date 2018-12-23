@@ -17,9 +17,13 @@ def main():
 	spec = importlib.util.spec_from_file_location("module.name", "Data/Entities/GenerateEntityFiles.py")
 	entityGenerator = importlib.util.module_from_spec(spec)
 	spec.loader.exec_module(entityGenerator)
-	entityGenerator.generate()
+	entityGenerator.main()
 	
 	# Generate string files
+	spec = importlib.util.spec_from_file_location("module.name", "Data/Strings/GenerateStringFiles.py")
+	entityGenerator = importlib.util.module_from_spec(spec)
+	spec.loader.exec_module(entityGenerator)
+	entityGenerator.main()
 	
 if __name__ == '__main__':
     main()

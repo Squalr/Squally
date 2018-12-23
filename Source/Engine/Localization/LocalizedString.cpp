@@ -6,15 +6,6 @@
 
 using namespace cocos2d;
 
-LocalizedString* LocalizedString::create(std::function<void(std::string newString)> onLocaleChange)
-{
-	LocalizedString* instance = new LocalizedString(onLocaleChange);
-
-	instance->autorelease();
-
-	return instance;
-}
-
 std::string LocalizedString::getString()
 {
 	return this->localizedString;

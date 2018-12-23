@@ -5,7 +5,7 @@ import json
 import os
 import re
 
-def generate():
+def main():
 	entityData = parseEntityFile(abspath(join(join(realpath(__file__), ".."), "Entities.json")))
 	generateDeserializationCode(entityData)
 
@@ -123,3 +123,6 @@ def replaceTextBetween(delimeterA, delimterB, contents, innerContent):
 	contentsSuffix = contents.split(delimterB)[1]
 	
 	return contentsPrefix + delimeterA + innerContent + delimterB + contentsSuffix
+	
+if __name__ == '__main__':
+    main()

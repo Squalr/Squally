@@ -2,19 +2,18 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-LocalizedLabel* LocalizedLabel::create()
+LocalizedLabel* LocalizedLabel::create(LocalizedString* localizedString)
 {
-	LocalizedLabel* label = new LocalizedLabel();
+	LocalizedLabel* label = new LocalizedLabel(localizedString);
 
 	label->autorelease();
 
 	return label;
 }
 
-LocalizedLabel::LocalizedLabel()
+LocalizedLabel::LocalizedLabel(LocalizedString* localizedString)
 {
-	this->localizedString = LocalizedString::create(CC_CALLBACK_1(LocalizedLabel::onLocaleChange, this));
-
+	this->localizedString = localizedString;
 	this->addChild(this->localizedString); // Just adding this to retain it -- this has no visuals
 }
 
