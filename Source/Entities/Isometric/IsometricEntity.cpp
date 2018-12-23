@@ -1,5 +1,13 @@
 #include "IsometricEntity.h"
 
+#include "cocos/base/CCValue.h"
+
+#include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
+
+using namespace cocos2d;
+
 IsometricEntity::IsometricEntity(ValueMap* initProperties, std::string scmlResource, float scale, Vec2 offset, Size size) : HackableObject(initProperties)
 {
 	// TODO: Configurable/randomizable start direction (if any)
@@ -7,11 +15,9 @@ IsometricEntity::IsometricEntity(ValueMap* initProperties, std::string scmlResou
 
 	this->size = size;
 
-	this->animationNode = AnimationNode::create(scmlResource);
+	this->animationNode = SmartAnimationNode::create(scmlResource);
 	this->animationNode->setScale(scale);
-
-	this->animationNodeEntity = this->animationNode->play("Entity");
-	this->animationNodeEntity->setCurrentAnimation("Idle_NE");
+	this->animationNode->playAnimation("Idle_NE");
 
 	this->animationNode->setPosition(offset * scale);
 
@@ -51,33 +57,49 @@ void IsometricEntity::update(float dt)
 		{
 			case 0:
 			{
-				this->animationNodeEntity->setCurrentAnimation("Idle_E");
+				this->animationNode->playAnimation("Idle_E");
 				break;
 			}
 			case 1:
-				this->animationNodeEntity->setCurrentAnimation("Idle_NE");
+			{
+				this->animationNode->playAnimation("Idle_NE");
 				break;
+			}
 			case 2:
-				this->animationNodeEntity->setCurrentAnimation("Idle_N");
+			{
+				this->animationNode->playAnimation("Idle_N");
 				break;
+			}
 			case 3:
-				this->animationNodeEntity->setCurrentAnimation("Idle_NW");
+			{
+				this->animationNode->playAnimation("Idle_NW");
 				break;
+			}
 			case 4:
-				this->animationNodeEntity->setCurrentAnimation("Idle_W");
+			{
+				this->animationNode->playAnimation("Idle_W");
 				break;
+			}
 			case 5:
-				this->animationNodeEntity->setCurrentAnimation("Idle_SW");
+			{
+				this->animationNode->playAnimation("Idle_SW");
 				break;
+			}
 			case 6:
-				this->animationNodeEntity->setCurrentAnimation("Idle_S");
+			{
+				this->animationNode->playAnimation("Idle_S");
 				break;
+			}
 			case 7:
-				this->animationNodeEntity->setCurrentAnimation("Idle_SE");
+			{
+				this->animationNode->playAnimation("Idle_SE");
 				break;
+			}
 			default:
-				this->animationNodeEntity->setCurrentAnimation("Idle_NW");
+			{
+				this->animationNode->playAnimation("Idle_NW");
 				break;
+			}
 		}
 
 		this->movement.x *= 2.0f;

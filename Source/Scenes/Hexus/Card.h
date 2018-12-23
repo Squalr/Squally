@@ -1,16 +1,19 @@
 #pragma once
-#include "cocos2d.h"
 
-#include "Engine/Localization/Localization.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/ccTypes.h"
+
 #include "Engine/SmartNode.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Utils/HackUtils.h"
-
 #include "Scenes/Hexus/CardData/CardData.h"
-#include "Scenes/Hexus/CardEffects.h"
-#include "Scenes/Hexus/Config.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Sprite;
+}
+
+class CardEffects;
+class LocalizedLabel;
+class MenuSprite;
 
 class Card : public SmartNode
 {
@@ -54,7 +57,7 @@ public:
 	void hide();
 	void focus();
 	void unfocus();
-	void setFocusTint(Color3B color);
+	void setFocusTint(cocos2d::Color3B color);
 	void addOperation(Operation operation);
 	unsigned int getAttack();
 	void doDrawAnimation(float cardDrawDelay);
@@ -67,15 +70,15 @@ public:
 
 	CardData* cardData;
 	CardEffects* cardEffects;
-	Vec2 position;
+	cocos2d::Vec2 position;
 
 	static const float cardScale;
-	static const Color4B binaryColor;
-	static const Color4B decimalColor;
-	static const Color4B hexColor;
-	static const Color4B specialColor;
-	static const Color4B debuffColor;
-	static const Color4B buffColor;
+	static const cocos2d::Color4B binaryColor;
+	static const cocos2d::Color4B decimalColor;
+	static const cocos2d::Color4B hexColor;
+	static const cocos2d::Color4B specialColor;
+	static const cocos2d::Color4B debuffColor;
+	static const cocos2d::Color4B buffColor;
 
 protected:
 	Card(CardStyle cardStyle, CardData* data);
@@ -92,13 +95,12 @@ private:
 	int applyOperation(int attack, Operation operation);
 
 	std::vector<Operation> operations;
-	Sprite* cardBack;
-	Sprite* cardFront;
-	Sprite* cardSprite;
+	cocos2d::Sprite* cardBack;
+	cocos2d::Sprite* cardFront;
+	cocos2d::Sprite* cardSprite;
 	MenuSprite* cardSelect;
-	Sprite* cardFocus;
-	Label* cardText;
+	cocos2d::Sprite* cardFocus;
+	LocalizedLabel* cardText;
 	std::function<void(Card*)> mouseOverCallback;
 	std::function<void(Card*)> mouseClickCallback;
 };
-

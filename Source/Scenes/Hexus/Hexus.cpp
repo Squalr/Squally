@@ -1,5 +1,27 @@
 #include "Hexus.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/Sound/SoundManager.h"
+#include "Engine/UI/Controls/IconMenuSprite.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
+#include "Events/NavigationEvents.h"
+#include "Menus/Confirmation/ConfirmationMenu.h"
+#include "Menus/Options/OptionsMenu.h"
+#include "Menus/Pause/PauseMenu.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/CardStorage.h"
+#include "Scenes/Hexus/Deck.h"
+#include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/Components/Components.h"
+#include "Scenes/Hexus/States/States.h"
+
+#include "Resources/HexusResources.h"
+#include "Resources/MusicResources.h"
+
+using namespace cocos2d;
+
 Hexus* Hexus::instance = nullptr;
 
 void Hexus::registerGlobalScene()

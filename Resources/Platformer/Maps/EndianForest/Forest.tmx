@@ -183,7 +183,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="481" name="Castle/barrel" type="decor" x="3186.21" y="2626" width="277" height="210"/>
  </objectgroup>
  <objectgroup name="objects">
   <properties>

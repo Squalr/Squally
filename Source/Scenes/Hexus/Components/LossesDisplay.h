@@ -1,12 +1,11 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
 
 #include "Scenes/Hexus/Components/ComponentBase.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Sprite;
+}
 
 class LossesDisplay : public ComponentBase
 {
@@ -24,12 +23,12 @@ private:
 	void initializePositions() override;
 	void updateDisplayedLosses(GameState* gameState);
 
-	Sprite* playerSocketA;
-	Sprite* playerSocketB;
-	Sprite* playerSkullA;
-	Sprite* playerSkullB;
-	Sprite* enemySocketA;
-	Sprite* enemySocketB;
-	Sprite* enemySkullA;
-	Sprite* enemySkullB;
+	cocos2d::Sprite* playerSocketA;
+	cocos2d::Sprite* playerSocketB;
+	cocos2d::Sprite* playerSkullA;
+	cocos2d::Sprite* playerSkullB;
+	cocos2d::Sprite* enemySocketA;
+	cocos2d::Sprite* enemySocketB;
+	cocos2d::Sprite* enemySkullA;
+	cocos2d::Sprite* enemySkullB;
 };

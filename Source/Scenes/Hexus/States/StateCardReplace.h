@@ -1,18 +1,15 @@
 #pragma once
-#include "cocos2d.h"
 
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
 #include "Scenes/Hexus/States/StateBase.h"
 
-using namespace cocos2d;
+class Card;
+class TextMenuSprite;
+class MenuSprite;
 
 class StateCardReplace : public StateBase
 {
 public:
-	static StateCardReplace * create();
+	static StateCardReplace* create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;

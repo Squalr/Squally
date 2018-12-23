@@ -1,13 +1,20 @@
 #include "WorldMap.h"
 
-#include "cocos/base/CCEvent.h"
 #include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEvent.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCDirector.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/MouseEvents.h"
+#include "Engine/GlobalDirector.h"
 #include "Engine/Localization/Localization.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/WorldMap/FX/Lightning.h"
 #include "Menus/WorldMap/FX/LightningSphere.h"
@@ -16,18 +23,9 @@
 #include "Resources/MapResources.h"
 #include "Resources/UIResources.h"
 
-WorldMap* WorldMap::instance = nullptr;
+using namespace cocos2d;
 
-const std::string WorldMap::StringKeySelectLevel = "Menu_Story_Select_Level";
-const std::string WorldMap::StringKeyLevelNameJungle = "Menu_Story_Level_Name_Jungle";
-const std::string WorldMap::StringKeyLevelNameAquaticRuins = "Menu_Story_Level_Name_Aquatic_Ruins";
-const std::string WorldMap::StringKeyLevelNameForest = "Menu_Story_Level_Name_Forest";
-const std::string WorldMap::StringKeyLevelNameCaverns = "Menu_Story_Level_Name_Caverns";
-const std::string WorldMap::StringKeyLevelNameCastle = "Menu_Story_Level_Name_Castle";
-const std::string WorldMap::StringKeyLevelNameIceCaps = "Menu_Story_Level_Name_Ice_Caps";
-const std::string WorldMap::StringKeyLevelNameObelisk = "Menu_Story_Level_Name_Obelisk";
-const std::string WorldMap::StringKeyLevelNameVolcano = "Menu_Story_Level_Name_Volcano";
-const std::string WorldMap::StringKeyLevelNameMech = "Menu_Story_Level_Name_Mech";
+WorldMap* WorldMap::instance = nullptr;
 
 void WorldMap::registerGlobalScene()
 {
@@ -49,42 +47,34 @@ WorldMap::WorldMap()
 	this->hud = Hud::create();
 
 	this->forest = MapNode::create(
-		Localization::resolveString(WorldMap::StringKeyLevelNameForest),
 		MapResources::EndianForest_Forest
 	);
 
 	this->waterRuins = MapNode::create(
-		Localization::resolveString(WorldMap::StringKeyLevelNameAquaticRuins),
 		MapResources::UnderflowRuins_AquaticRuins
 	);
 
 	this->caverns = MapNode::create(
-		Localization::resolveString(WorldMap::StringKeyLevelNameCaverns),
 		MapResources::SeaSharpCaverns_Caverns
 	);
 
 	this->castle = MapNode::create(
-		Localization::resolveString(WorldMap::StringKeyLevelNameCastle),
 		MapResources::CastleValgrind_Castle
 	);
 
 	this->iceCaps = MapNode::create(
-		Localization::resolveString(WorldMap::StringKeyLevelNameIceCaps),
 		MapResources::LambdaPeaks_IceCaps
 	);
 
 	this->volcano = MapNode::create(
-		Localization::resolveString(WorldMap::StringKeyLevelNameVolcano),
 		MapResources::DaemonsHallow_Volcano
 	);
 
 	this->crypts = MapNode::create(
-		Localization::resolveString(WorldMap::StringKeyLevelNameObelisk),
 		MapResources::LexiconCrypts_Obelisk
 	);
 
 	this->voidStar = MapNode::create(
-		Localization::resolveString(WorldMap::StringKeyLevelNameMech),
 		MapResources::VoidStar_Mech
 	);
 

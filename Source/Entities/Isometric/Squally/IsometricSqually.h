@@ -1,24 +1,20 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Entities/Isometric/IsometricEntity.h"
-#include "Events/NavigationEvents.h"
-
-using namespace cocos2d;
 
 class IsometricSqually : public IsometricEntity
 {
 public:
-	static IsometricSqually * deserialize(ValueMap* initProperties);
-	static IsometricSqually * getInstance();
+	static IsometricSqually* deserialize(cocos2d::ValueMap* initProperties);
+	static IsometricSqually* getInstance();
 
 	static const std::string KeySquallyProperty;
 
 protected:
-	Vec2 getButtonOffset() override;
+	cocos2d::Vec2 getButtonOffset() override;
 
 private:
-	IsometricSqually(ValueMap* initProperties);
+	IsometricSqually(cocos2d::ValueMap* initProperties);
 	~IsometricSqually();
 
 	void registerHackables();

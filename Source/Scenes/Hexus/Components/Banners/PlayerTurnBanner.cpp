@@ -1,5 +1,14 @@
 #include "PlayerTurnBanner.h"
 
+#include "cocos/base/CCDirector.h"
+
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+
+using namespace cocos2d;
+
 PlayerTurnBanner* PlayerTurnBanner::create()
 {
 	PlayerTurnBanner* instance = new PlayerTurnBanner();
@@ -44,7 +53,7 @@ void PlayerTurnBanner::onAnyStateChange(GameState* gameState)
 	BannerBase::onAnyStateChange(gameState);
 
 	// Only show after the first turn -- first turn is reserved for PlayerFirstBanner
-	if (!gameState->isRepeatingSameTurn && gameState->stateType == GameState::PlayerTurnStart && (gameState->roundNumber >= 1 || gameState->turnNumber >= 1))
+	if (!gameState->isRepeatingSameTurn && gameState->stateType == GameState::StateType::PlayerTurnStart && (gameState->roundNumber >= 1 || gameState->turnNumber >= 1))
 	{
 		this->flashBanner();
 	}

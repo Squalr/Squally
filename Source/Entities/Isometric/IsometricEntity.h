@@ -1,32 +1,25 @@
 #pragma once
-#include <math.h>
-
-#include "cocos2d.h"
-#include "cocos-ext.h"
 
 #include "Engine/Hackables/HackableObject.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Engine/Utils/MathUtils.h"
 
-using namespace cocos2d;
+class SmartAnimationNode;
 
 class IsometricEntity : public HackableObject
 {
 protected:
 	IsometricEntity(
-		ValueMap* initProperties,
+		cocos2d::ValueMap* initProperties,
 		std::string scmlResource,
 		float scale = 1.0f,
-		Vec2 offset = Vec2(0.0f, 0.0f),
-		Size size = Size(256.0f, 128.0f));
+		cocos2d::Vec2 offset = cocos2d::Vec2(0.0f, 0.0f),
+		cocos2d::Size size = cocos2d::Size(256.0f, 128.0f));
 	~IsometricEntity();
 
 	void onEnter() override;
 	void update(float) override;
 
-	AnimationNode* animationNode;
-	SpriterEngine::EntityInstance* animationNodeEntity;
+	SmartAnimationNode* animationNode;
 
-	Vec2 movement;
+	cocos2d::Vec2 movement;
 };
 

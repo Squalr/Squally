@@ -1,5 +1,18 @@
 #include "HexusOpponentTutorialF.h"
 
+#include "cocos/math/Vec2.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/StateOverride.h"
+
+#include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
 const std::string HexusOpponentTutorialF::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TUTORIAL_F";
 HexusOpponentTutorialF* HexusOpponentTutorialF::instance = nullptr;
 
@@ -40,29 +53,29 @@ HexusOpponentTutorialF::HexusOpponentTutorialF() : HexusOpponentData(
 		// Player deck
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
-			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
-			CardList::getInstance()->cardListByName->at(CardKeys::Decimal0),
-			CardList::getInstance()->cardListByName->at(CardKeys::Decimal0),
-			CardList::getInstance()->cardListByName->at(CardKeys::Decimal0),
-			CardList::getInstance()->cardListByName->at(CardKeys::Hex0),
-			CardList::getInstance()->cardListByName->at(CardKeys::Hex0),
-			CardList::getInstance()->cardListByName->at(CardKeys::Hex0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
 		},
 		// Enemy deck
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
-			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
-			CardList::getInstance()->cardListByName->at(CardKeys::Decimal0),
-			CardList::getInstance()->cardListByName->at(CardKeys::Decimal0),
-			CardList::getInstance()->cardListByName->at(CardKeys::Hex0),
-			CardList::getInstance()->cardListByName->at(CardKeys::Hex0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
 		},
 		// Player hand
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName->at(CardKeys::Mov),
+			CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -75,8 +88,8 @@ HexusOpponentTutorialF::HexusOpponentTutorialF() : HexusOpponentData(
 		// Player decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName->at(CardKeys::Decimal0),
-			CardList::getInstance()->cardListByName->at(CardKeys::Decimal2),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
 		},
 		// Player hex cards
 		std::vector<CardData*>
@@ -89,8 +102,8 @@ HexusOpponentTutorialF::HexusOpponentTutorialF() : HexusOpponentData(
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName->at(CardKeys::Decimal1),
-			CardList::getInstance()->cardListByName->at(CardKeys::Decimal15),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>

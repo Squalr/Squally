@@ -1,5 +1,8 @@
 #include "IsometricEntityDeserializer.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
 #include "Engine/GlobalDirector.h"
 #include "Entities/Isometric/IsometricEntities.h"
 

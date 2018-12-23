@@ -4,6 +4,8 @@
 
 #include "steam_api.h"
 
+#include "Engine/Utils/LogUtils.h"
+
 using namespace cocos2d;
 
 const int Steam::SteamAppId = 770200;
@@ -28,7 +30,27 @@ Steam::~Steam()
 {
 }
 
-bool Steam::isSteamEnabled()
+bool Steam::init()
+{
+	if (Steam::isSquallySteamBuild())
+	{
+		if (SteamAPI_RestartAppIfNecessary(Steam::SteamAppId))
+		{
+			return false;
+		}
+
+		if (!SteamAPI_Init())
+		{
+			return false;
+		}
+
+		LogUtils::log("Steam initialized");
+	}
+
+	return true;
+}
+
+bool Steam::isSquallySteamBuild()
 {
 	// TODO: Make this compiler flag dependent or something
 	return true;
@@ -36,7 +58,7 @@ bool Steam::isSteamEnabled()
 
 bool Steam::isCloudSaveAvailable()
 {
-	if (!Steam::isSteamEnabled())
+	if (!Steam::isSquallySteamBuild())
 	{
 		return false;
 	}
@@ -53,7 +75,7 @@ bool Steam::isCloudSaveAvailable()
 
 LanguageType Steam::getLanguage()
 {
-	if (!Steam::isSteamEnabled())
+	if (!Steam::isSquallySteamBuild())
 	{
 		return LanguageType::ENGLISH;
 	}

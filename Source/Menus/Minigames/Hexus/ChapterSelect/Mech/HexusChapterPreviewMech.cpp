@@ -1,6 +1,15 @@
 #include "HexusChapterPreviewMech.h"
 
-const std::string HexusChapterPreviewMech::stringKeyChapterName = "HEXUS_CHAPTER_MECH";
+#include "cocos/2d/CCClippingNode.h"
+#include "cocos/2d/CCSprite.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
+const std::string HexusChapterPreviewMech::SaveKeyChapterName = "HEXUS_CHAPTER_MECH";
 
 HexusChapterPreviewMech* HexusChapterPreviewMech::create()
 {
@@ -11,7 +20,7 @@ HexusChapterPreviewMech* HexusChapterPreviewMech::create()
 	return instance;
 }
 
-HexusChapterPreviewMech::HexusChapterPreviewMech() : HexusChapterPreview(HexusChapterPreviewMech::stringKeyChapterName)
+HexusChapterPreviewMech::HexusChapterPreviewMech() : HexusChapterPreview(HexusChapterPreviewMech::SaveKeyChapterName)
 {
 	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameMech));
 	this->text->setString("Laboratory");

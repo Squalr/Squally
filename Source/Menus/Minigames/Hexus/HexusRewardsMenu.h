@@ -1,18 +1,15 @@
 #pragma once
-#include "cocos2d.h"
+#include <string>
 
 #include "Engine/GlobalScene.h"
-#include "Engine/UI/Controls/ScrollPane.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/Mouse.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
-#include "Resources/UIResources.h"
-#include "Scenes/Hexus/Card.h"
-#include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/CardStorage.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Sprite;
+}
+
+class LocalizedLabel;
+class MenuSprite;
 
 class HexusRewardsMenu : public GlobalScene
 {
@@ -30,10 +27,10 @@ private:
 	void onRewardsOpen(int reward, bool isRewardReduced);
 	void onReturnClick(MenuSprite* menuSprite);
 
-	Sprite* background;
-	Sprite* goldSprite;
-	Sprite* goldSpriteLesser;
-	Label* goldLabel;
+	cocos2d::Sprite* background;
+	cocos2d::Sprite* goldSprite;
+	cocos2d::Sprite* goldSpriteLesser;
+	LocalizedLabel* goldLabel;
 	MenuSprite* returnButton;
 
 	static HexusRewardsMenu* instance;

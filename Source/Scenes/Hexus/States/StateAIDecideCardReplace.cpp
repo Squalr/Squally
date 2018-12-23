@@ -1,5 +1,18 @@
 #include "StateAIDecideCardReplace.h"
 
+#include <algorithm>
+
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Utils/GameUtils.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/Deck.h"
+
+using namespace cocos2d;
+
 StateAIDecideCardReplace* StateAIDecideCardReplace::create()
 {
 	StateAIDecideCardReplace* instance = new StateAIDecideCardReplace();

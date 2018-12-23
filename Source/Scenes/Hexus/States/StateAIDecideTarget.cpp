@@ -1,5 +1,12 @@
 #include "StateAIDecideTarget.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
+#include "Scenes/Hexus/States/HexusAIHelper.h"
+
+using namespace cocos2d;
+
 StateAIDecideTarget* StateAIDecideTarget::create()
 {
 	StateAIDecideTarget* instance = new StateAIDecideTarget();

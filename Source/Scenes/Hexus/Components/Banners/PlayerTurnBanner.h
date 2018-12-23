@@ -1,16 +1,15 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/Localization/Localization.h"
-
 #include "Scenes/Hexus/Components/Banners/BannerBase.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Sprite;
+}
 
 class PlayerTurnBanner : public BannerBase
 {
 public:
-	static PlayerTurnBanner * create();
+	static PlayerTurnBanner* create();
 
 protected:
 	void onBeforeStateChange(GameState* eventCustom) override;
@@ -22,6 +21,6 @@ private:
 
 	void initializePositions() override;
 
-	Sprite* playerBanner1;
-	Sprite* playerBanner2;
+	cocos2d::Sprite* playerBanner1;
+	cocos2d::Sprite* playerBanner2;
 };

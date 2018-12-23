@@ -1,5 +1,13 @@
 #include "HexusOpponentMenuVolcano.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/UI/Controls/ScrollPane.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusChapterPreviewVolcano.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
+#include "Scenes/Hexus/Opponents/Volcano/VolcanoHexusOpponents.h"
+
+using namespace cocos2d;
+
 HexusOpponentMenuVolcano* HexusOpponentMenuVolcano::instance = nullptr;
 
 void HexusOpponentMenuVolcano::registerGlobalScene()
@@ -15,7 +23,7 @@ void HexusOpponentMenuVolcano::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuVolcano::instance);
 }
 
-HexusOpponentMenuVolcano::HexusOpponentMenuVolcano() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Volcano, HexusChapterPreviewVolcano::stringKeyChapterName)
+HexusOpponentMenuVolcano::HexusOpponentMenuVolcano() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Volcano, HexusChapterPreviewVolcano::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentBrine::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentLavaGolem::getInstance()));

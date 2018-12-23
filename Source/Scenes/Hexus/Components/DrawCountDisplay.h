@@ -1,19 +1,20 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Sound/SoundManager.h"
-#include "Engine/Utils/StrUtils.h"
 
 #include "Scenes/Hexus/Components/ComponentBase.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class LayerColor;
+	class Sprite;
+}
+
+class LocalizedLabel;
+class MenuSprite;
 
 class DrawCountDisplay : public ComponentBase
 {
 public:
-	static DrawCountDisplay * create();
+	static DrawCountDisplay* create();
 
 protected:
 	void onBeforeStateChange(GameState* eventCustom) override;
@@ -31,11 +32,11 @@ private:
 	void disableDrawCountDisplayInteraction();
 
 	MenuSprite* drawCountSprite;
-	Label* drawCountLabel;
+	LocalizedLabel* drawCountLabel;
 
-	LayerColor* deckDrawCountMouseOverPanel;
-	Label* deckDrawCountCardMouseOverLabel;
+	cocos2d::LayerColor* deckDrawCountMouseOverPanel;
+	LocalizedLabel* deckDrawCountCardMouseOverLabel;
 
-	Sprite* enemyDrawCountSprite;
-	Label* enemyDrawCountLabel;
+	cocos2d::Sprite* enemyDrawCountSprite;
+	LocalizedLabel* enemyDrawCountLabel;
 };

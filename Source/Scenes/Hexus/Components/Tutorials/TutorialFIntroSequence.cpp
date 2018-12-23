@@ -1,5 +1,27 @@
 #include "TutorialFIntroSequence.h"
 
+#include <vector>
+
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/FocusTakeOver.h"
+#include "Engine/UI/Controls/HelpArrow.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/StateOverride.h"
+
+#include "Resources/UIResources.h"
+
+#include "Strings/Hexus/Tutorials/F/UseMov.h"
+#include "Strings/Menus/GotIt.h"
+#include "Strings/Menus/Next.h"
+
+using namespace cocos2d;
+
 TutorialFIntroSequence* TutorialFIntroSequence::create()
 {
 	TutorialFIntroSequence* instance = new TutorialFIntroSequence();
@@ -9,19 +31,14 @@ TutorialFIntroSequence* TutorialFIntroSequence::create()
 	return instance;
 }
 
-TutorialFIntroSequence::TutorialFIntroSequence() : TutorialBase(StateOverride::TutorialF, GameState::StateType::Neutral)
+TutorialFIntroSequence::TutorialFIntroSequence() : TutorialBase(StateOverride::TutorialMode::TutorialF, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->handCardsTutorialLabel = Label::createWithTTF("The 'MOV' card copies the attack from one of your cards to any other card! Use it to weaken your opponent!",
-		Localization::getMainFont(),
-		Localization::getFontSizeP(Localization::getMainFont()),
-		Size(640.0f, 0.0f),
-		cocos2d::TextHAlignment::CENTER
-	);
+	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::UseMov::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->helpArrowHandCards = HelpArrow::create();
 
-	Label* handCardsNextLabel = Label::createWithTTF("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* handCardsNextLabelSelected = Label::createWithTTF("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	LocalizedLabel* handCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::GotIt::create());
+	LocalizedLabel* handCardsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::GotIt::create());
 
 	handCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	handCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);

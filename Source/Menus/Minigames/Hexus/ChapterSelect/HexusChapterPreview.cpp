@@ -1,6 +1,16 @@
 #include "HexusChapterPreview.h"
 
+#include "cocos/2d/CCClippingNode.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Resources/EntityResources.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/SoundResources.h"
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
 
 HexusChapterPreview* HexusChapterPreview::create(std::string chapterNameKey)
 {
@@ -17,7 +27,7 @@ HexusChapterPreview::HexusChapterPreview(std::string chapterNameKey)
 	this->callback = nullptr;
 	this->frame = MenuSprite::create(UIResources::Menus_MinigamesMenu_Hexus_EnemyFrame, UIResources::Menus_MinigamesMenu_Hexus_EnemyFrameHover);
 	this->frame->setClickSound(SoundResources::Menus_Simple_Button);
-	this->text = Label::createWithTTF("CHAPTER_PREVIEW", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
 
 	DrawNode* clipStencil = DrawNode::create();
 	Size frameSize = Size(this->frame->getContentSize().width, this->frame->getContentSize().height);
@@ -25,7 +35,7 @@ HexusChapterPreview::HexusChapterPreview(std::string chapterNameKey)
 	clipStencil->drawSolidRect(Vec2(-clipSize.width / 2.0f, -clipSize.height / 2.0f), Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), Color4F::GREEN);
 
 	// Enable to debug clipping:
-	// this->addChild(clipStencil);
+	this->addChild(clipStencil);
 
 	this->frameClip = ClippingNode::create(clipStencil);
 	this->frameClip->setAnchorPoint(Vec2::ZERO);
@@ -48,7 +58,7 @@ HexusChapterPreview::~HexusChapterPreview()
 
 void HexusChapterPreview::initializePositions()
 {
-	this->text->setPosition(Vec2(0.0f, -188.0f));
+	 this->text->setPosition(Vec2(0.0f, -188.0f));
 }
 
 void HexusChapterPreview::initializeListeners()

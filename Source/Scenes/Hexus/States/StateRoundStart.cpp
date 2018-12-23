@@ -1,8 +1,14 @@
 #include "StateRoundStart.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
 #include "Engine/Sound/SoundManager.h"
+#include "Scenes/Hexus/Config.h"
 
 #include "Resources/SoundResources.h"
+
+using namespace cocos2d;
 
 StateRoundStart* StateRoundStart::create()
 {

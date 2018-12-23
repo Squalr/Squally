@@ -1,5 +1,15 @@
 #include "StateDrawInitial.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
+#include "Engine/Utils/GameUtils.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/Deck.h"
+
+using namespace cocos2d;
+
 StateDrawInitial* StateDrawInitial::create()
 {
 	StateDrawInitial* instance = new StateDrawInitial();

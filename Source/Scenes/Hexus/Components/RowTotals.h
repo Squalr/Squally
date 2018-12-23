@@ -1,26 +1,26 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
 
 #include "Scenes/Hexus/Components/ComponentBase.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Sprite;
+}
+
+class LocalizedLabel;
 
 class RowTotals : public ComponentBase
 {
 public:
-	static RowTotals * create();
+	static RowTotals* create();
 
 	// Public so that tutorials can focus these
-	Sprite* enemyBinaryTotalSocket;
-	Sprite* enemyDecimalTotalSocket;
-	Sprite* enemyHexTotalSocket;
-	Sprite* playerBinaryTotalSocket;
-	Sprite* playerDecimalTotalSocket;
-	Sprite* playerHexTotalSocket;
+	cocos2d::Sprite* enemyBinaryTotalSocket;
+	cocos2d::Sprite* enemyDecimalTotalSocket;
+	cocos2d::Sprite* enemyHexTotalSocket;
+	cocos2d::Sprite* playerBinaryTotalSocket;
+	cocos2d::Sprite* playerDecimalTotalSocket;
+	cocos2d::Sprite* playerHexTotalSocket;
 
 protected:
 	void onBeforeStateChange(GameState* eventCustom) override;
@@ -34,21 +34,21 @@ private:
 	void initializePositions() override;
 	void readNewTotals(GameState* gameState, bool displayDeltas);
 	void updateTotals(GameState* gameState);
-	void runDeltaAnimation(Label* label, float startPositionY, int delta);
+	void runDeltaAnimation(LocalizedLabel* label, float startPositionY, int delta);
 
-	Label* enemyBinaryCardTotal;
-	Label* enemyDecimalCardTotal;
-	Label* enemyHexCardTotal;
-	Label* playerBinaryCardTotal;
-	Label* playerDecimalCardTotal;
-	Label* playerHexCardTotal;
+	LocalizedLabel* enemyBinaryCardTotal;
+	LocalizedLabel* enemyDecimalCardTotal;
+	LocalizedLabel* enemyHexCardTotal;
+	LocalizedLabel* playerBinaryCardTotal;
+	LocalizedLabel* playerDecimalCardTotal;
+	LocalizedLabel* playerHexCardTotal;
 
-	Label* enemyBinaryCardDeltaLabel;
-	Label* enemyDecimalCardDeltaLabel;
-	Label* enemyHexCardDeltaLabel;
-	Label* playerBinaryCardDeltaLabel;
-	Label* playerDecimalCardDeltaLabel;
-	Label* playerHexCardDeltaLabel;
+	LocalizedLabel* enemyBinaryCardDeltaLabel;
+	LocalizedLabel* enemyDecimalCardDeltaLabel;
+	LocalizedLabel* enemyHexCardDeltaLabel;
+	LocalizedLabel* playerBinaryCardDeltaLabel;
+	LocalizedLabel* playerDecimalCardDeltaLabel;
+	LocalizedLabel* playerHexCardDeltaLabel;
 
 	int cachedEnemyBinaryTotal;
 	int cachedEnemyDecimalTotal;
@@ -57,5 +57,5 @@ private:
 	int cachedPlayerDecimalTotal;
 	int cachedPlayerHexTotal;
 
-	static const int cacheCipher;
+	static const int CacheCipher;
 };

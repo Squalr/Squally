@@ -1,17 +1,14 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Scenes/Hexus/Card.h"
-
-using namespace cocos2d;
 
 class MenuCard : public Card
 {
 public:
-	static MenuCard * create(Card::CardStyle cardStyle, CardData* cardData);
+	static MenuCard* create(Card::CardStyle cardStyle, CardData* cardData);
 
-	void addDisplayItem(Node* node);
-	void removeDisplayItem(Node* node);
+	void addDisplayItem(cocos2d::Node* node);
+	void removeDisplayItem(cocos2d::Node* node);
 	void clearDisplayItems();
 
 protected:
@@ -22,5 +19,5 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	std::vector<Node*> displayItems;
+	std::vector<cocos2d::Node*> displayItems;
 };

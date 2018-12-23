@@ -1,17 +1,14 @@
 #pragma once
-#include "cocos2d.h"
+#include <string>
 
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.h"
-
-using namespace cocos2d;
 
 class HexusChapterPreviewMech : public HexusChapterPreview
 {
 public:
-	static HexusChapterPreviewMech * create();
+	static HexusChapterPreviewMech* create();
 
-	static const std::string stringKeyChapterName;
+	static const std::string SaveKeyChapterName;
 
 protected:
 	HexusChapterPreviewMech();

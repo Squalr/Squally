@@ -1,17 +1,11 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
 
 #include "Scenes/Hexus/States/StateBase.h"
-
-using namespace cocos2d;
 
 class StatePlayCard : public StateBase
 {
 public:
-	static StatePlayCard * create();
+	static StatePlayCard* create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;

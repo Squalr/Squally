@@ -1,7 +1,20 @@
 #include "RowTotals.h"
 
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+
+using namespace cocos2d;
+
 // Obscure cached values with a cipher -- less confusing for those hacking the game if we hide cached values
-const int RowTotals::cacheCipher = 0xdeadbeef;
+const int RowTotals::CacheCipher = 0xdeadbeef;
 
 RowTotals* RowTotals::create()
 {
@@ -28,19 +41,19 @@ RowTotals::RowTotals()
 	this->playerDecimalTotalSocket = Sprite::create(HexusResources::RowTotalSocketDec);
 	this->playerHexTotalSocket = Sprite::create(HexusResources::RowTotalSocketHex);
 
-	this->enemyBinaryCardTotal = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
-	this->enemyDecimalCardTotal = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
-	this->enemyHexCardTotal = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
-	this->playerBinaryCardTotal = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
-	this->playerDecimalCardTotal = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
-	this->playerHexCardTotal = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
+	this->enemyBinaryCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->enemyDecimalCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->enemyHexCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->playerBinaryCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->playerDecimalCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->playerHexCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
 
-	this->enemyBinaryCardDeltaLabel = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
-	this->enemyDecimalCardDeltaLabel = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
-	this->enemyHexCardDeltaLabel = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
-	this->playerBinaryCardDeltaLabel = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
-	this->playerDecimalCardDeltaLabel = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
-	this->playerHexCardDeltaLabel = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
+	this->enemyBinaryCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->enemyDecimalCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->enemyHexCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->playerBinaryCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->playerDecimalCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->playerHexCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
 
 	this->enemyBinaryCardTotal->enableOutline(Color4B::BLACK, 3);
 	this->enemyDecimalCardTotal->enableOutline(Color4B::BLACK, 3);
@@ -192,76 +205,76 @@ void RowTotals::readNewTotals(GameState* gameState, bool displayDeltas)
 	int newEnemyDecimalTotal = gameState->enemyDecimalCards->getRowAttack();
 	int newEnemyHexTotal = gameState->enemyHexCards->getRowAttack();
 
-	if (newEnemyBinaryTotal != (this->cachedEnemyBinaryTotal ^ RowTotals::cacheCipher))
+	if (newEnemyBinaryTotal != (this->cachedEnemyBinaryTotal ^ RowTotals::CacheCipher))
 	{
 		if (displayDeltas)
 		{
-			int delta = newEnemyBinaryTotal - (this->cachedEnemyBinaryTotal ^ RowTotals::cacheCipher);
+			int delta = newEnemyBinaryTotal - (this->cachedEnemyBinaryTotal ^ RowTotals::CacheCipher);
 
 			this->runDeltaAnimation(this->enemyBinaryCardDeltaLabel, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::binaryRowOffsetY, delta);
 		}
 
-		this->cachedEnemyBinaryTotal = newEnemyBinaryTotal ^ RowTotals::cacheCipher;
+		this->cachedEnemyBinaryTotal = newEnemyBinaryTotal ^ RowTotals::CacheCipher;
 	}
 
-	if (newEnemyDecimalTotal != (this->cachedEnemyDecimalTotal ^ RowTotals::cacheCipher))
+	if (newEnemyDecimalTotal != (this->cachedEnemyDecimalTotal ^ RowTotals::CacheCipher))
 	{
 		if (displayDeltas)
 		{
-			int delta = newEnemyDecimalTotal - (this->cachedEnemyDecimalTotal ^ RowTotals::cacheCipher);
+			int delta = newEnemyDecimalTotal - (this->cachedEnemyDecimalTotal ^ RowTotals::CacheCipher);
 
 			this->runDeltaAnimation(this->enemyDecimalCardDeltaLabel, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::decimalRowOffsetY, delta);
 		}
 		
-		this->cachedEnemyDecimalTotal = newEnemyDecimalTotal ^ RowTotals::cacheCipher;
+		this->cachedEnemyDecimalTotal = newEnemyDecimalTotal ^ RowTotals::CacheCipher;
 	}
 
-	if (newEnemyHexTotal != (this->cachedEnemyHexTotal ^ RowTotals::cacheCipher))
+	if (newEnemyHexTotal != (this->cachedEnemyHexTotal ^ RowTotals::CacheCipher))
 	{
 		if (displayDeltas)
 		{
-			int delta = newEnemyHexTotal - (this->cachedEnemyHexTotal ^ RowTotals::cacheCipher);
+			int delta = newEnemyHexTotal - (this->cachedEnemyHexTotal ^ RowTotals::CacheCipher);
 
 			this->runDeltaAnimation(this->enemyHexCardDeltaLabel, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY, delta);
 		}
 		
-		this->cachedEnemyHexTotal = newEnemyHexTotal ^ RowTotals::cacheCipher;
+		this->cachedEnemyHexTotal = newEnemyHexTotal ^ RowTotals::CacheCipher;
 	}
 
-	if (newPlayerBinaryTotal != (this->cachedPlayerBinaryTotal ^ RowTotals::cacheCipher))
+	if (newPlayerBinaryTotal != (this->cachedPlayerBinaryTotal ^ RowTotals::CacheCipher))
 	{
 		if (displayDeltas)
 		{
-			int delta = newPlayerBinaryTotal - (this->cachedPlayerBinaryTotal ^ RowTotals::cacheCipher);
+			int delta = newPlayerBinaryTotal - (this->cachedPlayerBinaryTotal ^ RowTotals::CacheCipher);
 
 			this->runDeltaAnimation(this->playerBinaryCardDeltaLabel, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::binaryRowOffsetY, delta);
 		}
 
-		this->cachedPlayerBinaryTotal = newPlayerBinaryTotal ^ RowTotals::cacheCipher;
+		this->cachedPlayerBinaryTotal = newPlayerBinaryTotal ^ RowTotals::CacheCipher;
 	}
 
-	if (newPlayerDecimalTotal != (this->cachedPlayerDecimalTotal ^ RowTotals::cacheCipher))
+	if (newPlayerDecimalTotal != (this->cachedPlayerDecimalTotal ^ RowTotals::CacheCipher))
 	{
 		if (displayDeltas)
 		{
-			int delta = newPlayerDecimalTotal - (this->cachedPlayerDecimalTotal ^ RowTotals::cacheCipher);
+			int delta = newPlayerDecimalTotal - (this->cachedPlayerDecimalTotal ^ RowTotals::CacheCipher);
 
 			this->runDeltaAnimation(this->playerDecimalCardDeltaLabel, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::decimalRowOffsetY, delta);
 		}
 
-		this->cachedPlayerDecimalTotal = newPlayerDecimalTotal ^ RowTotals::cacheCipher;
+		this->cachedPlayerDecimalTotal = newPlayerDecimalTotal ^ RowTotals::CacheCipher;
 	}
 
-	if (newPlayerHexTotal != (this->cachedPlayerHexTotal ^ RowTotals::cacheCipher))
+	if (newPlayerHexTotal != (this->cachedPlayerHexTotal ^ RowTotals::CacheCipher))
 	{
 		if (displayDeltas)
 		{
-			int delta = newPlayerHexTotal - (this->cachedPlayerHexTotal ^ RowTotals::cacheCipher);
+			int delta = newPlayerHexTotal - (this->cachedPlayerHexTotal ^ RowTotals::CacheCipher);
 
 			this->runDeltaAnimation(this->playerHexCardDeltaLabel, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::hexRowOffsetY, delta);
 		}
 
-		this->cachedPlayerHexTotal = newPlayerHexTotal ^ RowTotals::cacheCipher;
+		this->cachedPlayerHexTotal = newPlayerHexTotal ^ RowTotals::CacheCipher;
 	}
 }
 
@@ -275,7 +288,7 @@ void RowTotals::updateTotals(GameState* gameState)
 	this->enemyHexCardTotal->setString(std::to_string(gameState->enemyHexCards->getRowAttack()));
 }
 
-void RowTotals::runDeltaAnimation(Label* label, float startPositionY, int delta)
+void RowTotals::runDeltaAnimation(LocalizedLabel* label, float startPositionY, int delta)
 {
 	const float floatOffsetY = 32.0f;
 

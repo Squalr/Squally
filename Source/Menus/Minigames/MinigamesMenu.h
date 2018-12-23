@@ -1,21 +1,12 @@
 #pragma once
-#include <algorithm>
-#include <string>
-
-#include "cocos2d.h"
+#include "cocos/base/CCEvent.h"
+#include "cocos/base/CCEventKeyboard.h"
 
 #include "Engine/GlobalScene.h"
-#include "Engine/Localization/Localization.h"
-#include "Engine/Sound/SoundManager.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Controls/ScrollPane.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/Mouse.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
-#include "Menus/MenuBackground.h"
 
-using namespace cocos2d;
+class MenuSprite;
+class TextMenuSprite;
+class ScrollPane;
 
 class MinigamesMenu : public GlobalScene
 {
@@ -31,13 +22,13 @@ private:
 	void initializeListeners() override;
 	void initializePositions() override;
 
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onBackClick(MenuSprite* menuSprite);
 	void onHexusClick(MenuSprite* menuSprite);
 	void onHexusPuzzlesClick(MenuSprite* menuSprite);
 	TextMenuSprite* createComingSoonButton();
 
-	Node* backgroundNode;
+	cocos2d::Node* backgroundNode;
 	ScrollPane* scrollPane;
 	TextMenuSprite* hexusButton;
 	TextMenuSprite* hexusPuzzlesButton;
@@ -50,13 +41,4 @@ private:
 	TextMenuSprite* backButton;
 
 	static MinigamesMenu* instance;
-
-	static const std::string StringKeyHexus;
-	static const std::string StringKeyHexusPuzzles;
-	static const std::string StringKeyComingSoon;
-
-	static const float titleFontSize;
-	static const float menuFontSize;
-	static const float menuOffset;
-	static const float spacing;
 };

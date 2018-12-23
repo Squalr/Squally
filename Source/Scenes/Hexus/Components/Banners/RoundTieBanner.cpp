@@ -1,5 +1,14 @@
 #include "RoundTieBanner.h"
 
+#include "cocos/base/CCDirector.h"
+
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+
+using namespace cocos2d;
+
 RoundTieBanner* RoundTieBanner::create()
 {
 	RoundTieBanner* instance = new RoundTieBanner();
@@ -38,7 +47,7 @@ void RoundTieBanner::onBeforeStateChange(GameState* gameState)
 {
 	ComponentBase::onBeforeStateChange(gameState);
 
-	if (gameState->stateType == GameState::RoundEnd && gameState->isRoundTied())
+	if (gameState->stateType == GameState::StateType::RoundEnd && gameState->isRoundTied())
 	{
 		this->flashBanner();
 	}

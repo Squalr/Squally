@@ -1,5 +1,20 @@
 #include "CardPreview.h"
 
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Utils/HackUtils.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Strings/Hexus/BinLabel.h"
+#include "Strings/Hexus/DecLabel.h"
+#include "Strings/Hexus/HexLabel.h"
+
+using namespace cocos2d;
+
 CardPreview* CardPreview::create()
 {
 	CardPreview* instance = new CardPreview();
@@ -144,9 +159,14 @@ void CardPreview::previewCard(Card* card)
 			{
 				int attack = card->getAttack();
 
-				Label* binaryLabel = Label::createWithTTF("BIN: " + HackUtils::toBinary4(attack), Localization::getCodingFont(), Localization::getFontSizeH2(Localization::getCodingFont()));
-				Label* decimalLabel = Label::createWithTTF("DEC: " + std::to_string(attack), Localization::getCodingFont(), Localization::getFontSizeH2(Localization::getCodingFont()));
-				Label* hexLabel = Label::createWithTTF("HEX: " + HackUtils::toHex(attack), Localization::getCodingFont(), Localization::getFontSizeH2(Localization::getCodingFont()));
+				LocalizedLabel* binaryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, LocaleStrings::BinLabel::create());
+				LocalizedLabel* decimalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, LocaleStrings::BinLabel::create());
+				LocalizedLabel* hexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, LocaleStrings::BinLabel::create());
+
+				// TODO: Localized labels need to be able to handle appending things (probably parametrized template thing?)
+				binaryLabel->setString(binaryLabel->getString() + " " + HackUtils::toBinary4(attack));
+				decimalLabel->setString(decimalLabel->getString() + " " + std::to_string(attack));
+				hexLabel->setString(hexLabel->getString() + " " + HackUtils::toHex(attack));
 
 				binaryLabel->setAnchorPoint(Vec2::ZERO);
 				decimalLabel->setAnchorPoint(Vec2::ZERO);
@@ -174,7 +194,7 @@ void CardPreview::previewCard(Card* card)
 			}
 			default:
 			{
-				Label * specialLabel = Label::createWithTTF("", Localization::getCodingFont(), Localization::getFontSizeP(Localization::getCodingFont()));
+				LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P);
 
 				specialLabel->setAnchorPoint(Vec2(0.0f, 0.0f));
 				specialLabel->setTextColor(Card::specialColor);
@@ -185,50 +205,78 @@ void CardPreview::previewCard(Card* card)
 				switch (card->cardData->cardType)
 				{
 					case CardData::CardType::Special_MOV:
+					{
 						specialLabel->setString("Select one of your cards and MOV its value into another card.");
 						break;
+					}
 					case CardData::CardType::Special_AND:
+					{
 						specialLabel->setString("Select one of your cards and AND its value with another card, storing the value into the other card.");
 						break;
+					}
 					case CardData::CardType::Special_OR:
+					{
 						specialLabel->setString("Select one of your cards and OR its value with another card, storing the value into the other card.");
 						break;
+					}
 					case CardData::CardType::Special_XOR:
+					{
 						specialLabel->setString("Select one of your cards and XOR its value with another card, storing the value into the other card.");
 						break;
+					}
 					case CardData::CardType::Special_SHL:
+					{
 						specialLabel->setString("Shift the bits left of all cards in a row.");
 						break;
+					}
 					case CardData::CardType::Special_SHR:
+					{
 						specialLabel->setString("Shift the bits right of all cards in a row.");
 						break;
+					}
 					case CardData::CardType::Special_INV:
+					{
 						specialLabel->setString("Invert the bits of the target card.");
 						break;
+					}
 					case CardData::CardType::Special_FLIP1:
+					{
 						specialLabel->setString("Flip the 1st bit of all cards in a row.");
 						break;
+					}
 					case CardData::CardType::Special_FLIP2:
+					{
 						specialLabel->setString("Flip the 2nd bit of all cards in a row.");
 						break;
+					}
 					case CardData::CardType::Special_FLIP3:
+					{
 						specialLabel->setString("Flip the 3rd bit of all cards in a row.");
 						break;
+					}
 					case CardData::CardType::Special_FLIP4:
+					{
 						specialLabel->setString("Flip the 4th bit of all cards in a row.");
 						break;
+					}
 					case CardData::CardType::Special_ADD:
+					{
 						specialLabel->setString("Select one of your cards and ADD its value to another card, storing the value into the other card.");
 						break;
+					}
 					case CardData::CardType::Special_SUB:
+					{
 						specialLabel->setString("Select one of your cards and SUB its value from another card, storing the value into the other card.");
 						break;
+					}
 					default:
+					{
 						break;
-				}
+					}
 
-				this->previewPanel->addChild(specialLabel);
-				break;
+					this->previewPanel->addChild(specialLabel);
+					break;
+				}
 			}
 		}
 	}

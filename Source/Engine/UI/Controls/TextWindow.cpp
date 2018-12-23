@@ -7,6 +7,8 @@
 #include "cocos/ui/UITextField.h"
 
 #include "Engine/Localization/Localization.h"
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/UI/Controls/MenuLabel.h"
 
 using namespace cocos2d;
@@ -17,21 +19,20 @@ const float TextWindow::titleBarHeight = 48.0f;
 const Color4B TextWindow::defaultTitleBarColor = Color4B(59, 92, 97, 192);
 const Color4B TextWindow::defaultWindowColor = Color4B(39, 58, 61, 192);
 
-TextWindow* TextWindow::create(std::string windowTitle, Size initWindowSize, float initFontSize, Color3B initFontColor)
+TextWindow* TextWindow::create(LocalizedString* windowTitle, Size initWindowSize, Color3B initFontColor)
 {
-	TextWindow* instance = new TextWindow(windowTitle, initWindowSize, initFontSize, initFontColor);
+	TextWindow* instance = new TextWindow(windowTitle, initWindowSize, initFontColor);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TextWindow::TextWindow(std::string windowTitle, Size initWindowSize, float initFontSize, Color3B initFontColor)
+TextWindow::TextWindow(LocalizedString* windowTitle, Size initWindowSize, Color3B initFontColor)
 {
 	this->displayTextElements = std::vector<RichElement*>();
 
 	this->marginSize = 0;
-	this->fontSize = initFontSize;
 	this->windowSize = initWindowSize;
 
 	this->windowColor = TextWindow::defaultWindowColor;
@@ -41,7 +42,7 @@ TextWindow::TextWindow(std::string windowTitle, Size initWindowSize, float initF
 	this->displayedText = RichText::create();
 	this->background = Node::create();
 	this->titleBar = Node::create();
-	this->windowTitle = MenuLabel::create(windowTitle, Localization::getCodingFont(), this->fontSize);
+	this->windowTitle = MenuLabel::create(LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, windowTitle));
 
 	this->background->addChild(LayerColor::create(this->windowColor, this->windowSize.width,
 			this->windowSize.height));
@@ -87,8 +88,8 @@ void TextWindow::initializePositions()
 	this->displayedText->setPosition(Vec2(this->marginSize + TextWindow::padding.width,
 			this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
 	this->titleBar->setPosition(-this->windowSize.width / 2.0f,
-			this->windowSize.height / 2.0f - TextWindow::titleBarHeight / 2.0f + this->fontSize);
-	this->windowTitle->setPosition(0.0f, this->windowSize.height / 2 + this->fontSize);
+			this->windowSize.height / 2.0f - TextWindow::titleBarHeight / 2.0f); // + this->fontSize
+	this->windowTitle->setPosition(0.0f, this->windowSize.height / 2); // + this->fontSize
 }
 
 void TextWindow::initializeListeners()
@@ -120,7 +121,7 @@ void TextWindow::setTitle(std::string text)
 
 void TextWindow::insertText(std::string text, Color3B color)
 {
-	RichElement* element = RichElementText::create(0, color, 0xFF, text, Localization::getCodingFont(), this->fontSize);
+	RichElement* element = RichElementText::create(0, color, 0xFF, text, Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
 
 	this->displayTextElements.push_back(element);
 	this->displayedText->pushBackElement(element);

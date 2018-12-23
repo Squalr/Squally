@@ -79,7 +79,7 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 	this->spriteLeft = this->getPortraitNode(portraitLeft, false);
 	this->spriteRight = this->getPortraitNode(portraitRight, true);
 
-	this->dialogText = Label::createWithTTF(text, Localization::getMainFont(), 24);
+	this->dialogText = nullptr; // Label::createWithTTF(text, Localization::getMainFont(), 24);
 	this->dialogText->enableWrap(true);
 	this->dialogText->setDimensions(1024.0f, 224.0f);
 
@@ -134,7 +134,7 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 		std::string choice = choiceDialogPair.first;
 		DialogMenu* dialogMenu = choiceDialogPair.second;
 
-		MenuLabel* label = MenuLabel::create(choice, Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+		MenuLabel* label = nullptr; // MenuLabel::create(choice, Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
 		label->setColor(Color4B::YELLOW);
 		label->setHoverColor(Color4B(0x6c, 0xa5, 0xad, 0xff));
 		label->setGlowColor(Color4B::WHITE);

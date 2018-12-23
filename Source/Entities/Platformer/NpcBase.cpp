@@ -4,6 +4,8 @@
 
 #include "Resources/UIResources.h"
 
+using namespace cocos2d;
+
 NpcBase::NpcBase(ValueMap* initProperties, std::string scmlResource, PlatformerCollisionType collisionType, Size size, float scale, Vec2 collisionOffset)
 	: PlatformerEntity(initProperties, scmlResource, collisionType, size, scale, collisionOffset)
 {

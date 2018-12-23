@@ -1,5 +1,13 @@
 #include "StateCombineStaged.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/Config.h"
+
+using namespace cocos2d;
+
 StateCombineStaged* StateCombineStaged::create()
 {
 	StateCombineStaged* instance = new StateCombineStaged();

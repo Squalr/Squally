@@ -1,5 +1,12 @@
 #include "IsometricMap.h"
 
+#include "cocos/physics/CCPhysicsWorld.h"
+
+#include "Engine/Camera/GameCamera.h"
+#include "Entities/Isometric/Squally/IsometricSqually.h"
+
+using namespace cocos2d;
+
 IsometricMap* IsometricMap::create()
 {
 	IsometricMap* instance = new IsometricMap();

@@ -1,5 +1,13 @@
 #include "HexusOpponentMenuForest.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/UI/Controls/ScrollPane.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Forest/HexusChapterPreviewForest.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
+#include "Scenes/Hexus/Opponents/Forest/ForestHexusOpponents.h"
+
+using namespace cocos2d;
+
 HexusOpponentMenuForest* HexusOpponentMenuForest::instance = nullptr;
 
 void HexusOpponentMenuForest::registerGlobalScene()
@@ -15,7 +23,7 @@ void HexusOpponentMenuForest::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuForest::instance);
 }
 
-HexusOpponentMenuForest::HexusOpponentMenuForest() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Forest, HexusChapterPreviewForest::stringKeyChapterName)
+HexusOpponentMenuForest::HexusOpponentMenuForest() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Forest, HexusChapterPreviewForest::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentLycan::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentThug::getInstance()));

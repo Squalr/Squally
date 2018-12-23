@@ -1,5 +1,17 @@
 #include "HexusOpponentThor.h"
 
+#include "cocos/math/Vec2.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+
+#include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
 const std::string HexusOpponentThor::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THOR";
 HexusOpponentThor* HexusOpponentThor::instance = nullptr;
 
@@ -25,13 +37,13 @@ HexusOpponentThor::HexusOpponentThor() : HexusOpponentData(
 	HexusOpponentData::generateReward(0.18f),
 	HexusOpponentData::generateDeck(25, 0.18f,
 		{
-			CardList::getInstance()->cardListByName->at(CardKeys::Binary0),
-			CardList::getInstance()->cardListByName->at(CardKeys::Hex0),
-			CardList::getInstance()->cardListByName->at(CardKeys::Decimal0),
-			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
-			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
-			CardList::getInstance()->cardListByName->at(CardKeys::ShiftLeft),
-			CardList::getInstance()->cardListByName->at(CardKeys::ShiftRight),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+			CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 		})
 	)
 {

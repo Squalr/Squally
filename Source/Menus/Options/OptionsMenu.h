@@ -17,6 +17,7 @@ namespace cocos2d
 class CCheckbox;
 class CRadioButton;
 class CSlider;
+class LocalizedLabel;
 class MenuSprite;
 class TextMenuSprite;
 
@@ -49,28 +50,28 @@ private:
 
 	cocos2d::Node* background;
 	cocos2d::Sprite* optionsWindow;
-	cocos2d::Label* titleLabel;
+	LocalizedLabel* optionsLabel;
 	MenuSprite* closeButton;
 
 	cocos2d::Sprite* musicIcon;
 	cocos2d::Sprite* soundIcon;
 	CSlider* musicSlider;
 	CSlider* soundSlider;
-	cocos2d::Label* fullScreenLabel;
+	LocalizedLabel* fullScreenLabel;
 	CCheckbox* fullScreenButton;
 	TextMenuSprite* returnButton;
 
-	cocos2d::Label* label1080x768;
-	cocos2d::Label* label1152x864;
-	cocos2d::Label* label1280x720;
-	cocos2d::Label* label1280x960;
-	cocos2d::Label* label1280x1024;
-	cocos2d::Label* label1440x900;
-	cocos2d::Label* label1600x900;
-	cocos2d::Label* label1600x1024;
-	cocos2d::Label* label1920x1080;
-	cocos2d::Label* label2560x1440;
-	cocos2d::Label* label3840x2160;
+	LocalizedLabel* label1080x768;
+	LocalizedLabel* label1152x864;
+	LocalizedLabel* label1280x720;
+	LocalizedLabel* label1280x960;
+	LocalizedLabel* label1280x1024;
+	LocalizedLabel* label1440x900;
+	LocalizedLabel* label1600x900;
+	LocalizedLabel* label1600x1024;
+	LocalizedLabel* label1920x1080;
+	LocalizedLabel* label2560x1440;
+	LocalizedLabel* label3840x2160;
 
 	CRadioButton* option1080x768;
 	CRadioButton* option1152x864;
@@ -85,9 +86,6 @@ private:
 	CRadioButton* option3840x2160;
 
 	static const cocos2d::Color3B TitleColor;
-	static const std::string StringKeyMenuOptions;
-	static const std::string StringKeyFullScreen;
-	static const std::string StringKeyReturn;
 	static const int ResolutionGroupId;
 };
 

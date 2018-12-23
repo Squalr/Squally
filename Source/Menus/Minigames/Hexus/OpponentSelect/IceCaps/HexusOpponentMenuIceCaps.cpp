@@ -1,5 +1,13 @@
 #include "HexusOpponentMenuIceCaps.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/UI/Controls/ScrollPane.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/IceCaps/HexusChapterPreviewIceCaps.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
+#include "Scenes/Hexus/Opponents/Snow/SnowHexusOpponents.h"
+
+using namespace cocos2d;
+
 HexusOpponentMenuIceCaps* HexusOpponentMenuIceCaps::instance = nullptr;
 
 void HexusOpponentMenuIceCaps::registerGlobalScene()
@@ -15,7 +23,7 @@ void HexusOpponentMenuIceCaps::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuIceCaps::instance);
 }
 
-HexusOpponentMenuIceCaps::HexusOpponentMenuIceCaps() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::IceCaps, HexusChapterPreviewIceCaps::stringKeyChapterName)
+HexusOpponentMenuIceCaps::HexusOpponentMenuIceCaps() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::IceCaps, HexusChapterPreviewIceCaps::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentToySoldierGoblin::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentNessie::getInstance()));

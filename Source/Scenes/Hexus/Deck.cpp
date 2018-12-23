@@ -1,6 +1,12 @@
 #include "Deck.h"
 
+#include "cocos/2d/CCActionInterval.h"
+
+#include "Engine/Utils/GameUtils.h"
+
 #include "Resources/HexusResources.h"
+
+using namespace cocos2d;
 
 Deck* Deck::create()
 {

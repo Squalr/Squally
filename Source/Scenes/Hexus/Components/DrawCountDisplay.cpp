@@ -1,5 +1,22 @@
 #include "DrawCountDisplay.h"
 
+#include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/Utils/StrUtils.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+
+#include "Strings/Hexus/DrawToolTip.h"
+
+using namespace cocos2d;
+
 DrawCountDisplay* DrawCountDisplay::create()
 {
 	DrawCountDisplay* instance = new DrawCountDisplay();
@@ -12,19 +29,15 @@ DrawCountDisplay* DrawCountDisplay::create()
 DrawCountDisplay::DrawCountDisplay()
 {
 	this->drawCountSprite = MenuSprite::create(HexusResources::CardDrawIconSmall, HexusResources::CardDrawIconSmall);
-	this->drawCountLabel = Label::createWithTTF("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->drawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
 	this->enemyDrawCountSprite = Sprite::create(HexusResources::CardDrawIconSmall);
-	this->enemyDrawCountLabel = Label::createWithTTF("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->enemyDrawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
 
 	LayerColor* deckDrawCountMouseOverPanel;
 	Label* deckDrawCountCardMouseOverLabel;
 
 	this->deckDrawCountMouseOverPanel = LayerColor::create(Color4B::BLACK, 320.0f, 96.0f);
-	this->deckDrawCountCardMouseOverLabel = Label::createWithTTF(
-		Localization::resolveString("The number of cards that will be drawn next round"),
-		Localization::getMainFont(),
-		Localization::getFontSizeP(Localization::getMainFont())
-	);
+	this->deckDrawCountCardMouseOverLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::DrawToolTip::create());
 
 	this->deckDrawCountCardMouseOverLabel->setDimensions(320.0f - 16.0f, 0.0f);
 
@@ -140,7 +153,7 @@ void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 
 	switch (gameState->stateType)
 	{
-		case GameState::PlayerTurnStart:
+		case GameState::StateType::PlayerTurnStart:
 		{
 			if (!gameState->enemyPassed)
 			{
@@ -149,7 +162,7 @@ void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 
 			break;
 		}
-		case GameState::OpponentTurnStart:
+		case GameState::StateType::OpponentTurnStart:
 		{
 			if (!gameState->playerPassed)
 			{
@@ -158,7 +171,7 @@ void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 
 			break;
 		}
-		case GameState::TurnEnd:
+		case GameState::StateType::TurnEnd:
 		{
 			// this->drawCountSprite->runAction(FadeTo::create(0.25f, 0));
 			this->enemyDrawCountSprite->runAction(FadeTo::create(0.25f, 0));

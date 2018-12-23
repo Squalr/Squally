@@ -1,5 +1,38 @@
 #include "HexusChapterSelectMenu.h"
 
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/GlobalDirector.h"
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Save/SaveManager.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Events/NavigationEvents.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Caverns/HexusChapterPreviewCaverns.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Forest/HexusChapterPreviewForest.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/IceCaps/HexusChapterPreviewIceCaps.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Jungle/HexusChapterPreviewJungle.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Mech/HexusChapterPreviewMech.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Obelisk/HexusChapterPreviewObelisk.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusChapterPreviewRuins.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Training/HexusChapterPreviewTraining.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusChapterPreviewVolcano.h"
+
+#include "Resources/UIResources.h"
+
+#include "Strings/Menus/Back.h"
+#include "Strings/Hexus/ManageCards.h"
+#include "Strings/Hexus/SelectAChapter.h"
+#include "Strings/Hexus/Shop.h"
+
+using namespace cocos2d;
+
 HexusChapterSelectMenu* HexusChapterSelectMenu::instance = nullptr;
 
 void HexusChapterSelectMenu::registerGlobalScene()
@@ -29,10 +62,10 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	this->hexusChapterPreviewVolcano = HexusChapterPreviewVolcano::create();
 	this->hexusChapterPreviewObelisk = HexusChapterPreviewObelisk::create();
 	this->hexusChapterPreviewMech = HexusChapterPreviewMech::create();
-	this->chapterSelectLabel = Label::createWithTTF("Select a Chapter", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->chapterSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::SelectAChapter::create());
 
-	Label* backButtonLabel = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelHover = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	LocalizedLabel* backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
+	LocalizedLabel* backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
 
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
@@ -44,8 +77,8 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
-	Label* manageDeckLabel = Label::createWithTTF("Manage Cards", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* manageDeckLabelHover = Label::createWithTTF("Manage Cards", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	LocalizedLabel* manageDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::ManageCards::create());
+	LocalizedLabel* manageDeckLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::ManageCards::create());
 	
 	manageDeckLabel->enableOutline(Color4B::BLACK, 2);
 	manageDeckLabelHover->enableOutline(Color4B::BLACK, 2);
@@ -57,8 +90,8 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
-	Label* shopLabel = Label::createWithTTF("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* shopLabelHover = Label::createWithTTF("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	LocalizedLabel* shopLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Shop::create());
+	LocalizedLabel* shopLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Shop::create());
 
 	shopLabel->enableOutline(Color4B::BLACK, 2);
 	shopLabelHover->enableOutline(Color4B::BLACK, 2);

@@ -10,7 +10,7 @@ using namespace cocos2d;
 class OpponentFirstBanner : public BannerBase
 {
 public:
-	static OpponentFirstBanner * create();
+	static OpponentFirstBanner* create();
 
 protected:
 	void onBeforeStateChange(GameState* eventCustom) override;
@@ -22,6 +22,6 @@ private:
 
 	void initializePositions() override;
 
-	Sprite* enemyBanner1;
-	Sprite* enemyBanner2;
+	cocos2d::Sprite* enemyBanner1;
+	cocos2d::Sprite* enemyBanner2;
 };

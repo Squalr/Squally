@@ -1,16 +1,17 @@
 #pragma once
-#include "cocos2d.h"
 
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
 #include "Scenes/Hexus/States/StateBase.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Animation;
+	class Sprite;
+}
 
 class StateCoinFlip : public StateBase
 {
 public:
-	static StateCoinFlip * create();
+	static StateCoinFlip* create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;
@@ -25,10 +26,10 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 
-	Sprite* coin;
-	Animation* skeletonInAnimation;
-	Animation* skeletonOutAnimation;
-	Animation* lionInAnimation;
-	Animation* lionOutAnimation;
-	Animation* neutralAnimation;
+	cocos2d::Sprite* coin;
+	cocos2d::Animation* skeletonInAnimation;
+	cocos2d::Animation* skeletonOutAnimation;
+	cocos2d::Animation* lionInAnimation;
+	cocos2d::Animation* lionOutAnimation;
+	cocos2d::Animation* neutralAnimation;
 };

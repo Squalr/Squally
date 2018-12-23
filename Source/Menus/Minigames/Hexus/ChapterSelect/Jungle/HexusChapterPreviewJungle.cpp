@@ -1,6 +1,15 @@
 #include "HexusChapterPreviewJungle.h"
 
-const std::string HexusChapterPreviewJungle::stringKeyChapterName = "HEXUS_CHAPTER_JUNGLE";
+#include "cocos/2d/CCClippingNode.h"
+#include "cocos/2d/CCSprite.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
+const std::string HexusChapterPreviewJungle::SaveKeyChapterName = "HEXUS_CHAPTER_JUNGLE";
 
 HexusChapterPreviewJungle* HexusChapterPreviewJungle::create()
 {
@@ -11,7 +20,7 @@ HexusChapterPreviewJungle* HexusChapterPreviewJungle::create()
 	return instance;
 }
 
-HexusChapterPreviewJungle::HexusChapterPreviewJungle() : HexusChapterPreview(HexusChapterPreviewJungle::stringKeyChapterName)
+HexusChapterPreviewJungle::HexusChapterPreviewJungle() : HexusChapterPreview(HexusChapterPreviewJungle::SaveKeyChapterName)
 {
 	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle));
 	this->text->setString("Jungle");

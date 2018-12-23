@@ -1,5 +1,14 @@
 #include "PlayerRoundWinBanner.h"
 
+#include "cocos/base/CCDirector.h"
+
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+
+using namespace cocos2d;
+
 PlayerRoundWinBanner* PlayerRoundWinBanner::create()
 {
 	PlayerRoundWinBanner* instance = new PlayerRoundWinBanner();
@@ -38,7 +47,7 @@ void PlayerRoundWinBanner::onBeforeStateChange(GameState* gameState)
 {
 	ComponentBase::onBeforeStateChange(gameState);
 
-	if (gameState->stateType == GameState::RoundEnd && gameState->isPlayerWinningRound())
+	if (gameState->stateType == GameState::StateType::RoundEnd && gameState->isPlayerWinningRound())
 	{
 		this->flashBanner();
 	}

@@ -4,7 +4,8 @@
 class Steam
 {
 public:
-	static bool isSteamEnabled();
+	static bool init();
+	static bool isSquallySteamBuild();
 	static bool isCloudSaveAvailable();
 	static cocos2d::LanguageType getLanguage();
 
