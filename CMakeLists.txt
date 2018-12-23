@@ -1655,7 +1655,7 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}/Source/
 	${COCOS2DX_ROOT_PATH}/cocos/audio/include/
 	${CMAKE_CURRENT_SOURCE_DIR}/external/steam/
-	${CMAKE_CURRENT_SOURCE_DIR}/external/udis86/
+	${CMAKE_CURRENT_SOURCE_DIR}/external/Udis86/
     ${ASMJIT_LIBRARY_PATH}
 )
 
