@@ -1,6 +1,15 @@
 #include "HexusChapterPreviewRuins.h"
 
-const std::string HexusChapterPreviewRuins::stringKeyChapterName = "HEXUS_CHAPTER_RUINS";
+#include "cocos/2d/CCClippingNode.h"
+#include "cocos/2d/CCSprite.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
+const std::string HexusChapterPreviewRuins::SaveKeyChapterName = "HEXUS_CHAPTER_RUINS";
 
 HexusChapterPreviewRuins* HexusChapterPreviewRuins::create()
 {
@@ -11,7 +20,7 @@ HexusChapterPreviewRuins* HexusChapterPreviewRuins::create()
 	return instance;
 }
 
-HexusChapterPreviewRuins::HexusChapterPreviewRuins() : HexusChapterPreview(HexusChapterPreviewRuins::stringKeyChapterName)
+HexusChapterPreviewRuins::HexusChapterPreviewRuins() : HexusChapterPreview(HexusChapterPreviewRuins::SaveKeyChapterName)
 {
 	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins));
 	this->text->setString("Ruins");

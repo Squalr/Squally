@@ -1,5 +1,11 @@
 #include "StateLoadInitialState.h"
 
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/Deck.h"
+
+using namespace cocos2d;
+
 StateLoadInitialState* StateLoadInitialState::create()
 {
 	StateLoadInitialState* instance = new StateLoadInitialState();

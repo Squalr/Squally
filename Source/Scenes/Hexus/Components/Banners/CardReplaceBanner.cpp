@@ -1,5 +1,17 @@
 #include "CardReplaceBanner.h"
 
+#include "cocos/2d/CCSprite.h"
+#include "cocos/2d/CCParticleSystemQuad.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+#include "Resources/ParticleResources.h"
+
+using namespace cocos2d;
+
 CardReplaceBanner* CardReplaceBanner::create()
 {
 	CardReplaceBanner* instance = new CardReplaceBanner();
@@ -48,7 +60,7 @@ void CardReplaceBanner::onAnyStateChange(GameState* gameState)
 {
 	BannerBase::onAnyStateChange(gameState);
 
-	if (gameState->stateType == GameState::CardReplace)
+	if (gameState->stateType == GameState::StateType::CardReplace)
 	{
 		if (gameState->cardReplaceCount > 0)
 		{
@@ -59,7 +71,7 @@ void CardReplaceBanner::onAnyStateChange(GameState* gameState)
 			this->penaltyIconParticles->setVisible(true);
 		}
 	}
-	else if (gameState->previousStateType == GameState::CardReplace)
+	else if (gameState->previousStateType == GameState::StateType::CardReplace)
 	{
 		this->hideBanner();
 

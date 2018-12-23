@@ -1,5 +1,10 @@
 #include "IsometricSqually.h"
 
+#include "Engine/Input/Input.h"
+#include "Events/NavigationEvents.h"
+
+using namespace cocos2d;
+
 IsometricSqually* IsometricSqually::squallyInstance = nullptr;
 const std::string IsometricSqually::KeySquallyProperty = "squally";
 

@@ -1,5 +1,13 @@
 #include "StateSelectionStaged.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/CardRow.h"
+
+using namespace cocos2d;
+
 StateSelectionStaged* StateSelectionStaged::create()
 {
 	StateSelectionStaged* instance = new StateSelectionStaged();
@@ -36,10 +44,14 @@ void StateSelectionStaged::onStateEnter(GameState* gameState)
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
+		{
 			this->initializeSelectablesAndCallbacks(gameState);
 			break;
+		}
 		default:
+		{
 			break;
+		}
 	}
 }
 
@@ -50,12 +62,18 @@ void StateSelectionStaged::onStateReload(GameState* gameState)
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
+		{
 			this->initializeSelectablesAndCallbacks(gameState);
 			break;
+		}
 		case GameState::Turn::Enemy:
+		{
 			break;
+		}
 		default:
+		{
 			break;
+		}
 	}
 }
 

@@ -1,13 +1,25 @@
 #include "PauseMenu.h"
 
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Engine/UI/HUD/Hud.h"
+#include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Events/NavigationEvents.h"
+#include "Menus/MenuBackground.h"
+
 #include "Resources/SoundResources.h"
+#include "Resources/UIResources.h"
+
+#include "Strings/Menus/Exit.h"
+#include "Strings/Menus/Options/Options.h"
+#include "Strings/Menus/Pause.h"
+#include "Strings/Menus/Resume.h"
+
+using namespace cocos2d;
 
 const Color3B PauseMenu::TitleColor = Color3B(88, 188, 193);
-const std::string PauseMenu::StringKeyMenuPause = "Menu_Pause";
-const std::string PauseMenu::StringKeyResume = "Menu_Pause_Resume";
-const std::string PauseMenu::StringKeyOptions = "Menu_Pause_Options";
-const std::string PauseMenu::StringKeyExit = "Menu_Pause_Quit_To_Title";
-const std::string PauseMenu::StringKeyExitPrompt = "Menu_Level_Prompt_Exit";
 
 PauseMenu * PauseMenu::create()
 {
@@ -20,10 +32,9 @@ PauseMenu * PauseMenu::create()
 
 PauseMenu::PauseMenu()
 {
-	this->background = Node::create();
 	this->pauseWindow = Sprite::create(UIResources::Menus_PauseMenu_PauseMenu);
 	this->closeButton = MenuSprite::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
-	this->titleLabel = Label::createWithTTF(Localization::resolveString(PauseMenu::StringKeyMenuPause), Localization::getMainFont(), 32.0f);
+	this->pauseLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, LocaleStrings::Pause::create());
 	this->resumeClickCallback = nullptr;
 	this->optionsClickCallback = nullptr;
 	this->exitClickCallback = nullptr;
@@ -37,14 +48,14 @@ PauseMenu::PauseMenu()
 	Color3B highlightColor = Color3B::YELLOW;
 	Color4B glowColor = Color4B::ORANGE;
 
-	Label* resumeLabel = Label::createWithTTF(Localization::resolveString(PauseMenu::StringKeyResume), Localization::getMainFont(), fontSize);
-	Label* resumeLabelHover = Label::createWithTTF(Localization::resolveString(PauseMenu::StringKeyResume), Localization::getMainFont(), fontSize);
+	LocalizedLabel*	resumeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Resume::create());
+	LocalizedLabel*	resumeLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Resume::create());
 
-	Label* optionsLabel = Label::createWithTTF(Localization::resolveString(PauseMenu::StringKeyOptions), Localization::getMainFont(), fontSize);
-	Label* optionsLabelHover = Label::createWithTTF(Localization::resolveString(PauseMenu::StringKeyOptions), Localization::getMainFont(), fontSize);
+	LocalizedLabel*	optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Options::create());
+	LocalizedLabel*	optionsLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Options::create());
 
-	Label* exitLabel = Label::createWithTTF(Localization::resolveString(PauseMenu::StringKeyExit), Localization::getMainFont(), fontSize);
-	Label* exitLabelHover = Label::createWithTTF(Localization::resolveString(PauseMenu::StringKeyExit), Localization::getMainFont(), fontSize);
+	LocalizedLabel*	exitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Exit::create());
+	LocalizedLabel*	exitLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Exit::create());
 
 	resumeLabel->setColor(textColor);
 	resumeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -84,12 +95,11 @@ PauseMenu::PauseMenu()
 		UIResources::Menus_Buttons_GenericButton,
 		UIResources::Menus_Buttons_GenericButtonHover);
 
-	this->titleLabel->setColor(PauseMenu::TitleColor);
-	this->titleLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
+	this->pauseLabel->setColor(PauseMenu::TitleColor);
+	this->pauseLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
 	
-	this->addChild(this->background);
 	this->addChild(this->pauseWindow);
-	this->addChild(this->titleLabel);
+	this->addChild(this->pauseLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->resumeButton);
 	this->addChild(this->optionsButton);
@@ -108,7 +118,7 @@ void PauseMenu::onEnter()
 	float duration = 0.25f;
 
 	GameUtils::fadeInObject(this->pauseWindow, delay, duration);
-	GameUtils::fadeInObject(this->titleLabel, delay, duration);
+	GameUtils::fadeInObject(this->pauseLabel, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 	GameUtils::fadeInObject(this->resumeButton, delay, duration);
 	GameUtils::fadeInObject(this->optionsButton, delay, duration);
@@ -122,7 +132,7 @@ void PauseMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->pauseWindow->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->titleLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 230.0f));
+	this->pauseLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 230.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2 + 136.0f, visibleSize.height / 2 + 204.0f));
 	this->resumeButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 128.0f));
 	this->optionsButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 0.0f));

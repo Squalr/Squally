@@ -1,18 +1,23 @@
 #pragma once
-#include "cocos2d.h"
+#include <functional>
+#include <string>
 
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Events/NavigationEvents.h"
-#include "Scenes/Maps/Platformer/PlatformerMap.h"
-#include "Scenes/Hexus/CardData/CardList.h"
-#include "Scenes/Hexus/Deck.h"
+#include "Engine/SmartNode.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Label;
+	class Sprite;
+}
 
-class HexusPuzzleItem : public Node
+class LocalizedLabel;
+class HexusPuzzleItem;
+class MenuSprite;
+
+class HexusPuzzleItem : public SmartNode
 {
 public:
-	static HexusPuzzleItem * create(std::string description, std::string mapFile, int index, std::function<void(HexusPuzzleItem*)> onMouseOver);
+	static HexusPuzzleItem* create(std::string description, std::string mapFile, int index, std::function<void(HexusPuzzleItem*)> onMouseOver);
 	void initializePositions();
 
 	MenuSprite* startButton;
@@ -36,6 +41,6 @@ private:
 	int levelIndex;
 	int page;
 
-	Sprite* frame;
-	Label* indexLabel;
+	cocos2d::Sprite* frame;
+	LocalizedLabel* indexLabel;
 };

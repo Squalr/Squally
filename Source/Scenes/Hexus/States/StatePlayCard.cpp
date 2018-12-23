@@ -1,8 +1,17 @@
 #include "StatePlayCard.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
 #include "Engine/Sound/SoundManager.h"
+#include "Scenes/Hexus/CardEffects.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/Deck.h"
 
 #include "Resources/SoundResources.h"
+
+using namespace cocos2d;
 
 StatePlayCard* StatePlayCard::create()
 {

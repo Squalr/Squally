@@ -1,7 +1,5 @@
 #pragma once
-#include "cocos2d.h"
-
-using namespace cocos2d;
+#include <string>
 
 class CardKeys
 {
@@ -71,6 +69,4 @@ public:
 	static const std::string ShiftLeft;
 	static const std::string ShiftRight;
 	static const std::string Subtraction;
-
 };
-

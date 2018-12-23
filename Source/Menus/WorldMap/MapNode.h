@@ -8,21 +8,20 @@ class MenuSprite;
 class MapNode : public SmartNode
 {
 public:
-	static MapNode* create(std::string mapName, std::string mapFile);
+	static MapNode* create(std::string mapFile);
 
 	void setLocked(bool newLocked);
 	bool isLocked();
 
-	std::string nodeMapName;
 	std::string nodeMapFile;
 
 protected:
-	MapNode(std::string mapName, std::string mapFile);
+	MapNode(std::string mapFile);
 	~MapNode();
 
 private:
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
+	void initializeListeners() override;
 	void onNodeClick(MenuSprite* menuSprite);
 
 	bool locked;

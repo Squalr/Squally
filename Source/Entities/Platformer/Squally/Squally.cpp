@@ -1,6 +1,12 @@
 #include "Squally.h"
 
+#include "Engine/Input/Input.h"
+#include "Entities/Platformer/PlatformerEnemy.h"
+#include "Events/NavigationEvents.h"
+
 #include "Resources/EntityResources.h"
+
+using namespace cocos2d;
 
 Squally* Squally::squallyInstance = nullptr;
 int Squally::health;

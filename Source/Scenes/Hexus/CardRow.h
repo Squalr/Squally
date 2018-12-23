@@ -1,13 +1,12 @@
 #pragma once
-#include "cocos2d.h"
+#include <functional>
+#include <vector>
 
 #include "Engine/SmartNode.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Resources/HexusResources.h"
-#include "Scenes/Hexus/Card.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/CardEffects.h"
 
-using namespace cocos2d;
+class Card;
+class MenuSprite;
 
 class CardRow : public SmartNode
 {
@@ -34,7 +33,7 @@ public:
 	void setMouseClickCallback(std::function<void(Card*)> callback);
 	void enableRowCardInteraction();
 	void disableRowCardInteraction();
-	int simulateCardEffect(Card *card);
+	int simulateCardEffect(Card* card);
 	void setRowWidth(float newRowWidth, float duration);
 	void shuffle();
 	void clear();

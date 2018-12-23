@@ -1,5 +1,33 @@
 #include "HexusOpponentMenuBase.h"
 
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+
+#include "Analytics/AnalyticsCategories.h"
+#include "Engine/Analytics/Analytics.h"
+#include "Engine/GlobalDirector.h"
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Save/SaveManager.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/UI/Controls/ScrollPane.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
+#include "Resources/UIResources.h"
+
+#include "Strings/Hexus/ManageCards.h"
+#include "Strings/Hexus/SelectOpponent.h"
+#include "Strings/Hexus/Shop.h"
+#include "Strings/Menus/Back.h"
+
+using namespace cocos2d;
+
 HexusOpponentMenuBase::HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter chapter, std::string chapterProgressSaveKey)
 {
 	this->chapter = chapter;
@@ -7,15 +35,13 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(NavigationEvents::NavigateHexusOppo
 	this->opponents = std::vector<HexusOpponentPreview*>();
 	this->scrollPane = ScrollPane::create(Size(1536.0f, 840.0f), Color4B(0, 0, 0, 196));
 	this->background = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_WoodBackground);
-	this->opponentSelectLabel = Label::createWithTTF("Select Opponent", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->opponentSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::SelectOpponent::create());
 
-	Label* manageDeckLabel = Label::createWithTTF("Manage Cards", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* manageDeckLabelHover = Label::createWithTTF("Manage Cards", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* manageDeckLabelClick = Label::createWithTTF("Manage Cards", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-
+	LocalizedLabel* manageDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::ManageCards::create());
+	LocalizedLabel* manageDeckLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::ManageCards::create());
+	
 	manageDeckLabel->enableOutline(Color4B::BLACK, 2);
 	manageDeckLabelHover->enableOutline(Color4B::BLACK, 2);
-	manageDeckLabelClick->enableOutline(Color4B::BLACK, 2);
 
 	this->deckManagementButton = TextMenuSprite::create(
 		manageDeckLabel,
@@ -24,13 +50,11 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(NavigationEvents::NavigateHexusOppo
 		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
-	Label* shopLabel = Label::createWithTTF("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* shopLabelHover = Label::createWithTTF("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* shopLabelClick = Label::createWithTTF("Shop", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	LocalizedLabel* shopLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Shop::create());
+	LocalizedLabel* shopLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Shop::create());
 
 	shopLabel->enableOutline(Color4B::BLACK, 2);
 	shopLabelHover->enableOutline(Color4B::BLACK, 2);
-	shopLabelClick->enableOutline(Color4B::BLACK, 2);
 
 	this->shopButton = TextMenuSprite::create(
 		shopLabel,
@@ -39,13 +63,11 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(NavigationEvents::NavigateHexusOppo
 		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
-	Label* backButtonLabel = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelHover = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelClick = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	LocalizedLabel* backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
+	LocalizedLabel* backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
 
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
-	backButtonLabelClick->enableOutline(Color4B::BLACK, 2);
 
 	this->backButton = TextMenuSprite::create(
 		backButtonLabel,

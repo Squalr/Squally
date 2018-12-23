@@ -1,5 +1,13 @@
 #include "HexusOpponentMenuMech.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/UI/Controls/ScrollPane.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Mech/HexusChapterPreviewMech.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
+#include "Scenes/Hexus/Opponents/Mech/MechHexusOpponents.h"
+
+using namespace cocos2d;
+
 HexusOpponentMenuMech* HexusOpponentMenuMech::instance = nullptr;
 
 void HexusOpponentMenuMech::registerGlobalScene()
@@ -15,7 +23,7 @@ void HexusOpponentMenuMech::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuMech::instance);
 }
 
-HexusOpponentMenuMech::HexusOpponentMenuMech() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Mech, HexusChapterPreviewMech::stringKeyChapterName)
+HexusOpponentMenuMech::HexusOpponentMenuMech() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Mech, HexusChapterPreviewMech::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentMara::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentPiper::getInstance()));

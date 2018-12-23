@@ -1,10 +1,47 @@
 #include "HexusStoreMenu.h"
 
+#include <math.h>
+
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCParticleSystemQuad.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+
+#include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/GlobalDirector.h"
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
+#include "Engine/UI/Controls/ScrollPane.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Entities/Special/Shopkeeper.h"
+#include "Events/NavigationEvents.h"
+#include "Menus/Minigames/Hexus/MenuCard.h"
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/CardStorage.h"
+
+#include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
+#include "Resources/UIResources.h"
+
+#include "Strings/Menus/Back.h"
+#include "Strings/Menus/Return.h"
+#include "Strings/Hexus/StoreLabelBinary.h"
+#include "Strings/Hexus/StoreLabelDecimal.h"
+#include "Strings/Hexus/StoreLabelHex.h"
+#include "Strings/Hexus/StoreLabelSpecial.h"
+
+using namespace cocos2d;
 
 HexusStoreMenu* HexusStoreMenu::instance;
-const float HexusStoreMenu::lootBoxScale = 0.5f;
+const float HexusStoreMenu::LootBoxScale = 0.5f;
 
 void HexusStoreMenu::registerGlobalScene()
 {
@@ -26,13 +63,13 @@ HexusStoreMenu::HexusStoreMenu()
 	this->decimalCards = std::vector<std::tuple<MenuSprite*, MenuCard*, int>>();
 	this->hexCards = std::vector<std::tuple<MenuSprite*, MenuCard*, int>>();
 	this->specialCards = std::vector<std::tuple<MenuSprite*, MenuCard*, int>>();
-	this->limitLabels = std::map<MenuCard*, Label*>();
+	this->limitLabels = std::map<MenuCard*, LocalizedLabel*>();
 
 	this->dustParticles = ParticleSystemQuad::create(ParticleResources::Dust);
 
 	this->goldPanel = Sprite::create(UIResources::Menus_StoreMenu_GoldPanel);
 	this->goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_2);
-	this->goldLabel = Label::createWithTTF("", Localization::getMainFont(), Localization::getFontSizeH2(Localization::getMainFont()));
+	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2);
 
 	this->goldLabel->enableOutline(Color4B::BLACK, 3);
 	this->goldLabel->setPosition(Vec2(-32.0f, 0.0f));
@@ -46,13 +83,11 @@ HexusStoreMenu::HexusStoreMenu()
 	this->lootboxesNode = Node::create();
 	this->storeMenu = Sprite::create(UIResources::Menus_StoreMenu_StoreBoard);
 
-	Label* backButtonLabel = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelHover = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelClick = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-
+	LocalizedLabel* backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
+	LocalizedLabel* backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
+	
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
-	backButtonLabelClick->enableOutline(Color4B::BLACK, 2);
 
 	this->backButton = TextMenuSprite::create(
 		backButtonLabel,
@@ -65,13 +100,11 @@ HexusStoreMenu::HexusStoreMenu()
 	this->lootBoxRewardBackground->setOpacity(0);
 
 	this->chosenCardsNode = Node::create();
-	Label* lootBoxReturnLabel = Label::createWithTTF("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* lootBoxReturnLabelSelected = Label::createWithTTF("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* lootBoxReturnLabelClick = Label::createWithTTF("Return", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	LocalizedLabel* lootBoxReturnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Return::create());
+	LocalizedLabel* lootBoxReturnLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Return::create());
 
 	lootBoxReturnLabel->enableOutline(Color4B::BLACK, 2);
 	lootBoxReturnLabelSelected->enableOutline(Color4B::BLACK, 2);
-	lootBoxReturnLabelClick->enableOutline(Color4B::BLACK, 2);
 
 	this->lootBoxReturnButton = TextMenuSprite::create(
 		lootBoxReturnLabel,
@@ -107,10 +140,10 @@ HexusStoreMenu::HexusStoreMenu()
 	hexIcon->setPosition(Vec2(-32.0f, 0.0f));
 	specialIcon->setPosition(Vec2(-32.0f, 0.0f));
 
-	Label* binaryLabel = Label::createWithTTF("1111", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
-	Label* decimalLabel = Label::createWithTTF("15", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
-	Label* hexLabel = Label::createWithTTF("F", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
-	Label* specialLabel = Label::createWithTTF("OR", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	LocalizedLabel* binaryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::StoreLabelBinary::create());
+	LocalizedLabel* decimalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::StoreLabelDecimal::create());
+	LocalizedLabel* hexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::StoreLabelHex::create());
+	LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::StoreLabelSpecial::create());
 
 	binaryLabel->enableOutline(Color4B::BLACK, 3);
 	binaryLabel->setPosition(Vec2(-32.0f, 0.0f));
@@ -155,23 +188,23 @@ HexusStoreMenu::HexusStoreMenu()
 	this->lootBoxes.push_back(this->constructLootBoxButton(UIResources::Menus_StoreMenu_LootBoxes_Obelisk_Animations, 5200, HexusStoreMenu::getCardsTier8()));
 	this->lootBoxes.push_back(this->constructLootBoxButton(UIResources::Menus_StoreMenu_LootBoxes_Vapor_Animations, 6500, HexusStoreMenu::getCardsTier9()));
 
-	for (auto it = CardList::getInstance()->cardListByName->begin(); it != CardList::getInstance()->cardListByName->end(); it++)
+	for (auto it = CardList::getInstance()->cardListByName.begin(); it != CardList::getInstance()->cardListByName.end(); it++)
 	{
 		CardData* cardData = (*it).second;
 
 		switch (cardData->cardType)
 		{
-			case CardData::Binary:
+			case CardData::CardType::Binary:
 			{
 				this->binaryCards.push_back(this->constructCard(cardData));
 				break;
 			}
-			case CardData::Decimal:
+			case CardData::CardType::Decimal:
 			{
 				this->decimalCards.push_back(this->constructCard(cardData));
 				break;
 			}
-			case CardData::Hexidecimal:
+			case CardData::CardType::Hexidecimal:
 			{
 				this->hexCards.push_back(this->constructCard(cardData));
 				break;
@@ -408,19 +441,20 @@ void HexusStoreMenu::initializePositions()
 
 std::tuple<MenuSprite*, int> HexusStoreMenu::constructLootBoxButton(std::string lootBoxAnimations, int price, std::map<CardData*, float> cardChoices)
 {
-	AnimationNode* animationNode = AnimationNode::create(lootBoxAnimations);
+	SmartAnimationNode* animationNode = SmartAnimationNode::create(lootBoxAnimations);
 
-	SpriterEngine::EntityInstance* entity = animationNode->play("Entity");
-	entity->setCurrentAnimation("Idle");
+	animationNode->playAnimation();
 
 	MenuSprite* frame = MenuSprite::create(UIResources::Menus_StoreMenu_StoreOption, UIResources::Menus_StoreMenu_StoreOptionSelected);
-	Label* priceLabel = Label::createWithTTF(std::to_string(price), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
 	Sprite* goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_1);
 
-	animationNode->setScale(HexusStoreMenu::lootBoxScale);
+	priceLabel->setString(std::to_string(price));
+
+	animationNode->setScale(HexusStoreMenu::LootBoxScale);
 	animationNode->setPosition(Vec2(0.0f, 16.0f));
 
-	frame->setClickCallback(CC_CALLBACK_1(HexusStoreMenu::onLootBoxClick, this, price, cardChoices, animationNode, entity));
+	frame->setClickCallback(CC_CALLBACK_1(HexusStoreMenu::onLootBoxClick, this, price, cardChoices, animationNode));
 	goldIcon->setScale(0.75f);
 	goldIcon->setPosition(Vec2(-32.0f, -72.0f));
 	priceLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -534,7 +568,7 @@ std::tuple<MenuSprite*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* 
 		}
 	}
 
-	Label* cardLimitLabel = Label::createWithTTF("", Localization::getMainFont(), 48.0f);
+	LocalizedLabel* cardLimitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1);
 
 	cardLimitLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	cardLimitLabel->enableOutline(Color4B::BLACK, 4);
@@ -542,8 +576,10 @@ std::tuple<MenuSprite*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* 
 
 	this->updateCardLimitText(cardLimitLabel, cardData);
 
-	Label* priceLabel = Label::createWithTTF(std::to_string(price), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
 	Sprite* goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_1);
+
+	priceLabel->setString(std::to_string(price));
 
 	goldIcon->setScale(0.75f);
 	goldIcon->setPosition(Vec2(-32.0f, -144.0f));
@@ -587,7 +623,7 @@ void HexusStoreMenu::updateAllCardLimits()
 	}
 }
 
-void HexusStoreMenu::updateCardLimitText(Label* label, CardData* cardData)
+void HexusStoreMenu::updateCardLimitText(LocalizedLabel* label, CardData* cardData)
 {
 	int ownedCount = CardStorage::getOwnedCardCount(cardData);
 
@@ -603,7 +639,7 @@ void HexusStoreMenu::updateCardLimitText(Label* label, CardData* cardData)
 	}
 }
 
-void HexusStoreMenu::onCardClick(MenuSprite* card, CardData* cardData, int price, Label* cardLimitLabel)
+void HexusStoreMenu::onCardClick(MenuSprite* card, CardData* cardData, int price, LocalizedLabel* cardLimitLabel)
 {
 	int gold = CardStorage::getGold();
 
@@ -624,7 +660,7 @@ void HexusStoreMenu::onCardClick(MenuSprite* card, CardData* cardData, int price
 	this->updateCardLimitText(cardLimitLabel, cardData);
 }
 
-void HexusStoreMenu::onLootBoxClick(MenuSprite* sprite, int price, std::map<CardData*, float> cardChoices, AnimationNode* animationNode, SpriterEngine::EntityInstance* entity)
+void HexusStoreMenu::onLootBoxClick(MenuSprite* sprite, int price, std::map<CardData*, float> cardChoices, SmartAnimationNode* animationNode)
 {
 	int gold = CardStorage::getGold();
 
@@ -687,8 +723,7 @@ void HexusStoreMenu::onLootBoxClick(MenuSprite* sprite, int price, std::map<Card
 			this->hexButton->disableInteraction();
 			this->specialButton->disableInteraction();
 
-			entity->setCurrentTime(0.0f);
-			entity->setCurrentAnimation("Open", 0.25f);
+			animationNode->playAnimation("Open");
 		}),
 		DelayTime::create(1.5f),
 		CallFunc::create([=]()
@@ -710,8 +745,7 @@ void HexusStoreMenu::onLootBoxClick(MenuSprite* sprite, int price, std::map<Card
 				nullptr
 			));
 
-			entity->setCurrentTime(0.0f);
-			entity->setCurrentAnimation("Idle", 0.25f);
+			animationNode->playAnimation("Idle");
 		}),
 		nullptr
 	));
@@ -869,22 +903,22 @@ CardData* HexusStoreMenu::chooseRandomCard(std::map<CardData*, float> cardChoice
 	}
 
 	// Just some non-null default (should not be possible)
-	return CardList::getInstance()->cardListByName->at(CardKeys::Binary0);
+	return CardList::getInstance()->cardListByName.at(CardKeys::Binary0);
 }
 
 std::map<CardData*, float> HexusStoreMenu::getCardsTier1()
 {
 	return std::map<CardData*, float>
 	{
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal0), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal1), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal2), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex0), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex1), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex2), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary0), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary1), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary2), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal0), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal1), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal2), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex0), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex1), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex2), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary0), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary1), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary2), 1.0f },
 	};
 }
 
@@ -892,15 +926,15 @@ std::map<CardData*, float> HexusStoreMenu::getCardsTier2()
 {
 	return std::map<CardData*, float>
 	{
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal2), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal3), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal4), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex2), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex3), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex4), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary2), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary3), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary4), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal2), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal3), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal4), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex2), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex3), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex4), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary2), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary3), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary4), 1.0f },
 	};
 }
 
@@ -908,15 +942,15 @@ std::map<CardData*, float> HexusStoreMenu::getCardsTier3()
 {
 	return std::map<CardData*, float>
 	{
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal4), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal5), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal6), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex4), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex5), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex6), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary4), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary5), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary6), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal4), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal5), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal6), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex4), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex5), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex6), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary4), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary5), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary6), 1.0f },
 	};
 }
 
@@ -924,15 +958,15 @@ std::map<CardData*, float> HexusStoreMenu::getCardsTier4()
 {
 	return std::map<CardData*, float>
 	{
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal5), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal6), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal7), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex5), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex6), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex7), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary5), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary6), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary7), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal5), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal6), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal7), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex5), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex6), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex7), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary5), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary6), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary7), 1.0f },
 	};
 }
 
@@ -940,15 +974,15 @@ std::map<CardData*, float> HexusStoreMenu::getCardsTier5()
 {
 	return std::map<CardData*, float>
 	{
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal7), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal8), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal9), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex7), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex8), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex9), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary7), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary8), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary9), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal7), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal8), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal9), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex7), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex8), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex9), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary7), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary8), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary9), 1.0f },
 	};
 }
 
@@ -956,15 +990,15 @@ std::map<CardData*, float> HexusStoreMenu::getCardsTier6()
 {
 	return std::map<CardData*, float>
 	{
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal9), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal10), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal11), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex9), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex10), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex11), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary9), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary10), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary11), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal9), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal10), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal11), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex9), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex10), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex11), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary9), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary10), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary11), 1.0f },
 	};
 }
 
@@ -972,15 +1006,15 @@ std::map<CardData*, float> HexusStoreMenu::getCardsTier7()
 {
 	return std::map<CardData*, float>
 	{
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal10), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal11), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal12), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex10), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex11), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex12), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary10), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary11), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary12), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal10), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal11), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal12), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex10), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex11), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex12), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary10), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary11), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary12), 1.0f },
 	};
 }
 
@@ -988,15 +1022,15 @@ std::map<CardData*, float> HexusStoreMenu::getCardsTier8()
 {
 	return std::map<CardData*, float>
 	{
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal12), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal13), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal14), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex12), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex13), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex14), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary12), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary13), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary14), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal12), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal13), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal14), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex12), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex13), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex14), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary12), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary13), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary14), 1.0f },
 	};
 }
 
@@ -1004,15 +1038,14 @@ std::map<CardData*, float> HexusStoreMenu::getCardsTier9()
 {
 	return std::map<CardData*, float>
 	{
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal13), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal14), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Decimal15), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex13), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex14), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Hex15), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary13), 0.75f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary14), 1.0f },
-		{ CardList::getInstance()->cardListByName->at(CardKeys::Binary15), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal13), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal14), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Decimal15), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex13), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex14), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Hex15), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary13), 0.75f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary14), 1.0f },
+		{ CardList::getInstance()->cardListByName.at(CardKeys::Binary15), 1.0f },
 	};
 }
-

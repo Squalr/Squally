@@ -1,16 +1,35 @@
 #include "TitleScreen.h"
 
+#include "cocos/2d/CCSprite.h"
+#include "cocos/2d/CCParticleExamples.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/GlobalDirector.h"
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Engine/UI/FloatingSprite.h"
+#include "Engine/UI/InfiniteParallaxNode.h"
+#include "Engine/UI/Mouse.h"
+#include "Engine/Sound/SoundManager.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Events/NavigationEvents.h"
+#include "Menus/Title/TitleScreenBackground.h"
+#include "Menus/Options/OptionsMenu.h"
+
+#include "Resources/MusicResources.h"
+#include "Resources/SoundResources.h"
+#include "Resources/UIResources.h"
+
+#include "Strings/Menus/Exit.h"
+#include "Strings/Menus/Minigames.h"
+#include "Strings/Menus/Options/Options.h"
+#include "Strings/Menus/StoryMode.h"
+
+using namespace cocos2d;
+
 TitleScreen* TitleScreen::instance = nullptr;
-
-const std::string TitleScreen::StringKeyStoryMode = "Menu_Story_Mode";
-const std::string TitleScreen::StringKeyMinigames = "Menu_Minigames";
-const std::string TitleScreen::StringKeyOptions = "Menu_Options";
-const std::string TitleScreen::StringKeyExit = "Menu_Exit";
-
-const float TitleScreen::titleFontSize = 64.0f;
-const float TitleScreen::menuFontSize = 48.0f;
-const float TitleScreen::menuOffset = 128.0f;
-const float TitleScreen::spacing = -96.0f;
 
 TitleScreen* TitleScreen::getInstance()
 {
@@ -44,24 +63,24 @@ TitleScreen::TitleScreen()
 	Color3B highlightColor = Color3B::YELLOW;
 	Color4B glowColor = Color4B::ORANGE;
 
-	Label* storyModeLabel = Label::createWithTTF(Localization::resolveString(TitleScreen::StringKeyStoryMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* storyModeLabelHover = Label::createWithTTF(Localization::resolveString(TitleScreen::StringKeyStoryMode), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	LocalizedLabel*	storyModeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::StoryMode::create());
+	LocalizedLabel*	storyModeLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::StoryMode::create());
 
-	Label* arcadeModeLabel = Label::createWithTTF(Localization::resolveString(TitleScreen::StringKeyMinigames), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* arcadeModeLabelHover = Label::createWithTTF(Localization::resolveString(TitleScreen::StringKeyMinigames), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	LocalizedLabel*	minigamesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Minigames::create());
+	LocalizedLabel*	minigamesLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Minigames::create());
 
-	Label* optionsLabel = Label::createWithTTF(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* optionsLabelHover = Label::createWithTTF(Localization::resolveString(TitleScreen::StringKeyOptions), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	LocalizedLabel*	optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Options::create());
+	LocalizedLabel*	optionsLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Options::create());
 
-	Label* exitLabel = Label::createWithTTF(Localization::resolveString(TitleScreen::StringKeyExit), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* exitLabelHover = Label::createWithTTF(Localization::resolveString(TitleScreen::StringKeyExit), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	LocalizedLabel*	exitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Exit::create());
+	LocalizedLabel*	exitLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Exit::create());
 
 	storyModeLabel->setColor(textColor);
 	storyModeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
 	storyModeLabel->enableGlow(shadowColor);
-	arcadeModeLabel->setColor(textColor);
-	arcadeModeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
-	arcadeModeLabel->enableGlow(shadowColor);
+	minigamesLabel->setColor(textColor);
+	minigamesLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
+	minigamesLabel->enableGlow(shadowColor);
 	optionsLabel->setColor(textColor);
 	optionsLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
 	optionsLabel->enableGlow(shadowColor);
@@ -72,9 +91,9 @@ TitleScreen::TitleScreen()
 	storyModeLabelHover->setColor(highlightColor);
 	storyModeLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	storyModeLabelHover->enableGlow(glowColor);
-	arcadeModeLabelHover->setColor(highlightColor);
-	arcadeModeLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
-	arcadeModeLabelHover->enableGlow(glowColor);
+	minigamesLabelHover->setColor(highlightColor);
+	minigamesLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
+	minigamesLabelHover->enableGlow(glowColor);
 	optionsLabelHover->setColor(highlightColor);
 	optionsLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	optionsLabelHover->enableGlow(glowColor);
@@ -88,9 +107,9 @@ TitleScreen::TitleScreen()
 		UIResources::Menus_TitleScreen_TitleButton,
 		UIResources::Menus_TitleScreen_TitleButtonHover);
 
-	this->arcadeModeButton = TextMenuSprite::create(
-		arcadeModeLabel,
-		arcadeModeLabelHover,
+	this->minigamesButton = TextMenuSprite::create(
+		minigamesLabel,
+		minigamesLabelHover,
 		UIResources::Menus_TitleScreen_TitleButton,
 		UIResources::Menus_TitleScreen_TitleButtonHover);
 
@@ -110,7 +129,7 @@ TitleScreen::TitleScreen()
 	this->etherParticles = ParticleGalaxy::create();
 
 	this->storyModeButton->setClickSound(SoundResources::Menus_Simple_Button);
-	this->arcadeModeButton->setClickSound(SoundResources::Menus_Simple_Button);
+	this->minigamesButton->setClickSound(SoundResources::Menus_Simple_Button);
 	this->optionsButton->setClickSound(SoundResources::Menus_Simple_Button);
 	this->exitButton->setClickSound(SoundResources::Menus_Simple_Button);
 
@@ -120,7 +139,7 @@ TitleScreen::TitleScreen()
 	this->addChild(this->titleBar);
 	this->addChild(this->title);
 	this->addChild(this->storyModeButton);
-	this->addChild(this->arcadeModeButton);
+	this->addChild(this->minigamesButton);
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
 }
@@ -151,7 +170,7 @@ void TitleScreen::onEnter()
 	GameUtils::fadeInObject(this->titleBar, delay, duration);
 	GameUtils::fadeInObject(this->title, delay, duration);
 	GameUtils::fadeInObject(this->storyModeButton, delay, duration);
-	GameUtils::fadeInObject(this->arcadeModeButton, delay, duration);
+	GameUtils::fadeInObject(this->minigamesButton, delay, duration);
 	GameUtils::fadeInObject(this->optionsButton, delay, duration);
 	GameUtils::fadeInObject(this->exitButton, delay, duration);
 
@@ -171,7 +190,7 @@ void TitleScreen::initializePositions()
 	this->titleBar->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f));
 	this->title->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height - this->title->getContentSize().height / 2));
 	this->storyModeButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f + 288.0f));
-	this->arcadeModeButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f + 144.0f));
+	this->minigamesButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f + 144.0f));
 	this->optionsButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f - 0.0f));
 	this->exitButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f - 256.0f));
 }
@@ -186,7 +205,7 @@ void TitleScreen::initializeListeners()
 	}));
 
 	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));
-	this->arcadeModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onArcadeModeClick, this));
+	this->minigamesButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onMinigamesClick, this));
 	this->optionsButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onOptionsClick, this));
 	this->exitButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onExitClick, this));
 }
@@ -196,7 +215,7 @@ void TitleScreen::onStoryModeClick(MenuSprite* menuSprite)
 	NavigationEvents::navigateSaveSelect();
 }
 
-void TitleScreen::onArcadeModeClick(MenuSprite* menuSprite)
+void TitleScreen::onMinigamesClick(MenuSprite* menuSprite)
 {
 	NavigationEvents::navigateMinigames();
 }

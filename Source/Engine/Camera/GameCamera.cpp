@@ -1,12 +1,14 @@
 #include "GameCamera.h"
 
 #include "cocos/2d/CCCamera.h"
+#include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCNode.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
-#include "Engine/Localization/Localization.h"
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -38,8 +40,8 @@ GameCamera::GameCamera()
 	this->cameraBounds = Rect::ZERO;
 	this->hud = Hud::create();
 	this->debugCameraRectangle = DrawNode::create();
-	this->debugCameraLabelX = Label::create("", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	this->debugCameraLabelY = Label::create("", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	this->debugCameraLabelX = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P);
+	this->debugCameraLabelY = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P);
 	this->hud->setZOrder(9999);
 	this->hud->setVisible(false);
 

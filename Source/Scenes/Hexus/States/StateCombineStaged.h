@@ -1,19 +1,13 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Sound/SoundManager.h"
-#include "Engine/Utils/StrUtils.h"
 
 #include "Scenes/Hexus/States/StateBase.h"
 
-using namespace cocos2d;
+class Card;
 
 class StateCombineStaged : public StateBase
 {
 public:
-	static StateCombineStaged * create();
+	static StateCombineStaged* create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;

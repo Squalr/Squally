@@ -1,5 +1,12 @@
 #include "StateAIDecidePass.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
+#include "Scenes/Hexus/CardRow.h"
+
+using namespace cocos2d;
+
 StateAIDecidePass* StateAIDecidePass::create()
 {
 	StateAIDecidePass* instance = new StateAIDecidePass();

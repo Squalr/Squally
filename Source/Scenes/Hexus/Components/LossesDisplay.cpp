@@ -1,5 +1,16 @@
 #include "LossesDisplay.h"
 
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+
+using namespace cocos2d;
+
 LossesDisplay* LossesDisplay::create()
 {
 	LossesDisplay* instance = new LossesDisplay();

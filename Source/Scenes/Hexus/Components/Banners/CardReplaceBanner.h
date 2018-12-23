@@ -1,25 +1,24 @@
 #pragma once
-#include "cocos2d.h"
 
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
-#include "Resources/ParticleResources.h"
 #include "Scenes/Hexus/Components/Banners/BannerBase.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class ParticleSystemQuad;
+	class Sprite;
+}
 
 class CardReplaceBanner : public BannerBase
 {
 public:
-	static CardReplaceBanner * create();
+	static CardReplaceBanner* create();
 
 protected:
 	void onBeforeStateChange(GameState* eventCustom) override;
 	void onAnyStateChange(GameState* eventCustom) override;
 
-	Sprite* penaltyIcon;
-	ParticleSystemQuad* penaltyIconParticles;
+	cocos2d::Sprite* penaltyIcon;
+	cocos2d::ParticleSystemQuad* penaltyIconParticles;
 
 private:
 	CardReplaceBanner();

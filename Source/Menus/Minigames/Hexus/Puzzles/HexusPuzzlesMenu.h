@@ -1,17 +1,18 @@
 #pragma once
-#include "cocos2d.h"
+#include <string>
+#include <vector>
 
 #include "Engine/GlobalScene.h"
-#include "Events/NavigationEvents.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/FloatingSprite.h"
-#include "Engine/UI/Mouse.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Menus/Minigames/Hexus/Puzzles/HexusPuzzleItem.h"
-#include "Resources/ParticleResources.h"
-#include "Resources/UIResources.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class ParticleSystem;
+	class Sprite;
+}
+
+class HexusPuzzleItem;
+class LocalizedLabel;
+class MenuSprite;
 
 class HexusPuzzlesMenu : public GlobalScene
 {
@@ -29,23 +30,22 @@ private:
 	void initializeListeners() override;
 	void onCloseClick(MenuSprite* menuSprite);
 	void onMouseOver(HexusPuzzleItem* tutorialItem);
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
 	int currentPage;
 
-	Sprite* tutorialWindow;
-	Label* titleLabel;
-	Sprite* descriptionBox;
-	Label* description;
+	cocos2d::Sprite* tutorialWindow;
+	LocalizedLabel* titleLabel;
+	cocos2d::Sprite* descriptionBox;
+	LocalizedLabel* description;
 	MenuSprite* closeButton;
 
-	ParticleSystem* nether;
-	ParticleSystem* swirl;
+	cocos2d::ParticleSystem* nether;
+	cocos2d::ParticleSystem* swirl;
 
 	std::vector<HexusPuzzleItem*> hexusOpponentItems;
 
 	static HexusPuzzlesMenu* instance;
-	static const Color3B TitleColor;
+	static const cocos2d::Color3B TitleColor;
 	static const std::string StringKeyHexusPuzzles;
 };
-

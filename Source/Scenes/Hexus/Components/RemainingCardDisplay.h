@@ -1,15 +1,16 @@
 #pragma once
-#include <codecvt>
-#include "cocos2d.h"
 
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Sound/SoundManager.h"
-#include "Engine/Utils/StrUtils.h"
-#include "Resources/ParticleResources.h"
 #include "Scenes/Hexus/Components/ComponentBase.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class LayerColor;
+	class ParticleSystemQuad;
+	class Sprite;
+}
+
+class LocalizedLabel;
+class MenuSprite;
 
 class RemainingCardDisplay : public ComponentBase
 {
@@ -31,14 +32,14 @@ private:
 	void enableCardDisplayInteraction();
 	void disableCardDisplayInteraction();
 
-	ParticleSystemQuad* particles;
+	cocos2d::ParticleSystemQuad* particles;
 
 	MenuSprite* remainingCardSprite;
-	Label* remainingCardLabel;
+	LocalizedLabel* remainingCardLabel;
 
-	LayerColor* remainingCardMouseOverPanel;
-	Label* remainingCardMouseOverLabel;
+	cocos2d::LayerColor* remainingCardMouseOverPanel;
+	LocalizedLabel* remainingCardMouseOverLabel;
 
-	Sprite* enemyRemainingCardSprite;
-	Label* enemyRemainingCardLabel;
+	cocos2d::Sprite* enemyRemainingCardSprite;
+	LocalizedLabel* enemyRemainingCardLabel;
 };

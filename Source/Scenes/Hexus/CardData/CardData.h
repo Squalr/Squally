@@ -1,14 +1,11 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Scenes/Hexus/CardData/CardKeys.h"
-
-using namespace cocos2d;
+#include <string>
 
 class CardData
 {
 public:
-	enum CardType {
+	enum class CardType
+	{
 		Binary,
 		Decimal,
 		Hexidecimal,
@@ -43,4 +40,3 @@ public:
 	CardType cardType;
 	unsigned int attack;
 };
-

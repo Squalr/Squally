@@ -29,7 +29,7 @@ private:
 	void initializedLocked();
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
 	std::vector<MapNode*> mapNodes;
 	MapNode* forest;
@@ -57,17 +57,6 @@ private:
 	Lightning* lightning10;
 
 	Hud* hud;
-
-	static const std::string StringKeySelectLevel;
-	static const std::string StringKeyLevelNameJungle;
-	static const std::string StringKeyLevelNameAquaticRuins;
-	static const std::string StringKeyLevelNameForest;
-	static const std::string StringKeyLevelNameCaverns;
-	static const std::string StringKeyLevelNameCastle;
-	static const std::string StringKeyLevelNameIceCaps;
-	static const std::string StringKeyLevelNameObelisk;
-	static const std::string StringKeyLevelNameVolcano;
-	static const std::string StringKeyLevelNameMech;
 
 	static WorldMap* instance;
 };

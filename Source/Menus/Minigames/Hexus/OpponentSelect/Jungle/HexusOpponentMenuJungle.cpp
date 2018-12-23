@@ -1,5 +1,13 @@
 #include "HexusOpponentMenuJungle.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/UI/Controls/ScrollPane.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Jungle/HexusChapterPreviewJungle.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
+#include "Scenes/Hexus/Opponents/Jungle/JungleHexusOpponents.h"
+
+using namespace cocos2d;
+
 HexusOpponentMenuJungle* HexusOpponentMenuJungle::instance = nullptr;
 
 void HexusOpponentMenuJungle::registerGlobalScene()
@@ -15,7 +23,7 @@ void HexusOpponentMenuJungle::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuJungle::instance);
 }
 
-HexusOpponentMenuJungle::HexusOpponentMenuJungle() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Jungle, HexusChapterPreviewJungle::stringKeyChapterName)
+HexusOpponentMenuJungle::HexusOpponentMenuJungle() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Jungle, HexusChapterPreviewJungle::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentBlackbeard::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentGoblinWarriorPig::getInstance()));

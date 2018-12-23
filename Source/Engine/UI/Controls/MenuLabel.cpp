@@ -5,25 +5,26 @@
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListenerMouse.h"
 
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
 
-MenuLabel * MenuLabel::create(std::string labelText, std::string fontResource, float fontSize)
+MenuLabel* MenuLabel::create(LocalizedLabel* label)
 {
-	MenuLabel* instance = new MenuLabel(labelText, fontResource, fontSize);
+	MenuLabel* instance = new MenuLabel(label);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MenuLabel::MenuLabel(std::string labelText, std::string fontResource, float fontSize)
+MenuLabel::MenuLabel(LocalizedLabel* label)
 {
 	this->menuOnMouseClick = nullptr;
 
-	this->label = Label::createWithTTF(labelText, fontResource, fontSize);
-	this->labelHighlighted = Label::createWithTTF(labelText, fontResource, fontSize);
+	this->label = label;
+	this->labelHighlighted = label->clone();
 
 	this->label->enableOutline(Color4B::BLACK, fontOutlineSize);
 

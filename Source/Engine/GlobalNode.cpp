@@ -11,13 +11,6 @@ void GlobalNode::pause()
 
 void GlobalNode::addEventListener(EventListener* listener)
 {
-	if (listener == nullptr)
-	{
-		return;
-	}
-
-	// Set a special flag to indicate the event listener is global -- prevents situations where the event listener might not otherwise fire
-	listener->setIsGlobal(true);
-
-	SmartNode::addEventListener(listener);
+	// Force events to be added as global events for global nodes
+	SmartNode::addGlobalEventListener(listener);
 }

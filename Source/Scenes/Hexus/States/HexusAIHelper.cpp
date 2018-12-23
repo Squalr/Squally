@@ -1,5 +1,11 @@
 #include "HexusAIHelper.h"
 
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/States/StateBase.h"
+
+using namespace cocos2d;
+
 std::tuple<CardRow*, int> HexusAIHelper::getBestRow(Card* candidateCardToPlay, GameState* gameState)
 {
 	// Calculate the best row to apply the card to

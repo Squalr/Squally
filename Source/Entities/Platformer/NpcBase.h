@@ -1,18 +1,21 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/ccTypes.h"
+#include "cocos/math/Vec2.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Hexus/CardData/CardList.h"
+
+class MenuSprite;
 
 class NpcBase : public PlatformerEntity
 {
 protected:
-	NpcBase(ValueMap* initProperties,
+	NpcBase(cocos2d::ValueMap* initProperties,
 		std::string scmlResource,
 		PlatformerCollisionType collisionType,
-		Size size = Size(256.0f, 256.0f),
+		cocos2d::Size size = cocos2d::Size(256.0f, 256.0f),
 		float scale = 1.0f,
-		Vec2 collisionOffset = Vec2(0.0f, 0.0f));
+		cocos2d::Vec2 collisionOffset = cocos2d::Vec2(0.0f, 0.0f));
 	~NpcBase();
 
 	void update(float) override;
@@ -22,6 +25,6 @@ protected:
 	virtual void onInteractButtonClick(MenuSprite* menuSprite);
 
 private:
-	Sprite* chatBubbleSprite;
+	cocos2d::Sprite* chatBubbleSprite;
 	MenuSprite* interactButton;
 };

@@ -1,18 +1,11 @@
 #pragma once
-#include "cocos2d.h"
+#include <string>
+#include <functional>
 
-#include "Engine/Cutscenes/Cutscene.h"
-#include "Engine/GlobalDirector.h"
-#include "Engine/Maps/SerializableMap.h"
-#include "Entities/Platformer/PlatformerEnemy.h"
-#include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
-
-using namespace cocos2d;
-
-// Forward declarations
-class Squally;
+class Cutscene;
+class HexusOpponentData;
 class PlatformerEnemy;
+class Squally;
 class SerializableMap;
 
 class NavigationEvents

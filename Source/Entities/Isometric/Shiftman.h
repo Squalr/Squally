@@ -1,23 +1,19 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Entities/Isometric/IsometricEntity.h"
-#include "Resources/EntityResources.h"
-
-using namespace cocos2d;
 
 class Shiftman : public IsometricEntity
 {
 public:
-	static Shiftman * deserialize(ValueMap* initProperties);
+	static Shiftman* deserialize(cocos2d::ValueMap* initProperties);
 
 	static const std::string KeyShiftmanProperty;
 
 protected:
-	Vec2 getButtonOffset() override;
+	cocos2d::Vec2 getButtonOffset() override;
 
 private:
-	Shiftman(ValueMap* initProperties);
+	Shiftman(cocos2d::ValueMap* initProperties);
 	~Shiftman();
 
 	void registerHackables();

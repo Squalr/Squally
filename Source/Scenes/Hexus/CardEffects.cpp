@@ -1,5 +1,16 @@
 #include "CardEffects.h"
 
+#include "cocos/2d/CCParticleSystemQuad.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
+#include "Scenes/Hexus/Config.h"
+
+#include "Resources/ParticleResources.h"
+
+using namespace cocos2d;
+
 CardEffects* CardEffects::create()
 {
 	CardEffects* instance = new CardEffects();

@@ -1,6 +1,15 @@
 #include "HexusPuzzleItem.h"
 
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Events/NavigationEvents.h"
+#include "Scenes/Maps/Platformer/PlatformerMap.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Deck.h"
+
 #include "Resources/UIResources.h"
+
+using namespace cocos2d;
 
 HexusPuzzleItem* HexusPuzzleItem::create(std::string description, std::string mapFile, int index, std::function<void(HexusPuzzleItem*)> onMouseOver)
 {
@@ -20,7 +29,7 @@ HexusPuzzleItem::HexusPuzzleItem(std::string description, std::string mapFile, i
 	this->page = index / HexusPuzzleItem::MaxEntriesPerPage;
 
 	this->frame = Sprite::create(UIResources::Menus_TutorialMenu_TutorialEntry);
-	this->indexLabel = Label::createWithTTF(std::to_string(index + 1), Localization::getMainFont(), 28.0f);
+	this->indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
 
 	// TODO: Load save data
 	this->isLevelComplete = true;

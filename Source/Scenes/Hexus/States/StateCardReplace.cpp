@@ -1,6 +1,22 @@
 #include "StateCardReplace.h"
+#include <algorithm>
+
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/Deck.h"
 
 #include "Resources/UIResources.h"
+
+#include "Strings/Hexus/Done.h"
+
+using namespace cocos2d;
 
 StateCardReplace* StateCardReplace::create()
 {
@@ -13,8 +29,8 @@ StateCardReplace* StateCardReplace::create()
 
 StateCardReplace::StateCardReplace() : StateBase(GameState::StateType::CardReplace)
 {
-	Label* doneButtonLabel = Label::createWithTTF("Done", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* doneButtonLabelHover = Label::createWithTTF("Done", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	LocalizedLabel* doneButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Done::create());
+	LocalizedLabel* doneButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Done::create());
 	
 	this->removedCards = std::vector<Card*>();
 	doneButtonLabel->enableOutline(Color4B::BLACK, 2);

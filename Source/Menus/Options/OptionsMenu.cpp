@@ -1,12 +1,11 @@
 #include "OptionsMenu.h"
 
-#include "cocos/2d/CCLabel.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/Config/ConfigManager.h"
-#include "Engine/Localization/Localization.h"
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/CCheckbox.h"
 #include "Engine/UI/Controls/CRadioButton.h"
@@ -18,12 +17,24 @@
 
 #include "Resources/UIResources.h"
 
+#include "Strings/Menus/Options/FullScreen.h"
+#include "Strings/Menus/Options/Options.h"
+#include "Strings/Menus/Options/Resolution1080x768.h"
+#include "Strings/Menus/Options/Resolution1152x864.h"
+#include "Strings/Menus/Options/Resolution1280x720.h"
+#include "Strings/Menus/Options/Resolution1280x960.h"
+#include "Strings/Menus/Options/Resolution1280x1024.h"
+#include "Strings/Menus/Options/Resolution1440x900.h"
+#include "Strings/Menus/Options/Resolution1600x900.h"
+#include "Strings/Menus/Options/Resolution1600x1024.h"
+#include "Strings/Menus/Options/Resolution1920x1080.h"
+#include "Strings/Menus/Options/Resolution2560x1440.h"
+#include "Strings/Menus/Options/Resolution3840x2160.h"
+#include "Strings/Menus/Return.h"
+
 using namespace cocos2d;
 
 const Color3B OptionsMenu::TitleColor = Color3B(88, 188, 193);
-const std::string OptionsMenu::StringKeyMenuOptions = "Menu_Options";
-const std::string OptionsMenu::StringKeyFullScreen = "Menu_Options_Full_Screen";
-const std::string OptionsMenu::StringKeyReturn = "Menu_Return";
 const int OptionsMenu::ResolutionGroupId = 420;
 
 OptionsMenu * OptionsMenu::create()
@@ -41,12 +52,12 @@ OptionsMenu::OptionsMenu()
 
 	this->background = Node::create();
 	this->optionsWindow = Sprite::create(UIResources::Menus_OptionsMenu_OptionsMenu);
-	this->fullScreenLabel = Label::createWithTTF(Localization::resolveString(OptionsMenu::StringKeyFullScreen), Localization::getMainFont(), 24.0f);
+	this->fullScreenLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::FullScreen::create());
 	this->closeButton = MenuSprite::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
-	this->titleLabel = Label::createWithTTF(Localization::resolveString(OptionsMenu::StringKeyMenuOptions), Localization::getMainFont(), 32.0f);
+	this->optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, LocaleStrings::Options::create());
 
-	this->titleLabel->setColor(OptionsMenu::TitleColor);
-	this->titleLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
+	this->optionsLabel->setColor(OptionsMenu::TitleColor);
+	this->optionsLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
 
 	this->fullScreenLabel->setAlignment(TextHAlignment::LEFT);
 	this->fullScreenLabel->enableOutline(Color4B::BLACK, 2.0f);
@@ -61,17 +72,17 @@ OptionsMenu::OptionsMenu()
 	MenuSprite* checkedMenuSprite = MenuSprite::create(UIResources::Menus_OptionsMenu_ToggleButtonOn, UIResources::Menus_OptionsMenu_ToggleButtonOffHover);
 	this->fullScreenButton = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_2(OptionsMenu::onFullScreenChanged, this));
 
-	this->label1080x768 = Label::createWithTTF("1080x768", Localization::getMainFont(), 14);
-	this->label1152x864 = Label::createWithTTF("1152x864", Localization::getMainFont(), 14);
-	this->label1280x720 = Label::createWithTTF("1280x720", Localization::getMainFont(), 14);
-	this->label1280x960 = Label::createWithTTF("1280x960", Localization::getMainFont(), 14);
-	this->label1280x1024 = Label::createWithTTF("1280x1024", Localization::getMainFont(), 14);
-	this->label1440x900 = Label::createWithTTF("1440x900", Localization::getMainFont(), 14);
-	this->label1600x900 = Label::createWithTTF("1600x900", Localization::getMainFont(), 14);
-	this->label1600x1024 = Label::createWithTTF("1600x1024", Localization::getMainFont(), 14);
-	this->label1920x1080 = Label::createWithTTF("1920x1080", Localization::getMainFont(), 14);
-	this->label2560x1440 = Label::createWithTTF("2560x1440", Localization::getMainFont(), 14);
-	this->label3840x2160 = Label::createWithTTF("3840x2160", Localization::getMainFont(), 14);
+	this->label1080x768 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1080x768::create());
+	this->label1152x864 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1152x864::create());
+	this->label1280x720 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1280x720::create());
+	this->label1280x960 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1280x960::create());
+	this->label1280x1024 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1280x1024::create());
+	this->label1440x900 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1440x900::create());
+	this->label1600x900 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1600x900::create());
+	this->label1600x1024 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1600x1024::create());
+	this->label1920x1080 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1920x1080::create());
+	this->label2560x1440 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution2560x1440::create());
+	this->label3840x2160 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution3840x2160::create());
 
 	this->option1080x768 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
 	this->option1152x864 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
@@ -85,7 +96,6 @@ OptionsMenu::OptionsMenu()
 	this->option2560x1440 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
 	this->option3840x2160 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
 
-	int fontSize = 24;
 	Size shadowSize = Size(-2.0f, -2.0f);
 	int shadowBlur = 2;
 	int hoverOutlineSize = 2;
@@ -94,8 +104,8 @@ OptionsMenu::OptionsMenu()
 	Color3B highlightColor = Color3B::YELLOW;
 	Color4B glowColor = Color4B::ORANGE;
 
-	Label* returnLabel = Label::createWithTTF(Localization::resolveString(OptionsMenu::StringKeyReturn), Localization::getMainFont(), fontSize);
-	Label* returnLabelHover = Label::createWithTTF(Localization::resolveString(OptionsMenu::StringKeyReturn), Localization::getMainFont(), fontSize);
+	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Return::create());
+	LocalizedLabel*	returnLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Return::create());
 
 	returnLabel->setColor(textColor);
 	returnLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -132,7 +142,7 @@ OptionsMenu::OptionsMenu()
 
 	this->addChild(this->background);
 	this->addChild(this->optionsWindow);
-	this->addChild(this->titleLabel);
+	this->addChild(this->optionsLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->musicIcon);
 	this->addChild(this->soundIcon);
@@ -249,7 +259,7 @@ void OptionsMenu::onEnter()
 	float duration = 0.25f;
 
 	GameUtils::fadeInObject(this->optionsWindow, delay, duration);
-	GameUtils::fadeInObject(this->titleLabel, delay, duration);
+	GameUtils::fadeInObject(this->optionsLabel, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 	GameUtils::fadeInObject(this->musicIcon, delay, duration);
 	GameUtils::fadeInObject(this->soundIcon, delay, duration);
@@ -300,7 +310,7 @@ void OptionsMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->optionsWindow->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->titleLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 286.0f));
+	this->optionsLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 286.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2 + 302.0f, visibleSize.height / 2 + 228.0f));
 
 	this->soundIcon->setPosition(Vec2(visibleSize.width / 2 - 276.0f, visibleSize.height / 2 + 144.0f));

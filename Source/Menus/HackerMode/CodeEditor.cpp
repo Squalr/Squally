@@ -1,7 +1,32 @@
 ﻿#include "CodeEditor.h"
 
-#include "Engine/UI/Mouse.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Hackables/HackableCode.h"
+#include "Engine/Hackables/HackableObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/HackUtils.h"
+#include "Engine/Utils/StrUtils.h"
+#include "Engine/UI/Controls/MenuLabel.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/UI/Controls/MouseOverPanel.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Engine/UI/Controls/TextWindow.h"
+
+#include "Resources/UIResources.h"
+
+#include "Strings/Menus/Accept.h"
+#include "Strings/Menus/Cancel.h"
+#include "Strings/Menus/CodeEditor/AllocationEditor.h"
+#include "Strings/Menus/CodeEditor/Assembler.h"
+#include "Strings/Menus/CodeEditor/ClickToEdit.h"
+#include "Strings/Menus/CodeEditor/CodeEditor.h"
+#include "Strings/Menus/CodeEditor/Status.h"
+
+using namespace cocos2d;
+using namespace cocos2d::ui;
 
 const float CodeEditor::compileDelayMaxSeconds = 0.1f;
 const float CodeEditor::lineNumberMargin = 32.0f;;
@@ -49,13 +74,6 @@ const std::set<std::string> CodeEditor::registers =
 	"eip", "rip"
 };
 
-const std::string CodeEditor::StringKeyAccept = "Menu_Accept";
-const std::string CodeEditor::StringKeyCancel = "Menu_Cancel";
-const std::string CodeEditor::StringKeyTitle = "Menu_CodeEditor_Title";
-const std::string CodeEditor::StringKeyStatus = "Menu_CodeEditor_Status";
-const std::string CodeEditor::StringKeyCodeEditor = "Menu_CodeEditor_CodeEditor";
-const std::string CodeEditor::StringKeyAllocationEditor = "Menu_CodeEditor_AllocationEditor";
-
 CodeEditor* CodeEditor::create()
 {
 	CodeEditor* instance = new CodeEditor();
@@ -71,17 +89,17 @@ CodeEditor::CodeEditor()
 	this->activeHackableCode = nullptr;
 
 	this->codeEditorBackground = Sprite::create(UIResources::Menus_HackerModeMenu_EmptyFullScreenMenu);
-	this->codeEditorTitle = MenuLabel::create(Localization::resolveString(CodeEditor::StringKeyTitle), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+	this->codeEditorTitle = MenuLabel::create(LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::CodeEditor::create()));
 
-	this->statusWindow = TextWindow::create(Localization::resolveString(CodeEditor::StringKeyStatus), CodeEditor::statusSize, Localization::getFontSizeH3(Localization::getCodingFont()), CodeEditor::defaultColor);
-	this->functionWindow = EditableTextWindow::create(Localization::resolveString(CodeEditor::StringKeyCodeEditor), CodeEditor::functionSize, Localization::getFontSizeH3(Localization::getCodingFont()), CodeEditor::defaultColor);
-	this->secondaryWindow = EditableTextWindow::create(Localization::resolveString(CodeEditor::StringKeyAllocationEditor), CodeEditor::secondarySize, Localization::getFontSizeH3(Localization::getCodingFont()), CodeEditor::defaultColor);
+	this->statusWindow = TextWindow::create(LocaleStrings::Status::create(), CodeEditor::statusSize, CodeEditor::defaultColor);
+	this->functionWindow = EditableTextWindow::create(LocaleStrings::Status::create(), CodeEditor::functionSize, CodeEditor::defaultColor);
+	this->secondaryWindow = EditableTextWindow::create(LocaleStrings::Status::create(), CodeEditor::secondarySize, CodeEditor::defaultColor);
 
-	Label* acceptLabel = Label::createWithTTF(Localization::resolveString(CodeEditor::StringKeyAccept), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
-	Label* acceptLabelHover = Label::createWithTTF(Localization::resolveString(CodeEditor::StringKeyAccept), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+	LocalizedLabel*	acceptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::Accept::create());
+	LocalizedLabel*	acceptLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::Accept::create());
 
-	Label* cancelLabel = Label::createWithTTF(Localization::resolveString(CodeEditor::StringKeyCancel), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
-	Label* cancelLabelHover = Label::createWithTTF(Localization::resolveString(CodeEditor::StringKeyCancel), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::Cancel::create());
+	LocalizedLabel*	cancelLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::Cancel::create());
 
 	Size shadowSize = Size(-2.0f, -2.0f);
 	int shadowBlur = 2;
@@ -119,7 +137,8 @@ CodeEditor::CodeEditor()
 
 	this->acceptButtonGrayed = Node::create();
 	this->acceptButtonGrayed->addChild(Sprite::create(UIResources::Menus_Buttons_GenericHackButtonGray));
-	Label* acceptGray = Label::createWithTTF(Localization::resolveString(CodeEditor::StringKeyAccept), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+
+	LocalizedLabel*	acceptGray = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::Accept::create());
 	acceptGray->setTextColor(Color4B::GRAY);
 	this->acceptButtonGrayed->addChild(acceptGray);
 

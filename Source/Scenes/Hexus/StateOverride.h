@@ -1,19 +1,14 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Engine/SmartNode.h"
-#include "Scenes/Hexus/CardData/CardData.h"
-#include "Scenes/Hexus/CardData/CardList.h"
-#include "Scenes/Hexus/CardData/CardKeys.h"
-#include "Scenes/Hexus/Deck.h"
 
-using namespace cocos2d;
+class CardData;
 
 // A class for loading an initial state into Hexus -- used in puzzles and tutorials
 class StateOverride : public SmartNode
 {
 public:
-	enum TutorialMode
+	enum class TutorialMode
 	{
 		NoTutorial,
 		TutorialA,

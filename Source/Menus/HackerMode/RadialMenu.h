@@ -1,16 +1,20 @@
 #pragma once
-#include "cocos2d.h"
+#include <functional>
+#include "cocos/math/Vec2.h"
+#include "cocos/base/CCEventKeyboard.h"
 
 #include "Engine/Events/MouseEvents.h"
-#include "Engine/Hackables/HackableObject.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/HUD/Hud.h"
-#include "Engine/Utils/HackUtils.h"
-#include "Events/HackableEvents.h"
-#include "Menus/HackerMode/CodeEditor.h"
-#include "Resources/UIResources.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class EventCustom;
+	class LayerColor;
+}
+
+class CodeEditor;
+class HackableObject;
+class MenuSprite;
 
 class RadialMenu : public Hud
 {
@@ -23,27 +27,25 @@ private:
 
 	void initializePositions();
 	void initializeListeners();
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	void onHackableEdit(EventCustom* eventArgs);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+	void onHackableEdit(cocos2d::EventCustom* eventArgs);
 	void onHackableAttributeClick(MenuSprite* menuSprite);
 	void onClose(MenuSprite* menuSprite);
 	void close();
 
-	Node* createRadialNode(std::string iconResource, Vec2 nodePosition, Color4F color, std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> callback, int tag);
+	cocos2d::Node* createRadialNode(std::string iconResource, cocos2d::Vec2 nodePosition, cocos2d::Color4F color, std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> callback, int tag);
 
 	CodeEditor* codeEditor;
-
 	HackableObject* activeHackableObject;
 
-	LayerColor* layerColor;
-	Node* radialMenuItems;
+	cocos2d::LayerColor* layerColor;
+	cocos2d::Node* radialMenuItems;
 
 	std::function<void()> onRadialMenuCloseCallback;
 
 	static const float radialMenuRadius;
 	static const float lineWidth;
-	static const Color4F dataColor;
-	static const Color4F codeColor;
+	static const cocos2d::Color4F dataColor;
+	static const cocos2d::Color4F codeColor;
 	static const float iconRadius;
 };
-

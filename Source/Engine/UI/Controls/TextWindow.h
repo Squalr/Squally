@@ -20,21 +20,22 @@ namespace cocos2d
 	}
 }
 
+class LocalizedLabel;
+class LocalizedString;
+
 class TextWindow : public SmartNode
 {
 public:
-	static TextWindow * create(std::string windowTitle, cocos2d::Size initWindowSize, float initFontSize,
-			cocos2d::Color3B initFontColor);
+	static TextWindow* create(LocalizedString* windowTitle, cocos2d::Size initWindowSize, cocos2d::Color3B initFontColor);
 
-	void setTitle(std::string title);
+	void setTitle(std::string text);
 	void insertText(std::string text, cocos2d::Color3B color);
 	void setMarginSize(float newMarginSize);
 	virtual void insertNewline();
 	virtual void clearText();
 
 protected:
-	TextWindow(std::string windowTitle, cocos2d::Size initWindowSize, float initFontSize,
-			cocos2d::Color3B initFontColor);
+	TextWindow(LocalizedString* windowTitle, cocos2d::Size initWindowSize, cocos2d::Color3B initFontColor);
 	virtual ~TextWindow();
 
 	void onEnter() override;
@@ -58,7 +59,6 @@ private:
 
 	std::vector<cocos2d::ui::RichElement*> displayTextElements;
 
-	float fontSize;
 	cocos2d::Color4B titleBarColor;
 	cocos2d::Color4B windowColor;
 	cocos2d::Color3B fontColor;

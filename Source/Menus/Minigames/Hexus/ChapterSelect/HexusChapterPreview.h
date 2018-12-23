@@ -1,19 +1,21 @@
 #pragma once
-#include "cocos2d.h"
+#include <functional>
 
 #include "Engine/SmartNode.h"
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Resources/EntityResources.h"
-#include "Resources/UIResources.h"
-#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class ClippingNode;
+}
+
+class LocalizedLabel;
+class MenuSprite;
+class LocalizedLabel;
 
 class HexusChapterPreview : public SmartNode
 {
 public:
-	static HexusChapterPreview * create(std::string chapterNameKey);
+	static HexusChapterPreview* create(std::string chapterNameKey);
 
 	void setClickCallback(std::function<void()> callback);
 	void disableInteraction();
@@ -29,8 +31,8 @@ protected:
 	void initializeListeners() override;
 	void onOpponentClick(MenuSprite* HexusChapterPreview);
 	
-	ClippingNode* frameClip;
+	cocos2d::ClippingNode* frameClip;
 	MenuSprite* frame;
-	Label* text;
+	LocalizedLabel* text;
 	std::function<void()> callback;
 };

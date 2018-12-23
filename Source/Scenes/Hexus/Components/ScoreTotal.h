@@ -1,19 +1,18 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Sound/SoundManager.h"
-#include "Engine/Utils/StrUtils.h"
 
 #include "Scenes/Hexus/Components/ComponentBase.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Sprite;
+}
+
+class LocalizedLabel;
 
 class ScoreTotal : public ComponentBase
 {
 public:
-	static ScoreTotal * create();
+	static ScoreTotal* create();
 
 protected:
 	void onBeforeStateChange(GameState* eventCustom) override;
@@ -27,11 +26,11 @@ private:
 	void initializePositions() override;
 	void updateTotals(GameState* gameState);
 
-	Sprite* playerTotalFrame;
-	Label* playerTotal;
-	Sprite* playerLeaderEmblem;
+	cocos2d::Sprite* playerTotalFrame;
+	LocalizedLabel* playerTotal;
+	cocos2d::Sprite* playerLeaderEmblem;
 
-	Sprite* enemyTotalFrame;
-	Label* enemyTotal;
-	Sprite* enemyLeaderEmblem;
+	cocos2d::Sprite* enemyTotalFrame;
+	LocalizedLabel* enemyTotal;
+	cocos2d::Sprite* enemyLeaderEmblem;
 };

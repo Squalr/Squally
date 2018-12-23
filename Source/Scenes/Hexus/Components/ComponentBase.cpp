@@ -1,5 +1,12 @@
 #include "ComponentBase.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Scenes/Hexus/GameState.h"
+
+using namespace cocos2d;
+
 ComponentBase::ComponentBase()
 {
 }

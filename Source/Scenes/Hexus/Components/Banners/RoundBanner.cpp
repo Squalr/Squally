@@ -1,5 +1,14 @@
 #include "RoundBanner.h"
 
+#include "cocos/base/CCDirector.h"
+
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+
+using namespace cocos2d;
+
 RoundBanner* RoundBanner::create()
 {
 	RoundBanner* instance = new RoundBanner();
@@ -41,7 +50,7 @@ void RoundBanner::onAnyStateChange(GameState* gameState)
 {
 	BannerBase::onAnyStateChange(gameState);
 
-	if (gameState->stateType == GameState::RoundStart)
+	if (gameState->stateType == GameState::StateType::RoundStart)
 	{
 		switch (gameState->roundNumber)
 		{

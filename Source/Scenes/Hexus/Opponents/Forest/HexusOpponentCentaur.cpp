@@ -1,5 +1,17 @@
 #include "HexusOpponentCentaur.h"
 
+#include "cocos/math/Vec2.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+
+#include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
 const std::string HexusOpponentCentaur::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CENTAUR";
 HexusOpponentCentaur* HexusOpponentCentaur::instance = nullptr;
 
@@ -25,12 +37,12 @@ HexusOpponentCentaur::HexusOpponentCentaur() : HexusOpponentData(
 	HexusOpponentData::generateReward(0.355f),
 	HexusOpponentData::generateDeck(25, 0.355f,
 		{
-			CardList::getInstance()->cardListByName->at(CardKeys::Addition),
-			CardList::getInstance()->cardListByName->at(CardKeys::LogicalAnd),
-			CardList::getInstance()->cardListByName->at(CardKeys::LogicalOr),
-			CardList::getInstance()->cardListByName->at(CardKeys::LogicalXor),
-			CardList::getInstance()->cardListByName->at(CardKeys::ShiftLeft),
-			CardList::getInstance()->cardListByName->at(CardKeys::ShiftRight),
+			CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 		})
 	)
 {

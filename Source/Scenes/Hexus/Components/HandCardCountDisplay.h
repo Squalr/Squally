@@ -1,18 +1,19 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
 
 #include "Scenes/Hexus/Components/ComponentBase.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class LayerColor;
+	class Sprite;
+}
+
+class LocalizedLabel;
 
 class HandCardCountDisplay : public ComponentBase
 {
 public:
-	static HandCardCountDisplay * create();
+	static HandCardCountDisplay* create();
 
 protected:
 	void onBeforeStateChange(GameState* eventCustom) override;
@@ -25,11 +26,11 @@ private:
 	void initializePositions() override;
 	void updateTotals(GameState* gameState);
 
-	LayerColor* playerHandCardCountFrame;
-	Label* playerHandCardCountText;
-	Sprite* playerHandCardIcon;
+	cocos2d::LayerColor* playerHandCardCountFrame;
+	LocalizedLabel* playerHandCardCountText;
+	cocos2d::Sprite* playerHandCardIcon;
 
-	LayerColor* enemyHandCardCountFrame;
-	Label* enemyHandCardCountText;
-	Sprite* enemyHandCardIcon;
+	cocos2d::LayerColor* enemyHandCardCountFrame;
+	LocalizedLabel* enemyHandCardCountText;
+	cocos2d::Sprite* enemyHandCardIcon;
 };

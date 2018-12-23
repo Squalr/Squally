@@ -1,5 +1,7 @@
 #include "Shopkeeper.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
+
 #include "Resources/EntityResources.h"
 
 Shopkeeper* Shopkeeper::create()
@@ -13,10 +15,9 @@ Shopkeeper* Shopkeeper::create()
 
 Shopkeeper::Shopkeeper()
 {
-	this->animationNode = AnimationNode::create(EntityResources::Misc_Shopkeeper_Animations);
+	this->animationNode = SmartAnimationNode::create(EntityResources::Misc_Shopkeeper_Animations);
 
-	SpriterEngine::EntityInstance* entity = this->animationNode->play("Entity");
-	entity->setCurrentAnimation("Idle");
+	this->animationNode->playAnimation(true);
 
 	this->addChild(this->animationNode);
 }

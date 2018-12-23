@@ -1,21 +1,20 @@
 #pragma once
-#include "cocos2d.h"
-#include "cocos-ext.h"
 
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
-#include "Resources/BackgroundResources.h"
-#include "Resources/EntityResources.h"
-#include "Resources/UIResources.h"
 #include "Scenes/Hexus/Components/ComponentBase.h"
-#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class ClippingNode;
+	class Sprite;
+}
+
+class HexusOpponentData;
+class SmartAnimationNode;
 
 class Avatars : public ComponentBase
 {
 public:
-	static Avatars * create();
+	static Avatars* create();
 
 	void initializeEnemyAvatar(HexusOpponentData* opponentData);
 
@@ -30,12 +29,12 @@ private:
 	void initializePositions() override;
 	void setAvatars(GameState* gameState);
 
-	ClippingNode* clipPlayer;
-	ClippingNode* clipEnemy;
-	Sprite* framePlayer;
-	Sprite* frameEnemy;
-	Node* avatarPlayer;
-	Node* avatarEnemy;
-	AnimationNode* playerSprite;
-	AnimationNode* opponentSprite;
+	cocos2d::ClippingNode* clipPlayer;
+	cocos2d::ClippingNode* clipEnemy;
+	cocos2d::Sprite* framePlayer;
+	cocos2d::Sprite* frameEnemy;
+	cocos2d::Node* avatarPlayer;
+	cocos2d::Node* avatarEnemy;
+	SmartAnimationNode* playerSprite;
+	SmartAnimationNode* opponentSprite;
 };
