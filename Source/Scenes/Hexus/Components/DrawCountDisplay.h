@@ -34,7 +34,7 @@ private:
 	MenuSprite* drawCountSprite;
 	LocalizedLabel* drawCountLabel;
 
-	LayerColor* deckDrawCountMouseOverPanel;
+	cocos2d::LayerColor* deckDrawCountMouseOverPanel;
 	LocalizedLabel* deckDrawCountCardMouseOverLabel;
 
 	cocos2d::Sprite* enemyDrawCountSprite;

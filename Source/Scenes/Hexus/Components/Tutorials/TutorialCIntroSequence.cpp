@@ -1,5 +1,29 @@
 #include "TutorialCIntroSequence.h"
 
+#include <vector>
+
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/FocusTakeOver.h"
+#include "Engine/UI/Controls/HelpArrow.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/StateOverride.h"
+
+#include "Resources/UIResources.h"
+
+#include "Strings/Hexus/Tutorials/C/NotEnoughToWin.h"
+#include "Strings/Hexus/Tutorials/C/OpponentLead.h"
+#include "Strings/Hexus/Tutorials/C/Surrender.h"
+#include "Strings/Menus/GotIt.h"
+#include "Strings/Menus/Next.h"
+
+using namespace cocos2d;
+
 TutorialCIntroSequence* TutorialCIntroSequence::create()
 {
 	TutorialCIntroSequence* instance = new TutorialCIntroSequence();
@@ -12,45 +36,31 @@ TutorialCIntroSequence* TutorialCIntroSequence::create()
 TutorialCIntroSequence::TutorialCIntroSequence() : TutorialBase(StateOverride::TutorialMode::TutorialC, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->scoreTotalsTutorialLabel = Label::createWithTTF("Your opponent has a large lead over you!.",
-		Localization::getMainFont(),
-		Localization::getFontSizeP(Localization::getMainFont()),
-		Size(420.0f, 0.0f)
-	);
-	this->handCardsTutorialLabel = Label::createWithTTF("Your cards will not be enough to win this round!",
-		Localization::getMainFont(),
-		Localization::getFontSizeP(Localization::getMainFont()),
-		Size(640.0f, 0.0f),
-		cocos2d::TextHAlignment::CENTER
-	);
-	this->lastStandTutorialLabel = Label::createWithTTF("Your best option is to surrender this round, and fight back next round!",
-		Localization::getMainFont(),
-		Localization::getFontSizeP(Localization::getMainFont()),
-		Size(640.0f, 0.0f),
-		cocos2d::TextHAlignment::CENTER
-	);
+	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::OpponentLead::create(), Size(420.0f, 0.0f));
+	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::NotEnoughToWin::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->lastStandTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Surrender::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->helpArrowScoreTotals = HelpArrow::create();
 	this->helpArrowHandCards = HelpArrow::create();
 	this->helpArrowLastStand = HelpArrow::create();
 
-	Label* scoreTotalsNextLabel = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* scoreTotalsNextLabelSelected = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	LocalizedLabel* scoreTotalsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Next::create());
+	LocalizedLabel* scoreTotalsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Next::create());
 
 	scoreTotalsNextLabel->enableOutline(Color4B::BLACK, 2);
 	scoreTotalsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->scoreTotalsNextButton = TextMenuSprite::create(scoreTotalsNextLabel, scoreTotalsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
-	Label* handCardsNextLabel = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* handCardsNextLabelSelected = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	LocalizedLabel* handCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Next::create());
+	LocalizedLabel* handCardsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Next::create());
 
 	handCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	handCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->handCardsNextButton = TextMenuSprite::create(handCardsNextLabel, handCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
-	Label* lastStandNextLabel = Label::createWithTTF("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* lastStandNextLabelSelected = Label::createWithTTF("Got it!", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	LocalizedLabel* lastStandNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::GotIt::create());
+	LocalizedLabel* lastStandNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::GotIt::create());
 
 	lastStandNextLabel->enableOutline(Color4B::BLACK, 2);
 	lastStandNextLabelSelected->enableOutline(Color4B::BLACK, 2);

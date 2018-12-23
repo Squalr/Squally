@@ -1,10 +1,10 @@
 #pragma once
-#include "cocos2d.h"
-#include "cocos-ext.h"
 
-using namespace cocos2d;
+#include "Engine/SmartNode.h"
 
-class Shopkeeper : public Node
+class SmartAnimationNode;
+
+class Shopkeeper : public SmartNode
 {
 public:
 	static Shopkeeper* create();
@@ -14,5 +14,5 @@ protected:
 	~Shopkeeper();
 
 private:
-	AnimationNode* animationNode;
+	SmartAnimationNode* animationNode;
 };
