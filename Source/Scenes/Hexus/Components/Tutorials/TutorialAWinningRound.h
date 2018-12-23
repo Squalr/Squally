@@ -1,15 +1,11 @@
 #pragma once
-#include "cocos2d.h"
 
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/FocusTakeOver.h"
-#include "Engine/UI/Controls/HelpArrow.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
-#include "Resources/UIResources.h"
 #include "Scenes/Hexus/Components/Tutorials/TutorialBase.h"
 
-using namespace cocos2d;
+class FocusTakeOver;
+class HelpArrow;
+class LocalizedLabel;
+class TextMenuSprite;
 
 class TutorialAWinningRound : public TutorialBase
 {
@@ -34,7 +30,7 @@ private:
 	void concludeTutorial(GameState* gameState);
 
 	FocusTakeOver* focusTakeOver;
-	Label* scoreTotalsTutorialLabel;
+	LocalizedLabel* scoreTotalsTutorialLabel;
 	TextMenuSprite* scoreTotalsNextButton;
 	HelpArrow* helpArrowScoreTotals;
 };

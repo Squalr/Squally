@@ -1,5 +1,25 @@
 #include "TutorialAVictory.h"
 
+#include <vector>
+
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/FocusTakeOver.h"
+#include "Engine/UI/Controls/HelpArrow.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/StateOverride.h"
+
+#include "Resources/UIResources.h"
+
+#include "Strings/Hexus/Tutorials/A/Victory.h"
+#include "Strings/Menus/Next.h"
+
+using namespace cocos2d;
+
 TutorialAVictory* TutorialAVictory::create()
 {
 	TutorialAVictory* instance = new TutorialAVictory();
@@ -12,15 +32,11 @@ TutorialAVictory* TutorialAVictory::create()
 TutorialAVictory::TutorialAVictory() : TutorialBase(StateOverride::TutorialMode::TutorialA, GameState::StateType::GameEnd)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->lossDisplayTutorialLabel = Label::createWithTTF("Your opponent has lost 2 lives, so you win the match!",
-		Localization::getMainFont(),
-		Localization::getFontSizeP(Localization::getMainFont()),
-		Size(420.0f, 0.0f)
-	);
+	this->lossDisplayTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Victory::create(), Size(420.0f, 0.0f));
 	this->helpArrowLossDisplay = HelpArrow::create();
 
-	Label* lossesDisplayNextLabel = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* lossesDisplayNextLabelSelected = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	LocalizedLabel* lossesDisplayNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Next::create());
+	LocalizedLabel* lossesDisplayNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Next::create());
 
 	lossesDisplayNextLabel->enableOutline(Color4B::BLACK, 2);
 	lossesDisplayNextLabelSelected->enableOutline(Color4B::BLACK, 2);

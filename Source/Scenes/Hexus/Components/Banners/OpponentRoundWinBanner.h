@@ -22,6 +22,6 @@ private:
 
 	void initializePositions() override;
 
-	Sprite* playerPassBanner1;
-	Sprite* playerPassBanner2;
+	cocos2d::Sprite* playerPassBanner1;
+	cocos2d::Sprite* playerPassBanner2;
 };

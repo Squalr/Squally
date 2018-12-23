@@ -1,5 +1,25 @@
 #include "TutorialAWinningRound.h"
 
+#include <vector>
+
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/FocusTakeOver.h"
+#include "Engine/UI/Controls/HelpArrow.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/StateOverride.h"
+
+#include "Resources/UIResources.h"
+
+#include "Strings/Hexus/Tutorials/A/WinningRound.h"
+#include "Strings/Menus/Next.h"
+
+using namespace cocos2d;
+
 TutorialAWinningRound* TutorialAWinningRound::create()
 {
 	TutorialAWinningRound* instance = new TutorialAWinningRound();
@@ -12,15 +32,11 @@ TutorialAWinningRound* TutorialAWinningRound::create()
 TutorialAWinningRound::TutorialAWinningRound() : TutorialBase(StateOverride::TutorialMode::TutorialA, GameState::StateType::TurnEnd)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->scoreTotalsTutorialLabel = Label::createWithTTF("Nice! Now your score is higher than your opponents!",
-		Localization::getMainFont(),
-		Localization::getFontSizeP(Localization::getMainFont()),
-		Size(420.0f, 0.0f)
-	);
+	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::WinningRound::create(), Size(420.0f, 0.0f));
 	this->helpArrowScoreTotals = HelpArrow::create();
 
-	Label* scoreTotalsNextLabel = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* scoreTotalsNextLabelSelected = Label::createWithTTF("Next", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	LocalizedLabel* scoreTotalsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Next::create());
+	LocalizedLabel* scoreTotalsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Next::create());
 
 	scoreTotalsNextLabel->enableOutline(Color4B::BLACK, 2);
 	scoreTotalsNextLabelSelected->enableOutline(Color4B::BLACK, 2);

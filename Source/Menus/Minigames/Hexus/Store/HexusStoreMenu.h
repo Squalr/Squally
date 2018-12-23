@@ -1,22 +1,20 @@
 #pragma once
-#include <math.h>
-#include "cocos2d.h"
+#include <map>
+#include <tuple>
+#include <vector>
 
 #include "Engine/GlobalScene.h"
-#include "Engine/UI/Controls/ScrollPane.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/Mouse.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Entities/Special/Shopkeeper.h"
-#include "Events/NavigationEvents.h"
-#include "Menus/Minigames/Hexus/MenuCard.h"
-#include "Resources/SoundResources.h"
-#include "Resources/UIResources.h"
-#include "Scenes/Hexus/Card.h"
-#include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/CardStorage.h"
 
-using namespace cocos2d;
+class Card;
+class CardData;
+class LocalizedLabel;
+class MenuCard;
+class MenuSprite;
+class MenuSprite;
+class ScrollPane;
+class Shopkeeper;
+class SmartAnimationNode;
+class TextMenuSprite;
 
 class HexusStoreMenu : public GlobalScene
 {
@@ -42,10 +40,10 @@ private:
 	void updateCardLimitText(Label* label, CardData* cardData);
 	void updateGoldText();
 	void hideMenus();
-	void onLootBoxClick(MenuSprite* sprite, int price, std::map<CardData*, float> cardChoices, AnimationNode* animationNode, SpriterEngine::EntityInstance* entity);
+	void onLootBoxClick(MenuSprite* sprite, int price, std::map<CardData*, float> cardChoices, SmartAnimationNode* animationNode);
 	void onCardClick(MenuSprite* card, CardData* cardData, int price, Label* label);
 	void onBackClick(MenuSprite* menuSprite);
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onLootBoxReturnButtonClick(int price, std::vector<Card*> chosenCards);
 	static CardData* chooseRandomCard(std::map<CardData*, float> cardChoices);
 	static std::map<CardData*, float> getCardsTier1();
@@ -58,16 +56,16 @@ private:
 	static std::map<CardData*, float> getCardsTier8();
 	static std::map<CardData*, float> getCardsTier9();
 
-	ParticleSystem* dustParticles;
-	Sprite* storeBack;
+	cocos2d::ParticleSystem* dustParticles;
+	cocos2d::Sprite* storeBack;
 	Shopkeeper* shopKeeper;
-	Sprite* storeFront;
-	Node* storeNode;
-	Sprite* storeMenu;
-	Sprite* goldPanel;
-	Sprite* goldIcon;
-	Label* goldLabel;
-	Node* lootboxesNode;
+	cocos2d::Sprite* storeFront;
+	cocos2d::Node* storeNode;
+	cocos2d::Sprite* storeMenu;
+	cocos2d::Sprite* goldPanel;
+	cocos2d::Sprite* goldIcon;
+	LocalizedLabel* goldLabel;
+	cocos2d::Node* lootboxesNode;
 	ScrollPane* binaryCardsScrollPane;
 	ScrollPane* decimalCardsScrollPane;
 	ScrollPane* hexCardsScrollPane;
@@ -78,17 +76,17 @@ private:
 	MenuSprite* hexButton;
 	MenuSprite* specialButton;
 	TextMenuSprite* backButton;
-	LayerColor* lootBoxRewardBackground;
+	cocos2d::LayerColor* lootBoxRewardBackground;
 	MenuSprite* lootBoxReturnButton;
-	Node* chosenCardsNode;
+	cocos2d::Node* chosenCardsNode;
 
 	std::vector<std::tuple<MenuSprite*, int>> lootBoxes;
 	std::vector<std::tuple<MenuSprite*, MenuCard*, int>> binaryCards;
 	std::vector<std::tuple<MenuSprite*, MenuCard*, int>> decimalCards;
 	std::vector<std::tuple<MenuSprite*, MenuCard*, int>> hexCards;
 	std::vector<std::tuple<MenuSprite*, MenuCard*, int>> specialCards;
-	std::map<MenuCard*, Label*> limitLabels;
+	std::map<MenuCard*, LocalizedLabel*> limitLabels;
 
 	static HexusStoreMenu* instance;
-	static const float lootBoxScale;
+	static const float LootBoxScale;
 };

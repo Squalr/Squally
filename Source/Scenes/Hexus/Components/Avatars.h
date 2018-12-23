@@ -2,6 +2,13 @@
 
 #include "Scenes/Hexus/Components/ComponentBase.h"
 
+namespace cocos2d
+{
+	class ClippingNode;
+	class Sprite;
+}
+
+class HexusOpponentData;
 class SmartAnimationNode;
 
 class Avatars : public ComponentBase
