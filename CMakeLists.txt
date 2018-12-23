@@ -884,10 +884,14 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hexus/Cards/ShiftRight.cpp
 	Source/Strings/Hexus/Cards/Subtract.cpp
 	Source/Strings/Hexus/ClaimVictory.cpp
+	Source/Strings/Hexus/Done.cpp
 	Source/Strings/Hexus/Hexus.cpp
 	Source/Strings/Hexus/HexusPuzzles.cpp
 	Source/Strings/Hexus/LastStand.cpp
+	Source/Strings/Hexus/ManageCards.cpp
 	Source/Strings/Hexus/Pass.cpp
+	Source/Strings/Hexus/SelectAChapter.cpp
+	Source/Strings/Hexus/Shop.cpp
 	Source/Strings/Menus/Accept.cpp
 	Source/Strings/Menus/Back.cpp
 	Source/Strings/Menus/Cancel.cpp
@@ -899,6 +903,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Menus/ComingSoon.cpp
 	Source/Strings/Menus/ContinueGame.cpp
 	Source/Strings/Menus/Exit.cpp
+	Source/Strings/Menus/Leave.cpp
 	Source/Strings/Menus/Maps/CastleValgrind.cpp
 	Source/Strings/Menus/Minigames.cpp
 	Source/Strings/Menus/NewGame.cpp
@@ -1771,10 +1776,14 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hexus/Cards/ShiftRight.h
 	Source/Strings/Hexus/Cards/Subtract.h
 	Source/Strings/Hexus/ClaimVictory.h
+	Source/Strings/Hexus/Done.h
 	Source/Strings/Hexus/Hexus.h
 	Source/Strings/Hexus/HexusPuzzles.h
 	Source/Strings/Hexus/LastStand.h
+	Source/Strings/Hexus/ManageCards.h
 	Source/Strings/Hexus/Pass.h
+	Source/Strings/Hexus/SelectAChapter.h
+	Source/Strings/Hexus/Shop.h
 	Source/Strings/Menus/Accept.h
 	Source/Strings/Menus/Back.h
 	Source/Strings/Menus/Cancel.h
@@ -1786,6 +1795,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Menus/ComingSoon.h
 	Source/Strings/Menus/ContinueGame.h
 	Source/Strings/Menus/Exit.h
+	Source/Strings/Menus/Leave.h
 	Source/Strings/Menus/Maps/CastleValgrind.h
 	Source/Strings/Menus/Minigames.h
 	Source/Strings/Menus/NewGame.h

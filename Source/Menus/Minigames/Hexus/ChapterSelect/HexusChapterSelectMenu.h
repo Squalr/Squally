@@ -1,26 +1,30 @@
 #pragma once
-#include "cocos2d.h"
+#include <map>
+#include <vector>
+
+#include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/GlobalScene.h"
-#include "Events/NavigationEvents.h"
-#include "Engine/Save/SaveManager.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/Mouse.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.h"
-#include "Menus/Minigames/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.h"
-#include "Menus/Minigames/Hexus/ChapterSelect/Caverns/HexusChapterPreviewCaverns.h"
-#include "Menus/Minigames/Hexus/ChapterSelect/Forest/HexusChapterPreviewForest.h"
-#include "Menus/Minigames/Hexus/ChapterSelect/IceCaps/HexusChapterPreviewIceCaps.h"
-#include "Menus/Minigames/Hexus/ChapterSelect/Jungle/HexusChapterPreviewJungle.h"
-#include "Menus/Minigames/Hexus/ChapterSelect/Mech/HexusChapterPreviewMech.h"
-#include "Menus/Minigames/Hexus/ChapterSelect/Obelisk/HexusChapterPreviewObelisk.h"
-#include "Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusChapterPreviewRuins.h"
-#include "Menus/Minigames/Hexus/ChapterSelect/Training/HexusChapterPreviewTraining.h"
-#include "Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusChapterPreviewVolcano.h"
-#include "Resources/UIResources.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Sprite;
+}
+
+class HexusChapterPreview;
+class HexusChapterPreviewTraining;
+class HexusChapterPreviewJungle;
+class HexusChapterPreviewRuins;
+class HexusChapterPreviewForest;
+class HexusChapterPreviewCaverns;
+class HexusChapterPreviewCastle;
+class HexusChapterPreviewIceCaps;
+class HexusChapterPreviewVolcano;
+class HexusChapterPreviewObelisk;
+class HexusChapterPreviewMech;
+class LocalizedLabel;
+class MenuSprite;
+class TextMenuSprite;
 
 class HexusChapterSelectMenu : public GlobalScene
 {
@@ -40,12 +44,12 @@ private:
 	void onDeckManagementClick(MenuSprite* menuSprite);
 	void onShopClick(MenuSprite* menuSprite);
 	void onMouseOver(HexusChapterPreview* hexusChapterPreview);
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
 	std::vector<HexusChapterPreview*> chapters;
 	std::map<HexusChapterPreview*, HexusChapterPreview*> dependencies;
 
-	Sprite* background;
+	cocos2d::Sprite* background;
 	HexusChapterPreviewTraining* hexusChapterPreviewTraining;
 	HexusChapterPreviewJungle* hexusChapterPreviewJungle;
 	HexusChapterPreviewRuins* hexusChapterPreviewRuins;
@@ -58,9 +62,8 @@ private:
 	HexusChapterPreviewMech* hexusChapterPreviewMech;
 	TextMenuSprite* deckManagementButton;
 	TextMenuSprite* shopButton;
-	Label* chapterSelectLabel;
+	LocalizedLabel* chapterSelectLabel;
 	TextMenuSprite* backButton;
 
 	static HexusChapterSelectMenu* instance;
 };
-

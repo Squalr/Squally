@@ -9,7 +9,7 @@ class MenuSprite;
 class StateCardReplace : public StateBase
 {
 public:
-	static StateCardReplace * create();
+	static StateCardReplace* create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;

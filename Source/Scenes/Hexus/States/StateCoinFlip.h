@@ -11,7 +11,7 @@ namespace cocos2d
 class StateCoinFlip : public StateBase
 {
 public:
-	static StateCoinFlip * create();
+	static StateCoinFlip* create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;

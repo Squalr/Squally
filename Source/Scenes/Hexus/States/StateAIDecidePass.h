@@ -5,7 +5,7 @@
 class StateAIDecidePass : public StateBase
 {
 public:
-	static StateAIDecidePass * create();
+	static StateAIDecidePass* create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;

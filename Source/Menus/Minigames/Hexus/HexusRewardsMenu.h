@@ -1,9 +1,15 @@
 #pragma once
-#include "cocos2d.h"
+#include <string>
 
 #include "Engine/GlobalScene.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Sprite;
+}
+
+class LocalizedLabel;
+class MenuSprite;
 
 class HexusRewardsMenu : public GlobalScene
 {
@@ -21,10 +27,10 @@ private:
 	void onRewardsOpen(int reward, bool isRewardReduced);
 	void onReturnClick(MenuSprite* menuSprite);
 
-	Sprite* background;
-	Sprite* goldSprite;
-	Sprite* goldSpriteLesser;
-	Label* goldLabel;
+	cocos2d::Sprite* background;
+	cocos2d::Sprite* goldSprite;
+	cocos2d::Sprite* goldSpriteLesser;
+	LocalizedLabel* goldLabel;
 	MenuSprite* returnButton;
 
 	static HexusRewardsMenu* instance;
