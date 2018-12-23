@@ -8,10 +8,10 @@
 
 namespace LocaleStrings
 {
-	class ShiftRight : public LocalizedString
+	class HexadecimalCards : public LocalizedString
 	{
 	public:
-		static ShiftRight* create();
+		static HexadecimalCards* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		ShiftRight();
-		~ShiftRight();
+		HexadecimalCards();
+		~HexadecimalCards();
 	};
 }

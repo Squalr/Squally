@@ -17,8 +17,8 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hexus/Tutorials/A/BinaryCards.h"
-#include "Strings/Hexus/Tutorials/A/DecimalCards.h"
+#include "Strings/Hexus/Tutorials/A/BinCards.h"
+#include "Strings/Hexus/Tutorials/A/DecCards.h"
 #include "Strings/Hexus/Tutorials/A/HandCards.h"
 #include "Strings/Hexus/Tutorials/A/HexCards.h"
 #include "Strings/Hexus/Tutorials/A/LossDisplay.h"
@@ -44,8 +44,8 @@ TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::T
 	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::ScoreTotals::create(), Size(420.0f, 0.0f));
 	this->lossDisplayTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::LossDisplay::create(), Size(420.0f, 0.0f), TextHAlignment::CENTER);
 	this->rowTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::RowTotals::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
-	this->binaryCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::BinaryCards::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
-	this->decimalCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::DecimalCards::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->binaryCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::BinCards::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->decimalCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::DecCards::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->hexCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::HexCards::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::HandCards::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
 

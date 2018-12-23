@@ -8,10 +8,10 @@
 
 namespace LocaleStrings
 {
-	class BinaryCards : public LocalizedString
+	class UseShiftLeft : public LocalizedString
 	{
 	public:
-		static BinaryCards* create();
+		static UseShiftLeft* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		BinaryCards();
-		~BinaryCards();
+		UseShiftLeft();
+		~UseShiftLeft();
 	};
 }

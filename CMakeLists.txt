@@ -894,8 +894,8 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hexus/DecimalCards.cpp
 	Source/Strings/Hexus/Done.cpp
 	Source/Strings/Hexus/DrawToolTip.cpp
-	Source/Strings/Hexus/HexCards.cpp
 	Source/Strings/Hexus/HexLabel.cpp
+	Source/Strings/Hexus/HexadecimalCards.cpp
 	Source/Strings/Hexus/Hexus.cpp
 	Source/Strings/Hexus/HexusPuzzles.cpp
 	Source/Strings/Hexus/LastStand.cpp
@@ -909,8 +909,8 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hexus/StoreLabelDecimal.cpp
 	Source/Strings/Hexus/StoreLabelHex.cpp
 	Source/Strings/Hexus/StoreLabelSpecial.cpp
-	Source/Strings/Hexus/Tutorials/A/BinaryCards.cpp
-	Source/Strings/Hexus/Tutorials/A/DecimalCards.cpp
+	Source/Strings/Hexus/Tutorials/A/BinCards.cpp
+	Source/Strings/Hexus/Tutorials/A/DecCards.cpp
 	Source/Strings/Hexus/Tutorials/A/HandCards.cpp
 	Source/Strings/Hexus/Tutorials/A/HexCards.cpp
 	Source/Strings/Hexus/Tutorials/A/LossDisplay.cpp
@@ -918,15 +918,15 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hexus/Tutorials/A/ScoreTotals.cpp
 	Source/Strings/Hexus/Tutorials/A/Victory.cpp
 	Source/Strings/Hexus/Tutorials/A/WinningRound.cpp
-	Source/Strings/Hexus/Tutorials/B/LastStand.cpp
 	Source/Strings/Hexus/Tutorials/B/SaveCards.cpp
 	Source/Strings/Hexus/Tutorials/B/ScoreLead.cpp
+	Source/Strings/Hexus/Tutorials/B/UseLastStand.cpp
 	Source/Strings/Hexus/Tutorials/C/NotEnoughToWin.cpp
 	Source/Strings/Hexus/Tutorials/C/OpponentLead.cpp
-	Source/Strings/Hexus/Tutorials/C/Surrender.cpp
-	Source/Strings/Hexus/Tutorials/D/ShiftRight.cpp
-	Source/Strings/Hexus/Tutorials/E/ShiftLeft.cpp
-	Source/Strings/Hexus/Tutorials/F/Mov.cpp
+	Source/Strings/Hexus/Tutorials/C/UseSurrender.cpp
+	Source/Strings/Hexus/Tutorials/D/UseShiftRight.cpp
+	Source/Strings/Hexus/Tutorials/E/UseShiftLeft.cpp
+	Source/Strings/Hexus/Tutorials/F/UseMov.cpp
 	Source/Strings/Menus/Accept.cpp
 	Source/Strings/Menus/Back.cpp
 	Source/Strings/Menus/Cancel.cpp
@@ -1823,8 +1823,8 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hexus/DecimalCards.h
 	Source/Strings/Hexus/Done.h
 	Source/Strings/Hexus/DrawToolTip.h
-	Source/Strings/Hexus/HexCards.h
 	Source/Strings/Hexus/HexLabel.h
+	Source/Strings/Hexus/HexadecimalCards.h
 	Source/Strings/Hexus/Hexus.h
 	Source/Strings/Hexus/HexusPuzzles.h
 	Source/Strings/Hexus/LastStand.h
@@ -1838,8 +1838,8 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hexus/StoreLabelDecimal.h
 	Source/Strings/Hexus/StoreLabelHex.h
 	Source/Strings/Hexus/StoreLabelSpecial.h
-	Source/Strings/Hexus/Tutorials/A/BinaryCards.h
-	Source/Strings/Hexus/Tutorials/A/DecimalCards.h
+	Source/Strings/Hexus/Tutorials/A/BinCards.h
+	Source/Strings/Hexus/Tutorials/A/DecCards.h
 	Source/Strings/Hexus/Tutorials/A/HandCards.h
 	Source/Strings/Hexus/Tutorials/A/HexCards.h
 	Source/Strings/Hexus/Tutorials/A/LossDisplay.h
@@ -1847,15 +1847,15 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hexus/Tutorials/A/ScoreTotals.h
 	Source/Strings/Hexus/Tutorials/A/Victory.h
 	Source/Strings/Hexus/Tutorials/A/WinningRound.h
-	Source/Strings/Hexus/Tutorials/B/LastStand.h
 	Source/Strings/Hexus/Tutorials/B/SaveCards.h
 	Source/Strings/Hexus/Tutorials/B/ScoreLead.h
+	Source/Strings/Hexus/Tutorials/B/UseLastStand.h
 	Source/Strings/Hexus/Tutorials/C/NotEnoughToWin.h
 	Source/Strings/Hexus/Tutorials/C/OpponentLead.h
-	Source/Strings/Hexus/Tutorials/C/Surrender.h
-	Source/Strings/Hexus/Tutorials/D/ShiftRight.h
-	Source/Strings/Hexus/Tutorials/E/ShiftLeft.h
-	Source/Strings/Hexus/Tutorials/F/Mov.h
+	Source/Strings/Hexus/Tutorials/C/UseSurrender.h
+	Source/Strings/Hexus/Tutorials/D/UseShiftRight.h
+	Source/Strings/Hexus/Tutorials/E/UseShiftLeft.h
+	Source/Strings/Hexus/Tutorials/F/UseMov.h
 	Source/Strings/Menus/Accept.h
 	Source/Strings/Menus/Back.h
 	Source/Strings/Menus/Cancel.h

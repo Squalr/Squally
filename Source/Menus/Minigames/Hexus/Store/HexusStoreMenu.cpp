@@ -623,7 +623,7 @@ void HexusStoreMenu::updateAllCardLimits()
 	}
 }
 
-void HexusStoreMenu::updateCardLimitText(Label* label, CardData* cardData)
+void HexusStoreMenu::updateCardLimitText(LocalizedLabel* label, CardData* cardData)
 {
 	int ownedCount = CardStorage::getOwnedCardCount(cardData);
 
@@ -639,7 +639,7 @@ void HexusStoreMenu::updateCardLimitText(Label* label, CardData* cardData)
 	}
 }
 
-void HexusStoreMenu::onCardClick(MenuSprite* card, CardData* cardData, int price, Label* cardLimitLabel)
+void HexusStoreMenu::onCardClick(MenuSprite* card, CardData* cardData, int price, LocalizedLabel* cardLimitLabel)
 {
 	int gold = CardStorage::getGold();
 

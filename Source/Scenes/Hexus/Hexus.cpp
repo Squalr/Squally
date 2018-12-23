@@ -1,5 +1,7 @@
 #include "Hexus.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/IconMenuSprite.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
@@ -10,10 +12,12 @@
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/CardStorage.h"
+#include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
 #include "Scenes/Hexus/Components/Components.h"
 #include "Scenes/Hexus/States/States.h"
 
+#include "Resources/HexusResources.h"
 #include "Resources/MusicResources.h"
 
 using namespace cocos2d;

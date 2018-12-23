@@ -16,7 +16,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hexus/Tutorials/E/ShiftLeft.h"
+#include "Strings/Hexus/Tutorials/E/UseShiftLeft.h"
 #include "Strings/Menus/GotIt.h"
 #include "Strings/Menus/Next.h"
 
@@ -34,7 +34,7 @@ TutorialEIntroSequence* TutorialEIntroSequence::create()
 TutorialEIntroSequence::TutorialEIntroSequence() : TutorialBase(StateOverride::TutorialMode::TutorialE, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::ShiftLeft::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::UseShiftLeft::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->helpArrowHandCards = HelpArrow::create();
 
 	LocalizedLabel* handCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::GotIt::create());

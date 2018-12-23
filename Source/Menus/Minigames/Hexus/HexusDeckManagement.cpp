@@ -29,7 +29,7 @@
 #include "Strings/Hexus/CardsInDeck.h"
 #include "Strings/Hexus/DecimalCards.h"
 #include "Strings/Hexus/CardsInStorage.h"
-#include "Strings/Hexus/HexCards.h"
+#include "Strings/Hexus/HexadecimalCards.h"
 #include "Strings/Hexus/SpecialCards.h"
 
 using namespace cocos2d;
@@ -74,7 +74,7 @@ HexusDeckManagement::HexusDeckManagement()
 	this->binaryCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
 	this->decimalCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::DecimalCards::create());
 	this->decimalCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
-	this->hexCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::HexCards::create());
+	this->hexCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::HexadecimalCards::create());
 	this->hexCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
 	this->specialCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::SpecialCards::create());
 	this->specialCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);

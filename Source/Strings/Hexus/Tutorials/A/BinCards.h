@@ -8,10 +8,10 @@
 
 namespace LocaleStrings
 {
-	class Mov : public LocalizedString
+	class BinCards : public LocalizedString
 	{
 	public:
-		static Mov* create();
+		static BinCards* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		Mov();
-		~Mov();
+		BinCards();
+		~BinCards();
 	};
 }
