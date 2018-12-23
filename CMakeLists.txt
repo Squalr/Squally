@@ -1670,7 +1670,6 @@ cocos_build_app(${APP_NAME}
 
 target_link_libraries(${APP_NAME} steam)
 target_link_libraries(${APP_NAME} udis86)
-target_link_libraries(${APP_NAME} fasm)
 target_link_libraries(${APP_NAME} ${ASMJIT_LIBRARY})
 
 string(REPLACE "$<CONFIG>" "${CMAKE_BUILD_TYPE}" CMAKE_RUNTIME_OUTPUT_DIRECTORY ${APP_BIN_DIR})
