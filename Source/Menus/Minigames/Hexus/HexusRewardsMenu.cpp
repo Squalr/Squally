@@ -1,5 +1,10 @@
 #include "HexusRewardsMenu.h"
 
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/GlobalDirector.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/ScrollPane.h"

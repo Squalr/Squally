@@ -1,6 +1,14 @@
 #include "CombatMap.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/GlobalDirector.h"
+#include "Engine/Maps/SerializableMap.h"
+#include "Events/NavigationEvents.h"
+
+using namespace cocos2d;
 
 CombatMap* CombatMap::instance = nullptr;
 

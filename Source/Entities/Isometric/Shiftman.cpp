@@ -1,5 +1,11 @@
 #include "Shiftman.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
+
+#include "Resources/EntityResources.h"
+
+using namespace cocos2d;
+
 const std::string Shiftman::KeyShiftmanProperty = "shiftman";
 
 Shiftman* Shiftman::deserialize(ValueMap* initProperties)
@@ -18,7 +24,7 @@ Shiftman::Shiftman(ValueMap* initProperties) : IsometricEntity::IsometricEntity(
 {
 	this->registerHackables();
 
-	this->animationNodeEntity->setCurrentAnimation("Idle_SE");
+	this->animationNode->playAnimation("Idle_SE");
 }
 
 Shiftman::~Shiftman()

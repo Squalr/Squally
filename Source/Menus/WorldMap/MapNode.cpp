@@ -4,6 +4,8 @@
 
 #include "Engine/UI/Controls/MenuSprite.h"
 
+using namespace cocos2d;
+
 MapNode* MapNode::create(std::string mapFile)
 {
 	MapNode* instance = new MapNode(mapFile);
@@ -21,9 +23,6 @@ MapNode::MapNode(std::string mapFile)
 	this->setAnchorPoint(Vec2(0.0f, 0.0f));
 
 	this->addChild(this->mapSprite);
-
-	this->initializePositions();
-	this->initializeListeners();
 }
 
 MapNode::~MapNode()
@@ -51,12 +50,14 @@ bool MapNode::isLocked()
 
 void MapNode::initializePositions()
 {
+	SmartNode::initializePositions();
+
 	this->setContentSize(this->mapSprite->getContentSize());
 }
 
 void MapNode::initializeListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	SmartNode::initializeListeners();
 
 	this->mapSprite->setClickCallback(CC_CALLBACK_1(MapNode::onNodeClick, this));
 }

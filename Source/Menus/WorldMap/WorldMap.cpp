@@ -1,10 +1,16 @@
 #include "WorldMap.h"
 
-#include "cocos/base/CCEvent.h"
 #include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEvent.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCDirector.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/MouseEvents.h"
+#include "Engine/GlobalDirector.h"
 #include "Engine/Localization/Localization.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
@@ -16,6 +22,8 @@
 
 #include "Resources/MapResources.h"
 #include "Resources/UIResources.h"
+
+using namespace cocos2d;
 
 WorldMap* WorldMap::instance = nullptr;
 

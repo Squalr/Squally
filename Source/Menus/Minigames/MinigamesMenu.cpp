@@ -1,7 +1,6 @@
 #include "MinigamesMenu.h"
 
-#include "Resources/SoundResources.h"
-
+#include "Engine/GlobalDirector.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/ScrollPane.h"
@@ -9,6 +8,8 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/MenuBackground.h"
+
+#include "Resources/SoundResources.h"
 
 #include "Strings/Menus/Back.h"
 #include "Strings/Menus/ComingSoon.h"

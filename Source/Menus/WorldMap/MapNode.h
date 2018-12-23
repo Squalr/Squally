@@ -20,8 +20,8 @@ protected:
 	~MapNode();
 
 private:
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
+	void initializeListeners() override;
 	void onNodeClick(MenuSprite* menuSprite);
 
 	bool locked;

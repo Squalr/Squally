@@ -1,7 +1,9 @@
 #include "PlatformerMap.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/GlobalDirector.h"
 #include "Engine/UI/HUD/Hud.h"
+#include "Events/NavigationEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
 
 PlatformerMap* PlatformerMap::instance = nullptr;

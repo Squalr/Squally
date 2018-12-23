@@ -1,7 +1,19 @@
 #include "LoadingScreen.h"
 
 #include "cocos/audio/include/AudioEngine.h"
-#include "Engine/UI/Mouse.h"
+
+#include "Engine/GlobalDirector.h"
+#include "Engine/Maps/SerializableMap.h"
+#include "Engine/UI/Controls/CProgressBar.h"
+#include "Engine/Utils/StrUtils.h"
+#include "Events/NavigationEvents.h"
+#include "Menus/MenuBackground.h"
+
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+using namespace cocos_experimental;
+
 LoadingScreen* LoadingScreen::instance = nullptr;
 
 void LoadingScreen::registerGlobalScene()

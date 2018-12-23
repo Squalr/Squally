@@ -2,6 +2,8 @@
 
 #include "Engine/Utils/GameUtils.h"
 
+using namespace cocos2d;
+
 const std::string PlatformerEnemy::MapKeyBattleMap = "battle_map";
 
 PlatformerEnemy::PlatformerEnemy(

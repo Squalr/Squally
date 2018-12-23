@@ -2,7 +2,16 @@
 
 #include <math.h>
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCParticleSystemQuad.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/GlobalDirector.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/ScrollPane.h"

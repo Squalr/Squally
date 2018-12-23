@@ -1,5 +1,10 @@
 #include "HexusDeckManagement.h"
 
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+
+#include "Engine/GlobalDirector.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/CCheckbox.h"

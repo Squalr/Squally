@@ -1,5 +1,12 @@
 #include "HexusPuzzlesMenu.h"
 
+#include "cocos/2d/CCParticleSystemQuad.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+
+#include "Engine/GlobalDirector.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
@@ -12,6 +19,8 @@
 #include "Resources/UIResources.h"
 
 #include "Strings/Hexus/HexusPuzzles.h"
+
+using namespace cocos2d;
 
 HexusPuzzlesMenu* HexusPuzzlesMenu::instance = nullptr;
 const Color3B HexusPuzzlesMenu::TitleColor = Color3B(88, 188, 193);
