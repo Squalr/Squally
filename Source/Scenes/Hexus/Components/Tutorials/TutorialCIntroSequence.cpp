@@ -9,7 +9,7 @@ TutorialCIntroSequence* TutorialCIntroSequence::create()
 	return instance;
 }
 
-TutorialCIntroSequence::TutorialCIntroSequence() : TutorialBase(StateOverride::TutorialC, GameState::StateType::Neutral)
+TutorialCIntroSequence::TutorialCIntroSequence() : TutorialBase(StateOverride::TutorialMode::TutorialC, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->scoreTotalsTutorialLabel = Label::createWithTTF("Your opponent has a large lead over you!.",

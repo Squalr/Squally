@@ -1,5 +1,17 @@
 #include "ScoreTotal.h"
 
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+
+using namespace cocos2d;
+
 ScoreTotal* ScoreTotal::create()
 {
 	ScoreTotal* instance = new ScoreTotal();
@@ -12,12 +24,12 @@ ScoreTotal* ScoreTotal::create()
 ScoreTotal::ScoreTotal()
 {
 	this->playerTotalFrame = Sprite::create(HexusResources::ScoreBox);
-	this->playerTotal = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
+	this->playerTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
 	this->playerTotal->enableOutline(Color4B::BLACK, 3);
 	this->playerLeaderEmblem = Sprite::create(HexusResources::LeaderEmblem);
 
 	this->enemyTotalFrame = Sprite::create(HexusResources::ScoreBox);
-	this->enemyTotal = Label::createWithTTF("", Localization::getCodingFont(), 48.0f);
+	this->enemyTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
 	this->enemyTotal->enableOutline(Color4B::BLACK, 3);
 	this->enemyLeaderEmblem = Sprite::create(HexusResources::LeaderEmblem);
 

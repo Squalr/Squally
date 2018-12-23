@@ -1,6 +1,7 @@
 #include "CardStorage.h"
 
 #include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 
 using namespace cocos2d;
@@ -27,34 +28,34 @@ CardStorage::CardStorage()
 {
 	this->defaultCards = std::vector<CardData*>();
 
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary0));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary1));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary2));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary3));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Binary4));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal0));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal1));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal1));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal2));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal3));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal3));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Decimal4));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex0));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex1));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex2));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex2));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex3));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex3));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex4));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Hex4));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Addition));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Addition));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Mov));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::Mov));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::ShiftRight));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::ShiftRight));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::ShiftLeft));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName->at(CardKeys::ShiftLeft));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary0));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary1));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary2));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary3));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary4));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal0));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal1));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal1));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal2));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal3));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal3));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal4));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex0));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex1));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex2));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex2));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex3));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex3));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex4));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex4));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Addition));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Addition));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Mov));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Mov));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft));
 }
 
 CardStorage::~CardStorage()
@@ -133,9 +134,9 @@ std::vector<CardData*> CardStorage::getDeckCards()
 		{
 			std::string cardKey = it->asString();
 
-			if (CardList::getInstance()->cardListByName->find(cardKey) != CardList::getInstance()->cardListByName->end())
+			if (CardList::getInstance()->cardListByName.find(cardKey) != CardList::getInstance()->cardListByName.end())
 			{
-				CardData* nextCard = CardList::getInstance()->cardListByName->at(cardKey);
+				CardData* nextCard = CardList::getInstance()->cardListByName.at(cardKey);
 
 				deckCards.push_back(nextCard);
 			}
@@ -212,9 +213,9 @@ std::vector<CardData*> CardStorage::getStorageCards()
 		{
 			std::string cardKey = it->asString();
 
-			if (CardList::getInstance()->cardListByName->find(cardKey) != CardList::getInstance()->cardListByName->end())
+			if (CardList::getInstance()->cardListByName.find(cardKey) != CardList::getInstance()->cardListByName.end())
 			{
-				CardData* nextCard = CardList::getInstance()->cardListByName->at(cardKey);
+				CardData* nextCard = CardList::getInstance()->cardListByName.at(cardKey);
 
 				storageCards.push_back(nextCard);
 			}

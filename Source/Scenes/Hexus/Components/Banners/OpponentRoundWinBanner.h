@@ -1,16 +1,16 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/Localization/Localization.h"
 
 #include "Scenes/Hexus/Components/Banners/BannerBase.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Sprite;
+}
 
 class OpponentRoundWinBanner : public BannerBase
 {
 public:
-	static OpponentRoundWinBanner * create();
+	static OpponentRoundWinBanner* create();
 
 protected:
 	void onBeforeStateChange(GameState* eventCustom) override;

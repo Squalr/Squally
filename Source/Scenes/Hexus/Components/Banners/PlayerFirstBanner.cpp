@@ -1,5 +1,14 @@
 #include "PlayerFirstBanner.h"
 
+#include "cocos/base/CCDirector.h"
+
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+
+using namespace cocos2d;
+
 PlayerFirstBanner* PlayerFirstBanner::create()
 {
 	PlayerFirstBanner* instance = new PlayerFirstBanner();
@@ -49,7 +58,7 @@ void PlayerFirstBanner::onAnyStateChange(GameState* gameState)
 		return;
 	}
 
-	if (!gameState->isRepeatingSameTurn && gameState->stateType == GameState::PlayerTurnStart && gameState->roundNumber == 0 && gameState->turnNumber == 0)
+	if (!gameState->isRepeatingSameTurn && gameState->stateType == GameState::StateType::PlayerTurnStart && gameState->roundNumber == 0 && gameState->turnNumber == 0)
 	{
 		this->flashBanner();
 	}

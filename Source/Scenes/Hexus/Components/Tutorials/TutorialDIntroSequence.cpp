@@ -9,7 +9,7 @@ TutorialDIntroSequence* TutorialDIntroSequence::create()
 	return instance;
 }
 
-TutorialDIntroSequence::TutorialDIntroSequence() : TutorialBase(StateOverride::TutorialD, GameState::StateType::Neutral)
+TutorialDIntroSequence::TutorialDIntroSequence() : TutorialBase(StateOverride::TutorialMode::TutorialD, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->handCardsTutorialLabel = Label::createWithTTF("The 'SHR' card affects all cards in a row, cutting their attack in half! Use it against your enemy!",

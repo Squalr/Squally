@@ -1,11 +1,13 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Engine/SmartNode.h"
 
-#include "Scenes/Hexus/GameState.h"
+namespace cocos2d
+{
+	class EventCustom;
+}
 
-using namespace cocos2d;
+class GameState;
 
 class ComponentBase : public SmartNode
 {
@@ -19,7 +21,7 @@ protected:
 	virtual void onAnyStateChange(GameState* gameState);
 
 private:
-	void onRequestStateChangeEvent(EventCustom* eventCustom);
-	void onBeforeStateChangeEvent(EventCustom* eventCustom);
-	void onStateChangeEvent(EventCustom* eventCustom);
+	void onRequestStateChangeEvent(cocos2d::EventCustom* eventCustom);
+	void onBeforeStateChangeEvent(cocos2d::EventCustom* eventCustom);
+	void onStateChangeEvent(cocos2d::EventCustom* eventCustom);
 };

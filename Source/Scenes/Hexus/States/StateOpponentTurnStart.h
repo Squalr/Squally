@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Scenes/Hexus/States/StateBase.h"
 
 class StateOpponentTurnStart : public StateBase

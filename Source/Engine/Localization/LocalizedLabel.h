@@ -24,15 +24,38 @@ public:
 		Small,
 	};
 
-	// const Size& dimensions = Size::ZERO, TextHAlignment hAlignment = TextHAlignment::LEFT, TextVAlignment vAlignment = TextVAlignment::TOP
-	static LocalizedLabel* create(FontStyle fontStyle, FontSize fontSize, LocalizedString* localizedString);
-	static LocalizedLabel* create(FontStyle fontStyle, FontSize fontSize);
+	static LocalizedLabel* create(
+		FontStyle fontStyle, 
+		FontSize fontSize,
+		LocalizedString* localizedString,
+		const cocos2d::Size& dimensions = cocos2d::Size::ZERO,
+		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
+		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP
+	);
+	static LocalizedLabel* create(
+		FontStyle fontStyle,
+		FontSize fontSize,
+		const cocos2d::Size& dimensions = cocos2d::Size::ZERO,
+		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
+		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP
+	);
 
 	LocalizedLabel* clone();
 
 private:
-	LocalizedLabel(FontStyle fontStyle, FontSize fontSize, LocalizedString* localizedString);
-	LocalizedLabel(FontStyle fontStyle, FontSize fontSize);
+	LocalizedLabel(
+		FontStyle fontStyle,
+		FontSize fontSize,
+		LocalizedString* localizedString,
+		const cocos2d::Size& dimensions = cocos2d::Size::ZERO,
+		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
+		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP);
+	LocalizedLabel(
+		FontStyle fontStyle,
+		FontSize fontSize,
+		const cocos2d::Size& dimensions = cocos2d::Size::ZERO,
+		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
+		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP);
 	~LocalizedLabel();
 
 	void initializeStringToLocale(std::string newString);
@@ -41,4 +64,8 @@ private:
 	LocalizedString* localizedString;
 	FontStyle fontStyle;
 	FontSize fontSize;
+	
+	std::string resolvedString;
+	std::string resolvedFontPath;
+	float resolvedFontSize;
 };

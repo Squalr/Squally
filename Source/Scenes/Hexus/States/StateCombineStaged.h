@@ -1,5 +1,4 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Scenes/Hexus/States/StateBase.h"
 

@@ -1,5 +1,18 @@
 #include "HandCardCountDisplay.h"
 
+#include "cocos/2d/CCLayer.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Utils/StrUtils.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+
+using namespace cocos2d;
+
 HandCardCountDisplay* HandCardCountDisplay::create()
 {
 	HandCardCountDisplay* instance = new HandCardCountDisplay();
@@ -15,7 +28,7 @@ HandCardCountDisplay::HandCardCountDisplay()
 	this->playerHandCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->playerHandCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->playerHandCardCountFrame->setContentSize(Size(80.0f, 32.0f));
-	this->playerHandCardCountText = Label::createWithTTF("", Localization::getCodingFont(), 32.0f);
+	this->playerHandCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
 	this->playerHandCardCountText->setAlignment(TextHAlignment::LEFT);
 	this->playerHandCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
@@ -23,7 +36,7 @@ HandCardCountDisplay::HandCardCountDisplay()
 	this->enemyHandCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->enemyHandCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->enemyHandCardCountFrame->setContentSize(Size(80.0f, 32.0f));
-	this->enemyHandCardCountText = Label::createWithTTF("", Localization::getCodingFont(), 32.0f);
+	this->enemyHandCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
 	this->enemyHandCardCountText->setAlignment(TextHAlignment::LEFT);
 	this->enemyHandCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
 

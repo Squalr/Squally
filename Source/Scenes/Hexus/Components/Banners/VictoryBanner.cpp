@@ -1,5 +1,14 @@
 #include "VictoryBanner.h"
 
+#include "cocos/base/CCDirector.h"
+
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+
+using namespace cocos2d;
+
 VictoryBanner* VictoryBanner::create()
 {
 	VictoryBanner* instance = new VictoryBanner();
@@ -43,7 +52,7 @@ void VictoryBanner::onAnyStateChange(GameState* gameState)
 {
 	BannerBase::onAnyStateChange(gameState);
 
-	if (gameState->stateType == GameState::GameEnd && gameState->enemyLosses >= 2 && gameState->playerLosses < 2)
+	if (gameState->stateType == GameState::StateType::GameEnd && gameState->enemyLosses >= 2 && gameState->playerLosses < 2)
 	{
 		this->showBanner();
 	}

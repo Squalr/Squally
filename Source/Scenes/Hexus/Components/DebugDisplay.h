@@ -1,12 +1,9 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
 
 #include "Scenes/Hexus/Components/ComponentBase.h"
 
-using namespace cocos2d;
+class GameState;
+class LocalizedLabel;
 
 class DebugDisplay : public ComponentBase
 {
@@ -23,7 +20,7 @@ private:
 
 	void initializePositions() override;
 
-	Label* stateLabel;
+	LocalizedLabel* stateLabel;
 
 	static const bool enabled;
 };

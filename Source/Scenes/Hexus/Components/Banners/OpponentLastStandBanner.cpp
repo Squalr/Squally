@@ -1,5 +1,15 @@
 #include "OpponentLastStandBanner.h"
 
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+
+using namespace cocos2d;
+
 OpponentLastStandBanner* OpponentLastStandBanner::create()
 {
 	OpponentLastStandBanner* instance = new OpponentLastStandBanner();
@@ -43,7 +53,7 @@ void OpponentLastStandBanner::onAnyStateChange(GameState* gameState)
 {
 	BannerBase::onAnyStateChange(gameState);
 
-	if (gameState->stateType == GameState::Pass && gameState->turn == GameState::Turn::Enemy && gameState->isEnemyLastStandCondition())
+	if (gameState->stateType == GameState::StateType::Pass && gameState->turn == GameState::Turn::Enemy && gameState->isEnemyLastStandCondition())
 	{
 		this->flashBanner();
 	}

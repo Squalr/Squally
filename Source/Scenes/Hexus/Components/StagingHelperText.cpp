@@ -1,5 +1,17 @@
 #include "StagingHelperText.h"
 
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
 StagingHelperText* StagingHelperText::create()
 {
 	StagingHelperText* instance = new StagingHelperText();
@@ -11,7 +23,7 @@ StagingHelperText* StagingHelperText::create()
 
 StagingHelperText::StagingHelperText()
 {
-	this->selectionLabel = Label::createWithTTF("", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	this->selectionLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P);
 
 	this->selectionLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->selectionLabel->setTextColor(Color4B::WHITE);
@@ -126,8 +138,10 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 			case CardData::CardType::Special_ADD:
 			case CardData::CardType::Special_SUB:
 			case CardData::CardType::Special_INV:
+			{
 				this->selectionLabel->setString("Choose a source card for the operation");
 				break;
+			}
 			case CardData::CardType::Binary:
 			case CardData::CardType::Decimal:
 			case CardData::CardType::Hexidecimal:
@@ -138,8 +152,10 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 			case CardData::CardType::Special_FLIP3:
 			case CardData::CardType::Special_FLIP4:
 			default:
+			{
 				this->selectionLabel->setString("Choose a row to play the card");
 				break;
+			}
 		}
 
 		this->selectionLabel->runAction(FadeTo::create(0.25f, 255));
@@ -187,38 +203,72 @@ void StagingHelperText::onHelpClick(MenuSprite* menuSprite, GameState* gameState
 	switch (gameState->selectedHandCard->cardData->cardType)
 	{
 		case CardData::CardType::Binary:
+		{
 			break;
+		}
 		case CardData::CardType::Decimal:
+		{
 			break;
+		}
 		case CardData::CardType::Hexidecimal:
+		{
 			break;
+		}
 		case CardData::CardType::Special_MOV:
+		{
 			break;
+		}
 		case CardData::CardType::Special_AND:
+		{
 			break;
+		}
 		case CardData::CardType::Special_OR:
+		{
 			break;
+		}
 		case CardData::CardType::Special_XOR:
+		{
 			break;
+		}
 		case CardData::CardType::Special_ADD:
+		{
 			break;
+		}
 		case CardData::CardType::Special_SUB:
+		{
 			break;
+		}
 		case CardData::CardType::Special_SHL:
+		{
 			break;
+		}
 		case CardData::CardType::Special_SHR:
+		{
 			break;
+		}
 		case CardData::CardType::Special_FLIP1:
+		{
 			break;
+		}
 		case CardData::CardType::Special_FLIP2:
+		{
 			break;
+		}
 		case CardData::CardType::Special_FLIP3:
+		{
 			break;
+		}
 		case CardData::CardType::Special_FLIP4:
+		{
 			break;
+		}
 		case CardData::CardType::Special_INV:
+		{
 			break;
+		}
 		default:
+		{
 			break;
+		}
 	}
 }

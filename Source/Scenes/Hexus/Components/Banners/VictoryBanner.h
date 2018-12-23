@@ -1,11 +1,10 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/Localization/Localization.h"
-
 #include "Scenes/Hexus/Components/Banners/BannerBase.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Sprite;
+}
 
 class VictoryBanner : public BannerBase
 {
@@ -22,6 +21,6 @@ private:
 
 	void initializePositions() override;
 
-	Sprite* victoryBanner1;
-	Sprite* victoryBanner2;
+	cocos2d::Sprite* victoryBanner1;
+	cocos2d::Sprite* victoryBanner2;
 };

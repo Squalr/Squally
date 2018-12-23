@@ -1,5 +1,14 @@
 #include "OpponentFirstBanner.h"
 
+#include "cocos/2d/CCSprite.h"
+
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+
+using namespace cocos2d;
+
 OpponentFirstBanner* OpponentFirstBanner::create()
 {
 	OpponentFirstBanner* instance = new OpponentFirstBanner();
@@ -49,7 +58,7 @@ void OpponentFirstBanner::onAnyStateChange(GameState* gameState)
 		return;
 	}
 
-	if (!gameState->isRepeatingSameTurn && gameState->stateType == GameState::OpponentTurnStart && gameState->roundNumber == 0 && gameState->turnNumber == 0)
+	if (!gameState->isRepeatingSameTurn && gameState->stateType == GameState::StateType::OpponentTurnStart && gameState->roundNumber == 0 && gameState->turnNumber == 0)
 	{
 		this->flashBanner();
 	}
