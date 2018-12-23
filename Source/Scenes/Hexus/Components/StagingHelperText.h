@@ -1,18 +1,14 @@
 #pragma once
-#include "cocos2d.h"
 
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
-#include "Resources/UIResources.h"
 #include "Scenes/Hexus/Components/ComponentBase.h"
 
-using namespace cocos2d;
+class LocalizedLabel;
+class MenuSprite;
 
 class StagingHelperText : public ComponentBase
 {
 public:
-	static StagingHelperText * create();
+	static StagingHelperText* create();
 
 protected:
 	void onBeforeStateChange(GameState* eventCustom) override;
@@ -31,7 +27,7 @@ private:
 	void onCombineCancel(MenuSprite* menuSprite, GameState* gameState);
 	void clearSelectionStatus();
 
-	Label* selectionLabel;
+	LocalizedLabel* selectionLabel;
 	MenuSprite* cancelButton;
 	MenuSprite* helpButton;
 };

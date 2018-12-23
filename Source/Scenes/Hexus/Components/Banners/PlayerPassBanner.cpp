@@ -1,5 +1,14 @@
 #include "PlayerPassBanner.h"
 
+#include "cocos/base/CCDirector.h"
+
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+
+using namespace cocos2d;
+
 PlayerPassBanner* PlayerPassBanner::create()
 {
 	PlayerPassBanner* instance = new PlayerPassBanner();
@@ -43,7 +52,7 @@ void PlayerPassBanner::onAnyStateChange(GameState* gameState)
 {
 	BannerBase::onAnyStateChange(gameState);
 
-	if (gameState->stateType == GameState::Pass && gameState->turn == GameState::Turn::Player && gameState->isPlayerPassCondition())
+	if (gameState->stateType == GameState::StateType::Pass && gameState->turn == GameState::Turn::Player && gameState->isPlayerPassCondition())
 	{
 		this->flashBanner();
 	}

@@ -1,20 +1,16 @@
 #pragma once
-#include "cocos2d.h"
 
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/FocusTakeOver.h"
-#include "Engine/UI/Controls/HelpArrow.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
-#include "Resources/UIResources.h"
 #include "Scenes/Hexus/Components/Tutorials/TutorialBase.h"
 
-using namespace cocos2d;
+class FocusTakeOver;
+class HelpArrow;
+class LocalizedLabel;
+class TextMenuSprite;
 
 class TutorialAIntroSequence : public TutorialBase
 {
 public:
-	static TutorialAIntroSequence * create();
+	static TutorialAIntroSequence* create();
 
 protected:
 	void onBeforeStateChange(GameState* eventCustom) override;
@@ -40,13 +36,13 @@ private:
 	void concludeTutorial(GameState* gameState);
 
 	FocusTakeOver* focusTakeOver;
-	Label* scoreTotalsTutorialLabel;
-	Label* lossDisplayTutorialLabel;
-	Label* binaryCardsTutorialLabel;
-	Label* decimalCardsTutorialLabel;
-	Label* hexCardsTutorialLabel;
-	Label* rowTotalsTutorialLabel;
-	Label* handCardsTutorialLabel;
+	LocalizedLabel* scoreTotalsTutorialLabel;
+	LocalizedLabel* lossDisplayTutorialLabel;
+	LocalizedLabel* binaryCardsTutorialLabel;
+	LocalizedLabel* decimalCardsTutorialLabel;
+	LocalizedLabel* hexCardsTutorialLabel;
+	LocalizedLabel* rowTotalsTutorialLabel;
+	LocalizedLabel* handCardsTutorialLabel;
 	TextMenuSprite* scoreTotalsNextButton;
 	TextMenuSprite* lossDisplayNextButton;
 	TextMenuSprite* binaryCardsNextButton;

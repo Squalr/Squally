@@ -9,7 +9,7 @@ TutorialEIntroSequence* TutorialEIntroSequence::create()
 	return instance;
 }
 
-TutorialEIntroSequence::TutorialEIntroSequence() : TutorialBase(StateOverride::TutorialE, GameState::StateType::Neutral)
+TutorialEIntroSequence::TutorialEIntroSequence() : TutorialBase(StateOverride::TutorialMode::TutorialE, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->handCardsTutorialLabel = Label::createWithTTF("The 'SHL' card makes all weak cards in a row stronger! Use this to make your cards more powerful! Be careful, the order in which you play your cards matters!",

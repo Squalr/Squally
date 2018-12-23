@@ -1,4 +1,24 @@
 #include "RemainingCardDisplay.h"
+#include <codecvt>
+
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCParticleSystemQuad.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+#include "Resources/ParticleResources.h"
+
+#include "Strings/Hexus/CardsToPlayToolTip.h"
+
+using namespace cocos2d;
 
 RemainingCardDisplay* RemainingCardDisplay::create()
 {
@@ -13,16 +33,12 @@ RemainingCardDisplay::RemainingCardDisplay()
 {
 	this->particles = ParticleSystemQuad::create(ParticleResources::Hexus_BlueAura);
 	this->remainingCardSprite = MenuSprite::create(HexusResources::RemainingCardsIcon, HexusResources::RemainingCardsIcon);
-	this->remainingCardLabel = Label::createWithTTF("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->remainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
 	this->enemyRemainingCardSprite = Sprite::create(HexusResources::RemainingCardsIcon);
-	this->enemyRemainingCardLabel = Label::createWithTTF("", Localization::getCodingFont(), Localization::getFontSizeH1(Localization::getMainFont()));
+	this->enemyRemainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
 
 	this->remainingCardMouseOverPanel = LayerColor::create(Color4B::BLACK, 320.0f, 96.0f);
-	this->remainingCardMouseOverLabel = Label::createWithTTF(
-		Localization::resolveString("The number of cards that can be played this turn"),
-		Localization::getMainFont(),
-		Localization::getFontSizeP(Localization::getMainFont())
-	);
+	this->remainingCardMouseOverLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::CardsToPlayToolTip::create());
 
 	this->remainingCardMouseOverLabel->setDimensions(320.0f - 16.0f, 0.0f);
 
@@ -163,17 +179,17 @@ void RemainingCardDisplay::onAnyStateChange(GameState* gameState)
 
 	switch (gameState->stateType)
 	{
-		case GameState::PlayerTurnStart:
+		case GameState::StateType::PlayerTurnStart:
 		{
 			this->remainingCardSprite->runAction(FadeTo::create(0.25f, 255));
 			break;
 		}
-		case GameState::OpponentTurnStart:
+		case GameState::StateType::OpponentTurnStart:
 		{
 			this->enemyRemainingCardSprite->runAction(FadeTo::create(0.25f, 255));
 			break;
 		}
-		case GameState::TurnEnd:
+		case GameState::StateType::TurnEnd:
 		{
 			//this->remainingCardSprite->runAction(FadeTo::create(0.25f, 0));
 			this->enemyRemainingCardSprite->runAction(FadeTo::create(0.25f, 0));

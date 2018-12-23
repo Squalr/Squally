@@ -1,5 +1,15 @@
 #include "BannerBase.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Scenes/Hexus/Config.h"
+
+using namespace cocos2d;
+
 BannerBase* BannerBase::create()
 {
 	BannerBase* instance = new BannerBase();
@@ -14,7 +24,7 @@ BannerBase::BannerBase()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->statusBanner = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, 144.0f);
-	this->statusLabel = Label::createWithTTF("", Localization::getMainFont(), 48.0f);
+	this->statusLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2);
 	this->bannerChildrenNode = Node::create();
 
 	this->statusBanner->setAnchorPoint(Vec2(0.5f, 0.5f));

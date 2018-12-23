@@ -4,6 +4,7 @@
 #include "Engine/GlobalScene.h"
 
 class MenuSprite;
+class TextMenuSprite;
 
 class SaveSelectMenu : public GlobalScene
 {

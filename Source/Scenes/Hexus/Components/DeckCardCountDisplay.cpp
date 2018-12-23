@@ -1,5 +1,16 @@
 #include "DeckCardCountDisplay.h"
 
+#include "cocos/2d/CCLayer.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Utils/StrUtils.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/Deck.h"
+#include "Scenes/Hexus/GameState.h"
+
+using namespace cocos2d;
+
 DeckCardCountDisplay* DeckCardCountDisplay::create()
 {
 	DeckCardCountDisplay* instance = new DeckCardCountDisplay();
@@ -12,9 +23,9 @@ DeckCardCountDisplay* DeckCardCountDisplay::create()
 DeckCardCountDisplay::DeckCardCountDisplay()
 {
 	this->playerDeckCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
-	this->playerDeckCardCountText = Label::createWithTTF("", Localization::getCodingFont(), 32.0f);
+	this->playerDeckCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
 	this->enemyDeckCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
-	this->enemyDeckCardCountText = Label::createWithTTF("", Localization::getCodingFont(), 32.0f);
+	this->enemyDeckCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
 
 	this->playerDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->playerDeckCardCountFrame->setContentSize(Size(48.0f, 32.0f));

@@ -9,7 +9,7 @@ TutorialAVictory* TutorialAVictory::create()
 	return instance;
 }
 
-TutorialAVictory::TutorialAVictory() : TutorialBase(StateOverride::TutorialA, GameState::StateType::GameEnd)
+TutorialAVictory::TutorialAVictory() : TutorialBase(StateOverride::TutorialMode::TutorialA, GameState::StateType::GameEnd)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->lossDisplayTutorialLabel = Label::createWithTTF("Your opponent has lost 2 lives, so you win the match!",

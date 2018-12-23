@@ -819,6 +819,8 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Maps/Platformer/Weather/WeatherDeserializer.cpp
 	Source/Sound/MusicDeserializer.cpp
 	Source/Strings/Empty.cpp
+	Source/Strings/Hexus/BinLabel.cpp
+	Source/Strings/Hexus/BinaryCards.cpp
 	Source/Strings/Hexus/Cards/Addition.cpp
 	Source/Strings/Hexus/Cards/BinStorm.cpp
 	Source/Strings/Hexus/Cards/Binary0.cpp
@@ -883,8 +885,16 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hexus/Cards/ShiftLeft.cpp
 	Source/Strings/Hexus/Cards/ShiftRight.cpp
 	Source/Strings/Hexus/Cards/Subtract.cpp
+	Source/Strings/Hexus/CardsInDeck.cpp
+	Source/Strings/Hexus/CardsInStorage.cpp
+	Source/Strings/Hexus/CardsToPlayToolTip.cpp
 	Source/Strings/Hexus/ClaimVictory.cpp
+	Source/Strings/Hexus/DecLabel.cpp
+	Source/Strings/Hexus/DecimalCards.cpp
 	Source/Strings/Hexus/Done.cpp
+	Source/Strings/Hexus/DrawToolTip.cpp
+	Source/Strings/Hexus/HexCards.cpp
+	Source/Strings/Hexus/HexLabel.cpp
 	Source/Strings/Hexus/Hexus.cpp
 	Source/Strings/Hexus/HexusPuzzles.cpp
 	Source/Strings/Hexus/LastStand.cpp
@@ -892,6 +902,14 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hexus/Pass.cpp
 	Source/Strings/Hexus/SelectAChapter.cpp
 	Source/Strings/Hexus/Shop.cpp
+	Source/Strings/Hexus/SpecialCards.cpp
+	Source/Strings/Hexus/Tutorials/A/BinaryCards.cpp
+	Source/Strings/Hexus/Tutorials/A/DecimalCards.cpp
+	Source/Strings/Hexus/Tutorials/A/HandCards.cpp
+	Source/Strings/Hexus/Tutorials/A/HexCards.cpp
+	Source/Strings/Hexus/Tutorials/A/LossDisplay.cpp
+	Source/Strings/Hexus/Tutorials/A/RowTotals.cpp
+	Source/Strings/Hexus/Tutorials/A/ScoreTotals.cpp
 	Source/Strings/Menus/Accept.cpp
 	Source/Strings/Menus/Back.cpp
 	Source/Strings/Menus/Cancel.cpp
@@ -903,10 +921,12 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Menus/ComingSoon.cpp
 	Source/Strings/Menus/ContinueGame.cpp
 	Source/Strings/Menus/Exit.cpp
+	Source/Strings/Menus/GotIt.cpp
 	Source/Strings/Menus/Leave.cpp
 	Source/Strings/Menus/Maps/CastleValgrind.cpp
 	Source/Strings/Menus/Minigames.cpp
 	Source/Strings/Menus/NewGame.cpp
+	Source/Strings/Menus/Next.cpp
 	Source/Strings/Menus/Options/FullScreen.cpp
 	Source/Strings/Menus/Options/Options.cpp
 	Source/Strings/Menus/Options/Resolution1080x768.cpp
@@ -1711,6 +1731,8 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Maps/Platformer/Weather/WeatherDeserializer.h
 	Source/Sound/MusicDeserializer.h
 	Source/Strings/Empty.h
+	Source/Strings/Hexus/BinLabel.h
+	Source/Strings/Hexus/BinaryCards.h
 	Source/Strings/Hexus/Cards/Addition.h
 	Source/Strings/Hexus/Cards/BinStorm.h
 	Source/Strings/Hexus/Cards/Binary0.h
@@ -1775,8 +1797,16 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hexus/Cards/ShiftLeft.h
 	Source/Strings/Hexus/Cards/ShiftRight.h
 	Source/Strings/Hexus/Cards/Subtract.h
+	Source/Strings/Hexus/CardsInDeck.h
+	Source/Strings/Hexus/CardsInStorage.h
+	Source/Strings/Hexus/CardsToPlayToolTip.h
 	Source/Strings/Hexus/ClaimVictory.h
+	Source/Strings/Hexus/DecLabel.h
+	Source/Strings/Hexus/DecimalCards.h
 	Source/Strings/Hexus/Done.h
+	Source/Strings/Hexus/DrawToolTip.h
+	Source/Strings/Hexus/HexCards.h
+	Source/Strings/Hexus/HexLabel.h
 	Source/Strings/Hexus/Hexus.h
 	Source/Strings/Hexus/HexusPuzzles.h
 	Source/Strings/Hexus/LastStand.h
@@ -1784,6 +1814,14 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hexus/Pass.h
 	Source/Strings/Hexus/SelectAChapter.h
 	Source/Strings/Hexus/Shop.h
+	Source/Strings/Hexus/SpecialCards.h
+	Source/Strings/Hexus/Tutorials/A/BinaryCards.h
+	Source/Strings/Hexus/Tutorials/A/DecimalCards.h
+	Source/Strings/Hexus/Tutorials/A/HandCards.h
+	Source/Strings/Hexus/Tutorials/A/HexCards.h
+	Source/Strings/Hexus/Tutorials/A/LossDisplay.h
+	Source/Strings/Hexus/Tutorials/A/RowTotals.h
+	Source/Strings/Hexus/Tutorials/A/ScoreTotals.h
 	Source/Strings/Menus/Accept.h
 	Source/Strings/Menus/Back.h
 	Source/Strings/Menus/Cancel.h
@@ -1795,10 +1833,12 @@ list(APPEND GAME_HEADER
 	Source/Strings/Menus/ComingSoon.h
 	Source/Strings/Menus/ContinueGame.h
 	Source/Strings/Menus/Exit.h
+	Source/Strings/Menus/GotIt.h
 	Source/Strings/Menus/Leave.h
 	Source/Strings/Menus/Maps/CastleValgrind.h
 	Source/Strings/Menus/Minigames.h
 	Source/Strings/Menus/NewGame.h
+	Source/Strings/Menus/Next.h
 	Source/Strings/Menus/Options/FullScreen.h
 	Source/Strings/Menus/Options/Options.h
 	Source/Strings/Menus/Options/Resolution1080x768.h

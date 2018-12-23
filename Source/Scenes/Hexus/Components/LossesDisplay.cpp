@@ -1,5 +1,9 @@
 #include "LossesDisplay.h"
 
+#include "Resources/HexusResources.h"
+
+using namespace cocos2d;
+
 LossesDisplay* LossesDisplay::create()
 {
 	LossesDisplay* instance = new LossesDisplay();

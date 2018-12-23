@@ -1,5 +1,20 @@
 #include "Avatars.h"
 
+#include "cocos/2d/CCClippingNode.h";
+#include "cocos/2d/CCDrawNode.h";
+#include "cocos/base/CCDirector.h";
+
+#include "Engine/Animations/SmartAnimationNode.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
+#include "Resources/BackgroundResources.h"
+#include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
 Avatars* Avatars::create()
 {
 	Avatars* instance = new Avatars();
@@ -16,13 +31,11 @@ Avatars::Avatars()
 	this->avatarPlayer = Node::create();
 	this->avatarEnemy = Node::create();
 	//// this->avatarPlayer->addChild(Sprite::create(BackgroundResources::Jungle_Background));
-	this->playerSprite = AnimationNode::create(EntityResources::Squally_Animations);
+	this->playerSprite = SmartAnimationNode::create(EntityResources::Squally_Animations);
 
 	playerSprite->setScale(0.25f);
 	playerSprite->setPosition(Vec2(-64.0f, -32.0f));
-
-	SpriterEngine::EntityInstance* playerEntity = this->playerSprite->play("Entity");
-	playerEntity->setCurrentAnimation("Idle");
+	playerSprite->playAnimation(true);
 
 	DrawNode* stencilLeft = DrawNode::create();
 	DrawNode* stencilRight = DrawNode::create();
@@ -64,12 +77,11 @@ void Avatars::initializePositions()
 void Avatars::initializeEnemyAvatar(HexusOpponentData* opponentData)
 {
 	this->avatarEnemy->removeAllChildren();
-	this->opponentSprite = AnimationNode::create(opponentData->animationResourceFile);
+	this->opponentSprite = SmartAnimationNode::create(opponentData->animationResourceFile);
 	this->avatarEnemy->addChild(Sprite::create(opponentData->backgroundResourceFile));
 	this->avatarEnemy->addChild(this->opponentSprite);
 
-	SpriterEngine::EntityInstance* opponentEntity = this->opponentSprite->play("Entity");
-	opponentEntity->setCurrentAnimation("Idle");
+	this->opponentSprite->playAnimation(true);
 
 	this->opponentSprite->setScale(opponentData->animationScale);
 	this->opponentSprite->setPosition(opponentData->avatarOffset);

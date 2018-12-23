@@ -1,14 +1,19 @@
 #pragma once
-#include "cocos2d.h"
+#include <string>
 
 #include "Scenes/Hexus/Components/ComponentBase.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class LayerColor;
+}
+
+class LocalizedLabel;
 
 class BannerBase : public ComponentBase
 {
 public:
-	static BannerBase * create();
+	static BannerBase* create();
 
 protected:
 	BannerBase();
@@ -25,7 +30,7 @@ protected:
 	void addBannerChild(Node* child);
 
 private:
-	LayerColor* statusBanner;
-	Label* statusLabel;
-	Node* bannerChildrenNode;
+	cocos2d::LayerColor* statusBanner;
+	LocalizedLabel* statusLabel;
+	cocos2d::Node* bannerChildrenNode;
 };

@@ -19,6 +19,14 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Menus/Back.h"
+#include "Strings/Hexus/BinaryCards.h"
+#include "Strings/Hexus/CardsInDeck.h"
+#include "Strings/Hexus/DecimalCards.h"
+#include "Strings/Hexus/CardsInStorage.h"
+#include "Strings/Hexus/HexCards.h"
+#include "Strings/Hexus/SpecialCards.h"
+
 using namespace cocos2d;
 
 HexusDeckManagement* HexusDeckManagement::instance;
@@ -42,7 +50,7 @@ HexusDeckManagement::HexusDeckManagement()
 	this->activeFilter = CardFilterFlags::All;
 	this->displayDeckCards = std::map<CardData*, MenuCard*>();
 	this->displayStorageCards = std::map<CardData*, MenuCard*>();
-	this->countLabels = std::map<MenuCard*, Label*>();
+	this->countLabels = std::map<MenuCard*, LocalizedLabel*>();
 	this->deckCards = std::map<CardData*, int>();
 	this->storageCards = std::map<CardData*, int>();
 
@@ -50,21 +58,21 @@ HexusDeckManagement::HexusDeckManagement()
 	this->storageScrollPane = ScrollPane::create(Size(720.0f, 820.0f), Color4B(0, 0, 0, 196));
 	this->deckScrollPane = ScrollPane::create(Size(720.0f, 820.0f), Color4B(0, 0, 0, 196));
 	this->storageSprite = Sprite::create(UIResources::Menus_Icons_TreasureChest);
-	this->storageLabel = Label::createWithTTF("Cards in Storage", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()), Size::ZERO, cocos2d::TextHAlignment::LEFT);
+	this->storageLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::CardsInStorage::create(), Size::ZERO, cocos2d::TextHAlignment::LEFT);
 	this->deckSprite = Sprite::create(UIResources::Menus_Icons_Satchel);
-	this->deckLabel = Label::createWithTTF("Cards in Deck", Localization::getMainFont(), Localization::getFontSizeH1(Localization::getMainFont()), Size::ZERO, cocos2d::TextHAlignment::RIGHT);
+	this->deckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::CardsInDeck::create(), Size::ZERO, cocos2d::TextHAlignment::RIGHT);
 	this->titleSprite = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_AxeLogo);
 
-	this->totalCardsInDeckLabel = Label::createWithTTF("Cards in Deck", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->totalCardsInDeckValueLabel = Label::createWithTTF("PLACEHOLDER_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->binaryCardsInDeckLabel = Label::createWithTTF("Binary Cards", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->binaryCardsInDeckValueLabel = Label::createWithTTF("PLACEHOLDER_BINARY_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->decimalCardsInDeckLabel = Label::createWithTTF("Decimal Cards", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->decimalCardsInDeckValueLabel = Label::createWithTTF("PLACEHOLDER_DECIMAL_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->hexCardsInDeckLabel = Label::createWithTTF("Hex Cards", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->hexCardsInDeckValueLabel = Label::createWithTTF("PLACEHOLDER_HEX_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->specialCardsInDeckLabel = Label::createWithTTF("Special Cards", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	this->specialCardsInDeckValueLabel = Label::createWithTTF("PLACEHOLDER_SPECIAL_CARDS_IN_DECK", Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	this->totalCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::CardsInDeck::create());
+	this->totalCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
+	this->binaryCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::BinaryCards::create());
+	this->binaryCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
+	this->decimalCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::DecimalCards::create());
+	this->decimalCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
+	this->hexCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::HexCards::create());
+	this->hexCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
+	this->specialCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::SpecialCards::create());
+	this->specialCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
 
 	MenuSprite* allButtonUnselected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
 	MenuSprite* allButtonSelected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
@@ -104,13 +112,11 @@ HexusDeckManagement::HexusDeckManagement()
 	this->filters->addToggle(this->hexButton);
 	
 	this->activeFilter = CardFilterFlags::All;
-	Label* backButtonLabel = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelHover = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
-	Label* backButtonLabelClick = Label::createWithTTF("Back", Localization::getMainFont(), Localization::getFontSizeP(Localization::getMainFont()));
+	LocalizedLabel* backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
+	LocalizedLabel* backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
 
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
-	backButtonLabelClick->enableOutline(Color4B::BLACK, 2);
 
 	this->backButton = TextMenuSprite::create(
 		backButtonLabel,
@@ -120,7 +126,7 @@ HexusDeckManagement::HexusDeckManagement()
 	);
 
 	// Create all cards for deck. Every card gets created with count = 0, and those that are 0 get hidden
-	for (auto it = CardList::getInstance()->cardListByName->begin(); it != CardList::getInstance()->cardListByName->end(); it++)
+	for (auto it = CardList::getInstance()->cardListByName.begin(); it != CardList::getInstance()->cardListByName.end(); it++)
 	{
 		CardData* cardData = (*it).second;
 
@@ -136,7 +142,7 @@ HexusDeckManagement::HexusDeckManagement()
 	}
 
 	// Create all cards for storage. Every card gets created with count = 0, and those that are 0 get hidden
-	for (auto it = CardList::getInstance()->cardListByName->begin(); it != CardList::getInstance()->cardListByName->end(); it++)
+	for (auto it = CardList::getInstance()->cardListByName.begin(); it != CardList::getInstance()->cardListByName.end(); it++)
 	{
 		CardData* cardData = (*it).second;
 
@@ -541,7 +547,7 @@ void HexusDeckManagement::rebuildCardLists()
 MenuCard* HexusDeckManagement::createCard(CardData* cardData, int count)
 {
 	MenuCard* card = MenuCard::create(Card::CardStyle::Earth, cardData);
-	Label* label = Label::createWithTTF("PLACEHOLDER_CARD_COUNT", Localization::getCodingFont(), 64.0f);
+	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
 
 	label->enableOutline(Color4B::BLACK, 4);
 	label->setAnchorPoint(Vec2(0.0f, 0.5f));

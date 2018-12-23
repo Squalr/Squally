@@ -13,7 +13,10 @@ namespace cocos2d
 class Card;
 class CardData;
 class CCheckbox;
+class LocalizedLabel;
+class MenuCard;
 class MenuSprite;
+class TextMenuSprite;
 class ToggleGroup;
 class ScrollPane;
 

@@ -9,7 +9,7 @@ TutorialFIntroSequence* TutorialFIntroSequence::create()
 	return instance;
 }
 
-TutorialFIntroSequence::TutorialFIntroSequence() : TutorialBase(StateOverride::TutorialF, GameState::StateType::Neutral)
+TutorialFIntroSequence::TutorialFIntroSequence() : TutorialBase(StateOverride::TutorialMode::TutorialF, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->handCardsTutorialLabel = Label::createWithTTF("The 'MOV' card copies the attack from one of your cards to any other card! Use it to weaken your opponent!",

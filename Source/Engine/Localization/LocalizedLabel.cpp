@@ -3,25 +3,44 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Localization/Localization.h"
 
-LocalizedLabel* LocalizedLabel::create(FontStyle fontStyle, FontSize fontSize, LocalizedString* localizedString)
+using namespace cocos2d;
+
+LocalizedLabel* LocalizedLabel::create(
+	FontStyle fontStyle,
+	FontSize fontSize,
+	LocalizedString* localizedString,
+	const Size& dimensions,
+	TextHAlignment hAlignment,
+	TextVAlignment vAlignment)
 {
-	LocalizedLabel* label = new LocalizedLabel(fontStyle, fontSize, localizedString);
+	LocalizedLabel* label = new LocalizedLabel(fontStyle, fontSize, localizedString, dimensions, hAlignment, vAlignment);
 
 	label->autorelease();
 
 	return label;
 }
 
-LocalizedLabel* LocalizedLabel::create(FontStyle fontStyle, FontSize fontSize)
+LocalizedLabel* LocalizedLabel::create(
+	FontStyle fontStyle, 
+	FontSize fontSize,
+	const Size& dimensions,
+	TextHAlignment hAlignment,
+	TextVAlignment vAlignment)
 {
-	LocalizedLabel* label = new LocalizedLabel(fontStyle, fontSize);
+	LocalizedLabel* label = new LocalizedLabel(fontStyle, fontSize, dimensions, hAlignment, vAlignment);
 
 	label->autorelease();
 
 	return label;
 }
 
-LocalizedLabel::LocalizedLabel(FontStyle fontStyle, FontSize fontSize, LocalizedString* localizedString)
+LocalizedLabel::LocalizedLabel(
+	FontStyle fontStyle,
+	FontSize fontSize,
+	LocalizedString* localizedString,
+	const Size& dimensions,
+	TextHAlignment hAlignment,
+	TextVAlignment vAlignment)
 {
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
@@ -32,13 +51,24 @@ LocalizedLabel::LocalizedLabel(FontStyle fontStyle, FontSize fontSize, Localized
 	localizedString->setOnLocaleChangeCallback(CC_CALLBACK_1(LocalizedLabel::initializeStringToLocale, this));
 
 	this->addChild(this->localizedString); // Just adding this to retain it -- this has no visuals
+
+	this->initWithTTF(localizedString->getString(), this->resolvedFontPath, this->resolvedFontSize, dimensions, hAlignment, vAlignment);
 }
 
-LocalizedLabel::LocalizedLabel(FontStyle fontStyle, FontSize fontSize)
+LocalizedLabel::LocalizedLabel(
+	FontStyle fontStyle,
+	FontSize fontSize,
+	const Size& dimensions,
+	TextHAlignment hAlignment,
+	TextVAlignment vAlignment)
 {
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
 	this->localizedString = nullptr;
+
+	this->initializeStringToLocale("");
+
+	this->initWithTTF("", this->resolvedFontPath, this->resolvedFontSize, dimensions, hAlignment, vAlignment);
 }
 
 LocalizedLabel::~LocalizedLabel()
@@ -77,40 +107,40 @@ LocalizedLabel* LocalizedLabel::clone()
 
 void LocalizedLabel::initializeStringToLocale(std::string newString)
 {
-	std::string fontPath;
+	this->resolvedString = newString;
 
 	switch (this->fontStyle)
 	{
 		default:
 		case FontStyle::Main:
-			fontPath = Localization::getMainFont();
+			this->resolvedFontPath = Localization::getMainFont();
 			break;
 		case FontStyle::Coding:
-			fontPath = Localization::getCodingFont();
+			this->resolvedFontPath = Localization::getCodingFont();
 			break;
 		case FontStyle::Pixel:
-			fontPath = Localization::getPixelFont();
+			this->resolvedFontPath = Localization::getPixelFont();
 			break;
 	}
-
-	float fontSize;
 
 	switch (this->fontSize)
 	{
 		default:
 		case FontSize::P:
-			fontSize = Localization::getFontSizeP(fontPath);
+			this->resolvedFontSize = Localization::getFontSizeP(this->resolvedFontPath);
 			break;
 		case FontSize::H1:
-			fontSize = Localization::getFontSizeH1(fontPath);
+			this->resolvedFontSize = Localization::getFontSizeH1(this->resolvedFontPath);
 			break;
 		case FontSize::H2:
-			fontSize = Localization::getFontSizeH2(fontPath);
+			this->resolvedFontSize = Localization::getFontSizeH2(this->resolvedFontPath);
 			break;
 		case FontSize::H3:
-			fontSize = Localization::getFontSizeH3(fontPath);
+			this->resolvedFontSize = Localization::getFontSizeH3(this->resolvedFontPath);
 			break;
 	}
 
-	this->initWithTTF(newString, fontPath, fontSize/*, dimensions, hAlignment, vAlignment*/);
+	// TODO: update font/font size
+
+	this->setString(newString);
 }
