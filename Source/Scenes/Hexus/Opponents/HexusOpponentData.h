@@ -1,16 +1,14 @@
 #pragma once
-#include "cocos2d.h"
+#include <string>
+#include <vector>
 
-#include "Engine/Save/SaveManager.h"
-#include "Engine/Utils/AlgoUtils.h"
-#include "Engine/Utils/MathUtils.h"
-#include "Scenes/Hexus/CardData/CardData.h"
-#include "Scenes/Hexus/CardData/CardList.h"
-#include "Scenes/Hexus/CardData/CardKeys.h"
-#include "Scenes/Hexus/Deck.h"
-#include "Scenes/Hexus/StateOverride.h"
+#include "cocos/math/Vec2.h"
 
-using namespace cocos2d;
+#include "Scenes/Hexus/Card.h"
+
+class CardData;
+class Deck;
+class StateOverride;
 
 class HexusOpponentData
 {
@@ -29,8 +27,8 @@ public:
 	std::string animationResourceFile;
 	std::string enemyNameKey;
 	float animationScale;
-	Vec2 animationOffset;
-	Vec2 avatarOffset;
+	cocos2d::Vec2 animationOffset;
+	cocos2d::Vec2 avatarOffset;
 	int reward;
 	Strategy strategy;
 	StateOverride* stateOverride;
@@ -43,8 +41,8 @@ protected:
 		std::string animationResourceFile,
 		std::string backgroundResourceFile,
 		float animationScale,
-		Vec2 animationOffset,
-		Vec2 avatarOffset,
+		cocos2d::Vec2 animationOffset,
+		cocos2d::Vec2 avatarOffset,
 		std::string enemyNameKey,
 		HexusOpponentData::Strategy strategy,
 		Card::CardStyle cardStyle,

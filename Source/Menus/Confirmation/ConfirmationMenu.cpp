@@ -4,6 +4,7 @@
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 
 #include "Resources/SoundResources.h"

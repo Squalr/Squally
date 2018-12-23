@@ -1,6 +1,17 @@
 #include "StateCoinFlip.h"
 
+#include "cocos/2d/CCAnimation.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/base/CCDirector.h"
+
+#include "Scenes/Hexus/Config.h"
+
 #include "Resources/HexusResources.h"
+
+using namespace cocos2d;
 
 StateCoinFlip* StateCoinFlip::create()
 {

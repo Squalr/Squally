@@ -3,6 +3,11 @@
 #include "Engine/SmartNode.h"
 #include "Scenes/Hexus/GameState.h"
 
+namespace cocos2d
+{
+	class EventCustom;
+}
+
 class StateBase : public SmartNode
 {
 protected:
@@ -18,9 +23,9 @@ protected:
 	virtual void onStateExit(GameState* gameState);
 
 private:
-	void onRequestStateChangeEvent(EventCustom* eventCustom);
-	void onBeforeStateChangeEvent(EventCustom* eventCustom);
-	void onStateChangeEvent(EventCustom* eventCustom);
+	void onRequestStateChangeEvent(cocos2d::EventCustom* eventCustom);
+	void onBeforeStateChangeEvent(cocos2d::EventCustom* eventCustom);
+	void onStateChangeEvent(cocos2d::EventCustom* eventCustom);
 
 	GameState::StateType stateType;
 	float enterDelay;

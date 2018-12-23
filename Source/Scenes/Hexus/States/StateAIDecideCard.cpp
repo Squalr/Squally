@@ -1,5 +1,13 @@
 #include "StateAIDecideCard.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/States/HexusAIHelper.h"
+
+using namespace cocos2d;
+
 StateAIDecideCard* StateAIDecideCard::create()
 {
 	StateAIDecideCard* instance = new StateAIDecideCard();

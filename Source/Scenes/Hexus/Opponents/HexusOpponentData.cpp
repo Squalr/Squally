@@ -1,5 +1,16 @@
 #include "HexusOpponentData.h"
 
+#include "Engine/Save/SaveManager.h"
+#include "Engine/Utils/AlgoUtils.h"
+#include "Engine/Utils/MathUtils.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/Deck.h"
+#include "Scenes/Hexus/StateOverride.h"
+
+using namespace cocos2d;
+
 const std::string HexusOpponentData::winsPrefix = "WINS_";
 const std::string HexusOpponentData::lossesPrefix = "LOSSES_";
 
@@ -131,16 +142,22 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 			// Binary is 1st priority
 			default:
 			case 0:
+			{
 				deck.push_back(HexusOpponentData::getBinaryCardForAttack(*it));
 				break;
-				// Prioritize hex next
+			}
+			// Prioritize hex next
 			case 1:
+			{
 				deck.push_back(HexusOpponentData::getHexCardForAttack(*it));
 				break;
-				// Finally decimal
+			}
+			// Finally decimal
 			case 2:
+			{
 				deck.push_back(HexusOpponentData::getDecimalCardForAttack(*it));
 				break;
+			}
 		}
 	}
 
@@ -183,37 +200,69 @@ CardData* HexusOpponentData::getBinaryCardForAttack(int attack)
 	{
 		case 0:
 		default:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Binary0);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Binary0);
+		}
 		case 1:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Binary1);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Binary1);
+		}
 		case 2:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Binary2);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Binary2);
+		}
 		case 3:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Binary3);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Binary3);
+		}
 		case 4:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Binary4);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Binary4);
+		}
 		case 5:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Binary5);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Binary5);
+		}
 		case 6:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Binary6);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Binary6);
+		}
 		case 7:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Binary7);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Binary7);
+		}
 		case 8:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Binary8);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Binary8);
+		}
 		case 9:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Binary9);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Binary9);
+		}
 		case 10:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Binary10);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Binary10);
+		}
 		case 11:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Binary11);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Binary11);
+		}
 		case 12:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Binary12);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Binary12);
+		}
 		case 13:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Binary13);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Binary13);
+		}
 		case 14:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Binary14);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Binary14);
+		}
 		case 15:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Binary15);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Binary15);
+		}
 	}
 }
 
@@ -225,37 +274,69 @@ CardData* HexusOpponentData::getDecimalCardForAttack(int attack)
 	{
 		case 0:
 		default:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal0);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Decimal0);
+		}
 		case 1:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal1);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Decimal1);
+		}
 		case 2:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal2);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Decimal2);
+		}
 		case 3:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal3);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Decimal3);
+		}
 		case 4:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal4);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Decimal4);
+		}
 		case 5:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal5);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Decimal5);
+		}
 		case 6:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal6);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Decimal6);
+		}
 		case 7:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal7);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Decimal7);
+		}
 		case 8:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal8);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Decimal8);
+		}
 		case 9:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal9);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Decimal9);
+		}
 		case 10:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal10);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Decimal10);
+		}
 		case 11:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal11);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Decimal11);
+		}
 		case 12:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal12);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Decimal12);
+		}
 		case 13:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal13);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Decimal13);
+		}
 		case 14:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal14);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Decimal14);
+		}
 		case 15:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Decimal15);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Decimal15);
+		}
 	}
 }
 
@@ -267,36 +348,67 @@ CardData* HexusOpponentData::getHexCardForAttack(int attack)
 	{
 		case 0:
 		default:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Hex0);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Hex0);
+		}
 		case 1:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Hex1);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Hex1);
+		}
 		case 2:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Hex2);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Hex2);
+		}
 		case 3:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Hex3);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Hex3);
+		}
 		case 4:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Hex4);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Hex4);
+		}
 		case 5:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Hex5);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Hex5);
+		}
 		case 6:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Hex6);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Hex6);
 		case 7:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Hex7);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Hex7);
+		}
 		case 8:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Hex8);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Hex8);
+		}
 		case 9:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Hex9);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Hex9);
+		}
 		case 10:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Hex10);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Hex10);
+		}
 		case 11:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Hex11);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Hex11);
+		}
 		case 12:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Hex12);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Hex12);
+		}
 		case 13:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Hex13);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Hex13);
+		}
 		case 14:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Hex14);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Hex14);
+		}
 		case 15:
-			return CardList::getInstance()->cardListByName->at(CardKeys::Hex15);
+		{
+			return CardList::getInstance()->cardListByName.at(CardKeys::Hex15);
+		}
 	}
 }

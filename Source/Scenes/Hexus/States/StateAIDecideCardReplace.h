@@ -1,19 +1,14 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
+#include <vector>
 
 #include "Scenes/Hexus/States/StateBase.h"
 
-using namespace cocos2d;
+class Card;
 
 class StateAIDecideCardReplace : public StateBase
 {
 public:
-	static StateAIDecideCardReplace * create();
+	static StateAIDecideCardReplace* create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;
