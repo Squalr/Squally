@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* LogicalXor::clone()
+	{
+		return LogicalXor::create();
+	}
 
 	LogicalXor::LogicalXor() : LocalizedString()
 	{

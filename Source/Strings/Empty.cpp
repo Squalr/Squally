@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Empty::clone()
+	{
+		return Empty::create();
+	}
 
 	Empty::Empty() : LocalizedString()
 	{

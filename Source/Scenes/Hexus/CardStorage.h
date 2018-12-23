@@ -1,16 +1,16 @@
 #pragma once
-#include "cocos2d.h"
+#include <map>
+#include <string>
+#include <vector>
 
 #include "Engine/Save/SaveManager.h"
 
-#include "Scenes/Hexus/CardData/CardList.h"
-
-using namespace cocos2d;
+class CardData;
 
 class CardStorage
 {
 public:
-	static CardStorage * getInstance();
+	static CardStorage* getInstance();
 
 	static void saveGold(int value);
 	static void addGold(int value);

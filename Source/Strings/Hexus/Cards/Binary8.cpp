@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Binary8::clone()
+	{
+		return Binary8::create();
+	}
 
 	Binary8::Binary8() : LocalizedString()
 	{

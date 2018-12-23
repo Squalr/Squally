@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Minigames::clone()
+	{
+		return Minigames::create();
+	}
 
 	Minigames::Minigames() : LocalizedString()
 	{

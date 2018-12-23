@@ -1,23 +1,21 @@
 #pragma once
-#include "cocos2d.h"
-#include "ui/CocosGUI.h"
+#include <set>
+#include <string>
+#include <vector>
 
-#include "Engine/Localization/Localization.h"
-#include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableObject.h"
-#include "Engine/Utils/HackUtils.h"
-#include "Engine/Utils/StrUtils.h"
 #include "Engine/UI/Controls/EditableTextWindow.h"
-#include "Engine/UI/Controls/MenuLabel.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Controls/MouseOverPanel.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/Controls/TextWindow.h"
 #include "Engine/UI/HUD/Hud.h"
-#include "Resources/UIResources.h"
 
-using namespace cocos2d;
-using namespace cocos2d::ui;
+namespace cocos2d
+{
+	class Sprite;
+}
+
+class HackableCode;
+class MenuLabel;
+class MenuSprite;
+class TextMenuSprite;
+class TextWindow;
 
 class CodeEditor : public Hud
 {
@@ -42,7 +40,7 @@ private:
 	void onAccept(MenuSprite* menuSprite);
 	void onCancel(MenuSprite* menuSprite);
 
-	Sprite* codeEditorBackground;
+	cocos2d::Sprite* codeEditorBackground;
 
 	TextWindow* statusWindow;
 	MenuLabel* codeEditorTitle;
@@ -51,32 +49,24 @@ private:
 
 	TextMenuSprite* cancelButton;
 	TextMenuSprite* acceptButton;
-	Node* acceptButtonGrayed;
+	cocos2d::Node* acceptButtonGrayed;
 
 	HackableCode* activeHackableCode;
 	float compileDelay;
 
 	static const float compileDelayMaxSeconds;
 	static const float lineNumberMargin;
-	static const Size textSize;
-	static const Size statusSize;
-	static const Size functionSize;
-	static const Size secondarySize;
+	static const cocos2d::Size textSize;
+	static const cocos2d::Size statusSize;
+	static const cocos2d::Size functionSize;
+	static const cocos2d::Size secondarySize;
 	static const std::string delimiters;
-	static const Color3B defaultColor;
-	static const Color3B subtextColor;
-	static const Color3B headerColor;
-	static const Color3B errorColor;
-	static const Color3B registerColor;
-	static const Color3B numberColor;
-	static const Color3B commentColor;
+	static const cocos2d::Color3B defaultColor;
+	static const cocos2d::Color3B subtextColor;
+	static const cocos2d::Color3B headerColor;
+	static const cocos2d::Color3B errorColor;
+	static const cocos2d::Color3B registerColor;
+	static const cocos2d::Color3B numberColor;
+	static const cocos2d::Color3B commentColor;
 	static const std::set<std::string> registers;
-
-	static const std::string StringKeyAccept;
-	static const std::string StringKeyCancel;
-	static const std::string StringKeyTitle;
-	static const std::string StringKeyStatus;
-	static const std::string StringKeyCodeEditor;
-	static const std::string StringKeyAllocationEditor;
 };
-

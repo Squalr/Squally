@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Binary5::clone()
+	{
+		return Binary5::create();
+	}
 
 	Binary5::Binary5() : LocalizedString()
 	{

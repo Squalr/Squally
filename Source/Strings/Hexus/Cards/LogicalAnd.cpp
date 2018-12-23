@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* LogicalAnd::clone()
+	{
+		return LogicalAnd::create();
+	}
 
 	LogicalAnd::LogicalAnd() : LocalizedString()
 	{

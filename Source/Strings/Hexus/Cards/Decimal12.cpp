@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Decimal12::clone()
+	{
+		return Decimal12::create();
+	}
 
 	Decimal12::Decimal12() : LocalizedString()
 	{

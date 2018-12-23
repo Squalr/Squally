@@ -1,50 +1,14 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Controls/IconMenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
-
 #include "Scenes/Hexus/States/StateBase.h"
 
-using namespace cocos2d;
+class IconMenuSprite;
+class LocalizedLabel;
+class MenuSprite;
 
 class StatePass : public StateBase
 {
 public:
 	static StatePass * create();
-
-	// Note: These are public so that tutorials can access them for focus
-	// Last stand
-	Sprite* lastStandSprite;
-	IconMenuSprite* lastStandButton;
-	LayerColor* lastStandPanel;
-	Label* lastStandLabel;
-	ParticleSystemQuad* lastStandParticles;
-
-	Sprite* enemyLastStandSprite;
-	ParticleSystemQuad* enemyLastStandParticles;
-
-	// Surrender
-	Sprite* passSprite;
-	IconMenuSprite* passButton;
-	LayerColor* passPanel;
-	Label* passLabel;
-	ParticleSystemQuad* passParticles;
-
-	Sprite* enemyPassSprite;
-	ParticleSystemQuad* enemyPassParticles;
-
-	// Claim victory
-	Sprite* claimVictorySprite;
-	IconMenuSprite* claimVictoryButton;
-	LayerColor* claimVictoryPanel;
-	Label* claimVictoryLabel;
-	ParticleSystemQuad* claimVictoryParticles;
-
-	Sprite* enemyClaimVictorySprite;
-	ParticleSystemQuad* enemyClaimVictoryParticles;
 
 protected:
 	void onAnyStateChange(GameState* gameState) override;
@@ -79,7 +43,35 @@ private:
 	bool playerChoiceLocked;
 	bool enemyChoiceLocked;
 
-	static const std::string StringKeyHexusPass;
-	static const std::string StringKeyHexusLastStand;
-	static const std::string StringKeyHexusClaimVictory;
+	// We need Hexus to be able to reach in and grab a pointer to UI elements so that they can be focused by tutorials
+	friend class Hexus;
+
+	cocos2d::Sprite* lastStandSprite;
+	IconMenuSprite* lastStandButton;
+	cocos2d::LayerColor* lastStandPanel;
+	LocalizedLabel* lastStandLabel;
+	cocos2d::ParticleSystemQuad* lastStandParticles;
+
+	cocos2d::Sprite* enemyLastStandSprite;
+	cocos2d::ParticleSystemQuad* enemyLastStandParticles;
+
+	// Surrender
+	cocos2d::Sprite* passSprite;
+	IconMenuSprite* passButton;
+	cocos2d::LayerColor* passPanel;
+	LocalizedLabel* passLabel;
+	cocos2d::ParticleSystemQuad* passParticles;
+
+	cocos2d::Sprite* enemyPassSprite;
+	cocos2d::ParticleSystemQuad* enemyPassParticles;
+
+	// Claim victory
+	cocos2d::Sprite* claimVictorySprite;
+	IconMenuSprite* claimVictoryButton;
+	cocos2d::LayerColor* claimVictoryPanel;
+	LocalizedLabel* claimVictoryLabel;
+	cocos2d::ParticleSystemQuad* claimVictoryParticles;
+
+	cocos2d::Sprite* enemyClaimVictorySprite;
+	cocos2d::ParticleSystemQuad* enemyClaimVictoryParticles;
 };

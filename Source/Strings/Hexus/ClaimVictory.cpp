@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* ClaimVictory::clone()
+	{
+		return ClaimVictory::create();
+	}
 
 	ClaimVictory::ClaimVictory() : LocalizedString()
 	{

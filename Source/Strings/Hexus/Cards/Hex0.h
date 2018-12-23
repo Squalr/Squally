@@ -12,6 +12,7 @@ namespace LocaleStrings
 	{
 	public:
 		static Hex0* create();
+		virtual LocalizedString* clone() override;
 		
 	protected:
 		virtual std::string getStringAr() override;

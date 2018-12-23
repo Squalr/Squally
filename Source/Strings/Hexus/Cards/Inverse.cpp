@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Inverse::clone()
+	{
+		return Inverse::create();
+	}
 
 	Inverse::Inverse() : LocalizedString()
 	{

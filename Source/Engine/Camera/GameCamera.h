@@ -7,15 +7,15 @@
 #include "Engine/Camera/CameraTrackingData.h"
 #include "Engine/GlobalNode.h"
 
-class Hud;
-
 namespace cocos2d
 {
 	class DrawNode;
 	class Node;
-	class Label;
 	class Vec2;
 }
+
+class Hud;
+class LocalizedLabel;
 
 class GameCamera : public GlobalNode
 {
@@ -61,8 +61,8 @@ private:
 	bool useStoredNextCameraPosition;
 
 	Hud* hud;
-	cocos2d::Label* debugCameraLabelX;
-	cocos2d::Label* debugCameraLabelY;
+	LocalizedLabel* debugCameraLabelX;
+	LocalizedLabel* debugCameraLabelY;
 	cocos2d::DrawNode* debugCameraRectangle;
 
 	static GameCamera* cameraInstance;

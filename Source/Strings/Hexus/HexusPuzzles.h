@@ -12,6 +12,7 @@ namespace LocaleStrings
 	{
 	public:
 		static HexusPuzzles* create();
+		virtual LocalizedString* clone() override;
 		
 	protected:
 		virtual std::string getStringAr() override;

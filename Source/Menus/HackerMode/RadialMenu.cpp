@@ -1,10 +1,26 @@
 #include "RadialMenu.h"
 
+#include "cocos/2d/CCDrawNode.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+
 #include "Engine/Hackables/HackableAttribute.h"
+#include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Hackables/HackableObject.h"
-#include "Engine/UI/Mouse.h"
+#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/HackUtils.h"
+#include "Events/HackableEvents.h"
+#include "Menus/HackerMode/CodeEditor.h"
+
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
 
 const float RadialMenu::radialMenuRadius = 192.0f;
 const float RadialMenu::iconRadius = 36.0f;
@@ -97,15 +113,17 @@ void RadialMenu::onHackableEdit(EventCustom* eventArgs)
 void RadialMenu::onHackableAttributeClick(MenuSprite* menuSprite)
 {
 	HackableAttribute* hackableAttribute = (HackableAttribute*)menuSprite->getTag();
+	HackableCode* hackableCode = dynamic_cast<HackableCode*>(hackableAttribute);
+	HackableData* hackableData = dynamic_cast<HackableData*>(hackableAttribute);
 
-	if (dynamic_cast<HackableCode*>(hackableAttribute) != nullptr)
+	if (hackableCode != nullptr)
 	{
-		this->codeEditor->open((HackableCode*)hackableAttribute);
+		this->codeEditor->open(hackableCode);
 	}
 
-	if (dynamic_cast<HackableData*>(hackableAttribute) != nullptr)
+	if (hackableData != nullptr)
 	{
-		// this->dataEditor->open((HackableData*)hackableAttribute);
+		// this->dataEditor->open(hackableData);
 	}
 }
 

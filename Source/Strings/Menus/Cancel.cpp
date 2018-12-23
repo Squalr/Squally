@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Cancel::clone()
+	{
+		return Cancel::create();
+	}
 
 	Cancel::Cancel() : LocalizedString()
 	{

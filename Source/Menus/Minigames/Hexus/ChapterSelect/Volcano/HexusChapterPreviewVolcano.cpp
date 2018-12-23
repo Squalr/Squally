@@ -1,6 +1,15 @@
 #include "HexusChapterPreviewVolcano.h"
 
-const std::string HexusChapterPreviewVolcano::stringKeyChapterName = "HEXUS_CHAPTER_VOLCANO";
+#include "cocos/2d/CCClippingNode.h"
+#include "cocos/2d/CCSprite.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
+const std::string HexusChapterPreviewVolcano::SaveKeyChapterName = "HEXUS_CHAPTER_VOLCANO";
 
 HexusChapterPreviewVolcano* HexusChapterPreviewVolcano::create()
 {
@@ -11,7 +20,7 @@ HexusChapterPreviewVolcano* HexusChapterPreviewVolcano::create()
 	return instance;
 }
 
-HexusChapterPreviewVolcano::HexusChapterPreviewVolcano() : HexusChapterPreview(HexusChapterPreviewVolcano::stringKeyChapterName)
+HexusChapterPreviewVolcano::HexusChapterPreviewVolcano() : HexusChapterPreview(HexusChapterPreviewVolcano::SaveKeyChapterName)
 {
 	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano));
 	this->text->setString("Volcano");

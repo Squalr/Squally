@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Hex12::clone()
+	{
+		return Hex12::create();
+	}
 
 	Hex12::Hex12() : LocalizedString()
 	{

@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* QuitToTitle::clone()
+	{
+		return QuitToTitle::create();
+	}
 
 	QuitToTitle::QuitToTitle() : LocalizedString()
 	{

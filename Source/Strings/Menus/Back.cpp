@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Back::clone()
+	{
+		return Back::create();
+	}
 
 	Back::Back() : LocalizedString()
 	{

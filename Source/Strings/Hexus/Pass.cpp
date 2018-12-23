@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Pass::clone()
+	{
+		return Pass::create();
+	}
 
 	Pass::Pass() : LocalizedString()
 	{

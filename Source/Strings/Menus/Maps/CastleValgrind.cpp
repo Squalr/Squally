@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* CastleValgrind::clone()
+	{
+		return CastleValgrind::create();
+	}
 
 	CastleValgrind::CastleValgrind() : LocalizedString()
 	{

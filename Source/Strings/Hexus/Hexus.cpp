@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Hexus::clone()
+	{
+		return Hexus::create();
+	}
 
 	Hexus::Hexus() : LocalizedString()
 	{

@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Decimal8::clone()
+	{
+		return Decimal8::create();
+	}
 
 	Decimal8::Decimal8() : LocalizedString()
 	{

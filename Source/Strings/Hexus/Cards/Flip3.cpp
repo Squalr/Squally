@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Flip3::clone()
+	{
+		return Flip3::create();
+	}
 
 	Flip3::Flip3() : LocalizedString()
 	{

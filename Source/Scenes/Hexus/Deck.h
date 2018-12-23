@@ -1,11 +1,14 @@
 #pragma once
-#include "cocos2d.h"
+#include <functional>
+#include <vector>
 
 #include "Engine/SmartNode.h"
-#include "Engine/Utils/GameUtils.h"
 #include "Scenes/Hexus/Card.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Sprite;
+}
 
 class Deck : public SmartNode
 {
@@ -35,6 +38,6 @@ private:
 	void setCardOrder();
 	void doInsertAnimation(Card* card, bool faceUp, float insertDelay);
 
-	Sprite* pad;
+	cocos2d::Sprite* pad;
 	Card::CardStyle style;
 };

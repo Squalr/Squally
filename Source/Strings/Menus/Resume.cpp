@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Resume::clone()
+	{
+		return Resume::create();
+	}
 
 	Resume::Resume() : LocalizedString()
 	{

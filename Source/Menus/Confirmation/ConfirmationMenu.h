@@ -1,22 +1,23 @@
 #pragma once
-#include "cocos2d.h"
+#include <functional>
 
-#include "Engine/Localization/Localization.h"
 #include "Engine/SmartNode.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/InfiniteParallaxNode.h"
-#include "Engine/UI/Mouse.h"
-#include "Events/NavigationEvents.h"
-#include "Resources/UIResources.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Sprite;
+}
+
+class LocalizedString;
+class LocalizedLabel;
+class MenuSprite;
 
 class ConfirmationMenu : public SmartNode
 {
 public:
-	static ConfirmationMenu * create();
+	static ConfirmationMenu* create();
 
-	void initialize(std::string confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
+	void showMessage(LocalizedString* confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
 
 private:
 	ConfirmationMenu();
@@ -25,13 +26,13 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onCloseClick(MenuSprite* menuSprite);
 	void onConfirmClick(MenuSprite* menuSprite);
 	void onCancelClick(MenuSprite* menuSprite);
 
-	Sprite* pauseWindow;
-	Label* confirmationLabel;
+	cocos2d::Sprite* confirmWindow;
+	LocalizedLabel* confirmationLabel;
 	MenuSprite* closeButton;
 	MenuSprite* confirmButton;
 	MenuSprite* cancelButton;

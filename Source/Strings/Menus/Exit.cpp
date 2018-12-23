@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Exit::clone()
+	{
+		return Exit::create();
+	}
 
 	Exit::Exit() : LocalizedString()
 	{

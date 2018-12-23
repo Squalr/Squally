@@ -1,23 +1,20 @@
 #pragma once
 #include <chrono>
-#include "cocos2d.h"
+#include <vector>
 
-#include "Engine/Utils/StrUtils.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Hexus/StateOverride.h"
 #include "Engine/SmartNode.h"
 
-#include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
-#include "Scenes/Hexus/Deck.h"
-#include "Resources/EntityResources.h"
-#include "Resources/UIResources.h"
-#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
-
-using namespace cocos2d;
+class Card;
+class CardRow;
+class Deck;
+class HexusOpponentData;
 
 class GameState : public SmartNode
 {
 public:
-	enum StateType
+	enum class StateType
 	{
 		EmptyState,
 		LoadInitialState,
@@ -44,13 +41,13 @@ public:
 		Tutorial,
 	};
 
-	enum Turn
+	enum class Turn
 	{
 		Player,
 		Enemy,
 	};
 
-	static GameState * create();
+	static GameState* create();
 	static void updateState(GameState* gameState, StateType newState);
 	void clearInteraction();
 	void removeFieldCards();
@@ -123,21 +120,21 @@ public:
 	HexusOpponentData* opponentData;
 
 	// Tutorial node pointers
-	Node* lossesDisplayPointer;
-	Node* playerBinaryRowTotalPointer;
-	Node* playerDecimalRowTotalPointer;
-	Node* playerHexRowTotalPointer;
-	Node* enemyBinaryRowTotalPointer;
-	Node* enemyDecimalRowTotalPointer;
-	Node* enemyHexRowTotalPointer;
-	Node* scoreTotalPointer;
-	Node* deckCardCountDisplayPointer;
-	Node* handCardCountDisplayPointer;
-	Node* remainingCardDisplayPointer;
-	Node* drawCountDisplayPointer;
-	Node* passButtonPointer;
-	Node* lastStandButtonPointer;
-	Node* claimVictoryButtonPointer;
+	cocos2d::Node* lossesDisplayPointer;
+	cocos2d::Node* playerBinaryRowTotalPointer;
+	cocos2d::Node* playerDecimalRowTotalPointer;
+	cocos2d::Node* playerHexRowTotalPointer;
+	cocos2d::Node* enemyBinaryRowTotalPointer;
+	cocos2d::Node* enemyDecimalRowTotalPointer;
+	cocos2d::Node* enemyHexRowTotalPointer;
+	cocos2d::Node* scoreTotalPointer;
+	cocos2d::Node* deckCardCountDisplayPointer;
+	cocos2d::Node* handCardCountDisplayPointer;
+	cocos2d::Node* remainingCardDisplayPointer;
+	cocos2d::Node* drawCountDisplayPointer;
+	cocos2d::Node* passButtonPointer;
+	cocos2d::Node* lastStandButtonPointer;
+	cocos2d::Node* claimVictoryButtonPointer;
 
 	static const std::string requestStateUpdateEvent;
 	static const std::string beforeStateUpdateEvent;

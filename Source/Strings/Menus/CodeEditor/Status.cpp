@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Status::clone()
+	{
+		return Status::create();
+	}
 
 	Status::Status() : LocalizedString()
 	{

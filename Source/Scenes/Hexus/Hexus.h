@@ -1,20 +1,78 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/base/CCEventKeyboard.h"
 
 #include "Engine/GlobalScene.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
-#include "Events/NavigationEvents.h"
-#include "Menus/Confirmation/ConfirmationMenu.h"
-#include "Menus/Options/OptionsMenu.h"
-#include "Menus/Pause/PauseMenu.h"
-#include "Resources/MusicResources.h"
-#include "Scenes/Hexus/CardStorage.h"
-#include "Scenes/Hexus/GameState.h"
-#include "Scenes/Hexus/Components/Components.h"
-#include "Scenes/Hexus/States/States.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class LayerColor;
+}
+
+class StateAIDecideCard;
+class StateAIDecideCardReplace;
+class StateAIDecidePass;
+class StateAIDecideTarget;
+class StateCardReplace;
+class StateCoinFlip;
+class StateCombineStaged;
+class StateDraw;
+class StateDrawInitial;
+class StateGameEnd;
+class StateLoadInitialState;
+class StateGameStart;
+class StateNeutral;
+class StateOpponentTurnStart;
+class StatePlayCard;
+class StatePass;
+class StatePlayerTurnStart;
+class StateRoundEnd;
+class StateRoundStart;
+class StateSelectionStaged;
+class StateTurnEnd;
+class StateTutorial;
+
+
+class CardReplaceBanner;
+class OpponentFirstBanner;
+class OpponentLastStandBanner;
+class OpponentPassBanner;
+class OpponentRoundWinBanner;
+class OpponentTurnBanner;
+class PlayerFirstBanner;
+class PlayerLastStandBanner;
+class PlayerPassBanner;
+class PlayerRoundWinBanner;
+class PlayerTurnBanner;
+class RoundBanner;
+class RoundTieBanner;
+class VictoryBanner;
+class DefeatBanner;
+class DrawBanner;
+class DeckCardCountDisplay;
+class HandCardCountDisplay;
+class RemainingCardDisplay;
+class DrawCountDisplay;
+class LossesDisplay;
+class RowTotals;
+class ScoreTotal;
+class DebugDisplay;
+
+class TutorialAIntroSequence;
+class TutorialAVictory;
+class TutorialAWinningRound;
+class TutorialBIntroSequence;
+class TutorialCIntroSequence;
+class TutorialDIntroSequence;
+class TutorialEIntroSequence;
+class TutorialFIntroSequence;
+
+class Avatars;
+class CardPreview;
+class GameState;
+class HexusOpponentData;
+class PauseMenu;
+class OptionsMenu;
+class ConfirmationMenu;
 
 class Hexus : public GlobalScene
 {
@@ -29,7 +87,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void startGame(HexusOpponentData* opponentData);
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onOptionsExit();
 	void openPauseMenu();
 	void onResumeClick();
@@ -37,7 +95,7 @@ private:
 	void onExitClick();
 
 	GameState* gameState;
-	Sprite* gameBackground;
+	cocos2d::Sprite* gameBackground;
 
 	// Components
 	Avatars* avatars;
@@ -102,7 +160,7 @@ private:
 	TutorialEIntroSequence* tutorialEIntroSequence;
 	TutorialFIntroSequence* tutorialFIntroSequence;
 
-	LayerColor* menuBackDrop;
+	cocos2d::LayerColor* menuBackDrop;
 	PauseMenu* pauseMenu;
 	OptionsMenu* optionsMenu;
 	ConfirmationMenu* confirmationMenu;

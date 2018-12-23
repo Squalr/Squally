@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* BinStorm::clone()
+	{
+		return BinStorm::create();
+	}
 
 	BinStorm::BinStorm() : LocalizedString()
 	{

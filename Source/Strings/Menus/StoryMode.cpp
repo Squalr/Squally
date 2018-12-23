@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* StoryMode::clone()
+	{
+		return StoryMode::create();
+	}
 
 	StoryMode::StoryMode() : LocalizedString()
 	{

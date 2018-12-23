@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Clear::clone()
+	{
+		return Clear::create();
+	}
 
 	Clear::Clear() : LocalizedString()
 	{

@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Decimal10::clone()
+	{
+		return Decimal10::create();
+	}
 
 	Decimal10::Decimal10() : LocalizedString()
 	{

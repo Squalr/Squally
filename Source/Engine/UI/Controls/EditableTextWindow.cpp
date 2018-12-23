@@ -6,34 +6,39 @@
 #include "cocos/ui/UITextField.h"
 
 #include "Engine/Localization/Localization.h"
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Localization/LocalizedString.h"
+
+#include "Strings/Menus/CodeEditor/ClickToEdit.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
 const Color3B EditableTextWindow::lineNumberColor = Color3B::GRAY;
-const std::string EditableTextWindow::StringKeyClickToEdit = "Menu_TextWindow_ClickToEdit";
 
-EditableTextWindow* EditableTextWindow::create(std::string windowTitle, Size initWindowSize, int initFontSize, Color3B initFontColor)
+EditableTextWindow* EditableTextWindow::create(LocalizedString* windowTitle, Size initWindowSize, Color3B initFontColor)
 {
-	EditableTextWindow* instance = new EditableTextWindow(windowTitle, initWindowSize, initFontSize, initFontColor);
+	EditableTextWindow* instance = new EditableTextWindow(windowTitle, initWindowSize, initFontColor);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EditableTextWindow::EditableTextWindow(std::string windowTitle, Size initWindowSize, int initFontSize, Color3B initFontColor)
-	: TextWindow(windowTitle, initWindowSize, initFontSize, initFontColor)
+EditableTextWindow::EditableTextWindow(LocalizedString* windowTitle, Size initWindowSize, Color3B initFontColor)
+	: TextWindow(windowTitle, initWindowSize, initFontColor)
 {
 	this->currentLineNumber = 1;
 	this->tokenizationCallback = nullptr;
 	this->onEditCallback = nullptr;
 	this->lineNumberElements = new std::vector<RichElement*>();
-	this->fontSize = initFontSize;
 	this->windowSize = initWindowSize;
 
 	this->lineNumbers = RichText::create();
-	this->editableText = UICCTextField::create(Localization::resolveString(EditableTextWindow::StringKeyClickToEdit), Localization::getCodingFont(), this->fontSize);
+
+	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::ClickToEdit::create());
+
+	this->editableText = UICCTextField::create(label->getString(), label->getSystemFontName(), label->getBMFontSize());
 
 	this->lineNumbers->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->lineNumbers->ignoreContentAdaptWithSize(false);
@@ -129,7 +134,7 @@ void EditableTextWindow::update(float dt)
 
 void EditableTextWindow::insertNewline()
 {
-	RichElement* lineNumberText = RichElementText::create(0, EditableTextWindow::lineNumberColor, 0xFF, std::to_string(this->currentLineNumber++), Localization::getCodingFont(), this->fontSize);
+	RichElement* lineNumberText = RichElementText::create(0, EditableTextWindow::lineNumberColor, 0xFF, std::to_string(this->currentLineNumber++), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
 	RichElement* lineNumberNewLine = RichElementNewLine::create(0, this->fontColor, 0xFF);
 
 	this->lineNumberElements->push_back(lineNumberText);

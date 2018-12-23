@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* ClickToEdit::clone()
+	{
+		return ClickToEdit::create();
+	}
 
 	ClickToEdit::ClickToEdit() : LocalizedString()
 	{

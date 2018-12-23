@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Decimal6::clone()
+	{
+		return Decimal6::create();
+	}
 
 	Decimal6::Decimal6() : LocalizedString()
 	{

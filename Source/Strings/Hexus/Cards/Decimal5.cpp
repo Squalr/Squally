@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Decimal5::clone()
+	{
+		return Decimal5::create();
+	}
 
 	Decimal5::Decimal5() : LocalizedString()
 	{

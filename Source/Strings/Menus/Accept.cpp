@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Accept::clone()
+	{
+		return Accept::create();
+	}
 
 	Accept::Accept() : LocalizedString()
 	{
