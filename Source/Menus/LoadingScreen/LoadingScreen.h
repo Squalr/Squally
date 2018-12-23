@@ -4,18 +4,10 @@
 #include <thread>
 #include <future> 
 
-#include "cocos2d.h"
-
 #include "Engine/GlobalScene.h"
-#include "Engine/Maps/SerializableMap.h"
-#include "Engine/UI/Controls/CProgressBar.h"
-#include "Engine/Utils/StrUtils.h"
-#include "Events/NavigationEvents.h"
-#include "Menus/MenuBackground.h"
-#include "Resources/UIResources.h"
 
-using namespace cocos2d;
-using namespace cocos_experimental;
+class CProgressBar;
+class SerializableMap;
 
 class LoadingScreen : public GlobalScene
 {
@@ -33,7 +25,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onFileEnumerationComplete(std::vector<std::string> files);
-	void onTextureAssetLoaded(Texture2D* asset);
+	void onTextureAssetLoaded(cocos2d::Texture2D* asset);
 	void onSoundAssetLoaded();
 	void incrementLoadedFileCount();
 	bool levelIsLoaded();
@@ -42,7 +34,7 @@ private:
 	static bool isPreloadableImage(std::string filePath);
 	static bool isPreloadableSound(std::string filePath);
 
-	Node* backgroundNode;
+	cocos2d::Node* backgroundNode;
 	CProgressBar* progressBar;
 	SerializableMap* map;
 	std::function<void(SerializableMap*)> onLoadCallback;

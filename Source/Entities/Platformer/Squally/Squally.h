@@ -1,19 +1,21 @@
 #pragma once
-#include "cocos2d.h"
 
-#include "Engine/Input/Input.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Events/NavigationEvents.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	typedef std::map<std::string, Value> ValueMap;
+}
+
+class CollisionObject;
 
 class Squally : public PlatformerEntity
 {
 public:
-	static Squally* deserialize(ValueMap* initProperties);
+	static Squally* deserialize(cocos2d::ValueMap* initProperties);
 	static Squally* getInstance();
 
-	Size getSize() override;
+	cocos2d::Size getSize() override;
 
 	static int health;
 
@@ -22,10 +24,10 @@ public:
 protected:
 	virtual void initializeCollisionEvents() override;
 
-	Vec2 getButtonOffset() override;
+	cocos2d::Vec2 getButtonOffset() override;
 
 private:
-	Squally(ValueMap* initProperties);
+	Squally(cocos2d::ValueMap* initProperties);
 	~Squally();
 
 	void registerHackables();

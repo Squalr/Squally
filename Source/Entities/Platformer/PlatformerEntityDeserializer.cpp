@@ -1,5 +1,8 @@
 #include "PlatformerEntityDeserializer.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableObject.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -222,6 +225,8 @@
 ////Y////Y////Y////Y////Y////Y////Y/
 // END: THIS CODE IS GENERATED    //
 ////////////////////////////////////
+
+using namespace cocos2d;
 
 const std::string PlatformerEntityDeserializer::KeyTypeEntity = "entity";
 

@@ -902,6 +902,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hexus/ManageCards.cpp
 	Source/Strings/Hexus/Pass.cpp
 	Source/Strings/Hexus/SelectAChapter.cpp
+	Source/Strings/Hexus/SelectOpponent.cpp
 	Source/Strings/Hexus/Shop.cpp
 	Source/Strings/Hexus/SpecialCards.cpp
 	Source/Strings/Hexus/StoreLabelBinary.cpp
@@ -1830,6 +1831,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hexus/ManageCards.h
 	Source/Strings/Hexus/Pass.h
 	Source/Strings/Hexus/SelectAChapter.h
+	Source/Strings/Hexus/SelectOpponent.h
 	Source/Strings/Hexus/Shop.h
 	Source/Strings/Hexus/SpecialCards.h
 	Source/Strings/Hexus/StoreLabelBinary.h
