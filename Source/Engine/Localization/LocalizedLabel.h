@@ -8,6 +8,13 @@ class LocalizedString;
 class LocalizedLabel : public cocos2d::Label
 {
 public:
+	enum class FontStyle
+	{
+		Main,
+		Coding,
+		Pixel,
+	};
+
 	enum class FontSize
 	{
 		H1,
@@ -17,13 +24,19 @@ public:
 		Small,
 	};
 
-	static LocalizedLabel* create(LocalizedString* localizedString);
+	// const Size& dimensions = Size::ZERO, TextHAlignment hAlignment = TextHAlignment::LEFT, TextVAlignment vAlignment = TextVAlignment::TOP
+	static LocalizedLabel* create(FontStyle fontStyle, FontSize fontSize, LocalizedString* localizedString);
+	static LocalizedLabel* create(FontStyle fontStyle, FontSize fontSize);
 
 private:
-	LocalizedLabel(LocalizedString* localizedString);
+	LocalizedLabel(FontStyle fontStyle, FontSize fontSize, LocalizedString* localizedString);
+	LocalizedLabel(FontStyle fontStyle, FontSize fontSize);
 	~LocalizedLabel();
 
-	void onLocaleChange(std::string newString);
+	void initializeStringToLocale(std::string newString);
+	void onEnter() override;
 
 	LocalizedString* localizedString;
+	FontStyle fontStyle;
+	FontSize fontSize;
 };

@@ -4,164 +4,167 @@
 
 #include "Pause.h"
 
-Pause* Pause::create()
+namespace LocaleStrings
 {
-	Pause* instance = new Pause();
+	Pause* Pause::create()
+	{
+		Pause* instance = new Pause();
 
-	instance->autorelease();
+		instance->autorelease();
 
-	return instance;
-}
+		return instance;
+	}
 
-Pause::Pause()
-{
-}
+	Pause::Pause() : LocalizedString()
+	{
+	}
 
-Pause::~Pause()
-{
-}
+	Pause::~Pause()
+	{
+	}
 
-std::string Pause::getStringAr()
-{
-	return "";
-}
+	std::string Pause::getStringAr()
+	{
+		return "";
+	}
 
-std::string Pause::getStringBg()
-{
-	return "";
-}
+	std::string Pause::getStringBg()
+	{
+		return "";
+	}
 
-std::string Pause::getStringCs()
-{
-	return "";
-}
+	std::string Pause::getStringCs()
+	{
+		return "";
+	}
 
-std::string Pause::getStringDa()
-{
-	return "";
-}
+	std::string Pause::getStringDa()
+	{
+		return "";
+	}
 
-std::string Pause::getStringDe()
-{
-	return "";
-}
+	std::string Pause::getStringDe()
+	{
+		return "";
+	}
 
-std::string Pause::getStringEl()
-{
-	return "";
-}
+	std::string Pause::getStringEl()
+	{
+		return "";
+	}
 
-std::string Pause::getStringEn()
-{
-	return "Pause";
-}
+	std::string Pause::getStringEn()
+	{
+		return "Pause";
+	}
 
-std::string Pause::getStringEs()
-{
-	return "";
-}
+	std::string Pause::getStringEs()
+	{
+		return "";
+	}
 
-std::string Pause::getStringEs419()
-{
-	return "";
-}
+	std::string Pause::getStringEs419()
+	{
+		return "";
+	}
 
-std::string Pause::getStringFi()
-{
-	return "";
-}
+	std::string Pause::getStringFi()
+	{
+		return "";
+	}
 
-std::string Pause::getStringFr()
-{
-	return "Pause";
-}
+	std::string Pause::getStringFr()
+	{
+		return "Pause";
+	}
 
-std::string Pause::getStringHu()
-{
-	return "";
-}
+	std::string Pause::getStringHu()
+	{
+		return "";
+	}
 
-std::string Pause::getStringIt()
-{
-	return "";
-}
+	std::string Pause::getStringIt()
+	{
+		return "";
+	}
 
-std::string Pause::getStringJa()
-{
-	return "";
-}
+	std::string Pause::getStringJa()
+	{
+		return "";
+	}
 
-std::string Pause::getStringKo()
-{
-	return "";
-}
+	std::string Pause::getStringKo()
+	{
+		return "";
+	}
 
-std::string Pause::getStringNl()
-{
-	return "";
-}
+	std::string Pause::getStringNl()
+	{
+		return "";
+	}
 
-std::string Pause::getStringNo()
-{
-	return "";
-}
+	std::string Pause::getStringNo()
+	{
+		return "";
+	}
 
-std::string Pause::getStringPl()
-{
-	return "";
-}
+	std::string Pause::getStringPl()
+	{
+		return "";
+	}
 
-std::string Pause::getStringPt()
-{
-	return "";
-}
+	std::string Pause::getStringPt()
+	{
+		return "";
+	}
 
-std::string Pause::getStringPtBr()
-{
-	return "";
-}
+	std::string Pause::getStringPtBr()
+	{
+		return "";
+	}
 
-std::string Pause::getStringRo()
-{
-	return "";
-}
+	std::string Pause::getStringRo()
+	{
+		return "";
+	}
 
-std::string Pause::getStringRu()
-{
-	return "";
-}
+	std::string Pause::getStringRu()
+	{
+		return "";
+	}
 
-std::string Pause::getStringSv()
-{
-	return "";
-}
+	std::string Pause::getStringSv()
+	{
+		return "";
+	}
 
-std::string Pause::getStringTh()
-{
-	return "";
-}
+	std::string Pause::getStringTh()
+	{
+		return "";
+	}
 
-std::string Pause::getStringTr()
-{
-	return "";
-}
+	std::string Pause::getStringTr()
+	{
+		return "";
+	}
 
-std::string Pause::getStringUk()
-{
-	return "";
-}
+	std::string Pause::getStringUk()
+	{
+		return "";
+	}
 
-std::string Pause::getStringVn()
-{
-	return "";
-}
+	std::string Pause::getStringVn()
+	{
+		return "";
+	}
 
-std::string Pause::getStringZhCn()
-{
-	return "";
-}
+	std::string Pause::getStringZhCn()
+	{
+		return "";
+	}
 
-std::string Pause::getStringZhTw()
-{
-	return "";
+	std::string Pause::getStringZhTw()
+	{
+		return "";
+	}
 }

@@ -86,6 +86,18 @@ void SmartNode::addEventListener(EventListener* listener)
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
+void SmartNode::addGlobalEventListener(EventListener* listener)
+{
+	if (listener == nullptr)
+	{
+		return;
+	}
+
+	listener->setIsGlobal(true);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
 void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 {
 	if (listener == nullptr)
@@ -95,7 +107,7 @@ void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 
 	listener->setIgnorePause(true);
 
-	this->addEventListener(listener);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
 void SmartNode::resume()

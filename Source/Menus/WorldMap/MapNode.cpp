@@ -4,18 +4,17 @@
 
 #include "Engine/UI/Controls/MenuSprite.h"
 
-MapNode* MapNode::create(std::string mapName, std::string mapFile)
+MapNode* MapNode::create(std::string mapFile)
 {
-	MapNode* instance = new MapNode(mapName, mapFile);
+	MapNode* instance = new MapNode(mapFile);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MapNode::MapNode(std::string mapName, std::string mapFile)
+MapNode::MapNode(std::string mapFile)
 {
-	this->nodeMapName = mapName;
 	this->nodeMapFile = mapFile;
 	this->mapSprite = MenuSprite::create(UIResources::Menus_WorldMap_MarkerCurrent, UIResources::Menus_WorldMap_MarkerCurrentSelected);
 

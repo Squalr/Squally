@@ -3,12 +3,6 @@
 #include "cocos/platform/CCApplication.h"
 #include "cocos/platform/CCFileUtils.h"
 
-#include "allocators.h"
-#include "encodings.h"
-#include "document.h"
-#include "stringbuffer.h"
-#include "writer.h"
-
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Steam/Steam.h"
@@ -17,7 +11,6 @@
 #include "Resources/StringResources.h"
 
 using namespace cocos2d;
-using namespace rapidjson;
 
 Localization* Localization::instance = nullptr;
 
@@ -33,54 +26,15 @@ Localization* Localization::getInstance()
 
 Localization::Localization()
 {
-	std::string localizedStringsJson = FileUtils::getInstance()->getStringFromFile(StringResources::Menus.c_str());
-
-	this->localizationMap = new Document();
-	this->localizationMap->Parse<0>(localizedStringsJson.c_str());
 }
 
 Localization::~Localization()
 {
-	delete(this->localizationMap);
-}
-
-std::string Localization::resolveFile(std::string fileEn)
-{
-	std::string fileBase = fileEn.substr(0, fileEn.length() - 2);
-	Localization* localization = Localization::getInstance();
-	std::string languageCode = localization->getLanguageCode();
-
-	return fileBase + languageCode;
-}
-
-std::string Localization::resolveString(std::string resourceKey)
-{
-	Localization* localization = Localization::getInstance();
-	std::string languageCode = Localization::getLanguageCode();
-
-	if (localization->localizationMap->HasMember(resourceKey.c_str()))
-	{
-		auto node = (*localization->localizationMap)[resourceKey.c_str()].GetObject();
-		if (node.HasMember(languageCode.c_str()))
-		{
-			return node[languageCode.c_str()].GetString();
-		}
-
-		if (node.HasMember("en"))
-		{
-			CCLOG(("Localization resource key not found: " + resourceKey + " for language code: " + languageCode).c_str());
-			CCLOG("Falling back on EN");
-			return node["en"].GetString();
-		}
-	}
-
-	CCLOG(("Localization resource key not found: " + resourceKey).c_str());
-	return resourceKey;
 }
 
 cocos2d::LanguageType Localization::getLanguage()
 {
-	// Saved language has priority
+	// Saved language in config file has priority
 	if (ConfigManager::hasLanguageSaved())
 	{
 		std::string languageCode = ConfigManager::getLanguage();

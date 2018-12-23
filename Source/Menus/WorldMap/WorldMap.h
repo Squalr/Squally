@@ -58,17 +58,6 @@ private:
 
 	Hud* hud;
 
-	static const std::string StringKeySelectLevel;
-	static const std::string StringKeyLevelNameJungle;
-	static const std::string StringKeyLevelNameAquaticRuins;
-	static const std::string StringKeyLevelNameForest;
-	static const std::string StringKeyLevelNameCaverns;
-	static const std::string StringKeyLevelNameCastle;
-	static const std::string StringKeyLevelNameIceCaps;
-	static const std::string StringKeyLevelNameObelisk;
-	static const std::string StringKeyLevelNameVolcano;
-	static const std::string StringKeyLevelNameMech;
-
 	static WorldMap* instance;
 };
 

@@ -6,14 +6,9 @@
 
 using namespace cocos2d;
 
-std::string LocalizedString::getString()
+LocalizedString::LocalizedString()
 {
-	return this->localizedString;
-}
-
-LocalizedString::LocalizedString(std::function<void(std::string newString)> onLocaleChange)
-{
-	this->onLocaleChange = onLocaleChange;
+	this->onLocaleChange = nullptr;
 }
 
 LocalizedString::~LocalizedString()
@@ -24,8 +19,21 @@ void LocalizedString::initializeListeners()
 {
 	SmartNode::initializeListeners();
 
-	this->addEventListener(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
+	this->addGlobalEventListener(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
 	{
-		this->onLocaleChange("");
+		if (this->onLocaleChange != nullptr)
+		{
+			this->onLocaleChange(this->getString());
+		}
 	}));
+}
+
+std::string LocalizedString::getString()
+{
+	return this->localizedString;
+}
+
+void LocalizedString::setOnLocaleChangeCallback(std::function<void(std::string newString)> onLocaleChange)
+{
+	this->onLocaleChange = onLocaleChange;
 }
