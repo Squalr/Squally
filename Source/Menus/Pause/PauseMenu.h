@@ -1,15 +1,13 @@
 #pragma once
-#include "cocos2d.h"
+#include <functional>
 
-#include "Events/NavigationEvents.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/HUD/Hud.h"
-#include "Engine/UI/Mouse.h"
-#include "Menus/MenuBackground.h"
-#include "Resources/UIResources.h"
+#include "cocos/base/CCEvent.h"
+#include "cocos/base/CCEventKeyboard.h"
+#include "cocos/base/ccTypes.h"
 
-using namespace cocos2d;
+class LocalizedLabel;
+class MenuSprite;
+class TextMenuSprite;
 
 class PauseMenu : public Hud
 {
@@ -30,14 +28,13 @@ private:
 	void initializeListeners() override;
 	void onExitConfirm();
 	void onCloseClick(MenuSprite* menuSprite);
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onResumeClick(MenuSprite* menuSprite);
 	void onOptionsClick(MenuSprite* menuSprite);
 	void onExitClick(MenuSprite* menuSprite);
 
-	Node* background;
-	Sprite* pauseWindow;
-	Label* titleLabel;
+	cocos2d::Sprite* pauseWindow;
+	LocalizedLabel* pauseLabel;
 	MenuSprite* closeButton;
 	TextMenuSprite* resumeButton;
 	TextMenuSprite* optionsButton;
@@ -47,11 +44,6 @@ private:
 	std::function<void()> optionsClickCallback;
 	std::function<void()> exitClickCallback;
 
-	static const Color3B TitleColor;
-	static const std::string StringKeyMenuPause;
-	static const std::string StringKeyResume;
-	static const std::string StringKeyOptions;
-	static const std::string StringKeyExit;
-	static const std::string StringKeyExitPrompt;
+	static const cocos2d::Color3B TitleColor;
 };
 

@@ -2,15 +2,6 @@
 #include "cocos2d.h"
 
 #include "Engine/GlobalScene.h"
-#include "Engine/UI/Controls/ScrollPane.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/Mouse.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
-#include "Resources/UIResources.h"
-#include "Scenes/Hexus/Card.h"
-#include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/CardStorage.h"
 
 using namespace cocos2d;
 

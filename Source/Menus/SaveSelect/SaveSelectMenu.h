@@ -1,23 +1,10 @@
 #pragma once
-#include <algorithm>
-#include <string>
-
-#include "cocos2d.h"
-#include "ui/CocosGUI.h"
+#include "cocos/base/CCEvent.h"
+#include "cocos/base/CCEventKeyboard.h"
 
 #include "Engine/GlobalScene.h"
-#include "Engine/Localization/Localization.h"
-#include "Engine/Sound/SoundManager.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/Mouse.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
-#include "Menus/MenuBackground.h"
-#include "Scenes/Cutscenes/IntroCutscene/IntroCutscene.h"
 
-using namespace cocos2d;
-using namespace cocos2d::ui;
-using namespace cocos_experimental;
+class MenuSprite;
 
 class SaveSelectMenu : public GlobalScene
 {
@@ -33,24 +20,16 @@ private:
 	void initializeListeners() override;
 	void initializePositions() override;
 
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onSaveGame1Click(MenuSprite* menuSprite);
 	void onSaveGame2Click(MenuSprite* menuSprite);
 	void onSaveGame3Click(MenuSprite* menuSprite);
 
-	Node* backgroundNode;
+	cocos2d::Node* backgroundNode;
 	TextMenuSprite* saveGame1;
 	TextMenuSprite* saveGame2;
 	TextMenuSprite* saveGame3;
 
 	static SaveSelectMenu* instance;
-
-	static const std::string StringKeyNewGame;
-	static const std::string StringKeyContinueGame;
-
-	static const float titleFontSize;
-	static const float menuFontSize;
-	static const float menuOffset;
-	static const float spacing;
 };
 

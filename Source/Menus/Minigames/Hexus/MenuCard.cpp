@@ -1,5 +1,7 @@
 #include "MenuCard.h"
 
+using namespace cocos2d;
+
 MenuCard* MenuCard::create(Card::CardStyle cardStyle, CardData* cardData)
 {
 	MenuCard* instance = new MenuCard(cardStyle, cardData);

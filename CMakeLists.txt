@@ -884,9 +884,12 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hexus/Cards/ShiftRight.cpp
 	Source/Strings/Hexus/Cards/Subtract.cpp
 	Source/Strings/Hexus/ClaimVictory.cpp
+	Source/Strings/Hexus/Hexus.cpp
+	Source/Strings/Hexus/HexusPuzzles.cpp
 	Source/Strings/Hexus/LastStand.cpp
 	Source/Strings/Hexus/Pass.cpp
 	Source/Strings/Menus/Accept.cpp
+	Source/Strings/Menus/Back.cpp
 	Source/Strings/Menus/Cancel.cpp
 	Source/Strings/Menus/CodeEditor/AllocationEditor.cpp
 	Source/Strings/Menus/CodeEditor/Assembler.cpp
@@ -896,13 +899,22 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Menus/ComingSoon.cpp
 	Source/Strings/Menus/ContinueGame.cpp
 	Source/Strings/Menus/Exit.cpp
-	Source/Strings/Menus/FullScreen.cpp
-	Source/Strings/Menus/Hexus.cpp
-	Source/Strings/Menus/HexusPuzzles.cpp
 	Source/Strings/Menus/Maps/CastleValgrind.cpp
 	Source/Strings/Menus/Minigames.cpp
 	Source/Strings/Menus/NewGame.cpp
-	Source/Strings/Menus/Options.cpp
+	Source/Strings/Menus/Options/FullScreen.cpp
+	Source/Strings/Menus/Options/Options.cpp
+	Source/Strings/Menus/Options/Resolution1080x768.cpp
+	Source/Strings/Menus/Options/Resolution1152x864.cpp
+	Source/Strings/Menus/Options/Resolution1280x1024.cpp
+	Source/Strings/Menus/Options/Resolution1280x720.cpp
+	Source/Strings/Menus/Options/Resolution1280x960.cpp
+	Source/Strings/Menus/Options/Resolution1440x900.cpp
+	Source/Strings/Menus/Options/Resolution1600x1024.cpp
+	Source/Strings/Menus/Options/Resolution1600x900.cpp
+	Source/Strings/Menus/Options/Resolution1920x1080.cpp
+	Source/Strings/Menus/Options/Resolution2560x1440.cpp
+	Source/Strings/Menus/Options/Resolution3840x2160.cpp
 	Source/Strings/Menus/Pause.cpp
 	Source/Strings/Menus/QuitToTitle.cpp
 	Source/Strings/Menus/Resume.cpp
@@ -1759,9 +1771,12 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hexus/Cards/ShiftRight.h
 	Source/Strings/Hexus/Cards/Subtract.h
 	Source/Strings/Hexus/ClaimVictory.h
+	Source/Strings/Hexus/Hexus.h
+	Source/Strings/Hexus/HexusPuzzles.h
 	Source/Strings/Hexus/LastStand.h
 	Source/Strings/Hexus/Pass.h
 	Source/Strings/Menus/Accept.h
+	Source/Strings/Menus/Back.h
 	Source/Strings/Menus/Cancel.h
 	Source/Strings/Menus/CodeEditor/AllocationEditor.h
 	Source/Strings/Menus/CodeEditor/Assembler.h
@@ -1771,13 +1786,22 @@ list(APPEND GAME_HEADER
 	Source/Strings/Menus/ComingSoon.h
 	Source/Strings/Menus/ContinueGame.h
 	Source/Strings/Menus/Exit.h
-	Source/Strings/Menus/FullScreen.h
-	Source/Strings/Menus/Hexus.h
-	Source/Strings/Menus/HexusPuzzles.h
 	Source/Strings/Menus/Maps/CastleValgrind.h
 	Source/Strings/Menus/Minigames.h
 	Source/Strings/Menus/NewGame.h
-	Source/Strings/Menus/Options.h
+	Source/Strings/Menus/Options/FullScreen.h
+	Source/Strings/Menus/Options/Options.h
+	Source/Strings/Menus/Options/Resolution1080x768.h
+	Source/Strings/Menus/Options/Resolution1152x864.h
+	Source/Strings/Menus/Options/Resolution1280x1024.h
+	Source/Strings/Menus/Options/Resolution1280x720.h
+	Source/Strings/Menus/Options/Resolution1280x960.h
+	Source/Strings/Menus/Options/Resolution1440x900.h
+	Source/Strings/Menus/Options/Resolution1600x1024.h
+	Source/Strings/Menus/Options/Resolution1600x900.h
+	Source/Strings/Menus/Options/Resolution1920x1080.h
+	Source/Strings/Menus/Options/Resolution2560x1440.h
+	Source/Strings/Menus/Options/Resolution3840x2160.h
 	Source/Strings/Menus/Pause.h
 	Source/Strings/Menus/QuitToTitle.h
 	Source/Strings/Menus/Resume.h

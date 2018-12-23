@@ -8,8 +8,12 @@ class LocalizedString : public SmartNode
 {
 public:
 	std::string getString();
+	void setOnLocaleChangeCallback(std::function<void(std::string newString)> onLocaleChange);
 
 protected:
+	LocalizedString();
+	~LocalizedString();
+
 	virtual std::string getStringAr() = 0;
 	virtual std::string getStringBg() = 0;
 	virtual std::string getStringCs() = 0;
@@ -41,9 +45,6 @@ protected:
 	virtual std::string getStringZhTw() = 0;
 
 private:
-	LocalizedString(std::function<void(std::string newString)> onLocaleChange);
-	~LocalizedString();
-
 	void initializeListeners() override;
 
 	std::string localizedString;

@@ -1,9 +1,6 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Engine/GlobalScene.h"
-
-using namespace cocos2d;
 
 namespace cocos2d
 {

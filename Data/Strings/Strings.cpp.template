@@ -4,164 +4,167 @@
 
 #include "{{ClassName}}.h"
 
-{{ClassName}}* {{ClassName}}::create()
+namespace LocaleStrings
 {
-	{{ClassName}}* instance = new {{ClassName}}();
+	{{ClassName}}* {{ClassName}}::create()
+	{
+		{{ClassName}}* instance = new {{ClassName}}();
 
-	instance->autorelease();
+		instance->autorelease();
 
-	return instance;
-}
+		return instance;
+	}
 
-{{ClassName}}::{{ClassName}}()
-{
-}
+	{{ClassName}}::{{ClassName}}() : LocalizedString()
+	{
+	}
 
-{{ClassName}}::~{{ClassName}}()
-{
-}
+	{{ClassName}}::~{{ClassName}}()
+	{
+	}
 
-std::string {{ClassName}}::getStringAr()
-{
-	return "{{ar}}";
-}
+	std::string {{ClassName}}::getStringAr()
+	{
+		return "{{ar}}";
+	}
 
-std::string {{ClassName}}::getStringBg()
-{
-	return "{{bg}}";
-}
+	std::string {{ClassName}}::getStringBg()
+	{
+		return "{{bg}}";
+	}
 
-std::string {{ClassName}}::getStringCs()
-{
-	return "{{cs}}";
-}
+	std::string {{ClassName}}::getStringCs()
+	{
+		return "{{cs}}";
+	}
 
-std::string {{ClassName}}::getStringDa()
-{
-	return "{{da}}";
-}
+	std::string {{ClassName}}::getStringDa()
+	{
+		return "{{da}}";
+	}
 
-std::string {{ClassName}}::getStringDe()
-{
-	return "{{de}}";
-}
+	std::string {{ClassName}}::getStringDe()
+	{
+		return "{{de}}";
+	}
 
-std::string {{ClassName}}::getStringEl()
-{
-	return "{{el}}";
-}
+	std::string {{ClassName}}::getStringEl()
+	{
+		return "{{el}}";
+	}
 
-std::string {{ClassName}}::getStringEn()
-{
-	return "{{en}}";
-}
+	std::string {{ClassName}}::getStringEn()
+	{
+		return "{{en}}";
+	}
 
-std::string {{ClassName}}::getStringEs()
-{
-	return "{{es}}";
-}
+	std::string {{ClassName}}::getStringEs()
+	{
+		return "{{es}}";
+	}
 
-std::string {{ClassName}}::getStringEs419()
-{
-	return "{{es-419}}";
-}
+	std::string {{ClassName}}::getStringEs419()
+	{
+		return "{{es-419}}";
+	}
 
-std::string {{ClassName}}::getStringFi()
-{
-	return "{{fi}}";
-}
+	std::string {{ClassName}}::getStringFi()
+	{
+		return "{{fi}}";
+	}
 
-std::string {{ClassName}}::getStringFr()
-{
-	return "{{fr}}";
-}
+	std::string {{ClassName}}::getStringFr()
+	{
+		return "{{fr}}";
+	}
 
-std::string {{ClassName}}::getStringHu()
-{
-	return "{{hu}}";
-}
+	std::string {{ClassName}}::getStringHu()
+	{
+		return "{{hu}}";
+	}
 
-std::string {{ClassName}}::getStringIt()
-{
-	return "{{it}}";
-}
+	std::string {{ClassName}}::getStringIt()
+	{
+		return "{{it}}";
+	}
 
-std::string {{ClassName}}::getStringJa()
-{
-	return "{{ja}}";
-}
+	std::string {{ClassName}}::getStringJa()
+	{
+		return "{{ja}}";
+	}
 
-std::string {{ClassName}}::getStringKo()
-{
-	return "{{ko}}";
-}
+	std::string {{ClassName}}::getStringKo()
+	{
+		return "{{ko}}";
+	}
 
-std::string {{ClassName}}::getStringNl()
-{
-	return "{{nl}}";
-}
+	std::string {{ClassName}}::getStringNl()
+	{
+		return "{{nl}}";
+	}
 
-std::string {{ClassName}}::getStringNo()
-{
-	return "{{no}}";
-}
+	std::string {{ClassName}}::getStringNo()
+	{
+		return "{{no}}";
+	}
 
-std::string {{ClassName}}::getStringPl()
-{
-	return "{{pl}}";
-}
+	std::string {{ClassName}}::getStringPl()
+	{
+		return "{{pl}}";
+	}
 
-std::string {{ClassName}}::getStringPt()
-{
-	return "{{pt}}";
-}
+	std::string {{ClassName}}::getStringPt()
+	{
+		return "{{pt}}";
+	}
 
-std::string {{ClassName}}::getStringPtBr()
-{
-	return "{{pt-BR}}";
-}
+	std::string {{ClassName}}::getStringPtBr()
+	{
+		return "{{pt-BR}}";
+	}
 
-std::string {{ClassName}}::getStringRo()
-{
-	return "{{ro}}";
-}
+	std::string {{ClassName}}::getStringRo()
+	{
+		return "{{ro}}";
+	}
 
-std::string {{ClassName}}::getStringRu()
-{
-	return "{{ru}}";
-}
+	std::string {{ClassName}}::getStringRu()
+	{
+		return "{{ru}}";
+	}
 
-std::string {{ClassName}}::getStringSv()
-{
-	return "{{sv}}";
-}
+	std::string {{ClassName}}::getStringSv()
+	{
+		return "{{sv}}";
+	}
 
-std::string {{ClassName}}::getStringTh()
-{
-	return "{{th}}";
-}
+	std::string {{ClassName}}::getStringTh()
+	{
+		return "{{th}}";
+	}
 
-std::string {{ClassName}}::getStringTr()
-{
-	return "{{tr}}";
-}
+	std::string {{ClassName}}::getStringTr()
+	{
+		return "{{tr}}";
+	}
 
-std::string {{ClassName}}::getStringUk()
-{
-	return "{{uk}}";
-}
+	std::string {{ClassName}}::getStringUk()
+	{
+		return "{{uk}}";
+	}
 
-std::string {{ClassName}}::getStringVn()
-{
-	return "{{vn}}";
-}
+	std::string {{ClassName}}::getStringVn()
+	{
+		return "{{vn}}";
+	}
 
-std::string {{ClassName}}::getStringZhCn()
-{
-	return "{{zh-CN}}";
-}
+	std::string {{ClassName}}::getStringZhCn()
+	{
+		return "{{zh-CN}}";
+	}
 
-std::string {{ClassName}}::getStringZhTw()
-{
-	return "{{zh-TW}}";
+	std::string {{ClassName}}::getStringZhTw()
+	{
+		return "{{zh-TW}}";
+	}
 }

@@ -1,9 +1,13 @@
 #include "OptionsScene.h"
 
+#include "cocos/2d/CCNode.h"
+
 #include "Engine/GlobalDirector.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/MenuBackground.h"
+
+using namespace cocos2d;
 
 OptionsScene* OptionsScene::instance;
 

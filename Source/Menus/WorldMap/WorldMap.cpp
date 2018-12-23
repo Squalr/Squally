@@ -18,17 +18,6 @@
 
 WorldMap* WorldMap::instance = nullptr;
 
-const std::string WorldMap::StringKeySelectLevel = "Menu_Story_Select_Level";
-const std::string WorldMap::StringKeyLevelNameJungle = "Menu_Story_Level_Name_Jungle";
-const std::string WorldMap::StringKeyLevelNameAquaticRuins = "Menu_Story_Level_Name_Aquatic_Ruins";
-const std::string WorldMap::StringKeyLevelNameForest = "Menu_Story_Level_Name_Forest";
-const std::string WorldMap::StringKeyLevelNameCaverns = "Menu_Story_Level_Name_Caverns";
-const std::string WorldMap::StringKeyLevelNameCastle = "Menu_Story_Level_Name_Castle";
-const std::string WorldMap::StringKeyLevelNameIceCaps = "Menu_Story_Level_Name_Ice_Caps";
-const std::string WorldMap::StringKeyLevelNameObelisk = "Menu_Story_Level_Name_Obelisk";
-const std::string WorldMap::StringKeyLevelNameVolcano = "Menu_Story_Level_Name_Volcano";
-const std::string WorldMap::StringKeyLevelNameMech = "Menu_Story_Level_Name_Mech";
-
 void WorldMap::registerGlobalScene()
 {
 	if (WorldMap::instance == nullptr)

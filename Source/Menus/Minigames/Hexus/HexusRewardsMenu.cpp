@@ -1,6 +1,16 @@
 #include "HexusRewardsMenu.h"
 
 #include "Engine/Sound/SoundManager.h"
+#include "Engine/UI/Controls/ScrollPane.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Events/NavigationEvents.h"
+#include "Resources/UIResources.h"
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/CardStorage.h"
+
 #include "Resources/SoundResources.h"
 
 const std::string HexusRewardsMenu::KeyScheduleHexusGoldTick = "KEY_SCHEDULE_HEXUS_GOLD_TICK";

@@ -1,14 +1,18 @@
 #include "SaveSelectMenu.h"
 
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Events/NavigationEvents.h"
+#include "Menus/MenuBackground.h"
+#include "Scenes/Cutscenes/IntroCutscene/IntroCutscene.h"
+
+#include "Strings/Menus/ContinueGame.h"
+#include "Strings/Menus/NewGame.h"
+
+using namespace cocos2d;
+
 SaveSelectMenu* SaveSelectMenu::instance;
-
-const std::string SaveSelectMenu::StringKeyNewGame = "Menu_New_Game";
-const std::string SaveSelectMenu::StringKeyContinueGame = "Menu_Continue_Game";
-
-const float SaveSelectMenu::titleFontSize = 64.0f;
-const float SaveSelectMenu::menuFontSize = 48.0f;
-const float SaveSelectMenu::menuOffset = 128.0f;
-const float SaveSelectMenu::spacing = -96.0f;
 
 void SaveSelectMenu::registerGlobalScene()
 {
@@ -40,8 +44,8 @@ SaveSelectMenu::SaveSelectMenu()
 
 	this->backgroundNode = Node::create();
 
-	Label* saveGame1Label = Label::createWithTTF(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* saveGame1LabelHover = Label::createWithTTF(Localization::resolveString(SaveSelectMenu::StringKeyContinueGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	LocalizedLabel*	saveGame1Label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::ContinueGame::create());
+	LocalizedLabel*	saveGame1LabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::ContinueGame::create());
 
 	saveGame1Label->setColor(textColor);
 	saveGame1Label->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -66,9 +70,9 @@ SaveSelectMenu::SaveSelectMenu()
 
 	this->saveGame1->addChild(saveGame1Icon);
 
-	Label* saveGame2Label = Label::createWithTTF(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* saveGame2LabelHover = Label::createWithTTF(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-
+	LocalizedLabel*	saveGame2Label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::NewGame::create());
+	LocalizedLabel*	saveGame2LabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::NewGame::create());
+	
 	saveGame2Label->setColor(textColor);
 	saveGame2Label->enableShadow(shadowColor, shadowSize, shadowBlur);
 	saveGame2Label->enableGlow(shadowColor);
@@ -92,8 +96,8 @@ SaveSelectMenu::SaveSelectMenu()
 
 	this->saveGame2->addChild(saveGame2Icon);
 
-	Label* saveGame3Label = Label::createWithTTF(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
-	Label* saveGame3LabelHover = Label::createWithTTF(Localization::resolveString(SaveSelectMenu::StringKeyNewGame), Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+	LocalizedLabel*	saveGame3Label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::NewGame::create());
+	LocalizedLabel*	saveGame3LabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::NewGame::create());
 
 	saveGame3Label->setColor(textColor);
 	saveGame3Label->enableShadow(shadowColor, shadowSize, shadowBlur);

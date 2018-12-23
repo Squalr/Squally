@@ -104,6 +104,18 @@ void SmartScene::addEventListener(EventListener* listener)
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
+void SmartScene::addGlobalEventListener(EventListener* listener)
+{
+	if (listener == nullptr)
+	{
+		return;
+	}
+
+	listener->setIsGlobal(true);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
 void SmartScene::addEventListenerIgnorePause(EventListener* listener)
 {
 	if (listener == nullptr)
@@ -113,7 +125,7 @@ void SmartScene::addEventListenerIgnorePause(EventListener* listener)
 
 	listener->setIgnorePause(true);
 
-	this->addEventListener(listener);
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
 void SmartScene::resume()

@@ -29,7 +29,8 @@ protected:
 	virtual void initializePositions();
 	virtual void initializeListeners();
 	virtual void removeAllListeners();
-	void addEventListener(cocos2d::EventListener* listener);
+	virtual void addEventListener(cocos2d::EventListener* listener);
+	void addGlobalEventListener(cocos2d::EventListener* listener);
 	void addEventListenerIgnorePause(cocos2d::EventListener* listener);
 
 	Hud* layerColorHud;
