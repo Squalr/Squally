@@ -4,6 +4,8 @@
 #include "cocos/base/CCEventKeyboard.h"
 #include "cocos/base/ccTypes.h"
 
+#include "Engine/UI/HUD/Hud.h"
+
 namespace cocos2d
 {
 	class Sprite;
@@ -50,4 +52,3 @@ private:
 
 	static const cocos2d::Color3B TitleColor;
 };
-

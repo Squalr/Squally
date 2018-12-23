@@ -1,5 +1,9 @@
 #include "ConfirmationMenu.h"
 
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/InfiniteParallaxNode.h"

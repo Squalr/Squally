@@ -1,5 +1,7 @@
 #pragma once
 
+#include "cocos/base/CCEventListenerKeyboard.h"
+
 #include "Engine/GlobalScene.h"
 
 // Forward declarations
@@ -14,6 +16,7 @@ class HackerModeHud;
 
 namespace cocos2d
 {
+	class EventMouse;
 	class Sprite;
 }
 
@@ -33,8 +36,8 @@ protected:
 	virtual void onDeveloperModeDisable() override;
 	virtual void onHackerModeEnable();
 	virtual void onHackerModeDisable();
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
-	void onMouseWheelScroll(EventMouse* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+	void onMouseWheelScroll(cocos2d::EventMouse* event);
 
 private:
 	void toggleHackerMode();
@@ -54,7 +57,7 @@ private:
 	OptionsMenu* optionsMenu;
 	ConfirmationMenu* confirmationMenu;
 
-	Node* mapNode;
+	cocos2d::Node* mapNode;
 
 	SerializableMap* map;
 

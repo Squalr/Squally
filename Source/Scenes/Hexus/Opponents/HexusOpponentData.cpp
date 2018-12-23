@@ -374,6 +374,7 @@ CardData* HexusOpponentData::getHexCardForAttack(int attack)
 		case 6:
 		{
 			return CardList::getInstance()->cardListByName.at(CardKeys::Hex6);
+		}
 		case 7:
 		{
 			return CardList::getInstance()->cardListByName.at(CardKeys::Hex7);

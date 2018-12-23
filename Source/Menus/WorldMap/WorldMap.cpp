@@ -8,6 +8,7 @@
 #include "Engine/Localization/Localization.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/WorldMap/FX/Lightning.h"
 #include "Menus/WorldMap/FX/LightningSphere.h"
@@ -38,42 +39,34 @@ WorldMap::WorldMap()
 	this->hud = Hud::create();
 
 	this->forest = MapNode::create(
-		Localization::resolveString(WorldMap::StringKeyLevelNameForest),
 		MapResources::EndianForest_Forest
 	);
 
 	this->waterRuins = MapNode::create(
-		Localization::resolveString(WorldMap::StringKeyLevelNameAquaticRuins),
 		MapResources::UnderflowRuins_AquaticRuins
 	);
 
 	this->caverns = MapNode::create(
-		Localization::resolveString(WorldMap::StringKeyLevelNameCaverns),
 		MapResources::SeaSharpCaverns_Caverns
 	);
 
 	this->castle = MapNode::create(
-		Localization::resolveString(WorldMap::StringKeyLevelNameCastle),
 		MapResources::CastleValgrind_Castle
 	);
 
 	this->iceCaps = MapNode::create(
-		Localization::resolveString(WorldMap::StringKeyLevelNameIceCaps),
 		MapResources::LambdaPeaks_IceCaps
 	);
 
 	this->volcano = MapNode::create(
-		Localization::resolveString(WorldMap::StringKeyLevelNameVolcano),
 		MapResources::DaemonsHallow_Volcano
 	);
 
 	this->crypts = MapNode::create(
-		Localization::resolveString(WorldMap::StringKeyLevelNameObelisk),
 		MapResources::LexiconCrypts_Obelisk
 	);
 
 	this->voidStar = MapNode::create(
-		Localization::resolveString(WorldMap::StringKeyLevelNameMech),
 		MapResources::VoidStar_Mech
 	);
 

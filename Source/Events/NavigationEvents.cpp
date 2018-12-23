@@ -1,5 +1,14 @@
 #include "NavigationEvents.h"
 
+#include "cocos/2d/CCScene.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventDispatcher.h"
+
+#include "Engine/Cutscenes/Cutscene.h"
+#include "Engine/GlobalDirector.h"
+
+using namespace cocos2d;
+
 const std::string NavigationEvents::EventNavigateTitle = "EVENT_NAVIGATE_TITLE";
 const std::string NavigationEvents::EventNavigateLoadingScreen = "EVENT_NAVIGATE_LOADING_SCREEN";
 const std::string NavigationEvents::EventNavigateMap = "EVENT_NAVIGATE_MAP";

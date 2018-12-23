@@ -1,6 +1,18 @@
 #include "HexusOpponentPreview.h"
 
+#include "cocos/2d/CCClippingNode.h"
+#include "cocos/2d/CCLayer.h"
+
+#include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Events/NavigationEvents.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
+#include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
 
 HexusOpponentPreview* HexusOpponentPreview::create(HexusOpponentData* opponentData)
 {
@@ -14,10 +26,9 @@ HexusOpponentPreview* HexusOpponentPreview::create(HexusOpponentData* opponentDa
 HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 {
 	this->hexusOpponentData = opponentData;
-	this->opponentSprite = AnimationNode::create(opponentData->animationResourceFile);
+	this->opponentSprite = SmartAnimationNode::create(opponentData->animationResourceFile);
 	this->opponentSprite->setScale(opponentData->animationScale);
-	this->opponentEntity = this->opponentSprite->play("Entity");
-	this->opponentEntity->setCurrentAnimation("Idle");
+	this->opponentSprite->playAnimation();
 	this->disabledLayer = LayerColor::create(Color4B(0, 0, 0, 0), 512, 512);
 
 	this->frame = MenuSprite::create(UIResources::Menus_MinigamesMenu_Hexus_EnemyFrame, UIResources::Menus_MinigamesMenu_Hexus_EnemyFrameHover);

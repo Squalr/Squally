@@ -3,7 +3,6 @@
 
 #include "cocos/math/Vec2.h"
 
-// Forward declarations
 class HackableObject;
 
 class HackableEvents

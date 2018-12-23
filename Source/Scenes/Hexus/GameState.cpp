@@ -1,5 +1,8 @@
 #include "GameState.h"
 
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventDispatcher.h"
+
 #include "Engine/Utils/StrUtils.h"
 
 #include "Scenes/Hexus/CardRow.h"

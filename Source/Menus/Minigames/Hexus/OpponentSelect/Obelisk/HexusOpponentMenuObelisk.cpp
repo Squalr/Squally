@@ -1,5 +1,13 @@
 #include "HexusOpponentMenuObelisk.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/UI/Controls/ScrollPane.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Obelisk/HexusChapterPreviewObelisk.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
+#include "Scenes/Hexus/Opponents/Obelisk/ObeliskHexusOpponents.h"
+
+using namespace cocos2d;
+
 HexusOpponentMenuObelisk* HexusOpponentMenuObelisk::instance = nullptr;
 
 void HexusOpponentMenuObelisk::registerGlobalScene()
@@ -15,7 +23,7 @@ void HexusOpponentMenuObelisk::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuObelisk::instance);
 }
 
-HexusOpponentMenuObelisk::HexusOpponentMenuObelisk() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Void, HexusChapterPreviewObelisk::stringKeyChapterName)
+HexusOpponentMenuObelisk::HexusOpponentMenuObelisk() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Void, HexusChapterPreviewObelisk::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentAmelia::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentVoidDemon::getInstance()));

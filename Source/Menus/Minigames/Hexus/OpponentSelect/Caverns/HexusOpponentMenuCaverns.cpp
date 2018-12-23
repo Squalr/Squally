@@ -1,5 +1,13 @@
 #include "HexusOpponentMenuCaverns.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/UI/Controls/ScrollPane.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Caverns/HexusChapterPreviewCaverns.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
+#include "Scenes/Hexus/Opponents/Caverns/CavernsHexusOpponents.h"
+
+using namespace cocos2d;
+
 HexusOpponentMenuCaverns* HexusOpponentMenuCaverns::instance = nullptr;
 
 void HexusOpponentMenuCaverns::registerGlobalScene()
@@ -15,7 +23,7 @@ void HexusOpponentMenuCaverns::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuCaverns::instance);
 }
 
-HexusOpponentMenuCaverns::HexusOpponentMenuCaverns() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Caverns, HexusChapterPreviewCaverns::stringKeyChapterName)
+HexusOpponentMenuCaverns::HexusOpponentMenuCaverns() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Caverns, HexusChapterPreviewCaverns::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentBrock::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentShaman::getInstance()));
