@@ -17,10 +17,10 @@ public:
 		Small,
 	};
 
-	static LocalizedLabel* create();
+	static LocalizedLabel* create(LocalizedString* localizedString);
 
 private:
-	LocalizedLabel();
+	LocalizedLabel(LocalizedString* localizedString);
 	~LocalizedLabel();
 
 	void onLocaleChange(std::string newString);

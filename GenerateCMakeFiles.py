@@ -1,5 +1,5 @@
 ###################################################################################
-# This script will generate the CMakeLists.txt target files.                      #
+# This script will generate the target files inside CMakeLists.txt                #
 # Run this script every time files are added to the Squally/Source/ directory.    #
 ###################################################################################
 
