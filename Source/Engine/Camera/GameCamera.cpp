@@ -1,8 +1,10 @@
 #include "GameCamera.h"
 
 #include "cocos/2d/CCCamera.h"
+#include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCNode.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"

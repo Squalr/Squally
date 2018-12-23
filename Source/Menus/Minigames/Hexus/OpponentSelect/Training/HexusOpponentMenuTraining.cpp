@@ -1,5 +1,13 @@
 #include "HexusOpponentMenuTraining.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/UI/Controls/ScrollPane.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Training/HexusChapterPreviewTraining.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
+#include "Scenes/Hexus/Opponents/Tutorials/TutorialHexusOpponents.h"
+
+using namespace cocos2d;
+
 HexusOpponentMenuTraining* HexusOpponentMenuTraining::instance = nullptr;
 
 void HexusOpponentMenuTraining::registerGlobalScene()
@@ -15,7 +23,7 @@ void HexusOpponentMenuTraining::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuTraining::instance);
 }
 
-HexusOpponentMenuTraining::HexusOpponentMenuTraining() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Training, HexusChapterPreviewTraining::stringKeyChapterName)
+HexusOpponentMenuTraining::HexusOpponentMenuTraining() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Training, HexusChapterPreviewTraining::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentTutorialA::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentTutorialB::getInstance()));

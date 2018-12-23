@@ -1,5 +1,7 @@
 #include "Deck.h"
 
+#include "cocos/2d/CCActionInterval.h"
+
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/HexusResources.h"

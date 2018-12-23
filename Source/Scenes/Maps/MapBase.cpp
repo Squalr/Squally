@@ -1,5 +1,12 @@
 #include "MapBase.h"
 
+#include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerMouse.h"
+#include "cocos/base/CCEventMouse.h"
+#include "cocos/physics/CCPhysicsWorld.h"
+
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Utils/GameUtils.h"
@@ -17,6 +24,8 @@
 
 #include "Resources/BackgroundResources.h"
 #include "Resources/ShaderResources.h"
+
+using namespace cocos2d;
 
 bool MapBase::hackerMode = false;
 

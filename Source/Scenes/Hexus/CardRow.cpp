@@ -1,5 +1,6 @@
 #include "CardRow.h"
 
+#include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 

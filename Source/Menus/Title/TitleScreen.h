@@ -2,6 +2,12 @@
 
 #include "Engine/GlobalScene.h"
 
+namespace cocos2d
+{
+	class ParticleSystem;
+	class Sprite;
+}
+
 class MenuSprite;
 class TextMenuSprite;
 class TitleScreenBackground;

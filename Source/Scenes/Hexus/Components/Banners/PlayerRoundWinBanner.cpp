@@ -47,7 +47,7 @@ void PlayerRoundWinBanner::onBeforeStateChange(GameState* gameState)
 {
 	ComponentBase::onBeforeStateChange(gameState);
 
-	if (gameState->stateType == GameState::RoundEnd && gameState->isPlayerWinningRound())
+	if (gameState->stateType == GameState::StateType::RoundEnd && gameState->isPlayerWinningRound())
 	{
 		this->flashBanner();
 	}

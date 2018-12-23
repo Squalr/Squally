@@ -1,5 +1,28 @@
 #include "HexusOpponentMenuBase.h"
 
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+
+#include "Analytics/AnalyticsCategories.h"
+#include "Engine/Analytics/Analytics.h"
+#include "Engine/GlobalDirector.h"
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Save/SaveManager.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/UI/Controls/ScrollPane.h"
+#include "Engine/UI/Controls/TextMenuSprite.h"
+#include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
 HexusOpponentMenuBase::HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter chapter, std::string chapterProgressSaveKey)
 {
 	this->chapter = chapter;

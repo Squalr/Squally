@@ -1,20 +1,22 @@
 #pragma once
-#include "cocos2d.h"
-#include "cocos-ext.h"
+#include <functional>
 
 #include "Engine/SmartNode.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Events/NavigationEvents.h"
-#include "Resources/EntityResources.h"
-#include "Resources/UIResources.h"
-#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class ClippingNode;
+	class LayerColor;
+}
+
+class HexusOpponentData;
+class MenuSprite;
+class SmartAnimationNode;
 
 class HexusOpponentPreview : public SmartNode
 {
 public:
-	static HexusOpponentPreview * create(HexusOpponentData* opponentData);
+	static HexusOpponentPreview* create(HexusOpponentData* opponentData);
 
 	void disableInteraction();
 	void enableInteraction();
@@ -31,9 +33,8 @@ private:
 
 	std::function<void(HexusOpponentPreview*)> onMouseOverEvent;
 
-	AnimationNode* opponentSprite;
-	LayerColor* disabledLayer;
-	ClippingNode* frameClip;
-	SpriterEngine::EntityInstance* opponentEntity;
+	SmartAnimationNode* opponentSprite;
+	cocos2d::LayerColor* disabledLayer;
+	cocos2d::ClippingNode* frameClip;
 	MenuSprite* frame;
 };

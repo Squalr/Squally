@@ -1,5 +1,13 @@
 #include "HexusOpponentMenuRuins.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/UI/Controls/ScrollPane.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusChapterPreviewRuins.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
+#include "Scenes/Hexus/Opponents/Ruins/RuinsHexusOpponents.h"
+
+using namespace cocos2d;
+
 HexusOpponentMenuRuins* HexusOpponentMenuRuins::instance = nullptr;
 
 void HexusOpponentMenuRuins::registerGlobalScene()
@@ -15,7 +23,7 @@ void HexusOpponentMenuRuins::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuRuins::instance);
 }
 
-HexusOpponentMenuRuins::HexusOpponentMenuRuins() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Ruins, HexusChapterPreviewRuins::stringKeyChapterName)
+HexusOpponentMenuRuins::HexusOpponentMenuRuins() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Ruins, HexusChapterPreviewRuins::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentHorus::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentAnubisPup::getInstance()));

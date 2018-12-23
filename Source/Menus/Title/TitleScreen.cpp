@@ -1,5 +1,11 @@
 #include "TitleScreen.h"
 
+#include "cocos/2d/CCSprite.h"
+#include "cocos/2d/CCParticleExamples.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/GlobalDirector.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"

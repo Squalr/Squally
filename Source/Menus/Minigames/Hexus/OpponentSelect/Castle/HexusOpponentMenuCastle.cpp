@@ -1,5 +1,13 @@
 #include "HexusOpponentMenuCastle.h"
 
+#include "Engine/GlobalDirector.h"
+#include "Engine/UI/Controls/ScrollPane.h"
+#include "Menus/Minigames/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.h"
+#include "Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
+#include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
+
+using namespace cocos2d;
+
 HexusOpponentMenuCastle* HexusOpponentMenuCastle::instance = nullptr;
 
 void HexusOpponentMenuCastle::registerGlobalScene()
@@ -15,7 +23,7 @@ void HexusOpponentMenuCastle::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuCastle::instance);
 }
 
-HexusOpponentMenuCastle::HexusOpponentMenuCastle() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::stringKeyChapterName)
+HexusOpponentMenuCastle::HexusOpponentMenuCastle() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentGarin::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentWraith::getInstance()));

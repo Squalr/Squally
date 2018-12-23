@@ -1,4 +1,6 @@
 #pragma once
+#include <stack>
+
 #include "Engine/GlobalNode.h"
 #include "Engine/GlobalScene.h"
 

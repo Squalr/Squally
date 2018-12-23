@@ -1,19 +1,19 @@
 #pragma once
-#include "cocos2d.h"
+#include "cocos/base/CCEventKeyboard.h"
 
-#include "Analytics/AnalyticsCategories.h"
-#include "Engine/Analytics/Analytics.h"
 #include "Engine/GlobalScene.h"
-#include "Engine/Save/SaveManager.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Controls/ScrollPane.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/Mouse.h"
-#include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
-#include "Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Sprite;
+}
+
+class LocalizedLabel;
+class HexusOpponentPreview;
+class MenuSprite;
+class ScrollPane;
+class TextMenuSprite;
 
 class HexusOpponentMenuBase : public GlobalScene
 {
@@ -29,7 +29,7 @@ protected:
 	void onDeckManagementClick(MenuSprite* menuSprite);
 	void onShopClick(MenuSprite* menuSprite);
 	void onMouseOver(HexusOpponentPreview* opponent);
-	void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
 	NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter chapter;
 
@@ -38,10 +38,9 @@ protected:
 	std::map<HexusOpponentPreview*, HexusOpponentPreview*> dependencies;
 
 	std::string chapterProgressSaveKey;
-	Sprite* background;
+	cocos2d::Sprite* background;
 	TextMenuSprite* deckManagementButton;
 	TextMenuSprite* shopButton;
-	Label* opponentSelectLabel;
+	LocalizedLabel* opponentSelectLabel;
 	TextMenuSprite* backButton;
 };
-
