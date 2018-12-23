@@ -1,8 +1,21 @@
 #include "CardRow.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/Config.h"
+
+#include "Resources/HexusResources.h"
+
+using namespace cocos2d;
+
 CardRow* CardRow::create(bool isPlayerRow)
 {
-    CardRow * instance = new (std::nothrow) CardRow(isPlayerRow);
+    CardRow* instance = new (std::nothrow) CardRow(isPlayerRow);
 
     if (instance && instance->init())
     {
@@ -190,9 +203,7 @@ void CardRow::enableRowSelection(std::function<void(CardRow*)> callback)
 	this->rowSelectSprite->setVisible(true);
 	this->rowSelectSprite->stopAllActions();
 
-	this->rowSelectSprite->runAction(Sequence::create(
-		FadeTo::create(0.25f, 255),
-		nullptr));
+	this->rowSelectSprite->runAction(Sequence::create(FadeTo::create(0.25f, 255), nullptr));
 
 	// Keep interaction so that mouseover is still possible, but set the callback to be the same as the row callback
 	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
@@ -220,9 +231,14 @@ void CardRow::disableRowSelection()
 	MenuSprite* sprite = this->rowSelectSprite;
 
 	this->rowSelectSprite->stopAllActions();
-	this->rowSelectSprite->runAction(Sequence::create(FadeTo::create(0.25f, 0), CallFunc::create([sprite]{
-		sprite->setVisible(false);
-	}), nullptr));
+	this->rowSelectSprite->runAction(Sequence::create(
+		FadeTo::create(0.25f, 0),
+		CallFunc::create([sprite]
+		{
+			sprite->setVisible(false);
+		}),
+		nullptr
+	));
 
 	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 	{

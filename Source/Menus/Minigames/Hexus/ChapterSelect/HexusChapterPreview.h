@@ -15,7 +15,7 @@ class LocalizedLabel;
 class HexusChapterPreview : public SmartNode
 {
 public:
-	static HexusChapterPreview * create(std::string chapterNameKey);
+	static HexusChapterPreview* create(std::string chapterNameKey);
 
 	void setClickCallback(std::function<void()> callback);
 	void disableInteraction();

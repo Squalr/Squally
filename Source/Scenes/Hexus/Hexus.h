@@ -68,6 +68,7 @@ class TutorialFIntroSequence;
 
 class Avatars;
 class CardPreview;
+class StagingHelperText;
 class GameState;
 class HexusOpponentData;
 class PauseMenu;

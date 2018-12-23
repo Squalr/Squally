@@ -1,14 +1,9 @@
 #pragma once
-#include "cocos2d.h"
+#include <tuple>
 
-#include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
-#include "Engine/Sound/SoundManager.h"
-
-#include "Scenes/Hexus/States/StateBase.h"
-
-using namespace cocos2d;
+class Card;
+class CardRow;
+class GameState;
 
 class HexusAIHelper
 {

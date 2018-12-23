@@ -1,6 +1,13 @@
 #pragma once
 #include "Scenes/Hexus/States/StateBase.h"
 
+namespace cocos2d
+{
+	class LayerColor;
+	class ParticleSystemQuad;
+	class Sprite;
+}
+
 class IconMenuSprite;
 class LocalizedLabel;
 class MenuSprite;

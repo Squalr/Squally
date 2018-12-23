@@ -1,7 +1,15 @@
 #include "Card.h"
 
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/Utils/HackUtils.h"
+#include "Scenes/Hexus/CardEffects.h"
+#include "Scenes/Hexus/Config.h"
+
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
+
+using namespace cocos2d;
 
 const float Card::cardScale = 0.4f;
 const Color4B Card::binaryColor = Color4B(35, 150, 255, 255);
@@ -91,7 +99,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->cardFocus = Sprite::create(HexusResources::CardSelect);
 	this->cardEffects = CardEffects::create();
 
-	this->cardText = Label::createWithTTF("", Localization::getCodingFont(), 64.0f);
+	this->cardText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
 	this->cardText->setAlignment(TextHAlignment::CENTER);
 	this->cardText->setAnchorPoint(Vec2(0.5f, 1.0f));
 	this->cardText->enableOutline(Color4B::BLACK, 6);

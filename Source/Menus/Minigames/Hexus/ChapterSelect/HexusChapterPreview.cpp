@@ -10,6 +10,8 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
+using namespace cocos2d;
+
 HexusChapterPreview* HexusChapterPreview::create(std::string chapterNameKey)
 {
 	HexusChapterPreview* instance = new HexusChapterPreview(chapterNameKey);
