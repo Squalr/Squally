@@ -20,6 +20,9 @@ bld/
 [Bb]in/
 [Oo]bj/
 
+# Python cache directories
+*__pycache__/
+
 # Roslyn cache directories
 *.ide/
 
