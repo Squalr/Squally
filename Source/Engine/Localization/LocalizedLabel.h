@@ -28,6 +28,8 @@ public:
 	static LocalizedLabel* create(FontStyle fontStyle, FontSize fontSize, LocalizedString* localizedString);
 	static LocalizedLabel* create(FontStyle fontStyle, FontSize fontSize);
 
+	LocalizedLabel* clone();
+
 private:
 	LocalizedLabel(FontStyle fontStyle, FontSize fontSize, LocalizedString* localizedString);
 	LocalizedLabel(FontStyle fontStyle, FontSize fontSize);

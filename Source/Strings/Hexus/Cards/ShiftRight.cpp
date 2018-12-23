@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* ShiftRight::clone()
+	{
+		return ShiftRight::create();
+	}
 
 	ShiftRight::ShiftRight() : LocalizedString()
 	{

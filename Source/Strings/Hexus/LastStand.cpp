@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* LastStand::clone()
+	{
+		return LastStand::create();
+	}
 
 	LastStand::LastStand() : LocalizedString()
 	{

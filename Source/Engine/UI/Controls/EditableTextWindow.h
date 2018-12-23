@@ -16,11 +16,12 @@ namespace cocos2d
 	}
 }
 
+class LocalizedString;
+
 class EditableTextWindow : public TextWindow
 {
 public:
-	static EditableTextWindow * create(std::string windowTitle, cocos2d::Size initWindowSize, int initFontSize,
-			cocos2d::Color3B initFontColor);
+	static EditableTextWindow* create(LocalizedString* windowTitle, cocos2d::Size initWindowSize, cocos2d::Color3B initFontColor);
 
 	struct token
 	{
@@ -43,8 +44,7 @@ public:
 	void focus();
 
 private:
-	EditableTextWindow(std::string windowTitle, cocos2d::Size initWindowSize, int initFontSize,
-			cocos2d::Color3B initFontColor);
+	EditableTextWindow(LocalizedString* windowTitle, cocos2d::Size initWindowSize, cocos2d::Color3B initFontColor);
 	virtual ~EditableTextWindow();
 
 	void update(float) override;
@@ -56,7 +56,6 @@ private:
 	cocos2d::ui::RichText* lineNumbers;
 
 	int currentLineNumber;
-	float fontSize;
 	cocos2d::Color3B fontColor;
 	cocos2d::Size windowSize;
 	std::string previousText;

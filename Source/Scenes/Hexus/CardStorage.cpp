@@ -1,5 +1,10 @@
 #include "CardStorage.h"
 
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+
+using namespace cocos2d;
+
 const std::string CardStorage::SaveKeyStorageCards = "SAVE_KEY_STORAGE_CARDS";
 const std::string CardStorage::SaveKeyDeckCards = "SAVE_KEY_DECK_CARDS";
 const std::string CardStorage::SaveKeyGold = "SAVE_KEY_GOLD";

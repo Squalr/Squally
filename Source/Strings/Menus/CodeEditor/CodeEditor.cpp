@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* CodeEditor::clone()
+	{
+		return CodeEditor::create();
+	}
 
 	CodeEditor::CodeEditor() : LocalizedString()
 	{

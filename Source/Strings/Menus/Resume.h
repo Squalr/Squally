@@ -12,6 +12,7 @@ namespace LocaleStrings
 	{
 	public:
 		static Resume* create();
+		virtual LocalizedString* clone() override;
 		
 	protected:
 		virtual std::string getStringAr() override;

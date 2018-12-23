@@ -3,12 +3,11 @@
 #include "cocos2d.h"
 #include "cocos/audio/include/AudioEngine.h"
 
-#include "steam_api.h"
-
 #include "Analytics/AnalyticsCategories.h"
 #include "Bootstrapper.h"
 #include "Engine/Analytics/Analytics.h"
 #include "Engine/Config/ConfigManager.h"
+#include "Engine/GlobalDirector.h"
 #include "Engine/Steam/Steam.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Menus/Title/TitleScreen.h"
@@ -43,19 +42,9 @@ bool GameWindow::applicationDidFinishLaunching()
 		LogUtils::logError("failed to redirect standard output to file.");
 	}
 
-	if (Steam::isSteamEnabled())
+	if (!Steam::init())
 	{
-		if (SteamAPI_RestartAppIfNecessary(Steam::SteamAppId))
-		{
-			return false;
-		}
-
-		if (!SteamAPI_Init())
-		{
-			return false;
-		}
-
-		LogUtils::log("Steam initialized");
+		return false;
 	}
 
 	Director* director = Director::getInstance();
@@ -95,13 +84,15 @@ bool GameWindow::applicationDidFinishLaunching()
 }
 
 // This function will be called when the app is inactive. Note, when receiving a phone call it is invoked.
-void GameWindow::applicationDidEnterBackground() {
+void GameWindow::applicationDidEnterBackground()
+{
 	Director::getInstance()->stopAnimation();
 	AudioEngine::pauseAll();
 }
 
 // This function will be called when the app is active again
-void GameWindow::applicationWillEnterForeground() {
+void GameWindow::applicationWillEnterForeground()
+{
 	Director::getInstance()->startAnimation();
 	AudioEngine::resumeAll();
 }

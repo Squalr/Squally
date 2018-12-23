@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Options::clone()
+	{
+		return Options::create();
+	}
 
 	Options::Options() : LocalizedString()
 	{

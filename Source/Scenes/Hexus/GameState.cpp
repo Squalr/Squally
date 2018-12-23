@@ -1,5 +1,16 @@
 #include "GameState.h"
 
+#include "Engine/Utils/StrUtils.h"
+
+#include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/Deck.h"
+
+#include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
 const std::string GameState::requestStateUpdateEvent = "EVENT_HEXUS_REQUEST_UPDATE_STATE";
 const std::string GameState::beforeStateUpdateEvent = "EVENT_HEXUS_BEFORE_UPDATE_STATE";
 const std::string GameState::onStateUpdateEvent = "EVENT_HEXUS_ON_UPDATE_STATE";
@@ -157,7 +168,7 @@ void GameState::clearInteraction()
 
 void GameState::removeFieldCards()
 {
-	std::vector<CardRow *> rows = this->getAllRows();
+	std::vector<CardRow*> rows = this->getAllRows();
 
 	for (auto it = rows.begin(); it != rows.end(); it++)
 	{

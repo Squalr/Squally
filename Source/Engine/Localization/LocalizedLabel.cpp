@@ -65,6 +65,16 @@ void LocalizedLabel::onEnter()
 	}
 }
 
+LocalizedLabel* LocalizedLabel::clone()
+{
+	if (this->localizedString == nullptr)
+	{
+		return LocalizedLabel::create(this->fontStyle, this->fontSize);
+	}
+
+	return LocalizedLabel::create(this->fontStyle, this->fontSize, this->localizedString->clone());
+}
+
 void LocalizedLabel::initializeStringToLocale(std::string newString)
 {
 	std::string fontPath;

@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* DecStorm::clone()
+	{
+		return DecStorm::create();
+	}
 
 	DecStorm::DecStorm() : LocalizedString()
 	{

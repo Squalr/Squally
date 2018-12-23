@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* ContinueGame::clone()
+	{
+		return ContinueGame::create();
+	}
 
 	ContinueGame::ContinueGame() : LocalizedString()
 	{

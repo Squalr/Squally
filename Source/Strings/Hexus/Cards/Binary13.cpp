@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Binary13::clone()
+	{
+		return Binary13::create();
+	}
 
 	Binary13::Binary13() : LocalizedString()
 	{

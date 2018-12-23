@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Tutorials::clone()
+	{
+		return Tutorials::create();
+	}
 
 	Tutorials::Tutorials() : LocalizedString()
 	{

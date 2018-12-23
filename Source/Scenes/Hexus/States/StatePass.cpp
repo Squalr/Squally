@@ -1,13 +1,15 @@
 #include "StatePass.h"
 
+#include "Engine/Localization/Localization.h"
 #include "Engine/Sound/SoundManager.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/UI/Controls/IconMenuSprite.h"
+#include "Engine/Utils/StrUtils.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
 
-const std::string StatePass::StringKeyHexusPass = "Menu_Hexus_Pass";
-const std::string StatePass::StringKeyHexusLastStand = "Menu_Hexus_Last_Stand";
-const std::string StatePass::StringKeyHexusClaimVictory = "Menu_Hexus_Claim_Victory";
+using namespace cocos2d;
 
 StatePass* StatePass::create()
 {

@@ -12,6 +12,7 @@ namespace LocaleStrings
 	{
 	public:
 		static Resolution1920x1080* create();
+		virtual LocalizedString* clone() override;
 		
 	protected:
 		virtual std::string getStringAr() override;

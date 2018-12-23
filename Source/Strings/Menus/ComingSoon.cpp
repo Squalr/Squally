@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* ComingSoon::clone()
+	{
+		return ComingSoon::create();
+	}
 
 	ComingSoon::ComingSoon() : LocalizedString()
 	{

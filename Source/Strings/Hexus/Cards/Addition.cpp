@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Addition::clone()
+	{
+		return Addition::create();
+	}
 
 	Addition::Addition() : LocalizedString()
 	{

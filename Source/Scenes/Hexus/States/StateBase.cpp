@@ -1,5 +1,9 @@
 #include "StateBase.h"
 
+#include "cocos/base/CCEventListenerCustom.h"
+
+using namespace cocos2d;
+
 StateBase::StateBase(GameState::StateType stateType)
 {
 	this->stateType = stateType;

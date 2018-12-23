@@ -9,13 +9,14 @@
 namespace cocos2d
 {
 	class EventMouse;
-	class Label;
 }
+
+class LocalizedLabel;
 
 class MenuLabel : public SmartNode
 {
 public:
-	static MenuLabel * create(std::string labelText, std::string fontResource, float fontSize);
+	static MenuLabel* create(LocalizedLabel* label);
 
 	void setText(std::string text);
 	void setColor(cocos2d::Color4B color);
@@ -24,7 +25,7 @@ public:
 	void setCallback(std::function<void(MenuLabel*)> callback);
 
 protected:
-	MenuLabel(std::string labelText, std::string fontResource, float fontSize);
+	MenuLabel(LocalizedLabel* label);
 	virtual ~MenuLabel();
 
 private:
@@ -33,8 +34,8 @@ private:
 	void onMouseMove(cocos2d::EventMouse* event);
 	void onMouseDown(cocos2d::EventMouse* event);
 
-	cocos2d::Label* label;
-	cocos2d::Label* labelHighlighted;
+	LocalizedLabel* label;
+	LocalizedLabel* labelHighlighted;
 	std::function<void(MenuLabel*)> menuOnMouseClick;
 
 	cocos2d::Color4B normalColor = cocos2d::Color4B::WHITE;

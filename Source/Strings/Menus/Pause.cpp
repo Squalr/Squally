@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Pause::clone()
+	{
+		return Pause::create();
+	}
 
 	Pause::Pause() : LocalizedString()
 	{

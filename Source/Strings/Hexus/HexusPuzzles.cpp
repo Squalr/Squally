@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* HexusPuzzles::clone()
+	{
+		return HexusPuzzles::create();
+	}
 
 	HexusPuzzles::HexusPuzzles() : LocalizedString()
 	{

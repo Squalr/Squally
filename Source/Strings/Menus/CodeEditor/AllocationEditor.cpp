@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* AllocationEditor::clone()
+	{
+		return AllocationEditor::create();
+	}
 
 	AllocationEditor::AllocationEditor() : LocalizedString()
 	{

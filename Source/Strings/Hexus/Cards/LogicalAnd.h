@@ -12,6 +12,7 @@ namespace LocaleStrings
 	{
 	public:
 		static LogicalAnd* create();
+		virtual LocalizedString* clone() override;
 		
 	protected:
 		virtual std::string getStringAr() override;

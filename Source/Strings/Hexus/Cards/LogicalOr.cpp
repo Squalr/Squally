@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* LogicalOr::clone()
+	{
+		return LogicalOr::create();
+	}
 
 	LogicalOr::LogicalOr() : LocalizedString()
 	{

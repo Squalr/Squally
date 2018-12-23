@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* HexStorm::clone()
+	{
+		return HexStorm::create();
+	}
 
 	HexStorm::HexStorm() : LocalizedString()
 	{

@@ -56,7 +56,7 @@ void Localization::setLanguage(cocos2d::LanguageType languageType)
 cocos2d::LanguageType Localization::getNativeLanguage()
 {
 	// Default to steam language
-	if (Steam::isSteamEnabled())
+	if (Steam::isSquallySteamBuild())
 	{
 		return Steam::getLanguage();
 	}

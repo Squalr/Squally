@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Assembler::clone()
+	{
+		return Assembler::create();
+	}
 
 	Assembler::Assembler() : LocalizedString()
 	{

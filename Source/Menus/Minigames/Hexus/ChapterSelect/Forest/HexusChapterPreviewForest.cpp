@@ -1,6 +1,15 @@
 #include "HexusChapterPreviewForest.h"
 
-const std::string HexusChapterPreviewForest::stringKeyChapterName = "HEXUS_CHAPTER_FOREST";
+#include "cocos/2d/CCClippingNode.h"
+#include "cocos/2d/CCSprite.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
+
+#include "Resources/UIResources.h"
+
+using namespace cocos2d;
+
+const std::string HexusChapterPreviewForest::SaveKeyChapterName = "HEXUS_CHAPTER_FOREST";
 
 HexusChapterPreviewForest* HexusChapterPreviewForest::create()
 {
@@ -11,7 +20,7 @@ HexusChapterPreviewForest* HexusChapterPreviewForest::create()
 	return instance;
 }
 
-HexusChapterPreviewForest::HexusChapterPreviewForest() : HexusChapterPreview(HexusChapterPreviewForest::stringKeyChapterName)
+HexusChapterPreviewForest::HexusChapterPreviewForest() : HexusChapterPreview(HexusChapterPreviewForest::SaveKeyChapterName)
 {
 	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest));
 	this->text->setString("Forest");

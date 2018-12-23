@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Subtract::clone()
+	{
+		return Subtract::create();
+	}
 
 	Subtract::Subtract() : LocalizedString()
 	{

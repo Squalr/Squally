@@ -1,6 +1,10 @@
 #include "Deck.h"
 
+#include "Engine/Utils/GameUtils.h"
+
 #include "Resources/HexusResources.h"
+
+using namespace cocos2d;
 
 Deck* Deck::create()
 {

@@ -14,6 +14,11 @@ namespace LocaleStrings
 
 		return instance;
 	}
+	
+	LocalizedString* Resolution1080x768::clone()
+	{
+		return Resolution1080x768::create();
+	}
 
 	Resolution1080x768::Resolution1080x768() : LocalizedString()
 	{
