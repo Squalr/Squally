@@ -1,5 +1,11 @@
 #include "MinigamesMenu.h"
 
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+
 #include "Engine/GlobalDirector.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/MenuSprite.h"
@@ -10,11 +16,14 @@
 #include "Menus/MenuBackground.h"
 
 #include "Resources/SoundResources.h"
+#include "Resources/UIResources.h"
 
 #include "Strings/Menus/Back.h"
 #include "Strings/Menus/ComingSoon.h"
 #include "Strings/Hexus/Hexus.h"
 #include "Strings/Hexus/HexusPuzzles.h"
+
+using namespace cocos2d;
 
 MinigamesMenu* MinigamesMenu::instance;
 

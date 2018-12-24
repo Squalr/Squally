@@ -5,6 +5,8 @@
 #include "stringbuffer.h"
 #include "writer.h"
 
+#include "cocos/platform/CCFileUtils.h"
+
 #include "Engine/Localization/Localization.h"
 #include "Events/DialogEvents.h"
 

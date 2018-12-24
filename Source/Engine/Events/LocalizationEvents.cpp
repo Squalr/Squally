@@ -1,6 +1,7 @@
 #include "LocalizationEvents.h"
 
-#include "cocos2d.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventDispatcher.h"
 
 using namespace cocos2d;
 

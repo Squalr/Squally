@@ -1,5 +1,7 @@
 #include "PlatformerDecorObject.h"
 
+using namespace cocos2d;
+
 PlatformerDecorObject* PlatformerDecorObject::create(ValueMap* initProperties)
 {
 	PlatformerDecorObject* instance = new PlatformerDecorObject(initProperties);

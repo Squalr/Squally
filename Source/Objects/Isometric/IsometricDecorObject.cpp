@@ -1,5 +1,7 @@
 #include "IsometricDecorObject.h"
 
+using namespace cocos2d;
+
 IsometricDecorObject* IsometricDecorObject::create(ValueMap* initProperties)
 {
 	IsometricDecorObject* instance = new IsometricDecorObject(initProperties);

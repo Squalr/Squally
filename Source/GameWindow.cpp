@@ -1,7 +1,8 @@
 #include "GameWindow.h"
 
-#include "cocos2d.h"
 #include "cocos/audio/include/AudioEngine.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/platform/desktop/CCGLViewImpl-desktop.h"
 
 #include "Analytics/AnalyticsCategories.h"
 #include "Bootstrapper.h"

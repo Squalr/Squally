@@ -35,8 +35,8 @@ TitleScreenBackground::TitleScreenBackground()
 	this->background = Sprite::create(UIResources::Menus_Backgrounds_ForestBackground);
 	this->fog = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
 	this->foregroundFog = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
-	this->backgroundTrees = FloatingSprite::create(UIResources::Menus_Backgrounds_LightTrees, Vec2(-48.0f, 8.0f), Vec2(7.0f, 5.0f));
-	this->backgroundVines = FloatingSprite::create(UIResources::Menus_Backgrounds_FarVines, Vec2(64.0f, -8.0f), Vec2(7.0f, 5.0f));
+	this->backgroundTrees = FloatingSprite::create(UIResources::Menus_Backgrounds_LightTrees, Vec2(-12.0f, 8.0f), Vec2(7.0f, 5.0f));
+	this->backgroundVines = FloatingSprite::create(UIResources::Menus_Backgrounds_FarVines, Vec2(12.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->midgroundTrees = FloatingSprite::create(UIResources::Menus_Backgrounds_MidgroundTrees, Vec2(8.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->tree = Sprite::create(UIResources::Menus_Backgrounds_Tree);
 	this->eyes1 = SmartAnimationSequenceNode::create();

@@ -1,5 +1,10 @@
 #include "Chest.h"
 
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCSprite.h"
+
+#include "Resources/ObjectResources.h"
+
 Chest* Chest::create(Node* contentNode)
 {
 	Chest* instance = new Chest(contentNode);
@@ -9,7 +14,7 @@ Chest* Chest::create(Node* contentNode)
 	return instance;
 }
 
-Chest::Chest(Node* contentNode) : Node()
+Chest::Chest(Node* contentNode) : SmartNode()
 {
 	this->content = contentNode;
 	this->chestOpen = Node::create();

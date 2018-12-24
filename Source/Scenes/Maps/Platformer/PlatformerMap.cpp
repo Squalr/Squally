@@ -1,10 +1,16 @@
 #include "PlatformerMap.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/physics/CCPhysicsWorld.h"
+
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Events/NavigationEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
+
+using namespace cocos2d;
 
 PlatformerMap* PlatformerMap::instance = nullptr;
 

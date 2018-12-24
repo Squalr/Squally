@@ -818,6 +818,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Maps/Platformer/Weather/Snow.cpp
 	Source/Scenes/Maps/Platformer/Weather/WeatherDeserializer.cpp
 	Source/Sound/MusicDeserializer.cpp
+	Source/Strings/Cutscenes/PressEscToSkip.cpp
 	Source/Strings/Empty.cpp
 	Source/Strings/Hexus/BinLabel.cpp
 	Source/Strings/Hexus/BinaryCards.cpp
@@ -1747,6 +1748,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Maps/Platformer/Weather/Snow.h
 	Source/Scenes/Maps/Platformer/Weather/WeatherDeserializer.h
 	Source/Sound/MusicDeserializer.h
+	Source/Strings/Cutscenes/PressEscToSkip.h
 	Source/Strings/Empty.h
 	Source/Strings/Hexus/BinLabel.h
 	Source/Strings/Hexus/BinaryCards.h

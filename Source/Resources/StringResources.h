@@ -19,7 +19,5 @@ namespace StringResources
 	extern const std::string Dialogue_CutsceneSquallyUploadSpace;
 	extern const std::string Dialogue_CutsceneVaporLabs;
 	extern const std::string Dialogue_CutsceneVaporWeb;
-	extern const std::string Dialogue_TutorialExactScanI;
-	extern const std::string Hexus;
-	extern const std::string Menus;
+	extern const std::string TutorialExactScanI;
 };

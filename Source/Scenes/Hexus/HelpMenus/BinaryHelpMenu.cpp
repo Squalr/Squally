@@ -1,5 +1,7 @@
 #include "BinaryHelpMenu.h"
 
+using namespace cocos2d;
+
 BinaryHelpMenu* BinaryHelpMenu::create()
 {
 	BinaryHelpMenu* binaryHelpMenu = new BinaryHelpMenu();

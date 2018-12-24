@@ -1,23 +1,21 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Engine/Hackables/HackableObject.h"
-#include "Objects/Platformer/Chest.h"
 
-using namespace cocos2d;
+class Chest;
 
 class Plushie : public HackableObject
 {
 public:
 
 protected:
-	Plushie(ValueMap* initProperties);
+	Plushie(cocos2d::ValueMap* initProperties);
 	~Plushie();
 
 	virtual void registerHackables();
-	Vec2 getButtonOffset() override;
+	cocos2d::Vec2 getButtonOffset() override;
 	void update(float) override;
 
-	Node* sprite;
+	cocos2d::Node* sprite;
 	Chest* chest;
 };

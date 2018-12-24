@@ -1,17 +1,19 @@
 #include "HomeAssistantRobot.h"
 
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCLabel.h"
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
-#include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCActionInstant.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Dialogue/DialogueLabel.h"
-#include "Engine/Localization/Localization.h"
+#include "Engine/Localization/LocalizedLabel.h"
 
 #include "Resources/CutsceneResources.h"
 #include "Resources/StringResources.h"
+
+#include "Strings/Cutscenes/PressEscToSkip.h"
 
 using namespace cocos2d;
 
@@ -41,20 +43,20 @@ HomeAssistantRobot::HomeAssistantRobot(HomeAssistantRobotScene homeAssistantRobo
 		case HomeAssistantRobotScene::Intro:
 		{
 			this->robot = Sprite::create(CutsceneResources::HomeAssistant_Robot);
-			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneHomeAssistantRobot, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneHomeAssistantRobot, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 			this->brokenPlate->setVisible(false);
 			break;
 		}
 		case HomeAssistantRobotScene::Singularity:
 		{
 			this->robot = Sprite::create(CutsceneResources::HomeAssistant_RobotEvil);
-			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneHomeAssistantRobotSingularity, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneHomeAssistantRobotSingularity, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 			break;
 		}
 	}
 
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
-	this->escapeLabel = Label::createWithTTF("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
+	this->escapeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, LocaleStrings::PressEscToSkip::create(), Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 

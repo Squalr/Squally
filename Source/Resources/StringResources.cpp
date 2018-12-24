@@ -18,6 +18,4 @@ const std::string StringResources::Dialogue_CutsceneSquallyUploadMars = "Strings
 const std::string StringResources::Dialogue_CutsceneSquallyUploadSpace = "Strings/Dialogue_CutsceneSquallyUploadSpace.json";
 const std::string StringResources::Dialogue_CutsceneVaporLabs = "Strings/Dialogue_CutsceneVaporLabs.json";
 const std::string StringResources::Dialogue_CutsceneVaporWeb = "Strings/Dialogue_CutsceneVaporWeb.json";
-const std::string StringResources::Dialogue_TutorialExactScanI = "Strings/Dialogue_TutorialExactScanI.json";
-const std::string StringResources::Hexus = "Strings/Hexus.json";
-const std::string StringResources::Menus = "Strings/Menus.json";
+const std::string StringResources::TutorialExactScanI = "Strings/TutorialExactScanI.json";

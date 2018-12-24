@@ -1,5 +1,9 @@
 #include "Plushie.h"
 
+#include "Objects/Platformer/Chest.h"
+
+using namespace cocos2d;
+
 Plushie::Plushie(ValueMap* initProperties) : HackableObject(initProperties)
 {
 	this->sprite = Node::create();

@@ -1,9 +1,17 @@
 #include "PlushieMonkey.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCSprite.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
+#include "Objects/Platformer/Chest.h"
 
 #include "Resources/UIResources.h"
+
+using namespace cocos2d;
 
 const std::string PlushieMonkey::MapKeyPlushieMonkey = "plushie_monkey";
 int PlushieMonkey::lockCountDown = 234900;
@@ -20,7 +28,9 @@ PlushieMonkey* PlushieMonkey::create(ValueMap* initProperties)
 PlushieMonkey::PlushieMonkey(ValueMap* initProperties) : Plushie(initProperties)
 {
 	Sprite* coin = Sprite::create(UIResources::Menus_Icons_Coins);
-	Label* gold = Label::createWithTTF("+200", Localization::getMainFont(), 24.0f);
+	LocalizedLabel* gold = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2);
+
+	gold->setString("+200");
 	gold->enableOutline(Color4B::BLACK, 2);
 
 	coin->setScale(0.5f);
@@ -30,8 +40,9 @@ PlushieMonkey::PlushieMonkey(ValueMap* initProperties) : Plushie(initProperties)
 	this->sprite->addChild(coin);
 	this->sprite->addChild(gold);
 
-	this->valueLabel = Label::createWithTTF(std::to_string(PlushieMonkey::lockCountDown), Localization::getMainFont(), 24.0f);
+	this->valueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2);
 
+	this->valueLabel->setString(std::to_string(PlushieMonkey::lockCountDown));
 	this->valueLabel->setPosition(-48.0f, 128.0f);
 	this->valueLabel->enableOutline(Color4B::BLACK, 2.0f);
 

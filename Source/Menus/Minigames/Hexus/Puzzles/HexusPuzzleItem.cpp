@@ -1,5 +1,7 @@
 #include "HexusPuzzleItem.h"
 
+#include "cocos/base/CCDirector.h"
+
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Events/NavigationEvents.h"

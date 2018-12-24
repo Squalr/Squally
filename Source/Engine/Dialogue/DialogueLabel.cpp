@@ -1,9 +1,10 @@
 #include "DialogueLabel.h"
 
 #include "cocos/2d/CCLabel.h"
+#include "cocos/2d/CCSprite.h"
 
 #include "Engine/Dialogue/DialogueTree.h"
-#include "Engine/Localization/Localization.h"
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Events/DialogEvents.h"
 
 using namespace cocos2d;
@@ -11,23 +12,23 @@ using namespace cocos2d;
 const std::string DialogueLabel::ScheduleKeyTypeWriterEffect = "SCHEDULE_TYPE_WRITER_EFFECT";
 const float DialogueLabel::DefaultTypeSpeed = 0.04f;
 
-DialogueLabel* DialogueLabel::create(std::string filePath, std::string fontResource, Size size)
+DialogueLabel* DialogueLabel::create(std::string filePath, LocalizedLabel* label, Size size)
 {
-	DialogueLabel* instance = new DialogueLabel(DialogueTree::loadDialogueFromFile(filePath), fontResource, size);
+	DialogueLabel* instance = new DialogueLabel(DialogueTree::loadDialogueFromFile(filePath), label, size);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DialogueLabel::DialogueLabel(DialogueTree* root, std::string fontResource, Size size)
+DialogueLabel::DialogueLabel(DialogueTree* root, LocalizedLabel* label, Size size)
 {
 	this->hasStarted = false;
 	this->dialogueShownCallback = nullptr;
 	this->dialogueRoot = root;
 	this->currentDialogue = this->dialogueRoot;
 	this->dialogueSpeed = DialogueLabel::DefaultTypeSpeed;
-	this->label = Label::createWithTTF("", fontResource, Localization::getFontSizeH2(fontResource));
+	this->label = label;
 
 	this->label->setHorizontalAlignment(TextHAlignment::LEFT);
 	this->label->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -85,13 +86,13 @@ void DialogueLabel::runTypeWriterEffect()
 {
 	this->label->unschedule(DialogueLabel::ScheduleKeyTypeWriterEffect);
 
-	static std::map<Label*, int> mapTypeIdx;
-	std::map<Label*, int>::iterator it;
+	static std::map<LocalizedLabel*, int> mapTypeIdx;
+	std::map<LocalizedLabel*, int>::iterator it;
 	it = mapTypeIdx.find(this->label);
 
 	if (it == mapTypeIdx.end())
 	{
-		mapTypeIdx.insert(std::pair<Label*, int>(this->label, 0));
+		mapTypeIdx.insert(std::pair<LocalizedLabel*, int>(this->label, 0));
 		it = mapTypeIdx.find(this->label);
 	}
 	else

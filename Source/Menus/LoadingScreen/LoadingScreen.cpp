@@ -1,6 +1,11 @@
 #include "LoadingScreen.h"
 
 #include "cocos/audio/include/AudioEngine.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/platform/CCFileUtils.h"
+#include "cocos/renderer/CCTextureCache.h"
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableMap.h"

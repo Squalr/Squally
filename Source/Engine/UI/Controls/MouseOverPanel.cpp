@@ -1,6 +1,8 @@
 #include "MouseOverPanel.h"
 
-#include "cocos2d.h"
+#include "cocos/2d/CCLayer.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Events/MouseEvents.h"
 #include "Engine/SmartNode.h"
