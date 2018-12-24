@@ -5,12 +5,12 @@
 
 namespace cocos2d
 {
-	class Label;
 	class LayerColor;
 	class Sprite;
 }
 
 class DialogueLabel;
+class LocalizedLabel;
 
 class BoardMembers : public CutsceneClip
 {
@@ -32,7 +32,7 @@ private:
 
 	cocos2d::LayerColor* dialoguePlate;
 	DialogueLabel* dialogue;
-	cocos2d::Label* escapeLabel;
+	LocalizedLabel* escapeLabel;
 
 	static const cocos2d::Vec2 panOffset;
 };

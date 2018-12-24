@@ -1,6 +1,7 @@
 #include "OpponentFirstBanner.h"
 
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
 
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"

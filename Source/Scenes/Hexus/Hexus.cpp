@@ -1,5 +1,11 @@
 #include "Hexus.h"
 
+#include "cocos/2d/CCLayer.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+
 #include "Engine/GlobalDirector.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/IconMenuSprite.h"

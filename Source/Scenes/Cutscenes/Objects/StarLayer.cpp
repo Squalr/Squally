@@ -3,6 +3,7 @@
 #include "cocos/2d/CCAction.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCLayer.h"
+#include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 

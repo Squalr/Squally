@@ -4,12 +4,12 @@
 
 namespace cocos2d
 {
-	class Label;
 	class LayerColor;
 	class Sprite;
 }
 
 class DialogueLabel;
+class LocalizedLabel;
 class SmartAnimationSequenceNode;
 class StarLayer;
 
@@ -41,7 +41,7 @@ private:
 
 	cocos2d::LayerColor* dialoguePlate;
 	DialogueLabel* dialogue;
-	cocos2d::Label* escapeLabel;
+	LocalizedLabel* escapeLabel;
 
 	static const float dialogueHeight;
 

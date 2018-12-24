@@ -1,20 +1,18 @@
 #pragma once
-#include "cocos2d.h"
 
-#include "Engine/Localization/Localization.h"
 #include "Objects/Platformer/Plushies/Plushie.h"
 
-using namespace cocos2d;
+class LocalizedLabel;
 
 class PlushieMonkey : public Plushie
 {
 public:
-	static PlushieMonkey* create(ValueMap* initProperties);
+	static PlushieMonkey* create(cocos2d::ValueMap* initProperties);
 
 	static const std::string MapKeyPlushieMonkey;
 
 protected:
-	PlushieMonkey(ValueMap* initProperties);
+	PlushieMonkey(cocos2d::ValueMap* initProperties);
 	~PlushieMonkey();
 
 	void update(float) override;
@@ -22,11 +20,11 @@ protected:
 	void registerHackables() override;
 
 private:
-	HackableData * puzzleData;
+	HackableData* puzzleData;
 
 	void decreaseLockTimer();
 
-	Label* valueLabel;
+	LocalizedLabel* valueLabel;
 
 	int previousValue;
 	int previousValueMax;

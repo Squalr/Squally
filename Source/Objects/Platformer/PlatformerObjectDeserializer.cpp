@@ -1,5 +1,8 @@
 #include "PlatformerObjectDeserializer.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
 #include "Engine/GlobalDirector.h"
 #include "Objects/Platformer/PlatformerObjects.h"
 

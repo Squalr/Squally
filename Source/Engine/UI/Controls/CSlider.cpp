@@ -1,6 +1,7 @@
 #include "CSlider.h"
 
-#include "cocos2d.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/2d/CCClippingRectangleNode.h"
 
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Resources/UIResources.h"

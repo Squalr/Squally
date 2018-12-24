@@ -1,21 +1,21 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Engine/SmartNode.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/FloatingSprite.h"
-#include "Engine/UI/InfiniteParallaxNode.h"
-#include "Engine/UI/Mouse.h"
-#include "Resources/ParticleResources.h"
-#include "Resources/UIResources.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class ParticleSystem;
+	class Sprite;
+}
+
+class InfiniteParallaxNode;
+class FloatingSprite;
 
 class MenuBackground : public SmartNode
 {
 public:
-	static MenuBackground * claimInstance();
-	static MenuBackground * getInstance();
+	static MenuBackground* claimInstance();
+	static MenuBackground* getInstance();
 
 private:
 	MenuBackground();
@@ -23,7 +23,7 @@ private:
 
 	void initializePositions() override;
 
-	Sprite* background;
+	cocos2d::Sprite* background;
 	FloatingSprite* backgroundTrees;
 	FloatingSprite* midgroundTrees;
 	FloatingSprite* foregroundVines;
@@ -31,12 +31,11 @@ private:
 	InfiniteParallaxNode* foregroundFog;
 	FloatingSprite* foregroundGrassBottom;
 	FloatingSprite* foregroundGrassTop;
-	Sprite* webs;
-	Sprite* foregroundLight;
+	cocos2d::Sprite* webs;
+	cocos2d::Sprite* foregroundLight;
 
-	ParticleSystem* windParticles;
-	ParticleSystem* fireflyParticles;
+	cocos2d::ParticleSystem* windParticles;
+	cocos2d::ParticleSystem* fireflyParticles;
 
 	static MenuBackground* menuBackgroundInstance;
 };
-

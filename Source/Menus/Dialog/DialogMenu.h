@@ -8,17 +8,17 @@
 namespace cocos2d
 {
 	class ClippingNode;
-	class Label;
 	class Node;
 	class Sprite;
 }
 
+class LocalizedLabel;
 class MenuLabel;
 
 class DialogMenu : public SmartNode
 {
 public:
-	static DialogMenu * loadDialogFromFile(std::string filePath);
+	static DialogMenu* loadDialogFromFile(std::string filePath);
 
 protected:
 	enum Portrait
@@ -62,7 +62,7 @@ private:
 	cocos2d::Sprite* dialogMenu;
 	cocos2d::Node* spriteLeft;
 	cocos2d::Node* spriteRight;
-	cocos2d::Label* dialogText;
+	LocalizedLabel* dialogText;
 	cocos2d::ClippingNode* spriteLeftClip;
 	cocos2d::ClippingNode* spriteRightClip;
 	cocos2d::Sprite* frameLeft;

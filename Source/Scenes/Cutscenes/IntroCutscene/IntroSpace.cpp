@@ -1,19 +1,22 @@
 #include "IntroSpace.h"
 
-#include "cocos/2d/CCAction.h"
-#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCLabel.h"
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Dialogue/DialogueLabel.h"
-#include "Engine/Localization/Localization.h"
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Cutscenes/Objects/StarLayer.h"
 
 #include "Resources/CutsceneResources.h"
 #include "Resources/StringResources.h"
+
+#include "Strings/Cutscenes/PressEscToSkip.h"
 
 using namespace cocos2d;
 
@@ -46,8 +49,8 @@ IntroSpace::IntroSpace()
 	this->weaver4 = SmartAnimationSequenceNode::create(CutsceneResources::IntroSpace_Weaver_0000);
 	this->weaver5 = SmartAnimationSequenceNode::create(CutsceneResources::IntroSpace_Weaver_0000);
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, IntroSpace::dialogueHeight);
-	this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneIntroSpace, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
-	this->escapeLabel = Label::createWithTTF("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
+	this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneIntroSpace, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	this->escapeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, LocaleStrings::PressEscToSkip::create(), Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 	this->mars->setAnchorPoint(Vec2(0.0f, 0.0f));

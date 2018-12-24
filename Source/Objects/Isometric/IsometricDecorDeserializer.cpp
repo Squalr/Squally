@@ -1,5 +1,10 @@
 #include "IsometricDecorDeserializer.h"
 
+#include "cocos/2d/CCSprite.h"
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
 #include "Objects/Isometric/IsometricDecorObject.h"
 #include "Objects/Isometric/IsometricObjectDeserializer.h"
 

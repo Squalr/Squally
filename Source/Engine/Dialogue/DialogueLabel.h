@@ -6,26 +6,22 @@
 
 #include "Engine/SmartNode.h"
 
-namespace cocos2d
-{
-	class Label;
-}
-
 class DialogueTree;
+class LocalizedLabel;
 
 class DialogueLabel : public SmartNode
 {
 public:
-	static DialogueLabel* create(std::string filePath, std::string fontResource, cocos2d::Size size);
+	static DialogueLabel* create(std::string filePath, LocalizedLabel* label, cocos2d::Size size);
 
 	void setDialogueSpeed(float speed);
 	bool showNextDialogue();
 	void setDialogueShownCallback(std::function<void()> callback);
 
-	cocos2d::Label* label;
+	LocalizedLabel* label;
 
 private:
-	DialogueLabel(DialogueTree* root, std::string fontResource, cocos2d::Size size);
+	DialogueLabel(DialogueTree* root, LocalizedLabel* label, cocos2d::Size size);
 	virtual ~DialogueLabel();
 
 	void updateLabels();

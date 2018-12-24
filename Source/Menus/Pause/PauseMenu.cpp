@@ -1,5 +1,9 @@
 #include "PauseMenu.h"
 
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
@@ -12,16 +16,16 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Exit.h"
 #include "Strings/Menus/Options/Options.h"
 #include "Strings/Menus/Pause.h"
+#include "Strings/Menus/QuitToTitle.h"
 #include "Strings/Menus/Resume.h"
 
 using namespace cocos2d;
 
 const Color3B PauseMenu::TitleColor = Color3B(88, 188, 193);
 
-PauseMenu * PauseMenu::create()
+PauseMenu* PauseMenu::create()
 {
 	PauseMenu* instance = new PauseMenu();
 
@@ -39,7 +43,6 @@ PauseMenu::PauseMenu()
 	this->optionsClickCallback = nullptr;
 	this->exitClickCallback = nullptr;
 
-	int fontSize = 24;
 	Size shadowSize = Size(-2.0f, -2.0f);
 	int shadowBlur = 2;
 	int hoverOutlineSize = 2;
@@ -48,14 +51,14 @@ PauseMenu::PauseMenu()
 	Color3B highlightColor = Color3B::YELLOW;
 	Color4B glowColor = Color4B::ORANGE;
 
-	LocalizedLabel*	resumeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Resume::create());
-	LocalizedLabel*	resumeLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Resume::create());
+	LocalizedLabel*	resumeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Resume::create());
+	LocalizedLabel*	resumeLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Resume::create());
 
-	LocalizedLabel*	optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Options::create());
-	LocalizedLabel*	optionsLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Options::create());
+	LocalizedLabel*	optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Options::create());
+	LocalizedLabel*	optionsLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Options::create());
 
-	LocalizedLabel*	exitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Exit::create());
-	LocalizedLabel*	exitLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Exit::create());
+	LocalizedLabel*	exitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::QuitToTitle::create());
+	LocalizedLabel*	exitLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::QuitToTitle::create());
 
 	resumeLabel->setColor(textColor);
 	resumeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -96,7 +99,7 @@ PauseMenu::PauseMenu()
 		UIResources::Menus_Buttons_GenericButtonHover);
 
 	this->pauseLabel->setColor(PauseMenu::TitleColor);
-	this->pauseLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
+	this->pauseLabel->enableShadow(Color4B::BLACK, Size(2.0f, -2.0f), 2);
 	
 	this->addChild(this->pauseWindow);
 	this->addChild(this->pauseLabel);
@@ -131,12 +134,12 @@ void PauseMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->pauseWindow->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->pauseLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 230.0f));
-	this->closeButton->setPosition(Vec2(visibleSize.width / 2 + 136.0f, visibleSize.height / 2 + 204.0f));
-	this->resumeButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 128.0f));
-	this->optionsButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 0.0f));
-	this->exitButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 180.0f));
+	this->pauseWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->pauseLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 230.0f));
+	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 136.0f, visibleSize.height / 2.0f + 204.0f));
+	this->resumeButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 128.0f));
+	this->optionsButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 0.0f));
+	this->exitButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 180.0f));
 }
 
 void PauseMenu::initializeListeners()

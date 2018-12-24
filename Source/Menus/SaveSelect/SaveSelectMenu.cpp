@@ -1,5 +1,11 @@
 #include "SaveSelectMenu.h"
 
+#include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
+
 #include "Engine/GlobalDirector.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
@@ -7,6 +13,8 @@
 #include "Events/NavigationEvents.h"
 #include "Menus/MenuBackground.h"
 #include "Scenes/Cutscenes/IntroCutscene/IntroCutscene.h"
+
+#include "Resources/UIResources.h"
 
 #include "Strings/Menus/ContinueGame.h"
 #include "Strings/Menus/NewGame.h"

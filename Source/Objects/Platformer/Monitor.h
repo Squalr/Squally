@@ -1,33 +1,33 @@
 #pragma once
-#include "cocos2d.h"
 
-#include "Events/DialogEvents.h"
 #include "Engine/Hackables/HackableObject.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/FloatingSprite.h"
-#include "Menus/Dialog/DialogMenu.h"
-#include "Resources/ObjectResources.h"
-#include "Resources/ParticleResources.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class ParticleSystem;
+}
+
+class DialogMenu;
+class FloatingSprite;
+class MenuSprite;
 
 class Monitor : public HackableObject
 {
 public:
-	static Monitor* create(ValueMap* initProperties);
+	static Monitor* create(cocos2d::ValueMap* initProperties);
 
 	static const std::string MapKeyMonitor;
 
 protected:
-	Monitor(ValueMap* initProperties);
+	Monitor(cocos2d::ValueMap* initProperties);
 	~Monitor();
 
 private:
 	MenuSprite* monitorSprite;
 	FloatingSprite* monitorSpriteFloating;
-	ParticleSystem* monitorParticles;
-	ParticleSystem* monitorParticlesBack;
-	ParticleSystem* monitorSparkles;
+	cocos2d::ParticleSystem* monitorParticles;
+	cocos2d::ParticleSystem* monitorParticlesBack;
+	cocos2d::ParticleSystem* monitorSparkles;
 	DialogMenu* monitorDialog;
 
 	void onMonitorClick(MenuSprite* menuSprite);

@@ -8,12 +8,14 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Dialogue/DialogueLabel.h"
-#include "Engine/Localization/Localization.h"
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Scenes/Cutscenes/Objects/Grid.h"
 #include "Scenes/Cutscenes/Objects/GridObject.h"
 
 #include "Resources/CutsceneResources.h"
 #include "Resources/StringResources.h"
+
+#include "Strings/Cutscenes/PressEscToSkip.h"
 
 using namespace cocos2d;
 
@@ -42,8 +44,8 @@ VaporWeb::VaporWeb()
 	this->grid = Grid::create();
 	this->darkLord = Sprite::create(CutsceneResources::VaporWeb_DarkLord);
 	this->dialoguePlate = LayerColor::create(Color4B(64, 0, 64, 255), visibleSize.width, VaporWeb::dialogueHeight);
-	this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneVaporWeb, Localization::getPixelFont(), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
-	this->escapeLabel = Label::createWithTTF("Press esc to skip", Localization::getPixelFont(), 20.0f, Size::ZERO, TextHAlignment::LEFT);
+	this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneVaporWeb, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	this->escapeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, LocaleStrings::PressEscToSkip::create(), Size::ZERO, TextHAlignment::LEFT);
 
 	for (int column = 0; column < VaporWeb::cellColumns; column++)
 	{

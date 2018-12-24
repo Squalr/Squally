@@ -1,14 +1,11 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Scenes/Hexus/HelpMenus/HelpMenuBase.h"
-
-using namespace cocos2d;
 
 class BinaryHelpMenu : public HelpMenuBase
 {
 public:
-	static BinaryHelpMenu * create();
+	static BinaryHelpMenu* create();
 
 private:
 	BinaryHelpMenu();

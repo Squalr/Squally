@@ -1,5 +1,19 @@
 #include "Monitor.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCParticleSystemQuad.h"
+#include "cocos/2d/CCSprite.h"
+
+#include "Events/DialogEvents.h"
+#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/UI/FloatingSprite.h"
+#include "Menus/Dialog/DialogMenu.h"
+#include "Resources/ObjectResources.h"
+#include "Resources/ParticleResources.h"
+
+using namespace cocos2d;
+
 const std::string Monitor::MapKeyMonitor = "monitor";
 
 Monitor* Monitor::create(ValueMap* initProperties)

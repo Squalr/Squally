@@ -1,11 +1,11 @@
 #pragma once
-#include "cocos2d.h"
-
-#include "Engine/Localization/Localization.h"
 
 #include "Scenes/Hexus/Components/Banners/BannerBase.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Sprite;
+}
 
 class OpponentFirstBanner : public BannerBase
 {

@@ -1,5 +1,11 @@
 #include "HexusArcade.h"
 
+#include "cocos/2d/CCSprite.h"
+
+#include "Resources/ObjectResources.h"
+
+using namespace cocos2d;
+
 HexusArcade* HexusArcade::create(ValueMap* initProperties)
 {
 	HexusArcade* instance = new HexusArcade(initProperties);
@@ -11,7 +17,7 @@ HexusArcade* HexusArcade::create(ValueMap* initProperties)
 
 HexusArcade::HexusArcade(ValueMap* initProperties) : HackableObject(initProperties)
 {
-	// this->arcadeMachine = Sprite::create(ObjectResources::Isometric_HexusArcade);
+	this->arcadeMachine = Sprite::create();
 
 	this->addChild(this->arcadeMachine);
 }

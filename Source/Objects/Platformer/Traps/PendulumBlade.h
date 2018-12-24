@@ -1,5 +1,4 @@
 #pragma once
-#include "cocos/math/Vec2.h"
 
 #include "Engine/Hackables/HackableObject.h"
 

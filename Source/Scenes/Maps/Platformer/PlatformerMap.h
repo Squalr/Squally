@@ -1,13 +1,6 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Scenes/Maps/MapBase.h"
-
-using namespace cocos2d;
-
-// Forward declarations
-class Hud;
-class SerializableMap;
 
 class PlatformerMap : public MapBase
 {

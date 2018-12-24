@@ -1,24 +1,25 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Engine/Hackables/HackableObject.h"
-#include "Resources/ObjectResources.h"
 
-using namespace cocos2d;
+namespace cocos2d
+{
+	class Sprite;
+}
 
 class HexusArcade : public HackableObject
 {
 public:
-	static HexusArcade* create(ValueMap* initProperties);
+	static HexusArcade* create(cocos2d::ValueMap* initProperties);
 
 protected:
-	HexusArcade(ValueMap* initProperties);
+	HexusArcade(cocos2d::ValueMap* initProperties);
 	~HexusArcade();
 
-	Vec2 getButtonOffset() override;
+	cocos2d::Vec2 getButtonOffset() override;
 
 private:
 	void registerHackables();
 
-	Sprite* arcadeMachine;
+	cocos2d::Sprite* arcadeMachine;
 };

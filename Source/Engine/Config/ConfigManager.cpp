@@ -1,7 +1,7 @@
 #include "ConfigManager.h"
 
-#define DONTBREAK
-#include "cocos2d.h"
+#include "cocos/platform/CCFileUtils.h"
+#include "cocos/platform/desktop/CCGLViewImpl-desktop.h"
 
 #include "Engine/Utils/GameUtils.h"
 

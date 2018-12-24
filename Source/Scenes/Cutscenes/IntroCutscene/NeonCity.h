@@ -1,18 +1,18 @@
 #pragma once
-#include "cocos2d.h"
 
 #include "Engine/Cutscenes/CutsceneClip.h"
 
 namespace cocos2d
 {
-	class Label;
 	class LayerColor;
+	class LayerGradient;
 	class Sprite;
 }
 
 class DialogueLabel;
 class FlyingCar;
 class InfiniteParallaxNode;
+class LocalizedLabel;
 class StarLayer;
 
 class NeonCity : public CutsceneClip
@@ -54,7 +54,7 @@ private:
 
 	cocos2d::LayerColor* dialoguePlate;
 	DialogueLabel* dialogue;
-	cocos2d::Label* escapeLabel;
+	LocalizedLabel* escapeLabel;
 
 	static const float vaporCorpOffset;
 };

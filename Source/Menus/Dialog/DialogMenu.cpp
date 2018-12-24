@@ -1,12 +1,20 @@
 #include "DialogMenu.h"
-#include "cocos2d.h"
+
 #include "allocators.h"
 #include "encodings.h"
 #include "document.h"
 #include "stringbuffer.h"
 #include "writer.h"
 
-#include "Engine/Localization/Localization.h"
+#include "cocos/2d/CCClippingNode.h"
+#include "cocos/2d/CCDrawNode.h"
+#include "cocos/2d/CCParticleSystemQuad.h"
+#include "cocos/2d/CCSprite.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/platform/CCFileUtils.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/MenuLabel.h"
 #include "Engine/UI/FloatingSprite.h"
 #include "Events/DialogEvents.h"
@@ -79,7 +87,8 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 	this->spriteLeft = this->getPortraitNode(portraitLeft, false);
 	this->spriteRight = this->getPortraitNode(portraitRight, true);
 
-	this->dialogText = nullptr; // Label::createWithTTF(text, Localization::getMainFont(), 24);
+	this->dialogText = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2);
+	this->dialogText->setString(text);
 	this->dialogText->enableWrap(true);
 	this->dialogText->setDimensions(1024.0f, 224.0f);
 
@@ -100,28 +109,42 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 
 	switch (speaker)
 	{
-	case Speaker::NoSpeaker:
-		this->dialogText->setAlignment(TextHAlignment::CENTER);
-		break;
-	case Speaker::Left:
-		this->dialogText->setAlignment(TextHAlignment::LEFT);
-		break;
-	case Speaker::Right:
-		this->dialogText->setAlignment(TextHAlignment::RIGHT);
-		break;
+		default:
+		case Speaker::NoSpeaker:
+		{
+			this->dialogText->setAlignment(TextHAlignment::CENTER);
+			break;
+		}
+		case Speaker::Left:
+		{
+			this->dialogText->setAlignment(TextHAlignment::LEFT);
+			break;
+		}
+		case Speaker::Right:
+		{
+			this->dialogText->setAlignment(TextHAlignment::RIGHT);
+			break;
+		}
 	}
 
 	switch (textMood)
 	{
-	case TextMood::Normal:
-		this->dialogText->setColor(Color3B::WHITE);
-		break;
-	case TextMood::Calm:
-		this->dialogText->setColor(Color3B(0x91, 0xb6, 0xd8));
-		break;
-	case TextMood::Angry:
-		this->dialogText->setColor(Color3B(0xcd, 0x4f, 0x39));
-		break;
+		default:
+		case TextMood::Normal:
+		{
+			this->dialogText->setColor(Color3B::WHITE);
+			break;
+		}
+		case TextMood::Calm:
+		{
+			this->dialogText->setColor(Color3B(0x91, 0xb6, 0xd8));
+			break;
+		}
+		case TextMood::Angry:
+		{
+			this->dialogText->setColor(Color3B(0xcd, 0x4f, 0x39));
+			break;
+		}
 	}
 
 	this->dialogChildren = std::vector<std::pair<MenuLabel*, DialogMenu*>>();
@@ -134,7 +157,9 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 		std::string choice = choiceDialogPair.first;
 		DialogMenu* dialogMenu = choiceDialogPair.second;
 
-		MenuLabel* label = nullptr; // MenuLabel::create(choice, Localization::getMainFont(), Localization::getFontSizeH3(Localization::getMainFont()));
+		LocalizedLabel* localizedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
+		localizedLabel->setString(choice);
+		MenuLabel* label = MenuLabel::create(localizedLabel);
 		label->setColor(Color4B::YELLOW);
 		label->setHoverColor(Color4B(0x6c, 0xa5, 0xad, 0xff));
 		label->setGlowColor(Color4B::WHITE);

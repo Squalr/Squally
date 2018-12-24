@@ -5,7 +5,6 @@
 namespace cocos2d
 {
 	class LayerColor;
-	class Label;
 	class FiniteTimeAction;
 	class Sprite;
 }
@@ -13,6 +12,7 @@ namespace cocos2d
 class DialogueLabel;
 class Grid;
 class GridObject;
+class LocalizedLabel;
 
 class VaporWeb : public CutsceneClip
 {
@@ -47,7 +47,7 @@ private:
 
 	cocos2d::LayerColor* dialoguePlate;
 	DialogueLabel* dialogue;
-	cocos2d::Label* escapeLabel;
+	LocalizedLabel* escapeLabel;
 
 	static const float dialogueHeight;
 
