@@ -4,7 +4,7 @@
 #include "cocos/base/CCEventKeyboard.h"
 
 #include "Engine/Events/MouseEvents.h"
-#include "Engine/UI/HUD/Hud.h"
+#include "Engine/SmartNode.h"
 
 namespace cocos2d
 {
@@ -16,7 +16,7 @@ class CodeEditor;
 class HackableObject;
 class MenuSprite;
 
-class RadialMenu : public Hud
+class RadialMenu : public SmartNode
 {
 public:
 	static RadialMenu* create(std::function<void()> onCloseCallback);

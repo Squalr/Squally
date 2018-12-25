@@ -68,10 +68,9 @@ public:
 	void* codePointer;
 	void* originalCodeCopy;
 	int codeOriginalLength;
-	std::map<void*, int>* allocations;
+	std::map<void*, int> allocations;
 
 private:
 	HackableCode(std::string name, void* codeStart, int codeLength, std::string iconResource);
 	virtual ~HackableCode();
 };
-

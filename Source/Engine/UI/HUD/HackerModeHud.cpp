@@ -28,12 +28,10 @@ HackerModeHud* HackerModeHud::create(std::function<void()> toggleHackermodeCallb
 HackerModeHud::HackerModeHud(std::function<void()> toggleHackermodeCallback)
 {
 	this->callback = toggleHackermodeCallback;
-	this->hackableButtonLayer = Node::create();
 	this->radialMenu = RadialMenu::create(CC_CALLBACK_0(HackerModeHud::onRadialMenuClose, this));
 
 	this->radialMenu->setVisible(false);
 
-	this->addChild(this->hackableButtonLayer);
 	this->addChild(this->radialMenu);
 }
 

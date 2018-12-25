@@ -92,6 +92,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/GlobalDirector.cpp
 	Source/Engine/GlobalNode.cpp
 	Source/Engine/GlobalScene.cpp
+	Source/Engine/Hackables/HackButton.cpp
 	Source/Engine/Hackables/HackableAttribute.cpp
 	Source/Engine/Hackables/HackableCode.cpp
 	Source/Engine/Hackables/HackableData.cpp
@@ -149,6 +150,8 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Utils/RenderUtils.cpp
 	Source/Engine/Utils/StrUtils.cpp
 	Source/Engine/Utils/SystemUtils.cpp
+	Source/Engine/asmtk/asmparser.cpp
+	Source/Engine/asmtk/asmtokenizer.cpp
 	Source/Entities/Isometric/IsometricEntity.cpp
 	Source/Entities/Isometric/IsometricEntityDeserializer.cpp
 	Source/Entities/Isometric/Shiftman.cpp
@@ -1002,6 +1005,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/GlobalDirector.h
 	Source/Engine/GlobalNode.h
 	Source/Engine/GlobalScene.h
+	Source/Engine/Hackables/HackButton.h
 	Source/Engine/Hackables/HackableAttribute.h
 	Source/Engine/Hackables/HackableCode.h
 	Source/Engine/Hackables/HackableData.h
@@ -1061,6 +1065,12 @@ list(APPEND GAME_HEADER
 	Source/Engine/Utils/RenderUtils.h
 	Source/Engine/Utils/StrUtils.h
 	Source/Engine/Utils/SystemUtils.h
+	Source/Engine/asmtk/asmparser.h
+	Source/Engine/asmtk/asmtk.h
+	Source/Engine/asmtk/asmtokenizer.h
+	Source/Engine/asmtk/elfdefs.h
+	Source/Engine/asmtk/globals.h
+	Source/Engine/asmtk/strtod.h
 	Source/Entities/Isometric/IsometricEntities.h
 	Source/Entities/Isometric/IsometricEntity.h
 	Source/Entities/Isometric/IsometricEntityDeserializer.h
@@ -1953,7 +1963,6 @@ cocos_build_app(${APP_NAME}
         breakpad_client
         cocos2d
 )
-
 
 target_link_libraries(${APP_NAME} steam)
 target_link_libraries(${APP_NAME} udis86)

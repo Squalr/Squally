@@ -226,7 +226,7 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="452" name="squally" type="entity" x="610.91" y="2535.88" width="78.7879" height="88"/>
+  <object id="452" name="squally" type="entity" x="3330.91" y="2567.88" width="78.7879" height="88"/>
  </objectgroup>
  <objectgroup name="fireflies">
   <properties>

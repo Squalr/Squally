@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "Engine/UI/Controls/EditableTextWindow.h"
-#include "Engine/UI/HUD/Hud.h"
+#include "Engine/SmartNode.h"
 
 namespace cocos2d
 {
@@ -17,7 +17,7 @@ class MenuSprite;
 class TextMenuSprite;
 class TextWindow;
 
-class CodeEditor : public Hud
+class CodeEditor : public SmartNode
 {
 public:
 	static CodeEditor* create();

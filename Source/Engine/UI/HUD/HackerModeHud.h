@@ -18,9 +18,9 @@ namespace cocos2d
 class HackerModeHud : public Hud
 {
 public:
-	static HackerModeHud * create(std::function<void()> toggleHackermodeCallback);
+	static HackerModeHud* create(std::function<void()> toggleHackermodeCallback);
 
-	cocos2d::Layer * hackableObjectsHud;
+	cocos2d::Layer* hackableObjectsHud;
 
 private:
 	HackerModeHud(std::function<void()> toggleHackermodeCallback);
@@ -33,7 +33,6 @@ private:
 	void onRadialMenuClose();
 	void registerHackableObject(cocos2d::EventCustom* args);
 
-	cocos2d::Node* hackableButtonLayer;
 	RadialMenu* radialMenu;
 	std::function<void()> callback;
 };

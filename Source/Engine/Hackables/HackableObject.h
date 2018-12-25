@@ -7,6 +7,7 @@
 #include "Engine/Maps/SerializableObject.h"
 
 class HackableData;
+class HackButton;
 class MenuSprite;
 
 namespace cocos2d
@@ -19,12 +20,12 @@ namespace cocos2d
 class HackableObject : public SerializableObject
 {
 public:
-	void onHackableClick(MenuSprite* menuSprite);
+	void onHackableClick(MenuSprite* backButton);
 
 	cocos2d::Size size;
 	std::vector<HackableData*> dataList;
 
-	MenuSprite* hackButton;
+	HackButton* hackButton;
 
 protected:
 	HackableObject(cocos2d::ValueMap* initProperties);
@@ -40,4 +41,3 @@ protected:
 private:
 	cocos2d::Vec2 buttonOffset;
 };
-

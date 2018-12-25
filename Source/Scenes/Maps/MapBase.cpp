@@ -102,10 +102,10 @@ void MapBase::initializeListeners()
 	GlobalScene::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
-	EventListenerMouse* mouseListener = EventListenerMouse::create();
+	EventListenerMouse* scrollListener = EventListenerMouse::create();
 
 	keyboardListener->onKeyPressed = (CC_CALLBACK_2(MapBase::onKeyPressed, this));
-	mouseListener->onMouseScroll = CC_CALLBACK_1(MapBase::onMouseWheelScroll, this);
+	scrollListener->onMouseScroll = CC_CALLBACK_1(MapBase::onMouseWheelScroll, this);
 
 	this->optionsMenu->setBackClickCallback(CC_CALLBACK_0(MapBase::onOptionsExit, this));
 	this->pauseMenu->setResumeCallback(CC_CALLBACK_0(MapBase::onResumeClick, this));
@@ -113,7 +113,7 @@ void MapBase::initializeListeners()
 	this->pauseMenu->setExitCallback(CC_CALLBACK_0(MapBase::onExitClick, this));
 
 	this->addEventListener(keyboardListener);
-	this->addEventListener(mouseListener);
+	this->addEventListenerIgnorePause(scrollListener);
 }
 
 void MapBase::onMouseWheelScroll(EventMouse* event)
