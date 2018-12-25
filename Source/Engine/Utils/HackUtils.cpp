@@ -35,6 +35,9 @@ HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* address
 	// Error handling (use asmjit::ErrorHandler for more robust error handling).
 	if (err)
 	{
+		compileResult.hasError = true;
+		compileResult.errorData.lineNumber = 0;
+		compileResult.errorData.message = DebugUtils::errorAsString(err);
 		// printf("ERROR: %08x (%s)\n", err, DebugUtils::errorAsString(err));
 		LogUtils::logError(DebugUtils::errorAsString(err));
 		return compileResult;
@@ -46,12 +49,12 @@ HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* address
 
 	// Now you can print the code, which is stored in the first section (.text).
 	CodeBuffer& buffer = code.getSectionEntry(0)->getBuffer();
-	//dumpCode(buffer.getData(), buffer.getLength());
 
-	//Fasm::FasmResult* fasmResult = Fasm::assemble(assembly, addressStart);
-	//HackUtils::CompileResult compileResult = HackUtils::constructCompileResult(fasmResult);
-	
-	//delete(fasmResult);
+	compileResult.byteCount = buffer.getLength();
+	compileResult.compiledBytes = new unsigned char[buffer.getLength()]; // TODO: This is a memleak
+	memcpy(compileResult.compiledBytes, buffer.getData(), buffer.getLength());
+	compileResult.hasError = false;
+
 	return compileResult;
 }
 
