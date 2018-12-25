@@ -89,29 +89,25 @@ void PendulumBlade::update(float dt)
 	// the formula for the angle
 	float theta = maxAngle * std::sin(std::sqrt(gravity / this->chainHeight) * deltaTime * speed);
 
-	// set the angle
-	this->bladeChain->setRotation(theta);
-
-	/*
 	void* assemblyAddressStart = nullptr;
 	void* assemblyAddressEnd = nullptr;
 
-	Vec2 speed = Vec2::ZERO;
+	Vec2 tspeed = Vec2::ZERO;
 	Vec2 currentSpeed = this->pendulumBladeSpeed;
 
 	ASM(push ebx);
 	ASM(mov ebx, currentSpeed.y);
 
 	HACKABLE_CODE_BEGIN(assemblyAddressStart, PendulumBladeSpeedYStart);
-	ASM(mov speed.y, ebx)
+	ASM(mov tspeed.y, ebx)
 	HACKABLE_CODE_END(assemblyAddressEnd, PendulumBladeSpeedYEnd);
 
 	ASM(pop ebx);
 
-	float angle = speed.x == 0.0f ? (speed.y > 0.0f ? -90.0f : 90.0f) : atan(speed.y / speed.x);
+	this->pendulumBladeDataSpeedY->registerCode(assemblyAddressStart, assemblyAddressEnd, "Pendulum Theta", UIResources::Menus_Icons_AxeSlash);
 
-	this->pendulumBladeDataSpeedY->registerCode(assemblyAddressStart, assemblyAddressEnd, "Pendulum Angular Velocity", UIResources::Menus_Icons_AxeSlash);
-	*/
+	// set the angle
+	this->bladeChain->setRotation(theta);
 }
 
 void PendulumBlade::buildChain()

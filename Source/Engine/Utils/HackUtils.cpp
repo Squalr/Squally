@@ -9,11 +9,17 @@
 #include "asmjit.h"
 #include "udis86.h"
 
+#include "Engine/asmtk/asmtk.h"
+#include "Engine/Utils/LogUtils.h"
+
+using namespace asmjit;
+using namespace asmtk;
+
 HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* addressStart)
 {
 	CompileResult compileResult;
-	/*
-	CodeInfo ci(ArchInfo::kTypeX86);
+	
+	CodeInfo ci(sizeof(void*) == 4 ? ArchInfo::kTypeX86 : ArchInfo::kTypeX64);
 	CodeHolder code;
 	code.init(ci);
 
@@ -23,18 +29,15 @@ HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* address
 	// Create AsmParser that will emit to X86Assembler.
 	AsmParser p(&a);
 
-	// Parse some assembly.
-	Error err = p.parse(
-		"push eax\n"
-		"mov eax, ebx\n"
-		"pop eax\n"
-	);
+	// Parse the assembly.
+	Error err = p.parse(assembly.c_str());
 
 	// Error handling (use asmjit::ErrorHandler for more robust error handling).
 	if (err)
 	{
-		printf("ERROR: %08x (%s)\n", err, DebugUtils::errorAsString(err));
-		//return 1;
+		// printf("ERROR: %08x (%s)\n", err, DebugUtils::errorAsString(err));
+		LogUtils::logError(DebugUtils::errorAsString(err));
+		return compileResult;
 	}
 
 	// If we are done, you must detach the Assembler from CodeHolder or sync
@@ -47,7 +50,7 @@ HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* address
 
 	//Fasm::FasmResult* fasmResult = Fasm::assemble(assembly, addressStart);
 	//HackUtils::CompileResult compileResult = HackUtils::constructCompileResult(fasmResult);
-	*/
+	
 	//delete(fasmResult);
 	return compileResult;
 }
@@ -194,28 +197,50 @@ std::string HackUtils::dataTypeToString(HackUtils::DataType dataType)
 {
 	switch (dataType)
 	{
-	case HackUtils::DataType::Byte:
-		return "Byte";
-	case HackUtils::DataType::SByte:
-		return "SByte";
-	case HackUtils::DataType::Int16:
-		return "Int16";
-	case HackUtils::DataType::UInt16:
-		return "UInt16";
-	case HackUtils::DataType::Int32:
-		return "Int32";
-	case HackUtils::DataType::UInt32:
-		return "UInt32";
-	case HackUtils::DataType::Int64:
-		return "Int64";
-	case HackUtils::DataType::UInt64:
-		return "UInt64";
-	case HackUtils::DataType::Single:
-		return "Single";
-	case HackUtils::DataType::Double:
-		return "Double";
-	default:
-		throw std::invalid_argument("Invalid data type");
+		case HackUtils::DataType::Byte:
+		{
+			return "Byte";
+		}
+		case HackUtils::DataType::SByte:
+		{
+			return "SByte";
+		}
+		case HackUtils::DataType::Int16:
+		{
+			return "Int16";
+		}
+		case HackUtils::DataType::UInt16:
+		{
+			return "UInt16";
+		}
+		case HackUtils::DataType::Int32:
+		{
+			return "Int32";
+		}
+		case HackUtils::DataType::UInt32:
+		{
+			return "UInt32";
+		}
+		case HackUtils::DataType::Int64:
+		{
+			return "Int64";
+		}
+		case HackUtils::DataType::UInt64:
+		{
+			return "UInt64";
+		}
+		case HackUtils::DataType::Single:
+		{
+			return "Single";
+		}
+		case HackUtils::DataType::Double:
+		{
+			return "Double";
+		}
+		default:
+		{
+			throw std::invalid_argument("Invalid data type");
+		}
 	}
 }
 
@@ -223,28 +248,48 @@ std::string HackUtils::valueStringOf(void* dataPointer, HackUtils::DataType data
 {
 	switch (dataType)
 	{
-	case HackUtils::DataType::Byte:
-		return std::to_string((*(unsigned char*)dataPointer));
-	case HackUtils::DataType::SByte:
-		return std::to_string((*(signed char*)dataPointer));
-	case HackUtils::DataType::Int16:
-		return std::to_string((*(short*)dataPointer));
-	case HackUtils::DataType::UInt16:
-		return std::to_string((*(unsigned short*)dataPointer));
-	case HackUtils::DataType::Int32:
-		return std::to_string((*(int*)dataPointer));
-	case HackUtils::DataType::UInt32:
-		return std::to_string((*(unsigned int*)dataPointer));
-	case HackUtils::DataType::Int64:
-		return std::to_string((*(long*)dataPointer));
-	case HackUtils::DataType::UInt64:
-		return std::to_string((*(unsigned long*)dataPointer));
-	case HackUtils::DataType::Single:
-		return std::to_string((*(float*)dataPointer));
-	case HackUtils::DataType::Double:
-		return std::to_string((*(double*)dataPointer));
-	default:
-		throw std::invalid_argument("Invalid data type");
+		case HackUtils::DataType::Byte:
+		{
+			return std::to_string((*(unsigned char*)dataPointer));
+		}
+		case HackUtils::DataType::SByte:
+		{
+			return std::to_string((*(signed char*)dataPointer));
+		}
+		case HackUtils::DataType::Int16:
+		{
+			return std::to_string((*(short*)dataPointer));
+		}
+		case HackUtils::DataType::UInt16:
+		{
+			return std::to_string((*(unsigned short*)dataPointer));
+		}
+		case HackUtils::DataType::Int32:
+		{
+			return std::to_string((*(int*)dataPointer));
+		}
+		case HackUtils::DataType::UInt32:
+		{
+			return std::to_string((*(unsigned int*)dataPointer));
+		}
+		case HackUtils::DataType::Int64:
+		{
+			return std::to_string((*(long*)dataPointer));
+		}
+		case HackUtils::DataType::UInt64:
+		{
+			return std::to_string((*(unsigned long*)dataPointer));
+		}
+		case HackUtils::DataType::Single:
+		{
+			return std::to_string((*(float*)dataPointer));
+		}
+		case HackUtils::DataType::Double:
+		{
+			return std::to_string((*(double*)dataPointer));
+		}
+		default:
+			throw std::invalid_argument("Invalid data type");
 	}
 }
 

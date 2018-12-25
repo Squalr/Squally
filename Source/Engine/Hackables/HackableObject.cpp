@@ -1,8 +1,9 @@
 #include "HackableObject.h"
 
-#include "Events/HackableEvents.h"
 #include "Engine/Hackables/HackableData.h"
+#include "Engine/Hackables/HackButton.h"
 #include "Engine/UI/Controls/MenuSprite.h"
+#include "Events/HackableEvents.h"
 
 #include "Resources/UIResources.h"
 
@@ -11,7 +12,7 @@ using namespace cocos2d;
 HackableObject::HackableObject(ValueMap* initProperties) : SerializableObject(initProperties)
 {
 	this->dataList = std::vector<HackableData*>();
-	this->hackButton = MenuSprite::create(UIResources::Menus_Buttons_CogV2Button, UIResources::Menus_Buttons_CogV2ButtonHover);
+	this->hackButton = HackButton::create();
 	
 	this->hackButton->setVisible(false);
 
@@ -43,7 +44,7 @@ Vec2 HackableObject::getButtonOffset()
 	return Vec2::ZERO;
 }
 
-void HackableObject::onHackableClick(MenuSprite* menuSprite)
+void HackableObject::onHackableClick(MenuSprite* hackButton)
 {
 	Vec2 screenPosition = this->getParent()->convertToWorldSpace(this->getPosition()) + this->getButtonOffset();
 	Vec2 newPosition = this->hackButton->getParent()->convertToNodeSpace(screenPosition);

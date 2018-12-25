@@ -16,7 +16,7 @@ HackableCode::HackableCode(std::string name, void* codeStart, int codeLength, st
 	this->functionName = name;
 	this->codePointer = (unsigned char*)codeStart;
 	this->codeOriginalLength = codeLength;
-	this->allocations = new std::map<void*, int>();
+	this->allocations = std::map<void*, int>();
 
 	if (codeStart != nullptr && codeLength > 0)
 	{
@@ -89,18 +89,17 @@ bool HackableCode::applyCustomCode()
 void* HackableCode::allocateMemory(int allocationSize)
 {
 	void* allocation = malloc(allocationSize);
-	this->allocations->emplace(allocation, allocationSize);
+	this->allocations[allocation] = allocationSize;
 
 	return allocation;
 }
 
 HackableCode::~HackableCode()
 {
-	for (auto iterator = this->allocations->begin(); iterator != this->allocations->end(); iterator++)
+	for (auto iterator = this->allocations.begin(); iterator != this->allocations.end(); iterator++)
 	{
 		delete(iterator->first);
 	}
 
 	delete(this->originalCodeCopy);
-	delete(this->allocations);
 }

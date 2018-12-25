@@ -39,12 +39,11 @@ RadialMenu* RadialMenu::create(std::function<void()> onCloseCallback)
 
 RadialMenu::RadialMenu(std::function<void()> onCloseCallback)
 {
-	this->activeHackableObject = nullptr;
 	this->onRadialMenuCloseCallback = onCloseCallback;
+	this->activeHackableObject = nullptr;
 
 	this->radialMenuItems = Node::create();
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 48));
-
 	this->codeEditor = CodeEditor::create();
 
 	this->codeEditor->setVisible(false);
@@ -84,17 +83,17 @@ void RadialMenu::onHackableEdit(EventCustom* eventArgs)
 	{
 		HackableData* hackableData = *it;
 
-		float codeAngleStep = hackableData->codeList->size() <= 1 ? 0.0f : ((3.14159f * 2.0f) / ((float)(hackableData->codeList->size() - 1))) / 3.0f;
+		float codeAngleStep = hackableData->codeList.size() <= 1 ? 0.0f : ((3.14159f * 2.0f) / ((float)(hackableData->codeList.size() - 1))) / 3.0f;
 		float currentCodeAngle = currentDataAngle - (3.14159f / 3.0f);
 
-		Vec2 nextDataIconPosition = Vec2(sin(currentDataAngle) * RadialMenu::radialMenuRadius, cos(currentDataAngle) * RadialMenu::radialMenuRadius);
+		Vec2 nextDataIconPosition = Vec2(std::sin(currentDataAngle) * RadialMenu::radialMenuRadius, cos(currentDataAngle) * RadialMenu::radialMenuRadius);
 		Node* dataNode = this->createRadialNode(hackableData->iconResource, nextDataIconPosition, RadialMenu::dataColor, CC_CALLBACK_1(RadialMenu::onHackableAttributeClick, this), (int)(unsigned long)hackableData);
 
 		// Draw code icons
-		for (auto it = hackableData->codeList->begin(); it != hackableData->codeList->end(); it++)
+		for (auto it = hackableData->codeList.begin(); it != hackableData->codeList.end(); it++)
 		{
 			HackableCode* hackableCode = *it;
-			Vec2 codeNodePosition = Vec2(sin(currentCodeAngle) * RadialMenu::radialMenuRadius, cos(currentCodeAngle) * RadialMenu::radialMenuRadius);
+			Vec2 codeNodePosition = Vec2(std::sin(currentCodeAngle) * RadialMenu::radialMenuRadius, cos(currentCodeAngle) * RadialMenu::radialMenuRadius);
 			Node* codeNode = this->createRadialNode(hackableCode->iconResource, codeNodePosition, RadialMenu::codeColor, CC_CALLBACK_1(RadialMenu::onHackableAttributeClick, this), (int)(unsigned long)hackableCode);
 
 			dataNode->addChild(codeNode);
@@ -129,7 +128,7 @@ void RadialMenu::onHackableAttributeClick(MenuSprite* menuSprite)
 
 void RadialMenu::initializePositions()
 {
-	Hud::initializePositions();
+	SmartNode::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -138,7 +137,7 @@ void RadialMenu::initializePositions()
 
 void RadialMenu::initializeListeners()
 {
-	Hud::initializeListeners();
+	SmartNode::initializeListeners();
 
 	EventListenerCustom* hackableEditListener = EventListenerCustom::create(HackableEvents::HackableObjectEditEvent, CC_CALLBACK_1(RadialMenu::onHackableEdit, this));
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();

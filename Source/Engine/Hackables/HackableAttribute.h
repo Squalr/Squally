@@ -12,4 +12,3 @@ protected:
 	HackableAttribute(std::string iconResource);
 	virtual ~HackableAttribute();
 };
-
