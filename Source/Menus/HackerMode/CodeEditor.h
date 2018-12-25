@@ -28,6 +28,7 @@ private:
 	CodeEditor();
 	~CodeEditor();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float) override;

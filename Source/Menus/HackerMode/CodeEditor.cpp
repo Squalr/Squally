@@ -157,14 +157,17 @@ CodeEditor::CodeEditor()
 	this->addChild(this->cancelButton);
 	this->addChild(this->acceptButton);
 	this->addChild(this->acceptButtonGrayed);
-
-	this->initializePositions();
-	this->initializeListeners();
-	this->scheduleUpdate();
 }
 
 CodeEditor::~CodeEditor()
 {
+}
+
+void CodeEditor::onEnter()
+{
+	SmartNode::onEnter();
+
+	this->scheduleUpdate();
 }
 
 void CodeEditor::initializePositions()
