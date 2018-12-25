@@ -9,21 +9,22 @@
 #endif
 
 // These allow for MACRO overloading
-#define CAT( A, B ) A ## B
-#define SELECT( NAME, NUM ) CAT( NAME ## _, NUM )
-#define GET_COUNT( _1, _2, _3, _4, _5, _6, COUNT, ... ) COUNT
-#define VA_SIZE( ... ) GET_COUNT( __VA_ARGS__, 6, 5, 4, 3, 2, 1 )
-#define VA_SELECT( NAME, ... ) SELECT( NAME, VA_SIZE(__VA_ARGS__) )(__VA_ARGS__)
+#define GET_MACRO(_1,_2,_3,NAME,...) NAME
+#define ASM(...) GET_MACRO(__VA_ARGS__, ASM3, ASM2, ASM1)(__VA_ARGS__)
+
+// These allow for the creation of unique labels for hackable code
+#define TOKEN_PASTE(x, y) x ## y
+#define TOKEN_PASTE2(x, y) TOKEN_PASTE(x, y)
+#define LABEL_CREATE TOKEN_PASTE2(label, __LINE__)
 
 // Define macros for inlining x86 assembly in a compiler-independent way
 #ifdef _MSC_VER
-	#define ASM( ... ) VA_SELECT( ASM, __VA_ARGS__ )
-	#define ASM_1(asm_literal) \
-        	"__asm " #asm_literal ";"
-	#define ASM_2(asm_literal1, asm_literal2) \
-        	"__asm " #asm_literal1 ", " #asm_literal2 ";"
-	#define ASM_3(asm_literal1, asm_literal2, asm_literal3) \
-        	"__asm " #asm_literal1 ", " #asm_literal2 ", " #asm_literal3 ";"
+	#define ASM1(asm_literal) \
+        	__asm asm_literal
+	#define ASM2(asm_literal1, asm_literal2) \
+        	__asm asm_literal1, asm_literal2
+	#define ASM3(asm_literal1, asm_literal2, asm_literal3) \
+        	__asm asm_literal1, asm_literal2, asm_literal3
 #elif __GNUC__ || __clang__
 	#define ASM( ... ) VA_SELECT( ASM, __VA_ARGS__ )
 	#define ASM_1(asm_literal) \
@@ -46,13 +47,14 @@
 		"__asm__(\".att_syntax prefix\");"
 #endif
 
-#define HACKABLE_CODE_BEGIN(address, label) \
-ASM_2("mov " #address, "offset " #label) \
-ASM_1(label:)
+#define HACKABLE_CODE_BEGIN(address) \
+ASM(mov address, offset LABEL_CREATE) \
+ASM(LABEL_CREATE):
 
-#define HACKABLE_CODE_END(address, label) \
-ASM_1(label:) \
-ASM_2("mov " #address, "offset " #label)
+
+#define HACKABLE_CODE_END(address) \
+ASM(LABEL_CREATE): \
+ASM(mov address, offset LABEL_CREATE)
 
 class HackableCode : public HackableAttribute
 {

@@ -98,9 +98,16 @@ void PendulumBlade::update(float dt)
 	ASM(push ebx);
 	ASM(mov ebx, currentSpeed.y);
 
-	HACKABLE_CODE_BEGIN(assemblyAddressStart, PendulumBladeSpeedYStart);
-	ASM(mov tspeed.y, ebx)
-	HACKABLE_CODE_END(assemblyAddressEnd, PendulumBladeSpeedYEnd);
+	//__asm mov assemblyAddressStart, offset PendulumBladeSpeedYStart
+	//PendulumBladeSpeedYStart:
+
+	HACKABLE_CODE_BEGIN(assemblyAddressStart);
+	ASM(mov tspeed.y, ebx);
+
+	//__asm mov assemblyAddressEnd, offset PendulumBladeSpeedYEnd
+	//PendulumBladeSpeedYEnd:
+
+	HACKABLE_CODE_END(assemblyAddressEnd);
 
 	ASM(pop ebx);
 
