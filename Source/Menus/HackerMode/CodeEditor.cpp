@@ -11,7 +11,6 @@
 #include "Engine/Utils/StrUtils.h"
 #include "Engine/UI/Controls/MenuLabel.h"
 #include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Controls/MouseOverPanel.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/Controls/TextWindow.h"
 
@@ -35,8 +34,8 @@ const Size CodeEditor::statusSize = Size(512.0f, 640.0f);
 const Size CodeEditor::functionSize = Size(512.0f, 640.0f);
 const Size CodeEditor::secondarySize = Size(512.0f, 640.0f);
 const std::string CodeEditor::delimiters = "[],:; +-*\n\t";
-const Color3B CodeEditor::defaultColor = Color3B::WHITE;
-const Color3B CodeEditor::subtextColor = Color3B::GRAY;
+const Color3B CodeEditor::defaultColor = Color3B(255, 255, 255);
+const Color3B CodeEditor::subtextColor = Color3B(66, 166, 166);
 const Color3B CodeEditor::headerColor = Color3B(188, 188, 64);
 const Color3B CodeEditor::errorColor = Color3B(196, 82, 82);
 const Color3B CodeEditor::registerColor = Color3B(86, 156, 214);
@@ -93,7 +92,7 @@ CodeEditor::CodeEditor()
 
 	this->statusWindow = TextWindow::create(LocaleStrings::Status::create(), CodeEditor::statusSize, CodeEditor::defaultColor);
 	this->functionWindow = EditableTextWindow::create(LocaleStrings::Status::create(), CodeEditor::functionSize, CodeEditor::defaultColor);
-	this->secondaryWindow = EditableTextWindow::create(LocaleStrings::Status::create(), CodeEditor::secondarySize, CodeEditor::defaultColor);
+	this->secondaryWindow = EditableTextWindow::create(LocaleStrings::AllocationEditor::create(), CodeEditor::secondarySize, CodeEditor::defaultColor);
 
 	LocalizedLabel*	acceptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::Accept::create());
 	LocalizedLabel*	acceptLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::Accept::create());
@@ -301,7 +300,7 @@ void CodeEditor::compile(std::string assemblyText)
 	}
 }
 
-void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWindow::token>* tokens)
+void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWindow::token>& tokens)
 {
 	// Due to RichTextBoxes being garbage, we need to split text down further if they contain newlines
 	// Also split them down further if they contain comments
@@ -380,7 +379,7 @@ void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWind
 			}
 
 			EditableTextWindow::token nextToken = EditableTextWindow::token(token, color);
-			tokens->push_back(nextToken);
+			tokens.push_back(nextToken);
 		}
 	}
 }
