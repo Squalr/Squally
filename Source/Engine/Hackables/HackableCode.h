@@ -47,10 +47,40 @@
 		"__asm__(\".att_syntax prefix\");"
 #endif
 
+#define ASM_NOP1() \
+ASM(nop)
+
+#define ASM_NOP2() \
+ASM_NOP1() \
+ASM_NOP1()
+
+#define ASM_NOP3() \
+ASM_NOP2() \
+ASM_NOP1()
+
+#define ASM_NOP4() \
+ASM_NOP2() \
+ASM_NOP2()
+
+#define ASM_NOP5() \
+ASM_NOP4() \
+ASM_NOP1()
+
+#define ASM_NOP6() \
+ASM_NOP5() \
+ASM_NOP1()
+
+#define ASM_NOP7() \
+ASM_NOP6() \
+ASM_NOP1()
+
+#define ASM_NOP8() \
+ASM_NOP7() \
+ASM_NOP1()
+
 #define HACKABLE_CODE_BEGIN(address) \
 ASM(mov address, offset LABEL_CREATE) \
 ASM(LABEL_CREATE):
-
 
 #define HACKABLE_CODE_END(address) \
 ASM(LABEL_CREATE): \
@@ -59,7 +89,7 @@ ASM(mov address, offset LABEL_CREATE)
 class HackableCode : public HackableAttribute
 {
 public:
-	static HackableCode * create(std::string name, void* codeStart, int codeLength, std::string iconResource);
+	static HackableCode* create(std::string name, void* codeStart, int codeLength, std::string iconResource);
 
 	void restoreOriginalCode();
 	bool applyCustomCode();

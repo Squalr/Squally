@@ -51,7 +51,7 @@ PendulumBlade::~PendulumBlade()
 
 void PendulumBlade::registerHackables()
 {
-	this->pendulumBladeDataSpeedY = HackableData::create("Y Position", &this->pendulumBladeSpeed.y, &typeid(this->pendulumBladeSpeed.y), UIResources::Menus_Icons_AlchemyPot);
+	this->pendulumBladeDataSpeedY = HackableData::create("Y Position", &this->pendulumBladeSpeed.y, &typeid(this->pendulumBladeSpeed.y), UIResources::Menus_Icons_AxeSlash);
 	this->registerData(this->pendulumBladeDataSpeedY);
 }
 
@@ -88,30 +88,28 @@ void PendulumBlade::update(float dt)
 
 	// the formula for the angle
 	float theta = maxAngle * std::sin(std::sqrt(gravity / this->chainHeight) * deltaTime * speed);
+	int thetaInt = (int)theta;
 
 	void* assemblyAddressStart = nullptr;
 	void* assemblyAddressEnd = nullptr;
 
-	Vec2 tspeed = Vec2::ZERO;
-	Vec2 currentSpeed = this->pendulumBladeSpeed;
-
+	ASM(push eax);
 	ASM(push ebx);
-	ASM(mov ebx, currentSpeed.y);
-
-	//__asm mov assemblyAddressStart, offset PendulumBladeSpeedYStart
-	//PendulumBladeSpeedYStart:
+	ASM(mov eax, thetaInt);
 
 	HACKABLE_CODE_BEGIN(assemblyAddressStart);
-	ASM(mov tspeed.y, ebx);
-
-	//__asm mov assemblyAddressEnd, offset PendulumBladeSpeedYEnd
-	//PendulumBladeSpeedYEnd:
-
+	ASM(mov ebx, eax);
+	ASM_NOP8();
 	HACKABLE_CODE_END(assemblyAddressEnd);
 
-	ASM(pop ebx);
+	ASM(mov thetaInt, ebx);
 
-	this->pendulumBladeDataSpeedY->registerCode(assemblyAddressStart, assemblyAddressEnd, "Pendulum Theta", UIResources::Menus_Icons_AxeSlash);
+	ASM(pop ebx);
+	ASM(pop eax);
+
+	theta = (float)thetaInt;
+
+	this->pendulumBladeDataSpeedY->registerCode(assemblyAddressStart, assemblyAddressEnd, "Pendulum Angle", UIResources::Menus_Icons_CrossHair);
 
 	// set the angle
 	this->bladeChain->setRotation(theta);
