@@ -30,29 +30,12 @@ HackableData::~HackableData()
 void HackableData::registerCode(HackableCode* hackableCode)
 {
 	// Check if already registered
-	if (this->codeTable.find(hackableCode->codePointer) != this->codeTable.end())
+	if (this->codeTable.find(hackableCode->getCodePointer()) != this->codeTable.end())
 	{
 		return;
 	}
 
 	hackableCode->retain();
 	this->codeList.push_back(hackableCode);
-	this->codeTable.insert(hackableCode->codePointer);
-}
-
-void HackableData::registerCode(void* startAddress, void* endAddress, std::string functionName, std::string iconResource)
-{
-	// Check if already registered
-	if (this->codeTable.find(startAddress) != this->codeTable.end())
-	{
-		return;
-	}
-
-	unsigned long size = ((unsigned long)endAddress - (unsigned long)startAddress);
-	unsigned int intSize = (unsigned int)size;
-
-	HackableCode* hackableCode = HackableCode::create(functionName, startAddress, intSize, iconResource);
-	hackableCode->retain();
-	this->codeList.push_back(hackableCode);
-	this->codeTable.insert(startAddress);
+	this->codeTable.insert(hackableCode->getCodePointer());
 }

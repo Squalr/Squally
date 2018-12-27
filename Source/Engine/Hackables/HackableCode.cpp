@@ -3,6 +3,9 @@
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Resources/UIResources.h"
+#include "Engine/Utils/StrUtils.h"
+
+std::map<void*, std::vector<HackableCode*>> HackableCode::HackableCodeCache = std::map<void*, std::vector<HackableCode*>>();
 
 // Note: all tags are assumed to start with a different byte and have the same length
 const unsigned char HackableCode::StartTagSignature[] = { 0x57, 0x6A, 0x45, 0xBF, 0xDE, 0xC0, 0xED, 0xFE, 0x5F, 0x5F };
@@ -11,10 +14,15 @@ const unsigned char HackableCode::StopSearchTagSignature[] = { 0x55, 0x6A, 0x45,
 
 std::vector<HackableCode*> HackableCode::create(void* functionStart)
 {
+	if (HackableCode::HackableCodeCache.find(functionStart) != HackableCode::HackableCodeCache.end())
+	{
+		return HackableCode::HackableCodeCache[functionStart];
+	}
+
 	std::vector<HackableCode*> extractedHackableCode = std::vector<HackableCode*>();
 
 	const int tagSize = sizeof(HackableCode::StartTagSignature) / sizeof((HackableCode::StartTagSignature)[0]);
-	const int readSizeFailSafe = 4096;
+	const int stopSearchingAfterXBytesFailSafe = 4096;
 
 	unsigned char* currentBase = (unsigned char*)functionStart;
 	unsigned char* currentSeek = (unsigned char*)functionStart;
@@ -25,7 +33,7 @@ std::vector<HackableCode*> HackableCode::create(void* functionStart)
 	{
 		int signatureIndex = (int)((unsigned long)currentSeek - (unsigned long)currentBase);
 
-		if (signatureIndex > readSizeFailSafe)
+		if (signatureIndex > stopSearchingAfterXBytesFailSafe)
 		{
 			LogUtils::logError("Potentially fatal error: unable to find end signature in hackable code!");
 			break;
@@ -96,6 +104,8 @@ std::vector<HackableCode*> HackableCode::create(void* functionStart)
 		}
 	}
 
+	HackableCode::HackableCodeCache[functionStart] = extractedHackableCode;
+
 	return extractedHackableCode;
 }
 
@@ -132,7 +142,67 @@ HackableCode::HackableCode(std::string name, void* codeStart, int codeLength, st
 		this->originalCodeCopy = nullptr;
 	}
 
-	this->assemblyString = HackUtils::disassemble(codeStart, codeLength);
+	this->assemblyString = StrUtils::replaceAll(HackUtils::disassemble(codeStart, codeLength), "nop\n", "");
+}
+
+std::string HackableCode::getAssemblyString()
+{
+	return this->assemblyString;
+}
+
+std::string HackableCode::getFunctionName()
+{
+	return this->functionName;
+}
+
+void* HackableCode::getCodePointer()
+{
+	return this->codePointer;
+}
+
+int HackableCode::getOriginalLength()
+{
+	return this->codeOriginalLength;
+}
+
+bool HackableCode::applyCustomCode(std::string newAssembly)
+{
+	this->assemblyString = newAssembly;
+
+	if (this->codePointer == nullptr)
+	{
+		return false;
+	}
+
+	HackUtils::CompileResult compileResult = HackUtils::assemble(this->assemblyString, this->codePointer);
+
+	// Sanity check that the code compiles -- there isn't any reason it shouldn't
+	if (compileResult.hasError || compileResult.byteCount > this->codeOriginalLength)
+	{
+		// Fail the activation
+		return false;
+	}
+
+	// Write new assembly code
+#ifdef _WIN32
+	DWORD old;
+	VirtualProtect(this->codePointer, compileResult.byteCount, PAGE_EXECUTE_READWRITE, &old);
+#else
+	mprotect(this->codePointer, compileResult.byteCount, PROT_READ | PROT_WRITE | PROT_EXEC);
+#endif
+
+	memcpy(this->codePointer, compileResult.compiledBytes, compileResult.byteCount);
+
+	int unfilledBytes = this->codeOriginalLength - compileResult.byteCount;
+
+	// Fill remaining bytes with NOPs
+	for (int index = 0; index < unfilledBytes; index++)
+	{
+		const unsigned char nop = 0x90;
+		((unsigned char*)this->codePointer)[compileResult.byteCount + index] = nop;
+	}
+
+	return true;
 }
 
 void HackableCode::restoreOriginalCode()
@@ -150,44 +220,6 @@ void HackableCode::restoreOriginalCode()
 	#endif
 	
 	memcpy(this->codePointer, this->originalCodeCopy, this->codeOriginalLength);
-}
-
-bool HackableCode::applyCustomCode()
-{
-	if (this->codePointer == nullptr)
-	{
-		return false;
-	}
-
-	HackUtils::CompileResult compileResult = HackUtils::assemble(this->assemblyString, this->codePointer);
-
-	// Sanity check that the code compiles -- there isn't any reason it shouldn't
-	if (compileResult.hasError || compileResult.byteCount > this->codeOriginalLength)
-	{
-		// Fail the activation
-		return false;
-	}
-
-	// Write new assembly code
-	#ifdef _WIN32
-		DWORD old;
-		VirtualProtect(this->codePointer, compileResult.byteCount, PAGE_EXECUTE_READWRITE, &old);
-	#else
-		mprotect(this->codePointer, compileResult.byteCount, PROT_READ | PROT_WRITE | PROT_EXEC);
-	#endif
-
-	memcpy(this->codePointer, compileResult.compiledBytes, compileResult.byteCount);
-
-	int unfilledBytes = this->codeOriginalLength - compileResult.byteCount;
-
-	// Fill remaining bytes with NOPs
-	for (int index = 0; index < unfilledBytes; index++)
-	{
-		const unsigned char nop = 0x90;
-		((unsigned char*)this->codePointer)[compileResult.byteCount + index] = nop;
-	}
-
-	return true;
 }
 
 void* HackableCode::allocateMemory(int allocationSize)

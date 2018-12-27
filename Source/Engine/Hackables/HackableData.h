@@ -15,7 +15,6 @@ public:
 	static HackableData* create(std::string name, void* dataAddress, const std::type_info* typeInfo, std::string iconResource);
 
 	void registerCode(HackableCode* hackableCode);
-	void registerCode(void* startAddress, void* endAddress, std::string functionName, std::string iconResource);
 
 	std::vector<HackableCode*> codeList;
 

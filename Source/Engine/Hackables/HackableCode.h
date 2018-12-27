@@ -98,11 +98,22 @@ class HackableCode : public HackableAttribute
 {
 public:
 	static std::vector<HackableCode*> create(void* functionStart);
-	static HackableCode* create(std::string name, void* codeStart, int codeLength, std::string iconResource);
-	
+
+	std::string getAssemblyString();
+	std::string getFunctionName();
+	void* getCodePointer();
+	int getOriginalLength();
+	bool applyCustomCode(std::string newAssembly);
 	void restoreOriginalCode();
-	bool applyCustomCode();
 	void* allocateMemory(int allocationSize);
+
+	static std::map<void*, std::vector<HackableCode*>> HackableCodeCache;
+	static const unsigned char StartTagSignature[];
+	static const unsigned char EndTagSignature[];
+	static const unsigned char StopSearchTagSignature[];
+
+private:
+	static HackableCode* create(std::string name, void* codeStart, int codeLength, std::string iconResource);
 
 	std::string assemblyString;
 	std::string functionName;
@@ -111,11 +122,6 @@ public:
 	int codeOriginalLength;
 	std::map<void*, int> allocations;
 
-	static const unsigned char StartTagSignature[];
-	static const unsigned char EndTagSignature[];
-	static const unsigned char StopSearchTagSignature[];
-
-private:
 	HackableCode(std::string name, void* codeStart, int codeLength, std::string iconResource);
 	virtual ~HackableCode();
 };

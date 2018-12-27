@@ -244,27 +244,27 @@ void CodeEditor::compile(std::string assemblyText)
 	this->statusWindow->clearText();
 
 	// Do the actual compile
-	HackUtils::CompileResult compileResult = HackUtils::assemble(assemblyText, this->activeHackableCode->codePointer);
+	HackUtils::CompileResult compileResult = HackUtils::assemble(assemblyText, this->activeHackableCode->getCodePointer());
 
 	// Build text and enable/disable the accept button
 	if (!compileResult.hasError)
 	{
-		bool byteOverflow = compileResult.byteCount > this->activeHackableCode->codeOriginalLength;
+		bool byteOverflow = compileResult.byteCount > this->activeHackableCode->getOriginalLength();
 
 		this->statusWindow->insertText("Status:", CodeEditor::headerColor);
 		this->statusWindow->insertText("Compile Successful", CodeEditor::defaultColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertText("Address:", CodeEditor::headerColor);
-		this->statusWindow->insertText(HackUtils::hexAddressOf(this->activeHackableCode->codePointer, true, true), CodeEditor::defaultColor);
+		this->statusWindow->insertText(HackUtils::hexAddressOf(this->activeHackableCode->getCodePointer(), true, true), CodeEditor::defaultColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertText("Byte Count:", CodeEditor::headerColor);
-		this->statusWindow->insertText(std::to_string(compileResult.byteCount) + " / " + std::to_string(this->activeHackableCode->codeOriginalLength), byteOverflow ? CodeEditor::errorColor : CodeEditor::defaultColor);
+		this->statusWindow->insertText(std::to_string(compileResult.byteCount) + " / " + std::to_string(this->activeHackableCode->getOriginalLength()), byteOverflow ? CodeEditor::errorColor : CodeEditor::defaultColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
 
-		if (compileResult.byteCount != this->activeHackableCode->codeOriginalLength)
+		if (compileResult.byteCount != this->activeHackableCode->getOriginalLength())
 		{
 			this->statusWindow->insertText(byteOverflow ? "Byte overflow! Use allocations to write more assembly." : "Unfilled bytes will be filled with nop (empty) instructions.", byteOverflow ? CodeEditor::errorColor : CodeEditor::subtextColor);
 			this->statusWindow->insertNewline();
@@ -388,8 +388,8 @@ void CodeEditor::open(HackableCode* hackableCode)
 {
 	this->activeHackableCode = hackableCode;
 
-	this->functionWindow->setTitle("Function '" + hackableCode->functionName + "'");
-	this->functionWindow->setText(hackableCode->assemblyString);
+	this->functionWindow->setTitle("Function"); //"Function '" + hackableCode->getFunctionName() + "'");
+	this->functionWindow->setText(hackableCode->getAssemblyString());
 	this->functionWindow->focus();
 
 	this->setVisible(true);
@@ -398,20 +398,17 @@ void CodeEditor::open(HackableCode* hackableCode)
 
 void CodeEditor::onAccept(MenuSprite* menuSprite)
 {
-	HackUtils::CompileResult compileResult = HackUtils::assemble(this->functionWindow->getText(), this->activeHackableCode->codePointer);
+	HackUtils::CompileResult compileResult = HackUtils::assemble(this->functionWindow->getText(), this->activeHackableCode->getCodePointer());
 
 	// Sanity check that the code compiles -- it should at this point
-	if (compileResult.hasError || compileResult.byteCount > this->activeHackableCode->codeOriginalLength)
+	if (compileResult.hasError || compileResult.byteCount > this->activeHackableCode->getOriginalLength())
 	{
 		this->disableAccept();
 		return;
 	}
 
-	// Set new assembly
-	this->activeHackableCode->assemblyString = this->functionWindow->getText();
-
-	// Enable hack
-	this->activeHackableCode->applyCustomCode();
+	// Enable hack with new assembly
+	this->activeHackableCode->applyCustomCode(this->functionWindow->getText());
 
 	this->setVisible(false);
 	this->getParent()->setOpacity(0xFF);

@@ -102,6 +102,4 @@ void Wind::update(float dt)
 	float angle = speed.x == 0.0f ? (speed.y > 0.0f ? -90.0f : 90.0f) : atan(speed.y / speed.x);
 	this->windParticles->setAngle(angle);
 	this->windParticles->setPosVar(Vec2(speed.y == 0.0f ? 0.0f : this->size.width, speed.x == 0.0f ? 0.0f : this->size.height));
-
-	this->windDataSpeedY->registerCode(assemblyAddressStart, assemblyAddressEnd, "Wind X Speed", UIResources::Menus_Icons_Tornado);
 }
