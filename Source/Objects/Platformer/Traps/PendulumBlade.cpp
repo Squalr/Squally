@@ -93,19 +93,21 @@ void PendulumBlade::update(float dt)
 	void* assemblyAddressStart = nullptr;
 	void* assemblyAddressEnd = nullptr;
 
-	ASM(push eax);
-	ASM(push ebx);
-	ASM(mov eax, thetaInt);
+	__asm__(".intel_syntax noprefix;" "mov %eax, %ebx" ";.att_syntax prefix"); \
+
+	ASM(push EAX);
+	ASM(push EBX);
+	ASM(mov EAX, thetaInt);
 
 	HACKABLE_CODE_BEGIN(assemblyAddressStart);
-	ASM(mov ebx, eax);
+	ASM(mov EBX, EAX);
 	ASM_NOP8();
 	HACKABLE_CODE_END(assemblyAddressEnd);
 
-	ASM(mov thetaInt, ebx);
+	ASM(mov thetaInt, EBX);
 
-	ASM(pop ebx);
-	ASM(pop eax);
+	ASM(pop EBX);
+	ASM(pop EAX);
 
 	theta = (float)thetaInt;
 

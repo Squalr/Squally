@@ -71,7 +71,7 @@ void PlushieMonkey::onEnter()
 			decCountdown,
 			DelayTime::create(1.0f),
 			nullptr)
-	)
+		)
 	);
 
 	this->scheduleUpdate();
@@ -112,8 +112,8 @@ void PlushieMonkey::decreaseLockTimer()
 	void* assemblyAddressStart = nullptr;
 	void* assemblyAddressEnd = nullptr;
 
-	ASM(push ecx);
-	ASM(mov ecx, PlushieMonkey::lockCountDown);
+	ASM(push ECX);
+	ASM(mov ECX, lockCountDown);
 
 	HACKABLE_CODE_BEGIN(assemblyAddressStart);
 	ASM(dec ecx);
@@ -123,8 +123,8 @@ void PlushieMonkey::decreaseLockTimer()
 	ASM(nop);
 	HACKABLE_CODE_END(assemblyAddressEnd);
 
-	ASM(mov PlushieMonkey::lockCountDown, ecx);
-	ASM(pop ecx);
+	ASM(mov lockCountDown, ECX);
+	ASM(pop ECX);
 
 	if (PlushieMonkey::lockCountDown < 0)
 	{
@@ -132,8 +132,6 @@ void PlushieMonkey::decreaseLockTimer()
 	}
 
 	this->puzzleData->registerCode(assemblyAddressStart, assemblyAddressEnd, "Lock Countdown", UIResources::Menus_Icons_Safe);
-	this->puzzleData->registerCode((void*)((unsigned int)((unsigned long)assemblyAddressStart + 1)), assemblyAddressEnd, "Puzzle Test", UIResources::Menus_Icons_FlamingScroll);
-	this->puzzleData->registerCode((void*)((unsigned int)((unsigned long)assemblyAddressStart + 2)), assemblyAddressEnd, "Puzzle Swag", UIResources::Menus_Icons_BookCrystal);
 }
 
 void PlushieMonkey::registerHackables()
