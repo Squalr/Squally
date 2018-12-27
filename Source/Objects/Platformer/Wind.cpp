@@ -79,11 +79,13 @@ void Wind::update(float dt)
 	ASM(push EBX);
 	ASM(mov EBX, currentSpeed.y);
 
-	HACKABLE_CODE_BEGIN(assemblyAddressStart);
+	HACKABLE_CODE_BEGIN();
 	ASM(mov speed.y, EBX)
-	HACKABLE_CODE_END(assemblyAddressEnd);
+	HACKABLE_CODE_END();
 
 	ASM(pop EBX);
+
+	HACKABLES_STOP_SEARCH();
 
 	if (speed.x == 0.0f && speed.y == 0.0f)
 	{

@@ -6,6 +6,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 
 #include "Resources/ParticleResources.h"
 #include "Resources/ObjectResources.h"
@@ -53,6 +54,15 @@ void PendulumBlade::registerHackables()
 {
 	this->pendulumBladeDataSpeedY = HackableData::create("Y Position", &this->pendulumBladeSpeed.y, &typeid(this->pendulumBladeSpeed.y), UIResources::Menus_Icons_AxeSlash);
 	this->registerData(this->pendulumBladeDataSpeedY);
+
+	auto swingFunc = &PendulumBlade::updateSwing;
+	void* swingFuncPtr = (void*&)swingFunc;
+	std::vector<HackableCode*> hackables = HackableCode::create(swingFuncPtr);
+
+	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	{
+		this->pendulumBladeDataSpeedY->registerCode(*it);
+	}
 }
 
 Vec2 PendulumBlade::getButtonOffset()
@@ -79,39 +89,44 @@ void PendulumBlade::initializePositions()
 
 void PendulumBlade::update(float dt)
 {
+	HackableObject::update(dt);
+
+	this->updateSwing(dt);
+}
+
+void PendulumBlade::updateSwing(float dt)
+{
 	static float deltaTime = 0.0f;
+	const float defaultAngle = 270.0f;
 	float maxAngle = 65.0f;
 	float gravity = 9.8f;
 	float speed = 5.5f;
 
 	deltaTime += dt;
 
-	// the formula for the angle
-	float theta = maxAngle * std::sin(std::sqrt(gravity / this->chainHeight) * deltaTime * speed);
+	float theta = MathUtils::wrappingNormalize(maxAngle * std::sin(std::sqrt(gravity / this->chainHeight) * deltaTime * speed) - defaultAngle, 0.0f, 360.0f);
 	int thetaInt = (int)theta;
 
 	void* assemblyAddressStart = nullptr;
 	void* assemblyAddressEnd = nullptr;
 
-	__asm__(".intel_syntax noprefix;" "mov %eax, %ebx" ";.att_syntax prefix"); \
-
 	ASM(push EAX);
 	ASM(push EBX);
 	ASM(mov EAX, thetaInt);
 
-	HACKABLE_CODE_BEGIN(assemblyAddressStart);
+	HACKABLE_CODE_BEGIN();
 	ASM(mov EBX, EAX);
 	ASM_NOP8();
-	HACKABLE_CODE_END(assemblyAddressEnd);
+	HACKABLE_CODE_END();
 
 	ASM(mov thetaInt, EBX);
 
 	ASM(pop EBX);
 	ASM(pop EAX);
 
-	theta = (float)thetaInt;
+	HACKABLES_STOP_SEARCH();
 
-	this->pendulumBladeDataSpeedY->registerCode(assemblyAddressStart, assemblyAddressEnd, "Pendulum Angle", UIResources::Menus_Icons_CrossHair);
+	theta = MathUtils::wrappingNormalize((float)thetaInt + defaultAngle, 0.0f, 360.0f);
 
 	// set the angle
 	this->bladeChain->setRotation(theta);

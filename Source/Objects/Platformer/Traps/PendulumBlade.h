@@ -27,6 +27,7 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void update(float) override;
+	void updateSwing(float dt);
 	void buildChain();
 
 	cocos2d::Sprite* neck;
