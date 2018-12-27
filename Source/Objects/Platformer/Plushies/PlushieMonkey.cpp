@@ -112,6 +112,7 @@ void PlushieMonkey::decreaseLockTimer()
 	void* assemblyAddressStart = nullptr;
 	void* assemblyAddressEnd = nullptr;
 
+	/*
 	ASM(push ECX);
 	ASM(mov ECX, lockCountDown);
 
@@ -132,6 +133,7 @@ void PlushieMonkey::decreaseLockTimer()
 	}
 
 	this->puzzleData->registerCode(assemblyAddressStart, assemblyAddressEnd, "Lock Countdown", UIResources::Menus_Icons_Safe);
+	*/
 }
 
 void PlushieMonkey::registerHackables()

@@ -6,6 +6,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 
 #include "Resources/ParticleResources.h"
 #include "Resources/ObjectResources.h"
@@ -52,8 +53,17 @@ MechanicalFlail::~MechanicalFlail()
 
 void MechanicalFlail::registerHackables()
 {
-	this->pendulumBladeDataSpeedY = HackableData::create("Y Position", &this->pendulumBladeSpeed.y, &typeid(this->pendulumBladeSpeed.y), UIResources::Menus_Icons_AlchemyPot);
+	this->pendulumBladeDataSpeedY = HackableData::create("Y Position", &this->pendulumBladeSpeed.y, &typeid(this->pendulumBladeSpeed.y), UIResources::Menus_Icons_AxeSlash);
 	this->registerData(this->pendulumBladeDataSpeedY);
+
+	auto swingFunc = &MechanicalFlail::updateSwing;
+	void* swingFuncPtr = (void*&)swingFunc;
+	std::vector<HackableCode*> hackables = HackableCode::create(swingFuncPtr);
+
+	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	{
+		this->pendulumBladeDataSpeedY->registerCode(*it);
+	}
 }
 
 Vec2 MechanicalFlail::getButtonOffset()
@@ -78,38 +88,47 @@ void MechanicalFlail::initializePositions()
 
 void MechanicalFlail::update(float dt)
 {
+	HackableObject::update(dt);
+
+	this->updateSwing(dt);
+}
+
+void MechanicalFlail::updateSwing(float dt)
+{
 	static float deltaTime = 0.0f;
-	float maxAngle = 90.0f;
+	const float defaultAngle = 90.0f;
+	float maxAngle = 65.0f;
 	float gravity = 9.8f;
-	float speed = 4.0f;
+	float speed = 5.5f;
 
 	deltaTime += dt;
 
-	// the formula for the angle
-	float theta = maxAngle * std::sin(std::sqrt(gravity / this->flailHeight) * deltaTime * speed);
+	float theta = MathUtils::wrappingNormalize(180.0f + maxAngle * std::sin(std::sqrt(gravity / this->flailHeight) * deltaTime * speed) - defaultAngle, 0.0f, 360.0f);
+	int thetaInt = (int)theta;
 
-	// set the angle
-	this->flailChain->setRotation(180.0f + theta);
-
-	/*
 	void* assemblyAddressStart = nullptr;
 	void* assemblyAddressEnd = nullptr;
 
-	Vec2 speed = Vec2::ZERO;
-	Vec2 currentSpeed = this->pendulumBladeSpeed;
+	ASM(push EAX);
+	ASM(push EBX);
+	ASM(mov EAX, thetaInt);
 
-	ASM(push ebx);
-	ASM(mov ebx, currentSpeed.y);
+	HACKABLE_CODE_BEGIN();
+	ASM(mov EBX, EAX);
+	ASM_NOP8();
+	HACKABLE_CODE_END();
 
-	HACKABLE_CODE_BEGIN(assemblyAddressStart, MechanicalFlailSpeedYStart);
-	ASM(mov speed.y, ebx)
-	HACKABLE_CODE_END(assemblyAddressEnd, MechanicalFlailSpeedYEnd);
+	ASM(mov thetaInt, EBX);
 
-	ASM(pop ebx);
+	ASM(pop EBX);
+	ASM(pop EAX);
 
-	float angle = speed.x == 0.0f ? (speed.y > 0.0f ? -90.0f : 90.0f) : atan(speed.y / speed.x);
+	HACKABLES_STOP_SEARCH();
 
-	this->pendulumBladeDataSpeedY->registerCode(assemblyAddressStart, assemblyAddressEnd, "Pendulum Angular Velocity", UIResources::Menus_Icons_AxeSlash);*/
+	theta = MathUtils::wrappingNormalize((float)thetaInt + defaultAngle, 0.0f, 360.0f);
+
+	// set the angle
+	this->flailChain->setRotation(theta);
 }
 
 void MechanicalFlail::buildChain()
@@ -123,15 +142,15 @@ void MechanicalFlail::buildChain()
 	{
 		const float chainOverlap = 10.0f;
 
-		Sprite* nextChainLink = Sprite::create(ObjectResources::Traps_MechanicalFlail_Shaft);
+		Sprite* nextPipeLink = Sprite::create(ObjectResources::Traps_MechanicalFlail_Shaft);
 
-		nextChainLink->setAnchorPoint(Vec2(0.5f, 1.0f));
+		nextPipeLink->setAnchorPoint(Vec2(0.5f, 1.0f));
 
-		this->flailChain->addChild(nextChainLink);
+		this->flailChain->addChild(nextPipeLink);
 
-		nextChainLink->setPositionY((float)index++ * -(nextChainLink->getContentSize().height - chainOverlap));
+		nextPipeLink->setPositionY((float)index++ * -(nextPipeLink->getContentSize().height - chainOverlap));
 
-		remainingHeight -= nextChainLink->getContentSize().height - chainOverlap;
+		remainingHeight -= nextPipeLink->getContentSize().height - chainOverlap;
 
 	} while (remainingHeight > 0.0f);
 

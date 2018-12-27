@@ -5,7 +5,6 @@
 #include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/2d/CCSprite.h"
 
-#include "Events/DialogEvents.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/FloatingSprite.h"
 #include "Menus/Dialog/DialogMenu.h"

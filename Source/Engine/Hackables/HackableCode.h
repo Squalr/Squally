@@ -40,10 +40,32 @@
 		__asm asm_literal1, asm_literal2
 	#define ASM3(asm_literal1, asm_literal2, asm_literal3) \
 		__asm asm_literal1, asm_literal2, asm_literal3
-	#define HACKABLE_CODE_BEGIN(address) \
-		__asm _emit 0x66, __asm _emit 0x66, __asm _emit 0x66, __asm _emit 0x0F, __asm _emit 0x1F, __asm _emit 0x84, __asm _emit 0x00, __asm _emit 0x00, __asm _emit 0x00, __asm _emit 0x00, __asm _emit 0x00
-	#define HACKABLE_CODE_END(address) \
-		__asm _emit 0x66, __asm _emit 0x66, __asm _emit 0x66, __asm _emit 0x0F, __asm _emit 0x1F, __asm _emit 0x84, __asm _emit 0x00, __asm _emit 0x00, __asm _emit 0x00, __asm _emit 0x00, __asm _emit 0x00
+
+	// Windows likes to optimize out bytes that are directly emitted, so all hackable function tags are a sequence of useless instructions instead
+
+	// 56 6A 45 BE DE C0 ED FE 5E 5E
+	#define HACKABLE_CODE_BEGIN() \
+		ASM(push EDI) \
+		ASM(push 69) \
+		ASM(mov EDI, 0xFEEDC0DE) \
+		ASM(pop EDI) \
+		ASM(pop EDI)
+
+	// 56 6A 45 BE DE C0 AD DE 5E 5E
+	#define HACKABLE_CODE_END() \
+		ASM(push ESI) \
+		ASM(push 69) \
+		ASM(mov ESI, 0xDEADC0DE) \
+		ASM(pop ESI) \
+		ASM(pop ESI)
+
+	// 56 6A 45 BE 5E EA 5E D1 5E 5E
+	#define HACKABLES_STOP_SEARCH() \
+		ASM(push EBP) \
+		ASM(push 69) \
+		ASM(mov EBP, 0xD15EA5E) \
+		ASM(pop EBP) \
+		ASM(pop EBP)
 #elif __GNUC__ || __clang__
 	#define ASM1(asm_literal) \
 		ASM_GCC(#asm_literal)
@@ -55,10 +77,12 @@
 	#define ASM_GCC(asm_string) \
 		__asm__(".intel_syntax noprefix;" asm_string ";.att_syntax prefix"); \
 
-	#define HACKABLE_CODE_BEGIN(address) \
-		__asm__(".byte 0x66, 0x66, 0x66, 0x0F, 0x1F, 0x84, 0x00, 0x00, 0x00, 0x00, 0x00")
-	#define HACKABLE_CODE_END(address) \
-		__asm__(".byte 0x66, 0x66, 0x66, 0x0F, 0x1F, 0x84, 0x00, 0x00, 0x00, 0x00, 0x00")
+	#define HACKABLE_CODE_BEGIN() \
+		__asm__(".byte 0x57, 0x6A, 0x45, 0xBF, 0xDE, 0xC0, 0xED, 0xFE, 0x5F, 0x5F")
+	#define HACKABLE_CODE_END() \
+		__asm__(".byte 0x56, 0x6A, 0x45, 0xBE, 0xDE, 0xC0, 0xAD, 0xDE, 0x5E, 0x5E")
+	#define HACKABLE_FUNCTION_END() \
+		__asm__(".byte 0x55, 0x6A, 0x45, 0xBD, 0x5E, 0xEA, 0x5E, 0xD1, 0x5D, 0x5D")
 #endif
 
 #define ASM_NOP1() ASM(nop)
@@ -73,8 +97,9 @@
 class HackableCode : public HackableAttribute
 {
 public:
+	static std::vector<HackableCode*> create(void* functionStart);
 	static HackableCode* create(std::string name, void* codeStart, int codeLength, std::string iconResource);
-
+	
 	void restoreOriginalCode();
 	bool applyCustomCode();
 	void* allocateMemory(int allocationSize);
@@ -82,9 +107,13 @@ public:
 	std::string assemblyString;
 	std::string functionName;
 	void* codePointer;
-	void* originalCodeCopy;
+	unsigned char* originalCodeCopy;
 	int codeOriginalLength;
 	std::map<void*, int> allocations;
+
+	static const unsigned char StartTagSignature[];
+	static const unsigned char EndTagSignature[];
+	static const unsigned char StopSearchTagSignature[];
 
 private:
 	HackableCode(std::string name, void* codeStart, int codeLength, std::string iconResource);
