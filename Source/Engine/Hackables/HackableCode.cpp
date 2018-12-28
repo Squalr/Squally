@@ -10,7 +10,7 @@ std::map<void*, std::vector<HackableCode*>> HackableCode::HackableCodeCache = st
 // Note: all tags are assumed to start with a different byte and have the same length
 const unsigned char HackableCode::StartTagSignature[] = { 0x57, 0x6A, 0x45, 0xBF, 0xDE, 0xC0, 0xED, 0xFE, 0x5F, 0x5F };
 const unsigned char HackableCode::EndTagSignature[] = { 0x56, 0x6A, 0x45, 0xBE, 0xDE, 0xC0, 0xAD, 0xDE, 0x5E, 0x5E };
-const unsigned char HackableCode::StopSearchTagSignature[] = { 0x55, 0x6A, 0x45, 0xBD, 0x5E, 0xEA, 0x5E, 0xD1, 0x5D, 0x5D };
+const unsigned char HackableCode::StopSearchTagSignature[] = { 0x52, 0x6A, 0x45, 0xBA, 0x5E, 0xEA, 0x15, 0x0D, 0x5A, 0x5A };
 
 std::vector<HackableCode*> HackableCode::create(void* functionStart)
 {
@@ -78,30 +78,33 @@ std::vector<HackableCode*> HackableCode::create(void* functionStart)
 				}
 				else if (targetArray == HackableCode::EndTagSignature)
 				{
-					void* nextHackableCodeEnd = (void*)currentBase;
+					if (nextHackableCodeStart != nullptr)
+					{
+						void* nextHackableCodeEnd = (void*)currentBase;
 
-					HackableCode* hackableCode = HackableCode::create("", nextHackableCodeStart, (int)((unsigned long)nextHackableCodeEnd - (unsigned long)nextHackableCodeStart), UIResources::Menus_Icons_CrossHair);
+						HackableCode* hackableCode = HackableCode::create("", nextHackableCodeStart, (int)((unsigned long)nextHackableCodeEnd - (unsigned long)nextHackableCodeStart), UIResources::Menus_Icons_CrossHair);
 
-					extractedHackableCode.push_back(hackableCode);
+						extractedHackableCode.push_back(hackableCode);
+
+						nextHackableCodeStart = nullptr;
+					}
 				}
 				else if (targetArray == HackableCode::StopSearchTagSignature)
 				{
 					break;
 				}
-
-				// Reset search state
-				targetArray = nullptr;
-				currentBase++;
-				currentSeek = currentBase;
+			}
+			else
+			{
+				// Keep searching this signature
+				continue;
 			}
 		}
-		else
-		{
-			// Match chain broken: Start again
-			targetArray = nullptr;
-			currentBase++;
-			currentSeek = currentBase;
-		}
+
+		// Reset search state
+		targetArray = nullptr;
+		currentBase++;
+		currentSeek = currentBase;
 	}
 
 	HackableCode::HackableCodeCache[functionStart] = extractedHackableCode;
