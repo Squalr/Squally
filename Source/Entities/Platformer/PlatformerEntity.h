@@ -10,9 +10,6 @@ class SmartAnimationNode;
 
 class PlatformerEntity : public CollisionObject
 {
-public:
-	virtual cocos2d::Size getSize();
-
 protected:
 	PlatformerEntity(
 		cocos2d::ValueMap* initProperties,

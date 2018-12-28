@@ -149,8 +149,3 @@ void Squally::setFlippedX(bool newIsFlipped)
 {
 	this->isFlipped = newIsFlipped;
 }
-
-Size Squally::getSize()
-{
-	return this->size * Squally::squallyScale;
-}

@@ -23,7 +23,6 @@ class HackableObject : public SerializableObject
 public:
 	void onHackableClick(MenuSprite* backButton);
 
-	cocos2d::Size size;
 	std::vector<HackableData*> dataList;
 	std::vector<HackableCode*> codeList;
 
