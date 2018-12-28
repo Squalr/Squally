@@ -15,6 +15,16 @@
 using namespace asmjit;
 using namespace asmtk;
 
+void HackUtils::makeWritable(void* address, int length)
+{
+	#ifdef _WIN32
+		DWORD old;
+		VirtualProtect(address, length, PAGE_EXECUTE_READWRITE, &old);
+	#else
+		mprotect(address, length, PROT_READ | PROT_WRITE | PROT_EXEC);
+	#endif
+}
+
 HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* addressStart)
 {
 	CompileResult compileResult;

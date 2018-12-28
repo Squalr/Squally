@@ -38,7 +38,7 @@ private:
 	float chainHeight;
 
 	HackableData* hackableDataTargetAngle;
-
+	
 	static const float DefaultAngle;
 	static const float SwingsPerSecondAt480Length;
 	static 	const float MinAngle;

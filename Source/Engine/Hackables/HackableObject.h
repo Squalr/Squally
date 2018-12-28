@@ -6,6 +6,7 @@
 
 #include "Engine/Maps/SerializableObject.h"
 
+class HackableCode;
 class HackableData;
 class HackButton;
 class MenuSprite;
@@ -24,6 +25,7 @@ public:
 
 	cocos2d::Size size;
 	std::vector<HackableData*> dataList;
+	std::vector<HackableCode*> codeList;
 
 protected:
 	HackableObject(cocos2d::ValueMap* initProperties);
@@ -35,6 +37,7 @@ protected:
 	virtual void onHackerModeDisable();
 	virtual cocos2d::Vec2 getButtonOffset();
 	void registerData(HackableData* hackableData);
+	void registerCode(HackableCode* hackableCode);
 
 private:
 	HackButton* hackButton;

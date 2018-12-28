@@ -43,10 +43,10 @@
 
 	// Windows likes to optimize out bytes that are directly emitted, so all hackable function tags are a sequence of useless instructions instead
 
-	// 56 6A 45 BE DE C0 ED FE 5E 5E
-	#define HACKABLE_CODE_BEGIN() \
+	// 56 6A * BE DE C0 ED FE 5E 5E
+	#define HACKABLE_CODE_BEGIN(func_id) \
 		ASM(push EDI) \
-		ASM(push 69) \
+		ASM(push func_id) \
 		ASM(mov EDI, 0xFEEDC0DE) \
 		ASM(pop EDI) \
 		ASM(pop EDI)
@@ -77,8 +77,8 @@
 	#define ASM_GCC(asm_string) \
 		__asm__(".intel_syntax noprefix;" asm_string ";.att_syntax prefix"); \
 
-	#define HACKABLE_CODE_BEGIN() \
-		__asm__(".byte 0x57, 0x6A, 0x45, 0xBF, 0xDE, 0xC0, 0xED, 0xFE, 0x5F, 0x5F")
+	#define HACKABLE_CODE_BEGIN(func_id) \
+		__asm__(".byte 0x57, 0x6A, " func_id ", 0xBF, 0xDE, 0xC0, 0xED, 0xFE, 0x5F, 0x5F")
 	#define HACKABLE_CODE_END() \
 		__asm__(".byte 0x56, 0x6A, 0x45, 0xBE, 0xDE, 0xC0, 0xAD, 0xDE, 0x5E, 0x5E")
 	#define HACKABLES_STOP_SEARCH() \
@@ -94,13 +94,24 @@
 #define ASM_NOP7() ASM_NOP6() ASM_NOP1()
 #define ASM_NOP8() ASM_NOP7() ASM_NOP1()
 
+class LocalizedString;
+
 class HackableCode : public HackableAttribute
 {
 public:
-	static std::vector<HackableCode*> create(void* functionStart);
+	struct LateBindData
+	{
+		LocalizedString* functionName;
+		std::string iconResource;
+
+		LateBindData() : functionName(nullptr), iconResource("") { }
+		LateBindData(LocalizedString* functionName, std::string iconResource) : functionName(functionName), iconResource(iconResource) { }
+	};
+
+	static std::vector<HackableCode*> create(void* functionStart, std::map<unsigned char, LateBindData>& lateBindDataMap);
 
 	std::string getAssemblyString();
-	std::string getFunctionName();
+	LocalizedString* getFunctionName();
 	void* getCodePointer();
 	int getOriginalLength();
 	bool applyCustomCode(std::string newAssembly);
@@ -108,20 +119,21 @@ public:
 	void* allocateMemory(int allocationSize);
 
 	static std::map<void*, std::vector<HackableCode*>> HackableCodeCache;
+	static const int StartTagFuncIdIndex;
 	static const unsigned char StartTagSignature[];
 	static const unsigned char EndTagSignature[];
 	static const unsigned char StopSearchTagSignature[];
 
 private:
-	static HackableCode* create(std::string name, void* codeStart, int codeLength, std::string iconResource);
+	static HackableCode* create(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource);
+
+	HackableCode(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource);
+	virtual ~HackableCode();
 
 	std::string assemblyString;
-	std::string functionName;
+	LocalizedString* functionName;
 	void* codePointer;
 	unsigned char* originalCodeCopy;
-	int codeOriginalLength;
+	int originalCodeLength;
 	std::map<void*, int> allocations;
-
-	HackableCode(std::string name, void* codeStart, int codeLength, std::string iconResource);
-	virtual ~HackableCode();
 };

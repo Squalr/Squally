@@ -388,7 +388,7 @@ void CodeEditor::open(HackableCode* hackableCode)
 {
 	this->activeHackableCode = hackableCode;
 
-	this->functionWindow->setTitle("Function"); //"Function '" + hackableCode->getFunctionName() + "'");
+	this->functionWindow->setTitle("Function '" + hackableCode->getFunctionName()->getString() + "'");
 	this->functionWindow->setText(hackableCode->getAssemblyString());
 	this->functionWindow->focus();
 
