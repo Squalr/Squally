@@ -109,9 +109,6 @@ void PlushieMonkey::update(float dt)
 
 void PlushieMonkey::decreaseLockTimer()
 {
-	void* assemblyAddressStart = nullptr;
-	void* assemblyAddressEnd = nullptr;
-
 	/*
 	ASM(push ECX);
 	ASM(mov ECX, lockCountDown);
@@ -131,8 +128,6 @@ void PlushieMonkey::decreaseLockTimer()
 	{
 		PlushieMonkey::lockCountDown = 0;
 	}
-
-	this->puzzleData->registerCode(assemblyAddressStart, assemblyAddressEnd, "Lock Countdown", UIResources::Menus_Icons_Safe);
 	*/
 }
 

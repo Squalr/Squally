@@ -47,7 +47,6 @@ MechanicalFlail::MechanicalFlail(ValueMap* initProperties) : HackableObject(init
 	this->smokeParticles = ParticleSystemQuad::create(ParticleResources::Objects_Smoke);
 	this->flailCollision = CollisionObject::create(PhysicsBody::createCircle(56.0f), (CollisionType)PlatformerCollisionType::Damage, false, false);
 
-	float width = this->properties->at(SerializableObject::MapKeyWidth).asFloat();
 	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
 
 	this->smokeParticles->setVisible(false);
@@ -134,14 +133,14 @@ void MechanicalFlail::swingToAngle(float angle)
 
 	ASM(push EAX);
 	ASM(push EBX);
-	ASM(mov EAX, angleInt);
+	ASM_MOV_REG_VAR(eax, angleInt);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SWING);
 	ASM(mov EBX, EAX);
 	ASM_NOP5();
 	HACKABLE_CODE_END();
 
-	ASM(mov angleInt, EBX);
+	ASM_MOV_VAR_REG(angleInt, EBX);
 
 	ASM(pop EBX);
 	ASM(pop EAX);

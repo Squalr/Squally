@@ -76,10 +76,10 @@ void Wind::update(float dt)
 	Vec2 currentSpeed = this->windSpeed;
 
 	ASM(push EBX);
-	ASM(mov EBX, currentSpeed.y);
+	ASM_MOV_REG_VAR(ebx, currentSpeed.y);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_WIND_SPEED_Y);
-	ASM(mov speed.y, EBX)
+	ASM_MOV_VAR_REG(speed.y, EBX);
 	HACKABLE_CODE_END();
 
 	ASM(pop EBX);

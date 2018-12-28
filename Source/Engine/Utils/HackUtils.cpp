@@ -12,6 +12,10 @@
 #include "Engine/asmtk/asmtk.h"
 #include "Engine/Utils/LogUtils.h"
 
+#if __GNUC__ || __clang__
+	#include <sys/mman.h>
+#endif
+
 using namespace asmjit;
 using namespace asmtk;
 

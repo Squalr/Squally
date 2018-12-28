@@ -106,7 +106,6 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	this->chapterSelectLabel->enableOutline(Color4B::BLACK, 2);
 	this->setCascadeOpacityEnabled(true);
 
-	auto callback = CC_CALLBACK_1(HexusChapterSelectMenu::onMouseOver, this);
 	this->chapters.push_back(this->hexusChapterPreviewTraining);
 	this->chapters.push_back(this->hexusChapterPreviewJungle);
 	this->chapters.push_back(this->hexusChapterPreviewRuins);

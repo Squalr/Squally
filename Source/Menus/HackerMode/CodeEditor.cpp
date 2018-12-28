@@ -102,7 +102,6 @@ CodeEditor::CodeEditor()
 
 	Size shadowSize = Size(-2.0f, -2.0f);
 	int shadowBlur = 2;
-	int hoverOutlineSize = 2;
 	Color3B textColor = Color3B::WHITE;
 	Color4B shadowColor = Color4B::BLACK;
 	Color3B highlightColor = Color3B::YELLOW;
