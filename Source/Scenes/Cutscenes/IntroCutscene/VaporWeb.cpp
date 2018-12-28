@@ -137,8 +137,6 @@ void VaporWeb::onDialogueShown()
 
 void VaporWeb::runCutscene()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
 	CallFunc* nextCutscene = CallFunc::create([=]()
 	{
 		this->endCutsceneClip();
@@ -185,7 +183,6 @@ FiniteTimeAction* VaporWeb::createCutsceneGridSetup()
 
 	CallFunc* darkLordMoveIn = CallFunc::create([=]()
 	{
-		const float fadeSpeed = 1.0f;
 		const float destinationX = visibleSize.width / 2.0f - 96.0f;
 		const float destinationY = 128.0f + VaporWeb::dialogueHeight;
 		const float flyInTime = 3.0f;
@@ -307,6 +304,7 @@ FiniteTimeAction* VaporWeb::createCutsceneObelisk()
 		fadeInBackground,
 		addObjects,
 		DelayTime::create(12.0f),
+		fadeOutBackground,
 		nullptr
 	);
 }

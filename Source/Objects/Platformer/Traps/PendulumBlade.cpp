@@ -45,7 +45,6 @@ PendulumBlade::PendulumBlade(ValueMap* initProperties) : HackableObject(initProp
 	this->bladeChain = Node::create();
 	this->bladeCollision = CollisionObject::create(this->createBladeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
 
-	float width = this->properties->at(SerializableObject::MapKeyWidth).asFloat();
 	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
 
 	this->targetAngle = PendulumBlade::DefaultAngle;
@@ -130,14 +129,14 @@ void PendulumBlade::swingToAngle(float angle)
 
 	ASM(push EAX);
 	ASM(push EBX);
-	ASM(mov EAX, angleInt);
+	ASM_MOV_REG_VAR(eax, angleInt);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SWING);
+	HACKABLE_CODE_BEGIN( LOCAL_FUNC_ID_SWING );
 	ASM(mov EBX, EAX);
 	ASM_NOP5();
 	HACKABLE_CODE_END();
 
-	ASM(mov angleInt, EBX);
+	ASM_MOV_VAR_REG(angleInt, EBX);
 
 	ASM(pop EBX);
 	ASM(pop EAX);

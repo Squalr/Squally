@@ -753,8 +753,6 @@ void HexusStoreMenu::onLootBoxClick(MenuSprite* sprite, int price, std::map<Card
 
 void HexusStoreMenu::onLootBoxReturnButtonClick(int price, std::vector<Card*> chosenCards)
 {
-	int gold = CardStorage::getGold();
-
 	this->runAction(Sequence::create(
 		CallFunc::create([=]()
 		{

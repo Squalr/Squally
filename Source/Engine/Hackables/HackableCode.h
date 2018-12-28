@@ -12,6 +12,9 @@
 #define GET_MACRO(_1,_2,_3,NAME,...) NAME
 #define ASM(...) GET_MACRO(__VA_ARGS__, ASM3, ASM2, ASM1)(__VA_ARGS__)
 
+#define QUOTE(str) #str
+#define EXPAND_AND_QUOTE(str) QUOTE(str)
+
 #if (_WIN64 || (__GNUC__ && (__x86_64__ || __ppc64__)))
 	#define EAX rax
 	#define EBX rbx
@@ -74,15 +77,21 @@
 	#define ASM3(asm_literal1, asm_literal2, asm_literal3) \
 		ASM_GCC(#asm_literal1 ", " #asm_literal2 ", " #asm_literal3)
 
+	#define ASM_MOV_REG_VAR(register, variable) \
+		__asm__ __volatile__(".intel_syntax noprefix; mov %0, " EXPAND_AND_QUOTE(register) " ; .att_syntax prefix" : "=rm"(variable) : )
+
+	#define ASM_MOV_VAR_REG(variable, register) \
+		__asm__ __volatile__(".intel_syntax noprefix; .att_syntax prefix" : : "r"(variable))
+
 	#define ASM_GCC(asm_string) \
-		__asm__(".intel_syntax noprefix;" asm_string ";.att_syntax prefix"); \
+		__asm__ __volatile__(".intel_syntax noprefix;" asm_string ";.att_syntax prefix"); \
 
 	#define HACKABLE_CODE_BEGIN(func_id) \
-		__asm__(".byte 0x57, 0x6A, " func_id ", 0xBF, 0xDE, 0xC0, 0xED, 0xFE, 0x5F, 0x5F")
+		__asm__ __volatile__(".byte 0x57, 0x6A, " #func_id ", 0xBF, 0xDE, 0xC0, 0xED, 0xFE, 0x5F, 0x5F")
 	#define HACKABLE_CODE_END() \
-		__asm__(".byte 0x56, 0x6A, 0x45, 0xBE, 0xDE, 0xC0, 0xAD, 0xDE, 0x5E, 0x5E")
+		__asm__ __volatile__(".byte 0x56, 0x6A, 0x45, 0xBE, 0xDE, 0xC0, 0xAD, 0xDE, 0x5E, 0x5E")
 	#define HACKABLES_STOP_SEARCH() \
-		__asm__(".byte 0x52, 0x6A, 0x45, 0xBA, 0x5E, 0xEA, 0x15, 0x0D, 0x5A, 0x5A")
+		__asm__ __volatile__(".byte 0x52, 0x6A, 0x45, 0xBA, 0x5E, 0xEA, 0x15, 0x0D, 0x5A, 0x5A")
 #endif
 
 #define ASM_NOP1() ASM(nop)

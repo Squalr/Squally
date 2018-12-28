@@ -313,7 +313,6 @@ void HexusDeckManagement::initializePositions()
 
 		for (auto it = CardList::getInstance()->sortedCardList.begin(); it != CardList::getInstance()->sortedCardList.end(); it++)
 		{
-			CardData* cardData = *it;
 			MenuCard* card = displayCards[*it];
 
 			int x = index % cardsPerRow;
