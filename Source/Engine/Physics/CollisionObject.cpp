@@ -131,6 +131,16 @@ void CollisionObject::setPhysicsEnabled(bool enabled)
 	}
 }
 
+void CollisionObject::setPosition(const cocos2d::Vec2& position)
+{
+	HackableObject::setPosition(position);
+
+	if (this->physicsBody != nullptr)
+	{
+		this->physicsBody->setPositionInterruptPhysics(position);
+	}
+}
+
 Vec2 CollisionObject::getVelocity()
 {
 	return this->physicsBody == nullptr ? Vec2::ZERO : this->physicsBody->getVelocity();

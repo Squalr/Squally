@@ -10,6 +10,8 @@ namespace cocos2d
 	class Sprite;
 }
 
+class CollisionObject;
+
 class MechanicalFlail : public HackableObject
 {
 public:
@@ -33,14 +35,12 @@ private:
 	void buildChain();
 
 	float targetAngle;
-
 	cocos2d::Sprite* joint;
 	cocos2d::Node* flailChain;
 	float flailHeight;
-
 	HackableData* hackableDataTargetAngle;
-
 	cocos2d::ParticleSystemQuad* smokeParticles;
+	CollisionObject* flailCollision;
 
 	static const float DefaultAngle;
 	static const float SwingsPerSecondAt480Length;

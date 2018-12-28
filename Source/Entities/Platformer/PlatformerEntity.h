@@ -32,6 +32,7 @@ protected:
 
 	SmartAnimationNode* animationNode;
 	cocos2d::Vec2 movement;
+	cocos2d::Vec2 spawnCoords;
 
 	bool isOnGround();
 

@@ -27,6 +27,7 @@ public:
 	static const std::string MapKeyCollisionTypeSolidNpcFlying;
 	static const std::string MapKeyCollisionTypeWater;
 	static const std::string MapKeyCollisionTypeLava;
+	static const std::string MapKeyCollisionTypeDamage;
 
 private:
 	PlatformerCollisionMapping();
