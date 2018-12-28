@@ -8,14 +8,13 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Hackables/HackableAttribute.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Engine/Utils/HackUtils.h"
-#include "Events/HackableEvents.h"
 #include "Menus/HackerMode/CodeEditor.h"
 
 #include "Resources/UIResources.h"
