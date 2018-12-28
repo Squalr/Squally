@@ -6,6 +6,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Utils/GameUtils.h"
@@ -15,7 +16,11 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Objects/Hackables/PendulumBlade/PendulumTargetAngle.h"
+
 using namespace cocos2d;
+
+#define LOCAL_FUNC_ID_SWING 1
 
 const std::string PendulumBlade::MapKeyPendulumBlade = "pendulum-blade";
 
@@ -63,13 +68,17 @@ void PendulumBlade::registerHackables()
 	this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, &typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	this->registerData(this->hackableDataTargetAngle);
 
+	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	{
+		{ LOCAL_FUNC_ID_SWING, HackableCode::LateBindData(LocaleStrings::PendulumTargetAngle::create(), UIResources::Menus_Icons_CrossHair)},
+	};
+
 	auto swingFunc = &PendulumBlade::swingToAngle;
-	void* swingFuncPtr = (void*&)swingFunc;
-	std::vector<HackableCode*> hackables = HackableCode::create(swingFuncPtr);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, lateBindMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{
-		this->hackableDataTargetAngle->registerCode(*it);
+		this->registerCode(*it);
 	}
 }
 
@@ -119,7 +128,7 @@ void PendulumBlade::swingToAngle(float angle)
 	ASM(push EBX);
 	ASM(mov EAX, angleInt);
 
-	HACKABLE_CODE_BEGIN();
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SWING);
 	ASM(mov EBX, EAX);
 	ASM_NOP5();
 	HACKABLE_CODE_END();

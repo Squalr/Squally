@@ -2,12 +2,12 @@
 
 #include "base/CCEventListenerCustom.h"
 
+#include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Hackables/HackButton.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Events/HackableEvents.h"
 
-#include "Resources/UIResources.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -15,6 +15,7 @@ using namespace cocos2d;
 HackableObject::HackableObject(ValueMap* initProperties) : SerializableObject(initProperties)
 {
 	this->dataList = std::vector<HackableData*>();
+	this->codeList = std::vector<HackableCode*>();
 	this->hackButton = HackButton::create();
 	
 	this->hackButton->setVisible(false);
@@ -80,4 +81,10 @@ void HackableObject::registerData(HackableData* hackableData)
 {
 	hackableData->retain();
 	this->dataList.push_back(hackableData);
+}
+
+void HackableObject::registerCode(HackableCode* hackableCode)
+{
+	hackableCode->retain();
+	this->codeList.push_back(hackableCode);
 }

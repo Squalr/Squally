@@ -14,6 +14,8 @@
 
 using namespace cocos2d;
 
+#define LOCAL_FUNC_ID_WIND_SPEED_Y 1
+
 const std::string Wind::MapKeyWind = "wind";
 
 Wind* Wind::create(ValueMap* initProperties)
@@ -79,7 +81,7 @@ void Wind::update(float dt)
 	ASM(push EBX);
 	ASM(mov EBX, currentSpeed.y);
 
-	HACKABLE_CODE_BEGIN();
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_WIND_SPEED_Y);
 	ASM(mov speed.y, EBX)
 	HACKABLE_CODE_END();
 
