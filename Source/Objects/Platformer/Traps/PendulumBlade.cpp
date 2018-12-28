@@ -63,6 +63,29 @@ PendulumBlade::~PendulumBlade()
 {
 }
 
+void PendulumBlade::onEnter()
+{
+	HackableObject::onEnter();
+
+	this->scheduleUpdate();
+	this->startSwing();
+}
+
+void PendulumBlade::initializePositions()
+{
+	HackableObject::initializePositions();
+
+	const float neckOfffset = 8.0f;
+
+	this->neck->setPositionY(this->chainHeight / 2.0f + neckOfffset);
+	this->bladeChain->setPositionY(this->chainHeight / 2.0f);
+}
+
+void PendulumBlade::update(float dt)
+{
+	HackableObject::update(dt);
+}
+
 void PendulumBlade::registerHackables()
 {
 	this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, &typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
@@ -85,29 +108,6 @@ void PendulumBlade::registerHackables()
 Vec2 PendulumBlade::getButtonOffset()
 {
 	return Vec2(0.0f, 0.0f);
-}
-
-void PendulumBlade::onEnter()
-{
-	HackableObject::onEnter();
-
-	this->scheduleUpdate();
-	this->startSwing();
-}
-
-void PendulumBlade::initializePositions()
-{
-	HackableObject::initializePositions();
-
-	const float neckOfffset = 8.0f;
-
-	this->neck->setPositionY(this->chainHeight / 2.0f + neckOfffset);
-	this->bladeChain->setPositionY(this->chainHeight / 2.0f);
-}
-
-void PendulumBlade::update(float dt)
-{
-	HackableObject::update(dt);
 }
 
 void PendulumBlade::startSwing()

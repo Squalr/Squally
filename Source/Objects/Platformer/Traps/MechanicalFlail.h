@@ -6,6 +6,7 @@ class HackableData;
 
 namespace cocos2d
 {
+	class ParticleSystemQuad;
 	class Sprite;
 }
 
@@ -38,6 +39,8 @@ private:
 	float flailHeight;
 
 	HackableData* hackableDataTargetAngle;
+
+	cocos2d::ParticleSystemQuad* smokeParticles;
 
 	static const float DefaultAngle;
 	static const float SwingsPerSecondAt480Length;

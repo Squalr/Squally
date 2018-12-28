@@ -52,6 +52,7 @@ const std::string ParticleResources::Hexus_RowEffects_Rain = "Particles/Hexus/Ro
 const std::string ParticleResources::Hexus_WhiteAura = "Particles/Hexus/WhiteAura.plist";
 const std::string ParticleResources::Hover = "Particles/Hover.plist";
 const std::string ParticleResources::MindBlast = "Particles/MindBlast.plist";
+const std::string ParticleResources::Objects_Smoke = "Particles/Objects/Smoke.plist";
 const std::string ParticleResources::Rain = "Particles/Rain.plist";
 const std::string ParticleResources::Rain2 = "Particles/Rain2.plist";
 const std::string ParticleResources::Spark = "Particles/Spark.plist";
