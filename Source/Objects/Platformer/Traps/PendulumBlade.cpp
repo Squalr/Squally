@@ -9,10 +9,11 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
-#include "Resources/ParticleResources.h"
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
@@ -45,6 +46,7 @@ PendulumBlade::PendulumBlade(ValueMap* initProperties) : HackableObject(initProp
 	float width = this->properties->at(SerializableObject::MapKeyWidth).asFloat();
 	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
 	this->size = Size(width, height);
+	this->bladeCollision = CollisionObject::create(this->createBladeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
 
 	this->targetAngle = PendulumBlade::DefaultAngle;
 	this->chainHeight = height;
@@ -55,6 +57,7 @@ PendulumBlade::PendulumBlade(ValueMap* initProperties) : HackableObject(initProp
 	this->registerHackables();
 	this->buildChain();
 
+	this->bladeChain->addChild(this->bladeCollision);
 	this->addChild(this->neck);
 	this->addChild(this->bladeChain);
 }
@@ -77,6 +80,7 @@ void PendulumBlade::initializePositions()
 
 	const float neckOfffset = 8.0f;
 
+	this->bladeCollision->setPositionY(-this->chainHeight);
 	this->neck->setPositionY(this->chainHeight / 2.0f + neckOfffset);
 	this->bladeChain->setPositionY(this->chainHeight / 2.0f);
 }
@@ -196,4 +200,31 @@ void PendulumBlade::buildChain()
 	blade->setPositionY(-this->chainHeight);
 
 	this->bladeChain->addChild(blade);
+}
+
+PhysicsBody* PendulumBlade::createBladeCollision()
+{
+	// Polygons can't be concave, so we get around this by building the left and right sides of the blade separately
+
+	std::vector<Vec2> leftPoints = std::vector<Vec2>();
+
+	leftPoints.push_back(Vec2(0.0f, 8.0f));
+	leftPoints.push_back(Vec2(-212.0f, 64.0f));
+	leftPoints.push_back(Vec2(-160.0f, -32.0f));
+	leftPoints.push_back(Vec2(-96.0f, -64.0f));
+	leftPoints.push_back(Vec2(0.0f, -80.0f));
+
+	std::vector<Vec2> rightPoints = std::vector<Vec2>();
+
+	rightPoints.push_back(Vec2(0.0f, 8.0f));
+	rightPoints.push_back(Vec2(212.0f, 64.0f));
+	rightPoints.push_back(Vec2(160.0f, -32.0f));
+	rightPoints.push_back(Vec2(96.0f, -64.0f));
+	rightPoints.push_back(Vec2(0.0f, -80.0f));
+
+	PhysicsBody* physicsBody = PhysicsBody::createPolygon(leftPoints.data(), leftPoints.size());
+
+	physicsBody->addShape(PhysicsShapePolygon::create(rightPoints.data(), rightPoints.size()));
+
+	return physicsBody;
 }

@@ -73,6 +73,13 @@ void Squally::initializeCollisionEvents()
 		return CollisionResult::DoNothing;
 	});
 
+	this->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionData collisionData)
+	{
+		this->setPosition(this->spawnCoords);
+
+		return CollisionResult::DoNothing;
+	});
+
 	this->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionData collisionData)
 	{
 		return CollisionResult::DoNothing;

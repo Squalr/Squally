@@ -9,8 +9,10 @@
 
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ParticleResources.h"
 #include "Resources/ObjectResources.h"
@@ -43,6 +45,7 @@ MechanicalFlail::MechanicalFlail(ValueMap* initProperties) : HackableObject(init
 	this->joint = Sprite::create(ObjectResources::Traps_MechanicalFlail_Joint);
 	this->flailChain = Node::create();
 	this->smokeParticles = ParticleSystemQuad::create(ParticleResources::Objects_Smoke);
+	this->flailCollision = CollisionObject::create(PhysicsBody::createCircle(56.0f), (CollisionType)PlatformerCollisionType::Damage, false, false);
 
 	float width = this->properties->at(SerializableObject::MapKeyWidth).asFloat();
 	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
@@ -59,6 +62,7 @@ MechanicalFlail::MechanicalFlail(ValueMap* initProperties) : HackableObject(init
 	this->registerHackables();
 	this->buildChain();
 
+	this->flailChain->addChild(this->flailCollision);
 	this->addChild(this->smokeParticles);
 	this->addChild(this->flailChain);
 	this->addChild(this->joint);
@@ -80,6 +84,7 @@ void MechanicalFlail::initializePositions()
 {
 	HackableObject::initializePositions();
 
+	this->flailCollision->setPositionY(this->flailHeight);
 	this->smokeParticles->setPositionY(-this->flailHeight / 2.0f);
 	this->joint->setPositionY(-this->flailHeight / 2.0f);
 	this->flailChain->setPositionY(-this->flailHeight / 2.0f);
