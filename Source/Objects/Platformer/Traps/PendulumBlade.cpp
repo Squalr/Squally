@@ -1,5 +1,8 @@
 #include "PendulumBlade.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
@@ -15,6 +18,11 @@
 using namespace cocos2d;
 
 const std::string PendulumBlade::MapKeyPendulumBlade = "pendulum-blade";
+
+const float PendulumBlade::DefaultAngle = 270.0f;
+const float PendulumBlade::SwingsPerSecondAt480Length = 1.5f;
+const float PendulumBlade::MinAngle = MathUtils::wrappingNormalize(PendulumBlade::DefaultAngle - 45.0f, 0.0f, 360.0f);
+const float PendulumBlade::MaxAngle = MathUtils::wrappingNormalize(PendulumBlade::DefaultAngle + 45.0f, 0.0f, 360.0f);
 
 PendulumBlade* PendulumBlade::create(ValueMap* initProperties)
 {
@@ -37,7 +45,6 @@ PendulumBlade::PendulumBlade(ValueMap* initProperties) : HackableObject(initProp
 
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->bladeChain->setAnchorPoint(Vec2(0.5f, 0.0f));
-	this->pendulumBladeSpeed = Vec2::ZERO;
 
 	this->registerHackables();
 	this->buildChain();
@@ -52,16 +59,16 @@ PendulumBlade::~PendulumBlade()
 
 void PendulumBlade::registerHackables()
 {
-	this->pendulumBladeDataSpeedY = HackableData::create("Y Position", &this->pendulumBladeSpeed.y, &typeid(this->pendulumBladeSpeed.y), UIResources::Menus_Icons_AxeSlash);
-	this->registerData(this->pendulumBladeDataSpeedY);
+	this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, &typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
+	this->registerData(this->hackableDataTargetAngle);
 
-	auto swingFunc = &PendulumBlade::updateSwing;
+	auto swingFunc = &PendulumBlade::swingToAngle;
 	void* swingFuncPtr = (void*&)swingFunc;
 	std::vector<HackableCode*> hackables = HackableCode::create(swingFuncPtr);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{
-		this->pendulumBladeDataSpeedY->registerCode(*it);
+		this->hackableDataTargetAngle->registerCode(*it);
 	}
 }
 
@@ -75,6 +82,7 @@ void PendulumBlade::onEnter()
 	HackableObject::onEnter();
 
 	this->scheduleUpdate();
+	this->startSwing();
 }
 
 void PendulumBlade::initializePositions()
@@ -90,46 +98,73 @@ void PendulumBlade::initializePositions()
 void PendulumBlade::update(float dt)
 {
 	HackableObject::update(dt);
-
-	this->updateSwing(dt);
 }
 
-void PendulumBlade::updateSwing(float dt)
+void PendulumBlade::startSwing()
 {
-	static float deltaTime = 0.0f;
-	const float defaultAngle = 270.0f;
-	float maxAngle = 65.0f;
-	float gravity = 9.8f;
-	float speed = 5.5f;
+	swingToAngle(PendulumBlade::MinAngle);
+}
 
-	deltaTime += dt;
+void PendulumBlade::swingToAngle(float angle)
+{
+	const float arc = (PendulumBlade::MaxAngle - PendulumBlade::MinAngle);
+	const float minDuration = 0.5f;
+	const float maxDuration = 5.0f;
+	static bool init = true;
 
-	float theta = MathUtils::wrappingNormalize(maxAngle * std::sin(std::sqrt(gravity / this->chainHeight) * deltaTime * speed) - defaultAngle, 0.0f, 360.0f);
-	int thetaInt = (int)theta;
+	if (init)
+	{
+		this->targetAngle = PendulumBlade::DefaultAngle;
+		init = false;
+	}
 
-	void* assemblyAddressStart = nullptr;
-	void* assemblyAddressEnd = nullptr;
+	float previousAngle = this->targetAngle;
+	int angleInt = (int)angle;
 
 	ASM(push EAX);
 	ASM(push EBX);
-	ASM(mov EAX, thetaInt);
+	ASM(mov EAX, angleInt);
 
 	HACKABLE_CODE_BEGIN();
 	ASM(mov EBX, EAX);
-	ASM_NOP8();
+	ASM_NOP5();
 	HACKABLE_CODE_END();
 
-	ASM(mov thetaInt, EBX);
+	ASM(mov angleInt, EBX);
 
 	ASM(pop EBX);
 	ASM(pop EAX);
 
+	this->targetAngle = MathUtils::wrappingNormalize((float)angleInt, 0.0f, 360.0f);
+
+	float speedMultiplier = (this->chainHeight / 480.0f) * PendulumBlade::SwingsPerSecondAt480Length;
+
+	float angleDelta = std::abs(previousAngle - this->targetAngle);
+	float duration = MathUtils::clamp((speedMultiplier * (angleDelta / arc)) / PendulumBlade::SwingsPerSecondAt480Length, minDuration, maxDuration);
+
+	// Adjust angle to cocos space (inverted Y)
+	float newAngleAdjusted = MathUtils::wrappingNormalize(-this->targetAngle + PendulumBlade::DefaultAngle, 0.0f, 360.0f);
+
+	// Run normal swing
+	this->bladeChain->runAction(
+		Sequence::create(
+			EaseSineInOut::create(RotateTo::create(duration, newAngleAdjusted)),
+			CallFunc::create([=]()
+			{
+				if (this->targetAngle > (PendulumBlade::MaxAngle + PendulumBlade::MinAngle) / 2.0f)
+				{
+					this->swingToAngle(PendulumBlade::MinAngle);
+				}
+				else
+				{
+					this->swingToAngle(PendulumBlade::MaxAngle);
+				}
+			}),
+			nullptr
+		)
+	);
+
 	HACKABLES_STOP_SEARCH();
-
-	theta = MathUtils::wrappingNormalize((float)thetaInt + defaultAngle, 0.0f, 360.0f);
-
-	// set the angle
-	this->bladeChain->setRotation(theta);
 }
 
 void PendulumBlade::buildChain()
