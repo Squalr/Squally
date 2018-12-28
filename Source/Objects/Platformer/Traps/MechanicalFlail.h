@@ -27,13 +27,20 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void update(float) override;
-	void updateSwing(float dt);
+	void startSwing();
+	void swingToAngle(float angle);
 	void buildChain();
+
+	float targetAngle;
 
 	cocos2d::Sprite* joint;
 	cocos2d::Node* flailChain;
 	float flailHeight;
 
-	HackableData* pendulumBladeDataSpeedY;
-	cocos2d::Vec2 pendulumBladeSpeed;
+	HackableData* hackableDataTargetAngle;
+
+	static const float DefaultAngle;
+	static const float SwingsPerSecondAt480Length;
+	static 	const float MinAngle;
+	static 	const float MaxAngle;
 };

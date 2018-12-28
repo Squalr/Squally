@@ -1,5 +1,8 @@
 #include "MechanicalFlail.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
@@ -15,6 +18,11 @@
 using namespace cocos2d;
 
 const std::string MechanicalFlail::MapKeyMechanicalFlail = "mechanical-flail";
+
+const float MechanicalFlail::DefaultAngle = 90.0f;
+const float MechanicalFlail::SwingsPerSecondAt480Length = 1.5f;
+const float MechanicalFlail::MinAngle = MathUtils::wrappingNormalize(MechanicalFlail::DefaultAngle - 45.0f, 0.0f, 360.0f);
+const float MechanicalFlail::MaxAngle = MathUtils::wrappingNormalize(MechanicalFlail::DefaultAngle + 45.0f, 0.0f, 360.0f);
 
 MechanicalFlail* MechanicalFlail::create(ValueMap* initProperties)
 {
@@ -38,7 +46,6 @@ MechanicalFlail::MechanicalFlail(ValueMap* initProperties) : HackableObject(init
 
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->flailChain->setAnchorPoint(Vec2(0.5f, 0.0f));
-	this->pendulumBladeSpeed = Vec2::ZERO;
 
 	this->registerHackables();
 	this->buildChain();
@@ -53,16 +60,16 @@ MechanicalFlail::~MechanicalFlail()
 
 void MechanicalFlail::registerHackables()
 {
-	this->pendulumBladeDataSpeedY = HackableData::create("Y Position", &this->pendulumBladeSpeed.y, &typeid(this->pendulumBladeSpeed.y), UIResources::Menus_Icons_AxeSlash);
-	this->registerData(this->pendulumBladeDataSpeedY);
+	this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, &typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
+	this->registerData(this->hackableDataTargetAngle);
 
-	auto swingFunc = &MechanicalFlail::updateSwing;
+	auto swingFunc = &MechanicalFlail::swingToAngle;
 	void* swingFuncPtr = (void*&)swingFunc;
 	std::vector<HackableCode*> hackables = HackableCode::create(swingFuncPtr);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{
-		this->pendulumBladeDataSpeedY->registerCode(*it);
+		this->hackableDataTargetAngle->registerCode(*it);
 	}
 }
 
@@ -76,6 +83,7 @@ void MechanicalFlail::onEnter()
 	HackableObject::onEnter();
 
 	this->scheduleUpdate();
+	this->startSwing();
 }
 
 void MechanicalFlail::initializePositions()
@@ -89,46 +97,73 @@ void MechanicalFlail::initializePositions()
 void MechanicalFlail::update(float dt)
 {
 	HackableObject::update(dt);
-
-	this->updateSwing(dt);
 }
 
-void MechanicalFlail::updateSwing(float dt)
+void MechanicalFlail::startSwing()
 {
-	static float deltaTime = 0.0f;
-	const float defaultAngle = 90.0f;
-	float maxAngle = 65.0f;
-	float gravity = 9.8f;
-	float speed = 5.5f;
+	swingToAngle(MechanicalFlail::MinAngle);
+}
 
-	deltaTime += dt;
+void MechanicalFlail::swingToAngle(float angle)
+{
+	const float arc = (MechanicalFlail::MaxAngle - MechanicalFlail::MinAngle);
+	const float minDuration = 0.5f;
+	const float maxDuration = 5.0f;
+	static bool init = true;
 
-	float theta = MathUtils::wrappingNormalize(180.0f + maxAngle * std::sin(std::sqrt(gravity / this->flailHeight) * deltaTime * speed) - defaultAngle, 0.0f, 360.0f);
-	int thetaInt = (int)theta;
+	if (init)
+	{
+		this->targetAngle = MechanicalFlail::DefaultAngle;
+		init = false;
+	}
 
-	void* assemblyAddressStart = nullptr;
-	void* assemblyAddressEnd = nullptr;
+	float previousAngle = this->targetAngle;
+	int angleInt = (int)angle;
 
 	ASM(push EAX);
 	ASM(push EBX);
-	ASM(mov EAX, thetaInt);
+	ASM(mov EAX, angleInt);
 
 	HACKABLE_CODE_BEGIN();
 	ASM(mov EBX, EAX);
-	ASM_NOP8();
+	ASM_NOP5();
 	HACKABLE_CODE_END();
 
-	ASM(mov thetaInt, EBX);
+	ASM(mov angleInt, EBX);
 
 	ASM(pop EBX);
 	ASM(pop EAX);
 
+	this->targetAngle = MathUtils::wrappingNormalize((float)angleInt, 0.0f, 360.0f);
+
+	float speedMultiplier = (this->flailHeight / 480.0f) * MechanicalFlail::SwingsPerSecondAt480Length;
+
+	float angleDelta = std::abs(previousAngle - this->targetAngle);
+	float duration = MathUtils::clamp((speedMultiplier * (angleDelta / arc)) / MechanicalFlail::SwingsPerSecondAt480Length, minDuration, maxDuration);
+
+	// Adjust angle to cocos space (inverted Y)
+	float newAngleAdjusted = MathUtils::wrappingNormalize(-this->targetAngle + MechanicalFlail::DefaultAngle, 0.0f, 360.0f);
+
+	// Run normal swing
+	this->flailChain->runAction(
+		Sequence::create(
+			EaseSineInOut::create(RotateTo::create(duration, newAngleAdjusted)),
+			CallFunc::create([=]()
+			{
+				if (this->targetAngle > (MechanicalFlail::MaxAngle + MechanicalFlail::MinAngle) / 2.0f)
+				{
+					this->swingToAngle(MechanicalFlail::MinAngle);
+				}
+				else
+				{
+					this->swingToAngle(MechanicalFlail::MaxAngle);
+				}
+			}),
+			nullptr
+		)
+	);
+
 	HACKABLES_STOP_SEARCH();
-
-	theta = MathUtils::wrappingNormalize((float)thetaInt + defaultAngle, 0.0f, 360.0f);
-
-	// set the angle
-	this->flailChain->setRotation(theta);
 }
 
 void MechanicalFlail::buildChain()
@@ -144,17 +179,17 @@ void MechanicalFlail::buildChain()
 
 		Sprite* nextPipeLink = Sprite::create(ObjectResources::Traps_MechanicalFlail_Shaft);
 
-		nextPipeLink->setAnchorPoint(Vec2(0.5f, 1.0f));
+		nextPipeLink->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 		this->flailChain->addChild(nextPipeLink);
 
-		nextPipeLink->setPositionY((float)index++ * -(nextPipeLink->getContentSize().height - chainOverlap));
+		nextPipeLink->setPositionY((float)index++ * (nextPipeLink->getContentSize().height - chainOverlap));
 
 		remainingHeight -= nextPipeLink->getContentSize().height - chainOverlap;
 
 	} while (remainingHeight > 0.0f);
 
-	flail->setPositionY(-this->flailHeight);
+	flail->setPositionY(this->flailHeight);
 
 	this->flailChain->addChild(flail);
 }
