@@ -15,8 +15,6 @@ public:
 	static Squally* deserialize(cocos2d::ValueMap* initProperties);
 	static Squally* getInstance();
 
-	cocos2d::Size getSize() override;
-
 	static int health;
 
 	static const std::string MapKeySqually;

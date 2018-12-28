@@ -29,8 +29,6 @@ Wind* Wind::create(ValueMap* initProperties)
 
 Wind::Wind(ValueMap* initProperties) : HackableObject(initProperties)
 {
-	float width = this->properties->at(SerializableObject::MapKeyWidth).asFloat();
-	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
 	float speedX = 0.0f;
 	float speedY = 0.0f;
 
@@ -44,7 +42,6 @@ Wind::Wind(ValueMap* initProperties) : HackableObject(initProperties)
 		speedY = this->properties->at("speed-y").asFloat();
 	}
 
-	this->size = Size(width, height);
 	this->windSpeed = Vec2(speedX, speedY);
 	this->windParticles = ParticleSystemQuad::create(ParticleResources::Gust);
 	this->windParticles->setPositionType(ParticleSystem::PositionType::GROUPED);
@@ -72,8 +69,8 @@ Vec2 Wind::getButtonOffset()
 
 void Wind::update(float dt)
 {
-	void* assemblyAddressStart = nullptr;
-	void* assemblyAddressEnd = nullptr;
+	float width = this->properties->at(SerializableObject::MapKeyWidth).asFloat();
+	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
 
 	Vec2 speed = Vec2::ZERO;
 	Vec2 currentSpeed = this->windSpeed;
@@ -101,7 +98,7 @@ void Wind::update(float dt)
 		}
 	}
 
-	float angle = speed.x == 0.0f ? (speed.y > 0.0f ? -90.0f : 90.0f) : atan(speed.y / speed.x);
+	float angle = speed.x == 0.0f ? (speed.y > 0.0f ? -90.0f : 90.0f) : std::atan(speed.y / speed.x);
 	this->windParticles->setAngle(angle);
-	this->windParticles->setPosVar(Vec2(speed.y == 0.0f ? 0.0f : this->size.width, speed.x == 0.0f ? 0.0f : this->size.height));
+	this->windParticles->setPosVar(Vec2(speed.y == 0.0f ? 0.0f : width, speed.x == 0.0f ? 0.0f : height));
 }

@@ -49,7 +49,6 @@ MechanicalFlail::MechanicalFlail(ValueMap* initProperties) : HackableObject(init
 
 	float width = this->properties->at(SerializableObject::MapKeyWidth).asFloat();
 	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
-	this->size = Size(width, height);
 
 	this->smokeParticles->setVisible(false);
 

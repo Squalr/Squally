@@ -43,10 +43,10 @@ PendulumBlade::PendulumBlade(ValueMap* initProperties) : HackableObject(initProp
 {
 	this->neck = Sprite::create(ObjectResources::Traps_PendulumBlade_Neck);
 	this->bladeChain = Node::create();
+	this->bladeCollision = CollisionObject::create(this->createBladeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
+
 	float width = this->properties->at(SerializableObject::MapKeyWidth).asFloat();
 	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
-	this->size = Size(width, height);
-	this->bladeCollision = CollisionObject::create(this->createBladeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
 
 	this->targetAngle = PendulumBlade::DefaultAngle;
 	this->chainHeight = height;

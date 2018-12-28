@@ -13,8 +13,6 @@ IsometricEntity::IsometricEntity(ValueMap* initProperties, std::string scmlResou
 	// TODO: Configurable/randomizable start direction (if any)
 	this->movement = Vec2(0.0f, 0.0f);
 
-	this->size = size;
-
 	this->animationNode = SmartAnimationNode::create(scmlResource);
 	this->animationNode->setScale(scale);
 	this->animationNode->playAnimation("Idle_NE");
