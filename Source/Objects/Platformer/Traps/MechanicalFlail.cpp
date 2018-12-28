@@ -42,6 +42,7 @@ MechanicalFlail::MechanicalFlail(ValueMap* initProperties) : HackableObject(init
 	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
 	this->size = Size(width, height);
 
+	this->targetAngle = MechanicalFlail::DefaultAngle;
 	this->flailHeight = height;
 
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -109,13 +110,6 @@ void MechanicalFlail::swingToAngle(float angle)
 	const float arc = (MechanicalFlail::MaxAngle - MechanicalFlail::MinAngle);
 	const float minDuration = 0.5f;
 	const float maxDuration = 5.0f;
-	static bool init = true;
-
-	if (init)
-	{
-		this->targetAngle = MechanicalFlail::DefaultAngle;
-		init = false;
-	}
 
 	float previousAngle = this->targetAngle;
 	int angleInt = (int)angle;

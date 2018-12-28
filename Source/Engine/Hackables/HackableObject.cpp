@@ -1,11 +1,14 @@
 #include "HackableObject.h"
 
+#include "base/CCEventListenerCustom.h"
+
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Hackables/HackButton.h"
 #include "Engine/UI/Controls/MenuSprite.h"
-#include "Events/HackableEvents.h"
+#include "Engine/Events/HackableEvents.h"
 
 #include "Resources/UIResources.h"
+#include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
 
@@ -29,14 +32,35 @@ void HackableObject::onEnterTransitionDidFinish()
 
 	this->hackButton->setClickCallback(CC_CALLBACK_1(HackableObject::onHackableClick, this));
 
-	HackableEvents::registerHackable(HackableEvents::HackableObjectRegisterArgs(this));
+	HackableEvents::TriggerRegisterHackable(HackableEvents::HackableObjectRegisterArgs(this));
 }
 
-void HackableObject::pause()
+void HackableObject::initializeListeners()
 {
-	SerializableObject::pause();
+	SerializableObject::initializeListeners();
 
-	// this->hackButton->resume();
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackerModeEnable, [=](EventCustom* args)
+	{
+		this->onHackerModeEnable();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackerModeDisable, [=](EventCustom* args)
+	{
+		this->onHackerModeDisable();
+	}));
+}
+
+void HackableObject::onHackerModeEnable()
+{
+	if (!this->dataList.empty())
+	{
+		this->hackButton->setVisible(true);
+	}
+}
+
+void HackableObject::onHackerModeDisable()
+{
+	this->hackButton->setVisible(false);
 }
 
 Vec2 HackableObject::getButtonOffset()
@@ -47,25 +71,13 @@ Vec2 HackableObject::getButtonOffset()
 void HackableObject::onHackableClick(MenuSprite* hackButton)
 {
 	Vec2 screenPosition = this->getParent()->convertToWorldSpace(this->getPosition()) + this->getButtonOffset();
-	Vec2 newPosition = this->hackButton->getParent()->convertToNodeSpace(screenPosition);
+	Vec2 newPosition = GameUtils::getSceneBounds(this).origin;
 
-	HackableEvents::editHackable(HackableEvents::HackableObjectEditArgs(this, newPosition));
+	HackableEvents::TriggerEditHackable(HackableEvents::HackableObjectEditArgs(this, newPosition));
 }
 
 void HackableObject::registerData(HackableData* hackableData)
 {
 	hackableData->retain();
 	this->dataList.push_back(hackableData);
-
-	this->hackButton->setVisible(true);
-}
-
-void HackableObject::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
-{
-	// A little bit of magic to set the hackable button position
-	//Vec2 screenPosition = this->getParent()->convertToWorldSpace(this->getPosition()) + this->getButtonOffset();
-	//Vec2 newPosition = this->hackButton->getParent()->convertToNodeSpace(screenPosition);
-	//this->hackButton->setPosition(newPosition);
-
-	SerializableObject::visit(renderer, parentTransform, parentFlags);
 }

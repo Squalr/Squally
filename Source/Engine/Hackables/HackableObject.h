@@ -25,19 +25,18 @@ public:
 	cocos2d::Size size;
 	std::vector<HackableData*> dataList;
 
-	HackButton* hackButton;
-
 protected:
 	HackableObject(cocos2d::ValueMap* initProperties);
 	virtual ~HackableObject();
 
-	void pause() override;
 	void onEnterTransitionDidFinish() override;
+	void initializeListeners() override;
+	virtual void onHackerModeEnable();
+	virtual void onHackerModeDisable();
 	virtual cocos2d::Vec2 getButtonOffset();
 	void registerData(HackableData* hackableData);
 
-	void visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
-
 private:
+	HackButton* hackButton;
 	cocos2d::Vec2 buttonOffset;
 };

@@ -86,6 +86,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Events/CollisionMappingEvents.cpp
 	Source/Engine/Events/DeserializationEvents.cpp
 	Source/Engine/Events/DeveloperModeEvents.cpp
+	Source/Engine/Events/HackableEvents.cpp
 	Source/Engine/Events/LocalizationEvents.cpp
 	Source/Engine/Events/MouseEvents.cpp
 	Source/Engine/Events/SceneEvents.cpp
@@ -374,7 +375,6 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Squally/Squally.cpp
 	Source/Entities/Special/Shopkeeper.cpp
 	Source/Events/DialogEvents.cpp
-	Source/Events/HackableEvents.cpp
 	Source/Events/NavigationEvents.cpp
 	Source/GameWindow.cpp
 	Source/Menus/Confirmation/ConfirmationMenu.cpp
@@ -999,6 +999,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Events/CollisionMappingEvents.h
 	Source/Engine/Events/DeserializationEvents.h
 	Source/Engine/Events/DeveloperModeEvents.h
+	Source/Engine/Events/HackableEvents.h
 	Source/Engine/Events/LocalizationEvents.h
 	Source/Engine/Events/MouseEvents.h
 	Source/Engine/Events/SceneEvents.h
@@ -1294,7 +1295,6 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Squally/Squally.h
 	Source/Entities/Special/Shopkeeper.h
 	Source/Events/DialogEvents.h
-	Source/Events/HackableEvents.h
 	Source/Events/NavigationEvents.h
 	Source/GameWindow.h
 	Source/Menus/Confirmation/ConfirmationMenu.h
