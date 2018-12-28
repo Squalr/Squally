@@ -53,6 +53,7 @@ namespace ParticleResources
 	extern const std::string Hexus_WhiteAura;
 	extern const std::string Hover;
 	extern const std::string MindBlast;
+	extern const std::string Objects_Smoke;
 	extern const std::string Rain;
 	extern const std::string Rain2;
 	extern const std::string Spark;

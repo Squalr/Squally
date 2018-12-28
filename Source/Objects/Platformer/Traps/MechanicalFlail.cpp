@@ -3,6 +3,7 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
@@ -41,10 +42,13 @@ MechanicalFlail::MechanicalFlail(ValueMap* initProperties) : HackableObject(init
 {
 	this->joint = Sprite::create(ObjectResources::Traps_MechanicalFlail_Joint);
 	this->flailChain = Node::create();
+	this->smokeParticles = ParticleSystemQuad::create(ParticleResources::Objects_Smoke);
 
 	float width = this->properties->at(SerializableObject::MapKeyWidth).asFloat();
 	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
 	this->size = Size(width, height);
+
+	this->smokeParticles->setVisible(false);
 
 	this->targetAngle = MechanicalFlail::DefaultAngle;
 	this->flailHeight = height;
@@ -55,12 +59,35 @@ MechanicalFlail::MechanicalFlail(ValueMap* initProperties) : HackableObject(init
 	this->registerHackables();
 	this->buildChain();
 
+	this->addChild(this->smokeParticles);
 	this->addChild(this->flailChain);
 	this->addChild(this->joint);
 }
 
 MechanicalFlail::~MechanicalFlail()
 {
+}
+
+void MechanicalFlail::onEnter()
+{
+	HackableObject::onEnter();
+
+	this->scheduleUpdate();
+	this->startSwing();
+}
+
+void MechanicalFlail::initializePositions()
+{
+	HackableObject::initializePositions();
+
+	this->smokeParticles->setPositionY(-this->flailHeight / 2.0f);
+	this->joint->setPositionY(-this->flailHeight / 2.0f);
+	this->flailChain->setPositionY(-this->flailHeight / 2.0f);
+}
+
+void MechanicalFlail::update(float dt)
+{
+	HackableObject::update(dt);
 }
 
 void MechanicalFlail::registerHackables()
@@ -85,27 +112,6 @@ void MechanicalFlail::registerHackables()
 Vec2 MechanicalFlail::getButtonOffset()
 {
 	return Vec2(0.0f, 0.0f);
-}
-
-void MechanicalFlail::onEnter()
-{
-	HackableObject::onEnter();
-
-	this->scheduleUpdate();
-	this->startSwing();
-}
-
-void MechanicalFlail::initializePositions()
-{
-	HackableObject::initializePositions();
-
-	this->joint->setPositionY(-this->flailHeight / 2.0f);
-	this->flailChain->setPositionY(-this->flailHeight / 2.0f);
-}
-
-void MechanicalFlail::update(float dt)
-{
-	HackableObject::update(dt);
 }
 
 void MechanicalFlail::startSwing()
@@ -164,6 +170,24 @@ void MechanicalFlail::swingToAngle(float angle)
 			nullptr
 		)
 	);
+
+	// Play smoke effect if stuck in place or out of bounds
+	if (this->targetAngle == previousAngle || this->targetAngle < MechanicalFlail::MinAngle || this->targetAngle > MechanicalFlail::MaxAngle)
+	{
+		if (!this->smokeParticles->isVisible())
+		{
+			this->smokeParticles->setVisible(true);
+			this->smokeParticles->start();
+		}
+	}
+	else
+	{
+		if (this->smokeParticles->isVisible())
+		{
+			this->smokeParticles->setVisible(false);
+			this->smokeParticles->stopSystem();
+		}
+	}
 
 	HACKABLES_STOP_SEARCH();
 }
