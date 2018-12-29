@@ -90,17 +90,17 @@ void LoadingScreen::loadLevel(std::string levelFile, std::function<void(Serializ
 	this->map->retain();
 
 	// Asyncronously get all files under the game, and load them
-	FileUtils::getInstance()->listFilesRecursivelyAsync(FileUtils::getInstance()->getDefaultResourceRootPath(), CC_CALLBACK_1(LoadingScreen::onFileEnumerationComplete, this));
+	FileUtils::getInstance()->listFilesRecursivelyAsync("Platformer", CC_CALLBACK_1(LoadingScreen::onFileEnumerationComplete, this));
 }
 
 void LoadingScreen::onFileEnumerationComplete(std::vector<std::string> files)
 {
 	// TEMP DEBUG: Remove this to re-enable loading screen
-	if (this->onLoadCallback != nullptr)
-	{
-		this->onLoadCallback(this->map);
-		return;
-	}
+	//if (this->onLoadCallback != nullptr)
+	//{
+	//	this->onLoadCallback(this->map);
+	//	return;
+	//}
 
 	auto textureLoadCallback = CC_CALLBACK_1(LoadingScreen::onTextureAssetLoaded, this);
 	auto soundLoadCallback = CC_CALLBACK_0(LoadingScreen::onSoundAssetLoaded, this);
