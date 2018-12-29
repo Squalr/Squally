@@ -90,7 +90,7 @@ void LoadingScreen::loadLevel(std::string levelFile, std::function<void(Serializ
 	this->map->retain();
 
 	// Asyncronously get all files under the game, and load them
-	FileUtils::getInstance()->listFilesRecursivelyAsync("Platformer", CC_CALLBACK_1(LoadingScreen::onFileEnumerationComplete, this));
+	FileUtils::getInstance()->listFilesRecursivelyAsync("Strings", CC_CALLBACK_1(LoadingScreen::onFileEnumerationComplete, this));
 }
 
 void LoadingScreen::onFileEnumerationComplete(std::vector<std::string> files)

@@ -34,7 +34,7 @@ private:
 	void buildChain();
 	cocos2d::PhysicsBody* createBladeCollision();
 
-	float targetAngle;
+	volatile float targetAngle;
 	cocos2d::Sprite* neck;
 	cocos2d::Node* bladeChain;
 	float chainHeight;
@@ -43,6 +43,6 @@ private:
 	
 	static const float DefaultAngle;
 	static const float SwingsPerSecondAt480Length;
-	static 	const float MinAngle;
-	static 	const float MaxAngle;
+	static const float MinAngle;
+	static const float MaxAngle;
 };

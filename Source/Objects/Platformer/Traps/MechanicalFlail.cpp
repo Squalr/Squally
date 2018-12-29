@@ -125,12 +125,14 @@ void MechanicalFlail::swingToAngle(float angle)
 	const float minDuration = 0.5f;
 	const float maxDuration = 5.0f;
 
-	float previousAngle = this->targetAngle;
-	int angleInt = (int)angle;
+	volatile float previousAngle = this->targetAngle;
+	volatile int previousAngleInt = (int)previousAngle;
+	volatile int angleInt = (int)angle;
 
 	ASM(push EAX);
 	ASM(push EBX);
-	ASM_MOV_REG_VAR(eax, angleInt);
+	ASM_MOV_REG_VAR(EAX, angleInt);
+	ASM_MOV_REG_VAR(EBX, previousAngleInt);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SWING);
 	ASM(mov EBX, EAX);
@@ -144,13 +146,13 @@ void MechanicalFlail::swingToAngle(float angle)
 
 	this->targetAngle = MathUtils::wrappingNormalize((float)angleInt, 0.0f, 360.0f);
 
-	float speedMultiplier = (this->flailHeight / 480.0f) * MechanicalFlail::SwingsPerSecondAt480Length;
+	volatile float speedMultiplier = (this->flailHeight / 480.0f) * MechanicalFlail::SwingsPerSecondAt480Length;
 
 	float angleDelta = std::abs(previousAngle - this->targetAngle);
-	float duration = MathUtils::clamp((speedMultiplier * (angleDelta / arc)) / MechanicalFlail::SwingsPerSecondAt480Length, minDuration, maxDuration);
+	volatile float duration = MathUtils::clamp((speedMultiplier * (angleDelta / arc)) / MechanicalFlail::SwingsPerSecondAt480Length, minDuration, maxDuration);
 
 	// Adjust angle to cocos space (inverted Y)
-	float newAngleAdjusted = MathUtils::wrappingNormalize(-this->targetAngle + MechanicalFlail::DefaultAngle, 0.0f, 360.0f);
+	volatile float newAngleAdjusted = MathUtils::wrappingNormalize(-this->targetAngle + MechanicalFlail::DefaultAngle, 0.0f, 360.0f);
 
 	// Run normal swing
 	this->flailChain->runAction(
