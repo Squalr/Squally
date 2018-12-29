@@ -41,6 +41,7 @@ CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhys
 	this->physicsBody = initPhysicsBody;
 	this->collisionEvents = std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>();
 	this->collisionEndEvents = std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>();
+	this->physicsEnabled = true;
 
 	if (this->physicsBody != nullptr)
 	{
@@ -48,7 +49,7 @@ CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhys
 		this->physicsBody->setDynamic(isDynamic);
 		this->physicsBody->setContactTestBitmask(0);
 		this->physicsBody->setCollisionBitmask(0);
-		this->setPhysicsBody(initPhysicsBody);
+		this->setPhysicsBody(this->physicsBody);
 	}
 
 	this->setCollisionType(collisionType);
