@@ -12,6 +12,7 @@
 #include "Engine/Events/MouseEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Localization/Localization.h"
+#include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
@@ -21,6 +22,7 @@
 #include "Menus/WorldMap/MapNode.h"
 
 #include "Resources/MapResources.h"
+#include "Resources/MusicResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -148,6 +150,8 @@ void WorldMap::onEnter()
 		EaseSineInOut::create(MoveTo::create(4.0f, startPosition)),
 		nullptr
 	)));
+
+	SoundManager::playMusicResource(MusicResources::Little_Wings_cut);
 
 	GameCamera::getInstance()->setTarget(trackingData);
 }
