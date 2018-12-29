@@ -50,7 +50,7 @@
 	#define ASM_MOV_VAR_REG(variable, register) \
 		ASM(mov variable, register)
 
-	// Directly emitting bytes wasn't working, so we just produce the assembly required for these instructions
+	// Directly emitting bytes wasn't working, so we just produce the assembly required for the signatures
 
 	// 56 6A * BE DE C0 ED FE 5E 5E
 	#define HACKABLE_CODE_BEGIN(func_id) \

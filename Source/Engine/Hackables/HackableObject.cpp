@@ -53,7 +53,7 @@ void HackableObject::initializeListeners()
 
 void HackableObject::onHackerModeEnable()
 {
-	if (!this->dataList.empty())
+	if (!(this->dataList.empty() && this->codeList.empty()))
 	{
 		this->hackButton->setVisible(true);
 	}
@@ -71,10 +71,9 @@ Vec2 HackableObject::getButtonOffset()
 
 void HackableObject::onHackableClick(MenuSprite* hackButton)
 {
-	Vec2 screenPosition = this->getParent()->convertToWorldSpace(this->getPosition()) + this->getButtonOffset();
-	Vec2 newPosition = GameUtils::getSceneBounds(this).origin;
+	Vec2 screenPosition = GameUtils::getSceneBounds(this).origin;
 
-	HackableEvents::TriggerEditHackable(HackableEvents::HackableObjectEditArgs(this, newPosition));
+	HackableEvents::TriggerEditHackable(HackableEvents::HackableObjectEditArgs(this, screenPosition));
 }
 
 void HackableObject::registerData(HackableData* hackableData)
