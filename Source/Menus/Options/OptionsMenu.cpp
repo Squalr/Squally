@@ -69,7 +69,7 @@ OptionsMenu::OptionsMenu()
 	this->soundSlider = CSlider::create(SoundManager::getSoundVolume());
 
 	MenuSprite* uncheckedMenuSprite = MenuSprite::create(UIResources::Menus_OptionsMenu_ToggleButtonOff, UIResources::Menus_OptionsMenu_ToggleButtonOffHover);
-	MenuSprite* checkedMenuSprite = MenuSprite::create(UIResources::Menus_OptionsMenu_ToggleButtonOn, UIResources::Menus_OptionsMenu_ToggleButtonOffHover);
+	MenuSprite* checkedMenuSprite = MenuSprite::create(UIResources::Menus_OptionsMenu_ToggleButtonOn, UIResources::Menus_OptionsMenu_ToggleButtonOnHover);
 	this->fullScreenButton = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_2(OptionsMenu::onFullScreenChanged, this));
 
 	this->label1080x768 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1080x768::create());
@@ -320,11 +320,11 @@ void OptionsMenu::initializePositions()
 	this->fullScreenButton->setPosition(Vec2(visibleSize.width / 2 - 248.0f, visibleSize.height / 2 - 8.0f));
 	this->fullScreenLabel->setPosition(Vec2(visibleSize.width / 2 - 112.0f, visibleSize.height / 2 - 8.0f));
 
-	const float spacing = 140.0f;
+	const float spacing = 160.0f;
 	const float base = 225.0f;
 	const float baseY = -64.0f;
 	const float offsetY = 48.0f;
-	const float textOffset = 64.0f;
+	const float textOffset = 70.0f;
 
 	this->label1080x768->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 0, visibleSize.height / 2 + baseY));
 	this->label1152x864->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 1, visibleSize.height / 2 + baseY));
