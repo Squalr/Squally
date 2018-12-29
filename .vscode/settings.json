@@ -102,5 +102,6 @@
         "BUILD_EDITOR_SPINE": "OFF",
         "BUILD_EDITOR_COCOSTUDIO": "OFF",
         "BUILD_EDITOR_COCOSBUILDER": "OFF"
-    }
+    },
+    "python.linting.pylintEnabled": true
 }
