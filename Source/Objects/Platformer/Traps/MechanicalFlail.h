@@ -34,7 +34,7 @@ private:
 	void swingToAngle(float angle);
 	void buildChain();
 
-	float targetAngle;
+	volatile float targetAngle;
 	cocos2d::Sprite* joint;
 	cocos2d::Node* flailChain;
 	float flailHeight;
@@ -44,6 +44,6 @@ private:
 
 	static const float DefaultAngle;
 	static const float SwingsPerSecondAt480Length;
-	static 	const float MinAngle;
-	static 	const float MaxAngle;
+	static const float MinAngle;
+	static const float MaxAngle;
 };
