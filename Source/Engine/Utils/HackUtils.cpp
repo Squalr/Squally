@@ -11,22 +11,42 @@
 
 #include "Engine/asmtk/asmtk.h"
 #include "Engine/Utils/LogUtils.h"
+#include "Engine/Utils/MathUtils.h"
 
 #if __GNUC__ || __clang__
+	#include <unistd.h>
 	#include <sys/mman.h>
 #endif
 
 using namespace asmjit;
 using namespace asmtk;
 
-void HackUtils::makeWritable(void* address, int length)
+void HackUtils::setAllMemoryPermissions(void* address, int length)
 {
 	#ifdef _WIN32
 		DWORD old;
 		VirtualProtect(address, length, PAGE_EXECUTE_READWRITE, &old);
 	#else
-		mprotect(address, length, PROT_READ | PROT_WRITE | PROT_EXEC);
+		// Unix requires changing memory protection on the start of the page, not just the address
+		size_t pageSize = sysconf(_SC_PAGESIZE);
+		void* pageStart = (void*)((unsigned long)address & -pageSize);
+		int newLength = (int)((unsigned long)address + length - (unsigned long)pageStart);
+
+		mprotect(pageStart, newLength, PROT_READ | PROT_WRITE | PROT_EXEC);
 	#endif
+}
+
+void HackUtils::writeMemory(void* to, void* from, int length)
+{
+	HackUtils::setAllMemoryPermissions(to, length);
+	HackUtils::setAllMemoryPermissions(from, length);
+
+	memcpy(to, from, length);
+
+	for (int i = 0; i < length; i++)
+	{
+		((unsigned char*)to)[i] = ((unsigned char*)from)[i];
+	}
 }
 
 HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* addressStart)

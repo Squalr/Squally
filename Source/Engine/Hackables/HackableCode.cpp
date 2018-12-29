@@ -1,5 +1,7 @@
 #include "HackableCode.h"
 
+#include <algorithm>
+
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Utils/LogUtils.h"
@@ -150,9 +152,9 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, LocalizedString* func
 
 	if (codeStart != nullptr && this->originalCodeLength > 0)
 	{
-		HackUtils::makeWritable(codeStart, this->originalCodeLength);
 		this->originalCodeCopy = new unsigned char[this->originalCodeLength];
-		memcpy(originalCodeCopy, codeStart, this->originalCodeLength);
+
+		HackUtils::writeMemory(originalCodeCopy, codeStart, this->originalCodeLength);
 	}
 
 	// Disassemble starting bytes, strip out NOPs
@@ -213,9 +215,7 @@ bool HackableCode::applyCustomCode(std::string newAssembly)
 		return false;
 	}
 
-	HackUtils::makeWritable(this->codePointer, compileResult.byteCount);
-
-	memcpy(this->codePointer, compileResult.compiledBytes, compileResult.byteCount);
+	HackUtils::writeMemory(this->codePointer, compileResult.compiledBytes, compileResult.byteCount);
 
 	int unfilledBytes = this->originalCodeLength - compileResult.byteCount;
 
@@ -236,8 +236,7 @@ void HackableCode::restoreOriginalCode()
 		return;
 	}
 
-	HackUtils::makeWritable(this->codePointer, this->originalCodeLength);
-	memcpy(this->codePointer, this->originalCodeCopy, this->originalCodeLength);
+	HackUtils::writeMemory(this->codePointer, this->originalCodeCopy,this->originalCodeLength);
 }
 
 void* HackableCode::allocateMemory(int allocationSize)

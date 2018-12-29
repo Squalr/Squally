@@ -34,7 +34,8 @@ public:
 		int byteCount;
 	};
 
-	static void makeWritable(void* address, int length);
+	static void setAllMemoryPermissions(void* address, int length);
+	static void writeMemory(void* to, void* from, int length);
 	static HackUtils::CompileResult assemble(std::string assembly, void* addressStart);
 	static std::string disassemble(void* bytes, int length);
 	static std::string hexAddressOf(void* address, bool zeroPad, bool prefix);
