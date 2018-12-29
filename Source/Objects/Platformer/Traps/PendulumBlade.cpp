@@ -91,8 +91,8 @@ void PendulumBlade::update(float dt)
 
 void PendulumBlade::registerHackables()
 {
-	this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
-	this->registerData(this->hackableDataTargetAngle);
+	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
+	// this->registerData(this->hackableDataTargetAngle);
 
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
