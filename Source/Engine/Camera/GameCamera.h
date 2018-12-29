@@ -47,8 +47,8 @@ private:
 	void beforeSceneChange();
 	void setCameraPositionWorkAround();
 	void setCameraPositionReal(cocos2d::Vec2 position, bool addTrackOffset = false);
-	void boundCameraByEllipses();
-	void boundCameraByRectangle();
+	cocos2d::Vec2 boundCameraByEllipses();
+	cocos2d::Vec2 boundCameraByRectangle();
 	void updateCameraDebugLabels();
 
 	std::stack<CameraTrackingData> targetStack;
