@@ -63,9 +63,9 @@ bool GameWindow::applicationDidFinishLaunching()
 		glView = GLViewImpl::createWithRect(GameWindow::GameWindowTitle, Rect(0, 0, resolutionSize.width, resolutionSize.height));
 		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
 	}
-
-	director->setOpenGLView(glView);
+	
 	glView->setCursorVisible(false);
+	director->setOpenGLView(glView);
 
 	// Initialize the game
 	Bootstrapper::initialize();
