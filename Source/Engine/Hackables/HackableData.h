@@ -9,13 +9,13 @@ class HackableCode;
 class HackableData : public HackableAttribute
 {
 public:
-	static HackableData* create(std::string name, void* dataAddress, const std::type_info* typeInfo, std::string iconResource);
+	static HackableData* create(std::string name, void* dataAddress, const std::type_info& dataTypeInfo, std::string iconResource);
 
 	std::string variableName;
 	void* dataPointer;
 	HackUtils::DataType dataType;
 
 private:
-	HackableData(std::string name, void* dataAddress, const std::type_info* typeInfo, std::string iconResource);
+	HackableData(std::string name, void* dataAddress, const std::type_info& dataTypeInfo, std::string iconResource);
 	virtual ~HackableData();
 };

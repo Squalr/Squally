@@ -135,9 +135,9 @@ void PlushieMonkey::registerHackables()
 {
 	Plushie::registerHackables();
 
-	this->puzzleData = HackableData::create("Key", &PlushieMonkey::lockCountDown, &typeid(PlushieMonkey::lockCountDown), UIResources::Menus_Icons_Lock);
+	this->puzzleData = HackableData::create("Key", &PlushieMonkey::lockCountDown, typeid(PlushieMonkey::lockCountDown), UIResources::Menus_Icons_Lock);
 	this->registerData(this->puzzleData);
 	
-	this->registerData(HackableData::create("Health", this->chest, &typeid((unsigned int)((unsigned long)this->chest)), UIResources::Menus_Icons_Heart));
+	this->registerData(HackableData::create("Health", this->chest, typeid((unsigned int)((unsigned long)this->chest)), UIResources::Menus_Icons_Heart));
 	//this->registerCode(HackableCode::create("Test", this->chest, 10, Resources::Menus_HackerModeMenu_Icons_AlchemyPot));
 }
