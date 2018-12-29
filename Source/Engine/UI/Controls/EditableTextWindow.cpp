@@ -38,7 +38,7 @@ EditableTextWindow::EditableTextWindow(LocalizedString* windowTitle, Size initWi
 
 	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::ClickToEdit::create());
 
-	this->editableText = UICCTextField::create(label->getString(), label->getSystemFontName(), label->getBMFontSize());
+	this->editableText = UICCTextField::create(label->getString(), label->getFont(), label->getFontSize());
 
 	this->lineNumbers->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->lineNumbers->ignoreContentAdaptWithSize(false);

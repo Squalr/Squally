@@ -1,21 +1,22 @@
 #include "HackableData.h"
 
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Localization/LocalizedString.h"
 
 using namespace cocos2d;
 
-HackableData* HackableData::create(std::string name, void* dataAddress, const std::type_info& dataTypeInfo, std::string iconResource)
+HackableData* HackableData::create(void* dataAddress, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource)
 {
-	HackableData* instance = new HackableData(name, dataAddress, dataTypeInfo, iconResource);
+	HackableData* instance = new HackableData(dataAddress, variableName, dataTypeInfo, iconResource);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HackableData::HackableData(std::string name, void* dataAddress, const std::type_info& dataTypeInfo, std::string iconResource) : HackableAttribute(iconResource)
+HackableData::HackableData(void* dataAddress, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource) : HackableAttribute(iconResource)
 {
-	this->variableName = name;
+	this->variableName = variableName;
 	this->dataPointer = dataAddress;
 	this->dataType = HackUtils::stdTypeToDataType(dataTypeInfo);
 }
