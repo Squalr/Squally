@@ -71,7 +71,7 @@ void PlushieMonkey::onEnter()
 			decCountdown,
 			DelayTime::create(1.0f),
 			nullptr)
-	)
+		)
 	);
 
 	this->scheduleUpdate();
@@ -109,40 +109,35 @@ void PlushieMonkey::update(float dt)
 
 void PlushieMonkey::decreaseLockTimer()
 {
-	void* assemblyAddressStart = nullptr;
-	void* assemblyAddressEnd = nullptr;
+	/*
+	ASM(push ECX);
+	ASM(mov ECX, lockCountDown);
 
-	ASM(push ecx);
-	ASM(mov ecx, PlushieMonkey::lockCountDown);
-
-	HACKABLE_CODE_BEGIN(assemblyAddressStart, puzzleStart);
+	HACKABLE_CODE_BEGIN(assemblyAddressStart);
 	ASM(dec ecx);
 	ASM(nop);
 	ASM(nop);
 	ASM(nop);
 	ASM(nop);
-	HACKABLE_CODE_END(assemblyAddressEnd, puzzleEnd);
+	HACKABLE_CODE_END(assemblyAddressEnd);
 
-	ASM(mov PlushieMonkey::lockCountDown, ecx);
-	ASM(pop ecx);
+	ASM(mov lockCountDown, ECX);
+	ASM(pop ECX);
 
 	if (PlushieMonkey::lockCountDown < 0)
 	{
 		PlushieMonkey::lockCountDown = 0;
 	}
-
-	this->puzzleData->registerCode(assemblyAddressStart, assemblyAddressEnd, "Lock Countdown", UIResources::Menus_Icons_Safe);
-	this->puzzleData->registerCode((void*)((unsigned int)((unsigned long)assemblyAddressStart + 1)), assemblyAddressEnd, "Puzzle Test", UIResources::Menus_Icons_FlamingScroll);
-	this->puzzleData->registerCode((void*)((unsigned int)((unsigned long)assemblyAddressStart + 2)), assemblyAddressEnd, "Puzzle Swag", UIResources::Menus_Icons_BookCrystal);
+	*/
 }
 
 void PlushieMonkey::registerHackables()
 {
 	Plushie::registerHackables();
 
-	this->puzzleData = HackableData::create("Key", &PlushieMonkey::lockCountDown, &typeid(PlushieMonkey::lockCountDown), UIResources::Menus_Icons_Lock);
+	this->puzzleData = HackableData::create("Key", &PlushieMonkey::lockCountDown, typeid(PlushieMonkey::lockCountDown), UIResources::Menus_Icons_Lock);
 	this->registerData(this->puzzleData);
 	
-	this->registerData(HackableData::create("Health", this->chest, &typeid((unsigned int)((unsigned long)this->chest)), UIResources::Menus_Icons_Heart));
+	this->registerData(HackableData::create("Health", this->chest, typeid((unsigned int)((unsigned long)this->chest)), UIResources::Menus_Icons_Heart));
 	//this->registerCode(HackableCode::create("Test", this->chest, 10, Resources::Menus_HackerModeMenu_Icons_AlchemyPot));
 }

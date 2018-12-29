@@ -6,6 +6,7 @@
 
 #include "Engine/Maps/SerializableObject.h"
 
+class HackableCode;
 class HackableData;
 class HackButton;
 class MenuSprite;
@@ -22,22 +23,22 @@ class HackableObject : public SerializableObject
 public:
 	void onHackableClick(MenuSprite* backButton);
 
-	cocos2d::Size size;
 	std::vector<HackableData*> dataList;
-
-	HackButton* hackButton;
+	std::vector<HackableCode*> codeList;
 
 protected:
 	HackableObject(cocos2d::ValueMap* initProperties);
 	virtual ~HackableObject();
 
-	void pause() override;
 	void onEnterTransitionDidFinish() override;
+	void initializeListeners() override;
+	virtual void onHackerModeEnable();
+	virtual void onHackerModeDisable();
 	virtual cocos2d::Vec2 getButtonOffset();
 	void registerData(HackableData* hackableData);
-
-	void visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
+	void registerCode(HackableCode* hackableCode);
 
 private:
+	HackButton* hackButton;
 	cocos2d::Vec2 buttonOffset;
 };

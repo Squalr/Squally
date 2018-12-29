@@ -10,9 +10,6 @@ class SmartAnimationNode;
 
 class PlatformerEntity : public CollisionObject
 {
-public:
-	virtual cocos2d::Size getSize();
-
 protected:
 	PlatformerEntity(
 		cocos2d::ValueMap* initProperties,
@@ -32,6 +29,7 @@ protected:
 
 	SmartAnimationNode* animationNode;
 	cocos2d::Vec2 movement;
+	cocos2d::Vec2 spawnCoords;
 
 	bool isOnGround();
 

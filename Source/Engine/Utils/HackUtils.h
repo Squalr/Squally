@@ -34,12 +34,13 @@ public:
 		int byteCount;
 	};
 
+	static void makeWritable(void* address, int length);
 	static HackUtils::CompileResult assemble(std::string assembly, void* addressStart);
 	static std::string disassemble(void* bytes, int length);
 	static std::string hexAddressOf(void* address, bool zeroPad, bool prefix);
 	static std::string toHex(int value);
 	static std::string toBinary4(int value);
-	static DataType stdTypeToDataType(const std::type_info* typeInfo);
+	static DataType stdTypeToDataType(const std::type_info& dataTypeInfo);
 	static std::string dataTypeToString(DataType dataType);
 	static std::string valueStringOf(void* dataPointer, DataType dataType);
 	static std::string arrayOfByteStringOf(void* dataPointer, int length, int maxLength);

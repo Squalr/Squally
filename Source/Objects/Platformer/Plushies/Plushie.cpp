@@ -27,7 +27,6 @@ void Plushie::update(float dt)
 
 void Plushie::registerHackables()
 {
-	this->size = Vec2(256.0f, 256.0f);// this->chest->chestClosedSprite->getContentSize();
 }
 
 Vec2 Plushie::getButtonOffset()

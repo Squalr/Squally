@@ -8,13 +8,12 @@
 #include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/UI/HUD/DeveloperHud.h"
 #include "Engine/UI/HUD/HackerModeHud.h"
 #include "Engine/UI/HUD/Hud.h"
-#include "Engine/UI/Mouse.h"
-#include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Dialog/DialogMenu.h"
@@ -23,7 +22,6 @@
 #include "Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixRain.h"
 
 #include "Resources/BackgroundResources.h"
-#include "Resources/ShaderResources.h"
 
 using namespace cocos2d;
 
@@ -62,11 +60,11 @@ MapBase::MapBase()
 	this->developerHud->setVisible(false);
 
 	this->addChild(this->hackerModeRain);
-	this->addChild(this->hackerModeHud);
 	this->addChild(this->mapNode);
 	this->addChild(this->hud);
 	this->addChild(this->developerHud);
 	this->addChild(this->hackerModeGlow);
+	this->addChild(this->hackerModeHud);
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->pauseMenu);
 	this->addChild(this->optionsMenu);
@@ -203,6 +201,8 @@ void MapBase::onDeveloperModeDisable()
 
 void MapBase::onHackerModeEnable()
 {
+	HackableEvents::TriggerHackerModeEnable();
+
 	this->map->hackerModeEnable();
 	this->mapNode->setVisible(true);
 	this->hud->setVisible(false);
@@ -216,6 +216,8 @@ void MapBase::onHackerModeEnable()
 
 void MapBase::onHackerModeDisable()
 {
+	HackableEvents::TriggerHackerModeDisable();
+
 	this->map->hackerModeDisable();
 	this->mapNode->setVisible(true);
 	this->hud->setVisible(true);

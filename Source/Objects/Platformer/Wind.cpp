@@ -14,6 +14,8 @@
 
 using namespace cocos2d;
 
+#define LOCAL_FUNC_ID_WIND_SPEED_Y 1
+
 const std::string Wind::MapKeyWind = "wind";
 
 Wind* Wind::create(ValueMap* initProperties)
@@ -27,8 +29,6 @@ Wind* Wind::create(ValueMap* initProperties)
 
 Wind::Wind(ValueMap* initProperties) : HackableObject(initProperties)
 {
-	float width = this->properties->at(SerializableObject::MapKeyWidth).asFloat();
-	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
 	float speedX = 0.0f;
 	float speedY = 0.0f;
 
@@ -42,7 +42,6 @@ Wind::Wind(ValueMap* initProperties) : HackableObject(initProperties)
 		speedY = this->properties->at("speed-y").asFloat();
 	}
 
-	this->size = Size(width, height);
 	this->windSpeed = Vec2(speedX, speedY);
 	this->windParticles = ParticleSystemQuad::create(ParticleResources::Gust);
 	this->windParticles->setPositionType(ParticleSystem::PositionType::GROUPED);
@@ -59,7 +58,7 @@ Wind::~Wind()
 
 void Wind::registerHackables()
 {
-	this->windDataSpeedY = HackableData::create("Y Position", &this->windSpeed.y, &typeid(this->windSpeed.y), UIResources::Menus_Icons_AlchemyPot);
+	this->windDataSpeedY = HackableData::create("Y Position", &this->windSpeed.y, typeid(this->windSpeed.y), UIResources::Menus_Icons_AlchemyPot);
 	this->registerData(this->windDataSpeedY);
 }
 
@@ -70,20 +69,22 @@ Vec2 Wind::getButtonOffset()
 
 void Wind::update(float dt)
 {
-	void* assemblyAddressStart = nullptr;
-	void* assemblyAddressEnd = nullptr;
+	float width = this->properties->at(SerializableObject::MapKeyWidth).asFloat();
+	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
 
 	Vec2 speed = Vec2::ZERO;
 	Vec2 currentSpeed = this->windSpeed;
 
-	ASM(push ebx);
-	ASM(mov ebx, currentSpeed.y);
+	ASM(push EBX);
+	ASM_MOV_REG_VAR(ebx, currentSpeed.y);
 
-	HACKABLE_CODE_BEGIN(assemblyAddressStart, windSpeedYStart);
-	ASM(mov speed.y, ebx)
-	HACKABLE_CODE_END(assemblyAddressEnd, windSpeedYEnd);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_WIND_SPEED_Y);
+	ASM_MOV_VAR_REG(speed.y, EBX);
+	HACKABLE_CODE_END();
 
-	ASM(pop ebx);
+	ASM(pop EBX);
+
+	HACKABLES_STOP_SEARCH();
 
 	if (speed.x == 0.0f && speed.y == 0.0f)
 	{
@@ -97,9 +98,7 @@ void Wind::update(float dt)
 		}
 	}
 
-	float angle = speed.x == 0.0f ? (speed.y > 0.0f ? -90.0f : 90.0f) : atan(speed.y / speed.x);
+	float angle = speed.x == 0.0f ? (speed.y > 0.0f ? -90.0f : 90.0f) : std::atan(speed.y / speed.x);
 	this->windParticles->setAngle(angle);
-	this->windParticles->setPosVar(Vec2(speed.y == 0.0f ? 0.0f : this->size.width, speed.x == 0.0f ? 0.0f : this->size.height));
-
-	this->windDataSpeedY->registerCode(assemblyAddressStart, assemblyAddressEnd, "Wind X Speed", UIResources::Menus_Icons_Tornado);
+	this->windParticles->setPosVar(Vec2(speed.y == 0.0f ? 0.0f : width, speed.x == 0.0f ? 0.0f : height));
 }

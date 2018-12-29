@@ -73,6 +73,13 @@ void Squally::initializeCollisionEvents()
 		return CollisionResult::DoNothing;
 	});
 
+	this->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionData collisionData)
+	{
+		this->setPosition(this->spawnCoords);
+
+		return CollisionResult::DoNothing;
+	});
+
 	this->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionData collisionData)
 	{
 		return CollisionResult::DoNothing;
@@ -141,9 +148,4 @@ void Squally::update(float dt)
 void Squally::setFlippedX(bool newIsFlipped)
 {
 	this->isFlipped = newIsFlipped;
-}
-
-Size Squally::getSize()
-{
-	return this->size * Squally::squallyScale;
 }
