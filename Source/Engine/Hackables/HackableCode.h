@@ -44,7 +44,13 @@
 	#define ASM3(asm_literal1, asm_literal2, asm_literal3) \
 		__asm asm_literal1, asm_literal2, asm_literal3
 
-	// Windows likes to optimize out bytes that are directly emitted, so all hackable function tags are a sequence of useless instructions instead
+	#define ASM_MOV_REG_VAR(register, variable) \
+		ASM(mov register, variable)
+
+	#define ASM_MOV_VAR_REG(variable, register) \
+		ASM(mov variable, register)
+
+	// Directly emitting bytes wasn't working, so we just produce the assembly required for these instructions
 
 	// 56 6A * BE DE C0 ED FE 5E 5E
 	#define HACKABLE_CODE_BEGIN(func_id) \

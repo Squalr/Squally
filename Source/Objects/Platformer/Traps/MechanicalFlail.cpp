@@ -177,7 +177,7 @@ void MechanicalFlail::swingToAngle(float angle)
 	// Play smoke effect if stuck in place or out of bounds
 	if (this->targetAngle == previousAngle || this->targetAngle < MechanicalFlail::MinAngle || this->targetAngle > MechanicalFlail::MaxAngle)
 	{
-		if (!this->smokeParticles->isVisible())
+		if (!this->smokeParticles->isActive())
 		{
 			this->smokeParticles->setVisible(true);
 			this->smokeParticles->start();
@@ -185,7 +185,7 @@ void MechanicalFlail::swingToAngle(float angle)
 	}
 	else
 	{
-		if (this->smokeParticles->isVisible())
+		if (this->smokeParticles->isActive())
 		{
 			this->smokeParticles->setVisible(false);
 			this->smokeParticles->stopSystem();
