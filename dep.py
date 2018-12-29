@@ -63,7 +63,7 @@ def update():
     with open('requirements.txt') as fp:
         for line in fp:
             print ("installing: " + line)
-            install(line)
+            install(line.strip())
 
 def search(searchString):
     print(shell_exec(["./vcpkg/vcpkg", "search" , searchString]).decode('utf-8'))
