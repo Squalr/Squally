@@ -14,7 +14,7 @@
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
-const Color3B EditableTextWindow::lineNumberColor = Color3B::GRAY;
+const Color3B EditableTextWindow::lineNumberColor = Color3B(166, 166, 166);
 
 EditableTextWindow* EditableTextWindow::create(LocalizedString* windowTitle, Size initWindowSize, Color3B initFontColor)
 {
@@ -31,7 +31,7 @@ EditableTextWindow::EditableTextWindow(LocalizedString* windowTitle, Size initWi
 	this->currentLineNumber = 1;
 	this->tokenizationCallback = nullptr;
 	this->onEditCallback = nullptr;
-	this->lineNumberElements = new std::vector<RichElement*>();
+	this->lineNumberElements = std::vector<RichElement*>();
 	this->windowSize = initWindowSize;
 
 	this->lineNumbers = RichText::create();
@@ -51,18 +51,66 @@ EditableTextWindow::EditableTextWindow(LocalizedString* windowTitle, Size initWi
 
 	this->scrollView->addChild(this->lineNumbers);
 	this->scrollView->addChild(this->editableText);
-
-	this->initializePositions();
-	this->initializeListeners();
-	this->scheduleUpdate();
 }
 
 EditableTextWindow::~EditableTextWindow()
 {
-	delete(this->lineNumberElements);
 }
 
-void EditableTextWindow::setTokenizationCallback(std::function<void(std::string text, std::vector<EditableTextWindow::token>*)> newTokenizationCallback)
+
+void EditableTextWindow::onEnter()
+{
+	TextWindow::onEnter();
+
+	this->scheduleUpdate();
+}
+
+void EditableTextWindow::initializePositions()
+{
+	this->lineNumbers->setPosition(Vec2(TextWindow::padding.width,
+		this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
+	this->editableText->setPosition(Vec2(this->marginSize + TextWindow::padding.width,
+		this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
+
+	this->lineNumbers->setContentSize(Size(
+		windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f,
+		windowSize.height - TextWindow::padding.height * 2.0f));
+	this->editableText->setContentSize(Size(
+		windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f,
+		windowSize.height - TextWindow::padding.height * 2.0f));
+	this->editableText->setDimensions(
+		windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f,
+		windowSize.height - TextWindow::padding.height * 2.0f);
+
+	TextWindow::initializePositions();
+}
+
+void EditableTextWindow::initializeListeners()
+{
+	TextWindow::initializeListeners();
+}
+
+void EditableTextWindow::update(float dt)
+{
+	std::string currentText = this->editableText->getString();
+
+	if (this->previousText != currentText)
+	{
+		this->previousText = currentText;
+		this->constructTokenizedText(currentText);
+
+		if (this->onEditCallback != nullptr)
+		{
+			this->onEditCallback(currentText);
+		}
+
+		// TODO: Dynamically set inner content size
+		// this->scrollView->setInnerContainerSize(Size(windowSize.width, windowSize.height * 2));
+		// this->initializePositions();
+	}
+}
+
+void EditableTextWindow::setTokenizationCallback(std::function<void(std::string text, std::vector<EditableTextWindow::token>&)> newTokenizationCallback)
 {
 	this->tokenizationCallback = newTokenizationCallback;
 }
@@ -87,59 +135,14 @@ void EditableTextWindow::focus()
 	this->editableText->attachWithIME();
 }
 
-void EditableTextWindow::initializePositions()
-{
-	this->lineNumbers->setPosition(Vec2(TextWindow::padding.width,
-			this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
-	this->editableText->setPosition(Vec2(this->marginSize + TextWindow::padding.width,
-			this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
-
-	this->lineNumbers->setContentSize(Size(
-		windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f,
-		windowSize.height - TextWindow::padding.height * 2.0f));
-	this->editableText->setContentSize(Size(
-		windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f,
-		windowSize.height - TextWindow::padding.height * 2.0f));
-	this->editableText->setDimensions(
-		windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f,
-		windowSize.height - TextWindow::padding.height * 2.0f);
-
-	TextWindow::initializePositions();
-}
-
-void EditableTextWindow::initializeListeners()
-{
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
-}
-
-void EditableTextWindow::update(float dt)
-{
-	std::string currentText = this->editableText->getString();
-
-	if (this->previousText != currentText)
-	{
-		this->previousText = currentText;
-		this->constructTokenizedText(currentText);
-
-		if (this->onEditCallback != nullptr)
-		{
-			this->onEditCallback(currentText);
-		}
-
-		// TODO: Dynamically set inner content size
-		// this->scrollView->setInnerContainerSize(Size(windowSize.width, windowSize.height * 2));
-		// this->initializePositions();
-	}
-}
-
 void EditableTextWindow::insertNewline()
 {
 	RichElement* lineNumberText = RichElementText::create(0, EditableTextWindow::lineNumberColor, 0xFF, std::to_string(this->currentLineNumber++), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
 	RichElement* lineNumberNewLine = RichElementNewLine::create(0, this->fontColor, 0xFF);
 
-	this->lineNumberElements->push_back(lineNumberText);
+	this->lineNumberElements.push_back(lineNumberText);
 	this->lineNumbers->pushBackElement(lineNumberText);
-	this->lineNumberElements->push_back(lineNumberNewLine);
+	this->lineNumberElements.push_back(lineNumberNewLine);
 	this->lineNumbers->pushBackElement(lineNumberNewLine);
 
 	TextWindow::insertNewline();
@@ -149,12 +152,12 @@ void EditableTextWindow::clearText()
 {
 	this->currentLineNumber = 1;
 
-	for (auto iterator = this->lineNumberElements->begin(); iterator != this->lineNumberElements->end(); iterator++)
+	for (auto iterator = this->lineNumberElements.begin(); iterator != this->lineNumberElements.end(); iterator++)
 	{
 		this->lineNumbers->removeElement(*iterator);
 	}
 
-	this->lineNumberElements->clear();
+	this->lineNumberElements.clear();
 
 	TextWindow::clearText();
 }
@@ -166,12 +169,12 @@ void EditableTextWindow::constructTokenizedText(std::string currentText)
 		return;
 	}
 
-	std::vector<EditableTextWindow::token>* tokens = new std::vector<EditableTextWindow::token>();
+	std::vector<EditableTextWindow::token> tokens = std::vector<EditableTextWindow::token>();
 	this->tokenizationCallback(currentText, tokens);
 	this->clearText();
 	this->insertNewline();
 
-	for (auto tokenIterator = tokens->begin(); tokenIterator != tokens->end(); tokenIterator++)
+	for (auto tokenIterator = tokens.begin(); tokenIterator != tokens.end(); tokenIterator++)
 	{
 		EditableTextWindow::token token = *tokenIterator;
 
@@ -184,6 +187,4 @@ void EditableTextWindow::constructTokenizedText(std::string currentText)
 			this->insertText(token.tokenStr, token.color);
 		}
 	}
-
-	delete(tokens);
 }

@@ -8,16 +8,13 @@ class HackableObject;
 class HackableEvents
 {
 public:
-	static const std::string HackableObjectEditEvent;
-	static const std::string HackableObjectRegisterEvent;
-
 	struct HackableObjectEditArgs
 	{
 		HackableObject* hackableObject;
 		cocos2d::Vec2 sourceLocation;
-		 
+
 		HackableObjectEditArgs(HackableObject* hackableObject, cocos2d::Vec2 sourceLocation) :
-				hackableObject(hackableObject), sourceLocation(sourceLocation)
+			hackableObject(hackableObject), sourceLocation(sourceLocation)
 		{
 		}
 	};
@@ -31,6 +28,13 @@ public:
 		}
 	};
 
-	static void editHackable(HackableObjectEditArgs args);
-	static void registerHackable(HackableObjectRegisterArgs args);
+	static void TriggerHackerModeEnable();
+	static void TriggerHackerModeDisable();
+	static void TriggerEditHackable(HackableObjectEditArgs args);
+	static void TriggerRegisterHackable(HackableObjectRegisterArgs args);
+
+	static const std::string HackerModeEnable;
+	static const std::string HackerModeDisable;
+	static const std::string HackableObjectEditEvent;
+	static const std::string HackableObjectRegisterEvent;
 };

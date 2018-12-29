@@ -45,9 +45,9 @@ public:
 	void addPhysicsShape(cocos2d::PhysicsShape* shape);
 	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
 	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd);
-
 	void setCollisionType(CollisionType collisionType);
 	CollisionType getCollisionType();
+	void setPosition(const cocos2d::Vec2& position) override;
 	cocos2d::Vec2 getVelocity();
 	void setVelocity(cocos2d::Vec2 velocity);
 	virtual void setPhysicsEnabled(bool enabled);

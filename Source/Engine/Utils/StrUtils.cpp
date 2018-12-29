@@ -1,10 +1,43 @@
 #include "StrUtils.h"
 
+#include <algorithm> 
+#include <cctype>
+#include <locale>
+#include <sstream>
+
 #ifndef WIN32
 extern "C" {
     #include <strings.h>
 }
 #endif
+
+std::string StrUtils::ltrim(std::string str, std::string toRemove, bool ignoreCase)
+{
+	while(StrUtils::startsWith(str, toRemove, ignoreCase))
+	{
+		str = str.substr(toRemove.size());
+	}
+
+	return str;
+}
+
+std::string StrUtils::rtrim(std::string str, std::string toRemove, bool ignoreCase)
+{
+	while (StrUtils::endsWith(str, toRemove, ignoreCase))
+	{
+		str = str.substr(toRemove.size());
+	}
+
+	return str;
+}
+
+std::string StrUtils::trim(std::string str, std::string toRemove, bool ignoreCase)
+{
+	str = StrUtils::ltrim(str, toRemove, ignoreCase);
+	str = StrUtils::rtrim(str, toRemove, ignoreCase);
+
+	return str;
+}
 
 std::string StrUtils::toStringZeroPad(int value, int zeroCount)
 {

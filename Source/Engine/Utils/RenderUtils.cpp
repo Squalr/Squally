@@ -5,6 +5,8 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/renderer/CCGLProgram.h"
 
+#include "Engine/Utils/GameUtils.h"
+
 using namespace cocos2d;
 
 Sprite* RenderUtils::renderDrawNode(DrawNode* drawNode, Vec2 offset, Size renderSize)
@@ -19,6 +21,9 @@ Sprite* RenderUtils::renderDrawNode(DrawNode* drawNode, Vec2 offset, Size render
 	// Rasterize the texture to a sprite
 	Sprite* renderSprite = renderedDrawNode->getSprite();
 
+	// The sprite is attached to the render texture -- decouple it before returning
+	GameUtils::changeParent(renderSprite, nullptr, false);
+	
 	renderSprite->setAnchorPoint(Vec2::ZERO);
 	renderSprite->setPosition(offset);
 	renderSprite->setContentSize(renderSize);
@@ -44,6 +49,9 @@ Sprite* RenderUtils::applyShaderOnce(Sprite* sprite, GLProgram* program, GLProgr
 	renderedSprite->end();
 
 	Sprite* rasterizedSprite = renderedSprite->getSprite();
+
+	// The sprite is attached to the render texture -- decouple it before returning
+	GameUtils::changeParent(rasterizedSprite, nullptr, false);
 
 	rasterizedSprite->setPosition(position);
 	rasterizedSprite->setAnchorPoint(anchor);

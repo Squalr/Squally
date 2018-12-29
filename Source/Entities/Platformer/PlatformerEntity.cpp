@@ -24,7 +24,7 @@ PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlRes
 		false
 	)
 {
-	this->size = size;
+	this->spawnCoords = this->getPosition();
 
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
@@ -146,7 +146,7 @@ void PlatformerEntity::update(float dt)
 
 bool PlatformerEntity::isOnGround()
 {
-	return (this->groundCollisions.size() > 0);
+	return (!this->groundCollisions.empty());
 }
 
 void PlatformerEntity::initializeCollisionEvents()
@@ -172,11 +172,6 @@ void PlatformerEntity::initializeCollisionEvents()
 
 		return CollisionResult::DoNothing;
 	});
-}
-
-Size PlatformerEntity::getSize()
-{
-	return this->size;
 }
 
 PhysicsBody* PlatformerEntity::createCapsulePolygon(Size size, float scale)

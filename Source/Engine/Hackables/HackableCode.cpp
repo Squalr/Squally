@@ -1,55 +1,204 @@
 #include "HackableCode.h"
 
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/HackUtils.h"
+#include "Engine/Utils/LogUtils.h"
+#include "Engine/Utils/StrUtils.h"
 
-HackableCode * HackableCode::create(std::string name, void* codeStart, int codeLength, std::string iconResource)
+std::map<void*, std::vector<HackableCode*>> HackableCode::HackableCodeCache = std::map<void*, std::vector<HackableCode*>>();
+
+// Note: all tags are assumed to start with a different byte and have the same length
+const int HackableCode::StartTagFuncIdIndex = 2;
+const unsigned char HackableCode::StartTagSignature[] = { 0x57, 0x6A, 0x00, 0xBF, 0xDE, 0xC0, 0xED, 0xFE, 0x5F, 0x5F };
+const unsigned char HackableCode::EndTagSignature[] = { 0x56, 0x6A, 0x45, 0xBE, 0xDE, 0xC0, 0xAD, 0xDE, 0x5E, 0x5E };
+const unsigned char HackableCode::StopSearchTagSignature[] = { 0x52, 0x6A, 0x45, 0xBA, 0x5E, 0xEA, 0x15, 0x0D, 0x5A, 0x5A };
+
+std::vector<HackableCode*> HackableCode::create(void* functionStart, std::map<unsigned char, LateBindData>& lateBindDataMap)
 {
-	HackableCode* hackableCode = new HackableCode(name, codeStart, codeLength, iconResource);
+	if (HackableCode::HackableCodeCache.find(functionStart) != HackableCode::HackableCodeCache.end())
+	{
+		return HackableCode::HackableCodeCache[functionStart];
+	}
+
+	std::vector<HackableCode*> extractedHackableCode = std::vector<HackableCode*>();
+
+	const int tagSize = sizeof(HackableCode::StartTagSignature) / sizeof((HackableCode::StartTagSignature)[0]);
+	const int stopSearchingAfterXBytesFailSafe = 4096;
+
+	unsigned char* currentBase = (unsigned char*)functionStart;
+	unsigned char* currentSeek = (unsigned char*)functionStart;
+	unsigned char funcId = 0;
+	const unsigned char* targetArray = nullptr;
+	void* nextHackableCodeStart = nullptr;
+
+	while (true)
+	{
+		int signatureIndex = (int)((unsigned long)currentSeek - (unsigned long)currentBase);
+
+		if (signatureIndex > stopSearchingAfterXBytesFailSafe)
+		{
+			LogUtils::logError("Potentially fatal error: unable to find end signature in hackable code!");
+			break;
+		}
+
+		if (targetArray == nullptr)
+		{
+			if (*currentSeek == HackableCode::StartTagSignature[0])
+			{
+				targetArray = HackableCode::StartTagSignature;
+			}
+			else if (*currentSeek == HackableCode::EndTagSignature[0])
+			{
+				targetArray = HackableCode::EndTagSignature;
+			}
+			else if (*currentSeek == HackableCode::StopSearchTagSignature[0])
+			{
+				targetArray = HackableCode::StopSearchTagSignature;
+			}
+			else
+			{
+				// Next byte does not match the start of any signature
+				currentBase++;
+				currentSeek = currentBase;
+				continue;
+			}
+
+			currentSeek++;
+			continue;
+		}
+
+		// Special case in the start tag where we embed a local identifier for the function, which we need to pull out
+		if (targetArray == HackableCode::StartTagSignature && signatureIndex == HackableCode::StartTagFuncIdIndex)
+		{
+			funcId = *currentSeek;
+			currentSeek++;
+			continue;
+		}
+
+		// Check if we match the next expected character
+		if (*currentSeek == targetArray[signatureIndex])
+		{
+			currentSeek++;
+
+			if (signatureIndex == tagSize - 1)
+			{
+				if (targetArray == HackableCode::StartTagSignature)
+				{
+					nextHackableCodeStart = (void*)currentSeek;
+				}
+				else if (targetArray == HackableCode::EndTagSignature)
+				{
+					if (nextHackableCodeStart != nullptr)
+					{
+						void* nextHackableCodeEnd = (void*)currentBase;
+
+						// Fetch the late-bind data for this function from the map
+						if (lateBindDataMap.find(funcId) != lateBindDataMap.end())
+						{
+							LateBindData lateBindData = lateBindDataMap[funcId];
+							HackableCode* hackableCode = HackableCode::create(nextHackableCodeStart, nextHackableCodeEnd, lateBindData.functionName, lateBindData.iconResource);
+
+							extractedHackableCode.push_back(hackableCode);
+						}
+						else
+						{
+							LogUtils::logError("Could not find late-bind data for an extracted function!");
+						}
+
+						nextHackableCodeStart = nullptr;
+					}
+				}
+				else if (targetArray == HackableCode::StopSearchTagSignature)
+				{
+					break;
+				}
+			}
+			else
+			{
+				// Keep searching this signature
+				continue;
+			}
+		}
+
+		// Reset search state
+		targetArray = nullptr;
+		currentBase++;
+		currentSeek = currentBase;
+	}
+
+	HackableCode::HackableCodeCache[functionStart] = extractedHackableCode;
+
+	return extractedHackableCode;
+}
+
+HackableCode* HackableCode::create(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource)
+{
+	HackableCode* hackableCode = new HackableCode(codeStart, codeEnd, functionName, iconResource);
 
 	hackableCode->autorelease();
 
 	return hackableCode;
 }
 
-HackableCode::HackableCode(std::string name, void* codeStart, int codeLength, std::string iconResource) : HackableAttribute(iconResource)
+HackableCode::HackableCode(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource) : HackableAttribute(iconResource)
 {
-	this->functionName = name;
 	this->codePointer = (unsigned char*)codeStart;
-	this->codeOriginalLength = codeLength;
+	this->functionName = functionName;
+	this->originalCodeLength = (int)((unsigned long)codeEnd - (unsigned long)codeStart);
 	this->allocations = std::map<void*, int>();
+	this->originalCodeCopy = nullptr;
 
-	if (codeStart != nullptr && codeLength > 0)
+	if (codeStart != nullptr && this->originalCodeLength > 0)
 	{
-		this->originalCodeCopy = new unsigned char(codeLength);
-		memcpy(originalCodeCopy, codeStart, codeLength);
-	}
-	else
-	{
-		this->originalCodeCopy = nullptr;
+		HackUtils::makeWritable(codeStart, this->originalCodeLength);
+		this->originalCodeCopy = new unsigned char[this->originalCodeLength];
+		memcpy(originalCodeCopy, codeStart, this->originalCodeLength);
 	}
 
-	this->assemblyString = HackUtils::disassemble(codeStart, codeLength);
+	// Disassemble starting bytes, strip out NOPs
+	this->assemblyString = StrUtils::replaceAll(HackUtils::disassemble(codeStart, this->originalCodeLength), "nop\n", "");
+
+	// Retain
+	this->addChild(this->functionName);
 }
 
-void HackableCode::restoreOriginalCode()
+HackableCode::~HackableCode()
 {
-	if (this->codePointer == nullptr || this->originalCodeCopy == nullptr)
+	for (auto iterator = this->allocations.begin(); iterator != this->allocations.end(); iterator++)
 	{
-		return;
+		delete(iterator->first);
 	}
 
-	#ifdef _WIN32
-		DWORD old;
-		VirtualProtect(this->codePointer, this->codeOriginalLength, PAGE_EXECUTE_READWRITE, &old);
-	#else
-		mprotect(this->codePointer, this->codeOriginalLength, PROT_READ | PROT_WRITE | PROT_EXEC);
-	#endif
-	
-	memcpy(this->codePointer, this->originalCodeCopy, this->codeOriginalLength);
+	if (this->originalCodeCopy != nullptr)
+	{
+		delete(this->originalCodeCopy);
+	}
 }
 
-bool HackableCode::applyCustomCode()
+std::string HackableCode::getAssemblyString()
 {
+	return this->assemblyString;
+}
+
+LocalizedString* HackableCode::getFunctionName()
+{
+	return this->functionName;
+}
+
+void* HackableCode::getCodePointer()
+{
+	return this->codePointer;
+}
+
+int HackableCode::getOriginalLength()
+{
+	return this->originalCodeLength;
+}
+
+bool HackableCode::applyCustomCode(std::string newAssembly)
+{
+	this->assemblyString = newAssembly;
+
 	if (this->codePointer == nullptr)
 	{
 		return false;
@@ -58,23 +207,17 @@ bool HackableCode::applyCustomCode()
 	HackUtils::CompileResult compileResult = HackUtils::assemble(this->assemblyString, this->codePointer);
 
 	// Sanity check that the code compiles -- there isn't any reason it shouldn't
-	if (compileResult.hasError || compileResult.byteCount > this->codeOriginalLength)
+	if (compileResult.hasError || compileResult.byteCount > this->originalCodeLength)
 	{
 		// Fail the activation
 		return false;
 	}
 
-	// Write new assembly code
-	#ifdef _WIN32
-		DWORD old;
-		VirtualProtect(this->codePointer, compileResult.byteCount, PAGE_EXECUTE_READWRITE, &old);
-	#else
-		mprotect(this->codePointer, compileResult.byteCount, PROT_READ | PROT_WRITE | PROT_EXEC);
-	#endif
+	HackUtils::makeWritable(this->codePointer, compileResult.byteCount);
 
 	memcpy(this->codePointer, compileResult.compiledBytes, compileResult.byteCount);
 
-	int unfilledBytes = this->codeOriginalLength - compileResult.byteCount;
+	int unfilledBytes = this->originalCodeLength - compileResult.byteCount;
 
 	// Fill remaining bytes with NOPs
 	for (int index = 0; index < unfilledBytes; index++)
@@ -86,20 +229,21 @@ bool HackableCode::applyCustomCode()
 	return true;
 }
 
+void HackableCode::restoreOriginalCode()
+{
+	if (this->codePointer == nullptr || this->originalCodeCopy == nullptr)
+	{
+		return;
+	}
+
+	HackUtils::makeWritable(this->codePointer, this->originalCodeLength);
+	memcpy(this->codePointer, this->originalCodeCopy, this->originalCodeLength);
+}
+
 void* HackableCode::allocateMemory(int allocationSize)
 {
 	void* allocation = malloc(allocationSize);
 	this->allocations[allocation] = allocationSize;
 
 	return allocation;
-}
-
-HackableCode::~HackableCode()
-{
-	for (auto iterator = this->allocations.begin(); iterator != this->allocations.end(); iterator++)
-	{
-		delete(iterator->first);
-	}
-
-	delete(this->originalCodeCopy);
 }

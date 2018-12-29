@@ -34,8 +34,7 @@ public:
 		}
 	};
 
-	void setTokenizationCallback(std::function<void(std::string text,
-			std::vector<EditableTextWindow::token>*)> newTokenizationCallback);
+	void setTokenizationCallback(std::function<void(std::string text, std::vector<EditableTextWindow::token>&)> newTokenizationCallback);
 	void setOnEditCallback(std::function<void(std::string text)> newOnEditCallback);
 	std::string getText();
 	void setText(std::string text);
@@ -47,9 +46,10 @@ private:
 	EditableTextWindow(LocalizedString* windowTitle, cocos2d::Size initWindowSize, cocos2d::Color3B initFontColor);
 	virtual ~EditableTextWindow();
 
-	void update(float) override;
+	void onEnter() override;
 	void initializePositions() override;
-	void initializeListeners();
+	void initializeListeners() override;
+	void update(float) override;
 	void constructTokenizedText(std::string currentText);
 
 	cocos2d::ui::UICCTextField* editableText;
@@ -60,8 +60,8 @@ private:
 	cocos2d::Size windowSize;
 	std::string previousText;
 
-	std::vector<cocos2d::ui::RichElement*>* lineNumberElements;
-	std::function<void(std::string text, std::vector<EditableTextWindow::token>*)> tokenizationCallback;
+	std::vector<cocos2d::ui::RichElement*> lineNumberElements;
+	std::function<void(std::string text, std::vector<EditableTextWindow::token>&)> tokenizationCallback;
 	std::function<void(std::string text)> onEditCallback;
 
 	static const cocos2d::Color3B lineNumberColor;

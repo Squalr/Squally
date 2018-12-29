@@ -28,6 +28,7 @@ private:
 	CodeEditor();
 	~CodeEditor();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float) override;
@@ -36,7 +37,7 @@ private:
 	void compile(std::string rawText);
 	void onFunctionTextUpdate(std::string text);
 	void onAllocationTextUpdate(std::string text);
-	void tokenizeCallback(std::string text, std::vector<EditableTextWindow::token>*);
+	void tokenizeCallback(std::string text, std::vector<EditableTextWindow::token>&);
 	void onAccept(MenuSprite* menuSprite);
 	void onCancel(MenuSprite* menuSprite);
 

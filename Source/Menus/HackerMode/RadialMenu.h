@@ -13,6 +13,8 @@ namespace cocos2d
 }
 
 class CodeEditor;
+class HackableCode;
+class HackableData;
 class HackableObject;
 class MenuSprite;
 
@@ -25,27 +27,26 @@ private:
 	RadialMenu(std::function<void()> onCloseCallback);
 	~RadialMenu();
 
-	void initializePositions();
-	void initializeListeners();
+	void initializePositions() override;
+	void initializeListeners() override;
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onHackableEdit(cocos2d::EventCustom* eventArgs);
-	void onHackableAttributeClick(MenuSprite* menuSprite);
-	void onClose(MenuSprite* menuSprite);
+	void onHackableCodeClick(HackableCode* hackableCode);
+	void onHackableDataClick(HackableData* hackableData);
 	void close();
-
-	cocos2d::Node* createRadialNode(std::string iconResource, cocos2d::Vec2 nodePosition, cocos2d::Color4F color, std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> callback, int tag);
+	void buildRadialMenu(cocos2d::Vec2 sourceLocation);
+	cocos2d::Node* createRadialNode(std::string iconResource, cocos2d::Vec2 nodePosition, cocos2d::Color4F color, bool drawLine, std::function<void()> clickCallback);
 
 	CodeEditor* codeEditor;
 	HackableObject* activeHackableObject;
-
 	cocos2d::LayerColor* layerColor;
 	cocos2d::Node* radialMenuItems;
-
 	std::function<void()> onRadialMenuCloseCallback;
 
-	static const float radialMenuRadius;
-	static const float lineWidth;
-	static const cocos2d::Color4F dataColor;
-	static const cocos2d::Color4F codeColor;
-	static const float iconRadius;
+	static const float DataRadius;
+	static const float CodeRadius;
+	static const float LineWidth;
+	static const cocos2d::Color4F DataColor;
+	static const cocos2d::Color4F CodeColor;
+	static const float IconRadius;
 };

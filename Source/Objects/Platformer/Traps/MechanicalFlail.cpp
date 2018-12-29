@@ -1,19 +1,35 @@
 #include "MechanicalFlail.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
+#include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ParticleResources.h"
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Objects/Hackables/MechanicalFlail/FlailTargetAngle.h"
+
 using namespace cocos2d;
 
+#define LOCAL_FUNC_ID_SWING 1
+
 const std::string MechanicalFlail::MapKeyMechanicalFlail = "mechanical-flail";
+
+const float MechanicalFlail::DefaultAngle = 90.0f;
+const float MechanicalFlail::SwingsPerSecondAt480Length = 1.5f;
+const float MechanicalFlail::MinAngle = MathUtils::wrappingNormalize(MechanicalFlail::DefaultAngle - 45.0f, 0.0f, 360.0f);
+const float MechanicalFlail::MaxAngle = MathUtils::wrappingNormalize(MechanicalFlail::DefaultAngle + 45.0f, 0.0f, 360.0f);
 
 MechanicalFlail* MechanicalFlail::create(ValueMap* initProperties)
 {
@@ -28,20 +44,24 @@ MechanicalFlail::MechanicalFlail(ValueMap* initProperties) : HackableObject(init
 {
 	this->joint = Sprite::create(ObjectResources::Traps_MechanicalFlail_Joint);
 	this->flailChain = Node::create();
+	this->smokeParticles = ParticleSystemQuad::create(ParticleResources::Objects_Smoke);
+	this->flailCollision = CollisionObject::create(PhysicsBody::createCircle(56.0f), (CollisionType)PlatformerCollisionType::Damage, false, false);
 
-	float width = this->properties->at(SerializableObject::MapKeyWidth).asFloat();
 	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
-	this->size = Size(width, height);
 
+	this->smokeParticles->setVisible(false);
+
+	this->targetAngle = MechanicalFlail::DefaultAngle;
 	this->flailHeight = height;
 
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->flailChain->setAnchorPoint(Vec2(0.5f, 0.0f));
-	this->pendulumBladeSpeed = Vec2::ZERO;
 
 	this->registerHackables();
 	this->buildChain();
 
+	this->flailChain->addChild(this->flailCollision);
+	this->addChild(this->smokeParticles);
 	this->addChild(this->flailChain);
 	this->addChild(this->joint);
 }
@@ -50,10 +70,46 @@ MechanicalFlail::~MechanicalFlail()
 {
 }
 
+void MechanicalFlail::onEnter()
+{
+	HackableObject::onEnter();
+
+	this->scheduleUpdate();
+	this->startSwing();
+}
+
+void MechanicalFlail::initializePositions()
+{
+	HackableObject::initializePositions();
+
+	this->flailCollision->setPositionY(this->flailHeight);
+	this->smokeParticles->setPositionY(-this->flailHeight / 2.0f);
+	this->joint->setPositionY(-this->flailHeight / 2.0f);
+	this->flailChain->setPositionY(-this->flailHeight / 2.0f);
+}
+
+void MechanicalFlail::update(float dt)
+{
+	HackableObject::update(dt);
+}
+
 void MechanicalFlail::registerHackables()
 {
-	this->pendulumBladeDataSpeedY = HackableData::create("Y Position", &this->pendulumBladeSpeed.y, &typeid(this->pendulumBladeSpeed.y), UIResources::Menus_Icons_AlchemyPot);
-	this->registerData(this->pendulumBladeDataSpeedY);
+	this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
+	this->registerData(this->hackableDataTargetAngle);
+
+	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	{
+		{ LOCAL_FUNC_ID_SWING, HackableCode::LateBindData(LocaleStrings::FlailTargetAngle::create(), UIResources::Menus_Icons_CrossHair)},
+	};
+
+	auto swingFunc = &MechanicalFlail::swingToAngle;
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, lateBindMap);
+
+	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	{
+		this->registerCode(*it);
+	}
 }
 
 Vec2 MechanicalFlail::getButtonOffset()
@@ -61,55 +117,82 @@ Vec2 MechanicalFlail::getButtonOffset()
 	return Vec2(0.0f, 0.0f);
 }
 
-void MechanicalFlail::onEnter()
+void MechanicalFlail::startSwing()
 {
-	HackableObject::onEnter();
-
-	this->scheduleUpdate();
+	swingToAngle(MechanicalFlail::MinAngle);
 }
 
-void MechanicalFlail::initializePositions()
+void MechanicalFlail::swingToAngle(float angle)
 {
-	HackableObject::initializePositions();
+	const float arc = (MechanicalFlail::MaxAngle - MechanicalFlail::MinAngle);
+	const float minDuration = 0.5f;
+	const float maxDuration = 5.0f;
 
-	this->joint->setPositionY(-this->flailHeight / 2.0f);
-	this->flailChain->setPositionY(-this->flailHeight / 2.0f);
-}
+	float previousAngle = this->targetAngle;
+	int angleInt = (int)angle;
 
-void MechanicalFlail::update(float dt)
-{
-	static float deltaTime = 0.0f;
-	float maxAngle = 90.0f;
-	float gravity = 9.8f;
-	float speed = 4.0f;
+	ASM(push EAX);
+	ASM(push EBX);
+	ASM_MOV_REG_VAR(eax, angleInt);
 
-	deltaTime += dt;
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SWING);
+	ASM(mov EBX, EAX);
+	ASM_NOP5();
+	HACKABLE_CODE_END();
 
-	// the formula for the angle
-	float theta = maxAngle * std::sin(std::sqrt(gravity / this->flailHeight) * deltaTime * speed);
+	ASM_MOV_VAR_REG(angleInt, EBX);
 
-	// set the angle
-	this->flailChain->setRotation(180.0f + theta);
+	ASM(pop EBX);
+	ASM(pop EAX);
 
-	/*
-	void* assemblyAddressStart = nullptr;
-	void* assemblyAddressEnd = nullptr;
+	this->targetAngle = MathUtils::wrappingNormalize((float)angleInt, 0.0f, 360.0f);
 
-	Vec2 speed = Vec2::ZERO;
-	Vec2 currentSpeed = this->pendulumBladeSpeed;
+	float speedMultiplier = (this->flailHeight / 480.0f) * MechanicalFlail::SwingsPerSecondAt480Length;
 
-	ASM(push ebx);
-	ASM(mov ebx, currentSpeed.y);
+	float angleDelta = std::abs(previousAngle - this->targetAngle);
+	float duration = MathUtils::clamp((speedMultiplier * (angleDelta / arc)) / MechanicalFlail::SwingsPerSecondAt480Length, minDuration, maxDuration);
 
-	HACKABLE_CODE_BEGIN(assemblyAddressStart, MechanicalFlailSpeedYStart);
-	ASM(mov speed.y, ebx)
-	HACKABLE_CODE_END(assemblyAddressEnd, MechanicalFlailSpeedYEnd);
+	// Adjust angle to cocos space (inverted Y)
+	float newAngleAdjusted = MathUtils::wrappingNormalize(-this->targetAngle + MechanicalFlail::DefaultAngle, 0.0f, 360.0f);
 
-	ASM(pop ebx);
+	// Run normal swing
+	this->flailChain->runAction(
+		Sequence::create(
+			EaseSineInOut::create(RotateTo::create(duration, newAngleAdjusted)),
+			CallFunc::create([=]()
+			{
+				if (this->targetAngle > (MechanicalFlail::MaxAngle + MechanicalFlail::MinAngle) / 2.0f)
+				{
+					this->swingToAngle(MechanicalFlail::MinAngle);
+				}
+				else
+				{
+					this->swingToAngle(MechanicalFlail::MaxAngle);
+				}
+			}),
+			nullptr
+		)
+	);
 
-	float angle = speed.x == 0.0f ? (speed.y > 0.0f ? -90.0f : 90.0f) : atan(speed.y / speed.x);
+	// Play smoke effect if stuck in place or out of bounds
+	if (this->targetAngle == previousAngle || this->targetAngle < MechanicalFlail::MinAngle || this->targetAngle > MechanicalFlail::MaxAngle)
+	{
+		if (!this->smokeParticles->isVisible())
+		{
+			this->smokeParticles->setVisible(true);
+			this->smokeParticles->start();
+		}
+	}
+	else
+	{
+		if (this->smokeParticles->isVisible())
+		{
+			this->smokeParticles->setVisible(false);
+			this->smokeParticles->stopSystem();
+		}
+	}
 
-	this->pendulumBladeDataSpeedY->registerCode(assemblyAddressStart, assemblyAddressEnd, "Pendulum Angular Velocity", UIResources::Menus_Icons_AxeSlash);*/
+	HACKABLES_STOP_SEARCH();
 }
 
 void MechanicalFlail::buildChain()
@@ -123,19 +206,19 @@ void MechanicalFlail::buildChain()
 	{
 		const float chainOverlap = 10.0f;
 
-		Sprite* nextChainLink = Sprite::create(ObjectResources::Traps_MechanicalFlail_Shaft);
+		Sprite* nextPipeLink = Sprite::create(ObjectResources::Traps_MechanicalFlail_Shaft);
 
-		nextChainLink->setAnchorPoint(Vec2(0.5f, 1.0f));
+		nextPipeLink->setAnchorPoint(Vec2(0.5f, 0.0f));
 
-		this->flailChain->addChild(nextChainLink);
+		this->flailChain->addChild(nextPipeLink);
 
-		nextChainLink->setPositionY((float)index++ * -(nextChainLink->getContentSize().height - chainOverlap));
+		nextPipeLink->setPositionY((float)index++ * (nextPipeLink->getContentSize().height - chainOverlap));
 
-		remainingHeight -= nextChainLink->getContentSize().height - chainOverlap;
+		remainingHeight -= nextPipeLink->getContentSize().height - chainOverlap;
 
 	} while (remainingHeight > 0.0f);
 
-	flail->setPositionY(-this->flailHeight);
+	flail->setPositionY(this->flailHeight);
 
 	this->flailChain->addChild(flail);
 }

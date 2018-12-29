@@ -44,10 +44,8 @@ TextWindow::TextWindow(LocalizedString* windowTitle, Size initWindowSize, Color3
 	this->titleBar = Node::create();
 	this->windowTitle = MenuLabel::create(LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, windowTitle));
 
-	this->background->addChild(LayerColor::create(this->windowColor, this->windowSize.width,
-			this->windowSize.height));
-	this->titleBar->addChild(LayerColor::create(this->titleBarColor, this->windowSize.width,
-			TextWindow::titleBarHeight));
+	this->background->addChild(LayerColor::create(this->windowColor, this->windowSize.width, this->windowSize.height));
+	this->titleBar->addChild(LayerColor::create(this->titleBarColor, this->windowSize.width, TextWindow::titleBarHeight));
 
 	this->scrollView->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->scrollView->setDirection(ScrollView::Direction::BOTH);
@@ -80,16 +78,13 @@ void TextWindow::initializePositions()
 
 	this->scrollView->setContentSize(windowSize);
 	this->scrollView->setInnerContainerSize(Size(windowSize.width, windowSize.height * 2));
-	this->displayedText->setContentSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f,
-			windowSize.height - TextWindow::padding.height * 2.0f));
+	this->displayedText->setContentSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f, windowSize.height - TextWindow::padding.height * 2.0f));
 
 	this->scrollView->setPosition(Vec2(0.0f, 0.0f));
 	this->background->setPosition(-this->windowSize.width / 2.0f, -this->windowSize.height / 2.0f);
-	this->displayedText->setPosition(Vec2(this->marginSize + TextWindow::padding.width,
-			this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
-	this->titleBar->setPosition(-this->windowSize.width / 2.0f,
-			this->windowSize.height / 2.0f - TextWindow::titleBarHeight / 2.0f); // + this->fontSize
-	this->windowTitle->setPosition(0.0f, this->windowSize.height / 2); // + this->fontSize
+	this->displayedText->setPosition(Vec2(this->marginSize + TextWindow::padding.width,this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
+	this->titleBar->setPosition(-this->windowSize.width / 2.0f, this->windowSize.height / 2.0f);
+	this->windowTitle->setPosition(0.0f, this->windowSize.height / 2 + TextWindow::titleBarHeight / 2.0f);
 }
 
 void TextWindow::initializeListeners()
