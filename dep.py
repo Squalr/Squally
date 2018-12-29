@@ -72,6 +72,8 @@ def install(packageString):
     try:
         p = Popen(["./vcpkg/vcpkg", "install" , packageString], stdout=subprocess.PIPE, bufsize=1)
         for outputLine in iter(p.stdout.readline, b''):
+            if "Error:" in str(outputLine):
+                raise Exception(outputLine)
             print(outputLine.decode('utf-8'))
     
         p.stdout.close()
@@ -84,8 +86,8 @@ def install(packageString):
                     break
             else: # not found, we are at the eof
                 file.write('\n' + packageString) # append missing data
-    except:
-        print("Failed to Install Package: " + packageString + " An error occurred, make sure you spelled the package name right")
+    except Exception as error:
+        print("Failed to Install Package: " + packageString + " An error occurred, make sure you spelled the package name right. \n" + repr(error))
 
 
 if __name__ == '__main__':
