@@ -61,9 +61,9 @@ MechanicalFlail::MechanicalFlail(ValueMap* initProperties) : HackableObject(init
 	this->buildChain();
 
 	this->flailChain->addChild(this->flailCollision);
-	this->addChild(this->smokeParticles);
 	this->addChild(this->flailChain);
 	this->addChild(this->joint);
+	this->addChild(this->smokeParticles);
 }
 
 MechanicalFlail::~MechanicalFlail()
