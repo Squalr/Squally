@@ -113,7 +113,10 @@ void GameCamera::update(float dt)
 {
 	this->setCameraPositionWorkAround();
 
-	if (this->targetStack.size() > 0)
+	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	if (!this->targetStack.empty())
 	{
 		CameraTrackingData trackingData = this->targetStack.top();
 
@@ -122,16 +125,22 @@ void GameCamera::update(float dt)
 			default:
 			case CameraTrackingData::CameraScrollType::Rectangle:
 			{
-				this->boundCameraByRectangle();
+				cameraPosition = this->boundCameraByRectangle();
 				break;
 			}
 			case CameraTrackingData::CameraScrollType::Ellipse:
 			{
-				this->boundCameraByEllipses();
+				cameraPosition = this->boundCameraByEllipses();
 				break;
 			}
 		}
 	}
+
+	// Prevent camera from leaving level bounds
+	cameraPosition.x = MathUtils::clamp(cameraPosition.x, this->cameraBounds.getMinX() + visibleSize.width / 2.0f, this->cameraBounds.getMaxX() - visibleSize.width / 2.0f);
+	cameraPosition.y = MathUtils::clamp(cameraPosition.y, this->cameraBounds.getMinY() + visibleSize.height / 2.0f, this->cameraBounds.getMaxY() - visibleSize.height / 2.0f);
+
+	this->setCameraPositionReal(cameraPosition);
 }
 
 float GameCamera::getCameraDistance()
@@ -201,27 +210,26 @@ void GameCamera::setBounds(Rect bounds)
 	this->cameraBounds = bounds;
 }
 
-void GameCamera::boundCameraByEllipses()
+Vec2 GameCamera::boundCameraByEllipses()
 {
-	if (this->targetStack.size() > 0)
+	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
+
+	if (!this->targetStack.empty())
 	{
 		CameraTrackingData trackingData = this->targetStack.top();
-
-		Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
 		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? trackingData.target->getPosition() : trackingData.customPositionFunction();
-		Size visibleSize = Director::getInstance()->getVisibleSize();
 
 		// Don't even bother if the input data is bad
 		if (trackingData.scrollOffset.x <= 0.0f || trackingData.scrollOffset.y <= 0.0f)
 		{
-			return;
+			return cameraPosition;
 		}
 
 		// Bounds check first
 		if (((targetPosition.x - cameraPosition.x) * (targetPosition.x - cameraPosition.x)) / (trackingData.scrollOffset.x * trackingData.scrollOffset.x) +
 			((targetPosition.y - cameraPosition.y) * (targetPosition.y - cameraPosition.y)) / (trackingData.scrollOffset.y * trackingData.scrollOffset.y) <= 1.0f)
 		{
-			return;
+			return cameraPosition;
 		}
 
 		Vec2 idealPosition = AlgoUtils::pointOnEllipse(cameraPosition, trackingData.scrollOffset.x, trackingData.scrollOffset.y, targetPosition);
@@ -245,24 +253,19 @@ void GameCamera::boundCameraByEllipses()
 		{
 			cameraPosition.y = idealPosition.y;
 		}
-
-		// Prevent camera from leaving level bounds
-		cameraPosition.x = MathUtils::clamp(cameraPosition.x, this->cameraBounds.getMinX() + visibleSize.width / 2.0f, this->cameraBounds.getMaxX() - visibleSize.width / 2.0f);
-		cameraPosition.y = MathUtils::clamp(cameraPosition.y, this->cameraBounds.getMinY() + visibleSize.height / 2.0f, this->cameraBounds.getMaxY() - visibleSize.height / 2.0f);
-
-		this->setCameraPositionReal(cameraPosition);
 	}
+
+	return cameraPosition;
 }
 
-void GameCamera::boundCameraByRectangle()
+Vec2 GameCamera::boundCameraByRectangle()
 {
-	if (this->targetStack.size() > 0)
+	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
+
+	if (!this->targetStack.empty())
 	{
 		CameraTrackingData trackingData = this->targetStack.top();
-
-		Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
 		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? trackingData.target->getPosition() : trackingData.customPositionFunction();
-		Size visibleSize = Director::getInstance()->getVisibleSize();
 
 		// Handle camera scrolling from target traveling past scroll distance
 		if (cameraPosition.x < targetPosition.x - trackingData.scrollOffset.x)
@@ -322,13 +325,9 @@ void GameCamera::boundCameraByRectangle()
 				cameraPosition.y = cameraPosition.y + distance * trackingData.followSpeed.y;
 			}
 		}
-
-		// Prevent camera from leaving level bounds
-		cameraPosition.x = MathUtils::clamp(cameraPosition.x, this->cameraBounds.getMinX() + visibleSize.width / 2.0f, this->cameraBounds.getMaxX() - visibleSize.width / 2.0f);
-		cameraPosition.y = MathUtils::clamp(cameraPosition.y, this->cameraBounds.getMinY() + visibleSize.height / 2.0f, this->cameraBounds.getMaxY() - visibleSize.height / 2.0f);
-
-		this->setCameraPositionReal(cameraPosition);
 	}
+
+	return cameraPosition;
 }
 
 void GameCamera::setTarget(CameraTrackingData trackingData)
