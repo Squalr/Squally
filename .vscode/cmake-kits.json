@@ -1,0 +1,9 @@
+[
+    {
+        "name": "Clang 7.0.1",
+        "compilers": {
+            "CC": "/usr/local/opt/llvm/bin/clang",
+            "CCX": "/usr/local/opt/llvm/bin/clang++"
+        }
+    }
+]
