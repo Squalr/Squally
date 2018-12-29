@@ -105,6 +105,16 @@ LocalizedLabel* LocalizedLabel::clone()
 	return LocalizedLabel::create(this->fontStyle, this->fontSize, this->localizedString->clone());
 }
 
+float LocalizedLabel::getFontSize()
+{
+	return this->resolvedFontSize;
+}
+
+std::string LocalizedLabel::getFont()
+{
+	return this->resolvedFontPath;
+}
+
 void LocalizedLabel::initializeStringToLocale(std::string newString)
 {
 	this->resolvedString = newString;

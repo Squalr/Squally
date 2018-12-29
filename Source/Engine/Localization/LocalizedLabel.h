@@ -41,6 +41,8 @@ public:
 	);
 
 	LocalizedLabel* clone();
+	float getFontSize();
+	std::string getFont();
 
 private:
 	LocalizedLabel(

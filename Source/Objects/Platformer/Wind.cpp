@@ -12,6 +12,8 @@
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Empty.h"
+
 using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_WIND_SPEED_Y 1
@@ -58,7 +60,7 @@ Wind::~Wind()
 
 void Wind::registerHackables()
 {
-	this->windDataSpeedY = HackableData::create("Y Position", &this->windSpeed.y, typeid(this->windSpeed.y), UIResources::Menus_Icons_AlchemyPot);
+	this->windDataSpeedY = HackableData::create(&this->windSpeed.y, LocaleStrings::Empty::create(), typeid(this->windSpeed.y), UIResources::Menus_Icons_AlchemyPot);
 	this->registerData(this->windDataSpeedY);
 }
 

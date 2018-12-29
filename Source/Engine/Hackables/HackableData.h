@@ -5,17 +5,18 @@
 #include "Engine/Utils/HackUtils.h"
 
 class HackableCode;
+class LocalizedString;
 
 class HackableData : public HackableAttribute
 {
 public:
-	static HackableData* create(std::string name, void* dataAddress, const std::type_info& dataTypeInfo, std::string iconResource);
+	static HackableData* create(void* dataAddress, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource);
 
-	std::string variableName;
+	LocalizedString* variableName;
 	void* dataPointer;
 	HackUtils::DataType dataType;
 
 private:
-	HackableData(std::string name, void* dataAddress, const std::type_info& dataTypeInfo, std::string iconResource);
+	HackableData(void* dataAddress, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource);
 	virtual ~HackableData();
 };
