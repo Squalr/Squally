@@ -83,8 +83,10 @@
 	#define ASM3(asm_literal1, asm_literal2, asm_literal3) \
 		ASM_GCC(#asm_literal1 ", " #asm_literal2 ", " #asm_literal3)
 
+	// Clang chokes on intel syntax when dealing with binding C variables -- just use AT&T syntax for this
 	#define ASM_MOV_REG_VAR(register, variable) \
-		__asm__ __volatile__(".intel_syntax noprefix; mov %0, " EXPAND_AND_QUOTE(register) " ; .att_syntax prefix" : "=rm"(variable) : )
+		__asm__ __volatile__("mov %%" EXPAND_AND_QUOTE(register) ", %0"  : "=rm"(variable) : )
+		//// __asm__ __volatile__(".intel_syntax noprefix; mov %0, " EXPAND_AND_QUOTE(register) " ; .att_syntax prefix" : "=rm"(variable) : )
 
 	#define ASM_MOV_VAR_REG(variable, register) \
 		__asm__ __volatile__(".intel_syntax noprefix; .att_syntax prefix" : : "r"(variable))
