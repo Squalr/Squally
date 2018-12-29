@@ -162,47 +162,45 @@ std::string HackUtils::toBinary4(int value)
 	return binaryString;
 }
 
-HackUtils::DataType HackUtils::stdTypeToDataType(const std::type_info* typeInfo)
+HackUtils::DataType HackUtils::stdTypeToDataType(const std::type_info& dataTypeInfo)
 {
-	std::string typeName = typeInfo->name();
-
-	if (typeName == "char")
+	if (dataTypeInfo == typeid(unsigned char))
 	{
 		return HackUtils::DataType::Byte;
 	}
-	else if (typeName == "signed char")
+	else if (dataTypeInfo == typeid(char))
 	{
 		return HackUtils::DataType::SByte;
 	}
-	else if (typeName == "short")
+	else if (dataTypeInfo == typeid(short))
 	{
 		return HackUtils::DataType::Int16;
 	}
-	else if (typeName == "unsigned short")
+	else if (dataTypeInfo == typeid(unsigned short))
 	{
 		return HackUtils::DataType::UInt16;
 	}
-	else if (typeName == "int")
+	else if (dataTypeInfo == typeid(int))
 	{
 		return HackUtils::DataType::Int32;
 	}
-	else if (typeName == "unsigned int")
+	else if (dataTypeInfo == typeid(unsigned int))
 	{
 		return HackUtils::DataType::UInt32;
 	}
-	else if (typeName == "long")
+	else if (dataTypeInfo == typeid(long))
 	{
 		return HackUtils::DataType::Int64;
 	}
-	else if (typeName == "unsigned long")
+	else if (dataTypeInfo == typeid(unsigned long))
 	{
 		return HackUtils::DataType::UInt64;
 	}
-	else if (typeName == "float")
+	else if (dataTypeInfo == typeid(float))
 	{
 		return HackUtils::DataType::Single;
 	}
-	else if (typeName == "double")
+	else if (dataTypeInfo == typeid(double))
 	{
 		return HackUtils::DataType::Double;
 	}

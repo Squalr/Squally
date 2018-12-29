@@ -95,7 +95,7 @@ void MechanicalFlail::update(float dt)
 
 void MechanicalFlail::registerHackables()
 {
-	this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, &typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
+	this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	this->registerData(this->hackableDataTargetAngle);
 
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =

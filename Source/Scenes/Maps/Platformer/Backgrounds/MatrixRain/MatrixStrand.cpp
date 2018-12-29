@@ -34,6 +34,7 @@ MatrixStrand::MatrixStrand(int strandIndex)
 {
 	this->updateAction = nullptr;
 	this->letters = std::vector<MatrixLetter*>();
+	this->letterCount = 0;
 
 	for (int index = 0; index < MatrixStrand::maxLetterCount; index++)
 	{

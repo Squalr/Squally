@@ -91,7 +91,7 @@ void PendulumBlade::update(float dt)
 
 void PendulumBlade::registerHackables()
 {
-	this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, &typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
+	this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	this->registerData(this->hackableDataTargetAngle);
 
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
@@ -131,7 +131,7 @@ void PendulumBlade::swingToAngle(float angle)
 	ASM(push EBX);
 	ASM_MOV_REG_VAR(eax, angleInt);
 
-	HACKABLE_CODE_BEGIN( LOCAL_FUNC_ID_SWING );
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SWING);
 	ASM(mov EBX, EAX);
 	ASM_NOP5();
 	HACKABLE_CODE_END();
