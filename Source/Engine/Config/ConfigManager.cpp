@@ -220,7 +220,7 @@ ConfigManager::ResolutionSetting ConfigManager::getResolution()
 
 	if (!GameUtils::keyExists(&instance->valueMap, ConfigManager::ResolutionKey))
 	{
-		return ResolutionSetting::R1920x1080;
+		return ResolutionSetting::R1080x768;
 	}
 	else
 	{
@@ -234,7 +234,7 @@ bool ConfigManager::getIsFullScreen()
 
 	if (!GameUtils::keyExists(&instance->valueMap, ConfigManager::FullScreenKey))
 	{
-		return true;
+		return false;
 	}
 	else
 	{
