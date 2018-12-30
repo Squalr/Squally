@@ -75,6 +75,7 @@ void SpeechBubble::runDialogue(LocalizedString* localizedString, Direction direc
 	this->text->runAction(FadeTo::create(0.5f, 255));
 
 	this->text->setLocalizedString(localizedString, Size(320.0f, 0.0f));
+	this->text->runTypeWriterEffect();
 
 	Size textSize = this->text->getContentSize();
 	std::vector<Vec2> trianglePoints = std::vector<Vec2>();
