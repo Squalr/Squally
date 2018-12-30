@@ -48,8 +48,8 @@ protected:
 
 	cocos2d::ui::ScrollView* scrollView;
 	float marginSize;
+	LocalizedLabel* referenceLabel;
 
-	static LocalizedLabel* ReferenceLabel;
 	static const cocos2d::Size Padding;
 
 private:

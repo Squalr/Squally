@@ -16,7 +16,6 @@
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
-LocalizedLabel* TextWindow::ReferenceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::Empty::create());
 const Size TextWindow::Padding = Size(8.0f, 4.0f);
 const float TextWindow::TitleBarHeight = 48.0f;
 const Color4B TextWindow::DefaultTitleBarColor = Color4B(59, 92, 97, 192);
@@ -34,6 +33,7 @@ TextWindow* TextWindow::create(LocalizedString* windowTitle, Size initWindowSize
 TextWindow::TextWindow(LocalizedString* windowTitle, Size initWindowSize, Color3B initFontColor)
 {
 	this->displayTextElements = std::vector<RichElement*>();
+	this->referenceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::Empty::create());
 
 	this->marginSize = 0;
 	this->windowSize = initWindowSize;
@@ -58,6 +58,7 @@ TextWindow::TextWindow(LocalizedString* windowTitle, Size initWindowSize, Color3
 
 	this->scrollView->addChild(this->displayedText);
 
+	this->addChild(this->referenceLabel);
 	this->addChild(this->background);
 	this->addChild(this->titleBar);
 	this->addChild(this->windowTitle);
@@ -119,7 +120,7 @@ void TextWindow::setTitle(std::string text)
 
 void TextWindow::insertText(std::string text, Color3B color)
 {
-	RichElement* element = RichElementText::create(0, color, 0xFF, text, TextWindow::ReferenceLabel->getFont(), TextWindow::ReferenceLabel->getFontSize());
+	RichElement* element = RichElementText::create(0, color, 0xFF, text, this->referenceLabel->getFont(), this->referenceLabel->getFontSize());
 
 	this->displayTextElements.push_back(element);
 	this->displayedText->pushBackElement(element);

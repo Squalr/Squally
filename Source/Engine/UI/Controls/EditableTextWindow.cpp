@@ -137,7 +137,7 @@ void EditableTextWindow::focus()
 
 void EditableTextWindow::insertNewline()
 {
-	RichElement* lineNumberText = RichElementText::create(0, EditableTextWindow::lineNumberColor, 0xFF, std::to_string(this->currentLineNumber++), TextWindow::ReferenceLabel->getFont(), TextWindow::ReferenceLabel->getFontSize());
+	RichElement* lineNumberText = RichElementText::create(0, EditableTextWindow::lineNumberColor, 0xFF, std::to_string(this->currentLineNumber++), this->referenceLabel->getFont(), this->referenceLabel->getFontSize());
 	RichElement* lineNumberNewLine = RichElementNewLine::create(0, this->fontColor, 0xFF);
 
 	this->lineNumberElements.push_back(lineNumberText);
