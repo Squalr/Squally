@@ -7,6 +7,7 @@
 #include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
 class SmartAnimationNode;
+class SpeechBubble;
 
 class PlatformerEntity : public CollisionObject
 {
@@ -27,6 +28,7 @@ protected:
 
 	virtual void initializeCollisionEvents();
 
+	SpeechBubble* speechBubble;
 	SmartAnimationNode* animationNode;
 	cocos2d::Vec2 movement;
 	cocos2d::Vec2 spawnCoords;
