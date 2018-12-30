@@ -8,10 +8,9 @@
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
-#include "Resources/BackgroundResources.h"
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
-#include "Resources/UIResources.h"
+#include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
 
@@ -30,11 +29,9 @@ Avatars::Avatars()
 	this->frameEnemy = Sprite::create(HexusResources::AvatarFrame);
 	this->avatarPlayer = Node::create();
 	this->avatarEnemy = Node::create();
-	//// this->avatarPlayer->addChild(Sprite::create(BackgroundResources::Jungle_Background));
 	this->playerSprite = SmartAnimationNode::create(EntityResources::Squally_Animations);
 
-	playerSprite->setScale(0.25f);
-	playerSprite->setPosition(Vec2(-64.0f, -32.0f));
+	playerSprite->setPosition(Vec2(-24.0f, -48.0f));
 	playerSprite->playAnimation(true);
 
 	DrawNode* stencilLeft = DrawNode::create();
@@ -77,11 +74,18 @@ void Avatars::initializePositions()
 void Avatars::initializeEnemyAvatar(HexusOpponentData* opponentData)
 {
 	this->avatarEnemy->removeAllChildren();
+	GameUtils::changeParent(this->playerSprite, nullptr, true);
+
 	this->opponentSprite = SmartAnimationNode::create(opponentData->animationResourceFile);
+
 	this->avatarEnemy->addChild(Sprite::create(opponentData->backgroundResourceFile));
 	this->avatarEnemy->addChild(this->opponentSprite);
 
+	this->avatarPlayer->addChild(Sprite::create(opponentData->backgroundResourceFile));
+	GameUtils::changeParent(this->playerSprite, this->avatarPlayer, true);
+
 	this->opponentSprite->playAnimation(true);
+	this->playerSprite->playAnimation(true);
 
 	this->opponentSprite->setScale(opponentData->animationScale);
 	this->opponentSprite->setPosition(opponentData->avatarOffset);

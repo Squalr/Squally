@@ -67,20 +67,20 @@ void EditableTextWindow::onEnter()
 
 void EditableTextWindow::initializePositions()
 {
-	this->lineNumbers->setPosition(Vec2(TextWindow::padding.width,
-		this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
-	this->editableText->setPosition(Vec2(this->marginSize + TextWindow::padding.width,
-		this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
+	this->lineNumbers->setPosition(Vec2(TextWindow::Padding.width,
+		this->scrollView->getInnerContainerSize().height - TextWindow::Padding.height));
+	this->editableText->setPosition(Vec2(this->marginSize + TextWindow::Padding.width,
+		this->scrollView->getInnerContainerSize().height - TextWindow::Padding.height));
 
 	this->lineNumbers->setContentSize(Size(
-		windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f,
-		windowSize.height - TextWindow::padding.height * 2.0f));
+		windowSize.width - this->marginSize - TextWindow::Padding.width * 2.0f,
+		windowSize.height - TextWindow::Padding.height * 2.0f));
 	this->editableText->setContentSize(Size(
-		windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f,
-		windowSize.height - TextWindow::padding.height * 2.0f));
+		windowSize.width - this->marginSize - TextWindow::Padding.width * 2.0f,
+		windowSize.height - TextWindow::Padding.height * 2.0f));
 	this->editableText->setDimensions(
-		windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f,
-		windowSize.height - TextWindow::padding.height * 2.0f);
+		windowSize.width - this->marginSize - TextWindow::Padding.width * 2.0f,
+		windowSize.height - TextWindow::Padding.height * 2.0f);
 
 	TextWindow::initializePositions();
 }
@@ -137,7 +137,7 @@ void EditableTextWindow::focus()
 
 void EditableTextWindow::insertNewline()
 {
-	RichElement* lineNumberText = RichElementText::create(0, EditableTextWindow::lineNumberColor, 0xFF, std::to_string(this->currentLineNumber++), Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+	RichElement* lineNumberText = RichElementText::create(0, EditableTextWindow::lineNumberColor, 0xFF, std::to_string(this->currentLineNumber++), TextWindow::ReferenceLabel->getFont(), TextWindow::ReferenceLabel->getFontSize());
 	RichElement* lineNumberNewLine = RichElementNewLine::create(0, this->fontColor, 0xFF);
 
 	this->lineNumberElements.push_back(lineNumberText);

@@ -7,8 +7,12 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Localization/Localization.h"
 
+#include "Resources/FontResources.h"
+
+#include "Strings/Empty.h"
+
 const std::string LocalizedLabel::ScheduleKeyTypeWriterEffect = "SCHEDULE_TYPE_WRITER_EFFECT";
-const float LocalizedLabel::DefaultTypeSpeed = 0.04f;
+const float LocalizedLabel::DefaultTypeSpeed = 0.06f;
 
 using namespace cocos2d;
 
@@ -34,7 +38,7 @@ LocalizedLabel* LocalizedLabel::create(
 	TextHAlignment hAlignment,
 	TextVAlignment vAlignment)
 {
-	LocalizedLabel* label = new LocalizedLabel(fontStyle, fontSize, dimensions, hAlignment, vAlignment);
+	LocalizedLabel* label = new LocalizedLabel(fontStyle, fontSize, LocaleStrings::Empty::create(), dimensions, hAlignment, vAlignment);
 
 	label->autorelease();
 
@@ -51,22 +55,13 @@ LocalizedLabel::LocalizedLabel(
 {
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
-	this->localizedString = nullptr;
+	this->localizedString = localizedString;
 	this->typeWriterFinishedCallback = nullptr;
 	this->typeWriterSpeed = LocalizedLabel::DefaultTypeSpeed;
 
 	this->setOverflow(Label::Overflow::RESIZE_HEIGHT);
 
 	this->setLocalizedString(localizedString);
-}
-
-LocalizedLabel::LocalizedLabel(
-	FontStyle fontStyle,
-	FontSize fontSize,
-	const Size& dimensions,
-	TextHAlignment hAlignment,
-	TextVAlignment vAlignment) : LocalizedLabel(fontStyle, fontSize, nullptr, dimensions, hAlignment, vAlignment)
-{
 }
 
 LocalizedLabel::~LocalizedLabel()
@@ -145,42 +140,62 @@ void LocalizedLabel::initializeStringToLocale(std::string newString)
 		default:
 		case FontStyle::Main:
 		{
-			this->resolvedFontPath = Localization::getMainFont();
+			this->resolvedFontPath = LocalizedLabel::getMainFont();
 			break;
 		}
 		case FontStyle::Coding:
 		{
-			this->resolvedFontPath = Localization::getCodingFont();
+			this->resolvedFontPath = LocalizedLabel::getCodingFont();
 			break;
 		}
 		case FontStyle::Pixel:
 		{
-			this->resolvedFontPath = Localization::getPixelFont();
+			this->resolvedFontPath = LocalizedLabel::getPixelFont();
 			break;
 		}
 	}
 
 	switch (this->fontSize)
 	{
-		default:
-		case FontSize::P:
+		case FontSize::M1:
 		{
-			this->resolvedFontSize = Localization::getFontSizeP(this->resolvedFontPath);
+			this->resolvedFontSize = LocalizedLabel::getFontSizeM1(this->resolvedFontPath);
+			break;
+		}
+		case FontSize::M2:
+		{
+			this->resolvedFontSize = LocalizedLabel::getFontSizeM2(this->resolvedFontPath);
+			break;
+		}
+		case FontSize::M3:
+		{
+			this->resolvedFontSize = LocalizedLabel::getFontSizeM3(this->resolvedFontPath);
 			break;
 		}
 		case FontSize::H1:
 		{
-			this->resolvedFontSize = Localization::getFontSizeH1(this->resolvedFontPath);
+			this->resolvedFontSize = LocalizedLabel::getFontSizeH1(this->resolvedFontPath);
 			break;
 		}
 		case FontSize::H2:
 		{
-			this->resolvedFontSize = Localization::getFontSizeH2(this->resolvedFontPath);
+			this->resolvedFontSize = LocalizedLabel::getFontSizeH2(this->resolvedFontPath);
 			break;
 		}
 		case FontSize::H3:
 		{
-			this->resolvedFontSize = Localization::getFontSizeH3(this->resolvedFontPath);
+			this->resolvedFontSize = LocalizedLabel::getFontSizeH3(this->resolvedFontPath);
+			break;
+		}
+		default:
+		case FontSize::P:
+		{
+			this->resolvedFontSize = LocalizedLabel::getFontSizeP(this->resolvedFontPath);
+			break;
+		}
+		case FontSize::Small:
+		{
+			this->resolvedFontSize = LocalizedLabel::getFontSizeSmall(this->resolvedFontPath);
 			break;
 		}
 	}
@@ -250,4 +265,179 @@ void LocalizedLabel::runTypeWriterEffect()
 void LocalizedLabel::setTypeWriterFinishedCallback(std::function<void()> callback)
 {
 	this->typeWriterFinishedCallback = callback;
+}
+
+std::string LocalizedLabel::getPixelFont()
+{
+	switch (Localization::getLanguage())
+	{
+		default:
+		case LanguageType::ENGLISH:
+		case LanguageType::CHINESE_SIMPLIFIED:
+		case LanguageType::CHINESE_TRADITIONAL:
+		case LanguageType::JAPANESE:
+		case LanguageType::KOREAN:
+		{
+			return FontResources::Pixel_Zpix;
+		}
+		case LanguageType::ARABIC:
+		case LanguageType::BULGARIAN:
+		case LanguageType::CZECH:
+		case LanguageType::DANISH:
+		case LanguageType::DUTCH:
+		case LanguageType::FINNISH:
+		case LanguageType::FRENCH:
+		case LanguageType::GERMAN:
+		case LanguageType::GREEK:
+		case LanguageType::HUNGARIAN:
+		case LanguageType::ITALIAN:
+		case LanguageType::NORWEGIAN:
+		case LanguageType::POLISH:
+		case LanguageType::PORTUGUESE:
+		case LanguageType::PORTUGUESE_BRAZIL:
+		case LanguageType::ROMANIAN:
+		case LanguageType::RUSSIAN:
+		case LanguageType::SPANISH:
+		case LanguageType::SPANISH_LATIN_AMERICAN:
+		case LanguageType::SWEDISH:
+		case LanguageType::THAI:
+		case LanguageType::TURKISH:
+		case LanguageType::UKRAINIAN:
+		case LanguageType::VIETNAMESE:
+		{
+			// TODO
+			return FontResources::Pixel_Zpix;
+		}
+	}
+}
+
+std::string LocalizedLabel::getMainFont()
+{
+	switch (Localization::getLanguage())
+	{
+		default:
+		case LanguageType::ENGLISH:
+		{
+			return FontResources::Montserrat_Medium;
+		}
+		case LanguageType::CHINESE_SIMPLIFIED:
+		case LanguageType::CHINESE_TRADITIONAL:
+		case LanguageType::JAPANESE:
+		case LanguageType::KOREAN:
+		case LanguageType::ARABIC:
+		case LanguageType::BULGARIAN:
+		case LanguageType::CZECH:
+		case LanguageType::DANISH:
+		case LanguageType::DUTCH:
+		case LanguageType::FINNISH:
+		case LanguageType::FRENCH:
+		case LanguageType::GERMAN:
+		case LanguageType::GREEK:
+		case LanguageType::HUNGARIAN:
+		case LanguageType::ITALIAN:
+		case LanguageType::NORWEGIAN:
+		case LanguageType::POLISH:
+		case LanguageType::PORTUGUESE:
+		case LanguageType::PORTUGUESE_BRAZIL:
+		case LanguageType::ROMANIAN:
+		case LanguageType::RUSSIAN:
+		case LanguageType::SPANISH:
+		case LanguageType::SPANISH_LATIN_AMERICAN:
+		case LanguageType::SWEDISH:
+		case LanguageType::THAI:
+		case LanguageType::TURKISH:
+		case LanguageType::UKRAINIAN:
+		case LanguageType::VIETNAMESE:
+		{
+			// TODO
+			return FontResources::Montserrat_Medium;
+		}
+	}
+}
+
+std::string LocalizedLabel::getCodingFont()
+{
+	switch (Localization::getLanguage())
+	{
+		default:
+		case LanguageType::ENGLISH:
+		{
+			return FontResources::UbuntuMono_Bold;
+		}
+		case LanguageType::CHINESE_SIMPLIFIED:
+		case LanguageType::CHINESE_TRADITIONAL:
+		case LanguageType::JAPANESE:
+		case LanguageType::KOREAN:
+		{
+			return FontResources::Ubuntu_WenQuanYiMicroHeiMono_02;
+		}
+		case LanguageType::ARABIC:
+		case LanguageType::BULGARIAN:
+		case LanguageType::CZECH:
+		case LanguageType::DANISH:
+		case LanguageType::DUTCH:
+		case LanguageType::FINNISH:
+		case LanguageType::FRENCH:
+		case LanguageType::GERMAN:
+		case LanguageType::GREEK:
+		case LanguageType::HUNGARIAN:
+		case LanguageType::ITALIAN:
+		case LanguageType::NORWEGIAN:
+		case LanguageType::POLISH:
+		case LanguageType::PORTUGUESE:
+		case LanguageType::PORTUGUESE_BRAZIL:
+		case LanguageType::ROMANIAN:
+		case LanguageType::RUSSIAN:
+		case LanguageType::SPANISH:
+		case LanguageType::SPANISH_LATIN_AMERICAN:
+		case LanguageType::SWEDISH:
+		case LanguageType::THAI:
+		case LanguageType::TURKISH:
+		case LanguageType::UKRAINIAN:
+		case LanguageType::VIETNAMESE:
+		{
+			// TODO
+			return FontResources::UbuntuMono_Bold;
+		}
+	}
+}
+
+float LocalizedLabel::getFontSizeM1(std::string fontResource)
+{
+	return 80.0f;
+}
+
+float LocalizedLabel::getFontSizeM2(std::string fontResource)
+{
+	return 64.0f;
+}
+
+float LocalizedLabel::getFontSizeM3(std::string fontResource)
+{
+	return 48.0f;
+}
+
+float LocalizedLabel::getFontSizeH1(std::string fontResource)
+{
+	return 32.0f;
+}
+
+float LocalizedLabel::getFontSizeH2(std::string fontResource)
+{
+	return 28.0f;
+}
+
+float LocalizedLabel::getFontSizeH3(std::string fontResource)
+{
+	return 24.0f;
+}
+
+float LocalizedLabel::getFontSizeP(std::string fontResource)
+{
+	return 20.0f;
+}
+
+float LocalizedLabel::getFontSizeSmall(std::string fontResource)
+{
+	return 16.0f;
 }

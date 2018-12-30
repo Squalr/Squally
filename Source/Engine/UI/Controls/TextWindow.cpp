@@ -11,13 +11,16 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/UI/Controls/MenuLabel.h"
 
+#include "Strings/Empty.h"
+
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
-const Size TextWindow::padding = Size(8.0f, 4.0f);
-const float TextWindow::titleBarHeight = 48.0f;
-const Color4B TextWindow::defaultTitleBarColor = Color4B(59, 92, 97, 192);
-const Color4B TextWindow::defaultWindowColor = Color4B(39, 58, 61, 192);
+LocalizedLabel* TextWindow::ReferenceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::Empty::create());
+const Size TextWindow::Padding = Size(8.0f, 4.0f);
+const float TextWindow::TitleBarHeight = 48.0f;
+const Color4B TextWindow::DefaultTitleBarColor = Color4B(59, 92, 97, 192);
+const Color4B TextWindow::DefaultWindowColor = Color4B(39, 58, 61, 192);
 
 TextWindow* TextWindow::create(LocalizedString* windowTitle, Size initWindowSize, Color3B initFontColor)
 {
@@ -35,8 +38,8 @@ TextWindow::TextWindow(LocalizedString* windowTitle, Size initWindowSize, Color3
 	this->marginSize = 0;
 	this->windowSize = initWindowSize;
 
-	this->windowColor = TextWindow::defaultWindowColor;
-	this->titleBarColor = TextWindow::defaultTitleBarColor;
+	this->windowColor = TextWindow::DefaultWindowColor;
+	this->titleBarColor = TextWindow::DefaultTitleBarColor;
 
 	this->scrollView = ScrollView::create();
 	this->displayedText = RichText::create();
@@ -45,7 +48,7 @@ TextWindow::TextWindow(LocalizedString* windowTitle, Size initWindowSize, Color3
 	this->windowTitle = MenuLabel::create(LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, windowTitle));
 
 	this->background->addChild(LayerColor::create(this->windowColor, this->windowSize.width, this->windowSize.height));
-	this->titleBar->addChild(LayerColor::create(this->titleBarColor, this->windowSize.width, TextWindow::titleBarHeight));
+	this->titleBar->addChild(LayerColor::create(this->titleBarColor, this->windowSize.width, TextWindow::TitleBarHeight));
 
 	this->scrollView->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->scrollView->setDirection(ScrollView::Direction::BOTH);
@@ -78,13 +81,13 @@ void TextWindow::initializePositions()
 
 	this->scrollView->setContentSize(windowSize);
 	this->scrollView->setInnerContainerSize(Size(windowSize.width, windowSize.height * 2));
-	this->displayedText->setContentSize(Size(windowSize.width - this->marginSize - TextWindow::padding.width * 2.0f, windowSize.height - TextWindow::padding.height * 2.0f));
+	this->displayedText->setContentSize(Size(windowSize.width - this->marginSize - TextWindow::Padding.width * 2.0f, windowSize.height - TextWindow::Padding.height * 2.0f));
 
 	this->scrollView->setPosition(Vec2(0.0f, 0.0f));
 	this->background->setPosition(-this->windowSize.width / 2.0f, -this->windowSize.height / 2.0f);
-	this->displayedText->setPosition(Vec2(this->marginSize + TextWindow::padding.width,this->scrollView->getInnerContainerSize().height - TextWindow::padding.height));
+	this->displayedText->setPosition(Vec2(this->marginSize + TextWindow::Padding.width,this->scrollView->getInnerContainerSize().height - TextWindow::Padding.height));
 	this->titleBar->setPosition(-this->windowSize.width / 2.0f, this->windowSize.height / 2.0f);
-	this->windowTitle->setPosition(0.0f, this->windowSize.height / 2 + TextWindow::titleBarHeight / 2.0f);
+	this->windowTitle->setPosition(0.0f, this->windowSize.height / 2 + TextWindow::TitleBarHeight / 2.0f);
 }
 
 void TextWindow::initializeListeners()
@@ -105,7 +108,7 @@ void TextWindow::setTitleBarColor(Color4B newTitleBarColor)
 	this->titleBarColor = newTitleBarColor;
 	this->titleBar->removeAllChildren();
 	this->titleBar->addChild(LayerColor::create(this->titleBarColor, this->windowSize.width,
-			TextWindow::titleBarHeight));
+			TextWindow::TitleBarHeight));
 	this->initializePositions();
 }
 
@@ -116,7 +119,7 @@ void TextWindow::setTitle(std::string text)
 
 void TextWindow::insertText(std::string text, Color3B color)
 {
-	RichElement* element = RichElementText::create(0, color, 0xFF, text, Localization::getCodingFont(), Localization::getFontSizeH3(Localization::getCodingFont()));
+	RichElement* element = RichElementText::create(0, color, 0xFF, text, TextWindow::ReferenceLabel->getFont(), TextWindow::ReferenceLabel->getFontSize());
 
 	this->displayTextElements.push_back(element);
 	this->displayedText->pushBackElement(element);

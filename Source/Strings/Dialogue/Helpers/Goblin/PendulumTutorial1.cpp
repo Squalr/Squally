@@ -60,7 +60,7 @@ namespace LocaleStrings
 
 	std::string PendulumTutorial1::getStringEn()
 	{
-		return "Hey kid! There's no way we're gonna be able to get through here. You're going to have to do that thing again.";
+		return "Hey kid! There's no way we're gonna be able to get through here. You're going to have to use your powers again.";
 	}
 
 	std::string PendulumTutorial1::getStringEs()

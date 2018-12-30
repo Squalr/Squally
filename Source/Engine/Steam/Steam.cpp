@@ -82,6 +82,11 @@ LanguageType Steam::getLanguage()
 
 	ISteamApps* steamApps = SteamApps();
 
+	if (steamApps == nullptr)
+	{
+		return LanguageType::ENGLISH;
+	}
+
 	std::string language = steamApps->GetCurrentGameLanguage();
 
 	if (language == "arabic")
