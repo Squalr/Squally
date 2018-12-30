@@ -1,7 +1,14 @@
 #include "LocalizedLabel.h"
 
+#include "cocos/2d/CCSprite.h"
+
+#include "2d/CCActionInterval.h"
+
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Localization/Localization.h"
+
+const std::string LocalizedLabel::ScheduleKeyTypeWriterEffect = "SCHEDULE_TYPE_WRITER_EFFECT";
+const float LocalizedLabel::DefaultTypeSpeed = 0.04f;
 
 using namespace cocos2d;
 
@@ -44,15 +51,13 @@ LocalizedLabel::LocalizedLabel(
 {
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
-	this->localizedString = localizedString;
+	this->localizedString = nullptr;
+	this->typeWriterFinishedCallback = nullptr;
+	this->typeWriterSpeed = LocalizedLabel::DefaultTypeSpeed;
 
-	this->initializeStringToLocale(localizedString->getString());
+	this->setOverflow(Label::Overflow::RESIZE_HEIGHT);
 
-	localizedString->setOnLocaleChangeCallback(CC_CALLBACK_1(LocalizedLabel::initializeStringToLocale, this));
-
-	this->addChild(this->localizedString); // Just adding this to retain it -- this has no visuals
-
-	this->initWithTTF(localizedString->getString(), this->resolvedFontPath, this->resolvedFontSize, dimensions, hAlignment, vAlignment);
+	this->setLocalizedString(localizedString);
 }
 
 LocalizedLabel::LocalizedLabel(
@@ -60,15 +65,8 @@ LocalizedLabel::LocalizedLabel(
 	FontSize fontSize,
 	const Size& dimensions,
 	TextHAlignment hAlignment,
-	TextVAlignment vAlignment)
+	TextVAlignment vAlignment) : LocalizedLabel(fontStyle, fontSize, nullptr, dimensions, hAlignment, vAlignment)
 {
-	this->fontStyle = fontStyle;
-	this->fontSize = fontSize;
-	this->localizedString = nullptr;
-
-	this->initializeStringToLocale("");
-
-	this->initWithTTF("", this->resolvedFontPath, this->resolvedFontSize, dimensions, hAlignment, vAlignment);
 }
 
 LocalizedLabel::~LocalizedLabel()
@@ -105,6 +103,29 @@ LocalizedLabel* LocalizedLabel::clone()
 	return LocalizedLabel::create(this->fontStyle, this->fontSize, this->localizedString->clone());
 }
 
+void LocalizedLabel::setLocalizedString(LocalizedString* localizedString, const Size& dimensions, TextHAlignment hAlignment, TextVAlignment vAlignment)
+{
+	if (this->localizedString != nullptr)
+	{
+		this->removeChild(this->localizedString);
+	}
+
+	this->localizedString = localizedString;
+
+	if (this->localizedString == nullptr)
+	{
+		this->initializeStringToLocale("");
+		return;
+	}
+
+	this->initializeStringToLocale(this->localizedString->getString());
+	this->localizedString->setOnLocaleChangeCallback(CC_CALLBACK_1(LocalizedLabel::initializeStringToLocale, this));
+
+	this->addChild(this->localizedString); // Just adding this to retain it -- this has no visuals
+
+	this->initWithTTF(this->localizedString->getString(), this->resolvedFontPath, this->resolvedFontSize, dimensions, hAlignment, vAlignment);
+}
+
 float LocalizedLabel::getFontSize()
 {
 	return this->resolvedFontSize;
@@ -123,34 +144,110 @@ void LocalizedLabel::initializeStringToLocale(std::string newString)
 	{
 		default:
 		case FontStyle::Main:
+		{
 			this->resolvedFontPath = Localization::getMainFont();
 			break;
+		}
 		case FontStyle::Coding:
+		{
 			this->resolvedFontPath = Localization::getCodingFont();
 			break;
+		}
 		case FontStyle::Pixel:
+		{
 			this->resolvedFontPath = Localization::getPixelFont();
 			break;
+		}
 	}
 
 	switch (this->fontSize)
 	{
 		default:
 		case FontSize::P:
+		{
 			this->resolvedFontSize = Localization::getFontSizeP(this->resolvedFontPath);
 			break;
+		}
 		case FontSize::H1:
+		{
 			this->resolvedFontSize = Localization::getFontSizeH1(this->resolvedFontPath);
 			break;
+		}
 		case FontSize::H2:
+		{
 			this->resolvedFontSize = Localization::getFontSizeH2(this->resolvedFontPath);
 			break;
+		}
 		case FontSize::H3:
+		{
 			this->resolvedFontSize = Localization::getFontSizeH3(this->resolvedFontPath);
 			break;
+		}
 	}
 
 	// TODO: update font/font size
 
 	this->setString(newString);
+}
+
+void LocalizedLabel::setTypeWriterSpeed(float speed)
+{
+	this->typeWriterSpeed = speed;
+}
+
+void LocalizedLabel::runTypeWriterEffect()
+{
+	this->unschedule(LocalizedLabel::ScheduleKeyTypeWriterEffect);
+
+	static std::map<LocalizedLabel*, int> mapTypeIdx;
+	std::map<LocalizedLabel*, int>::iterator it;
+	it = mapTypeIdx.find(this);
+
+	if (it == mapTypeIdx.end())
+	{
+		mapTypeIdx.insert(std::pair<LocalizedLabel*, int>(this, 0));
+		it = mapTypeIdx.find(this);
+	}
+	else
+	{
+		it->second = 0;
+	}
+
+	int max = this->getStringLength();
+
+	for (int i = 0; i < max; i++)
+	{
+		if (this->getLetter(i) != nullptr)
+		{
+			this->getLetter(i)->setOpacity(0);
+		}
+	}
+
+	// TODO: It would be cool to introduce some delay upon encountering a period. Of course w/ localization, this may be a unicode period (ie japanese)
+	this->schedule([=](float dt)
+	{
+		if (this->getLetter(it->second) != nullptr)
+		{
+			this->getLetter(it->second)->runAction(FadeTo::create(0.25f, 255));
+		}
+
+		it->second++;
+
+		if (it->second == max)
+		{
+			this->unschedule(LocalizedLabel::ScheduleKeyTypeWriterEffect);
+			mapTypeIdx.erase(it);
+
+			if (this->typeWriterFinishedCallback != nullptr)
+			{
+				this->typeWriterFinishedCallback();
+			}
+		}
+
+	}, this->typeWriterSpeed, max - 1, 0, LocalizedLabel::ScheduleKeyTypeWriterEffect);
+}
+
+void LocalizedLabel::setTypeWriterFinishedCallback(std::function<void()> callback)
+{
+	this->typeWriterFinishedCallback = callback;
 }
