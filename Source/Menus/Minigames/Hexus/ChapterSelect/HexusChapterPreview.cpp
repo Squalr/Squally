@@ -35,7 +35,7 @@ HexusChapterPreview::HexusChapterPreview(std::string chapterNameKey)
 	clipStencil->drawSolidRect(Vec2(-clipSize.width / 2.0f, -clipSize.height / 2.0f), Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), Color4F::GREEN);
 
 	// Enable to debug clipping:
-	this->addChild(clipStencil);
+	//this->addChild(clipStencil);
 
 	this->frameClip = ClippingNode::create(clipStencil);
 	this->frameClip->setAnchorPoint(Vec2::ZERO);
