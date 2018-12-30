@@ -30,6 +30,8 @@ private:
 	SpeechBubble();
 	virtual ~SpeechBubble();
 
+	void initializePositions() override;
+
 	cocos2d::DrawNode* stem;
 	cocos2d::DrawNode* bubble;
 	LocalizedLabel* text;

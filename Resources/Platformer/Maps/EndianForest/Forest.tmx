@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="483">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="486">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -183,6 +183,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="484" name="Forest/Flower10" type="decor" x="3524.61" y="2688.24" width="199" height="133"/>
  </objectgroup>
  <objectgroup name="objects">
   <properties>
@@ -253,8 +254,9 @@
   <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="316" y="2556" width="270" height="748"/>
   <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="2730" y="2560" width="270" height="748"/>
   <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="974" y="2432" width="242" height="738"/>
-  <object id="408" name="Forest/Foreground/ForegroundTree2" type="decor" x="3490" y="2448" width="270" height="748"/>
+  <object id="408" name="Forest/Foreground/ForegroundTree2" type="decor" x="3218" y="2572" width="270" height="748"/>
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1322" y="2580" width="242" height="738"/>
+  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2952.88" y="2583.58" width="270" height="748"/>
  </objectgroup>
  <objectgroup name="decor 512">
   <properties>
