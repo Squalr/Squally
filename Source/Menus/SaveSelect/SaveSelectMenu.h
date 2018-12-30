@@ -24,11 +24,13 @@ private:
 	void onSaveGame1Click(MenuSprite* menuSprite);
 	void onSaveGame2Click(MenuSprite* menuSprite);
 	void onSaveGame3Click(MenuSprite* menuSprite);
+	void onBackClick(MenuSprite* menuSprite);
 
 	cocos2d::Node* backgroundNode;
 	TextMenuSprite* saveGame1;
 	TextMenuSprite* saveGame2;
 	TextMenuSprite* saveGame3;
+	TextMenuSprite* backButton;
 
 	static SaveSelectMenu* instance;
 };
