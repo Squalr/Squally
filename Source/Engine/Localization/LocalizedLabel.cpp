@@ -44,15 +44,11 @@ LocalizedLabel::LocalizedLabel(
 {
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
-	this->localizedString = localizedString;
+	this->localizedString = nullptr;
 
-	this->initializeStringToLocale(localizedString->getString());
+	this->setOverflow(Label::Overflow::RESIZE_HEIGHT);
 
-	localizedString->setOnLocaleChangeCallback(CC_CALLBACK_1(LocalizedLabel::initializeStringToLocale, this));
-
-	this->addChild(this->localizedString); // Just adding this to retain it -- this has no visuals
-
-	this->initWithTTF(localizedString->getString(), this->resolvedFontPath, this->resolvedFontSize, dimensions, hAlignment, vAlignment);
+	this->setLocalizedString(localizedString);
 }
 
 LocalizedLabel::LocalizedLabel(
@@ -60,15 +56,8 @@ LocalizedLabel::LocalizedLabel(
 	FontSize fontSize,
 	const Size& dimensions,
 	TextHAlignment hAlignment,
-	TextVAlignment vAlignment)
+	TextVAlignment vAlignment) : LocalizedLabel(fontStyle, fontSize, nullptr, dimensions, hAlignment, vAlignment)
 {
-	this->fontStyle = fontStyle;
-	this->fontSize = fontSize;
-	this->localizedString = nullptr;
-
-	this->initializeStringToLocale("");
-
-	this->initWithTTF("", this->resolvedFontPath, this->resolvedFontSize, dimensions, hAlignment, vAlignment);
 }
 
 LocalizedLabel::~LocalizedLabel()
@@ -105,6 +94,29 @@ LocalizedLabel* LocalizedLabel::clone()
 	return LocalizedLabel::create(this->fontStyle, this->fontSize, this->localizedString->clone());
 }
 
+void LocalizedLabel::setLocalizedString(LocalizedString* localizedString, const Size& dimensions, TextHAlignment hAlignment, TextVAlignment vAlignment)
+{
+	if (this->localizedString != nullptr)
+	{
+		this->removeChild(this->localizedString);
+	}
+
+	this->localizedString = localizedString;
+
+	if (this->localizedString == nullptr)
+	{
+		this->initializeStringToLocale("");
+		return;
+	}
+
+	this->initializeStringToLocale(this->localizedString->getString());
+	this->localizedString->setOnLocaleChangeCallback(CC_CALLBACK_1(LocalizedLabel::initializeStringToLocale, this));
+
+	this->addChild(this->localizedString); // Just adding this to retain it -- this has no visuals
+
+	this->initWithTTF(this->localizedString->getString(), this->resolvedFontPath, this->resolvedFontSize, dimensions, hAlignment, vAlignment);
+}
+
 float LocalizedLabel::getFontSize()
 {
 	return this->resolvedFontSize;
@@ -123,31 +135,45 @@ void LocalizedLabel::initializeStringToLocale(std::string newString)
 	{
 		default:
 		case FontStyle::Main:
+		{
 			this->resolvedFontPath = Localization::getMainFont();
 			break;
+		}
 		case FontStyle::Coding:
+		{
 			this->resolvedFontPath = Localization::getCodingFont();
 			break;
+		}
 		case FontStyle::Pixel:
+		{
 			this->resolvedFontPath = Localization::getPixelFont();
 			break;
+		}
 	}
 
 	switch (this->fontSize)
 	{
 		default:
 		case FontSize::P:
+		{
 			this->resolvedFontSize = Localization::getFontSizeP(this->resolvedFontPath);
 			break;
+		}
 		case FontSize::H1:
+		{
 			this->resolvedFontSize = Localization::getFontSizeH1(this->resolvedFontPath);
 			break;
+		}
 		case FontSize::H2:
+		{
 			this->resolvedFontSize = Localization::getFontSizeH2(this->resolvedFontPath);
 			break;
+		}
 		case FontSize::H3:
+		{
 			this->resolvedFontSize = Localization::getFontSizeH3(this->resolvedFontPath);
 			break;
+		}
 	}
 
 	// TODO: update font/font size

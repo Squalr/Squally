@@ -1,6 +1,7 @@
 #include "PlatformerEntity.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
@@ -24,6 +25,20 @@ PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlRes
 		false
 	)
 {
+	this->animationNode = SmartAnimationNode::create(scmlResource);
+	this->groundCollisionDetector = CollisionObject::create(
+		PhysicsBody::createBox(
+			Size(std::max((size * scale).width - PlatformerEntity::groundCollisionDetectorPadding * 2.0f, 8.0f), 8.0f),
+			PHYSICSBODY_MATERIAL_DEFAULT,
+			Vec2(0.0f, -(size * scale).height / 2.0f - PlatformerEntity::groundCollisionDetectorOffset)
+		),
+		(int)PlatformerCollisionType::GroundDetector,
+		false,
+		false
+	);
+	this->speechBubble = SpeechBubble::create();
+
+	this->groundCollisions = std::set<CollisionObject*>();
 	this->spawnCoords = this->getPosition();
 
 	this->actualJumpLaunchVelocity = 640.0f;
@@ -34,7 +49,6 @@ PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlRes
 	// TODO: Configurable/randomizable start direction (if any)
 	this->movement = Vec2(0.0f, 0.0f);
 
-	this->animationNode = SmartAnimationNode::create(scmlResource);
 	this->animationNode->setScale(scale);
 	this->animationNode->playAnimation("Idle");
 
@@ -57,20 +71,9 @@ PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlRes
 		}
 	}
 
-	this->groundCollisions = std::set<CollisionObject*>();
-	this->groundCollisionDetector = CollisionObject::create(
-		PhysicsBody::createBox(
-			Size(std::max((size * scale).width - PlatformerEntity::groundCollisionDetectorPadding * 2.0f, 8.0f), 8.0f),
-			PHYSICSBODY_MATERIAL_DEFAULT, 
-			Vec2(0.0f, -(size * scale).height / 2.0f - PlatformerEntity::groundCollisionDetectorOffset)
-		),
-		(int)PlatformerCollisionType::GroundDetector,
-		false,
-		false
-	);
-
 	this->addChild(this->groundCollisionDetector);
 	this->addChild(this->animationNode);
+	this->addChild(this->speechBubble);
 }
 
 PlatformerEntity::~PlatformerEntity()
@@ -89,6 +92,8 @@ void PlatformerEntity::onEnter()
 void PlatformerEntity::initializePositions()
 {
 	CollisionObject::initializePositions();
+
+	this->speechBubble->setPositionY(((*this->properties)[PlatformerEntity::MapKeyHeight].asFloat() * this->getScaleY()) / 2.0f);
 }
 
 void PlatformerEntity::initializeListeners()

@@ -202,7 +202,7 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="438" name="goblin" type="entity" x="4162.18" y="2532.73" width="78.7879" height="88">
+  <object id="438" name="goblin" type="entity" x="4002.18" y="2531.4" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
