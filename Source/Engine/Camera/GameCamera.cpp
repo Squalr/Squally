@@ -1,5 +1,8 @@
 #include "GameCamera.h"
 
+#include <iomanip>
+#include <sstream>
+
 #include "cocos/2d/CCCamera.h"
 #include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCNode.h"
@@ -45,8 +48,8 @@ GameCamera::GameCamera()
 	this->hud->setZOrder(9999);
 	this->hud->setVisible(false);
 
-	this->debugCameraLabelX->setAnchorPoint(Vec2(1.0f, 0.0f));
-	this->debugCameraLabelY->setAnchorPoint(Vec2(1.0f, 0.0f));
+	this->debugCameraLabelX->setAnchorPoint(Vec2(0.0f, 0.0f));
+	this->debugCameraLabelY->setAnchorPoint(Vec2(0.0f, 0.0f));
 
 	this->hud->addChild(this->debugCameraRectangle);
 	this->hud->addChild(this->debugCameraLabelX);
@@ -88,8 +91,8 @@ void GameCamera::initializePositions()
 	SmartNode::initializePositions();
 
 	this->debugCameraRectangle->setPosition(visibleSize / 2.0f);
-	this->debugCameraLabelX->setPosition(Vec2(visibleSize.width - 16.0f, 16.0f + 48.0f));
-	this->debugCameraLabelY->setPosition(Vec2(visibleSize.width - 16.0f, 16.0f));
+	this->debugCameraLabelX->setPosition(Vec2(visibleSize.width - 320.0f, 16.0f + 48.0f));
+	this->debugCameraLabelY->setPosition(Vec2(visibleSize.width - 320.0f, 16.0f));
 }
 
 void GameCamera::initializeListeners()
@@ -394,6 +397,12 @@ void GameCamera::updateCameraDebugLabels()
 {
 	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
 
-	this->debugCameraLabelX->setString("Camera X: " + std::to_string(cameraPosition.x));
-	this->debugCameraLabelY->setString("Camera Y: " + std::to_string(cameraPosition.y));
+	std::stringstream streamX = std::stringstream();
+	std::stringstream streamY = std::stringstream();
+
+	streamX << std::fixed << std::setprecision(2) << cameraPosition.x;
+	streamY << std::fixed << std::setprecision(2) << cameraPosition.y;
+
+	this->debugCameraLabelX->setString("Camera X: " + streamX.str());
+	this->debugCameraLabelY->setString("Camera Y: " + streamY.str());
 }

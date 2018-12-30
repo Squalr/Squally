@@ -243,7 +243,7 @@ void LocalizedLabel::runTypeWriterEffect()
 	{
 		if (this->getLetter(it->second) != nullptr)
 		{
-			this->getLetter(it->second)->runAction(FadeTo::create(0.25f, 255));
+			this->getLetter(it->second)->runAction(FadeTo::create(0.1f, 255));
 		}
 
 		it->second++;
