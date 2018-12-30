@@ -16,6 +16,7 @@
 
 #include "Resources/UIResources.h"
 
+#include "Strings/Menus/Back.h"
 #include "Strings/Menus/ContinueGame.h"
 #include "Strings/Menus/NewGame.h"
 
@@ -52,6 +53,20 @@ SaveSelectMenu::SaveSelectMenu()
 	this->setFadeSpeed(0.0f);
 
 	this->backgroundNode = Node::create();
+
+	LocalizedLabel*	backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
+	LocalizedLabel*	backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
+
+	backButtonLabel->enableOutline(Color4B::BLACK, 2);
+	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
+
+	this->backButton = TextMenuSprite::create(
+		backButtonLabel,
+		backButtonLabelHover,
+		UIResources::Menus_Buttons_GenericButton,
+		UIResources::Menus_Buttons_GenericButtonHover
+	);
+
 
 	LocalizedLabel*	saveGame1Label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::ContinueGame::create());
 	LocalizedLabel*	saveGame1LabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::ContinueGame::create());
@@ -135,6 +150,7 @@ SaveSelectMenu::SaveSelectMenu()
 	this->addChild(this->saveGame1);
 	this->addChild(this->saveGame2);
 	this->addChild(this->saveGame3);
+	this->addChild(this->backButton);
 }
 
 SaveSelectMenu::~SaveSelectMenu()
@@ -153,6 +169,7 @@ void SaveSelectMenu::onEnter()
 	GameUtils::fadeInObject(this->saveGame1, delay, duration);
 	GameUtils::fadeInObject(this->saveGame2, delay, duration);
 	GameUtils::fadeInObject(this->saveGame3, delay, duration);
+	GameUtils::fadeInObject(this->backButton, delay, duration);
 
 	this->scheduleUpdate();
 }
@@ -172,6 +189,7 @@ void SaveSelectMenu::initializeListeners()
 	this->saveGame1->setClickCallback(CC_CALLBACK_1(SaveSelectMenu::onSaveGame1Click, this));
 	this->saveGame2->setClickCallback(CC_CALLBACK_1(SaveSelectMenu::onSaveGame2Click, this));
 	this->saveGame3->setClickCallback(CC_CALLBACK_1(SaveSelectMenu::onSaveGame3Click, this));
+	this->backButton->setClickCallback(CC_CALLBACK_1(SaveSelectMenu::onBackClick, this));
 
 	this->addEventListener(keyboardListener);
 }
@@ -185,6 +203,7 @@ void SaveSelectMenu::initializePositions()
 	this->saveGame1->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 192.0f));
 	this->saveGame2->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 0.0f));
 	this->saveGame3->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 192.0f));
+	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
 }
 
 void SaveSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -223,3 +242,9 @@ void SaveSelectMenu::onSaveGame3Click(MenuSprite* menuSprite)
 {
 	NavigationEvents::navigateCutscene(NavigationEvents::NavigateCutsceneArgs(IntroCutscene::create([=]() { NavigationEvents::navigateWorldMap(); })));
 }
+
+void SaveSelectMenu::onBackClick(MenuSprite* menuSprite)
+{
+	NavigationEvents::navigateBack();
+}
+
