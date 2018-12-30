@@ -1,7 +1,12 @@
 #include "LocalizedLabel.h"
 
+#include "cocos/2d/CCSprite.h"
+
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Localization/Localization.h"
+
+const std::string LocalizedLabel::ScheduleKeyTypeWriterEffect = "SCHEDULE_TYPE_WRITER_EFFECT";
+const float LocalizedLabel::DefaultTypeSpeed = 0.04f;
 
 using namespace cocos2d;
 
@@ -45,6 +50,8 @@ LocalizedLabel::LocalizedLabel(
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
 	this->localizedString = nullptr;
+	this->typeWriterFinishedCallback = nullptr;
+	this->typeWriterSpeed = LocalizedLabel::DefaultTypeSpeed;
 
 	this->setOverflow(Label::Overflow::RESIZE_HEIGHT);
 
@@ -179,4 +186,66 @@ void LocalizedLabel::initializeStringToLocale(std::string newString)
 	// TODO: update font/font size
 
 	this->setString(newString);
+}
+
+void LocalizedLabel::setTypeWriterSpeed(float speed)
+{
+	this->typeWriterSpeed = speed;
+}
+
+void LocalizedLabel::runTypeWriterEffect()
+{
+	this->unschedule(LocalizedLabel::ScheduleKeyTypeWriterEffect);
+
+	static std::map<LocalizedLabel*, int> mapTypeIdx;
+	std::map<LocalizedLabel*, int>::iterator it;
+	it = mapTypeIdx.find(this);
+
+	if (it == mapTypeIdx.end())
+	{
+		mapTypeIdx.insert(std::pair<LocalizedLabel*, int>(this, 0));
+		it = mapTypeIdx.find(this);
+	}
+	else
+	{
+		it->second = 0;
+	}
+
+	int max = this->getStringLength();
+
+	for (int i = 0; i < max; i++)
+	{
+		if (this->getLetter(i) != nullptr)
+		{
+			this->getLetter(i)->setOpacity(0);
+		}
+	}
+
+	// TODO: It would be cool to introduce some delay upon encountering a period. Of course w/ localization, this may be a unicode period (ie japanese)
+	this->schedule([=](float dt)
+	{
+		if (this->getLetter(it->second) != nullptr)
+		{
+			this->getLetter(it->second)->setOpacity(255);
+		}
+
+		it->second++;
+
+		if (it->second == max)
+		{
+			this->unschedule(LocalizedLabel::ScheduleKeyTypeWriterEffect);
+			mapTypeIdx.erase(it);
+
+			if (this->typeWriterFinishedCallback != nullptr)
+			{
+				this->typeWriterFinishedCallback();
+			}
+		}
+
+	}, this->typeWriterSpeed, max - 1, 0, LocalizedLabel::ScheduleKeyTypeWriterEffect);
+}
+
+void LocalizedLabel::setTypeWriterFinishedCallback(std::function<void()> callback)
+{
+	this->typeWriterFinishedCallback = callback;
 }
