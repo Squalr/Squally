@@ -351,14 +351,15 @@ void TerrainObject::buildSurfaceTextures()
 
 			// Calculate overdraw to create seamless rectangle connection
 			// TODO: clear seg length on side change
-			/*if (isTextureHorizontal)
+			// TEMP: This is a mediocre correction to the gap problem
+			if (isTextureHorizontal)
 			{
 				float hypotenuse = textureSize.height;
 				float sinTheta = std::sin(bisectingAngle);
 				float overDraw = std::ceil(std::abs(sinTheta * hypotenuse));
 
 				currentSegmentLength += overDraw;
-			}*/
+			}
 
 			// Prevent off-by-1 rendering errors where texture pixels are barely separated
 			currentSegmentLength = std::ceil(currentSegmentLength);

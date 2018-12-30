@@ -2,6 +2,8 @@
 
 #include "cocos/2d/CCSprite.h"
 
+#include "2d/CCActionInterval.h"
+
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Localization/Localization.h"
 
@@ -226,7 +228,7 @@ void LocalizedLabel::runTypeWriterEffect()
 	{
 		if (this->getLetter(it->second) != nullptr)
 		{
-			this->getLetter(it->second)->setOpacity(255);
+			this->getLetter(it->second)->runAction(FadeTo::create(0.25f, 255));
 		}
 
 		it->second++;

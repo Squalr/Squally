@@ -45,6 +45,15 @@ SpeechBubble::~SpeechBubble()
 {
 }
 
+void SpeechBubble::initializePositions()
+{
+	const float offsetY = 32.0f;
+
+	this->bubble->setPositionY(offsetY);
+	this->stem->setPositionY(offsetY);
+	this->text->setPositionY(offsetY);
+}
+
 void SpeechBubble::runDialogue(LocalizedString* localizedString, Direction direction)
 {
 	const Size padding = Size(16.0f, 16.0f);
