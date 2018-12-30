@@ -12,7 +12,7 @@
 #include "Strings/Empty.h"
 
 const std::string LocalizedLabel::ScheduleKeyTypeWriterEffect = "SCHEDULE_TYPE_WRITER_EFFECT";
-const float LocalizedLabel::DefaultTypeSpeed = 0.06f;
+const float LocalizedLabel::DefaultTypeSpeed = 0.025f;
 
 using namespace cocos2d;
 
