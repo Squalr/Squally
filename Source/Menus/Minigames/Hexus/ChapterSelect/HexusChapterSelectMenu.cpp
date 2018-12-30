@@ -8,6 +8,7 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
@@ -24,6 +25,7 @@
 #include "Menus/Minigames/Hexus/ChapterSelect/Training/HexusChapterPreviewTraining.h"
 #include "Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusChapterPreviewVolcano.h"
 
+#include "Resources/MusicResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Menus/Back.h"
@@ -140,6 +142,8 @@ void HexusChapterSelectMenu::onEnter()
 
 	float delay = 0.25f;
 	float duration = 0.35f;
+
+	//SoundManager::playMusicResource(MusicResources::Something_Blue);
 
 	// Just assume linear dependencies for now
 	this->dependencies.clear();
