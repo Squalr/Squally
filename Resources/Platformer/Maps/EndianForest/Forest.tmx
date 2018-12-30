@@ -203,7 +203,7 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="438" name="goblin" type="entity" x="4002.18" y="2531.4" width="78.7879" height="88">
+  <object id="438" name="goblin" type="entity" x="3647.63" y="2637.46" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
@@ -254,7 +254,7 @@
   <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="316" y="2556" width="270" height="748"/>
   <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="2730" y="2560" width="270" height="748"/>
   <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="974" y="2432" width="242" height="738"/>
-  <object id="408" name="Forest/Foreground/ForegroundTree2" type="decor" x="3218" y="2572" width="270" height="748"/>
+  <object id="408" name="Forest/Foreground/ForegroundTree2" type="decor" x="3218" y="2614.42" width="270" height="705.576"/>
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1322" y="2580" width="242" height="738"/>
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2952.88" y="2583.58" width="270" height="748"/>
  </objectgroup>

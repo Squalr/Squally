@@ -381,39 +381,39 @@ list(APPEND GAME_SOURCE
 	Source/Menus/Dialog/DialogMenu.cpp
 	Source/Menus/HackerMode/CodeEditor.cpp
 	Source/Menus/HackerMode/RadialMenu.cpp
+	Source/Menus/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.cpp
+	Source/Menus/Hexus/ChapterSelect/Caverns/HexusChapterPreviewCaverns.cpp
+	Source/Menus/Hexus/ChapterSelect/Forest/HexusChapterPreviewForest.cpp
+	Source/Menus/Hexus/ChapterSelect/HexusChapterPreview.cpp
+	Source/Menus/Hexus/ChapterSelect/HexusChapterSelectMenu.cpp
+	Source/Menus/Hexus/ChapterSelect/IceCaps/HexusChapterPreviewIceCaps.cpp
+	Source/Menus/Hexus/ChapterSelect/Jungle/HexusChapterPreviewJungle.cpp
+	Source/Menus/Hexus/ChapterSelect/Mech/HexusChapterPreviewMech.cpp
+	Source/Menus/Hexus/ChapterSelect/Obelisk/HexusChapterPreviewObelisk.cpp
+	Source/Menus/Hexus/ChapterSelect/Ruins/HexusChapterPreviewRuins.cpp
+	Source/Menus/Hexus/ChapterSelect/Training/HexusChapterPreviewTraining.cpp
+	Source/Menus/Hexus/ChapterSelect/Volcano/HexusChapterPreviewVolcano.cpp
+	Source/Menus/Hexus/HexusDeckManagement.cpp
+	Source/Menus/Hexus/HexusRewardsMenu.cpp
+	Source/Menus/Hexus/MenuCard.cpp
+	Source/Menus/Hexus/OpponentSelect/Castle/HexusOpponentMenuCastle.cpp
+	Source/Menus/Hexus/OpponentSelect/Caverns/HexusOpponentMenuCaverns.cpp
+	Source/Menus/Hexus/OpponentSelect/Forest/HexusOpponentMenuForest.cpp
+	Source/Menus/Hexus/OpponentSelect/HexusOpponentMenuBase.cpp
+	Source/Menus/Hexus/OpponentSelect/HexusOpponentPreview.cpp
+	Source/Menus/Hexus/OpponentSelect/IceCaps/HexusOpponentMenuIceCaps.cpp
+	Source/Menus/Hexus/OpponentSelect/Jungle/HexusOpponentMenuJungle.cpp
+	Source/Menus/Hexus/OpponentSelect/Mech/HexusOpponentMenuMech.cpp
+	Source/Menus/Hexus/OpponentSelect/Obelisk/HexusOpponentMenuObelisk.cpp
+	Source/Menus/Hexus/OpponentSelect/Ruins/HexusOpponentMenuRuins.cpp
+	Source/Menus/Hexus/OpponentSelect/Training/HexusOpponentMenuTraining.cpp
+	Source/Menus/Hexus/OpponentSelect/Volcano/HexusOpponentMenuVolcano.cpp
+	Source/Menus/Hexus/Puzzles/HexusPuzzleItem.cpp
+	Source/Menus/Hexus/Puzzles/HexusPuzzleMenu.cpp
+	Source/Menus/Hexus/Store/HexusStoreMenu.cpp
 	Source/Menus/LoadingScreen/LoadingScreen.cpp
 	Source/Menus/MenuBackground.cpp
-	Source/Menus/Minigames/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.cpp
-	Source/Menus/Minigames/Hexus/ChapterSelect/Caverns/HexusChapterPreviewCaverns.cpp
-	Source/Menus/Minigames/Hexus/ChapterSelect/Forest/HexusChapterPreviewForest.cpp
-	Source/Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.cpp
-	Source/Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.cpp
-	Source/Menus/Minigames/Hexus/ChapterSelect/IceCaps/HexusChapterPreviewIceCaps.cpp
-	Source/Menus/Minigames/Hexus/ChapterSelect/Jungle/HexusChapterPreviewJungle.cpp
-	Source/Menus/Minigames/Hexus/ChapterSelect/Mech/HexusChapterPreviewMech.cpp
-	Source/Menus/Minigames/Hexus/ChapterSelect/Obelisk/HexusChapterPreviewObelisk.cpp
-	Source/Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusChapterPreviewRuins.cpp
-	Source/Menus/Minigames/Hexus/ChapterSelect/Training/HexusChapterPreviewTraining.cpp
-	Source/Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusChapterPreviewVolcano.cpp
-	Source/Menus/Minigames/Hexus/HexusDeckManagement.cpp
-	Source/Menus/Minigames/Hexus/HexusRewardsMenu.cpp
-	Source/Menus/Minigames/Hexus/MenuCard.cpp
-	Source/Menus/Minigames/Hexus/OpponentSelect/Castle/HexusOpponentMenuCastle.cpp
-	Source/Menus/Minigames/Hexus/OpponentSelect/Caverns/HexusOpponentMenuCaverns.cpp
-	Source/Menus/Minigames/Hexus/OpponentSelect/Forest/HexusOpponentMenuForest.cpp
-	Source/Menus/Minigames/Hexus/OpponentSelect/HexusOpponentMenuBase.cpp
-	Source/Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.cpp
-	Source/Menus/Minigames/Hexus/OpponentSelect/IceCaps/HexusOpponentMenuIceCaps.cpp
-	Source/Menus/Minigames/Hexus/OpponentSelect/Jungle/HexusOpponentMenuJungle.cpp
-	Source/Menus/Minigames/Hexus/OpponentSelect/Mech/HexusOpponentMenuMech.cpp
-	Source/Menus/Minigames/Hexus/OpponentSelect/Obelisk/HexusOpponentMenuObelisk.cpp
-	Source/Menus/Minigames/Hexus/OpponentSelect/Ruins/HexusOpponentMenuRuins.cpp
-	Source/Menus/Minigames/Hexus/OpponentSelect/Training/HexusOpponentMenuTraining.cpp
-	Source/Menus/Minigames/Hexus/OpponentSelect/Volcano/HexusOpponentMenuVolcano.cpp
-	Source/Menus/Minigames/Hexus/Puzzles/HexusPuzzleItem.cpp
-	Source/Menus/Minigames/Hexus/Puzzles/HexusPuzzleMenu.cpp
-	Source/Menus/Minigames/Hexus/Store/HexusStoreMenu.cpp
-	Source/Menus/Minigames/MinigamesMenu.cpp
+	Source/Menus/MinigamesMenu.cpp
 	Source/Menus/Options/OptionsMenu.cpp
 	Source/Menus/Options/OptionsScene.cpp
 	Source/Menus/Pause/PauseMenu.cpp
@@ -947,7 +947,15 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Menus/Exit.cpp
 	Source/Strings/Menus/GotIt.cpp
 	Source/Strings/Menus/Leave.cpp
+	Source/Strings/Menus/Maps/BallmerPeaks.cpp
 	Source/Strings/Menus/Maps/CastleValgrind.cpp
+	Source/Strings/Menus/Maps/DaemonsHallow.cpp
+	Source/Strings/Menus/Maps/EndianForest.cpp
+	Source/Strings/Menus/Maps/LambdaCrypts.cpp
+	Source/Strings/Menus/Maps/SeaSharpCaverns.cpp
+	Source/Strings/Menus/Maps/TrainingGrounds.cpp
+	Source/Strings/Menus/Maps/UnderflowRuins.cpp
+	Source/Strings/Menus/Maps/VoidStar.cpp
 	Source/Strings/Menus/Minigames.cpp
 	Source/Strings/Menus/NewGame.cpp
 	Source/Strings/Menus/Next.cpp
@@ -1306,39 +1314,39 @@ list(APPEND GAME_HEADER
 	Source/Menus/Dialog/DialogMenu.h
 	Source/Menus/HackerMode/CodeEditor.h
 	Source/Menus/HackerMode/RadialMenu.h
+	Source/Menus/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.h
+	Source/Menus/Hexus/ChapterSelect/Caverns/HexusChapterPreviewCaverns.h
+	Source/Menus/Hexus/ChapterSelect/Forest/HexusChapterPreviewForest.h
+	Source/Menus/Hexus/ChapterSelect/HexusChapterPreview.h
+	Source/Menus/Hexus/ChapterSelect/HexusChapterSelectMenu.h
+	Source/Menus/Hexus/ChapterSelect/IceCaps/HexusChapterPreviewIceCaps.h
+	Source/Menus/Hexus/ChapterSelect/Jungle/HexusChapterPreviewJungle.h
+	Source/Menus/Hexus/ChapterSelect/Mech/HexusChapterPreviewMech.h
+	Source/Menus/Hexus/ChapterSelect/Obelisk/HexusChapterPreviewObelisk.h
+	Source/Menus/Hexus/ChapterSelect/Ruins/HexusChapterPreviewRuins.h
+	Source/Menus/Hexus/ChapterSelect/Training/HexusChapterPreviewTraining.h
+	Source/Menus/Hexus/ChapterSelect/Volcano/HexusChapterPreviewVolcano.h
+	Source/Menus/Hexus/HexusDeckManagement.h
+	Source/Menus/Hexus/HexusRewardsMenu.h
+	Source/Menus/Hexus/MenuCard.h
+	Source/Menus/Hexus/OpponentSelect/Castle/HexusOpponentMenuCastle.h
+	Source/Menus/Hexus/OpponentSelect/Caverns/HexusOpponentMenuCaverns.h
+	Source/Menus/Hexus/OpponentSelect/Forest/HexusOpponentMenuForest.h
+	Source/Menus/Hexus/OpponentSelect/HexusOpponentMenuBase.h
+	Source/Menus/Hexus/OpponentSelect/HexusOpponentPreview.h
+	Source/Menus/Hexus/OpponentSelect/IceCaps/HexusOpponentMenuIceCaps.h
+	Source/Menus/Hexus/OpponentSelect/Jungle/HexusOpponentMenuJungle.h
+	Source/Menus/Hexus/OpponentSelect/Mech/HexusOpponentMenuMech.h
+	Source/Menus/Hexus/OpponentSelect/Obelisk/HexusOpponentMenuObelisk.h
+	Source/Menus/Hexus/OpponentSelect/Ruins/HexusOpponentMenuRuins.h
+	Source/Menus/Hexus/OpponentSelect/Training/HexusOpponentMenuTraining.h
+	Source/Menus/Hexus/OpponentSelect/Volcano/HexusOpponentMenuVolcano.h
+	Source/Menus/Hexus/Puzzles/HexusPuzzleItem.h
+	Source/Menus/Hexus/Puzzles/HexusPuzzlesMenu.h
+	Source/Menus/Hexus/Store/HexusStoreMenu.h
 	Source/Menus/LoadingScreen/LoadingScreen.h
 	Source/Menus/MenuBackground.h
-	Source/Menus/Minigames/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.h
-	Source/Menus/Minigames/Hexus/ChapterSelect/Caverns/HexusChapterPreviewCaverns.h
-	Source/Menus/Minigames/Hexus/ChapterSelect/Forest/HexusChapterPreviewForest.h
-	Source/Menus/Minigames/Hexus/ChapterSelect/HexusChapterPreview.h
-	Source/Menus/Minigames/Hexus/ChapterSelect/HexusChapterSelectMenu.h
-	Source/Menus/Minigames/Hexus/ChapterSelect/IceCaps/HexusChapterPreviewIceCaps.h
-	Source/Menus/Minigames/Hexus/ChapterSelect/Jungle/HexusChapterPreviewJungle.h
-	Source/Menus/Minigames/Hexus/ChapterSelect/Mech/HexusChapterPreviewMech.h
-	Source/Menus/Minigames/Hexus/ChapterSelect/Obelisk/HexusChapterPreviewObelisk.h
-	Source/Menus/Minigames/Hexus/ChapterSelect/Ruins/HexusChapterPreviewRuins.h
-	Source/Menus/Minigames/Hexus/ChapterSelect/Training/HexusChapterPreviewTraining.h
-	Source/Menus/Minigames/Hexus/ChapterSelect/Volcano/HexusChapterPreviewVolcano.h
-	Source/Menus/Minigames/Hexus/HexusDeckManagement.h
-	Source/Menus/Minigames/Hexus/HexusRewardsMenu.h
-	Source/Menus/Minigames/Hexus/MenuCard.h
-	Source/Menus/Minigames/Hexus/OpponentSelect/Castle/HexusOpponentMenuCastle.h
-	Source/Menus/Minigames/Hexus/OpponentSelect/Caverns/HexusOpponentMenuCaverns.h
-	Source/Menus/Minigames/Hexus/OpponentSelect/Forest/HexusOpponentMenuForest.h
-	Source/Menus/Minigames/Hexus/OpponentSelect/HexusOpponentMenuBase.h
-	Source/Menus/Minigames/Hexus/OpponentSelect/HexusOpponentPreview.h
-	Source/Menus/Minigames/Hexus/OpponentSelect/IceCaps/HexusOpponentMenuIceCaps.h
-	Source/Menus/Minigames/Hexus/OpponentSelect/Jungle/HexusOpponentMenuJungle.h
-	Source/Menus/Minigames/Hexus/OpponentSelect/Mech/HexusOpponentMenuMech.h
-	Source/Menus/Minigames/Hexus/OpponentSelect/Obelisk/HexusOpponentMenuObelisk.h
-	Source/Menus/Minigames/Hexus/OpponentSelect/Ruins/HexusOpponentMenuRuins.h
-	Source/Menus/Minigames/Hexus/OpponentSelect/Training/HexusOpponentMenuTraining.h
-	Source/Menus/Minigames/Hexus/OpponentSelect/Volcano/HexusOpponentMenuVolcano.h
-	Source/Menus/Minigames/Hexus/Puzzles/HexusPuzzleItem.h
-	Source/Menus/Minigames/Hexus/Puzzles/HexusPuzzlesMenu.h
-	Source/Menus/Minigames/Hexus/Store/HexusStoreMenu.h
-	Source/Menus/Minigames/MinigamesMenu.h
+	Source/Menus/MinigamesMenu.h
 	Source/Menus/Options/OptionsMenu.h
 	Source/Menus/Options/OptionsScene.h
 	Source/Menus/Pause/PauseMenu.h
@@ -1889,7 +1897,15 @@ list(APPEND GAME_HEADER
 	Source/Strings/Menus/Exit.h
 	Source/Strings/Menus/GotIt.h
 	Source/Strings/Menus/Leave.h
+	Source/Strings/Menus/Maps/BallmerPeaks.h
 	Source/Strings/Menus/Maps/CastleValgrind.h
+	Source/Strings/Menus/Maps/DaemonsHallow.h
+	Source/Strings/Menus/Maps/EndianForest.h
+	Source/Strings/Menus/Maps/LambdaCrypts.h
+	Source/Strings/Menus/Maps/SeaSharpCaverns.h
+	Source/Strings/Menus/Maps/TrainingGrounds.h
+	Source/Strings/Menus/Maps/UnderflowRuins.h
+	Source/Strings/Menus/Maps/VoidStar.h
 	Source/Strings/Menus/Minigames.h
 	Source/Strings/Menus/NewGame.h
 	Source/Strings/Menus/Next.h

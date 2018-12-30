@@ -60,7 +60,7 @@ namespace LocaleStrings
 
 	std::string StoreLabelBinary::getStringEn()
 	{
-		return "BIN:";
+		return "1111";
 	}
 
 	std::string StoreLabelBinary::getStringEs()

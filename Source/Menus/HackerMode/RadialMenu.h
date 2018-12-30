@@ -3,7 +3,6 @@
 #include "cocos/math/Vec2.h"
 #include "cocos/base/CCEventKeyboard.h"
 
-#include "Engine/Events/MouseEvents.h"
 #include "Engine/SmartNode.h"
 
 namespace cocos2d

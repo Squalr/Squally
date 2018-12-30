@@ -65,7 +65,7 @@ WorldMap::WorldMap()
 	);
 
 	this->iceCaps = MapNode::create(
-		MapResources::LambdaPeaks_IceCaps
+		MapResources::BallmerPeaks_IceCaps
 	);
 
 	this->volcano = MapNode::create(
@@ -73,11 +73,11 @@ WorldMap::WorldMap()
 	);
 
 	this->crypts = MapNode::create(
-		MapResources::LexiconCrypts_Obelisk
+		MapResources::LambdaCrypts_Crypts
 	);
 
 	this->voidStar = MapNode::create(
-		MapResources::VoidStar_Mech
+		MapResources::VoidStar_VoidStar
 	);
 
 	this->voidCrystalNode = Node::create();

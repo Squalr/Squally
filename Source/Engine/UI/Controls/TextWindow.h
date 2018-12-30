@@ -49,7 +49,8 @@ protected:
 	cocos2d::ui::ScrollView* scrollView;
 	float marginSize;
 
-	static const cocos2d::Size padding;
+	static LocalizedLabel* ReferenceLabel;
+	static const cocos2d::Size Padding;
 
 private:
 	cocos2d::Node* background;
@@ -64,8 +65,7 @@ private:
 	cocos2d::Color3B fontColor;
 	cocos2d::Size windowSize;
 
-	static const float titleBarHeight;
-	static const cocos2d::Color4B defaultTitleBarColor;
-	static const cocos2d::Color4B defaultWindowColor;
+	static const float TitleBarHeight;
+	static const cocos2d::Color4B DefaultTitleBarColor;
+	static const cocos2d::Color4B DefaultWindowColor;
 };
-
