@@ -49,17 +49,17 @@ void Goblin::onEnter()
 	PlatformerEntity::onEnter();
 
 	this->runAction(Sequence::create(
-		DelayTime::create(1.5f),
+		DelayTime::create(1.0f),
 		CallFunc::create([=]()
 		{
 			this->speechBubble->runDialogue(LocaleStrings::PendulumTutorial1::create(), SpeechBubble::Direction::Auto);
 		}),
-		DelayTime::create(7.0f),
+		DelayTime::create(6.0f),
 		CallFunc::create([=]()
 		{
 			this->speechBubble->runDialogue(LocaleStrings::PendulumTutorial2::create(), SpeechBubble::Direction::Auto);
 		}),
-		DelayTime::create(4.0f),
+		DelayTime::create(3.0f),
 		CallFunc::create([=]()
 		{
 			this->speechBubble->hideDialogue();
