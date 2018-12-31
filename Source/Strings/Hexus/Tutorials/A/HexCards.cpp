@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string HexCards::getStringAr()
 	{
-		return "";
+		return "البطاقات الخضراء هي بطاقات سداسية العشرية.";
 	}
 
 	std::string HexCards::getStringBg()
 	{
-		return "";
+		return "Зелените карти са шестнадесетични карти.";
 	}
 
 	std::string HexCards::getStringCs()
 	{
-		return "";
+		return "Zelené karty jsou hexadecimální karty.";
 	}
 
 	std::string HexCards::getStringDa()
 	{
-		return "";
+		return "Grønne kort er hexadecimale kort.";
 	}
 
 	std::string HexCards::getStringDe()
 	{
-		return "";
+		return "Grüne Karten sind Hexadezimalkarten.";
 	}
 
 	std::string HexCards::getStringEl()
 	{
-		return "";
+		return "Οι πράσινες κάρτες είναι δεκαεξαδικές κάρτες.";
 	}
 
 	std::string HexCards::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string HexCards::getStringEs()
 	{
-		return "";
+		return "Las tarjetas verdes son tarjetas hexadecimales.";
 	}
 
 	std::string HexCards::getStringEs419()
 	{
-		return "";
+		return "Las tarjetas verdes son tarjetas hexadecimales.";
 	}
 
 	std::string HexCards::getStringFi()
 	{
-		return "";
+		return "Vihreät kortit ovat heksadesimaalisia kortteja.";
 	}
 
 	std::string HexCards::getStringFr()
 	{
-		return "";
+		return "Les cartes vertes sont des cartes hexadécimales.";
 	}
 
 	std::string HexCards::getStringHu()
 	{
-		return "";
+		return "A zöld lapok hexadecimális kártyák.";
 	}
 
 	std::string HexCards::getStringIt()
 	{
-		return "";
+		return "Le carte verdi sono carte esadecimali.";
 	}
 
 	std::string HexCards::getStringJa()
 	{
-		return "";
+		return "グリーンカードは16進数のカードです。";
 	}
 
 	std::string HexCards::getStringKo()
 	{
-		return "";
+		return "초록색 카드는 16 진수 카드입니다.";
 	}
 
 	std::string HexCards::getStringNl()
 	{
-		return "";
+		return "Groene kaarten zijn hexadecimale kaarten.";
 	}
 
 	std::string HexCards::getStringNo()
 	{
-		return "";
+		return "Grønne kort er heksadesimale kort.";
 	}
 
 	std::string HexCards::getStringPl()
 	{
-		return "";
+		return "Zielone karty to karty szesnastkowe.";
 	}
 
 	std::string HexCards::getStringPt()
 	{
-		return "";
+		return "Cartas verdes são cartas hexadecimais.";
 	}
 
 	std::string HexCards::getStringPtBr()
 	{
-		return "";
+		return "Cartas verdes são cartas hexadecimais.";
 	}
 
 	std::string HexCards::getStringRo()
 	{
-		return "";
+		return "Cardurile verzi sunt carduri hexazecimale.";
 	}
 
 	std::string HexCards::getStringRu()
 	{
-		return "";
+		return "Зеленые карты - это шестнадцатеричные карты.";
 	}
 
 	std::string HexCards::getStringSv()
 	{
-		return "";
+		return "Gröna kort är hexadecimala kort.";
 	}
 
 	std::string HexCards::getStringTh()
 	{
-		return "";
+		return "กรีนการ์ดเป็นการ์ดเลขฐานสิบหก";
 	}
 
 	std::string HexCards::getStringTr()
 	{
-		return "";
+		return "Yeşil kartlar onaltılık kartlardır.";
 	}
 
 	std::string HexCards::getStringUk()
 	{
-		return "";
+		return "Зелені карти - шістнадцяткові карти.";
 	}
 
-	std::string HexCards::getStringVn()
+	std::string HexCards::getStringVi()
 	{
-		return "";
+		return "Thẻ xanh là thẻ thập lục phân.";
 	}
 
 	std::string HexCards::getStringZhCn()
 	{
-		return "";
+		return "绿卡是十六进制卡。";
 	}
 
 	std::string HexCards::getStringZhTw()
 	{
-		return "";
+		return "綠卡是十六進制卡。";
 	}
 }

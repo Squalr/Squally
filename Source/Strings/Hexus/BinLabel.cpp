@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string BinLabel::getStringAr()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringBg()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringCs()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringDa()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringDe()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringEl()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string BinLabel::getStringEs()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringEs419()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringFi()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringFr()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringHu()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringIt()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringJa()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringKo()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringNl()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringNo()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringPl()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringPt()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringPtBr()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringRo()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringRu()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringSv()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringTh()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringTr()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringUk()
 	{
-		return "";
+		return "BIN:";
 	}
 
-	std::string BinLabel::getStringVn()
+	std::string BinLabel::getStringVi()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringZhCn()
 	{
-		return "";
+		return "BIN:";
 	}
 
 	std::string BinLabel::getStringZhTw()
 	{
-		return "";
+		return "BIN:";
 	}
 }

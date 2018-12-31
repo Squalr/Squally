@@ -30,146 +30,146 @@ namespace LocaleStrings
 
 	std::string Decimal1::getStringAr()
 	{
-		return "";
+		return "جيسيكا";
 	}
 
 	std::string Decimal1::getStringBg()
 	{
-		return "";
+		return "Джесика";
 	}
 
 	std::string Decimal1::getStringCs()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringDa()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringDe()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringEl()
 	{
-		return "";
+		return "Τζέσικα";
 	}
 
 	std::string Decimal1::getStringEn()
 	{
-		return "Jess";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringEs()
 	{
-		return "";
+		return "Jess";
 	}
 
 	std::string Decimal1::getStringEs419()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringFi()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringFr()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringHu()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringIt()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringJa()
 	{
-		return "";
+		return "ジェシカ";
 	}
 
 	std::string Decimal1::getStringKo()
 	{
-		return "";
+		return "제시카";
 	}
 
 	std::string Decimal1::getStringNl()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringNo()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringPl()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringPt()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringPtBr()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringRo()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringRu()
 	{
-		return "";
+		return "Джессика";
 	}
 
 	std::string Decimal1::getStringSv()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringTh()
 	{
-		return "";
+		return "เจสสิก้า";
 	}
 
 	std::string Decimal1::getStringTr()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringUk()
 	{
-		return "";
+		return "Джессіка";
 	}
 
-	std::string Decimal1::getStringVn()
+	std::string Decimal1::getStringVi()
 	{
-		return "";
+		return "Jessica";
 	}
 
 	std::string Decimal1::getStringZhCn()
 	{
-		return "";
+		return "杰西卡";
 	}
 
 	std::string Decimal1::getStringZhTw()
 	{
-		return "";
+		return "傑西卡";
 	}
 }

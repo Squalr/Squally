@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Binary10::getStringAr()
 	{
-		return "";
+		return "فرس النبي";
 	}
 
 	std::string Binary10::getStringBg()
 	{
-		return "";
+		return "богомолка";
 	}
 
 	std::string Binary10::getStringCs()
 	{
-		return "";
+		return "Mantis";
 	}
 
 	std::string Binary10::getStringDa()
 	{
-		return "";
+		return "mantis";
 	}
 
 	std::string Binary10::getStringDe()
 	{
-		return "";
+		return "Gottesanbeterin";
 	}
 
 	std::string Binary10::getStringEl()
 	{
-		return "";
+		return "Mantis";
 	}
 
 	std::string Binary10::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Binary10::getStringEs()
 	{
-		return "";
+		return "Mantis";
 	}
 
 	std::string Binary10::getStringEs419()
 	{
-		return "";
+		return "Mantis";
 	}
 
 	std::string Binary10::getStringFi()
 	{
-		return "";
+		return "rukoilijasirkka";
 	}
 
 	std::string Binary10::getStringFr()
 	{
-		return "";
+		return "Mante";
 	}
 
 	std::string Binary10::getStringHu()
 	{
-		return "";
+		return "Mantis";
 	}
 
 	std::string Binary10::getStringIt()
 	{
-		return "";
+		return "Mantide";
 	}
 
 	std::string Binary10::getStringJa()
 	{
-		return "";
+		return "カマキリ";
 	}
 
 	std::string Binary10::getStringKo()
 	{
-		return "";
+		return "사마귀";
 	}
 
 	std::string Binary10::getStringNl()
 	{
-		return "";
+		return "Mantis";
 	}
 
 	std::string Binary10::getStringNo()
 	{
-		return "";
+		return "Mantis";
 	}
 
 	std::string Binary10::getStringPl()
 	{
-		return "";
+		return "Modliszka";
 	}
 
 	std::string Binary10::getStringPt()
 	{
-		return "";
+		return "louva a Deus";
 	}
 
 	std::string Binary10::getStringPtBr()
 	{
-		return "";
+		return "louva a Deus";
 	}
 
 	std::string Binary10::getStringRo()
 	{
-		return "";
+		return "Mantis";
 	}
 
 	std::string Binary10::getStringRu()
 	{
-		return "";
+		return "Богомол";
 	}
 
 	std::string Binary10::getStringSv()
 	{
-		return "";
+		return "Bönsyrsa";
 	}
 
 	std::string Binary10::getStringTh()
 	{
-		return "";
+		return "ตั๊กแตนตำข้าว";
 	}
 
 	std::string Binary10::getStringTr()
 	{
-		return "";
+		return "peygamber devesi";
 	}
 
 	std::string Binary10::getStringUk()
 	{
-		return "";
+		return "Богомол";
 	}
 
-	std::string Binary10::getStringVn()
+	std::string Binary10::getStringVi()
 	{
-		return "";
+		return "con bọ ngựa";
 	}
 
 	std::string Binary10::getStringZhCn()
 	{
-		return "";
+		return "螂";
 	}
 
 	std::string Binary10::getStringZhTw()
 	{
-		return "";
+		return "螂";
 	}
 }

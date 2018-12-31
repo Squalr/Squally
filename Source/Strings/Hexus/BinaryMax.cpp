@@ -158,7 +158,7 @@ namespace LocaleStrings
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringVn()
+	std::string BinaryMax::getStringVi()
 	{
 		return "1111";
 	}

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Hex11::getStringAr()
 	{
-		return "";
+		return "الطبيب الساحر";
 	}
 
 	std::string Hex11::getStringBg()
 	{
-		return "";
+		return "шаман";
 	}
 
 	std::string Hex11::getStringCs()
 	{
-		return "";
+		return "Šaman";
 	}
 
 	std::string Hex11::getStringDa()
 	{
-		return "";
+		return "Shaman";
 	}
 
 	std::string Hex11::getStringDe()
 	{
-		return "";
+		return "Schamane";
 	}
 
 	std::string Hex11::getStringEl()
 	{
-		return "";
+		return "Σαμάν";
 	}
 
 	std::string Hex11::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Hex11::getStringEs()
 	{
-		return "";
+		return "Chamán";
 	}
 
 	std::string Hex11::getStringEs419()
 	{
-		return "";
+		return "Chamán";
 	}
 
 	std::string Hex11::getStringFi()
 	{
-		return "";
+		return "Shamaani";
 	}
 
 	std::string Hex11::getStringFr()
 	{
-		return "";
+		return "Chaman";
 	}
 
 	std::string Hex11::getStringHu()
 	{
-		return "";
+		return "Sámán";
 	}
 
 	std::string Hex11::getStringIt()
 	{
-		return "";
+		return "Sciamano";
 	}
 
 	std::string Hex11::getStringJa()
 	{
-		return "";
+		return "シャーマン";
 	}
 
 	std::string Hex11::getStringKo()
 	{
-		return "";
+		return "무녀";
 	}
 
 	std::string Hex11::getStringNl()
 	{
-		return "";
+		return "sjaman";
 	}
 
 	std::string Hex11::getStringNo()
 	{
-		return "";
+		return "Shaman";
 	}
 
 	std::string Hex11::getStringPl()
 	{
-		return "";
+		return "Szaman";
 	}
 
 	std::string Hex11::getStringPt()
 	{
-		return "";
+		return "Shaman";
 	}
 
 	std::string Hex11::getStringPtBr()
 	{
-		return "";
+		return "Shaman";
 	}
 
 	std::string Hex11::getStringRo()
 	{
-		return "";
+		return "Shaman";
 	}
 
 	std::string Hex11::getStringRu()
 	{
-		return "";
+		return "Shaman";
 	}
 
 	std::string Hex11::getStringSv()
 	{
-		return "";
+		return "Schaman";
 	}
 
 	std::string Hex11::getStringTh()
 	{
-		return "";
+		return "หมอผี";
 	}
 
 	std::string Hex11::getStringTr()
 	{
-		return "";
+		return "Şaman";
 	}
 
 	std::string Hex11::getStringUk()
 	{
-		return "";
+		return "Шаман";
 	}
 
-	std::string Hex11::getStringVn()
+	std::string Hex11::getStringVi()
 	{
-		return "";
+		return "Pháp sư";
 	}
 
 	std::string Hex11::getStringZhCn()
 	{
-		return "";
+		return "巫";
 	}
 
 	std::string Hex11::getStringZhTw()
 	{
-		return "";
+		return "巫";
 	}
 }

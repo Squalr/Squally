@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Flip1::getStringAr()
 	{
-		return "";
+		return "اقلب أول بت";
 	}
 
 	std::string Flip1::getStringBg()
 	{
-		return "";
+		return "Обърнете първия бит";
 	}
 
 	std::string Flip1::getStringCs()
 	{
-		return "";
+		return "Překlopte první bit";
 	}
 
 	std::string Flip1::getStringDa()
 	{
-		return "";
+		return "Vend den første bit";
 	}
 
 	std::string Flip1::getStringDe()
 	{
-		return "";
+		return "Das erste Bit umdrehen";
 	}
 
 	std::string Flip1::getStringEl()
 	{
-		return "";
+		return "Περιστρέψτε το πρώτο κομμάτι";
 	}
 
 	std::string Flip1::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Flip1::getStringEs()
 	{
-		return "";
+		return "Voltear el primer bit";
 	}
 
 	std::string Flip1::getStringEs419()
 	{
-		return "";
+		return "Voltear el primer bit";
 	}
 
 	std::string Flip1::getStringFi()
 	{
-		return "";
+		return "Käännä ensimmäinen bitti";
 	}
 
 	std::string Flip1::getStringFr()
 	{
-		return "";
+		return "Retournez le premier bit";
 	}
 
 	std::string Flip1::getStringHu()
 	{
-		return "";
+		return "Flip az első bit";
 	}
 
 	std::string Flip1::getStringIt()
 	{
-		return "";
+		return "Capovolgi il primo bit";
 	}
 
 	std::string Flip1::getStringJa()
 	{
-		return "";
+		return "最初のビットを反転";
 	}
 
 	std::string Flip1::getStringKo()
 	{
-		return "";
+		return "첫 번째 비트 뒤집기";
 	}
 
 	std::string Flip1::getStringNl()
 	{
-		return "";
+		return "Draai het eerste deel";
 	}
 
 	std::string Flip1::getStringNo()
 	{
-		return "";
+		return "Vend den første biten";
 	}
 
 	std::string Flip1::getStringPl()
 	{
-		return "";
+		return "Odwróć pierwszy bit";
 	}
 
 	std::string Flip1::getStringPt()
 	{
-		return "";
+		return "Virar o primeiro bit";
 	}
 
 	std::string Flip1::getStringPtBr()
 	{
-		return "";
+		return "Virar o primeiro bit";
 	}
 
 	std::string Flip1::getStringRo()
 	{
-		return "";
+		return "Răsturnați primul bit";
 	}
 
 	std::string Flip1::getStringRu()
 	{
-		return "";
+		return "Отразить первый бит";
 	}
 
 	std::string Flip1::getStringSv()
 	{
-		return "";
+		return "Vänd den första biten";
 	}
 
 	std::string Flip1::getStringTh()
 	{
-		return "";
+		return "พลิกบิตแรก";
 	}
 
 	std::string Flip1::getStringTr()
 	{
-		return "";
+		return "İlk biti çevir";
 	}
 
 	std::string Flip1::getStringUk()
 	{
-		return "";
+		return "Переверніть перший біт";
 	}
 
-	std::string Flip1::getStringVn()
+	std::string Flip1::getStringVi()
 	{
-		return "";
+		return "Lật bit đầu tiên";
 	}
 
 	std::string Flip1::getStringZhCn()
 	{
-		return "";
+		return "翻转第一位";
 	}
 
 	std::string Flip1::getStringZhTw()
 	{
-		return "";
+		return "翻轉第一位";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Return::getStringAr()
 	{
-		return "";
+		return "إرجاع";
 	}
 
 	std::string Return::getStringBg()
 	{
-		return "";
+		return "връщане";
 	}
 
 	std::string Return::getStringCs()
 	{
-		return "";
+		return "Vrátit se";
 	}
 
 	std::string Return::getStringDa()
 	{
-		return "";
+		return "Vend tilbage";
 	}
 
 	std::string Return::getStringDe()
 	{
-		return "";
+		return "Rückkehr";
 	}
 
 	std::string Return::getStringEl()
 	{
-		return "";
+		return "ΕΠΙΣΤΡΟΦΗ";
 	}
 
 	std::string Return::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Return::getStringEs()
 	{
-		return "";
+		return "Regreso";
 	}
 
 	std::string Return::getStringEs419()
 	{
-		return "";
+		return "Regreso";
 	}
 
 	std::string Return::getStringFi()
 	{
-		return "";
+		return "Palata";
 	}
 
 	std::string Return::getStringFr()
 	{
-		return "Retour";
+		return "Revenir";
 	}
 
 	std::string Return::getStringHu()
 	{
-		return "";
+		return "Visszatérés";
 	}
 
 	std::string Return::getStringIt()
 	{
-		return "";
+		return "Ritorno";
 	}
 
 	std::string Return::getStringJa()
 	{
-		return "";
+		return "戻る";
 	}
 
 	std::string Return::getStringKo()
 	{
-		return "";
+		return "반환";
 	}
 
 	std::string Return::getStringNl()
 	{
-		return "";
+		return "terugkeer";
 	}
 
 	std::string Return::getStringNo()
 	{
-		return "";
+		return "Komme tilbake";
 	}
 
 	std::string Return::getStringPl()
 	{
-		return "";
+		return "Powrót";
 	}
 
 	std::string Return::getStringPt()
 	{
-		return "";
+		return "Retorna";
 	}
 
 	std::string Return::getStringPtBr()
 	{
-		return "";
+		return "Retorna";
 	}
 
 	std::string Return::getStringRo()
 	{
-		return "";
+		return "Întoarcere";
 	}
 
 	std::string Return::getStringRu()
 	{
-		return "";
+		return "Вернуть";
 	}
 
 	std::string Return::getStringSv()
 	{
-		return "";
+		return "Lämna tillbaka";
 	}
 
 	std::string Return::getStringTh()
 	{
-		return "";
+		return "กลับ";
 	}
 
 	std::string Return::getStringTr()
 	{
-		return "";
+		return "Dönüş";
 	}
 
 	std::string Return::getStringUk()
 	{
-		return "";
+		return "Повернення";
 	}
 
-	std::string Return::getStringVn()
+	std::string Return::getStringVi()
 	{
-		return "";
+		return "Trở về";
 	}
 
 	std::string Return::getStringZhCn()
 	{
-		return "";
+		return "返回";
 	}
 
 	std::string Return::getStringZhTw()
 	{
-		return "";
+		return "返回";
 	}
 }

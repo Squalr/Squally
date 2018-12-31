@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Addition::getStringAr()
 	{
-		return "";
+		return "إضافة";
 	}
 
 	std::string Addition::getStringBg()
 	{
-		return "";
+		return "допълнение";
 	}
 
 	std::string Addition::getStringCs()
 	{
-		return "";
+		return "Přidání";
 	}
 
 	std::string Addition::getStringDa()
 	{
-		return "";
+		return "Addition";
 	}
 
 	std::string Addition::getStringDe()
 	{
-		return "";
+		return "Zusatz";
 	}
 
 	std::string Addition::getStringEl()
 	{
-		return "";
+		return "Πρόσθεση";
 	}
 
 	std::string Addition::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Addition::getStringEs()
 	{
-		return "";
+		return "Adición";
 	}
 
 	std::string Addition::getStringEs419()
 	{
-		return "";
+		return "Adición";
 	}
 
 	std::string Addition::getStringFi()
 	{
-		return "";
+		return "Lisäys";
 	}
 
 	std::string Addition::getStringFr()
 	{
-		return "";
+		return "Une addition";
 	}
 
 	std::string Addition::getStringHu()
 	{
-		return "";
+		return "Kiegészítés";
 	}
 
 	std::string Addition::getStringIt()
 	{
-		return "";
+		return "aggiunta";
 	}
 
 	std::string Addition::getStringJa()
 	{
-		return "";
+		return "添加";
 	}
 
 	std::string Addition::getStringKo()
 	{
-		return "";
+		return "부가";
 	}
 
 	std::string Addition::getStringNl()
 	{
-		return "";
+		return "toevoeging";
 	}
 
 	std::string Addition::getStringNo()
 	{
-		return "";
+		return "Addisjon";
 	}
 
 	std::string Addition::getStringPl()
 	{
-		return "";
+		return "Dodanie";
 	}
 
 	std::string Addition::getStringPt()
 	{
-		return "";
+		return "Adição";
 	}
 
 	std::string Addition::getStringPtBr()
 	{
-		return "";
+		return "Adição";
 	}
 
 	std::string Addition::getStringRo()
 	{
-		return "";
+		return "Plus";
 	}
 
 	std::string Addition::getStringRu()
 	{
-		return "";
+		return "прибавление";
 	}
 
 	std::string Addition::getStringSv()
 	{
-		return "";
+		return "Tillägg";
 	}
 
 	std::string Addition::getStringTh()
 	{
-		return "";
+		return "การเพิ่ม";
 	}
 
 	std::string Addition::getStringTr()
 	{
-		return "";
+		return "İlave";
 	}
 
 	std::string Addition::getStringUk()
 	{
-		return "";
+		return "Додавання";
 	}
 
-	std::string Addition::getStringVn()
+	std::string Addition::getStringVi()
 	{
-		return "";
+		return "Thêm vào";
 	}
 
 	std::string Addition::getStringZhCn()
 	{
-		return "";
+		return "加成";
 	}
 
 	std::string Addition::getStringZhTw()
 	{
-		return "";
+		return "加成";
 	}
 }

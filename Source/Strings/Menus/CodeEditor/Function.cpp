@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Function::getStringAr()
 	{
-		return "";
+		return "وظيفة";
 	}
 
 	std::string Function::getStringBg()
 	{
-		return "";
+		return "функция";
 	}
 
 	std::string Function::getStringCs()
 	{
-		return "";
+		return "Funkce";
 	}
 
 	std::string Function::getStringDa()
 	{
-		return "";
+		return "Fungere";
 	}
 
 	std::string Function::getStringDe()
 	{
-		return "";
+		return "Funktion";
 	}
 
 	std::string Function::getStringEl()
 	{
-		return "";
+		return "Λειτουργία";
 	}
 
 	std::string Function::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Function::getStringEs()
 	{
-		return "";
+		return "Función";
 	}
 
 	std::string Function::getStringEs419()
 	{
-		return "";
+		return "Función";
 	}
 
 	std::string Function::getStringFi()
 	{
-		return "";
+		return "Toimia";
 	}
 
 	std::string Function::getStringFr()
 	{
-		return "";
+		return "Fonction";
 	}
 
 	std::string Function::getStringHu()
 	{
-		return "";
+		return "Funkció";
 	}
 
 	std::string Function::getStringIt()
 	{
-		return "";
+		return "Funzione";
 	}
 
 	std::string Function::getStringJa()
 	{
-		return "";
+		return "関数";
 	}
 
 	std::string Function::getStringKo()
 	{
-		return "";
+		return "기능";
 	}
 
 	std::string Function::getStringNl()
 	{
-		return "";
+		return "Functie";
 	}
 
 	std::string Function::getStringNo()
 	{
-		return "";
+		return "Funksjon";
 	}
 
 	std::string Function::getStringPl()
 	{
-		return "";
+		return "Funkcjonować";
 	}
 
 	std::string Function::getStringPt()
 	{
-		return "";
+		return "Função";
 	}
 
 	std::string Function::getStringPtBr()
 	{
-		return "";
+		return "Função";
 	}
 
 	std::string Function::getStringRo()
 	{
-		return "";
+		return "Funcţie";
 	}
 
 	std::string Function::getStringRu()
 	{
-		return "";
+		return "функция";
 	}
 
 	std::string Function::getStringSv()
 	{
-		return "";
+		return "Fungera";
 	}
 
 	std::string Function::getStringTh()
 	{
-		return "";
+		return "ฟังก์ชัน";
 	}
 
 	std::string Function::getStringTr()
 	{
-		return "";
+		return "fonksiyon";
 	}
 
 	std::string Function::getStringUk()
 	{
-		return "";
+		return "Функція";
 	}
 
-	std::string Function::getStringVn()
+	std::string Function::getStringVi()
 	{
-		return "";
+		return "Chức năng";
 	}
 
 	std::string Function::getStringZhCn()
 	{
-		return "";
+		return "功能";
 	}
 
 	std::string Function::getStringZhTw()
 	{
-		return "";
+		return "功能";
 	}
 }

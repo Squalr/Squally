@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Decimal7::getStringAr()
 	{
-		return "";
+		return "جاكس";
 	}
 
 	std::string Decimal7::getStringBg()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringCs()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringDa()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringDe()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringEl()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Decimal7::getStringEs()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringEs419()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringFi()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringFr()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringHu()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringIt()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringJa()
 	{
-		return "";
+		return "ジャックス";
 	}
 
 	std::string Decimal7::getStringKo()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringNl()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringNo()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringPl()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringPt()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringPtBr()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringRo()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringRu()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringSv()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringTh()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringTr()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringUk()
 	{
-		return "";
+		return "Jax";
 	}
 
-	std::string Decimal7::getStringVn()
+	std::string Decimal7::getStringVi()
 	{
-		return "";
+		return "Jax";
 	}
 
 	std::string Decimal7::getStringZhCn()
 	{
-		return "";
+		return "贾克斯";
 	}
 
 	std::string Decimal7::getStringZhTw()
 	{
-		return "";
+		return "賈克斯";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Pause::getStringAr()
 	{
-		return "";
+		return "وقفة";
 	}
 
 	std::string Pause::getStringBg()
 	{
-		return "";
+		return "пауза";
 	}
 
 	std::string Pause::getStringCs()
 	{
-		return "";
+		return "Pauza";
 	}
 
 	std::string Pause::getStringDa()
 	{
-		return "";
+		return "Pause";
 	}
 
 	std::string Pause::getStringDe()
 	{
-		return "";
+		return "Pause";
 	}
 
 	std::string Pause::getStringEl()
 	{
-		return "";
+		return "Παύση";
 	}
 
 	std::string Pause::getStringEn()
@@ -65,17 +65,17 @@ namespace LocaleStrings
 
 	std::string Pause::getStringEs()
 	{
-		return "";
+		return "Pausa";
 	}
 
 	std::string Pause::getStringEs419()
 	{
-		return "";
+		return "Pausa";
 	}
 
 	std::string Pause::getStringFi()
 	{
-		return "";
+		return "Tauko";
 	}
 
 	std::string Pause::getStringFr()
@@ -85,91 +85,91 @@ namespace LocaleStrings
 
 	std::string Pause::getStringHu()
 	{
-		return "";
+		return "Szünet";
 	}
 
 	std::string Pause::getStringIt()
 	{
-		return "";
+		return "Pausa";
 	}
 
 	std::string Pause::getStringJa()
 	{
-		return "";
+		return "一時停止";
 	}
 
 	std::string Pause::getStringKo()
 	{
-		return "";
+		return "중지";
 	}
 
 	std::string Pause::getStringNl()
 	{
-		return "";
+		return "Pauze";
 	}
 
 	std::string Pause::getStringNo()
 	{
-		return "";
+		return "Pause";
 	}
 
 	std::string Pause::getStringPl()
 	{
-		return "";
+		return "Pauza";
 	}
 
 	std::string Pause::getStringPt()
 	{
-		return "";
+		return "Pausa";
 	}
 
 	std::string Pause::getStringPtBr()
 	{
-		return "";
+		return "Pausa";
 	}
 
 	std::string Pause::getStringRo()
 	{
-		return "";
+		return "Pauză";
 	}
 
 	std::string Pause::getStringRu()
 	{
-		return "";
+		return "Пауза";
 	}
 
 	std::string Pause::getStringSv()
 	{
-		return "";
+		return "Paus";
 	}
 
 	std::string Pause::getStringTh()
 	{
-		return "";
+		return "หยุด";
 	}
 
 	std::string Pause::getStringTr()
 	{
-		return "";
+		return "Duraklat";
 	}
 
 	std::string Pause::getStringUk()
 	{
-		return "";
+		return "Пауза";
 	}
 
-	std::string Pause::getStringVn()
+	std::string Pause::getStringVi()
 	{
-		return "";
+		return "Tạm ngừng";
 	}
 
 	std::string Pause::getStringZhCn()
 	{
-		return "";
+		return "暂停";
 	}
 
 	std::string Pause::getStringZhTw()
 	{
-		return "";
+		return "暫停";
 	}
 }

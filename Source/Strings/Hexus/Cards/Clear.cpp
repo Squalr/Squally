@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Clear::getStringAr()
 	{
-		return "";
+		return "واضح";
 	}
 
 	std::string Clear::getStringBg()
 	{
-		return "";
+		return "ясно";
 	}
 
 	std::string Clear::getStringCs()
 	{
-		return "";
+		return "Průhledná";
 	}
 
 	std::string Clear::getStringDa()
 	{
-		return "";
+		return "Klar";
 	}
 
 	std::string Clear::getStringDe()
 	{
-		return "";
+		return "klar";
 	}
 
 	std::string Clear::getStringEl()
 	{
-		return "";
+		return "Σαφή";
 	}
 
 	std::string Clear::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Clear::getStringEs()
 	{
-		return "";
+		return "Claro";
 	}
 
 	std::string Clear::getStringEs419()
 	{
-		return "";
+		return "Claro";
 	}
 
 	std::string Clear::getStringFi()
 	{
-		return "";
+		return "Asia selvä";
 	}
 
 	std::string Clear::getStringFr()
 	{
-		return "";
+		return "Clair";
 	}
 
 	std::string Clear::getStringHu()
 	{
-		return "";
+		return "Egyértelmű";
 	}
 
 	std::string Clear::getStringIt()
 	{
-		return "";
+		return "Chiaro";
 	}
 
 	std::string Clear::getStringJa()
 	{
-		return "";
+		return "クリア";
 	}
 
 	std::string Clear::getStringKo()
 	{
-		return "";
+		return "명확한";
 	}
 
 	std::string Clear::getStringNl()
 	{
-		return "";
+		return "Duidelijk";
 	}
 
 	std::string Clear::getStringNo()
 	{
-		return "";
+		return "Klar";
 	}
 
 	std::string Clear::getStringPl()
 	{
-		return "";
+		return "Jasny";
 	}
 
 	std::string Clear::getStringPt()
 	{
-		return "";
+		return "Claro";
 	}
 
 	std::string Clear::getStringPtBr()
 	{
-		return "";
+		return "Claro";
 	}
 
 	std::string Clear::getStringRo()
 	{
-		return "";
+		return "clar";
 	}
 
 	std::string Clear::getStringRu()
 	{
-		return "";
+		return "Очистить";
 	}
 
 	std::string Clear::getStringSv()
 	{
-		return "";
+		return "Klar";
 	}
 
 	std::string Clear::getStringTh()
 	{
-		return "";
+		return "ชัดเจน";
 	}
 
 	std::string Clear::getStringTr()
 	{
-		return "";
+		return "Açık";
 	}
 
 	std::string Clear::getStringUk()
 	{
-		return "";
+		return "Очистити";
 	}
 
-	std::string Clear::getStringVn()
+	std::string Clear::getStringVi()
 	{
-		return "";
+		return "Thông thoáng";
 	}
 
 	std::string Clear::getStringZhCn()
 	{
-		return "";
+		return "明确";
 	}
 
 	std::string Clear::getStringZhTw()
 	{
-		return "";
+		return "明確";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Hex2::getStringAr()
 	{
-		return "";
+		return "دودة شيطانية";
 	}
 
 	std::string Hex2::getStringBg()
 	{
-		return "";
+		return "Червеят на демоните";
 	}
 
 	std::string Hex2::getStringCs()
 	{
-		return "";
+		return "Demon červ";
 	}
 
 	std::string Hex2::getStringDa()
 	{
-		return "";
+		return "Demon orm";
 	}
 
 	std::string Hex2::getStringDe()
 	{
-		return "";
+		return "Dämonenwurm";
 	}
 
 	std::string Hex2::getStringEl()
 	{
-		return "";
+		return "Blat";
 	}
 
 	std::string Hex2::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Hex2::getStringEs()
 	{
-		return "";
+		return "Gusano demonio";
 	}
 
 	std::string Hex2::getStringEs419()
 	{
-		return "";
+		return "Gusano demonio";
 	}
 
 	std::string Hex2::getStringFi()
 	{
-		return "";
+		return "Demon mato";
 	}
 
 	std::string Hex2::getStringFr()
 	{
-		return "";
+		return "Ver démon";
 	}
 
 	std::string Hex2::getStringHu()
 	{
-		return "";
+		return "Demon féreg";
 	}
 
 	std::string Hex2::getStringIt()
 	{
-		return "";
+		return "Verme demone";
 	}
 
 	std::string Hex2::getStringJa()
 	{
-		return "";
+		return "デーモンワーム";
 	}
 
 	std::string Hex2::getStringKo()
 	{
-		return "";
+		return "악마 웜";
 	}
 
 	std::string Hex2::getStringNl()
 	{
-		return "";
+		return "Blat";
 	}
 
 	std::string Hex2::getStringNo()
 	{
-		return "";
+		return "Blat";
 	}
 
 	std::string Hex2::getStringPl()
 	{
-		return "";
+		return "Robak demonów";
 	}
 
 	std::string Hex2::getStringPt()
 	{
-		return "";
+		return "Verme demoníaco";
 	}
 
 	std::string Hex2::getStringPtBr()
 	{
-		return "";
+		return "Verme demoníaco";
 	}
 
 	std::string Hex2::getStringRo()
 	{
-		return "";
+		return "Demon vierme";
 	}
 
 	std::string Hex2::getStringRu()
 	{
-		return "";
+		return "Демон червь";
 	}
 
 	std::string Hex2::getStringSv()
 	{
-		return "";
+		return "Demonmask";
 	}
 
 	std::string Hex2::getStringTh()
 	{
-		return "";
+		return "หนอนปีศาจ";
 	}
 
 	std::string Hex2::getStringTr()
 	{
-		return "";
+		return "İblis kurdu";
 	}
 
 	std::string Hex2::getStringUk()
 	{
-		return "";
+		return "Черв'як демон";
 	}
 
-	std::string Hex2::getStringVn()
+	std::string Hex2::getStringVi()
 	{
-		return "";
+		return "Quỷ quỷ";
 	}
 
 	std::string Hex2::getStringZhCn()
 	{
-		return "";
+		return "恶魔虫";
 	}
 
 	std::string Hex2::getStringZhTw()
 	{
-		return "";
+		return "惡魔蟲";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string OpponentLead::getStringAr()
 	{
-		return "";
+		return "خصمك لديه تقدم كبير أكثر من أنت!";
 	}
 
 	std::string OpponentLead::getStringBg()
 	{
-		return "";
+		return "Вашият опонент има голяма преднина пред вас!";
 	}
 
 	std::string OpponentLead::getStringCs()
 	{
-		return "";
+		return "Váš soupeř má nad vámi velké vedení!";
 	}
 
 	std::string OpponentLead::getStringDa()
 	{
-		return "";
+		return "Din modstander har en stor ledelse over dig!";
 	}
 
 	std::string OpponentLead::getStringDe()
 	{
-		return "";
+		return "Dein Gegner hat einen großen Vorsprung vor dir!";
 	}
 
 	std::string OpponentLead::getStringEl()
 	{
-		return "";
+		return "Ο αντίπαλός σας έχει μεγάλο προβάδισμα!";
 	}
 
 	std::string OpponentLead::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string OpponentLead::getStringEs()
 	{
-		return "";
+		return "Tu oponente tiene una gran ventaja sobre ti!";
 	}
 
 	std::string OpponentLead::getStringEs419()
 	{
-		return "";
+		return "Tu oponente tiene una gran ventaja sobre ti!";
 	}
 
 	std::string OpponentLead::getStringFi()
 	{
-		return "";
+		return "Vastustajallesi on suuri johto!";
 	}
 
 	std::string OpponentLead::getStringFr()
 	{
-		return "";
+		return "Votre adversaire a une grande avance sur vous!";
 	}
 
 	std::string OpponentLead::getStringHu()
 	{
-		return "";
+		return "Az ellenfelednek nagy vezetése van rajtad!";
 	}
 
 	std::string OpponentLead::getStringIt()
 	{
-		return "";
+		return "Il tuo avversario ha un grande vantaggio su di te!";
 	}
 
 	std::string OpponentLead::getStringJa()
 	{
-		return "";
+		return "あなたの対戦相手はあなたを大きくリードしています！";
 	}
 
 	std::string OpponentLead::getStringKo()
 	{
-		return "";
+		return "상대방은 당신보다 큰 리드를 가지고 있습니다!";
 	}
 
 	std::string OpponentLead::getStringNl()
 	{
-		return "";
+		return "Je tegenstander heeft een grote voorsprong op jou!";
 	}
 
 	std::string OpponentLead::getStringNo()
 	{
-		return "";
+		return "Din motstander har en stor ledelse over deg!";
 	}
 
 	std::string OpponentLead::getStringPl()
 	{
-		return "";
+		return "Twój przeciwnik ma nad tobą dużą przewagę!";
 	}
 
 	std::string OpponentLead::getStringPt()
 	{
-		return "";
+		return "Seu oponente tem uma grande vantagem sobre você!";
 	}
 
 	std::string OpponentLead::getStringPtBr()
 	{
-		return "";
+		return "Seu oponente tem uma grande vantagem sobre você!";
 	}
 
 	std::string OpponentLead::getStringRo()
 	{
-		return "";
+		return "Oponentul tău are un avantaj mare asupra ta!";
 	}
 
 	std::string OpponentLead::getStringRu()
 	{
-		return "";
+		return "Ваш оппонент имеет большое преимущество над вами!";
 	}
 
 	std::string OpponentLead::getStringSv()
 	{
-		return "";
+		return "Din motståndare har en stor ledning över dig!";
 	}
 
 	std::string OpponentLead::getStringTh()
 	{
-		return "";
+		return "ฝ่ายตรงข้ามของคุณมีผู้นำที่ยิ่งใหญ่กว่าคุณ!";
 	}
 
 	std::string OpponentLead::getStringTr()
 	{
-		return "";
+		return "Rakibinin senin üzerinde büyük bir ipucu var!";
 	}
 
 	std::string OpponentLead::getStringUk()
 	{
-		return "";
+		return "Ваш суперник має велику перевагу над вами!";
 	}
 
-	std::string OpponentLead::getStringVn()
+	std::string OpponentLead::getStringVi()
 	{
-		return "";
+		return "Đối thủ của bạn có một dẫn lớn hơn bạn!";
 	}
 
 	std::string OpponentLead::getStringZhCn()
 	{
-		return "";
+		return "你的对手对你有很大的领先优势！";
 	}
 
 	std::string OpponentLead::getStringZhTw()
 	{
-		return "";
+		return "你的對手對你有很大的領先優勢！";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Decimal10::getStringAr()
 	{
-		return "";
+		return "أشرق";
 	}
 
 	std::string Decimal10::getStringBg()
 	{
-		return "";
+		return "излъчвам";
 	}
 
 	std::string Decimal10::getStringCs()
 	{
-		return "";
+		return "Ozářit";
 	}
 
 	std::string Decimal10::getStringDa()
 	{
-		return "";
+		return "bestråle";
 	}
 
 	std::string Decimal10::getStringDe()
 	{
-		return "";
+		return "Bestrahlen";
 	}
 
 	std::string Decimal10::getStringEl()
 	{
-		return "";
+		return "Ακτινοβολώ";
 	}
 
 	std::string Decimal10::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Decimal10::getStringEs()
 	{
-		return "";
+		return "Irradiar";
 	}
 
 	std::string Decimal10::getStringEs419()
 	{
-		return "";
+		return "Irradiar";
 	}
 
 	std::string Decimal10::getStringFi()
 	{
-		return "";
+		return "Säteilyttää";
 	}
 
 	std::string Decimal10::getStringFr()
 	{
-		return "";
+		return "Irradier";
 	}
 
 	std::string Decimal10::getStringHu()
 	{
-		return "";
+		return "kivilágít";
 	}
 
 	std::string Decimal10::getStringIt()
 	{
-		return "";
+		return "Irradiare";
 	}
 
 	std::string Decimal10::getStringJa()
 	{
-		return "";
+		return "照射する";
 	}
 
 	std::string Decimal10::getStringKo()
 	{
-		return "";
+		return "비추다";
 	}
 
 	std::string Decimal10::getStringNl()
 	{
-		return "";
+		return "Bestralen";
 	}
 
 	std::string Decimal10::getStringNo()
 	{
-		return "";
+		return "bestråle";
 	}
 
 	std::string Decimal10::getStringPl()
 	{
-		return "";
+		return "Naświetlać";
 	}
 
 	std::string Decimal10::getStringPt()
 	{
-		return "";
+		return "Irradiar";
 	}
 
 	std::string Decimal10::getStringPtBr()
 	{
-		return "";
+		return "Irradiar";
 	}
 
 	std::string Decimal10::getStringRo()
 	{
-		return "";
+		return "Iradia";
 	}
 
 	std::string Decimal10::getStringRu()
 	{
-		return "";
+		return "облучать";
 	}
 
 	std::string Decimal10::getStringSv()
 	{
-		return "";
+		return "Bestråla";
 	}
 
 	std::string Decimal10::getStringTh()
 	{
-		return "";
+		return "ฉายรังสี";
 	}
 
 	std::string Decimal10::getStringTr()
 	{
-		return "";
+		return "Saçmak";
 	}
 
 	std::string Decimal10::getStringUk()
 	{
-		return "";
+		return "Опромінюють";
 	}
 
-	std::string Decimal10::getStringVn()
+	std::string Decimal10::getStringVi()
 	{
-		return "";
+		return "Chiếu xạ";
 	}
 
 	std::string Decimal10::getStringZhCn()
 	{
-		return "";
+		return "照射";
 	}
 
 	std::string Decimal10::getStringZhTw()
 	{
-		return "";
+		return "照射";
 	}
 }

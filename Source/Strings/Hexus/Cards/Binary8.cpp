@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Binary8::getStringAr()
 	{
-		return "";
+		return "سحق الروبوت";
 	}
 
 	std::string Binary8::getStringBg()
 	{
-		return "";
+		return "Трошащ робот";
 	}
 
 	std::string Binary8::getStringCs()
 	{
-		return "";
+		return "Drtící robot";
 	}
 
 	std::string Binary8::getStringDa()
 	{
-		return "";
+		return "Knusningsrobot";
 	}
 
 	std::string Binary8::getStringDe()
 	{
-		return "";
+		return "Roboter zerquetschen";
 	}
 
 	std::string Binary8::getStringEl()
 	{
-		return "";
+		return "Ρομπότ σύνθλιψης";
 	}
 
 	std::string Binary8::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Binary8::getStringEs()
 	{
-		return "";
+		return "Robot de trituración";
 	}
 
 	std::string Binary8::getStringEs419()
 	{
-		return "";
+		return "Robot de trituración";
 	}
 
 	std::string Binary8::getStringFi()
 	{
-		return "";
+		return "Murskausrobotti";
 	}
 
 	std::string Binary8::getStringFr()
 	{
-		return "";
+		return "Robot concasseur";
 	}
 
 	std::string Binary8::getStringHu()
 	{
-		return "";
+		return "Zúzó robot";
 	}
 
 	std::string Binary8::getStringIt()
 	{
-		return "";
+		return "Robot schiacciante";
 	}
 
 	std::string Binary8::getStringJa()
 	{
-		return "";
+		return "破砕ロボット";
 	}
 
 	std::string Binary8::getStringKo()
 	{
-		return "";
+		return "분쇄 로봇";
 	}
 
 	std::string Binary8::getStringNl()
 	{
-		return "";
+		return "Brekende robot";
 	}
 
 	std::string Binary8::getStringNo()
 	{
-		return "";
+		return "Knusende robot";
 	}
 
 	std::string Binary8::getStringPl()
 	{
-		return "";
+		return "Kruszenie robota";
 	}
 
 	std::string Binary8::getStringPt()
 	{
-		return "";
+		return "Robô de esmagamento";
 	}
 
 	std::string Binary8::getStringPtBr()
 	{
-		return "";
+		return "Robô de esmagamento";
 	}
 
 	std::string Binary8::getStringRo()
 	{
-		return "";
+		return "Robotul de strivire";
 	}
 
 	std::string Binary8::getStringRu()
 	{
-		return "";
+		return "Дробильный робот";
 	}
 
 	std::string Binary8::getStringSv()
 	{
-		return "";
+		return "Krossrobot";
 	}
 
 	std::string Binary8::getStringTh()
 	{
-		return "";
+		return "หุ่นยนต์บด";
 	}
 
 	std::string Binary8::getStringTr()
 	{
-		return "";
+		return "Kırma robotu";
 	}
 
 	std::string Binary8::getStringUk()
 	{
-		return "";
+		return "Робот дроблення";
 	}
 
-	std::string Binary8::getStringVn()
+	std::string Binary8::getStringVi()
 	{
-		return "";
+		return "Robot nghiền";
 	}
 
 	std::string Binary8::getStringZhCn()
 	{
-		return "";
+		return "破碎机器人";
 	}
 
 	std::string Binary8::getStringZhTw()
 	{
-		return "";
+		return "破碎機器人";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Decimal0::getStringAr()
 	{
-		return "";
+		return "جزرة";
 	}
 
 	std::string Decimal0::getStringBg()
 	{
-		return "";
+		return "морков";
 	}
 
 	std::string Decimal0::getStringCs()
 	{
-		return "";
+		return "Mrkev";
 	}
 
 	std::string Decimal0::getStringDa()
 	{
-		return "";
+		return "Gulerod";
 	}
 
 	std::string Decimal0::getStringDe()
 	{
-		return "";
+		return "Karotte";
 	}
 
 	std::string Decimal0::getStringEl()
 	{
-		return "";
+		return "Καρότο";
 	}
 
 	std::string Decimal0::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Decimal0::getStringEs()
 	{
-		return "";
+		return "Zanahoria";
 	}
 
 	std::string Decimal0::getStringEs419()
 	{
-		return "";
+		return "Zanahoria";
 	}
 
 	std::string Decimal0::getStringFi()
 	{
-		return "";
+		return "Porkkana";
 	}
 
 	std::string Decimal0::getStringFr()
 	{
-		return "";
+		return "Carotte";
 	}
 
 	std::string Decimal0::getStringHu()
 	{
-		return "";
+		return "Sárgarépa";
 	}
 
 	std::string Decimal0::getStringIt()
 	{
-		return "";
+		return "Carota";
 	}
 
 	std::string Decimal0::getStringJa()
 	{
-		return "";
+		return "にんじん";
 	}
 
 	std::string Decimal0::getStringKo()
 	{
-		return "";
+		return "당근";
 	}
 
 	std::string Decimal0::getStringNl()
 	{
-		return "";
+		return "Wortel";
 	}
 
 	std::string Decimal0::getStringNo()
 	{
-		return "";
+		return "Gulrot";
 	}
 
 	std::string Decimal0::getStringPl()
 	{
-		return "";
+		return "Marchewka";
 	}
 
 	std::string Decimal0::getStringPt()
 	{
-		return "";
+		return "Cenoura";
 	}
 
 	std::string Decimal0::getStringPtBr()
 	{
-		return "";
+		return "Cenoura";
 	}
 
 	std::string Decimal0::getStringRo()
 	{
-		return "";
+		return "Morcov";
 	}
 
 	std::string Decimal0::getStringRu()
 	{
-		return "";
+		return "Морковь";
 	}
 
 	std::string Decimal0::getStringSv()
 	{
-		return "";
+		return "Morot";
 	}
 
 	std::string Decimal0::getStringTh()
 	{
-		return "";
+		return "แครอท";
 	}
 
 	std::string Decimal0::getStringTr()
 	{
-		return "";
+		return "Havuç";
 	}
 
 	std::string Decimal0::getStringUk()
 	{
-		return "";
+		return "Морква";
 	}
 
-	std::string Decimal0::getStringVn()
+	std::string Decimal0::getStringVi()
 	{
-		return "";
+		return "Cà rốt";
 	}
 
 	std::string Decimal0::getStringZhCn()
 	{
-		return "";
+		return "胡萝卜";
 	}
 
 	std::string Decimal0::getStringZhTw()
 	{
-		return "";
+		return "胡蘿蔔";
 	}
 }

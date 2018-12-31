@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Shop::getStringAr()
 	{
-		return "";
+		return "متجر";
 	}
 
 	std::string Shop::getStringBg()
 	{
-		return "";
+		return "магазин";
 	}
 
 	std::string Shop::getStringCs()
 	{
-		return "";
+		return "Prodejna";
 	}
 
 	std::string Shop::getStringDa()
 	{
-		return "";
+		return "Butik";
 	}
 
 	std::string Shop::getStringDe()
 	{
-		return "";
+		return "Shop";
 	}
 
 	std::string Shop::getStringEl()
 	{
-		return "";
+		return "Κατάστημα";
 	}
 
 	std::string Shop::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Shop::getStringEs()
 	{
-		return "";
+		return "tienda";
 	}
 
 	std::string Shop::getStringEs419()
 	{
-		return "";
+		return "tienda";
 	}
 
 	std::string Shop::getStringFi()
 	{
-		return "";
+		return "Myymälä";
 	}
 
 	std::string Shop::getStringFr()
 	{
-		return "";
+		return "Boutique";
 	}
 
 	std::string Shop::getStringHu()
 	{
-		return "";
+		return "Üzlet";
 	}
 
 	std::string Shop::getStringIt()
 	{
-		return "";
+		return "Negozio";
 	}
 
 	std::string Shop::getStringJa()
 	{
-		return "";
+		return "ショップ";
 	}
 
 	std::string Shop::getStringKo()
 	{
-		return "";
+		return "가게";
 	}
 
 	std::string Shop::getStringNl()
 	{
-		return "";
+		return "Winkel";
 	}
 
 	std::string Shop::getStringNo()
 	{
-		return "";
+		return "Butikk";
 	}
 
 	std::string Shop::getStringPl()
 	{
-		return "";
+		return "Sklep";
 	}
 
 	std::string Shop::getStringPt()
 	{
-		return "";
+		return "fazer compras";
 	}
 
 	std::string Shop::getStringPtBr()
 	{
-		return "";
+		return "fazer compras";
 	}
 
 	std::string Shop::getStringRo()
 	{
-		return "";
+		return "Magazin";
 	}
 
 	std::string Shop::getStringRu()
 	{
-		return "";
+		return "Магазин";
 	}
 
 	std::string Shop::getStringSv()
 	{
-		return "";
+		return "affär";
 	}
 
 	std::string Shop::getStringTh()
 	{
-		return "";
+		return "ร้านขายของ";
 	}
 
 	std::string Shop::getStringTr()
 	{
-		return "";
+		return "Dükkan";
 	}
 
 	std::string Shop::getStringUk()
 	{
-		return "";
+		return "Магазин";
 	}
 
-	std::string Shop::getStringVn()
+	std::string Shop::getStringVi()
 	{
-		return "";
+		return "Shop";
 	}
 
 	std::string Shop::getStringZhCn()
 	{
-		return "";
+		return "店";
 	}
 
 	std::string Shop::getStringZhTw()
 	{
-		return "";
+		return "店";
 	}
 }

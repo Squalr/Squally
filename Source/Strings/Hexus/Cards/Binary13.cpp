@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Binary13::getStringAr()
 	{
-		return "";
+		return "golem من الأحجار الكريمة";
 	}
 
 	std::string Binary13::getStringBg()
 	{
-		return "";
+		return "Голем от скъпоценни камъни";
 	}
 
 	std::string Binary13::getStringCs()
 	{
-		return "";
+		return "golem drahokamů";
 	}
 
 	std::string Binary13::getStringDa()
 	{
-		return "";
+		return "golem af ædelstene";
 	}
 
 	std::string Binary13::getStringDe()
 	{
-		return "";
+		return "Golem von Edelsteinen";
 	}
 
 	std::string Binary13::getStringEl()
 	{
-		return "";
+		return "golem των πολύτιμων λίθων";
 	}
 
 	std::string Binary13::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Binary13::getStringEs()
 	{
-		return "";
+		return "golem de gemas";
 	}
 
 	std::string Binary13::getStringEs419()
 	{
-		return "";
+		return "golem de gemas";
 	}
 
 	std::string Binary13::getStringFi()
 	{
-		return "";
+		return "jalokiviä";
 	}
 
 	std::string Binary13::getStringFr()
 	{
-		return "";
+		return "golem de pierres précieuses";
 	}
 
 	std::string Binary13::getStringHu()
 	{
-		return "";
+		return "drágakövek";
 	}
 
 	std::string Binary13::getStringIt()
 	{
-		return "";
+		return "golem di gemme";
 	}
 
 	std::string Binary13::getStringJa()
 	{
-		return "";
+		return "宝石のゴーレム";
 	}
 
 	std::string Binary13::getStringKo()
 	{
-		return "";
+		return "보석의 골렘";
 	}
 
 	std::string Binary13::getStringNl()
 	{
-		return "";
+		return "golem van edelstenen";
 	}
 
 	std::string Binary13::getStringNo()
 	{
-		return "";
+		return "golem av edelstener";
 	}
 
 	std::string Binary13::getStringPl()
 	{
-		return "";
+		return "golem klejnotów";
 	}
 
 	std::string Binary13::getStringPt()
 	{
-		return "";
+		return "golem de gemas";
 	}
 
 	std::string Binary13::getStringPtBr()
 	{
-		return "";
+		return "golem de gemas";
 	}
 
 	std::string Binary13::getStringRo()
 	{
-		return "";
+		return "golem de pietre prețioase";
 	}
 
 	std::string Binary13::getStringRu()
 	{
-		return "";
+		return "голем драгоценных камней";
 	}
 
 	std::string Binary13::getStringSv()
 	{
-		return "";
+		return "golem av pärlor";
 	}
 
 	std::string Binary13::getStringTh()
 	{
-		return "";
+		return "จุดหมายของอัญมณี";
 	}
 
 	std::string Binary13::getStringTr()
 	{
-		return "";
+		return "değerli taşlar";
 	}
 
 	std::string Binary13::getStringUk()
 	{
-		return "";
+		return "голем з дорогоцінних каменів";
 	}
 
-	std::string Binary13::getStringVn()
+	std::string Binary13::getStringVi()
 	{
-		return "";
+		return "golem của đá quý";
 	}
 
 	std::string Binary13::getStringZhCn()
 	{
-		return "";
+		return "宝石的傀儡";
 	}
 
 	std::string Binary13::getStringZhTw()
 	{
-		return "";
+		return "寶石的傀儡";
 	}
 }

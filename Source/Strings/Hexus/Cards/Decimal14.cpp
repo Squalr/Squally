@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Decimal14::getStringAr()
 	{
-		return "";
+		return "هائج";
 	}
 
 	std::string Decimal14::getStringBg()
 	{
-		return "";
+		return "неустрашим войн";
 	}
 
 	std::string Decimal14::getStringCs()
 	{
-		return "";
+		return "Berserker";
 	}
 
 	std::string Decimal14::getStringDa()
 	{
-		return "";
+		return "Berserker";
 	}
 
 	std::string Decimal14::getStringDe()
 	{
-		return "";
+		return "Berserker";
 	}
 
 	std::string Decimal14::getStringEl()
 	{
-		return "";
+		return "Berserker";
 	}
 
 	std::string Decimal14::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Decimal14::getStringEs()
 	{
-		return "";
+		return "frenético";
 	}
 
 	std::string Decimal14::getStringEs419()
 	{
-		return "";
+		return "frenético";
 	}
 
 	std::string Decimal14::getStringFi()
 	{
-		return "";
+		return "Berserker";
 	}
 
 	std::string Decimal14::getStringFr()
 	{
-		return "";
+		return "Berserker";
 	}
 
 	std::string Decimal14::getStringHu()
 	{
-		return "";
+		return "dühödt";
 	}
 
 	std::string Decimal14::getStringIt()
 	{
-		return "";
+		return "Berserker";
 	}
 
 	std::string Decimal14::getStringJa()
 	{
-		return "";
+		return "バーサーカー";
 	}
 
 	std::string Decimal14::getStringKo()
 	{
-		return "";
+		return "맹렬한";
 	}
 
 	std::string Decimal14::getStringNl()
 	{
-		return "";
+		return "Berserker";
 	}
 
 	std::string Decimal14::getStringNo()
 	{
-		return "";
+		return "Berserker";
 	}
 
 	std::string Decimal14::getStringPl()
 	{
-		return "";
+		return "Berserker";
 	}
 
 	std::string Decimal14::getStringPt()
 	{
-		return "";
+		return "Berserker";
 	}
 
 	std::string Decimal14::getStringPtBr()
 	{
-		return "";
+		return "Berserker";
 	}
 
 	std::string Decimal14::getStringRo()
 	{
-		return "";
+		return "Berserker";
 	}
 
 	std::string Decimal14::getStringRu()
 	{
-		return "";
+		return "берсерк";
 	}
 
 	std::string Decimal14::getStringSv()
 	{
-		return "";
+		return "Bärsärk";
 	}
 
 	std::string Decimal14::getStringTh()
 	{
-		return "";
+		return "บ้าบิ่น";
 	}
 
 	std::string Decimal14::getStringTr()
 	{
-		return "";
+		return "vahşi savaşçı";
 	}
 
 	std::string Decimal14::getStringUk()
 	{
-		return "";
+		return "Берсерк";
 	}
 
-	std::string Decimal14::getStringVn()
+	std::string Decimal14::getStringVi()
 	{
-		return "";
+		return "Berserker";
 	}
 
 	std::string Decimal14::getStringZhCn()
 	{
-		return "";
+		return "狂战士";
 	}
 
 	std::string Decimal14::getStringZhTw()
 	{
-		return "";
+		return "狂戰士";
 	}
 }

@@ -158,7 +158,7 @@ namespace LocaleStrings
 		return "";
 	}
 
-	std::string Decimal5::getStringVn()
+	std::string Decimal5::getStringVi()
 	{
 		return "";
 	}

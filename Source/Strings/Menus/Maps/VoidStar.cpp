@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string VoidStar::getStringAr()
 	{
-		return "";
+		return "نجم الفراغ";
 	}
 
 	std::string VoidStar::getStringBg()
 	{
-		return "";
+		return "Пуста звезда";
 	}
 
 	std::string VoidStar::getStringCs()
 	{
-		return "";
+		return "Neplatná hvězda";
 	}
 
 	std::string VoidStar::getStringDa()
 	{
-		return "";
+		return "Ugyldig stjerne";
 	}
 
 	std::string VoidStar::getStringDe()
 	{
-		return "";
+		return "Leerer Stern";
 	}
 
 	std::string VoidStar::getStringEl()
 	{
-		return "";
+		return "Άκυρο αστέρι";
 	}
 
 	std::string VoidStar::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string VoidStar::getStringEs()
 	{
-		return "";
+		return "Estrella del vacio";
 	}
 
 	std::string VoidStar::getStringEs419()
 	{
-		return "";
+		return "Estrella del vacio";
 	}
 
 	std::string VoidStar::getStringFi()
 	{
-		return "";
+		return "Tyhjä tähti";
 	}
 
 	std::string VoidStar::getStringFr()
 	{
-		return "";
+		return "Étoile vide";
 	}
 
 	std::string VoidStar::getStringHu()
 	{
-		return "";
+		return "Érvénytelen csillag";
 	}
 
 	std::string VoidStar::getStringIt()
 	{
-		return "";
+		return "Stella vuota";
 	}
 
 	std::string VoidStar::getStringJa()
 	{
-		return "";
+		return "ヴォイドスター";
 	}
 
 	std::string VoidStar::getStringKo()
 	{
-		return "";
+		return "공허한 별";
 	}
 
 	std::string VoidStar::getStringNl()
 	{
-		return "";
+		return "Leegte ster";
 	}
 
 	std::string VoidStar::getStringNo()
 	{
-		return "";
+		return "Gyldig stjerne";
 	}
 
 	std::string VoidStar::getStringPl()
 	{
-		return "";
+		return "Gwiazda pustki";
 	}
 
 	std::string VoidStar::getStringPt()
 	{
-		return "";
+		return "Estrela vazia";
 	}
 
 	std::string VoidStar::getStringPtBr()
 	{
-		return "";
+		return "Estrela vazia";
 	}
 
 	std::string VoidStar::getStringRo()
 	{
-		return "";
+		return "Void stea";
 	}
 
 	std::string VoidStar::getStringRu()
 	{
-		return "";
+		return "Пустая звезда";
 	}
 
 	std::string VoidStar::getStringSv()
 	{
-		return "";
+		return "Annullerad stjärna";
 	}
 
 	std::string VoidStar::getStringTh()
 	{
-		return "";
+		return "ดาวโมฆะ";
 	}
 
 	std::string VoidStar::getStringTr()
 	{
-		return "";
+		return "Boşluk yıldızı";
 	}
 
 	std::string VoidStar::getStringUk()
 	{
-		return "";
+		return "Пустельна зірка";
 	}
 
-	std::string VoidStar::getStringVn()
+	std::string VoidStar::getStringVi()
 	{
-		return "";
+		return "Ngôi sao trống";
 	}
 
 	std::string VoidStar::getStringZhCn()
 	{
-		return "";
+		return "虚空之星";
 	}
 
 	std::string VoidStar::getStringZhTw()
 	{
-		return "";
+		return "虛空之星";
 	}
 }

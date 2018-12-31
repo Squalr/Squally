@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string QuitToTitle::getStringAr()
 	{
-		return "";
+		return "استقال الى العنوان";
 	}
 
 	std::string QuitToTitle::getStringBg()
 	{
-		return "";
+		return "Излезте от заглавието";
 	}
 
 	std::string QuitToTitle::getStringCs()
 	{
-		return "";
+		return "Ukončete titul";
 	}
 
 	std::string QuitToTitle::getStringDa()
 	{
-		return "";
+		return "Afslut til Titel";
 	}
 
 	std::string QuitToTitle::getStringDe()
 	{
-		return "";
+		return "Beenden und zurück zum Titelbildschrim";
 	}
 
 	std::string QuitToTitle::getStringEl()
 	{
-		return "";
+		return "Κλείστε στον τίτλο";
 	}
 
 	std::string QuitToTitle::getStringEn()
@@ -65,17 +65,17 @@ namespace LocaleStrings
 
 	std::string QuitToTitle::getStringEs()
 	{
-		return "";
+		return "Salir al título";
 	}
 
 	std::string QuitToTitle::getStringEs419()
 	{
-		return "";
+		return "Salir al título";
 	}
 
 	std::string QuitToTitle::getStringFi()
 	{
-		return "";
+		return "Lopeta otsikko";
 	}
 
 	std::string QuitToTitle::getStringFr()
@@ -85,91 +85,91 @@ namespace LocaleStrings
 
 	std::string QuitToTitle::getStringHu()
 	{
-		return "";
+		return "Kilép a cím";
 	}
 
 	std::string QuitToTitle::getStringIt()
 	{
-		return "";
+		return "Abbandona al titolo";
 	}
 
 	std::string QuitToTitle::getStringJa()
 	{
-		return "";
+		return "タイトルを終了";
 	}
 
 	std::string QuitToTitle::getStringKo()
 	{
-		return "";
+		return "제목으로 종료";
 	}
 
 	std::string QuitToTitle::getStringNl()
 	{
-		return "";
+		return "Keer terug naar titelscherm";
 	}
 
 	std::string QuitToTitle::getStringNo()
 	{
-		return "";
+		return "Avslutt til tittel";
 	}
 
 	std::string QuitToTitle::getStringPl()
 	{
-		return "";
+		return "Zamknij do tytułu";
 	}
 
 	std::string QuitToTitle::getStringPt()
 	{
-		return "";
+		return "Sair para o título";
 	}
 
 	std::string QuitToTitle::getStringPtBr()
 	{
-		return "";
+		return "Sair para o título";
 	}
 
 	std::string QuitToTitle::getStringRo()
 	{
-		return "";
+		return "Renunta la titlu";
 	}
 
 	std::string QuitToTitle::getStringRu()
 	{
-		return "";
+		return "Выйти в название";
 	}
 
 	std::string QuitToTitle::getStringSv()
 	{
-		return "";
+		return "Avsluta titeln";
 	}
 
 	std::string QuitToTitle::getStringTh()
 	{
-		return "";
+		return "ออกจากหัวข้อ";
 	}
 
 	std::string QuitToTitle::getStringTr()
 	{
-		return "";
+		return "Başlığa Çık";
 	}
 
 	std::string QuitToTitle::getStringUk()
 	{
-		return "";
+		return "Вийти з заголовка";
 	}
 
-	std::string QuitToTitle::getStringVn()
+	std::string QuitToTitle::getStringVi()
 	{
-		return "";
+		return "Thoát khỏi tiêu đề";
 	}
 
 	std::string QuitToTitle::getStringZhCn()
 	{
-		return "";
+		return "退出标题";
 	}
 
 	std::string QuitToTitle::getStringZhTw()
 	{
-		return "";
+		return "退出標題";
 	}
 }

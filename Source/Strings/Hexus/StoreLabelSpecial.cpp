@@ -158,7 +158,7 @@ namespace LocaleStrings
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringVn()
+	std::string StoreLabelSpecial::getStringVi()
 	{
 		return "OR";
 	}

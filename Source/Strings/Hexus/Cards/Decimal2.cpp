@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Decimal2::getStringAr()
 	{
-		return "";
+		return "صياد السمك";
 	}
 
 	std::string Decimal2::getStringBg()
 	{
-		return "";
+		return "рибар";
 	}
 
 	std::string Decimal2::getStringCs()
 	{
-		return "";
+		return "Rybář";
 	}
 
 	std::string Decimal2::getStringDa()
 	{
-		return "";
+		return "Fisker";
 	}
 
 	std::string Decimal2::getStringDe()
 	{
-		return "";
+		return "Fischer";
 	}
 
 	std::string Decimal2::getStringEl()
 	{
-		return "";
+		return "Ψαράς";
 	}
 
 	std::string Decimal2::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Decimal2::getStringEs()
 	{
-		return "";
+		return "Pescador";
 	}
 
 	std::string Decimal2::getStringEs419()
 	{
-		return "";
+		return "Pescador";
 	}
 
 	std::string Decimal2::getStringFi()
 	{
-		return "";
+		return "Kalastaja";
 	}
 
 	std::string Decimal2::getStringFr()
 	{
-		return "";
+		return "Pêcheur";
 	}
 
 	std::string Decimal2::getStringHu()
 	{
-		return "";
+		return "Halász";
 	}
 
 	std::string Decimal2::getStringIt()
 	{
-		return "";
+		return "Pescatore";
 	}
 
 	std::string Decimal2::getStringJa()
 	{
-		return "";
+		return "漁師";
 	}
 
 	std::string Decimal2::getStringKo()
 	{
-		return "";
+		return "어부";
 	}
 
 	std::string Decimal2::getStringNl()
 	{
-		return "";
+		return "Visser";
 	}
 
 	std::string Decimal2::getStringNo()
 	{
-		return "";
+		return "Fisker";
 	}
 
 	std::string Decimal2::getStringPl()
 	{
-		return "";
+		return "Rybak";
 	}
 
 	std::string Decimal2::getStringPt()
 	{
-		return "";
+		return "Pescador";
 	}
 
 	std::string Decimal2::getStringPtBr()
 	{
-		return "";
+		return "Pescador";
 	}
 
 	std::string Decimal2::getStringRo()
 	{
-		return "";
+		return "Pescar";
 	}
 
 	std::string Decimal2::getStringRu()
 	{
-		return "";
+		return "рыболов";
 	}
 
 	std::string Decimal2::getStringSv()
 	{
-		return "";
+		return "Fiskare";
 	}
 
 	std::string Decimal2::getStringTh()
 	{
-		return "";
+		return "ชาวประมง";
 	}
 
 	std::string Decimal2::getStringTr()
 	{
-		return "";
+		return "Balıkçı";
 	}
 
 	std::string Decimal2::getStringUk()
 	{
-		return "";
+		return "Рибалка";
 	}
 
-	std::string Decimal2::getStringVn()
+	std::string Decimal2::getStringVi()
 	{
-		return "";
+		return "Ngư dân";
 	}
 
 	std::string Decimal2::getStringZhCn()
 	{
-		return "";
+		return "渔";
 	}
 
 	std::string Decimal2::getStringZhTw()
 	{
-		return "";
+		return "漁";
 	}
 }

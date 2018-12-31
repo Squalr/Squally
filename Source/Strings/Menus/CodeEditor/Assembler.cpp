@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Assembler::getStringAr()
 	{
-		return "";
+		return "المجمع";
 	}
 
 	std::string Assembler::getStringBg()
 	{
-		return "";
+		return "Assembler";
 	}
 
 	std::string Assembler::getStringCs()
 	{
-		return "";
+		return "Assembler";
 	}
 
 	std::string Assembler::getStringDa()
 	{
-		return "";
+		return "assembler";
 	}
 
 	std::string Assembler::getStringDe()
 	{
-		return "";
+		return "Assembler";
 	}
 
 	std::string Assembler::getStringEl()
 	{
-		return "";
+		return "Συμβολομεταφράστης";
 	}
 
 	std::string Assembler::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Assembler::getStringEs()
 	{
-		return "";
+		return "Ensamblador";
 	}
 
 	std::string Assembler::getStringEs419()
 	{
-		return "";
+		return "Ensamblador";
 	}
 
 	std::string Assembler::getStringFi()
 	{
-		return "";
+		return "Assembler";
 	}
 
 	std::string Assembler::getStringFr()
 	{
-		return "";
+		return "Assembler";
 	}
 
 	std::string Assembler::getStringHu()
 	{
-		return "";
+		return "Szerelő";
 	}
 
 	std::string Assembler::getStringIt()
 	{
-		return "";
+		return "assembler";
 	}
 
 	std::string Assembler::getStringJa()
 	{
-		return "";
+		return "アセンブラ";
 	}
 
 	std::string Assembler::getStringKo()
 	{
-		return "";
+		return "어셈블러";
 	}
 
 	std::string Assembler::getStringNl()
 	{
-		return "";
+		return "Assembler";
 	}
 
 	std::string Assembler::getStringNo()
 	{
-		return "";
+		return "assembler";
 	}
 
 	std::string Assembler::getStringPl()
 	{
-		return "";
+		return "Monter";
 	}
 
 	std::string Assembler::getStringPt()
 	{
-		return "";
+		return "Assembler";
 	}
 
 	std::string Assembler::getStringPtBr()
 	{
-		return "";
+		return "Assembler";
 	}
 
 	std::string Assembler::getStringRo()
 	{
-		return "";
+		return "montator";
 	}
 
 	std::string Assembler::getStringRu()
 	{
-		return "";
+		return "ассемблер";
 	}
 
 	std::string Assembler::getStringSv()
 	{
-		return "";
+		return "Assemblerare";
 	}
 
 	std::string Assembler::getStringTh()
 	{
-		return "";
+		return "ผู้ประกอบ";
 	}
 
 	std::string Assembler::getStringTr()
 	{
-		return "";
+		return "montajcı";
 	}
 
 	std::string Assembler::getStringUk()
 	{
-		return "";
+		return "Асемблер";
 	}
 
-	std::string Assembler::getStringVn()
+	std::string Assembler::getStringVi()
 	{
-		return "";
+		return "Nhà lắp ráp";
 	}
 
 	std::string Assembler::getStringZhCn()
 	{
-		return "";
+		return "汇编";
 	}
 
 	std::string Assembler::getStringZhTw()
 	{
-		return "";
+		return "彙編";
 	}
 }

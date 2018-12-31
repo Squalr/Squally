@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string LogicalXor::getStringAr()
 	{
-		return "";
+		return "منطقية XOR";
 	}
 
 	std::string LogicalXor::getStringBg()
 	{
-		return "";
+		return "Логически XOR";
 	}
 
 	std::string LogicalXor::getStringCs()
 	{
-		return "";
+		return "Logické XOR";
 	}
 
 	std::string LogicalXor::getStringDa()
 	{
-		return "";
+		return "Logisk XOR";
 	}
 
 	std::string LogicalXor::getStringDe()
 	{
-		return "";
+		return "Logisches XOR";
 	}
 
 	std::string LogicalXor::getStringEl()
 	{
-		return "";
+		return "Λογική XOR";
 	}
 
 	std::string LogicalXor::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string LogicalXor::getStringEs()
 	{
-		return "";
+		return "XOR lógico";
 	}
 
 	std::string LogicalXor::getStringEs419()
 	{
-		return "";
+		return "XOR lógico";
 	}
 
 	std::string LogicalXor::getStringFi()
 	{
-		return "";
+		return "Looginen XOR";
 	}
 
 	std::string LogicalXor::getStringFr()
 	{
-		return "";
+		return "XOR logique";
 	}
 
 	std::string LogicalXor::getStringHu()
 	{
-		return "";
+		return "Logikai XOR";
 	}
 
 	std::string LogicalXor::getStringIt()
 	{
-		return "";
+		return "XOR logico";
 	}
 
 	std::string LogicalXor::getStringJa()
 	{
-		return "";
+		return "論理XOR";
 	}
 
 	std::string LogicalXor::getStringKo()
 	{
-		return "";
+		return "논리 XOR";
 	}
 
 	std::string LogicalXor::getStringNl()
 	{
-		return "";
+		return "Logische XOR";
 	}
 
 	std::string LogicalXor::getStringNo()
 	{
-		return "";
+		return "Logisk XOR";
 	}
 
 	std::string LogicalXor::getStringPl()
 	{
-		return "";
+		return "Logiczny XOR";
 	}
 
 	std::string LogicalXor::getStringPt()
 	{
-		return "";
+		return "XOR lógico";
 	}
 
 	std::string LogicalXor::getStringPtBr()
 	{
-		return "";
+		return "XOR lógico";
 	}
 
 	std::string LogicalXor::getStringRo()
 	{
-		return "";
+		return "Logic XOR";
 	}
 
 	std::string LogicalXor::getStringRu()
 	{
-		return "";
+		return "Логический XOR";
 	}
 
 	std::string LogicalXor::getStringSv()
 	{
-		return "";
+		return "Logisk XOR";
 	}
 
 	std::string LogicalXor::getStringTh()
 	{
-		return "";
+		return "ตรรกะ XOR";
 	}
 
 	std::string LogicalXor::getStringTr()
 	{
-		return "";
+		return "Mantıksal XOR";
 	}
 
 	std::string LogicalXor::getStringUk()
 	{
-		return "";
+		return "Логічний XOR";
 	}
 
-	std::string LogicalXor::getStringVn()
+	std::string LogicalXor::getStringVi()
 	{
-		return "";
+		return "XOR logic";
 	}
 
 	std::string LogicalXor::getStringZhCn()
 	{
-		return "";
+		return "逻辑异或";
 	}
 
 	std::string LogicalXor::getStringZhTw()
 	{
-		return "";
+		return "邏輯異或";
 	}
 }

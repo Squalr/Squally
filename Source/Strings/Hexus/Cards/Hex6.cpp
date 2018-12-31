@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Hex6::getStringAr()
 	{
-		return "";
+		return "جشع";
 	}
 
 	std::string Hex6::getStringBg()
 	{
-		return "";
+		return "лакомия";
 	}
 
 	std::string Hex6::getStringCs()
 	{
-		return "";
+		return "Chamtivost";
 	}
 
 	std::string Hex6::getStringDa()
 	{
-		return "";
+		return "Grådighed";
 	}
 
 	std::string Hex6::getStringDe()
 	{
-		return "";
+		return "Gier";
 	}
 
 	std::string Hex6::getStringEl()
 	{
-		return "";
+		return "Απληστία";
 	}
 
 	std::string Hex6::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Hex6::getStringEs()
 	{
-		return "";
+		return "Codicia";
 	}
 
 	std::string Hex6::getStringEs419()
 	{
-		return "";
+		return "Codicia";
 	}
 
 	std::string Hex6::getStringFi()
 	{
-		return "";
+		return "Ahneus";
 	}
 
 	std::string Hex6::getStringFr()
 	{
-		return "";
+		return "Avidité";
 	}
 
 	std::string Hex6::getStringHu()
 	{
-		return "";
+		return "Kapzsiság";
 	}
 
 	std::string Hex6::getStringIt()
 	{
-		return "";
+		return "Avidità";
 	}
 
 	std::string Hex6::getStringJa()
 	{
-		return "";
+		return "貪欲";
 	}
 
 	std::string Hex6::getStringKo()
 	{
-		return "";
+		return "욕심";
 	}
 
 	std::string Hex6::getStringNl()
 	{
-		return "";
+		return "Hebzucht";
 	}
 
 	std::string Hex6::getStringNo()
 	{
-		return "";
+		return "Grådighet";
 	}
 
 	std::string Hex6::getStringPl()
 	{
-		return "";
+		return "Chciwość";
 	}
 
 	std::string Hex6::getStringPt()
 	{
-		return "";
+		return "Ganância";
 	}
 
 	std::string Hex6::getStringPtBr()
 	{
-		return "";
+		return "Ganância";
 	}
 
 	std::string Hex6::getStringRo()
 	{
-		return "";
+		return "Lăcomie";
 	}
 
 	std::string Hex6::getStringRu()
 	{
-		return "";
+		return "Жадность";
 	}
 
 	std::string Hex6::getStringSv()
 	{
-		return "";
+		return "Girighet";
 	}
 
 	std::string Hex6::getStringTh()
 	{
-		return "";
+		return "โลภ";
 	}
 
 	std::string Hex6::getStringTr()
 	{
-		return "";
+		return "hırs";
 	}
 
 	std::string Hex6::getStringUk()
 	{
-		return "";
+		return "Жадібність";
 	}
 
-	std::string Hex6::getStringVn()
+	std::string Hex6::getStringVi()
 	{
-		return "";
+		return "Tham lam";
 	}
 
 	std::string Hex6::getStringZhCn()
 	{
-		return "";
+		return "贪心";
 	}
 
 	std::string Hex6::getStringZhTw()
 	{
-		return "";
+		return "貪心";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Status::getStringAr()
 	{
-		return "";
+		return "الحالة";
 	}
 
 	std::string Status::getStringBg()
 	{
-		return "";
+		return "Статус";
 	}
 
 	std::string Status::getStringCs()
 	{
-		return "";
+		return "Postavení";
 	}
 
 	std::string Status::getStringDa()
 	{
-		return "";
+		return "status";
 	}
 
 	std::string Status::getStringDe()
 	{
-		return "";
+		return "Status";
 	}
 
 	std::string Status::getStringEl()
 	{
-		return "";
+		return "Κατάσταση";
 	}
 
 	std::string Status::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Status::getStringEs()
 	{
-		return "";
+		return "Estado";
 	}
 
 	std::string Status::getStringEs419()
 	{
-		return "";
+		return "Estado";
 	}
 
 	std::string Status::getStringFi()
 	{
-		return "";
+		return "Status";
 	}
 
 	std::string Status::getStringFr()
 	{
-		return "";
+		return "Statut";
 	}
 
 	std::string Status::getStringHu()
 	{
-		return "";
+		return "Állapot";
 	}
 
 	std::string Status::getStringIt()
 	{
-		return "";
+		return "Stato";
 	}
 
 	std::string Status::getStringJa()
 	{
-		return "";
+		return "状態";
 	}
 
 	std::string Status::getStringKo()
 	{
-		return "";
+		return "지위";
 	}
 
 	std::string Status::getStringNl()
 	{
-		return "";
+		return "staat";
 	}
 
 	std::string Status::getStringNo()
 	{
-		return "";
+		return "Status";
 	}
 
 	std::string Status::getStringPl()
 	{
-		return "";
+		return "Status";
 	}
 
 	std::string Status::getStringPt()
 	{
-		return "";
+		return "Status";
 	}
 
 	std::string Status::getStringPtBr()
 	{
-		return "";
+		return "Status";
 	}
 
 	std::string Status::getStringRo()
 	{
-		return "";
+		return "stare";
 	}
 
 	std::string Status::getStringRu()
 	{
-		return "";
+		return "Status";
 	}
 
 	std::string Status::getStringSv()
 	{
-		return "";
+		return "Status";
 	}
 
 	std::string Status::getStringTh()
 	{
-		return "";
+		return "สถานะ";
 	}
 
 	std::string Status::getStringTr()
 	{
-		return "";
+		return "durum";
 	}
 
 	std::string Status::getStringUk()
 	{
-		return "";
+		return "Статус";
 	}
 
-	std::string Status::getStringVn()
+	std::string Status::getStringVi()
 	{
-		return "";
+		return "Trạng thái";
 	}
 
 	std::string Status::getStringZhCn()
 	{
-		return "";
+		return "状态";
 	}
 
 	std::string Status::getStringZhTw()
 	{
-		return "";
+		return "狀態";
 	}
 }

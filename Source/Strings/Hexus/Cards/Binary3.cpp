@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Binary3::getStringAr()
 	{
-		return "";
+		return "فطر";
 	}
 
 	std::string Binary3::getStringBg()
 	{
-		return "";
+		return "гъба";
 	}
 
 	std::string Binary3::getStringCs()
 	{
-		return "";
+		return "houba";
 	}
 
 	std::string Binary3::getStringDa()
 	{
-		return "";
+		return "champignon";
 	}
 
 	std::string Binary3::getStringDe()
 	{
-		return "";
+		return "Pilz";
 	}
 
 	std::string Binary3::getStringEl()
 	{
-		return "";
+		return "μανιτάρι";
 	}
 
 	std::string Binary3::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Binary3::getStringEs()
 	{
-		return "";
+		return "seta";
 	}
 
 	std::string Binary3::getStringEs419()
 	{
-		return "";
+		return "seta";
 	}
 
 	std::string Binary3::getStringFi()
 	{
-		return "";
+		return "sieni";
 	}
 
 	std::string Binary3::getStringFr()
 	{
-		return "";
+		return "champignon";
 	}
 
 	std::string Binary3::getStringHu()
 	{
-		return "";
+		return "gomba";
 	}
 
 	std::string Binary3::getStringIt()
 	{
-		return "";
+		return "fungo";
 	}
 
 	std::string Binary3::getStringJa()
 	{
-		return "";
+		return "キノコ";
 	}
 
 	std::string Binary3::getStringKo()
 	{
-		return "";
+		return "버섯";
 	}
 
 	std::string Binary3::getStringNl()
 	{
-		return "";
+		return "paddestoel";
 	}
 
 	std::string Binary3::getStringNo()
 	{
-		return "";
+		return "sopp";
 	}
 
 	std::string Binary3::getStringPl()
 	{
-		return "";
+		return "Grzyb";
 	}
 
 	std::string Binary3::getStringPt()
 	{
-		return "";
+		return "cogumelo";
 	}
 
 	std::string Binary3::getStringPtBr()
 	{
-		return "";
+		return "cogumelo";
 	}
 
 	std::string Binary3::getStringRo()
 	{
-		return "";
+		return "ciupercă";
 	}
 
 	std::string Binary3::getStringRu()
 	{
-		return "";
+		return "гриб";
 	}
 
 	std::string Binary3::getStringSv()
 	{
-		return "";
+		return "svamp";
 	}
 
 	std::string Binary3::getStringTh()
 	{
-		return "";
+		return "เห็ด";
 	}
 
 	std::string Binary3::getStringTr()
 	{
-		return "";
+		return "mantar";
 	}
 
 	std::string Binary3::getStringUk()
 	{
-		return "";
+		return "гриб";
 	}
 
-	std::string Binary3::getStringVn()
+	std::string Binary3::getStringVi()
 	{
-		return "";
+		return "nấm";
 	}
 
 	std::string Binary3::getStringZhCn()
 	{
-		return "";
+		return "蘑菇";
 	}
 
 	std::string Binary3::getStringZhTw()
 	{
-		return "";
+		return "蘑菇";
 	}
 }

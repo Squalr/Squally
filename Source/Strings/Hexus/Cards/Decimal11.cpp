@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Decimal11::getStringAr()
 	{
-		return "";
+		return "كلايد";
 	}
 
 	std::string Decimal11::getStringBg()
 	{
-		return "";
+		return "Клайд";
 	}
 
 	std::string Decimal11::getStringCs()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringDa()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringDe()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringEl()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Decimal11::getStringEs()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringEs419()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringFi()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringFr()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringHu()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringIt()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringJa()
 	{
-		return "";
+		return "クライド";
 	}
 
 	std::string Decimal11::getStringKo()
 	{
-		return "";
+		return "클라이드";
 	}
 
 	std::string Decimal11::getStringNl()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringNo()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringPl()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringPt()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringPtBr()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringRo()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringRu()
 	{
-		return "";
+		return "Клайд";
 	}
 
 	std::string Decimal11::getStringSv()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringTh()
 	{
-		return "";
+		return "ไคลด์";
 	}
 
 	std::string Decimal11::getStringTr()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringUk()
 	{
-		return "";
+		return "Клайд";
 	}
 
-	std::string Decimal11::getStringVn()
+	std::string Decimal11::getStringVi()
 	{
-		return "";
+		return "Klide";
 	}
 
 	std::string Decimal11::getStringZhCn()
 	{
-		return "";
+		return "克莱德";
 	}
 
 	std::string Decimal11::getStringZhTw()
 	{
-		return "";
+		return "克萊德";
 	}
 }

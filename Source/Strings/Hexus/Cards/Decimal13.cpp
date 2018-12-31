@@ -30,146 +30,146 @@ namespace LocaleStrings
 
 	std::string Decimal13::getStringAr()
 	{
-		return "";
+		return "خليك مجنون";
 	}
 
 	std::string Decimal13::getStringBg()
 	{
-		return "";
+		return "Бетикът на Гетик";
 	}
 
 	std::string Decimal13::getStringCs()
 	{
-		return "";
+		return "Getic šílenec";
 	}
 
 	std::string Decimal13::getStringDa()
 	{
-		return "";
+		return "Getic den vanvittige";
 	}
 
 	std::string Decimal13::getStringDe()
 	{
-		return "";
+		return "Getic der Wahnsinnige";
 	}
 
 	std::string Decimal13::getStringEl()
 	{
-		return "";
+		return "Γκέτισε το τρελό";
 	}
 
 	std::string Decimal13::getStringEn()
 	{
-		return "Getic the Insane";
+		return "Getic the insane";
 	}
 
 	std::string Decimal13::getStringEs()
 	{
-		return "";
+		return "Getic el loco";
 	}
 
 	std::string Decimal13::getStringEs419()
 	{
-		return "";
+		return "Getic el loco";
 	}
 
 	std::string Decimal13::getStringFi()
 	{
-		return "";
+		return "Getic hullu";
 	}
 
 	std::string Decimal13::getStringFr()
 	{
-		return "";
+		return "Getic le fou";
 	}
 
 	std::string Decimal13::getStringHu()
 	{
-		return "";
+		return "Getic az őrült";
 	}
 
 	std::string Decimal13::getStringIt()
 	{
-		return "";
+		return "Getic il pazzo";
 	}
 
 	std::string Decimal13::getStringJa()
 	{
-		return "";
+		return "非常識なゲチ";
 	}
 
 	std::string Decimal13::getStringKo()
 	{
-		return "";
+		return "정신 나갔어.";
 	}
 
 	std::string Decimal13::getStringNl()
 	{
-		return "";
+		return "Getic the krankzinnig";
 	}
 
 	std::string Decimal13::getStringNo()
 	{
-		return "";
+		return "Getic den vanvittige";
 	}
 
 	std::string Decimal13::getStringPl()
 	{
-		return "";
+		return "Getic jest szalony";
 	}
 
 	std::string Decimal13::getStringPt()
 	{
-		return "";
+		return "Getic o insano";
 	}
 
 	std::string Decimal13::getStringPtBr()
 	{
-		return "";
+		return "Getic o insano";
 	}
 
 	std::string Decimal13::getStringRo()
 	{
-		return "";
+		return "Getic nebunul";
 	}
 
 	std::string Decimal13::getStringRu()
 	{
-		return "";
+		return "Гетик безумный";
 	}
 
 	std::string Decimal13::getStringSv()
 	{
-		return "";
+		return "Getic den galen";
 	}
 
 	std::string Decimal13::getStringTh()
 	{
-		return "";
+		return "ทำให้คนบ้า";
 	}
 
 	std::string Decimal13::getStringTr()
 	{
-		return "";
+		return "Deliyi kızdırmak";
 	}
 
 	std::string Decimal13::getStringUk()
 	{
-		return "";
+		return "Гетичний божевільний";
 	}
 
-	std::string Decimal13::getStringVn()
+	std::string Decimal13::getStringVi()
 	{
-		return "";
+		return "Gây điên";
 	}
 
 	std::string Decimal13::getStringZhCn()
 	{
-		return "";
+		return "Getic疯了";
 	}
 
 	std::string Decimal13::getStringZhTw()
 	{
-		return "";
+		return "Getic瘋了";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Tutorials::getStringAr()
 	{
-		return "";
+		return "دروس";
 	}
 
 	std::string Tutorials::getStringBg()
 	{
-		return "";
+		return "уроци";
 	}
 
 	std::string Tutorials::getStringCs()
 	{
-		return "";
+		return "Tutoriály";
 	}
 
 	std::string Tutorials::getStringDa()
 	{
-		return "";
+		return "Vejledninger";
 	}
 
 	std::string Tutorials::getStringDe()
 	{
-		return "";
+		return "Tutorials";
 	}
 
 	std::string Tutorials::getStringEl()
 	{
-		return "";
+		return "Εκπαιδευτικά σεμινάρια";
 	}
 
 	std::string Tutorials::getStringEn()
@@ -65,17 +65,17 @@ namespace LocaleStrings
 
 	std::string Tutorials::getStringEs()
 	{
-		return "";
+		return "Tutoriales";
 	}
 
 	std::string Tutorials::getStringEs419()
 	{
-		return "";
+		return "Tutoriales";
 	}
 
 	std::string Tutorials::getStringFi()
 	{
-		return "";
+		return "Oppaat";
 	}
 
 	std::string Tutorials::getStringFr()
@@ -85,91 +85,91 @@ namespace LocaleStrings
 
 	std::string Tutorials::getStringHu()
 	{
-		return "";
+		return "oktatóanyagok";
 	}
 
 	std::string Tutorials::getStringIt()
 	{
-		return "";
+		return "Esercitazioni";
 	}
 
 	std::string Tutorials::getStringJa()
 	{
-		return "";
+		return "チュートリアル";
 	}
 
 	std::string Tutorials::getStringKo()
 	{
-		return "";
+		return "자습서";
 	}
 
 	std::string Tutorials::getStringNl()
 	{
-		return "";
+		return "tutorials";
 	}
 
 	std::string Tutorials::getStringNo()
 	{
-		return "";
+		return "Guider";
 	}
 
 	std::string Tutorials::getStringPl()
 	{
-		return "";
+		return "Poradniki";
 	}
 
 	std::string Tutorials::getStringPt()
 	{
-		return "";
+		return "Tutoriais";
 	}
 
 	std::string Tutorials::getStringPtBr()
 	{
-		return "";
+		return "Tutoriais";
 	}
 
 	std::string Tutorials::getStringRo()
 	{
-		return "";
+		return "Tutoriale";
 	}
 
 	std::string Tutorials::getStringRu()
 	{
-		return "";
+		return "Учебники";
 	}
 
 	std::string Tutorials::getStringSv()
 	{
-		return "";
+		return "Handledningar";
 	}
 
 	std::string Tutorials::getStringTh()
 	{
-		return "";
+		return "สอน";
 	}
 
 	std::string Tutorials::getStringTr()
 	{
-		return "";
+		return "Öğreticiler";
 	}
 
 	std::string Tutorials::getStringUk()
 	{
-		return "";
+		return "Підручники";
 	}
 
-	std::string Tutorials::getStringVn()
+	std::string Tutorials::getStringVi()
 	{
-		return "";
+		return "Hướng dẫn";
 	}
 
 	std::string Tutorials::getStringZhCn()
 	{
-		return "";
+		return "教程";
 	}
 
 	std::string Tutorials::getStringZhTw()
 	{
-		return "";
+		return "教程";
 	}
 }

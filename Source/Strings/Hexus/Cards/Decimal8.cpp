@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Decimal8::getStringAr()
 	{
-		return "";
+		return "الثعلب السلطة";
 	}
 
 	std::string Decimal8::getStringBg()
 	{
-		return "";
+		return "лисица";
 	}
 
 	std::string Decimal8::getStringCs()
 	{
-		return "";
+		return "mocní liška";
 	}
 
 	std::string Decimal8::getStringDa()
 	{
-		return "";
+		return "strøm ræv";
 	}
 
 	std::string Decimal8::getStringDe()
 	{
-		return "";
+		return "PowerFox";
 	}
 
 	std::string Decimal8::getStringEl()
 	{
-		return "";
+		return "αλεπού δύναμη";
 	}
 
 	std::string Decimal8::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Decimal8::getStringEs()
 	{
-		return "";
+		return "zorro de poder";
 	}
 
 	std::string Decimal8::getStringEs419()
 	{
-		return "";
+		return "zorro de poder";
 	}
 
 	std::string Decimal8::getStringFi()
 	{
-		return "";
+		return "voimakas kettu";
 	}
 
 	std::string Decimal8::getStringFr()
 	{
-		return "";
+		return "renard de puissance";
 	}
 
 	std::string Decimal8::getStringHu()
 	{
-		return "";
+		return "hatalmas róka";
 	}
 
 	std::string Decimal8::getStringIt()
 	{
-		return "";
+		return "Power Fox";
 	}
 
 	std::string Decimal8::getStringJa()
 	{
-		return "";
+		return "パワーフォックス";
 	}
 
 	std::string Decimal8::getStringKo()
 	{
-		return "";
+		return "파워 폭스";
 	}
 
 	std::string Decimal8::getStringNl()
 	{
-		return "";
+		return "kracht vos";
 	}
 
 	std::string Decimal8::getStringNo()
 	{
-		return "";
+		return "maktfox";
 	}
 
 	std::string Decimal8::getStringPl()
 	{
-		return "";
+		return "moc lisa";
 	}
 
 	std::string Decimal8::getStringPt()
 	{
-		return "";
+		return "raposa de poder";
 	}
 
 	std::string Decimal8::getStringPtBr()
 	{
-		return "";
+		return "raposa de poder";
 	}
 
 	std::string Decimal8::getStringRo()
 	{
-		return "";
+		return "putere vulpea";
 	}
 
 	std::string Decimal8::getStringRu()
 	{
-		return "";
+		return "власть лиса";
 	}
 
 	std::string Decimal8::getStringSv()
 	{
-		return "";
+		return "kraft räv";
 	}
 
 	std::string Decimal8::getStringTh()
 	{
-		return "";
+		return "พาวเวอร์ฟ็อกซ์";
 	}
 
 	std::string Decimal8::getStringTr()
 	{
-		return "";
+		return "güç tilki";
 	}
 
 	std::string Decimal8::getStringUk()
 	{
-		return "";
+		return "влада лисиця";
 	}
 
-	std::string Decimal8::getStringVn()
+	std::string Decimal8::getStringVi()
 	{
-		return "";
+		return "cáo điện";
 	}
 
 	std::string Decimal8::getStringZhCn()
 	{
-		return "";
+		return "电力狐狸";
 	}
 
 	std::string Decimal8::getStringZhTw()
 	{
-		return "";
+		return "電力狐狸";
 	}
 }

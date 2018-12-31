@@ -30,146 +30,146 @@ namespace LocaleStrings
 
 	std::string Hex12::getStringAr()
 	{
-		return "";
+		return "الكابتن الهيكل العظمي";
 	}
 
 	std::string Hex12::getStringBg()
 	{
-		return "";
+		return "Скелетният капитан";
 	}
 
 	std::string Hex12::getStringCs()
 	{
-		return "";
+		return "Kapitán skeletu";
 	}
 
 	std::string Hex12::getStringDa()
 	{
-		return "";
+		return "Skeletkaptein";
 	}
 
 	std::string Hex12::getStringDe()
 	{
-		return "";
+		return "Skelettkapitän";
 	}
 
 	std::string Hex12::getStringEl()
 	{
-		return "";
+		return "Σκελετικός καπετάνιος";
 	}
 
 	std::string Hex12::getStringEn()
 	{
-		return "Captain Sp00ks";
+		return "Skeletal Captain";
 	}
 
 	std::string Hex12::getStringEs()
 	{
-		return "";
+		return "Capitán esquelético";
 	}
 
 	std::string Hex12::getStringEs419()
 	{
-		return "";
+		return "Capitán esquelético";
 	}
 
 	std::string Hex12::getStringFi()
 	{
-		return "";
+		return "Luuston kapteeni";
 	}
 
 	std::string Hex12::getStringFr()
 	{
-		return "";
+		return "Capitaine squelette";
 	}
 
 	std::string Hex12::getStringHu()
 	{
-		return "";
+		return "Csontváz kapitány";
 	}
 
 	std::string Hex12::getStringIt()
 	{
-		return "";
+		return "Capitano scheletrico";
 	}
 
 	std::string Hex12::getStringJa()
 	{
-		return "";
+		return "骨格キャプテン";
 	}
 
 	std::string Hex12::getStringKo()
 	{
-		return "";
+		return "스켈 레탈 캡틴";
 	}
 
 	std::string Hex12::getStringNl()
 	{
-		return "";
+		return "Skelet kapitein";
 	}
 
 	std::string Hex12::getStringNo()
 	{
-		return "";
+		return "Skelett kaptein";
 	}
 
 	std::string Hex12::getStringPl()
 	{
-		return "";
+		return "Szkieletowy Kapitan";
 	}
 
 	std::string Hex12::getStringPt()
 	{
-		return "";
+		return "Capitão Esqueleto";
 	}
 
 	std::string Hex12::getStringPtBr()
 	{
-		return "";
+		return "Capitão Esqueleto";
 	}
 
 	std::string Hex12::getStringRo()
 	{
-		return "";
+		return "Capitanul scheletului";
 	}
 
 	std::string Hex12::getStringRu()
 	{
-		return "";
+		return "Скелетный капитан";
 	}
 
 	std::string Hex12::getStringSv()
 	{
-		return "";
+		return "Skelett kapten";
 	}
 
 	std::string Hex12::getStringTh()
 	{
-		return "";
+		return "กัปตันโครงกระดูก";
 	}
 
 	std::string Hex12::getStringTr()
 	{
-		return "";
+		return "İskelet Kaptanı";
 	}
 
 	std::string Hex12::getStringUk()
 	{
-		return "";
+		return "Скелетний капітан";
 	}
 
-	std::string Hex12::getStringVn()
+	std::string Hex12::getStringVi()
 	{
-		return "";
+		return "Thuyền trưởng bộ xương";
 	}
 
 	std::string Hex12::getStringZhCn()
 	{
-		return "";
+		return "骨骼上尉";
 	}
 
 	std::string Hex12::getStringZhTw()
 	{
-		return "";
+		return "骨骼上尉";
 	}
 }

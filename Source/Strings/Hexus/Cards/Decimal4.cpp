@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Decimal4::getStringAr()
 	{
-		return "";
+		return "ايدن";
 	}
 
 	std::string Decimal4::getStringBg()
 	{
-		return "";
+		return "рай";
 	}
 
 	std::string Decimal4::getStringCs()
 	{
-		return "";
+		return "ráj";
 	}
 
 	std::string Decimal4::getStringDa()
 	{
-		return "";
+		return "iden";
 	}
 
 	std::string Decimal4::getStringDe()
 	{
-		return "";
+		return "Iden";
 	}
 
 	std::string Decimal4::getStringEl()
 	{
-		return "";
+		return "Εδέμ";
 	}
 
 	std::string Decimal4::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Decimal4::getStringEs()
 	{
-		return "";
+		return "Iden";
 	}
 
 	std::string Decimal4::getStringEs419()
 	{
-		return "";
+		return "Iden";
 	}
 
 	std::string Decimal4::getStringFi()
 	{
-		return "";
+		return "iden";
 	}
 
 	std::string Decimal4::getStringFr()
 	{
-		return "";
+		return "Iden";
 	}
 
 	std::string Decimal4::getStringHu()
 	{
-		return "";
+		return "Iden";
 	}
 
 	std::string Decimal4::getStringIt()
 	{
-		return "";
+		return "Iden";
 	}
 
 	std::string Decimal4::getStringJa()
 	{
-		return "";
+		return "エデン";
 	}
 
 	std::string Decimal4::getStringKo()
 	{
-		return "";
+		return "에덴 동산";
 	}
 
 	std::string Decimal4::getStringNl()
 	{
-		return "";
+		return "Iden";
 	}
 
 	std::string Decimal4::getStringNo()
 	{
-		return "";
+		return "Iden";
 	}
 
 	std::string Decimal4::getStringPl()
 	{
-		return "";
+		return "Iden";
 	}
 
 	std::string Decimal4::getStringPt()
 	{
-		return "";
+		return "Iden";
 	}
 
 	std::string Decimal4::getStringPtBr()
 	{
-		return "";
+		return "Iden";
 	}
 
 	std::string Decimal4::getStringRo()
 	{
-		return "";
+		return "iden";
 	}
 
 	std::string Decimal4::getStringRu()
 	{
-		return "";
+		return "Иден";
 	}
 
 	std::string Decimal4::getStringSv()
 	{
-		return "";
+		return "Iden";
 	}
 
 	std::string Decimal4::getStringTh()
 	{
-		return "";
+		return "สุขาวดี";
 	}
 
 	std::string Decimal4::getStringTr()
 	{
-		return "";
+		return "Eden";
 	}
 
 	std::string Decimal4::getStringUk()
 	{
-		return "";
+		return "Едем";
 	}
 
-	std::string Decimal4::getStringVn()
+	std::string Decimal4::getStringVi()
 	{
-		return "";
+		return "Iden";
 	}
 
 	std::string Decimal4::getStringZhCn()
 	{
-		return "";
+		return "鉴定者";
 	}
 
 	std::string Decimal4::getStringZhTw()
 	{
-		return "";
+		return "鑑定者";
 	}
 }

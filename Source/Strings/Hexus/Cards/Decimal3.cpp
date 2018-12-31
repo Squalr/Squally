@@ -30,146 +30,146 @@ namespace LocaleStrings
 
 	std::string Decimal3::getStringAr()
 	{
-		return "";
+		return "نهاب";
 	}
 
 	std::string Decimal3::getStringBg()
 	{
-		return "";
+		return "мародер";
 	}
 
 	std::string Decimal3::getStringCs()
 	{
-		return "";
+		return "Marauder";
 	}
 
 	std::string Decimal3::getStringDa()
 	{
-		return "";
+		return "Marauder";
 	}
 
 	std::string Decimal3::getStringDe()
 	{
-		return "";
+		return "Marodeur";
 	}
 
 	std::string Decimal3::getStringEl()
 	{
-		return "";
+		return "Αρπαγας";
 	}
 
 	std::string Decimal3::getStringEn()
 	{
-		return "Maurader";
+		return "Marauder";
 	}
 
 	std::string Decimal3::getStringEs()
 	{
-		return "";
+		return "Merodeador";
 	}
 
 	std::string Decimal3::getStringEs419()
 	{
-		return "";
+		return "Merodeador";
 	}
 
 	std::string Decimal3::getStringFi()
 	{
-		return "";
+		return "Rosvo";
 	}
 
 	std::string Decimal3::getStringFr()
 	{
-		return "";
+		return "Maraudeur";
 	}
 
 	std::string Decimal3::getStringHu()
 	{
-		return "";
+		return "Martalóc";
 	}
 
 	std::string Decimal3::getStringIt()
 	{
-		return "";
+		return "predone";
 	}
 
 	std::string Decimal3::getStringJa()
 	{
-		return "";
+		return "マローダー";
 	}
 
 	std::string Decimal3::getStringKo()
 	{
-		return "";
+		return "약탈자";
 	}
 
 	std::string Decimal3::getStringNl()
 	{
-		return "";
+		return "Stroper";
 	}
 
 	std::string Decimal3::getStringNo()
 	{
-		return "";
+		return "Marauder";
 	}
 
 	std::string Decimal3::getStringPl()
 	{
-		return "";
+		return "Maruder";
 	}
 
 	std::string Decimal3::getStringPt()
 	{
-		return "";
+		return "Marauder";
 	}
 
 	std::string Decimal3::getStringPtBr()
 	{
-		return "";
+		return "Marauder";
 	}
 
 	std::string Decimal3::getStringRo()
 	{
-		return "";
+		return "Jefuitor";
 	}
 
 	std::string Decimal3::getStringRu()
 	{
-		return "";
+		return "мародер";
 	}
 
 	std::string Decimal3::getStringSv()
 	{
-		return "";
+		return "Marodör";
 	}
 
 	std::string Decimal3::getStringTh()
 	{
-		return "";
+		return "โจรปล้นสะดม";
 	}
 
 	std::string Decimal3::getStringTr()
 	{
-		return "";
+		return "çapulcu";
 	}
 
 	std::string Decimal3::getStringUk()
 	{
-		return "";
+		return "Мародер";
 	}
 
-	std::string Decimal3::getStringVn()
+	std::string Decimal3::getStringVi()
 	{
-		return "";
+		return "Marauder";
 	}
 
 	std::string Decimal3::getStringZhCn()
 	{
-		return "";
+		return "掠夺者";
 	}
 
 	std::string Decimal3::getStringZhTw()
 	{
-		return "";
+		return "掠奪者";
 	}
 }

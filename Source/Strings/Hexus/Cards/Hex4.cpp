@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Hex4::getStringAr()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringBg()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringCs()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringDa()
 	{
-		return "";
+		return "GNIP";
 	}
 
 	std::string Hex4::getStringDe()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringEl()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Hex4::getStringEs()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringEs419()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringFi()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringFr()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringHu()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringIt()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringJa()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringKo()
 	{
-		return "";
+		return "지니";
 	}
 
 	std::string Hex4::getStringNl()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringNo()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringPl()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringPt()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringPtBr()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringRo()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringRu()
 	{
-		return "";
+		return "Гнип";
 	}
 
 	std::string Hex4::getStringSv()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringTh()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringTr()
 	{
-		return "";
+		return "Gnip";
 	}
 
 	std::string Hex4::getStringUk()
 	{
-		return "";
+		return "Гніп";
 	}
 
-	std::string Hex4::getStringVn()
+	std::string Hex4::getStringVi()
 	{
-		return "";
+		return "Thế giới";
 	}
 
 	std::string Hex4::getStringZhCn()
 	{
-		return "";
+		return "GNIP";
 	}
 
 	std::string Hex4::getStringZhTw()
 	{
-		return "";
+		return "GNIP";
 	}
 }

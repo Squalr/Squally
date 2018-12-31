@@ -30,146 +30,146 @@ namespace LocaleStrings
 
 	std::string DaemonsHallow::getStringAr()
 	{
-		return "";
+		return "شيطان ديمان";
 	}
 
 	std::string DaemonsHallow::getStringBg()
 	{
-		return "";
+		return "Освети Демон";
 	}
 
 	std::string DaemonsHallow::getStringCs()
 	{
-		return "";
+		return "Demonova posvátná tvář";
 	}
 
 	std::string DaemonsHallow::getStringDa()
 	{
-		return "";
+		return "Demon er hellig";
 	}
 
 	std::string DaemonsHallow::getStringDe()
 	{
-		return "";
+		return "Demons Heiligtum";
 	}
 
 	std::string DaemonsHallow::getStringEl()
 	{
-		return "";
+		return "Η σκιά του Δακώνα";
 	}
 
 	std::string DaemonsHallow::getStringEn()
 	{
-		return "Daemons Hallow";
+		return "Daemon's Hallow";
 	}
 
 	std::string DaemonsHallow::getStringEs()
 	{
-		return "";
+		return "Demonio del santuario";
 	}
 
 	std::string DaemonsHallow::getStringEs419()
 	{
-		return "";
+		return "Demonio del santuario";
 	}
 
 	std::string DaemonsHallow::getStringFi()
 	{
-		return "";
+		return "Demonin juhla";
 	}
 
 	std::string DaemonsHallow::getStringFr()
 	{
-		return "";
+		return "Le sort du démon";
 	}
 
 	std::string DaemonsHallow::getStringHu()
 	{
-		return "";
+		return "Demon szentélye";
 	}
 
 	std::string DaemonsHallow::getStringIt()
 	{
-		return "";
+		return "Demon's hallow";
 	}
 
 	std::string DaemonsHallow::getStringJa()
 	{
-		return "";
+		return "悪魔の秘宝";
 	}
 
 	std::string DaemonsHallow::getStringKo()
 	{
-		return "";
+		return "악마의 성기";
 	}
 
 	std::string DaemonsHallow::getStringNl()
 	{
-		return "";
+		return "Demon is heilig";
 	}
 
 	std::string DaemonsHallow::getStringNo()
 	{
-		return "";
+		return "Demon er hellig";
 	}
 
 	std::string DaemonsHallow::getStringPl()
 	{
-		return "";
+		return "Poświęcenie Demona";
 	}
 
 	std::string DaemonsHallow::getStringPt()
 	{
-		return "";
+		return "A santidade do demônio";
 	}
 
 	std::string DaemonsHallow::getStringPtBr()
 	{
-		return "";
+		return "A santidade do demônio";
 	}
 
 	std::string DaemonsHallow::getStringRo()
 	{
-		return "";
+		return "Solul lui Demon";
 	}
 
 	std::string DaemonsHallow::getStringRu()
 	{
-		return "";
+		return "Храм Демона";
 	}
 
 	std::string DaemonsHallow::getStringSv()
 	{
-		return "";
+		return "Demon är hallow";
 	}
 
 	std::string DaemonsHallow::getStringTh()
 	{
-		return "";
+		return "ห้องโถงปีศาจ";
 	}
 
 	std::string DaemonsHallow::getStringTr()
 	{
-		return "";
+		return "Şeytanın hallow";
 	}
 
 	std::string DaemonsHallow::getStringUk()
 	{
-		return "";
+		return "Освячення Демона";
 	}
 
-	std::string DaemonsHallow::getStringVn()
+	std::string DaemonsHallow::getStringVi()
 	{
-		return "";
+		return "Quỷ thần";
 	}
 
 	std::string DaemonsHallow::getStringZhCn()
 	{
-		return "";
+		return "恶魔的神圣";
 	}
 
 	std::string DaemonsHallow::getStringZhTw()
 	{
-		return "";
+		return "惡魔的神聖";
 	}
 }

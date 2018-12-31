@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string BinaryCards::getStringAr()
 	{
-		return "";
+		return "بطاقات ثنائية";
 	}
 
 	std::string BinaryCards::getStringBg()
 	{
-		return "";
+		return "Двоични карти";
 	}
 
 	std::string BinaryCards::getStringCs()
 	{
-		return "";
+		return "Binární karty";
 	}
 
 	std::string BinaryCards::getStringDa()
 	{
-		return "";
+		return "Binære kort";
 	}
 
 	std::string BinaryCards::getStringDe()
 	{
-		return "";
+		return "Binäre Karten";
 	}
 
 	std::string BinaryCards::getStringEl()
 	{
-		return "";
+		return "Δυαδικές κάρτες";
 	}
 
 	std::string BinaryCards::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string BinaryCards::getStringEs()
 	{
-		return "";
+		return "Tarjetas binarias";
 	}
 
 	std::string BinaryCards::getStringEs419()
 	{
-		return "";
+		return "Tarjetas binarias";
 	}
 
 	std::string BinaryCards::getStringFi()
 	{
-		return "";
+		return "Binaarikortit";
 	}
 
 	std::string BinaryCards::getStringFr()
 	{
-		return "";
+		return "Cartes binaires";
 	}
 
 	std::string BinaryCards::getStringHu()
 	{
-		return "";
+		return "Bináris kártyák";
 	}
 
 	std::string BinaryCards::getStringIt()
 	{
-		return "";
+		return "Carte binari";
 	}
 
 	std::string BinaryCards::getStringJa()
 	{
-		return "";
+		return "バイナリカード";
 	}
 
 	std::string BinaryCards::getStringKo()
 	{
-		return "";
+		return "이진 카드";
 	}
 
 	std::string BinaryCards::getStringNl()
 	{
-		return "";
+		return "Binaire kaarten";
 	}
 
 	std::string BinaryCards::getStringNo()
 	{
-		return "";
+		return "Binære kort";
 	}
 
 	std::string BinaryCards::getStringPl()
 	{
-		return "";
+		return "Karty binarne";
 	}
 
 	std::string BinaryCards::getStringPt()
 	{
-		return "";
+		return "Binário Postais";
 	}
 
 	std::string BinaryCards::getStringPtBr()
 	{
-		return "";
+		return "Binário Postais";
 	}
 
 	std::string BinaryCards::getStringRo()
 	{
-		return "";
+		return "Carduri binare";
 	}
 
 	std::string BinaryCards::getStringRu()
 	{
-		return "";
+		return "Двоичные карты";
 	}
 
 	std::string BinaryCards::getStringSv()
 	{
-		return "";
+		return "Binära kort";
 	}
 
 	std::string BinaryCards::getStringTh()
 	{
-		return "";
+		return "บัตรไบนารี";
 	}
 
 	std::string BinaryCards::getStringTr()
 	{
-		return "";
+		return "İkili Kartlar";
 	}
 
 	std::string BinaryCards::getStringUk()
 	{
-		return "";
+		return "Двійкові карти";
 	}
 
-	std::string BinaryCards::getStringVn()
+	std::string BinaryCards::getStringVi()
 	{
-		return "";
+		return "Thẻ nhị phân";
 	}
 
 	std::string BinaryCards::getStringZhCn()
 	{
-		return "";
+		return "二进制卡";
 	}
 
 	std::string BinaryCards::getStringZhTw()
 	{
-		return "";
+		return "二進制卡";
 	}
 }

@@ -41,7 +41,7 @@ namespace LocaleStrings
 		virtual std::string getStringTh() override;
 		virtual std::string getStringTr() override;
 		virtual std::string getStringUk() override;
-		virtual std::string getStringVn() override;
+		virtual std::string getStringVi() override;
 		virtual std::string getStringZhCn() override;
 		virtual std::string getStringZhTw() override;
 		

@@ -158,7 +158,7 @@ namespace LocaleStrings
 		return "";
 	}
 
-	std::string Victory::getStringVn()
+	std::string Victory::getStringVi()
 	{
 		return "";
 	}

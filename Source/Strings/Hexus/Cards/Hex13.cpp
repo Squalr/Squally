@@ -30,146 +30,146 @@ namespace LocaleStrings
 
 	std::string Hex13::getStringAr()
 	{
-		return "";
+		return "ملك هيكل عظمي";
 	}
 
 	std::string Hex13::getStringBg()
 	{
-		return "";
+		return "Скелетен крал";
 	}
 
 	std::string Hex13::getStringCs()
 	{
-		return "";
+		return "Skeleton King";
 	}
 
 	std::string Hex13::getStringDa()
 	{
-		return "";
+		return "Skeleton King";
 	}
 
 	std::string Hex13::getStringDe()
 	{
-		return "";
+		return "Skelett König";
 	}
 
 	std::string Hex13::getStringEl()
 	{
-		return "";
+		return "Σκελετός Βασιλιάς";
 	}
 
 	std::string Hex13::getStringEn()
 	{
-		return "King Sp00ks";
+		return "Skeleton King";
 	}
 
 	std::string Hex13::getStringEs()
 	{
-		return "";
+		return "Rey Esqueleto";
 	}
 
 	std::string Hex13::getStringEs419()
 	{
-		return "";
+		return "Rey Esqueleto";
 	}
 
 	std::string Hex13::getStringFi()
 	{
-		return "";
+		return "Skeleton King";
 	}
 
 	std::string Hex13::getStringFr()
 	{
-		return "";
+		return "Roi Squelette";
 	}
 
 	std::string Hex13::getStringHu()
 	{
-		return "";
+		return "Csontváz király";
 	}
 
 	std::string Hex13::getStringIt()
 	{
-		return "";
+		return "Scheletro King";
 	}
 
 	std::string Hex13::getStringJa()
 	{
-		return "";
+		return "スケルトンキング";
 	}
 
 	std::string Hex13::getStringKo()
 	{
-		return "";
+		return "스켈레톤 킹";
 	}
 
 	std::string Hex13::getStringNl()
 	{
-		return "";
+		return "Skelet koning";
 	}
 
 	std::string Hex13::getStringNo()
 	{
-		return "";
+		return "Skeleton King";
 	}
 
 	std::string Hex13::getStringPl()
 	{
-		return "";
+		return "Król Szkieletów";
 	}
 
 	std::string Hex13::getStringPt()
 	{
-		return "";
+		return "Rei esqueleto";
 	}
 
 	std::string Hex13::getStringPtBr()
 	{
-		return "";
+		return "Rei esqueleto";
 	}
 
 	std::string Hex13::getStringRo()
 	{
-		return "";
+		return "Regele scheletului";
 	}
 
 	std::string Hex13::getStringRu()
 	{
-		return "";
+		return "Скелет Кинг";
 	}
 
 	std::string Hex13::getStringSv()
 	{
-		return "";
+		return "Skelett King";
 	}
 
 	std::string Hex13::getStringTh()
 	{
-		return "";
+		return "Skeleton King";
 	}
 
 	std::string Hex13::getStringTr()
 	{
-		return "";
+		return "İskelet Kral";
 	}
 
 	std::string Hex13::getStringUk()
 	{
-		return "";
+		return "Король скелета";
 	}
 
-	std::string Hex13::getStringVn()
+	std::string Hex13::getStringVi()
 	{
-		return "";
+		return "Vua xương";
 	}
 
 	std::string Hex13::getStringZhCn()
 	{
-		return "";
+		return "骷髅王";
 	}
 
 	std::string Hex13::getStringZhTw()
 	{
-		return "";
+		return "骷髏王";
 	}
 }

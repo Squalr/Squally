@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string BallmerPeaks::getStringAr()
 	{
-		return "";
+		return "بالمر القمم";
 	}
 
 	std::string BallmerPeaks::getStringBg()
 	{
-		return "";
+		return "Балмър Пийкс";
 	}
 
 	std::string BallmerPeaks::getStringCs()
 	{
-		return "";
+		return "Ballmer Peaks";
 	}
 
 	std::string BallmerPeaks::getStringDa()
 	{
-		return "";
+		return "Ballmer Peaks";
 	}
 
 	std::string BallmerPeaks::getStringDe()
 	{
-		return "";
+		return "Ballmer Peaks";
 	}
 
 	std::string BallmerPeaks::getStringEl()
 	{
-		return "";
+		return "Ballmer Peaks";
 	}
 
 	std::string BallmerPeaks::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string BallmerPeaks::getStringEs()
 	{
-		return "";
+		return "Picos de Ballmer";
 	}
 
 	std::string BallmerPeaks::getStringEs419()
 	{
-		return "";
+		return "Picos de Ballmer";
 	}
 
 	std::string BallmerPeaks::getStringFi()
 	{
-		return "";
+		return "Ballmer Peaks";
 	}
 
 	std::string BallmerPeaks::getStringFr()
 	{
-		return "";
+		return "Ballmer Peaks";
 	}
 
 	std::string BallmerPeaks::getStringHu()
 	{
-		return "";
+		return "Ballmer csúcsok";
 	}
 
 	std::string BallmerPeaks::getStringIt()
 	{
-		return "";
+		return "Ballmer Peaks";
 	}
 
 	std::string BallmerPeaks::getStringJa()
 	{
-		return "";
+		return "バルマーピークス";
 	}
 
 	std::string BallmerPeaks::getStringKo()
 	{
-		return "";
+		return "발머 봉우리";
 	}
 
 	std::string BallmerPeaks::getStringNl()
 	{
-		return "";
+		return "Ballmer pieken";
 	}
 
 	std::string BallmerPeaks::getStringNo()
 	{
-		return "";
+		return "Ballmer Peaks";
 	}
 
 	std::string BallmerPeaks::getStringPl()
 	{
-		return "";
+		return "Ballmer Peaks";
 	}
 
 	std::string BallmerPeaks::getStringPt()
 	{
-		return "";
+		return "Picos de Ballmer";
 	}
 
 	std::string BallmerPeaks::getStringPtBr()
 	{
-		return "";
+		return "Picos de Ballmer";
 	}
 
 	std::string BallmerPeaks::getStringRo()
 	{
-		return "";
+		return "Vârfurile Ballmer";
 	}
 
 	std::string BallmerPeaks::getStringRu()
 	{
-		return "";
+		return "Балмер Пикс";
 	}
 
 	std::string BallmerPeaks::getStringSv()
 	{
-		return "";
+		return "Ballmer Peaks";
 	}
 
 	std::string BallmerPeaks::getStringTh()
 	{
-		return "";
+		return "ยอด Ballmer";
 	}
 
 	std::string BallmerPeaks::getStringTr()
 	{
-		return "";
+		return "Ballmer Zirveleri";
 	}
 
 	std::string BallmerPeaks::getStringUk()
 	{
-		return "";
+		return "Балмер Пікс";
 	}
 
-	std::string BallmerPeaks::getStringVn()
+	std::string BallmerPeaks::getStringVi()
 	{
-		return "";
+		return "Đỉnh Ballmer";
 	}
 
 	std::string BallmerPeaks::getStringZhCn()
 	{
-		return "";
+		return "鲍尔默峰";
 	}
 
 	std::string BallmerPeaks::getStringZhTw()
 	{
-		return "";
+		return "鮑爾默峰";
 	}
 }

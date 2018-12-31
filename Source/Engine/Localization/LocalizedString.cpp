@@ -143,7 +143,7 @@ std::string LocalizedString::getString()
 		}
 		case LanguageType::VIETNAMESE:
 		{
-			return this->getStringVn();
+			return this->getStringVi();
 		}
 		case LanguageType::ENGLISH:
 		default:

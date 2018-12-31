@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string HexStorm::getStringAr()
 	{
-		return "";
+		return "عاصفة سداسية عشرية";
 	}
 
 	std::string HexStorm::getStringBg()
 	{
-		return "";
+		return "Шестнадесетична буря";
 	}
 
 	std::string HexStorm::getStringCs()
 	{
-		return "";
+		return "Hexadecimální bouře";
 	}
 
 	std::string HexStorm::getStringDa()
 	{
-		return "";
+		return "Hexadecimal storm";
 	}
 
 	std::string HexStorm::getStringDe()
 	{
-		return "";
+		return "Hexadezimaler Sturm";
 	}
 
 	std::string HexStorm::getStringEl()
 	{
-		return "";
+		return "Δεκαεξαδική θύελλα";
 	}
 
 	std::string HexStorm::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string HexStorm::getStringEs()
 	{
-		return "";
+		return "Tormenta hexadecimal";
 	}
 
 	std::string HexStorm::getStringEs419()
 	{
-		return "";
+		return "Tormenta hexadecimal";
 	}
 
 	std::string HexStorm::getStringFi()
 	{
-		return "";
+		return "Heksadesimaalinen myrsky";
 	}
 
 	std::string HexStorm::getStringFr()
 	{
-		return "";
+		return "Tempête hexadécimale";
 	}
 
 	std::string HexStorm::getStringHu()
 	{
-		return "";
+		return "Hatodecimális vihar";
 	}
 
 	std::string HexStorm::getStringIt()
 	{
-		return "";
+		return "Tempesta esadecimale";
 	}
 
 	std::string HexStorm::getStringJa()
 	{
-		return "";
+		return "16進数の嵐";
 	}
 
 	std::string HexStorm::getStringKo()
 	{
-		return "";
+		return "16 진수 폭풍";
 	}
 
 	std::string HexStorm::getStringNl()
 	{
-		return "";
+		return "Hexadecimale storm";
 	}
 
 	std::string HexStorm::getStringNo()
 	{
-		return "";
+		return "Hexadecimal storm";
 	}
 
 	std::string HexStorm::getStringPl()
 	{
-		return "";
+		return "Wichura szesnastkowa";
 	}
 
 	std::string HexStorm::getStringPt()
 	{
-		return "";
+		return "Tempestade hexadecimal";
 	}
 
 	std::string HexStorm::getStringPtBr()
 	{
-		return "";
+		return "Tempestade hexadecimal";
 	}
 
 	std::string HexStorm::getStringRo()
 	{
-		return "";
+		return "Furtună falsă";
 	}
 
 	std::string HexStorm::getStringRu()
 	{
-		return "";
+		return "Шестнадцатеричный шторм";
 	}
 
 	std::string HexStorm::getStringSv()
 	{
-		return "";
+		return "Hexadecimal storm";
 	}
 
 	std::string HexStorm::getStringTh()
 	{
-		return "";
+		return "พายุเลขฐานสิบหก";
 	}
 
 	std::string HexStorm::getStringTr()
 	{
-		return "";
+		return "Onaltılık fırtına";
 	}
 
 	std::string HexStorm::getStringUk()
 	{
-		return "";
+		return "Шістнадцятковий шторм";
 	}
 
-	std::string HexStorm::getStringVn()
+	std::string HexStorm::getStringVi()
 	{
-		return "";
+		return "Bão tố thập lục phân";
 	}
 
 	std::string HexStorm::getStringZhCn()
 	{
-		return "";
+		return "十六进制风暴";
 	}
 
 	std::string HexStorm::getStringZhTw()
 	{
-		return "";
+		return "十六進制風暴";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string AllocationEditor::getStringAr()
 	{
-		return "";
+		return "محرر التخصيص";
 	}
 
 	std::string AllocationEditor::getStringBg()
 	{
-		return "";
+		return "Редактор за разпределение";
 	}
 
 	std::string AllocationEditor::getStringCs()
 	{
-		return "";
+		return "Editor přidělení";
 	}
 
 	std::string AllocationEditor::getStringDa()
 	{
-		return "";
+		return "Allokeringseditor";
 	}
 
 	std::string AllocationEditor::getStringDe()
 	{
-		return "";
+		return "Zuteilungseditor";
 	}
 
 	std::string AllocationEditor::getStringEl()
 	{
-		return "";
+		return "Εκδότης κατανομής";
 	}
 
 	std::string AllocationEditor::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string AllocationEditor::getStringEs()
 	{
-		return "";
+		return "Allocation Editor";
 	}
 
 	std::string AllocationEditor::getStringEs419()
 	{
-		return "";
+		return "Allocation Editor";
 	}
 
 	std::string AllocationEditor::getStringFi()
 	{
-		return "";
+		return "Allocation Editor";
 	}
 
 	std::string AllocationEditor::getStringFr()
 	{
-		return "";
+		return "Allocation Editor";
 	}
 
 	std::string AllocationEditor::getStringHu()
 	{
-		return "";
+		return "Allocation Editor";
 	}
 
 	std::string AllocationEditor::getStringIt()
 	{
-		return "";
+		return "Editor di allocazioni";
 	}
 
 	std::string AllocationEditor::getStringJa()
 	{
-		return "";
+		return "割り当てエディタ";
 	}
 
 	std::string AllocationEditor::getStringKo()
 	{
-		return "";
+		return "할당 편집기";
 	}
 
 	std::string AllocationEditor::getStringNl()
 	{
-		return "";
+		return "Toewijzingseditor";
 	}
 
 	std::string AllocationEditor::getStringNo()
 	{
-		return "";
+		return "Allokeringsredigerer";
 	}
 
 	std::string AllocationEditor::getStringPl()
 	{
-		return "";
+		return "Edytor alokacji";
 	}
 
 	std::string AllocationEditor::getStringPt()
 	{
-		return "";
+		return "Editor de alocação";
 	}
 
 	std::string AllocationEditor::getStringPtBr()
 	{
-		return "";
+		return "Editor de alocação";
 	}
 
 	std::string AllocationEditor::getStringRo()
 	{
-		return "";
+		return "Editorul de alocare";
 	}
 
 	std::string AllocationEditor::getStringRu()
 	{
-		return "";
+		return "Редактор размещения";
 	}
 
 	std::string AllocationEditor::getStringSv()
 	{
-		return "";
+		return "Allokeringsredigerare";
 	}
 
 	std::string AllocationEditor::getStringTh()
 	{
-		return "";
+		return "เครื่องมือแก้ไขการจัดสรร";
 	}
 
 	std::string AllocationEditor::getStringTr()
 	{
-		return "";
+		return "Tahsis Editör";
 	}
 
 	std::string AllocationEditor::getStringUk()
 	{
-		return "";
+		return "Редактор розподілу";
 	}
 
-	std::string AllocationEditor::getStringVn()
+	std::string AllocationEditor::getStringVi()
 	{
-		return "";
+		return "Biên tập phân bổ";
 	}
 
 	std::string AllocationEditor::getStringZhCn()
 	{
-		return "";
+		return "分配编辑器";
 	}
 
 	std::string AllocationEditor::getStringZhTw()
 	{
-		return "";
+		return "分配編輯器";
 	}
 }

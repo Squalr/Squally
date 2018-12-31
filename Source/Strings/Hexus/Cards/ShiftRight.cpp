@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string ShiftRight::getStringAr()
 	{
-		return "";
+		return "تحول بت الحق";
 	}
 
 	std::string ShiftRight::getStringBg()
 	{
-		return "";
+		return "Смяна на бита надясно";
 	}
 
 	std::string ShiftRight::getStringCs()
 	{
-		return "";
+		return "Posunujte bity správně";
 	}
 
 	std::string ShiftRight::getStringDa()
 	{
-		return "";
+		return "Skift bit højre";
 	}
 
 	std::string ShiftRight::getStringDe()
 	{
-		return "";
+		return "Bits nach rechts verschieben";
 	}
 
 	std::string ShiftRight::getStringEl()
 	{
-		return "";
+		return "Μετακινήστε τα κομμάτια δεξιά";
 	}
 
 	std::string ShiftRight::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string ShiftRight::getStringEs()
 	{
-		return "";
+		return "Desplazar bits a la derecha";
 	}
 
 	std::string ShiftRight::getStringEs419()
 	{
-		return "";
+		return "Desplazar bits a la derecha";
 	}
 
 	std::string ShiftRight::getStringFi()
 	{
-		return "";
+		return "Vaihda bittiä oikealle";
 	}
 
 	std::string ShiftRight::getStringFr()
 	{
-		return "";
+		return "Décaler les bits à droite";
 	}
 
 	std::string ShiftRight::getStringHu()
 	{
-		return "";
+		return "Shift bitek jobbra";
 	}
 
 	std::string ShiftRight::getStringIt()
 	{
-		return "";
+		return "Maiuscole a destra";
 	}
 
 	std::string ShiftRight::getStringJa()
 	{
-		return "";
+		return "ビットを右にシフト";
 	}
 
 	std::string ShiftRight::getStringKo()
 	{
-		return "";
+		return "오른쪽으로 시프트 비트";
 	}
 
 	std::string ShiftRight::getStringNl()
 	{
-		return "";
+		return "Shutt bits goed";
 	}
 
 	std::string ShiftRight::getStringNo()
 	{
-		return "";
+		return "Skift biter til høyre";
 	}
 
 	std::string ShiftRight::getStringPl()
 	{
-		return "";
+		return "Przesunąć bity w prawo";
 	}
 
 	std::string ShiftRight::getStringPt()
 	{
-		return "";
+		return "Shift bits certo";
 	}
 
 	std::string ShiftRight::getStringPtBr()
 	{
-		return "";
+		return "Shift bits certo";
 	}
 
 	std::string ShiftRight::getStringRo()
 	{
-		return "";
+		return "Shift biți dreapta";
 	}
 
 	std::string ShiftRight::getStringRu()
 	{
-		return "";
+		return "Сдвиг вправо";
 	}
 
 	std::string ShiftRight::getStringSv()
 	{
-		return "";
+		return "Skift bitar höger";
 	}
 
 	std::string ShiftRight::getStringTh()
 	{
-		return "";
+		return "เลื่อนบิตไปทางขวา";
 	}
 
 	std::string ShiftRight::getStringTr()
 	{
-		return "";
+		return "Shift bitleri sağa";
 	}
 
 	std::string ShiftRight::getStringUk()
 	{
-		return "";
+		return "Змінюйте біти вправо";
 	}
 
-	std::string ShiftRight::getStringVn()
+	std::string ShiftRight::getStringVi()
 	{
-		return "";
+		return "Thay đổi bit phải";
 	}
 
 	std::string ShiftRight::getStringZhCn()
 	{
-		return "";
+		return "移位正确";
 	}
 
 	std::string ShiftRight::getStringZhTw()
 	{
-		return "";
+		return "移位正確";
 	}
 }

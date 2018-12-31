@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Hex7::getStringAr()
 	{
-		return "";
+		return "خوف";
 	}
 
 	std::string Hex7::getStringBg()
 	{
-		return "";
+		return "страх";
 	}
 
 	std::string Hex7::getStringCs()
 	{
-		return "";
+		return "Strach";
 	}
 
 	std::string Hex7::getStringDa()
 	{
-		return "";
+		return "Frygt";
 	}
 
 	std::string Hex7::getStringDe()
 	{
-		return "";
+		return "Angst";
 	}
 
 	std::string Hex7::getStringEl()
 	{
-		return "";
+		return "Φόβος";
 	}
 
 	std::string Hex7::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Hex7::getStringEs()
 	{
-		return "";
+		return "Temor";
 	}
 
 	std::string Hex7::getStringEs419()
 	{
-		return "";
+		return "Temor";
 	}
 
 	std::string Hex7::getStringFi()
 	{
-		return "";
+		return "Pelko";
 	}
 
 	std::string Hex7::getStringFr()
 	{
-		return "";
+		return "Peur";
 	}
 
 	std::string Hex7::getStringHu()
 	{
-		return "";
+		return "Félelem";
 	}
 
 	std::string Hex7::getStringIt()
 	{
-		return "";
+		return "Paura";
 	}
 
 	std::string Hex7::getStringJa()
 	{
-		return "";
+		return "恐れ";
 	}
 
 	std::string Hex7::getStringKo()
 	{
-		return "";
+		return "무서움";
 	}
 
 	std::string Hex7::getStringNl()
 	{
-		return "";
+		return "Angst";
 	}
 
 	std::string Hex7::getStringNo()
 	{
-		return "";
+		return "Frykt";
 	}
 
 	std::string Hex7::getStringPl()
 	{
-		return "";
+		return "Strach";
 	}
 
 	std::string Hex7::getStringPt()
 	{
-		return "";
+		return "Medo";
 	}
 
 	std::string Hex7::getStringPtBr()
 	{
-		return "";
+		return "Medo";
 	}
 
 	std::string Hex7::getStringRo()
 	{
-		return "";
+		return "Frică";
 	}
 
 	std::string Hex7::getStringRu()
 	{
-		return "";
+		return "Страх";
 	}
 
 	std::string Hex7::getStringSv()
 	{
-		return "";
+		return "Rädsla";
 	}
 
 	std::string Hex7::getStringTh()
 	{
-		return "";
+		return "กลัว";
 	}
 
 	std::string Hex7::getStringTr()
 	{
-		return "";
+		return "Korku";
 	}
 
 	std::string Hex7::getStringUk()
 	{
-		return "";
+		return "Страх";
 	}
 
-	std::string Hex7::getStringVn()
+	std::string Hex7::getStringVi()
 	{
-		return "";
+		return "Nỗi sợ";
 	}
 
 	std::string Hex7::getStringZhCn()
 	{
-		return "";
+		return "恐惧";
 	}
 
 	std::string Hex7::getStringZhTw()
 	{
-		return "";
+		return "恐懼";
 	}
 }

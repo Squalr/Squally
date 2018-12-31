@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string DecimalCards::getStringAr()
 	{
-		return "";
+		return "بطاقات عشرية";
 	}
 
 	std::string DecimalCards::getStringBg()
 	{
-		return "";
+		return "Десетични карти";
 	}
 
 	std::string DecimalCards::getStringCs()
 	{
-		return "";
+		return "Desítkové karty";
 	}
 
 	std::string DecimalCards::getStringDa()
 	{
-		return "";
+		return "Decimale kort";
 	}
 
 	std::string DecimalCards::getStringDe()
 	{
-		return "";
+		return "Dezimalkarten";
 	}
 
 	std::string DecimalCards::getStringEl()
 	{
-		return "";
+		return "Δεκαδικές Κάρτες";
 	}
 
 	std::string DecimalCards::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string DecimalCards::getStringEs()
 	{
-		return "";
+		return "Tarjetas decimales";
 	}
 
 	std::string DecimalCards::getStringEs419()
 	{
-		return "";
+		return "Tarjetas decimales";
 	}
 
 	std::string DecimalCards::getStringFi()
 	{
-		return "";
+		return "Kymmenen korttia";
 	}
 
 	std::string DecimalCards::getStringFr()
 	{
-		return "";
+		return "Cartes décimales";
 	}
 
 	std::string DecimalCards::getStringHu()
 	{
-		return "";
+		return "Tizedes kártyák";
 	}
 
 	std::string DecimalCards::getStringIt()
 	{
-		return "";
+		return "Carte decimali";
 	}
 
 	std::string DecimalCards::getStringJa()
 	{
-		return "";
+		return "十進カード";
 	}
 
 	std::string DecimalCards::getStringKo()
 	{
-		return "";
+		return "십진법 카드";
 	}
 
 	std::string DecimalCards::getStringNl()
 	{
-		return "";
+		return "Decimale kaarten";
 	}
 
 	std::string DecimalCards::getStringNo()
 	{
-		return "";
+		return "Desimale kort";
 	}
 
 	std::string DecimalCards::getStringPl()
 	{
-		return "";
+		return "Karty dziesiętne";
 	}
 
 	std::string DecimalCards::getStringPt()
 	{
-		return "";
+		return "Decimais Postais";
 	}
 
 	std::string DecimalCards::getStringPtBr()
 	{
-		return "";
+		return "Decimais Postais";
 	}
 
 	std::string DecimalCards::getStringRo()
 	{
-		return "";
+		return "Carduri decimale";
 	}
 
 	std::string DecimalCards::getStringRu()
 	{
-		return "";
+		return "Десятичные карты";
 	}
 
 	std::string DecimalCards::getStringSv()
 	{
-		return "";
+		return "Decimala kort";
 	}
 
 	std::string DecimalCards::getStringTh()
 	{
-		return "";
+		return "การ์ดเลขฐานสิบ";
 	}
 
 	std::string DecimalCards::getStringTr()
 	{
-		return "";
+		return "Ondalık Kartlar";
 	}
 
 	std::string DecimalCards::getStringUk()
 	{
-		return "";
+		return "Десяткові картки";
 	}
 
-	std::string DecimalCards::getStringVn()
+	std::string DecimalCards::getStringVi()
 	{
-		return "";
+		return "Thẻ thập phân";
 	}
 
 	std::string DecimalCards::getStringZhCn()
 	{
-		return "";
+		return "十进制卡";
 	}
 
 	std::string DecimalCards::getStringZhTw()
 	{
-		return "";
+		return "十進制卡";
 	}
 }

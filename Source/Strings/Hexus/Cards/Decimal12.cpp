@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Decimal12::getStringAr()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringBg()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringCs()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringDa()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringDe()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringEl()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Decimal12::getStringEs()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringEs419()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringFi()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringFr()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringHu()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringIt()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringJa()
 	{
-		return "";
+		return "ザトラクス";
 	}
 
 	std::string Decimal12::getStringKo()
 	{
-		return "";
+		return "자 트락 스";
 	}
 
 	std::string Decimal12::getStringNl()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringNo()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringPl()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringPt()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringPtBr()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringRo()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringRu()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringSv()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringTh()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringTr()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringUk()
 	{
-		return "";
+		return "Zatrax";
 	}
 
-	std::string Decimal12::getStringVn()
+	std::string Decimal12::getStringVi()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringZhCn()
 	{
-		return "";
+		return "Zatrax";
 	}
 
 	std::string Decimal12::getStringZhTw()
 	{
-		return "";
+		return "Zatrax";
 	}
 }

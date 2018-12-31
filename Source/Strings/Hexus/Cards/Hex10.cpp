@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Hex10::getStringAr()
 	{
-		return "";
+		return "كارل";
 	}
 
 	std::string Hex10::getStringBg()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringCs()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringDa()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringDe()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringEl()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Hex10::getStringEs()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringEs419()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringFi()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringFr()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringHu()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringIt()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringJa()
 	{
-		return "";
+		return "カール";
 	}
 
 	std::string Hex10::getStringKo()
 	{
-		return "";
+		return "칼";
 	}
 
 	std::string Hex10::getStringNl()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringNo()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringPl()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringPt()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringPtBr()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringRo()
 	{
-		return "";
+		return "șerb";
 	}
 
 	std::string Hex10::getStringRu()
 	{
-		return "";
+		return "деревенщина";
 	}
 
 	std::string Hex10::getStringSv()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringTh()
 	{
-		return "";
+		return "คาร์ล";
 	}
 
 	std::string Hex10::getStringTr()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringUk()
 	{
-		return "";
+		return "Карл";
 	}
 
-	std::string Hex10::getStringVn()
+	std::string Hex10::getStringVi()
 	{
-		return "";
+		return "Carl";
 	}
 
 	std::string Hex10::getStringZhCn()
 	{
-		return "";
+		return "卡尔";
 	}
 
 	std::string Hex10::getStringZhTw()
 	{
-		return "";
+		return "卡爾";
 	}
 }

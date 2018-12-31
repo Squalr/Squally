@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Binary1::getStringAr()
 	{
-		return "";
+		return "الفول السوداني";
 	}
 
 	std::string Binary1::getStringBg()
 	{
-		return "";
+		return "Фъстък";
 	}
 
 	std::string Binary1::getStringCs()
 	{
-		return "";
+		return "Arašíd";
 	}
 
 	std::string Binary1::getStringDa()
 	{
-		return "";
+		return "Jordnød";
 	}
 
 	std::string Binary1::getStringDe()
 	{
-		return "";
+		return "Erdnuss";
 	}
 
 	std::string Binary1::getStringEl()
 	{
-		return "";
+		return "Αράπικο φιστίκι";
 	}
 
 	std::string Binary1::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Binary1::getStringEs()
 	{
-		return "";
+		return "Maní";
 	}
 
 	std::string Binary1::getStringEs419()
 	{
-		return "";
+		return "Maní";
 	}
 
 	std::string Binary1::getStringFi()
 	{
-		return "";
+		return "Maapähkinä";
 	}
 
 	std::string Binary1::getStringFr()
 	{
-		return "";
+		return "Cacahuète";
 	}
 
 	std::string Binary1::getStringHu()
 	{
-		return "";
+		return "Földimogyoró";
 	}
 
 	std::string Binary1::getStringIt()
 	{
-		return "";
+		return "arachide";
 	}
 
 	std::string Binary1::getStringJa()
 	{
-		return "";
+		return "落花生";
 	}
 
 	std::string Binary1::getStringKo()
 	{
-		return "";
+		return "땅콩";
 	}
 
 	std::string Binary1::getStringNl()
 	{
-		return "";
+		return "Pinda";
 	}
 
 	std::string Binary1::getStringNo()
 	{
-		return "";
+		return "Peanøtt";
 	}
 
 	std::string Binary1::getStringPl()
 	{
-		return "";
+		return "Arachid";
 	}
 
 	std::string Binary1::getStringPt()
 	{
-		return "";
+		return "Amendoim";
 	}
 
 	std::string Binary1::getStringPtBr()
 	{
-		return "";
+		return "Amendoim";
 	}
 
 	std::string Binary1::getStringRo()
 	{
-		return "";
+		return "arahidă";
 	}
 
 	std::string Binary1::getStringRu()
 	{
-		return "";
+		return "арахис";
 	}
 
 	std::string Binary1::getStringSv()
 	{
-		return "";
+		return "Jordnöt";
 	}
 
 	std::string Binary1::getStringTh()
 	{
-		return "";
+		return "ถั่วลิสง";
 	}
 
 	std::string Binary1::getStringTr()
 	{
-		return "";
+		return "Fıstık";
 	}
 
 	std::string Binary1::getStringUk()
 	{
-		return "";
+		return "Арахіс";
 	}
 
-	std::string Binary1::getStringVn()
+	std::string Binary1::getStringVi()
 	{
-		return "";
+		return "Đậu phụng";
 	}
 
 	std::string Binary1::getStringZhCn()
 	{
-		return "";
+		return "花生";
 	}
 
 	std::string Binary1::getStringZhTw()
 	{
-		return "";
+		return "花生";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string DecStorm::getStringAr()
 	{
-		return "";
+		return "العاصفة العشرية";
 	}
 
 	std::string DecStorm::getStringBg()
 	{
-		return "";
+		return "Десетична буря";
 	}
 
 	std::string DecStorm::getStringCs()
 	{
-		return "";
+		return "Desetinná bouře";
 	}
 
 	std::string DecStorm::getStringDa()
 	{
-		return "";
+		return "Decimal storm";
 	}
 
 	std::string DecStorm::getStringDe()
 	{
-		return "";
+		return "Dezimalsturm";
 	}
 
 	std::string DecStorm::getStringEl()
 	{
-		return "";
+		return "Δεκαδική θύελλα";
 	}
 
 	std::string DecStorm::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string DecStorm::getStringEs()
 	{
-		return "";
+		return "Tormenta decimal";
 	}
 
 	std::string DecStorm::getStringEs419()
 	{
-		return "";
+		return "Tormenta decimal";
 	}
 
 	std::string DecStorm::getStringFi()
 	{
-		return "";
+		return "Kymmenen myrsky";
 	}
 
 	std::string DecStorm::getStringFr()
 	{
-		return "";
+		return "Tempête décimale";
 	}
 
 	std::string DecStorm::getStringHu()
 	{
-		return "";
+		return "Tizedes vihar";
 	}
 
 	std::string DecStorm::getStringIt()
 	{
-		return "";
+		return "Tempesta decimale";
 	}
 
 	std::string DecStorm::getStringJa()
 	{
-		return "";
+		return "十進嵐";
 	}
 
 	std::string DecStorm::getStringKo()
 	{
-		return "";
+		return "십진 폭풍";
 	}
 
 	std::string DecStorm::getStringNl()
 	{
-		return "";
+		return "Decimale storm";
 	}
 
 	std::string DecStorm::getStringNo()
 	{
-		return "";
+		return "Desimal storm";
 	}
 
 	std::string DecStorm::getStringPl()
 	{
-		return "";
+		return "Decimal storm";
 	}
 
 	std::string DecStorm::getStringPt()
 	{
-		return "";
+		return "Tempestade decimal";
 	}
 
 	std::string DecStorm::getStringPtBr()
 	{
-		return "";
+		return "Tempestade decimal";
 	}
 
 	std::string DecStorm::getStringRo()
 	{
-		return "";
+		return "Furtuna zecimală";
 	}
 
 	std::string DecStorm::getStringRu()
 	{
-		return "";
+		return "Десятичная буря";
 	}
 
 	std::string DecStorm::getStringSv()
 	{
-		return "";
+		return "Decimal storm";
 	}
 
 	std::string DecStorm::getStringTh()
 	{
-		return "";
+		return "พายุเลขฐานสิบ";
 	}
 
 	std::string DecStorm::getStringTr()
 	{
-		return "";
+		return "Ondalık fırtına";
 	}
 
 	std::string DecStorm::getStringUk()
 	{
-		return "";
+		return "Десятковий шторм";
 	}
 
-	std::string DecStorm::getStringVn()
+	std::string DecStorm::getStringVi()
 	{
-		return "";
+		return "Bão thập phân";
 	}
 
 	std::string DecStorm::getStringZhCn()
 	{
-		return "";
+		return "十进风暴";
 	}
 
 	std::string DecStorm::getStringZhTw()
 	{
-		return "";
+		return "十進風暴";
 	}
 }

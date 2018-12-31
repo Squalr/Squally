@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Binary15::getStringAr()
 	{
-		return "";
+		return "golem المعدنية";
 	}
 
 	std::string Binary15::getStringBg()
 	{
-		return "";
+		return "метален голем";
 	}
 
 	std::string Binary15::getStringCs()
 	{
-		return "";
+		return "kovový golem";
 	}
 
 	std::string Binary15::getStringDa()
 	{
-		return "";
+		return "metal golem";
 	}
 
 	std::string Binary15::getStringDe()
 	{
-		return "";
+		return "Metallgolem";
 	}
 
 	std::string Binary15::getStringEl()
 	{
-		return "";
+		return "metal golem";
 	}
 
 	std::string Binary15::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Binary15::getStringEs()
 	{
-		return "";
+		return "metal golem";
 	}
 
 	std::string Binary15::getStringEs419()
 	{
-		return "{{es-419}}";
+		return "metal golem";
 	}
 
 	std::string Binary15::getStringFi()
 	{
-		return "";
+		return "metalligolem";
 	}
 
 	std::string Binary15::getStringFr()
 	{
-		return "";
+		return "golem en métal";
 	}
 
 	std::string Binary15::getStringHu()
 	{
-		return "";
+		return "fém golem";
 	}
 
 	std::string Binary15::getStringIt()
 	{
-		return "";
+		return "golem di metallo";
 	}
 
 	std::string Binary15::getStringJa()
 	{
-		return "";
+		return "メタルゴーレム";
 	}
 
 	std::string Binary15::getStringKo()
 	{
-		return "";
+		return "금속 골렘";
 	}
 
 	std::string Binary15::getStringNl()
 	{
-		return "";
+		return "metalen golem";
 	}
 
 	std::string Binary15::getStringNo()
 	{
-		return "";
+		return "metal golem";
 	}
 
 	std::string Binary15::getStringPl()
 	{
-		return "";
+		return "metalowy golem";
 	}
 
 	std::string Binary15::getStringPt()
 	{
-		return "";
+		return "golem de metal";
 	}
 
 	std::string Binary15::getStringPtBr()
 	{
-		return "";
+		return "golem de metal";
 	}
 
 	std::string Binary15::getStringRo()
 	{
-		return "";
+		return "golem de metal";
 	}
 
 	std::string Binary15::getStringRu()
 	{
-		return "";
+		return "металлический голем";
 	}
 
 	std::string Binary15::getStringSv()
 	{
-		return "";
+		return "metal golem";
 	}
 
 	std::string Binary15::getStringTh()
 	{
-		return "";
+		return "โลหะโกเล็ม";
 	}
 
 	std::string Binary15::getStringTr()
 	{
-		return "";
+		return "metal golem";
 	}
 
 	std::string Binary15::getStringUk()
 	{
-		return "";
+		return "металевий голем";
 	}
 
-	std::string Binary15::getStringVn()
+	std::string Binary15::getStringVi()
 	{
-		return "{{vn}}";
+		return "golem kim loại";
 	}
 
 	std::string Binary15::getStringZhCn()
 	{
-		return "";
+		return "金属傀儡";
 	}
 
 	std::string Binary15::getStringZhTw()
 	{
-		return "";
+		return "金屬傀儡";
 	}
 }

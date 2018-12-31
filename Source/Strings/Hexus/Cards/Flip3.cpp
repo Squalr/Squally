@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Flip3::getStringAr()
 	{
-		return "";
+		return "قلب الجزء الثالث";
 	}
 
 	std::string Flip3::getStringBg()
 	{
-		return "";
+		return "Обърнете третия бит";
 	}
 
 	std::string Flip3::getStringCs()
 	{
-		return "";
+		return "Překlopte třetí bit";
 	}
 
 	std::string Flip3::getStringDa()
 	{
-		return "";
+		return "Vend den tredje bit";
 	}
 
 	std::string Flip3::getStringDe()
 	{
-		return "";
+		return "Drehe das dritte Bit";
 	}
 
 	std::string Flip3::getStringEl()
 	{
-		return "";
+		return "Περιστρέψτε το τρίτο κομμάτι";
 	}
 
 	std::string Flip3::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Flip3::getStringEs()
 	{
-		return "";
+		return "Voltear el tercer bit";
 	}
 
 	std::string Flip3::getStringEs419()
 	{
-		return "";
+		return "Voltear el tercer bit";
 	}
 
 	std::string Flip3::getStringFi()
 	{
-		return "";
+		return "Käännä kolmas bitti";
 	}
 
 	std::string Flip3::getStringFr()
 	{
-		return "";
+		return "Retournez le troisième bit";
 	}
 
 	std::string Flip3::getStringHu()
 	{
-		return "";
+		return "Flip a harmadik bit";
 	}
 
 	std::string Flip3::getStringIt()
 	{
-		return "";
+		return "Capovolgi il terzo bit";
 	}
 
 	std::string Flip3::getStringJa()
 	{
-		return "";
+		return "3番目のビットを反転";
 	}
 
 	std::string Flip3::getStringKo()
 	{
-		return "";
+		return "세 번째 비트 뒤집기";
 	}
 
 	std::string Flip3::getStringNl()
 	{
-		return "";
+		return "Draai het derde deel";
 	}
 
 	std::string Flip3::getStringNo()
 	{
-		return "";
+		return "Vend den tredje biten";
 	}
 
 	std::string Flip3::getStringPl()
 	{
-		return "";
+		return "Odwróć trzeci bit";
 	}
 
 	std::string Flip3::getStringPt()
 	{
-		return "";
+		return "Virar o terceiro bit";
 	}
 
 	std::string Flip3::getStringPtBr()
 	{
-		return "";
+		return "Virar o terceiro bit";
 	}
 
 	std::string Flip3::getStringRo()
 	{
-		return "";
+		return "Răsturnați al treilea bit";
 	}
 
 	std::string Flip3::getStringRu()
 	{
-		return "";
+		return "Отразить третий бит";
 	}
 
 	std::string Flip3::getStringSv()
 	{
-		return "";
+		return "Vänd den tredje biten";
 	}
 
 	std::string Flip3::getStringTh()
 	{
-		return "";
+		return "พลิกบิตที่สาม";
 	}
 
 	std::string Flip3::getStringTr()
 	{
-		return "";
+		return "Üçüncü biti çevir";
 	}
 
 	std::string Flip3::getStringUk()
 	{
-		return "";
+		return "Переверніть третій біт";
 	}
 
-	std::string Flip3::getStringVn()
+	std::string Flip3::getStringVi()
 	{
-		return "";
+		return "Lật bit thứ ba";
 	}
 
 	std::string Flip3::getStringZhCn()
 	{
-		return "";
+		return "翻转第三位";
 	}
 
 	std::string Flip3::getStringZhTw()
 	{
-		return "";
+		return "翻轉第三位";
 	}
 }

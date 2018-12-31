@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string BinCards::getStringAr()
 	{
-		return "";
+		return "البطاقات الزرقاء هي بطاقات ثنائية.";
 	}
 
 	std::string BinCards::getStringBg()
 	{
-		return "";
+		return "Сините карти са двоични карти.";
 	}
 
 	std::string BinCards::getStringCs()
 	{
-		return "";
+		return "Modré karty jsou binárními kartami.";
 	}
 
 	std::string BinCards::getStringDa()
 	{
-		return "";
+		return "Blå kort er binære kort.";
 	}
 
 	std::string BinCards::getStringDe()
 	{
-		return "";
+		return "Blaue Karten sind binäre Karten.";
 	}
 
 	std::string BinCards::getStringEl()
 	{
-		return "";
+		return "Οι μπλε κάρτες είναι δυαδικές κάρτες.";
 	}
 
 	std::string BinCards::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string BinCards::getStringEs()
 	{
-		return "";
+		return "Las tarjetas azules son tarjetas binarias.";
 	}
 
 	std::string BinCards::getStringEs419()
 	{
-		return "";
+		return "Las tarjetas azules son tarjetas binarias.";
 	}
 
 	std::string BinCards::getStringFi()
 	{
-		return "";
+		return "Siniset kortit ovat binäärikortteja.";
 	}
 
 	std::string BinCards::getStringFr()
 	{
-		return "";
+		return "Les cartes bleues sont des cartes binaires.";
 	}
 
 	std::string BinCards::getStringHu()
 	{
-		return "";
+		return "A kék kártyák bináris kártyák.";
 	}
 
 	std::string BinCards::getStringIt()
 	{
-		return "";
+		return "Le carte blu sono carte binari.";
 	}
 
 	std::string BinCards::getStringJa()
 	{
-		return "";
+		return "ブルーカードはバイナリカードです。";
 	}
 
 	std::string BinCards::getStringKo()
 	{
-		return "";
+		return "파란색 카드는 이진 카드입니다.";
 	}
 
 	std::string BinCards::getStringNl()
 	{
-		return "";
+		return "Blauwe kaarten zijn binaire kaarten.";
 	}
 
 	std::string BinCards::getStringNo()
 	{
-		return "";
+		return "Blå kort er binære kort.";
 	}
 
 	std::string BinCards::getStringPl()
 	{
-		return "";
+		return "Niebieskie karty to karty binarne.";
 	}
 
 	std::string BinCards::getStringPt()
 	{
-		return "";
+		return "Cartões azuis são cartões binários.";
 	}
 
 	std::string BinCards::getStringPtBr()
 	{
-		return "";
+		return "Cartões azuis são cartões binários.";
 	}
 
 	std::string BinCards::getStringRo()
 	{
-		return "";
+		return "Cartile albastre sunt carduri binare.";
 	}
 
 	std::string BinCards::getStringRu()
 	{
-		return "";
+		return "Синие карты - это бинарные карты.";
 	}
 
 	std::string BinCards::getStringSv()
 	{
-		return "";
+		return "Blå kort är binära kort.";
 	}
 
 	std::string BinCards::getStringTh()
 	{
-		return "";
+		return "บัตรสีฟ้าเป็นบัตรไบนารี";
 	}
 
 	std::string BinCards::getStringTr()
 	{
-		return "";
+		return "Mavi kartlar ikili kartlardır.";
 	}
 
 	std::string BinCards::getStringUk()
 	{
-		return "";
+		return "Сині карти - це двійкові карти.";
 	}
 
-	std::string BinCards::getStringVn()
+	std::string BinCards::getStringVi()
 	{
-		return "";
+		return "Thẻ màu xanh là thẻ nhị phân.";
 	}
 
 	std::string BinCards::getStringZhCn()
 	{
-		return "";
+		return "蓝卡是二进制卡。";
 	}
 
 	std::string BinCards::getStringZhTw()
 	{
-		return "";
+		return "藍卡是二進制卡。";
 	}
 }

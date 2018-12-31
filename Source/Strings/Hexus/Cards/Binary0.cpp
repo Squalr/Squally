@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Binary0::getStringAr()
 	{
-		return "";
+		return "حصاة";
 	}
 
 	std::string Binary0::getStringBg()
 	{
-		return "";
+		return "камъче";
 	}
 
 	std::string Binary0::getStringCs()
 	{
-		return "";
+		return "Oblázek";
 	}
 
 	std::string Binary0::getStringDa()
 	{
-		return "";
+		return "Rullesten";
 	}
 
 	std::string Binary0::getStringDe()
 	{
-		return "";
+		return "Kieselstein";
 	}
 
 	std::string Binary0::getStringEl()
 	{
-		return "";
+		return "Χαλίκι";
 	}
 
 	std::string Binary0::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Binary0::getStringEs()
 	{
-		return "";
+		return "Guijarro";
 	}
 
 	std::string Binary0::getStringEs419()
 	{
-		return "";
+		return "Guijarro";
 	}
 
 	std::string Binary0::getStringFi()
 	{
-		return "";
+		return "Kivi";
 	}
 
 	std::string Binary0::getStringFr()
 	{
-		return "";
+		return "Caillou";
 	}
 
 	std::string Binary0::getStringHu()
 	{
-		return "";
+		return "Kavics";
 	}
 
 	std::string Binary0::getStringIt()
 	{
-		return "";
+		return "ciottolo";
 	}
 
 	std::string Binary0::getStringJa()
 	{
-		return "";
+		return "小石";
 	}
 
 	std::string Binary0::getStringKo()
 	{
-		return "";
+		return "마노";
 	}
 
 	std::string Binary0::getStringNl()
 	{
-		return "";
+		return "Kiezelsteen";
 	}
 
 	std::string Binary0::getStringNo()
 	{
-		return "";
+		return "Småstein";
 	}
 
 	std::string Binary0::getStringPl()
 	{
-		return "";
+		return "Kamyk";
 	}
 
 	std::string Binary0::getStringPt()
 	{
-		return "";
+		return "Seixo";
 	}
 
 	std::string Binary0::getStringPtBr()
 	{
-		return "";
+		return "Seixo";
 	}
 
 	std::string Binary0::getStringRo()
 	{
-		return "";
+		return "prundiș";
 	}
 
 	std::string Binary0::getStringRu()
 	{
-		return "";
+		return "галька";
 	}
 
 	std::string Binary0::getStringSv()
 	{
-		return "";
+		return "Sten";
 	}
 
 	std::string Binary0::getStringTh()
 	{
-		return "";
+		return "กรวด";
 	}
 
 	std::string Binary0::getStringTr()
 	{
-		return "";
+		return "çakıl";
 	}
 
 	std::string Binary0::getStringUk()
 	{
-		return "";
+		return "Галька";
 	}
 
-	std::string Binary0::getStringVn()
+	std::string Binary0::getStringVi()
 	{
-		return "";
+		return "Sỏi";
 	}
 
 	std::string Binary0::getStringZhCn()
 	{
-		return "";
+		return "卵石";
 	}
 
 	std::string Binary0::getStringZhTw()
 	{
-		return "";
+		return "卵石";
 	}
 }

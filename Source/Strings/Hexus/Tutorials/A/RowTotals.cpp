@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string RowTotals::getStringAr()
 	{
-		return "";
+		return "زيادة درجاتك عن طريق لعب الورق على الصفوف.";
 	}
 
 	std::string RowTotals::getStringBg()
 	{
-		return "";
+		return "Увеличете резултата си, като играете карти на редове.";
 	}
 
 	std::string RowTotals::getStringCs()
 	{
-		return "";
+		return "Zvyšte skóre tím, že hrajete karty na řádky.";
 	}
 
 	std::string RowTotals::getStringDa()
 	{
-		return "";
+		return "Forøg din score ved at spille kort på rækker.";
 	}
 
 	std::string RowTotals::getStringDe()
 	{
-		return "";
+		return "Erhöhen Sie Ihre Punktzahl, indem Sie Karten in Reihen spielen.";
 	}
 
 	std::string RowTotals::getStringEl()
 	{
-		return "";
+		return "Αυξήστε το σκορ σας παίζοντας χαρτιά σε σειρές.";
 	}
 
 	std::string RowTotals::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string RowTotals::getStringEs()
 	{
-		return "";
+		return "Aumenta tu puntuación jugando cartas en filas.";
 	}
 
 	std::string RowTotals::getStringEs419()
 	{
-		return "";
+		return "Aumenta tu puntuación jugando cartas en filas.";
 	}
 
 	std::string RowTotals::getStringFi()
 	{
-		return "";
+		return "Lisää pisteitä pelaamalla kortteja riveihin.";
 	}
 
 	std::string RowTotals::getStringFr()
 	{
-		return "";
+		return "Augmentez votre score en jouant aux cartes sur des rangées.";
 	}
 
 	std::string RowTotals::getStringHu()
 	{
-		return "";
+		return "Növelje a pontszámot játékkártyákkal a sorokra.";
 	}
 
 	std::string RowTotals::getStringIt()
 	{
-		return "";
+		return "Aumenta il tuo punteggio giocando a carte su file.";
 	}
 
 	std::string RowTotals::getStringJa()
 	{
-		return "";
+		return "列にカードをプレイすることであなたのスコアを上げます。";
 	}
 
 	std::string RowTotals::getStringKo()
 	{
-		return "";
+		return "행에 카드를 올려 점수를 높이십시오.";
 	}
 
 	std::string RowTotals::getStringNl()
 	{
-		return "";
+		return "Verhoog je score door kaarten op rijen te spelen.";
 	}
 
 	std::string RowTotals::getStringNo()
 	{
-		return "";
+		return "Øk poengene dine ved å spille kort på rader.";
 	}
 
 	std::string RowTotals::getStringPl()
 	{
-		return "";
+		return "Zwiększ swój wynik, grając w karty w rzędach.";
 	}
 
 	std::string RowTotals::getStringPt()
 	{
-		return "";
+		return "Aumente sua pontuação jogando cartas nas linhas.";
 	}
 
 	std::string RowTotals::getStringPtBr()
 	{
-		return "";
+		return "Aumente sua pontuação jogando cartas nas linhas.";
 	}
 
 	std::string RowTotals::getStringRo()
 	{
-		return "";
+		return "Măriți scorul jucând cărți pe rânduri.";
 	}
 
 	std::string RowTotals::getStringRu()
 	{
-		return "";
+		return "Увеличьте свой счет, играя в карты на ряды.";
 	}
 
 	std::string RowTotals::getStringSv()
 	{
-		return "";
+		return "Öka din poäng genom att spela kort på rader.";
 	}
 
 	std::string RowTotals::getStringTh()
 	{
-		return "";
+		return "เพิ่มคะแนนของคุณโดยการเล่นไพ่ลงบนแถว";
 	}
 
 	std::string RowTotals::getStringTr()
 	{
-		return "";
+		return "Puanları iskambil kartları üzerine sıralayarak arttırın.";
 	}
 
 	std::string RowTotals::getStringUk()
 	{
-		return "";
+		return "Збільшіть свій рахунок, граючи в карти на рядки.";
 	}
 
-	std::string RowTotals::getStringVn()
+	std::string RowTotals::getStringVi()
 	{
-		return "";
+		return "Tăng điểm số của bạn bằng cách chơi bài lên hàng.";
 	}
 
 	std::string RowTotals::getStringZhCn()
 	{
-		return "";
+		return "通过在牌上打牌来提高你的分数。";
 	}
 
 	std::string RowTotals::getStringZhTw()
 	{
-		return "";
+		return "通過在牌上打牌來提高你的分數。";
 	}
 }

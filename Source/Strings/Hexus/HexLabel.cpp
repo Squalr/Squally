@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string HexLabel::getStringAr()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringBg()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringCs()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringDa()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringDe()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringEl()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string HexLabel::getStringEs()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringEs419()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringFi()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringFr()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringHu()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringIt()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringJa()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringKo()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringNl()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringNo()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringPl()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringPt()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringPtBr()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringRo()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringRu()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringSv()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringTh()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringTr()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringUk()
 	{
-		return "";
+		return "HEX:";
 	}
 
-	std::string HexLabel::getStringVn()
+	std::string HexLabel::getStringVi()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringZhCn()
 	{
-		return "";
+		return "HEX:";
 	}
 
 	std::string HexLabel::getStringZhTw()
 	{
-		return "";
+		return "HEX:";
 	}
 }

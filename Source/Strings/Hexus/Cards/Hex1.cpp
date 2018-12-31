@@ -30,146 +30,146 @@ namespace LocaleStrings
 
 	std::string Hex1::getStringAr()
 	{
-		return "";
+		return "نهم";
 	}
 
 	std::string Hex1::getStringBg()
 	{
-		return "";
+		return "лакомия";
 	}
 
 	std::string Hex1::getStringCs()
 	{
-		return "";
+		return "Žravost";
 	}
 
 	std::string Hex1::getStringDa()
 	{
-		return "";
+		return "grådighed";
 	}
 
 	std::string Hex1::getStringDe()
 	{
-		return "";
+		return "Völlerei";
 	}
 
 	std::string Hex1::getStringEl()
 	{
-		return "";
+		return "Λαιμαργία";
 	}
 
 	std::string Hex1::getStringEn()
 	{
-		return "Gweeb";
+		return "Gluttony";
 	}
 
 	std::string Hex1::getStringEs()
 	{
-		return "";
+		return "Glotonería";
 	}
 
 	std::string Hex1::getStringEs419()
 	{
-		return "";
+		return "Glotonería";
 	}
 
 	std::string Hex1::getStringFi()
 	{
-		return "";
+		return "Mässäily";
 	}
 
 	std::string Hex1::getStringFr()
 	{
-		return "";
+		return "Gourmandise";
 	}
 
 	std::string Hex1::getStringHu()
 	{
-		return "";
+		return "Torkosság";
 	}
 
 	std::string Hex1::getStringIt()
 	{
-		return "";
+		return "golosità";
 	}
 
 	std::string Hex1::getStringJa()
 	{
-		return "";
+		return "大食い";
 	}
 
 	std::string Hex1::getStringKo()
 	{
-		return "";
+		return "대식";
 	}
 
 	std::string Hex1::getStringNl()
 	{
-		return "";
+		return "Gulzigheid";
 	}
 
 	std::string Hex1::getStringNo()
 	{
-		return "";
+		return "Gluttony";
 	}
 
 	std::string Hex1::getStringPl()
 	{
-		return "";
+		return "Obżarstwo";
 	}
 
 	std::string Hex1::getStringPt()
 	{
-		return "";
+		return "Gula";
 	}
 
 	std::string Hex1::getStringPtBr()
 	{
-		return "";
+		return "Gula";
 	}
 
 	std::string Hex1::getStringRo()
 	{
-		return "";
+		return "Lăcomie";
 	}
 
 	std::string Hex1::getStringRu()
 	{
-		return "";
+		return "Обжорство";
 	}
 
 	std::string Hex1::getStringSv()
 	{
-		return "";
+		return "Frosseri";
 	}
 
 	std::string Hex1::getStringTh()
 	{
-		return "";
+		return "การกินและดื่มมากเกินไป";
 	}
 
 	std::string Hex1::getStringTr()
 	{
-		return "";
+		return "Oburluk";
 	}
 
 	std::string Hex1::getStringUk()
 	{
-		return "";
+		return "Обжорство";
 	}
 
-	std::string Hex1::getStringVn()
+	std::string Hex1::getStringVi()
 	{
-		return "";
+		return "Ham ăn";
 	}
 
 	std::string Hex1::getStringZhCn()
 	{
-		return "";
+		return "暴食";
 	}
 
 	std::string Hex1::getStringZhTw()
 	{
-		return "";
+		return "暴食";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Hex3::getStringAr()
 	{
-		return "";
+		return "يعقوب";
 	}
 
 	std::string Hex3::getStringBg()
 	{
-		return "";
+		return "Джейкъб";
 	}
 
 	std::string Hex3::getStringCs()
 	{
-		return "";
+		return "Jacob";
 	}
 
 	std::string Hex3::getStringDa()
 	{
-		return "";
+		return "Jacob";
 	}
 
 	std::string Hex3::getStringDe()
 	{
-		return "";
+		return "Jacob";
 	}
 
 	std::string Hex3::getStringEl()
 	{
-		return "";
+		return "Ιάκωβος";
 	}
 
 	std::string Hex3::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Hex3::getStringEs()
 	{
-		return "";
+		return "Jacob";
 	}
 
 	std::string Hex3::getStringEs419()
 	{
-		return "";
+		return "Jacob";
 	}
 
 	std::string Hex3::getStringFi()
 	{
-		return "";
+		return "Jaakob";
 	}
 
 	std::string Hex3::getStringFr()
 	{
-		return "";
+		return "Jacob";
 	}
 
 	std::string Hex3::getStringHu()
 	{
-		return "";
+		return "Jákób";
 	}
 
 	std::string Hex3::getStringIt()
 	{
-		return "";
+		return "Giacobbe";
 	}
 
 	std::string Hex3::getStringJa()
 	{
-		return "";
+		return "ヤコブ";
 	}
 
 	std::string Hex3::getStringKo()
 	{
-		return "";
+		return "야곱";
 	}
 
 	std::string Hex3::getStringNl()
 	{
-		return "";
+		return "Jacob";
 	}
 
 	std::string Hex3::getStringNo()
 	{
-		return "";
+		return "Jakob";
 	}
 
 	std::string Hex3::getStringPl()
 	{
-		return "";
+		return "Jakub";
 	}
 
 	std::string Hex3::getStringPt()
 	{
-		return "";
+		return "Jacob";
 	}
 
 	std::string Hex3::getStringPtBr()
 	{
-		return "";
+		return "Jacob";
 	}
 
 	std::string Hex3::getStringRo()
 	{
-		return "";
+		return "Jacob";
 	}
 
 	std::string Hex3::getStringRu()
 	{
-		return "";
+		return "Иаков";
 	}
 
 	std::string Hex3::getStringSv()
 	{
-		return "";
+		return "Jacob";
 	}
 
 	std::string Hex3::getStringTh()
 	{
-		return "";
+		return "จาค็อบ";
 	}
 
 	std::string Hex3::getStringTr()
 	{
-		return "";
+		return "Jacob";
 	}
 
 	std::string Hex3::getStringUk()
 	{
-		return "";
+		return "Яків";
 	}
 
-	std::string Hex3::getStringVn()
+	std::string Hex3::getStringVi()
 	{
-		return "";
+		return "Gia-cốp";
 	}
 
 	std::string Hex3::getStringZhCn()
 	{
-		return "";
+		return "雅各";
 	}
 
 	std::string Hex3::getStringZhTw()
 	{
-		return "";
+		return "雅各";
 	}
 }

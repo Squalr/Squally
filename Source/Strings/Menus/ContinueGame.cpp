@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string ContinueGame::getStringAr()
 	{
-		return "";
+		return "تواصل اللعبة";
 	}
 
 	std::string ContinueGame::getStringBg()
 	{
-		return "";
+		return "Продължете играта";
 	}
 
 	std::string ContinueGame::getStringCs()
 	{
-		return "";
+		return "Pokračujte ve hře";
 	}
 
 	std::string ContinueGame::getStringDa()
 	{
-		return "";
+		return "Fortsæt spillet";
 	}
 
 	std::string ContinueGame::getStringDe()
 	{
-		return "";
+		return "Spiel fortsetzen";
 	}
 
 	std::string ContinueGame::getStringEl()
 	{
-		return "";
+		return "Συνεχίστε το παιχνίδι";
 	}
 
 	std::string ContinueGame::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string ContinueGame::getStringEs()
 	{
-		return "";
+		return "Continuar el juego";
 	}
 
 	std::string ContinueGame::getStringEs419()
 	{
-		return "";
+		return "Continuar el juego";
 	}
 
 	std::string ContinueGame::getStringFi()
 	{
-		return "";
+		return "Jatka peliä";
 	}
 
 	std::string ContinueGame::getStringFr()
 	{
-		return "";
+		return "Continuer le jeu";
 	}
 
 	std::string ContinueGame::getStringHu()
 	{
-		return "";
+		return "Folytassa a játékot";
 	}
 
 	std::string ContinueGame::getStringIt()
 	{
-		return "";
+		return "Continua il gioco";
 	}
 
 	std::string ContinueGame::getStringJa()
 	{
-		return "";
+		return "ゲームを続ける";
 	}
 
 	std::string ContinueGame::getStringKo()
 	{
-		return "";
+		return "게임 계속하기";
 	}
 
 	std::string ContinueGame::getStringNl()
 	{
-		return "";
+		return "Vervolg het spel";
 	}
 
 	std::string ContinueGame::getStringNo()
 	{
-		return "";
+		return "Fortsett spillet";
 	}
 
 	std::string ContinueGame::getStringPl()
 	{
-		return "";
+		return "Kontynuuj grę";
 	}
 
 	std::string ContinueGame::getStringPt()
 	{
-		return "";
+		return "Continue o jogo";
 	}
 
 	std::string ContinueGame::getStringPtBr()
 	{
-		return "";
+		return "Continue o jogo";
 	}
 
 	std::string ContinueGame::getStringRo()
 	{
-		return "";
+		return "Continuați jocul";
 	}
 
 	std::string ContinueGame::getStringRu()
 	{
-		return "";
+		return "Продолжить игру";
 	}
 
 	std::string ContinueGame::getStringSv()
 	{
-		return "";
+		return "Fortsätt spelet";
 	}
 
 	std::string ContinueGame::getStringTh()
 	{
-		return "";
+		return "ดำเนินการต่อเกม";
 	}
 
 	std::string ContinueGame::getStringTr()
 	{
-		return "";
+		return "Oyuna devam et";
 	}
 
 	std::string ContinueGame::getStringUk()
 	{
-		return "";
+		return "Продовжуйте гру";
 	}
 
-	std::string ContinueGame::getStringVn()
+	std::string ContinueGame::getStringVi()
 	{
-		return "";
+		return "Tiếp tục trò chơi";
 	}
 
 	std::string ContinueGame::getStringZhCn()
 	{
-		return "";
+		return "继续比赛";
 	}
 
 	std::string ContinueGame::getStringZhTw()
 	{
-		return "";
+		return "繼續比賽";
 	}
 }

@@ -30,146 +30,146 @@ namespace LocaleStrings
 
 	std::string Inverse::getStringAr()
 	{
-		return "";
+		return "بت عكسية";
 	}
 
 	std::string Inverse::getStringBg()
 	{
-		return "";
+		return "Обратни битове";
 	}
 
 	std::string Inverse::getStringCs()
 	{
-		return "";
+		return "Inverzní bity";
 	}
 
 	std::string Inverse::getStringDa()
 	{
-		return "";
+		return "Inverse bits";
 	}
 
 	std::string Inverse::getStringDe()
 	{
-		return "";
+		return "Inverse Bits";
 	}
 
 	std::string Inverse::getStringEl()
 	{
-		return "";
+		return "Αντίστροφα δυφία";
 	}
 
 	std::string Inverse::getStringEn()
 	{
-		return "Inverse";
+		return "Inverse Bits";
 	}
 
 	std::string Inverse::getStringEs()
 	{
-		return "";
+		return "Bits inversos";
 	}
 
 	std::string Inverse::getStringEs419()
 	{
-		return "";
+		return "Bits inversos";
 	}
 
 	std::string Inverse::getStringFi()
 	{
-		return "";
+		return "Käänteiset bitit";
 	}
 
 	std::string Inverse::getStringFr()
 	{
-		return "";
+		return "Inverse bits";
 	}
 
 	std::string Inverse::getStringHu()
 	{
-		return "";
+		return "Fordított bitek";
 	}
 
 	std::string Inverse::getStringIt()
 	{
-		return "";
+		return "Bit inversi";
 	}
 
 	std::string Inverse::getStringJa()
 	{
-		return "";
+		return "逆ビット";
 	}
 
 	std::string Inverse::getStringKo()
 	{
-		return "";
+		return "역 비트";
 	}
 
 	std::string Inverse::getStringNl()
 	{
-		return "";
+		return "Inverse bits";
 	}
 
 	std::string Inverse::getStringNo()
 	{
-		return "";
+		return "Inverterte biter";
 	}
 
 	std::string Inverse::getStringPl()
 	{
-		return "";
+		return "Bity odwrotne";
 	}
 
 	std::string Inverse::getStringPt()
 	{
-		return "";
+		return "Inverse bits";
 	}
 
 	std::string Inverse::getStringPtBr()
 	{
-		return "";
+		return "Inverse bits";
 	}
 
 	std::string Inverse::getStringRo()
 	{
-		return "";
+		return "Bite inversate";
 	}
 
 	std::string Inverse::getStringRu()
 	{
-		return "";
+		return "Обратные биты";
 	}
 
 	std::string Inverse::getStringSv()
 	{
-		return "";
+		return "Inverterade bitar";
 	}
 
 	std::string Inverse::getStringTh()
 	{
-		return "";
+		return "บิตผกผัน";
 	}
 
 	std::string Inverse::getStringTr()
 	{
-		return "";
+		return "Ters bit";
 	}
 
 	std::string Inverse::getStringUk()
 	{
-		return "";
+		return "Зворотні біти";
 	}
 
-	std::string Inverse::getStringVn()
+	std::string Inverse::getStringVi()
 	{
-		return "";
+		return "Bit nghịch đảo";
 	}
 
 	std::string Inverse::getStringZhCn()
 	{
-		return "";
+		return "反位";
 	}
 
 	std::string Inverse::getStringZhTw()
 	{
-		return "";
+		return "反位";
 	}
 }

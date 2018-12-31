@@ -158,7 +158,7 @@ namespace LocaleStrings
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringVn()
+	std::string StoreLabelDecimal::getStringVi()
 	{
 		return "15";
 	}

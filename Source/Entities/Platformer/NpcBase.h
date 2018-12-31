@@ -1,6 +1,5 @@
 #pragma once
 #include "cocos/2d/CCSprite.h"
-#include "cocos/base/ccTypes.h"
 #include "cocos/math/Vec2.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"

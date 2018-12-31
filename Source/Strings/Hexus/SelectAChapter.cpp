@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string SelectAChapter::getStringAr()
 	{
-		return "";
+		return "اختر الفصل";
 	}
 
 	std::string SelectAChapter::getStringBg()
 	{
-		return "";
+		return "Изберете глава";
 	}
 
 	std::string SelectAChapter::getStringCs()
 	{
-		return "";
+		return "Vyberte kapitolu";
 	}
 
 	std::string SelectAChapter::getStringDa()
 	{
-		return "";
+		return "Vælg en kapitel";
 	}
 
 	std::string SelectAChapter::getStringDe()
 	{
-		return "";
+		return "Wählen Sie ein Kapitel aus";
 	}
 
 	std::string SelectAChapter::getStringEl()
 	{
-		return "";
+		return "Επιλέξτε ένα κεφάλαιο";
 	}
 
 	std::string SelectAChapter::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string SelectAChapter::getStringEs()
 	{
-		return "";
+		return "Seleccione un capitulo";
 	}
 
 	std::string SelectAChapter::getStringEs419()
 	{
-		return "";
+		return "Seleccione un capitulo";
 	}
 
 	std::string SelectAChapter::getStringFi()
 	{
-		return "";
+		return "Valitse luku";
 	}
 
 	std::string SelectAChapter::getStringFr()
 	{
-		return "";
+		return "Sélectionnez un chapitre";
 	}
 
 	std::string SelectAChapter::getStringHu()
 	{
-		return "";
+		return "Válasszon egy fejezetet";
 	}
 
 	std::string SelectAChapter::getStringIt()
 	{
-		return "";
+		return "Seleziona un capitolo";
 	}
 
 	std::string SelectAChapter::getStringJa()
 	{
-		return "";
+		return "章を選択";
 	}
 
 	std::string SelectAChapter::getStringKo()
 	{
-		return "";
+		return "챕터 선택";
 	}
 
 	std::string SelectAChapter::getStringNl()
 	{
-		return "";
+		return "Selecteer een hoofdstuk";
 	}
 
 	std::string SelectAChapter::getStringNo()
 	{
-		return "";
+		return "Velg en kapittel";
 	}
 
 	std::string SelectAChapter::getStringPl()
 	{
-		return "";
+		return "Wybierz rozdział";
 	}
 
 	std::string SelectAChapter::getStringPt()
 	{
-		return "";
+		return "Selecione um capítulo";
 	}
 
 	std::string SelectAChapter::getStringPtBr()
 	{
-		return "";
+		return "Selecione um capítulo";
 	}
 
 	std::string SelectAChapter::getStringRo()
 	{
-		return "";
+		return "Selectați un capitol";
 	}
 
 	std::string SelectAChapter::getStringRu()
 	{
-		return "";
+		return "Выберите главу";
 	}
 
 	std::string SelectAChapter::getStringSv()
 	{
-		return "";
+		return "Välj ett kapitel";
 	}
 
 	std::string SelectAChapter::getStringTh()
 	{
-		return "";
+		return "เลือกบท";
 	}
 
 	std::string SelectAChapter::getStringTr()
 	{
-		return "";
+		return "Bir Bölüm Seç";
 	}
 
 	std::string SelectAChapter::getStringUk()
 	{
-		return "";
+		return "Виберіть розділ";
 	}
 
-	std::string SelectAChapter::getStringVn()
+	std::string SelectAChapter::getStringVi()
 	{
-		return "";
+		return "Chọn một chương";
 	}
 
 	std::string SelectAChapter::getStringZhCn()
 	{
-		return "";
+		return "选择一个章节";
 	}
 
 	std::string SelectAChapter::getStringZhTw()
 	{
-		return "";
+		return "選擇一個章節";
 	}
 }

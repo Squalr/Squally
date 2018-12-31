@@ -182,7 +182,7 @@ LanguageType Localization::languageCodeToLanguageType(std::string languageCode)
 	{
 		return LanguageType::UKRAINIAN;
 	}
-	else if (languageCode == "vn")
+	else if (languageCode == "vi")
 	{
 		return LanguageType::VIETNAMESE;
 	}
@@ -305,7 +305,7 @@ std::string Localization::languageTypeToLanguageCode(LanguageType languageType)
 		}
 		case LanguageType::VIETNAMESE:
 		{
-			return "vn";
+			return "vi";
 		}
 		case LanguageType::ENGLISH:
 		default:

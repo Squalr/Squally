@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string WinningRound::getStringAr()
 	{
-		return "";
+		return "لطيف! الآن درجاتك أعلى من خصومك!";
 	}
 
 	std::string WinningRound::getStringBg()
 	{
-		return "";
+		return "Nice! Сега резултатът ви е по-висок от вашите опоненти!";
 	}
 
 	std::string WinningRound::getStringCs()
 	{
-		return "";
+		return "Pěkný! Vaše skóre je vyšší než vaše soupeři!";
 	}
 
 	std::string WinningRound::getStringDa()
 	{
-		return "";
+		return "Pæn! Nu er din score højere end dine modstandere!";
 	}
 
 	std::string WinningRound::getStringDe()
 	{
-		return "";
+		return "Nett! Jetzt ist deine Punktzahl höher als deine Gegner!";
 	}
 
 	std::string WinningRound::getStringEl()
 	{
-		return "";
+		return "Ομορφη! Τώρα το σκορ σας είναι υψηλότερο από τους αντιπάλους σας!";
 	}
 
 	std::string WinningRound::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string WinningRound::getStringEs()
 	{
-		return "";
+		return "¡Bonito! ¡Ahora tu puntaje es más alto que tus oponentes!";
 	}
 
 	std::string WinningRound::getStringEs419()
 	{
-		return "";
+		return "¡Bonito! ¡Ahora tu puntaje es más alto que tus oponentes!";
 	}
 
 	std::string WinningRound::getStringFi()
 	{
-		return "";
+		return "Kiva! Nyt tulos on korkeampi kuin vastustajasi!";
 	}
 
 	std::string WinningRound::getStringFr()
 	{
-		return "";
+		return "Agréable! Maintenant, votre score est supérieur à celui de vos adversaires!";
 	}
 
 	std::string WinningRound::getStringHu()
 	{
-		return "";
+		return "Szép! Most a pontszámod magasabb, mint az ellenfeleid!";
 	}
 
 	std::string WinningRound::getStringIt()
 	{
-		return "";
+		return "Bello! Ora il tuo punteggio è più alto dei tuoi avversari!";
 	}
 
 	std::string WinningRound::getStringJa()
 	{
-		return "";
+		return "いいね！今あなたのスコアはあなたの対戦相手よりも高いです！";
 	}
 
 	std::string WinningRound::getStringKo()
 	{
-		return "";
+		return "좋은! 이제 점수가 상대보다 높습니다!";
 	}
 
 	std::string WinningRound::getStringNl()
 	{
-		return "";
+		return "Leuk! Nu is je score hoger dan die van je tegenstanders!";
 	}
 
 	std::string WinningRound::getStringNo()
 	{
-		return "";
+		return "Hyggelig! Nå er poengsummen høyere enn motstanderne dine!";
 	}
 
 	std::string WinningRound::getStringPl()
 	{
-		return "";
+		return "Ładny! Teraz twój wynik jest wyższy niż twoich przeciwników!";
 	}
 
 	std::string WinningRound::getStringPt()
 	{
-		return "";
+		return "Agradável! Agora sua pontuação é maior do que seus oponentes!";
 	}
 
 	std::string WinningRound::getStringPtBr()
 	{
-		return "";
+		return "Agradável! Agora sua pontuação é maior do que seus oponentes!";
 	}
 
 	std::string WinningRound::getStringRo()
 	{
-		return "";
+		return "Frumos! Acum scorul dvs. este mai mare decât adversarii dvs.!";
 	}
 
 	std::string WinningRound::getStringRu()
 	{
-		return "";
+		return "Ницца! Теперь ваш счет выше, чем у ваших противников!";
 	}
 
 	std::string WinningRound::getStringSv()
 	{
-		return "";
+		return "Trevlig! Nu är din poäng högre än dina motståndare!";
 	}
 
 	std::string WinningRound::getStringTh()
 	{
-		return "";
+		return "ดี! ตอนนี้คะแนนของคุณสูงกว่าคู่แข่ง!";
 	}
 
 	std::string WinningRound::getStringTr()
 	{
-		return "";
+		return "Güzel! Şimdi puanınız rakiplerinizden daha yüksek!";
 	}
 
 	std::string WinningRound::getStringUk()
 	{
-		return "";
+		return "Приємно! Тепер ваш рахунок вище, ніж у ваших опонентів!";
 	}
 
-	std::string WinningRound::getStringVn()
+	std::string WinningRound::getStringVi()
 	{
-		return "";
+		return "Tốt đẹp! Bây giờ điểm số của bạn cao hơn đối thủ của bạn!";
 	}
 
 	std::string WinningRound::getStringZhCn()
 	{
-		return "";
+		return "太好了！现在你的分数高于你的对手！";
 	}
 
 	std::string WinningRound::getStringZhTw()
 	{
-		return "";
+		return "太好了！現在你的分數高於你的對手！";
 	}
 }

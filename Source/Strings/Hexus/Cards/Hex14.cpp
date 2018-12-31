@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Hex14::getStringAr()
 	{
-		return "";
+		return "جالوت";
 	}
 
 	std::string Hex14::getStringBg()
 	{
-		return "";
+		return "Голиат";
 	}
 
 	std::string Hex14::getStringCs()
 	{
-		return "";
+		return "Goliáš";
 	}
 
 	std::string Hex14::getStringDa()
 	{
-		return "";
+		return "Goliath";
 	}
 
 	std::string Hex14::getStringDe()
 	{
-		return "";
+		return "Goliath";
 	}
 
 	std::string Hex14::getStringEl()
 	{
-		return "";
+		return "Γολιάθ";
 	}
 
 	std::string Hex14::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Hex14::getStringEs()
 	{
-		return "";
+		return "Goliat";
 	}
 
 	std::string Hex14::getStringEs419()
 	{
-		return "";
+		return "Goliat";
 	}
 
 	std::string Hex14::getStringFi()
 	{
-		return "";
+		return "Goljat";
 	}
 
 	std::string Hex14::getStringFr()
 	{
-		return "";
+		return "Goliath";
 	}
 
 	std::string Hex14::getStringHu()
 	{
-		return "";
+		return "Góliát";
 	}
 
 	std::string Hex14::getStringIt()
 	{
-		return "";
+		return "Golia";
 	}
 
 	std::string Hex14::getStringJa()
 	{
-		return "";
+		return "ゴリアテ";
 	}
 
 	std::string Hex14::getStringKo()
 	{
-		return "";
+		return "골리앗";
 	}
 
 	std::string Hex14::getStringNl()
 	{
-		return "";
+		return "Goliath";
 	}
 
 	std::string Hex14::getStringNo()
 	{
-		return "";
+		return "Goliat";
 	}
 
 	std::string Hex14::getStringPl()
 	{
-		return "";
+		return "Goliat";
 	}
 
 	std::string Hex14::getStringPt()
 	{
-		return "";
+		return "Golias";
 	}
 
 	std::string Hex14::getStringPtBr()
 	{
-		return "";
+		return "Golias";
 	}
 
 	std::string Hex14::getStringRo()
 	{
-		return "";
+		return "Goliat";
 	}
 
 	std::string Hex14::getStringRu()
 	{
-		return "";
+		return "Голиаф";
 	}
 
 	std::string Hex14::getStringSv()
 	{
-		return "";
+		return "Goliath";
 	}
 
 	std::string Hex14::getStringTh()
 	{
-		return "";
+		return "มีร่างกายใหญ่โต";
 	}
 
 	std::string Hex14::getStringTr()
 	{
-		return "";
+		return "calüt";
 	}
 
 	std::string Hex14::getStringUk()
 	{
-		return "";
+		return "Голіаф";
 	}
 
-	std::string Hex14::getStringVn()
+	std::string Hex14::getStringVi()
 	{
-		return "";
+		return "Goliath";
 	}
 
 	std::string Hex14::getStringZhCn()
 	{
-		return "";
+		return "巨人";
 	}
 
 	std::string Hex14::getStringZhTw()
 	{
-		return "";
+		return "巨人";
 	}
 }

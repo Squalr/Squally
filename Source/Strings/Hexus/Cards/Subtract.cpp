@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Subtract::getStringAr()
 	{
-		return "";
+		return "طرح";
 	}
 
 	std::string Subtract::getStringBg()
 	{
-		return "";
+		return "изваждам";
 	}
 
 	std::string Subtract::getStringCs()
 	{
-		return "";
+		return "Odčítat";
 	}
 
 	std::string Subtract::getStringDa()
 	{
-		return "";
+		return "Trække fra";
 	}
 
 	std::string Subtract::getStringDe()
 	{
-		return "";
+		return "Subtrahieren";
 	}
 
 	std::string Subtract::getStringEl()
 	{
-		return "";
+		return "Αφαιρώ";
 	}
 
 	std::string Subtract::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Subtract::getStringEs()
 	{
-		return "";
+		return "Sustraer";
 	}
 
 	std::string Subtract::getStringEs419()
 	{
-		return "";
+		return "Sustraer";
 	}
 
 	std::string Subtract::getStringFi()
 	{
-		return "";
+		return "Vähentää";
 	}
 
 	std::string Subtract::getStringFr()
 	{
-		return "";
+		return "Soustraire";
 	}
 
 	std::string Subtract::getStringHu()
 	{
-		return "";
+		return "levon";
 	}
 
 	std::string Subtract::getStringIt()
 	{
-		return "";
+		return "Sottrarre";
 	}
 
 	std::string Subtract::getStringJa()
 	{
-		return "";
+		return "引き算";
 	}
 
 	std::string Subtract::getStringKo()
 	{
-		return "";
+		return "덜다";
 	}
 
 	std::string Subtract::getStringNl()
 	{
-		return "";
+		return "Aftrekken";
 	}
 
 	std::string Subtract::getStringNo()
 	{
-		return "";
+		return "Trekke fra";
 	}
 
 	std::string Subtract::getStringPl()
 	{
-		return "";
+		return "Odejmować";
 	}
 
 	std::string Subtract::getStringPt()
 	{
-		return "";
+		return "Subtrair";
 	}
 
 	std::string Subtract::getStringPtBr()
 	{
-		return "";
+		return "Subtrair";
 	}
 
 	std::string Subtract::getStringRo()
 	{
-		return "";
+		return "Scădea";
 	}
 
 	std::string Subtract::getStringRu()
 	{
-		return "";
+		return "вычитать";
 	}
 
 	std::string Subtract::getStringSv()
 	{
-		return "";
+		return "Subtrahera";
 	}
 
 	std::string Subtract::getStringTh()
 	{
-		return "";
+		return "ลบออก";
 	}
 
 	std::string Subtract::getStringTr()
 	{
-		return "";
+		return "çıkarmak";
 	}
 
 	std::string Subtract::getStringUk()
 	{
-		return "";
+		return "Відняти";
 	}
 
-	std::string Subtract::getStringVn()
+	std::string Subtract::getStringVi()
 	{
-		return "";
+		return "Trừ";
 	}
 
 	std::string Subtract::getStringZhCn()
 	{
-		return "";
+		return "减去";
 	}
 
 	std::string Subtract::getStringZhTw()
 	{
-		return "";
+		return "減去";
 	}
 }

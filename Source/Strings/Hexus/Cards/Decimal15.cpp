@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Decimal15::getStringAr()
 	{
-		return "";
+		return "حارس المرمى";
 	}
 
 	std::string Decimal15::getStringBg()
 	{
-		return "";
+		return "Пазача";
 	}
 
 	std::string Decimal15::getStringCs()
 	{
-		return "";
+		return "Strážce";
 	}
 
 	std::string Decimal15::getStringDa()
 	{
-		return "";
+		return "Keeperen";
 	}
 
 	std::string Decimal15::getStringDe()
 	{
-		return "";
+		return "Der Torwart";
 	}
 
 	std::string Decimal15::getStringEl()
 	{
-		return "";
+		return "Ο κάτοχος";
 	}
 
 	std::string Decimal15::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Decimal15::getStringEs()
 	{
-		return "";
+		return "El arquero";
 	}
 
 	std::string Decimal15::getStringEs419()
 	{
-		return "";
+		return "El arquero";
 	}
 
 	std::string Decimal15::getStringFi()
 	{
-		return "";
+		return "Pitäjä";
 	}
 
 	std::string Decimal15::getStringFr()
 	{
-		return "";
+		return "Le gardien";
 	}
 
 	std::string Decimal15::getStringHu()
 	{
-		return "";
+		return "A Keeper";
 	}
 
 	std::string Decimal15::getStringIt()
 	{
-		return "";
+		return "Il custode";
 	}
 
 	std::string Decimal15::getStringJa()
 	{
-		return "";
+		return "キーパー";
 	}
 
 	std::string Decimal15::getStringKo()
 	{
-		return "";
+		return "지킴이";
 	}
 
 	std::string Decimal15::getStringNl()
 	{
-		return "";
+		return "De keeper";
 	}
 
 	std::string Decimal15::getStringNo()
 	{
-		return "";
+		return "Målvakten";
 	}
 
 	std::string Decimal15::getStringPl()
 	{
-		return "";
+		return "Bramkarz";
 	}
 
 	std::string Decimal15::getStringPt()
 	{
-		return "";
+		return "O guardião";
 	}
 
 	std::string Decimal15::getStringPtBr()
 	{
-		return "";
+		return "O guardião";
 	}
 
 	std::string Decimal15::getStringRo()
 	{
-		return "";
+		return "Păstrătorul";
 	}
 
 	std::string Decimal15::getStringRu()
 	{
-		return "";
+		return "Хранитель";
 	}
 
 	std::string Decimal15::getStringSv()
 	{
-		return "";
+		return "Målvakten";
 	}
 
 	std::string Decimal15::getStringTh()
 	{
-		return "";
+		return "ผู้รักษาประตู";
 	}
 
 	std::string Decimal15::getStringTr()
 	{
-		return "";
+		return "Kaleci";
 	}
 
 	std::string Decimal15::getStringUk()
 	{
-		return "";
+		return "Зберігач";
 	}
 
-	std::string Decimal15::getStringVn()
+	std::string Decimal15::getStringVi()
 	{
-		return "";
+		return "Người giữ";
 	}
 
 	std::string Decimal15::getStringZhCn()
 	{
-		return "";
+		return "守护者";
 	}
 
 	std::string Decimal15::getStringZhTw()
 	{
-		return "";
+		return "守護者";
 	}
 }
