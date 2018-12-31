@@ -18,7 +18,7 @@ LocalizedString::~LocalizedString()
 
 void LocalizedString::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
 	this->addGlobalEventListener(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
 	{

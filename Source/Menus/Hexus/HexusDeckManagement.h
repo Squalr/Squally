@@ -30,6 +30,7 @@ protected:
 	~HexusDeckManagement();
 
 private:
+	typedef GlobalScene super;
 	enum CardFilterFlags
 	{
 		Special = 1 << 0,

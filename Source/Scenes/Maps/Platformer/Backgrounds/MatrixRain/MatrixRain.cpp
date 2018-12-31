@@ -28,11 +28,17 @@ MatrixRain::MatrixRain()
 		this->addChild(strand);
 	}
 
-	this->scheduleUpdate();
 }
 
 MatrixRain::~MatrixRain()
 {
+}
+
+void MatrixRain::onEnter() 
+{
+	super::onEnter();
+
+	this->scheduleUpdate();
 }
 
 void MatrixRain::pause()

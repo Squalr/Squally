@@ -36,14 +36,14 @@ FocusTakeOver::~FocusTakeOver()
 
 void FocusTakeOver::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	this->focusBackground->setOpacity(0);
 }
 
 void FocusTakeOver::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerCustom* beforeSceneChangeListener = EventListenerCustom::create(
 		SceneEvents::BeforeSceneChangeEvent,

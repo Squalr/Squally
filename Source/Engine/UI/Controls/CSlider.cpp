@@ -46,7 +46,7 @@ CSlider::~CSlider()
 
 void CSlider::initializePositions()
 {
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	this->progressBar->setPosition(Vec2(this->progressBar->getContentSize().width / 2.0f, 0.0f));
 	this->progressClip->setPosition(Vec2(-this->progressBar->getContentSize().width / 2.0f, 0.0f));

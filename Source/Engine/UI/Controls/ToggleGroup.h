@@ -14,6 +14,7 @@ public:
 	void addToggle(CCheckbox* toggle);
 
 private:
+	typedef SmartNode super;
 	ToggleGroup(std::function<void(CCheckbox*)> callback);
 	virtual ~ToggleGroup();
 

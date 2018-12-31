@@ -21,7 +21,7 @@ void CollisionEventDispatcher::registerGlobalNode()
 
 void CollisionEventDispatcher::initializeListeners()
 {
-	GlobalNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerPhysicsContact* contactListener = EventListenerPhysicsContact::create();
 

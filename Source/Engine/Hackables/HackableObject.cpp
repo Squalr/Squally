@@ -29,7 +29,7 @@ HackableObject::~HackableObject()
 
 void HackableObject::onEnterTransitionDidFinish()
 {
-	Node::onEnterTransitionDidFinish();
+	super::onEnterTransitionDidFinish();
 
 	this->hackButton->setClickCallback(CC_CALLBACK_1(HackableObject::onHackableClick, this));
 
@@ -38,7 +38,7 @@ void HackableObject::onEnterTransitionDidFinish()
 
 void HackableObject::initializeListeners()
 {
-	SerializableObject::initializeListeners();
+	super::initializeListeners();
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackerModeEnable, [=](EventCustom* args)
 	{

@@ -32,6 +32,7 @@ protected:
 	SpriterEngine::EntityInstance* entity;
 
 private:
+	typedef SmartNode super;
 	SmartAnimationNode(std::string animationResource, std::string entityName);
 	virtual ~SmartAnimationNode();
 };

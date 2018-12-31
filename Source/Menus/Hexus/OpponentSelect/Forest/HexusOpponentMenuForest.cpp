@@ -23,7 +23,7 @@ void HexusOpponentMenuForest::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuForest::instance);
 }
 
-HexusOpponentMenuForest::HexusOpponentMenuForest() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Forest, HexusChapterPreviewForest::SaveKeyChapterName)
+HexusOpponentMenuForest::HexusOpponentMenuForest() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Forest, HexusChapterPreviewForest::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentLycan::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentThug::getInstance()));

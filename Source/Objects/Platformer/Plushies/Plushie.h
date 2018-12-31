@@ -9,6 +9,7 @@ class Plushie : public HackableObject
 public:
 
 protected:
+	typedef HackableObject super;
 	Plushie(cocos2d::ValueMap* initProperties);
 	~Plushie();
 

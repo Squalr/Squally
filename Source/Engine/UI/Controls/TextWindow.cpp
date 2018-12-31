@@ -71,14 +71,14 @@ TextWindow::~TextWindow()
 
 void TextWindow::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	this->scheduleUpdate();
 }
 
 void TextWindow::initializePositions()
 {
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	this->scrollView->setContentSize(windowSize);
 	this->scrollView->setInnerContainerSize(Size(windowSize.width, windowSize.height * 2));
@@ -93,7 +93,7 @@ void TextWindow::initializePositions()
 
 void TextWindow::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 }
 
 void TextWindow::setWindowColor(Color4B newWindowColor)

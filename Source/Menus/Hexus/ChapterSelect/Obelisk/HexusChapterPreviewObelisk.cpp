@@ -33,5 +33,5 @@ HexusChapterPreviewObelisk::~HexusChapterPreviewObelisk()
 
 void HexusChapterPreviewObelisk::initializePositions()
 {
-	HexusChapterPreview::initializePositions();
+	super::initializePositions();
 }

@@ -23,7 +23,7 @@ void HexusOpponentMenuIceCaps::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuIceCaps::instance);
 }
 
-HexusOpponentMenuIceCaps::HexusOpponentMenuIceCaps() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::IceCaps, HexusChapterPreviewIceCaps::SaveKeyChapterName)
+HexusOpponentMenuIceCaps::HexusOpponentMenuIceCaps() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::IceCaps, HexusChapterPreviewIceCaps::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentToySoldierGoblin::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentNessie::getInstance()));

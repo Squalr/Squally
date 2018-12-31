@@ -17,4 +17,6 @@ protected:
 	static PlatformerEntityDeserializer* instance;
 
 	static const std::string KeyTypeEntity;
+private:
+	typedef GlobalNode super;
 };

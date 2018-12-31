@@ -12,5 +12,5 @@ void GlobalNode::pause()
 void GlobalNode::addEventListener(EventListener* listener)
 {
 	// Force events to be added as global events for global nodes
-	SmartNode::addGlobalEventListener(listener);
+	super::addGlobalEventListener(listener);
 }

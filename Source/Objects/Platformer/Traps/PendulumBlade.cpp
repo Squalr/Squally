@@ -67,7 +67,7 @@ PendulumBlade::~PendulumBlade()
 
 void PendulumBlade::onEnter()
 {
-	HackableObject::onEnter();
+	super::onEnter();
 
 	this->scheduleUpdate();
 	this->startSwing();
@@ -75,7 +75,7 @@ void PendulumBlade::onEnter()
 
 void PendulumBlade::initializePositions()
 {
-	HackableObject::initializePositions();
+	super::initializePositions();
 
 	const float neckOfffset = 8.0f;
 
@@ -86,7 +86,7 @@ void PendulumBlade::initializePositions()
 
 void PendulumBlade::update(float dt)
 {
-	HackableObject::update(dt);
+	super::update(dt);
 }
 
 void PendulumBlade::registerHackables()

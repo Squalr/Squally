@@ -74,7 +74,7 @@ HexusRewardsMenu::~HexusRewardsMenu()
 
 void HexusRewardsMenu::onEnter()
 {
-	GlobalScene::onEnter();
+	super::onEnter();
 
 	float delay = 0.25f;
 	float duration = 0.35f;
@@ -84,7 +84,7 @@ void HexusRewardsMenu::onEnter()
 
 void HexusRewardsMenu::initializeListeners()
 {
-	GlobalScene::initializeListeners();
+	super::initializeListeners();
 
 	HexusRewardsMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusRewards, [](EventCustom* args)
 	{
@@ -102,7 +102,7 @@ void HexusRewardsMenu::initializeListeners()
 
 void HexusRewardsMenu::initializePositions()
 {
-	GlobalScene::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

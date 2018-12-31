@@ -26,6 +26,7 @@ protected:
 	cocos2d::Vec2 getButtonOffset() override;
 
 private:
+	typedef HackableObject super;
 	void registerHackables();
 	void onEnter() override;
 	void initializePositions() override;

@@ -29,4 +29,6 @@ protected:
 	std::vector<GlobalScene*> globalScenes;
 
 	static GlobalDirector* instance;
+private:
+	typedef GlobalNode super;
 };

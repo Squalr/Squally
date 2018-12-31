@@ -25,6 +25,7 @@ protected:
 	cocos2d::Vec2 getButtonOffset() override;
 
 private:
+	typedef PlatformerEntity super;
 	Squally(cocos2d::ValueMap* initProperties);
 	~Squally();
 

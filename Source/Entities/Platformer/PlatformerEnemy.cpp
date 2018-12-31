@@ -13,7 +13,7 @@ PlatformerEnemy::PlatformerEnemy(
 	cocos2d::Size size, 
 	float scale,
 	cocos2d::Vec2 collisionOffset)
-	: PlatformerEntity(initProperties, scmlResource, collisionType, size, scale, collisionOffset)
+	: super(initProperties, scmlResource, collisionType, size, scale, collisionOffset)
 {
 	this->battleMapResource = "";
 

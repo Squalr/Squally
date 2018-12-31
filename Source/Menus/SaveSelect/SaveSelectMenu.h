@@ -16,6 +16,7 @@ protected:
 	~SaveSelectMenu();
 
 private:
+	typedef GlobalScene super;
 	void onEnter() override;
 	void initializeListeners() override;
 	void initializePositions() override;

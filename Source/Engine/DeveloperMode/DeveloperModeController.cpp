@@ -40,7 +40,7 @@ DeveloperModeController::~DeveloperModeController()
 
 void DeveloperModeController::initializeListeners()
 {
-	GlobalNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 

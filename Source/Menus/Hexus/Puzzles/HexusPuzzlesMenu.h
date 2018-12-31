@@ -24,6 +24,7 @@ protected:
 	~HexusPuzzlesMenu();
 
 private:
+	typedef GlobalScene super;
 	void loadLevels();
 	void onEnter() override;
 	void initializePositions() override;

@@ -55,7 +55,7 @@ Analytics::~Analytics()
 
 void Analytics::onEnter()
 {
-	GlobalNode::onEnter();
+	super::onEnter();
 
 	this->scheduleUpdate();
 }

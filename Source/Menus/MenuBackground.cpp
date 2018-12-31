@@ -78,7 +78,7 @@ MenuBackground::~MenuBackground()
 
 void MenuBackground::initializePositions()
 {
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

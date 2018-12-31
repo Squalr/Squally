@@ -32,4 +32,6 @@ protected:
 	float spriteScale;
 	cocos2d::Vec2 spriteAnchor;
 	std::string resourcePath;
+private:
+	typedef cocos2d::ParallaxNode super;
 };

@@ -52,6 +52,7 @@ protected:
 	static const float maxFallSpeed;
 
 private:
+	typedef CollisionObject super;
 	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale);
 
 	std::set<CollisionObject*> groundCollisions;

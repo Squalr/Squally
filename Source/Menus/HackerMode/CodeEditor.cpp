@@ -163,14 +163,14 @@ CodeEditor::~CodeEditor()
 
 void CodeEditor::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	this->scheduleUpdate();
 }
 
 void CodeEditor::initializePositions()
 {
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -187,7 +187,7 @@ void CodeEditor::initializePositions()
 
 void CodeEditor::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
 	this->acceptButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onAccept, this));
 	this->cancelButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onCancel, this));

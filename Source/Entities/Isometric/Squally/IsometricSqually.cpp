@@ -23,7 +23,7 @@ IsometricSqually* IsometricSqually::getInstance()
 	return IsometricSqually::squallyInstance;
 }
 
-IsometricSqually::IsometricSqually(ValueMap* initProperties) : IsometricEntity::IsometricEntity(initProperties,
+IsometricSqually::IsometricSqually(ValueMap* initProperties) : super::IsometricEntity(initProperties,
 	"", //// EntityResources::Isometric_Squally_Animations,
 	1.0f,
 	Vec2(-128.0f, 0.0f))
@@ -37,7 +37,7 @@ IsometricSqually::~IsometricSqually()
 
 void IsometricSqually::onEnter()
 {
-	IsometricEntity::onEnter();
+	super::onEnter();
 }
 
 void IsometricSqually::registerHackables()
@@ -51,7 +51,7 @@ Vec2 IsometricSqually::getButtonOffset()
 
 void IsometricSqually::update(float dt)
 {
-	IsometricEntity::update(dt);
+	super::update(dt);
 
 	this->movement.x = 0.0f;
 	this->movement.y = 0.0f;

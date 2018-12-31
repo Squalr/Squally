@@ -62,6 +62,7 @@ protected:
 	void update(float dt) override;
 
 private:
+	typedef HackableObject super;
 	// We need to let the dispatcher call our events directly when it determines that this object was involved in a collision
 	friend class CollisionEventDispatcher;
 

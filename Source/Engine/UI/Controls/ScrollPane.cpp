@@ -42,8 +42,8 @@ ScrollPane::ScrollPane(Size initPaneSize, Color4B initBackgroundColor)
 	this->setCascadeOpacityEnabled(true);
 
 	// We override addchild to pass through to the scrollview -- but in this case we want to avoid that
-	SmartNode::addChild(this->background);
-	SmartNode::addChild(this->scrollView);
+	super::addChild(this->background);
+	super::addChild(this->scrollView);
 }
 
 ScrollPane::~ScrollPane()
@@ -52,14 +52,14 @@ ScrollPane::~ScrollPane()
 
 void ScrollPane::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	this->scrollView->scrollToPercentVertical(100.0f, 0.0f, false);
 }
 
 void ScrollPane::initializePositions()
 {
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	this->background->setPosition(Vec2(-this->paneSize.width / 2.0f - ScrollPane::marginSize.width,
 			-this->paneSize.height / 2.0f - ScrollPane::marginSize.height));
@@ -67,7 +67,7 @@ void ScrollPane::initializePositions()
 
 void ScrollPane::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerMouse* mouseScrollListener = EventListenerMouse::create();
 
