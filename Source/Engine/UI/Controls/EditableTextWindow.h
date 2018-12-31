@@ -43,6 +43,7 @@ public:
 	void focus();
 
 private:
+	typedef TextWindow super;
 	EditableTextWindow(LocalizedString* windowTitle, cocos2d::Size initWindowSize, cocos2d::Color3B initFontColor);
 	virtual ~EditableTextWindow();
 

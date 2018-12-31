@@ -54,7 +54,7 @@ IconMenuSprite::IconMenuSprite(
 	Sprite* normalSprite,
 	Sprite* selectedSprite,
 	Node* nodeNormal,
-	Node* nodeSelected) : MenuSprite(nodeNormal, nodeSelected)
+	Node* nodeSelected) : super(nodeNormal, nodeSelected)
 {
 	this->normalContentSprite = normalSprite;
 	this->selectedContentSprite = selectedSprite;

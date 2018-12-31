@@ -43,19 +43,19 @@ OptionsScene::~OptionsScene()
 
 void OptionsScene::onEnter()
 {
-	GlobalScene::onEnter();
+	super::onEnter();
 
 	this->backgroundNode->addChild(MenuBackground::claimInstance());
 }
 
 void OptionsScene::initializePositions()
 {
-	GlobalScene::initializePositions();
+	super::initializePositions();
 }
 
 void OptionsScene::initializeListeners()
 {
-	GlobalScene::initializeListeners();
+	super::initializeListeners();
 
 	OptionsScene::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateOptions, [](EventCustom* args)
 	{

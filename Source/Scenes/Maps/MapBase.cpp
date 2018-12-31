@@ -77,7 +77,7 @@ MapBase::~MapBase()
 
 void MapBase::onEnter()
 {
-	GlobalScene::onEnter();
+	super::onEnter();
 
 	this->menuBackDrop->setOpacity(0);
 	this->pauseMenu->setVisible(false);
@@ -92,12 +92,12 @@ void MapBase::resume(void)
 		this->toggleHackerMode();
 	}
 
-	GlobalScene::resume();
+	super::resume();
 }
 
 void MapBase::initializeListeners()
 {
-	GlobalScene::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 	EventListenerMouse* scrollListener = EventListenerMouse::create();

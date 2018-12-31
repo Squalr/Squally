@@ -18,6 +18,7 @@ public:
 	static MenuBackground* getInstance();
 
 private:
+	typedef SmartNode super;
 	MenuBackground();
 	~MenuBackground();
 

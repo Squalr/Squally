@@ -149,7 +149,7 @@ MinigamesMenu::~MinigamesMenu()
 
 void MinigamesMenu::onEnter()
 {
-	GlobalScene::onEnter();
+	super::onEnter();
 
 	const float delay = 0.5f;
 	const float duration = 0.75f;
@@ -164,7 +164,7 @@ void MinigamesMenu::onEnter()
 
 void MinigamesMenu::initializeListeners()
 {
-	GlobalScene::initializeListeners();
+	super::initializeListeners();
 
 	MinigamesMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateMinigames, [](EventCustom* args)
 	{
@@ -183,7 +183,7 @@ void MinigamesMenu::initializeListeners()
 
 void MinigamesMenu::initializePositions()
 {
-	GlobalScene::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Size paneSize = this->scrollPane->getPaneSize();

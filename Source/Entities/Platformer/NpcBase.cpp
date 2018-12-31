@@ -7,7 +7,7 @@
 using namespace cocos2d;
 
 NpcBase::NpcBase(ValueMap* initProperties, std::string scmlResource, PlatformerCollisionType collisionType, Size size, float scale, Vec2 collisionOffset)
-	: PlatformerEntity(initProperties, scmlResource, collisionType, size, scale, collisionOffset)
+	: super(initProperties, scmlResource, collisionType, size, scale, collisionOffset)
 {
 	this->chatBubbleSprite = Sprite::create(UIResources::Platformer_ChatBubble);
 
@@ -26,12 +26,12 @@ NpcBase::~NpcBase()
 
 void NpcBase::update(float dt)
 {
-	PlatformerEntity::update(dt);
+	super::update(dt);
 }
 
 void NpcBase::initializeCollisionEvents()
 {
-	PlatformerEntity::initializeCollisionEvents();
+	super::initializeCollisionEvents();
 
 	this->whenCollidesWith({ (int)PlatformerCollisionType::Player, }, [=](CollisionData collisionData)
 	{

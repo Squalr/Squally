@@ -44,6 +44,7 @@ public:
 	static const std::string KeyTypeCollision;
 
 private:
+	typedef SmartNode super;
 	SerializableMap(std::string mapFileName, const std::vector<SerializableLayer*>& layers, cocos2d::Size unitSize,
 			cocos2d::Size tileSize, MapOrientation orientation);
 	virtual ~SerializableMap();

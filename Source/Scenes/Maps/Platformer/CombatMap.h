@@ -12,6 +12,7 @@ protected:
 	~CombatMap();
 
 private:
+	typedef MapBase super;
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

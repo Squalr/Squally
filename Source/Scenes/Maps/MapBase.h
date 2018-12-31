@@ -40,6 +40,7 @@ protected:
 	void onMouseWheelScroll(cocos2d::EventMouse* event);
 
 private:
+	typedef GlobalScene super;
 	void toggleHackerMode();
 	void onOptionsExit();
 	void openPauseMenu();

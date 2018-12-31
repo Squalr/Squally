@@ -9,6 +9,7 @@ public:
 	static Background* create(cocos2d::ValueMap* initProperties, std::string name, cocos2d::Node* child);
 
 private:
+	typedef SerializableLayer super;
 	Background(cocos2d::ValueMap* properties, std::string name, Node* child);
 	~Background();
 

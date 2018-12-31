@@ -10,6 +10,7 @@ public:
 	void onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args);
 
 private:
+	typedef GlobalNode super;
 	ObjectLayerDeserializer();
 	virtual ~ObjectLayerDeserializer();
 

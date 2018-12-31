@@ -22,6 +22,7 @@ protected:
 	virtual ~CCheckbox();
 
 private:
+	typedef SmartNode super;
 	void onToggle();
 	void onUntoggle();
 	void updateVisuals();

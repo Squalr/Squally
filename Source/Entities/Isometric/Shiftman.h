@@ -13,6 +13,7 @@ protected:
 	cocos2d::Vec2 getButtonOffset() override;
 
 private:
+	typedef IsometricEntity super;
 	Shiftman(cocos2d::ValueMap* initProperties);
 	~Shiftman();
 

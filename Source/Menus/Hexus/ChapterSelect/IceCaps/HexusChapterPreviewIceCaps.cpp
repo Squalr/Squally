@@ -33,5 +33,5 @@ HexusChapterPreviewIceCaps::~HexusChapterPreviewIceCaps()
 
 void HexusChapterPreviewIceCaps::initializePositions()
 {
-	HexusChapterPreview::initializePositions();
+	super::initializePositions();
 }

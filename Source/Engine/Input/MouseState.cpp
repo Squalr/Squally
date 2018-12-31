@@ -48,7 +48,7 @@ Vec2 MouseState::getMousePosition()
 
 void MouseState::initializeListeners()
 {
-	GlobalNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
 

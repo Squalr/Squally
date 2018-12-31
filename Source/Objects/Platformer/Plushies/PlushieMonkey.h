@@ -20,6 +20,7 @@ protected:
 	void registerHackables() override;
 
 private:
+	typedef HackableObject super;
 	HackableData* puzzleData;
 
 	void decreaseLockTimer();

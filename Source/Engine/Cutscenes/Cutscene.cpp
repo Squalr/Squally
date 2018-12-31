@@ -34,7 +34,7 @@ Cutscene::~Cutscene()
 
 void Cutscene::initializeListeners()
 {
-	SmartScene::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 

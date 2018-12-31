@@ -20,7 +20,7 @@ TerrainDeserializer::~TerrainDeserializer()
 
 void TerrainDeserializer::initializeListeners()
 {
-	GlobalNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		DeserializationEvents::RequestObjectDeserializeEvent,

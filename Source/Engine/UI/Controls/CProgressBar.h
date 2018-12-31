@@ -21,6 +21,7 @@ protected:
 	void initializePositions() override;
 
 private:
+	typedef SmartNode super;
 	cocos2d::Sprite* frame;
 	cocos2d::Sprite* progressBar;
 	cocos2d::ClippingRectangleNode* progressClip;

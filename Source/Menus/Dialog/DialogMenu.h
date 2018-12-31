@@ -52,6 +52,7 @@ protected:
 	std::vector<std::pair<MenuLabel*, DialogMenu*>> dialogChildren;
 
 private:
+	typedef SmartNode super;
 	DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker speaker, TextMood textMood, std::string text, std::queue<std::pair<std::string, DialogMenu*>>* children);
 	~DialogMenu();
 

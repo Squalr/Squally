@@ -12,6 +12,7 @@ public:
 	void hidePointer();
 
 private:
+	typedef SmartNode super;
 	HelpArrow();
 	virtual ~HelpArrow();
 

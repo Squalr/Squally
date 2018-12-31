@@ -49,7 +49,7 @@ MouseOverPanel::~MouseOverPanel()
 
 void MouseOverPanel::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MouseOverPanel::onMouseMove, this));
 

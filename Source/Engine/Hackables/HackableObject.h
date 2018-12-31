@@ -39,6 +39,7 @@ protected:
 	void registerCode(HackableCode* hackableCode);
 
 private:
+	typedef SerializableObject super;
 	HackButton* hackButton;
 	cocos2d::Vec2 buttonOffset;
 };

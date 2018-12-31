@@ -63,7 +63,7 @@ GameCamera::~GameCamera()
 
 void GameCamera::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	this->setCameraPositionWorkAround();
 	this->scheduleUpdate();
@@ -71,7 +71,7 @@ void GameCamera::onEnter()
 
 void GameCamera::onDeveloperModeEnable()
 {
-	SmartNode::onDeveloperModeEnable();
+	super::onDeveloperModeEnable();
 
 	this->updateCameraDebugLabels();
 	this->hud->setVisible(true);
@@ -88,7 +88,7 @@ void GameCamera::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	this->debugCameraRectangle->setPosition(visibleSize / 2.0f);
 	this->debugCameraLabelX->setPosition(Vec2(visibleSize.width - 320.0f, 16.0f + 48.0f));
@@ -97,7 +97,7 @@ void GameCamera::initializePositions()
 
 void GameCamera::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerCustom* beforeSceneChangeListener = EventListenerCustom::create(
 		SceneEvents::BeforeSceneChangeEvent,

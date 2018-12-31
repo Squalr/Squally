@@ -49,14 +49,14 @@ LoadingScreen::~LoadingScreen()
 
 void LoadingScreen::onEnter()
 {
-	GlobalScene::onEnter();
+	super::onEnter();
 
 	this->backgroundNode->addChild(MenuBackground::claimInstance());
 }
 
 void LoadingScreen::initializePositions()
 {
-	GlobalScene::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -65,7 +65,7 @@ void LoadingScreen::initializePositions()
 
 void LoadingScreen::initializeListeners()
 {
-	GlobalScene::initializeListeners();
+	super::initializeListeners();
 
 	LoadingScreen::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateLoadingScreen, [](EventCustom* args)
 	{

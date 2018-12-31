@@ -253,7 +253,7 @@ OptionsMenu::~OptionsMenu()
 
 void OptionsMenu::onEnter()
 {
-	Hud::onEnter();
+	super::onEnter();
 
 	float delay = 0.1f;
 	float duration = 0.25f;
@@ -294,7 +294,7 @@ void OptionsMenu::onEnter()
 
 void OptionsMenu::initializeListeners()
 {
-	Hud::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -305,7 +305,7 @@ void OptionsMenu::initializeListeners()
 
 void OptionsMenu::initializePositions()
 {
-	Hud::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

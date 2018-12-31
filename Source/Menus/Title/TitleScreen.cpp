@@ -150,7 +150,7 @@ TitleScreen::~TitleScreen()
 
 void TitleScreen::onEnter()
 {
-	GlobalScene::onEnter();
+	super::onEnter();
 
 	SoundManager::playMusicResource(MusicResources::WeWillGetThereTogether);
 
@@ -179,7 +179,7 @@ void TitleScreen::onEnter()
 
 void TitleScreen::initializePositions()
 {
-	GlobalScene::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -197,7 +197,7 @@ void TitleScreen::initializePositions()
 
 void TitleScreen::initializeListeners()
 {
-	GlobalScene::initializeListeners();
+	super::initializeListeners();
 
 	TitleScreen::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateTitle, [](EventCustom* args)
 	{

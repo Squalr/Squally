@@ -11,6 +11,7 @@ protected:
 	HexusOpponentMenuObelisk();
 	~HexusOpponentMenuObelisk();
 
-private:
+private:	
+	typedef HexusOpponentMenuBase super;
 	static HexusOpponentMenuObelisk* instance;
 };

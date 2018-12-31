@@ -25,6 +25,7 @@ protected:
 	~WorldMap();
 
 private:
+	typedef GlobalScene super;
 	void onEnter() override;
 	void initializedLocked();
 	void initializePositions() override;

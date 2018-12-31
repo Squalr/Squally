@@ -70,4 +70,6 @@ private:
 	static const cocos2d::Color3B numberColor;
 	static const cocos2d::Color3B commentColor;
 	static const std::set<std::string> registers;
+private:
+	typedef SmartNode super;
 };

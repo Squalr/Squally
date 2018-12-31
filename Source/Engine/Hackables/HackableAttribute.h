@@ -9,6 +9,7 @@ public:
 	std::string iconResource;
 
 protected:
+	typedef cocos2d::Node super;
 	HackableAttribute(std::string iconResource);
 	virtual ~HackableAttribute();
 };

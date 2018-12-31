@@ -33,5 +33,5 @@ HexusChapterPreviewRuins::~HexusChapterPreviewRuins()
 
 void HexusChapterPreviewRuins::initializePositions()
 {
-	HexusChapterPreview::initializePositions();
+	super::initializePositions();
 }

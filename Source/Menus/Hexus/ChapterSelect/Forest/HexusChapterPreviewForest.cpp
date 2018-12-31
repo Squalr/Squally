@@ -33,5 +33,5 @@ HexusChapterPreviewForest::~HexusChapterPreviewForest()
 
 void HexusChapterPreviewForest::initializePositions()
 {
-	HexusChapterPreview::initializePositions();
+	super::initializePositions();
 }

@@ -23,6 +23,7 @@ public:
 	static RadialMenu* create(std::function<void()> onCloseCallback);
 
 private:
+	typedef SmartNode super;
 	RadialMenu(std::function<void()> onCloseCallback);
 	~RadialMenu();
 

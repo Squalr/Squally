@@ -57,6 +57,7 @@ public:
 	void setTypeWriterFinishedCallback(std::function<void()> callback);
 
 private:
+	typedef cocos2d::Label super;
 	LocalizedLabel(
 		FontStyle fontStyle,
 		FontSize fontSize,

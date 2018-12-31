@@ -70,7 +70,7 @@ LocalizedLabel::~LocalizedLabel()
 
 void LocalizedLabel::onEnter()
 {
-	Label::onEnter();
+	super::onEnter();
 
 	// If this label is not bound to a localized string, we'll just listen for events to set the font style and size. Normally the string callback would handle thing.
 	// This is generally used if this label is numeric, and thus has no localized string. We'd still want to update the font accordingly.
