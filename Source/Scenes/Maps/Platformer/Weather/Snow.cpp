@@ -36,14 +36,14 @@ Snow::~Snow()
 
 void Snow::onEnter()
 {
-	SerializableLayer::onEnter();
+	super::onEnter();
 
 	this->scheduleUpdate();
 }
 
 void Snow::update(float dt)
 {
-	SerializableLayer::update(dt);
+	super::update(dt);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();

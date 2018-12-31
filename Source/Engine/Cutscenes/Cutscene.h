@@ -26,6 +26,7 @@ protected:
 	void endCutscene();
 
 private:
+	typedef SmartScene super;
 	void playNextCutsceneClip();
 
 	CutsceneClip* activeClip;

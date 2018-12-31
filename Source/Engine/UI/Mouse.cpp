@@ -63,7 +63,7 @@ Mouse::~Mouse()
 
 void Mouse::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	this->setSpriteToCursorPosition();
 	this->setActiveMouseSprite(this->mouseSpriteIdle);
@@ -71,7 +71,7 @@ void Mouse::onEnter()
 
 void Mouse::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerCustom* mouseStateUpdateListener = EventListenerCustom::create(
 		MouseEvents::MouseStateUpdateEvent,

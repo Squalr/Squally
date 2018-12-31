@@ -38,6 +38,7 @@ protected:
 	cocos2d::Node* spriteSelected;
 
 private:
+	typedef SmartNode super;
 	void initializeListeners() override;
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;

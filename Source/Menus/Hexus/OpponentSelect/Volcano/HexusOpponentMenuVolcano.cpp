@@ -23,7 +23,7 @@ void HexusOpponentMenuVolcano::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuVolcano::instance);
 }
 
-HexusOpponentMenuVolcano::HexusOpponentMenuVolcano() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Volcano, HexusChapterPreviewVolcano::SaveKeyChapterName)
+HexusOpponentMenuVolcano::HexusOpponentMenuVolcano() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Volcano, HexusChapterPreviewVolcano::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentBrine::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentLavaGolem::getInstance()));

@@ -36,4 +36,7 @@ protected:
 	MenuSprite* frame;
 	LocalizedLabel* text;
 	std::function<void()> callback;
+
+private:
+	typedef SmartNode super;
 };

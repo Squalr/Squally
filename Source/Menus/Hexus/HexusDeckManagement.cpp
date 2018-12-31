@@ -207,7 +207,7 @@ HexusDeckManagement::~HexusDeckManagement()
 
 void HexusDeckManagement::onEnter()
 {
-	GlobalScene::onEnter();
+	super::onEnter();
 
 	float delay = 0.25f;
 	float duration = 0.35f;
@@ -221,12 +221,12 @@ void HexusDeckManagement::onExit()
 {
 	this->save(false);
 
-	GlobalScene::onExit();
+	super::onExit();
 }
 
 void HexusDeckManagement::initializeListeners()
 {
-	GlobalScene::initializeListeners();
+	super::initializeListeners();
 
 	HexusDeckManagement::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusDeckManagement, [](EventCustom* args)
 	{
@@ -255,7 +255,7 @@ void HexusDeckManagement::initializeListeners()
 
 void HexusDeckManagement::initializePositions()
 {
-	GlobalScene::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

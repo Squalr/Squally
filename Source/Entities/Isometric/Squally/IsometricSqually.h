@@ -14,6 +14,7 @@ protected:
 	cocos2d::Vec2 getButtonOffset() override;
 
 private:
+	typedef IsometricEntity super;
 	IsometricSqually(cocos2d::ValueMap* initProperties);
 	~IsometricSqually();
 

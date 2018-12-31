@@ -37,7 +37,7 @@ SmartScene::~SmartScene()
 
 void SmartScene::onEnter()
 {
-	Scene::onEnter();
+	super::onEnter();
 
 	// Make fade in visible, fullscreen, and topmost
 	if (this->fadeSpeed > 0.0f)
@@ -130,7 +130,7 @@ void SmartScene::addEventListenerIgnorePause(EventListener* listener)
 
 void SmartScene::resume()
 {
-	Scene::resume();
+	super::resume();
 
 	this->initializeListeners();
 }

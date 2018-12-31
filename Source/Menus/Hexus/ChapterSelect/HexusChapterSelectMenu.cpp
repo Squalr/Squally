@@ -137,7 +137,7 @@ HexusChapterSelectMenu::~HexusChapterSelectMenu()
 
 void HexusChapterSelectMenu::onEnter()
 {
-	GlobalScene::onEnter();
+	super::onEnter();
 
 	float delay = 0.25f;
 	float duration = 0.35f;
@@ -170,7 +170,7 @@ void HexusChapterSelectMenu::onEnter()
 
 void HexusChapterSelectMenu::initializeListeners()
 {
-	GlobalScene::initializeListeners();
+	super::initializeListeners();
 
 	HexusChapterSelectMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusChapterSelect, [](EventCustom* args)
 	{
@@ -199,7 +199,7 @@ void HexusChapterSelectMenu::initializeListeners()
 
 void HexusChapterSelectMenu::initializePositions()
 {
-	GlobalScene::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

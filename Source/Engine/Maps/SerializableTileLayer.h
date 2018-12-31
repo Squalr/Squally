@@ -41,5 +41,6 @@ protected:
 	virtual ~SerializableTileLayer();
 
 private:
+	typedef SerializableLayer super;
 	cocos2d::cocos_experimental::TMXLayer* tileLayer;
 };

@@ -33,6 +33,7 @@ public:
 	void setIconOffset(cocos2d::Vec2 offset);
 
 protected:
+	typedef MenuSprite super;
 	IconMenuSprite(
 		cocos2d::Sprite* normalSprite,
 		cocos2d::Sprite* selectedSprite,

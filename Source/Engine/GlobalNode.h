@@ -13,4 +13,6 @@ public:
 
 	virtual void pause() override;
 	virtual void addEventListener(cocos2d::EventListener* listener) override;
+private:
+	typedef SmartNode super;
 };

@@ -36,7 +36,7 @@ ObjectLayerDeserializer::~ObjectLayerDeserializer()
 
 void ObjectLayerDeserializer::initializeListeners()
 {
-	GlobalNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		DeserializationEvents::RequestLayerDeserializeEvent,

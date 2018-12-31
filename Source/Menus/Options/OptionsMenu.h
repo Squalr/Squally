@@ -33,6 +33,7 @@ protected:
 	~OptionsMenu();
 
 private:
+	typedef Hud super;
 	void onEnter() override;
 	void initializeListeners() override;
 	void initializePositions() override;

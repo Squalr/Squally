@@ -21,6 +21,7 @@ public:
 	LocalizedLabel* label;
 
 private:
+	typedef SmartNode super;
 	DialogueLabel(DialogueTree* root, LocalizedLabel* label, cocos2d::Size size);
 	virtual ~DialogueLabel();
 

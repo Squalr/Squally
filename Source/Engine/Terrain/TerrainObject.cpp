@@ -104,7 +104,7 @@ TerrainObject::~TerrainObject()
 
 void TerrainObject::onEnter()
 {
-	HackableObject::onEnter();
+	super::onEnter();
 }
 
 void TerrainObject::onDeveloperModeEnable()
@@ -119,7 +119,7 @@ void TerrainObject::onDeveloperModeDisable()
 
 void TerrainObject::initializeListeners()
 {
-	HackableObject::initializeListeners();
+	super::initializeListeners();
 }
 
 void TerrainObject::setPoints(std::vector<Vec2> points)

@@ -23,7 +23,7 @@ void HexusOpponentMenuRuins::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuRuins::instance);
 }
 
-HexusOpponentMenuRuins::HexusOpponentMenuRuins() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Ruins, HexusChapterPreviewRuins::SaveKeyChapterName)
+HexusOpponentMenuRuins::HexusOpponentMenuRuins() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Ruins, HexusChapterPreviewRuins::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentHorus::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentAnubisPup::getInstance()));

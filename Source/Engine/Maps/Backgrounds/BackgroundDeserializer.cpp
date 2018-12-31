@@ -29,7 +29,7 @@ void BackgroundDeserializer::registerGlobalNode()
 
 void BackgroundDeserializer::initializeListeners()
 {
-	GlobalNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		DeserializationEvents::RequestLayerDeserializeEvent,

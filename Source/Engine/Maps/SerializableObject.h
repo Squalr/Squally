@@ -57,6 +57,7 @@ protected:
 	cocos2d::ValueMap* properties;
 
 private:
+	typedef SmartNode super;
 	bool isAttributeOrHiddenProperty(std::string propertyName);
 	bool containsAttributes();
 	bool containsProperties();

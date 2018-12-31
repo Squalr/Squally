@@ -16,6 +16,7 @@ protected:
 	~MenuCard();
 
 private:
+	typedef Card super;
 	void initializePositions() override;
 	void initializeListeners() override;
 

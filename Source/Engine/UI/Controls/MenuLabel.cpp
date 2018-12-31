@@ -71,12 +71,12 @@ void MenuLabel::setText(std::string text)
 
 void MenuLabel::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 }
 
 void MenuLabel::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
 	this->getEventDispatcher()->removeEventListenersForTarget(this);
 

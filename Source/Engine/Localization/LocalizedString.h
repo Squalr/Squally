@@ -46,6 +46,7 @@ protected:
 	virtual std::string getStringZhTw() = 0;
 
 private:
+	typedef SmartNode super;
 	void initializeListeners() override;
 
 	std::function<void(LocalizedString* newString)> onLocaleChange;

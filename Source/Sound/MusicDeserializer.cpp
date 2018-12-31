@@ -29,7 +29,7 @@ void MusicDeserializer::registerGlobalNode()
 
 void MusicDeserializer::initializeListeners()
 {
-	GlobalNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		DeserializationEvents::RequestLayerDeserializeEvent,

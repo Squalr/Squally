@@ -35,14 +35,14 @@ IsometricEntity::~IsometricEntity()
 
 void IsometricEntity::onEnter()
 {
-	HackableObject::onEnter();
+	super::onEnter();
 
 	this->scheduleUpdate();
 }
 
 void IsometricEntity::update(float dt)
 {
-	HackableObject::update(dt);
+	super::update(dt);
 
 	const float MOVE_SPEED = 256.0f;
 

@@ -10,6 +10,7 @@ public:
 	static Lightning* create();
 
 private:
+	typedef SmartNode super;
 	Lightning();
 	~Lightning();
 
