@@ -23,7 +23,7 @@ void HexusOpponentMenuObelisk::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuObelisk::instance);
 }
 
-HexusOpponentMenuObelisk::HexusOpponentMenuObelisk() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Void, HexusChapterPreviewObelisk::SaveKeyChapterName)
+HexusOpponentMenuObelisk::HexusOpponentMenuObelisk() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Void, HexusChapterPreviewObelisk::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentAmelia::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentVoidDemon::getInstance()));

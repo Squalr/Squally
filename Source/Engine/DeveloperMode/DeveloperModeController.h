@@ -17,6 +17,7 @@ public:
 	bool isDeveloperModeEnabled();
 
 private:
+	typedef GlobalNode super;
 	DeveloperModeController();
 	virtual ~DeveloperModeController();
 

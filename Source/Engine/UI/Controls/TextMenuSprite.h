@@ -42,4 +42,7 @@ protected:
 	cocos2d::Label* selectedContentLabel;
 	cocos2d::Node* normalContent;
 	cocos2d::Node* selectedContent;
+
+private:
+	typedef MenuSprite super;
 };

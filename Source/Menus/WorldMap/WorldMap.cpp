@@ -127,7 +127,7 @@ WorldMap::~WorldMap()
 
 void WorldMap::onEnter()
 {
-	GlobalScene::onEnter();
+	super::onEnter();
 
 	const float delay = 0.5f;
 	const float duration = 0.75f;
@@ -158,7 +158,7 @@ void WorldMap::onEnter()
 
 void WorldMap::initializePositions()
 {
-	GlobalScene::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -187,7 +187,7 @@ void WorldMap::initializePositions()
 
 void WorldMap::initializeListeners()
 {
-	GlobalScene::initializeListeners();
+	super::initializeListeners();
 
 	WorldMap::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateWorldMap, [](EventCustom* args)
 	{

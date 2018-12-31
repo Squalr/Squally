@@ -28,6 +28,7 @@ protected:
 	~HexusOpponentPreview();
 
 private:
+	typedef SmartNode super;
 	void initializePositions() override;
 	void onOpponentClick(MenuSprite* HexusOpponentPreview);
 

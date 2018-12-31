@@ -17,6 +17,7 @@ public:
 			cocos2d::Node* panelParent, cocos2d::Size size);
 
 private:
+	typedef SmartNode super;
 	MouseOverPanel(cocos2d::Node* visibleContent,
 			cocos2d::Node* mouseOverContent, cocos2d::Node* panelParent, cocos2d::Size size);
 	virtual ~MouseOverPanel();

@@ -39,7 +39,7 @@ CProgressBar::~CProgressBar()
 
 void CProgressBar::initializePositions()
 {
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	this->progressClip->setPosition(Vec2(-this->progressBar->getContentSize().width / 2, 0));
 }

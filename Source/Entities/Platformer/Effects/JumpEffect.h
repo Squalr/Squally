@@ -7,6 +7,7 @@ public:
 	static JumpEffect* create();
 
 private:
+	typedef SmartNode super;
 	JumpEffect();
 	virtual ~JumpEffect();
 };

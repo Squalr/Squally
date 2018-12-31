@@ -11,6 +11,7 @@ protected:
 	virtual void addEventListener(cocos2d::EventListener* listener) override;
 
 private:
+	typedef MenuSprite super;
 	HackButton();
 	~HackButton();
 };

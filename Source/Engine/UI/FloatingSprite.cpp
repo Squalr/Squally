@@ -30,7 +30,7 @@ FloatingSprite::~FloatingSprite()
 
 void FloatingSprite::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	if (this->time.x > 0.0f && this->movement.x != 0.0f)
 	{

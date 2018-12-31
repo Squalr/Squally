@@ -11,6 +11,7 @@ public:
 	static void sendEvent(std::string category, std::string action);
 
 private:
+	typedef GlobalNode super;
 	static Analytics * getInstance();
 	Analytics();
 	virtual ~Analytics();

@@ -27,6 +27,7 @@ public:
 	void hideDialogue();
 
 private:
+	typedef SmartNode super;
 	SpeechBubble();
 	virtual ~SpeechBubble();
 

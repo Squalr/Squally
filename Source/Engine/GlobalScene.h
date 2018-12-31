@@ -5,4 +5,7 @@
 class GlobalScene : public SmartScene
 {
 public:
+
+private:
+    typedef SmartScene super;
 };

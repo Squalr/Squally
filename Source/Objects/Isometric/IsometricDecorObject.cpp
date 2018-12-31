@@ -11,7 +11,7 @@ IsometricDecorObject* IsometricDecorObject::create(ValueMap* initProperties)
 	return instance;
 }
 
-IsometricDecorObject::IsometricDecorObject(ValueMap* initProperties) : HackableObject(initProperties)
+IsometricDecorObject::IsometricDecorObject(ValueMap* initProperties) : super(initProperties)
 {
 }
 

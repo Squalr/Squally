@@ -8,6 +8,7 @@ public:
 	static void registerGlobalNode();
 
 private:
+	typedef GlobalNode super;
 	CollisionDeserializer();
 	virtual ~CollisionDeserializer();
 

@@ -36,5 +36,6 @@ public:
 	virtual void applicationWillEnterForeground();
 
 private:
+	typedef cocos2d::Application super;
 	static const std::string GameWindowTitle;
 };

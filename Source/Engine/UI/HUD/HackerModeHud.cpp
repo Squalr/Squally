@@ -40,19 +40,19 @@ HackerModeHud::~HackerModeHud()
 
 void HackerModeHud::onEnter()
 {
-	Hud::onEnter();
+	super::onEnter();
 }
 
 void HackerModeHud::initializePositions()
 {
-	Hud::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 void HackerModeHud::initializeListeners()
 {
-	Hud::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 	EventListenerCustom* hackableRegisterListener = EventListenerCustom::create(

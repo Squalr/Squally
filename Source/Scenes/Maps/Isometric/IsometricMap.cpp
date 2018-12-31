@@ -32,7 +32,7 @@ IsometricMap::~IsometricMap()
 
 void IsometricMap::onEnter()
 {
-	MapBase::onEnter();
+	super::onEnter();
 
 	CameraTrackingData trackingData = CameraTrackingData(IsometricSqually::getInstance(), Vec2(128.0f, 96.0f));
 	GameCamera::getInstance()->setTarget(trackingData);
@@ -42,10 +42,10 @@ void IsometricMap::onEnter()
 
 void IsometricMap::initializePositions()
 {
-	MapBase::initializePositions();
+	super::initializePositions();
 }
 
 void IsometricMap::initializeListeners()
 {
-	MapBase::initializeListeners();
+	super::initializeListeners();
 }

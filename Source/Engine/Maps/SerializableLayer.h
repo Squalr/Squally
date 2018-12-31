@@ -44,4 +44,6 @@ protected:
 	std::string layerName;
 	std::vector<SerializableObject*> serializableObjects;
 	cocos2d::ValueMap* properties;
+private:
+	typedef cocos2d::Layer super;
 };

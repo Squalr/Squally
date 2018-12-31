@@ -22,6 +22,7 @@ public:
 	const std::string RadioButtonCheckEvent = "radio_button_check_event";
 
 private:
+	typedef SmartNode super;
 	CRadioButton(int groupIdentifier);
 	virtual ~CRadioButton();
 

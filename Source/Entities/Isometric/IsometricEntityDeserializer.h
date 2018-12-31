@@ -9,6 +9,7 @@ public:
 	static void registerGlobalNode();
 
 private:
+	typedef GlobalNode super;
 	IsometricEntityDeserializer();
 	~IsometricEntityDeserializer();
 

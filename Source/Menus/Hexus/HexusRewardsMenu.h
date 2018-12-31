@@ -21,6 +21,7 @@ protected:
 	~HexusRewardsMenu();
 
 private:
+	typedef GlobalScene super;
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

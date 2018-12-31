@@ -53,6 +53,7 @@ protected:
 	static const cocos2d::Size Padding;
 
 private:
+	typedef SmartNode super;
 	cocos2d::Node* background;
 	cocos2d::Node* titleBar;
 	MenuLabel* windowTitle;

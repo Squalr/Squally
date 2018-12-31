@@ -23,6 +23,7 @@ public:
 	cocos2d::Layer* hackableObjectsHud;
 
 private:
+	typedef Hud super;
 	HackerModeHud(std::function<void()> toggleHackermodeCallback);
 	virtual ~HackerModeHud();
 

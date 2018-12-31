@@ -15,5 +15,6 @@ protected:
 	void endCutsceneClip();
 
 private:
+	typedef SmartScene super;
 	std::function<void()> cutsceneClipCompleteCallback;
 };

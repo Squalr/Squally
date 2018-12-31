@@ -15,6 +15,7 @@ public:
 	static MatrixStrand* create(int strandIndex);
 
 private:
+	typedef SmartNode super;
 	MatrixStrand(int strandIndex);
 	~MatrixStrand();
 

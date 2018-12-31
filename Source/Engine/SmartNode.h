@@ -26,4 +26,6 @@ protected:
 	virtual void addEventListener(cocos2d::EventListener* listener);
 	void addGlobalEventListener(cocos2d::EventListener* listener);
 	void addEventListenerIgnorePause(cocos2d::EventListener* listener);
+private:
+	typedef cocos2d::Node super;
 };

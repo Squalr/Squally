@@ -15,6 +15,7 @@ public:
 	static const std::string MapKeyWeatherLayerRain;
 
 private:
+	typedef SerializableLayer super;
 	Rain(cocos2d::ValueMap* properties, std::string name);
 	~Rain();
 

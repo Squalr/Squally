@@ -23,7 +23,7 @@ void HexusOpponentMenuCaverns::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuCaverns::instance);
 }
 
-HexusOpponentMenuCaverns::HexusOpponentMenuCaverns() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Caverns, HexusChapterPreviewCaverns::SaveKeyChapterName)
+HexusOpponentMenuCaverns::HexusOpponentMenuCaverns() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Caverns, HexusChapterPreviewCaverns::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentBrock::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentShaman::getInstance()));

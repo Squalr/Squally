@@ -141,6 +141,7 @@ public:
 	static const unsigned char StopSearchTagSignature[];
 
 private:
+	typedef HackableAttribute super;
 	static HackableCode* create(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource);
 
 	HackableCode(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource);

@@ -23,7 +23,7 @@ void HexusOpponentMenuJungle::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuJungle::instance);
 }
 
-HexusOpponentMenuJungle::HexusOpponentMenuJungle() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Jungle, HexusChapterPreviewJungle::SaveKeyChapterName)
+HexusOpponentMenuJungle::HexusOpponentMenuJungle() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Jungle, HexusChapterPreviewJungle::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentBlackbeard::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentGoblinWarriorPig::getInstance()));

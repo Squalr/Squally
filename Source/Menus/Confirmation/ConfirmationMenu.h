@@ -20,6 +20,7 @@ public:
 	void showMessage(LocalizedString* confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
 
 private:
+	typedef SmartNode super;
 	ConfirmationMenu();
 	~ConfirmationMenu();
 

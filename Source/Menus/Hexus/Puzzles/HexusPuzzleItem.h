@@ -33,6 +33,7 @@ protected:
 	~HexusPuzzleItem();
 
 private:
+	typedef SmartNode super;
 	void onTutorialClick(MenuSprite* HexusPuzzleItem);
 	void onTutorialMouseOver(MenuSprite* HexusPuzzleItem);
 

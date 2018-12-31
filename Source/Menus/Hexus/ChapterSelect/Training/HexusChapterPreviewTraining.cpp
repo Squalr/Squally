@@ -33,5 +33,5 @@ HexusChapterPreviewTraining::~HexusChapterPreviewTraining()
 
 void HexusChapterPreviewTraining::initializePositions()
 {
-	HexusChapterPreview::initializePositions();
+	super::initializePositions();
 }

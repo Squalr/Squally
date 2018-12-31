@@ -43,11 +43,6 @@ void DeveloperHud::loadMap(SerializableMap* serializableMapInit)
 	this->serializableMap = serializableMapInit;
 }
 
-void DeveloperHud::onEnter()
-{
-	Hud::onEnter();
-}
-
 void DeveloperHud::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -57,7 +52,7 @@ void DeveloperHud::initializePositions()
 
 void DeveloperHud::initializeListeners()
 {
-	Hud::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 

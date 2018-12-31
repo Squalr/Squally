@@ -84,7 +84,7 @@ TitleScreenBackground::~TitleScreenBackground()
 
 void TitleScreenBackground::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	// Initialize particles to an intermediate state
 	GameUtils::accelerateParticles(this->fireflyParticles, 2.0f);
@@ -161,12 +161,12 @@ void TitleScreenBackground::onEnter()
 
 void TitleScreenBackground::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 }
 
 void TitleScreenBackground::initializePositions()
 {
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

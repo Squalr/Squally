@@ -64,7 +64,7 @@ MatrixStrand::~MatrixStrand()
 
 void MatrixStrand::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	this->scheduleUpdate();
 }

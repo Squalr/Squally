@@ -83,7 +83,7 @@ Lightning::~Lightning()
 
 void Lightning::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 
 	this->firstRun = true;

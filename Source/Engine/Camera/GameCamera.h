@@ -36,6 +36,7 @@ public:
 	void clearTargets();
 
 private:
+	typedef GlobalNode super;
 	GameCamera();
 	virtual ~GameCamera();
 	void onEnter() override;
