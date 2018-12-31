@@ -24,7 +24,7 @@ void LocalizedString::initializeListeners()
 	{
 		if (this->onLocaleChange != nullptr)
 		{
-			this->onLocaleChange(this->getString());
+			this->onLocaleChange(this);
 		}
 	}));
 }
@@ -153,7 +153,7 @@ std::string LocalizedString::getString()
 	}
 }
 
-void LocalizedString::setOnLocaleChangeCallback(std::function<void(std::string newString)> onLocaleChange)
+void LocalizedString::setOnLocaleChangeCallback(std::function<void(LocalizedString* newString)> onLocaleChange)
 {
 	this->onLocaleChange = onLocaleChange;
 }

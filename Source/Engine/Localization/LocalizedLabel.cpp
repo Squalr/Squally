@@ -57,7 +57,6 @@ LocalizedLabel::LocalizedLabel(
 	this->fontSize = fontSize;
 	this->localizedString = localizedString;
 	this->typeWriterFinishedCallback = nullptr;
-	this->typeWriterSpeed = LocalizedLabel::DefaultTypeSpeed;
 
 	this->setOverflow(Label::Overflow::RESIZE_HEIGHT);
 
@@ -71,21 +70,6 @@ LocalizedLabel::~LocalizedLabel()
 void LocalizedLabel::onEnter()
 {
 	Label::onEnter();
-
-	// If this label is not bound to a localized string, we'll just listen for events to set the font style and size. Normally the string callback would handle thing.
-	// This is generally used if this label is numeric, and thus has no localized string. We'd still want to update the font accordingly.
-	if (this->localizedString == nullptr)
-	{
-		// TODO: Add event that refreshes the current fontstyle and font size 
-		/*
-		this->addGlobalEventListener(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
-		{
-			if (this->onLocaleChange != nullptr)
-			{
-				this->onLocaleChange(this->getString());
-			}
-		}));*/
-	}
 }
 
 LocalizedLabel* LocalizedLabel::clone()
@@ -109,108 +93,104 @@ void LocalizedLabel::setLocalizedString(LocalizedString* localizedString, const 
 
 	if (this->localizedString == nullptr)
 	{
-		this->initializeStringToLocale("");
 		return;
 	}
 
-	this->initializeStringToLocale(this->localizedString->getString());
-	this->localizedString->setOnLocaleChangeCallback(CC_CALLBACK_1(LocalizedLabel::initializeStringToLocale, this));
+	this->setDimensions(dimensions.width, dimensions.height);
+	this->setHorizontalAlignment(hAlignment);
+	this->setVerticalAlignment(vAlignment);
+
+	this->onLocaleChange(this->localizedString);
+
+	this->localizedString->setOnLocaleChangeCallback(CC_CALLBACK_1(LocalizedLabel::onLocaleChange, this));
 
 	this->addChild(this->localizedString); // Just adding this to retain it -- this has no visuals
-
-	this->initWithTTF(this->localizedString->getString(), this->resolvedFontPath, this->resolvedFontSize, dimensions, hAlignment, vAlignment);
 }
 
 float LocalizedLabel::getFontSize()
 {
-	return this->resolvedFontSize;
-}
-
-std::string LocalizedLabel::getFont()
-{
-	return this->resolvedFontPath;
-}
-
-void LocalizedLabel::initializeStringToLocale(std::string newString)
-{
-	this->resolvedString = newString;
-
-	switch (this->fontStyle)
-	{
-		default:
-		case FontStyle::Main:
-		{
-			this->resolvedFontPath = LocalizedLabel::getMainFont();
-			break;
-		}
-		case FontStyle::Coding:
-		{
-			this->resolvedFontPath = LocalizedLabel::getCodingFont();
-			break;
-		}
-		case FontStyle::Pixel:
-		{
-			this->resolvedFontPath = LocalizedLabel::getPixelFont();
-			break;
-		}
-	}
-
 	switch (this->fontSize)
 	{
 		case FontSize::M1:
 		{
-			this->resolvedFontSize = LocalizedLabel::getFontSizeM1(this->resolvedFontPath);
+			return LocalizedLabel::getFontSizeM1(this->getFont());
 			break;
 		}
 		case FontSize::M2:
 		{
-			this->resolvedFontSize = LocalizedLabel::getFontSizeM2(this->resolvedFontPath);
+			return LocalizedLabel::getFontSizeM2(this->getFont());
 			break;
 		}
 		case FontSize::M3:
 		{
-			this->resolvedFontSize = LocalizedLabel::getFontSizeM3(this->resolvedFontPath);
+			return LocalizedLabel::getFontSizeM3(this->getFont());
 			break;
 		}
 		case FontSize::H1:
 		{
-			this->resolvedFontSize = LocalizedLabel::getFontSizeH1(this->resolvedFontPath);
+			return LocalizedLabel::getFontSizeH1(this->getFont());
 			break;
 		}
 		case FontSize::H2:
 		{
-			this->resolvedFontSize = LocalizedLabel::getFontSizeH2(this->resolvedFontPath);
+			return LocalizedLabel::getFontSizeH2(this->getFont());
 			break;
 		}
 		case FontSize::H3:
 		{
-			this->resolvedFontSize = LocalizedLabel::getFontSizeH3(this->resolvedFontPath);
+			return LocalizedLabel::getFontSizeH3(this->getFont());
 			break;
 		}
 		default:
 		case FontSize::P:
 		{
-			this->resolvedFontSize = LocalizedLabel::getFontSizeP(this->resolvedFontPath);
+			return LocalizedLabel::getFontSizeP(this->getFont());
 			break;
 		}
 		case FontSize::Small:
 		{
-			this->resolvedFontSize = LocalizedLabel::getFontSizeSmall(this->resolvedFontPath);
+			return LocalizedLabel::getFontSizeSmall(this->getFont());
 			break;
 		}
 	}
-
-	// TODO: update font/font size
-
-	this->setString(newString);
 }
 
-void LocalizedLabel::setTypeWriterSpeed(float speed)
+std::string LocalizedLabel::getFont()
 {
-	this->typeWriterSpeed = speed;
+	switch (this->fontStyle)
+	{
+		default:
+		case FontStyle::Main:
+		{
+			return LocalizedLabel::getMainFont();
+			break;
+		}
+		case FontStyle::Coding:
+		{
+			return LocalizedLabel::getCodingFont();
+			break;
+		}
+		case FontStyle::Pixel:
+		{
+			return LocalizedLabel::getPixelFont();
+			break;
+		}
+	}
 }
 
-void LocalizedLabel::runTypeWriterEffect()
+void LocalizedLabel::onLocaleChange(LocalizedString* localizedString)
+{
+	this->initWithTTF(
+		localizedString->getString(),
+		this->getFont(),
+		this->getFontSize(),
+		this->getDimensions(), 
+		this->getHorizontalAlignment(),
+		this->getVerticalAlignment()
+	);
+}
+
+void LocalizedLabel::runTypeWriterEffect(float speed)
 {
 	this->unschedule(LocalizedLabel::ScheduleKeyTypeWriterEffect);
 
@@ -259,7 +239,7 @@ void LocalizedLabel::runTypeWriterEffect()
 			}
 		}
 
-	}, this->typeWriterSpeed, max - 1, 0, LocalizedLabel::ScheduleKeyTypeWriterEffect);
+	}, speed, max - 1, 0, LocalizedLabel::ScheduleKeyTypeWriterEffect);
 }
 
 void LocalizedLabel::setTypeWriterFinishedCallback(std::function<void()> callback)
@@ -324,6 +304,9 @@ std::string LocalizedLabel::getMainFont()
 		case LanguageType::CHINESE_TRADITIONAL:
 		case LanguageType::JAPANESE:
 		case LanguageType::KOREAN:
+		{
+			return FontResources::Ubuntu_WenQuanYiMicroHeiMono_02;
+		}
 		case LanguageType::ARABIC:
 		case LanguageType::BULGARIAN:
 		case LanguageType::CZECH:

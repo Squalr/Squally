@@ -52,8 +52,7 @@ public:
 		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP);
 	float getFontSize();
 	std::string getFont();
-	void setTypeWriterSpeed(float speed);
-	void runTypeWriterEffect();
+	void runTypeWriterEffect(float speed = LocalizedLabel::DefaultTypeSpeed);
 	void setTypeWriterFinishedCallback(std::function<void()> callback);
 
 private:
@@ -66,7 +65,7 @@ private:
 		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP);
 	~LocalizedLabel();
 
-	void initializeStringToLocale(std::string newString);
+	void onLocaleChange(LocalizedString* localizedString);
 	void onEnter() override;
 
 	static float getFontSizeM1(std::string fontResource);
@@ -85,10 +84,6 @@ private:
 	LocalizedString* localizedString;
 	FontStyle fontStyle;
 	FontSize fontSize;
-	std::string resolvedString;
-	std::string resolvedFontPath;
-	float resolvedFontSize;
-	float typeWriterSpeed;
 	std::function<void()> typeWriterFinishedCallback;
 
 	static const std::string ScheduleKeyTypeWriterEffect;
