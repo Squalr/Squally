@@ -36,14 +36,14 @@ Fireflies::~Fireflies()
 
 void Fireflies::onEnter()
 {
-	SerializableLayer::onEnter();
+	super::onEnter();
 
 	this->scheduleUpdate();
 }
 
 void Fireflies::update(float dt)
 {
-	SerializableLayer::update(dt);
+	super::update(dt);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();

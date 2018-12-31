@@ -10,6 +10,7 @@ public:
 	static const std::string MapKeyTerrainTypeCastle;
 
 private:
+	typedef TerrainDeserializer super;
 	CastleTerrainDeserializer();
 	~CastleTerrainDeserializer();
 

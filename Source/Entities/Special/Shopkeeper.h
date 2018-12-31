@@ -14,5 +14,6 @@ protected:
 	~Shopkeeper();
 
 private:
+	typedef SmartNode super;
 	SmartAnimationNode* animationNode;
 };

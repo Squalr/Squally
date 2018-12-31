@@ -17,6 +17,7 @@ public:
 	HackUtils::DataType dataType;
 
 private:
+	typedef HackableAttribute super;
 	HackableData(void* dataAddress, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource);
 	virtual ~HackableData();
 };

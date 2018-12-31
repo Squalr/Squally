@@ -22,7 +22,7 @@ Plushie::~Plushie()
 
 void Plushie::update(float dt)
 {
-	HackableObject::update(dt);
+	super::update(dt);
 }
 
 void Plushie::registerHackables()

@@ -20,6 +20,7 @@ public:
 	static bool isReleased(cocos2d::EventKeyboard::KeyCode keyCode);
 
 private:
+	typedef GlobalNode super;
 	Input();
 	virtual ~Input();
 

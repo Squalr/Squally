@@ -14,6 +14,7 @@ protected:
 	virtual ~TerrainDeserializer();
 
 private:
+	typedef GlobalNode super;
 	void initializeListeners() override;
 	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);
 

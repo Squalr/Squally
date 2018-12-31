@@ -15,6 +15,7 @@ public:
 	static const int letterSize;
 
 private:
+	typedef cocos2d::Sprite super;
 	MatrixLetter();
 	~MatrixLetter();
 

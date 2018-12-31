@@ -28,6 +28,7 @@ public:
 	void removeAllChildren() override;
 
 private:
+	typedef SmartNode super;
 	ScrollPane(cocos2d::Size initPaneSize, cocos2d::Color4B initBackgroundColor);
 	virtual ~ScrollPane();
 

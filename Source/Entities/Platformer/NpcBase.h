@@ -25,6 +25,7 @@ protected:
 	virtual void onInteractButtonClick(MenuSprite* menuSprite);
 
 private:
+	typedef PlatformerEntity super;
 	cocos2d::Sprite* chatBubbleSprite;
 	MenuSprite* interactButton;
 };

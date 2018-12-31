@@ -24,6 +24,7 @@ protected:
 	virtual ~Mouse();
 
 private:
+	typedef GlobalNode super;
 	void onEnter() override;
 	void initializeListeners() override;
 	void onMouseStateUpdateEvent(cocos2d::EventCustom* eventCustom);

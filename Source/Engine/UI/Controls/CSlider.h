@@ -26,6 +26,7 @@ protected:
 	void initializePositions() override;
 
 private:
+	typedef SmartNode super;
 	void onDrag(MenuSprite* sprite, MouseEvents::MouseEventArgs* args);
 	void setProgress(float newProgress);
 

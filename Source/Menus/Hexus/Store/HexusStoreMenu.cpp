@@ -297,7 +297,7 @@ HexusStoreMenu::~HexusStoreMenu()
 
 void HexusStoreMenu::onEnter()
 {
-	GlobalScene::onEnter();
+	super::onEnter();
 
 	const float delay = 0.25f;
 	const float duration = 0.35f;
@@ -311,7 +311,7 @@ void HexusStoreMenu::onEnter()
 
 void HexusStoreMenu::initializeListeners()
 {
-	GlobalScene::initializeListeners();
+	super::initializeListeners();
 
 	HexusStoreMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusShop, [](EventCustom* args)
 	{
@@ -335,7 +335,7 @@ void HexusStoreMenu::initializeListeners()
 
 void HexusStoreMenu::initializePositions()
 {
-	GlobalScene::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

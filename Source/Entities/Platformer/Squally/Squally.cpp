@@ -29,7 +29,7 @@ Squally* Squally::getInstance()
 	return Squally::squallyInstance;
 }
 
-Squally::Squally(ValueMap* initProperties) : PlatformerEntity::PlatformerEntity(initProperties,
+Squally::Squally(ValueMap* initProperties) : super(initProperties,
 	EntityResources::Squally_Animations,
 	PlatformerCollisionType::Force,
 	Size(128.0f, 224.0f), 
@@ -54,12 +54,12 @@ Squally::~Squally()
 
 void Squally::onEnter()
 {
-	PlatformerEntity::onEnter();
+	super::onEnter();
 }
 
 void Squally::initializeCollisionEvents()
 {
-	PlatformerEntity::initializeCollisionEvents();
+	super::initializeCollisionEvents();
 
 	this->squallyCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying }, [=](CollisionData collisionData)
 	{
@@ -117,7 +117,7 @@ Vec2 Squally::getButtonOffset()
 
 void Squally::update(float dt)
 {
-	PlatformerEntity::update(dt);
+	super::update(dt);
 
 	this->movement.x = 0.0f;
 	this->movement.y = 0.0f;

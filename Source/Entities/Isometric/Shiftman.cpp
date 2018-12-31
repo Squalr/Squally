@@ -17,7 +17,7 @@ Shiftman* Shiftman::deserialize(ValueMap* initProperties)
 	return instance;
 }
 
-Shiftman::Shiftman(ValueMap* initProperties) : IsometricEntity::IsometricEntity(initProperties,
+Shiftman::Shiftman(ValueMap* initProperties) : super::IsometricEntity(initProperties,
 	"", //// EntityResources::Isometric_Shiftman_Animations,
 	1.0f,
 	Vec2(0.0f, 0.0f))
@@ -33,7 +33,7 @@ Shiftman::~Shiftman()
 
 void Shiftman::onEnter()
 {
-	IsometricEntity::onEnter();
+	super::onEnter();
 }
 
 void Shiftman::registerHackables()
@@ -47,7 +47,7 @@ Vec2 Shiftman::getButtonOffset()
 
 void Shiftman::update(float dt)
 {
-	IsometricEntity::update(dt);
+	super::update(dt);
 
 	this->movement.x = 0.0f;
 	this->movement.y = 0.0f;

@@ -21,4 +21,7 @@ protected:
 	~PlatformerEnemy();
 
 	std::string battleMapResource;
+
+private:
+	typedef PlatformerEntity super;
 };

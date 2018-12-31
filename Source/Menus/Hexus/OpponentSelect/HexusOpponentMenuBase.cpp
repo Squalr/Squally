@@ -89,7 +89,7 @@ HexusOpponentMenuBase::~HexusOpponentMenuBase()
 
 void HexusOpponentMenuBase::onEnter()
 {
-	GlobalScene::onEnter();
+	super::onEnter();
 
 	if (!SaveManager::getGlobalDataOrDefault(this->chapterProgressSaveKey, cocos2d::Value(false)).asBool())
 	{
@@ -136,7 +136,7 @@ void HexusOpponentMenuBase::onEnter()
 
 void HexusOpponentMenuBase::initializePositions()
 {
-	GlobalScene::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -166,7 +166,7 @@ void HexusOpponentMenuBase::initializePositions()
 
 void HexusOpponentMenuBase::initializeListeners()
 {
-	GlobalScene::initializeListeners();
+	super::initializeListeners();
 
 	this->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusOpponentSelect, [=](EventCustom* args)
 	{

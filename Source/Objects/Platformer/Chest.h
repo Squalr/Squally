@@ -13,6 +13,7 @@ public:
 	virtual void close();
 
 protected:
+	typedef SmartNode super;
 	Chest(cocos2d::Node* contentNode);
 	~Chest();
 

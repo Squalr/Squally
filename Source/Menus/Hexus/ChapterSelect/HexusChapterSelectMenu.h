@@ -36,6 +36,7 @@ protected:
 	~HexusChapterSelectMenu();
 
 private:
+	typedef GlobalScene super;
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

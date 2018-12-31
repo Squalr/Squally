@@ -159,7 +159,7 @@ SaveSelectMenu::~SaveSelectMenu()
 
 void SaveSelectMenu::onEnter()
 {
-	GlobalScene::onEnter();
+	super::onEnter();
 
 	this->backgroundNode->addChild(MenuBackground::claimInstance());
 
@@ -176,7 +176,7 @@ void SaveSelectMenu::onEnter()
 
 void SaveSelectMenu::initializeListeners()
 {
-	GlobalScene::initializeListeners();
+	super::initializeListeners();
 
 	SaveSelectMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateSaveSelect, [](EventCustom* args)
 	{
@@ -196,7 +196,7 @@ void SaveSelectMenu::initializeListeners()
 
 void SaveSelectMenu::initializePositions()
 {
-	GlobalScene::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

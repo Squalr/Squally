@@ -63,6 +63,7 @@ public:
 	static std::string MapKeyTypeTerrain;
 
 private:
+	typedef HackableObject super;
 	TerrainObject(cocos2d::ValueMap* initProperties, TerrainData terrainData);
 	virtual ~TerrainObject();
 

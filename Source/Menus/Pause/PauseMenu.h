@@ -29,6 +29,7 @@ protected:
 	~PauseMenu();
 
 private:
+	typedef Hud super;
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

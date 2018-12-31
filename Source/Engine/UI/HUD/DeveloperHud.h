@@ -20,10 +20,10 @@ public:
 	void loadMap(SerializableMap* serializableMapInit);
 
 private:
+	typedef Hud super;
 	DeveloperHud();
 	virtual ~DeveloperHud();
 
-	void onEnter() override;
 	void initializePositions();
 	void initializeListeners();
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);

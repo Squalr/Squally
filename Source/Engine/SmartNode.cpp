@@ -20,7 +20,7 @@ SmartNode::~SmartNode()
 
 void SmartNode::onEnter()
 {
-	Node::onEnter();
+	super::onEnter();
 
 	this->initializePositions();
 	this->initializeListeners();
@@ -33,7 +33,7 @@ void SmartNode::onEnter()
 
 void SmartNode::onReenter()
 {
-	Node::onReenter();
+	super::onReenter();
 
 	this->initializePositions();
 	this->initializeListeners();
@@ -112,7 +112,7 @@ void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 
 void SmartNode::resume()
 {
-	Node::resume();
+	super::resume();
 
 	this->initializeListeners();
 }

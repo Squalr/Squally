@@ -21,5 +21,7 @@ protected:
 	SmartAnimationNode* animationNode;
 
 	cocos2d::Vec2 movement;
+private:
+	typedef HackableObject super;
 };
 

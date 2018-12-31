@@ -32,7 +32,7 @@ void PlatformerDecorDeserializer::registerGlobalNode()
 
 void PlatformerDecorDeserializer::initializeListeners()
 {
-	GlobalNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		DeserializationEvents::RequestObjectDeserializeEvent,

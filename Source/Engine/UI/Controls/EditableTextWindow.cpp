@@ -26,7 +26,7 @@ EditableTextWindow* EditableTextWindow::create(LocalizedString* windowTitle, Siz
 }
 
 EditableTextWindow::EditableTextWindow(LocalizedString* windowTitle, Size initWindowSize, Color3B initFontColor)
-	: TextWindow(windowTitle, initWindowSize, initFontColor)
+	: super(windowTitle, initWindowSize, initFontColor)
 {
 	this->currentLineNumber = 1;
 	this->tokenizationCallback = nullptr;
@@ -60,8 +60,7 @@ EditableTextWindow::~EditableTextWindow()
 
 void EditableTextWindow::onEnter()
 {
-	TextWindow::onEnter();
-
+	super::onEnter();
 	this->scheduleUpdate();
 }
 
@@ -87,7 +86,7 @@ void EditableTextWindow::initializePositions()
 
 void EditableTextWindow::initializeListeners()
 {
-	TextWindow::initializeListeners();
+	super::initializeListeners();
 }
 
 void EditableTextWindow::update(float dt)
@@ -145,7 +144,7 @@ void EditableTextWindow::insertNewline()
 	this->lineNumberElements.push_back(lineNumberNewLine);
 	this->lineNumbers->pushBackElement(lineNumberNewLine);
 
-	TextWindow::insertNewline();
+	super::insertNewline();
 }
 
 void EditableTextWindow::clearText()
@@ -159,7 +158,7 @@ void EditableTextWindow::clearText()
 
 	this->lineNumberElements.clear();
 
-	TextWindow::clearText();
+	super::clearText();
 }
 
 void EditableTextWindow::constructTokenizedText(std::string currentText)
