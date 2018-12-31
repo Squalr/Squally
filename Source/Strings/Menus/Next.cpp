@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Next::getStringAr()
 	{
-		return "";
+		return "التالى";
 	}
 
 	std::string Next::getStringBg()
 	{
-		return "";
+		return "Следващия";
 	}
 
 	std::string Next::getStringCs()
 	{
-		return "";
+		return "další";
 	}
 
 	std::string Next::getStringDa()
 	{
-		return "";
+		return "Næste";
 	}
 
 	std::string Next::getStringDe()
 	{
-		return "";
+		return "Nächster";
 	}
 
 	std::string Next::getStringEl()
 	{
-		return "";
+		return "Επόμενο";
 	}
 
 	std::string Next::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Next::getStringEs()
 	{
-		return "";
+		return "Siguiente";
 	}
 
 	std::string Next::getStringEs419()
 	{
-		return "";
+		return "Siguiente";
 	}
 
 	std::string Next::getStringFi()
 	{
-		return "";
+		return "Seuraava";
 	}
 
 	std::string Next::getStringFr()
 	{
-		return "";
+		return "Suivant";
 	}
 
 	std::string Next::getStringHu()
 	{
-		return "";
+		return "Következő";
 	}
 
 	std::string Next::getStringIt()
 	{
-		return "";
+		return "Il prossimo";
 	}
 
 	std::string Next::getStringJa()
 	{
-		return "";
+		return "次";
 	}
 
 	std::string Next::getStringKo()
 	{
-		return "";
+		return "다음 것";
 	}
 
 	std::string Next::getStringNl()
 	{
-		return "";
+		return "volgende";
 	}
 
 	std::string Next::getStringNo()
 	{
-		return "";
+		return "neste";
 	}
 
 	std::string Next::getStringPl()
 	{
-		return "";
+		return "Kolejny";
 	}
 
 	std::string Next::getStringPt()
 	{
-		return "";
+		return "Próximo";
 	}
 
 	std::string Next::getStringPtBr()
 	{
-		return "";
+		return "Próximo";
 	}
 
 	std::string Next::getStringRo()
 	{
-		return "";
+		return "Următor →";
 	}
 
 	std::string Next::getStringRu()
 	{
-		return "";
+		return "следующий";
 	}
 
 	std::string Next::getStringSv()
 	{
-		return "";
+		return "Nästa";
 	}
 
 	std::string Next::getStringTh()
 	{
-		return "";
+		return "ต่อไป";
 	}
 
 	std::string Next::getStringTr()
 	{
-		return "";
+		return "Sonraki";
 	}
 
 	std::string Next::getStringUk()
 	{
-		return "";
+		return "Далі";
 	}
 
-	std::string Next::getStringVn()
+	std::string Next::getStringVi()
 	{
-		return "";
+		return "Kế tiếp";
 	}
 
 	std::string Next::getStringZhCn()
 	{
-		return "";
+		return "下一个";
 	}
 
 	std::string Next::getStringZhTw()
 	{
-		return "";
+		return "下一個";
 	}
 }

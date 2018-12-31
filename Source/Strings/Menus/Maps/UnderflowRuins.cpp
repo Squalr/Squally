@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string UnderflowRuins::getStringAr()
 	{
-		return "";
+		return "أطلال Underflow";
 	}
 
 	std::string UnderflowRuins::getStringBg()
 	{
-		return "";
+		return "Руините под земята";
 	}
 
 	std::string UnderflowRuins::getStringCs()
 	{
-		return "";
+		return "Zříceniny podtlaku";
 	}
 
 	std::string UnderflowRuins::getStringDa()
 	{
-		return "";
+		return "Understrøm ruiner";
 	}
 
 	std::string UnderflowRuins::getStringDe()
 	{
-		return "";
+		return "Unterlaufruinen";
 	}
 
 	std::string UnderflowRuins::getStringEl()
 	{
-		return "";
+		return "Υπολείμματα κατάρρευσης";
 	}
 
 	std::string UnderflowRuins::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string UnderflowRuins::getStringEs()
 	{
-		return "";
+		return "Ruinas de bajo flujo";
 	}
 
 	std::string UnderflowRuins::getStringEs419()
 	{
-		return "";
+		return "Ruinas de bajo flujo";
 	}
 
 	std::string UnderflowRuins::getStringFi()
 	{
-		return "";
+		return "Virtaama rauniot";
 	}
 
 	std::string UnderflowRuins::getStringFr()
 	{
-		return "";
+		return "Ruines souterraines";
 	}
 
 	std::string UnderflowRuins::getStringHu()
 	{
-		return "";
+		return "Túlfolyó romok";
 	}
 
 	std::string UnderflowRuins::getStringIt()
 	{
-		return "";
+		return "Rovine sottostanti";
 	}
 
 	std::string UnderflowRuins::getStringJa()
 	{
-		return "";
+		return "アンダーフロー遺跡";
 	}
 
 	std::string UnderflowRuins::getStringKo()
 	{
-		return "";
+		return "언더 플로우 유적";
 	}
 
 	std::string UnderflowRuins::getStringNl()
 	{
-		return "";
+		return "Onderstroomruïnes";
 	}
 
 	std::string UnderflowRuins::getStringNo()
 	{
-		return "";
+		return "Understrøm ruiner";
 	}
 
 	std::string UnderflowRuins::getStringPl()
 	{
-		return "";
+		return "Underflow ruiny";
 	}
 
 	std::string UnderflowRuins::getStringPt()
 	{
-		return "";
+		return "Ruínas de underflow";
 	}
 
 	std::string UnderflowRuins::getStringPtBr()
 	{
-		return "";
+		return "Ruínas de underflow";
 	}
 
 	std::string UnderflowRuins::getStringRo()
 	{
-		return "";
+		return "Ruinele subterane";
 	}
 
 	std::string UnderflowRuins::getStringRu()
 	{
-		return "";
+		return "Подвал руины";
 	}
 
 	std::string UnderflowRuins::getStringSv()
 	{
-		return "";
+		return "Underflödesruiner";
 	}
 
 	std::string UnderflowRuins::getStringTh()
 	{
-		return "";
+		return "อันเดอร์โฟลว์ซากปรักหักพัง";
 	}
 
 	std::string UnderflowRuins::getStringTr()
 	{
-		return "";
+		return "Akıntı kalıntıları";
 	}
 
 	std::string UnderflowRuins::getStringUk()
 	{
-		return "";
+		return "Руїни під водою";
 	}
 
-	std::string UnderflowRuins::getStringVn()
+	std::string UnderflowRuins::getStringVi()
 	{
-		return "";
+		return "Di tích ngầm";
 	}
 
 	std::string UnderflowRuins::getStringZhCn()
 	{
-		return "";
+		return "下溢的废墟";
 	}
 
 	std::string UnderflowRuins::getStringZhTw()
 	{
-		return "";
+		return "下溢的廢墟";
 	}
 }

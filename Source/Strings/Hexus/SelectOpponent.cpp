@@ -30,146 +30,146 @@ namespace LocaleStrings
 
 	std::string SelectOpponent::getStringAr()
 	{
-		return "";
+		return "اختر الخصم";
 	}
 
 	std::string SelectOpponent::getStringBg()
 	{
-		return "";
+		return "Изберете съперник";
 	}
 
 	std::string SelectOpponent::getStringCs()
 	{
-		return "";
+		return "Vyberte protihráči";
 	}
 
 	std::string SelectOpponent::getStringDa()
 	{
-		return "";
+		return "Vælg en modstander";
 	}
 
 	std::string SelectOpponent::getStringDe()
 	{
-		return "";
+		return "Wählen Sie einen Gegner aus";
 	}
 
 	std::string SelectOpponent::getStringEl()
 	{
-		return "";
+		return "Επιλέξτε έναν αντίπαλο";
 	}
 
 	std::string SelectOpponent::getStringEn()
 	{
-		return "Select Opponent";
+		return "Select an Opponent";
 	}
 
 	std::string SelectOpponent::getStringEs()
 	{
-		return "";
+		return "Seleccione un oponente";
 	}
 
 	std::string SelectOpponent::getStringEs419()
 	{
-		return "";
+		return "Seleccione un oponente";
 	}
 
 	std::string SelectOpponent::getStringFi()
 	{
-		return "";
+		return "Valitse vastustaja";
 	}
 
 	std::string SelectOpponent::getStringFr()
 	{
-		return "";
+		return "Sélectionnez un adversaire";
 	}
 
 	std::string SelectOpponent::getStringHu()
 	{
-		return "";
+		return "Válasszon egy ellenfelet";
 	}
 
 	std::string SelectOpponent::getStringIt()
 	{
-		return "";
+		return "Seleziona un avversario";
 	}
 
 	std::string SelectOpponent::getStringJa()
 	{
-		return "";
+		return "相手を選択";
 	}
 
 	std::string SelectOpponent::getStringKo()
 	{
-		return "";
+		return "상대방 선택";
 	}
 
 	std::string SelectOpponent::getStringNl()
 	{
-		return "";
+		return "Selecteer een tegenstander";
 	}
 
 	std::string SelectOpponent::getStringNo()
 	{
-		return "";
+		return "Velg en motstander";
 	}
 
 	std::string SelectOpponent::getStringPl()
 	{
-		return "";
+		return "Wybierz przeciwnika";
 	}
 
 	std::string SelectOpponent::getStringPt()
 	{
-		return "";
+		return "Selecione um oponente";
 	}
 
 	std::string SelectOpponent::getStringPtBr()
 	{
-		return "";
+		return "Selecione um oponente";
 	}
 
 	std::string SelectOpponent::getStringRo()
 	{
-		return "";
+		return "Selectați un Oponent";
 	}
 
 	std::string SelectOpponent::getStringRu()
 	{
-		return "";
+		return "Выберите оппонента";
 	}
 
 	std::string SelectOpponent::getStringSv()
 	{
-		return "";
+		return "Välj en motståndare";
 	}
 
 	std::string SelectOpponent::getStringTh()
 	{
-		return "";
+		return "เลือกฝ่ายตรงข้าม";
 	}
 
 	std::string SelectOpponent::getStringTr()
 	{
-		return "";
+		return "Bir rakip seçin";
 	}
 
 	std::string SelectOpponent::getStringUk()
 	{
-		return "";
+		return "Виберіть Противника";
 	}
 
-	std::string SelectOpponent::getStringVn()
+	std::string SelectOpponent::getStringVi()
 	{
-		return "";
+		return "Chọn một đối thủ";
 	}
 
 	std::string SelectOpponent::getStringZhCn()
 	{
-		return "";
+		return "选择一个对手";
 	}
 
 	std::string SelectOpponent::getStringZhTw()
 	{
-		return "";
+		return "選擇一個對手";
 	}
 }

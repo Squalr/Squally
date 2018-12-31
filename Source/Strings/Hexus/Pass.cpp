@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Pass::getStringAr()
 	{
-		return "";
+		return "البشري";
 	}
 
 	std::string Pass::getStringBg()
 	{
-		return "";
+		return "Pass";
 	}
 
 	std::string Pass::getStringCs()
 	{
-		return "";
+		return "Složit";
 	}
 
 	std::string Pass::getStringDa()
 	{
-		return "";
+		return "Passere";
 	}
 
 	std::string Pass::getStringDe()
 	{
-		return "";
+		return "Bestehen";
 	}
 
 	std::string Pass::getStringEl()
 	{
-		return "";
+		return "Πέρασμα";
 	}
 
 	std::string Pass::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Pass::getStringEs()
 	{
-		return "";
+		return "Pasar";
 	}
 
 	std::string Pass::getStringEs419()
 	{
-		return "";
+		return "Pasar";
 	}
 
 	std::string Pass::getStringFi()
 	{
-		return "";
+		return "Kulkea";
 	}
 
 	std::string Pass::getStringFr()
 	{
-		return "";
+		return "Passer";
 	}
 
 	std::string Pass::getStringHu()
 	{
-		return "";
+		return "Pass";
 	}
 
 	std::string Pass::getStringIt()
 	{
-		return "";
+		return "Passaggio";
 	}
 
 	std::string Pass::getStringJa()
 	{
-		return "";
+		return "パス";
 	}
 
 	std::string Pass::getStringKo()
 	{
-		return "";
+		return "패스";
 	}
 
 	std::string Pass::getStringNl()
 	{
-		return "";
+		return "Voorbij lopen";
 	}
 
 	std::string Pass::getStringNo()
 	{
-		return "";
+		return "Passere";
 	}
 
 	std::string Pass::getStringPl()
 	{
-		return "";
+		return "Przechodzić";
 	}
 
 	std::string Pass::getStringPt()
 	{
-		return "";
+		return "Passar";
 	}
 
 	std::string Pass::getStringPtBr()
 	{
-		return "";
+		return "Passar";
 	}
 
 	std::string Pass::getStringRo()
 	{
-		return "";
+		return "Trece";
 	}
 
 	std::string Pass::getStringRu()
 	{
-		return "";
+		return "Проходить";
 	}
 
 	std::string Pass::getStringSv()
 	{
-		return "";
+		return "Passera";
 	}
 
 	std::string Pass::getStringTh()
 	{
-		return "";
+		return "ผ่าน";
 	}
 
 	std::string Pass::getStringTr()
 	{
-		return "";
+		return "Geçiş";
 	}
 
 	std::string Pass::getStringUk()
 	{
-		return "";
+		return "Перевал";
 	}
 
-	std::string Pass::getStringVn()
+	std::string Pass::getStringVi()
 	{
-		return "";
+		return "Vượt qua";
 	}
 
 	std::string Pass::getStringZhCn()
 	{
-		return "";
+		return "通过";
 	}
 
 	std::string Pass::getStringZhTw()
 	{
-		return "";
+		return "通過";
 	}
 }

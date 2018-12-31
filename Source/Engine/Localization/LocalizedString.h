@@ -41,7 +41,7 @@ protected:
 	virtual std::string getStringTh() = 0;
 	virtual std::string getStringTr() = 0;
 	virtual std::string getStringUk() = 0;
-	virtual std::string getStringVn() = 0;
+	virtual std::string getStringVi() = 0;
 	virtual std::string getStringZhCn() = 0;
 	virtual std::string getStringZhTw() = 0;
 

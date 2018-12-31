@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string ShiftLeft::getStringAr()
 	{
-		return "";
+		return "تركت بت القطع";
 	}
 
 	std::string ShiftLeft::getStringBg()
 	{
-		return "";
+		return "Остават бита за преместване";
 	}
 
 	std::string ShiftLeft::getStringCs()
 	{
-		return "";
+		return "Posunout bity";
 	}
 
 	std::string ShiftLeft::getStringDa()
 	{
-		return "";
+		return "Skift bit tilbage";
 	}
 
 	std::string ShiftLeft::getStringDe()
 	{
-		return "";
+		return "Bits nach links verschieben";
 	}
 
 	std::string ShiftLeft::getStringEl()
 	{
-		return "";
+		return "Αριστερά τα bits αλλαγής";
 	}
 
 	std::string ShiftLeft::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string ShiftLeft::getStringEs()
 	{
-		return "";
+		return "Desplazar bits a la izquierda";
 	}
 
 	std::string ShiftLeft::getStringEs419()
 	{
-		return "";
+		return "Desplazar bits a la izquierda";
 	}
 
 	std::string ShiftLeft::getStringFi()
 	{
-		return "";
+		return "Vaihtobitit vasemmalle";
 	}
 
 	std::string ShiftLeft::getStringFr()
 	{
-		return "";
+		return "Bits de décalage à gauche";
 	}
 
 	std::string ShiftLeft::getStringHu()
 	{
-		return "";
+		return "A eltolás bitek maradtak";
 	}
 
 	std::string ShiftLeft::getStringIt()
 	{
-		return "";
+		return "Maiuscole a sinistra";
 	}
 
 	std::string ShiftLeft::getStringJa()
 	{
-		return "";
+		return "ビットを左にシフト";
 	}
 
 	std::string ShiftLeft::getStringKo()
 	{
-		return "";
+		return "왼쪽으로 시프트 비트";
 	}
 
 	std::string ShiftLeft::getStringNl()
 	{
-		return "";
+		return "Shift bits over";
 	}
 
 	std::string ShiftLeft::getStringNo()
 	{
-		return "";
+		return "Skift bitene igjen";
 	}
 
 	std::string ShiftLeft::getStringPl()
 	{
-		return "";
+		return "Pozostały bity Shift";
 	}
 
 	std::string ShiftLeft::getStringPt()
 	{
-		return "";
+		return "Bits de mudança restantes";
 	}
 
 	std::string ShiftLeft::getStringPtBr()
 	{
-		return "";
+		return "Bits de mudança restantes";
 	}
 
 	std::string ShiftLeft::getStringRo()
 	{
-		return "";
+		return "Ați pierdut biții";
 	}
 
 	std::string ShiftLeft::getStringRu()
 	{
-		return "";
+		return "Сдвиг битов влево";
 	}
 
 	std::string ShiftLeft::getStringSv()
 	{
-		return "";
+		return "Skift bitar kvar";
 	}
 
 	std::string ShiftLeft::getStringTh()
 	{
-		return "";
+		return "เลื่อนบิตไปทางซ้าย";
 	}
 
 	std::string ShiftLeft::getStringTr()
 	{
-		return "";
+		return "Vites değiştirme bitleri sola";
 	}
 
 	std::string ShiftLeft::getStringUk()
 	{
-		return "";
+		return "Біти Shift залишені";
 	}
 
-	std::string ShiftLeft::getStringVn()
+	std::string ShiftLeft::getStringVi()
 	{
-		return "";
+		return "Thay đổi bit trái";
 	}
 
 	std::string ShiftLeft::getStringZhCn()
 	{
-		return "";
+		return "转移位左";
 	}
 
 	std::string ShiftLeft::getStringZhTw()
 	{
-		return "";
+		return "轉移位左";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string LastStand::getStringAr()
 	{
-		return "";
+		return "الموقف الأخير";
 	}
 
 	std::string LastStand::getStringBg()
 	{
-		return "";
+		return "Последния оцелял";
 	}
 
 	std::string LastStand::getStringCs()
 	{
-		return "";
+		return "Poslední vzdor";
 	}
 
 	std::string LastStand::getStringDa()
 	{
-		return "";
+		return "Last Stand";
 	}
 
 	std::string LastStand::getStringDe()
 	{
-		return "";
+		return "Last Stand";
 	}
 
 	std::string LastStand::getStringEl()
 	{
-		return "";
+		return "Τελευταία στάση";
 	}
 
 	std::string LastStand::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string LastStand::getStringEs()
 	{
-		return "";
+		return "Última resistencia";
 	}
 
 	std::string LastStand::getStringEs419()
 	{
-		return "";
+		return "Última resistencia";
 	}
 
 	std::string LastStand::getStringFi()
 	{
-		return "";
+		return "Last Stand";
 	}
 
 	std::string LastStand::getStringFr()
 	{
-		return "";
+		return "Dernier combat";
 	}
 
 	std::string LastStand::getStringHu()
 	{
-		return "";
+		return "Utolsó vérig";
 	}
 
 	std::string LastStand::getStringIt()
 	{
-		return "";
+		return "Ultimo atto";
 	}
 
 	std::string LastStand::getStringJa()
 	{
-		return "";
+		return "最後の砦";
 	}
 
 	std::string LastStand::getStringKo()
 	{
-		return "";
+		return "마지막 스탠드";
 	}
 
 	std::string LastStand::getStringNl()
 	{
-		return "";
+		return "Last Stand";
 	}
 
 	std::string LastStand::getStringNo()
 	{
-		return "";
+		return "Siste skanse";
 	}
 
 	std::string LastStand::getStringPl()
 	{
-		return "";
+		return "Ostatnia podstawa";
 	}
 
 	std::string LastStand::getStringPt()
 	{
-		return "";
+		return "Última posição";
 	}
 
 	std::string LastStand::getStringPtBr()
 	{
-		return "";
+		return "Última posição";
 	}
 
 	std::string LastStand::getStringRo()
 	{
-		return "";
+		return "Ultima redută";
 	}
 
 	std::string LastStand::getStringRu()
 	{
-		return "";
+		return "Последний бой";
 	}
 
 	std::string LastStand::getStringSv()
 	{
-		return "";
+		return "Sista stativet";
 	}
 
 	std::string LastStand::getStringTh()
 	{
-		return "";
+		return "คนสุดท้าย";
 	}
 
 	std::string LastStand::getStringTr()
 	{
-		return "";
+		return "Son şans";
 	}
 
 	std::string LastStand::getStringUk()
 	{
-		return "";
+		return "Останній стенд";
 	}
 
-	std::string LastStand::getStringVn()
+	std::string LastStand::getStringVi()
 	{
-		return "";
+		return "Đứng cuối";
 	}
 
 	std::string LastStand::getStringZhCn()
 	{
-		return "";
+		return "最后一站";
 	}
 
 	std::string LastStand::getStringZhTw()
 	{
-		return "";
+		return "最後一站";
 	}
 }

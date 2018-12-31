@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string GotIt::getStringAr()
 	{
-		return "";
+		return "أنا أفهم!";
 	}
 
 	std::string GotIt::getStringBg()
 	{
-		return "";
+		return "Разбирам!";
 	}
 
 	std::string GotIt::getStringCs()
 	{
-		return "";
+		return "Chápu!";
 	}
 
 	std::string GotIt::getStringDa()
 	{
-		return "";
+		return "Jeg forstår!";
 	}
 
 	std::string GotIt::getStringDe()
 	{
-		return "";
+		return "Ich verstehe!";
 	}
 
 	std::string GotIt::getStringEl()
 	{
-		return "";
+		return "Καταλαβαίνω!";
 	}
 
 	std::string GotIt::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string GotIt::getStringEs()
 	{
-		return "";
+		return "¡Entiendo!";
 	}
 
 	std::string GotIt::getStringEs419()
 	{
-		return "";
+		return "¡Entiendo!";
 	}
 
 	std::string GotIt::getStringFi()
 	{
-		return "";
+		return "Ymmärrän!";
 	}
 
 	std::string GotIt::getStringFr()
 	{
-		return "";
+		return "Je comprends!";
 	}
 
 	std::string GotIt::getStringHu()
 	{
-		return "";
+		return "Megértem!";
 	}
 
 	std::string GotIt::getStringIt()
 	{
-		return "";
+		return "Capisco!";
 	}
 
 	std::string GotIt::getStringJa()
 	{
-		return "";
+		return "わかります！";
 	}
 
 	std::string GotIt::getStringKo()
 	{
-		return "";
+		return "이해 했어!";
 	}
 
 	std::string GotIt::getStringNl()
 	{
-		return "";
+		return "Ik begrijp het!";
 	}
 
 	std::string GotIt::getStringNo()
 	{
-		return "";
+		return "Jeg forstår!";
 	}
 
 	std::string GotIt::getStringPl()
 	{
-		return "";
+		return "Rozumiem!";
 	}
 
 	std::string GotIt::getStringPt()
 	{
-		return "";
+		return "Compreendo!";
 	}
 
 	std::string GotIt::getStringPtBr()
 	{
-		return "";
+		return "Compreendo!";
 	}
 
 	std::string GotIt::getStringRo()
 	{
-		return "";
+		return "Inteleg!";
 	}
 
 	std::string GotIt::getStringRu()
 	{
-		return "";
+		return "Я понимаю!";
 	}
 
 	std::string GotIt::getStringSv()
 	{
-		return "";
+		return "Jag förstår!";
 	}
 
 	std::string GotIt::getStringTh()
 	{
-		return "";
+		return "ฉันเข้าใจ!";
 	}
 
 	std::string GotIt::getStringTr()
 	{
-		return "";
+		return "Anlıyorum!";
 	}
 
 	std::string GotIt::getStringUk()
 	{
-		return "";
+		return "Я розумію!";
 	}
 
-	std::string GotIt::getStringVn()
+	std::string GotIt::getStringVi()
 	{
-		return "";
+		return "Tôi hiểu!";
 	}
 
 	std::string GotIt::getStringZhCn()
 	{
-		return "";
+		return "我明白！";
 	}
 
 	std::string GotIt::getStringZhTw()
 	{
-		return "";
+		return "我明白！";
 	}
 }

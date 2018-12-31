@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Binary6::getStringAr()
 	{
-		return "";
+		return "إنسان آلي";
 	}
 
 	std::string Binary6::getStringBg()
 	{
-		return "";
+		return "робот";
 	}
 
 	std::string Binary6::getStringCs()
 	{
-		return "";
+		return "robot";
 	}
 
 	std::string Binary6::getStringDa()
 	{
-		return "";
+		return "robot";
 	}
 
 	std::string Binary6::getStringDe()
 	{
-		return "";
+		return "Roboter";
 	}
 
 	std::string Binary6::getStringEl()
 	{
-		return "";
+		return "ρομπότ";
 	}
 
 	std::string Binary6::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Binary6::getStringEs()
 	{
-		return "";
+		return "robot";
 	}
 
 	std::string Binary6::getStringEs419()
 	{
-		return "";
+		return "robot";
 	}
 
 	std::string Binary6::getStringFi()
 	{
-		return "";
+		return "robotti";
 	}
 
 	std::string Binary6::getStringFr()
 	{
-		return "";
+		return "robot";
 	}
 
 	std::string Binary6::getStringHu()
 	{
-		return "";
+		return "robot";
 	}
 
 	std::string Binary6::getStringIt()
 	{
-		return "";
+		return "robot";
 	}
 
 	std::string Binary6::getStringJa()
 	{
-		return "";
+		return "ロボット";
 	}
 
 	std::string Binary6::getStringKo()
 	{
-		return "";
+		return "기계 인간";
 	}
 
 	std::string Binary6::getStringNl()
 	{
-		return "";
+		return "robot";
 	}
 
 	std::string Binary6::getStringNo()
 	{
-		return "";
+		return "robot";
 	}
 
 	std::string Binary6::getStringPl()
 	{
-		return "";
+		return "robot";
 	}
 
 	std::string Binary6::getStringPt()
 	{
-		return "";
+		return "robô";
 	}
 
 	std::string Binary6::getStringPtBr()
 	{
-		return "";
+		return "robô";
 	}
 
 	std::string Binary6::getStringRo()
 	{
-		return "";
+		return "robot";
 	}
 
 	std::string Binary6::getStringRu()
 	{
-		return "";
+		return "робот";
 	}
 
 	std::string Binary6::getStringSv()
 	{
-		return "";
+		return "robot";
 	}
 
 	std::string Binary6::getStringTh()
 	{
-		return "";
+		return "หุ่นยนต์";
 	}
 
 	std::string Binary6::getStringTr()
 	{
-		return "";
+		return "robot";
 	}
 
 	std::string Binary6::getStringUk()
 	{
-		return "";
+		return "робот";
 	}
 
-	std::string Binary6::getStringVn()
+	std::string Binary6::getStringVi()
 	{
-		return "";
+		return "robot";
 	}
 
 	std::string Binary6::getStringZhCn()
 	{
-		return "";
+		return "机器人";
 	}
 
 	std::string Binary6::getStringZhTw()
 	{
-		return "";
+		return "機器人";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string ClickToEdit::getStringAr()
 	{
-		return "";
+		return "إضغط للتعديل";
 	}
 
 	std::string ClickToEdit::getStringBg()
 	{
-		return "";
+		return "Кликнете върху Редактиране";
 	}
 
 	std::string ClickToEdit::getStringCs()
 	{
-		return "";
+		return "Klikněte na Upravit";
 	}
 
 	std::string ClickToEdit::getStringDa()
 	{
-		return "";
+		return "Klik for at redigere";
 	}
 
 	std::string ClickToEdit::getStringDe()
 	{
-		return "";
+		return "Zum Bearbeiten anklicken";
 	}
 
 	std::string ClickToEdit::getStringEl()
 	{
-		return "";
+		return "Κάντε κλικ για επεξεργασία";
 	}
 
 	std::string ClickToEdit::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string ClickToEdit::getStringEs()
 	{
-		return "";
+		return "Haz click para editar";
 	}
 
 	std::string ClickToEdit::getStringEs419()
 	{
-		return "";
+		return "Haz click para editar";
 	}
 
 	std::string ClickToEdit::getStringFi()
 	{
-		return "";
+		return "Napsauta Muokkaa";
 	}
 
 	std::string ClickToEdit::getStringFr()
 	{
-		return "";
+		return "Cliquez pour éditer";
 	}
 
 	std::string ClickToEdit::getStringHu()
 	{
-		return "";
+		return "Kattintson a Szerkesztés gombra";
 	}
 
 	std::string ClickToEdit::getStringIt()
 	{
-		return "";
+		return "Clicca per modificare";
 	}
 
 	std::string ClickToEdit::getStringJa()
 	{
-		return "";
+		return "クリックして編集する";
 	}
 
 	std::string ClickToEdit::getStringKo()
 	{
-		return "";
+		return "편집하려면 클릭하십시오.";
 	}
 
 	std::string ClickToEdit::getStringNl()
 	{
-		return "";
+		return "Klik om te bewerken";
 	}
 
 	std::string ClickToEdit::getStringNo()
 	{
-		return "";
+		return "Klikk for å redigere";
 	}
 
 	std::string ClickToEdit::getStringPl()
 	{
-		return "";
+		return "Kliknij aby edytowac";
 	}
 
 	std::string ClickToEdit::getStringPt()
 	{
-		return "";
+		return "Clique para editar";
 	}
 
 	std::string ClickToEdit::getStringPtBr()
 	{
-		return "";
+		return "Clique para editar";
 	}
 
 	std::string ClickToEdit::getStringRo()
 	{
-		return "";
+		return "Faceți clic pe Editați";
 	}
 
 	std::string ClickToEdit::getStringRu()
 	{
-		return "";
+		return "Нажмите, чтобы изменить";
 	}
 
 	std::string ClickToEdit::getStringSv()
 	{
-		return "";
+		return "Klicka för att ändra";
 	}
 
 	std::string ClickToEdit::getStringTh()
 	{
-		return "";
+		return "คลิกเพื่อแก้ไข";
 	}
 
 	std::string ClickToEdit::getStringTr()
 	{
-		return "";
+		return "Düzenlemek için tıkla";
 	}
 
 	std::string ClickToEdit::getStringUk()
 	{
-		return "";
+		return "Натисніть Редагувати";
 	}
 
-	std::string ClickToEdit::getStringVn()
+	std::string ClickToEdit::getStringVi()
 	{
-		return "";
+		return "Bấm vào để chỉnh sửa";
 	}
 
 	std::string ClickToEdit::getStringZhCn()
 	{
-		return "";
+		return "点击编辑";
 	}
 
 	std::string ClickToEdit::getStringZhTw()
 	{
-		return "";
+		return "點擊編輯";
 	}
 }

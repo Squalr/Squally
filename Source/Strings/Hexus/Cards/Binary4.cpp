@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Binary4::getStringAr()
 	{
-		return "";
+		return "طعنة";
 	}
 
 	std::string Binary4::getStringBg()
 	{
-		return "";
+		return "усилие";
 	}
 
 	std::string Binary4::getStringCs()
 	{
-		return "";
+		return "bodnout";
 	}
 
 	std::string Binary4::getStringDa()
 	{
-		return "";
+		return "dolke";
 	}
 
 	std::string Binary4::getStringDe()
 	{
-		return "";
+		return "stab";
 	}
 
 	std::string Binary4::getStringEl()
 	{
-		return "";
+		return "μαχαιριά";
 	}
 
 	std::string Binary4::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Binary4::getStringEs()
 	{
-		return "";
+		return "puñalada";
 	}
 
 	std::string Binary4::getStringEs419()
 	{
-		return "";
+		return "puñalada";
 	}
 
 	std::string Binary4::getStringFi()
 	{
-		return "";
+		return "puukottaa";
 	}
 
 	std::string Binary4::getStringFr()
 	{
-		return "";
+		return "poignarder";
 	}
 
 	std::string Binary4::getStringHu()
 	{
-		return "";
+		return "döfés";
 	}
 
 	std::string Binary4::getStringIt()
 	{
-		return "";
+		return "pugnalata";
 	}
 
 	std::string Binary4::getStringJa()
 	{
-		return "";
+		return "刺す";
 	}
 
 	std::string Binary4::getStringKo()
 	{
-		return "";
+		return "찌르다";
 	}
 
 	std::string Binary4::getStringNl()
 	{
-		return "";
+		return "steken";
 	}
 
 	std::string Binary4::getStringNo()
 	{
-		return "";
+		return "stab";
 	}
 
 	std::string Binary4::getStringPl()
 	{
-		return "";
+		return "zasztyletować";
 	}
 
 	std::string Binary4::getStringPt()
 	{
-		return "";
+		return "punhalada";
 	}
 
 	std::string Binary4::getStringPtBr()
 	{
-		return "";
+		return "punhalada";
 	}
 
 	std::string Binary4::getStringRo()
 	{
-		return "";
+		return "înjunghia";
 	}
 
 	std::string Binary4::getStringRu()
 	{
-		return "";
+		return "удар ножом";
 	}
 
 	std::string Binary4::getStringSv()
 	{
-		return "";
+		return "hugg";
 	}
 
 	std::string Binary4::getStringTh()
 	{
-		return "";
+		return "แทง";
 	}
 
 	std::string Binary4::getStringTr()
 	{
-		return "";
+		return "bıçaklama";
 	}
 
 	std::string Binary4::getStringUk()
 	{
-		return "";
+		return "удар";
 	}
 
-	std::string Binary4::getStringVn()
+	std::string Binary4::getStringVi()
 	{
-		return "";
+		return "cú đâm";
 	}
 
 	std::string Binary4::getStringZhCn()
 	{
-		return "";
+		return "刺";
 	}
 
 	std::string Binary4::getStringZhTw()
 	{
-		return "";
+		return "刺";
 	}
 }

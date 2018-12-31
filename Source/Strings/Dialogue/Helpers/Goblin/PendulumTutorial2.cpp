@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string PendulumTutorial2::getStringAr()
 	{
-		return "";
+		return "تذكر ، لا يوجد ملعقة.";
 	}
 
 	std::string PendulumTutorial2::getStringBg()
 	{
-		return "";
+		return "Не забравяйте, че няма лъжица.";
 	}
 
 	std::string PendulumTutorial2::getStringCs()
 	{
-		return "";
+		return "Pamatujte, že žádná lžička není.";
 	}
 
 	std::string PendulumTutorial2::getStringDa()
 	{
-		return "";
+		return "Husk, der er ingen ske.";
 	}
 
 	std::string PendulumTutorial2::getStringDe()
 	{
-		return "";
+		return "Denken Sie daran, es gibt keinen Löffel.";
 	}
 
 	std::string PendulumTutorial2::getStringEl()
 	{
-		return "";
+		return "Θυμηθείτε, δεν υπάρχει κουτάλι.";
 	}
 
 	std::string PendulumTutorial2::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string PendulumTutorial2::getStringEs()
 	{
-		return "";
+		return "Recuerda, no hay cuchara.";
 	}
 
 	std::string PendulumTutorial2::getStringEs419()
 	{
-		return "";
+		return "Recuerda, no hay cuchara.";
 	}
 
 	std::string PendulumTutorial2::getStringFi()
 	{
-		return "";
+		return "Muista, että lusikaa ei ole.";
 	}
 
 	std::string PendulumTutorial2::getStringFr()
 	{
-		return "";
+		return "Rappelez-vous, il n'y a pas de cuillère.";
 	}
 
 	std::string PendulumTutorial2::getStringHu()
 	{
-		return "";
+		return "Ne feledje, nincs kanál.";
 	}
 
 	std::string PendulumTutorial2::getStringIt()
 	{
-		return "";
+		return "Ricorda, non c'è un cucchiaio.";
 	}
 
 	std::string PendulumTutorial2::getStringJa()
 	{
-		return "";
+		return "覚えておいて、スプーンはありません。";
 	}
 
 	std::string PendulumTutorial2::getStringKo()
 	{
-		return "";
+		return "숟가락이 없다는 것을 기억하십시오.";
 	}
 
 	std::string PendulumTutorial2::getStringNl()
 	{
-		return "";
+		return "Vergeet niet dat er geen lepel is.";
 	}
 
 	std::string PendulumTutorial2::getStringNo()
 	{
-		return "";
+		return "Husk, det er ingen skje.";
 	}
 
 	std::string PendulumTutorial2::getStringPl()
 	{
-		return "";
+		return "Pamiętaj, że nie ma łyżki.";
 	}
 
 	std::string PendulumTutorial2::getStringPt()
 	{
-		return "";
+		return "Lembre-se, não há colher.";
 	}
 
 	std::string PendulumTutorial2::getStringPtBr()
 	{
-		return "";
+		return "Lembre-se, não há colher.";
 	}
 
 	std::string PendulumTutorial2::getStringRo()
 	{
-		return "";
+		return "Amintiți-vă, nu există lingură.";
 	}
 
 	std::string PendulumTutorial2::getStringRu()
 	{
-		return "";
+		return "Помните, ложки нет.";
 	}
 
 	std::string PendulumTutorial2::getStringSv()
 	{
-		return "";
+		return "Kom ihåg att det inte finns någon sked.";
 	}
 
 	std::string PendulumTutorial2::getStringTh()
 	{
-		return "";
+		return "จำไว้ว่าไม่มีช้อน";
 	}
 
 	std::string PendulumTutorial2::getStringTr()
 	{
-		return "";
+		return "Unutma, kaşık yok.";
 	}
 
 	std::string PendulumTutorial2::getStringUk()
 	{
-		return "";
+		return "Пам'ятайте, що ложки немає.";
 	}
 
-	std::string PendulumTutorial2::getStringVn()
+	std::string PendulumTutorial2::getStringVi()
 	{
-		return "";
+		return "Hãy nhớ rằng, không có muỗng.";
 	}
 
 	std::string PendulumTutorial2::getStringZhCn()
 	{
-		return "";
+		return "记住，没有勺子。";
 	}
 
 	std::string PendulumTutorial2::getStringZhTw()
 	{
-		return "";
+		return "記住，沒有勺子。";
 	}
 }

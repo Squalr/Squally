@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Hex5::getStringAr()
 	{
-		return "";
+		return "مرعب";
 	}
 
 	std::string Hex5::getStringBg()
 	{
-		return "";
+		return "Зловещ";
 	}
 
 	std::string Hex5::getStringCs()
 	{
-		return "";
+		return "Strašidelný";
 	}
 
 	std::string Hex5::getStringDa()
 	{
-		return "";
+		return "Uhyggelig";
 	}
 
 	std::string Hex5::getStringDe()
 	{
-		return "";
+		return "Gruslig";
 	}
 
 	std::string Hex5::getStringEl()
 	{
-		return "";
+		return "Στοιχειωμένος";
 	}
 
 	std::string Hex5::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Hex5::getStringEs()
 	{
-		return "";
+		return "Escalofriante";
 	}
 
 	std::string Hex5::getStringEs419()
 	{
-		return "";
+		return "Escalofriante";
 	}
 
 	std::string Hex5::getStringFi()
 	{
-		return "";
+		return "Aavemainen";
 	}
 
 	std::string Hex5::getStringFr()
 	{
-		return "";
+		return "Effrayant";
 	}
 
 	std::string Hex5::getStringHu()
 	{
-		return "";
+		return "Ijesztő";
 	}
 
 	std::string Hex5::getStringIt()
 	{
-		return "";
+		return "Spaventoso";
 	}
 
 	std::string Hex5::getStringJa()
 	{
-		return "";
+		return "不気味な";
 	}
 
 	std::string Hex5::getStringKo()
 	{
-		return "";
+		return "유령 같은";
 	}
 
 	std::string Hex5::getStringNl()
 	{
-		return "";
+		return "Spookachtig";
 	}
 
 	std::string Hex5::getStringNo()
 	{
-		return "";
+		return "Skummelt";
 	}
 
 	std::string Hex5::getStringPl()
 	{
-		return "";
+		return "Straszny";
 	}
 
 	std::string Hex5::getStringPt()
 	{
-		return "";
+		return "Assustador";
 	}
 
 	std::string Hex5::getStringPtBr()
 	{
-		return "";
+		return "Assustador";
 	}
 
 	std::string Hex5::getStringRo()
 	{
-		return "";
+		return "Înfricoșător";
 	}
 
 	std::string Hex5::getStringRu()
 	{
-		return "";
+		return "Жуткий";
 	}
 
 	std::string Hex5::getStringSv()
 	{
-		return "";
+		return "Läskigt";
 	}
 
 	std::string Hex5::getStringTh()
 	{
-		return "";
+		return "น่ากลัว";
 	}
 
 	std::string Hex5::getStringTr()
 	{
-		return "";
+		return "Ürpertici";
 	}
 
 	std::string Hex5::getStringUk()
 	{
-		return "";
+		return "Моторошний";
 	}
 
-	std::string Hex5::getStringVn()
+	std::string Hex5::getStringVi()
 	{
-		return "";
+		return "Ma quái";
 	}
 
 	std::string Hex5::getStringZhCn()
 	{
-		return "";
+		return "幽灵般的";
 	}
 
 	std::string Hex5::getStringZhTw()
 	{
-		return "";
+		return "幽靈般的";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Accept::getStringAr()
 	{
-		return "";
+		return "قبول";
 	}
 
 	std::string Accept::getStringBg()
 	{
-		return "";
+		return "приемам";
 	}
 
 	std::string Accept::getStringCs()
 	{
-		return "";
+		return "Akceptovat";
 	}
 
 	std::string Accept::getStringDa()
 	{
-		return "";
+		return "Acceptere";
 	}
 
 	std::string Accept::getStringDe()
 	{
-		return "";
+		return "Akzeptieren";
 	}
 
 	std::string Accept::getStringEl()
 	{
-		return "";
+		return "Αποδέχομαι";
 	}
 
 	std::string Accept::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Accept::getStringEs()
 	{
-		return "";
+		return "Aceptar";
 	}
 
 	std::string Accept::getStringEs419()
 	{
-		return "";
+		return "Aceptar";
 	}
 
 	std::string Accept::getStringFi()
 	{
-		return "";
+		return "Hyväksyä";
 	}
 
 	std::string Accept::getStringFr()
 	{
-		return "";
+		return "Acceptez";
 	}
 
 	std::string Accept::getStringHu()
 	{
-		return "";
+		return "Elfogad";
 	}
 
 	std::string Accept::getStringIt()
 	{
-		return "";
+		return "Accettare";
 	}
 
 	std::string Accept::getStringJa()
 	{
-		return "";
+		return "受け入れる";
 	}
 
 	std::string Accept::getStringKo()
 	{
-		return "";
+		return "동의";
 	}
 
 	std::string Accept::getStringNl()
 	{
-		return "";
+		return "Aanvaarden";
 	}
 
 	std::string Accept::getStringNo()
 	{
-		return "";
+		return "Aksepterer";
 	}
 
 	std::string Accept::getStringPl()
 	{
-		return "";
+		return "Zaakceptować";
 	}
 
 	std::string Accept::getStringPt()
 	{
-		return "";
+		return "Aceitar";
 	}
 
 	std::string Accept::getStringPtBr()
 	{
-		return "";
+		return "Aceitar";
 	}
 
 	std::string Accept::getStringRo()
 	{
-		return "";
+		return "Accept";
 	}
 
 	std::string Accept::getStringRu()
 	{
-		return "";
+		return "принимать";
 	}
 
 	std::string Accept::getStringSv()
 	{
-		return "";
+		return "Acceptera";
 	}
 
 	std::string Accept::getStringTh()
 	{
-		return "";
+		return "ยอมรับ";
 	}
 
 	std::string Accept::getStringTr()
 	{
-		return "";
+		return "Kabul etmek";
 	}
 
 	std::string Accept::getStringUk()
 	{
-		return "";
+		return "Прийняти";
 	}
 
-	std::string Accept::getStringVn()
+	std::string Accept::getStringVi()
 	{
-		return "";
+		return "Chấp nhận";
 	}
 
 	std::string Accept::getStringZhCn()
 	{
-		return "";
+		return "接受";
 	}
 
 	std::string Accept::getStringZhTw()
 	{
-		return "";
+		return "接受";
 	}
 }

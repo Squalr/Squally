@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Hex8::getStringAr()
 	{
-		return "";
+		return "يعانق";
 	}
 
 	std::string Hex8::getStringBg()
 	{
-		return "";
+		return "Smooches";
 	}
 
 	std::string Hex8::getStringCs()
 	{
-		return "";
+		return "Smochuje";
 	}
 
 	std::string Hex8::getStringDa()
 	{
-		return "";
+		return "smooches";
 	}
 
 	std::string Hex8::getStringDe()
 	{
-		return "";
+		return "Smooches";
 	}
 
 	std::string Hex8::getStringEl()
 	{
-		return "";
+		return "Σκουπίζει";
 	}
 
 	std::string Hex8::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Hex8::getStringEs()
 	{
-		return "";
+		return "Bollos";
 	}
 
 	std::string Hex8::getStringEs419()
 	{
-		return "";
+		return "Bollos";
 	}
 
 	std::string Hex8::getStringFi()
 	{
-		return "";
+		return "smooches";
 	}
 
 	std::string Hex8::getStringFr()
 	{
-		return "";
+		return "Smooches";
 	}
 
 	std::string Hex8::getStringHu()
 	{
-		return "";
+		return "smooches";
 	}
 
 	std::string Hex8::getStringIt()
 	{
-		return "";
+		return "smooches";
 	}
 
 	std::string Hex8::getStringJa()
 	{
-		return "";
+		return "スムース";
 	}
 
 	std::string Hex8::getStringKo()
 	{
-		return "";
+		return "멍청이";
 	}
 
 	std::string Hex8::getStringNl()
 	{
-		return "";
+		return "smooches";
 	}
 
 	std::string Hex8::getStringNo()
 	{
-		return "";
+		return "smooches";
 	}
 
 	std::string Hex8::getStringPl()
 	{
-		return "";
+		return "Smooches";
 	}
 
 	std::string Hex8::getStringPt()
 	{
-		return "";
+		return "Smooches";
 	}
 
 	std::string Hex8::getStringPtBr()
 	{
-		return "";
+		return "Smooches";
 	}
 
 	std::string Hex8::getStringRo()
 	{
-		return "";
+		return "Smooches";
 	}
 
 	std::string Hex8::getStringRu()
 	{
-		return "";
+		return "Smooches";
 	}
 
 	std::string Hex8::getStringSv()
 	{
-		return "";
+		return "Byten";
 	}
 
 	std::string Hex8::getStringTh()
 	{
-		return "";
+		return "Smooches";
 	}
 
 	std::string Hex8::getStringTr()
 	{
-		return "";
+		return "Smooches";
 	}
 
 	std::string Hex8::getStringUk()
 	{
-		return "";
+		return "Smooches";
 	}
 
-	std::string Hex8::getStringVn()
+	std::string Hex8::getStringVi()
 	{
-		return "";
+		return "Smooches";
 	}
 
 	std::string Hex8::getStringZhCn()
 	{
-		return "";
+		return "拥吻";
 	}
 
 	std::string Hex8::getStringZhTw()
 	{
-		return "";
+		return "擁吻";
 	}
 }

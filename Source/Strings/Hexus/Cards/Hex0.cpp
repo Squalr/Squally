@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Hex0::getStringAr()
 	{
-		return "";
+		return "شيطان الهون";
 	}
 
 	std::string Hex0::getStringBg()
 	{
-		return "";
+		return "Демон";
 	}
 
 	std::string Hex0::getStringCs()
 	{
-		return "";
+		return "Demon haunch";
 	}
 
 	std::string Hex0::getStringDa()
 	{
-		return "";
+		return "Demon haunch";
 	}
 
 	std::string Hex0::getStringDe()
 	{
-		return "";
+		return "Dämonenhaufen";
 	}
 
 	std::string Hex0::getStringEl()
 	{
-		return "";
+		return "Demon haunch";
 	}
 
 	std::string Hex0::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Hex0::getStringEs()
 	{
-		return "";
+		return "Demonio";
 	}
 
 	std::string Hex0::getStringEs419()
 	{
-		return "";
+		return "Demonio";
 	}
 
 	std::string Hex0::getStringFi()
 	{
-		return "";
+		return "Demonin haukkuminen";
 	}
 
 	std::string Hex0::getStringFr()
 	{
-		return "";
+		return "Hanche de démon";
 	}
 
 	std::string Hex0::getStringHu()
 	{
-		return "";
+		return "Démon csöpög";
 	}
 
 	std::string Hex0::getStringIt()
 	{
-		return "";
+		return "Coscia di demone";
 	}
 
 	std::string Hex0::getStringJa()
 	{
-		return "";
+		return "デーモンハンチ";
 	}
 
 	std::string Hex0::getStringKo()
 	{
-		return "";
+		return "악마";
 	}
 
 	std::string Hex0::getStringNl()
 	{
-		return "";
+		return "Demon-console";
 	}
 
 	std::string Hex0::getStringNo()
 	{
-		return "";
+		return "Demon haunch";
 	}
 
 	std::string Hex0::getStringPl()
 	{
-		return "";
+		return "Udziec demonów";
 	}
 
 	std::string Hex0::getStringPt()
 	{
-		return "";
+		return "Demônio";
 	}
 
 	std::string Hex0::getStringPtBr()
 	{
-		return "";
+		return "Demônio";
 	}
 
 	std::string Hex0::getStringRo()
 	{
-		return "";
+		return "Lovitura Demon";
 	}
 
 	std::string Hex0::getStringRu()
 	{
-		return "";
+		return "Демон демон";
 	}
 
 	std::string Hex0::getStringSv()
 	{
-		return "";
+		return "Demon haunch";
 	}
 
 	std::string Hex0::getStringTh()
 	{
-		return "";
+		return "ปีศาจลางสังหรณ์";
 	}
 
 	std::string Hex0::getStringTr()
 	{
-		return "";
+		return "İblis";
 	}
 
 	std::string Hex0::getStringUk()
 	{
-		return "";
+		return "Демон";
 	}
 
-	std::string Hex0::getStringVn()
+	std::string Hex0::getStringVi()
 	{
-		return "";
+		return "Quỷ lôi";
 	}
 
 	std::string Hex0::getStringZhCn()
 	{
-		return "";
+		return "恶魔骚扰";
 	}
 
 	std::string Hex0::getStringZhTw()
 	{
-		return "";
+		return "惡魔騷擾";
 	}
 }

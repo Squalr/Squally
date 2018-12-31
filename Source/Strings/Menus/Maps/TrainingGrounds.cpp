@@ -30,146 +30,146 @@ namespace LocaleStrings
 
 	std::string TrainingGrounds::getStringAr()
 	{
-		return "";
+		return "ملاعب التدريب";
 	}
 
 	std::string TrainingGrounds::getStringBg()
 	{
-		return "";
+		return "Тренировъчни площадки";
 	}
 
 	std::string TrainingGrounds::getStringCs()
 	{
-		return "";
+		return "Tréninkový areál";
 	}
 
 	std::string TrainingGrounds::getStringDa()
 	{
-		return "";
+		return "Træningsområder";
 	}
 
 	std::string TrainingGrounds::getStringDe()
 	{
-		return "";
+		return "Trainingsgelände";
 	}
 
 	std::string TrainingGrounds::getStringEl()
 	{
-		return "";
+		return "Σημεία κατάρτισης";
 	}
 
 	std::string TrainingGrounds::getStringEn()
 	{
-		return "Void Star";
+		return "Training Grounds";
 	}
 
 	std::string TrainingGrounds::getStringEs()
 	{
-		return "";
+		return "Campos de entrenamiento";
 	}
 
 	std::string TrainingGrounds::getStringEs419()
 	{
-		return "";
+		return "Campos de entrenamiento";
 	}
 
 	std::string TrainingGrounds::getStringFi()
 	{
-		return "";
+		return "Koulutusalueet";
 	}
 
 	std::string TrainingGrounds::getStringFr()
 	{
-		return "";
+		return "Terrains d'entraînement";
 	}
 
 	std::string TrainingGrounds::getStringHu()
 	{
-		return "";
+		return "Képzési területek";
 	}
 
 	std::string TrainingGrounds::getStringIt()
 	{
-		return "";
+		return "Campi di allenamento";
 	}
 
 	std::string TrainingGrounds::getStringJa()
 	{
-		return "";
+		return "トレーニング場";
 	}
 
 	std::string TrainingGrounds::getStringKo()
 	{
-		return "";
+		return "훈련 경내";
 	}
 
 	std::string TrainingGrounds::getStringNl()
 	{
-		return "";
+		return "Oefenterreinen";
 	}
 
 	std::string TrainingGrounds::getStringNo()
 	{
-		return "";
+		return "Treningssted";
 	}
 
 	std::string TrainingGrounds::getStringPl()
 	{
-		return "";
+		return "Teren treningowy";
 	}
 
 	std::string TrainingGrounds::getStringPt()
 	{
-		return "";
+		return "Campos de treinamento";
 	}
 
 	std::string TrainingGrounds::getStringPtBr()
 	{
-		return "";
+		return "Campos de treinamento";
 	}
 
 	std::string TrainingGrounds::getStringRo()
 	{
-		return "";
+		return "Cursuri de instruire";
 	}
 
 	std::string TrainingGrounds::getStringRu()
 	{
-		return "";
+		return "Учебные площадки";
 	}
 
 	std::string TrainingGrounds::getStringSv()
 	{
-		return "";
+		return "Träningsplatser";
 	}
 
 	std::string TrainingGrounds::getStringTh()
 	{
-		return "";
+		return "พื้นที่ฝึกอบรม";
 	}
 
 	std::string TrainingGrounds::getStringTr()
 	{
-		return "";
+		return "Eğitim alanları";
 	}
 
 	std::string TrainingGrounds::getStringUk()
 	{
-		return "";
+		return "Тренувальні майданчики";
 	}
 
-	std::string TrainingGrounds::getStringVn()
+	std::string TrainingGrounds::getStringVi()
 	{
-		return "";
+		return "Sân tập";
 	}
 
 	std::string TrainingGrounds::getStringZhCn()
 	{
-		return "";
+		return "训练场";
 	}
 
 	std::string TrainingGrounds::getStringZhTw()
 	{
-		return "";
+		return "訓練場";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Flip4::getStringAr()
 	{
-		return "";
+		return "اقلب البت الرابع";
 	}
 
 	std::string Flip4::getStringBg()
 	{
-		return "";
+		return "Обърнете четвъртия бит";
 	}
 
 	std::string Flip4::getStringCs()
 	{
-		return "";
+		return "Překlopte čtvrtý bit";
 	}
 
 	std::string Flip4::getStringDa()
 	{
-		return "";
+		return "Vend den fjerde bit";
 	}
 
 	std::string Flip4::getStringDe()
 	{
-		return "";
+		return "Das vierte Bit umdrehen";
 	}
 
 	std::string Flip4::getStringEl()
 	{
-		return "";
+		return "Ανασηκώστε το τέταρτο κομμάτι";
 	}
 
 	std::string Flip4::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Flip4::getStringEs()
 	{
-		return "";
+		return "Voltear el cuarto bit";
 	}
 
 	std::string Flip4::getStringEs419()
 	{
-		return "";
+		return "Voltear el cuarto bit";
 	}
 
 	std::string Flip4::getStringFi()
 	{
-		return "";
+		return "Käännä neljäs bitti";
 	}
 
 	std::string Flip4::getStringFr()
 	{
-		return "";
+		return "Flip le quatrième bit";
 	}
 
 	std::string Flip4::getStringHu()
 	{
-		return "";
+		return "Flip a negyedik bit";
 	}
 
 	std::string Flip4::getStringIt()
 	{
-		return "";
+		return "Capovolgi il quarto bit";
 	}
 
 	std::string Flip4::getStringJa()
 	{
-		return "";
+		return "4番目のビットを反転";
 	}
 
 	std::string Flip4::getStringKo()
 	{
-		return "";
+		return "네 번째 비트 뒤집기";
 	}
 
 	std::string Flip4::getStringNl()
 	{
-		return "";
+		return "Draai het vierde deel";
 	}
 
 	std::string Flip4::getStringNo()
 	{
-		return "";
+		return "Vend den fjerde delen";
 	}
 
 	std::string Flip4::getStringPl()
 	{
-		return "";
+		return "Odwróć czwarty bit";
 	}
 
 	std::string Flip4::getStringPt()
 	{
-		return "";
+		return "Virar o quarto bit";
 	}
 
 	std::string Flip4::getStringPtBr()
 	{
-		return "";
+		return "Virar o quarto bit";
 	}
 
 	std::string Flip4::getStringRo()
 	{
-		return "";
+		return "Răsuciți al patrulea bit";
 	}
 
 	std::string Flip4::getStringRu()
 	{
-		return "";
+		return "Отразить четвертый бит";
 	}
 
 	std::string Flip4::getStringSv()
 	{
-		return "";
+		return "Vänd den fjärde biten";
 	}
 
 	std::string Flip4::getStringTh()
 	{
-		return "";
+		return "พลิกบิตที่สี่";
 	}
 
 	std::string Flip4::getStringTr()
 	{
-		return "";
+		return "Dördüncü bit çevir";
 	}
 
 	std::string Flip4::getStringUk()
 	{
-		return "";
+		return "Переверніть четвертий біт";
 	}
 
-	std::string Flip4::getStringVn()
+	std::string Flip4::getStringVi()
 	{
-		return "";
+		return "Lật bit thứ tư";
 	}
 
 	std::string Flip4::getStringZhCn()
 	{
-		return "";
+		return "翻转第四位";
 	}
 
 	std::string Flip4::getStringZhTw()
 	{
-		return "";
+		return "翻轉第四位";
 	}
 }

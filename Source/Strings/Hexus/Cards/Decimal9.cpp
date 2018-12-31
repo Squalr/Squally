@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Decimal9::getStringAr()
 	{
-		return "";
+		return "بارك";
 	}
 
 	std::string Decimal9::getStringBg()
 	{
-		return "";
+		return "благославям";
 	}
 
 	std::string Decimal9::getStringCs()
 	{
-		return "";
+		return "Žehnat";
 	}
 
 	std::string Decimal9::getStringDa()
 	{
-		return "";
+		return "Velsigne";
 	}
 
 	std::string Decimal9::getStringDe()
 	{
-		return "";
+		return "Segnen";
 	}
 
 	std::string Decimal9::getStringEl()
 	{
-		return "";
+		return "Ευλογώ";
 	}
 
 	std::string Decimal9::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Decimal9::getStringEs()
 	{
-		return "";
+		return "Bendecir";
 	}
 
 	std::string Decimal9::getStringEs419()
 	{
-		return "";
+		return "Bendecir";
 	}
 
 	std::string Decimal9::getStringFi()
 	{
-		return "";
+		return "Siunata";
 	}
 
 	std::string Decimal9::getStringFr()
 	{
-		return "";
+		return "Bénir";
 	}
 
 	std::string Decimal9::getStringHu()
 	{
-		return "";
+		return "Áldja";
 	}
 
 	std::string Decimal9::getStringIt()
 	{
-		return "";
+		return "benedire";
 	}
 
 	std::string Decimal9::getStringJa()
 	{
-		return "";
+		return "祝福する";
 	}
 
 	std::string Decimal9::getStringKo()
 	{
-		return "";
+		return "신을 하다";
 	}
 
 	std::string Decimal9::getStringNl()
 	{
-		return "";
+		return "Zegenen";
 	}
 
 	std::string Decimal9::getStringNo()
 	{
-		return "";
+		return "Velsigne";
 	}
 
 	std::string Decimal9::getStringPl()
 	{
-		return "";
+		return "Błogosławić";
 	}
 
 	std::string Decimal9::getStringPt()
 	{
-		return "";
+		return "Abençoe";
 	}
 
 	std::string Decimal9::getStringPtBr()
 	{
-		return "";
+		return "Abençoe";
 	}
 
 	std::string Decimal9::getStringRo()
 	{
-		return "";
+		return "Binecuvânta";
 	}
 
 	std::string Decimal9::getStringRu()
 	{
-		return "";
+		return "благословить";
 	}
 
 	std::string Decimal9::getStringSv()
 	{
-		return "";
+		return "Välsigna";
 	}
 
 	std::string Decimal9::getStringTh()
 	{
-		return "";
+		return "ให้ศีลให้พร";
 	}
 
 	std::string Decimal9::getStringTr()
 	{
-		return "";
+		return "kutsamak";
 	}
 
 	std::string Decimal9::getStringUk()
 	{
-		return "";
+		return "Благослови";
 	}
 
-	std::string Decimal9::getStringVn()
+	std::string Decimal9::getStringVi()
 	{
-		return "";
+		return "Ban phước";
 	}
 
 	std::string Decimal9::getStringZhCn()
 	{
-		return "";
+		return "保佑";
 	}
 
 	std::string Decimal9::getStringZhTw()
 	{
-		return "";
+		return "保佑";
 	}
 }

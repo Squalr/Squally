@@ -158,9 +158,9 @@ namespace LocaleStrings
 		return "{{uk}}";
 	}
 
-	std::string {{ClassName}}::getStringVn()
+	std::string {{ClassName}}::getStringVi()
 	{
-		return "{{vn}}";
+		return "{{vi}}";
 	}
 
 	std::string {{ClassName}}::getStringZhCn()

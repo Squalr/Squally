@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Cancel::getStringAr()
 	{
-		return "";
+		return "إلغاء";
 	}
 
 	std::string Cancel::getStringBg()
 	{
-		return "";
+		return "Отказ";
 	}
 
 	std::string Cancel::getStringCs()
 	{
-		return "";
+		return "zrušení";
 	}
 
 	std::string Cancel::getStringDa()
 	{
-		return "";
+		return "Afbestille";
 	}
 
 	std::string Cancel::getStringDe()
 	{
-		return "";
+		return "Stornieren";
 	}
 
 	std::string Cancel::getStringEl()
 	{
-		return "";
+		return "Ματαίωση";
 	}
 
 	std::string Cancel::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Cancel::getStringEs()
 	{
-		return "";
+		return "Cancelar";
 	}
 
 	std::string Cancel::getStringEs419()
 	{
-		return "";
+		return "Cancelar";
 	}
 
 	std::string Cancel::getStringFi()
 	{
-		return "";
+		return "Peruuttaa";
 	}
 
 	std::string Cancel::getStringFr()
 	{
-		return "";
+		return "Annuler";
 	}
 
 	std::string Cancel::getStringHu()
 	{
-		return "";
+		return "Megszünteti";
 	}
 
 	std::string Cancel::getStringIt()
 	{
-		return "";
+		return "Annulla";
 	}
 
 	std::string Cancel::getStringJa()
 	{
-		return "";
+		return "キャンセル";
 	}
 
 	std::string Cancel::getStringKo()
 	{
-		return "";
+		return "취소";
 	}
 
 	std::string Cancel::getStringNl()
 	{
-		return "";
+		return "annuleren";
 	}
 
 	std::string Cancel::getStringNo()
 	{
-		return "";
+		return "Avbryt";
 	}
 
 	std::string Cancel::getStringPl()
 	{
-		return "";
+		return "Anuluj";
 	}
 
 	std::string Cancel::getStringPt()
 	{
-		return "";
+		return "Cancelar";
 	}
 
 	std::string Cancel::getStringPtBr()
 	{
-		return "";
+		return "Cancelar";
 	}
 
 	std::string Cancel::getStringRo()
 	{
-		return "";
+		return "Anulare";
 	}
 
 	std::string Cancel::getStringRu()
 	{
-		return "";
+		return "отменить";
 	}
 
 	std::string Cancel::getStringSv()
 	{
-		return "";
+		return "Annullera";
 	}
 
 	std::string Cancel::getStringTh()
 	{
-		return "";
+		return "ยกเลิก";
 	}
 
 	std::string Cancel::getStringTr()
 	{
-		return "";
+		return "İptal etmek";
 	}
 
 	std::string Cancel::getStringUk()
 	{
-		return "";
+		return "Скасувати";
 	}
 
-	std::string Cancel::getStringVn()
+	std::string Cancel::getStringVi()
 	{
-		return "";
+		return "Hủy bỏ";
 	}
 
 	std::string Cancel::getStringZhCn()
 	{
-		return "";
+		return "取消";
 	}
 
 	std::string Cancel::getStringZhTw()
 	{
-		return "";
+		return "取消";
 	}
 }

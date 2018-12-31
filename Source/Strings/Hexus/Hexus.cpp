@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Hexus::getStringAr()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringBg()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringCs()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringDa()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringDe()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringEl()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Hexus::getStringEs()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringEs419()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringFi()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringFr()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringHu()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringIt()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringJa()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringKo()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringNl()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringNo()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringPl()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringPt()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringPtBr()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringRo()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringRu()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringSv()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringTh()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringTr()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringUk()
 	{
-		return "";
+		return "Hexus";
 	}
 
-	std::string Hexus::getStringVn()
+	std::string Hexus::getStringVi()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringZhCn()
 	{
-		return "";
+		return "Hexus";
 	}
 
 	std::string Hexus::getStringZhTw()
 	{
-		return "";
+		return "Hexus";
 	}
 }

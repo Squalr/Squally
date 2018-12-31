@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string SeaSharpCaverns::getStringAr()
 	{
-		return "";
+		return "الكهوف الحادة";
 	}
 
 	std::string SeaSharpCaverns::getStringBg()
 	{
-		return "";
+		return "Морски остри каверни";
 	}
 
 	std::string SeaSharpCaverns::getStringCs()
 	{
-		return "";
+		return "Mořské ostré kaverny";
 	}
 
 	std::string SeaSharpCaverns::getStringDa()
 	{
-		return "";
+		return "Havskarpe huler";
 	}
 
 	std::string SeaSharpCaverns::getStringDe()
 	{
-		return "";
+		return "Meer scharfe Höhlen";
 	}
 
 	std::string SeaSharpCaverns::getStringEl()
 	{
-		return "";
+		return "Θάλασσα απότομες σπηλιές";
 	}
 
 	std::string SeaSharpCaverns::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string SeaSharpCaverns::getStringEs()
 	{
-		return "";
+		return "Cavernas marinas";
 	}
 
 	std::string SeaSharpCaverns::getStringEs419()
 	{
-		return "";
+		return "Cavernas marinas";
 	}
 
 	std::string SeaSharpCaverns::getStringFi()
 	{
-		return "";
+		return "Meren terävät luolat";
 	}
 
 	std::string SeaSharpCaverns::getStringFr()
 	{
-		return "";
+		return "Les cavernes de la mer";
 	}
 
 	std::string SeaSharpCaverns::getStringHu()
 	{
-		return "";
+		return "Tengeri éles barlangok";
 	}
 
 	std::string SeaSharpCaverns::getStringIt()
 	{
-		return "";
+		return "Spighe di mare taglienti";
 	}
 
 	std::string SeaSharpCaverns::getStringJa()
 	{
-		return "";
+		return "海の鋭い洞窟";
 	}
 
 	std::string SeaSharpCaverns::getStringKo()
 	{
-		return "";
+		return "바다의 날카로운 동굴";
 	}
 
 	std::string SeaSharpCaverns::getStringNl()
 	{
-		return "";
+		return "Zeespiegelige grotten";
 	}
 
 	std::string SeaSharpCaverns::getStringNo()
 	{
-		return "";
+		return "Skarpe huler";
 	}
 
 	std::string SeaSharpCaverns::getStringPl()
 	{
-		return "";
+		return "Jaskinie morskie";
 	}
 
 	std::string SeaSharpCaverns::getStringPt()
 	{
-		return "";
+		return "Cavernas afiadas do mar";
 	}
 
 	std::string SeaSharpCaverns::getStringPtBr()
 	{
-		return "";
+		return "Cavernas afiadas do mar";
 	}
 
 	std::string SeaSharpCaverns::getStringRo()
 	{
-		return "";
+		return "Marele cavern ascuțit";
 	}
 
 	std::string SeaSharpCaverns::getStringRu()
 	{
-		return "";
+		return "Морские острые пещеры";
 	}
 
 	std::string SeaSharpCaverns::getStringSv()
 	{
-		return "";
+		return "Havsskarpa grottor";
 	}
 
 	std::string SeaSharpCaverns::getStringTh()
 	{
-		return "";
+		return "ถ้ำทะเลที่คมชัด";
 	}
 
 	std::string SeaSharpCaverns::getStringTr()
 	{
-		return "";
+		return "Deniz keskin mağaraları";
 	}
 
 	std::string SeaSharpCaverns::getStringUk()
 	{
-		return "";
+		return "Морські гострі печери";
 	}
 
-	std::string SeaSharpCaverns::getStringVn()
+	std::string SeaSharpCaverns::getStringVi()
 	{
-		return "";
+		return "Hang động sắc nét biển";
 	}
 
 	std::string SeaSharpCaverns::getStringZhCn()
 	{
-		return "";
+		return "海上尖锐的洞穴";
 	}
 
 	std::string SeaSharpCaverns::getStringZhTw()
 	{
-		return "";
+		return "海上尖銳的洞穴";
 	}
 }

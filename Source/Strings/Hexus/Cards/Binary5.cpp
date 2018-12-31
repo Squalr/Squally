@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Binary5::getStringAr()
 	{
-		return "";
+		return "أسعد";
 	}
 
 	std::string Binary5::getStringBg()
 	{
-		return "";
+		return "съединявам";
 	}
 
 	std::string Binary5::getStringCs()
 	{
-		return "";
+		return "impale";
 	}
 
 	std::string Binary5::getStringDa()
 	{
-		return "";
+		return "spidde";
 	}
 
 	std::string Binary5::getStringDe()
 	{
-		return "";
+		return "aufspießen";
 	}
 
 	std::string Binary5::getStringEl()
 	{
-		return "";
+		return "σουβλίζω";
 	}
 
 	std::string Binary5::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Binary5::getStringEs()
 	{
-		return "";
+		return "empalar";
 	}
 
 	std::string Binary5::getStringEs419()
 	{
-		return "";
+		return "empalar";
 	}
 
 	std::string Binary5::getStringFi()
 	{
-		return "";
+		return "seivästää";
 	}
 
 	std::string Binary5::getStringFr()
 	{
-		return "";
+		return "empaler";
 	}
 
 	std::string Binary5::getStringHu()
 	{
-		return "";
+		return "felnyársal";
 	}
 
 	std::string Binary5::getStringIt()
 	{
-		return "";
+		return "impalare";
 	}
 
 	std::string Binary5::getStringJa()
 	{
-		return "";
+		return "impaく";
 	}
 
 	std::string Binary5::getStringKo()
 	{
-		return "";
+		return "푹 찌르다";
 	}
 
 	std::string Binary5::getStringNl()
 	{
-		return "";
+		return "spietsen";
 	}
 
 	std::string Binary5::getStringNo()
 	{
-		return "";
+		return "spidde";
 	}
 
 	std::string Binary5::getStringPl()
 	{
-		return "";
+		return "przebić";
 	}
 
 	std::string Binary5::getStringPt()
 	{
-		return "";
+		return "empalar";
 	}
 
 	std::string Binary5::getStringPtBr()
 	{
-		return "";
+		return "empalar";
 	}
 
 	std::string Binary5::getStringRo()
 	{
-		return "";
+		return "trage în țeapă";
 	}
 
 	std::string Binary5::getStringRu()
 	{
-		return "";
+		return "прокалывать";
 	}
 
 	std::string Binary5::getStringSv()
 	{
-		return "";
+		return "spetsa";
 	}
 
 	std::string Binary5::getStringTh()
 	{
-		return "";
+		return "แทง";
 	}
 
 	std::string Binary5::getStringTr()
 	{
-		return "";
+		return "kazığa oturtmak";
 	}
 
 	std::string Binary5::getStringUk()
 	{
-		return "";
+		return "пронизувати";
 	}
 
-	std::string Binary5::getStringVn()
+	std::string Binary5::getStringVi()
 	{
-		return "";
+		return "bốc đồng";
 	}
 
 	std::string Binary5::getStringZhCn()
 	{
-		return "";
+		return "刺穿";
 	}
 
 	std::string Binary5::getStringZhTw()
 	{
-		return "";
+		return "刺穿";
 	}
 }

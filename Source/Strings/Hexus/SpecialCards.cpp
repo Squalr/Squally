@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string SpecialCards::getStringAr()
 	{
-		return "";
+		return "بطاقات خاصة";
 	}
 
 	std::string SpecialCards::getStringBg()
 	{
-		return "";
+		return "Специални карти";
 	}
 
 	std::string SpecialCards::getStringCs()
 	{
-		return "";
+		return "Speciální karty";
 	}
 
 	std::string SpecialCards::getStringDa()
 	{
-		return "";
+		return "Særlige kort";
 	}
 
 	std::string SpecialCards::getStringDe()
 	{
-		return "";
+		return "Spezielle Karten";
 	}
 
 	std::string SpecialCards::getStringEl()
 	{
-		return "";
+		return "Ειδικές Κάρτες";
 	}
 
 	std::string SpecialCards::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string SpecialCards::getStringEs()
 	{
-		return "";
+		return "Tarjetas especiales";
 	}
 
 	std::string SpecialCards::getStringEs419()
 	{
-		return "";
+		return "Tarjetas especiales";
 	}
 
 	std::string SpecialCards::getStringFi()
 	{
-		return "";
+		return "Erikoiskortit";
 	}
 
 	std::string SpecialCards::getStringFr()
 	{
-		return "";
+		return "Cartes spéciales";
 	}
 
 	std::string SpecialCards::getStringHu()
 	{
-		return "";
+		return "Különleges kártyák";
 	}
 
 	std::string SpecialCards::getStringIt()
 	{
-		return "";
+		return "Carte speciali";
 	}
 
 	std::string SpecialCards::getStringJa()
 	{
-		return "";
+		return "特別なカード";
 	}
 
 	std::string SpecialCards::getStringKo()
 	{
-		return "";
+		return "특수 카드";
 	}
 
 	std::string SpecialCards::getStringNl()
 	{
-		return "";
+		return "Speciale kaarten";
 	}
 
 	std::string SpecialCards::getStringNo()
 	{
-		return "";
+		return "Spesielle kort";
 	}
 
 	std::string SpecialCards::getStringPl()
 	{
-		return "";
+		return "Karty specjalne";
 	}
 
 	std::string SpecialCards::getStringPt()
 	{
-		return "";
+		return "Cartões Especiais";
 	}
 
 	std::string SpecialCards::getStringPtBr()
 	{
-		return "";
+		return "Cartões Especiais";
 	}
 
 	std::string SpecialCards::getStringRo()
 	{
-		return "";
+		return "Carduri speciale";
 	}
 
 	std::string SpecialCards::getStringRu()
 	{
-		return "";
+		return "Специальные карты";
 	}
 
 	std::string SpecialCards::getStringSv()
 	{
-		return "";
+		return "Specialkort";
 	}
 
 	std::string SpecialCards::getStringTh()
 	{
-		return "";
+		return "การ์ดพิเศษ";
 	}
 
 	std::string SpecialCards::getStringTr()
 	{
-		return "";
+		return "Özel Kartlar";
 	}
 
 	std::string SpecialCards::getStringUk()
 	{
-		return "";
+		return "Спеціальні картки";
 	}
 
-	std::string SpecialCards::getStringVn()
+	std::string SpecialCards::getStringVi()
 	{
-		return "";
+		return "Thẻ đặc biệt";
 	}
 
 	std::string SpecialCards::getStringZhCn()
 	{
-		return "";
+		return "特殊卡片";
 	}
 
 	std::string SpecialCards::getStringZhTw()
 	{
-		return "";
+		return "特殊卡片";
 	}
 }

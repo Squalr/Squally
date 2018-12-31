@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Flip2::getStringAr()
 	{
-		return "";
+		return "اقلب الثانية";
 	}
 
 	std::string Flip2::getStringBg()
 	{
-		return "";
+		return "Обърнете втория бит";
 	}
 
 	std::string Flip2::getStringCs()
 	{
-		return "";
+		return "Překlopte druhý bit";
 	}
 
 	std::string Flip2::getStringDa()
 	{
-		return "";
+		return "Vend den anden bit";
 	}
 
 	std::string Flip2::getStringDe()
 	{
-		return "";
+		return "Drehen Sie das zweite Bit um";
 	}
 
 	std::string Flip2::getStringEl()
 	{
-		return "";
+		return "Περιστρέψτε το δεύτερο κομμάτι";
 	}
 
 	std::string Flip2::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Flip2::getStringEs()
 	{
-		return "";
+		return "Voltear el segundo bit";
 	}
 
 	std::string Flip2::getStringEs419()
 	{
-		return "";
+		return "Voltear el segundo bit";
 	}
 
 	std::string Flip2::getStringFi()
 	{
-		return "";
+		return "Käännä toinen bitti";
 	}
 
 	std::string Flip2::getStringFr()
 	{
-		return "";
+		return "Retournez le deuxième bit";
 	}
 
 	std::string Flip2::getStringHu()
 	{
-		return "";
+		return "Flip a második bit";
 	}
 
 	std::string Flip2::getStringIt()
 	{
-		return "";
+		return "Capovolgi il secondo bit";
 	}
 
 	std::string Flip2::getStringJa()
 	{
-		return "";
+		return "2番目のビットを反転";
 	}
 
 	std::string Flip2::getStringKo()
 	{
-		return "";
+		return "두 번째 비트 뒤집기";
 	}
 
 	std::string Flip2::getStringNl()
 	{
-		return "";
+		return "Draai het tweede deel";
 	}
 
 	std::string Flip2::getStringNo()
 	{
-		return "";
+		return "Vend den andre biten";
 	}
 
 	std::string Flip2::getStringPl()
 	{
-		return "";
+		return "Odwróć drugi bit";
 	}
 
 	std::string Flip2::getStringPt()
 	{
-		return "";
+		return "Virar o segundo bit";
 	}
 
 	std::string Flip2::getStringPtBr()
 	{
-		return "";
+		return "Virar o segundo bit";
 	}
 
 	std::string Flip2::getStringRo()
 	{
-		return "";
+		return "Răsuciți al doilea element";
 	}
 
 	std::string Flip2::getStringRu()
 	{
-		return "";
+		return "Отразить второй бит";
 	}
 
 	std::string Flip2::getStringSv()
 	{
-		return "";
+		return "Vänd den andra biten";
 	}
 
 	std::string Flip2::getStringTh()
 	{
-		return "";
+		return "พลิกบิตที่สอง";
 	}
 
 	std::string Flip2::getStringTr()
 	{
-		return "";
+		return "İkinci biti çevir";
 	}
 
 	std::string Flip2::getStringUk()
 	{
-		return "";
+		return "Переверніть другий біт";
 	}
 
-	std::string Flip2::getStringVn()
+	std::string Flip2::getStringVi()
 	{
-		return "";
+		return "Lật bit thứ hai";
 	}
 
 	std::string Flip2::getStringZhCn()
 	{
-		return "";
+		return "翻转第二位";
 	}
 
 	std::string Flip2::getStringZhTw()
 	{
-		return "";
+		return "翻轉第二位";
 	}
 }

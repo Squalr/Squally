@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Leave::getStringAr()
 	{
-		return "";
+		return "غادر";
 	}
 
 	std::string Leave::getStringBg()
 	{
-		return "";
+		return "оставям";
 	}
 
 	std::string Leave::getStringCs()
 	{
-		return "";
+		return "Zanechat, opustit";
 	}
 
 	std::string Leave::getStringDa()
 	{
-		return "";
+		return "Forlade";
 	}
 
 	std::string Leave::getStringDe()
 	{
-		return "";
+		return "Verlassen";
 	}
 
 	std::string Leave::getStringEl()
 	{
-		return "";
+		return "Αδεια";
 	}
 
 	std::string Leave::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Leave::getStringEs()
 	{
-		return "";
+		return "Salir";
 	}
 
 	std::string Leave::getStringEs419()
 	{
-		return "";
+		return "Salir";
 	}
 
 	std::string Leave::getStringFi()
 	{
-		return "";
+		return "jättää";
 	}
 
 	std::string Leave::getStringFr()
 	{
-		return "";
+		return "Laisser";
 	}
 
 	std::string Leave::getStringHu()
 	{
-		return "";
+		return "Szabadság";
 	}
 
 	std::string Leave::getStringIt()
 	{
-		return "";
+		return "Partire";
 	}
 
 	std::string Leave::getStringJa()
 	{
-		return "";
+		return "立ち去る";
 	}
 
 	std::string Leave::getStringKo()
 	{
-		return "";
+		return "휴가";
 	}
 
 	std::string Leave::getStringNl()
 	{
-		return "";
+		return "Het verlof";
 	}
 
 	std::string Leave::getStringNo()
 	{
-		return "";
+		return "Permisjon";
 	}
 
 	std::string Leave::getStringPl()
 	{
-		return "";
+		return "Pozostawiać";
 	}
 
 	std::string Leave::getStringPt()
 	{
-		return "";
+		return "Sair";
 	}
 
 	std::string Leave::getStringPtBr()
 	{
-		return "";
+		return "Sair";
 	}
 
 	std::string Leave::getStringRo()
 	{
-		return "";
+		return "Părăsi";
 	}
 
 	std::string Leave::getStringRu()
 	{
-		return "";
+		return "Покидать";
 	}
 
 	std::string Leave::getStringSv()
 	{
-		return "";
+		return "Lämna";
 	}
 
 	std::string Leave::getStringTh()
 	{
-		return "";
+		return "ออกจาก";
 	}
 
 	std::string Leave::getStringTr()
 	{
-		return "";
+		return "Ayrılmak";
 	}
 
 	std::string Leave::getStringUk()
 	{
-		return "";
+		return "Залишати";
 	}
 
-	std::string Leave::getStringVn()
+	std::string Leave::getStringVi()
 	{
-		return "";
+		return "Rời khỏi";
 	}
 
 	std::string Leave::getStringZhCn()
 	{
-		return "";
+		return "离开";
 	}
 
 	std::string Leave::getStringZhTw()
 	{
-		return "";
+		return "離開";
 	}
 }

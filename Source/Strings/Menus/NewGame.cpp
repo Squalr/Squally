@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string NewGame::getStringAr()
 	{
-		return "";
+		return "لعبة جديدة";
 	}
 
 	std::string NewGame::getStringBg()
 	{
-		return "";
+		return "Нова игра";
 	}
 
 	std::string NewGame::getStringCs()
 	{
-		return "";
+		return "Nová hra";
 	}
 
 	std::string NewGame::getStringDa()
 	{
-		return "";
+		return "Nyt spil";
 	}
 
 	std::string NewGame::getStringDe()
 	{
-		return "";
+		return "Neues Spiel";
 	}
 
 	std::string NewGame::getStringEl()
 	{
-		return "";
+		return "Νέο παιχνίδι";
 	}
 
 	std::string NewGame::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string NewGame::getStringEs()
 	{
-		return "";
+		return "Nuevo juego";
 	}
 
 	std::string NewGame::getStringEs419()
 	{
-		return "";
+		return "Nuevo juego";
 	}
 
 	std::string NewGame::getStringFi()
 	{
-		return "";
+		return "Uusi peli";
 	}
 
 	std::string NewGame::getStringFr()
 	{
-		return "";
+		return "Nouveau jeu";
 	}
 
 	std::string NewGame::getStringHu()
 	{
-		return "";
+		return "Új játék";
 	}
 
 	std::string NewGame::getStringIt()
 	{
-		return "";
+		return "Nuovo gioco";
 	}
 
 	std::string NewGame::getStringJa()
 	{
-		return "";
+		return "新しいゲーム";
 	}
 
 	std::string NewGame::getStringKo()
 	{
-		return "";
+		return "새로운 게임";
 	}
 
 	std::string NewGame::getStringNl()
 	{
-		return "";
+		return "Nieuw spel";
 	}
 
 	std::string NewGame::getStringNo()
 	{
-		return "";
+		return "Nytt spill";
 	}
 
 	std::string NewGame::getStringPl()
 	{
-		return "";
+		return "Nowa gra";
 	}
 
 	std::string NewGame::getStringPt()
 	{
-		return "";
+		return "Novo jogo";
 	}
 
 	std::string NewGame::getStringPtBr()
 	{
-		return "";
+		return "Novo jogo";
 	}
 
 	std::string NewGame::getStringRo()
 	{
-		return "";
+		return "Joc nou";
 	}
 
 	std::string NewGame::getStringRu()
 	{
-		return "";
+		return "Новая игра";
 	}
 
 	std::string NewGame::getStringSv()
 	{
-		return "";
+		return "Nytt spel";
 	}
 
 	std::string NewGame::getStringTh()
 	{
-		return "";
+		return "เกมส์ใหม่";
 	}
 
 	std::string NewGame::getStringTr()
 	{
-		return "";
+		return "Yeni oyun";
 	}
 
 	std::string NewGame::getStringUk()
 	{
-		return "";
+		return "Нова гра";
 	}
 
-	std::string NewGame::getStringVn()
+	std::string NewGame::getStringVi()
 	{
-		return "";
+		return "Trò chơi mới";
 	}
 
 	std::string NewGame::getStringZhCn()
 	{
-		return "";
+		return "新游戏";
 	}
 
 	std::string NewGame::getStringZhTw()
 	{
-		return "";
+		return "新遊戲";
 	}
 }

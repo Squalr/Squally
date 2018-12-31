@@ -158,7 +158,7 @@ namespace LocaleStrings
 		return "1080x768";
 	}
 
-	std::string Resolution1080x768::getStringVn()
+	std::string Resolution1080x768::getStringVi()
 	{
 		return "1080x768";
 	}

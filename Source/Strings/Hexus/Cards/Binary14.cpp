@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Binary14::getStringAr()
 	{
-		return "";
+		return "اليتي";
 	}
 
 	std::string Binary14::getStringBg()
 	{
-		return "";
+		return "Йети";
 	}
 
 	std::string Binary14::getStringCs()
 	{
-		return "";
+		return "Yeti";
 	}
 
 	std::string Binary14::getStringDa()
 	{
-		return "";
+		return "yeti";
 	}
 
 	std::string Binary14::getStringDe()
 	{
-		return "";
+		return "Yeti";
 	}
 
 	std::string Binary14::getStringEl()
 	{
-		return "";
+		return "yeti";
 	}
 
 	std::string Binary14::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Binary14::getStringEs()
 	{
-		return "";
+		return "yeti";
 	}
 
 	std::string Binary14::getStringEs419()
 	{
-		return "";
+		return "yeti";
 	}
 
 	std::string Binary14::getStringFi()
 	{
-		return "";
+		return "lumimies";
 	}
 
 	std::string Binary14::getStringFr()
 	{
-		return "";
+		return "Yéti";
 	}
 
 	std::string Binary14::getStringHu()
 	{
-		return "";
+		return "havasi ember";
 	}
 
 	std::string Binary14::getStringIt()
 	{
-		return "";
+		return "yeti";
 	}
 
 	std::string Binary14::getStringJa()
 	{
-		return "";
+		return "イエティ";
 	}
 
 	std::string Binary14::getStringKo()
 	{
-		return "";
+		return "아직";
 	}
 
 	std::string Binary14::getStringNl()
 	{
-		return "";
+		return "yeti";
 	}
 
 	std::string Binary14::getStringNo()
 	{
-		return "";
+		return "yeti";
 	}
 
 	std::string Binary14::getStringPl()
 	{
-		return "";
+		return "yeti";
 	}
 
 	std::string Binary14::getStringPt()
 	{
-		return "";
+		return "yeti";
 	}
 
 	std::string Binary14::getStringPtBr()
 	{
-		return "";
+		return "yeti";
 	}
 
 	std::string Binary14::getStringRo()
 	{
-		return "";
+		return "yeti";
 	}
 
 	std::string Binary14::getStringRu()
 	{
-		return "";
+		return "йети";
 	}
 
 	std::string Binary14::getStringSv()
 	{
-		return "";
+		return "yeti";
 	}
 
 	std::string Binary14::getStringTh()
 	{
-		return "";
+		return "เยติ";
 	}
 
 	std::string Binary14::getStringTr()
 	{
-		return "";
+		return "Yeti canavarı";
 	}
 
 	std::string Binary14::getStringUk()
 	{
-		return "";
+		return "Yeti monster";
 	}
 
-	std::string Binary14::getStringVn()
+	std::string Binary14::getStringVi()
 	{
-		return "";
+		return "Quái vật Yeti";
 	}
 
 	std::string Binary14::getStringZhCn()
 	{
-		return "";
+		return "雪人怪物";
 	}
 
 	std::string Binary14::getStringZhTw()
 	{
-		return "";
+		return "雪人怪物";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string CardsInStorage::getStringAr()
 	{
-		return "";
+		return "البطاقات في التخزين";
 	}
 
 	std::string CardsInStorage::getStringBg()
 	{
-		return "";
+		return "Карти в хранилище";
 	}
 
 	std::string CardsInStorage::getStringCs()
 	{
-		return "";
+		return "Karty v úložišti";
 	}
 
 	std::string CardsInStorage::getStringDa()
 	{
-		return "";
+		return "Kort i opbevaring";
 	}
 
 	std::string CardsInStorage::getStringDe()
 	{
-		return "";
+		return "Karten im Speicher";
 	}
 
 	std::string CardsInStorage::getStringEl()
 	{
-		return "";
+		return "Κάρτες αποθήκευσης";
 	}
 
 	std::string CardsInStorage::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string CardsInStorage::getStringEs()
 	{
-		return "";
+		return "Tarjetas en almacenamiento";
 	}
 
 	std::string CardsInStorage::getStringEs419()
 	{
-		return "";
+		return "Tarjetas en almacenamiento";
 	}
 
 	std::string CardsInStorage::getStringFi()
 	{
-		return "";
+		return "Kortit tallennuksessa";
 	}
 
 	std::string CardsInStorage::getStringFr()
 	{
-		return "";
+		return "Cartes entreposées";
 	}
 
 	std::string CardsInStorage::getStringHu()
 	{
-		return "";
+		return "Kártyák a tárolóban";
 	}
 
 	std::string CardsInStorage::getStringIt()
 	{
-		return "";
+		return "Carte in deposito";
 	}
 
 	std::string CardsInStorage::getStringJa()
 	{
-		return "";
+		return "収納カード";
 	}
 
 	std::string CardsInStorage::getStringKo()
 	{
-		return "";
+		return "저장소 카드";
 	}
 
 	std::string CardsInStorage::getStringNl()
 	{
-		return "";
+		return "Kaarten in opslag";
 	}
 
 	std::string CardsInStorage::getStringNo()
 	{
-		return "";
+		return "Kort i lagring";
 	}
 
 	std::string CardsInStorage::getStringPl()
 	{
-		return "";
+		return "Karty w magazynie";
 	}
 
 	std::string CardsInStorage::getStringPt()
 	{
-		return "";
+		return "Cartões no armazenamento";
 	}
 
 	std::string CardsInStorage::getStringPtBr()
 	{
-		return "";
+		return "Cartões no armazenamento";
 	}
 
 	std::string CardsInStorage::getStringRo()
 	{
-		return "";
+		return "Carduri în Depozit";
 	}
 
 	std::string CardsInStorage::getStringRu()
 	{
-		return "";
+		return "Карты в хранилище";
 	}
 
 	std::string CardsInStorage::getStringSv()
 	{
-		return "";
+		return "Kort i förvaring";
 	}
 
 	std::string CardsInStorage::getStringTh()
 	{
-		return "";
+		return "การ์ดเก็บข้อมูล";
 	}
 
 	std::string CardsInStorage::getStringTr()
 	{
-		return "";
+		return "Depolamadaki Kartlar";
 	}
 
 	std::string CardsInStorage::getStringUk()
 	{
-		return "";
+		return "Карти в сховищі";
 	}
 
-	std::string CardsInStorage::getStringVn()
+	std::string CardsInStorage::getStringVi()
 	{
-		return "";
+		return "Thẻ trong kho";
 	}
 
 	std::string CardsInStorage::getStringZhCn()
 	{
-		return "";
+		return "存储卡";
 	}
 
 	std::string CardsInStorage::getStringZhTw()
 	{
-		return "";
+		return "存儲卡";
 	}
 }

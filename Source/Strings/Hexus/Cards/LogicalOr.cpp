@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string LogicalOr::getStringAr()
 	{
-		return "";
+		return "منطقية أو";
 	}
 
 	std::string LogicalOr::getStringBg()
 	{
-		return "";
+		return "Логическо ИЛИ";
 	}
 
 	std::string LogicalOr::getStringCs()
 	{
-		return "";
+		return "Logické OR";
 	}
 
 	std::string LogicalOr::getStringDa()
 	{
-		return "";
+		return "Logisk ELLER";
 	}
 
 	std::string LogicalOr::getStringDe()
 	{
-		return "";
+		return "Logisches ODER";
 	}
 
 	std::string LogicalOr::getStringEl()
 	{
-		return "";
+		return "Λογική OR";
 	}
 
 	std::string LogicalOr::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string LogicalOr::getStringEs()
 	{
-		return "";
+		return "O lógico";
 	}
 
 	std::string LogicalOr::getStringEs419()
 	{
-		return "";
+		return "O lógico";
 	}
 
 	std::string LogicalOr::getStringFi()
 	{
-		return "";
+		return "Looginen TAI";
 	}
 
 	std::string LogicalOr::getStringFr()
 	{
-		return "";
+		return "OU logique";
 	}
 
 	std::string LogicalOr::getStringHu()
 	{
-		return "";
+		return "Logikai VAGY";
 	}
 
 	std::string LogicalOr::getStringIt()
 	{
-		return "";
+		return "OR logico";
 	}
 
 	std::string LogicalOr::getStringJa()
 	{
-		return "";
+		return "論理和";
 	}
 
 	std::string LogicalOr::getStringKo()
 	{
-		return "";
+		return "논리 OR";
 	}
 
 	std::string LogicalOr::getStringNl()
 	{
-		return "";
+		return "Logische OR";
 	}
 
 	std::string LogicalOr::getStringNo()
 	{
-		return "";
+		return "Logisk ELLER";
 	}
 
 	std::string LogicalOr::getStringPl()
 	{
-		return "";
+		return "Logiczna OR";
 	}
 
 	std::string LogicalOr::getStringPt()
 	{
-		return "";
+		return "OR lógico";
 	}
 
 	std::string LogicalOr::getStringPtBr()
 	{
-		return "";
+		return "OR lógico";
 	}
 
 	std::string LogicalOr::getStringRo()
 	{
-		return "";
+		return "Logic OR";
 	}
 
 	std::string LogicalOr::getStringRu()
 	{
-		return "";
+		return "Логическое ИЛИ";
 	}
 
 	std::string LogicalOr::getStringSv()
 	{
-		return "";
+		return "Logisk OR";
 	}
 
 	std::string LogicalOr::getStringTh()
 	{
-		return "";
+		return "ตรรกะหรือ";
 	}
 
 	std::string LogicalOr::getStringTr()
 	{
-		return "";
+		return "Mantıksal VEYA";
 	}
 
 	std::string LogicalOr::getStringUk()
 	{
-		return "";
+		return "Логічне АБО";
 	}
 
-	std::string LogicalOr::getStringVn()
+	std::string LogicalOr::getStringVi()
 	{
-		return "";
+		return "Hợp lý HOẶC";
 	}
 
 	std::string LogicalOr::getStringZhCn()
 	{
-		return "";
+		return "逻辑或";
 	}
 
 	std::string LogicalOr::getStringZhTw()
 	{
-		return "";
+		return "邏輯或";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string CardsInDeck::getStringAr()
 	{
-		return "";
+		return "بطاقات في الطابق";
 	}
 
 	std::string CardsInDeck::getStringBg()
 	{
-		return "";
+		return "Карти в палубата";
 	}
 
 	std::string CardsInDeck::getStringCs()
 	{
-		return "";
+		return "Karty v balíčku";
 	}
 
 	std::string CardsInDeck::getStringDa()
 	{
-		return "";
+		return "Kort i dæk";
 	}
 
 	std::string CardsInDeck::getStringDe()
 	{
-		return "";
+		return "Karten im Deck";
 	}
 
 	std::string CardsInDeck::getStringEl()
 	{
-		return "";
+		return "Κάρτες στο κατάστρωμα";
 	}
 
 	std::string CardsInDeck::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string CardsInDeck::getStringEs()
 	{
-		return "";
+		return "Cartas en cubierta";
 	}
 
 	std::string CardsInDeck::getStringEs419()
 	{
-		return "";
+		return "Cartas en cubierta";
 	}
 
 	std::string CardsInDeck::getStringFi()
 	{
-		return "";
+		return "Kortit kannessa";
 	}
 
 	std::string CardsInDeck::getStringFr()
 	{
-		return "";
+		return "Cartes dans le pont";
 	}
 
 	std::string CardsInDeck::getStringHu()
 	{
-		return "";
+		return "Kártyák a fedélzeten";
 	}
 
 	std::string CardsInDeck::getStringIt()
 	{
-		return "";
+		return "Carte nel mazzo";
 	}
 
 	std::string CardsInDeck::getStringJa()
 	{
-		return "";
+		return "デッキのカード";
 	}
 
 	std::string CardsInDeck::getStringKo()
 	{
-		return "";
+		return "갑판의 카드";
 	}
 
 	std::string CardsInDeck::getStringNl()
 	{
-		return "";
+		return "Kaarten in Deck";
 	}
 
 	std::string CardsInDeck::getStringNo()
 	{
-		return "";
+		return "Kort i dekk";
 	}
 
 	std::string CardsInDeck::getStringPl()
 	{
-		return "";
+		return "Karty w talii";
 	}
 
 	std::string CardsInDeck::getStringPt()
 	{
-		return "";
+		return "Cartões no convés";
 	}
 
 	std::string CardsInDeck::getStringPtBr()
 	{
-		return "";
+		return "Cartões no convés";
 	}
 
 	std::string CardsInDeck::getStringRo()
 	{
-		return "";
+		return "Carduri în punte";
 	}
 
 	std::string CardsInDeck::getStringRu()
 	{
-		return "";
+		return "Карты в колоде";
 	}
 
 	std::string CardsInDeck::getStringSv()
 	{
-		return "";
+		return "Kort i däck";
 	}
 
 	std::string CardsInDeck::getStringTh()
 	{
-		return "";
+		return "ไพ่ในสำรับ";
 	}
 
 	std::string CardsInDeck::getStringTr()
 	{
-		return "";
+		return "Güverte Kartları";
 	}
 
 	std::string CardsInDeck::getStringUk()
 	{
-		return "";
+		return "Карти в палубі";
 	}
 
-	std::string CardsInDeck::getStringVn()
+	std::string CardsInDeck::getStringVi()
 	{
-		return "";
+		return "Thẻ trong bộ bài";
 	}
 
 	std::string CardsInDeck::getStringZhCn()
 	{
-		return "";
+		return "甲板上的卡片";
 	}
 
 	std::string CardsInDeck::getStringZhTw()
 	{
-		return "";
+		return "甲板上的卡片";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string ManageCards::getStringAr()
 	{
-		return "";
+		return "إدارة البطاقات";
 	}
 
 	std::string ManageCards::getStringBg()
 	{
-		return "";
+		return "Управление на карти";
 	}
 
 	std::string ManageCards::getStringCs()
 	{
-		return "";
+		return "Správa karet";
 	}
 
 	std::string ManageCards::getStringDa()
 	{
-		return "";
+		return "Administrer kort";
 	}
 
 	std::string ManageCards::getStringDe()
 	{
-		return "";
+		return "Karten verwalten";
 	}
 
 	std::string ManageCards::getStringEl()
 	{
-		return "";
+		return "Διαχείριση Καρτών";
 	}
 
 	std::string ManageCards::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string ManageCards::getStringEs()
 	{
-		return "";
+		return "Administrar Tarjetas";
 	}
 
 	std::string ManageCards::getStringEs419()
 	{
-		return "";
+		return "Administrar Tarjetas";
 	}
 
 	std::string ManageCards::getStringFi()
 	{
-		return "";
+		return "Hallitse kortteja";
 	}
 
 	std::string ManageCards::getStringFr()
 	{
-		return "";
+		return "Gérer les cartes";
 	}
 
 	std::string ManageCards::getStringHu()
 	{
-		return "";
+		return "Kártyák kezelése";
 	}
 
 	std::string ManageCards::getStringIt()
 	{
-		return "";
+		return "Gestisci le carte";
 	}
 
 	std::string ManageCards::getStringJa()
 	{
-		return "";
+		return "カードを管理する";
 	}
 
 	std::string ManageCards::getStringKo()
 	{
-		return "";
+		return "카드 관리";
 	}
 
 	std::string ManageCards::getStringNl()
 	{
-		return "";
+		return "Beheer kaarten";
 	}
 
 	std::string ManageCards::getStringNo()
 	{
-		return "";
+		return "Administrer kort";
 	}
 
 	std::string ManageCards::getStringPl()
 	{
-		return "";
+		return "Zarządzaj kartami";
 	}
 
 	std::string ManageCards::getStringPt()
 	{
-		return "";
+		return "Gerenciar Cartões";
 	}
 
 	std::string ManageCards::getStringPtBr()
 	{
-		return "";
+		return "Gerenciar Cartões";
 	}
 
 	std::string ManageCards::getStringRo()
 	{
-		return "";
+		return "Gestionați cardurile";
 	}
 
 	std::string ManageCards::getStringRu()
 	{
-		return "";
+		return "Управление картами";
 	}
 
 	std::string ManageCards::getStringSv()
 	{
-		return "";
+		return "Hantera kort";
 	}
 
 	std::string ManageCards::getStringTh()
 	{
-		return "";
+		return "จัดการการ์ด";
 	}
 
 	std::string ManageCards::getStringTr()
 	{
-		return "";
+		return "Kartları Yönet";
 	}
 
 	std::string ManageCards::getStringUk()
 	{
-		return "";
+		return "Керування картками";
 	}
 
-	std::string ManageCards::getStringVn()
+	std::string ManageCards::getStringVi()
 	{
-		return "";
+		return "Quản lý thẻ";
 	}
 
 	std::string ManageCards::getStringZhCn()
 	{
-		return "";
+		return "管理卡片";
 	}
 
 	std::string ManageCards::getStringZhTw()
 	{
-		return "";
+		return "管理卡片";
 	}
 }

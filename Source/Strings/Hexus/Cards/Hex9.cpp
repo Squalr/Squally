@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Hex9::getStringAr()
 	{
-		return "";
+		return "العدار";
 	}
 
 	std::string Hex9::getStringBg()
 	{
-		return "";
+		return "хидра";
 	}
 
 	std::string Hex9::getStringCs()
 	{
-		return "";
+		return "Hydra";
 	}
 
 	std::string Hex9::getStringDa()
 	{
-		return "";
+		return "Hydra";
 	}
 
 	std::string Hex9::getStringDe()
 	{
-		return "";
+		return "Hydra";
 	}
 
 	std::string Hex9::getStringEl()
 	{
-		return "";
+		return "Ύδρα";
 	}
 
 	std::string Hex9::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Hex9::getStringEs()
 	{
-		return "";
+		return "Hidra";
 	}
 
 	std::string Hex9::getStringEs419()
 	{
-		return "";
+		return "Hidra";
 	}
 
 	std::string Hex9::getStringFi()
 	{
-		return "";
+		return "tursas";
 	}
 
 	std::string Hex9::getStringFr()
 	{
-		return "";
+		return "Hydra";
 	}
 
 	std::string Hex9::getStringHu()
 	{
-		return "";
+		return "Hydra";
 	}
 
 	std::string Hex9::getStringIt()
 	{
-		return "";
+		return "Idra";
 	}
 
 	std::string Hex9::getStringJa()
 	{
-		return "";
+		return "ヒドラ";
 	}
 
 	std::string Hex9::getStringKo()
 	{
-		return "";
+		return "히드라";
 	}
 
 	std::string Hex9::getStringNl()
 	{
-		return "";
+		return "Hydra";
 	}
 
 	std::string Hex9::getStringNo()
 	{
-		return "";
+		return "Hydra";
 	}
 
 	std::string Hex9::getStringPl()
 	{
-		return "";
+		return "Hydra";
 	}
 
 	std::string Hex9::getStringPt()
 	{
-		return "";
+		return "Hidra";
 	}
 
 	std::string Hex9::getStringPtBr()
 	{
-		return "";
+		return "Hidra";
 	}
 
 	std::string Hex9::getStringRo()
 	{
-		return "";
+		return "hidră";
 	}
 
 	std::string Hex9::getStringRu()
 	{
-		return "";
+		return "гидра";
 	}
 
 	std::string Hex9::getStringSv()
 	{
-		return "";
+		return "hydra";
 	}
 
 	std::string Hex9::getStringTh()
 	{
-		return "";
+		return "ไฮดรา";
 	}
 
 	std::string Hex9::getStringTr()
 	{
-		return "";
+		return "hidra";
 	}
 
 	std::string Hex9::getStringUk()
 	{
-		return "";
+		return "Гідра";
 	}
 
-	std::string Hex9::getStringVn()
+	std::string Hex9::getStringVi()
 	{
-		return "";
+		return "Hydra";
 	}
 
 	std::string Hex9::getStringZhCn()
 	{
-		return "";
+		return "水润";
 	}
 
 	std::string Hex9::getStringZhTw()
 	{
-		return "";
+		return "水潤";
 	}
 }

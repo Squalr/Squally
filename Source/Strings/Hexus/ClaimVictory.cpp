@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string ClaimVictory::getStringAr()
 	{
-		return "";
+		return "المطالبة النصر";
 	}
 
 	std::string ClaimVictory::getStringBg()
 	{
-		return "";
+		return "Твърди победата";
 	}
 
 	std::string ClaimVictory::getStringCs()
 	{
-		return "";
+		return "Vyžádat vítězství";
 	}
 
 	std::string ClaimVictory::getStringDa()
 	{
-		return "";
+		return "Hævde sejr";
 	}
 
 	std::string ClaimVictory::getStringDe()
 	{
-		return "";
+		return "Sieg fordern";
 	}
 
 	std::string ClaimVictory::getStringEl()
 	{
-		return "";
+		return "Ζητήστε τη νίκη";
 	}
 
 	std::string ClaimVictory::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string ClaimVictory::getStringEs()
 	{
-		return "";
+		return "Victoria de reclamo";
 	}
 
 	std::string ClaimVictory::getStringEs419()
 	{
-		return "";
+		return "Victoria de reclamo";
 	}
 
 	std::string ClaimVictory::getStringFi()
 	{
-		return "";
+		return "Vahvista voitto";
 	}
 
 	std::string ClaimVictory::getStringFr()
 	{
-		return "";
+		return "Réclamer la victoire";
 	}
 
 	std::string ClaimVictory::getStringHu()
 	{
-		return "";
+		return "Győzelem követelése";
 	}
 
 	std::string ClaimVictory::getStringIt()
 	{
-		return "";
+		return "Richiedi la vittoria";
 	}
 
 	std::string ClaimVictory::getStringJa()
 	{
-		return "";
+		return "申し立ての勝利";
 	}
 
 	std::string ClaimVictory::getStringKo()
 	{
-		return "";
+		return "승리를 주장하다";
 	}
 
 	std::string ClaimVictory::getStringNl()
 	{
-		return "";
+		return "Claim overwinning";
 	}
 
 	std::string ClaimVictory::getStringNo()
 	{
-		return "";
+		return "Gjør krav på seier";
 	}
 
 	std::string ClaimVictory::getStringPl()
 	{
-		return "";
+		return "Zdobądź Zwycięstwo";
 	}
 
 	std::string ClaimVictory::getStringPt()
 	{
-		return "";
+		return "Reivindicar a vitória";
 	}
 
 	std::string ClaimVictory::getStringPtBr()
 	{
-		return "";
+		return "Reivindicar a vitória";
 	}
 
 	std::string ClaimVictory::getStringRo()
 	{
-		return "";
+		return "Cereți Victoria";
 	}
 
 	std::string ClaimVictory::getStringRu()
 	{
-		return "";
+		return "Претендовать на победу";
 	}
 
 	std::string ClaimVictory::getStringSv()
 	{
-		return "";
+		return "Påstå seger";
 	}
 
 	std::string ClaimVictory::getStringTh()
 	{
-		return "";
+		return "รับชัยชนะ";
 	}
 
 	std::string ClaimVictory::getStringTr()
 	{
-		return "";
+		return "Zafer Talebi";
 	}
 
 	std::string ClaimVictory::getStringUk()
 	{
-		return "";
+		return "Вимога перемоги";
 	}
 
-	std::string ClaimVictory::getStringVn()
+	std::string ClaimVictory::getStringVi()
 	{
-		return "";
+		return "Yêu cầu chiến thắng";
 	}
 
 	std::string ClaimVictory::getStringZhCn()
 	{
-		return "";
+		return "要求胜利";
 	}
 
 	std::string ClaimVictory::getStringZhTw()
 	{
-		return "";
+		return "要求勝利";
 	}
 }

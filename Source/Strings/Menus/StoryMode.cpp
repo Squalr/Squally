@@ -158,7 +158,7 @@ namespace LocaleStrings
 		return "Режим історії";
 	}
 
-	std::string StoryMode::getStringVn()
+	std::string StoryMode::getStringVi()
 	{
 		return "Chế độ câu chuyện";
 	}

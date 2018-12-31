@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Minigames::getStringAr()
 	{
-		return "";
+		return "الألعاب المصغرة";
 	}
 
 	std::string Minigames::getStringBg()
 	{
-		return "";
+		return "Мини-игри";
 	}
 
 	std::string Minigames::getStringCs()
 	{
-		return "";
+		return "Mini hry";
 	}
 
 	std::string Minigames::getStringDa()
 	{
-		return "";
+		return "Mini-spil";
 	}
 
 	std::string Minigames::getStringDe()
 	{
-		return "";
+		return "Minispiele";
 	}
 
 	std::string Minigames::getStringEl()
 	{
-		return "";
+		return "Μίνι παιχνίδια";
 	}
 
 	std::string Minigames::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Minigames::getStringEs()
 	{
-		return "";
+		return "Mini juegos";
 	}
 
 	std::string Minigames::getStringEs419()
 	{
-		return "";
+		return "Mini juegos";
 	}
 
 	std::string Minigames::getStringFi()
 	{
-		return "";
+		return "Minipelejä";
 	}
 
 	std::string Minigames::getStringFr()
 	{
-		return "";
+		return "Mini-games";
 	}
 
 	std::string Minigames::getStringHu()
 	{
-		return "";
+		return "Mini játékok";
 	}
 
 	std::string Minigames::getStringIt()
 	{
-		return "";
+		return "Mini-games";
 	}
 
 	std::string Minigames::getStringJa()
 	{
-		return "";
+		return "ミニゲーム";
 	}
 
 	std::string Minigames::getStringKo()
 	{
-		return "";
+		return "미니 게임";
 	}
 
 	std::string Minigames::getStringNl()
 	{
-		return "";
+		return "Minigames";
 	}
 
 	std::string Minigames::getStringNo()
 	{
-		return "";
+		return "Minispill";
 	}
 
 	std::string Minigames::getStringPl()
 	{
-		return "";
+		return "Mini gry";
 	}
 
 	std::string Minigames::getStringPt()
 	{
-		return "";
+		return "Mini jogos";
 	}
 
 	std::string Minigames::getStringPtBr()
 	{
-		return "";
+		return "Mini jogos";
 	}
 
 	std::string Minigames::getStringRo()
 	{
-		return "";
+		return "Mini-jocuri";
 	}
 
 	std::string Minigames::getStringRu()
 	{
-		return "";
+		return "Мини игры";
 	}
 
 	std::string Minigames::getStringSv()
 	{
-		return "";
+		return "Mini-spel";
 	}
 
 	std::string Minigames::getStringTh()
 	{
-		return "";
+		return "มินิเกม";
 	}
 
 	std::string Minigames::getStringTr()
 	{
-		return "";
+		return "Küçük oyunlar";
 	}
 
 	std::string Minigames::getStringUk()
 	{
-		return "";
+		return "Міні-ігри";
 	}
 
-	std::string Minigames::getStringVn()
+	std::string Minigames::getStringVi()
 	{
-		return "";
+		return "Những trò chơi nhỏ";
 	}
 
 	std::string Minigames::getStringZhCn()
 	{
-		return "";
+		return "迷你游戏";
 	}
 
 	std::string Minigames::getStringZhTw()
 	{
-		return "";
+		return "迷你遊戲";
 	}
 }

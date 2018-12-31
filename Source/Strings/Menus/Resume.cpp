@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Resume::getStringAr()
 	{
-		return "";
+		return "استئنف";
 	}
 
 	std::string Resume::getStringBg()
 	{
-		return "";
+		return "Продължи";
 	}
 
 	std::string Resume::getStringCs()
 	{
-		return "";
+		return "pokračovat ve hře";
 	}
 
 	std::string Resume::getStringDa()
 	{
-		return "";
+		return "Genoptag";
 	}
 
 	std::string Resume::getStringDe()
 	{
-		return "";
+		return "Fortsetzen";
 	}
 
 	std::string Resume::getStringEl()
 	{
-		return "";
+		return "συνέχιση παιχνιδιού";
 	}
 
 	std::string Resume::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Resume::getStringEs()
 	{
-		return "";
+		return "Reanudar";
 	}
 
 	std::string Resume::getStringEs419()
 	{
-		return "";
+		return "Reanudar";
 	}
 
 	std::string Resume::getStringFi()
 	{
-		return "";
+		return "Jatkaa";
 	}
 
 	std::string Resume::getStringFr()
 	{
-		return "Resume";
+		return "Reprendre";
 	}
 
 	std::string Resume::getStringHu()
 	{
-		return "";
+		return "Visszanyer";
 	}
 
 	std::string Resume::getStringIt()
 	{
-		return "";
+		return "Riprendere";
 	}
 
 	std::string Resume::getStringJa()
 	{
-		return "";
+		return "ゲームを再開";
 	}
 
 	std::string Resume::getStringKo()
 	{
-		return "";
+		return "게임을 계속하다";
 	}
 
 	std::string Resume::getStringNl()
 	{
-		return "";
+		return "Hervatten";
 	}
 
 	std::string Resume::getStringNo()
 	{
-		return "";
+		return "Fortsett";
 	}
 
 	std::string Resume::getStringPl()
 	{
-		return "";
+		return "Kontynuuj grę";
 	}
 
 	std::string Resume::getStringPt()
 	{
-		return "";
+		return "Retomar o jogo";
 	}
 
 	std::string Resume::getStringPtBr()
 	{
-		return "";
+		return "Retomar o jogo";
 	}
 
 	std::string Resume::getStringRo()
 	{
-		return "";
+		return "Relua jocul";
 	}
 
 	std::string Resume::getStringRu()
 	{
-		return "";
+		return "продолжить игру";
 	}
 
 	std::string Resume::getStringSv()
 	{
-		return "";
+		return "återupptag spelet";
 	}
 
 	std::string Resume::getStringTh()
 	{
-		return "";
+		return "กลับสู่เกม";
 	}
 
 	std::string Resume::getStringTr()
 	{
-		return "";
+		return "oyuna devam et";
 	}
 
 	std::string Resume::getStringUk()
 	{
-		return "";
+		return "відновити гру";
 	}
 
-	std::string Resume::getStringVn()
+	std::string Resume::getStringVi()
 	{
-		return "";
+		return "tiếp tục trò chơi";
 	}
 
 	std::string Resume::getStringZhCn()
 	{
-		return "";
+		return "游戏继续";
 	}
 
 	std::string Resume::getStringZhTw()
 	{
-		return "";
+		return "遊戲繼續";
 	}
 }

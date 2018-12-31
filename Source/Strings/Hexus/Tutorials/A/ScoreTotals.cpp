@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string ScoreTotals::getStringAr()
 	{
-		return "";
+		return "الهدف بسيط. كل من حصل على أعلى نتيجة في نهاية الجولة يفوز بالجولة.";
 	}
 
 	std::string ScoreTotals::getStringBg()
 	{
-		return "";
+		return "Целта е проста. Който има по-висок резултат в края на кръг, печели кръга.";
 	}
 
 	std::string ScoreTotals::getStringCs()
 	{
-		return "";
+		return "Cíl je jednoduchý. Kdo má nejvyšší skóre na konci kola, vyhraje kolo.";
 	}
 
 	std::string ScoreTotals::getStringDa()
 	{
-		return "";
+		return "Målet er simpelt. Den, der har den højere score i slutningen af ​​en runde vinder runden.";
 	}
 
 	std::string ScoreTotals::getStringDe()
 	{
-		return "";
+		return "Das Ziel ist einfach. Wer am Ende einer Runde die höhere Punktzahl hat, gewinnt die Runde.";
 	}
 
 	std::string ScoreTotals::getStringEl()
 	{
-		return "";
+		return "Ο στόχος είναι απλός. Όποιος έχει το υψηλότερο σκορ στο τέλος ενός γύρου κερδίζει το γύρο.";
 	}
 
 	std::string ScoreTotals::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string ScoreTotals::getStringEs()
 	{
-		return "";
+		return "El objetivo es simple. Quien tenga la puntuación más alta al final de una ronda gana la ronda.";
 	}
 
 	std::string ScoreTotals::getStringEs419()
 	{
-		return "";
+		return "El objetivo es simple. Quien tenga la puntuación más alta al final de una ronda gana la ronda.";
 	}
 
 	std::string ScoreTotals::getStringFi()
 	{
-		return "";
+		return "Tavoitteena on yksinkertainen. Kuka tahansa, jolla on suurempi pisteet kierroksen lopussa, voittaa kierroksen.";
 	}
 
 	std::string ScoreTotals::getStringFr()
 	{
-		return "";
+		return "L'objectif est simple. Celui qui a le score le plus élevé à la fin d'une manche remporte la manche.";
 	}
 
 	std::string ScoreTotals::getStringHu()
 	{
-		return "";
+		return "A cél egyszerű. Aki a forduló végén magasabb pontszámot kap, megnyeri a fordulót.";
 	}
 
 	std::string ScoreTotals::getStringIt()
 	{
-		return "";
+		return "L'obiettivo è semplice. Chi ha il punteggio più alto alla fine di un round vince il round.";
 	}
 
 	std::string ScoreTotals::getStringJa()
 	{
-		return "";
+		return "目的は簡単です。ラウンドの終わりに高い得点を得た人がそのラウンドに勝ちます。";
 	}
 
 	std::string ScoreTotals::getStringKo()
 	{
-		return "";
+		return "목적은 간단합니다. 라운드가 끝나면 높은 점수를받은 사람은 라운드에서 승리합니다.";
 	}
 
 	std::string ScoreTotals::getStringNl()
 	{
-		return "";
+		return "Het doel is eenvoudig. Wie aan het einde van een ronde de hoogste score heeft, wint de ronde.";
 	}
 
 	std::string ScoreTotals::getStringNo()
 	{
-		return "";
+		return "Målet er enkelt. Den som har høyere poengsum på slutten av en runde vinner runden.";
 	}
 
 	std::string ScoreTotals::getStringPl()
 	{
-		return "";
+		return "Cel jest prosty. Ten, kto ma wyższą liczbę punktów na koniec rundy, wygrywa rundę.";
 	}
 
 	std::string ScoreTotals::getStringPt()
 	{
-		return "";
+		return "O objetivo é simples. Quem tiver a maior pontuação no final de uma rodada ganha a rodada.";
 	}
 
 	std::string ScoreTotals::getStringPtBr()
 	{
-		return "";
+		return "O objetivo é simples. Quem tiver a maior pontuação no final de uma rodada ganha a rodada.";
 	}
 
 	std::string ScoreTotals::getStringRo()
 	{
-		return "";
+		return "Obiectivul este simplu. Oricine are scorul cel mai mare la sfârșitul unei runde câștigă runda.";
 	}
 
 	std::string ScoreTotals::getStringRu()
 	{
-		return "";
+		return "Цель проста. Тот, кто имеет более высокий балл в конце раунда, выигрывает раунд.";
 	}
 
 	std::string ScoreTotals::getStringSv()
 	{
-		return "";
+		return "Målet är enkelt. Den som har högre poäng i slutet av en runda vinner rundan.";
 	}
 
 	std::string ScoreTotals::getStringTh()
 	{
-		return "";
+		return "วัตถุประสงค์ง่าย ๆ ใครก็ตามที่มีคะแนนสูงกว่าในตอนท้ายของรอบชนะรอบ";
 	}
 
 	std::string ScoreTotals::getStringTr()
 	{
-		return "";
+		return "Amaç basit. Bir turun sonunda en yüksek puanı alan kişi, turu kazanır.";
 	}
 
 	std::string ScoreTotals::getStringUk()
 	{
-		return "";
+		return "Мета проста. Той, хто має вищий бал в кінці раунду, виграє раунд.";
 	}
 
-	std::string ScoreTotals::getStringVn()
+	std::string ScoreTotals::getStringVi()
 	{
-		return "";
+		return "Mục tiêu rất đơn giản. Ai có số điểm cao hơn ở cuối vòng thì sẽ thắng vòng đó.";
 	}
 
 	std::string ScoreTotals::getStringZhCn()
 	{
-		return "";
+		return "目标很简单。在一轮结束时获得较高分数的人赢得该轮。";
 	}
 
 	std::string ScoreTotals::getStringZhTw()
 	{
-		return "";
+		return "目標很簡單。在一輪結束時獲得較高分數的人贏得該輪。";
 	}
 }

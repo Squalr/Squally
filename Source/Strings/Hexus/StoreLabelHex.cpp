@@ -158,7 +158,7 @@ namespace LocaleStrings
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringVn()
+	std::string StoreLabelHex::getStringVi()
 	{
 		return "F";
 	}

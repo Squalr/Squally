@@ -30,146 +30,146 @@ namespace LocaleStrings
 
 	std::string Decimal6::getStringAr()
 	{
-		return "";
+		return "Kovi";
 	}
 
 	std::string Decimal6::getStringBg()
 	{
-		return "";
+		return "Kovi";
 	}
 
 	std::string Decimal6::getStringCs()
 	{
-		return "";
+		return "Bojování";
 	}
 
 	std::string Decimal6::getStringDa()
 	{
-		return "";
+		return "kovi";
 	}
 
 	std::string Decimal6::getStringDe()
 	{
-		return "";
+		return "Kämpfen";
 	}
 
 	std::string Decimal6::getStringEl()
 	{
-		return "";
+		return "Καταπολέμηση";
 	}
 
 	std::string Decimal6::getStringEn()
 	{
-		return "Kovius";
+		return "Fighting";
 	}
 
 	std::string Decimal6::getStringEs()
 	{
-		return "";
+		return "Peleando";
 	}
 
 	std::string Decimal6::getStringEs419()
 	{
-		return "";
+		return "Peleando";
 	}
 
 	std::string Decimal6::getStringFi()
 	{
-		return "";
+		return "Kovi";
 	}
 
 	std::string Decimal6::getStringFr()
 	{
-		return "";
+		return "Se battre";
 	}
 
 	std::string Decimal6::getStringHu()
 	{
-		return "";
+		return "Kovi";
 	}
 
 	std::string Decimal6::getStringIt()
 	{
-		return "";
+		return "Kovi";
 	}
 
 	std::string Decimal6::getStringJa()
 	{
-		return "";
+		return "けんか";
 	}
 
 	std::string Decimal6::getStringKo()
 	{
-		return "";
+		return "격투";
 	}
 
 	std::string Decimal6::getStringNl()
 	{
-		return "";
+		return "Kovi";
 	}
 
 	std::string Decimal6::getStringNo()
 	{
-		return "";
+		return "Kovi";
 	}
 
 	std::string Decimal6::getStringPl()
 	{
-		return "";
+		return "Walka";
 	}
 
 	std::string Decimal6::getStringPt()
 	{
-		return "";
+		return "Lutando";
 	}
 
 	std::string Decimal6::getStringPtBr()
 	{
-		return "";
+		return "Lutando";
 	}
 
 	std::string Decimal6::getStringRo()
 	{
-		return "";
+		return "Kovi";
 	}
 
 	std::string Decimal6::getStringRu()
 	{
-		return "";
+		return "Кови";
 	}
 
 	std::string Decimal6::getStringSv()
 	{
-		return "";
+		return "Kovi";
 	}
 
 	std::string Decimal6::getStringTh()
 	{
-		return "";
+		return "KOVI";
 	}
 
 	std::string Decimal6::getStringTr()
 	{
-		return "";
+		return "KOVI";
 	}
 
 	std::string Decimal6::getStringUk()
 	{
-		return "";
+		return "Боротьба";
 	}
 
-	std::string Decimal6::getStringVn()
+	std::string Decimal6::getStringVi()
 	{
-		return "";
+		return "Chiến đấu";
 	}
 
 	std::string Decimal6::getStringZhCn()
 	{
-		return "";
+		return "Kovi";
 	}
 
 	std::string Decimal6::getStringZhTw()
 	{
-		return "";
+		return "Kovi";
 	}
 }

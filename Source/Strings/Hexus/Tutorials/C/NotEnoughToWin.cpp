@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string NotEnoughToWin::getStringAr()
 	{
-		return "";
+		return "لن تكون بطاقاتك كافية للفوز بهذه الجولة!";
 	}
 
 	std::string NotEnoughToWin::getStringBg()
 	{
-		return "";
+		return "Вашите карти няма да бъдат достатъчни, за да спечелите този кръг!";
 	}
 
 	std::string NotEnoughToWin::getStringCs()
 	{
-		return "";
+		return "Vaše karty nebudou stačit k tomu, aby vyhrál toto kolo!";
 	}
 
 	std::string NotEnoughToWin::getStringDa()
 	{
-		return "";
+		return "Dine kort vil ikke være nok til at vinde denne runde!";
 	}
 
 	std::string NotEnoughToWin::getStringDe()
 	{
-		return "";
+		return "Ihre Karten werden nicht ausreichen, um diese Runde zu gewinnen!";
 	}
 
 	std::string NotEnoughToWin::getStringEl()
 	{
-		return "";
+		return "Οι κάρτες σας δεν θα είναι αρκετές για να κερδίσετε αυτόν τον γύρο!";
 	}
 
 	std::string NotEnoughToWin::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string NotEnoughToWin::getStringEs()
 	{
-		return "";
+		return "¡Tus cartas no serán suficientes para ganar esta ronda!";
 	}
 
 	std::string NotEnoughToWin::getStringEs419()
 	{
-		return "";
+		return "¡Tus cartas no serán suficientes para ganar esta ronda!";
 	}
 
 	std::string NotEnoughToWin::getStringFi()
 	{
-		return "";
+		return "Korttisi eivät riitä voittamaan tämän kierroksen!";
 	}
 
 	std::string NotEnoughToWin::getStringFr()
 	{
-		return "";
+		return "Vos cartes ne seront pas assez pour gagner ce tour!";
 	}
 
 	std::string NotEnoughToWin::getStringHu()
 	{
-		return "";
+		return "A kártyáid nem lesznek elégek, hogy megnyerjük ezt a fordulót!";
 	}
 
 	std::string NotEnoughToWin::getStringIt()
 	{
-		return "";
+		return "Le tue carte non saranno sufficienti per vincere questo round!";
 	}
 
 	std::string NotEnoughToWin::getStringJa()
 	{
-		return "";
+		return "あなたのカードはこのラウンドに勝つのに十分ではないでしょう！";
 	}
 
 	std::string NotEnoughToWin::getStringKo()
 	{
-		return "";
+		return "당신의 카드는이 라운드에서 이기기에 충분하지 않습니다!";
 	}
 
 	std::string NotEnoughToWin::getStringNl()
 	{
-		return "";
+		return "Je kaarten zijn niet genoeg om deze ronde te winnen!";
 	}
 
 	std::string NotEnoughToWin::getStringNo()
 	{
-		return "";
+		return "Kortene dine vil ikke være nok til å vinne denne runden!";
 	}
 
 	std::string NotEnoughToWin::getStringPl()
 	{
-		return "";
+		return "Twoje karty nie wystarczą, aby wygrać w tej rundzie!";
 	}
 
 	std::string NotEnoughToWin::getStringPt()
 	{
-		return "";
+		return "Suas cartas não serão suficientes para vencer esta rodada!";
 	}
 
 	std::string NotEnoughToWin::getStringPtBr()
 	{
-		return "";
+		return "Suas cartas não serão suficientes para vencer esta rodada!";
 	}
 
 	std::string NotEnoughToWin::getStringRo()
 	{
-		return "";
+		return "Cardurile tale nu vor fi suficiente pentru a câștiga această rundă!";
 	}
 
 	std::string NotEnoughToWin::getStringRu()
 	{
-		return "";
+		return "Твоих карт не хватит, чтобы выиграть этот раунд!";
 	}
 
 	std::string NotEnoughToWin::getStringSv()
 	{
-		return "";
+		return "Dina kort kommer inte räcka för att vinna denna runda!";
 	}
 
 	std::string NotEnoughToWin::getStringTh()
 	{
-		return "";
+		return "ไพ่ของคุณจะไม่เพียงพอที่จะชนะในรอบนี้!";
 	}
 
 	std::string NotEnoughToWin::getStringTr()
 	{
-		return "";
+		return "Kartlarınız bu turu kazanmak için yeterli olmayacak!";
 	}
 
 	std::string NotEnoughToWin::getStringUk()
 	{
-		return "";
+		return "Ваших карт не вистачить, щоб виграти цей раунд!";
 	}
 
-	std::string NotEnoughToWin::getStringVn()
+	std::string NotEnoughToWin::getStringVi()
 	{
-		return "";
+		return "Thẻ của bạn sẽ không đủ để giành chiến thắng trong vòng này!";
 	}
 
 	std::string NotEnoughToWin::getStringZhCn()
 	{
-		return "";
+		return "你的牌不足以赢得这一轮！";
 	}
 
 	std::string NotEnoughToWin::getStringZhTw()
 	{
-		return "";
+		return "你的牌不足以贏得這一輪！";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Hex15::getStringAr()
 	{
-		return "";
+		return "دارث";
 	}
 
 	std::string Hex15::getStringBg()
 	{
-		return "";
+		return "Дарт";
 	}
 
 	std::string Hex15::getStringCs()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringDa()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringDe()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringEl()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Hex15::getStringEs()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringEs419()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringFi()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringFr()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringHu()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringIt()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringJa()
 	{
-		return "";
+		return "ダース";
 	}
 
 	std::string Hex15::getStringKo()
 	{
-		return "";
+		return "타스";
 	}
 
 	std::string Hex15::getStringNl()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringNo()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringPl()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringPt()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringPtBr()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringRo()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringRu()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringSv()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringTh()
 	{
-		return "";
+		return "ดาร์ท";
 	}
 
 	std::string Hex15::getStringTr()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringUk()
 	{
-		return "";
+		return "Дарт";
 	}
 
-	std::string Hex15::getStringVn()
+	std::string Hex15::getStringVi()
 	{
-		return "";
+		return "Xarth";
 	}
 
 	std::string Hex15::getStringZhCn()
 	{
-		return "";
+		return "达斯";
 	}
 
 	std::string Hex15::getStringZhTw()
 	{
-		return "";
+		return "達斯";
 	}
 }

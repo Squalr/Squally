@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string LogicalAnd::getStringAr()
 	{
-		return "";
+		return "منطقي و";
 	}
 
 	std::string LogicalAnd::getStringBg()
 	{
-		return "";
+		return "Логично И";
 	}
 
 	std::string LogicalAnd::getStringCs()
 	{
-		return "";
+		return "Logické AND";
 	}
 
 	std::string LogicalAnd::getStringDa()
 	{
-		return "";
+		return "Logisk AND";
 	}
 
 	std::string LogicalAnd::getStringDe()
 	{
-		return "";
+		return "Logisches UND";
 	}
 
 	std::string LogicalAnd::getStringEl()
 	{
-		return "";
+		return "Λογική AND";
 	}
 
 	std::string LogicalAnd::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string LogicalAnd::getStringEs()
 	{
-		return "";
+		return "Y lógico";
 	}
 
 	std::string LogicalAnd::getStringEs419()
 	{
-		return "";
+		return "Y lógico";
 	}
 
 	std::string LogicalAnd::getStringFi()
 	{
-		return "";
+		return "Looginen JA";
 	}
 
 	std::string LogicalAnd::getStringFr()
 	{
-		return "";
+		return "ET logique";
 	}
 
 	std::string LogicalAnd::getStringHu()
 	{
-		return "";
+		return "Logikai ÉS";
 	}
 
 	std::string LogicalAnd::getStringIt()
 	{
-		return "";
+		return "AND logico";
 	}
 
 	std::string LogicalAnd::getStringJa()
 	{
-		return "";
+		return "論理積";
 	}
 
 	std::string LogicalAnd::getStringKo()
 	{
-		return "";
+		return "논리적 AND";
 	}
 
 	std::string LogicalAnd::getStringNl()
 	{
-		return "";
+		return "Logisch EN";
 	}
 
 	std::string LogicalAnd::getStringNo()
 	{
-		return "";
+		return "Logisk AND";
 	}
 
 	std::string LogicalAnd::getStringPl()
 	{
-		return "";
+		return "Logiczne AND";
 	}
 
 	std::string LogicalAnd::getStringPt()
 	{
-		return "";
+		return "E lógico";
 	}
 
 	std::string LogicalAnd::getStringPtBr()
 	{
-		return "";
+		return "E lógico";
 	}
 
 	std::string LogicalAnd::getStringRo()
 	{
-		return "";
+		return "Logic AND";
 	}
 
 	std::string LogicalAnd::getStringRu()
 	{
-		return "";
+		return "Логическое И";
 	}
 
 	std::string LogicalAnd::getStringSv()
 	{
-		return "";
+		return "Logisk OCH";
 	}
 
 	std::string LogicalAnd::getStringTh()
 	{
-		return "";
+		return "ตรรกะและ";
 	}
 
 	std::string LogicalAnd::getStringTr()
 	{
-		return "";
+		return "Mantıksal VE";
 	}
 
 	std::string LogicalAnd::getStringUk()
 	{
-		return "";
+		return "Логічний AND";
 	}
 
-	std::string LogicalAnd::getStringVn()
+	std::string LogicalAnd::getStringVi()
 	{
-		return "";
+		return "Hợp lý VÀ";
 	}
 
 	std::string LogicalAnd::getStringZhCn()
 	{
-		return "";
+		return "逻辑和";
 	}
 
 	std::string LogicalAnd::getStringZhTw()
 	{
-		return "";
+		return "邏輯和";
 	}
 }

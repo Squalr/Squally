@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string BinStorm::getStringAr()
 	{
-		return "";
+		return "عاصفة ثنائية";
 	}
 
 	std::string BinStorm::getStringBg()
 	{
-		return "";
+		return "бинарна буря";
 	}
 
 	std::string BinStorm::getStringCs()
 	{
-		return "";
+		return "binární bouře";
 	}
 
 	std::string BinStorm::getStringDa()
 	{
-		return "";
+		return "binær storm";
 	}
 
 	std::string BinStorm::getStringDe()
 	{
-		return "";
+		return "binärer Sturm";
 	}
 
 	std::string BinStorm::getStringEl()
 	{
-		return "";
+		return "δυαδική καταιγίδα";
 	}
 
 	std::string BinStorm::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string BinStorm::getStringEs()
 	{
-		return "";
+		return "tormenta binaria";
 	}
 
 	std::string BinStorm::getStringEs419()
 	{
-		return "";
+		return "tormenta binaria";
 	}
 
 	std::string BinStorm::getStringFi()
 	{
-		return "";
+		return "binaarinen myrsky";
 	}
 
 	std::string BinStorm::getStringFr()
 	{
-		return "";
+		return "tempête binaire";
 	}
 
 	std::string BinStorm::getStringHu()
 	{
-		return "";
+		return "bináris vihar";
 	}
 
 	std::string BinStorm::getStringIt()
 	{
-		return "";
+		return "tempesta binaria";
 	}
 
 	std::string BinStorm::getStringJa()
 	{
-		return "";
+		return "バイナリストーム";
 	}
 
 	std::string BinStorm::getStringKo()
 	{
-		return "";
+		return "이진 폭풍";
 	}
 
 	std::string BinStorm::getStringNl()
 	{
-		return "";
+		return "binaire storm";
 	}
 
 	std::string BinStorm::getStringNo()
 	{
-		return "";
+		return "binær storm";
 	}
 
 	std::string BinStorm::getStringPl()
 	{
-		return "";
+		return "burza binarna";
 	}
 
 	std::string BinStorm::getStringPt()
 	{
-		return "";
+		return "tempestade binária";
 	}
 
 	std::string BinStorm::getStringPtBr()
 	{
-		return "";
+		return "tempestade binária";
 	}
 
 	std::string BinStorm::getStringRo()
 	{
-		return "";
+		return "furtună binară";
 	}
 
 	std::string BinStorm::getStringRu()
 	{
-		return "";
+		return "бинарный шторм";
 	}
 
 	std::string BinStorm::getStringSv()
 	{
-		return "";
+		return "binär storm";
 	}
 
 	std::string BinStorm::getStringTh()
 	{
-		return "";
+		return "พายุไบนารี";
 	}
 
 	std::string BinStorm::getStringTr()
 	{
-		return "";
+		return "ikili fırtına";
 	}
 
 	std::string BinStorm::getStringUk()
 	{
-		return "";
+		return "бінарний шторм";
 	}
 
-	std::string BinStorm::getStringVn()
+	std::string BinStorm::getStringVi()
 	{
-		return "";
+		return "cơn bão nhị phân";
 	}
 
 	std::string BinStorm::getStringZhCn()
 	{
-		return "";
+		return "二元风暴";
 	}
 
 	std::string BinStorm::getStringZhTw()
 	{
-		return "";
+		return "二元風暴";
 	}
 }

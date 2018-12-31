@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string LambdaCrypts::getStringAr()
 	{
-		return "";
+		return "Lambda الخبايا";
 	}
 
 	std::string LambdaCrypts::getStringBg()
 	{
-		return "";
+		return "Ламбда крипти";
 	}
 
 	std::string LambdaCrypts::getStringCs()
 	{
-		return "";
+		return "Lambda krypty";
 	}
 
 	std::string LambdaCrypts::getStringDa()
 	{
-		return "";
+		return "Lambda krypter";
 	}
 
 	std::string LambdaCrypts::getStringDe()
 	{
-		return "";
+		return "Lambda-Krypten";
 	}
 
 	std::string LambdaCrypts::getStringEl()
 	{
-		return "";
+		return "Λάμπδα κρυπτά";
 	}
 
 	std::string LambdaCrypts::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string LambdaCrypts::getStringEs()
 	{
-		return "";
+		return "Criptas lambda";
 	}
 
 	std::string LambdaCrypts::getStringEs419()
 	{
-		return "";
+		return "Criptas lambda";
 	}
 
 	std::string LambdaCrypts::getStringFi()
 	{
-		return "";
+		return "Lambda salaa";
 	}
 
 	std::string LambdaCrypts::getStringFr()
 	{
-		return "";
+		return "Cryptes Lambda";
 	}
 
 	std::string LambdaCrypts::getStringHu()
 	{
-		return "";
+		return "Lambda crypts";
 	}
 
 	std::string LambdaCrypts::getStringIt()
 	{
-		return "";
+		return "Cripte Lambda";
 	}
 
 	std::string LambdaCrypts::getStringJa()
 	{
-		return "";
+		return "ラムダ暗号";
 	}
 
 	std::string LambdaCrypts::getStringKo()
 	{
-		return "";
+		return "람다 음부";
 	}
 
 	std::string LambdaCrypts::getStringNl()
 	{
-		return "";
+		return "Lambda crypten";
 	}
 
 	std::string LambdaCrypts::getStringNo()
 	{
-		return "";
+		return "Lambda krypter";
 	}
 
 	std::string LambdaCrypts::getStringPl()
 	{
-		return "";
+		return "Krypty Lambda";
 	}
 
 	std::string LambdaCrypts::getStringPt()
 	{
-		return "";
+		return "Criptas Lambda";
 	}
 
 	std::string LambdaCrypts::getStringPtBr()
 	{
-		return "";
+		return "Criptas Lambda";
 	}
 
 	std::string LambdaCrypts::getStringRo()
 	{
-		return "";
+		return "Lampda cripte";
 	}
 
 	std::string LambdaCrypts::getStringRu()
 	{
-		return "";
+		return "Лямбда склепы";
 	}
 
 	std::string LambdaCrypts::getStringSv()
 	{
-		return "";
+		return "Lambda krypter";
 	}
 
 	std::string LambdaCrypts::getStringTh()
 	{
-		return "";
+		return "แลมด้า crypts";
 	}
 
 	std::string LambdaCrypts::getStringTr()
 	{
-		return "";
+		return "Lambda şifreleri";
 	}
 
 	std::string LambdaCrypts::getStringUk()
 	{
-		return "";
+		return "Лямбда-склепи";
 	}
 
-	std::string LambdaCrypts::getStringVn()
+	std::string LambdaCrypts::getStringVi()
 	{
-		return "";
+		return "Hầm thịt cừu";
 	}
 
 	std::string LambdaCrypts::getStringZhCn()
 	{
-		return "";
+		return "Lambda地穴";
 	}
 
 	std::string LambdaCrypts::getStringZhTw()
 	{
-		return "";
+		return "Lambda地穴";
 	}
 }

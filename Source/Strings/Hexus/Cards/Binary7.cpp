@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Binary7::getStringAr()
 	{
-		return "";
+		return "نبتون";
 	}
 
 	std::string Binary7::getStringBg()
 	{
-		return "";
+		return "Нептун";
 	}
 
 	std::string Binary7::getStringCs()
 	{
-		return "";
+		return "Neptune";
 	}
 
 	std::string Binary7::getStringDa()
 	{
-		return "";
+		return "neptune";
 	}
 
 	std::string Binary7::getStringDe()
 	{
-		return "";
+		return "Neptun";
 	}
 
 	std::string Binary7::getStringEl()
 	{
-		return "";
+		return "Ποσειδώνας";
 	}
 
 	std::string Binary7::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Binary7::getStringEs()
 	{
-		return "";
+		return "Neptuno";
 	}
 
 	std::string Binary7::getStringEs419()
 	{
-		return "";
+		return "Neptuno";
 	}
 
 	std::string Binary7::getStringFi()
 	{
-		return "";
+		return "Neptunus";
 	}
 
 	std::string Binary7::getStringFr()
 	{
-		return "";
+		return "neptune";
 	}
 
 	std::string Binary7::getStringHu()
 	{
-		return "";
+		return "Neptun";
 	}
 
 	std::string Binary7::getStringIt()
 	{
-		return "";
+		return "Nettuno";
 	}
 
 	std::string Binary7::getStringJa()
 	{
-		return "";
+		return "ネプチューン";
 	}
 
 	std::string Binary7::getStringKo()
 	{
-		return "";
+		return "해왕성";
 	}
 
 	std::string Binary7::getStringNl()
 	{
-		return "";
+		return "Neptunus";
 	}
 
 	std::string Binary7::getStringNo()
 	{
-		return "";
+		return "neptune";
 	}
 
 	std::string Binary7::getStringPl()
 	{
-		return "";
+		return "Neptun";
 	}
 
 	std::string Binary7::getStringPt()
 	{
-		return "";
+		return "Netuno";
 	}
 
 	std::string Binary7::getStringPtBr()
 	{
-		return "";
+		return "Netuno";
 	}
 
 	std::string Binary7::getStringRo()
 	{
-		return "";
+		return "Neptun";
 	}
 
 	std::string Binary7::getStringRu()
 	{
-		return "";
+		return "Нептун";
 	}
 
 	std::string Binary7::getStringSv()
 	{
-		return "";
+		return "neptunus";
 	}
 
 	std::string Binary7::getStringTh()
 	{
-		return "";
+		return "เกตุ";
 	}
 
 	std::string Binary7::getStringTr()
 	{
-		return "";
+		return "Neptün";
 	}
 
 	std::string Binary7::getStringUk()
 	{
-		return "";
+		return "нептун";
 	}
 
-	std::string Binary7::getStringVn()
+	std::string Binary7::getStringVi()
 	{
-		return "";
+		return "sao Hải vương";
 	}
 
 	std::string Binary7::getStringZhCn()
 	{
-		return "";
+		return "海王星";
 	}
 
 	std::string Binary7::getStringZhTw()
 	{
-		return "";
+		return "海王星";
 	}
 }

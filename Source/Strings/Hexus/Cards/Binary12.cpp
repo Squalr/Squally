@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Binary12::getStringAr()
 	{
-		return "";
+		return "روح الشجرة";
 	}
 
 	std::string Binary12::getStringBg()
 	{
-		return "";
+		return "дървесен дух";
 	}
 
 	std::string Binary12::getStringCs()
 	{
-		return "";
+		return "ducha stromu";
 	}
 
 	std::string Binary12::getStringDa()
 	{
-		return "";
+		return "træ ånd";
 	}
 
 	std::string Binary12::getStringDe()
 	{
-		return "";
+		return "Baumgeist";
 	}
 
 	std::string Binary12::getStringEl()
 	{
-		return "";
+		return "πνεύμα δέντρων";
 	}
 
 	std::string Binary12::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Binary12::getStringEs()
 	{
-		return "";
+		return "espíritu de árbol";
 	}
 
 	std::string Binary12::getStringEs419()
 	{
-		return "";
+		return "espíritu de árbol";
 	}
 
 	std::string Binary12::getStringFi()
 	{
-		return "";
+		return "puuhenki";
 	}
 
 	std::string Binary12::getStringFr()
 	{
-		return "";
+		return "esprit d'arbre";
 	}
 
 	std::string Binary12::getStringHu()
 	{
-		return "";
+		return "fa szelleme";
 	}
 
 	std::string Binary12::getStringIt()
 	{
-		return "";
+		return "spirito dell'albero";
 	}
 
 	std::string Binary12::getStringJa()
 	{
-		return "";
+		return "木の精神";
 	}
 
 	std::string Binary12::getStringKo()
 	{
-		return "";
+		return "나무의 정신";
 	}
 
 	std::string Binary12::getStringNl()
 	{
-		return "";
+		return "boomgeest";
 	}
 
 	std::string Binary12::getStringNo()
 	{
-		return "";
+		return "tre ånd";
 	}
 
 	std::string Binary12::getStringPl()
 	{
-		return "";
+		return "duch drzewa";
 	}
 
 	std::string Binary12::getStringPt()
 	{
-		return "";
+		return "espírito de árvore";
 	}
 
 	std::string Binary12::getStringPtBr()
 	{
-		return "";
+		return "espírito de árvore";
 	}
 
 	std::string Binary12::getStringRo()
 	{
-		return "";
+		return "copac spirit";
 	}
 
 	std::string Binary12::getStringRu()
 	{
-		return "";
+		return "дух дерева";
 	}
 
 	std::string Binary12::getStringSv()
 	{
-		return "";
+		return "trädanda";
 	}
 
 	std::string Binary12::getStringTh()
 	{
-		return "";
+		return "วิญญาณต้นไม้";
 	}
 
 	std::string Binary12::getStringTr()
 	{
-		return "";
+		return "ağaç ruhu";
 	}
 
 	std::string Binary12::getStringUk()
 	{
-		return "";
+		return "дух дерева";
 	}
 
-	std::string Binary12::getStringVn()
+	std::string Binary12::getStringVi()
 	{
-		return "";
+		return "cây linh hồn";
 	}
 
 	std::string Binary12::getStringZhCn()
 	{
-		return "";
+		return "树精神";
 	}
 
 	std::string Binary12::getStringZhTw()
 	{
-		return "";
+		return "樹精神";
 	}
 }

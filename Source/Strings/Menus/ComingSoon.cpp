@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string ComingSoon::getStringAr()
 	{
-		return "";
+		return "قريبا...";
 	}
 
 	std::string ComingSoon::getStringBg()
 	{
-		return "";
+		return "Очаквайте скоро...";
 	}
 
 	std::string ComingSoon::getStringCs()
 	{
-		return "";
+		return "Brzy...";
 	}
 
 	std::string ComingSoon::getStringDa()
 	{
-		return "";
+		return "Kommer snart ...";
 	}
 
 	std::string ComingSoon::getStringDe()
 	{
-		return "";
+		return "Demnächst...";
 	}
 
 	std::string ComingSoon::getStringEl()
 	{
-		return "";
+		return "Ερχομαι συντομα...";
 	}
 
 	std::string ComingSoon::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string ComingSoon::getStringEs()
 	{
-		return "";
+		return "Próximamente...";
 	}
 
 	std::string ComingSoon::getStringEs419()
 	{
-		return "";
+		return "Próximamente...";
 	}
 
 	std::string ComingSoon::getStringFi()
 	{
-		return "";
+		return "Tulossa pian...";
 	}
 
 	std::string ComingSoon::getStringFr()
 	{
-		return "";
+		return "Arrive bientôt...";
 	}
 
 	std::string ComingSoon::getStringHu()
 	{
-		return "";
+		return "Hamarosan...";
 	}
 
 	std::string ComingSoon::getStringIt()
 	{
-		return "";
+		return "Prossimamente...";
 	}
 
 	std::string ComingSoon::getStringJa()
 	{
-		return "";
+		return "近日公開...";
 	}
 
 	std::string ComingSoon::getStringKo()
 	{
-		return "";
+		return "곧 나옵니다 ...";
 	}
 
 	std::string ComingSoon::getStringNl()
 	{
-		return "";
+		return "Komt binnenkort...";
 	}
 
 	std::string ComingSoon::getStringNo()
 	{
-		return "";
+		return "Kommer snart...";
 	}
 
 	std::string ComingSoon::getStringPl()
 	{
-		return "";
+		return "Wkrótce...";
 	}
 
 	std::string ComingSoon::getStringPt()
 	{
-		return "";
+		return "Em breve...";
 	}
 
 	std::string ComingSoon::getStringPtBr()
 	{
-		return "";
+		return "Em breve...";
 	}
 
 	std::string ComingSoon::getStringRo()
 	{
-		return "";
+		return "In curand...";
 	}
 
 	std::string ComingSoon::getStringRu()
 	{
-		return "";
+		return "Скоро будет...";
 	}
 
 	std::string ComingSoon::getStringSv()
 	{
-		return "";
+		return "Kommer snart...";
 	}
 
 	std::string ComingSoon::getStringTh()
 	{
-		return "";
+		return "เร็ว ๆ นี้...";
 	}
 
 	std::string ComingSoon::getStringTr()
 	{
-		return "";
+		return "Çok yakında...";
 	}
 
 	std::string ComingSoon::getStringUk()
 	{
-		return "";
+		return "Незабаром...";
 	}
 
-	std::string ComingSoon::getStringVn()
+	std::string ComingSoon::getStringVi()
 	{
-		return "";
+		return "Sắp có ...";
 	}
 
 	std::string ComingSoon::getStringZhCn()
 	{
-		return "";
+		return "快来了...";
 	}
 
 	std::string ComingSoon::getStringZhTw()
 	{
-		return "";
+		return "快來了...";
 	}
 }

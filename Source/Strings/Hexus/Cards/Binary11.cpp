@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Binary11::getStringAr()
 	{
-		return "";
+		return "روك golem";
 	}
 
 	std::string Binary11::getStringBg()
 	{
-		return "";
+		return "рок голем";
 	}
 
 	std::string Binary11::getStringCs()
 	{
-		return "";
+		return "rock golem";
 	}
 
 	std::string Binary11::getStringDa()
 	{
-		return "";
+		return "rock golem";
 	}
 
 	std::string Binary11::getStringDe()
 	{
-		return "";
+		return "Rock Golem";
 	}
 
 	std::string Binary11::getStringEl()
 	{
-		return "";
+		return "rock golem";
 	}
 
 	std::string Binary11::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Binary11::getStringEs()
 	{
-		return "";
+		return "golem de roca";
 	}
 
 	std::string Binary11::getStringEs419()
 	{
-		return "";
+		return "golem de roca";
 	}
 
 	std::string Binary11::getStringFi()
 	{
-		return "";
+		return "rock golem";
 	}
 
 	std::string Binary11::getStringFr()
 	{
-		return "";
+		return "rock golem";
 	}
 
 	std::string Binary11::getStringHu()
 	{
-		return "";
+		return "rock golem";
 	}
 
 	std::string Binary11::getStringIt()
 	{
-		return "";
+		return "golem rock";
 	}
 
 	std::string Binary11::getStringJa()
 	{
-		return "";
+		return "ロックゴーレム";
 	}
 
 	std::string Binary11::getStringKo()
 	{
-		return "";
+		return "바위 골렘";
 	}
 
 	std::string Binary11::getStringNl()
 	{
-		return "";
+		return "rock golem";
 	}
 
 	std::string Binary11::getStringNo()
 	{
-		return "";
+		return "rock golem";
 	}
 
 	std::string Binary11::getStringPl()
 	{
-		return "";
+		return "rock golem";
 	}
 
 	std::string Binary11::getStringPt()
 	{
-		return "";
+		return "rock golem";
 	}
 
 	std::string Binary11::getStringPtBr()
 	{
-		return "";
+		return "rock golem";
 	}
 
 	std::string Binary11::getStringRo()
 	{
-		return "";
+		return "rock golem";
 	}
 
 	std::string Binary11::getStringRu()
 	{
-		return "";
+		return "рок голем";
 	}
 
 	std::string Binary11::getStringSv()
 	{
-		return "";
+		return "rock golem";
 	}
 
 	std::string Binary11::getStringTh()
 	{
-		return "";
+		return "ร็อคโกเล็ม";
 	}
 
 	std::string Binary11::getStringTr()
 	{
-		return "";
+		return "Rock Golem";
 	}
 
 	std::string Binary11::getStringUk()
 	{
-		return "";
+		return "рок-голем";
 	}
 
-	std::string Binary11::getStringVn()
+	std::string Binary11::getStringVi()
 	{
-		return "";
+		return "đá golem";
 	}
 
 	std::string Binary11::getStringZhCn()
 	{
-		return "";
+		return "岩石傀儡";
 	}
 
 	std::string Binary11::getStringZhTw()
 	{
-		return "";
+		return "岩石傀儡";
 	}
 }

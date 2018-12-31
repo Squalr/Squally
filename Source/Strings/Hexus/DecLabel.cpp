@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string DecLabel::getStringAr()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringBg()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringCs()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringDa()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringDe()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringEl()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string DecLabel::getStringEs()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringEs419()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringFi()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringFr()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringHu()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringIt()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringJa()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringKo()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringNl()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringNo()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringPl()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringPt()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringPtBr()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringRo()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringRu()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringSv()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringTh()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringTr()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringUk()
 	{
-		return "";
+		return "DEC:";
 	}
 
-	std::string DecLabel::getStringVn()
+	std::string DecLabel::getStringVi()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringZhCn()
 	{
-		return "";
+		return "DEC:";
 	}
 
 	std::string DecLabel::getStringZhTw()
 	{
-		return "";
+		return "DEC:";
 	}
 }

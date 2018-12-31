@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string EndianForest::getStringAr()
 	{
-		return "";
+		return "الغابة Endian";
 	}
 
 	std::string EndianForest::getStringBg()
 	{
-		return "";
+		return "Горска гора";
 	}
 
 	std::string EndianForest::getStringCs()
 	{
-		return "";
+		return "Endianský les";
 	}
 
 	std::string EndianForest::getStringDa()
 	{
-		return "";
+		return "Endian skov";
 	}
 
 	std::string EndianForest::getStringDe()
 	{
-		return "";
+		return "Endian Wald";
 	}
 
 	std::string EndianForest::getStringEl()
 	{
-		return "";
+		return "Το δάσος Endian";
 	}
 
 	std::string EndianForest::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string EndianForest::getStringEs()
 	{
-		return "";
+		return "Bosque de endian";
 	}
 
 	std::string EndianForest::getStringEs419()
 	{
-		return "";
+		return "Bosque de endian";
 	}
 
 	std::string EndianForest::getStringFi()
 	{
-		return "";
+		return "Endian-metsä";
 	}
 
 	std::string EndianForest::getStringFr()
 	{
-		return "";
+		return "Forêt endienne";
 	}
 
 	std::string EndianForest::getStringHu()
 	{
-		return "";
+		return "Endian erdő";
 	}
 
 	std::string EndianForest::getStringIt()
 	{
-		return "";
+		return "Foresta di Endian";
 	}
 
 	std::string EndianForest::getStringJa()
 	{
-		return "";
+		return "エンディアンの森";
 	}
 
 	std::string EndianForest::getStringKo()
 	{
-		return "";
+		return "엔디안 숲";
 	}
 
 	std::string EndianForest::getStringNl()
 	{
-		return "";
+		return "Endian bos";
 	}
 
 	std::string EndianForest::getStringNo()
 	{
-		return "";
+		return "Endian skog";
 	}
 
 	std::string EndianForest::getStringPl()
 	{
-		return "";
+		return "Las Endian";
 	}
 
 	std::string EndianForest::getStringPt()
 	{
-		return "";
+		return "Floresta endian";
 	}
 
 	std::string EndianForest::getStringPtBr()
 	{
-		return "";
+		return "Floresta endian";
 	}
 
 	std::string EndianForest::getStringRo()
 	{
-		return "";
+		return "Pădurea endiană";
 	}
 
 	std::string EndianForest::getStringRu()
 	{
-		return "";
+		return "Endian Forest";
 	}
 
 	std::string EndianForest::getStringSv()
 	{
-		return "";
+		return "Endian skog";
 	}
 
 	std::string EndianForest::getStringTh()
 	{
-		return "";
+		return "ป่า Endian";
 	}
 
 	std::string EndianForest::getStringTr()
 	{
-		return "";
+		return "Endian ormanı";
 	}
 
 	std::string EndianForest::getStringUk()
 	{
-		return "";
+		return "Ендіанський ліс";
 	}
 
-	std::string EndianForest::getStringVn()
+	std::string EndianForest::getStringVi()
 	{
-		return "";
+		return "Rừng endian";
 	}
 
 	std::string EndianForest::getStringZhCn()
 	{
-		return "";
+		return "Endian森林";
 	}
 
 	std::string EndianForest::getStringZhTw()
 	{
-		return "";
+		return "Endian森林";
 	}
 }

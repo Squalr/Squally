@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Options::getStringAr()
 	{
-		return "";
+		return "خيارات";
 	}
 
 	std::string Options::getStringBg()
 	{
-		return "";
+		return "Настроики";
 	}
 
 	std::string Options::getStringCs()
 	{
-		return "";
+		return "Možnosti";
 	}
 
 	std::string Options::getStringDa()
 	{
-		return "";
+		return "Muligheder";
 	}
 
 	std::string Options::getStringDe()
 	{
-		return "";
+		return "Optionen";
 	}
 
 	std::string Options::getStringEl()
 	{
-		return "";
+		return "Επιλογές";
 	}
 
 	std::string Options::getStringEn()
@@ -65,17 +65,17 @@ namespace LocaleStrings
 
 	std::string Options::getStringEs()
 	{
-		return "";
+		return "Opciones";
 	}
 
 	std::string Options::getStringEs419()
 	{
-		return "";
+		return "Opciones";
 	}
 
 	std::string Options::getStringFi()
 	{
-		return "";
+		return "vaihtoehdot";
 	}
 
 	std::string Options::getStringFr()
@@ -85,91 +85,91 @@ namespace LocaleStrings
 
 	std::string Options::getStringHu()
 	{
-		return "";
+		return "Opciók";
 	}
 
 	std::string Options::getStringIt()
 	{
-		return "";
+		return "Opzioni";
 	}
 
 	std::string Options::getStringJa()
 	{
-		return "";
+		return "オプション";
 	}
 
 	std::string Options::getStringKo()
 	{
-		return "";
+		return "옵션";
 	}
 
 	std::string Options::getStringNl()
 	{
-		return "";
+		return "opties";
 	}
 
 	std::string Options::getStringNo()
 	{
-		return "";
+		return "alternativer";
 	}
 
 	std::string Options::getStringPl()
 	{
-		return "";
+		return "Opcje";
 	}
 
 	std::string Options::getStringPt()
 	{
-		return "";
+		return "Opções";
 	}
 
 	std::string Options::getStringPtBr()
 	{
-		return "";
+		return "Opções";
 	}
 
 	std::string Options::getStringRo()
 	{
-		return "";
+		return "Opțiuni";
 	}
 
 	std::string Options::getStringRu()
 	{
-		return "";
+		return "Опции";
 	}
 
 	std::string Options::getStringSv()
 	{
-		return "";
+		return "alternativ";
 	}
 
 	std::string Options::getStringTh()
 	{
-		return "";
+		return "ตัวเลือก";
 	}
 
 	std::string Options::getStringTr()
 	{
-		return "";
+		return "Seçenekler";
 	}
 
 	std::string Options::getStringUk()
 	{
-		return "";
+		return "Опції";
 	}
 
-	std::string Options::getStringVn()
+	std::string Options::getStringVi()
 	{
-		return "";
+		return "Tùy chọn";
 	}
 
 	std::string Options::getStringZhCn()
 	{
-		return "";
+		return "选项";
 	}
 
 	std::string Options::getStringZhTw()
 	{
-		return "";
+		return "選項";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Binary9::getStringAr()
 	{
-		return "";
+		return "الصهارة golem";
 	}
 
 	std::string Binary9::getStringBg()
 	{
-		return "";
+		return "магма голем";
 	}
 
 	std::string Binary9::getStringCs()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringDa()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringDe()
 	{
-		return "";
+		return "Magma Golem";
 	}
 
 	std::string Binary9::getStringEl()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Binary9::getStringEs()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringEs419()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringFi()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringFr()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringHu()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringIt()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringJa()
 	{
-		return "";
+		return "マグマゴーレム";
 	}
 
 	std::string Binary9::getStringKo()
 	{
-		return "";
+		return "마그마 골렘";
 	}
 
 	std::string Binary9::getStringNl()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringNo()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringPl()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringPt()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringPtBr()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringRo()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringRu()
 	{
-		return "";
+		return "магма голем";
 	}
 
 	std::string Binary9::getStringSv()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringTh()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringTr()
 	{
-		return "";
+		return "magma golem";
 	}
 
 	std::string Binary9::getStringUk()
 	{
-		return "";
+		return "магма-голем";
 	}
 
-	std::string Binary9::getStringVn()
+	std::string Binary9::getStringVi()
 	{
-		return "";
+		return "golem magma";
 	}
 
 	std::string Binary9::getStringZhCn()
 	{
-		return "";
+		return "岩浆傀儡";
 	}
 
 	std::string Binary9::getStringZhTw()
 	{
-		return "";
+		return "岩漿傀儡";
 	}
 }

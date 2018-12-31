@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Back::getStringAr()
 	{
-		return "";
+		return "الى الخلف";
 	}
 
 	std::string Back::getStringBg()
 	{
-		return "";
+		return "обратно";
 	}
 
 	std::string Back::getStringCs()
 	{
-		return "";
+		return "Zadní";
 	}
 
 	std::string Back::getStringDa()
 	{
-		return "";
+		return "Tilbage";
 	}
 
 	std::string Back::getStringDe()
 	{
-		return "";
+		return "Zurück";
 	}
 
 	std::string Back::getStringEl()
 	{
-		return "";
+		return "Πίσω";
 	}
 
 	std::string Back::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Back::getStringEs()
 	{
-		return "";
+		return "Espalda";
 	}
 
 	std::string Back::getStringEs419()
 	{
-		return "";
+		return "Espalda";
 	}
 
 	std::string Back::getStringFi()
 	{
-		return "";
+		return "Takaisin";
 	}
 
 	std::string Back::getStringFr()
 	{
-		return "";
+		return "Retour";
 	}
 
 	std::string Back::getStringHu()
 	{
-		return "";
+		return "Hát";
 	}
 
 	std::string Back::getStringIt()
 	{
-		return "";
+		return "Indietro";
 	}
 
 	std::string Back::getStringJa()
 	{
-		return "";
+		return "バック";
 	}
 
 	std::string Back::getStringKo()
 	{
-		return "";
+		return "뒤로";
 	}
 
 	std::string Back::getStringNl()
 	{
-		return "";
+		return "Terug";
 	}
 
 	std::string Back::getStringNo()
 	{
-		return "";
+		return "Tilbake";
 	}
 
 	std::string Back::getStringPl()
 	{
-		return "";
+		return "Z powrotem";
 	}
 
 	std::string Back::getStringPt()
 	{
-		return "";
+		return "De volta";
 	}
 
 	std::string Back::getStringPtBr()
 	{
-		return "";
+		return "De volta";
 	}
 
 	std::string Back::getStringRo()
 	{
-		return "";
+		return "Înapoi";
 	}
 
 	std::string Back::getStringRu()
 	{
-		return "";
+		return "назад";
 	}
 
 	std::string Back::getStringSv()
 	{
-		return "";
+		return "Tillbaka";
 	}
 
 	std::string Back::getStringTh()
 	{
-		return "";
+		return "กลับ";
 	}
 
 	std::string Back::getStringTr()
 	{
-		return "";
+		return "Geri";
 	}
 
 	std::string Back::getStringUk()
 	{
-		return "";
+		return "Назад";
 	}
 
-	std::string Back::getStringVn()
+	std::string Back::getStringVi()
 	{
-		return "";
+		return "Trở lại";
 	}
 
 	std::string Back::getStringZhCn()
 	{
-		return "";
+		return "背部";
 	}
 
 	std::string Back::getStringZhTw()
 	{
-		return "";
+		return "背部";
 	}
 }

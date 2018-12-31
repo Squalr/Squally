@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Done::getStringAr()
 	{
-		return "";
+		return "فعله";
 	}
 
 	std::string Done::getStringBg()
 	{
-		return "";
+		return "Свършен";
 	}
 
 	std::string Done::getStringCs()
 	{
-		return "";
+		return "Hotovo";
 	}
 
 	std::string Done::getStringDa()
 	{
-		return "";
+		return "Færdig";
 	}
 
 	std::string Done::getStringDe()
 	{
-		return "";
+		return "Erledigt";
 	}
 
 	std::string Done::getStringEl()
 	{
-		return "";
+		return "Εγινε";
 	}
 
 	std::string Done::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Done::getStringEs()
 	{
-		return "";
+		return "Hecho";
 	}
 
 	std::string Done::getStringEs419()
 	{
-		return "";
+		return "Hecho";
 	}
 
 	std::string Done::getStringFi()
 	{
-		return "";
+		return "Tehty";
 	}
 
 	std::string Done::getStringFr()
 	{
-		return "";
+		return "Terminé";
 	}
 
 	std::string Done::getStringHu()
 	{
-		return "";
+		return "Kész";
 	}
 
 	std::string Done::getStringIt()
 	{
-		return "";
+		return "Fatto";
 	}
 
 	std::string Done::getStringJa()
 	{
-		return "";
+		return "完了";
 	}
 
 	std::string Done::getStringKo()
 	{
-		return "";
+		return "끝난";
 	}
 
 	std::string Done::getStringNl()
 	{
-		return "";
+		return "Gedaan";
 	}
 
 	std::string Done::getStringNo()
 	{
-		return "";
+		return "Ferdig";
 	}
 
 	std::string Done::getStringPl()
 	{
-		return "";
+		return "Gotowe";
 	}
 
 	std::string Done::getStringPt()
 	{
-		return "";
+		return "Feito";
 	}
 
 	std::string Done::getStringPtBr()
 	{
-		return "";
+		return "Feito";
 	}
 
 	std::string Done::getStringRo()
 	{
-		return "";
+		return "Terminat";
 	}
 
 	std::string Done::getStringRu()
 	{
-		return "";
+		return "Готово";
 	}
 
 	std::string Done::getStringSv()
 	{
-		return "";
+		return "Gjort";
 	}
 
 	std::string Done::getStringTh()
 	{
-		return "";
+		return "เสร็จสิ้น";
 	}
 
 	std::string Done::getStringTr()
 	{
-		return "";
+		return "tamam";
 	}
 
 	std::string Done::getStringUk()
 	{
-		return "";
+		return "Виконано";
 	}
 
-	std::string Done::getStringVn()
+	std::string Done::getStringVi()
 	{
-		return "";
+		return "Làm xong";
 	}
 
 	std::string Done::getStringZhCn()
 	{
-		return "";
+		return "完成";
 	}
 
 	std::string Done::getStringZhTw()
 	{
-		return "";
+		return "完成";
 	}
 }

@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string FullScreen::getStringAr()
 	{
-		return "";
+		return "شاشة كاملة";
 	}
 
 	std::string FullScreen::getStringBg()
 	{
-		return "";
+		return "Цял екран";
 	}
 
 	std::string FullScreen::getStringCs()
 	{
-		return "";
+		return "Celá obrazovka";
 	}
 
 	std::string FullScreen::getStringDa()
 	{
-		return "";
+		return "Fuld skærm";
 	}
 
 	std::string FullScreen::getStringDe()
 	{
-		return "";
+		return "Vollbildschirm";
 	}
 
 	std::string FullScreen::getStringEl()
 	{
-		return "";
+		return "ΠΛΗΡΗΣ ΟΘΟΝΗ";
 	}
 
 	std::string FullScreen::getStringEn()
@@ -65,17 +65,17 @@ namespace LocaleStrings
 
 	std::string FullScreen::getStringEs()
 	{
-		return "";
+		return "Pantalla completa";
 	}
 
 	std::string FullScreen::getStringEs419()
 	{
-		return "";
+		return "Pantalla completa";
 	}
 
 	std::string FullScreen::getStringFi()
 	{
-		return "";
+		return "Koko näyttö";
 	}
 
 	std::string FullScreen::getStringFr()
@@ -85,91 +85,91 @@ namespace LocaleStrings
 
 	std::string FullScreen::getStringHu()
 	{
-		return "";
+		return "Teljes képernyő";
 	}
 
 	std::string FullScreen::getStringIt()
 	{
-		return "";
+		return "A schermo intero";
 	}
 
 	std::string FullScreen::getStringJa()
 	{
-		return "";
+		return "全画面表示";
 	}
 
 	std::string FullScreen::getStringKo()
 	{
-		return "";
+		return "전체 화면";
 	}
 
 	std::string FullScreen::getStringNl()
 	{
-		return "";
+		return "Volledig scherm";
 	}
 
 	std::string FullScreen::getStringNo()
 	{
-		return "";
+		return "Full skjerm";
 	}
 
 	std::string FullScreen::getStringPl()
 	{
-		return "";
+		return "Pełny ekran";
 	}
 
 	std::string FullScreen::getStringPt()
 	{
-		return "";
+		return "Tela cheia";
 	}
 
 	std::string FullScreen::getStringPtBr()
 	{
-		return "";
+		return "Tela cheia";
 	}
 
 	std::string FullScreen::getStringRo()
 	{
-		return "";
+		return "Ecran complet";
 	}
 
 	std::string FullScreen::getStringRu()
 	{
-		return "";
+		return "Полноэкранный";
 	}
 
 	std::string FullScreen::getStringSv()
 	{
-		return "";
+		return "Fullskärm";
 	}
 
 	std::string FullScreen::getStringTh()
 	{
-		return "";
+		return "เต็มจอ";
 	}
 
 	std::string FullScreen::getStringTr()
 	{
-		return "";
+		return "Tam ekran";
 	}
 
 	std::string FullScreen::getStringUk()
 	{
-		return "";
+		return "Повноекранний";
 	}
 
-	std::string FullScreen::getStringVn()
+	std::string FullScreen::getStringVi()
 	{
-		return "";
+		return "Toàn màn hình";
 	}
 
 	std::string FullScreen::getStringZhCn()
 	{
-		return "";
+		return "全屏";
 	}
 
 	std::string FullScreen::getStringZhTw()
 	{
-		return "";
+		return "全屏";
 	}
 }

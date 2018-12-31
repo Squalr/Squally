@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Binary2::getStringAr()
 	{
-		return "";
+		return "ممتاز";
 	}
 
 	std::string Binary2::getStringBg()
 	{
-		return "";
+		return "отличен";
 	}
 
 	std::string Binary2::getStringCs()
 	{
-		return "";
+		return "vynikající";
 	}
 
 	std::string Binary2::getStringDa()
 	{
-		return "";
+		return "Fremragende";
 	}
 
 	std::string Binary2::getStringDe()
 	{
-		return "";
+		return "ausgezeichnet";
 	}
 
 	std::string Binary2::getStringEl()
 	{
-		return "";
+		return "Άριστη";
 	}
 
 	std::string Binary2::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Binary2::getStringEs()
 	{
-		return "";
+		return "excelente";
 	}
 
 	std::string Binary2::getStringEs419()
 	{
-		return "";
+		return "excelente";
 	}
 
 	std::string Binary2::getStringFi()
 	{
-		return "";
+		return "erinomainen";
 	}
 
 	std::string Binary2::getStringFr()
 	{
-		return "";
+		return "excellent";
 	}
 
 	std::string Binary2::getStringHu()
 	{
-		return "";
+		return "kiváló";
 	}
 
 	std::string Binary2::getStringIt()
 	{
-		return "";
+		return "eccellente";
 	}
 
 	std::string Binary2::getStringJa()
 	{
-		return "";
+		return "優れました";
 	}
 
 	std::string Binary2::getStringKo()
 	{
-		return "";
+		return "우수한";
 	}
 
 	std::string Binary2::getStringNl()
 	{
-		return "";
+		return "Sparkle";
 	}
 
 	std::string Binary2::getStringNo()
 	{
-		return "";
+		return "utmerket";
 	}
 
 	std::string Binary2::getStringPl()
 	{
-		return "";
+		return "doskonały";
 	}
 
 	std::string Binary2::getStringPt()
 	{
-		return "";
+		return "excelente";
 	}
 
 	std::string Binary2::getStringPtBr()
 	{
-		return "";
+		return "excelente";
 	}
 
 	std::string Binary2::getStringRo()
 	{
-		return "";
+		return "excelent";
 	}
 
 	std::string Binary2::getStringRu()
 	{
-		return "";
+		return "отлично";
 	}
 
 	std::string Binary2::getStringSv()
 	{
-		return "";
+		return "utmärkt";
 	}
 
 	std::string Binary2::getStringTh()
 	{
-		return "";
+		return "ยอดเยี่ยม";
 	}
 
 	std::string Binary2::getStringTr()
 	{
-		return "";
+		return "mükemmel";
 	}
 
 	std::string Binary2::getStringUk()
 	{
-		return "";
+		return "відмінно";
 	}
 
-	std::string Binary2::getStringVn()
+	std::string Binary2::getStringVi()
 	{
-		return "";
+		return "xuất sắc";
 	}
 
 	std::string Binary2::getStringZhCn()
 	{
-		return "";
+		return "优";
 	}
 
 	std::string Binary2::getStringZhTw()
 	{
-		return "";
+		return "優";
 	}
 }

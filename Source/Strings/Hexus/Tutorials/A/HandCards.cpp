@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string HandCards::getStringAr()
 	{
-		return "";
+		return "أعطها فرصة! لعب البطاقات الخاصة بك في الصفوف المقابلة لها.";
 	}
 
 	std::string HandCards::getStringBg()
 	{
-		return "";
+		return "Опитай! Играйте картите в съответните им редове.";
 	}
 
 	std::string HandCards::getStringCs()
 	{
-		return "";
+		return "Zkusit to! Zahrajte si karty do odpovídajících řádků.";
 	}
 
 	std::string HandCards::getStringDa()
 	{
-		return "";
+		return "Giv det et skud! Spil dine kort i deres tilsvarende rækker.";
 	}
 
 	std::string HandCards::getStringDe()
 	{
-		return "";
+		return "Versuch es einmal! Spiele deine Karten in die entsprechenden Reihen.";
 	}
 
 	std::string HandCards::getStringEl()
 	{
-		return "";
+		return "Δώστε ένα πλάνο! Παίξτε τις κάρτες σας στις αντίστοιχες σειρές τους.";
 	}
 
 	std::string HandCards::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string HandCards::getStringEs()
 	{
-		return "";
+		return "¡Dale un tiro! Juega tus cartas en sus filas correspondientes.";
 	}
 
 	std::string HandCards::getStringEs419()
 	{
-		return "";
+		return "¡Dale un tiro! Juega tus cartas en sus filas correspondientes.";
 	}
 
 	std::string HandCards::getStringFi()
 	{
-		return "";
+		return "Yritä! Toista korttisi vastaaviin riveihin.";
 	}
 
 	std::string HandCards::getStringFr()
 	{
-		return "";
+		return "Donner un coup de feu! Jouez vos cartes dans les rangées correspondantes.";
 	}
 
 	std::string HandCards::getStringHu()
 	{
-		return "";
+		return "Próbáld meg! Játssza le a kártyáit a megfelelő sorokban.";
 	}
 
 	std::string HandCards::getStringIt()
 	{
-		return "";
+		return "Dagli Un colpo! Gioca le tue carte nelle loro file corrispondenti.";
 	}
 
 	std::string HandCards::getStringJa()
 	{
-		return "";
+		return "試してみます！対応する行にあなたのカードをプレイ。";
 	}
 
 	std::string HandCards::getStringKo()
 	{
-		return "";
+		return "한번 해봐! 카드를 해당 행에 사용하십시오.";
 	}
 
 	std::string HandCards::getStringNl()
 	{
-		return "";
+		return "Probeer het eens! Speel je kaarten in de bijbehorende rijen.";
 	}
 
 	std::string HandCards::getStringNo()
 	{
-		return "";
+		return "Prøv det! Spill kortene dine i de tilsvarende radene.";
 	}
 
 	std::string HandCards::getStringPl()
 	{
-		return "";
+		return "Spróbuj! Zagraj w swoje karty w odpowiednie rzędy.";
 	}
 
 	std::string HandCards::getStringPt()
 	{
-		return "";
+		return "Dê uma chance! Jogue seus cartões em suas linhas correspondentes.";
 	}
 
 	std::string HandCards::getStringPtBr()
 	{
-		return "";
+		return "Dê uma chance! Jogue seus cartões em suas linhas correspondentes.";
 	}
 
 	std::string HandCards::getStringRo()
 	{
-		return "";
+		return "Încearcă! Redați cărțile în rândurile lor corespunzătoare.";
 	}
 
 	std::string HandCards::getStringRu()
 	{
-		return "";
+		return "Дать ему шанс! Разыграйте свои карты в соответствующие ряды.";
 	}
 
 	std::string HandCards::getStringSv()
 	{
-		return "";
+		return "Ge det ett försök! Spela dina kort i sina motsvarande rader.";
 	}
 
 	std::string HandCards::getStringTh()
 	{
-		return "";
+		return "ลองยิงดู! เล่นไพ่ของคุณลงในแถวที่เกี่ยวข้อง";
 	}
 
 	std::string HandCards::getStringTr()
 	{
-		return "";
+		return "Bi dene! Kartlarınızı karşılık gelen sıralara oynayın.";
 	}
 
 	std::string HandCards::getStringUk()
 	{
-		return "";
+		return "Дайте йому постріл! Грайте свої карти у відповідні рядки.";
 	}
 
-	std::string HandCards::getStringVn()
+	std::string HandCards::getStringVi()
 	{
-		return "";
+		return "Cho nó một phát! Chơi bài của bạn thành các hàng tương ứng.";
 	}
 
 	std::string HandCards::getStringZhCn()
 	{
-		return "";
+		return "试一试！将您的卡片放入相应的行中。";
 	}
 
 	std::string HandCards::getStringZhTw()
 	{
-		return "";
+		return "試一試！將您的卡片放入相應的行中。";
 	}
 }

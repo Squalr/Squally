@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string Exit::getStringAr()
 	{
-		return "";
+		return "ىخرج";
 	}
 
 	std::string Exit::getStringBg()
 	{
-		return "";
+		return "изход";
 	}
 
 	std::string Exit::getStringCs()
 	{
-		return "";
+		return "Výstup";
 	}
 
 	std::string Exit::getStringDa()
 	{
-		return "";
+		return "Afslut";
 	}
 
 	std::string Exit::getStringDe()
 	{
-		return "";
+		return "Ausgang";
 	}
 
 	std::string Exit::getStringEl()
 	{
-		return "";
+		return "Εξοδος";
 	}
 
 	std::string Exit::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string Exit::getStringEs()
 	{
-		return "";
+		return "Salida";
 	}
 
 	std::string Exit::getStringEs419()
 	{
-		return "";
+		return "Salida";
 	}
 
 	std::string Exit::getStringFi()
 	{
-		return "";
+		return "poistuminen";
 	}
 
 	std::string Exit::getStringFr()
 	{
-		return "Quitter";
+		return "Sortie";
 	}
 
 	std::string Exit::getStringHu()
 	{
-		return "";
+		return "Kijárat";
 	}
 
 	std::string Exit::getStringIt()
 	{
-		return "";
+		return "Uscita";
 	}
 
 	std::string Exit::getStringJa()
 	{
-		return "";
+		return "出口";
 	}
 
 	std::string Exit::getStringKo()
 	{
-		return "";
+		return "출구";
 	}
 
 	std::string Exit::getStringNl()
 	{
-		return "";
+		return "Uitgang";
 	}
 
 	std::string Exit::getStringNo()
 	{
-		return "";
+		return "Exit";
 	}
 
 	std::string Exit::getStringPl()
 	{
-		return "";
+		return "Wyjście";
 	}
 
 	std::string Exit::getStringPt()
 	{
-		return "";
+		return "Saída";
 	}
 
 	std::string Exit::getStringPtBr()
 	{
-		return "";
+		return "Saída";
 	}
 
 	std::string Exit::getStringRo()
 	{
-		return "";
+		return "Ieșire";
 	}
 
 	std::string Exit::getStringRu()
 	{
-		return "";
+		return "Выход";
 	}
 
 	std::string Exit::getStringSv()
 	{
-		return "";
+		return "Utgång";
 	}
 
 	std::string Exit::getStringTh()
 	{
-		return "";
+		return "ทางออก";
 	}
 
 	std::string Exit::getStringTr()
 	{
-		return "";
+		return "çıkış";
 	}
 
 	std::string Exit::getStringUk()
 	{
-		return "";
+		return "Вхід";
 	}
 
-	std::string Exit::getStringVn()
+	std::string Exit::getStringVi()
 	{
-		return "";
+		return "Lối thoát hiểm";
 	}
 
 	std::string Exit::getStringZhCn()
 	{
-		return "";
+		return "出口";
 	}
 
 	std::string Exit::getStringZhTw()
 	{
-		return "";
+		return "出口";
 	}
 }

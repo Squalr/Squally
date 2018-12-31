@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string DecCards::getStringAr()
 	{
-		return "";
+		return "البطاقات البيضاء هي بطاقات عشرية.";
 	}
 
 	std::string DecCards::getStringBg()
 	{
-		return "";
+		return "Белите карти са десетични карти.";
 	}
 
 	std::string DecCards::getStringCs()
 	{
-		return "";
+		return "Bílé karty jsou desítkové karty.";
 	}
 
 	std::string DecCards::getStringDa()
 	{
-		return "";
+		return "Hvide kort er decimalkort.";
 	}
 
 	std::string DecCards::getStringDe()
 	{
-		return "";
+		return "Weiße Karten sind Dezimalkarten.";
 	}
 
 	std::string DecCards::getStringEl()
 	{
-		return "";
+		return "Οι λευκές κάρτες είναι δεκαδικές κάρτες.";
 	}
 
 	std::string DecCards::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string DecCards::getStringEs()
 	{
-		return "";
+		return "Las cartas blancas son cartas decimales.";
 	}
 
 	std::string DecCards::getStringEs419()
 	{
-		return "";
+		return "Las cartas blancas son cartas decimales.";
 	}
 
 	std::string DecCards::getStringFi()
 	{
-		return "";
+		return "Valkoiset kortit ovat desimaalikortteja.";
 	}
 
 	std::string DecCards::getStringFr()
 	{
-		return "";
+		return "Les cartes blanches sont des cartes décimales.";
 	}
 
 	std::string DecCards::getStringHu()
 	{
-		return "";
+		return "A fehér lapok decimális kártyák.";
 	}
 
 	std::string DecCards::getStringIt()
 	{
-		return "";
+		return "Le carte bianche sono carte decimali.";
 	}
 
 	std::string DecCards::getStringJa()
 	{
-		return "";
+		return "ホワイトカードは10進数カードです。";
 	}
 
 	std::string DecCards::getStringKo()
 	{
-		return "";
+		return "흰색 카드는 십진수 카드입니다.";
 	}
 
 	std::string DecCards::getStringNl()
 	{
-		return "";
+		return "Witte kaarten zijn decimale kaarten.";
 	}
 
 	std::string DecCards::getStringNo()
 	{
-		return "";
+		return "Hvite kort er desimalkort.";
 	}
 
 	std::string DecCards::getStringPl()
 	{
-		return "";
+		return "Białe karty to karty dziesiętne.";
 	}
 
 	std::string DecCards::getStringPt()
 	{
-		return "";
+		return "Cartões brancos são cartões decimais.";
 	}
 
 	std::string DecCards::getStringPtBr()
 	{
-		return "";
+		return "Cartões brancos são cartões decimais.";
 	}
 
 	std::string DecCards::getStringRo()
 	{
-		return "";
+		return "Cartele albe sunt carduri zecimale.";
 	}
 
 	std::string DecCards::getStringRu()
 	{
-		return "";
+		return "Белые карты - это десятичные карты.";
 	}
 
 	std::string DecCards::getStringSv()
 	{
-		return "";
+		return "Vita kort är decimalkort.";
 	}
 
 	std::string DecCards::getStringTh()
 	{
-		return "";
+		return "บัตรสีขาวเป็นบัตรทศนิยม";
 	}
 
 	std::string DecCards::getStringTr()
 	{
-		return "";
+		return "Beyaz kartlar ondalık kartlardır.";
 	}
 
 	std::string DecCards::getStringUk()
 	{
-		return "";
+		return "Білі карти - десяткові карти.";
 	}
 
-	std::string DecCards::getStringVn()
+	std::string DecCards::getStringVi()
 	{
-		return "";
+		return "Thẻ trắng là thẻ thập phân.";
 	}
 
 	std::string DecCards::getStringZhCn()
 	{
-		return "";
+		return "白卡是十进制卡。";
 	}
 
 	std::string DecCards::getStringZhTw()
 	{
-		return "";
+		return "白卡是十進制卡。";
 	}
 }

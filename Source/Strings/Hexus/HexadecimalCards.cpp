@@ -30,32 +30,32 @@ namespace LocaleStrings
 
 	std::string HexadecimalCards::getStringAr()
 	{
-		return "";
+		return "البطاقات السداسية العشرية";
 	}
 
 	std::string HexadecimalCards::getStringBg()
 	{
-		return "";
+		return "Шестнадесетични карти";
 	}
 
 	std::string HexadecimalCards::getStringCs()
 	{
-		return "";
+		return "Šestnáctkové karty";
 	}
 
 	std::string HexadecimalCards::getStringDa()
 	{
-		return "";
+		return "Hexadecimale kort";
 	}
 
 	std::string HexadecimalCards::getStringDe()
 	{
-		return "";
+		return "Hexadezimalkarten";
 	}
 
 	std::string HexadecimalCards::getStringEl()
 	{
-		return "";
+		return "Δεκαεξαδικά κάρτες";
 	}
 
 	std::string HexadecimalCards::getStringEn()
@@ -65,111 +65,111 @@ namespace LocaleStrings
 
 	std::string HexadecimalCards::getStringEs()
 	{
-		return "";
+		return "Tarjetas hexadecimales";
 	}
 
 	std::string HexadecimalCards::getStringEs419()
 	{
-		return "";
+		return "Tarjetas hexadecimales";
 	}
 
 	std::string HexadecimalCards::getStringFi()
 	{
-		return "";
+		return "Heksadesimaalikortit";
 	}
 
 	std::string HexadecimalCards::getStringFr()
 	{
-		return "";
+		return "Cartes hexadécimales";
 	}
 
 	std::string HexadecimalCards::getStringHu()
 	{
-		return "";
+		return "Hexadecimális kártyák";
 	}
 
 	std::string HexadecimalCards::getStringIt()
 	{
-		return "";
+		return "Carte esadecimali";
 	}
 
 	std::string HexadecimalCards::getStringJa()
 	{
-		return "";
+		return "16進数カード";
 	}
 
 	std::string HexadecimalCards::getStringKo()
 	{
-		return "";
+		return "16 진수 카드";
 	}
 
 	std::string HexadecimalCards::getStringNl()
 	{
-		return "";
+		return "Hexadecimale kaarten";
 	}
 
 	std::string HexadecimalCards::getStringNo()
 	{
-		return "";
+		return "Hexadecimale kort";
 	}
 
 	std::string HexadecimalCards::getStringPl()
 	{
-		return "";
+		return "Karty szesnastkowe";
 	}
 
 	std::string HexadecimalCards::getStringPt()
 	{
-		return "";
+		return "Hexadecimal Cartões";
 	}
 
 	std::string HexadecimalCards::getStringPtBr()
 	{
-		return "";
+		return "Hexadecimal Cartões";
 	}
 
 	std::string HexadecimalCards::getStringRo()
 	{
-		return "";
+		return "Carduri Hexadecimal";
 	}
 
 	std::string HexadecimalCards::getStringRu()
 	{
-		return "";
+		return "Шестнадцатеричные карты";
 	}
 
 	std::string HexadecimalCards::getStringSv()
 	{
-		return "";
+		return "Hexadecimala kort";
 	}
 
 	std::string HexadecimalCards::getStringTh()
 	{
-		return "";
+		return "บัตรเลขฐานสิบหก";
 	}
 
 	std::string HexadecimalCards::getStringTr()
 	{
-		return "";
+		return "Onaltılık Kartlar";
 	}
 
 	std::string HexadecimalCards::getStringUk()
 	{
-		return "";
+		return "Шістнадцяткові карти";
 	}
 
-	std::string HexadecimalCards::getStringVn()
+	std::string HexadecimalCards::getStringVi()
 	{
-		return "";
+		return "Thẻ thập lục phân";
 	}
 
 	std::string HexadecimalCards::getStringZhCn()
 	{
-		return "";
+		return "十六进制卡";
 	}
 
 	std::string HexadecimalCards::getStringZhTw()
 	{
-		return "";
+		return "十六進制卡";
 	}
 }
