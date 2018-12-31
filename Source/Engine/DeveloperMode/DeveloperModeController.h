@@ -26,4 +26,5 @@ private:
 	bool developerModeEnabled;
 
 	static DeveloperModeController* instance;
+	static bool IsDeveloperBuild;
 };

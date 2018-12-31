@@ -128,7 +128,7 @@ void RemainingCardDisplay::onAnyStateChange(GameState* gameState)
 
 	if (gameState->enemyPassed || gameState->playerPassed)
 	{
-		wchar_t const * utf16_string = L"\u221E";
+		wchar_t const* utf16_string = L"\u221E";
 		std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>, wchar_t> convert;
 		std::string infinitySymbol = convert.to_bytes(utf16_string);
 

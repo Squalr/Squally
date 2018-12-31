@@ -29,20 +29,21 @@ Localization::~Localization()
 {
 }
 
-cocos2d::LanguageType Localization::getLanguage()
+LanguageType Localization::getLanguage()
 {
 	// Saved language in config file has priority
 	if (ConfigManager::hasLanguageSaved())
 	{
 		std::string languageCode = ConfigManager::getLanguage();
 
+		return Localization::languageCodeToLanguageType(languageCode);
 	}
 
 	// Otherwise take the native language (Steam > System in priority)
 	return Localization::getNativeLanguage();
 }
 
-void Localization::setLanguage(cocos2d::LanguageType languageType)
+void Localization::setLanguage(LanguageType languageType)
 {
 	ConfigManager::setLanguage(Localization::languageTypeToLanguageCode(languageType));
 	ConfigManager::save();
@@ -50,7 +51,7 @@ void Localization::setLanguage(cocos2d::LanguageType languageType)
 	LocalizationEvents::TriggerLocaleChange(LocalizationEvents::LocaleChangeArgs(languageType));
 }
 
-cocos2d::LanguageType Localization::getNativeLanguage()
+LanguageType Localization::getNativeLanguage()
 {
 	// Default to steam language
 	if (Steam::isSquallySteamBuild())
@@ -64,13 +65,10 @@ cocos2d::LanguageType Localization::getNativeLanguage()
 
 std::string Localization::getLanguageCode()
 {
-	// TEMP!
-	return "en";
-
 	return Localization::languageTypeToLanguageCode(Localization::getLanguage());
 }
 
-cocos2d::LanguageType Localization::languageCodeToLanguageType(std::string languageCode)
+LanguageType Localization::languageCodeToLanguageType(std::string languageCode)
 {
 	if (languageCode == "ar")
 	{
@@ -193,7 +191,7 @@ cocos2d::LanguageType Localization::languageCodeToLanguageType(std::string langu
 	return LanguageType::ENGLISH;
 }
 
-std::string Localization::languageTypeToLanguageCode(cocos2d::LanguageType languageType)
+std::string Localization::languageTypeToLanguageCode(LanguageType languageType)
 {
 	switch (languageType)
 	{

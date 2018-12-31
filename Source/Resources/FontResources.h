@@ -10,6 +10,7 @@ namespace FontResources
 	extern const std::string BooleanText;
 	extern const std::string Marker_Felt;
 	extern const std::string Montserrat_Medium;
+	extern const std::string NotoSans_Regular;
 	extern const std::string Pixel_Zpix;
 	extern const std::string UbuntuMono_Bold;
 	extern const std::string Ubuntu_WenQuanYiMicroHei_01;
