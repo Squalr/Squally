@@ -29,7 +29,7 @@ void WeatherDeserializer::registerGlobalNode()
 
 void WeatherDeserializer::initializeListeners()
 {
-	GlobalNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		DeserializationEvents::RequestLayerDeserializeEvent,

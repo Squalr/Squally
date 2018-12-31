@@ -28,6 +28,7 @@ protected:
 	cocos2d::Sprite* sprite;
 
 private:
+	typedef SmartNode super;
 	SmartAnimationSequenceNode();
 	SmartAnimationSequenceNode(std::string defaultSprite);
 	virtual ~SmartAnimationSequenceNode();

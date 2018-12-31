@@ -5,4 +5,6 @@ class MapLoader : public GlobalNode
 {
 public:
     virtual ~MapLoader() = default;
+private:
+    typedef GlobalNode super;
 };

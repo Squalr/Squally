@@ -12,6 +12,7 @@ protected:
 	~PlatformerMap();
 
 private:
+	typedef MapBase super;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onEnter() override;

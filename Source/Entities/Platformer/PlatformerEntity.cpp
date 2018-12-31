@@ -17,7 +17,7 @@ const float PlatformerEntity::maxFallSpeed = -1280.0f;
 using namespace cocos2d;
 
 PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlResource, PlatformerCollisionType collisionType, Size size, float scale, Vec2 collisionOffset) :
-	CollisionObject(
+	super(
 		initProperties,
 		PlatformerEntity::createCapsulePolygon(size, scale),
 		(CollisionType)(int)collisionType,

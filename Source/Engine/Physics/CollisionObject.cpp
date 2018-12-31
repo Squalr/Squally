@@ -36,7 +36,7 @@ CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhys
 }
 
 CollisionObject::CollisionObject(ValueMap* initProperties, PhysicsBody* initPhysicsBody, CollisionType collisionType, bool isDynamic, bool canRotate) :
-	HackableObject(initProperties)
+	super(initProperties)
 {
 	this->physicsBody = initPhysicsBody;
 	this->collisionEvents = std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>();
@@ -61,14 +61,14 @@ CollisionObject::~CollisionObject()
 
 void CollisionObject::onEnter()
 {
-	HackableObject::onEnter();
+	super::onEnter();
 
 	this->scheduleUpdate();
 }
 
 void CollisionObject::onEnterTransitionDidFinish()
 {
-	HackableObject::onEnterTransitionDidFinish();
+	super::onEnterTransitionDidFinish();
 
 	// Part of Box2D requires that both the colliders and collidees have their bitmasks set -- this is how we accomplish that
 	if (this->physicsBody != nullptr)
@@ -85,7 +85,7 @@ void CollisionObject::onEnterTransitionDidFinish()
 
 void CollisionObject::initializeListeners()
 {
-	HackableObject::initializeListeners();
+	super::initializeListeners();
 }
 
 void CollisionObject::setCollisionType(CollisionType collisionType)
@@ -134,7 +134,7 @@ void CollisionObject::setPhysicsEnabled(bool enabled)
 
 void CollisionObject::setPosition(const cocos2d::Vec2& position)
 {
-	HackableObject::setPosition(position);
+	super::setPosition(position);
 
 	if (this->physicsBody != nullptr)
 	{

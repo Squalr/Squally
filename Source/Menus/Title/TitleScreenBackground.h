@@ -20,6 +20,7 @@ public:
 	static TitleScreenBackground* create();
 
 private:
+	typedef SmartNode super;
 	TitleScreenBackground();
 	~TitleScreenBackground();
 

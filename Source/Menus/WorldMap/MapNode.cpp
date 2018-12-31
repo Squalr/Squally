@@ -50,14 +50,14 @@ bool MapNode::isLocked()
 
 void MapNode::initializePositions()
 {
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	this->setContentSize(this->mapSprite->getContentSize());
 }
 
 void MapNode::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
 	this->mapSprite->setClickCallback(CC_CALLBACK_1(MapNode::onNodeClick, this));
 }

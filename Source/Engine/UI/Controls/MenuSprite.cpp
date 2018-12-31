@@ -68,7 +68,7 @@ MenuSprite::~MenuSprite()
 
 void MenuSprite::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	this->isClickInit = false;
 	this->isClicked = false;
@@ -81,7 +81,7 @@ void MenuSprite::onEnter()
 
 void MenuSprite::onEnterTransitionDidFinish()
 {
-	SmartNode::onEnterTransitionDidFinish();
+	super::onEnterTransitionDidFinish();
 
 	// Trigger mouse move event to refresh cursor state
 	MouseEvents::MouseEventArgs args = MouseState::getMouseState();
@@ -90,7 +90,7 @@ void MenuSprite::onEnterTransitionDidFinish()
 
 void MenuSprite::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MenuSprite::onMouseMove, this));
 	EventListenerCustom* mouseRefreshListener = EventListenerCustom::create(MouseEvents::MouseRefreshEvent, CC_CALLBACK_1(MenuSprite::onMouseRefresh, this));
@@ -105,7 +105,7 @@ void MenuSprite::initializeListeners()
 
 void MenuSprite::update(float dt)
 {
-	SmartNode::update(dt);
+	super::update(dt);
 
 	// Update the selected sprite to track the main sprite
 	this->spriteSelected->setPosition(this->sprite->getPosition());

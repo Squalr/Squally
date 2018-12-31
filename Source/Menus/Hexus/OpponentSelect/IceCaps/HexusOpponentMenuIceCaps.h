@@ -12,5 +12,6 @@ protected:
 	~HexusOpponentMenuIceCaps();
 
 private:
+	typedef HexusOpponentMenuBase super;
 	static HexusOpponentMenuIceCaps* instance;
 };

@@ -15,5 +15,6 @@ protected:
 	~HexusChapterPreviewTraining();
 
 private:
+	typedef HexusChapterPreview super;
 	void initializePositions() override;
 };

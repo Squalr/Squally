@@ -12,5 +12,6 @@ protected:
 	~HexusOpponentMenuMech();
 
 private:
+	typedef HexusOpponentMenuBase super;
 	static HexusOpponentMenuMech* instance;
 };

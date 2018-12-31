@@ -39,5 +39,7 @@ protected:
 	float fadeSpeed;
 
 	static const float defaultFadeSpeed;
+private:
+	typedef cocos2d::Scene super;
 };
 

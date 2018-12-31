@@ -10,6 +10,7 @@ public:
 	static const std::string MapKeyCameraFocus;
 
 private:
+	typedef SerializableObject super;
 	CameraFocus(cocos2d::ValueMap* initProperties);
 	~CameraFocus();
 

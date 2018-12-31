@@ -72,7 +72,7 @@ MechanicalFlail::~MechanicalFlail()
 
 void MechanicalFlail::onEnter()
 {
-	HackableObject::onEnter();
+	super::onEnter();
 
 	this->scheduleUpdate();
 	this->startSwing();
@@ -80,7 +80,7 @@ void MechanicalFlail::onEnter()
 
 void MechanicalFlail::initializePositions()
 {
-	HackableObject::initializePositions();
+	super::initializePositions();
 
 	this->flailCollision->setPositionY(this->flailHeight);
 	this->smokeParticles->setPositionY(-this->flailHeight / 2.0f);
@@ -90,7 +90,7 @@ void MechanicalFlail::initializePositions()
 
 void MechanicalFlail::update(float dt)
 {
-	HackableObject::update(dt);
+	super::update(dt);
 }
 
 void MechanicalFlail::registerHackables()

@@ -17,6 +17,7 @@ protected:
 	void initializeListeners() override;
 
 private:
+	typedef GlobalNode super;
 	bool onContactBegin(cocos2d::PhysicsContact& contact);
 	bool onContactUpdate(cocos2d::PhysicsContact& contact);
 	bool onContactEnd(cocos2d::PhysicsContact& contact);

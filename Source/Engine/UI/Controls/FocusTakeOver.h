@@ -18,6 +18,7 @@ public:
 	void unfocus(bool fadeOut = true);
 
 private:
+	typedef SmartNode super;
 	FocusTakeOver();
 	virtual ~FocusTakeOver();
 

@@ -33,5 +33,5 @@ HexusChapterPreviewCaverns::~HexusChapterPreviewCaverns()
 
 void HexusChapterPreviewCaverns::initializePositions()
 {
-	HexusChapterPreview::initializePositions();
+	super::initializePositions();
 }

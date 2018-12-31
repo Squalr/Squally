@@ -43,4 +43,6 @@ protected:
 	TextMenuSprite* shopButton;
 	LocalizedLabel* opponentSelectLabel;
 	TextMenuSprite* backButton;
+private:
+	typedef GlobalScene super;
 };

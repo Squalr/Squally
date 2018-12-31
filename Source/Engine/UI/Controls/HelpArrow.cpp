@@ -31,7 +31,7 @@ HelpArrow::~HelpArrow()
 
 void HelpArrow::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	this->arrow->setOpacity(0);
 }

@@ -29,6 +29,7 @@ protected:
 	virtual ~MenuLabel();
 
 private:
+	typedef SmartNode super;
 	void onEnter() override;
 	void initializeListeners();
 	void onMouseMove(cocos2d::EventMouse* event);

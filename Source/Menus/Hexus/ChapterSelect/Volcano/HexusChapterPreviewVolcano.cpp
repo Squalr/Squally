@@ -33,5 +33,5 @@ HexusChapterPreviewVolcano::~HexusChapterPreviewVolcano()
 
 void HexusChapterPreviewVolcano::initializePositions()
 {
-	HexusChapterPreview::initializePositions();
+	super::initializePositions();
 }

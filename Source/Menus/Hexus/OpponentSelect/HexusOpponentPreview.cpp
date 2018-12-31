@@ -63,7 +63,7 @@ HexusOpponentPreview::~HexusOpponentPreview()
 
 void HexusOpponentPreview::initializePositions()
 {
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	this->disabledLayer->setPosition(Vec2(-256.0f, -256.0f));
 

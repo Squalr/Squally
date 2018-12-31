@@ -34,7 +34,7 @@ CollisionDeserializer::~CollisionDeserializer()
 
 void CollisionDeserializer::initializeListeners()
 {
-	GlobalNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		DeserializationEvents::RequestObjectDeserializeEvent,

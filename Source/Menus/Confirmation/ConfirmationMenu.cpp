@@ -51,7 +51,7 @@ ConfirmationMenu::~ConfirmationMenu()
 
 void ConfirmationMenu::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	this->initializePositions();
 	this->initializeListeners();
@@ -59,7 +59,7 @@ void ConfirmationMenu::onEnter()
 
 void ConfirmationMenu::initializePositions()
 {
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	
@@ -71,7 +71,7 @@ void ConfirmationMenu::initializePositions()
 
 void ConfirmationMenu::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
 	this->cancelButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onCancelClick, this));
 	this->confirmButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onConfirmClick, this));

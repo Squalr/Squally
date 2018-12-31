@@ -45,7 +45,7 @@ LightningSphere::~LightningSphere()
 
 void LightningSphere::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	this->playNextAnimation();
 }

@@ -17,6 +17,7 @@ public:
 	static const std::string MapKeyWeatherLayerFireflies;
 
 private:
+	typedef SerializableLayer super;
 	Fireflies(cocos2d::ValueMap* properties, std::string name);
 	~Fireflies();
 

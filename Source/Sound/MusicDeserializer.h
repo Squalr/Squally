@@ -9,6 +9,7 @@ public:
 	static void registerGlobalNode();
 
 private:
+	typedef GlobalNode super;
 	void initializeListeners() override;
 	void onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args);
 

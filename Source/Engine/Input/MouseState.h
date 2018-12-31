@@ -17,6 +17,7 @@ public:
 	static MouseEvents::MouseEventArgs getMouseState();
 
 private:
+	typedef GlobalNode super;
 	MouseState();
 	virtual ~MouseState();
 

@@ -23,6 +23,7 @@ protected:
 	~Monitor();
 
 private:
+	typedef HackableObject super;
 	MenuSprite* monitorSprite;
 	FloatingSprite* monitorSpriteFloating;
 	cocos2d::ParticleSystem* monitorParticles;

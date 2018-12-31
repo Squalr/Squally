@@ -30,6 +30,7 @@ public:
 	static const std::string MapKeyCollisionTypeDamage;
 
 private:
+	typedef GlobalNode super;
 	PlatformerCollisionMapping();
 	~PlatformerCollisionMapping();
 

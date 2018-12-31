@@ -63,7 +63,7 @@ void HexusChapterPreview::initializePositions()
 
 void HexusChapterPreview::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
 	this->frame->setClickCallback(CC_CALLBACK_1(HexusChapterPreview::onOpponentClick, this));
 }

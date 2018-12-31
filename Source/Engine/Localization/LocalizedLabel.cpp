@@ -69,7 +69,7 @@ LocalizedLabel::~LocalizedLabel()
 
 void LocalizedLabel::onEnter()
 {
-	Label::onEnter();
+	super::onEnter();
 }
 
 LocalizedLabel* LocalizedLabel::clone()

@@ -20,6 +20,7 @@ protected:
 	~MapNode();
 
 private:
+	typedef SmartNode super;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onNodeClick(MenuSprite* menuSprite);

@@ -23,7 +23,7 @@ void HexusOpponentMenuTraining::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuTraining::instance);
 }
 
-HexusOpponentMenuTraining::HexusOpponentMenuTraining() : HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Training, HexusChapterPreviewTraining::SaveKeyChapterName)
+HexusOpponentMenuTraining::HexusOpponentMenuTraining() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Training, HexusChapterPreviewTraining::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentTutorialA::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentTutorialB::getInstance()));
