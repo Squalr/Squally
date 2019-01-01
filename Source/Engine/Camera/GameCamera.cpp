@@ -222,6 +222,12 @@ Vec2 GameCamera::boundCameraByEllipses()
 	if (!this->targetStack.empty())
 	{
 		CameraTrackingData trackingData = this->targetStack.top();
+
+		if (trackingData.target == nullptr)
+		{
+			return cameraPosition;
+		}
+
 		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? trackingData.target->getPosition() : trackingData.customPositionFunction();
 
 		// Don't even bother if the input data is bad
@@ -270,6 +276,12 @@ Vec2 GameCamera::boundCameraByRectangle()
 	if (!this->targetStack.empty())
 	{
 		CameraTrackingData trackingData = this->targetStack.top();
+
+		if (trackingData.target == nullptr)
+		{
+			return cameraPosition;
+		}
+
 		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? trackingData.target->getPosition() : trackingData.customPositionFunction();
 
 		// Handle camera scrolling from target traveling past scroll distance

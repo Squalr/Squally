@@ -54,7 +54,7 @@ void DeveloperModeController::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(DeveloperModeController::onKeyPressed, this);
 
-	this->addEventListener(keyboardListener);
+	this->addGlobalEventListener(keyboardListener);
 }
 
 bool DeveloperModeController::isDeveloperModeEnabled()

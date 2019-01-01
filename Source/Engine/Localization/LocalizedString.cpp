@@ -4,6 +4,7 @@
 
 #include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Localization/Localization.h"
+#include "Engine/Utils/StrUtils.h"
 
 using namespace cocos2d;
 
@@ -43,126 +44,135 @@ void LocalizedString::initializeListeners()
 
 std::string LocalizedString::getString()
 {
+	std::string localizedString;
+
 	switch (Localization::getLanguage())
 	{
 		case LanguageType::ARABIC:
 		{
-			return this->getStringAr();
+			localizedString = this->getStringAr();
 		}
 		case LanguageType::BULGARIAN:
 		{
-			return this->getStringBg();
+			localizedString = this->getStringBg();
 		}
 		case LanguageType::CHINESE_SIMPLIFIED:
 		{
-			return this->getStringZhCn();
+			localizedString = this->getStringZhCn();
 		}
 		case LanguageType::CHINESE_TRADITIONAL:
 		{
-			return this->getStringZhTw();
+			localizedString = this->getStringZhTw();
 		}
 		case LanguageType::CZECH:
 		{
-			return this->getStringCs();
+			localizedString = this->getStringCs();
 		}
 		case LanguageType::DANISH:
 		{
-			return this->getStringDa();
+			localizedString = this->getStringDa();
 		}
 		case LanguageType::DUTCH:
 		{
-			return this->getStringNl();
+			localizedString = this->getStringNl();
 		}
 		case LanguageType::FINNISH:
 		{
-			return this->getStringFi();
+			localizedString = this->getStringFi();
 		}
 		case LanguageType::FRENCH:
 		{
-			return this->getStringFr();
+			localizedString = this->getStringFr();
 		}
 		case LanguageType::GERMAN:
 		{
-			return this->getStringDe();
+			localizedString = this->getStringDe();
 		}
 		case LanguageType::GREEK:
 		{
-			return this->getStringEl();
+			localizedString = this->getStringEl();
 		}
 		case LanguageType::HUNGARIAN:
 		{
-			return this->getStringHu();
+			localizedString = this->getStringHu();
 		}
 		case LanguageType::ITALIAN:
 		{
-			return this->getStringIt();
+			localizedString = this->getStringIt();
 		}
 		case LanguageType::JAPANESE:
 		{
-			return this->getStringJa();
+			localizedString = this->getStringJa();
 		}
 		case LanguageType::KOREAN:
 		{
-			return this->getStringKo();
+			localizedString = this->getStringKo();
 		}
 		case LanguageType::NORWEGIAN:
 		{
-			return this->getStringNo();
+			localizedString = this->getStringNo();
 		}
 		case LanguageType::POLISH:
 		{
-			return this->getStringPl();
+			localizedString = this->getStringPl();
 		}
 		case LanguageType::PORTUGUESE:
 		{
-			return this->getStringPt();
+			localizedString = this->getStringPt();
 		}
 		case LanguageType::PORTUGUESE_BRAZIL:
 		{
-			return this->getStringPtBr();
+			localizedString = this->getStringPtBr();
 		}
 		case LanguageType::ROMANIAN:
 		{
-			return this->getStringRo();
+			localizedString = this->getStringRo();
 		}
 		case LanguageType::RUSSIAN:
 		{
-			return this->getStringRu();
+			localizedString = this->getStringRu();
 		}
 		case LanguageType::SPANISH:
 		{
-			return this->getStringEs();
+			localizedString = this->getStringEs();
 		}
 		case LanguageType::SPANISH_LATIN_AMERICAN:
 		{
-			return this->getStringEs419();
+			localizedString = this->getStringEs419();
 		}
 		case LanguageType::SWEDISH:
 		{
-			return this->getStringSv();
+			localizedString = this->getStringSv();
 		}
 		case LanguageType::THAI:
 		{
-			return this->getStringTh();
+			localizedString = this->getStringTh();
 		}
 		case LanguageType::TURKISH:
 		{
-			return this->getStringTr();
+			localizedString = this->getStringTr();
 		}
 		case LanguageType::UKRAINIAN:
 		{
-			return this->getStringUk();
+			localizedString = this->getStringUk();
 		}
 		case LanguageType::VIETNAMESE:
 		{
-			return this->getStringVi();
+			localizedString = this->getStringVi();
 		}
 		case LanguageType::ENGLISH:
 		default:
 		{
-			return this->getStringEn();
+			localizedString = this->getStringEn();
 		}
 	}
+
+	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
+	{
+		localizedString = StrUtils::replaceFirstOccurence(localizedString, "%s", *it);
+	}
+
+	return localizedString;
 }
 
 void LocalizedString::setStringReplacementVariables(std::vector<std::string> stringReplacementVariables)

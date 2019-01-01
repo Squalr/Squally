@@ -78,7 +78,7 @@ void Mouse::initializeListeners()
 		CC_CALLBACK_1(Mouse::onMouseStateUpdateEvent, this)
 	);
 
-	this->addEventListener(mouseStateUpdateListener);
+	this->addGlobalEventListener(mouseStateUpdateListener);
 }
 
 const cocos2d::Vec2& Mouse::getPosition() const
